@@ -124,17 +124,8 @@ class DevicesResource {
     core.String enterpriseId,
     core.String userId,
     core.String deviceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -179,17 +170,8 @@ class DevicesResource {
     core.String enterpriseId,
     core.String userId,
     core.String deviceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -239,17 +221,8 @@ class DevicesResource {
     core.String enterpriseId,
     core.String userId,
     core.String deviceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -292,14 +265,8 @@ class DevicesResource {
   async.Future<DevicesListResponse> list(
     core.String enterpriseId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -351,19 +318,9 @@ class DevicesResource {
     core.String enterpriseId,
     core.String userId,
     core.String deviceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -422,20 +379,10 @@ class DevicesResource {
     core.String enterpriseId,
     core.String userId,
     core.String deviceId, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -481,8 +428,8 @@ class EnterprisesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<void> acknowledgeNotificationSet({
-    core.String notificationSetId,
-    core.String $fields,
+    core.String? notificationSetId,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (notificationSetId != null) 'notificationSetId': [notificationSetId],
@@ -523,9 +470,9 @@ class EnterprisesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Enterprise> completeSignup({
-    core.String completionToken,
-    core.String enterpriseToken,
-    core.String $fields,
+    core.String? completionToken,
+    core.String? enterpriseToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (completionToken != null) 'completionToken': [completionToken],
@@ -569,13 +516,9 @@ class EnterprisesResource {
   async.Future<AdministratorWebToken> createWebToken(
     AdministratorWebTokenSpec request,
     core.String enterpriseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -616,13 +559,9 @@ class EnterprisesResource {
   async.Future<Enterprise> enroll(
     Enterprise request,
     core.String token, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (token == null) {
-      throw core.ArgumentError('Parameter token is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'token': [token],
       if ($fields != null) 'fields': [$fields],
@@ -664,8 +603,8 @@ class EnterprisesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SignupInfo> generateSignupUrl({
-    core.String callbackUrl,
-    core.String $fields,
+    core.String? callbackUrl,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (callbackUrl != null) 'callbackUrl': [callbackUrl],
@@ -701,11 +640,8 @@ class EnterprisesResource {
   /// this method will complete with the same error.
   async.Future<Enterprise> get(
     core.String enterpriseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -761,12 +697,9 @@ class EnterprisesResource {
   /// this method will complete with the same error.
   async.Future<ServiceAccount> getServiceAccount(
     core.String enterpriseId, {
-    core.String keyType,
-    core.String $fields,
+    core.String? keyType,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (keyType != null) 'keyType': [keyType],
       if ($fields != null) 'fields': [$fields],
@@ -806,11 +739,8 @@ class EnterprisesResource {
   /// this method will complete with the same error.
   async.Future<StoreLayout> getStoreLayout(
     core.String enterpriseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -852,11 +782,8 @@ class EnterprisesResource {
   /// this method will complete with the same error.
   async.Future<EnterprisesListResponse> list(
     core.String domain, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (domain == null) {
-      throw core.ArgumentError('Parameter domain is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'domain': [domain],
       if ($fields != null) 'fields': [$fields],
@@ -915,8 +842,8 @@ class EnterprisesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<NotificationSet> pullNotificationSet({
-    core.String requestMode,
-    core.String $fields,
+    core.String? requestMode,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestMode != null) 'requestMode': [requestMode],
@@ -954,11 +881,8 @@ class EnterprisesResource {
   async.Future<EnterprisesSendTestPushNotificationResponse>
       sendTestPushNotification(
     core.String enterpriseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -998,13 +922,9 @@ class EnterprisesResource {
   async.Future<EnterpriseAccount> setAccount(
     EnterpriseAccount request,
     core.String enterpriseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1052,13 +972,9 @@ class EnterprisesResource {
   async.Future<StoreLayout> setStoreLayout(
     StoreLayout request,
     core.String enterpriseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1093,11 +1009,8 @@ class EnterprisesResource {
   /// this method will complete with the same error.
   async.Future<void> unenroll(
     core.String enterpriseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1143,17 +1056,8 @@ class EntitlementsResource {
     core.String enterpriseId,
     core.String userId,
     core.String entitlementId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (entitlementId == null) {
-      throw core.ArgumentError('Parameter entitlementId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1198,17 +1102,8 @@ class EntitlementsResource {
     core.String enterpriseId,
     core.String userId,
     core.String entitlementId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (entitlementId == null) {
-      throw core.ArgumentError('Parameter entitlementId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1252,14 +1147,8 @@ class EntitlementsResource {
   async.Future<EntitlementsListResponse> list(
     core.String enterpriseId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1312,20 +1201,10 @@ class EntitlementsResource {
     core.String enterpriseId,
     core.String userId,
     core.String entitlementId, {
-    core.bool install,
-    core.String $fields,
+    core.bool? install,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (entitlementId == null) {
-      throw core.ArgumentError('Parameter entitlementId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (install != null) 'install': ['${install}'],
       if ($fields != null) 'fields': [$fields],
@@ -1376,14 +1255,8 @@ class GrouplicensesResource {
   async.Future<GroupLicense> get(
     core.String enterpriseId,
     core.String groupLicenseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (groupLicenseId == null) {
-      throw core.ArgumentError('Parameter groupLicenseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1421,11 +1294,8 @@ class GrouplicensesResource {
   /// this method will complete with the same error.
   async.Future<GroupLicensesListResponse> list(
     core.String enterpriseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1472,14 +1342,8 @@ class GrouplicenseusersResource {
   async.Future<GroupLicenseUsersListResponse> list(
     core.String enterpriseId,
     core.String groupLicenseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (groupLicenseId == null) {
-      throw core.ArgumentError('Parameter groupLicenseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1534,20 +1398,8 @@ class InstallsResource {
     core.String userId,
     core.String deviceId,
     core.String installId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
-    if (installId == null) {
-      throw core.ArgumentError('Parameter installId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1597,20 +1449,8 @@ class InstallsResource {
     core.String userId,
     core.String deviceId,
     core.String installId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
-    if (installId == null) {
-      throw core.ArgumentError('Parameter installId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1656,17 +1496,8 @@ class InstallsResource {
     core.String enterpriseId,
     core.String userId,
     core.String deviceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1722,22 +1553,9 @@ class InstallsResource {
     core.String userId,
     core.String deviceId,
     core.String installId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
-    if (installId == null) {
-      throw core.ArgumentError('Parameter installId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1794,21 +1612,8 @@ class ManagedconfigurationsfordeviceResource {
     core.String userId,
     core.String deviceId,
     core.String managedConfigurationForDeviceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
-    if (managedConfigurationForDeviceId == null) {
-      throw core.ArgumentError(
-          'Parameter managedConfigurationForDeviceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1858,21 +1663,8 @@ class ManagedconfigurationsfordeviceResource {
     core.String userId,
     core.String deviceId,
     core.String managedConfigurationForDeviceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
-    if (managedConfigurationForDeviceId == null) {
-      throw core.ArgumentError(
-          'Parameter managedConfigurationForDeviceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1921,17 +1713,8 @@ class ManagedconfigurationsfordeviceResource {
     core.String enterpriseId,
     core.String userId,
     core.String deviceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1985,23 +1768,9 @@ class ManagedconfigurationsfordeviceResource {
     core.String userId,
     core.String deviceId,
     core.String managedConfigurationForDeviceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
-    if (managedConfigurationForDeviceId == null) {
-      throw core.ArgumentError(
-          'Parameter managedConfigurationForDeviceId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2056,18 +1825,8 @@ class ManagedconfigurationsforuserResource {
     core.String enterpriseId,
     core.String userId,
     core.String managedConfigurationForUserId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (managedConfigurationForUserId == null) {
-      throw core.ArgumentError(
-          'Parameter managedConfigurationForUserId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2113,18 +1872,8 @@ class ManagedconfigurationsforuserResource {
     core.String enterpriseId,
     core.String userId,
     core.String managedConfigurationForUserId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (managedConfigurationForUserId == null) {
-      throw core.ArgumentError(
-          'Parameter managedConfigurationForUserId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2168,14 +1917,8 @@ class ManagedconfigurationsforuserResource {
   async.Future<ManagedConfigurationsForUserListResponse> list(
     core.String enterpriseId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2229,20 +1972,9 @@ class ManagedconfigurationsforuserResource {
     core.String enterpriseId,
     core.String userId,
     core.String managedConfigurationForUserId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (managedConfigurationForUserId == null) {
-      throw core.ArgumentError(
-          'Parameter managedConfigurationForUserId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2293,14 +2025,8 @@ class ManagedconfigurationssettingsResource {
   async.Future<ManagedConfigurationsSettingsListResponse> list(
     core.String enterpriseId,
     core.String productId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2348,12 +2074,9 @@ class PermissionsResource {
   /// this method will complete with the same error.
   async.Future<Permission> get(
     core.String permissionId, {
-    core.String language,
-    core.String $fields,
+    core.String? language,
+    core.String? $fields,
   }) async {
-    if (permissionId == null) {
-      throw core.ArgumentError('Parameter permissionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
@@ -2404,16 +2127,9 @@ class ProductsResource {
     ProductsApproveRequest request,
     core.String enterpriseId,
     core.String productId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2466,15 +2182,9 @@ class ProductsResource {
   async.Future<ProductsGenerateApprovalUrlResponse> generateApprovalUrl(
     core.String enterpriseId,
     core.String productId, {
-    core.String languageCode,
-    core.String $fields,
+    core.String? languageCode,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if ($fields != null) 'fields': [$fields],
@@ -2519,15 +2229,9 @@ class ProductsResource {
   async.Future<Product> get(
     core.String enterpriseId,
     core.String productId, {
-    core.String language,
-    core.String $fields,
+    core.String? language,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
@@ -2577,15 +2281,9 @@ class ProductsResource {
   async.Future<AppRestrictionsSchema> getAppRestrictionsSchema(
     core.String enterpriseId,
     core.String productId, {
-    core.String language,
-    core.String $fields,
+    core.String? language,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
@@ -2627,14 +2325,8 @@ class ProductsResource {
   async.Future<ProductPermissions> getPermissions(
     core.String enterpriseId,
     core.String productId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2692,16 +2384,13 @@ class ProductsResource {
   /// this method will complete with the same error.
   async.Future<ProductsListResponse> list(
     core.String enterpriseId, {
-    core.bool approved,
-    core.String language,
-    core.int maxResults,
-    core.String query,
-    core.String token,
-    core.String $fields,
+    core.bool? approved,
+    core.String? language,
+    core.int? maxResults,
+    core.String? query,
+    core.String? token,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (approved != null) 'approved': ['${approved}'],
       if (language != null) 'language': [language],
@@ -2744,14 +2433,8 @@ class ProductsResource {
   async.Future<void> unapprove(
     core.String enterpriseId,
     core.String productId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2800,14 +2483,8 @@ class ServiceaccountkeysResource {
   async.Future<void> delete(
     core.String enterpriseId,
     core.String keyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (keyId == null) {
-      throw core.ArgumentError('Parameter keyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2852,13 +2529,9 @@ class ServiceaccountkeysResource {
   async.Future<ServiceAccountKey> insert(
     ServiceAccountKey request,
     core.String enterpriseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2901,11 +2574,8 @@ class ServiceaccountkeysResource {
   /// this method will complete with the same error.
   async.Future<ServiceAccountKeysListResponse> list(
     core.String enterpriseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2952,17 +2622,8 @@ class StorelayoutclustersResource {
     core.String enterpriseId,
     core.String pageId,
     core.String clusterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (pageId == null) {
-      throw core.ArgumentError('Parameter pageId is required.');
-    }
-    if (clusterId == null) {
-      throw core.ArgumentError('Parameter clusterId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3006,17 +2667,8 @@ class StorelayoutclustersResource {
     core.String enterpriseId,
     core.String pageId,
     core.String clusterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (pageId == null) {
-      throw core.ArgumentError('Parameter pageId is required.');
-    }
-    if (clusterId == null) {
-      throw core.ArgumentError('Parameter clusterId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3061,16 +2713,9 @@ class StorelayoutclustersResource {
     StoreCluster request,
     core.String enterpriseId,
     core.String pageId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (pageId == null) {
-      throw core.ArgumentError('Parameter pageId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3112,14 +2757,8 @@ class StorelayoutclustersResource {
   async.Future<StoreLayoutClustersListResponse> list(
     core.String enterpriseId,
     core.String pageId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (pageId == null) {
-      throw core.ArgumentError('Parameter pageId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3166,19 +2805,9 @@ class StorelayoutclustersResource {
     core.String enterpriseId,
     core.String pageId,
     core.String clusterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (pageId == null) {
-      throw core.ArgumentError('Parameter pageId is required.');
-    }
-    if (clusterId == null) {
-      throw core.ArgumentError('Parameter clusterId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3225,14 +2854,8 @@ class StorelayoutpagesResource {
   async.Future<void> delete(
     core.String enterpriseId,
     core.String pageId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (pageId == null) {
-      throw core.ArgumentError('Parameter pageId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3271,14 +2894,8 @@ class StorelayoutpagesResource {
   async.Future<StorePage> get(
     core.String enterpriseId,
     core.String pageId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (pageId == null) {
-      throw core.ArgumentError('Parameter pageId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3317,13 +2934,9 @@ class StorelayoutpagesResource {
   async.Future<StorePage> insert(
     StorePage request,
     core.String enterpriseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3359,11 +2972,8 @@ class StorelayoutpagesResource {
   /// this method will complete with the same error.
   async.Future<StoreLayoutPagesListResponse> list(
     core.String enterpriseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3405,16 +3015,9 @@ class StorelayoutpagesResource {
     StorePage request,
     core.String enterpriseId,
     core.String pageId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (pageId == null) {
-      throw core.ArgumentError('Parameter pageId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3458,14 +3061,8 @@ class UsersResource {
   async.Future<void> delete(
     core.String enterpriseId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3509,14 +3106,8 @@ class UsersResource {
   async.Future<AuthenticationToken> generateAuthenticationToken(
     core.String enterpriseId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3557,14 +3148,8 @@ class UsersResource {
   async.Future<User> get(
     core.String enterpriseId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3603,14 +3188,8 @@ class UsersResource {
   async.Future<ProductSet> getAvailableProductSet(
     core.String enterpriseId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3656,13 +3235,9 @@ class UsersResource {
   async.Future<User> insert(
     User request,
     core.String enterpriseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3706,14 +3281,8 @@ class UsersResource {
   async.Future<UsersListResponse> list(
     core.String enterpriseId,
     core.String email, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (email == null) {
-      throw core.ArgumentError('Parameter email is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'email': [email],
       if ($fields != null) 'fields': [$fields],
@@ -3754,14 +3323,8 @@ class UsersResource {
   async.Future<void> revokeDeviceAccess(
     core.String enterpriseId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3808,16 +3371,9 @@ class UsersResource {
     ProductSet request,
     core.String enterpriseId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3867,16 +3423,9 @@ class UsersResource {
     User request,
     core.String enterpriseId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3920,14 +3469,8 @@ class WebappsResource {
   async.Future<void> delete(
     core.String enterpriseId,
     core.String webAppId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (webAppId == null) {
-      throw core.ArgumentError('Parameter webAppId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3966,14 +3509,8 @@ class WebappsResource {
   async.Future<WebApp> get(
     core.String enterpriseId,
     core.String webAppId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (webAppId == null) {
-      throw core.ArgumentError('Parameter webAppId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4012,13 +3549,9 @@ class WebappsResource {
   async.Future<WebApp> insert(
     WebApp request,
     core.String enterpriseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4054,11 +3587,8 @@ class WebappsResource {
   /// this method will complete with the same error.
   async.Future<WebAppsListResponse> list(
     core.String enterpriseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4100,16 +3630,9 @@ class WebappsResource {
     WebApp request,
     core.String enterpriseId,
     core.String webAppId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (enterpriseId == null) {
-      throw core.ArgumentError('Parameter enterpriseId is required.');
-    }
-    if (webAppId == null) {
-      throw core.ArgumentError('Parameter webAppId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4133,7 +3656,7 @@ class WebappsResource {
 /// managed Google Play store.
 class Administrator {
   /// The admin's email address.
-  core.String email;
+  core.String? email;
 
   Administrator();
 
@@ -4143,15 +3666,15 @@ class Administrator {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
       };
 }
 
 /// A token authorizing an admin to access an iframe.
 class AdministratorWebToken {
   /// An opaque token to be passed to the Play front-end to generate an iframe.
-  core.String token;
+  core.String? token;
 
   AdministratorWebToken();
 
@@ -4161,8 +3684,8 @@ class AdministratorWebToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (token != null) 'token': token,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (token != null) 'token': token!,
       };
 }
 
@@ -4172,30 +3695,30 @@ class AdministratorWebToken {
 /// iframe is allowed to communiate with.
 class AdministratorWebTokenSpec {
   /// Options for displaying the Managed Configuration page.
-  AdministratorWebTokenSpecManagedConfigurations managedConfigurations;
+  AdministratorWebTokenSpecManagedConfigurations? managedConfigurations;
 
   /// The URI of the parent frame hosting the iframe.
   ///
   /// To prevent XSS, the iframe may not be hosted at other URIs. This URI must
   /// be https. Use whitespaces to separate multiple parent URIs.
-  core.String parent;
+  core.String? parent;
 
   /// Use PlaySearch.approveApps.
   ///
   /// Deprecated.
-  core.List<core.String> permission;
+  core.List<core.String>? permission;
 
   /// Options for displaying the managed Play Search apps page.
-  AdministratorWebTokenSpecPlaySearch playSearch;
+  AdministratorWebTokenSpecPlaySearch? playSearch;
 
   /// Options for displaying the Private Apps page.
-  AdministratorWebTokenSpecPrivateApps privateApps;
+  AdministratorWebTokenSpecPrivateApps? privateApps;
 
   /// Options for displaying the Organize apps page.
-  AdministratorWebTokenSpecStoreBuilder storeBuilder;
+  AdministratorWebTokenSpecStoreBuilder? storeBuilder;
 
   /// Options for displaying the Web Apps page.
-  AdministratorWebTokenSpecWebApps webApps;
+  AdministratorWebTokenSpecWebApps? webApps;
 
   AdministratorWebTokenSpec();
 
@@ -4232,15 +3755,15 @@ class AdministratorWebTokenSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (managedConfigurations != null)
-          'managedConfigurations': managedConfigurations.toJson(),
-        if (parent != null) 'parent': parent,
-        if (permission != null) 'permission': permission,
-        if (playSearch != null) 'playSearch': playSearch.toJson(),
-        if (privateApps != null) 'privateApps': privateApps.toJson(),
-        if (storeBuilder != null) 'storeBuilder': storeBuilder.toJson(),
-        if (webApps != null) 'webApps': webApps.toJson(),
+          'managedConfigurations': managedConfigurations!.toJson(),
+        if (parent != null) 'parent': parent!,
+        if (permission != null) 'permission': permission!,
+        if (playSearch != null) 'playSearch': playSearch!.toJson(),
+        if (privateApps != null) 'privateApps': privateApps!.toJson(),
+        if (storeBuilder != null) 'storeBuilder': storeBuilder!.toJson(),
+        if (webApps != null) 'webApps': webApps!.toJson(),
       };
 }
 
@@ -4248,7 +3771,7 @@ class AdministratorWebTokenSpecManagedConfigurations {
   /// Whether the Managed Configuration page is displayed.
   ///
   /// Default is true.
-  core.bool enabled;
+  core.bool? enabled;
 
   AdministratorWebTokenSpecManagedConfigurations();
 
@@ -4258,8 +3781,8 @@ class AdministratorWebTokenSpecManagedConfigurations {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enabled != null) 'enabled': enabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -4267,12 +3790,12 @@ class AdministratorWebTokenSpecPlaySearch {
   /// Allow access to the iframe in approve mode.
   ///
   /// Default is false.
-  core.bool approveApps;
+  core.bool? approveApps;
 
   /// Whether the managed Play Search apps page is displayed.
   ///
   /// Default is true.
-  core.bool enabled;
+  core.bool? enabled;
 
   AdministratorWebTokenSpecPlaySearch();
 
@@ -4285,9 +3808,9 @@ class AdministratorWebTokenSpecPlaySearch {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (approveApps != null) 'approveApps': approveApps,
-        if (enabled != null) 'enabled': enabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (approveApps != null) 'approveApps': approveApps!,
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -4295,7 +3818,7 @@ class AdministratorWebTokenSpecPrivateApps {
   /// Whether the Private Apps page is displayed.
   ///
   /// Default is true.
-  core.bool enabled;
+  core.bool? enabled;
 
   AdministratorWebTokenSpecPrivateApps();
 
@@ -4305,8 +3828,8 @@ class AdministratorWebTokenSpecPrivateApps {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enabled != null) 'enabled': enabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -4314,7 +3837,7 @@ class AdministratorWebTokenSpecStoreBuilder {
   /// Whether the Organize apps page is displayed.
   ///
   /// Default is true.
-  core.bool enabled;
+  core.bool? enabled;
 
   AdministratorWebTokenSpecStoreBuilder();
 
@@ -4324,8 +3847,8 @@ class AdministratorWebTokenSpecStoreBuilder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enabled != null) 'enabled': enabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -4333,7 +3856,7 @@ class AdministratorWebTokenSpecWebApps {
   /// Whether the Web Apps page is displayed.
   ///
   /// Default is true.
-  core.bool enabled;
+  core.bool? enabled;
 
   AdministratorWebTokenSpecWebApps();
 
@@ -4343,8 +3866,8 @@ class AdministratorWebTokenSpecWebApps {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enabled != null) 'enabled': enabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -4352,10 +3875,10 @@ class AdministratorWebTokenSpecWebApps {
 /// the product.
 class AppRestrictionsSchema {
   /// Deprecated.
-  core.String kind;
+  core.String? kind;
 
   /// The set of restrictions that make up this schema.
-  core.List<AppRestrictionsSchemaRestriction> restrictions;
+  core.List<AppRestrictionsSchemaRestriction>? restrictions;
 
   AppRestrictionsSchema();
 
@@ -4372,10 +3895,10 @@ class AppRestrictionsSchema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (restrictions != null)
-          'restrictions': restrictions.map((value) => value.toJson()).toList(),
+          'restrictions': restrictions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4389,7 +3912,7 @@ class AppRestrictionsSchemaChangeEvent {
   /// restriction schema changed.
   ///
   /// This field will always be present.
-  core.String productId;
+  core.String? productId;
 
   AppRestrictionsSchemaChangeEvent();
 
@@ -4399,8 +3922,8 @@ class AppRestrictionsSchemaChangeEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (productId != null) 'productId': productId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (productId != null) 'productId': productId!,
       };
 }
 
@@ -4410,15 +3933,15 @@ class AppRestrictionsSchemaRestriction {
   /// The default value of the restriction.
   ///
   /// bundle and bundleArray restrictions never have a default value.
-  AppRestrictionsSchemaRestrictionRestrictionValue defaultValue;
+  AppRestrictionsSchemaRestrictionRestrictionValue? defaultValue;
 
   /// A longer description of the restriction, giving more detail of what it
   /// affects.
-  core.String description;
+  core.String? description;
 
   /// For choice or multiselect restrictions, the list of possible entries'
   /// human-readable names.
-  core.List<core.String> entry;
+  core.List<core.String>? entry;
 
   /// For choice or multiselect restrictions, the list of possible entries'
   /// machine-readable values.
@@ -4426,17 +3949,17 @@ class AppRestrictionsSchemaRestriction {
   /// These values should be used in the configuration, either as a single
   /// string value for a choice restriction or in a stringArray for a
   /// multiselect restriction.
-  core.List<core.String> entryValue;
+  core.List<core.String>? entryValue;
 
   /// The unique key that the product uses to identify the restriction, e.g.
   /// "com.google.android.gm.fieldname".
-  core.String key;
+  core.String? key;
 
   /// For bundle or bundleArray restrictions, the list of nested restrictions.
   ///
   /// A bundle restriction is always nested within a bundleArray restriction,
   /// and a bundleArray restriction is at most two levels deep.
-  core.List<AppRestrictionsSchemaRestriction> nestedRestriction;
+  core.List<AppRestrictionsSchemaRestriction>? nestedRestriction;
 
   /// The type of the restriction.
   /// Possible string values are:
@@ -4450,10 +3973,10 @@ class AppRestrictionsSchemaRestriction {
   /// code).
   /// - "bundle" : \[M+ devices only\] A bundle of restrictions
   /// - "bundleArray" : \[M+ devices only\] An array of restriction bundles
-  core.String restrictionType;
+  core.String? restrictionType;
 
   /// The name of the restriction.
-  core.String title;
+  core.String? title;
 
   AppRestrictionsSchemaRestriction();
 
@@ -4493,17 +4016,17 @@ class AppRestrictionsSchemaRestriction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (defaultValue != null) 'defaultValue': defaultValue.toJson(),
-        if (description != null) 'description': description,
-        if (entry != null) 'entry': entry,
-        if (entryValue != null) 'entryValue': entryValue,
-        if (key != null) 'key': key,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (defaultValue != null) 'defaultValue': defaultValue!.toJson(),
+        if (description != null) 'description': description!,
+        if (entry != null) 'entry': entry!,
+        if (entryValue != null) 'entryValue': entryValue!,
+        if (key != null) 'key': key!,
         if (nestedRestriction != null)
           'nestedRestriction':
-              nestedRestriction.map((value) => value.toJson()).toList(),
-        if (restrictionType != null) 'restrictionType': restrictionType,
-        if (title != null) 'title': title,
+              nestedRestriction!.map((value) => value.toJson()).toList(),
+        if (restrictionType != null) 'restrictionType': restrictionType!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -4521,21 +4044,21 @@ class AppRestrictionsSchemaRestrictionRestrictionValue {
   /// code).
   /// - "bundle" : \[M+ devices only\] A bundle of restrictions
   /// - "bundleArray" : \[M+ devices only\] An array of restriction bundles
-  core.String type;
+  core.String? type;
 
   /// The boolean value - this will only be present if type is bool.
-  core.bool valueBool;
+  core.bool? valueBool;
 
   /// The integer value - this will only be present if type is integer.
-  core.int valueInteger;
+  core.int? valueInteger;
 
   /// The list of string values - this will only be present if type is
   /// multiselect.
-  core.List<core.String> valueMultiselect;
+  core.List<core.String>? valueMultiselect;
 
   /// The string value - this will be present for types string, choice and
   /// hidden.
-  core.String valueString;
+  core.String? valueString;
 
   AppRestrictionsSchemaRestrictionRestrictionValue();
 
@@ -4559,12 +4082,12 @@ class AppRestrictionsSchemaRestrictionRestrictionValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
-        if (valueBool != null) 'valueBool': valueBool,
-        if (valueInteger != null) 'valueInteger': valueInteger,
-        if (valueMultiselect != null) 'valueMultiselect': valueMultiselect,
-        if (valueString != null) 'valueString': valueString,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
+        if (valueBool != null) 'valueBool': valueBool!,
+        if (valueInteger != null) 'valueInteger': valueInteger!,
+        if (valueMultiselect != null) 'valueMultiselect': valueMultiselect!,
+        if (valueString != null) 'valueString': valueString!,
       };
 }
 
@@ -4573,12 +4096,12 @@ class AppState {
   /// List of keyed app states.
   ///
   /// This field will always be present.
-  core.List<KeyedAppState> keyedAppState;
+  core.List<KeyedAppState>? keyedAppState;
 
   /// The package name of the app.
   ///
   /// This field will always be present.
-  core.String packageName;
+  core.String? packageName;
 
   AppState();
 
@@ -4594,11 +4117,11 @@ class AppState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (keyedAppState != null)
           'keyedAppState':
-              keyedAppState.map((value) => value.toJson()).toList(),
-        if (packageName != null) 'packageName': packageName,
+              keyedAppState!.map((value) => value.toJson()).toList(),
+        if (packageName != null) 'packageName': packageName!,
       };
 }
 
@@ -4611,7 +4134,7 @@ class AppUpdateEvent {
   /// The id of the product (e.g. "app:com.google.android.gm") that was updated.
   ///
   /// This field will always be present.
-  core.String productId;
+  core.String? productId;
 
   AppUpdateEvent();
 
@@ -4621,15 +4144,15 @@ class AppUpdateEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (productId != null) 'productId': productId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (productId != null) 'productId': productId!,
       };
 }
 
 /// This represents a single version of the app.
 class AppVersion {
   /// True if this version is a production APK.
-  core.bool isProduction;
+  core.bool? isProduction;
 
   /// Deprecated, use trackId instead.
   /// Possible string values are:
@@ -4637,23 +4160,23 @@ class AppVersion {
   /// - "production"
   /// - "beta"
   /// - "alpha"
-  core.String track;
+  core.String? track;
 
   /// Track ids that the app version is published in.
   ///
   /// Replaces the track field (deprecated), but doesn't include the production
   /// track (see isProduction instead).
-  core.List<core.String> trackId;
+  core.List<core.String>? trackId;
 
   /// Unique increasing identifier for the app version.
-  core.int versionCode;
+  core.int? versionCode;
 
   /// The string used in the Play store by the app developer to identify the
   /// version.
   ///
   /// The string is not necessarily unique or localized (for example, the string
   /// could be "1.4").
-  core.String versionString;
+  core.String? versionString;
 
   AppVersion();
 
@@ -4677,12 +4200,12 @@ class AppVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (isProduction != null) 'isProduction': isProduction,
-        if (track != null) 'track': track,
-        if (trackId != null) 'trackId': trackId,
-        if (versionCode != null) 'versionCode': versionCode,
-        if (versionString != null) 'versionString': versionString,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (isProduction != null) 'isProduction': isProduction!,
+        if (track != null) 'track': track!,
+        if (trackId != null) 'trackId': trackId!,
+        if (versionCode != null) 'versionCode': versionCode!,
+        if (versionString != null) 'versionString': versionString!,
       };
 }
 
@@ -4690,7 +4213,7 @@ class AppVersion {
 class ApprovalUrlInfo {
   /// A URL that displays a product's permissions and that can also be used to
   /// approve the product with the Products.approve call.
-  core.String approvalUrl;
+  core.String? approvalUrl;
 
   ApprovalUrlInfo();
 
@@ -4700,8 +4223,8 @@ class ApprovalUrlInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (approvalUrl != null) 'approvalUrl': approvalUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (approvalUrl != null) 'approvalUrl': approvalUrl!,
       };
 }
 
@@ -4711,7 +4234,7 @@ class AuthenticationToken {
   /// The authentication token to be passed to the device policy client on the
   /// device where it can be used to provision the account for which this token
   /// was generated.
-  core.String token;
+  core.String? token;
 
   AuthenticationToken();
 
@@ -4721,8 +4244,8 @@ class AuthenticationToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (token != null) 'token': token,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (token != null) 'token': token!,
       };
 }
 
@@ -4736,7 +4259,7 @@ class AutoInstallConstraint {
   /// - "chargingStateConstraintUnspecified"
   /// - "chargingNotRequired" : Device doesn't have to be charging.
   /// - "chargingRequired" : Device has to be charging.
-  core.String chargingStateConstraint;
+  core.String? chargingStateConstraint;
 
   /// Device idle state constraint.
   /// Possible string values are:
@@ -4744,14 +4267,14 @@ class AutoInstallConstraint {
   /// - "deviceIdleNotRequired" : Device doesn't have to be idle, app can be
   /// installed while the user is interacting with the device.
   /// - "deviceIdleRequired" : Device has to be idle.
-  core.String deviceIdleStateConstraint;
+  core.String? deviceIdleStateConstraint;
 
   /// Network type constraint.
   /// Possible string values are:
   /// - "networkTypeConstraintUnspecified"
   /// - "anyNetwork" : Any active networks (Wi-Fi, cellular, etc.).
   /// - "unmeteredNetwork" : Any unmetered network (e.g. Wi-FI).
-  core.String networkTypeConstraint;
+  core.String? networkTypeConstraint;
 
   AutoInstallConstraint();
 
@@ -4768,13 +4291,13 @@ class AutoInstallConstraint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (chargingStateConstraint != null)
-          'chargingStateConstraint': chargingStateConstraint,
+          'chargingStateConstraint': chargingStateConstraint!,
         if (deviceIdleStateConstraint != null)
-          'deviceIdleStateConstraint': deviceIdleStateConstraint,
+          'deviceIdleStateConstraint': deviceIdleStateConstraint!,
         if (networkTypeConstraint != null)
-          'networkTypeConstraint': networkTypeConstraint,
+          'networkTypeConstraint': networkTypeConstraint!,
       };
 }
 
@@ -4782,7 +4305,7 @@ class AutoInstallPolicy {
   /// The constraints for auto-installing the app.
   ///
   /// You can specify a maximum of one constraint.
-  core.List<AutoInstallConstraint> autoInstallConstraint;
+  core.List<AutoInstallConstraint>? autoInstallConstraint;
 
   /// The auto-install mode.
   ///
@@ -4796,12 +4319,12 @@ class AutoInstallPolicy {
   /// - "forceAutoInstall" : The product is automatically installed, if the user
   /// uninstalls the product it will be installed again. On managed devices the
   /// DPC should block uninstall.
-  core.String autoInstallMode;
+  core.String? autoInstallMode;
 
   /// The priority of the install, as an unsigned integer.
   ///
   /// A lower number means higher priority.
-  core.int autoInstallPriority;
+  core.int? autoInstallPriority;
 
   /// The minimum version of the app.
   ///
@@ -4809,7 +4332,7 @@ class AutoInstallPolicy {
   /// auto-updated according to the auto-install constraints, instead of waiting
   /// for the regular auto-update. You can set a minimum version code for at
   /// most 20 apps per device.
-  core.int minimumVersionCode;
+  core.int? minimumVersionCode;
 
   AutoInstallPolicy();
 
@@ -4831,15 +4354,15 @@ class AutoInstallPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (autoInstallConstraint != null)
           'autoInstallConstraint':
-              autoInstallConstraint.map((value) => value.toJson()).toList(),
-        if (autoInstallMode != null) 'autoInstallMode': autoInstallMode,
+              autoInstallConstraint!.map((value) => value.toJson()).toList(),
+        if (autoInstallMode != null) 'autoInstallMode': autoInstallMode!,
         if (autoInstallPriority != null)
-          'autoInstallPriority': autoInstallPriority,
+          'autoInstallPriority': autoInstallPriority!,
         if (minimumVersionCode != null)
-          'minimumVersionCode': minimumVersionCode,
+          'minimumVersionCode': minimumVersionCode!,
       };
 }
 
@@ -4851,10 +4374,10 @@ class AutoInstallPolicy {
 /// configuration settings.
 class ConfigurationVariables {
   /// The ID of the managed configurations settings.
-  core.String mcmId;
+  core.String? mcmId;
 
   /// The variable set that is attributed to the user.
-  core.List<VariableSet> variableSet;
+  core.List<VariableSet>? variableSet;
 
   ConfigurationVariables();
 
@@ -4870,10 +4393,10 @@ class ConfigurationVariables {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (mcmId != null) 'mcmId': mcmId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (mcmId != null) 'mcmId': mcmId!,
         if (variableSet != null)
-          'variableSet': variableSet.map((value) => value.toJson()).toList(),
+          'variableSet': variableSet!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4884,7 +4407,7 @@ class Device {
   /// hex string.
   ///
   /// For example, "123456789abcdef0".
-  core.String androidId;
+  core.String? androidId;
 
   /// Identifies the extent to which the device is controlled by a managed
   /// Google Play EMM in various deployment configurations.
@@ -4902,13 +4425,13 @@ class Device {
   /// - "managedProfile"
   /// - "containerApp"
   /// - "unmanagedProfile"
-  core.String managementType;
+  core.String? managementType;
 
   /// The policy enforced on the device.
-  Policy policy;
+  Policy? policy;
 
   /// The device report updated with the latest app states.
-  DeviceReport report;
+  DeviceReport? report;
 
   Device();
 
@@ -4929,11 +4452,11 @@ class Device {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (androidId != null) 'androidId': androidId,
-        if (managementType != null) 'managementType': managementType,
-        if (policy != null) 'policy': policy.toJson(),
-        if (report != null) 'report': report.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (androidId != null) 'androidId': androidId!,
+        if (managementType != null) 'managementType': managementType!,
+        if (policy != null) 'policy': policy!.toJson(),
+        if (report != null) 'report': report!.toJson(),
       };
 }
 
@@ -4944,12 +4467,12 @@ class DeviceReport {
   ///
   /// App states are defined by the app's developers. This field will always be
   /// present.
-  core.List<AppState> appState;
+  core.List<AppState>? appState;
 
   /// The timestamp of the last report update in milliseconds since epoch.
   ///
   /// This field will always be present.
-  core.String lastUpdatedTimestampMillis;
+  core.String? lastUpdatedTimestampMillis;
 
   DeviceReport();
 
@@ -4966,11 +4489,11 @@ class DeviceReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (appState != null)
-          'appState': appState.map((value) => value.toJson()).toList(),
+          'appState': appState!.map((value) => value.toJson()).toList(),
         if (lastUpdatedTimestampMillis != null)
-          'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis,
+          'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis!,
       };
 }
 
@@ -4979,17 +4502,17 @@ class DeviceReportUpdateEvent {
   /// The Android ID of the device.
   ///
   /// This field will always be present.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// The device report updated with the latest app states.
   ///
   /// This field will always be present.
-  DeviceReport report;
+  DeviceReport? report;
 
   /// The ID of the user.
   ///
   /// This field will always be present.
-  core.String userId;
+  core.String? userId;
 
   DeviceReportUpdateEvent();
 
@@ -5006,10 +4529,10 @@ class DeviceReportUpdateEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId,
-        if (report != null) 'report': report.toJson(),
-        if (userId != null) 'userId': userId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (report != null) 'report': report!.toJson(),
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -5024,7 +4547,7 @@ class DeviceState {
   /// Possible string values are:
   /// - "enabled"
   /// - "disabled"
-  core.String accountState;
+  core.String? accountState;
 
   DeviceState();
 
@@ -5034,14 +4557,14 @@ class DeviceState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountState != null) 'accountState': accountState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountState != null) 'accountState': accountState!,
       };
 }
 
 class DevicesListResponse {
   /// A managed device.
-  core.List<Device> device;
+  core.List<Device>? device;
 
   DevicesListResponse();
 
@@ -5054,9 +4577,9 @@ class DevicesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (device != null)
-          'device': device.map((value) => value.toJson()).toList(),
+          'device': device!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5078,16 +4601,16 @@ class Enterprise {
   /// Admins of the enterprise.
   ///
   /// This is only supported for enterprises created via the EMM-initiated flow.
-  core.List<Administrator> administrator;
+  core.List<Administrator>? administrator;
 
   /// The unique ID for the enterprise.
-  core.String id;
+  core.String? id;
 
   /// The name of the enterprise, for example, "Example, Inc".
-  core.String name;
+  core.String? name;
 
   /// The enterprise's primary domain, such as "example.com".
-  core.String primaryDomain;
+  core.String? primaryDomain;
 
   Enterprise();
 
@@ -5109,13 +4632,13 @@ class Enterprise {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (administrator != null)
           'administrator':
-              administrator.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
-        if (primaryDomain != null) 'primaryDomain': primaryDomain,
+              administrator!.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (primaryDomain != null) 'primaryDomain': primaryDomain!,
       };
 }
 
@@ -5123,7 +4646,7 @@ class Enterprise {
 /// calls that require such authentication.
 class EnterpriseAccount {
   /// The email address of the service account.
-  core.String accountEmail;
+  core.String? accountEmail;
 
   EnterpriseAccount();
 
@@ -5133,14 +4656,14 @@ class EnterpriseAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountEmail != null) 'accountEmail': accountEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountEmail != null) 'accountEmail': accountEmail!,
       };
 }
 
 class EnterprisesListResponse {
   /// An enterprise.
-  core.List<Enterprise> enterprise;
+  core.List<Enterprise>? enterprise;
 
   EnterprisesListResponse();
 
@@ -5153,19 +4676,19 @@ class EnterprisesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (enterprise != null)
-          'enterprise': enterprise.map((value) => value.toJson()).toList(),
+          'enterprise': enterprise!.map((value) => value.toJson()).toList(),
       };
 }
 
 class EnterprisesSendTestPushNotificationResponse {
   /// The message ID of the test push notification that was sent.
-  core.String messageId;
+  core.String? messageId;
 
   /// The name of the Cloud Pub/Sub topic to which notifications for this
   /// enterprise's enrolled account will be sent.
-  core.String topicName;
+  core.String? topicName;
 
   EnterprisesSendTestPushNotificationResponse();
 
@@ -5178,9 +4701,9 @@ class EnterprisesSendTestPushNotificationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (messageId != null) 'messageId': messageId,
-        if (topicName != null) 'topicName': topicName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (messageId != null) 'messageId': messageId!,
+        if (topicName != null) 'topicName': topicName!,
       };
 }
 
@@ -5208,7 +4731,7 @@ class Entitlement {
   /// The ID of the product that the entitlement is for.
   ///
   /// For example, "app:com.google.android.gm".
-  core.String productId;
+  core.String? productId;
 
   /// The reason for the entitlement.
   ///
@@ -5218,7 +4741,7 @@ class Entitlement {
   /// - "free"
   /// - "groupLicense"
   /// - "userPurchase"
-  core.String reason;
+  core.String? reason;
 
   Entitlement();
 
@@ -5231,9 +4754,9 @@ class Entitlement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (productId != null) 'productId': productId,
-        if (reason != null) 'reason': reason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (productId != null) 'productId': productId!,
+        if (reason != null) 'reason': reason!,
       };
 }
 
@@ -5242,7 +4765,7 @@ class EntitlementsListResponse {
   ///
   /// For example, a free app that they have installed, or a paid app that they
   /// have been allocated a license to.
-  core.List<Entitlement> entitlement;
+  core.List<Entitlement>? entitlement;
 
   EntitlementsListResponse();
 
@@ -5255,9 +4778,9 @@ class EntitlementsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entitlement != null)
-          'entitlement': entitlement.map((value) => value.toJson()).toList(),
+          'entitlement': entitlement!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5285,7 +4808,7 @@ class GroupLicense {
   /// Possible string values are:
   /// - "free"
   /// - "bulkPurchase"
-  core.String acquisitionKind;
+  core.String? acquisitionKind;
 
   /// Whether the product to which this group license relates is currently
   /// approved by the enterprise.
@@ -5297,18 +4820,18 @@ class GroupLicense {
   /// Possible string values are:
   /// - "approved"
   /// - "unapproved"
-  core.String approval;
+  core.String? approval;
 
   /// The total number of provisioned licenses for this product.
   ///
   /// Returned by read operations, but ignored in write operations.
-  core.int numProvisioned;
+  core.int? numProvisioned;
 
   /// The number of purchased licenses (possibly in multiple purchases).
   ///
   /// If this field is omitted, then there is no limit on the number of licenses
   /// that can be provisioned (for example, if the acquisition kind is "free").
-  core.int numPurchased;
+  core.int? numPurchased;
 
   /// The permission approval status of the product.
   ///
@@ -5326,12 +4849,12 @@ class GroupLicense {
   /// - "currentApproved"
   /// - "needsReapproval"
   /// - "allCurrentAndFutureApproved"
-  core.String permissions;
+  core.String? permissions;
 
   /// The ID of the product that the license is for.
   ///
   /// For example, "app:com.google.android.gm".
-  core.String productId;
+  core.String? productId;
 
   GroupLicense();
 
@@ -5356,19 +4879,19 @@ class GroupLicense {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (acquisitionKind != null) 'acquisitionKind': acquisitionKind,
-        if (approval != null) 'approval': approval,
-        if (numProvisioned != null) 'numProvisioned': numProvisioned,
-        if (numPurchased != null) 'numPurchased': numPurchased,
-        if (permissions != null) 'permissions': permissions,
-        if (productId != null) 'productId': productId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (acquisitionKind != null) 'acquisitionKind': acquisitionKind!,
+        if (approval != null) 'approval': approval!,
+        if (numProvisioned != null) 'numProvisioned': numProvisioned!,
+        if (numPurchased != null) 'numPurchased': numPurchased!,
+        if (permissions != null) 'permissions': permissions!,
+        if (productId != null) 'productId': productId!,
       };
 }
 
 class GroupLicenseUsersListResponse {
   /// A user of an enterprise.
-  core.List<User> user;
+  core.List<User>? user;
 
   GroupLicenseUsersListResponse();
 
@@ -5381,14 +4904,14 @@ class GroupLicenseUsersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (user != null) 'user': user.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (user != null) 'user': user!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GroupLicensesListResponse {
   /// A group license for a product approved for use in the enterprise.
-  core.List<GroupLicense> groupLicense;
+  core.List<GroupLicense>? groupLicense;
 
   GroupLicensesListResponse();
 
@@ -5401,9 +4924,9 @@ class GroupLicensesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (groupLicense != null)
-          'groupLicense': groupLicense.map((value) => value.toJson()).toList(),
+          'groupLicense': groupLicense!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5435,17 +4958,17 @@ class Install {
   /// Possible string values are:
   /// - "installed"
   /// - "installPending"
-  core.String installState;
+  core.String? installState;
 
   /// The ID of the product that the install is for.
   ///
   /// For example, "app:com.google.android.gm".
-  core.String productId;
+  core.String? productId;
 
   /// The version of the installed product.
   ///
   /// Guaranteed to be set only if the install state is "installed".
-  core.int versionCode;
+  core.int? versionCode;
 
   Install();
 
@@ -5461,10 +4984,10 @@ class Install {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (installState != null) 'installState': installState,
-        if (productId != null) 'productId': productId,
-        if (versionCode != null) 'versionCode': versionCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (installState != null) 'installState': installState!,
+        if (productId != null) 'productId': productId!,
+        if (versionCode != null) 'versionCode': versionCode!,
       };
 }
 
@@ -5473,10 +4996,10 @@ class InstallFailureEvent {
   /// The Android ID of the device.
   ///
   /// This field will always be present.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// Additional details on the failure if applicable.
-  core.String failureDetails;
+  core.String? failureDetails;
 
   /// The reason for the installation failure.
   ///
@@ -5487,18 +5010,18 @@ class InstallFailureEvent {
   /// number of situations, for example when the device did not have
   /// connectivity at any point during the retry period, or if the device is
   /// OOM.
-  core.String failureReason;
+  core.String? failureReason;
 
   /// The id of the product (e.g. "app:com.google.android.gm") for which the
   /// install failure event occured.
   ///
   /// This field will always be present.
-  core.String productId;
+  core.String? productId;
 
   /// The ID of the user.
   ///
   /// This field will always be present.
-  core.String userId;
+  core.String? userId;
 
   InstallFailureEvent();
 
@@ -5520,12 +5043,12 @@ class InstallFailureEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId,
-        if (failureDetails != null) 'failureDetails': failureDetails,
-        if (failureReason != null) 'failureReason': failureReason,
-        if (productId != null) 'productId': productId,
-        if (userId != null) 'userId': userId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (failureDetails != null) 'failureDetails': failureDetails!,
+        if (failureReason != null) 'failureReason': failureReason!,
+        if (productId != null) 'productId': productId!,
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -5534,7 +5057,7 @@ class InstallsListResponse {
   ///
   /// The existence of an install implies that the user must have an entitlement
   /// to the app.
-  core.List<Install> install;
+  core.List<Install>? install;
 
   InstallsListResponse();
 
@@ -5547,9 +5070,9 @@ class InstallsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (install != null)
-          'install': install.map((value) => value.toJson()).toList(),
+          'install': install!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5560,20 +5083,20 @@ class KeyedAppState {
   ///
   /// For example, a number or JSON object. To prevent XSS, we recommend
   /// removing any HTML from the data before displaying it.
-  core.String data;
+  core.String? data;
 
   /// Key indicating what the app is providing a state for.
   ///
   /// The content of the key is set by the app's developer. To prevent XSS, we
   /// recommend removing any HTML from the key before displaying it. This field
   /// will always be present.
-  core.String key;
+  core.String? key;
 
   /// Free-form, human-readable message describing the app state.
   ///
   /// For example, an error message. To prevent XSS, we recommend removing any
   /// HTML from the message before displaying it.
-  core.String message;
+  core.String? message;
 
   /// Severity of the app state.
   ///
@@ -5582,12 +5105,12 @@ class KeyedAppState {
   /// - "severityUnknown"
   /// - "severityInfo"
   /// - "severityError"
-  core.String severity;
+  core.String? severity;
 
   /// Timestamp of when the app set the state in milliseconds since epoch.
   ///
   /// This field will always be present.
-  core.String stateTimestampMillis;
+  core.String? stateTimestampMillis;
 
   KeyedAppState();
 
@@ -5609,13 +5132,13 @@ class KeyedAppState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data,
-        if (key != null) 'key': key,
-        if (message != null) 'message': message,
-        if (severity != null) 'severity': severity,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!,
+        if (key != null) 'key': key!,
+        if (message != null) 'message': message!,
+        if (severity != null) 'severity': severity!,
         if (stateTimestampMillis != null)
-          'stateTimestampMillis': stateTimestampMillis,
+          'stateTimestampMillis': stateTimestampMillis!,
       };
 }
 
@@ -5624,10 +5147,10 @@ class LocalizedText {
   /// The BCP47 tag for a locale.
   ///
   /// (e.g. "en-US", "de").
-  core.String locale;
+  core.String? locale;
 
   /// The text localized in the associated locale.
-  core.String text;
+  core.String? text;
 
   LocalizedText();
 
@@ -5640,9 +5163,9 @@ class LocalizedText {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (locale != null) 'locale': locale,
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (locale != null) 'locale': locale!,
+        if (text != null) 'text': text!,
       };
 }
 
@@ -5654,13 +5177,13 @@ class MaintenanceWindow {
   /// Duration of the maintenance window, in milliseconds.
   ///
   /// The duration must be between 30 minutes and 24 hours (inclusive).
-  core.String durationMs;
+  core.String? durationMs;
 
   /// Start time of the maintenance window, in milliseconds after midnight on
   /// the device.
   ///
   /// Windows can span midnight.
-  core.String startTimeAfterMidnightMs;
+  core.String? startTimeAfterMidnightMs;
 
   MaintenanceWindow();
 
@@ -5674,10 +5197,10 @@ class MaintenanceWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (durationMs != null) 'durationMs': durationMs,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (durationMs != null) 'durationMs': durationMs!,
         if (startTimeAfterMidnightMs != null)
-          'startTimeAfterMidnightMs': startTimeAfterMidnightMs,
+          'startTimeAfterMidnightMs': startTimeAfterMidnightMs!,
       };
 }
 
@@ -5687,17 +5210,17 @@ class MaintenanceWindow {
 class ManagedConfiguration {
   /// Contains the ID of the managed configuration profile and the set of
   /// configuration variables (if any) defined for the user.
-  ConfigurationVariables configurationVariables;
+  ConfigurationVariables? configurationVariables;
 
   /// Deprecated.
-  core.String kind;
+  core.String? kind;
 
   /// The set of managed properties for this configuration.
-  core.List<ManagedProperty> managedProperty;
+  core.List<ManagedProperty>? managedProperty;
 
   /// The ID of the product that the managed configuration is for, e.g.
   /// "app:com.google.android.gm".
-  core.String productId;
+  core.String? productId;
 
   ManagedConfiguration();
 
@@ -5721,20 +5244,20 @@ class ManagedConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (configurationVariables != null)
-          'configurationVariables': configurationVariables.toJson(),
-        if (kind != null) 'kind': kind,
+          'configurationVariables': configurationVariables!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (managedProperty != null)
           'managedProperty':
-              managedProperty.map((value) => value.toJson()).toList(),
-        if (productId != null) 'productId': productId,
+              managedProperty!.map((value) => value.toJson()).toList(),
+        if (productId != null) 'productId': productId!,
       };
 }
 
 class ManagedConfigurationsForDeviceListResponse {
   /// A managed configuration for an app on a specific device.
-  core.List<ManagedConfiguration> managedConfigurationForDevice;
+  core.List<ManagedConfiguration>? managedConfigurationForDevice;
 
   ManagedConfigurationsForDeviceListResponse();
 
@@ -5748,9 +5271,9 @@ class ManagedConfigurationsForDeviceListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (managedConfigurationForDevice != null)
-          'managedConfigurationForDevice': managedConfigurationForDevice
+          'managedConfigurationForDevice': managedConfigurationForDevice!
               .map((value) => value.toJson())
               .toList(),
       };
@@ -5758,7 +5281,7 @@ class ManagedConfigurationsForDeviceListResponse {
 
 class ManagedConfigurationsForUserListResponse {
   /// A managed configuration for an app for a specific user.
-  core.List<ManagedConfiguration> managedConfigurationForUser;
+  core.List<ManagedConfiguration>? managedConfigurationForUser;
 
   ManagedConfigurationsForUserListResponse();
 
@@ -5772,9 +5295,9 @@ class ManagedConfigurationsForUserListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (managedConfigurationForUser != null)
-          'managedConfigurationForUser': managedConfigurationForUser
+          'managedConfigurationForUser': managedConfigurationForUser!
               .map((value) => value.toJson())
               .toList(),
       };
@@ -5789,13 +5312,13 @@ class ManagedConfigurationsForUserListResponse {
 class ManagedConfigurationsSettings {
   /// The last updated time of the managed configuration settings in
   /// milliseconds since 1970-01-01T00:00:00Z.
-  core.String lastUpdatedTimestampMillis;
+  core.String? lastUpdatedTimestampMillis;
 
   /// The ID of the managed configurations settings.
-  core.String mcmId;
+  core.String? mcmId;
 
   /// The name of the managed configurations settings.
-  core.String name;
+  core.String? name;
 
   ManagedConfigurationsSettings();
 
@@ -5812,18 +5335,18 @@ class ManagedConfigurationsSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (lastUpdatedTimestampMillis != null)
-          'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis,
-        if (mcmId != null) 'mcmId': mcmId,
-        if (name != null) 'name': name,
+          'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis!,
+        if (mcmId != null) 'mcmId': mcmId!,
+        if (name != null) 'name': name!,
       };
 }
 
 class ManagedConfigurationsSettingsListResponse {
   /// A managed configurations settings for an app that may be assigned to a
   /// group of users in an enterprise.
-  core.List<ManagedConfigurationsSettings> managedConfigurationsSettings;
+  core.List<ManagedConfigurationsSettings>? managedConfigurationsSettings;
 
   ManagedConfigurationsSettingsListResponse();
 
@@ -5838,9 +5361,9 @@ class ManagedConfigurationsSettingsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (managedConfigurationsSettings != null)
-          'managedConfigurationsSettings': managedConfigurationsSettings
+          'managedConfigurationsSettings': managedConfigurationsSettings!
               .map((value) => value.toJson())
               .toList(),
       };
@@ -5853,31 +5376,31 @@ class ManagedConfigurationsSettingsListResponse {
 /// must match the property's type in the app restrictions schema.
 class ManagedProperty {
   /// The unique key that identifies the property.
-  core.String key;
+  core.String? key;
 
   /// The boolean value - this will only be present if type of the property is
   /// bool.
-  core.bool valueBool;
+  core.bool? valueBool;
 
   /// The bundle of managed properties - this will only be present if type of
   /// the property is bundle.
-  ManagedPropertyBundle valueBundle;
+  ManagedPropertyBundle? valueBundle;
 
   /// The list of bundles of properties - this will only be present if type of
   /// the property is bundle_array.
-  core.List<ManagedPropertyBundle> valueBundleArray;
+  core.List<ManagedPropertyBundle>? valueBundleArray;
 
   /// The integer value - this will only be present if type of the property is
   /// integer.
-  core.int valueInteger;
+  core.int? valueInteger;
 
   /// The string value - this will only be present if type of the property is
   /// string, choice or hidden.
-  core.String valueString;
+  core.String? valueString;
 
   /// The list of string values - this will only be present if type of the
   /// property is multiselect.
-  core.List<core.String> valueStringArray;
+  core.List<core.String>? valueStringArray;
 
   ManagedProperty();
 
@@ -5911,23 +5434,23 @@ class ManagedProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (valueBool != null) 'valueBool': valueBool,
-        if (valueBundle != null) 'valueBundle': valueBundle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (valueBool != null) 'valueBool': valueBool!,
+        if (valueBundle != null) 'valueBundle': valueBundle!.toJson(),
         if (valueBundleArray != null)
           'valueBundleArray':
-              valueBundleArray.map((value) => value.toJson()).toList(),
-        if (valueInteger != null) 'valueInteger': valueInteger,
-        if (valueString != null) 'valueString': valueString,
-        if (valueStringArray != null) 'valueStringArray': valueStringArray,
+              valueBundleArray!.map((value) => value.toJson()).toList(),
+        if (valueInteger != null) 'valueInteger': valueInteger!,
+        if (valueString != null) 'valueString': valueString!,
+        if (valueStringArray != null) 'valueStringArray': valueStringArray!,
       };
 }
 
 /// A bundle of managed properties.
 class ManagedPropertyBundle {
   /// The list of managed properties.
-  core.List<ManagedProperty> managedProperty;
+  core.List<ManagedProperty>? managedProperty;
 
   ManagedPropertyBundle();
 
@@ -5940,10 +5463,10 @@ class ManagedPropertyBundle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (managedProperty != null)
           'managedProperty':
-              managedProperty.map((value) => value.toJson()).toList(),
+              managedProperty!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5952,10 +5475,10 @@ class NewDeviceEvent {
   /// The Android ID of the device.
   ///
   /// This field will always be present.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// Policy app on the device.
-  core.String dpcPackageName;
+  core.String? dpcPackageName;
 
   /// Identifies the extent to which the device is controlled by an Android EMM
   /// in various deployment configurations.
@@ -5966,12 +5489,12 @@ class NewDeviceEvent {
   /// Possible string values are:
   /// - "managedDevice"
   /// - "managedProfile"
-  core.String managementType;
+  core.String? managementType;
 
   /// The ID of the user.
   ///
   /// This field will always be present.
-  core.String userId;
+  core.String? userId;
 
   NewDeviceEvent();
 
@@ -5990,11 +5513,11 @@ class NewDeviceEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId,
-        if (dpcPackageName != null) 'dpcPackageName': dpcPackageName,
-        if (managementType != null) 'managementType': managementType,
-        if (userId != null) 'userId': userId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (dpcPackageName != null) 'dpcPackageName': dpcPackageName!,
+        if (managementType != null) 'managementType': managementType!,
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -6005,19 +5528,19 @@ class NewPermissionsEvent {
   ///
   /// Use Permissions.Get on the EMM API to retrieve details about these
   /// permissions.
-  core.List<core.String> approvedPermissions;
+  core.List<core.String>? approvedPermissions;
 
   /// The id of the product (e.g. "app:com.google.android.gm") for which new
   /// permissions were added.
   ///
   /// This field will always be present.
-  core.String productId;
+  core.String? productId;
 
   /// The set of permissions that the app is currently requesting.
   ///
   /// Use Permissions.Get on the EMM API to retrieve details about these
   /// permissions.
-  core.List<core.String> requestedPermissions;
+  core.List<core.String>? requestedPermissions;
 
   NewPermissionsEvent();
 
@@ -6037,39 +5560,39 @@ class NewPermissionsEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (approvedPermissions != null)
-          'approvedPermissions': approvedPermissions,
-        if (productId != null) 'productId': productId,
+          'approvedPermissions': approvedPermissions!,
+        if (productId != null) 'productId': productId!,
         if (requestedPermissions != null)
-          'requestedPermissions': requestedPermissions,
+          'requestedPermissions': requestedPermissions!,
       };
 }
 
 /// A notification of one event relating to an enterprise.
 class Notification {
   /// Notifications about new app restrictions schema changes.
-  AppRestrictionsSchemaChangeEvent appRestrictionsSchemaChangeEvent;
+  AppRestrictionsSchemaChangeEvent? appRestrictionsSchemaChangeEvent;
 
   /// Notifications about app updates.
-  AppUpdateEvent appUpdateEvent;
+  AppUpdateEvent? appUpdateEvent;
 
   /// Notifications about device report updates.
-  DeviceReportUpdateEvent deviceReportUpdateEvent;
+  DeviceReportUpdateEvent? deviceReportUpdateEvent;
 
   /// The ID of the enterprise for which the notification is sent.
   ///
   /// This will always be present.
-  core.String enterpriseId;
+  core.String? enterpriseId;
 
   /// Notifications about an app installation failure.
-  InstallFailureEvent installFailureEvent;
+  InstallFailureEvent? installFailureEvent;
 
   /// Notifications about new devices.
-  NewDeviceEvent newDeviceEvent;
+  NewDeviceEvent? newDeviceEvent;
 
   /// Notifications about new app permissions.
-  NewPermissionsEvent newPermissionsEvent;
+  NewPermissionsEvent? newPermissionsEvent;
 
   /// Type of the notification.
   /// Possible string values are:
@@ -6086,19 +5609,19 @@ class Notification {
   /// change.
   /// - "newDevice" : Notification about a new device.
   /// - "deviceReportUpdate" : Notification about an updated device report.
-  core.String notificationType;
+  core.String? notificationType;
 
   /// Notifications about changes to a product's approval status.
-  ProductApprovalEvent productApprovalEvent;
+  ProductApprovalEvent? productApprovalEvent;
 
   /// Notifications about product availability changes.
-  ProductAvailabilityChangeEvent productAvailabilityChangeEvent;
+  ProductAvailabilityChangeEvent? productAvailabilityChangeEvent;
 
   /// The time when the notification was published in milliseconds since
   /// 1970-01-01T00:00:00Z.
   ///
   /// This will always be present.
-  core.String timestampMillis;
+  core.String? timestampMillis;
 
   Notification();
 
@@ -6150,26 +5673,26 @@ class Notification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (appRestrictionsSchemaChangeEvent != null)
           'appRestrictionsSchemaChangeEvent':
-              appRestrictionsSchemaChangeEvent.toJson(),
-        if (appUpdateEvent != null) 'appUpdateEvent': appUpdateEvent.toJson(),
+              appRestrictionsSchemaChangeEvent!.toJson(),
+        if (appUpdateEvent != null) 'appUpdateEvent': appUpdateEvent!.toJson(),
         if (deviceReportUpdateEvent != null)
-          'deviceReportUpdateEvent': deviceReportUpdateEvent.toJson(),
-        if (enterpriseId != null) 'enterpriseId': enterpriseId,
+          'deviceReportUpdateEvent': deviceReportUpdateEvent!.toJson(),
+        if (enterpriseId != null) 'enterpriseId': enterpriseId!,
         if (installFailureEvent != null)
-          'installFailureEvent': installFailureEvent.toJson(),
-        if (newDeviceEvent != null) 'newDeviceEvent': newDeviceEvent.toJson(),
+          'installFailureEvent': installFailureEvent!.toJson(),
+        if (newDeviceEvent != null) 'newDeviceEvent': newDeviceEvent!.toJson(),
         if (newPermissionsEvent != null)
-          'newPermissionsEvent': newPermissionsEvent.toJson(),
-        if (notificationType != null) 'notificationType': notificationType,
+          'newPermissionsEvent': newPermissionsEvent!.toJson(),
+        if (notificationType != null) 'notificationType': notificationType!,
         if (productApprovalEvent != null)
-          'productApprovalEvent': productApprovalEvent.toJson(),
+          'productApprovalEvent': productApprovalEvent!.toJson(),
         if (productAvailabilityChangeEvent != null)
           'productAvailabilityChangeEvent':
-              productAvailabilityChangeEvent.toJson(),
-        if (timestampMillis != null) 'timestampMillis': timestampMillis,
+              productAvailabilityChangeEvent!.toJson(),
+        if (timestampMillis != null) 'timestampMillis': timestampMillis!,
       };
 }
 
@@ -6178,13 +5701,13 @@ class Notification {
 /// account authenticated for the request.
 class NotificationSet {
   /// The notifications received, or empty if no notifications are present.
-  core.List<Notification> notification;
+  core.List<Notification>? notification;
 
   /// The notification set ID, required to mark the notification as received
   /// with the Enterprises.AcknowledgeNotification API.
   ///
   /// This will be omitted if no notifications are present.
-  core.String notificationSetId;
+  core.String? notificationSetId;
 
   NotificationSet();
 
@@ -6200,10 +5723,10 @@ class NotificationSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (notification != null)
-          'notification': notification.map((value) => value.toJson()).toList(),
-        if (notificationSetId != null) 'notificationSetId': notificationSetId,
+          'notification': notification!.map((value) => value.toJson()).toList(),
+        if (notificationSetId != null) 'notificationSetId': notificationSetId!,
       };
 }
 
@@ -6215,14 +5738,14 @@ class PageInfo {
   /// Maximum number of results returned in one page.
   ///
   /// ! The number of results included in the API response.
-  core.int resultPerPage;
+  core.int? resultPerPage;
 
   /// Index of the first result returned in the current page.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// Total number of results available on the backend ! The total number of
   /// results in the result set.
-  core.int totalResults;
+  core.int? totalResults;
 
   PageInfo();
 
@@ -6238,10 +5761,10 @@ class PageInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resultPerPage != null) 'resultPerPage': resultPerPage,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resultPerPage != null) 'resultPerPage': resultPerPage!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
       };
 }
 
@@ -6256,13 +5779,13 @@ class PageInfo {
 class Permission {
   /// A longer description of the Permissions resource, giving more details of
   /// what it affects.
-  core.String description;
+  core.String? description;
 
   /// The name of the permission.
-  core.String name;
+  core.String? name;
 
   /// An opaque string uniquely identifying the permission.
-  core.String permissionId;
+  core.String? permissionId;
 
   Permission();
 
@@ -6278,10 +5801,10 @@ class Permission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (name != null) 'name': name,
-        if (permissionId != null) 'permissionId': permissionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (permissionId != null) 'permissionId': permissionId!,
       };
 }
 
@@ -6298,7 +5821,7 @@ class Policy {
   /// - "never" : Apps are never auto-updated.
   /// - "wifiOnly" : Apps are auto-updated over WiFi only.
   /// - "always" : Apps are auto-updated at any time. Data charges may apply.
-  core.String autoUpdatePolicy;
+  core.String? autoUpdatePolicy;
 
   /// Whether the device reports app states to the EMM.
   ///
@@ -6307,11 +5830,11 @@ class Policy {
   /// - "deviceReportPolicyUnspecified" : The device report policy is not set.
   /// - "deviceReportDisabled" : Device reports are disabled.
   /// - "deviceReportEnabled" : Device reports are enabled.
-  core.String deviceReportPolicy;
+  core.String? deviceReportPolicy;
 
   /// The maintenance window defining when apps running in the foreground should
   /// be updated.
-  MaintenanceWindow maintenanceWindow;
+  MaintenanceWindow? maintenanceWindow;
 
   /// The availability granted to the device for the specified products.
   ///
@@ -6329,13 +5852,13 @@ class Policy {
   /// AVAILABLE in the product policy are available.
   /// - "all" : All products are available except those explicitly marked as
   /// unavailable in the product availability policy.
-  core.String productAvailabilityPolicy;
+  core.String? productAvailabilityPolicy;
 
   /// The list of product policies.
   ///
   /// The productAvailabilityPolicy needs to be set to WHITELIST or ALL for the
   /// product policies to be applied.
-  core.List<ProductPolicy> productPolicy;
+  core.List<ProductPolicy>? productPolicy;
 
   Policy();
 
@@ -6362,17 +5885,17 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (autoUpdatePolicy != null) 'autoUpdatePolicy': autoUpdatePolicy,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (autoUpdatePolicy != null) 'autoUpdatePolicy': autoUpdatePolicy!,
         if (deviceReportPolicy != null)
-          'deviceReportPolicy': deviceReportPolicy,
+          'deviceReportPolicy': deviceReportPolicy!,
         if (maintenanceWindow != null)
-          'maintenanceWindow': maintenanceWindow.toJson(),
+          'maintenanceWindow': maintenanceWindow!.toJson(),
         if (productAvailabilityPolicy != null)
-          'productAvailabilityPolicy': productAvailabilityPolicy,
+          'productAvailabilityPolicy': productAvailabilityPolicy!,
         if (productPolicy != null)
           'productPolicy':
-              productPolicy.map((value) => value.toJson()).toList(),
+              productPolicy!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6386,22 +5909,22 @@ class Policy {
 /// EMM user interface.
 class Product {
   /// The tracks visible to the enterprise.
-  core.List<TrackInfo> appTracks;
+  core.List<TrackInfo>? appTracks;
 
   /// App versions currently available for this product.
-  core.List<AppVersion> appVersion;
+  core.List<AppVersion>? appVersion;
 
   /// The name of the author of the product (for example, the app developer).
-  core.String authorName;
+  core.String? authorName;
 
   /// The countries which this app is available in.
-  core.List<core.String> availableCountries;
+  core.List<core.String>? availableCountries;
 
   /// Deprecated, use appTracks instead.
-  core.List<core.String> availableTracks;
+  core.List<core.String>? availableTracks;
 
   /// The app category (e.g. RACING, SOCIAL, etc.)
-  core.String category;
+  core.String? category;
 
   /// The content rating for this app.
   /// Possible string values are:
@@ -6410,13 +5933,13 @@ class Product {
   /// - "preTeen"
   /// - "teen"
   /// - "mature"
-  core.String contentRating;
+  core.String? contentRating;
 
   /// The localized promotional description, if available.
-  core.String description;
+  core.String? description;
 
   /// A link to the (consumer) Google Play details page for the product.
-  core.String detailsUrl;
+  core.String? detailsUrl;
 
   /// How and to whom the package is made available.
   ///
@@ -6430,30 +5953,30 @@ class Product {
   /// - "publicGoogleHosted"
   /// - "privateGoogleHosted"
   /// - "privateSelfHosted"
-  core.String distributionChannel;
+  core.String? distributionChannel;
 
   /// Noteworthy features (if any) of this product.
-  core.List<core.String> features;
+  core.List<core.String>? features;
 
   /// A link to an image that can be used as an icon for the product.
   ///
   /// This image is suitable for use at up to 512px x 512px.
-  core.String iconUrl;
+  core.String? iconUrl;
 
   /// The approximate time (within 7 days) the app was last published, expressed
   /// in milliseconds since epoch.
-  core.String lastUpdatedTimestampMillis;
+  core.String? lastUpdatedTimestampMillis;
 
   /// The minimum Android SDK necessary to run the app.
-  core.int minAndroidSdkVersion;
+  core.int? minAndroidSdkVersion;
 
   /// A list of permissions required by the app.
-  core.List<ProductPermission> permissions;
+  core.List<ProductPermission>? permissions;
 
   /// A string of the form *app:<package name>*.
   ///
   /// For example, app:com.google.android.gm represents the Gmail app.
-  core.String productId;
+  core.String? productId;
 
   /// Whether this product is free, free with in-app purchases, or paid.
   ///
@@ -6467,31 +5990,31 @@ class Product {
   /// - "freeWithInAppPurchase" : The product is free, but offers in-app
   /// purchases.
   /// - "paid" : The product is paid.
-  core.String productPricing;
+  core.String? productPricing;
 
   /// A description of the recent changes made to the app.
-  core.String recentChanges;
+  core.String? recentChanges;
 
   /// Deprecated.
-  core.bool requiresContainerApp;
+  core.bool? requiresContainerApp;
 
   /// A list of screenshot links representing the app.
-  core.List<core.String> screenshotUrls;
+  core.List<core.String>? screenshotUrls;
 
   /// The certificate used to sign this product.
-  ProductSigningCertificate signingCertificate;
+  ProductSigningCertificate? signingCertificate;
 
   /// A link to a smaller image that can be used as an icon for the product.
   ///
   /// This image is suitable for use at up to 128px x 128px.
-  core.String smallIconUrl;
+  core.String? smallIconUrl;
 
   /// The name of the product.
-  core.String title;
+  core.String? title;
 
   /// A link to the managed Google Play details page for the product, for use by
   /// an Enterprise admin.
-  core.String workDetailsUrl;
+  core.String? workDetailsUrl;
 
   Product();
 
@@ -6589,40 +6112,40 @@ class Product {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (appTracks != null)
-          'appTracks': appTracks.map((value) => value.toJson()).toList(),
+          'appTracks': appTracks!.map((value) => value.toJson()).toList(),
         if (appVersion != null)
-          'appVersion': appVersion.map((value) => value.toJson()).toList(),
-        if (authorName != null) 'authorName': authorName,
+          'appVersion': appVersion!.map((value) => value.toJson()).toList(),
+        if (authorName != null) 'authorName': authorName!,
         if (availableCountries != null)
-          'availableCountries': availableCountries,
-        if (availableTracks != null) 'availableTracks': availableTracks,
-        if (category != null) 'category': category,
-        if (contentRating != null) 'contentRating': contentRating,
-        if (description != null) 'description': description,
-        if (detailsUrl != null) 'detailsUrl': detailsUrl,
+          'availableCountries': availableCountries!,
+        if (availableTracks != null) 'availableTracks': availableTracks!,
+        if (category != null) 'category': category!,
+        if (contentRating != null) 'contentRating': contentRating!,
+        if (description != null) 'description': description!,
+        if (detailsUrl != null) 'detailsUrl': detailsUrl!,
         if (distributionChannel != null)
-          'distributionChannel': distributionChannel,
-        if (features != null) 'features': features,
-        if (iconUrl != null) 'iconUrl': iconUrl,
+          'distributionChannel': distributionChannel!,
+        if (features != null) 'features': features!,
+        if (iconUrl != null) 'iconUrl': iconUrl!,
         if (lastUpdatedTimestampMillis != null)
-          'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis,
+          'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis!,
         if (minAndroidSdkVersion != null)
-          'minAndroidSdkVersion': minAndroidSdkVersion,
+          'minAndroidSdkVersion': minAndroidSdkVersion!,
         if (permissions != null)
-          'permissions': permissions.map((value) => value.toJson()).toList(),
-        if (productId != null) 'productId': productId,
-        if (productPricing != null) 'productPricing': productPricing,
-        if (recentChanges != null) 'recentChanges': recentChanges,
+          'permissions': permissions!.map((value) => value.toJson()).toList(),
+        if (productId != null) 'productId': productId!,
+        if (productPricing != null) 'productPricing': productPricing!,
+        if (recentChanges != null) 'recentChanges': recentChanges!,
         if (requiresContainerApp != null)
-          'requiresContainerApp': requiresContainerApp,
-        if (screenshotUrls != null) 'screenshotUrls': screenshotUrls,
+          'requiresContainerApp': requiresContainerApp!,
+        if (screenshotUrls != null) 'screenshotUrls': screenshotUrls!,
         if (signingCertificate != null)
-          'signingCertificate': signingCertificate.toJson(),
-        if (smallIconUrl != null) 'smallIconUrl': smallIconUrl,
-        if (title != null) 'title': title,
-        if (workDetailsUrl != null) 'workDetailsUrl': workDetailsUrl,
+          'signingCertificate': signingCertificate!.toJson(),
+        if (smallIconUrl != null) 'smallIconUrl': smallIconUrl!,
+        if (title != null) 'title': title!,
+        if (workDetailsUrl != null) 'workDetailsUrl': workDetailsUrl!,
       };
 }
 
@@ -6635,13 +6158,13 @@ class ProductApprovalEvent {
   /// - "unknown" : Conveys no information.
   /// - "approved" : The product was approved.
   /// - "unapproved" : The product was unapproved.
-  core.String approved;
+  core.String? approved;
 
   /// The id of the product (e.g. "app:com.google.android.gm") for which the
   /// approval status has changed.
   ///
   /// This field will always be present.
-  core.String productId;
+  core.String? productId;
 
   ProductApprovalEvent();
 
@@ -6654,9 +6177,9 @@ class ProductApprovalEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (approved != null) 'approved': approved,
-        if (productId != null) 'productId': productId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (approved != null) 'approved': approved!,
+        if (productId != null) 'productId': productId!,
       };
 }
 
@@ -6671,13 +6194,13 @@ class ProductAvailabilityChangeEvent {
   /// Google Play.
   /// - "removed" : The product was removed from Google Play.
   /// - "unpublished" : The product was unpublished by the developer.
-  core.String availabilityStatus;
+  core.String? availabilityStatus;
 
   /// The id of the product (e.g. "app:com.google.android.gm") for which the
   /// product availability changed.
   ///
   /// This field will always be present.
-  core.String productId;
+  core.String? productId;
 
   ProductAvailabilityChangeEvent();
 
@@ -6690,10 +6213,10 @@ class ProductAvailabilityChangeEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (availabilityStatus != null)
-          'availabilityStatus': availabilityStatus,
-        if (productId != null) 'productId': productId,
+          'availabilityStatus': availabilityStatus!,
+        if (productId != null) 'productId': productId!,
       };
 }
 
@@ -6705,14 +6228,14 @@ class ProductAvailabilityChangeEvent {
 /// set to indicate that permissions have been accepted.
 class ProductPermission {
   /// An opaque string uniquely identifying the permission.
-  core.String permissionId;
+  core.String? permissionId;
 
   /// Whether the permission has been accepted or not.
   /// Possible string values are:
   /// - "required" : The permission is required by the app but has not yet been
   /// accepted by the enterprise.
   /// - "accepted" : The permission has been accepted by the enterprise.
-  core.String state;
+  core.String? state;
 
   ProductPermission();
 
@@ -6725,9 +6248,9 @@ class ProductPermission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissionId != null) 'permissionId': permissionId,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissionId != null) 'permissionId': permissionId!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -6735,11 +6258,11 @@ class ProductPermission {
 /// they have been accepted by the enterprise.
 class ProductPermissions {
   /// The permissions required by the app.
-  core.List<ProductPermission> permission;
+  core.List<ProductPermission>? permission;
 
   /// The ID of the app that the permissions relate to, e.g.
   /// "app:com.google.android.gm".
-  core.String productId;
+  core.String? productId;
 
   ProductPermissions();
 
@@ -6755,17 +6278,17 @@ class ProductPermissions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (permission != null)
-          'permission': permission.map((value) => value.toJson()).toList(),
-        if (productId != null) 'productId': productId,
+          'permission': permission!.map((value) => value.toJson()).toList(),
+        if (productId != null) 'productId': productId!,
       };
 }
 
 /// The policy for a product.
 class ProductPolicy {
   /// The auto-install policy for the product.
-  AutoInstallPolicy autoInstallPolicy;
+  AutoInstallPolicy? autoInstallPolicy;
 
   /// The auto-update mode for the product.
   /// Possible string values are:
@@ -6789,27 +6312,27 @@ class ProductPolicy {
   /// - "autoUpdateHighPriority" : The app is updated as soon as possible. No
   /// constraints are applied. The device is notified immediately about a new
   /// app update after it is published by the developer.
-  core.String autoUpdateMode;
+  core.String? autoUpdateMode;
 
   /// The managed configuration for the product.
-  ManagedConfiguration managedConfiguration;
+  ManagedConfiguration? managedConfiguration;
 
   /// The ID of the product.
   ///
   /// For example, "app:com.google.android.gm".
-  core.String productId;
+  core.String? productId;
 
   /// Grants the device visibility to the specified product release track(s),
   /// identified by trackIds.
   ///
   /// The list of release tracks of a product can be obtained by calling
   /// Products.Get.
-  core.List<core.String> trackIds;
+  core.List<core.String>? trackIds;
 
   /// Use trackIds instead.
   ///
   /// Deprecated.
-  core.List<core.String> tracks;
+  core.List<core.String>? tracks;
 
   ProductPolicy();
 
@@ -6840,22 +6363,22 @@ class ProductPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (autoInstallPolicy != null)
-          'autoInstallPolicy': autoInstallPolicy.toJson(),
-        if (autoUpdateMode != null) 'autoUpdateMode': autoUpdateMode,
+          'autoInstallPolicy': autoInstallPolicy!.toJson(),
+        if (autoUpdateMode != null) 'autoUpdateMode': autoUpdateMode!,
         if (managedConfiguration != null)
-          'managedConfiguration': managedConfiguration.toJson(),
-        if (productId != null) 'productId': productId,
-        if (trackIds != null) 'trackIds': trackIds,
-        if (tracks != null) 'tracks': tracks,
+          'managedConfiguration': managedConfiguration!.toJson(),
+        if (productId != null) 'productId': productId!,
+        if (trackIds != null) 'trackIds': trackIds!,
+        if (tracks != null) 'tracks': tracks!,
       };
 }
 
 /// A set of products.
 class ProductSet {
   /// The list of product IDs making up the set of products.
-  core.List<core.String> productId;
+  core.List<core.String>? productId;
 
   /// The interpretation of this product set.
   ///
@@ -6879,7 +6402,7 @@ class ProductSet {
   /// - "allApproved" : This product set represents all approved products. For
   /// Android app it represents only "production" track. (The value of the
   /// product_id field is therefore ignored).
-  core.String productSetBehavior;
+  core.String? productSetBehavior;
 
   /// Additional list of product IDs making up the product set.
   ///
@@ -6888,7 +6411,7 @@ class ProductSet {
   /// ProductVisibility and its fields for more information. Specifying the same
   /// product ID both here and in the productId array is not allowed and it will
   /// result in an error.
-  core.List<ProductVisibility> productVisibility;
+  core.List<ProductVisibility>? productVisibility;
 
   ProductSet();
 
@@ -6909,13 +6432,13 @@ class ProductSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (productId != null) 'productId': productId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (productId != null) 'productId': productId!,
         if (productSetBehavior != null)
-          'productSetBehavior': productSetBehavior,
+          'productSetBehavior': productSetBehavior!,
         if (productVisibility != null)
           'productVisibility':
-              productVisibility.map((value) => value.toJson()).toList(),
+              productVisibility!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6924,10 +6447,10 @@ class ProductSigningCertificate {
   ///
   /// (This field is deprecated in favor of SHA2-256. It should not be used and
   /// may be removed at any time.)
-  core.String certificateHashSha1;
+  core.String? certificateHashSha1;
 
   /// The base64 urlsafe encoded SHA2-256 hash of the certificate.
-  core.String certificateHashSha256;
+  core.String? certificateHashSha256;
 
   ProductSigningCertificate();
 
@@ -6940,11 +6463,11 @@ class ProductSigningCertificate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (certificateHashSha1 != null)
-          'certificateHashSha1': certificateHashSha1,
+          'certificateHashSha1': certificateHashSha1!,
         if (certificateHashSha256 != null)
-          'certificateHashSha256': certificateHashSha256,
+          'certificateHashSha256': certificateHashSha256!,
       };
 }
 
@@ -6953,16 +6476,16 @@ class ProductVisibility {
   /// The product ID to make visible to the user.
   ///
   /// Required for each item in the productVisibility list.
-  core.String productId;
+  core.String? productId;
 
   /// Grants the user visibility to the specified product track(s), identified
   /// by trackIds.
-  core.List<core.String> trackIds;
+  core.List<core.String>? trackIds;
 
   /// Use trackIds instead.
   ///
   /// Deprecated.
-  core.List<core.String> tracks;
+  core.List<core.String>? tracks;
 
   ProductVisibility();
 
@@ -6982,10 +6505,10 @@ class ProductVisibility {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (productId != null) 'productId': productId,
-        if (trackIds != null) 'trackIds': trackIds,
-        if (tracks != null) 'tracks': tracks,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (productId != null) 'productId': productId!,
+        if (trackIds != null) 'trackIds': trackIds!,
+        if (tracks != null) 'tracks': tracks!,
       };
 }
 
@@ -6997,7 +6520,7 @@ class ProductsApproveRequest {
   /// URL may only display new permissions from an update after the product was
   /// approved, or not include new permissions if the product was updated since
   /// the URL was generated.
-  ApprovalUrlInfo approvalUrlInfo;
+  ApprovalUrlInfo? approvalUrlInfo;
 
   /// Sets how new permission requests for the product are handled.
   ///
@@ -7013,7 +6536,7 @@ class ProductsApproveRequest {
   /// until the additional permissions are approved.
   /// - "allPermissions" : All current and future permissions the app requires
   /// are automatically approved.
-  core.String approvedPermissions;
+  core.String? approvedPermissions;
 
   ProductsApproveRequest();
 
@@ -7027,11 +6550,11 @@ class ProductsApproveRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (approvalUrlInfo != null)
-          'approvalUrlInfo': approvalUrlInfo.toJson(),
+          'approvalUrlInfo': approvalUrlInfo!.toJson(),
         if (approvedPermissions != null)
-          'approvedPermissions': approvedPermissions,
+          'approvedPermissions': approvedPermissions!,
       };
 }
 
@@ -7046,7 +6569,7 @@ class ProductsGenerateApprovalUrlResponse {
   /// generated if that product has added permissions since it was last
   /// approved, and the URL will only display those new permissions that have
   /// not yet been accepted.
-  core.String url;
+  core.String? url;
 
   ProductsGenerateApprovalUrlResponse();
 
@@ -7056,21 +6579,21 @@ class ProductsGenerateApprovalUrlResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (url != null) 'url': url!,
       };
 }
 
 class ProductsListResponse {
   /// General pagination information.
-  PageInfo pageInfo;
+  PageInfo? pageInfo;
 
   /// Information about a product (e.g. an app) in the Google Play store, for
   /// display to an enterprise admin.
-  core.List<Product> product;
+  core.List<Product>? product;
 
   /// Pagination information for token pagination.
-  TokenPagination tokenPagination;
+  TokenPagination? tokenPagination;
 
   ProductsListResponse();
 
@@ -7091,12 +6614,12 @@ class ProductsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
         if (product != null)
-          'product': product.map((value) => value.toJson()).toList(),
+          'product': product!.map((value) => value.toJson()).toList(),
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
+          'tokenPagination': tokenPagination!.toJson(),
       };
 }
 
@@ -7104,12 +6627,12 @@ class ProductsListResponse {
 /// used to authenticate as the service account.
 class ServiceAccount {
   /// Credentials that can be used to authenticate as this ServiceAccount.
-  ServiceAccountKey key;
+  ServiceAccountKey? key;
 
   /// The account name of the service account, in the form of an email address.
   ///
   /// Assigned by the server.
-  core.String name;
+  core.String? name;
 
   ServiceAccount();
 
@@ -7123,9 +6646,9 @@ class ServiceAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key.toJson(),
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!.toJson(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -7135,19 +6658,19 @@ class ServiceAccountKey {
   ///
   /// This is only populated when the ServiceAccountKey is created, and is not
   /// stored by Google.
-  core.String data;
+  core.String? data;
 
   /// An opaque, unique identifier for this ServiceAccountKey.
   ///
   /// Assigned by the server.
-  core.String id;
+  core.String? id;
 
   /// Public key data for the credentials file.
   ///
   /// This is an X.509 cert. If you are using the googleCredentials key type,
   /// this is identical to the cert that can be retrieved by using the X.509
   /// cert url inside of the credentials file.
-  core.String publicData;
+  core.String? publicData;
 
   /// The file format of the generated key data.
   /// Possible string values are:
@@ -7157,7 +6680,7 @@ class ServiceAccountKey {
   /// https://tools.ietf.org/html/rfc7292. The data for keys of this type are
   /// base64 encoded according to RFC 4648 Section 4. See
   /// http://tools.ietf.org/html/rfc4648#section-4.
-  core.String type;
+  core.String? type;
 
   ServiceAccountKey();
 
@@ -7176,17 +6699,17 @@ class ServiceAccountKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data,
-        if (id != null) 'id': id,
-        if (publicData != null) 'publicData': publicData,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!,
+        if (id != null) 'id': id!,
+        if (publicData != null) 'publicData': publicData!,
+        if (type != null) 'type': type!,
       };
 }
 
 class ServiceAccountKeysListResponse {
   /// The service account credentials.
-  core.List<ServiceAccountKey> serviceAccountKey;
+  core.List<ServiceAccountKey>? serviceAccountKey;
 
   ServiceAccountKeysListResponse();
 
@@ -7199,10 +6722,10 @@ class ServiceAccountKeysListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (serviceAccountKey != null)
           'serviceAccountKey':
-              serviceAccountKey.map((value) => value.toJson()).toList(),
+              serviceAccountKey!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7211,15 +6734,15 @@ class ServiceAccountKeysListResponse {
 class SignupInfo {
   /// An opaque token that will be required, along with the Enterprise Token,
   /// for obtaining the enterprise resource from CompleteSignup.
-  core.String completionToken;
+  core.String? completionToken;
 
   /// Deprecated.
-  core.String kind;
+  core.String? kind;
 
   /// A URL under which the Admin can sign up for an enterprise.
   ///
   /// The page pointed to cannot be rendered in an iframe.
-  core.String url;
+  core.String? url;
 
   SignupInfo();
 
@@ -7235,10 +6758,10 @@ class SignupInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (completionToken != null) 'completionToken': completionToken,
-        if (kind != null) 'kind': kind,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (completionToken != null) 'completionToken': completionToken!,
+        if (kind != null) 'kind': kind!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -7248,14 +6771,14 @@ class StoreCluster {
   /// Unique ID of this cluster.
   ///
   /// Assigned by the server. Immutable once assigned.
-  core.String id;
+  core.String? id;
 
   /// Ordered list of localized strings giving the name of this page.
   ///
   /// The text displayed is the one that best matches the user locale, or the
   /// first entry if there is no good match. There needs to be at least one
   /// entry.
-  core.List<LocalizedText> name;
+  core.List<LocalizedText>? name;
 
   /// String (US-ASCII only) used to determine order of this cluster within the
   /// parent page's elements.
@@ -7265,12 +6788,12 @@ class StoreCluster {
   /// undefined. The value of this field is never visible to a user, it is used
   /// solely for the purpose of defining an ordering. Maximum length is 256
   /// characters.
-  core.String orderInPage;
+  core.String? orderInPage;
 
   /// List of products in the order they are displayed in the cluster.
   ///
   /// There should not be duplicates within a cluster.
-  core.List<core.String> productId;
+  core.List<core.String>? productId;
 
   StoreCluster();
 
@@ -7294,11 +6817,11 @@ class StoreCluster {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (name != null) 'name': name.map((value) => value.toJson()).toList(),
-        if (orderInPage != null) 'orderInPage': orderInPage,
-        if (productId != null) 'productId': productId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!.map((value) => value.toJson()).toList(),
+        if (orderInPage != null) 'orderInPage': orderInPage!,
+        if (productId != null) 'productId': productId!,
       };
 }
 
@@ -7310,7 +6833,7 @@ class StoreLayout {
   /// The homepage is the first page shown in the managed Google Play Store. Not
   /// specifying a homepage is equivalent to setting the store layout type to
   /// "basic".
-  core.String homepageId;
+  core.String? homepageId;
 
   /// The store layout type.
   ///
@@ -7321,7 +6844,7 @@ class StoreLayout {
   /// - "unknown"
   /// - "basic"
   /// - "custom"
-  core.String storeLayoutType;
+  core.String? storeLayoutType;
 
   StoreLayout();
 
@@ -7334,15 +6857,15 @@ class StoreLayout {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (homepageId != null) 'homepageId': homepageId,
-        if (storeLayoutType != null) 'storeLayoutType': storeLayoutType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (homepageId != null) 'homepageId': homepageId!,
+        if (storeLayoutType != null) 'storeLayoutType': storeLayoutType!,
       };
 }
 
 class StoreLayoutClustersListResponse {
   /// A store cluster of an enterprise.
-  core.List<StoreCluster> cluster;
+  core.List<StoreCluster>? cluster;
 
   StoreLayoutClustersListResponse();
 
@@ -7355,15 +6878,15 @@ class StoreLayoutClustersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cluster != null)
-          'cluster': cluster.map((value) => value.toJson()).toList(),
+          'cluster': cluster!.map((value) => value.toJson()).toList(),
       };
 }
 
 class StoreLayoutPagesListResponse {
   /// A store page of an enterprise.
-  core.List<StorePage> page;
+  core.List<StorePage>? page;
 
   StoreLayoutPagesListResponse();
 
@@ -7376,8 +6899,8 @@ class StoreLayoutPagesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (page != null) 'page': page.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (page != null) 'page': page!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7389,21 +6912,21 @@ class StorePage {
   /// Unique ID of this page.
   ///
   /// Assigned by the server. Immutable once assigned.
-  core.String id;
+  core.String? id;
 
   /// Ordered list of pages a user should be able to reach from this page.
   ///
   /// The list can't include this page. It is recommended that the basic pages
   /// are created first, before adding the links between pages. The API doesn't
   /// verify that the pages exist or the pages are reachable.
-  core.List<core.String> link;
+  core.List<core.String>? link;
 
   /// Ordered list of localized strings giving the name of this page.
   ///
   /// The text displayed is the one that best matches the user locale, or the
   /// first entry if there is no good match. There needs to be at least one
   /// entry.
-  core.List<LocalizedText> name;
+  core.List<LocalizedText>? name;
 
   StorePage();
 
@@ -7424,10 +6947,10 @@ class StorePage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (link != null) 'link': link,
-        if (name != null) 'name': name.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (link != null) 'link': link!,
+        if (name != null) 'name': name!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7445,8 +6968,8 @@ class TokenPagination {
   /// Tokens to pass to the standard list field 'page_token'.
   ///
   /// Whenever available, tokens are preferred over manipulating start_index.
-  core.String nextPageToken;
-  core.String previousPageToken;
+  core.String? nextPageToken;
+  core.String? previousPageToken;
 
   TokenPagination();
 
@@ -7459,9 +6982,9 @@ class TokenPagination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (previousPageToken != null) 'previousPageToken': previousPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (previousPageToken != null) 'previousPageToken': previousPageToken!,
       };
 }
 
@@ -7470,13 +6993,13 @@ class TrackInfo {
   /// A modifiable name for a track.
   ///
   /// This is the visible name in the play developer console.
-  core.String trackAlias;
+  core.String? trackAlias;
 
   /// Unmodifiable, unique track identifier.
   ///
   /// This identifier is the releaseTrackId in the url of the play developer
   /// console page that displays the track information.
-  core.String trackId;
+  core.String? trackId;
 
   TrackInfo();
 
@@ -7489,9 +7012,9 @@ class TrackInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (trackAlias != null) 'trackAlias': trackAlias,
-        if (trackId != null) 'trackId': trackId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (trackAlias != null) 'trackAlias': trackAlias!,
+        if (trackId != null) 'trackId': trackId!,
       };
 }
 
@@ -7512,7 +7035,7 @@ class User {
   /// Do not use personally identifiable information (PII) for this property.
   /// Must always be set for EMM-managed users. Not set for Google-managed
   /// users.
-  core.String accountIdentifier;
+  core.String? accountIdentifier;
 
   /// The type of account that this user represents.
   ///
@@ -7523,7 +7046,7 @@ class User {
   /// Possible string values are:
   /// - "deviceAccount"
   /// - "userAccount"
-  core.String accountType;
+  core.String? accountType;
 
   /// The name that will appear in user interfaces.
   ///
@@ -7531,10 +7054,10 @@ class User {
   /// do set this property, use something generic about the organization (such
   /// as "Example, Inc.") or your name (as EMM). Not used for Google-managed
   /// user accounts. @mutable androidenterprise.users.update
-  core.String displayName;
+  core.String? displayName;
 
   /// The unique ID for the user.
-  core.String id;
+  core.String? id;
 
   /// The entity that manages the user.
   ///
@@ -7544,13 +7067,13 @@ class User {
   /// Possible string values are:
   /// - "googleManaged"
   /// - "emmManaged"
-  core.String managementType;
+  core.String? managementType;
 
   /// The user's primary email address, for example, "jsmith@example.com".
   ///
   /// Will always be set for Google managed users and not set for EMM managed
   /// users.
-  core.String primaryEmail;
+  core.String? primaryEmail;
 
   User();
 
@@ -7575,19 +7098,19 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountIdentifier != null) 'accountIdentifier': accountIdentifier,
-        if (accountType != null) 'accountType': accountType,
-        if (displayName != null) 'displayName': displayName,
-        if (id != null) 'id': id,
-        if (managementType != null) 'managementType': managementType,
-        if (primaryEmail != null) 'primaryEmail': primaryEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountIdentifier != null) 'accountIdentifier': accountIdentifier!,
+        if (accountType != null) 'accountType': accountType!,
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
+        if (managementType != null) 'managementType': managementType!,
+        if (primaryEmail != null) 'primaryEmail': primaryEmail!,
       };
 }
 
 class UsersListResponse {
   /// A user of an enterprise.
-  core.List<User> user;
+  core.List<User>? user;
 
   UsersListResponse();
 
@@ -7600,8 +7123,8 @@ class UsersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (user != null) 'user': user.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (user != null) 'user': user!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7613,10 +7136,10 @@ class UsersListResponse {
 /// only.
 class VariableSet {
   /// The placeholder string; defined by EMM.
-  core.String placeholder;
+  core.String? placeholder;
 
   /// The value of the placeholder, specific to the user.
-  core.String userValue;
+  core.String? userValue;
 
   VariableSet();
 
@@ -7629,9 +7152,9 @@ class VariableSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (placeholder != null) 'placeholder': placeholder,
-        if (userValue != null) 'userValue': userValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (placeholder != null) 'placeholder': placeholder!,
+        if (userValue != null) 'userValue': userValue!,
       };
 }
 
@@ -7661,38 +7184,38 @@ class WebApp {
   /// controls. The browser UI elements, page URL, system status bar and back
   /// button are not visible, and the web app takes up the entirety of the
   /// available display area.
-  core.String displayMode;
+  core.String? displayMode;
 
   /// A list of icons representing this website.
   ///
   /// If absent, a default icon (for create) or the current icon (for update)
   /// will be used.
-  core.List<WebAppIcon> icons;
+  core.List<WebAppIcon>? icons;
 
   /// A flag whether the app has been published to the Play store yet.
-  core.bool isPublished;
+  core.bool? isPublished;
 
   /// The start URL, i.e. the URL that should load when the user opens the
   /// application.
-  core.String startUrl;
+  core.String? startUrl;
 
   /// The title of the web app as displayed to the user (e.g., amongst a list of
   /// other applications, or as a label for an icon).
-  core.String title;
+  core.String? title;
 
   /// The current version of the app.
   ///
   /// Note that the version can automatically increase during the lifetime of
   /// the web app, while Google does internal housekeeping to keep the web app
   /// up-to-date.
-  core.String versionCode;
+  core.String? versionCode;
 
   /// The ID of the application.
   ///
   /// A string of the form "app:<package name>" where the package name always
   /// starts with the prefix "com.google.enterprise.webapp." followed by a
   /// random id.
-  core.String webAppId;
+  core.String? webAppId;
 
   WebApp();
 
@@ -7723,15 +7246,15 @@ class WebApp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayMode != null) 'displayMode': displayMode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayMode != null) 'displayMode': displayMode!,
         if (icons != null)
-          'icons': icons.map((value) => value.toJson()).toList(),
-        if (isPublished != null) 'isPublished': isPublished,
-        if (startUrl != null) 'startUrl': startUrl,
-        if (title != null) 'title': title,
-        if (versionCode != null) 'versionCode': versionCode,
-        if (webAppId != null) 'webAppId': webAppId,
+          'icons': icons!.map((value) => value.toJson()).toList(),
+        if (isPublished != null) 'isPublished': isPublished!,
+        if (startUrl != null) 'startUrl': startUrl!,
+        if (title != null) 'title': title!,
+        if (versionCode != null) 'versionCode': versionCode!,
+        if (webAppId != null) 'webAppId': webAppId!,
       };
 }
 
@@ -7742,7 +7265,7 @@ class WebAppIcon {
   ///
   /// - The image type can be png or jpg. - The image should ideally be square.
   /// - The image should ideally have a size of 512x512.
-  core.String imageData;
+  core.String? imageData;
 
   WebAppIcon();
 
@@ -7752,14 +7275,14 @@ class WebAppIcon {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageData != null) 'imageData': imageData,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageData != null) 'imageData': imageData!,
       };
 }
 
 class WebAppsListResponse {
   /// The manifest describing a web app.
-  core.List<WebApp> webApp;
+  core.List<WebApp>? webApp;
 
   WebAppsListResponse();
 
@@ -7772,8 +7295,8 @@ class WebAppsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (webApp != null)
-          'webApp': webApp.map((value) => value.toJson()).toList(),
+          'webApp': webApp!.map((value) => value.toJson()).toList(),
       };
 }

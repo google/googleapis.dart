@@ -104,13 +104,9 @@ class OperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -150,11 +146,8 @@ class OperationsResource {
   /// call, this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -191,11 +184,8 @@ class OperationsResource {
   /// call, this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -242,11 +232,11 @@ class OperationsResource {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListOperationsResponse> list({
-    core.String filter,
-    core.String name,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? name,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
@@ -301,13 +291,9 @@ class ServicesResource {
   async.Future<Operation> batchEnable(
     BatchEnableServicesRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -353,12 +339,9 @@ class ServicesResource {
   /// call, this method will complete with the same error.
   async.Future<BatchGetServicesResponse> batchGet(
     core.String parent, {
-    core.List<core.String> names,
-    core.String $fields,
+    core.List<core.String>? names,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (names != null) 'names': names,
       if ($fields != null) 'fields': [$fields],
@@ -408,13 +391,9 @@ class ServicesResource {
   async.Future<Operation> disable(
     DisableServiceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -458,13 +437,9 @@ class ServicesResource {
   async.Future<Operation> enable(
     EnableServiceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -503,11 +478,8 @@ class ServicesResource {
   /// call, this method will complete with the same error.
   async.Future<GoogleApiServiceusageV1Service> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -562,14 +534,11 @@ class ServicesResource {
   /// call, this method will complete with the same error.
   async.Future<ListServicesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -595,7 +564,7 @@ class AdminQuotaPolicy {
   /// The cloud resource container at which the quota policy is created.
   ///
   /// The format is {container_type}/{container_number}
-  core.String container;
+  core.String? container;
 
   /// If this map is nonempty, then this policy applies only to specific values
   /// for dimensions defined in the limit unit.
@@ -606,31 +575,31 @@ class AdminQuotaPolicy {
   /// following restrictions: * If "region" appears as a key, its value must be
   /// a valid Cloud region. * If "zone" appears as a key, its value must be a
   /// valid Cloud zone. * Keys other than "region" or "zone" are not valid.
-  core.Map<core.String, core.String> dimensions;
+  core.Map<core.String, core.String>? dimensions;
 
   /// The name of the metric to which this policy applies.
   ///
   /// An example name would be: `compute.googleapis.com/cpus`
-  core.String metric;
+  core.String? metric;
 
   /// The resource name of the policy.
   ///
   /// This name is generated by the server when the policy is created. Example
   /// names would be:
   /// `organizations/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/adminQuotaPolicies/4a3f2c1d`
-  core.String name;
+  core.String? name;
 
   /// The quota policy value.
   ///
   /// Can be any nonnegative integer, or -1 (unlimited quota).
-  core.String policyValue;
+  core.String? policyValue;
 
   /// The limit unit of the limit to which this policy applies.
   ///
   /// An example unit would be: `1/{project}/{region}` Note that `{project}` and
   /// `{region}` are not placeholders in this example; the literal characters
   /// `{` and `}` occur in the string.
-  core.String unit;
+  core.String? unit;
 
   AdminQuotaPolicy();
 
@@ -662,13 +631,13 @@ class AdminQuotaPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (container != null) 'container': container,
-        if (dimensions != null) 'dimensions': dimensions,
-        if (metric != null) 'metric': metric,
-        if (name != null) 'name': name,
-        if (policyValue != null) 'policyValue': policyValue,
-        if (unit != null) 'unit': unit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (container != null) 'container': container!,
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (metric != null) 'metric': metric!,
+        if (name != null) 'name': name!,
+        if (policyValue != null) 'policyValue': policyValue!,
+        if (unit != null) 'unit': unit!,
       };
 }
 
@@ -683,29 +652,29 @@ class AdminQuotaPolicy {
 /// https://cloud.google.com/apis/design/glossary for detailed terminology.
 class Api {
   /// The methods of this interface, in unspecified order.
-  core.List<Method> methods;
+  core.List<Method>? methods;
 
   /// Included interfaces.
   ///
   /// See Mixin.
-  core.List<Mixin> mixins;
+  core.List<Mixin>? mixins;
 
   /// The fully qualified name of this interface, including package name
   /// followed by the interface's simple name.
-  core.String name;
+  core.String? name;
 
   /// Any metadata attached to the interface.
-  core.List<Option> options;
+  core.List<Option>? options;
 
   /// Source context for the protocol buffer service represented by this
   /// message.
-  SourceContext sourceContext;
+  SourceContext? sourceContext;
 
   /// The source syntax of the service.
   /// Possible string values are:
   /// - "SYNTAX_PROTO2" : Syntax `proto2`.
   /// - "SYNTAX_PROTO3" : Syntax `proto3`.
-  core.String syntax;
+  core.String? syntax;
 
   /// A version string for this interface.
   ///
@@ -723,7 +692,7 @@ class Api {
   /// `google.feature.v1`. For major versions 0 and 1, the suffix can be
   /// omitted. Zero major versions must only be used for experimental, non-GA
   /// interfaces.
-  core.String version;
+  core.String? version;
 
   Api();
 
@@ -761,17 +730,17 @@ class Api {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (methods != null)
-          'methods': methods.map((value) => value.toJson()).toList(),
+          'methods': methods!.map((value) => value.toJson()).toList(),
         if (mixins != null)
-          'mixins': mixins.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+          'mixins': mixins!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
         if (options != null)
-          'options': options.map((value) => value.toJson()).toList(),
-        if (sourceContext != null) 'sourceContext': sourceContext.toJson(),
-        if (syntax != null) 'syntax': syntax,
-        if (version != null) 'version': version,
+          'options': options!.map((value) => value.toJson()).toList(),
+        if (sourceContext != null) 'sourceContext': sourceContext!.toJson(),
+        if (syntax != null) 'syntax': syntax!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -792,18 +761,18 @@ class AuthProvider {
   /// - https://library-example.googleapis.com/ Example: audiences:
   /// bookstore_android.apps.googleusercontent.com,
   /// bookstore_web.apps.googleusercontent.com
-  core.String audiences;
+  core.String? audiences;
 
   /// Redirect URL if JWT token is required but not present or is expired.
   ///
   /// Implement authorizationUrl of securityDefinitions in OpenAPI spec.
-  core.String authorizationUrl;
+  core.String? authorizationUrl;
 
   /// The unique identifier of the auth provider.
   ///
   /// It will be referred to by `AuthRequirement.provider_id`. Example:
   /// "bookstore_auth".
-  core.String id;
+  core.String? id;
 
   /// Identifies the principal that issued the JWT.
   ///
@@ -811,7 +780,7 @@ class AuthProvider {
   /// https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1
   /// Usually a URL or an email address. Example: https://securetoken.google.com
   /// Example: 1234567-compute@developer.gserviceaccount.com
-  core.String issuer;
+  core.String? issuer;
 
   /// URL of the provider's public key set to validate signature of the JWT.
   ///
@@ -822,7 +791,7 @@ class AuthProvider {
   /// of the issuer. - can be inferred from the email domain of the issuer (e.g.
   /// a Google service account). Example:
   /// https://www.googleapis.com/oauth2/v1/certs
-  core.String jwksUri;
+  core.String? jwksUri;
 
   /// Defines the locations to extract the JWT.
   ///
@@ -834,7 +803,7 @@ class AuthProvider {
   /// can be specified as followings: jwt_locations: - header: Authorization
   /// value_prefix: "Bearer " - header: x-goog-iap-jwt-assertion - query:
   /// access_token
-  core.List<JwtLocation> jwtLocations;
+  core.List<JwtLocation>? jwtLocations;
 
   AuthProvider();
 
@@ -862,14 +831,14 @@ class AuthProvider {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audiences != null) 'audiences': audiences,
-        if (authorizationUrl != null) 'authorizationUrl': authorizationUrl,
-        if (id != null) 'id': id,
-        if (issuer != null) 'issuer': issuer,
-        if (jwksUri != null) 'jwksUri': jwksUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audiences != null) 'audiences': audiences!,
+        if (authorizationUrl != null) 'authorizationUrl': authorizationUrl!,
+        if (id != null) 'id': id!,
+        if (issuer != null) 'issuer': issuer!,
+        if (jwksUri != null) 'jwksUri': jwksUri!,
         if (jwtLocations != null)
-          'jwtLocations': jwtLocations.map((value) => value.toJson()).toList(),
+          'jwtLocations': jwtLocations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -890,12 +859,12 @@ class AuthRequirement {
   /// "https://library-example.googleapis.com/google.example.library.v1.LibraryService".
   /// Example: audiences: bookstore_android.apps.googleusercontent.com,
   /// bookstore_web.apps.googleusercontent.com
-  core.String audiences;
+  core.String? audiences;
 
   /// id from authentication provider.
   ///
   /// Example: provider_id: bookstore_auth
-  core.String providerId;
+  core.String? providerId;
 
   AuthRequirement();
 
@@ -908,9 +877,9 @@ class AuthRequirement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audiences != null) 'audiences': audiences,
-        if (providerId != null) 'providerId': providerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audiences != null) 'audiences': audiences!,
+        if (providerId != null) 'providerId': providerId!,
       };
 }
 
@@ -923,12 +892,12 @@ class AuthRequirement {
 /// provider_id: google_calendar_auth
 class Authentication {
   /// Defines a set of authentication providers that a service supports.
-  core.List<AuthProvider> providers;
+  core.List<AuthProvider>? providers;
 
   /// A list of authentication rules that apply to individual API methods.
   ///
   /// **NOTE:** All service configuration rules follow "last one wins" order.
-  core.List<AuthenticationRule> rules;
+  core.List<AuthenticationRule>? rules;
 
   Authentication();
 
@@ -947,11 +916,11 @@ class Authentication {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (providers != null)
-          'providers': providers.map((value) => value.toJson()).toList(),
+          'providers': providers!.map((value) => value.toJson()).toList(),
         if (rules != null)
-          'rules': rules.map((value) => value.toJson()).toList(),
+          'rules': rules!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -966,18 +935,18 @@ class AuthenticationRule {
   /// If true, the service accepts API keys without any other credential.
   ///
   /// This flag only applies to HTTP and gRPC requests.
-  core.bool allowWithoutCredential;
+  core.bool? allowWithoutCredential;
 
   /// The requirements for OAuth credentials.
-  OAuthRequirements oauth;
+  OAuthRequirements? oauth;
 
   /// Requirements for additional authentication providers.
-  core.List<AuthRequirement> requirements;
+  core.List<AuthRequirement>? requirements;
 
   /// Selects the methods to which this rule applies.
   ///
   /// Refer to selector for syntax details.
-  core.String selector;
+  core.String? selector;
 
   AuthenticationRule();
 
@@ -1000,13 +969,13 @@ class AuthenticationRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowWithoutCredential != null)
-          'allowWithoutCredential': allowWithoutCredential,
-        if (oauth != null) 'oauth': oauth.toJson(),
+          'allowWithoutCredential': allowWithoutCredential!,
+        if (oauth != null) 'oauth': oauth!.toJson(),
         if (requirements != null)
-          'requirements': requirements.map((value) => value.toJson()).toList(),
-        if (selector != null) 'selector': selector,
+          'requirements': requirements!.map((value) => value.toJson()).toList(),
+        if (selector != null) 'selector': selector!,
       };
 }
 
@@ -1015,7 +984,7 @@ class Backend {
   /// A list of API backend rules that apply to individual API methods.
   ///
   /// **NOTE:** All service configuration rules follow "last one wins" order.
-  core.List<BackendRule> rules;
+  core.List<BackendRule>? rules;
 
   Backend();
 
@@ -1028,9 +997,9 @@ class Backend {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (rules != null)
-          'rules': rules.map((value) => value.toJson()).toList(),
+          'rules': rules!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1045,37 +1014,37 @@ class BackendRule {
   /// behaviors across platforms. If the port is unspecified, the default is: -
   /// 80 for schemes without TLS - 443 for schemes with TLS For HTTP backends,
   /// use protocol to specify the protocol version.
-  core.String address;
+  core.String? address;
 
   /// The number of seconds to wait for a response from a request.
   ///
   /// The default varies based on the request protocol and deployment
   /// environment.
-  core.double deadline;
+  core.double? deadline;
 
   /// When disable_auth is true, a JWT ID token won't be generated and the
   /// original "Authorization" HTTP header will be preserved.
   ///
   /// If the header is used to carry the original token and is expected by the
   /// backend, this field must be set to true to preserve the header.
-  core.bool disableAuth;
+  core.bool? disableAuth;
 
   /// The JWT audience is used when generating a JWT ID token for the backend.
   ///
   /// This ID token will be added in the HTTP "authorization" header, and sent
   /// to the backend.
-  core.String jwtAudience;
+  core.String? jwtAudience;
 
   /// Minimum deadline in seconds needed for this method.
   ///
   /// Calls having deadline value lower than this will be rejected.
-  core.double minDeadline;
+  core.double? minDeadline;
 
   /// The number of seconds to wait for the completion of a long running
   /// operation.
   ///
   /// The default is no deadline.
-  core.double operationDeadline;
+  core.double? operationDeadline;
 
   ///
   /// Possible string values are:
@@ -1102,7 +1071,7 @@ class BackendRule {
   /// https://example.appspot.com/api/company/widgetworks/user/johndoe Request
   /// path: /api/company/widgetworks/user/johndoe?timezone=EST Translated:
   /// https://example.appspot.com/api/company/widgetworks/user/johndoe?timezone=EST
-  core.String pathTranslation;
+  core.String? pathTranslation;
 
   /// The protocol used for sending a request to the backend.
   ///
@@ -1115,12 +1084,12 @@ class BackendRule {
   /// other backends. See
   /// https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids
   /// for more details on the supported values.
-  core.String protocol;
+  core.String? protocol;
 
   /// Selects the methods to which this rule applies.
   ///
   /// Refer to selector for syntax details.
-  core.String selector;
+  core.String? selector;
 
   BackendRule();
 
@@ -1154,23 +1123,23 @@ class BackendRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address,
-        if (deadline != null) 'deadline': deadline,
-        if (disableAuth != null) 'disableAuth': disableAuth,
-        if (jwtAudience != null) 'jwtAudience': jwtAudience,
-        if (minDeadline != null) 'minDeadline': minDeadline,
-        if (operationDeadline != null) 'operationDeadline': operationDeadline,
-        if (pathTranslation != null) 'pathTranslation': pathTranslation,
-        if (protocol != null) 'protocol': protocol,
-        if (selector != null) 'selector': selector,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!,
+        if (deadline != null) 'deadline': deadline!,
+        if (disableAuth != null) 'disableAuth': disableAuth!,
+        if (jwtAudience != null) 'jwtAudience': jwtAudience!,
+        if (minDeadline != null) 'minDeadline': minDeadline!,
+        if (operationDeadline != null) 'operationDeadline': operationDeadline!,
+        if (pathTranslation != null) 'pathTranslation': pathTranslation!,
+        if (protocol != null) 'protocol': protocol!,
+        if (selector != null) 'selector': selector!,
       };
 }
 
 /// Response message for BatchCreateAdminOverrides
 class BatchCreateAdminOverridesResponse {
   /// The overrides that were created.
-  core.List<QuotaOverride> overrides;
+  core.List<QuotaOverride>? overrides;
 
   BatchCreateAdminOverridesResponse();
 
@@ -1183,16 +1152,16 @@ class BatchCreateAdminOverridesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (overrides != null)
-          'overrides': overrides.map((value) => value.toJson()).toList(),
+          'overrides': overrides!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for BatchCreateConsumerOverrides
 class BatchCreateConsumerOverridesResponse {
   /// The overrides that were created.
-  core.List<QuotaOverride> overrides;
+  core.List<QuotaOverride>? overrides;
 
   BatchCreateConsumerOverridesResponse();
 
@@ -1205,9 +1174,9 @@ class BatchCreateConsumerOverridesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (overrides != null)
-          'overrides': overrides.map((value) => value.toJson()).toList(),
+          'overrides': overrides!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1220,7 +1189,7 @@ class BatchEnableServicesRequest {
   /// the service. A single request can enable a maximum of 20 services at a
   /// time. If more than 20 services are specified, the request will fail, and
   /// no state changes will occur.
-  core.List<core.String> serviceIds;
+  core.List<core.String>? serviceIds;
 
   BatchEnableServicesRequest();
 
@@ -1232,8 +1201,8 @@ class BatchEnableServicesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (serviceIds != null) 'serviceIds': serviceIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (serviceIds != null) 'serviceIds': serviceIds!,
       };
 }
 
@@ -1244,10 +1213,10 @@ class BatchEnableServicesRequest {
 class BatchEnableServicesResponse {
   /// If allow_partial_success is true, and one or more services could not be
   /// enabled, this field contains the details about each failure.
-  core.List<EnableFailure> failures;
+  core.List<EnableFailure>? failures;
 
   /// The new state of the services after enabling.
-  core.List<GoogleApiServiceusageV1Service> services;
+  core.List<GoogleApiServiceusageV1Service>? services;
 
   BatchEnableServicesResponse();
 
@@ -1267,18 +1236,18 @@ class BatchEnableServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (failures != null)
-          'failures': failures.map((value) => value.toJson()).toList(),
+          'failures': failures!.map((value) => value.toJson()).toList(),
         if (services != null)
-          'services': services.map((value) => value.toJson()).toList(),
+          'services': services!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for the `BatchGetServices` method.
 class BatchGetServicesResponse {
   /// The requested Service states.
-  core.List<GoogleApiServiceusageV1Service> services;
+  core.List<GoogleApiServiceusageV1Service>? services;
 
   BatchGetServicesResponse();
 
@@ -1292,9 +1261,9 @@ class BatchGetServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (services != null)
-          'services': services.map((value) => value.toJson()).toList(),
+          'services': services!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1321,7 +1290,7 @@ class Billing {
   /// There can be multiple consumer destinations per service, each one must
   /// have a different monitored resource type. A metric can be used in at most
   /// one consumer destination.
-  core.List<BillingDestination> consumerDestinations;
+  core.List<BillingDestination>? consumerDestinations;
 
   Billing();
 
@@ -1334,10 +1303,10 @@ class Billing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (consumerDestinations != null)
           'consumerDestinations':
-              consumerDestinations.map((value) => value.toJson()).toList(),
+              consumerDestinations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1347,12 +1316,12 @@ class BillingDestination {
   /// Names of the metrics to report to this billing destination.
   ///
   /// Each name must be defined in Service.metrics section.
-  core.List<core.String> metrics;
+  core.List<core.String>? metrics;
 
   /// The monitored resource type.
   ///
   /// The type must be defined in Service.monitored_resources section.
-  core.String monitoredResource;
+  core.String? monitoredResource;
 
   BillingDestination();
 
@@ -1367,9 +1336,9 @@ class BillingDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metrics != null) 'metrics': metrics,
-        if (monitoredResource != null) 'monitoredResource': monitoredResource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metrics != null) 'metrics': metrics!,
+        if (monitoredResource != null) 'monitoredResource': monitoredResource!,
       };
 }
 
@@ -1381,7 +1350,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// `Context` defines which contexts an API requests.
@@ -1403,7 +1372,7 @@ class Context {
   /// A list of RPC context rules that apply to individual API methods.
   ///
   /// **NOTE:** All service configuration rules follow "last one wins" order.
-  core.List<ContextRule> rules;
+  core.List<ContextRule>? rules;
 
   Context();
 
@@ -1416,9 +1385,9 @@ class Context {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (rules != null)
-          'rules': rules.map((value) => value.toJson()).toList(),
+          'rules': rules!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1427,22 +1396,22 @@ class Context {
 class ContextRule {
   /// A list of full type names or extension IDs of extensions allowed in grpc
   /// side channel from client to backend.
-  core.List<core.String> allowedRequestExtensions;
+  core.List<core.String>? allowedRequestExtensions;
 
   /// A list of full type names or extension IDs of extensions allowed in grpc
   /// side channel from backend to client.
-  core.List<core.String> allowedResponseExtensions;
+  core.List<core.String>? allowedResponseExtensions;
 
   /// A list of full type names of provided contexts.
-  core.List<core.String> provided;
+  core.List<core.String>? provided;
 
   /// A list of full type names of requested contexts.
-  core.List<core.String> requested;
+  core.List<core.String>? requested;
 
   /// Selects the methods to which this rule applies.
   ///
   /// Refer to selector for syntax details.
-  core.String selector;
+  core.String? selector;
 
   ContextRule();
 
@@ -1474,14 +1443,14 @@ class ContextRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedRequestExtensions != null)
-          'allowedRequestExtensions': allowedRequestExtensions,
+          'allowedRequestExtensions': allowedRequestExtensions!,
         if (allowedResponseExtensions != null)
-          'allowedResponseExtensions': allowedResponseExtensions,
-        if (provided != null) 'provided': provided,
-        if (requested != null) 'requested': requested,
-        if (selector != null) 'selector': selector,
+          'allowedResponseExtensions': allowedResponseExtensions!,
+        if (provided != null) 'provided': provided!,
+        if (requested != null) 'requested': requested!,
+        if (selector != null) 'selector': selector!,
       };
 }
 
@@ -1494,7 +1463,7 @@ class Control {
   ///
   /// If empty, no control plane feature (like quota and billing) will be
   /// enabled.
-  core.String environment;
+  core.String? environment;
 
   Control();
 
@@ -1504,8 +1473,8 @@ class Control {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (environment != null) 'environment': environment,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (environment != null) 'environment': environment!,
       };
 }
 
@@ -1518,10 +1487,10 @@ class CustomError {
   /// The list of custom error rules that apply to individual API messages.
   ///
   /// **NOTE:** All service configuration rules follow "last one wins" order.
-  core.List<CustomErrorRule> rules;
+  core.List<CustomErrorRule>? rules;
 
   /// The list of custom error detail types, e.g. 'google.foo.v1.CustomError'.
-  core.List<core.String> types;
+  core.List<core.String>? types;
 
   CustomError();
 
@@ -1539,10 +1508,10 @@ class CustomError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (rules != null)
-          'rules': rules.map((value) => value.toJson()).toList(),
-        if (types != null) 'types': types,
+          'rules': rules!.map((value) => value.toJson()).toList(),
+        if (types != null) 'types': types!,
       };
 }
 
@@ -1552,12 +1521,12 @@ class CustomErrorRule {
   ///
   /// Otherwise, objects of this type will be filtered when they appear in error
   /// payload.
-  core.bool isErrorType;
+  core.bool? isErrorType;
 
   /// Selects messages to which this rule applies.
   ///
   /// Refer to selector for syntax details.
-  core.String selector;
+  core.String? selector;
 
   CustomErrorRule();
 
@@ -1570,19 +1539,19 @@ class CustomErrorRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (isErrorType != null) 'isErrorType': isErrorType,
-        if (selector != null) 'selector': selector,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (isErrorType != null) 'isErrorType': isErrorType!,
+        if (selector != null) 'selector': selector!,
       };
 }
 
 /// A custom pattern is used for defining custom HTTP verb.
 class CustomHttpPattern {
   /// The name of this custom HTTP verb.
-  core.String kind;
+  core.String? kind;
 
   /// The path matched by this custom verb.
-  core.String path;
+  core.String? path;
 
   CustomHttpPattern();
 
@@ -1595,9 +1564,9 @@ class CustomHttpPattern {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (path != null) 'path': path,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (path != null) 'path': path!,
       };
 }
 
@@ -1611,7 +1580,7 @@ class DisableServiceRequest {
   /// - "CHECK" : If set, service usage is checked when disabling the service.
   /// If a service, or its dependents, has usage in the last 30 days, the
   /// request returns a FAILED_PRECONDITION error.
-  core.String checkIfServiceHasUsage;
+  core.String? checkIfServiceHasUsage;
 
   /// Indicates if services that are enabled and which depend on this service
   /// should also be disabled.
@@ -1619,7 +1588,7 @@ class DisableServiceRequest {
   /// If not set, an error will be generated if any enabled services depend on
   /// the service to be disabled. When set, the service, and any enabled
   /// services that depend on it, will be disabled together.
-  core.bool disableDependentServices;
+  core.bool? disableDependentServices;
 
   DisableServiceRequest();
 
@@ -1632,11 +1601,11 @@ class DisableServiceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (checkIfServiceHasUsage != null)
-          'checkIfServiceHasUsage': checkIfServiceHasUsage,
+          'checkIfServiceHasUsage': checkIfServiceHasUsage!,
         if (disableDependentServices != null)
-          'disableDependentServices': disableDependentServices,
+          'disableDependentServices': disableDependentServices!,
       };
 }
 
@@ -1646,7 +1615,7 @@ class DisableServiceRequest {
 /// Operation when that operation is done.
 class DisableServiceResponse {
   /// The new state of the service after disabling.
-  GoogleApiServiceusageV1Service service;
+  GoogleApiServiceusageV1Service? service;
 
   DisableServiceResponse();
 
@@ -1657,8 +1626,8 @@ class DisableServiceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (service != null) 'service': service.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (service != null) 'service': service!.toJson(),
       };
 }
 
@@ -1693,7 +1662,7 @@ class DisableServiceResponse {
 /// documented together with service config validation.
 class Documentation {
   /// The URL to the root of documentation.
-  core.String documentationRootUrl;
+  core.String? documentationRootUrl;
 
   /// Declares a single overview page.
   ///
@@ -1702,27 +1671,27 @@ class Documentation {
   /// documentation: summary: ... pages: - name: Overview content: (== include
   /// overview.md ==) Note: you cannot specify both `overview` field and `pages`
   /// field.
-  core.String overview;
+  core.String? overview;
 
   /// The top level pages for the documentation set.
-  core.List<Page> pages;
+  core.List<Page>? pages;
 
   /// A list of documentation rules that apply to individual API elements.
   ///
   /// **NOTE:** All service configuration rules follow "last one wins" order.
-  core.List<DocumentationRule> rules;
+  core.List<DocumentationRule>? rules;
 
   /// Specifies the service root url if the default one (the service name from
   /// the yaml file) is not suitable.
   ///
   /// This can be seen in any fully specified service urls as well as sections
   /// that show a base that other urls are relative to.
-  core.String serviceRootUrl;
+  core.String? serviceRootUrl;
 
   /// A short summary of what the service does.
   ///
   /// Can only be provided by plain text.
-  core.String summary;
+  core.String? summary;
 
   Documentation();
 
@@ -1753,16 +1722,16 @@ class Documentation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (documentationRootUrl != null)
-          'documentationRootUrl': documentationRootUrl,
-        if (overview != null) 'overview': overview,
+          'documentationRootUrl': documentationRootUrl!,
+        if (overview != null) 'overview': overview!,
         if (pages != null)
-          'pages': pages.map((value) => value.toJson()).toList(),
+          'pages': pages!.map((value) => value.toJson()).toList(),
         if (rules != null)
-          'rules': rules.map((value) => value.toJson()).toList(),
-        if (serviceRootUrl != null) 'serviceRootUrl': serviceRootUrl,
-        if (summary != null) 'summary': summary,
+          'rules': rules!.map((value) => value.toJson()).toList(),
+        if (serviceRootUrl != null) 'serviceRootUrl': serviceRootUrl!,
+        if (summary != null) 'summary': summary!,
       };
 }
 
@@ -1771,10 +1740,10 @@ class DocumentationRule {
   /// Deprecation description of the selected element(s).
   ///
   /// It can be provided if an element is marked as `deprecated`.
-  core.String deprecationDescription;
+  core.String? deprecationDescription;
 
   /// Description of the selected API(s).
-  core.String description;
+  core.String? description;
 
   /// The selector is a comma-separated list of patterns.
   ///
@@ -1784,7 +1753,7 @@ class DocumentationRule {
   /// "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To
   /// specify a default for all applicable elements, the whole pattern "*" is
   /// used.
-  core.String selector;
+  core.String? selector;
 
   DocumentationRule();
 
@@ -1800,11 +1769,11 @@ class DocumentationRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deprecationDescription != null)
-          'deprecationDescription': deprecationDescription,
-        if (description != null) 'description': description,
-        if (selector != null) 'selector': selector,
+          'deprecationDescription': deprecationDescription!,
+        if (description != null) 'description': description!,
+        if (selector != null) 'selector': selector!,
       };
 }
 
@@ -1822,16 +1791,16 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Provides error messages for the failing services.
 class EnableFailure {
   /// An error message describing why the service could not be enabled.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   /// The service id of a service that could not be enabled.
-  core.String serviceId;
+  core.String? serviceId;
 
   EnableFailure();
 
@@ -1844,9 +1813,9 @@ class EnableFailure {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorMessage != null) 'errorMessage': errorMessage,
-        if (serviceId != null) 'serviceId': serviceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (serviceId != null) 'serviceId': serviceId!,
       };
 }
 
@@ -1858,7 +1827,7 @@ class EnableServiceRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response message for the `EnableService` method.
@@ -1867,7 +1836,7 @@ class EnableServiceRequest {
 /// Operation when that operation is done.
 class EnableServiceResponse {
   /// The new state of the service after enabling.
-  GoogleApiServiceusageV1Service service;
+  GoogleApiServiceusageV1Service? service;
 
   EnableServiceResponse();
 
@@ -1878,8 +1847,8 @@ class EnableServiceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (service != null) 'service': service.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (service != null) 'service': service!.toJson(),
       };
 }
 
@@ -1901,7 +1870,7 @@ class Endpoint {
   /// Instead of using aliases, please specify multiple google.api.Endpoint for
   /// each of the intended aliases. Additional names that this endpoint will be
   /// hosted on.
-  core.List<core.String> aliases;
+  core.List<core.String>? aliases;
 
   /// Allowing
   /// [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka
@@ -1910,10 +1879,10 @@ class Endpoint {
   ///
   /// The response will be used by the browser to determine whether the
   /// subsequent cross-origin request is allowed to proceed.
-  core.bool allowCors;
+  core.bool? allowCors;
 
   /// The canonical name of this endpoint.
-  core.String name;
+  core.String? name;
 
   /// The specification of an Internet routable address of API frontend that
   /// will handle requests to this
@@ -1921,7 +1890,7 @@ class Endpoint {
   ///
   /// It should be either a valid IPv4 address or a fully-qualified domain name.
   /// For example, "8.8.8.8" or "myservice.appspot.com".
-  core.String target;
+  core.String? target;
 
   Endpoint();
 
@@ -1942,33 +1911,33 @@ class Endpoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aliases != null) 'aliases': aliases,
-        if (allowCors != null) 'allowCors': allowCors,
-        if (name != null) 'name': name,
-        if (target != null) 'target': target,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aliases != null) 'aliases': aliases!,
+        if (allowCors != null) 'allowCors': allowCors!,
+        if (name != null) 'name': name!,
+        if (target != null) 'target': target!,
       };
 }
 
 /// Enum type definition.
 class Enum {
   /// Enum value definitions.
-  core.List<EnumValue> enumvalue;
+  core.List<EnumValue>? enumvalue;
 
   /// Enum type name.
-  core.String name;
+  core.String? name;
 
   /// Protocol buffer options.
-  core.List<Option> options;
+  core.List<Option>? options;
 
   /// The source context.
-  SourceContext sourceContext;
+  SourceContext? sourceContext;
 
   /// The source syntax.
   /// Possible string values are:
   /// - "SYNTAX_PROTO2" : Syntax `proto2`.
   /// - "SYNTAX_PROTO3" : Syntax `proto3`.
-  core.String syntax;
+  core.String? syntax;
 
   Enum();
 
@@ -1997,27 +1966,27 @@ class Enum {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (enumvalue != null)
-          'enumvalue': enumvalue.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+          'enumvalue': enumvalue!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
         if (options != null)
-          'options': options.map((value) => value.toJson()).toList(),
-        if (sourceContext != null) 'sourceContext': sourceContext.toJson(),
-        if (syntax != null) 'syntax': syntax,
+          'options': options!.map((value) => value.toJson()).toList(),
+        if (sourceContext != null) 'sourceContext': sourceContext!.toJson(),
+        if (syntax != null) 'syntax': syntax!,
       };
 }
 
 /// Enum value definition.
 class EnumValue {
   /// Enum value name.
-  core.String name;
+  core.String? name;
 
   /// Enum value number.
-  core.int number;
+  core.int? number;
 
   /// Protocol buffer options.
-  core.List<Option> options;
+  core.List<Option>? options;
 
   EnumValue();
 
@@ -2036,11 +2005,11 @@ class EnumValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (number != null) 'number': number,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (number != null) 'number': number!,
         if (options != null)
-          'options': options.map((value) => value.toJson()).toList(),
+          'options': options!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2052,15 +2021,15 @@ class Field {
   /// - "CARDINALITY_OPTIONAL" : For optional fields.
   /// - "CARDINALITY_REQUIRED" : For required fields. Proto2 syntax only.
   /// - "CARDINALITY_REPEATED" : For repeated fields.
-  core.String cardinality;
+  core.String? cardinality;
 
   /// The string value of the default value of this field.
   ///
   /// Proto2 syntax only.
-  core.String defaultValue;
+  core.String? defaultValue;
 
   /// The field JSON name.
-  core.String jsonName;
+  core.String? jsonName;
 
   /// The field type.
   /// Possible string values are:
@@ -2083,30 +2052,30 @@ class Field {
   /// - "TYPE_SFIXED64" : Field type sfixed64.
   /// - "TYPE_SINT32" : Field type sint32.
   /// - "TYPE_SINT64" : Field type sint64.
-  core.String kind;
+  core.String? kind;
 
   /// The field name.
-  core.String name;
+  core.String? name;
 
   /// The field number.
-  core.int number;
+  core.int? number;
 
   /// The index of the field type in `Type.oneofs`, for message or enumeration
   /// types.
   ///
   /// The first type has index 1; zero means the type is not in the list.
-  core.int oneofIndex;
+  core.int? oneofIndex;
 
   /// The protocol buffer options.
-  core.List<Option> options;
+  core.List<Option>? options;
 
   /// Whether to use alternative packed wire representation.
-  core.bool packed;
+  core.bool? packed;
 
   /// The field type URL, without the scheme, for message or enumeration types.
   ///
   /// Example: `"type.googleapis.com/google.protobuf.Timestamp"`.
-  core.String typeUrl;
+  core.String? typeUrl;
 
   Field();
 
@@ -2146,18 +2115,18 @@ class Field {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cardinality != null) 'cardinality': cardinality,
-        if (defaultValue != null) 'defaultValue': defaultValue,
-        if (jsonName != null) 'jsonName': jsonName,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (number != null) 'number': number,
-        if (oneofIndex != null) 'oneofIndex': oneofIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cardinality != null) 'cardinality': cardinality!,
+        if (defaultValue != null) 'defaultValue': defaultValue!,
+        if (jsonName != null) 'jsonName': jsonName!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (number != null) 'number': number!,
+        if (oneofIndex != null) 'oneofIndex': oneofIndex!,
         if (options != null)
-          'options': options.map((value) => value.toJson()).toList(),
-        if (packed != null) 'packed': packed,
-        if (typeUrl != null) 'typeUrl': typeUrl,
+          'options': options!.map((value) => value.toJson()).toList(),
+        if (packed != null) 'packed': packed!,
+        if (typeUrl != null) 'typeUrl': typeUrl!,
       };
 }
 
@@ -2168,14 +2137,14 @@ class GetServiceIdentityResponse {
   ///
   /// If exists is true, it contains email and unique_id. If exists is false, it
   /// contains pre-constructed email and empty unique_id.
-  ServiceIdentity identity;
+  ServiceIdentity? identity;
 
   /// Service identity state.
   /// Possible string values are:
   /// - "IDENTITY_STATE_UNSPECIFIED" : Default service identity state. This
   /// value is used if the state is omitted.
   /// - "ACTIVE" : Service identity has been created and can be used.
-  core.String state;
+  core.String? state;
 
   GetServiceIdentityResponse();
 
@@ -2189,9 +2158,9 @@ class GetServiceIdentityResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (identity != null) 'identity': identity.toJson(),
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (identity != null) 'identity': identity!.toJson(),
+        if (state != null) 'state': state!,
       };
 }
 
@@ -2214,49 +2183,49 @@ class GoogleApiService {
   /// the configuration author, as the remaining fields will be derived from the
   /// IDL during the normalization process. It is an error to specify an API
   /// interface here which cannot be resolved against the associated IDL files.
-  core.List<Api> apis;
+  core.List<Api>? apis;
 
   /// Auth configuration.
-  Authentication authentication;
+  Authentication? authentication;
 
   /// API backend configuration.
-  Backend backend;
+  Backend? backend;
 
   /// Billing configuration.
-  Billing billing;
+  Billing? billing;
 
   /// The service config compiler always sets this field to `3`.
   ///
   /// Deprecated.
-  core.int configVersion;
+  core.int? configVersion;
 
   /// Context configuration.
-  Context context;
+  Context? context;
 
   /// Configuration for the service control plane.
-  Control control;
+  Control? control;
 
   /// Custom error configuration.
-  CustomError customError;
+  CustomError? customError;
 
   /// Additional API documentation.
-  Documentation documentation;
+  Documentation? documentation;
 
   /// Configuration for network endpoints.
   ///
   /// If this is empty, then an endpoint with the same name as the service is
   /// automatically generated to service all defined APIs.
-  core.List<Endpoint> endpoints;
+  core.List<Endpoint>? endpoints;
 
   /// A list of all enum types included in this API service.
   ///
   /// Enums referenced directly or indirectly by the `apis` are automatically
   /// included. Enums which are not referenced but shall be included should be
   /// listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
-  core.List<Enum> enums;
+  core.List<Enum>? enums;
 
   /// HTTP configuration.
-  Http http;
+  Http? http;
 
   /// A unique ID for a specific instance of this message, typically assigned by
   /// the client for tracking purpose.
@@ -2264,46 +2233,46 @@ class GoogleApiService {
   /// Must be no longer than 63 characters and only lower case letters, digits,
   /// '.', '_' and '-' are allowed. If empty, the server may choose to generate
   /// one instead.
-  core.String id;
+  core.String? id;
 
   /// Logging configuration.
-  Logging logging;
+  Logging? logging;
 
   /// Defines the logs used by this service.
-  core.List<LogDescriptor> logs;
+  core.List<LogDescriptor>? logs;
 
   /// Defines the metrics used by this service.
-  core.List<MetricDescriptor> metrics;
+  core.List<MetricDescriptor>? metrics;
 
   /// Defines the monitored resources used by this service.
   ///
   /// This is required by the Service.monitoring and Service.logging
   /// configurations.
-  core.List<MonitoredResourceDescriptor> monitoredResources;
+  core.List<MonitoredResourceDescriptor>? monitoredResources;
 
   /// Monitoring configuration.
-  Monitoring monitoring;
+  Monitoring? monitoring;
 
   /// The service name, which is a DNS-like logical identifier for the service,
   /// such as `calendar.googleapis.com`.
   ///
   /// The service name typically goes through DNS verification to make sure the
   /// owner of the service also owns the DNS name.
-  core.String name;
+  core.String? name;
 
   /// The Google project that owns this service.
-  core.String producerProjectId;
+  core.String? producerProjectId;
 
   /// Quota configuration.
-  Quota quota;
+  Quota? quota;
 
   /// The source information for this configuration if available.
   ///
   /// Output only.
-  SourceInfo sourceInfo;
+  SourceInfo? sourceInfo;
 
   /// System parameter configuration.
-  SystemParameters systemParameters;
+  SystemParameters? systemParameters;
 
   /// A list of all proto message types included in this API service.
   ///
@@ -2311,10 +2280,10 @@ class GoogleApiService {
   /// these types are not needed by user-defined APIs. Therefore, they will not
   /// show up in the generated discovery doc. This field should only be used to
   /// define system APIs in ESF.
-  core.List<Type> systemTypes;
+  core.List<Type>? systemTypes;
 
   /// The product title for this service.
-  core.String title;
+  core.String? title;
 
   /// A list of all proto message types included in this API service.
   ///
@@ -2322,10 +2291,10 @@ class GoogleApiService {
   /// included. Messages which are not referenced but shall be included, such as
   /// types used by the `google.protobuf.Any` type, should be listed here by
   /// name. Example: types: - name: google.protobuf.Int32
-  core.List<Type> types;
+  core.List<Type>? types;
 
   /// Configuration controlling usage of this service.
-  Usage usage;
+  Usage? usage;
 
   GoogleApiService();
 
@@ -2452,42 +2421,42 @@ class GoogleApiService {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apis != null) 'apis': apis.map((value) => value.toJson()).toList(),
-        if (authentication != null) 'authentication': authentication.toJson(),
-        if (backend != null) 'backend': backend.toJson(),
-        if (billing != null) 'billing': billing.toJson(),
-        if (configVersion != null) 'configVersion': configVersion,
-        if (context != null) 'context': context.toJson(),
-        if (control != null) 'control': control.toJson(),
-        if (customError != null) 'customError': customError.toJson(),
-        if (documentation != null) 'documentation': documentation.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apis != null) 'apis': apis!.map((value) => value.toJson()).toList(),
+        if (authentication != null) 'authentication': authentication!.toJson(),
+        if (backend != null) 'backend': backend!.toJson(),
+        if (billing != null) 'billing': billing!.toJson(),
+        if (configVersion != null) 'configVersion': configVersion!,
+        if (context != null) 'context': context!.toJson(),
+        if (control != null) 'control': control!.toJson(),
+        if (customError != null) 'customError': customError!.toJson(),
+        if (documentation != null) 'documentation': documentation!.toJson(),
         if (endpoints != null)
-          'endpoints': endpoints.map((value) => value.toJson()).toList(),
+          'endpoints': endpoints!.map((value) => value.toJson()).toList(),
         if (enums != null)
-          'enums': enums.map((value) => value.toJson()).toList(),
-        if (http != null) 'http': http.toJson(),
-        if (id != null) 'id': id,
-        if (logging != null) 'logging': logging.toJson(),
-        if (logs != null) 'logs': logs.map((value) => value.toJson()).toList(),
+          'enums': enums!.map((value) => value.toJson()).toList(),
+        if (http != null) 'http': http!.toJson(),
+        if (id != null) 'id': id!,
+        if (logging != null) 'logging': logging!.toJson(),
+        if (logs != null) 'logs': logs!.map((value) => value.toJson()).toList(),
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
         if (monitoredResources != null)
           'monitoredResources':
-              monitoredResources.map((value) => value.toJson()).toList(),
-        if (monitoring != null) 'monitoring': monitoring.toJson(),
-        if (name != null) 'name': name,
-        if (producerProjectId != null) 'producerProjectId': producerProjectId,
-        if (quota != null) 'quota': quota.toJson(),
-        if (sourceInfo != null) 'sourceInfo': sourceInfo.toJson(),
+              monitoredResources!.map((value) => value.toJson()).toList(),
+        if (monitoring != null) 'monitoring': monitoring!.toJson(),
+        if (name != null) 'name': name!,
+        if (producerProjectId != null) 'producerProjectId': producerProjectId!,
+        if (quota != null) 'quota': quota!.toJson(),
+        if (sourceInfo != null) 'sourceInfo': sourceInfo!.toJson(),
         if (systemParameters != null)
-          'systemParameters': systemParameters.toJson(),
+          'systemParameters': systemParameters!.toJson(),
         if (systemTypes != null)
-          'systemTypes': systemTypes.map((value) => value.toJson()).toList(),
-        if (title != null) 'title': title,
+          'systemTypes': systemTypes!.map((value) => value.toJson()).toList(),
+        if (title != null) 'title': title!,
         if (types != null)
-          'types': types.map((value) => value.toJson()).toList(),
-        if (usage != null) 'usage': usage.toJson(),
+          'types': types!.map((value) => value.toJson()).toList(),
+        if (usage != null) 'usage': usage!.toJson(),
       };
 }
 
@@ -2495,7 +2464,7 @@ class GoogleApiService {
 class GoogleApiServiceusageV1OperationMetadata {
   /// The full name of the resources that this operation is directly associated
   /// with.
-  core.List<core.String> resourceNames;
+  core.List<core.String>? resourceNames;
 
   GoogleApiServiceusageV1OperationMetadata();
 
@@ -2507,8 +2476,8 @@ class GoogleApiServiceusageV1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceNames != null) 'resourceNames': resourceNames,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceNames != null) 'resourceNames': resourceNames!,
       };
 }
 
@@ -2519,17 +2488,17 @@ class GoogleApiServiceusageV1Service {
   /// Some fields may be filtered out of the configuration in responses to the
   /// `ListServices` method. These fields are present only in responses to the
   /// `GetService` method.
-  GoogleApiServiceusageV1ServiceConfig config;
+  GoogleApiServiceusageV1ServiceConfig? config;
 
   /// The resource name of the consumer and service.
   ///
   /// A valid name would be: - projects/123/services/serviceusage.googleapis.com
-  core.String name;
+  core.String? name;
 
   /// The resource name of the consumer.
   ///
   /// A valid name would be: - projects/123
-  core.String parent;
+  core.String? parent;
 
   /// Whether or not the service has been enabled for use by the consumer.
   /// Possible string values are:
@@ -2541,7 +2510,7 @@ class GoogleApiServiceusageV1Service {
   /// been explicitly disabled, or has never been enabled.
   /// - "ENABLED" : The service has been explicitly enabled for use by this
   /// consumer.
-  core.String state;
+  core.String? state;
 
   GoogleApiServiceusageV1Service();
 
@@ -2561,11 +2530,11 @@ class GoogleApiServiceusageV1Service {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (config != null) 'config': config.toJson(),
-        if (name != null) 'name': name,
-        if (parent != null) 'parent': parent,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (config != null) 'config': config!.toJson(),
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -2574,47 +2543,47 @@ class GoogleApiServiceusageV1ServiceConfig {
   /// A list of API interfaces exported by this service.
   ///
   /// Contains only the names, versions, and method names of the interfaces.
-  core.List<Api> apis;
+  core.List<Api>? apis;
 
   /// Auth configuration.
   ///
   /// Contains only the OAuth rules.
-  Authentication authentication;
+  Authentication? authentication;
 
   /// Additional API documentation.
   ///
   /// Contains only the summary and the documentation URL.
-  Documentation documentation;
+  Documentation? documentation;
 
   /// Configuration for network endpoints.
   ///
   /// Contains only the names and aliases of the endpoints.
-  core.List<Endpoint> endpoints;
+  core.List<Endpoint>? endpoints;
 
   /// Defines the monitored resources used by this service.
   ///
   /// This is required by the Service.monitoring and Service.logging
   /// configurations.
-  core.List<MonitoredResourceDescriptor> monitoredResources;
+  core.List<MonitoredResourceDescriptor>? monitoredResources;
 
   /// Monitoring configuration.
   ///
   /// This should not include the 'producer_destinations' field.
-  Monitoring monitoring;
+  Monitoring? monitoring;
 
   /// The DNS address at which this service is available.
   ///
   /// An example DNS address would be: `calendar.googleapis.com`.
-  core.String name;
+  core.String? name;
 
   /// Quota configuration.
-  Quota quota;
+  Quota? quota;
 
   /// The product title for this service.
-  core.String title;
+  core.String? title;
 
   /// Configuration controlling usage of this service.
-  Usage usage;
+  Usage? usage;
 
   GoogleApiServiceusageV1ServiceConfig();
 
@@ -2666,20 +2635,20 @@ class GoogleApiServiceusageV1ServiceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apis != null) 'apis': apis.map((value) => value.toJson()).toList(),
-        if (authentication != null) 'authentication': authentication.toJson(),
-        if (documentation != null) 'documentation': documentation.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apis != null) 'apis': apis!.map((value) => value.toJson()).toList(),
+        if (authentication != null) 'authentication': authentication!.toJson(),
+        if (documentation != null) 'documentation': documentation!.toJson(),
         if (endpoints != null)
-          'endpoints': endpoints.map((value) => value.toJson()).toList(),
+          'endpoints': endpoints!.map((value) => value.toJson()).toList(),
         if (monitoredResources != null)
           'monitoredResources':
-              monitoredResources.map((value) => value.toJson()).toList(),
-        if (monitoring != null) 'monitoring': monitoring.toJson(),
-        if (name != null) 'name': name,
-        if (quota != null) 'quota': quota.toJson(),
-        if (title != null) 'title': title,
-        if (usage != null) 'usage': usage.toJson(),
+              monitoredResources!.map((value) => value.toJson()).toList(),
+        if (monitoring != null) 'monitoring': monitoring!.toJson(),
+        if (name != null) 'name': name!,
+        if (quota != null) 'quota': quota!.toJson(),
+        if (title != null) 'title': title!,
+        if (usage != null) 'usage': usage!.toJson(),
       };
 }
 
@@ -2690,14 +2659,14 @@ class GoogleApiServiceusageV1beta1GetServiceIdentityResponse {
   ///
   /// If exists is true, it contains email and unique_id. If exists is false, it
   /// contains pre-constructed email and empty unique_id.
-  GoogleApiServiceusageV1beta1ServiceIdentity identity;
+  GoogleApiServiceusageV1beta1ServiceIdentity? identity;
 
   /// Service identity state.
   /// Possible string values are:
   /// - "IDENTITY_STATE_UNSPECIFIED" : Default service identity state. This
   /// value is used if the state is omitted.
   /// - "ACTIVE" : Service identity has been created and can be used.
-  core.String state;
+  core.String? state;
 
   GoogleApiServiceusageV1beta1GetServiceIdentityResponse();
 
@@ -2712,9 +2681,9 @@ class GoogleApiServiceusageV1beta1GetServiceIdentityResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (identity != null) 'identity': identity.toJson(),
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (identity != null) 'identity': identity!.toJson(),
+        if (state != null) 'state': state!,
       };
 }
 
@@ -2725,12 +2694,12 @@ class GoogleApiServiceusageV1beta1GetServiceIdentityResponse {
 class GoogleApiServiceusageV1beta1ServiceIdentity {
   /// The email address of the service account that a service producer would use
   /// to access consumer resources.
-  core.String email;
+  core.String? email;
 
   /// The unique and stable id of the service account.
   ///
   /// https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts#ServiceAccount
-  core.String uniqueId;
+  core.String? uniqueId;
 
   GoogleApiServiceusageV1beta1ServiceIdentity();
 
@@ -2743,9 +2712,9 @@ class GoogleApiServiceusageV1beta1ServiceIdentity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
-        if (uniqueId != null) 'uniqueId': uniqueId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
+        if (uniqueId != null) 'uniqueId': uniqueId!,
       };
 }
 
@@ -2760,12 +2729,12 @@ class Http {
   ///
   /// The default behavior is to not decode RFC 6570 reserved characters in
   /// multi segment matches.
-  core.bool fullyDecodeReservedExpansion;
+  core.bool? fullyDecodeReservedExpansion;
 
   /// A list of HTTP configuration rules that apply to individual API methods.
   ///
   /// **NOTE:** All service configuration rules follow "last one wins" order.
-  core.List<HttpRule> rules;
+  core.List<HttpRule>? rules;
 
   Http();
 
@@ -2782,11 +2751,11 @@ class Http {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fullyDecodeReservedExpansion != null)
-          'fullyDecodeReservedExpansion': fullyDecodeReservedExpansion,
+          'fullyDecodeReservedExpansion': fullyDecodeReservedExpansion!,
         if (rules != null)
-          'rules': rules.map((value) => value.toJson()).toList(),
+          'rules': rules!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2933,7 +2902,7 @@ class HttpRule {
   ///
   /// Nested bindings must not contain an `additional_bindings` field themselves
   /// (that is, the nesting may only be one level deep).
-  core.List<HttpRule> additionalBindings;
+  core.List<HttpRule>? additionalBindings;
 
   /// The name of the request field whose value is mapped to the HTTP request
   /// body, or `*` for mapping all request fields not captured by the path
@@ -2941,7 +2910,7 @@ class HttpRule {
   ///
   /// NOTE: the referred field must be present at the top-level of the request
   /// message type.
-  core.String body;
+  core.String? body;
 
   /// The custom pattern is used for specifying an HTTP method that is not
   /// included in the `pattern` field, such as HEAD, or "*" to leave the HTTP
@@ -2949,32 +2918,32 @@ class HttpRule {
   ///
   /// The wild-card rule is useful for services that provide content to Web
   /// (HTML) clients.
-  CustomHttpPattern custom;
+  CustomHttpPattern? custom;
 
   /// Maps to HTTP DELETE.
   ///
   /// Used for deleting a resource.
-  core.String delete;
+  core.String? delete;
 
   /// Maps to HTTP GET.
   ///
   /// Used for listing and getting information about resources.
-  core.String get;
+  core.String? get;
 
   /// Maps to HTTP PATCH.
   ///
   /// Used for updating a resource.
-  core.String patch;
+  core.String? patch;
 
   /// Maps to HTTP POST.
   ///
   /// Used for creating a resource or performing an action.
-  core.String post;
+  core.String? post;
 
   /// Maps to HTTP PUT.
   ///
   /// Used for replacing a resource.
-  core.String put;
+  core.String? put;
 
   /// The name of the response field whose value is mapped to the HTTP response
   /// body.
@@ -2984,12 +2953,12 @@ class HttpRule {
   /// of the response message type.
   ///
   /// Optional.
-  core.String responseBody;
+  core.String? responseBody;
 
   /// Selects a method to which this rule applies.
   ///
   /// Refer to selector for syntax details.
-  core.String selector;
+  core.String? selector;
 
   HttpRule();
 
@@ -3030,26 +2999,26 @@ class HttpRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additionalBindings != null)
           'additionalBindings':
-              additionalBindings.map((value) => value.toJson()).toList(),
-        if (body != null) 'body': body,
-        if (custom != null) 'custom': custom.toJson(),
-        if (delete != null) 'delete': delete,
-        if (get != null) 'get': get,
-        if (patch != null) 'patch': patch,
-        if (post != null) 'post': post,
-        if (put != null) 'put': put,
-        if (responseBody != null) 'responseBody': responseBody,
-        if (selector != null) 'selector': selector,
+              additionalBindings!.map((value) => value.toJson()).toList(),
+        if (body != null) 'body': body!,
+        if (custom != null) 'custom': custom!.toJson(),
+        if (delete != null) 'delete': delete!,
+        if (get != null) 'get': get!,
+        if (patch != null) 'patch': patch!,
+        if (post != null) 'post': post!,
+        if (put != null) 'put': put!,
+        if (responseBody != null) 'responseBody': responseBody!,
+        if (selector != null) 'selector': selector!,
       };
 }
 
 /// Response message for ImportAdminOverrides
 class ImportAdminOverridesResponse {
   /// The overrides that were created from the imported data.
-  core.List<QuotaOverride> overrides;
+  core.List<QuotaOverride>? overrides;
 
   ImportAdminOverridesResponse();
 
@@ -3062,16 +3031,16 @@ class ImportAdminOverridesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (overrides != null)
-          'overrides': overrides.map((value) => value.toJson()).toList(),
+          'overrides': overrides!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for ImportAdminQuotaPolicies
 class ImportAdminQuotaPoliciesResponse {
   /// The policies that were created from the imported data.
-  core.List<AdminQuotaPolicy> policies;
+  core.List<AdminQuotaPolicy>? policies;
 
   ImportAdminQuotaPoliciesResponse();
 
@@ -3084,16 +3053,16 @@ class ImportAdminQuotaPoliciesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (policies != null)
-          'policies': policies.map((value) => value.toJson()).toList(),
+          'policies': policies!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for ImportConsumerOverrides
 class ImportConsumerOverridesResponse {
   /// The overrides that were created from the imported data.
-  core.List<QuotaOverride> overrides;
+  core.List<QuotaOverride>? overrides;
 
   ImportConsumerOverridesResponse();
 
@@ -3106,19 +3075,19 @@ class ImportConsumerOverridesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (overrides != null)
-          'overrides': overrides.map((value) => value.toJson()).toList(),
+          'overrides': overrides!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Specifies a location to extract JWT from an API request.
 class JwtLocation {
   /// Specifies HTTP header name to extract JWT token.
-  core.String header;
+  core.String? header;
 
   /// Specifies URL query parameter name to extract JWT token.
-  core.String query;
+  core.String? query;
 
   /// The value prefix.
   ///
@@ -3128,7 +3097,7 @@ class JwtLocation {
   /// extracted. If matched, JWT will be extracted after the prefix is removed.
   /// For example, for "Authorization: Bearer {JWT}", value_prefix="Bearer "
   /// with a space at the end.
-  core.String valuePrefix;
+  core.String? valuePrefix;
 
   JwtLocation();
 
@@ -3144,27 +3113,27 @@ class JwtLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (header != null) 'header': header,
-        if (query != null) 'query': query,
-        if (valuePrefix != null) 'valuePrefix': valuePrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (header != null) 'header': header!,
+        if (query != null) 'query': query!,
+        if (valuePrefix != null) 'valuePrefix': valuePrefix!,
       };
 }
 
 /// A description of a label.
 class LabelDescriptor {
   /// A human-readable description for the label.
-  core.String description;
+  core.String? description;
 
   /// The label key.
-  core.String key;
+  core.String? key;
 
   /// The type of data that can be assigned to the label.
   /// Possible string values are:
   /// - "STRING" : A variable-length string. This is the default.
   /// - "BOOL" : Boolean; true or false.
   /// - "INT64" : A 64-bit signed integer.
-  core.String valueType;
+  core.String? valueType;
 
   LabelDescriptor();
 
@@ -3180,20 +3149,20 @@ class LabelDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (key != null) 'key': key,
-        if (valueType != null) 'valueType': valueType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (key != null) 'key': key!,
+        if (valueType != null) 'valueType': valueType!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -3209,20 +3178,20 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for the `ListServices` method.
 class ListServicesResponse {
   /// Token that can be passed to `ListServices` to resume a paginated query.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The available services for the requested project.
-  core.List<GoogleApiServiceusageV1Service> services;
+  core.List<GoogleApiServiceusageV1Service>? services;
 
   ListServicesResponse();
 
@@ -3239,10 +3208,10 @@ class ListServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (services != null)
-          'services': services.map((value) => value.toJson()).toList(),
+          'services': services!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3256,18 +3225,18 @@ class LogDescriptor {
   /// A human-readable description of this log.
   ///
   /// This information appears in the documentation and can contain details.
-  core.String description;
+  core.String? description;
 
   /// The human-readable name for this log.
   ///
   /// This information appears on the user interface and should be concise.
-  core.String displayName;
+  core.String? displayName;
 
   /// The set of labels that are available to describe a specific log entry.
   ///
   /// Runtime requests that contain labels not specified here are considered
   /// invalid.
-  core.List<LabelDescriptor> labels;
+  core.List<LabelDescriptor>? labels;
 
   /// The name of the log.
   ///
@@ -3275,7 +3244,7 @@ class LogDescriptor {
   /// characters: upper- and lower-case alphanumeric characters \[A-Za-z0-9\],
   /// and punctuation characters including slash, underscore, hyphen, period
   /// \[/_-.\].
-  core.String name;
+  core.String? name;
 
   LogDescriptor();
 
@@ -3297,12 +3266,12 @@ class LogDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (labels != null)
-          'labels': labels.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3325,14 +3294,14 @@ class Logging {
   /// There can be multiple consumer destinations, each one must have a
   /// different monitored resource type. A log can be used in at most one
   /// consumer destination.
-  core.List<LoggingDestination> consumerDestinations;
+  core.List<LoggingDestination>? consumerDestinations;
 
   /// Logging configurations for sending logs to the producer project.
   ///
   /// There can be multiple producer destinations, each one must have a
   /// different monitored resource type. A log can be used in at most one
   /// producer destination.
-  core.List<LoggingDestination> producerDestinations;
+  core.List<LoggingDestination>? producerDestinations;
 
   Logging();
 
@@ -3351,13 +3320,13 @@ class Logging {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (consumerDestinations != null)
           'consumerDestinations':
-              consumerDestinations.map((value) => value.toJson()).toList(),
+              consumerDestinations!.map((value) => value.toJson()).toList(),
         if (producerDestinations != null)
           'producerDestinations':
-              producerDestinations.map((value) => value.toJson()).toList(),
+              producerDestinations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3369,12 +3338,12 @@ class LoggingDestination {
   /// Each name must be defined in the Service.logs section. If the log name is
   /// not a domain scoped name, it will be automatically prefixed with the
   /// service name followed by "/".
-  core.List<core.String> logs;
+  core.List<core.String>? logs;
 
   /// The monitored resource type.
   ///
   /// The type must be defined in the Service.monitored_resources section.
-  core.String monitoredResource;
+  core.String? monitoredResource;
 
   LoggingDestination();
 
@@ -3389,37 +3358,37 @@ class LoggingDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (logs != null) 'logs': logs,
-        if (monitoredResource != null) 'monitoredResource': monitoredResource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (logs != null) 'logs': logs!,
+        if (monitoredResource != null) 'monitoredResource': monitoredResource!,
       };
 }
 
 /// Method represents a method of an API interface.
 class Method {
   /// The simple name of this method.
-  core.String name;
+  core.String? name;
 
   /// Any metadata attached to the method.
-  core.List<Option> options;
+  core.List<Option>? options;
 
   /// If true, the request is streamed.
-  core.bool requestStreaming;
+  core.bool? requestStreaming;
 
   /// A URL of the input message type.
-  core.String requestTypeUrl;
+  core.String? requestTypeUrl;
 
   /// If true, the response is streamed.
-  core.bool responseStreaming;
+  core.bool? responseStreaming;
 
   /// The URL of the output message type.
-  core.String responseTypeUrl;
+  core.String? responseTypeUrl;
 
   /// The source syntax of this method.
   /// Possible string values are:
   /// - "SYNTAX_PROTO2" : Syntax `proto2`.
   /// - "SYNTAX_PROTO3" : Syntax `proto3`.
-  core.String syntax;
+  core.String? syntax;
 
   Method();
 
@@ -3450,15 +3419,15 @@ class Method {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
         if (options != null)
-          'options': options.map((value) => value.toJson()).toList(),
-        if (requestStreaming != null) 'requestStreaming': requestStreaming,
-        if (requestTypeUrl != null) 'requestTypeUrl': requestTypeUrl,
-        if (responseStreaming != null) 'responseStreaming': responseStreaming,
-        if (responseTypeUrl != null) 'responseTypeUrl': responseTypeUrl,
-        if (syntax != null) 'syntax': syntax,
+          'options': options!.map((value) => value.toJson()).toList(),
+        if (requestStreaming != null) 'requestStreaming': requestStreaming!,
+        if (requestTypeUrl != null) 'requestTypeUrl': requestTypeUrl!,
+        if (responseStreaming != null) 'responseStreaming': responseStreaming!,
+        if (responseTypeUrl != null) 'responseTypeUrl': responseTypeUrl!,
+        if (syntax != null) 'syntax': syntax!,
       };
 }
 
@@ -3468,14 +3437,14 @@ class Method {
 /// collection and makes the metric type's existing data unusable.
 class MetricDescriptor {
   /// A detailed description of the metric, which can be used in documentation.
-  core.String description;
+  core.String? description;
 
   /// A concise name for the metric, which can be displayed in user interfaces.
   ///
   /// Use sentence case without an ending period, for example "Request count".
   /// This field is optional but it is recommended to be set for any metrics
   /// associated with user-visible concepts, such as Quota.
-  core.String displayName;
+  core.String? displayName;
 
   /// The set of labels that can be used to describe a specific instance of this
   /// metric type.
@@ -3484,7 +3453,7 @@ class MetricDescriptor {
   /// metric type has a label for the HTTP response code, `response_code`, so
   /// you can look at latencies for successful responses or just for responses
   /// that failed.
-  core.List<LabelDescriptor> labels;
+  core.List<LabelDescriptor>? labels;
 
   /// The launch stage of the metric definition.
   ///
@@ -3521,12 +3490,12 @@ class MetricDescriptor {
   /// [Terms of Service](https://cloud.google.com/terms/) and the
   /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
   /// documentation.
-  core.String launchStage;
+  core.String? launchStage;
 
   /// Metadata which can be used to guide usage of the metric.
   ///
   /// Optional.
-  MetricDescriptorMetadata metadata;
+  MetricDescriptorMetadata? metadata;
 
   /// Whether the metric records instantaneous values, changes to a value, etc.
   ///
@@ -3540,7 +3509,7 @@ class MetricDescriptor {
   /// measurements in a time series should have the same start time and
   /// increasing end times, until an event resets the cumulative value to zero
   /// and sets a new start time for the following points.
-  core.String metricKind;
+  core.String? metricKind;
 
   /// Read-only.
   ///
@@ -3548,10 +3517,10 @@ class MetricDescriptor {
   /// type and a MonitoredResourceDescriptor, that is associated with this
   /// metric type can only be associated with one of the monitored resource
   /// types listed here.
-  core.List<core.String> monitoredResourceTypes;
+  core.List<core.String>? monitoredResourceTypes;
 
   /// The resource name of the metric descriptor.
-  core.String name;
+  core.String? name;
 
   /// The metric type, including its DNS name prefix.
   ///
@@ -3561,7 +3530,7 @@ class MetricDescriptor {
   /// "custom.googleapis.com/invoice/paid/amount"
   /// "external.googleapis.com/prometheus/up"
   /// "appengine.googleapis.com/http/server/response_latencies"
-  core.String type;
+  core.String? type;
 
   /// The units in which the metric value is reported.
   ///
@@ -3614,7 +3583,7 @@ class MetricDescriptor {
   /// percent"). * `10^2.%` indicates a metric contains a ratio, typically in
   /// the range 0..1, that will be multiplied by 100 and displayed as a
   /// percentage (so a metric value `0.03` means "3 percent").
-  core.String unit;
+  core.String? unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc.
   ///
@@ -3630,7 +3599,7 @@ class MetricDescriptor {
   /// if the metric kind is `GAUGE`.
   /// - "DISTRIBUTION" : The value is a `Distribution`.
   /// - "MONEY" : The value is money.
-  core.String valueType;
+  core.String? valueType;
 
   MetricDescriptor();
 
@@ -3676,20 +3645,20 @@ class MetricDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (labels != null)
-          'labels': labels.map((value) => value.toJson()).toList(),
-        if (launchStage != null) 'launchStage': launchStage,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (metricKind != null) 'metricKind': metricKind,
+          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (metricKind != null) 'metricKind': metricKind!,
         if (monitoredResourceTypes != null)
-          'monitoredResourceTypes': monitoredResourceTypes,
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
-        if (unit != null) 'unit': unit,
-        if (valueType != null) 'valueType': valueType,
+          'monitoredResourceTypes': monitoredResourceTypes!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+        if (unit != null) 'unit': unit!,
+        if (valueType != null) 'valueType': valueType!,
       };
 }
 
@@ -3699,7 +3668,7 @@ class MetricDescriptorMetadata {
   ///
   /// Data points older than this age are guaranteed to be ingested and
   /// available to be read, excluding data loss due to errors.
-  core.String ingestDelay;
+  core.String? ingestDelay;
 
   /// Must use the MetricDescriptor.launch_stage instead.
   ///
@@ -3736,14 +3705,14 @@ class MetricDescriptorMetadata {
   /// [Terms of Service](https://cloud.google.com/terms/) and the
   /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
   /// documentation.
-  core.String launchStage;
+  core.String? launchStage;
 
   /// The sampling period of metric data points.
   ///
   /// For metrics which are written periodically, consecutive data points are
   /// stored at this time interval, excluding data loss due to errors. Metrics
   /// with a higher granularity have a smaller sampling period.
-  core.String samplePeriod;
+  core.String? samplePeriod;
 
   MetricDescriptorMetadata();
 
@@ -3759,10 +3728,10 @@ class MetricDescriptorMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ingestDelay != null) 'ingestDelay': ingestDelay,
-        if (launchStage != null) 'launchStage': launchStage,
-        if (samplePeriod != null) 'samplePeriod': samplePeriod,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ingestDelay != null) 'ingestDelay': ingestDelay!,
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (samplePeriod != null) 'samplePeriod': samplePeriod!,
       };
 }
 
@@ -3777,12 +3746,12 @@ class MetricRule {
   /// The key of the map is the metric name, and the values are the amount
   /// increased for the metric against which the quota limits are defined. The
   /// value must not be negative.
-  core.Map<core.String, core.String> metricCosts;
+  core.Map<core.String, core.String>? metricCosts;
 
   /// Selects the methods to which this rule applies.
   ///
   /// Refer to selector for syntax details.
-  core.String selector;
+  core.String? selector;
 
   MetricRule();
 
@@ -3802,9 +3771,9 @@ class MetricRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metricCosts != null) 'metricCosts': metricCosts,
-        if (selector != null) 'selector': selector,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metricCosts != null) 'metricCosts': metricCosts!,
+        if (selector != null) 'selector': selector!,
       };
 }
 
@@ -3842,10 +3811,10 @@ class MetricRule {
 /// "/v2/acls/{resource=**}:getAcl"; } ... }
 class Mixin {
   /// The fully qualified name of the interface which is included.
-  core.String name;
+  core.String? name;
 
   /// If non-empty specifies a path under which inherited HTTP paths are rooted.
-  core.String root;
+  core.String? root;
 
   Mixin();
 
@@ -3858,9 +3827,9 @@ class Mixin {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (root != null) 'root': root,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (root != null) 'root': root!,
       };
 }
 
@@ -3878,7 +3847,7 @@ class MonitoredResourceDescriptor {
   /// in documentation.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// A concise name for the monitored resource type that might be displayed in
   /// user interfaces.
@@ -3887,7 +3856,7 @@ class MonitoredResourceDescriptor {
   /// determiners. For example, `"Google Cloud SQL Database"`.
   ///
   /// Optional.
-  core.String displayName;
+  core.String? displayName;
 
   /// A set of labels used to describe instances of this monitored resource
   /// type.
@@ -3896,7 +3865,7 @@ class MonitoredResourceDescriptor {
   /// values for the labels `"database_id"` and `"zone"`.
   ///
   /// Required.
-  core.List<LabelDescriptor> labels;
+  core.List<LabelDescriptor>? labels;
 
   /// The launch stage of the monitored resource definition.
   ///
@@ -3933,7 +3902,7 @@ class MonitoredResourceDescriptor {
   /// [Terms of Service](https://cloud.google.com/terms/) and the
   /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
   /// documentation.
-  core.String launchStage;
+  core.String? launchStage;
 
   /// The resource name of the monitored resource descriptor:
   /// `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type}
@@ -3944,7 +3913,7 @@ class MonitoredResourceDescriptor {
   /// `"monitoredResourceDescriptors/{type}"`.
   ///
   /// Optional.
-  core.String name;
+  core.String? name;
 
   /// The monitored resource type.
   ///
@@ -3952,7 +3921,7 @@ class MonitoredResourceDescriptor {
   /// Cloud SQL.
   ///
   /// Required.
-  core.String type;
+  core.String? type;
 
   MonitoredResourceDescriptor();
 
@@ -3980,14 +3949,14 @@ class MonitoredResourceDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (labels != null)
-          'labels': labels.map((value) => value.toJson()).toList(),
-        if (launchStage != null) 'launchStage': launchStage,
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4024,7 +3993,7 @@ class Monitoring {
   /// needed for different sets of metrics associated with that monitored
   /// resource type. A monitored resource and metric pair may only be used once
   /// in the Monitoring configuration.
-  core.List<MonitoringDestination> consumerDestinations;
+  core.List<MonitoringDestination>? consumerDestinations;
 
   /// Monitoring configurations for sending metrics to the producer project.
   ///
@@ -4033,7 +4002,7 @@ class Monitoring {
   /// needed for different sets of metrics associated with that monitored
   /// resource type. A monitored resource and metric pair may only be used once
   /// in the Monitoring configuration.
-  core.List<MonitoringDestination> producerDestinations;
+  core.List<MonitoringDestination>? producerDestinations;
 
   Monitoring();
 
@@ -4052,13 +4021,13 @@ class Monitoring {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (consumerDestinations != null)
           'consumerDestinations':
-              consumerDestinations.map((value) => value.toJson()).toList(),
+              consumerDestinations!.map((value) => value.toJson()).toList(),
         if (producerDestinations != null)
           'producerDestinations':
-              producerDestinations.map((value) => value.toJson()).toList(),
+              producerDestinations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4068,12 +4037,12 @@ class MonitoringDestination {
   /// Types of the metrics to report to this monitoring destination.
   ///
   /// Each type must be defined in Service.metrics section.
-  core.List<core.String> metrics;
+  core.List<core.String>? metrics;
 
   /// The monitored resource type.
   ///
   /// The type must be defined in Service.monitored_resources section.
-  core.String monitoredResource;
+  core.String? monitoredResource;
 
   MonitoringDestination();
 
@@ -4088,9 +4057,9 @@ class MonitoringDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metrics != null) 'metrics': metrics,
-        if (monitoredResource != null) 'monitoredResource': monitoredResource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metrics != null) 'metrics': metrics!,
+        if (monitoredResource != null) 'monitoredResource': monitoredResource!,
       };
 }
 
@@ -4115,7 +4084,7 @@ class OAuthRequirements {
   /// An OAuth token containing any of these scopes will be accepted. Example:
   /// canonical_scopes: https://www.googleapis.com/auth/calendar,
   /// https://www.googleapis.com/auth/calendar.read
-  core.String canonicalScopes;
+  core.String? canonicalScopes;
 
   OAuthRequirements();
 
@@ -4125,8 +4094,8 @@ class OAuthRequirements {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (canonicalScopes != null) 'canonicalScopes': canonicalScopes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (canonicalScopes != null) 'canonicalScopes': canonicalScopes!,
       };
 }
 
@@ -4137,10 +4106,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -4151,14 +4120,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -4171,7 +4140,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -4206,12 +4175,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -4219,7 +4188,7 @@ class Operation {
 class OperationMetadata {
   /// The full name of the resources that this operation is directly associated
   /// with.
-  core.List<core.String> resourceNames;
+  core.List<core.String>? resourceNames;
 
   OperationMetadata();
 
@@ -4231,8 +4200,8 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceNames != null) 'resourceNames': resourceNames,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceNames != null) 'resourceNames': resourceNames!,
       };
 }
 
@@ -4244,7 +4213,7 @@ class Option {
   /// For protobuf built-in options (options defined in descriptor.proto), this
   /// is the short name. For example, `"map_entry"`. For custom options, it
   /// should be the fully-qualified name. For example, `"google.api.http"`.
-  core.String name;
+  core.String? name;
 
   /// The option's value packed in an Any message.
   ///
@@ -4255,7 +4224,7 @@ class Option {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> value;
+  core.Map<core.String, core.Object>? value;
 
   Option();
 
@@ -4273,9 +4242,9 @@ class Option {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -4287,7 +4256,7 @@ class Page {
   ///
   /// You can use (== include {path} ==) to include content from a Markdown
   /// file.
-  core.String content;
+  core.String? content;
 
   /// The name of the page.
   ///
@@ -4298,13 +4267,13 @@ class Page {
   /// name: Tutorial content: (== include tutorial.md ==) subpages: - name: Java
   /// content: (== include tutorial_java.md ==) You can reference `Java` page
   /// using Markdown reference link syntax: `Java`.
-  core.String name;
+  core.String? name;
 
   /// Subpages of this page.
   ///
   /// The order of subpages specified here will be honored in the generated
   /// docset.
-  core.List<Page> subpages;
+  core.List<Page>? subpages;
 
   Page();
 
@@ -4323,11 +4292,11 @@ class Page {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
+        if (name != null) 'name': name!,
         if (subpages != null)
-          'subpages': subpages.map((value) => value.toJson()).toList(),
+          'subpages': subpages!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4357,11 +4326,11 @@ class Page {
 /// DELTA value_type: INT64
 class Quota {
   /// List of `QuotaLimit` definitions for the service.
-  core.List<QuotaLimit> limits;
+  core.List<QuotaLimit>? limits;
 
   /// List of `MetricRule` definitions, each one mapping a selected method to
   /// one or more metrics.
-  core.List<MetricRule> metricRules;
+  core.List<MetricRule>? metricRules;
 
   Quota();
 
@@ -4380,11 +4349,11 @@ class Quota {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (limits != null)
-          'limits': limits.map((value) => value.toJson()).toList(),
+          'limits': limits!.map((value) => value.toJson()).toList(),
         if (metricRules != null)
-          'metricRules': metricRules.map((value) => value.toJson()).toList(),
+          'metricRules': metricRules!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4403,7 +4372,7 @@ class QuotaLimit {
   /// selected consumers and blocking others. Similarly, a value of -1 will
   /// indicate an unlimited quota. No other negative values are allowed. Used by
   /// group-based quotas only.
-  core.String defaultLimit;
+  core.String? defaultLimit;
 
   /// User-visible, extended description for this quota limit.
   ///
@@ -4411,19 +4380,19 @@ class QuotaLimit {
   /// than provided by the limit's display name (see: `display_name`).
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// User-visible display name for this limit.
   ///
   /// Optional. If not set, the UI will provide a default display name based on
   /// the quota configuration. This field can be used to override the default
   /// display name generated from the configuration.
-  core.String displayName;
+  core.String? displayName;
 
   /// Duration of this limit in textual notation.
   ///
   /// Must be "100s" or "1d". Used by group-based quotas only.
-  core.String duration;
+  core.String? duration;
 
   /// Free tier value displayed in the Developers Console for this limit.
   ///
@@ -4432,7 +4401,7 @@ class QuotaLimit {
   /// limit with duration "1d", in a billable group; it is invalid on any other
   /// limit. If this field is not set, it defaults to 0, indicating that there
   /// is no free tier for this service. Used by group-based quotas only.
-  core.String freeTier;
+  core.String? freeTier;
 
   /// Maximum number of tokens that can be consumed during the specified
   /// duration.
@@ -4442,20 +4411,20 @@ class QuotaLimit {
   /// default limit. If not specified, it is set to the default limit. To allow
   /// clients to apply overrides with no upper bound, set this to -1, indicating
   /// unlimited maximum quota. Used by group-based quotas only.
-  core.String maxLimit;
+  core.String? maxLimit;
 
   /// The name of the metric this quota limit applies to.
   ///
   /// The quota limits with the same metric will be checked together during
   /// runtime. The metric must be defined within the service config.
-  core.String metric;
+  core.String? metric;
 
   /// Name of the quota limit.
   ///
   /// The name must be provided, and it must be unique within the service. The
   /// name can only include alphanumeric characters as well as '-'. The maximum
   /// length of the limit name is 64 characters.
-  core.String name;
+  core.String? name;
 
   /// Specify the unit of the quota limit.
   ///
@@ -4464,14 +4433,14 @@ class QuotaLimit {
   /// "1/min/{project}" for quota per minute per project. Note: the order of
   /// unit components is insignificant. The "1" at the beginning is required to
   /// follow the metric unit syntax.
-  core.String unit;
+  core.String? unit;
 
   /// Tiered limit values.
   ///
   /// You must specify this as a key:value pair, with an integer value that is
   /// the maximum number of requests allowed for the specified unit. Currently
   /// only STANDARD is supported.
-  core.Map<core.String, core.String> values;
+  core.Map<core.String, core.String>? values;
 
   QuotaLimit();
 
@@ -4514,17 +4483,17 @@ class QuotaLimit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (defaultLimit != null) 'defaultLimit': defaultLimit,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (duration != null) 'duration': duration,
-        if (freeTier != null) 'freeTier': freeTier,
-        if (maxLimit != null) 'maxLimit': maxLimit,
-        if (metric != null) 'metric': metric,
-        if (name != null) 'name': name,
-        if (unit != null) 'unit': unit,
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (defaultLimit != null) 'defaultLimit': defaultLimit!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (duration != null) 'duration': duration!,
+        if (freeTier != null) 'freeTier': freeTier!,
+        if (maxLimit != null) 'maxLimit': maxLimit!,
+        if (metric != null) 'metric': metric!,
+        if (name != null) 'name': name!,
+        if (unit != null) 'unit': unit!,
+        if (values != null) 'values': values!,
       };
 }
 
@@ -4534,7 +4503,7 @@ class QuotaOverride {
   ///
   /// For example: "organizations/12345" or "folders/67890". Used by admin
   /// overrides only.
-  core.String adminOverrideAncestor;
+  core.String? adminOverrideAncestor;
 
   /// If this map is nonempty, then this override applies only to specific
   /// values for dimensions defined in the limit unit.
@@ -4552,12 +4521,12 @@ class QuotaOverride {
   /// be a valid Cloud zone. * If any valid key other than "region" or "zone"
   /// appears in the map, then all valid keys other than "region" or "zone" must
   /// also appear in the map.
-  core.Map<core.String, core.String> dimensions;
+  core.Map<core.String, core.String>? dimensions;
 
   /// The name of the metric to which this override applies.
   ///
   /// An example name would be: `compute.googleapis.com/cpus`
-  core.String metric;
+  core.String? metric;
 
   /// The resource name of the override.
   ///
@@ -4568,19 +4537,19 @@ class QuotaOverride {
   /// The resource name is intended to be opaque and should not be parsed for
   /// its component strings, since its representation could change in the
   /// future.
-  core.String name;
+  core.String? name;
 
   /// The overriding quota limit value.
   ///
   /// Can be any nonnegative integer, or -1 (unlimited quota).
-  core.String overrideValue;
+  core.String? overrideValue;
 
   /// The limit unit of the limit to which this override applies.
   ///
   /// An example unit would be: `1/{project}/{region}` Note that `{project}` and
   /// `{region}` are not placeholders in this example; the literal characters
   /// `{` and `}` occur in the string.
-  core.String unit;
+  core.String? unit;
 
   QuotaOverride();
 
@@ -4612,14 +4581,14 @@ class QuotaOverride {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (adminOverrideAncestor != null)
-          'adminOverrideAncestor': adminOverrideAncestor,
-        if (dimensions != null) 'dimensions': dimensions,
-        if (metric != null) 'metric': metric,
-        if (name != null) 'name': name,
-        if (overrideValue != null) 'overrideValue': overrideValue,
-        if (unit != null) 'unit': unit,
+          'adminOverrideAncestor': adminOverrideAncestor!,
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (metric != null) 'metric': metric!,
+        if (name != null) 'name': name!,
+        if (overrideValue != null) 'overrideValue': overrideValue!,
+        if (unit != null) 'unit': unit!,
       };
 }
 
@@ -4630,12 +4599,12 @@ class QuotaOverride {
 class ServiceIdentity {
   /// The email address of the service account that a service producer would use
   /// to access consumer resources.
-  core.String email;
+  core.String? email;
 
   /// The unique and stable id of the service account.
   ///
   /// https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts#ServiceAccount
-  core.String uniqueId;
+  core.String? uniqueId;
 
   ServiceIdentity();
 
@@ -4648,9 +4617,9 @@ class ServiceIdentity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
-        if (uniqueId != null) 'uniqueId': uniqueId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
+        if (uniqueId != null) 'uniqueId': uniqueId!,
       };
 }
 
@@ -4661,7 +4630,7 @@ class SourceContext {
   /// protobuf element.
   ///
   /// For example: `"google/protobuf/source_context.proto"`.
-  core.String fileName;
+  core.String? fileName;
 
   SourceContext();
 
@@ -4671,8 +4640,8 @@ class SourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fileName != null) 'fileName': fileName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fileName != null) 'fileName': fileName!,
       };
 }
 
@@ -4682,7 +4651,7 @@ class SourceInfo {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> sourceFiles;
+  core.List<core.Map<core.String, core.Object>>? sourceFiles;
 
   SourceInfo();
 
@@ -4700,8 +4669,8 @@ class SourceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sourceFiles != null) 'sourceFiles': sourceFiles,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sourceFiles != null) 'sourceFiles': sourceFiles!,
       };
 }
 
@@ -4714,7 +4683,7 @@ class SourceInfo {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -4722,13 +4691,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -4752,10 +4721,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -4767,17 +4736,17 @@ class SystemParameter {
   /// Define the HTTP header name to use for the parameter.
   ///
   /// It is case insensitive.
-  core.String httpHeader;
+  core.String? httpHeader;
 
   /// Define the name of the parameter, such as "api_key" .
   ///
   /// It is case sensitive.
-  core.String name;
+  core.String? name;
 
   /// Define the URL query parameter name to use for the parameter.
   ///
   /// It is case sensitive.
-  core.String urlQueryParameter;
+  core.String? urlQueryParameter;
 
   SystemParameter();
 
@@ -4793,10 +4762,10 @@ class SystemParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (httpHeader != null) 'httpHeader': httpHeader,
-        if (name != null) 'name': name,
-        if (urlQueryParameter != null) 'urlQueryParameter': urlQueryParameter,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (httpHeader != null) 'httpHeader': httpHeader!,
+        if (name != null) 'name': name!,
+        if (urlQueryParameter != null) 'urlQueryParameter': urlQueryParameter!,
       };
 }
 
@@ -4809,13 +4778,13 @@ class SystemParameterRule {
   /// only one of them should be used. If multiple names are used the behavior
   /// is implementation-dependent. If none of the specified names are present
   /// the behavior is parameter-dependent.
-  core.List<SystemParameter> parameters;
+  core.List<SystemParameter>? parameters;
 
   /// Selects the methods to which this rule applies.
   ///
   /// Use '*' to indicate all methods in all APIs. Refer to selector for syntax
   /// details.
-  core.String selector;
+  core.String? selector;
 
   SystemParameterRule();
 
@@ -4831,10 +4800,10 @@ class SystemParameterRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (parameters != null)
-          'parameters': parameters.map((value) => value.toJson()).toList(),
-        if (selector != null) 'selector': selector,
+          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (selector != null) 'selector': selector!,
       };
 }
 
@@ -4857,7 +4826,7 @@ class SystemParameters {
   /// parameters: - name: api_key http_header: Api-Key1 - name: api_key
   /// http_header: Api-Key2 **NOTE:** All service configuration rules follow
   /// "last one wins" order.
-  core.List<SystemParameterRule> rules;
+  core.List<SystemParameterRule>? rules;
 
   SystemParameters();
 
@@ -4870,34 +4839,34 @@ class SystemParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (rules != null)
-          'rules': rules.map((value) => value.toJson()).toList(),
+          'rules': rules!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A protocol buffer message type.
 class Type {
   /// The list of fields.
-  core.List<Field> fields;
+  core.List<Field>? fields;
 
   /// The fully qualified message name.
-  core.String name;
+  core.String? name;
 
   /// The list of types appearing in `oneof` definitions in this type.
-  core.List<core.String> oneofs;
+  core.List<core.String>? oneofs;
 
   /// The protocol buffer options.
-  core.List<Option> options;
+  core.List<Option>? options;
 
   /// The source context.
-  SourceContext sourceContext;
+  SourceContext? sourceContext;
 
   /// The source syntax.
   /// Possible string values are:
   /// - "SYNTAX_PROTO2" : Syntax `proto2`.
   /// - "SYNTAX_PROTO3" : Syntax `proto3`.
-  core.String syntax;
+  core.String? syntax;
 
   Type();
 
@@ -4931,15 +4900,15 @@ class Type {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fields != null)
-          'fields': fields.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (oneofs != null) 'oneofs': oneofs,
+          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (oneofs != null) 'oneofs': oneofs!,
         if (options != null)
-          'options': options.map((value) => value.toJson()).toList(),
-        if (sourceContext != null) 'sourceContext': sourceContext.toJson(),
-        if (syntax != null) 'syntax': syntax,
+          'options': options!.map((value) => value.toJson()).toList(),
+        if (sourceContext != null) 'sourceContext': sourceContext!.toJson(),
+        if (syntax != null) 'syntax': syntax!,
       };
 }
 
@@ -4953,7 +4922,7 @@ class Usage {
   /// channel. To use Google Cloud Pub/Sub as the channel, this must be the name
   /// of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format
   /// documented in https://cloud.google.com/pubsub/docs/overview.
-  core.String producerNotificationChannel;
+  core.String? producerNotificationChannel;
 
   /// Requirements that must be satisfied before a consumer project can use the
   /// service.
@@ -4964,12 +4933,12 @@ class Usage {
   /// "serviceusage.googleapis.com/tos/cloud". Other Google APIs should include
   /// "serviceusage.googleapis.com/tos/universal". Additional ToS can be
   /// included based on the business needs.
-  core.List<core.String> requirements;
+  core.List<core.String>? requirements;
 
   /// A list of usage rules that apply to individual API methods.
   ///
   /// **NOTE:** All service configuration rules follow "last one wins" order.
-  core.List<UsageRule> rules;
+  core.List<UsageRule>? rules;
 
   Usage();
 
@@ -4991,12 +4960,12 @@ class Usage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (producerNotificationChannel != null)
-          'producerNotificationChannel': producerNotificationChannel,
-        if (requirements != null) 'requirements': requirements,
+          'producerNotificationChannel': producerNotificationChannel!,
+        if (requirements != null) 'requirements': requirements!,
         if (rules != null)
-          'rules': rules.map((value) => value.toJson()).toList(),
+          'rules': rules!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5016,20 +4985,20 @@ class Usage {
 class UsageRule {
   /// If true, the selected method allows unregistered calls, e.g. calls that
   /// don't identify any user or application.
-  core.bool allowUnregisteredCalls;
+  core.bool? allowUnregisteredCalls;
 
   /// Selects the methods to which this rule applies.
   ///
   /// Use '*' to indicate all methods in all APIs. Refer to selector for syntax
   /// details.
-  core.String selector;
+  core.String? selector;
 
   /// If true, the selected method should skip service control and the control
   /// plane features, such as quota and billing, will not be available.
   ///
   /// This flag is used by Google Cloud Endpoints to bypass checks for internal
   /// methods, such as service health check methods.
-  core.bool skipServiceControl;
+  core.bool? skipServiceControl;
 
   UsageRule();
 
@@ -5045,11 +5014,11 @@ class UsageRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowUnregisteredCalls != null)
-          'allowUnregisteredCalls': allowUnregisteredCalls,
-        if (selector != null) 'selector': selector,
+          'allowUnregisteredCalls': allowUnregisteredCalls!,
+        if (selector != null) 'selector': selector!,
         if (skipServiceControl != null)
-          'skipServiceControl': skipServiceControl,
+          'skipServiceControl': skipServiceControl!,
       };
 }

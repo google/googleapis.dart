@@ -95,11 +95,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -139,14 +136,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -197,11 +191,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -250,14 +241,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -312,13 +300,9 @@ class ProjectsLocationsRegistrationsResource {
   async.Future<Operation> configureContactSettings(
     ConfigureContactSettingsRequest request,
     core.String registration, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (registration == null) {
-      throw core.ArgumentError('Parameter registration is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -361,13 +345,9 @@ class ProjectsLocationsRegistrationsResource {
   async.Future<Operation> configureDnsSettings(
     ConfigureDnsSettingsRequest request,
     core.String registration, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (registration == null) {
-      throw core.ArgumentError('Parameter registration is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -410,13 +390,9 @@ class ProjectsLocationsRegistrationsResource {
   async.Future<Operation> configureManagementSettings(
     ConfigureManagementSettingsRequest request,
     core.String registration, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (registration == null) {
-      throw core.ArgumentError('Parameter registration is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -459,11 +435,8 @@ class ProjectsLocationsRegistrationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -513,13 +486,9 @@ class ProjectsLocationsRegistrationsResource {
   async.Future<Operation> export(
     ExportRegistrationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -557,11 +526,8 @@ class ProjectsLocationsRegistrationsResource {
   /// this method will complete with the same error.
   async.Future<Registration> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -610,12 +576,9 @@ class ProjectsLocationsRegistrationsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -672,14 +635,11 @@ class ProjectsLocationsRegistrationsResource {
   /// this method will complete with the same error.
   async.Future<ListRegistrationsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -733,14 +693,10 @@ class ProjectsLocationsRegistrationsResource {
   async.Future<Operation> patch(
     Registration request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -790,13 +746,9 @@ class ProjectsLocationsRegistrationsResource {
   async.Future<Operation> register(
     RegisterDomainRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -843,13 +795,9 @@ class ProjectsLocationsRegistrationsResource {
   async.Future<AuthorizationCode> resetAuthorizationCode(
     ResetAuthorizationCodeRequest request,
     core.String registration, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (registration == null) {
-      throw core.ArgumentError('Parameter registration is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -894,11 +842,8 @@ class ProjectsLocationsRegistrationsResource {
   /// this method will complete with the same error.
   async.Future<AuthorizationCode> retrieveAuthorizationCode(
     core.String registration, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (registration == null) {
-      throw core.ArgumentError('Parameter registration is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -942,12 +887,9 @@ class ProjectsLocationsRegistrationsResource {
   /// this method will complete with the same error.
   async.Future<RetrieveRegisterParametersResponse> retrieveRegisterParameters(
     core.String location, {
-    core.String domainName,
-    core.String $fields,
+    core.String? domainName,
+    core.String? $fields,
   }) async {
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (domainName != null) 'domainName': [domainName],
       if ($fields != null) 'fields': [$fields],
@@ -992,12 +934,9 @@ class ProjectsLocationsRegistrationsResource {
   /// this method will complete with the same error.
   async.Future<SearchDomainsResponse> searchDomains(
     core.String location, {
-    core.String query,
-    core.String $fields,
+    core.String? query,
+    core.String? $fields,
   }) async {
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (query != null) 'query': [query],
       if ($fields != null) 'fields': [$fields],
@@ -1044,13 +983,9 @@ class ProjectsLocationsRegistrationsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1098,13 +1033,9 @@ class ProjectsLocationsRegistrationsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1143,13 +1074,13 @@ class ProjectsLocationsRegistrationsResource {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -1165,11 +1096,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -1184,7 +1115,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -1192,7 +1123,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -1207,9 +1138,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -1218,7 +1149,7 @@ class AuthorizationCode {
   /// The Authorization Code in ASCII.
   ///
   /// It can be used to transfer the domain to or from another registrar.
-  core.String code;
+  core.String? code;
 
   AuthorizationCode();
 
@@ -1228,8 +1159,8 @@ class AuthorizationCode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
       };
 }
 
@@ -1243,7 +1174,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -1275,12 +1206,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -1299,10 +1230,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1312,10 +1243,10 @@ class ConfigureContactSettingsRequest {
   ///
   /// The notices needed here depend on the values specified in
   /// `contact_settings`.
-  core.List<core.String> contactNotices;
+  core.List<core.String>? contactNotices;
 
   /// Fields of the `ContactSettings` to update.
-  ContactSettings contactSettings;
+  ContactSettings? contactSettings;
 
   /// The field mask describing which fields to update as a comma-separated
   /// list.
@@ -1324,10 +1255,10 @@ class ConfigureContactSettingsRequest {
   /// `update_mask` would be `"registrant_contact"`.
   ///
   /// Required.
-  core.String updateMask;
+  core.String? updateMask;
 
   /// Validate the request without actually updating the contact settings.
-  core.bool validateOnly;
+  core.bool? validateOnly;
 
   ConfigureContactSettingsRequest();
 
@@ -1349,19 +1280,19 @@ class ConfigureContactSettingsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contactNotices != null) 'contactNotices': contactNotices,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contactNotices != null) 'contactNotices': contactNotices!,
         if (contactSettings != null)
-          'contactSettings': contactSettings.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
-        if (validateOnly != null) 'validateOnly': validateOnly,
+          'contactSettings': contactSettings!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
 
 /// Request for the `ConfigureDnsSettings` method.
 class ConfigureDnsSettingsRequest {
   /// Fields of the `DnsSettings` to update.
-  DnsSettings dnsSettings;
+  DnsSettings? dnsSettings;
 
   /// The field mask describing which fields to update as a comma-separated
   /// list.
@@ -1374,10 +1305,10 @@ class ConfigureDnsSettingsRequest {
   /// Custom DNS configuration, the `update_mask` would be `"custom_dns"`. //
   ///
   /// Required.
-  core.String updateMask;
+  core.String? updateMask;
 
   /// Validate the request without actually updating the DNS settings.
-  core.bool validateOnly;
+  core.bool? validateOnly;
 
   ConfigureDnsSettingsRequest();
 
@@ -1394,17 +1325,17 @@ class ConfigureDnsSettingsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dnsSettings != null) 'dnsSettings': dnsSettings.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
-        if (validateOnly != null) 'validateOnly': validateOnly,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dnsSettings != null) 'dnsSettings': dnsSettings!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
 
 /// Request for the `ConfigureManagementSettings` method.
 class ConfigureManagementSettingsRequest {
   /// Fields of the `ManagementSettings` to update.
-  ManagementSettings managementSettings;
+  ManagementSettings? managementSettings;
 
   /// The field mask describing which fields to update as a comma-separated
   /// list.
@@ -1413,7 +1344,7 @@ class ConfigureManagementSettingsRequest {
   /// would be `"transfer_lock_state"`.
   ///
   /// Required.
-  core.String updateMask;
+  core.String? updateMask;
 
   ConfigureManagementSettingsRequest();
 
@@ -1427,10 +1358,10 @@ class ConfigureManagementSettingsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (managementSettings != null)
-          'managementSettings': managementSettings.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+          'managementSettings': managementSettings!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -1439,24 +1370,24 @@ class Contact {
   /// Email address of the contact.
   ///
   /// Required.
-  core.String email;
+  core.String? email;
 
   /// Fax number of the contact in international format.
   ///
   /// For example, `"+1-800-555-0123"`.
-  core.String faxNumber;
+  core.String? faxNumber;
 
   /// Phone number of the contact in international format.
   ///
   /// For example, `"+1-800-555-0123"`.
   ///
   /// Required.
-  core.String phoneNumber;
+  core.String? phoneNumber;
 
   /// Postal address of the contact.
   ///
   /// Required.
-  PostalAddress postalAddress;
+  PostalAddress? postalAddress;
 
   Contact();
 
@@ -1476,11 +1407,11 @@ class Contact {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
-        if (faxNumber != null) 'faxNumber': faxNumber,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber,
-        if (postalAddress != null) 'postalAddress': postalAddress.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
+        if (faxNumber != null) 'faxNumber': faxNumber!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+        if (postalAddress != null) 'postalAddress': postalAddress!.toJson(),
       };
 }
 
@@ -1493,7 +1424,7 @@ class ContactSettings {
   /// The administrative contact for the `Registration`.
   ///
   /// Required.
-  Contact adminContact;
+  Contact? adminContact;
 
   /// Privacy setting for the contacts associated with the `Registration`.
   ///
@@ -1514,7 +1445,7 @@ class ContactSettings {
   /// available. The actual information redacted depends on the domain. For
   /// details, see
   /// [the registration privacy article](https://support.google.com/domains/answer/3251242).
-  core.String privacy;
+  core.String? privacy;
 
   /// The registrant contact for the `Registration`.
   ///
@@ -1524,12 +1455,12 @@ class ContactSettings {
   /// they must complete within 15 days to avoid domain suspension.*
   ///
   /// Required.
-  Contact registrantContact;
+  Contact? registrantContact;
 
   /// The technical contact for the `Registration`.
   ///
   /// Required.
-  Contact technicalContact;
+  Contact? technicalContact;
 
   ContactSettings();
 
@@ -1551,13 +1482,13 @@ class ContactSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (adminContact != null) 'adminContact': adminContact.toJson(),
-        if (privacy != null) 'privacy': privacy,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (adminContact != null) 'adminContact': adminContact!.toJson(),
+        if (privacy != null) 'privacy': privacy!,
         if (registrantContact != null)
-          'registrantContact': registrantContact.toJson(),
+          'registrantContact': registrantContact!.toJson(),
         if (technicalContact != null)
-          'technicalContact': technicalContact.toJson(),
+          'technicalContact': technicalContact!.toJson(),
       };
 }
 
@@ -1567,7 +1498,7 @@ class CustomDns {
   ///
   /// The domain's DNS provider can provide the values to set here. If this
   /// field is empty, DNSSEC is disabled.
-  core.List<DsRecord> dsRecords;
+  core.List<DsRecord>? dsRecords;
 
   /// A list of name servers that store the DNS zone for this domain.
   ///
@@ -1575,7 +1506,7 @@ class CustomDns {
   /// Punycode format.
   ///
   /// Required.
-  core.List<core.String> nameServers;
+  core.List<core.String>? nameServers;
 
   CustomDns();
 
@@ -1593,10 +1524,10 @@ class CustomDns {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dsRecords != null)
-          'dsRecords': dsRecords.map((value) => value.toJson()).toList(),
-        if (nameServers != null) 'nameServers': nameServers,
+          'dsRecords': dsRecords!.map((value) => value.toJson()).toList(),
+        if (nameServers != null) 'nameServers': nameServers!,
       };
 }
 
@@ -1604,15 +1535,15 @@ class CustomDns {
 /// DNSSEC, and glue records.
 class DnsSettings {
   /// An arbitrary DNS provider identified by its name servers.
-  CustomDns customDns;
+  CustomDns? customDns;
 
   /// The list of glue records for this `Registration`.
   ///
   /// Commonly empty.
-  core.List<GlueRecord> glueRecords;
+  core.List<GlueRecord>? glueRecords;
 
   /// The free DNS zone provided by [Google Domains](https://domains.google/).
-  GoogleDomainsDns googleDomainsDns;
+  GoogleDomainsDns? googleDomainsDns;
 
   DnsSettings();
 
@@ -1633,12 +1564,12 @@ class DnsSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customDns != null) 'customDns': customDns.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customDns != null) 'customDns': customDns!.toJson(),
         if (glueRecords != null)
-          'glueRecords': glueRecords.map((value) => value.toJson()).toList(),
+          'glueRecords': glueRecords!.map((value) => value.toJson()).toList(),
         if (googleDomainsDns != null)
-          'googleDomainsDns': googleDomainsDns.toJson(),
+          'googleDomainsDns': googleDomainsDns!.toJson(),
       };
 }
 
@@ -1664,10 +1595,10 @@ class DsRecord {
   /// - "ECDSAP384SHA384" : ECDSA Curve P-384 with SHA-384.
   /// - "ED25519" : Ed25519.
   /// - "ED448" : Ed448.
-  core.String algorithm;
+  core.String? algorithm;
 
   /// The digest generated from the referenced DNSKEY.
-  core.String digest;
+  core.String? digest;
 
   /// The hash function used to generate the digest of the referenced DNSKEY.
   /// Possible string values are:
@@ -1676,12 +1607,12 @@ class DsRecord {
   /// - "SHA256" : SHA-256.
   /// - "GOST3411" : GOST R 34.11-94.
   /// - "SHA384" : SHA-384.
-  core.String digestType;
+  core.String? digestType;
 
   /// The key tag of the record.
   ///
   /// Must be set in range 0 -- 65535.
-  core.int keyTag;
+  core.int? keyTag;
 
   DsRecord();
 
@@ -1700,11 +1631,11 @@ class DsRecord {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm,
-        if (digest != null) 'digest': digest,
-        if (digestType != null) 'digestType': digestType,
-        if (keyTag != null) 'keyTag': keyTag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
+        if (digest != null) 'digest': digest!,
+        if (digestType != null) 'digestType': digestType!,
+        if (keyTag != null) 'keyTag': keyTag!,
       };
 }
 
@@ -1716,7 +1647,7 @@ class ExportRegistrationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1744,24 +1675,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -1780,11 +1711,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1800,19 +1731,19 @@ class GlueRecord {
   /// Domain name of the host in Punycode format.
   ///
   /// Required.
-  core.String hostName;
+  core.String? hostName;
 
   /// List of IPv4 addresses corresponding to this host in the standard decimal
   /// format (e.g. `198.51.100.1`).
   ///
   /// At least one of `ipv4_address` and `ipv6_address` must be set.
-  core.List<core.String> ipv4Addresses;
+  core.List<core.String>? ipv4Addresses;
 
   /// List of IPv6 addresses corresponding to this host in the standard
   /// hexadecimal format (e.g. `2001:db8::`).
   ///
   /// At least one of `ipv4_address` and `ipv6_address` must be set.
-  core.List<core.String> ipv6Addresses;
+  core.List<core.String>? ipv6Addresses;
 
   GlueRecord();
 
@@ -1832,10 +1763,10 @@ class GlueRecord {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hostName != null) 'hostName': hostName,
-        if (ipv4Addresses != null) 'ipv4Addresses': ipv4Addresses,
-        if (ipv6Addresses != null) 'ipv6Addresses': ipv6Addresses,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hostName != null) 'hostName': hostName!,
+        if (ipv4Addresses != null) 'ipv4Addresses': ipv4Addresses!,
+        if (ipv6Addresses != null) 'ipv6Addresses': ipv6Addresses!,
       };
 }
 
@@ -1851,7 +1782,7 @@ class GoogleDomainsDns {
   /// `DS_RECORDS_PUBLISHED`, otherwise it remains empty.
   ///
   /// Output only.
-  core.List<DsRecord> dsRecords;
+  core.List<DsRecord>? dsRecords;
 
   /// The state of DS records for this domain.
   ///
@@ -1866,7 +1797,7 @@ class GoogleDomainsDns {
   /// DS records for this domain are published in the parent DNS zone. This
   /// option is valid only if the DNS zone referenced in the `Registration`'s
   /// `dns_provider` field is already DNSSEC-signed.
-  core.String dsState;
+  core.String? dsState;
 
   /// A list of name servers that store the DNS zone for this domain.
   ///
@@ -1875,7 +1806,7 @@ class GoogleDomainsDns {
   /// servers assigned to the Google Domains DNS zone.
   ///
   /// Output only.
-  core.List<core.String> nameServers;
+  core.List<core.String>? nameServers;
 
   GoogleDomainsDns();
 
@@ -1896,21 +1827,21 @@ class GoogleDomainsDns {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dsRecords != null)
-          'dsRecords': dsRecords.map((value) => value.toJson()).toList(),
-        if (dsState != null) 'dsState': dsState,
-        if (nameServers != null) 'nameServers': nameServers,
+          'dsRecords': dsRecords!.map((value) => value.toJson()).toList(),
+        if (dsState != null) 'dsState': dsState!,
+        if (nameServers != null) 'nameServers': nameServers!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -1926,20 +1857,20 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -1955,10 +1886,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1968,10 +1899,10 @@ class ListRegistrationsResponse {
   ///
   /// Set `page_token` to this value on a subsequent call to get the next page
   /// of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of `Registration`s.
-  core.List<Registration> registrations;
+  core.List<Registration>? registrations;
 
   ListRegistrationsResponse();
 
@@ -1987,11 +1918,11 @@ class ListRegistrationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (registrations != null)
           'registrations':
-              registrations.map((value) => value.toJson()).toList(),
+              registrations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2000,17 +1931,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -2018,12 +1949,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -2057,12 +1988,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2081,7 +2012,7 @@ class ManagementSettings {
   /// `Registration` is in state `EXPORTED`. To manage the domain's current
   /// billing and renewal settings, go to
   /// [Google Domains](https://domains.google/).
-  core.String renewalMethod;
+  core.String? renewalMethod;
 
   /// Controls whether the domain can be transferred to another registrar.
   /// Possible string values are:
@@ -2090,7 +2021,7 @@ class ManagementSettings {
   /// registrar.
   /// - "LOCKED" : The domain is locked and cannot be transferred to another
   /// registrar.
-  core.String transferLockState;
+  core.String? transferLockState;
 
   ManagementSettings();
 
@@ -2103,16 +2034,16 @@ class ManagementSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (renewalMethod != null) 'renewalMethod': renewalMethod,
-        if (transferLockState != null) 'transferLockState': transferLockState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (renewalMethod != null) 'renewalMethod': renewalMethod!,
+        if (transferLockState != null) 'transferLockState': transferLockState!,
       };
 }
 
 /// Represents an amount of money with its currency type.
 class Money {
   /// The three-letter currency code defined in ISO 4217.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Number of nano (10^-9) units of the amount.
   ///
@@ -2121,12 +2052,12 @@ class Money {
   /// `nanos` can be positive, zero, or negative. If `units` is negative,
   /// `nanos` must be negative or zero. For example $-1.75 is represented as
   /// `units`=-1 and `nanos`=-750,000,000.
-  core.int nanos;
+  core.int? nanos;
 
   /// The whole units of the amount.
   ///
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-  core.String units;
+  core.String? units;
 
   Money();
 
@@ -2142,10 +2073,10 @@ class Money {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (nanos != null) 'nanos': nanos,
-        if (units != null) 'units': units,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (nanos != null) 'nanos': nanos!,
+        if (units != null) 'units': units!,
       };
 }
 
@@ -2156,10 +2087,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -2170,14 +2101,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -2190,7 +2121,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -2225,12 +2156,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -2239,22 +2170,22 @@ class Operation {
 /// Output only.
 class OperationMetadata {
   /// API version used to start the operation.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// The time the operation was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time the operation finished running.
-  core.String endTime;
+  core.String? endTime;
 
   /// Human-readable status of the operation, if any.
-  core.String statusDetail;
+  core.String? statusDetail;
 
   /// Server-defined resource path for the target of the operation.
-  core.String target;
+  core.String? target;
 
   /// Name of the verb executed by the operation.
-  core.String verb;
+  core.String? verb;
 
   OperationMetadata();
 
@@ -2279,13 +2210,13 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
-        if (statusDetail != null) 'statusDetail': statusDetail,
-        if (target != null) 'target': target,
-        if (verb != null) 'verb': verb,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (statusDetail != null) 'statusDetail': statusDetail!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
@@ -2322,14 +2253,14 @@ class OperationMetadata {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -2343,8 +2274,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -2368,7 +2299,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -2393,13 +2324,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -2433,7 +2364,7 @@ class PostalAddress {
   /// region_code and address_lines, and then geocoding is the recommended way
   /// to handle completely unstructured addresses (as opposed to guessing which
   /// parts of the address should be localities or administrative areas).
-  core.List<core.String> addressLines;
+  core.List<core.String>? addressLines;
 
   /// Highest administrative subdivision which is used for postal addresses of a
   /// country or region.
@@ -2445,7 +2376,7 @@ class PostalAddress {
   /// should be left unpopulated.
   ///
   /// Optional.
-  core.String administrativeArea;
+  core.String? administrativeArea;
 
   /// BCP-47 language code of the contents of this address (if known).
   ///
@@ -2458,7 +2389,7 @@ class PostalAddress {
   /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
   ///
   /// Optional.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Generally refers to the city/town portion of the address.
   ///
@@ -2467,12 +2398,12 @@ class PostalAddress {
   /// leave locality empty and use address_lines.
   ///
   /// Optional.
-  core.String locality;
+  core.String? locality;
 
   /// The name of the organization at the address.
   ///
   /// Optional.
-  core.String organization;
+  core.String? organization;
 
   /// Postal code of the address.
   ///
@@ -2481,7 +2412,7 @@ class PostalAddress {
   /// the address (e.g. state/zip validation in the U.S.A.).
   ///
   /// Optional.
-  core.String postalCode;
+  core.String? postalCode;
 
   /// The recipient at the address.
   ///
@@ -2489,7 +2420,7 @@ class PostalAddress {
   /// information. For example, it might contain "care of" information.
   ///
   /// Optional.
-  core.List<core.String> recipients;
+  core.List<core.String>? recipients;
 
   /// CLDR region code of the country/region of the address.
   ///
@@ -2499,13 +2430,13 @@ class PostalAddress {
   /// for details. Example: "CH" for Switzerland.
   ///
   /// Required.
-  core.String regionCode;
+  core.String? regionCode;
 
   /// The schema revision of the `PostalAddress`.
   ///
   /// This must be set to 0, which is the latest revision. All new revisions
   /// **must** be backward compatible with old revisions.
-  core.int revision;
+  core.int? revision;
 
   /// Additional, country-specific, sorting code.
   ///
@@ -2515,14 +2446,14 @@ class PostalAddress {
   /// area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
   ///
   /// Optional.
-  core.String sortingCode;
+  core.String? sortingCode;
 
   /// Sublocality of the address.
   ///
   /// For example, this can be neighborhoods, boroughs, districts.
   ///
   /// Optional.
-  core.String sublocality;
+  core.String? sublocality;
 
   PostalAddress();
 
@@ -2566,19 +2497,19 @@ class PostalAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addressLines != null) 'addressLines': addressLines,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addressLines != null) 'addressLines': addressLines!,
         if (administrativeArea != null)
-          'administrativeArea': administrativeArea,
-        if (languageCode != null) 'languageCode': languageCode,
-        if (locality != null) 'locality': locality,
-        if (organization != null) 'organization': organization,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (recipients != null) 'recipients': recipients,
-        if (regionCode != null) 'regionCode': regionCode,
-        if (revision != null) 'revision': revision,
-        if (sortingCode != null) 'sortingCode': sortingCode,
-        if (sublocality != null) 'sublocality': sublocality,
+          'administrativeArea': administrativeArea!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (locality != null) 'locality': locality!,
+        if (organization != null) 'organization': organization!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (recipients != null) 'recipients': recipients!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (revision != null) 'revision': revision!,
+        if (sortingCode != null) 'sortingCode': sortingCode!,
+        if (sublocality != null) 'sublocality': sublocality!,
       };
 }
 
@@ -2588,25 +2519,25 @@ class RegisterDomainRequest {
   ///
   /// The notices needed here depend on the values specified in
   /// `registration.contact_settings`.
-  core.List<core.String> contactNotices;
+  core.List<core.String>? contactNotices;
 
   /// The list of domain notices that you acknowledge.
   ///
   /// Call `RetrieveRegisterParameters` to see the notices that need
   /// acknowledgement.
-  core.List<core.String> domainNotices;
+  core.List<core.String>? domainNotices;
 
   /// The complete `Registration` resource to be created.
   ///
   /// Required.
-  Registration registration;
+  Registration? registration;
 
   /// When true, only validation will be performed, without actually registering
   /// the domain.
   ///
   /// Follows:
   /// https://cloud.google.com/apis/design/design_patterns#request_validation
-  core.bool validateOnly;
+  core.bool? validateOnly;
 
   /// Yearly price to register or renew the domain.
   ///
@@ -2614,7 +2545,7 @@ class RegisterDomainRequest {
   /// RetrieveRegisterParameters or SearchDomains calls.
   ///
   /// Required.
-  Money yearlyPrice;
+  Money? yearlyPrice;
 
   RegisterDomainRequest();
 
@@ -2642,12 +2573,12 @@ class RegisterDomainRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contactNotices != null) 'contactNotices': contactNotices,
-        if (domainNotices != null) 'domainNotices': domainNotices,
-        if (registration != null) 'registration': registration.toJson(),
-        if (validateOnly != null) 'validateOnly': validateOnly,
-        if (yearlyPrice != null) 'yearlyPrice': yearlyPrice.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contactNotices != null) 'contactNotices': contactNotices!,
+        if (domainNotices != null) 'domainNotices': domainNotices!,
+        if (registration != null) 'registration': registration!.toJson(),
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+        if (yearlyPrice != null) 'yearlyPrice': yearlyPrice!.toJson(),
       };
 }
 
@@ -2667,21 +2598,21 @@ class RegisterParameters {
   /// but may be available elsewhere.
   /// - "UNKNOWN" : Cloud Domains is unable to determine domain availability,
   /// generally due to system maintenance at the domain name registry.
-  core.String availability;
+  core.String? availability;
 
   /// The domain name.
   ///
   /// Unicode domain names are expressed in Punycode format.
-  core.String domainName;
+  core.String? domainName;
 
   /// Notices about special properties of the domain.
-  core.List<core.String> domainNotices;
+  core.List<core.String>? domainNotices;
 
   /// Contact privacy options that the domain supports.
-  core.List<core.String> supportedPrivacy;
+  core.List<core.String>? supportedPrivacy;
 
   /// Price to register or renew the domain for one year.
-  Money yearlyPrice;
+  Money? yearlyPrice;
 
   RegisterParameters();
 
@@ -2708,12 +2639,12 @@ class RegisterParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (availability != null) 'availability': availability,
-        if (domainName != null) 'domainName': domainName,
-        if (domainNotices != null) 'domainNotices': domainNotices,
-        if (supportedPrivacy != null) 'supportedPrivacy': supportedPrivacy,
-        if (yearlyPrice != null) 'yearlyPrice': yearlyPrice.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (availability != null) 'availability': availability!,
+        if (domainName != null) 'domainName': domainName!,
+        if (domainNotices != null) 'domainNotices': domainNotices!,
+        if (supportedPrivacy != null) 'supportedPrivacy': supportedPrivacy!,
+        if (yearlyPrice != null) 'yearlyPrice': yearlyPrice!.toJson(),
       };
 }
 
@@ -2732,51 +2663,51 @@ class Registration {
   /// these settings, use the `ConfigureContactSettings` method.
   ///
   /// Required.
-  ContactSettings contactSettings;
+  ContactSettings? contactSettings;
 
   /// The creation timestamp of the `Registration` resource.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Settings controlling the DNS configuration of the `Registration`.
   ///
   /// You cannot update these with the `UpdateRegistration` method. To update
   /// these settings, use the `ConfigureDnsSettings` method.
-  DnsSettings dnsSettings;
+  DnsSettings? dnsSettings;
 
   /// The domain name.
   ///
   /// Unicode domain names must be expressed in Punycode format.
   ///
   /// Required. Immutable.
-  core.String domainName;
+  core.String? domainName;
 
   /// The expiration timestamp of the `Registration`.
   ///
   /// Output only.
-  core.String expireTime;
+  core.String? expireTime;
 
   /// The set of issues with the `Registration` that require attention.
   ///
   /// Output only.
-  core.List<core.String> issues;
+  core.List<core.String>? issues;
 
   /// Set of labels associated with the `Registration`.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Settings for management of the `Registration`, including renewal, billing,
   /// and transfer.
   ///
   /// You cannot update these with the `UpdateRegistration` method. To update
   /// these settings, use the `ConfigureManagementSettings` method.
-  ManagementSettings managementSettings;
+  ManagementSettings? managementSettings;
 
   /// Name of the `Registration` resource, in the format `projects / *
   /// /locations / * /registrations/`.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Pending contact settings for the `Registration`.
   ///
@@ -2788,7 +2719,7 @@ class Registration {
   /// the instructions in the email they receive.
   ///
   /// Output only.
-  ContactSettings pendingContactSettings;
+  ContactSettings? pendingContactSettings;
 
   /// The state of the `Registration`
   ///
@@ -2807,13 +2738,13 @@ class Registration {
   /// with this API, and information shown about it may be stale. Without
   /// further action, domains in this state expire at their `expire_time`. You
   /// can delete the resource after the `expire_time` has passed.
-  core.String state;
+  core.String? state;
 
   /// Set of options for the `contact_settings.privacy` field that this
   /// `Registration` supports.
   ///
   /// Output only.
-  core.List<core.String> supportedPrivacy;
+  core.List<core.String>? supportedPrivacy;
 
   Registration();
 
@@ -2871,22 +2802,22 @@ class Registration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (contactSettings != null)
-          'contactSettings': contactSettings.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (dnsSettings != null) 'dnsSettings': dnsSettings.toJson(),
-        if (domainName != null) 'domainName': domainName,
-        if (expireTime != null) 'expireTime': expireTime,
-        if (issues != null) 'issues': issues,
-        if (labels != null) 'labels': labels,
+          'contactSettings': contactSettings!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (dnsSettings != null) 'dnsSettings': dnsSettings!.toJson(),
+        if (domainName != null) 'domainName': domainName!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (issues != null) 'issues': issues!,
+        if (labels != null) 'labels': labels!,
         if (managementSettings != null)
-          'managementSettings': managementSettings.toJson(),
-        if (name != null) 'name': name,
+          'managementSettings': managementSettings!.toJson(),
+        if (name != null) 'name': name!,
         if (pendingContactSettings != null)
-          'pendingContactSettings': pendingContactSettings.toJson(),
-        if (state != null) 'state': state,
-        if (supportedPrivacy != null) 'supportedPrivacy': supportedPrivacy,
+          'pendingContactSettings': pendingContactSettings!.toJson(),
+        if (state != null) 'state': state!,
+        if (supportedPrivacy != null) 'supportedPrivacy': supportedPrivacy!,
       };
 }
 
@@ -2898,13 +2829,13 @@ class ResetAuthorizationCodeRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response for the `RetrieveRegisterParameters` method.
 class RetrieveRegisterParametersResponse {
   /// Parameters to use when calling the `RegisterDomain` method.
-  RegisterParameters registerParameters;
+  RegisterParameters? registerParameters;
 
   RetrieveRegisterParametersResponse();
 
@@ -2915,16 +2846,16 @@ class RetrieveRegisterParametersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (registerParameters != null)
-          'registerParameters': registerParameters.toJson(),
+          'registerParameters': registerParameters!.toJson(),
       };
 }
 
 /// Response for the `SearchDomains` method.
 class SearchDomainsResponse {
   /// Results of the domain name search.
-  core.List<RegisterParameters> registerParameters;
+  core.List<RegisterParameters>? registerParameters;
 
   SearchDomainsResponse();
 
@@ -2937,10 +2868,10 @@ class SearchDomainsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (registerParameters != null)
           'registerParameters':
-              registerParameters.map((value) => value.toJson()).toList(),
+              registerParameters!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2951,13 +2882,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -2971,9 +2902,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -2986,7 +2917,7 @@ class SetIamPolicyRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -2994,13 +2925,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -3024,10 +2955,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -3038,7 +2969,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -3050,8 +2981,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -3059,7 +2990,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -3071,7 +3002,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }

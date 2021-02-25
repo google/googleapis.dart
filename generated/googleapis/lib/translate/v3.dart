@@ -99,13 +99,9 @@ class ProjectsResource {
   async.Future<DetectLanguageResponse> detectLanguage(
     DetectLanguageRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -162,13 +158,10 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<SupportedLanguages> getSupportedLanguages(
     core.String parent, {
-    core.String displayLanguageCode,
-    core.String model,
-    core.String $fields,
+    core.String? displayLanguageCode,
+    core.String? model,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (displayLanguageCode != null)
         'displayLanguageCode': [displayLanguageCode],
@@ -218,13 +211,9 @@ class ProjectsResource {
   async.Future<TranslateTextResponse> translateText(
     TranslateTextRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -287,13 +276,9 @@ class ProjectsLocationsResource {
   async.Future<Operation> batchTranslateText(
     BatchTranslateTextRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -340,13 +325,9 @@ class ProjectsLocationsResource {
   async.Future<DetectLanguageResponse> detectLanguage(
     DetectLanguageRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -384,11 +365,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -441,13 +419,10 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<SupportedLanguages> getSupportedLanguages(
     core.String parent, {
-    core.String displayLanguageCode,
-    core.String model,
-    core.String $fields,
+    core.String? displayLanguageCode,
+    core.String? model,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (displayLanguageCode != null)
         'displayLanguageCode': [displayLanguageCode],
@@ -493,14 +468,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -549,13 +521,9 @@ class ProjectsLocationsResource {
   async.Future<TranslateTextResponse> translateText(
     TranslateTextRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -605,13 +573,9 @@ class ProjectsLocationsGlossariesResource {
   async.Future<Operation> create(
     Glossary request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -652,11 +616,8 @@ class ProjectsLocationsGlossariesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -693,11 +654,8 @@ class ProjectsLocationsGlossariesResource {
   /// this method will complete with the same error.
   async.Future<Glossary> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -760,14 +718,11 @@ class ProjectsLocationsGlossariesResource {
   /// this method will complete with the same error.
   async.Future<ListGlossariesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -827,13 +782,9 @@ class ProjectsLocationsOperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -874,11 +825,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -916,11 +864,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -969,14 +914,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1028,13 +970,9 @@ class ProjectsLocationsOperationsResource {
   async.Future<Operation> wait(
     WaitOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1059,7 +997,7 @@ class BatchTranslateTextRequest {
   /// It's keyed by target language code.
   ///
   /// Optional.
-  core.Map<core.String, TranslateTextGlossaryConfig> glossaries;
+  core.Map<core.String, TranslateTextGlossaryConfig>? glossaries;
 
   /// Input configurations.
   ///
@@ -1067,7 +1005,7 @@ class BatchTranslateTextRequest {
   /// should be <= 100M Unicode codepoints. The files must use UTF-8 encoding.
   ///
   /// Required.
-  core.List<InputConfig> inputConfigs;
+  core.List<InputConfig>? inputConfigs;
 
   /// The labels with user-defined metadata for the request.
   ///
@@ -1079,7 +1017,7 @@ class BatchTranslateTextRequest {
   /// information.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The models to use for translation.
   ///
@@ -1094,7 +1032,7 @@ class BatchTranslateTextRequest {
   /// pair, then default google model (nmt) is used.
   ///
   /// Optional.
-  core.Map<core.String, core.String> models;
+  core.Map<core.String, core.String>? models;
 
   /// Output configuration.
   ///
@@ -1102,30 +1040,31 @@ class BatchTranslateTextRequest {
   /// don't generate output for duplicate inputs.
   ///
   /// Required.
-  OutputConfig outputConfig;
+  OutputConfig? outputConfig;
 
   /// Source language code.
   ///
   /// Required.
-  core.String sourceLanguageCode;
+  core.String? sourceLanguageCode;
 
   /// Specify up to 10 language codes here.
   ///
   /// Required.
-  core.List<core.String> targetLanguageCodes;
+  core.List<core.String>? targetLanguageCodes;
 
   BatchTranslateTextRequest();
 
   BatchTranslateTextRequest.fromJson(core.Map _json) {
     if (_json.containsKey('glossaries')) {
-      glossaries =
-          (_json['glossaries'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  TranslateTextGlossaryConfig.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      glossaries = (_json['glossaries'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              TranslateTextGlossaryConfig.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('inputConfigs')) {
       inputConfigs = (_json['inputConfigs'] as core.List)
@@ -1165,19 +1104,19 @@ class BatchTranslateTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (glossaries != null)
           'glossaries':
-              glossaries.map((key, item) => core.MapEntry(key, item.toJson())),
+              glossaries!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (inputConfigs != null)
-          'inputConfigs': inputConfigs.map((value) => value.toJson()).toList(),
-        if (labels != null) 'labels': labels,
-        if (models != null) 'models': models,
-        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+          'inputConfigs': inputConfigs!.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels!,
+        if (models != null) 'models': models!,
+        if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
         if (sourceLanguageCode != null)
-          'sourceLanguageCode': sourceLanguageCode,
+          'sourceLanguageCode': sourceLanguageCode!,
         if (targetLanguageCodes != null)
-          'targetLanguageCodes': targetLanguageCodes,
+          'targetLanguageCodes': targetLanguageCodes!,
       };
 }
 
@@ -1189,13 +1128,13 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The request message for language detection.
 class DetectLanguageRequest {
   /// The content of the input stored as a string.
-  core.String content;
+  core.String? content;
 
   /// The labels with user-defined metadata for the request.
   ///
@@ -1207,14 +1146,14 @@ class DetectLanguageRequest {
   /// information.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The format of the source text, for example, "text/html", "text/plain".
   ///
   /// If left blank, the MIME type defaults to "text/html".
   ///
   /// Optional.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// The language detection model to be used.
   ///
@@ -1225,7 +1164,7 @@ class DetectLanguageRequest {
   /// If not specified, the default model is used.
   ///
   /// Optional.
-  core.String model;
+  core.String? model;
 
   DetectLanguageRequest();
 
@@ -1250,11 +1189,11 @@ class DetectLanguageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
-        if (labels != null) 'labels': labels,
-        if (mimeType != null) 'mimeType': mimeType,
-        if (model != null) 'model': model,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
+        if (labels != null) 'labels': labels!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (model != null) 'model': model!,
       };
 }
 
@@ -1263,7 +1202,7 @@ class DetectLanguageResponse {
   /// The most probable language detected by the Translation API.
   ///
   /// For each request, the Translation API will always return only one result.
-  core.List<DetectedLanguage> languages;
+  core.List<DetectedLanguage>? languages;
 
   DetectLanguageResponse();
 
@@ -1276,20 +1215,20 @@ class DetectLanguageResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (languages != null)
-          'languages': languages.map((value) => value.toJson()).toList(),
+          'languages': languages!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The response message for language detection.
 class DetectedLanguage {
   /// The confidence of the detection result for this language.
-  core.double confidence;
+  core.double? confidence;
 
   /// The BCP-47 language code of source content in the request, detected
   /// automatically.
-  core.String languageCode;
+  core.String? languageCode;
 
   DetectedLanguage();
 
@@ -1302,9 +1241,9 @@ class DetectedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (confidence != null) 'confidence': confidence,
-        if (languageCode != null) 'languageCode': languageCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (languageCode != null) 'languageCode': languageCode!,
       };
 }
 
@@ -1322,7 +1261,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The Google Cloud Storage location for the output content.
@@ -1335,7 +1274,7 @@ class GcsDestination {
   /// time. Otherwise an INVALID_ARGUMENT (400) error is returned.
   ///
   /// Required.
-  core.String outputUriPrefix;
+  core.String? outputUriPrefix;
 
   GcsDestination();
 
@@ -1345,8 +1284,8 @@ class GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
       };
 }
 
@@ -1357,7 +1296,7 @@ class GcsSource {
   /// For example, `gs://my_bucket/my_object`.
   ///
   /// Required.
-  core.String inputUri;
+  core.String? inputUri;
 
   GcsSource();
 
@@ -1367,8 +1306,8 @@ class GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (inputUri != null) 'inputUri': inputUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (inputUri != null) 'inputUri': inputUri!,
       };
 }
 
@@ -1377,25 +1316,25 @@ class Glossary {
   /// When the glossary creation was finished.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// The number of entries defined in the glossary.
   ///
   /// Output only.
-  core.int entryCount;
+  core.int? entryCount;
 
   /// Provides examples to build the glossary from.
   ///
   /// Total glossary must not exceed 10M Unicode codepoints.
   ///
   /// Required.
-  GlossaryInputConfig inputConfig;
+  GlossaryInputConfig? inputConfig;
 
   /// Used with equivalent term set glossaries.
-  LanguageCodesSet languageCodesSet;
+  LanguageCodesSet? languageCodesSet;
 
   /// Used with unidirectional glossaries.
-  LanguageCodePair languagePair;
+  LanguageCodePair? languagePair;
 
   /// The resource name of the glossary.
   ///
@@ -1403,12 +1342,12 @@ class Glossary {
   /// `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// When CreateGlossary was called.
   ///
   /// Output only.
-  core.String submitTime;
+  core.String? submitTime;
 
   Glossary();
 
@@ -1439,15 +1378,15 @@ class Glossary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (entryCount != null) 'entryCount': entryCount,
-        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (entryCount != null) 'entryCount': entryCount!,
+        if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
         if (languageCodesSet != null)
-          'languageCodesSet': languageCodesSet.toJson(),
-        if (languagePair != null) 'languagePair': languagePair.toJson(),
-        if (name != null) 'name': name,
-        if (submitTime != null) 'submitTime': submitTime,
+          'languageCodesSet': languageCodesSet!.toJson(),
+        if (languagePair != null) 'languagePair': languagePair!.toJson(),
+        if (name != null) 'name': name!,
+        if (submitTime != null) 'submitTime': submitTime!,
       };
 }
 
@@ -1469,7 +1408,7 @@ class GlossaryInputConfig {
   /// [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
   ///
   /// Required.
-  GcsSource gcsSource;
+  GcsSource? gcsSource;
 
   GlossaryInputConfig();
 
@@ -1480,8 +1419,8 @@ class GlossaryInputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
       };
 }
 
@@ -1503,7 +1442,7 @@ class InputConfig {
   /// single large chunk of text.
   ///
   /// Required.
-  GcsSource gcsSource;
+  GcsSource? gcsSource;
 
   /// Can be "text/plain" or "text/html".
   ///
@@ -1512,7 +1451,7 @@ class InputConfig {
   /// "text/plain" or empty.
   ///
   /// Optional.
-  core.String mimeType;
+  core.String? mimeType;
 
   InputConfig();
 
@@ -1526,9 +1465,9 @@ class InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
-        if (mimeType != null) 'mimeType': mimeType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+        if (mimeType != null) 'mimeType': mimeType!,
       };
 }
 
@@ -1539,14 +1478,14 @@ class LanguageCodePair {
   /// Expected to be an exact match for GlossaryTerm.language_code.
   ///
   /// Required.
-  core.String sourceLanguageCode;
+  core.String? sourceLanguageCode;
 
   /// The BCP-47 language code for translation output, for example, "zh-CN".
   ///
   /// Expected to be an exact match for GlossaryTerm.language_code.
   ///
   /// Required.
-  core.String targetLanguageCode;
+  core.String? targetLanguageCode;
 
   LanguageCodePair();
 
@@ -1559,11 +1498,11 @@ class LanguageCodePair {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (sourceLanguageCode != null)
-          'sourceLanguageCode': sourceLanguageCode,
+          'sourceLanguageCode': sourceLanguageCode!,
         if (targetLanguageCode != null)
-          'targetLanguageCode': targetLanguageCode,
+          'targetLanguageCode': targetLanguageCode!,
       };
 }
 
@@ -1573,7 +1512,7 @@ class LanguageCodesSet {
   ///
   /// All entries are unique. The list contains at least two entries. Expected
   /// to be an exact match for GlossaryTerm.language_code.
-  core.List<core.String> languageCodes;
+  core.List<core.String>? languageCodes;
 
   LanguageCodesSet();
 
@@ -1585,22 +1524,22 @@ class LanguageCodesSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (languageCodes != null) 'languageCodes': languageCodes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (languageCodes != null) 'languageCodes': languageCodes!,
       };
 }
 
 /// Response message for ListGlossaries.
 class ListGlossariesResponse {
   /// The list of glossaries for a project.
-  core.List<Glossary> glossaries;
+  core.List<Glossary>? glossaries;
 
   /// A token to retrieve a page of results.
   ///
   /// Pass this value in the \[ListGlossariesRequest.page_token\] field in the
   /// subsequent call to `ListGlossaries` method to retrieve the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListGlossariesResponse();
 
@@ -1616,20 +1555,20 @@ class ListGlossariesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (glossaries != null)
-          'glossaries': glossaries.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'glossaries': glossaries!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -1645,20 +1584,20 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -1674,10 +1613,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1686,17 +1625,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -1704,12 +1643,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -1743,12 +1682,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1759,10 +1698,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -1773,14 +1712,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -1793,7 +1732,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -1828,12 +1767,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -1888,7 +1827,7 @@ class OutputConfig {
   /// glossary. If the input file extension is txt or html, glossary_error_file
   /// will be generated that contains error details. glossary_error_file has
   /// format of gs://translation_test/a_b_c_'trg'_glossary_errors.\[extension\]
-  GcsDestination gcsDestination;
+  GcsDestination? gcsDestination;
 
   OutputConfig();
 
@@ -1899,8 +1838,8 @@ class OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
       };
 }
 
@@ -1913,7 +1852,7 @@ class OutputConfig {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1921,13 +1860,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -1951,10 +1890,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -1963,20 +1902,20 @@ class Status {
 class SupportedLanguage {
   /// Human readable name of the language localized in the display language
   /// specified in the request.
-  core.String displayName;
+  core.String? displayName;
 
   /// Supported language code, generally consisting of its ISO 639-1 identifier,
   /// for example, 'en', 'ja'.
   ///
   /// In certain cases, BCP-47 codes including language and region identifiers
   /// are returned (for example, 'zh-TW' and 'zh-CN')
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Can be used as source language.
-  core.bool supportSource;
+  core.bool? supportSource;
 
   /// Can be used as target language.
-  core.bool supportTarget;
+  core.bool? supportTarget;
 
   SupportedLanguage();
 
@@ -1995,11 +1934,11 @@ class SupportedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (languageCode != null) 'languageCode': languageCode,
-        if (supportSource != null) 'supportSource': supportSource,
-        if (supportTarget != null) 'supportTarget': supportTarget,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (supportSource != null) 'supportSource': supportSource!,
+        if (supportTarget != null) 'supportTarget': supportTarget!,
       };
 }
 
@@ -2009,7 +1948,7 @@ class SupportedLanguages {
   ///
   /// This list contains an entry for each language the Translation API
   /// supports.
-  core.List<SupportedLanguage> languages;
+  core.List<SupportedLanguage>? languages;
 
   SupportedLanguages();
 
@@ -2022,9 +1961,9 @@ class SupportedLanguages {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (languages != null)
-          'languages': languages.map((value) => value.toJson()).toList(),
+          'languages': languages!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2037,14 +1976,14 @@ class TranslateTextGlossaryConfig {
   /// `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`
   ///
   /// Required.
-  core.String glossary;
+  core.String? glossary;
 
   /// Indicates match is case-insensitive.
   ///
   /// Default value is false if missing.
   ///
   /// Optional.
-  core.bool ignoreCase;
+  core.bool? ignoreCase;
 
   TranslateTextGlossaryConfig();
 
@@ -2057,9 +1996,9 @@ class TranslateTextGlossaryConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (glossary != null) 'glossary': glossary,
-        if (ignoreCase != null) 'ignoreCase': ignoreCase,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (glossary != null) 'glossary': glossary!,
+        if (ignoreCase != null) 'ignoreCase': ignoreCase!,
       };
 }
 
@@ -2071,7 +2010,7 @@ class TranslateTextRequest {
   /// of this field is 1024. Use BatchTranslateText for larger text.
   ///
   /// Required.
-  core.List<core.String> contents;
+  core.List<core.String>? contents;
 
   /// Glossary to be applied.
   ///
@@ -2079,7 +2018,7 @@ class TranslateTextRequest {
   /// the model, otherwise an INVALID_ARGUMENT (400) error is returned.
   ///
   /// Optional.
-  TranslateTextGlossaryConfig glossaryConfig;
+  TranslateTextGlossaryConfig? glossaryConfig;
 
   /// The labels with user-defined metadata for the request.
   ///
@@ -2091,14 +2030,14 @@ class TranslateTextRequest {
   /// information.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The format of the source text, for example, "text/html", "text/plain".
   ///
   /// If left blank, the MIME type defaults to "text/html".
   ///
   /// Optional.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// The `model` type requested for this translation.
   ///
@@ -2113,7 +2052,7 @@ class TranslateTextRequest {
   /// missing, the system decides which google base model to use.
   ///
   /// Optional.
-  core.String model;
+  core.String? model;
 
   /// The BCP-47 language code of the input text if known, for example, "en-US"
   /// or "sr-Latn".
@@ -2123,13 +2062,13 @@ class TranslateTextRequest {
   /// automatically and returns the source language within the response.
   ///
   /// Optional.
-  core.String sourceLanguageCode;
+  core.String? sourceLanguageCode;
 
   /// The BCP-47 language code to use for translation of the input text, set to
   /// one of the language codes listed in Language Support.
   ///
   /// Required.
-  core.String targetLanguageCode;
+  core.String? targetLanguageCode;
 
   TranslateTextRequest();
 
@@ -2166,16 +2105,16 @@ class TranslateTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contents != null) 'contents': contents,
-        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig.toJson(),
-        if (labels != null) 'labels': labels,
-        if (mimeType != null) 'mimeType': mimeType,
-        if (model != null) 'model': model,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contents != null) 'contents': contents!,
+        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!.toJson(),
+        if (labels != null) 'labels': labels!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (model != null) 'model': model!,
         if (sourceLanguageCode != null)
-          'sourceLanguageCode': sourceLanguageCode,
+          'sourceLanguageCode': sourceLanguageCode!,
         if (targetLanguageCode != null)
-          'targetLanguageCode': targetLanguageCode,
+          'targetLanguageCode': targetLanguageCode!,
       };
 }
 
@@ -2184,12 +2123,12 @@ class TranslateTextResponse {
   ///
   /// This can be the same as `translations` if no terms apply. This field has
   /// the same length as `contents`.
-  core.List<Translation> glossaryTranslations;
+  core.List<Translation>? glossaryTranslations;
 
   /// Text translation responses with no glossary applied.
   ///
   /// This field has the same length as `contents`.
-  core.List<Translation> translations;
+  core.List<Translation>? translations;
 
   TranslateTextResponse();
 
@@ -2208,12 +2147,12 @@ class TranslateTextResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (glossaryTranslations != null)
           'glossaryTranslations':
-              glossaryTranslations.map((value) => value.toJson()).toList(),
+              glossaryTranslations!.map((value) => value.toJson()).toList(),
         if (translations != null)
-          'translations': translations.map((value) => value.toJson()).toList(),
+          'translations': translations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2225,10 +2164,10 @@ class Translation {
   ///
   /// If the source language was passed, auto-detection of the language does not
   /// occur and this field is empty.
-  core.String detectedLanguageCode;
+  core.String? detectedLanguageCode;
 
   /// The `glossary_config` used for this translation.
-  TranslateTextGlossaryConfig glossaryConfig;
+  TranslateTextGlossaryConfig? glossaryConfig;
 
   /// Only present when `model` is present in the request.
   ///
@@ -2237,10 +2176,10 @@ class Translation {
   /// `projects/{project-id}/locations/{location-id}/models/general/nmt` then
   /// `model` here would be normalized to
   /// `projects/{project-number}/locations/{location-id}/models/general/nmt`.
-  core.String model;
+  core.String? model;
 
   /// Text translated into the target language.
-  core.String translatedText;
+  core.String? translatedText;
 
   Translation();
 
@@ -2260,12 +2199,12 @@ class Translation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (detectedLanguageCode != null)
-          'detectedLanguageCode': detectedLanguageCode,
-        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig.toJson(),
-        if (model != null) 'model': model,
-        if (translatedText != null) 'translatedText': translatedText,
+          'detectedLanguageCode': detectedLanguageCode!,
+        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!.toJson(),
+        if (model != null) 'model': model!,
+        if (translatedText != null) 'translatedText': translatedText!,
       };
 }
 
@@ -2276,7 +2215,7 @@ class WaitOperationRequest {
   /// If left blank, the wait will be at most the time permitted by the
   /// underlying HTTP/RPC protocol. If RPC context deadline is also specified,
   /// the shorter one will be used.
-  core.String timeout;
+  core.String? timeout;
 
   WaitOperationRequest();
 
@@ -2286,7 +2225,7 @@ class WaitOperationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (timeout != null) 'timeout': timeout,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (timeout != null) 'timeout': timeout!,
       };
 }

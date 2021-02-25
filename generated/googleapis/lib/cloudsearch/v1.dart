@@ -186,14 +186,10 @@ class DebugDatasourcesItemsResource {
   async.Future<CheckAccessResponse> checkAccess(
     Principal request,
     core.String name, {
-    core.bool debugOptions_enableDebugging,
-    core.String $fields,
+    core.bool? debugOptions_enableDebugging,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (debugOptions_enableDebugging != null)
         'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
@@ -239,13 +235,9 @@ class DebugDatasourcesItemsResource {
   async.Future<SearchItemsByViewUrlResponse> searchByViewUrl(
     SearchItemsByViewUrlRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -302,14 +294,11 @@ class DebugDatasourcesItemsUnmappedidsResource {
   /// this method will complete with the same error.
   async.Future<ListUnmappedIdentitiesResponse> list(
     core.String parent, {
-    core.bool debugOptions_enableDebugging,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.bool? debugOptions_enableDebugging,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (debugOptions_enableDebugging != null)
         'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
@@ -386,16 +375,13 @@ class DebugIdentitysourcesItemsResource {
   async.Future<ListItemNamesForUnmappedIdentityResponse>
       listForunmappedidentity(
     core.String parent, {
-    core.bool debugOptions_enableDebugging,
-    core.String groupResourceName,
-    core.int pageSize,
-    core.String pageToken,
-    core.String userResourceName,
-    core.String $fields,
+    core.bool? debugOptions_enableDebugging,
+    core.String? groupResourceName,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? userResourceName,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (debugOptions_enableDebugging != null)
         'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
@@ -471,15 +457,12 @@ class DebugIdentitysourcesUnmappedidsResource {
   /// this method will complete with the same error.
   async.Future<ListUnmappedIdentitiesResponse> list(
     core.String parent, {
-    core.bool debugOptions_enableDebugging,
-    core.int pageSize,
-    core.String pageToken,
-    core.String resolutionStatusCode,
-    core.String $fields,
+    core.bool? debugOptions_enableDebugging,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? resolutionStatusCode,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (debugOptions_enableDebugging != null)
         'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
@@ -547,12 +530,9 @@ class IndexingDatasourcesResource {
   /// this method will complete with the same error.
   async.Future<Operation> deleteSchema(
     core.String name, {
-    core.bool debugOptions_enableDebugging,
-    core.String $fields,
+    core.bool? debugOptions_enableDebugging,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (debugOptions_enableDebugging != null)
         'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
@@ -596,12 +576,9 @@ class IndexingDatasourcesResource {
   /// this method will complete with the same error.
   async.Future<Schema> getSchema(
     core.String name, {
-    core.bool debugOptions_enableDebugging,
-    core.String $fields,
+    core.bool? debugOptions_enableDebugging,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (debugOptions_enableDebugging != null)
         'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
@@ -647,13 +624,9 @@ class IndexingDatasourcesResource {
   async.Future<Operation> updateSchema(
     UpdateSchemaRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -723,15 +696,12 @@ class IndexingDatasourcesItemsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String connectorName,
-    core.bool debugOptions_enableDebugging,
-    core.String mode,
-    core.String version,
-    core.String $fields,
+    core.String? connectorName,
+    core.bool? debugOptions_enableDebugging,
+    core.String? mode,
+    core.String? version,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (connectorName != null) 'connectorName': [connectorName],
       if (debugOptions_enableDebugging != null)
@@ -779,13 +749,9 @@ class IndexingDatasourcesItemsResource {
   async.Future<Operation> deleteQueueItems(
     DeleteQueueItemsRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -832,13 +798,10 @@ class IndexingDatasourcesItemsResource {
   /// this method will complete with the same error.
   async.Future<Item> get(
     core.String name, {
-    core.String connectorName,
-    core.bool debugOptions_enableDebugging,
-    core.String $fields,
+    core.String? connectorName,
+    core.bool? debugOptions_enableDebugging,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (connectorName != null) 'connectorName': [connectorName],
       if (debugOptions_enableDebugging != null)
@@ -886,13 +849,9 @@ class IndexingDatasourcesItemsResource {
   async.Future<Operation> index(
     IndexItemRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -954,16 +913,13 @@ class IndexingDatasourcesItemsResource {
   /// this method will complete with the same error.
   async.Future<ListItemsResponse> list(
     core.String name, {
-    core.bool brief,
-    core.String connectorName,
-    core.bool debugOptions_enableDebugging,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.bool? brief,
+    core.String? connectorName,
+    core.bool? debugOptions_enableDebugging,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (brief != null) 'brief': ['${brief}'],
       if (connectorName != null) 'connectorName': [connectorName],
@@ -1021,13 +977,9 @@ class IndexingDatasourcesItemsResource {
   async.Future<PollItemsResponse> poll(
     PollItemsRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1073,13 +1025,9 @@ class IndexingDatasourcesItemsResource {
   async.Future<Item> push(
     PushItemRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1125,13 +1073,9 @@ class IndexingDatasourcesItemsResource {
   async.Future<Operation> unreserve(
     UnreserveItemsRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1177,13 +1121,9 @@ class IndexingDatasourcesItemsResource {
   async.Future<UploadItemRef> upload(
     StartUploadItemRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1246,14 +1186,10 @@ class MediaResource {
   async.Future<Media> upload(
     Media request,
     core.String resourceName, {
-    core.String $fields,
-    commons.Media uploadMedia,
+    core.String? $fields,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resourceName == null) {
-      throw core.ArgumentError('Parameter resourceName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1308,11 +1244,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1367,14 +1300,11 @@ class OperationsLroResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1429,10 +1359,9 @@ class QueryResource {
   /// this method will complete with the same error.
   async.Future<SearchResponse> search(
     SearchRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1473,10 +1402,9 @@ class QueryResource {
   /// this method will complete with the same error.
   async.Future<SuggestResponse> suggest(
     SuggestRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1547,12 +1475,12 @@ class QuerySourcesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListQuerySourcesResponse> list({
-    core.String pageToken,
-    core.bool requestOptions_debugOptions_enableDebugging,
-    core.String requestOptions_languageCode,
-    core.String requestOptions_searchApplicationId,
-    core.String requestOptions_timeZone,
-    core.String $fields,
+    core.String? pageToken,
+    core.bool? requestOptions_debugOptions_enableDebugging,
+    core.String? requestOptions_languageCode,
+    core.String? requestOptions_searchApplicationId,
+    core.String? requestOptions_timeZone,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1620,10 +1548,9 @@ class SettingsDatasourcesResource {
   /// this method will complete with the same error.
   async.Future<Operation> create(
     DataSource request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1663,12 +1590,9 @@ class SettingsDatasourcesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.bool debugOptions_enableDebugging,
-    core.String $fields,
+    core.bool? debugOptions_enableDebugging,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (debugOptions_enableDebugging != null)
         'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
@@ -1710,12 +1634,9 @@ class SettingsDatasourcesResource {
   /// this method will complete with the same error.
   async.Future<DataSource> get(
     core.String name, {
-    core.bool debugOptions_enableDebugging,
-    core.String $fields,
+    core.bool? debugOptions_enableDebugging,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (debugOptions_enableDebugging != null)
         'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
@@ -1759,10 +1680,10 @@ class SettingsDatasourcesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDataSourceResponse> list({
-    core.bool debugOptions_enableDebugging,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.bool? debugOptions_enableDebugging,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (debugOptions_enableDebugging != null)
@@ -1808,13 +1729,9 @@ class SettingsDatasourcesResource {
   async.Future<Operation> update(
     UpdateDataSourceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1858,10 +1775,9 @@ class SettingsSearchapplicationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> create(
     SearchApplication request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1902,12 +1818,9 @@ class SettingsSearchapplicationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.bool debugOptions_enableDebugging,
-    core.String $fields,
+    core.bool? debugOptions_enableDebugging,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (debugOptions_enableDebugging != null)
         'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
@@ -1950,12 +1863,9 @@ class SettingsSearchapplicationsResource {
   /// this method will complete with the same error.
   async.Future<SearchApplication> get(
     core.String name, {
-    core.bool debugOptions_enableDebugging,
-    core.String $fields,
+    core.bool? debugOptions_enableDebugging,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (debugOptions_enableDebugging != null)
         'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
@@ -1999,10 +1909,10 @@ class SettingsSearchapplicationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSearchApplicationsResponse> list({
-    core.bool debugOptions_enableDebugging,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.bool? debugOptions_enableDebugging,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (debugOptions_enableDebugging != null)
@@ -2049,13 +1959,9 @@ class SettingsSearchapplicationsResource {
   async.Future<Operation> reset(
     ResetSearchApplicationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2098,13 +2004,9 @@ class SettingsSearchapplicationsResource {
   async.Future<Operation> update(
     SearchApplication request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2165,13 +2067,13 @@ class StatsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetCustomerIndexStatsResponse> getIndex({
-    core.int fromDate_day,
-    core.int fromDate_month,
-    core.int fromDate_year,
-    core.int toDate_day,
-    core.int toDate_month,
-    core.int toDate_year,
-    core.String $fields,
+    core.int? fromDate_day,
+    core.int? fromDate_month,
+    core.int? fromDate_year,
+    core.int? toDate_day,
+    core.int? toDate_month,
+    core.int? toDate_year,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (fromDate_day != null) 'fromDate.day': ['${fromDate_day}'],
@@ -2225,13 +2127,13 @@ class StatsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetCustomerQueryStatsResponse> getQuery({
-    core.int fromDate_day,
-    core.int fromDate_month,
-    core.int fromDate_year,
-    core.int toDate_day,
-    core.int toDate_month,
-    core.int toDate_year,
-    core.String $fields,
+    core.int? fromDate_day,
+    core.int? fromDate_month,
+    core.int? fromDate_year,
+    core.int? toDate_day,
+    core.int? toDate_month,
+    core.int? toDate_year,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (fromDate_day != null) 'fromDate.day': ['${fromDate_day}'],
@@ -2286,13 +2188,13 @@ class StatsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetCustomerSessionStatsResponse> getSession({
-    core.int fromDate_day,
-    core.int fromDate_month,
-    core.int fromDate_year,
-    core.int toDate_day,
-    core.int toDate_month,
-    core.int toDate_year,
-    core.String $fields,
+    core.int? fromDate_day,
+    core.int? fromDate_month,
+    core.int? fromDate_year,
+    core.int? toDate_day,
+    core.int? toDate_month,
+    core.int? toDate_year,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (fromDate_day != null) 'fromDate.day': ['${fromDate_day}'],
@@ -2346,13 +2248,13 @@ class StatsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetCustomerUserStatsResponse> getUser({
-    core.int fromDate_day,
-    core.int fromDate_month,
-    core.int fromDate_year,
-    core.int toDate_day,
-    core.int toDate_month,
-    core.int toDate_year,
-    core.String $fields,
+    core.int? fromDate_day,
+    core.int? fromDate_month,
+    core.int? fromDate_year,
+    core.int? toDate_day,
+    core.int? toDate_month,
+    core.int? toDate_year,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (fromDate_day != null) 'fromDate.day': ['${fromDate_day}'],
@@ -2427,17 +2329,14 @@ class StatsIndexDatasourcesResource {
   /// this method will complete with the same error.
   async.Future<GetDataSourceIndexStatsResponse> get(
     core.String name, {
-    core.int fromDate_day,
-    core.int fromDate_month,
-    core.int fromDate_year,
-    core.int toDate_day,
-    core.int toDate_month,
-    core.int toDate_year,
-    core.String $fields,
+    core.int? fromDate_day,
+    core.int? fromDate_month,
+    core.int? fromDate_year,
+    core.int? toDate_day,
+    core.int? toDate_month,
+    core.int? toDate_year,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fromDate_day != null) 'fromDate.day': ['${fromDate_day}'],
       if (fromDate_month != null) 'fromDate.month': ['${fromDate_month}'],
@@ -2512,17 +2411,14 @@ class StatsQuerySearchapplicationsResource {
   /// this method will complete with the same error.
   async.Future<GetSearchApplicationQueryStatsResponse> get(
     core.String name, {
-    core.int fromDate_day,
-    core.int fromDate_month,
-    core.int fromDate_year,
-    core.int toDate_day,
-    core.int toDate_month,
-    core.int toDate_year,
-    core.String $fields,
+    core.int? fromDate_day,
+    core.int? fromDate_month,
+    core.int? fromDate_year,
+    core.int? toDate_day,
+    core.int? toDate_month,
+    core.int? toDate_year,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fromDate_day != null) 'fromDate.day': ['${fromDate_day}'],
       if (fromDate_month != null) 'fromDate.month': ['${fromDate_month}'],
@@ -2598,17 +2494,14 @@ class StatsSessionSearchapplicationsResource {
   /// this method will complete with the same error.
   async.Future<GetSearchApplicationSessionStatsResponse> get(
     core.String name, {
-    core.int fromDate_day,
-    core.int fromDate_month,
-    core.int fromDate_year,
-    core.int toDate_day,
-    core.int toDate_month,
-    core.int toDate_year,
-    core.String $fields,
+    core.int? fromDate_day,
+    core.int? fromDate_month,
+    core.int? fromDate_year,
+    core.int? toDate_day,
+    core.int? toDate_month,
+    core.int? toDate_year,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fromDate_day != null) 'fromDate.day': ['${fromDate_day}'],
       if (fromDate_month != null) 'fromDate.month': ['${fromDate_month}'],
@@ -2683,17 +2576,14 @@ class StatsUserSearchapplicationsResource {
   /// this method will complete with the same error.
   async.Future<GetSearchApplicationUserStatsResponse> get(
     core.String name, {
-    core.int fromDate_day,
-    core.int fromDate_month,
-    core.int fromDate_year,
-    core.int toDate_day,
-    core.int toDate_month,
-    core.int toDate_year,
-    core.String $fields,
+    core.int? fromDate_day,
+    core.int? fromDate_month,
+    core.int? fromDate_year,
+    core.int? toDate_day,
+    core.int? toDate_month,
+    core.int? toDate_year,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fromDate_day != null) 'fromDate.day': ['${fromDate_day}'],
       if (fromDate_month != null) 'fromDate.month': ['${fromDate_month}'],
@@ -2732,7 +2622,7 @@ class BooleanOperatorOptions {
   /// where *<value>* matches the value of any String properties or text within
   /// the content field for the item. The operator name can only contain
   /// lowercase letters (a-z). The maximum length is 32 characters.
-  core.String operatorName;
+  core.String? operatorName;
 
   BooleanOperatorOptions();
 
@@ -2742,15 +2632,15 @@ class BooleanOperatorOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operatorName != null) 'operatorName': operatorName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operatorName != null) 'operatorName': operatorName!,
       };
 }
 
 /// Options for boolean properties.
 class BooleanPropertyOptions {
   /// If set, describes how the boolean should be used as a search operator.
-  BooleanOperatorOptions operatorOptions;
+  BooleanOperatorOptions? operatorOptions;
 
   BooleanPropertyOptions();
 
@@ -2761,9 +2651,9 @@ class BooleanPropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operatorOptions != null)
-          'operatorOptions': operatorOptions.toJson(),
+          'operatorOptions': operatorOptions!.toJson(),
       };
 }
 
@@ -2771,7 +2661,7 @@ class CheckAccessResponse {
   /// Returns true if principal has access.
   ///
   /// Returns false otherwise.
-  core.bool hasAccess;
+  core.bool? hasAccess;
 
   CheckAccessResponse();
 
@@ -2781,8 +2671,8 @@ class CheckAccessResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hasAccess != null) 'hasAccess': hasAccess,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hasAccess != null) 'hasAccess': hasAccess!,
       };
 }
 
@@ -2792,10 +2682,10 @@ class CompositeFilter {
   /// - "AND" : Logical operators, which can only be applied to sub filters.
   /// - "OR"
   /// - "NOT" : NOT can only be applied on a single sub filter.
-  core.String logicOperator;
+  core.String? logicOperator;
 
   /// Sub filters.
-  core.List<Filter> subFilters;
+  core.List<Filter>? subFilters;
 
   CompositeFilter();
 
@@ -2811,20 +2701,20 @@ class CompositeFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (logicOperator != null) 'logicOperator': logicOperator,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (logicOperator != null) 'logicOperator': logicOperator!,
         if (subFilters != null)
-          'subFilters': subFilters.map((value) => value.toJson()).toList(),
+          'subFilters': subFilters!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Aggregation of items by status code as of the specified date.
 class CustomerIndexStats {
   /// Date for which statistics were calculated.
-  Date date;
+  Date? date;
 
   /// Number of items aggregrated by status code.
-  core.List<ItemCountByStatus> itemCountByStatus;
+  core.List<ItemCountByStatus>? itemCountByStatus;
 
   CustomerIndexStats();
 
@@ -2841,11 +2731,11 @@ class CustomerIndexStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (date != null) 'date': date.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (date != null) 'date': date!.toJson(),
         if (itemCountByStatus != null)
           'itemCountByStatus':
-              itemCountByStatus.map((value) => value.toJson()).toList(),
+              itemCountByStatus!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2853,8 +2743,8 @@ class CustomerQueryStats {
   /// Date for which query stats were calculated.
   ///
   /// Stats calculated on the next day close to midnight are returned.
-  Date date;
-  core.List<QueryCountByStatus> queryCountByStatus;
+  Date? date;
+  core.List<QueryCountByStatus>? queryCountByStatus;
 
   CustomerQueryStats();
 
@@ -2871,11 +2761,11 @@ class CustomerQueryStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (date != null) 'date': date.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (date != null) 'date': date!.toJson(),
         if (queryCountByStatus != null)
           'queryCountByStatus':
-              queryCountByStatus.map((value) => value.toJson()).toList(),
+              queryCountByStatus!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2883,10 +2773,10 @@ class CustomerSessionStats {
   /// Date for which session stats were calculated.
   ///
   /// Stats calculated on the next day close to midnight are returned.
-  Date date;
+  Date? date;
 
   /// The count of search sessions on the day
-  core.String searchSessionsCount;
+  core.String? searchSessionsCount;
 
   CustomerSessionStats();
 
@@ -2900,10 +2790,10 @@ class CustomerSessionStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (date != null) 'date': date.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (date != null) 'date': date!.toJson(),
         if (searchSessionsCount != null)
-          'searchSessionsCount': searchSessionsCount,
+          'searchSessionsCount': searchSessionsCount!,
       };
 }
 
@@ -2911,16 +2801,16 @@ class CustomerUserStats {
   /// Date for which session stats were calculated.
   ///
   /// Stats calculated on the next day close to midnight are returned.
-  Date date;
+  Date? date;
 
   /// The count of unique active users in the past one day
-  core.String oneDayActiveUsersCount;
+  core.String? oneDayActiveUsersCount;
 
   /// The count of unique active users in the past seven days
-  core.String sevenDaysActiveUsersCount;
+  core.String? sevenDaysActiveUsersCount;
 
   /// The count of unique active users in the past thirty days
-  core.String thirtyDaysActiveUsersCount;
+  core.String? thirtyDaysActiveUsersCount;
 
   CustomerUserStats();
 
@@ -2942,14 +2832,14 @@ class CustomerUserStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (date != null) 'date': date.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (date != null) 'date': date!.toJson(),
         if (oneDayActiveUsersCount != null)
-          'oneDayActiveUsersCount': oneDayActiveUsersCount,
+          'oneDayActiveUsersCount': oneDayActiveUsersCount!,
         if (sevenDaysActiveUsersCount != null)
-          'sevenDaysActiveUsersCount': sevenDaysActiveUsersCount,
+          'sevenDaysActiveUsersCount': sevenDaysActiveUsersCount!,
         if (thirtyDaysActiveUsersCount != null)
-          'thirtyDaysActiveUsersCount': thirtyDaysActiveUsersCount,
+          'thirtyDaysActiveUsersCount': thirtyDaysActiveUsersCount!,
       };
 }
 
@@ -2963,18 +2853,18 @@ class DataSource {
   /// In read-only mode, the Indexing API rejects any requests to index or
   /// delete items in this source. Enabling read-only mode does not stop the
   /// processing of previously accepted data.
-  core.bool disableModifications;
+  core.bool? disableModifications;
 
   /// Disable serving any search or assist results.
-  core.bool disableServing;
+  core.bool? disableServing;
 
   /// Display name of the datasource The maximum length is 300 characters.
   ///
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   /// List of service accounts that have indexing access.
-  core.List<core.String> indexingServiceAccounts;
+  core.List<core.String>? indexingServiceAccounts;
 
   /// This field restricts visibility to items at the datasource level.
   ///
@@ -2983,17 +2873,17 @@ class DataSource {
   /// specific item, as users need to have ACL permissions on the contained
   /// items. This ensures a high level access on the entire datasource, and that
   /// the individual items are not shared outside this visibility.
-  core.List<GSuitePrincipal> itemsVisibility;
+  core.List<GSuitePrincipal>? itemsVisibility;
 
   /// Name of the datasource resource.
   ///
   /// Format: datasources/{source_id}. The name is ignored when creating a
   /// datasource.
-  core.String name;
+  core.String? name;
 
   /// IDs of the Long Running Operations (LROs) currently running for this
   /// schema.
-  core.List<core.String> operationIds;
+  core.List<core.String>? operationIds;
 
   /// A short name or alias for the source.
   ///
@@ -3004,7 +2894,7 @@ class DataSource {
   /// (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the
   /// following: mail, gmail, docs, drive, groups, sites, calendar, hangouts,
   /// gplus, keep, people, teams. Its maximum length is 32 characters.
-  core.String shortName;
+  core.String? shortName;
 
   DataSource();
 
@@ -3042,19 +2932,19 @@ class DataSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (disableModifications != null)
-          'disableModifications': disableModifications,
-        if (disableServing != null) 'disableServing': disableServing,
-        if (displayName != null) 'displayName': displayName,
+          'disableModifications': disableModifications!,
+        if (disableServing != null) 'disableServing': disableServing!,
+        if (displayName != null) 'displayName': displayName!,
         if (indexingServiceAccounts != null)
-          'indexingServiceAccounts': indexingServiceAccounts,
+          'indexingServiceAccounts': indexingServiceAccounts!,
         if (itemsVisibility != null)
           'itemsVisibility':
-              itemsVisibility.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (operationIds != null) 'operationIds': operationIds,
-        if (shortName != null) 'shortName': shortName,
+              itemsVisibility!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (operationIds != null) 'operationIds': operationIds!,
+        if (shortName != null) 'shortName': shortName!,
       };
 }
 
@@ -3066,10 +2956,10 @@ class DataSourceIndexStats {
   /// the next day are returned. Stats are calculated close to mid night in this
   /// case. If date of request is current date, then real time stats are
   /// returned.
-  Date date;
+  Date? date;
 
   /// Number of items aggregrated by status code.
-  core.List<ItemCountByStatus> itemCountByStatus;
+  core.List<ItemCountByStatus>? itemCountByStatus;
 
   DataSourceIndexStats();
 
@@ -3086,11 +2976,11 @@ class DataSourceIndexStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (date != null) 'date': date.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (date != null) 'date': date!.toJson(),
         if (itemCountByStatus != null)
           'itemCountByStatus':
-              itemCountByStatus.map((value) => value.toJson()).toList(),
+              itemCountByStatus!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3104,10 +2994,10 @@ class DataSourceRestriction {
   /// elements is 20. NOTE: Suggest API supports only few filters at the moment:
   /// "objecttype", "type" and "mimetype". For now, schema specific filters
   /// cannot be used to filter suggestions.
-  core.List<FilterOptions> filterOptions;
+  core.List<FilterOptions>? filterOptions;
 
   /// The source of restriction.
-  Source source;
+  Source? source;
 
   DataSourceRestriction();
 
@@ -3124,11 +3014,11 @@ class DataSourceRestriction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (filterOptions != null)
           'filterOptions':
-              filterOptions.map((value) => value.toJson()).toList(),
-        if (source != null) 'source': source.toJson(),
+              filterOptions!.map((value) => value.toJson()).toList(),
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
@@ -3142,17 +3032,17 @@ class Date {
   /// Day of month.
   ///
   /// Must be from 1 to 31 and valid for the year and month.
-  core.int day;
+  core.int? day;
 
   /// Month of date.
   ///
   /// Must be from 1 to 12.
-  core.int month;
+  core.int? month;
 
   /// Year of date.
   ///
   /// Must be from 1 to 9999.
-  core.int year;
+  core.int? year;
 
   Date();
 
@@ -3168,10 +3058,10 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (month != null) 'month': month,
-        if (year != null) 'year': year,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (month != null) 'month': month!,
+        if (year != null) 'year': year!,
       };
 }
 
@@ -3190,7 +3080,7 @@ class DateOperatorOptions {
   /// show results only where the value of the property named *closeDate* is
   /// later than *<value>*. The operator name can only contain lowercase letters
   /// (a-z). The maximum length is 32 characters.
-  core.String greaterThanOperatorName;
+  core.String? greaterThanOperatorName;
 
   /// Indicates the operator name required in the query in order to isolate the
   /// date property using the less-than operator.
@@ -3200,7 +3090,7 @@ class DateOperatorOptions {
   /// only where the value of the property named *closeDate* is earlier than
   /// *<value>*. The operator name can only contain lowercase letters (a-z). The
   /// maximum length is 32 characters.
-  core.String lessThanOperatorName;
+  core.String? lessThanOperatorName;
 
   /// Indicates the actual string required in the query in order to isolate the
   /// date property.
@@ -3214,7 +3104,7 @@ class DateOperatorOptions {
   /// properties or text within the content field for the indexed datasource.
   /// The operator name can only contain lowercase letters (a-z). The maximum
   /// length is 32 characters.
-  core.String operatorName;
+  core.String? operatorName;
 
   DateOperatorOptions();
 
@@ -3230,19 +3120,19 @@ class DateOperatorOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (greaterThanOperatorName != null)
-          'greaterThanOperatorName': greaterThanOperatorName,
+          'greaterThanOperatorName': greaterThanOperatorName!,
         if (lessThanOperatorName != null)
-          'lessThanOperatorName': lessThanOperatorName,
-        if (operatorName != null) 'operatorName': operatorName,
+          'lessThanOperatorName': lessThanOperatorName!,
+        if (operatorName != null) 'operatorName': operatorName!,
       };
 }
 
 /// Options for date properties.
 class DatePropertyOptions {
   /// If set, describes how the date should be used as a search operator.
-  DateOperatorOptions operatorOptions;
+  DateOperatorOptions? operatorOptions;
 
   DatePropertyOptions();
 
@@ -3253,15 +3143,15 @@ class DatePropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operatorOptions != null)
-          'operatorOptions': operatorOptions.toJson(),
+          'operatorOptions': operatorOptions!.toJson(),
       };
 }
 
 /// List of date values.
 class DateValues {
-  core.List<Date> values;
+  core.List<Date>? values;
 
   DateValues();
 
@@ -3274,9 +3164,9 @@ class DateValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (values != null)
-          'values': values.map((value) => value.toJson()).toList(),
+          'values': values!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3285,7 +3175,7 @@ class DebugOptions {
   /// If you are asked by Google to help with debugging, set this field.
   ///
   /// Otherwise, ignore this field.
-  core.bool enableDebugging;
+  core.bool? enableDebugging;
 
   DebugOptions();
 
@@ -3295,8 +3185,8 @@ class DebugOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enableDebugging != null) 'enableDebugging': enableDebugging,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enableDebugging != null) 'enableDebugging': enableDebugging!,
       };
 }
 
@@ -3304,13 +3194,13 @@ class DeleteQueueItemsRequest {
   /// Name of connector making this call.
   ///
   /// Format: datasources/{source_id}/connectors/{ID}
-  core.String connectorName;
+  core.String? connectorName;
 
   /// Common debug options.
-  DebugOptions debugOptions;
+  DebugOptions? debugOptions;
 
   /// Name of a queue to delete items from.
-  core.String queue;
+  core.String? queue;
 
   DeleteQueueItemsRequest();
 
@@ -3327,10 +3217,10 @@ class DeleteQueueItemsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (connectorName != null) 'connectorName': connectorName,
-        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
-        if (queue != null) 'queue': queue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (connectorName != null) 'connectorName': connectorName!,
+        if (debugOptions != null) 'debugOptions': debugOptions!.toJson(),
+        if (queue != null) 'queue': queue!,
       };
 }
 
@@ -3346,7 +3236,7 @@ class DisplayedProperty {
   ///
   /// If the name is not a defined property in the schema, an error is given
   /// when attempting to update the schema.
-  core.String propertyName;
+  core.String? propertyName;
 
   DisplayedProperty();
 
@@ -3356,8 +3246,8 @@ class DisplayedProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (propertyName != null) 'propertyName': propertyName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (propertyName != null) 'propertyName': propertyName!,
       };
 }
 
@@ -3371,7 +3261,7 @@ class DoubleOperatorOptions {
   ///
   /// The operator name can only contain lowercase letters (a-z). The maximum
   /// length is 32 characters.
-  core.String operatorName;
+  core.String? operatorName;
 
   DoubleOperatorOptions();
 
@@ -3381,15 +3271,15 @@ class DoubleOperatorOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operatorName != null) 'operatorName': operatorName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operatorName != null) 'operatorName': operatorName!,
       };
 }
 
 /// Options for double properties.
 class DoublePropertyOptions {
   /// If set, describes how the double should be used as a search operator.
-  DoubleOperatorOptions operatorOptions;
+  DoubleOperatorOptions? operatorOptions;
 
   DoublePropertyOptions();
 
@@ -3400,15 +3290,15 @@ class DoublePropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operatorOptions != null)
-          'operatorOptions': operatorOptions.toJson(),
+          'operatorOptions': operatorOptions!.toJson(),
       };
 }
 
 /// List of double values.
 class DoubleValues {
-  core.List<core.double> values;
+  core.List<core.double>? values;
 
   DoubleValues();
 
@@ -3420,8 +3310,8 @@ class DoubleValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (values != null) 'values': values!,
       };
 }
 
@@ -3432,7 +3322,7 @@ class DriveFollowUpRestrict {
   /// - "UNSPECIFIED"
   /// - "FOLLOWUP_SUGGESTIONS"
   /// - "FOLLOWUP_ACTION_ITEMS"
-  core.String type;
+  core.String? type;
 
   DriveFollowUpRestrict();
 
@@ -3442,8 +3332,8 @@ class DriveFollowUpRestrict {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3454,7 +3344,7 @@ class DriveLocationRestrict {
   /// - "UNSPECIFIED"
   /// - "TRASHED"
   /// - "STARRED"
-  core.String type;
+  core.String? type;
 
   DriveLocationRestrict();
 
@@ -3464,8 +3354,8 @@ class DriveLocationRestrict {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3488,7 +3378,7 @@ class DriveMimeTypeRestrict {
   /// - "FOLDER"
   /// - "ARCHIVE"
   /// - "SITE"
-  core.String type;
+  core.String? type;
 
   DriveMimeTypeRestrict();
 
@@ -3498,8 +3388,8 @@ class DriveMimeTypeRestrict {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3513,7 +3403,7 @@ class DriveTimeSpanRestrict {
   /// - "LAST_7_DAYS"
   /// - "LAST_30_DAYS" : Not Enabled
   /// - "LAST_90_DAYS" : Not Enabled
-  core.String type;
+  core.String? type;
 
   DriveTimeSpanRestrict();
 
@@ -3523,15 +3413,15 @@ class DriveTimeSpanRestrict {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
 /// A person's email address.
 class EmailAddress {
   /// The email address.
-  core.String emailAddress;
+  core.String? emailAddress;
 
   EmailAddress();
 
@@ -3541,8 +3431,8 @@ class EmailAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (emailAddress != null) 'emailAddress': emailAddress,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (emailAddress != null) 'emailAddress': emailAddress!,
       };
 }
 
@@ -3569,7 +3459,7 @@ class EnumOperatorOptions {
   /// properties or text within the content field for the item. The operator
   /// name can only contain lowercase letters (a-z). The maximum length is 32
   /// characters.
-  core.String operatorName;
+  core.String? operatorName;
 
   EnumOperatorOptions();
 
@@ -3579,8 +3469,8 @@ class EnumOperatorOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operatorName != null) 'operatorName': operatorName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operatorName != null) 'operatorName': operatorName!,
       };
 }
 
@@ -3596,7 +3486,7 @@ class EnumOperatorOptions {
 /// items indexed with the value *p0*.
 class EnumPropertyOptions {
   /// If set, describes how the enum should be used as a search operator.
-  EnumOperatorOptions operatorOptions;
+  EnumOperatorOptions? operatorOptions;
 
   /// Used to specify the ordered ranking for the enumeration that determines
   /// how the integer values provided in the possible EnumValuePairs are used to
@@ -3612,7 +3502,7 @@ class EnumPropertyOptions {
   /// indicate lower ranking.
   /// - "DESCENDING" : This property is ranked in descending order. Lower values
   /// indicate higher ranking.
-  core.String orderedRanking;
+  core.String? orderedRanking;
 
   /// The list of possible values for the enumeration property.
   ///
@@ -3624,7 +3514,7 @@ class EnumPropertyOptions {
   /// additional enum values in the future, leave gaps in the initial integer
   /// values to allow adding a value in between previously registered values.
   /// The maximum number of elements is 100.
-  core.List<EnumValuePair> possibleValues;
+  core.List<EnumValuePair>? possibleValues;
 
   EnumPropertyOptions();
 
@@ -3644,13 +3534,13 @@ class EnumPropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operatorOptions != null)
-          'operatorOptions': operatorOptions.toJson(),
-        if (orderedRanking != null) 'orderedRanking': orderedRanking,
+          'operatorOptions': operatorOptions!.toJson(),
+        if (orderedRanking != null) 'orderedRanking': orderedRanking!,
         if (possibleValues != null)
           'possibleValues':
-              possibleValues.map((value) => value.toJson()).toList(),
+              possibleValues!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3672,12 +3562,12 @@ class EnumValuePair {
   /// The integer value of the EnumValuePair which must be non-negative.
   ///
   /// Optional.
-  core.int integerValue;
+  core.int? integerValue;
 
   /// The string value of the EnumValuePair.
   ///
   /// The maximum length is 32 characters.
-  core.String stringValue;
+  core.String? stringValue;
 
   EnumValuePair();
 
@@ -3690,16 +3580,16 @@ class EnumValuePair {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (integerValue != null) 'integerValue': integerValue,
-        if (stringValue != null) 'stringValue': stringValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (integerValue != null) 'integerValue': integerValue!,
+        if (stringValue != null) 'stringValue': stringValue!,
       };
 }
 
 /// List of enum values.
 class EnumValues {
   /// The maximum allowable length for string values is 32 characters.
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   EnumValues();
 
@@ -3711,14 +3601,14 @@ class EnumValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (values != null) 'values': values!,
       };
 }
 
 /// Error information about the response.
 class ErrorInfo {
-  core.List<ErrorMessage> errorMessages;
+  core.List<ErrorMessage>? errorMessages;
 
   ErrorInfo();
 
@@ -3731,17 +3621,17 @@ class ErrorInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorMessages != null)
           'errorMessages':
-              errorMessages.map((value) => value.toJson()).toList(),
+              errorMessages!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Error message per source response.
 class ErrorMessage {
-  core.String errorMessage;
-  Source source;
+  core.String? errorMessage;
+  Source? source;
 
   ErrorMessage();
 
@@ -3755,9 +3645,9 @@ class ErrorMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorMessage != null) 'errorMessage': errorMessage,
-        if (source != null) 'source': source.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
@@ -3771,7 +3661,7 @@ class FacetBucket {
   ///
   /// Counts are only returned for searches when count accuracy is ensured. Can
   /// be empty.
-  core.int count;
+  core.int? count;
 
   /// Percent of results that match the bucket value.
   ///
@@ -3780,8 +3670,8 @@ class FacetBucket {
   /// percentage value that rounds to 0. Percentages are returned for all
   /// searches, but are an estimate. Because percentages are always returned,
   /// you should render percentages instead of counts.
-  core.int percentage;
-  Value value;
+  core.int? percentage;
+  Value? value;
 
   FacetBucket();
 
@@ -3798,10 +3688,10 @@ class FacetBucket {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (percentage != null) 'percentage': percentage,
-        if (value != null) 'value': value.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (percentage != null) 'percentage': percentage!,
+        if (value != null) 'value': value!.toJson(),
       };
 }
 
@@ -3813,23 +3703,23 @@ class FacetOptions {
   /// Maximum number of facet buckets that should be returned for this facet.
   ///
   /// Defaults to 10. Maximum value is 100.
-  core.int numFacetBuckets;
+  core.int? numFacetBuckets;
 
   /// If object_type is set, only those objects of that type will be used to
   /// compute facets.
   ///
   /// If empty, then all objects will be used to compute facets.
-  core.String objectType;
+  core.String? objectType;
 
   /// Name of the operator chosen for faceting.
   ///
   /// @see cloudsearch.SchemaPropertyOptions
-  core.String operatorName;
+  core.String? operatorName;
 
   /// Source name to facet on.
   ///
   /// Format: datasources/{source_id} If empty, all data sources will be used.
-  core.String sourceName;
+  core.String? sourceName;
 
   FacetOptions();
 
@@ -3848,33 +3738,33 @@ class FacetOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (numFacetBuckets != null) 'numFacetBuckets': numFacetBuckets,
-        if (objectType != null) 'objectType': objectType,
-        if (operatorName != null) 'operatorName': operatorName,
-        if (sourceName != null) 'sourceName': sourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (numFacetBuckets != null) 'numFacetBuckets': numFacetBuckets!,
+        if (objectType != null) 'objectType': objectType!,
+        if (operatorName != null) 'operatorName': operatorName!,
+        if (sourceName != null) 'sourceName': sourceName!,
       };
 }
 
 /// Source specific facet response
 class FacetResult {
   /// FacetBuckets for values in response containing at least a single result.
-  core.List<FacetBucket> buckets;
+  core.List<FacetBucket>? buckets;
 
   /// Object type for which facet results are returned.
   ///
   /// Can be empty.
-  core.String objectType;
+  core.String? objectType;
 
   /// Name of the operator chosen for faceting.
   ///
   /// @see cloudsearch.SchemaPropertyOptions
-  core.String operatorName;
+  core.String? operatorName;
 
   /// Source name for which facet results are returned.
   ///
   /// Will not be empty.
-  core.String sourceName;
+  core.String? sourceName;
 
   FacetResult();
 
@@ -3896,21 +3786,21 @@ class FacetResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (buckets != null)
-          'buckets': buckets.map((value) => value.toJson()).toList(),
-        if (objectType != null) 'objectType': objectType,
-        if (operatorName != null) 'operatorName': operatorName,
-        if (sourceName != null) 'sourceName': sourceName,
+          'buckets': buckets!.map((value) => value.toJson()).toList(),
+        if (objectType != null) 'objectType': objectType!,
+        if (operatorName != null) 'operatorName': operatorName!,
+        if (sourceName != null) 'sourceName': sourceName!,
       };
 }
 
 class FieldViolation {
   /// Description of the error.
-  core.String description;
+  core.String? description;
 
   /// Path of field with violation.
-  core.String field;
+  core.String? field;
 
   FieldViolation();
 
@@ -3923,9 +3813,9 @@ class FieldViolation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (field != null) 'field': field,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (field != null) 'field': field!,
       };
 }
 
@@ -3938,8 +3828,8 @@ class FieldViolation {
 /// be either an AND or a NOT. AND can appear only at the top-most level. OR can
 /// appear only under a top-level AND.
 class Filter {
-  CompositeFilter compositeFilter;
-  ValueFilter valueFilter;
+  CompositeFilter? compositeFilter;
+  ValueFilter? valueFilter;
 
   Filter();
 
@@ -3954,23 +3844,23 @@ class Filter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (compositeFilter != null)
-          'compositeFilter': compositeFilter.toJson(),
-        if (valueFilter != null) 'valueFilter': valueFilter.toJson(),
+          'compositeFilter': compositeFilter!.toJson(),
+        if (valueFilter != null) 'valueFilter': valueFilter!.toJson(),
       };
 }
 
 /// Filter options to be applied on query.
 class FilterOptions {
   /// Generic filter to restrict the search, such as `lang:en`, `site:xyz`.
-  Filter filter;
+  Filter? filter;
 
   /// If object_type is set, only objects of that type are returned.
   ///
   /// This should correspond to the name of the object that was registered
   /// within the definition of schema. The maximum length is 256 characters.
-  core.String objectType;
+  core.String? objectType;
 
   FilterOptions();
 
@@ -3984,9 +3874,9 @@ class FilterOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filter != null) 'filter': filter.toJson(),
-        if (objectType != null) 'objectType': objectType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filter != null) 'filter': filter!.toJson(),
+        if (objectType != null) 'objectType': objectType!,
       };
 }
 
@@ -4003,7 +3893,7 @@ class FreshnessOptions {
   /// The duration after which an object should be considered stale.
   ///
   /// The default value is 180 days (in seconds).
-  core.String freshnessDuration;
+  core.String? freshnessDuration;
 
   /// This property indicates the freshness level of the object in the index.
   ///
@@ -4012,7 +3902,7 @@ class FreshnessOptions {
   /// Indexing API uses updateTime as the freshness indicator. The maximum
   /// length is 256 characters. When a property is used to calculate freshness,
   /// the value defaults to 2 years from the current time.
-  core.String freshnessProperty;
+  core.String? freshnessProperty;
 
   FreshnessOptions();
 
@@ -4025,21 +3915,21 @@ class FreshnessOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (freshnessDuration != null) 'freshnessDuration': freshnessDuration,
-        if (freshnessProperty != null) 'freshnessProperty': freshnessProperty,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (freshnessDuration != null) 'freshnessDuration': freshnessDuration!,
+        if (freshnessProperty != null) 'freshnessProperty': freshnessProperty!,
       };
 }
 
 class GSuitePrincipal {
   /// This principal represents all users of the G Suite domain of the customer.
-  core.bool gsuiteDomain;
+  core.bool? gsuiteDomain;
 
   /// This principal references a G Suite group account
-  core.String gsuiteGroupEmail;
+  core.String? gsuiteGroupEmail;
 
   /// This principal references a G Suite user account
-  core.String gsuiteUserEmail;
+  core.String? gsuiteUserEmail;
 
   GSuitePrincipal();
 
@@ -4055,16 +3945,16 @@ class GSuitePrincipal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gsuiteDomain != null) 'gsuiteDomain': gsuiteDomain,
-        if (gsuiteGroupEmail != null) 'gsuiteGroupEmail': gsuiteGroupEmail,
-        if (gsuiteUserEmail != null) 'gsuiteUserEmail': gsuiteUserEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gsuiteDomain != null) 'gsuiteDomain': gsuiteDomain!,
+        if (gsuiteGroupEmail != null) 'gsuiteGroupEmail': gsuiteGroupEmail!,
+        if (gsuiteUserEmail != null) 'gsuiteUserEmail': gsuiteUserEmail!,
       };
 }
 
 class GetCustomerIndexStatsResponse {
   /// Summary of indexed item counts, one for each day in the requested range.
-  core.List<CustomerIndexStats> stats;
+  core.List<CustomerIndexStats>? stats;
 
   GetCustomerIndexStatsResponse();
 
@@ -4077,14 +3967,14 @@ class GetCustomerIndexStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (stats != null)
-          'stats': stats.map((value) => value.toJson()).toList(),
+          'stats': stats!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GetCustomerQueryStatsResponse {
-  core.List<CustomerQueryStats> stats;
+  core.List<CustomerQueryStats>? stats;
 
   GetCustomerQueryStatsResponse();
 
@@ -4097,14 +3987,14 @@ class GetCustomerQueryStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (stats != null)
-          'stats': stats.map((value) => value.toJson()).toList(),
+          'stats': stats!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GetCustomerSessionStatsResponse {
-  core.List<CustomerSessionStats> stats;
+  core.List<CustomerSessionStats>? stats;
 
   GetCustomerSessionStatsResponse();
 
@@ -4117,14 +4007,14 @@ class GetCustomerSessionStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (stats != null)
-          'stats': stats.map((value) => value.toJson()).toList(),
+          'stats': stats!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GetCustomerUserStatsResponse {
-  core.List<CustomerUserStats> stats;
+  core.List<CustomerUserStats>? stats;
 
   GetCustomerUserStatsResponse();
 
@@ -4137,15 +4027,15 @@ class GetCustomerUserStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (stats != null)
-          'stats': stats.map((value) => value.toJson()).toList(),
+          'stats': stats!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GetDataSourceIndexStatsResponse {
   /// Summary of indexed item counts, one for each day in the requested range.
-  core.List<DataSourceIndexStats> stats;
+  core.List<DataSourceIndexStats>? stats;
 
   GetDataSourceIndexStatsResponse();
 
@@ -4158,14 +4048,14 @@ class GetDataSourceIndexStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (stats != null)
-          'stats': stats.map((value) => value.toJson()).toList(),
+          'stats': stats!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GetSearchApplicationQueryStatsResponse {
-  core.List<SearchApplicationQueryStats> stats;
+  core.List<SearchApplicationQueryStats>? stats;
 
   GetSearchApplicationQueryStatsResponse();
 
@@ -4179,14 +4069,14 @@ class GetSearchApplicationQueryStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (stats != null)
-          'stats': stats.map((value) => value.toJson()).toList(),
+          'stats': stats!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GetSearchApplicationSessionStatsResponse {
-  core.List<SearchApplicationSessionStats> stats;
+  core.List<SearchApplicationSessionStats>? stats;
 
   GetSearchApplicationSessionStatsResponse();
 
@@ -4200,14 +4090,14 @@ class GetSearchApplicationSessionStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (stats != null)
-          'stats': stats.map((value) => value.toJson()).toList(),
+          'stats': stats!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GetSearchApplicationUserStatsResponse {
-  core.List<SearchApplicationUserStats> stats;
+  core.List<SearchApplicationUserStats>? stats;
 
   GetSearchApplicationUserStatsResponse();
 
@@ -4221,9 +4111,9 @@ class GetSearchApplicationUserStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (stats != null)
-          'stats': stats.map((value) => value.toJson()).toList(),
+          'stats': stats!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4242,7 +4132,7 @@ class HtmlOperatorOptions {
   /// all items where *<value>* matches the value of any html properties or text
   /// within the content field for the item. The operator name can only contain
   /// lowercase letters (a-z). The maximum length is 32 characters.
-  core.String operatorName;
+  core.String? operatorName;
 
   HtmlOperatorOptions();
 
@@ -4252,21 +4142,21 @@ class HtmlOperatorOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operatorName != null) 'operatorName': operatorName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operatorName != null) 'operatorName': operatorName!,
       };
 }
 
 /// Options for html properties.
 class HtmlPropertyOptions {
   /// If set, describes how the property should be used as a search operator.
-  HtmlOperatorOptions operatorOptions;
+  HtmlOperatorOptions? operatorOptions;
 
   /// Indicates the search quality importance of the tokens within the field
   /// when used for retrieval.
   ///
   /// Can only be set to DEFAULT or NONE.
-  RetrievalImportance retrievalImportance;
+  RetrievalImportance? retrievalImportance;
 
   HtmlPropertyOptions();
 
@@ -4281,18 +4171,18 @@ class HtmlPropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operatorOptions != null)
-          'operatorOptions': operatorOptions.toJson(),
+          'operatorOptions': operatorOptions!.toJson(),
         if (retrievalImportance != null)
-          'retrievalImportance': retrievalImportance.toJson(),
+          'retrievalImportance': retrievalImportance!.toJson(),
       };
 }
 
 /// List of html values.
 class HtmlValues {
   /// The maximum allowable length for html values is 2048 characters.
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   HtmlValues();
 
@@ -4304,15 +4194,15 @@ class HtmlValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (values != null) 'values': values!,
       };
 }
 
 class IndexItemOptions {
   /// Specifies if the index request should allow gsuite principals that do not
   /// exist or are deleted in the index request.
-  core.bool allowUnknownGsuitePrincipals;
+  core.bool? allowUnknownGsuitePrincipals;
 
   IndexItemOptions();
 
@@ -4323,9 +4213,9 @@ class IndexItemOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowUnknownGsuitePrincipals != null)
-          'allowUnknownGsuitePrincipals': allowUnknownGsuitePrincipals,
+          'allowUnknownGsuitePrincipals': allowUnknownGsuitePrincipals!,
       };
 }
 
@@ -4333,16 +4223,16 @@ class IndexItemRequest {
   /// Name of connector making this call.
   ///
   /// Format: datasources/{source_id}/connectors/{ID}
-  core.String connectorName;
+  core.String? connectorName;
 
   /// Common debug options.
-  DebugOptions debugOptions;
-  IndexItemOptions indexItemOptions;
+  DebugOptions? debugOptions;
+  IndexItemOptions? indexItemOptions;
 
   /// Name of the item.
   ///
   /// Format: datasources/{source_id}/items/{item_id}
-  Item item;
+  Item? item;
 
   /// The RequestMode for this request.
   ///
@@ -4353,7 +4243,7 @@ class IndexItemRequest {
   /// - "SYNCHRONOUS" : For real-time updates.
   /// - "ASYNCHRONOUS" : For changes that are executed after the response is
   /// sent back to the caller.
-  core.String mode;
+  core.String? mode;
 
   IndexItemRequest();
 
@@ -4378,13 +4268,13 @@ class IndexItemRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (connectorName != null) 'connectorName': connectorName,
-        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (connectorName != null) 'connectorName': connectorName!,
+        if (debugOptions != null) 'debugOptions': debugOptions!.toJson(),
         if (indexItemOptions != null)
-          'indexItemOptions': indexItemOptions.toJson(),
-        if (item != null) 'item': item.toJson(),
-        if (mode != null) 'mode': mode,
+          'indexItemOptions': indexItemOptions!.toJson(),
+        if (item != null) 'item': item!.toJson(),
+        if (mode != null) 'mode': mode!,
       };
 }
 
@@ -4401,7 +4291,7 @@ class IntegerOperatorOptions {
   /// *priorityabove:<value>* show results only where the value of the property
   /// named *priorityVal* is greater than *<value>*. The operator name can only
   /// contain lowercase letters (a-z). The maximum length is 32 characters.
-  core.String greaterThanOperatorName;
+  core.String? greaterThanOperatorName;
 
   /// Indicates the operator name required in the query in order to isolate the
   /// integer property using the less-than operator.
@@ -4411,7 +4301,7 @@ class IntegerOperatorOptions {
   /// results only where the value of the property named *priorityVal* is less
   /// than *<value>*. The operator name can only contain lowercase letters
   /// (a-z). The maximum length is 32 characters.
-  core.String lessThanOperatorName;
+  core.String? lessThanOperatorName;
 
   /// Indicates the operator name required in the query in order to isolate the
   /// integer property.
@@ -4424,7 +4314,7 @@ class IntegerOperatorOptions {
   /// properties or text within the content field for the item. The operator
   /// name can only contain lowercase letters (a-z). The maximum length is 32
   /// characters.
-  core.String operatorName;
+  core.String? operatorName;
 
   IntegerOperatorOptions();
 
@@ -4440,12 +4330,12 @@ class IntegerOperatorOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (greaterThanOperatorName != null)
-          'greaterThanOperatorName': greaterThanOperatorName,
+          'greaterThanOperatorName': greaterThanOperatorName!,
         if (lessThanOperatorName != null)
-          'lessThanOperatorName': lessThanOperatorName,
-        if (operatorName != null) 'operatorName': operatorName,
+          'lessThanOperatorName': lessThanOperatorName!,
+        if (operatorName != null) 'operatorName': operatorName!,
       };
 }
 
@@ -4457,7 +4347,7 @@ class IntegerPropertyOptions {
   /// according to the ordered ranking. Indexing requests with values greater
   /// than the maximum are accepted and ranked with the same weight as items
   /// indexed with the maximum value.
-  core.String maximumValue;
+  core.String? maximumValue;
 
   /// The minimum value of the property.
   ///
@@ -4465,10 +4355,10 @@ class IntegerPropertyOptions {
   /// according to the ordered ranking. Indexing requests with values less than
   /// the minimum are accepted and ranked with the same weight as items indexed
   /// with the minimum value.
-  core.String minimumValue;
+  core.String? minimumValue;
 
   /// If set, describes how the integer should be used as a search operator.
-  IntegerOperatorOptions operatorOptions;
+  IntegerOperatorOptions? operatorOptions;
 
   /// Used to specify the ordered ranking for the integer.
   ///
@@ -4480,7 +4370,7 @@ class IntegerPropertyOptions {
   /// indicate lower ranking.
   /// - "DESCENDING" : This property is ranked in descending order. Lower values
   /// indicate higher ranking.
-  core.String orderedRanking;
+  core.String? orderedRanking;
 
   IntegerPropertyOptions();
 
@@ -4500,18 +4390,18 @@ class IntegerPropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maximumValue != null) 'maximumValue': maximumValue,
-        if (minimumValue != null) 'minimumValue': minimumValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maximumValue != null) 'maximumValue': maximumValue!,
+        if (minimumValue != null) 'minimumValue': minimumValue!,
         if (operatorOptions != null)
-          'operatorOptions': operatorOptions.toJson(),
-        if (orderedRanking != null) 'orderedRanking': orderedRanking,
+          'operatorOptions': operatorOptions!.toJson(),
+        if (orderedRanking != null) 'orderedRanking': orderedRanking!,
       };
 }
 
 /// List of integer values.
 class IntegerValues {
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   IntegerValues();
 
@@ -4523,8 +4413,8 @@ class IntegerValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (values != null) 'values': values!,
       };
 }
 
@@ -4534,17 +4424,17 @@ class Interaction {
   ///
   /// If multiple actions of the same type exist for a single user, only the
   /// most recent action is recorded.
-  core.String interactionTime;
+  core.String? interactionTime;
 
   /// The user that acted on the item.
-  Principal principal;
+  Principal? principal;
 
   ///
   /// Possible string values are:
   /// - "UNSPECIFIED" : Invalid value.
   /// - "VIEW" : This interaction indicates the user viewed the item.
   /// - "EDIT" : This interaction indicates the user edited the item.
-  core.String type;
+  core.String? type;
 
   Interaction();
 
@@ -4561,10 +4451,10 @@ class Interaction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (interactionTime != null) 'interactionTime': interactionTime,
-        if (principal != null) 'principal': principal.toJson(),
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (interactionTime != null) 'interactionTime': interactionTime!,
+        if (principal != null) 'principal': principal!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4572,10 +4462,10 @@ class Interaction {
 /// file, folder, or a database record.
 class Item {
   /// Access control list for this item.
-  ItemAcl acl;
+  ItemAcl? acl;
 
   /// Item content to be indexed and made text searchable.
-  ItemContent content;
+  ItemContent? content;
 
   /// Type for this item.
   /// Possible string values are:
@@ -4587,22 +4477,22 @@ class Item {
   /// supply other items with ACLs and/or contain other items.
   /// - "VIRTUAL_CONTAINER_ITEM" : An item that does not get indexed, but
   /// otherwise has the same purpose as CONTAINER_ITEM.
-  core.String itemType;
+  core.String? itemType;
 
   /// Metadata information.
-  ItemMetadata metadata;
+  ItemMetadata? metadata;
 
   /// Name of the Item.
   ///
   /// Format: datasources/{source_id}/items/{item_id} This is a required field.
   /// The maximum length is 1536 characters.
-  core.String name;
+  core.String? name;
 
   /// Additional state connector can store for this item.
   ///
   /// The maximum length is 10000 bytes.
-  core.String payload;
-  core.List<core.int> get payloadAsBytes => convert.base64.decode(payload);
+  core.String? payload;
+  core.List<core.int> get payloadAsBytes => convert.base64.decode(payload!);
 
   set payloadAsBytes(core.List<core.int> _bytes) {
     payload =
@@ -4612,16 +4502,16 @@ class Item {
   /// Queue this item belongs to.
   ///
   /// The maximum length is 100 characters.
-  core.String queue;
+  core.String? queue;
 
   /// Status of the item.
   ///
   /// Output only field.
-  ItemStatus status;
+  ItemStatus? status;
 
   /// The structured data for the item that should conform to a registered
   /// object definition in the schema for the data source.
-  ItemStructuredData structuredData;
+  ItemStructuredData? structuredData;
 
   /// The indexing system stores the version from the datasource as a byte
   /// string and compares the Item version in the index to the version of the
@@ -4632,8 +4522,8 @@ class Item {
   /// item. The maximum length for this field is 1024 bytes.
   ///
   /// Required.
-  core.String version;
-  core.List<core.int> get versionAsBytes => convert.base64.decode(version);
+  core.String? version;
+  core.List<core.int> get versionAsBytes => convert.base64.decode(version!);
 
   set versionAsBytes(core.List<core.int> _bytes) {
     version =
@@ -4680,17 +4570,17 @@ class Item {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (acl != null) 'acl': acl.toJson(),
-        if (content != null) 'content': content.toJson(),
-        if (itemType != null) 'itemType': itemType,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (name != null) 'name': name,
-        if (payload != null) 'payload': payload,
-        if (queue != null) 'queue': queue,
-        if (status != null) 'status': status.toJson(),
-        if (structuredData != null) 'structuredData': structuredData.toJson(),
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (acl != null) 'acl': acl!.toJson(),
+        if (content != null) 'content': content!.toJson(),
+        if (itemType != null) 'itemType': itemType!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (name != null) 'name': name!,
+        if (payload != null) 'payload': payload!,
+        if (queue != null) 'queue': queue!,
+        if (status != null) 'status': status!.toJson(),
+        if (structuredData != null) 'structuredData': structuredData!.toJson(),
+        if (version != null) 'version': version!,
       };
 }
 
@@ -4715,7 +4605,7 @@ class ItemAcl {
   /// parent item specified in the inheritAclFrom field determines read access.
   /// - "BOTH_PERMIT" : Access is granted only if this item and the parent item
   /// specified in the inheritAclFrom field both permit read access.
-  core.String aclInheritanceType;
+  core.String? aclInheritanceType;
 
   /// List of principals who are explicitly denied access to the item in search
   /// results.
@@ -4723,7 +4613,7 @@ class ItemAcl {
   /// While principals are denied access by default, use denied readers to
   /// handle exceptions and override the list allowed readers. The maximum
   /// number of elements is 100.
-  core.List<Principal> deniedReaders;
+  core.List<Principal>? deniedReaders;
 
   /// Name of the item to inherit the Access Permission List (ACL) from.
   ///
@@ -4735,7 +4625,7 @@ class ItemAcl {
   /// index, but may not visible in search results. By contrast, deletion of a
   /// container item also deletes all items that reference the container via the
   /// containerName field. The maximum length for this field is 1536 characters.
-  core.String inheritAclFrom;
+  core.String? inheritAclFrom;
 
   /// List of owners for the item.
   ///
@@ -4744,14 +4634,14 @@ class ItemAcl {
   /// owner. The maximum number of elements is 5.
   ///
   /// Optional.
-  core.List<Principal> owners;
+  core.List<Principal>? owners;
 
   /// List of principals who are allowed to see the item in search results.
   ///
   /// Optional if inheriting permissions from another item or if the item is not
   /// intended to be visible, such as virtual containers. The maximum number of
   /// elements is 1000.
-  core.List<Principal> readers;
+  core.List<Principal>? readers;
 
   ItemAcl();
 
@@ -4782,17 +4672,17 @@ class ItemAcl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (aclInheritanceType != null)
-          'aclInheritanceType': aclInheritanceType,
+          'aclInheritanceType': aclInheritanceType!,
         if (deniedReaders != null)
           'deniedReaders':
-              deniedReaders.map((value) => value.toJson()).toList(),
-        if (inheritAclFrom != null) 'inheritAclFrom': inheritAclFrom,
+              deniedReaders!.map((value) => value.toJson()).toList(),
+        if (inheritAclFrom != null) 'inheritAclFrom': inheritAclFrom!,
         if (owners != null)
-          'owners': owners.map((value) => value.toJson()).toList(),
+          'owners': owners!.map((value) => value.toJson()).toList(),
         if (readers != null)
-          'readers': readers.map((value) => value.toJson()).toList(),
+          'readers': readers!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4802,7 +4692,7 @@ class ItemAcl {
 /// uploaded and not binary, it must be UTF-8 encoded.
 class ItemContent {
   /// Upload reference ID of a previously uploaded content via write method.
-  UploadItemRef contentDataRef;
+  UploadItemRef? contentDataRef;
 
   ///
   /// Possible string values are:
@@ -4810,20 +4700,20 @@ class ItemContent {
   /// - "HTML" : contentFormat is HTML.
   /// - "TEXT" : contentFormat is free text.
   /// - "RAW" : contentFormat is raw bytes.
-  core.String contentFormat;
+  core.String? contentFormat;
 
   /// Hashing info calculated and provided by the API client for content.
   ///
   /// Can be used with the items.push method to calculate modified state. The
   /// maximum length is 2048 characters.
-  core.String hash;
+  core.String? hash;
 
   /// Content that is supplied inlined within the update method.
   ///
   /// The maximum length is 102400 bytes (100 KiB).
-  core.String inlineContent;
+  core.String? inlineContent;
   core.List<core.int> get inlineContentAsBytes =>
-      convert.base64.decode(inlineContent);
+      convert.base64.decode(inlineContent!);
 
   set inlineContentAsBytes(core.List<core.int> _bytes) {
     inlineContent =
@@ -4848,17 +4738,17 @@ class ItemContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentDataRef != null) 'contentDataRef': contentDataRef.toJson(),
-        if (contentFormat != null) 'contentFormat': contentFormat,
-        if (hash != null) 'hash': hash,
-        if (inlineContent != null) 'inlineContent': inlineContent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentDataRef != null) 'contentDataRef': contentDataRef!.toJson(),
+        if (contentFormat != null) 'contentFormat': contentFormat!,
+        if (hash != null) 'hash': hash!,
+        if (inlineContent != null) 'inlineContent': inlineContent!,
       };
 }
 
 class ItemCountByStatus {
   /// Number of items matching the status code.
-  core.String count;
+  core.String? count;
 
   /// Status of the items.
   /// Possible string values are:
@@ -4872,7 +4762,7 @@ class ItemCountByStatus {
   /// accepted by Cloud Search. An item can be in this state when Items.push has
   /// been called for an item of this name that did not exist previously.
   /// - "ACCEPTED" : API has accepted the up-to-date data of this item.
-  core.String statusCode;
+  core.String? statusCode;
 
   ItemCountByStatus();
 
@@ -4885,9 +4775,9 @@ class ItemCountByStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (statusCode != null) 'statusCode': statusCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (statusCode != null) 'statusCode': statusCode!,
       };
 }
 
@@ -4899,40 +4789,40 @@ class ItemMetadata {
   /// Note: ACLs are not inherited from a container item. To provide ACL
   /// inheritance for an item, use the inheritAclFrom field. The maximum length
   /// is 1536 characters.
-  core.String containerName;
+  core.String? containerName;
 
   /// The BCP-47 language code for the item, such as "en-US" or "sr-Latn".
   ///
   /// For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. The
   /// maximum length is 32 characters.
-  core.String contentLanguage;
+  core.String? contentLanguage;
 
   /// The time when the item was created in the source repository.
-  core.String createTime;
+  core.String? createTime;
 
   /// Hashing value provided by the API caller.
   ///
   /// This can be used with the items.push method to calculate modified state.
   /// The maximum length is 2048 characters.
-  core.String hash;
+  core.String? hash;
 
   /// A list of interactions for the item.
   ///
   /// Interactions are used to improve Search quality, but are not exposed to
   /// end users. The maximum number of elements is 1000.
-  core.List<Interaction> interactions;
+  core.List<Interaction>? interactions;
 
   /// Additional keywords or phrases that should match the item.
   ///
   /// Used internally for user generated content. The maximum number of elements
   /// is 100. The maximum length is 8192 characters.
-  core.List<core.String> keywords;
+  core.List<core.String>? keywords;
 
   /// The original mime-type of ItemContent.content in the source repository.
   ///
   /// The maximum length is 256 characters.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// The type of the item.
   ///
@@ -4941,10 +4831,10 @@ class ItemMetadata {
   /// source contains an object definition with name 'document', then item
   /// indexing requests for objects of that type should set objectType to
   /// 'document'. The maximum length is 256 characters.
-  core.String objectType;
+  core.String? objectType;
 
   /// Additional search quality metadata of the item
-  SearchQualityMetadata searchQualityMetadata;
+  SearchQualityMetadata? searchQualityMetadata;
 
   /// Link to the source repository serving the data.
   ///
@@ -4952,16 +4842,16 @@ class ItemMetadata {
   /// characters may cause Cloud Search result links to trigger a redirect
   /// notice; to avoid this, encode the URL. The maximum length is 2048
   /// characters.
-  core.String sourceRepositoryUrl;
+  core.String? sourceRepositoryUrl;
 
   /// The title of the item.
   ///
   /// If given, this will be the displayed title of the Search result. The
   /// maximum length is 2048 characters.
-  core.String title;
+  core.String? title;
 
   /// The time when the item was last modified in the source repository.
-  core.String updateTime;
+  core.String? updateTime;
 
   ItemMetadata();
 
@@ -5011,22 +4901,22 @@ class ItemMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (containerName != null) 'containerName': containerName,
-        if (contentLanguage != null) 'contentLanguage': contentLanguage,
-        if (createTime != null) 'createTime': createTime,
-        if (hash != null) 'hash': hash,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (containerName != null) 'containerName': containerName!,
+        if (contentLanguage != null) 'contentLanguage': contentLanguage!,
+        if (createTime != null) 'createTime': createTime!,
+        if (hash != null) 'hash': hash!,
         if (interactions != null)
-          'interactions': interactions.map((value) => value.toJson()).toList(),
-        if (keywords != null) 'keywords': keywords,
-        if (mimeType != null) 'mimeType': mimeType,
-        if (objectType != null) 'objectType': objectType,
+          'interactions': interactions!.map((value) => value.toJson()).toList(),
+        if (keywords != null) 'keywords': keywords!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (objectType != null) 'objectType': objectType!,
         if (searchQualityMetadata != null)
-          'searchQualityMetadata': searchQualityMetadata.toJson(),
+          'searchQualityMetadata': searchQualityMetadata!.toJson(),
         if (sourceRepositoryUrl != null)
-          'sourceRepositoryUrl': sourceRepositoryUrl,
-        if (title != null) 'title': title,
-        if (updateTime != null) 'updateTime': updateTime,
+          'sourceRepositoryUrl': sourceRepositoryUrl!,
+        if (title != null) 'title': title!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -5044,13 +4934,13 @@ class ItemStatus {
   /// accepted by Cloud Search. An item can be in this state when Items.push has
   /// been called for an item of this name that did not exist previously.
   /// - "ACCEPTED" : API has accepted the up-to-date data of this item.
-  core.String code;
+  core.String? code;
 
   /// Error details in case the item is in ERROR state.
-  core.List<ProcessingError> processingErrors;
+  core.List<ProcessingError>? processingErrors;
 
   /// Repository error reported by connector.
-  core.List<RepositoryError> repositoryErrors;
+  core.List<RepositoryError>? repositoryErrors;
 
   ItemStatus();
 
@@ -5072,14 +4962,14 @@ class ItemStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
         if (processingErrors != null)
           'processingErrors':
-              processingErrors.map((value) => value.toJson()).toList(),
+              processingErrors!.map((value) => value.toJson()).toList(),
         if (repositoryErrors != null)
           'repositoryErrors':
-              repositoryErrors.map((value) => value.toJson()).toList(),
+              repositoryErrors!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5089,11 +4979,11 @@ class ItemStructuredData {
   ///
   /// This can be used with the items.push method to calculate modified state.
   /// The maximum length is 2048 characters.
-  core.String hash;
+  core.String? hash;
 
   /// The structured data object that should conform to a registered object
   /// definition in the schema for the data source.
-  StructuredDataObject object;
+  StructuredDataObject? object;
 
   ItemStructuredData();
 
@@ -5107,17 +4997,17 @@ class ItemStructuredData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hash != null) 'hash': hash,
-        if (object != null) 'object': object.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hash != null) 'hash': hash!,
+        if (object != null) 'object': object!.toJson(),
       };
 }
 
 class ListDataSourceResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
-  core.List<DataSource> sources;
+  core.String? nextPageToken;
+  core.List<DataSource>? sources;
 
   ListDataSourceResponse();
 
@@ -5133,19 +5023,19 @@ class ListDataSourceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (sources != null)
-          'sources': sources.map((value) => value.toJson()).toList(),
+          'sources': sources!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ListItemNamesForUnmappedIdentityResponse {
-  core.List<core.String> itemNames;
+  core.List<core.String>? itemNames;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListItemNamesForUnmappedIdentityResponse();
 
@@ -5160,18 +5050,18 @@ class ListItemNamesForUnmappedIdentityResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (itemNames != null) 'itemNames': itemNames,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (itemNames != null) 'itemNames': itemNames!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 class ListItemsResponse {
-  core.List<Item> items;
+  core.List<Item>? items;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListItemsResponse();
 
@@ -5187,20 +5077,20 @@ class ListItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -5216,17 +5106,17 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// List sources response.
 class ListQuerySourcesResponse {
-  core.String nextPageToken;
-  core.List<QuerySource> sources;
+  core.String? nextPageToken;
+  core.List<QuerySource>? sources;
 
   ListQuerySourcesResponse();
 
@@ -5242,18 +5132,18 @@ class ListQuerySourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (sources != null)
-          'sources': sources.map((value) => value.toJson()).toList(),
+          'sources': sources!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ListSearchApplicationsResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
-  core.List<SearchApplication> searchApplications;
+  core.String? nextPageToken;
+  core.List<SearchApplication>? searchApplications;
 
   ListSearchApplicationsResponse();
 
@@ -5269,19 +5159,19 @@ class ListSearchApplicationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (searchApplications != null)
           'searchApplications':
-              searchApplications.map((value) => value.toJson()).toList(),
+              searchApplications!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ListUnmappedIdentitiesResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
-  core.List<UnmappedIdentity> unmappedIdentities;
+  core.String? nextPageToken;
+  core.List<UnmappedIdentity>? unmappedIdentities;
 
   ListUnmappedIdentitiesResponse();
 
@@ -5297,21 +5187,21 @@ class ListUnmappedIdentitiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unmappedIdentities != null)
           'unmappedIdentities':
-              unmappedIdentities.map((value) => value.toJson()).toList(),
+              unmappedIdentities!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Matched range of a snippet \[start, end).
 class MatchRange {
   /// End of the match in the snippet.
-  core.int end;
+  core.int? end;
 
   /// Starting position of the match in the snippet.
-  core.int start;
+  core.int? start;
 
   MatchRange();
 
@@ -5324,16 +5214,16 @@ class MatchRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (end != null) 'end': end,
-        if (start != null) 'start': start,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (end != null) 'end': end!,
+        if (start != null) 'start': start!,
       };
 }
 
 /// Media resource.
 class Media {
   /// Name of the media resource.
-  core.String resourceName;
+  core.String? resourceName;
 
   Media();
 
@@ -5343,40 +5233,40 @@ class Media {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceName != null) 'resourceName': resourceName!,
       };
 }
 
 /// Metadata of a matched search result.
 class Metadata {
   /// The creation time for this document or object in the search result.
-  core.String createTime;
+  core.String? createTime;
 
   /// Options that specify how to display a structured data search result.
-  ResultDisplayMetadata displayOptions;
+  ResultDisplayMetadata? displayOptions;
 
   /// Indexed fields in structured data, returned as a generic named property.
-  core.List<NamedProperty> fields;
+  core.List<NamedProperty>? fields;
 
   /// Mime type of the search result.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// Object type of the search result.
-  core.String objectType;
+  core.String? objectType;
 
   /// Owner (usually creator) of the document or object of the search result.
-  Person owner;
+  Person? owner;
 
   /// The named source for the result, such as Gmail.
-  Source source;
+  Source? source;
 
   /// The last modified date for the object in the search result.
   ///
   /// If not set in the item, the value returned here is empty. When
   /// `updateTime` is used for calculating freshness and is not set, this value
   /// defaults to 2 years from the current time.
-  core.String updateTime;
+  core.String? updateTime;
 
   Metadata();
 
@@ -5413,16 +5303,16 @@ class Metadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (displayOptions != null) 'displayOptions': displayOptions.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayOptions != null) 'displayOptions': displayOptions!.toJson(),
         if (fields != null)
-          'fields': fields.map((value) => value.toJson()).toList(),
-        if (mimeType != null) 'mimeType': mimeType,
-        if (objectType != null) 'objectType': objectType,
-        if (owner != null) 'owner': owner.toJson(),
-        if (source != null) 'source': source.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
+          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (objectType != null) 'objectType': objectType!,
+        if (owner != null) 'owner': owner!.toJson(),
+        if (source != null) 'source': source!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -5432,7 +5322,7 @@ class Metaline {
   /// The list of displayed properties for the metaline.
   ///
   /// The maximum number of properties is 5.
-  core.List<DisplayedProperty> properties;
+  core.List<DisplayedProperty>? properties;
 
   Metaline();
 
@@ -5445,9 +5335,9 @@ class Metaline {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (properties != null)
-          'properties': properties.map((value) => value.toJson()).toList(),
+          'properties': properties!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5455,7 +5345,7 @@ class Metaline {
 class Name {
   /// The read-only display name formatted according to the locale specified by
   /// the viewer's account or the Accept-Language HTTP header.
-  core.String displayName;
+  core.String? displayName;
 
   Name();
 
@@ -5465,8 +5355,8 @@ class Name {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
       };
 }
 
@@ -5475,22 +5365,22 @@ class Name {
 /// The type of the value should be the same as the registered type for the
 /// `name` property in the object definition of `objectType`.
 class NamedProperty {
-  core.bool booleanValue;
-  DateValues dateValues;
-  DoubleValues doubleValues;
-  EnumValues enumValues;
-  HtmlValues htmlValues;
-  IntegerValues integerValues;
+  core.bool? booleanValue;
+  DateValues? dateValues;
+  DoubleValues? doubleValues;
+  EnumValues? enumValues;
+  HtmlValues? htmlValues;
+  IntegerValues? integerValues;
 
   /// The name of the property.
   ///
   /// This name should correspond to the name of the property that was
   /// registered for object definition in the schema. The maximum allowable
   /// length for this property is 256 characters.
-  core.String name;
-  ObjectValues objectValues;
-  TextValues textValues;
-  TimestampValues timestampValues;
+  core.String? name;
+  ObjectValues? objectValues;
+  TextValues? textValues;
+  TimestampValues? timestampValues;
 
   NamedProperty();
 
@@ -5535,18 +5425,18 @@ class NamedProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (booleanValue != null) 'booleanValue': booleanValue,
-        if (dateValues != null) 'dateValues': dateValues.toJson(),
-        if (doubleValues != null) 'doubleValues': doubleValues.toJson(),
-        if (enumValues != null) 'enumValues': enumValues.toJson(),
-        if (htmlValues != null) 'htmlValues': htmlValues.toJson(),
-        if (integerValues != null) 'integerValues': integerValues.toJson(),
-        if (name != null) 'name': name,
-        if (objectValues != null) 'objectValues': objectValues.toJson(),
-        if (textValues != null) 'textValues': textValues.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (booleanValue != null) 'booleanValue': booleanValue!,
+        if (dateValues != null) 'dateValues': dateValues!.toJson(),
+        if (doubleValues != null) 'doubleValues': doubleValues!.toJson(),
+        if (enumValues != null) 'enumValues': enumValues!.toJson(),
+        if (htmlValues != null) 'htmlValues': htmlValues!.toJson(),
+        if (integerValues != null) 'integerValues': integerValues!.toJson(),
+        if (name != null) 'name': name!,
+        if (objectValues != null) 'objectValues': objectValues!.toJson(),
+        if (textValues != null) 'textValues': textValues!.toJson(),
         if (timestampValues != null)
-          'timestampValues': timestampValues.toJson(),
+          'timestampValues': timestampValues!.toJson(),
       };
 }
 
@@ -5560,15 +5450,15 @@ class ObjectDefinition {
   /// object definition must be uniquely named within a schema. The name must
   /// start with a letter and can only contain letters (A-Z, a-z) or numbers
   /// (0-9). The maximum length is 256 characters.
-  core.String name;
+  core.String? name;
 
   /// The optional object-specific options.
-  ObjectOptions options;
+  ObjectOptions? options;
 
   /// The property definitions for the object.
   ///
   /// The maximum number of elements is 1000.
-  core.List<PropertyDefinition> propertyDefinitions;
+  core.List<PropertyDefinition>? propertyDefinitions;
 
   ObjectDefinition();
 
@@ -5588,12 +5478,12 @@ class ObjectDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (options != null) 'options': options.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (options != null) 'options': options!.toJson(),
         if (propertyDefinitions != null)
           'propertyDefinitions':
-              propertyDefinitions.map((value) => value.toJson()).toList(),
+              propertyDefinitions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5607,14 +5497,14 @@ class ObjectDisplayOptions {
   /// properties. For this reason, it is a good practice to specify singular
   /// properties before repeated properties in this list. All of the properties
   /// must set is_returnable to true. The maximum number of metalines is 3.
-  core.List<Metaline> metalines;
+  core.List<Metaline>? metalines;
 
   /// The user friendly label to display in the search result to indicate the
   /// type of the item.
   ///
   /// This is OPTIONAL; if not provided, an object label isn't displayed on the
   /// context line of the search results. The maximum length is 64 characters.
-  core.String objectDisplayLabel;
+  core.String? objectDisplayLabel;
 
   ObjectDisplayOptions();
 
@@ -5630,11 +5520,11 @@ class ObjectDisplayOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (metalines != null)
-          'metalines': metalines.map((value) => value.toJson()).toList(),
+          'metalines': metalines!.map((value) => value.toJson()).toList(),
         if (objectDisplayLabel != null)
-          'objectDisplayLabel': objectDisplayLabel,
+          'objectDisplayLabel': objectDisplayLabel!,
       };
 }
 
@@ -5642,10 +5532,10 @@ class ObjectDisplayOptions {
 class ObjectOptions {
   /// Options that determine how the object is displayed in the Cloud Search
   /// results page.
-  ObjectDisplayOptions displayOptions;
+  ObjectDisplayOptions? displayOptions;
 
   /// The freshness options for an object.
-  FreshnessOptions freshnessOptions;
+  FreshnessOptions? freshnessOptions;
 
   ObjectOptions();
 
@@ -5660,10 +5550,10 @@ class ObjectOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayOptions != null) 'displayOptions': displayOptions.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayOptions != null) 'displayOptions': displayOptions!.toJson(),
         if (freshnessOptions != null)
-          'freshnessOptions': freshnessOptions.toJson(),
+          'freshnessOptions': freshnessOptions!.toJson(),
       };
 }
 
@@ -5674,7 +5564,7 @@ class ObjectPropertyOptions {
   /// These properties represent a nested object. For example, if this property
   /// represents a postal address, the subobjectProperties might be named
   /// *street*, *city*, and *state*. The maximum number of elements is 1000.
-  core.List<PropertyDefinition> subobjectProperties;
+  core.List<PropertyDefinition>? subobjectProperties;
 
   ObjectPropertyOptions();
 
@@ -5687,16 +5577,16 @@ class ObjectPropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (subobjectProperties != null)
           'subobjectProperties':
-              subobjectProperties.map((value) => value.toJson()).toList(),
+              subobjectProperties!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// List of object values.
 class ObjectValues {
-  core.List<StructuredDataObject> values;
+  core.List<StructuredDataObject>? values;
 
   ObjectValues();
 
@@ -5709,9 +5599,9 @@ class ObjectValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (values != null)
-          'values': values.map((value) => value.toJson()).toList(),
+          'values': values!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5722,10 +5612,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -5736,14 +5626,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -5756,7 +5646,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -5791,12 +5681,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -5805,7 +5695,7 @@ class PeopleSuggestion {
   /// Suggested person.
   ///
   /// All fields of the person object might not be populated.
-  Person person;
+  Person? person;
 
   PeopleSuggestion();
 
@@ -5816,32 +5706,32 @@ class PeopleSuggestion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (person != null) 'person': person.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (person != null) 'person': person!.toJson(),
       };
 }
 
 /// Object to represent a person.
 class Person {
   /// The person's email addresses
-  core.List<EmailAddress> emailAddresses;
+  core.List<EmailAddress>? emailAddresses;
 
   /// The resource name of the person to provide information about.
   ///
   /// See People.get from Google People API.
-  core.String name;
+  core.String? name;
 
   /// Obfuscated ID of a person.
-  core.String obfuscatedId;
+  core.String? obfuscatedId;
 
   /// The person's name
-  core.List<Name> personNames;
+  core.List<Name>? personNames;
 
   /// A person's read-only photo.
   ///
   /// A picture shown next to the person's name to help others recognize the
   /// person in search results.
-  core.List<Photo> photos;
+  core.List<Photo>? photos;
 
   Person();
 
@@ -5872,23 +5762,23 @@ class Person {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (emailAddresses != null)
           'emailAddresses':
-              emailAddresses.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (obfuscatedId != null) 'obfuscatedId': obfuscatedId,
+              emailAddresses!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (obfuscatedId != null) 'obfuscatedId': obfuscatedId!,
         if (personNames != null)
-          'personNames': personNames.map((value) => value.toJson()).toList(),
+          'personNames': personNames!.map((value) => value.toJson()).toList(),
         if (photos != null)
-          'photos': photos.map((value) => value.toJson()).toList(),
+          'photos': photos!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A person's photo.
 class Photo {
   /// The URL of the photo.
-  core.String url;
+  core.String? url;
 
   Photo();
 
@@ -5898,8 +5788,8 @@ class Photo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (url != null) 'url': url!,
       };
 }
 
@@ -5907,24 +5797,24 @@ class PollItemsRequest {
   /// Name of connector making this call.
   ///
   /// Format: datasources/{source_id}/connectors/{ID}
-  core.String connectorName;
+  core.String? connectorName;
 
   /// Common debug options.
-  DebugOptions debugOptions;
+  DebugOptions? debugOptions;
 
   /// Maximum number of items to return.
   ///
   /// The maximum value is 100 and the default value is 20.
-  core.int limit;
+  core.int? limit;
 
   /// Queue name to fetch items from.
   ///
   /// If unspecified, PollItems will fetch from 'default' queue. The maximum
   /// length is 100 characters.
-  core.String queue;
+  core.String? queue;
 
   /// Limit the items polled to the ones with these statuses.
-  core.List<core.String> statusCodes;
+  core.List<core.String>? statusCodes;
 
   PollItemsRequest();
 
@@ -5949,12 +5839,12 @@ class PollItemsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (connectorName != null) 'connectorName': connectorName,
-        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
-        if (limit != null) 'limit': limit,
-        if (queue != null) 'queue': queue,
-        if (statusCodes != null) 'statusCodes': statusCodes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (connectorName != null) 'connectorName': connectorName!,
+        if (debugOptions != null) 'debugOptions': debugOptions!.toJson(),
+        if (limit != null) 'limit': limit!,
+        if (queue != null) 'queue': queue!,
+        if (statusCodes != null) 'statusCodes': statusCodes!,
       };
 }
 
@@ -5963,7 +5853,7 @@ class PollItemsResponse {
   ///
   /// These items have the following subset of fields populated: version
   /// metadata.hash structured_data.hash content.hash payload status queue
-  core.List<Item> items;
+  core.List<Item>? items;
 
   PollItemsResponse();
 
@@ -5976,9 +5866,9 @@ class PollItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
+          'items': items!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5988,16 +5878,16 @@ class Principal {
   ///
   /// The name field must specify the group resource name with this format:
   /// identitysources/{source_id}/groups/{ID}
-  core.String groupResourceName;
+  core.String? groupResourceName;
 
   /// This principal is a GSuite user, group or domain.
-  GSuitePrincipal gsuitePrincipal;
+  GSuitePrincipal? gsuitePrincipal;
 
   /// This principal is a user identified using an external identity.
   ///
   /// The name field must specify the user resource name with this format:
   /// identitysources/{source_id}/users/{ID}
-  core.String userResourceName;
+  core.String? userResourceName;
 
   Principal();
 
@@ -6014,11 +5904,11 @@ class Principal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (groupResourceName != null) 'groupResourceName': groupResourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (groupResourceName != null) 'groupResourceName': groupResourceName!,
         if (gsuitePrincipal != null)
-          'gsuitePrincipal': gsuitePrincipal.toJson(),
-        if (userResourceName != null) 'userResourceName': userResourceName,
+          'gsuitePrincipal': gsuitePrincipal!.toJson(),
+        if (userResourceName != null) 'userResourceName': userResourceName!,
       };
 }
 
@@ -6035,14 +5925,14 @@ class ProcessingError {
   /// inheriting other items with broken ACL or having groups with unmapped
   /// descendants.
   /// - "ACL_CYCLE" : ACL inheritance graph formed a cycle.
-  core.String code;
+  core.String? code;
 
   /// Description of the error.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   /// In case the item fields are invalid, this field contains the details about
   /// the validation errors.
-  core.List<FieldViolation> fieldViolations;
+  core.List<FieldViolation>? fieldViolations;
 
   ProcessingError();
 
@@ -6061,35 +5951,35 @@ class ProcessingError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (errorMessage != null) 'errorMessage': errorMessage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
         if (fieldViolations != null)
           'fieldViolations':
-              fieldViolations.map((value) => value.toJson()).toList(),
+              fieldViolations!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The definition of a property within an object.
 class PropertyDefinition {
-  BooleanPropertyOptions booleanPropertyOptions;
-  DatePropertyOptions datePropertyOptions;
+  BooleanPropertyOptions? booleanPropertyOptions;
+  DatePropertyOptions? datePropertyOptions;
 
   /// Options that determine how the property is displayed in the Cloud Search
   /// results page if it is specified to be displayed in the object's display
   /// options .
-  PropertyDisplayOptions displayOptions;
-  DoublePropertyOptions doublePropertyOptions;
-  EnumPropertyOptions enumPropertyOptions;
-  HtmlPropertyOptions htmlPropertyOptions;
-  IntegerPropertyOptions integerPropertyOptions;
+  PropertyDisplayOptions? displayOptions;
+  DoublePropertyOptions? doublePropertyOptions;
+  EnumPropertyOptions? enumPropertyOptions;
+  HtmlPropertyOptions? htmlPropertyOptions;
+  IntegerPropertyOptions? integerPropertyOptions;
 
   /// Indicates that the property can be used for generating facets.
   ///
   /// Cannot be true for properties whose type is object. IsReturnable must be
   /// true to set this option. Only supported for Boolean, Enum, and Text
   /// properties.
-  core.bool isFacetable;
+  core.bool? isFacetable;
 
   /// Indicates that multiple values are allowed for the property.
   ///
@@ -6097,7 +5987,7 @@ class PropertyDefinition {
   /// comments. Cannot be true for properties whose type is a boolean. If set to
   /// false, properties that contain more than one value cause the indexing
   /// request for that item to be rejected.
-  core.bool isRepeatable;
+  core.bool? isRepeatable;
 
   /// Indicates that the property identifies data that should be returned in
   /// search results via the Query API.
@@ -6107,7 +5997,7 @@ class PropertyDefinition {
   /// and uses more bandwidth for search queries, which impacts performance over
   /// large datasets. Set to *true* here only if the field is needed for search
   /// results. Cannot be true for properties whose type is an object.
-  core.bool isReturnable;
+  core.bool? isReturnable;
 
   /// Indicates that the property can be used for sorting.
   ///
@@ -6115,17 +6005,17 @@ class PropertyDefinition {
   /// properties whose type is object or user identifier. IsReturnable must be
   /// true to set this option. Only supported for Boolean, Date, Double,
   /// Integer, and Timestamp properties.
-  core.bool isSortable;
+  core.bool? isSortable;
 
   /// Indicates that the property can be used for generating query suggestions.
-  core.bool isSuggestable;
+  core.bool? isSuggestable;
 
   /// Indicates that users can perform wildcard search for this property.
   ///
   /// Only supported for Text properties. IsReturnable must be true to set this
   /// option. In a given datasource maximum of 5 properties can be marked as
   /// is_wildcard_searchable.
-  core.bool isWildcardSearchable;
+  core.bool? isWildcardSearchable;
 
   /// The name of the property.
   ///
@@ -6137,10 +6027,10 @@ class PropertyDefinition {
   /// object, you cannot re-use this name for another property within that
   /// object. The name must start with a letter and can only contain letters
   /// (A-Z, a-z) or numbers (0-9). The maximum length is 256 characters.
-  core.String name;
-  ObjectPropertyOptions objectPropertyOptions;
-  TextPropertyOptions textPropertyOptions;
-  TimestampPropertyOptions timestampPropertyOptions;
+  core.String? name;
+  ObjectPropertyOptions? objectPropertyOptions;
+  TextPropertyOptions? textPropertyOptions;
+  TimestampPropertyOptions? timestampPropertyOptions;
 
   PropertyDefinition();
 
@@ -6213,34 +6103,34 @@ class PropertyDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (booleanPropertyOptions != null)
-          'booleanPropertyOptions': booleanPropertyOptions.toJson(),
+          'booleanPropertyOptions': booleanPropertyOptions!.toJson(),
         if (datePropertyOptions != null)
-          'datePropertyOptions': datePropertyOptions.toJson(),
-        if (displayOptions != null) 'displayOptions': displayOptions.toJson(),
+          'datePropertyOptions': datePropertyOptions!.toJson(),
+        if (displayOptions != null) 'displayOptions': displayOptions!.toJson(),
         if (doublePropertyOptions != null)
-          'doublePropertyOptions': doublePropertyOptions.toJson(),
+          'doublePropertyOptions': doublePropertyOptions!.toJson(),
         if (enumPropertyOptions != null)
-          'enumPropertyOptions': enumPropertyOptions.toJson(),
+          'enumPropertyOptions': enumPropertyOptions!.toJson(),
         if (htmlPropertyOptions != null)
-          'htmlPropertyOptions': htmlPropertyOptions.toJson(),
+          'htmlPropertyOptions': htmlPropertyOptions!.toJson(),
         if (integerPropertyOptions != null)
-          'integerPropertyOptions': integerPropertyOptions.toJson(),
-        if (isFacetable != null) 'isFacetable': isFacetable,
-        if (isRepeatable != null) 'isRepeatable': isRepeatable,
-        if (isReturnable != null) 'isReturnable': isReturnable,
-        if (isSortable != null) 'isSortable': isSortable,
-        if (isSuggestable != null) 'isSuggestable': isSuggestable,
+          'integerPropertyOptions': integerPropertyOptions!.toJson(),
+        if (isFacetable != null) 'isFacetable': isFacetable!,
+        if (isRepeatable != null) 'isRepeatable': isRepeatable!,
+        if (isReturnable != null) 'isReturnable': isReturnable!,
+        if (isSortable != null) 'isSortable': isSortable!,
+        if (isSuggestable != null) 'isSuggestable': isSuggestable!,
         if (isWildcardSearchable != null)
-          'isWildcardSearchable': isWildcardSearchable,
-        if (name != null) 'name': name,
+          'isWildcardSearchable': isWildcardSearchable!,
+        if (name != null) 'name': name!,
         if (objectPropertyOptions != null)
-          'objectPropertyOptions': objectPropertyOptions.toJson(),
+          'objectPropertyOptions': objectPropertyOptions!.toJson(),
         if (textPropertyOptions != null)
-          'textPropertyOptions': textPropertyOptions.toJson(),
+          'textPropertyOptions': textPropertyOptions!.toJson(),
         if (timestampPropertyOptions != null)
-          'timestampPropertyOptions': timestampPropertyOptions.toJson(),
+          'timestampPropertyOptions': timestampPropertyOptions!.toJson(),
       };
 }
 
@@ -6256,7 +6146,7 @@ class PropertyDisplayOptions {
   /// 'priority : 1' in the search results which provides clear context to
   /// search users. This is OPTIONAL; if not given, only the property values are
   /// displayed. The maximum length is 64 characters.
-  core.String displayLabel;
+  core.String? displayLabel;
 
   PropertyDisplayOptions();
 
@@ -6266,8 +6156,8 @@ class PropertyDisplayOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayLabel != null) 'displayLabel': displayLabel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayLabel != null) 'displayLabel': displayLabel!,
       };
 }
 
@@ -6278,21 +6168,21 @@ class PushItem {
   /// If specified, this is used to determine how to modify this item's status.
   /// Setting this field and the type field results in argument error. The
   /// maximum length is 2048 characters.
-  core.String contentHash;
+  core.String? contentHash;
 
   /// Metadata hash of the item according to the repository.
   ///
   /// If specified, this is used to determine how to modify this item's status.
   /// Setting this field and the type field results in argument error. The
   /// maximum length is 2048 characters.
-  core.String metadataHash;
+  core.String? metadataHash;
 
   /// Provides additional document state information for the connector, such as
   /// an alternate repository ID and other metadata.
   ///
   /// The maximum length is 8192 bytes.
-  core.String payload;
-  core.List<core.int> get payloadAsBytes => convert.base64.decode(payload);
+  core.String? payload;
+  core.List<core.int> get payloadAsBytes => convert.base64.decode(payload!);
 
   set payloadAsBytes(core.List<core.int> _bytes) {
     payload =
@@ -6303,20 +6193,20 @@ class PushItem {
   ///
   /// The default queue is chosen if this field is not specified. The maximum
   /// length is 512 characters.
-  core.String queue;
+  core.String? queue;
 
   /// Populate this field to store Connector or repository error details.
   ///
   /// This information is displayed in the Admin Console. This field may only be
   /// populated when the Type is REPOSITORY_ERROR.
-  RepositoryError repositoryError;
+  RepositoryError? repositoryError;
 
   /// Structured data hash of the item according to the repository.
   ///
   /// If specified, this is used to determine how to modify this item's status.
   /// Setting this field and the type field results in argument error. The
   /// maximum length is 2048 characters.
-  core.String structuredDataHash;
+  core.String? structuredDataHash;
 
   /// The type of the push operation that defines the push behavior.
   /// Possible string values are:
@@ -6334,7 +6224,7 @@ class PushItem {
   /// - "REQUEUE" : Call push with REQUEUE only for items that have been
   /// reserved. This action unreserves the item and resets its available time to
   /// the wall clock time.
-  core.String type;
+  core.String? type;
 
   PushItem();
 
@@ -6363,16 +6253,16 @@ class PushItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentHash != null) 'contentHash': contentHash,
-        if (metadataHash != null) 'metadataHash': metadataHash,
-        if (payload != null) 'payload': payload,
-        if (queue != null) 'queue': queue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentHash != null) 'contentHash': contentHash!,
+        if (metadataHash != null) 'metadataHash': metadataHash!,
+        if (payload != null) 'payload': payload!,
+        if (queue != null) 'queue': queue!,
         if (repositoryError != null)
-          'repositoryError': repositoryError.toJson(),
+          'repositoryError': repositoryError!.toJson(),
         if (structuredDataHash != null)
-          'structuredDataHash': structuredDataHash,
-        if (type != null) 'type': type,
+          'structuredDataHash': structuredDataHash!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -6380,13 +6270,13 @@ class PushItemRequest {
   /// Name of connector making this call.
   ///
   /// Format: datasources/{source_id}/connectors/{ID}
-  core.String connectorName;
+  core.String? connectorName;
 
   /// Common debug options.
-  DebugOptions debugOptions;
+  DebugOptions? debugOptions;
 
   /// Item to push onto the queue.
-  PushItem item;
+  PushItem? item;
 
   PushItemRequest();
 
@@ -6404,18 +6294,18 @@ class PushItemRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (connectorName != null) 'connectorName': connectorName,
-        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
-        if (item != null) 'item': item.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (connectorName != null) 'connectorName': connectorName!,
+        if (debugOptions != null) 'debugOptions': debugOptions!.toJson(),
+        if (item != null) 'item': item!.toJson(),
       };
 }
 
 class QueryCountByStatus {
-  core.String count;
+  core.String? count;
 
   /// This represents the http status code.
-  core.int statusCode;
+  core.int? statusCode;
 
   QueryCountByStatus();
 
@@ -6428,9 +6318,9 @@ class QueryCountByStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (statusCode != null) 'statusCode': statusCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (statusCode != null) 'statusCode': statusCode!,
       };
 }
 
@@ -6445,14 +6335,14 @@ class QueryInterpretation {
   /// - "REPLACE" : The results from original query are replaced. The reason for
   /// replacing the results from original query is populated in the 'Reason'
   /// field below.
-  core.String interpretationType;
+  core.String? interpretationType;
 
   /// The interpretation of the query used in search.
   ///
   /// For example, queries with natural language intent like "email from john"
   /// will be interpreted as "from:john source:mail". This field will not be
   /// filled when the reason is NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY.
-  core.String interpretedQuery;
+  core.String? interpretedQuery;
 
   /// The reason for interpretation of the query.
   ///
@@ -6465,7 +6355,7 @@ class QueryInterpretation {
   /// similarity is used to selectively broaden the query to retrieve additional
   /// search results since enough results were not found for the user query.
   /// Interpreted query will be empty for this case.
-  core.String reason;
+  core.String? reason;
 
   QueryInterpretation();
 
@@ -6481,11 +6371,11 @@ class QueryInterpretation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (interpretationType != null)
-          'interpretationType': interpretationType,
-        if (interpretedQuery != null) 'interpretedQuery': interpretedQuery,
-        if (reason != null) 'reason': reason,
+          'interpretationType': interpretationType!,
+        if (interpretedQuery != null) 'interpretedQuery': interpretedQuery!,
+        if (reason != null) 'reason': reason!,
       };
 }
 
@@ -6495,14 +6385,14 @@ class QueryInterpretationOptions {
   ///
   /// Default is false, Set to true to disable natural language interpretation.
   /// NL interpretation only applies to predefined datasources.
-  core.bool disableNlInterpretation;
+  core.bool? disableNlInterpretation;
 
   /// Enable this flag to turn off all internal optimizations like natural
   /// language (NL) interpretation of queries, supplemental result retrieval,
   /// and usage of synonyms including custom ones.
   ///
   /// Nl interpretation will be disabled if either one of the two flags is true.
-  core.bool enableVerbatimMode;
+  core.bool? enableVerbatimMode;
 
   QueryInterpretationOptions();
 
@@ -6515,18 +6405,18 @@ class QueryInterpretationOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (disableNlInterpretation != null)
-          'disableNlInterpretation': disableNlInterpretation,
+          'disableNlInterpretation': disableNlInterpretation!,
         if (enableVerbatimMode != null)
-          'enableVerbatimMode': enableVerbatimMode,
+          'enableVerbatimMode': enableVerbatimMode!,
       };
 }
 
 /// Information relevant only to a query entry.
 class QueryItem {
   /// True if the text was generated by means other than a previous user search.
-  core.bool isSynthetic;
+  core.bool? isSynthetic;
 
   QueryItem();
 
@@ -6536,54 +6426,54 @@ class QueryItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (isSynthetic != null) 'isSynthetic': isSynthetic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (isSynthetic != null) 'isSynthetic': isSynthetic!,
       };
 }
 
 /// The definition of a operator that can be used in a Search/Suggest request.
 class QueryOperator {
   /// Display name of the operator
-  core.String displayName;
+  core.String? displayName;
 
   /// Potential list of values for the opeatror field.
   ///
   /// This field is only filled when we can safely enumerate all the possible
   /// values of this operator.
-  core.List<core.String> enumValues;
+  core.List<core.String>? enumValues;
 
   /// Indicates the operator name that can be used to isolate the property using
   /// the greater-than operator.
-  core.String greaterThanOperatorName;
+  core.String? greaterThanOperatorName;
 
   /// Can this operator be used to get facets.
-  core.bool isFacetable;
+  core.bool? isFacetable;
 
   /// Indicates if multiple values can be set for this property.
-  core.bool isRepeatable;
+  core.bool? isRepeatable;
 
   /// Will the property associated with this facet be returned as part of search
   /// results.
-  core.bool isReturnable;
+  core.bool? isReturnable;
 
   /// Can this operator be used to sort results.
-  core.bool isSortable;
+  core.bool? isSortable;
 
   /// Can get suggestions for this field.
-  core.bool isSuggestable;
+  core.bool? isSuggestable;
 
   /// Indicates the operator name that can be used to isolate the property using
   /// the less-than operator.
-  core.String lessThanOperatorName;
+  core.String? lessThanOperatorName;
 
   /// Name of the object corresponding to the operator.
   ///
   /// This field is only filled for schema-specific operators, and is unset for
   /// common operators.
-  core.String objectType;
+  core.String? objectType;
 
   /// The name of the operator.
-  core.String operatorName;
+  core.String? operatorName;
 
   /// Type of the operator.
   /// Possible string values are:
@@ -6596,7 +6486,7 @@ class QueryOperator {
   /// - "DATE"
   /// - "TEXT"
   /// - "HTML"
-  core.String type;
+  core.String? type;
 
   QueryOperator();
 
@@ -6641,39 +6531,39 @@ class QueryOperator {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (enumValues != null) 'enumValues': enumValues,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (enumValues != null) 'enumValues': enumValues!,
         if (greaterThanOperatorName != null)
-          'greaterThanOperatorName': greaterThanOperatorName,
-        if (isFacetable != null) 'isFacetable': isFacetable,
-        if (isRepeatable != null) 'isRepeatable': isRepeatable,
-        if (isReturnable != null) 'isReturnable': isReturnable,
-        if (isSortable != null) 'isSortable': isSortable,
-        if (isSuggestable != null) 'isSuggestable': isSuggestable,
+          'greaterThanOperatorName': greaterThanOperatorName!,
+        if (isFacetable != null) 'isFacetable': isFacetable!,
+        if (isRepeatable != null) 'isRepeatable': isRepeatable!,
+        if (isReturnable != null) 'isReturnable': isReturnable!,
+        if (isSortable != null) 'isSortable': isSortable!,
+        if (isSuggestable != null) 'isSuggestable': isSuggestable!,
         if (lessThanOperatorName != null)
-          'lessThanOperatorName': lessThanOperatorName,
-        if (objectType != null) 'objectType': objectType,
-        if (operatorName != null) 'operatorName': operatorName,
-        if (type != null) 'type': type,
+          'lessThanOperatorName': lessThanOperatorName!,
+        if (objectType != null) 'objectType': objectType!,
+        if (operatorName != null) 'operatorName': operatorName!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// List of sources that the user can search using the query API.
 class QuerySource {
   /// Display name of the data source.
-  core.String displayName;
+  core.String? displayName;
 
   /// List of all operators applicable for this source.
-  core.List<QueryOperator> operators;
+  core.List<QueryOperator>? operators;
 
   /// A short name or alias for the source.
   ///
   /// This value can be used with the 'source' operator.
-  core.String shortName;
+  core.String? shortName;
 
   /// Name of the source
-  Source source;
+  Source? source;
 
   QuerySource();
 
@@ -6696,12 +6586,12 @@ class QuerySource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
         if (operators != null)
-          'operators': operators.map((value) => value.toJson()).toList(),
-        if (shortName != null) 'shortName': shortName,
-        if (source != null) 'source': source.toJson(),
+          'operators': operators!.map((value) => value.toJson()).toList(),
+        if (shortName != null) 'shortName': shortName!,
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
@@ -6714,7 +6604,7 @@ class QuerySuggestion {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Errors when the connector is communicating to the source repository.
@@ -6722,12 +6612,12 @@ class RepositoryError {
   /// Message that describes the error.
   ///
   /// The maximum allowable length of the message is 8192 characters.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   /// Error codes.
   ///
   /// Matches the definition of HTTP status codes.
-  core.int httpStatusCode;
+  core.int? httpStatusCode;
 
   /// Type of error.
   /// Possible string values are:
@@ -6744,7 +6634,7 @@ class RepositoryError {
   /// - "SERVICE_UNAVAILABLE" : Server temporarily unavailable.
   /// - "CLIENT_ERROR" : Client-related error, such as an invalid request from
   /// the connector to the repository server.
-  core.String type;
+  core.String? type;
 
   RepositoryError();
 
@@ -6760,17 +6650,17 @@ class RepositoryError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorMessage != null) 'errorMessage': errorMessage,
-        if (httpStatusCode != null) 'httpStatusCode': httpStatusCode,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (httpStatusCode != null) 'httpStatusCode': httpStatusCode!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// Shared request options for all RPC methods.
 class RequestOptions {
   /// Debug options of the request
-  DebugOptions debugOptions;
+  DebugOptions? debugOptions;
 
   /// The BCP-47 language code, such as "en-US" or "sr-Latn".
   ///
@@ -6782,11 +6672,11 @@ class RequestOptions {
   /// results are biased towards the specified language. The suggest API does
   /// not use this parameter. Instead, suggest autocompletes only based on
   /// characters in the query.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// The ID generated when you create a search application using the
   /// [admin console](https://support.google.com/a/answer/9043922).
-  core.String searchApplicationId;
+  core.String? searchApplicationId;
 
   /// Current user's time zone id, such as "America/Los_Angeles" or
   /// "Australia/Sydney".
@@ -6797,7 +6687,7 @@ class RequestOptions {
   /// [timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml).
   /// This field is used to correctly interpret date and time queries. If this
   /// field is not specified, the default time zone (UTC) is used.
-  core.String timeZone;
+  core.String? timeZone;
 
   RequestOptions();
 
@@ -6817,18 +6707,18 @@ class RequestOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
-        if (languageCode != null) 'languageCode': languageCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (debugOptions != null) 'debugOptions': debugOptions!.toJson(),
+        if (languageCode != null) 'languageCode': languageCode!,
         if (searchApplicationId != null)
-          'searchApplicationId': searchApplicationId,
-        if (timeZone != null) 'timeZone': timeZone,
+          'searchApplicationId': searchApplicationId!,
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 
 class ResetSearchApplicationRequest {
   /// Common debug options.
-  DebugOptions debugOptions;
+  DebugOptions? debugOptions;
 
   ResetSearchApplicationRequest();
 
@@ -6839,15 +6729,15 @@ class ResetSearchApplicationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (debugOptions != null) 'debugOptions': debugOptions!.toJson(),
       };
 }
 
 /// Debugging information about the response.
 class ResponseDebugInfo {
   /// General debug info formatted for display.
-  core.String formattedDebugInfo;
+  core.String? formattedDebugInfo;
 
   ResponseDebugInfo();
 
@@ -6857,9 +6747,9 @@ class ResponseDebugInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (formattedDebugInfo != null)
-          'formattedDebugInfo': formattedDebugInfo,
+          'formattedDebugInfo': formattedDebugInfo!,
       };
 }
 
@@ -6868,15 +6758,15 @@ class ResponseDebugInfo {
 /// NextId: 12
 class RestrictItem {
   /// LINT.ThenChange(//depot/google3/java/com/google/apps/search/quality/itemsuggest/utils/SubtypeRerankingUtils.java)
-  DriveFollowUpRestrict driveFollowUpRestrict;
-  DriveLocationRestrict driveLocationRestrict;
+  DriveFollowUpRestrict? driveFollowUpRestrict;
+  DriveLocationRestrict? driveLocationRestrict;
 
   /// LINT.IfChange Drive Types.
-  DriveMimeTypeRestrict driveMimeTypeRestrict;
-  DriveTimeSpanRestrict driveTimeSpanRestrict;
+  DriveMimeTypeRestrict? driveMimeTypeRestrict;
+  DriveTimeSpanRestrict? driveTimeSpanRestrict;
 
   /// The search restrict (e.g. "after:2017-09-11 before:2017-09-12").
-  core.String searchOperator;
+  core.String? searchOperator;
 
   RestrictItem();
 
@@ -6906,23 +6796,23 @@ class RestrictItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (driveFollowUpRestrict != null)
-          'driveFollowUpRestrict': driveFollowUpRestrict.toJson(),
+          'driveFollowUpRestrict': driveFollowUpRestrict!.toJson(),
         if (driveLocationRestrict != null)
-          'driveLocationRestrict': driveLocationRestrict.toJson(),
+          'driveLocationRestrict': driveLocationRestrict!.toJson(),
         if (driveMimeTypeRestrict != null)
-          'driveMimeTypeRestrict': driveMimeTypeRestrict.toJson(),
+          'driveMimeTypeRestrict': driveMimeTypeRestrict!.toJson(),
         if (driveTimeSpanRestrict != null)
-          'driveTimeSpanRestrict': driveTimeSpanRestrict.toJson(),
-        if (searchOperator != null) 'searchOperator': searchOperator,
+          'driveTimeSpanRestrict': driveTimeSpanRestrict!.toJson(),
+        if (searchOperator != null) 'searchOperator': searchOperator!,
       };
 }
 
 /// Result count information
 class ResultCounts {
   /// Result count information for each source with results.
-  core.List<SourceResultCount> sourceResultCounts;
+  core.List<SourceResultCount>? sourceResultCounts;
 
   ResultCounts();
 
@@ -6935,17 +6825,17 @@ class ResultCounts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (sourceResultCounts != null)
           'sourceResultCounts':
-              sourceResultCounts.map((value) => value.toJson()).toList(),
+              sourceResultCounts!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Debugging information about the result.
 class ResultDebugInfo {
   /// General debug info formatted for display.
-  core.String formattedDebugInfo;
+  core.String? formattedDebugInfo;
 
   ResultDebugInfo();
 
@@ -6955,22 +6845,22 @@ class ResultDebugInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (formattedDebugInfo != null)
-          'formattedDebugInfo': formattedDebugInfo,
+          'formattedDebugInfo': formattedDebugInfo!,
       };
 }
 
 /// Display Fields for Search Results
 class ResultDisplayField {
   /// The display label for the property.
-  core.String label;
+  core.String? label;
 
   /// The operator name of the property.
-  core.String operatorName;
+  core.String? operatorName;
 
   /// The name value pair for the property.
-  NamedProperty property;
+  NamedProperty? property;
 
   ResultDisplayField();
 
@@ -6987,16 +6877,16 @@ class ResultDisplayField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (label != null) 'label': label,
-        if (operatorName != null) 'operatorName': operatorName,
-        if (property != null) 'property': property.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (label != null) 'label': label!,
+        if (operatorName != null) 'operatorName': operatorName!,
+        if (property != null) 'property': property!.toJson(),
       };
 }
 
 /// The collection of fields that make up a displayed line
 class ResultDisplayLine {
-  core.List<ResultDisplayField> fields;
+  core.List<ResultDisplayField>? fields;
 
   ResultDisplayLine();
 
@@ -7009,18 +6899,18 @@ class ResultDisplayLine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fields != null)
-          'fields': fields.map((value) => value.toJson()).toList(),
+          'fields': fields!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ResultDisplayMetadata {
   /// The metalines content to be displayed with the result.
-  core.List<ResultDisplayLine> metalines;
+  core.List<ResultDisplayLine>? metalines;
 
   /// The display label for the object.
-  core.String objectTypeLabel;
+  core.String? objectTypeLabel;
 
   ResultDisplayMetadata();
 
@@ -7036,10 +6926,10 @@ class ResultDisplayMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (metalines != null)
-          'metalines': metalines.map((value) => value.toJson()).toList(),
-        if (objectTypeLabel != null) 'objectTypeLabel': objectTypeLabel,
+          'metalines': metalines!.map((value) => value.toJson()).toList(),
+        if (objectTypeLabel != null) 'objectTypeLabel': objectTypeLabel!,
       };
 }
 
@@ -7055,7 +6945,7 @@ class RetrievalImportance {
   /// - "LOW" : Treat the match with lower importance than body text.
   /// - "NONE" : Do not match against this field during retrieval. The property
   /// can still be used for operator matching, faceting, and suggest if desired.
-  core.String importance;
+  core.String? importance;
 
   RetrievalImportance();
 
@@ -7065,8 +6955,8 @@ class RetrievalImportance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (importance != null) 'importance': importance,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (importance != null) 'importance': importance!,
       };
 }
 
@@ -7075,14 +6965,14 @@ class Schema {
   /// The list of top-level objects for the data source.
   ///
   /// The maximum number of elements is 10.
-  core.List<ObjectDefinition> objectDefinitions;
+  core.List<ObjectDefinition>? objectDefinitions;
 
   /// IDs of the Long Running Operations (LROs) currently running for this
   /// schema.
   ///
   /// After modifying the schema, wait for operations to complete before
   /// indexing additional content.
-  core.List<core.String> operationIds;
+  core.List<core.String>? operationIds;
 
   Schema();
 
@@ -7100,11 +6990,11 @@ class Schema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (objectDefinitions != null)
           'objectDefinitions':
-              objectDefinitions.map((value) => value.toJson()).toList(),
-        if (operationIds != null) 'operationIds': operationIds,
+              objectDefinitions!.map((value) => value.toJson()).toList(),
+        if (operationIds != null) 'operationIds': operationIds!,
       };
 }
 
@@ -7115,12 +7005,12 @@ class ScoringConfig {
   ///
   /// By default, freshness is used as a ranking signal. Note that this setting
   /// is not available in the Admin UI.
-  core.bool disableFreshness;
+  core.bool? disableFreshness;
 
   /// Whether to personalize the results.
   ///
   /// By default, personal signals will be used to boost results.
-  core.bool disablePersonalization;
+  core.bool? disablePersonalization;
 
   ScoringConfig();
 
@@ -7133,10 +7023,10 @@ class ScoringConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (disableFreshness != null) 'disableFreshness': disableFreshness,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (disableFreshness != null) 'disableFreshness': disableFreshness!,
         if (disablePersonalization != null)
-          'disablePersonalization': disablePersonalization,
+          'disablePersonalization': disablePersonalization!,
       };
 }
 
@@ -7145,26 +7035,26 @@ class SearchApplication {
   /// Retrictions applied to the configurations.
   ///
   /// The maximum number of elements is 10.
-  core.List<DataSourceRestriction> dataSourceRestrictions;
+  core.List<DataSourceRestriction>? dataSourceRestrictions;
 
   /// The default fields for returning facet results.
   ///
   /// The sources specified here also have been included in
   /// data_source_restrictions above.
-  core.List<FacetOptions> defaultFacetOptions;
+  core.List<FacetOptions>? defaultFacetOptions;
 
   /// The default options for sorting the search results
-  SortOptions defaultSortOptions;
+  SortOptions? defaultSortOptions;
 
   /// Display name of the Search Application.
   ///
   /// The maximum length is 300 characters.
-  core.String displayName;
+  core.String? displayName;
 
   /// Name of the Search Application.
   ///
   /// Format: searchapplications/{application_id}.
-  core.String name;
+  core.String? name;
 
   /// IDs of the Long Running Operations (LROs) currently running for this
   /// schema.
@@ -7172,13 +7062,13 @@ class SearchApplication {
   /// Output only field.
   ///
   /// Output only.
-  core.List<core.String> operationIds;
+  core.List<core.String>? operationIds;
 
   /// Configuration for ranking results.
-  ScoringConfig scoringConfig;
+  ScoringConfig? scoringConfig;
 
   /// Configuration for a sources specified in data_source_restrictions.
-  core.List<SourceConfig> sourceConfig;
+  core.List<SourceConfig>? sourceConfig;
 
   SearchApplication();
 
@@ -7222,21 +7112,21 @@ class SearchApplication {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataSourceRestrictions != null)
           'dataSourceRestrictions':
-              dataSourceRestrictions.map((value) => value.toJson()).toList(),
+              dataSourceRestrictions!.map((value) => value.toJson()).toList(),
         if (defaultFacetOptions != null)
           'defaultFacetOptions':
-              defaultFacetOptions.map((value) => value.toJson()).toList(),
+              defaultFacetOptions!.map((value) => value.toJson()).toList(),
         if (defaultSortOptions != null)
-          'defaultSortOptions': defaultSortOptions.toJson(),
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (operationIds != null) 'operationIds': operationIds,
-        if (scoringConfig != null) 'scoringConfig': scoringConfig.toJson(),
+          'defaultSortOptions': defaultSortOptions!.toJson(),
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (operationIds != null) 'operationIds': operationIds!,
+        if (scoringConfig != null) 'scoringConfig': scoringConfig!.toJson(),
         if (sourceConfig != null)
-          'sourceConfig': sourceConfig.map((value) => value.toJson()).toList(),
+          'sourceConfig': sourceConfig!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7244,8 +7134,8 @@ class SearchApplicationQueryStats {
   /// Date for which query stats were calculated.
   ///
   /// Stats calculated on the next day close to midnight are returned.
-  Date date;
-  core.List<QueryCountByStatus> queryCountByStatus;
+  Date? date;
+  core.List<QueryCountByStatus>? queryCountByStatus;
 
   SearchApplicationQueryStats();
 
@@ -7262,11 +7152,11 @@ class SearchApplicationQueryStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (date != null) 'date': date.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (date != null) 'date': date!.toJson(),
         if (queryCountByStatus != null)
           'queryCountByStatus':
-              queryCountByStatus.map((value) => value.toJson()).toList(),
+              queryCountByStatus!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7274,10 +7164,10 @@ class SearchApplicationSessionStats {
   /// Date for which session stats were calculated.
   ///
   /// Stats calculated on the next day close to midnight are returned.
-  Date date;
+  Date? date;
 
   /// The count of search sessions on the day
-  core.String searchSessionsCount;
+  core.String? searchSessionsCount;
 
   SearchApplicationSessionStats();
 
@@ -7291,10 +7181,10 @@ class SearchApplicationSessionStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (date != null) 'date': date.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (date != null) 'date': date!.toJson(),
         if (searchSessionsCount != null)
-          'searchSessionsCount': searchSessionsCount,
+          'searchSessionsCount': searchSessionsCount!,
       };
 }
 
@@ -7302,16 +7192,16 @@ class SearchApplicationUserStats {
   /// Date for which session stats were calculated.
   ///
   /// Stats calculated on the next day close to midnight are returned.
-  Date date;
+  Date? date;
 
   /// The count of unique active users in the past one day
-  core.String oneDayActiveUsersCount;
+  core.String? oneDayActiveUsersCount;
 
   /// The count of unique active users in the past seven days
-  core.String sevenDaysActiveUsersCount;
+  core.String? sevenDaysActiveUsersCount;
 
   /// The count of unique active users in the past thirty days
-  core.String thirtyDaysActiveUsersCount;
+  core.String? thirtyDaysActiveUsersCount;
 
   SearchApplicationUserStats();
 
@@ -7333,28 +7223,28 @@ class SearchApplicationUserStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (date != null) 'date': date.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (date != null) 'date': date!.toJson(),
         if (oneDayActiveUsersCount != null)
-          'oneDayActiveUsersCount': oneDayActiveUsersCount,
+          'oneDayActiveUsersCount': oneDayActiveUsersCount!,
         if (sevenDaysActiveUsersCount != null)
-          'sevenDaysActiveUsersCount': sevenDaysActiveUsersCount,
+          'sevenDaysActiveUsersCount': sevenDaysActiveUsersCount!,
         if (thirtyDaysActiveUsersCount != null)
-          'thirtyDaysActiveUsersCount': thirtyDaysActiveUsersCount,
+          'thirtyDaysActiveUsersCount': thirtyDaysActiveUsersCount!,
       };
 }
 
 class SearchItemsByViewUrlRequest {
   /// Common debug options.
-  DebugOptions debugOptions;
+  DebugOptions? debugOptions;
 
   /// The next_page_token value returned from a previous request, if any.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// Specify the full view URL to find the corresponding item.
   ///
   /// The maximum length is 2048 characters.
-  core.String viewUrl;
+  core.String? viewUrl;
 
   SearchItemsByViewUrlRequest();
 
@@ -7371,19 +7261,19 @@ class SearchItemsByViewUrlRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
-        if (pageToken != null) 'pageToken': pageToken,
-        if (viewUrl != null) 'viewUrl': viewUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (debugOptions != null) 'debugOptions': debugOptions!.toJson(),
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (viewUrl != null) 'viewUrl': viewUrl!,
       };
 }
 
 class SearchItemsByViewUrlResponse {
-  core.List<Item> items;
+  core.List<Item>? items;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   SearchItemsByViewUrlResponse();
 
@@ -7399,10 +7289,10 @@ class SearchItemsByViewUrlResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -7413,7 +7303,7 @@ class SearchQualityMetadata {
   ///
   /// Value should be between 0.0 (lowest quality) and 1.0 (highest quality).
   /// The default value is 0.0.
-  core.double quality;
+  core.double? quality;
 
   SearchQualityMetadata();
 
@@ -7423,8 +7313,8 @@ class SearchQualityMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (quality != null) 'quality': quality,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (quality != null) 'quality': quality!,
       };
 }
 
@@ -7434,32 +7324,32 @@ class SearchRequest {
   ///
   /// If not specified, all data sources from the current search application are
   /// used.
-  core.List<DataSourceRestriction> dataSourceRestrictions;
-  core.List<FacetOptions> facetOptions;
+  core.List<DataSourceRestriction>? dataSourceRestrictions;
+  core.List<FacetOptions>? facetOptions;
 
   /// Maximum number of search results to return in one page.
   ///
   /// Valid values are between 1 and 100, inclusive. Default value is 10.
   /// Minimum value is 50 when results beyond 2000 are requested.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// The raw query string.
   ///
   /// See supported search operators in the
   /// [Cloud search Cheat Sheet](https://support.google.com/a/users/answer/9299929)
-  core.String query;
+  core.String? query;
 
   /// Options to interpret the user query.
-  QueryInterpretationOptions queryInterpretationOptions;
+  QueryInterpretationOptions? queryInterpretationOptions;
 
   /// Request options, such as the search application and user timezone.
-  RequestOptions requestOptions;
+  RequestOptions? requestOptions;
 
   /// The options for sorting the search results
-  SortOptions sortOptions;
+  SortOptions? sortOptions;
 
   /// Starting index of the results.
-  core.int start;
+  core.int? start;
 
   SearchRequest();
 
@@ -7500,60 +7390,60 @@ class SearchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataSourceRestrictions != null)
           'dataSourceRestrictions':
-              dataSourceRestrictions.map((value) => value.toJson()).toList(),
+              dataSourceRestrictions!.map((value) => value.toJson()).toList(),
         if (facetOptions != null)
-          'facetOptions': facetOptions.map((value) => value.toJson()).toList(),
-        if (pageSize != null) 'pageSize': pageSize,
-        if (query != null) 'query': query,
+          'facetOptions': facetOptions!.map((value) => value.toJson()).toList(),
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (query != null) 'query': query!,
         if (queryInterpretationOptions != null)
-          'queryInterpretationOptions': queryInterpretationOptions.toJson(),
-        if (requestOptions != null) 'requestOptions': requestOptions.toJson(),
-        if (sortOptions != null) 'sortOptions': sortOptions.toJson(),
-        if (start != null) 'start': start,
+          'queryInterpretationOptions': queryInterpretationOptions!.toJson(),
+        if (requestOptions != null) 'requestOptions': requestOptions!.toJson(),
+        if (sortOptions != null) 'sortOptions': sortOptions!.toJson(),
+        if (start != null) 'start': start!,
       };
 }
 
 /// The search API response.
 class SearchResponse {
   /// Debugging information about the response.
-  ResponseDebugInfo debugInfo;
+  ResponseDebugInfo? debugInfo;
 
   /// Error information about the response.
-  ErrorInfo errorInfo;
+  ErrorInfo? errorInfo;
 
   /// Repeated facet results.
-  core.List<FacetResult> facetResults;
+  core.List<FacetResult>? facetResults;
 
   /// Whether there are more search results matching the query.
-  core.bool hasMoreResults;
+  core.bool? hasMoreResults;
 
   /// Query interpretation result for user query.
   ///
   /// Empty if query interpretation is disabled.
-  QueryInterpretation queryInterpretation;
+  QueryInterpretation? queryInterpretation;
 
   /// The estimated result count for this query.
-  core.String resultCountEstimate;
+  core.String? resultCountEstimate;
 
   /// The exact result count for this query.
-  core.String resultCountExact;
+  core.String? resultCountExact;
 
   /// Expanded result count information.
-  ResultCounts resultCounts;
+  ResultCounts? resultCounts;
 
   /// Results from a search query.
-  core.List<SearchResult> results;
+  core.List<SearchResult>? results;
 
   /// Suggested spelling for the query.
-  core.List<SpellResult> spellResults;
+  core.List<SpellResult>? spellResults;
 
   /// Structured results for the user query.
   ///
   /// These results are not counted against the page_size.
-  core.List<StructuredResult> structuredResults;
+  core.List<StructuredResult>? structuredResults;
 
   SearchResponse();
 
@@ -7609,25 +7499,25 @@ class SearchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (debugInfo != null) 'debugInfo': debugInfo.toJson(),
-        if (errorInfo != null) 'errorInfo': errorInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (debugInfo != null) 'debugInfo': debugInfo!.toJson(),
+        if (errorInfo != null) 'errorInfo': errorInfo!.toJson(),
         if (facetResults != null)
-          'facetResults': facetResults.map((value) => value.toJson()).toList(),
-        if (hasMoreResults != null) 'hasMoreResults': hasMoreResults,
+          'facetResults': facetResults!.map((value) => value.toJson()).toList(),
+        if (hasMoreResults != null) 'hasMoreResults': hasMoreResults!,
         if (queryInterpretation != null)
-          'queryInterpretation': queryInterpretation.toJson(),
+          'queryInterpretation': queryInterpretation!.toJson(),
         if (resultCountEstimate != null)
-          'resultCountEstimate': resultCountEstimate,
-        if (resultCountExact != null) 'resultCountExact': resultCountExact,
-        if (resultCounts != null) 'resultCounts': resultCounts.toJson(),
+          'resultCountEstimate': resultCountEstimate!,
+        if (resultCountExact != null) 'resultCountExact': resultCountExact!,
+        if (resultCounts != null) 'resultCounts': resultCounts!.toJson(),
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
+          'results': results!.map((value) => value.toJson()).toList(),
         if (spellResults != null)
-          'spellResults': spellResults.map((value) => value.toJson()).toList(),
+          'spellResults': spellResults!.map((value) => value.toJson()).toList(),
         if (structuredResults != null)
           'structuredResults':
-              structuredResults.map((value) => value.toJson()).toList(),
+              structuredResults!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7637,25 +7527,25 @@ class SearchResult {
   ///
   /// There will only be one level of clustered results. If current source is
   /// not enabled for clustering, this field will be empty.
-  core.List<SearchResult> clusteredResults;
+  core.List<SearchResult>? clusteredResults;
 
   /// Debugging information about this search result.
-  ResultDebugInfo debugInfo;
+  ResultDebugInfo? debugInfo;
 
   /// Metadata of the search result.
-  Metadata metadata;
+  Metadata? metadata;
 
   /// The concatenation of all snippets (summaries) available for this result.
-  Snippet snippet;
+  Snippet? snippet;
 
   /// Title of the search result.
-  core.String title;
+  core.String? title;
 
   /// The URL of the search result.
   ///
   /// The URL contains a Google redirect to the actual item. This URL is signed
   /// and shouldn't be changed.
-  core.String url;
+  core.String? url;
 
   SearchResult();
 
@@ -7686,15 +7576,15 @@ class SearchResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clusteredResults != null)
           'clusteredResults':
-              clusteredResults.map((value) => value.toJson()).toList(),
-        if (debugInfo != null) 'debugInfo': debugInfo.toJson(),
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (snippet != null) 'snippet': snippet.toJson(),
-        if (title != null) 'title': title,
-        if (url != null) 'url': url,
+              clusteredResults!.map((value) => value.toJson()).toList(),
+        if (debugInfo != null) 'debugInfo': debugInfo!.toJson(),
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (snippet != null) 'snippet': snippet!.toJson(),
+        if (title != null) 'title': title!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -7702,13 +7592,13 @@ class SearchResult {
 /// page.
 class Snippet {
   /// The matched ranges in the snippet.
-  core.List<MatchRange> matchRanges;
+  core.List<MatchRange>? matchRanges;
 
   /// The snippet of the document.
   ///
   /// The snippet of the document. May contain escaped HTML character that
   /// should be unescaped prior to rendering.
-  core.String snippet;
+  core.String? snippet;
 
   Snippet();
 
@@ -7724,10 +7614,10 @@ class Snippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (matchRanges != null)
-          'matchRanges': matchRanges.map((value) => value.toJson()).toList(),
-        if (snippet != null) 'snippet': snippet,
+          'matchRanges': matchRanges!.map((value) => value.toJson()).toList(),
+        if (snippet != null) 'snippet': snippet!,
       };
 }
 
@@ -7735,13 +7625,13 @@ class SortOptions {
   /// Name of the operator corresponding to the field to sort on.
   ///
   /// The corresponding property must be marked as sortable.
-  core.String operatorName;
+  core.String? operatorName;
 
   /// Ascending is the default sort order
   /// Possible string values are:
   /// - "ASCENDING"
   /// - "DESCENDING"
-  core.String sortOrder;
+  core.String? sortOrder;
 
   SortOptions();
 
@@ -7754,16 +7644,16 @@ class SortOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operatorName != null) 'operatorName': operatorName,
-        if (sortOrder != null) 'sortOrder': sortOrder,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operatorName != null) 'operatorName': operatorName!,
+        if (sortOrder != null) 'sortOrder': sortOrder!,
       };
 }
 
 /// Defines sources for the suggest/search APIs.
 class Source {
   /// Source name for content indexed by the Indexing API.
-  core.String name;
+  core.String? name;
 
   /// Predefined content source for Google Apps.
   /// Possible string values are:
@@ -7778,7 +7668,7 @@ class Source {
   /// - "GOOGLE_GROUPS"
   /// - "GOOGLE_CALENDAR"
   /// - "GOOGLE_KEEP"
-  core.String predefinedSource;
+  core.String? predefinedSource;
 
   Source();
 
@@ -7791,22 +7681,22 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (predefinedSource != null) 'predefinedSource': predefinedSource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (predefinedSource != null) 'predefinedSource': predefinedSource!,
       };
 }
 
 /// Configurations for a source while processing a Search or Suggest request.
 class SourceConfig {
   /// The crowding configuration for the source.
-  SourceCrowdingConfig crowdingConfig;
+  SourceCrowdingConfig? crowdingConfig;
 
   /// The scoring configuration for the source.
-  SourceScoringConfig scoringConfig;
+  SourceScoringConfig? scoringConfig;
 
   /// The source for which this configuration is to be used.
-  Source source;
+  Source? source;
 
   SourceConfig();
 
@@ -7825,10 +7715,10 @@ class SourceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (crowdingConfig != null) 'crowdingConfig': crowdingConfig.toJson(),
-        if (scoringConfig != null) 'scoringConfig': scoringConfig.toJson(),
-        if (source != null) 'source': source.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (crowdingConfig != null) 'crowdingConfig': crowdingConfig!.toJson(),
+        if (scoringConfig != null) 'scoringConfig': scoringConfig!.toJson(),
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
@@ -7842,12 +7732,12 @@ class SourceCrowdingConfig {
   /// Maximum number of results allowed from a source.
   ///
   /// No limits will be set on results if this value is less than or equal to 0.
-  core.int numResults;
+  core.int? numResults;
 
   /// Maximum number of suggestions allowed from a source.
   ///
   /// No limits will be set on results if this value is less than or equal to 0.
-  core.int numSuggestions;
+  core.int? numSuggestions;
 
   SourceCrowdingConfig();
 
@@ -7860,25 +7750,25 @@ class SourceCrowdingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (numResults != null) 'numResults': numResults,
-        if (numSuggestions != null) 'numSuggestions': numSuggestions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (numResults != null) 'numResults': numResults!,
+        if (numSuggestions != null) 'numSuggestions': numSuggestions!,
       };
 }
 
 /// Per source result count information.
 class SourceResultCount {
   /// Whether there are more search results for this source.
-  core.bool hasMoreResults;
+  core.bool? hasMoreResults;
 
   /// The estimated result count for this source.
-  core.String resultCountEstimate;
+  core.String? resultCountEstimate;
 
   /// The exact result count for this source.
-  core.String resultCountExact;
+  core.String? resultCountExact;
 
   /// The source the result count information is associated with.
-  Source source;
+  Source? source;
 
   SourceResultCount();
 
@@ -7898,12 +7788,12 @@ class SourceResultCount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hasMoreResults != null) 'hasMoreResults': hasMoreResults,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hasMoreResults != null) 'hasMoreResults': hasMoreResults!,
         if (resultCountEstimate != null)
-          'resultCountEstimate': resultCountEstimate,
-        if (resultCountExact != null) 'resultCountExact': resultCountExact,
-        if (source != null) 'source': source.toJson(),
+          'resultCountEstimate': resultCountEstimate!,
+        if (resultCountExact != null) 'resultCountExact': resultCountExact!,
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
@@ -7916,7 +7806,7 @@ class SourceScoringConfig {
   /// - "DEFAULT"
   /// - "LOW"
   /// - "HIGH"
-  core.String sourceImportance;
+  core.String? sourceImportance;
 
   SourceScoringConfig();
 
@@ -7926,14 +7816,14 @@ class SourceScoringConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sourceImportance != null) 'sourceImportance': sourceImportance,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sourceImportance != null) 'sourceImportance': sourceImportance!,
       };
 }
 
 class SpellResult {
   /// The suggested spelling of the query.
-  core.String suggestedQuery;
+  core.String? suggestedQuery;
 
   SpellResult();
 
@@ -7943,8 +7833,8 @@ class SpellResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (suggestedQuery != null) 'suggestedQuery': suggestedQuery,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (suggestedQuery != null) 'suggestedQuery': suggestedQuery!,
       };
 }
 
@@ -7953,10 +7843,10 @@ class StartUploadItemRequest {
   /// Name of connector making this call.
   ///
   /// Format: datasources/{source_id}/connectors/{ID}
-  core.String connectorName;
+  core.String? connectorName;
 
   /// Common debug options.
-  DebugOptions debugOptions;
+  DebugOptions? debugOptions;
 
   StartUploadItemRequest();
 
@@ -7970,9 +7860,9 @@ class StartUploadItemRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (connectorName != null) 'connectorName': connectorName,
-        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (connectorName != null) 'connectorName': connectorName!,
+        if (debugOptions != null) 'debugOptions': debugOptions!.toJson(),
       };
 }
 
@@ -7985,7 +7875,7 @@ class StartUploadItemRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -7993,13 +7883,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -8023,10 +7913,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -8035,7 +7925,7 @@ class StructuredDataObject {
   /// The properties for the object.
   ///
   /// The maximum number of elements is 1000.
-  core.List<NamedProperty> properties;
+  core.List<NamedProperty>? properties;
 
   StructuredDataObject();
 
@@ -8048,16 +7938,16 @@ class StructuredDataObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (properties != null)
-          'properties': properties.map((value) => value.toJson()).toList(),
+          'properties': properties!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Structured results that are returned as part of search request.
 class StructuredResult {
   /// Representation of a person
-  Person person;
+  Person? person;
 
   StructuredResult();
 
@@ -8068,8 +7958,8 @@ class StructuredResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (person != null) 'person': person.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (person != null) 'person': person!.toJson(),
       };
 }
 
@@ -8081,16 +7971,16 @@ class SuggestRequest {
   /// application. NOTE: Suggestions are only supported for the following
   /// sources: * Third-party data sources * PredefinedSource.PERSON *
   /// PredefinedSource.GOOGLE_DRIVE
-  core.List<DataSourceRestriction> dataSourceRestrictions;
+  core.List<DataSourceRestriction>? dataSourceRestrictions;
 
   /// Partial query for which autocomplete suggestions will be shown.
   ///
   /// For example, if the query is "sea", then the server might return "season",
   /// "search", "seagull" and so on.
-  core.String query;
+  core.String? query;
 
   /// Request options, such as the search application and user timezone.
-  RequestOptions requestOptions;
+  RequestOptions? requestOptions;
 
   SuggestRequest();
 
@@ -8110,19 +8000,19 @@ class SuggestRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataSourceRestrictions != null)
           'dataSourceRestrictions':
-              dataSourceRestrictions.map((value) => value.toJson()).toList(),
-        if (query != null) 'query': query,
-        if (requestOptions != null) 'requestOptions': requestOptions.toJson(),
+              dataSourceRestrictions!.map((value) => value.toJson()).toList(),
+        if (query != null) 'query': query!,
+        if (requestOptions != null) 'requestOptions': requestOptions!.toJson(),
       };
 }
 
 /// Response of the suggest API.
 class SuggestResponse {
   /// List of suggestions.
-  core.List<SuggestResult> suggestResults;
+  core.List<SuggestResult>? suggestResults;
 
   SuggestResponse();
 
@@ -8135,10 +8025,10 @@ class SuggestResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (suggestResults != null)
           'suggestResults':
-              suggestResults.map((value) => value.toJson()).toList(),
+              suggestResults!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8148,18 +8038,18 @@ class SuggestResult {
   ///
   /// It contains more information about the person - like their email ID, name
   /// etc.
-  PeopleSuggestion peopleSuggestion;
+  PeopleSuggestion? peopleSuggestion;
 
   /// This field will be present if the suggested query is a word/phrase
   /// completion.
-  QuerySuggestion querySuggestion;
+  QuerySuggestion? querySuggestion;
 
   /// The source of the suggestion.
-  Source source;
+  Source? source;
 
   /// The suggested query that will be used for search, when the user clicks on
   /// the suggestion
-  core.String suggestedQuery;
+  core.String? suggestedQuery;
 
   SuggestResult();
 
@@ -8181,13 +8071,13 @@ class SuggestResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (peopleSuggestion != null)
-          'peopleSuggestion': peopleSuggestion.toJson(),
+          'peopleSuggestion': peopleSuggestion!.toJson(),
         if (querySuggestion != null)
-          'querySuggestion': querySuggestion.toJson(),
-        if (source != null) 'source': source.toJson(),
-        if (suggestedQuery != null) 'suggestedQuery': suggestedQuery,
+          'querySuggestion': querySuggestion!.toJson(),
+        if (source != null) 'source': source!.toJson(),
+        if (suggestedQuery != null) 'suggestedQuery': suggestedQuery!,
       };
 }
 
@@ -8206,7 +8096,7 @@ class TextOperatorOptions {
   /// If false, the text is tokenized. For example, if the value is
   /// "science-fiction" the queries "genre:science" and "genre:fiction" matches
   /// the item.
-  core.bool exactMatchWithOperator;
+  core.bool? exactMatchWithOperator;
 
   /// Indicates the operator name required in the query in order to isolate the
   /// text property.
@@ -8218,7 +8108,7 @@ class TextOperatorOptions {
   /// returns all items where *<value>* matches the value of any text properties
   /// or text within the content field for the item. The operator name can only
   /// contain lowercase letters (a-z). The maximum length is 32 characters.
-  core.String operatorName;
+  core.String? operatorName;
 
   TextOperatorOptions();
 
@@ -8231,21 +8121,21 @@ class TextOperatorOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (exactMatchWithOperator != null)
-          'exactMatchWithOperator': exactMatchWithOperator,
-        if (operatorName != null) 'operatorName': operatorName,
+          'exactMatchWithOperator': exactMatchWithOperator!,
+        if (operatorName != null) 'operatorName': operatorName!,
       };
 }
 
 /// Options for text properties.
 class TextPropertyOptions {
   /// If set, describes how the property should be used as a search operator.
-  TextOperatorOptions operatorOptions;
+  TextOperatorOptions? operatorOptions;
 
   /// Indicates the search quality importance of the tokens within the field
   /// when used for retrieval.
-  RetrievalImportance retrievalImportance;
+  RetrievalImportance? retrievalImportance;
 
   TextPropertyOptions();
 
@@ -8260,18 +8150,18 @@ class TextPropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operatorOptions != null)
-          'operatorOptions': operatorOptions.toJson(),
+          'operatorOptions': operatorOptions!.toJson(),
         if (retrievalImportance != null)
-          'retrievalImportance': retrievalImportance.toJson(),
+          'retrievalImportance': retrievalImportance!.toJson(),
       };
 }
 
 /// List of text values.
 class TextValues {
   /// The maximum allowable length for text values is 2048 characters.
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   TextValues();
 
@@ -8283,8 +8173,8 @@ class TextValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (values != null) 'values': values!,
       };
 }
 
@@ -8301,7 +8191,7 @@ class TimestampOperatorOptions {
   /// show results only where the value of the property named *closeDate* is
   /// later than *<value>*. The operator name can only contain lowercase letters
   /// (a-z). The maximum length is 32 characters.
-  core.String greaterThanOperatorName;
+  core.String? greaterThanOperatorName;
 
   /// Indicates the operator name required in the query in order to isolate the
   /// timestamp property using the less-than operator.
@@ -8311,7 +8201,7 @@ class TimestampOperatorOptions {
   /// only where the value of the property named *closeDate* is earlier than
   /// *<value>*. The operator name can only contain lowercase letters (a-z). The
   /// maximum length is 32 characters.
-  core.String lessThanOperatorName;
+  core.String? lessThanOperatorName;
 
   /// Indicates the operator name required in the query in order to isolate the
   /// timestamp property.
@@ -8324,7 +8214,7 @@ class TimestampOperatorOptions {
   /// properties or text within the content field for the item. The operator
   /// name can only contain lowercase letters (a-z). The maximum length is 32
   /// characters.
-  core.String operatorName;
+  core.String? operatorName;
 
   TimestampOperatorOptions();
 
@@ -8340,19 +8230,19 @@ class TimestampOperatorOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (greaterThanOperatorName != null)
-          'greaterThanOperatorName': greaterThanOperatorName,
+          'greaterThanOperatorName': greaterThanOperatorName!,
         if (lessThanOperatorName != null)
-          'lessThanOperatorName': lessThanOperatorName,
-        if (operatorName != null) 'operatorName': operatorName,
+          'lessThanOperatorName': lessThanOperatorName!,
+        if (operatorName != null) 'operatorName': operatorName!,
       };
 }
 
 /// Options for timestamp properties.
 class TimestampPropertyOptions {
   /// If set, describes how the timestamp should be used as a search operator.
-  TimestampOperatorOptions operatorOptions;
+  TimestampOperatorOptions? operatorOptions;
 
   TimestampPropertyOptions();
 
@@ -8363,15 +8253,15 @@ class TimestampPropertyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operatorOptions != null)
-          'operatorOptions': operatorOptions.toJson(),
+          'operatorOptions': operatorOptions!.toJson(),
       };
 }
 
 /// List of timestamp values.
 class TimestampValues {
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   TimestampValues();
 
@@ -8383,14 +8273,14 @@ class TimestampValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (values != null) 'values': values!,
       };
 }
 
 class UnmappedIdentity {
   /// The resource name for an external user.
-  Principal externalIdentity;
+  Principal? externalIdentity;
 
   /// The resolution status for the external identity.
   /// Possible string values are:
@@ -8405,7 +8295,7 @@ class UnmappedIdentity {
   /// - "TOO_MANY_MAPPINGS_FOUND" : The number of users associated with the
   /// external identity is too large.
   /// - "INTERNAL_ERROR" : Internal error.
-  core.String resolutionStatusCode;
+  core.String? resolutionStatusCode;
 
   UnmappedIdentity();
 
@@ -8419,11 +8309,11 @@ class UnmappedIdentity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (externalIdentity != null)
-          'externalIdentity': externalIdentity.toJson(),
+          'externalIdentity': externalIdentity!.toJson(),
         if (resolutionStatusCode != null)
-          'resolutionStatusCode': resolutionStatusCode,
+          'resolutionStatusCode': resolutionStatusCode!,
       };
 }
 
@@ -8431,13 +8321,13 @@ class UnreserveItemsRequest {
   /// Name of connector making this call.
   ///
   /// Format: datasources/{source_id}/connectors/{ID}
-  core.String connectorName;
+  core.String? connectorName;
 
   /// Common debug options.
-  DebugOptions debugOptions;
+  DebugOptions? debugOptions;
 
   /// Name of a queue to unreserve items from.
-  core.String queue;
+  core.String? queue;
 
   UnreserveItemsRequest();
 
@@ -8454,17 +8344,17 @@ class UnreserveItemsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (connectorName != null) 'connectorName': connectorName,
-        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
-        if (queue != null) 'queue': queue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (connectorName != null) 'connectorName': connectorName!,
+        if (debugOptions != null) 'debugOptions': debugOptions!.toJson(),
+        if (queue != null) 'queue': queue!,
       };
 }
 
 class UpdateDataSourceRequest {
   /// Common debug options.
-  DebugOptions debugOptions;
-  DataSource source;
+  DebugOptions? debugOptions;
+  DataSource? source;
 
   UpdateDataSourceRequest();
 
@@ -8479,22 +8369,22 @@ class UpdateDataSourceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
-        if (source != null) 'source': source.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (debugOptions != null) 'debugOptions': debugOptions!.toJson(),
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
 class UpdateSchemaRequest {
   /// Common debug options.
-  DebugOptions debugOptions;
+  DebugOptions? debugOptions;
 
   /// The new schema for the source.
-  Schema schema;
+  Schema? schema;
 
   /// If true, the schema will be checked for validity, but will not be
   /// registered with the data source, even if valid.
-  core.bool validateOnly;
+  core.bool? validateOnly;
 
   UpdateSchemaRequest();
 
@@ -8512,10 +8402,10 @@ class UpdateSchemaRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (debugOptions != null) 'debugOptions': debugOptions.toJson(),
-        if (schema != null) 'schema': schema.toJson(),
-        if (validateOnly != null) 'validateOnly': validateOnly,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (debugOptions != null) 'debugOptions': debugOptions!.toJson(),
+        if (schema != null) 'schema': schema!.toJson(),
+        if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
 
@@ -8527,7 +8417,7 @@ class UploadItemRef {
   /// Name of the content reference.
   ///
   /// The maximum length is 2048 characters.
-  core.String name;
+  core.String? name;
 
   UploadItemRef();
 
@@ -8537,19 +8427,19 @@ class UploadItemRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
 /// Definition of a single value with generic type.
 class Value {
-  core.bool booleanValue;
-  Date dateValue;
-  core.double doubleValue;
-  core.String integerValue;
-  core.String stringValue;
-  core.String timestampValue;
+  core.bool? booleanValue;
+  Date? dateValue;
+  core.double? doubleValue;
+  core.String? integerValue;
+  core.String? stringValue;
+  core.String? timestampValue;
 
   Value();
 
@@ -8575,13 +8465,13 @@ class Value {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (booleanValue != null) 'booleanValue': booleanValue,
-        if (dateValue != null) 'dateValue': dateValue.toJson(),
-        if (doubleValue != null) 'doubleValue': doubleValue,
-        if (integerValue != null) 'integerValue': integerValue,
-        if (stringValue != null) 'stringValue': stringValue,
-        if (timestampValue != null) 'timestampValue': timestampValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (booleanValue != null) 'booleanValue': booleanValue!,
+        if (dateValue != null) 'dateValue': dateValue!.toJson(),
+        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (integerValue != null) 'integerValue': integerValue!,
+        if (stringValue != null) 'stringValue': stringValue!,
+        if (timestampValue != null) 'timestampValue': timestampValue!,
       };
 }
 
@@ -8594,10 +8484,10 @@ class ValueFilter {
   /// `less_than_operator_name` in your schema. The query filters the results
   /// for the property values that are greater than or less than the supplied
   /// value in the query.
-  core.String operatorName;
+  core.String? operatorName;
 
   /// The value to be compared with.
-  Value value;
+  Value? value;
 
   ValueFilter();
 
@@ -8611,8 +8501,8 @@ class ValueFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operatorName != null) 'operatorName': operatorName,
-        if (value != null) 'value': value.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operatorName != null) 'operatorName': operatorName!,
+        if (value != null) 'value': value!.toJson(),
       };
 }

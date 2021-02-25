@@ -97,11 +97,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -141,14 +138,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -199,11 +193,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -241,11 +232,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -294,14 +282,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -361,14 +346,10 @@ class ProjectsLocationsWorkflowsResource {
   async.Future<Operation> create(
     Workflow request,
     core.String parent, {
-    core.String workflowId,
-    core.String $fields,
+    core.String? workflowId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (workflowId != null) 'workflowId': [workflowId],
       if ($fields != null) 'fields': [$fields],
@@ -410,11 +391,8 @@ class ProjectsLocationsWorkflowsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -451,11 +429,8 @@ class ProjectsLocationsWorkflowsResource {
   /// this method will complete with the same error.
   async.Future<Workflow> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -509,15 +484,12 @@ class ProjectsLocationsWorkflowsResource {
   /// this method will complete with the same error.
   async.Future<ListWorkflowsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -570,14 +542,10 @@ class ProjectsLocationsWorkflowsResource {
   async.Future<Operation> patch(
     Workflow request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -609,16 +577,16 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -634,20 +602,20 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -663,10 +631,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -675,13 +643,13 @@ class ListWorkflowsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Unreachable resources.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   /// The workflows which match the request.
-  core.List<Workflow> workflows;
+  core.List<Workflow>? workflows;
 
   ListWorkflowsResponse();
 
@@ -702,11 +670,11 @@ class ListWorkflowsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
         if (workflows != null)
-          'workflows': workflows.map((value) => value.toJson()).toList(),
+          'workflows': workflows!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -715,17 +683,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -733,12 +701,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -772,12 +740,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -788,10 +756,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -802,14 +770,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -822,7 +790,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -857,31 +825,31 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
 /// Represents the metadata of the long-running operation.
 class OperationMetadata {
   /// API version used to start the operation.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// The time the operation was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time the operation finished running.
-  core.String endTime;
+  core.String? endTime;
 
   /// Server-defined resource path for the target of the operation.
-  core.String target;
+  core.String? target;
 
   /// Name of the verb executed by the operation.
-  core.String verb;
+  core.String? verb;
 
   OperationMetadata();
 
@@ -903,12 +871,12 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
-        if (target != null) 'target': target,
-        if (verb != null) 'verb': verb,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
@@ -921,7 +889,7 @@ class OperationMetadata {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -929,13 +897,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -959,10 +927,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -971,12 +939,12 @@ class Workflow {
   /// The timestamp of when the workflow was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Description of the workflow provided by the user.
   ///
   /// Must be at most 1000 unicode characters long.
-  core.String description;
+  core.String? description;
 
   /// Labels associated with this workflow.
   ///
@@ -984,17 +952,17 @@ class Workflow {
   /// than 63 characters and can only contain lowercase letters, numeric
   /// characters, underscores and dashes. Label keys must start with a letter.
   /// International characters are allowed.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The resource name of the workflow.
   ///
   /// Format: projects/{project}/locations/{location}/workflows/{workflow}
-  core.String name;
+  core.String? name;
 
   /// The timestamp that the latest revision of the workflow was created.
   ///
   /// Output only.
-  core.String revisionCreateTime;
+  core.String? revisionCreateTime;
 
   /// The revision of the workflow.
   ///
@@ -1005,7 +973,7 @@ class Workflow {
   /// hyphen and 3 hexadecimal random characters.
   ///
   /// Output only.
-  core.String revisionId;
+  core.String? revisionId;
 
   /// Name of the service account associated with the latest workflow version.
   ///
@@ -1017,12 +985,12 @@ class Workflow {
   /// account. If not provided, workflow will use the project's default service
   /// account. Modifying this field for an existing workflow results in a new
   /// workflow revision.
-  core.String serviceAccount;
+  core.String? serviceAccount;
 
   /// Workflow code to be executed.
   ///
   /// The size limit is 32KB.
-  core.String sourceContents;
+  core.String? sourceContents;
 
   /// State of the workflow deployment.
   ///
@@ -1030,12 +998,12 @@ class Workflow {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Invalid state.
   /// - "ACTIVE" : The workflow has been deployed successfully and is serving.
-  core.String state;
+  core.String? state;
 
   /// The last update timestamp of the workflow.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Workflow();
 
@@ -1078,17 +1046,17 @@ class Workflow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
         if (revisionCreateTime != null)
-          'revisionCreateTime': revisionCreateTime,
-        if (revisionId != null) 'revisionId': revisionId,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount,
-        if (sourceContents != null) 'sourceContents': sourceContents,
-        if (state != null) 'state': state,
-        if (updateTime != null) 'updateTime': updateTime,
+          'revisionCreateTime': revisionCreateTime!,
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (sourceContents != null) 'sourceContents': sourceContents!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }

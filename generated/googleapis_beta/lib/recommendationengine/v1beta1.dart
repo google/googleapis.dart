@@ -135,13 +135,10 @@ class ProjectsLocationsCatalogsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommendationengineV1beta1ListCatalogsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -189,14 +186,10 @@ class ProjectsLocationsCatalogsResource {
   async.Future<GoogleCloudRecommendationengineV1beta1Catalog> patch(
     GoogleCloudRecommendationengineV1beta1Catalog request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -245,13 +238,9 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   async.Future<GoogleCloudRecommendationengineV1beta1CatalogItem> create(
     GoogleCloudRecommendationengineV1beta1CatalogItem request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -292,11 +281,8 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -334,11 +320,8 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommendationengineV1beta1CatalogItem> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -385,13 +368,9 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   async.Future<GoogleLongrunningOperation> import(
     GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -441,14 +420,11 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   async.Future<GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse>
       list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -499,14 +475,10 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   async.Future<GoogleCloudRecommendationengineV1beta1CatalogItem> patch(
     GoogleCloudRecommendationengineV1beta1CatalogItem request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -573,11 +545,8 @@ class ProjectsLocationsCatalogsEventStoresOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -628,14 +597,11 @@ class ProjectsLocationsCatalogsEventStoresOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -711,13 +677,9 @@ class ProjectsLocationsCatalogsEventStoresPlacementsResource {
   async.Future<GoogleCloudRecommendationengineV1beta1PredictResponse> predict(
     GoogleCloudRecommendationengineV1beta1PredictRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -772,13 +734,9 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
     GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest
         request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -819,11 +777,8 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -869,13 +824,10 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
           GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse>
       list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -939,14 +891,11 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   /// this method will complete with the same error.
   async.Future<GoogleApiHttpBody> collect(
     core.String parent, {
-    core.String ets,
-    core.String uri,
-    core.String userEvent,
-    core.String $fields,
+    core.String? ets,
+    core.String? uri,
+    core.String? userEvent,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (ets != null) 'ets': [ets],
       if (uri != null) 'uri': [uri],
@@ -997,13 +946,9 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   async.Future<GoogleLongrunningOperation> import(
     GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1080,14 +1025,11 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   async.Future<GoogleCloudRecommendationengineV1beta1ListUserEventsResponse>
       list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1137,13 +1079,9 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   async.Future<GoogleLongrunningOperation> purge(
     GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1194,13 +1132,9 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   async.Future<GoogleLongrunningOperation> rejoin(
     GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1243,13 +1177,9 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
   async.Future<GoogleCloudRecommendationengineV1beta1UserEvent> write(
     GoogleCloudRecommendationengineV1beta1UserEvent request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1298,11 +1228,8 @@ class ProjectsLocationsCatalogsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1353,14 +1280,11 @@ class ProjectsLocationsCatalogsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1403,11 +1327,11 @@ class ProjectsLocationsCatalogsOperationsResource {
 class GoogleApiHttpBody {
   /// The HTTP Content-Type header value specifying the content type of the
   /// body.
-  core.String contentType;
+  core.String? contentType;
 
   /// The HTTP request/response body as raw binary.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -1420,7 +1344,7 @@ class GoogleApiHttpBody {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> extensions;
+  core.List<core.Map<core.String, core.Object>>? extensions;
 
   GoogleApiHttpBody();
 
@@ -1444,10 +1368,10 @@ class GoogleApiHttpBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentType != null) 'contentType': contentType,
-        if (data != null) 'data': data,
-        if (extensions != null) 'extensions': extensions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentType != null) 'contentType': contentType!,
+        if (data != null) 'data': data!,
+        if (extensions != null) 'extensions': extensions!,
       };
 }
 
@@ -1459,13 +1383,13 @@ class GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response message for TriggerCatalogRejoin method.
 class GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse {
   /// Number of user events that were joined with latest catalog items.
-  core.String rejoinedUserEventsCount;
+  core.String? rejoinedUserEventsCount;
 
   GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse();
 
@@ -1476,9 +1400,9 @@ class GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (rejoinedUserEventsCount != null)
-          'rejoinedUserEventsCount': rejoinedUserEventsCount,
+          'rejoinedUserEventsCount': rejoinedUserEventsCount!,
       };
 }
 
@@ -1488,7 +1412,7 @@ class GoogleCloudRecommendationengineV1alphaTuningMetadata {
   ///
   /// Format:
   /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/eventStores/{event_store_id}/recommendationModels/{recommendation_model_id}
-  core.String recommendationModel;
+  core.String? recommendationModel;
 
   GoogleCloudRecommendationengineV1alphaTuningMetadata();
 
@@ -1499,9 +1423,9 @@ class GoogleCloudRecommendationengineV1alphaTuningMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (recommendationModel != null)
-          'recommendationModel': recommendationModel,
+          'recommendationModel': recommendationModel!,
       };
 }
 
@@ -1513,7 +1437,7 @@ class GoogleCloudRecommendationengineV1alphaTuningResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// BigQuery source import data from.
@@ -1531,12 +1455,12 @@ class GoogleCloudRecommendationengineV1beta1BigQuerySource {
   /// https://support.google.com/analytics/answer/3437719?hl=en
   ///
   /// Optional.
-  core.String dataSchema;
+  core.String? dataSchema;
 
   /// The BigQuery data set to copy the data from.
   ///
   /// Required.
-  core.String datasetId;
+  core.String? datasetId;
 
   /// Intermediate Cloud Storage directory used for the import.
   ///
@@ -1544,19 +1468,19 @@ class GoogleCloudRecommendationengineV1beta1BigQuerySource {
   /// Cloud Storage directory.
   ///
   /// Optional.
-  core.String gcsStagingDir;
+  core.String? gcsStagingDir;
 
   /// The project id (can be project # or id) that the BigQuery source is in.
   ///
   /// If not specified, inherits the project id from the parent request.
   ///
   /// Optional.
-  core.String projectId;
+  core.String? projectId;
 
   /// The BigQuery table to copy the data from.
   ///
   /// Required.
-  core.String tableId;
+  core.String? tableId;
 
   GoogleCloudRecommendationengineV1beta1BigQuerySource();
 
@@ -1579,12 +1503,12 @@ class GoogleCloudRecommendationengineV1beta1BigQuerySource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataSchema != null) 'dataSchema': dataSchema,
-        if (datasetId != null) 'datasetId': datasetId,
-        if (gcsStagingDir != null) 'gcsStagingDir': gcsStagingDir,
-        if (projectId != null) 'projectId': projectId,
-        if (tableId != null) 'tableId': tableId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataSchema != null) 'dataSchema': dataSchema!,
+        if (datasetId != null) 'datasetId': datasetId!,
+        if (gcsStagingDir != null) 'gcsStagingDir': gcsStagingDir!,
+        if (projectId != null) 'projectId': projectId!,
+        if (tableId != null) 'tableId': tableId!,
       };
 }
 
@@ -1595,21 +1519,21 @@ class GoogleCloudRecommendationengineV1beta1Catalog {
   /// The catalog item level configuration.
   ///
   /// Required.
-  GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig
+  GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig?
       catalogItemLevelConfig;
 
   /// The ID of the default event store.
   ///
   /// Required.
-  core.String defaultEventStoreId;
+  core.String? defaultEventStoreId;
 
   /// The catalog display name.
   ///
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   /// The fully qualified resource name of the catalog.
-  core.String name;
+  core.String? name;
 
   GoogleCloudRecommendationengineV1beta1Catalog();
 
@@ -1631,13 +1555,13 @@ class GoogleCloudRecommendationengineV1beta1Catalog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (catalogItemLevelConfig != null)
-          'catalogItemLevelConfig': catalogItemLevelConfig.toJson(),
+          'catalogItemLevelConfig': catalogItemLevelConfig!.toJson(),
         if (defaultEventStoreId != null)
-          'defaultEventStoreId': defaultEventStoreId,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
+          'defaultEventStoreId': defaultEventStoreId!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1648,7 +1572,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogInlineSource {
   /// Recommended max of 10k items.
   ///
   /// Optional.
-  core.List<GoogleCloudRecommendationengineV1beta1CatalogItem> catalogItems;
+  core.List<GoogleCloudRecommendationengineV1beta1CatalogItem>? catalogItems;
 
   GoogleCloudRecommendationengineV1beta1CatalogInlineSource();
 
@@ -1663,9 +1587,9 @@ class GoogleCloudRecommendationengineV1beta1CatalogInlineSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (catalogItems != null)
-          'catalogItems': catalogItems.map((value) => value.toJson()).toList(),
+          'catalogItems': catalogItems!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1682,7 +1606,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogItem {
   /// "Shoes"\] } \]
   ///
   /// Required.
-  core.List<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>
+  core.List<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>?
       categoryHierarchies;
 
   /// Catalog item description.
@@ -1690,7 +1614,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogItem {
   /// UTF-8 encoded string with a length limit of 5 KiB.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Catalog item identifier.
   ///
@@ -1700,7 +1624,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogItem {
   /// with the Catalog.
   ///
   /// Required.
-  core.String id;
+  core.String? id;
 
   /// Highly encouraged.
   ///
@@ -1711,7 +1635,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogItem {
   /// attributes here.
   ///
   /// Optional.
-  GoogleCloudRecommendationengineV1beta1FeatureMap itemAttributes;
+  GoogleCloudRecommendationengineV1beta1FeatureMap? itemAttributes;
 
   /// Variant group identifier for prediction results.
   ///
@@ -1720,7 +1644,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogItem {
   /// more\](/recommendations-ai/docs/catalog#item-group-id).
   ///
   /// Optional.
-  core.String itemGroupId;
+  core.String? itemGroupId;
 
   /// The model automatically detects the text language.
   ///
@@ -1729,12 +1653,12 @@ class GoogleCloudRecommendationengineV1beta1CatalogItem {
   /// model performance.
   ///
   /// Optional. Deprecated.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Metadata specific to retail products.
   ///
   /// Optional.
-  GoogleCloudRecommendationengineV1beta1ProductCatalogItem productMetadata;
+  GoogleCloudRecommendationengineV1beta1ProductCatalogItem? productMetadata;
 
   /// Filtering tags associated with the catalog item.
   ///
@@ -1743,14 +1667,14 @@ class GoogleCloudRecommendationengineV1beta1CatalogItem {
   /// tag as part of the predict request filter.
   ///
   /// Optional.
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   /// Catalog item title.
   ///
   /// UTF-8 encoded string with a length limit of 1 KiB.
   ///
   /// Required.
-  core.String title;
+  core.String? title;
 
   GoogleCloudRecommendationengineV1beta1CatalogItem();
 
@@ -1795,19 +1719,19 @@ class GoogleCloudRecommendationengineV1beta1CatalogItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (categoryHierarchies != null)
           'categoryHierarchies':
-              categoryHierarchies.map((value) => value.toJson()).toList(),
-        if (description != null) 'description': description,
-        if (id != null) 'id': id,
-        if (itemAttributes != null) 'itemAttributes': itemAttributes.toJson(),
-        if (itemGroupId != null) 'itemGroupId': itemGroupId,
-        if (languageCode != null) 'languageCode': languageCode,
+              categoryHierarchies!.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
+        if (itemAttributes != null) 'itemAttributes': itemAttributes!.toJson(),
+        if (itemGroupId != null) 'itemGroupId': itemGroupId!,
+        if (languageCode != null) 'languageCode': languageCode!,
         if (productMetadata != null)
-          'productMetadata': productMetadata.toJson(),
-        if (tags != null) 'tags': tags,
-        if (title != null) 'title': title,
+          'productMetadata': productMetadata!.toJson(),
+        if (tags != null) 'tags': tags!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1820,7 +1744,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy {
   /// to most specific).
   ///
   /// Required.
-  core.List<core.String> categories;
+  core.List<core.String>? categories;
 
   GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy();
 
@@ -1833,8 +1757,8 @@ class GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (categories != null) 'categories': categories,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (categories != null) 'categories': categories!,
       };
 }
 
@@ -1852,7 +1776,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig {
   /// - "CATALOG_ITEM_LEVEL_UNSPECIFIED" : Unknown value - should never be used.
   /// - "VARIANT" : Catalog items are at variant level.
   /// - "MASTER" : Catalog items are at master level.
-  core.String eventItemLevel;
+  core.String? eventItemLevel;
 
   /// Level of the catalog at which predictions are made.
   ///
@@ -1865,7 +1789,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig {
   /// - "CATALOG_ITEM_LEVEL_UNSPECIFIED" : Unknown value - should never be used.
   /// - "VARIANT" : Catalog items are at variant level.
   /// - "MASTER" : Catalog items are at master level.
-  core.String predictItemLevel;
+  core.String? predictItemLevel;
 
   GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig();
 
@@ -1879,9 +1803,9 @@ class GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (eventItemLevel != null) 'eventItemLevel': eventItemLevel,
-        if (predictItemLevel != null) 'predictItemLevel': predictItemLevel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (eventItemLevel != null) 'eventItemLevel': eventItemLevel!,
+        if (predictItemLevel != null) 'predictItemLevel': predictItemLevel!,
       };
 }
 
@@ -1890,7 +1814,7 @@ class GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRe
   /// The prediction API key registration.
   ///
   /// Required.
-  GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration
+  GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration?
       predictionApiKeyRegistration;
 
   GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest();
@@ -1905,9 +1829,10 @@ class GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRe
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (predictionApiKeyRegistration != null)
-          'predictionApiKeyRegistration': predictionApiKeyRegistration.toJson(),
+          'predictionApiKeyRegistration':
+              predictionApiKeyRegistration!.toJson(),
       };
 }
 
@@ -1921,7 +1846,7 @@ class GoogleCloudRecommendationengineV1beta1EventDetail {
   /// and etc.
   ///
   /// Optional.
-  GoogleCloudRecommendationengineV1beta1FeatureMap eventAttributes;
+  GoogleCloudRecommendationengineV1beta1FeatureMap? eventAttributes;
 
   /// A list of identifiers for the independent experiment groups this user
   /// event belongs to.
@@ -1931,7 +1856,7 @@ class GoogleCloudRecommendationengineV1beta1EventDetail {
   /// different recommendation models).
   ///
   /// Optional.
-  core.List<core.String> experimentIds;
+  core.List<core.String>? experimentIds;
 
   /// A unique id of a web page view.
   ///
@@ -1943,7 +1868,7 @@ class GoogleCloudRecommendationengineV1beta1EventDetail {
   /// JavaScript pixel.
   ///
   /// Optional.
-  core.String pageViewId;
+  core.String? pageViewId;
 
   /// Recommendation token included in the recommendation prediction response.
   ///
@@ -1958,14 +1883,14 @@ class GoogleCloudRecommendationengineV1beta1EventDetail {
   /// of a recommendation prediction query.
   ///
   /// Optional.
-  core.String recommendationToken;
+  core.String? recommendationToken;
 
   /// The referrer url of the current page.
   ///
   /// When using the JavaScript pixel, this value is filled in automatically.
   ///
   /// Optional.
-  core.String referrerUri;
+  core.String? referrerUri;
 
   /// Complete url (window.location.href) of the user's current page.
   ///
@@ -1973,7 +1898,7 @@ class GoogleCloudRecommendationengineV1beta1EventDetail {
   /// Maximum length 5KB.
   ///
   /// Optional.
-  core.String uri;
+  core.String? uri;
 
   GoogleCloudRecommendationengineV1beta1EventDetail();
 
@@ -2002,15 +1927,15 @@ class GoogleCloudRecommendationengineV1beta1EventDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (eventAttributes != null)
-          'eventAttributes': eventAttributes.toJson(),
-        if (experimentIds != null) 'experimentIds': experimentIds,
-        if (pageViewId != null) 'pageViewId': pageViewId,
+          'eventAttributes': eventAttributes!.toJson(),
+        if (experimentIds != null) 'experimentIds': experimentIds!,
+        if (pageViewId != null) 'pageViewId': pageViewId!,
         if (recommendationToken != null)
-          'recommendationToken': recommendationToken,
-        if (referrerUri != null) 'referrerUri': referrerUri,
-        if (uri != null) 'uri': uri,
+          'recommendationToken': recommendationToken!,
+        if (referrerUri != null) 'referrerUri': referrerUri!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -2026,7 +1951,7 @@ class GoogleCloudRecommendationengineV1beta1FeatureMap {
   /// example: `{ "colors": {"value": ["yellow", "green"]}, "sizes":
   /// {"value":["S", "M"]}`
   core.Map<core.String,
-          GoogleCloudRecommendationengineV1beta1FeatureMapStringList>
+          GoogleCloudRecommendationengineV1beta1FeatureMapStringList>?
       categoricalFeatures;
 
   /// Numerical features.
@@ -2035,7 +1960,7 @@ class GoogleCloudRecommendationengineV1beta1FeatureMap {
   /// customer. Feature names must be UTF-8 encoded strings. For example: `{
   /// "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
   core.Map<core.String,
-          GoogleCloudRecommendationengineV1beta1FeatureMapFloatList>
+          GoogleCloudRecommendationengineV1beta1FeatureMapFloatList>?
       numericalFeatures;
 
   GoogleCloudRecommendationengineV1beta1FeatureMap();
@@ -2043,7 +1968,7 @@ class GoogleCloudRecommendationengineV1beta1FeatureMap {
   GoogleCloudRecommendationengineV1beta1FeatureMap.fromJson(core.Map _json) {
     if (_json.containsKey('categoricalFeatures')) {
       categoricalFeatures = (_json['categoricalFeatures'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -2054,7 +1979,7 @@ class GoogleCloudRecommendationengineV1beta1FeatureMap {
     }
     if (_json.containsKey('numericalFeatures')) {
       numericalFeatures = (_json['numericalFeatures'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -2065,12 +1990,12 @@ class GoogleCloudRecommendationengineV1beta1FeatureMap {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (categoricalFeatures != null)
-          'categoricalFeatures': categoricalFeatures
+          'categoricalFeatures': categoricalFeatures!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (numericalFeatures != null)
-          'numericalFeatures': numericalFeatures
+          'numericalFeatures': numericalFeatures!
               .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
@@ -2078,7 +2003,7 @@ class GoogleCloudRecommendationengineV1beta1FeatureMap {
 /// A list of float features.
 class GoogleCloudRecommendationengineV1beta1FeatureMapFloatList {
   /// Float feature value.
-  core.List<core.double> value;
+  core.List<core.double>? value;
 
   GoogleCloudRecommendationengineV1beta1FeatureMapFloatList();
 
@@ -2091,15 +2016,15 @@ class GoogleCloudRecommendationengineV1beta1FeatureMapFloatList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (value != null) 'value': value!,
       };
 }
 
 /// A list of string features.
 class GoogleCloudRecommendationengineV1beta1FeatureMapStringList {
   /// String feature value with a length limit of 128 bytes.
-  core.List<core.String> value;
+  core.List<core.String>? value;
 
   GoogleCloudRecommendationengineV1beta1FeatureMapStringList();
 
@@ -2112,8 +2037,8 @@ class GoogleCloudRecommendationengineV1beta1FeatureMapStringList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2131,7 +2056,7 @@ class GoogleCloudRecommendationengineV1beta1GcsSource {
   /// for the expected file format and setup instructions.
   ///
   /// Required.
-  core.List<core.String> inputUris;
+  core.List<core.String>? inputUris;
 
   /// The schema to use when parsing the data from the source.
   ///
@@ -2146,7 +2071,7 @@ class GoogleCloudRecommendationengineV1beta1GcsSource {
   /// https://support.google.com/analytics/answer/3437719?hl=en
   ///
   /// Optional.
-  core.String jsonSchema;
+  core.String? jsonSchema;
 
   GoogleCloudRecommendationengineV1beta1GcsSource();
 
@@ -2161,9 +2086,9 @@ class GoogleCloudRecommendationengineV1beta1GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (inputUris != null) 'inputUris': inputUris,
-        if (jsonSchema != null) 'jsonSchema': jsonSchema,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (inputUris != null) 'inputUris': inputUris!,
+        if (jsonSchema != null) 'jsonSchema': jsonSchema!,
       };
 }
 
@@ -2172,17 +2097,17 @@ class GoogleCloudRecommendationengineV1beta1Image {
   /// Height of the image in number of pixels.
   ///
   /// Optional.
-  core.int height;
+  core.int? height;
 
   /// URL of the image with a length limit of 5 KiB.
   ///
   /// Required.
-  core.String uri;
+  core.String? uri;
 
   /// Width of the image in number of pixels.
   ///
   /// Optional.
-  core.int width;
+  core.int? width;
 
   GoogleCloudRecommendationengineV1beta1Image();
 
@@ -2198,10 +2123,10 @@ class GoogleCloudRecommendationengineV1beta1Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (uri != null) 'uri': uri,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (uri != null) 'uri': uri!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -2210,12 +2135,12 @@ class GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest {
   /// The desired location of errors incurred during the Import.
   ///
   /// Optional.
-  GoogleCloudRecommendationengineV1beta1ImportErrorsConfig errorsConfig;
+  GoogleCloudRecommendationengineV1beta1ImportErrorsConfig? errorsConfig;
 
   /// The desired input location of the data.
   ///
   /// Required.
-  GoogleCloudRecommendationengineV1beta1InputConfig inputConfig;
+  GoogleCloudRecommendationengineV1beta1InputConfig? inputConfig;
 
   /// Unique identifier provided by client, within the ancestor dataset scope.
   ///
@@ -2224,14 +2149,14 @@ class GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest {
   /// google.longrunning.Operation.name in the response.
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   /// Indicates which fields in the provided imported 'items' to update.
   ///
   /// If not set, will by default update all fields.
   ///
   /// Optional.
-  core.String updateMask;
+  core.String? updateMask;
 
   GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest();
 
@@ -2254,11 +2179,11 @@ class GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
-        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
-        if (requestId != null) 'requestId': requestId,
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
+        if (requestId != null) 'requestId': requestId!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -2269,10 +2194,10 @@ class GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest {
 /// successful.
 class GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse {
   /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus> errorSamples;
+  core.List<GoogleRpcStatus>? errorSamples;
 
   /// Echoes the destination for the complete errors in the request if set.
-  GoogleCloudRecommendationengineV1beta1ImportErrorsConfig errorsConfig;
+  GoogleCloudRecommendationengineV1beta1ImportErrorsConfig? errorsConfig;
 
   GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse();
 
@@ -2291,10 +2216,10 @@ class GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorSamples != null)
-          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
+          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
       };
 }
 
@@ -2305,7 +2230,7 @@ class GoogleCloudRecommendationengineV1beta1ImportErrorsConfig {
   /// This must be an empty, existing Cloud Storage bucket. Import errors will
   /// be written to a file in this bucket, one per line, as a JSON-encoded
   /// `google.rpc.Status` message.
-  core.String gcsPrefix;
+  core.String? gcsPrefix;
 
   GoogleCloudRecommendationengineV1beta1ImportErrorsConfig();
 
@@ -2316,8 +2241,8 @@ class GoogleCloudRecommendationengineV1beta1ImportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
 
@@ -2326,26 +2251,26 @@ class GoogleCloudRecommendationengineV1beta1ImportErrorsConfig {
 /// This will be returned by the google.longrunning.Operation.metadata field.
 class GoogleCloudRecommendationengineV1beta1ImportMetadata {
   /// Operation create time.
-  core.String createTime;
+  core.String? createTime;
 
   /// Count of entries that encountered errors while processing.
-  core.String failureCount;
+  core.String? failureCount;
 
   /// Name of the operation.
-  core.String operationName;
+  core.String? operationName;
 
   /// Id of the request / operation.
   ///
   /// This is parroting back the requestId that was passed in the request.
-  core.String requestId;
+  core.String? requestId;
 
   /// Count of entries that were processed successfully.
-  core.String successCount;
+  core.String? successCount;
 
   /// Operation last update time.
   ///
   /// If the operation is done, this is also the finish time.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudRecommendationengineV1beta1ImportMetadata();
 
@@ -2371,13 +2296,13 @@ class GoogleCloudRecommendationengineV1beta1ImportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (failureCount != null) 'failureCount': failureCount,
-        if (operationName != null) 'operationName': operationName,
-        if (requestId != null) 'requestId': requestId,
-        if (successCount != null) 'successCount': successCount,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (failureCount != null) 'failureCount': failureCount!,
+        if (operationName != null) 'operationName': operationName!,
+        if (requestId != null) 'requestId': requestId!,
+        if (successCount != null) 'successCount': successCount!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2386,12 +2311,12 @@ class GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest {
   /// The desired location of errors incurred during the Import.
   ///
   /// Optional.
-  GoogleCloudRecommendationengineV1beta1ImportErrorsConfig errorsConfig;
+  GoogleCloudRecommendationengineV1beta1ImportErrorsConfig? errorsConfig;
 
   /// The desired input location of the data.
   ///
   /// Required.
-  GoogleCloudRecommendationengineV1beta1InputConfig inputConfig;
+  GoogleCloudRecommendationengineV1beta1InputConfig? inputConfig;
 
   /// Unique identifier provided by client, within the ancestor dataset scope.
   ///
@@ -2402,7 +2327,7 @@ class GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest {
   /// catalog_inline_source.
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest();
 
@@ -2422,10 +2347,10 @@ class GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
-        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -2436,14 +2361,14 @@ class GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest {
 /// successful.
 class GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse {
   /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus> errorSamples;
+  core.List<GoogleRpcStatus>? errorSamples;
 
   /// Echoes the destination for the complete errors if this field was set in
   /// the request.
-  GoogleCloudRecommendationengineV1beta1ImportErrorsConfig errorsConfig;
+  GoogleCloudRecommendationengineV1beta1ImportErrorsConfig? errorsConfig;
 
   /// Aggregated statistics of user event import status.
-  GoogleCloudRecommendationengineV1beta1UserEventImportSummary importSummary;
+  GoogleCloudRecommendationengineV1beta1UserEventImportSummary? importSummary;
 
   GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse();
 
@@ -2467,27 +2392,28 @@ class GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorSamples != null)
-          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
-        if (importSummary != null) 'importSummary': importSummary.toJson(),
+          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (importSummary != null) 'importSummary': importSummary!.toJson(),
       };
 }
 
 /// The input config source.
 class GoogleCloudRecommendationengineV1beta1InputConfig {
   /// BigQuery input source.
-  GoogleCloudRecommendationengineV1beta1BigQuerySource bigQuerySource;
+  GoogleCloudRecommendationengineV1beta1BigQuerySource? bigQuerySource;
 
   /// The Inline source for the input content for Catalog items.
-  GoogleCloudRecommendationengineV1beta1CatalogInlineSource catalogInlineSource;
+  GoogleCloudRecommendationengineV1beta1CatalogInlineSource?
+      catalogInlineSource;
 
   /// Google Cloud Storage location for the input content.
-  GoogleCloudRecommendationengineV1beta1GcsSource gcsSource;
+  GoogleCloudRecommendationengineV1beta1GcsSource? gcsSource;
 
   /// The Inline source for the input content for UserEvents.
-  GoogleCloudRecommendationengineV1beta1UserEventInlineSource
+  GoogleCloudRecommendationengineV1beta1UserEventInlineSource?
       userEventInlineSource;
 
   GoogleCloudRecommendationengineV1beta1InputConfig();
@@ -2516,26 +2442,26 @@ class GoogleCloudRecommendationengineV1beta1InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!.toJson(),
         if (catalogInlineSource != null)
-          'catalogInlineSource': catalogInlineSource.toJson(),
-        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+          'catalogInlineSource': catalogInlineSource!.toJson(),
+        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
         if (userEventInlineSource != null)
-          'userEventInlineSource': userEventInlineSource.toJson(),
+          'userEventInlineSource': userEventInlineSource!.toJson(),
       };
 }
 
 /// Response message for ListCatalogItems method.
 class GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse {
   /// The catalog items.
-  core.List<GoogleCloudRecommendationengineV1beta1CatalogItem> catalogItems;
+  core.List<GoogleCloudRecommendationengineV1beta1CatalogItem>? catalogItems;
 
   /// If empty, the list is complete.
   ///
   /// If nonempty, the token to pass to the next request's
   /// ListCatalogItemRequest.page_token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse();
 
@@ -2553,10 +2479,10 @@ class GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (catalogItems != null)
-          'catalogItems': catalogItems.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'catalogItems': catalogItems!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2565,10 +2491,10 @@ class GoogleCloudRecommendationengineV1beta1ListCatalogsResponse {
   /// All the customer's catalogs.
   ///
   /// Output only.
-  core.List<GoogleCloudRecommendationengineV1beta1Catalog> catalogs;
+  core.List<GoogleCloudRecommendationengineV1beta1Catalog>? catalogs;
 
   /// Pagination token, if not returned indicates the last page.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudRecommendationengineV1beta1ListCatalogsResponse();
 
@@ -2586,10 +2512,10 @@ class GoogleCloudRecommendationengineV1beta1ListCatalogsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (catalogs != null)
-          'catalogs': catalogs.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'catalogs': catalogs!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2599,10 +2525,10 @@ class GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsRes
   ///
   /// If nonempty, pass the token to the next request's
   /// `ListPredictionApiKeysRegistrationsRequest.pageToken`.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of registered API keys.
-  core.List<GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>
+  core.List<GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>?
       predictionApiKeyRegistrations;
 
   GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse();
@@ -2623,10 +2549,10 @@ class GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsRes
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (predictionApiKeyRegistrations != null)
-          'predictionApiKeyRegistrations': predictionApiKeyRegistrations
+          'predictionApiKeyRegistrations': predictionApiKeyRegistrations!
               .map((value) => value.toJson())
               .toList(),
       };
@@ -2638,10 +2564,10 @@ class GoogleCloudRecommendationengineV1beta1ListUserEventsResponse {
   ///
   /// If nonempty, the token to pass to the next request's
   /// ListUserEvents.page_token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The user events.
-  core.List<GoogleCloudRecommendationengineV1beta1UserEvent> userEvents;
+  core.List<GoogleCloudRecommendationengineV1beta1UserEvent>? userEvents;
 
   GoogleCloudRecommendationengineV1beta1ListUserEventsResponse();
 
@@ -2659,10 +2585,10 @@ class GoogleCloudRecommendationengineV1beta1ListUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (userEvents != null)
-          'userEvents': userEvents.map((value) => value.toJson()).toList(),
+          'userEvents': userEvents!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2675,7 +2601,7 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
   /// or if the model is not ready.
   ///
   /// Optional.
-  core.bool dryRun;
+  core.bool? dryRun;
 
   /// Filter for restricting prediction results.
   ///
@@ -2694,7 +2620,7 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
   /// `strictFiltering` to false in `PredictRequest.params`.
   ///
   /// Optional.
-  core.String filter;
+  core.String? filter;
 
   /// The labels for the predict request.
   ///
@@ -2706,7 +2632,7 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
   /// information on and examples of labels.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Maximum number of results to return per page.
   ///
@@ -2714,12 +2640,12 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
   /// the service will choose a reasonable default.
   ///
   /// Optional.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// The previous PredictResponse.next_page_token.
   ///
   /// Optional.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// Additional domain specific parameters for the predictions.
   ///
@@ -2738,7 +2664,7 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> params;
+  core.Map<core.String, core.Object>? params;
 
   /// Context about the user, what they are looking at and what action they took
   /// to trigger the predict request.
@@ -2747,7 +2673,7 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
   /// Thus, a separate userEvent write request is required for event logging.
   ///
   /// Required.
-  GoogleCloudRecommendationengineV1beta1UserEvent userEvent;
+  GoogleCloudRecommendationengineV1beta1UserEvent? userEvent;
 
   GoogleCloudRecommendationengineV1beta1PredictRequest();
 
@@ -2789,50 +2715,50 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dryRun != null) 'dryRun': dryRun,
-        if (filter != null) 'filter': filter,
-        if (labels != null) 'labels': labels,
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (params != null) 'params': params,
-        if (userEvent != null) 'userEvent': userEvent.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dryRun != null) 'dryRun': dryRun!,
+        if (filter != null) 'filter': filter!,
+        if (labels != null) 'labels': labels!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (params != null) 'params': params!,
+        if (userEvent != null) 'userEvent': userEvent!.toJson(),
       };
 }
 
 /// Response message for predict method.
 class GoogleCloudRecommendationengineV1beta1PredictResponse {
   /// True if the dryRun property was set in the request.
-  core.bool dryRun;
+  core.bool? dryRun;
 
   /// IDs of items in the request that were missing from the catalog.
-  core.List<core.String> itemsMissingInCatalog;
+  core.List<core.String>? itemsMissingInCatalog;
 
   /// Additional domain specific prediction response metadata.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// If empty, the list is complete.
   ///
   /// If nonempty, the token to pass to the next request's
   /// PredictRequest.page_token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A unique recommendation token.
   ///
   /// This should be included in the user event logs resulting from this
   /// recommendation, which enables accurate attribution of recommendation model
   /// performance.
-  core.String recommendationToken;
+  core.String? recommendationToken;
 
   /// A list of recommended items.
   ///
   /// The order represents the ranking (from the most relevant item to the
   /// least).
   core.List<
-          GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>
+          GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>?
       results;
 
   GoogleCloudRecommendationengineV1beta1PredictResponse();
@@ -2872,23 +2798,23 @@ class GoogleCloudRecommendationengineV1beta1PredictResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dryRun != null) 'dryRun': dryRun,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dryRun != null) 'dryRun': dryRun!,
         if (itemsMissingInCatalog != null)
-          'itemsMissingInCatalog': itemsMissingInCatalog,
-        if (metadata != null) 'metadata': metadata,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'itemsMissingInCatalog': itemsMissingInCatalog!,
+        if (metadata != null) 'metadata': metadata!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (recommendationToken != null)
-          'recommendationToken': recommendationToken,
+          'recommendationToken': recommendationToken!,
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
+          'results': results!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// PredictionResult represents the recommendation prediction results.
 class GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult {
   /// ID of the recommended catalog item
-  core.String id;
+  core.String? id;
 
   /// Additional item metadata / annotations.
   ///
@@ -2899,7 +2825,7 @@ class GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> itemMetadata;
+  core.Map<core.String, core.Object>? itemMetadata;
 
   GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult();
 
@@ -2920,16 +2846,16 @@ class GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (itemMetadata != null) 'itemMetadata': itemMetadata,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (itemMetadata != null) 'itemMetadata': itemMetadata!,
       };
 }
 
 /// Registered Api Key.
 class GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration {
   /// The API key.
-  core.String apiKey;
+  core.String? apiKey;
 
   GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration();
 
@@ -2940,8 +2866,8 @@ class GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiKey != null) 'apiKey': apiKey,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiKey != null) 'apiKey': apiKey!,
       };
 }
 
@@ -2950,13 +2876,13 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
   /// The available quantity of the item.
   ///
   /// Optional.
-  core.String availableQuantity;
+  core.String? availableQuantity;
 
   /// Canonical URL directly linking to the item detail page with a length limit
   /// of 5 KiB..
   ///
   /// Optional.
-  core.String canonicalProductUri;
+  core.String? canonicalProductUri;
 
   /// A map to pass the costs associated with the product.
   ///
@@ -2965,29 +2891,31 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
   /// sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
   ///
   /// Optional.
-  core.Map<core.String, core.double> costs;
+  core.Map<core.String, core.double>? costs;
 
   /// Only required if the price is set.
   ///
   /// Currency code for price/costs. Use three-character ISO-4217 code.
   ///
   /// Optional.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// The exact product price.
   ///
   /// Optional.
-  GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice exactPrice;
+  GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice?
+      exactPrice;
 
   /// Product images for the catalog item.
   ///
   /// Optional.
-  core.List<GoogleCloudRecommendationengineV1beta1Image> images;
+  core.List<GoogleCloudRecommendationengineV1beta1Image>? images;
 
   /// The product price range.
   ///
   /// Optional.
-  GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange priceRange;
+  GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange?
+      priceRange;
 
   /// Online stock state of the catalog item.
   ///
@@ -3001,7 +2929,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
   /// - "OUT_OF_STOCK" : Item out of stock.
   /// - "PREORDER" : Item that is in pre-order state.
   /// - "BACKORDER" : Item that is back-ordered (i.e. temporarily out of stock).
-  core.String stockState;
+  core.String? stockState;
 
   GoogleCloudRecommendationengineV1beta1ProductCatalogItem();
 
@@ -3014,7 +2942,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
       canonicalProductUri = _json['canonicalProductUri'] as core.String;
     }
     if (_json.containsKey('costs')) {
-      costs = (_json['costs'] as core.Map).cast<core.String, core.num>().map(
+      costs = (_json['costs'] as core.Map).cast<core.String, core.double>().map(
             (key, item) => core.MapEntry(
               key,
               (item as core.num).toDouble(),
@@ -3048,17 +2976,17 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (availableQuantity != null) 'availableQuantity': availableQuantity,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (availableQuantity != null) 'availableQuantity': availableQuantity!,
         if (canonicalProductUri != null)
-          'canonicalProductUri': canonicalProductUri,
-        if (costs != null) 'costs': costs,
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (exactPrice != null) 'exactPrice': exactPrice.toJson(),
+          'canonicalProductUri': canonicalProductUri!,
+        if (costs != null) 'costs': costs!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (exactPrice != null) 'exactPrice': exactPrice!.toJson(),
         if (images != null)
-          'images': images.map((value) => value.toJson()).toList(),
-        if (priceRange != null) 'priceRange': priceRange.toJson(),
-        if (stockState != null) 'stockState': stockState,
+          'images': images!.map((value) => value.toJson()).toList(),
+        if (priceRange != null) 'priceRange': priceRange!.toJson(),
+        if (stockState != null) 'stockState': stockState!,
       };
 }
 
@@ -3067,14 +2995,14 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice {
   /// Display price of the product.
   ///
   /// Optional.
-  core.double displayPrice;
+  core.double? displayPrice;
 
   /// Price of the product without any discount.
   ///
   /// If zero, by default set to be the 'displayPrice'.
   ///
   /// Optional.
-  core.double originalPrice;
+  core.double? originalPrice;
 
   GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice();
 
@@ -3088,9 +3016,9 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayPrice != null) 'displayPrice': displayPrice,
-        if (originalPrice != null) 'originalPrice': originalPrice,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayPrice != null) 'displayPrice': displayPrice!,
+        if (originalPrice != null) 'originalPrice': originalPrice!,
       };
 }
 
@@ -3100,12 +3028,12 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange {
   /// The maximum product price.
   ///
   /// Required.
-  core.double max;
+  core.double? max;
 
   /// The minimum product price.
   ///
   /// Required.
-  core.double min;
+  core.double? min;
 
   GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange();
 
@@ -3119,9 +3047,9 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (max != null) 'max': max,
-        if (min != null) 'min': min,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (max != null) 'max': max!,
+        if (min != null) 'min': min!,
       };
 }
 
@@ -3136,7 +3064,7 @@ class GoogleCloudRecommendationengineV1beta1ProductDetail {
   /// as zero is not sufficient to mark the item out of stock.
   ///
   /// Optional.
-  core.int availableQuantity;
+  core.int? availableQuantity;
 
   /// Currency code for price/costs.
   ///
@@ -3144,7 +3072,7 @@ class GoogleCloudRecommendationengineV1beta1ProductDetail {
   /// displayPrice is set.
   ///
   /// Optional.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Display price of the product (e.g. discounted price).
   ///
@@ -3152,19 +3080,19 @@ class GoogleCloudRecommendationengineV1beta1ProductDetail {
   /// product.
   ///
   /// Optional.
-  core.double displayPrice;
+  core.double? displayPrice;
 
   /// Catalog item ID.
   ///
   /// UTF-8 encoded string with a length limit of 128 characters.
   ///
   /// Required.
-  core.String id;
+  core.String? id;
 
   /// Extra features associated with a product in the user event.
   ///
   /// Optional.
-  GoogleCloudRecommendationengineV1beta1FeatureMap itemAttributes;
+  GoogleCloudRecommendationengineV1beta1FeatureMap? itemAttributes;
 
   /// Original price of the product.
   ///
@@ -3172,7 +3100,7 @@ class GoogleCloudRecommendationengineV1beta1ProductDetail {
   /// product.
   ///
   /// Optional.
-  core.double originalPrice;
+  core.double? originalPrice;
 
   /// Quantity of the product associated with the user event.
   ///
@@ -3182,7 +3110,7 @@ class GoogleCloudRecommendationengineV1beta1ProductDetail {
   /// `refund` event types.
   ///
   /// Optional.
-  core.int quantity;
+  core.int? quantity;
 
   /// Item stock state.
   ///
@@ -3197,7 +3125,7 @@ class GoogleCloudRecommendationengineV1beta1ProductDetail {
   /// - "OUT_OF_STOCK" : Item out of stock.
   /// - "PREORDER" : Item that is in pre-order state.
   /// - "BACKORDER" : Item that is back-ordered (i.e. temporarily out of stock).
-  core.String stockState;
+  core.String? stockState;
 
   GoogleCloudRecommendationengineV1beta1ProductDetail();
 
@@ -3230,15 +3158,15 @@ class GoogleCloudRecommendationengineV1beta1ProductDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (availableQuantity != null) 'availableQuantity': availableQuantity,
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (displayPrice != null) 'displayPrice': displayPrice,
-        if (id != null) 'id': id,
-        if (itemAttributes != null) 'itemAttributes': itemAttributes.toJson(),
-        if (originalPrice != null) 'originalPrice': originalPrice,
-        if (quantity != null) 'quantity': quantity,
-        if (stockState != null) 'stockState': stockState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (availableQuantity != null) 'availableQuantity': availableQuantity!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (displayPrice != null) 'displayPrice': displayPrice!,
+        if (id != null) 'id': id!,
+        if (itemAttributes != null) 'itemAttributes': itemAttributes!.toJson(),
+        if (originalPrice != null) 'originalPrice': originalPrice!,
+        if (quantity != null) 'quantity': quantity!,
+        if (stockState != null) 'stockState': stockState!,
       };
 }
 
@@ -3253,13 +3181,13 @@ class GoogleCloudRecommendationengineV1beta1ProductEventDetail {
   /// `shopping-cart-page-view` events.
   ///
   /// Optional.
-  core.String cartId;
+  core.String? cartId;
 
   /// Required for `add-to-list` and `remove-from-list` events.
   ///
   /// The id or name of the list that the item is being added to or removed
   /// from. Other event types should not set this field.
-  core.String listId;
+  core.String? listId;
 
   /// Required for `category-page-view` events.
   ///
@@ -3268,7 +3196,7 @@ class GoogleCloudRecommendationengineV1beta1ProductEventDetail {
   /// associated with a category page. Category pages include special pages such
   /// as sales or promotions. For instance, a special sale page may have the
   /// category hierarchy: categories : \["Sales", "2017 Black Friday Deals"\].
-  core.List<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>
+  core.List<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>?
       pageCategories;
 
   /// The main product details related to the event.
@@ -3286,7 +3214,8 @@ class GoogleCloudRecommendationengineV1beta1ProductEventDetail {
   /// with different product_details is desired. The end user may have not
   /// finished broswing the whole page yet. This field is not allowed for the
   /// following event types: * `category-page-view` * `home-page-view`
-  core.List<GoogleCloudRecommendationengineV1beta1ProductDetail> productDetails;
+  core.List<GoogleCloudRecommendationengineV1beta1ProductDetail>?
+      productDetails;
 
   /// A transaction represents the entire purchase transaction.
   ///
@@ -3294,14 +3223,15 @@ class GoogleCloudRecommendationengineV1beta1ProductEventDetail {
   /// events. Other event types should not set this field.
   ///
   /// Optional.
-  GoogleCloudRecommendationengineV1beta1PurchaseTransaction purchaseTransaction;
+  GoogleCloudRecommendationengineV1beta1PurchaseTransaction?
+      purchaseTransaction;
 
   /// At least one of search_query or page_categories is required for `search`
   /// events.
   ///
   /// Other event types should not set this field. The user's search query as
   /// UTF-8 encoded text with a length limit of 5 KiB.
-  core.String searchQuery;
+  core.String? searchQuery;
 
   GoogleCloudRecommendationengineV1beta1ProductEventDetail();
 
@@ -3339,18 +3269,18 @@ class GoogleCloudRecommendationengineV1beta1ProductEventDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cartId != null) 'cartId': cartId,
-        if (listId != null) 'listId': listId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cartId != null) 'cartId': cartId!,
+        if (listId != null) 'listId': listId!,
         if (pageCategories != null)
           'pageCategories':
-              pageCategories.map((value) => value.toJson()).toList(),
+              pageCategories!.map((value) => value.toJson()).toList(),
         if (productDetails != null)
           'productDetails':
-              productDetails.map((value) => value.toJson()).toList(),
+              productDetails!.map((value) => value.toJson()).toList(),
         if (purchaseTransaction != null)
-          'purchaseTransaction': purchaseTransaction.toJson(),
-        if (searchQuery != null) 'searchQuery': searchQuery,
+          'purchaseTransaction': purchaseTransaction!.toJson(),
+        if (searchQuery != null) 'searchQuery': searchQuery!,
       };
 }
 
@@ -3366,7 +3296,7 @@ class GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
   /// be calculated for this Transaction.
   ///
   /// Optional.
-  core.Map<core.String, core.double> costs;
+  core.Map<core.String, core.double>? costs;
 
   /// Currency code.
   ///
@@ -3374,12 +3304,12 @@ class GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
   /// type is `refund`.
   ///
   /// Required.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// The transaction ID with a length limit of 128 bytes.
   ///
   /// Optional.
-  core.String id;
+  core.String? id;
 
   /// Total revenue or grand total associated with the transaction.
   ///
@@ -3388,19 +3318,19 @@ class GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
   /// is not required if the event type is `refund`.
   ///
   /// Required.
-  core.double revenue;
+  core.double? revenue;
 
   /// All the taxes associated with the transaction.
   ///
   /// Optional.
-  core.Map<core.String, core.double> taxes;
+  core.Map<core.String, core.double>? taxes;
 
   GoogleCloudRecommendationengineV1beta1PurchaseTransaction();
 
   GoogleCloudRecommendationengineV1beta1PurchaseTransaction.fromJson(
       core.Map _json) {
     if (_json.containsKey('costs')) {
-      costs = (_json['costs'] as core.Map).cast<core.String, core.num>().map(
+      costs = (_json['costs'] as core.Map).cast<core.String, core.double>().map(
             (key, item) => core.MapEntry(
               key,
               (item as core.num).toDouble(),
@@ -3417,7 +3347,7 @@ class GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
       revenue = (_json['revenue'] as core.num).toDouble();
     }
     if (_json.containsKey('taxes')) {
-      taxes = (_json['taxes'] as core.Map).cast<core.String, core.num>().map(
+      taxes = (_json['taxes'] as core.Map).cast<core.String, core.double>().map(
             (key, item) => core.MapEntry(
               key,
               (item as core.num).toDouble(),
@@ -3426,12 +3356,12 @@ class GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (costs != null) 'costs': costs,
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (id != null) 'id': id,
-        if (revenue != null) 'revenue': revenue,
-        if (taxes != null) 'taxes': taxes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (costs != null) 'costs': costs!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (id != null) 'id': id!,
+        if (revenue != null) 'revenue': revenue!,
+        if (taxes != null) 'taxes': taxes!,
       };
 }
 
@@ -3440,10 +3370,10 @@ class GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
 /// This will be returned by the google.longrunning.Operation.metadata field.
 class GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata {
   /// Operation create time.
-  core.String createTime;
+  core.String? createTime;
 
   /// The ID of the request / operation.
-  core.String operationName;
+  core.String? operationName;
 
   GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata();
 
@@ -3457,9 +3387,9 @@ class GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (operationName != null) 'operationName': operationName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (operationName != null) 'operationName': operationName!,
       };
 }
 
@@ -3480,7 +3410,7 @@ class GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest {
   /// fields are assumed to have an implicit AND.
   ///
   /// Required.
-  core.String filter;
+  core.String? filter;
 
   /// The default value is false.
   ///
@@ -3488,7 +3418,7 @@ class GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest {
   /// not set to true, a sampling of events to be deleted will be returned.
   ///
   /// Optional.
-  core.bool force;
+  core.bool? force;
 
   GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest();
 
@@ -3502,9 +3432,9 @@ class GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filter != null) 'filter': filter,
-        if (force != null) 'force': force,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (force != null) 'force': force!,
       };
 }
 
@@ -3514,13 +3444,13 @@ class GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest {
 /// returned by the google.longrunning.Operations.response field.
 class GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse {
   /// The total count of events purged as a result of the operation.
-  core.String purgedEventsCount;
+  core.String? purgedEventsCount;
 
   /// A sampling of events deleted (or will be deleted) depending on the `force`
   /// property in the request.
   ///
   /// Max of 500 items will be returned.
-  core.List<GoogleCloudRecommendationengineV1beta1UserEvent> userEventsSample;
+  core.List<GoogleCloudRecommendationengineV1beta1UserEvent>? userEventsSample;
 
   GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse();
 
@@ -3538,11 +3468,11 @@ class GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
         if (userEventsSample != null)
           'userEventsSample':
-              userEventsSample.map((value) => value.toJson()).toList(),
+              userEventsSample!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3554,7 +3484,7 @@ class GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for CatalogRejoin method.
@@ -3568,7 +3498,7 @@ class GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest {
   /// including both joined events and unjoined events.
   /// - "JOINED_EVENTS" : Only rejoin catalogs with joined events.
   /// - "UNJOINED_EVENTS" : Only rejoin catalogs with unjoined events.
-  core.String userEventRejoinScope;
+  core.String? userEventRejoinScope;
 
   GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest();
 
@@ -3579,16 +3509,16 @@ class GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (userEventRejoinScope != null)
-          'userEventRejoinScope': userEventRejoinScope,
+          'userEventRejoinScope': userEventRejoinScope!,
       };
 }
 
 /// Response message for RejoinUserEvents method.
 class GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse {
   /// Number of user events that were joined with latest catalog items.
-  core.String rejoinedUserEventsCount;
+  core.String? rejoinedUserEventsCount;
 
   GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse();
 
@@ -3599,9 +3529,9 @@ class GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (rejoinedUserEventsCount != null)
-          'rejoinedUserEventsCount': rejoinedUserEventsCount,
+          'rejoinedUserEventsCount': rejoinedUserEventsCount!,
       };
 }
 
@@ -3612,7 +3542,7 @@ class GoogleCloudRecommendationengineV1beta1UserEvent {
   /// types.
   ///
   /// Optional.
-  GoogleCloudRecommendationengineV1beta1EventDetail eventDetail;
+  GoogleCloudRecommendationengineV1beta1EventDetail? eventDetail;
 
   /// This field should *not* be set when using JavaScript pixel or the
   /// Recommendations AI Tag.
@@ -3627,14 +3557,14 @@ class GoogleCloudRecommendationengineV1beta1UserEvent {
   /// - "ECOMMERCE" : The event is ingested via Recommendations AI Tag through
   /// Enhanced Ecommerce datalayer.
   /// - "BATCH_UPLOAD" : The event is ingested via Import user events API.
-  core.String eventSource;
+  core.String? eventSource;
 
   /// Only required for ImportUserEvents method.
   ///
   /// Timestamp of user event created.
   ///
   /// Optional.
-  core.String eventTime;
+  core.String? eventTime;
 
   /// User event type.
   ///
@@ -3652,7 +3582,7 @@ class GoogleCloudRecommendationengineV1beta1UserEvent {
   /// Google Tag Manager.
   ///
   /// Required.
-  core.String eventType;
+  core.String? eventType;
 
   /// Retail product specific user event metadata.
   ///
@@ -3666,12 +3596,12 @@ class GoogleCloudRecommendationengineV1beta1UserEvent {
   /// `home-page-view`
   ///
   /// Optional.
-  GoogleCloudRecommendationengineV1beta1ProductEventDetail productEventDetail;
+  GoogleCloudRecommendationengineV1beta1ProductEventDetail? productEventDetail;
 
   /// User information.
   ///
   /// Required.
-  GoogleCloudRecommendationengineV1beta1UserInfo userInfo;
+  GoogleCloudRecommendationengineV1beta1UserInfo? userInfo;
 
   GoogleCloudRecommendationengineV1beta1UserEvent();
 
@@ -3701,14 +3631,14 @@ class GoogleCloudRecommendationengineV1beta1UserEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (eventDetail != null) 'eventDetail': eventDetail.toJson(),
-        if (eventSource != null) 'eventSource': eventSource,
-        if (eventTime != null) 'eventTime': eventTime,
-        if (eventType != null) 'eventType': eventType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (eventDetail != null) 'eventDetail': eventDetail!.toJson(),
+        if (eventSource != null) 'eventSource': eventSource!,
+        if (eventTime != null) 'eventTime': eventTime!,
+        if (eventType != null) 'eventType': eventType!,
         if (productEventDetail != null)
-          'productEventDetail': productEventDetail.toJson(),
-        if (userInfo != null) 'userInfo': userInfo.toJson(),
+          'productEventDetail': productEventDetail!.toJson(),
+        if (userInfo != null) 'userInfo': userInfo!.toJson(),
       };
 }
 
@@ -3717,11 +3647,11 @@ class GoogleCloudRecommendationengineV1beta1UserEvent {
 /// The UserEventImportSummary summarizes the import status for user events.
 class GoogleCloudRecommendationengineV1beta1UserEventImportSummary {
   /// Count of user events imported with complete existing catalog information.
-  core.String joinedEventsCount;
+  core.String? joinedEventsCount;
 
   /// Count of user events imported, but with catalog information not found in
   /// the imported catalog.
-  core.String unjoinedEventsCount;
+  core.String? unjoinedEventsCount;
 
   GoogleCloudRecommendationengineV1beta1UserEventImportSummary();
 
@@ -3735,10 +3665,10 @@ class GoogleCloudRecommendationengineV1beta1UserEventImportSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
         if (unjoinedEventsCount != null)
-          'unjoinedEventsCount': unjoinedEventsCount,
+          'unjoinedEventsCount': unjoinedEventsCount!,
       };
 }
 
@@ -3749,7 +3679,7 @@ class GoogleCloudRecommendationengineV1beta1UserEventInlineSource {
   /// Recommended max of 10k items.
   ///
   /// Optional.
-  core.List<GoogleCloudRecommendationengineV1beta1UserEvent> userEvents;
+  core.List<GoogleCloudRecommendationengineV1beta1UserEvent>? userEvents;
 
   GoogleCloudRecommendationengineV1beta1UserEventInlineSource();
 
@@ -3764,9 +3694,9 @@ class GoogleCloudRecommendationengineV1beta1UserEventInlineSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (userEvents != null)
-          'userEvents': userEvents.map((value) => value.toJson()).toList(),
+          'userEvents': userEvents!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3782,7 +3712,7 @@ class GoogleCloudRecommendationengineV1beta1UserInfo {
   /// the user events).
   ///
   /// Optional.
-  core.bool directUserRequest;
+  core.bool? directUserRequest;
 
   /// IP address of the user.
   ///
@@ -3792,7 +3722,7 @@ class GoogleCloudRecommendationengineV1beta1UserInfo {
   /// extract location information for personalization.
   ///
   /// Optional.
-  core.String ipAddress;
+  core.String? ipAddress;
 
   /// User agent as included in the HTTP header.
   ///
@@ -3800,14 +3730,14 @@ class GoogleCloudRecommendationengineV1beta1UserInfo {
   /// set when using the JavaScript pixel or if `directUserRequest` is set.
   ///
   /// Optional.
-  core.String userAgent;
+  core.String? userAgent;
 
   /// Unique identifier for logged-in user with a length limit of 128 bytes.
   ///
   /// Required only for logged-in users.
   ///
   /// Optional.
-  core.String userId;
+  core.String? userId;
 
   /// A unique identifier for tracking visitors with a length limit of 128
   /// bytes.
@@ -3818,7 +3748,7 @@ class GoogleCloudRecommendationengineV1beta1UserInfo {
   /// Maximum length 128 bytes. Cannot be empty.
   ///
   /// Required.
-  core.String visitorId;
+  core.String? visitorId;
 
   GoogleCloudRecommendationengineV1beta1UserInfo();
 
@@ -3840,22 +3770,22 @@ class GoogleCloudRecommendationengineV1beta1UserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (directUserRequest != null) 'directUserRequest': directUserRequest,
-        if (ipAddress != null) 'ipAddress': ipAddress,
-        if (userAgent != null) 'userAgent': userAgent,
-        if (userId != null) 'userId': userId,
-        if (visitorId != null) 'visitorId': visitorId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (directUserRequest != null) 'directUserRequest': directUserRequest!,
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (userAgent != null) 'userAgent': userAgent!,
+        if (userId != null) 'userId': userId!,
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<GoogleLongrunningOperation> operations;
+  core.List<GoogleLongrunningOperation>? operations;
 
   GoogleLongrunningListOperationsResponse();
 
@@ -3872,10 +3802,10 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3886,10 +3816,10 @@ class GoogleLongrunningOperation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  GoogleRpcStatus error;
+  GoogleRpcStatus? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -3900,14 +3830,14 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -3920,7 +3850,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   GoogleLongrunningOperation();
 
@@ -3955,12 +3885,12 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -3978,7 +3908,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3990,7 +3920,7 @@ class GoogleProtobufEmpty {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -3998,13 +3928,13 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   GoogleRpcStatus();
 
@@ -4028,9 +3958,9 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }

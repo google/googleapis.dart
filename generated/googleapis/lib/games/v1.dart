@@ -114,10 +114,10 @@ class AchievementDefinitionsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementDefinitionsListResponse> list({
-    core.String language,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? language,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
@@ -169,15 +169,9 @@ class AchievementsResource {
   async.Future<AchievementIncrementResponse> increment(
     core.String achievementId,
     core.int stepsToIncrement, {
-    core.String requestId,
-    core.String $fields,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    if (achievementId == null) {
-      throw core.ArgumentError('Parameter achievementId is required.');
-    }
-    if (stepsToIncrement == null) {
-      throw core.ArgumentError('Parameter stepsToIncrement is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'stepsToIncrement': ['${stepsToIncrement}'],
       if (requestId != null) 'requestId': [requestId],
@@ -235,15 +229,12 @@ class AchievementsResource {
   /// this method will complete with the same error.
   async.Future<PlayerAchievementListResponse> list(
     core.String playerId, {
-    core.String language,
-    core.int maxResults,
-    core.String pageToken,
-    core.String state,
-    core.String $fields,
+    core.String? language,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? state,
+    core.String? $fields,
   }) async {
-    if (playerId == null) {
-      throw core.ArgumentError('Parameter playerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -284,11 +275,8 @@ class AchievementsResource {
   /// this method will complete with the same error.
   async.Future<AchievementRevealResponse> reveal(
     core.String achievementId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (achievementId == null) {
-      throw core.ArgumentError('Parameter achievementId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -332,14 +320,8 @@ class AchievementsResource {
   async.Future<AchievementSetStepsAtLeastResponse> setStepsAtLeast(
     core.String achievementId,
     core.int steps, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (achievementId == null) {
-      throw core.ArgumentError('Parameter achievementId is required.');
-    }
-    if (steps == null) {
-      throw core.ArgumentError('Parameter steps is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'steps': ['${steps}'],
       if ($fields != null) 'fields': [$fields],
@@ -376,11 +358,8 @@ class AchievementsResource {
   /// this method will complete with the same error.
   async.Future<AchievementUnlockResponse> unlock(
     core.String achievementId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (achievementId == null) {
-      throw core.ArgumentError('Parameter achievementId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -416,10 +395,9 @@ class AchievementsResource {
   /// this method will complete with the same error.
   async.Future<AchievementUpdateMultipleResponse> updateMultiple(
     AchievementUpdateMultipleRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -475,13 +453,10 @@ class ApplicationsResource {
   /// this method will complete with the same error.
   async.Future<Application> get(
     core.String applicationId, {
-    core.String language,
-    core.String platformType,
-    core.String $fields,
+    core.String? language,
+    core.String? platformType,
+    core.String? $fields,
   }) async {
-    if (applicationId == null) {
-      throw core.ArgumentError('Parameter applicationId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if (platformType != null) 'platformType': [platformType],
@@ -524,9 +499,9 @@ class ApplicationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EndPoint> getEndPoint({
-    core.String applicationId,
-    core.String endPointType,
-    core.String $fields,
+    core.String? applicationId,
+    core.String? endPointType,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (applicationId != null) 'applicationId': [applicationId],
@@ -558,7 +533,7 @@ class ApplicationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<void> played({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -595,11 +570,8 @@ class ApplicationsResource {
   /// this method will complete with the same error.
   async.Future<ApplicationVerifyResponse> verify(
     core.String applicationId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (applicationId == null) {
-      throw core.ArgumentError('Parameter applicationId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -648,10 +620,10 @@ class EventsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlayerEventListResponse> listByPlayer({
-    core.String language,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? language,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
@@ -695,10 +667,10 @@ class EventsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EventDefinitionListResponse> listDefinitions({
-    core.String language,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? language,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
@@ -740,11 +712,10 @@ class EventsResource {
   /// this method will complete with the same error.
   async.Future<EventUpdateResponse> record(
     EventRecordRequest request, {
-    core.String language,
-    core.String $fields,
+    core.String? language,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
@@ -789,12 +760,9 @@ class LeaderboardsResource {
   /// this method will complete with the same error.
   async.Future<Leaderboard> get(
     core.String leaderboardId, {
-    core.String language,
-    core.String $fields,
+    core.String? language,
+    core.String? $fields,
   }) async {
-    if (leaderboardId == null) {
-      throw core.ArgumentError('Parameter leaderboardId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
@@ -836,10 +804,10 @@ class LeaderboardsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LeaderboardListResponse> list({
-    core.String language,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? language,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
@@ -880,7 +848,7 @@ class MetagameResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<MetagameConfig> getMetagameConfig({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -933,17 +901,11 @@ class MetagameResource {
   async.Future<CategoryListResponse> listCategoriesByPlayer(
     core.String playerId,
     core.String collection, {
-    core.String language,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? language,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (playerId == null) {
-      throw core.ArgumentError('Parameter playerId is required.');
-    }
-    if (collection == null) {
-      throw core.ArgumentError('Parameter collection is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -996,12 +958,9 @@ class PlayersResource {
   /// this method will complete with the same error.
   async.Future<Player> get(
     core.String playerId, {
-    core.String language,
-    core.String $fields,
+    core.String? language,
+    core.String? $fields,
   }) async {
-    if (playerId == null) {
-      throw core.ArgumentError('Parameter playerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
@@ -1052,14 +1011,11 @@ class PlayersResource {
   /// this method will complete with the same error.
   async.Future<PlayerListResponse> list(
     core.String collection, {
-    core.String language,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? language,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (collection == null) {
-      throw core.ArgumentError('Parameter collection is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -1107,11 +1063,8 @@ class RevisionsResource {
   /// this method will complete with the same error.
   async.Future<RevisionCheckResponse> check(
     core.String clientRevision, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (clientRevision == null) {
-      throw core.ArgumentError('Parameter clientRevision is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'clientRevision': [clientRevision],
       if ($fields != null) 'fields': [$fields],
@@ -1193,21 +1146,12 @@ class ScoresResource {
     core.String playerId,
     core.String leaderboardId,
     core.String timeSpan, {
-    core.String includeRankType,
-    core.String language,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? includeRankType,
+    core.String? language,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (playerId == null) {
-      throw core.ArgumentError('Parameter playerId is required.');
-    }
-    if (leaderboardId == null) {
-      throw core.ArgumentError('Parameter leaderboardId is required.');
-    }
-    if (timeSpan == null) {
-      throw core.ArgumentError('Parameter timeSpan is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeRankType != null) 'includeRankType': [includeRankType],
       if (language != null) 'language': [language],
@@ -1275,20 +1219,11 @@ class ScoresResource {
     core.String leaderboardId,
     core.String collection,
     core.String timeSpan, {
-    core.String language,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? language,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (leaderboardId == null) {
-      throw core.ArgumentError('Parameter leaderboardId is required.');
-    }
-    if (collection == null) {
-      throw core.ArgumentError('Parameter collection is required.');
-    }
-    if (timeSpan == null) {
-      throw core.ArgumentError('Parameter timeSpan is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'timeSpan': [timeSpan],
       if (language != null) 'language': [language],
@@ -1362,22 +1297,13 @@ class ScoresResource {
     core.String leaderboardId,
     core.String collection,
     core.String timeSpan, {
-    core.String language,
-    core.int maxResults,
-    core.String pageToken,
-    core.int resultsAbove,
-    core.bool returnTopIfAbsent,
-    core.String $fields,
+    core.String? language,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.int? resultsAbove,
+    core.bool? returnTopIfAbsent,
+    core.String? $fields,
   }) async {
-    if (leaderboardId == null) {
-      throw core.ArgumentError('Parameter leaderboardId is required.');
-    }
-    if (collection == null) {
-      throw core.ArgumentError('Parameter collection is required.');
-    }
-    if (timeSpan == null) {
-      throw core.ArgumentError('Parameter timeSpan is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'timeSpan': [timeSpan],
       if (language != null) 'language': [language],
@@ -1437,16 +1363,10 @@ class ScoresResource {
   async.Future<PlayerScoreResponse> submit(
     core.String leaderboardId,
     core.String score, {
-    core.String language,
-    core.String scoreTag,
-    core.String $fields,
+    core.String? language,
+    core.String? scoreTag,
+    core.String? $fields,
   }) async {
-    if (leaderboardId == null) {
-      throw core.ArgumentError('Parameter leaderboardId is required.');
-    }
-    if (score == null) {
-      throw core.ArgumentError('Parameter score is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'score': [score],
       if (language != null) 'language': [language],
@@ -1488,11 +1408,10 @@ class ScoresResource {
   /// this method will complete with the same error.
   async.Future<PlayerScoreListResponse> submitMultiple(
     PlayerScoreSubmissionList request, {
-    core.String language,
-    core.String $fields,
+    core.String? language,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
@@ -1537,12 +1456,9 @@ class SnapshotsResource {
   /// this method will complete with the same error.
   async.Future<Snapshot> get(
     core.String snapshotId, {
-    core.String language,
-    core.String $fields,
+    core.String? language,
+    core.String? $fields,
   }) async {
-    if (snapshotId == null) {
-      throw core.ArgumentError('Parameter snapshotId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if ($fields != null) 'fields': [$fields],
@@ -1588,14 +1504,11 @@ class SnapshotsResource {
   /// this method will complete with the same error.
   async.Future<SnapshotListResponse> list(
     core.String playerId, {
-    core.String language,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? language,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (playerId == null) {
-      throw core.ArgumentError('Parameter playerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (language != null) 'language': [language],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -1645,13 +1558,9 @@ class SnapshotsExtendedResource {
   async.Future<ResolveSnapshotHeadResponse> resolveSnapshotHead(
     ResolveSnapshotHeadRequest request,
     core.String snapshotName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (snapshotName == null) {
-      throw core.ArgumentError('Parameter snapshotName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1692,7 +1601,7 @@ class StatsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<StatsResponse> get({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -1717,19 +1626,19 @@ class AchievementDefinition {
   /// - "ACHIEVEMENT_TYPE_UNSPECIFIED" : Safe default, don't use.
   /// - "STANDARD" : Achievement is either locked or unlocked.
   /// - "INCREMENTAL" : Achievement is incremental.
-  core.String achievementType;
+  core.String? achievementType;
 
   /// The description of the achievement.
-  core.String description;
+  core.String? description;
 
   /// Experience points which will be earned when unlocking this achievement.
-  core.String experiencePoints;
+  core.String? experiencePoints;
 
   /// The total steps for an incremental achievement as a string.
-  core.String formattedTotalSteps;
+  core.String? formattedTotalSteps;
 
   /// The ID of the achievement.
-  core.String id;
+  core.String? id;
 
   /// The initial state of the achievement.
   /// Possible string values are:
@@ -1737,32 +1646,32 @@ class AchievementDefinition {
   /// - "HIDDEN" : Achievement is hidden.
   /// - "REVEALED" : Achievement is revealed.
   /// - "UNLOCKED" : Achievement is unlocked.
-  core.String initialState;
+  core.String? initialState;
 
   /// Indicates whether the revealed icon image being returned is a default
   /// image, or is provided by the game.
-  core.bool isRevealedIconUrlDefault;
+  core.bool? isRevealedIconUrlDefault;
 
   /// Indicates whether the unlocked icon image being returned is a default
   /// image, or is game-provided.
-  core.bool isUnlockedIconUrlDefault;
+  core.bool? isUnlockedIconUrlDefault;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#achievementDefinition`.
-  core.String kind;
+  core.String? kind;
 
   /// The name of the achievement.
-  core.String name;
+  core.String? name;
 
   /// The image URL for the revealed achievement icon.
-  core.String revealedIconUrl;
+  core.String? revealedIconUrl;
 
   /// The total steps for an incremental achievement.
-  core.int totalSteps;
+  core.int? totalSteps;
 
   /// The image URL for the unlocked achievement icon.
-  core.String unlockedIconUrl;
+  core.String? unlockedIconUrl;
 
   AchievementDefinition();
 
@@ -1808,39 +1717,39 @@ class AchievementDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (achievementType != null) 'achievementType': achievementType,
-        if (description != null) 'description': description,
-        if (experiencePoints != null) 'experiencePoints': experiencePoints,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (achievementType != null) 'achievementType': achievementType!,
+        if (description != null) 'description': description!,
+        if (experiencePoints != null) 'experiencePoints': experiencePoints!,
         if (formattedTotalSteps != null)
-          'formattedTotalSteps': formattedTotalSteps,
-        if (id != null) 'id': id,
-        if (initialState != null) 'initialState': initialState,
+          'formattedTotalSteps': formattedTotalSteps!,
+        if (id != null) 'id': id!,
+        if (initialState != null) 'initialState': initialState!,
         if (isRevealedIconUrlDefault != null)
-          'isRevealedIconUrlDefault': isRevealedIconUrlDefault,
+          'isRevealedIconUrlDefault': isRevealedIconUrlDefault!,
         if (isUnlockedIconUrlDefault != null)
-          'isUnlockedIconUrlDefault': isUnlockedIconUrlDefault,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (revealedIconUrl != null) 'revealedIconUrl': revealedIconUrl,
-        if (totalSteps != null) 'totalSteps': totalSteps,
-        if (unlockedIconUrl != null) 'unlockedIconUrl': unlockedIconUrl,
+          'isUnlockedIconUrlDefault': isUnlockedIconUrlDefault!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (revealedIconUrl != null) 'revealedIconUrl': revealedIconUrl!,
+        if (totalSteps != null) 'totalSteps': totalSteps!,
+        if (unlockedIconUrl != null) 'unlockedIconUrl': unlockedIconUrl!,
       };
 }
 
 /// A list of achievement definition objects.
 class AchievementDefinitionsListResponse {
   /// The achievement definitions.
-  core.List<AchievementDefinition> items;
+  core.List<AchievementDefinition>? items;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string
   /// `games#achievementDefinitionsListResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// Token corresponding to the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   AchievementDefinitionsListResponse();
 
@@ -1859,27 +1768,27 @@ class AchievementDefinitionsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// An achievement increment response
 class AchievementIncrementResponse {
   /// The current steps recorded for this incremental achievement.
-  core.int currentSteps;
+  core.int? currentSteps;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#achievementIncrementResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// Whether the current steps for the achievement has reached the number of
   /// steps required to unlock.
-  core.bool newlyUnlocked;
+  core.bool? newlyUnlocked;
 
   AchievementIncrementResponse();
 
@@ -1895,10 +1804,10 @@ class AchievementIncrementResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currentSteps != null) 'currentSteps': currentSteps,
-        if (kind != null) 'kind': kind,
-        if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currentSteps != null) 'currentSteps': currentSteps!,
+        if (kind != null) 'kind': kind!,
+        if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked!,
       };
 }
 
@@ -1911,12 +1820,12 @@ class AchievementRevealResponse {
   /// - "REVEAL_ACHIEVEMENT_STATE_UNSPECIFIED" : Safe default, don't use.
   /// - "REVEALED" : Achievement is revealed.
   /// - "UNLOCKED" : Achievement is unlocked.
-  core.String currentState;
+  core.String? currentState;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#achievementRevealResponse`.
-  core.String kind;
+  core.String? kind;
 
   AchievementRevealResponse();
 
@@ -1929,26 +1838,26 @@ class AchievementRevealResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currentState != null) 'currentState': currentState,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currentState != null) 'currentState': currentState!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// An achievement set steps at least response.
 class AchievementSetStepsAtLeastResponse {
   /// The current steps recorded for this incremental achievement.
-  core.int currentSteps;
+  core.int? currentSteps;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string
   /// `games#achievementSetStepsAtLeastResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// Whether the current steps for the achievement has reached the number of
   /// steps required to unlock.
-  core.bool newlyUnlocked;
+  core.bool? newlyUnlocked;
 
   AchievementSetStepsAtLeastResponse();
 
@@ -1964,10 +1873,10 @@ class AchievementSetStepsAtLeastResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currentSteps != null) 'currentSteps': currentSteps,
-        if (kind != null) 'kind': kind,
-        if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currentSteps != null) 'currentSteps': currentSteps!,
+        if (kind != null) 'kind': kind!,
+        if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked!,
       };
 }
 
@@ -1976,11 +1885,11 @@ class AchievementUnlockResponse {
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#achievementUnlockResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// Whether this achievement was newly unlocked (that is, whether the unlock
   /// request for the achievement was the first for the player).
-  core.bool newlyUnlocked;
+  core.bool? newlyUnlocked;
 
   AchievementUnlockResponse();
 
@@ -1993,9 +1902,9 @@ class AchievementUnlockResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked!,
       };
 }
 
@@ -2004,10 +1913,10 @@ class AchievementUpdateMultipleRequest {
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#achievementUpdateMultipleRequest`.
-  core.String kind;
+  core.String? kind;
 
   /// The individual achievement update requests.
-  core.List<AchievementUpdateRequest> updates;
+  core.List<AchievementUpdateRequest>? updates;
 
   AchievementUpdateMultipleRequest();
 
@@ -2024,10 +1933,10 @@ class AchievementUpdateMultipleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (updates != null)
-          'updates': updates.map((value) => value.toJson()).toList(),
+          'updates': updates!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2037,10 +1946,10 @@ class AchievementUpdateMultipleResponse {
   ///
   /// Value is always the fixed string
   /// `games#achievementUpdateMultipleResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// The updated state of the achievements.
-  core.List<AchievementUpdateResponse> updatedAchievements;
+  core.List<AchievementUpdateResponse>? updatedAchievements;
 
   AchievementUpdateMultipleResponse();
 
@@ -2057,31 +1966,31 @@ class AchievementUpdateMultipleResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (updatedAchievements != null)
           'updatedAchievements':
-              updatedAchievements.map((value) => value.toJson()).toList(),
+              updatedAchievements!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A request to update an achievement.
 class AchievementUpdateRequest {
   /// The achievement this update is being applied to.
-  core.String achievementId;
+  core.String? achievementId;
 
   /// The payload if an update of type `INCREMENT` was requested for the
   /// achievement.
-  GamesAchievementIncrement incrementPayload;
+  GamesAchievementIncrement? incrementPayload;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#achievementUpdateRequest`.
-  core.String kind;
+  core.String? kind;
 
   /// The payload if an update of type `SET_STEPS_AT_LEAST` was requested for
   /// the achievement.
-  GamesAchievementSetStepsAtLeast setStepsAtLeastPayload;
+  GamesAchievementSetStepsAtLeast? setStepsAtLeastPayload;
 
   /// The type of update being applied.
   /// Possible string values are:
@@ -2091,7 +2000,7 @@ class AchievementUpdateRequest {
   /// - "INCREMENT" : Achievement is incremented.
   /// - "SET_STEPS_AT_LEAST" : Achievement progress is set to at least the
   /// passed value.
-  core.String updateType;
+  core.String? updateType;
 
   AchievementUpdateRequest();
 
@@ -2116,21 +2025,21 @@ class AchievementUpdateRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (achievementId != null) 'achievementId': achievementId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (achievementId != null) 'achievementId': achievementId!,
         if (incrementPayload != null)
-          'incrementPayload': incrementPayload.toJson(),
-        if (kind != null) 'kind': kind,
+          'incrementPayload': incrementPayload!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (setStepsAtLeastPayload != null)
-          'setStepsAtLeastPayload': setStepsAtLeastPayload.toJson(),
-        if (updateType != null) 'updateType': updateType,
+          'setStepsAtLeastPayload': setStepsAtLeastPayload!.toJson(),
+        if (updateType != null) 'updateType': updateType!,
       };
 }
 
 /// An updated achievement.
 class AchievementUpdateResponse {
   /// The achievement this update is was applied to.
-  core.String achievementId;
+  core.String? achievementId;
 
   /// The current state of the achievement.
   /// Possible string values are:
@@ -2138,22 +2047,22 @@ class AchievementUpdateResponse {
   /// - "HIDDEN" : Achievement is hidden.
   /// - "REVEALED" : Achievement is revealed.
   /// - "UNLOCKED" : Achievement is unlocked.
-  core.String currentState;
+  core.String? currentState;
 
   /// The current steps recorded for this achievement if it is incremental.
-  core.int currentSteps;
+  core.int? currentSteps;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#achievementUpdateResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// Whether this achievement was newly unlocked (that is, whether the unlock
   /// request for the achievement was the first for the player).
-  core.bool newlyUnlocked;
+  core.bool? newlyUnlocked;
 
   /// Whether the requested updates actually affected the achievement.
-  core.bool updateOccurred;
+  core.bool? updateOccurred;
 
   AchievementUpdateResponse();
 
@@ -2178,60 +2087,60 @@ class AchievementUpdateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (achievementId != null) 'achievementId': achievementId,
-        if (currentState != null) 'currentState': currentState,
-        if (currentSteps != null) 'currentSteps': currentSteps,
-        if (kind != null) 'kind': kind,
-        if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked,
-        if (updateOccurred != null) 'updateOccurred': updateOccurred,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (achievementId != null) 'achievementId': achievementId!,
+        if (currentState != null) 'currentState': currentState!,
+        if (currentSteps != null) 'currentSteps': currentSteps!,
+        if (kind != null) 'kind': kind!,
+        if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked!,
+        if (updateOccurred != null) 'updateOccurred': updateOccurred!,
       };
 }
 
 /// The Application resource.
 class Application {
   /// The number of achievements visible to the currently authenticated player.
-  core.int achievementCount;
+  core.int? achievementCount;
 
   /// The assets of the application.
-  core.List<ImageAsset> assets;
+  core.List<ImageAsset>? assets;
 
   /// The author of the application.
-  core.String author;
+  core.String? author;
 
   /// The category of the application.
-  ApplicationCategory category;
+  ApplicationCategory? category;
 
   /// The description of the application.
-  core.String description;
+  core.String? description;
 
   /// A list of features that have been enabled for the application.
-  core.List<core.String> enabledFeatures;
+  core.List<core.String>? enabledFeatures;
 
   /// The ID of the application.
-  core.String id;
+  core.String? id;
 
   /// The instances of the application.
-  core.List<Instance> instances;
+  core.List<Instance>? instances;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#application`.
-  core.String kind;
+  core.String? kind;
 
   /// The last updated timestamp of the application.
-  core.String lastUpdatedTimestamp;
+  core.String? lastUpdatedTimestamp;
 
   /// The number of leaderboards visible to the currently authenticated player.
-  core.int leaderboardCount;
+  core.int? leaderboardCount;
 
   /// The name of the application.
-  core.String name;
+  core.String? name;
 
   /// A hint to the client UI for what color to use as an app-themed color.
   ///
   /// The color is given as an RGB triplet (e.g. "E0E0E0").
-  core.String themeColor;
+  core.String? themeColor;
 
   Application();
 
@@ -2286,23 +2195,23 @@ class Application {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (achievementCount != null) 'achievement_count': achievementCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (achievementCount != null) 'achievement_count': achievementCount!,
         if (assets != null)
-          'assets': assets.map((value) => value.toJson()).toList(),
-        if (author != null) 'author': author,
-        if (category != null) 'category': category.toJson(),
-        if (description != null) 'description': description,
-        if (enabledFeatures != null) 'enabledFeatures': enabledFeatures,
-        if (id != null) 'id': id,
+          'assets': assets!.map((value) => value.toJson()).toList(),
+        if (author != null) 'author': author!,
+        if (category != null) 'category': category!.toJson(),
+        if (description != null) 'description': description!,
+        if (enabledFeatures != null) 'enabledFeatures': enabledFeatures!,
+        if (id != null) 'id': id!,
         if (instances != null)
-          'instances': instances.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'instances': instances!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
         if (lastUpdatedTimestamp != null)
-          'lastUpdatedTimestamp': lastUpdatedTimestamp,
-        if (leaderboardCount != null) 'leaderboard_count': leaderboardCount,
-        if (name != null) 'name': name,
-        if (themeColor != null) 'themeColor': themeColor,
+          'lastUpdatedTimestamp': lastUpdatedTimestamp!,
+        if (leaderboardCount != null) 'leaderboard_count': leaderboardCount!,
+        if (name != null) 'name': name!,
+        if (themeColor != null) 'themeColor': themeColor!,
       };
 }
 
@@ -2311,13 +2220,13 @@ class ApplicationCategory {
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#applicationCategory`.
-  core.String kind;
+  core.String? kind;
 
   /// The primary category.
-  core.String primary;
+  core.String? primary;
 
   /// The secondary category.
-  core.String secondary;
+  core.String? secondary;
 
   ApplicationCategory();
 
@@ -2333,10 +2242,10 @@ class ApplicationCategory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (primary != null) 'primary': primary,
-        if (secondary != null) 'secondary': secondary,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (primary != null) 'primary': primary!,
+        if (secondary != null) 'secondary': secondary!,
       };
 }
 
@@ -2346,15 +2255,15 @@ class ApplicationVerifyResponse {
   /// token used in this request.
   ///
   /// (This field is not normally populated.)
-  core.String alternatePlayerId;
+  core.String? alternatePlayerId;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#applicationVerifyResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// The ID of the player that was issued the auth token used in this request.
-  core.String playerId;
+  core.String? playerId;
 
   ApplicationVerifyResponse();
 
@@ -2370,25 +2279,26 @@ class ApplicationVerifyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alternatePlayerId != null) 'alternate_player_id': alternatePlayerId,
-        if (kind != null) 'kind': kind,
-        if (playerId != null) 'player_id': playerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alternatePlayerId != null)
+          'alternate_player_id': alternatePlayerId!,
+        if (kind != null) 'kind': kind!,
+        if (playerId != null) 'player_id': playerId!,
       };
 }
 
 /// Data related to individual game categories.
 class Category {
   /// The category name.
-  core.String category;
+  core.String? category;
 
   /// Experience points earned in this category.
-  core.String experiencePoints;
+  core.String? experiencePoints;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#category`.
-  core.String kind;
+  core.String? kind;
 
   Category();
 
@@ -2404,25 +2314,25 @@ class Category {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (category != null) 'category': category,
-        if (experiencePoints != null) 'experiencePoints': experiencePoints,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (category != null) 'category': category!,
+        if (experiencePoints != null) 'experiencePoints': experiencePoints!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// A third party list metagame categories response.
 class CategoryListResponse {
   /// The list of categories with usage data.
-  core.List<Category> items;
+  core.List<Category>? items;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#categoryListResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// Token corresponding to the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   CategoryListResponse();
 
@@ -2441,18 +2351,18 @@ class CategoryListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Container for a URL end point of the requested type.
 class EndPoint {
   /// A URL suitable for loading in a web browser for the requested endpoint.
-  core.String url;
+  core.String? url;
 
   EndPoint();
 
@@ -2462,8 +2372,8 @@ class EndPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (url != null) 'url': url!,
       };
 }
 
@@ -2484,15 +2394,15 @@ class EventBatchRecordFailure {
   /// was already seen.
   /// - "RECORD_RATE_HIGH" : An attempt was made to record data faster than the
   /// server will apply updates.
-  core.String failureCause;
+  core.String? failureCause;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#eventBatchRecordFailure`.
-  core.String kind;
+  core.String? kind;
 
   /// The time range which was rejected; empty for a request-wide failure.
-  EventPeriodRange range;
+  EventPeriodRange? range;
 
   EventBatchRecordFailure();
 
@@ -2509,22 +2419,22 @@ class EventBatchRecordFailure {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (failureCause != null) 'failureCause': failureCause,
-        if (kind != null) 'kind': kind,
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (failureCause != null) 'failureCause': failureCause!,
+        if (kind != null) 'kind': kind!,
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
 /// An event child relationship resource.
 class EventChild {
   /// The ID of the child event.
-  core.String childId;
+  core.String? childId;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#eventChild`.
-  core.String kind;
+  core.String? kind;
 
   EventChild();
 
@@ -2537,37 +2447,37 @@ class EventChild {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (childId != null) 'childId': childId,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (childId != null) 'childId': childId!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// An event definition resource.
 class EventDefinition {
   /// A list of events that are a child of this event.
-  core.List<EventChild> childEvents;
+  core.List<EventChild>? childEvents;
 
   /// Description of what this event represents.
-  core.String description;
+  core.String? description;
 
   /// The name to display for the event.
-  core.String displayName;
+  core.String? displayName;
 
   /// The ID of the event.
-  core.String id;
+  core.String? id;
 
   /// The base URL for the image that represents the event.
-  core.String imageUrl;
+  core.String? imageUrl;
 
   /// Indicates whether the icon image being returned is a default image, or is
   /// game-provided.
-  core.bool isDefaultImageUrl;
+  core.bool? isDefaultImageUrl;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#eventDefinition`.
-  core.String kind;
+  core.String? kind;
 
   /// The visibility of event being tracked in this definition.
   /// Possible string values are:
@@ -2575,7 +2485,7 @@ class EventDefinition {
   /// - "REVEALED" : This event should be visible to all users.
   /// - "HIDDEN" : This event should only be shown to users that have recorded
   /// this event at least once.
-  core.String visibility;
+  core.String? visibility;
 
   EventDefinition();
 
@@ -2609,31 +2519,31 @@ class EventDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (childEvents != null)
-          'childEvents': childEvents.map((value) => value.toJson()).toList(),
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (id != null) 'id': id,
-        if (imageUrl != null) 'imageUrl': imageUrl,
-        if (isDefaultImageUrl != null) 'isDefaultImageUrl': isDefaultImageUrl,
-        if (kind != null) 'kind': kind,
-        if (visibility != null) 'visibility': visibility,
+          'childEvents': childEvents!.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
+        if (imageUrl != null) 'imageUrl': imageUrl!,
+        if (isDefaultImageUrl != null) 'isDefaultImageUrl': isDefaultImageUrl!,
+        if (kind != null) 'kind': kind!,
+        if (visibility != null) 'visibility': visibility!,
       };
 }
 
 /// A ListDefinitions response.
 class EventDefinitionListResponse {
   /// The event definitions.
-  core.List<EventDefinition> items;
+  core.List<EventDefinition>? items;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#eventDefinitionListResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// The pagination token for the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   EventDefinitionListResponse();
 
@@ -2652,11 +2562,11 @@ class EventDefinitionListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2665,15 +2575,15 @@ class EventPeriodRange {
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#eventPeriodRange`.
-  core.String kind;
+  core.String? kind;
 
   /// The time when this update period ends, in millis, since 1970 UTC (Unix
   /// Epoch).
-  core.String periodEndMillis;
+  core.String? periodEndMillis;
 
   /// The time when this update period begins, in millis, since 1970 UTC (Unix
   /// Epoch).
-  core.String periodStartMillis;
+  core.String? periodStartMillis;
 
   EventPeriodRange();
 
@@ -2689,10 +2599,10 @@ class EventPeriodRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (periodEndMillis != null) 'periodEndMillis': periodEndMillis,
-        if (periodStartMillis != null) 'periodStartMillis': periodStartMillis,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (periodEndMillis != null) 'periodEndMillis': periodEndMillis!,
+        if (periodStartMillis != null) 'periodStartMillis': periodStartMillis!,
       };
 }
 
@@ -2701,13 +2611,13 @@ class EventPeriodUpdate {
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#eventPeriodUpdate`.
-  core.String kind;
+  core.String? kind;
 
   /// The time period being covered by this update.
-  EventPeriodRange timePeriod;
+  EventPeriodRange? timePeriod;
 
   /// The updates being made for this time period.
-  core.List<EventUpdateRequest> updates;
+  core.List<EventUpdateRequest>? updates;
 
   EventPeriodUpdate();
 
@@ -2727,18 +2637,18 @@ class EventPeriodUpdate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (timePeriod != null) 'timePeriod': timePeriod.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (timePeriod != null) 'timePeriod': timePeriod!.toJson(),
         if (updates != null)
-          'updates': updates.map((value) => value.toJson()).toList(),
+          'updates': updates!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// An event update failure resource.
 class EventRecordFailure {
   /// The ID of the event that was not updated.
-  core.String eventId;
+  core.String? eventId;
 
   /// The cause for the update failure.
   /// Possible string values are:
@@ -2747,12 +2657,12 @@ class EventRecordFailure {
   /// - "NOT_FOUND" : An attempt was made to set an event that was not defined.
   /// - "INVALID_UPDATE_VALUE" : An attempt was made to increment an event by a
   /// non-positive value.
-  core.String failureCause;
+  core.String? failureCause;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#eventRecordFailure`.
-  core.String kind;
+  core.String? kind;
 
   EventRecordFailure();
 
@@ -2768,10 +2678,10 @@ class EventRecordFailure {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (eventId != null) 'eventId': eventId,
-        if (failureCause != null) 'failureCause': failureCause,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (eventId != null) 'eventId': eventId!,
+        if (failureCause != null) 'failureCause': failureCause!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -2779,18 +2689,18 @@ class EventRecordFailure {
 class EventRecordRequest {
   /// The current time when this update was sent, in milliseconds, since 1970
   /// UTC (Unix Epoch).
-  core.String currentTimeMillis;
+  core.String? currentTimeMillis;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#eventRecordRequest`.
-  core.String kind;
+  core.String? kind;
 
   /// The request ID used to identify this attempt to record events.
-  core.String requestId;
+  core.String? requestId;
 
   /// A list of the time period updates being made in this request.
-  core.List<EventPeriodUpdate> timePeriods;
+  core.List<EventPeriodUpdate>? timePeriods;
 
   EventRecordRequest();
 
@@ -2812,27 +2722,27 @@ class EventRecordRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currentTimeMillis != null) 'currentTimeMillis': currentTimeMillis,
-        if (kind != null) 'kind': kind,
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currentTimeMillis != null) 'currentTimeMillis': currentTimeMillis!,
+        if (kind != null) 'kind': kind!,
+        if (requestId != null) 'requestId': requestId!,
         if (timePeriods != null)
-          'timePeriods': timePeriods.map((value) => value.toJson()).toList(),
+          'timePeriods': timePeriods!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// An event period update resource.
 class EventUpdateRequest {
   /// The ID of the event being modified in this update.
-  core.String definitionId;
+  core.String? definitionId;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#eventUpdateRequest`.
-  core.String kind;
+  core.String? kind;
 
   /// The number of times this event occurred in this time period.
-  core.String updateCount;
+  core.String? updateCount;
 
   EventUpdateRequest();
 
@@ -2848,28 +2758,28 @@ class EventUpdateRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (definitionId != null) 'definitionId': definitionId,
-        if (kind != null) 'kind': kind,
-        if (updateCount != null) 'updateCount': updateCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (definitionId != null) 'definitionId': definitionId!,
+        if (kind != null) 'kind': kind!,
+        if (updateCount != null) 'updateCount': updateCount!,
       };
 }
 
 /// An event period update resource.
 class EventUpdateResponse {
   /// Any batch-wide failures which occurred applying updates.
-  core.List<EventBatchRecordFailure> batchFailures;
+  core.List<EventBatchRecordFailure>? batchFailures;
 
   /// Any failures updating a particular event.
-  core.List<EventRecordFailure> eventFailures;
+  core.List<EventRecordFailure>? eventFailures;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#eventUpdateResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// The current status of any updated events
-  core.List<PlayerEvent> playerEvents;
+  core.List<PlayerEvent>? playerEvents;
 
   EventUpdateResponse();
 
@@ -2898,16 +2808,16 @@ class EventUpdateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (batchFailures != null)
           'batchFailures':
-              batchFailures.map((value) => value.toJson()).toList(),
+              batchFailures!.map((value) => value.toJson()).toList(),
         if (eventFailures != null)
           'eventFailures':
-              eventFailures.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+              eventFailures!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
         if (playerEvents != null)
-          'playerEvents': playerEvents.map((value) => value.toJson()).toList(),
+          'playerEvents': playerEvents!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2916,13 +2826,13 @@ class GamesAchievementIncrement {
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#GamesAchievementIncrement`.
-  core.String kind;
+  core.String? kind;
 
   /// The requestId associated with an increment to an achievement.
-  core.String requestId;
+  core.String? requestId;
 
   /// The number of steps to be incremented.
-  core.int steps;
+  core.int? steps;
 
   GamesAchievementIncrement();
 
@@ -2938,10 +2848,10 @@ class GamesAchievementIncrement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (requestId != null) 'requestId': requestId,
-        if (steps != null) 'steps': steps,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (requestId != null) 'requestId': requestId!,
+        if (steps != null) 'steps': steps!,
       };
 }
 
@@ -2950,10 +2860,10 @@ class GamesAchievementSetStepsAtLeast {
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#GamesAchievementSetStepsAtLeast`.
-  core.String kind;
+  core.String? kind;
 
   /// The minimum number of steps for the achievement to be set to.
-  core.int steps;
+  core.int? steps;
 
   GamesAchievementSetStepsAtLeast();
 
@@ -2966,30 +2876,30 @@ class GamesAchievementSetStepsAtLeast {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (steps != null) 'steps': steps,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (steps != null) 'steps': steps!,
       };
 }
 
 /// An image asset object.
 class ImageAsset {
   /// The height of the asset.
-  core.int height;
+  core.int? height;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#imageAsset`.
-  core.String kind;
+  core.String? kind;
 
   /// The name of the asset.
-  core.String name;
+  core.String? name;
 
   /// The URL of the asset.
-  core.String url;
+  core.String? url;
 
   /// The width of the asset.
-  core.int width;
+  core.int? width;
 
   ImageAsset();
 
@@ -3011,33 +2921,33 @@ class ImageAsset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (url != null) 'url': url,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (url != null) 'url': url!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// The Instance resource.
 class Instance {
   /// URI which shows where a user can acquire this instance.
-  core.String acquisitionUri;
+  core.String? acquisitionUri;
 
   /// Platform dependent details for Android.
-  InstanceAndroidDetails androidInstance;
+  InstanceAndroidDetails? androidInstance;
 
   /// Platform dependent details for iOS.
-  InstanceIosDetails iosInstance;
+  InstanceIosDetails? iosInstance;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#instance`.
-  core.String kind;
+  core.String? kind;
 
   /// Localized display name.
-  core.String name;
+  core.String? name;
 
   /// The platform type.
   /// Possible string values are:
@@ -3045,16 +2955,16 @@ class Instance {
   /// - "ANDROID" : Instance is for Android.
   /// - "IOS" : Instance is for iOS.
   /// - "WEB_APP" : Instance is for Web App.
-  core.String platformType;
+  core.String? platformType;
 
   /// Flag to show if this game instance supports realtime play.
-  core.bool realtimePlay;
+  core.bool? realtimePlay;
 
   /// Flag to show if this game instance supports turn based play.
-  core.bool turnBasedPlay;
+  core.bool? turnBasedPlay;
 
   /// Platform dependent details for Web.
-  InstanceWebDetails webInstance;
+  InstanceWebDetails? webInstance;
 
   Instance();
 
@@ -3091,35 +3001,35 @@ class Instance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (acquisitionUri != null) 'acquisitionUri': acquisitionUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (acquisitionUri != null) 'acquisitionUri': acquisitionUri!,
         if (androidInstance != null)
-          'androidInstance': androidInstance.toJson(),
-        if (iosInstance != null) 'iosInstance': iosInstance.toJson(),
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (platformType != null) 'platformType': platformType,
-        if (realtimePlay != null) 'realtimePlay': realtimePlay,
-        if (turnBasedPlay != null) 'turnBasedPlay': turnBasedPlay,
-        if (webInstance != null) 'webInstance': webInstance.toJson(),
+          'androidInstance': androidInstance!.toJson(),
+        if (iosInstance != null) 'iosInstance': iosInstance!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (platformType != null) 'platformType': platformType!,
+        if (realtimePlay != null) 'realtimePlay': realtimePlay!,
+        if (turnBasedPlay != null) 'turnBasedPlay': turnBasedPlay!,
+        if (webInstance != null) 'webInstance': webInstance!.toJson(),
       };
 }
 
 /// The Android instance details resource.
 class InstanceAndroidDetails {
   /// Flag indicating whether the anti-piracy check is enabled.
-  core.bool enablePiracyCheck;
+  core.bool? enablePiracyCheck;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#instanceAndroidDetails`.
-  core.String kind;
+  core.String? kind;
 
   /// Android package name which maps to Google Play URL.
-  core.String packageName;
+  core.String? packageName;
 
   /// Indicates that this instance is the default for new installations.
-  core.bool preferred;
+  core.bool? preferred;
 
   InstanceAndroidDetails();
 
@@ -3138,40 +3048,40 @@ class InstanceAndroidDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enablePiracyCheck != null) 'enablePiracyCheck': enablePiracyCheck,
-        if (kind != null) 'kind': kind,
-        if (packageName != null) 'packageName': packageName,
-        if (preferred != null) 'preferred': preferred,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enablePiracyCheck != null) 'enablePiracyCheck': enablePiracyCheck!,
+        if (kind != null) 'kind': kind!,
+        if (packageName != null) 'packageName': packageName!,
+        if (preferred != null) 'preferred': preferred!,
       };
 }
 
 /// The iOS details resource.
 class InstanceIosDetails {
   /// Bundle identifier.
-  core.String bundleIdentifier;
+  core.String? bundleIdentifier;
 
   /// iTunes App ID.
-  core.String itunesAppId;
+  core.String? itunesAppId;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#instanceIosDetails`.
-  core.String kind;
+  core.String? kind;
 
   /// Indicates that this instance is the default for new installations on iPad
   /// devices.
-  core.bool preferredForIpad;
+  core.bool? preferredForIpad;
 
   /// Indicates that this instance is the default for new installations on
   /// iPhone devices.
-  core.bool preferredForIphone;
+  core.bool? preferredForIphone;
 
   /// Flag to indicate if this instance supports iPad.
-  core.bool supportIpad;
+  core.bool? supportIpad;
 
   /// Flag to indicate if this instance supports iPhone.
-  core.bool supportIphone;
+  core.bool? supportIphone;
 
   InstanceIosDetails();
 
@@ -3199,15 +3109,15 @@ class InstanceIosDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bundleIdentifier != null) 'bundleIdentifier': bundleIdentifier,
-        if (itunesAppId != null) 'itunesAppId': itunesAppId,
-        if (kind != null) 'kind': kind,
-        if (preferredForIpad != null) 'preferredForIpad': preferredForIpad,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bundleIdentifier != null) 'bundleIdentifier': bundleIdentifier!,
+        if (itunesAppId != null) 'itunesAppId': itunesAppId!,
+        if (kind != null) 'kind': kind!,
+        if (preferredForIpad != null) 'preferredForIpad': preferredForIpad!,
         if (preferredForIphone != null)
-          'preferredForIphone': preferredForIphone,
-        if (supportIpad != null) 'supportIpad': supportIpad,
-        if (supportIphone != null) 'supportIphone': supportIphone,
+          'preferredForIphone': preferredForIphone!,
+        if (supportIpad != null) 'supportIpad': supportIpad!,
+        if (supportIphone != null) 'supportIphone': supportIphone!,
       };
 }
 
@@ -3216,13 +3126,13 @@ class InstanceWebDetails {
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#instanceWebDetails`.
-  core.String kind;
+  core.String? kind;
 
   /// Launch URL for the game.
-  core.String launchUrl;
+  core.String? launchUrl;
 
   /// Indicates that this instance is the default for new installations.
-  core.bool preferred;
+  core.bool? preferred;
 
   InstanceWebDetails();
 
@@ -3238,32 +3148,32 @@ class InstanceWebDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (launchUrl != null) 'launchUrl': launchUrl,
-        if (preferred != null) 'preferred': preferred,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (launchUrl != null) 'launchUrl': launchUrl!,
+        if (preferred != null) 'preferred': preferred!,
       };
 }
 
 /// The Leaderboard resource.
 class Leaderboard {
   /// The icon for the leaderboard.
-  core.String iconUrl;
+  core.String? iconUrl;
 
   /// The leaderboard ID.
-  core.String id;
+  core.String? id;
 
   /// Indicates whether the icon image being returned is a default image, or is
   /// game-provided.
-  core.bool isIconUrlDefault;
+  core.bool? isIconUrlDefault;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#leaderboard`.
-  core.String kind;
+  core.String? kind;
 
   /// The name of the leaderboard.
-  core.String name;
+  core.String? name;
 
   /// How scores are ordered.
   /// Possible string values are:
@@ -3272,7 +3182,7 @@ class Leaderboard {
   /// descending order
   /// - "SMALLER_IS_BETTER" : Smaller values are better; scores are sorted in
   /// ascending order
-  core.String order;
+  core.String? order;
 
   Leaderboard();
 
@@ -3297,43 +3207,43 @@ class Leaderboard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (iconUrl != null) 'iconUrl': iconUrl,
-        if (id != null) 'id': id,
-        if (isIconUrlDefault != null) 'isIconUrlDefault': isIconUrlDefault,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (order != null) 'order': order,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (iconUrl != null) 'iconUrl': iconUrl!,
+        if (id != null) 'id': id!,
+        if (isIconUrlDefault != null) 'isIconUrlDefault': isIconUrlDefault!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (order != null) 'order': order!,
       };
 }
 
 /// The Leaderboard Entry resource.
 class LeaderboardEntry {
   /// The localized string for the numerical value of this score.
-  core.String formattedScore;
+  core.String? formattedScore;
 
   /// The localized string for the rank of this score for this leaderboard.
-  core.String formattedScoreRank;
+  core.String? formattedScoreRank;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#leaderboardEntry`.
-  core.String kind;
+  core.String? kind;
 
   /// The player who holds this score.
-  Player player;
+  Player? player;
 
   /// The rank of this score for this leaderboard.
-  core.String scoreRank;
+  core.String? scoreRank;
 
   /// Additional information about the score.
   ///
   /// Values must contain no more than 64 URI-safe characters as defined by
   /// section 2.3 of RFC 3986.
-  core.String scoreTag;
+  core.String? scoreTag;
 
   /// The numerical value of this score.
-  core.String scoreValue;
+  core.String? scoreValue;
 
   /// The time span of this high score.
   /// Possible string values are:
@@ -3341,11 +3251,11 @@ class LeaderboardEntry {
   /// - "ALL_TIME" : The score is an all-time score.
   /// - "WEEKLY" : The score is a weekly score.
   /// - "DAILY" : The score is a daily score.
-  core.String timeSpan;
+  core.String? timeSpan;
 
   /// The timestamp at which this score was recorded, in milliseconds since the
   /// epoch in UTC.
-  core.String writeTimestampMillis;
+  core.String? writeTimestampMillis;
 
   LeaderboardEntry();
 
@@ -3380,33 +3290,33 @@ class LeaderboardEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (formattedScore != null) 'formattedScore': formattedScore,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (formattedScore != null) 'formattedScore': formattedScore!,
         if (formattedScoreRank != null)
-          'formattedScoreRank': formattedScoreRank,
-        if (kind != null) 'kind': kind,
-        if (player != null) 'player': player.toJson(),
-        if (scoreRank != null) 'scoreRank': scoreRank,
-        if (scoreTag != null) 'scoreTag': scoreTag,
-        if (scoreValue != null) 'scoreValue': scoreValue,
-        if (timeSpan != null) 'timeSpan': timeSpan,
+          'formattedScoreRank': formattedScoreRank!,
+        if (kind != null) 'kind': kind!,
+        if (player != null) 'player': player!.toJson(),
+        if (scoreRank != null) 'scoreRank': scoreRank!,
+        if (scoreTag != null) 'scoreTag': scoreTag!,
+        if (scoreValue != null) 'scoreValue': scoreValue!,
+        if (timeSpan != null) 'timeSpan': timeSpan!,
         if (writeTimestampMillis != null)
-          'writeTimestampMillis': writeTimestampMillis,
+          'writeTimestampMillis': writeTimestampMillis!,
       };
 }
 
 /// A list of leaderboard objects.
 class LeaderboardListResponse {
   /// The leaderboards.
-  core.List<Leaderboard> items;
+  core.List<Leaderboard>? items;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#leaderboardListResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// Token corresponding to the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   LeaderboardListResponse();
 
@@ -3425,32 +3335,32 @@ class LeaderboardListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// A score rank in a leaderboard.
 class LeaderboardScoreRank {
   /// The number of scores in the leaderboard as a string.
-  core.String formattedNumScores;
+  core.String? formattedNumScores;
 
   /// The rank in the leaderboard as a string.
-  core.String formattedRank;
+  core.String? formattedRank;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#leaderboardScoreRank`.
-  core.String kind;
+  core.String? kind;
 
   /// The number of scores in the leaderboard.
-  core.String numScores;
+  core.String? numScores;
 
   /// The rank in the leaderboard.
-  core.String rank;
+  core.String? rank;
 
   LeaderboardScoreRank();
 
@@ -3472,31 +3382,31 @@ class LeaderboardScoreRank {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (formattedNumScores != null)
-          'formattedNumScores': formattedNumScores,
-        if (formattedRank != null) 'formattedRank': formattedRank,
-        if (kind != null) 'kind': kind,
-        if (numScores != null) 'numScores': numScores,
-        if (rank != null) 'rank': rank,
+          'formattedNumScores': formattedNumScores!,
+        if (formattedRank != null) 'formattedRank': formattedRank!,
+        if (kind != null) 'kind': kind!,
+        if (numScores != null) 'numScores': numScores!,
+        if (rank != null) 'rank': rank!,
       };
 }
 
 /// A ListScores response.
 class LeaderboardScores {
   /// The scores in the leaderboard.
-  core.List<LeaderboardEntry> items;
+  core.List<LeaderboardEntry>? items;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#leaderboardScores`.
-  core.String kind;
+  core.String? kind;
 
   /// The pagination token for the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total number of scores in the leaderboard.
-  core.String numScores;
+  core.String? numScores;
 
   /// The score of the requesting player on the leaderboard.
   ///
@@ -3504,10 +3414,10 @@ class LeaderboardScores {
   /// If you are viewing a public leaderboard and the player is not sharing
   /// their gameplay information publicly, the `scoreRank`and
   /// `formattedScoreRank` values will not be present.
-  LeaderboardEntry playerScore;
+  LeaderboardEntry? playerScore;
 
   /// The pagination token for the previous page of results.
-  core.String prevPageToken;
+  core.String? prevPageToken;
 
   LeaderboardScores();
 
@@ -3536,14 +3446,14 @@ class LeaderboardScores {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (numScores != null) 'numScores': numScores,
-        if (playerScore != null) 'playerScore': playerScore.toJson(),
-        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (numScores != null) 'numScores': numScores!,
+        if (playerScore != null) 'playerScore': playerScore!.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken!,
       };
 }
 
@@ -3552,15 +3462,15 @@ class MetagameConfig {
   /// Current version of the metagame configuration data.
   ///
   /// When this data is updated, the version number will be increased by one.
-  core.int currentVersion;
+  core.int? currentVersion;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#metagameConfig`.
-  core.String kind;
+  core.String? kind;
 
   /// The list of player levels.
-  core.List<PlayerLevel> playerLevels;
+  core.List<PlayerLevel>? playerLevels;
 
   MetagameConfig();
 
@@ -3579,11 +3489,11 @@ class MetagameConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currentVersion != null) 'currentVersion': currentVersion,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currentVersion != null) 'currentVersion': currentVersion!,
+        if (kind != null) 'kind': kind!,
         if (playerLevels != null)
-          'playerLevels': playerLevels.map((value) => value.toJson()).toList(),
+          'playerLevels': playerLevels!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3592,12 +3502,12 @@ class PlayerName {
   /// The family name of this player.
   ///
   /// In some places, this is known as the last name.
-  core.String familyName;
+  core.String? familyName;
 
   /// The given name of this player.
   ///
   /// In some places, this is known as the first name.
-  core.String givenName;
+  core.String? givenName;
 
   PlayerName();
 
@@ -3610,28 +3520,28 @@ class PlayerName {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (familyName != null) 'familyName': familyName,
-        if (givenName != null) 'givenName': givenName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (familyName != null) 'familyName': familyName!,
+        if (givenName != null) 'givenName': givenName!,
       };
 }
 
 /// A Player resource.
 class Player {
   /// The base URL for the image that represents the player.
-  core.String avatarImageUrl;
+  core.String? avatarImageUrl;
 
   /// The url to the landscape mode player banner image.
-  core.String bannerUrlLandscape;
+  core.String? bannerUrlLandscape;
 
   /// The url to the portrait mode player banner image.
-  core.String bannerUrlPortrait;
+  core.String? bannerUrlPortrait;
 
   /// The name to display for the player.
-  core.String displayName;
+  core.String? displayName;
 
   /// An object to represent Play Game experience information for the player.
-  PlayerExperienceInfo experienceInfo;
+  PlayerExperienceInfo? experienceInfo;
 
   /// The friend status of the given player, relative to the requester.
   ///
@@ -3641,15 +3551,15 @@ class Player {
   /// - "FRIEND_STATUS_UNSPECIFIED" : Default value. This value is unused.
   /// - "NO_RELATIONSHIP" : There is no relationship between the players.
   /// - "FRIEND" : The player and requester are friends.
-  core.String friendStatus;
+  core.String? friendStatus;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#player`
-  core.String kind;
+  core.String? kind;
 
   /// A representation of the individual components of the name.
-  PlayerName name;
+  PlayerName? name;
 
   /// The player ID that was used for this player the first time they signed
   /// into the game in question.
@@ -3657,18 +3567,18 @@ class Player {
   /// This is only populated for calls to player.get for the requesting player,
   /// only if the player ID has subsequently changed, and only to clients that
   /// support remapping player IDs.
-  core.String originalPlayerId;
+  core.String? originalPlayerId;
 
   /// The ID of the player.
-  core.String playerId;
+  core.String? playerId;
 
   /// The player's profile settings.
   ///
   /// Controls whether or not the player's profile is visible to other players.
-  ProfileSettings profileSettings;
+  ProfileSettings? profileSettings;
 
   /// The player's title rewarded for their game activities.
-  core.String title;
+  core.String? title;
 
   Player();
 
@@ -3714,21 +3624,21 @@ class Player {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (avatarImageUrl != null) 'avatarImageUrl': avatarImageUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (avatarImageUrl != null) 'avatarImageUrl': avatarImageUrl!,
         if (bannerUrlLandscape != null)
-          'bannerUrlLandscape': bannerUrlLandscape,
-        if (bannerUrlPortrait != null) 'bannerUrlPortrait': bannerUrlPortrait,
-        if (displayName != null) 'displayName': displayName,
-        if (experienceInfo != null) 'experienceInfo': experienceInfo.toJson(),
-        if (friendStatus != null) 'friendStatus': friendStatus,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name.toJson(),
-        if (originalPlayerId != null) 'originalPlayerId': originalPlayerId,
-        if (playerId != null) 'playerId': playerId,
+          'bannerUrlLandscape': bannerUrlLandscape!,
+        if (bannerUrlPortrait != null) 'bannerUrlPortrait': bannerUrlPortrait!,
+        if (displayName != null) 'displayName': displayName!,
+        if (experienceInfo != null) 'experienceInfo': experienceInfo!.toJson(),
+        if (friendStatus != null) 'friendStatus': friendStatus!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!.toJson(),
+        if (originalPlayerId != null) 'originalPlayerId': originalPlayerId!,
+        if (playerId != null) 'playerId': playerId!,
         if (profileSettings != null)
-          'profileSettings': profileSettings.toJson(),
-        if (title != null) 'title': title,
+          'profileSettings': profileSettings!.toJson(),
+        if (title != null) 'title': title!,
       };
 }
 
@@ -3740,31 +3650,31 @@ class PlayerAchievement {
   /// - "HIDDEN" : Achievement is hidden.
   /// - "REVEALED" : Achievement is revealed.
   /// - "UNLOCKED" : Achievement is unlocked.
-  core.String achievementState;
+  core.String? achievementState;
 
   /// The current steps for an incremental achievement.
-  core.int currentSteps;
+  core.int? currentSteps;
 
   /// Experience points earned for the achievement.
   ///
   /// This field is absent for achievements that have not yet been unlocked and
   /// 0 for achievements that have been unlocked by testers but that are
   /// unpublished.
-  core.String experiencePoints;
+  core.String? experiencePoints;
 
   /// The current steps for an incremental achievement as a string.
-  core.String formattedCurrentStepsString;
+  core.String? formattedCurrentStepsString;
 
   /// The ID of the achievement.
-  core.String id;
+  core.String? id;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#playerAchievement`.
-  core.String kind;
+  core.String? kind;
 
   /// The timestamp of the last modification to this achievement's state.
-  core.String lastUpdatedTimestamp;
+  core.String? lastUpdatedTimestamp;
 
   PlayerAchievement();
 
@@ -3793,31 +3703,31 @@ class PlayerAchievement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (achievementState != null) 'achievementState': achievementState,
-        if (currentSteps != null) 'currentSteps': currentSteps,
-        if (experiencePoints != null) 'experiencePoints': experiencePoints,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (achievementState != null) 'achievementState': achievementState!,
+        if (currentSteps != null) 'currentSteps': currentSteps!,
+        if (experiencePoints != null) 'experiencePoints': experiencePoints!,
         if (formattedCurrentStepsString != null)
-          'formattedCurrentStepsString': formattedCurrentStepsString,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+          'formattedCurrentStepsString': formattedCurrentStepsString!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (lastUpdatedTimestamp != null)
-          'lastUpdatedTimestamp': lastUpdatedTimestamp,
+          'lastUpdatedTimestamp': lastUpdatedTimestamp!,
       };
 }
 
 /// A list of achievement objects.
 class PlayerAchievementListResponse {
   /// The achievements.
-  core.List<PlayerAchievement> items;
+  core.List<PlayerAchievement>? items;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#playerAchievementListResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// Token corresponding to the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   PlayerAchievementListResponse();
 
@@ -3836,35 +3746,35 @@ class PlayerAchievementListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// An event status resource.
 class PlayerEvent {
   /// The ID of the event definition.
-  core.String definitionId;
+  core.String? definitionId;
 
   /// The current number of times this event has occurred, as a string.
   ///
   /// The formatting of this string depends on the configuration of your event
   /// in the Play Games Developer Console.
-  core.String formattedNumEvents;
+  core.String? formattedNumEvents;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#playerEvent`.
-  core.String kind;
+  core.String? kind;
 
   /// The current number of times this event has occurred.
-  core.String numEvents;
+  core.String? numEvents;
 
   /// The ID of the player.
-  core.String playerId;
+  core.String? playerId;
 
   PlayerEvent();
 
@@ -3886,28 +3796,28 @@ class PlayerEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (definitionId != null) 'definitionId': definitionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (definitionId != null) 'definitionId': definitionId!,
         if (formattedNumEvents != null)
-          'formattedNumEvents': formattedNumEvents,
-        if (kind != null) 'kind': kind,
-        if (numEvents != null) 'numEvents': numEvents,
-        if (playerId != null) 'playerId': playerId,
+          'formattedNumEvents': formattedNumEvents!,
+        if (kind != null) 'kind': kind!,
+        if (numEvents != null) 'numEvents': numEvents!,
+        if (playerId != null) 'playerId': playerId!,
       };
 }
 
 /// A ListByPlayer response.
 class PlayerEventListResponse {
   /// The player events.
-  core.List<PlayerEvent> items;
+  core.List<PlayerEvent>? items;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#playerEventListResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// The pagination token for the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   PlayerEventListResponse();
 
@@ -3926,36 +3836,36 @@ class PlayerEventListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// 1P/3P metadata about the player's experience.
 class PlayerExperienceInfo {
   /// The current number of experience points for the player.
-  core.String currentExperiencePoints;
+  core.String? currentExperiencePoints;
 
   /// The current level of the player.
-  PlayerLevel currentLevel;
+  PlayerLevel? currentLevel;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#playerExperienceInfo`.
-  core.String kind;
+  core.String? kind;
 
   /// The timestamp when the player was leveled up, in millis since Unix epoch
   /// UTC.
-  core.String lastLevelUpTimestampMillis;
+  core.String? lastLevelUpTimestampMillis;
 
   /// The next level of the player.
   ///
   /// If the current level is the maximum level, this should be same as the
   /// current level.
-  PlayerLevel nextLevel;
+  PlayerLevel? nextLevel;
 
   PlayerExperienceInfo();
 
@@ -3980,50 +3890,50 @@ class PlayerExperienceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (currentExperiencePoints != null)
-          'currentExperiencePoints': currentExperiencePoints,
-        if (currentLevel != null) 'currentLevel': currentLevel.toJson(),
-        if (kind != null) 'kind': kind,
+          'currentExperiencePoints': currentExperiencePoints!,
+        if (currentLevel != null) 'currentLevel': currentLevel!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (lastLevelUpTimestampMillis != null)
-          'lastLevelUpTimestampMillis': lastLevelUpTimestampMillis,
-        if (nextLevel != null) 'nextLevel': nextLevel.toJson(),
+          'lastLevelUpTimestampMillis': lastLevelUpTimestampMillis!,
+        if (nextLevel != null) 'nextLevel': nextLevel!.toJson(),
       };
 }
 
 /// A player leaderboard score object.
 class PlayerLeaderboardScore {
   /// The rank of the score in the friends collection for this leaderboard.
-  LeaderboardScoreRank friendsRank;
+  LeaderboardScoreRank? friendsRank;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#playerLeaderboardScore`.
-  core.String kind;
+  core.String? kind;
 
   /// The ID of the leaderboard this score is in.
-  core.String leaderboardId;
+  core.String? leaderboardId;
 
   /// The public rank of the score in this leaderboard.
   ///
   /// This object will not be present if the user is not sharing their scores
   /// publicly.
-  LeaderboardScoreRank publicRank;
+  LeaderboardScoreRank? publicRank;
 
   /// The formatted value of this score.
-  core.String scoreString;
+  core.String? scoreString;
 
   /// Additional information about the score.
   ///
   /// Values must contain no more than 64 URI-safe characters as defined by
   /// section 2.3 of RFC 3986.
-  core.String scoreTag;
+  core.String? scoreTag;
 
   /// The numerical value of this score.
-  core.String scoreValue;
+  core.String? scoreValue;
 
   /// The social rank of the score in this leaderboard.
-  LeaderboardScoreRank socialRank;
+  LeaderboardScoreRank? socialRank;
 
   /// The time span of this score.
   /// Possible string values are:
@@ -4031,11 +3941,11 @@ class PlayerLeaderboardScore {
   /// - "ALL_TIME" : The score is an all-time score.
   /// - "WEEKLY" : The score is a weekly score.
   /// - "DAILY" : The score is a daily score.
-  core.String timeSpan;
+  core.String? timeSpan;
 
   /// The timestamp at which this score was recorded, in milliseconds since the
   /// epoch in UTC.
-  core.String writeTimestamp;
+  core.String? writeTimestamp;
 
   PlayerLeaderboardScore();
 
@@ -4075,36 +3985,36 @@ class PlayerLeaderboardScore {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (friendsRank != null) 'friendsRank': friendsRank.toJson(),
-        if (kind != null) 'kind': kind,
-        if (leaderboardId != null) 'leaderboard_id': leaderboardId,
-        if (publicRank != null) 'publicRank': publicRank.toJson(),
-        if (scoreString != null) 'scoreString': scoreString,
-        if (scoreTag != null) 'scoreTag': scoreTag,
-        if (scoreValue != null) 'scoreValue': scoreValue,
-        if (socialRank != null) 'socialRank': socialRank.toJson(),
-        if (timeSpan != null) 'timeSpan': timeSpan,
-        if (writeTimestamp != null) 'writeTimestamp': writeTimestamp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (friendsRank != null) 'friendsRank': friendsRank!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (leaderboardId != null) 'leaderboard_id': leaderboardId!,
+        if (publicRank != null) 'publicRank': publicRank!.toJson(),
+        if (scoreString != null) 'scoreString': scoreString!,
+        if (scoreTag != null) 'scoreTag': scoreTag!,
+        if (scoreValue != null) 'scoreValue': scoreValue!,
+        if (socialRank != null) 'socialRank': socialRank!.toJson(),
+        if (timeSpan != null) 'timeSpan': timeSpan!,
+        if (writeTimestamp != null) 'writeTimestamp': writeTimestamp!,
       };
 }
 
 /// A list of player leaderboard scores.
 class PlayerLeaderboardScoreListResponse {
   /// The leaderboard scores.
-  core.List<PlayerLeaderboardScore> items;
+  core.List<PlayerLeaderboardScore>? items;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string
   /// `games#playerLeaderboardScoreListResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// The pagination token for the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The Player resources for the owner of this score.
-  Player player;
+  Player? player;
 
   PlayerLeaderboardScoreListResponse();
 
@@ -4128,12 +4038,12 @@ class PlayerLeaderboardScoreListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (player != null) 'player': player.toJson(),
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (player != null) 'player': player!.toJson(),
       };
 }
 
@@ -4142,16 +4052,16 @@ class PlayerLevel {
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#playerLevel`.
-  core.String kind;
+  core.String? kind;
 
   /// The level for the user.
-  core.int level;
+  core.int? level;
 
   /// The maximum experience points for this level.
-  core.String maxExperiencePoints;
+  core.String? maxExperiencePoints;
 
   /// The minimum experience points for this level.
-  core.String minExperiencePoints;
+  core.String? minExperiencePoints;
 
   PlayerLevel();
 
@@ -4170,28 +4080,28 @@ class PlayerLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (level != null) 'level': level,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (level != null) 'level': level!,
         if (maxExperiencePoints != null)
-          'maxExperiencePoints': maxExperiencePoints,
+          'maxExperiencePoints': maxExperiencePoints!,
         if (minExperiencePoints != null)
-          'minExperiencePoints': minExperiencePoints,
+          'minExperiencePoints': minExperiencePoints!,
       };
 }
 
 /// A third party player list response.
 class PlayerListResponse {
   /// The players.
-  core.List<Player> items;
+  core.List<Player>? items;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#playerListResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// Token corresponding to the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   PlayerListResponse();
 
@@ -4210,32 +4120,32 @@ class PlayerListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// A player score.
 class PlayerScore {
   /// The formatted score for this player score.
-  core.String formattedScore;
+  core.String? formattedScore;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#playerScore`.
-  core.String kind;
+  core.String? kind;
 
   /// The numerical value for this player score.
-  core.String score;
+  core.String? score;
 
   /// Additional information about this score.
   ///
   /// Values will contain no more than 64 URI-safe characters as defined by
   /// section 2.3 of RFC 3986.
-  core.String scoreTag;
+  core.String? scoreTag;
 
   /// The time span for this player score.
   /// Possible string values are:
@@ -4243,7 +4153,7 @@ class PlayerScore {
   /// - "ALL_TIME" : The score is an all-time score.
   /// - "WEEKLY" : The score is a weekly score.
   /// - "DAILY" : The score is a daily score.
-  core.String timeSpan;
+  core.String? timeSpan;
 
   PlayerScore();
 
@@ -4265,12 +4175,12 @@ class PlayerScore {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (formattedScore != null) 'formattedScore': formattedScore,
-        if (kind != null) 'kind': kind,
-        if (score != null) 'score': score,
-        if (scoreTag != null) 'scoreTag': scoreTag,
-        if (timeSpan != null) 'timeSpan': timeSpan,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (formattedScore != null) 'formattedScore': formattedScore!,
+        if (kind != null) 'kind': kind!,
+        if (score != null) 'score': score!,
+        if (scoreTag != null) 'scoreTag': scoreTag!,
+        if (timeSpan != null) 'timeSpan': timeSpan!,
       };
 }
 
@@ -4279,10 +4189,10 @@ class PlayerScoreListResponse {
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#playerScoreListResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// The score submissions statuses.
-  core.List<PlayerScoreResponse> submittedScores;
+  core.List<PlayerScoreResponse>? submittedScores;
 
   PlayerScoreListResponse();
 
@@ -4298,11 +4208,11 @@ class PlayerScoreListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (submittedScores != null)
           'submittedScores':
-              submittedScores.map((value) => value.toJson()).toList(),
+              submittedScores!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4310,31 +4220,31 @@ class PlayerScoreListResponse {
 class PlayerScoreResponse {
   /// The time spans where the submitted score is better than the existing score
   /// for that time span.
-  core.List<core.String> beatenScoreTimeSpans;
+  core.List<core.String>? beatenScoreTimeSpans;
 
   /// The formatted value of the submitted score.
-  core.String formattedScore;
+  core.String? formattedScore;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#playerScoreResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// The leaderboard ID that this score was submitted to.
-  core.String leaderboardId;
+  core.String? leaderboardId;
 
   /// Additional information about this score.
   ///
   /// Values will contain no more than 64 URI-safe characters as defined by
   /// section 2.3 of RFC 3986.
-  core.String scoreTag;
+  core.String? scoreTag;
 
   /// The scores in time spans that have not been beaten.
   ///
   /// As an example, the submitted score may be better than the player's `DAILY`
   /// score, but not better than the player's scores for the `WEEKLY` or
   /// `ALL_TIME` time spans.
-  core.List<PlayerScore> unbeatenScores;
+  core.List<PlayerScore>? unbeatenScores;
 
   PlayerScoreResponse();
 
@@ -4364,16 +4274,16 @@ class PlayerScoreResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (beatenScoreTimeSpans != null)
-          'beatenScoreTimeSpans': beatenScoreTimeSpans,
-        if (formattedScore != null) 'formattedScore': formattedScore,
-        if (kind != null) 'kind': kind,
-        if (leaderboardId != null) 'leaderboardId': leaderboardId,
-        if (scoreTag != null) 'scoreTag': scoreTag,
+          'beatenScoreTimeSpans': beatenScoreTimeSpans!,
+        if (formattedScore != null) 'formattedScore': formattedScore!,
+        if (kind != null) 'kind': kind!,
+        if (leaderboardId != null) 'leaderboardId': leaderboardId!,
+        if (scoreTag != null) 'scoreTag': scoreTag!,
         if (unbeatenScores != null)
           'unbeatenScores':
-              unbeatenScores.map((value) => value.toJson()).toList(),
+              unbeatenScores!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4382,10 +4292,10 @@ class PlayerScoreSubmissionList {
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#playerScoreSubmissionList`.
-  core.String kind;
+  core.String? kind;
 
   /// The score submissions.
-  core.List<ScoreSubmission> scores;
+  core.List<ScoreSubmission>? scores;
 
   PlayerScoreSubmissionList();
 
@@ -4401,10 +4311,10 @@ class PlayerScoreSubmissionList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (scores != null)
-          'scores': scores.map((value) => value.toJson()).toList(),
+          'scores': scores!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4421,15 +4331,15 @@ class ProfileSettings {
   /// user has permanently declined or the friends feature is not available to
   /// them. In this state, any attempts to request access to the friends list
   /// will be unsuccessful.
-  core.String friendsListVisibility;
+  core.String? friendsListVisibility;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#profileSettings`.
-  core.String kind;
+  core.String? kind;
 
   /// Whether the player's profile is visible to the currently signed in player.
-  core.bool profileVisible;
+  core.bool? profileVisible;
 
   ProfileSettings();
 
@@ -4445,11 +4355,11 @@ class ProfileSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (friendsListVisibility != null)
-          'friendsListVisibility': friendsListVisibility,
-        if (kind != null) 'kind': kind,
-        if (profileVisible != null) 'profileVisible': profileVisible,
+          'friendsListVisibility': friendsListVisibility!,
+        if (kind != null) 'kind': kind!,
+        if (profileVisible != null) 'profileVisible': profileVisible!,
       };
 }
 
@@ -4463,7 +4373,7 @@ class ResolveSnapshotHeadRequest {
   /// specified by `maxConflictsPerSnapshot`. The value provided should be
   /// greater or equal to 0. If no value is provided, the server will use a
   /// sensible default.
-  core.int maxConflictsPerSnapshot;
+  core.int? maxConflictsPerSnapshot;
 
   /// The automatic resolution policy.
   ///
@@ -4482,7 +4392,7 @@ class ResolveSnapshotHeadRequest {
   /// - "NO_AUTOMATIC_RESOLUTION" : Don't resolve conflicts at all. Effectively
   /// only returns the current head revision of the snapshot. Corresponds to a
   /// game opening the snapshot with manual resolution policy.
-  core.String resolutionPolicy;
+  core.String? resolutionPolicy;
 
   ResolveSnapshotHeadRequest();
 
@@ -4495,17 +4405,17 @@ class ResolveSnapshotHeadRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (maxConflictsPerSnapshot != null)
-          'maxConflictsPerSnapshot': maxConflictsPerSnapshot,
-        if (resolutionPolicy != null) 'resolutionPolicy': resolutionPolicy,
+          'maxConflictsPerSnapshot': maxConflictsPerSnapshot!,
+        if (resolutionPolicy != null) 'resolutionPolicy': resolutionPolicy!,
       };
 }
 
 /// Response for ResolveSnapshotHead RPC.
 class ResolveSnapshotHeadResponse {
   /// The state of the snapshot.
-  SnapshotExtended snapshot;
+  SnapshotExtended? snapshot;
 
   ResolveSnapshotHeadResponse();
 
@@ -4516,8 +4426,8 @@ class ResolveSnapshotHeadResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (snapshot != null) 'snapshot': snapshot.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (snapshot != null) 'snapshot': snapshot!.toJson(),
       };
 }
 
@@ -4525,12 +4435,12 @@ class ResolveSnapshotHeadResponse {
 class RevisionCheckResponse {
   /// The version of the API this client revision should use when calling API
   /// methods.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#revisionCheckResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// The result of the revision check.
   /// Possible string values are:
@@ -4540,7 +4450,7 @@ class RevisionCheckResponse {
   /// revision being used still works.
   /// - "INVALID" : The revision being used is not supported in any released
   /// version.
-  core.String revisionStatus;
+  core.String? revisionStatus;
 
   RevisionCheckResponse();
 
@@ -4556,10 +4466,10 @@ class RevisionCheckResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (kind != null) 'kind': kind,
-        if (revisionStatus != null) 'revisionStatus': revisionStatus,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (kind != null) 'kind': kind!,
+        if (revisionStatus != null) 'revisionStatus': revisionStatus!,
       };
 }
 
@@ -4568,23 +4478,23 @@ class ScoreSubmission {
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#scoreSubmission`.
-  core.String kind;
+  core.String? kind;
 
   /// The leaderboard this score is being submitted to.
-  core.String leaderboardId;
+  core.String? leaderboardId;
 
   /// The new score being submitted.
-  core.String score;
+  core.String? score;
 
   /// Additional information about this score.
   ///
   /// Values will contain no more than 64 URI-safe characters as defined by
   /// section 2.3 of RFC 3986.
-  core.String scoreTag;
+  core.String? scoreTag;
 
   /// Signature Values will contain URI-safe characters as defined by section
   /// 2.3 of RFC 3986.
-  core.String signature;
+  core.String? signature;
 
   ScoreSubmission();
 
@@ -4606,12 +4516,12 @@ class ScoreSubmission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (leaderboardId != null) 'leaderboardId': leaderboardId,
-        if (score != null) 'score': score,
-        if (scoreTag != null) 'scoreTag': scoreTag,
-        if (signature != null) 'signature': signature,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (leaderboardId != null) 'leaderboardId': leaderboardId!,
+        if (score != null) 'score': score!,
+        if (scoreTag != null) 'scoreTag': scoreTag!,
+        if (signature != null) 'signature': signature!,
       };
 }
 
@@ -4620,47 +4530,47 @@ class Snapshot {
   /// The cover image of this snapshot.
   ///
   /// May be absent if there is no image.
-  SnapshotImage coverImage;
+  SnapshotImage? coverImage;
 
   /// The description of this snapshot.
-  core.String description;
+  core.String? description;
 
   /// The ID of the file underlying this snapshot in the Drive API.
   ///
   /// Only present if the snapshot is a view on a Drive file and the file is
   /// owned by the caller.
-  core.String driveId;
+  core.String? driveId;
 
   /// The duration associated with this snapshot, in millis.
-  core.String durationMillis;
+  core.String? durationMillis;
 
   /// The ID of the snapshot.
-  core.String id;
+  core.String? id;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#snapshot`.
-  core.String kind;
+  core.String? kind;
 
   /// The timestamp (in millis since Unix epoch) of the last modification to
   /// this snapshot.
-  core.String lastModifiedMillis;
+  core.String? lastModifiedMillis;
 
   /// The progress value (64-bit integer set by developer) associated with this
   /// snapshot.
-  core.String progressValue;
+  core.String? progressValue;
 
   /// The title of this snapshot.
-  core.String title;
+  core.String? title;
 
   /// The type of this snapshot.
   /// Possible string values are:
   /// - "SNAPSHOT_TYPE_UNSPECIFIED" : Default value. This value is unused.
   /// - "SAVE_GAME" : A snapshot representing a save game.
-  core.String type;
+  core.String? type;
 
   /// The unique name provided when the snapshot was created.
-  core.String uniqueName;
+  core.String? uniqueName;
 
   Snapshot();
 
@@ -4701,19 +4611,19 @@ class Snapshot {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (coverImage != null) 'coverImage': coverImage.toJson(),
-        if (description != null) 'description': description,
-        if (driveId != null) 'driveId': driveId,
-        if (durationMillis != null) 'durationMillis': durationMillis,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (coverImage != null) 'coverImage': coverImage!.toJson(),
+        if (description != null) 'description': description!,
+        if (driveId != null) 'driveId': driveId!,
+        if (durationMillis != null) 'durationMillis': durationMillis!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (lastModifiedMillis != null)
-          'lastModifiedMillis': lastModifiedMillis,
-        if (progressValue != null) 'progressValue': progressValue,
-        if (title != null) 'title': title,
-        if (type != null) 'type': type,
-        if (uniqueName != null) 'uniqueName': uniqueName,
+          'lastModifiedMillis': lastModifiedMillis!,
+        if (progressValue != null) 'progressValue': progressValue!,
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
+        if (uniqueName != null) 'uniqueName': uniqueName!,
       };
 }
 
@@ -4730,7 +4640,7 @@ class SnapshotCoverImageResource {
   /// application.
   ///
   /// Output only.
-  core.String contentHash;
+  core.String? contentHash;
 
   /// A URL the client can use to download the image.
   ///
@@ -4738,15 +4648,15 @@ class SnapshotCoverImageResource {
   /// after it is returned.
   ///
   /// Output only.
-  core.String downloadUrl;
+  core.String? downloadUrl;
 
   /// The height of the image in pixels.
-  core.int height;
+  core.int? height;
 
   /// The MIME type of the image.
   ///
   /// Output only.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// The ID of the image resource.
   ///
@@ -4757,10 +4667,10 @@ class SnapshotCoverImageResource {
   /// example, it's not possible to use SnapshotDataResource's resource ID as
   /// the resource_id of a SnapshotCoverImageResource, even if the blob is a
   /// valid image file.
-  core.String resourceId;
+  core.String? resourceId;
 
   /// The width of the image in pixels.
-  core.int width;
+  core.int? width;
 
   SnapshotCoverImageResource();
 
@@ -4785,13 +4695,13 @@ class SnapshotCoverImageResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentHash != null) 'contentHash': contentHash,
-        if (downloadUrl != null) 'downloadUrl': downloadUrl,
-        if (height != null) 'height': height,
-        if (mimeType != null) 'mimeType': mimeType,
-        if (resourceId != null) 'resourceId': resourceId,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentHash != null) 'contentHash': contentHash!,
+        if (downloadUrl != null) 'downloadUrl': downloadUrl!,
+        if (height != null) 'height': height!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (resourceId != null) 'resourceId': resourceId!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -4808,7 +4718,7 @@ class SnapshotDataResource {
   /// application.
   ///
   /// Output only.
-  core.String contentHash;
+  core.String? contentHash;
 
   /// A URL that the client can use to download the blob.
   ///
@@ -4816,7 +4726,7 @@ class SnapshotDataResource {
   /// after it is returned.
   ///
   /// Output only.
-  core.String downloadUrl;
+  core.String? downloadUrl;
 
   /// The ID of the blob resource.
   ///
@@ -4827,12 +4737,12 @@ class SnapshotDataResource {
   /// For example, it's not possible to use SnapshotDataResource's resource ID
   /// as the resource_id of a SnapshotCoverImageResource, even if the blob is a
   /// valid image file.
-  core.String resourceId;
+  core.String? resourceId;
 
   /// Size of the saved game blob in bytes.
   ///
   /// Output only.
-  core.String size;
+  core.String? size;
 
   SnapshotDataResource();
 
@@ -4851,11 +4761,11 @@ class SnapshotDataResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentHash != null) 'contentHash': contentHash,
-        if (downloadUrl != null) 'downloadUrl': downloadUrl,
-        if (resourceId != null) 'resourceId': resourceId,
-        if (size != null) 'size': size,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentHash != null) 'contentHash': contentHash!,
+        if (downloadUrl != null) 'downloadUrl': downloadUrl!,
+        if (resourceId != null) 'resourceId': resourceId!,
+        if (size != null) 'size': size!,
       };
 }
 
@@ -4879,21 +4789,21 @@ class SnapshotExtended {
   /// in a single request this will only contain the first batch. In such case,
   /// the presented conflicting revisions must be resolved first in order to
   /// fetch the next batch.
-  core.List<SnapshotRevision> conflictingRevisions;
+  core.List<SnapshotRevision>? conflictingRevisions;
 
   /// An indicator whether the snapshot has any conflicting revisions or not.
   ///
   /// Always set.
-  core.bool hasConflictingRevisions;
+  core.bool? hasConflictingRevisions;
 
   /// The current head revision (the canonical revision as understood by the
   /// server).
-  SnapshotRevision headRevision;
+  SnapshotRevision? headRevision;
 
   /// An identifier of the snapshot, developer-specified.
   ///
   /// It must match the pattern \[0-9a-zA-Z-._~\]{1,100}.
-  core.String snapshotName;
+  core.String? snapshotName;
 
   SnapshotExtended();
 
@@ -4916,37 +4826,37 @@ class SnapshotExtended {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (conflictingRevisions != null)
           'conflictingRevisions':
-              conflictingRevisions.map((value) => value.toJson()).toList(),
+              conflictingRevisions!.map((value) => value.toJson()).toList(),
         if (hasConflictingRevisions != null)
-          'hasConflictingRevisions': hasConflictingRevisions,
-        if (headRevision != null) 'headRevision': headRevision.toJson(),
-        if (snapshotName != null) 'snapshotName': snapshotName,
+          'hasConflictingRevisions': hasConflictingRevisions!,
+        if (headRevision != null) 'headRevision': headRevision!.toJson(),
+        if (snapshotName != null) 'snapshotName': snapshotName!,
       };
 }
 
 /// An image of a snapshot.
 class SnapshotImage {
   /// The height of the image.
-  core.int height;
+  core.int? height;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#snapshotImage`.
-  core.String kind;
+  core.String? kind;
 
   /// The MIME type of the image.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// The URL of the image.
   ///
   /// This URL may be invalidated at any time and should not be cached.
-  core.String url;
+  core.String? url;
 
   /// The width of the image.
-  core.int width;
+  core.int? width;
 
   SnapshotImage();
 
@@ -4968,29 +4878,29 @@ class SnapshotImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (kind != null) 'kind': kind,
-        if (mimeType != null) 'mime_type': mimeType,
-        if (url != null) 'url': url,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (kind != null) 'kind': kind!,
+        if (mimeType != null) 'mime_type': mimeType!,
+        if (url != null) 'url': url!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// A third party list snapshots response.
 class SnapshotListResponse {
   /// The snapshots.
-  core.List<Snapshot> items;
+  core.List<Snapshot>? items;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#snapshotListResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// Token corresponding to the next page of results.
   ///
   /// If there are no more results, the token is omitted.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   SnapshotListResponse();
 
@@ -5009,11 +4919,11 @@ class SnapshotListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -5023,27 +4933,27 @@ class SnapshotListResponse {
 /// snapshot revision.
 class SnapshotMetadata {
   /// The description of this snapshot.
-  core.String description;
+  core.String? description;
 
   /// The device that created the current revision.
-  core.String deviceName;
+  core.String? deviceName;
 
   /// The duration associated with this snapshot.
   ///
   /// Values with sub-millisecond precision can be rounded or trimmed to the
   /// closest millisecond.
-  core.String gameplayDuration;
+  core.String? gameplayDuration;
 
   /// The timestamp of the last modification to this snapshot as provided by the
   /// client.
   ///
   /// Values with sub-millisecond precision can be rounded or trimmed to the
   /// closest millisecond.
-  core.String lastModifyTime;
+  core.String? lastModifyTime;
 
   /// The progress value (64-bit integer set by developer) associated with this
   /// snapshot.
-  core.String progressValue;
+  core.String? progressValue;
 
   SnapshotMetadata();
 
@@ -5065,12 +4975,12 @@ class SnapshotMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (deviceName != null) 'deviceName': deviceName,
-        if (gameplayDuration != null) 'gameplayDuration': gameplayDuration,
-        if (lastModifyTime != null) 'lastModifyTime': lastModifyTime,
-        if (progressValue != null) 'progressValue': progressValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (deviceName != null) 'deviceName': deviceName!,
+        if (gameplayDuration != null) 'gameplayDuration': gameplayDuration!,
+        if (lastModifyTime != null) 'lastModifyTime': lastModifyTime!,
+        if (progressValue != null) 'progressValue': progressValue!,
       };
 }
 
@@ -5079,18 +4989,18 @@ class SnapshotMetadata {
 /// Snapshot revisions are immutable.
 class SnapshotRevision {
   /// Reference to the game provided blob for this revision.
-  SnapshotDataResource blob;
+  SnapshotDataResource? blob;
 
   /// Reference to the cover image for this revision.
-  SnapshotCoverImageResource coverImage;
+  SnapshotCoverImageResource? coverImage;
 
   /// A server generated identifier of the snapshot revision.
   ///
   /// Output only.
-  core.String id;
+  core.String? id;
 
   /// Metadata for this snapshot revision.
-  SnapshotMetadata metadata;
+  SnapshotMetadata? metadata;
 
   SnapshotRevision();
 
@@ -5112,11 +5022,11 @@ class SnapshotRevision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (blob != null) 'blob': blob.toJson(),
-        if (coverImage != null) 'coverImage': coverImage.toJson(),
-        if (id != null) 'id': id,
-        if (metadata != null) 'metadata': metadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (blob != null) 'blob': blob!.toJson(),
+        if (coverImage != null) 'coverImage': coverImage!.toJson(),
+        if (id != null) 'id': id!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
       };
 }
 
@@ -5125,43 +5035,43 @@ class StatsResponse {
   /// Average session length in minutes of the player.
   ///
   /// E.g., 1, 30, 60, ... . Not populated if there is not enough information.
-  core.double avgSessionLengthMinutes;
+  core.double? avgSessionLengthMinutes;
 
   /// The probability of the player not returning to play the game in the next
   /// day.
   ///
   /// E.g., 0, 0.1, 0.5, ..., 1.0. Not populated if there is not enough
   /// information.
-  core.double churnProbability;
+  core.double? churnProbability;
 
   /// Number of days since the player last played this game.
   ///
   /// E.g., 0, 1, 5, 10, ... . Not populated if there is not enough information.
-  core.int daysSinceLastPlayed;
+  core.int? daysSinceLastPlayed;
 
   /// The probability of the player going to spend beyond a threshold amount of
   /// money.
   ///
   /// E.g., 0, 0.25, 0.50, 0.75. Not populated if there is not enough
   /// information.
-  core.double highSpenderProbability;
+  core.double? highSpenderProbability;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `games#statsResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// Number of in-app purchases made by the player in this game.
   ///
   /// E.g., 0, 1, 5, 10, ... . Not populated if there is not enough information.
-  core.int numPurchases;
+  core.int? numPurchases;
 
   /// The approximate number of sessions of the player within the last 28 days,
   /// where a session begins when the player is connected to Play Games Services
   /// and ends when they are disconnected.
   ///
   /// E.g., 0, 1, 5, 10, ... . Not populated if there is not enough information.
-  core.int numSessions;
+  core.int? numSessions;
 
   /// The approximation of the sessions percentile of the player within the last
   /// 30 days, where a session begins when the player is connected to Play Games
@@ -5169,26 +5079,26 @@ class StatsResponse {
   ///
   /// E.g., 0, 0.25, 0.5, 0.75. Not populated if there is not enough
   /// information.
-  core.double numSessionsPercentile;
+  core.double? numSessionsPercentile;
 
   /// The approximate spend percentile of the player in this game.
   ///
   /// E.g., 0, 0.25, 0.5, 0.75. Not populated if there is not enough
   /// information.
-  core.double spendPercentile;
+  core.double? spendPercentile;
 
   /// The probability of the player going to spend the game in the next seven
   /// days.
   ///
   /// E.g., 0, 0.25, 0.50, 0.75. Not populated if there is not enough
   /// information.
-  core.double spendProbability;
+  core.double? spendProbability;
 
   /// The predicted amount of money that the player going to spend in the next
   /// 28 days.
   ///
   /// E.g., 1, 30, 60, ... . Not populated if there is not enough information.
-  core.double totalSpendNext28Days;
+  core.double? totalSpendNext28Days;
 
   StatsResponse();
 
@@ -5232,22 +5142,22 @@ class StatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (avgSessionLengthMinutes != null)
-          'avg_session_length_minutes': avgSessionLengthMinutes,
-        if (churnProbability != null) 'churn_probability': churnProbability,
+          'avg_session_length_minutes': avgSessionLengthMinutes!,
+        if (churnProbability != null) 'churn_probability': churnProbability!,
         if (daysSinceLastPlayed != null)
-          'days_since_last_played': daysSinceLastPlayed,
+          'days_since_last_played': daysSinceLastPlayed!,
         if (highSpenderProbability != null)
-          'high_spender_probability': highSpenderProbability,
-        if (kind != null) 'kind': kind,
-        if (numPurchases != null) 'num_purchases': numPurchases,
-        if (numSessions != null) 'num_sessions': numSessions,
+          'high_spender_probability': highSpenderProbability!,
+        if (kind != null) 'kind': kind!,
+        if (numPurchases != null) 'num_purchases': numPurchases!,
+        if (numSessions != null) 'num_sessions': numSessions!,
         if (numSessionsPercentile != null)
-          'num_sessions_percentile': numSessionsPercentile,
-        if (spendPercentile != null) 'spend_percentile': spendPercentile,
-        if (spendProbability != null) 'spend_probability': spendProbability,
+          'num_sessions_percentile': numSessionsPercentile!,
+        if (spendPercentile != null) 'spend_percentile': spendPercentile!,
+        if (spendProbability != null) 'spend_probability': spendProbability!,
         if (totalSpendNext28Days != null)
-          'total_spend_next_28_days': totalSpendNext28Days,
+          'total_spend_next_28_days': totalSpendNext28Days!,
       };
 }

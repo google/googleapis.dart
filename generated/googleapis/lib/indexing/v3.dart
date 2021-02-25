@@ -81,8 +81,8 @@ class UrlNotificationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UrlNotificationMetadata> getMetadata({
-    core.String url,
-    core.String $fields,
+    core.String? url,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (url != null) 'url': [url],
@@ -118,10 +118,9 @@ class UrlNotificationsResource {
   /// this method will complete with the same error.
   async.Future<PublishUrlNotificationResponse> publish(
     UrlNotification request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -142,7 +141,7 @@ class UrlNotificationsResource {
 /// Output for PublishUrlNotification
 class PublishUrlNotificationResponse {
   /// Description of the notification events received for this URL.
-  UrlNotificationMetadata urlNotificationMetadata;
+  UrlNotificationMetadata? urlNotificationMetadata;
 
   PublishUrlNotificationResponse();
 
@@ -154,9 +153,9 @@ class PublishUrlNotificationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (urlNotificationMetadata != null)
-          'urlNotificationMetadata': urlNotificationMetadata.toJson(),
+          'urlNotificationMetadata': urlNotificationMetadata!.toJson(),
       };
 }
 
@@ -167,20 +166,20 @@ class UrlNotification {
   /// Creation timestamp for this notification.
   ///
   /// Users should _not_ specify it, the field is ignored at the request time.
-  core.String notifyTime;
+  core.String? notifyTime;
 
   /// The URL life cycle event that Google is being notified about.
   /// Possible string values are:
   /// - "URL_NOTIFICATION_TYPE_UNSPECIFIED" : Unspecified.
   /// - "URL_UPDATED" : The given URL (Web document) has been updated.
   /// - "URL_DELETED" : The given URL (Web document) has been deleted.
-  core.String type;
+  core.String? type;
 
   /// The object of this notification.
   ///
   /// The URL must be owned by the publisher of this notification and, in case
   /// of `URL_UPDATED` notifications, it _must_ be crawlable by Google.
-  core.String url;
+  core.String? url;
 
   UrlNotification();
 
@@ -196,10 +195,10 @@ class UrlNotification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (notifyTime != null) 'notifyTime': notifyTime,
-        if (type != null) 'type': type,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (notifyTime != null) 'notifyTime': notifyTime!,
+        if (type != null) 'type': type!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -207,13 +206,13 @@ class UrlNotification {
 /// for a given URL.
 class UrlNotificationMetadata {
   /// Latest notification received with type `URL_REMOVED`.
-  UrlNotification latestRemove;
+  UrlNotification? latestRemove;
 
   /// Latest notification received with type `URL_UPDATED`.
-  UrlNotification latestUpdate;
+  UrlNotification? latestUpdate;
 
   /// URL to which this metadata refers.
-  core.String url;
+  core.String? url;
 
   UrlNotificationMetadata();
 
@@ -231,9 +230,9 @@ class UrlNotificationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (latestRemove != null) 'latestRemove': latestRemove.toJson(),
-        if (latestUpdate != null) 'latestUpdate': latestUpdate.toJson(),
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (latestRemove != null) 'latestRemove': latestRemove!.toJson(),
+        if (latestUpdate != null) 'latestUpdate': latestUpdate!.toJson(),
+        if (url != null) 'url': url!,
       };
 }

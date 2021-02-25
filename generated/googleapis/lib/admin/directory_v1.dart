@@ -240,14 +240,8 @@ class AspsResource {
   async.Future<void> delete(
     core.String userKey,
     core.int codeId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
-    if (codeId == null) {
-      throw core.ArgumentError('Parameter codeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -287,14 +281,8 @@ class AspsResource {
   async.Future<Asp> get(
     core.String userKey,
     core.int codeId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
-    if (codeId == null) {
-      throw core.ArgumentError('Parameter codeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -331,11 +319,8 @@ class AspsResource {
   /// this method will complete with the same error.
   async.Future<Asps> list(
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -374,10 +359,9 @@ class ChannelsResource {
   /// this method will complete with the same error.
   async.Future<void> stop(
     Channel request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -438,16 +422,9 @@ class ChromeosdevicesResource {
     ChromeOsDeviceAction request,
     core.String customerId,
     core.String resourceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (resourceId == null) {
-      throw core.ArgumentError('Parameter resourceId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -503,15 +480,9 @@ class ChromeosdevicesResource {
   async.Future<ChromeOsDevice> get(
     core.String customerId,
     core.String deviceId, {
-    core.String projection,
-    core.String $fields,
+    core.String? projection,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (projection != null) 'projection': [projection],
       if ($fields != null) 'fields': [$fields],
@@ -594,18 +565,15 @@ class ChromeosdevicesResource {
   /// this method will complete with the same error.
   async.Future<ChromeOsDevices> list(
     core.String customerId, {
-    core.int maxResults,
-    core.String orderBy,
-    core.String orgUnitPath,
-    core.String pageToken,
-    core.String projection,
-    core.String query,
-    core.String sortOrder,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? orgUnitPath,
+    core.String? pageToken,
+    core.String? projection,
+    core.String? query,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -654,16 +622,9 @@ class ChromeosdevicesResource {
     ChromeOsMoveDevicesToOu request,
     core.String customerId,
     core.String orgUnitPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (orgUnitPath == null) {
-      throw core.ArgumentError('Parameter orgUnitPath is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'orgUnitPath': [orgUnitPath],
       if ($fields != null) 'fields': [$fields],
@@ -724,17 +685,10 @@ class ChromeosdevicesResource {
     ChromeOsDevice request,
     core.String customerId,
     core.String deviceId, {
-    core.String projection,
-    core.String $fields,
+    core.String? projection,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (projection != null) 'projection': [projection],
       if ($fields != null) 'fields': [$fields],
@@ -794,17 +748,10 @@ class ChromeosdevicesResource {
     ChromeOsDevice request,
     core.String customerId,
     core.String deviceId, {
-    core.String projection,
-    core.String $fields,
+    core.String? projection,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (projection != null) 'projection': [projection],
       if ($fields != null) 'fields': [$fields],
@@ -876,16 +823,9 @@ class CustomerDevicesChromeosResource {
     DirectoryChromeosdevicesIssueCommandRequest request,
     core.String customerId,
     core.String deviceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -937,17 +877,8 @@ class CustomerDevicesChromeosCommandsResource {
     core.String customerId,
     core.String deviceId,
     core.String commandId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
-    if (commandId == null) {
-      throw core.ArgumentError('Parameter commandId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -992,11 +923,8 @@ class CustomersResource {
   /// this method will complete with the same error.
   async.Future<Customer> get(
     core.String customerKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customerKey == null) {
-      throw core.ArgumentError('Parameter customerKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1033,13 +961,9 @@ class CustomersResource {
   async.Future<Customer> patch(
     Customer request,
     core.String customerKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerKey == null) {
-      throw core.ArgumentError('Parameter customerKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1077,13 +1001,9 @@ class CustomersResource {
   async.Future<Customer> update(
     Customer request,
     core.String customerKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerKey == null) {
-      throw core.ArgumentError('Parameter customerKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1125,14 +1045,8 @@ class DomainAliasesResource {
   async.Future<void> delete(
     core.String customer,
     core.String domainAliasName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (domainAliasName == null) {
-      throw core.ArgumentError('Parameter domainAliasName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1171,14 +1085,8 @@ class DomainAliasesResource {
   async.Future<DomainAlias> get(
     core.String customer,
     core.String domainAliasName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (domainAliasName == null) {
-      throw core.ArgumentError('Parameter domainAliasName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1218,13 +1126,9 @@ class DomainAliasesResource {
   async.Future<DomainAlias> insert(
     DomainAlias request,
     core.String customer, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1264,12 +1168,9 @@ class DomainAliasesResource {
   /// this method will complete with the same error.
   async.Future<DomainAliases> list(
     core.String customer, {
-    core.String parentDomainName,
-    core.String $fields,
+    core.String? parentDomainName,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (parentDomainName != null) 'parentDomainName': [parentDomainName],
       if ($fields != null) 'fields': [$fields],
@@ -1313,14 +1214,8 @@ class DomainsResource {
   async.Future<void> delete(
     core.String customer,
     core.String domainName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (domainName == null) {
-      throw core.ArgumentError('Parameter domainName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1359,14 +1254,8 @@ class DomainsResource {
   async.Future<Domains> get(
     core.String customer,
     core.String domainName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (domainName == null) {
-      throw core.ArgumentError('Parameter domainName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1405,13 +1294,9 @@ class DomainsResource {
   async.Future<Domains> insert(
     Domains request,
     core.String customer, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1447,11 +1332,8 @@ class DomainsResource {
   /// this method will complete with the same error.
   async.Future<Domains2> list(
     core.String customer, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1493,11 +1375,8 @@ class GroupsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String groupKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (groupKey == null) {
-      throw core.ArgumentError('Parameter groupKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1532,11 +1411,8 @@ class GroupsResource {
   /// this method will complete with the same error.
   async.Future<Group> get(
     core.String groupKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (groupKey == null) {
-      throw core.ArgumentError('Parameter groupKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1570,10 +1446,9 @@ class GroupsResource {
   /// this method will complete with the same error.
   async.Future<Group> insert(
     Group request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1640,15 +1515,15 @@ class GroupsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Groups> list({
-    core.String customer,
-    core.String domain,
-    core.int maxResults,
-    core.String orderBy,
-    core.String pageToken,
-    core.String query,
-    core.String sortOrder,
-    core.String userKey,
-    core.String $fields,
+    core.String? customer,
+    core.String? domain,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.String? query,
+    core.String? sortOrder,
+    core.String? userKey,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (customer != null) 'customer': [customer],
@@ -1697,13 +1572,9 @@ class GroupsResource {
   async.Future<Group> patch(
     Group request,
     core.String groupKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (groupKey == null) {
-      throw core.ArgumentError('Parameter groupKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1742,13 +1613,9 @@ class GroupsResource {
   async.Future<Group> update(
     Group request,
     core.String groupKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (groupKey == null) {
-      throw core.ArgumentError('Parameter groupKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1791,14 +1658,8 @@ class GroupsAliasesResource {
   async.Future<void> delete(
     core.String groupKey,
     core.String alias, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (groupKey == null) {
-      throw core.ArgumentError('Parameter groupKey is required.');
-    }
-    if (alias == null) {
-      throw core.ArgumentError('Parameter alias is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1838,13 +1699,9 @@ class GroupsAliasesResource {
   async.Future<Alias> insert(
     Alias request,
     core.String groupKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (groupKey == null) {
-      throw core.ArgumentError('Parameter groupKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1881,11 +1738,8 @@ class GroupsAliasesResource {
   /// this method will complete with the same error.
   async.Future<Aliases> list(
     core.String groupKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (groupKey == null) {
-      throw core.ArgumentError('Parameter groupKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1930,14 +1784,8 @@ class MembersResource {
   async.Future<void> delete(
     core.String groupKey,
     core.String memberKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (groupKey == null) {
-      throw core.ArgumentError('Parameter groupKey is required.');
-    }
-    if (memberKey == null) {
-      throw core.ArgumentError('Parameter memberKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1979,14 +1827,8 @@ class MembersResource {
   async.Future<Member> get(
     core.String groupKey,
     core.String memberKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (groupKey == null) {
-      throw core.ArgumentError('Parameter groupKey is required.');
-    }
-    if (memberKey == null) {
-      throw core.ArgumentError('Parameter memberKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2029,14 +1871,8 @@ class MembersResource {
   async.Future<MembersHasMember> hasMember(
     core.String groupKey,
     core.String memberKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (groupKey == null) {
-      throw core.ArgumentError('Parameter groupKey is required.');
-    }
-    if (memberKey == null) {
-      throw core.ArgumentError('Parameter memberKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2077,13 +1913,9 @@ class MembersResource {
   async.Future<Member> insert(
     Member request,
     core.String groupKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (groupKey == null) {
-      throw core.ArgumentError('Parameter groupKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2131,15 +1963,12 @@ class MembersResource {
   /// this method will complete with the same error.
   async.Future<Members> list(
     core.String groupKey, {
-    core.bool includeDerivedMembership,
-    core.int maxResults,
-    core.String pageToken,
-    core.String roles,
-    core.String $fields,
+    core.bool? includeDerivedMembership,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? roles,
+    core.String? $fields,
   }) async {
-    if (groupKey == null) {
-      throw core.ArgumentError('Parameter groupKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeDerivedMembership != null)
         'includeDerivedMembership': ['${includeDerivedMembership}'],
@@ -2191,16 +2020,9 @@ class MembersResource {
     Member request,
     core.String groupKey,
     core.String memberKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (groupKey == null) {
-      throw core.ArgumentError('Parameter groupKey is required.');
-    }
-    if (memberKey == null) {
-      throw core.ArgumentError('Parameter memberKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2246,16 +2068,9 @@ class MembersResource {
     Member request,
     core.String groupKey,
     core.String memberKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (groupKey == null) {
-      throw core.ArgumentError('Parameter groupKey is required.');
-    }
-    if (memberKey == null) {
-      throw core.ArgumentError('Parameter memberKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2309,16 +2124,9 @@ class MobiledevicesResource {
     MobileDeviceAction request,
     core.String customerId,
     core.String resourceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (resourceId == null) {
-      throw core.ArgumentError('Parameter resourceId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2362,14 +2170,8 @@ class MobiledevicesResource {
   async.Future<void> delete(
     core.String customerId,
     core.String resourceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (resourceId == null) {
-      throw core.ArgumentError('Parameter resourceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2420,15 +2222,9 @@ class MobiledevicesResource {
   async.Future<MobileDevice> get(
     core.String customerId,
     core.String resourceId, {
-    core.String projection,
-    core.String $fields,
+    core.String? projection,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (resourceId == null) {
-      throw core.ArgumentError('Parameter resourceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (projection != null) 'projection': [projection],
       if ($fields != null) 'fields': [$fields],
@@ -2506,17 +2302,14 @@ class MobiledevicesResource {
   /// this method will complete with the same error.
   async.Future<MobileDevices> list(
     core.String customerId, {
-    core.int maxResults,
-    core.String orderBy,
-    core.String pageToken,
-    core.String projection,
-    core.String query,
-    core.String sortOrder,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.String? projection,
+    core.String? query,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -2573,15 +2366,9 @@ class OrgunitsResource {
   async.Future<void> delete(
     core.String customerId,
     core.String orgUnitPath, {
-    core.bool allowPlus,
-    core.String $fields,
+    core.bool? allowPlus,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (orgUnitPath == null) {
-      throw core.ArgumentError('Parameter orgUnitPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (allowPlus != null) 'allowPlus': ['${allowPlus}'],
       if ($fields != null) 'fields': [$fields],
@@ -2629,15 +2416,9 @@ class OrgunitsResource {
   async.Future<OrgUnit> get(
     core.String customerId,
     core.String orgUnitPath, {
-    core.bool allowPlus,
-    core.String $fields,
+    core.bool? allowPlus,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (orgUnitPath == null) {
-      throw core.ArgumentError('Parameter orgUnitPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (allowPlus != null) 'allowPlus': ['${allowPlus}'],
       if ($fields != null) 'fields': [$fields],
@@ -2681,13 +2462,9 @@ class OrgunitsResource {
   async.Future<OrgUnit> insert(
     OrgUnit request,
     core.String customerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2737,13 +2514,10 @@ class OrgunitsResource {
   /// this method will complete with the same error.
   async.Future<OrgUnits> list(
     core.String customerId, {
-    core.String orgUnitPath,
-    core.String type,
-    core.String $fields,
+    core.String? orgUnitPath,
+    core.String? type,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (orgUnitPath != null) 'orgUnitPath': [orgUnitPath],
       if (type != null) 'type': [type],
@@ -2797,17 +2571,10 @@ class OrgunitsResource {
     OrgUnit request,
     core.String customerId,
     core.String orgUnitPath, {
-    core.bool allowPlus,
-    core.String $fields,
+    core.bool? allowPlus,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (orgUnitPath == null) {
-      throw core.ArgumentError('Parameter orgUnitPath is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (allowPlus != null) 'allowPlus': ['${allowPlus}'],
       if ($fields != null) 'fields': [$fields],
@@ -2859,17 +2626,10 @@ class OrgunitsResource {
     OrgUnit request,
     core.String customerId,
     core.String orgUnitPath, {
-    core.bool allowPlus,
-    core.String $fields,
+    core.bool? allowPlus,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (orgUnitPath == null) {
-      throw core.ArgumentError('Parameter orgUnitPath is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (allowPlus != null) 'allowPlus': ['${allowPlus}'],
       if ($fields != null) 'fields': [$fields],
@@ -2913,11 +2673,8 @@ class PrivilegesResource {
   /// this method will complete with the same error.
   async.Future<Privileges> list(
     core.String customer, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2975,14 +2732,8 @@ class ResourcesBuildingsResource {
   async.Future<void> delete(
     core.String customer,
     core.String buildingId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (buildingId == null) {
-      throw core.ArgumentError('Parameter buildingId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3023,14 +2774,8 @@ class ResourcesBuildingsResource {
   async.Future<Building> get(
     core.String customer,
     core.String buildingId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (buildingId == null) {
-      throw core.ArgumentError('Parameter buildingId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3082,14 +2827,10 @@ class ResourcesBuildingsResource {
   async.Future<Building> insert(
     Building request,
     core.String customer, {
-    core.String coordinatesSource,
-    core.String $fields,
+    core.String? coordinatesSource,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (coordinatesSource != null) 'coordinatesSource': [coordinatesSource],
       if ($fields != null) 'fields': [$fields],
@@ -3133,13 +2874,10 @@ class ResourcesBuildingsResource {
   /// this method will complete with the same error.
   async.Future<Buildings> list(
     core.String customer, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3195,17 +2933,10 @@ class ResourcesBuildingsResource {
     Building request,
     core.String customer,
     core.String buildingId, {
-    core.String coordinatesSource,
-    core.String $fields,
+    core.String? coordinatesSource,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (buildingId == null) {
-      throw core.ArgumentError('Parameter buildingId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (coordinatesSource != null) 'coordinatesSource': [coordinatesSource],
       if ($fields != null) 'fields': [$fields],
@@ -3262,17 +2993,10 @@ class ResourcesBuildingsResource {
     Building request,
     core.String customer,
     core.String buildingId, {
-    core.String coordinatesSource,
-    core.String $fields,
+    core.String? coordinatesSource,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (buildingId == null) {
-      throw core.ArgumentError('Parameter buildingId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (coordinatesSource != null) 'coordinatesSource': [coordinatesSource],
       if ($fields != null) 'fields': [$fields],
@@ -3319,14 +3043,8 @@ class ResourcesCalendarsResource {
   async.Future<void> delete(
     core.String customer,
     core.String calendarResourceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (calendarResourceId == null) {
-      throw core.ArgumentError('Parameter calendarResourceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3367,14 +3085,8 @@ class ResourcesCalendarsResource {
   async.Future<CalendarResource> get(
     core.String customer,
     core.String calendarResourceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (calendarResourceId == null) {
-      throw core.ArgumentError('Parameter calendarResourceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3416,13 +3128,9 @@ class ResourcesCalendarsResource {
   async.Future<CalendarResource> insert(
     CalendarResource request,
     core.String customer, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3485,15 +3193,12 @@ class ResourcesCalendarsResource {
   /// this method will complete with the same error.
   async.Future<CalendarResources> list(
     core.String customer, {
-    core.int maxResults,
-    core.String orderBy,
-    core.String pageToken,
-    core.String query,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.String? query,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -3541,16 +3246,9 @@ class ResourcesCalendarsResource {
     CalendarResource request,
     core.String customer,
     core.String calendarResourceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (calendarResourceId == null) {
-      throw core.ArgumentError('Parameter calendarResourceId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3600,16 +3298,9 @@ class ResourcesCalendarsResource {
     CalendarResource request,
     core.String customer,
     core.String calendarResourceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (calendarResourceId == null) {
-      throw core.ArgumentError('Parameter calendarResourceId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3656,14 +3347,8 @@ class ResourcesFeaturesResource {
   async.Future<void> delete(
     core.String customer,
     core.String featureKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (featureKey == null) {
-      throw core.ArgumentError('Parameter featureKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3704,14 +3389,8 @@ class ResourcesFeaturesResource {
   async.Future<Feature> get(
     core.String customer,
     core.String featureKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (featureKey == null) {
-      throw core.ArgumentError('Parameter featureKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3752,13 +3431,9 @@ class ResourcesFeaturesResource {
   async.Future<Feature> insert(
     Feature request,
     core.String customer, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3801,13 +3476,10 @@ class ResourcesFeaturesResource {
   /// this method will complete with the same error.
   async.Future<Features> list(
     core.String customer, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3852,16 +3524,9 @@ class ResourcesFeaturesResource {
     Feature request,
     core.String customer,
     core.String featureKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (featureKey == null) {
-      throw core.ArgumentError('Parameter featureKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3904,16 +3569,9 @@ class ResourcesFeaturesResource {
     FeatureRename request,
     core.String customer,
     core.String oldName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (oldName == null) {
-      throw core.ArgumentError('Parameter oldName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3959,16 +3617,9 @@ class ResourcesFeaturesResource {
     Feature request,
     core.String customer,
     core.String featureKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (featureKey == null) {
-      throw core.ArgumentError('Parameter featureKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4012,14 +3663,8 @@ class RoleAssignmentsResource {
   async.Future<void> delete(
     core.String customer,
     core.String roleAssignmentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (roleAssignmentId == null) {
-      throw core.ArgumentError('Parameter roleAssignmentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4058,14 +3703,8 @@ class RoleAssignmentsResource {
   async.Future<RoleAssignment> get(
     core.String customer,
     core.String roleAssignmentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (roleAssignmentId == null) {
-      throw core.ArgumentError('Parameter roleAssignmentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4105,13 +3744,9 @@ class RoleAssignmentsResource {
   async.Future<RoleAssignment> insert(
     RoleAssignment request,
     core.String customer, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4160,15 +3795,12 @@ class RoleAssignmentsResource {
   /// this method will complete with the same error.
   async.Future<RoleAssignments> list(
     core.String customer, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String roleId,
-    core.String userKey,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? roleId,
+    core.String? userKey,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -4215,14 +3847,8 @@ class RolesResource {
   async.Future<void> delete(
     core.String customer,
     core.String roleId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (roleId == null) {
-      throw core.ArgumentError('Parameter roleId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4261,14 +3887,8 @@ class RolesResource {
   async.Future<Role> get(
     core.String customer,
     core.String roleId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (roleId == null) {
-      throw core.ArgumentError('Parameter roleId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4307,13 +3927,9 @@ class RolesResource {
   async.Future<Role> insert(
     Role request,
     core.String customer, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4354,13 +3970,10 @@ class RolesResource {
   /// this method will complete with the same error.
   async.Future<Roles> list(
     core.String customer, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -4403,16 +4016,9 @@ class RolesResource {
     Role request,
     core.String customer,
     core.String roleId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (roleId == null) {
-      throw core.ArgumentError('Parameter roleId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4455,16 +4061,9 @@ class RolesResource {
     Role request,
     core.String customer,
     core.String roleId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
-    if (roleId == null) {
-      throw core.ArgumentError('Parameter roleId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4508,14 +4107,8 @@ class SchemasResource {
   async.Future<void> delete(
     core.String customerId,
     core.String schemaKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (schemaKey == null) {
-      throw core.ArgumentError('Parameter schemaKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4554,14 +4147,8 @@ class SchemasResource {
   async.Future<Schema> get(
     core.String customerId,
     core.String schemaKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (schemaKey == null) {
-      throw core.ArgumentError('Parameter schemaKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4600,13 +4187,9 @@ class SchemasResource {
   async.Future<Schema> insert(
     Schema request,
     core.String customerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4642,11 +4225,8 @@ class SchemasResource {
   /// this method will complete with the same error.
   async.Future<Schemas> list(
     core.String customerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4687,16 +4267,9 @@ class SchemasResource {
     Schema request,
     core.String customerId,
     core.String schemaKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (schemaKey == null) {
-      throw core.ArgumentError('Parameter schemaKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4739,16 +4312,9 @@ class SchemasResource {
     Schema request,
     core.String customerId,
     core.String schemaKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (schemaKey == null) {
-      throw core.ArgumentError('Parameter schemaKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4793,14 +4359,8 @@ class TokensResource {
   async.Future<void> delete(
     core.String userKey,
     core.String clientId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
-    if (clientId == null) {
-      throw core.ArgumentError('Parameter clientId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4840,14 +4400,8 @@ class TokensResource {
   async.Future<Token> get(
     core.String userKey,
     core.String clientId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
-    if (clientId == null) {
-      throw core.ArgumentError('Parameter clientId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4885,11 +4439,8 @@ class TokensResource {
   /// this method will complete with the same error.
   async.Future<Tokens> list(
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4930,11 +4481,8 @@ class TwoStepVerificationResource {
   /// this method will complete with the same error.
   async.Future<void> turnOff(
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4977,11 +4525,8 @@ class UsersResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5038,14 +4583,11 @@ class UsersResource {
   /// this method will complete with the same error.
   async.Future<User> get(
     core.String userKey, {
-    core.String customFieldMask,
-    core.String projection,
-    core.String viewType,
-    core.String $fields,
+    core.String? customFieldMask,
+    core.String? projection,
+    core.String? viewType,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (customFieldMask != null) 'customFieldMask': [customFieldMask],
       if (projection != null) 'projection': [projection],
@@ -5082,10 +4624,9 @@ class UsersResource {
   /// this method will complete with the same error.
   async.Future<User> insert(
     User request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5177,18 +4718,18 @@ class UsersResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Users> list({
-    core.String customFieldMask,
-    core.String customer,
-    core.String domain,
-    core.int maxResults,
-    core.String orderBy,
-    core.String pageToken,
-    core.String projection,
-    core.String query,
-    core.String showDeleted,
-    core.String sortOrder,
-    core.String viewType,
-    core.String $fields,
+    core.String? customFieldMask,
+    core.String? customer,
+    core.String? domain,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.String? projection,
+    core.String? query,
+    core.String? showDeleted,
+    core.String? sortOrder,
+    core.String? viewType,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (customFieldMask != null) 'customFieldMask': [customFieldMask],
@@ -5235,13 +4776,9 @@ class UsersResource {
   async.Future<void> makeAdmin(
     UserMakeAdmin request,
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5286,13 +4823,9 @@ class UsersResource {
   async.Future<User> patch(
     User request,
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5330,11 +4863,8 @@ class UsersResource {
   /// this method will complete with the same error.
   async.Future<void> signOut(
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5370,13 +4900,9 @@ class UsersResource {
   async.Future<void> undelete(
     UserUndelete request,
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5420,13 +4946,9 @@ class UsersResource {
   async.Future<User> update(
     User request,
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5523,22 +5045,21 @@ class UsersResource {
   /// this method will complete with the same error.
   async.Future<Channel> watch(
     Channel request, {
-    core.String customFieldMask,
-    core.String customer,
-    core.String domain,
-    core.String event,
-    core.int maxResults,
-    core.String orderBy,
-    core.String pageToken,
-    core.String projection,
-    core.String query,
-    core.String showDeleted,
-    core.String sortOrder,
-    core.String viewType,
-    core.String $fields,
+    core.String? customFieldMask,
+    core.String? customer,
+    core.String? domain,
+    core.String? event,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.String? projection,
+    core.String? query,
+    core.String? showDeleted,
+    core.String? sortOrder,
+    core.String? viewType,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (customFieldMask != null) 'customFieldMask': [customFieldMask],
       if (customer != null) 'customer': [customer],
@@ -5592,14 +5113,8 @@ class UsersAliasesResource {
   async.Future<void> delete(
     core.String userKey,
     core.String alias, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
-    if (alias == null) {
-      throw core.ArgumentError('Parameter alias is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5639,13 +5154,9 @@ class UsersAliasesResource {
   async.Future<Alias> insert(
     Alias request,
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5682,11 +5193,8 @@ class UsersAliasesResource {
   /// this method will complete with the same error.
   async.Future<Aliases> list(
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5730,14 +5238,10 @@ class UsersAliasesResource {
   async.Future<Channel> watch(
     Channel request,
     core.String userKey, {
-    core.String event,
-    core.String $fields,
+    core.String? event,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (event != null) 'event': [event],
       if ($fields != null) 'fields': [$fields],
@@ -5779,11 +5283,8 @@ class UsersPhotosResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5819,11 +5320,8 @@ class UsersPhotosResource {
   /// this method will complete with the same error.
   async.Future<UserPhoto> get(
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5865,13 +5363,9 @@ class UsersPhotosResource {
   async.Future<UserPhoto> patch(
     UserPhoto request,
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5911,13 +5405,9 @@ class UsersPhotosResource {
   async.Future<UserPhoto> update(
     UserPhoto request,
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5957,11 +5447,8 @@ class VerificationCodesResource {
   /// this method will complete with the same error.
   async.Future<void> generate(
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5994,11 +5481,8 @@ class VerificationCodesResource {
   /// this method will complete with the same error.
   async.Future<void> invalidate(
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6035,11 +5519,8 @@ class VerificationCodesResource {
   /// this method will complete with the same error.
   async.Future<VerificationCodes> list(
     core.String userKey, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6060,11 +5541,11 @@ class VerificationCodesResource {
 
 /// JSON template for Alias object in Directory API.
 class Alias {
-  core.String alias;
-  core.String etag;
-  core.String id;
-  core.String kind;
-  core.String primaryEmail;
+  core.String? alias;
+  core.String? etag;
+  core.String? id;
+  core.String? kind;
+  core.String? primaryEmail;
 
   Alias();
 
@@ -6086,12 +5567,12 @@ class Alias {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alias != null) 'alias': alias,
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (primaryEmail != null) 'primaryEmail': primaryEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alias != null) 'alias': alias!,
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (primaryEmail != null) 'primaryEmail': primaryEmail!,
       };
 }
 
@@ -6101,9 +5582,9 @@ class Aliases {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> aliases;
-  core.String etag;
-  core.String kind;
+  core.List<core.Object>? aliases;
+  core.String? etag;
+  core.String? kind;
 
   Aliases();
 
@@ -6121,10 +5602,10 @@ class Aliases {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aliases != null) 'aliases': aliases,
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aliases != null) 'aliases': aliases!,
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -6138,32 +5619,32 @@ class Aliases {
 /// [help center](https://support.google.com/a/answer/2537800#asp).
 class Asp {
   /// The unique ID of the ASP.
-  core.int codeId;
+  core.int? codeId;
 
   /// The time when the ASP was created.
   ///
   /// Expressed in [Unix time](https://en.wikipedia.org/wiki/Epoch_time) format.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// ETag of the ASP.
-  core.String etag;
+  core.String? etag;
 
   /// The type of the API resource.
   ///
   /// This is always `admin#directory#asp`.
-  core.String kind;
+  core.String? kind;
 
   /// The time when the ASP was last used.
   ///
   /// Expressed in [Unix time](https://en.wikipedia.org/wiki/Epoch_time) format.
-  core.String lastTimeUsed;
+  core.String? lastTimeUsed;
 
   /// The name of the application that the user, represented by their `userId`,
   /// entered when the ASP was created.
-  core.String name;
+  core.String? name;
 
   /// The unique ID of the user who issued the ASP.
-  core.String userKey;
+  core.String? userKey;
 
   Asp();
 
@@ -6191,28 +5672,28 @@ class Asp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (codeId != null) 'codeId': codeId,
-        if (creationTime != null) 'creationTime': creationTime,
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (lastTimeUsed != null) 'lastTimeUsed': lastTimeUsed,
-        if (name != null) 'name': name,
-        if (userKey != null) 'userKey': userKey,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (codeId != null) 'codeId': codeId!,
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (lastTimeUsed != null) 'lastTimeUsed': lastTimeUsed!,
+        if (name != null) 'name': name!,
+        if (userKey != null) 'userKey': userKey!,
       };
 }
 
 class Asps {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// A list of ASP resources.
-  core.List<Asp> items;
+  core.List<Asp>? items;
 
   /// The type of the API resource.
   ///
   /// This is always `admin#directory#aspList`.
-  core.String kind;
+  core.String? kind;
 
   Asps();
 
@@ -6231,11 +5712,11 @@ class Asps {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -6246,40 +5727,40 @@ class Building {
   /// See \[`PostalAddress`\](/my-business/reference/rest/v4/PostalAddress) for
   /// details. Note that only a single address line and region code are
   /// required.
-  BuildingAddress address;
+  BuildingAddress? address;
 
   /// Unique identifier for the building.
   ///
   /// The maximum length is 100 characters.
-  core.String buildingId;
+  core.String? buildingId;
 
   /// The building name as seen by users in Calendar.
   ///
   /// Must be unique for the customer. For example, "NYC-CHEL". The maximum
   /// length is 100 characters.
-  core.String buildingName;
+  core.String? buildingName;
 
   /// The geographic coordinates of the center of the building, expressed as
   /// latitude and longitude in decimal degrees.
-  BuildingCoordinates coordinates;
+  BuildingCoordinates? coordinates;
 
   /// A brief description of the building.
   ///
   /// For example, "Chelsea Market".
-  core.String description;
+  core.String? description;
 
   /// ETag of the resource.
-  core.String etags;
+  core.String? etags;
 
   /// The display names for all floors in this building.
   ///
   /// The floors are expected to be sorted in ascending order, from lowest floor
   /// to highest floor. For example, \["B2", "B1", "L", "1", "2", "2M", "3",
   /// "PH"\] Must contain at least one entry.
-  core.List<core.String> floorNames;
+  core.List<core.String>? floorNames;
 
   /// Kind of resource this is.
-  core.String kind;
+  core.String? kind;
 
   Building();
 
@@ -6314,33 +5795,33 @@ class Building {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address.toJson(),
-        if (buildingId != null) 'buildingId': buildingId,
-        if (buildingName != null) 'buildingName': buildingName,
-        if (coordinates != null) 'coordinates': coordinates.toJson(),
-        if (description != null) 'description': description,
-        if (etags != null) 'etags': etags,
-        if (floorNames != null) 'floorNames': floorNames,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!.toJson(),
+        if (buildingId != null) 'buildingId': buildingId!,
+        if (buildingName != null) 'buildingName': buildingName!,
+        if (coordinates != null) 'coordinates': coordinates!.toJson(),
+        if (description != null) 'description': description!,
+        if (etags != null) 'etags': etags!,
+        if (floorNames != null) 'floorNames': floorNames!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Public API: Resources.buildings
 class BuildingAddress {
   /// Unstructured address lines describing the lower levels of an address.
-  core.List<core.String> addressLines;
+  core.List<core.String>? addressLines;
 
   /// Highest administrative subdivision which is used for postal addresses of a
   /// country or region.
   ///
   /// Optional.
-  core.String administrativeArea;
+  core.String? administrativeArea;
 
   /// BCP-47 language code of the contents of this address (if known).
   ///
   /// Optional.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Generally refers to the city/town portion of the address.
   ///
@@ -6349,22 +5830,22 @@ class BuildingAddress {
   /// leave locality empty and use addressLines.
   ///
   /// Optional.
-  core.String locality;
+  core.String? locality;
 
   /// Postal code of the address.
   ///
   /// Optional.
-  core.String postalCode;
+  core.String? postalCode;
 
   /// CLDR region code of the country/region of the address.
   ///
   /// Required.
-  core.String regionCode;
+  core.String? regionCode;
 
   /// Sublocality of the address.
   ///
   /// Optional.
-  core.String sublocality;
+  core.String? sublocality;
 
   BuildingAddress();
 
@@ -6394,25 +5875,25 @@ class BuildingAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addressLines != null) 'addressLines': addressLines,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addressLines != null) 'addressLines': addressLines!,
         if (administrativeArea != null)
-          'administrativeArea': administrativeArea,
-        if (languageCode != null) 'languageCode': languageCode,
-        if (locality != null) 'locality': locality,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (regionCode != null) 'regionCode': regionCode,
-        if (sublocality != null) 'sublocality': sublocality,
+          'administrativeArea': administrativeArea!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (locality != null) 'locality': locality!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (sublocality != null) 'sublocality': sublocality!,
       };
 }
 
 /// Public API: Resources.buildings
 class BuildingCoordinates {
   /// Latitude in decimal degrees.
-  core.double latitude;
+  core.double? latitude;
 
   /// Longitude in decimal degrees.
-  core.double longitude;
+  core.double? longitude;
 
   BuildingCoordinates();
 
@@ -6425,28 +5906,28 @@ class BuildingCoordinates {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (latitude != null) 'latitude': latitude,
-        if (longitude != null) 'longitude': longitude,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
       };
 }
 
 /// Public API: Resources.buildings
 class Buildings {
   /// The Buildings in this page of results.
-  core.List<Building> buildings;
+  core.List<Building>? buildings;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Kind of resource this is.
-  core.String kind;
+  core.String? kind;
 
   /// The continuation token, used to page through large result sets.
   ///
   /// Provide this value in a subsequent request to return the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   Buildings();
 
@@ -6468,76 +5949,76 @@ class Buildings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (buildings != null)
-          'buildings': buildings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'buildings': buildings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Public API: Resources.calendars
 class CalendarResource {
   /// Unique ID for the building a resource is located in.
-  core.String buildingId;
+  core.String? buildingId;
 
   /// Capacity of a resource, number of seats in a room.
-  core.int capacity;
+  core.int? capacity;
 
   /// ETag of the resource.
-  core.String etags;
+  core.String? etags;
 
   /// Instances of features for the calendar resource.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object featureInstances;
+  core.Object? featureInstances;
 
   /// Name of the floor a resource is located on.
-  core.String floorName;
+  core.String? floorName;
 
   /// Name of the section within a floor a resource is located in.
-  core.String floorSection;
+  core.String? floorSection;
 
   /// The read-only auto-generated name of the calendar resource which includes
   /// metadata about the resource such as building name, floor, capacity, etc.
   ///
   /// For example, "NYC-2-Training Room 1A (16)".
-  core.String generatedResourceName;
+  core.String? generatedResourceName;
 
   /// The type of the resource.
   ///
   /// For calendar resources, the value is
   /// `admin#directory#resources#calendars#CalendarResource`.
-  core.String kind;
+  core.String? kind;
 
   /// The category of the calendar resource.
   ///
   /// Either CONFERENCE_ROOM or OTHER. Legacy data is set to CATEGORY_UNKNOWN.
-  core.String resourceCategory;
+  core.String? resourceCategory;
 
   /// Description of the resource, visible only to admins.
-  core.String resourceDescription;
+  core.String? resourceDescription;
 
   /// The read-only email for the calendar resource.
   ///
   /// Generated as part of creating a new calendar resource.
-  core.String resourceEmail;
+  core.String? resourceEmail;
 
   /// The unique ID for the calendar resource.
-  core.String resourceId;
+  core.String? resourceId;
 
   /// The name of the calendar resource.
   ///
   /// For example, "Training Room 1A".
-  core.String resourceName;
+  core.String? resourceName;
 
   /// The type of the calendar resource, intended for non-room resources.
-  core.String resourceType;
+  core.String? resourceType;
 
   /// Description of the resource, visible to users and admins.
-  core.String userVisibleDescription;
+  core.String? userVisibleDescription;
 
   CalendarResource();
 
@@ -6589,47 +6070,47 @@ class CalendarResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (buildingId != null) 'buildingId': buildingId,
-        if (capacity != null) 'capacity': capacity,
-        if (etags != null) 'etags': etags,
-        if (featureInstances != null) 'featureInstances': featureInstances,
-        if (floorName != null) 'floorName': floorName,
-        if (floorSection != null) 'floorSection': floorSection,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (buildingId != null) 'buildingId': buildingId!,
+        if (capacity != null) 'capacity': capacity!,
+        if (etags != null) 'etags': etags!,
+        if (featureInstances != null) 'featureInstances': featureInstances!,
+        if (floorName != null) 'floorName': floorName!,
+        if (floorSection != null) 'floorSection': floorSection!,
         if (generatedResourceName != null)
-          'generatedResourceName': generatedResourceName,
-        if (kind != null) 'kind': kind,
-        if (resourceCategory != null) 'resourceCategory': resourceCategory,
+          'generatedResourceName': generatedResourceName!,
+        if (kind != null) 'kind': kind!,
+        if (resourceCategory != null) 'resourceCategory': resourceCategory!,
         if (resourceDescription != null)
-          'resourceDescription': resourceDescription,
-        if (resourceEmail != null) 'resourceEmail': resourceEmail,
-        if (resourceId != null) 'resourceId': resourceId,
-        if (resourceName != null) 'resourceName': resourceName,
-        if (resourceType != null) 'resourceType': resourceType,
+          'resourceDescription': resourceDescription!,
+        if (resourceEmail != null) 'resourceEmail': resourceEmail!,
+        if (resourceId != null) 'resourceId': resourceId!,
+        if (resourceName != null) 'resourceName': resourceName!,
+        if (resourceType != null) 'resourceType': resourceType!,
         if (userVisibleDescription != null)
-          'userVisibleDescription': userVisibleDescription,
+          'userVisibleDescription': userVisibleDescription!,
       };
 }
 
 /// Public API: Resources.calendars
 class CalendarResources {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The CalendarResources in this page of results.
-  core.List<CalendarResource> items;
+  core.List<CalendarResource>? items;
 
   /// Identifies this as a collection of CalendarResources.
   ///
   /// This is always
   /// `admin#directory#resources#calendars#calendarResourcesList`.
-  core.String kind;
+  core.String? kind;
 
   /// The continuation token, used to page through large result sets.
   ///
   /// Provide this value in a subsequent request to return the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   CalendarResources();
 
@@ -6651,59 +6132,59 @@ class CalendarResources {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// An notification channel used to watch for resource changes.
 class Channel {
   /// The address where notifications are delivered for this channel.
-  core.String address;
+  core.String? address;
 
   /// Date and time of notification channel expiration, expressed as a Unix
   /// timestamp, in milliseconds.
   ///
   /// Optional.
-  core.String expiration;
+  core.String? expiration;
 
   /// A UUID or similar unique string that identifies this channel.
-  core.String id;
+  core.String? id;
 
   /// Identifies this as a notification channel used to watch for changes to a
   /// resource, which is `api#channel`.
-  core.String kind;
+  core.String? kind;
 
   /// Additional parameters controlling delivery channel behavior.
   ///
   /// Optional.
-  core.Map<core.String, core.String> params;
+  core.Map<core.String, core.String>? params;
 
   /// A Boolean value to indicate whether payload is wanted.
   ///
   /// Optional.
-  core.bool payload;
+  core.bool? payload;
 
   /// An opaque ID that identifies the resource being watched on this channel.
   ///
   /// Stable across different API versions.
-  core.String resourceId;
+  core.String? resourceId;
 
   /// A version-specific identifier for the watched resource.
-  core.String resourceUri;
+  core.String? resourceUri;
 
   /// An arbitrary string delivered to the target address with each notification
   /// delivered over this channel.
   ///
   /// Optional.
-  core.String token;
+  core.String? token;
 
   /// The type of delivery mechanism used for this channel.
-  core.String type;
+  core.String? type;
 
   Channel();
 
@@ -6746,26 +6227,26 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address,
-        if (expiration != null) 'expiration': expiration,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (params != null) 'params': params,
-        if (payload != null) 'payload': payload,
-        if (resourceId != null) 'resourceId': resourceId,
-        if (resourceUri != null) 'resourceUri': resourceUri,
-        if (token != null) 'token': token,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!,
+        if (expiration != null) 'expiration': expiration!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (params != null) 'params': params!,
+        if (payload != null) 'payload': payload!,
+        if (resourceId != null) 'resourceId': resourceId!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (token != null) 'token': token!,
+        if (type != null) 'type': type!,
       };
 }
 
 class ChromeOsDeviceActiveTimeRanges {
   /// Duration of usage in milliseconds.
-  core.int activeTime;
+  core.int? activeTime;
 
   /// Date of usage
-  core.DateTime date;
+  core.DateTime? date;
 
   ChromeOsDeviceActiveTimeRanges();
 
@@ -6778,20 +6259,20 @@ class ChromeOsDeviceActiveTimeRanges {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activeTime != null) 'activeTime': activeTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activeTime != null) 'activeTime': activeTime!,
         if (date != null)
           'date':
-              "${(date).year.toString().padLeft(4, '0')}-${(date).month.toString().padLeft(2, '0')}-${(date).day.toString().padLeft(2, '0')}",
+              "${(date!).year.toString().padLeft(4, '0')}-${(date!).month.toString().padLeft(2, '0')}-${(date!).day.toString().padLeft(2, '0')}",
       };
 }
 
 class ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo {
   /// CPU label
-  core.String label;
+  core.String? label;
 
   /// Temperature in Celsius degrees.
-  core.int temperature;
+  core.int? temperature;
 
   ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo();
 
@@ -6804,20 +6285,20 @@ class ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (label != null) 'label': label,
-        if (temperature != null) 'temperature': temperature,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (label != null) 'label': label!,
+        if (temperature != null) 'temperature': temperature!,
       };
 }
 
 class ChromeOsDeviceCpuStatusReports {
   /// List of CPU temperature samples.
-  core.List<ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo>
+  core.List<ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo>?
       cpuTemperatureInfo;
-  core.List<core.int> cpuUtilizationPercentageInfo;
+  core.List<core.int>? cpuUtilizationPercentageInfo;
 
   /// Date and time the report was received.
-  core.DateTime reportTime;
+  core.DateTime? reportTime;
 
   ChromeOsDeviceCpuStatusReports();
 
@@ -6840,28 +6321,28 @@ class ChromeOsDeviceCpuStatusReports {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cpuTemperatureInfo != null)
           'cpuTemperatureInfo':
-              cpuTemperatureInfo.map((value) => value.toJson()).toList(),
+              cpuTemperatureInfo!.map((value) => value.toJson()).toList(),
         if (cpuUtilizationPercentageInfo != null)
-          'cpuUtilizationPercentageInfo': cpuUtilizationPercentageInfo,
-        if (reportTime != null) 'reportTime': (reportTime).toIso8601String(),
+          'cpuUtilizationPercentageInfo': cpuUtilizationPercentageInfo!,
+        if (reportTime != null) 'reportTime': (reportTime!).toIso8601String(),
       };
 }
 
 class ChromeOsDeviceDeviceFiles {
   /// Date and time the file was created
-  core.DateTime createTime;
+  core.DateTime? createTime;
 
   /// File download URL
-  core.String downloadUrl;
+  core.String? downloadUrl;
 
   /// File name
-  core.String name;
+  core.String? name;
 
   /// File type
-  core.String type;
+  core.String? type;
 
   ChromeOsDeviceDeviceFiles();
 
@@ -6880,23 +6361,23 @@ class ChromeOsDeviceDeviceFiles {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': (createTime).toIso8601String(),
-        if (downloadUrl != null) 'downloadUrl': downloadUrl,
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': (createTime!).toIso8601String(),
+        if (downloadUrl != null) 'downloadUrl': downloadUrl!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
 class ChromeOsDeviceDiskVolumeReportsVolumeInfo {
   /// Free disk space \[in bytes\]
-  core.String storageFree;
+  core.String? storageFree;
 
   /// Total disk space \[in bytes\]
-  core.String storageTotal;
+  core.String? storageTotal;
 
   /// Volume id
-  core.String volumeId;
+  core.String? volumeId;
 
   ChromeOsDeviceDiskVolumeReportsVolumeInfo();
 
@@ -6912,16 +6393,16 @@ class ChromeOsDeviceDiskVolumeReportsVolumeInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (storageFree != null) 'storageFree': storageFree,
-        if (storageTotal != null) 'storageTotal': storageTotal,
-        if (volumeId != null) 'volumeId': volumeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (storageFree != null) 'storageFree': storageFree!,
+        if (storageTotal != null) 'storageTotal': storageTotal!,
+        if (volumeId != null) 'volumeId': volumeId!,
       };
 }
 
 class ChromeOsDeviceDiskVolumeReports {
   /// Disk volumes
-  core.List<ChromeOsDeviceDiskVolumeReportsVolumeInfo> volumeInfo;
+  core.List<ChromeOsDeviceDiskVolumeReportsVolumeInfo>? volumeInfo;
 
   ChromeOsDeviceDiskVolumeReports();
 
@@ -6935,19 +6416,19 @@ class ChromeOsDeviceDiskVolumeReports {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (volumeInfo != null)
-          'volumeInfo': volumeInfo.map((value) => value.toJson()).toList(),
+          'volumeInfo': volumeInfo!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Information for an ip address.
 class ChromeOsDeviceLastKnownNetwork {
   /// The IP address.
-  core.String ipAddress;
+  core.String? ipAddress;
 
   /// The WAN IP address.
-  core.String wanIpAddress;
+  core.String? wanIpAddress;
 
   ChromeOsDeviceLastKnownNetwork();
 
@@ -6960,16 +6441,16 @@ class ChromeOsDeviceLastKnownNetwork {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ipAddress != null) 'ipAddress': ipAddress,
-        if (wanIpAddress != null) 'wanIpAddress': wanIpAddress,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (wanIpAddress != null) 'wanIpAddress': wanIpAddress!,
       };
 }
 
 class ChromeOsDeviceSystemRamFreeReports {
   /// Date and time the report was received.
-  core.DateTime reportTime;
-  core.List<core.String> systemRamFreeInfo;
+  core.DateTime? reportTime;
+  core.List<core.String>? systemRamFreeInfo;
 
   ChromeOsDeviceSystemRamFreeReports();
 
@@ -6984,9 +6465,9 @@ class ChromeOsDeviceSystemRamFreeReports {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (reportTime != null) 'reportTime': (reportTime).toIso8601String(),
-        if (systemRamFreeInfo != null) 'systemRamFreeInfo': systemRamFreeInfo,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (reportTime != null) 'reportTime': (reportTime!).toIso8601String(),
+        if (systemRamFreeInfo != null) 'systemRamFreeInfo': systemRamFreeInfo!,
       };
 }
 
@@ -6996,24 +6477,24 @@ class ChromeOsDeviceTpmVersionInfo {
   ///
   /// We use the TPM 2.0 style encoding, e.g.: TPM 1.2: "1.2" -> 312e3200 TPM
   /// 2.0: "2.0" -> 322e3000
-  core.String family;
+  core.String? family;
 
   /// TPM firmware version.
-  core.String firmwareVersion;
+  core.String? firmwareVersion;
 
   /// TPM manufacturer code.
-  core.String manufacturer;
+  core.String? manufacturer;
 
   /// TPM specification level.
   ///
   /// See Library Specification for TPM 2.0 and Main Specification for TPM 1.2.
-  core.String specLevel;
+  core.String? specLevel;
 
   /// TPM model number.
-  core.String tpmModel;
+  core.String? tpmModel;
 
   /// Vendor-specific information such as Vendor ID.
-  core.String vendorSpecific;
+  core.String? vendorSpecific;
 
   ChromeOsDeviceTpmVersionInfo();
 
@@ -7038,13 +6519,13 @@ class ChromeOsDeviceTpmVersionInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (family != null) 'family': family,
-        if (firmwareVersion != null) 'firmwareVersion': firmwareVersion,
-        if (manufacturer != null) 'manufacturer': manufacturer,
-        if (specLevel != null) 'specLevel': specLevel,
-        if (tpmModel != null) 'tpmModel': tpmModel,
-        if (vendorSpecific != null) 'vendorSpecific': vendorSpecific,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (family != null) 'family': family!,
+        if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
+        if (manufacturer != null) 'manufacturer': manufacturer!,
+        if (specLevel != null) 'specLevel': specLevel!,
+        if (tpmModel != null) 'tpmModel': tpmModel!,
+        if (vendorSpecific != null) 'vendorSpecific': vendorSpecific!,
       };
 }
 
@@ -7055,25 +6536,25 @@ class ChromeOsDeviceTpmVersionInfo {
 /// Guide\](/admin-sdk/directory/v1/guides/manage-chrome-devices).
 class ChromeOsDevice {
   /// List of active time ranges (Read-only).
-  core.List<ChromeOsDeviceActiveTimeRanges> activeTimeRanges;
+  core.List<ChromeOsDeviceActiveTimeRanges>? activeTimeRanges;
 
   /// The asset identifier as noted by an administrator or specified during
   /// enrollment.
-  core.String annotatedAssetId;
+  core.String? annotatedAssetId;
 
   /// The address or location of the device as noted by the administrator.
   ///
   /// Maximum length is `200` characters. Empty values are allowed.
-  core.String annotatedLocation;
+  core.String? annotatedLocation;
 
   /// The user of the device as noted by the administrator.
   ///
   /// Maximum length is 100 characters. Empty values are allowed.
-  core.String annotatedUser;
+  core.String? annotatedUser;
 
   /// (Read-only) The timestamp after which the device will stop receiving
   /// Chrome updates or support
-  core.String autoUpdateExpiration;
+  core.String? autoUpdateExpiration;
 
   /// The boot mode for the device.
   ///
@@ -7082,19 +6563,19 @@ class ChromeOsDevice {
   /// is enabled. When booted, the device has a command line shell. For an
   /// example of a developer switch, see the
   /// [Chromebook developer information](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/samsung-series-5-chromebook#TOC-Developer-switch).
-  core.String bootMode;
+  core.String? bootMode;
 
   /// Reports of CPU utilization and temperature (Read-only)
-  core.List<ChromeOsDeviceCpuStatusReports> cpuStatusReports;
+  core.List<ChromeOsDeviceCpuStatusReports>? cpuStatusReports;
 
   /// List of device files to download (Read-only)
-  core.List<ChromeOsDeviceDeviceFiles> deviceFiles;
+  core.List<ChromeOsDeviceDeviceFiles>? deviceFiles;
 
   /// The unique ID of the Chrome device.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// Reports of disk space and other info about mounted/connected volumes.
-  core.List<ChromeOsDeviceDiskVolumeReports> diskVolumeReports;
+  core.List<ChromeOsDeviceDiskVolumeReports>? diskVolumeReports;
 
   /// (Read-only) Built-in MAC address for the docking station that the device
   /// connected to.
@@ -7103,48 +6584,48 @@ class ChromeOsDevice {
   /// by a dock. It is reserved specifically for MAC pass through device policy.
   /// The format is twelve (12) hexadecimal digits without any delimiter
   /// (uppercase letters). This is only relevant for some devices.
-  core.String dockMacAddress;
+  core.String? dockMacAddress;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The device's MAC address on the ethernet network interface.
-  core.String ethernetMacAddress;
+  core.String? ethernetMacAddress;
 
   /// (Read-only) MAC address used by the Chromebook’s internal ethernet port,
   /// and for onboard network (ethernet) interface.
   ///
   /// The format is twelve (12) hexadecimal digits without any delimiter
   /// (uppercase letters). This is only relevant for some devices.
-  core.String ethernetMacAddress0;
+  core.String? ethernetMacAddress0;
 
   /// The Chrome device's firmware version.
-  core.String firmwareVersion;
+  core.String? firmwareVersion;
 
   /// The type of resource.
   ///
   /// For the Chromeosdevices resource, the value is
   /// `admin#directory#chromeosdevice`.
-  core.String kind;
+  core.String? kind;
 
   /// Date and time the device was last enrolled (Read-only)
-  core.DateTime lastEnrollmentTime;
+  core.DateTime? lastEnrollmentTime;
 
   /// Contains last known network (Read-only)
-  core.List<ChromeOsDeviceLastKnownNetwork> lastKnownNetwork;
+  core.List<ChromeOsDeviceLastKnownNetwork>? lastKnownNetwork;
 
   /// Date and time the device was last synchronized with the policy settings in
   /// the G Suite administrator control panel (Read-only)
-  core.DateTime lastSync;
+  core.DateTime? lastSync;
 
   /// The device's wireless MAC address.
   ///
   /// If the device does not have this information, it is not included in the
   /// response.
-  core.String macAddress;
+  core.String? macAddress;
 
   /// (Read-only) The date the device was manufactured in yyyy-mm-dd format.
-  core.String manufactureDate;
+  core.String? manufactureDate;
 
   /// The Mobile Equipment Identifier (MEID) or the International Mobile
   /// Equipment Identity (IMEI) for the 3G mobile card in a mobile device.
@@ -7154,13 +6635,13 @@ class ChromeOsDevice {
   /// property is not included in the response. For more information on how to
   /// export a MEID/IMEI list, see the \[Developer's
   /// Guide\](/admin-sdk/directory/v1/guides/manage-chrome-devices.html#export_meid).
-  core.String meid;
+  core.String? meid;
 
   /// The device's model information.
   ///
   /// If the device does not have this information, this property is not
   /// included in the response.
-  core.String model;
+  core.String? model;
 
   /// Notes about this device added by the administrator.
   ///
@@ -7169,12 +6650,12 @@ class ChromeOsDevice {
   /// \[list\](/admin-sdk/directory/v1/reference/chromeosdevices/list) method's
   /// `query` parameter. Maximum length is 500 characters. Empty values are
   /// allowed.
-  core.String notes;
+  core.String? notes;
 
   /// The device's order number.
   ///
   /// Only devices directly purchased from Google have an order number.
-  core.String orderNumber;
+  core.String? orderNumber;
 
   /// The full parent path with the organizational unit's name associated with
   /// the device.
@@ -7186,43 +6667,43 @@ class ChromeOsDevice {
   /// using the API. For more information about how to create an organizational
   /// structure for your device, see the
   /// [administration help center](https://support.google.com/a/answer/182433).
-  core.String orgUnitPath;
+  core.String? orgUnitPath;
 
   /// The Chrome device's operating system version.
-  core.String osVersion;
+  core.String? osVersion;
 
   /// The Chrome device's platform version.
-  core.String platformVersion;
+  core.String? platformVersion;
 
   /// List of recent device users, in descending order, by last login time.
-  core.List<RecentUsers> recentUsers;
+  core.List<RecentUsers>? recentUsers;
 
   /// The Chrome device serial number entered when the device was enabled.
   ///
   /// This value is the same as the Admin console's *Serial Number* in the
   /// *Chrome OS Devices* tab.
-  core.String serialNumber;
+  core.String? serialNumber;
 
   /// The status of the device.
-  core.String status;
+  core.String? status;
 
   /// Final date the device will be supported (Read-only)
-  core.DateTime supportEndDate;
+  core.DateTime? supportEndDate;
 
   /// Reports of amounts of available RAM memory (Read-only)
-  core.List<ChromeOsDeviceSystemRamFreeReports> systemRamFreeReports;
+  core.List<ChromeOsDeviceSystemRamFreeReports>? systemRamFreeReports;
 
   /// Total RAM on the device \[in bytes\] (Read-only)
-  core.String systemRamTotal;
+  core.String? systemRamTotal;
 
   /// Trusted Platform Module (TPM) (Read-only)
-  ChromeOsDeviceTpmVersionInfo tpmVersionInfo;
+  ChromeOsDeviceTpmVersionInfo? tpmVersionInfo;
 
   /// Determines if the device will auto renew its support after the support end
   /// date.
   ///
   /// This is a read-only property.
-  core.bool willAutoRenew;
+  core.bool? willAutoRenew;
 
   ChromeOsDevice();
 
@@ -7367,73 +6848,73 @@ class ChromeOsDevice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (activeTimeRanges != null)
           'activeTimeRanges':
-              activeTimeRanges.map((value) => value.toJson()).toList(),
-        if (annotatedAssetId != null) 'annotatedAssetId': annotatedAssetId,
-        if (annotatedLocation != null) 'annotatedLocation': annotatedLocation,
-        if (annotatedUser != null) 'annotatedUser': annotatedUser,
+              activeTimeRanges!.map((value) => value.toJson()).toList(),
+        if (annotatedAssetId != null) 'annotatedAssetId': annotatedAssetId!,
+        if (annotatedLocation != null) 'annotatedLocation': annotatedLocation!,
+        if (annotatedUser != null) 'annotatedUser': annotatedUser!,
         if (autoUpdateExpiration != null)
-          'autoUpdateExpiration': autoUpdateExpiration,
-        if (bootMode != null) 'bootMode': bootMode,
+          'autoUpdateExpiration': autoUpdateExpiration!,
+        if (bootMode != null) 'bootMode': bootMode!,
         if (cpuStatusReports != null)
           'cpuStatusReports':
-              cpuStatusReports.map((value) => value.toJson()).toList(),
+              cpuStatusReports!.map((value) => value.toJson()).toList(),
         if (deviceFiles != null)
-          'deviceFiles': deviceFiles.map((value) => value.toJson()).toList(),
-        if (deviceId != null) 'deviceId': deviceId,
+          'deviceFiles': deviceFiles!.map((value) => value.toJson()).toList(),
+        if (deviceId != null) 'deviceId': deviceId!,
         if (diskVolumeReports != null)
           'diskVolumeReports':
-              diskVolumeReports.map((value) => value.toJson()).toList(),
-        if (dockMacAddress != null) 'dockMacAddress': dockMacAddress,
-        if (etag != null) 'etag': etag,
+              diskVolumeReports!.map((value) => value.toJson()).toList(),
+        if (dockMacAddress != null) 'dockMacAddress': dockMacAddress!,
+        if (etag != null) 'etag': etag!,
         if (ethernetMacAddress != null)
-          'ethernetMacAddress': ethernetMacAddress,
+          'ethernetMacAddress': ethernetMacAddress!,
         if (ethernetMacAddress0 != null)
-          'ethernetMacAddress0': ethernetMacAddress0,
-        if (firmwareVersion != null) 'firmwareVersion': firmwareVersion,
-        if (kind != null) 'kind': kind,
+          'ethernetMacAddress0': ethernetMacAddress0!,
+        if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
+        if (kind != null) 'kind': kind!,
         if (lastEnrollmentTime != null)
-          'lastEnrollmentTime': (lastEnrollmentTime).toIso8601String(),
+          'lastEnrollmentTime': (lastEnrollmentTime!).toIso8601String(),
         if (lastKnownNetwork != null)
           'lastKnownNetwork':
-              lastKnownNetwork.map((value) => value.toJson()).toList(),
-        if (lastSync != null) 'lastSync': (lastSync).toIso8601String(),
-        if (macAddress != null) 'macAddress': macAddress,
-        if (manufactureDate != null) 'manufactureDate': manufactureDate,
-        if (meid != null) 'meid': meid,
-        if (model != null) 'model': model,
-        if (notes != null) 'notes': notes,
-        if (orderNumber != null) 'orderNumber': orderNumber,
-        if (orgUnitPath != null) 'orgUnitPath': orgUnitPath,
-        if (osVersion != null) 'osVersion': osVersion,
-        if (platformVersion != null) 'platformVersion': platformVersion,
+              lastKnownNetwork!.map((value) => value.toJson()).toList(),
+        if (lastSync != null) 'lastSync': (lastSync!).toIso8601String(),
+        if (macAddress != null) 'macAddress': macAddress!,
+        if (manufactureDate != null) 'manufactureDate': manufactureDate!,
+        if (meid != null) 'meid': meid!,
+        if (model != null) 'model': model!,
+        if (notes != null) 'notes': notes!,
+        if (orderNumber != null) 'orderNumber': orderNumber!,
+        if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
+        if (osVersion != null) 'osVersion': osVersion!,
+        if (platformVersion != null) 'platformVersion': platformVersion!,
         if (recentUsers != null)
-          'recentUsers': recentUsers.map((value) => value.toJson()).toList(),
-        if (serialNumber != null) 'serialNumber': serialNumber,
-        if (status != null) 'status': status,
+          'recentUsers': recentUsers!.map((value) => value.toJson()).toList(),
+        if (serialNumber != null) 'serialNumber': serialNumber!,
+        if (status != null) 'status': status!,
         if (supportEndDate != null)
-          'supportEndDate': (supportEndDate).toIso8601String(),
+          'supportEndDate': (supportEndDate!).toIso8601String(),
         if (systemRamFreeReports != null)
           'systemRamFreeReports':
-              systemRamFreeReports.map((value) => value.toJson()).toList(),
-        if (systemRamTotal != null) 'systemRamTotal': systemRamTotal,
-        if (tpmVersionInfo != null) 'tpmVersionInfo': tpmVersionInfo.toJson(),
-        if (willAutoRenew != null) 'willAutoRenew': willAutoRenew,
+              systemRamFreeReports!.map((value) => value.toJson()).toList(),
+        if (systemRamTotal != null) 'systemRamTotal': systemRamTotal!,
+        if (tpmVersionInfo != null) 'tpmVersionInfo': tpmVersionInfo!.toJson(),
+        if (willAutoRenew != null) 'willAutoRenew': willAutoRenew!,
       };
 }
 
 class ChromeOsDeviceAction {
   /// Action to be taken on the Chrome OS device.
-  core.String action;
+  core.String? action;
 
   /// Only used when the action is `deprovision`.
   ///
   /// With the `deprovision` action, this field is required. *Note*: The
   /// deprovision reason is audited because it might have implications on
   /// licenses for perpetual subscription customers.
-  core.String deprovisionReason;
+  core.String? deprovisionReason;
 
   ChromeOsDeviceAction();
 
@@ -7446,27 +6927,27 @@ class ChromeOsDeviceAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action,
-        if (deprovisionReason != null) 'deprovisionReason': deprovisionReason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!,
+        if (deprovisionReason != null) 'deprovisionReason': deprovisionReason!,
       };
 }
 
 class ChromeOsDevices {
   /// List of Chrome OS Device objects.
-  core.List<ChromeOsDevice> chromeosdevices;
+  core.List<ChromeOsDevice>? chromeosdevices;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Kind of resource this is.
-  core.String kind;
+  core.String? kind;
 
   /// Token used to access the next page of this result.
   ///
   /// To access the next page, use this token's value in the `pageToken` query
   /// string of this request.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ChromeOsDevices();
 
@@ -7488,19 +6969,19 @@ class ChromeOsDevices {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (chromeosdevices != null)
           'chromeosdevices':
-              chromeosdevices.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              chromeosdevices!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 class ChromeOsMoveDevicesToOu {
   /// Chrome OS devices to be moved to OU
-  core.List<core.String> deviceIds;
+  core.List<core.String>? deviceIds;
 
   ChromeOsMoveDevicesToOu();
 
@@ -7512,8 +6993,8 @@ class ChromeOsMoveDevicesToOu {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceIds != null) 'deviceIds': deviceIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceIds != null) 'deviceIds': deviceIds!,
       };
 }
 
@@ -7521,28 +7002,28 @@ class Customer {
   /// The customer's secondary contact email address.
   ///
   /// This email address cannot be on the same domain as the `customerDomain`
-  core.String alternateEmail;
+  core.String? alternateEmail;
 
   /// The customer's creation time (Readonly)
-  core.DateTime customerCreationTime;
+  core.DateTime? customerCreationTime;
 
   /// The customer's primary domain name string.
   ///
   /// Do not include the `www` prefix when creating a new customer.
-  core.String customerDomain;
+  core.String? customerDomain;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The unique ID for the customer's Google Workspace account.
   ///
   /// (Readonly)
-  core.String id;
+  core.String? id;
 
   /// Identifies the resource as a customer.
   ///
   /// Value: `admin#directory#customer`
-  core.String kind;
+  core.String? kind;
 
   /// The customer's ISO 639-2 language code.
   ///
@@ -7550,14 +7031,14 @@ class Customer {
   /// list of supported codes. Valid language codes outside the supported set
   /// will be accepted by the API but may lead to unexpected behavior. The
   /// default value is `en`.
-  core.String language;
+  core.String? language;
 
   /// The customer's contact phone number in
   /// [E.164](https://en.wikipedia.org/wiki/E.164) format.
-  core.String phoneNumber;
+  core.String? phoneNumber;
 
   /// The customer's postal address information.
-  CustomerPostalAddress postalAddress;
+  CustomerPostalAddress? postalAddress;
 
   Customer();
 
@@ -7593,17 +7074,17 @@ class Customer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alternateEmail != null) 'alternateEmail': alternateEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alternateEmail != null) 'alternateEmail': alternateEmail!,
         if (customerCreationTime != null)
-          'customerCreationTime': (customerCreationTime).toIso8601String(),
-        if (customerDomain != null) 'customerDomain': customerDomain,
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (language != null) 'language': language,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber,
-        if (postalAddress != null) 'postalAddress': postalAddress.toJson(),
+          'customerCreationTime': (customerCreationTime!).toIso8601String(),
+        if (customerDomain != null) 'customerDomain': customerDomain!,
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (language != null) 'language': language!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+        if (postalAddress != null) 'postalAddress': postalAddress!.toJson(),
       };
 }
 
@@ -7611,42 +7092,42 @@ class CustomerPostalAddress {
   /// A customer's physical address.
   ///
   /// The address can be composed of one to three lines.
-  core.String addressLine1;
+  core.String? addressLine1;
 
   /// Address line 2 of the address.
-  core.String addressLine2;
+  core.String? addressLine2;
 
   /// Address line 3 of the address.
-  core.String addressLine3;
+  core.String? addressLine3;
 
   /// The customer contact's name.
-  core.String contactName;
+  core.String? contactName;
 
   /// This is a required property.
   ///
   /// For `countryCode` information see the
   /// [ISO 3166 country code elements](https://www.iso.org/iso/country_codes.htm).
-  core.String countryCode;
+  core.String? countryCode;
 
   /// Name of the locality.
   ///
   /// An example of a locality value is the city of `San Francisco`.
-  core.String locality;
+  core.String? locality;
 
   /// The company or company division name.
-  core.String organizationName;
+  core.String? organizationName;
 
   /// The postal code.
   ///
   /// A postalCode example is a postal zip code such as `10009`. This is in
   /// accordance with - http:
   /// //portablecontacts.net/draft-spec.html#address_element.
-  core.String postalCode;
+  core.String? postalCode;
 
   /// Name of the region.
   ///
   /// An example of a region value is `NY` for the state of New York.
-  core.String region;
+  core.String? region;
 
   CustomerPostalAddress();
 
@@ -7680,16 +7161,16 @@ class CustomerPostalAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addressLine1 != null) 'addressLine1': addressLine1,
-        if (addressLine2 != null) 'addressLine2': addressLine2,
-        if (addressLine3 != null) 'addressLine3': addressLine3,
-        if (contactName != null) 'contactName': contactName,
-        if (countryCode != null) 'countryCode': countryCode,
-        if (locality != null) 'locality': locality,
-        if (organizationName != null) 'organizationName': organizationName,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (region != null) 'region': region,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addressLine1 != null) 'addressLine1': addressLine1!,
+        if (addressLine2 != null) 'addressLine2': addressLine2!,
+        if (addressLine3 != null) 'addressLine3': addressLine3!,
+        if (contactName != null) 'contactName': contactName!,
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (locality != null) 'locality': locality!,
+        if (organizationName != null) 'organizationName': organizationName!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (region != null) 'region': region!,
       };
 }
 
@@ -7699,19 +7180,19 @@ class DirectoryChromeosdevicesCommand {
   ///
   /// If the device doesn't execute the command within this time the command
   /// will become expired.
-  core.String commandExpireTime;
+  core.String? commandExpireTime;
 
   /// Unique ID of a device command.
-  core.String commandId;
+  core.String? commandId;
 
   /// The result of the command execution.
-  DirectoryChromeosdevicesCommandResult commandResult;
+  DirectoryChromeosdevicesCommandResult? commandResult;
 
   /// The timestamp when the command was issued by the admin.
-  core.String issueTime;
+  core.String? issueTime;
 
   /// The payload that the command specified, if any.
-  core.String payload;
+  core.String? payload;
 
   /// Indicates the command state.
   /// Possible string values are:
@@ -7725,7 +7206,7 @@ class DirectoryChromeosdevicesCommand {
   /// command.
   /// - "EXECUTED_BY_CLIENT" : The client has (un)successfully executed the
   /// command.
-  core.String state;
+  core.String? state;
 
   /// The type of the command.
   /// Possible string values are:
@@ -7745,7 +7226,7 @@ class DirectoryChromeosdevicesCommand {
   /// revert the device back to a factory state with no enrollment unless the
   /// device is subject to forced or auto enrollment. Use with caution, as this
   /// is an irreversible action!
-  core.String type;
+  core.String? type;
 
   DirectoryChromeosdevicesCommand();
 
@@ -7774,14 +7255,14 @@ class DirectoryChromeosdevicesCommand {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commandExpireTime != null) 'commandExpireTime': commandExpireTime,
-        if (commandId != null) 'commandId': commandId,
-        if (commandResult != null) 'commandResult': commandResult.toJson(),
-        if (issueTime != null) 'issueTime': issueTime,
-        if (payload != null) 'payload': payload,
-        if (state != null) 'state': state,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commandExpireTime != null) 'commandExpireTime': commandExpireTime!,
+        if (commandId != null) 'commandId': commandId!,
+        if (commandResult != null) 'commandResult': commandResult!.toJson(),
+        if (issueTime != null) 'issueTime': issueTime!,
+        if (payload != null) 'payload': payload!,
+        if (state != null) 'state': state!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -7790,10 +7271,10 @@ class DirectoryChromeosdevicesCommandResult {
   /// The error message with a short explanation as to why the command failed.
   ///
   /// Only present if the command failed.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   /// The time at which the command was executed or failed to execute.
-  core.String executeTime;
+  core.String? executeTime;
 
   /// The result of the command.
   /// Possible string values are:
@@ -7801,7 +7282,7 @@ class DirectoryChromeosdevicesCommandResult {
   /// - "IGNORED" : The command was ignored as obsolete.
   /// - "FAILURE" : The command could not be executed successfully.
   /// - "SUCCESS" : The command was successfully executed.
-  core.String result;
+  core.String? result;
 
   DirectoryChromeosdevicesCommandResult();
 
@@ -7817,10 +7298,10 @@ class DirectoryChromeosdevicesCommandResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorMessage != null) 'errorMessage': errorMessage,
-        if (executeTime != null) 'executeTime': executeTime,
-        if (result != null) 'result': result,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (executeTime != null) 'executeTime': executeTime!,
+        if (result != null) 'result': result!,
       };
 }
 
@@ -7844,14 +7325,14 @@ class DirectoryChromeosdevicesIssueCommandRequest {
   /// revert the device back to a factory state with no enrollment unless the
   /// device is subject to forced or auto enrollment. Use with caution, as this
   /// is an irreversible action!
-  core.String commandType;
+  core.String? commandType;
 
   /// The payload for the command, provide it only if command supports it.
   ///
   /// The following commands support adding payload: - SET_VOLUME: Payload is a
   /// stringified JSON object in the form: { "volume": 50 }. The volume has to
   /// be an integer in the range \[0,100\].
-  core.String payload;
+  core.String? payload;
 
   DirectoryChromeosdevicesIssueCommandRequest();
 
@@ -7864,16 +7345,16 @@ class DirectoryChromeosdevicesIssueCommandRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commandType != null) 'commandType': commandType,
-        if (payload != null) 'payload': payload,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commandType != null) 'commandType': commandType!,
+        if (payload != null) 'payload': payload!,
       };
 }
 
 /// A response for issuing a command.
 class DirectoryChromeosdevicesIssueCommandResponse {
   /// The unique ID of the issued command, used to retrieve the command status.
-  core.String commandId;
+  core.String? commandId;
 
   DirectoryChromeosdevicesIssueCommandResponse();
 
@@ -7883,8 +7364,8 @@ class DirectoryChromeosdevicesIssueCommandResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commandId != null) 'commandId': commandId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commandId != null) 'commandId': commandId!,
       };
 }
 
@@ -7892,26 +7373,26 @@ class DomainAlias {
   /// The creation time of the domain alias.
   ///
   /// (Read-only).
-  core.String creationTime;
+  core.String? creationTime;
 
   /// The domain alias name.
-  core.String domainAliasName;
+  core.String? domainAliasName;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Kind of resource this is.
-  core.String kind;
+  core.String? kind;
 
   /// The parent domain name that the domain alias is associated with.
   ///
   /// This can either be a primary or secondary domain name within a customer.
-  core.String parentDomainName;
+  core.String? parentDomainName;
 
   /// Indicates the verification state of a domain alias.
   ///
   /// (Read-only)
-  core.bool verified;
+  core.bool? verified;
 
   DomainAlias();
 
@@ -7936,25 +7417,25 @@ class DomainAlias {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationTime != null) 'creationTime': creationTime,
-        if (domainAliasName != null) 'domainAliasName': domainAliasName,
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (parentDomainName != null) 'parentDomainName': parentDomainName,
-        if (verified != null) 'verified': verified,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (domainAliasName != null) 'domainAliasName': domainAliasName!,
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (parentDomainName != null) 'parentDomainName': parentDomainName!,
+        if (verified != null) 'verified': verified!,
       };
 }
 
 class DomainAliases {
   /// List of domain alias objects.
-  core.List<DomainAlias> domainAliases;
+  core.List<DomainAlias>? domainAliases;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Kind of resource this is.
-  core.String kind;
+  core.String? kind;
 
   DomainAliases();
 
@@ -7973,12 +7454,12 @@ class DomainAliases {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (domainAliases != null)
           'domainAliases':
-              domainAliases.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
+              domainAliases!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -7987,29 +7468,29 @@ class Domains {
   ///
   /// Expressed in [Unix time](https://en.wikipedia.org/wiki/Epoch_time) format.
   /// (Read-only).
-  core.String creationTime;
+  core.String? creationTime;
 
   /// List of domain alias objects.
   ///
   /// (Read-only)
-  core.List<DomainAlias> domainAliases;
+  core.List<DomainAlias>? domainAliases;
 
   /// The domain name of the customer.
-  core.String domainName;
+  core.String? domainName;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Indicates if the domain is a primary domain (Read-only).
-  core.bool isPrimary;
+  core.bool? isPrimary;
 
   /// Kind of resource this is.
-  core.String kind;
+  core.String? kind;
 
   /// Indicates the verification state of a domain.
   ///
   /// (Read-only).
-  core.bool verified;
+  core.bool? verified;
 
   Domains();
 
@@ -8040,28 +7521,28 @@ class Domains {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationTime != null) 'creationTime': creationTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime!,
         if (domainAliases != null)
           'domainAliases':
-              domainAliases.map((value) => value.toJson()).toList(),
-        if (domainName != null) 'domainName': domainName,
-        if (etag != null) 'etag': etag,
-        if (isPrimary != null) 'isPrimary': isPrimary,
-        if (kind != null) 'kind': kind,
-        if (verified != null) 'verified': verified,
+              domainAliases!.map((value) => value.toJson()).toList(),
+        if (domainName != null) 'domainName': domainName!,
+        if (etag != null) 'etag': etag!,
+        if (isPrimary != null) 'isPrimary': isPrimary!,
+        if (kind != null) 'kind': kind!,
+        if (verified != null) 'verified': verified!,
       };
 }
 
 class Domains2 {
   /// List of domain objects.
-  core.List<Domains> domains;
+  core.List<Domains>? domains;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Kind of resource this is.
-  core.String kind;
+  core.String? kind;
 
   Domains2();
 
@@ -8080,24 +7561,24 @@ class Domains2 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (domains != null)
-          'domains': domains.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
+          'domains': domains!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// JSON template for Feature object in Directory API.
 class Feature {
   /// ETag of the resource.
-  core.String etags;
+  core.String? etags;
 
   /// Kind of resource this is.
-  core.String kind;
+  core.String? kind;
 
   /// The name of the feature.
-  core.String name;
+  core.String? name;
 
   Feature();
 
@@ -8113,10 +7594,10 @@ class Feature {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etags != null) 'etags': etags,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etags != null) 'etags': etags!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -8125,7 +7606,7 @@ class FeatureInstance {
   /// The feature that this is an instance of.
   ///
   /// A calendar resource may have multiple instances of a feature.
-  Feature feature;
+  Feature? feature;
 
   FeatureInstance();
 
@@ -8136,14 +7617,14 @@ class FeatureInstance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (feature != null) 'feature': feature.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (feature != null) 'feature': feature!.toJson(),
       };
 }
 
 class FeatureRename {
   /// New name of the feature.
-  core.String newName;
+  core.String? newName;
 
   FeatureRename();
 
@@ -8153,27 +7634,27 @@ class FeatureRename {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (newName != null) 'newName': newName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (newName != null) 'newName': newName!,
       };
 }
 
 /// Public API: Resources.features
 class Features {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The Features in this page of results.
-  core.List<Feature> features;
+  core.List<Feature>? features;
 
   /// Kind of resource this is.
-  core.String kind;
+  core.String? kind;
 
   /// The continuation token, used to page through large result sets.
   ///
   /// Provide this value in a subsequent request to return the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   Features();
 
@@ -8195,12 +7676,12 @@ class Features {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (features != null)
-          'features': features.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'features': features!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -8212,24 +7693,24 @@ class Features {
 class Group {
   /// Value is `true` if this group was created by an administrator rather than
   /// a user.
-  core.bool adminCreated;
+  core.bool? adminCreated;
 
   /// List of a group's alias email addresses.
-  core.List<core.String> aliases;
+  core.List<core.String>? aliases;
 
   /// An extended description to help users determine the purpose of a group.
   ///
   /// For example, you can include information about who should join the group,
   /// the types of messages to send to the group, links to FAQs about the group,
   /// or related groups. Maximum length is `4,096` characters.
-  core.String description;
+  core.String? description;
 
   /// The number of users that are direct members of the group.
   ///
   /// If a group is a member (child) of this group (the parent), members of the
   /// child group are not counted in the `directMembersCount` property of the
   /// parent group.
-  core.String directMembersCount;
+  core.String? directMembersCount;
 
   /// The group's email address.
   ///
@@ -8238,23 +7719,23 @@ class Group {
   /// when creating a group. Group email addresses are subject to the same
   /// character usage rules as usernames, see the
   /// [help center](https://support.google.com/a/answer/9193374) for details.
-  core.String email;
+  core.String? email;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The unique ID of a group.
   ///
   /// A group `id` can be used as a group request URI's `groupKey`.
-  core.String id;
+  core.String? id;
 
   /// The type of the API resource.
   ///
   /// For Groups resources, the value is `admin#directory#group`.
-  core.String kind;
+  core.String? kind;
 
   /// The group's display name.
-  core.String name;
+  core.String? name;
 
   /// List of the group's non-editable alias email addresses that are outside of
   /// the account's primary domain or subdomains.
@@ -8262,7 +7743,7 @@ class Group {
   /// These are functioning email addresses used by the group. This is a
   /// read-only property returned in the API's response for a group. If edited
   /// in a group's POST or PUT request, the edit is ignored by the API service.
-  core.List<core.String> nonEditableAliases;
+  core.List<core.String>? nonEditableAliases;
 
   Group();
 
@@ -8303,34 +7784,34 @@ class Group {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (adminCreated != null) 'adminCreated': adminCreated,
-        if (aliases != null) 'aliases': aliases,
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (adminCreated != null) 'adminCreated': adminCreated!,
+        if (aliases != null) 'aliases': aliases!,
+        if (description != null) 'description': description!,
         if (directMembersCount != null)
-          'directMembersCount': directMembersCount,
-        if (email != null) 'email': email,
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+          'directMembersCount': directMembersCount!,
+        if (email != null) 'email': email!,
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
         if (nonEditableAliases != null)
-          'nonEditableAliases': nonEditableAliases,
+          'nonEditableAliases': nonEditableAliases!,
       };
 }
 
 class Groups {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// List of group objects.
-  core.List<Group> groups;
+  core.List<Group>? groups;
 
   /// Kind of resource this is.
-  core.String kind;
+  core.String? kind;
 
   /// Token used to access next page of this result.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   Groups();
 
@@ -8352,12 +7833,12 @@ class Groups {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (groups != null)
-          'groups': groups.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'groups': groups!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -8370,7 +7851,7 @@ class Member {
   /// Defines mail delivery preferences of member.
   ///
   /// This is only supported by create/update/get.
-  core.String deliverySettings;
+  core.String? deliverySettings;
 
   /// The member's email address.
   ///
@@ -8378,20 +7859,20 @@ class Member {
   /// adding a member to a group. The `email` must be unique and cannot be an
   /// alias of another group. If the email address is changed, the API
   /// automatically reflects the email address changes.
-  core.String email;
+  core.String? email;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The unique ID of the group member.
   ///
   /// A member `id` can be used as a member request URI's `memberKey`.
-  core.String id;
+  core.String? id;
 
   /// The type of the API resource.
   ///
   /// For Members resources, the value is `admin#directory#member`.
-  core.String kind;
+  core.String? kind;
 
   /// The member's role in a group.
   ///
@@ -8399,13 +7880,13 @@ class Member {
   /// `group1` is a member of `group2`, `group2` cannot be a member of `group1`.
   /// For more information about a member's role, see the
   /// [administration help center](https://support.google.com/a/answer/167094).
-  core.String role;
+  core.String? role;
 
   /// Status of member (Immutable)
-  core.String status;
+  core.String? status;
 
   /// The type of group member.
-  core.String type;
+  core.String? type;
 
   Member();
 
@@ -8436,30 +7917,30 @@ class Member {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deliverySettings != null) 'delivery_settings': deliverySettings,
-        if (email != null) 'email': email,
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (role != null) 'role': role,
-        if (status != null) 'status': status,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deliverySettings != null) 'delivery_settings': deliverySettings!,
+        if (email != null) 'email': email!,
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (role != null) 'role': role!,
+        if (status != null) 'status': status!,
+        if (type != null) 'type': type!,
       };
 }
 
 class Members {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Kind of resource this is.
-  core.String kind;
+  core.String? kind;
 
   /// List of member objects.
-  core.List<Member> members;
+  core.List<Member>? members;
 
   /// Token used to access next page of this result.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   Members();
 
@@ -8481,12 +7962,12 @@ class Members {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
         if (members != null)
-          'members': members.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'members': members!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -8497,7 +7978,7 @@ class MembersHasMember {
   /// Membership can be direct or nested.
   ///
   /// Output only.
-  core.bool isMember;
+  core.bool? isMember;
 
   MembersHasMember();
 
@@ -8507,8 +7988,8 @@ class MembersHasMember {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (isMember != null) 'isMember': isMember,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (isMember != null) 'isMember': isMember!,
       };
 }
 
@@ -8516,12 +7997,12 @@ class MobileDeviceApplications {
   /// The application's display name.
   ///
   /// An example is `Browser`.
-  core.String displayName;
+  core.String? displayName;
 
   /// The application's package name.
   ///
   /// An example is `com.android.browser`.
-  core.String packageName;
+  core.String? packageName;
 
   /// The list of permissions of this application.
   ///
@@ -8530,17 +8011,17 @@ class MobileDeviceApplications {
   /// [Android manifest](https://developer.android.com/guide/topics/manifest/uses-permission-element.html).
   /// Examples of a Calendar application's permissions are `READ_CALENDAR`, or
   /// `MANAGE_ACCOUNTS`.
-  core.List<core.String> permission;
+  core.List<core.String>? permission;
 
   /// The application's version code.
   ///
   /// An example is `13`.
-  core.int versionCode;
+  core.int? versionCode;
 
   /// The application's version name.
   ///
   /// An example is `3.2-140714`.
-  core.String versionName;
+  core.String? versionName;
 
   MobileDeviceApplications();
 
@@ -8564,12 +8045,12 @@ class MobileDeviceApplications {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (packageName != null) 'packageName': packageName,
-        if (permission != null) 'permission': permission,
-        if (versionCode != null) 'versionCode': versionCode,
-        if (versionName != null) 'versionName': versionName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (packageName != null) 'packageName': packageName!,
+        if (permission != null) 'permission': permission!,
+        if (versionCode != null) 'versionCode': versionCode!,
+        if (versionName != null) 'versionName': versionName!,
       };
 }
 
@@ -8581,7 +8062,7 @@ class MobileDeviceApplications {
 /// Guide\](/admin-sdk/directory/v1/guides/manage-mobile-devices.html).
 class MobileDevice {
   /// Adb (USB debugging) enabled or disabled on device (Read-only)
-  core.bool adbStatus;
+  core.bool? adbStatus;
 
   /// The list of applications installed on an Android mobile device.
   ///
@@ -8591,37 +8072,37 @@ class MobileDevice {
   /// existing list. If the Android device has two existing applications and the
   /// API updates the list with five applications, the is now the updated list
   /// of five applications.
-  core.List<MobileDeviceApplications> applications;
+  core.List<MobileDeviceApplications>? applications;
 
   /// The device's baseband version.
-  core.String basebandVersion;
+  core.String? basebandVersion;
 
   /// Mobile Device Bootloader version (Read-only)
-  core.String bootloaderVersion;
+  core.String? bootloaderVersion;
 
   /// Mobile Device Brand (Read-only)
-  core.String brand;
+  core.String? brand;
 
   /// The device's operating system build number.
-  core.String buildNumber;
+  core.String? buildNumber;
 
   /// The default locale used on the device.
-  core.String defaultLanguage;
+  core.String? defaultLanguage;
 
   /// Developer options enabled or disabled on device (Read-only)
-  core.bool developerOptionsStatus;
+  core.bool? developerOptionsStatus;
 
   /// The compromised device status.
-  core.String deviceCompromisedStatus;
+  core.String? deviceCompromisedStatus;
 
   /// The serial number for a Google Sync mobile device.
   ///
   /// For Android and iOS devices, this is a software generated unique
   /// identifier.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// DevicePasswordStatus (Read-only)
-  core.String devicePasswordStatus;
+  core.String? devicePasswordStatus;
 
   /// List of owner's email addresses.
   ///
@@ -8629,51 +8110,51 @@ class MobileDevice {
   /// \[get\](/admin-sdk/directory/v1/reference/mobiledevices/get.html) method.
   /// For additional information, see the \[retrieve a
   /// user\](/admin-sdk/directory/v1/guides/manage-users#get_user) method.
-  core.List<core.String> email;
+  core.List<core.String>? email;
 
   /// Mobile Device Encryption Status (Read-only)
-  core.String encryptionStatus;
+  core.String? encryptionStatus;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Date and time the device was first synchronized with the policy settings
   /// in the G Suite administrator control panel (Read-only)
-  core.DateTime firstSync;
+  core.DateTime? firstSync;
 
   /// Mobile Device Hardware (Read-only)
-  core.String hardware;
+  core.String? hardware;
 
   /// The IMEI/MEID unique identifier for Android hardware.
   ///
   /// It is not applicable to Google Sync devices. When adding an Android mobile
   /// device, this is an optional property. When updating one of these devices,
   /// this is a read-only property.
-  core.String hardwareId;
+  core.String? hardwareId;
 
   /// The device's IMEI number.
-  core.String imei;
+  core.String? imei;
 
   /// The device's kernel version.
-  core.String kernelVersion;
+  core.String? kernelVersion;
 
   /// The type of the API resource.
   ///
   /// For Mobiledevices resources, the value is `admin#directory#mobiledevice`.
-  core.String kind;
+  core.String? kind;
 
   /// Date and time the device was last synchronized with the policy settings in
   /// the G Suite administrator control panel (Read-only)
-  core.DateTime lastSync;
+  core.DateTime? lastSync;
 
   /// Boolean indicating if this account is on owner/primary profile or not.
-  core.bool managedAccountIsOnOwnerProfile;
+  core.bool? managedAccountIsOnOwnerProfile;
 
   /// Mobile Device manufacturer (Read-only)
-  core.String manufacturer;
+  core.String? manufacturer;
 
   /// The device's MEID number.
-  core.String meid;
+  core.String? meid;
 
   /// The mobile device's model name, for example Nexus S.
   ///
@@ -8681,7 +8162,7 @@ class MobileDevice {
   /// \[updated\](/admin-sdk/directory/v1/reference/mobiledevices/update.html).
   /// For more information, see the \[Developer's
   /// Guide\](/admin-sdk/directory/v1/guides/manage-mobile=devices#update_mobile_device).
-  core.String model;
+  core.String? model;
 
   /// List of the owner's user names.
   ///
@@ -8690,10 +8171,10 @@ class MobileDevice {
   /// For more information about retrieving mobile device user information, see
   /// the \[Developer's
   /// Guide\](/admin-sdk/directory/v1/guides/manage-users#get_user).
-  core.List<core.String> name;
+  core.List<core.String>? name;
 
   /// Mobile Device mobile or network operator (if available) (Read-only)
-  core.String networkOperator;
+  core.String? networkOperator;
 
   /// The mobile device's operating system, for example IOS 4.3 or Android
   /// 2.3.5.
@@ -8702,37 +8183,37 @@ class MobileDevice {
   /// \[updated\](/admin-sdk/directory/v1/reference/mobiledevices/update.html).
   /// For more information, see the \[Developer's
   /// Guide\](/admin-sdk/directory/v1/guides/manage-mobile-devices#update_mobile_device).
-  core.String os;
+  core.String? os;
 
   /// List of accounts added on device (Read-only)
-  core.List<core.String> otherAccountsInfo;
+  core.List<core.String>? otherAccountsInfo;
 
   /// DMAgentPermission (Read-only)
-  core.String privilege;
+  core.String? privilege;
 
   /// Mobile Device release version version (Read-only)
-  core.String releaseVersion;
+  core.String? releaseVersion;
 
   /// The unique ID the API service uses to identify the mobile device.
-  core.String resourceId;
+  core.String? resourceId;
 
   /// Mobile Device Security patch level (Read-only)
-  core.String securityPatchLevel;
+  core.String? securityPatchLevel;
 
   /// The device's serial number.
-  core.String serialNumber;
+  core.String? serialNumber;
 
   /// The device's status.
-  core.String status;
+  core.String? status;
 
   /// Work profile supported on device (Read-only)
-  core.bool supportsWorkProfile;
+  core.bool? supportsWorkProfile;
 
   /// The type of mobile device.
-  core.String type;
+  core.String? type;
 
   /// Unknown sources enabled or disabled on device (Read-only)
-  core.bool unknownSourcesStatus;
+  core.bool? unknownSourcesStatus;
 
   /// Gives information about the device such as `os` version.
   ///
@@ -8740,10 +8221,10 @@ class MobileDevice {
   /// \[updated\](/admin-sdk/directory/v1/reference/mobiledevices/update.html).
   /// For more information, see the \[Developer's
   /// Guide\](/admin-sdk/directory/v1/guides/manage-mobile-devices#update_mobile_device).
-  core.String userAgent;
+  core.String? userAgent;
 
   /// The device's MAC address on Wi-Fi networks.
-  core.String wifiMacAddress;
+  core.String? wifiMacAddress;
 
   MobileDevice();
 
@@ -8881,61 +8362,61 @@ class MobileDevice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (adbStatus != null) 'adbStatus': adbStatus,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (adbStatus != null) 'adbStatus': adbStatus!,
         if (applications != null)
-          'applications': applications.map((value) => value.toJson()).toList(),
-        if (basebandVersion != null) 'basebandVersion': basebandVersion,
-        if (bootloaderVersion != null) 'bootloaderVersion': bootloaderVersion,
-        if (brand != null) 'brand': brand,
-        if (buildNumber != null) 'buildNumber': buildNumber,
-        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage,
+          'applications': applications!.map((value) => value.toJson()).toList(),
+        if (basebandVersion != null) 'basebandVersion': basebandVersion!,
+        if (bootloaderVersion != null) 'bootloaderVersion': bootloaderVersion!,
+        if (brand != null) 'brand': brand!,
+        if (buildNumber != null) 'buildNumber': buildNumber!,
+        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
         if (developerOptionsStatus != null)
-          'developerOptionsStatus': developerOptionsStatus,
+          'developerOptionsStatus': developerOptionsStatus!,
         if (deviceCompromisedStatus != null)
-          'deviceCompromisedStatus': deviceCompromisedStatus,
-        if (deviceId != null) 'deviceId': deviceId,
+          'deviceCompromisedStatus': deviceCompromisedStatus!,
+        if (deviceId != null) 'deviceId': deviceId!,
         if (devicePasswordStatus != null)
-          'devicePasswordStatus': devicePasswordStatus,
-        if (email != null) 'email': email,
-        if (encryptionStatus != null) 'encryptionStatus': encryptionStatus,
-        if (etag != null) 'etag': etag,
-        if (firstSync != null) 'firstSync': (firstSync).toIso8601String(),
-        if (hardware != null) 'hardware': hardware,
-        if (hardwareId != null) 'hardwareId': hardwareId,
-        if (imei != null) 'imei': imei,
-        if (kernelVersion != null) 'kernelVersion': kernelVersion,
-        if (kind != null) 'kind': kind,
-        if (lastSync != null) 'lastSync': (lastSync).toIso8601String(),
+          'devicePasswordStatus': devicePasswordStatus!,
+        if (email != null) 'email': email!,
+        if (encryptionStatus != null) 'encryptionStatus': encryptionStatus!,
+        if (etag != null) 'etag': etag!,
+        if (firstSync != null) 'firstSync': (firstSync!).toIso8601String(),
+        if (hardware != null) 'hardware': hardware!,
+        if (hardwareId != null) 'hardwareId': hardwareId!,
+        if (imei != null) 'imei': imei!,
+        if (kernelVersion != null) 'kernelVersion': kernelVersion!,
+        if (kind != null) 'kind': kind!,
+        if (lastSync != null) 'lastSync': (lastSync!).toIso8601String(),
         if (managedAccountIsOnOwnerProfile != null)
-          'managedAccountIsOnOwnerProfile': managedAccountIsOnOwnerProfile,
-        if (manufacturer != null) 'manufacturer': manufacturer,
-        if (meid != null) 'meid': meid,
-        if (model != null) 'model': model,
-        if (name != null) 'name': name,
-        if (networkOperator != null) 'networkOperator': networkOperator,
-        if (os != null) 'os': os,
-        if (otherAccountsInfo != null) 'otherAccountsInfo': otherAccountsInfo,
-        if (privilege != null) 'privilege': privilege,
-        if (releaseVersion != null) 'releaseVersion': releaseVersion,
-        if (resourceId != null) 'resourceId': resourceId,
+          'managedAccountIsOnOwnerProfile': managedAccountIsOnOwnerProfile!,
+        if (manufacturer != null) 'manufacturer': manufacturer!,
+        if (meid != null) 'meid': meid!,
+        if (model != null) 'model': model!,
+        if (name != null) 'name': name!,
+        if (networkOperator != null) 'networkOperator': networkOperator!,
+        if (os != null) 'os': os!,
+        if (otherAccountsInfo != null) 'otherAccountsInfo': otherAccountsInfo!,
+        if (privilege != null) 'privilege': privilege!,
+        if (releaseVersion != null) 'releaseVersion': releaseVersion!,
+        if (resourceId != null) 'resourceId': resourceId!,
         if (securityPatchLevel != null)
-          'securityPatchLevel': securityPatchLevel,
-        if (serialNumber != null) 'serialNumber': serialNumber,
-        if (status != null) 'status': status,
+          'securityPatchLevel': securityPatchLevel!,
+        if (serialNumber != null) 'serialNumber': serialNumber!,
+        if (status != null) 'status': status!,
         if (supportsWorkProfile != null)
-          'supportsWorkProfile': supportsWorkProfile,
-        if (type != null) 'type': type,
+          'supportsWorkProfile': supportsWorkProfile!,
+        if (type != null) 'type': type!,
         if (unknownSourcesStatus != null)
-          'unknownSourcesStatus': unknownSourcesStatus,
-        if (userAgent != null) 'userAgent': userAgent,
-        if (wifiMacAddress != null) 'wifiMacAddress': wifiMacAddress,
+          'unknownSourcesStatus': unknownSourcesStatus!,
+        if (userAgent != null) 'userAgent': userAgent!,
+        if (wifiMacAddress != null) 'wifiMacAddress': wifiMacAddress!,
       };
 }
 
 class MobileDeviceAction {
   /// The action to be performed on the device.
-  core.String action;
+  core.String? action;
 
   MobileDeviceAction();
 
@@ -8945,23 +8426,23 @@ class MobileDeviceAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!,
       };
 }
 
 class MobileDevices {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Kind of resource this is.
-  core.String kind;
+  core.String? kind;
 
   /// List of Mobile Device objects.
-  core.List<MobileDevice> mobiledevices;
+  core.List<MobileDevice>? mobiledevices;
 
   /// Token used to access next page of this result.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   MobileDevices();
 
@@ -8983,13 +8464,13 @@ class MobileDevices {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
         if (mobiledevices != null)
           'mobiledevices':
-              mobiledevices.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              mobiledevices!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -9006,27 +8487,27 @@ class OrgUnit {
   /// the settings of the nearest parent organizational unit. For more
   /// information on inheritance and users in an organization structure, see the
   /// [administration help center](https://support.google.com/a/answer/4352075).
-  core.bool blockInheritance;
+  core.bool? blockInheritance;
 
   /// Description of the organizational unit.
-  core.String description;
+  core.String? description;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The type of the API resource.
   ///
   /// For Orgunits resources, the value is `admin#directory#orgUnit`.
-  core.String kind;
+  core.String? kind;
 
   /// The organizational unit's path name.
   ///
   /// For example, an organizational unit's name within the
   /// /corp/support/sales_support parent path is sales_support. Required.
-  core.String name;
+  core.String? name;
 
   /// The unique ID of the organizational unit.
-  core.String orgUnitId;
+  core.String? orgUnitId;
 
   /// The full path to the organizational unit.
   ///
@@ -9043,18 +8524,18 @@ class OrgUnit {
   /// For more information about moving a user to a different organization, see
   /// \[Update a
   /// user\](/admin-sdk/directory/v1/guides/manage-users.html#update_user).
-  core.String orgUnitPath;
+  core.String? orgUnitPath;
 
   /// The unique ID of the parent organizational unit.
   ///
   /// Required, unless `parentOrgUnitPath` is set.
-  core.String parentOrgUnitId;
+  core.String? parentOrgUnitId;
 
   /// The organizational unit's parent path.
   ///
   /// For example, /corp/sales is the parent path for /corp/sales/sales_support
   /// organizational unit. Required, unless `parentOrgUnitId` is set.
-  core.String parentOrgUnitPath;
+  core.String? parentOrgUnitPath;
 
   OrgUnit();
 
@@ -9088,30 +8569,30 @@ class OrgUnit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (blockInheritance != null) 'blockInheritance': blockInheritance,
-        if (description != null) 'description': description,
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (orgUnitId != null) 'orgUnitId': orgUnitId,
-        if (orgUnitPath != null) 'orgUnitPath': orgUnitPath,
-        if (parentOrgUnitId != null) 'parentOrgUnitId': parentOrgUnitId,
-        if (parentOrgUnitPath != null) 'parentOrgUnitPath': parentOrgUnitPath,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (blockInheritance != null) 'blockInheritance': blockInheritance!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
+        if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
+        if (parentOrgUnitId != null) 'parentOrgUnitId': parentOrgUnitId!,
+        if (parentOrgUnitPath != null) 'parentOrgUnitPath': parentOrgUnitPath!,
       };
 }
 
 class OrgUnits {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The type of the API resource.
   ///
   /// For Org Unit resources, the type is `admin#directory#orgUnits`.
-  core.String kind;
+  core.String? kind;
 
   /// List of organizational unit objects.
-  core.List<OrgUnit> organizationUnits;
+  core.List<OrgUnit>? organizationUnits;
 
   OrgUnits();
 
@@ -9130,12 +8611,12 @@ class OrgUnits {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
         if (organizationUnits != null)
           'organizationUnits':
-              organizationUnits.map((value) => value.toJson()).toList(),
+              organizationUnits!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -9144,30 +8625,30 @@ class Privilege {
   ///
   /// Privileges for a service form a tree. Each privilege can have a list of
   /// child privileges; this list is empty for a leaf privilege.
-  core.List<Privilege> childPrivileges;
+  core.List<Privilege>? childPrivileges;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// If the privilege can be restricted to an organization unit.
-  core.bool isOuScopable;
+  core.bool? isOuScopable;
 
   /// The type of the API resource.
   ///
   /// This is always `admin#directory#privilege`.
-  core.String kind;
+  core.String? kind;
 
   /// The name of the privilege.
-  core.String privilegeName;
+  core.String? privilegeName;
 
   /// The obfuscated ID of the service this privilege is for.
   ///
   /// This value is returned with
   /// \[`Privileges.list()`\](/admin-sdk/directory/v1/reference/privileges/list).
-  core.String serviceId;
+  core.String? serviceId;
 
   /// The name of the service this privilege is for.
-  core.String serviceName;
+  core.String? serviceName;
 
   Privilege();
 
@@ -9198,30 +8679,30 @@ class Privilege {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (childPrivileges != null)
           'childPrivileges':
-              childPrivileges.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (isOuScopable != null) 'isOuScopable': isOuScopable,
-        if (kind != null) 'kind': kind,
-        if (privilegeName != null) 'privilegeName': privilegeName,
-        if (serviceId != null) 'serviceId': serviceId,
-        if (serviceName != null) 'serviceName': serviceName,
+              childPrivileges!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (isOuScopable != null) 'isOuScopable': isOuScopable!,
+        if (kind != null) 'kind': kind!,
+        if (privilegeName != null) 'privilegeName': privilegeName!,
+        if (serviceId != null) 'serviceId': serviceId!,
+        if (serviceName != null) 'serviceName': serviceName!,
       };
 }
 
 class Privileges {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// A list of Privilege resources.
-  core.List<Privilege> items;
+  core.List<Privilege>? items;
 
   /// The type of the API resource.
   ///
   /// This is always `admin#directory#privileges`.
-  core.String kind;
+  core.String? kind;
 
   Privileges();
 
@@ -9240,11 +8721,11 @@ class Privileges {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -9253,10 +8734,10 @@ class RecentUsers {
   /// The user's email address.
   ///
   /// This is only present if the user type is `USER_TYPE_MANAGED`.
-  core.String email;
+  core.String? email;
 
   /// The type of the user.
-  core.String type;
+  core.String? type;
 
   RecentUsers();
 
@@ -9269,21 +8750,21 @@ class RecentUsers {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
+        if (type != null) 'type': type!,
       };
 }
 
 class RoleRolePrivileges {
   /// The name of the privilege.
-  core.String privilegeName;
+  core.String? privilegeName;
 
   /// The obfuscated ID of the service this privilege is for.
   ///
   /// This value is returned with
   /// \[`Privileges.list()`\](/admin-sdk/directory/v1/reference/privileges/list).
-  core.String serviceId;
+  core.String? serviceId;
 
   RoleRolePrivileges();
 
@@ -9296,38 +8777,38 @@ class RoleRolePrivileges {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (privilegeName != null) 'privilegeName': privilegeName,
-        if (serviceId != null) 'serviceId': serviceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (privilegeName != null) 'privilegeName': privilegeName!,
+        if (serviceId != null) 'serviceId': serviceId!,
       };
 }
 
 class Role {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Returns `true` if the role is a super admin role.
-  core.bool isSuperAdminRole;
+  core.bool? isSuperAdminRole;
 
   /// Returns `true` if this is a pre-defined system role.
-  core.bool isSystemRole;
+  core.bool? isSystemRole;
 
   /// The type of the API resource.
   ///
   /// This is always `admin#directory#role`.
-  core.String kind;
+  core.String? kind;
 
   /// A short description of the role.
-  core.String roleDescription;
+  core.String? roleDescription;
 
   /// ID of the role.
-  core.String roleId;
+  core.String? roleId;
 
   /// Name of the role.
-  core.String roleName;
+  core.String? roleName;
 
   /// The set of privileges that are granted to this role.
-  core.List<RoleRolePrivileges> rolePrivileges;
+  core.List<RoleRolePrivileges>? rolePrivileges;
 
   Role();
 
@@ -9361,44 +8842,44 @@ class Role {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (isSuperAdminRole != null) 'isSuperAdminRole': isSuperAdminRole,
-        if (isSystemRole != null) 'isSystemRole': isSystemRole,
-        if (kind != null) 'kind': kind,
-        if (roleDescription != null) 'roleDescription': roleDescription,
-        if (roleId != null) 'roleId': roleId,
-        if (roleName != null) 'roleName': roleName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (isSuperAdminRole != null) 'isSuperAdminRole': isSuperAdminRole!,
+        if (isSystemRole != null) 'isSystemRole': isSystemRole!,
+        if (kind != null) 'kind': kind!,
+        if (roleDescription != null) 'roleDescription': roleDescription!,
+        if (roleId != null) 'roleId': roleId!,
+        if (roleName != null) 'roleName': roleName!,
         if (rolePrivileges != null)
           'rolePrivileges':
-              rolePrivileges.map((value) => value.toJson()).toList(),
+              rolePrivileges!.map((value) => value.toJson()).toList(),
       };
 }
 
 class RoleAssignment {
   /// The unique ID of the user this role is assigned to.
-  core.String assignedTo;
+  core.String? assignedTo;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The type of the API resource.
   ///
   /// This is always `admin#directory#roleAssignment`.
-  core.String kind;
+  core.String? kind;
 
   /// If the role is restricted to an organization unit, this contains the ID
   /// for the organization unit the exercise of this role is restricted to.
-  core.String orgUnitId;
+  core.String? orgUnitId;
 
   /// ID of this roleAssignment.
-  core.String roleAssignmentId;
+  core.String? roleAssignmentId;
 
   /// The ID of the role that is assigned.
-  core.String roleId;
+  core.String? roleId;
 
   /// The scope in which this role is assigned.
-  core.String scopeType;
+  core.String? scopeType;
 
   RoleAssignment();
 
@@ -9426,29 +8907,29 @@ class RoleAssignment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (assignedTo != null) 'assignedTo': assignedTo,
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (orgUnitId != null) 'orgUnitId': orgUnitId,
-        if (roleAssignmentId != null) 'roleAssignmentId': roleAssignmentId,
-        if (roleId != null) 'roleId': roleId,
-        if (scopeType != null) 'scopeType': scopeType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (assignedTo != null) 'assignedTo': assignedTo!,
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
+        if (roleAssignmentId != null) 'roleAssignmentId': roleAssignmentId!,
+        if (roleId != null) 'roleId': roleId!,
+        if (scopeType != null) 'scopeType': scopeType!,
       };
 }
 
 class RoleAssignments {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// A list of RoleAssignment resources.
-  core.List<RoleAssignment> items;
+  core.List<RoleAssignment>? items;
 
   /// The type of the API resource.
   ///
   /// This is always `admin#directory#roleAssignments`.
-  core.String kind;
-  core.String nextPageToken;
+  core.String? kind;
+  core.String? nextPageToken;
 
   RoleAssignments();
 
@@ -9470,27 +8951,27 @@ class RoleAssignments {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 class Roles {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// A list of Role resources.
-  core.List<Role> items;
+  core.List<Role>? items;
 
   /// The type of the API resource.
   ///
   /// This is always `admin#directory#roles`.
-  core.String kind;
-  core.String nextPageToken;
+  core.String? kind;
+  core.String? nextPageToken;
 
   Roles();
 
@@ -9512,12 +8993,12 @@ class Roles {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -9526,22 +9007,22 @@ class Roles {
 /// For Schema resources, this is always `admin#directory#schema`.
 class Schema {
   /// Display name for the schema.
-  core.String displayName;
+  core.String? displayName;
 
   /// The ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// A list of fields in the schema.
-  core.List<SchemaFieldSpec> fields;
+  core.List<SchemaFieldSpec>? fields;
 
   /// Kind of resource this is.
-  core.String kind;
+  core.String? kind;
 
   /// The unique identifier of the schema (Read-only)
-  core.String schemaId;
+  core.String? schemaId;
 
   /// The schema's name.
-  core.String schemaName;
+  core.String? schemaName;
 
   Schema();
 
@@ -9569,14 +9050,14 @@ class Schema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
         if (fields != null)
-          'fields': fields.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (schemaId != null) 'schemaId': schemaId,
-        if (schemaName != null) 'schemaName': schemaName,
+          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (schemaId != null) 'schemaId': schemaId!,
+        if (schemaName != null) 'schemaName': schemaName!,
       };
 }
 
@@ -9589,13 +9070,13 @@ class SchemaFieldSpecNumericIndexingSpec {
   ///
   /// This is meant to be indicative rather than enforced. Values outside this
   /// range will still be indexed, but search may not be as performant.
-  core.double maxValue;
+  core.double? maxValue;
 
   /// Minimum value of this field.
   ///
   /// This is meant to be indicative rather than enforced. Values outside this
   /// range will still be indexed, but search may not be as performant.
-  core.double minValue;
+  core.double? minValue;
 
   SchemaFieldSpecNumericIndexingSpec();
 
@@ -9608,9 +9089,9 @@ class SchemaFieldSpecNumericIndexingSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxValue != null) 'maxValue': maxValue,
-        if (minValue != null) 'minValue': minValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxValue != null) 'maxValue': maxValue!,
+        if (minValue != null) 'minValue': minValue!,
       };
 }
 
@@ -9622,40 +9103,40 @@ class SchemaFieldSpecNumericIndexingSpec {
 /// Fields\](/admin-sdk/directory/v1/guides/manage-schemas).
 class SchemaFieldSpec {
   /// Display Name of the field.
-  core.String displayName;
+  core.String? displayName;
 
   /// The ETag of the field.
-  core.String etag;
+  core.String? etag;
 
   /// The unique identifier of the field (Read-only)
-  core.String fieldId;
+  core.String? fieldId;
 
   /// The name of the field.
-  core.String fieldName;
+  core.String? fieldName;
 
   /// The type of the field.
-  core.String fieldType;
+  core.String? fieldType;
 
   /// Boolean specifying whether the field is indexed or not.
   ///
   /// Default: `true`.
-  core.bool indexed;
+  core.bool? indexed;
 
   /// The kind of resource this is.
   ///
   /// For schema fields this is always `admin#directory#schema#fieldspec`.
-  core.String kind;
+  core.String? kind;
 
   /// A boolean specifying whether this is a multi-valued field or not.
   ///
   /// Default: `false`.
-  core.bool multiValued;
+  core.bool? multiValued;
 
   /// Indexing spec for a numeric field.
   ///
   /// By default, only exact match queries will be supported for numeric fields.
   /// Setting the `numericIndexingSpec` allows range queries to be supported.
-  SchemaFieldSpecNumericIndexingSpec numericIndexingSpec;
+  SchemaFieldSpecNumericIndexingSpec? numericIndexingSpec;
 
   /// Specifies who can view values of this field.
   ///
@@ -9663,7 +9144,7 @@ class SchemaFieldSpec {
   /// non-administrator\](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin)
   /// for more information. Note: It may take up to 24 hours for changes to this
   /// field to be reflected.
-  core.String readAccessType;
+  core.String? readAccessType;
 
   SchemaFieldSpec();
 
@@ -9701,31 +9182,31 @@ class SchemaFieldSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (etag != null) 'etag': etag,
-        if (fieldId != null) 'fieldId': fieldId,
-        if (fieldName != null) 'fieldName': fieldName,
-        if (fieldType != null) 'fieldType': fieldType,
-        if (indexed != null) 'indexed': indexed,
-        if (kind != null) 'kind': kind,
-        if (multiValued != null) 'multiValued': multiValued,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (fieldId != null) 'fieldId': fieldId!,
+        if (fieldName != null) 'fieldName': fieldName!,
+        if (fieldType != null) 'fieldType': fieldType!,
+        if (indexed != null) 'indexed': indexed!,
+        if (kind != null) 'kind': kind!,
+        if (multiValued != null) 'multiValued': multiValued!,
         if (numericIndexingSpec != null)
-          'numericIndexingSpec': numericIndexingSpec.toJson(),
-        if (readAccessType != null) 'readAccessType': readAccessType,
+          'numericIndexingSpec': numericIndexingSpec!.toJson(),
+        if (readAccessType != null) 'readAccessType': readAccessType!,
       };
 }
 
 /// JSON response template for List Schema operation in Directory API.
 class Schemas {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Kind of resource this is.
-  core.String kind;
+  core.String? kind;
 
   /// List of UserSchema objects.
-  core.List<Schema> schemas;
+  core.List<Schema>? schemas;
 
   Schemas();
 
@@ -9744,11 +9225,11 @@ class Schemas {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
         if (schemas != null)
-          'schemas': schemas.map((value) => value.toJson()).toList(),
+          'schemas': schemas!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -9757,33 +9238,33 @@ class Token {
   /// Whether the application is registered with Google.
   ///
   /// The value is `true` if the application has an anonymous Client ID.
-  core.bool anonymous;
+  core.bool? anonymous;
 
   /// The Client ID of the application the token is issued to.
-  core.String clientId;
+  core.String? clientId;
 
   /// The displayable name of the application the token is issued to.
-  core.String displayText;
+  core.String? displayText;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The type of the API resource.
   ///
   /// This is always `admin#directory#token`.
-  core.String kind;
+  core.String? kind;
 
   /// Whether the token is issued to an installed application.
   ///
   /// The value is `true` if the application is installed to a desktop or mobile
   /// device.
-  core.bool nativeApp;
+  core.bool? nativeApp;
 
   /// A list of authorization scopes the application is granted.
-  core.List<core.String> scopes;
+  core.List<core.String>? scopes;
 
   /// The unique ID of the user that issued the token.
-  core.String userKey;
+  core.String? userKey;
 
   Token();
 
@@ -9816,30 +9297,30 @@ class Token {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (anonymous != null) 'anonymous': anonymous,
-        if (clientId != null) 'clientId': clientId,
-        if (displayText != null) 'displayText': displayText,
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (nativeApp != null) 'nativeApp': nativeApp,
-        if (scopes != null) 'scopes': scopes,
-        if (userKey != null) 'userKey': userKey,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (anonymous != null) 'anonymous': anonymous!,
+        if (clientId != null) 'clientId': clientId!,
+        if (displayText != null) 'displayText': displayText!,
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (nativeApp != null) 'nativeApp': nativeApp!,
+        if (scopes != null) 'scopes': scopes!,
+        if (userKey != null) 'userKey': userKey!,
       };
 }
 
 /// JSON response template for List tokens operation in Directory API.
 class Tokens {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// A list of Token resources.
-  core.List<Token> items;
+  core.List<Token>? items;
 
   /// The type of the API resource.
   ///
   /// This is always `admin#directory#tokenList`.
-  core.String kind;
+  core.String? kind;
 
   Tokens();
 
@@ -9858,11 +9339,11 @@ class Tokens {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -9880,35 +9361,35 @@ class User {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object addresses;
+  core.Object? addresses;
 
   /// This property is `true` if the user has completed an initial login and
   /// accepted the Terms of Service agreement.
   ///
   /// Output only.
-  core.bool agreedToTerms;
+  core.bool? agreedToTerms;
 
   /// List of the user's alias email addresses.
   ///
   /// Output only.
-  core.List<core.String> aliases;
+  core.List<core.String>? aliases;
 
   /// Indicates if user is archived.
-  core.bool archived;
+  core.bool? archived;
 
   /// Indicates if the user is forced to change their password at next login.
   ///
   /// This setting doesn't apply when \[the user signs in via a third-party
   /// identity provider\](https://support.google.com/a/answer/60224).
-  core.bool changePasswordAtNextLogin;
+  core.bool? changePasswordAtNextLogin;
 
   /// User's G Suite account creation time.
   ///
   /// (Read-only)
-  core.DateTime creationTime;
+  core.DateTime? creationTime;
 
   /// Custom fields of the user.
-  core.Map<core.String, UserCustomProperties> customSchemas;
+  core.Map<core.String, UserCustomProperties>? customSchemas;
 
   /// The customer ID to \[retrieve all account
   /// users\](/admin-sdk/directory/v1/guides/manage-users.html#get_all_users).
@@ -9920,8 +9401,8 @@ class User {
   /// \[users.list\](/admin-sdk/directory/v1/reference/users/list) request.
   ///
   /// Output only.
-  core.String customerId;
-  core.DateTime deletionTime;
+  core.String? customerId;
+  core.DateTime? deletionTime;
 
   /// A list of the user's email addresses.
   ///
@@ -9929,12 +9410,12 @@ class User {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object emails;
+  core.Object? emails;
 
   /// ETag of the resource.
   ///
   /// Output only.
-  core.String etag;
+  core.String? etag;
 
   /// A list of external IDs for the user, such as an employee or network ID.
   ///
@@ -9942,7 +9423,7 @@ class User {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object externalIds;
+  core.Object? externalIds;
 
   /// The user's gender.
   ///
@@ -9950,7 +9431,7 @@ class User {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object gender;
+  core.Object? gender;
 
   /// Stores the hash format of the password property.
   ///
@@ -9959,12 +9440,12 @@ class User {
   /// the \[SHA-1\](https://wikipedia.org/wiki/SHA-1),
   /// [MD5](https://wikipedia.org/wiki/MD5), or
   /// [crypt](https://en.wikipedia.org/wiki/Crypt_\(C\)) hash format.
-  core.String hashFunction;
+  core.String? hashFunction;
 
   /// The unique ID for the user.
   ///
   /// A user `id` can be used as a user request URI's `userKey`.
-  core.String id;
+  core.String? id;
 
   /// The user's Instant Messenger (IM) accounts.
   ///
@@ -9974,18 +9455,18 @@ class User {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object ims;
+  core.Object? ims;
 
   /// Indicates if the user's profile is visible in the Google Workspace global
   /// address list when the contact sharing feature is enabled for the domain.
   ///
   /// For more information about excluding user profiles, see the
   /// [administration help center](https://support.google.com/a/answer/1285988).
-  core.bool includeInGlobalAddressList;
+  core.bool? includeInGlobalAddressList;
 
   /// If `true`, the user's IP address is
   /// [whitelisted](https://support.google.com/a/answer/60752).
-  core.bool ipWhitelisted;
+  core.bool? ipWhitelisted;
 
   /// Indicates a user with super admininistrator privileges.
   ///
@@ -9999,7 +9480,7 @@ class User {
   /// the edit is ignored by the API service.
   ///
   /// Output only.
-  core.bool isAdmin;
+  core.bool? isAdmin;
 
   /// Indicates if the user is a delegated administrator.
   ///
@@ -10009,17 +9490,17 @@ class User {
   /// using the [Admin console](https://support.google.com/a/answer/33325).
   ///
   /// Output only.
-  core.bool isDelegatedAdmin;
+  core.bool? isDelegatedAdmin;
 
   /// Is 2-step verification enforced (Read-only)
   ///
   /// Output only.
-  core.bool isEnforcedIn2Sv;
+  core.bool? isEnforcedIn2Sv;
 
   /// Is enrolled in 2-step verification (Read-only)
   ///
   /// Output only.
-  core.bool isEnrolledIn2Sv;
+  core.bool? isEnrolledIn2Sv;
 
   /// Indicates if the user's Google mailbox is created.
   ///
@@ -10027,7 +9508,7 @@ class User {
   /// license.
   ///
   /// Output only.
-  core.bool isMailboxSetup;
+  core.bool? isMailboxSetup;
 
   /// The user's keywords.
   ///
@@ -10035,14 +9516,14 @@ class User {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object keywords;
+  core.Object? keywords;
 
   /// The type of the API resource.
   ///
   /// For Users resources, the value is `admin#directory#user`.
   ///
   /// Output only.
-  core.String kind;
+  core.String? kind;
 
   /// The user's languages.
   ///
@@ -10050,12 +9531,12 @@ class User {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object languages;
+  core.Object? languages;
 
   /// User's last login time.
   ///
   /// (Read-only)
-  core.DateTime lastLoginTime;
+  core.DateTime? lastLoginTime;
 
   /// The user's locations.
   ///
@@ -10063,7 +9544,7 @@ class User {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object locations;
+  core.Object? locations;
 
   /// Holds the given and family names of the user, and the read-only `fullName`
   /// value.
@@ -10075,26 +9556,26 @@ class User {
   /// character usage rules, see the
   /// [administration help center](https://support.google.com/a/answer/9193374).
   /// Maximum allowed data size for this field is 1Kb.
-  UserName name;
+  UserName? name;
 
   /// List of the user's non-editable alias email addresses.
   ///
   /// These are typically outside the account's primary domain or sub-domain.
   ///
   /// Output only.
-  core.List<core.String> nonEditableAliases;
+  core.List<core.String>? nonEditableAliases;
 
   /// Notes for the user.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object notes;
+  core.Object? notes;
 
   /// The full path of the parent organization associated with the user.
   ///
   /// If the parent organization is the top-level, it is represented as a
   /// forward slash (`/`).
-  core.String orgUnitPath;
+  core.String? orgUnitPath;
 
   /// A list of organizations the user belongs to.
   ///
@@ -10102,10 +9583,10 @@ class User {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object organizations;
+  core.Object? organizations;
 
   /// User's password
-  core.String password;
+  core.String? password;
 
   /// A list of the user's phone numbers.
   ///
@@ -10113,29 +9594,29 @@ class User {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object phones;
+  core.Object? phones;
 
   /// A list of [POSIX](https://www.opengroup.org/austin/papers/posix_faq.html)
   /// account information for the user.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object posixAccounts;
+  core.Object? posixAccounts;
 
   /// The user's primary email address.
   ///
   /// This property is required in a request to create a user account. The
   /// `primaryEmail` must be unique and cannot be an alias of another user.
-  core.String primaryEmail;
+  core.String? primaryEmail;
 
   /// Recovery email of the user.
-  core.String recoveryEmail;
+  core.String? recoveryEmail;
 
   /// Recovery phone of the user.
   ///
   /// The phone number must be in the E.164 format, starting with the plus sign
   /// (+). Example: *+16506661212*.
-  core.String recoveryPhone;
+  core.String? recoveryPhone;
 
   /// A list of the user's relationships to other users.
   ///
@@ -10143,16 +9624,16 @@ class User {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object relations;
+  core.Object? relations;
 
   /// A list of SSH public keys.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object sshPublicKeys;
+  core.Object? sshPublicKeys;
 
   /// Indicates if user is suspended.
-  core.bool suspended;
+  core.bool? suspended;
 
   /// Has the reason a user account is suspended either by the administrator or
   /// by Google at the time of suspension.
@@ -10160,17 +9641,17 @@ class User {
   /// The property is returned only if the `suspended` property is `true`.
   ///
   /// Output only.
-  core.String suspensionReason;
+  core.String? suspensionReason;
 
   /// ETag of the user's photo (Read-only)
   ///
   /// Output only.
-  core.String thumbnailPhotoEtag;
+  core.String? thumbnailPhotoEtag;
 
   /// Photo Url of the user (Read-only)
   ///
   /// Output only.
-  core.String thumbnailPhotoUrl;
+  core.String? thumbnailPhotoUrl;
 
   /// The user's websites.
   ///
@@ -10178,7 +9659,7 @@ class User {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object websites;
+  core.Object? websites;
 
   User();
 
@@ -10206,7 +9687,7 @@ class User {
     }
     if (_json.containsKey('customSchemas')) {
       customSchemas = (_json['customSchemas'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -10339,60 +9820,60 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addresses != null) 'addresses': addresses,
-        if (agreedToTerms != null) 'agreedToTerms': agreedToTerms,
-        if (aliases != null) 'aliases': aliases,
-        if (archived != null) 'archived': archived,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addresses != null) 'addresses': addresses!,
+        if (agreedToTerms != null) 'agreedToTerms': agreedToTerms!,
+        if (aliases != null) 'aliases': aliases!,
+        if (archived != null) 'archived': archived!,
         if (changePasswordAtNextLogin != null)
-          'changePasswordAtNextLogin': changePasswordAtNextLogin,
+          'changePasswordAtNextLogin': changePasswordAtNextLogin!,
         if (creationTime != null)
-          'creationTime': (creationTime).toIso8601String(),
-        if (customSchemas != null) 'customSchemas': customSchemas,
-        if (customerId != null) 'customerId': customerId,
+          'creationTime': (creationTime!).toIso8601String(),
+        if (customSchemas != null) 'customSchemas': customSchemas!,
+        if (customerId != null) 'customerId': customerId!,
         if (deletionTime != null)
-          'deletionTime': (deletionTime).toIso8601String(),
-        if (emails != null) 'emails': emails,
-        if (etag != null) 'etag': etag,
-        if (externalIds != null) 'externalIds': externalIds,
-        if (gender != null) 'gender': gender,
-        if (hashFunction != null) 'hashFunction': hashFunction,
-        if (id != null) 'id': id,
-        if (ims != null) 'ims': ims,
+          'deletionTime': (deletionTime!).toIso8601String(),
+        if (emails != null) 'emails': emails!,
+        if (etag != null) 'etag': etag!,
+        if (externalIds != null) 'externalIds': externalIds!,
+        if (gender != null) 'gender': gender!,
+        if (hashFunction != null) 'hashFunction': hashFunction!,
+        if (id != null) 'id': id!,
+        if (ims != null) 'ims': ims!,
         if (includeInGlobalAddressList != null)
-          'includeInGlobalAddressList': includeInGlobalAddressList,
-        if (ipWhitelisted != null) 'ipWhitelisted': ipWhitelisted,
-        if (isAdmin != null) 'isAdmin': isAdmin,
-        if (isDelegatedAdmin != null) 'isDelegatedAdmin': isDelegatedAdmin,
-        if (isEnforcedIn2Sv != null) 'isEnforcedIn2Sv': isEnforcedIn2Sv,
-        if (isEnrolledIn2Sv != null) 'isEnrolledIn2Sv': isEnrolledIn2Sv,
-        if (isMailboxSetup != null) 'isMailboxSetup': isMailboxSetup,
-        if (keywords != null) 'keywords': keywords,
-        if (kind != null) 'kind': kind,
-        if (languages != null) 'languages': languages,
+          'includeInGlobalAddressList': includeInGlobalAddressList!,
+        if (ipWhitelisted != null) 'ipWhitelisted': ipWhitelisted!,
+        if (isAdmin != null) 'isAdmin': isAdmin!,
+        if (isDelegatedAdmin != null) 'isDelegatedAdmin': isDelegatedAdmin!,
+        if (isEnforcedIn2Sv != null) 'isEnforcedIn2Sv': isEnforcedIn2Sv!,
+        if (isEnrolledIn2Sv != null) 'isEnrolledIn2Sv': isEnrolledIn2Sv!,
+        if (isMailboxSetup != null) 'isMailboxSetup': isMailboxSetup!,
+        if (keywords != null) 'keywords': keywords!,
+        if (kind != null) 'kind': kind!,
+        if (languages != null) 'languages': languages!,
         if (lastLoginTime != null)
-          'lastLoginTime': (lastLoginTime).toIso8601String(),
-        if (locations != null) 'locations': locations,
-        if (name != null) 'name': name.toJson(),
+          'lastLoginTime': (lastLoginTime!).toIso8601String(),
+        if (locations != null) 'locations': locations!,
+        if (name != null) 'name': name!.toJson(),
         if (nonEditableAliases != null)
-          'nonEditableAliases': nonEditableAliases,
-        if (notes != null) 'notes': notes,
-        if (orgUnitPath != null) 'orgUnitPath': orgUnitPath,
-        if (organizations != null) 'organizations': organizations,
-        if (password != null) 'password': password,
-        if (phones != null) 'phones': phones,
-        if (posixAccounts != null) 'posixAccounts': posixAccounts,
-        if (primaryEmail != null) 'primaryEmail': primaryEmail,
-        if (recoveryEmail != null) 'recoveryEmail': recoveryEmail,
-        if (recoveryPhone != null) 'recoveryPhone': recoveryPhone,
-        if (relations != null) 'relations': relations,
-        if (sshPublicKeys != null) 'sshPublicKeys': sshPublicKeys,
-        if (suspended != null) 'suspended': suspended,
-        if (suspensionReason != null) 'suspensionReason': suspensionReason,
+          'nonEditableAliases': nonEditableAliases!,
+        if (notes != null) 'notes': notes!,
+        if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
+        if (organizations != null) 'organizations': organizations!,
+        if (password != null) 'password': password!,
+        if (phones != null) 'phones': phones!,
+        if (posixAccounts != null) 'posixAccounts': posixAccounts!,
+        if (primaryEmail != null) 'primaryEmail': primaryEmail!,
+        if (recoveryEmail != null) 'recoveryEmail': recoveryEmail!,
+        if (recoveryPhone != null) 'recoveryPhone': recoveryPhone!,
+        if (relations != null) 'relations': relations!,
+        if (sshPublicKeys != null) 'sshPublicKeys': sshPublicKeys!,
+        if (suspended != null) 'suspended': suspended!,
+        if (suspensionReason != null) 'suspensionReason': suspensionReason!,
         if (thumbnailPhotoEtag != null)
-          'thumbnailPhotoEtag': thumbnailPhotoEtag,
-        if (thumbnailPhotoUrl != null) 'thumbnailPhotoUrl': thumbnailPhotoUrl,
-        if (websites != null) 'websites': websites,
+          'thumbnailPhotoEtag': thumbnailPhotoEtag!,
+        if (thumbnailPhotoUrl != null) 'thumbnailPhotoUrl': thumbnailPhotoUrl!,
+        if (websites != null) 'websites': websites!,
       };
 }
 
@@ -10402,10 +9883,10 @@ class UserAbout {
   ///
   /// It can either be plain or html. By default, notes contents are assumed to
   /// contain plain text.
-  core.String contentType;
+  core.String? contentType;
 
   /// Actual value of notes.
-  core.String value;
+  core.String? value;
 
   UserAbout();
 
@@ -10418,61 +9899,61 @@ class UserAbout {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentType != null) 'contentType': contentType,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentType != null) 'contentType': contentType!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// JSON template for address.
 class UserAddress {
   /// Country.
-  core.String country;
+  core.String? country;
 
   /// Country code.
-  core.String countryCode;
+  core.String? countryCode;
 
   /// Custom type.
-  core.String customType;
+  core.String? customType;
 
   /// Extended Address.
-  core.String extendedAddress;
+  core.String? extendedAddress;
 
   /// Formatted address.
-  core.String formatted;
+  core.String? formatted;
 
   /// Locality.
-  core.String locality;
+  core.String? locality;
 
   /// Other parts of address.
-  core.String poBox;
+  core.String? poBox;
 
   /// Postal code.
-  core.String postalCode;
+  core.String? postalCode;
 
   /// If this is user's primary address.
   ///
   /// Only one entry could be marked as primary.
-  core.bool primary;
+  core.bool? primary;
 
   /// Region.
-  core.String region;
+  core.String? region;
 
   /// User supplied address was structured.
   ///
   /// Structured addresses are NOT supported at this time. You might be able to
   /// write structured addresses but any values will eventually be clobbered.
-  core.bool sourceIsStructured;
+  core.bool? sourceIsStructured;
 
   /// Street.
-  core.String streetAddress;
+  core.String? streetAddress;
 
   /// Each entry can have a type which indicates standard values of that entry.
   ///
   /// For example address could be of home work etc. In addition to the standard
   /// type an entry can have a custom type and can take any value. Such type
   /// should have the CUSTOM value as type and also have a customType value.
-  core.String type;
+  core.String? type;
 
   UserAddress();
 
@@ -10518,21 +9999,21 @@ class UserAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (countryCode != null) 'countryCode': countryCode,
-        if (customType != null) 'customType': customType,
-        if (extendedAddress != null) 'extendedAddress': extendedAddress,
-        if (formatted != null) 'formatted': formatted,
-        if (locality != null) 'locality': locality,
-        if (poBox != null) 'poBox': poBox,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (primary != null) 'primary': primary,
-        if (region != null) 'region': region,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (customType != null) 'customType': customType!,
+        if (extendedAddress != null) 'extendedAddress': extendedAddress!,
+        if (formatted != null) 'formatted': formatted!,
+        if (locality != null) 'locality': locality!,
+        if (poBox != null) 'poBox': poBox!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (primary != null) 'primary': primary!,
+        if (region != null) 'region': region!,
         if (sourceIsStructured != null)
-          'sourceIsStructured': sourceIsStructured,
-        if (streetAddress != null) 'streetAddress': streetAddress,
-        if (type != null) 'type': type,
+          'sourceIsStructured': sourceIsStructured!,
+        if (streetAddress != null) 'streetAddress': streetAddress!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -10554,7 +10035,7 @@ class UserCustomProperties
       core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
-  core.Object operator [](core.Object key) => _innerMap[key];
+  core.Object? operator [](core.Object? key) => _innerMap[key];
 
   @core.override
   void operator []=(core.String key, core.Object value) {
@@ -10570,28 +10051,28 @@ class UserCustomProperties
   core.Iterable<core.String> get keys => _innerMap.keys;
 
   @core.override
-  core.Object remove(core.Object key) => _innerMap.remove(key);
+  core.Object? remove(core.Object? key) => _innerMap.remove(key);
 }
 
 /// JSON template for an email.
 class UserEmail {
   /// Email id of the user.
-  core.String address;
+  core.String? address;
 
   /// Custom Type.
-  core.String customType;
+  core.String? customType;
 
   /// If this is user's primary email.
   ///
   /// Only one entry could be marked as primary.
-  core.bool primary;
+  core.bool? primary;
 
   /// Each entry can have a type which indicates standard types of that entry.
   ///
   /// For example email could be of home, work etc. In addition to the standard
   /// type, an entry can have a custom type and can take any value Such types
   /// should have the CUSTOM value as type and also have a customType value.
-  core.String type;
+  core.String? type;
 
   UserEmail();
 
@@ -10610,24 +10091,24 @@ class UserEmail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address,
-        if (customType != null) 'customType': customType,
-        if (primary != null) 'primary': primary,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!,
+        if (customType != null) 'customType': customType!,
+        if (primary != null) 'primary': primary!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// JSON template for an externalId entry.
 class UserExternalId {
   /// Custom type.
-  core.String customType;
+  core.String? customType;
 
   /// The type of the Id.
-  core.String type;
+  core.String? type;
 
   /// The value of the id.
-  core.String value;
+  core.String? value;
 
   UserExternalId();
 
@@ -10643,10 +10124,10 @@ class UserExternalId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customType != null) 'customType': customType,
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customType != null) 'customType': customType!,
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -10655,13 +10136,13 @@ class UserGender {
   ///
   /// A human-readable string containing the proper way to refer to the profile
   /// owner by humans for example he/him/his or they/them/their.
-  core.String addressMeAs;
+  core.String? addressMeAs;
 
   /// Custom gender.
-  core.String customGender;
+  core.String? customGender;
 
   /// Gender.
-  core.String type;
+  core.String? type;
 
   UserGender();
 
@@ -10677,35 +10158,35 @@ class UserGender {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addressMeAs != null) 'addressMeAs': addressMeAs,
-        if (customGender != null) 'customGender': customGender,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addressMeAs != null) 'addressMeAs': addressMeAs!,
+        if (customGender != null) 'customGender': customGender!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// JSON template for instant messenger of an user.
 class UserIm {
   /// Custom protocol.
-  core.String customProtocol;
+  core.String? customProtocol;
 
   /// Custom type.
-  core.String customType;
+  core.String? customType;
 
   /// Instant messenger id.
-  core.String im;
+  core.String? im;
 
   /// If this is user's primary im.
   ///
   /// Only one entry could be marked as primary.
-  core.bool primary;
+  core.bool? primary;
 
   /// Protocol used in the instant messenger.
   ///
   /// It should be one of the values from ImProtocolTypes map. Similar to type
   /// it can take a CUSTOM value and specify the custom name in customProtocol
   /// field.
-  core.String protocol;
+  core.String? protocol;
 
   /// Each entry can have a type which indicates standard types of that entry.
   ///
@@ -10713,7 +10194,7 @@ class UserIm {
   /// the standard type an entry can have a custom type and can take any value.
   /// Such types should have the CUSTOM value as type and also have a customType
   /// value.
-  core.String type;
+  core.String? type;
 
   UserIm();
 
@@ -10738,20 +10219,20 @@ class UserIm {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customProtocol != null) 'customProtocol': customProtocol,
-        if (customType != null) 'customType': customType,
-        if (im != null) 'im': im,
-        if (primary != null) 'primary': primary,
-        if (protocol != null) 'protocol': protocol,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customProtocol != null) 'customProtocol': customProtocol!,
+        if (customType != null) 'customType': customType!,
+        if (im != null) 'im': im!,
+        if (primary != null) 'primary': primary!,
+        if (protocol != null) 'protocol': protocol!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// JSON template for a keyword entry.
 class UserKeyword {
   /// Custom Type.
-  core.String customType;
+  core.String? customType;
 
   /// Each entry can have a type which indicates standard type of that entry.
   ///
@@ -10759,10 +10240,10 @@ class UserKeyword {
   /// the standard type an entry can have a custom type and can give it any
   /// name. Such types should have the CUSTOM value as type and also have a
   /// customType value.
-  core.String type;
+  core.String? type;
 
   /// Keyword.
-  core.String value;
+  core.String? value;
 
   UserKeyword();
 
@@ -10778,10 +10259,10 @@ class UserKeyword {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customType != null) 'customType': customType,
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customType != null) 'customType': customType!,
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -10791,13 +10272,13 @@ class UserLanguage {
   ///
   /// User can provide own language name if there is no corresponding Google III
   /// language code. If this is set LanguageCode can't be set
-  core.String customLanguage;
+  core.String? customLanguage;
 
   /// Language Code.
   ///
   /// Should be used for storing Google III LanguageCode string representation
   /// for language. Illegal values cause SchemaException.
-  core.String languageCode;
+  core.String? languageCode;
 
   UserLanguage();
 
@@ -10810,9 +10291,9 @@ class UserLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customLanguage != null) 'customLanguage': customLanguage,
-        if (languageCode != null) 'languageCode': languageCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customLanguage != null) 'customLanguage': customLanguage!,
+        if (languageCode != null) 'languageCode': languageCode!,
       };
 }
 
@@ -10823,33 +10304,33 @@ class UserLocation {
   /// This is most useful for display purposes to concisely describe the
   /// location. For example 'Mountain View, CA', 'Near Seattle', 'US-NYC-9TH
   /// 9A209A.''
-  core.String area;
+  core.String? area;
 
   /// Building Identifier.
-  core.String buildingId;
+  core.String? buildingId;
 
   /// Custom Type.
-  core.String customType;
+  core.String? customType;
 
   /// Most specific textual code of individual desk location.
-  core.String deskCode;
+  core.String? deskCode;
 
   /// Floor name/number.
-  core.String floorName;
+  core.String? floorName;
 
   /// Floor section.
   ///
   /// More specific location within the floor. For example if a floor is divided
   /// into sections 'A', 'B' and 'C' this field would identify one of those
   /// values.
-  core.String floorSection;
+  core.String? floorSection;
 
   /// Each entry can have a type which indicates standard types of that entry.
   ///
   /// For example location could be of types default and desk. In addition to
   /// standard type an entry can have a custom type and can give it any name.
   /// Such types should have 'custom' as type and also have a customType value.
-  core.String type;
+  core.String? type;
 
   UserLocation();
 
@@ -10877,20 +10358,20 @@ class UserLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (area != null) 'area': area,
-        if (buildingId != null) 'buildingId': buildingId,
-        if (customType != null) 'customType': customType,
-        if (deskCode != null) 'deskCode': deskCode,
-        if (floorName != null) 'floorName': floorName,
-        if (floorSection != null) 'floorSection': floorSection,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (area != null) 'area': area!,
+        if (buildingId != null) 'buildingId': buildingId!,
+        if (customType != null) 'customType': customType!,
+        if (deskCode != null) 'deskCode': deskCode!,
+        if (floorName != null) 'floorName': floorName!,
+        if (floorSection != null) 'floorSection': floorSection!,
+        if (type != null) 'type': type!,
       };
 }
 
 class UserMakeAdmin {
   /// Indicates the administrator status of the user.
-  core.bool status;
+  core.bool? status;
 
   UserMakeAdmin();
 
@@ -10900,8 +10381,8 @@ class UserMakeAdmin {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (status != null) 'status': status!,
       };
 }
 
@@ -10909,16 +10390,16 @@ class UserName {
   /// The user's last name.
   ///
   /// Required when creating a user account.
-  core.String familyName;
+  core.String? familyName;
 
   /// The user's full name formed by concatenating the first and last name
   /// values.
-  core.String fullName;
+  core.String? fullName;
 
   /// The user's first name.
   ///
   /// Required when creating a user account.
-  core.String givenName;
+  core.String? givenName;
 
   UserName();
 
@@ -10934,50 +10415,50 @@ class UserName {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (familyName != null) 'familyName': familyName,
-        if (fullName != null) 'fullName': fullName,
-        if (givenName != null) 'givenName': givenName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (familyName != null) 'familyName': familyName!,
+        if (fullName != null) 'fullName': fullName!,
+        if (givenName != null) 'givenName': givenName!,
       };
 }
 
 /// JSON template for an organization entry.
 class UserOrganization {
   /// The cost center of the users department.
-  core.String costCenter;
+  core.String? costCenter;
 
   /// Custom type.
-  core.String customType;
+  core.String? customType;
 
   /// Department within the organization.
-  core.String department;
+  core.String? department;
 
   /// Description of the organization.
-  core.String description;
+  core.String? description;
 
   /// The domain to which the organization belongs to.
-  core.String domain;
+  core.String? domain;
 
   /// The full-time equivalent millipercent within the organization (100000 =
   /// 100%).
-  core.int fullTimeEquivalent;
+  core.int? fullTimeEquivalent;
 
   /// Location of the organization.
   ///
   /// This need not be fully qualified address.
-  core.String location;
+  core.String? location;
 
   /// Name of the organization
-  core.String name;
+  core.String? name;
 
   /// If it user's primary organization.
-  core.bool primary;
+  core.bool? primary;
 
   /// Symbol of the organization.
-  core.String symbol;
+  core.String? symbol;
 
   /// Title (designation) of the user in the organization.
-  core.String title;
+  core.String? title;
 
   /// Each entry can have a type which indicates standard types of that entry.
   ///
@@ -10985,7 +10466,7 @@ class UserOrganization {
   /// standard type an entry can have a custom type and can give it any name.
   /// Such types should have the CUSTOM value as type and also have a CustomType
   /// value.
-  core.String type;
+  core.String? type;
 
   UserOrganization();
 
@@ -11028,30 +10509,30 @@ class UserOrganization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (costCenter != null) 'costCenter': costCenter,
-        if (customType != null) 'customType': customType,
-        if (department != null) 'department': department,
-        if (description != null) 'description': description,
-        if (domain != null) 'domain': domain,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (costCenter != null) 'costCenter': costCenter!,
+        if (customType != null) 'customType': customType!,
+        if (department != null) 'department': department!,
+        if (description != null) 'description': description!,
+        if (domain != null) 'domain': domain!,
         if (fullTimeEquivalent != null)
-          'fullTimeEquivalent': fullTimeEquivalent,
-        if (location != null) 'location': location,
-        if (name != null) 'name': name,
-        if (primary != null) 'primary': primary,
-        if (symbol != null) 'symbol': symbol,
-        if (title != null) 'title': title,
-        if (type != null) 'type': type,
+          'fullTimeEquivalent': fullTimeEquivalent!,
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
+        if (primary != null) 'primary': primary!,
+        if (symbol != null) 'symbol': symbol!,
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// JSON template for a phone entry.
 class UserPhone {
   /// Custom Type.
-  core.String customType;
+  core.String? customType;
 
   /// If this is user's primary phone or not.
-  core.bool primary;
+  core.bool? primary;
 
   /// Each entry can have a type which indicates standard types of that entry.
   ///
@@ -11059,10 +10540,10 @@ class UserPhone {
   /// standard type an entry can have a custom type and can give it any name.
   /// Such types should have the CUSTOM value as type and also have a customType
   /// value.
-  core.String type;
+  core.String? type;
 
   /// Phone number.
-  core.String value;
+  core.String? value;
 
   UserPhone();
 
@@ -11081,34 +10562,34 @@ class UserPhone {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customType != null) 'customType': customType,
-        if (primary != null) 'primary': primary,
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customType != null) 'customType': customType!,
+        if (primary != null) 'primary': primary!,
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
 class UserPhoto {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Height of the photo in pixels.
-  core.int height;
+  core.int? height;
 
   /// The ID the API uses to uniquely identify the user.
-  core.String id;
+  core.String? id;
 
   /// The type of the API resource.
   ///
   /// For Photo resources, this is `admin#directory#user#photo`.
-  core.String kind;
+  core.String? kind;
 
   /// The MIME type of the photo.
   ///
   /// Allowed values are `JPEG`, `PNG`, `GIF`, `BMP`, `TIFF`, and web-safe
   /// base64 encoding.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// The user photo's upload data in \[web-safe
   /// Base64\](https://en.wikipedia.org/wiki/Base64#URL_applications) format in
@@ -11121,8 +10602,8 @@ class UserPhoto {
   /// RFC-4648 baseURL definition which uses the equals sign (=) for padding.
   /// This is done to simplify URL-parsing. * Whatever the size of the photo
   /// being uploaded, the API downsizes it to 96x96 pixels.
-  core.String photoData;
-  core.List<core.int> get photoDataAsBytes => convert.base64.decode(photoData);
+  core.String? photoData;
+  core.List<core.int> get photoDataAsBytes => convert.base64.decode(photoData!);
 
   set photoDataAsBytes(core.List<core.int> _bytes) {
     photoData =
@@ -11130,10 +10611,10 @@ class UserPhoto {
   }
 
   /// The user's primary email address.
-  core.String primaryEmail;
+  core.String? primaryEmail;
 
   /// Width of the photo in pixels.
-  core.int width;
+  core.int? width;
 
   UserPhoto();
 
@@ -11164,49 +10645,49 @@ class UserPhoto {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (height != null) 'height': height,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (mimeType != null) 'mimeType': mimeType,
-        if (photoData != null) 'photoData': photoData,
-        if (primaryEmail != null) 'primaryEmail': primaryEmail,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (height != null) 'height': height!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (photoData != null) 'photoData': photoData!,
+        if (primaryEmail != null) 'primaryEmail': primaryEmail!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// JSON template for a POSIX account entry.
 class UserPosixAccount {
   /// A POSIX account field identifier.
-  core.String accountId;
+  core.String? accountId;
 
   /// The GECOS (user information) for this account.
-  core.String gecos;
+  core.String? gecos;
 
   /// The default group ID.
-  core.String gid;
+  core.String? gid;
 
   /// The path to the home directory for this account.
-  core.String homeDirectory;
+  core.String? homeDirectory;
 
   /// The operating system type for this account.
-  core.String operatingSystemType;
+  core.String? operatingSystemType;
 
   /// If this is user's primary account within the SystemId.
-  core.bool primary;
+  core.bool? primary;
 
   /// The path to the login shell for this account.
-  core.String shell;
+  core.String? shell;
 
   /// System identifier for which account Username or Uid apply to.
-  core.String systemId;
+  core.String? systemId;
 
   /// The POSIX compliant user ID.
-  core.String uid;
+  core.String? uid;
 
   /// The username of the account.
-  core.String username;
+  core.String? username;
 
   UserPosixAccount();
 
@@ -11243,34 +10724,34 @@ class UserPosixAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (gecos != null) 'gecos': gecos,
-        if (gid != null) 'gid': gid,
-        if (homeDirectory != null) 'homeDirectory': homeDirectory,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (gecos != null) 'gecos': gecos!,
+        if (gid != null) 'gid': gid!,
+        if (homeDirectory != null) 'homeDirectory': homeDirectory!,
         if (operatingSystemType != null)
-          'operatingSystemType': operatingSystemType,
-        if (primary != null) 'primary': primary,
-        if (shell != null) 'shell': shell,
-        if (systemId != null) 'systemId': systemId,
-        if (uid != null) 'uid': uid,
-        if (username != null) 'username': username,
+          'operatingSystemType': operatingSystemType!,
+        if (primary != null) 'primary': primary!,
+        if (shell != null) 'shell': shell!,
+        if (systemId != null) 'systemId': systemId!,
+        if (uid != null) 'uid': uid!,
+        if (username != null) 'username': username!,
       };
 }
 
 /// JSON template for a relation entry.
 class UserRelation {
   /// Custom Type.
-  core.String customType;
+  core.String? customType;
 
   /// The relation of the user.
   ///
   /// Some of the possible values are mother father sister brother manager
   /// assistant partner.
-  core.String type;
+  core.String? type;
 
   /// The name of the relation.
-  core.String value;
+  core.String? value;
 
   UserRelation();
 
@@ -11286,25 +10767,25 @@ class UserRelation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customType != null) 'customType': customType,
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customType != null) 'customType': customType!,
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// JSON template for a POSIX account entry.
 class UserSshPublicKey {
   /// An expiration time in microseconds since epoch.
-  core.String expirationTimeUsec;
+  core.String? expirationTimeUsec;
 
   /// A SHA-256 fingerprint of the SSH public key.
   ///
   /// (Read-only)
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// An SSH public key.
-  core.String key;
+  core.String? key;
 
   UserSshPublicKey();
 
@@ -11320,17 +10801,17 @@ class UserSshPublicKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (expirationTimeUsec != null)
-          'expirationTimeUsec': expirationTimeUsec,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (key != null) 'key': key,
+          'expirationTimeUsec': expirationTimeUsec!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (key != null) 'key': key!,
       };
 }
 
 class UserUndelete {
   /// OrgUnit of User
-  core.String orgUnitPath;
+  core.String? orgUnitPath;
 
   UserUndelete();
 
@@ -11340,18 +10821,18 @@ class UserUndelete {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (orgUnitPath != null) 'orgUnitPath': orgUnitPath,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
       };
 }
 
 /// JSON template for a website entry.
 class UserWebsite {
   /// Custom Type.
-  core.String customType;
+  core.String? customType;
 
   /// If this is user's primary website or not.
-  core.bool primary;
+  core.bool? primary;
 
   /// Each entry can have a type which indicates standard types of that entry.
   ///
@@ -11359,10 +10840,10 @@ class UserWebsite {
   /// standard type an entry can have a custom type and can give it any name.
   /// Such types should have the CUSTOM value as type and also have a customType
   /// value.
-  core.String type;
+  core.String? type;
 
   /// Website.
-  core.String value;
+  core.String? value;
 
   UserWebsite();
 
@@ -11381,29 +10862,29 @@ class UserWebsite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customType != null) 'customType': customType,
-        if (primary != null) 'primary': primary,
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customType != null) 'customType': customType!,
+        if (primary != null) 'primary': primary!,
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
 class Users {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Kind of resource this is.
-  core.String kind;
+  core.String? kind;
 
   /// Token used to access next page of this result.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Event that triggered this response (only used in case of Push Response)
-  core.String triggerEvent;
+  core.String? triggerEvent;
 
   /// List of user objects.
-  core.List<User> users;
+  core.List<User>? users;
 
   Users();
 
@@ -11428,13 +10909,13 @@ class Users {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (triggerEvent != null) 'trigger_event': triggerEvent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (triggerEvent != null) 'trigger_event': triggerEvent!,
         if (users != null)
-          'users': users.map((value) => value.toJson()).toList(),
+          'users': users!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -11442,21 +10923,21 @@ class Users {
 /// verification codes for a user.
 class VerificationCode {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The type of the resource.
   ///
   /// This is always `admin#directory#verificationCode`.
-  core.String kind;
+  core.String? kind;
 
   /// The obfuscated unique ID of the user.
-  core.String userId;
+  core.String? userId;
 
   /// A current verification code for the user.
   ///
   /// Invalidated or used verification codes are not returned as part of the
   /// result.
-  core.String verificationCode;
+  core.String? verificationCode;
 
   VerificationCode();
 
@@ -11475,11 +10956,11 @@ class VerificationCode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (userId != null) 'userId': userId,
-        if (verificationCode != null) 'verificationCode': verificationCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (userId != null) 'userId': userId!,
+        if (verificationCode != null) 'verificationCode': verificationCode!,
       };
 }
 
@@ -11487,15 +10968,15 @@ class VerificationCode {
 /// API.
 class VerificationCodes {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// A list of verification code resources.
-  core.List<VerificationCode> items;
+  core.List<VerificationCode>? items;
 
   /// The type of the resource.
   ///
   /// This is always `admin#directory#verificationCodesList`.
-  core.String kind;
+  core.String? kind;
 
   VerificationCodes();
 
@@ -11514,10 +10995,10 @@ class VerificationCodes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }

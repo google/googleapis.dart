@@ -98,11 +98,8 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<Account> get(
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -135,10 +132,10 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<Accounts> list(
     core.List<core.String> filterAdClientId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (filterAdClientId == null || filterAdClientId.isEmpty) {
-      throw core.ArgumentError('Parameter filterAdClientId is required.');
+    if (filterAdClientId.isEmpty) {
+      throw core.ArgumentError('Parameter filterAdClientId cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'filterAdClientId': filterAdClientId,
@@ -183,14 +180,8 @@ class AccountsAdclientsResource {
   async.Future<AdClient> get(
     core.String accountId,
     core.String adClientId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -234,13 +225,10 @@ class AccountsAdclientsResource {
   /// this method will complete with the same error.
   async.Future<AdClients> list(
     core.String accountId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -289,17 +277,8 @@ class AccountsAdunitsResource {
     core.String accountId,
     core.String adClientId,
     core.String adUnitId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
-    if (adUnitId == null) {
-      throw core.ArgumentError('Parameter adUnitId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -343,17 +322,8 @@ class AccountsAdunitsResource {
     core.String accountId,
     core.String adClientId,
     core.String adUnitId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
-    if (adUnitId == null) {
-      throw core.ArgumentError('Parameter adUnitId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -400,18 +370,9 @@ class AccountsAdunitsResource {
     core.String accountId,
     core.String adClientId,
     core.String adUnitId, {
-    core.List<core.String> hostCustomChannelId,
-    core.String $fields,
+    core.List<core.String>? hostCustomChannelId,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
-    if (adUnitId == null) {
-      throw core.ArgumentError('Parameter adUnitId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (hostCustomChannelId != null)
         'hostCustomChannelId': hostCustomChannelId,
@@ -458,16 +419,9 @@ class AccountsAdunitsResource {
     AdUnit request,
     core.String accountId,
     core.String adClientId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -518,17 +472,11 @@ class AccountsAdunitsResource {
   async.Future<AdUnits> list(
     core.String accountId,
     core.String adClientId, {
-    core.bool includeInactive,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.bool? includeInactive,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeInactive != null) 'includeInactive': ['${includeInactive}'],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -579,19 +527,9 @@ class AccountsAdunitsResource {
     core.String accountId,
     core.String adClientId,
     core.String adUnitId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
-    if (adUnitId == null) {
-      throw core.ArgumentError('Parameter adUnitId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'adUnitId': [adUnitId],
       if ($fields != null) 'fields': [$fields],
@@ -636,16 +574,9 @@ class AccountsAdunitsResource {
     AdUnit request,
     core.String accountId,
     core.String adClientId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -729,24 +660,15 @@ class AccountsReportsResource {
     core.String accountId,
     core.String startDate,
     core.String endDate, {
-    core.List<core.String> dimension,
-    core.List<core.String> filter,
-    core.String locale,
-    core.int maxResults,
-    core.List<core.String> metric,
-    core.List<core.String> sort,
-    core.int startIndex,
-    core.String $fields,
+    core.List<core.String>? dimension,
+    core.List<core.String>? filter,
+    core.String? locale,
+    core.int? maxResults,
+    core.List<core.String>? metric,
+    core.List<core.String>? sort,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (startDate == null) {
-      throw core.ArgumentError('Parameter startDate is required.');
-    }
-    if (endDate == null) {
-      throw core.ArgumentError('Parameter endDate is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'startDate': [startDate],
       'endDate': [endDate],
@@ -795,11 +717,8 @@ class AdclientsResource {
   /// this method will complete with the same error.
   async.Future<AdClient> get(
     core.String adClientId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -837,9 +756,9 @@ class AdclientsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdClients> list({
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -894,16 +813,13 @@ class AssociationsessionsResource {
   async.Future<AssociationSession> start(
     core.List<core.String> productCode,
     core.String websiteUrl, {
-    core.String callbackUrl,
-    core.String userLocale,
-    core.String websiteLocale,
-    core.String $fields,
+    core.String? callbackUrl,
+    core.String? userLocale,
+    core.String? websiteLocale,
+    core.String? $fields,
   }) async {
-    if (productCode == null || productCode.isEmpty) {
-      throw core.ArgumentError('Parameter productCode is required.');
-    }
-    if (websiteUrl == null) {
-      throw core.ArgumentError('Parameter websiteUrl is required.');
+    if (productCode.isEmpty) {
+      throw core.ArgumentError('Parameter productCode cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'productCode': productCode,
@@ -944,11 +860,8 @@ class AssociationsessionsResource {
   /// this method will complete with the same error.
   async.Future<AssociationSession> verify(
     core.String token, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (token == null) {
-      throw core.ArgumentError('Parameter token is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'token': [token],
       if ($fields != null) 'fields': [$fields],
@@ -992,14 +905,8 @@ class CustomchannelsResource {
   async.Future<CustomChannel> delete(
     core.String adClientId,
     core.String customChannelId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
-    if (customChannelId == null) {
-      throw core.ArgumentError('Parameter customChannelId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1039,14 +946,8 @@ class CustomchannelsResource {
   async.Future<CustomChannel> get(
     core.String adClientId,
     core.String customChannelId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
-    if (customChannelId == null) {
-      throw core.ArgumentError('Parameter customChannelId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1086,13 +987,9 @@ class CustomchannelsResource {
   async.Future<CustomChannel> insert(
     CustomChannel request,
     core.String adClientId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1137,13 +1034,10 @@ class CustomchannelsResource {
   /// this method will complete with the same error.
   async.Future<CustomChannels> list(
     core.String adClientId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1189,16 +1083,9 @@ class CustomchannelsResource {
     CustomChannel request,
     core.String adClientId,
     core.String customChannelId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
-    if (customChannelId == null) {
-      throw core.ArgumentError('Parameter customChannelId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'customChannelId': [customChannelId],
       if ($fields != null) 'fields': [$fields],
@@ -1239,13 +1126,9 @@ class CustomchannelsResource {
   async.Future<CustomChannel> update(
     CustomChannel request,
     core.String adClientId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1325,21 +1208,15 @@ class ReportsResource {
   async.Future<Report> generate(
     core.String startDate,
     core.String endDate, {
-    core.List<core.String> dimension,
-    core.List<core.String> filter,
-    core.String locale,
-    core.int maxResults,
-    core.List<core.String> metric,
-    core.List<core.String> sort,
-    core.int startIndex,
-    core.String $fields,
+    core.List<core.String>? dimension,
+    core.List<core.String>? filter,
+    core.String? locale,
+    core.int? maxResults,
+    core.List<core.String>? metric,
+    core.List<core.String>? sort,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (startDate == null) {
-      throw core.ArgumentError('Parameter startDate is required.');
-    }
-    if (endDate == null) {
-      throw core.ArgumentError('Parameter endDate is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'startDate': [startDate],
       'endDate': [endDate],
@@ -1390,14 +1267,8 @@ class UrlchannelsResource {
   async.Future<UrlChannel> delete(
     core.String adClientId,
     core.String urlChannelId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
-    if (urlChannelId == null) {
-      throw core.ArgumentError('Parameter urlChannelId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1437,13 +1308,9 @@ class UrlchannelsResource {
   async.Future<UrlChannel> insert(
     UrlChannel request,
     core.String adClientId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1488,13 +1355,10 @@ class UrlchannelsResource {
   /// this method will complete with the same error.
   async.Future<UrlChannels> list(
     core.String adClientId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (adClientId == null) {
-      throw core.ArgumentError('Parameter adClientId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1517,18 +1381,18 @@ class UrlchannelsResource {
 
 class Account {
   /// Unique identifier of this account.
-  core.String id;
+  core.String? id;
 
   /// Kind of resource this is, in this case adsensehost#account.
-  core.String kind;
+  core.String? kind;
 
   /// Name of this account.
-  core.String name;
+  core.String? name;
 
   /// Approval status of this account.
   ///
   /// One of: PENDING, APPROVED, DISABLED.
-  core.String status;
+  core.String? status;
 
   Account();
 
@@ -1547,23 +1411,23 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (status != null) 'status': status!,
       };
 }
 
 class Accounts {
   /// ETag of this response for caching purposes.
-  core.String etag;
+  core.String? etag;
 
   /// The accounts returned in this list response.
-  core.List<Account> items;
+  core.List<Account>? items;
 
   /// Kind of list this is, in this case adsensehost#accounts.
-  core.String kind;
+  core.String? kind;
 
   Accounts();
 
@@ -1582,30 +1446,30 @@ class Accounts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class AdClient {
   /// Whether this ad client is opted in to ARC.
-  core.bool arcOptIn;
+  core.bool? arcOptIn;
 
   /// Unique identifier of this ad client.
-  core.String id;
+  core.String? id;
 
   /// Kind of resource this is, in this case adsensehost#adClient.
-  core.String kind;
+  core.String? kind;
 
   /// This ad client's product code, which corresponds to the PRODUCT_CODE
   /// report dimension.
-  core.String productCode;
+  core.String? productCode;
 
   /// Whether this ad client supports being reported on.
-  core.bool supportsReporting;
+  core.bool? supportsReporting;
 
   AdClient();
 
@@ -1627,30 +1491,30 @@ class AdClient {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (arcOptIn != null) 'arcOptIn': arcOptIn,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (productCode != null) 'productCode': productCode,
-        if (supportsReporting != null) 'supportsReporting': supportsReporting,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (arcOptIn != null) 'arcOptIn': arcOptIn!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (productCode != null) 'productCode': productCode!,
+        if (supportsReporting != null) 'supportsReporting': supportsReporting!,
       };
 }
 
 class AdClients {
   /// ETag of this response for caching purposes.
-  core.String etag;
+  core.String? etag;
 
   /// The ad clients returned in this list response.
-  core.List<AdClient> items;
+  core.List<AdClient>? items;
 
   /// Kind of list this is, in this case adsensehost#adClients.
-  core.String kind;
+  core.String? kind;
 
   /// Continuation token used to page through ad clients.
   ///
   /// To retrieve the next page of results, set the next request's "pageToken"
   /// value to this.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   AdClients();
 
@@ -1672,21 +1536,21 @@ class AdClients {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 class AdCode {
   /// The ad code snippet.
-  core.String adCode;
+  core.String? adCode;
 
   /// Kind this is, in this case adsensehost#adCode.
-  core.String kind;
+  core.String? kind;
 
   AdCode();
 
@@ -1699,9 +1563,9 @@ class AdCode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (adCode != null) 'adCode': adCode,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (adCode != null) 'adCode': adCode!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -1711,19 +1575,19 @@ class AdCode {
 /// codes, but without the leading hash.
 class AdStyleColors {
   /// The color of the ad background.
-  core.String background;
+  core.String? background;
 
   /// The color of the ad border.
-  core.String border;
+  core.String? border;
 
   /// The color of the ad text.
-  core.String text;
+  core.String? text;
 
   /// The color of the ad title.
-  core.String title;
+  core.String? title;
 
   /// The color of the ad url.
-  core.String url;
+  core.String? url;
 
   AdStyleColors();
 
@@ -1745,12 +1609,12 @@ class AdStyleColors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (background != null) 'background': background,
-        if (border != null) 'border': border,
-        if (text != null) 'text': text,
-        if (title != null) 'title': title,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (background != null) 'background': background!,
+        if (border != null) 'border': border!,
+        if (text != null) 'text': text!,
+        if (title != null) 'title': title!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -1760,13 +1624,13 @@ class AdStyleFont {
   ///
   /// Possible values are: ACCOUNT_DEFAULT_FAMILY, ADSENSE_DEFAULT_FAMILY,
   /// ARIAL, TIMES and VERDANA.
-  core.String family;
+  core.String? family;
 
   /// The size of the font.
   ///
   /// Possible values are: ACCOUNT_DEFAULT_SIZE, ADSENSE_DEFAULT_SIZE, SMALL,
   /// MEDIUM and LARGE.
-  core.String size;
+  core.String? size;
 
   AdStyleFont();
 
@@ -1779,9 +1643,9 @@ class AdStyleFont {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (family != null) 'family': family,
-        if (size != null) 'size': size,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (family != null) 'family': family!,
+        if (size != null) 'size': size!,
       };
 }
 
@@ -1790,16 +1654,16 @@ class AdStyle {
   ///
   /// These are represented as six hexadecimal characters, similar to HTML color
   /// codes, but without the leading hash.
-  AdStyleColors colors;
+  AdStyleColors? colors;
 
   /// The style of the corners in the ad (deprecated: never populated, ignored).
-  core.String corners;
+  core.String? corners;
 
   /// The font which is included in the style.
-  AdStyleFont font;
+  AdStyleFont? font;
 
   /// Kind this is, in this case adsensehost#adStyle.
-  core.String kind;
+  core.String? kind;
 
   AdStyle();
 
@@ -1820,11 +1684,11 @@ class AdStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (colors != null) 'colors': colors.toJson(),
-        if (corners != null) 'corners': corners,
-        if (font != null) 'font': font.toJson(),
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (colors != null) 'colors': colors!.toJson(),
+        if (corners != null) 'corners': corners!,
+        if (font != null) 'font': font!.toJson(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -1834,15 +1698,15 @@ class AdUnitContentAdsSettingsBackupOption {
   ///
   /// These are represented as six hexadecimal characters, similar to HTML color
   /// codes, but without the leading hash.
-  core.String color;
+  core.String? color;
 
   /// Type of the backup option.
   ///
   /// Possible values are BLANK, COLOR and URL.
-  core.String type;
+  core.String? type;
 
   /// URL to use when type is set to URL.
-  core.String url;
+  core.String? url;
 
   AdUnitContentAdsSettingsBackupOption();
 
@@ -1858,10 +1722,10 @@ class AdUnitContentAdsSettingsBackupOption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (color != null) 'color': color,
-        if (type != null) 'type': type,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (color != null) 'color': color!,
+        if (type != null) 'type': type!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -1869,17 +1733,17 @@ class AdUnitContentAdsSettingsBackupOption {
 /// - deprecated).
 class AdUnitContentAdsSettings {
   /// The backup option to be used in instances where no ad is available.
-  AdUnitContentAdsSettingsBackupOption backupOption;
+  AdUnitContentAdsSettingsBackupOption? backupOption;
 
   /// Size of this ad unit.
   ///
   /// Size values are in the form SIZE_{width}_{height}.
-  core.String size;
+  core.String? size;
 
   /// Type of this ad unit.
   ///
   /// Possible values are TEXT, TEXT_IMAGE, IMAGE and LINK.
-  core.String type;
+  core.String? type;
 
   AdUnitContentAdsSettings();
 
@@ -1896,26 +1760,26 @@ class AdUnitContentAdsSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (backupOption != null) 'backupOption': backupOption.toJson(),
-        if (size != null) 'size': size,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (backupOption != null) 'backupOption': backupOption!.toJson(),
+        if (size != null) 'size': size!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// Settings specific to WAP mobile content ads (AFMC - deprecated).
 class AdUnitMobileContentAdsSettings {
   /// The markup language to use for this ad unit.
-  core.String markupLanguage;
+  core.String? markupLanguage;
 
   /// The scripting language to use for this ad unit.
-  core.String scriptingLanguage;
+  core.String? scriptingLanguage;
 
   /// Size of this ad unit.
-  core.String size;
+  core.String? size;
 
   /// Type of this ad unit.
-  core.String type;
+  core.String? type;
 
   AdUnitMobileContentAdsSettings();
 
@@ -1934,39 +1798,39 @@ class AdUnitMobileContentAdsSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (markupLanguage != null) 'markupLanguage': markupLanguage,
-        if (scriptingLanguage != null) 'scriptingLanguage': scriptingLanguage,
-        if (size != null) 'size': size,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (markupLanguage != null) 'markupLanguage': markupLanguage!,
+        if (scriptingLanguage != null) 'scriptingLanguage': scriptingLanguage!,
+        if (size != null) 'size': size!,
+        if (type != null) 'type': type!,
       };
 }
 
 class AdUnit {
   /// Identity code of this ad unit, not necessarily unique across ad clients.
-  core.String code;
+  core.String? code;
 
   /// Settings specific to content ads (AFC) and highend mobile content ads
   /// (AFMC - deprecated).
-  AdUnitContentAdsSettings contentAdsSettings;
+  AdUnitContentAdsSettings? contentAdsSettings;
 
   /// Custom style information specific to this ad unit.
-  AdStyle customStyle;
+  AdStyle? customStyle;
 
   /// Unique identifier of this ad unit.
   ///
   /// This should be considered an opaque identifier; it is not safe to rely on
   /// it being in any particular format.
-  core.String id;
+  core.String? id;
 
   /// Kind of resource this is, in this case adsensehost#adUnit.
-  core.String kind;
+  core.String? kind;
 
   /// Settings specific to WAP mobile content ads (AFMC - deprecated).
-  AdUnitMobileContentAdsSettings mobileContentAdsSettings;
+  AdUnitMobileContentAdsSettings? mobileContentAdsSettings;
 
   /// Name of this ad unit.
-  core.String name;
+  core.String? name;
 
   /// Status of this ad unit.
   ///
@@ -1979,7 +1843,7 @@ class AdUnit {
   ///
   /// INACTIVE: Indicates that there has been no activity on this ad unit in the
   /// last seven days.
-  core.String status;
+  core.String? status;
 
   AdUnit();
 
@@ -2014,35 +1878,35 @@ class AdUnit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
         if (contentAdsSettings != null)
-          'contentAdsSettings': contentAdsSettings.toJson(),
-        if (customStyle != null) 'customStyle': customStyle.toJson(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+          'contentAdsSettings': contentAdsSettings!.toJson(),
+        if (customStyle != null) 'customStyle': customStyle!.toJson(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (mobileContentAdsSettings != null)
-          'mobileContentAdsSettings': mobileContentAdsSettings.toJson(),
-        if (name != null) 'name': name,
-        if (status != null) 'status': status,
+          'mobileContentAdsSettings': mobileContentAdsSettings!.toJson(),
+        if (name != null) 'name': name!,
+        if (status != null) 'status': status!,
       };
 }
 
 class AdUnits {
   /// ETag of this response for caching purposes.
-  core.String etag;
+  core.String? etag;
 
   /// The ad units returned in this list response.
-  core.List<AdUnit> items;
+  core.List<AdUnit>? items;
 
   /// Kind of list this is, in this case adsensehost#adUnits.
-  core.String kind;
+  core.String? kind;
 
   /// Continuation token used to page through ad units.
   ///
   /// To retrieve the next page of results, set the next request's "pageToken"
   /// value to this.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   AdUnits();
 
@@ -2064,12 +1928,12 @@ class AdUnits {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2077,39 +1941,39 @@ class AssociationSession {
   /// Hosted account id of the associated publisher after association.
   ///
   /// Present if status is ACCEPTED.
-  core.String accountId;
+  core.String? accountId;
 
   /// Unique identifier of this association session.
-  core.String id;
+  core.String? id;
 
   /// Kind of resource this is, in this case adsensehost#associationSession.
-  core.String kind;
+  core.String? kind;
 
   /// The products to associate with the user.
   ///
   /// Options: AFC, AFG, AFV, AFS (deprecated), AFMC (deprecated)
-  core.List<core.String> productCodes;
+  core.List<core.String>? productCodes;
 
   /// Redirect URL of this association session.
   ///
   /// Used to redirect users into the AdSense association flow.
-  core.String redirectUrl;
+  core.String? redirectUrl;
 
   /// Status of the completed association, available once the association
   /// callback token has been verified.
   ///
   /// One of ACCEPTED, REJECTED, or ERROR.
-  core.String status;
+  core.String? status;
 
   /// The preferred locale of the user themselves when going through the AdSense
   /// association flow.
-  core.String userLocale;
+  core.String? userLocale;
 
   /// The locale of the user's hosted website.
-  core.String websiteLocale;
+  core.String? websiteLocale;
 
   /// The URL of the user's hosted website.
-  core.String websiteUrl;
+  core.String? websiteUrl;
 
   AssociationSession();
 
@@ -2145,34 +2009,34 @@ class AssociationSession {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (productCodes != null) 'productCodes': productCodes,
-        if (redirectUrl != null) 'redirectUrl': redirectUrl,
-        if (status != null) 'status': status,
-        if (userLocale != null) 'userLocale': userLocale,
-        if (websiteLocale != null) 'websiteLocale': websiteLocale,
-        if (websiteUrl != null) 'websiteUrl': websiteUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (productCodes != null) 'productCodes': productCodes!,
+        if (redirectUrl != null) 'redirectUrl': redirectUrl!,
+        if (status != null) 'status': status!,
+        if (userLocale != null) 'userLocale': userLocale!,
+        if (websiteLocale != null) 'websiteLocale': websiteLocale!,
+        if (websiteUrl != null) 'websiteUrl': websiteUrl!,
       };
 }
 
 class CustomChannel {
   /// Code of this custom channel, not necessarily unique across ad clients.
-  core.String code;
+  core.String? code;
 
   /// Unique identifier of this custom channel.
   ///
   /// This should be considered an opaque identifier; it is not safe to rely on
   /// it being in any particular format.
-  core.String id;
+  core.String? id;
 
   /// Kind of resource this is, in this case adsensehost#customChannel.
-  core.String kind;
+  core.String? kind;
 
   /// Name of this custom channel.
-  core.String name;
+  core.String? name;
 
   CustomChannel();
 
@@ -2191,29 +2055,29 @@ class CustomChannel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
 class CustomChannels {
   /// ETag of this response for caching purposes.
-  core.String etag;
+  core.String? etag;
 
   /// The custom channels returned in this list response.
-  core.List<CustomChannel> items;
+  core.List<CustomChannel>? items;
 
   /// Kind of list this is, in this case adsensehost#customChannels.
-  core.String kind;
+  core.String? kind;
 
   /// Continuation token used to page through custom channels.
   ///
   /// To retrieve the next page of results, set the next request's "pageToken"
   /// value to this.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   CustomChannels();
 
@@ -2235,12 +2099,12 @@ class CustomChannels {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2248,14 +2112,14 @@ class ReportHeaders {
   /// The currency of this column.
   ///
   /// Only present if the header type is METRIC_CURRENCY.
-  core.String currency;
+  core.String? currency;
 
   /// The name of the header.
-  core.String name;
+  core.String? name;
 
   /// The type of the header; one of DIMENSION, METRIC_TALLY, METRIC_RATIO, or
   /// METRIC_CURRENCY.
-  core.String type;
+  core.String? type;
 
   ReportHeaders();
 
@@ -2271,10 +2135,10 @@ class ReportHeaders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currency != null) 'currency': currency,
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currency != null) 'currency': currency!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2283,38 +2147,38 @@ class Report {
   ///
   /// This is the same length as any other row in the report; cells
   /// corresponding to dimension columns are empty.
-  core.List<core.String> averages;
+  core.List<core.String>? averages;
 
   /// The header information of the columns requested in the report.
   ///
   /// This is a list of headers; one for each dimension in the request, followed
   /// by one for each metric in the request.
-  core.List<ReportHeaders> headers;
+  core.List<ReportHeaders>? headers;
 
   /// Kind this is, in this case adsensehost#report.
-  core.String kind;
+  core.String? kind;
 
   /// The output rows of the report.
   ///
   /// Each row is a list of cells; one for each dimension in the request,
   /// followed by one for each metric in the request. The dimension cells
   /// contain strings, and the metric cells contain numbers.
-  core.List<core.List<core.String>> rows;
+  core.List<core.List<core.String>>? rows;
 
   /// The total number of rows matched by the report request.
   ///
   /// Fewer rows may be returned in the response due to being limited by the row
   /// count requested or the report row limit.
-  core.String totalMatchedRows;
+  core.String? totalMatchedRows;
 
   /// The totals of the report.
   ///
   /// This is the same length as any other row in the report; cells
   /// corresponding to dimension columns are empty.
-  core.List<core.String> totals;
+  core.List<core.String>? totals;
 
   /// Any warnings associated with generation of the report.
-  core.List<core.String> warnings;
+  core.List<core.String>? warnings;
 
   Report();
 
@@ -2355,15 +2219,15 @@ class Report {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (averages != null) 'averages': averages,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (averages != null) 'averages': averages!,
         if (headers != null)
-          'headers': headers.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (rows != null) 'rows': rows,
-        if (totalMatchedRows != null) 'totalMatchedRows': totalMatchedRows,
-        if (totals != null) 'totals': totals,
-        if (warnings != null) 'warnings': warnings,
+          'headers': headers!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (rows != null) 'rows': rows!,
+        if (totalMatchedRows != null) 'totalMatchedRows': totalMatchedRows!,
+        if (totals != null) 'totals': totals!,
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -2372,15 +2236,15 @@ class UrlChannel {
   ///
   /// This should be considered an opaque identifier; it is not safe to rely on
   /// it being in any particular format.
-  core.String id;
+  core.String? id;
 
   /// Kind of resource this is, in this case adsensehost#urlChannel.
-  core.String kind;
+  core.String? kind;
 
   /// URL Pattern of this URL channel.
   ///
   /// Does not include "http://" or "https://". Example: www.example.com/home
-  core.String urlPattern;
+  core.String? urlPattern;
 
   UrlChannel();
 
@@ -2396,28 +2260,28 @@ class UrlChannel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (urlPattern != null) 'urlPattern': urlPattern,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (urlPattern != null) 'urlPattern': urlPattern!,
       };
 }
 
 class UrlChannels {
   /// ETag of this response for caching purposes.
-  core.String etag;
+  core.String? etag;
 
   /// The URL channels returned in this list response.
-  core.List<UrlChannel> items;
+  core.List<UrlChannel>? items;
 
   /// Kind of list this is, in this case adsensehost#urlChannels.
-  core.String kind;
+  core.String? kind;
 
   /// Continuation token used to page through URL channels.
   ///
   /// To retrieve the next page of results, set the next request's "pageToken"
   /// value to this.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   UrlChannels();
 
@@ -2439,11 +2303,11 @@ class UrlChannels {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

@@ -36,8 +36,14 @@ core.List<core.String> buildUnnamed2998() {
 
 void checkUnnamed2998(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterPlatformSummary = 0;
@@ -60,13 +66,28 @@ api.PlatformSummary buildPlatformSummary() {
 void checkPlatformSummary(api.PlatformSummary o) {
   buildCounterPlatformSummary++;
   if (buildCounterPlatformSummary < 3) {
-    unittest.expect(o.betterAdsStatus, unittest.equals('foo'));
-    unittest.expect(o.enforcementTime, unittest.equals('foo'));
-    unittest.expect(o.filterStatus, unittest.equals('foo'));
-    unittest.expect(o.lastChangeTime, unittest.equals('foo'));
-    checkUnnamed2998(o.region);
-    unittest.expect(o.reportUrl, unittest.equals('foo'));
-    unittest.expect(o.underReview, unittest.isTrue);
+    unittest.expect(
+      o.betterAdsStatus!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.enforcementTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.filterStatus!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastChangeTime!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed2998(o.region!);
+    unittest.expect(
+      o.reportUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.underReview!, unittest.isTrue);
   }
   buildCounterPlatformSummary--;
 }
@@ -87,9 +108,12 @@ api.SiteSummaryResponse buildSiteSummaryResponse() {
 void checkSiteSummaryResponse(api.SiteSummaryResponse o) {
   buildCounterSiteSummaryResponse++;
   if (buildCounterSiteSummaryResponse < 3) {
-    checkPlatformSummary(o.desktopSummary as api.PlatformSummary);
-    checkPlatformSummary(o.mobileSummary as api.PlatformSummary);
-    unittest.expect(o.reviewedSite, unittest.equals('foo'));
+    checkPlatformSummary(o.desktopSummary! as api.PlatformSummary);
+    checkPlatformSummary(o.mobileSummary! as api.PlatformSummary);
+    unittest.expect(
+      o.reviewedSite!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSiteSummaryResponse--;
 }
@@ -121,7 +145,7 @@ api.ViolatingSitesResponse buildViolatingSitesResponse() {
 void checkViolatingSitesResponse(api.ViolatingSitesResponse o) {
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    checkUnnamed2999(o.violatingSites);
+    checkUnnamed2999(o.violatingSites!);
   }
   buildCounterViolatingSitesResponse--;
 }
@@ -163,10 +187,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -185,7 +213,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -212,10 +243,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("v1/violatingSites"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("v1/violatingSites"),
+        );
         pathOffset += 17;
 
         var query = (req.url).query;
@@ -233,7 +268,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

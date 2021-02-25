@@ -100,13 +100,10 @@ class EncodedFullHashesResource {
   /// this method will complete with the same error.
   async.Future<GoogleSecuritySafebrowsingV4FindFullHashesResponse> get(
     core.String encodedRequest, {
-    core.String clientId,
-    core.String clientVersion,
-    core.String $fields,
+    core.String? clientId,
+    core.String? clientVersion,
+    core.String? $fields,
   }) async {
-    if (encodedRequest == null) {
-      throw core.ArgumentError('Parameter encodedRequest is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientId != null) 'clientId': [clientId],
       if (clientVersion != null) 'clientVersion': [clientVersion],
@@ -153,13 +150,10 @@ class EncodedUpdatesResource {
   /// this method will complete with the same error.
   async.Future<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse> get(
     core.String encodedRequest, {
-    core.String clientId,
-    core.String clientVersion,
-    core.String $fields,
+    core.String? clientId,
+    core.String? clientVersion,
+    core.String? $fields,
   }) async {
-    if (encodedRequest == null) {
-      throw core.ArgumentError('Parameter encodedRequest is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientId != null) 'clientId': [clientId],
       if (clientVersion != null) 'clientVersion': [clientVersion],
@@ -202,10 +196,9 @@ class FullHashesResource {
   /// this method will complete with the same error.
   async.Future<GoogleSecuritySafebrowsingV4FindFullHashesResponse> find(
     GoogleSecuritySafebrowsingV4FindFullHashesRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -248,10 +241,9 @@ class ThreatHitsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> create(
     GoogleSecuritySafebrowsingV4ThreatHit request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -296,10 +288,9 @@ class ThreatListUpdatesResource {
   async.Future<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse>
       fetch(
     GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -337,7 +328,7 @@ class ThreatListsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleSecuritySafebrowsingV4ListThreatListsResponse> list({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -378,10 +369,9 @@ class ThreatMatchesResource {
   /// this method will complete with the same error.
   async.Future<GoogleSecuritySafebrowsingV4FindThreatMatchesResponse> find(
     GoogleSecuritySafebrowsingV4FindThreatMatchesRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -413,15 +403,15 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The expected state of a client's local database.
 class GoogleSecuritySafebrowsingV4Checksum {
   /// The SHA256 hash of the client state; that is, of the sorted list of all
   /// hashes present in the database.
-  core.String sha256;
-  core.List<core.int> get sha256AsBytes => convert.base64.decode(sha256);
+  core.String? sha256;
+  core.List<core.int> get sha256AsBytes => convert.base64.decode(sha256!);
 
   set sha256AsBytes(core.List<core.int> _bytes) {
     sha256 =
@@ -436,8 +426,8 @@ class GoogleSecuritySafebrowsingV4Checksum {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sha256 != null) 'sha256': sha256,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sha256 != null) 'sha256': sha256!,
       };
 }
 
@@ -445,10 +435,10 @@ class GoogleSecuritySafebrowsingV4Checksum {
 class GoogleSecuritySafebrowsingV4ClientInfo {
   /// A client ID that (hopefully) uniquely identifies the client implementation
   /// of the Safe Browsing API.
-  core.String clientId;
+  core.String? clientId;
 
   /// The version of the client implementation.
-  core.String clientVersion;
+  core.String? clientVersion;
 
   GoogleSecuritySafebrowsingV4ClientInfo();
 
@@ -461,9 +451,9 @@ class GoogleSecuritySafebrowsingV4ClientInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientId != null) 'clientId': clientId,
-        if (clientVersion != null) 'clientVersion': clientVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (clientVersion != null) 'clientVersion': clientVersion!,
       };
 }
 
@@ -474,11 +464,11 @@ class GoogleSecuritySafebrowsingV4ClientInfo {
 /// that list. NOTE: Field index 2 is unused. NEXT: 5
 class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest {
   /// The client metadata.
-  GoogleSecuritySafebrowsingV4ClientInfo client;
+  GoogleSecuritySafebrowsingV4ClientInfo? client;
 
   /// The requested threat list updates.
   core.List<
-          GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>
+          GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>?
       listUpdateRequests;
 
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest();
@@ -499,18 +489,18 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (client != null) 'client': client.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (client != null) 'client': client!.toJson(),
         if (listUpdateRequests != null)
           'listUpdateRequests':
-              listUpdateRequests.map((value) => value.toJson()).toList(),
+              listUpdateRequests!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A single list update request.
 class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest {
   /// The constraints associated with this request.
-  GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints
+  GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints?
       constraints;
 
   /// The type of platform at risk by entries present in the list.
@@ -524,12 +514,12 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
   /// - "ANY_PLATFORM" : Threat posed to at least one of the defined platforms.
   /// - "ALL_PLATFORMS" : Threat posed to all defined platforms.
   /// - "CHROME" : Threat posed to Chrome.
-  core.String platformType;
+  core.String? platformType;
 
   /// The current state of the client for the requested list (the encrypted
   /// client state that was received from the last successful list update).
-  core.String state;
-  core.List<core.int> get stateAsBytes => convert.base64.decode(state);
+  core.String? state;
+  core.List<core.int> get stateAsBytes => convert.base64.decode(state!);
 
   set stateAsBytes(core.List<core.int> _bytes) {
     state =
@@ -545,7 +535,7 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
   /// - "CHROME_EXTENSION" : Chrome extension.
   /// - "FILENAME" : Filename.
   /// - "CERT" : CERT
-  core.String threatEntryType;
+  core.String? threatEntryType;
 
   /// The type of threat posed by entries present in the list.
   /// Possible string values are:
@@ -574,7 +564,7 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
   /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
   /// expressions.
-  core.String threatType;
+  core.String? threatType;
 
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest();
 
@@ -600,12 +590,12 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (constraints != null) 'constraints': constraints.toJson(),
-        if (platformType != null) 'platformType': platformType,
-        if (state != null) 'state': state,
-        if (threatEntryType != null) 'threatEntryType': threatEntryType,
-        if (threatType != null) 'threatType': threatType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (constraints != null) 'constraints': constraints!.toJson(),
+        if (platformType != null) 'platformType': platformType!,
+        if (state != null) 'state': state!,
+        if (threatEntryType != null) 'threatEntryType': threatEntryType!,
+        if (threatType != null) 'threatType': threatType!,
       };
 }
 
@@ -613,34 +603,34 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
 class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints {
   /// A client's physical location, expressed as a ISO 31166-1 alpha-2 region
   /// code.
-  core.String deviceLocation;
+  core.String? deviceLocation;
 
   /// Requests the lists for a specific language.
   ///
   /// Expects ISO 639 alpha-2 format.
-  core.String language;
+  core.String? language;
 
   /// Sets the maximum number of entries that the client is willing to have in
   /// the local database for the specified list.
   ///
   /// This should be a power of 2 between 2**10 and 2**20. If zero, no database
   /// size limit is set.
-  core.int maxDatabaseEntries;
+  core.int? maxDatabaseEntries;
 
   /// The maximum size in number of entries.
   ///
   /// The update will not contain more entries than this value. This should be a
   /// power of 2 between 2**10 and 2**20. If zero, no update size limit is set.
-  core.int maxUpdateEntries;
+  core.int? maxUpdateEntries;
 
   /// Requests the list for a specific geographic location.
   ///
   /// If not set the server may pick that value based on the user's IP address.
   /// Expects ISO 3166-1 alpha-2 format.
-  core.String region;
+  core.String? region;
 
   /// The compression types supported by the client.
-  core.List<core.String> supportedCompressions;
+  core.List<core.String>? supportedCompressions;
 
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints();
 
@@ -668,15 +658,15 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceLocation != null) 'deviceLocation': deviceLocation,
-        if (language != null) 'language': language,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceLocation != null) 'deviceLocation': deviceLocation!,
+        if (language != null) 'language': language!,
         if (maxDatabaseEntries != null)
-          'maxDatabaseEntries': maxDatabaseEntries,
-        if (maxUpdateEntries != null) 'maxUpdateEntries': maxUpdateEntries,
-        if (region != null) 'region': region,
+          'maxDatabaseEntries': maxDatabaseEntries!,
+        if (maxUpdateEntries != null) 'maxUpdateEntries': maxUpdateEntries!,
+        if (region != null) 'region': region!,
         if (supportedCompressions != null)
-          'supportedCompressions': supportedCompressions,
+          'supportedCompressions': supportedCompressions!,
       };
 }
 
@@ -687,14 +677,14 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse {
   /// by clients. This is the case, for example, if the server has no updates
   /// for a particular list.
   core.List<
-          GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>
+          GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>?
       listUpdateResponses;
 
   /// The minimum duration the client must wait before issuing any update
   /// request.
   ///
   /// If this field is not set clients may update as soon as they want.
-  core.String minimumWaitDuration;
+  core.String? minimumWaitDuration;
 
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse();
 
@@ -713,12 +703,12 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (listUpdateResponses != null)
           'listUpdateResponses':
-              listUpdateResponses.map((value) => value.toJson()).toList(),
+              listUpdateResponses!.map((value) => value.toJson()).toList(),
         if (minimumWaitDuration != null)
-          'minimumWaitDuration': minimumWaitDuration,
+          'minimumWaitDuration': minimumWaitDuration!,
       };
 }
 
@@ -728,21 +718,21 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateRespon
   ///
   /// Repeated to allow for a combination of compressed and raw data to be sent
   /// in a single response.
-  core.List<GoogleSecuritySafebrowsingV4ThreatEntrySet> additions;
+  core.List<GoogleSecuritySafebrowsingV4ThreatEntrySet>? additions;
 
   /// The expected SHA256 hash of the client state; that is, of the sorted list
   /// of all hashes present in the database after applying the provided update.
   ///
   /// If the client state doesn't match the expected state, the client must
   /// disregard this update and retry later.
-  GoogleSecuritySafebrowsingV4Checksum checksum;
+  GoogleSecuritySafebrowsingV4Checksum? checksum;
 
   /// The new client state, in encrypted format.
   ///
   /// Opaque to clients.
-  core.String newClientState;
+  core.String? newClientState;
   core.List<core.int> get newClientStateAsBytes =>
-      convert.base64.decode(newClientState);
+      convert.base64.decode(newClientState!);
 
   set newClientStateAsBytes(core.List<core.int> _bytes) {
     newClientState =
@@ -760,12 +750,12 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateRespon
   /// - "ANY_PLATFORM" : Threat posed to at least one of the defined platforms.
   /// - "ALL_PLATFORMS" : Threat posed to all defined platforms.
   /// - "CHROME" : Threat posed to Chrome.
-  core.String platformType;
+  core.String? platformType;
 
   /// A set of entries to remove from a local threat type's list.
   ///
   /// In practice, this field is empty or contains exactly one ThreatEntrySet.
-  core.List<GoogleSecuritySafebrowsingV4ThreatEntrySet> removals;
+  core.List<GoogleSecuritySafebrowsingV4ThreatEntrySet>? removals;
 
   /// The type of response.
   ///
@@ -778,7 +768,7 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateRespon
   /// - "FULL_UPDATE" : Full updates replace the client's entire local database.
   /// This means that either the client was seriously out-of-date or the client
   /// is believed to be corrupt.
-  core.String responseType;
+  core.String? responseType;
 
   /// The format of the threats.
   /// Possible string values are:
@@ -789,7 +779,7 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateRespon
   /// - "CHROME_EXTENSION" : Chrome extension.
   /// - "FILENAME" : Filename.
   /// - "CERT" : CERT
-  core.String threatEntryType;
+  core.String? threatEntryType;
 
   /// The threat type for which data is returned.
   /// Possible string values are:
@@ -818,7 +808,7 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateRespon
   /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
   /// expressions.
-  core.String threatType;
+  core.String? threatType;
 
   GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse();
 
@@ -859,17 +849,17 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateRespon
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additions != null)
-          'additions': additions.map((value) => value.toJson()).toList(),
-        if (checksum != null) 'checksum': checksum.toJson(),
-        if (newClientState != null) 'newClientState': newClientState,
-        if (platformType != null) 'platformType': platformType,
+          'additions': additions!.map((value) => value.toJson()).toList(),
+        if (checksum != null) 'checksum': checksum!.toJson(),
+        if (newClientState != null) 'newClientState': newClientState!,
+        if (platformType != null) 'platformType': platformType!,
         if (removals != null)
-          'removals': removals.map((value) => value.toJson()).toList(),
-        if (responseType != null) 'responseType': responseType,
-        if (threatEntryType != null) 'threatEntryType': threatEntryType,
-        if (threatType != null) 'threatType': threatType,
+          'removals': removals!.map((value) => value.toJson()).toList(),
+        if (responseType != null) 'responseType': responseType!,
+        if (threatEntryType != null) 'threatEntryType': threatEntryType!,
+        if (threatType != null) 'threatType': threatType!,
       };
 }
 
@@ -877,16 +867,16 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateRespon
 class GoogleSecuritySafebrowsingV4FindFullHashesRequest {
   /// Client metadata associated with callers of higher-level APIs built on top
   /// of the client's implementation.
-  GoogleSecuritySafebrowsingV4ClientInfo apiClient;
+  GoogleSecuritySafebrowsingV4ClientInfo? apiClient;
 
   /// The client metadata.
-  GoogleSecuritySafebrowsingV4ClientInfo client;
+  GoogleSecuritySafebrowsingV4ClientInfo? client;
 
   /// The current client states for each of the client's local threat lists.
-  core.List<core.String> clientStates;
+  core.List<core.String>? clientStates;
 
   /// The lists and hashes to be checked.
-  GoogleSecuritySafebrowsingV4ThreatInfo threatInfo;
+  GoogleSecuritySafebrowsingV4ThreatInfo? threatInfo;
 
   GoogleSecuritySafebrowsingV4FindFullHashesRequest();
 
@@ -910,28 +900,28 @@ class GoogleSecuritySafebrowsingV4FindFullHashesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiClient != null) 'apiClient': apiClient.toJson(),
-        if (client != null) 'client': client.toJson(),
-        if (clientStates != null) 'clientStates': clientStates,
-        if (threatInfo != null) 'threatInfo': threatInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiClient != null) 'apiClient': apiClient!.toJson(),
+        if (client != null) 'client': client!.toJson(),
+        if (clientStates != null) 'clientStates': clientStates!,
+        if (threatInfo != null) 'threatInfo': threatInfo!.toJson(),
       };
 }
 
 class GoogleSecuritySafebrowsingV4FindFullHashesResponse {
   /// The full hashes that matched the requested prefixes.
-  core.List<GoogleSecuritySafebrowsingV4ThreatMatch> matches;
+  core.List<GoogleSecuritySafebrowsingV4ThreatMatch>? matches;
 
   /// The minimum duration the client must wait before issuing any find hashes
   /// request.
   ///
   /// If this field is not set, clients can issue a request as soon as they
   /// want.
-  core.String minimumWaitDuration;
+  core.String? minimumWaitDuration;
 
   /// For requested entities that did not match the threat list, how long to
   /// cache the response.
-  core.String negativeCacheDuration;
+  core.String? negativeCacheDuration;
 
   GoogleSecuritySafebrowsingV4FindFullHashesResponse();
 
@@ -951,23 +941,23 @@ class GoogleSecuritySafebrowsingV4FindFullHashesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (matches != null)
-          'matches': matches.map((value) => value.toJson()).toList(),
+          'matches': matches!.map((value) => value.toJson()).toList(),
         if (minimumWaitDuration != null)
-          'minimumWaitDuration': minimumWaitDuration,
+          'minimumWaitDuration': minimumWaitDuration!,
         if (negativeCacheDuration != null)
-          'negativeCacheDuration': negativeCacheDuration,
+          'negativeCacheDuration': negativeCacheDuration!,
       };
 }
 
 /// Request to check entries against lists.
 class GoogleSecuritySafebrowsingV4FindThreatMatchesRequest {
   /// The client metadata.
-  GoogleSecuritySafebrowsingV4ClientInfo client;
+  GoogleSecuritySafebrowsingV4ClientInfo? client;
 
   /// The lists and entries to be checked for matches.
-  GoogleSecuritySafebrowsingV4ThreatInfo threatInfo;
+  GoogleSecuritySafebrowsingV4ThreatInfo? threatInfo;
 
   GoogleSecuritySafebrowsingV4FindThreatMatchesRequest();
 
@@ -983,15 +973,15 @@ class GoogleSecuritySafebrowsingV4FindThreatMatchesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (client != null) 'client': client.toJson(),
-        if (threatInfo != null) 'threatInfo': threatInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (client != null) 'client': client!.toJson(),
+        if (threatInfo != null) 'threatInfo': threatInfo!.toJson(),
       };
 }
 
 class GoogleSecuritySafebrowsingV4FindThreatMatchesResponse {
   /// The threat list matches.
-  core.List<GoogleSecuritySafebrowsingV4ThreatMatch> matches;
+  core.List<GoogleSecuritySafebrowsingV4ThreatMatch>? matches;
 
   GoogleSecuritySafebrowsingV4FindThreatMatchesResponse();
 
@@ -1006,15 +996,15 @@ class GoogleSecuritySafebrowsingV4FindThreatMatchesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (matches != null)
-          'matches': matches.map((value) => value.toJson()).toList(),
+          'matches': matches!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GoogleSecuritySafebrowsingV4ListThreatListsResponse {
   /// The lists available for download by the client.
-  core.List<GoogleSecuritySafebrowsingV4ThreatListDescriptor> threatLists;
+  core.List<GoogleSecuritySafebrowsingV4ThreatListDescriptor>? threatLists;
 
   GoogleSecuritySafebrowsingV4ListThreatListsResponse();
 
@@ -1028,9 +1018,9 @@ class GoogleSecuritySafebrowsingV4ListThreatListsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (threatLists != null)
-          'threatLists': threatLists.map((value) => value.toJson()).toList(),
+          'threatLists': threatLists!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1047,14 +1037,14 @@ class GoogleSecuritySafebrowsingV4RawHashes {
   ///
   /// This field can be anywhere from 4 (shortest prefix) to 32 (full SHA256
   /// hash).
-  core.int prefixSize;
+  core.int? prefixSize;
 
   /// The hashes, in binary format, concatenated into one long string.
   ///
   /// Hashes are sorted in lexicographic order. For JSON API users, hashes are
   /// base64-encoded.
-  core.String rawHashes;
-  core.List<core.int> get rawHashesAsBytes => convert.base64.decode(rawHashes);
+  core.String? rawHashes;
+  core.List<core.int> get rawHashesAsBytes => convert.base64.decode(rawHashes!);
 
   set rawHashesAsBytes(core.List<core.int> _bytes) {
     rawHashes =
@@ -1072,16 +1062,16 @@ class GoogleSecuritySafebrowsingV4RawHashes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (prefixSize != null) 'prefixSize': prefixSize,
-        if (rawHashes != null) 'rawHashes': rawHashes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (prefixSize != null) 'prefixSize': prefixSize!,
+        if (rawHashes != null) 'rawHashes': rawHashes!,
       };
 }
 
 /// A set of raw indices to remove from a local list.
 class GoogleSecuritySafebrowsingV4RawIndices {
   /// The indices to remove from a lexicographically-sorted local list.
-  core.List<core.int> indices;
+  core.List<core.int>? indices;
 
   GoogleSecuritySafebrowsingV4RawIndices();
 
@@ -1093,8 +1083,8 @@ class GoogleSecuritySafebrowsingV4RawIndices {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (indices != null) 'indices': indices,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (indices != null) 'indices': indices!,
       };
 }
 
@@ -1103,9 +1093,9 @@ class GoogleSecuritySafebrowsingV4RawIndices {
 /// Used for sending compressed 4-byte hashes or compressed removal indices.
 class GoogleSecuritySafebrowsingV4RiceDeltaEncoding {
   /// The encoded deltas that are encoded using the Golomb-Rice coder.
-  core.String encodedData;
+  core.String? encodedData;
   core.List<core.int> get encodedDataAsBytes =>
-      convert.base64.decode(encodedData);
+      convert.base64.decode(encodedData!);
 
   set encodedDataAsBytes(core.List<core.int> _bytes) {
     encodedData =
@@ -1116,18 +1106,18 @@ class GoogleSecuritySafebrowsingV4RiceDeltaEncoding {
   /// integer was encoded, that single integer's value.
   ///
   /// If the field is empty or missing, assume zero.
-  core.String firstValue;
+  core.String? firstValue;
 
   /// The number of entries that are delta encoded in the encoded data.
   ///
   /// If only a single integer was encoded, this will be zero and the single
   /// value will be stored in `first_value`.
-  core.int numEntries;
+  core.int? numEntries;
 
   /// The Golomb-Rice parameter, which is a number between 2 and 28.
   ///
   /// This field is missing (that is, zero) if `num_entries` is zero.
-  core.int riceParameter;
+  core.int? riceParameter;
 
   GoogleSecuritySafebrowsingV4RiceDeltaEncoding();
 
@@ -1146,11 +1136,11 @@ class GoogleSecuritySafebrowsingV4RiceDeltaEncoding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (encodedData != null) 'encodedData': encodedData,
-        if (firstValue != null) 'firstValue': firstValue,
-        if (numEntries != null) 'numEntries': numEntries,
-        if (riceParameter != null) 'riceParameter': riceParameter,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (encodedData != null) 'encodedData': encodedData!,
+        if (firstValue != null) 'firstValue': firstValue!,
+        if (numEntries != null) 'numEntries': numEntries!,
+        if (riceParameter != null) 'riceParameter': riceParameter!,
       };
 }
 
@@ -1163,8 +1153,8 @@ class GoogleSecuritySafebrowsingV4ThreatEntry {
   ///
   /// The API supports both binary and hex digests. For JSON requests, digests
   /// are base64-encoded.
-  core.String digest;
-  core.List<core.int> get digestAsBytes => convert.base64.decode(digest);
+  core.String? digest;
+  core.List<core.int> get digestAsBytes => convert.base64.decode(digest!);
 
   set digestAsBytes(core.List<core.int> _bytes) {
     digest =
@@ -1176,8 +1166,8 @@ class GoogleSecuritySafebrowsingV4ThreatEntry {
   ///
   /// This field is in binary format. For JSON requests, hashes are
   /// base64-encoded.
-  core.String hash;
-  core.List<core.int> get hashAsBytes => convert.base64.decode(hash);
+  core.String? hash;
+  core.List<core.int> get hashAsBytes => convert.base64.decode(hash!);
 
   set hashAsBytes(core.List<core.int> _bytes) {
     hash =
@@ -1185,7 +1175,7 @@ class GoogleSecuritySafebrowsingV4ThreatEntry {
   }
 
   /// A URL.
-  core.String url;
+  core.String? url;
 
   GoogleSecuritySafebrowsingV4ThreatEntry();
 
@@ -1201,10 +1191,10 @@ class GoogleSecuritySafebrowsingV4ThreatEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (digest != null) 'digest': digest,
-        if (hash != null) 'hash': hash,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (digest != null) 'digest': digest!,
+        if (hash != null) 'hash': hash!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -1214,7 +1204,7 @@ class GoogleSecuritySafebrowsingV4ThreatEntry {
 /// each threat type.
 class GoogleSecuritySafebrowsingV4ThreatEntryMetadata {
   /// The metadata entries.
-  core.List<GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry>
+  core.List<GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry>?
       entries;
 
   GoogleSecuritySafebrowsingV4ThreatEntryMetadata();
@@ -1230,9 +1220,9 @@ class GoogleSecuritySafebrowsingV4ThreatEntryMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1241,8 +1231,8 @@ class GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry {
   /// The metadata entry key.
   ///
   /// For JSON requests, the key is base64-encoded.
-  core.String key;
-  core.List<core.int> get keyAsBytes => convert.base64.decode(key);
+  core.String? key;
+  core.List<core.int> get keyAsBytes => convert.base64.decode(key!);
 
   set keyAsBytes(core.List<core.int> _bytes) {
     key =
@@ -1252,8 +1242,8 @@ class GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry {
   /// The metadata entry value.
   ///
   /// For JSON requests, the value is base64-encoded.
-  core.String value;
-  core.List<core.int> get valueAsBytes => convert.base64.decode(value);
+  core.String? value;
+  core.List<core.int> get valueAsBytes => convert.base64.decode(value!);
 
   set valueAsBytes(core.List<core.int> _bytes) {
     value =
@@ -1272,9 +1262,9 @@ class GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1286,20 +1276,20 @@ class GoogleSecuritySafebrowsingV4ThreatEntrySet {
   /// - "COMPRESSION_TYPE_UNSPECIFIED" : Unknown.
   /// - "RAW" : Raw, uncompressed data.
   /// - "RICE" : Rice-Golomb encoded data.
-  core.String compressionType;
+  core.String? compressionType;
 
   /// The raw SHA256-formatted entries.
-  GoogleSecuritySafebrowsingV4RawHashes rawHashes;
+  GoogleSecuritySafebrowsingV4RawHashes? rawHashes;
 
   /// The raw removal indices for a local list.
-  GoogleSecuritySafebrowsingV4RawIndices rawIndices;
+  GoogleSecuritySafebrowsingV4RawIndices? rawIndices;
 
   /// The encoded 4-byte prefixes of SHA256-formatted entries, using a
   /// Golomb-Rice encoding.
   ///
   /// The hashes are converted to uint32, sorted in ascending order, then delta
   /// encoded and stored as encoded_data.
-  GoogleSecuritySafebrowsingV4RiceDeltaEncoding riceHashes;
+  GoogleSecuritySafebrowsingV4RiceDeltaEncoding? riceHashes;
 
   /// The encoded local, lexicographically-sorted list indices, using a
   /// Golomb-Rice encoding.
@@ -1307,7 +1297,7 @@ class GoogleSecuritySafebrowsingV4ThreatEntrySet {
   /// Used for sending compressed removal indices. The removal indices (uint32)
   /// are sorted in ascending order, then delta encoded and stored as
   /// encoded_data.
-  GoogleSecuritySafebrowsingV4RiceDeltaEncoding riceIndices;
+  GoogleSecuritySafebrowsingV4RiceDeltaEncoding? riceIndices;
 
   GoogleSecuritySafebrowsingV4ThreatEntrySet();
 
@@ -1333,23 +1323,23 @@ class GoogleSecuritySafebrowsingV4ThreatEntrySet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (compressionType != null) 'compressionType': compressionType,
-        if (rawHashes != null) 'rawHashes': rawHashes.toJson(),
-        if (rawIndices != null) 'rawIndices': rawIndices.toJson(),
-        if (riceHashes != null) 'riceHashes': riceHashes.toJson(),
-        if (riceIndices != null) 'riceIndices': riceIndices.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (compressionType != null) 'compressionType': compressionType!,
+        if (rawHashes != null) 'rawHashes': rawHashes!.toJson(),
+        if (rawIndices != null) 'rawIndices': rawIndices!.toJson(),
+        if (riceHashes != null) 'riceHashes': riceHashes!.toJson(),
+        if (riceIndices != null) 'riceIndices': riceIndices!.toJson(),
       };
 }
 
 class GoogleSecuritySafebrowsingV4ThreatHit {
   /// Client-reported identification.
-  GoogleSecuritySafebrowsingV4ClientInfo clientInfo;
+  GoogleSecuritySafebrowsingV4ClientInfo? clientInfo;
 
   /// The threat entry responsible for the hit.
   ///
   /// Full hash should be reported for hash-based hits.
-  GoogleSecuritySafebrowsingV4ThreatEntry entry;
+  GoogleSecuritySafebrowsingV4ThreatEntry? entry;
 
   /// The platform type reported.
   /// Possible string values are:
@@ -1362,10 +1352,10 @@ class GoogleSecuritySafebrowsingV4ThreatHit {
   /// - "ANY_PLATFORM" : Threat posed to at least one of the defined platforms.
   /// - "ALL_PLATFORMS" : Threat posed to all defined platforms.
   /// - "CHROME" : Threat posed to Chrome.
-  core.String platformType;
+  core.String? platformType;
 
   /// The resources related to the threat hit.
-  core.List<GoogleSecuritySafebrowsingV4ThreatHitThreatSource> resources;
+  core.List<GoogleSecuritySafebrowsingV4ThreatHitThreatSource>? resources;
 
   /// The threat type reported.
   /// Possible string values are:
@@ -1394,10 +1384,10 @@ class GoogleSecuritySafebrowsingV4ThreatHit {
   /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
   /// expressions.
-  core.String threatType;
+  core.String? threatType;
 
   /// Details about the user that encountered the threat.
-  GoogleSecuritySafebrowsingV4ThreatHitUserInfo userInfo;
+  GoogleSecuritySafebrowsingV4ThreatHitUserInfo? userInfo;
 
   GoogleSecuritySafebrowsingV4ThreatHit();
 
@@ -1429,14 +1419,14 @@ class GoogleSecuritySafebrowsingV4ThreatHit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientInfo != null) 'clientInfo': clientInfo.toJson(),
-        if (entry != null) 'entry': entry.toJson(),
-        if (platformType != null) 'platformType': platformType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientInfo != null) 'clientInfo': clientInfo!.toJson(),
+        if (entry != null) 'entry': entry!.toJson(),
+        if (platformType != null) 'platformType': platformType!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
-        if (threatType != null) 'threatType': threatType,
-        if (userInfo != null) 'userInfo': userInfo.toJson(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (threatType != null) 'threatType': threatType!,
+        if (userInfo != null) 'userInfo': userInfo!.toJson(),
       };
 }
 
@@ -1445,12 +1435,12 @@ class GoogleSecuritySafebrowsingV4ThreatHitThreatSource {
   /// Referrer of the resource.
   ///
   /// Only set if the referrer is available.
-  core.String referrer;
+  core.String? referrer;
 
   /// The remote IP of the resource in ASCII format.
   ///
   /// Either IPv4 or IPv6.
-  core.String remoteIp;
+  core.String? remoteIp;
 
   /// The type of source reported.
   /// Possible string values are:
@@ -1462,10 +1452,10 @@ class GoogleSecuritySafebrowsingV4ThreatHitThreatSource {
   /// - "TAB_REDIRECT" : A redirect URL that was fetched before hitting the
   /// final TAB_URL.
   /// - "TAB_RESOURCE" : A resource loaded within the final TAB_URL.
-  core.String type;
+  core.String? type;
 
   /// The URL of the resource.
-  core.String url;
+  core.String? url;
 
   GoogleSecuritySafebrowsingV4ThreatHitThreatSource();
 
@@ -1484,22 +1474,22 @@ class GoogleSecuritySafebrowsingV4ThreatHitThreatSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (referrer != null) 'referrer': referrer,
-        if (remoteIp != null) 'remoteIp': remoteIp,
-        if (type != null) 'type': type,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (referrer != null) 'referrer': referrer!,
+        if (remoteIp != null) 'remoteIp': remoteIp!,
+        if (type != null) 'type': type!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// Details about the user that encountered the threat.
 class GoogleSecuritySafebrowsingV4ThreatHitUserInfo {
   /// The UN M.49 region code associated with the user's location.
-  core.String regionCode;
+  core.String? regionCode;
 
   /// Unique user identifier defined by the client.
-  core.String userId;
-  core.List<core.int> get userIdAsBytes => convert.base64.decode(userId);
+  core.String? userId;
+  core.List<core.int> get userIdAsBytes => convert.base64.decode(userId!);
 
   set userIdAsBytes(core.List<core.int> _bytes) {
     userId =
@@ -1517,9 +1507,9 @@ class GoogleSecuritySafebrowsingV4ThreatHitUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (regionCode != null) 'regionCode': regionCode,
-        if (userId != null) 'userId': userId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -1527,16 +1517,16 @@ class GoogleSecuritySafebrowsingV4ThreatHitUserInfo {
 /// checking for matches in threat lists.
 class GoogleSecuritySafebrowsingV4ThreatInfo {
   /// The platform types to be checked.
-  core.List<core.String> platformTypes;
+  core.List<core.String>? platformTypes;
 
   /// The threat entries to be checked.
-  core.List<GoogleSecuritySafebrowsingV4ThreatEntry> threatEntries;
+  core.List<GoogleSecuritySafebrowsingV4ThreatEntry>? threatEntries;
 
   /// The entry types to be checked.
-  core.List<core.String> threatEntryTypes;
+  core.List<core.String>? threatEntryTypes;
 
   /// The threat types to be checked.
-  core.List<core.String> threatTypes;
+  core.List<core.String>? threatTypes;
 
   GoogleSecuritySafebrowsingV4ThreatInfo();
 
@@ -1565,13 +1555,13 @@ class GoogleSecuritySafebrowsingV4ThreatInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (platformTypes != null) 'platformTypes': platformTypes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (platformTypes != null) 'platformTypes': platformTypes!,
         if (threatEntries != null)
           'threatEntries':
-              threatEntries.map((value) => value.toJson()).toList(),
-        if (threatEntryTypes != null) 'threatEntryTypes': threatEntryTypes,
-        if (threatTypes != null) 'threatTypes': threatTypes,
+              threatEntries!.map((value) => value.toJson()).toList(),
+        if (threatEntryTypes != null) 'threatEntryTypes': threatEntryTypes!,
+        if (threatTypes != null) 'threatTypes': threatTypes!,
       };
 }
 
@@ -1591,7 +1581,7 @@ class GoogleSecuritySafebrowsingV4ThreatListDescriptor {
   /// - "ANY_PLATFORM" : Threat posed to at least one of the defined platforms.
   /// - "ALL_PLATFORMS" : Threat posed to all defined platforms.
   /// - "CHROME" : Threat posed to Chrome.
-  core.String platformType;
+  core.String? platformType;
 
   /// The entry types contained in the list.
   /// Possible string values are:
@@ -1602,7 +1592,7 @@ class GoogleSecuritySafebrowsingV4ThreatListDescriptor {
   /// - "CHROME_EXTENSION" : Chrome extension.
   /// - "FILENAME" : Filename.
   /// - "CERT" : CERT
-  core.String threatEntryType;
+  core.String? threatEntryType;
 
   /// The threat type posed by the list's entries.
   /// Possible string values are:
@@ -1631,7 +1621,7 @@ class GoogleSecuritySafebrowsingV4ThreatListDescriptor {
   /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
   /// expressions.
-  core.String threatType;
+  core.String? threatType;
 
   GoogleSecuritySafebrowsingV4ThreatListDescriptor();
 
@@ -1647,10 +1637,10 @@ class GoogleSecuritySafebrowsingV4ThreatListDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (platformType != null) 'platformType': platformType,
-        if (threatEntryType != null) 'threatEntryType': threatEntryType,
-        if (threatType != null) 'threatType': threatType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (platformType != null) 'platformType': platformType!,
+        if (threatEntryType != null) 'threatEntryType': threatEntryType!,
+        if (threatType != null) 'threatType': threatType!,
       };
 }
 
@@ -1660,7 +1650,7 @@ class GoogleSecuritySafebrowsingV4ThreatMatch {
   ///
   /// Clients must not cache this response for more than this duration to avoid
   /// false positives.
-  core.String cacheDuration;
+  core.String? cacheDuration;
 
   /// The platform type matching this threat.
   /// Possible string values are:
@@ -1673,13 +1663,13 @@ class GoogleSecuritySafebrowsingV4ThreatMatch {
   /// - "ANY_PLATFORM" : Threat posed to at least one of the defined platforms.
   /// - "ALL_PLATFORMS" : Threat posed to all defined platforms.
   /// - "CHROME" : Threat posed to Chrome.
-  core.String platformType;
+  core.String? platformType;
 
   /// The threat matching this threat.
-  GoogleSecuritySafebrowsingV4ThreatEntry threat;
+  GoogleSecuritySafebrowsingV4ThreatEntry? threat;
 
   /// Optional metadata associated with this threat.
-  GoogleSecuritySafebrowsingV4ThreatEntryMetadata threatEntryMetadata;
+  GoogleSecuritySafebrowsingV4ThreatEntryMetadata? threatEntryMetadata;
 
   /// The threat entry type matching this threat.
   /// Possible string values are:
@@ -1690,7 +1680,7 @@ class GoogleSecuritySafebrowsingV4ThreatMatch {
   /// - "CHROME_EXTENSION" : Chrome extension.
   /// - "FILENAME" : Filename.
   /// - "CERT" : CERT
-  core.String threatEntryType;
+  core.String? threatEntryType;
 
   /// The threat type matching this threat.
   /// Possible string values are:
@@ -1719,7 +1709,7 @@ class GoogleSecuritySafebrowsingV4ThreatMatch {
   /// - "TRICK_TO_BILL" : Trick-to-bill threat list.
   /// - "HIGH_CONFIDENCE_ALLOWLIST" : Safe list to ship hashes of known safe URL
   /// expressions.
-  core.String threatType;
+  core.String? threatType;
 
   GoogleSecuritySafebrowsingV4ThreatMatch();
 
@@ -1748,13 +1738,13 @@ class GoogleSecuritySafebrowsingV4ThreatMatch {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cacheDuration != null) 'cacheDuration': cacheDuration,
-        if (platformType != null) 'platformType': platformType,
-        if (threat != null) 'threat': threat.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cacheDuration != null) 'cacheDuration': cacheDuration!,
+        if (platformType != null) 'platformType': platformType!,
+        if (threat != null) 'threat': threat!.toJson(),
         if (threatEntryMetadata != null)
-          'threatEntryMetadata': threatEntryMetadata.toJson(),
-        if (threatEntryType != null) 'threatEntryType': threatEntryType,
-        if (threatType != null) 'threatType': threatType,
+          'threatEntryMetadata': threatEntryMetadata!.toJson(),
+        if (threatEntryType != null) 'threatEntryType': threatEntryType!,
+        if (threatType != null) 'threatType': threatType!,
       };
 }

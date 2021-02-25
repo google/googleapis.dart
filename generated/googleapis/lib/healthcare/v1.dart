@@ -103,11 +103,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -147,14 +144,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -222,14 +216,10 @@ class ProjectsLocationsDatasetsResource {
   async.Future<Operation> create(
     Dataset request,
     core.String parent, {
-    core.String datasetId,
-    core.String $fields,
+    core.String? datasetId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (datasetId != null) 'datasetId': [datasetId],
       if ($fields != null) 'fields': [$fields],
@@ -280,13 +270,9 @@ class ProjectsLocationsDatasetsResource {
   async.Future<Operation> deidentify(
     DeidentifyDatasetRequest request,
     core.String sourceDataset, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (sourceDataset == null) {
-      throw core.ArgumentError('Parameter sourceDataset is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -329,11 +315,8 @@ class ProjectsLocationsDatasetsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -369,11 +352,8 @@ class ProjectsLocationsDatasetsResource {
   /// this method will complete with the same error.
   async.Future<Dataset> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -421,12 +401,9 @@ class ProjectsLocationsDatasetsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -471,13 +448,10 @@ class ProjectsLocationsDatasetsResource {
   /// this method will complete with the same error.
   async.Future<ListDatasetsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -524,14 +498,10 @@ class ProjectsLocationsDatasetsResource {
   async.Future<Dataset> patch(
     Dataset request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -576,13 +546,9 @@ class ProjectsLocationsDatasetsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -630,13 +596,9 @@ class ProjectsLocationsDatasetsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -695,12 +657,9 @@ class ProjectsLocationsDatasetsConsentStoresResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -747,13 +706,9 @@ class ProjectsLocationsDatasetsConsentStoresResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -801,13 +756,9 @@ class ProjectsLocationsDatasetsConsentStoresResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -862,14 +813,10 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   async.Future<DicomStore> create(
     DicomStore request,
     core.String parent, {
-    core.String dicomStoreId,
-    core.String $fields,
+    core.String? dicomStoreId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (dicomStoreId != null) 'dicomStoreId': [dicomStoreId],
       if ($fields != null) 'fields': [$fields],
@@ -922,13 +869,9 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   async.Future<Operation> deidentify(
     DeidentifyDicomStoreRequest request,
     core.String sourceStore, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (sourceStore == null) {
-      throw core.ArgumentError('Parameter sourceStore is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -967,11 +910,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1016,13 +956,9 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   async.Future<Operation> export(
     ExportDicomDataRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1059,11 +995,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// this method will complete with the same error.
   async.Future<DicomStore> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1112,12 +1045,9 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -1165,13 +1095,9 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   async.Future<Operation> import(
     ImportDicomDataRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1239,14 +1165,11 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// this method will complete with the same error.
   async.Future<ListDicomStoresResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1295,14 +1218,10 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   async.Future<DicomStore> patch(
     DicomStore request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1356,14 +1275,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   async.Future<HttpBody> searchForInstances(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1416,14 +1329,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   async.Future<HttpBody> searchForSeries(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1476,14 +1383,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   async.Future<HttpBody> searchForStudies(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1529,13 +1430,9 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1592,16 +1489,9 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     HttpBody request,
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1650,13 +1540,9 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1720,14 +1606,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   async.Future<Operation> delete(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1781,14 +1661,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   async.Future<HttpBody> retrieveMetadata(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1841,14 +1715,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   async.Future<HttpBody> retrieveStudy(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1902,14 +1770,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   async.Future<HttpBody> searchForInstances(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1962,14 +1824,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   async.Future<HttpBody> searchForSeries(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2026,16 +1882,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     HttpBody request,
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2103,14 +1952,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   async.Future<Operation> delete(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2164,14 +2007,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   async.Future<HttpBody> retrieveMetadata(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2224,14 +2061,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   async.Future<HttpBody> retrieveSeries(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2285,14 +2116,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   async.Future<HttpBody> searchForInstances(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2358,14 +2183,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   async.Future<Empty> delete(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2423,14 +2242,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   async.Future<HttpBody> retrieveInstance(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2487,14 +2300,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   async.Future<HttpBody> retrieveMetadata(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2550,14 +2357,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   async.Future<HttpBody> retrieveRendered(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2621,14 +2422,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   async.Future<HttpBody> retrieveFrames(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2685,14 +2480,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   async.Future<HttpBody> retrieveRendered(
     core.String parent,
     core.String dicomWebPath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (dicomWebPath == null) {
-      throw core.ArgumentError('Parameter dicomWebPath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2746,14 +2535,10 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   async.Future<FhirStore> create(
     FhirStore request,
     core.String parent, {
-    core.String fhirStoreId,
-    core.String $fields,
+    core.String? fhirStoreId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fhirStoreId != null) 'fhirStoreId': [fhirStoreId],
       if ($fields != null) 'fields': [$fields],
@@ -2802,13 +2587,9 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   async.Future<Operation> deidentify(
     DeidentifyFhirStoreRequest request,
     core.String sourceStore, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (sourceStore == null) {
-      throw core.ArgumentError('Parameter sourceStore is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2846,11 +2627,8 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2898,13 +2676,9 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   async.Future<Operation> export(
     ExportResourcesRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2941,11 +2715,8 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// this method will complete with the same error.
   async.Future<FhirStore> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2993,12 +2764,9 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -3098,13 +2866,9 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   async.Future<Operation> import(
     ImportResourcesRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3171,14 +2935,11 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// this method will complete with the same error.
   async.Future<ListFhirStoresResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -3227,14 +2988,10 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   async.Future<FhirStore> patch(
     FhirStore request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3279,13 +3036,9 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3333,13 +3086,9 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3431,17 +3180,14 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// this method will complete with the same error.
   async.Future<HttpBody> PatientEverything(
     core.String name, {
-    core.int P_count,
-    core.String P_pageToken,
-    core.String P_since,
-    core.String P_type,
-    core.String end,
-    core.String start,
-    core.String $fields,
+    core.int? P_count,
+    core.String? P_pageToken,
+    core.String? P_since,
+    core.String? P_type,
+    core.String? end,
+    core.String? start,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (P_count != null) '_count': ['${P_count}'],
       if (P_pageToken != null) '_page_token': [P_pageToken],
@@ -3491,11 +3237,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// this method will complete with the same error.
   async.Future<Empty> ResourcePurge(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3545,11 +3288,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// this method will complete with the same error.
   async.Future<HttpBody> capabilities(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3614,16 +3354,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     HttpBody request,
     core.String parent,
     core.String type, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (type == null) {
-      throw core.ArgumentError('Parameter type is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3673,11 +3406,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// this method will complete with the same error.
   async.Future<HttpBody> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3742,13 +3472,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   async.Future<HttpBody> executeBundle(
     HttpBody request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3822,15 +3548,12 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// this method will complete with the same error.
   async.Future<HttpBody> history(
     core.String name, {
-    core.String P_at,
-    core.int P_count,
-    core.String P_pageToken,
-    core.String P_since,
-    core.String $fields,
+    core.String? P_at,
+    core.int? P_count,
+    core.String? P_pageToken,
+    core.String? P_since,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (P_at != null) '_at': [P_at],
       if (P_count != null) '_count': ['${P_count}'],
@@ -3889,13 +3612,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   async.Future<HttpBody> patch(
     HttpBody request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3949,11 +3668,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// this method will complete with the same error.
   async.Future<HttpBody> read(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4037,13 +3753,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   async.Future<HttpBody> search(
     SearchResourcesRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4137,16 +3849,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     SearchResourcesRequest request,
     core.String parent,
     core.String resourceType, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (resourceType == null) {
-      throw core.ArgumentError('Parameter resourceType is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4212,13 +3917,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   async.Future<HttpBody> update(
     HttpBody request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4267,11 +3968,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// this method will complete with the same error.
   async.Future<HttpBody> vread(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4322,14 +4020,10 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   async.Future<Hl7V2Store> create(
     Hl7V2Store request,
     core.String parent, {
-    core.String hl7V2StoreId,
-    core.String $fields,
+    core.String? hl7V2StoreId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (hl7V2StoreId != null) 'hl7V2StoreId': [hl7V2StoreId],
       if ($fields != null) 'fields': [$fields],
@@ -4370,11 +4064,8 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4409,11 +4100,8 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// this method will complete with the same error.
   async.Future<Hl7V2Store> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4462,12 +4150,9 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -4537,14 +4222,11 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// this method will complete with the same error.
   async.Future<ListHl7V2StoresResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -4593,14 +4275,10 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   async.Future<Hl7V2Store> patch(
     Hl7V2Store request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -4646,13 +4324,9 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4700,13 +4374,9 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4763,13 +4433,9 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   async.Future<Message> create(
     CreateMessageRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4806,11 +4472,8 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4856,12 +4519,9 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   /// this method will complete with the same error.
   async.Future<Message> get(
     core.String name, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -4910,13 +4570,9 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   async.Future<IngestMessageResponse> ingest(
     IngestMessageRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5021,16 +4677,13 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   /// this method will complete with the same error.
   async.Future<ListMessagesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -5087,14 +4740,10 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   async.Future<Message> patch(
     Message request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -5150,13 +4799,9 @@ class ProjectsLocationsDatasetsOperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5196,11 +4841,8 @@ class ProjectsLocationsDatasetsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5250,14 +4892,11 @@ class ProjectsLocationsDatasetsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -5297,13 +4936,13 @@ class ProjectsLocationsDatasetsOperationsResource {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -5319,11 +4958,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -5338,7 +4977,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -5346,7 +4985,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -5361,9 +5000,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -5377,7 +5016,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -5409,12 +5048,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -5433,10 +5072,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -5448,7 +5087,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Mask a string by replacing its characters with a fixed character.
@@ -5456,7 +5095,7 @@ class CharacterMaskConfig {
   /// Character to mask the sensitive values.
   ///
   /// If not supplied, defaults to "*".
-  core.String maskingCharacter;
+  core.String? maskingCharacter;
 
   CharacterMaskConfig();
 
@@ -5466,15 +5105,15 @@ class CharacterMaskConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maskingCharacter != null) 'maskingCharacter': maskingCharacter,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maskingCharacter != null) 'maskingCharacter': maskingCharacter!,
       };
 }
 
 /// Creates a new message.
 class CreateMessageRequest {
   /// HL7v2 message.
-  Message message;
+  Message? message;
 
   CreateMessageRequest();
 
@@ -5485,8 +5124,8 @@ class CreateMessageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (message != null) 'message': message.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (message != null) 'message': message!.toJson(),
       };
 }
 
@@ -5500,8 +5139,8 @@ class CryptoHashConfig {
   /// Causes the hash to be computed based on this key. A default key is
   /// generated for each Deidentify operation and is used wherever crypto_key is
   /// not specified.
-  core.String cryptoKey;
-  core.List<core.int> get cryptoKeyAsBytes => convert.base64.decode(cryptoKey);
+  core.String? cryptoKey;
+  core.List<core.int> get cryptoKeyAsBytes => convert.base64.decode(cryptoKey!);
 
   set cryptoKeyAsBytes(core.List<core.int> _bytes) {
     cryptoKey =
@@ -5516,8 +5155,8 @@ class CryptoHashConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cryptoKey != null) 'cryptoKey': cryptoKey,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cryptoKey != null) 'cryptoKey': cryptoKey!,
       };
 }
 
@@ -5529,14 +5168,14 @@ class CryptoHashConfig {
 class Dataset {
   /// Resource name of the dataset, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
-  core.String name;
+  core.String? name;
 
   /// The default timezone used by this dataset.
   ///
   /// Must be a either a valid IANA time zone name such as "America/New_York" or
   /// empty, which defaults to UTC. This is used for parsing times in resources,
   /// such as HL7 messages, where no explicit timezone is specified.
-  core.String timeZone;
+  core.String? timeZone;
 
   Dataset();
 
@@ -5549,9 +5188,9 @@ class Dataset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (timeZone != null) 'timeZone': timeZone,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 
@@ -5563,8 +5202,8 @@ class DateShiftConfig {
   /// Causes the shift to be computed based on this key and the patient ID. A
   /// default key is generated for each Deidentify operation and is used
   /// wherever crypto_key is not specified.
-  core.String cryptoKey;
-  core.List<core.int> get cryptoKeyAsBytes => convert.base64.decode(cryptoKey);
+  core.String? cryptoKey;
+  core.List<core.int> get cryptoKeyAsBytes => convert.base64.decode(cryptoKey!);
 
   set cryptoKeyAsBytes(core.List<core.int> _bytes) {
     cryptoKey =
@@ -5579,8 +5218,8 @@ class DateShiftConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cryptoKey != null) 'cryptoKey': cryptoKey,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cryptoKey != null) 'cryptoKey': cryptoKey!,
       };
 }
 
@@ -5591,18 +5230,18 @@ class DateShiftConfig {
 /// applied in a nested manner at runtime.
 class DeidentifyConfig {
   /// Configures de-id of application/DICOM content.
-  DicomConfig dicom;
+  DicomConfig? dicom;
 
   /// Configures de-id of application/FHIR content.
-  FhirConfig fhir;
+  FhirConfig? fhir;
 
   /// Configures de-identification of image pixels wherever they are found in
   /// the source_dataset.
-  ImageConfig image;
+  ImageConfig? image;
 
   /// Configures de-identification of text wherever it is found in the
   /// source_dataset.
-  TextConfig text;
+  TextConfig? text;
 
   DeidentifyConfig();
 
@@ -5625,25 +5264,25 @@ class DeidentifyConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dicom != null) 'dicom': dicom.toJson(),
-        if (fhir != null) 'fhir': fhir.toJson(),
-        if (image != null) 'image': image.toJson(),
-        if (text != null) 'text': text.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dicom != null) 'dicom': dicom!.toJson(),
+        if (fhir != null) 'fhir': fhir!.toJson(),
+        if (image != null) 'image': image!.toJson(),
+        if (text != null) 'text': text!.toJson(),
       };
 }
 
 /// Redacts identifying information from the specified dataset.
 class DeidentifyDatasetRequest {
   /// Deidentify configuration.
-  DeidentifyConfig config;
+  DeidentifyConfig? config;
 
   /// The name of the dataset resource to create and write the redacted data to.
   ///
   /// * The destination dataset must not exist. * The destination dataset must
   /// be in the same project and location as the source dataset. De-identifying
   /// data across multiple projects or locations is not supported.
-  core.String destinationDataset;
+  core.String? destinationDataset;
 
   DeidentifyDatasetRequest();
 
@@ -5657,17 +5296,17 @@ class DeidentifyDatasetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (config != null) 'config': config.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (config != null) 'config': config!.toJson(),
         if (destinationDataset != null)
-          'destinationDataset': destinationDataset,
+          'destinationDataset': destinationDataset!,
       };
 }
 
 /// Creates a new DICOM store with sensitive information de-identified.
 class DeidentifyDicomStoreRequest {
   /// De-identify configuration.
-  DeidentifyConfig config;
+  DeidentifyConfig? config;
 
   /// The name of the DICOM store to create and write the redacted data to.
   ///
@@ -5678,10 +5317,10 @@ class DeidentifyDicomStoreRequest {
   /// multiple projects is not supported. * The destination DICOM store must not
   /// exist. * The caller must have the necessary permissions to create the
   /// destination DICOM store.
-  core.String destinationStore;
+  core.String? destinationStore;
 
   /// Filter configuration.
-  DicomFilterConfig filterConfig;
+  DicomFilterConfig? filterConfig;
 
   DeidentifyDicomStoreRequest();
 
@@ -5699,17 +5338,17 @@ class DeidentifyDicomStoreRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (config != null) 'config': config.toJson(),
-        if (destinationStore != null) 'destinationStore': destinationStore,
-        if (filterConfig != null) 'filterConfig': filterConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (config != null) 'config': config!.toJson(),
+        if (destinationStore != null) 'destinationStore': destinationStore!,
+        if (filterConfig != null) 'filterConfig': filterConfig!.toJson(),
       };
 }
 
 /// Creates a new FHIR store with sensitive information de-identified.
 class DeidentifyFhirStoreRequest {
   /// Deidentify configuration.
-  DeidentifyConfig config;
+  DeidentifyConfig? config;
 
   /// The name of the FHIR store to create and write the redacted data to.
   ///
@@ -5720,12 +5359,12 @@ class DeidentifyFhirStoreRequest {
   /// multiple projects is not supported. * The destination FHIR store must
   /// exist. * The caller must have the healthcare.fhirResources.update
   /// permission to write to the destination FHIR store.
-  core.String destinationStore;
+  core.String? destinationStore;
 
   /// A filter specifying the resources to include in the output.
   ///
   /// If not specified, all resources are included in the output.
-  FhirFilter resourceFilter;
+  FhirFilter? resourceFilter;
 
   DeidentifyFhirStoreRequest();
 
@@ -5743,10 +5382,10 @@ class DeidentifyFhirStoreRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (config != null) 'config': config.toJson(),
-        if (destinationStore != null) 'destinationStore': destinationStore,
-        if (resourceFilter != null) 'resourceFilter': resourceFilter.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (config != null) 'config': config!.toJson(),
+        if (destinationStore != null) 'destinationStore': destinationStore!,
+        if (resourceFilter != null) 'resourceFilter': resourceFilter!.toJson(),
       };
 }
 
@@ -5758,7 +5397,7 @@ class DeidentifySummary {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Specifies the parameters needed for de-identification of DICOM stores.
@@ -5778,17 +5417,17 @@ class DicomConfig {
   /// sensitive text. The process can be configured using the TextConfig.
   /// Applies to all tags with the following Value Representation names: AE, LO,
   /// LT, PN, SH, ST, UC, UT, DA, DT, AS
-  core.String filterProfile;
+  core.String? filterProfile;
 
   /// List of tags to keep.
   ///
   /// Remove all other tags.
-  TagFilterList keepList;
+  TagFilterList? keepList;
 
   /// List of tags to remove.
   ///
   /// Keep all other tags.
-  TagFilterList removeList;
+  TagFilterList? removeList;
 
   /// If true, skip replacing StudyInstanceUID, SeriesInstanceUID,
   /// SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched.
@@ -5799,7 +5438,7 @@ class DicomConfig {
   /// to a database of the original images containing the UIDs, it would be
   /// possible to recover the individual's identity."
   /// http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html
-  core.bool skipIdRedaction;
+  core.bool? skipIdRedaction;
 
   DicomConfig();
 
@@ -5820,11 +5459,11 @@ class DicomConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filterProfile != null) 'filterProfile': filterProfile,
-        if (keepList != null) 'keepList': keepList.toJson(),
-        if (removeList != null) 'removeList': removeList.toJson(),
-        if (skipIdRedaction != null) 'skipIdRedaction': skipIdRedaction,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filterProfile != null) 'filterProfile': filterProfile!,
+        if (keepList != null) 'keepList': keepList!.toJson(),
+        if (removeList != null) 'removeList': removeList!.toJson(),
+        if (skipIdRedaction != null) 'skipIdRedaction': skipIdRedaction!,
       };
 }
 
@@ -5840,7 +5479,7 @@ class DicomFilterConfig {
   /// The Cloud Healthcare API service account must have the
   /// `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage
   /// location.
-  core.String resourcePathsGcsUri;
+  core.String? resourcePathsGcsUri;
 
   DicomFilterConfig();
 
@@ -5850,9 +5489,9 @@ class DicomFilterConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (resourcePathsGcsUri != null)
-          'resourcePathsGcsUri': resourcePathsGcsUri,
+          'resourcePathsGcsUri': resourcePathsGcsUri!,
       };
 }
 
@@ -5867,16 +5506,16 @@ class DicomStore {
   /// must conform to the following PCRE regular expression:
   /// \[\p{Ll}\p{Lo}\p{N}_-\]{0,63} No more than 64 labels can be associated
   /// with a given store.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Resource name of the DICOM store, of the form
   /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
-  core.String name;
+  core.String? name;
 
   /// Notification destination for new DICOM instances.
   ///
   /// Supplied by the client.
-  NotificationConfig notificationConfig;
+  NotificationConfig? notificationConfig;
 
   DicomStore();
 
@@ -5899,11 +5538,11 @@ class DicomStore {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
         if (notificationConfig != null)
-          'notificationConfig': notificationConfig.toJson(),
+          'notificationConfig': notificationConfig!.toJson(),
       };
 }
 
@@ -5921,7 +5560,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Exports data from the specified DICOM store.
@@ -5937,13 +5576,13 @@ class ExportDicomDataRequest {
   /// the DICOM store you're exporting from. The Cloud Healthcare Service Agent
   /// requires two IAM roles on the BigQuery location:
   /// `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`.
-  GoogleCloudHealthcareV1DicomBigQueryDestination bigqueryDestination;
+  GoogleCloudHealthcareV1DicomBigQueryDestination? bigqueryDestination;
 
   /// The Cloud Storage output destination.
   ///
   /// The Cloud Healthcare Service Agent requires the
   /// `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage location.
-  GoogleCloudHealthcareV1DicomGcsDestination gcsDestination;
+  GoogleCloudHealthcareV1DicomGcsDestination? gcsDestination;
 
   ExportDicomDataRequest();
 
@@ -5960,10 +5599,10 @@ class ExportDicomDataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bigqueryDestination != null)
-          'bigqueryDestination': bigqueryDestination.toJson(),
-        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+          'bigqueryDestination': bigqueryDestination!.toJson(),
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
       };
 }
 
@@ -5975,7 +5614,7 @@ class ExportDicomDataResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request to export resources.
@@ -5985,7 +5624,7 @@ class ExportResourcesRequest {
   /// The Cloud Healthcare Service Agent requires two IAM roles on the BigQuery
   /// location: `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`. The
   /// output is one BigQuery table per resource type.
-  GoogleCloudHealthcareV1FhirBigQueryDestination bigqueryDestination;
+  GoogleCloudHealthcareV1FhirBigQueryDestination? bigqueryDestination;
 
   /// The Cloud Storage output destination.
   ///
@@ -5994,7 +5633,7 @@ class ExportResourcesRequest {
   /// exported outputs are organized by FHIR resource types. The server creates
   /// one object per resource type. Each object contains newline delimited JSON,
   /// and each line is a FHIR resource.
-  GoogleCloudHealthcareV1FhirGcsDestination gcsDestination;
+  GoogleCloudHealthcareV1FhirGcsDestination? gcsDestination;
 
   ExportResourcesRequest();
 
@@ -6011,10 +5650,10 @@ class ExportResourcesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bigqueryDestination != null)
-          'bigqueryDestination': bigqueryDestination.toJson(),
-        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+          'bigqueryDestination': bigqueryDestination!.toJson(),
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
       };
 }
 
@@ -6029,7 +5668,7 @@ class ExportResourcesResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -6057,24 +5696,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -6093,11 +5732,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -6107,7 +5746,7 @@ class FhirConfig {
   ///
   /// Any field that is not matched by a FieldMetadata is passed through to the
   /// output dataset unmodified. All extensions are removed in the output.
-  core.List<FieldMetadata> fieldMetadataList;
+  core.List<FieldMetadata>? fieldMetadataList;
 
   FhirConfig();
 
@@ -6120,10 +5759,10 @@ class FhirConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fieldMetadataList != null)
           'fieldMetadataList':
-              fieldMetadataList.map((value) => value.toJson()).toList(),
+              fieldMetadataList!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6133,7 +5772,7 @@ class FhirFilter {
   ///
   /// If this list is empty or not specified, all resources are included in the
   /// output.
-  Resources resources;
+  Resources? resources;
 
   FhirFilter();
 
@@ -6144,8 +5783,8 @@ class FhirFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resources != null) 'resources': resources.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resources != null) 'resources': resources!.toJson(),
       };
 }
 
@@ -6162,7 +5801,7 @@ class FhirStore {
   /// exist.
   ///
   /// Immutable.
-  core.bool disableReferentialIntegrity;
+  core.bool? disableReferentialIntegrity;
 
   /// Whether to disable resource versioning for this FHIR store.
   ///
@@ -6174,7 +5813,7 @@ class FhirStore {
   /// attempts to read the historical versions.
   ///
   /// Immutable.
-  core.bool disableResourceVersioning;
+  core.bool? disableResourceVersioning;
 
   /// Whether this FHIR store has the
   /// [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate).
@@ -6187,7 +5826,7 @@ class FhirStore {
   /// resource IDs. Those IDs are part of the FHIR resource path recorded in
   /// Cloud audit logs and Cloud Pub/Sub notifications. Those IDs can also be
   /// contained in reference fields within other resources.
-  core.bool enableUpdateCreate;
+  core.bool? enableUpdateCreate;
 
   /// User-supplied key-value pairs used to organize FHIR stores.
   ///
@@ -6198,13 +5837,13 @@ class FhirStore {
   /// must conform to the following PCRE regular expression:
   /// \[\p{Ll}\p{Lo}\p{N}_-\]{0,63} No more than 64 labels can be associated
   /// with a given store.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Resource name of the FHIR store, of the form
   /// `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// If non-empty, publish all resource modifications of this FHIR store to
   /// this destination.
@@ -6212,7 +5851,7 @@ class FhirStore {
   /// The Cloud Pub/Sub message attributes contain a map with a string
   /// describing the action that has triggered the notification. For example,
   /// "action":"CreateResource".
-  NotificationConfig notificationConfig;
+  NotificationConfig? notificationConfig;
 
   /// A list of streaming configs that configure the destinations of streaming
   /// export for every resource mutation in this FHIR store.
@@ -6227,7 +5866,7 @@ class FhirStore {
   /// [service account](https://cloud.google.com/iam/docs/service-accounts).
   /// Some lag (typically on the order of dozens of seconds) is expected before
   /// the results show up in the streaming destination.
-  core.List<StreamConfig> streamConfigs;
+  core.List<StreamConfig>? streamConfigs;
 
   /// The FHIR specification version that this FHIR store supports natively.
   ///
@@ -6244,7 +5883,7 @@ class FhirStore {
   /// - "STU3" : Standard for Trial Use,
   /// [Release 3](https://www.hl7.org/fhir/STU3)
   /// - "R4" : [Release 4](https://www.hl7.org/fhir/R4)
-  core.String version;
+  core.String? version;
 
   FhirStore();
 
@@ -6287,21 +5926,21 @@ class FhirStore {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (disableReferentialIntegrity != null)
-          'disableReferentialIntegrity': disableReferentialIntegrity,
+          'disableReferentialIntegrity': disableReferentialIntegrity!,
         if (disableResourceVersioning != null)
-          'disableResourceVersioning': disableResourceVersioning,
+          'disableResourceVersioning': disableResourceVersioning!,
         if (enableUpdateCreate != null)
-          'enableUpdateCreate': enableUpdateCreate,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
+          'enableUpdateCreate': enableUpdateCreate!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
         if (notificationConfig != null)
-          'notificationConfig': notificationConfig.toJson(),
+          'notificationConfig': notificationConfig!.toJson(),
         if (streamConfigs != null)
           'streamConfigs':
-              streamConfigs.map((value) => value.toJson()).toList(),
-        if (version != null) 'version': version,
+              streamConfigs!.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version!,
       };
 }
 
@@ -6314,7 +5953,7 @@ class FieldMetadata {
   /// - "TRANSFORM" : Transform the entire field.
   /// - "INSPECT_AND_TRANSFORM" : Inspect and transform any found PHI.
   /// - "DO_NOT_TRANSFORM" : Do not transform.
-  core.String action;
+  core.String? action;
 
   /// List of paths to FHIR fields to be redacted.
   ///
@@ -6326,7 +5965,7 @@ class FieldMetadata {
   /// Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode, Markdown, Oid,
   /// String, Uri, Uuid, Xhtml. Base64Binary is also supported, but may only be
   /// kept as-is or have all the content removed.
-  core.List<core.String> paths;
+  core.List<core.String>? paths;
 
   FieldMetadata();
 
@@ -6341,9 +5980,9 @@ class FieldMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action,
-        if (paths != null) 'paths': paths,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!,
+        if (paths != null) 'paths': paths!,
       };
 }
 
@@ -6355,7 +5994,7 @@ class GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Contains a summary of the DeidentifyFhirStore operation.
@@ -6366,7 +6005,7 @@ class GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The BigQuery table where the server writes the output.
@@ -6376,11 +6015,11 @@ class GoogleCloudHealthcareV1DicomBigQueryDestination {
   ///
   /// If the flag is not set and the destination table already exists, the
   /// export call returns an error.
-  core.bool force;
+  core.bool? force;
 
   /// BigQuery URI to a table, up to 2000 characters long, in the format
   /// `bq://projectId.bqDatasetId.tableId`
-  core.String tableUri;
+  core.String? tableUri;
 
   GoogleCloudHealthcareV1DicomBigQueryDestination();
 
@@ -6393,9 +6032,9 @@ class GoogleCloudHealthcareV1DicomBigQueryDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (force != null) 'force': force,
-        if (tableUri != null) 'tableUri': tableUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (force != null) 'force': force!,
+        if (tableUri != null) 'tableUri': tableUri!,
       };
 }
 
@@ -6425,7 +6064,7 @@ class GoogleCloudHealthcareV1DicomGcsDestination {
   /// .dcm - image/jpeg -> .jpg - image/png -> .png - application/octet-stream
   /// -> no extension If unspecified, the instances are exported in the original
   /// DICOM format they were uploaded in.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// The Cloud Storage destination to export to.
   ///
@@ -6434,7 +6073,7 @@ class GoogleCloudHealthcareV1DicomGcsDestination {
   /// there is no trailing slash, the service appends one when composing the
   /// object path. The user is responsible for creating the Cloud Storage bucket
   /// referenced in `uri_prefix`.
-  core.String uriPrefix;
+  core.String? uriPrefix;
 
   GoogleCloudHealthcareV1DicomGcsDestination();
 
@@ -6447,9 +6086,9 @@ class GoogleCloudHealthcareV1DicomGcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (mimeType != null) 'mimeType': mimeType,
-        if (uriPrefix != null) 'uriPrefix': uriPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (uriPrefix != null) 'uriPrefix': uriPrefix!,
       };
 }
 
@@ -6468,7 +6107,7 @@ class GoogleCloudHealthcareV1DicomGcsSource {
   /// .dcm extensions in `my-directory/` and its sub-directories. '?' to match 1
   /// character All other URI formats are invalid. Files matching the wildcard
   /// are expected to contain content only, no metadata.
-  core.String uri;
+  core.String? uri;
 
   GoogleCloudHealthcareV1DicomGcsSource();
 
@@ -6478,8 +6117,8 @@ class GoogleCloudHealthcareV1DicomGcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -6487,7 +6126,7 @@ class GoogleCloudHealthcareV1DicomGcsSource {
 class GoogleCloudHealthcareV1FhirBigQueryDestination {
   /// BigQuery URI to an existing dataset, up to 2000 characters long, in the
   /// format `bq://projectId.bqDatasetId`.
-  core.String datasetUri;
+  core.String? datasetUri;
 
   /// If this flag is `TRUE`, all tables are deleted from the dataset before the
   /// new exported tables are written.
@@ -6497,10 +6136,10 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
   /// parameter is ignored. force=false is equivalent to
   /// write_disposition=WRITE_EMPTY and force=true is equivalent to
   /// write_disposition=WRITE_TRUNCATE.
-  core.bool force;
+  core.bool? force;
 
   /// The configuration for the exported BigQuery schema.
-  SchemaConfig schemaConfig;
+  SchemaConfig? schemaConfig;
 
   /// Determines whether existing tables in the destination dataset are
   /// overwritten or appended to.
@@ -6513,7 +6152,7 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
   /// - "WRITE_TRUNCATE" : Erase all existing data in the tables before writing
   /// the instances.
   /// - "WRITE_APPEND" : Append data to the existing tables.
-  core.String writeDisposition;
+  core.String? writeDisposition;
 
   GoogleCloudHealthcareV1FhirBigQueryDestination();
 
@@ -6533,11 +6172,11 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (datasetUri != null) 'datasetUri': datasetUri,
-        if (force != null) 'force': force,
-        if (schemaConfig != null) 'schemaConfig': schemaConfig.toJson(),
-        if (writeDisposition != null) 'writeDisposition': writeDisposition,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (datasetUri != null) 'datasetUri': datasetUri!,
+        if (force != null) 'force': force!,
+        if (schemaConfig != null) 'schemaConfig': schemaConfig!.toJson(),
+        if (writeDisposition != null) 'writeDisposition': writeDisposition!,
       };
 }
 
@@ -6549,7 +6188,7 @@ class GoogleCloudHealthcareV1FhirGcsDestination {
   /// If there is no trailing slash, the service appends one when composing the
   /// object path. The user is responsible for creating the Cloud Storage bucket
   /// referenced in `uri_prefix`.
-  core.String uriPrefix;
+  core.String? uriPrefix;
 
   GoogleCloudHealthcareV1FhirGcsDestination();
 
@@ -6559,8 +6198,8 @@ class GoogleCloudHealthcareV1FhirGcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (uriPrefix != null) 'uriPrefix': uriPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (uriPrefix != null) 'uriPrefix': uriPrefix!,
       };
 }
 
@@ -6579,7 +6218,7 @@ class GoogleCloudHealthcareV1FhirGcsSource {
   /// imports all files with `.ndjson` extensions in `my-directory/` and its
   /// sub-directories. * `?` to match 1 character Files matching the wildcard
   /// are expected to contain content only, no metadata.
-  core.String uri;
+  core.String? uri;
 
   GoogleCloudHealthcareV1FhirGcsSource();
 
@@ -6589,8 +6228,8 @@ class GoogleCloudHealthcareV1FhirGcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -6636,7 +6275,7 @@ class Hl7V2NotificationConfig {
   /// map. For example, `labels."priority"="high"`. The operator `:*` can be
   /// used to assert the existence of a label. For example,
   /// `labels."priority":*`.
-  core.String filter;
+  core.String? filter;
 
   /// The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
   /// notifications of changes are published on.
@@ -6655,7 +6294,7 @@ class Hl7V2NotificationConfig {
   /// notification cannot be published to Cloud Pub/Sub, errors are logged to
   /// Cloud Logging. For more information, see \[Viewing error logs in Cloud
   /// Logging\](/healthcare/docs/how-tos/logging)).
-  core.String pubsubTopic;
+  core.String? pubsubTopic;
 
   Hl7V2NotificationConfig();
 
@@ -6668,9 +6307,9 @@ class Hl7V2NotificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filter != null) 'filter': filter,
-        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
       };
 }
 
@@ -6685,11 +6324,11 @@ class Hl7V2Store {
   /// must conform to the following PCRE regular expression:
   /// \[\p{Ll}\p{Lo}\p{N}_-\]{0,63} No more than 64 labels can be associated
   /// with a given store.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Resource name of the HL7v2 store, of the form
   /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
-  core.String name;
+  core.String? name;
 
   /// A list of notification configs.
   ///
@@ -6697,12 +6336,12 @@ class Hl7V2Store {
   /// (both Ingest & Create) on the corresponding notification destination. Only
   /// the message name is sent as part of the notification. Supplied by the
   /// client.
-  core.List<Hl7V2NotificationConfig> notificationConfigs;
+  core.List<Hl7V2NotificationConfig>? notificationConfigs;
 
   /// The configuration for the parser.
   ///
   /// It determines how the server parses the messages.
-  ParserConfig parserConfig;
+  ParserConfig? parserConfig;
 
   /// Determines whether to reject duplicate messages.
   ///
@@ -6714,7 +6353,7 @@ class Hl7V2Store {
   /// When this field is set to true, CreateMessage/IngestMessage requests with
   /// a duplicate message will be rejected by the store, and
   /// IngestMessageErrorDetail returns a NACK message upon rejection.
-  core.bool rejectDuplicateMessage;
+  core.bool? rejectDuplicateMessage;
 
   Hl7V2Store();
 
@@ -6747,15 +6386,15 @@ class Hl7V2Store {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
         if (notificationConfigs != null)
           'notificationConfigs':
-              notificationConfigs.map((value) => value.toJson()).toList(),
-        if (parserConfig != null) 'parserConfig': parserConfig.toJson(),
+              notificationConfigs!.map((value) => value.toJson()).toList(),
+        if (parserConfig != null) 'parserConfig': parserConfig!.toJson(),
         if (rejectDuplicateMessage != null)
-          'rejectDuplicateMessage': rejectDuplicateMessage,
+          'rejectDuplicateMessage': rejectDuplicateMessage!,
       };
 }
 
@@ -6780,11 +6419,11 @@ class Hl7V2Store {
 class HttpBody {
   /// The HTTP Content-Type header value specifying the content type of the
   /// body.
-  core.String contentType;
+  core.String? contentType;
 
   /// The HTTP request/response body as raw binary.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -6797,7 +6436,7 @@ class HttpBody {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> extensions;
+  core.List<core.Map<core.String, core.Object>>? extensions;
 
   HttpBody();
 
@@ -6821,10 +6460,10 @@ class HttpBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentType != null) 'contentType': contentType,
-        if (data != null) 'data': data,
-        if (extensions != null) 'extensions': extensions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentType != null) 'contentType': contentType!,
+        if (data != null) 'data': data!,
+        if (extensions != null) 'extensions': extensions!,
       };
 }
 
@@ -6837,7 +6476,7 @@ class ImageConfig {
   /// - "REDACT_ALL_TEXT" : Redact all text.
   /// - "REDACT_SENSITIVE_TEXT" : Redact sensitive text.
   /// - "REDACT_NO_TEXT" : Do not redact text.
-  core.String textRedactionMode;
+  core.String? textRedactionMode;
 
   ImageConfig();
 
@@ -6847,8 +6486,8 @@ class ImageConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (textRedactionMode != null) 'textRedactionMode': textRedactionMode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (textRedactionMode != null) 'textRedactionMode': textRedactionMode!,
       };
 }
 
@@ -6863,7 +6502,7 @@ class ImportDicomDataRequest {
   /// The Cloud Healthcare Service Agent requires the
   /// `roles/storage.objectViewer` Cloud IAM roles on the Cloud Storage
   /// location.
-  GoogleCloudHealthcareV1DicomGcsSource gcsSource;
+  GoogleCloudHealthcareV1DicomGcsSource? gcsSource;
 
   ImportDicomDataRequest();
 
@@ -6874,8 +6513,8 @@ class ImportDicomDataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
       };
 }
 
@@ -6887,7 +6526,7 @@ class ImportDicomDataResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request to import resources.
@@ -6907,7 +6546,7 @@ class ImportResourcesRequest {
   /// multiple lines.
   /// - "RESOURCE_PRETTY" : The entire file is one JSON resource. The JSON can
   /// span multiple lines.
-  core.String contentStructure;
+  core.String? contentStructure;
 
   /// Cloud Storage source data location and import configuration.
   ///
@@ -6915,7 +6554,7 @@ class ImportResourcesRequest {
   /// `roles/storage.objectAdmin` role on the Cloud Storage location. Each Cloud
   /// Storage object should be a text file that contains the format specified in
   /// ContentStructure.
-  GoogleCloudHealthcareV1FhirGcsSource gcsSource;
+  GoogleCloudHealthcareV1FhirGcsSource? gcsSource;
 
   ImportResourcesRequest();
 
@@ -6929,9 +6568,9 @@ class ImportResourcesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentStructure != null) 'contentStructure': contentStructure,
-        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentStructure != null) 'contentStructure': contentStructure!,
+        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
       };
 }
 
@@ -6946,31 +6585,31 @@ class ImportResourcesResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A transformation to apply to text that is identified as a specific
 /// info_type.
 class InfoTypeTransformation {
   /// Config for character mask.
-  CharacterMaskConfig characterMaskConfig;
+  CharacterMaskConfig? characterMaskConfig;
 
   /// Config for crypto hash.
-  CryptoHashConfig cryptoHashConfig;
+  CryptoHashConfig? cryptoHashConfig;
 
   /// Config for date shift.
-  DateShiftConfig dateShiftConfig;
+  DateShiftConfig? dateShiftConfig;
 
   /// InfoTypes to apply this transformation to.
   ///
   /// If this is not specified, the transformation applies to any info_type.
-  core.List<core.String> infoTypes;
+  core.List<core.String>? infoTypes;
 
   /// Config for text redaction.
-  RedactConfig redactConfig;
+  RedactConfig? redactConfig;
 
   /// Config for replace with InfoType.
-  ReplaceWithInfoTypeConfig replaceWithInfoTypeConfig;
+  ReplaceWithInfoTypeConfig? replaceWithInfoTypeConfig;
 
   InfoTypeTransformation();
 
@@ -7003,24 +6642,24 @@ class InfoTypeTransformation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (characterMaskConfig != null)
-          'characterMaskConfig': characterMaskConfig.toJson(),
+          'characterMaskConfig': characterMaskConfig!.toJson(),
         if (cryptoHashConfig != null)
-          'cryptoHashConfig': cryptoHashConfig.toJson(),
+          'cryptoHashConfig': cryptoHashConfig!.toJson(),
         if (dateShiftConfig != null)
-          'dateShiftConfig': dateShiftConfig.toJson(),
-        if (infoTypes != null) 'infoTypes': infoTypes,
-        if (redactConfig != null) 'redactConfig': redactConfig.toJson(),
+          'dateShiftConfig': dateShiftConfig!.toJson(),
+        if (infoTypes != null) 'infoTypes': infoTypes!,
+        if (redactConfig != null) 'redactConfig': redactConfig!.toJson(),
         if (replaceWithInfoTypeConfig != null)
-          'replaceWithInfoTypeConfig': replaceWithInfoTypeConfig.toJson(),
+          'replaceWithInfoTypeConfig': replaceWithInfoTypeConfig!.toJson(),
       };
 }
 
 /// Ingests a message into the specified HL7v2 store.
 class IngestMessageRequest {
   /// HL7v2 message to ingest.
-  Message message;
+  Message? message;
 
   IngestMessageRequest();
 
@@ -7031,8 +6670,8 @@ class IngestMessageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (message != null) 'message': message.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (message != null) 'message': message!.toJson(),
       };
 }
 
@@ -7040,8 +6679,8 @@ class IngestMessageRequest {
 /// store.
 class IngestMessageResponse {
   /// HL7v2 ACK message.
-  core.String hl7Ack;
-  core.List<core.int> get hl7AckAsBytes => convert.base64.decode(hl7Ack);
+  core.String? hl7Ack;
+  core.List<core.int> get hl7AckAsBytes => convert.base64.decode(hl7Ack!);
 
   set hl7AckAsBytes(core.List<core.int> _bytes) {
     hl7Ack =
@@ -7049,7 +6688,7 @@ class IngestMessageResponse {
   }
 
   /// Created message resource.
-  Message message;
+  Message? message;
 
   IngestMessageResponse();
 
@@ -7063,20 +6702,20 @@ class IngestMessageResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hl7Ack != null) 'hl7Ack': hl7Ack,
-        if (message != null) 'message': message.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hl7Ack != null) 'hl7Ack': hl7Ack!,
+        if (message != null) 'message': message!.toJson(),
       };
 }
 
 /// Lists the available datasets.
 class ListDatasetsResponse {
   /// The first page of datasets.
-  core.List<Dataset> datasets;
+  core.List<Dataset>? datasets;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListDatasetsResponse();
 
@@ -7092,10 +6731,10 @@ class ListDatasetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (datasets != null)
-          'datasets': datasets.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'datasets': datasets!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -7104,11 +6743,11 @@ class ListDicomStoresResponse {
   /// The returned DICOM stores.
   ///
   /// Won't be more DICOM stores than the value of page_size in the request.
-  core.List<DicomStore> dicomStores;
+  core.List<DicomStore>? dicomStores;
 
   /// Token to retrieve the next page of results or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListDicomStoresResponse();
 
@@ -7124,10 +6763,10 @@ class ListDicomStoresResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dicomStores != null)
-          'dicomStores': dicomStores.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'dicomStores': dicomStores!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -7136,11 +6775,11 @@ class ListFhirStoresResponse {
   /// The returned FHIR stores.
   ///
   /// Won't be more FHIR stores than the value of page_size in the request.
-  core.List<FhirStore> fhirStores;
+  core.List<FhirStore>? fhirStores;
 
   /// Token to retrieve the next page of results or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListFhirStoresResponse();
 
@@ -7156,10 +6795,10 @@ class ListFhirStoresResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fhirStores != null)
-          'fhirStores': fhirStores.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'fhirStores': fhirStores!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -7168,11 +6807,11 @@ class ListHl7V2StoresResponse {
   /// The returned HL7v2 stores.
   ///
   /// Won't be more HL7v2 stores than the value of page_size in the request.
-  core.List<Hl7V2Store> hl7V2Stores;
+  core.List<Hl7V2Store>? hl7V2Stores;
 
   /// Token to retrieve the next page of results or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListHl7V2StoresResponse();
 
@@ -7188,20 +6827,20 @@ class ListHl7V2StoresResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (hl7V2Stores != null)
-          'hl7V2Stores': hl7V2Stores.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'hl7V2Stores': hl7V2Stores!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -7217,10 +6856,10 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -7230,11 +6869,11 @@ class ListMessagesResponse {
   ///
   /// Won't be more Messages than the value of page_size in the request. See
   /// view for populated fields.
-  core.List<Message> hl7V2Messages;
+  core.List<Message>? hl7V2Messages;
 
   /// Token to retrieve the next page of results or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListMessagesResponse();
 
@@ -7250,21 +6889,21 @@ class ListMessagesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (hl7V2Messages != null)
           'hl7V2Messages':
-              hl7V2Messages.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              hl7V2Messages!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -7280,10 +6919,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7292,17 +6931,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -7310,12 +6949,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -7349,12 +6988,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -7369,11 +7008,11 @@ class Message {
   /// Set by the server.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Raw message bytes.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -7389,37 +7028,37 @@ class Message {
   /// must conform to the following PCRE regular expression:
   /// \[\p{Ll}\p{Lo}\p{N}_-\]{0,63} No more than 64 labels can be associated
   /// with a given store.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The message type for this message.
   ///
   /// MSH-9.1.
-  core.String messageType;
+  core.String? messageType;
 
   /// Resource name of the Message, of the form
   /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
   ///
   /// Assigned by the server.
-  core.String name;
+  core.String? name;
 
   /// The parsed version of the raw message data.
   ///
   /// Output only.
-  ParsedData parsedData;
+  ParsedData? parsedData;
 
   /// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this
   /// message.
-  core.List<PatientId> patientIds;
+  core.List<PatientId>? patientIds;
 
   /// The hospital that this message came from.
   ///
   /// MSH-4.
-  core.String sendFacility;
+  core.String? sendFacility;
 
   /// The datetime the sending application sent this message.
   ///
   /// MSH-7.
-  core.String sendTime;
+  core.String? sendTime;
 
   Message();
 
@@ -7463,17 +7102,17 @@ class Message {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (data != null) 'data': data,
-        if (labels != null) 'labels': labels,
-        if (messageType != null) 'messageType': messageType,
-        if (name != null) 'name': name,
-        if (parsedData != null) 'parsedData': parsedData.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (data != null) 'data': data!,
+        if (labels != null) 'labels': labels!,
+        if (messageType != null) 'messageType': messageType!,
+        if (name != null) 'name': name!,
+        if (parsedData != null) 'parsedData': parsedData!.toJson(),
         if (patientIds != null)
-          'patientIds': patientIds.map((value) => value.toJson()).toList(),
-        if (sendFacility != null) 'sendFacility': sendFacility,
-        if (sendTime != null) 'sendTime': sendTime,
+          'patientIds': patientIds!.map((value) => value.toJson()).toList(),
+        if (sendFacility != null) 'sendFacility': sendFacility!,
+        if (sendTime != null) 'sendTime': sendTime!,
       };
 }
 
@@ -7497,7 +7136,7 @@ class NotificationConfig {
   /// that not all operations trigger notifications, see
   /// [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub)
   /// for specific details.
-  core.String pubsubTopic;
+  core.String? pubsubTopic;
 
   NotificationConfig();
 
@@ -7507,8 +7146,8 @@ class NotificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
       };
 }
 
@@ -7519,10 +7158,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -7533,14 +7172,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -7553,7 +7192,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -7588,12 +7227,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -7602,23 +7241,23 @@ class Operation {
 /// Returned in the long-running operation's metadata field.
 class OperationMetadata {
   /// The name of the API method that initiated the operation.
-  core.String apiMethodName;
+  core.String? apiMethodName;
 
   /// Specifies if cancellation was requested for the operation.
-  core.bool cancelRequested;
-  ProgressCounter counter;
+  core.bool? cancelRequested;
+  ProgressCounter? counter;
 
   /// The time at which the operation was created by the API.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time at which execution was completed.
-  core.String endTime;
+  core.String? endTime;
 
   /// A link to audit and error logs in the log viewer.
   ///
   /// Error logs are generated only by some operations, listed at \[Viewing
   /// logs\](/healthcare/docs/how-tos/logging).
-  core.String logsUrl;
+  core.String? logsUrl;
 
   OperationMetadata();
 
@@ -7644,19 +7283,19 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiMethodName != null) 'apiMethodName': apiMethodName,
-        if (cancelRequested != null) 'cancelRequested': cancelRequested,
-        if (counter != null) 'counter': counter.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
-        if (logsUrl != null) 'logsUrl': logsUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiMethodName != null) 'apiMethodName': apiMethodName!,
+        if (cancelRequested != null) 'cancelRequested': cancelRequested!,
+        if (counter != null) 'counter': counter!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (logsUrl != null) 'logsUrl': logsUrl!,
       };
 }
 
 /// The content of a HL7v2 message in a structured format.
 class ParsedData {
-  core.List<Segment> segments;
+  core.List<Segment>? segments;
 
   ParsedData();
 
@@ -7669,9 +7308,9 @@ class ParsedData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (segments != null)
-          'segments': segments.map((value) => value.toJson()).toList(),
+          'segments': segments!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7680,15 +7319,15 @@ class ParsedData {
 /// It determines how the server parses the messages.
 class ParserConfig {
   /// Determines whether messages with no header are allowed.
-  core.bool allowNullHeader;
+  core.bool? allowNullHeader;
 
   /// Byte(s) to use as the segment terminator.
   ///
   /// If this is unset, '\r' is used as segment terminator, matching the HL7
   /// version 2 specification.
-  core.String segmentTerminator;
+  core.String? segmentTerminator;
   core.List<core.int> get segmentTerminatorAsBytes =>
-      convert.base64.decode(segmentTerminator);
+      convert.base64.decode(segmentTerminator!);
 
   set segmentTerminatorAsBytes(core.List<core.int> _bytes) {
     segmentTerminator =
@@ -7706,9 +7345,9 @@ class ParserConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowNullHeader != null) 'allowNullHeader': allowNullHeader,
-        if (segmentTerminator != null) 'segmentTerminator': segmentTerminator,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowNullHeader != null) 'allowNullHeader': allowNullHeader!,
+        if (segmentTerminator != null) 'segmentTerminator': segmentTerminator!,
       };
 }
 
@@ -7717,10 +7356,10 @@ class PatientId {
   /// ID type.
   ///
   /// For example, MRN or NHS.
-  core.String type;
+  core.String? type;
 
   /// The patient's unique identifier.
-  core.String value;
+  core.String? value;
 
   PatientId();
 
@@ -7733,9 +7372,9 @@ class PatientId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -7772,14 +7411,14 @@ class PatientId {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -7793,8 +7432,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -7818,7 +7457,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -7843,26 +7482,26 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
 /// ProgressCounter provides counters to describe an operation's progress.
 class ProgressCounter {
   /// The number of units that failed in the operation.
-  core.String failure;
+  core.String? failure;
 
   /// The number of units that are pending in the operation.
-  core.String pending;
+  core.String? pending;
 
   /// The number of units that succeeded in the operation.
-  core.String success;
+  core.String? success;
 
   ProgressCounter();
 
@@ -7878,10 +7517,10 @@ class ProgressCounter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (failure != null) 'failure': failure,
-        if (pending != null) 'pending': pending,
-        if (success != null) 'success': success,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (failure != null) 'failure': failure!,
+        if (pending != null) 'pending': pending!,
+        if (success != null) 'success': success!,
       };
 }
 
@@ -7896,7 +7535,7 @@ class RedactConfig {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// When using the INSPECT_AND_TRANSFORM action, each match is replaced with the
@@ -7911,7 +7550,7 @@ class ReplaceWithInfoTypeConfig {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A list of FHIR resources.
@@ -7919,7 +7558,7 @@ class Resources {
   /// List of resources IDs.
   ///
   /// For example, "Patient/1234".
-  core.List<core.String> resources;
+  core.List<core.String>? resources;
 
   Resources();
 
@@ -7931,8 +7570,8 @@ class Resources {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resources != null) 'resources': resources,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -7947,7 +7586,7 @@ class SchemaConfig {
   /// called `concept.concept` but not `concept.concept.concept`. If not
   /// specified or set to 0, the server will use the default value 2. The
   /// maximum depth allowed is 5.
-  core.String recursiveStructureDepth;
+  core.String? recursiveStructureDepth;
 
   /// Specifies the output schema type.
   ///
@@ -7962,7 +7601,7 @@ class SchemaConfig {
   /// can hold any resource type. The affected fields are
   /// `Parameters.parameter.resource`, `Bundle.entry.resource`, and
   /// `Bundle.entry.response.outcome`.
-  core.String schemaType;
+  core.String? schemaType;
 
   SchemaConfig();
 
@@ -7975,10 +7614,10 @@ class SchemaConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (recursiveStructureDepth != null)
-          'recursiveStructureDepth': recursiveStructureDepth,
-        if (schemaType != null) 'schemaType': schemaType,
+          'recursiveStructureDepth': recursiveStructureDepth!,
+        if (schemaType != null) 'schemaType': schemaType!,
       };
 }
 
@@ -7990,7 +7629,7 @@ class SearchResourcesRequest {
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
   /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
-  core.String resourceType;
+  core.String? resourceType;
 
   SearchResourcesRequest();
 
@@ -8000,8 +7639,8 @@ class SearchResourcesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceType != null) 'resourceType': resourceType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceType != null) 'resourceType': resourceType!,
       };
 }
 
@@ -8018,17 +7657,17 @@ class Segment {
   /// the first component of Field 1 has the value "CBC". * (1\[0\].1, "HbA1c")
   /// denotes that the first component of the first Instance of Field 1, which
   /// is repeated, has the value "HbA1c".
-  core.Map<core.String, core.String> fields;
+  core.Map<core.String, core.String>? fields;
 
   /// A string that indicates the type of segment.
   ///
   /// For example, EVN or PID.
-  core.String segmentId;
+  core.String? segmentId;
 
   /// Set ID for segments that can be in a set.
   ///
   /// This can be empty if it's missing or isn't applicable.
-  core.String setId;
+  core.String? setId;
 
   Segment();
 
@@ -8050,10 +7689,10 @@ class Segment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (segmentId != null) 'segmentId': segmentId,
-        if (setId != null) 'setId': setId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (segmentId != null) 'segmentId': segmentId!,
+        if (setId != null) 'setId': setId!,
       };
 }
 
@@ -8064,13 +7703,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -8084,9 +7723,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -8099,7 +7738,7 @@ class SetIamPolicyRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -8107,13 +7746,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -8137,10 +7776,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -8176,14 +7815,14 @@ class StreamConfig {
   /// mutation cannot be streamed to BigQuery, errors are logged to Cloud
   /// Logging. For more information, see \[Viewing error logs in Cloud
   /// Logging\](/healthcare/docs/how-tos/logging)).
-  GoogleCloudHealthcareV1FhirBigQueryDestination bigqueryDestination;
+  GoogleCloudHealthcareV1FhirBigQueryDestination? bigqueryDestination;
 
   /// Supply a FHIR resource type (such as "Patient" or "Observation").
   ///
   /// See https://www.hl7.org/fhir/valueset-resource-types.html for a list of
   /// all FHIR resource types. The server treats an empty list as an intent to
   /// stream all the supported resource types in this FHIR store.
-  core.List<core.String> resourceTypes;
+  core.List<core.String>? resourceTypes;
 
   StreamConfig();
 
@@ -8201,10 +7840,10 @@ class StreamConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bigqueryDestination != null)
-          'bigqueryDestination': bigqueryDestination.toJson(),
-        if (resourceTypes != null) 'resourceTypes': resourceTypes,
+          'bigqueryDestination': bigqueryDestination!.toJson(),
+        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
       };
 }
 
@@ -8217,7 +7856,7 @@ class TagFilterList {
   /// http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,.
   /// They may be provided by "Keyword" or "Tag". For example "PatientID",
   /// "00100010".
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   TagFilterList();
 
@@ -8229,8 +7868,8 @@ class TagFilterList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (tags != null) 'tags': tags,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (tags != null) 'tags': tags!,
       };
 }
 
@@ -8241,7 +7880,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -8253,8 +7892,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -8262,7 +7901,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -8274,14 +7913,14 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
 class TextConfig {
   /// The transformations to apply to the detected data.
-  core.List<InfoTypeTransformation> transformations;
+  core.List<InfoTypeTransformation>? transformations;
 
   TextConfig();
 
@@ -8295,9 +7934,9 @@ class TextConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (transformations != null)
           'transformations':
-              transformations.map((value) => value.toJson()).toList(),
+              transformations!.map((value) => value.toJson()).toList(),
       };
 }

@@ -122,15 +122,9 @@ class BookshelvesResource {
   async.Future<Bookshelf> get(
     core.String userId,
     core.String shelf, {
-    core.String source,
-    core.String $fields,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (shelf == null) {
-      throw core.ArgumentError('Parameter shelf is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
@@ -169,12 +163,9 @@ class BookshelvesResource {
   /// this method will complete with the same error.
   async.Future<Bookshelves> list(
     core.String userId, {
-    core.String source,
-    core.String $fields,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
@@ -229,18 +220,12 @@ class BookshelvesVolumesResource {
   async.Future<Volumes> list(
     core.String userId,
     core.String shelf, {
-    core.int maxResults,
-    core.bool showPreorders,
-    core.String source,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.bool? showPreorders,
+    core.String? source,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (shelf == null) {
-      throw core.ArgumentError('Parameter shelf is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (showPreorders != null) 'showPreorders': ['${showPreorders}'],
@@ -295,11 +280,11 @@ class CloudloadingResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BooksCloudloadingResource> addBook({
-    core.String driveDocumentId,
-    core.String mimeType,
-    core.String name,
-    core.String uploadClientToken,
-    core.String $fields,
+    core.String? driveDocumentId,
+    core.String? mimeType,
+    core.String? name,
+    core.String? uploadClientToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (driveDocumentId != null) 'drive_document_id': [driveDocumentId],
@@ -338,11 +323,8 @@ class CloudloadingResource {
   /// this method will complete with the same error.
   async.Future<Empty> deleteBook(
     core.String volumeId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'volumeId': [volumeId],
       if ($fields != null) 'fields': [$fields],
@@ -376,10 +358,9 @@ class CloudloadingResource {
   /// this method will complete with the same error.
   async.Future<BooksCloudloadingResource> updateBook(
     BooksCloudloadingResource request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -420,11 +401,8 @@ class DictionaryResource {
   /// this method will complete with the same error.
   async.Future<Metadata> listOfflineMetadata(
     core.String cpksver, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (cpksver == null) {
-      throw core.ArgumentError('Parameter cpksver is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'cpksver': [cpksver],
       if ($fields != null) 'fields': [$fields],
@@ -463,8 +441,8 @@ class FamilysharingResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FamilyInfo> getFamilyInfo({
-    core.String source,
-    core.String $fields,
+    core.String? source,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
@@ -505,10 +483,10 @@ class FamilysharingResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> share({
-    core.String docId,
-    core.String source,
-    core.String volumeId,
-    core.String $fields,
+    core.String? docId,
+    core.String? source,
+    core.String? volumeId,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (docId != null) 'docId': [docId],
@@ -551,10 +529,10 @@ class FamilysharingResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> unshare({
-    core.String docId,
-    core.String source,
-    core.String volumeId,
-    core.String $fields,
+    core.String? docId,
+    core.String? source,
+    core.String? volumeId,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (docId != null) 'docId': [docId],
@@ -609,16 +587,10 @@ class LayersResource {
   async.Future<Layersummary> get(
     core.String volumeId,
     core.String summaryId, {
-    core.String contentVersion,
-    core.String source,
-    core.String $fields,
+    core.String? contentVersion,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
-    }
-    if (summaryId == null) {
-      throw core.ArgumentError('Parameter summaryId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (contentVersion != null) 'contentVersion': [contentVersion],
       if (source != null) 'source': [source],
@@ -666,15 +638,12 @@ class LayersResource {
   /// this method will complete with the same error.
   async.Future<Layersummaries> list(
     core.String volumeId, {
-    core.String contentVersion,
-    core.int maxResults,
-    core.String pageToken,
-    core.String source,
-    core.String $fields,
+    core.String? contentVersion,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (contentVersion != null) 'contentVersion': [contentVersion],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -747,26 +716,14 @@ class LayersAnnotationDataResource {
     core.String layerId,
     core.String annotationDataId,
     core.String contentVersion, {
-    core.bool allowWebDefinitions,
-    core.int h,
-    core.String locale,
-    core.int scale,
-    core.String source,
-    core.int w,
-    core.String $fields,
+    core.bool? allowWebDefinitions,
+    core.int? h,
+    core.String? locale,
+    core.int? scale,
+    core.String? source,
+    core.int? w,
+    core.String? $fields,
   }) async {
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
-    }
-    if (layerId == null) {
-      throw core.ArgumentError('Parameter layerId is required.');
-    }
-    if (annotationDataId == null) {
-      throw core.ArgumentError('Parameter annotationDataId is required.');
-    }
-    if (contentVersion == null) {
-      throw core.ArgumentError('Parameter contentVersion is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'contentVersion': [contentVersion],
       if (allowWebDefinitions != null)
@@ -846,27 +803,18 @@ class LayersAnnotationDataResource {
     core.String volumeId,
     core.String layerId,
     core.String contentVersion, {
-    core.List<core.String> annotationDataId,
-    core.int h,
-    core.String locale,
-    core.int maxResults,
-    core.String pageToken,
-    core.int scale,
-    core.String source,
-    core.String updatedMax,
-    core.String updatedMin,
-    core.int w,
-    core.String $fields,
+    core.List<core.String>? annotationDataId,
+    core.int? h,
+    core.String? locale,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.int? scale,
+    core.String? source,
+    core.String? updatedMax,
+    core.String? updatedMin,
+    core.int? w,
+    core.String? $fields,
   }) async {
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
-    }
-    if (layerId == null) {
-      throw core.ArgumentError('Parameter layerId is required.');
-    }
-    if (contentVersion == null) {
-      throw core.ArgumentError('Parameter contentVersion is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'contentVersion': [contentVersion],
       if (annotationDataId != null) 'annotationDataId': annotationDataId,
@@ -933,19 +881,10 @@ class LayersVolumeAnnotationsResource {
     core.String volumeId,
     core.String layerId,
     core.String annotationId, {
-    core.String locale,
-    core.String source,
-    core.String $fields,
+    core.String? locale,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
-    }
-    if (layerId == null) {
-      throw core.ArgumentError('Parameter layerId is required.');
-    }
-    if (annotationId == null) {
-      throw core.ArgumentError('Parameter annotationId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (locale != null) 'locale': [locale],
       if (source != null) 'source': [source],
@@ -1022,29 +961,20 @@ class LayersVolumeAnnotationsResource {
     core.String volumeId,
     core.String layerId,
     core.String contentVersion, {
-    core.String endOffset,
-    core.String endPosition,
-    core.String locale,
-    core.int maxResults,
-    core.String pageToken,
-    core.bool showDeleted,
-    core.String source,
-    core.String startOffset,
-    core.String startPosition,
-    core.String updatedMax,
-    core.String updatedMin,
-    core.String volumeAnnotationsVersion,
-    core.String $fields,
+    core.String? endOffset,
+    core.String? endPosition,
+    core.String? locale,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? source,
+    core.String? startOffset,
+    core.String? startPosition,
+    core.String? updatedMax,
+    core.String? updatedMin,
+    core.String? volumeAnnotationsVersion,
+    core.String? $fields,
   }) async {
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
-    }
-    if (layerId == null) {
-      throw core.ArgumentError('Parameter layerId is required.');
-    }
-    if (contentVersion == null) {
-      throw core.ArgumentError('Parameter contentVersion is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'contentVersion': [contentVersion],
       if (endOffset != null) 'endOffset': [endOffset],
@@ -1101,8 +1031,8 @@ class MyconfigResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Usersettings> getUserSettings({
-    core.String country,
-    core.String $fields,
+    core.String? country,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (country != null) 'country': [country],
@@ -1146,15 +1076,12 @@ class MyconfigResource {
   async.Future<DownloadAccesses> releaseDownloadAccess(
     core.String cpksver,
     core.List<core.String> volumeIds, {
-    core.String locale,
-    core.String source,
-    core.String $fields,
+    core.String? locale,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (cpksver == null) {
-      throw core.ArgumentError('Parameter cpksver is required.');
-    }
-    if (volumeIds == null || volumeIds.isEmpty) {
-      throw core.ArgumentError('Parameter volumeIds is required.');
+    if (volumeIds.isEmpty) {
+      throw core.ArgumentError('Parameter volumeIds cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'cpksver': [cpksver],
@@ -1213,22 +1140,10 @@ class MyconfigResource {
     core.String nonce,
     core.String source,
     core.String volumeId, {
-    core.String licenseTypes,
-    core.String locale,
-    core.String $fields,
+    core.String? licenseTypes,
+    core.String? locale,
+    core.String? $fields,
   }) async {
-    if (cpksver == null) {
-      throw core.ArgumentError('Parameter cpksver is required.');
-    }
-    if (nonce == null) {
-      throw core.ArgumentError('Parameter nonce is required.');
-    }
-    if (source == null) {
-      throw core.ArgumentError('Parameter source is required.');
-    }
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'cpksver': [cpksver],
       'nonce': [nonce],
@@ -1288,22 +1203,13 @@ class MyconfigResource {
     core.String cpksver,
     core.String nonce,
     core.String source, {
-    core.List<core.String> features,
-    core.bool includeNonComicsSeries,
-    core.String locale,
-    core.bool showPreorders,
-    core.List<core.String> volumeIds,
-    core.String $fields,
+    core.List<core.String>? features,
+    core.bool? includeNonComicsSeries,
+    core.String? locale,
+    core.bool? showPreorders,
+    core.List<core.String>? volumeIds,
+    core.String? $fields,
   }) async {
-    if (cpksver == null) {
-      throw core.ArgumentError('Parameter cpksver is required.');
-    }
-    if (nonce == null) {
-      throw core.ArgumentError('Parameter nonce is required.');
-    }
-    if (source == null) {
-      throw core.ArgumentError('Parameter source is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'cpksver': [cpksver],
       'nonce': [nonce],
@@ -1349,10 +1255,9 @@ class MyconfigResource {
   /// this method will complete with the same error.
   async.Future<Usersettings> updateUserSettings(
     Usersettings request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1409,12 +1314,9 @@ class MylibraryAnnotationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String annotationId, {
-    core.String source,
-    core.String $fields,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (annotationId == null) {
-      throw core.ArgumentError('Parameter annotationId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
@@ -1458,14 +1360,13 @@ class MylibraryAnnotationsResource {
   /// this method will complete with the same error.
   async.Future<Annotation> insert(
     Annotation request, {
-    core.String annotationId,
-    core.String country,
-    core.bool showOnlySummaryInResponse,
-    core.String source,
-    core.String $fields,
+    core.String? annotationId,
+    core.String? country,
+    core.bool? showOnlySummaryInResponse,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (annotationId != null) 'annotationId': [annotationId],
       if (country != null) 'country': [country],
@@ -1526,17 +1427,17 @@ class MylibraryAnnotationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Annotations> list({
-    core.String contentVersion,
-    core.String layerId,
-    core.List<core.String> layerIds,
-    core.int maxResults,
-    core.String pageToken,
-    core.bool showDeleted,
-    core.String source,
-    core.String updatedMax,
-    core.String updatedMin,
-    core.String volumeId,
-    core.String $fields,
+    core.String? contentVersion,
+    core.String? layerId,
+    core.List<core.String>? layerIds,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? source,
+    core.String? updatedMax,
+    core.String? updatedMin,
+    core.String? volumeId,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (contentVersion != null) 'contentVersion': [contentVersion],
@@ -1584,13 +1485,10 @@ class MylibraryAnnotationsResource {
   async.Future<AnnotationsSummary> summary(
     core.List<core.String> layerIds,
     core.String volumeId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (layerIds == null || layerIds.isEmpty) {
-      throw core.ArgumentError('Parameter layerIds is required.');
-    }
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
+    if (layerIds.isEmpty) {
+      throw core.ArgumentError('Parameter layerIds cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'layerIds': layerIds,
@@ -1632,14 +1530,10 @@ class MylibraryAnnotationsResource {
   async.Future<Annotation> update(
     Annotation request,
     core.String annotationId, {
-    core.String source,
-    core.String $fields,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (annotationId == null) {
-      throw core.ArgumentError('Parameter annotationId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
@@ -1698,16 +1592,10 @@ class MylibraryBookshelvesResource {
   async.Future<Empty> addVolume(
     core.String shelf,
     core.String volumeId, {
-    core.String reason,
-    core.String source,
-    core.String $fields,
+    core.String? reason,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (shelf == null) {
-      throw core.ArgumentError('Parameter shelf is required.');
-    }
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'volumeId': [volumeId],
       if (reason != null) 'reason': [reason],
@@ -1747,12 +1635,9 @@ class MylibraryBookshelvesResource {
   /// this method will complete with the same error.
   async.Future<Empty> clearVolumes(
     core.String shelf, {
-    core.String source,
-    core.String $fields,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (shelf == null) {
-      throw core.ArgumentError('Parameter shelf is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
@@ -1791,12 +1676,9 @@ class MylibraryBookshelvesResource {
   /// this method will complete with the same error.
   async.Future<Bookshelf> get(
     core.String shelf, {
-    core.String source,
-    core.String $fields,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (shelf == null) {
-      throw core.ArgumentError('Parameter shelf is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
@@ -1830,8 +1712,8 @@ class MylibraryBookshelvesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Bookshelves> list({
-    core.String source,
-    core.String $fields,
+    core.String? source,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (source != null) 'source': [source],
@@ -1877,18 +1759,9 @@ class MylibraryBookshelvesResource {
     core.String shelf,
     core.String volumeId,
     core.int volumePosition, {
-    core.String source,
-    core.String $fields,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (shelf == null) {
-      throw core.ArgumentError('Parameter shelf is required.');
-    }
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
-    }
-    if (volumePosition == null) {
-      throw core.ArgumentError('Parameter volumePosition is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'volumeId': [volumeId],
       'volumePosition': ['${volumePosition}'],
@@ -1936,16 +1809,10 @@ class MylibraryBookshelvesResource {
   async.Future<Empty> removeVolume(
     core.String shelf,
     core.String volumeId, {
-    core.String reason,
-    core.String source,
-    core.String $fields,
+    core.String? reason,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (shelf == null) {
-      throw core.ArgumentError('Parameter shelf is required.');
-    }
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'volumeId': [volumeId],
       if (reason != null) 'reason': [reason],
@@ -2009,18 +1876,15 @@ class MylibraryBookshelvesVolumesResource {
   /// this method will complete with the same error.
   async.Future<Volumes> list(
     core.String shelf, {
-    core.String country,
-    core.int maxResults,
-    core.String projection,
-    core.String q,
-    core.bool showPreorders,
-    core.String source,
-    core.int startIndex,
-    core.String $fields,
+    core.String? country,
+    core.int? maxResults,
+    core.String? projection,
+    core.String? q,
+    core.bool? showPreorders,
+    core.String? source,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (shelf == null) {
-      throw core.ArgumentError('Parameter shelf is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (country != null) 'country': [country],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -2074,13 +1938,10 @@ class MylibraryReadingpositionsResource {
   /// this method will complete with the same error.
   async.Future<ReadingPosition> get(
     core.String volumeId, {
-    core.String contentVersion,
-    core.String source,
-    core.String $fields,
+    core.String? contentVersion,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (contentVersion != null) 'contentVersion': [contentVersion],
       if (source != null) 'source': [source],
@@ -2141,21 +2002,12 @@ class MylibraryReadingpositionsResource {
     core.String volumeId,
     core.String position,
     core.String timestamp, {
-    core.String action,
-    core.String contentVersion,
-    core.String deviceCookie,
-    core.String source,
-    core.String $fields,
+    core.String? action,
+    core.String? contentVersion,
+    core.String? deviceCookie,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
-    }
-    if (position == null) {
-      throw core.ArgumentError('Parameter position is required.');
-    }
-    if (timestamp == null) {
-      throw core.ArgumentError('Parameter timestamp is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'position': [position],
       'timestamp': [timestamp],
@@ -2207,13 +2059,10 @@ class NotificationResource {
   /// this method will complete with the same error.
   async.Future<Notification> get(
     core.String notificationId, {
-    core.String locale,
-    core.String source,
-    core.String $fields,
+    core.String? locale,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (notificationId == null) {
-      throw core.ArgumentError('Parameter notificationId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'notification_id': [notificationId],
       if (locale != null) 'locale': [locale],
@@ -2256,8 +2105,8 @@ class OnboardingResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Category> listCategories({
-    core.String locale,
-    core.String $fields,
+    core.String? locale,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (locale != null) 'locale': [locale],
@@ -2306,12 +2155,12 @@ class OnboardingResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Volume2> listCategoryVolumes({
-    core.List<core.String> categoryId,
-    core.String locale,
-    core.String maxAllowedMaturityRating,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.List<core.String>? categoryId,
+    core.String? locale,
+    core.String? maxAllowedMaturityRating,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (categoryId != null) 'categoryId': categoryId,
@@ -2367,10 +2216,10 @@ class PersonalizedstreamResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Discoveryclusters> get({
-    core.String locale,
-    core.String maxAllowedMaturityRating,
-    core.String source,
-    core.String $fields,
+    core.String? locale,
+    core.String? maxAllowedMaturityRating,
+    core.String? source,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (locale != null) 'locale': [locale],
@@ -2428,15 +2277,15 @@ class PromoofferResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> accept({
-    core.String androidId,
-    core.String device,
-    core.String manufacturer,
-    core.String model,
-    core.String offerId,
-    core.String product,
-    core.String serial,
-    core.String volumeId,
-    core.String $fields,
+    core.String? androidId,
+    core.String? device,
+    core.String? manufacturer,
+    core.String? model,
+    core.String? offerId,
+    core.String? product,
+    core.String? serial,
+    core.String? volumeId,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (androidId != null) 'androidId': [androidId],
@@ -2489,14 +2338,14 @@ class PromoofferResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> dismiss({
-    core.String androidId,
-    core.String device,
-    core.String manufacturer,
-    core.String model,
-    core.String offerId,
-    core.String product,
-    core.String serial,
-    core.String $fields,
+    core.String? androidId,
+    core.String? device,
+    core.String? manufacturer,
+    core.String? model,
+    core.String? offerId,
+    core.String? product,
+    core.String? serial,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (androidId != null) 'androidId': [androidId],
@@ -2546,13 +2395,13 @@ class PromoofferResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Offers> get({
-    core.String androidId,
-    core.String device,
-    core.String manufacturer,
-    core.String model,
-    core.String product,
-    core.String serial,
-    core.String $fields,
+    core.String? androidId,
+    core.String? device,
+    core.String? manufacturer,
+    core.String? model,
+    core.String? product,
+    core.String? serial,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (androidId != null) 'androidId': [androidId],
@@ -2601,10 +2450,10 @@ class SeriesResource {
   /// this method will complete with the same error.
   async.Future<Series> get(
     core.List<core.String> seriesId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (seriesId == null || seriesId.isEmpty) {
-      throw core.ArgumentError('Parameter seriesId is required.');
+    if (seriesId.isEmpty) {
+      throw core.ArgumentError('Parameter seriesId cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'series_id': seriesId,
@@ -2650,13 +2499,10 @@ class SeriesMembershipResource {
   /// this method will complete with the same error.
   async.Future<Seriesmembership> get(
     core.String seriesId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (seriesId == null) {
-      throw core.ArgumentError('Parameter seriesId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'series_id': [seriesId],
       if (pageSize != null) 'page_size': ['${pageSize}'],
@@ -2724,17 +2570,14 @@ class VolumesResource {
   /// this method will complete with the same error.
   async.Future<Volume> get(
     core.String volumeId, {
-    core.String country,
-    core.bool includeNonComicsSeries,
-    core.String partner,
-    core.String projection,
-    core.String source,
-    core.bool userLibraryConsistentRead,
-    core.String $fields,
+    core.String? country,
+    core.bool? includeNonComicsSeries,
+    core.String? partner,
+    core.String? projection,
+    core.String? source,
+    core.bool? userLibraryConsistentRead,
+    core.String? $fields,
   }) async {
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (country != null) 'country': [country],
       if (includeNonComicsSeries != null)
@@ -2837,24 +2680,21 @@ class VolumesResource {
   /// this method will complete with the same error.
   async.Future<Volumes> list(
     core.String q, {
-    core.String download,
-    core.String filter,
-    core.String langRestrict,
-    core.String libraryRestrict,
-    core.String maxAllowedMaturityRating,
-    core.int maxResults,
-    core.String orderBy,
-    core.String partner,
-    core.String printType,
-    core.String projection,
-    core.bool showPreorders,
-    core.String source,
-    core.int startIndex,
-    core.String $fields,
+    core.String? download,
+    core.String? filter,
+    core.String? langRestrict,
+    core.String? libraryRestrict,
+    core.String? maxAllowedMaturityRating,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? partner,
+    core.String? printType,
+    core.String? projection,
+    core.bool? showPreorders,
+    core.String? source,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (q == null) {
-      throw core.ArgumentError('Parameter q is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'q': [q],
       if (download != null) 'download': [download],
@@ -2928,15 +2768,12 @@ class VolumesAssociatedResource {
   /// this method will complete with the same error.
   async.Future<Volumes> list(
     core.String volumeId, {
-    core.String association,
-    core.String locale,
-    core.String maxAllowedMaturityRating,
-    core.String source,
-    core.String $fields,
+    core.String? association,
+    core.String? locale,
+    core.String? maxAllowedMaturityRating,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (association != null) 'association': [association],
       if (locale != null) 'locale': [locale],
@@ -2997,14 +2834,14 @@ class VolumesMybooksResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Volumes> list({
-    core.List<core.String> acquireMethod,
-    core.String country,
-    core.String locale,
-    core.int maxResults,
-    core.List<core.String> processingState,
-    core.String source,
-    core.int startIndex,
-    core.String $fields,
+    core.List<core.String>? acquireMethod,
+    core.String? country,
+    core.String? locale,
+    core.int? maxResults,
+    core.List<core.String>? processingState,
+    core.String? source,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (acquireMethod != null) 'acquireMethod': acquireMethod,
@@ -3061,10 +2898,10 @@ class VolumesRecommendedResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Volumes> list({
-    core.String locale,
-    core.String maxAllowedMaturityRating,
-    core.String source,
-    core.String $fields,
+    core.String? locale,
+    core.String? maxAllowedMaturityRating,
+    core.String? source,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (locale != null) 'locale': [locale],
@@ -3114,16 +2951,10 @@ class VolumesRecommendedResource {
   async.Future<BooksVolumesRecommendedRateResponse> rate(
     core.String rating,
     core.String volumeId, {
-    core.String locale,
-    core.String source,
-    core.String $fields,
+    core.String? locale,
+    core.String? source,
+    core.String? $fields,
   }) async {
-    if (rating == null) {
-      throw core.ArgumentError('Parameter rating is required.');
-    }
-    if (volumeId == null) {
-      throw core.ArgumentError('Parameter volumeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'rating': [rating],
       'volumeId': [volumeId],
@@ -3181,13 +3012,13 @@ class VolumesUseruploadedResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Volumes> list({
-    core.String locale,
-    core.int maxResults,
-    core.List<core.String> processingState,
-    core.String source,
-    core.int startIndex,
-    core.List<core.String> volumeId,
-    core.String $fields,
+    core.String? locale,
+    core.int? maxResults,
+    core.List<core.String>? processingState,
+    core.String? source,
+    core.int? startIndex,
+    core.List<core.String>? volumeId,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (locale != null) 'locale': [locale],
@@ -3213,19 +3044,19 @@ class VolumesUseruploadedResource {
 /// Selection ranges sent from the client.
 class AnnotationClientVersionRanges {
   /// Range in CFI format for this annotation sent by client.
-  BooksAnnotationsRange cfiRange;
+  BooksAnnotationsRange? cfiRange;
 
   /// Content version the client sent in.
-  core.String contentVersion;
+  core.String? contentVersion;
 
   /// Range in GB image format for this annotation sent by client.
-  BooksAnnotationsRange gbImageRange;
+  BooksAnnotationsRange? gbImageRange;
 
   /// Range in GB text format for this annotation sent by client.
-  BooksAnnotationsRange gbTextRange;
+  BooksAnnotationsRange? gbTextRange;
 
   /// Range in image CFI format for this annotation sent by client.
-  BooksAnnotationsRange imageCfiRange;
+  BooksAnnotationsRange? imageCfiRange;
 
   AnnotationClientVersionRanges();
 
@@ -3251,31 +3082,31 @@ class AnnotationClientVersionRanges {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cfiRange != null) 'cfiRange': cfiRange.toJson(),
-        if (contentVersion != null) 'contentVersion': contentVersion,
-        if (gbImageRange != null) 'gbImageRange': gbImageRange.toJson(),
-        if (gbTextRange != null) 'gbTextRange': gbTextRange.toJson(),
-        if (imageCfiRange != null) 'imageCfiRange': imageCfiRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cfiRange != null) 'cfiRange': cfiRange!.toJson(),
+        if (contentVersion != null) 'contentVersion': contentVersion!,
+        if (gbImageRange != null) 'gbImageRange': gbImageRange!.toJson(),
+        if (gbTextRange != null) 'gbTextRange': gbTextRange!.toJson(),
+        if (imageCfiRange != null) 'imageCfiRange': imageCfiRange!.toJson(),
       };
 }
 
 /// Selection ranges for the most recent content version.
 class AnnotationCurrentVersionRanges {
   /// Range in CFI format for this annotation for version above.
-  BooksAnnotationsRange cfiRange;
+  BooksAnnotationsRange? cfiRange;
 
   /// Content version applicable to ranges below.
-  core.String contentVersion;
+  core.String? contentVersion;
 
   /// Range in GB image format for this annotation for version above.
-  BooksAnnotationsRange gbImageRange;
+  BooksAnnotationsRange? gbImageRange;
 
   /// Range in GB text format for this annotation for version above.
-  BooksAnnotationsRange gbTextRange;
+  BooksAnnotationsRange? gbTextRange;
 
   /// Range in image CFI format for this annotation for version above.
-  BooksAnnotationsRange imageCfiRange;
+  BooksAnnotationsRange? imageCfiRange;
 
   AnnotationCurrentVersionRanges();
 
@@ -3301,27 +3132,27 @@ class AnnotationCurrentVersionRanges {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cfiRange != null) 'cfiRange': cfiRange.toJson(),
-        if (contentVersion != null) 'contentVersion': contentVersion,
-        if (gbImageRange != null) 'gbImageRange': gbImageRange.toJson(),
-        if (gbTextRange != null) 'gbTextRange': gbTextRange.toJson(),
-        if (imageCfiRange != null) 'imageCfiRange': imageCfiRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cfiRange != null) 'cfiRange': cfiRange!.toJson(),
+        if (contentVersion != null) 'contentVersion': contentVersion!,
+        if (gbImageRange != null) 'gbImageRange': gbImageRange!.toJson(),
+        if (gbTextRange != null) 'gbTextRange': gbTextRange!.toJson(),
+        if (imageCfiRange != null) 'imageCfiRange': imageCfiRange!.toJson(),
       };
 }
 
 class AnnotationLayerSummary {
   /// Maximum allowed characters on this layer, especially for the "copy" layer.
-  core.int allowedCharacterCount;
+  core.int? allowedCharacterCount;
 
   /// Type of limitation on this layer.
   ///
   /// "limited" or "unlimited" for the "copy" layer.
-  core.String limitType;
+  core.String? limitType;
 
   /// Remaining allowed characters on this layer, especially for the "copy"
   /// layer.
-  core.int remainingCharacterCount;
+  core.int? remainingCharacterCount;
 
   AnnotationLayerSummary();
 
@@ -3337,12 +3168,12 @@ class AnnotationLayerSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedCharacterCount != null)
-          'allowedCharacterCount': allowedCharacterCount,
-        if (limitType != null) 'limitType': limitType,
+          'allowedCharacterCount': allowedCharacterCount!,
+        if (limitType != null) 'limitType': limitType!,
         if (remainingCharacterCount != null)
-          'remainingCharacterCount': remainingCharacterCount,
+          'remainingCharacterCount': remainingCharacterCount!,
       };
 }
 
@@ -3351,56 +3182,56 @@ class Annotation {
   ///
   /// For requests, if the user bookmarked a screen that has no flowing text on
   /// it, then this field should be empty.
-  core.String afterSelectedText;
+  core.String? afterSelectedText;
 
   /// Anchor text before excerpt.
   ///
   /// For requests, if the user bookmarked a screen that has no flowing text on
   /// it, then this field should be empty.
-  core.String beforeSelectedText;
+  core.String? beforeSelectedText;
 
   /// Selection ranges sent from the client.
-  AnnotationClientVersionRanges clientVersionRanges;
+  AnnotationClientVersionRanges? clientVersionRanges;
 
   /// Timestamp for the created time of this annotation.
-  core.String created;
+  core.String? created;
 
   /// Selection ranges for the most recent content version.
-  AnnotationCurrentVersionRanges currentVersionRanges;
+  AnnotationCurrentVersionRanges? currentVersionRanges;
 
   /// User-created data for this annotation.
-  core.String data;
+  core.String? data;
 
   /// Indicates that this annotation is deleted.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// The highlight style for this annotation.
-  core.String highlightStyle;
+  core.String? highlightStyle;
 
   /// Id of this annotation, in the form of a GUID.
-  core.String id;
+  core.String? id;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// The layer this annotation is for.
-  core.String layerId;
-  AnnotationLayerSummary layerSummary;
+  core.String? layerId;
+  AnnotationLayerSummary? layerSummary;
 
   /// Pages that this annotation spans.
-  core.List<core.String> pageIds;
+  core.List<core.String>? pageIds;
 
   /// Excerpt from the volume.
-  core.String selectedText;
+  core.String? selectedText;
 
   /// URL to this resource.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Timestamp for the last time this annotation was modified.
-  core.String updated;
+  core.String? updated;
 
   /// The volume that this annotation belongs to.
-  core.String volumeId;
+  core.String? volumeId;
 
   Annotation();
 
@@ -3463,47 +3294,47 @@ class Annotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (afterSelectedText != null) 'afterSelectedText': afterSelectedText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (afterSelectedText != null) 'afterSelectedText': afterSelectedText!,
         if (beforeSelectedText != null)
-          'beforeSelectedText': beforeSelectedText,
+          'beforeSelectedText': beforeSelectedText!,
         if (clientVersionRanges != null)
-          'clientVersionRanges': clientVersionRanges.toJson(),
-        if (created != null) 'created': created,
+          'clientVersionRanges': clientVersionRanges!.toJson(),
+        if (created != null) 'created': created!,
         if (currentVersionRanges != null)
-          'currentVersionRanges': currentVersionRanges.toJson(),
-        if (data != null) 'data': data,
-        if (deleted != null) 'deleted': deleted,
-        if (highlightStyle != null) 'highlightStyle': highlightStyle,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (layerId != null) 'layerId': layerId,
-        if (layerSummary != null) 'layerSummary': layerSummary.toJson(),
-        if (pageIds != null) 'pageIds': pageIds,
-        if (selectedText != null) 'selectedText': selectedText,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (updated != null) 'updated': updated,
-        if (volumeId != null) 'volumeId': volumeId,
+          'currentVersionRanges': currentVersionRanges!.toJson(),
+        if (data != null) 'data': data!,
+        if (deleted != null) 'deleted': deleted!,
+        if (highlightStyle != null) 'highlightStyle': highlightStyle!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (layerId != null) 'layerId': layerId!,
+        if (layerSummary != null) 'layerSummary': layerSummary!.toJson(),
+        if (pageIds != null) 'pageIds': pageIds!,
+        if (selectedText != null) 'selectedText': selectedText!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (updated != null) 'updated': updated!,
+        if (volumeId != null) 'volumeId': volumeId!,
       };
 }
 
 class Annotations {
   /// A list of annotations.
-  core.List<Annotation> items;
+  core.List<Annotation>? items;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// Token to pass in for pagination for the next page.
   ///
   /// This will not be present if this request does not have more results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Total number of annotations found.
   ///
   /// This may be greater than the number of notes returned in this response if
   /// results have been paginated.
-  core.int totalItems;
+  core.int? totalItems;
 
   Annotations();
 
@@ -3525,21 +3356,21 @@ class Annotations {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalItems != null) 'totalItems': totalItems,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalItems != null) 'totalItems': totalItems!,
       };
 }
 
 class AnnotationsSummaryLayers {
-  core.int allowedCharacterCount;
-  core.String layerId;
-  core.String limitType;
-  core.int remainingCharacterCount;
-  core.String updated;
+  core.int? allowedCharacterCount;
+  core.String? layerId;
+  core.String? limitType;
+  core.int? remainingCharacterCount;
+  core.String? updated;
 
   AnnotationsSummaryLayers();
 
@@ -3561,20 +3392,20 @@ class AnnotationsSummaryLayers {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedCharacterCount != null)
-          'allowedCharacterCount': allowedCharacterCount,
-        if (layerId != null) 'layerId': layerId,
-        if (limitType != null) 'limitType': limitType,
+          'allowedCharacterCount': allowedCharacterCount!,
+        if (layerId != null) 'layerId': layerId!,
+        if (limitType != null) 'limitType': limitType!,
         if (remainingCharacterCount != null)
-          'remainingCharacterCount': remainingCharacterCount,
-        if (updated != null) 'updated': updated,
+          'remainingCharacterCount': remainingCharacterCount!,
+        if (updated != null) 'updated': updated!,
       };
 }
 
 class AnnotationsSummary {
-  core.String kind;
-  core.List<AnnotationsSummaryLayers> layers;
+  core.String? kind;
+  core.List<AnnotationsSummaryLayers>? layers;
 
   AnnotationsSummary();
 
@@ -3591,27 +3422,27 @@ class AnnotationsSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (layers != null)
-          'layers': layers.map((value) => value.toJson()).toList(),
+          'layers': layers!.map((value) => value.toJson()).toList(),
       };
 }
 
 class Annotationsdata {
   /// A list of Annotation Data.
-  core.List<GeoAnnotationdata> items;
+  core.List<GeoAnnotationdata>? items;
 
   /// Resource type
-  core.String kind;
+  core.String? kind;
 
   /// Token to pass in for pagination for the next page.
   ///
   /// This will not be present if this request does not have more results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total number of volume annotations found.
-  core.int totalItems;
+  core.int? totalItems;
 
   Annotationsdata();
 
@@ -3633,27 +3464,27 @@ class Annotationsdata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalItems != null) 'totalItems': totalItems,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalItems != null) 'totalItems': totalItems!,
       };
 }
 
 class BooksAnnotationsRange {
   /// The offset from the ending position.
-  core.String endOffset;
+  core.String? endOffset;
 
   /// The ending position for the range.
-  core.String endPosition;
+  core.String? endPosition;
 
   /// The offset from the starting position.
-  core.String startOffset;
+  core.String? startOffset;
 
   /// The starting position for the range.
-  core.String startPosition;
+  core.String? startPosition;
 
   BooksAnnotationsRange();
 
@@ -3672,19 +3503,19 @@ class BooksAnnotationsRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endOffset != null) 'endOffset': endOffset,
-        if (endPosition != null) 'endPosition': endPosition,
-        if (startOffset != null) 'startOffset': startOffset,
-        if (startPosition != null) 'startPosition': startPosition,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endOffset != null) 'endOffset': endOffset!,
+        if (endPosition != null) 'endPosition': endPosition!,
+        if (startOffset != null) 'startOffset': startOffset!,
+        if (startPosition != null) 'startPosition': startPosition!,
       };
 }
 
 class BooksCloudloadingResource {
-  core.String author;
-  core.String processingState;
-  core.String title;
-  core.String volumeId;
+  core.String? author;
+  core.String? processingState;
+  core.String? title;
+  core.String? volumeId;
 
   BooksCloudloadingResource();
 
@@ -3703,16 +3534,16 @@ class BooksCloudloadingResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (author != null) 'author': author,
-        if (processingState != null) 'processingState': processingState,
-        if (title != null) 'title': title,
-        if (volumeId != null) 'volumeId': volumeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (author != null) 'author': author!,
+        if (processingState != null) 'processingState': processingState!,
+        if (title != null) 'title': title!,
+        if (volumeId != null) 'volumeId': volumeId!,
       };
 }
 
 class BooksVolumesRecommendedRateResponse {
-  core.String consistencyToken;
+  core.String? consistencyToken;
 
   BooksVolumesRecommendedRateResponse();
 
@@ -3722,44 +3553,44 @@ class BooksVolumesRecommendedRateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (consistencyToken != null) 'consistency_token': consistencyToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (consistencyToken != null) 'consistency_token': consistencyToken!,
       };
 }
 
 class Bookshelf {
   /// Whether this bookshelf is PUBLIC or PRIVATE.
-  core.String access;
+  core.String? access;
 
   /// Created time for this bookshelf (formatted UTC timestamp with millisecond
   /// resolution).
-  core.String created;
+  core.String? created;
 
   /// Description of this bookshelf.
-  core.String description;
+  core.String? description;
 
   /// Id of this bookshelf, only unique by user.
-  core.int id;
+  core.int? id;
 
   /// Resource type for bookshelf metadata.
-  core.String kind;
+  core.String? kind;
 
   /// URL to this resource.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Title of this bookshelf.
-  core.String title;
+  core.String? title;
 
   /// Last modified time of this bookshelf (formatted UTC timestamp with
   /// millisecond resolution).
-  core.String updated;
+  core.String? updated;
 
   /// Number of volumes in this bookshelf.
-  core.int volumeCount;
+  core.int? volumeCount;
 
   /// Last time a volume was added or removed from this bookshelf (formatted UTC
   /// timestamp with millisecond resolution).
-  core.String volumesLastUpdated;
+  core.String? volumesLastUpdated;
 
   Bookshelf();
 
@@ -3796,27 +3627,27 @@ class Bookshelf {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (access != null) 'access': access,
-        if (created != null) 'created': created,
-        if (description != null) 'description': description,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (title != null) 'title': title,
-        if (updated != null) 'updated': updated,
-        if (volumeCount != null) 'volumeCount': volumeCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (access != null) 'access': access!,
+        if (created != null) 'created': created!,
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (title != null) 'title': title!,
+        if (updated != null) 'updated': updated!,
+        if (volumeCount != null) 'volumeCount': volumeCount!,
         if (volumesLastUpdated != null)
-          'volumesLastUpdated': volumesLastUpdated,
+          'volumesLastUpdated': volumesLastUpdated!,
       };
 }
 
 class Bookshelves {
   /// A list of bookshelves.
-  core.List<Bookshelf> items;
+  core.List<Bookshelf>? items;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   Bookshelves();
 
@@ -3832,17 +3663,17 @@ class Bookshelves {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class CategoryItems {
-  core.String badgeUrl;
-  core.String categoryId;
-  core.String name;
+  core.String? badgeUrl;
+  core.String? categoryId;
+  core.String? name;
 
   CategoryItems();
 
@@ -3858,19 +3689,19 @@ class CategoryItems {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (badgeUrl != null) 'badgeUrl': badgeUrl,
-        if (categoryId != null) 'categoryId': categoryId,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (badgeUrl != null) 'badgeUrl': badgeUrl!,
+        if (categoryId != null) 'categoryId': categoryId!,
+        if (name != null) 'name': name!,
       };
 }
 
 class Category {
   /// A list of onboarding categories.
-  core.List<CategoryItems> items;
+  core.List<CategoryItems>? items;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   Category();
 
@@ -3886,50 +3717,50 @@ class Category {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class ConcurrentAccessRestriction {
   /// Whether access is granted for this (user, device, volume).
-  core.bool deviceAllowed;
+  core.bool? deviceAllowed;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// The maximum number of concurrent access licenses for this volume.
-  core.int maxConcurrentDevices;
+  core.int? maxConcurrentDevices;
 
   /// Error/warning message.
-  core.String message;
+  core.String? message;
 
   /// Client nonce for verification.
   ///
   /// Download access and client-validation only.
-  core.String nonce;
+  core.String? nonce;
 
   /// Error/warning reason code.
-  core.String reasonCode;
+  core.String? reasonCode;
 
   /// Whether this volume has any concurrent access restrictions.
-  core.bool restricted;
+  core.bool? restricted;
 
   /// Response signature.
-  core.String signature;
+  core.String? signature;
 
   /// Client app identifier for verification.
   ///
   /// Download access and client-validation only.
-  core.String source;
+  core.String? source;
 
   /// Time in seconds for license auto-expiration.
-  core.int timeWindowSeconds;
+  core.int? timeWindowSeconds;
 
   /// Identifies the volume for which this entry applies.
-  core.String volumeId;
+  core.String? volumeId;
 
   ConcurrentAccessRestriction();
 
@@ -3969,36 +3800,36 @@ class ConcurrentAccessRestriction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceAllowed != null) 'deviceAllowed': deviceAllowed,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceAllowed != null) 'deviceAllowed': deviceAllowed!,
+        if (kind != null) 'kind': kind!,
         if (maxConcurrentDevices != null)
-          'maxConcurrentDevices': maxConcurrentDevices,
-        if (message != null) 'message': message,
-        if (nonce != null) 'nonce': nonce,
-        if (reasonCode != null) 'reasonCode': reasonCode,
-        if (restricted != null) 'restricted': restricted,
-        if (signature != null) 'signature': signature,
-        if (source != null) 'source': source,
-        if (timeWindowSeconds != null) 'timeWindowSeconds': timeWindowSeconds,
-        if (volumeId != null) 'volumeId': volumeId,
+          'maxConcurrentDevices': maxConcurrentDevices!,
+        if (message != null) 'message': message!,
+        if (nonce != null) 'nonce': nonce!,
+        if (reasonCode != null) 'reasonCode': reasonCode!,
+        if (restricted != null) 'restricted': restricted!,
+        if (signature != null) 'signature': signature!,
+        if (source != null) 'source': source!,
+        if (timeWindowSeconds != null) 'timeWindowSeconds': timeWindowSeconds!,
+        if (volumeId != null) 'volumeId': volumeId!,
       };
 }
 
 class DictionaryAnnotationdata {
   /// The type of annotation this data is for.
-  core.String annotationType;
+  core.String? annotationType;
 
   /// JSON encoded data for this dictionary annotation data.
   ///
   /// Emitted with name 'data' in JSON output. Either this or geo_data will be
   /// populated.
-  Dictlayerdata data;
+  Dictlayerdata? data;
 
   /// Base64 encoded data for this annotation data.
-  core.String encodedData;
+  core.String? encodedData;
   core.List<core.int> get encodedDataAsBytes =>
-      convert.base64.decode(encodedData);
+      convert.base64.decode(encodedData!);
 
   set encodedDataAsBytes(core.List<core.int> _bytes) {
     encodedData =
@@ -4006,30 +3837,30 @@ class DictionaryAnnotationdata {
   }
 
   /// Unique id for this annotation data.
-  core.String id;
+  core.String? id;
 
   /// Resource Type
-  core.String kind;
+  core.String? kind;
 
   /// The Layer id for this data.
   ///
   /// *
-  core.String layerId;
+  core.String? layerId;
 
   /// URL for this resource.
   ///
   /// *
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Timestamp for the last time this data was updated.
   ///
   /// (RFC 3339 UTC date-time format).
-  core.String updated;
+  core.String? updated;
 
   /// The volume id for this data.
   ///
   /// *
-  core.String volumeId;
+  core.String? volumeId;
 
   DictionaryAnnotationdata();
 
@@ -4064,23 +3895,23 @@ class DictionaryAnnotationdata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (annotationType != null) 'annotationType': annotationType,
-        if (data != null) 'data': data.toJson(),
-        if (encodedData != null) 'encodedData': encodedData,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (layerId != null) 'layerId': layerId,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (updated != null) 'updated': updated,
-        if (volumeId != null) 'volumeId': volumeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (annotationType != null) 'annotationType': annotationType!,
+        if (data != null) 'data': data!.toJson(),
+        if (encodedData != null) 'encodedData': encodedData!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (layerId != null) 'layerId': layerId!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (updated != null) 'updated': updated!,
+        if (volumeId != null) 'volumeId': volumeId!,
       };
 }
 
 class DictlayerdataCommon {
   /// The display title and localized canonical name to use when searching for
   /// this entity on Google search.
-  core.String title;
+  core.String? title;
 
   DictlayerdataCommon();
 
@@ -4090,15 +3921,15 @@ class DictlayerdataCommon {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (title != null) 'title': title!,
       };
 }
 
 /// The source, url and attribution for this dictionary data.
 class DictlayerdataDictSource {
-  core.String attribution;
-  core.String url;
+  core.String? attribution;
+  core.String? url;
 
   DictlayerdataDictSource();
 
@@ -4111,15 +3942,15 @@ class DictlayerdataDictSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attribution != null) 'attribution': attribution,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attribution != null) 'attribution': attribution!,
+        if (url != null) 'url': url!,
       };
 }
 
 class DictlayerdataDictWordsDerivativesSource {
-  core.String attribution;
-  core.String url;
+  core.String? attribution;
+  core.String? url;
 
   DictlayerdataDictWordsDerivativesSource();
 
@@ -4132,15 +3963,15 @@ class DictlayerdataDictWordsDerivativesSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attribution != null) 'attribution': attribution,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attribution != null) 'attribution': attribution!,
+        if (url != null) 'url': url!,
       };
 }
 
 class DictlayerdataDictWordsDerivatives {
-  DictlayerdataDictWordsDerivativesSource source;
-  core.String text;
+  DictlayerdataDictWordsDerivativesSource? source;
+  core.String? text;
 
   DictlayerdataDictWordsDerivatives();
 
@@ -4154,15 +3985,15 @@ class DictlayerdataDictWordsDerivatives {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (source != null) 'source': source.toJson(),
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (source != null) 'source': source!.toJson(),
+        if (text != null) 'text': text!,
       };
 }
 
 class DictlayerdataDictWordsExamplesSource {
-  core.String attribution;
-  core.String url;
+  core.String? attribution;
+  core.String? url;
 
   DictlayerdataDictWordsExamplesSource();
 
@@ -4175,15 +4006,15 @@ class DictlayerdataDictWordsExamplesSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attribution != null) 'attribution': attribution,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attribution != null) 'attribution': attribution!,
+        if (url != null) 'url': url!,
       };
 }
 
 class DictlayerdataDictWordsExamples {
-  DictlayerdataDictWordsExamplesSource source;
-  core.String text;
+  DictlayerdataDictWordsExamplesSource? source;
+  core.String? text;
 
   DictlayerdataDictWordsExamples();
 
@@ -4197,15 +4028,15 @@ class DictlayerdataDictWordsExamples {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (source != null) 'source': source.toJson(),
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (source != null) 'source': source!.toJson(),
+        if (text != null) 'text': text!,
       };
 }
 
 class DictlayerdataDictWordsSensesConjugations {
-  core.String type;
-  core.String value;
+  core.String? type;
+  core.String? value;
 
   DictlayerdataDictWordsSensesConjugations();
 
@@ -4218,15 +4049,15 @@ class DictlayerdataDictWordsSensesConjugations {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
 class DictlayerdataDictWordsSensesDefinitionsExamplesSource {
-  core.String attribution;
-  core.String url;
+  core.String? attribution;
+  core.String? url;
 
   DictlayerdataDictWordsSensesDefinitionsExamplesSource();
 
@@ -4240,15 +4071,15 @@ class DictlayerdataDictWordsSensesDefinitionsExamplesSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attribution != null) 'attribution': attribution,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attribution != null) 'attribution': attribution!,
+        if (url != null) 'url': url!,
       };
 }
 
 class DictlayerdataDictWordsSensesDefinitionsExamples {
-  DictlayerdataDictWordsSensesDefinitionsExamplesSource source;
-  core.String text;
+  DictlayerdataDictWordsSensesDefinitionsExamplesSource? source;
+  core.String? text;
 
   DictlayerdataDictWordsSensesDefinitionsExamples();
 
@@ -4262,15 +4093,15 @@ class DictlayerdataDictWordsSensesDefinitionsExamples {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (source != null) 'source': source.toJson(),
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (source != null) 'source': source!.toJson(),
+        if (text != null) 'text': text!,
       };
 }
 
 class DictlayerdataDictWordsSensesDefinitions {
-  core.String definition;
-  core.List<DictlayerdataDictWordsSensesDefinitionsExamples> examples;
+  core.String? definition;
+  core.List<DictlayerdataDictWordsSensesDefinitionsExamples>? examples;
 
   DictlayerdataDictWordsSensesDefinitions();
 
@@ -4287,16 +4118,16 @@ class DictlayerdataDictWordsSensesDefinitions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (definition != null) 'definition': definition,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (definition != null) 'definition': definition!,
         if (examples != null)
-          'examples': examples.map((value) => value.toJson()).toList(),
+          'examples': examples!.map((value) => value.toJson()).toList(),
       };
 }
 
 class DictlayerdataDictWordsSensesSource {
-  core.String attribution;
-  core.String url;
+  core.String? attribution;
+  core.String? url;
 
   DictlayerdataDictWordsSensesSource();
 
@@ -4309,15 +4140,15 @@ class DictlayerdataDictWordsSensesSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attribution != null) 'attribution': attribution,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attribution != null) 'attribution': attribution!,
+        if (url != null) 'url': url!,
       };
 }
 
 class DictlayerdataDictWordsSensesSynonymsSource {
-  core.String attribution;
-  core.String url;
+  core.String? attribution;
+  core.String? url;
 
   DictlayerdataDictWordsSensesSynonymsSource();
 
@@ -4330,15 +4161,15 @@ class DictlayerdataDictWordsSensesSynonymsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attribution != null) 'attribution': attribution,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attribution != null) 'attribution': attribution!,
+        if (url != null) 'url': url!,
       };
 }
 
 class DictlayerdataDictWordsSensesSynonyms {
-  DictlayerdataDictWordsSensesSynonymsSource source;
-  core.String text;
+  DictlayerdataDictWordsSensesSynonymsSource? source;
+  core.String? text;
 
   DictlayerdataDictWordsSensesSynonyms();
 
@@ -4352,21 +4183,21 @@ class DictlayerdataDictWordsSensesSynonyms {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (source != null) 'source': source.toJson(),
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (source != null) 'source': source!.toJson(),
+        if (text != null) 'text': text!,
       };
 }
 
 class DictlayerdataDictWordsSenses {
-  core.List<DictlayerdataDictWordsSensesConjugations> conjugations;
-  core.List<DictlayerdataDictWordsSensesDefinitions> definitions;
-  core.String partOfSpeech;
-  core.String pronunciation;
-  core.String pronunciationUrl;
-  DictlayerdataDictWordsSensesSource source;
-  core.String syllabification;
-  core.List<DictlayerdataDictWordsSensesSynonyms> synonyms;
+  core.List<DictlayerdataDictWordsSensesConjugations>? conjugations;
+  core.List<DictlayerdataDictWordsSensesDefinitions>? definitions;
+  core.String? partOfSpeech;
+  core.String? pronunciation;
+  core.String? pronunciationUrl;
+  DictlayerdataDictWordsSensesSource? source;
+  core.String? syllabification;
+  core.List<DictlayerdataDictWordsSensesSynonyms>? synonyms;
 
   DictlayerdataDictWordsSenses();
 
@@ -4410,26 +4241,26 @@ class DictlayerdataDictWordsSenses {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (conjugations != null)
-          'conjugations': conjugations.map((value) => value.toJson()).toList(),
+          'conjugations': conjugations!.map((value) => value.toJson()).toList(),
         if (definitions != null)
-          'definitions': definitions.map((value) => value.toJson()).toList(),
-        if (partOfSpeech != null) 'partOfSpeech': partOfSpeech,
-        if (pronunciation != null) 'pronunciation': pronunciation,
-        if (pronunciationUrl != null) 'pronunciationUrl': pronunciationUrl,
-        if (source != null) 'source': source.toJson(),
-        if (syllabification != null) 'syllabification': syllabification,
+          'definitions': definitions!.map((value) => value.toJson()).toList(),
+        if (partOfSpeech != null) 'partOfSpeech': partOfSpeech!,
+        if (pronunciation != null) 'pronunciation': pronunciation!,
+        if (pronunciationUrl != null) 'pronunciationUrl': pronunciationUrl!,
+        if (source != null) 'source': source!.toJson(),
+        if (syllabification != null) 'syllabification': syllabification!,
         if (synonyms != null)
-          'synonyms': synonyms.map((value) => value.toJson()).toList(),
+          'synonyms': synonyms!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The words with different meanings but not related words, e.g. "go" (game)
 /// and "go" (verb).
 class DictlayerdataDictWordsSource {
-  core.String attribution;
-  core.String url;
+  core.String? attribution;
+  core.String? url;
 
   DictlayerdataDictWordsSource();
 
@@ -4442,20 +4273,20 @@ class DictlayerdataDictWordsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attribution != null) 'attribution': attribution,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attribution != null) 'attribution': attribution!,
+        if (url != null) 'url': url!,
       };
 }
 
 class DictlayerdataDictWords {
-  core.List<DictlayerdataDictWordsDerivatives> derivatives;
-  core.List<DictlayerdataDictWordsExamples> examples;
-  core.List<DictlayerdataDictWordsSenses> senses;
+  core.List<DictlayerdataDictWordsDerivatives>? derivatives;
+  core.List<DictlayerdataDictWordsExamples>? examples;
+  core.List<DictlayerdataDictWordsSenses>? senses;
 
   /// The words with different meanings but not related words, e.g. "go" (game)
   /// and "go" (verb).
-  DictlayerdataDictWordsSource source;
+  DictlayerdataDictWordsSource? source;
 
   DictlayerdataDictWords();
 
@@ -4487,21 +4318,21 @@ class DictlayerdataDictWords {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (derivatives != null)
-          'derivatives': derivatives.map((value) => value.toJson()).toList(),
+          'derivatives': derivatives!.map((value) => value.toJson()).toList(),
         if (examples != null)
-          'examples': examples.map((value) => value.toJson()).toList(),
+          'examples': examples!.map((value) => value.toJson()).toList(),
         if (senses != null)
-          'senses': senses.map((value) => value.toJson()).toList(),
-        if (source != null) 'source': source.toJson(),
+          'senses': senses!.map((value) => value.toJson()).toList(),
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
 class DictlayerdataDict {
   /// The source, url and attribution for this dictionary data.
-  DictlayerdataDictSource source;
-  core.List<DictlayerdataDictWords> words;
+  DictlayerdataDictSource? source;
+  core.List<DictlayerdataDictWords>? words;
 
   DictlayerdataDict();
 
@@ -4519,17 +4350,17 @@ class DictlayerdataDict {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (source != null) 'source': source.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (source != null) 'source': source!.toJson(),
         if (words != null)
-          'words': words.map((value) => value.toJson()).toList(),
+          'words': words!.map((value) => value.toJson()).toList(),
       };
 }
 
 class Dictlayerdata {
-  DictlayerdataCommon common;
-  DictlayerdataDict dict;
-  core.String kind;
+  DictlayerdataCommon? common;
+  DictlayerdataDict? dict;
+  core.String? kind;
 
   Dictlayerdata();
 
@@ -4547,20 +4378,20 @@ class Dictlayerdata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (common != null) 'common': common.toJson(),
-        if (dict != null) 'dict': dict.toJson(),
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (common != null) 'common': common!.toJson(),
+        if (dict != null) 'dict': dict!.toJson(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class DiscoveryclustersClustersBannerWithContentContainer {
-  core.String fillColorArgb;
-  core.String imageUrl;
-  core.String maskColorArgb;
-  core.String moreButtonText;
-  core.String moreButtonUrl;
-  core.String textColorArgb;
+  core.String? fillColorArgb;
+  core.String? imageUrl;
+  core.String? maskColorArgb;
+  core.String? moreButtonText;
+  core.String? moreButtonUrl;
+  core.String? textColorArgb;
 
   DiscoveryclustersClustersBannerWithContentContainer();
 
@@ -4585,24 +4416,24 @@ class DiscoveryclustersClustersBannerWithContentContainer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fillColorArgb != null) 'fillColorArgb': fillColorArgb,
-        if (imageUrl != null) 'imageUrl': imageUrl,
-        if (maskColorArgb != null) 'maskColorArgb': maskColorArgb,
-        if (moreButtonText != null) 'moreButtonText': moreButtonText,
-        if (moreButtonUrl != null) 'moreButtonUrl': moreButtonUrl,
-        if (textColorArgb != null) 'textColorArgb': textColorArgb,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fillColorArgb != null) 'fillColorArgb': fillColorArgb!,
+        if (imageUrl != null) 'imageUrl': imageUrl!,
+        if (maskColorArgb != null) 'maskColorArgb': maskColorArgb!,
+        if (moreButtonText != null) 'moreButtonText': moreButtonText!,
+        if (moreButtonUrl != null) 'moreButtonUrl': moreButtonUrl!,
+        if (textColorArgb != null) 'textColorArgb': textColorArgb!,
       };
 }
 
 class DiscoveryclustersClusters {
-  DiscoveryclustersClustersBannerWithContentContainer
+  DiscoveryclustersClustersBannerWithContentContainer?
       bannerWithContentContainer;
-  core.String subTitle;
-  core.String title;
-  core.int totalVolumes;
-  core.String uid;
-  core.List<Volume> volumes;
+  core.String? subTitle;
+  core.String? title;
+  core.int? totalVolumes;
+  core.String? uid;
+  core.List<Volume>? volumes;
 
   DiscoveryclustersClusters();
 
@@ -4633,24 +4464,24 @@ class DiscoveryclustersClusters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bannerWithContentContainer != null)
-          'banner_with_content_container': bannerWithContentContainer.toJson(),
-        if (subTitle != null) 'subTitle': subTitle,
-        if (title != null) 'title': title,
-        if (totalVolumes != null) 'totalVolumes': totalVolumes,
-        if (uid != null) 'uid': uid,
+          'banner_with_content_container': bannerWithContentContainer!.toJson(),
+        if (subTitle != null) 'subTitle': subTitle!,
+        if (title != null) 'title': title!,
+        if (totalVolumes != null) 'totalVolumes': totalVolumes!,
+        if (uid != null) 'uid': uid!,
         if (volumes != null)
-          'volumes': volumes.map((value) => value.toJson()).toList(),
+          'volumes': volumes!.map((value) => value.toJson()).toList(),
       };
 }
 
 class Discoveryclusters {
-  core.List<DiscoveryclustersClusters> clusters;
+  core.List<DiscoveryclustersClusters>? clusters;
 
   /// Resorce type.
-  core.String kind;
-  core.int totalClusters;
+  core.String? kind;
+  core.int? totalClusters;
 
   Discoveryclusters();
 
@@ -4670,60 +4501,60 @@ class Discoveryclusters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clusters != null)
-          'clusters': clusters.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (totalClusters != null) 'totalClusters': totalClusters,
+          'clusters': clusters!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (totalClusters != null) 'totalClusters': totalClusters!,
       };
 }
 
 class DownloadAccessRestriction {
   /// If restricted, whether access is granted for this (user, device, volume).
-  core.bool deviceAllowed;
+  core.bool? deviceAllowed;
 
   /// If restricted, the number of content download licenses already acquired
   /// (including the requesting client, if licensed).
-  core.int downloadsAcquired;
+  core.int? downloadsAcquired;
 
   /// If deviceAllowed, whether access was just acquired with this request.
-  core.bool justAcquired;
+  core.bool? justAcquired;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// If restricted, the maximum number of content download licenses for this
   /// volume.
-  core.int maxDownloadDevices;
+  core.int? maxDownloadDevices;
 
   /// Error/warning message.
-  core.String message;
+  core.String? message;
 
   /// Client nonce for verification.
   ///
   /// Download access and client-validation only.
-  core.String nonce;
+  core.String? nonce;
 
   /// Error/warning reason code.
   ///
   /// Additional codes may be added in the future. 0 OK 100
   /// ACCESS_DENIED_PUBLISHER_LIMIT 101 ACCESS_DENIED_LIMIT 200
   /// WARNING_USED_LAST_ACCESS
-  core.String reasonCode;
+  core.String? reasonCode;
 
   /// Whether this volume has any download access restrictions.
-  core.bool restricted;
+  core.bool? restricted;
 
   /// Response signature.
-  core.String signature;
+  core.String? signature;
 
   /// Client app identifier for verification.
   ///
   /// Download access and client-validation only.
-  core.String source;
+  core.String? source;
 
   /// Identifies the volume for which this entry applies.
-  core.String volumeId;
+  core.String? volumeId;
 
   DownloadAccessRestriction();
 
@@ -4766,29 +4597,29 @@ class DownloadAccessRestriction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceAllowed != null) 'deviceAllowed': deviceAllowed,
-        if (downloadsAcquired != null) 'downloadsAcquired': downloadsAcquired,
-        if (justAcquired != null) 'justAcquired': justAcquired,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceAllowed != null) 'deviceAllowed': deviceAllowed!,
+        if (downloadsAcquired != null) 'downloadsAcquired': downloadsAcquired!,
+        if (justAcquired != null) 'justAcquired': justAcquired!,
+        if (kind != null) 'kind': kind!,
         if (maxDownloadDevices != null)
-          'maxDownloadDevices': maxDownloadDevices,
-        if (message != null) 'message': message,
-        if (nonce != null) 'nonce': nonce,
-        if (reasonCode != null) 'reasonCode': reasonCode,
-        if (restricted != null) 'restricted': restricted,
-        if (signature != null) 'signature': signature,
-        if (source != null) 'source': source,
-        if (volumeId != null) 'volumeId': volumeId,
+          'maxDownloadDevices': maxDownloadDevices!,
+        if (message != null) 'message': message!,
+        if (nonce != null) 'nonce': nonce!,
+        if (reasonCode != null) 'reasonCode': reasonCode!,
+        if (restricted != null) 'restricted': restricted!,
+        if (signature != null) 'signature': signature!,
+        if (source != null) 'source': source!,
+        if (volumeId != null) 'volumeId': volumeId!,
       };
 }
 
 class DownloadAccesses {
   /// A list of download access responses.
-  core.List<DownloadAccessRestriction> downloadAccessList;
+  core.List<DownloadAccessRestriction>? downloadAccessList;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   DownloadAccesses();
 
@@ -4805,11 +4636,11 @@ class DownloadAccesses {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (downloadAccessList != null)
           'downloadAccessList':
-              downloadAccessList.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+              downloadAccessList!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -4827,23 +4658,23 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Family membership info of the user that made the request.
 class FamilyInfoMembership {
   /// Restrictions on user buying and acquiring content.
-  core.String acquirePermission;
+  core.String? acquirePermission;
 
   /// The age group of the user.
-  core.String ageGroup;
+  core.String? ageGroup;
 
   /// The maximum allowed maturity rating for the user.
-  core.String allowedMaturityRating;
-  core.bool isInFamily;
+  core.String? allowedMaturityRating;
+  core.bool? isInFamily;
 
   /// The role of the user in the family.
-  core.String role;
+  core.String? role;
 
   FamilyInfoMembership();
 
@@ -4865,22 +4696,22 @@ class FamilyInfoMembership {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (acquirePermission != null) 'acquirePermission': acquirePermission,
-        if (ageGroup != null) 'ageGroup': ageGroup,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (acquirePermission != null) 'acquirePermission': acquirePermission!,
+        if (ageGroup != null) 'ageGroup': ageGroup!,
         if (allowedMaturityRating != null)
-          'allowedMaturityRating': allowedMaturityRating,
-        if (isInFamily != null) 'isInFamily': isInFamily,
-        if (role != null) 'role': role,
+          'allowedMaturityRating': allowedMaturityRating!,
+        if (isInFamily != null) 'isInFamily': isInFamily!,
+        if (role != null) 'role': role!,
       };
 }
 
 class FamilyInfo {
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// Family membership info of the user that made the request.
-  FamilyInfoMembership membership;
+  FamilyInfoMembership? membership;
 
   FamilyInfo();
 
@@ -4894,26 +4725,26 @@ class FamilyInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (membership != null) 'membership': membership.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (membership != null) 'membership': membership!.toJson(),
       };
 }
 
 class GeoAnnotationdata {
   /// The type of annotation this data is for.
-  core.String annotationType;
+  core.String? annotationType;
 
   /// JSON encoded data for this geo annotation data.
   ///
   /// Emitted with name 'data' in JSON output. Either this or dict_data will be
   /// populated.
-  Geolayerdata data;
+  Geolayerdata? data;
 
   /// Base64 encoded data for this annotation data.
-  core.String encodedData;
+  core.String? encodedData;
   core.List<core.int> get encodedDataAsBytes =>
-      convert.base64.decode(encodedData);
+      convert.base64.decode(encodedData!);
 
   set encodedDataAsBytes(core.List<core.int> _bytes) {
     encodedData =
@@ -4921,30 +4752,30 @@ class GeoAnnotationdata {
   }
 
   /// Unique id for this annotation data.
-  core.String id;
+  core.String? id;
 
   /// Resource Type
-  core.String kind;
+  core.String? kind;
 
   /// The Layer id for this data.
   ///
   /// *
-  core.String layerId;
+  core.String? layerId;
 
   /// URL for this resource.
   ///
   /// *
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Timestamp for the last time this data was updated.
   ///
   /// (RFC 3339 UTC date-time format).
-  core.String updated;
+  core.String? updated;
 
   /// The volume id for this data.
   ///
   /// *
-  core.String volumeId;
+  core.String? volumeId;
 
   GeoAnnotationdata();
 
@@ -4979,37 +4810,37 @@ class GeoAnnotationdata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (annotationType != null) 'annotationType': annotationType,
-        if (data != null) 'data': data.toJson(),
-        if (encodedData != null) 'encodedData': encodedData,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (layerId != null) 'layerId': layerId,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (updated != null) 'updated': updated,
-        if (volumeId != null) 'volumeId': volumeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (annotationType != null) 'annotationType': annotationType!,
+        if (data != null) 'data': data!.toJson(),
+        if (encodedData != null) 'encodedData': encodedData!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (layerId != null) 'layerId': layerId!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (updated != null) 'updated': updated!,
+        if (volumeId != null) 'volumeId': volumeId!,
       };
 }
 
 class GeolayerdataCommon {
   /// The language of the information url and description.
-  core.String lang;
+  core.String? lang;
 
   /// The URL for the preview image information.
-  core.String previewImageUrl;
+  core.String? previewImageUrl;
 
   /// The description for this location.
-  core.String snippet;
+  core.String? snippet;
 
   /// The URL for information for this location.
   ///
   /// Ex: wikipedia link.
-  core.String snippetUrl;
+  core.String? snippetUrl;
 
   /// The display title and localized canonical name to use when searching for
   /// this entity on Google search.
-  core.String title;
+  core.String? title;
 
   GeolayerdataCommon();
 
@@ -5031,18 +4862,18 @@ class GeolayerdataCommon {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lang != null) 'lang': lang,
-        if (previewImageUrl != null) 'previewImageUrl': previewImageUrl,
-        if (snippet != null) 'snippet': snippet,
-        if (snippetUrl != null) 'snippetUrl': snippetUrl,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lang != null) 'lang': lang!,
+        if (previewImageUrl != null) 'previewImageUrl': previewImageUrl!,
+        if (snippet != null) 'snippet': snippet!,
+        if (snippetUrl != null) 'snippetUrl': snippetUrl!,
+        if (title != null) 'title': title!,
       };
 }
 
 class GeolayerdataGeoViewportHi {
-  core.double latitude;
-  core.double longitude;
+  core.double? latitude;
+  core.double? longitude;
 
   GeolayerdataGeoViewportHi();
 
@@ -5055,15 +4886,15 @@ class GeolayerdataGeoViewportHi {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (latitude != null) 'latitude': latitude,
-        if (longitude != null) 'longitude': longitude,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
       };
 }
 
 class GeolayerdataGeoViewportLo {
-  core.double latitude;
-  core.double longitude;
+  core.double? latitude;
+  core.double? longitude;
 
   GeolayerdataGeoViewportLo();
 
@@ -5076,9 +4907,9 @@ class GeolayerdataGeoViewportLo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (latitude != null) 'latitude': latitude,
-        if (longitude != null) 'longitude': longitude,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
       };
 }
 
@@ -5086,8 +4917,8 @@ class GeolayerdataGeoViewportLo {
 ///
 /// This is a latitude, longitude rectangle.
 class GeolayerdataGeoViewport {
-  GeolayerdataGeoViewportHi hi;
-  GeolayerdataGeoViewportLo lo;
+  GeolayerdataGeoViewportHi? hi;
+  GeolayerdataGeoViewportLo? lo;
 
   GeolayerdataGeoViewport();
 
@@ -5102,47 +4933,47 @@ class GeolayerdataGeoViewport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hi != null) 'hi': hi.toJson(),
-        if (lo != null) 'lo': lo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hi != null) 'hi': hi!.toJson(),
+        if (lo != null) 'lo': lo!.toJson(),
       };
 }
 
 class GeolayerdataGeo {
   /// The boundary of the location as a set of loops containing pairs of
   /// latitude, longitude coordinates.
-  core.List<core.String> boundary;
+  core.List<core.String>? boundary;
 
   /// The cache policy active for this data.
   ///
   /// EX: UNRESTRICTED, RESTRICTED, NEVER
-  core.String cachePolicy;
+  core.String? cachePolicy;
 
   /// The country code of the location.
-  core.String countryCode;
+  core.String? countryCode;
 
   /// The latitude of the location.
-  core.double latitude;
+  core.double? latitude;
 
   /// The longitude of the location.
-  core.double longitude;
+  core.double? longitude;
 
   /// The type of map that should be used for this location.
   ///
   /// EX: HYBRID, ROADMAP, SATELLITE, TERRAIN
-  core.String mapType;
+  core.String? mapType;
 
   /// The viewport for showing this location.
   ///
   /// This is a latitude, longitude rectangle.
-  GeolayerdataGeoViewport viewport;
+  GeolayerdataGeoViewport? viewport;
 
   /// The Zoom level to use for the map.
   ///
   /// Zoom levels between 0 (the lowest zoom level, in which the entire world
   /// can be seen on one map) to 21+ (down to individual buildings). See: https:
   /// //developers.google.com/maps/documentation/staticmaps/#Zoomlevels
-  core.int zoom;
+  core.int? zoom;
 
   GeolayerdataGeo();
 
@@ -5176,22 +5007,22 @@ class GeolayerdataGeo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boundary != null) 'boundary': boundary,
-        if (cachePolicy != null) 'cachePolicy': cachePolicy,
-        if (countryCode != null) 'countryCode': countryCode,
-        if (latitude != null) 'latitude': latitude,
-        if (longitude != null) 'longitude': longitude,
-        if (mapType != null) 'mapType': mapType,
-        if (viewport != null) 'viewport': viewport.toJson(),
-        if (zoom != null) 'zoom': zoom,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boundary != null) 'boundary': boundary!,
+        if (cachePolicy != null) 'cachePolicy': cachePolicy!,
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
+        if (mapType != null) 'mapType': mapType!,
+        if (viewport != null) 'viewport': viewport!.toJson(),
+        if (zoom != null) 'zoom': zoom!,
       };
 }
 
 class Geolayerdata {
-  GeolayerdataCommon common;
-  GeolayerdataGeo geo;
-  core.String kind;
+  GeolayerdataCommon? common;
+  GeolayerdataGeo? geo;
+  core.String? kind;
 
   Geolayerdata();
 
@@ -5209,22 +5040,22 @@ class Geolayerdata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (common != null) 'common': common.toJson(),
-        if (geo != null) 'geo': geo.toJson(),
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (common != null) 'common': common!.toJson(),
+        if (geo != null) 'geo': geo!.toJson(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class Layersummaries {
   /// A list of layer summary items.
-  core.List<Layersummary> items;
+  core.List<Layersummary>? items;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// The total number of layer summaries found.
-  core.int totalItems;
+  core.int? totalItems;
 
   Layersummaries();
 
@@ -5243,59 +5074,59 @@ class Layersummaries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (totalItems != null) 'totalItems': totalItems,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (totalItems != null) 'totalItems': totalItems!,
       };
 }
 
 class Layersummary {
   /// The number of annotations for this layer.
-  core.int annotationCount;
+  core.int? annotationCount;
 
   /// The list of annotation types contained for this layer.
-  core.List<core.String> annotationTypes;
+  core.List<core.String>? annotationTypes;
 
   /// Link to get data for this annotation.
-  core.String annotationsDataLink;
+  core.String? annotationsDataLink;
 
   /// The link to get the annotations for this layer.
-  core.String annotationsLink;
+  core.String? annotationsLink;
 
   /// The content version this resource is for.
-  core.String contentVersion;
+  core.String? contentVersion;
 
   /// The number of data items for this layer.
-  core.int dataCount;
+  core.int? dataCount;
 
   /// Unique id of this layer summary.
-  core.String id;
+  core.String? id;
 
   /// Resource Type
-  core.String kind;
+  core.String? kind;
 
   /// The layer id for this summary.
-  core.String layerId;
+  core.String? layerId;
 
   /// URL to this resource.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Timestamp for the last time an item in this layer was updated.
   ///
   /// (RFC 3339 UTC date-time format).
-  core.String updated;
+  core.String? updated;
 
   /// The current version of this layer's volume annotations.
   ///
   /// Note that this version applies only to the data in the
   /// books.layers.volumeAnnotations.* responses. The actual annotation data is
   /// versioned separately.
-  core.String volumeAnnotationsVersion;
+  core.String? volumeAnnotationsVersion;
 
   /// The volume id this resource is for.
-  core.String volumeId;
+  core.String? volumeId;
 
   Layersummary();
 
@@ -5344,31 +5175,31 @@ class Layersummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (annotationCount != null) 'annotationCount': annotationCount,
-        if (annotationTypes != null) 'annotationTypes': annotationTypes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (annotationCount != null) 'annotationCount': annotationCount!,
+        if (annotationTypes != null) 'annotationTypes': annotationTypes!,
         if (annotationsDataLink != null)
-          'annotationsDataLink': annotationsDataLink,
-        if (annotationsLink != null) 'annotationsLink': annotationsLink,
-        if (contentVersion != null) 'contentVersion': contentVersion,
-        if (dataCount != null) 'dataCount': dataCount,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (layerId != null) 'layerId': layerId,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (updated != null) 'updated': updated,
+          'annotationsDataLink': annotationsDataLink!,
+        if (annotationsLink != null) 'annotationsLink': annotationsLink!,
+        if (contentVersion != null) 'contentVersion': contentVersion!,
+        if (dataCount != null) 'dataCount': dataCount!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (layerId != null) 'layerId': layerId!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (updated != null) 'updated': updated!,
         if (volumeAnnotationsVersion != null)
-          'volumeAnnotationsVersion': volumeAnnotationsVersion,
-        if (volumeId != null) 'volumeId': volumeId,
+          'volumeAnnotationsVersion': volumeAnnotationsVersion!,
+        if (volumeId != null) 'volumeId': volumeId!,
       };
 }
 
 class MetadataItems {
-  core.String downloadUrl;
-  core.String encryptedKey;
-  core.String language;
-  core.String size;
-  core.String version;
+  core.String? downloadUrl;
+  core.String? encryptedKey;
+  core.String? language;
+  core.String? size;
+  core.String? version;
 
   MetadataItems();
 
@@ -5390,21 +5221,21 @@ class MetadataItems {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (downloadUrl != null) 'download_url': downloadUrl,
-        if (encryptedKey != null) 'encrypted_key': encryptedKey,
-        if (language != null) 'language': language,
-        if (size != null) 'size': size,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (downloadUrl != null) 'download_url': downloadUrl!,
+        if (encryptedKey != null) 'encrypted_key': encryptedKey!,
+        if (language != null) 'language': language!,
+        if (size != null) 'size': size!,
+        if (version != null) 'version': version!,
       };
 }
 
 class Metadata {
   /// A list of offline dictionary metadata.
-  core.List<MetadataItems> items;
+  core.List<MetadataItems>? items;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   Metadata();
 
@@ -5420,34 +5251,34 @@ class Metadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class Notification {
-  core.String body;
+  core.String? body;
 
   /// The list of crm experiment ids.
-  core.List<core.String> crmExperimentIds;
-  core.String docId;
-  core.String docType;
-  core.bool dontShowNotification;
-  core.String iconUrl;
-  core.bool isDocumentMature;
+  core.List<core.String>? crmExperimentIds;
+  core.String? docId;
+  core.String? docType;
+  core.bool? dontShowNotification;
+  core.String? iconUrl;
+  core.bool? isDocumentMature;
 
   /// Resource type.
-  core.String kind;
-  core.String notificationGroup;
-  core.String notificationType;
-  core.String pcampaignId;
-  core.String reason;
-  core.bool showNotificationSettingsAction;
-  core.String targetUrl;
-  core.String timeToExpireMs;
-  core.String title;
+  core.String? kind;
+  core.String? notificationGroup;
+  core.String? notificationType;
+  core.String? pcampaignId;
+  core.String? reason;
+  core.bool? showNotificationSettingsAction;
+  core.String? targetUrl;
+  core.String? timeToExpireMs;
+  core.String? title;
 
   Notification();
 
@@ -5505,35 +5336,35 @@ class Notification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (body != null) 'body': body,
-        if (crmExperimentIds != null) 'crmExperimentIds': crmExperimentIds,
-        if (docId != null) 'doc_id': docId,
-        if (docType != null) 'doc_type': docType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (body != null) 'body': body!,
+        if (crmExperimentIds != null) 'crmExperimentIds': crmExperimentIds!,
+        if (docId != null) 'doc_id': docId!,
+        if (docType != null) 'doc_type': docType!,
         if (dontShowNotification != null)
-          'dont_show_notification': dontShowNotification,
-        if (iconUrl != null) 'iconUrl': iconUrl,
-        if (isDocumentMature != null) 'is_document_mature': isDocumentMature,
-        if (kind != null) 'kind': kind,
-        if (notificationGroup != null) 'notificationGroup': notificationGroup,
-        if (notificationType != null) 'notification_type': notificationType,
-        if (pcampaignId != null) 'pcampaign_id': pcampaignId,
-        if (reason != null) 'reason': reason,
+          'dont_show_notification': dontShowNotification!,
+        if (iconUrl != null) 'iconUrl': iconUrl!,
+        if (isDocumentMature != null) 'is_document_mature': isDocumentMature!,
+        if (kind != null) 'kind': kind!,
+        if (notificationGroup != null) 'notificationGroup': notificationGroup!,
+        if (notificationType != null) 'notification_type': notificationType!,
+        if (pcampaignId != null) 'pcampaign_id': pcampaignId!,
+        if (reason != null) 'reason': reason!,
         if (showNotificationSettingsAction != null)
-          'show_notification_settings_action': showNotificationSettingsAction,
-        if (targetUrl != null) 'targetUrl': targetUrl,
-        if (timeToExpireMs != null) 'timeToExpireMs': timeToExpireMs,
-        if (title != null) 'title': title,
+          'show_notification_settings_action': showNotificationSettingsAction!,
+        if (targetUrl != null) 'targetUrl': targetUrl!,
+        if (timeToExpireMs != null) 'timeToExpireMs': timeToExpireMs!,
+        if (title != null) 'title': title!,
       };
 }
 
 class OffersItemsItems {
-  core.String author;
-  core.String canonicalVolumeLink;
-  core.String coverUrl;
-  core.String description;
-  core.String title;
-  core.String volumeId;
+  core.String? author;
+  core.String? canonicalVolumeLink;
+  core.String? coverUrl;
+  core.String? description;
+  core.String? title;
+  core.String? volumeId;
 
   OffersItemsItems();
 
@@ -5558,22 +5389,22 @@ class OffersItemsItems {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (author != null) 'author': author,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (author != null) 'author': author!,
         if (canonicalVolumeLink != null)
-          'canonicalVolumeLink': canonicalVolumeLink,
-        if (coverUrl != null) 'coverUrl': coverUrl,
-        if (description != null) 'description': description,
-        if (title != null) 'title': title,
-        if (volumeId != null) 'volumeId': volumeId,
+          'canonicalVolumeLink': canonicalVolumeLink!,
+        if (coverUrl != null) 'coverUrl': coverUrl!,
+        if (description != null) 'description': description!,
+        if (title != null) 'title': title!,
+        if (volumeId != null) 'volumeId': volumeId!,
       };
 }
 
 class OffersItems {
-  core.String artUrl;
-  core.String gservicesKey;
-  core.String id;
-  core.List<OffersItemsItems> items;
+  core.String? artUrl;
+  core.String? gservicesKey;
+  core.String? id;
+  core.List<OffersItemsItems>? items;
 
   OffersItems();
 
@@ -5595,21 +5426,21 @@ class OffersItems {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (artUrl != null) 'artUrl': artUrl,
-        if (gservicesKey != null) 'gservicesKey': gservicesKey,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (artUrl != null) 'artUrl': artUrl!,
+        if (gservicesKey != null) 'gservicesKey': gservicesKey!,
+        if (id != null) 'id': id!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
+          'items': items!.map((value) => value.toJson()).toList(),
       };
 }
 
 class Offers {
   /// A list of offers.
-  core.List<OffersItems> items;
+  core.List<OffersItems>? items;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   Offers();
 
@@ -5625,35 +5456,35 @@ class Offers {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class ReadingPosition {
   /// Position in an EPUB as a CFI.
-  core.String epubCfiPosition;
+  core.String? epubCfiPosition;
 
   /// Position in a volume for image-based content.
-  core.String gbImagePosition;
+  core.String? gbImagePosition;
 
   /// Position in a volume for text-based content.
-  core.String gbTextPosition;
+  core.String? gbTextPosition;
 
   /// Resource type for a reading position.
-  core.String kind;
+  core.String? kind;
 
   /// Position in a PDF file.
-  core.String pdfPosition;
+  core.String? pdfPosition;
 
   /// Timestamp when this reading position was last updated (formatted UTC
   /// timestamp with millisecond resolution).
-  core.String updated;
+  core.String? updated;
 
   /// Volume id associated with this reading position.
-  core.String volumeId;
+  core.String? volumeId;
 
   ReadingPosition();
 
@@ -5681,26 +5512,26 @@ class ReadingPosition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (epubCfiPosition != null) 'epubCfiPosition': epubCfiPosition,
-        if (gbImagePosition != null) 'gbImagePosition': gbImagePosition,
-        if (gbTextPosition != null) 'gbTextPosition': gbTextPosition,
-        if (kind != null) 'kind': kind,
-        if (pdfPosition != null) 'pdfPosition': pdfPosition,
-        if (updated != null) 'updated': updated,
-        if (volumeId != null) 'volumeId': volumeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (epubCfiPosition != null) 'epubCfiPosition': epubCfiPosition!,
+        if (gbImagePosition != null) 'gbImagePosition': gbImagePosition!,
+        if (gbTextPosition != null) 'gbTextPosition': gbTextPosition!,
+        if (kind != null) 'kind': kind!,
+        if (pdfPosition != null) 'pdfPosition': pdfPosition!,
+        if (updated != null) 'updated': updated!,
+        if (volumeId != null) 'volumeId': volumeId!,
       };
 }
 
 class RequestAccessData {
   /// A concurrent access response.
-  ConcurrentAccessRestriction concurrentAccess;
+  ConcurrentAccessRestriction? concurrentAccess;
 
   /// A download access response.
-  DownloadAccessRestriction downloadAccess;
+  DownloadAccessRestriction? downloadAccess;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   RequestAccessData();
 
@@ -5718,18 +5549,18 @@ class RequestAccessData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (concurrentAccess != null)
-          'concurrentAccess': concurrentAccess.toJson(),
-        if (downloadAccess != null) 'downloadAccess': downloadAccess.toJson(),
-        if (kind != null) 'kind': kind,
+          'concurrentAccess': concurrentAccess!.toJson(),
+        if (downloadAccess != null) 'downloadAccess': downloadAccess!.toJson(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Author of this review.
 class ReviewAuthor {
   /// Name of this person.
-  core.String displayName;
+  core.String? displayName;
 
   ReviewAuthor();
 
@@ -5739,8 +5570,8 @@ class ReviewAuthor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
       };
 }
 
@@ -5748,13 +5579,13 @@ class ReviewAuthor {
 /// a Google Books user.
 class ReviewSource {
   /// Name of the source.
-  core.String description;
+  core.String? description;
 
   /// Extra text about the source of the review.
-  core.String extraDescription;
+  core.String? extraDescription;
 
   /// URL of the source of the review.
-  core.String url;
+  core.String? url;
 
   ReviewSource();
 
@@ -5770,48 +5601,48 @@ class ReviewSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (extraDescription != null) 'extraDescription': extraDescription,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (extraDescription != null) 'extraDescription': extraDescription!,
+        if (url != null) 'url': url!,
       };
 }
 
 class Review {
   /// Author of this review.
-  ReviewAuthor author;
+  ReviewAuthor? author;
 
   /// Review text.
-  core.String content;
+  core.String? content;
 
   /// Date of this review.
-  core.String date;
+  core.String? date;
 
   /// URL for the full review text, for reviews gathered from the web.
-  core.String fullTextUrl;
+  core.String? fullTextUrl;
 
   /// Resource type for a review.
-  core.String kind;
+  core.String? kind;
 
   /// Star rating for this review.
   ///
   /// Possible values are ONE, TWO, THREE, FOUR, FIVE or NOT_RATED.
-  core.String rating;
+  core.String? rating;
 
   /// Information regarding the source of this review, when the review is not
   /// from a Google Books user.
-  ReviewSource source;
+  ReviewSource? source;
 
   /// Title for this review.
-  core.String title;
+  core.String? title;
 
   /// Source type for this review.
   ///
   /// Possible values are EDITORIAL, WEB_USER or GOOGLE_USER.
-  core.String type;
+  core.String? type;
 
   /// Volume that this review is for.
-  core.String volumeId;
+  core.String? volumeId;
 
   Review();
 
@@ -5850,25 +5681,25 @@ class Review {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (author != null) 'author': author.toJson(),
-        if (content != null) 'content': content,
-        if (date != null) 'date': date,
-        if (fullTextUrl != null) 'fullTextUrl': fullTextUrl,
-        if (kind != null) 'kind': kind,
-        if (rating != null) 'rating': rating,
-        if (source != null) 'source': source.toJson(),
-        if (title != null) 'title': title,
-        if (type != null) 'type': type,
-        if (volumeId != null) 'volumeId': volumeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (author != null) 'author': author!.toJson(),
+        if (content != null) 'content': content!,
+        if (date != null) 'date': date!,
+        if (fullTextUrl != null) 'fullTextUrl': fullTextUrl!,
+        if (kind != null) 'kind': kind!,
+        if (rating != null) 'rating': rating!,
+        if (source != null) 'source': source!.toJson(),
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
+        if (volumeId != null) 'volumeId': volumeId!,
       };
 }
 
 class SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo {
-  core.double amountInMicros;
-  core.String currencyCode;
-  core.String releaseNumber;
-  core.String releaseTime;
+  core.double? amountInMicros;
+  core.String? currencyCode;
+  core.String? releaseNumber;
+  core.String? releaseTime;
 
   SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo();
 
@@ -5888,19 +5719,19 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amountInMicros != null) 'amountInMicros': amountInMicros,
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (releaseNumber != null) 'releaseNumber': releaseNumber,
-        if (releaseTime != null) 'releaseTime': releaseTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amountInMicros != null) 'amountInMicros': amountInMicros!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (releaseNumber != null) 'releaseNumber': releaseNumber!,
+        if (releaseTime != null) 'releaseTime': releaseTime!,
       };
 }
 
 class SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo {
-  core.double amountInMicros;
-  core.String currencyCode;
-  core.String releaseNumber;
-  core.String releaseTime;
+  core.double? amountInMicros;
+  core.String? currencyCode;
+  core.String? releaseNumber;
+  core.String? releaseTime;
 
   SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo();
 
@@ -5920,20 +5751,20 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amountInMicros != null) 'amountInMicros': amountInMicros,
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (releaseNumber != null) 'releaseNumber': releaseNumber,
-        if (releaseTime != null) 'releaseTime': releaseTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amountInMicros != null) 'amountInMicros': amountInMicros!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (releaseNumber != null) 'releaseNumber': releaseNumber!,
+        if (releaseTime != null) 'releaseTime': releaseTime!,
       };
 }
 
 class SeriesSeriesSeriesSubscriptionReleaseInfo {
-  core.String cancelTime;
-  SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo
+  core.String? cancelTime;
+  SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo?
       currentReleaseInfo;
-  SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo nextReleaseInfo;
-  core.String seriesSubscriptionType;
+  SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo? nextReleaseInfo;
+  core.String? seriesSubscriptionType;
 
   SeriesSeriesSeriesSubscriptionReleaseInfo();
 
@@ -5957,28 +5788,28 @@ class SeriesSeriesSeriesSubscriptionReleaseInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cancelTime != null) 'cancelTime': cancelTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cancelTime != null) 'cancelTime': cancelTime!,
         if (currentReleaseInfo != null)
-          'currentReleaseInfo': currentReleaseInfo.toJson(),
+          'currentReleaseInfo': currentReleaseInfo!.toJson(),
         if (nextReleaseInfo != null)
-          'nextReleaseInfo': nextReleaseInfo.toJson(),
+          'nextReleaseInfo': nextReleaseInfo!.toJson(),
         if (seriesSubscriptionType != null)
-          'seriesSubscriptionType': seriesSubscriptionType,
+          'seriesSubscriptionType': seriesSubscriptionType!,
       };
 }
 
 class SeriesSeries {
-  core.String bannerImageUrl;
-  core.bool eligibleForSubscription;
-  core.String imageUrl;
-  core.bool isComplete;
-  core.String seriesFormatType;
-  core.String seriesId;
-  SeriesSeriesSeriesSubscriptionReleaseInfo seriesSubscriptionReleaseInfo;
-  core.String seriesType;
-  core.String subscriptionId;
-  core.String title;
+  core.String? bannerImageUrl;
+  core.bool? eligibleForSubscription;
+  core.String? imageUrl;
+  core.bool? isComplete;
+  core.String? seriesFormatType;
+  core.String? seriesId;
+  SeriesSeriesSeriesSubscriptionReleaseInfo? seriesSubscriptionReleaseInfo;
+  core.String? seriesType;
+  core.String? subscriptionId;
+  core.String? title;
 
   SeriesSeries();
 
@@ -6018,27 +5849,27 @@ class SeriesSeries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bannerImageUrl != null) 'bannerImageUrl': bannerImageUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bannerImageUrl != null) 'bannerImageUrl': bannerImageUrl!,
         if (eligibleForSubscription != null)
-          'eligibleForSubscription': eligibleForSubscription,
-        if (imageUrl != null) 'imageUrl': imageUrl,
-        if (isComplete != null) 'isComplete': isComplete,
-        if (seriesFormatType != null) 'seriesFormatType': seriesFormatType,
-        if (seriesId != null) 'seriesId': seriesId,
+          'eligibleForSubscription': eligibleForSubscription!,
+        if (imageUrl != null) 'imageUrl': imageUrl!,
+        if (isComplete != null) 'isComplete': isComplete!,
+        if (seriesFormatType != null) 'seriesFormatType': seriesFormatType!,
+        if (seriesId != null) 'seriesId': seriesId!,
         if (seriesSubscriptionReleaseInfo != null)
           'seriesSubscriptionReleaseInfo':
-              seriesSubscriptionReleaseInfo.toJson(),
-        if (seriesType != null) 'seriesType': seriesType,
-        if (subscriptionId != null) 'subscriptionId': subscriptionId,
-        if (title != null) 'title': title,
+              seriesSubscriptionReleaseInfo!.toJson(),
+        if (seriesType != null) 'seriesType': seriesType!,
+        if (subscriptionId != null) 'subscriptionId': subscriptionId!,
+        if (title != null) 'title': title!,
       };
 }
 
 class Series {
   /// Resource type.
-  core.String kind;
-  core.List<SeriesSeries> series;
+  core.String? kind;
+  core.List<SeriesSeries>? series;
 
   Series();
 
@@ -6054,18 +5885,18 @@ class Series {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (series != null)
-          'series': series.map((value) => value.toJson()).toList(),
+          'series': series!.map((value) => value.toJson()).toList(),
       };
 }
 
 class Seriesmembership {
   /// Resorce type.
-  core.String kind;
-  core.List<Volume> member;
-  core.String nextPageToken;
+  core.String? kind;
+  core.List<Volume>? member;
+  core.String? nextPageToken;
 
   Seriesmembership();
 
@@ -6084,18 +5915,18 @@ class Seriesmembership {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (member != null)
-          'member': member.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'member': member!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// User settings in sub-objects, each for different purposes.
 class UsersettingsNotesExport {
-  core.String folderName;
-  core.bool isEnabled;
+  core.String? folderName;
+  core.bool? isEnabled;
 
   UsersettingsNotesExport();
 
@@ -6108,14 +5939,14 @@ class UsersettingsNotesExport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (folderName != null) 'folderName': folderName,
-        if (isEnabled != null) 'isEnabled': isEnabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (folderName != null) 'folderName': folderName!,
+        if (isEnabled != null) 'isEnabled': isEnabled!,
       };
 }
 
 class UsersettingsNotificationMatchMyInterests {
-  core.String optedState;
+  core.String? optedState;
 
   UsersettingsNotificationMatchMyInterests();
 
@@ -6125,13 +5956,13 @@ class UsersettingsNotificationMatchMyInterests {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (optedState != null) 'opted_state': optedState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (optedState != null) 'opted_state': optedState!,
       };
 }
 
 class UsersettingsNotificationMoreFromAuthors {
-  core.String optedState;
+  core.String? optedState;
 
   UsersettingsNotificationMoreFromAuthors();
 
@@ -6141,13 +5972,13 @@ class UsersettingsNotificationMoreFromAuthors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (optedState != null) 'opted_state': optedState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (optedState != null) 'opted_state': optedState!,
       };
 }
 
 class UsersettingsNotificationMoreFromSeries {
-  core.String optedState;
+  core.String? optedState;
 
   UsersettingsNotificationMoreFromSeries();
 
@@ -6157,13 +5988,13 @@ class UsersettingsNotificationMoreFromSeries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (optedState != null) 'opted_state': optedState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (optedState != null) 'opted_state': optedState!,
       };
 }
 
 class UsersettingsNotificationPriceDrop {
-  core.String optedState;
+  core.String? optedState;
 
   UsersettingsNotificationPriceDrop();
 
@@ -6173,13 +6004,13 @@ class UsersettingsNotificationPriceDrop {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (optedState != null) 'opted_state': optedState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (optedState != null) 'opted_state': optedState!,
       };
 }
 
 class UsersettingsNotificationRewardExpirations {
-  core.String optedState;
+  core.String? optedState;
 
   UsersettingsNotificationRewardExpirations();
 
@@ -6189,17 +6020,17 @@ class UsersettingsNotificationRewardExpirations {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (optedState != null) 'opted_state': optedState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (optedState != null) 'opted_state': optedState!,
       };
 }
 
 class UsersettingsNotification {
-  UsersettingsNotificationMatchMyInterests matchMyInterests;
-  UsersettingsNotificationMoreFromAuthors moreFromAuthors;
-  UsersettingsNotificationMoreFromSeries moreFromSeries;
-  UsersettingsNotificationPriceDrop priceDrop;
-  UsersettingsNotificationRewardExpirations rewardExpirations;
+  UsersettingsNotificationMatchMyInterests? matchMyInterests;
+  UsersettingsNotificationMoreFromAuthors? moreFromAuthors;
+  UsersettingsNotificationMoreFromSeries? moreFromSeries;
+  UsersettingsNotificationPriceDrop? priceDrop;
+  UsersettingsNotificationRewardExpirations? rewardExpirations;
 
   UsersettingsNotification();
 
@@ -6226,25 +6057,25 @@ class UsersettingsNotification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (matchMyInterests != null)
-          'matchMyInterests': matchMyInterests.toJson(),
+          'matchMyInterests': matchMyInterests!.toJson(),
         if (moreFromAuthors != null)
-          'moreFromAuthors': moreFromAuthors.toJson(),
-        if (moreFromSeries != null) 'moreFromSeries': moreFromSeries.toJson(),
-        if (priceDrop != null) 'priceDrop': priceDrop.toJson(),
+          'moreFromAuthors': moreFromAuthors!.toJson(),
+        if (moreFromSeries != null) 'moreFromSeries': moreFromSeries!.toJson(),
+        if (priceDrop != null) 'priceDrop': priceDrop!.toJson(),
         if (rewardExpirations != null)
-          'rewardExpirations': rewardExpirations.toJson(),
+          'rewardExpirations': rewardExpirations!.toJson(),
       };
 }
 
 class Usersettings {
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// User settings in sub-objects, each for different purposes.
-  UsersettingsNotesExport notesExport;
-  UsersettingsNotification notification;
+  UsersettingsNotesExport? notesExport;
+  UsersettingsNotification? notification;
 
   Usersettings();
 
@@ -6262,10 +6093,10 @@ class Usersettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (notesExport != null) 'notesExport': notesExport.toJson(),
-        if (notification != null) 'notification': notification.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (notesExport != null) 'notesExport': notesExport!.toJson(),
+        if (notification != null) 'notification': notification!.toJson(),
       };
 }
 
@@ -6276,17 +6107,17 @@ class VolumeAccessInfoEpub {
   /// URL to retrieve ACS token for epub download.
   ///
   /// (In LITE projection.)
-  core.String acsTokenLink;
+  core.String? acsTokenLink;
 
   /// URL to download epub.
   ///
   /// (In LITE projection.)
-  core.String downloadLink;
+  core.String? downloadLink;
 
   /// Is a flowing text epub available either as public domain or for purchase.
   ///
   /// (In LITE projection.)
-  core.bool isAvailable;
+  core.bool? isAvailable;
 
   VolumeAccessInfoEpub();
 
@@ -6302,10 +6133,10 @@ class VolumeAccessInfoEpub {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (acsTokenLink != null) 'acsTokenLink': acsTokenLink,
-        if (downloadLink != null) 'downloadLink': downloadLink,
-        if (isAvailable != null) 'isAvailable': isAvailable,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (acsTokenLink != null) 'acsTokenLink': acsTokenLink!,
+        if (downloadLink != null) 'downloadLink': downloadLink!,
+        if (isAvailable != null) 'isAvailable': isAvailable!,
       };
 }
 
@@ -6316,17 +6147,17 @@ class VolumeAccessInfoPdf {
   /// URL to retrieve ACS token for pdf download.
   ///
   /// (In LITE projection.)
-  core.String acsTokenLink;
+  core.String? acsTokenLink;
 
   /// URL to download pdf.
   ///
   /// (In LITE projection.)
-  core.String downloadLink;
+  core.String? downloadLink;
 
   /// Is a scanned image pdf available either as public domain or for purchase.
   ///
   /// (In LITE projection.)
-  core.bool isAvailable;
+  core.bool? isAvailable;
 
   VolumeAccessInfoPdf();
 
@@ -6342,10 +6173,10 @@ class VolumeAccessInfoPdf {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (acsTokenLink != null) 'acsTokenLink': acsTokenLink,
-        if (downloadLink != null) 'downloadLink': downloadLink,
-        if (isAvailable != null) 'isAvailable': isAvailable,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (acsTokenLink != null) 'acsTokenLink': acsTokenLink!,
+        if (downloadLink != null) 'downloadLink': downloadLink!,
+        if (isAvailable != null) 'isAvailable': isAvailable!,
       };
 }
 
@@ -6360,54 +6191,54 @@ class VolumeAccessInfo {
   ///
   /// Values can be FULL_PURCHASED, FULL_PUBLIC_DOMAIN, SAMPLE or NONE. (In LITE
   /// projection.)
-  core.String accessViewStatus;
+  core.String? accessViewStatus;
 
   /// The two-letter ISO_3166-1 country code for which this access information
   /// is valid.
   ///
   /// (In LITE projection.)
-  core.String country;
+  core.String? country;
 
   /// Information about a volume's download license access restrictions.
-  DownloadAccessRestriction downloadAccess;
+  DownloadAccessRestriction? downloadAccess;
 
   /// URL to the Google Drive viewer if this volume is uploaded by the user by
   /// selecting the file from Google Drive.
-  core.String driveImportedContentLink;
+  core.String? driveImportedContentLink;
 
   /// Whether this volume can be embedded in a viewport using the Embedded
   /// Viewer API.
-  core.bool embeddable;
+  core.bool? embeddable;
 
   /// Information about epub content.
   ///
   /// (In LITE projection.)
-  VolumeAccessInfoEpub epub;
+  VolumeAccessInfoEpub? epub;
 
   /// Whether this volume requires that the client explicitly request offline
   /// download license rather than have it done automatically when loading the
   /// content, if the client supports it.
-  core.bool explicitOfflineLicenseManagement;
+  core.bool? explicitOfflineLicenseManagement;
 
   /// Information about pdf content.
   ///
   /// (In LITE projection.)
-  VolumeAccessInfoPdf pdf;
+  VolumeAccessInfoPdf? pdf;
 
   /// Whether or not this book is public domain in the country listed above.
-  core.bool publicDomain;
+  core.bool? publicDomain;
 
   /// Whether quote sharing is allowed for this volume.
-  core.bool quoteSharingAllowed;
+  core.bool? quoteSharingAllowed;
 
   /// Whether text-to-speech is permitted for this volume.
   ///
   /// Values can be ALLOWED, ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED.
-  core.String textToSpeechPermission;
+  core.String? textToSpeechPermission;
 
   /// For ordered but not yet processed orders, we give a URL that can be used
   /// to go to the appropriate Google Wallet page.
-  core.String viewOrderUrl;
+  core.String? viewOrderUrl;
 
   /// The read access of a volume.
   ///
@@ -6416,12 +6247,12 @@ class VolumeAccessInfo {
   /// publisher has allowed some portion of the volume to be viewed publicly,
   /// without purchase. This can apply to eBooks as well as non-eBooks. Public
   /// domain books will always have a value of ALL_PAGES.
-  core.String viewability;
+  core.String? viewability;
 
   /// URL to read this volume on the Google Books site.
   ///
   /// Link will not allow users to read non-viewable volumes.
-  core.String webReaderLink;
+  core.String? webReaderLink;
 
   VolumeAccessInfo();
 
@@ -6475,38 +6306,38 @@ class VolumeAccessInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessViewStatus != null) 'accessViewStatus': accessViewStatus,
-        if (country != null) 'country': country,
-        if (downloadAccess != null) 'downloadAccess': downloadAccess.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessViewStatus != null) 'accessViewStatus': accessViewStatus!,
+        if (country != null) 'country': country!,
+        if (downloadAccess != null) 'downloadAccess': downloadAccess!.toJson(),
         if (driveImportedContentLink != null)
-          'driveImportedContentLink': driveImportedContentLink,
-        if (embeddable != null) 'embeddable': embeddable,
-        if (epub != null) 'epub': epub.toJson(),
+          'driveImportedContentLink': driveImportedContentLink!,
+        if (embeddable != null) 'embeddable': embeddable!,
+        if (epub != null) 'epub': epub!.toJson(),
         if (explicitOfflineLicenseManagement != null)
-          'explicitOfflineLicenseManagement': explicitOfflineLicenseManagement,
-        if (pdf != null) 'pdf': pdf.toJson(),
-        if (publicDomain != null) 'publicDomain': publicDomain,
+          'explicitOfflineLicenseManagement': explicitOfflineLicenseManagement!,
+        if (pdf != null) 'pdf': pdf!.toJson(),
+        if (publicDomain != null) 'publicDomain': publicDomain!,
         if (quoteSharingAllowed != null)
-          'quoteSharingAllowed': quoteSharingAllowed,
+          'quoteSharingAllowed': quoteSharingAllowed!,
         if (textToSpeechPermission != null)
-          'textToSpeechPermission': textToSpeechPermission,
-        if (viewOrderUrl != null) 'viewOrderUrl': viewOrderUrl,
-        if (viewability != null) 'viewability': viewability,
-        if (webReaderLink != null) 'webReaderLink': webReaderLink,
+          'textToSpeechPermission': textToSpeechPermission!,
+        if (viewOrderUrl != null) 'viewOrderUrl': viewOrderUrl!,
+        if (viewability != null) 'viewability': viewability!,
+        if (webReaderLink != null) 'webReaderLink': webReaderLink!,
       };
 }
 
 class VolumeLayerInfoLayers {
   /// The layer id of this layer (e.g. "geo").
-  core.String layerId;
+  core.String? layerId;
 
   /// The current version of this layer's volume annotations.
   ///
   /// Note that this version applies only to the data in the
   /// books.layers.volumeAnnotations.* responses. The actual annotation data is
   /// versioned separately.
-  core.String volumeAnnotationsVersion;
+  core.String? volumeAnnotationsVersion;
 
   VolumeLayerInfoLayers();
 
@@ -6520,17 +6351,17 @@ class VolumeLayerInfoLayers {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (layerId != null) 'layerId': layerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (layerId != null) 'layerId': layerId!,
         if (volumeAnnotationsVersion != null)
-          'volumeAnnotationsVersion': volumeAnnotationsVersion,
+          'volumeAnnotationsVersion': volumeAnnotationsVersion!,
       };
 }
 
 /// What layers exist in this volume and high level information about them.
 class VolumeLayerInfo {
   /// A layer should appear here if and only if the layer exists for this book.
-  core.List<VolumeLayerInfoLayers> layers;
+  core.List<VolumeLayerInfoLayers>? layers;
 
   VolumeLayerInfo();
 
@@ -6543,16 +6374,16 @@ class VolumeLayerInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (layers != null)
-          'layers': layers.map((value) => value.toJson()).toList(),
+          'layers': layers!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Recommendation related information for this volume.
 class VolumeRecommendedInfo {
   /// A text explaining why this volume is recommended.
-  core.String explanation;
+  core.String? explanation;
 
   VolumeRecommendedInfo();
 
@@ -6562,8 +6393,8 @@ class VolumeRecommendedInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (explanation != null) 'explanation': explanation,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (explanation != null) 'explanation': explanation!,
       };
 }
 
@@ -6574,12 +6405,12 @@ class VolumeSaleInfoListPrice {
   /// Amount in the currency listed below.
   ///
   /// (In LITE projection.)
-  core.double amount;
+  core.double? amount;
 
   /// An ISO 4217, three-letter currency code.
   ///
   /// (In LITE projection.)
-  core.String currencyCode;
+  core.String? currencyCode;
 
   VolumeSaleInfoListPrice();
 
@@ -6592,16 +6423,16 @@ class VolumeSaleInfoListPrice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amount != null) 'amount': amount,
-        if (currencyCode != null) 'currencyCode': currencyCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amount != null) 'amount': amount!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
       };
 }
 
 /// Offer list (=undiscounted) price in Micros.
 class VolumeSaleInfoOffersListPrice {
-  core.double amountInMicros;
-  core.String currencyCode;
+  core.double? amountInMicros;
+  core.String? currencyCode;
 
   VolumeSaleInfoOffersListPrice();
 
@@ -6614,16 +6445,16 @@ class VolumeSaleInfoOffersListPrice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amountInMicros != null) 'amountInMicros': amountInMicros,
-        if (currencyCode != null) 'currencyCode': currencyCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amountInMicros != null) 'amountInMicros': amountInMicros!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
       };
 }
 
 /// The rental duration (for rental offers only).
 class VolumeSaleInfoOffersRentalDuration {
-  core.double count;
-  core.String unit;
+  core.double? count;
+  core.String? unit;
 
   VolumeSaleInfoOffersRentalDuration();
 
@@ -6636,16 +6467,16 @@ class VolumeSaleInfoOffersRentalDuration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (unit != null) 'unit': unit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (unit != null) 'unit': unit!,
       };
 }
 
 /// Offer retail (=discounted) price in Micros
 class VolumeSaleInfoOffersRetailPrice {
-  core.double amountInMicros;
-  core.String currencyCode;
+  core.double? amountInMicros;
+  core.String? currencyCode;
 
   VolumeSaleInfoOffersRetailPrice();
 
@@ -6658,27 +6489,27 @@ class VolumeSaleInfoOffersRetailPrice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amountInMicros != null) 'amountInMicros': amountInMicros,
-        if (currencyCode != null) 'currencyCode': currencyCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amountInMicros != null) 'amountInMicros': amountInMicros!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
       };
 }
 
 class VolumeSaleInfoOffers {
   /// The finsky offer type (e.g., PURCHASE=0 RENTAL=3)
-  core.int finskyOfferType;
+  core.int? finskyOfferType;
 
   /// Indicates whether the offer is giftable.
-  core.bool giftable;
+  core.bool? giftable;
 
   /// Offer list (=undiscounted) price in Micros.
-  VolumeSaleInfoOffersListPrice listPrice;
+  VolumeSaleInfoOffersListPrice? listPrice;
 
   /// The rental duration (for rental offers only).
-  VolumeSaleInfoOffersRentalDuration rentalDuration;
+  VolumeSaleInfoOffersRentalDuration? rentalDuration;
 
   /// Offer retail (=discounted) price in Micros
-  VolumeSaleInfoOffersRetailPrice retailPrice;
+  VolumeSaleInfoOffersRetailPrice? retailPrice;
 
   VolumeSaleInfoOffers();
 
@@ -6703,12 +6534,12 @@ class VolumeSaleInfoOffers {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (finskyOfferType != null) 'finskyOfferType': finskyOfferType,
-        if (giftable != null) 'giftable': giftable,
-        if (listPrice != null) 'listPrice': listPrice.toJson(),
-        if (rentalDuration != null) 'rentalDuration': rentalDuration.toJson(),
-        if (retailPrice != null) 'retailPrice': retailPrice.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (finskyOfferType != null) 'finskyOfferType': finskyOfferType!,
+        if (giftable != null) 'giftable': giftable!,
+        if (listPrice != null) 'listPrice': listPrice!.toJson(),
+        if (rentalDuration != null) 'rentalDuration': rentalDuration!.toJson(),
+        if (retailPrice != null) 'retailPrice': retailPrice!.toJson(),
       };
 }
 
@@ -6720,12 +6551,12 @@ class VolumeSaleInfoRetailPrice {
   /// Amount in the currency listed below.
   ///
   /// (In LITE projection.)
-  core.double amount;
+  core.double? amount;
 
   /// An ISO 4217, three-letter currency code.
   ///
   /// (In LITE projection.)
-  core.String currencyCode;
+  core.String? currencyCode;
 
   VolumeSaleInfoRetailPrice();
 
@@ -6738,9 +6569,9 @@ class VolumeSaleInfoRetailPrice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amount != null) 'amount': amount,
-        if (currencyCode != null) 'currencyCode': currencyCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amount != null) 'amount': amount!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
       };
 }
 
@@ -6753,41 +6584,41 @@ class VolumeSaleInfo {
   /// URL to purchase this volume on the Google Books site.
   ///
   /// (In LITE projection)
-  core.String buyLink;
+  core.String? buyLink;
 
   /// The two-letter ISO_3166-1 country code for which this sale information is
   /// valid.
   ///
   /// (In LITE projection.)
-  core.String country;
+  core.String? country;
 
   /// Whether or not this volume is an eBook (can be added to the My eBooks
   /// shelf).
-  core.bool isEbook;
+  core.bool? isEbook;
 
   /// Suggested retail price.
   ///
   /// (In LITE projection.)
-  VolumeSaleInfoListPrice listPrice;
+  VolumeSaleInfoListPrice? listPrice;
 
   /// Offers available for this volume (sales and rentals).
-  core.List<VolumeSaleInfoOffers> offers;
+  core.List<VolumeSaleInfoOffers>? offers;
 
   /// The date on which this book is available for sale.
-  core.String onSaleDate;
+  core.String? onSaleDate;
 
   /// The actual selling price of the book.
   ///
   /// This is the same as the suggested retail or list price unless there are
   /// offers or discounts on this volume. (In LITE projection.)
-  VolumeSaleInfoRetailPrice retailPrice;
+  VolumeSaleInfoRetailPrice? retailPrice;
 
   /// Whether or not this book is available for sale or offered for free in the
   /// Google eBookstore for the country listed above.
   ///
   /// Possible values are FOR_SALE, FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE,
   /// NOT_FOR_SALE, or FOR_PREORDER.
-  core.String saleability;
+  core.String? saleability;
 
   VolumeSaleInfo();
 
@@ -6823,23 +6654,23 @@ class VolumeSaleInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (buyLink != null) 'buyLink': buyLink,
-        if (country != null) 'country': country,
-        if (isEbook != null) 'isEbook': isEbook,
-        if (listPrice != null) 'listPrice': listPrice.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (buyLink != null) 'buyLink': buyLink!,
+        if (country != null) 'country': country!,
+        if (isEbook != null) 'isEbook': isEbook!,
+        if (listPrice != null) 'listPrice': listPrice!.toJson(),
         if (offers != null)
-          'offers': offers.map((value) => value.toJson()).toList(),
-        if (onSaleDate != null) 'onSaleDate': onSaleDate,
-        if (retailPrice != null) 'retailPrice': retailPrice.toJson(),
-        if (saleability != null) 'saleability': saleability,
+          'offers': offers!.map((value) => value.toJson()).toList(),
+        if (onSaleDate != null) 'onSaleDate': onSaleDate!,
+        if (retailPrice != null) 'retailPrice': retailPrice!.toJson(),
+        if (saleability != null) 'saleability': saleability!,
       };
 }
 
 /// Search result information related to this volume.
 class VolumeSearchInfo {
   /// A text snippet containing the search query.
-  core.String textSnippet;
+  core.String? textSnippet;
 
   VolumeSearchInfo();
 
@@ -6849,17 +6680,17 @@ class VolumeSearchInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (textSnippet != null) 'textSnippet': textSnippet,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (textSnippet != null) 'textSnippet': textSnippet!,
       };
 }
 
 /// Copy/Paste accounting information.
 class VolumeUserInfoCopy {
-  core.int allowedCharacterCount;
-  core.String limitType;
-  core.int remainingCharacterCount;
-  core.String updated;
+  core.int? allowedCharacterCount;
+  core.String? limitType;
+  core.int? remainingCharacterCount;
+  core.String? updated;
 
   VolumeUserInfoCopy();
 
@@ -6878,30 +6709,30 @@ class VolumeUserInfoCopy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedCharacterCount != null)
-          'allowedCharacterCount': allowedCharacterCount,
-        if (limitType != null) 'limitType': limitType,
+          'allowedCharacterCount': allowedCharacterCount!,
+        if (limitType != null) 'limitType': limitType!,
         if (remainingCharacterCount != null)
-          'remainingCharacterCount': remainingCharacterCount,
-        if (updated != null) 'updated': updated,
+          'remainingCharacterCount': remainingCharacterCount!,
+        if (updated != null) 'updated': updated!,
       };
 }
 
 /// Information on the ability to share with the family.
 class VolumeUserInfoFamilySharing {
   /// The role of the user in the family.
-  core.String familyRole;
+  core.String? familyRole;
 
   /// Whether or not this volume can be shared with the family by the user.
   ///
   /// This includes sharing eligibility of both the volume and the user. If the
   /// value is true, the user can initiate a family sharing action.
-  core.bool isSharingAllowed;
+  core.bool? isSharingAllowed;
 
   /// Whether or not sharing this volume is temporarily disabled due to issues
   /// with the Family Wallet.
-  core.bool isSharingDisabledByFop;
+  core.bool? isSharingDisabledByFop;
 
   VolumeUserInfoFamilySharing();
 
@@ -6917,18 +6748,18 @@ class VolumeUserInfoFamilySharing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (familyRole != null) 'familyRole': familyRole,
-        if (isSharingAllowed != null) 'isSharingAllowed': isSharingAllowed,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (familyRole != null) 'familyRole': familyRole!,
+        if (isSharingAllowed != null) 'isSharingAllowed': isSharingAllowed!,
         if (isSharingDisabledByFop != null)
-          'isSharingDisabledByFop': isSharingDisabledByFop,
+          'isSharingDisabledByFop': isSharingDisabledByFop!,
       };
 }
 
 /// Period during this book is/was a valid rental.
 class VolumeUserInfoRentalPeriod {
-  core.String endUtcSec;
-  core.String startUtcSec;
+  core.String? endUtcSec;
+  core.String? startUtcSec;
 
   VolumeUserInfoRentalPeriod();
 
@@ -6941,14 +6772,14 @@ class VolumeUserInfoRentalPeriod {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endUtcSec != null) 'endUtcSec': endUtcSec,
-        if (startUtcSec != null) 'startUtcSec': startUtcSec,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endUtcSec != null) 'endUtcSec': endUtcSec!,
+        if (startUtcSec != null) 'startUtcSec': startUtcSec!,
       };
 }
 
 class VolumeUserInfoUserUploadedVolumeInfo {
-  core.String processingState;
+  core.String? processingState;
 
   VolumeUserInfoUserUploadedVolumeInfo();
 
@@ -6958,8 +6789,8 @@ class VolumeUserInfoUserUploadedVolumeInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (processingState != null) 'processingState': processingState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (processingState != null) 'processingState': processingState!,
       };
 }
 
@@ -6971,70 +6802,70 @@ class VolumeUserInfo {
   ///
   /// (RFC 3339 UTC date-time format) Acquiring includes purchase, user upload,
   /// receiving family sharing, etc.
-  core.String acquiredTime;
+  core.String? acquiredTime;
 
   /// How this volume was acquired.
-  core.int acquisitionType;
+  core.int? acquisitionType;
 
   /// Copy/Paste accounting information.
-  VolumeUserInfoCopy copy;
+  VolumeUserInfoCopy? copy;
 
   /// Whether this volume is purchased, sample, pd download etc.
-  core.int entitlementType;
+  core.int? entitlementType;
 
   /// Information on the ability to share with the family.
-  VolumeUserInfoFamilySharing familySharing;
+  VolumeUserInfoFamilySharing? familySharing;
 
   /// Whether or not the user shared this volume with the family.
-  core.bool isFamilySharedFromUser;
+  core.bool? isFamilySharedFromUser;
 
   /// Whether or not the user received this volume through family sharing.
-  core.bool isFamilySharedToUser;
+  core.bool? isFamilySharedToUser;
 
   /// Deprecated: Replaced by familySharing.
-  core.bool isFamilySharingAllowed;
+  core.bool? isFamilySharingAllowed;
 
   /// Deprecated: Replaced by familySharing.
-  core.bool isFamilySharingDisabledByFop;
+  core.bool? isFamilySharingDisabledByFop;
 
   /// Whether or not this volume is currently in "my books."
-  core.bool isInMyBooks;
+  core.bool? isInMyBooks;
 
   /// Whether or not this volume was pre-ordered by the authenticated user
   /// making the request.
   ///
   /// (In LITE projection.)
-  core.bool isPreordered;
+  core.bool? isPreordered;
 
   /// Whether or not this volume was purchased by the authenticated user making
   /// the request.
   ///
   /// (In LITE projection.)
-  core.bool isPurchased;
+  core.bool? isPurchased;
 
   /// Whether or not this volume was user uploaded.
-  core.bool isUploaded;
+  core.bool? isUploaded;
 
   /// The user's current reading position in the volume, if one is available.
   ///
   /// (In LITE projection.)
-  ReadingPosition readingPosition;
+  ReadingPosition? readingPosition;
 
   /// Period during this book is/was a valid rental.
-  VolumeUserInfoRentalPeriod rentalPeriod;
+  VolumeUserInfoRentalPeriod? rentalPeriod;
 
   /// Whether this book is an active or an expired rental.
-  core.String rentalState;
+  core.String? rentalState;
 
   /// This user's review of this volume, if one exists.
-  Review review;
+  Review? review;
 
   /// Timestamp when this volume was last modified by a user action, such as a
   /// reading position update, volume purchase or writing a review.
   ///
   /// (RFC 3339 UTC date-time format).
-  core.String updated;
-  VolumeUserInfoUserUploadedVolumeInfo userUploadedVolumeInfo;
+  core.String? updated;
+  VolumeUserInfoUserUploadedVolumeInfo? userUploadedVolumeInfo;
 
   VolumeUserInfo();
 
@@ -7106,45 +6937,45 @@ class VolumeUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (acquiredTime != null) 'acquiredTime': acquiredTime,
-        if (acquisitionType != null) 'acquisitionType': acquisitionType,
-        if (copy != null) 'copy': copy.toJson(),
-        if (entitlementType != null) 'entitlementType': entitlementType,
-        if (familySharing != null) 'familySharing': familySharing.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (acquiredTime != null) 'acquiredTime': acquiredTime!,
+        if (acquisitionType != null) 'acquisitionType': acquisitionType!,
+        if (copy != null) 'copy': copy!.toJson(),
+        if (entitlementType != null) 'entitlementType': entitlementType!,
+        if (familySharing != null) 'familySharing': familySharing!.toJson(),
         if (isFamilySharedFromUser != null)
-          'isFamilySharedFromUser': isFamilySharedFromUser,
+          'isFamilySharedFromUser': isFamilySharedFromUser!,
         if (isFamilySharedToUser != null)
-          'isFamilySharedToUser': isFamilySharedToUser,
+          'isFamilySharedToUser': isFamilySharedToUser!,
         if (isFamilySharingAllowed != null)
-          'isFamilySharingAllowed': isFamilySharingAllowed,
+          'isFamilySharingAllowed': isFamilySharingAllowed!,
         if (isFamilySharingDisabledByFop != null)
-          'isFamilySharingDisabledByFop': isFamilySharingDisabledByFop,
-        if (isInMyBooks != null) 'isInMyBooks': isInMyBooks,
-        if (isPreordered != null) 'isPreordered': isPreordered,
-        if (isPurchased != null) 'isPurchased': isPurchased,
-        if (isUploaded != null) 'isUploaded': isUploaded,
+          'isFamilySharingDisabledByFop': isFamilySharingDisabledByFop!,
+        if (isInMyBooks != null) 'isInMyBooks': isInMyBooks!,
+        if (isPreordered != null) 'isPreordered': isPreordered!,
+        if (isPurchased != null) 'isPurchased': isPurchased!,
+        if (isUploaded != null) 'isUploaded': isUploaded!,
         if (readingPosition != null)
-          'readingPosition': readingPosition.toJson(),
-        if (rentalPeriod != null) 'rentalPeriod': rentalPeriod.toJson(),
-        if (rentalState != null) 'rentalState': rentalState,
-        if (review != null) 'review': review.toJson(),
-        if (updated != null) 'updated': updated,
+          'readingPosition': readingPosition!.toJson(),
+        if (rentalPeriod != null) 'rentalPeriod': rentalPeriod!.toJson(),
+        if (rentalState != null) 'rentalState': rentalState!,
+        if (review != null) 'review': review!.toJson(),
+        if (updated != null) 'updated': updated!,
         if (userUploadedVolumeInfo != null)
-          'userUploadedVolumeInfo': userUploadedVolumeInfo.toJson(),
+          'userUploadedVolumeInfo': userUploadedVolumeInfo!.toJson(),
       };
 }
 
 /// Physical dimensions of this volume.
 class VolumeVolumeInfoDimensions {
   /// Height or length of this volume (in cm).
-  core.String height;
+  core.String? height;
 
   /// Thickness of this volume (in cm).
-  core.String thickness;
+  core.String? thickness;
 
   /// Width of this volume (in cm).
-  core.String width;
+  core.String? width;
 
   VolumeVolumeInfoDimensions();
 
@@ -7160,10 +6991,10 @@ class VolumeVolumeInfoDimensions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (thickness != null) 'thickness': thickness,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (thickness != null) 'thickness': thickness!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -7174,32 +7005,32 @@ class VolumeVolumeInfoImageLinks {
   /// Image link for extra large size (width of ~1280 pixels).
   ///
   /// (In LITE projection)
-  core.String extraLarge;
+  core.String? extraLarge;
 
   /// Image link for large size (width of ~800 pixels).
   ///
   /// (In LITE projection)
-  core.String large;
+  core.String? large;
 
   /// Image link for medium size (width of ~575 pixels).
   ///
   /// (In LITE projection)
-  core.String medium;
+  core.String? medium;
 
   /// Image link for small size (width of ~300 pixels).
   ///
   /// (In LITE projection)
-  core.String small;
+  core.String? small;
 
   /// Image link for small thumbnail size (width of ~80 pixels).
   ///
   /// (In LITE projection)
-  core.String smallThumbnail;
+  core.String? smallThumbnail;
 
   /// Image link for thumbnail size (width of ~128 pixels).
   ///
   /// (In LITE projection)
-  core.String thumbnail;
+  core.String? thumbnail;
 
   VolumeVolumeInfoImageLinks();
 
@@ -7224,24 +7055,24 @@ class VolumeVolumeInfoImageLinks {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (extraLarge != null) 'extraLarge': extraLarge,
-        if (large != null) 'large': large,
-        if (medium != null) 'medium': medium,
-        if (small != null) 'small': small,
-        if (smallThumbnail != null) 'smallThumbnail': smallThumbnail,
-        if (thumbnail != null) 'thumbnail': thumbnail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (extraLarge != null) 'extraLarge': extraLarge!,
+        if (large != null) 'large': large!,
+        if (medium != null) 'medium': medium!,
+        if (small != null) 'small': small!,
+        if (smallThumbnail != null) 'smallThumbnail': smallThumbnail!,
+        if (thumbnail != null) 'thumbnail': thumbnail!,
       };
 }
 
 class VolumeVolumeInfoIndustryIdentifiers {
   /// Industry specific volume identifier.
-  core.String identifier;
+  core.String? identifier;
 
   /// Identifier type.
   ///
   /// Possible values are ISBN_10, ISBN_13, ISSN and OTHER.
-  core.String type;
+  core.String? type;
 
   VolumeVolumeInfoIndustryIdentifiers();
 
@@ -7254,18 +7085,18 @@ class VolumeVolumeInfoIndustryIdentifiers {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (identifier != null) 'identifier': identifier,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (identifier != null) 'identifier': identifier!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// A top-level summary of the panelization info in this volume.
 class VolumeVolumeInfoPanelizationSummary {
-  core.bool containsEpubBubbles;
-  core.bool containsImageBubbles;
-  core.String epubBubbleVersion;
-  core.String imageBubbleVersion;
+  core.bool? containsEpubBubbles;
+  core.bool? containsImageBubbles;
+  core.String? epubBubbleVersion;
+  core.String? imageBubbleVersion;
 
   VolumeVolumeInfoPanelizationSummary();
 
@@ -7284,21 +7115,21 @@ class VolumeVolumeInfoPanelizationSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (containsEpubBubbles != null)
-          'containsEpubBubbles': containsEpubBubbles,
+          'containsEpubBubbles': containsEpubBubbles!,
         if (containsImageBubbles != null)
-          'containsImageBubbles': containsImageBubbles,
-        if (epubBubbleVersion != null) 'epubBubbleVersion': epubBubbleVersion,
+          'containsImageBubbles': containsImageBubbles!,
+        if (epubBubbleVersion != null) 'epubBubbleVersion': epubBubbleVersion!,
         if (imageBubbleVersion != null)
-          'imageBubbleVersion': imageBubbleVersion,
+          'imageBubbleVersion': imageBubbleVersion!,
       };
 }
 
 /// The reading modes available for this volume.
 class VolumeVolumeInfoReadingModes {
-  core.bool image;
-  core.bool text;
+  core.bool? image;
+  core.bool? text;
 
   VolumeVolumeInfoReadingModes();
 
@@ -7311,123 +7142,123 @@ class VolumeVolumeInfoReadingModes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (image != null) 'image': image,
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (image != null) 'image': image!,
+        if (text != null) 'text': text!,
       };
 }
 
 /// General volume information.
 class VolumeVolumeInfo {
   /// Whether anonymous logging should be allowed.
-  core.bool allowAnonLogging;
+  core.bool? allowAnonLogging;
 
   /// The names of the authors and/or editors for this volume.
   ///
   /// (In LITE projection)
-  core.List<core.String> authors;
+  core.List<core.String>? authors;
 
   /// The mean review rating for this volume.
   ///
   /// (min = 1.0, max = 5.0)
-  core.double averageRating;
+  core.double? averageRating;
 
   /// Canonical URL for a volume.
   ///
   /// (In LITE projection.)
-  core.String canonicalVolumeLink;
+  core.String? canonicalVolumeLink;
 
   /// A list of subject categories, such as "Fiction", "Suspense", etc.
-  core.List<core.String> categories;
+  core.List<core.String>? categories;
 
   /// Whether the volume has comics content.
-  core.bool comicsContent;
+  core.bool? comicsContent;
 
   /// An identifier for the version of the volume content (text & images).
   ///
   /// (In LITE projection)
-  core.String contentVersion;
+  core.String? contentVersion;
 
   /// A synopsis of the volume.
   ///
   /// The text of the description is formatted in HTML and includes simple
   /// formatting elements, such as b, i, and br tags. (In LITE projection.)
-  core.String description;
+  core.String? description;
 
   /// Physical dimensions of this volume.
-  VolumeVolumeInfoDimensions dimensions;
+  VolumeVolumeInfoDimensions? dimensions;
 
   /// A list of image links for all the sizes that are available.
   ///
   /// (In LITE projection.)
-  VolumeVolumeInfoImageLinks imageLinks;
+  VolumeVolumeInfoImageLinks? imageLinks;
 
   /// Industry standard identifiers for this volume.
-  core.List<VolumeVolumeInfoIndustryIdentifiers> industryIdentifiers;
+  core.List<VolumeVolumeInfoIndustryIdentifiers>? industryIdentifiers;
 
   /// URL to view information about this volume on the Google Books site.
   ///
   /// (In LITE projection)
-  core.String infoLink;
+  core.String? infoLink;
 
   /// Best language for this volume (based on content).
   ///
   /// It is the two-letter ISO 639-1 code such as 'fr', 'en', etc.
-  core.String language;
+  core.String? language;
 
   /// The main category to which this volume belongs.
   ///
   /// It will be the category from the categories list returned below that has
   /// the highest weight.
-  core.String mainCategory;
-  core.String maturityRating;
+  core.String? mainCategory;
+  core.String? maturityRating;
 
   /// Total number of pages as per publisher metadata.
-  core.int pageCount;
+  core.int? pageCount;
 
   /// A top-level summary of the panelization info in this volume.
-  VolumeVolumeInfoPanelizationSummary panelizationSummary;
+  VolumeVolumeInfoPanelizationSummary? panelizationSummary;
 
   /// URL to preview this volume on the Google Books site.
-  core.String previewLink;
+  core.String? previewLink;
 
   /// Type of publication of this volume.
   ///
   /// Possible values are BOOK or MAGAZINE.
-  core.String printType;
+  core.String? printType;
 
   /// Total number of printed pages in generated pdf representation.
-  core.int printedPageCount;
+  core.int? printedPageCount;
 
   /// Date of publication.
   ///
   /// (In LITE projection.)
-  core.String publishedDate;
+  core.String? publishedDate;
 
   /// Publisher of this volume.
   ///
   /// (In LITE projection.)
-  core.String publisher;
+  core.String? publisher;
 
   /// The number of review ratings for this volume.
-  core.int ratingsCount;
+  core.int? ratingsCount;
 
   /// The reading modes available for this volume.
-  VolumeVolumeInfoReadingModes readingModes;
+  VolumeVolumeInfoReadingModes? readingModes;
 
   /// Total number of sample pages as per publisher metadata.
-  core.int samplePageCount;
-  Volumeseriesinfo seriesInfo;
+  core.int? samplePageCount;
+  Volumeseriesinfo? seriesInfo;
 
   /// Volume subtitle.
   ///
   /// (In LITE projection.)
-  core.String subtitle;
+  core.String? subtitle;
 
   /// Volume title.
   ///
   /// (In LITE projection.)
-  core.String title;
+  core.String? title;
 
   VolumeVolumeInfo();
 
@@ -7531,39 +7362,39 @@ class VolumeVolumeInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowAnonLogging != null) 'allowAnonLogging': allowAnonLogging,
-        if (authors != null) 'authors': authors,
-        if (averageRating != null) 'averageRating': averageRating,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowAnonLogging != null) 'allowAnonLogging': allowAnonLogging!,
+        if (authors != null) 'authors': authors!,
+        if (averageRating != null) 'averageRating': averageRating!,
         if (canonicalVolumeLink != null)
-          'canonicalVolumeLink': canonicalVolumeLink,
-        if (categories != null) 'categories': categories,
-        if (comicsContent != null) 'comicsContent': comicsContent,
-        if (contentVersion != null) 'contentVersion': contentVersion,
-        if (description != null) 'description': description,
-        if (dimensions != null) 'dimensions': dimensions.toJson(),
-        if (imageLinks != null) 'imageLinks': imageLinks.toJson(),
+          'canonicalVolumeLink': canonicalVolumeLink!,
+        if (categories != null) 'categories': categories!,
+        if (comicsContent != null) 'comicsContent': comicsContent!,
+        if (contentVersion != null) 'contentVersion': contentVersion!,
+        if (description != null) 'description': description!,
+        if (dimensions != null) 'dimensions': dimensions!.toJson(),
+        if (imageLinks != null) 'imageLinks': imageLinks!.toJson(),
         if (industryIdentifiers != null)
           'industryIdentifiers':
-              industryIdentifiers.map((value) => value.toJson()).toList(),
-        if (infoLink != null) 'infoLink': infoLink,
-        if (language != null) 'language': language,
-        if (mainCategory != null) 'mainCategory': mainCategory,
-        if (maturityRating != null) 'maturityRating': maturityRating,
-        if (pageCount != null) 'pageCount': pageCount,
+              industryIdentifiers!.map((value) => value.toJson()).toList(),
+        if (infoLink != null) 'infoLink': infoLink!,
+        if (language != null) 'language': language!,
+        if (mainCategory != null) 'mainCategory': mainCategory!,
+        if (maturityRating != null) 'maturityRating': maturityRating!,
+        if (pageCount != null) 'pageCount': pageCount!,
         if (panelizationSummary != null)
-          'panelizationSummary': panelizationSummary.toJson(),
-        if (previewLink != null) 'previewLink': previewLink,
-        if (printType != null) 'printType': printType,
-        if (printedPageCount != null) 'printedPageCount': printedPageCount,
-        if (publishedDate != null) 'publishedDate': publishedDate,
-        if (publisher != null) 'publisher': publisher,
-        if (ratingsCount != null) 'ratingsCount': ratingsCount,
-        if (readingModes != null) 'readingModes': readingModes.toJson(),
-        if (samplePageCount != null) 'samplePageCount': samplePageCount,
-        if (seriesInfo != null) 'seriesInfo': seriesInfo.toJson(),
-        if (subtitle != null) 'subtitle': subtitle,
-        if (title != null) 'title': title,
+          'panelizationSummary': panelizationSummary!.toJson(),
+        if (previewLink != null) 'previewLink': previewLink!,
+        if (printType != null) 'printType': printType!,
+        if (printedPageCount != null) 'printedPageCount': printedPageCount!,
+        if (publishedDate != null) 'publishedDate': publishedDate!,
+        if (publisher != null) 'publisher': publisher!,
+        if (ratingsCount != null) 'ratingsCount': ratingsCount!,
+        if (readingModes != null) 'readingModes': readingModes!.toJson(),
+        if (samplePageCount != null) 'samplePageCount': samplePageCount!,
+        if (seriesInfo != null) 'seriesInfo': seriesInfo!.toJson(),
+        if (subtitle != null) 'subtitle': subtitle!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -7573,51 +7404,51 @@ class Volume {
   ///
   /// This information can depend on country (books may be public domain in one
   /// country but not in another, e.g.).
-  VolumeAccessInfo accessInfo;
+  VolumeAccessInfo? accessInfo;
 
   /// Opaque identifier for a specific version of a volume resource.
   ///
   /// (In LITE projection)
-  core.String etag;
+  core.String? etag;
 
   /// Unique identifier for a volume.
   ///
   /// (In LITE projection.)
-  core.String id;
+  core.String? id;
 
   /// Resource type for a volume.
   ///
   /// (In LITE projection.)
-  core.String kind;
+  core.String? kind;
 
   /// What layers exist in this volume and high level information about them.
-  VolumeLayerInfo layerInfo;
+  VolumeLayerInfo? layerInfo;
 
   /// Recommendation related information for this volume.
-  VolumeRecommendedInfo recommendedInfo;
+  VolumeRecommendedInfo? recommendedInfo;
 
   /// Any information about a volume related to the eBookstore and/or
   /// purchaseability.
   ///
   /// This information can depend on the country where the request originates
   /// from (i.e. books may not be for sale in certain countries).
-  VolumeSaleInfo saleInfo;
+  VolumeSaleInfo? saleInfo;
 
   /// Search result information related to this volume.
-  VolumeSearchInfo searchInfo;
+  VolumeSearchInfo? searchInfo;
 
   /// URL to this resource.
   ///
   /// (In LITE projection.)
-  core.String selfLink;
+  core.String? selfLink;
 
   /// User specific information related to this volume.
   ///
   /// (e.g. page this user last read or whether they purchased this book)
-  VolumeUserInfo userInfo;
+  VolumeUserInfo? userInfo;
 
   /// General volume information.
-  VolumeVolumeInfo volumeInfo;
+  VolumeVolumeInfo? volumeInfo;
 
   Volume();
 
@@ -7664,29 +7495,29 @@ class Volume {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessInfo != null) 'accessInfo': accessInfo.toJson(),
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (layerInfo != null) 'layerInfo': layerInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessInfo != null) 'accessInfo': accessInfo!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (layerInfo != null) 'layerInfo': layerInfo!.toJson(),
         if (recommendedInfo != null)
-          'recommendedInfo': recommendedInfo.toJson(),
-        if (saleInfo != null) 'saleInfo': saleInfo.toJson(),
-        if (searchInfo != null) 'searchInfo': searchInfo.toJson(),
-        if (selfLink != null) 'selfLink': selfLink,
-        if (userInfo != null) 'userInfo': userInfo.toJson(),
-        if (volumeInfo != null) 'volumeInfo': volumeInfo.toJson(),
+          'recommendedInfo': recommendedInfo!.toJson(),
+        if (saleInfo != null) 'saleInfo': saleInfo!.toJson(),
+        if (searchInfo != null) 'searchInfo': searchInfo!.toJson(),
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (userInfo != null) 'userInfo': userInfo!.toJson(),
+        if (volumeInfo != null) 'volumeInfo': volumeInfo!.toJson(),
       };
 }
 
 class Volume2 {
   /// A list of volumes.
-  core.List<Volume> items;
+  core.List<Volume>? items;
 
   /// Resource type.
-  core.String kind;
-  core.String nextPageToken;
+  core.String? kind;
+  core.String? nextPageToken;
 
   Volume2();
 
@@ -7705,27 +7536,27 @@ class Volume2 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The content ranges to identify the selected text.
 class VolumeannotationContentRanges {
   /// Range in CFI format for this annotation for version above.
-  BooksAnnotationsRange cfiRange;
+  BooksAnnotationsRange? cfiRange;
 
   /// Content version applicable to ranges below.
-  core.String contentVersion;
+  core.String? contentVersion;
 
   /// Range in GB image format for this annotation for version above.
-  BooksAnnotationsRange gbImageRange;
+  BooksAnnotationsRange? gbImageRange;
 
   /// Range in GB text format for this annotation for version above.
-  BooksAnnotationsRange gbTextRange;
+  BooksAnnotationsRange? gbTextRange;
 
   VolumeannotationContentRanges();
 
@@ -7747,58 +7578,58 @@ class VolumeannotationContentRanges {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cfiRange != null) 'cfiRange': cfiRange.toJson(),
-        if (contentVersion != null) 'contentVersion': contentVersion,
-        if (gbImageRange != null) 'gbImageRange': gbImageRange.toJson(),
-        if (gbTextRange != null) 'gbTextRange': gbTextRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cfiRange != null) 'cfiRange': cfiRange!.toJson(),
+        if (contentVersion != null) 'contentVersion': contentVersion!,
+        if (gbImageRange != null) 'gbImageRange': gbImageRange!.toJson(),
+        if (gbTextRange != null) 'gbTextRange': gbTextRange!.toJson(),
       };
 }
 
 class Volumeannotation {
   /// The annotation data id for this volume annotation.
-  core.String annotationDataId;
+  core.String? annotationDataId;
 
   /// Link to get data for this annotation.
-  core.String annotationDataLink;
+  core.String? annotationDataLink;
 
   /// The type of annotation this is.
-  core.String annotationType;
+  core.String? annotationType;
 
   /// The content ranges to identify the selected text.
-  VolumeannotationContentRanges contentRanges;
+  VolumeannotationContentRanges? contentRanges;
 
   /// Data for this annotation.
-  core.String data;
+  core.String? data;
 
   /// Indicates that this annotation is deleted.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// Unique id of this volume annotation.
-  core.String id;
+  core.String? id;
 
   /// Resource Type
-  core.String kind;
+  core.String? kind;
 
   /// The Layer this annotation is for.
-  core.String layerId;
+  core.String? layerId;
 
   /// Pages the annotation spans.
-  core.List<core.String> pageIds;
+  core.List<core.String>? pageIds;
 
   /// Excerpt from the volume.
-  core.String selectedText;
+  core.String? selectedText;
 
   /// URL to this resource.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Timestamp for the last time this anntoation was updated.
   ///
   /// (RFC 3339 UTC date-time format).
-  core.String updated;
+  core.String? updated;
 
   /// The Volume this annotation is for.
-  core.String volumeId;
+  core.String? volumeId;
 
   Volumeannotation();
 
@@ -7850,39 +7681,39 @@ class Volumeannotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (annotationDataId != null) 'annotationDataId': annotationDataId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (annotationDataId != null) 'annotationDataId': annotationDataId!,
         if (annotationDataLink != null)
-          'annotationDataLink': annotationDataLink,
-        if (annotationType != null) 'annotationType': annotationType,
-        if (contentRanges != null) 'contentRanges': contentRanges.toJson(),
-        if (data != null) 'data': data,
-        if (deleted != null) 'deleted': deleted,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (layerId != null) 'layerId': layerId,
-        if (pageIds != null) 'pageIds': pageIds,
-        if (selectedText != null) 'selectedText': selectedText,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (updated != null) 'updated': updated,
-        if (volumeId != null) 'volumeId': volumeId,
+          'annotationDataLink': annotationDataLink!,
+        if (annotationType != null) 'annotationType': annotationType!,
+        if (contentRanges != null) 'contentRanges': contentRanges!.toJson(),
+        if (data != null) 'data': data!,
+        if (deleted != null) 'deleted': deleted!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (layerId != null) 'layerId': layerId!,
+        if (pageIds != null) 'pageIds': pageIds!,
+        if (selectedText != null) 'selectedText': selectedText!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (updated != null) 'updated': updated!,
+        if (volumeId != null) 'volumeId': volumeId!,
       };
 }
 
 class Volumeannotations {
   /// A list of volume annotations.
-  core.List<Volumeannotation> items;
+  core.List<Volumeannotation>? items;
 
   /// Resource type
-  core.String kind;
+  core.String? kind;
 
   /// Token to pass in for pagination for the next page.
   ///
   /// This will not be present if this request does not have more results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total number of volume annotations found.
-  core.int totalItems;
+  core.int? totalItems;
 
   /// The version string for all of the volume annotations in this layer (not
   /// just the ones in this response).
@@ -7890,7 +7721,7 @@ class Volumeannotations {
   /// Note: the version string doesn't apply to the annotation data, just the
   /// information in this response (e.g. the location of annotations in the
   /// book).
-  core.String version;
+  core.String? version;
 
   Volumeannotations();
 
@@ -7915,28 +7746,28 @@ class Volumeannotations {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalItems != null) 'totalItems': totalItems,
-        if (version != null) 'version': version,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalItems != null) 'totalItems': totalItems!,
+        if (version != null) 'version': version!,
       };
 }
 
 class Volumes {
   /// A list of volumes.
-  core.List<Volume> items;
+  core.List<Volume>? items;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// Total number of volumes found.
   ///
   /// This might be greater than the number of volumes returned in this response
   /// if results have been paginated.
-  core.int totalItems;
+  core.int? totalItems;
 
   Volumes();
 
@@ -7955,17 +7786,17 @@ class Volumes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (totalItems != null) 'totalItems': totalItems,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (totalItems != null) 'totalItems': totalItems!,
       };
 }
 
 class VolumeseriesinfoVolumeSeriesIssue {
-  core.String issueDisplayNumber;
-  core.int issueOrderNumber;
+  core.String? issueDisplayNumber;
+  core.int? issueOrderNumber;
 
   VolumeseriesinfoVolumeSeriesIssue();
 
@@ -7978,10 +7809,10 @@ class VolumeseriesinfoVolumeSeriesIssue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (issueDisplayNumber != null)
-          'issueDisplayNumber': issueDisplayNumber,
-        if (issueOrderNumber != null) 'issueOrderNumber': issueOrderNumber,
+          'issueDisplayNumber': issueDisplayNumber!,
+        if (issueOrderNumber != null) 'issueOrderNumber': issueOrderNumber!,
       };
 }
 
@@ -7989,18 +7820,18 @@ class VolumeseriesinfoVolumeSeries {
   /// List of issues.
   ///
   /// Applicable only for Collection Edition and Omnibus.
-  core.List<VolumeseriesinfoVolumeSeriesIssue> issue;
+  core.List<VolumeseriesinfoVolumeSeriesIssue>? issue;
 
   /// The book order number in the series.
-  core.int orderNumber;
+  core.int? orderNumber;
 
   /// The book type in the context of series.
   ///
   /// Examples - Single Issue, Collection Edition, etc.
-  core.String seriesBookType;
+  core.String? seriesBookType;
 
   /// The series id.
-  core.String seriesId;
+  core.String? seriesId;
 
   VolumeseriesinfoVolumeSeries();
 
@@ -8023,12 +7854,12 @@ class VolumeseriesinfoVolumeSeries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (issue != null)
-          'issue': issue.map((value) => value.toJson()).toList(),
-        if (orderNumber != null) 'orderNumber': orderNumber,
-        if (seriesBookType != null) 'seriesBookType': seriesBookType,
-        if (seriesId != null) 'seriesId': seriesId,
+          'issue': issue!.map((value) => value.toJson()).toList(),
+        if (orderNumber != null) 'orderNumber': orderNumber!,
+        if (seriesBookType != null) 'seriesBookType': seriesBookType!,
+        if (seriesId != null) 'seriesId': seriesId!,
       };
 }
 
@@ -8037,14 +7868,14 @@ class Volumeseriesinfo {
   ///
   /// This should be used only for display purposes and the actual sequence
   /// should be inferred from the below orderNumber.
-  core.String bookDisplayNumber;
+  core.String? bookDisplayNumber;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// Short book title in the context of the series.
-  core.String shortSeriesBookTitle;
-  core.List<VolumeseriesinfoVolumeSeries> volumeSeries;
+  core.String? shortSeriesBookTitle;
+  core.List<VolumeseriesinfoVolumeSeries>? volumeSeries;
 
   Volumeseriesinfo();
 
@@ -8067,12 +7898,12 @@ class Volumeseriesinfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bookDisplayNumber != null) 'bookDisplayNumber': bookDisplayNumber,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bookDisplayNumber != null) 'bookDisplayNumber': bookDisplayNumber!,
+        if (kind != null) 'kind': kind!,
         if (shortSeriesBookTitle != null)
-          'shortSeriesBookTitle': shortSeriesBookTitle,
+          'shortSeriesBookTitle': shortSeriesBookTitle!,
         if (volumeSeries != null)
-          'volumeSeries': volumeSeries.map((value) => value.toJson()).toList(),
+          'volumeSeries': volumeSeries!.map((value) => value.toJson()).toList(),
       };
 }

@@ -154,7 +154,7 @@ class AccountsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountsAuthInfoResponse> authinfo({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -198,15 +198,9 @@ class AccountsResource {
   async.Future<AccountsClaimWebsiteResponse> claimwebsite(
     core.String merchantId,
     core.String accountId, {
-    core.bool overwrite,
-    core.String $fields,
+    core.bool? overwrite,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (overwrite != null) 'overwrite': ['${overwrite}'],
       if ($fields != null) 'fields': [$fields],
@@ -246,10 +240,9 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<AccountsCustomBatchResponse> custombatch(
     AccountsCustomBatchRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -289,15 +282,9 @@ class AccountsResource {
   async.Future<void> delete(
     core.String merchantId,
     core.String accountId, {
-    core.bool force,
-    core.String $fields,
+    core.bool? force,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
@@ -345,15 +332,9 @@ class AccountsResource {
   async.Future<Account> get(
     core.String merchantId,
     core.String accountId, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -394,13 +375,9 @@ class AccountsResource {
   async.Future<Account> insert(
     Account request,
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -445,16 +422,9 @@ class AccountsResource {
     AccountsLinkRequest request,
     core.String merchantId,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -508,15 +478,12 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<AccountsListResponse> list(
     core.String merchantId, {
-    core.String label,
-    core.int maxResults,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.String? label,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (label != null) 'label': [label],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -566,16 +533,10 @@ class AccountsResource {
   async.Future<AccountsListLinksResponse> listlinks(
     core.String merchantId,
     core.String accountId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -625,16 +586,9 @@ class AccountsResource {
     Account request,
     core.String merchantId,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -678,16 +632,9 @@ class AccountsResource {
     AccountsUpdateLabelsRequest request,
     core.String merchantId,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -735,13 +682,9 @@ class AccountsLabelsResource {
   async.Future<AccountLabel> create(
     AccountLabel request,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -779,14 +722,8 @@ class AccountsLabelsResource {
   async.Future<void> delete(
     core.String accountId,
     core.String labelId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (labelId == null) {
-      throw core.ArgumentError('Parameter labelId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -832,13 +769,10 @@ class AccountsLabelsResource {
   /// this method will complete with the same error.
   async.Future<ListAccountLabelsResponse> list(
     core.String accountId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -882,16 +816,9 @@ class AccountsLabelsResource {
     AccountLabel request,
     core.String accountId,
     core.String labelId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (labelId == null) {
-      throw core.ArgumentError('Parameter labelId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -940,13 +867,9 @@ class AccountsReturncarrierResource {
   async.Future<AccountReturnCarrier> create(
     AccountReturnCarrier request,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -986,14 +909,8 @@ class AccountsReturncarrierResource {
   async.Future<void> delete(
     core.String accountId,
     core.String carrierAccountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (carrierAccountId == null) {
-      throw core.ArgumentError('Parameter carrierAccountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1030,11 +947,8 @@ class AccountsReturncarrierResource {
   /// this method will complete with the same error.
   async.Future<ListAccountReturnCarrierResponse> list(
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1078,16 +992,9 @@ class AccountsReturncarrierResource {
     AccountReturnCarrier request,
     core.String accountId,
     core.String carrierAccountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (carrierAccountId == null) {
-      throw core.ArgumentError('Parameter carrierAccountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1131,10 +1038,9 @@ class AccountstatusesResource {
   /// this method will complete with the same error.
   async.Future<AccountstatusesCustomBatchResponse> custombatch(
     AccountstatusesCustomBatchRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1179,15 +1085,9 @@ class AccountstatusesResource {
   async.Future<AccountStatus> get(
     core.String merchantId,
     core.String accountId, {
-    core.List<core.String> destinations,
-    core.String $fields,
+    core.List<core.String>? destinations,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (destinations != null) 'destinations': destinations,
       if ($fields != null) 'fields': [$fields],
@@ -1234,14 +1134,11 @@ class AccountstatusesResource {
   /// this method will complete with the same error.
   async.Future<AccountstatusesListResponse> list(
     core.String merchantId, {
-    core.List<core.String> destinations,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.List<core.String>? destinations,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (destinations != null) 'destinations': destinations,
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -1287,10 +1184,9 @@ class AccounttaxResource {
   /// this method will complete with the same error.
   async.Future<AccounttaxCustomBatchResponse> custombatch(
     AccounttaxCustomBatchRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1331,14 +1227,8 @@ class AccounttaxResource {
   async.Future<AccountTax> get(
     core.String merchantId,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1382,13 +1272,10 @@ class AccounttaxResource {
   /// this method will complete with the same error.
   async.Future<AccounttaxListResponse> list(
     core.String merchantId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1437,16 +1324,9 @@ class AccounttaxResource {
     AccountTax request,
     core.String merchantId,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1496,14 +1376,8 @@ class BuyongoogleprogramsResource {
   async.Future<BuyOnGoogleProgramStatus> get(
     core.String merchantId,
     core.String regionCode, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (regionCode == null) {
-      throw core.ArgumentError('Parameter regionCode is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1548,16 +1422,9 @@ class BuyongoogleprogramsResource {
     OnboardBuyOnGoogleProgramRequest request,
     core.String merchantId,
     core.String regionCode, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (regionCode == null) {
-      throw core.ArgumentError('Parameter regionCode is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1609,13 +1476,9 @@ class CollectionsResource {
   async.Future<Collection> create(
     Collection request,
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1655,14 +1518,8 @@ class CollectionsResource {
   async.Future<void> delete(
     core.String merchantId,
     core.String collectionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (collectionId == null) {
-      throw core.ArgumentError('Parameter collectionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1702,14 +1559,8 @@ class CollectionsResource {
   async.Future<Collection> get(
     core.String merchantId,
     core.String collectionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (collectionId == null) {
-      throw core.ArgumentError('Parameter collectionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1758,13 +1609,10 @@ class CollectionsResource {
   /// this method will complete with the same error.
   async.Future<ListCollectionsResponse> list(
     core.String merchantId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1813,14 +1661,8 @@ class CollectionstatusesResource {
   async.Future<CollectionStatus> get(
     core.String merchantId,
     core.String collectionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (collectionId == null) {
-      throw core.ArgumentError('Parameter collectionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1866,13 +1708,10 @@ class CollectionstatusesResource {
   /// this method will complete with the same error.
   async.Future<ListCollectionStatusesResponse> list(
     core.String merchantId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1922,14 +1761,8 @@ class CssesResource {
   async.Future<Css> get(
     core.String cssGroupId,
     core.String cssDomainId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (cssGroupId == null) {
-      throw core.ArgumentError('Parameter cssGroupId is required.');
-    }
-    if (cssDomainId == null) {
-      throw core.ArgumentError('Parameter cssDomainId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1975,13 +1808,10 @@ class CssesResource {
   /// this method will complete with the same error.
   async.Future<ListCssesResponse> list(
     core.String cssGroupId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (cssGroupId == null) {
-      throw core.ArgumentError('Parameter cssGroupId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2025,16 +1855,9 @@ class CssesResource {
     LabelIds request,
     core.String cssGroupId,
     core.String cssDomainId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (cssGroupId == null) {
-      throw core.ArgumentError('Parameter cssGroupId is required.');
-    }
-    if (cssDomainId == null) {
-      throw core.ArgumentError('Parameter cssDomainId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2079,10 +1902,9 @@ class DatafeedsResource {
   /// this method will complete with the same error.
   async.Future<DatafeedsCustomBatchResponse> custombatch(
     DatafeedsCustomBatchRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2119,14 +1941,8 @@ class DatafeedsResource {
   async.Future<void> delete(
     core.String merchantId,
     core.String datafeedId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (datafeedId == null) {
-      throw core.ArgumentError('Parameter datafeedId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2169,14 +1985,8 @@ class DatafeedsResource {
   async.Future<DatafeedsFetchNowResponse> fetchnow(
     core.String merchantId,
     core.String datafeedId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (datafeedId == null) {
-      throw core.ArgumentError('Parameter datafeedId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2218,14 +2028,8 @@ class DatafeedsResource {
   async.Future<Datafeed> get(
     core.String merchantId,
     core.String datafeedId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (datafeedId == null) {
-      throw core.ArgumentError('Parameter datafeedId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2265,13 +2069,9 @@ class DatafeedsResource {
   async.Future<Datafeed> insert(
     Datafeed request,
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2313,13 +2113,10 @@ class DatafeedsResource {
   /// this method will complete with the same error.
   async.Future<DatafeedsListResponse> list(
     core.String merchantId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2366,16 +2163,9 @@ class DatafeedsResource {
     Datafeed request,
     core.String merchantId,
     core.String datafeedId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (datafeedId == null) {
-      throw core.ArgumentError('Parameter datafeedId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2418,10 +2208,9 @@ class DatafeedstatusesResource {
   /// this method will complete with the same error.
   async.Future<DatafeedstatusesCustomBatchResponse> custombatch(
     DatafeedstatusesCustomBatchRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2470,16 +2259,10 @@ class DatafeedstatusesResource {
   async.Future<DatafeedStatus> get(
     core.String merchantId,
     core.String datafeedId, {
-    core.String country,
-    core.String language,
-    core.String $fields,
+    core.String? country,
+    core.String? language,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (datafeedId == null) {
-      throw core.ArgumentError('Parameter datafeedId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (country != null) 'country': [country],
       if (language != null) 'language': [language],
@@ -2524,13 +2307,10 @@ class DatafeedstatusesResource {
   /// this method will complete with the same error.
   async.Future<DatafeedstatusesListResponse> list(
     core.String merchantId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2575,10 +2355,9 @@ class LiasettingsResource {
   /// this method will complete with the same error.
   async.Future<LiasettingsCustomBatchResponse> custombatch(
     LiasettingsCustomBatchRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2619,14 +2398,8 @@ class LiasettingsResource {
   async.Future<LiaSettings> get(
     core.String merchantId,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2670,14 +2443,8 @@ class LiasettingsResource {
       getaccessiblegmbaccounts(
     core.String merchantId,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2722,13 +2489,10 @@ class LiasettingsResource {
   /// this method will complete with the same error.
   async.Future<LiasettingsListResponse> list(
     core.String merchantId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2764,7 +2528,7 @@ class LiasettingsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiasettingsListPosDataProvidersResponse> listposdataproviders({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -2807,17 +2571,8 @@ class LiasettingsResource {
     core.String merchantId,
     core.String accountId,
     core.String gmbEmail, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (gmbEmail == null) {
-      throw core.ArgumentError('Parameter gmbEmail is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'gmbEmail': [gmbEmail],
       if ($fields != null) 'fields': [$fields],
@@ -2866,17 +2621,8 @@ class LiasettingsResource {
     core.String merchantId,
     core.String accountId,
     core.String country, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (country == null) {
-      throw core.ArgumentError('Parameter country is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2934,26 +2680,8 @@ class LiasettingsResource {
     core.String language,
     core.String contactName,
     core.String contactEmail, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (country == null) {
-      throw core.ArgumentError('Parameter country is required.');
-    }
-    if (language == null) {
-      throw core.ArgumentError('Parameter language is required.');
-    }
-    if (contactName == null) {
-      throw core.ArgumentError('Parameter contactName is required.');
-    }
-    if (contactEmail == null) {
-      throw core.ArgumentError('Parameter contactEmail is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'country': [country],
       'language': [language],
@@ -3009,19 +2737,10 @@ class LiasettingsResource {
     core.String merchantId,
     core.String accountId,
     core.String country, {
-    core.String posDataProviderId,
-    core.String posExternalAccountId,
-    core.String $fields,
+    core.String? posDataProviderId,
+    core.String? posExternalAccountId,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (country == null) {
-      throw core.ArgumentError('Parameter country is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'country': [country],
       if (posDataProviderId != null) 'posDataProviderId': [posDataProviderId],
@@ -3074,16 +2793,9 @@ class LiasettingsResource {
     LiaSettings request,
     core.String merchantId,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3128,10 +2840,9 @@ class LocalinventoryResource {
   /// this method will complete with the same error.
   async.Future<LocalinventoryCustomBatchResponse> custombatch(
     LocalinventoryCustomBatchRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3174,16 +2885,9 @@ class LocalinventoryResource {
     LocalInventory request,
     core.String merchantId,
     core.String productId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3236,16 +2940,9 @@ class OrderinvoicesResource {
     OrderinvoicesCreateChargeInvoiceRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3296,16 +2993,9 @@ class OrderinvoicesResource {
     OrderinvoicesCreateRefundInvoiceRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3362,15 +3052,12 @@ class OrderreportsResource {
   /// this method will complete with the same error.
   async.Future<OrderreportsListDisbursementsResponse> listdisbursements(
     core.String merchantId, {
-    core.String disbursementEndDate,
-    core.String disbursementStartDate,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? disbursementEndDate,
+    core.String? disbursementStartDate,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (disbursementEndDate != null)
         'disbursementEndDate': [disbursementEndDate],
@@ -3429,18 +3116,12 @@ class OrderreportsResource {
   async.Future<OrderreportsListTransactionsResponse> listtransactions(
     core.String merchantId,
     core.String disbursementId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String transactionEndDate,
-    core.String transactionStartDate,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? transactionEndDate,
+    core.String? transactionStartDate,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (disbursementId == null) {
-      throw core.ArgumentError('Parameter disbursementId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3497,16 +3178,9 @@ class OrderreturnsResource {
     OrderreturnsAcknowledgeRequest request,
     core.String merchantId,
     core.String returnId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (returnId == null) {
-      throw core.ArgumentError('Parameter returnId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3549,13 +3223,9 @@ class OrderreturnsResource {
   async.Future<OrderreturnsCreateOrderReturnResponse> createorderreturn(
     OrderreturnsCreateOrderReturnRequest request,
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3596,14 +3266,8 @@ class OrderreturnsResource {
   async.Future<MerchantOrderReturn> get(
     core.String merchantId,
     core.String returnId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (returnId == null) {
-      throw core.ArgumentError('Parameter returnId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3694,22 +3358,19 @@ class OrderreturnsResource {
   /// this method will complete with the same error.
   async.Future<OrderreturnsListResponse> list(
     core.String merchantId, {
-    core.bool acknowledged,
-    core.String createdEndDate,
-    core.String createdStartDate,
-    core.List<core.String> googleOrderIds,
-    core.int maxResults,
-    core.String orderBy,
-    core.String pageToken,
-    core.List<core.String> shipmentStates,
-    core.List<core.String> shipmentStatus,
-    core.List<core.String> shipmentTrackingNumbers,
-    core.List<core.String> shipmentTypes,
-    core.String $fields,
+    core.bool? acknowledged,
+    core.String? createdEndDate,
+    core.String? createdStartDate,
+    core.List<core.String>? googleOrderIds,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.List<core.String>? shipmentStates,
+    core.List<core.String>? shipmentStatus,
+    core.List<core.String>? shipmentTrackingNumbers,
+    core.List<core.String>? shipmentTypes,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (acknowledged != null) 'acknowledged': ['${acknowledged}'],
       if (createdEndDate != null) 'createdEndDate': [createdEndDate],
@@ -3764,16 +3425,9 @@ class OrderreturnsResource {
     OrderreturnsProcessRequest request,
     core.String merchantId,
     core.String returnId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (returnId == null) {
-      throw core.ArgumentError('Parameter returnId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3825,16 +3479,9 @@ class OrdersResource {
     OrdersAcknowledgeRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3879,14 +3526,8 @@ class OrdersResource {
   async.Future<OrdersAdvanceTestOrderResponse> advancetestorder(
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3931,16 +3572,9 @@ class OrdersResource {
     OrdersCancelRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3986,16 +3620,9 @@ class OrdersResource {
     OrdersCancelLineItemRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4044,16 +3671,9 @@ class OrdersResource {
     OrdersCancelTestOrderByCustomerRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4098,13 +3718,9 @@ class OrdersResource {
   async.Future<OrdersCreateTestOrderResponse> createtestorder(
     OrdersCreateTestOrderRequest request,
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4150,16 +3766,9 @@ class OrdersResource {
     OrdersCreateTestReturnRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4202,14 +3811,8 @@ class OrdersResource {
   async.Future<Order> get(
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4249,14 +3852,8 @@ class OrdersResource {
   async.Future<OrdersGetByMerchantOrderIdResponse> getbymerchantorderid(
     core.String merchantId,
     core.String merchantOrderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (merchantOrderId == null) {
-      throw core.ArgumentError('Parameter merchantOrderId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4309,15 +3906,9 @@ class OrdersResource {
   async.Future<OrdersGetTestOrderTemplateResponse> gettestordertemplate(
     core.String merchantId,
     core.String templateName, {
-    core.String country,
-    core.String $fields,
+    core.String? country,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (templateName == null) {
-      throw core.ArgumentError('Parameter templateName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (country != null) 'country': [country],
       if ($fields != null) 'fields': [$fields],
@@ -4372,16 +3963,9 @@ class OrdersResource {
     OrdersInStoreRefundLineItemRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4448,18 +4032,15 @@ class OrdersResource {
   /// this method will complete with the same error.
   async.Future<OrdersListResponse> list(
     core.String merchantId, {
-    core.bool acknowledged,
-    core.int maxResults,
-    core.String orderBy,
-    core.String pageToken,
-    core.String placedDateEnd,
-    core.String placedDateStart,
-    core.List<core.String> statuses,
-    core.String $fields,
+    core.bool? acknowledged,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.String? placedDateEnd,
+    core.String? placedDateStart,
+    core.List<core.String>? statuses,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (acknowledged != null) 'acknowledged': ['${acknowledged}'],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -4509,16 +4090,9 @@ class OrdersResource {
     OrdersRefundItemRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4564,16 +4138,9 @@ class OrdersResource {
     OrdersRefundOrderRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4619,16 +4186,9 @@ class OrdersResource {
     OrdersRejectReturnLineItemRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4681,16 +4241,9 @@ class OrdersResource {
     OrdersReturnRefundLineItemRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4741,16 +4294,9 @@ class OrdersResource {
     OrdersSetLineItemMetadataRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4796,16 +4342,9 @@ class OrdersResource {
     OrdersShipLineItemsRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4852,16 +4391,9 @@ class OrdersResource {
     OrdersUpdateLineItemShippingDetailsRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4907,16 +4439,9 @@ class OrdersResource {
     OrdersUpdateMerchantOrderIdRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4962,16 +4487,9 @@ class OrdersResource {
     OrdersUpdateShipmentRequest request,
     core.String merchantId,
     core.String orderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5021,13 +4539,9 @@ class OrdertrackingsignalsResource {
   async.Future<OrderTrackingSignal> create(
     OrderTrackingSignal request,
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5070,10 +4584,9 @@ class PosResource {
   /// this method will complete with the same error.
   async.Future<PosCustomBatchResponse> custombatch(
     PosCustomBatchRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5112,17 +4625,8 @@ class PosResource {
     core.String merchantId,
     core.String targetMerchantId,
     core.String storeCode, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (targetMerchantId == null) {
-      throw core.ArgumentError('Parameter targetMerchantId is required.');
-    }
-    if (storeCode == null) {
-      throw core.ArgumentError('Parameter storeCode is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5166,17 +4670,8 @@ class PosResource {
     core.String merchantId,
     core.String targetMerchantId,
     core.String storeCode, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (targetMerchantId == null) {
-      throw core.ArgumentError('Parameter targetMerchantId is required.');
-    }
-    if (storeCode == null) {
-      throw core.ArgumentError('Parameter storeCode is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5220,16 +4715,9 @@ class PosResource {
     PosStore request,
     core.String merchantId,
     core.String targetMerchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (targetMerchantId == null) {
-      throw core.ArgumentError('Parameter targetMerchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5273,16 +4761,9 @@ class PosResource {
     PosInventoryRequest request,
     core.String merchantId,
     core.String targetMerchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (targetMerchantId == null) {
-      throw core.ArgumentError('Parameter targetMerchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5324,14 +4805,8 @@ class PosResource {
   async.Future<PosListResponse> list(
     core.String merchantId,
     core.String targetMerchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (targetMerchantId == null) {
-      throw core.ArgumentError('Parameter targetMerchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5375,16 +4850,9 @@ class PosResource {
     PosSaleRequest request,
     core.String merchantId,
     core.String targetMerchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (targetMerchantId == null) {
-      throw core.ArgumentError('Parameter targetMerchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5429,10 +4897,9 @@ class ProductsResource {
   /// this method will complete with the same error.
   async.Future<ProductsCustomBatchResponse> custombatch(
     ProductsCustomBatchRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5471,15 +4938,9 @@ class ProductsResource {
   async.Future<void> delete(
     core.String merchantId,
     core.String productId, {
-    core.String feedId,
-    core.String $fields,
+    core.String? feedId,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (feedId != null) 'feedId': [feedId],
       if ($fields != null) 'fields': [$fields],
@@ -5520,14 +4981,8 @@ class ProductsResource {
   async.Future<Product> get(
     core.String merchantId,
     core.String productId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5572,14 +5027,10 @@ class ProductsResource {
   async.Future<Product> insert(
     Product request,
     core.String merchantId, {
-    core.String feedId,
-    core.String $fields,
+    core.String? feedId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (feedId != null) 'feedId': [feedId],
       if ($fields != null) 'fields': [$fields],
@@ -5625,13 +5076,10 @@ class ProductsResource {
   /// this method will complete with the same error.
   async.Future<ProductsListResponse> list(
     core.String merchantId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -5678,10 +5126,9 @@ class ProductstatusesResource {
   /// this method will complete with the same error.
   async.Future<ProductstatusesCustomBatchResponse> custombatch(
     ProductstatusesCustomBatchRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5723,15 +5170,9 @@ class ProductstatusesResource {
   async.Future<ProductStatus> get(
     core.String merchantId,
     core.String productId, {
-    core.List<core.String> destinations,
-    core.String $fields,
+    core.List<core.String>? destinations,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (destinations != null) 'destinations': destinations,
       if ($fields != null) 'fields': [$fields],
@@ -5778,14 +5219,11 @@ class ProductstatusesResource {
   /// this method will complete with the same error.
   async.Future<ProductstatusesListResponse> list(
     core.String merchantId, {
-    core.List<core.String> destinations,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.List<core.String>? destinations,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (destinations != null) 'destinations': destinations,
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -5858,19 +5296,13 @@ class ProductstatusesRepricingreportsResource {
   async.Future<ListRepricingProductReportsResponse> list(
     core.String merchantId,
     core.String productId, {
-    core.String endDate,
-    core.int pageSize,
-    core.String pageToken,
-    core.String ruleId,
-    core.String startDate,
-    core.String $fields,
+    core.String? endDate,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? ruleId,
+    core.String? startDate,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (endDate != null) 'endDate': [endDate],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -5921,11 +5353,8 @@ class PubsubnotificationsettingsResource {
   /// this method will complete with the same error.
   async.Future<PubsubNotificationSettings> get(
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5966,13 +5395,9 @@ class PubsubnotificationsettingsResource {
   async.Future<PubsubNotificationSettings> update(
     PubsubNotificationSettings request,
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6016,10 +5441,9 @@ class RegionalinventoryResource {
   /// this method will complete with the same error.
   async.Future<RegionalinventoryCustomBatchResponse> custombatch(
     RegionalinventoryCustomBatchRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6066,16 +5490,9 @@ class RegionalinventoryResource {
     RegionalInventory request,
     core.String merchantId,
     core.String productId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6126,14 +5543,10 @@ class RegionsResource {
   async.Future<Region> create(
     Region request,
     core.String merchantId, {
-    core.String regionId,
-    core.String $fields,
+    core.String? regionId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (regionId != null) 'regionId': [regionId],
       if ($fields != null) 'fields': [$fields],
@@ -6172,14 +5585,8 @@ class RegionsResource {
   async.Future<void> delete(
     core.String merchantId,
     core.String regionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (regionId == null) {
-      throw core.ArgumentError('Parameter regionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6219,14 +5626,8 @@ class RegionsResource {
   async.Future<Region> get(
     core.String merchantId,
     core.String regionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (regionId == null) {
-      throw core.ArgumentError('Parameter regionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6273,13 +5674,10 @@ class RegionsResource {
   /// this method will complete with the same error.
   async.Future<ListRegionsResponse> list(
     core.String merchantId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -6326,17 +5724,10 @@ class RegionsResource {
     Region request,
     core.String merchantId,
     core.String regionId, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (regionId == null) {
-      throw core.ArgumentError('Parameter regionId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -6385,13 +5776,9 @@ class ReportsResource {
   async.Future<SearchResponse> search(
     SearchRequest request,
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6443,14 +5830,10 @@ class RepricingrulesResource {
   async.Future<RepricingRule> create(
     RepricingRule request,
     core.String merchantId, {
-    core.String ruleId,
-    core.String $fields,
+    core.String? ruleId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (ruleId != null) 'ruleId': [ruleId],
       if ($fields != null) 'fields': [$fields],
@@ -6490,14 +5873,8 @@ class RepricingrulesResource {
   async.Future<void> delete(
     core.String merchantId,
     core.String ruleId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (ruleId == null) {
-      throw core.ArgumentError('Parameter ruleId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6537,14 +5914,8 @@ class RepricingrulesResource {
   async.Future<RepricingRule> get(
     core.String merchantId,
     core.String ruleId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (ruleId == null) {
-      throw core.ArgumentError('Parameter ruleId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6599,15 +5970,12 @@ class RepricingrulesResource {
   /// this method will complete with the same error.
   async.Future<ListRepricingRulesResponse> list(
     core.String merchantId, {
-    core.String countryCode,
-    core.String languageCode,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? countryCode,
+    core.String? languageCode,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (countryCode != null) 'countryCode': [countryCode],
       if (languageCode != null) 'languageCode': [languageCode],
@@ -6659,16 +6027,9 @@ class RepricingrulesResource {
     RepricingRule request,
     core.String merchantId,
     core.String ruleId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (ruleId == null) {
-      throw core.ArgumentError('Parameter ruleId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6734,18 +6095,12 @@ class RepricingrulesRepricingreportsResource {
   async.Future<ListRepricingRuleReportsResponse> list(
     core.String merchantId,
     core.String ruleId, {
-    core.String endDate,
-    core.int pageSize,
-    core.String pageToken,
-    core.String startDate,
-    core.String $fields,
+    core.String? endDate,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? startDate,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (ruleId == null) {
-      throw core.ArgumentError('Parameter ruleId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (endDate != null) 'endDate': [endDate],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -6793,10 +6148,9 @@ class ReturnaddressResource {
   /// this method will complete with the same error.
   async.Future<ReturnaddressCustomBatchResponse> custombatch(
     ReturnaddressCustomBatchRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6833,14 +6187,8 @@ class ReturnaddressResource {
   async.Future<void> delete(
     core.String merchantId,
     core.String returnAddressId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (returnAddressId == null) {
-      throw core.ArgumentError('Parameter returnAddressId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6879,14 +6227,8 @@ class ReturnaddressResource {
   async.Future<ReturnAddress> get(
     core.String merchantId,
     core.String returnAddressId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (returnAddressId == null) {
-      throw core.ArgumentError('Parameter returnAddressId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6926,13 +6268,9 @@ class ReturnaddressResource {
   async.Future<ReturnAddress> insert(
     ReturnAddress request,
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6977,14 +6315,11 @@ class ReturnaddressResource {
   /// this method will complete with the same error.
   async.Future<ReturnaddressListResponse> list(
     core.String merchantId, {
-    core.String country,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? country,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (country != null) 'country': [country],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -7029,10 +6364,9 @@ class ReturnpolicyResource {
   /// this method will complete with the same error.
   async.Future<ReturnpolicyCustomBatchResponse> custombatch(
     ReturnpolicyCustomBatchRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7069,14 +6403,8 @@ class ReturnpolicyResource {
   async.Future<void> delete(
     core.String merchantId,
     core.String returnPolicyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (returnPolicyId == null) {
-      throw core.ArgumentError('Parameter returnPolicyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7115,14 +6443,8 @@ class ReturnpolicyResource {
   async.Future<ReturnPolicy> get(
     core.String merchantId,
     core.String returnPolicyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (returnPolicyId == null) {
-      throw core.ArgumentError('Parameter returnPolicyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7162,13 +6484,9 @@ class ReturnpolicyResource {
   async.Future<ReturnPolicy> insert(
     ReturnPolicy request,
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7205,11 +6523,8 @@ class ReturnpolicyResource {
   /// this method will complete with the same error.
   async.Future<ReturnpolicyListResponse> list(
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7255,13 +6570,9 @@ class ReturnpolicyonlineResource {
   async.Future<ReturnPolicyOnline> create(
     ReturnPolicyOnline request,
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7300,14 +6611,8 @@ class ReturnpolicyonlineResource {
   async.Future<void> delete(
     core.String merchantId,
     core.String returnPolicyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (returnPolicyId == null) {
-      throw core.ArgumentError('Parameter returnPolicyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7347,14 +6652,8 @@ class ReturnpolicyonlineResource {
   async.Future<ReturnPolicyOnline> get(
     core.String merchantId,
     core.String returnPolicyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (returnPolicyId == null) {
-      throw core.ArgumentError('Parameter returnPolicyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7392,11 +6691,8 @@ class ReturnpolicyonlineResource {
   /// this method will complete with the same error.
   async.Future<ListReturnPolicyOnlineResponse> list(
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7439,16 +6735,9 @@ class ReturnpolicyonlineResource {
     ReturnPolicyOnline request,
     core.String merchantId,
     core.String returnPolicyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (returnPolicyId == null) {
-      throw core.ArgumentError('Parameter returnPolicyId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7495,14 +6784,8 @@ class SettlementreportsResource {
   async.Future<SettlementReport> get(
     core.String merchantId,
     core.String settlementId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (settlementId == null) {
-      throw core.ArgumentError('Parameter settlementId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7551,15 +6834,12 @@ class SettlementreportsResource {
   /// this method will complete with the same error.
   async.Future<SettlementreportsListResponse> list(
     core.String merchantId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String transferEndDate,
-    core.String transferStartDate,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? transferEndDate,
+    core.String? transferStartDate,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -7618,17 +6898,11 @@ class SettlementtransactionsResource {
   async.Future<SettlementtransactionsListResponse> list(
     core.String merchantId,
     core.String settlementId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.List<core.String> transactionIds,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.List<core.String>? transactionIds,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (settlementId == null) {
-      throw core.ArgumentError('Parameter settlementId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -7676,10 +6950,9 @@ class ShippingsettingsResource {
   /// this method will complete with the same error.
   async.Future<ShippingsettingsCustomBatchResponse> custombatch(
     ShippingsettingsCustomBatchRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7720,14 +6993,8 @@ class ShippingsettingsResource {
   async.Future<ShippingSettings> get(
     core.String merchantId,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7766,11 +7033,8 @@ class ShippingsettingsResource {
   async.Future<ShippingsettingsGetSupportedCarriersResponse>
       getsupportedcarriers(
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7808,11 +7072,8 @@ class ShippingsettingsResource {
   async.Future<ShippingsettingsGetSupportedHolidaysResponse>
       getsupportedholidays(
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7850,11 +7111,8 @@ class ShippingsettingsResource {
   async.Future<ShippingsettingsGetSupportedPickupServicesResponse>
       getsupportedpickupservices(
     core.String merchantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7897,13 +7155,10 @@ class ShippingsettingsResource {
   /// this method will complete with the same error.
   async.Future<ShippingsettingsListResponse> list(
     core.String merchantId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -7952,16 +7207,9 @@ class ShippingsettingsResource {
     ShippingSettings request,
     core.String merchantId,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (merchantId == null) {
-      throw core.ArgumentError('Parameter merchantId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7994,53 +7242,53 @@ class Account {
   /// list. It will remain in a `pending` state until approved or rejected
   /// either in the Ads interface or through the AdWords API. To delete an
   /// active link, or to cancel a link request, remove it from the list.
-  core.List<AccountAdsLink> adsLinks;
+  core.List<AccountAdsLink>? adsLinks;
 
   /// Indicates whether the merchant sells adult content.
-  core.bool adultContent;
+  core.bool? adultContent;
 
   /// Automatically created label IDs that are assigned to the account by CSS
   /// Center.
-  core.List<core.String> automaticLabelIds;
+  core.List<core.String>? automaticLabelIds;
 
   /// The business information of the account.
-  AccountBusinessInformation businessInformation;
+  AccountBusinessInformation? businessInformation;
 
   /// ID of CSS the account belongs to.
-  core.String cssId;
+  core.String? cssId;
 
   /// The GMB account which is linked or in the process of being linked with the
   /// Merchant Center account.
-  AccountGoogleMyBusinessLink googleMyBusinessLink;
+  AccountGoogleMyBusinessLink? googleMyBusinessLink;
 
   /// Required for update.
   ///
   /// Merchant Center account ID.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#account`"
-  core.String kind;
+  core.String? kind;
 
   /// Manually created label IDs that are assigned to the account by CSS.
-  core.List<core.String> labelIds;
+  core.List<core.String>? labelIds;
 
   /// Display name for the account.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Client-specific, locally-unique, internal ID for the child account.
-  core.String sellerId;
+  core.String? sellerId;
 
   /// Users with access to the account.
   ///
   /// Every account (except for subaccounts) must have at least one admin user.
-  core.List<AccountUser> users;
+  core.List<AccountUser>? users;
 
   /// The merchant's website.
-  core.String websiteUrl;
+  core.String? websiteUrl;
 
   /// Linked YouTube channels that are active or pending approval.
   ///
@@ -8048,7 +7296,7 @@ class Account {
   /// list. It will remain in a `pending` state until approved or rejected in
   /// the YT Creator Studio interface. To delete an active link, or to cancel a
   /// link request, remove it from the list.
-  core.List<AccountYouTubeChannelLink> youtubeChannelLinks;
+  core.List<AccountYouTubeChannelLink>? youtubeChannelLinks;
 
   Account();
 
@@ -8113,27 +7361,27 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (adsLinks != null)
-          'adsLinks': adsLinks.map((value) => value.toJson()).toList(),
-        if (adultContent != null) 'adultContent': adultContent,
-        if (automaticLabelIds != null) 'automaticLabelIds': automaticLabelIds,
+          'adsLinks': adsLinks!.map((value) => value.toJson()).toList(),
+        if (adultContent != null) 'adultContent': adultContent!,
+        if (automaticLabelIds != null) 'automaticLabelIds': automaticLabelIds!,
         if (businessInformation != null)
-          'businessInformation': businessInformation.toJson(),
-        if (cssId != null) 'cssId': cssId,
+          'businessInformation': businessInformation!.toJson(),
+        if (cssId != null) 'cssId': cssId!,
         if (googleMyBusinessLink != null)
-          'googleMyBusinessLink': googleMyBusinessLink.toJson(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (labelIds != null) 'labelIds': labelIds,
-        if (name != null) 'name': name,
-        if (sellerId != null) 'sellerId': sellerId,
+          'googleMyBusinessLink': googleMyBusinessLink!.toJson(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (labelIds != null) 'labelIds': labelIds!,
+        if (name != null) 'name': name!,
+        if (sellerId != null) 'sellerId': sellerId!,
         if (users != null)
-          'users': users.map((value) => value.toJson()).toList(),
-        if (websiteUrl != null) 'websiteUrl': websiteUrl,
+          'users': users!.map((value) => value.toJson()).toList(),
+        if (websiteUrl != null) 'websiteUrl': websiteUrl!,
         if (youtubeChannelLinks != null)
           'youtubeChannelLinks':
-              youtubeChannelLinks.map((value) => value.toJson()).toList(),
+              youtubeChannelLinks!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8142,25 +7390,25 @@ class AccountAddress {
   ///
   /// This value cannot be set for a sub-account of an MCA. All MCA sub-accounts
   /// inherit the country of their parent MCA.
-  core.String country;
+  core.String? country;
 
   /// City, town or commune.
   ///
   /// May also include dependent localities or sublocalities (e.g. neighborhoods
   /// or suburbs).
-  core.String locality;
+  core.String? locality;
 
   /// Postal code or ZIP (e.g. "94043").
-  core.String postalCode;
+  core.String? postalCode;
 
   /// Top-level administrative subdivision of the country.
   ///
   /// For example, a state like California ("CA") or a province like Quebec
   /// ("QC").
-  core.String region;
+  core.String? region;
 
   /// Street-level part of the address.
-  core.String streetAddress;
+  core.String? streetAddress;
 
   AccountAddress();
 
@@ -8182,18 +7430,18 @@ class AccountAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (locality != null) 'locality': locality,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (region != null) 'region': region,
-        if (streetAddress != null) 'streetAddress': streetAddress,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (locality != null) 'locality': locality!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (region != null) 'region': region!,
+        if (streetAddress != null) 'streetAddress': streetAddress!,
       };
 }
 
 class AccountAdsLink {
   /// Customer ID of the Ads account.
-  core.String adsId;
+  core.String? adsId;
 
   /// Status of the link between this Merchant Center account and the Ads
   /// account.
@@ -8207,7 +7455,7 @@ class AccountAdsLink {
   /// `inactive` is equivalent to not submitting the link at all and will delete
   /// the link if it was active or cancel the link request if it was pending.
   /// Acceptable values are: - "`active`" - "`pending`"
-  core.String status;
+  core.String? status;
 
   AccountAdsLink();
 
@@ -8220,21 +7468,21 @@ class AccountAdsLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (adsId != null) 'adsId': adsId,
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (adsId != null) 'adsId': adsId!,
+        if (status != null) 'status': status!,
       };
 }
 
 class AccountBusinessInformation {
   /// The address of the business.
-  AccountAddress address;
+  AccountAddress? address;
 
   /// The customer service information of the business.
-  AccountCustomerService customerService;
+  AccountCustomerService? customerService;
 
   /// The phone number of the business.
-  core.String phoneNumber;
+  core.String? phoneNumber;
 
   AccountBusinessInformation();
 
@@ -8252,23 +7500,23 @@ class AccountBusinessInformation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!.toJson(),
         if (customerService != null)
-          'customerService': customerService.toJson(),
-        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+          'customerService': customerService!.toJson(),
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
       };
 }
 
 class AccountCustomerService {
   /// Customer service email.
-  core.String email;
+  core.String? email;
 
   /// Customer service phone number.
-  core.String phoneNumber;
+  core.String? phoneNumber;
 
   /// Customer service URL.
-  core.String url;
+  core.String? url;
 
   AccountCustomerService();
 
@@ -8284,10 +7532,10 @@ class AccountCustomerService {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -8296,19 +7544,19 @@ class AccountGoogleMyBusinessLink {
   ///
   /// If this is provided, then `gmbEmail` is ignored. The value of this field
   /// should match the `accountId` used by the GMB API.
-  core.String gmbAccountId;
+  core.String? gmbAccountId;
 
   /// The GMB email address of which a specific account within a GMB account.
   ///
   /// A sample account within a GMB account could be a business account with set
   /// of locations, managed under the GMB account.
-  core.String gmbEmail;
+  core.String? gmbEmail;
 
   /// Status of the link between this Merchant Center account and the GMB
   /// account.
   ///
   /// Acceptable values are: - "`active`" - "`pending`"
-  core.String status;
+  core.String? status;
 
   AccountGoogleMyBusinessLink();
 
@@ -8324,20 +7572,20 @@ class AccountGoogleMyBusinessLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gmbAccountId != null) 'gmbAccountId': gmbAccountId,
-        if (gmbEmail != null) 'gmbEmail': gmbEmail,
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gmbAccountId != null) 'gmbAccountId': gmbAccountId!,
+        if (gmbEmail != null) 'gmbEmail': gmbEmail!,
+        if (status != null) 'status': status!,
       };
 }
 
 class AccountIdentifier {
   /// The aggregator ID, set for aggregators and subaccounts (in that case, it
   /// represents the aggregator of the subaccount).
-  core.String aggregatorId;
+  core.String? aggregatorId;
 
   /// The merchant account ID, set for individual accounts and subaccounts.
-  core.String merchantId;
+  core.String? merchantId;
 
   AccountIdentifier();
 
@@ -8350,9 +7598,9 @@ class AccountIdentifier {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aggregatorId != null) 'aggregatorId': aggregatorId,
-        if (merchantId != null) 'merchantId': merchantId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aggregatorId != null) 'aggregatorId': aggregatorId!,
+        if (merchantId != null) 'merchantId': merchantId!,
       };
 }
 
@@ -8361,15 +7609,15 @@ class AccountLabel {
   /// The ID of account this label belongs to.
   ///
   /// Immutable.
-  core.String accountId;
+  core.String? accountId;
 
   /// The description of this label.
-  core.String description;
+  core.String? description;
 
   /// The ID of the label.
   ///
   /// Output only.
-  core.String labelId;
+  core.String? labelId;
 
   /// The type of this label.
   ///
@@ -8379,10 +7627,10 @@ class AccountLabel {
   /// - "MANUAL" : Indicates that the label was created manually.
   /// - "AUTOMATIC" : Indicates that the label was created automatically by CSS
   /// Center.
-  core.String labelType;
+  core.String? labelType;
 
   /// The display name of this label.
-  core.String name;
+  core.String? name;
 
   AccountLabel();
 
@@ -8404,12 +7652,12 @@ class AccountLabel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (description != null) 'description': description,
-        if (labelId != null) 'labelId': labelId,
-        if (labelType != null) 'labelType': labelType,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (description != null) 'description': description!,
+        if (labelId != null) 'labelId': labelId!,
+        if (labelType != null) 'labelType': labelType!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -8421,13 +7669,13 @@ class AccountReturnCarrier {
   /// The Google-provided unique carrier ID, used to update the resource.
   ///
   /// Output only. Immutable.
-  core.String carrierAccountId;
+  core.String? carrierAccountId;
 
   /// Name of the carrier account.
-  core.String carrierAccountName;
+  core.String? carrierAccountName;
 
   /// Number of the carrier account.
-  core.String carrierAccountNumber;
+  core.String? carrierAccountNumber;
 
   /// The carrier code enum.
   ///
@@ -8436,7 +7684,7 @@ class AccountReturnCarrier {
   /// - "CARRIER_CODE_UNSPECIFIED" : Carrier not specified
   /// - "FEDEX" : FedEx carrier
   /// - "UPS" : UPS carrier
-  core.String carrierCode;
+  core.String? carrierCode;
 
   AccountReturnCarrier();
 
@@ -8455,13 +7703,13 @@ class AccountReturnCarrier {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (carrierAccountId != null) 'carrierAccountId': carrierAccountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (carrierAccountId != null) 'carrierAccountId': carrierAccountId!,
         if (carrierAccountName != null)
-          'carrierAccountName': carrierAccountName,
+          'carrierAccountName': carrierAccountName!,
         if (carrierAccountNumber != null)
-          'carrierAccountNumber': carrierAccountNumber,
-        if (carrierCode != null) 'carrierCode': carrierCode,
+          'carrierAccountNumber': carrierAccountNumber!,
+        if (carrierCode != null) 'carrierCode': carrierCode!,
       };
 }
 
@@ -8469,23 +7717,23 @@ class AccountReturnCarrier {
 /// computed offline and not returned immediately at insertion time.
 class AccountStatus {
   /// The ID of the account for which the status is reported.
-  core.String accountId;
+  core.String? accountId;
 
   /// A list of account level issues.
-  core.List<AccountStatusAccountLevelIssue> accountLevelIssues;
+  core.List<AccountStatusAccountLevelIssue>? accountLevelIssues;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#accountStatus`"
-  core.String kind;
+  core.String? kind;
 
   /// List of product-related data by channel, destination, and country.
   ///
   /// Data in this field may be delayed by up to 30 minutes.
-  core.List<AccountStatusProducts> products;
+  core.List<AccountStatusProducts>? products;
 
   /// Whether the account's website is claimed or not.
-  core.bool websiteClaimed;
+  core.bool? websiteClaimed;
 
   AccountStatus();
 
@@ -8514,44 +7762,44 @@ class AccountStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (accountLevelIssues != null)
           'accountLevelIssues':
-              accountLevelIssues.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+              accountLevelIssues!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
         if (products != null)
-          'products': products.map((value) => value.toJson()).toList(),
-        if (websiteClaimed != null) 'websiteClaimed': websiteClaimed,
+          'products': products!.map((value) => value.toJson()).toList(),
+        if (websiteClaimed != null) 'websiteClaimed': websiteClaimed!,
       };
 }
 
 class AccountStatusAccountLevelIssue {
   /// Country for which this issue is reported.
-  core.String country;
+  core.String? country;
 
   /// The destination the issue applies to.
   ///
   /// If this field is empty then the issue applies to all available
   /// destinations.
-  core.String destination;
+  core.String? destination;
 
   /// Additional details about the issue.
-  core.String detail;
+  core.String? detail;
 
   /// The URL of a web page to help resolving this issue.
-  core.String documentation;
+  core.String? documentation;
 
   /// Issue identifier.
-  core.String id;
+  core.String? id;
 
   /// Severity of the issue.
   ///
   /// Acceptable values are: - "`critical`" - "`error`" - "`suggestion`"
-  core.String severity;
+  core.String? severity;
 
   /// Short description of the issue.
-  core.String title;
+  core.String? title;
 
   AccountStatusAccountLevelIssue();
 
@@ -8579,41 +7827,41 @@ class AccountStatusAccountLevelIssue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (destination != null) 'destination': destination,
-        if (detail != null) 'detail': detail,
-        if (documentation != null) 'documentation': documentation,
-        if (id != null) 'id': id,
-        if (severity != null) 'severity': severity,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (destination != null) 'destination': destination!,
+        if (detail != null) 'detail': detail!,
+        if (documentation != null) 'documentation': documentation!,
+        if (id != null) 'id': id!,
+        if (severity != null) 'severity': severity!,
+        if (title != null) 'title': title!,
       };
 }
 
 class AccountStatusItemLevelIssue {
   /// The attribute's name, if the issue is caused by a single attribute.
-  core.String attributeName;
+  core.String? attributeName;
 
   /// The error code of the issue.
-  core.String code;
+  core.String? code;
 
   /// A short issue description in English.
-  core.String description;
+  core.String? description;
 
   /// A detailed issue description in English.
-  core.String detail;
+  core.String? detail;
 
   /// The URL of a web page to help with resolving this issue.
-  core.String documentation;
+  core.String? documentation;
 
   /// Number of items with this issue.
-  core.String numItems;
+  core.String? numItems;
 
   /// Whether the issue can be resolved by the merchant.
-  core.String resolution;
+  core.String? resolution;
 
   /// How this issue affects serving of the offer.
-  core.String servability;
+  core.String? servability;
 
   AccountStatusItemLevelIssue();
 
@@ -8644,15 +7892,15 @@ class AccountStatusItemLevelIssue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributeName != null) 'attributeName': attributeName,
-        if (code != null) 'code': code,
-        if (description != null) 'description': description,
-        if (detail != null) 'detail': detail,
-        if (documentation != null) 'documentation': documentation,
-        if (numItems != null) 'numItems': numItems,
-        if (resolution != null) 'resolution': resolution,
-        if (servability != null) 'servability': servability,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributeName != null) 'attributeName': attributeName!,
+        if (code != null) 'code': code!,
+        if (description != null) 'description': description!,
+        if (detail != null) 'detail': detail!,
+        if (documentation != null) 'documentation': documentation!,
+        if (numItems != null) 'numItems': numItems!,
+        if (resolution != null) 'resolution': resolution!,
+        if (servability != null) 'servability': servability!,
       };
 }
 
@@ -8660,19 +7908,19 @@ class AccountStatusProducts {
   /// The channel the data applies to.
   ///
   /// Acceptable values are: - "`local`" - "`online`"
-  core.String channel;
+  core.String? channel;
 
   /// The country the data applies to.
-  core.String country;
+  core.String? country;
 
   /// The destination the data applies to.
-  core.String destination;
+  core.String? destination;
 
   /// List of item-level issues.
-  core.List<AccountStatusItemLevelIssue> itemLevelIssues;
+  core.List<AccountStatusItemLevelIssue>? itemLevelIssues;
 
   /// Aggregated product statistics.
-  AccountStatusStatistics statistics;
+  AccountStatusStatistics? statistics;
 
   AccountStatusProducts();
 
@@ -8699,29 +7947,29 @@ class AccountStatusProducts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channel != null) 'channel': channel,
-        if (country != null) 'country': country,
-        if (destination != null) 'destination': destination,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channel != null) 'channel': channel!,
+        if (country != null) 'country': country!,
+        if (destination != null) 'destination': destination!,
         if (itemLevelIssues != null)
           'itemLevelIssues':
-              itemLevelIssues.map((value) => value.toJson()).toList(),
-        if (statistics != null) 'statistics': statistics.toJson(),
+              itemLevelIssues!.map((value) => value.toJson()).toList(),
+        if (statistics != null) 'statistics': statistics!.toJson(),
       };
 }
 
 class AccountStatusStatistics {
   /// Number of active offers.
-  core.String active;
+  core.String? active;
 
   /// Number of disapproved offers.
-  core.String disapproved;
+  core.String? disapproved;
 
   /// Number of expiring offers.
-  core.String expiring;
+  core.String? expiring;
 
   /// Number of pending offers.
-  core.String pending;
+  core.String? pending;
 
   AccountStatusStatistics();
 
@@ -8740,11 +7988,11 @@ class AccountStatusStatistics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (active != null) 'active': active,
-        if (disapproved != null) 'disapproved': disapproved,
-        if (expiring != null) 'expiring': expiring,
-        if (pending != null) 'pending': pending,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (active != null) 'active': active!,
+        if (disapproved != null) 'disapproved': disapproved!,
+        if (expiring != null) 'expiring': expiring!,
+        if (pending != null) 'pending': pending!,
       };
 }
 
@@ -8755,18 +8003,18 @@ class AccountTax {
   /// The ID of the account to which these account tax settings belong.
   ///
   /// Required.
-  core.String accountId;
+  core.String? accountId;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#accountTax".
-  core.String kind;
+  core.String? kind;
 
   /// Tax rules.
   ///
   /// Updating the tax rules will enable US taxes (not reversible). Defining no
   /// rules is equivalent to not charging tax at all.
-  core.List<AccountTaxTaxRule> rules;
+  core.List<AccountTaxTaxRule>? rules;
 
   AccountTax();
 
@@ -8785,37 +8033,37 @@ class AccountTax {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (kind != null) 'kind': kind!,
         if (rules != null)
-          'rules': rules.map((value) => value.toJson()).toList(),
+          'rules': rules!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Tax calculation rule to apply in a state or province (USA only).
 class AccountTaxTaxRule {
   /// Country code in which tax is applicable.
-  core.String country;
+  core.String? country;
 
   /// State (or province) is which the tax is applicable, described by its
   /// location ID (also called criteria ID).
   ///
   /// Required.
-  core.String locationId;
+  core.String? locationId;
 
   /// Explicit tax rate in percent, represented as a floating point number
   /// without the percentage character.
   ///
   /// Must not be negative.
-  core.String ratePercent;
+  core.String? ratePercent;
 
   /// If true, shipping charges are also taxed.
-  core.bool shippingTaxed;
+  core.bool? shippingTaxed;
 
   /// Whether the tax rate is taken from a global tax table or specified
   /// explicitly.
-  core.bool useGlobalRate;
+  core.bool? useGlobalRate;
 
   AccountTaxTaxRule();
 
@@ -8837,30 +8085,30 @@ class AccountTaxTaxRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (locationId != null) 'locationId': locationId,
-        if (ratePercent != null) 'ratePercent': ratePercent,
-        if (shippingTaxed != null) 'shippingTaxed': shippingTaxed,
-        if (useGlobalRate != null) 'useGlobalRate': useGlobalRate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (locationId != null) 'locationId': locationId!,
+        if (ratePercent != null) 'ratePercent': ratePercent!,
+        if (shippingTaxed != null) 'shippingTaxed': shippingTaxed!,
+        if (useGlobalRate != null) 'useGlobalRate': useGlobalRate!,
       };
 }
 
 class AccountUser {
   /// Whether user is an admin.
-  core.bool admin;
+  core.bool? admin;
 
   /// User's email address.
-  core.String emailAddress;
+  core.String? emailAddress;
 
   /// Whether user is an order manager.
-  core.bool orderManager;
+  core.bool? orderManager;
 
   /// Whether user can access payment statements.
-  core.bool paymentsAnalyst;
+  core.bool? paymentsAnalyst;
 
   /// Whether user can manage payment settings.
-  core.bool paymentsManager;
+  core.bool? paymentsManager;
 
   AccountUser();
 
@@ -8882,18 +8130,18 @@ class AccountUser {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (admin != null) 'admin': admin,
-        if (emailAddress != null) 'emailAddress': emailAddress,
-        if (orderManager != null) 'orderManager': orderManager,
-        if (paymentsAnalyst != null) 'paymentsAnalyst': paymentsAnalyst,
-        if (paymentsManager != null) 'paymentsManager': paymentsManager,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (admin != null) 'admin': admin!,
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (orderManager != null) 'orderManager': orderManager!,
+        if (paymentsAnalyst != null) 'paymentsAnalyst': paymentsAnalyst!,
+        if (paymentsManager != null) 'paymentsManager': paymentsManager!,
       };
 }
 
 class AccountYouTubeChannelLink {
   /// Channel ID.
-  core.String channelId;
+  core.String? channelId;
 
   /// Status of the link between this Merchant Center account and the YouTube
   /// channel.
@@ -8907,7 +8155,7 @@ class AccountYouTubeChannelLink {
   /// deprecated status `inactive` is equivalent to not submitting the link at
   /// all and will delete the link if it was active or cancel the link request
   /// if it was pending.
-  core.String status;
+  core.String? status;
 
   AccountYouTubeChannelLink();
 
@@ -8920,9 +8168,9 @@ class AccountYouTubeChannelLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channelId != null) 'channelId': channelId,
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channelId != null) 'channelId': channelId!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -8932,12 +8180,12 @@ class AccountsAuthInfoResponse {
   /// - For an individual account: only the merchant ID is defined - For an
   /// aggregator: only the aggregator ID is defined - For a subaccount of an
   /// MCA: both the merchant ID and the aggregator ID are defined.
-  core.List<AccountIdentifier> accountIdentifiers;
+  core.List<AccountIdentifier>? accountIdentifiers;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#accountsAuthInfoResponse".
-  core.String kind;
+  core.String? kind;
 
   AccountsAuthInfoResponse();
 
@@ -8953,11 +8201,11 @@ class AccountsAuthInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accountIdentifiers != null)
           'accountIdentifiers':
-              accountIdentifiers.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+              accountIdentifiers!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -8965,7 +8213,7 @@ class AccountsClaimWebsiteResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#accountsClaimWebsiteResponse".
-  core.String kind;
+  core.String? kind;
 
   AccountsClaimWebsiteResponse();
 
@@ -8975,14 +8223,14 @@ class AccountsClaimWebsiteResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class AccountsCustomBatchRequest {
   /// The request entries to be processed in the batch.
-  core.List<AccountsCustomBatchRequestEntry> entries;
+  core.List<AccountsCustomBatchRequestEntry>? entries;
 
   AccountsCustomBatchRequest();
 
@@ -8996,9 +8244,9 @@ class AccountsCustomBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -9007,46 +8255,46 @@ class AccountsCustomBatchRequestEntry {
   /// The account to create or update.
   ///
   /// Only defined if the method is `insert` or `update`.
-  Account account;
+  Account? account;
 
   /// The ID of the targeted account.
   ///
   /// Only defined if the method is not `insert`.
-  core.String accountId;
+  core.String? accountId;
 
   /// An entry ID, unique within the batch request.
-  core.int batchId;
+  core.int? batchId;
 
   /// Whether the account should be deleted if the account has offers.
   ///
   /// Only applicable if the method is `delete`.
-  core.bool force;
+  core.bool? force;
 
   /// Label IDs for the 'updatelabels' request.
-  core.List<core.String> labelIds;
+  core.List<core.String>? labelIds;
 
   /// Details about the `link` request.
-  AccountsCustomBatchRequestEntryLinkRequest linkRequest;
+  AccountsCustomBatchRequestEntryLinkRequest? linkRequest;
 
   /// The ID of the managing account.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// The method of the batch entry.
   ///
   /// Acceptable values are: - "`claimWebsite`" - "`delete`" - "`get`" -
   /// "`insert`" - "`link`" - "`update`"
-  core.String method;
+  core.String? method;
 
   /// Only applicable if the method is `claimwebsite`.
   ///
   /// Indicates whether or not to take the claim from another account in case
   /// there is a conflict.
-  core.bool overwrite;
+  core.bool? overwrite;
 
   /// Controls which fields are visible.
   ///
   /// Only applicable if the method is 'get'.
-  core.String view;
+  core.String? view;
 
   AccountsCustomBatchRequestEntry();
 
@@ -9087,17 +8335,17 @@ class AccountsCustomBatchRequestEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (account != null) 'account': account.toJson(),
-        if (accountId != null) 'accountId': accountId,
-        if (batchId != null) 'batchId': batchId,
-        if (force != null) 'force': force,
-        if (labelIds != null) 'labelIds': labelIds,
-        if (linkRequest != null) 'linkRequest': linkRequest.toJson(),
-        if (merchantId != null) 'merchantId': merchantId,
-        if (method != null) 'method': method,
-        if (overwrite != null) 'overwrite': overwrite,
-        if (view != null) 'view': view,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (account != null) 'account': account!.toJson(),
+        if (accountId != null) 'accountId': accountId!,
+        if (batchId != null) 'batchId': batchId!,
+        if (force != null) 'force': force!,
+        if (labelIds != null) 'labelIds': labelIds!,
+        if (linkRequest != null) 'linkRequest': linkRequest!.toJson(),
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (method != null) 'method': method!,
+        if (overwrite != null) 'overwrite': overwrite!,
+        if (view != null) 'view': view!,
       };
 }
 
@@ -9106,21 +8354,21 @@ class AccountsCustomBatchRequestEntryLinkRequest {
   ///
   /// The `"request"` action is only available to select merchants. Acceptable
   /// values are: - "`approve`" - "`remove`" - "`request`"
-  core.String action;
+  core.String? action;
 
   /// Type of the link between the two accounts.
   ///
   /// Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`"
-  core.String linkType;
+  core.String? linkType;
 
   /// The ID of the linked account.
-  core.String linkedAccountId;
+  core.String? linkedAccountId;
 
   /// Provided services.
   ///
   /// Acceptable values are: - "`shoppingAdsProductManagement`" -
   /// "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`"
-  core.List<core.String> services;
+  core.List<core.String>? services;
 
   AccountsCustomBatchRequestEntryLinkRequest();
 
@@ -9141,22 +8389,22 @@ class AccountsCustomBatchRequestEntryLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action,
-        if (linkType != null) 'linkType': linkType,
-        if (linkedAccountId != null) 'linkedAccountId': linkedAccountId,
-        if (services != null) 'services': services,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!,
+        if (linkType != null) 'linkType': linkType!,
+        if (linkedAccountId != null) 'linkedAccountId': linkedAccountId!,
+        if (services != null) 'services': services!,
       };
 }
 
 class AccountsCustomBatchResponse {
   /// The result of the execution of the batch requests.
-  core.List<AccountsCustomBatchResponseEntry> entries;
+  core.List<AccountsCustomBatchResponseEntry>? entries;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#accountsCustomBatchResponse".
-  core.String kind;
+  core.String? kind;
 
   AccountsCustomBatchResponse();
 
@@ -9173,10 +8421,10 @@ class AccountsCustomBatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -9185,18 +8433,18 @@ class AccountsCustomBatchResponseEntry {
   /// The retrieved, created, or updated account.
   ///
   /// Not defined if the method was `delete`, `claimwebsite` or `link`.
-  Account account;
+  Account? account;
 
   /// The ID of the request entry this entry responds to.
-  core.int batchId;
+  core.int? batchId;
 
   /// A list of errors defined if and only if the request failed.
-  Errors errors;
+  Errors? errors;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#accountsCustomBatchResponseEntry`"
-  core.String kind;
+  core.String? kind;
 
   AccountsCustomBatchResponseEntry();
 
@@ -9217,11 +8465,11 @@ class AccountsCustomBatchResponseEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (account != null) 'account': account.toJson(),
-        if (batchId != null) 'batchId': batchId,
-        if (errors != null) 'errors': errors.toJson(),
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (account != null) 'account': account!.toJson(),
+        if (batchId != null) 'batchId': batchId!,
+        if (errors != null) 'errors': errors!.toJson(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -9230,20 +8478,20 @@ class AccountsLinkRequest {
   ///
   /// The `"request"` action is only available to select merchants. Acceptable
   /// values are: - "`approve`" - "`remove`" - "`request`"
-  core.String action;
+  core.String? action;
 
   /// Type of the link between the two accounts.
   ///
   /// Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`"
-  core.String linkType;
+  core.String? linkType;
 
   /// The ID of the linked account.
-  core.String linkedAccountId;
+  core.String? linkedAccountId;
 
   /// Acceptable values are: - "`shoppingAdsProductManagement`" -
   /// "`shoppingAdsOther`" - "`shoppingActionsProductManagement`" -
   /// "`shoppingActionsOrderManagement`" - "`shoppingActionsOther`"
-  core.List<core.String> services;
+  core.List<core.String>? services;
 
   AccountsLinkRequest();
 
@@ -9264,11 +8512,11 @@ class AccountsLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action,
-        if (linkType != null) 'linkType': linkType,
-        if (linkedAccountId != null) 'linkedAccountId': linkedAccountId,
-        if (services != null) 'services': services,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!,
+        if (linkType != null) 'linkType': linkType!,
+        if (linkedAccountId != null) 'linkedAccountId': linkedAccountId!,
+        if (services != null) 'services': services!,
       };
 }
 
@@ -9276,7 +8524,7 @@ class AccountsLinkResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#accountsLinkResponse".
-  core.String kind;
+  core.String? kind;
 
   AccountsLinkResponse();
 
@@ -9286,8 +8534,8 @@ class AccountsLinkResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -9295,13 +8543,13 @@ class AccountsListLinksResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#accountsListLinksResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The list of available links.
-  core.List<LinkedAccount> links;
+  core.List<LinkedAccount>? links;
 
   /// The token for the retrieval of the next page of links.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   AccountsListLinksResponse();
 
@@ -9320,11 +8568,11 @@ class AccountsListLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (links != null)
-          'links': links.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'links': links!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -9332,11 +8580,11 @@ class AccountsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#accountsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token for the retrieval of the next page of accounts.
-  core.String nextPageToken;
-  core.List<Account> resources;
+  core.String? nextPageToken;
+  core.List<Account>? resources;
 
   AccountsListResponse();
 
@@ -9355,17 +8603,17 @@ class AccountsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
 class AccountsUpdateLabelsRequest {
   /// The IDs of labels that should be assigned to the account.
-  core.List<core.String> labelIds;
+  core.List<core.String>? labelIds;
 
   AccountsUpdateLabelsRequest();
 
@@ -9377,8 +8625,8 @@ class AccountsUpdateLabelsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labelIds != null) 'labelIds': labelIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labelIds != null) 'labelIds': labelIds!,
       };
 }
 
@@ -9386,7 +8634,7 @@ class AccountsUpdateLabelsResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#accountsUpdateLabelsResponse".
-  core.String kind;
+  core.String? kind;
 
   AccountsUpdateLabelsResponse();
 
@@ -9396,14 +8644,14 @@ class AccountsUpdateLabelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class AccountstatusesCustomBatchRequest {
   /// The request entries to be processed in the batch.
-  core.List<AccountstatusesCustomBatchRequestEntry> entries;
+  core.List<AccountstatusesCustomBatchRequestEntry>? entries;
 
   AccountstatusesCustomBatchRequest();
 
@@ -9417,31 +8665,31 @@ class AccountstatusesCustomBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A batch entry encoding a single non-batch accountstatuses request.
 class AccountstatusesCustomBatchRequestEntry {
   /// The ID of the (sub-)account whose status to get.
-  core.String accountId;
+  core.String? accountId;
 
   /// An entry ID, unique within the batch request.
-  core.int batchId;
+  core.int? batchId;
 
   /// If set, only issues for the specified destinations are returned, otherwise
   /// only issues for the Shopping destination.
-  core.List<core.String> destinations;
+  core.List<core.String>? destinations;
 
   /// The ID of the managing account.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// The method of the batch entry.
   ///
   /// Acceptable values are: - "`get`"
-  core.String method;
+  core.String? method;
 
   AccountstatusesCustomBatchRequestEntry();
 
@@ -9465,23 +8713,23 @@ class AccountstatusesCustomBatchRequestEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (batchId != null) 'batchId': batchId,
-        if (destinations != null) 'destinations': destinations,
-        if (merchantId != null) 'merchantId': merchantId,
-        if (method != null) 'method': method,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (batchId != null) 'batchId': batchId!,
+        if (destinations != null) 'destinations': destinations!,
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (method != null) 'method': method!,
       };
 }
 
 class AccountstatusesCustomBatchResponse {
   /// The result of the execution of the batch requests.
-  core.List<AccountstatusesCustomBatchResponseEntry> entries;
+  core.List<AccountstatusesCustomBatchResponseEntry>? entries;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#accountstatusesCustomBatchResponse".
-  core.String kind;
+  core.String? kind;
 
   AccountstatusesCustomBatchResponse();
 
@@ -9498,10 +8746,10 @@ class AccountstatusesCustomBatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -9510,13 +8758,13 @@ class AccountstatusesCustomBatchResponseEntry {
   /// The requested account status.
   ///
   /// Defined if and only if the request was successful.
-  AccountStatus accountStatus;
+  AccountStatus? accountStatus;
 
   /// The ID of the request entry this entry responds to.
-  core.int batchId;
+  core.int? batchId;
 
   /// A list of errors defined if and only if the request failed.
-  Errors errors;
+  Errors? errors;
 
   AccountstatusesCustomBatchResponseEntry();
 
@@ -9534,10 +8782,10 @@ class AccountstatusesCustomBatchResponseEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountStatus != null) 'accountStatus': accountStatus.toJson(),
-        if (batchId != null) 'batchId': batchId,
-        if (errors != null) 'errors': errors.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountStatus != null) 'accountStatus': accountStatus!.toJson(),
+        if (batchId != null) 'batchId': batchId!,
+        if (errors != null) 'errors': errors!.toJson(),
       };
 }
 
@@ -9545,11 +8793,11 @@ class AccountstatusesListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#accountstatusesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token for the retrieval of the next page of account statuses.
-  core.String nextPageToken;
-  core.List<AccountStatus> resources;
+  core.String? nextPageToken;
+  core.List<AccountStatus>? resources;
 
   AccountstatusesListResponse();
 
@@ -9568,17 +8816,17 @@ class AccountstatusesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
 class AccounttaxCustomBatchRequest {
   /// The request entries to be processed in the batch.
-  core.List<AccounttaxCustomBatchRequestEntry> entries;
+  core.List<AccounttaxCustomBatchRequestEntry>? entries;
 
   AccounttaxCustomBatchRequest();
 
@@ -9592,32 +8840,32 @@ class AccounttaxCustomBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A batch entry encoding a single non-batch accounttax request.
 class AccounttaxCustomBatchRequestEntry {
   /// The ID of the account for which to get/update account tax settings.
-  core.String accountId;
+  core.String? accountId;
 
   /// The account tax settings to update.
   ///
   /// Only defined if the method is `update`.
-  AccountTax accountTax;
+  AccountTax? accountTax;
 
   /// An entry ID, unique within the batch request.
-  core.int batchId;
+  core.int? batchId;
 
   /// The ID of the managing account.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// The method of the batch entry.
   ///
   /// Acceptable values are: - "`get`" - "`update`"
-  core.String method;
+  core.String? method;
 
   AccounttaxCustomBatchRequestEntry();
 
@@ -9640,23 +8888,23 @@ class AccounttaxCustomBatchRequestEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (accountTax != null) 'accountTax': accountTax.toJson(),
-        if (batchId != null) 'batchId': batchId,
-        if (merchantId != null) 'merchantId': merchantId,
-        if (method != null) 'method': method,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (accountTax != null) 'accountTax': accountTax!.toJson(),
+        if (batchId != null) 'batchId': batchId!,
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (method != null) 'method': method!,
       };
 }
 
 class AccounttaxCustomBatchResponse {
   /// The result of the execution of the batch requests.
-  core.List<AccounttaxCustomBatchResponseEntry> entries;
+  core.List<AccounttaxCustomBatchResponseEntry>? entries;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#accounttaxCustomBatchResponse".
-  core.String kind;
+  core.String? kind;
 
   AccounttaxCustomBatchResponse();
 
@@ -9673,28 +8921,28 @@ class AccounttaxCustomBatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// A batch entry encoding a single non-batch accounttax response.
 class AccounttaxCustomBatchResponseEntry {
   /// The retrieved or updated account tax settings.
-  AccountTax accountTax;
+  AccountTax? accountTax;
 
   /// The ID of the request entry this entry responds to.
-  core.int batchId;
+  core.int? batchId;
 
   /// A list of errors defined if and only if the request failed.
-  Errors errors;
+  Errors? errors;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#accounttaxCustomBatchResponseEntry`"
-  core.String kind;
+  core.String? kind;
 
   AccounttaxCustomBatchResponseEntry();
 
@@ -9715,11 +8963,11 @@ class AccounttaxCustomBatchResponseEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountTax != null) 'accountTax': accountTax.toJson(),
-        if (batchId != null) 'batchId': batchId,
-        if (errors != null) 'errors': errors.toJson(),
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountTax != null) 'accountTax': accountTax!.toJson(),
+        if (batchId != null) 'batchId': batchId!,
+        if (errors != null) 'errors': errors!.toJson(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -9727,11 +8975,11 @@ class AccounttaxListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#accounttaxListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token for the retrieval of the next page of account tax settings.
-  core.String nextPageToken;
-  core.List<AccountTax> resources;
+  core.String? nextPageToken;
+  core.List<AccountTax>? resources;
 
   AccounttaxListResponse();
 
@@ -9750,11 +8998,11 @@ class AccounttaxListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -9762,12 +9010,12 @@ class Amount {
   /// The pre-tax or post-tax price depending on the location of the order.
   ///
   /// Required.
-  Price priceAmount;
+  Price? priceAmount;
 
   /// Tax value.
   ///
   /// Required.
-  Price taxAmount;
+  Price? taxAmount;
 
   Amount();
 
@@ -9782,9 +9030,9 @@ class Amount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (priceAmount != null) 'priceAmount': priceAmount.toJson(),
-        if (taxAmount != null) 'taxAmount': taxAmount.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (priceAmount != null) 'priceAmount': priceAmount!.toJson(),
+        if (taxAmount != null) 'taxAmount': taxAmount!.toJson(),
       };
 }
 
@@ -9792,7 +9040,7 @@ class BusinessDayConfig {
   /// Regular business days.
   ///
   /// May not be empty.
-  core.List<core.String> businessDays;
+  core.List<core.String>? businessDays;
 
   BusinessDayConfig();
 
@@ -9804,18 +9052,18 @@ class BusinessDayConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (businessDays != null) 'businessDays': businessDays,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (businessDays != null) 'businessDays': businessDays!,
       };
 }
 
 /// Response message for the GetProgramStatus method.
 class BuyOnGoogleProgramStatus {
   /// The customer service pending email.
-  core.String customerServicePendingEmail;
+  core.String? customerServicePendingEmail;
 
   /// The customer service verified email.
-  core.String customerServiceVerifiedEmail;
+  core.String? customerServiceVerifiedEmail;
 
   /// The current participation stage for the program.
   /// Possible string values are:
@@ -9830,7 +9078,7 @@ class BuyOnGoogleProgramStatus {
   /// - "ACTIVE" : Merchant's program participation is active for a specific
   /// region code.
   /// - "PAUSED" : Participation has been paused.
-  core.String participationStage;
+  core.String? participationStage;
 
   BuyOnGoogleProgramStatus();
 
@@ -9848,13 +9096,13 @@ class BuyOnGoogleProgramStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customerServicePendingEmail != null)
-          'customerServicePendingEmail': customerServicePendingEmail,
+          'customerServicePendingEmail': customerServicePendingEmail!,
         if (customerServiceVerifiedEmail != null)
-          'customerServiceVerifiedEmail': customerServiceVerifiedEmail,
+          'customerServiceVerifiedEmail': customerServiceVerifiedEmail!,
         if (participationStage != null)
-          'participationStage': participationStage,
+          'participationStage': participationStage!,
       };
 }
 
@@ -9863,36 +9111,36 @@ class CarrierRate {
   ///
   /// The list of supported carriers can be retrieved via the
   /// `getSupportedCarriers` method. Required.
-  core.String carrierName;
+  core.String? carrierName;
 
   /// Carrier service, such as `"ground"` or `"2 days"`.
   ///
   /// The list of supported services for a carrier can be retrieved via the
   /// `getSupportedCarriers` method. Required.
-  core.String carrierService;
+  core.String? carrierService;
 
   /// Additive shipping rate modifier.
   ///
   /// Can be negative. For example `{ "value": "1", "currency" : "USD" }` adds
   /// $1 to the rate, `{ "value": "-3", "currency" : "USD" }` removes $3 from
   /// the rate. Optional.
-  Price flatAdjustment;
+  Price? flatAdjustment;
 
   /// Name of the carrier rate.
   ///
   /// Must be unique per rate group. Required.
-  core.String name;
+  core.String? name;
 
   /// Shipping origin for this carrier rate.
   ///
   /// Required.
-  core.String originPostalCode;
+  core.String? originPostalCode;
 
   /// Multiplicative shipping rate modifier as a number in decimal notation.
   ///
   /// Can be negative. For example `"5.4"` increases the rate by 5.4%, `"-3"`
   /// decreases the rate by 3%. Optional.
-  core.String percentageAdjustment;
+  core.String? percentageAdjustment;
 
   CarrierRate();
 
@@ -9918,14 +9166,14 @@ class CarrierRate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (carrierName != null) 'carrierName': carrierName,
-        if (carrierService != null) 'carrierService': carrierService,
-        if (flatAdjustment != null) 'flatAdjustment': flatAdjustment.toJson(),
-        if (name != null) 'name': name,
-        if (originPostalCode != null) 'originPostalCode': originPostalCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (carrierName != null) 'carrierName': carrierName!,
+        if (carrierService != null) 'carrierService': carrierService!,
+        if (flatAdjustment != null) 'flatAdjustment': flatAdjustment!.toJson(),
+        if (name != null) 'name': name!,
+        if (originPostalCode != null) 'originPostalCode': originPostalCode!,
         if (percentageAdjustment != null)
-          'percentageAdjustment': percentageAdjustment,
+          'percentageAdjustment': percentageAdjustment!,
       };
 }
 
@@ -9933,17 +9181,17 @@ class CarriersCarrier {
   /// The CLDR country code of the carrier (e.g., "US").
   ///
   /// Always present.
-  core.String country;
+  core.String? country;
 
   /// The name of the carrier (e.g., `"UPS"`).
   ///
   /// Always present.
-  core.String name;
+  core.String? name;
 
   /// A list of supported services (e.g., `"ground"`) for that carrier.
   ///
   /// Contains at least one service.
-  core.List<core.String> services;
+  core.List<core.String>? services;
 
   CarriersCarrier();
 
@@ -9961,10 +9209,10 @@ class CarriersCarrier {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (name != null) 'name': name,
-        if (services != null) 'services': services,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (name != null) 'name': name!,
+        if (services != null) 'services': services!,
       };
 }
 
@@ -9974,23 +9222,23 @@ class Collection {
   /// reporting in Shopping campaigns.
   ///
   /// [Custom label](https://support.google.com/merchants/answer/9674217)
-  core.String customLabel0;
+  core.String? customLabel0;
 
   /// Label that you assign to a collection to help organize bidding and
   /// reporting in Shopping campaigns.
-  core.String customLabel1;
+  core.String? customLabel1;
 
   /// Label that you assign to a collection to help organize bidding and
   /// reporting in Shopping campaigns.
-  core.String customLabel2;
+  core.String? customLabel2;
 
   /// Label that you assign to a collection to help organize bidding and
   /// reporting in Shopping campaigns.
-  core.String customLabel3;
+  core.String? customLabel3;
 
   /// Label that you assign to a collection to help organize bidding and
   /// reporting in Shopping campaigns.
-  core.String customLabel4;
+  core.String? customLabel4;
 
   /// This identifies one or more products associated with the collection.
   ///
@@ -9999,12 +9247,12 @@ class Collection {
   /// 10 featuredProduct (for Shoppable Images only) with ID and X and Y
   /// coordinates.
   /// [featured_product attribute](https://support.google.com/merchants/answer/9703736)
-  core.List<CollectionFeaturedProduct> featuredProduct;
+  core.List<CollectionFeaturedProduct>? featuredProduct;
 
   /// Your collection's name.
   ///
   /// [headline attribute](https://support.google.com/merchants/answer/9673580)
-  core.List<core.String> headline;
+  core.List<core.String>? headline;
 
   /// The REST ID of the collection.
   ///
@@ -10014,33 +9262,33 @@ class Collection {
   /// [id attribute](https://support.google.com/merchants/answer/9649290)
   ///
   /// Required.
-  core.String id;
+  core.String? id;
 
   /// The URL of a collection’s image.
   ///
   /// [image_link attribute](https://support.google.com/merchants/answer/9703236)
-  core.List<core.String> imageLink;
+  core.List<core.String>? imageLink;
 
   /// The language of a collection and the language of any featured products
   /// linked to the collection.
   ///
   /// [language attribute](https://support.google.com/merchants/answer/9673781)
-  core.String language;
+  core.String? language;
 
   /// A collection’s landing page.
   ///
   /// URL directly linking to your collection's page on your website.
   /// [link attribute](https://support.google.com/merchants/answer/9673983)
-  core.String link;
+  core.String? link;
 
   /// A collection’s mobile-optimized landing page when you have a different URL
   /// for mobile and desktop traffic.
   ///
   /// [mobile_link attribute](https://support.google.com/merchants/answer/9646123)
-  core.String mobileLink;
+  core.String? mobileLink;
 
   /// [product_country attribute](https://support.google.com/merchants/answer/9674155)
-  core.String productCountry;
+  core.String? productCountry;
 
   Collection();
 
@@ -10094,22 +9342,22 @@ class Collection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customLabel0 != null) 'customLabel0': customLabel0,
-        if (customLabel1 != null) 'customLabel1': customLabel1,
-        if (customLabel2 != null) 'customLabel2': customLabel2,
-        if (customLabel3 != null) 'customLabel3': customLabel3,
-        if (customLabel4 != null) 'customLabel4': customLabel4,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customLabel0 != null) 'customLabel0': customLabel0!,
+        if (customLabel1 != null) 'customLabel1': customLabel1!,
+        if (customLabel2 != null) 'customLabel2': customLabel2!,
+        if (customLabel3 != null) 'customLabel3': customLabel3!,
+        if (customLabel4 != null) 'customLabel4': customLabel4!,
         if (featuredProduct != null)
           'featuredProduct':
-              featuredProduct.map((value) => value.toJson()).toList(),
-        if (headline != null) 'headline': headline,
-        if (id != null) 'id': id,
-        if (imageLink != null) 'imageLink': imageLink,
-        if (language != null) 'language': language,
-        if (link != null) 'link': link,
-        if (mobileLink != null) 'mobileLink': mobileLink,
-        if (productCountry != null) 'productCountry': productCountry,
+              featuredProduct!.map((value) => value.toJson()).toList(),
+        if (headline != null) 'headline': headline!,
+        if (id != null) 'id': id!,
+        if (imageLink != null) 'imageLink': imageLink!,
+        if (language != null) 'language': language!,
+        if (link != null) 'link': link!,
+        if (mobileLink != null) 'mobileLink': mobileLink!,
+        if (productCountry != null) 'productCountry': productCountry!,
       };
 }
 
@@ -10118,17 +9366,17 @@ class Collection {
 /// [FeaturedProduct](https://support.google.com/merchants/answer/9703736)
 class CollectionFeaturedProduct {
   /// The unique identifier for the product item.
-  core.String offerId;
+  core.String? offerId;
 
   /// X-coordinate of the product callout on the Shoppable Image.
   ///
   /// Required.
-  core.double x;
+  core.double? x;
 
   /// Y-coordinate of the product callout on the Shoppable Image.
   ///
   /// Required.
-  core.double y;
+  core.double? y;
 
   CollectionFeaturedProduct();
 
@@ -10144,35 +9392,35 @@ class CollectionFeaturedProduct {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (offerId != null) 'offerId': offerId,
-        if (x != null) 'x': x,
-        if (y != null) 'y': y,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (offerId != null) 'offerId': offerId!,
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
       };
 }
 
 /// The collectionstatus message.
 class CollectionStatus {
   /// A list of all issues associated with the collection.
-  core.List<CollectionStatusItemLevelIssue> collectionLevelIssuses;
+  core.List<CollectionStatusItemLevelIssue>? collectionLevelIssuses;
 
   /// Date on which the collection has been created in
   /// [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and
   /// offset, e.g. "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
-  core.String creationDate;
+  core.String? creationDate;
 
   /// The intended destinations for the collection.
-  core.List<CollectionStatusDestinationStatus> destinationStatuses;
+  core.List<CollectionStatusDestinationStatus>? destinationStatuses;
 
   /// The ID of the collection for which status is reported.
   ///
   /// Required.
-  core.String id;
+  core.String? id;
 
   /// Date on which the collection has been last updated in
   /// [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and
   /// offset, e.g. "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
-  core.String lastUpdateDate;
+  core.String? lastUpdateDate;
 
   CollectionStatus();
 
@@ -10202,26 +9450,26 @@ class CollectionStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (collectionLevelIssuses != null)
           'collectionLevelIssuses':
-              collectionLevelIssuses.map((value) => value.toJson()).toList(),
-        if (creationDate != null) 'creationDate': creationDate,
+              collectionLevelIssuses!.map((value) => value.toJson()).toList(),
+        if (creationDate != null) 'creationDate': creationDate!,
         if (destinationStatuses != null)
           'destinationStatuses':
-              destinationStatuses.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id,
-        if (lastUpdateDate != null) 'lastUpdateDate': lastUpdateDate,
+              destinationStatuses!.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id!,
+        if (lastUpdateDate != null) 'lastUpdateDate': lastUpdateDate!,
       };
 }
 
 /// Destination status message.
 class CollectionStatusDestinationStatus {
   /// The name of the destination
-  core.String destination;
+  core.String? destination;
 
   /// The status for the specified destination.
-  core.String status;
+  core.String? status;
 
   CollectionStatusDestinationStatus();
 
@@ -10234,37 +9482,37 @@ class CollectionStatusDestinationStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destination != null) 'destination': destination,
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destination != null) 'destination': destination!,
+        if (status != null) 'status': status!,
       };
 }
 
 /// Issue associated with the collection.
 class CollectionStatusItemLevelIssue {
   /// The attribute's name, if the issue is caused by a single attribute.
-  core.String attributeName;
+  core.String? attributeName;
 
   /// The error code of the issue.
-  core.String code;
+  core.String? code;
 
   /// A short issue description in English.
-  core.String description;
+  core.String? description;
 
   /// The destination the issue applies to.
-  core.String destination;
+  core.String? destination;
 
   /// A detailed issue description in English.
-  core.String detail;
+  core.String? detail;
 
   /// The URL of a web page to help with resolving this issue.
-  core.String documentation;
+  core.String? documentation;
 
   /// Whether the issue can be resolved by the merchant.
-  core.String resolution;
+  core.String? resolution;
 
   /// How this issue affects the serving of the collection.
-  core.String servability;
+  core.String? servability;
 
   CollectionStatusItemLevelIssue();
 
@@ -10295,15 +9543,15 @@ class CollectionStatusItemLevelIssue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributeName != null) 'attributeName': attributeName,
-        if (code != null) 'code': code,
-        if (description != null) 'description': description,
-        if (destination != null) 'destination': destination,
-        if (detail != null) 'detail': detail,
-        if (documentation != null) 'documentation': documentation,
-        if (resolution != null) 'resolution': resolution,
-        if (servability != null) 'servability': servability,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributeName != null) 'attributeName': attributeName!,
+        if (code != null) 'code': code!,
+        if (description != null) 'description': description!,
+        if (destination != null) 'destination': destination!,
+        if (detail != null) 'detail': detail!,
+        if (documentation != null) 'documentation': documentation!,
+        if (resolution != null) 'resolution': resolution!,
+        if (servability != null) 'servability': servability!,
       };
 }
 
@@ -10312,34 +9560,34 @@ class Css {
   /// The CSS domain ID.
   ///
   /// Output only. Immutable.
-  core.String cssDomainId;
+  core.String? cssDomainId;
 
   /// The ID of the CSS group this CSS domain is affiliated with.
   ///
   /// Only populated for CSS group users.
   ///
   /// Output only. Immutable.
-  core.String cssGroupId;
+  core.String? cssGroupId;
 
   /// The CSS domain's display name, used when space is constrained.
   ///
   /// Output only. Immutable.
-  core.String displayName;
+  core.String? displayName;
 
   /// The CSS domain's full name.
   ///
   /// Output only. Immutable.
-  core.String fullName;
+  core.String? fullName;
 
   /// The CSS domain's homepage.
   ///
   /// Output only. Immutable.
-  core.String homepageUri;
+  core.String? homepageUri;
 
   /// A list of label IDs that are assigned to this CSS domain by its CSS group.
   ///
   /// Only populated for CSS group users.
-  core.List<core.String> labelIds;
+  core.List<core.String>? labelIds;
 
   Css();
 
@@ -10366,13 +9614,13 @@ class Css {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cssDomainId != null) 'cssDomainId': cssDomainId,
-        if (cssGroupId != null) 'cssGroupId': cssGroupId,
-        if (displayName != null) 'displayName': displayName,
-        if (fullName != null) 'fullName': fullName,
-        if (homepageUri != null) 'homepageUri': homepageUri,
-        if (labelIds != null) 'labelIds': labelIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cssDomainId != null) 'cssDomainId': cssDomainId!,
+        if (cssGroupId != null) 'cssGroupId': cssGroupId!,
+        if (displayName != null) 'displayName': displayName!,
+        if (fullName != null) 'fullName': fullName!,
+        if (homepageUri != null) 'homepageUri': homepageUri!,
+        if (labelIds != null) 'labelIds': labelIds!,
       };
 }
 
@@ -10380,15 +9628,15 @@ class CustomAttribute {
   /// Subattributes within this attribute group.
   ///
   /// Exactly one of value or groupValues must be provided.
-  core.List<CustomAttribute> groupValues;
+  core.List<CustomAttribute>? groupValues;
 
   /// The name of the attribute.
   ///
   /// Underscores will be replaced by spaces upon insertion.
-  core.String name;
+  core.String? name;
 
   /// The value of the attribute.
-  core.String value;
+  core.String? value;
 
   CustomAttribute();
 
@@ -10407,17 +9655,17 @@ class CustomAttribute {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (groupValues != null)
-          'groupValues': groupValues.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+          'groupValues': groupValues!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
 class CustomerReturnReason {
   /// Description of the reason.
-  core.String description;
+  core.String? description;
 
   /// Code of the return reason.
   ///
@@ -10426,7 +9674,7 @@ class CustomerReturnReason {
   /// "`expiredItem`" - "`incorrectItemReceived`" - "`noLongerNeeded`" -
   /// "`notSpecified`" - "`orderedWrongItem`" - "`other`" -
   /// "`qualityNotExpected`" - "`receivedTooLate`" - "`undeliverable`"
-  core.String reasonCode;
+  core.String? reasonCode;
 
   CustomerReturnReason();
 
@@ -10439,9 +9687,9 @@ class CustomerReturnReason {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (reasonCode != null) 'reasonCode': reasonCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (reasonCode != null) 'reasonCode': reasonCode!,
       };
 }
 
@@ -10450,19 +9698,19 @@ class CutoffTime {
   /// processed in the same day.
   ///
   /// Required.
-  core.int hour;
+  core.int? hour;
 
   /// Minute of the cutoff time until which an order has to be placed to be
   /// processed in the same day.
   ///
   /// Required.
-  core.int minute;
+  core.int? minute;
 
   /// Timezone identifier for the cutoff time.
   ///
   /// A list of identifiers can be found in the AdWords API documentation. E.g.
   /// "Europe/Zurich". Required.
-  core.String timezone;
+  core.String? timezone;
 
   CutoffTime();
 
@@ -10478,10 +9726,10 @@ class CutoffTime {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hour != null) 'hour': hour,
-        if (minute != null) 'minute': minute,
-        if (timezone != null) 'timezone': timezone,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hour != null) 'hour': hour!,
+        if (minute != null) 'minute': minute!,
+        if (timezone != null) 'timezone': timezone!,
       };
 }
 
@@ -10489,7 +9737,7 @@ class CutoffTime {
 class Datafeed {
   /// The two-letter ISO 639-1 language in which the attributes are defined in
   /// the data feed.
-  core.String attributeLanguage;
+  core.String? attributeLanguage;
 
   /// The type of data feed.
   ///
@@ -10498,38 +9746,38 @@ class Datafeed {
   /// "`product inventory`" - "`products`"
   ///
   /// Required.
-  core.String contentType;
+  core.String? contentType;
 
   /// Fetch schedule for the feed file.
-  DatafeedFetchSchedule fetchSchedule;
+  DatafeedFetchSchedule? fetchSchedule;
 
   /// The filename of the feed.
   ///
   /// All feeds must have a unique file name.
   ///
   /// Required.
-  core.String fileName;
+  core.String? fileName;
 
   /// Format of the feed file.
-  DatafeedFormat format;
+  DatafeedFormat? format;
 
   /// Required for update.
   ///
   /// The ID of the data feed.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#datafeed`"
-  core.String kind;
+  core.String? kind;
 
   /// Required for insert.
   ///
   /// A descriptive name of the data feed.
-  core.String name;
+  core.String? name;
 
   /// The targets this feed should apply to (country, language, destinations).
-  core.List<DatafeedTarget> targets;
+  core.List<DatafeedTarget>? targets;
 
   Datafeed();
 
@@ -10568,17 +9816,17 @@ class Datafeed {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributeLanguage != null) 'attributeLanguage': attributeLanguage,
-        if (contentType != null) 'contentType': contentType,
-        if (fetchSchedule != null) 'fetchSchedule': fetchSchedule.toJson(),
-        if (fileName != null) 'fileName': fileName,
-        if (format != null) 'format': format.toJson(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributeLanguage != null) 'attributeLanguage': attributeLanguage!,
+        if (contentType != null) 'contentType': contentType!,
+        if (fetchSchedule != null) 'fetchSchedule': fetchSchedule!.toJson(),
+        if (fileName != null) 'fileName': fileName!,
+        if (format != null) 'format': format!.toJson(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
         if (targets != null)
-          'targets': targets.map((value) => value.toJson()).toList(),
+          'targets': targets!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -10589,42 +9837,42 @@ class Datafeed {
 /// schedule, only hour is required.
 class DatafeedFetchSchedule {
   /// The day of the month the feed file should be fetched (1-31).
-  core.int dayOfMonth;
+  core.int? dayOfMonth;
 
   /// The URL where the feed file can be fetched.
   ///
   /// Google Merchant Center will support automatic scheduled uploads using the
   /// HTTP, HTTPS, FTP, or SFTP protocols, so the value will need to be a valid
   /// link using one of those four protocols.
-  core.String fetchUrl;
+  core.String? fetchUrl;
 
   /// The hour of the day the feed file should be fetched (0-23).
-  core.int hour;
+  core.int? hour;
 
   /// The minute of the hour the feed file should be fetched (0-59).
   ///
   /// Read-only.
-  core.int minuteOfHour;
+  core.int? minuteOfHour;
 
   /// An optional password for fetch_url.
-  core.String password;
+  core.String? password;
 
   /// Whether the scheduled fetch is paused or not.
-  core.bool paused;
+  core.bool? paused;
 
   /// Time zone used for schedule.
   ///
   /// UTC by default. E.g., "America/Los_Angeles".
-  core.String timeZone;
+  core.String? timeZone;
 
   /// An optional user name for fetch_url.
-  core.String username;
+  core.String? username;
 
   /// The day of the week the feed file should be fetched.
   ///
   /// Acceptable values are: - "`monday`" - "`tuesday`" - "`wednesday`" -
   /// "`thursday`" - "`friday`" - "`saturday`" - "`sunday`"
-  core.String weekday;
+  core.String? weekday;
 
   DatafeedFetchSchedule();
 
@@ -10658,16 +9906,16 @@ class DatafeedFetchSchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dayOfMonth != null) 'dayOfMonth': dayOfMonth,
-        if (fetchUrl != null) 'fetchUrl': fetchUrl,
-        if (hour != null) 'hour': hour,
-        if (minuteOfHour != null) 'minuteOfHour': minuteOfHour,
-        if (password != null) 'password': password,
-        if (paused != null) 'paused': paused,
-        if (timeZone != null) 'timeZone': timeZone,
-        if (username != null) 'username': username,
-        if (weekday != null) 'weekday': weekday,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dayOfMonth != null) 'dayOfMonth': dayOfMonth!,
+        if (fetchUrl != null) 'fetchUrl': fetchUrl!,
+        if (hour != null) 'hour': hour!,
+        if (minuteOfHour != null) 'minuteOfHour': minuteOfHour!,
+        if (password != null) 'password': password!,
+        if (paused != null) 'paused': paused!,
+        if (timeZone != null) 'timeZone': timeZone!,
+        if (username != null) 'username': username!,
+        if (weekday != null) 'weekday': weekday!,
       };
 }
 
@@ -10677,20 +9925,20 @@ class DatafeedFormat {
   ///
   /// If not specified, the delimiter will be auto-detected. Ignored for non-DSV
   /// data feeds. Acceptable values are: - "`pipe`" - "`tab`" - "`tilde`"
-  core.String columnDelimiter;
+  core.String? columnDelimiter;
 
   /// Character encoding scheme of the data feed.
   ///
   /// If not specified, the encoding will be auto-detected. Acceptable values
   /// are: - "`latin-1`" - "`utf-16be`" - "`utf-16le`" - "`utf-8`" -
   /// "`windows-1252`"
-  core.String fileEncoding;
+  core.String? fileEncoding;
 
   /// Specifies how double quotes are interpreted.
   ///
   /// If not specified, the mode will be auto-detected. Ignored for non-DSV data
   /// feeds. Acceptable values are: - "`normal character`" - "`value quoting`"
-  core.String quotingMode;
+  core.String? quotingMode;
 
   DatafeedFormat();
 
@@ -10706,10 +9954,10 @@ class DatafeedFormat {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnDelimiter != null) 'columnDelimiter': columnDelimiter,
-        if (fileEncoding != null) 'fileEncoding': fileEncoding,
-        if (quotingMode != null) 'quotingMode': quotingMode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnDelimiter != null) 'columnDelimiter': columnDelimiter!,
+        if (fileEncoding != null) 'fileEncoding': fileEncoding!,
+        if (quotingMode != null) 'quotingMode': quotingMode!,
       };
 }
 
@@ -10718,30 +9966,30 @@ class DatafeedFormat {
 class DatafeedStatus {
   /// The country for which the status is reported, represented as a CLDR
   /// territory code.
-  core.String country;
+  core.String? country;
 
   /// The ID of the feed for which the status is reported.
-  core.String datafeedId;
+  core.String? datafeedId;
 
   /// The list of errors occurring in the feed.
-  core.List<DatafeedStatusError> errors;
+  core.List<DatafeedStatusError>? errors;
 
   /// The number of items in the feed that were processed.
-  core.String itemsTotal;
+  core.String? itemsTotal;
 
   /// The number of items in the feed that were valid.
-  core.String itemsValid;
+  core.String? itemsValid;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#datafeedStatus`"
-  core.String kind;
+  core.String? kind;
 
   /// The two-letter ISO 639-1 language for which the status is reported.
-  core.String language;
+  core.String? language;
 
   /// The last date at which the feed was uploaded.
-  core.String lastUploadDate;
+  core.String? lastUploadDate;
 
   /// The processing status of the feed.
   ///
@@ -10751,10 +9999,10 @@ class DatafeedStatus {
   /// has never been uploaded will have this processing status. - "`success`":
   /// The feed was processed successfully, though some items might have had
   /// errors.
-  core.String processingStatus;
+  core.String? processingStatus;
 
   /// The list of errors occurring in the feed.
-  core.List<DatafeedStatusError> warnings;
+  core.List<DatafeedStatusError>? warnings;
 
   DatafeedStatus();
 
@@ -10797,35 +10045,35 @@ class DatafeedStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (datafeedId != null) 'datafeedId': datafeedId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (datafeedId != null) 'datafeedId': datafeedId!,
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
-        if (itemsTotal != null) 'itemsTotal': itemsTotal,
-        if (itemsValid != null) 'itemsValid': itemsValid,
-        if (kind != null) 'kind': kind,
-        if (language != null) 'language': language,
-        if (lastUploadDate != null) 'lastUploadDate': lastUploadDate,
-        if (processingStatus != null) 'processingStatus': processingStatus,
+          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (itemsTotal != null) 'itemsTotal': itemsTotal!,
+        if (itemsValid != null) 'itemsValid': itemsValid!,
+        if (kind != null) 'kind': kind!,
+        if (language != null) 'language': language!,
+        if (lastUploadDate != null) 'lastUploadDate': lastUploadDate!,
+        if (processingStatus != null) 'processingStatus': processingStatus!,
         if (warnings != null)
-          'warnings': warnings.map((value) => value.toJson()).toList(),
+          'warnings': warnings!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// An error occurring in the feed, like "invalid price".
 class DatafeedStatusError {
   /// The code of the error, e.g., "validation/invalid_value".
-  core.String code;
+  core.String? code;
 
   /// The number of occurrences of the error in the feed.
-  core.String count;
+  core.String? count;
 
   /// A list of example occurrences of the error, grouped by product.
-  core.List<DatafeedStatusExample> examples;
+  core.List<DatafeedStatusExample>? examples;
 
   /// The error message, e.g., "Invalid price".
-  core.String message;
+  core.String? message;
 
   DatafeedStatusError();
 
@@ -10847,25 +10095,25 @@ class DatafeedStatusError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (count != null) 'count': count,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (count != null) 'count': count!,
         if (examples != null)
-          'examples': examples.map((value) => value.toJson()).toList(),
-        if (message != null) 'message': message,
+          'examples': examples!.map((value) => value.toJson()).toList(),
+        if (message != null) 'message': message!,
       };
 }
 
 /// An example occurrence for a particular error.
 class DatafeedStatusExample {
   /// The ID of the example item.
-  core.String itemId;
+  core.String? itemId;
 
   /// Line number in the data feed where the example is found.
-  core.String lineNumber;
+  core.String? lineNumber;
 
   /// The problematic value.
-  core.String value;
+  core.String? value;
 
   DatafeedStatusExample();
 
@@ -10881,21 +10129,21 @@ class DatafeedStatusExample {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (itemId != null) 'itemId': itemId,
-        if (lineNumber != null) 'lineNumber': lineNumber,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (itemId != null) 'itemId': itemId!,
+        if (lineNumber != null) 'lineNumber': lineNumber!,
+        if (value != null) 'value': value!,
       };
 }
 
 class DatafeedTarget {
   /// The country where the items in the feed will be included in the search
   /// index, represented as a CLDR territory code.
-  core.String country;
+  core.String? country;
 
   /// The list of destinations to exclude for this target (corresponds to
   /// unchecked check boxes in Merchant Center).
-  core.List<core.String> excludedDestinations;
+  core.List<core.String>? excludedDestinations;
 
   /// The list of destinations to include for this target (corresponds to
   /// checked check boxes in Merchant Center).
@@ -10904,12 +10152,12 @@ class DatafeedTarget {
   /// `excludedDestinations`. List of supported destinations (if available to
   /// the account): - DisplayAds - Shopping - ShoppingActions -
   /// SurfacesAcrossGoogle
-  core.List<core.String> includedDestinations;
+  core.List<core.String>? includedDestinations;
 
   /// The two-letter ISO 639-1 language of the items in the feed.
   ///
   /// Must be a valid language for `targets[].country`.
-  core.String language;
+  core.String? language;
 
   DatafeedTarget();
 
@@ -10932,19 +10180,19 @@ class DatafeedTarget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
         if (excludedDestinations != null)
-          'excludedDestinations': excludedDestinations,
+          'excludedDestinations': excludedDestinations!,
         if (includedDestinations != null)
-          'includedDestinations': includedDestinations,
-        if (language != null) 'language': language,
+          'includedDestinations': includedDestinations!,
+        if (language != null) 'language': language!,
       };
 }
 
 class DatafeedsCustomBatchRequest {
   /// The request entries to be processed in the batch.
-  core.List<DatafeedsCustomBatchRequestEntry> entries;
+  core.List<DatafeedsCustomBatchRequestEntry>? entries;
 
   DatafeedsCustomBatchRequest();
 
@@ -10958,31 +10206,31 @@ class DatafeedsCustomBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A batch entry encoding a single non-batch datafeeds request.
 class DatafeedsCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
-  core.int batchId;
+  core.int? batchId;
 
   /// The data feed to insert.
-  Datafeed datafeed;
+  Datafeed? datafeed;
 
   /// The ID of the data feed to get, delete or fetch.
-  core.String datafeedId;
+  core.String? datafeedId;
 
   /// The ID of the managing account.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// The method of the batch entry.
   ///
   /// Acceptable values are: - "`delete`" - "`fetchNow`" - "`get`" - "`insert`"
   /// - "`update`"
-  core.String method;
+  core.String? method;
 
   DatafeedsCustomBatchRequestEntry();
 
@@ -11005,23 +10253,23 @@ class DatafeedsCustomBatchRequestEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (datafeed != null) 'datafeed': datafeed.toJson(),
-        if (datafeedId != null) 'datafeedId': datafeedId,
-        if (merchantId != null) 'merchantId': merchantId,
-        if (method != null) 'method': method,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (datafeed != null) 'datafeed': datafeed!.toJson(),
+        if (datafeedId != null) 'datafeedId': datafeedId!,
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (method != null) 'method': method!,
       };
 }
 
 class DatafeedsCustomBatchResponse {
   /// The result of the execution of the batch requests.
-  core.List<DatafeedsCustomBatchResponseEntry> entries;
+  core.List<DatafeedsCustomBatchResponseEntry>? entries;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#datafeedsCustomBatchResponse".
-  core.String kind;
+  core.String? kind;
 
   DatafeedsCustomBatchResponse();
 
@@ -11038,25 +10286,25 @@ class DatafeedsCustomBatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// A batch entry encoding a single non-batch datafeeds response.
 class DatafeedsCustomBatchResponseEntry {
   /// The ID of the request entry this entry responds to.
-  core.int batchId;
+  core.int? batchId;
 
   /// The requested data feed.
   ///
   /// Defined if and only if the request was successful.
-  Datafeed datafeed;
+  Datafeed? datafeed;
 
   /// A list of errors defined if and only if the request failed.
-  Errors errors;
+  Errors? errors;
 
   DatafeedsCustomBatchResponseEntry();
 
@@ -11074,10 +10322,10 @@ class DatafeedsCustomBatchResponseEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (datafeed != null) 'datafeed': datafeed.toJson(),
-        if (errors != null) 'errors': errors.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (datafeed != null) 'datafeed': datafeed!.toJson(),
+        if (errors != null) 'errors': errors!.toJson(),
       };
 }
 
@@ -11085,7 +10333,7 @@ class DatafeedsFetchNowResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#datafeedsFetchNowResponse".
-  core.String kind;
+  core.String? kind;
 
   DatafeedsFetchNowResponse();
 
@@ -11095,8 +10343,8 @@ class DatafeedsFetchNowResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -11104,11 +10352,11 @@ class DatafeedsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#datafeedsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token for the retrieval of the next page of datafeeds.
-  core.String nextPageToken;
-  core.List<Datafeed> resources;
+  core.String? nextPageToken;
+  core.List<Datafeed>? resources;
 
   DatafeedsListResponse();
 
@@ -11127,17 +10375,17 @@ class DatafeedsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
 class DatafeedstatusesCustomBatchRequest {
   /// The request entries to be processed in the batch.
-  core.List<DatafeedstatusesCustomBatchRequestEntry> entries;
+  core.List<DatafeedstatusesCustomBatchRequestEntry>? entries;
 
   DatafeedstatusesCustomBatchRequest();
 
@@ -11151,39 +10399,39 @@ class DatafeedstatusesCustomBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A batch entry encoding a single non-batch datafeedstatuses request.
 class DatafeedstatusesCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
-  core.int batchId;
+  core.int? batchId;
 
   /// The country for which to get the datafeed status.
   ///
   /// If this parameter is provided then language must also be provided. Note
   /// that for multi-target datafeeds this parameter is required.
-  core.String country;
+  core.String? country;
 
   /// The ID of the data feed to get.
-  core.String datafeedId;
+  core.String? datafeedId;
 
   /// The language for which to get the datafeed status.
   ///
   /// If this parameter is provided then country must also be provided. Note
   /// that for multi-target datafeeds this parameter is required.
-  core.String language;
+  core.String? language;
 
   /// The ID of the managing account.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// The method of the batch entry.
   ///
   /// Acceptable values are: - "`get`"
-  core.String method;
+  core.String? method;
 
   DatafeedstatusesCustomBatchRequestEntry();
 
@@ -11208,24 +10456,24 @@ class DatafeedstatusesCustomBatchRequestEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (country != null) 'country': country,
-        if (datafeedId != null) 'datafeedId': datafeedId,
-        if (language != null) 'language': language,
-        if (merchantId != null) 'merchantId': merchantId,
-        if (method != null) 'method': method,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (country != null) 'country': country!,
+        if (datafeedId != null) 'datafeedId': datafeedId!,
+        if (language != null) 'language': language!,
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (method != null) 'method': method!,
       };
 }
 
 class DatafeedstatusesCustomBatchResponse {
   /// The result of the execution of the batch requests.
-  core.List<DatafeedstatusesCustomBatchResponseEntry> entries;
+  core.List<DatafeedstatusesCustomBatchResponseEntry>? entries;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#datafeedstatusesCustomBatchResponse".
-  core.String kind;
+  core.String? kind;
 
   DatafeedstatusesCustomBatchResponse();
 
@@ -11242,25 +10490,25 @@ class DatafeedstatusesCustomBatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// A batch entry encoding a single non-batch datafeedstatuses response.
 class DatafeedstatusesCustomBatchResponseEntry {
   /// The ID of the request entry this entry responds to.
-  core.int batchId;
+  core.int? batchId;
 
   /// The requested data feed status.
   ///
   /// Defined if and only if the request was successful.
-  DatafeedStatus datafeedStatus;
+  DatafeedStatus? datafeedStatus;
 
   /// A list of errors defined if and only if the request failed.
-  Errors errors;
+  Errors? errors;
 
   DatafeedstatusesCustomBatchResponseEntry();
 
@@ -11278,10 +10526,10 @@ class DatafeedstatusesCustomBatchResponseEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (datafeedStatus != null) 'datafeedStatus': datafeedStatus.toJson(),
-        if (errors != null) 'errors': errors.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (datafeedStatus != null) 'datafeedStatus': datafeedStatus!.toJson(),
+        if (errors != null) 'errors': errors!.toJson(),
       };
 }
 
@@ -11289,11 +10537,11 @@ class DatafeedstatusesListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#datafeedstatusesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token for the retrieval of the next page of datafeed statuses.
-  core.String nextPageToken;
-  core.List<DatafeedStatus> resources;
+  core.String? nextPageToken;
+  core.List<DatafeedStatus>? resources;
 
   DatafeedstatusesListResponse();
 
@@ -11312,11 +10560,11 @@ class DatafeedstatusesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -11334,17 +10582,17 @@ class Date {
   ///
   /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
   /// year by itself or a year and month where the day isn't significant.
-  core.int day;
+  core.int? day;
 
   /// Month of a year.
   ///
   /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int month;
+  core.int? month;
 
   /// Year of the date.
   ///
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int year;
+  core.int? year;
 
   Date();
 
@@ -11360,10 +10608,10 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (month != null) 'month': month,
-        if (year != null) 'year': year,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (month != null) 'month': month!,
+        if (year != null) 'year': year!,
       };
 }
 
@@ -11389,7 +10637,7 @@ class DateTime {
   /// Must be from 1 to 31 and valid for the year and month.
   ///
   /// Required.
-  core.int day;
+  core.int? day;
 
   /// Hours of day in 24 hour format.
   ///
@@ -11397,28 +10645,28 @@ class DateTime {
   /// for scenarios like business closing time.
   ///
   /// Required.
-  core.int hours;
+  core.int? hours;
 
   /// Minutes of hour of day.
   ///
   /// Must be from 0 to 59.
   ///
   /// Required.
-  core.int minutes;
+  core.int? minutes;
 
   /// Month of year.
   ///
   /// Must be from 1 to 12.
   ///
   /// Required.
-  core.int month;
+  core.int? month;
 
   /// Fractions of seconds in nanoseconds.
   ///
   /// Must be from 0 to 999,999,999.
   ///
   /// Required.
-  core.int nanos;
+  core.int? nanos;
 
   /// Seconds of minutes of the time.
   ///
@@ -11426,23 +10674,23 @@ class DateTime {
   /// leap-seconds.
   ///
   /// Required.
-  core.int seconds;
+  core.int? seconds;
 
   /// Time zone.
-  TimeZone timeZone;
+  TimeZone? timeZone;
 
   /// UTC offset.
   ///
   /// Must be whole seconds, between -18 hours and +18 hours. For example, a UTC
   /// offset of -4:00 would be represented as { seconds: -14400 }.
-  core.String utcOffset;
+  core.String? utcOffset;
 
   /// Year of date.
   ///
   /// Must be from 1 to 9999, or 0 if specifying a datetime without a year.
   ///
   /// Optional.
-  core.int year;
+  core.int? year;
 
   DateTime();
 
@@ -11477,16 +10725,16 @@ class DateTime {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (hours != null) 'hours': hours,
-        if (minutes != null) 'minutes': minutes,
-        if (month != null) 'month': month,
-        if (nanos != null) 'nanos': nanos,
-        if (seconds != null) 'seconds': seconds,
-        if (timeZone != null) 'timeZone': timeZone.toJson(),
-        if (utcOffset != null) 'utcOffset': utcOffset,
-        if (year != null) 'year': year,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (hours != null) 'hours': hours!,
+        if (minutes != null) 'minutes': minutes!,
+        if (month != null) 'month': month!,
+        if (nanos != null) 'nanos': nanos!,
+        if (seconds != null) 'seconds': seconds!,
+        if (timeZone != null) 'timeZone': timeZone!.toJson(),
+        if (utcOffset != null) 'utcOffset': utcOffset!,
+        if (year != null) 'year': year!,
       };
 }
 
@@ -11494,54 +10742,54 @@ class DeliveryTime {
   /// Business days cutoff time definition.
   ///
   /// If not configured the cutoff time will be defaulted to 8AM PST.
-  CutoffTime cutoffTime;
+  CutoffTime? cutoffTime;
 
   /// The business days during which orders can be handled.
   ///
   /// If not provided, Monday to Friday business days will be assumed.
-  BusinessDayConfig handlingBusinessDayConfig;
+  BusinessDayConfig? handlingBusinessDayConfig;
 
   /// Holiday cutoff definitions.
   ///
   /// If configured, they specify order cutoff times for holiday-specific
   /// shipping.
-  core.List<HolidayCutoff> holidayCutoffs;
+  core.List<HolidayCutoff>? holidayCutoffs;
 
   /// Maximum number of business days spent before an order is shipped.
   ///
   /// 0 means same day shipped, 1 means next day shipped. Must be greater than
   /// or equal to `minHandlingTimeInDays`.
-  core.int maxHandlingTimeInDays;
+  core.int? maxHandlingTimeInDays;
 
   /// Maximum number of business days that is spent in transit.
   ///
   /// 0 means same day delivery, 1 means next day delivery. Must be greater than
   /// or equal to `minTransitTimeInDays`.
-  core.int maxTransitTimeInDays;
+  core.int? maxTransitTimeInDays;
 
   /// Minimum number of business days spent before an order is shipped.
   ///
   /// 0 means same day shipped, 1 means next day shipped.
-  core.int minHandlingTimeInDays;
+  core.int? minHandlingTimeInDays;
 
   /// Minimum number of business days that is spent in transit.
   ///
   /// 0 means same day delivery, 1 means next day delivery. Either
   /// `{min,max}TransitTimeInDays` or `transitTimeTable` must be set, but not
   /// both.
-  core.int minTransitTimeInDays;
+  core.int? minTransitTimeInDays;
 
   /// The business days during which orders can be in-transit.
   ///
   /// If not provided, Monday to Friday business days will be assumed.
-  BusinessDayConfig transitBusinessDayConfig;
+  BusinessDayConfig? transitBusinessDayConfig;
 
   /// Transit time table, number of business days spent in transit based on row
   /// and column dimensions.
   ///
   /// Either `{min,max}TransitTimeInDays` or `transitTimeTable` can be set, but
   /// not both.
-  TransitTable transitTimeTable;
+  TransitTable? transitTimeTable;
 
   DeliveryTime();
 
@@ -11584,38 +10832,38 @@ class DeliveryTime {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cutoffTime != null) 'cutoffTime': cutoffTime.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cutoffTime != null) 'cutoffTime': cutoffTime!.toJson(),
         if (handlingBusinessDayConfig != null)
-          'handlingBusinessDayConfig': handlingBusinessDayConfig.toJson(),
+          'handlingBusinessDayConfig': handlingBusinessDayConfig!.toJson(),
         if (holidayCutoffs != null)
           'holidayCutoffs':
-              holidayCutoffs.map((value) => value.toJson()).toList(),
+              holidayCutoffs!.map((value) => value.toJson()).toList(),
         if (maxHandlingTimeInDays != null)
-          'maxHandlingTimeInDays': maxHandlingTimeInDays,
+          'maxHandlingTimeInDays': maxHandlingTimeInDays!,
         if (maxTransitTimeInDays != null)
-          'maxTransitTimeInDays': maxTransitTimeInDays,
+          'maxTransitTimeInDays': maxTransitTimeInDays!,
         if (minHandlingTimeInDays != null)
-          'minHandlingTimeInDays': minHandlingTimeInDays,
+          'minHandlingTimeInDays': minHandlingTimeInDays!,
         if (minTransitTimeInDays != null)
-          'minTransitTimeInDays': minTransitTimeInDays,
+          'minTransitTimeInDays': minTransitTimeInDays!,
         if (transitBusinessDayConfig != null)
-          'transitBusinessDayConfig': transitBusinessDayConfig.toJson(),
+          'transitBusinessDayConfig': transitBusinessDayConfig!.toJson(),
         if (transitTimeTable != null)
-          'transitTimeTable': transitTimeTable.toJson(),
+          'transitTimeTable': transitTimeTable!.toJson(),
       };
 }
 
 /// An error returned by the API.
 class Error {
   /// The domain of the error.
-  core.String domain;
+  core.String? domain;
 
   /// A description of the error.
-  core.String message;
+  core.String? message;
 
   /// The error code.
-  core.String reason;
+  core.String? reason;
 
   Error();
 
@@ -11631,23 +10879,23 @@ class Error {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (domain != null) 'domain': domain,
-        if (message != null) 'message': message,
-        if (reason != null) 'reason': reason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (domain != null) 'domain': domain!,
+        if (message != null) 'message': message!,
+        if (reason != null) 'reason': reason!,
       };
 }
 
 /// A list of errors returned by a failed batch entry.
 class Errors {
   /// The HTTP status of the first error in `errors`.
-  core.int code;
+  core.int? code;
 
   /// A list of errors.
-  core.List<Error> errors;
+  core.List<Error>? errors;
 
   /// The message of the first error in `errors`.
-  core.String message;
+  core.String? message;
 
   Errors();
 
@@ -11666,20 +10914,20 @@ class Errors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
-        if (message != null) 'message': message,
+          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (message != null) 'message': message!,
       };
 }
 
 class GmbAccounts {
   /// The ID of the Merchant Center account.
-  core.String accountId;
+  core.String? accountId;
 
   /// A list of GMB accounts which are available to the merchant.
-  core.List<GmbAccountsGmbAccount> gmbAccounts;
+  core.List<GmbAccountsGmbAccount>? gmbAccounts;
 
   GmbAccounts();
 
@@ -11695,25 +10943,25 @@ class GmbAccounts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (gmbAccounts != null)
-          'gmbAccounts': gmbAccounts.map((value) => value.toJson()).toList(),
+          'gmbAccounts': gmbAccounts!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GmbAccountsGmbAccount {
   /// The email which identifies the GMB account.
-  core.String email;
+  core.String? email;
 
   /// Number of listings under this account.
-  core.String listingCount;
+  core.String? listingCount;
 
   /// The name of the GMB account.
-  core.String name;
+  core.String? name;
 
   /// The type of the GMB account (User or Business).
-  core.String type;
+  core.String? type;
 
   GmbAccountsGmbAccount();
 
@@ -11732,11 +10980,11 @@ class GmbAccountsGmbAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
-        if (listingCount != null) 'listingCount': listingCount,
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
+        if (listingCount != null) 'listingCount': listingCount!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -11748,14 +10996,14 @@ class Headers {
   /// A list of location ID sets.
   ///
   /// Must be non-empty. Can only be set if all other fields are not set.
-  core.List<LocationIdSet> locations;
+  core.List<LocationIdSet>? locations;
 
   /// A list of inclusive number of items upper bounds.
   ///
   /// The last value can be `"infinity"`. For example `["10", "50", "infinity"]`
   /// represents the headers "<= 10 items", "<= 50 items", and "> 50 items".
   /// Must be non-empty. Can only be set if all other fields are not set.
-  core.List<core.String> numberOfItems;
+  core.List<core.String>? numberOfItems;
 
   /// A list of postal group names.
   ///
@@ -11763,7 +11011,7 @@ class Headers {
   /// 2", "all other locations"]`. The referred postal code groups must match
   /// the delivery country of the service. Must be non-empty. Can only be set if
   /// all other fields are not set.
-  core.List<core.String> postalCodeGroupNames;
+  core.List<core.String>? postalCodeGroupNames;
 
   /// A list of inclusive order price upper bounds.
   ///
@@ -11773,7 +11021,7 @@ class Headers {
   /// $500", and "> $500". All prices within a service must have the same
   /// currency. Must be non-empty. Can only be set if all other fields are not
   /// set.
-  core.List<Price> prices;
+  core.List<Price>? prices;
 
   /// A list of inclusive order weight upper bounds.
   ///
@@ -11782,7 +11030,7 @@ class Headers {
   /// "unit": "kg"}]` represents the headers "<= 10kg", "<= 50kg", and "> 50kg".
   /// All weights within a service must have the same unit. Must be non-empty.
   /// Can only be set if all other fields are not set.
-  core.List<Weight> weights;
+  core.List<Weight>? weights;
 
   Headers();
 
@@ -11817,16 +11065,16 @@ class Headers {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (numberOfItems != null) 'numberOfItems': numberOfItems,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (numberOfItems != null) 'numberOfItems': numberOfItems!,
         if (postalCodeGroupNames != null)
-          'postalCodeGroupNames': postalCodeGroupNames,
+          'postalCodeGroupNames': postalCodeGroupNames!,
         if (prices != null)
-          'prices': prices.map((value) => value.toJson()).toList(),
+          'prices': prices!.map((value) => value.toJson()).toList(),
         if (weights != null)
-          'weights': weights.map((value) => value.toJson()).toList(),
+          'weights': weights!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -11834,31 +11082,31 @@ class HolidayCutoff {
   /// Date of the order deadline, in ISO 8601 format.
   ///
   /// E.g. "2016-11-29" for 29th November 2016. Required.
-  core.String deadlineDate;
+  core.String? deadlineDate;
 
   /// Hour of the day on the deadline date until which the order has to be
   /// placed to qualify for the delivery guarantee.
   ///
   /// Possible values are: 0 (midnight), 1, ..., 12 (noon), 13, ..., 23.
   /// Required.
-  core.int deadlineHour;
+  core.int? deadlineHour;
 
   /// Timezone identifier for the deadline hour.
   ///
   /// A list of identifiers can be found in the AdWords API documentation. E.g.
   /// "Europe/Zurich". Required.
-  core.String deadlineTimezone;
+  core.String? deadlineTimezone;
 
   /// Unique identifier for the holiday.
   ///
   /// Required.
-  core.String holidayId;
+  core.String? holidayId;
 
   /// Date on which the deadline will become visible to consumers in ISO 8601
   /// format.
   ///
   /// E.g. "2016-10-31" for 31st October 2016. Required.
-  core.String visibleFromDate;
+  core.String? visibleFromDate;
 
   HolidayCutoff();
 
@@ -11880,12 +11128,12 @@ class HolidayCutoff {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deadlineDate != null) 'deadlineDate': deadlineDate,
-        if (deadlineHour != null) 'deadlineHour': deadlineHour,
-        if (deadlineTimezone != null) 'deadlineTimezone': deadlineTimezone,
-        if (holidayId != null) 'holidayId': holidayId,
-        if (visibleFromDate != null) 'visibleFromDate': visibleFromDate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deadlineDate != null) 'deadlineDate': deadlineDate!,
+        if (deadlineHour != null) 'deadlineHour': deadlineHour!,
+        if (deadlineTimezone != null) 'deadlineTimezone': deadlineTimezone!,
+        if (holidayId != null) 'holidayId': holidayId!,
+        if (visibleFromDate != null) 'visibleFromDate': visibleFromDate!,
       };
 }
 
@@ -11894,38 +11142,38 @@ class HolidaysHoliday {
   ///
   /// E.g. "US", "DE", "GB". A holiday cutoff can only be configured in a
   /// shipping settings service with matching delivery country. Always present.
-  core.String countryCode;
+  core.String? countryCode;
 
   /// Date of the holiday, in ISO 8601 format.
   ///
   /// E.g. "2016-12-25" for Christmas 2016. Always present.
-  core.String date;
+  core.String? date;
 
   /// Date on which the order has to arrive at the customer's, in ISO 8601
   /// format.
   ///
   /// E.g. "2016-12-24" for 24th December 2016. Always present.
-  core.String deliveryGuaranteeDate;
+  core.String? deliveryGuaranteeDate;
 
   /// Hour of the day in the delivery location's timezone on the guaranteed
   /// delivery date by which the order has to arrive at the customer's.
   ///
   /// Possible values are: 0 (midnight), 1, ..., 12 (noon), 13, ..., 23. Always
   /// present.
-  core.String deliveryGuaranteeHour;
+  core.String? deliveryGuaranteeHour;
 
   /// Unique identifier for the holiday to be used when configuring holiday
   /// cutoffs.
   ///
   /// Always present.
-  core.String id;
+  core.String? id;
 
   /// The holiday type.
   ///
   /// Always present. Acceptable values are: - "`Christmas`" - "`Easter`" -
   /// "`Father's Day`" - "`Halloween`" - "`Independence Day (USA)`" - "`Mother's
   /// Day`" - "`Thanksgiving`" - "`Valentine's Day`"
-  core.String type;
+  core.String? type;
 
   HolidaysHoliday();
 
@@ -11950,22 +11198,22 @@ class HolidaysHoliday {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (countryCode != null) 'countryCode': countryCode,
-        if (date != null) 'date': date,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (date != null) 'date': date!,
         if (deliveryGuaranteeDate != null)
-          'deliveryGuaranteeDate': deliveryGuaranteeDate,
+          'deliveryGuaranteeDate': deliveryGuaranteeDate!,
         if (deliveryGuaranteeHour != null)
-          'deliveryGuaranteeHour': deliveryGuaranteeHour,
-        if (id != null) 'id': id,
-        if (type != null) 'type': type,
+          'deliveryGuaranteeHour': deliveryGuaranteeHour!,
+        if (id != null) 'id': id!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// Map of inapplicability details.
 class InapplicabilityDetails {
   /// Count of this inapplicable reason code.
-  core.String inapplicableCount;
+  core.String? inapplicableCount;
 
   /// Reason code this rule was not applicable.
   /// Possible string values are:
@@ -11982,7 +11230,7 @@ class InapplicabilityDetails {
   /// this may be the case if the calculated rule price is lower than floor
   /// price in the restriction.
   /// - "UNCATEGORIZED" : The reason is not categorized to any known reason.
-  core.String inapplicableReason;
+  core.String? inapplicableReason;
 
   InapplicabilityDetails();
 
@@ -11995,19 +11243,19 @@ class InapplicabilityDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (inapplicableCount != null) 'inapplicableCount': inapplicableCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (inapplicableCount != null) 'inapplicableCount': inapplicableCount!,
         if (inapplicableReason != null)
-          'inapplicableReason': inapplicableReason,
+          'inapplicableReason': inapplicableReason!,
       };
 }
 
 class Installment {
   /// The amount the buyer has to pay per month.
-  Price amount;
+  Price? amount;
 
   /// The number of installments the buyer has to pay.
-  core.String months;
+  core.String? months;
 
   Installment();
 
@@ -12021,20 +11269,20 @@ class Installment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amount != null) 'amount': amount.toJson(),
-        if (months != null) 'months': months,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amount != null) 'amount': amount!.toJson(),
+        if (months != null) 'months': months!,
       };
 }
 
 class InvoiceSummary {
   /// Summary of the total amounts of the additional charges.
-  core.List<InvoiceSummaryAdditionalChargeSummary> additionalChargeSummaries;
+  core.List<InvoiceSummaryAdditionalChargeSummary>? additionalChargeSummaries;
 
   /// Total price for the product.
   ///
   /// Required.
-  Amount productTotal;
+  Amount? productTotal;
 
   InvoiceSummary();
 
@@ -12053,11 +11301,12 @@ class InvoiceSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additionalChargeSummaries != null)
-          'additionalChargeSummaries':
-              additionalChargeSummaries.map((value) => value.toJson()).toList(),
-        if (productTotal != null) 'productTotal': productTotal.toJson(),
+          'additionalChargeSummaries': additionalChargeSummaries!
+              .map((value) => value.toJson())
+              .toList(),
+        if (productTotal != null) 'productTotal': productTotal!.toJson(),
       };
 }
 
@@ -12065,14 +11314,14 @@ class InvoiceSummaryAdditionalChargeSummary {
   /// Total additional charge for this type.
   ///
   /// Required.
-  Amount totalAmount;
+  Amount? totalAmount;
 
   /// Type of the additional charge.
   ///
   /// Acceptable values are: - "`shipping`"
   ///
   /// Required.
-  core.String type;
+  core.String? type;
 
   InvoiceSummaryAdditionalChargeSummary();
 
@@ -12086,16 +11335,16 @@ class InvoiceSummaryAdditionalChargeSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (totalAmount != null) 'totalAmount': totalAmount.toJson(),
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (totalAmount != null) 'totalAmount': totalAmount!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
 /// The IDs of labels that should be assigned to the CSS domain.
 class LabelIds {
   /// The list of label IDs.
-  core.List<core.String> labelIds;
+  core.List<core.String>? labelIds;
 
   LabelIds();
 
@@ -12107,8 +11356,8 @@ class LabelIds {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labelIds != null) 'labelIds': labelIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labelIds != null) 'labelIds': labelIds!,
       };
 }
 
@@ -12116,10 +11365,10 @@ class LiaAboutPageSettings {
   /// The status of the verification process for the About page.
   ///
   /// Acceptable values are: - "`active`" - "`inactive`" - "`pending`"
-  core.String status;
+  core.String? status;
 
   /// The URL for the About page.
-  core.String url;
+  core.String? url;
 
   LiaAboutPageSettings();
 
@@ -12132,35 +11381,35 @@ class LiaAboutPageSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (status != null) 'status': status,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (status != null) 'status': status!,
+        if (url != null) 'url': url!,
       };
 }
 
 class LiaCountrySettings {
   /// The settings for the About page.
-  LiaAboutPageSettings about;
+  LiaAboutPageSettings? about;
 
   /// CLDR country code (e.g. "US").
   ///
   /// Required.
-  core.String country;
+  core.String? country;
 
   /// The status of the "Merchant hosted local storefront" feature.
-  core.bool hostedLocalStorefrontActive;
+  core.bool? hostedLocalStorefrontActive;
 
   /// LIA inventory verification settings.
-  LiaInventorySettings inventory;
+  LiaInventorySettings? inventory;
 
   /// LIA "On Display To Order" settings.
-  LiaOnDisplayToOrderSettings onDisplayToOrder;
+  LiaOnDisplayToOrderSettings? onDisplayToOrder;
 
   /// The POS data provider linked with this country.
-  LiaPosDataProvider posDataProvider;
+  LiaPosDataProvider? posDataProvider;
 
   /// The status of the "Store pickup" feature.
-  core.bool storePickupActive;
+  core.bool? storePickupActive;
 
   LiaCountrySettings();
 
@@ -12193,36 +11442,36 @@ class LiaCountrySettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (about != null) 'about': about.toJson(),
-        if (country != null) 'country': country,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (about != null) 'about': about!.toJson(),
+        if (country != null) 'country': country!,
         if (hostedLocalStorefrontActive != null)
-          'hostedLocalStorefrontActive': hostedLocalStorefrontActive,
-        if (inventory != null) 'inventory': inventory.toJson(),
+          'hostedLocalStorefrontActive': hostedLocalStorefrontActive!,
+        if (inventory != null) 'inventory': inventory!.toJson(),
         if (onDisplayToOrder != null)
-          'onDisplayToOrder': onDisplayToOrder.toJson(),
+          'onDisplayToOrder': onDisplayToOrder!.toJson(),
         if (posDataProvider != null)
-          'posDataProvider': posDataProvider.toJson(),
-        if (storePickupActive != null) 'storePickupActive': storePickupActive,
+          'posDataProvider': posDataProvider!.toJson(),
+        if (storePickupActive != null) 'storePickupActive': storePickupActive!,
       };
 }
 
 class LiaInventorySettings {
   /// The email of the contact for the inventory verification process.
-  core.String inventoryVerificationContactEmail;
+  core.String? inventoryVerificationContactEmail;
 
   /// The name of the contact for the inventory verification process.
-  core.String inventoryVerificationContactName;
+  core.String? inventoryVerificationContactName;
 
   /// The status of the verification contact.
   ///
   /// Acceptable values are: - "`active`" - "`inactive`" - "`pending`"
-  core.String inventoryVerificationContactStatus;
+  core.String? inventoryVerificationContactStatus;
 
   /// The status of the inventory verification process.
   ///
   /// Acceptable values are: - "`active`" - "`inactive`" - "`pending`"
-  core.String status;
+  core.String? status;
 
   LiaInventorySettings();
 
@@ -12244,27 +11493,27 @@ class LiaInventorySettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (inventoryVerificationContactEmail != null)
           'inventoryVerificationContactEmail':
-              inventoryVerificationContactEmail,
+              inventoryVerificationContactEmail!,
         if (inventoryVerificationContactName != null)
-          'inventoryVerificationContactName': inventoryVerificationContactName,
+          'inventoryVerificationContactName': inventoryVerificationContactName!,
         if (inventoryVerificationContactStatus != null)
           'inventoryVerificationContactStatus':
-              inventoryVerificationContactStatus,
-        if (status != null) 'status': status,
+              inventoryVerificationContactStatus!,
+        if (status != null) 'status': status!,
       };
 }
 
 class LiaOnDisplayToOrderSettings {
   /// Shipping cost and policy URL.
-  core.String shippingCostPolicyUrl;
+  core.String? shippingCostPolicyUrl;
 
   /// The status of the ?On display to order? feature.
   ///
   /// Acceptable values are: - "`active`" - "`inactive`" - "`pending`"
-  core.String status;
+  core.String? status;
 
   LiaOnDisplayToOrderSettings();
 
@@ -12277,19 +11526,19 @@ class LiaOnDisplayToOrderSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (shippingCostPolicyUrl != null)
-          'shippingCostPolicyUrl': shippingCostPolicyUrl,
-        if (status != null) 'status': status,
+          'shippingCostPolicyUrl': shippingCostPolicyUrl!,
+        if (status != null) 'status': status!,
       };
 }
 
 class LiaPosDataProvider {
   /// The ID of the POS data provider.
-  core.String posDataProviderId;
+  core.String? posDataProviderId;
 
   /// The account ID by which this merchant is known to the POS data provider.
-  core.String posExternalAccountId;
+  core.String? posExternalAccountId;
 
   LiaPosDataProvider();
 
@@ -12302,10 +11551,10 @@ class LiaPosDataProvider {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (posDataProviderId != null) 'posDataProviderId': posDataProviderId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (posDataProviderId != null) 'posDataProviderId': posDataProviderId!,
         if (posExternalAccountId != null)
-          'posExternalAccountId': posExternalAccountId,
+          'posExternalAccountId': posExternalAccountId!,
       };
 }
 
@@ -12316,15 +11565,15 @@ class LiaSettings {
   /// The ID of the account to which these LIA settings belong.
   ///
   /// Ignored upon update, always present in get request responses.
-  core.String accountId;
+  core.String? accountId;
 
   /// The LIA settings for each country.
-  core.List<LiaCountrySettings> countrySettings;
+  core.List<LiaCountrySettings>? countrySettings;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#liaSettings`"
-  core.String kind;
+  core.String? kind;
 
   LiaSettings();
 
@@ -12343,18 +11592,18 @@ class LiaSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (countrySettings != null)
           'countrySettings':
-              countrySettings.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+              countrySettings!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class LiasettingsCustomBatchRequest {
   /// The request entries to be processed in the batch.
-  core.List<LiasettingsCustomBatchRequestEntry> entries;
+  core.List<LiasettingsCustomBatchRequestEntry>? entries;
 
   LiasettingsCustomBatchRequest();
 
@@ -12368,61 +11617,61 @@ class LiasettingsCustomBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
 class LiasettingsCustomBatchRequestEntry {
   /// The ID of the account for which to get/update account LIA settings.
-  core.String accountId;
+  core.String? accountId;
 
   /// An entry ID, unique within the batch request.
-  core.int batchId;
+  core.int? batchId;
 
   /// Inventory validation contact email.
   ///
   /// Required only for SetInventoryValidationContact.
-  core.String contactEmail;
+  core.String? contactEmail;
 
   /// Inventory validation contact name.
   ///
   /// Required only for SetInventoryValidationContact.
-  core.String contactName;
+  core.String? contactName;
 
   /// The country code.
   ///
   /// Required only for RequestInventoryVerification.
-  core.String country;
+  core.String? country;
 
   /// The GMB account.
   ///
   /// Required only for RequestGmbAccess.
-  core.String gmbEmail;
+  core.String? gmbEmail;
 
   /// The account Lia settings to update.
   ///
   /// Only defined if the method is `update`.
-  LiaSettings liaSettings;
+  LiaSettings? liaSettings;
 
   /// The ID of the managing account.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// The method of the batch entry.
   ///
   /// Acceptable values are: - "`get`" - "`getAccessibleGmbAccounts`" -
   /// "`requestGmbAccess`" - "`requestInventoryVerification`" -
   /// "`setInventoryVerificationContact`" - "`update`"
-  core.String method;
+  core.String? method;
 
   /// The ID of POS data provider.
   ///
   /// Required only for SetPosProvider.
-  core.String posDataProviderId;
+  core.String? posDataProviderId;
 
   /// The account ID by which this merchant is known to the POS provider.
-  core.String posExternalAccountId;
+  core.String? posExternalAccountId;
 
   LiasettingsCustomBatchRequestEntry();
 
@@ -12463,30 +11712,30 @@ class LiasettingsCustomBatchRequestEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (batchId != null) 'batchId': batchId,
-        if (contactEmail != null) 'contactEmail': contactEmail,
-        if (contactName != null) 'contactName': contactName,
-        if (country != null) 'country': country,
-        if (gmbEmail != null) 'gmbEmail': gmbEmail,
-        if (liaSettings != null) 'liaSettings': liaSettings.toJson(),
-        if (merchantId != null) 'merchantId': merchantId,
-        if (method != null) 'method': method,
-        if (posDataProviderId != null) 'posDataProviderId': posDataProviderId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (batchId != null) 'batchId': batchId!,
+        if (contactEmail != null) 'contactEmail': contactEmail!,
+        if (contactName != null) 'contactName': contactName!,
+        if (country != null) 'country': country!,
+        if (gmbEmail != null) 'gmbEmail': gmbEmail!,
+        if (liaSettings != null) 'liaSettings': liaSettings!.toJson(),
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (method != null) 'method': method!,
+        if (posDataProviderId != null) 'posDataProviderId': posDataProviderId!,
         if (posExternalAccountId != null)
-          'posExternalAccountId': posExternalAccountId,
+          'posExternalAccountId': posExternalAccountId!,
       };
 }
 
 class LiasettingsCustomBatchResponse {
   /// The result of the execution of the batch requests.
-  core.List<LiasettingsCustomBatchResponseEntry> entries;
+  core.List<LiasettingsCustomBatchResponseEntry>? entries;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#liasettingsCustomBatchResponse".
-  core.String kind;
+  core.String? kind;
 
   LiasettingsCustomBatchResponse();
 
@@ -12503,33 +11752,33 @@ class LiasettingsCustomBatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class LiasettingsCustomBatchResponseEntry {
   /// The ID of the request entry to which this entry responds.
-  core.int batchId;
+  core.int? batchId;
 
   /// A list of errors defined if, and only if, the request failed.
-  Errors errors;
+  Errors? errors;
 
   /// The list of accessible GMB accounts.
-  GmbAccounts gmbAccounts;
+  GmbAccounts? gmbAccounts;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#liasettingsCustomBatchResponseEntry`"
-  core.String kind;
+  core.String? kind;
 
   /// The retrieved or updated Lia settings.
-  LiaSettings liaSettings;
+  LiaSettings? liaSettings;
 
   /// The list of POS data providers.
-  core.List<PosDataProviders> posDataProviders;
+  core.List<PosDataProviders>? posDataProviders;
 
   LiasettingsCustomBatchResponseEntry();
 
@@ -12560,30 +11809,30 @@ class LiasettingsCustomBatchResponseEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (errors != null) 'errors': errors.toJson(),
-        if (gmbAccounts != null) 'gmbAccounts': gmbAccounts.toJson(),
-        if (kind != null) 'kind': kind,
-        if (liaSettings != null) 'liaSettings': liaSettings.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (errors != null) 'errors': errors!.toJson(),
+        if (gmbAccounts != null) 'gmbAccounts': gmbAccounts!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (liaSettings != null) 'liaSettings': liaSettings!.toJson(),
         if (posDataProviders != null)
           'posDataProviders':
-              posDataProviders.map((value) => value.toJson()).toList(),
+              posDataProviders!.map((value) => value.toJson()).toList(),
       };
 }
 
 class LiasettingsGetAccessibleGmbAccountsResponse {
   /// The ID of the Merchant Center account.
-  core.String accountId;
+  core.String? accountId;
 
   /// A list of GMB accounts which are available to the merchant.
-  core.List<GmbAccountsGmbAccount> gmbAccounts;
+  core.List<GmbAccountsGmbAccount>? gmbAccounts;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
   /// "content#liasettingsGetAccessibleGmbAccountsResponse".
-  core.String kind;
+  core.String? kind;
 
   LiasettingsGetAccessibleGmbAccountsResponse();
 
@@ -12602,11 +11851,11 @@ class LiasettingsGetAccessibleGmbAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (gmbAccounts != null)
-          'gmbAccounts': gmbAccounts.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'gmbAccounts': gmbAccounts!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -12614,10 +11863,10 @@ class LiasettingsListPosDataProvidersResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#liasettingsListPosDataProvidersResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The list of POS data providers for each eligible country
-  core.List<PosDataProviders> posDataProviders;
+  core.List<PosDataProviders>? posDataProviders;
 
   LiasettingsListPosDataProvidersResponse();
 
@@ -12633,11 +11882,11 @@ class LiasettingsListPosDataProvidersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (posDataProviders != null)
           'posDataProviders':
-              posDataProviders.map((value) => value.toJson()).toList(),
+              posDataProviders!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -12645,11 +11894,11 @@ class LiasettingsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#liasettingsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token for the retrieval of the next page of LIA settings.
-  core.String nextPageToken;
-  core.List<LiaSettings> resources;
+  core.String? nextPageToken;
+  core.List<LiaSettings>? resources;
 
   LiasettingsListResponse();
 
@@ -12668,11 +11917,11 @@ class LiasettingsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -12680,7 +11929,7 @@ class LiasettingsRequestGmbAccessResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#liasettingsRequestGmbAccessResponse".
-  core.String kind;
+  core.String? kind;
 
   LiasettingsRequestGmbAccessResponse();
 
@@ -12690,8 +11939,8 @@ class LiasettingsRequestGmbAccessResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -12700,7 +11949,7 @@ class LiasettingsRequestInventoryVerificationResponse {
   ///
   /// Value: the fixed string
   /// "content#liasettingsRequestInventoryVerificationResponse".
-  core.String kind;
+  core.String? kind;
 
   LiasettingsRequestInventoryVerificationResponse();
 
@@ -12710,8 +11959,8 @@ class LiasettingsRequestInventoryVerificationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -12720,7 +11969,7 @@ class LiasettingsSetInventoryVerificationContactResponse {
   ///
   /// Value: the fixed string
   /// "content#liasettingsSetInventoryVerificationContactResponse".
-  core.String kind;
+  core.String? kind;
 
   LiasettingsSetInventoryVerificationContactResponse();
 
@@ -12730,8 +11979,8 @@ class LiasettingsSetInventoryVerificationContactResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -12739,7 +11988,7 @@ class LiasettingsSetPosDataProviderResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#liasettingsSetPosDataProviderResponse".
-  core.String kind;
+  core.String? kind;
 
   LiasettingsSetPosDataProviderResponse();
 
@@ -12749,8 +11998,8 @@ class LiasettingsSetPosDataProviderResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -12759,11 +12008,11 @@ class LinkService {
   ///
   /// Acceptable values are: - "`shoppingActionsOrderManagement`" -
   /// "`shoppingActionsProductManagement`" - "`shoppingAdsProductManagement`"
-  core.String service;
+  core.String? service;
 
   /// Status of the link Acceptable values are: - "`active`" - "`inactive`" -
   /// "`pending`"
-  core.String status;
+  core.String? status;
 
   LinkService();
 
@@ -12776,18 +12025,18 @@ class LinkService {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (service != null) 'service': service,
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (service != null) 'service': service!,
+        if (status != null) 'status': status!,
       };
 }
 
 class LinkedAccount {
   /// The ID of the linked account.
-  core.String linkedAccountId;
+  core.String? linkedAccountId;
 
   /// List of provided services.
-  core.List<LinkService> services;
+  core.List<LinkService>? services;
 
   LinkedAccount();
 
@@ -12803,22 +12052,22 @@ class LinkedAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (linkedAccountId != null) 'linkedAccountId': linkedAccountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (linkedAccountId != null) 'linkedAccountId': linkedAccountId!,
         if (services != null)
-          'services': services.map((value) => value.toJson()).toList(),
+          'services': services!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for the `ListAccountLabels` method.
 class ListAccountLabelsResponse {
   /// The labels from the specified account.
-  core.List<AccountLabel> accountLabels;
+  core.List<AccountLabel>? accountLabels;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListAccountLabelsResponse();
 
@@ -12834,18 +12083,18 @@ class ListAccountLabelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accountLabels != null)
           'accountLabels':
-              accountLabels.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              accountLabels!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response for listing account return carriers.
 class ListAccountReturnCarrierResponse {
   /// List of all available account return carriers for the merchant.
-  core.List<AccountReturnCarrier> accountReturnCarriers;
+  core.List<AccountReturnCarrier>? accountReturnCarriers;
 
   ListAccountReturnCarrierResponse();
 
@@ -12858,10 +12107,10 @@ class ListAccountReturnCarrierResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accountReturnCarriers != null)
           'accountReturnCarriers':
-              accountReturnCarriers.map((value) => value.toJson()).toList(),
+              accountReturnCarriers!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -12870,10 +12119,10 @@ class ListCollectionStatusesResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The collectionstatuses listed.
-  core.List<CollectionStatus> resources;
+  core.List<CollectionStatus>? resources;
 
   ListCollectionStatusesResponse();
 
@@ -12889,10 +12138,10 @@ class ListCollectionStatusesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -12901,10 +12150,10 @@ class ListCollectionsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The collections listed.
-  core.List<Collection> resources;
+  core.List<Collection>? resources;
 
   ListCollectionsResponse();
 
@@ -12920,22 +12169,22 @@ class ListCollectionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The response message for the `ListCsses` method
 class ListCssesResponse {
   /// The CSS domains affiliated with the specified CSS group.
-  core.List<Css> csses;
+  core.List<Css>? csses;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListCssesResponse();
 
@@ -12951,10 +12200,10 @@ class ListCssesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (csses != null)
-          'csses': csses.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'csses': csses!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -12963,10 +12212,10 @@ class ListRegionsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The regions from the specified merchant.
-  core.List<Region> regions;
+  core.List<Region>? regions;
 
   ListRegionsResponse();
 
@@ -12982,10 +12231,10 @@ class ListRegionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (regions != null)
-          'regions': regions.map((value) => value.toJson()).toList(),
+          'regions': regions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -12994,10 +12243,10 @@ class ListRepricingProductReportsResponse {
   /// A token for retrieving the next page.
   ///
   /// Its absence means there is no subsequent page.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Periodic reports for the given Repricing product.
-  core.List<RepricingProductReport> repricingProductReports;
+  core.List<RepricingProductReport>? repricingProductReports;
 
   ListRepricingProductReportsResponse();
 
@@ -13014,11 +12263,11 @@ class ListRepricingProductReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (repricingProductReports != null)
           'repricingProductReports':
-              repricingProductReports.map((value) => value.toJson()).toList(),
+              repricingProductReports!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -13027,10 +12276,10 @@ class ListRepricingRuleReportsResponse {
   /// A token for retrieving the next page.
   ///
   /// Its absence means there is no subsequent page.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Daily reports for the given Repricing rule.
-  core.List<RepricingRuleReport> repricingRuleReports;
+  core.List<RepricingRuleReport>? repricingRuleReports;
 
   ListRepricingRuleReportsResponse();
 
@@ -13046,11 +12295,11 @@ class ListRepricingRuleReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (repricingRuleReports != null)
           'repricingRuleReports':
-              repricingRuleReports.map((value) => value.toJson()).toList(),
+              repricingRuleReports!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -13059,10 +12308,10 @@ class ListRepricingRulesResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The rules from the specified merchant.
-  core.List<RepricingRule> repricingRules;
+  core.List<RepricingRule>? repricingRules;
 
   ListRepricingRulesResponse();
 
@@ -13078,18 +12327,18 @@ class ListRepricingRulesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (repricingRules != null)
           'repricingRules':
-              repricingRules.map((value) => value.toJson()).toList(),
+              repricingRules!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for the `ListReturnPolicyOnline` method.
 class ListReturnPolicyOnlineResponse {
   /// The retrieved return policies.
-  core.List<ReturnPolicyOnline> returnPolicies;
+  core.List<ReturnPolicyOnline>? returnPolicies;
 
   ListReturnPolicyOnlineResponse();
 
@@ -13102,10 +12351,10 @@ class ListReturnPolicyOnlineResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (returnPolicies != null)
           'returnPolicies':
-              returnPolicies.map((value) => value.toJson()).toList(),
+              returnPolicies!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -13118,53 +12367,53 @@ class LocalInventory {
   ///
   /// For accepted attribute values, see the local product inventory feed
   /// specification.
-  core.String availability;
+  core.String? availability;
 
   /// In-store product location.
-  core.String instoreProductLocation;
+  core.String? instoreProductLocation;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#localInventory`"
-  core.String kind;
+  core.String? kind;
 
   /// Supported pickup method for this offer.
   ///
   /// Unless the value is "not supported", this field must be submitted together
   /// with `pickupSla`. For accepted attribute values, see the local product
   /// inventory feed // specification.
-  core.String pickupMethod;
+  core.String? pickupMethod;
 
   /// Expected date that an order will be ready for pickup relative to the order
   /// date.
   ///
   /// Must be submitted together with `pickupMethod`. For accepted attribute
   /// values, see the local product inventory feed specification.
-  core.String pickupSla;
+  core.String? pickupSla;
 
   /// Price of the product.
-  Price price;
+  Price? price;
 
   /// Quantity of the product.
   ///
   /// Must be nonnegative.
-  core.int quantity;
+  core.int? quantity;
 
   /// Sale price of the product.
   ///
   /// Mandatory if `sale_price_effective_date` is defined.
-  Price salePrice;
+  Price? salePrice;
 
   /// A date range represented by a pair of ISO 8601 dates separated by a space,
   /// comma, or slash.
   ///
   /// Both dates may be specified as 'null' if undecided.
-  core.String salePriceEffectiveDate;
+  core.String? salePriceEffectiveDate;
 
   /// Store code of this local inventory resource.
   ///
   /// Required.
-  core.String storeCode;
+  core.String? storeCode;
 
   LocalInventory();
 
@@ -13203,25 +12452,25 @@ class LocalInventory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (availability != null) 'availability': availability,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (availability != null) 'availability': availability!,
         if (instoreProductLocation != null)
-          'instoreProductLocation': instoreProductLocation,
-        if (kind != null) 'kind': kind,
-        if (pickupMethod != null) 'pickupMethod': pickupMethod,
-        if (pickupSla != null) 'pickupSla': pickupSla,
-        if (price != null) 'price': price.toJson(),
-        if (quantity != null) 'quantity': quantity,
-        if (salePrice != null) 'salePrice': salePrice.toJson(),
+          'instoreProductLocation': instoreProductLocation!,
+        if (kind != null) 'kind': kind!,
+        if (pickupMethod != null) 'pickupMethod': pickupMethod!,
+        if (pickupSla != null) 'pickupSla': pickupSla!,
+        if (price != null) 'price': price!.toJson(),
+        if (quantity != null) 'quantity': quantity!,
+        if (salePrice != null) 'salePrice': salePrice!.toJson(),
         if (salePriceEffectiveDate != null)
-          'salePriceEffectiveDate': salePriceEffectiveDate,
-        if (storeCode != null) 'storeCode': storeCode,
+          'salePriceEffectiveDate': salePriceEffectiveDate!,
+        if (storeCode != null) 'storeCode': storeCode!,
       };
 }
 
 class LocalinventoryCustomBatchRequest {
   /// The request entries to be processed in the batch.
-  core.List<LocalinventoryCustomBatchRequestEntry> entries;
+  core.List<LocalinventoryCustomBatchRequestEntry>? entries;
 
   LocalinventoryCustomBatchRequest();
 
@@ -13235,30 +12484,30 @@ class LocalinventoryCustomBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Batch entry encoding a single local inventory update request.
 class LocalinventoryCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
-  core.int batchId;
+  core.int? batchId;
 
   /// Local inventory of the product.
-  LocalInventory localInventory;
+  LocalInventory? localInventory;
 
   /// The ID of the managing account.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// Method of the batch request entry.
   ///
   /// Acceptable values are: - "`insert`"
-  core.String method;
+  core.String? method;
 
   /// The ID of the product for which to update local inventory.
-  core.String productId;
+  core.String? productId;
 
   LocalinventoryCustomBatchRequestEntry();
 
@@ -13281,23 +12530,23 @@ class LocalinventoryCustomBatchRequestEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (localInventory != null) 'localInventory': localInventory.toJson(),
-        if (merchantId != null) 'merchantId': merchantId,
-        if (method != null) 'method': method,
-        if (productId != null) 'productId': productId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (localInventory != null) 'localInventory': localInventory!.toJson(),
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (method != null) 'method': method!,
+        if (productId != null) 'productId': productId!,
       };
 }
 
 class LocalinventoryCustomBatchResponse {
   /// The result of the execution of the batch requests.
-  core.List<LocalinventoryCustomBatchResponseEntry> entries;
+  core.List<LocalinventoryCustomBatchResponseEntry>? entries;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#localinventoryCustomBatchResponse".
-  core.String kind;
+  core.String? kind;
 
   LocalinventoryCustomBatchResponse();
 
@@ -13314,25 +12563,25 @@ class LocalinventoryCustomBatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Batch entry encoding a single local inventory update response.
 class LocalinventoryCustomBatchResponseEntry {
   /// The ID of the request entry this entry responds to.
-  core.int batchId;
+  core.int? batchId;
 
   /// A list of errors defined if and only if the request failed.
-  Errors errors;
+  Errors? errors;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#localinventoryCustomBatchResponseEntry`"
-  core.String kind;
+  core.String? kind;
 
   LocalinventoryCustomBatchResponseEntry();
 
@@ -13349,10 +12598,10 @@ class LocalinventoryCustomBatchResponseEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (errors != null) 'errors': errors.toJson(),
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (errors != null) 'errors': errors!.toJson(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -13360,7 +12609,7 @@ class LocationIdSet {
   /// A non-empty list of location IDs.
   ///
   /// They must all be of the same location type (e.g., state).
-  core.List<core.String> locationIds;
+  core.List<core.String>? locationIds;
 
   LocationIdSet();
 
@@ -13372,8 +12621,8 @@ class LocationIdSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (locationIds != null) 'locationIds': locationIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (locationIds != null) 'locationIds': locationIds!,
       };
 }
 
@@ -13382,16 +12631,16 @@ class LoyaltyPoints {
   ///
   /// It is recommended to limit the name to 12 full-width characters or 24
   /// Roman characters.
-  core.String name;
+  core.String? name;
 
   /// The retailer's loyalty points in absolute value.
-  core.String pointsValue;
+  core.String? pointsValue;
 
   /// The ratio of a point when converted to currency.
   ///
   /// Google assumes currency based on Merchant Center settings. If ratio is
   /// left out, it defaults to 1.0.
-  core.double ratio;
+  core.double? ratio;
 
   LoyaltyPoints();
 
@@ -13407,10 +12656,10 @@ class LoyaltyPoints {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (pointsValue != null) 'pointsValue': pointsValue,
-        if (ratio != null) 'ratio': ratio,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (pointsValue != null) 'pointsValue': pointsValue!,
+        if (ratio != null) 'ratio': ratio!,
       };
 }
 
@@ -13420,25 +12669,25 @@ class LoyaltyPoints {
 /// access does not.
 class MerchantOrderReturn {
   /// The date of creation of the return, in ISO 8601 format.
-  core.String creationDate;
+  core.String? creationDate;
 
   /// Merchant defined order ID.
-  core.String merchantOrderId;
+  core.String? merchantOrderId;
 
   /// Google order ID.
-  core.String orderId;
+  core.String? orderId;
 
   /// Order return ID generated by Google.
-  core.String orderReturnId;
+  core.String? orderReturnId;
 
   /// Items of the return.
-  core.List<MerchantOrderReturnItem> returnItems;
+  core.List<MerchantOrderReturnItem>? returnItems;
 
   /// Information about shipping costs.
-  ReturnPricingInfo returnPricingInfo;
+  ReturnPricingInfo? returnPricingInfo;
 
   /// Shipments of the return.
-  core.List<ReturnShipment> returnShipments;
+  core.List<ReturnShipment>? returnShipments;
 
   MerchantOrderReturn();
 
@@ -13474,65 +12723,65 @@ class MerchantOrderReturn {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationDate != null) 'creationDate': creationDate,
-        if (merchantOrderId != null) 'merchantOrderId': merchantOrderId,
-        if (orderId != null) 'orderId': orderId,
-        if (orderReturnId != null) 'orderReturnId': orderReturnId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationDate != null) 'creationDate': creationDate!,
+        if (merchantOrderId != null) 'merchantOrderId': merchantOrderId!,
+        if (orderId != null) 'orderId': orderId!,
+        if (orderReturnId != null) 'orderReturnId': orderReturnId!,
         if (returnItems != null)
-          'returnItems': returnItems.map((value) => value.toJson()).toList(),
+          'returnItems': returnItems!.map((value) => value.toJson()).toList(),
         if (returnPricingInfo != null)
-          'returnPricingInfo': returnPricingInfo.toJson(),
+          'returnPricingInfo': returnPricingInfo!.toJson(),
         if (returnShipments != null)
           'returnShipments':
-              returnShipments.map((value) => value.toJson()).toList(),
+              returnShipments!.map((value) => value.toJson()).toList(),
       };
 }
 
 class MerchantOrderReturnItem {
   /// The reason that the customer chooses to return an item.
-  CustomerReturnReason customerReturnReason;
+  CustomerReturnReason? customerReturnReason;
 
   /// Product level item ID.
   ///
   /// If the returned items are of the same product, they will have the same ID.
-  core.String itemId;
+  core.String? itemId;
 
   /// The reason that the merchant chose to reject an item return.
-  MerchantRejectionReason merchantRejectionReason;
+  MerchantRejectionReason? merchantRejectionReason;
 
   /// The reason that merchant chooses to accept a return item.
-  RefundReason merchantReturnReason;
+  RefundReason? merchantReturnReason;
 
   /// Product data from the time of the order placement.
-  OrderLineItemProduct product;
+  OrderLineItemProduct? product;
 
   /// Maximum amount that can be refunded for this return item.
-  MonetaryAmount refundableAmount;
+  MonetaryAmount? refundableAmount;
 
   /// Unit level ID for the return item.
   ///
   /// Different units of the same product will have different IDs.
-  core.String returnItemId;
+  core.String? returnItemId;
 
   /// IDs of the return shipments that this return item belongs to.
-  core.List<core.String> returnShipmentIds;
+  core.List<core.String>? returnShipmentIds;
 
   /// ID of the original shipment group.
   ///
   /// Provided for shipments with invoice support.
-  core.String shipmentGroupId;
+  core.String? shipmentGroupId;
 
   /// ID of the shipment unit assigned by the merchant.
   ///
   /// Provided for shipments with invoice support.
-  core.String shipmentUnitId;
+  core.String? shipmentUnitId;
 
   /// State of the item.
   ///
   /// Acceptable values are: - "`canceled`" - "`new`" - "`received`" -
   /// "`refunded`" - "`rejected`"
-  core.String state;
+  core.String? state;
 
   MerchantOrderReturnItem();
 
@@ -13580,31 +12829,31 @@ class MerchantOrderReturnItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customerReturnReason != null)
-          'customerReturnReason': customerReturnReason.toJson(),
-        if (itemId != null) 'itemId': itemId,
+          'customerReturnReason': customerReturnReason!.toJson(),
+        if (itemId != null) 'itemId': itemId!,
         if (merchantRejectionReason != null)
-          'merchantRejectionReason': merchantRejectionReason.toJson(),
+          'merchantRejectionReason': merchantRejectionReason!.toJson(),
         if (merchantReturnReason != null)
-          'merchantReturnReason': merchantReturnReason.toJson(),
-        if (product != null) 'product': product.toJson(),
+          'merchantReturnReason': merchantReturnReason!.toJson(),
+        if (product != null) 'product': product!.toJson(),
         if (refundableAmount != null)
-          'refundableAmount': refundableAmount.toJson(),
-        if (returnItemId != null) 'returnItemId': returnItemId,
-        if (returnShipmentIds != null) 'returnShipmentIds': returnShipmentIds,
-        if (shipmentGroupId != null) 'shipmentGroupId': shipmentGroupId,
-        if (shipmentUnitId != null) 'shipmentUnitId': shipmentUnitId,
-        if (state != null) 'state': state,
+          'refundableAmount': refundableAmount!.toJson(),
+        if (returnItemId != null) 'returnItemId': returnItemId!,
+        if (returnShipmentIds != null) 'returnShipmentIds': returnShipmentIds!,
+        if (shipmentGroupId != null) 'shipmentGroupId': shipmentGroupId!,
+        if (shipmentUnitId != null) 'shipmentUnitId': shipmentUnitId!,
+        if (state != null) 'state': state!,
       };
 }
 
 class MerchantRejectionReason {
   /// Description of the reason.
-  core.String description;
+  core.String? description;
 
   /// Code of the rejection reason.
-  core.String reasonCode;
+  core.String? reasonCode;
 
   MerchantRejectionReason();
 
@@ -13617,9 +12866,9 @@ class MerchantRejectionReason {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (reasonCode != null) 'reasonCode': reasonCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (reasonCode != null) 'reasonCode': reasonCode!,
       };
 }
 
@@ -13629,14 +12878,14 @@ class MerchantRejectionReason {
 /// query.
 class Metrics {
   /// Number of clicks.
-  core.String clicks;
+  core.String? clicks;
 
   /// Number of clicks merchant's products receive (clicks) divided by the
   /// number of times the products are shown (impressions).
-  core.double ctr;
+  core.double? ctr;
 
   /// Number of times merchant's products are shown.
-  core.String impressions;
+  core.String? impressions;
 
   Metrics();
 
@@ -13652,15 +12901,15 @@ class Metrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clicks != null) 'clicks': clicks,
-        if (ctr != null) 'ctr': ctr,
-        if (impressions != null) 'impressions': impressions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clicks != null) 'clicks': clicks!,
+        if (ctr != null) 'ctr': ctr!,
+        if (impressions != null) 'impressions': impressions!,
       };
 }
 
 class MinimumOrderValueTable {
-  core.List<MinimumOrderValueTableStoreCodeSetWithMov> storeCodeSetWithMovs;
+  core.List<MinimumOrderValueTableStoreCodeSetWithMov>? storeCodeSetWithMovs;
 
   MinimumOrderValueTable();
 
@@ -13674,10 +12923,10 @@ class MinimumOrderValueTable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (storeCodeSetWithMovs != null)
           'storeCodeSetWithMovs':
-              storeCodeSetWithMovs.map((value) => value.toJson()).toList(),
+              storeCodeSetWithMovs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -13689,10 +12938,10 @@ class MinimumOrderValueTable {
 /// currency.
 class MinimumOrderValueTableStoreCodeSetWithMov {
   /// A list of unique store codes or empty for the catch all.
-  core.List<core.String> storeCodes;
+  core.List<core.String>? storeCodes;
 
   /// The minimum order value for the given stores.
-  Price value;
+  Price? value;
 
   MinimumOrderValueTableStoreCodeSetWithMov();
 
@@ -13708,9 +12957,9 @@ class MinimumOrderValueTableStoreCodeSetWithMov {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (storeCodes != null) 'storeCodes': storeCodes,
-        if (value != null) 'value': value.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (storeCodes != null) 'storeCodes': storeCodes!,
+        if (value != null) 'value': value!.toJson(),
       };
 }
 
@@ -13720,13 +12969,13 @@ class MonetaryAmount {
   /// - For countries (e.g. US) where price attribute excludes tax, this field
   /// corresponds to the pre-tax value. - For coutries (e.g. France) where price
   /// attribute includes tax, this field corresponds to the post-tax value .
-  Price priceAmount;
+  Price? priceAmount;
 
   /// Tax value, present only for countries where price attribute excludes tax
   /// (e.g. US).
   ///
   /// No tax is referenced as 0 value with the corresponding `currency`.
-  Price taxAmount;
+  Price? taxAmount;
 
   MonetaryAmount();
 
@@ -13741,16 +12990,16 @@ class MonetaryAmount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (priceAmount != null) 'priceAmount': priceAmount.toJson(),
-        if (taxAmount != null) 'taxAmount': taxAmount.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (priceAmount != null) 'priceAmount': priceAmount!.toJson(),
+        if (taxAmount != null) 'taxAmount': taxAmount!.toJson(),
       };
 }
 
 /// Request message for the OnboardProgram method.
 class OnboardBuyOnGoogleProgramRequest {
   /// The customer service email.
-  core.String customerServiceEmail;
+  core.String? customerServiceEmail;
 
   OnboardBuyOnGoogleProgramRequest();
 
@@ -13760,9 +13009,9 @@ class OnboardBuyOnGoogleProgramRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customerServiceEmail != null)
-          'customerServiceEmail': customerServiceEmail,
+          'customerServiceEmail': customerServiceEmail!,
       };
 }
 
@@ -13772,60 +13021,60 @@ class OnboardBuyOnGoogleProgramRequest {
 /// access does not.
 class Order {
   /// Whether the order was acknowledged.
-  core.bool acknowledged;
+  core.bool? acknowledged;
 
   /// List of key-value pairs that are attached to a given order.
-  core.List<OrderOrderAnnotation> annotations;
+  core.List<OrderOrderAnnotation>? annotations;
 
   /// The billing address.
-  OrderAddress billingAddress;
+  OrderAddress? billingAddress;
 
   /// The details of the customer who placed the order.
-  OrderCustomer customer;
+  OrderCustomer? customer;
 
   /// Delivery details for shipments of type `delivery`.
-  OrderDeliveryDetails deliveryDetails;
+  OrderDeliveryDetails? deliveryDetails;
 
   /// The REST ID of the order.
   ///
   /// Globally unique.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#order`"
-  core.String kind;
+  core.String? kind;
 
   /// Line items that are ordered.
-  core.List<OrderLineItem> lineItems;
-  core.String merchantId;
+  core.List<OrderLineItem>? lineItems;
+  core.String? merchantId;
 
   /// Merchant-provided ID of the order.
-  core.String merchantOrderId;
+  core.String? merchantOrderId;
 
   /// The net amount for the order (price part).
   ///
   /// For example, if an order was originally for $100 and a refund was issued
   /// for $20, the net amount will be $80.
-  Price netPriceAmount;
+  Price? netPriceAmount;
 
   /// The net amount for the order (tax part).
   ///
   /// Note that in certain cases due to taxable base adjustment `netTaxAmount`
   /// might not match to a sum of tax field across all lineItems and refunds.
-  Price netTaxAmount;
+  Price? netTaxAmount;
 
   /// The status of the payment.
   ///
   /// Acceptable values are: - "`paymentCaptured`" - "`paymentRejected`" -
   /// "`paymentSecured`" - "`pendingAuthorization`"
-  core.String paymentStatus;
+  core.String? paymentStatus;
 
   /// Pickup details for shipments of type `pickup`.
-  OrderPickupDetails pickupDetails;
+  OrderPickupDetails? pickupDetails;
 
   /// The date when the order was placed, in ISO 8601 format.
-  core.String placedDate;
+  core.String? placedDate;
 
   /// Promotions associated with the order.
   ///
@@ -13847,31 +13096,31 @@ class Order {
   /// a promotion applied to it, make sure to refund the amount after first
   /// subtracting the promotion discount from the item price. More details about
   /// the program are here.
-  core.List<OrderPromotion> promotions;
+  core.List<OrderPromotion>? promotions;
 
   /// Refunds for the order.
-  core.List<OrderRefund> refunds;
+  core.List<OrderRefund>? refunds;
 
   /// Shipments of the order.
-  core.List<OrderShipment> shipments;
+  core.List<OrderShipment>? shipments;
 
   /// The total cost of shipping for all items.
-  Price shippingCost;
+  Price? shippingCost;
 
   /// The tax for the total shipping cost.
-  Price shippingCostTax;
+  Price? shippingCostTax;
 
   /// The status of the order.
   ///
   /// Acceptable values are: - "`canceled`" - "`delivered`" - "`inProgress`" -
   /// "`partiallyDelivered`" - "`partiallyReturned`" - "`partiallyShipped`" -
   /// "`pendingShipment`" - "`returned`" - "`shipped`"
-  core.String status;
+  core.String? status;
 
   /// The party responsible for collecting and remitting taxes.
   ///
   /// Acceptable values are: - "`marketplaceFacilitator`" - "`merchant`"
-  core.String taxCollector;
+  core.String? taxCollector;
 
   Order();
 
@@ -13967,71 +13216,71 @@ class Order {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (acknowledged != null) 'acknowledged': acknowledged,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (acknowledged != null) 'acknowledged': acknowledged!,
         if (annotations != null)
-          'annotations': annotations.map((value) => value.toJson()).toList(),
-        if (billingAddress != null) 'billingAddress': billingAddress.toJson(),
-        if (customer != null) 'customer': customer.toJson(),
+          'annotations': annotations!.map((value) => value.toJson()).toList(),
+        if (billingAddress != null) 'billingAddress': billingAddress!.toJson(),
+        if (customer != null) 'customer': customer!.toJson(),
         if (deliveryDetails != null)
-          'deliveryDetails': deliveryDetails.toJson(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+          'deliveryDetails': deliveryDetails!.toJson(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (lineItems != null)
-          'lineItems': lineItems.map((value) => value.toJson()).toList(),
-        if (merchantId != null) 'merchantId': merchantId,
-        if (merchantOrderId != null) 'merchantOrderId': merchantOrderId,
-        if (netPriceAmount != null) 'netPriceAmount': netPriceAmount.toJson(),
-        if (netTaxAmount != null) 'netTaxAmount': netTaxAmount.toJson(),
-        if (paymentStatus != null) 'paymentStatus': paymentStatus,
-        if (pickupDetails != null) 'pickupDetails': pickupDetails.toJson(),
-        if (placedDate != null) 'placedDate': placedDate,
+          'lineItems': lineItems!.map((value) => value.toJson()).toList(),
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (merchantOrderId != null) 'merchantOrderId': merchantOrderId!,
+        if (netPriceAmount != null) 'netPriceAmount': netPriceAmount!.toJson(),
+        if (netTaxAmount != null) 'netTaxAmount': netTaxAmount!.toJson(),
+        if (paymentStatus != null) 'paymentStatus': paymentStatus!,
+        if (pickupDetails != null) 'pickupDetails': pickupDetails!.toJson(),
+        if (placedDate != null) 'placedDate': placedDate!,
         if (promotions != null)
-          'promotions': promotions.map((value) => value.toJson()).toList(),
+          'promotions': promotions!.map((value) => value.toJson()).toList(),
         if (refunds != null)
-          'refunds': refunds.map((value) => value.toJson()).toList(),
+          'refunds': refunds!.map((value) => value.toJson()).toList(),
         if (shipments != null)
-          'shipments': shipments.map((value) => value.toJson()).toList(),
-        if (shippingCost != null) 'shippingCost': shippingCost.toJson(),
+          'shipments': shipments!.map((value) => value.toJson()).toList(),
+        if (shippingCost != null) 'shippingCost': shippingCost!.toJson(),
         if (shippingCostTax != null)
-          'shippingCostTax': shippingCostTax.toJson(),
-        if (status != null) 'status': status,
-        if (taxCollector != null) 'taxCollector': taxCollector,
+          'shippingCostTax': shippingCostTax!.toJson(),
+        if (status != null) 'status': status!,
+        if (taxCollector != null) 'taxCollector': taxCollector!,
       };
 }
 
 class OrderAddress {
   /// CLDR country code (e.g. "US").
-  core.String country;
+  core.String? country;
 
   /// Strings representing the lines of the printed label for mailing the order,
   /// for example: John Smith 1600 Amphitheatre Parkway Mountain View, CA, 94043
   /// United States
-  core.List<core.String> fullAddress;
+  core.List<core.String>? fullAddress;
 
   /// Whether the address is a post office box.
-  core.bool isPostOfficeBox;
+  core.bool? isPostOfficeBox;
 
   /// City, town or commune.
   ///
   /// May also include dependent localities or sublocalities (e.g. neighborhoods
   /// or suburbs).
-  core.String locality;
+  core.String? locality;
 
   /// Postal Code or ZIP (e.g. "94043").
-  core.String postalCode;
+  core.String? postalCode;
 
   /// Name of the recipient.
-  core.String recipientName;
+  core.String? recipientName;
 
   /// Top-level administrative subdivision of the country.
   ///
   /// For example, a state like California ("CA") or a province like Quebec
   /// ("QC").
-  core.String region;
+  core.String? region;
 
   /// Street-level part of the address.
-  core.List<core.String> streetAddress;
+  core.List<core.String>? streetAddress;
 
   OrderAddress();
 
@@ -14066,15 +13315,15 @@ class OrderAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (fullAddress != null) 'fullAddress': fullAddress,
-        if (isPostOfficeBox != null) 'isPostOfficeBox': isPostOfficeBox,
-        if (locality != null) 'locality': locality,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (recipientName != null) 'recipientName': recipientName,
-        if (region != null) 'region': region,
-        if (streetAddress != null) 'streetAddress': streetAddress,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (fullAddress != null) 'fullAddress': fullAddress!,
+        if (isPostOfficeBox != null) 'isPostOfficeBox': isPostOfficeBox!,
+        if (locality != null) 'locality': locality!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (recipientName != null) 'recipientName': recipientName!,
+        if (region != null) 'region': region!,
+        if (streetAddress != null) 'streetAddress': streetAddress!,
       };
 }
 
@@ -14084,13 +13333,13 @@ class OrderCancellation {
   /// Acceptable values are: - "`customer`" - "`googleBot`" -
   /// "`googleCustomerService`" - "`googlePayments`" - "`googleSabre`" -
   /// "`merchant`"
-  core.String actor;
+  core.String? actor;
 
   /// Date on which the cancellation has been created, in ISO 8601 format.
-  core.String creationDate;
+  core.String? creationDate;
 
   /// The quantity that was canceled.
-  core.int quantity;
+  core.int? quantity;
 
   /// The reason for the cancellation.
   ///
@@ -14110,10 +13359,10 @@ class OrderCancellation {
   /// "`other`" - "`paymentAbuse`" - "`paymentDeclined`" - "`priceError`" -
   /// "`returnRefundAbuse`" - "`shippingPriceError`" - "`taxError`" -
   /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"
-  core.String reason;
+  core.String? reason;
 
   /// The explanation of the reason.
-  core.String reasonText;
+  core.String? reasonText;
 
   OrderCancellation();
 
@@ -14135,35 +13384,35 @@ class OrderCancellation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actor != null) 'actor': actor,
-        if (creationDate != null) 'creationDate': creationDate,
-        if (quantity != null) 'quantity': quantity,
-        if (reason != null) 'reason': reason,
-        if (reasonText != null) 'reasonText': reasonText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actor != null) 'actor': actor!,
+        if (creationDate != null) 'creationDate': creationDate!,
+        if (quantity != null) 'quantity': quantity!,
+        if (reason != null) 'reason': reason!,
+        if (reasonText != null) 'reasonText': reasonText!,
       };
 }
 
 class OrderCustomer {
   /// Full name of the customer.
-  core.String fullName;
+  core.String? fullName;
 
   /// Email address for the merchant to send value-added tax or invoice
   /// documentation of the order.
   ///
   /// Only the last document sent is made available to the customer. For more
   /// information, see About automated VAT invoicing for Buy on Google.
-  core.String invoiceReceivingEmail;
+  core.String? invoiceReceivingEmail;
 
   /// Loyalty program information.
-  OrderCustomerLoyaltyInfo loyaltyInfo;
+  OrderCustomerLoyaltyInfo? loyaltyInfo;
 
   /// Customer's marketing preferences.
   ///
   /// Contains the marketing opt-in information that is current at the time that
   /// the merchant call. User preference selections can change from one order to
   /// the next so preferences must be checked with every order.
-  OrderCustomerMarketingRightsInfo marketingRightsInfo;
+  OrderCustomerMarketingRightsInfo? marketingRightsInfo;
 
   OrderCustomer();
 
@@ -14184,22 +13433,22 @@ class OrderCustomer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fullName != null) 'fullName': fullName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fullName != null) 'fullName': fullName!,
         if (invoiceReceivingEmail != null)
-          'invoiceReceivingEmail': invoiceReceivingEmail,
-        if (loyaltyInfo != null) 'loyaltyInfo': loyaltyInfo.toJson(),
+          'invoiceReceivingEmail': invoiceReceivingEmail!,
+        if (loyaltyInfo != null) 'loyaltyInfo': loyaltyInfo!.toJson(),
         if (marketingRightsInfo != null)
-          'marketingRightsInfo': marketingRightsInfo.toJson(),
+          'marketingRightsInfo': marketingRightsInfo!.toJson(),
       };
 }
 
 class OrderCustomerLoyaltyInfo {
   /// The loyalty card/membership number.
-  core.String loyaltyNumber;
+  core.String? loyaltyNumber;
 
   /// Name of card/membership holder, this field will be populated when
-  core.String name;
+  core.String? name;
 
   OrderCustomerLoyaltyInfo();
 
@@ -14212,9 +13461,9 @@ class OrderCustomerLoyaltyInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (loyaltyNumber != null) 'loyaltyNumber': loyaltyNumber,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (loyaltyNumber != null) 'loyaltyNumber': loyaltyNumber!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -14226,19 +13475,19 @@ class OrderCustomerMarketingRightsInfo {
   /// can be subscribed to marketing emails. Customers who have chosen `denied`
   /// must not be subscribed, or must be unsubscribed if already opted-in.
   /// Acceptable values are: - "`denied`" - "`granted`"
-  core.String explicitMarketingPreference;
+  core.String? explicitMarketingPreference;
 
   /// Timestamp when last time marketing preference was updated.
   ///
   /// Could be empty, if user wasn't offered a selection yet.
-  core.String lastUpdatedTimestamp;
+  core.String? lastUpdatedTimestamp;
 
   /// Email address that can be used for marketing purposes.
   ///
   /// The field may be empty even if `explicitMarketingPreference` is 'granted'.
   /// This happens when retrieving an old order from the customer who deleted
   /// their account.
-  core.String marketingEmailAddress;
+  core.String? marketingEmailAddress;
 
   OrderCustomerMarketingRightsInfo();
 
@@ -14255,22 +13504,22 @@ class OrderCustomerMarketingRightsInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (explicitMarketingPreference != null)
-          'explicitMarketingPreference': explicitMarketingPreference,
+          'explicitMarketingPreference': explicitMarketingPreference!,
         if (lastUpdatedTimestamp != null)
-          'lastUpdatedTimestamp': lastUpdatedTimestamp,
+          'lastUpdatedTimestamp': lastUpdatedTimestamp!,
         if (marketingEmailAddress != null)
-          'marketingEmailAddress': marketingEmailAddress,
+          'marketingEmailAddress': marketingEmailAddress!,
       };
 }
 
 class OrderDeliveryDetails {
   /// The delivery address
-  OrderAddress address;
+  OrderAddress? address;
 
   /// The phone number of the person receiving the delivery.
-  core.String phoneNumber;
+  core.String? phoneNumber;
 
   OrderDeliveryDetails();
 
@@ -14284,75 +13533,75 @@ class OrderDeliveryDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address.toJson(),
-        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!.toJson(),
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
       };
 }
 
 class OrderLineItem {
   /// Price and tax adjustments applied on the line item.
-  core.List<OrderLineItemAdjustment> adjustments;
+  core.List<OrderLineItemAdjustment>? adjustments;
 
   /// Annotations that are attached to the line item.
-  core.List<OrderMerchantProvidedAnnotation> annotations;
+  core.List<OrderMerchantProvidedAnnotation>? annotations;
 
   /// Cancellations of the line item.
-  core.List<OrderCancellation> cancellations;
+  core.List<OrderCancellation>? cancellations;
 
   /// The ID of the line item.
-  core.String id;
+  core.String? id;
 
   /// Total price for the line item.
   ///
   /// For example, if two items for $10 are purchased, the total price will be
   /// $20.
-  Price price;
+  Price? price;
 
   /// Product data as seen by customer from the time of the order placement.
   ///
   /// Note that certain attributes values (e.g. title or gtin) might be
   /// reformatted and no longer match values submitted via product feed.
-  OrderLineItemProduct product;
+  OrderLineItemProduct? product;
 
   /// Number of items canceled.
-  core.int quantityCanceled;
+  core.int? quantityCanceled;
 
   /// Number of items delivered.
-  core.int quantityDelivered;
+  core.int? quantityDelivered;
 
   /// Number of items ordered.
-  core.int quantityOrdered;
+  core.int? quantityOrdered;
 
   /// Number of items pending.
-  core.int quantityPending;
+  core.int? quantityPending;
 
   /// Number of items ready for pickup.
-  core.int quantityReadyForPickup;
+  core.int? quantityReadyForPickup;
 
   /// Number of items returned.
-  core.int quantityReturned;
+  core.int? quantityReturned;
 
   /// Number of items shipped.
-  core.int quantityShipped;
+  core.int? quantityShipped;
 
   /// Number of items undeliverable.
-  core.int quantityUndeliverable;
+  core.int? quantityUndeliverable;
 
   /// Details of the return policy for the line item.
-  OrderLineItemReturnInfo returnInfo;
+  OrderLineItemReturnInfo? returnInfo;
 
   /// Returns of the line item.
-  core.List<OrderReturn> returns;
+  core.List<OrderReturn>? returns;
 
   /// Details of the requested shipping for the line item.
-  OrderLineItemShippingDetails shippingDetails;
+  OrderLineItemShippingDetails? shippingDetails;
 
   /// Total tax amount for the line item.
   ///
   /// For example, if two items are purchased, and each have a cost tax of $2,
   /// the total tax amount will be $4.
-  Price tax;
+  Price? tax;
 
   OrderLineItem();
 
@@ -14431,47 +13680,47 @@ class OrderLineItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (adjustments != null)
-          'adjustments': adjustments.map((value) => value.toJson()).toList(),
+          'adjustments': adjustments!.map((value) => value.toJson()).toList(),
         if (annotations != null)
-          'annotations': annotations.map((value) => value.toJson()).toList(),
+          'annotations': annotations!.map((value) => value.toJson()).toList(),
         if (cancellations != null)
           'cancellations':
-              cancellations.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id,
-        if (price != null) 'price': price.toJson(),
-        if (product != null) 'product': product.toJson(),
-        if (quantityCanceled != null) 'quantityCanceled': quantityCanceled,
-        if (quantityDelivered != null) 'quantityDelivered': quantityDelivered,
-        if (quantityOrdered != null) 'quantityOrdered': quantityOrdered,
-        if (quantityPending != null) 'quantityPending': quantityPending,
+              cancellations!.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id!,
+        if (price != null) 'price': price!.toJson(),
+        if (product != null) 'product': product!.toJson(),
+        if (quantityCanceled != null) 'quantityCanceled': quantityCanceled!,
+        if (quantityDelivered != null) 'quantityDelivered': quantityDelivered!,
+        if (quantityOrdered != null) 'quantityOrdered': quantityOrdered!,
+        if (quantityPending != null) 'quantityPending': quantityPending!,
         if (quantityReadyForPickup != null)
-          'quantityReadyForPickup': quantityReadyForPickup,
-        if (quantityReturned != null) 'quantityReturned': quantityReturned,
-        if (quantityShipped != null) 'quantityShipped': quantityShipped,
+          'quantityReadyForPickup': quantityReadyForPickup!,
+        if (quantityReturned != null) 'quantityReturned': quantityReturned!,
+        if (quantityShipped != null) 'quantityShipped': quantityShipped!,
         if (quantityUndeliverable != null)
-          'quantityUndeliverable': quantityUndeliverable,
-        if (returnInfo != null) 'returnInfo': returnInfo.toJson(),
+          'quantityUndeliverable': quantityUndeliverable!,
+        if (returnInfo != null) 'returnInfo': returnInfo!.toJson(),
         if (returns != null)
-          'returns': returns.map((value) => value.toJson()).toList(),
+          'returns': returns!.map((value) => value.toJson()).toList(),
         if (shippingDetails != null)
-          'shippingDetails': shippingDetails.toJson(),
-        if (tax != null) 'tax': tax.toJson(),
+          'shippingDetails': shippingDetails!.toJson(),
+        if (tax != null) 'tax': tax!.toJson(),
       };
 }
 
 class OrderLineItemAdjustment {
   /// Adjustment for total price of the line item.
-  Price priceAdjustment;
+  Price? priceAdjustment;
 
   /// Adjustment for total tax of the line item.
-  Price taxAdjustment;
+  Price? taxAdjustment;
 
   /// Type of this adjustment.
   ///
   /// Acceptable values are: - "`promotion`"
-  core.String type;
+  core.String? type;
 
   OrderLineItemAdjustment();
 
@@ -14489,65 +13738,65 @@ class OrderLineItemAdjustment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (priceAdjustment != null)
-          'priceAdjustment': priceAdjustment.toJson(),
-        if (taxAdjustment != null) 'taxAdjustment': taxAdjustment.toJson(),
-        if (type != null) 'type': type,
+          'priceAdjustment': priceAdjustment!.toJson(),
+        if (taxAdjustment != null) 'taxAdjustment': taxAdjustment!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
 class OrderLineItemProduct {
   /// Brand of the item.
-  core.String brand;
+  core.String? brand;
 
   /// Condition or state of the item.
   ///
   /// Acceptable values are: - "`new`" - "`refurbished`" - "`used`"
-  core.String condition;
+  core.String? condition;
 
   /// The two-letter ISO 639-1 language code for the item.
-  core.String contentLanguage;
+  core.String? contentLanguage;
 
   /// Associated fees at order creation time.
-  core.List<OrderLineItemProductFee> fees;
+  core.List<OrderLineItemProductFee>? fees;
 
   /// Global Trade Item Number (GTIN) of the item.
-  core.String gtin;
+  core.String? gtin;
 
   /// The REST ID of the product.
-  core.String id;
+  core.String? id;
 
   /// URL of an image of the item.
-  core.String imageLink;
+  core.String? imageLink;
 
   /// Shared identifier for all variants of the same product.
-  core.String itemGroupId;
+  core.String? itemGroupId;
 
   /// Manufacturer Part Number (MPN) of the item.
-  core.String mpn;
+  core.String? mpn;
 
   /// An identifier of the item.
-  core.String offerId;
+  core.String? offerId;
 
   /// Price of the item.
-  Price price;
+  Price? price;
 
   /// URL to the cached image shown to the user when order was placed.
-  core.String shownImage;
+  core.String? shownImage;
 
   /// The CLDR territory // code of the target country of the product.
-  core.String targetCountry;
+  core.String? targetCountry;
 
   /// The title of the product.
-  core.String title;
+  core.String? title;
 
   /// Variant attributes for the item.
   ///
   /// These are dimensions of the product, such as color, gender, material,
   /// pattern, and size. You can find a comprehensive list of variant attributes
   /// here.
-  core.List<OrderLineItemProductVariantAttribute> variantAttributes;
+  core.List<OrderLineItemProductVariantAttribute>? variantAttributes;
 
   OrderLineItemProduct();
 
@@ -14608,33 +13857,33 @@ class OrderLineItemProduct {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (brand != null) 'brand': brand,
-        if (condition != null) 'condition': condition,
-        if (contentLanguage != null) 'contentLanguage': contentLanguage,
-        if (fees != null) 'fees': fees.map((value) => value.toJson()).toList(),
-        if (gtin != null) 'gtin': gtin,
-        if (id != null) 'id': id,
-        if (imageLink != null) 'imageLink': imageLink,
-        if (itemGroupId != null) 'itemGroupId': itemGroupId,
-        if (mpn != null) 'mpn': mpn,
-        if (offerId != null) 'offerId': offerId,
-        if (price != null) 'price': price.toJson(),
-        if (shownImage != null) 'shownImage': shownImage,
-        if (targetCountry != null) 'targetCountry': targetCountry,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (brand != null) 'brand': brand!,
+        if (condition != null) 'condition': condition!,
+        if (contentLanguage != null) 'contentLanguage': contentLanguage!,
+        if (fees != null) 'fees': fees!.map((value) => value.toJson()).toList(),
+        if (gtin != null) 'gtin': gtin!,
+        if (id != null) 'id': id!,
+        if (imageLink != null) 'imageLink': imageLink!,
+        if (itemGroupId != null) 'itemGroupId': itemGroupId!,
+        if (mpn != null) 'mpn': mpn!,
+        if (offerId != null) 'offerId': offerId!,
+        if (price != null) 'price': price!.toJson(),
+        if (shownImage != null) 'shownImage': shownImage!,
+        if (targetCountry != null) 'targetCountry': targetCountry!,
+        if (title != null) 'title': title!,
         if (variantAttributes != null)
           'variantAttributes':
-              variantAttributes.map((value) => value.toJson()).toList(),
+              variantAttributes!.map((value) => value.toJson()).toList(),
       };
 }
 
 class OrderLineItemProductFee {
   /// Amount of the fee.
-  Price amount;
+  Price? amount;
 
   /// Name of the fee.
-  core.String name;
+  core.String? name;
 
   OrderLineItemProductFee();
 
@@ -14648,18 +13897,18 @@ class OrderLineItemProductFee {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amount != null) 'amount': amount.toJson(),
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amount != null) 'amount': amount!.toJson(),
+        if (name != null) 'name': name!,
       };
 }
 
 class OrderLineItemProductVariantAttribute {
   /// The dimension of the variant.
-  core.String dimension;
+  core.String? dimension;
 
   /// The value for the dimension.
-  core.String value;
+  core.String? value;
 
   OrderLineItemProductVariantAttribute();
 
@@ -14672,9 +13921,9 @@ class OrderLineItemProductVariantAttribute {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimension != null) 'dimension': dimension,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimension != null) 'dimension': dimension!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -14682,17 +13931,17 @@ class OrderLineItemReturnInfo {
   /// How many days later the item can be returned.
   ///
   /// Required.
-  core.int daysToReturn;
+  core.int? daysToReturn;
 
   /// Whether the item is returnable.
   ///
   /// Required.
-  core.bool isReturnable;
+  core.bool? isReturnable;
 
   /// URL of the item return policy.
   ///
   /// Required.
-  core.String policyUrl;
+  core.String? policyUrl;
 
   OrderLineItemReturnInfo();
 
@@ -14708,10 +13957,10 @@ class OrderLineItemReturnInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (daysToReturn != null) 'daysToReturn': daysToReturn,
-        if (isReturnable != null) 'isReturnable': isReturnable,
-        if (policyUrl != null) 'policyUrl': policyUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (daysToReturn != null) 'daysToReturn': daysToReturn!,
+        if (isReturnable != null) 'isReturnable': isReturnable!,
+        if (policyUrl != null) 'policyUrl': policyUrl!,
       };
 }
 
@@ -14719,28 +13968,28 @@ class OrderLineItemShippingDetails {
   /// The delivery by date, in ISO 8601 format.
   ///
   /// Required.
-  core.String deliverByDate;
+  core.String? deliverByDate;
 
   /// Details of the shipping method.
   ///
   /// Required.
-  OrderLineItemShippingDetailsMethod method;
+  OrderLineItemShippingDetailsMethod? method;
 
   /// The promised time in minutes in which the order will be ready for pickup.
   ///
   /// This only applies to buy-online-pickup-in-store same-day order.
-  core.int pickupPromiseInMinutes;
+  core.int? pickupPromiseInMinutes;
 
   /// The ship by date, in ISO 8601 format.
   ///
   /// Required.
-  core.String shipByDate;
+  core.String? shipByDate;
 
   /// Type of shipment.
   ///
   /// Indicates whether `deliveryDetails` or `pickupDetails` is applicable for
   /// this shipment. Acceptable values are: - "`delivery`" - "`pickup`"
-  core.String type;
+  core.String? type;
 
   OrderLineItemShippingDetails();
 
@@ -14763,13 +14012,13 @@ class OrderLineItemShippingDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deliverByDate != null) 'deliverByDate': deliverByDate,
-        if (method != null) 'method': method.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deliverByDate != null) 'deliverByDate': deliverByDate!,
+        if (method != null) 'method': method!.toJson(),
         if (pickupPromiseInMinutes != null)
-          'pickupPromiseInMinutes': pickupPromiseInMinutes,
-        if (shipByDate != null) 'shipByDate': shipByDate,
-        if (type != null) 'type': type,
+          'pickupPromiseInMinutes': pickupPromiseInMinutes!,
+        if (shipByDate != null) 'shipByDate': shipByDate!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -14777,22 +14026,22 @@ class OrderLineItemShippingDetailsMethod {
   /// The carrier for the shipping.
   ///
   /// Optional. See `shipments[].carrier` for a list of acceptable values.
-  core.String carrier;
+  core.String? carrier;
 
   /// Maximum transit time.
   ///
   /// Required.
-  core.int maxDaysInTransit;
+  core.int? maxDaysInTransit;
 
   /// The name of the shipping method.
   ///
   /// Required.
-  core.String methodName;
+  core.String? methodName;
 
   /// Minimum transit time.
   ///
   /// Required.
-  core.int minDaysInTransit;
+  core.int? minDaysInTransit;
 
   OrderLineItemShippingDetailsMethod();
 
@@ -14811,22 +14060,22 @@ class OrderLineItemShippingDetailsMethod {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (carrier != null) 'carrier': carrier,
-        if (maxDaysInTransit != null) 'maxDaysInTransit': maxDaysInTransit,
-        if (methodName != null) 'methodName': methodName,
-        if (minDaysInTransit != null) 'minDaysInTransit': minDaysInTransit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (carrier != null) 'carrier': carrier!,
+        if (maxDaysInTransit != null) 'maxDaysInTransit': maxDaysInTransit!,
+        if (methodName != null) 'methodName': methodName!,
+        if (minDaysInTransit != null) 'minDaysInTransit': minDaysInTransit!,
       };
 }
 
 class OrderMerchantProvidedAnnotation {
   /// Key for additional merchant provided (as key-value pairs) annotation about
   /// the line item.
-  core.String key;
+  core.String? key;
 
   /// Value for additional merchant provided (as key-value pairs) annotation
   /// about the line item.
-  core.String value;
+  core.String? value;
 
   OrderMerchantProvidedAnnotation();
 
@@ -14839,18 +14088,18 @@ class OrderMerchantProvidedAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
 class OrderOrderAnnotation {
   /// Key for additional google provided (as key-value pairs) annotation.
-  core.String key;
+  core.String? key;
 
   /// Value for additional google provided (as key-value pairs) annotation.
-  core.String value;
+  core.String? value;
 
   OrderOrderAnnotation();
 
@@ -14863,9 +14112,9 @@ class OrderOrderAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -14874,19 +14123,19 @@ class OrderPickupDetails {
   ///
   /// Note that `recipientName` in the address is the name of the business at
   /// the pickup location.
-  OrderAddress address;
+  OrderAddress? address;
 
   /// Collectors authorized to pick up shipment from the pickup location.
-  core.List<OrderPickupDetailsCollector> collectors;
+  core.List<OrderPickupDetailsCollector>? collectors;
 
   /// ID of the pickup location.
-  core.String locationId;
+  core.String? locationId;
 
   /// The pickup type of this order.
   ///
   /// Acceptable values are: - "`merchantStore`" - "`merchantStoreCurbside`" -
   /// "`merchantStoreLocker`" - "`thirdPartyPickupPoint`" - "`thirdPartyLocker`"
-  core.String pickupType;
+  core.String? pickupType;
 
   OrderPickupDetails();
 
@@ -14910,21 +14159,21 @@ class OrderPickupDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!.toJson(),
         if (collectors != null)
-          'collectors': collectors.map((value) => value.toJson()).toList(),
-        if (locationId != null) 'locationId': locationId,
-        if (pickupType != null) 'pickupType': pickupType,
+          'collectors': collectors!.map((value) => value.toJson()).toList(),
+        if (locationId != null) 'locationId': locationId!,
+        if (pickupType != null) 'pickupType': pickupType!,
       };
 }
 
 class OrderPickupDetailsCollector {
   /// Name of the person picking up the shipment.
-  core.String name;
+  core.String? name;
 
   /// Phone number of the person picking up the shipment.
-  core.String phoneNumber;
+  core.String? phoneNumber;
 
   OrderPickupDetailsCollector();
 
@@ -14937,9 +14186,9 @@ class OrderPickupDetailsCollector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
       };
 }
 
@@ -14949,19 +14198,19 @@ class OrderPromotion {
   /// If empty, there are no restrictions on applicable items and quantity. This
   /// field will also be empty for shipping promotions because shipping is not
   /// tied to any specific item.
-  core.List<OrderPromotionItem> applicableItems;
+  core.List<OrderPromotionItem>? applicableItems;
 
   /// Items that this promotion have been applied to.
   ///
   /// Do not provide for `orders.createtestorder`. This field will be empty for
   /// shipping promotions because shipping is not tied to any specific item.
-  core.List<OrderPromotionItem> appliedItems;
+  core.List<OrderPromotionItem>? appliedItems;
 
   /// Promotion end time in ISO 8601 format.
   ///
   /// Date, time, and offset required, e.g., "2020-01-02T09:00:00+01:00" or
   /// "2020-01-02T09:00:00Z".
-  core.String endTime;
+  core.String? endTime;
 
   /// The party funding the promotion.
   ///
@@ -14969,28 +14218,28 @@ class OrderPromotion {
   /// values are: - "`google`" - "`merchant`"
   ///
   /// Required.
-  core.String funder;
+  core.String? funder;
 
   /// This field is used to identify promotions within merchants' own systems.
   ///
   /// Required.
-  core.String merchantPromotionId;
+  core.String? merchantPromotionId;
 
   /// Estimated discount applied to price.
   ///
   /// Amount is pre-tax or post-tax depending on location of order.
-  Price priceValue;
+  Price? priceValue;
 
   /// A short title of the promotion to be shown on the checkout page.
   ///
   /// Do not provide for `orders.createtestorder`.
-  core.String shortTitle;
+  core.String? shortTitle;
 
   /// Promotion start time in ISO 8601 format.
   ///
   /// Date, time, and offset required, e.g., "2020-01-02T09:00:00+01:00" or
   /// "2020-01-02T09:00:00Z".
-  core.String startTime;
+  core.String? startTime;
 
   /// The category of the promotion.
   ///
@@ -15002,17 +14251,17 @@ class OrderPromotion {
   /// "`percentOff`" - "`rewardPoints`" - "`salePrice`"
   ///
   /// Required.
-  core.String subtype;
+  core.String? subtype;
 
   /// Estimated discount applied to tax (if allowed by law).
   ///
   /// Do not provide for `orders.createtestorder`.
-  Price taxValue;
+  Price? taxValue;
 
   /// The title of the promotion.
   ///
   /// Required.
-  core.String title;
+  core.String? title;
 
   /// The scope of the promotion.
   ///
@@ -15020,7 +14269,7 @@ class OrderPromotion {
   /// values are: - "`product`" - "`shipping`"
   ///
   /// Required.
-  core.String type;
+  core.String? type;
 
   OrderPromotion();
 
@@ -15071,23 +14320,23 @@ class OrderPromotion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (applicableItems != null)
           'applicableItems':
-              applicableItems.map((value) => value.toJson()).toList(),
+              applicableItems!.map((value) => value.toJson()).toList(),
         if (appliedItems != null)
-          'appliedItems': appliedItems.map((value) => value.toJson()).toList(),
-        if (endTime != null) 'endTime': endTime,
-        if (funder != null) 'funder': funder,
+          'appliedItems': appliedItems!.map((value) => value.toJson()).toList(),
+        if (endTime != null) 'endTime': endTime!,
+        if (funder != null) 'funder': funder!,
         if (merchantPromotionId != null)
-          'merchantPromotionId': merchantPromotionId,
-        if (priceValue != null) 'priceValue': priceValue.toJson(),
-        if (shortTitle != null) 'shortTitle': shortTitle,
-        if (startTime != null) 'startTime': startTime,
-        if (subtype != null) 'subtype': subtype,
-        if (taxValue != null) 'taxValue': taxValue.toJson(),
-        if (title != null) 'title': title,
-        if (type != null) 'type': type,
+          'merchantPromotionId': merchantPromotionId!,
+        if (priceValue != null) 'priceValue': priceValue!.toJson(),
+        if (shortTitle != null) 'shortTitle': shortTitle!,
+        if (startTime != null) 'startTime': startTime!,
+        if (subtype != null) 'subtype': subtype!,
+        if (taxValue != null) 'taxValue': taxValue!.toJson(),
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -15095,22 +14344,22 @@ class OrderPromotionItem {
   /// The line item ID of a product.
   ///
   /// Do not provide for `orders.createtestorder`.
-  core.String lineItemId;
+  core.String? lineItemId;
 
   /// Offer ID of a product.
   ///
   /// Only for `orders.createtestorder`.
   ///
   /// Required.
-  core.String offerId;
+  core.String? offerId;
 
   /// `orders.createtestorder`.
-  core.String productId;
+  core.String? productId;
 
   /// The quantity of the associated product.
   ///
   /// Do not provide for `orders.createtestorder`.
-  core.int quantity;
+  core.int? quantity;
 
   OrderPromotionItem();
 
@@ -15129,11 +14378,11 @@ class OrderPromotionItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lineItemId != null) 'lineItemId': lineItemId,
-        if (offerId != null) 'offerId': offerId,
-        if (productId != null) 'productId': productId,
-        if (quantity != null) 'quantity': quantity,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lineItemId != null) 'lineItemId': lineItemId!,
+        if (offerId != null) 'offerId': offerId!,
+        if (productId != null) 'productId': productId!,
+        if (quantity != null) 'quantity': quantity!,
       };
 }
 
@@ -15143,13 +14392,13 @@ class OrderRefund {
   /// Acceptable values are: - "`customer`" - "`googleBot`" -
   /// "`googleCustomerService`" - "`googlePayments`" - "`googleSabre`" -
   /// "`merchant`"
-  core.String actor;
+  core.String? actor;
 
   /// The amount that is refunded.
-  Price amount;
+  Price? amount;
 
   /// Date on which the item has been created, in ISO 8601 format.
-  core.String creationDate;
+  core.String? creationDate;
 
   /// The reason for the refund.
   ///
@@ -15172,10 +14421,10 @@ class OrderRefund {
   /// "`shippingCostAdjustment`" - "`shippingPriceError`" - "`taxAdjustment`" -
   /// "`taxError`" - "`undeliverableShippingAddress`" -
   /// "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"
-  core.String reason;
+  core.String? reason;
 
   /// The explanation of the reason.
-  core.String reasonText;
+  core.String? reasonText;
 
   OrderRefund();
 
@@ -15198,12 +14447,12 @@ class OrderRefund {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actor != null) 'actor': actor,
-        if (amount != null) 'amount': amount.toJson(),
-        if (creationDate != null) 'creationDate': creationDate,
-        if (reason != null) 'reason': reason,
-        if (reasonText != null) 'reasonText': reasonText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actor != null) 'actor': actor!,
+        if (amount != null) 'amount': amount!.toJson(),
+        if (creationDate != null) 'creationDate': creationDate!,
+        if (reason != null) 'reason': reason!,
+        if (reasonText != null) 'reasonText': reasonText!,
       };
 }
 
@@ -15212,19 +14461,19 @@ class OrderRefund {
 /// All methods require the payment analyst role.
 class OrderReportDisbursement {
   /// The disbursement amount.
-  Price disbursementAmount;
+  Price? disbursementAmount;
 
   /// The disbursement date, in ISO 8601 format.
-  core.String disbursementCreationDate;
+  core.String? disbursementCreationDate;
 
   /// The date the disbursement was initiated, in ISO 8601 format.
-  core.String disbursementDate;
+  core.String? disbursementDate;
 
   /// The ID of the disbursement.
-  core.String disbursementId;
+  core.String? disbursementId;
 
   /// The ID of the managing account.
-  core.String merchantId;
+  core.String? merchantId;
 
   OrderReportDisbursement();
 
@@ -15248,44 +14497,44 @@ class OrderReportDisbursement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (disbursementAmount != null)
-          'disbursementAmount': disbursementAmount.toJson(),
+          'disbursementAmount': disbursementAmount!.toJson(),
         if (disbursementCreationDate != null)
-          'disbursementCreationDate': disbursementCreationDate,
-        if (disbursementDate != null) 'disbursementDate': disbursementDate,
-        if (disbursementId != null) 'disbursementId': disbursementId,
-        if (merchantId != null) 'merchantId': merchantId,
+          'disbursementCreationDate': disbursementCreationDate!,
+        if (disbursementDate != null) 'disbursementDate': disbursementDate!,
+        if (disbursementId != null) 'disbursementId': disbursementId!,
+        if (merchantId != null) 'merchantId': merchantId!,
       };
 }
 
 class OrderReportTransaction {
   /// The disbursement amount.
-  Price disbursementAmount;
+  Price? disbursementAmount;
 
   /// The date the disbursement was created, in ISO 8601 format.
-  core.String disbursementCreationDate;
+  core.String? disbursementCreationDate;
 
   /// The date the disbursement was initiated, in ISO 8601 format.
-  core.String disbursementDate;
+  core.String? disbursementDate;
 
   /// The ID of the disbursement.
-  core.String disbursementId;
+  core.String? disbursementId;
 
   /// The ID of the managing account.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// Merchant-provided ID of the order.
-  core.String merchantOrderId;
+  core.String? merchantOrderId;
 
   /// The ID of the order.
-  core.String orderId;
+  core.String? orderId;
 
   /// Total amount for the items.
-  ProductAmount productAmount;
+  ProductAmount? productAmount;
 
   /// The date of the transaction, in ISO 8601 format.
-  core.String transactionDate;
+  core.String? transactionDate;
 
   OrderReportTransaction();
 
@@ -15322,18 +14571,18 @@ class OrderReportTransaction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (disbursementAmount != null)
-          'disbursementAmount': disbursementAmount.toJson(),
+          'disbursementAmount': disbursementAmount!.toJson(),
         if (disbursementCreationDate != null)
-          'disbursementCreationDate': disbursementCreationDate,
-        if (disbursementDate != null) 'disbursementDate': disbursementDate,
-        if (disbursementId != null) 'disbursementId': disbursementId,
-        if (merchantId != null) 'merchantId': merchantId,
-        if (merchantOrderId != null) 'merchantOrderId': merchantOrderId,
-        if (orderId != null) 'orderId': orderId,
-        if (productAmount != null) 'productAmount': productAmount.toJson(),
-        if (transactionDate != null) 'transactionDate': transactionDate,
+          'disbursementCreationDate': disbursementCreationDate!,
+        if (disbursementDate != null) 'disbursementDate': disbursementDate!,
+        if (disbursementId != null) 'disbursementId': disbursementId!,
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (merchantOrderId != null) 'merchantOrderId': merchantOrderId!,
+        if (orderId != null) 'orderId': orderId!,
+        if (productAmount != null) 'productAmount': productAmount!.toJson(),
+        if (transactionDate != null) 'transactionDate': transactionDate!,
       };
 }
 
@@ -15343,13 +14592,13 @@ class OrderReturn {
   /// Acceptable values are: - "`customer`" - "`googleBot`" -
   /// "`googleCustomerService`" - "`googlePayments`" - "`googleSabre`" -
   /// "`merchant`"
-  core.String actor;
+  core.String? actor;
 
   /// Date on which the item has been created, in ISO 8601 format.
-  core.String creationDate;
+  core.String? creationDate;
 
   /// Quantity that is returned.
-  core.int quantity;
+  core.int? quantity;
 
   /// The reason for the return.
   ///
@@ -15359,10 +14608,10 @@ class OrderReturn {
   /// "`other`" - "`productArrivedDamaged`" - "`productNotAsDescribed`" -
   /// "`qualityNotAsExpected`" - "`undeliverableShippingAddress`" -
   /// "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"
-  core.String reason;
+  core.String? reason;
 
   /// The explanation of the reason.
-  core.String reasonText;
+  core.String? reasonText;
 
   OrderReturn();
 
@@ -15384,12 +14633,12 @@ class OrderReturn {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actor != null) 'actor': actor,
-        if (creationDate != null) 'creationDate': creationDate,
-        if (quantity != null) 'quantity': quantity,
-        if (reason != null) 'reason': reason,
-        if (reasonText != null) 'reasonText': reasonText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actor != null) 'actor': actor!,
+        if (creationDate != null) 'creationDate': creationDate!,
+        if (quantity != null) 'quantity': quantity!,
+        if (reason != null) 'reason': reason!,
+        if (reasonText != null) 'reasonText': reasonText!,
       };
 }
 
@@ -15425,38 +14674,38 @@ class OrderShipment {
   /// Group) - "`colis prive`" (Colis Privé) - "`boxtal`" (Boxtal) - "`geodis`"
   /// (GEODIS) - "`tnt`" (TNT) - "`db schenker`" (DB Schenker) - "`aramex`"
   /// (Aramex)
-  core.String carrier;
+  core.String? carrier;
 
   /// Date on which the shipment has been created, in ISO 8601 format.
-  core.String creationDate;
+  core.String? creationDate;
 
   /// Date on which the shipment has been delivered, in ISO 8601 format.
   ///
   /// Present only if `status` is `delivered`
-  core.String deliveryDate;
+  core.String? deliveryDate;
 
   /// The ID of the shipment.
-  core.String id;
+  core.String? id;
 
   /// The line items that are shipped.
-  core.List<OrderShipmentLineItemShipment> lineItems;
+  core.List<OrderShipmentLineItemShipment>? lineItems;
 
   /// Delivery details of the shipment if scheduling is needed.
-  OrderShipmentScheduledDeliveryDetails scheduledDeliveryDetails;
+  OrderShipmentScheduledDeliveryDetails? scheduledDeliveryDetails;
 
   /// The shipment group ID of the shipment.
   ///
   /// This is set in shiplineitems request.
-  core.String shipmentGroupId;
+  core.String? shipmentGroupId;
 
   /// The status of the shipment.
   ///
   /// Acceptable values are: - "`delivered`" - "`readyForPickup`" - "`shipped`"
   /// - "`undeliverable`"
-  core.String status;
+  core.String? status;
 
   /// The tracking ID for the shipment.
-  core.String trackingId;
+  core.String? trackingId;
 
   OrderShipment();
 
@@ -15496,18 +14745,18 @@ class OrderShipment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (carrier != null) 'carrier': carrier,
-        if (creationDate != null) 'creationDate': creationDate,
-        if (deliveryDate != null) 'deliveryDate': deliveryDate,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (carrier != null) 'carrier': carrier!,
+        if (creationDate != null) 'creationDate': creationDate!,
+        if (deliveryDate != null) 'deliveryDate': deliveryDate!,
+        if (id != null) 'id': id!,
         if (lineItems != null)
-          'lineItems': lineItems.map((value) => value.toJson()).toList(),
+          'lineItems': lineItems!.map((value) => value.toJson()).toList(),
         if (scheduledDeliveryDetails != null)
-          'scheduledDeliveryDetails': scheduledDeliveryDetails.toJson(),
-        if (shipmentGroupId != null) 'shipmentGroupId': shipmentGroupId,
-        if (status != null) 'status': status,
-        if (trackingId != null) 'trackingId': trackingId,
+          'scheduledDeliveryDetails': scheduledDeliveryDetails!.toJson(),
+        if (shipmentGroupId != null) 'shipmentGroupId': shipmentGroupId!,
+        if (status != null) 'status': status!,
+        if (trackingId != null) 'trackingId': trackingId!,
       };
 }
 
@@ -15516,16 +14765,16 @@ class OrderShipmentLineItemShipment {
   ///
   /// This value is assigned by Google when an order is created. Either
   /// lineItemId or productId is required.
-  core.String lineItemId;
+  core.String? lineItemId;
 
   /// The ID of the product to ship.
   ///
   /// This is the REST ID used in the products service. Either lineItemId or
   /// productId is required.
-  core.String productId;
+  core.String? productId;
 
   /// The quantity that is shipped.
-  core.int quantity;
+  core.int? quantity;
 
   OrderShipmentLineItemShipment();
 
@@ -15541,10 +14790,10 @@ class OrderShipmentLineItemShipment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lineItemId != null) 'lineItemId': lineItemId,
-        if (productId != null) 'productId': productId,
-        if (quantity != null) 'quantity': quantity,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lineItemId != null) 'lineItemId': lineItemId!,
+        if (productId != null) 'productId': productId!,
+        if (quantity != null) 'quantity': quantity!,
       };
 }
 
@@ -15553,10 +14802,10 @@ class OrderShipmentScheduledDeliveryDetails {
   ///
   /// The phone number is formatted as the international notation in ITU-T
   /// Recommendation E.123 (e.g., "+41 44 668 1800").
-  core.String carrierPhoneNumber;
+  core.String? carrierPhoneNumber;
 
   /// The date a shipment is scheduled for delivery, in ISO 8601 format.
-  core.String scheduledDate;
+  core.String? scheduledDate;
 
   OrderShipmentScheduledDeliveryDetails();
 
@@ -15569,10 +14818,10 @@ class OrderShipmentScheduledDeliveryDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (carrierPhoneNumber != null)
-          'carrierPhoneNumber': carrierPhoneNumber,
-        if (scheduledDate != null) 'scheduledDate': scheduledDate,
+          'carrierPhoneNumber': carrierPhoneNumber!,
+        if (scheduledDate != null) 'scheduledDate': scheduledDate!,
       };
 }
 
@@ -15580,23 +14829,23 @@ class OrderShipmentScheduledDeliveryDetails {
 class OrderTrackingSignal {
   /// The shipping fee of the order; this value should be set to zero in the
   /// case of free shipping.
-  PriceAmount customerShippingFee;
+  PriceAmount? customerShippingFee;
 
   /// The delivery postal code, as a continuous string without spaces or dashes,
   /// e.g. "95016".
   ///
   /// Required.
-  core.String deliveryPostalCode;
+  core.String? deliveryPostalCode;
 
   /// The
   /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
   /// for the shipping destination.
   ///
   /// Required.
-  core.String deliveryRegionCode;
+  core.String? deliveryRegionCode;
 
   /// Information about line items in the order.
-  core.List<OrderTrackingSignalLineItemDetails> lineItems;
+  core.List<OrderTrackingSignalLineItemDetails>? lineItems;
 
   /// The Google merchant ID of this order tracking signal.
   ///
@@ -15604,30 +14853,31 @@ class OrderTrackingSignal {
   /// You must request access in order to provide data on behalf of another
   /// merchant. For more information, see \[Submitting Order Tracking
   /// Signals\](/shopping-content/guides/order-tracking-signals).
-  core.String merchantId;
+  core.String? merchantId;
 
   /// The time when the order was created on the merchant side.
   ///
   /// Include the year and timezone string, if available.
   ///
   /// Required.
-  DateTime orderCreatedTime;
+  DateTime? orderCreatedTime;
 
   /// The ID of the order on the merchant side.
   ///
   /// Required.
-  core.String orderId;
+  core.String? orderId;
 
   /// The ID that uniquely identifies this order tracking signal.
   ///
   /// Output only.
-  core.String orderTrackingSignalId;
+  core.String? orderTrackingSignalId;
 
   /// The mapping of the line items to the shipment information.
-  core.List<OrderTrackingSignalShipmentLineItemMapping> shipmentLineItemMapping;
+  core.List<OrderTrackingSignalShipmentLineItemMapping>?
+      shipmentLineItemMapping;
 
   /// The shipping information for the order.
-  core.List<OrderTrackingSignalShippingInfo> shippingInfo;
+  core.List<OrderTrackingSignalShippingInfo>? shippingInfo;
 
   OrderTrackingSignal();
 
@@ -15678,52 +14928,52 @@ class OrderTrackingSignal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customerShippingFee != null)
-          'customerShippingFee': customerShippingFee.toJson(),
+          'customerShippingFee': customerShippingFee!.toJson(),
         if (deliveryPostalCode != null)
-          'deliveryPostalCode': deliveryPostalCode,
+          'deliveryPostalCode': deliveryPostalCode!,
         if (deliveryRegionCode != null)
-          'deliveryRegionCode': deliveryRegionCode,
+          'deliveryRegionCode': deliveryRegionCode!,
         if (lineItems != null)
-          'lineItems': lineItems.map((value) => value.toJson()).toList(),
-        if (merchantId != null) 'merchantId': merchantId,
+          'lineItems': lineItems!.map((value) => value.toJson()).toList(),
+        if (merchantId != null) 'merchantId': merchantId!,
         if (orderCreatedTime != null)
-          'orderCreatedTime': orderCreatedTime.toJson(),
-        if (orderId != null) 'orderId': orderId,
+          'orderCreatedTime': orderCreatedTime!.toJson(),
+        if (orderId != null) 'orderId': orderId!,
         if (orderTrackingSignalId != null)
-          'orderTrackingSignalId': orderTrackingSignalId,
+          'orderTrackingSignalId': orderTrackingSignalId!,
         if (shipmentLineItemMapping != null)
           'shipmentLineItemMapping':
-              shipmentLineItemMapping.map((value) => value.toJson()).toList(),
+              shipmentLineItemMapping!.map((value) => value.toJson()).toList(),
         if (shippingInfo != null)
-          'shippingInfo': shippingInfo.map((value) => value.toJson()).toList(),
+          'shippingInfo': shippingInfo!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The line items of the order.
 class OrderTrackingSignalLineItemDetails {
   /// The Global Trade Item Number.
-  core.String gtin;
+  core.String? gtin;
 
   /// The ID for this line item.
   ///
   /// Required.
-  core.String lineItemId;
+  core.String? lineItemId;
 
   /// The manufacturer part number.
-  core.String mpn;
+  core.String? mpn;
 
   /// The Content API REST ID of the product, in the form
   /// channel:contentLanguage:targetCountry:offerId.
   ///
   /// Required.
-  core.String productId;
+  core.String? productId;
 
   /// The quantity of the line item in the order.
   ///
   /// Required.
-  core.String quantity;
+  core.String? quantity;
 
   OrderTrackingSignalLineItemDetails();
 
@@ -15745,12 +14995,12 @@ class OrderTrackingSignalLineItemDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gtin != null) 'gtin': gtin,
-        if (lineItemId != null) 'lineItemId': lineItemId,
-        if (mpn != null) 'mpn': mpn,
-        if (productId != null) 'productId': productId,
-        if (quantity != null) 'quantity': quantity,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gtin != null) 'gtin': gtin!,
+        if (lineItemId != null) 'lineItemId': lineItemId!,
+        if (mpn != null) 'mpn': mpn!,
+        if (productId != null) 'productId': productId!,
+        if (quantity != null) 'quantity': quantity!,
       };
 }
 
@@ -15760,17 +15010,17 @@ class OrderTrackingSignalShipmentLineItemMapping {
   /// The line item ID.
   ///
   /// Required.
-  core.String lineItemId;
+  core.String? lineItemId;
 
   /// The line item quantity in the shipment.
   ///
   /// Required.
-  core.String quantity;
+  core.String? quantity;
 
   /// The shipment ID.
   ///
   /// Required.
-  core.String shipmentId;
+  core.String? shipmentId;
 
   OrderTrackingSignalShipmentLineItemMapping();
 
@@ -15786,10 +15036,10 @@ class OrderTrackingSignalShipmentLineItemMapping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lineItemId != null) 'lineItemId': lineItemId,
-        if (quantity != null) 'quantity': quantity,
-        if (shipmentId != null) 'shipmentId': shipmentId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lineItemId != null) 'lineItemId': lineItemId!,
+        if (quantity != null) 'quantity': quantity!,
+        if (shipmentId != null) 'shipmentId': shipmentId!,
       };
 }
 
@@ -15800,50 +15050,50 @@ class OrderTrackingSignalShippingInfo {
   /// Include the year and timezone string, if available. This field is
   /// required, if one of the following fields is absent: tracking_id or
   /// carrier_name.
-  DateTime actualDeliveryTime;
+  DateTime? actualDeliveryTime;
 
   /// The name of the shipping carrier for the delivery.
   ///
   /// This field is required if one of the following fields is absent:
   /// earliest_delivery_promise_time, latest_delivery_promise_time, and
   /// actual_delivery_time.
-  core.String carrierName;
+  core.String? carrierName;
 
   /// The service type for fulfillment, e.g., GROUND, FIRST_CLASS, etc.
-  core.String carrierServiceName;
+  core.String? carrierServiceName;
 
   /// The earliest delivery promised time.
   ///
   /// Include the year and timezone string, if available. This field is
   /// required, if one of the following fields is absent: tracking_id or
   /// carrier_name.
-  DateTime earliestDeliveryPromiseTime;
+  DateTime? earliestDeliveryPromiseTime;
 
   /// The latest delivery promised time.
   ///
   /// Include the year and timezone string, if available. This field is
   /// required, if one of the following fields is absent: tracking_id or
   /// carrier_name.
-  DateTime latestDeliveryPromiseTime;
+  DateTime? latestDeliveryPromiseTime;
 
   /// The origin postal code, as a continuous string without spaces or dashes,
   /// e.g. "95016".
-  core.String originPostalCode;
+  core.String? originPostalCode;
 
   /// The
   /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
   /// for the shipping origin.
-  core.String originRegionCode;
+  core.String? originRegionCode;
 
   /// The shipment ID.
   ///
   /// Required.
-  core.String shipmentId;
+  core.String? shipmentId;
 
   /// The time when the shipment was shipped.
   ///
   /// Include the year and timezone string, if available.
-  DateTime shippedTime;
+  DateTime? shippedTime;
 
   /// The status of the shipment.
   /// Possible string values are:
@@ -15851,14 +15101,14 @@ class OrderTrackingSignalShippingInfo {
   /// merchant.
   /// - "SHIPPED" : All items are shipped.
   /// - "DELIVERED" : The shipment is already delivered.
-  core.String shippingStatus;
+  core.String? shippingStatus;
 
   /// The tracking ID of the shipment.
   ///
   /// This field is required if one of the following fields is absent:
   /// earliest_delivery_promise_time, latest_delivery_promise_time, and
   /// actual_delivery_time.
-  core.String trackingId;
+  core.String? trackingId;
 
   OrderTrackingSignalShippingInfo();
 
@@ -15904,22 +15154,22 @@ class OrderTrackingSignalShippingInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (actualDeliveryTime != null)
-          'actualDeliveryTime': actualDeliveryTime.toJson(),
-        if (carrierName != null) 'carrierName': carrierName,
+          'actualDeliveryTime': actualDeliveryTime!.toJson(),
+        if (carrierName != null) 'carrierName': carrierName!,
         if (carrierServiceName != null)
-          'carrierServiceName': carrierServiceName,
+          'carrierServiceName': carrierServiceName!,
         if (earliestDeliveryPromiseTime != null)
-          'earliestDeliveryPromiseTime': earliestDeliveryPromiseTime.toJson(),
+          'earliestDeliveryPromiseTime': earliestDeliveryPromiseTime!.toJson(),
         if (latestDeliveryPromiseTime != null)
-          'latestDeliveryPromiseTime': latestDeliveryPromiseTime.toJson(),
-        if (originPostalCode != null) 'originPostalCode': originPostalCode,
-        if (originRegionCode != null) 'originRegionCode': originRegionCode,
-        if (shipmentId != null) 'shipmentId': shipmentId,
-        if (shippedTime != null) 'shippedTime': shippedTime.toJson(),
-        if (shippingStatus != null) 'shippingStatus': shippingStatus,
-        if (trackingId != null) 'trackingId': trackingId,
+          'latestDeliveryPromiseTime': latestDeliveryPromiseTime!.toJson(),
+        if (originPostalCode != null) 'originPostalCode': originPostalCode!,
+        if (originRegionCode != null) 'originRegionCode': originRegionCode!,
+        if (shipmentId != null) 'shipmentId': shipmentId!,
+        if (shippedTime != null) 'shippedTime': shippedTime!.toJson(),
+        if (shippingStatus != null) 'shippingStatus': shippingStatus!,
+        if (trackingId != null) 'trackingId': trackingId!,
       };
 }
 
@@ -15927,22 +15177,22 @@ class OrderinvoicesCreateChargeInvoiceRequest {
   /// The ID of the invoice.
   ///
   /// Required.
-  core.String invoiceId;
+  core.String? invoiceId;
 
   /// Invoice summary.
   ///
   /// Required.
-  InvoiceSummary invoiceSummary;
+  InvoiceSummary? invoiceSummary;
 
   /// Invoice details per line item.
   ///
   /// Required.
-  core.List<ShipmentInvoiceLineItemInvoice> lineItemInvoices;
+  core.List<ShipmentInvoiceLineItemInvoice>? lineItemInvoices;
 
   /// The ID of the operation, unique across all operations for a given order.
   ///
   /// Required.
-  core.String operationId;
+  core.String? operationId;
 
   /// ID of the shipment group.
   ///
@@ -15950,7 +15200,7 @@ class OrderinvoicesCreateChargeInvoiceRequest {
   /// to group multiple line items that have the same kind of shipping charges.
   ///
   /// Required.
-  core.String shipmentGroupId;
+  core.String? shipmentGroupId;
 
   OrderinvoicesCreateChargeInvoiceRequest();
 
@@ -15977,14 +15227,14 @@ class OrderinvoicesCreateChargeInvoiceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (invoiceId != null) 'invoiceId': invoiceId,
-        if (invoiceSummary != null) 'invoiceSummary': invoiceSummary.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (invoiceId != null) 'invoiceId': invoiceId!,
+        if (invoiceSummary != null) 'invoiceSummary': invoiceSummary!.toJson(),
         if (lineItemInvoices != null)
           'lineItemInvoices':
-              lineItemInvoices.map((value) => value.toJson()).toList(),
-        if (operationId != null) 'operationId': operationId,
-        if (shipmentGroupId != null) 'shipmentGroupId': shipmentGroupId,
+              lineItemInvoices!.map((value) => value.toJson()).toList(),
+        if (operationId != null) 'operationId': operationId!,
+        if (shipmentGroupId != null) 'shipmentGroupId': shipmentGroupId!,
       };
 }
 
@@ -15992,13 +15242,13 @@ class OrderinvoicesCreateChargeInvoiceResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
   /// "content#orderinvoicesCreateChargeInvoiceResponse".
-  core.String kind;
+  core.String? kind;
 
   OrderinvoicesCreateChargeInvoiceResponse();
 
@@ -16011,9 +15261,9 @@ class OrderinvoicesCreateChargeInvoiceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -16021,28 +15271,28 @@ class OrderinvoicesCreateRefundInvoiceRequest {
   /// The ID of the invoice.
   ///
   /// Required.
-  core.String invoiceId;
+  core.String? invoiceId;
 
   /// The ID of the operation, unique across all operations for a given order.
   ///
   /// Required.
-  core.String operationId;
+  core.String? operationId;
 
   /// Option to create a refund-only invoice.
   ///
   /// Exactly one of `refundOnlyOption` or `returnOption` must be provided.
-  OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption
+  OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption?
       refundOnlyOption;
 
   /// Option to create an invoice for a refund and mark all items within the
   /// invoice as returned.
   ///
   /// Exactly one of `refundOnlyOption` or `returnOption` must be provided.
-  OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption
+  OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption?
       returnOption;
 
   /// Invoice details for different shipment groups.
-  core.List<ShipmentInvoice> shipmentInvoices;
+  core.List<ShipmentInvoice>? shipmentInvoices;
 
   OrderinvoicesCreateRefundInvoiceRequest();
 
@@ -16073,15 +15323,15 @@ class OrderinvoicesCreateRefundInvoiceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (invoiceId != null) 'invoiceId': invoiceId,
-        if (operationId != null) 'operationId': operationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (invoiceId != null) 'invoiceId': invoiceId!,
+        if (operationId != null) 'operationId': operationId!,
         if (refundOnlyOption != null)
-          'refundOnlyOption': refundOnlyOption.toJson(),
-        if (returnOption != null) 'returnOption': returnOption.toJson(),
+          'refundOnlyOption': refundOnlyOption!.toJson(),
+        if (returnOption != null) 'returnOption': returnOption!.toJson(),
         if (shipmentInvoices != null)
           'shipmentInvoices':
-              shipmentInvoices.map((value) => value.toJson()).toList(),
+              shipmentInvoices!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -16089,13 +15339,13 @@ class OrderinvoicesCreateRefundInvoiceResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
   /// "content#orderinvoicesCreateRefundInvoiceResponse".
-  core.String kind;
+  core.String? kind;
 
   OrderinvoicesCreateRefundInvoiceResponse();
 
@@ -16108,15 +15358,15 @@ class OrderinvoicesCreateRefundInvoiceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption {
   /// Optional description of the refund reason.
-  core.String description;
+  core.String? description;
 
   /// Reason for the refund.
   ///
@@ -16141,7 +15391,7 @@ class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption {
   /// "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"
   ///
   /// Required.
-  core.String reason;
+  core.String? reason;
 
   OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption();
 
@@ -16155,15 +15405,15 @@ class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (reason != null) 'reason': reason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (reason != null) 'reason': reason!,
       };
 }
 
 class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption {
   /// Optional description of the return reason.
-  core.String description;
+  core.String? description;
 
   /// Reason for the return.
   ///
@@ -16175,7 +15425,7 @@ class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption {
   /// "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"
   ///
   /// Required.
-  core.String reason;
+  core.String? reason;
 
   OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption();
 
@@ -16189,23 +15439,23 @@ class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (reason != null) 'reason': reason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (reason != null) 'reason': reason!,
       };
 }
 
 class OrderreportsListDisbursementsResponse {
   /// The list of disbursements.
-  core.List<OrderReportDisbursement> disbursements;
+  core.List<OrderReportDisbursement>? disbursements;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#orderreportsListDisbursementsResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token for the retrieval of the next page of disbursements.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   OrderreportsListDisbursementsResponse();
 
@@ -16225,12 +15475,12 @@ class OrderreportsListDisbursementsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (disbursements != null)
           'disbursements':
-              disbursements.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              disbursements!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -16238,13 +15488,13 @@ class OrderreportsListTransactionsResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#orderreportsListTransactionsResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token for the retrieval of the next page of transactions.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of transactions.
-  core.List<OrderReportTransaction> transactions;
+  core.List<OrderReportTransaction>? transactions;
 
   OrderreportsListTransactionsResponse();
 
@@ -16264,11 +15514,11 @@ class OrderreportsListTransactionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (transactions != null)
-          'transactions': transactions.map((value) => value.toJson()).toList(),
+          'transactions': transactions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -16277,7 +15527,7 @@ class OrderreturnsAcknowledgeRequest {
   /// return.
   ///
   /// Required.
-  core.String operationId;
+  core.String? operationId;
 
   OrderreturnsAcknowledgeRequest();
 
@@ -16287,8 +15537,8 @@ class OrderreturnsAcknowledgeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operationId != null) 'operationId': operationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operationId != null) 'operationId': operationId!,
       };
 }
 
@@ -16296,12 +15546,12 @@ class OrderreturnsAcknowledgeResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#orderreturnsAcknowledgeResponse".
-  core.String kind;
+  core.String? kind;
 
   OrderreturnsAcknowledgeResponse();
 
@@ -16314,26 +15564,26 @@ class OrderreturnsAcknowledgeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class OrderreturnsCreateOrderReturnRequest {
   /// The list of line items to return.
-  core.List<OrderreturnsLineItem> lineItems;
+  core.List<OrderreturnsLineItem>? lineItems;
 
   /// The ID of the operation.
   ///
   /// Unique across all operations for a given order.
-  core.String operationId;
+  core.String? operationId;
 
   /// The ID of the order.
-  core.String orderId;
+  core.String? orderId;
 
   /// The way of the package being returned.
-  core.String returnMethodType;
+  core.String? returnMethodType;
 
   OrderreturnsCreateOrderReturnRequest();
 
@@ -16355,12 +15605,12 @@ class OrderreturnsCreateOrderReturnRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (lineItems != null)
-          'lineItems': lineItems.map((value) => value.toJson()).toList(),
-        if (operationId != null) 'operationId': operationId,
-        if (orderId != null) 'orderId': orderId,
-        if (returnMethodType != null) 'returnMethodType': returnMethodType,
+          'lineItems': lineItems!.map((value) => value.toJson()).toList(),
+        if (operationId != null) 'operationId': operationId!,
+        if (orderId != null) 'orderId': orderId!,
+        if (returnMethodType != null) 'returnMethodType': returnMethodType!,
       };
 }
 
@@ -16368,15 +15618,15 @@ class OrderreturnsCreateOrderReturnResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#orderreturnsCreateOrderReturnResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Created order return.
-  MerchantOrderReturn orderReturn;
+  MerchantOrderReturn? orderReturn;
 
   OrderreturnsCreateOrderReturnResponse();
 
@@ -16393,10 +15643,10 @@ class OrderreturnsCreateOrderReturnResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
-        if (orderReturn != null) 'orderReturn': orderReturn.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
+        if (orderReturn != null) 'orderReturn': orderReturn!.toJson(),
       };
 }
 
@@ -16404,10 +15654,10 @@ class OrderreturnsLineItem {
   /// The ID of the line item.
   ///
   /// This value is assigned by Google when an order is created.
-  core.String lineItemId;
+  core.String? lineItemId;
 
   /// The quantity of this line item.
-  core.int quantity;
+  core.int? quantity;
 
   OrderreturnsLineItem();
 
@@ -16420,9 +15670,9 @@ class OrderreturnsLineItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lineItemId != null) 'lineItemId': lineItemId,
-        if (quantity != null) 'quantity': quantity,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lineItemId != null) 'lineItemId': lineItemId!,
+        if (quantity != null) 'quantity': quantity!,
       };
 }
 
@@ -16430,11 +15680,11 @@ class OrderreturnsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#orderreturnsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token for the retrieval of the next page of returns.
-  core.String nextPageToken;
-  core.List<MerchantOrderReturn> resources;
+  core.String? nextPageToken;
+  core.List<MerchantOrderReturn>? resources;
 
   OrderreturnsListResponse();
 
@@ -16453,23 +15703,23 @@ class OrderreturnsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
 class OrderreturnsPartialRefund {
   /// The pre-tax or post-tax amount to be refunded, depending on the location
   /// of the order.
-  Price priceAmount;
+  Price? priceAmount;
 
   /// Tax amount to be refunded.
   ///
   /// Note: This has different meaning depending on the location of the order.
-  Price taxAmount;
+  Price? taxAmount;
 
   OrderreturnsPartialRefund();
 
@@ -16484,27 +15734,27 @@ class OrderreturnsPartialRefund {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (priceAmount != null) 'priceAmount': priceAmount.toJson(),
-        if (taxAmount != null) 'taxAmount': taxAmount.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (priceAmount != null) 'priceAmount': priceAmount!.toJson(),
+        if (taxAmount != null) 'taxAmount': taxAmount!.toJson(),
       };
 }
 
 class OrderreturnsProcessRequest {
   /// Option to charge the customer return shipping cost.
-  core.bool fullChargeReturnShippingCost;
+  core.bool? fullChargeReturnShippingCost;
 
   /// The ID of the operation, unique across all operations for a given order
   /// return.
   ///
   /// Required.
-  core.String operationId;
+  core.String? operationId;
 
   /// Refunds for original shipping fee.
-  OrderreturnsRefundOperation refundShippingFee;
+  OrderreturnsRefundOperation? refundShippingFee;
 
   /// The list of items to return.
-  core.List<OrderreturnsReturnItem> returnItems;
+  core.List<OrderreturnsReturnItem>? returnItems;
 
   OrderreturnsProcessRequest();
 
@@ -16529,14 +15779,14 @@ class OrderreturnsProcessRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fullChargeReturnShippingCost != null)
-          'fullChargeReturnShippingCost': fullChargeReturnShippingCost,
-        if (operationId != null) 'operationId': operationId,
+          'fullChargeReturnShippingCost': fullChargeReturnShippingCost!,
+        if (operationId != null) 'operationId': operationId!,
         if (refundShippingFee != null)
-          'refundShippingFee': refundShippingFee.toJson(),
+          'refundShippingFee': refundShippingFee!.toJson(),
         if (returnItems != null)
-          'returnItems': returnItems.map((value) => value.toJson()).toList(),
+          'returnItems': returnItems!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -16544,12 +15794,12 @@ class OrderreturnsProcessResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#orderreturnsProcessResponse".
-  core.String kind;
+  core.String? kind;
 
   OrderreturnsProcessResponse();
 
@@ -16562,9 +15812,9 @@ class OrderreturnsProcessResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -16574,24 +15824,24 @@ class OrderreturnsRefundOperation {
   /// Allowed only when payment_type is FOP. Merchant can choose this refund
   /// option to indicate the full remaining amount of corresponding object to be
   /// refunded to the customer via FOP.
-  core.bool fullRefund;
+  core.bool? fullRefund;
 
   /// If this is set, the item will be partially refunded.
   ///
   /// Merchant can choose this refund option to specify the customized amount
   /// that to be refunded to the customer.
-  OrderreturnsPartialRefund partialRefund;
+  OrderreturnsPartialRefund? partialRefund;
 
   /// The payment way of issuing refund.
   ///
   /// Default value is ORIGINAL_FOP if not set.
-  core.String paymentType;
+  core.String? paymentType;
 
   /// The explanation of the reason.
-  core.String reasonText;
+  core.String? reasonText;
 
   /// Code of the refund reason.
-  core.String returnRefundReason;
+  core.String? returnRefundReason;
 
   OrderreturnsRefundOperation();
 
@@ -16614,22 +15864,22 @@ class OrderreturnsRefundOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fullRefund != null) 'fullRefund': fullRefund,
-        if (partialRefund != null) 'partialRefund': partialRefund.toJson(),
-        if (paymentType != null) 'paymentType': paymentType,
-        if (reasonText != null) 'reasonText': reasonText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fullRefund != null) 'fullRefund': fullRefund!,
+        if (partialRefund != null) 'partialRefund': partialRefund!.toJson(),
+        if (paymentType != null) 'paymentType': paymentType!,
+        if (reasonText != null) 'reasonText': reasonText!,
         if (returnRefundReason != null)
-          'returnRefundReason': returnRefundReason,
+          'returnRefundReason': returnRefundReason!,
       };
 }
 
 class OrderreturnsRejectOperation {
   /// The reason for the return.
-  core.String reason;
+  core.String? reason;
 
   /// The explanation of the reason.
-  core.String reasonText;
+  core.String? reasonText;
 
   OrderreturnsRejectOperation();
 
@@ -16642,23 +15892,23 @@ class OrderreturnsRejectOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (reason != null) 'reason': reason,
-        if (reasonText != null) 'reasonText': reasonText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (reason != null) 'reason': reason!,
+        if (reasonText != null) 'reasonText': reasonText!,
       };
 }
 
 class OrderreturnsReturnItem {
   /// Refunds the item.
-  OrderreturnsRefundOperation refund;
+  OrderreturnsRefundOperation? refund;
 
   /// Rejects the item.
-  OrderreturnsRejectOperation reject;
+  OrderreturnsRejectOperation? reject;
 
   /// Unit level ID for the return item.
   ///
   /// Different units of the same product will have different IDs.
-  core.String returnItemId;
+  core.String? returnItemId;
 
   OrderreturnsReturnItem();
 
@@ -16676,10 +15926,10 @@ class OrderreturnsReturnItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (refund != null) 'refund': refund.toJson(),
-        if (reject != null) 'reject': reject.toJson(),
-        if (returnItemId != null) 'returnItemId': returnItemId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (refund != null) 'refund': refund!.toJson(),
+        if (reject != null) 'reject': reject!.toJson(),
+        if (returnItemId != null) 'returnItemId': returnItemId!,
       };
 }
 
@@ -16687,7 +15937,7 @@ class OrdersAcknowledgeRequest {
   /// The ID of the operation.
   ///
   /// Unique across all operations for a given order.
-  core.String operationId;
+  core.String? operationId;
 
   OrdersAcknowledgeRequest();
 
@@ -16697,8 +15947,8 @@ class OrdersAcknowledgeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operationId != null) 'operationId': operationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operationId != null) 'operationId': operationId!,
       };
 }
 
@@ -16706,12 +15956,12 @@ class OrdersAcknowledgeResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersAcknowledgeResponse".
-  core.String kind;
+  core.String? kind;
 
   OrdersAcknowledgeResponse();
 
@@ -16724,9 +15974,9 @@ class OrdersAcknowledgeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -16734,7 +15984,7 @@ class OrdersAdvanceTestOrderResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersAdvanceTestOrderResponse".
-  core.String kind;
+  core.String? kind;
 
   OrdersAdvanceTestOrderResponse();
 
@@ -16744,8 +15994,8 @@ class OrdersAdvanceTestOrderResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -16753,21 +16003,21 @@ class OrdersCancelLineItemRequest {
   /// The ID of the line item to cancel.
   ///
   /// Either lineItemId or productId is required.
-  core.String lineItemId;
+  core.String? lineItemId;
 
   /// The ID of the operation.
   ///
   /// Unique across all operations for a given order.
-  core.String operationId;
+  core.String? operationId;
 
   /// The ID of the product to cancel.
   ///
   /// This is the REST ID used in the products service. Either lineItemId or
   /// productId is required.
-  core.String productId;
+  core.String? productId;
 
   /// The quantity to cancel.
-  core.int quantity;
+  core.int? quantity;
 
   /// The reason for the cancellation.
   ///
@@ -16775,10 +16025,10 @@ class OrdersCancelLineItemRequest {
   /// "`malformedShippingAddress`" - "`noInventory`" - "`other`" -
   /// "`priceError`" - "`shippingPriceError`" - "`taxError`" -
   /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"
-  core.String reason;
+  core.String? reason;
 
   /// The explanation of the reason.
-  core.String reasonText;
+  core.String? reasonText;
 
   OrdersCancelLineItemRequest();
 
@@ -16803,13 +16053,13 @@ class OrdersCancelLineItemRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lineItemId != null) 'lineItemId': lineItemId,
-        if (operationId != null) 'operationId': operationId,
-        if (productId != null) 'productId': productId,
-        if (quantity != null) 'quantity': quantity,
-        if (reason != null) 'reason': reason,
-        if (reasonText != null) 'reasonText': reasonText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lineItemId != null) 'lineItemId': lineItemId!,
+        if (operationId != null) 'operationId': operationId!,
+        if (productId != null) 'productId': productId!,
+        if (quantity != null) 'quantity': quantity!,
+        if (reason != null) 'reason': reason!,
+        if (reasonText != null) 'reasonText': reasonText!,
       };
 }
 
@@ -16817,12 +16067,12 @@ class OrdersCancelLineItemResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersCancelLineItemResponse".
-  core.String kind;
+  core.String? kind;
 
   OrdersCancelLineItemResponse();
 
@@ -16835,9 +16085,9 @@ class OrdersCancelLineItemResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -16845,7 +16095,7 @@ class OrdersCancelRequest {
   /// The ID of the operation.
   ///
   /// Unique across all operations for a given order.
-  core.String operationId;
+  core.String? operationId;
 
   /// The reason for the cancellation.
   ///
@@ -16853,10 +16103,10 @@ class OrdersCancelRequest {
   /// "`malformedShippingAddress`" - "`noInventory`" - "`other`" -
   /// "`priceError`" - "`shippingPriceError`" - "`taxError`" -
   /// "`undeliverableShippingAddress`" - "`unsupportedPoBoxAddress`"
-  core.String reason;
+  core.String? reason;
 
   /// The explanation of the reason.
-  core.String reasonText;
+  core.String? reasonText;
 
   OrdersCancelRequest();
 
@@ -16872,10 +16122,10 @@ class OrdersCancelRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operationId != null) 'operationId': operationId,
-        if (reason != null) 'reason': reason,
-        if (reasonText != null) 'reasonText': reasonText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operationId != null) 'operationId': operationId!,
+        if (reason != null) 'reason': reason!,
+        if (reasonText != null) 'reasonText': reasonText!,
       };
 }
 
@@ -16883,12 +16133,12 @@ class OrdersCancelResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersCancelResponse".
-  core.String kind;
+  core.String? kind;
 
   OrdersCancelResponse();
 
@@ -16901,9 +16151,9 @@ class OrdersCancelResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -16912,7 +16162,7 @@ class OrdersCancelTestOrderByCustomerRequest {
   ///
   /// Acceptable values are: - "`changedMind`" - "`orderedWrongItem`" -
   /// "`other`"
-  core.String reason;
+  core.String? reason;
 
   OrdersCancelTestOrderByCustomerRequest();
 
@@ -16922,8 +16172,8 @@ class OrdersCancelTestOrderByCustomerRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (reason != null) 'reason': reason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (reason != null) 'reason': reason!,
       };
 }
 
@@ -16931,7 +16181,7 @@ class OrdersCancelTestOrderByCustomerResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersCancelTestOrderByCustomerResponse".
-  core.String kind;
+  core.String? kind;
 
   OrdersCancelTestOrderByCustomerResponse();
 
@@ -16941,8 +16191,8 @@ class OrdersCancelTestOrderByCustomerResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -16952,7 +16202,7 @@ class OrdersCreateTestOrderRequest {
   /// Affects the currency and addresses of orders created via `template_name`,
   /// or the addresses of orders created via `test_order`. Acceptable values
   /// are: - "`US`" - "`FR`" Defaults to `US`.
-  core.String country;
+  core.String? country;
 
   /// The test order template to use.
   ///
@@ -16960,10 +16210,10 @@ class OrdersCreateTestOrderRequest {
   /// template and then creating an order using that template. Acceptable values
   /// are: - "`template1`" - "`template1a`" - "`template1b`" - "`template2`" -
   /// "`template3`"
-  core.String templateName;
+  core.String? templateName;
 
   /// The test order to create.
-  TestOrder testOrder;
+  TestOrder? testOrder;
 
   OrdersCreateTestOrderRequest();
 
@@ -16980,10 +16230,10 @@ class OrdersCreateTestOrderRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (templateName != null) 'templateName': templateName,
-        if (testOrder != null) 'testOrder': testOrder.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (templateName != null) 'templateName': templateName!,
+        if (testOrder != null) 'testOrder': testOrder!.toJson(),
       };
 }
 
@@ -16991,10 +16241,10 @@ class OrdersCreateTestOrderResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersCreateTestOrderResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The ID of the newly created test order.
-  core.String orderId;
+  core.String? orderId;
 
   OrdersCreateTestOrderResponse();
 
@@ -17007,15 +16257,15 @@ class OrdersCreateTestOrderResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (orderId != null) 'orderId': orderId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (orderId != null) 'orderId': orderId!,
       };
 }
 
 class OrdersCreateTestReturnRequest {
   /// Returned items.
-  core.List<OrdersCustomBatchRequestEntryCreateTestReturnReturnItem> items;
+  core.List<OrdersCustomBatchRequestEntryCreateTestReturnReturnItem>? items;
 
   OrdersCreateTestReturnRequest();
 
@@ -17029,9 +16279,9 @@ class OrdersCreateTestReturnRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
+          'items': items!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -17039,10 +16289,10 @@ class OrdersCreateTestReturnResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersCreateTestReturnResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The ID of the newly created test order return.
-  core.String returnId;
+  core.String? returnId;
 
   OrdersCreateTestReturnResponse();
 
@@ -17055,18 +16305,18 @@ class OrdersCreateTestReturnResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (returnId != null) 'returnId': returnId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (returnId != null) 'returnId': returnId!,
       };
 }
 
 class OrdersCustomBatchRequestEntryCreateTestReturnReturnItem {
   /// The ID of the line item to return.
-  core.String lineItemId;
+  core.String? lineItemId;
 
   /// Quantity that is returned.
-  core.int quantity;
+  core.int? quantity;
 
   OrdersCustomBatchRequestEntryCreateTestReturnReturnItem();
 
@@ -17080,9 +16330,9 @@ class OrdersCustomBatchRequestEntryCreateTestReturnReturnItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lineItemId != null) 'lineItemId': lineItemId,
-        if (quantity != null) 'quantity': quantity,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lineItemId != null) 'lineItemId': lineItemId!,
+        if (quantity != null) 'quantity': quantity!,
       };
 }
 
@@ -17092,26 +16342,26 @@ class OrdersCustomBatchRequestEntryRefundItemItem {
   /// (e.g. refunding $5 each for 2 products should be done by setting quantity
   /// to 2 and amount to 10$) In case of multiple refunds, this should be the
   /// amount you currently want to refund to the customer.
-  MonetaryAmount amount;
+  MonetaryAmount? amount;
 
   /// If true, the full item will be refunded.
   ///
   /// If this is true, amount should not be provided and will be ignored.
-  core.bool fullRefund;
+  core.bool? fullRefund;
 
   /// The ID of the line item.
   ///
   /// Either lineItemId or productId is required.
-  core.String lineItemId;
+  core.String? lineItemId;
 
   /// The ID of the product.
   ///
   /// This is the REST ID used in the products service. Either lineItemId or
   /// productId is required.
-  core.String productId;
+  core.String? productId;
 
   /// The number of products that are refunded.
-  core.int quantity;
+  core.int? quantity;
 
   OrdersCustomBatchRequestEntryRefundItemItem();
 
@@ -17134,12 +16384,12 @@ class OrdersCustomBatchRequestEntryRefundItemItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amount != null) 'amount': amount.toJson(),
-        if (fullRefund != null) 'fullRefund': fullRefund,
-        if (lineItemId != null) 'lineItemId': lineItemId,
-        if (productId != null) 'productId': productId,
-        if (quantity != null) 'quantity': quantity,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amount != null) 'amount': amount!.toJson(),
+        if (fullRefund != null) 'fullRefund': fullRefund!,
+        if (lineItemId != null) 'lineItemId': lineItemId!,
+        if (productId != null) 'productId': productId!,
+        if (quantity != null) 'quantity': quantity!,
       };
 }
 
@@ -17148,14 +16398,14 @@ class OrdersCustomBatchRequestEntryRefundItemShipping {
   ///
   /// If this is not the first refund for the shipment, this should be the newly
   /// refunded amount.
-  Price amount;
+  Price? amount;
 
   /// If set to true, all shipping costs for the order will be refunded.
   ///
   /// If this is true, amount should not be provided and will be ignored. If set
   /// to false, submit the amount of the partial shipping refund, excluding the
   /// shipping tax. The shipping tax is calculated and handled on Google's side.
-  core.bool fullRefund;
+  core.bool? fullRefund;
 
   OrdersCustomBatchRequestEntryRefundItemShipping();
 
@@ -17169,9 +16419,9 @@ class OrdersCustomBatchRequestEntryRefundItemShipping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amount != null) 'amount': amount.toJson(),
-        if (fullRefund != null) 'fullRefund': fullRefund,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amount != null) 'amount': amount!.toJson(),
+        if (fullRefund != null) 'fullRefund': fullRefund!,
       };
 }
 
@@ -17180,17 +16430,17 @@ class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
   ///
   /// See `shipments[].carrier` in the Orders resource representation for a list
   /// of acceptable values.
-  core.String carrier;
+  core.String? carrier;
 
   /// The ID of the shipment.
   ///
   /// This is assigned by the merchant and is unique to each shipment.
   ///
   /// Required.
-  core.String shipmentId;
+  core.String? shipmentId;
 
   /// The tracking ID for the shipment.
-  core.String trackingId;
+  core.String? trackingId;
 
   OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo();
 
@@ -17207,10 +16457,10 @@ class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (carrier != null) 'carrier': carrier,
-        if (shipmentId != null) 'shipmentId': shipmentId,
-        if (trackingId != null) 'trackingId': trackingId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (carrier != null) 'carrier': carrier!,
+        if (shipmentId != null) 'shipmentId': shipmentId!,
+        if (trackingId != null) 'trackingId': trackingId!,
       };
 }
 
@@ -17219,10 +16469,10 @@ class OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails {
   /// The phone number of the carrier fulfilling the delivery.
   ///
   /// The phone number should be formatted as the international notation in
-  core.String carrierPhoneNumber;
+  core.String? carrierPhoneNumber;
 
   /// The date a shipment is scheduled for delivery, in ISO 8601 format.
-  core.String scheduledDate;
+  core.String? scheduledDate;
 
   OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails();
 
@@ -17236,10 +16486,10 @@ class OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (carrierPhoneNumber != null)
-          'carrierPhoneNumber': carrierPhoneNumber,
-        if (scheduledDate != null) 'scheduledDate': scheduledDate,
+          'carrierPhoneNumber': carrierPhoneNumber!,
+        if (scheduledDate != null) 'scheduledDate': scheduledDate!,
       };
 }
 
@@ -17247,10 +16497,10 @@ class OrdersGetByMerchantOrderIdResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersGetByMerchantOrderIdResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The requested order.
-  Order order;
+  Order? order;
 
   OrdersGetByMerchantOrderIdResponse();
 
@@ -17264,9 +16514,9 @@ class OrdersGetByMerchantOrderIdResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (order != null) 'order': order.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (order != null) 'order': order!.toJson(),
       };
 }
 
@@ -17274,10 +16524,10 @@ class OrdersGetTestOrderTemplateResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersGetTestOrderTemplateResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The requested test order template.
-  TestOrder template;
+  TestOrder? template;
 
   OrdersGetTestOrderTemplateResponse();
 
@@ -17291,9 +16541,9 @@ class OrdersGetTestOrderTemplateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (template != null) 'template': template.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (template != null) 'template': template!.toJson(),
       };
 }
 
@@ -17301,27 +16551,27 @@ class OrdersInStoreRefundLineItemRequest {
   /// The ID of the line item to return.
   ///
   /// Either lineItemId or productId is required.
-  core.String lineItemId;
+  core.String? lineItemId;
 
   /// The ID of the operation.
   ///
   /// Unique across all operations for a given order.
-  core.String operationId;
+  core.String? operationId;
 
   /// The amount to be refunded.
   ///
   /// This may be pre-tax or post-tax depending on the location of the order.
   /// Required.
-  Price priceAmount;
+  Price? priceAmount;
 
   /// The ID of the product to return.
   ///
   /// This is the REST ID used in the products service. Either lineItemId or
   /// productId is required.
-  core.String productId;
+  core.String? productId;
 
   /// The quantity to return and refund.
-  core.int quantity;
+  core.int? quantity;
 
   /// The reason for the return.
   ///
@@ -17331,15 +16581,15 @@ class OrdersInStoreRefundLineItemRequest {
   /// "`other`" - "`productArrivedDamaged`" - "`productNotAsDescribed`" -
   /// "`qualityNotAsExpected`" - "`undeliverableShippingAddress`" -
   /// "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"
-  core.String reason;
+  core.String? reason;
 
   /// The explanation of the reason.
-  core.String reasonText;
+  core.String? reasonText;
 
   /// The amount of tax to be refunded.
   ///
   /// Required.
-  Price taxAmount;
+  Price? taxAmount;
 
   OrdersInStoreRefundLineItemRequest();
 
@@ -17372,15 +16622,15 @@ class OrdersInStoreRefundLineItemRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lineItemId != null) 'lineItemId': lineItemId,
-        if (operationId != null) 'operationId': operationId,
-        if (priceAmount != null) 'priceAmount': priceAmount.toJson(),
-        if (productId != null) 'productId': productId,
-        if (quantity != null) 'quantity': quantity,
-        if (reason != null) 'reason': reason,
-        if (reasonText != null) 'reasonText': reasonText,
-        if (taxAmount != null) 'taxAmount': taxAmount.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lineItemId != null) 'lineItemId': lineItemId!,
+        if (operationId != null) 'operationId': operationId!,
+        if (priceAmount != null) 'priceAmount': priceAmount!.toJson(),
+        if (productId != null) 'productId': productId!,
+        if (quantity != null) 'quantity': quantity!,
+        if (reason != null) 'reason': reason!,
+        if (reasonText != null) 'reasonText': reasonText!,
+        if (taxAmount != null) 'taxAmount': taxAmount!.toJson(),
       };
 }
 
@@ -17388,12 +16638,12 @@ class OrdersInStoreRefundLineItemResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersInStoreRefundLineItemResponse".
-  core.String kind;
+  core.String? kind;
 
   OrdersInStoreRefundLineItemResponse();
 
@@ -17406,9 +16656,9 @@ class OrdersInStoreRefundLineItemResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -17416,11 +16666,11 @@ class OrdersListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token for the retrieval of the next page of orders.
-  core.String nextPageToken;
-  core.List<Order> resources;
+  core.String? nextPageToken;
+  core.List<Order>? resources;
 
   OrdersListResponse();
 
@@ -17439,11 +16689,11 @@ class OrdersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -17451,12 +16701,12 @@ class OrdersRefundItemRequest {
   /// The items that are refunded.
   ///
   /// Either Item or Shipping must be provided in the request.
-  core.List<OrdersCustomBatchRequestEntryRefundItemItem> items;
+  core.List<OrdersCustomBatchRequestEntryRefundItemItem>? items;
 
   /// The ID of the operation.
   ///
   /// Unique across all operations for a given order.
-  core.String operationId;
+  core.String? operationId;
 
   /// The reason for the refund.
   ///
@@ -17466,15 +16716,15 @@ class OrdersRefundItemRequest {
   /// "`productNotAsDescribed`" - "`undeliverableShippingAddress`" -
   /// "`wrongProductShipped`" - "`lateShipmentCredit`" -
   /// "`deliveredLateByCarrier`" - "`productArrivedDamaged`"
-  core.String reason;
+  core.String? reason;
 
   /// The explanation of the reason.
-  core.String reasonText;
+  core.String? reasonText;
 
   /// The refund on shipping.
   ///
   /// Optional, but either Item or Shipping must be provided in the request.
-  OrdersCustomBatchRequestEntryRefundItemShipping shipping;
+  OrdersCustomBatchRequestEntryRefundItemShipping? shipping;
 
   OrdersRefundItemRequest();
 
@@ -17501,13 +16751,13 @@ class OrdersRefundItemRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (operationId != null) 'operationId': operationId,
-        if (reason != null) 'reason': reason,
-        if (reasonText != null) 'reasonText': reasonText,
-        if (shipping != null) 'shipping': shipping.toJson(),
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (operationId != null) 'operationId': operationId!,
+        if (reason != null) 'reason': reason!,
+        if (reasonText != null) 'reasonText': reasonText!,
+        if (shipping != null) 'shipping': shipping!.toJson(),
       };
 }
 
@@ -17515,12 +16765,12 @@ class OrdersRefundItemResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersRefundItemResponse".
-  core.String kind;
+  core.String? kind;
 
   OrdersRefundItemResponse();
 
@@ -17533,9 +16783,9 @@ class OrdersRefundItemResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -17544,25 +16794,25 @@ class OrdersRefundOrderRequest {
   ///
   /// If this is not the first refund for the order, this should be the newly
   /// refunded amount.
-  MonetaryAmount amount;
+  MonetaryAmount? amount;
 
   /// If true, the full order will be refunded, including shipping.
   ///
   /// If this is true, amount should not be provided and will be ignored.
-  core.bool fullRefund;
+  core.bool? fullRefund;
 
   /// The ID of the operation.
   ///
   /// Unique across all operations for a given order.
-  core.String operationId;
+  core.String? operationId;
 
   /// The reason for the refund.
   ///
   /// Acceptable values are: - "`courtesyAdjustment`" - "`other`"
-  core.String reason;
+  core.String? reason;
 
   /// The explanation of the reason.
-  core.String reasonText;
+  core.String? reasonText;
 
   OrdersRefundOrderRequest();
 
@@ -17585,12 +16835,12 @@ class OrdersRefundOrderRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amount != null) 'amount': amount.toJson(),
-        if (fullRefund != null) 'fullRefund': fullRefund,
-        if (operationId != null) 'operationId': operationId,
-        if (reason != null) 'reason': reason,
-        if (reasonText != null) 'reasonText': reasonText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amount != null) 'amount': amount!.toJson(),
+        if (fullRefund != null) 'fullRefund': fullRefund!,
+        if (operationId != null) 'operationId': operationId!,
+        if (reason != null) 'reason': reason!,
+        if (reasonText != null) 'reasonText': reasonText!,
       };
 }
 
@@ -17598,12 +16848,12 @@ class OrdersRefundOrderResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersRefundOrderResponse".
-  core.String kind;
+  core.String? kind;
 
   OrdersRefundOrderResponse();
 
@@ -17616,9 +16866,9 @@ class OrdersRefundOrderResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -17626,30 +16876,30 @@ class OrdersRejectReturnLineItemRequest {
   /// The ID of the line item to return.
   ///
   /// Either lineItemId or productId is required.
-  core.String lineItemId;
+  core.String? lineItemId;
 
   /// The ID of the operation.
   ///
   /// Unique across all operations for a given order.
-  core.String operationId;
+  core.String? operationId;
 
   /// The ID of the product to return.
   ///
   /// This is the REST ID used in the products service. Either lineItemId or
   /// productId is required.
-  core.String productId;
+  core.String? productId;
 
   /// The quantity to return and refund.
-  core.int quantity;
+  core.int? quantity;
 
   /// The reason for the return.
   ///
   /// Acceptable values are: - "`damagedOrUsed`" - "`missingComponent`" -
   /// "`notEligible`" - "`other`" - "`outOfReturnWindow`"
-  core.String reason;
+  core.String? reason;
 
   /// The explanation of the reason.
-  core.String reasonText;
+  core.String? reasonText;
 
   OrdersRejectReturnLineItemRequest();
 
@@ -17674,13 +16924,13 @@ class OrdersRejectReturnLineItemRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lineItemId != null) 'lineItemId': lineItemId,
-        if (operationId != null) 'operationId': operationId,
-        if (productId != null) 'productId': productId,
-        if (quantity != null) 'quantity': quantity,
-        if (reason != null) 'reason': reason,
-        if (reasonText != null) 'reasonText': reasonText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lineItemId != null) 'lineItemId': lineItemId!,
+        if (operationId != null) 'operationId': operationId!,
+        if (productId != null) 'productId': productId!,
+        if (quantity != null) 'quantity': quantity!,
+        if (reason != null) 'reason': reason!,
+        if (reasonText != null) 'reasonText': reasonText!,
       };
 }
 
@@ -17688,12 +16938,12 @@ class OrdersRejectReturnLineItemResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersRejectReturnLineItemResponse".
-  core.String kind;
+  core.String? kind;
 
   OrdersRejectReturnLineItemResponse();
 
@@ -17706,9 +16956,9 @@ class OrdersRejectReturnLineItemResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -17716,29 +16966,29 @@ class OrdersReturnRefundLineItemRequest {
   /// The ID of the line item to return.
   ///
   /// Either lineItemId or productId is required.
-  core.String lineItemId;
+  core.String? lineItemId;
 
   /// The ID of the operation.
   ///
   /// Unique across all operations for a given order.
-  core.String operationId;
+  core.String? operationId;
 
   /// The amount to be refunded.
   ///
   /// This may be pre-tax or post-tax depending on the location of the order. If
   /// omitted, refundless return is assumed.
-  Price priceAmount;
+  Price? priceAmount;
 
   /// The ID of the product to return.
   ///
   /// This is the REST ID used in the products service. Either lineItemId or
   /// productId is required.
-  core.String productId;
+  core.String? productId;
 
   /// The quantity to return and refund.
   ///
   /// Quantity is required.
-  core.int quantity;
+  core.int? quantity;
 
   /// The reason for the return.
   ///
@@ -17748,16 +16998,16 @@ class OrdersReturnRefundLineItemRequest {
   /// "`other`" - "`productArrivedDamaged`" - "`productNotAsDescribed`" -
   /// "`qualityNotAsExpected`" - "`undeliverableShippingAddress`" -
   /// "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"
-  core.String reason;
+  core.String? reason;
 
   /// The explanation of the reason.
-  core.String reasonText;
+  core.String? reasonText;
 
   /// The amount of tax to be refunded.
   ///
   /// Optional, but if filled, then priceAmount must be set. Calculated
   /// automatically if not provided.
-  Price taxAmount;
+  Price? taxAmount;
 
   OrdersReturnRefundLineItemRequest();
 
@@ -17790,15 +17040,15 @@ class OrdersReturnRefundLineItemRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lineItemId != null) 'lineItemId': lineItemId,
-        if (operationId != null) 'operationId': operationId,
-        if (priceAmount != null) 'priceAmount': priceAmount.toJson(),
-        if (productId != null) 'productId': productId,
-        if (quantity != null) 'quantity': quantity,
-        if (reason != null) 'reason': reason,
-        if (reasonText != null) 'reasonText': reasonText,
-        if (taxAmount != null) 'taxAmount': taxAmount.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lineItemId != null) 'lineItemId': lineItemId!,
+        if (operationId != null) 'operationId': operationId!,
+        if (priceAmount != null) 'priceAmount': priceAmount!.toJson(),
+        if (productId != null) 'productId': productId!,
+        if (quantity != null) 'quantity': quantity!,
+        if (reason != null) 'reason': reason!,
+        if (reasonText != null) 'reasonText': reasonText!,
+        if (taxAmount != null) 'taxAmount': taxAmount!.toJson(),
       };
 }
 
@@ -17806,12 +17056,12 @@ class OrdersReturnRefundLineItemResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersReturnRefundLineItemResponse".
-  core.String kind;
+  core.String? kind;
 
   OrdersReturnRefundLineItemResponse();
 
@@ -17824,30 +17074,30 @@ class OrdersReturnRefundLineItemResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class OrdersSetLineItemMetadataRequest {
-  core.List<OrderMerchantProvidedAnnotation> annotations;
+  core.List<OrderMerchantProvidedAnnotation>? annotations;
 
   /// The ID of the line item to set metadata.
   ///
   /// Either lineItemId or productId is required.
-  core.String lineItemId;
+  core.String? lineItemId;
 
   /// The ID of the operation.
   ///
   /// Unique across all operations for a given order.
-  core.String operationId;
+  core.String? operationId;
 
   /// The ID of the product to set metadata.
   ///
   /// This is the REST ID used in the products service. Either lineItemId or
   /// productId is required.
-  core.String productId;
+  core.String? productId;
 
   OrdersSetLineItemMetadataRequest();
 
@@ -17870,12 +17120,12 @@ class OrdersSetLineItemMetadataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (annotations != null)
-          'annotations': annotations.map((value) => value.toJson()).toList(),
-        if (lineItemId != null) 'lineItemId': lineItemId,
-        if (operationId != null) 'operationId': operationId,
-        if (productId != null) 'productId': productId,
+          'annotations': annotations!.map((value) => value.toJson()).toList(),
+        if (lineItemId != null) 'lineItemId': lineItemId!,
+        if (operationId != null) 'operationId': operationId!,
+        if (productId != null) 'productId': productId!,
       };
 }
 
@@ -17883,12 +17133,12 @@ class OrdersSetLineItemMetadataResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersSetLineItemMetadataResponse".
-  core.String kind;
+  core.String? kind;
 
   OrdersSetLineItemMetadataResponse();
 
@@ -17901,31 +17151,31 @@ class OrdersSetLineItemMetadataResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class OrdersShipLineItemsRequest {
   /// Line items to ship.
-  core.List<OrderShipmentLineItemShipment> lineItems;
+  core.List<OrderShipmentLineItemShipment>? lineItems;
 
   /// The ID of the operation.
   ///
   /// Unique across all operations for a given order.
-  core.String operationId;
+  core.String? operationId;
 
   /// ID of the shipment group.
   ///
   /// Required for orders that use the orderinvoices service.
-  core.String shipmentGroupId;
+  core.String? shipmentGroupId;
 
   /// Shipment information.
   ///
   /// This field is repeated because a single line item can be shipped in
   /// several packages (and have several tracking IDs).
-  core.List<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>
+  core.List<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>?
       shipmentInfos;
 
   OrdersShipLineItemsRequest();
@@ -17953,14 +17203,14 @@ class OrdersShipLineItemsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (lineItems != null)
-          'lineItems': lineItems.map((value) => value.toJson()).toList(),
-        if (operationId != null) 'operationId': operationId,
-        if (shipmentGroupId != null) 'shipmentGroupId': shipmentGroupId,
+          'lineItems': lineItems!.map((value) => value.toJson()).toList(),
+        if (operationId != null) 'operationId': operationId!,
+        if (shipmentGroupId != null) 'shipmentGroupId': shipmentGroupId!,
         if (shipmentInfos != null)
           'shipmentInfos':
-              shipmentInfos.map((value) => value.toJson()).toList(),
+              shipmentInfos!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -17968,12 +17218,12 @@ class OrdersShipLineItemsResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersShipLineItemsResponse".
-  core.String kind;
+  core.String? kind;
 
   OrdersShipLineItemsResponse();
 
@@ -17986,9 +17236,9 @@ class OrdersShipLineItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -17997,29 +17247,29 @@ class OrdersUpdateLineItemShippingDetailsRequest {
   ///
   /// If not specified only ship by date is updated. Provided date should be
   /// within 1 year timeframe and can not be a date in the past.
-  core.String deliverByDate;
+  core.String? deliverByDate;
 
   /// The ID of the line item to set metadata.
   ///
   /// Either lineItemId or productId is required.
-  core.String lineItemId;
+  core.String? lineItemId;
 
   /// The ID of the operation.
   ///
   /// Unique across all operations for a given order.
-  core.String operationId;
+  core.String? operationId;
 
   /// The ID of the product to set metadata.
   ///
   /// This is the REST ID used in the products service. Either lineItemId or
   /// productId is required.
-  core.String productId;
+  core.String? productId;
 
   /// Updated ship by date, in ISO 8601 format.
   ///
   /// If not specified only deliver by date is updated. Provided date should be
   /// within 1 year timeframe and can not be a date in the past.
-  core.String shipByDate;
+  core.String? shipByDate;
 
   OrdersUpdateLineItemShippingDetailsRequest();
 
@@ -18041,12 +17291,12 @@ class OrdersUpdateLineItemShippingDetailsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deliverByDate != null) 'deliverByDate': deliverByDate,
-        if (lineItemId != null) 'lineItemId': lineItemId,
-        if (operationId != null) 'operationId': operationId,
-        if (productId != null) 'productId': productId,
-        if (shipByDate != null) 'shipByDate': shipByDate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deliverByDate != null) 'deliverByDate': deliverByDate!,
+        if (lineItemId != null) 'lineItemId': lineItemId!,
+        if (operationId != null) 'operationId': operationId!,
+        if (productId != null) 'productId': productId!,
+        if (shipByDate != null) 'shipByDate': shipByDate!,
       };
 }
 
@@ -18054,13 +17304,13 @@ class OrdersUpdateLineItemShippingDetailsResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
   /// "content#ordersUpdateLineItemShippingDetailsResponse".
-  core.String kind;
+  core.String? kind;
 
   OrdersUpdateLineItemShippingDetailsResponse();
 
@@ -18073,9 +17323,9 @@ class OrdersUpdateLineItemShippingDetailsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -18083,12 +17333,12 @@ class OrdersUpdateMerchantOrderIdRequest {
   /// The merchant order id to be assigned to the order.
   ///
   /// Must be unique per merchant.
-  core.String merchantOrderId;
+  core.String? merchantOrderId;
 
   /// The ID of the operation.
   ///
   /// Unique across all operations for a given order.
-  core.String operationId;
+  core.String? operationId;
 
   OrdersUpdateMerchantOrderIdRequest();
 
@@ -18101,9 +17351,9 @@ class OrdersUpdateMerchantOrderIdRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (merchantOrderId != null) 'merchantOrderId': merchantOrderId,
-        if (operationId != null) 'operationId': operationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (merchantOrderId != null) 'merchantOrderId': merchantOrderId!,
+        if (operationId != null) 'operationId': operationId!,
       };
 }
 
@@ -18111,12 +17361,12 @@ class OrdersUpdateMerchantOrderIdResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersUpdateMerchantOrderIdResponse".
-  core.String kind;
+  core.String? kind;
 
   OrdersUpdateMerchantOrderIdResponse();
 
@@ -18129,9 +17379,9 @@ class OrdersUpdateMerchantOrderIdResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -18140,51 +17390,51 @@ class OrdersUpdateShipmentRequest {
   ///
   /// Not updated if missing. See `shipments[].carrier` in the Orders resource
   /// representation for a list of acceptable values.
-  core.String carrier;
+  core.String? carrier;
 
   /// Date on which the shipment has been delivered, in ISO 8601 format.
   ///
   /// Optional and can be provided only if `status` is `delivered`.
-  core.String deliveryDate;
+  core.String? deliveryDate;
 
   /// Date after which the pickup will expire, in ISO 8601 format.
   ///
   /// Required only when order is buy-online-pickup-in-store(BOPIS) and `status`
   /// is `ready for pickup`.
-  core.String lastPickupDate;
+  core.String? lastPickupDate;
 
   /// The ID of the operation.
   ///
   /// Unique across all operations for a given order.
-  core.String operationId;
+  core.String? operationId;
 
   /// Date on which the shipment has been ready for pickup, in ISO 8601 format.
   ///
   /// Optional and can be provided only if `status` is `ready for pickup`.
-  core.String readyPickupDate;
+  core.String? readyPickupDate;
 
   /// Delivery details of the shipment if scheduling is needed.
-  OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails
+  OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails?
       scheduledDeliveryDetails;
 
   /// The ID of the shipment.
-  core.String shipmentId;
+  core.String? shipmentId;
 
   /// New status for the shipment.
   ///
   /// Not updated if missing. Acceptable values are: - "`delivered`" -
   /// "`undeliverable`" - "`readyForPickup`"
-  core.String status;
+  core.String? status;
 
   /// The tracking ID for the shipment.
   ///
   /// Not updated if missing.
-  core.String trackingId;
+  core.String? trackingId;
 
   /// Date on which the shipment has been undeliverable, in ISO 8601 format.
   ///
   /// Optional and can be provided only if `status` is `undeliverable`.
-  core.String undeliveredDate;
+  core.String? undeliveredDate;
 
   OrdersUpdateShipmentRequest();
 
@@ -18224,18 +17474,18 @@ class OrdersUpdateShipmentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (carrier != null) 'carrier': carrier,
-        if (deliveryDate != null) 'deliveryDate': deliveryDate,
-        if (lastPickupDate != null) 'lastPickupDate': lastPickupDate,
-        if (operationId != null) 'operationId': operationId,
-        if (readyPickupDate != null) 'readyPickupDate': readyPickupDate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (carrier != null) 'carrier': carrier!,
+        if (deliveryDate != null) 'deliveryDate': deliveryDate!,
+        if (lastPickupDate != null) 'lastPickupDate': lastPickupDate!,
+        if (operationId != null) 'operationId': operationId!,
+        if (readyPickupDate != null) 'readyPickupDate': readyPickupDate!,
         if (scheduledDeliveryDetails != null)
-          'scheduledDeliveryDetails': scheduledDeliveryDetails.toJson(),
-        if (shipmentId != null) 'shipmentId': shipmentId,
-        if (status != null) 'status': status,
-        if (trackingId != null) 'trackingId': trackingId,
-        if (undeliveredDate != null) 'undeliveredDate': undeliveredDate,
+          'scheduledDeliveryDetails': scheduledDeliveryDetails!.toJson(),
+        if (shipmentId != null) 'shipmentId': shipmentId!,
+        if (status != null) 'status': status!,
+        if (trackingId != null) 'trackingId': trackingId!,
+        if (undeliveredDate != null) 'undeliveredDate': undeliveredDate!,
       };
 }
 
@@ -18243,12 +17493,12 @@ class OrdersUpdateShipmentResponse {
   /// The status of the execution.
   ///
   /// Acceptable values are: - "`duplicate`" - "`executed`"
-  core.String executionStatus;
+  core.String? executionStatus;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#ordersUpdateShipmentResponse".
-  core.String kind;
+  core.String? kind;
 
   OrdersUpdateShipmentResponse();
 
@@ -18261,9 +17511,9 @@ class OrdersUpdateShipmentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionStatus != null) 'executionStatus': executionStatus,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionStatus != null) 'executionStatus': executionStatus!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -18271,12 +17521,12 @@ class PickupCarrierService {
   /// The name of the pickup carrier (e.g., `"UPS"`).
   ///
   /// Required.
-  core.String carrierName;
+  core.String? carrierName;
 
   /// The name of the pickup service (e.g., `"Access point"`).
   ///
   /// Required.
-  core.String serviceName;
+  core.String? serviceName;
 
   PickupCarrierService();
 
@@ -18289,9 +17539,9 @@ class PickupCarrierService {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (carrierName != null) 'carrierName': carrierName,
-        if (serviceName != null) 'serviceName': serviceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (carrierName != null) 'carrierName': carrierName!,
+        if (serviceName != null) 'serviceName': serviceName!,
       };
 }
 
@@ -18299,17 +17549,17 @@ class PickupServicesPickupService {
   /// The name of the carrier (e.g., `"UPS"`).
   ///
   /// Always present.
-  core.String carrierName;
+  core.String? carrierName;
 
   /// The CLDR country code of the carrier (e.g., "US").
   ///
   /// Always present.
-  core.String country;
+  core.String? country;
 
   /// The name of the pickup service (e.g., `"Access point"`).
   ///
   /// Always present.
-  core.String serviceName;
+  core.String? serviceName;
 
   PickupServicesPickupService();
 
@@ -18325,16 +17575,16 @@ class PickupServicesPickupService {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (carrierName != null) 'carrierName': carrierName,
-        if (country != null) 'country': country,
-        if (serviceName != null) 'serviceName': serviceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (carrierName != null) 'carrierName': carrierName!,
+        if (country != null) 'country': country!,
+        if (serviceName != null) 'serviceName': serviceName!,
       };
 }
 
 class PosCustomBatchRequest {
   /// The request entries to be processed in the batch.
-  core.List<PosCustomBatchRequestEntry> entries;
+  core.List<PosCustomBatchRequestEntry>? entries;
 
   PosCustomBatchRequest();
 
@@ -18348,47 +17598,47 @@ class PosCustomBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
 class PosCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
-  core.int batchId;
+  core.int? batchId;
 
   /// The inventory to submit.
   ///
   /// This should be set only if the method is `inventory`.
-  PosInventory inventory;
+  PosInventory? inventory;
 
   /// The ID of the POS data provider.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// The method of the batch entry.
   ///
   /// Acceptable values are: - "`delete`" - "`get`" - "`insert`" - "`inventory`"
   /// - "`sale`"
-  core.String method;
+  core.String? method;
 
   /// The sale information to submit.
   ///
   /// This should be set only if the method is `sale`.
-  PosSale sale;
+  PosSale? sale;
 
   /// The store information to submit.
   ///
   /// This should be set only if the method is `insert`.
-  PosStore store;
+  PosStore? store;
 
   /// The store code.
   ///
   /// This should be set only if the method is `delete` or `get`.
-  core.String storeCode;
+  core.String? storeCode;
 
   /// The ID of the account for which to get/submit data.
-  core.String targetMerchantId;
+  core.String? targetMerchantId;
 
   PosCustomBatchRequestEntry();
 
@@ -18422,26 +17672,26 @@ class PosCustomBatchRequestEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (inventory != null) 'inventory': inventory.toJson(),
-        if (merchantId != null) 'merchantId': merchantId,
-        if (method != null) 'method': method,
-        if (sale != null) 'sale': sale.toJson(),
-        if (store != null) 'store': store.toJson(),
-        if (storeCode != null) 'storeCode': storeCode,
-        if (targetMerchantId != null) 'targetMerchantId': targetMerchantId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (inventory != null) 'inventory': inventory!.toJson(),
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (method != null) 'method': method!,
+        if (sale != null) 'sale': sale!.toJson(),
+        if (store != null) 'store': store!.toJson(),
+        if (storeCode != null) 'storeCode': storeCode!,
+        if (targetMerchantId != null) 'targetMerchantId': targetMerchantId!,
       };
 }
 
 class PosCustomBatchResponse {
   /// The result of the execution of the batch requests.
-  core.List<PosCustomBatchResponseEntry> entries;
+  core.List<PosCustomBatchResponseEntry>? entries;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#posCustomBatchResponse".
-  core.String kind;
+  core.String? kind;
 
   PosCustomBatchResponse();
 
@@ -18458,33 +17708,33 @@ class PosCustomBatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class PosCustomBatchResponseEntry {
   /// The ID of the request entry to which this entry responds.
-  core.int batchId;
+  core.int? batchId;
 
   /// A list of errors defined if, and only if, the request failed.
-  Errors errors;
+  Errors? errors;
 
   /// The updated inventory information.
-  PosInventory inventory;
+  PosInventory? inventory;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#posCustomBatchResponseEntry`"
-  core.String kind;
+  core.String? kind;
 
   /// The updated sale information.
-  PosSale sale;
+  PosSale? sale;
 
   /// The retrieved or updated store information.
-  PosStore store;
+  PosStore? store;
 
   PosCustomBatchResponseEntry();
 
@@ -18513,22 +17763,22 @@ class PosCustomBatchResponseEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (errors != null) 'errors': errors.toJson(),
-        if (inventory != null) 'inventory': inventory.toJson(),
-        if (kind != null) 'kind': kind,
-        if (sale != null) 'sale': sale.toJson(),
-        if (store != null) 'store': store.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (errors != null) 'errors': errors!.toJson(),
+        if (inventory != null) 'inventory': inventory!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (sale != null) 'sale': sale!.toJson(),
+        if (store != null) 'store': store!.toJson(),
       };
 }
 
 class PosDataProviders {
   /// Country code.
-  core.String country;
+  core.String? country;
 
   /// A list of POS data providers.
-  core.List<PosDataProvidersPosDataProvider> posDataProviders;
+  core.List<PosDataProvidersPosDataProvider>? posDataProviders;
 
   PosDataProviders();
 
@@ -18545,23 +17795,23 @@ class PosDataProviders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
         if (posDataProviders != null)
           'posDataProviders':
-              posDataProviders.map((value) => value.toJson()).toList(),
+              posDataProviders!.map((value) => value.toJson()).toList(),
       };
 }
 
 class PosDataProvidersPosDataProvider {
   /// The display name of Pos data Provider.
-  core.String displayName;
+  core.String? displayName;
 
   /// The full name of this POS data Provider.
-  core.String fullName;
+  core.String? fullName;
 
   /// The ID of the account.
-  core.String providerId;
+  core.String? providerId;
 
   PosDataProvidersPosDataProvider();
 
@@ -18577,10 +17827,10 @@ class PosDataProvidersPosDataProvider {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (fullName != null) 'fullName': fullName,
-        if (providerId != null) 'providerId': providerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (fullName != null) 'fullName': fullName!,
+        if (providerId != null) 'providerId': providerId!,
       };
 }
 
@@ -18589,30 +17839,30 @@ class PosInventory {
   /// The two-letter ISO 639-1 language code for the item.
   ///
   /// Required.
-  core.String contentLanguage;
+  core.String? contentLanguage;
 
   /// Global Trade Item Number.
-  core.String gtin;
+  core.String? gtin;
 
   /// A unique identifier for the item.
   ///
   /// Required.
-  core.String itemId;
+  core.String? itemId;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#posInventory`"
-  core.String kind;
+  core.String? kind;
 
   /// The current price of the item.
   ///
   /// Required.
-  Price price;
+  Price? price;
 
   /// The available quantity of the item.
   ///
   /// Required.
-  core.String quantity;
+  core.String? quantity;
 
   /// The identifier of the merchant's store.
   ///
@@ -18620,17 +17870,17 @@ class PosInventory {
   /// Google My Business.
   ///
   /// Required.
-  core.String storeCode;
+  core.String? storeCode;
 
   /// The CLDR territory code for the item.
   ///
   /// Required.
-  core.String targetCountry;
+  core.String? targetCountry;
 
   /// The inventory timestamp, in ISO 8601 format.
   ///
   /// Required.
-  core.String timestamp;
+  core.String? timestamp;
 
   PosInventory();
 
@@ -18665,16 +17915,16 @@ class PosInventory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentLanguage != null) 'contentLanguage': contentLanguage,
-        if (gtin != null) 'gtin': gtin,
-        if (itemId != null) 'itemId': itemId,
-        if (kind != null) 'kind': kind,
-        if (price != null) 'price': price.toJson(),
-        if (quantity != null) 'quantity': quantity,
-        if (storeCode != null) 'storeCode': storeCode,
-        if (targetCountry != null) 'targetCountry': targetCountry,
-        if (timestamp != null) 'timestamp': timestamp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentLanguage != null) 'contentLanguage': contentLanguage!,
+        if (gtin != null) 'gtin': gtin!,
+        if (itemId != null) 'itemId': itemId!,
+        if (kind != null) 'kind': kind!,
+        if (price != null) 'price': price!.toJson(),
+        if (quantity != null) 'quantity': quantity!,
+        if (storeCode != null) 'storeCode': storeCode!,
+        if (targetCountry != null) 'targetCountry': targetCountry!,
+        if (timestamp != null) 'timestamp': timestamp!,
       };
 }
 
@@ -18682,25 +17932,25 @@ class PosInventoryRequest {
   /// The two-letter ISO 639-1 language code for the item.
   ///
   /// Required.
-  core.String contentLanguage;
+  core.String? contentLanguage;
 
   /// Global Trade Item Number.
-  core.String gtin;
+  core.String? gtin;
 
   /// A unique identifier for the item.
   ///
   /// Required.
-  core.String itemId;
+  core.String? itemId;
 
   /// The current price of the item.
   ///
   /// Required.
-  Price price;
+  Price? price;
 
   /// The available quantity of the item.
   ///
   /// Required.
-  core.String quantity;
+  core.String? quantity;
 
   /// The identifier of the merchant's store.
   ///
@@ -18708,17 +17958,17 @@ class PosInventoryRequest {
   /// Google My Business.
   ///
   /// Required.
-  core.String storeCode;
+  core.String? storeCode;
 
   /// The CLDR territory code for the item.
   ///
   /// Required.
-  core.String targetCountry;
+  core.String? targetCountry;
 
   /// The inventory timestamp, in ISO 8601 format.
   ///
   /// Required.
-  core.String timestamp;
+  core.String? timestamp;
 
   PosInventoryRequest();
 
@@ -18750,15 +18000,15 @@ class PosInventoryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentLanguage != null) 'contentLanguage': contentLanguage,
-        if (gtin != null) 'gtin': gtin,
-        if (itemId != null) 'itemId': itemId,
-        if (price != null) 'price': price.toJson(),
-        if (quantity != null) 'quantity': quantity,
-        if (storeCode != null) 'storeCode': storeCode,
-        if (targetCountry != null) 'targetCountry': targetCountry,
-        if (timestamp != null) 'timestamp': timestamp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentLanguage != null) 'contentLanguage': contentLanguage!,
+        if (gtin != null) 'gtin': gtin!,
+        if (itemId != null) 'itemId': itemId!,
+        if (price != null) 'price': price!.toJson(),
+        if (quantity != null) 'quantity': quantity!,
+        if (storeCode != null) 'storeCode': storeCode!,
+        if (targetCountry != null) 'targetCountry': targetCountry!,
+        if (timestamp != null) 'timestamp': timestamp!,
       };
 }
 
@@ -18766,30 +18016,30 @@ class PosInventoryResponse {
   /// The two-letter ISO 639-1 language code for the item.
   ///
   /// Required.
-  core.String contentLanguage;
+  core.String? contentLanguage;
 
   /// Global Trade Item Number.
-  core.String gtin;
+  core.String? gtin;
 
   /// A unique identifier for the item.
   ///
   /// Required.
-  core.String itemId;
+  core.String? itemId;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#posInventoryResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The current price of the item.
   ///
   /// Required.
-  Price price;
+  Price? price;
 
   /// The available quantity of the item.
   ///
   /// Required.
-  core.String quantity;
+  core.String? quantity;
 
   /// The identifier of the merchant's store.
   ///
@@ -18797,17 +18047,17 @@ class PosInventoryResponse {
   /// Google My Business.
   ///
   /// Required.
-  core.String storeCode;
+  core.String? storeCode;
 
   /// The CLDR territory code for the item.
   ///
   /// Required.
-  core.String targetCountry;
+  core.String? targetCountry;
 
   /// The inventory timestamp, in ISO 8601 format.
   ///
   /// Required.
-  core.String timestamp;
+  core.String? timestamp;
 
   PosInventoryResponse();
 
@@ -18842,16 +18092,16 @@ class PosInventoryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentLanguage != null) 'contentLanguage': contentLanguage,
-        if (gtin != null) 'gtin': gtin,
-        if (itemId != null) 'itemId': itemId,
-        if (kind != null) 'kind': kind,
-        if (price != null) 'price': price.toJson(),
-        if (quantity != null) 'quantity': quantity,
-        if (storeCode != null) 'storeCode': storeCode,
-        if (targetCountry != null) 'targetCountry': targetCountry,
-        if (timestamp != null) 'timestamp': timestamp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentLanguage != null) 'contentLanguage': contentLanguage!,
+        if (gtin != null) 'gtin': gtin!,
+        if (itemId != null) 'itemId': itemId!,
+        if (kind != null) 'kind': kind!,
+        if (price != null) 'price': price!.toJson(),
+        if (quantity != null) 'quantity': quantity!,
+        if (storeCode != null) 'storeCode': storeCode!,
+        if (targetCountry != null) 'targetCountry': targetCountry!,
+        if (timestamp != null) 'timestamp': timestamp!,
       };
 }
 
@@ -18859,8 +18109,8 @@ class PosListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#posListResponse".
-  core.String kind;
-  core.List<PosStore> resources;
+  core.String? kind;
+  core.List<PosStore>? resources;
 
   PosListResponse();
 
@@ -18876,10 +18126,10 @@ class PosListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -18888,35 +18138,35 @@ class PosSale {
   /// The two-letter ISO 639-1 language code for the item.
   ///
   /// Required.
-  core.String contentLanguage;
+  core.String? contentLanguage;
 
   /// Global Trade Item Number.
-  core.String gtin;
+  core.String? gtin;
 
   /// A unique identifier for the item.
   ///
   /// Required.
-  core.String itemId;
+  core.String? itemId;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#posSale`"
-  core.String kind;
+  core.String? kind;
 
   /// The price of the item.
   ///
   /// Required.
-  Price price;
+  Price? price;
 
   /// The relative change of the available quantity.
   ///
   /// Negative for items returned.
   ///
   /// Required.
-  core.String quantity;
+  core.String? quantity;
 
   /// A unique ID to group items from the same sale event.
-  core.String saleId;
+  core.String? saleId;
 
   /// The identifier of the merchant's store.
   ///
@@ -18924,17 +18174,17 @@ class PosSale {
   /// Google My Business.
   ///
   /// Required.
-  core.String storeCode;
+  core.String? storeCode;
 
   /// The CLDR territory code for the item.
   ///
   /// Required.
-  core.String targetCountry;
+  core.String? targetCountry;
 
   /// The inventory timestamp, in ISO 8601 format.
   ///
   /// Required.
-  core.String timestamp;
+  core.String? timestamp;
 
   PosSale();
 
@@ -18972,17 +18222,17 @@ class PosSale {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentLanguage != null) 'contentLanguage': contentLanguage,
-        if (gtin != null) 'gtin': gtin,
-        if (itemId != null) 'itemId': itemId,
-        if (kind != null) 'kind': kind,
-        if (price != null) 'price': price.toJson(),
-        if (quantity != null) 'quantity': quantity,
-        if (saleId != null) 'saleId': saleId,
-        if (storeCode != null) 'storeCode': storeCode,
-        if (targetCountry != null) 'targetCountry': targetCountry,
-        if (timestamp != null) 'timestamp': timestamp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentLanguage != null) 'contentLanguage': contentLanguage!,
+        if (gtin != null) 'gtin': gtin!,
+        if (itemId != null) 'itemId': itemId!,
+        if (kind != null) 'kind': kind!,
+        if (price != null) 'price': price!.toJson(),
+        if (quantity != null) 'quantity': quantity!,
+        if (saleId != null) 'saleId': saleId!,
+        if (storeCode != null) 'storeCode': storeCode!,
+        if (targetCountry != null) 'targetCountry': targetCountry!,
+        if (timestamp != null) 'timestamp': timestamp!,
       };
 }
 
@@ -18990,30 +18240,30 @@ class PosSaleRequest {
   /// The two-letter ISO 639-1 language code for the item.
   ///
   /// Required.
-  core.String contentLanguage;
+  core.String? contentLanguage;
 
   /// Global Trade Item Number.
-  core.String gtin;
+  core.String? gtin;
 
   /// A unique identifier for the item.
   ///
   /// Required.
-  core.String itemId;
+  core.String? itemId;
 
   /// The price of the item.
   ///
   /// Required.
-  Price price;
+  Price? price;
 
   /// The relative change of the available quantity.
   ///
   /// Negative for items returned.
   ///
   /// Required.
-  core.String quantity;
+  core.String? quantity;
 
   /// A unique ID to group items from the same sale event.
-  core.String saleId;
+  core.String? saleId;
 
   /// The identifier of the merchant's store.
   ///
@@ -19021,17 +18271,17 @@ class PosSaleRequest {
   /// Google My Business.
   ///
   /// Required.
-  core.String storeCode;
+  core.String? storeCode;
 
   /// The CLDR territory code for the item.
   ///
   /// Required.
-  core.String targetCountry;
+  core.String? targetCountry;
 
   /// The inventory timestamp, in ISO 8601 format.
   ///
   /// Required.
-  core.String timestamp;
+  core.String? timestamp;
 
   PosSaleRequest();
 
@@ -19066,16 +18316,16 @@ class PosSaleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentLanguage != null) 'contentLanguage': contentLanguage,
-        if (gtin != null) 'gtin': gtin,
-        if (itemId != null) 'itemId': itemId,
-        if (price != null) 'price': price.toJson(),
-        if (quantity != null) 'quantity': quantity,
-        if (saleId != null) 'saleId': saleId,
-        if (storeCode != null) 'storeCode': storeCode,
-        if (targetCountry != null) 'targetCountry': targetCountry,
-        if (timestamp != null) 'timestamp': timestamp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentLanguage != null) 'contentLanguage': contentLanguage!,
+        if (gtin != null) 'gtin': gtin!,
+        if (itemId != null) 'itemId': itemId!,
+        if (price != null) 'price': price!.toJson(),
+        if (quantity != null) 'quantity': quantity!,
+        if (saleId != null) 'saleId': saleId!,
+        if (storeCode != null) 'storeCode': storeCode!,
+        if (targetCountry != null) 'targetCountry': targetCountry!,
+        if (timestamp != null) 'timestamp': timestamp!,
       };
 }
 
@@ -19083,35 +18333,35 @@ class PosSaleResponse {
   /// The two-letter ISO 639-1 language code for the item.
   ///
   /// Required.
-  core.String contentLanguage;
+  core.String? contentLanguage;
 
   /// Global Trade Item Number.
-  core.String gtin;
+  core.String? gtin;
 
   /// A unique identifier for the item.
   ///
   /// Required.
-  core.String itemId;
+  core.String? itemId;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#posSaleResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The price of the item.
   ///
   /// Required.
-  Price price;
+  Price? price;
 
   /// The relative change of the available quantity.
   ///
   /// Negative for items returned.
   ///
   /// Required.
-  core.String quantity;
+  core.String? quantity;
 
   /// A unique ID to group items from the same sale event.
-  core.String saleId;
+  core.String? saleId;
 
   /// The identifier of the merchant's store.
   ///
@@ -19119,17 +18369,17 @@ class PosSaleResponse {
   /// Google My Business.
   ///
   /// Required.
-  core.String storeCode;
+  core.String? storeCode;
 
   /// The CLDR territory code for the item.
   ///
   /// Required.
-  core.String targetCountry;
+  core.String? targetCountry;
 
   /// The inventory timestamp, in ISO 8601 format.
   ///
   /// Required.
-  core.String timestamp;
+  core.String? timestamp;
 
   PosSaleResponse();
 
@@ -19167,17 +18417,17 @@ class PosSaleResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentLanguage != null) 'contentLanguage': contentLanguage,
-        if (gtin != null) 'gtin': gtin,
-        if (itemId != null) 'itemId': itemId,
-        if (kind != null) 'kind': kind,
-        if (price != null) 'price': price.toJson(),
-        if (quantity != null) 'quantity': quantity,
-        if (saleId != null) 'saleId': saleId,
-        if (storeCode != null) 'storeCode': storeCode,
-        if (targetCountry != null) 'targetCountry': targetCountry,
-        if (timestamp != null) 'timestamp': timestamp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentLanguage != null) 'contentLanguage': contentLanguage!,
+        if (gtin != null) 'gtin': gtin!,
+        if (itemId != null) 'itemId': itemId!,
+        if (kind != null) 'kind': kind!,
+        if (price != null) 'price': price!.toJson(),
+        if (quantity != null) 'quantity': quantity!,
+        if (saleId != null) 'saleId': saleId!,
+        if (storeCode != null) 'storeCode': storeCode!,
+        if (targetCountry != null) 'targetCountry': targetCountry!,
+        if (timestamp != null) 'timestamp': timestamp!,
       };
 }
 
@@ -19186,17 +18436,17 @@ class PosStore {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#posStore`"
-  core.String kind;
+  core.String? kind;
 
   /// The street address of the store.
   ///
   /// Required.
-  core.String storeAddress;
+  core.String? storeAddress;
 
   /// A store identifier that is unique for the given merchant.
   ///
   /// Required.
-  core.String storeCode;
+  core.String? storeCode;
 
   PosStore();
 
@@ -19212,10 +18462,10 @@ class PosStore {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (storeAddress != null) 'storeAddress': storeAddress,
-        if (storeCode != null) 'storeCode': storeCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (storeAddress != null) 'storeAddress': storeAddress!,
+        if (storeCode != null) 'storeCode': storeCode!,
       };
 }
 
@@ -19223,17 +18473,17 @@ class PostalCodeGroup {
   /// The CLDR territory code of the country the postal code group applies to.
   ///
   /// Required.
-  core.String country;
+  core.String? country;
 
   /// The name of the postal code group, referred to in headers.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// A range of postal codes.
   ///
   /// Required.
-  core.List<PostalCodeRange> postalCodeRanges;
+  core.List<PostalCodeRange>? postalCodeRanges;
 
   PostalCodeGroup();
 
@@ -19252,12 +18502,12 @@ class PostalCodeGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (name != null) 'name': name!,
         if (postalCodeRanges != null)
           'postalCodeRanges':
-              postalCodeRanges.map((value) => value.toJson()).toList(),
+              postalCodeRanges!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -19266,7 +18516,7 @@ class PostalCodeRange {
   /// lower bound of the range defining the area.
   ///
   /// Examples values: `"94108"`, `"9410*"`, `"9*"`. Required.
-  core.String postalCodeRangeBegin;
+  core.String? postalCodeRangeBegin;
 
   /// A postal code or a pattern of the form `prefix*` denoting the inclusive
   /// upper bound of the range defining the area.
@@ -19277,7 +18527,7 @@ class PostalCodeRange {
   /// `postalCodeRangeEnd` must be a pattern with the same prefix length.
   /// Optional: if not set, then the area is defined as being all the postal
   /// codes matching `postalCodeRangeBegin`.
-  core.String postalCodeRangeEnd;
+  core.String? postalCodeRangeEnd;
 
   PostalCodeRange();
 
@@ -19290,20 +18540,20 @@ class PostalCodeRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (postalCodeRangeBegin != null)
-          'postalCodeRangeBegin': postalCodeRangeBegin,
+          'postalCodeRangeBegin': postalCodeRangeBegin!,
         if (postalCodeRangeEnd != null)
-          'postalCodeRangeEnd': postalCodeRangeEnd,
+          'postalCodeRangeEnd': postalCodeRangeEnd!,
       };
 }
 
 class Price {
   /// The currency of the price.
-  core.String currency;
+  core.String? currency;
 
   /// The price represented as a number.
-  core.String value;
+  core.String? value;
 
   Price();
 
@@ -19316,19 +18566,19 @@ class Price {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currency != null) 'currency': currency,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currency != null) 'currency': currency!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// The price represented as a number and currency.
 class PriceAmount {
   /// The currency of the price.
-  core.String currency;
+  core.String? currency;
 
   /// The price represented as a number.
-  core.String value;
+  core.String? value;
 
   PriceAmount();
 
@@ -19341,9 +18591,9 @@ class PriceAmount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currency != null) 'currency': currency,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currency != null) 'currency': currency!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -19357,61 +18607,61 @@ class PriceAmount {
 /// several minutes before changes take effect.
 class Product {
   /// Additional URLs of images of the item.
-  core.List<core.String> additionalImageLinks;
+  core.List<core.String>? additionalImageLinks;
 
   /// Used to group items in an arbitrary way.
   ///
   /// Only for CPA%, discouraged otherwise.
-  core.String adsGrouping;
+  core.String? adsGrouping;
 
   /// Similar to ads_grouping, but only works on CPC.
-  core.List<core.String> adsLabels;
+  core.List<core.String>? adsLabels;
 
   /// Allows advertisers to override the item URL when the product is shown
   /// within the context of Product Ads.
-  core.String adsRedirect;
+  core.String? adsRedirect;
 
   /// Should be set to true if the item is targeted towards adults.
-  core.bool adult;
+  core.bool? adult;
 
   /// Target age group of the item.
-  core.String ageGroup;
+  core.String? ageGroup;
 
   /// Availability status of the item.
-  core.String availability;
+  core.String? availability;
 
   /// The day a pre-ordered product becomes available for delivery, in ISO 8601
   /// format.
-  core.String availabilityDate;
+  core.String? availabilityDate;
 
   /// Brand of the item.
-  core.String brand;
+  core.String? brand;
 
   /// URL for the canonical version of your item's landing page.
-  core.String canonicalLink;
+  core.String? canonicalLink;
 
   /// The item's channel (online or local).
   ///
   /// Acceptable values are: - "`local`" - "`online`"
   ///
   /// Required.
-  core.String channel;
+  core.String? channel;
 
   /// Color of the item.
-  core.String color;
+  core.String? color;
 
   /// Condition or state of the item.
-  core.String condition;
+  core.String? condition;
 
   /// The two-letter ISO 639-1 language code for the item.
   ///
   /// Required.
-  core.String contentLanguage;
+  core.String? contentLanguage;
 
   /// Cost of goods sold.
   ///
   /// Used for gross profit reporting.
-  Price costOfGoodsSold;
+  Price? costOfGoodsSold;
 
   /// A list of custom (merchant-provided) attributes.
   ///
@@ -19420,48 +18670,48 @@ class Product {
   /// This is useful for submitting attributes not explicitly exposed by the
   /// API, such as additional attributes used for Buy on Google (formerly known
   /// as Shopping Actions).
-  core.List<CustomAttribute> customAttributes;
+  core.List<CustomAttribute>? customAttributes;
 
   /// Custom label 0 for custom grouping of items in a Shopping campaign.
-  core.String customLabel0;
+  core.String? customLabel0;
 
   /// Custom label 1 for custom grouping of items in a Shopping campaign.
-  core.String customLabel1;
+  core.String? customLabel1;
 
   /// Custom label 2 for custom grouping of items in a Shopping campaign.
-  core.String customLabel2;
+  core.String? customLabel2;
 
   /// Custom label 3 for custom grouping of items in a Shopping campaign.
-  core.String customLabel3;
+  core.String? customLabel3;
 
   /// Custom label 4 for custom grouping of items in a Shopping campaign.
-  core.String customLabel4;
+  core.String? customLabel4;
 
   /// Description of the item.
-  core.String description;
+  core.String? description;
 
   /// An identifier for an item for dynamic remarketing campaigns.
-  core.String displayAdsId;
+  core.String? displayAdsId;
 
   /// URL directly to your item's landing page for dynamic remarketing
   /// campaigns.
-  core.String displayAdsLink;
+  core.String? displayAdsLink;
 
   /// Advertiser-specified recommendations.
-  core.List<core.String> displayAdsSimilarIds;
+  core.List<core.String>? displayAdsSimilarIds;
 
   /// Title of an item for dynamic remarketing campaigns.
-  core.String displayAdsTitle;
+  core.String? displayAdsTitle;
 
   /// Offer margin for dynamic remarketing campaigns.
-  core.double displayAdsValue;
+  core.double? displayAdsValue;
 
   /// The energy efficiency class as defined in EU directive 2010/30/EU.
-  core.String energyEfficiencyClass;
+  core.String? energyEfficiencyClass;
 
   /// The list of destinations to exclude for this target (corresponds to
   /// unchecked check boxes in Merchant Center).
-  core.List<core.String> excludedDestinations;
+  core.List<core.String>? excludedDestinations;
 
   /// Date on which the item should expire, as specified upon insertion, in ISO
   /// 8601 format.
@@ -19469,10 +18719,10 @@ class Product {
   /// The actual expiration date in Google Shopping is exposed in
   /// `productstatuses` as `googleExpirationDate` and might be earlier if
   /// `expirationDate` is too far in the future.
-  core.String expirationDate;
+  core.String? expirationDate;
 
   /// Target gender of the item.
-  core.String gender;
+  core.String? gender;
 
   /// Google's category of the item (see
   /// [Google product taxonomy](https://support.google.com/merchants/answer/1705911)).
@@ -19480,83 +18730,83 @@ class Product {
   /// When querying products, this field will contain the user provided value.
   /// There is currently no way to get back the auto assigned google product
   /// categories through the API.
-  core.String googleProductCategory;
+  core.String? googleProductCategory;
 
   /// Global Trade Item Number (GTIN) of the item.
-  core.String gtin;
+  core.String? gtin;
 
   /// The REST ID of the product.
   ///
   /// Content API methods that operate on products take this as their
   /// `productId` parameter. The REST ID for a product is of the form
   /// channel:contentLanguage: targetCountry: offerId.
-  core.String id;
+  core.String? id;
 
   /// False when the item does not have unique product identifiers appropriate
   /// to its category, such as GTIN, MPN, and brand.
   ///
   /// Required according to the Unique Product Identifier Rules for all target
   /// countries except for Canada.
-  core.bool identifierExists;
+  core.bool? identifierExists;
 
   /// URL of an image of the item.
-  core.String imageLink;
+  core.String? imageLink;
 
   /// The list of destinations to include for this target (corresponds to
   /// checked check boxes in Merchant Center).
   ///
   /// Default destinations are always included unless provided in
   /// `excludedDestinations`.
-  core.List<core.String> includedDestinations;
+  core.List<core.String>? includedDestinations;
 
   /// Number and amount of installments to pay for an item.
-  Installment installment;
+  Installment? installment;
 
   /// Whether the item is a merchant-defined bundle.
   ///
   /// A bundle is a custom grouping of different products sold by a merchant for
   /// a single price.
-  core.bool isBundle;
+  core.bool? isBundle;
 
   /// Shared identifier for all variants of the same product.
-  core.String itemGroupId;
+  core.String? itemGroupId;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#product`"
-  core.String kind;
+  core.String? kind;
 
   /// URL directly linking to your item's page on your website.
-  core.String link;
+  core.String? link;
 
   /// Loyalty points that users receive after purchasing the item.
   ///
   /// Japan only.
-  LoyaltyPoints loyaltyPoints;
+  LoyaltyPoints? loyaltyPoints;
 
   /// The material of which the item is made.
-  core.String material;
+  core.String? material;
 
   /// The energy efficiency class as defined in EU directive 2010/30/EU.
-  core.String maxEnergyEfficiencyClass;
+  core.String? maxEnergyEfficiencyClass;
 
   /// Maximal product handling time (in business days).
-  core.String maxHandlingTime;
+  core.String? maxHandlingTime;
 
   /// The energy efficiency class as defined in EU directive 2010/30/EU.
-  core.String minEnergyEfficiencyClass;
+  core.String? minEnergyEfficiencyClass;
 
   /// Minimal product handling time (in business days).
-  core.String minHandlingTime;
+  core.String? minHandlingTime;
 
   /// URL for the mobile-optimized version of your item's landing page.
-  core.String mobileLink;
+  core.String? mobileLink;
 
   /// Manufacturer Part Number (MPN) of the item.
-  core.String mpn;
+  core.String? mpn;
 
   /// The number of identical products in a merchant-defined multipack.
-  core.String multipack;
+  core.String? multipack;
 
   /// A unique identifier for the item.
   ///
@@ -19567,114 +18817,114 @@ class Product {
   /// the product, *not* this identifier.
   ///
   /// Required.
-  core.String offerId;
+  core.String? offerId;
 
   /// The item's pattern (e.g. polka dots).
-  core.String pattern;
+  core.String? pattern;
 
   /// Price of the item.
-  Price price;
+  Price? price;
 
   /// Technical specification or additional product details.
-  core.List<ProductProductDetail> productDetails;
+  core.List<ProductProductDetail>? productDetails;
 
   /// Bullet points describing the most relevant highlights of a product.
-  core.List<core.String> productHighlights;
+  core.List<core.String>? productHighlights;
 
   /// Categories of the item (formatted as in products data specification).
-  core.List<core.String> productTypes;
+  core.List<core.String>? productTypes;
 
   /// The unique ID of a promotion.
-  core.List<core.String> promotionIds;
+  core.List<core.String>? promotionIds;
 
   /// Advertised sale price of the item.
-  Price salePrice;
+  Price? salePrice;
 
   /// Date range during which the item is on sale (see products data
   /// specification ).
-  core.String salePriceEffectiveDate;
+  core.String? salePriceEffectiveDate;
 
   /// The quantity of the product that is available for selling on Google.
   ///
   /// Supported only for online products.
-  core.String sellOnGoogleQuantity;
+  core.String? sellOnGoogleQuantity;
 
   /// Shipping rules.
-  core.List<ProductShipping> shipping;
+  core.List<ProductShipping>? shipping;
 
   /// Height of the item for shipping.
-  ProductShippingDimension shippingHeight;
+  ProductShippingDimension? shippingHeight;
 
   /// The shipping label of the product, used to group product in account-level
   /// shipping rules.
-  core.String shippingLabel;
+  core.String? shippingLabel;
 
   /// Length of the item for shipping.
-  ProductShippingDimension shippingLength;
+  ProductShippingDimension? shippingLength;
 
   /// Weight of the item for shipping.
-  ProductShippingWeight shippingWeight;
+  ProductShippingWeight? shippingWeight;
 
   /// Width of the item for shipping.
-  ProductShippingDimension shippingWidth;
+  ProductShippingDimension? shippingWidth;
 
   /// List of country codes (ISO 3166-1 alpha-2) to exclude the offer from
   /// Shopping Ads destination.
   ///
   /// Countries from this list are removed from countries configured in MC feed
   /// settings.
-  core.List<core.String> shoppingAdsExcludedCountries;
+  core.List<core.String>? shoppingAdsExcludedCountries;
 
   /// System in which the size is specified.
   ///
   /// Recommended for apparel items.
-  core.String sizeSystem;
+  core.String? sizeSystem;
 
   /// The cut of the item.
   ///
   /// Recommended for apparel items.
-  core.String sizeType;
+  core.String? sizeType;
 
   /// Size of the item.
   ///
   /// Only one value is allowed. For variants with different sizes, insert a
   /// separate product for each size with the same `itemGroupId` value (see size
   /// definition).
-  core.List<core.String> sizes;
+  core.List<core.String>? sizes;
 
   /// The source of the offer, i.e., how the offer was created.
   ///
   /// Acceptable values are: - "`api`" - "`crawl`" - "`feed`"
-  core.String source;
+  core.String? source;
 
   /// Number of periods (months or years) and amount of payment per period for
   /// an item with an associated subscription contract.
-  ProductSubscriptionCost subscriptionCost;
+  ProductSubscriptionCost? subscriptionCost;
 
   /// The CLDR territory code for the item.
   ///
   /// Required.
-  core.String targetCountry;
+  core.String? targetCountry;
 
   /// The tax category of the product, used to configure detailed tax nexus in
   /// account-level tax settings.
-  core.String taxCategory;
+  core.String? taxCategory;
 
   /// Tax information.
-  core.List<ProductTax> taxes;
+  core.List<ProductTax>? taxes;
 
   /// Title of the item.
-  core.String title;
+  core.String? title;
 
   /// The transit time label of the product, used to group product in
   /// account-level transit time tables.
-  core.String transitTimeLabel;
+  core.String? transitTimeLabel;
 
   /// The preference of the denominator of the unit price.
-  ProductUnitPricingBaseMeasure unitPricingBaseMeasure;
+  ProductUnitPricingBaseMeasure? unitPricingBaseMeasure;
 
   /// The measure and dimension of an item.
-  ProductUnitPricingMeasure unitPricingMeasure;
+  ProductUnitPricingMeasure? unitPricingMeasure;
 
   Product();
 
@@ -19969,120 +19219,120 @@ class Product {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additionalImageLinks != null)
-          'additionalImageLinks': additionalImageLinks,
-        if (adsGrouping != null) 'adsGrouping': adsGrouping,
-        if (adsLabels != null) 'adsLabels': adsLabels,
-        if (adsRedirect != null) 'adsRedirect': adsRedirect,
-        if (adult != null) 'adult': adult,
-        if (ageGroup != null) 'ageGroup': ageGroup,
-        if (availability != null) 'availability': availability,
-        if (availabilityDate != null) 'availabilityDate': availabilityDate,
-        if (brand != null) 'brand': brand,
-        if (canonicalLink != null) 'canonicalLink': canonicalLink,
-        if (channel != null) 'channel': channel,
-        if (color != null) 'color': color,
-        if (condition != null) 'condition': condition,
-        if (contentLanguage != null) 'contentLanguage': contentLanguage,
+          'additionalImageLinks': additionalImageLinks!,
+        if (adsGrouping != null) 'adsGrouping': adsGrouping!,
+        if (adsLabels != null) 'adsLabels': adsLabels!,
+        if (adsRedirect != null) 'adsRedirect': adsRedirect!,
+        if (adult != null) 'adult': adult!,
+        if (ageGroup != null) 'ageGroup': ageGroup!,
+        if (availability != null) 'availability': availability!,
+        if (availabilityDate != null) 'availabilityDate': availabilityDate!,
+        if (brand != null) 'brand': brand!,
+        if (canonicalLink != null) 'canonicalLink': canonicalLink!,
+        if (channel != null) 'channel': channel!,
+        if (color != null) 'color': color!,
+        if (condition != null) 'condition': condition!,
+        if (contentLanguage != null) 'contentLanguage': contentLanguage!,
         if (costOfGoodsSold != null)
-          'costOfGoodsSold': costOfGoodsSold.toJson(),
+          'costOfGoodsSold': costOfGoodsSold!.toJson(),
         if (customAttributes != null)
           'customAttributes':
-              customAttributes.map((value) => value.toJson()).toList(),
-        if (customLabel0 != null) 'customLabel0': customLabel0,
-        if (customLabel1 != null) 'customLabel1': customLabel1,
-        if (customLabel2 != null) 'customLabel2': customLabel2,
-        if (customLabel3 != null) 'customLabel3': customLabel3,
-        if (customLabel4 != null) 'customLabel4': customLabel4,
-        if (description != null) 'description': description,
-        if (displayAdsId != null) 'displayAdsId': displayAdsId,
-        if (displayAdsLink != null) 'displayAdsLink': displayAdsLink,
+              customAttributes!.map((value) => value.toJson()).toList(),
+        if (customLabel0 != null) 'customLabel0': customLabel0!,
+        if (customLabel1 != null) 'customLabel1': customLabel1!,
+        if (customLabel2 != null) 'customLabel2': customLabel2!,
+        if (customLabel3 != null) 'customLabel3': customLabel3!,
+        if (customLabel4 != null) 'customLabel4': customLabel4!,
+        if (description != null) 'description': description!,
+        if (displayAdsId != null) 'displayAdsId': displayAdsId!,
+        if (displayAdsLink != null) 'displayAdsLink': displayAdsLink!,
         if (displayAdsSimilarIds != null)
-          'displayAdsSimilarIds': displayAdsSimilarIds,
-        if (displayAdsTitle != null) 'displayAdsTitle': displayAdsTitle,
-        if (displayAdsValue != null) 'displayAdsValue': displayAdsValue,
+          'displayAdsSimilarIds': displayAdsSimilarIds!,
+        if (displayAdsTitle != null) 'displayAdsTitle': displayAdsTitle!,
+        if (displayAdsValue != null) 'displayAdsValue': displayAdsValue!,
         if (energyEfficiencyClass != null)
-          'energyEfficiencyClass': energyEfficiencyClass,
+          'energyEfficiencyClass': energyEfficiencyClass!,
         if (excludedDestinations != null)
-          'excludedDestinations': excludedDestinations,
-        if (expirationDate != null) 'expirationDate': expirationDate,
-        if (gender != null) 'gender': gender,
+          'excludedDestinations': excludedDestinations!,
+        if (expirationDate != null) 'expirationDate': expirationDate!,
+        if (gender != null) 'gender': gender!,
         if (googleProductCategory != null)
-          'googleProductCategory': googleProductCategory,
-        if (gtin != null) 'gtin': gtin,
-        if (id != null) 'id': id,
-        if (identifierExists != null) 'identifierExists': identifierExists,
-        if (imageLink != null) 'imageLink': imageLink,
+          'googleProductCategory': googleProductCategory!,
+        if (gtin != null) 'gtin': gtin!,
+        if (id != null) 'id': id!,
+        if (identifierExists != null) 'identifierExists': identifierExists!,
+        if (imageLink != null) 'imageLink': imageLink!,
         if (includedDestinations != null)
-          'includedDestinations': includedDestinations,
-        if (installment != null) 'installment': installment.toJson(),
-        if (isBundle != null) 'isBundle': isBundle,
-        if (itemGroupId != null) 'itemGroupId': itemGroupId,
-        if (kind != null) 'kind': kind,
-        if (link != null) 'link': link,
-        if (loyaltyPoints != null) 'loyaltyPoints': loyaltyPoints.toJson(),
-        if (material != null) 'material': material,
+          'includedDestinations': includedDestinations!,
+        if (installment != null) 'installment': installment!.toJson(),
+        if (isBundle != null) 'isBundle': isBundle!,
+        if (itemGroupId != null) 'itemGroupId': itemGroupId!,
+        if (kind != null) 'kind': kind!,
+        if (link != null) 'link': link!,
+        if (loyaltyPoints != null) 'loyaltyPoints': loyaltyPoints!.toJson(),
+        if (material != null) 'material': material!,
         if (maxEnergyEfficiencyClass != null)
-          'maxEnergyEfficiencyClass': maxEnergyEfficiencyClass,
-        if (maxHandlingTime != null) 'maxHandlingTime': maxHandlingTime,
+          'maxEnergyEfficiencyClass': maxEnergyEfficiencyClass!,
+        if (maxHandlingTime != null) 'maxHandlingTime': maxHandlingTime!,
         if (minEnergyEfficiencyClass != null)
-          'minEnergyEfficiencyClass': minEnergyEfficiencyClass,
-        if (minHandlingTime != null) 'minHandlingTime': minHandlingTime,
-        if (mobileLink != null) 'mobileLink': mobileLink,
-        if (mpn != null) 'mpn': mpn,
-        if (multipack != null) 'multipack': multipack,
-        if (offerId != null) 'offerId': offerId,
-        if (pattern != null) 'pattern': pattern,
-        if (price != null) 'price': price.toJson(),
+          'minEnergyEfficiencyClass': minEnergyEfficiencyClass!,
+        if (minHandlingTime != null) 'minHandlingTime': minHandlingTime!,
+        if (mobileLink != null) 'mobileLink': mobileLink!,
+        if (mpn != null) 'mpn': mpn!,
+        if (multipack != null) 'multipack': multipack!,
+        if (offerId != null) 'offerId': offerId!,
+        if (pattern != null) 'pattern': pattern!,
+        if (price != null) 'price': price!.toJson(),
         if (productDetails != null)
           'productDetails':
-              productDetails.map((value) => value.toJson()).toList(),
-        if (productHighlights != null) 'productHighlights': productHighlights,
-        if (productTypes != null) 'productTypes': productTypes,
-        if (promotionIds != null) 'promotionIds': promotionIds,
-        if (salePrice != null) 'salePrice': salePrice.toJson(),
+              productDetails!.map((value) => value.toJson()).toList(),
+        if (productHighlights != null) 'productHighlights': productHighlights!,
+        if (productTypes != null) 'productTypes': productTypes!,
+        if (promotionIds != null) 'promotionIds': promotionIds!,
+        if (salePrice != null) 'salePrice': salePrice!.toJson(),
         if (salePriceEffectiveDate != null)
-          'salePriceEffectiveDate': salePriceEffectiveDate,
+          'salePriceEffectiveDate': salePriceEffectiveDate!,
         if (sellOnGoogleQuantity != null)
-          'sellOnGoogleQuantity': sellOnGoogleQuantity,
+          'sellOnGoogleQuantity': sellOnGoogleQuantity!,
         if (shipping != null)
-          'shipping': shipping.map((value) => value.toJson()).toList(),
-        if (shippingHeight != null) 'shippingHeight': shippingHeight.toJson(),
-        if (shippingLabel != null) 'shippingLabel': shippingLabel,
-        if (shippingLength != null) 'shippingLength': shippingLength.toJson(),
-        if (shippingWeight != null) 'shippingWeight': shippingWeight.toJson(),
-        if (shippingWidth != null) 'shippingWidth': shippingWidth.toJson(),
+          'shipping': shipping!.map((value) => value.toJson()).toList(),
+        if (shippingHeight != null) 'shippingHeight': shippingHeight!.toJson(),
+        if (shippingLabel != null) 'shippingLabel': shippingLabel!,
+        if (shippingLength != null) 'shippingLength': shippingLength!.toJson(),
+        if (shippingWeight != null) 'shippingWeight': shippingWeight!.toJson(),
+        if (shippingWidth != null) 'shippingWidth': shippingWidth!.toJson(),
         if (shoppingAdsExcludedCountries != null)
-          'shoppingAdsExcludedCountries': shoppingAdsExcludedCountries,
-        if (sizeSystem != null) 'sizeSystem': sizeSystem,
-        if (sizeType != null) 'sizeType': sizeType,
-        if (sizes != null) 'sizes': sizes,
-        if (source != null) 'source': source,
+          'shoppingAdsExcludedCountries': shoppingAdsExcludedCountries!,
+        if (sizeSystem != null) 'sizeSystem': sizeSystem!,
+        if (sizeType != null) 'sizeType': sizeType!,
+        if (sizes != null) 'sizes': sizes!,
+        if (source != null) 'source': source!,
         if (subscriptionCost != null)
-          'subscriptionCost': subscriptionCost.toJson(),
-        if (targetCountry != null) 'targetCountry': targetCountry,
-        if (taxCategory != null) 'taxCategory': taxCategory,
+          'subscriptionCost': subscriptionCost!.toJson(),
+        if (targetCountry != null) 'targetCountry': targetCountry!,
+        if (taxCategory != null) 'taxCategory': taxCategory!,
         if (taxes != null)
-          'taxes': taxes.map((value) => value.toJson()).toList(),
-        if (title != null) 'title': title,
-        if (transitTimeLabel != null) 'transitTimeLabel': transitTimeLabel,
+          'taxes': taxes!.map((value) => value.toJson()).toList(),
+        if (title != null) 'title': title!,
+        if (transitTimeLabel != null) 'transitTimeLabel': transitTimeLabel!,
         if (unitPricingBaseMeasure != null)
-          'unitPricingBaseMeasure': unitPricingBaseMeasure.toJson(),
+          'unitPricingBaseMeasure': unitPricingBaseMeasure!.toJson(),
         if (unitPricingMeasure != null)
-          'unitPricingMeasure': unitPricingMeasure.toJson(),
+          'unitPricingMeasure': unitPricingMeasure!.toJson(),
       };
 }
 
 class ProductAmount {
   /// The pre-tax or post-tax price depending on the location of the order.
-  Price priceAmount;
+  Price? priceAmount;
 
   /// Remitted tax value.
-  Price remittedTaxAmount;
+  Price? remittedTaxAmount;
 
   /// Tax value.
-  Price taxAmount;
+  Price? taxAmount;
 
   ProductAmount();
 
@@ -20101,23 +19351,23 @@ class ProductAmount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (priceAmount != null) 'priceAmount': priceAmount.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (priceAmount != null) 'priceAmount': priceAmount!.toJson(),
         if (remittedTaxAmount != null)
-          'remittedTaxAmount': remittedTaxAmount.toJson(),
-        if (taxAmount != null) 'taxAmount': taxAmount.toJson(),
+          'remittedTaxAmount': remittedTaxAmount!.toJson(),
+        if (taxAmount != null) 'taxAmount': taxAmount!.toJson(),
       };
 }
 
 class ProductProductDetail {
   /// The name of the product detail.
-  core.String attributeName;
+  core.String? attributeName;
 
   /// The value of the product detail.
-  core.String attributeValue;
+  core.String? attributeValue;
 
   /// The section header used to group a set of product details.
-  core.String sectionName;
+  core.String? sectionName;
 
   ProductProductDetail();
 
@@ -20133,38 +19383,38 @@ class ProductProductDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributeName != null) 'attributeName': attributeName,
-        if (attributeValue != null) 'attributeValue': attributeValue,
-        if (sectionName != null) 'sectionName': sectionName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributeName != null) 'attributeName': attributeName!,
+        if (attributeValue != null) 'attributeValue': attributeValue!,
+        if (sectionName != null) 'sectionName': sectionName!,
       };
 }
 
 class ProductShipping {
   /// The CLDR territory code of the country to which an item will ship.
-  core.String country;
+  core.String? country;
 
   /// The location where the shipping is applicable, represented by a location
   /// group name.
-  core.String locationGroupName;
+  core.String? locationGroupName;
 
   /// The numeric ID of a location that the shipping rate applies to as defined
   /// in the AdWords API.
-  core.String locationId;
+  core.String? locationId;
 
   /// The postal code range that the shipping rate applies to, represented by a
   /// postal code, a postal code prefix followed by a * wildcard, a range
   /// between two postal codes or two postal code prefixes of equal length.
-  core.String postalCode;
+  core.String? postalCode;
 
   /// Fixed shipping price, represented as a number.
-  Price price;
+  Price? price;
 
   /// The geographic region to which a shipping rate applies.
-  core.String region;
+  core.String? region;
 
   /// A free-form description of the service class or delivery speed.
-  core.String service;
+  core.String? service;
 
   ProductShipping();
 
@@ -20193,24 +19443,24 @@ class ProductShipping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (locationGroupName != null) 'locationGroupName': locationGroupName,
-        if (locationId != null) 'locationId': locationId,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (price != null) 'price': price.toJson(),
-        if (region != null) 'region': region,
-        if (service != null) 'service': service,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (locationGroupName != null) 'locationGroupName': locationGroupName!,
+        if (locationId != null) 'locationId': locationId!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (price != null) 'price': price!.toJson(),
+        if (region != null) 'region': region!,
+        if (service != null) 'service': service!,
       };
 }
 
 class ProductShippingDimension {
   /// The unit of value.
-  core.String unit;
+  core.String? unit;
 
   /// The dimension of the product used to calculate the shipping cost of the
   /// item.
-  core.double value;
+  core.double? value;
 
   ProductShippingDimension();
 
@@ -20223,18 +19473,18 @@ class ProductShippingDimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (unit != null) 'unit': unit,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (unit != null) 'unit': unit!,
+        if (value != null) 'value': value!,
       };
 }
 
 class ProductShippingWeight {
   /// The unit of value.
-  core.String unit;
+  core.String? unit;
 
   /// The weight of the product used to calculate the shipping cost of the item.
-  core.double value;
+  core.double? value;
 
   ProductShippingWeight();
 
@@ -20247,9 +19497,9 @@ class ProductShippingWeight {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (unit != null) 'unit': unit,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (unit != null) 'unit': unit!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -20257,33 +19507,33 @@ class ProductShippingWeight {
 /// asynchronously.
 class ProductStatus {
   /// Date on which the item has been created, in ISO 8601 format.
-  core.String creationDate;
+  core.String? creationDate;
 
   /// The intended destinations for the product.
-  core.List<ProductStatusDestinationStatus> destinationStatuses;
+  core.List<ProductStatusDestinationStatus>? destinationStatuses;
 
   /// Date on which the item expires in Google Shopping, in ISO 8601 format.
-  core.String googleExpirationDate;
+  core.String? googleExpirationDate;
 
   /// A list of all issues associated with the product.
-  core.List<ProductStatusItemLevelIssue> itemLevelIssues;
+  core.List<ProductStatusItemLevelIssue>? itemLevelIssues;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#productStatus`"
-  core.String kind;
+  core.String? kind;
 
   /// Date on which the item has been last updated, in ISO 8601 format.
-  core.String lastUpdateDate;
+  core.String? lastUpdateDate;
 
   /// The link to the product.
-  core.String link;
+  core.String? link;
 
   /// The ID of the product for which status is reported.
-  core.String productId;
+  core.String? productId;
 
   /// The title of the product.
-  core.String title;
+  core.String? title;
 
   ProductStatus();
 
@@ -20325,40 +19575,40 @@ class ProductStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationDate != null) 'creationDate': creationDate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationDate != null) 'creationDate': creationDate!,
         if (destinationStatuses != null)
           'destinationStatuses':
-              destinationStatuses.map((value) => value.toJson()).toList(),
+              destinationStatuses!.map((value) => value.toJson()).toList(),
         if (googleExpirationDate != null)
-          'googleExpirationDate': googleExpirationDate,
+          'googleExpirationDate': googleExpirationDate!,
         if (itemLevelIssues != null)
           'itemLevelIssues':
-              itemLevelIssues.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (lastUpdateDate != null) 'lastUpdateDate': lastUpdateDate,
-        if (link != null) 'link': link,
-        if (productId != null) 'productId': productId,
-        if (title != null) 'title': title,
+              itemLevelIssues!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (lastUpdateDate != null) 'lastUpdateDate': lastUpdateDate!,
+        if (link != null) 'link': link!,
+        if (productId != null) 'productId': productId!,
+        if (title != null) 'title': title!,
       };
 }
 
 class ProductStatusDestinationStatus {
   /// List of country codes (ISO 3166-1 alpha-2) where the offer is approved.
-  core.List<core.String> approvedCountries;
+  core.List<core.String>? approvedCountries;
 
   /// The name of the destination
-  core.String destination;
+  core.String? destination;
 
   /// List of country codes (ISO 3166-1 alpha-2) where the offer is disapproved.
-  core.List<core.String> disapprovedCountries;
+  core.List<core.String>? disapprovedCountries;
 
   /// List of country codes (ISO 3166-1 alpha-2) where the offer is pending
   /// approval.
-  core.List<core.String> pendingCountries;
+  core.List<core.String>? pendingCountries;
 
   /// Destination approval status in `targetCountry` of the offer.
-  core.String status;
+  core.String? status;
 
   ProductStatusDestinationStatus();
 
@@ -20386,44 +19636,44 @@ class ProductStatusDestinationStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (approvedCountries != null) 'approvedCountries': approvedCountries,
-        if (destination != null) 'destination': destination,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (approvedCountries != null) 'approvedCountries': approvedCountries!,
+        if (destination != null) 'destination': destination!,
         if (disapprovedCountries != null)
-          'disapprovedCountries': disapprovedCountries,
-        if (pendingCountries != null) 'pendingCountries': pendingCountries,
-        if (status != null) 'status': status,
+          'disapprovedCountries': disapprovedCountries!,
+        if (pendingCountries != null) 'pendingCountries': pendingCountries!,
+        if (status != null) 'status': status!,
       };
 }
 
 class ProductStatusItemLevelIssue {
   /// List of country codes (ISO 3166-1 alpha-2) where issue applies to the
   /// offer.
-  core.List<core.String> applicableCountries;
+  core.List<core.String>? applicableCountries;
 
   /// The attribute's name, if the issue is caused by a single attribute.
-  core.String attributeName;
+  core.String? attributeName;
 
   /// The error code of the issue.
-  core.String code;
+  core.String? code;
 
   /// A short issue description in English.
-  core.String description;
+  core.String? description;
 
   /// The destination the issue applies to.
-  core.String destination;
+  core.String? destination;
 
   /// A detailed issue description in English.
-  core.String detail;
+  core.String? detail;
 
   /// The URL of a web page to help with resolving this issue.
-  core.String documentation;
+  core.String? documentation;
 
   /// Whether the issue can be resolved by the merchant.
-  core.String resolution;
+  core.String? resolution;
 
   /// How this issue affects serving of the offer.
-  core.String servability;
+  core.String? servability;
 
   ProductStatusItemLevelIssue();
 
@@ -20459,29 +19709,29 @@ class ProductStatusItemLevelIssue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (applicableCountries != null)
-          'applicableCountries': applicableCountries,
-        if (attributeName != null) 'attributeName': attributeName,
-        if (code != null) 'code': code,
-        if (description != null) 'description': description,
-        if (destination != null) 'destination': destination,
-        if (detail != null) 'detail': detail,
-        if (documentation != null) 'documentation': documentation,
-        if (resolution != null) 'resolution': resolution,
-        if (servability != null) 'servability': servability,
+          'applicableCountries': applicableCountries!,
+        if (attributeName != null) 'attributeName': attributeName!,
+        if (code != null) 'code': code!,
+        if (description != null) 'description': description!,
+        if (destination != null) 'destination': destination!,
+        if (detail != null) 'detail': detail!,
+        if (documentation != null) 'documentation': documentation!,
+        if (resolution != null) 'resolution': resolution!,
+        if (servability != null) 'servability': servability!,
       };
 }
 
 class ProductSubscriptionCost {
   /// The amount the buyer has to pay per subscription period.
-  Price amount;
+  Price? amount;
 
   /// The type of subscription period.
-  core.String period;
+  core.String? period;
 
   /// The number of subscription periods the buyer has to pay.
-  core.String periodLength;
+  core.String? periodLength;
 
   ProductSubscriptionCost();
 
@@ -20498,37 +19748,37 @@ class ProductSubscriptionCost {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amount != null) 'amount': amount.toJson(),
-        if (period != null) 'period': period,
-        if (periodLength != null) 'periodLength': periodLength,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amount != null) 'amount': amount!.toJson(),
+        if (period != null) 'period': period!,
+        if (periodLength != null) 'periodLength': periodLength!,
       };
 }
 
 class ProductTax {
   /// The country within which the item is taxed, specified as a CLDR territory
   /// code.
-  core.String country;
+  core.String? country;
 
   /// The numeric ID of a location that the tax rate applies to as defined in
   /// the AdWords API.
-  core.String locationId;
+  core.String? locationId;
 
   /// The postal code range that the tax rate applies to, represented by a ZIP
   /// code, a ZIP code prefix using * wildcard, a range between two ZIP codes or
   /// two ZIP code prefixes of equal length.
   ///
   /// Examples: 94114, 94*, 94002-95460, 94*-95*.
-  core.String postalCode;
+  core.String? postalCode;
 
   /// The percentage of tax rate that applies to the item price.
-  core.double rate;
+  core.double? rate;
 
   /// The geographic region to which the tax rate applies.
-  core.String region;
+  core.String? region;
 
   /// Should be set to true if tax is charged on shipping.
-  core.bool taxShip;
+  core.bool? taxShip;
 
   ProductTax();
 
@@ -20553,22 +19803,22 @@ class ProductTax {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (locationId != null) 'locationId': locationId,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (rate != null) 'rate': rate,
-        if (region != null) 'region': region,
-        if (taxShip != null) 'taxShip': taxShip,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (locationId != null) 'locationId': locationId!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (rate != null) 'rate': rate!,
+        if (region != null) 'region': region!,
+        if (taxShip != null) 'taxShip': taxShip!,
       };
 }
 
 class ProductUnitPricingBaseMeasure {
   /// The unit of the denominator.
-  core.String unit;
+  core.String? unit;
 
   /// The denominator of the unit price.
-  core.String value;
+  core.String? value;
 
   ProductUnitPricingBaseMeasure();
 
@@ -20581,18 +19831,18 @@ class ProductUnitPricingBaseMeasure {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (unit != null) 'unit': unit,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (unit != null) 'unit': unit!,
+        if (value != null) 'value': value!,
       };
 }
 
 class ProductUnitPricingMeasure {
   /// The unit of the measure.
-  core.String unit;
+  core.String? unit;
 
   /// The measure of an item.
-  core.double value;
+  core.double? value;
 
   ProductUnitPricingMeasure();
 
@@ -20605,15 +19855,15 @@ class ProductUnitPricingMeasure {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (unit != null) 'unit': unit,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (unit != null) 'unit': unit!,
+        if (value != null) 'value': value!,
       };
 }
 
 class ProductsCustomBatchRequest {
   /// The request entries to be processed in the batch.
-  core.List<ProductsCustomBatchRequestEntry> entries;
+  core.List<ProductsCustomBatchRequestEntry>? entries;
 
   ProductsCustomBatchRequest();
 
@@ -20627,37 +19877,37 @@ class ProductsCustomBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A batch entry encoding a single non-batch products request.
 class ProductsCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
-  core.int batchId;
+  core.int? batchId;
 
   /// The Content API feed id.
-  core.String feedId;
+  core.String? feedId;
 
   /// The ID of the managing account.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// The method of the batch entry.
   ///
   /// Acceptable values are: - "`delete`" - "`get`" - "`insert`"
-  core.String method;
+  core.String? method;
 
   /// The product to insert.
   ///
   /// Only required if the method is `insert`.
-  Product product;
+  Product? product;
 
   /// The ID of the product to get or delete.
   ///
   /// Only defined if the method is `get` or `delete`.
-  core.String productId;
+  core.String? productId;
 
   ProductsCustomBatchRequestEntry();
 
@@ -20683,24 +19933,24 @@ class ProductsCustomBatchRequestEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (feedId != null) 'feedId': feedId,
-        if (merchantId != null) 'merchantId': merchantId,
-        if (method != null) 'method': method,
-        if (product != null) 'product': product.toJson(),
-        if (productId != null) 'productId': productId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (feedId != null) 'feedId': feedId!,
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (method != null) 'method': method!,
+        if (product != null) 'product': product!.toJson(),
+        if (productId != null) 'productId': productId!,
       };
 }
 
 class ProductsCustomBatchResponse {
   /// The result of the execution of the batch requests.
-  core.List<ProductsCustomBatchResponseEntry> entries;
+  core.List<ProductsCustomBatchResponseEntry>? entries;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#productsCustomBatchResponse".
-  core.String kind;
+  core.String? kind;
 
   ProductsCustomBatchResponse();
 
@@ -20717,30 +19967,30 @@ class ProductsCustomBatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// A batch entry encoding a single non-batch products response.
 class ProductsCustomBatchResponseEntry {
   /// The ID of the request entry this entry responds to.
-  core.int batchId;
+  core.int? batchId;
 
   /// A list of errors defined if and only if the request failed.
-  Errors errors;
+  Errors? errors;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#productsCustomBatchResponseEntry`"
-  core.String kind;
+  core.String? kind;
 
   /// The inserted product.
   ///
   /// Only defined if the method is `insert` and if the request was successful.
-  Product product;
+  Product? product;
 
   ProductsCustomBatchResponseEntry();
 
@@ -20761,11 +20011,11 @@ class ProductsCustomBatchResponseEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (errors != null) 'errors': errors.toJson(),
-        if (kind != null) 'kind': kind,
-        if (product != null) 'product': product.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (errors != null) 'errors': errors!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (product != null) 'product': product!.toJson(),
       };
 }
 
@@ -20773,11 +20023,11 @@ class ProductsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#productsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token for the retrieval of the next page of products.
-  core.String nextPageToken;
-  core.List<Product> resources;
+  core.String? nextPageToken;
+  core.List<Product>? resources;
 
   ProductsListResponse();
 
@@ -20796,17 +20046,17 @@ class ProductsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ProductstatusesCustomBatchRequest {
   /// The request entries to be processed in the batch.
-  core.List<ProductstatusesCustomBatchRequestEntry> entries;
+  core.List<ProductstatusesCustomBatchRequestEntry>? entries;
 
   ProductstatusesCustomBatchRequest();
 
@@ -20820,32 +20070,32 @@ class ProductstatusesCustomBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A batch entry encoding a single non-batch productstatuses request.
 class ProductstatusesCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
-  core.int batchId;
+  core.int? batchId;
 
   /// If set, only issues for the specified destinations are returned, otherwise
   /// only issues for the Shopping destination.
-  core.List<core.String> destinations;
-  core.bool includeAttributes;
+  core.List<core.String>? destinations;
+  core.bool? includeAttributes;
 
   /// The ID of the managing account.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// The method of the batch entry.
   ///
   /// Acceptable values are: - "`get`"
-  core.String method;
+  core.String? method;
 
   /// The ID of the product whose status to get.
-  core.String productId;
+  core.String? productId;
 
   ProductstatusesCustomBatchRequestEntry();
 
@@ -20872,24 +20122,24 @@ class ProductstatusesCustomBatchRequestEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (destinations != null) 'destinations': destinations,
-        if (includeAttributes != null) 'includeAttributes': includeAttributes,
-        if (merchantId != null) 'merchantId': merchantId,
-        if (method != null) 'method': method,
-        if (productId != null) 'productId': productId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (destinations != null) 'destinations': destinations!,
+        if (includeAttributes != null) 'includeAttributes': includeAttributes!,
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (method != null) 'method': method!,
+        if (productId != null) 'productId': productId!,
       };
 }
 
 class ProductstatusesCustomBatchResponse {
   /// The result of the execution of the batch requests.
-  core.List<ProductstatusesCustomBatchResponseEntry> entries;
+  core.List<ProductstatusesCustomBatchResponseEntry>? entries;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#productstatusesCustomBatchResponse".
-  core.String kind;
+  core.String? kind;
 
   ProductstatusesCustomBatchResponse();
 
@@ -20906,31 +20156,31 @@ class ProductstatusesCustomBatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// A batch entry encoding a single non-batch productstatuses response.
 class ProductstatusesCustomBatchResponseEntry {
   /// The ID of the request entry this entry responds to.
-  core.int batchId;
+  core.int? batchId;
 
   /// A list of errors, if the request failed.
-  Errors errors;
+  Errors? errors;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
   /// "`content#productstatusesCustomBatchResponseEntry`"
-  core.String kind;
+  core.String? kind;
 
   /// The requested product status.
   ///
   /// Only defined if the request was successful.
-  ProductStatus productStatus;
+  ProductStatus? productStatus;
 
   ProductstatusesCustomBatchResponseEntry();
 
@@ -20951,11 +20201,11 @@ class ProductstatusesCustomBatchResponseEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (errors != null) 'errors': errors.toJson(),
-        if (kind != null) 'kind': kind,
-        if (productStatus != null) 'productStatus': productStatus.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (errors != null) 'errors': errors!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (productStatus != null) 'productStatus': productStatus!.toJson(),
       };
 }
 
@@ -20963,11 +20213,11 @@ class ProductstatusesListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#productstatusesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token for the retrieval of the next page of products statuses.
-  core.String nextPageToken;
-  core.List<ProductStatus> resources;
+  core.String? nextPageToken;
+  core.List<ProductStatus>? resources;
 
   ProductstatusesListResponse();
 
@@ -20986,11 +20236,11 @@ class ProductstatusesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -20998,17 +20248,17 @@ class ProductstatusesListResponse {
 /// direct user of the merchant center account.
 class PubsubNotificationSettings {
   /// Cloud pub/sub topic to which notifications are sent (read-only).
-  core.String cloudTopicName;
+  core.String? cloudTopicName;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#pubsubNotificationSettings`"
-  core.String kind;
+  core.String? kind;
 
   /// List of event types.
   ///
   /// Acceptable values are: - "`orderPendingShipment`"
-  core.List<core.String> registeredEvents;
+  core.List<core.String>? registeredEvents;
 
   PubsubNotificationSettings();
 
@@ -21026,10 +20276,10 @@ class PubsubNotificationSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cloudTopicName != null) 'cloudTopicName': cloudTopicName,
-        if (kind != null) 'kind': kind,
-        if (registeredEvents != null) 'registeredEvents': registeredEvents,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cloudTopicName != null) 'cloudTopicName': cloudTopicName!,
+        if (kind != null) 'kind': kind!,
+        if (registeredEvents != null) 'registeredEvents': registeredEvents!,
       };
 }
 
@@ -21040,32 +20290,32 @@ class RateGroup {
   /// This is a disjunction: only one of the labels has to match for the rate
   /// group to apply. May only be empty for the last rate group of a service.
   /// Required.
-  core.List<core.String> applicableShippingLabels;
+  core.List<core.String>? applicableShippingLabels;
 
   /// A list of carrier rates that can be referred to by `mainTable` or
   /// `singleValue`.
-  core.List<CarrierRate> carrierRates;
+  core.List<CarrierRate>? carrierRates;
 
   /// A table defining the rate group, when `singleValue` is not expressive
   /// enough.
   ///
   /// Can only be set if `singleValue` is not set.
-  Table mainTable;
+  Table? mainTable;
 
   /// Name of the rate group.
   ///
   /// Optional. If set has to be unique within shipping service.
-  core.String name;
+  core.String? name;
 
   /// The value of the rate group (e.g. flat rate $10).
   ///
   /// Can only be set if `mainTable` and `subtables` are not set.
-  Value singleValue;
+  Value? singleValue;
 
   /// A list of subtables referred to by `mainTable`.
   ///
   /// Can only be set if `mainTable` is set.
-  core.List<Table> subtables;
+  core.List<Table>? subtables;
 
   RateGroup();
 
@@ -21101,22 +20351,22 @@ class RateGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (applicableShippingLabels != null)
-          'applicableShippingLabels': applicableShippingLabels,
+          'applicableShippingLabels': applicableShippingLabels!,
         if (carrierRates != null)
-          'carrierRates': carrierRates.map((value) => value.toJson()).toList(),
-        if (mainTable != null) 'mainTable': mainTable.toJson(),
-        if (name != null) 'name': name,
-        if (singleValue != null) 'singleValue': singleValue.toJson(),
+          'carrierRates': carrierRates!.map((value) => value.toJson()).toList(),
+        if (mainTable != null) 'mainTable': mainTable!.toJson(),
+        if (name != null) 'name': name!,
+        if (singleValue != null) 'singleValue': singleValue!.toJson(),
         if (subtables != null)
-          'subtables': subtables.map((value) => value.toJson()).toList(),
+          'subtables': subtables!.map((value) => value.toJson()).toList(),
       };
 }
 
 class RefundReason {
   /// Description of the reason.
-  core.String description;
+  core.String? description;
 
   /// Code of the refund reason.
   ///
@@ -21139,7 +20389,7 @@ class RefundReason {
   /// "`shippingCostAdjustment`" - "`shippingPriceError`" - "`taxAdjustment`" -
   /// "`taxError`" - "`undeliverableShippingAddress`" -
   /// "`unsupportedPoBoxAddress`" - "`wrongProductShipped`"
-  core.String reasonCode;
+  core.String? reasonCode;
 
   RefundReason();
 
@@ -21152,9 +20402,9 @@ class RefundReason {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (reasonCode != null) 'reasonCode': reasonCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (reasonCode != null) 'reasonCode': reasonCode!,
       };
 }
 
@@ -21165,35 +20415,35 @@ class RefundReason {
 /// countries, using predefined geotargets.
 class Region {
   /// The display name of the region.
-  core.String displayName;
+  core.String? displayName;
 
   /// A list of geotargets that defines the region area.
-  RegionGeoTargetArea geotargetArea;
+  RegionGeoTargetArea? geotargetArea;
 
   /// Merchant that owns the region.
   ///
   /// Output only. Immutable.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// A list of postal codes that defines the region area.
-  RegionPostalCodeArea postalCodeArea;
+  RegionPostalCodeArea? postalCodeArea;
 
   /// The ID uniquely identifying each region.
   ///
   /// Output only. Immutable.
-  core.String regionId;
+  core.String? regionId;
 
   /// Indicates if the region is eligible to use in the Regional Inventory
   /// configuration.
   ///
   /// Output only.
-  core.bool regionalInventoryEligible;
+  core.bool? regionalInventoryEligible;
 
   /// Indicates if the region is eligible to use in the Shipping Services
   /// configuration.
   ///
   /// Output only.
-  core.bool shippingEligible;
+  core.bool? shippingEligible;
 
   Region();
 
@@ -21224,15 +20474,15 @@ class Region {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (geotargetArea != null) 'geotargetArea': geotargetArea.toJson(),
-        if (merchantId != null) 'merchantId': merchantId,
-        if (postalCodeArea != null) 'postalCodeArea': postalCodeArea.toJson(),
-        if (regionId != null) 'regionId': regionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (geotargetArea != null) 'geotargetArea': geotargetArea!.toJson(),
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (postalCodeArea != null) 'postalCodeArea': postalCodeArea!.toJson(),
+        if (regionId != null) 'regionId': regionId!,
         if (regionalInventoryEligible != null)
-          'regionalInventoryEligible': regionalInventoryEligible,
-        if (shippingEligible != null) 'shippingEligible': shippingEligible,
+          'regionalInventoryEligible': regionalInventoryEligible!,
+        if (shippingEligible != null) 'shippingEligible': shippingEligible!,
       };
 }
 
@@ -21244,7 +20494,7 @@ class RegionGeoTargetArea {
   /// They must all be of the same location type (e.g., state).
   ///
   /// Required.
-  core.List<core.String> geotargetCriteriaIds;
+  core.List<core.String>? geotargetCriteriaIds;
 
   RegionGeoTargetArea();
 
@@ -21256,9 +20506,9 @@ class RegionGeoTargetArea {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (geotargetCriteriaIds != null)
-          'geotargetCriteriaIds': geotargetCriteriaIds,
+          'geotargetCriteriaIds': geotargetCriteriaIds!,
       };
 }
 
@@ -21270,12 +20520,12 @@ class RegionPostalCodeArea {
   /// A range of postal codes.
   ///
   /// Required.
-  core.List<RegionPostalCodeAreaPostalCodeRange> postalCodes;
+  core.List<RegionPostalCodeAreaPostalCodeRange>? postalCodes;
 
   /// CLDR territory code or the country the postal code group applies to.
   ///
   /// Required.
-  core.String regionCode;
+  core.String? regionCode;
 
   RegionPostalCodeArea();
 
@@ -21292,10 +20542,10 @@ class RegionPostalCodeArea {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (postalCodes != null)
-          'postalCodes': postalCodes.map((value) => value.toJson()).toList(),
-        if (regionCode != null) 'regionCode': regionCode,
+          'postalCodes': postalCodes!.map((value) => value.toJson()).toList(),
+        if (regionCode != null) 'regionCode': regionCode!,
       };
 }
 
@@ -21307,7 +20557,7 @@ class RegionPostalCodeAreaPostalCodeRange {
   /// Examples values: "94108", "9410*", "9*".
   ///
   /// Required.
-  core.String begin;
+  core.String? begin;
 
   /// A postal code or a pattern of the form prefix* denoting the inclusive
   /// upper bound of the range defining the area.
@@ -21320,7 +20570,7 @@ class RegionPostalCodeAreaPostalCodeRange {
   /// codes matching postalCodeRangeBegin.
   ///
   /// Optional.
-  core.String end;
+  core.String? end;
 
   RegionPostalCodeAreaPostalCodeRange();
 
@@ -21333,9 +20583,9 @@ class RegionPostalCodeAreaPostalCodeRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (begin != null) 'begin': begin,
-        if (end != null) 'end': end,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (begin != null) 'begin': begin!,
+        if (end != null) 'end': end!,
       };
 }
 
@@ -21345,35 +20595,35 @@ class RegionPostalCodeAreaPostalCodeRange {
 /// specified region.
 class RegionalInventory {
   /// The availability of the product.
-  core.String availability;
+  core.String? availability;
 
   /// A list of custom (merchant-provided) attributes.
   ///
   /// It can also be used for submitting any attribute of the feed specification
   /// in its generic form.
-  core.List<CustomAttribute> customAttributes;
+  core.List<CustomAttribute>? customAttributes;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#regionalInventory".
-  core.String kind;
+  core.String? kind;
 
   /// The price of the product.
-  Price price;
+  Price? price;
 
   /// The ID uniquely identifying each region.
-  core.String regionId;
+  core.String? regionId;
 
   /// The sale price of the product.
   ///
   /// Mandatory if `sale_price_effective_date` is defined.
-  Price salePrice;
+  Price? salePrice;
 
   /// A date range represented by a pair of ISO 8601 dates separated by a space,
   /// comma, or slash.
   ///
   /// Both dates might be specified as 'null' if undecided.
-  core.String salePriceEffectiveDate;
+  core.String? salePriceEffectiveDate;
 
   RegionalInventory();
 
@@ -21406,23 +20656,23 @@ class RegionalInventory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (availability != null) 'availability': availability,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (availability != null) 'availability': availability!,
         if (customAttributes != null)
           'customAttributes':
-              customAttributes.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (price != null) 'price': price.toJson(),
-        if (regionId != null) 'regionId': regionId,
-        if (salePrice != null) 'salePrice': salePrice.toJson(),
+              customAttributes!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (price != null) 'price': price!.toJson(),
+        if (regionId != null) 'regionId': regionId!,
+        if (salePrice != null) 'salePrice': salePrice!.toJson(),
         if (salePriceEffectiveDate != null)
-          'salePriceEffectiveDate': salePriceEffectiveDate,
+          'salePriceEffectiveDate': salePriceEffectiveDate!,
       };
 }
 
 class RegionalinventoryCustomBatchRequest {
   /// The request entries to be processed in the batch.
-  core.List<RegionalinventoryCustomBatchRequestEntry> entries;
+  core.List<RegionalinventoryCustomBatchRequestEntry>? entries;
 
   RegionalinventoryCustomBatchRequest();
 
@@ -21436,30 +20686,30 @@ class RegionalinventoryCustomBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A batch entry encoding a single non-batch regional inventory request.
 class RegionalinventoryCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
-  core.int batchId;
+  core.int? batchId;
 
   /// The ID of the managing account.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// Method of the batch request entry.
   ///
   /// Acceptable values are: - "`insert`"
-  core.String method;
+  core.String? method;
 
   /// The ID of the product for which to update price and availability.
-  core.String productId;
+  core.String? productId;
 
   /// Price and availability of the product.
-  RegionalInventory regionalInventory;
+  RegionalInventory? regionalInventory;
 
   RegionalinventoryCustomBatchRequestEntry();
 
@@ -21482,24 +20732,24 @@ class RegionalinventoryCustomBatchRequestEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (merchantId != null) 'merchantId': merchantId,
-        if (method != null) 'method': method,
-        if (productId != null) 'productId': productId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (method != null) 'method': method!,
+        if (productId != null) 'productId': productId!,
         if (regionalInventory != null)
-          'regionalInventory': regionalInventory.toJson(),
+          'regionalInventory': regionalInventory!.toJson(),
       };
 }
 
 class RegionalinventoryCustomBatchResponse {
   /// The result of the execution of the batch requests.
-  core.List<RegionalinventoryCustomBatchResponseEntry> entries;
+  core.List<RegionalinventoryCustomBatchResponseEntry>? entries;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#regionalinventoryCustomBatchResponse".
-  core.String kind;
+  core.String? kind;
 
   RegionalinventoryCustomBatchResponse();
 
@@ -21516,29 +20766,29 @@ class RegionalinventoryCustomBatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// A batch entry encoding a single non-batch regional inventory response.
 class RegionalinventoryCustomBatchResponseEntry {
   /// The ID of the request entry this entry responds to.
-  core.int batchId;
+  core.int? batchId;
 
   /// A list of errors defined if and only if the request failed.
-  Errors errors;
+  Errors? errors;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
   /// "content#regionalinventoryCustomBatchResponseEntry".
-  core.String kind;
+  core.String? kind;
 
   /// Price and availability of the product.
-  RegionalInventory regionalInventory;
+  RegionalInventory? regionalInventory;
 
   RegionalinventoryCustomBatchResponseEntry();
 
@@ -21559,12 +20809,12 @@ class RegionalinventoryCustomBatchResponseEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (errors != null) 'errors': errors.toJson(),
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (errors != null) 'errors': errors!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (regionalInventory != null)
-          'regionalInventory': regionalInventory.toJson(),
+          'regionalInventory': regionalInventory!.toJson(),
       };
 }
 
@@ -21573,13 +20823,13 @@ class ReportRow {
   /// Metrics requested by the merchant in the query.
   ///
   /// Metric values are only set for metrics requested explicitly in the query.
-  Metrics metrics;
+  Metrics? metrics;
 
   /// Segmentation dimensions requested by the merchant in the query.
   ///
   /// Dimension values are only set for dimensions requested explicitly in the
   /// query.
-  Segments segments;
+  Segments? segments;
 
   ReportRow();
 
@@ -21594,9 +20844,9 @@ class ReportRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metrics != null) 'metrics': metrics.toJson(),
-        if (segments != null) 'segments': segments.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metrics != null) 'metrics': metrics!.toJson(),
+        if (segments != null) 'segments': segments!.toJson(),
       };
 }
 
@@ -21612,25 +20862,25 @@ class RepricingProductReport {
   ///
   /// This value captures how many times the rule of this type was applied to
   /// this product during this reporting period.
-  core.String applicationCount;
+  core.String? applicationCount;
 
   /// Stats specific to buybox winning rules for product report.
-  RepricingProductReportBuyboxWinningProductStats buyboxWinningProductStats;
+  RepricingProductReportBuyboxWinningProductStats? buyboxWinningProductStats;
 
   /// Date of the stats in this report.
   ///
   /// The report starts and ends according to the merchant's timezone.
-  Date date;
+  Date? date;
 
   /// Maximum displayed price after repriced during this reporting period.
-  PriceAmount highWatermark;
+  PriceAmount? highWatermark;
 
   /// List of all reasons the rule did not apply to the product during the
   /// specified reporting period.
-  core.List<InapplicabilityDetails> inapplicabilityDetails;
+  core.List<InapplicabilityDetails>? inapplicabilityDetails;
 
   /// Minimum displayed price after repriced during this reporting period.
-  PriceAmount lowWatermark;
+  PriceAmount? lowWatermark;
 
   /// Total unit count of impacted products ordered while the rule was active on
   /// the date of the report.
@@ -21638,10 +20888,10 @@ class RepricingProductReport {
   /// This count includes all orders that were started while the rule was
   /// active, even if the rule was no longer active when the order was
   /// completed.
-  core.int orderItemCount;
+  core.int? orderItemCount;
 
   /// Ids of the Repricing rule for this report.
-  core.List<core.String> ruleIds;
+  core.List<core.String>? ruleIds;
 
   /// Total GMV generated by impacted products while the rule was active on the
   /// date of the report.
@@ -21649,7 +20899,7 @@ class RepricingProductReport {
   /// This value includes all orders that were started while the rule was
   /// active, even if the rule was no longer active when the order was
   /// completed.
-  PriceAmount totalGmv;
+  PriceAmount? totalGmv;
 
   /// Type of the rule.
   /// Possible string values are:
@@ -21662,7 +20912,7 @@ class RepricingProductReport {
   /// - "TYPE_COGS_BASED" : Cost of goods sale based rule. Repricer will adjust
   /// the offer price based on the offer's sale cost which is provided by the
   /// merchant.
-  core.String type;
+  core.String? type;
 
   RepricingProductReport();
 
@@ -21712,20 +20962,20 @@ class RepricingProductReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (applicationCount != null) 'applicationCount': applicationCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (applicationCount != null) 'applicationCount': applicationCount!,
         if (buyboxWinningProductStats != null)
-          'buyboxWinningProductStats': buyboxWinningProductStats.toJson(),
-        if (date != null) 'date': date.toJson(),
-        if (highWatermark != null) 'highWatermark': highWatermark.toJson(),
+          'buyboxWinningProductStats': buyboxWinningProductStats!.toJson(),
+        if (date != null) 'date': date!.toJson(),
+        if (highWatermark != null) 'highWatermark': highWatermark!.toJson(),
         if (inapplicabilityDetails != null)
           'inapplicabilityDetails':
-              inapplicabilityDetails.map((value) => value.toJson()).toList(),
-        if (lowWatermark != null) 'lowWatermark': lowWatermark.toJson(),
-        if (orderItemCount != null) 'orderItemCount': orderItemCount,
-        if (ruleIds != null) 'ruleIds': ruleIds,
-        if (totalGmv != null) 'totalGmv': totalGmv.toJson(),
-        if (type != null) 'type': type,
+              inapplicabilityDetails!.map((value) => value.toJson()).toList(),
+        if (lowWatermark != null) 'lowWatermark': lowWatermark!.toJson(),
+        if (orderItemCount != null) 'orderItemCount': orderItemCount!,
+        if (ruleIds != null) 'ruleIds': ruleIds!,
+        if (totalGmv != null) 'totalGmv': totalGmv!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -21733,7 +20983,7 @@ class RepricingProductReport {
 class RepricingProductReportBuyboxWinningProductStats {
   /// Number of times this product won the buybox with these rules during this
   /// time period.
-  core.int buyboxWinsCount;
+  core.int? buyboxWinsCount;
 
   RepricingProductReportBuyboxWinningProductStats();
 
@@ -21743,8 +20993,8 @@ class RepricingProductReportBuyboxWinningProductStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (buyboxWinsCount != null) 'buyboxWinsCount': buyboxWinsCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (buyboxWinsCount != null) 'buyboxWinsCount': buyboxWinsCount!,
       };
 }
 
@@ -21756,58 +21006,58 @@ class RepricingRule {
   /// The rule definition for TYPE_COGS_BASED.
   ///
   /// Required when the rule type is TYPE_COGS_BASED.
-  RepricingRuleCostOfGoodsSaleRule cogsBasedRule;
+  RepricingRuleCostOfGoodsSaleRule? cogsBasedRule;
 
   /// [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
   /// (e.g. "US").
   ///
   /// Required. Immutable.
-  core.String countryCode;
+  core.String? countryCode;
 
   /// Time period when the rule should take effect.
   ///
   /// Required.
-  RepricingRuleEffectiveTime effectiveTimePeriod;
+  RepricingRuleEffectiveTime? effectiveTimePeriod;
 
   /// Match criteria for the eligible offers.
   ///
   /// Required.
-  RepricingRuleEligibleOfferMatcher eligibleOfferMatcher;
+  RepricingRuleEligibleOfferMatcher? eligibleOfferMatcher;
 
   /// The two-letter ISO 639-1 language code associated with the repricing rule.
   ///
   /// Required. Immutable.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Merchant that owns the repricing rule.
   ///
   /// Output only. Immutable.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// Represents whether a rule is paused.
   ///
   /// A paused rule will behave like a non-paused rule within CRUD operations,
   /// with the major difference that a paused rule will not be evaluated and
   /// will have no effect on offers.
-  core.bool paused;
+  core.bool? paused;
 
   /// Restriction of the rule appliance.
   ///
   /// Required.
-  RepricingRuleRestriction restriction;
+  RepricingRuleRestriction? restriction;
 
   /// The ID to uniquely identify each repricing rule.
   ///
   /// Output only. Immutable.
-  core.String ruleId;
+  core.String? ruleId;
 
   /// The rule definition for TYPE_STATS_BASED.
   ///
   /// Required when the rule type is TYPE_STATS_BASED.
-  RepricingRuleStatsBasedRule statsBasedRule;
+  RepricingRuleStatsBasedRule? statsBasedRule;
 
   /// The title for the rule.
-  core.String title;
+  core.String? title;
 
   /// The type of the rule.
   ///
@@ -21822,7 +21072,7 @@ class RepricingRule {
   /// - "TYPE_COGS_BASED" : Cost of goods sale based rule. Repricer will adjust
   /// the offer price based on the offer's sale cost which is provided by the
   /// merchant.
-  core.String type;
+  core.String? type;
 
   RepricingRule();
 
@@ -21870,21 +21120,21 @@ class RepricingRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cogsBasedRule != null) 'cogsBasedRule': cogsBasedRule.toJson(),
-        if (countryCode != null) 'countryCode': countryCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cogsBasedRule != null) 'cogsBasedRule': cogsBasedRule!.toJson(),
+        if (countryCode != null) 'countryCode': countryCode!,
         if (effectiveTimePeriod != null)
-          'effectiveTimePeriod': effectiveTimePeriod.toJson(),
+          'effectiveTimePeriod': effectiveTimePeriod!.toJson(),
         if (eligibleOfferMatcher != null)
-          'eligibleOfferMatcher': eligibleOfferMatcher.toJson(),
-        if (languageCode != null) 'languageCode': languageCode,
-        if (merchantId != null) 'merchantId': merchantId,
-        if (paused != null) 'paused': paused,
-        if (restriction != null) 'restriction': restriction.toJson(),
-        if (ruleId != null) 'ruleId': ruleId,
-        if (statsBasedRule != null) 'statsBasedRule': statsBasedRule.toJson(),
-        if (title != null) 'title': title,
-        if (type != null) 'type': type,
+          'eligibleOfferMatcher': eligibleOfferMatcher!.toJson(),
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (paused != null) 'paused': paused!,
+        if (restriction != null) 'restriction': restriction!.toJson(),
+        if (ruleId != null) 'ruleId': ruleId!,
+        if (statsBasedRule != null) 'statsBasedRule': statsBasedRule!.toJson(),
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -21893,12 +21143,12 @@ class RepricingRuleCostOfGoodsSaleRule {
   /// The percent change against the COGS.
   ///
   /// Ex: 20 would mean to set the adjusted price 1.2X of the COGS data.
-  core.int percentageDelta;
+  core.int? percentageDelta;
 
   /// The price delta against the COGS.
   ///
   /// E.g. 2 means $2 more of the COGS.
-  core.String priceDelta;
+  core.String? priceDelta;
 
   RepricingRuleCostOfGoodsSaleRule();
 
@@ -21911,9 +21161,9 @@ class RepricingRuleCostOfGoodsSaleRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (percentageDelta != null) 'percentageDelta': percentageDelta,
-        if (priceDelta != null) 'priceDelta': priceDelta,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (percentageDelta != null) 'percentageDelta': percentageDelta!,
+        if (priceDelta != null) 'priceDelta': priceDelta!,
       };
 }
 
@@ -21921,7 +21171,7 @@ class RepricingRuleEffectiveTime {
   /// A list of fixed time periods combined with OR.
   ///
   /// The maximum number of entries is limited to 5.
-  core.List<RepricingRuleEffectiveTimeFixedTimePeriod> fixedTimePeriods;
+  core.List<RepricingRuleEffectiveTimeFixedTimePeriod>? fixedTimePeriods;
 
   RepricingRuleEffectiveTime();
 
@@ -21935,10 +21185,10 @@ class RepricingRuleEffectiveTime {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fixedTimePeriods != null)
           'fixedTimePeriods':
-              fixedTimePeriods.map((value) => value.toJson()).toList(),
+              fixedTimePeriods!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -21947,12 +21197,12 @@ class RepricingRuleEffectiveTimeFixedTimePeriod {
   /// The end time (exclusive) of the period.
   ///
   /// It can only be hour granularity.
-  core.String endTime;
+  core.String? endTime;
 
   /// The start time (inclusive) of the period.
   ///
   /// It can only be hour granularity.
-  core.String startTime;
+  core.String? startTime;
 
   RepricingRuleEffectiveTimeFixedTimePeriod();
 
@@ -21965,9 +21215,9 @@ class RepricingRuleEffectiveTimeFixedTimePeriod {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -21983,10 +21233,10 @@ class RepricingRuleEffectiveTimeFixedTimePeriod {
 /// 5 brands, but not 10 product ids and 11 brands.
 class RepricingRuleEligibleOfferMatcher {
   /// Filter by the brand.
-  RepricingRuleEligibleOfferMatcherStringMatcher brandMatcher;
+  RepricingRuleEligibleOfferMatcherStringMatcher? brandMatcher;
 
   /// Filter by the item group id.
-  RepricingRuleEligibleOfferMatcherStringMatcher itemGroupIdMatcher;
+  RepricingRuleEligibleOfferMatcherStringMatcher? itemGroupIdMatcher;
 
   /// Determines whether to use the custom matchers or the product feed
   /// attribute "repricing_rule_id" to specify offer-rule mapping.
@@ -21996,13 +21246,13 @@ class RepricingRuleEligibleOfferMatcher {
   /// - "MATCHER_OPTION_USE_FEED_ATTRIBUTE" : Use repricing_rule_id feed
   /// attribute on the product resource to specify offer-rule mapping.
   /// - "MATCHER_OPTION_ALL_PRODUCTS" : Matching all products.
-  core.String matcherOption;
+  core.String? matcherOption;
 
   /// Filter by the offer id.
-  RepricingRuleEligibleOfferMatcherStringMatcher offerIdMatcher;
+  RepricingRuleEligibleOfferMatcherStringMatcher? offerIdMatcher;
 
   /// When true, the rule won't be applied to offers with active promotions.
-  core.bool skipWhenOnPromotion;
+  core.bool? skipWhenOnPromotion;
 
   RepricingRuleEligibleOfferMatcher();
 
@@ -22029,14 +21279,14 @@ class RepricingRuleEligibleOfferMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (brandMatcher != null) 'brandMatcher': brandMatcher.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (brandMatcher != null) 'brandMatcher': brandMatcher!.toJson(),
         if (itemGroupIdMatcher != null)
-          'itemGroupIdMatcher': itemGroupIdMatcher.toJson(),
-        if (matcherOption != null) 'matcherOption': matcherOption,
-        if (offerIdMatcher != null) 'offerIdMatcher': offerIdMatcher.toJson(),
+          'itemGroupIdMatcher': itemGroupIdMatcher!.toJson(),
+        if (matcherOption != null) 'matcherOption': matcherOption!,
+        if (offerIdMatcher != null) 'offerIdMatcher': offerIdMatcher!.toJson(),
         if (skipWhenOnPromotion != null)
-          'skipWhenOnPromotion': skipWhenOnPromotion,
+          'skipWhenOnPromotion': skipWhenOnPromotion!,
       };
 }
 
@@ -22048,7 +21298,7 @@ class RepricingRuleEligibleOfferMatcherStringMatcher {
   /// The string matcher checks an offer for inclusivity in the string
   /// attributes, not equality. Only literal string matching is supported, no
   /// regex.
-  core.List<core.String> strAttributes;
+  core.List<core.String>? strAttributes;
 
   RepricingRuleEligibleOfferMatcherStringMatcher();
 
@@ -22060,8 +21310,8 @@ class RepricingRuleEligibleOfferMatcherStringMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (strAttributes != null) 'strAttributes': strAttributes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (strAttributes != null) 'strAttributes': strAttributes!,
       };
 }
 
@@ -22070,30 +21320,30 @@ class RepricingRuleEligibleOfferMatcherStringMatcher {
 /// Next ID: 11
 class RepricingRuleReport {
   /// Stats specific to buybox winning rules for rule report.
-  RepricingRuleReportBuyboxWinningRuleStats buyboxWinningRuleStats;
+  RepricingRuleReportBuyboxWinningRuleStats? buyboxWinningRuleStats;
 
   /// Date of the stats in this report.
   ///
   /// The report starts and ends according to the merchant's timezone.
-  Date date;
+  Date? date;
 
   /// List of product ids that are impacted by this rule during this reporting
   /// period.
   ///
   /// Out of stock products and products not searched for by customers are
   /// examples of non-impacted products.
-  core.List<core.String> impactedProducts;
+  core.List<core.String>? impactedProducts;
 
   /// List of all reasons the rule did not apply to the inapplicable products
   /// during the specified reporting period.
-  core.List<InapplicabilityDetails> inapplicabilityDetails;
+  core.List<InapplicabilityDetails>? inapplicabilityDetails;
 
   /// List of product ids that are inapplicable to this rule during this
   /// reporting period.
   ///
   /// To get the inapplicable reason for a specific product, see
   /// RepricingProductReport.
-  core.List<core.String> inapplicableProducts;
+  core.List<core.String>? inapplicableProducts;
 
   /// Total unit count of impacted products ordered while the rule was active on
   /// the date of the report.
@@ -22101,10 +21351,10 @@ class RepricingRuleReport {
   /// This count includes all orders that were started while the rule was
   /// active, even if the rule was no longer active when the order was
   /// completed.
-  core.int orderItemCount;
+  core.int? orderItemCount;
 
   /// Id of the Repricing rule for this report.
-  core.String ruleId;
+  core.String? ruleId;
 
   /// Total GMV generated by impacted products while the rule was active on the
   /// date of the report.
@@ -22112,7 +21362,7 @@ class RepricingRuleReport {
   /// This value includes all orders that were started while the rule was
   /// active, even if the rule was no longer active when the order was
   /// completed.
-  PriceAmount totalGmv;
+  PriceAmount? totalGmv;
 
   /// Type of the rule.
   /// Possible string values are:
@@ -22125,7 +21375,7 @@ class RepricingRuleReport {
   /// - "TYPE_COGS_BASED" : Cost of goods sale based rule. Repricer will adjust
   /// the offer price based on the offer's sale cost which is provided by the
   /// merchant.
-  core.String type;
+  core.String? type;
 
   RepricingRuleReport();
 
@@ -22172,20 +21422,20 @@ class RepricingRuleReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (buyboxWinningRuleStats != null)
-          'buyboxWinningRuleStats': buyboxWinningRuleStats.toJson(),
-        if (date != null) 'date': date.toJson(),
-        if (impactedProducts != null) 'impactedProducts': impactedProducts,
+          'buyboxWinningRuleStats': buyboxWinningRuleStats!.toJson(),
+        if (date != null) 'date': date!.toJson(),
+        if (impactedProducts != null) 'impactedProducts': impactedProducts!,
         if (inapplicabilityDetails != null)
           'inapplicabilityDetails':
-              inapplicabilityDetails.map((value) => value.toJson()).toList(),
+              inapplicabilityDetails!.map((value) => value.toJson()).toList(),
         if (inapplicableProducts != null)
-          'inapplicableProducts': inapplicableProducts,
-        if (orderItemCount != null) 'orderItemCount': orderItemCount,
-        if (ruleId != null) 'ruleId': ruleId,
-        if (totalGmv != null) 'totalGmv': totalGmv.toJson(),
-        if (type != null) 'type': type,
+          'inapplicableProducts': inapplicableProducts!,
+        if (orderItemCount != null) 'orderItemCount': orderItemCount!,
+        if (ruleId != null) 'ruleId': ruleId!,
+        if (totalGmv != null) 'totalGmv': totalGmv!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -22193,7 +21443,7 @@ class RepricingRuleReport {
 class RepricingRuleReportBuyboxWinningRuleStats {
   /// Number of unique products that won the buybox with this rule during this
   /// period of time.
-  core.int buyboxWonProductCount;
+  core.int? buyboxWonProductCount;
 
   RepricingRuleReportBuyboxWinningRuleStats();
 
@@ -22203,9 +21453,9 @@ class RepricingRuleReportBuyboxWinningRuleStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (buyboxWonProductCount != null)
-          'buyboxWonProductCount': buyboxWonProductCount,
+          'buyboxWonProductCount': buyboxWonProductCount!,
       };
 }
 
@@ -22223,7 +21473,7 @@ class RepricingRuleRestriction {
   /// The inclusive floor lower bound.
   ///
   /// The repricing rule only applies when new price >= floor.
-  RepricingRuleRestrictionBoundary floor;
+  RepricingRuleRestrictionBoundary? floor;
 
   /// If true, use the AUTO_PRICING_MIN_PRICE offer attribute as the lower bound
   /// of the rule.
@@ -22232,7 +21482,7 @@ class RepricingRuleRestriction {
   /// `AUTO_PRICING_MIN_PRICE` existing on the offer will get Repricer
   /// treatment, even if a floor value is set on the rule. Also, if
   /// use_auto_pricing_min_price is true, the floor restriction will be ignored.
-  core.bool useAutoPricingMinPrice;
+  core.bool? useAutoPricingMinPrice;
 
   RepricingRuleRestriction();
 
@@ -22246,10 +21496,10 @@ class RepricingRuleRestriction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (floor != null) 'floor': floor.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (floor != null) 'floor': floor!.toJson(),
         if (useAutoPricingMinPrice != null)
-          'useAutoPricingMinPrice': useAutoPricingMinPrice,
+          'useAutoPricingMinPrice': useAutoPricingMinPrice!,
       };
 }
 
@@ -22261,14 +21511,14 @@ class RepricingRuleRestrictionBoundary {
   /// floor, it should be > -100. For example, if an offer is selling at $10 and
   /// this field is -30 in floor, the repricing rule only applies if the
   /// calculated new price is >= $7.
-  core.int percentageDelta;
+  core.int? percentageDelta;
 
   /// The price micros relative to the offer selling price.
   ///
   /// This field is signed. It must be negative in floor. For example, if an
   /// offer is selling at $10 and this field is -$2 in floor, the repricing rule
   /// only applies if the calculated new price is >= $8.
-  core.String priceDelta;
+  core.String? priceDelta;
 
   RepricingRuleRestrictionBoundary();
 
@@ -22281,9 +21531,9 @@ class RepricingRuleRestrictionBoundary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (percentageDelta != null) 'percentageDelta': percentageDelta,
-        if (priceDelta != null) 'priceDelta': priceDelta,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (percentageDelta != null) 'percentageDelta': percentageDelta!,
+        if (priceDelta != null) 'priceDelta': priceDelta!,
       };
 }
 
@@ -22292,14 +21542,14 @@ class RepricingRuleStatsBasedRule {
   /// The percent change against the price target.
   ///
   /// Valid from 0 to 100 inclusively.
-  core.int percentageDelta;
+  core.int? percentageDelta;
 
   /// The price delta against the above price target.
   ///
   /// A positive value means the price should be adjusted to be above
   /// statistical measure, and a negative value means below. Currency code must
   /// not be included.
-  core.String priceDelta;
+  core.String? priceDelta;
 
   RepricingRuleStatsBasedRule();
 
@@ -22312,9 +21562,9 @@ class RepricingRuleStatsBasedRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (percentageDelta != null) 'percentageDelta': percentageDelta,
-        if (priceDelta != null) 'priceDelta': priceDelta,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (percentageDelta != null) 'percentageDelta': percentageDelta!,
+        if (priceDelta != null) 'priceDelta': priceDelta!,
       };
 }
 
@@ -22323,32 +21573,32 @@ class ReturnAddress {
   /// The address.
   ///
   /// Required.
-  ReturnAddressAddress address;
+  ReturnAddressAddress? address;
 
   /// The country of sale where the return address is applicable.
   ///
   /// Required.
-  core.String country;
+  core.String? country;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#returnAddress`"
-  core.String kind;
+  core.String? kind;
 
   /// The user-defined label of the return address.
   ///
   /// For the default address, use the label "default".
   ///
   /// Required.
-  core.String label;
+  core.String? label;
 
   /// The merchant's contact phone number regarding the return.
   ///
   /// Required.
-  core.String phoneNumber;
+  core.String? phoneNumber;
 
   /// Return address ID generated by Google.
-  core.String returnAddressId;
+  core.String? returnAddressId;
 
   ReturnAddress();
 
@@ -22374,42 +21624,42 @@ class ReturnAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address.toJson(),
-        if (country != null) 'country': country,
-        if (kind != null) 'kind': kind,
-        if (label != null) 'label': label,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber,
-        if (returnAddressId != null) 'returnAddressId': returnAddressId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!.toJson(),
+        if (country != null) 'country': country!,
+        if (kind != null) 'kind': kind!,
+        if (label != null) 'label': label!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+        if (returnAddressId != null) 'returnAddressId': returnAddressId!,
       };
 }
 
 class ReturnAddressAddress {
   /// CLDR country code (e.g. "US").
-  core.String country;
+  core.String? country;
 
   /// City, town or commune.
   ///
   /// May also include dependent localities or sublocalities (e.g. neighborhoods
   /// or suburbs).
-  core.String locality;
+  core.String? locality;
 
   /// Postal code or ZIP (e.g. "94043").
-  core.String postalCode;
+  core.String? postalCode;
 
   /// Name of the recipient to address returns to.
-  core.String recipientName;
+  core.String? recipientName;
 
   /// Top-level administrative subdivision of the country.
   ///
   /// For example, a state like California ("CA") or a province like Quebec
   /// ("QC").
-  core.String region;
+  core.String? region;
 
   /// Street-level part of the address.
   ///
   /// May be up to two lines, each line specified as an array element.
-  core.List<core.String> streetAddress;
+  core.List<core.String>? streetAddress;
 
   ReturnAddressAddress();
 
@@ -22436,13 +21686,13 @@ class ReturnAddressAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (locality != null) 'locality': locality,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (recipientName != null) 'recipientName': recipientName,
-        if (region != null) 'region': region,
-        if (streetAddress != null) 'streetAddress': streetAddress,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (locality != null) 'locality': locality!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (recipientName != null) 'recipientName': recipientName!,
+        if (region != null) 'region': region!,
+        if (streetAddress != null) 'streetAddress': streetAddress!,
       };
 }
 
@@ -22451,41 +21701,41 @@ class ReturnPolicy {
   /// The country of sale where the return policy is applicable.
   ///
   /// Required.
-  core.String country;
+  core.String? country;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#returnPolicy`"
-  core.String kind;
+  core.String? kind;
 
   /// The user-defined label of the return policy.
   ///
   /// For the default policy, use the label "default".
   ///
   /// Required.
-  core.String label;
+  core.String? label;
 
   /// The name of the policy as shown in Merchant Center.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Return reasons that will incur return fees.
-  core.List<core.String> nonFreeReturnReasons;
+  core.List<core.String>? nonFreeReturnReasons;
 
   /// The policy.
   ///
   /// Required.
-  ReturnPolicyPolicy policy;
+  ReturnPolicyPolicy? policy;
 
   /// Return policy ID generated by Google.
-  core.String returnPolicyId;
+  core.String? returnPolicyId;
 
   /// The return shipping fee that will apply to non free return reasons.
-  Price returnShippingFee;
+  Price? returnShippingFee;
 
   /// An optional list of seasonal overrides.
-  core.List<ReturnPolicySeasonalOverride> seasonalOverrides;
+  core.List<ReturnPolicySeasonalOverride>? seasonalOverrides;
 
   ReturnPolicy();
 
@@ -22527,20 +21777,20 @@ class ReturnPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (kind != null) 'kind': kind,
-        if (label != null) 'label': label,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (kind != null) 'kind': kind!,
+        if (label != null) 'label': label!,
+        if (name != null) 'name': name!,
         if (nonFreeReturnReasons != null)
-          'nonFreeReturnReasons': nonFreeReturnReasons,
-        if (policy != null) 'policy': policy.toJson(),
-        if (returnPolicyId != null) 'returnPolicyId': returnPolicyId,
+          'nonFreeReturnReasons': nonFreeReturnReasons!,
+        if (policy != null) 'policy': policy!.toJson(),
+        if (returnPolicyId != null) 'returnPolicyId': returnPolicyId!,
         if (returnShippingFee != null)
-          'returnShippingFee': returnShippingFee.toJson(),
+          'returnShippingFee': returnShippingFee!.toJson(),
         if (seasonalOverrides != null)
           'seasonalOverrides':
-              seasonalOverrides.map((value) => value.toJson()).toList(),
+              seasonalOverrides!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -22552,53 +21802,53 @@ class ReturnPolicyOnline {
   /// The countries of sale where the return policy is applicable.
   ///
   /// The values must be a valid 2 letter ISO 3166 code, e.g. "US".
-  core.List<core.String> countries;
+  core.List<core.String>? countries;
 
   /// The item conditions that are accepted for returns.
   ///
   /// This is required to not be empty unless the type of return policy is
   /// noReturns.
-  core.List<core.String> itemConditions;
+  core.List<core.String>? itemConditions;
 
   /// The unique user-defined label of the return policy.
   ///
   /// The same label cannot be used in different return policies for the same
   /// country. Policies with the label 'default' will apply to all products,
   /// unless a product specifies a return_policy_label attribute.
-  core.String label;
+  core.String? label;
 
   /// The name of the policy as shown in Merchant Center.
-  core.String name;
+  core.String? name;
 
   /// The return policy.
-  ReturnPolicyOnlinePolicy policy;
+  ReturnPolicyOnlinePolicy? policy;
 
   /// The restocking fee that applies to all return reason categories.
   ///
   /// This would be treated as a free restocking fee if the value is not set.
-  ReturnPolicyOnlineRestockingFee restockingFee;
+  ReturnPolicyOnlineRestockingFee? restockingFee;
 
   /// The return methods of how customers can return an item.
   ///
   /// This value is required to not be empty unless the type of return policy is
   /// noReturns.
-  core.List<core.String> returnMethods;
+  core.List<core.String>? returnMethods;
 
   /// Return policy ID generated by Google.
   ///
   /// Output only.
-  core.String returnPolicyId;
+  core.String? returnPolicyId;
 
   /// The return policy uri.
   ///
   /// This can used by Google to do a sanity check for the policy.
-  core.String returnPolicyUri;
+  core.String? returnPolicyUri;
 
   /// The return reason category information.
   ///
   /// This required to not be empty unless the type of return policy is
   /// noReturns.
-  core.List<ReturnPolicyOnlineReturnReasonCategoryInfo>
+  core.List<ReturnPolicyOnlineReturnReasonCategoryInfo>?
       returnReasonCategoryInfo;
 
   ReturnPolicyOnline();
@@ -22649,19 +21899,19 @@ class ReturnPolicyOnline {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (countries != null) 'countries': countries,
-        if (itemConditions != null) 'itemConditions': itemConditions,
-        if (label != null) 'label': label,
-        if (name != null) 'name': name,
-        if (policy != null) 'policy': policy.toJson(),
-        if (restockingFee != null) 'restockingFee': restockingFee.toJson(),
-        if (returnMethods != null) 'returnMethods': returnMethods,
-        if (returnPolicyId != null) 'returnPolicyId': returnPolicyId,
-        if (returnPolicyUri != null) 'returnPolicyUri': returnPolicyUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (countries != null) 'countries': countries!,
+        if (itemConditions != null) 'itemConditions': itemConditions!,
+        if (label != null) 'label': label!,
+        if (name != null) 'name': name!,
+        if (policy != null) 'policy': policy!.toJson(),
+        if (restockingFee != null) 'restockingFee': restockingFee!.toJson(),
+        if (returnMethods != null) 'returnMethods': returnMethods!,
+        if (returnPolicyId != null) 'returnPolicyId': returnPolicyId!,
+        if (returnPolicyUri != null) 'returnPolicyUri': returnPolicyUri!,
         if (returnReasonCategoryInfo != null)
           'returnReasonCategoryInfo':
-              returnReasonCategoryInfo.map((value) => value.toJson()).toList(),
+              returnReasonCategoryInfo!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -22671,7 +21921,7 @@ class ReturnPolicyOnlinePolicy {
   /// defined to be 24 hours after the delivery timestamp.
   ///
   /// Required for `numberOfDaysAfterDelivery` returns.
-  core.String days;
+  core.String? days;
 
   /// Policy type.
   /// Possible string values are:
@@ -22680,7 +21930,7 @@ class ReturnPolicyOnlinePolicy {
   /// delivered.
   /// - "NO_RETURNS" : No returns.
   /// - "LIFETIME_RETURNS" : Life time returns.
-  core.String type;
+  core.String? type;
 
   ReturnPolicyOnlinePolicy();
 
@@ -22693,9 +21943,9 @@ class ReturnPolicyOnlinePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (days != null) 'days': days,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (days != null) 'days': days!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -22704,12 +21954,12 @@ class ReturnPolicyOnlinePolicy {
 /// This can either be a fixed fee or a micro percent.
 class ReturnPolicyOnlineRestockingFee {
   /// Fixed restocking fee.
-  PriceAmount fixedFee;
+  PriceAmount? fixedFee;
 
   /// Percent of total price in micros.
   ///
   /// 15,000,000 means 15% of the total price would be charged.
-  core.int microPercent;
+  core.int? microPercent;
 
   ReturnPolicyOnlineRestockingFee();
 
@@ -22723,9 +21973,9 @@ class ReturnPolicyOnlineRestockingFee {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fixedFee != null) 'fixedFee': fixedFee.toJson(),
-        if (microPercent != null) 'microPercent': microPercent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fixedFee != null) 'fixedFee': fixedFee!.toJson(),
+        if (microPercent != null) 'microPercent': microPercent!,
       };
 }
 
@@ -22737,7 +21987,7 @@ class ReturnPolicyOnlineReturnReasonCategoryInfo {
   /// - "DOWNLOAD_AND_PRINT" : Download and print the label.
   /// - "IN_THE_BOX" : Label in the box.
   /// - "CUSTOMER_RESPONSIBILITY" : Customers' responsibility to get the label.
-  core.String returnLabelSource;
+  core.String? returnLabelSource;
 
   /// The return reason category.
   /// Possible string values are:
@@ -22745,13 +21995,13 @@ class ReturnPolicyOnlineReturnReasonCategoryInfo {
   /// unused.
   /// - "BUYER_REMORSE" : Buyer remorse.
   /// - "ITEM_DEFECT" : Item defect.
-  core.String returnReasonCategory;
+  core.String? returnReasonCategory;
 
   /// The corresponding return shipping fee.
   ///
   /// This is only applicable when returnLabelSource is not the customer's
   /// responsibility.
-  ReturnPolicyOnlineReturnShippingFee returnShippingFee;
+  ReturnPolicyOnlineReturnShippingFee? returnShippingFee;
 
   ReturnPolicyOnlineReturnReasonCategoryInfo();
 
@@ -22768,12 +22018,12 @@ class ReturnPolicyOnlineReturnReasonCategoryInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (returnLabelSource != null) 'returnLabelSource': returnLabelSource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (returnLabelSource != null) 'returnLabelSource': returnLabelSource!,
         if (returnReasonCategory != null)
-          'returnReasonCategory': returnReasonCategory,
+          'returnReasonCategory': returnReasonCategory!,
         if (returnShippingFee != null)
-          'returnShippingFee': returnShippingFee.toJson(),
+          'returnShippingFee': returnShippingFee!.toJson(),
       };
 }
 
@@ -22786,7 +22036,7 @@ class ReturnPolicyOnlineReturnShippingFee {
   ///
   /// This value is only applicable when type is FIXED. We will treat the return
   /// shipping fee as free if type is FIXED and this value is not set.
-  PriceAmount fixedFee;
+  PriceAmount? fixedFee;
 
   /// Type of return shipping fee.
   /// Possible string values are:
@@ -22794,7 +22044,7 @@ class ReturnPolicyOnlineReturnShippingFee {
   /// - "FIXED" : The return shipping fee is a fixed value.
   /// - "CUSTOMER_PAYING_ACTUAL_FEE" : Customer will pay the actual return
   /// shipping fee.
-  core.String type;
+  core.String? type;
 
   ReturnPolicyOnlineReturnShippingFee();
 
@@ -22808,9 +22058,9 @@ class ReturnPolicyOnlineReturnShippingFee {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fixedFee != null) 'fixedFee': fixedFee.toJson(),
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fixedFee != null) 'fixedFee': fixedFee!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -22821,7 +22071,7 @@ class ReturnPolicyPolicy {
   /// policy type to "lastReturnDate". Use this for seasonal overrides only.
   ///
   /// Required.
-  core.String lastReturnDate;
+  core.String? lastReturnDate;
 
   /// The number of days items can be returned after delivery, where one day is
   /// defined to be 24 hours after the delivery timestamp.
@@ -22832,7 +22082,7 @@ class ReturnPolicyPolicy {
   /// 14, 15, 21 and 28 days, but note that for most items a minimum of 30 days
   /// is required for returns. Exceptions may be made for electronics. A policy
   /// of less than 30 days can only be applied to those items.
-  core.String numberOfDays;
+  core.String? numberOfDays;
 
   /// Policy type.
   ///
@@ -22842,7 +22092,7 @@ class ReturnPolicyPolicy {
   /// things. A policy of less than 30 days can only be applied to those items.
   /// Acceptable values are: - "`lastReturnDate`" - "`lifetimeReturns`" -
   /// "`noReturns`" - "`numberOfDaysAfterDelivery`"
-  core.String type;
+  core.String? type;
 
   ReturnPolicyPolicy();
 
@@ -22858,10 +22108,10 @@ class ReturnPolicyPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lastReturnDate != null) 'lastReturnDate': lastReturnDate,
-        if (numberOfDays != null) 'numberOfDays': numberOfDays,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lastReturnDate != null) 'lastReturnDate': lastReturnDate!,
+        if (numberOfDays != null) 'numberOfDays': numberOfDays!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -22871,24 +22121,24 @@ class ReturnPolicySeasonalOverride {
   /// In ISO 8601 format.
   ///
   /// Required.
-  core.String endDate;
+  core.String? endDate;
 
   /// The name of the seasonal override as shown in Merchant Center.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The policy which is in effect during that time.
   ///
   /// Required.
-  ReturnPolicyPolicy policy;
+  ReturnPolicyPolicy? policy;
 
   /// First day on which the override applies.
   ///
   /// In ISO 8601 format.
   ///
   /// Required.
-  core.String startDate;
+  core.String? startDate;
 
   ReturnPolicySeasonalOverride();
 
@@ -22908,11 +22158,11 @@ class ReturnPolicySeasonalOverride {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endDate != null) 'endDate': endDate,
-        if (name != null) 'name': name,
-        if (policy != null) 'policy': policy.toJson(),
-        if (startDate != null) 'startDate': startDate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endDate != null) 'endDate': endDate!,
+        if (name != null) 'name': name!,
+        if (policy != null) 'policy': policy!.toJson(),
+        if (startDate != null) 'startDate': startDate!,
       };
 }
 
@@ -22920,27 +22170,27 @@ class ReturnPricingInfo {
   /// Default option for whether merchant should charge the customer for return
   /// shipping costs, based on customer selected return reason and merchant's
   /// return policy for the items being returned.
-  core.bool chargeReturnShippingFee;
+  core.bool? chargeReturnShippingFee;
 
   /// Maximum return shipping costs that may be charged to the customer
   /// depending on merchant's assessment of the return reason and the merchant's
   /// return policy for the items being returned.
-  MonetaryAmount maxReturnShippingFee;
+  MonetaryAmount? maxReturnShippingFee;
 
   /// Total amount that can be refunded for the items in this return.
   ///
   /// It represents the total amount received by the merchant for the items,
   /// after applying merchant coupons.
-  MonetaryAmount refundableItemsTotalAmount;
+  MonetaryAmount? refundableItemsTotalAmount;
 
   /// Maximum amount that can be refunded for the original shipping fee.
-  MonetaryAmount refundableShippingAmount;
+  MonetaryAmount? refundableShippingAmount;
 
   /// Total amount already refunded by the merchant.
   ///
   /// It includes all types of refunds (items, shipping, etc.) Not provided if
   /// no refund has been applied yet.
-  MonetaryAmount totalRefundedAmount;
+  MonetaryAmount? totalRefundedAmount;
 
   ReturnPricingInfo();
 
@@ -22968,50 +22218,50 @@ class ReturnPricingInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (chargeReturnShippingFee != null)
-          'chargeReturnShippingFee': chargeReturnShippingFee,
+          'chargeReturnShippingFee': chargeReturnShippingFee!,
         if (maxReturnShippingFee != null)
-          'maxReturnShippingFee': maxReturnShippingFee.toJson(),
+          'maxReturnShippingFee': maxReturnShippingFee!.toJson(),
         if (refundableItemsTotalAmount != null)
-          'refundableItemsTotalAmount': refundableItemsTotalAmount.toJson(),
+          'refundableItemsTotalAmount': refundableItemsTotalAmount!.toJson(),
         if (refundableShippingAmount != null)
-          'refundableShippingAmount': refundableShippingAmount.toJson(),
+          'refundableShippingAmount': refundableShippingAmount!.toJson(),
         if (totalRefundedAmount != null)
-          'totalRefundedAmount': totalRefundedAmount.toJson(),
+          'totalRefundedAmount': totalRefundedAmount!.toJson(),
       };
 }
 
 class ReturnShipment {
   /// The date of creation of the shipment, in ISO 8601 format.
-  core.String creationDate;
+  core.String? creationDate;
 
   /// The date of delivery of the shipment, in ISO 8601 format.
-  core.String deliveryDate;
+  core.String? deliveryDate;
 
   /// Type of the return method.
   ///
   /// Acceptable values are: - "`byMail`" - "`contactCustomerSupport`" -
   /// "`returnless`" - "`inStore`"
-  core.String returnMethodType;
+  core.String? returnMethodType;
 
   /// Shipment ID generated by Google.
-  core.String shipmentId;
+  core.String? shipmentId;
 
   /// Tracking information of the shipment.
   ///
   /// One return shipment might be handled by several shipping carriers
   /// sequentially.
-  core.List<ShipmentTrackingInfo> shipmentTrackingInfos;
+  core.List<ShipmentTrackingInfo>? shipmentTrackingInfos;
 
   /// The date of shipping of the shipment, in ISO 8601 format.
-  core.String shippingDate;
+  core.String? shippingDate;
 
   /// State of the shipment.
   ///
   /// Acceptable values are: - "`completed`" - "`new`" - "`shipped`" -
   /// "`undeliverable`" - "`pending`"
-  core.String state;
+  core.String? state;
 
   ReturnShipment();
 
@@ -23042,22 +22292,22 @@ class ReturnShipment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationDate != null) 'creationDate': creationDate,
-        if (deliveryDate != null) 'deliveryDate': deliveryDate,
-        if (returnMethodType != null) 'returnMethodType': returnMethodType,
-        if (shipmentId != null) 'shipmentId': shipmentId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationDate != null) 'creationDate': creationDate!,
+        if (deliveryDate != null) 'deliveryDate': deliveryDate!,
+        if (returnMethodType != null) 'returnMethodType': returnMethodType!,
+        if (shipmentId != null) 'shipmentId': shipmentId!,
         if (shipmentTrackingInfos != null)
           'shipmentTrackingInfos':
-              shipmentTrackingInfos.map((value) => value.toJson()).toList(),
-        if (shippingDate != null) 'shippingDate': shippingDate,
-        if (state != null) 'state': state,
+              shipmentTrackingInfos!.map((value) => value.toJson()).toList(),
+        if (shippingDate != null) 'shippingDate': shippingDate!,
+        if (state != null) 'state': state!,
       };
 }
 
 class ReturnaddressCustomBatchRequest {
   /// The request entries to be processed in the batch.
-  core.List<ReturnaddressCustomBatchRequestEntry> entries;
+  core.List<ReturnaddressCustomBatchRequestEntry>? entries;
 
   ReturnaddressCustomBatchRequest();
 
@@ -23071,33 +22321,33 @@ class ReturnaddressCustomBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ReturnaddressCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
-  core.int batchId;
+  core.int? batchId;
 
   /// The Merchant Center account ID.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// Method of the batch request entry.
   ///
   /// Acceptable values are: - "`delete`" - "`get`" - "`insert`"
-  core.String method;
+  core.String? method;
 
   /// The return address to submit.
   ///
   /// This should be set only if the method is `insert`.
-  ReturnAddress returnAddress;
+  ReturnAddress? returnAddress;
 
   /// The return address ID.
   ///
   /// This should be set only if the method is `delete` or `get`.
-  core.String returnAddressId;
+  core.String? returnAddressId;
 
   ReturnaddressCustomBatchRequestEntry();
 
@@ -23120,23 +22370,23 @@ class ReturnaddressCustomBatchRequestEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (merchantId != null) 'merchantId': merchantId,
-        if (method != null) 'method': method,
-        if (returnAddress != null) 'returnAddress': returnAddress.toJson(),
-        if (returnAddressId != null) 'returnAddressId': returnAddressId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (method != null) 'method': method!,
+        if (returnAddress != null) 'returnAddress': returnAddress!.toJson(),
+        if (returnAddressId != null) 'returnAddressId': returnAddressId!,
       };
 }
 
 class ReturnaddressCustomBatchResponse {
   /// The result of the execution of the batch requests.
-  core.List<ReturnaddressCustomBatchResponseEntry> entries;
+  core.List<ReturnaddressCustomBatchResponseEntry>? entries;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#returnaddressCustomBatchResponse".
-  core.String kind;
+  core.String? kind;
 
   ReturnaddressCustomBatchResponse();
 
@@ -23153,27 +22403,27 @@ class ReturnaddressCustomBatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class ReturnaddressCustomBatchResponseEntry {
   /// The ID of the request entry to which this entry responds.
-  core.int batchId;
+  core.int? batchId;
 
   /// A list of errors defined if, and only if, the request failed.
-  Errors errors;
+  Errors? errors;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#returnaddressCustomBatchResponseEntry`"
-  core.String kind;
+  core.String? kind;
 
   /// The retrieved return address.
-  ReturnAddress returnAddress;
+  ReturnAddress? returnAddress;
 
   ReturnaddressCustomBatchResponseEntry();
 
@@ -23194,11 +22444,11 @@ class ReturnaddressCustomBatchResponseEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (errors != null) 'errors': errors.toJson(),
-        if (kind != null) 'kind': kind,
-        if (returnAddress != null) 'returnAddress': returnAddress.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (errors != null) 'errors': errors!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (returnAddress != null) 'returnAddress': returnAddress!.toJson(),
       };
 }
 
@@ -23206,11 +22456,11 @@ class ReturnaddressListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#returnaddressListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token for the retrieval of the next page of addresses.
-  core.String nextPageToken;
-  core.List<ReturnAddress> resources;
+  core.String? nextPageToken;
+  core.List<ReturnAddress>? resources;
 
   ReturnaddressListResponse();
 
@@ -23229,17 +22479,17 @@ class ReturnaddressListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ReturnpolicyCustomBatchRequest {
   /// The request entries to be processed in the batch.
-  core.List<ReturnpolicyCustomBatchRequestEntry> entries;
+  core.List<ReturnpolicyCustomBatchRequestEntry>? entries;
 
   ReturnpolicyCustomBatchRequest();
 
@@ -23253,33 +22503,33 @@ class ReturnpolicyCustomBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ReturnpolicyCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
-  core.int batchId;
+  core.int? batchId;
 
   /// The Merchant Center account ID.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// Method of the batch request entry.
   ///
   /// Acceptable values are: - "`delete`" - "`get`" - "`insert`"
-  core.String method;
+  core.String? method;
 
   /// The return policy to submit.
   ///
   /// This should be set only if the method is `insert`.
-  ReturnPolicy returnPolicy;
+  ReturnPolicy? returnPolicy;
 
   /// The return policy ID.
   ///
   /// This should be set only if the method is `delete` or `get`.
-  core.String returnPolicyId;
+  core.String? returnPolicyId;
 
   ReturnpolicyCustomBatchRequestEntry();
 
@@ -23302,23 +22552,23 @@ class ReturnpolicyCustomBatchRequestEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (merchantId != null) 'merchantId': merchantId,
-        if (method != null) 'method': method,
-        if (returnPolicy != null) 'returnPolicy': returnPolicy.toJson(),
-        if (returnPolicyId != null) 'returnPolicyId': returnPolicyId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (method != null) 'method': method!,
+        if (returnPolicy != null) 'returnPolicy': returnPolicy!.toJson(),
+        if (returnPolicyId != null) 'returnPolicyId': returnPolicyId!,
       };
 }
 
 class ReturnpolicyCustomBatchResponse {
   /// The result of the execution of the batch requests.
-  core.List<ReturnpolicyCustomBatchResponseEntry> entries;
+  core.List<ReturnpolicyCustomBatchResponseEntry>? entries;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#returnpolicyCustomBatchResponse".
-  core.String kind;
+  core.String? kind;
 
   ReturnpolicyCustomBatchResponse();
 
@@ -23335,27 +22585,27 @@ class ReturnpolicyCustomBatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class ReturnpolicyCustomBatchResponseEntry {
   /// The ID of the request entry to which this entry responds.
-  core.int batchId;
+  core.int? batchId;
 
   /// A list of errors defined if, and only if, the request failed.
-  Errors errors;
+  Errors? errors;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#returnpolicyCustomBatchResponseEntry`"
-  core.String kind;
+  core.String? kind;
 
   /// The retrieved return policy.
-  ReturnPolicy returnPolicy;
+  ReturnPolicy? returnPolicy;
 
   ReturnpolicyCustomBatchResponseEntry();
 
@@ -23376,11 +22626,11 @@ class ReturnpolicyCustomBatchResponseEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (errors != null) 'errors': errors.toJson(),
-        if (kind != null) 'kind': kind,
-        if (returnPolicy != null) 'returnPolicy': returnPolicy.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (errors != null) 'errors': errors!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (returnPolicy != null) 'returnPolicy': returnPolicy!.toJson(),
       };
 }
 
@@ -23388,8 +22638,8 @@ class ReturnpolicyListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#returnpolicyListResponse".
-  core.String kind;
-  core.List<ReturnPolicy> resources;
+  core.String? kind;
+  core.List<ReturnPolicy>? resources;
 
   ReturnpolicyListResponse();
 
@@ -23405,10 +22655,10 @@ class ReturnpolicyListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -23417,7 +22667,7 @@ class Row {
   ///
   /// Must have the same length as `columnHeaders` for two-dimensional tables, a
   /// length of 1 for one-dimensional tables. Required.
-  core.List<Value> cells;
+  core.List<Value>? cells;
 
   Row();
 
@@ -23430,9 +22680,9 @@ class Row {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cells != null)
-          'cells': cells.map((value) => value.toJson()).toList(),
+          'cells': cells!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -23441,14 +22691,14 @@ class SearchRequest {
   /// Number of ReportRows to retrieve in a single page.
   ///
   /// Defaults to the maximum of 1000. Values above 1000 are coerced to 1000.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// Token of the page to retrieve.
   ///
   /// If not specified, the first page of results is returned. In order to
   /// request the next page of results, the value obtained from
   /// `next_page_token` in the previous response should be used.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// Query that defines performance metrics to retrieve and dimensions
   /// according to which the metrics are to be segmented.
@@ -23456,7 +22706,7 @@ class SearchRequest {
   ///
   ///
   /// Required.
-  core.String query;
+  core.String? query;
 
   SearchRequest();
 
@@ -23472,10 +22722,10 @@ class SearchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (query != null) 'query': query,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (query != null) 'query': query!,
       };
 }
 
@@ -23484,10 +22734,10 @@ class SearchResponse {
   /// Token which can be sent as `page_token` to retrieve the next page.
   ///
   /// If omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Rows that matched the search query.
-  core.List<ReportRow> results;
+  core.List<ReportRow>? results;
 
   SearchResponse();
 
@@ -23503,10 +22753,10 @@ class SearchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
+          'results': results!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -23519,10 +22769,10 @@ class SearchResponse {
 /// request's search query.
 class Segments {
   /// Date in the merchant timezone to which metrics apply.
-  Date date;
+  Date? date;
 
   /// Merchant-provided id of the product.
-  core.String offerId;
+  core.String? offerId;
 
   /// Program to which metrics apply, e.g., Free Product Listing.
   /// Possible string values are:
@@ -23531,7 +22781,7 @@ class Segments {
   /// - "FREE_PRODUCT_LISTING" : Free Product Listing.
   /// - "FREE_LOCAL_PRODUCT_LISTING" : Free Local Product Listing.
   /// - "BUY_ON_GOOGLE_LISTING" : Buy on Google Listing.
-  core.String program;
+  core.String? program;
 
   Segments();
 
@@ -23548,10 +22798,10 @@ class Segments {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (date != null) 'date': date.toJson(),
-        if (offerId != null) 'offerId': offerId,
-        if (program != null) 'program': program,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (date != null) 'date': date!.toJson(),
+        if (offerId != null) 'offerId': offerId!,
+        if (program != null) 'program': program!,
       };
 }
 
@@ -23559,64 +22809,64 @@ class Service {
   /// A boolean exposing the active status of the shipping service.
   ///
   /// Required.
-  core.bool active;
+  core.bool? active;
 
   /// The CLDR code of the currency to which this service applies.
   ///
   /// Must match that of the prices in rate groups.
-  core.String currency;
+  core.String? currency;
 
   /// The CLDR territory code of the country to which the service applies.
   ///
   /// Required.
-  core.String deliveryCountry;
+  core.String? deliveryCountry;
 
   /// Time spent in various aspects from order to the delivery of the product.
   ///
   /// Required.
-  DeliveryTime deliveryTime;
+  DeliveryTime? deliveryTime;
 
   /// Eligibility for this service.
   ///
   /// Acceptable values are: - "`All scenarios`" - "`All scenarios except
   /// Shopping Actions`" - "`Shopping Actions`"
-  core.String eligibility;
+  core.String? eligibility;
 
   /// Minimum order value for this service.
   ///
   /// If set, indicates that customers will have to spend at least this amount.
   /// All prices within a service must have the same currency. Cannot be set
   /// together with minimum_order_value_table.
-  Price minimumOrderValue;
+  Price? minimumOrderValue;
 
   /// Table of per store minimum order values for the pickup fulfillment type.
   ///
   /// Cannot be set together with minimum_order_value.
-  MinimumOrderValueTable minimumOrderValueTable;
+  MinimumOrderValueTable? minimumOrderValueTable;
 
   /// Free-form name of the service.
   ///
   /// Must be unique within target account. Required.
-  core.String name;
+  core.String? name;
 
   /// The carrier-service pair delivering items to collection points.
   ///
   /// The list of supported pickup services can be retrieved via the
   /// `getSupportedPickupServices` method. Required if and only if the service
   /// delivery type is `pickup`.
-  PickupCarrierService pickupService;
+  PickupCarrierService? pickupService;
 
   /// Shipping rate group definitions.
   ///
   /// Only the last one is allowed to have an empty `applicableShippingLabels`,
   /// which means "everything else". The other `applicableShippingLabels` must
   /// not overlap.
-  core.List<RateGroup> rateGroups;
+  core.List<RateGroup>? rateGroups;
 
   /// Type of locations this service ships orders to.
   ///
   /// Acceptable values are: - "`delivery`" - "`pickup`"
-  core.String shipmentType;
+  core.String? shipmentType;
 
   Service();
 
@@ -23664,21 +22914,21 @@ class Service {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (active != null) 'active': active,
-        if (currency != null) 'currency': currency,
-        if (deliveryCountry != null) 'deliveryCountry': deliveryCountry,
-        if (deliveryTime != null) 'deliveryTime': deliveryTime.toJson(),
-        if (eligibility != null) 'eligibility': eligibility,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (active != null) 'active': active!,
+        if (currency != null) 'currency': currency!,
+        if (deliveryCountry != null) 'deliveryCountry': deliveryCountry!,
+        if (deliveryTime != null) 'deliveryTime': deliveryTime!.toJson(),
+        if (eligibility != null) 'eligibility': eligibility!,
         if (minimumOrderValue != null)
-          'minimumOrderValue': minimumOrderValue.toJson(),
+          'minimumOrderValue': minimumOrderValue!.toJson(),
         if (minimumOrderValueTable != null)
-          'minimumOrderValueTable': minimumOrderValueTable.toJson(),
-        if (name != null) 'name': name,
-        if (pickupService != null) 'pickupService': pickupService.toJson(),
+          'minimumOrderValueTable': minimumOrderValueTable!.toJson(),
+        if (name != null) 'name': name!,
+        if (pickupService != null) 'pickupService': pickupService!.toJson(),
         if (rateGroups != null)
-          'rateGroups': rateGroups.map((value) => value.toJson()).toList(),
-        if (shipmentType != null) 'shipmentType': shipmentType,
+          'rateGroups': rateGroups!.map((value) => value.toJson()).toList(),
+        if (shipmentType != null) 'shipmentType': shipmentType!,
       };
 }
 
@@ -23687,38 +22937,38 @@ class Service {
 class SettlementReport {
   /// The end date on which all transactions are included in the report, in ISO
   /// 8601 format.
-  core.String endDate;
+  core.String? endDate;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#settlementReport`"
-  core.String kind;
+  core.String? kind;
 
   /// The residual amount from the previous invoice.
   ///
   /// This is set only if the previous invoices are not paid because of negative
   /// balance.
-  Price previousBalance;
+  Price? previousBalance;
 
   /// The ID of the settlement report.
-  core.String settlementId;
+  core.String? settlementId;
 
   /// The start date on which all transactions are included in the report, in
   /// ISO 8601 format.
-  core.String startDate;
+  core.String? startDate;
 
   /// The money due to the merchant.
-  Price transferAmount;
+  Price? transferAmount;
 
   /// Date on which transfer for this payment was initiated by Google, in ISO
   /// 8601 format.
-  core.String transferDate;
+  core.String? transferDate;
 
   /// The list of bank identifiers used for the transfer.
   ///
   /// e.g. Trace ID for Federal Automated Clearing House (ACH). This may also be
   /// known as the Wire ID.
-  core.List<core.String> transferIds;
+  core.List<core.String>? transferIds;
 
   SettlementReport();
 
@@ -23753,34 +23003,34 @@ class SettlementReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endDate != null) 'endDate': endDate,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endDate != null) 'endDate': endDate!,
+        if (kind != null) 'kind': kind!,
         if (previousBalance != null)
-          'previousBalance': previousBalance.toJson(),
-        if (settlementId != null) 'settlementId': settlementId,
-        if (startDate != null) 'startDate': startDate,
-        if (transferAmount != null) 'transferAmount': transferAmount.toJson(),
-        if (transferDate != null) 'transferDate': transferDate,
-        if (transferIds != null) 'transferIds': transferIds,
+          'previousBalance': previousBalance!.toJson(),
+        if (settlementId != null) 'settlementId': settlementId!,
+        if (startDate != null) 'startDate': startDate!,
+        if (transferAmount != null) 'transferAmount': transferAmount!.toJson(),
+        if (transferDate != null) 'transferDate': transferDate!,
+        if (transferIds != null) 'transferIds': transferIds!,
       };
 }
 
 /// Settlement transactions give a detailed breakdown of the settlement report.
 class SettlementTransaction {
   /// The amount for the transaction.
-  SettlementTransactionAmount amount;
+  SettlementTransactionAmount? amount;
 
   /// Identifiers of the transaction.
-  SettlementTransactionIdentifiers identifiers;
+  SettlementTransactionIdentifiers? identifiers;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#settlementTransaction`"
-  core.String kind;
+  core.String? kind;
 
   /// Details of the transaction.
-  SettlementTransactionTransaction transaction;
+  SettlementTransactionTransaction? transaction;
 
   SettlementTransaction();
 
@@ -23802,16 +23052,16 @@ class SettlementTransaction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amount != null) 'amount': amount.toJson(),
-        if (identifiers != null) 'identifiers': identifiers.toJson(),
-        if (kind != null) 'kind': kind,
-        if (transaction != null) 'transaction': transaction.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amount != null) 'amount': amount!.toJson(),
+        if (identifiers != null) 'identifiers': identifiers!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (transaction != null) 'transaction': transaction!.toJson(),
       };
 }
 
 class SettlementTransactionAmount {
-  SettlementTransactionAmountCommission commission;
+  SettlementTransactionAmountCommission? commission;
 
   /// The description of the event.
   ///
@@ -23831,17 +23081,17 @@ class SettlementTransactionAmount {
   /// - "`unsuccessfulDeliveryUndeliverable`" - "`wrongChargeInStore`" -
   /// "`wrongItem`" - "`returns`" - "`undeliverable`" - "`refundFromMerchant`" -
   /// "`returnLabelShippingFee`" - "`pspFee`"
-  core.String description;
+  core.String? description;
 
   /// The amount that contributes to the line item price.
-  Price transactionAmount;
+  Price? transactionAmount;
 
   /// The type of the amount.
   ///
   /// Acceptable values are: - "`itemPrice`" - "`orderPrice`" - "`refund`" -
   /// "`earlyRefund`" - "`courtesyRefund`" - "`returnRefund`" -
   /// "`returnLabelShippingFeeAmount`"
-  core.String type;
+  core.String? type;
 
   SettlementTransactionAmount();
 
@@ -23862,12 +23112,12 @@ class SettlementTransactionAmount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commission != null) 'commission': commission.toJson(),
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commission != null) 'commission': commission!.toJson(),
+        if (description != null) 'description': description!,
         if (transactionAmount != null)
-          'transactionAmount': transactionAmount.toJson(),
-        if (type != null) 'type': type,
+          'transactionAmount': transactionAmount!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -23891,10 +23141,10 @@ class SettlementTransactionAmountCommission {
   /// "`media`" - "`officeSupplies`" - "`softwareAndVideoGames`" -
   /// "`vehiclePartsAndAccessories`" - "`vehicleTiresAndWheels`" - "`vehicles`"
   /// - "`everythingElse`"
-  core.String category;
+  core.String? category;
 
   /// Rate of the commission in percentage.
-  core.String rate;
+  core.String? rate;
 
   SettlementTransactionAmountCommission();
 
@@ -23907,30 +23157,30 @@ class SettlementTransactionAmountCommission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (category != null) 'category': category,
-        if (rate != null) 'rate': rate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (category != null) 'category': category!,
+        if (rate != null) 'rate': rate!,
       };
 }
 
 class SettlementTransactionIdentifiers {
   /// The identifier of the adjustments, if it is available.
-  core.String adjustmentId;
+  core.String? adjustmentId;
 
   /// The merchant provided order ID.
-  core.String merchantOrderId;
+  core.String? merchantOrderId;
 
   /// The identifier of the item.
-  core.String orderItemId;
+  core.String? orderItemId;
 
   /// The unique ID of the settlement transaction entry.
-  core.String settlementEntryId;
+  core.String? settlementEntryId;
 
   /// The shipment ids for the item.
-  core.List<core.String> shipmentIds;
+  core.List<core.String>? shipmentIds;
 
   /// The Google transaction ID.
-  core.String transactionId;
+  core.String? transactionId;
 
   SettlementTransactionIdentifiers();
 
@@ -23957,19 +23207,19 @@ class SettlementTransactionIdentifiers {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (adjustmentId != null) 'adjustmentId': adjustmentId,
-        if (merchantOrderId != null) 'merchantOrderId': merchantOrderId,
-        if (orderItemId != null) 'orderItemId': orderItemId,
-        if (settlementEntryId != null) 'settlementEntryId': settlementEntryId,
-        if (shipmentIds != null) 'shipmentIds': shipmentIds,
-        if (transactionId != null) 'transactionId': transactionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (adjustmentId != null) 'adjustmentId': adjustmentId!,
+        if (merchantOrderId != null) 'merchantOrderId': merchantOrderId!,
+        if (orderItemId != null) 'orderItemId': orderItemId!,
+        if (settlementEntryId != null) 'settlementEntryId': settlementEntryId!,
+        if (shipmentIds != null) 'shipmentIds': shipmentIds!,
+        if (transactionId != null) 'transactionId': transactionId!,
       };
 }
 
 class SettlementTransactionTransaction {
   /// The time on which the event occurred in ISO 8601 format.
-  core.String postDate;
+  core.String? postDate;
 
   /// The type of the transaction that occurred.
   ///
@@ -23979,7 +23229,7 @@ class SettlementTransactionTransaction {
   /// "`reversalIssueRelatedRefundAndReplacement`" -
   /// "`reversalReturnLabelShippingFeeTransaction`" -
   /// "`lumpSumCorrectionTransaction`"
-  core.String type;
+  core.String? type;
 
   SettlementTransactionTransaction();
 
@@ -23992,9 +23242,9 @@ class SettlementTransactionTransaction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (postDate != null) 'postDate': postDate,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (postDate != null) 'postDate': postDate!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -24002,11 +23252,11 @@ class SettlementreportsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#settlementreportsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token for the retrieval of the next page of returns.
-  core.String nextPageToken;
-  core.List<SettlementReport> resources;
+  core.String? nextPageToken;
+  core.List<SettlementReport>? resources;
 
   SettlementreportsListResponse();
 
@@ -24025,11 +23275,11 @@ class SettlementreportsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -24037,11 +23287,11 @@ class SettlementtransactionsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#settlementtransactionsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token for the retrieval of the next page of returns.
-  core.String nextPageToken;
-  core.List<SettlementTransaction> resources;
+  core.String? nextPageToken;
+  core.List<SettlementTransaction>? resources;
 
   SettlementtransactionsListResponse();
 
@@ -24060,11 +23310,11 @@ class SettlementtransactionsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -24072,12 +23322,12 @@ class ShipmentInvoice {
   /// Invoice summary.
   ///
   /// Required.
-  InvoiceSummary invoiceSummary;
+  InvoiceSummary? invoiceSummary;
 
   /// Invoice details per line item.
   ///
   /// Required.
-  core.List<ShipmentInvoiceLineItemInvoice> lineItemInvoices;
+  core.List<ShipmentInvoiceLineItemInvoice>? lineItemInvoices;
 
   /// ID of the shipment group.
   ///
@@ -24085,7 +23335,7 @@ class ShipmentInvoice {
   /// to group multiple line items that have the same kind of shipping charges.
   ///
   /// Required.
-  core.String shipmentGroupId;
+  core.String? shipmentGroupId;
 
   ShipmentInvoice();
 
@@ -24106,12 +23356,12 @@ class ShipmentInvoice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (invoiceSummary != null) 'invoiceSummary': invoiceSummary.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (invoiceSummary != null) 'invoiceSummary': invoiceSummary!.toJson(),
         if (lineItemInvoices != null)
           'lineItemInvoices':
-              lineItemInvoices.map((value) => value.toJson()).toList(),
-        if (shipmentGroupId != null) 'shipmentGroupId': shipmentGroupId,
+              lineItemInvoices!.map((value) => value.toJson()).toList(),
+        if (shipmentGroupId != null) 'shipmentGroupId': shipmentGroupId!,
       };
 }
 
@@ -24119,13 +23369,13 @@ class ShipmentInvoiceLineItemInvoice {
   /// ID of the line item.
   ///
   /// Either lineItemId or productId must be set.
-  core.String lineItemId;
+  core.String? lineItemId;
 
   /// ID of the product.
   ///
   /// This is the REST ID used in the products service. Either lineItemId or
   /// productId must be set.
-  core.String productId;
+  core.String? productId;
 
   /// The shipment unit ID is assigned by the merchant and defines individual
   /// quantities within a line item.
@@ -24135,12 +23385,12 @@ class ShipmentInvoiceLineItemInvoice {
   /// units).
   ///
   /// Required.
-  core.List<core.String> shipmentUnitIds;
+  core.List<core.String>? shipmentUnitIds;
 
   /// Invoice details for a single unit.
   ///
   /// Required.
-  UnitInvoice unitInvoice;
+  UnitInvoice? unitInvoice;
 
   ShipmentInvoiceLineItemInvoice();
 
@@ -24162,11 +23412,11 @@ class ShipmentInvoiceLineItemInvoice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lineItemId != null) 'lineItemId': lineItemId,
-        if (productId != null) 'productId': productId,
-        if (shipmentUnitIds != null) 'shipmentUnitIds': shipmentUnitIds,
-        if (unitInvoice != null) 'unitInvoice': unitInvoice.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lineItemId != null) 'lineItemId': lineItemId!,
+        if (productId != null) 'productId': productId!,
+        if (shipmentUnitIds != null) 'shipmentUnitIds': shipmentUnitIds!,
+        if (unitInvoice != null) 'unitInvoice': unitInvoice!.toJson(),
       };
 }
 
@@ -24179,10 +23429,10 @@ class ShipmentTrackingInfo {
   /// "`fedexSmartpost`" - "`geodis`" - "`gls`" - "`googleCourier`" - "`gsx`" -
   /// "`jdLogistics`" - "`laPoste`" - "`lasership`" - "`manual`" - "`mpx`" -
   /// "`onTrac`" - "`other`" - "`tnt`" - "`uds`" - "`ups`" - "`usps`"
-  core.String carrier;
+  core.String? carrier;
 
   /// The tracking number for the package.
-  core.String trackingNumber;
+  core.String? trackingNumber;
 
   ShipmentTrackingInfo();
 
@@ -24195,9 +23445,9 @@ class ShipmentTrackingInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (carrier != null) 'carrier': carrier,
-        if (trackingNumber != null) 'trackingNumber': trackingNumber,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (carrier != null) 'carrier': carrier!,
+        if (trackingNumber != null) 'trackingNumber': trackingNumber!,
       };
 }
 
@@ -24209,17 +23459,17 @@ class ShippingSettings {
   /// The ID of the account to which these account shipping settings belong.
   ///
   /// Ignored upon update, always present in get request responses.
-  core.String accountId;
+  core.String? accountId;
 
   /// A list of postal code groups that can be referred to in `services`.
   ///
   /// Optional.
-  core.List<PostalCodeGroup> postalCodeGroups;
+  core.List<PostalCodeGroup>? postalCodeGroups;
 
   /// The target account's list of services.
   ///
   /// Optional.
-  core.List<Service> services;
+  core.List<Service>? services;
 
   ShippingSettings();
 
@@ -24241,19 +23491,19 @@ class ShippingSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (postalCodeGroups != null)
           'postalCodeGroups':
-              postalCodeGroups.map((value) => value.toJson()).toList(),
+              postalCodeGroups!.map((value) => value.toJson()).toList(),
         if (services != null)
-          'services': services.map((value) => value.toJson()).toList(),
+          'services': services!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ShippingsettingsCustomBatchRequest {
   /// The request entries to be processed in the batch.
-  core.List<ShippingsettingsCustomBatchRequestEntry> entries;
+  core.List<ShippingsettingsCustomBatchRequestEntry>? entries;
 
   ShippingsettingsCustomBatchRequest();
 
@@ -24267,32 +23517,32 @@ class ShippingsettingsCustomBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A batch entry encoding a single non-batch shippingsettings request.
 class ShippingsettingsCustomBatchRequestEntry {
   /// The ID of the account for which to get/update account shipping settings.
-  core.String accountId;
+  core.String? accountId;
 
   /// An entry ID, unique within the batch request.
-  core.int batchId;
+  core.int? batchId;
 
   /// The ID of the managing account.
-  core.String merchantId;
+  core.String? merchantId;
 
   /// The method of the batch entry.
   ///
   /// Acceptable values are: - "`get`" - "`update`"
-  core.String method;
+  core.String? method;
 
   /// The account shipping settings to update.
   ///
   /// Only defined if the method is `update`.
-  ShippingSettings shippingSettings;
+  ShippingSettings? shippingSettings;
 
   ShippingsettingsCustomBatchRequestEntry();
 
@@ -24315,24 +23565,24 @@ class ShippingsettingsCustomBatchRequestEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (batchId != null) 'batchId': batchId,
-        if (merchantId != null) 'merchantId': merchantId,
-        if (method != null) 'method': method,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (batchId != null) 'batchId': batchId!,
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (method != null) 'method': method!,
         if (shippingSettings != null)
-          'shippingSettings': shippingSettings.toJson(),
+          'shippingSettings': shippingSettings!.toJson(),
       };
 }
 
 class ShippingsettingsCustomBatchResponse {
   /// The result of the execution of the batch requests.
-  core.List<ShippingsettingsCustomBatchResponseEntry> entries;
+  core.List<ShippingsettingsCustomBatchResponseEntry>? entries;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#shippingsettingsCustomBatchResponse".
-  core.String kind;
+  core.String? kind;
 
   ShippingsettingsCustomBatchResponse();
 
@@ -24349,29 +23599,29 @@ class ShippingsettingsCustomBatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// A batch entry encoding a single non-batch shipping settings response.
 class ShippingsettingsCustomBatchResponseEntry {
   /// The ID of the request entry to which this entry responds.
-  core.int batchId;
+  core.int? batchId;
 
   /// A list of errors defined if, and only if, the request failed.
-  Errors errors;
+  Errors? errors;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
   /// "`content#shippingsettingsCustomBatchResponseEntry`"
-  core.String kind;
+  core.String? kind;
 
   /// The retrieved or updated account shipping settings.
-  ShippingSettings shippingSettings;
+  ShippingSettings? shippingSettings;
 
   ShippingsettingsCustomBatchResponseEntry();
 
@@ -24392,12 +23642,12 @@ class ShippingsettingsCustomBatchResponseEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchId != null) 'batchId': batchId,
-        if (errors != null) 'errors': errors.toJson(),
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchId != null) 'batchId': batchId!,
+        if (errors != null) 'errors': errors!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (shippingSettings != null)
-          'shippingSettings': shippingSettings.toJson(),
+          'shippingSettings': shippingSettings!.toJson(),
       };
 }
 
@@ -24405,13 +23655,13 @@ class ShippingsettingsGetSupportedCarriersResponse {
   /// A list of supported carriers.
   ///
   /// May be empty.
-  core.List<CarriersCarrier> carriers;
+  core.List<CarriersCarrier>? carriers;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
   /// "content#shippingsettingsGetSupportedCarriersResponse".
-  core.String kind;
+  core.String? kind;
 
   ShippingsettingsGetSupportedCarriersResponse();
 
@@ -24427,10 +23677,10 @@ class ShippingsettingsGetSupportedCarriersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (carriers != null)
-          'carriers': carriers.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'carriers': carriers!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -24438,13 +23688,13 @@ class ShippingsettingsGetSupportedHolidaysResponse {
   /// A list of holidays applicable for delivery guarantees.
   ///
   /// May be empty.
-  core.List<HolidaysHoliday> holidays;
+  core.List<HolidaysHoliday>? holidays;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
   /// "content#shippingsettingsGetSupportedHolidaysResponse".
-  core.String kind;
+  core.String? kind;
 
   ShippingsettingsGetSupportedHolidaysResponse();
 
@@ -24460,10 +23710,10 @@ class ShippingsettingsGetSupportedHolidaysResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (holidays != null)
-          'holidays': holidays.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'holidays': holidays!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -24472,12 +23722,12 @@ class ShippingsettingsGetSupportedPickupServicesResponse {
   ///
   /// Value: the fixed string
   /// "content#shippingsettingsGetSupportedPickupServicesResponse".
-  core.String kind;
+  core.String? kind;
 
   /// A list of supported pickup services.
   ///
   /// May be empty.
-  core.List<PickupServicesPickupService> pickupServices;
+  core.List<PickupServicesPickupService>? pickupServices;
 
   ShippingsettingsGetSupportedPickupServicesResponse();
 
@@ -24494,11 +23744,11 @@ class ShippingsettingsGetSupportedPickupServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (pickupServices != null)
           'pickupServices':
-              pickupServices.map((value) => value.toJson()).toList(),
+              pickupServices!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -24506,11 +23756,11 @@ class ShippingsettingsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "content#shippingsettingsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token for the retrieval of the next page of shipping settings.
-  core.String nextPageToken;
-  core.List<ShippingSettings> resources;
+  core.String? nextPageToken;
+  core.List<ShippingSettings>? resources;
 
   ShippingsettingsListResponse();
 
@@ -24529,11 +23779,11 @@ class ShippingsettingsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -24541,22 +23791,22 @@ class Table {
   /// Headers of the table's columns.
   ///
   /// Optional: if not set then the table has only one dimension.
-  Headers columnHeaders;
+  Headers? columnHeaders;
 
   /// Name of the table.
   ///
   /// Required for subtables, ignored for the main table.
-  core.String name;
+  core.String? name;
 
   /// Headers of the table's rows.
   ///
   /// Required.
-  Headers rowHeaders;
+  Headers? rowHeaders;
 
   /// The list of rows that constitute the table.
   ///
   /// Must have the same length as `rowHeaders`. Required.
-  core.List<Row> rows;
+  core.List<Row>? rows;
 
   Table();
 
@@ -24580,54 +23830,54 @@ class Table {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnHeaders != null) 'columnHeaders': columnHeaders.toJson(),
-        if (name != null) 'name': name,
-        if (rowHeaders != null) 'rowHeaders': rowHeaders.toJson(),
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnHeaders != null) 'columnHeaders': columnHeaders!.toJson(),
+        if (name != null) 'name': name!,
+        if (rowHeaders != null) 'rowHeaders': rowHeaders!.toJson(),
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
       };
 }
 
 class TestOrder {
   /// Overrides the predefined delivery details if provided.
-  TestOrderDeliveryDetails deliveryDetails;
+  TestOrderDeliveryDetails? deliveryDetails;
 
   /// Whether the orderinvoices service should support this order.
-  core.bool enableOrderinvoices;
+  core.bool? enableOrderinvoices;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "`content#testOrder`"
-  core.String kind;
+  core.String? kind;
 
   /// Line items that are ordered.
   ///
   /// At least one line item must be provided.
   ///
   /// Required.
-  core.List<TestOrderLineItem> lineItems;
+  core.List<TestOrderLineItem>? lineItems;
 
   /// Restricted.
   ///
   /// Do not use.
-  core.String notificationMode;
+  core.String? notificationMode;
 
   /// Overrides the predefined pickup details if provided.
-  TestOrderPickupDetails pickupDetails;
+  TestOrderPickupDetails? pickupDetails;
 
   /// The billing address.
   ///
   /// Acceptable values are: - "`dwight`" - "`jim`" - "`pam`"
   ///
   /// Required.
-  core.String predefinedBillingAddress;
+  core.String? predefinedBillingAddress;
 
   /// Identifier of one of the predefined delivery addresses for the delivery.
   ///
   /// Acceptable values are: - "`dwight`" - "`jim`" - "`pam`"
   ///
   /// Required.
-  core.String predefinedDeliveryAddress;
+  core.String? predefinedDeliveryAddress;
 
   /// Email address of the customer.
   ///
@@ -24635,16 +23885,16 @@ class TestOrder {
   /// "`pog.jim.halpert@gmail.com`" - "`penpog.pam.beesly@gmail.comding`"
   ///
   /// Required.
-  core.String predefinedEmail;
+  core.String? predefinedEmail;
 
   /// Identifier of one of the predefined pickup details.
   ///
   /// Required for orders containing line items with shipping type `pickup`.
   /// Acceptable values are: - "`dwight`" - "`jim`" - "`pam`"
-  core.String predefinedPickupDetails;
+  core.String? predefinedPickupDetails;
 
   /// Promotions associated with the order.
-  core.List<OrderPromotion> promotions;
+  core.List<OrderPromotion>? promotions;
 
   /// The price of shipping for all items.
   ///
@@ -24653,7 +23903,7 @@ class TestOrder {
   /// Center are applied. Note that shipping is not taxed in certain states.
   ///
   /// Required.
-  Price shippingCost;
+  Price? shippingCost;
 
   /// The requested shipping option.
   ///
@@ -24661,7 +23911,7 @@ class TestOrder {
   /// "`sameDay`" - "`standard`" - "`twoDay`"
   ///
   /// Required.
-  core.String shippingOption;
+  core.String? shippingOption;
 
   TestOrder();
 
@@ -24718,62 +23968,62 @@ class TestOrder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deliveryDetails != null)
-          'deliveryDetails': deliveryDetails.toJson(),
+          'deliveryDetails': deliveryDetails!.toJson(),
         if (enableOrderinvoices != null)
-          'enableOrderinvoices': enableOrderinvoices,
-        if (kind != null) 'kind': kind,
+          'enableOrderinvoices': enableOrderinvoices!,
+        if (kind != null) 'kind': kind!,
         if (lineItems != null)
-          'lineItems': lineItems.map((value) => value.toJson()).toList(),
-        if (notificationMode != null) 'notificationMode': notificationMode,
-        if (pickupDetails != null) 'pickupDetails': pickupDetails.toJson(),
+          'lineItems': lineItems!.map((value) => value.toJson()).toList(),
+        if (notificationMode != null) 'notificationMode': notificationMode!,
+        if (pickupDetails != null) 'pickupDetails': pickupDetails!.toJson(),
         if (predefinedBillingAddress != null)
-          'predefinedBillingAddress': predefinedBillingAddress,
+          'predefinedBillingAddress': predefinedBillingAddress!,
         if (predefinedDeliveryAddress != null)
-          'predefinedDeliveryAddress': predefinedDeliveryAddress,
-        if (predefinedEmail != null) 'predefinedEmail': predefinedEmail,
+          'predefinedDeliveryAddress': predefinedDeliveryAddress!,
+        if (predefinedEmail != null) 'predefinedEmail': predefinedEmail!,
         if (predefinedPickupDetails != null)
-          'predefinedPickupDetails': predefinedPickupDetails,
+          'predefinedPickupDetails': predefinedPickupDetails!,
         if (promotions != null)
-          'promotions': promotions.map((value) => value.toJson()).toList(),
-        if (shippingCost != null) 'shippingCost': shippingCost.toJson(),
-        if (shippingOption != null) 'shippingOption': shippingOption,
+          'promotions': promotions!.map((value) => value.toJson()).toList(),
+        if (shippingCost != null) 'shippingCost': shippingCost!.toJson(),
+        if (shippingOption != null) 'shippingOption': shippingOption!,
       };
 }
 
 class TestOrderAddress {
   /// CLDR country code (e.g. "US").
-  core.String country;
+  core.String? country;
 
   /// Strings representing the lines of the printed label for mailing the order,
   /// for example: John Smith 1600 Amphitheatre Parkway Mountain View, CA, 94043
   /// United States
-  core.List<core.String> fullAddress;
+  core.List<core.String>? fullAddress;
 
   /// Whether the address is a post office box.
-  core.bool isPostOfficeBox;
+  core.bool? isPostOfficeBox;
 
   /// City, town or commune.
   ///
   /// May also include dependent localities or sublocalities (e.g. neighborhoods
   /// or suburbs).
-  core.String locality;
+  core.String? locality;
 
   /// Postal Code or ZIP (e.g. "94043").
-  core.String postalCode;
+  core.String? postalCode;
 
   /// Name of the recipient.
-  core.String recipientName;
+  core.String? recipientName;
 
   /// Top-level administrative subdivision of the country.
   ///
   /// For example, a state like California ("CA") or a province like Quebec
   /// ("QC").
-  core.String region;
+  core.String? region;
 
   /// Street-level part of the address.
-  core.List<core.String> streetAddress;
+  core.List<core.String>? streetAddress;
 
   TestOrderAddress();
 
@@ -24808,27 +24058,27 @@ class TestOrderAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (fullAddress != null) 'fullAddress': fullAddress,
-        if (isPostOfficeBox != null) 'isPostOfficeBox': isPostOfficeBox,
-        if (locality != null) 'locality': locality,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (recipientName != null) 'recipientName': recipientName,
-        if (region != null) 'region': region,
-        if (streetAddress != null) 'streetAddress': streetAddress,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (fullAddress != null) 'fullAddress': fullAddress!,
+        if (isPostOfficeBox != null) 'isPostOfficeBox': isPostOfficeBox!,
+        if (locality != null) 'locality': locality!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (recipientName != null) 'recipientName': recipientName!,
+        if (region != null) 'region': region!,
+        if (streetAddress != null) 'streetAddress': streetAddress!,
       };
 }
 
 class TestOrderDeliveryDetails {
   /// The delivery address
-  TestOrderAddress address;
+  TestOrderAddress? address;
 
   /// Whether the order is scheduled delivery order.
-  core.bool isScheduledDelivery;
+  core.bool? isScheduledDelivery;
 
   /// The phone number of the person receiving the delivery.
-  core.String phoneNumber;
+  core.String? phoneNumber;
 
   TestOrderDeliveryDetails();
 
@@ -24845,11 +24095,11 @@ class TestOrderDeliveryDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!.toJson(),
         if (isScheduledDelivery != null)
-          'isScheduledDelivery': isScheduledDelivery,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+          'isScheduledDelivery': isScheduledDelivery!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
       };
 }
 
@@ -24857,22 +24107,22 @@ class TestOrderLineItem {
   /// Product data from the time of the order placement.
   ///
   /// Required.
-  TestOrderLineItemProduct product;
+  TestOrderLineItemProduct? product;
 
   /// Number of items ordered.
   ///
   /// Required.
-  core.int quantityOrdered;
+  core.int? quantityOrdered;
 
   /// Details of the return policy for the line item.
   ///
   /// Required.
-  OrderLineItemReturnInfo returnInfo;
+  OrderLineItemReturnInfo? returnInfo;
 
   /// Details of the requested shipping for the line item.
   ///
   /// Required.
-  OrderLineItemShippingDetails shippingDetails;
+  OrderLineItemShippingDetails? shippingDetails;
 
   TestOrderLineItem();
 
@@ -24894,12 +24144,12 @@ class TestOrderLineItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (product != null) 'product': product.toJson(),
-        if (quantityOrdered != null) 'quantityOrdered': quantityOrdered,
-        if (returnInfo != null) 'returnInfo': returnInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (product != null) 'product': product!.toJson(),
+        if (quantityOrdered != null) 'quantityOrdered': quantityOrdered!,
+        if (returnInfo != null) 'returnInfo': returnInfo!.toJson(),
         if (shippingDetails != null)
-          'shippingDetails': shippingDetails.toJson(),
+          'shippingDetails': shippingDetails!.toJson(),
       };
 }
 
@@ -24907,51 +24157,51 @@ class TestOrderLineItemProduct {
   /// Brand of the item.
   ///
   /// Required.
-  core.String brand;
+  core.String? brand;
 
   /// Condition or state of the item.
   ///
   /// Acceptable values are: - "`new`"
   ///
   /// Required.
-  core.String condition;
+  core.String? condition;
 
   /// The two-letter ISO 639-1 language code for the item.
   ///
   /// Acceptable values are: - "`en`" - "`fr`"
   ///
   /// Required.
-  core.String contentLanguage;
+  core.String? contentLanguage;
 
   /// Fees for the item.
   ///
   /// Optional.
-  core.List<OrderLineItemProductFee> fees;
+  core.List<OrderLineItemProductFee>? fees;
 
   /// Global Trade Item Number (GTIN) of the item.
   ///
   /// Optional.
-  core.String gtin;
+  core.String? gtin;
 
   /// URL of an image of the item.
   ///
   /// Required.
-  core.String imageLink;
+  core.String? imageLink;
 
   /// Shared identifier for all variants of the same product.
   ///
   /// Optional.
-  core.String itemGroupId;
+  core.String? itemGroupId;
 
   /// Manufacturer Part Number (MPN) of the item.
   ///
   /// Optional.
-  core.String mpn;
+  core.String? mpn;
 
   /// An identifier of the item.
   ///
   /// Required.
-  core.String offerId;
+  core.String? offerId;
 
   /// The price for the product.
   ///
@@ -24960,22 +24210,22 @@ class TestOrderLineItemProduct {
   /// applied.
   ///
   /// Required.
-  Price price;
+  Price? price;
 
   /// The CLDR territory // code of the target country of the product.
   ///
   /// Required.
-  core.String targetCountry;
+  core.String? targetCountry;
 
   /// The title of the product.
   ///
   /// Required.
-  core.String title;
+  core.String? title;
 
   /// Variant attributes for the item.
   ///
   /// Optional.
-  core.List<OrderLineItemProductVariantAttribute> variantAttributes;
+  core.List<OrderLineItemProductVariantAttribute>? variantAttributes;
 
   TestOrderLineItemProduct();
 
@@ -25030,22 +24280,22 @@ class TestOrderLineItemProduct {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (brand != null) 'brand': brand,
-        if (condition != null) 'condition': condition,
-        if (contentLanguage != null) 'contentLanguage': contentLanguage,
-        if (fees != null) 'fees': fees.map((value) => value.toJson()).toList(),
-        if (gtin != null) 'gtin': gtin,
-        if (imageLink != null) 'imageLink': imageLink,
-        if (itemGroupId != null) 'itemGroupId': itemGroupId,
-        if (mpn != null) 'mpn': mpn,
-        if (offerId != null) 'offerId': offerId,
-        if (price != null) 'price': price.toJson(),
-        if (targetCountry != null) 'targetCountry': targetCountry,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (brand != null) 'brand': brand!,
+        if (condition != null) 'condition': condition!,
+        if (contentLanguage != null) 'contentLanguage': contentLanguage!,
+        if (fees != null) 'fees': fees!.map((value) => value.toJson()).toList(),
+        if (gtin != null) 'gtin': gtin!,
+        if (imageLink != null) 'imageLink': imageLink!,
+        if (itemGroupId != null) 'itemGroupId': itemGroupId!,
+        if (mpn != null) 'mpn': mpn!,
+        if (offerId != null) 'offerId': offerId!,
+        if (price != null) 'price': price!.toJson(),
+        if (targetCountry != null) 'targetCountry': targetCountry!,
+        if (title != null) 'title': title!,
         if (variantAttributes != null)
           'variantAttributes':
-              variantAttributes.map((value) => value.toJson()).toList(),
+              variantAttributes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -25053,22 +24303,22 @@ class TestOrderPickupDetails {
   /// Code of the location defined by provider or merchant.
   ///
   /// Required.
-  core.String locationCode;
+  core.String? locationCode;
 
   /// Pickup location address.
   ///
   /// Required.
-  TestOrderAddress pickupLocationAddress;
+  TestOrderAddress? pickupLocationAddress;
 
   /// Pickup location type.
   ///
   /// Acceptable values are: - "`locker`" - "`store`" - "`curbside`"
-  core.String pickupLocationType;
+  core.String? pickupLocationType;
 
   /// all pickup persons set by users.
   ///
   /// Required.
-  core.List<TestOrderPickupDetailsPickupPerson> pickupPersons;
+  core.List<TestOrderPickupDetailsPickupPerson>? pickupPersons;
 
   TestOrderPickupDetails();
 
@@ -25093,15 +24343,15 @@ class TestOrderPickupDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (locationCode != null) 'locationCode': locationCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (locationCode != null) 'locationCode': locationCode!,
         if (pickupLocationAddress != null)
-          'pickupLocationAddress': pickupLocationAddress.toJson(),
+          'pickupLocationAddress': pickupLocationAddress!.toJson(),
         if (pickupLocationType != null)
-          'pickupLocationType': pickupLocationType,
+          'pickupLocationType': pickupLocationType!,
         if (pickupPersons != null)
           'pickupPersons':
-              pickupPersons.map((value) => value.toJson()).toList(),
+              pickupPersons!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -25109,12 +24359,12 @@ class TestOrderPickupDetailsPickupPerson {
   /// Full name of the pickup person.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The phone number of the person picking up the items.
   ///
   /// Required.
-  core.String phoneNumber;
+  core.String? phoneNumber;
 
   TestOrderPickupDetailsPickupPerson();
 
@@ -25127,9 +24377,9 @@ class TestOrderPickupDetailsPickupPerson {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
       };
 }
 
@@ -25137,12 +24387,12 @@ class TestOrderPickupDetailsPickupPerson {
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).
 class TimeZone {
   /// IANA Time Zone Database time zone, e.g. "America/New_York".
-  core.String id;
+  core.String? id;
 
   /// IANA Time Zone Database version number, e.g. "2019a".
   ///
   /// Optional.
-  core.String version;
+  core.String? version;
 
   TimeZone();
 
@@ -25155,9 +24405,9 @@ class TimeZone {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -25167,14 +24417,14 @@ class TransitTable {
   /// The last value can be `"all other locations"`. Example: `["zone 1", "zone
   /// 2", "all other locations"]`. The referred postal code groups must match
   /// the delivery country of the service.
-  core.List<core.String> postalCodeGroupNames;
-  core.List<TransitTableTransitTimeRow> rows;
+  core.List<core.String>? postalCodeGroupNames;
+  core.List<TransitTableTransitTimeRow>? rows;
 
   /// A list of transit time labels.
   ///
   /// The last value can be `"all other labels"`. Example: `["food",
   /// "electronics", "all other labels"]`.
-  core.List<core.String> transitTimeLabels;
+  core.List<core.String>? transitTimeLabels;
 
   TransitTable();
 
@@ -25198,16 +24448,16 @@ class TransitTable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (postalCodeGroupNames != null)
-          'postalCodeGroupNames': postalCodeGroupNames,
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
-        if (transitTimeLabels != null) 'transitTimeLabels': transitTimeLabels,
+          'postalCodeGroupNames': postalCodeGroupNames!,
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (transitTimeLabels != null) 'transitTimeLabels': transitTimeLabels!,
       };
 }
 
 class TransitTableTransitTimeRow {
-  core.List<TransitTableTransitTimeRowTransitTimeValue> values;
+  core.List<TransitTableTransitTimeRowTransitTimeValue>? values;
 
   TransitTableTransitTimeRow();
 
@@ -25221,20 +24471,20 @@ class TransitTableTransitTimeRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (values != null)
-          'values': values.map((value) => value.toJson()).toList(),
+          'values': values!.map((value) => value.toJson()).toList(),
       };
 }
 
 class TransitTableTransitTimeRowTransitTimeValue {
   /// Must be greater than or equal to `minTransitTimeInDays`.
-  core.int maxTransitTimeInDays;
+  core.int? maxTransitTimeInDays;
 
   /// Transit time range (min-max) in business days.
   ///
   /// 0 means same day delivery, 1 means next day delivery.
-  core.int minTransitTimeInDays;
+  core.int? minTransitTimeInDays;
 
   TransitTableTransitTimeRowTransitTimeValue();
 
@@ -25247,26 +24497,26 @@ class TransitTableTransitTimeRowTransitTimeValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (maxTransitTimeInDays != null)
-          'maxTransitTimeInDays': maxTransitTimeInDays,
+          'maxTransitTimeInDays': maxTransitTimeInDays!,
         if (minTransitTimeInDays != null)
-          'minTransitTimeInDays': minTransitTimeInDays,
+          'minTransitTimeInDays': minTransitTimeInDays!,
       };
 }
 
 class UnitInvoice {
   /// Additional charges for a unit, e.g. shipping costs.
-  core.List<UnitInvoiceAdditionalCharge> additionalCharges;
+  core.List<UnitInvoiceAdditionalCharge>? additionalCharges;
 
   /// Pre-tax or post-tax price of the unit depending on the locality of the
   /// order.
   ///
   /// Required.
-  Price unitPrice;
+  Price? unitPrice;
 
   /// Tax amounts to apply to the unit price.
-  core.List<UnitInvoiceTaxLine> unitPriceTaxes;
+  core.List<UnitInvoiceTaxLine>? unitPriceTaxes;
 
   UnitInvoice();
 
@@ -25290,14 +24540,14 @@ class UnitInvoice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additionalCharges != null)
           'additionalCharges':
-              additionalCharges.map((value) => value.toJson()).toList(),
-        if (unitPrice != null) 'unitPrice': unitPrice.toJson(),
+              additionalCharges!.map((value) => value.toJson()).toList(),
+        if (unitPrice != null) 'unitPrice': unitPrice!.toJson(),
         if (unitPriceTaxes != null)
           'unitPriceTaxes':
-              unitPriceTaxes.map((value) => value.toJson()).toList(),
+              unitPriceTaxes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -25305,14 +24555,14 @@ class UnitInvoiceAdditionalCharge {
   /// Amount of the additional charge.
   ///
   /// Required.
-  Amount additionalChargeAmount;
+  Amount? additionalChargeAmount;
 
   /// Type of the additional charge.
   ///
   /// Acceptable values are: - "`shipping`"
   ///
   /// Required.
-  core.String type;
+  core.String? type;
 
   UnitInvoiceAdditionalCharge();
 
@@ -25326,10 +24576,10 @@ class UnitInvoiceAdditionalCharge {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additionalChargeAmount != null)
-          'additionalChargeAmount': additionalChargeAmount.toJson(),
-        if (type != null) 'type': type,
+          'additionalChargeAmount': additionalChargeAmount!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -25337,19 +24587,19 @@ class UnitInvoiceTaxLine {
   /// Tax amount for the tax type.
   ///
   /// Required.
-  Price taxAmount;
+  Price? taxAmount;
 
   /// Optional name of the tax type.
   ///
   /// This should only be provided if `taxType` is `otherFeeTax`.
-  core.String taxName;
+  core.String? taxName;
 
   /// Type of the tax.
   ///
   /// Acceptable values are: - "`otherFee`" - "`otherFeeTax`" - "`sales`"
   ///
   /// Required.
-  core.String taxType;
+  core.String? taxType;
 
   UnitInvoiceTaxLine();
 
@@ -25366,10 +24616,10 @@ class UnitInvoiceTaxLine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (taxAmount != null) 'taxAmount': taxAmount.toJson(),
-        if (taxName != null) 'taxName': taxName,
-        if (taxType != null) 'taxType': taxType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (taxAmount != null) 'taxAmount': taxAmount!.toJson(),
+        if (taxName != null) 'taxName': taxName!,
+        if (taxType != null) 'taxType': taxType!,
       };
 }
 
@@ -25382,29 +24632,29 @@ class Value {
   /// rate group.
   ///
   /// Can only be set if all other fields are not set.
-  core.String carrierRateName;
+  core.String? carrierRateName;
 
   /// A flat rate.
   ///
   /// Can only be set if all other fields are not set.
-  Price flatRate;
+  Price? flatRate;
 
   /// If true, then the product can't ship.
   ///
   /// Must be true when set, can only be set if all other fields are not set.
-  core.bool noShipping;
+  core.bool? noShipping;
 
   /// A percentage of the price represented as a number in decimal notation
   /// (e.g., `"5.4"`).
   ///
   /// Can only be set if all other fields are not set.
-  core.String pricePercentage;
+  core.String? pricePercentage;
 
   /// The name of a subtable.
   ///
   /// Can only be set in table cells (i.e., not for single values), and only if
   /// all other fields are not set.
-  core.String subtableName;
+  core.String? subtableName;
 
   Value();
 
@@ -25427,12 +24677,12 @@ class Value {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (carrierRateName != null) 'carrierRateName': carrierRateName,
-        if (flatRate != null) 'flatRate': flatRate.toJson(),
-        if (noShipping != null) 'noShipping': noShipping,
-        if (pricePercentage != null) 'pricePercentage': pricePercentage,
-        if (subtableName != null) 'subtableName': subtableName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (carrierRateName != null) 'carrierRateName': carrierRateName!,
+        if (flatRate != null) 'flatRate': flatRate!.toJson(),
+        if (noShipping != null) 'noShipping': noShipping!,
+        if (pricePercentage != null) 'pricePercentage': pricePercentage!,
+        if (subtableName != null) 'subtableName': subtableName!,
       };
 }
 
@@ -25442,12 +24692,12 @@ class Weight {
   /// Acceptable values are: - "`kg`" - "`lb`"
   ///
   /// Required.
-  core.String unit;
+  core.String? unit;
 
   /// The weight represented as a number.
   ///
   /// Required.
-  core.String value;
+  core.String? value;
 
   Weight();
 
@@ -25460,8 +24710,8 @@ class Weight {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (unit != null) 'unit': unit,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (unit != null) 'unit': unit!,
+        if (value != null) 'value': value!,
       };
 }

@@ -88,11 +88,8 @@ class ApplicationsResource {
   /// this method will complete with the same error.
   async.Future<Application> get(
     core.String applicationId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (applicationId == null) {
-      throw core.ArgumentError('Parameter applicationId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -131,10 +128,10 @@ class ApplicationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ApplicationsListResponse> list({
-    core.String customerId,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? customerId,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
@@ -179,11 +176,8 @@ class TransfersResource {
   /// this method will complete with the same error.
   async.Future<DataTransfer> get(
     core.String dataTransferId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (dataTransferId == null) {
-      throw core.ArgumentError('Parameter dataTransferId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -218,10 +212,9 @@ class TransfersResource {
   /// this method will complete with the same error.
   async.Future<DataTransfer> insert(
     DataTransfer request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -267,13 +260,13 @@ class TransfersResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DataTransfersListResponse> list({
-    core.String customerId,
-    core.int maxResults,
-    core.String newOwnerUserId,
-    core.String oldOwnerUserId,
-    core.String pageToken,
-    core.String status,
-    core.String $fields,
+    core.String? customerId,
+    core.int? maxResults,
+    core.String? newOwnerUserId,
+    core.String? oldOwnerUserId,
+    core.String? pageToken,
+    core.String? status,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
@@ -301,22 +294,22 @@ class TransfersResource {
 /// support transferring ownership of user data.
 class Application {
   /// Etag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The application's ID.
-  core.String id;
+  core.String? id;
 
   /// Identifies the resource as a DataTransfer Application Resource.
-  core.String kind;
+  core.String? kind;
 
   /// The application's name.
-  core.String name;
+  core.String? name;
 
   /// The list of all possible transfer parameters for this application.
   ///
   /// These parameters can be used to select the data of the user in this
   /// application to be transferred.
-  core.List<ApplicationTransferParam> transferParams;
+  core.List<ApplicationTransferParam>? transferParams;
 
   Application();
 
@@ -342,32 +335,32 @@ class Application {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
         if (transferParams != null)
           'transferParams':
-              transferParams.map((value) => value.toJson()).toList(),
+              transferParams!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Template to map fields of ApplicationDataTransfer resource.
 class ApplicationDataTransfer {
   /// The application's ID.
-  core.String applicationId;
+  core.String? applicationId;
 
   /// The transfer parameters for the application.
   ///
   /// These parameters are used to select the data which will get transferred in
   /// context of this application.
-  core.List<ApplicationTransferParam> applicationTransferParams;
+  core.List<ApplicationTransferParam>? applicationTransferParams;
 
   /// Current status of transfer for this application.
   ///
   /// (Read-only)
-  core.String applicationTransferStatus;
+  core.String? applicationTransferStatus;
 
   ApplicationDataTransfer();
 
@@ -389,13 +382,14 @@ class ApplicationDataTransfer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (applicationId != null) 'applicationId': applicationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (applicationId != null) 'applicationId': applicationId!,
         if (applicationTransferParams != null)
-          'applicationTransferParams':
-              applicationTransferParams.map((value) => value.toJson()).toList(),
+          'applicationTransferParams': applicationTransferParams!
+              .map((value) => value.toJson())
+              .toList(),
         if (applicationTransferStatus != null)
-          'applicationTransferStatus': applicationTransferStatus,
+          'applicationTransferStatus': applicationTransferStatus!,
       };
 }
 
@@ -404,12 +398,12 @@ class ApplicationTransferParam {
   /// The type of the transfer parameter.
   ///
   /// eg: 'PRIVACY_LEVEL'
-  core.String key;
+  core.String? key;
 
   /// The value of the corresponding transfer parameter.
   ///
   /// eg: 'PRIVATE' or 'SHARED'
-  core.List<core.String> value;
+  core.List<core.String>? value;
 
   ApplicationTransferParam();
 
@@ -424,9 +418,9 @@ class ApplicationTransferParam {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -434,16 +428,16 @@ class ApplicationTransferParam {
 class ApplicationsListResponse {
   /// List of applications that support data transfer and are also installed for
   /// the customer.
-  core.List<Application> applications;
+  core.List<Application>? applications;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Identifies the resource as a collection of Applications.
-  core.String kind;
+  core.String? kind;
 
   /// Continuation token which will be used to specify next page in list API.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ApplicationsListResponse();
 
@@ -465,12 +459,12 @@ class ApplicationsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (applications != null)
-          'applications': applications.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'applications': applications!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -483,28 +477,28 @@ class DataTransfer {
   /// transfer resource. Note that this list is also used to specify the
   /// applications for which data transfer has to be done at the time of the
   /// transfer resource creation.
-  core.List<ApplicationDataTransfer> applicationDataTransfers;
+  core.List<ApplicationDataTransfer>? applicationDataTransfers;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The transfer's ID (Read-only).
-  core.String id;
+  core.String? id;
 
   /// Identifies the resource as a DataTransfer request.
-  core.String kind;
+  core.String? kind;
 
   /// ID of the user to whom the data is being transferred.
-  core.String newOwnerUserId;
+  core.String? newOwnerUserId;
 
   /// ID of the user whose data is being transferred.
-  core.String oldOwnerUserId;
+  core.String? oldOwnerUserId;
 
   /// Overall transfer status (Read-only).
-  core.String overallTransferStatusCode;
+  core.String? overallTransferStatusCode;
 
   /// The time at which the data transfer was requested (Read-only).
-  core.DateTime requestTime;
+  core.DateTime? requestTime;
 
   DataTransfer();
 
@@ -541,34 +535,35 @@ class DataTransfer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (applicationDataTransfers != null)
           'applicationDataTransfers':
-              applicationDataTransfers.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (newOwnerUserId != null) 'newOwnerUserId': newOwnerUserId,
-        if (oldOwnerUserId != null) 'oldOwnerUserId': oldOwnerUserId,
+              applicationDataTransfers!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (newOwnerUserId != null) 'newOwnerUserId': newOwnerUserId!,
+        if (oldOwnerUserId != null) 'oldOwnerUserId': oldOwnerUserId!,
         if (overallTransferStatusCode != null)
-          'overallTransferStatusCode': overallTransferStatusCode,
-        if (requestTime != null) 'requestTime': (requestTime).toIso8601String(),
+          'overallTransferStatusCode': overallTransferStatusCode!,
+        if (requestTime != null)
+          'requestTime': (requestTime!).toIso8601String(),
       };
 }
 
 /// Template for a collection of DataTransfer resources.
 class DataTransfersListResponse {
   /// List of data transfer requests.
-  core.List<DataTransfer> dataTransfers;
+  core.List<DataTransfer>? dataTransfers;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Identifies the resource as a collection of data transfer requests.
-  core.String kind;
+  core.String? kind;
 
   /// Continuation token which will be used to specify next page in list API.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   DataTransfersListResponse();
 
@@ -590,12 +585,12 @@ class DataTransfersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataTransfers != null)
           'dataTransfers':
-              dataTransfers.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              dataTransfers!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

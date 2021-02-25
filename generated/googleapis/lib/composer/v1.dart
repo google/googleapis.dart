@@ -109,13 +109,9 @@ class ProjectsLocationsEnvironmentsResource {
   async.Future<Operation> create(
     Environment request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -154,11 +150,8 @@ class ProjectsLocationsEnvironmentsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -194,11 +187,8 @@ class ProjectsLocationsEnvironmentsResource {
   /// this method will complete with the same error.
   async.Future<Environment> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -239,13 +229,10 @@ class ProjectsLocationsEnvironmentsResource {
   /// this method will complete with the same error.
   async.Future<ListEnvironmentsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -357,14 +344,10 @@ class ProjectsLocationsEnvironmentsResource {
   async.Future<Operation> patch(
     Environment request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -416,14 +399,11 @@ class ProjectsLocationsImageVersionsResource {
   /// this method will complete with the same error.
   async.Future<ListImageVersionsResponse> list(
     core.String parent, {
-    core.bool includePastReleases,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.bool? includePastReleases,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (includePastReleases != null)
         'includePastReleases': ['${includePastReleases}'],
@@ -476,11 +456,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -518,11 +495,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -571,14 +545,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -606,7 +577,7 @@ class AllowedIpRange {
   /// It must contain at most 300 characters.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// IP address or range, defined using CIDR notation, of requests that this
   /// rule applies to.
@@ -616,7 +587,7 @@ class AllowedIpRange {
   /// properly truncated. For example, `1.2.3.4/24` should be truncated to
   /// `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to
   /// `2001:db8::/32`.
-  core.String value;
+  core.String? value;
 
   AllowedIpRange();
 
@@ -629,9 +600,9 @@ class AllowedIpRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -644,7 +615,7 @@ class DatabaseConfig {
   /// or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
   ///
   /// Optional.
-  core.String machineType;
+  core.String? machineType;
 
   DatabaseConfig();
 
@@ -654,8 +625,8 @@ class DatabaseConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (machineType != null) 'machineType': machineType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (machineType != null) 'machineType': machineType!,
       };
 }
 
@@ -673,17 +644,17 @@ class Date {
   ///
   /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
   /// year by itself or a year and month where the day isn't significant.
-  core.int day;
+  core.int? day;
 
   /// Month of a year.
   ///
   /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int month;
+  core.int? month;
 
   /// Year of the date.
   ///
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int year;
+  core.int? year;
 
   Date();
 
@@ -699,10 +670,10 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (month != null) 'month': month,
-        if (year != null) 'year': year,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (month != null) 'month': month!,
+        if (year != null) 'year': year!,
       };
 }
 
@@ -720,7 +691,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The encryption options for the Cloud Composer environment and its
@@ -732,7 +703,7 @@ class EncryptionConfig {
   /// Cannot be updated. If not specified, Google-managed key will be used.
   ///
   /// Optional.
-  core.String kmsKeyName;
+  core.String? kmsKeyName;
 
   EncryptionConfig();
 
@@ -742,20 +713,20 @@ class EncryptionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
       };
 }
 
 /// An environment for running orchestration tasks.
 class Environment {
   /// Configuration parameters for this environment.
-  EnvironmentConfig config;
+  EnvironmentConfig? config;
 
   /// The time at which this environment was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// User-defined labels for this environment.
   ///
@@ -766,13 +737,13 @@ class Environment {
   /// additionally constrained to be <= 128 bytes in size.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The resource name of the environment, in the form:
   /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
   /// EnvironmentId must start with a lowercase letter followed by up to 63
   /// lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
-  core.String name;
+  core.String? name;
 
   /// The current state of the environment.
   /// Possible string values are:
@@ -784,19 +755,19 @@ class Environment {
   /// cannot receive additional update requests or be deleted at this time.
   /// - "DELETING" : The environment is undergoing deletion. It cannot be used.
   /// - "ERROR" : The environment has encountered an error and cannot be used.
-  core.String state;
+  core.String? state;
 
   /// The time at which this environment was last modified.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// The UUID (Universally Unique IDentifier) associated with this environment.
   ///
   /// This value is generated when the environment is created.
   ///
   /// Output only.
-  core.String uuid;
+  core.String? uuid;
 
   Environment();
 
@@ -831,14 +802,14 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (config != null) 'config': config.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
-        if (updateTime != null) 'updateTime': updateTime,
-        if (uuid != null) 'uuid': uuid,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (config != null) 'config': config!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (uuid != null) 'uuid': uuid!,
       };
 }
 
@@ -849,7 +820,7 @@ class EnvironmentConfig {
   /// interface\](/composer/docs/how-to/accessing/airflow-web-interface)).
   ///
   /// Output only.
-  core.String airflowUri;
+  core.String? airflowUri;
 
   /// The Cloud Storage prefix of the DAGs for this environment.
   ///
@@ -859,13 +830,13 @@ class EnvironmentConfig {
   /// given prefix.
   ///
   /// Output only.
-  core.String dagGcsPrefix;
+  core.String? dagGcsPrefix;
 
   /// The configuration settings for Cloud SQL instance used internally by
   /// Apache Airflow software.
   ///
   /// Optional.
-  DatabaseConfig databaseConfig;
+  DatabaseConfig? databaseConfig;
 
   /// The encryption options for the Cloud Composer environment and its
   /// dependencies.
@@ -873,37 +844,37 @@ class EnvironmentConfig {
   /// Cannot be updated.
   ///
   /// Optional.
-  EncryptionConfig encryptionConfig;
+  EncryptionConfig? encryptionConfig;
 
   /// The Kubernetes Engine cluster used to run this environment.
   ///
   /// Output only.
-  core.String gkeCluster;
+  core.String? gkeCluster;
 
   /// The configuration used for the Kubernetes Engine cluster.
-  NodeConfig nodeConfig;
+  NodeConfig? nodeConfig;
 
   /// The number of nodes in the Kubernetes Engine cluster that will be used to
   /// run this environment.
-  core.int nodeCount;
+  core.int? nodeCount;
 
   /// The configuration used for the Private IP Cloud Composer environment.
-  PrivateEnvironmentConfig privateEnvironmentConfig;
+  PrivateEnvironmentConfig? privateEnvironmentConfig;
 
   /// The configuration settings for software inside the environment.
-  SoftwareConfig softwareConfig;
+  SoftwareConfig? softwareConfig;
 
   /// The configuration settings for the Airflow web server App Engine instance.
   ///
   /// Optional.
-  WebServerConfig webServerConfig;
+  WebServerConfig? webServerConfig;
 
   /// The network-level access control policy for the Airflow web server.
   ///
   /// If unspecified, no network-level access restrictions will be applied.
   ///
   /// Optional.
-  WebServerNetworkAccessControl webServerNetworkAccessControl;
+  WebServerNetworkAccessControl? webServerNetworkAccessControl;
 
   EnvironmentConfig();
 
@@ -952,23 +923,23 @@ class EnvironmentConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (airflowUri != null) 'airflowUri': airflowUri,
-        if (dagGcsPrefix != null) 'dagGcsPrefix': dagGcsPrefix,
-        if (databaseConfig != null) 'databaseConfig': databaseConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (airflowUri != null) 'airflowUri': airflowUri!,
+        if (dagGcsPrefix != null) 'dagGcsPrefix': dagGcsPrefix!,
+        if (databaseConfig != null) 'databaseConfig': databaseConfig!.toJson(),
         if (encryptionConfig != null)
-          'encryptionConfig': encryptionConfig.toJson(),
-        if (gkeCluster != null) 'gkeCluster': gkeCluster,
-        if (nodeConfig != null) 'nodeConfig': nodeConfig.toJson(),
-        if (nodeCount != null) 'nodeCount': nodeCount,
+          'encryptionConfig': encryptionConfig!.toJson(),
+        if (gkeCluster != null) 'gkeCluster': gkeCluster!,
+        if (nodeConfig != null) 'nodeConfig': nodeConfig!.toJson(),
+        if (nodeCount != null) 'nodeCount': nodeCount!,
         if (privateEnvironmentConfig != null)
-          'privateEnvironmentConfig': privateEnvironmentConfig.toJson(),
-        if (softwareConfig != null) 'softwareConfig': softwareConfig.toJson(),
+          'privateEnvironmentConfig': privateEnvironmentConfig!.toJson(),
+        if (softwareConfig != null) 'softwareConfig': softwareConfig!.toJson(),
         if (webServerConfig != null)
-          'webServerConfig': webServerConfig.toJson(),
+          'webServerConfig': webServerConfig!.toJson(),
         if (webServerNetworkAccessControl != null)
           'webServerNetworkAccessControl':
-              webServerNetworkAccessControl.toJson(),
+              webServerNetworkAccessControl!.toJson(),
       };
 }
 
@@ -987,7 +958,7 @@ class IPAllocationPolicy {
   /// to use.
   ///
   /// Optional.
-  core.String clusterIpv4CidrBlock;
+  core.String? clusterIpv4CidrBlock;
 
   /// The name of the GKE cluster's secondary range used to allocate IP
   /// addresses to pods.
@@ -995,7 +966,7 @@ class IPAllocationPolicy {
   /// This field is applicable only when `use_ip_aliases` is true.
   ///
   /// Optional.
-  core.String clusterSecondaryRangeName;
+  core.String? clusterSecondaryRangeName;
 
   /// The IP address range of the services IP addresses in this GKE cluster.
   ///
@@ -1008,7 +979,7 @@ class IPAllocationPolicy {
   /// to use.
   ///
   /// Optional.
-  core.String servicesIpv4CidrBlock;
+  core.String? servicesIpv4CidrBlock;
 
   /// The name of the services' secondary range used to allocate IP addresses to
   /// the GKE cluster.
@@ -1016,14 +987,14 @@ class IPAllocationPolicy {
   /// This field is applicable only when `use_ip_aliases` is true.
   ///
   /// Optional.
-  core.String servicesSecondaryRangeName;
+  core.String? servicesSecondaryRangeName;
 
   /// Whether or not to enable Alias IPs in the GKE cluster.
   ///
   /// If `true`, a VPC-native cluster is created.
   ///
   /// Optional.
-  core.bool useIpAliases;
+  core.bool? useIpAliases;
 
   IPAllocationPolicy();
 
@@ -1047,41 +1018,41 @@ class IPAllocationPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clusterIpv4CidrBlock != null)
-          'clusterIpv4CidrBlock': clusterIpv4CidrBlock,
+          'clusterIpv4CidrBlock': clusterIpv4CidrBlock!,
         if (clusterSecondaryRangeName != null)
-          'clusterSecondaryRangeName': clusterSecondaryRangeName,
+          'clusterSecondaryRangeName': clusterSecondaryRangeName!,
         if (servicesIpv4CidrBlock != null)
-          'servicesIpv4CidrBlock': servicesIpv4CidrBlock,
+          'servicesIpv4CidrBlock': servicesIpv4CidrBlock!,
         if (servicesSecondaryRangeName != null)
-          'servicesSecondaryRangeName': servicesSecondaryRangeName,
-        if (useIpAliases != null) 'useIpAliases': useIpAliases,
+          'servicesSecondaryRangeName': servicesSecondaryRangeName!,
+        if (useIpAliases != null) 'useIpAliases': useIpAliases!,
       };
 }
 
 /// ImageVersion information
 class ImageVersion {
   /// Whether it is impossible to create an environment with the image version.
-  core.bool creationDisabled;
+  core.bool? creationDisabled;
 
   /// The string identifier of the ImageVersion, in the form:
   /// "composer-x.y.z-airflow-a.b(.c)"
-  core.String imageVersionId;
+  core.String? imageVersionId;
 
   /// Whether this is the default ImageVersion used by Composer during
   /// environment creation if no input ImageVersion is specified.
-  core.bool isDefault;
+  core.bool? isDefault;
 
   /// The date of the version release.
-  Date releaseDate;
+  Date? releaseDate;
 
   /// supported python versions
-  core.List<core.String> supportedPythonVersions;
+  core.List<core.String>? supportedPythonVersions;
 
   /// Whether it is impossible to upgrade an environment running with the image
   /// version.
-  core.bool upgradeDisabled;
+  core.bool? upgradeDisabled;
 
   ImageVersion();
 
@@ -1109,24 +1080,24 @@ class ImageVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationDisabled != null) 'creationDisabled': creationDisabled,
-        if (imageVersionId != null) 'imageVersionId': imageVersionId,
-        if (isDefault != null) 'isDefault': isDefault,
-        if (releaseDate != null) 'releaseDate': releaseDate.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationDisabled != null) 'creationDisabled': creationDisabled!,
+        if (imageVersionId != null) 'imageVersionId': imageVersionId!,
+        if (isDefault != null) 'isDefault': isDefault!,
+        if (releaseDate != null) 'releaseDate': releaseDate!.toJson(),
         if (supportedPythonVersions != null)
-          'supportedPythonVersions': supportedPythonVersions,
-        if (upgradeDisabled != null) 'upgradeDisabled': upgradeDisabled,
+          'supportedPythonVersions': supportedPythonVersions!,
+        if (upgradeDisabled != null) 'upgradeDisabled': upgradeDisabled!,
       };
 }
 
 /// The environments in a project and location.
 class ListEnvironmentsResponse {
   /// The list of environments returned by a ListEnvironmentsRequest.
-  core.List<Environment> environments;
+  core.List<Environment>? environments;
 
   /// The page token used to query for the next page if one exists.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListEnvironmentsResponse();
 
@@ -1142,20 +1113,20 @@ class ListEnvironmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (environments != null)
-          'environments': environments.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'environments': environments!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The ImageVersions in a project and location.
 class ListImageVersionsResponse {
   /// The list of supported ImageVersions in a location.
-  core.List<ImageVersion> imageVersions;
+  core.List<ImageVersion>? imageVersions;
 
   /// The page token used to query for the next page if one exists.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListImageVersionsResponse();
 
@@ -1171,21 +1142,21 @@ class ListImageVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (imageVersions != null)
           'imageVersions':
-              imageVersions.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              imageVersions!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -1201,10 +1172,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1217,13 +1188,13 @@ class NodeConfig {
   /// updated.
   ///
   /// Optional.
-  core.int diskSizeGb;
+  core.int? diskSizeGb;
 
   /// The configuration for controlling how IPs are allocated in the GKE
   /// cluster.
   ///
   /// Optional.
-  IPAllocationPolicy ipAllocationPolicy;
+  IPAllocationPolicy? ipAllocationPolicy;
 
   /// The Compute Engine \[zone\](/compute/docs/regions-zones) in which to
   /// deploy the VMs used to run the Apache Airflow software, specified as a
@@ -1241,7 +1212,7 @@ class NodeConfig {
   /// field.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// The Compute Engine \[machine type\](/compute/docs/machine-types) used for
   /// cluster instances, specified as a \[relative resource
@@ -1262,7 +1233,7 @@ class NodeConfig {
   /// "n1-standard-1".
   ///
   /// Optional.
-  core.String machineType;
+  core.String? machineType;
 
   /// The Compute Engine network to be used for machine communications,
   /// specified as a \[relative resource
@@ -1277,7 +1248,7 @@ class NodeConfig {
   /// `nodeConfig.subnetwork`.
   ///
   /// Optional.
-  core.String network;
+  core.String? network;
 
   /// The set of Google API scopes to be made available on all node VMs.
   ///
@@ -1285,7 +1256,7 @@ class NodeConfig {
   /// \["https://www.googleapis.com/auth/cloud-platform"\]. Cannot be updated.
   ///
   /// Optional.
-  core.List<core.String> oauthScopes;
+  core.List<core.String>? oauthScopes;
 
   /// The Google Cloud Platform Service Account to be used by the node VMs.
   ///
@@ -1293,7 +1264,7 @@ class NodeConfig {
   /// service account is used. Cannot be updated.
   ///
   /// Optional.
-  core.String serviceAccount;
+  core.String? serviceAccount;
 
   /// The Compute Engine subnetwork to be used for machine communications,
   /// specified as a \[relative resource
@@ -1306,7 +1277,7 @@ class NodeConfig {
   /// location.
   ///
   /// Optional.
-  core.String subnetwork;
+  core.String? subnetwork;
 
   /// The list of instance tags applied to all node VMs.
   ///
@@ -1315,7 +1286,7 @@ class NodeConfig {
   /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
   ///
   /// Optional.
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   NodeConfig();
 
@@ -1354,17 +1325,17 @@ class NodeConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (ipAllocationPolicy != null)
-          'ipAllocationPolicy': ipAllocationPolicy.toJson(),
-        if (location != null) 'location': location,
-        if (machineType != null) 'machineType': machineType,
-        if (network != null) 'network': network,
-        if (oauthScopes != null) 'oauthScopes': oauthScopes,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount,
-        if (subnetwork != null) 'subnetwork': subnetwork,
-        if (tags != null) 'tags': tags,
+          'ipAllocationPolicy': ipAllocationPolicy!.toJson(),
+        if (location != null) 'location': location!,
+        if (machineType != null) 'machineType': machineType!,
+        if (network != null) 'network': network!,
+        if (oauthScopes != null) 'oauthScopes': oauthScopes!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (subnetwork != null) 'subnetwork': subnetwork!,
+        if (tags != null) 'tags': tags!,
       };
 }
 
@@ -1375,10 +1346,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -1389,14 +1360,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -1409,7 +1380,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -1444,12 +1415,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -1458,14 +1429,14 @@ class OperationMetadata {
   /// The time the operation was submitted to the server.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time when the operation terminated, regardless of its success.
   ///
   /// This field is unset if the operation is still ongoing.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// The type of operation being performed.
   ///
@@ -1475,18 +1446,18 @@ class OperationMetadata {
   /// - "CREATE" : A resource creation operation.
   /// - "DELETE" : A resource deletion operation.
   /// - "UPDATE" : A resource update operation.
-  core.String operationType;
+  core.String? operationType;
 
   /// The resource being operated on, as a \[relative resource name\](
   /// /apis/design/resource_names#relative_resource_name).
   ///
   /// Output only.
-  core.String resource;
+  core.String? resource;
 
   /// The UUID of the resource being operated on.
   ///
   /// Output only.
-  core.String resourceUuid;
+  core.String? resourceUuid;
 
   /// The current operation state.
   ///
@@ -1498,7 +1469,7 @@ class OperationMetadata {
   /// - "SUCCEEDED" : The operation completed successfully.
   /// - "SUCCESSFUL"
   /// - "FAILED" : The operation is no longer running but did not succeed.
-  core.String state;
+  core.String? state;
 
   OperationMetadata();
 
@@ -1523,13 +1494,13 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
-        if (operationType != null) 'operationType': operationType,
-        if (resource != null) 'resource': resource,
-        if (resourceUuid != null) 'resourceUuid': resourceUuid,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (operationType != null) 'operationType': operationType!,
+        if (resource != null) 'resource': resource!,
+        if (resourceUuid != null) 'resourceUuid': resourceUuid!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -1539,14 +1510,14 @@ class PrivateClusterConfig {
   /// If `true`, access to the public endpoint of the GKE cluster is denied.
   ///
   /// Optional.
-  core.bool enablePrivateEndpoint;
+  core.bool? enablePrivateEndpoint;
 
   /// The CIDR block from which IPv4 range for GKE master will be reserved.
   ///
   /// If left blank, the default value of '172.16.0.0/23' is used.
   ///
   /// Optional.
-  core.String masterIpv4CidrBlock;
+  core.String? masterIpv4CidrBlock;
 
   /// The IP range in CIDR notation to use for the hosted master network.
   ///
@@ -1556,7 +1527,7 @@ class PrivateClusterConfig {
   /// cluster's network.
   ///
   /// Output only.
-  core.String masterIpv4ReservedRange;
+  core.String? masterIpv4ReservedRange;
 
   PrivateClusterConfig();
 
@@ -1572,13 +1543,13 @@ class PrivateClusterConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (enablePrivateEndpoint != null)
-          'enablePrivateEndpoint': enablePrivateEndpoint,
+          'enablePrivateEndpoint': enablePrivateEndpoint!,
         if (masterIpv4CidrBlock != null)
-          'masterIpv4CidrBlock': masterIpv4CidrBlock,
+          'masterIpv4CidrBlock': masterIpv4CidrBlock!,
         if (masterIpv4ReservedRange != null)
-          'masterIpv4ReservedRange': masterIpv4ReservedRange,
+          'masterIpv4ReservedRange': masterIpv4ReservedRange!,
       };
 }
 
@@ -1591,7 +1562,7 @@ class PrivateEnvironmentConfig {
   /// Needs to be disjoint from `web_server_ipv4_cidr_block`.
   ///
   /// Optional.
-  core.String cloudSqlIpv4CidrBlock;
+  core.String? cloudSqlIpv4CidrBlock;
 
   /// If `true`, a Private IP Cloud Composer environment is created.
   ///
@@ -1599,13 +1570,13 @@ class PrivateEnvironmentConfig {
   /// set to true.
   ///
   /// Optional.
-  core.bool enablePrivateEnvironment;
+  core.bool? enablePrivateEnvironment;
 
   /// Configuration for the private GKE cluster for a Private IP Cloud Composer
   /// environment.
   ///
   /// Optional.
-  PrivateClusterConfig privateClusterConfig;
+  PrivateClusterConfig? privateClusterConfig;
 
   /// The CIDR block from which IP range for web server will be reserved.
   ///
@@ -1613,12 +1584,12 @@ class PrivateEnvironmentConfig {
   /// and `cloud_sql_ipv4_cidr_block`.
   ///
   /// Optional.
-  core.String webServerIpv4CidrBlock;
+  core.String? webServerIpv4CidrBlock;
 
   /// The IP range reserved for the tenant project's App Engine VMs.
   ///
   /// Output only.
-  core.String webServerIpv4ReservedRange;
+  core.String? webServerIpv4ReservedRange;
 
   PrivateEnvironmentConfig();
 
@@ -1642,17 +1613,17 @@ class PrivateEnvironmentConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cloudSqlIpv4CidrBlock != null)
-          'cloudSqlIpv4CidrBlock': cloudSqlIpv4CidrBlock,
+          'cloudSqlIpv4CidrBlock': cloudSqlIpv4CidrBlock!,
         if (enablePrivateEnvironment != null)
-          'enablePrivateEnvironment': enablePrivateEnvironment,
+          'enablePrivateEnvironment': enablePrivateEnvironment!,
         if (privateClusterConfig != null)
-          'privateClusterConfig': privateClusterConfig.toJson(),
+          'privateClusterConfig': privateClusterConfig!.toJson(),
         if (webServerIpv4CidrBlock != null)
-          'webServerIpv4CidrBlock': webServerIpv4CidrBlock,
+          'webServerIpv4CidrBlock': webServerIpv4CidrBlock!,
         if (webServerIpv4ReservedRange != null)
-          'webServerIpv4ReservedRange': webServerIpv4ReservedRange,
+          'webServerIpv4ReservedRange': webServerIpv4ReservedRange!,
       };
 }
 
@@ -1675,7 +1646,7 @@ class SoftwareConfig {
   /// overridden.
   ///
   /// Optional.
-  core.Map<core.String, core.String> airflowConfigOverrides;
+  core.Map<core.String, core.String>? airflowConfigOverrides;
 
   /// Additional environment variables to provide to the Apache Airflow
   /// scheduler, worker, and webserver processes.
@@ -1690,7 +1661,7 @@ class SoftwareConfig {
   /// `SQL_USER`
   ///
   /// Optional.
-  core.Map<core.String, core.String> envVariables;
+  core.Map<core.String, core.String>? envVariables;
 
   /// The version of the software running in the environment.
   ///
@@ -1709,7 +1680,7 @@ class SoftwareConfig {
   /// [release name](https://github.com/apache/incubator-airflow/releases). See
   /// also \[Version
   /// List\](/composer/docs/concepts/versioning/composer-versions).
-  core.String imageVersion;
+  core.String? imageVersion;
 
   /// Custom Python Package Index (PyPI) packages to be installed in the
   /// environment.
@@ -1721,7 +1692,7 @@ class SoftwareConfig {
   /// value.
   ///
   /// Optional.
-  core.Map<core.String, core.String> pypiPackages;
+  core.Map<core.String, core.String>? pypiPackages;
 
   /// The major version of Python used to run the Apache Airflow scheduler,
   /// worker, and webserver processes.
@@ -1730,7 +1701,7 @@ class SoftwareConfig {
   /// updated.
   ///
   /// Optional.
-  core.String pythonVersion;
+  core.String? pythonVersion;
 
   SoftwareConfig();
 
@@ -1773,13 +1744,13 @@ class SoftwareConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (airflowConfigOverrides != null)
-          'airflowConfigOverrides': airflowConfigOverrides,
-        if (envVariables != null) 'envVariables': envVariables,
-        if (imageVersion != null) 'imageVersion': imageVersion,
-        if (pypiPackages != null) 'pypiPackages': pypiPackages,
-        if (pythonVersion != null) 'pythonVersion': pythonVersion,
+          'airflowConfigOverrides': airflowConfigOverrides!,
+        if (envVariables != null) 'envVariables': envVariables!,
+        if (imageVersion != null) 'imageVersion': imageVersion!,
+        if (pypiPackages != null) 'pypiPackages': pypiPackages!,
+        if (pythonVersion != null) 'pythonVersion': pythonVersion!,
       };
 }
 
@@ -1792,7 +1763,7 @@ class SoftwareConfig {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1800,13 +1771,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -1830,10 +1801,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -1847,7 +1818,7 @@ class WebServerConfig {
   /// parameters were manually changed to a non-standard values.
   ///
   /// Optional.
-  core.String machineType;
+  core.String? machineType;
 
   WebServerConfig();
 
@@ -1857,15 +1828,15 @@ class WebServerConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (machineType != null) 'machineType': machineType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (machineType != null) 'machineType': machineType!,
       };
 }
 
 /// Network-level access control policy for the Airflow web server.
 class WebServerNetworkAccessControl {
   /// A collection of allowed IP ranges with descriptions.
-  core.List<AllowedIpRange> allowedIpRanges;
+  core.List<AllowedIpRange>? allowedIpRanges;
 
   WebServerNetworkAccessControl();
 
@@ -1878,9 +1849,9 @@ class WebServerNetworkAccessControl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedIpRanges != null)
           'allowedIpRanges':
-              allowedIpRanges.map((value) => value.toJson()).toList(),
+              allowedIpRanges!.map((value) => value.toJson()).toList(),
       };
 }

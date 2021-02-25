@@ -81,10 +81,9 @@ class ActivityResource {
   /// this method will complete with the same error.
   async.Future<QueryDriveActivityResponse> query(
     QueryDriveActivityRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -106,22 +105,22 @@ class ActivityResource {
 class Action {
   /// The actor responsible for this action (or empty if all actors are
   /// responsible).
-  Actor actor;
+  Actor? actor;
 
   /// The type and detailed information about the action.
-  ActionDetail detail;
+  ActionDetail? detail;
 
   /// The target this action affects (or empty if affecting all targets).
   ///
   /// This represents the state of the target immediately after this action
   /// occurred.
-  Target target;
+  Target? target;
 
   /// The action occurred over this time range.
-  TimeRange timeRange;
+  TimeRange? timeRange;
 
   /// The action occurred at this specific time.
-  core.String timestamp;
+  core.String? timestamp;
 
   Action();
 
@@ -147,49 +146,49 @@ class Action {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actor != null) 'actor': actor.toJson(),
-        if (detail != null) 'detail': detail.toJson(),
-        if (target != null) 'target': target.toJson(),
-        if (timeRange != null) 'timeRange': timeRange.toJson(),
-        if (timestamp != null) 'timestamp': timestamp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actor != null) 'actor': actor!.toJson(),
+        if (detail != null) 'detail': detail!.toJson(),
+        if (target != null) 'target': target!.toJson(),
+        if (timeRange != null) 'timeRange': timeRange!.toJson(),
+        if (timestamp != null) 'timestamp': timestamp!,
       };
 }
 
 /// Data describing the type and additional information of an action.
 class ActionDetail {
   /// A change about comments was made.
-  Comment comment;
+  Comment? comment;
 
   /// An object was created.
-  Create create;
+  Create? create;
 
   /// An object was deleted.
-  Delete delete;
+  Delete? delete;
 
   /// A change happened in data leak prevention status.
-  DataLeakPreventionChange dlpChange;
+  DataLeakPreventionChange? dlpChange;
 
   /// An object was edited.
-  Edit edit;
+  Edit? edit;
 
   /// An object was moved.
-  Move move;
+  Move? move;
 
   /// The permission on an object was changed.
-  PermissionChange permissionChange;
+  PermissionChange? permissionChange;
 
   /// An object was referenced in an application outside of Drive/Docs.
-  ApplicationReference reference;
+  ApplicationReference? reference;
 
   /// An object was renamed.
-  Rename rename;
+  Rename? rename;
 
   /// A deleted object was restored.
-  Restore restore;
+  Restore? restore;
 
   /// Settings were changed.
-  SettingsChange settingsChange;
+  SettingsChange? settingsChange;
 
   ActionDetail();
 
@@ -240,38 +239,38 @@ class ActionDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (comment != null) 'comment': comment.toJson(),
-        if (create != null) 'create': create.toJson(),
-        if (delete != null) 'delete': delete.toJson(),
-        if (dlpChange != null) 'dlpChange': dlpChange.toJson(),
-        if (edit != null) 'edit': edit.toJson(),
-        if (move != null) 'move': move.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (comment != null) 'comment': comment!.toJson(),
+        if (create != null) 'create': create!.toJson(),
+        if (delete != null) 'delete': delete!.toJson(),
+        if (dlpChange != null) 'dlpChange': dlpChange!.toJson(),
+        if (edit != null) 'edit': edit!.toJson(),
+        if (move != null) 'move': move!.toJson(),
         if (permissionChange != null)
-          'permissionChange': permissionChange.toJson(),
-        if (reference != null) 'reference': reference.toJson(),
-        if (rename != null) 'rename': rename.toJson(),
-        if (restore != null) 'restore': restore.toJson(),
-        if (settingsChange != null) 'settingsChange': settingsChange.toJson(),
+          'permissionChange': permissionChange!.toJson(),
+        if (reference != null) 'reference': reference!.toJson(),
+        if (rename != null) 'rename': rename!.toJson(),
+        if (restore != null) 'restore': restore!.toJson(),
+        if (settingsChange != null) 'settingsChange': settingsChange!.toJson(),
       };
 }
 
 /// The actor of a Drive activity.
 class Actor {
   /// An administrator.
-  Administrator administrator;
+  Administrator? administrator;
 
   /// An anonymous user.
-  AnonymousUser anonymous;
+  AnonymousUser? anonymous;
 
   /// An account acting on behalf of another.
-  Impersonation impersonation;
+  Impersonation? impersonation;
 
   /// A non-user actor (i.e. system triggered).
-  SystemEvent system;
+  SystemEvent? system;
 
   /// An end user.
-  User user;
+  User? user;
 
   Actor();
 
@@ -298,12 +297,12 @@ class Actor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (administrator != null) 'administrator': administrator.toJson(),
-        if (anonymous != null) 'anonymous': anonymous.toJson(),
-        if (impersonation != null) 'impersonation': impersonation.toJson(),
-        if (system != null) 'system': system.toJson(),
-        if (user != null) 'user': user.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (administrator != null) 'administrator': administrator!.toJson(),
+        if (anonymous != null) 'anonymous': anonymous!.toJson(),
+        if (impersonation != null) 'impersonation': impersonation!.toJson(),
+        if (system != null) 'system': system!.toJson(),
+        if (user != null) 'user': user!.toJson(),
       };
 }
 
@@ -315,7 +314,7 @@ class Administrator {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Empty message representing an anonymous user or indicating the authenticated
@@ -327,7 +326,7 @@ class AnonymousUser {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents any user (including a logged out user).
@@ -338,7 +337,7 @@ class Anyone {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Activity in applications other than Drive.
@@ -348,7 +347,7 @@ class ApplicationReference {
   /// - "UNSPECIFIED_REFERENCE_TYPE" : The type is not available.
   /// - "LINK" : The links of one or more Drive items were posted.
   /// - "DISCUSS" : Comments were made regarding a Drive item.
-  core.String type;
+  core.String? type;
 
   ApplicationReference();
 
@@ -358,15 +357,15 @@ class ApplicationReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
 /// A comment with an assignment.
 class Assignment {
   /// The user to whom the comment was assigned.
-  User assignedUser;
+  User? assignedUser;
 
   /// The sub-type of this event.
   /// Possible string values are:
@@ -378,7 +377,7 @@ class Assignment {
   /// - "RESOLVED" : An assignment was resolved.
   /// - "REOPENED" : A resolved assignment was reopened.
   /// - "REASSIGNED" : An assignment was reassigned.
-  core.String subtype;
+  core.String? subtype;
 
   Assignment();
 
@@ -392,25 +391,25 @@ class Assignment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (assignedUser != null) 'assignedUser': assignedUser.toJson(),
-        if (subtype != null) 'subtype': subtype,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (assignedUser != null) 'assignedUser': assignedUser!.toJson(),
+        if (subtype != null) 'subtype': subtype!,
       };
 }
 
 /// A change about comments on an object.
 class Comment {
   /// A change on an assignment.
-  Assignment assignment;
+  Assignment? assignment;
 
   /// Users who are mentioned in this comment.
-  core.List<User> mentionedUsers;
+  core.List<User>? mentionedUsers;
 
   /// A change on a regular posted comment.
-  Post post;
+  Post? post;
 
   /// A change on a suggestion.
-  Suggestion suggestion;
+  Suggestion? suggestion;
 
   Comment();
 
@@ -435,13 +434,13 @@ class Comment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (assignment != null) 'assignment': assignment.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (assignment != null) 'assignment': assignment!.toJson(),
         if (mentionedUsers != null)
           'mentionedUsers':
-              mentionedUsers.map((value) => value.toJson()).toList(),
-        if (post != null) 'post': post.toJson(),
-        if (suggestion != null) 'suggestion': suggestion.toJson(),
+              mentionedUsers!.map((value) => value.toJson()).toList(),
+        if (post != null) 'post': post!.toJson(),
+        if (suggestion != null) 'suggestion': suggestion!.toJson(),
       };
 }
 
@@ -453,10 +452,10 @@ class Comment {
 /// target. The strategy defines the rules for which activities are related.
 class ConsolidationStrategy {
   /// The individual activities are consolidated using the legacy strategy.
-  Legacy legacy;
+  Legacy? legacy;
 
   /// The individual activities are not consolidated.
-  NoConsolidation none;
+  NoConsolidation? none;
 
   ConsolidationStrategy();
 
@@ -471,16 +470,16 @@ class ConsolidationStrategy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (legacy != null) 'legacy': legacy.toJson(),
-        if (none != null) 'none': none.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (legacy != null) 'legacy': legacy!.toJson(),
+        if (none != null) 'none': none!.toJson(),
       };
 }
 
 /// An object was created by copying an existing object.
 class Copy {
   /// The the original object.
-  TargetReference originalObject;
+  TargetReference? originalObject;
 
   Copy();
 
@@ -491,8 +490,8 @@ class Copy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (originalObject != null) 'originalObject': originalObject.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (originalObject != null) 'originalObject': originalObject!.toJson(),
       };
 }
 
@@ -500,15 +499,15 @@ class Copy {
 class Create {
   /// If present, indicates the object was created by copying an existing Drive
   /// object.
-  Copy copy;
+  Copy? copy;
 
   /// If present, indicates the object was newly created (e.g. as a blank
   /// document), not derived from a Drive object or external object.
-  New new_;
+  New? new_;
 
   /// If present, indicates the object originated externally and was uploaded to
   /// Drive.
-  Upload upload;
+  Upload? upload;
 
   Create();
 
@@ -526,10 +525,10 @@ class Create {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (copy != null) 'copy': copy.toJson(),
-        if (new_ != null) 'new': new_.toJson(),
-        if (upload != null) 'upload': upload.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (copy != null) 'copy': copy!.toJson(),
+        if (new_ != null) 'new': new_!.toJson(),
+        if (upload != null) 'upload': upload!.toJson(),
       };
 }
 
@@ -542,7 +541,7 @@ class DataLeakPreventionChange {
   /// - "FLAGGED" : Document has been flagged as containing sensitive content.
   /// - "CLEARED" : Document is no longer flagged as containing sensitive
   /// content.
-  core.String type;
+  core.String? type;
 
   DataLeakPreventionChange();
 
@@ -552,8 +551,8 @@ class DataLeakPreventionChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
@@ -564,7 +563,7 @@ class Delete {
   /// - "TYPE_UNSPECIFIED" : Deletion type is not available.
   /// - "TRASH" : An object was put into the trash.
   /// - "PERMANENT_DELETE" : An object was deleted permanently.
-  core.String type;
+  core.String? type;
 
   Delete();
 
@@ -574,8 +573,8 @@ class Delete {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
@@ -587,16 +586,16 @@ class DeletedUser {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Information about a domain.
 class Domain {
   /// An opaque string used to identify this domain.
-  core.String legacyId;
+  core.String? legacyId;
 
   /// The name of the domain, e.g. "google.com".
-  core.String name;
+  core.String? name;
 
   Domain();
 
@@ -609,9 +608,9 @@ class Domain {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (legacyId != null) 'legacyId': legacyId,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (legacyId != null) 'legacyId': legacyId!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -621,13 +620,13 @@ class Drive {
   ///
   /// The format is "COLLECTION_ID/DRIVE_ID". Clients should not assume a
   /// specific collection ID for this resource name.
-  core.String name;
+  core.String? name;
 
   /// The root of this shared drive.
-  DriveItem root;
+  DriveItem? root;
 
   /// The title of the shared drive.
-  core.String title;
+  core.String? title;
 
   Drive();
 
@@ -644,10 +643,10 @@ class Drive {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (root != null) 'root': root.toJson(),
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (root != null) 'root': root!.toJson(),
+        if (title != null) 'title': title!,
       };
 }
 
@@ -661,29 +660,29 @@ class Drive {
 /// ConsolidationStrategy in the QueryDriveActivityRequest.
 class DriveActivity {
   /// Details on all actions in this activity.
-  core.List<Action> actions;
+  core.List<Action>? actions;
 
   /// All actor(s) responsible for the activity.
-  core.List<Actor> actors;
+  core.List<Actor>? actors;
 
   /// Key information about the primary action for this activity.
   ///
   /// This is either representative, or the most important, of all actions in
   /// the activity, according to the ConsolidationStrategy in the request.
-  ActionDetail primaryActionDetail;
+  ActionDetail? primaryActionDetail;
 
   /// All Google Drive objects this activity is about (e.g. file, folder,
   /// drive).
   ///
   /// This represents the state of the target immediately after the actions
   /// occurred.
-  core.List<Target> targets;
+  core.List<Target>? targets;
 
   /// The activity occurred over this time range.
-  TimeRange timeRange;
+  TimeRange? timeRange;
 
   /// The activity occurred at this specific time.
-  core.String timestamp;
+  core.String? timestamp;
 
   DriveActivity();
 
@@ -719,17 +718,17 @@ class DriveActivity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (actions != null)
-          'actions': actions.map((value) => value.toJson()).toList(),
+          'actions': actions!.map((value) => value.toJson()).toList(),
         if (actors != null)
-          'actors': actors.map((value) => value.toJson()).toList(),
+          'actors': actors!.map((value) => value.toJson()).toList(),
         if (primaryActionDetail != null)
-          'primaryActionDetail': primaryActionDetail.toJson(),
+          'primaryActionDetail': primaryActionDetail!.toJson(),
         if (targets != null)
-          'targets': targets.map((value) => value.toJson()).toList(),
-        if (timeRange != null) 'timeRange': timeRange.toJson(),
-        if (timestamp != null) 'timestamp': timestamp,
+          'targets': targets!.map((value) => value.toJson()).toList(),
+        if (timeRange != null) 'timeRange': timeRange!.toJson(),
+        if (timestamp != null) 'timestamp': timestamp!,
       };
 }
 
@@ -741,7 +740,7 @@ class DriveFile {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A Drive item which is a folder.
@@ -752,7 +751,7 @@ class DriveFolder {
   /// - "MY_DRIVE_ROOT" : The folder is the root of a user's MyDrive.
   /// - "SHARED_DRIVE_ROOT" : The folder is the root of a shared drive.
   /// - "STANDARD_FOLDER" : The folder is a standard, non-root, folder.
-  core.String type;
+  core.String? type;
 
   DriveFolder();
 
@@ -762,42 +761,42 @@ class DriveFolder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
 /// A Drive item, such as a file or folder.
 class DriveItem {
   /// The Drive item is a file.
-  DriveFile driveFile;
+  DriveFile? driveFile;
 
   /// The Drive item is a folder.
   ///
   /// Includes information about the type of folder.
-  DriveFolder driveFolder;
+  DriveFolder? driveFolder;
 
   /// This field is deprecated; please use the `driveFile` field instead.
-  File file;
+  File? file;
 
   /// This field is deprecated; please use the `driveFolder` field instead.
-  Folder folder;
+  Folder? folder;
 
   /// The MIME type of the Drive item.
   ///
   /// See https://developers.google.com/drive/v3/web/mime-types.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// The target Drive item.
   ///
   /// The format is "items/ITEM_ID".
-  core.String name;
+  core.String? name;
 
   /// Information about the owner of this Drive item.
-  Owner owner;
+  Owner? owner;
 
   /// The title of the Drive item.
-  core.String title;
+  core.String? title;
 
   DriveItem();
 
@@ -833,41 +832,41 @@ class DriveItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (driveFile != null) 'driveFile': driveFile.toJson(),
-        if (driveFolder != null) 'driveFolder': driveFolder.toJson(),
-        if (file != null) 'file': file.toJson(),
-        if (folder != null) 'folder': folder.toJson(),
-        if (mimeType != null) 'mimeType': mimeType,
-        if (name != null) 'name': name,
-        if (owner != null) 'owner': owner.toJson(),
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (driveFile != null) 'driveFile': driveFile!.toJson(),
+        if (driveFolder != null) 'driveFolder': driveFolder!.toJson(),
+        if (file != null) 'file': file!.toJson(),
+        if (folder != null) 'folder': folder!.toJson(),
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (name != null) 'name': name!,
+        if (owner != null) 'owner': owner!.toJson(),
+        if (title != null) 'title': title!,
       };
 }
 
 /// A lightweight reference to a Drive item, such as a file or folder.
 class DriveItemReference {
   /// The Drive item is a file.
-  DriveFile driveFile;
+  DriveFile? driveFile;
 
   /// The Drive item is a folder.
   ///
   /// Includes information about the type of folder.
-  DriveFolder driveFolder;
+  DriveFolder? driveFolder;
 
   /// This field is deprecated; please use the `driveFile` field instead.
-  File file;
+  File? file;
 
   /// This field is deprecated; please use the `driveFolder` field instead.
-  Folder folder;
+  Folder? folder;
 
   /// The target Drive item.
   ///
   /// The format is "items/ITEM_ID".
-  core.String name;
+  core.String? name;
 
   /// The title of the Drive item.
-  core.String title;
+  core.String? title;
 
   DriveItemReference();
 
@@ -896,13 +895,13 @@ class DriveItemReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (driveFile != null) 'driveFile': driveFile.toJson(),
-        if (driveFolder != null) 'driveFolder': driveFolder.toJson(),
-        if (file != null) 'file': file.toJson(),
-        if (folder != null) 'folder': folder.toJson(),
-        if (name != null) 'name': name,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (driveFile != null) 'driveFile': driveFile!.toJson(),
+        if (driveFolder != null) 'driveFolder': driveFolder!.toJson(),
+        if (file != null) 'file': file!.toJson(),
+        if (folder != null) 'folder': folder!.toJson(),
+        if (name != null) 'name': name!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -912,10 +911,10 @@ class DriveReference {
   ///
   /// The format is "COLLECTION_ID/DRIVE_ID". Clients should not assume a
   /// specific collection ID for this resource name.
-  core.String name;
+  core.String? name;
 
   /// The title of the shared drive.
-  core.String title;
+  core.String? title;
 
   DriveReference();
 
@@ -928,9 +927,9 @@ class DriveReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -942,7 +941,7 @@ class Edit {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// This item is deprecated; please see `DriveFile` instead.
@@ -953,7 +952,7 @@ class File {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A comment on a file.
@@ -962,21 +961,21 @@ class FileComment {
   ///
   /// This identifier is an opaque string compatible with the Drive API; see
   /// https://developers.google.com/drive/v3/reference/comments/get
-  core.String legacyCommentId;
+  core.String? legacyCommentId;
 
   /// The discussion thread to which the comment was added.
   ///
   /// This identifier is an opaque string compatible with the Drive API and
   /// references the first comment in a discussion; see
   /// https://developers.google.com/drive/v3/reference/comments/get
-  core.String legacyDiscussionId;
+  core.String? legacyDiscussionId;
 
   /// The link to the discussion thread containing this comment, for example,
   /// "https://docs.google.com/DOCUMENT_ID/edit?disco=THREAD_ID".
-  core.String linkToDiscussion;
+  core.String? linkToDiscussion;
 
   /// The Drive item containing this comment.
-  DriveItem parent;
+  DriveItem? parent;
 
   FileComment();
 
@@ -996,12 +995,12 @@ class FileComment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (legacyCommentId != null) 'legacyCommentId': legacyCommentId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (legacyCommentId != null) 'legacyCommentId': legacyCommentId!,
         if (legacyDiscussionId != null)
-          'legacyDiscussionId': legacyDiscussionId,
-        if (linkToDiscussion != null) 'linkToDiscussion': linkToDiscussion,
-        if (parent != null) 'parent': parent.toJson(),
+          'legacyDiscussionId': legacyDiscussionId!,
+        if (linkToDiscussion != null) 'linkToDiscussion': linkToDiscussion!,
+        if (parent != null) 'parent': parent!.toJson(),
       };
 }
 
@@ -1017,7 +1016,7 @@ class Folder {
   /// `DriveFolder.Type` instead.
   /// - "STANDARD_FOLDER" : This item is deprecated; please see
   /// `DriveFolder.Type` instead.
-  core.String type;
+  core.String? type;
 
   Folder();
 
@@ -1027,18 +1026,18 @@ class Folder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
 /// Information about a group.
 class Group {
   /// The email address of the group.
-  core.String email;
+  core.String? email;
 
   /// The title of the group.
-  core.String title;
+  core.String? title;
 
   Group();
 
@@ -1051,9 +1050,9 @@ class Group {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1063,7 +1062,7 @@ class Group {
 /// Information about the acting admin is not currently available.
 class Impersonation {
   /// The impersonated user.
-  User impersonatedUser;
+  User? impersonatedUser;
 
   Impersonation();
 
@@ -1074,23 +1073,23 @@ class Impersonation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (impersonatedUser != null)
-          'impersonatedUser': impersonatedUser.toJson(),
+          'impersonatedUser': impersonatedUser!.toJson(),
       };
 }
 
 /// A known user.
 class KnownUser {
   /// True if this is the user making the request.
-  core.bool isCurrentUser;
+  core.bool? isCurrentUser;
 
   /// The identifier for this user that can be used with the People API to get
   /// more information.
   ///
   /// The format is "people/ACCOUNT_ID". See
   /// https://developers.google.com/people/.
-  core.String personName;
+  core.String? personName;
 
   KnownUser();
 
@@ -1103,9 +1102,9 @@ class KnownUser {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (isCurrentUser != null) 'isCurrentUser': isCurrentUser,
-        if (personName != null) 'personName': personName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (isCurrentUser != null) 'isCurrentUser': isCurrentUser!,
+        if (personName != null) 'personName': personName!,
       };
 }
 
@@ -1123,16 +1122,16 @@ class Legacy {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// An object was moved.
 class Move {
   /// The added parent object(s).
-  core.List<TargetReference> addedParents;
+  core.List<TargetReference>? addedParents;
 
   /// The removed parent object(s).
-  core.List<TargetReference> removedParents;
+  core.List<TargetReference>? removedParents;
 
   Move();
 
@@ -1151,12 +1150,12 @@ class Move {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (addedParents != null)
-          'addedParents': addedParents.map((value) => value.toJson()).toList(),
+          'addedParents': addedParents!.map((value) => value.toJson()).toList(),
         if (removedParents != null)
           'removedParents':
-              removedParents.map((value) => value.toJson()).toList(),
+              removedParents!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1168,7 +1167,7 @@ class New {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A strategy which does no consolidation of individual activities.
@@ -1179,22 +1178,22 @@ class NoConsolidation {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Information about the owner of a Drive item.
 class Owner {
   /// The domain of the Drive item owner.
-  Domain domain;
+  Domain? domain;
 
   /// The drive that owns the item.
-  DriveReference drive;
+  DriveReference? drive;
 
   /// This field is deprecated; please use the `drive` field instead.
-  TeamDriveReference teamDrive;
+  TeamDriveReference? teamDrive;
 
   /// The user that owns the Drive item.
-  User user;
+  User? user;
 
   Owner();
 
@@ -1217,11 +1216,11 @@ class Owner {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (domain != null) 'domain': domain.toJson(),
-        if (drive != null) 'drive': drive.toJson(),
-        if (teamDrive != null) 'teamDrive': teamDrive.toJson(),
-        if (user != null) 'user': user.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (domain != null) 'domain': domain!.toJson(),
+        if (drive != null) 'drive': drive!.toJson(),
+        if (teamDrive != null) 'teamDrive': teamDrive!.toJson(),
+        if (user != null) 'user': user!.toJson(),
       };
 }
 
@@ -1229,16 +1228,16 @@ class Owner {
 class Permission {
   /// If true, the item can be discovered (e.g. in the user's "Shared with me"
   /// collection) without needing a link to the item.
-  core.bool allowDiscovery;
+  core.bool? allowDiscovery;
 
   /// If set, this permission applies to anyone, even logged out users.
-  Anyone anyone;
+  Anyone? anyone;
 
   /// The domain to whom this permission applies.
-  Domain domain;
+  Domain? domain;
 
   /// The group to whom this permission applies.
-  Group group;
+  Group? group;
 
   /// Indicates the Google Drive permissions role.
   ///
@@ -1259,10 +1258,10 @@ class Permission {
   /// after it has been published to the web. This role is sometimes also known
   /// as "published reader". See https://support.google.com/sites/answer/6372880
   /// for more information.
-  core.String role;
+  core.String? role;
 
   /// The user to whom this permission applies.
-  User user;
+  User? user;
 
   Permission();
 
@@ -1291,23 +1290,23 @@ class Permission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowDiscovery != null) 'allowDiscovery': allowDiscovery,
-        if (anyone != null) 'anyone': anyone.toJson(),
-        if (domain != null) 'domain': domain.toJson(),
-        if (group != null) 'group': group.toJson(),
-        if (role != null) 'role': role,
-        if (user != null) 'user': user.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowDiscovery != null) 'allowDiscovery': allowDiscovery!,
+        if (anyone != null) 'anyone': anyone!.toJson(),
+        if (domain != null) 'domain': domain!.toJson(),
+        if (group != null) 'group': group!.toJson(),
+        if (role != null) 'role': role!,
+        if (user != null) 'user': user!.toJson(),
       };
 }
 
 /// A change of the permission setting on an item.
 class PermissionChange {
   /// The set of permissions added by this change.
-  core.List<Permission> addedPermissions;
+  core.List<Permission>? addedPermissions;
 
   /// The set of permissions removed by this change.
-  core.List<Permission> removedPermissions;
+  core.List<Permission>? removedPermissions;
 
   PermissionChange();
 
@@ -1326,13 +1325,13 @@ class PermissionChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (addedPermissions != null)
           'addedPermissions':
-              addedPermissions.map((value) => value.toJson()).toList(),
+              addedPermissions!.map((value) => value.toJson()).toList(),
         if (removedPermissions != null)
           'removedPermissions':
-              removedPermissions.map((value) => value.toJson()).toList(),
+              removedPermissions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1347,7 +1346,7 @@ class Post {
   /// - "REPLY_DELETED" : A reply was deleted.
   /// - "RESOLVED" : A posted comment was resolved.
   /// - "REOPENED" : A posted comment was reopened.
-  core.String subtype;
+  core.String? subtype;
 
   Post();
 
@@ -1357,8 +1356,8 @@ class Post {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (subtype != null) 'subtype': subtype,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (subtype != null) 'subtype': subtype!,
       };
 }
 
@@ -1367,12 +1366,12 @@ class QueryDriveActivityRequest {
   /// Return activities for this Drive folder and all children and descendants.
   ///
   /// The format is "items/ITEM_ID".
-  core.String ancestorName;
+  core.String? ancestorName;
 
   /// Details on how to consolidate related actions that make up the activity.
   ///
   /// If not set, then related actions are not consolidated.
-  ConsolidationStrategy consolidationStrategy;
+  ConsolidationStrategy? consolidationStrategy;
 
   /// The filtering for items returned from this query request.
   ///
@@ -1385,26 +1384,26 @@ class QueryDriveActivityRequest {
   /// operator (:) and either a singular value or a list of allowed action types
   /// enclosed in parentheses. Examples: - detail.action_detail_case: RENAME -
   /// detail.action_detail_case:(CREATE EDIT) - -detail.action_detail_case:MOVE
-  core.String filter;
+  core.String? filter;
 
   /// Return activities for this Drive item.
   ///
   /// The format is "items/ITEM_ID".
-  core.String itemName;
+  core.String? itemName;
 
   /// The miminum number of activities desired in the response; the server will
   /// attempt to return at least this quanitity.
   ///
   /// The server may also return fewer activities if it has a partial response
   /// ready before the request times out. If not set, a default value is used.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// The token identifying which page of results to return.
   ///
   /// Set this to the next_page_token value returned from a previous query to
   /// obtain the following page of results. If not set, the first page of
   /// results will be returned.
-  core.String pageToken;
+  core.String? pageToken;
 
   QueryDriveActivityRequest();
 
@@ -1431,25 +1430,25 @@ class QueryDriveActivityRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ancestorName != null) 'ancestorName': ancestorName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ancestorName != null) 'ancestorName': ancestorName!,
         if (consolidationStrategy != null)
-          'consolidationStrategy': consolidationStrategy.toJson(),
-        if (filter != null) 'filter': filter,
-        if (itemName != null) 'itemName': itemName,
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
+          'consolidationStrategy': consolidationStrategy!.toJson(),
+        if (filter != null) 'filter': filter!,
+        if (itemName != null) 'itemName': itemName!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
       };
 }
 
 /// Response message for querying Drive activity.
 class QueryDriveActivityResponse {
   /// List of activity requested.
-  core.List<DriveActivity> activities;
+  core.List<DriveActivity>? activities;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   QueryDriveActivityResponse();
 
@@ -1465,20 +1464,20 @@ class QueryDriveActivityResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (activities != null)
-          'activities': activities.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'activities': activities!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// An object was renamed.
 class Rename {
   /// The new title of the drive object.
-  core.String newTitle;
+  core.String? newTitle;
 
   /// The previous title of the drive object.
-  core.String oldTitle;
+  core.String? oldTitle;
 
   Rename();
 
@@ -1491,9 +1490,9 @@ class Rename {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (newTitle != null) 'newTitle': newTitle,
-        if (oldTitle != null) 'oldTitle': oldTitle,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (newTitle != null) 'newTitle': newTitle!,
+        if (oldTitle != null) 'oldTitle': oldTitle!,
       };
 }
 
@@ -1503,7 +1502,7 @@ class Restore {
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : The type is not available.
   /// - "UNTRASH" : An object was restored from the trash.
-  core.String type;
+  core.String? type;
 
   Restore();
 
@@ -1513,8 +1512,8 @@ class Restore {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1532,14 +1531,14 @@ class RestrictionChange {
   /// download, and print that might result in uncontrolled duplicates of items.
   /// - "DRIVE_FILE_STREAM" : When restricted, this prevents use of Drive File
   /// Stream.
-  core.String feature;
+  core.String? feature;
 
   /// The restriction in place after the change.
   /// Possible string values are:
   /// - "RESTRICTION_UNSPECIFIED" : The type of restriction is not available.
   /// - "UNRESTRICTED" : The feature is available without restriction.
   /// - "FULLY_RESTRICTED" : The use of this feature is fully restricted.
-  core.String newRestriction;
+  core.String? newRestriction;
 
   RestrictionChange();
 
@@ -1552,16 +1551,16 @@ class RestrictionChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (feature != null) 'feature': feature,
-        if (newRestriction != null) 'newRestriction': newRestriction,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (feature != null) 'feature': feature!,
+        if (newRestriction != null) 'newRestriction': newRestriction!,
       };
 }
 
 /// Information about settings changes.
 class SettingsChange {
   /// The set of changes made to restrictions.
-  core.List<RestrictionChange> restrictionChanges;
+  core.List<RestrictionChange>? restrictionChanges;
 
   SettingsChange();
 
@@ -1574,10 +1573,10 @@ class SettingsChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (restrictionChanges != null)
           'restrictionChanges':
-              restrictionChanges.map((value) => value.toJson()).toList(),
+              restrictionChanges!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1594,7 +1593,7 @@ class Suggestion {
   /// - "REJECTED" : A suggestion was rejected.
   /// - "ACCEPT_DELETED" : An accepted suggestion was deleted.
   /// - "REJECT_DELETED" : A rejected suggestion was deleted.
-  core.String subtype;
+  core.String? subtype;
 
   Suggestion();
 
@@ -1604,8 +1603,8 @@ class Suggestion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (subtype != null) 'subtype': subtype,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (subtype != null) 'subtype': subtype!,
       };
 }
 
@@ -1618,7 +1617,7 @@ class SystemEvent {
   /// deleted.
   /// - "TRASH_AUTO_PURGE" : The event is due to the system automatically
   /// purging trash.
-  core.String type;
+  core.String? type;
 
   SystemEvent();
 
@@ -1628,24 +1627,24 @@ class SystemEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
 /// Information about the target of activity.
 class Target {
   /// The target is a shared drive.
-  Drive drive;
+  Drive? drive;
 
   /// The target is a Drive item.
-  DriveItem driveItem;
+  DriveItem? driveItem;
 
   /// The target is a comment on a Drive file.
-  FileComment fileComment;
+  FileComment? fileComment;
 
   /// This field is deprecated; please use the `drive` field instead.
-  TeamDrive teamDrive;
+  TeamDrive? teamDrive;
 
   Target();
 
@@ -1668,24 +1667,24 @@ class Target {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (drive != null) 'drive': drive.toJson(),
-        if (driveItem != null) 'driveItem': driveItem.toJson(),
-        if (fileComment != null) 'fileComment': fileComment.toJson(),
-        if (teamDrive != null) 'teamDrive': teamDrive.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (drive != null) 'drive': drive!.toJson(),
+        if (driveItem != null) 'driveItem': driveItem!.toJson(),
+        if (fileComment != null) 'fileComment': fileComment!.toJson(),
+        if (teamDrive != null) 'teamDrive': teamDrive!.toJson(),
       };
 }
 
 /// A lightweight reference to the target of activity.
 class TargetReference {
   /// The target is a shared drive.
-  DriveReference drive;
+  DriveReference? drive;
 
   /// The target is a Drive item.
-  DriveItemReference driveItem;
+  DriveItemReference? driveItem;
 
   /// This field is deprecated; please use the `drive` field instead.
-  TeamDriveReference teamDrive;
+  TeamDriveReference? teamDrive;
 
   TargetReference();
 
@@ -1704,23 +1703,23 @@ class TargetReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (drive != null) 'drive': drive.toJson(),
-        if (driveItem != null) 'driveItem': driveItem.toJson(),
-        if (teamDrive != null) 'teamDrive': teamDrive.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (drive != null) 'drive': drive!.toJson(),
+        if (driveItem != null) 'driveItem': driveItem!.toJson(),
+        if (teamDrive != null) 'teamDrive': teamDrive!.toJson(),
       };
 }
 
 /// This item is deprecated; please see `Drive` instead.
 class TeamDrive {
   /// This field is deprecated; please see `Drive.name` instead.
-  core.String name;
+  core.String? name;
 
   /// This field is deprecated; please see `Drive.root` instead.
-  DriveItem root;
+  DriveItem? root;
 
   /// This field is deprecated; please see `Drive.title` instead.
-  core.String title;
+  core.String? title;
 
   TeamDrive();
 
@@ -1737,20 +1736,20 @@ class TeamDrive {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (root != null) 'root': root.toJson(),
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (root != null) 'root': root!.toJson(),
+        if (title != null) 'title': title!,
       };
 }
 
 /// This item is deprecated; please see `DriveReference` instead.
 class TeamDriveReference {
   /// This field is deprecated; please see `DriveReference.name` instead.
-  core.String name;
+  core.String? name;
 
   /// This field is deprecated; please see `DriveReference.title` instead.
-  core.String title;
+  core.String? title;
 
   TeamDriveReference();
 
@@ -1763,19 +1762,19 @@ class TeamDriveReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// Information about time ranges.
 class TimeRange {
   /// The end of the time range.
-  core.String endTime;
+  core.String? endTime;
 
   /// The start of the time range.
-  core.String startTime;
+  core.String? startTime;
 
   TimeRange();
 
@@ -1788,9 +1787,9 @@ class TimeRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -1802,7 +1801,7 @@ class UnknownUser {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// An object was uploaded into Drive.
@@ -1813,19 +1812,19 @@ class Upload {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Information about an end user.
 class User {
   /// A user whose account has since been deleted.
-  DeletedUser deletedUser;
+  DeletedUser? deletedUser;
 
   /// A known user.
-  KnownUser knownUser;
+  KnownUser? knownUser;
 
   /// A user about whom nothing is currently known.
-  UnknownUser unknownUser;
+  UnknownUser? unknownUser;
 
   User();
 
@@ -1844,9 +1843,9 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deletedUser != null) 'deletedUser': deletedUser.toJson(),
-        if (knownUser != null) 'knownUser': knownUser.toJson(),
-        if (unknownUser != null) 'unknownUser': unknownUser.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deletedUser != null) 'deletedUser': deletedUser!.toJson(),
+        if (knownUser != null) 'knownUser': knownUser!.toJson(),
+        if (unknownUser != null) 'unknownUser': unknownUser!.toJson(),
       };
 }

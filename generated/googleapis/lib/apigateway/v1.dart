@@ -96,11 +96,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ApigatewayLocation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -141,14 +138,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ApigatewayListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -204,14 +198,10 @@ class ProjectsLocationsApisResource {
   async.Future<ApigatewayOperation> create(
     ApigatewayApi request,
     core.String parent, {
-    core.String apiId,
-    core.String $fields,
+    core.String? apiId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (apiId != null) 'apiId': [apiId],
       if ($fields != null) 'fields': [$fields],
@@ -251,11 +241,8 @@ class ProjectsLocationsApisResource {
   /// this method will complete with the same error.
   async.Future<ApigatewayOperation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -292,11 +279,8 @@ class ProjectsLocationsApisResource {
   /// this method will complete with the same error.
   async.Future<ApigatewayApi> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -345,12 +329,9 @@ class ProjectsLocationsApisResource {
   /// this method will complete with the same error.
   async.Future<ApigatewayPolicy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -398,15 +379,12 @@ class ProjectsLocationsApisResource {
   /// this method will complete with the same error.
   async.Future<ApigatewayListApisResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -457,14 +435,10 @@ class ProjectsLocationsApisResource {
   async.Future<ApigatewayOperation> patch(
     ApigatewayApi request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -510,13 +484,9 @@ class ProjectsLocationsApisResource {
   async.Future<ApigatewayPolicy> setIamPolicy(
     ApigatewaySetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -565,13 +535,9 @@ class ProjectsLocationsApisResource {
   async.Future<ApigatewayTestIamPermissionsResponse> testIamPermissions(
     ApigatewayTestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -624,14 +590,10 @@ class ProjectsLocationsApisConfigsResource {
   async.Future<ApigatewayOperation> create(
     ApigatewayApiConfig request,
     core.String parent, {
-    core.String apiConfigId,
-    core.String $fields,
+    core.String? apiConfigId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (apiConfigId != null) 'apiConfigId': [apiConfigId],
       if ($fields != null) 'fields': [$fields],
@@ -671,11 +633,8 @@ class ProjectsLocationsApisConfigsResource {
   /// this method will complete with the same error.
   async.Future<ApigatewayOperation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -719,12 +678,9 @@ class ProjectsLocationsApisConfigsResource {
   /// this method will complete with the same error.
   async.Future<ApigatewayApiConfig> get(
     core.String name, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -774,12 +730,9 @@ class ProjectsLocationsApisConfigsResource {
   /// this method will complete with the same error.
   async.Future<ApigatewayPolicy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -828,15 +781,12 @@ class ProjectsLocationsApisConfigsResource {
   /// this method will complete with the same error.
   async.Future<ApigatewayListApiConfigsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -887,14 +837,10 @@ class ProjectsLocationsApisConfigsResource {
   async.Future<ApigatewayOperation> patch(
     ApigatewayApiConfig request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -940,13 +886,9 @@ class ProjectsLocationsApisConfigsResource {
   async.Future<ApigatewayPolicy> setIamPolicy(
     ApigatewaySetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -995,13 +937,9 @@ class ProjectsLocationsApisConfigsResource {
   async.Future<ApigatewayTestIamPermissionsResponse> testIamPermissions(
     ApigatewayTestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1053,14 +991,10 @@ class ProjectsLocationsGatewaysResource {
   async.Future<ApigatewayOperation> create(
     ApigatewayGateway request,
     core.String parent, {
-    core.String gatewayId,
-    core.String $fields,
+    core.String? gatewayId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (gatewayId != null) 'gatewayId': [gatewayId],
       if ($fields != null) 'fields': [$fields],
@@ -1100,11 +1034,8 @@ class ProjectsLocationsGatewaysResource {
   /// this method will complete with the same error.
   async.Future<ApigatewayOperation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1141,11 +1072,8 @@ class ProjectsLocationsGatewaysResource {
   /// this method will complete with the same error.
   async.Future<ApigatewayGateway> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1194,12 +1122,9 @@ class ProjectsLocationsGatewaysResource {
   /// this method will complete with the same error.
   async.Future<ApigatewayPolicy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -1247,15 +1172,12 @@ class ProjectsLocationsGatewaysResource {
   /// this method will complete with the same error.
   async.Future<ApigatewayListGatewaysResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1306,14 +1228,10 @@ class ProjectsLocationsGatewaysResource {
   async.Future<ApigatewayOperation> patch(
     ApigatewayGateway request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1359,13 +1277,9 @@ class ProjectsLocationsGatewaysResource {
   async.Future<ApigatewayPolicy> setIamPolicy(
     ApigatewaySetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1414,13 +1328,9 @@ class ProjectsLocationsGatewaysResource {
   async.Future<ApigatewayTestIamPermissionsResponse> testIamPermissions(
     ApigatewayTestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1478,13 +1388,9 @@ class ProjectsLocationsOperationsResource {
   async.Future<Empty> cancel(
     ApigatewayCancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1525,11 +1431,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1567,11 +1470,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ApigatewayOperation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1621,14 +1521,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ApigatewayListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1654,12 +1551,12 @@ class ApigatewayApi {
   /// Created time.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Display name.
   ///
   /// Optional.
-  core.String displayName;
+  core.String? displayName;
 
   /// Resource labels to represent user-provided metadata.
   ///
@@ -1667,7 +1564,7 @@ class ApigatewayApi {
   /// https://cloud.google.com/compute/docs/labeling-resources
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The name of a Google Managed Service (
   /// https://cloud.google.com/service-infrastructure/docs/glossary#managed).
@@ -1676,14 +1573,14 @@ class ApigatewayApi {
   /// project as this API.
   ///
   /// Optional. Immutable.
-  core.String managedService;
+  core.String? managedService;
 
   /// Resource name of the API.
   ///
   /// Format: projects/{project}/locations/global/apis/{api}
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// State of the API.
   ///
@@ -1695,12 +1592,12 @@ class ApigatewayApi {
   /// - "FAILED" : API creation failed.
   /// - "DELETING" : API is being deleted.
   /// - "UPDATING" : API is being updated.
-  core.String state;
+  core.String? state;
 
   /// Updated time.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   ApigatewayApi();
 
@@ -1734,14 +1631,14 @@ class ApigatewayApi {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (managedService != null) 'managedService': managedService,
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (managedService != null) 'managedService': managedService!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1751,12 +1648,12 @@ class ApigatewayApiConfig {
   /// Created time.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Display name.
   ///
   /// Optional.
-  core.String displayName;
+  core.String? displayName;
 
   /// The Google Cloud IAM Service Account that Gateways serving this config
   /// should use to authenticate to other services.
@@ -1768,14 +1665,14 @@ class ApigatewayApiConfig {
   /// IAP-secured service.
   ///
   /// Immutable.
-  core.String gatewayServiceAccount;
+  core.String? gatewayServiceAccount;
 
   /// gRPC service definition files.
   ///
   /// If specified, openapi_documents must not be included.
   ///
   /// Optional.
-  core.List<ApigatewayApiConfigGrpcServiceDefinition> grpcServices;
+  core.List<ApigatewayApiConfigGrpcServiceDefinition>? grpcServices;
 
   /// Resource labels to represent user-provided metadata.
   ///
@@ -1783,7 +1680,7 @@ class ApigatewayApiConfig {
   /// https://cloud.google.com/compute/docs/labeling-resources
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Service Configuration files.
   ///
@@ -1796,7 +1693,7 @@ class ApigatewayApiConfig {
   /// merged using these rules for nested fields.
   ///
   /// Optional.
-  core.List<ApigatewayApiConfigFile> managedServiceConfigs;
+  core.List<ApigatewayApiConfigFile>? managedServiceConfigs;
 
   /// Resource name of the API Config.
   ///
@@ -1804,7 +1701,7 @@ class ApigatewayApiConfig {
   /// projects/{project}/locations/global/apis/{api}/configs/{api_config}
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// OpenAPI specification documents.
   ///
@@ -1812,13 +1709,13 @@ class ApigatewayApiConfig {
   /// included.
   ///
   /// Optional.
-  core.List<ApigatewayApiConfigOpenApiDocument> openapiDocuments;
+  core.List<ApigatewayApiConfigOpenApiDocument>? openapiDocuments;
 
   /// The ID of the associated Service Config (
   /// https://cloud.google.com/service-infrastructure/docs/glossary#config).
   ///
   /// Output only.
-  core.String serviceConfigId;
+  core.String? serviceConfigId;
 
   /// State of the API Config.
   ///
@@ -1833,12 +1730,12 @@ class ApigatewayApiConfig {
   /// - "UPDATING" : API Config is being updated.
   /// - "ACTIVATING" : API Config settings are being activated in downstream
   /// systems. API Configs in this state cannot be used by Gateways.
-  core.String state;
+  core.String? state;
 
   /// Updated time.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   ApigatewayApiConfig();
 
@@ -1896,32 +1793,32 @@ class ApigatewayApiConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
         if (gatewayServiceAccount != null)
-          'gatewayServiceAccount': gatewayServiceAccount,
+          'gatewayServiceAccount': gatewayServiceAccount!,
         if (grpcServices != null)
-          'grpcServices': grpcServices.map((value) => value.toJson()).toList(),
-        if (labels != null) 'labels': labels,
+          'grpcServices': grpcServices!.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels!,
         if (managedServiceConfigs != null)
           'managedServiceConfigs':
-              managedServiceConfigs.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+              managedServiceConfigs!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
         if (openapiDocuments != null)
           'openapiDocuments':
-              openapiDocuments.map((value) => value.toJson()).toList(),
-        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId,
-        if (state != null) 'state': state,
-        if (updateTime != null) 'updateTime': updateTime,
+              openapiDocuments!.map((value) => value.toJson()).toList(),
+        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// A lightweight description of a file.
 class ApigatewayApiConfigFile {
   /// The bytes that constitute the file.
-  core.String contents;
-  core.List<core.int> get contentsAsBytes => convert.base64.decode(contents);
+  core.String? contents;
+  core.List<core.int> get contentsAsBytes => convert.base64.decode(contents!);
 
   set contentsAsBytes(core.List<core.int> _bytes) {
     contents =
@@ -1931,7 +1828,7 @@ class ApigatewayApiConfigFile {
   /// The file path (full or relative path).
   ///
   /// This is typically the path of the file when it is uploaded.
-  core.String path;
+  core.String? path;
 
   ApigatewayApiConfigFile();
 
@@ -1944,9 +1841,9 @@ class ApigatewayApiConfigFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contents != null) 'contents': contents,
-        if (path != null) 'path': path,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contents != null) 'contents': contents!,
+        if (path != null) 'path': path!,
       };
 }
 
@@ -1958,7 +1855,7 @@ class ApigatewayApiConfigGrpcServiceDefinition {
   /// imports and source info included. For an example test.proto file, the
   /// following command would put the value in a new file named out.pb. $ protoc
   /// --include_imports --include_source_info test.proto -o out.pb
-  ApigatewayApiConfigFile fileDescriptorSet;
+  ApigatewayApiConfigFile? fileDescriptorSet;
 
   /// Uncompiled proto files associated with the descriptor set, used for
   /// display purposes (server-side compilation is not supported).
@@ -1967,7 +1864,7 @@ class ApigatewayApiConfigGrpcServiceDefinition {
   /// file_descriptor_set.
   ///
   /// Optional.
-  core.List<ApigatewayApiConfigFile> source;
+  core.List<ApigatewayApiConfigFile>? source;
 
   ApigatewayApiConfigGrpcServiceDefinition();
 
@@ -1985,18 +1882,18 @@ class ApigatewayApiConfigGrpcServiceDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fileDescriptorSet != null)
-          'fileDescriptorSet': fileDescriptorSet.toJson(),
+          'fileDescriptorSet': fileDescriptorSet!.toJson(),
         if (source != null)
-          'source': source.map((value) => value.toJson()).toList(),
+          'source': source!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// An OpenAPI Specification Document describing an API.
 class ApigatewayApiConfigOpenApiDocument {
   /// The OpenAPI Specification document file.
-  ApigatewayApiConfigFile document;
+  ApigatewayApiConfigFile? document;
 
   ApigatewayApiConfigOpenApiDocument();
 
@@ -2007,8 +1904,8 @@ class ApigatewayApiConfigOpenApiDocument {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (document != null) 'document': document.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (document != null) 'document': document!.toJson(),
       };
 }
 
@@ -2031,13 +1928,13 @@ class ApigatewayApiConfigOpenApiDocument {
 /// aliya@example.com from DATA_WRITE logging.
 class ApigatewayAuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<ApigatewayAuditLogConfig> auditLogConfigs;
+  core.List<ApigatewayAuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   ApigatewayAuditConfig();
 
@@ -2054,11 +1951,11 @@ class ApigatewayAuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -2073,7 +1970,7 @@ class ApigatewayAuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -2081,7 +1978,7 @@ class ApigatewayAuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   ApigatewayAuditLogConfig();
 
@@ -2096,9 +1993,9 @@ class ApigatewayAuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -2112,7 +2009,7 @@ class ApigatewayBinding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ApigatewayExpr condition;
+  ApigatewayExpr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -2144,12 +2041,12 @@ class ApigatewayBinding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   ApigatewayBinding();
 
@@ -2168,10 +2065,10 @@ class ApigatewayBinding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -2183,7 +2080,7 @@ class ApigatewayCancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2211,24 +2108,24 @@ class ApigatewayExpr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   ApigatewayExpr();
 
@@ -2247,11 +2144,11 @@ class ApigatewayExpr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -2265,23 +2162,23 @@ class ApigatewayGateway {
   /// Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
   ///
   /// Required.
-  core.String apiConfig;
+  core.String? apiConfig;
 
   /// Created time.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The default API Gateway host name of the form
   /// `{gateway_id}-{hash}.{region_code}.gateway.dev`.
   ///
   /// Output only.
-  core.String defaultHostname;
+  core.String? defaultHostname;
 
   /// Display name.
   ///
   /// Optional.
-  core.String displayName;
+  core.String? displayName;
 
   /// Resource labels to represent user-provided metadata.
   ///
@@ -2289,14 +2186,14 @@ class ApigatewayGateway {
   /// https://cloud.google.com/compute/docs/labeling-resources
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Resource name of the Gateway.
   ///
   /// Format: projects/{project}/locations/{location}/gateways/{gateway}
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The current state of the Gateway.
   ///
@@ -2308,12 +2205,12 @@ class ApigatewayGateway {
   /// - "FAILED" : Gateway creation failed.
   /// - "DELETING" : Gateway is being deleted.
   /// - "UPDATING" : Gateway is being updated.
-  core.String state;
+  core.String? state;
 
   /// Updated time.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   ApigatewayGateway();
 
@@ -2350,28 +2247,28 @@ class ApigatewayGateway {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiConfig != null) 'apiConfig': apiConfig,
-        if (createTime != null) 'createTime': createTime,
-        if (defaultHostname != null) 'defaultHostname': defaultHostname,
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiConfig != null) 'apiConfig': apiConfig!,
+        if (createTime != null) 'createTime': createTime!,
+        if (defaultHostname != null) 'defaultHostname': defaultHostname!,
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// Response message for ApiGatewayService.ListApiConfigs
 class ApigatewayListApiConfigsResponse {
   /// API Configs.
-  core.List<ApigatewayApiConfig> apiConfigs;
+  core.List<ApigatewayApiConfig>? apiConfigs;
 
   /// Next page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Locations that could not be reached.
-  core.List<core.String> unreachableLocations;
+  core.List<core.String>? unreachableLocations;
 
   ApigatewayListApiConfigsResponse();
 
@@ -2392,25 +2289,25 @@ class ApigatewayListApiConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (apiConfigs != null)
-          'apiConfigs': apiConfigs.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'apiConfigs': apiConfigs!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachableLocations != null)
-          'unreachableLocations': unreachableLocations,
+          'unreachableLocations': unreachableLocations!,
       };
 }
 
 /// Response message for ApiGatewayService.ListApis
 class ApigatewayListApisResponse {
   /// APIs.
-  core.List<ApigatewayApi> apis;
+  core.List<ApigatewayApi>? apis;
 
   /// Next page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Locations that could not be reached.
-  core.List<core.String> unreachableLocations;
+  core.List<core.String>? unreachableLocations;
 
   ApigatewayListApisResponse();
 
@@ -2431,24 +2328,24 @@ class ApigatewayListApisResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apis != null) 'apis': apis.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apis != null) 'apis': apis!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachableLocations != null)
-          'unreachableLocations': unreachableLocations,
+          'unreachableLocations': unreachableLocations!,
       };
 }
 
 /// Response message for ApiGatewayService.ListGateways
 class ApigatewayListGatewaysResponse {
   /// Gateways.
-  core.List<ApigatewayGateway> gateways;
+  core.List<ApigatewayGateway>? gateways;
 
   /// Next page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Locations that could not be reached.
-  core.List<core.String> unreachableLocations;
+  core.List<core.String>? unreachableLocations;
 
   ApigatewayListGatewaysResponse();
 
@@ -2469,22 +2366,22 @@ class ApigatewayListGatewaysResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (gateways != null)
-          'gateways': gateways.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'gateways': gateways!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachableLocations != null)
-          'unreachableLocations': unreachableLocations,
+          'unreachableLocations': unreachableLocations!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ApigatewayListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<ApigatewayLocation> locations;
+  core.List<ApigatewayLocation>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ApigatewayListLocationsResponse();
 
@@ -2500,20 +2397,20 @@ class ApigatewayListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ApigatewayListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<ApigatewayOperation> operations;
+  core.List<ApigatewayOperation>? operations;
 
   ApigatewayListOperationsResponse();
 
@@ -2529,10 +2426,10 @@ class ApigatewayListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2541,17 +2438,17 @@ class ApigatewayLocation {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -2559,12 +2456,12 @@ class ApigatewayLocation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   ApigatewayLocation();
 
@@ -2598,12 +2495,12 @@ class ApigatewayLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2614,10 +2511,10 @@ class ApigatewayOperation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  ApigatewayStatus error;
+  ApigatewayStatus? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -2628,14 +2525,14 @@ class ApigatewayOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -2648,7 +2545,7 @@ class ApigatewayOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   ApigatewayOperation();
 
@@ -2683,12 +2580,12 @@ class ApigatewayOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -2697,22 +2594,22 @@ class ApigatewayOperationMetadata {
   /// API version used to start the operation.
   ///
   /// Output only.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// The time the operation was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Diagnostics generated during processing of configuration source files.
   ///
   /// Output only.
-  core.List<ApigatewayOperationMetadataDiagnostic> diagnostics;
+  core.List<ApigatewayOperationMetadataDiagnostic>? diagnostics;
 
   /// The time the operation finished running.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
@@ -2721,22 +2618,22 @@ class ApigatewayOperationMetadata {
   /// `Code.CANCELLED`.
   ///
   /// Output only.
-  core.bool requestedCancellation;
+  core.bool? requestedCancellation;
 
   /// Human-readable status of the operation, if any.
   ///
   /// Output only.
-  core.String statusMessage;
+  core.String? statusMessage;
 
   /// Server-defined resource path for the target of the operation.
   ///
   /// Output only.
-  core.String target;
+  core.String? target;
 
   /// Name of the verb executed by the operation.
   ///
   /// Output only.
-  core.String verb;
+  core.String? verb;
 
   ApigatewayOperationMetadata();
 
@@ -2771,27 +2668,27 @@ class ApigatewayOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (createTime != null) 'createTime': createTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (createTime != null) 'createTime': createTime!,
         if (diagnostics != null)
-          'diagnostics': diagnostics.map((value) => value.toJson()).toList(),
-        if (endTime != null) 'endTime': endTime,
+          'diagnostics': diagnostics!.map((value) => value.toJson()).toList(),
+        if (endTime != null) 'endTime': endTime!,
         if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation,
-        if (statusMessage != null) 'statusMessage': statusMessage,
-        if (target != null) 'target': target,
-        if (verb != null) 'verb': verb,
+          'requestedCancellation': requestedCancellation!,
+        if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
 /// Diagnostic information from configuration processing.
 class ApigatewayOperationMetadataDiagnostic {
   /// Location of the diagnostic.
-  core.String location;
+  core.String? location;
 
   /// The diagnostic message.
-  core.String message;
+  core.String? message;
 
   ApigatewayOperationMetadataDiagnostic();
 
@@ -2804,9 +2701,9 @@ class ApigatewayOperationMetadataDiagnostic {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (location != null) 'location': location,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (location != null) 'location': location!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -2843,14 +2740,14 @@ class ApigatewayOperationMetadataDiagnostic {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class ApigatewayPolicy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<ApigatewayAuditConfig> auditConfigs;
+  core.List<ApigatewayAuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<ApigatewayBinding> bindings;
+  core.List<ApigatewayBinding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -2864,8 +2761,8 @@ class ApigatewayPolicy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -2889,7 +2786,7 @@ class ApigatewayPolicy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   ApigatewayPolicy();
 
@@ -2914,13 +2811,13 @@ class ApigatewayPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -2931,13 +2828,13 @@ class ApigatewaySetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  ApigatewayPolicy policy;
+  ApigatewayPolicy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   ApigatewaySetIamPolicyRequest();
 
@@ -2951,9 +2848,9 @@ class ApigatewaySetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -2966,7 +2863,7 @@ class ApigatewaySetIamPolicyRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class ApigatewayStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -2974,13 +2871,13 @@ class ApigatewayStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   ApigatewayStatus();
 
@@ -3004,10 +2901,10 @@ class ApigatewayStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -3018,7 +2915,7 @@ class ApigatewayTestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   ApigatewayTestIamPermissionsRequest();
 
@@ -3030,8 +2927,8 @@ class ApigatewayTestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -3039,7 +2936,7 @@ class ApigatewayTestIamPermissionsRequest {
 class ApigatewayTestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   ApigatewayTestIamPermissionsResponse();
 
@@ -3051,8 +2948,8 @@ class ApigatewayTestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -3070,5 +2967,5 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }

@@ -106,10 +106,9 @@ class BillingAccountsResource {
   /// this method will complete with the same error.
   async.Future<BillingAccount> create(
     BillingAccount request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -149,11 +148,8 @@ class BillingAccountsResource {
   /// this method will complete with the same error.
   async.Future<BillingAccount> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -202,12 +198,9 @@ class BillingAccountsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -258,10 +251,10 @@ class BillingAccountsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBillingAccountsResponse> list({
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
@@ -312,14 +305,10 @@ class BillingAccountsResource {
   async.Future<BillingAccount> patch(
     BillingAccount request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -366,13 +355,9 @@ class BillingAccountsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -418,13 +403,9 @@ class BillingAccountsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -484,13 +465,10 @@ class BillingAccountsProjectsResource {
   /// this method will complete with the same error.
   async.Future<ListProjectBillingInfoResponse> list(
     core.String name, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -539,11 +517,8 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<ProjectBillingInfo> getBillingInfo(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -610,13 +585,9 @@ class ProjectsResource {
   async.Future<ProjectBillingInfo> updateBillingInfo(
     ProjectBillingInfo request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -663,9 +634,9 @@ class ServicesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -734,16 +705,13 @@ class ServicesSkusResource {
   /// this method will complete with the same error.
   async.Future<ListSkusResponse> list(
     core.String parent, {
-    core.String currencyCode,
-    core.String endTime,
-    core.int pageSize,
-    core.String pageToken,
-    core.String startTime,
-    core.String $fields,
+    core.String? currencyCode,
+    core.String? endTime,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? startTime,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (currencyCode != null) 'currencyCode': [currencyCode],
       if (endTime != null) 'endTime': [endTime],
@@ -772,21 +740,21 @@ class AggregationInfo {
   ///
   /// Example: If aggregation_level is "DAILY" and aggregation_count is 14,
   /// aggregation will be over 14 days.
-  core.int aggregationCount;
+  core.int? aggregationCount;
 
   ///
   /// Possible string values are:
   /// - "AGGREGATION_INTERVAL_UNSPECIFIED"
   /// - "DAILY"
   /// - "MONTHLY"
-  core.String aggregationInterval;
+  core.String? aggregationInterval;
 
   ///
   /// Possible string values are:
   /// - "AGGREGATION_LEVEL_UNSPECIFIED"
   /// - "ACCOUNT"
   /// - "PROJECT"
-  core.String aggregationLevel;
+  core.String? aggregationLevel;
 
   AggregationInfo();
 
@@ -802,11 +770,11 @@ class AggregationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aggregationCount != null) 'aggregationCount': aggregationCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aggregationCount != null) 'aggregationCount': aggregationCount!,
         if (aggregationInterval != null)
-          'aggregationInterval': aggregationInterval,
-        if (aggregationLevel != null) 'aggregationLevel': aggregationLevel,
+          'aggregationInterval': aggregationInterval!,
+        if (aggregationLevel != null) 'aggregationLevel': aggregationLevel!,
       };
 }
 
@@ -829,13 +797,13 @@ class AggregationInfo {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -851,11 +819,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -870,7 +838,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -878,7 +846,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -893,9 +861,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -908,7 +876,7 @@ class BillingAccount {
   /// Account`.
   ///
   /// This name is displayed in the Google Cloud Console.
-  core.String displayName;
+  core.String? displayName;
 
   /// If this account is a
   /// [subaccount](https://cloud.google.com/billing/docs/concepts), then this
@@ -916,7 +884,7 @@ class BillingAccount {
   /// resold through.
   ///
   /// Otherwise this will be empty.
-  core.String masterBillingAccount;
+  core.String? masterBillingAccount;
 
   /// The resource name of the billing account.
   ///
@@ -925,7 +893,7 @@ class BillingAccount {
   /// for billing account `012345-567890-ABCDEF`.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// True if the billing account is open, and will therefore be charged for any
   /// usage on associated projects.
@@ -934,7 +902,7 @@ class BillingAccount {
   /// with it will be unable to use paid services.
   ///
   /// Output only.
-  core.bool open;
+  core.bool? open;
 
   BillingAccount();
 
@@ -953,12 +921,12 @@ class BillingAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
         if (masterBillingAccount != null)
-          'masterBillingAccount': masterBillingAccount,
-        if (name != null) 'name': name,
-        if (open != null) 'open': open,
+          'masterBillingAccount': masterBillingAccount!,
+        if (name != null) 'name': name!,
+        if (open != null) 'open': open!,
       };
 }
 
@@ -972,7 +940,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -1004,12 +972,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -1028,10 +996,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1040,20 +1008,20 @@ class Category {
   /// The type of product the SKU refers to.
   ///
   /// Example: "Compute", "Storage", "Network", "ApplicationServices" etc.
-  core.String resourceFamily;
+  core.String? resourceFamily;
 
   /// A group classification for related SKUs.
   ///
   /// Example: "RAM", "GPU", "Prediction", "Ops", "GoogleEgress" etc.
-  core.String resourceGroup;
+  core.String? resourceGroup;
 
   /// The display name of the service this SKU belongs to.
-  core.String serviceDisplayName;
+  core.String? serviceDisplayName;
 
   /// Represents how the SKU is consumed.
   ///
   /// Example: "OnDemand", "Preemptible", "Commit1Mo", "Commit1Yr" etc.
-  core.String usageType;
+  core.String? usageType;
 
   Category();
 
@@ -1072,12 +1040,12 @@ class Category {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceFamily != null) 'resourceFamily': resourceFamily,
-        if (resourceGroup != null) 'resourceGroup': resourceGroup,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceFamily != null) 'resourceFamily': resourceFamily!,
+        if (resourceGroup != null) 'resourceGroup': resourceGroup!,
         if (serviceDisplayName != null)
-          'serviceDisplayName': serviceDisplayName,
-        if (usageType != null) 'usageType': usageType,
+          'serviceDisplayName': serviceDisplayName!,
+        if (usageType != null) 'usageType': usageType!,
       };
 }
 
@@ -1106,24 +1074,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -1142,11 +1110,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1155,7 +1123,7 @@ class GeoTaxonomy {
   /// The list of regions associated with a sku.
   ///
   /// Empty for Global skus, which are associated with all Google Cloud regions.
-  core.List<core.String> regions;
+  core.List<core.String>? regions;
 
   /// The type of Geo Taxonomy: GLOBAL, REGIONAL, or MULTI_REGIONAL.
   /// Possible string values are:
@@ -1165,7 +1133,7 @@ class GeoTaxonomy {
   /// - "REGIONAL" : The sku is available in a specific region, e.g. "us-west2".
   /// - "MULTI_REGIONAL" : The sku is associated with multiple regions, e.g.
   /// "us-west2" and "us-east1".
-  core.String type;
+  core.String? type;
 
   GeoTaxonomy();
 
@@ -1180,23 +1148,23 @@ class GeoTaxonomy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (regions != null) 'regions': regions,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (regions != null) 'regions': regions!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// Response message for `ListBillingAccounts`.
 class ListBillingAccountsResponse {
   /// A list of billing accounts.
-  core.List<BillingAccount> billingAccounts;
+  core.List<BillingAccount>? billingAccounts;
 
   /// A token to retrieve the next page of results.
   ///
   /// To retrieve the next page, call `ListBillingAccounts` again with the
   /// `page_token` field set to this value. This field is empty if there are no
   /// more results to retrieve.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListBillingAccountsResponse();
 
@@ -1212,11 +1180,11 @@ class ListBillingAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (billingAccounts != null)
           'billingAccounts':
-              billingAccounts.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              billingAccounts!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1227,11 +1195,11 @@ class ListProjectBillingInfoResponse {
   /// To retrieve the next page, call `ListProjectBillingInfo` again with the
   /// `page_token` field set to this value. This field is empty if there are no
   /// more results to retrieve.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of `ProjectBillingInfo` resources representing the projects
   /// associated with the billing account.
-  core.List<ProjectBillingInfo> projectBillingInfo;
+  core.List<ProjectBillingInfo>? projectBillingInfo;
 
   ListProjectBillingInfoResponse();
 
@@ -1247,11 +1215,11 @@ class ListProjectBillingInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (projectBillingInfo != null)
           'projectBillingInfo':
-              projectBillingInfo.map((value) => value.toJson()).toList(),
+              projectBillingInfo!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1262,10 +1230,10 @@ class ListServicesResponse {
   /// To retrieve the next page, call `ListServices` again with the `page_token`
   /// field set to this value. This field is empty if there are no more results
   /// to retrieve.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of services.
-  core.List<Service> services;
+  core.List<Service>? services;
 
   ListServicesResponse();
 
@@ -1281,10 +1249,10 @@ class ListServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (services != null)
-          'services': services.map((value) => value.toJson()).toList(),
+          'services': services!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1295,10 +1263,10 @@ class ListSkusResponse {
   /// To retrieve the next page, call `ListSkus` again with the `page_token`
   /// field set to this value. This field is empty if there are no more results
   /// to retrieve.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of public SKUs of the given service.
-  core.List<Sku> skus;
+  core.List<Sku>? skus;
 
   ListSkusResponse();
 
@@ -1314,16 +1282,16 @@ class ListSkusResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (skus != null) 'skus': skus.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (skus != null) 'skus': skus!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Represents an amount of money with its currency type.
 class Money {
   /// The three-letter currency code defined in ISO 4217.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Number of nano (10^-9) units of the amount.
   ///
@@ -1332,12 +1300,12 @@ class Money {
   /// `nanos` can be positive, zero, or negative. If `units` is negative,
   /// `nanos` must be negative or zero. For example $-1.75 is represented as
   /// `units`=-1 and `nanos`=-750,000,000.
-  core.int nanos;
+  core.int? nanos;
 
   /// The whole units of the amount.
   ///
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-  core.String units;
+  core.String? units;
 
   Money();
 
@@ -1353,10 +1321,10 @@ class Money {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (nanos != null) 'nanos': nanos,
-        if (units != null) 'units': units,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (nanos != null) 'nanos': nanos!,
+        if (units != null) 'units': units!,
       };
 }
 
@@ -1393,14 +1361,14 @@ class Money {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -1414,8 +1382,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -1439,7 +1407,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -1464,13 +1432,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1484,7 +1452,7 @@ class PricingExpression {
   /// The base unit for the SKU which is the unit used in usage exports.
   ///
   /// Example: "By"
-  core.String baseUnit;
+  core.String? baseUnit;
 
   /// Conversion factor for converting from price per usage_unit to price per
   /// base_unit, and start_usage_amount to start_usage_amount in base_unit.
@@ -1492,12 +1460,12 @@ class PricingExpression {
   /// unit_price / base_unit_conversion_factor = price per base_unit.
   /// start_usage_amount * base_unit_conversion_factor = start_usage_amount in
   /// base_unit.
-  core.double baseUnitConversionFactor;
+  core.double? baseUnitConversionFactor;
 
   /// The base unit in human readable form.
   ///
   /// Example: "byte".
-  core.String baseUnitDescription;
+  core.String? baseUnitDescription;
 
   /// The recommended quantity of units for displaying pricing info.
   ///
@@ -1507,24 +1475,24 @@ class PricingExpression {
   /// the unit_price is "0.0001 USD", the usage_unit is "GB" and the
   /// display_quantity is "1000" then the recommended way of displaying the
   /// pricing info is "0.10 USD per 1000 GB"
-  core.double displayQuantity;
+  core.double? displayQuantity;
 
   /// The list of tiered rates for this pricing.
   ///
   /// The total cost is computed by applying each of the tiered rates on usage.
   /// This repeated list is sorted by ascending order of start_usage_amount.
-  core.List<TierRate> tieredRates;
+  core.List<TierRate>? tieredRates;
 
   /// The short hand for unit of usage this pricing is specified in.
   ///
   /// Example: usage_unit of "GiBy" means that usage is specified in "Gibi
   /// Byte".
-  core.String usageUnit;
+  core.String? usageUnit;
 
   /// The unit of usage in human readable form.
   ///
   /// Example: "gibi byte".
-  core.String usageUnitDescription;
+  core.String? usageUnitDescription;
 
   PricingExpression();
 
@@ -1556,18 +1524,18 @@ class PricingExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (baseUnit != null) 'baseUnit': baseUnit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (baseUnit != null) 'baseUnit': baseUnit!,
         if (baseUnitConversionFactor != null)
-          'baseUnitConversionFactor': baseUnitConversionFactor,
+          'baseUnitConversionFactor': baseUnitConversionFactor!,
         if (baseUnitDescription != null)
-          'baseUnitDescription': baseUnitDescription,
-        if (displayQuantity != null) 'displayQuantity': displayQuantity,
+          'baseUnitDescription': baseUnitDescription!,
+        if (displayQuantity != null) 'displayQuantity': displayQuantity!,
         if (tieredRates != null)
-          'tieredRates': tieredRates.map((value) => value.toJson()).toList(),
-        if (usageUnit != null) 'usageUnit': usageUnit,
+          'tieredRates': tieredRates!.map((value) => value.toJson()).toList(),
+        if (usageUnit != null) 'usageUnit': usageUnit!,
         if (usageUnitDescription != null)
-          'usageUnitDescription': usageUnitDescription,
+          'usageUnitDescription': usageUnitDescription!,
       };
 }
 
@@ -1577,7 +1545,7 @@ class PricingInfo {
   ///
   /// This can be left unspecified if the pricing expression doesn't require
   /// aggregation.
-  AggregationInfo aggregationInfo;
+  AggregationInfo? aggregationInfo;
 
   /// Conversion rate used for currency conversion, from USD to the currency
   /// specified in the request.
@@ -1585,7 +1553,7 @@ class PricingInfo {
   /// This includes any surcharge collected for billing in non USD currency. If
   /// a currency is not specified in the request this defaults to 1.0. Example:
   /// USD * currency_conversion_rate = JPY
-  core.double currencyConversionRate;
+  core.double? currencyConversionRate;
 
   /// The timestamp from which this pricing was effective within the requested
   /// time range.
@@ -1594,16 +1562,16 @@ class PricingInfo {
   /// the request and less than the end_time field in the request. If a time
   /// range was not specified in the request this field will be equivalent to a
   /// time within the last 12 hours, indicating the latest pricing info.
-  core.String effectiveTime;
+  core.String? effectiveTime;
 
   /// Expresses the pricing formula.
   ///
   /// See `PricingExpression` for an example.
-  PricingExpression pricingExpression;
+  PricingExpression? pricingExpression;
 
   /// An optional human readable summary of the pricing information, has a
   /// maximum length of 256 characters.
-  core.String summary;
+  core.String? summary;
 
   PricingInfo();
 
@@ -1628,15 +1596,15 @@ class PricingInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (aggregationInfo != null)
-          'aggregationInfo': aggregationInfo.toJson(),
+          'aggregationInfo': aggregationInfo!.toJson(),
         if (currencyConversionRate != null)
-          'currencyConversionRate': currencyConversionRate,
-        if (effectiveTime != null) 'effectiveTime': effectiveTime,
+          'currencyConversionRate': currencyConversionRate!,
+        if (effectiveTime != null) 'effectiveTime': effectiveTime!,
         if (pricingExpression != null)
-          'pricingExpression': pricingExpression.toJson(),
-        if (summary != null) 'summary': summary,
+          'pricingExpression': pricingExpression!.toJson(),
+        if (summary != null) 'summary': summary!,
       };
 }
 
@@ -1649,7 +1617,7 @@ class ProjectBillingInfo {
   /// any.
   ///
   /// For example, `billingAccounts/012345-567890-ABCDEF`.
-  core.String billingAccountName;
+  core.String? billingAccountName;
 
   /// True if the project is associated with an open billing account, to which
   /// usage on the project is charged.
@@ -1657,7 +1625,7 @@ class ProjectBillingInfo {
   /// False if the project is associated with a closed billing account, or no
   /// billing account at all, and therefore cannot use paid services. This field
   /// is read-only.
-  core.bool billingEnabled;
+  core.bool? billingEnabled;
 
   /// The resource name for the `ProjectBillingInfo`; has the form
   /// `projects/{project_id}/billingInfo`.
@@ -1665,14 +1633,14 @@ class ProjectBillingInfo {
   /// For example, the resource name for the billing information for project
   /// `tokyo-rain-123` would be `projects/tokyo-rain-123/billingInfo`. This
   /// field is read-only.
-  core.String name;
+  core.String? name;
 
   /// The ID of the project that this `ProjectBillingInfo` represents, such as
   /// `tokyo-rain-123`.
   ///
   /// This is a convenience field so that you don't need to parse the `name`
   /// field to obtain a project ID. This field is read-only.
-  core.String projectId;
+  core.String? projectId;
 
   ProjectBillingInfo();
 
@@ -1691,12 +1659,12 @@ class ProjectBillingInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (billingAccountName != null)
-          'billingAccountName': billingAccountName,
-        if (billingEnabled != null) 'billingEnabled': billingEnabled,
-        if (name != null) 'name': name,
-        if (projectId != null) 'projectId': projectId,
+          'billingAccountName': billingAccountName!,
+        if (billingEnabled != null) 'billingEnabled': billingEnabled!,
+        if (name != null) 'name': name!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
@@ -1705,20 +1673,20 @@ class Service {
   /// The business under which the service is offered.
   ///
   /// Ex. "businessEntities/GCP", "businessEntities/Maps"
-  core.String businessEntityName;
+  core.String? businessEntityName;
 
   /// A human readable display name for this service.
-  core.String displayName;
+  core.String? displayName;
 
   /// The resource name for the service.
   ///
   /// Example: "services/DA34-426B-A397"
-  core.String name;
+  core.String? name;
 
   /// The identifier for the service.
   ///
   /// Example: "DA34-426B-A397"
-  core.String serviceId;
+  core.String? serviceId;
 
   Service();
 
@@ -1737,12 +1705,12 @@ class Service {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (businessEntityName != null)
-          'businessEntityName': businessEntityName,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (serviceId != null) 'serviceId': serviceId,
+          'businessEntityName': businessEntityName!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (serviceId != null) 'serviceId': serviceId!,
       };
 }
 
@@ -1753,13 +1721,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -1773,47 +1741,47 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
 /// Encapsulates a single SKU in Google Cloud Platform
 class Sku {
   /// The category hierarchy of this SKU, purely for organizational purpose.
-  Category category;
+  Category? category;
 
   /// A human readable description of the SKU, has a maximum length of 256
   /// characters.
-  core.String description;
+  core.String? description;
 
   /// The geographic taxonomy for this sku.
-  GeoTaxonomy geoTaxonomy;
+  GeoTaxonomy? geoTaxonomy;
 
   /// The resource name for the SKU.
   ///
   /// Example: "services/DA34-426B-A397/skus/AA95-CD31-42FE"
-  core.String name;
+  core.String? name;
 
   /// A timeline of pricing info for this SKU in chronological order.
-  core.List<PricingInfo> pricingInfo;
+  core.List<PricingInfo>? pricingInfo;
 
   /// Identifies the service provider.
   ///
   /// This is 'Google' for first party services in Google Cloud Platform.
-  core.String serviceProviderName;
+  core.String? serviceProviderName;
 
   /// List of service regions this SKU is offered at.
   ///
   /// Example: "asia-east1" Service regions can be found at
   /// https://cloud.google.com/about/locations/
-  core.List<core.String> serviceRegions;
+  core.List<core.String>? serviceRegions;
 
   /// The identifier for the SKU.
   ///
   /// Example: "AA95-CD31-42FE"
-  core.String skuId;
+  core.String? skuId;
 
   Sku();
 
@@ -1851,17 +1819,17 @@ class Sku {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (category != null) 'category': category.toJson(),
-        if (description != null) 'description': description,
-        if (geoTaxonomy != null) 'geoTaxonomy': geoTaxonomy.toJson(),
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (category != null) 'category': category!.toJson(),
+        if (description != null) 'description': description!,
+        if (geoTaxonomy != null) 'geoTaxonomy': geoTaxonomy!.toJson(),
+        if (name != null) 'name': name!,
         if (pricingInfo != null)
-          'pricingInfo': pricingInfo.map((value) => value.toJson()).toList(),
+          'pricingInfo': pricingInfo!.map((value) => value.toJson()).toList(),
         if (serviceProviderName != null)
-          'serviceProviderName': serviceProviderName,
-        if (serviceRegions != null) 'serviceRegions': serviceRegions,
-        if (skuId != null) 'skuId': skuId,
+          'serviceProviderName': serviceProviderName!,
+        if (serviceRegions != null) 'serviceRegions': serviceRegions!,
+        if (skuId != null) 'skuId': skuId!,
       };
 }
 
@@ -1872,7 +1840,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -1884,8 +1852,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -1893,7 +1861,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -1905,8 +1873,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -1916,12 +1884,12 @@ class TierRate {
   ///
   /// Example: start_usage_amount of 10 indicates that the usage will be priced
   /// at the unit_price after the first 10 usage_units.
-  core.double startUsageAmount;
+  core.double? startUsageAmount;
 
   /// The price per unit of usage.
   ///
   /// Example: unit_price of amount $10 indicates that each unit will cost $10.
-  Money unitPrice;
+  Money? unitPrice;
 
   TierRate();
 
@@ -1935,8 +1903,8 @@ class TierRate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (startUsageAmount != null) 'startUsageAmount': startUsageAmount,
-        if (unitPrice != null) 'unitPrice': unitPrice.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (startUsageAmount != null) 'startUsageAmount': startUsageAmount!,
+        if (unitPrice != null) 'unitPrice': unitPrice!.toJson(),
       };
 }

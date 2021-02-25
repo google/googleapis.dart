@@ -77,14 +77,8 @@ class ApisResource {
   async.Future<RestDescription> getRest(
     core.String api,
     core.String version, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (api == null) {
-      throw core.ArgumentError('Parameter api is required.');
-    }
-    if (version == null) {
-      throw core.ArgumentError('Parameter version is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -123,9 +117,9 @@ class ApisResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DirectoryList> list({
-    core.String name,
-    core.bool preferred,
-    core.String $fields,
+    core.String? name,
+    core.bool? preferred,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (name != null) 'name': [name],
@@ -148,10 +142,10 @@ class ApisResource {
 /// Links to 16x16 and 32x32 icons representing the API.
 class DirectoryListItemsIcons {
   /// The URL of the 16x16 icon.
-  core.String x16;
+  core.String? x16;
 
   /// The URL of the 32x32 icon.
-  core.String x32;
+  core.String? x32;
 
   DirectoryListItemsIcons();
 
@@ -164,48 +158,48 @@ class DirectoryListItemsIcons {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (x16 != null) 'x16': x16,
-        if (x32 != null) 'x32': x32,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (x16 != null) 'x16': x16!,
+        if (x32 != null) 'x32': x32!,
       };
 }
 
 class DirectoryListItems {
   /// The description of this API.
-  core.String description;
+  core.String? description;
 
   /// A link to the discovery document.
-  core.String discoveryLink;
+  core.String? discoveryLink;
 
   /// The URL for the discovery REST document.
-  core.String discoveryRestUrl;
+  core.String? discoveryRestUrl;
 
   /// A link to human readable documentation for the API.
-  core.String documentationLink;
+  core.String? documentationLink;
 
   /// Links to 16x16 and 32x32 icons representing the API.
-  DirectoryListItemsIcons icons;
+  DirectoryListItemsIcons? icons;
 
   /// The id of this API.
-  core.String id;
+  core.String? id;
 
   /// The kind for this response.
-  core.String kind;
+  core.String? kind;
 
   /// Labels for the status of this API, such as labs or deprecated.
-  core.List<core.String> labels;
+  core.List<core.String>? labels;
 
   /// The name of the API.
-  core.String name;
+  core.String? name;
 
   /// True if this version is the preferred version to use.
-  core.bool preferred;
+  core.bool? preferred;
 
   /// The title of this API.
-  core.String title;
+  core.String? title;
 
   /// The version of the API.
-  core.String version;
+  core.String? version;
 
   DirectoryListItems();
 
@@ -251,33 +245,33 @@ class DirectoryListItems {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (discoveryLink != null) 'discoveryLink': discoveryLink,
-        if (discoveryRestUrl != null) 'discoveryRestUrl': discoveryRestUrl,
-        if (documentationLink != null) 'documentationLink': documentationLink,
-        if (icons != null) 'icons': icons.toJson(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (preferred != null) 'preferred': preferred,
-        if (title != null) 'title': title,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (discoveryLink != null) 'discoveryLink': discoveryLink!,
+        if (discoveryRestUrl != null) 'discoveryRestUrl': discoveryRestUrl!,
+        if (documentationLink != null) 'documentationLink': documentationLink!,
+        if (icons != null) 'icons': icons!.toJson(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (preferred != null) 'preferred': preferred!,
+        if (title != null) 'title': title!,
+        if (version != null) 'version': version!,
       };
 }
 
 class DirectoryList {
   /// Indicate the version of the Discovery API used to generate this doc.
-  core.String discoveryVersion;
+  core.String? discoveryVersion;
 
   /// The individual directory entries.
   ///
   /// One entry per api/version pair.
-  core.List<DirectoryListItems> items;
+  core.List<DirectoryListItems>? items;
 
   /// The kind for this response.
-  core.String kind;
+  core.String? kind;
 
   DirectoryList();
 
@@ -296,18 +290,18 @@ class DirectoryList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (discoveryVersion != null) 'discoveryVersion': discoveryVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (discoveryVersion != null) 'discoveryVersion': discoveryVersion!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Additional information about this property.
 class JsonSchemaAnnotations {
   /// A list of methods for which this property is required on requests.
-  core.List<core.String> required;
+  core.List<core.String>? required;
 
   JsonSchemaAnnotations();
 
@@ -319,14 +313,14 @@ class JsonSchemaAnnotations {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (required != null) 'required': required,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (required != null) 'required': required!,
       };
 }
 
 class JsonSchemaVariantMap {
-  core.String P_ref;
-  core.String typeValue;
+  core.String? P_ref;
+  core.String? typeValue;
 
   JsonSchemaVariantMap();
 
@@ -339,9 +333,9 @@ class JsonSchemaVariantMap {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (P_ref != null) '\$ref': P_ref,
-        if (typeValue != null) 'type_value': typeValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (P_ref != null) '\$ref': P_ref!,
+        if (typeValue != null) 'type_value': typeValue!,
       };
 }
 
@@ -351,10 +345,10 @@ class JsonSchemaVariantMap {
 /// Its value must exist in a map of descriminant values to schema names.
 class JsonSchemaVariant {
   /// The name of the type discriminant property.
-  core.String discriminant;
+  core.String? discriminant;
 
   /// The map of discriminant value to schema to use for parsing..
-  core.List<JsonSchemaVariantMap> map;
+  core.List<JsonSchemaVariantMap>? map;
 
   JsonSchemaVariant();
 
@@ -370,9 +364,9 @@ class JsonSchemaVariant {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (discriminant != null) 'discriminant': discriminant,
-        if (map != null) 'map': map.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (discriminant != null) 'discriminant': discriminant!,
+        if (map != null) 'map': map!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -380,84 +374,84 @@ class JsonSchema {
   /// A reference to another schema.
   ///
   /// The value of this property is the "id" of another schema.
-  core.String P_ref;
+  core.String? P_ref;
 
   /// If this is a schema for an object, this property is the schema for any
   /// additional properties with dynamic keys on this object.
-  JsonSchema additionalProperties;
+  JsonSchema? additionalProperties;
 
   /// Additional information about this property.
-  JsonSchemaAnnotations annotations;
+  JsonSchemaAnnotations? annotations;
 
   /// The default value of this property (if one exists).
-  core.String default_;
+  core.String? default_;
 
   /// A description of this object.
-  core.String description;
+  core.String? description;
 
   /// Values this parameter may take (if it is an enum).
-  core.List<core.String> enum_;
+  core.List<core.String>? enum_;
 
   /// The descriptions for the enums.
   ///
   /// Each position maps to the corresponding value in the "enum" array.
-  core.List<core.String> enumDescriptions;
+  core.List<core.String>? enumDescriptions;
 
   /// An additional regular expression or key that helps constrain the value.
   ///
   /// For more details see:
   /// http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.23
-  core.String format;
+  core.String? format;
 
   /// Unique identifier for this schema.
-  core.String id;
+  core.String? id;
 
   /// If this is a schema for an array, this property is the schema for each
   /// element in the array.
-  JsonSchema items;
+  JsonSchema? items;
 
   /// Whether this parameter goes in the query or the path for REST requests.
-  core.String location;
+  core.String? location;
 
   /// The maximum value of this parameter.
-  core.String maximum;
+  core.String? maximum;
 
   /// The minimum value of this parameter.
-  core.String minimum;
+  core.String? minimum;
 
   /// The regular expression this parameter must conform to.
   ///
   /// Uses Java 6 regex format:
   /// http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html
-  core.String pattern;
+  core.String? pattern;
 
   /// If this is a schema for an object, list the schema for each property of
   /// this object.
-  core.Map<core.String, JsonSchema> properties;
+  core.Map<core.String, JsonSchema>? properties;
 
   /// The value is read-only, generated by the service.
   ///
   /// The value cannot be modified by the client. If the value is included in a
   /// POST, PUT, or PATCH request, it is ignored by the service.
-  core.bool readOnly;
+  core.bool? readOnly;
 
   /// Whether this parameter may appear multiple times.
-  core.bool repeated;
+  core.bool? repeated;
 
   /// Whether the parameter is required.
-  core.bool required;
+  core.bool? required;
 
   /// The value type for this schema.
   ///
   /// A list of values can be found here:
   /// http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.1
-  core.String type;
+  core.String? type;
 
   /// In a variant data type, the value of one property is used to determine how
   /// to interpret the entire entity.
   ///
   /// Its value must exist in a map of descriminant values to schema names.
-  JsonSchemaVariant variant;
+  JsonSchemaVariant? variant;
 
   JsonSchema();
 
@@ -513,7 +507,7 @@ class JsonSchema {
     }
     if (_json.containsKey('properties')) {
       properties = (_json['properties'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -539,37 +533,37 @@ class JsonSchema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (P_ref != null) '\$ref': P_ref,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (P_ref != null) '\$ref': P_ref!,
         if (additionalProperties != null)
-          'additionalProperties': additionalProperties.toJson(),
-        if (annotations != null) 'annotations': annotations.toJson(),
-        if (default_ != null) 'default': default_,
-        if (description != null) 'description': description,
-        if (enum_ != null) 'enum': enum_,
-        if (enumDescriptions != null) 'enumDescriptions': enumDescriptions,
-        if (format != null) 'format': format,
-        if (id != null) 'id': id,
-        if (items != null) 'items': items.toJson(),
-        if (location != null) 'location': location,
-        if (maximum != null) 'maximum': maximum,
-        if (minimum != null) 'minimum': minimum,
-        if (pattern != null) 'pattern': pattern,
+          'additionalProperties': additionalProperties!.toJson(),
+        if (annotations != null) 'annotations': annotations!.toJson(),
+        if (default_ != null) 'default': default_!,
+        if (description != null) 'description': description!,
+        if (enum_ != null) 'enum': enum_!,
+        if (enumDescriptions != null) 'enumDescriptions': enumDescriptions!,
+        if (format != null) 'format': format!,
+        if (id != null) 'id': id!,
+        if (items != null) 'items': items!.toJson(),
+        if (location != null) 'location': location!,
+        if (maximum != null) 'maximum': maximum!,
+        if (minimum != null) 'minimum': minimum!,
+        if (pattern != null) 'pattern': pattern!,
         if (properties != null)
           'properties':
-              properties.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (readOnly != null) 'readOnly': readOnly,
-        if (repeated != null) 'repeated': repeated,
-        if (required != null) 'required': required,
-        if (type != null) 'type': type,
-        if (variant != null) 'variant': variant.toJson(),
+              properties!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (readOnly != null) 'readOnly': readOnly!,
+        if (repeated != null) 'repeated': repeated!,
+        if (required != null) 'required': required!,
+        if (type != null) 'type': type!,
+        if (variant != null) 'variant': variant!.toJson(),
       };
 }
 
 /// The scope value.
 class RestDescriptionAuthOauth2ScopesValue {
   /// Description of scope.
-  core.String description;
+  core.String? description;
 
   RestDescriptionAuthOauth2ScopesValue();
 
@@ -579,21 +573,23 @@ class RestDescriptionAuthOauth2ScopesValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
       };
 }
 
 /// OAuth 2.0 authentication information.
 class RestDescriptionAuthOauth2 {
   /// Available OAuth 2.0 scopes.
-  core.Map<core.String, RestDescriptionAuthOauth2ScopesValue> scopes;
+  core.Map<core.String, RestDescriptionAuthOauth2ScopesValue>? scopes;
 
   RestDescriptionAuthOauth2();
 
   RestDescriptionAuthOauth2.fromJson(core.Map _json) {
     if (_json.containsKey('scopes')) {
-      scopes = (_json['scopes'] as core.Map).cast<core.String, core.Map>().map(
+      scopes = (_json['scopes'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               RestDescriptionAuthOauth2ScopesValue.fromJson(
@@ -603,17 +599,17 @@ class RestDescriptionAuthOauth2 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (scopes != null)
           'scopes':
-              scopes.map((key, item) => core.MapEntry(key, item.toJson())),
+              scopes!.map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
 
 /// Authentication information.
 class RestDescriptionAuth {
   /// OAuth 2.0 authentication information.
-  RestDescriptionAuthOauth2 oauth2;
+  RestDescriptionAuthOauth2? oauth2;
 
   RestDescriptionAuth();
 
@@ -624,18 +620,18 @@ class RestDescriptionAuth {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (oauth2 != null) 'oauth2': oauth2.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (oauth2 != null) 'oauth2': oauth2!.toJson(),
       };
 }
 
 /// Links to 16x16 and 32x32 icons representing the API.
 class RestDescriptionIcons {
   /// The URL of the 16x16 icon.
-  core.String x16;
+  core.String? x16;
 
   /// The URL of the 32x32 icon.
-  core.String x32;
+  core.String? x32;
 
   RestDescriptionIcons();
 
@@ -648,115 +644,115 @@ class RestDescriptionIcons {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (x16 != null) 'x16': x16,
-        if (x32 != null) 'x32': x32,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (x16 != null) 'x16': x16!,
+        if (x32 != null) 'x32': x32!,
       };
 }
 
 class RestDescription {
   /// Authentication information.
-  RestDescriptionAuth auth;
+  RestDescriptionAuth? auth;
 
   /// The base path for REST requests.
   ///
   /// Deprecated.
-  core.String basePath;
+  core.String? basePath;
 
   /// The base URL for REST requests.
   ///
   /// Deprecated.
-  core.String baseUrl;
+  core.String? baseUrl;
 
   /// The path for REST batch requests.
-  core.String batchPath;
+  core.String? batchPath;
 
   /// Indicates how the API name should be capitalized and split into various
   /// parts.
   ///
   /// Useful for generating pretty class names.
-  core.String canonicalName;
+  core.String? canonicalName;
 
   /// The description of this API.
-  core.String description;
+  core.String? description;
 
   /// Indicate the version of the Discovery API used to generate this doc.
-  core.String discoveryVersion;
+  core.String? discoveryVersion;
 
   /// A link to human readable documentation for the API.
-  core.String documentationLink;
+  core.String? documentationLink;
 
   /// The ETag for this response.
-  core.String etag;
+  core.String? etag;
 
   /// Enable exponential backoff for suitable methods in the generated clients.
-  core.bool exponentialBackoffDefault;
+  core.bool? exponentialBackoffDefault;
 
   /// A list of supported features for this API.
-  core.List<core.String> features;
+  core.List<core.String>? features;
 
   /// Links to 16x16 and 32x32 icons representing the API.
-  RestDescriptionIcons icons;
+  RestDescriptionIcons? icons;
 
   /// The ID of this API.
-  core.String id;
+  core.String? id;
 
   /// The kind for this response.
-  core.String kind;
+  core.String? kind;
 
   /// Labels for the status of this API, such as labs or deprecated.
-  core.List<core.String> labels;
+  core.List<core.String>? labels;
 
   /// API-level methods for this API.
-  core.Map<core.String, RestMethod> methods;
+  core.Map<core.String, RestMethod>? methods;
 
   /// The name of this API.
-  core.String name;
+  core.String? name;
 
   /// The domain of the owner of this API.
   ///
   /// Together with the ownerName and a packagePath values, this can be used to
   /// generate a library for this API which would have a unique fully qualified
   /// name.
-  core.String ownerDomain;
+  core.String? ownerDomain;
 
   /// The name of the owner of this API.
   ///
   /// See ownerDomain.
-  core.String ownerName;
+  core.String? ownerName;
 
   /// The package of the owner of this API.
   ///
   /// See ownerDomain.
-  core.String packagePath;
+  core.String? packagePath;
 
   /// Common parameters that apply across all apis.
-  core.Map<core.String, JsonSchema> parameters;
+  core.Map<core.String, JsonSchema>? parameters;
 
   /// The protocol described by this document.
-  core.String protocol;
+  core.String? protocol;
 
   /// The resources in this API.
-  core.Map<core.String, RestResource> resources;
+  core.Map<core.String, RestResource>? resources;
 
   /// The version of this API.
-  core.String revision;
+  core.String? revision;
 
   /// The root URL under which all API services live.
-  core.String rootUrl;
+  core.String? rootUrl;
 
   /// The schemas for this API.
-  core.Map<core.String, JsonSchema> schemas;
+  core.Map<core.String, JsonSchema>? schemas;
 
   /// The base path for all REST requests.
-  core.String servicePath;
+  core.String? servicePath;
 
   /// The title of this API.
-  core.String title;
+  core.String? title;
 
   /// The version of this API.
-  core.String version;
-  core.bool versionModule;
+  core.String? version;
+  core.bool? versionModule;
 
   RestDescription();
 
@@ -815,7 +811,7 @@ class RestDescription {
     }
     if (_json.containsKey('methods')) {
       methods = (_json['methods'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -837,7 +833,7 @@ class RestDescription {
     }
     if (_json.containsKey('parameters')) {
       parameters = (_json['parameters'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -849,14 +845,15 @@ class RestDescription {
       protocol = _json['protocol'] as core.String;
     }
     if (_json.containsKey('resources')) {
-      resources =
-          (_json['resources'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  RestResource.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      resources = (_json['resources'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              RestResource.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('revision')) {
       revision = _json['revision'] as core.String;
@@ -866,7 +863,7 @@ class RestDescription {
     }
     if (_json.containsKey('schemas')) {
       schemas = (_json['schemas'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -888,58 +885,58 @@ class RestDescription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (auth != null) 'auth': auth.toJson(),
-        if (basePath != null) 'basePath': basePath,
-        if (baseUrl != null) 'baseUrl': baseUrl,
-        if (batchPath != null) 'batchPath': batchPath,
-        if (canonicalName != null) 'canonicalName': canonicalName,
-        if (description != null) 'description': description,
-        if (discoveryVersion != null) 'discoveryVersion': discoveryVersion,
-        if (documentationLink != null) 'documentationLink': documentationLink,
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (auth != null) 'auth': auth!.toJson(),
+        if (basePath != null) 'basePath': basePath!,
+        if (baseUrl != null) 'baseUrl': baseUrl!,
+        if (batchPath != null) 'batchPath': batchPath!,
+        if (canonicalName != null) 'canonicalName': canonicalName!,
+        if (description != null) 'description': description!,
+        if (discoveryVersion != null) 'discoveryVersion': discoveryVersion!,
+        if (documentationLink != null) 'documentationLink': documentationLink!,
+        if (etag != null) 'etag': etag!,
         if (exponentialBackoffDefault != null)
-          'exponentialBackoffDefault': exponentialBackoffDefault,
-        if (features != null) 'features': features,
-        if (icons != null) 'icons': icons.toJson(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (labels != null) 'labels': labels,
+          'exponentialBackoffDefault': exponentialBackoffDefault!,
+        if (features != null) 'features': features!,
+        if (icons != null) 'icons': icons!.toJson(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (labels != null) 'labels': labels!,
         if (methods != null)
           'methods':
-              methods.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (name != null) 'name': name,
-        if (ownerDomain != null) 'ownerDomain': ownerDomain,
-        if (ownerName != null) 'ownerName': ownerName,
-        if (packagePath != null) 'packagePath': packagePath,
+              methods!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (name != null) 'name': name!,
+        if (ownerDomain != null) 'ownerDomain': ownerDomain!,
+        if (ownerName != null) 'ownerName': ownerName!,
+        if (packagePath != null) 'packagePath': packagePath!,
         if (parameters != null)
           'parameters':
-              parameters.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (protocol != null) 'protocol': protocol,
+              parameters!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (protocol != null) 'protocol': protocol!,
         if (resources != null)
           'resources':
-              resources.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (revision != null) 'revision': revision,
-        if (rootUrl != null) 'rootUrl': rootUrl,
+              resources!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (revision != null) 'revision': revision!,
+        if (rootUrl != null) 'rootUrl': rootUrl!,
         if (schemas != null)
           'schemas':
-              schemas.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (servicePath != null) 'servicePath': servicePath,
-        if (title != null) 'title': title,
-        if (version != null) 'version': version,
-        if (versionModule != null) 'version_module': versionModule,
+              schemas!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (servicePath != null) 'servicePath': servicePath!,
+        if (title != null) 'title': title!,
+        if (version != null) 'version': version!,
+        if (versionModule != null) 'version_module': versionModule!,
       };
 }
 
 /// Supports the Resumable Media Upload protocol.
 class RestMethodMediaUploadProtocolsResumable {
   /// True if this endpoint supports uploading multipart media.
-  core.bool multipart;
+  core.bool? multipart;
 
   /// The URI path to be used for upload.
   ///
   /// Should be used in conjunction with the basePath property at the api-level.
-  core.String path;
+  core.String? path;
 
   RestMethodMediaUploadProtocolsResumable();
 
@@ -952,21 +949,21 @@ class RestMethodMediaUploadProtocolsResumable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (multipart != null) 'multipart': multipart,
-        if (path != null) 'path': path,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (multipart != null) 'multipart': multipart!,
+        if (path != null) 'path': path!,
       };
 }
 
 /// Supports uploading as a single HTTP request.
 class RestMethodMediaUploadProtocolsSimple {
   /// True if this endpoint supports upload multipart media.
-  core.bool multipart;
+  core.bool? multipart;
 
   /// The URI path to be used for upload.
   ///
   /// Should be used in conjunction with the basePath property at the api-level.
-  core.String path;
+  core.String? path;
 
   RestMethodMediaUploadProtocolsSimple();
 
@@ -979,19 +976,19 @@ class RestMethodMediaUploadProtocolsSimple {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (multipart != null) 'multipart': multipart,
-        if (path != null) 'path': path,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (multipart != null) 'multipart': multipart!,
+        if (path != null) 'path': path!,
       };
 }
 
 /// Supported upload protocols.
 class RestMethodMediaUploadProtocols {
   /// Supports the Resumable Media Upload protocol.
-  RestMethodMediaUploadProtocolsResumable resumable;
+  RestMethodMediaUploadProtocolsResumable? resumable;
 
   /// Supports uploading as a single HTTP request.
-  RestMethodMediaUploadProtocolsSimple simple;
+  RestMethodMediaUploadProtocolsSimple? simple;
 
   RestMethodMediaUploadProtocols();
 
@@ -1006,22 +1003,22 @@ class RestMethodMediaUploadProtocols {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resumable != null) 'resumable': resumable.toJson(),
-        if (simple != null) 'simple': simple.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resumable != null) 'resumable': resumable!.toJson(),
+        if (simple != null) 'simple': simple!.toJson(),
       };
 }
 
 /// Media upload parameters.
 class RestMethodMediaUpload {
   /// MIME Media Ranges for acceptable media uploads to this method.
-  core.List<core.String> accept;
+  core.List<core.String>? accept;
 
   /// Maximum size of a media upload, such as "1MB", "2GB" or "3TB".
-  core.String maxSize;
+  core.String? maxSize;
 
   /// Supported upload protocols.
-  RestMethodMediaUploadProtocols protocols;
+  RestMethodMediaUploadProtocols? protocols;
 
   RestMethodMediaUpload();
 
@@ -1040,20 +1037,20 @@ class RestMethodMediaUpload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accept != null) 'accept': accept,
-        if (maxSize != null) 'maxSize': maxSize,
-        if (protocols != null) 'protocols': protocols.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accept != null) 'accept': accept!,
+        if (maxSize != null) 'maxSize': maxSize!,
+        if (protocols != null) 'protocols': protocols!.toJson(),
       };
 }
 
 /// The schema for the request.
 class RestMethodRequest {
   /// Schema ID for the request schema.
-  core.String P_ref;
+  core.String? P_ref;
 
   /// parameter name.
-  core.String parameterName;
+  core.String? parameterName;
 
   RestMethodRequest();
 
@@ -1066,16 +1063,16 @@ class RestMethodRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (P_ref != null) '\$ref': P_ref,
-        if (parameterName != null) 'parameterName': parameterName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (P_ref != null) '\$ref': P_ref!,
+        if (parameterName != null) 'parameterName': parameterName!,
       };
 }
 
 /// The schema for the response.
 class RestMethodResponse {
   /// Schema ID for the response schema.
-  core.String P_ref;
+  core.String? P_ref;
 
   RestMethodResponse();
 
@@ -1085,70 +1082,70 @@ class RestMethodResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (P_ref != null) '\$ref': P_ref,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (P_ref != null) '\$ref': P_ref!,
       };
 }
 
 class RestMethod {
   /// Description of this method.
-  core.String description;
+  core.String? description;
 
   /// Whether this method requires an ETag to be specified.
   ///
   /// The ETag is sent as an HTTP If-Match or If-None-Match header.
-  core.bool etagRequired;
+  core.bool? etagRequired;
 
   /// HTTP method used by this method.
-  core.String httpMethod;
+  core.String? httpMethod;
 
   /// A unique ID for this method.
   ///
   /// This property can be used to match methods between different versions of
   /// Discovery.
-  core.String id;
+  core.String? id;
 
   /// Media upload parameters.
-  RestMethodMediaUpload mediaUpload;
+  RestMethodMediaUpload? mediaUpload;
 
   /// Ordered list of required parameters, serves as a hint to clients on how to
   /// structure their method signatures.
   ///
   /// The array is ordered such that the "most-significant" parameter appears
   /// first.
-  core.List<core.String> parameterOrder;
+  core.List<core.String>? parameterOrder;
 
   /// Details for all parameters in this method.
-  core.Map<core.String, JsonSchema> parameters;
+  core.Map<core.String, JsonSchema>? parameters;
 
   /// The URI path of this REST method.
   ///
   /// Should be used in conjunction with the basePath property at the api-level.
-  core.String path;
+  core.String? path;
 
   /// The schema for the request.
-  RestMethodRequest request;
+  RestMethodRequest? request;
 
   /// The schema for the response.
-  RestMethodResponse response;
+  RestMethodResponse? response;
 
   /// OAuth 2.0 scopes applicable to this method.
-  core.List<core.String> scopes;
+  core.List<core.String>? scopes;
 
   /// Whether this method supports media downloads.
-  core.bool supportsMediaDownload;
+  core.bool? supportsMediaDownload;
 
   /// Whether this method supports media uploads.
-  core.bool supportsMediaUpload;
+  core.bool? supportsMediaUpload;
 
   /// Whether this method supports subscriptions.
-  core.bool supportsSubscription;
+  core.bool? supportsSubscription;
 
   /// Indicates that downloads from this method should use the download service
   /// URL (i.e. "/download").
   ///
   /// Only applies if the method supports media download.
-  core.bool useMediaDownloadService;
+  core.bool? useMediaDownloadService;
 
   RestMethod();
 
@@ -1176,7 +1173,7 @@ class RestMethod {
     }
     if (_json.containsKey('parameters')) {
       parameters = (_json['parameters'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -1214,44 +1211,44 @@ class RestMethod {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (etagRequired != null) 'etagRequired': etagRequired,
-        if (httpMethod != null) 'httpMethod': httpMethod,
-        if (id != null) 'id': id,
-        if (mediaUpload != null) 'mediaUpload': mediaUpload.toJson(),
-        if (parameterOrder != null) 'parameterOrder': parameterOrder,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (etagRequired != null) 'etagRequired': etagRequired!,
+        if (httpMethod != null) 'httpMethod': httpMethod!,
+        if (id != null) 'id': id!,
+        if (mediaUpload != null) 'mediaUpload': mediaUpload!.toJson(),
+        if (parameterOrder != null) 'parameterOrder': parameterOrder!,
         if (parameters != null)
           'parameters':
-              parameters.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (path != null) 'path': path,
-        if (request != null) 'request': request.toJson(),
-        if (response != null) 'response': response.toJson(),
-        if (scopes != null) 'scopes': scopes,
+              parameters!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (path != null) 'path': path!,
+        if (request != null) 'request': request!.toJson(),
+        if (response != null) 'response': response!.toJson(),
+        if (scopes != null) 'scopes': scopes!,
         if (supportsMediaDownload != null)
-          'supportsMediaDownload': supportsMediaDownload,
+          'supportsMediaDownload': supportsMediaDownload!,
         if (supportsMediaUpload != null)
-          'supportsMediaUpload': supportsMediaUpload,
+          'supportsMediaUpload': supportsMediaUpload!,
         if (supportsSubscription != null)
-          'supportsSubscription': supportsSubscription,
+          'supportsSubscription': supportsSubscription!,
         if (useMediaDownloadService != null)
-          'useMediaDownloadService': useMediaDownloadService,
+          'useMediaDownloadService': useMediaDownloadService!,
       };
 }
 
 class RestResource {
   /// Methods on this resource.
-  core.Map<core.String, RestMethod> methods;
+  core.Map<core.String, RestMethod>? methods;
 
   /// Sub-resources on this resource.
-  core.Map<core.String, RestResource> resources;
+  core.Map<core.String, RestResource>? resources;
 
   RestResource();
 
   RestResource.fromJson(core.Map _json) {
     if (_json.containsKey('methods')) {
       methods = (_json['methods'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -1260,23 +1257,24 @@ class RestResource {
           );
     }
     if (_json.containsKey('resources')) {
-      resources =
-          (_json['resources'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  RestResource.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      resources = (_json['resources'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              RestResource.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (methods != null)
           'methods':
-              methods.map((key, item) => core.MapEntry(key, item.toJson())),
+              methods!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (resources != null)
           'resources':
-              resources.map((key, item) => core.MapEntry(key, item.toJson())),
+              resources!.map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }

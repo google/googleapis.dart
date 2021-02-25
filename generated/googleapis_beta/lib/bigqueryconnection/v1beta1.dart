@@ -110,14 +110,10 @@ class ProjectsLocationsConnectionsResource {
   async.Future<Connection> create(
     Connection request,
     core.String parent, {
-    core.String connectionId,
-    core.String $fields,
+    core.String? connectionId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (connectionId != null) 'connectionId': [connectionId],
       if ($fields != null) 'fields': [$fields],
@@ -158,11 +154,8 @@ class ProjectsLocationsConnectionsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -198,11 +191,8 @@ class ProjectsLocationsConnectionsResource {
   /// this method will complete with the same error.
   async.Future<Connection> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -246,13 +236,9 @@ class ProjectsLocationsConnectionsResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -294,13 +280,10 @@ class ProjectsLocationsConnectionsResource {
   /// this method will complete with the same error.
   async.Future<ListConnectionsResponse> list(
     core.String parent, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -350,14 +333,10 @@ class ProjectsLocationsConnectionsResource {
   async.Future<Connection> patch(
     Connection request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -403,13 +382,9 @@ class ProjectsLocationsConnectionsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -457,13 +432,9 @@ class ProjectsLocationsConnectionsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -506,13 +477,9 @@ class ProjectsLocationsConnectionsResource {
   async.Future<Empty> updateCredential(
     ConnectionCredential request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -548,13 +515,13 @@ class ProjectsLocationsConnectionsResource {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -570,11 +537,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -589,7 +556,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -597,7 +564,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -612,9 +579,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -628,7 +595,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -660,12 +627,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -684,20 +651,20 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
 /// Credential info for the Cloud SQL.
 class CloudSqlCredential {
   /// The password for the credential.
-  core.String password;
+  core.String? password;
 
   /// The username for the credential.
-  core.String username;
+  core.String? username;
 
   CloudSqlCredential();
 
@@ -710,9 +677,9 @@ class CloudSqlCredential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (password != null) 'password': password,
-        if (username != null) 'username': username,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (password != null) 'password': password!,
+        if (username != null) 'username': username!,
       };
 }
 
@@ -721,20 +688,20 @@ class CloudSqlProperties {
   /// Input only.
   ///
   /// Cloud SQL credential.
-  CloudSqlCredential credential;
+  CloudSqlCredential? credential;
 
   /// Database name.
-  core.String database;
+  core.String? database;
 
   /// Cloud SQL instance ID in the form `project:location:instance`.
-  core.String instanceId;
+  core.String? instanceId;
 
   /// Type of the Cloud SQL database.
   /// Possible string values are:
   /// - "DATABASE_TYPE_UNSPECIFIED" : Unspecified database type.
   /// - "POSTGRES" : Cloud SQL for PostgreSQL.
   /// - "MYSQL" : Cloud SQL for MySQL.
-  core.String type;
+  core.String? type;
 
   CloudSqlProperties();
 
@@ -754,11 +721,11 @@ class CloudSqlProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (credential != null) 'credential': credential.toJson(),
-        if (database != null) 'database': database,
-        if (instanceId != null) 'instanceId': instanceId,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (credential != null) 'credential': credential!.toJson(),
+        if (database != null) 'database': database!,
+        if (instanceId != null) 'instanceId': instanceId!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -766,32 +733,32 @@ class CloudSqlProperties {
 /// source, except the credential attributes.
 class Connection {
   /// Cloud SQL properties.
-  CloudSqlProperties cloudSql;
+  CloudSqlProperties? cloudSql;
 
   /// The creation timestamp of the connection.
   ///
   /// Output only.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// User provided description.
-  core.String description;
+  core.String? description;
 
   /// User provided display name for the connection.
-  core.String friendlyName;
+  core.String? friendlyName;
 
   /// True, if credential is configured for this connection.
   ///
   /// Output only.
-  core.bool hasCredential;
+  core.bool? hasCredential;
 
   /// The last update timestamp of the connection.
   ///
   /// Output only.
-  core.String lastModifiedTime;
+  core.String? lastModifiedTime;
 
   /// The resource name of the connection in the form of:
   /// `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
-  core.String name;
+  core.String? name;
 
   Connection();
 
@@ -820,21 +787,21 @@ class Connection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cloudSql != null) 'cloudSql': cloudSql.toJson(),
-        if (creationTime != null) 'creationTime': creationTime,
-        if (description != null) 'description': description,
-        if (friendlyName != null) 'friendlyName': friendlyName,
-        if (hasCredential != null) 'hasCredential': hasCredential,
-        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cloudSql != null) 'cloudSql': cloudSql!.toJson(),
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (description != null) 'description': description!,
+        if (friendlyName != null) 'friendlyName': friendlyName!,
+        if (hasCredential != null) 'hasCredential': hasCredential!,
+        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Credential to use with a connection.
 class ConnectionCredential {
   /// Credential for Cloud SQL database.
-  CloudSqlCredential cloudSql;
+  CloudSqlCredential? cloudSql;
 
   ConnectionCredential();
 
@@ -845,8 +812,8 @@ class ConnectionCredential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cloudSql != null) 'cloudSql': cloudSql.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cloudSql != null) 'cloudSql': cloudSql!.toJson(),
       };
 }
 
@@ -864,7 +831,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -892,24 +859,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -928,11 +895,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -940,7 +907,7 @@ class Expr {
 class GetIamPolicyRequest {
   /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
   /// `GetIamPolicy`.
-  GetPolicyOptions options;
+  GetPolicyOptions? options;
 
   GetIamPolicyRequest();
 
@@ -951,8 +918,8 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (options != null) 'options': options.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (options != null) 'options': options!.toJson(),
       };
 }
 
@@ -968,7 +935,7 @@ class GetPolicyOptions {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// Optional.
-  core.int requestedPolicyVersion;
+  core.int? requestedPolicyVersion;
 
   GetPolicyOptions();
 
@@ -978,19 +945,19 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion,
+          'requestedPolicyVersion': requestedPolicyVersion!,
       };
 }
 
 /// The response for ConnectionService.ListConnections.
 class ListConnectionsResponse {
   /// List of connections.
-  core.List<Connection> connections;
+  core.List<Connection>? connections;
 
   /// Next page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListConnectionsResponse();
 
@@ -1006,10 +973,10 @@ class ListConnectionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (connections != null)
-          'connections': connections.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'connections': connections!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1046,14 +1013,14 @@ class ListConnectionsResponse {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -1067,8 +1034,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -1092,7 +1059,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -1117,13 +1084,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1134,13 +1101,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -1154,9 +1121,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -1167,7 +1134,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -1179,8 +1146,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -1188,7 +1155,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -1200,7 +1167,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }

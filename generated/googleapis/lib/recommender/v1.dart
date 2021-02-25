@@ -139,11 +139,8 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1Insight> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -200,14 +197,11 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1ListInsightsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -256,13 +250,9 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
   async.Future<GoogleCloudRecommenderV1Insight> markAccepted(
     GoogleCloudRecommenderV1MarkInsightAcceptedRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -324,11 +314,8 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1Recommendation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -386,14 +373,11 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1ListRecommendationsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -445,13 +429,9 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   async.Future<GoogleCloudRecommenderV1Recommendation> markClaimed(
     GoogleCloudRecommenderV1MarkRecommendationClaimedRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -500,13 +480,9 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   async.Future<GoogleCloudRecommenderV1Recommendation> markFailed(
     GoogleCloudRecommenderV1MarkRecommendationFailedRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -555,13 +531,9 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   async.Future<GoogleCloudRecommenderV1Recommendation> markSucceeded(
     GoogleCloudRecommenderV1MarkRecommendationSucceededRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -640,11 +612,8 @@ class FoldersLocationsInsightTypesInsightsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1Insight> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -701,14 +670,11 @@ class FoldersLocationsInsightTypesInsightsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1ListInsightsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -757,13 +723,9 @@ class FoldersLocationsInsightTypesInsightsResource {
   async.Future<GoogleCloudRecommenderV1Insight> markAccepted(
     GoogleCloudRecommenderV1MarkInsightAcceptedRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -823,11 +785,8 @@ class FoldersLocationsRecommendersRecommendationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1Recommendation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -885,14 +844,11 @@ class FoldersLocationsRecommendersRecommendationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1ListRecommendationsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -944,13 +900,9 @@ class FoldersLocationsRecommendersRecommendationsResource {
   async.Future<GoogleCloudRecommenderV1Recommendation> markClaimed(
     GoogleCloudRecommenderV1MarkRecommendationClaimedRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -999,13 +951,9 @@ class FoldersLocationsRecommendersRecommendationsResource {
   async.Future<GoogleCloudRecommenderV1Recommendation> markFailed(
     GoogleCloudRecommenderV1MarkRecommendationFailedRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1054,13 +1002,9 @@ class FoldersLocationsRecommendersRecommendationsResource {
   async.Future<GoogleCloudRecommenderV1Recommendation> markSucceeded(
     GoogleCloudRecommenderV1MarkRecommendationSucceededRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1141,11 +1085,8 @@ class OrganizationsLocationsInsightTypesInsightsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1Insight> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1202,14 +1143,11 @@ class OrganizationsLocationsInsightTypesInsightsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1ListInsightsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1258,13 +1196,9 @@ class OrganizationsLocationsInsightTypesInsightsResource {
   async.Future<GoogleCloudRecommenderV1Insight> markAccepted(
     GoogleCloudRecommenderV1MarkInsightAcceptedRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1325,11 +1259,8 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1Recommendation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1387,14 +1318,11 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1ListRecommendationsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1446,13 +1374,9 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   async.Future<GoogleCloudRecommenderV1Recommendation> markClaimed(
     GoogleCloudRecommenderV1MarkRecommendationClaimedRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1501,13 +1425,9 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   async.Future<GoogleCloudRecommenderV1Recommendation> markFailed(
     GoogleCloudRecommenderV1MarkRecommendationFailedRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1556,13 +1476,9 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   async.Future<GoogleCloudRecommenderV1Recommendation> markSucceeded(
     GoogleCloudRecommenderV1MarkRecommendationSucceededRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1641,11 +1557,8 @@ class ProjectsLocationsInsightTypesInsightsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1Insight> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1702,14 +1615,11 @@ class ProjectsLocationsInsightTypesInsightsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1ListInsightsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1758,13 +1668,9 @@ class ProjectsLocationsInsightTypesInsightsResource {
   async.Future<GoogleCloudRecommenderV1Insight> markAccepted(
     GoogleCloudRecommenderV1MarkInsightAcceptedRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1824,11 +1730,8 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1Recommendation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1886,14 +1789,11 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRecommenderV1ListRecommendationsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1945,13 +1845,9 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   async.Future<GoogleCloudRecommenderV1Recommendation> markClaimed(
     GoogleCloudRecommenderV1MarkRecommendationClaimedRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2000,13 +1896,9 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   async.Future<GoogleCloudRecommenderV1Recommendation> markFailed(
     GoogleCloudRecommenderV1MarkRecommendationFailedRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2055,13 +1947,9 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   async.Future<GoogleCloudRecommenderV1Recommendation> markSucceeded(
     GoogleCloudRecommenderV1MarkRecommendationSucceededRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2087,10 +1975,10 @@ class GoogleCloudRecommenderV1CostProjection {
   ///
   /// Negative cost units indicate cost savings and positive cost units indicate
   /// increase. See google.type.Money documentation for positive/negative units.
-  GoogleTypeMoney cost;
+  GoogleTypeMoney? cost;
 
   /// Duration for which this cost applies.
-  core.String duration;
+  core.String? duration;
 
   GoogleCloudRecommenderV1CostProjection();
 
@@ -2104,9 +1992,9 @@ class GoogleCloudRecommenderV1CostProjection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cost != null) 'cost': cost.toJson(),
-        if (duration != null) 'duration': duration,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cost != null) 'cost': cost!.toJson(),
+        if (duration != null) 'duration': duration!,
       };
 }
 
@@ -2122,10 +2010,10 @@ class GoogleCloudRecommenderV1Impact {
   /// performance.
   /// - "MANAGEABILITY" : Indicates a potential increase or decrease in
   /// manageability.
-  core.String category;
+  core.String? category;
 
   /// Use with CategoryType.COST
-  GoogleCloudRecommenderV1CostProjection costProjection;
+  GoogleCloudRecommenderV1CostProjection? costProjection;
 
   GoogleCloudRecommenderV1Impact();
 
@@ -2139,9 +2027,9 @@ class GoogleCloudRecommenderV1Impact {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (category != null) 'category': category,
-        if (costProjection != null) 'costProjection': costProjection.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (category != null) 'category': category!,
+        if (costProjection != null) 'costProjection': costProjection!.toJson(),
       };
 }
 
@@ -2150,7 +2038,7 @@ class GoogleCloudRecommenderV1Impact {
 /// The insight may have associated recomendations as well.
 class GoogleCloudRecommenderV1Insight {
   /// Recommendations derived from this insight.
-  core.List<GoogleCloudRecommenderV1InsightRecommendationReference>
+  core.List<GoogleCloudRecommenderV1InsightRecommendationReference>?
       associatedRecommendations;
 
   /// Category being targeted by the insight.
@@ -2160,7 +2048,7 @@ class GoogleCloudRecommenderV1Insight {
   /// - "SECURITY" : The insight is related to security.
   /// - "PERFORMANCE" : The insight is related to performance.
   /// - "MANAGEABILITY" : This insight is related to manageability.
-  core.String category;
+  core.String? category;
 
   /// A struct of custom fields to explain the insight.
   ///
@@ -2168,40 +2056,40 @@ class GoogleCloudRecommenderV1Insight {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> content;
+  core.Map<core.String, core.Object>? content;
 
   /// Free-form human readable summary in English.
   ///
   /// The maximum length is 500 characters.
-  core.String description;
+  core.String? description;
 
   /// Fingerprint of the Insight.
   ///
   /// Provides optimistic locking when updating states.
-  core.String etag;
+  core.String? etag;
 
   /// Insight subtype.
   ///
   /// Insight content schema will be stable for a given subtype.
-  core.String insightSubtype;
+  core.String? insightSubtype;
 
   /// Timestamp of the latest data used to generate the insight.
-  core.String lastRefreshTime;
+  core.String? lastRefreshTime;
 
   /// Name of the insight.
-  core.String name;
+  core.String? name;
 
   /// Observation period that led to the insight.
   ///
   /// The source data used to generate the insight ends at last_refresh_time and
   /// begins at (last_refresh_time - observation_period).
-  core.String observationPeriod;
+  core.String? observationPeriod;
 
   /// Information state and metadata.
-  GoogleCloudRecommenderV1InsightStateInfo stateInfo;
+  GoogleCloudRecommenderV1InsightStateInfo? stateInfo;
 
   /// Fully qualified resource names that this insight is targeting.
-  core.List<core.String> targetResources;
+  core.List<core.String>? targetResources;
 
   GoogleCloudRecommenderV1Insight();
 
@@ -2255,20 +2143,21 @@ class GoogleCloudRecommenderV1Insight {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (associatedRecommendations != null)
-          'associatedRecommendations':
-              associatedRecommendations.map((value) => value.toJson()).toList(),
-        if (category != null) 'category': category,
-        if (content != null) 'content': content,
-        if (description != null) 'description': description,
-        if (etag != null) 'etag': etag,
-        if (insightSubtype != null) 'insightSubtype': insightSubtype,
-        if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime,
-        if (name != null) 'name': name,
-        if (observationPeriod != null) 'observationPeriod': observationPeriod,
-        if (stateInfo != null) 'stateInfo': stateInfo.toJson(),
-        if (targetResources != null) 'targetResources': targetResources,
+          'associatedRecommendations': associatedRecommendations!
+              .map((value) => value.toJson())
+              .toList(),
+        if (category != null) 'category': category!,
+        if (content != null) 'content': content!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (insightSubtype != null) 'insightSubtype': insightSubtype!,
+        if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
+        if (name != null) 'name': name!,
+        if (observationPeriod != null) 'observationPeriod': observationPeriod!,
+        if (stateInfo != null) 'stateInfo': stateInfo!.toJson(),
+        if (targetResources != null) 'targetResources': targetResources!,
       };
 }
 
@@ -2276,7 +2165,7 @@ class GoogleCloudRecommenderV1Insight {
 class GoogleCloudRecommenderV1InsightRecommendationReference {
   /// Recommendation resource name, e.g.
   /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]/recommendations/\[RECOMMENDATION_ID\]
-  core.String recommendation;
+  core.String? recommendation;
 
   GoogleCloudRecommenderV1InsightRecommendationReference();
 
@@ -2287,8 +2176,8 @@ class GoogleCloudRecommenderV1InsightRecommendationReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (recommendation != null) 'recommendation': recommendation,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (recommendation != null) 'recommendation': recommendation!,
       };
 }
 
@@ -2306,10 +2195,10 @@ class GoogleCloudRecommenderV1InsightStateInfo {
   /// insights can only be marked ACCEPTED (which may update state metadata).
   /// - "DISMISSED" : Insight is dismissed. Content for DISMISSED insights can
   /// be updated by Google. DISMISSED insights can be marked as ACTIVE.
-  core.String state;
+  core.String? state;
 
   /// A map of metadata for the state, provided by user or automations systems.
-  core.Map<core.String, core.String> stateMetadata;
+  core.Map<core.String, core.String>? stateMetadata;
 
   GoogleCloudRecommenderV1InsightStateInfo();
 
@@ -2329,21 +2218,21 @@ class GoogleCloudRecommenderV1InsightStateInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (state != null) 'state': state,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (state != null) 'state': state!,
+        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
       };
 }
 
 /// Response to the `ListInsights` method.
 class GoogleCloudRecommenderV1ListInsightsResponse {
   /// The set of insights for the `parent` resource.
-  core.List<GoogleCloudRecommenderV1Insight> insights;
+  core.List<GoogleCloudRecommenderV1Insight>? insights;
 
   /// A token that can be used to request the next page of results.
   ///
   /// This field is empty if there are no additional results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudRecommenderV1ListInsightsResponse();
 
@@ -2360,10 +2249,10 @@ class GoogleCloudRecommenderV1ListInsightsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (insights != null)
-          'insights': insights.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'insights': insights!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2372,10 +2261,10 @@ class GoogleCloudRecommenderV1ListRecommendationsResponse {
   /// A token that can be used to request the next page of results.
   ///
   /// This field is empty if there are no additional results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The set of recommendations for the `parent` resource.
-  core.List<GoogleCloudRecommenderV1Recommendation> recommendations;
+  core.List<GoogleCloudRecommenderV1Recommendation>? recommendations;
 
   GoogleCloudRecommenderV1ListRecommendationsResponse();
 
@@ -2392,11 +2281,11 @@ class GoogleCloudRecommenderV1ListRecommendationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (recommendations != null)
           'recommendations':
-              recommendations.map((value) => value.toJson()).toList(),
+              recommendations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2407,14 +2296,14 @@ class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
   /// Provides optimistic locking.
   ///
   /// Required.
-  core.String etag;
+  core.String? etag;
 
   /// State properties user wish to include with this state.
   ///
   /// Full replace of the current state_metadata.
   ///
   /// Optional.
-  core.Map<core.String, core.String> stateMetadata;
+  core.Map<core.String, core.String>? stateMetadata;
 
   GoogleCloudRecommenderV1MarkInsightAcceptedRequest();
 
@@ -2434,9 +2323,9 @@ class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
       };
 }
 
@@ -2447,14 +2336,14 @@ class GoogleCloudRecommenderV1MarkRecommendationClaimedRequest {
   /// Provides optimistic locking.
   ///
   /// Required.
-  core.String etag;
+  core.String? etag;
 
   /// State properties to include with this state.
   ///
   /// Overwrites any existing `state_metadata`. Keys must match the regex
   /// /^a-z0-9{0,62}$/. Values must match the regex
   /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
-  core.Map<core.String, core.String> stateMetadata;
+  core.Map<core.String, core.String>? stateMetadata;
 
   GoogleCloudRecommenderV1MarkRecommendationClaimedRequest();
 
@@ -2475,9 +2364,9 @@ class GoogleCloudRecommenderV1MarkRecommendationClaimedRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
       };
 }
 
@@ -2488,14 +2377,14 @@ class GoogleCloudRecommenderV1MarkRecommendationFailedRequest {
   /// Provides optimistic locking.
   ///
   /// Required.
-  core.String etag;
+  core.String? etag;
 
   /// State properties to include with this state.
   ///
   /// Overwrites any existing `state_metadata`. Keys must match the regex
   /// /^a-z0-9{0,62}$/. Values must match the regex
   /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
-  core.Map<core.String, core.String> stateMetadata;
+  core.Map<core.String, core.String>? stateMetadata;
 
   GoogleCloudRecommenderV1MarkRecommendationFailedRequest();
 
@@ -2516,9 +2405,9 @@ class GoogleCloudRecommenderV1MarkRecommendationFailedRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
       };
 }
 
@@ -2529,14 +2418,14 @@ class GoogleCloudRecommenderV1MarkRecommendationSucceededRequest {
   /// Provides optimistic locking.
   ///
   /// Required.
-  core.String etag;
+  core.String? etag;
 
   /// State properties to include with this state.
   ///
   /// Overwrites any existing `state_metadata`. Keys must match the regex
   /// /^a-z0-9{0,62}$/. Values must match the regex
   /// /^\[a-zA-Z0-9_./-\]{0,255}$/.
-  core.Map<core.String, core.String> stateMetadata;
+  core.Map<core.String, core.String>? stateMetadata;
 
   GoogleCloudRecommenderV1MarkRecommendationSucceededRequest();
 
@@ -2557,9 +2446,9 @@ class GoogleCloudRecommenderV1MarkRecommendationSucceededRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
       };
 }
 
@@ -2575,13 +2464,13 @@ class GoogleCloudRecommenderV1Operation {
   ///
   /// Contains one of 'and', 'remove', 'replace', 'move', 'copy', 'test' and
   /// custom operations. This field is case-insensitive and always populated.
-  core.String action;
+  core.String? action;
 
   /// Path to the target field being operated on.
   ///
   /// If the operation is at the resource level, then path should be "/". This
   /// field is always populated.
-  core.String path;
+  core.String? path;
 
   /// Set of filters to apply if `path` refers to array elements or nested array
   /// elements in order to narrow down to a single unique element that is being
@@ -2597,7 +2486,7 @@ class GoogleCloudRecommenderV1Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> pathFilters;
+  core.Map<core.String, core.Object>? pathFilters;
 
   /// Similar to path_filters, this contains set of filters to apply if `path`
   /// field referes to array elements.
@@ -2605,25 +2494,26 @@ class GoogleCloudRecommenderV1Operation {
   /// This is meant to support value matching beyond exact match. To perform
   /// exact match, use path_filters. When both path_filters and
   /// path_value_matchers are set, an implicit AND must be performed.
-  core.Map<core.String, GoogleCloudRecommenderV1ValueMatcher> pathValueMatchers;
+  core.Map<core.String, GoogleCloudRecommenderV1ValueMatcher>?
+      pathValueMatchers;
 
   /// Contains the fully qualified resource name.
   ///
   /// This field is always populated. ex:
   /// //cloudresourcemanager.googleapis.com/projects/foo.
-  core.String resource;
+  core.String? resource;
 
   /// Type of GCP resource being modified/tested.
   ///
   /// This field is always populated. Example:
   /// cloudresourcemanager.googleapis.com/Project,
   /// compute.googleapis.com/Instance
-  core.String resourceType;
+  core.String? resourceType;
 
   /// Can be set with action 'copy' or 'move' to indicate the source field
   /// within resource or source_resource, ignored if provided for other
   /// operation types.
-  core.String sourcePath;
+  core.String? sourcePath;
 
   /// Can be set with action 'copy' to copy resource configuration across
   /// different resources of the same type.
@@ -2631,7 +2521,7 @@ class GoogleCloudRecommenderV1Operation {
   /// Example: A resource clone can be done via action = 'copy', path = "/",
   /// from = "/", source_resource = and resource_name = . This field is empty
   /// for all other values of `action`.
-  core.String sourceResource;
+  core.String? sourceResource;
 
   /// Value for the `path` field.
   ///
@@ -2641,13 +2531,13 @@ class GoogleCloudRecommenderV1Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object value;
+  core.Object? value;
 
   /// Can be set for action 'test' for advanced matching for the value of 'path'
   /// field.
   ///
   /// Either this or `value` will be set for 'test' operation.
-  GoogleCloudRecommenderV1ValueMatcher valueMatcher;
+  GoogleCloudRecommenderV1ValueMatcher? valueMatcher;
 
   GoogleCloudRecommenderV1Operation();
 
@@ -2670,7 +2560,7 @@ class GoogleCloudRecommenderV1Operation {
     }
     if (_json.containsKey('pathValueMatchers')) {
       pathValueMatchers = (_json['pathValueMatchers'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -2700,19 +2590,19 @@ class GoogleCloudRecommenderV1Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action,
-        if (path != null) 'path': path,
-        if (pathFilters != null) 'pathFilters': pathFilters,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!,
+        if (path != null) 'path': path!,
+        if (pathFilters != null) 'pathFilters': pathFilters!,
         if (pathValueMatchers != null)
-          'pathValueMatchers': pathValueMatchers
+          'pathValueMatchers': pathValueMatchers!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (resource != null) 'resource': resource,
-        if (resourceType != null) 'resourceType': resourceType,
-        if (sourcePath != null) 'sourcePath': sourcePath,
-        if (sourceResource != null) 'sourceResource': sourceResource,
-        if (value != null) 'value': value,
-        if (valueMatcher != null) 'valueMatcher': valueMatcher.toJson(),
+        if (resource != null) 'resource': resource!,
+        if (resourceType != null) 'resourceType': resourceType!,
+        if (sourcePath != null) 'sourcePath': sourcePath!,
+        if (sourceResource != null) 'sourceResource': sourceResource!,
+        if (value != null) 'value': value!,
+        if (valueMatcher != null) 'valueMatcher': valueMatcher!.toJson(),
       };
 }
 
@@ -2721,7 +2611,7 @@ class GoogleCloudRecommenderV1OperationGroup {
   /// List of operations across one or more resources that belong to this group.
   ///
   /// Loosely based on RFC6902 and should be performed in the order they appear.
-  core.List<GoogleCloudRecommenderV1Operation> operations;
+  core.List<GoogleCloudRecommenderV1Operation>? operations;
 
   GoogleCloudRecommenderV1OperationGroup();
 
@@ -2735,9 +2625,9 @@ class GoogleCloudRecommenderV1OperationGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2750,35 +2640,35 @@ class GoogleCloudRecommenderV1Recommendation {
   /// trying to optimize for the primary category.
   ///
   /// These may be positive or negative.
-  core.List<GoogleCloudRecommenderV1Impact> additionalImpact;
+  core.List<GoogleCloudRecommenderV1Impact>? additionalImpact;
 
   /// Insights that led to this recommendation.
-  core.List<GoogleCloudRecommenderV1RecommendationInsightReference>
+  core.List<GoogleCloudRecommenderV1RecommendationInsightReference>?
       associatedInsights;
 
   /// Content of the recommendation describing recommended changes to resources.
-  GoogleCloudRecommenderV1RecommendationContent content;
+  GoogleCloudRecommenderV1RecommendationContent? content;
 
   /// Free-form human readable summary in English.
   ///
   /// The maximum length is 500 characters.
-  core.String description;
+  core.String? description;
 
   /// Fingerprint of the Recommendation.
   ///
   /// Provides optimistic locking when updating states.
-  core.String etag;
+  core.String? etag;
 
   /// Last time this recommendation was refreshed by the system that created it
   /// in the first place.
-  core.String lastRefreshTime;
+  core.String? lastRefreshTime;
 
   /// Name of recommendation.
-  core.String name;
+  core.String? name;
 
   /// The primary impact that this recommendation can have while trying to
   /// optimize for one category.
-  GoogleCloudRecommenderV1Impact primaryImpact;
+  GoogleCloudRecommenderV1Impact? primaryImpact;
 
   /// Contains an identifier for a subtype of recommendations produced for the
   /// same recommender.
@@ -2789,12 +2679,12 @@ class GoogleCloudRecommenderV1Recommendation {
   /// see a list of subtypes for a given Recommender. Examples: For recommender
   /// = "google.iam.policy.Recommender", recommender_subtype can be one of
   /// "REMOVE_ROLE"/"REPLACE_ROLE"
-  core.String recommenderSubtype;
+  core.String? recommenderSubtype;
 
   /// Information for state.
   ///
   /// Contains state and metadata.
-  GoogleCloudRecommenderV1RecommendationStateInfo stateInfo;
+  GoogleCloudRecommenderV1RecommendationStateInfo? stateInfo;
 
   GoogleCloudRecommenderV1Recommendation();
 
@@ -2842,22 +2732,22 @@ class GoogleCloudRecommenderV1Recommendation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additionalImpact != null)
           'additionalImpact':
-              additionalImpact.map((value) => value.toJson()).toList(),
+              additionalImpact!.map((value) => value.toJson()).toList(),
         if (associatedInsights != null)
           'associatedInsights':
-              associatedInsights.map((value) => value.toJson()).toList(),
-        if (content != null) 'content': content.toJson(),
-        if (description != null) 'description': description,
-        if (etag != null) 'etag': etag,
-        if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime,
-        if (name != null) 'name': name,
-        if (primaryImpact != null) 'primaryImpact': primaryImpact.toJson(),
+              associatedInsights!.map((value) => value.toJson()).toList(),
+        if (content != null) 'content': content!.toJson(),
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
+        if (name != null) 'name': name!,
+        if (primaryImpact != null) 'primaryImpact': primaryImpact!.toJson(),
         if (recommenderSubtype != null)
-          'recommenderSubtype': recommenderSubtype,
-        if (stateInfo != null) 'stateInfo': stateInfo.toJson(),
+          'recommenderSubtype': recommenderSubtype!,
+        if (stateInfo != null) 'stateInfo': stateInfo!.toJson(),
       };
 }
 
@@ -2866,7 +2756,7 @@ class GoogleCloudRecommenderV1RecommendationContent {
   /// Operations to one or more Google Cloud resources grouped in such a way
   /// that, all operations within one group are expected to be performed
   /// atomically and in an order.
-  core.List<GoogleCloudRecommenderV1OperationGroup> operationGroups;
+  core.List<GoogleCloudRecommenderV1OperationGroup>? operationGroups;
 
   GoogleCloudRecommenderV1RecommendationContent();
 
@@ -2880,10 +2770,10 @@ class GoogleCloudRecommenderV1RecommendationContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operationGroups != null)
           'operationGroups':
-              operationGroups.map((value) => value.toJson()).toList(),
+              operationGroups!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2891,7 +2781,7 @@ class GoogleCloudRecommenderV1RecommendationContent {
 class GoogleCloudRecommenderV1RecommendationInsightReference {
   /// Insight resource name, e.g.
   /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]/insights/\[INSIGHT_ID\]
-  core.String insight;
+  core.String? insight;
 
   GoogleCloudRecommenderV1RecommendationInsightReference();
 
@@ -2902,8 +2792,8 @@ class GoogleCloudRecommenderV1RecommendationInsightReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (insight != null) 'insight': insight,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (insight != null) 'insight': insight!,
       };
 }
 
@@ -2929,10 +2819,10 @@ class GoogleCloudRecommenderV1RecommendationStateInfo {
   /// - "DISMISSED" : Recommendation is in dismissed state. Recommendation
   /// content can be updated by Google. DISMISSED recommendations can be marked
   /// as ACTIVE.
-  core.String state;
+  core.String? state;
 
   /// A map of metadata for the state, provided by user or automations systems.
-  core.Map<core.String, core.String> stateMetadata;
+  core.Map<core.String, core.String>? stateMetadata;
 
   GoogleCloudRecommenderV1RecommendationStateInfo();
 
@@ -2952,9 +2842,9 @@ class GoogleCloudRecommenderV1RecommendationStateInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (state != null) 'state': state,
-        if (stateMetadata != null) 'stateMetadata': stateMetadata,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (state != null) 'state': state!,
+        if (stateMetadata != null) 'stateMetadata': stateMetadata!,
       };
 }
 
@@ -2965,7 +2855,7 @@ class GoogleCloudRecommenderV1ValueMatcher {
   /// The regular expression is using the Google RE2 syntax
   /// (https://github.com/google/re2/wiki/Syntax), so to be used with
   /// RE2::FullMatch
-  core.String matchesPattern;
+  core.String? matchesPattern;
 
   GoogleCloudRecommenderV1ValueMatcher();
 
@@ -2975,15 +2865,15 @@ class GoogleCloudRecommenderV1ValueMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (matchesPattern != null) 'matchesPattern': matchesPattern,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (matchesPattern != null) 'matchesPattern': matchesPattern!,
       };
 }
 
 /// Represents an amount of money with its currency type.
 class GoogleTypeMoney {
   /// The three-letter currency code defined in ISO 4217.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Number of nano (10^-9) units of the amount.
   ///
@@ -2992,12 +2882,12 @@ class GoogleTypeMoney {
   /// `nanos` can be positive, zero, or negative. If `units` is negative,
   /// `nanos` must be negative or zero. For example $-1.75 is represented as
   /// `units`=-1 and `nanos`=-750,000,000.
-  core.int nanos;
+  core.int? nanos;
 
   /// The whole units of the amount.
   ///
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-  core.String units;
+  core.String? units;
 
   GoogleTypeMoney();
 
@@ -3013,9 +2903,9 @@ class GoogleTypeMoney {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (nanos != null) 'nanos': nanos,
-        if (units != null) 'units': units,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (nanos != null) 'nanos': nanos!,
+        if (units != null) 'units': units!,
       };
 }

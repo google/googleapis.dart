@@ -43,9 +43,18 @@ api.CustomApp buildCustomApp() {
 void checkCustomApp(api.CustomApp o) {
   buildCounterCustomApp++;
   if (buildCounterCustomApp < 3) {
-    unittest.expect(o.languageCode, unittest.equals('foo'));
-    unittest.expect(o.packageName, unittest.equals('foo'));
-    unittest.expect(o.title, unittest.equals('foo'));
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.packageName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCustomApp--;
 }
@@ -79,19 +88,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26),
-            unittest.equals("playcustomapp/v1/accounts/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 26),
+          unittest.equals("playcustomapp/v1/accounts/"),
+        );
         pathOffset += 26;
         index = path.indexOf('/customApps', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_account'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("/customApps"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_account'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("/customApps"),
+        );
         pathOffset += 11;
 
         var query = (req.url).query;
@@ -109,7 +127,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

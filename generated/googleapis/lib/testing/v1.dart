@@ -91,10 +91,9 @@ class ApplicationDetailServiceResource {
   /// this method will complete with the same error.
   async.Future<GetApkDetailsResponse> getApkDetails(
     FileReference request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -154,14 +153,8 @@ class ProjectsTestMatricesResource {
   async.Future<CancelTestMatrixResponse> cancel(
     core.String projectId,
     core.String testMatrixId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (testMatrixId == null) {
-      throw core.ArgumentError('Parameter testMatrixId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -212,14 +205,10 @@ class ProjectsTestMatricesResource {
   async.Future<TestMatrix> create(
     TestMatrix request,
     core.String projectId, {
-    core.String requestId,
-    core.String $fields,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -264,14 +253,8 @@ class ProjectsTestMatricesResource {
   async.Future<TestMatrix> get(
     core.String projectId,
     core.String testMatrixId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (testMatrixId == null) {
-      throw core.ArgumentError('Parameter testMatrixId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -333,12 +316,9 @@ class TestEnvironmentCatalogResource {
   /// this method will complete with the same error.
   async.Future<TestEnvironmentCatalog> get(
     core.String environmentType, {
-    core.String projectId,
-    core.String $fields,
+    core.String? projectId,
+    core.String? $fields,
   }) async {
-    if (environmentType == null) {
-      throw core.ArgumentError('Parameter environmentType is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
@@ -360,7 +340,7 @@ class TestEnvironmentCatalogResource {
 /// Identifies an account and how to log into it.
 class Account {
   /// An automatic google login account.
-  GoogleAuto googleAuto;
+  GoogleAuto? googleAuto;
 
   Account();
 
@@ -371,8 +351,8 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (googleAuto != null) 'googleAuto': googleAuto.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (googleAuto != null) 'googleAuto': googleAuto!.toJson(),
       };
 }
 
@@ -383,28 +363,28 @@ class AndroidDevice {
   /// Use the TestEnvironmentDiscoveryService to get supported options.
   ///
   /// Required.
-  core.String androidModelId;
+  core.String? androidModelId;
 
   /// The id of the Android OS version to be used.
   ///
   /// Use the TestEnvironmentDiscoveryService to get supported options.
   ///
   /// Required.
-  core.String androidVersionId;
+  core.String? androidVersionId;
 
   /// The locale the test device used for testing.
   ///
   /// Use the TestEnvironmentDiscoveryService to get supported options.
   ///
   /// Required.
-  core.String locale;
+  core.String? locale;
 
   /// How the device is oriented during the test.
   ///
   /// Use the TestEnvironmentDiscoveryService to get supported options.
   ///
   /// Required.
-  core.String orientation;
+  core.String? orientation;
 
   AndroidDevice();
 
@@ -423,24 +403,24 @@ class AndroidDevice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (androidModelId != null) 'androidModelId': androidModelId,
-        if (androidVersionId != null) 'androidVersionId': androidVersionId,
-        if (locale != null) 'locale': locale,
-        if (orientation != null) 'orientation': orientation,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (androidModelId != null) 'androidModelId': androidModelId!,
+        if (androidVersionId != null) 'androidVersionId': androidVersionId!,
+        if (locale != null) 'locale': locale!,
+        if (orientation != null) 'orientation': orientation!,
       };
 }
 
 /// The currently supported Android devices.
 class AndroidDeviceCatalog {
   /// The set of supported Android device models.
-  core.List<AndroidModel> models;
+  core.List<AndroidModel>? models;
 
   /// The set of supported runtime configurations.
-  AndroidRuntimeConfiguration runtimeConfiguration;
+  AndroidRuntimeConfiguration? runtimeConfiguration;
 
   /// The set of supported Android OS versions.
-  core.List<AndroidVersion> versions;
+  core.List<AndroidVersion>? versions;
 
   AndroidDeviceCatalog();
 
@@ -463,13 +443,13 @@ class AndroidDeviceCatalog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (models != null)
-          'models': models.map((value) => value.toJson()).toList(),
+          'models': models!.map((value) => value.toJson()).toList(),
         if (runtimeConfiguration != null)
-          'runtimeConfiguration': runtimeConfiguration.toJson(),
+          'runtimeConfiguration': runtimeConfiguration!.toJson(),
         if (versions != null)
-          'versions': versions.map((value) => value.toJson()).toList(),
+          'versions': versions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -478,7 +458,7 @@ class AndroidDeviceList {
   /// A list of Android devices.
   ///
   /// Required.
-  core.List<AndroidDevice> androidDevices;
+  core.List<AndroidDevice>? androidDevices;
 
   AndroidDeviceList();
 
@@ -491,10 +471,10 @@ class AndroidDeviceList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (androidDevices != null)
           'androidDevices':
-              androidDevices.map((value) => value.toJson()).toList(),
+              androidDevices!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -508,15 +488,15 @@ class AndroidDeviceList {
 /// types of Android tests.
 class AndroidInstrumentationTest {
   /// The APK for the application under test.
-  FileReference appApk;
+  FileReference? appApk;
 
   /// A multi-apk app bundle for the application under test.
-  AppBundle appBundle;
+  AppBundle? appBundle;
 
   /// The java package for the application under test.
   ///
   /// The default value is determined by examining the application's manifest.
-  core.String appPackageId;
+  core.String? appPackageId;
 
   /// The option of whether running each test within its own invocation of
   /// instrumentation with Android Test Orchestrator or not.
@@ -535,31 +515,31 @@ class AndroidInstrumentationTest {
   /// - "USE_ORCHESTRATOR" : Run test using orchestrator. ** Only compatible
   /// with AndroidJUnitRunner version 1.0 or higher! ** Recommended.
   /// - "DO_NOT_USE_ORCHESTRATOR" : Run test without using orchestrator.
-  core.String orchestratorOption;
+  core.String? orchestratorOption;
 
   /// The option to run tests in multiple shards in parallel.
-  ShardingOption shardingOption;
+  ShardingOption? shardingOption;
 
   /// The APK containing the test code to be executed.
   ///
   /// Required.
-  FileReference testApk;
+  FileReference? testApk;
 
   /// The java package for the test to be executed.
   ///
   /// The default value is determined by examining the application's manifest.
-  core.String testPackageId;
+  core.String? testPackageId;
 
   /// The InstrumentationTestRunner class.
   ///
   /// The default value is determined by examining the application's manifest.
-  core.String testRunnerClass;
+  core.String? testRunnerClass;
 
   /// Each target must be fully qualified with the package name or class name,
   /// in one of these formats: - "package package_name" - "class
   /// package_name.class_name" - "class package_name.class_name#method_name" If
   /// empty, all targets in the module will be run.
-  core.List<core.String> testTargets;
+  core.List<core.String>? testTargets;
 
   AndroidInstrumentationTest();
 
@@ -599,17 +579,17 @@ class AndroidInstrumentationTest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appApk != null) 'appApk': appApk.toJson(),
-        if (appBundle != null) 'appBundle': appBundle.toJson(),
-        if (appPackageId != null) 'appPackageId': appPackageId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appApk != null) 'appApk': appApk!.toJson(),
+        if (appBundle != null) 'appBundle': appBundle!.toJson(),
+        if (appPackageId != null) 'appPackageId': appPackageId!,
         if (orchestratorOption != null)
-          'orchestratorOption': orchestratorOption,
-        if (shardingOption != null) 'shardingOption': shardingOption.toJson(),
-        if (testApk != null) 'testApk': testApk.toJson(),
-        if (testPackageId != null) 'testPackageId': testPackageId,
-        if (testRunnerClass != null) 'testRunnerClass': testRunnerClass,
-        if (testTargets != null) 'testTargets': testTargets,
+          'orchestratorOption': orchestratorOption!,
+        if (shardingOption != null) 'shardingOption': shardingOption!.toJson(),
+        if (testApk != null) 'testApk': testApk!.toJson(),
+        if (testPackageId != null) 'testPackageId': testPackageId!,
+        if (testRunnerClass != null) 'testRunnerClass': testRunnerClass!,
+        if (testTargets != null) 'testTargets': testTargets!,
       };
 }
 
@@ -625,28 +605,28 @@ class AndroidMatrix {
   /// Use the TestEnvironmentDiscoveryService to get supported options.
   ///
   /// Required.
-  core.List<core.String> androidModelIds;
+  core.List<core.String>? androidModelIds;
 
   /// The ids of the set of Android OS version to be used.
   ///
   /// Use the TestEnvironmentDiscoveryService to get supported options.
   ///
   /// Required.
-  core.List<core.String> androidVersionIds;
+  core.List<core.String>? androidVersionIds;
 
   /// The set of locales the test device will enable for testing.
   ///
   /// Use the TestEnvironmentDiscoveryService to get supported options.
   ///
   /// Required.
-  core.List<core.String> locales;
+  core.List<core.String>? locales;
 
   /// The set of orientations to test with.
   ///
   /// Use the TestEnvironmentDiscoveryService to get supported options.
   ///
   /// Required.
-  core.List<core.String> orientations;
+  core.List<core.String>? orientations;
 
   AndroidMatrix();
 
@@ -673,11 +653,11 @@ class AndroidMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (androidModelIds != null) 'androidModelIds': androidModelIds,
-        if (androidVersionIds != null) 'androidVersionIds': androidVersionIds,
-        if (locales != null) 'locales': locales,
-        if (orientations != null) 'orientations': orientations,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (androidModelIds != null) 'androidModelIds': androidModelIds!,
+        if (androidVersionIds != null) 'androidVersionIds': androidVersionIds!,
+        if (locales != null) 'locales': locales!,
+        if (orientations != null) 'orientations': orientations!,
       };
 }
 
@@ -686,12 +666,12 @@ class AndroidModel {
   /// The company that this device is branded with.
   ///
   /// Example: "Google", "Samsung".
-  core.String brand;
+  core.String? brand;
 
   /// The name of the industrial design.
   ///
   /// This corresponds to android.os.Build.DEVICE.
-  core.String codename;
+  core.String? codename;
 
   /// Whether this device is virtual or physical.
   /// Possible string values are:
@@ -701,7 +681,7 @@ class AndroidModel {
   /// - "PHYSICAL" : Actual hardware.
   /// - "EMULATOR" : Android virtual device using emulator in nested
   /// virtualization. Equivalent to Android Studio.
-  core.String form;
+  core.String? form;
 
   /// Whether this device is a phone, tablet, wearable, etc.
   /// Possible string values are:
@@ -710,37 +690,37 @@ class AndroidModel {
   /// - "PHONE" : This device has the shape of a phone.
   /// - "TABLET" : This device has the shape of a tablet.
   /// - "WEARABLE" : This device has the shape of a watch or other wearable.
-  core.String formFactor;
+  core.String? formFactor;
 
   /// The unique opaque id for this model.
   ///
   /// Use this for invoking the TestExecutionService.
-  core.String id;
+  core.String? id;
 
   /// True if and only if tests with this model are recorded by stitching
   /// together screenshots.
   ///
   /// See use_low_spec_video_recording in device config.
-  core.bool lowFpsVideoRecording;
+  core.bool? lowFpsVideoRecording;
 
   /// The manufacturer of this device.
-  core.String manufacturer;
+  core.String? manufacturer;
 
   /// The human-readable marketing name for this device model.
   ///
   /// Examples: "Nexus 5", "Galaxy S5".
-  core.String name;
+  core.String? name;
 
   /// Screen density in DPI.
   ///
   /// This corresponds to ro.sf.lcd_density
-  core.int screenDensity;
+  core.int? screenDensity;
 
   /// Screen size in the horizontal (X) dimension measured in pixels.
-  core.int screenX;
+  core.int? screenX;
 
   /// Screen size in the vertical (Y) dimension measured in pixels.
-  core.int screenY;
+  core.int? screenY;
 
   /// The list of supported ABIs for this device.
   ///
@@ -749,21 +729,21 @@ class AndroidModel {
   /// is the first element in the list. Elements are optionally prefixed by
   /// "version_id:" (where version_id is the id of an AndroidVersion), denoting
   /// an ABI that is supported only on a particular version.
-  core.List<core.String> supportedAbis;
+  core.List<core.String>? supportedAbis;
 
   /// The set of Android versions this device supports.
-  core.List<core.String> supportedVersionIds;
+  core.List<core.String>? supportedVersionIds;
 
   /// Tags for this dimension.
   ///
   /// Examples: "default", "preview", "deprecated".
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   /// URL of a thumbnail image (photo) of the device.
   ///
   /// e.g.
   /// https://lh3.googleusercontent.com/90WcauuJiCYABEl8U0lcZeuS5STUbf2yW...
-  core.String thumbnailUrl;
+  core.String? thumbnailUrl;
 
   AndroidModel();
 
@@ -821,24 +801,24 @@ class AndroidModel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (brand != null) 'brand': brand,
-        if (codename != null) 'codename': codename,
-        if (form != null) 'form': form,
-        if (formFactor != null) 'formFactor': formFactor,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (brand != null) 'brand': brand!,
+        if (codename != null) 'codename': codename!,
+        if (form != null) 'form': form!,
+        if (formFactor != null) 'formFactor': formFactor!,
+        if (id != null) 'id': id!,
         if (lowFpsVideoRecording != null)
-          'lowFpsVideoRecording': lowFpsVideoRecording,
-        if (manufacturer != null) 'manufacturer': manufacturer,
-        if (name != null) 'name': name,
-        if (screenDensity != null) 'screenDensity': screenDensity,
-        if (screenX != null) 'screenX': screenX,
-        if (screenY != null) 'screenY': screenY,
-        if (supportedAbis != null) 'supportedAbis': supportedAbis,
+          'lowFpsVideoRecording': lowFpsVideoRecording!,
+        if (manufacturer != null) 'manufacturer': manufacturer!,
+        if (name != null) 'name': name!,
+        if (screenDensity != null) 'screenDensity': screenDensity!,
+        if (screenX != null) 'screenX': screenX!,
+        if (screenY != null) 'screenY': screenY!,
+        if (supportedAbis != null) 'supportedAbis': supportedAbis!,
         if (supportedVersionIds != null)
-          'supportedVersionIds': supportedVersionIds,
-        if (tags != null) 'tags': tags,
-        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl,
+          'supportedVersionIds': supportedVersionIds!,
+        if (tags != null) 'tags': tags!,
+        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
       };
 }
 
@@ -848,46 +828,46 @@ class AndroidModel {
 /// Next tag: 30
 class AndroidRoboTest {
   /// The APK for the application under test.
-  FileReference appApk;
+  FileReference? appApk;
 
   /// A multi-apk app bundle for the application under test.
-  AppBundle appBundle;
+  AppBundle? appBundle;
 
   /// The initial activity that should be used to start the app.
-  core.String appInitialActivity;
+  core.String? appInitialActivity;
 
   /// The java package for the application under test.
   ///
   /// The default value is determined by examining the application's manifest.
-  core.String appPackageId;
+  core.String? appPackageId;
 
   /// The max depth of the traversal stack Robo can explore.
   ///
   /// Needs to be at least 2 to make Robo explore the app beyond the first
   /// activity. Default is 50.
-  core.int maxDepth;
+  core.int? maxDepth;
 
   /// The max number of steps Robo can execute.
   ///
   /// Default is no limit.
-  core.int maxSteps;
+  core.int? maxSteps;
 
   /// A set of directives Robo should apply during the crawl.
   ///
   /// This allows users to customize the crawl. For example, the username and
   /// password for a test account can be provided.
-  core.List<RoboDirective> roboDirectives;
+  core.List<RoboDirective>? roboDirectives;
 
   /// A JSON file with a sequence of actions Robo should perform as a prologue
   /// for the crawl.
-  FileReference roboScript;
+  FileReference? roboScript;
 
   /// The intents used to launch the app for the crawl.
   ///
   /// If none are provided, then the main launcher activity is launched. If some
   /// are provided, then only those provided are launched (the main launcher
   /// activity must be provided explicitly).
-  core.List<RoboStartingIntent> startingIntents;
+  core.List<RoboStartingIntent>? startingIntents;
 
   AndroidRoboTest();
 
@@ -930,31 +910,31 @@ class AndroidRoboTest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appApk != null) 'appApk': appApk.toJson(),
-        if (appBundle != null) 'appBundle': appBundle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appApk != null) 'appApk': appApk!.toJson(),
+        if (appBundle != null) 'appBundle': appBundle!.toJson(),
         if (appInitialActivity != null)
-          'appInitialActivity': appInitialActivity,
-        if (appPackageId != null) 'appPackageId': appPackageId,
-        if (maxDepth != null) 'maxDepth': maxDepth,
-        if (maxSteps != null) 'maxSteps': maxSteps,
+          'appInitialActivity': appInitialActivity!,
+        if (appPackageId != null) 'appPackageId': appPackageId!,
+        if (maxDepth != null) 'maxDepth': maxDepth!,
+        if (maxSteps != null) 'maxSteps': maxSteps!,
         if (roboDirectives != null)
           'roboDirectives':
-              roboDirectives.map((value) => value.toJson()).toList(),
-        if (roboScript != null) 'roboScript': roboScript.toJson(),
+              roboDirectives!.map((value) => value.toJson()).toList(),
+        if (roboScript != null) 'roboScript': roboScript!.toJson(),
         if (startingIntents != null)
           'startingIntents':
-              startingIntents.map((value) => value.toJson()).toList(),
+              startingIntents!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Android configuration that can be selected at the time a test is run.
 class AndroidRuntimeConfiguration {
   /// The set of available locales.
-  core.List<Locale> locales;
+  core.List<Locale>? locales;
 
   /// The set of available orientations.
-  core.List<Orientation> orientations;
+  core.List<Orientation>? orientations;
 
   AndroidRuntimeConfiguration();
 
@@ -973,11 +953,11 @@ class AndroidRuntimeConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locales != null)
-          'locales': locales.map((value) => value.toJson()).toList(),
+          'locales': locales!.map((value) => value.toJson()).toList(),
         if (orientations != null)
-          'orientations': orientations.map((value) => value.toJson()).toList(),
+          'orientations': orientations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -987,15 +967,15 @@ class AndroidRuntimeConfiguration {
 /// api, for the time being.
 class AndroidTestLoop {
   /// The APK for the application under test.
-  FileReference appApk;
+  FileReference? appApk;
 
   /// A multi-apk app bundle for the application under test.
-  AppBundle appBundle;
+  AppBundle? appBundle;
 
   /// The java package for the application under test.
   ///
   /// The default is determined by examining the application's manifest.
-  core.String appPackageId;
+  core.String? appPackageId;
 
   /// The list of scenario labels that should be run during the test.
   ///
@@ -1004,12 +984,12 @@ class AndroidTestLoop {
   /// com.google.test.loops.player_experience add all of the loops labeled in
   /// the manifest with the com.google.test.loops.player_experience name to the
   /// execution. Scenarios can also be specified in the scenarios field.
-  core.List<core.String> scenarioLabels;
+  core.List<core.String>? scenarioLabels;
 
   /// The list of scenarios that should be run during the test.
   ///
   /// The default is all test loops, derived from the application's manifest.
-  core.List<core.int> scenarios;
+  core.List<core.int>? scenarios;
 
   AndroidTestLoop();
 
@@ -1037,12 +1017,12 @@ class AndroidTestLoop {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appApk != null) 'appApk': appApk.toJson(),
-        if (appBundle != null) 'appBundle': appBundle.toJson(),
-        if (appPackageId != null) 'appPackageId': appPackageId,
-        if (scenarioLabels != null) 'scenarioLabels': scenarioLabels,
-        if (scenarios != null) 'scenarios': scenarios,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appApk != null) 'appApk': appApk!.toJson(),
+        if (appBundle != null) 'appBundle': appBundle!.toJson(),
+        if (appPackageId != null) 'appPackageId': appPackageId!,
+        if (scenarioLabels != null) 'scenarioLabels': scenarioLabels!,
+        if (scenarios != null) 'scenarios': scenarios!,
       };
 }
 
@@ -1051,33 +1031,33 @@ class AndroidVersion {
   /// The API level for this Android version.
   ///
   /// Examples: 18, 19.
-  core.int apiLevel;
+  core.int? apiLevel;
 
   /// The code name for this Android version.
   ///
   /// Examples: "JellyBean", "KitKat".
-  core.String codeName;
+  core.String? codeName;
 
   /// Market share for this version.
-  Distribution distribution;
+  Distribution? distribution;
 
   /// An opaque id for this Android version.
   ///
   /// Use this id to invoke the TestExecutionService.
-  core.String id;
+  core.String? id;
 
   /// The date this Android version became available in the market.
-  Date releaseDate;
+  Date? releaseDate;
 
   /// Tags for this dimension.
   ///
   /// Examples: "default", "preview", "deprecated".
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   /// A string representing this version of the Android OS.
   ///
   /// Examples: "4.3", "4.4".
-  core.String versionString;
+  core.String? versionString;
 
   AndroidVersion();
 
@@ -1109,26 +1089,26 @@ class AndroidVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiLevel != null) 'apiLevel': apiLevel,
-        if (codeName != null) 'codeName': codeName,
-        if (distribution != null) 'distribution': distribution.toJson(),
-        if (id != null) 'id': id,
-        if (releaseDate != null) 'releaseDate': releaseDate.toJson(),
-        if (tags != null) 'tags': tags,
-        if (versionString != null) 'versionString': versionString,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiLevel != null) 'apiLevel': apiLevel!,
+        if (codeName != null) 'codeName': codeName!,
+        if (distribution != null) 'distribution': distribution!.toJson(),
+        if (id != null) 'id': id!,
+        if (releaseDate != null) 'releaseDate': releaseDate!.toJson(),
+        if (tags != null) 'tags': tags!,
+        if (versionString != null) 'versionString': versionString!,
       };
 }
 
 /// An Android package file to install.
 class Apk {
   /// The path to an APK to be installed on the device before the test begins.
-  FileReference location;
+  FileReference? location;
 
   /// The java package for the APK to be installed.
   ///
   /// Value is determined by examining the application's manifest.
-  core.String packageName;
+  core.String? packageName;
 
   Apk();
 
@@ -1142,16 +1122,16 @@ class Apk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (location != null) 'location': location.toJson(),
-        if (packageName != null) 'packageName': packageName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (location != null) 'location': location!.toJson(),
+        if (packageName != null) 'packageName': packageName!,
       };
 }
 
 /// Android application details based on application manifest and apk archive
 /// contents.
 class ApkDetail {
-  ApkManifest apkManifest;
+  ApkManifest? apkManifest;
 
   ApkDetail();
 
@@ -1162,8 +1142,8 @@ class ApkDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apkManifest != null) 'apkManifest': apkManifest.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apkManifest != null) 'apkManifest': apkManifest!.toJson(),
       };
 }
 
@@ -1172,23 +1152,23 @@ class ApkDetail {
 /// See http://developer.android.com/guide/topics/manifest/manifest-intro.html
 class ApkManifest {
   /// User-readable name for the application.
-  core.String applicationLabel;
-  core.List<IntentFilter> intentFilters;
+  core.String? applicationLabel;
+  core.List<IntentFilter>? intentFilters;
 
   /// Maximum API level on which the application is designed to run.
-  core.int maxSdkVersion;
+  core.int? maxSdkVersion;
 
   /// Minimum API level required for the application to run.
-  core.int minSdkVersion;
+  core.int? minSdkVersion;
 
   /// Full Java-style package name for this application, e.g. "com.example.foo".
-  core.String packageName;
+  core.String? packageName;
 
   /// Specifies the API Level on which the application is designed to run.
-  core.int targetSdkVersion;
+  core.int? targetSdkVersion;
 
   /// Permissions declared to be used by the application
-  core.List<core.String> usesPermission;
+  core.List<core.String>? usesPermission;
 
   ApkManifest();
 
@@ -1221,16 +1201,16 @@ class ApkManifest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (applicationLabel != null) 'applicationLabel': applicationLabel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (applicationLabel != null) 'applicationLabel': applicationLabel!,
         if (intentFilters != null)
           'intentFilters':
-              intentFilters.map((value) => value.toJson()).toList(),
-        if (maxSdkVersion != null) 'maxSdkVersion': maxSdkVersion,
-        if (minSdkVersion != null) 'minSdkVersion': minSdkVersion,
-        if (packageName != null) 'packageName': packageName,
-        if (targetSdkVersion != null) 'targetSdkVersion': targetSdkVersion,
-        if (usesPermission != null) 'usesPermission': usesPermission,
+              intentFilters!.map((value) => value.toJson()).toList(),
+        if (maxSdkVersion != null) 'maxSdkVersion': maxSdkVersion!,
+        if (minSdkVersion != null) 'minSdkVersion': minSdkVersion!,
+        if (packageName != null) 'packageName': packageName!,
+        if (targetSdkVersion != null) 'targetSdkVersion': targetSdkVersion!,
+        if (usesPermission != null) 'usesPermission': usesPermission!,
       };
 }
 
@@ -1241,7 +1221,7 @@ class ApkManifest {
 /// building App Bundles.
 class AppBundle {
   /// .aab file representing the app bundle under test.
-  FileReference bundleLocation;
+  FileReference? bundleLocation;
 
   AppBundle();
 
@@ -1252,8 +1232,8 @@ class AppBundle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bundleLocation != null) 'bundleLocation': bundleLocation.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bundleLocation != null) 'bundleLocation': bundleLocation!.toJson(),
       };
 }
 
@@ -1290,7 +1270,7 @@ class CancelTestMatrixResponse {
   /// - "INVALID" : The execution or matrix was not run because the provided
   /// inputs are not valid. Examples: input file is not of the expected type, is
   /// malformed/corrupt, or was flagged as malware
-  core.String testState;
+  core.String? testState;
 
   CancelTestMatrixResponse();
 
@@ -1300,20 +1280,20 @@ class CancelTestMatrixResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (testState != null) 'testState': testState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (testState != null) 'testState': testState!,
       };
 }
 
 /// Information about the client which invoked the test.
 class ClientInfo {
   /// The list of detailed information about client.
-  core.List<ClientInfoDetail> clientInfoDetails;
+  core.List<ClientInfoDetail>? clientInfoDetails;
 
   /// Client name, such as gcloud.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   ClientInfo();
 
@@ -1329,11 +1309,11 @@ class ClientInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clientInfoDetails != null)
           'clientInfoDetails':
-              clientInfoDetails.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+              clientInfoDetails!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1345,12 +1325,12 @@ class ClientInfoDetail {
   /// The key of detailed client information.
   ///
   /// Required.
-  core.String key;
+  core.String? key;
 
   /// The value of detailed client information.
   ///
   /// Required.
-  core.String value;
+  core.String? value;
 
   ClientInfoDetail();
 
@@ -1363,9 +1343,9 @@ class ClientInfoDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1383,17 +1363,17 @@ class Date {
   ///
   /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
   /// year by itself or a year and month where the day isn't significant.
-  core.int day;
+  core.int? day;
 
   /// Month of a year.
   ///
   /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int month;
+  core.int? month;
 
   /// Year of the date.
   ///
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int year;
+  core.int? year;
 
   Date();
 
@@ -1409,20 +1389,20 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (month != null) 'month': month,
-        if (year != null) 'year': year,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (month != null) 'month': month!,
+        if (year != null) 'year': year!,
       };
 }
 
 /// A single device file description.
 class DeviceFile {
   /// A reference to an opaque binary blob file.
-  ObbFile obbFile;
+  ObbFile? obbFile;
 
   /// A reference to a regular file.
-  RegularFile regularFile;
+  RegularFile? regularFile;
 
   DeviceFile();
 
@@ -1437,19 +1417,19 @@ class DeviceFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (obbFile != null) 'obbFile': obbFile.toJson(),
-        if (regularFile != null) 'regularFile': regularFile.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (obbFile != null) 'obbFile': obbFile!.toJson(),
+        if (regularFile != null) 'regularFile': regularFile!.toJson(),
       };
 }
 
 /// A single device IP block
 class DeviceIpBlock {
   /// The date this block was added to Firebase Test Lab
-  Date addedDate;
+  Date? addedDate;
 
   /// An IP address block in CIDR notation eg: 34.68.194.64/29
-  core.String block;
+  core.String? block;
 
   /// Whether this block is used by physical or virtual devices
   /// Possible string values are:
@@ -1459,7 +1439,7 @@ class DeviceIpBlock {
   /// - "PHYSICAL" : Actual hardware.
   /// - "EMULATOR" : Android virtual device using emulator in nested
   /// virtualization. Equivalent to Android Studio.
-  core.String form;
+  core.String? form;
 
   DeviceIpBlock();
 
@@ -1476,17 +1456,17 @@ class DeviceIpBlock {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addedDate != null) 'addedDate': addedDate.toJson(),
-        if (block != null) 'block': block,
-        if (form != null) 'form': form,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addedDate != null) 'addedDate': addedDate!.toJson(),
+        if (block != null) 'block': block!,
+        if (form != null) 'form': form!,
       };
 }
 
 /// List of IP blocks used by the Firebase Test Lab
 class DeviceIpBlockCatalog {
   /// The device IP blocks used by Firebase Test Lab
-  core.List<DeviceIpBlock> ipBlocks;
+  core.List<DeviceIpBlock>? ipBlocks;
 
   DeviceIpBlockCatalog();
 
@@ -1499,9 +1479,9 @@ class DeviceIpBlockCatalog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (ipBlocks != null)
-          'ipBlocks': ipBlocks.map((value) => value.toJson()).toList(),
+          'ipBlocks': ipBlocks!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1511,12 +1491,12 @@ class Distribution {
   /// The estimated fraction (0-1) of the total market with this configuration.
   ///
   /// Output only.
-  core.double marketShare;
+  core.double? marketShare;
 
   /// The time this distribution was measured.
   ///
   /// Output only.
-  core.String measurementTime;
+  core.String? measurementTime;
 
   Distribution();
 
@@ -1529,19 +1509,19 @@ class Distribution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (marketShare != null) 'marketShare': marketShare,
-        if (measurementTime != null) 'measurementTime': measurementTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (marketShare != null) 'marketShare': marketShare!,
+        if (measurementTime != null) 'measurementTime': measurementTime!,
       };
 }
 
 /// The environment in which the test is run.
 class Environment {
   /// An Android device which must be used with an Android test.
-  AndroidDevice androidDevice;
+  AndroidDevice? androidDevice;
 
   /// An iOS device which must be used with an iOS test.
-  IosDevice iosDevice;
+  IosDevice? iosDevice;
 
   Environment();
 
@@ -1556,9 +1536,9 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (androidDevice != null) 'androidDevice': androidDevice.toJson(),
-        if (iosDevice != null) 'iosDevice': iosDevice.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (androidDevice != null) 'androidDevice': androidDevice!.toJson(),
+        if (iosDevice != null) 'iosDevice': iosDevice!.toJson(),
       };
 }
 
@@ -1566,13 +1546,13 @@ class Environment {
 class EnvironmentMatrix {
   /// A list of Android devices; the test will be run only on the specified
   /// devices.
-  AndroidDeviceList androidDeviceList;
+  AndroidDeviceList? androidDeviceList;
 
   /// A matrix of Android devices.
-  AndroidMatrix androidMatrix;
+  AndroidMatrix? androidMatrix;
 
   /// A list of iOS devices.
-  IosDeviceList iosDeviceList;
+  IosDeviceList? iosDeviceList;
 
   EnvironmentMatrix();
 
@@ -1591,21 +1571,21 @@ class EnvironmentMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (androidDeviceList != null)
-          'androidDeviceList': androidDeviceList.toJson(),
-        if (androidMatrix != null) 'androidMatrix': androidMatrix.toJson(),
-        if (iosDeviceList != null) 'iosDeviceList': iosDeviceList.toJson(),
+          'androidDeviceList': androidDeviceList!.toJson(),
+        if (androidMatrix != null) 'androidMatrix': androidMatrix!.toJson(),
+        if (iosDeviceList != null) 'iosDeviceList': iosDeviceList!.toJson(),
       };
 }
 
 /// A key-value pair passed as an environment variable to the test.
 class EnvironmentVariable {
   /// Key for the environment variable.
-  core.String key;
+  core.String? key;
 
   /// Value for the environment variable.
-  core.String value;
+  core.String? value;
 
   EnvironmentVariable();
 
@@ -1618,9 +1598,9 @@ class EnvironmentVariable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1630,7 +1610,7 @@ class FileReference {
   ///
   /// Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These
   /// paths are expected to be url encoded (percent encoding)
-  core.String gcsPath;
+  core.String? gcsPath;
 
   FileReference();
 
@@ -1640,15 +1620,15 @@ class FileReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsPath != null) 'gcsPath': gcsPath,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsPath != null) 'gcsPath': gcsPath!,
       };
 }
 
 /// Response containing the details of the specified Android application APK.
 class GetApkDetailsResponse {
   /// Details of the Android APK.
-  ApkDetail apkDetail;
+  ApkDetail? apkDetail;
 
   GetApkDetailsResponse();
 
@@ -1659,8 +1639,8 @@ class GetApkDetailsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apkDetail != null) 'apkDetail': apkDetail.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apkDetail != null) 'apkDetail': apkDetail!.toJson(),
       };
 }
 
@@ -1678,7 +1658,7 @@ class GoogleAuto {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A storage location within Google cloud storage (GCS).
@@ -1690,7 +1670,7 @@ class GoogleCloudStorage {
   /// path.
   ///
   /// Required.
-  core.String gcsPath;
+  core.String? gcsPath;
 
   GoogleCloudStorage();
 
@@ -1700,8 +1680,8 @@ class GoogleCloudStorage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsPath != null) 'gcsPath': gcsPath,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsPath != null) 'gcsPath': gcsPath!,
       };
 }
 
@@ -1710,13 +1690,13 @@ class GoogleCloudStorage {
 /// https://developer.android.com/guide/topics/manifest/intent-filter-element.html
 class IntentFilter {
   /// The android:name value of the tag.
-  core.List<core.String> actionNames;
+  core.List<core.String>? actionNames;
 
   /// The android:name value of the tag.
-  core.List<core.String> categoryNames;
+  core.List<core.String>? categoryNames;
 
   /// The android:mimeType value of the tag.
-  core.String mimeType;
+  core.String? mimeType;
 
   IntentFilter();
 
@@ -1736,10 +1716,10 @@ class IntentFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionNames != null) 'actionNames': actionNames,
-        if (categoryNames != null) 'categoryNames': categoryNames,
-        if (mimeType != null) 'mimeType': mimeType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionNames != null) 'actionNames': actionNames!,
+        if (categoryNames != null) 'categoryNames': categoryNames!,
+        if (mimeType != null) 'mimeType': mimeType!,
       };
 }
 
@@ -1750,28 +1730,28 @@ class IosDevice {
   /// Use the TestEnvironmentDiscoveryService to get supported options.
   ///
   /// Required.
-  core.String iosModelId;
+  core.String? iosModelId;
 
   /// The id of the iOS major software version to be used.
   ///
   /// Use the TestEnvironmentDiscoveryService to get supported options.
   ///
   /// Required.
-  core.String iosVersionId;
+  core.String? iosVersionId;
 
   /// The locale the test device used for testing.
   ///
   /// Use the TestEnvironmentDiscoveryService to get supported options.
   ///
   /// Required.
-  core.String locale;
+  core.String? locale;
 
   /// How the device is oriented during the test.
   ///
   /// Use the TestEnvironmentDiscoveryService to get supported options.
   ///
   /// Required.
-  core.String orientation;
+  core.String? orientation;
 
   IosDevice();
 
@@ -1790,27 +1770,27 @@ class IosDevice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (iosModelId != null) 'iosModelId': iosModelId,
-        if (iosVersionId != null) 'iosVersionId': iosVersionId,
-        if (locale != null) 'locale': locale,
-        if (orientation != null) 'orientation': orientation,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (iosModelId != null) 'iosModelId': iosModelId!,
+        if (iosVersionId != null) 'iosVersionId': iosVersionId!,
+        if (locale != null) 'locale': locale!,
+        if (orientation != null) 'orientation': orientation!,
       };
 }
 
 /// The currently supported iOS devices.
 class IosDeviceCatalog {
   /// The set of supported iOS device models.
-  core.List<IosModel> models;
+  core.List<IosModel>? models;
 
   /// The set of supported runtime configurations.
-  IosRuntimeConfiguration runtimeConfiguration;
+  IosRuntimeConfiguration? runtimeConfiguration;
 
   /// The set of supported iOS software versions.
-  core.List<IosVersion> versions;
+  core.List<IosVersion>? versions;
 
   /// The set of supported Xcode versions.
-  core.List<XcodeVersion> xcodeVersions;
+  core.List<XcodeVersion>? xcodeVersions;
 
   IosDeviceCatalog();
 
@@ -1839,16 +1819,16 @@ class IosDeviceCatalog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (models != null)
-          'models': models.map((value) => value.toJson()).toList(),
+          'models': models!.map((value) => value.toJson()).toList(),
         if (runtimeConfiguration != null)
-          'runtimeConfiguration': runtimeConfiguration.toJson(),
+          'runtimeConfiguration': runtimeConfiguration!.toJson(),
         if (versions != null)
-          'versions': versions.map((value) => value.toJson()).toList(),
+          'versions': versions!.map((value) => value.toJson()).toList(),
         if (xcodeVersions != null)
           'xcodeVersions':
-              xcodeVersions.map((value) => value.toJson()).toList(),
+              xcodeVersions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1858,13 +1838,13 @@ class IosDeviceFile {
   ///
   /// iOS apps sandbox their own filesystem, so app files must specify which app
   /// installed on the device.
-  core.String bundleId;
+  core.String? bundleId;
 
   /// The source file
-  FileReference content;
+  FileReference? content;
 
   /// Location of the file on the device, inside the app's sandboxed filesystem
-  core.String devicePath;
+  core.String? devicePath;
 
   IosDeviceFile();
 
@@ -1881,10 +1861,10 @@ class IosDeviceFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bundleId != null) 'bundleId': bundleId,
-        if (content != null) 'content': content.toJson(),
-        if (devicePath != null) 'devicePath': devicePath,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bundleId != null) 'bundleId': bundleId!,
+        if (content != null) 'content': content!.toJson(),
+        if (devicePath != null) 'devicePath': devicePath!,
       };
 }
 
@@ -1893,7 +1873,7 @@ class IosDeviceList {
   /// A list of iOS devices.
   ///
   /// Required.
-  core.List<IosDevice> iosDevices;
+  core.List<IosDevice>? iosDevices;
 
   IosDeviceList();
 
@@ -1906,9 +1886,9 @@ class IosDeviceList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (iosDevices != null)
-          'iosDevices': iosDevices.map((value) => value.toJson()).toList(),
+          'iosDevices': iosDevices!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1918,7 +1898,7 @@ class IosModel {
   ///
   /// Copied from
   /// https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html
-  core.List<core.String> deviceCapabilities;
+  core.List<core.String>? deviceCapabilities;
 
   /// Whether this device is a phone, tablet, wearable, etc.
   /// Possible string values are:
@@ -1927,34 +1907,34 @@ class IosModel {
   /// - "PHONE" : This device has the shape of a phone.
   /// - "TABLET" : This device has the shape of a tablet.
   /// - "WEARABLE" : This device has the shape of a watch or other wearable.
-  core.String formFactor;
+  core.String? formFactor;
 
   /// The unique opaque id for this model.
   ///
   /// Use this for invoking the TestExecutionService.
-  core.String id;
+  core.String? id;
 
   /// The human-readable name for this device model.
   ///
   /// Examples: "iPhone 4s", "iPad Mini 2".
-  core.String name;
+  core.String? name;
 
   /// Screen density in DPI.
-  core.int screenDensity;
+  core.int? screenDensity;
 
   /// Screen size in the horizontal (X) dimension measured in pixels.
-  core.int screenX;
+  core.int? screenX;
 
   /// Screen size in the vertical (Y) dimension measured in pixels.
-  core.int screenY;
+  core.int? screenY;
 
   /// The set of iOS major software versions this device supports.
-  core.List<core.String> supportedVersionIds;
+  core.List<core.String>? supportedVersionIds;
 
   /// Tags for this dimension.
   ///
   /// Examples: "default", "preview", "deprecated".
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   IosModel();
 
@@ -1994,28 +1974,28 @@ class IosModel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deviceCapabilities != null)
-          'deviceCapabilities': deviceCapabilities,
-        if (formFactor != null) 'formFactor': formFactor,
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
-        if (screenDensity != null) 'screenDensity': screenDensity,
-        if (screenX != null) 'screenX': screenX,
-        if (screenY != null) 'screenY': screenY,
+          'deviceCapabilities': deviceCapabilities!,
+        if (formFactor != null) 'formFactor': formFactor!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (screenDensity != null) 'screenDensity': screenDensity!,
+        if (screenX != null) 'screenX': screenX!,
+        if (screenY != null) 'screenY': screenY!,
         if (supportedVersionIds != null)
-          'supportedVersionIds': supportedVersionIds,
-        if (tags != null) 'tags': tags,
+          'supportedVersionIds': supportedVersionIds!,
+        if (tags != null) 'tags': tags!,
       };
 }
 
 /// iOS configuration that can be selected at the time a test is run.
 class IosRuntimeConfiguration {
   /// The set of available locales.
-  core.List<Locale> locales;
+  core.List<Locale>? locales;
 
   /// The set of available orientations.
-  core.List<Orientation> orientations;
+  core.List<Orientation>? orientations;
 
   IosRuntimeConfiguration();
 
@@ -2034,11 +2014,11 @@ class IosRuntimeConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locales != null)
-          'locales': locales.map((value) => value.toJson()).toList(),
+          'locales': locales!.map((value) => value.toJson()).toList(),
         if (orientations != null)
-          'orientations': orientations.map((value) => value.toJson()).toList(),
+          'orientations': orientations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2051,17 +2031,17 @@ class IosTestLoop {
   /// The bundle id for the application under test.
   ///
   /// Output only.
-  core.String appBundleId;
+  core.String? appBundleId;
 
   /// The .ipa of the application to test.
   ///
   /// Required.
-  FileReference appIpa;
+  FileReference? appIpa;
 
   /// The list of scenarios that should be run during the test.
   ///
   /// Defaults to the single scenario 0 if unspecified.
-  core.List<core.int> scenarios;
+  core.List<core.int>? scenarios;
 
   IosTestLoop();
 
@@ -2080,24 +2060,24 @@ class IosTestLoop {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appBundleId != null) 'appBundleId': appBundleId,
-        if (appIpa != null) 'appIpa': appIpa.toJson(),
-        if (scenarios != null) 'scenarios': scenarios,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appBundleId != null) 'appBundleId': appBundleId!,
+        if (appIpa != null) 'appIpa': appIpa!.toJson(),
+        if (scenarios != null) 'scenarios': scenarios!,
       };
 }
 
 /// A description of how to set up an iOS device prior to running the test.
 class IosTestSetup {
   /// iOS apps to install in addition to those being directly tested.
-  core.List<FileReference> additionalIpas;
+  core.List<FileReference>? additionalIpas;
 
   /// The network traffic profile used for running the test.
   ///
   /// Available network profiles can be queried by using the
   /// NETWORK_CONFIGURATION environment type when calling
   /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
-  core.String networkProfile;
+  core.String? networkProfile;
 
   /// List of directories on the device to upload to Cloud Storage at the end of
   /// the test.
@@ -2105,10 +2085,10 @@ class IosTestSetup {
   /// Directories should either be in a shared directory (e.g.
   /// /private/var/mobile/Media) or within an accessible directory inside the
   /// app's filesystem (e.g. /Documents) by specifying the bundle id.
-  core.List<IosDeviceFile> pullDirectories;
+  core.List<IosDeviceFile>? pullDirectories;
 
   /// List of files to push to the device before starting the test.
-  core.List<IosDeviceFile> pushFiles;
+  core.List<IosDeviceFile>? pushFiles;
 
   IosTestSetup();
 
@@ -2136,16 +2116,16 @@ class IosTestSetup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additionalIpas != null)
           'additionalIpas':
-              additionalIpas.map((value) => value.toJson()).toList(),
-        if (networkProfile != null) 'networkProfile': networkProfile,
+              additionalIpas!.map((value) => value.toJson()).toList(),
+        if (networkProfile != null) 'networkProfile': networkProfile!,
         if (pullDirectories != null)
           'pullDirectories':
-              pullDirectories.map((value) => value.toJson()).toList(),
+              pullDirectories!.map((value) => value.toJson()).toList(),
         if (pushFiles != null)
-          'pushFiles': pushFiles.map((value) => value.toJson()).toList(),
+          'pushFiles': pushFiles!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2154,25 +2134,25 @@ class IosVersion {
   /// An opaque id for this iOS version.
   ///
   /// Use this id to invoke the TestExecutionService.
-  core.String id;
+  core.String? id;
 
   /// An integer representing the major iOS version.
   ///
   /// Examples: "8", "9".
-  core.int majorVersion;
+  core.int? majorVersion;
 
   /// An integer representing the minor iOS version.
   ///
   /// Examples: "1", "2".
-  core.int minorVersion;
+  core.int? minorVersion;
 
   /// The available Xcode versions for this version.
-  core.List<core.String> supportedXcodeVersionIds;
+  core.List<core.String>? supportedXcodeVersionIds;
 
   /// Tags for this dimension.
   ///
   /// Examples: "default", "preview", "deprecated".
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   IosVersion();
 
@@ -2199,13 +2179,13 @@ class IosVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (majorVersion != null) 'majorVersion': majorVersion,
-        if (minorVersion != null) 'minorVersion': minorVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (majorVersion != null) 'majorVersion': majorVersion!,
+        if (minorVersion != null) 'minorVersion': minorVersion!,
         if (supportedXcodeVersionIds != null)
-          'supportedXcodeVersionIds': supportedXcodeVersionIds,
-        if (tags != null) 'tags': tags,
+          'supportedXcodeVersionIds': supportedXcodeVersionIds!,
+        if (tags != null) 'tags': tags!,
       };
 }
 
@@ -2220,14 +2200,14 @@ class IosXcTest {
   /// The bundle id for the application under test.
   ///
   /// Output only.
-  core.String appBundleId;
+  core.String? appBundleId;
 
   /// The option to test special app entitlements.
   ///
   /// Setting this would re-sign the app having special entitlements with an
   /// explicit application-identifier. Currently supports testing
   /// aps-environment entitlement.
-  core.bool testSpecialEntitlements;
+  core.bool? testSpecialEntitlements;
 
   /// The .zip containing the .xctestrun file and the contents of the
   /// DerivedData/Build/Products directory.
@@ -2236,13 +2216,13 @@ class IosXcTest {
   /// specified.
   ///
   /// Required.
-  FileReference testsZip;
+  FileReference? testsZip;
 
   /// The Xcode version that should be used for the test.
   ///
   /// Use the TestEnvironmentDiscoveryService to get supported options. Defaults
   /// to the latest Xcode version Firebase Test Lab supports.
-  core.String xcodeVersion;
+  core.String? xcodeVersion;
 
   /// An .xctestrun file that will override the .xctestrun file in the tests
   /// zip.
@@ -2250,7 +2230,7 @@ class IosXcTest {
   /// Because the .xctestrun file contains environment variables along with test
   /// methods to run and/or ignore, this can be useful for sharding tests.
   /// Default is taken from the tests zip.
-  FileReference xctestrun;
+  FileReference? xctestrun;
 
   IosXcTest();
 
@@ -2274,13 +2254,13 @@ class IosXcTest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appBundleId != null) 'appBundleId': appBundleId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appBundleId != null) 'appBundleId': appBundleId!,
         if (testSpecialEntitlements != null)
-          'testSpecialEntitlements': testSpecialEntitlements,
-        if (testsZip != null) 'testsZip': testsZip.toJson(),
-        if (xcodeVersion != null) 'xcodeVersion': xcodeVersion,
-        if (xctestrun != null) 'xctestrun': xctestrun.toJson(),
+          'testSpecialEntitlements': testSpecialEntitlements!,
+        if (testsZip != null) 'testsZip': testsZip!.toJson(),
+        if (xcodeVersion != null) 'xcodeVersion': xcodeVersion!,
+        if (xctestrun != null) 'xctestrun': xctestrun!.toJson(),
       };
 }
 
@@ -2292,7 +2272,7 @@ class LauncherActivityIntent {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A location/region designation for language.
@@ -2300,22 +2280,22 @@ class Locale {
   /// The id for this locale.
   ///
   /// Example: "en_US".
-  core.String id;
+  core.String? id;
 
   /// A human-friendly name for this language/locale.
   ///
   /// Example: "English".
-  core.String name;
+  core.String? name;
 
   /// A human-friendly string representing the region for this locale.
   ///
   /// Example: "United States". Not present for every locale.
-  core.String region;
+  core.String? region;
 
   /// Tags for this dimension.
   ///
   /// Example: "default".
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   Locale();
 
@@ -2336,11 +2316,11 @@ class Locale {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
-        if (region != null) 'region': region,
-        if (tags != null) 'tags': tags,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (region != null) 'region': region!,
+        if (tags != null) 'tags': tags!,
       };
 }
 
@@ -2357,7 +2337,7 @@ class ManualSharding {
   /// are selected, the number must be >= 1 and <= 500.
   ///
   /// Required.
-  core.List<TestTargetsForShard> testTargetsForShard;
+  core.List<TestTargetsForShard>? testTargetsForShard;
 
   ManualSharding();
 
@@ -2370,22 +2350,22 @@ class ManualSharding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (testTargetsForShard != null)
           'testTargetsForShard':
-              testTargetsForShard.map((value) => value.toJson()).toList(),
+              testTargetsForShard!.map((value) => value.toJson()).toList(),
       };
 }
 
 class NetworkConfiguration {
   /// The emulation rule applying to the download traffic.
-  TrafficRule downRule;
+  TrafficRule? downRule;
 
   /// The unique opaque id for this network traffic configuration.
-  core.String id;
+  core.String? id;
 
   /// The emulation rule applying to the upload traffic.
-  TrafficRule upRule;
+  TrafficRule? upRule;
 
   NetworkConfiguration();
 
@@ -2403,15 +2383,15 @@ class NetworkConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (downRule != null) 'downRule': downRule.toJson(),
-        if (id != null) 'id': id,
-        if (upRule != null) 'upRule': upRule.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (downRule != null) 'downRule': downRule!.toJson(),
+        if (id != null) 'id': id!,
+        if (upRule != null) 'upRule': upRule!.toJson(),
       };
 }
 
 class NetworkConfigurationCatalog {
-  core.List<NetworkConfiguration> configurations;
+  core.List<NetworkConfiguration>? configurations;
 
   NetworkConfigurationCatalog();
 
@@ -2424,10 +2404,10 @@ class NetworkConfigurationCatalog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (configurations != null)
           'configurations':
-              configurations.map((value) => value.toJson()).toList(),
+              configurations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2436,14 +2416,14 @@ class ObbFile {
   /// Opaque Binary Blob (OBB) file(s) to install on the device.
   ///
   /// Required.
-  FileReference obb;
+  FileReference? obb;
 
   /// OBB file name which must conform to the format as specified by Android
   /// e.g. \[main|patch\].0300110.com.example.android.obb which will be
   /// installed into \/Android/obb/\/ on the device.
   ///
   /// Required.
-  core.String obbFileName;
+  core.String? obbFileName;
 
   ObbFile();
 
@@ -2457,9 +2437,9 @@ class ObbFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (obb != null) 'obb': obb.toJson(),
-        if (obbFileName != null) 'obbFileName': obbFileName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (obb != null) 'obb': obb!.toJson(),
+        if (obbFileName != null) 'obbFileName': obbFileName!,
       };
 }
 
@@ -2468,17 +2448,17 @@ class Orientation {
   /// The id for this orientation.
   ///
   /// Example: "portrait".
-  core.String id;
+  core.String? id;
 
   /// A human-friendly name for this orientation.
   ///
   /// Example: "portrait".
-  core.String name;
+  core.String? name;
 
   /// Tags for this dimension.
   ///
   /// Example: "default".
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   Orientation();
 
@@ -2496,10 +2476,10 @@ class Orientation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
-        if (tags != null) 'tags': tags,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (tags != null) 'tags': tags!,
       };
 }
 
@@ -2510,14 +2490,14 @@ class ProvidedSoftwareCatalog {
   ///
   /// The package is available at
   /// https://maven.google.com/web/index.html#androidx.test:orchestrator.
-  core.String androidxOrchestratorVersion;
+  core.String? androidxOrchestratorVersion;
 
   /// A string representing the current version of Android Test Orchestrator
   /// that is used in the environment.
   ///
   /// The package is available at
   /// https://maven.google.com/web/index.html#com.android.support.test:orchestrator.
-  core.String orchestratorVersion;
+  core.String? orchestratorVersion;
 
   ProvidedSoftwareCatalog();
 
@@ -2531,11 +2511,11 @@ class ProvidedSoftwareCatalog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (androidxOrchestratorVersion != null)
-          'androidxOrchestratorVersion': androidxOrchestratorVersion,
+          'androidxOrchestratorVersion': androidxOrchestratorVersion!,
         if (orchestratorVersion != null)
-          'orchestratorVersion': orchestratorVersion,
+          'orchestratorVersion': orchestratorVersion!,
       };
 }
 
@@ -2544,7 +2524,7 @@ class RegularFile {
   /// The source file.
   ///
   /// Required.
-  FileReference content;
+  FileReference? content;
 
   /// Where to put the content on the device.
   ///
@@ -2560,7 +2540,7 @@ class RegularFile {
   /// and test code to access files on the device in a portable way.
   ///
   /// Required.
-  core.String devicePath;
+  core.String? devicePath;
 
   RegularFile();
 
@@ -2574,32 +2554,32 @@ class RegularFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content.toJson(),
-        if (devicePath != null) 'devicePath': devicePath,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!.toJson(),
+        if (devicePath != null) 'devicePath': devicePath!,
       };
 }
 
 /// Locations where the results of running the test are stored.
 class ResultStorage {
   /// Required.
-  GoogleCloudStorage googleCloudStorage;
+  GoogleCloudStorage? googleCloudStorage;
 
   /// URL to the results in the Firebase Web Console.
   ///
   /// Output only.
-  core.String resultsUrl;
+  core.String? resultsUrl;
 
   /// The tool results execution that results are written to.
   ///
   /// Output only.
-  ToolResultsExecution toolResultsExecution;
+  ToolResultsExecution? toolResultsExecution;
 
   /// The tool results history that contains the tool results execution that
   /// results are written to.
   ///
   /// If not provided, the service will choose an appropriate value.
-  ToolResultsHistory toolResultsHistory;
+  ToolResultsHistory? toolResultsHistory;
 
   ResultStorage();
 
@@ -2621,14 +2601,14 @@ class ResultStorage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (googleCloudStorage != null)
-          'googleCloudStorage': googleCloudStorage.toJson(),
-        if (resultsUrl != null) 'resultsUrl': resultsUrl,
+          'googleCloudStorage': googleCloudStorage!.toJson(),
+        if (resultsUrl != null) 'resultsUrl': resultsUrl!,
         if (toolResultsExecution != null)
-          'toolResultsExecution': toolResultsExecution.toJson(),
+          'toolResultsExecution': toolResultsExecution!.toJson(),
         if (toolResultsHistory != null)
-          'toolResultsHistory': toolResultsHistory.toJson(),
+          'toolResultsHistory': toolResultsHistory!.toJson(),
       };
 }
 
@@ -2647,13 +2627,13 @@ class RoboDirective {
   /// - "ENTER_TEXT" : Direct Robo to enter text on the specified element. No-op
   /// if specified element is not enabled or does not allow text entry.
   /// - "IGNORE" : Direct Robo to ignore interactions with a specific element.
-  core.String actionType;
+  core.String? actionType;
 
   /// The text that Robo is directed to set.
   ///
   /// If left empty, the directive will be treated as a CLICK on the element
   /// matching the resource_name.
-  core.String inputText;
+  core.String? inputText;
 
   /// The android resource name of the target UI element.
   ///
@@ -2662,7 +2642,7 @@ class RoboDirective {
   /// https://developer.android.com/guide/topics/resources/accessing-resources.html
   ///
   /// Required.
-  core.String resourceName;
+  core.String? resourceName;
 
   RoboDirective();
 
@@ -2678,23 +2658,23 @@ class RoboDirective {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionType != null) 'actionType': actionType,
-        if (inputText != null) 'inputText': inputText,
-        if (resourceName != null) 'resourceName': resourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionType != null) 'actionType': actionType!,
+        if (inputText != null) 'inputText': inputText!,
+        if (resourceName != null) 'resourceName': resourceName!,
       };
 }
 
 /// Message for specifying the start activities to crawl.
 class RoboStartingIntent {
   /// An intent that starts the main launcher activity.
-  LauncherActivityIntent launcherActivity;
+  LauncherActivityIntent? launcherActivity;
 
   /// An intent that starts an activity with specific details.
-  StartActivityIntent startActivity;
+  StartActivityIntent? startActivity;
 
   /// Timeout in seconds for each intent.
-  core.String timeout;
+  core.String? timeout;
 
   RoboStartingIntent();
 
@@ -2712,11 +2692,11 @@ class RoboStartingIntent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (launcherActivity != null)
-          'launcherActivity': launcherActivity.toJson(),
-        if (startActivity != null) 'startActivity': startActivity.toJson(),
-        if (timeout != null) 'timeout': timeout,
+          'launcherActivity': launcherActivity!.toJson(),
+        if (startActivity != null) 'startActivity': startActivity!.toJson(),
+        if (timeout != null) 'timeout': timeout!,
       };
 }
 
@@ -2727,17 +2707,17 @@ class Shard {
   /// The total number of shards.
   ///
   /// Output only.
-  core.int numShards;
+  core.int? numShards;
 
   /// The index of the shard among all the shards.
   ///
   /// Output only.
-  core.int shardIndex;
+  core.int? shardIndex;
 
   /// Test targets for each shard.
   ///
   /// Output only.
-  TestTargetsForShard testTargetsForShard;
+  TestTargetsForShard? testTargetsForShard;
 
   Shard();
 
@@ -2754,11 +2734,11 @@ class Shard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (numShards != null) 'numShards': numShards,
-        if (shardIndex != null) 'shardIndex': shardIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (numShards != null) 'numShards': numShards!,
+        if (shardIndex != null) 'shardIndex': shardIndex!,
         if (testTargetsForShard != null)
-          'testTargetsForShard': testTargetsForShard.toJson(),
+          'testTargetsForShard': testTargetsForShard!.toJson(),
       };
 }
 
@@ -2766,10 +2746,10 @@ class Shard {
 class ShardingOption {
   /// Shards test cases into the specified groups of packages, classes, and/or
   /// methods.
-  ManualSharding manualSharding;
+  ManualSharding? manualSharding;
 
   /// Uniformly shards test cases given a total number of shards.
-  UniformSharding uniformSharding;
+  UniformSharding? uniformSharding;
 
   ShardingOption();
 
@@ -2784,10 +2764,10 @@ class ShardingOption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (manualSharding != null) 'manualSharding': manualSharding.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (manualSharding != null) 'manualSharding': manualSharding!.toJson(),
         if (uniformSharding != null)
-          'uniformSharding': uniformSharding.toJson(),
+          'uniformSharding': uniformSharding!.toJson(),
       };
 }
 
@@ -2796,13 +2776,13 @@ class StartActivityIntent {
   /// Action name.
   ///
   /// Required for START_ACTIVITY.
-  core.String action;
+  core.String? action;
 
   /// Intent categories to set on the intent.
-  core.List<core.String> categories;
+  core.List<core.String>? categories;
 
   /// URI for the action.
-  core.String uri;
+  core.String? uri;
 
   StartActivityIntent();
 
@@ -2820,10 +2800,10 @@ class StartActivityIntent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action,
-        if (categories != null) 'categories': categories,
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!,
+        if (categories != null) 'categories': categories!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -2831,7 +2811,7 @@ class SystraceSetup {
   /// Systrace duration in seconds.
   ///
   /// Should be between 1 and 30 seconds. 0 disables systrace.
-  core.int durationSeconds;
+  core.int? durationSeconds;
 
   SystraceSetup();
 
@@ -2841,8 +2821,8 @@ class SystraceSetup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (durationSeconds != null) 'durationSeconds': durationSeconds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (durationSeconds != null) 'durationSeconds': durationSeconds!,
       };
 }
 
@@ -2852,7 +2832,7 @@ class TestDetails {
   /// details about the error.
   ///
   /// Output only.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   /// Human-readable, detailed descriptions of the test's progress.
   ///
@@ -2860,7 +2840,7 @@ class TestDetails {
   /// of execution new data may be appended to the end of progress_messages.
   ///
   /// Output only.
-  core.List<core.String> progressMessages;
+  core.List<core.String>? progressMessages;
 
   TestDetails();
 
@@ -2875,28 +2855,28 @@ class TestDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorMessage != null) 'errorMessage': errorMessage,
-        if (progressMessages != null) 'progressMessages': progressMessages,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (progressMessages != null) 'progressMessages': progressMessages!,
       };
 }
 
 /// A description of a test environment.
 class TestEnvironmentCatalog {
   /// Supported Android devices.
-  AndroidDeviceCatalog androidDeviceCatalog;
+  AndroidDeviceCatalog? androidDeviceCatalog;
 
   /// The IP blocks used by devices in the test environment.
-  DeviceIpBlockCatalog deviceIpBlockCatalog;
+  DeviceIpBlockCatalog? deviceIpBlockCatalog;
 
   /// Supported iOS devices.
-  IosDeviceCatalog iosDeviceCatalog;
+  IosDeviceCatalog? iosDeviceCatalog;
 
   /// Supported network configurations.
-  NetworkConfigurationCatalog networkConfigurationCatalog;
+  NetworkConfigurationCatalog? networkConfigurationCatalog;
 
   /// The software test environment provided by TestExecutionService.
-  ProvidedSoftwareCatalog softwareCatalog;
+  ProvidedSoftwareCatalog? softwareCatalog;
 
   TestEnvironmentCatalog();
 
@@ -2924,17 +2904,17 @@ class TestEnvironmentCatalog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (androidDeviceCatalog != null)
-          'androidDeviceCatalog': androidDeviceCatalog.toJson(),
+          'androidDeviceCatalog': androidDeviceCatalog!.toJson(),
         if (deviceIpBlockCatalog != null)
-          'deviceIpBlockCatalog': deviceIpBlockCatalog.toJson(),
+          'deviceIpBlockCatalog': deviceIpBlockCatalog!.toJson(),
         if (iosDeviceCatalog != null)
-          'iosDeviceCatalog': iosDeviceCatalog.toJson(),
+          'iosDeviceCatalog': iosDeviceCatalog!.toJson(),
         if (networkConfigurationCatalog != null)
-          'networkConfigurationCatalog': networkConfigurationCatalog.toJson(),
+          'networkConfigurationCatalog': networkConfigurationCatalog!.toJson(),
         if (softwareCatalog != null)
-          'softwareCatalog': softwareCatalog.toJson(),
+          'softwareCatalog': softwareCatalog!.toJson(),
       };
 }
 
@@ -2943,27 +2923,27 @@ class TestExecution {
   /// How the host machine(s) are configured.
   ///
   /// Output only.
-  Environment environment;
+  Environment? environment;
 
   /// Unique id set by the service.
   ///
   /// Output only.
-  core.String id;
+  core.String? id;
 
   /// Id of the containing TestMatrix.
   ///
   /// Output only.
-  core.String matrixId;
+  core.String? matrixId;
 
   /// The cloud project that owns the test execution.
   ///
   /// Output only.
-  core.String projectId;
+  core.String? projectId;
 
   /// Details about the shard.
   ///
   /// Output only.
-  Shard shard;
+  Shard? shard;
 
   /// Indicates the current progress of the test execution (e.g., FINISHED).
   ///
@@ -2995,27 +2975,27 @@ class TestExecution {
   /// - "INVALID" : The execution or matrix was not run because the provided
   /// inputs are not valid. Examples: input file is not of the expected type, is
   /// malformed/corrupt, or was flagged as malware
-  core.String state;
+  core.String? state;
 
   /// Additional details about the running test.
   ///
   /// Output only.
-  TestDetails testDetails;
+  TestDetails? testDetails;
 
   /// How to run the test.
   ///
   /// Output only.
-  TestSpecification testSpecification;
+  TestSpecification? testSpecification;
 
   /// The time this test execution was initially created.
   ///
   /// Output only.
-  core.String timestamp;
+  core.String? timestamp;
 
   /// Where the results for this execution are written.
   ///
   /// Output only.
-  ToolResultsStep toolResultsStep;
+  ToolResultsStep? toolResultsStep;
 
   TestExecution();
 
@@ -3057,19 +3037,19 @@ class TestExecution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (environment != null) 'environment': environment.toJson(),
-        if (id != null) 'id': id,
-        if (matrixId != null) 'matrixId': matrixId,
-        if (projectId != null) 'projectId': projectId,
-        if (shard != null) 'shard': shard.toJson(),
-        if (state != null) 'state': state,
-        if (testDetails != null) 'testDetails': testDetails.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (environment != null) 'environment': environment!.toJson(),
+        if (id != null) 'id': id!,
+        if (matrixId != null) 'matrixId': matrixId!,
+        if (projectId != null) 'projectId': projectId!,
+        if (shard != null) 'shard': shard!.toJson(),
+        if (state != null) 'state': state!,
+        if (testDetails != null) 'testDetails': testDetails!.toJson(),
         if (testSpecification != null)
-          'testSpecification': testSpecification.toJson(),
-        if (timestamp != null) 'timestamp': timestamp,
+          'testSpecification': testSpecification!.toJson(),
+        if (timestamp != null) 'timestamp': timestamp!,
         if (toolResultsStep != null)
-          'toolResultsStep': toolResultsStep.toJson(),
+          'toolResultsStep': toolResultsStep!.toJson(),
       };
 }
 
@@ -3079,12 +3059,12 @@ class TestExecution {
 /// executions and overall state and outcome.
 class TestMatrix {
   /// Information about the client which invoked the test.
-  ClientInfo clientInfo;
+  ClientInfo? clientInfo;
 
   /// The devices the tests are being executed on.
   ///
   /// Required.
-  EnvironmentMatrix environmentMatrix;
+  EnvironmentMatrix? environmentMatrix;
 
   /// If true, only a single attempt at most will be made to run each
   /// execution/shard in the matrix.
@@ -3094,14 +3074,14 @@ class TestMatrix {
   /// latency sensitive workloads. The incidence of execution failures may be
   /// significantly greater for fail-fast matrices and support is more limited
   /// because of that expectation.
-  core.bool failFast;
+  core.bool? failFast;
 
   /// The number of times a TestExecution should be re-attempted if one or more
   /// of its test cases fail for any reason.
   ///
   /// The maximum number of reruns allowed is 10. Default is 0, which implies no
   /// reruns.
-  core.int flakyTestAttempts;
+  core.int? flakyTestAttempts;
 
   /// Describes why the matrix is considered invalid.
   ///
@@ -3180,7 +3160,7 @@ class TestMatrix {
   /// access the APK file.
   /// - "INVALID_APK_PREVIEW_SDK" : APK is built for a preview SDK which is
   /// unsupported
-  core.String invalidMatrixDetails;
+  core.String? invalidMatrixDetails;
 
   /// The overall outcome of the test.
   ///
@@ -3199,15 +3179,15 @@ class TestMatrix {
   /// re-running the test might be successful.
   /// - "SKIPPED" : All tests were skipped, for instance: - All device
   /// configurations were incompatible.
-  core.String outcomeSummary;
+  core.String? outcomeSummary;
 
   /// The cloud project that owns the test matrix.
-  core.String projectId;
+  core.String? projectId;
 
   /// Where the results for the matrix are written.
   ///
   /// Required.
-  ResultStorage resultStorage;
+  ResultStorage? resultStorage;
 
   /// Indicates the current progress of the test matrix.
   ///
@@ -3239,27 +3219,27 @@ class TestMatrix {
   /// - "INVALID" : The execution or matrix was not run because the provided
   /// inputs are not valid. Examples: input file is not of the expected type, is
   /// malformed/corrupt, or was flagged as malware
-  core.String state;
+  core.String? state;
 
   /// The list of test executions that the service creates for this matrix.
   ///
   /// Output only.
-  core.List<TestExecution> testExecutions;
+  core.List<TestExecution>? testExecutions;
 
   /// Unique id set by the service.
   ///
   /// Output only.
-  core.String testMatrixId;
+  core.String? testMatrixId;
 
   /// How to run the test.
   ///
   /// Required.
-  TestSpecification testSpecification;
+  TestSpecification? testSpecification;
 
   /// The time this test matrix was initially created.
   ///
   /// Output only.
-  core.String timestamp;
+  core.String? timestamp;
 
   TestMatrix();
 
@@ -3312,37 +3292,37 @@ class TestMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientInfo != null) 'clientInfo': clientInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientInfo != null) 'clientInfo': clientInfo!.toJson(),
         if (environmentMatrix != null)
-          'environmentMatrix': environmentMatrix.toJson(),
-        if (failFast != null) 'failFast': failFast,
-        if (flakyTestAttempts != null) 'flakyTestAttempts': flakyTestAttempts,
+          'environmentMatrix': environmentMatrix!.toJson(),
+        if (failFast != null) 'failFast': failFast!,
+        if (flakyTestAttempts != null) 'flakyTestAttempts': flakyTestAttempts!,
         if (invalidMatrixDetails != null)
-          'invalidMatrixDetails': invalidMatrixDetails,
-        if (outcomeSummary != null) 'outcomeSummary': outcomeSummary,
-        if (projectId != null) 'projectId': projectId,
-        if (resultStorage != null) 'resultStorage': resultStorage.toJson(),
-        if (state != null) 'state': state,
+          'invalidMatrixDetails': invalidMatrixDetails!,
+        if (outcomeSummary != null) 'outcomeSummary': outcomeSummary!,
+        if (projectId != null) 'projectId': projectId!,
+        if (resultStorage != null) 'resultStorage': resultStorage!.toJson(),
+        if (state != null) 'state': state!,
         if (testExecutions != null)
           'testExecutions':
-              testExecutions.map((value) => value.toJson()).toList(),
-        if (testMatrixId != null) 'testMatrixId': testMatrixId,
+              testExecutions!.map((value) => value.toJson()).toList(),
+        if (testMatrixId != null) 'testMatrixId': testMatrixId!,
         if (testSpecification != null)
-          'testSpecification': testSpecification.toJson(),
-        if (timestamp != null) 'timestamp': timestamp,
+          'testSpecification': testSpecification!.toJson(),
+        if (timestamp != null) 'timestamp': timestamp!,
       };
 }
 
 /// A description of how to set up the Android device prior to running the test.
 class TestSetup {
   /// The device will be logged in on this account for the duration of the test.
-  Account account;
+  Account? account;
 
   /// APKs to install in addition to those being directly tested.
   ///
   /// Currently capped at 100.
-  core.List<Apk> additionalApks;
+  core.List<Apk>? additionalApks;
 
   /// List of directories on the device to upload to GCS at the end of the test;
   /// they must be absolute paths under /sdcard, /storage or /data/local/tmp.
@@ -3352,31 +3332,31 @@ class TestSetup {
   /// path substitutions. E.g. if /sdcard on a particular device does not map to
   /// external storage, the system will replace it with the external storage
   /// path prefix for that device.
-  core.List<core.String> directoriesToPull;
+  core.List<core.String>? directoriesToPull;
 
   /// Whether to prevent all runtime permissions to be granted at app install
-  core.bool dontAutograntPermissions;
+  core.bool? dontAutograntPermissions;
 
   /// Environment variables to set for the test (only applicable for
   /// instrumentation tests).
-  core.List<EnvironmentVariable> environmentVariables;
+  core.List<EnvironmentVariable>? environmentVariables;
 
   /// List of files to push to the device before starting the test.
-  core.List<DeviceFile> filesToPush;
+  core.List<DeviceFile>? filesToPush;
 
   /// The network traffic profile used for running the test.
   ///
   /// Available network profiles can be queried by using the
   /// NETWORK_CONFIGURATION environment type when calling
   /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
-  core.String networkProfile;
+  core.String? networkProfile;
 
   /// Systrace configuration for the run.
   ///
   /// If set a systrace will be taken, starting on test start and lasting for
   /// the configured duration. The systrace file thus obtained is put in the
   /// results bucket together with the other artifacts from the run.
-  SystraceSetup systrace;
+  SystraceSetup? systrace;
 
   TestSetup();
 
@@ -3420,63 +3400,63 @@ class TestSetup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (account != null) 'account': account.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (account != null) 'account': account!.toJson(),
         if (additionalApks != null)
           'additionalApks':
-              additionalApks.map((value) => value.toJson()).toList(),
-        if (directoriesToPull != null) 'directoriesToPull': directoriesToPull,
+              additionalApks!.map((value) => value.toJson()).toList(),
+        if (directoriesToPull != null) 'directoriesToPull': directoriesToPull!,
         if (dontAutograntPermissions != null)
-          'dontAutograntPermissions': dontAutograntPermissions,
+          'dontAutograntPermissions': dontAutograntPermissions!,
         if (environmentVariables != null)
           'environmentVariables':
-              environmentVariables.map((value) => value.toJson()).toList(),
+              environmentVariables!.map((value) => value.toJson()).toList(),
         if (filesToPush != null)
-          'filesToPush': filesToPush.map((value) => value.toJson()).toList(),
-        if (networkProfile != null) 'networkProfile': networkProfile,
-        if (systrace != null) 'systrace': systrace.toJson(),
+          'filesToPush': filesToPush!.map((value) => value.toJson()).toList(),
+        if (networkProfile != null) 'networkProfile': networkProfile!,
+        if (systrace != null) 'systrace': systrace!.toJson(),
       };
 }
 
 /// A description of how to run the test.
 class TestSpecification {
   /// An Android instrumentation test.
-  AndroidInstrumentationTest androidInstrumentationTest;
+  AndroidInstrumentationTest? androidInstrumentationTest;
 
   /// An Android robo test.
-  AndroidRoboTest androidRoboTest;
+  AndroidRoboTest? androidRoboTest;
 
   /// An Android Application with a Test Loop.
-  AndroidTestLoop androidTestLoop;
+  AndroidTestLoop? androidTestLoop;
 
   /// Disables performance metrics recording.
   ///
   /// May reduce test latency.
-  core.bool disablePerformanceMetrics;
+  core.bool? disablePerformanceMetrics;
 
   /// Disables video recording.
   ///
   /// May reduce test latency.
-  core.bool disableVideoRecording;
+  core.bool? disableVideoRecording;
 
   /// An iOS application with a test loop.
-  IosTestLoop iosTestLoop;
+  IosTestLoop? iosTestLoop;
 
   /// Test setup requirements for iOS.
-  IosTestSetup iosTestSetup;
+  IosTestSetup? iosTestSetup;
 
   /// An iOS XCTest, via an .xctestrun file.
-  IosXcTest iosXcTest;
+  IosXcTest? iosXcTest;
 
   /// Test setup requirements for Android e.g. files to install, bootstrap
   /// scripts.
-  TestSetup testSetup;
+  TestSetup? testSetup;
 
   /// Max time a test execution is allowed to run before it is automatically
   /// cancelled.
   ///
   /// The default value is 5 min.
-  core.String testTimeout;
+  core.String? testTimeout;
 
   TestSpecification();
 
@@ -3522,22 +3502,22 @@ class TestSpecification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (androidInstrumentationTest != null)
-          'androidInstrumentationTest': androidInstrumentationTest.toJson(),
+          'androidInstrumentationTest': androidInstrumentationTest!.toJson(),
         if (androidRoboTest != null)
-          'androidRoboTest': androidRoboTest.toJson(),
+          'androidRoboTest': androidRoboTest!.toJson(),
         if (androidTestLoop != null)
-          'androidTestLoop': androidTestLoop.toJson(),
+          'androidTestLoop': androidTestLoop!.toJson(),
         if (disablePerformanceMetrics != null)
-          'disablePerformanceMetrics': disablePerformanceMetrics,
+          'disablePerformanceMetrics': disablePerformanceMetrics!,
         if (disableVideoRecording != null)
-          'disableVideoRecording': disableVideoRecording,
-        if (iosTestLoop != null) 'iosTestLoop': iosTestLoop.toJson(),
-        if (iosTestSetup != null) 'iosTestSetup': iosTestSetup.toJson(),
-        if (iosXcTest != null) 'iosXcTest': iosXcTest.toJson(),
-        if (testSetup != null) 'testSetup': testSetup.toJson(),
-        if (testTimeout != null) 'testTimeout': testTimeout,
+          'disableVideoRecording': disableVideoRecording!,
+        if (iosTestLoop != null) 'iosTestLoop': iosTestLoop!.toJson(),
+        if (iosTestSetup != null) 'iosTestSetup': iosTestSetup!.toJson(),
+        if (iosXcTest != null) 'iosXcTest': iosXcTest!.toJson(),
+        if (testSetup != null) 'testSetup': testSetup!.toJson(),
+        if (testTimeout != null) 'testTimeout': testTimeout!,
       };
 }
 
@@ -3548,7 +3528,7 @@ class TestTargetsForShard {
   /// The targets need to be specified in AndroidJUnitRunner argument format.
   /// For example, "package com.my.packages" "class com.my.package.MyClass". The
   /// number of shard_test_targets must be greater than 0.
-  core.List<core.String> testTargets;
+  core.List<core.String>? testTargets;
 
   TestTargetsForShard();
 
@@ -3560,8 +3540,8 @@ class TestTargetsForShard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (testTargets != null) 'testTargets': testTargets,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (testTargets != null) 'testTargets': testTargets!,
       };
 }
 
@@ -3572,17 +3552,17 @@ class ToolResultsExecution {
   /// A tool results execution ID.
   ///
   /// Output only.
-  core.String executionId;
+  core.String? executionId;
 
   /// A tool results history ID.
   ///
   /// Output only.
-  core.String historyId;
+  core.String? historyId;
 
   /// The cloud project that owns the tool results execution.
   ///
   /// Output only.
-  core.String projectId;
+  core.String? projectId;
 
   ToolResultsExecution();
 
@@ -3598,10 +3578,10 @@ class ToolResultsExecution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionId != null) 'executionId': executionId,
-        if (historyId != null) 'historyId': historyId,
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionId != null) 'executionId': executionId!,
+        if (historyId != null) 'historyId': historyId!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
@@ -3610,12 +3590,12 @@ class ToolResultsHistory {
   /// A tool results history ID.
   ///
   /// Required.
-  core.String historyId;
+  core.String? historyId;
 
   /// The cloud project that owns the tool results history.
   ///
   /// Required.
-  core.String projectId;
+  core.String? projectId;
 
   ToolResultsHistory();
 
@@ -3628,9 +3608,9 @@ class ToolResultsHistory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (historyId != null) 'historyId': historyId,
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (historyId != null) 'historyId': historyId!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
@@ -3641,22 +3621,22 @@ class ToolResultsStep {
   /// A tool results execution ID.
   ///
   /// Output only.
-  core.String executionId;
+  core.String? executionId;
 
   /// A tool results history ID.
   ///
   /// Output only.
-  core.String historyId;
+  core.String? historyId;
 
   /// The cloud project that owns the tool results step.
   ///
   /// Output only.
-  core.String projectId;
+  core.String? projectId;
 
   /// A tool results step ID.
   ///
   /// Output only.
-  core.String stepId;
+  core.String? stepId;
 
   ToolResultsStep();
 
@@ -3675,30 +3655,30 @@ class ToolResultsStep {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executionId != null) 'executionId': executionId,
-        if (historyId != null) 'historyId': historyId,
-        if (projectId != null) 'projectId': projectId,
-        if (stepId != null) 'stepId': stepId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executionId != null) 'executionId': executionId!,
+        if (historyId != null) 'historyId': historyId!,
+        if (projectId != null) 'projectId': projectId!,
+        if (stepId != null) 'stepId': stepId!,
       };
 }
 
 /// Network emulation parameters.
 class TrafficRule {
   /// Bandwidth in kbits/second.
-  core.double bandwidth;
+  core.double? bandwidth;
 
   /// Burst size in kbits.
-  core.double burst;
+  core.double? burst;
 
   /// Packet delay, must be >= 0.
-  core.String delay;
+  core.String? delay;
 
   /// Packet duplication ratio (0.0 - 1.0).
-  core.double packetDuplicationRatio;
+  core.double? packetDuplicationRatio;
 
   /// Packet loss ratio (0.0 - 1.0).
-  core.double packetLossRatio;
+  core.double? packetLossRatio;
 
   TrafficRule();
 
@@ -3721,13 +3701,13 @@ class TrafficRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bandwidth != null) 'bandwidth': bandwidth,
-        if (burst != null) 'burst': burst,
-        if (delay != null) 'delay': delay,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bandwidth != null) 'bandwidth': bandwidth!,
+        if (burst != null) 'burst': burst!,
+        if (delay != null) 'delay': delay!,
         if (packetDuplicationRatio != null)
-          'packetDuplicationRatio': packetDuplicationRatio,
-        if (packetLossRatio != null) 'packetLossRatio': packetLossRatio,
+          'packetDuplicationRatio': packetDuplicationRatio!,
+        if (packetLossRatio != null) 'packetLossRatio': packetLossRatio!,
       };
 }
 
@@ -3743,7 +3723,7 @@ class UniformSharding {
   /// When no physical devices are selected, the number must be >= 1 and <= 500.
   ///
   /// Required.
-  core.int numShards;
+  core.int? numShards;
 
   UniformSharding();
 
@@ -3753,8 +3733,8 @@ class UniformSharding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (numShards != null) 'numShards': numShards,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (numShards != null) 'numShards': numShards!,
       };
 }
 
@@ -3763,12 +3743,12 @@ class XcodeVersion {
   /// Tags for this Xcode version.
   ///
   /// Example: "default".
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   /// The id for this version.
   ///
   /// Example: "9.2".
-  core.String version;
+  core.String? version;
 
   XcodeVersion();
 
@@ -3783,8 +3763,8 @@ class XcodeVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (tags != null) 'tags': tags,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (tags != null) 'tags': tags!,
+        if (version != null) 'version': version!,
       };
 }

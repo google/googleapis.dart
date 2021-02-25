@@ -124,33 +124,12 @@ class ConversionResource {
     core.int rowCount,
     core.int startDate,
     core.int startRow, {
-    core.String adGroupId,
-    core.String adId,
-    core.String campaignId,
-    core.String criterionId,
-    core.String $fields,
+    core.String? adGroupId,
+    core.String? adId,
+    core.String? campaignId,
+    core.String? criterionId,
+    core.String? $fields,
   }) async {
-    if (agencyId == null) {
-      throw core.ArgumentError('Parameter agencyId is required.');
-    }
-    if (advertiserId == null) {
-      throw core.ArgumentError('Parameter advertiserId is required.');
-    }
-    if (engineAccountId == null) {
-      throw core.ArgumentError('Parameter engineAccountId is required.');
-    }
-    if (endDate == null) {
-      throw core.ArgumentError('Parameter endDate is required.');
-    }
-    if (rowCount == null) {
-      throw core.ArgumentError('Parameter rowCount is required.');
-    }
-    if (startDate == null) {
-      throw core.ArgumentError('Parameter startDate is required.');
-    }
-    if (startRow == null) {
-      throw core.ArgumentError('Parameter startRow is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'endDate': ['${endDate}'],
       'rowCount': ['${rowCount}'],
@@ -198,10 +177,9 @@ class ConversionResource {
   /// this method will complete with the same error.
   async.Future<ConversionList> insert(
     ConversionList request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -236,10 +214,9 @@ class ConversionResource {
   /// this method will complete with the same error.
   async.Future<ConversionList> update(
     ConversionList request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -275,10 +252,9 @@ class ConversionResource {
   /// this method will complete with the same error.
   async.Future<UpdateAvailabilityResponse> updateAvailability(
     UpdateAvailabilityRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -319,10 +295,9 @@ class ReportsResource {
   /// this method will complete with the same error.
   async.Future<Report> generate(
     ReportRequest request_1, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request_1 == null ? null : convert.json.encode(request_1.toJson());
+    final _body = convert.json.encode(request_1.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -356,11 +331,8 @@ class ReportsResource {
   /// this method will complete with the same error.
   async.Future<Report> get(
     core.String reportId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (reportId == null) {
-      throw core.ArgumentError('Parameter reportId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -396,18 +368,12 @@ class ReportsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<core.Object> getFile(
+  async.Future<commons.Media?> getFile(
     core.String reportId,
     core.int reportFragment, {
-    core.String $fields,
+    core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    if (reportId == null) {
-      throw core.ArgumentError('Parameter reportId is required.');
-    }
-    if (reportFragment == null) {
-      throw core.ArgumentError('Parameter reportFragment is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -426,7 +392,7 @@ class ReportsResource {
     if (downloadOptions.isMetadataDownload) {
       return null;
     } else {
-      return _response;
+      return _response as commons.Media;
     }
   }
 
@@ -448,10 +414,9 @@ class ReportsResource {
   /// this method will complete with the same error.
   async.Future<Report> request(
     ReportRequest request_1, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request_1 == null ? null : convert.json.encode(request_1.toJson());
+    final _body = convert.json.encode(request_1.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -494,14 +459,8 @@ class SavedColumnsResource {
   async.Future<SavedColumnList> list(
     core.String agencyId,
     core.String advertiserId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (agencyId == null) {
-      throw core.ArgumentError('Parameter agencyId is required.');
-    }
-    if (advertiserId == null) {
-      throw core.ArgumentError('Parameter advertiserId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -525,25 +484,25 @@ class SavedColumnsResource {
 /// A message containing availability data relevant to DoubleClick Search.
 class Availability {
   /// DS advertiser ID.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// DS agency ID.
-  core.String agencyId;
+  core.String? agencyId;
 
   /// The time by which all conversions have been uploaded, in epoch millis UTC.
-  core.String availabilityTimestamp;
+  core.String? availabilityTimestamp;
 
   /// The numeric segmentation identifier (for example, DoubleClick Search
   /// Floodlight activity ID).
-  core.String segmentationId;
+  core.String? segmentationId;
 
   /// The friendly segmentation identifier (for example, DoubleClick Search
   /// Floodlight activity name).
-  core.String segmentationName;
+  core.String? segmentationName;
 
   /// The segmentation type that this availability is for (its default value is
   /// `FLOODLIGHT`).
-  core.String segmentationType;
+  core.String? segmentationType;
 
   Availability();
 
@@ -568,46 +527,46 @@ class Availability {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (advertiserId != null) 'advertiserId': advertiserId,
-        if (agencyId != null) 'agencyId': agencyId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (agencyId != null) 'agencyId': agencyId!,
         if (availabilityTimestamp != null)
-          'availabilityTimestamp': availabilityTimestamp,
-        if (segmentationId != null) 'segmentationId': segmentationId,
-        if (segmentationName != null) 'segmentationName': segmentationName,
-        if (segmentationType != null) 'segmentationType': segmentationType,
+          'availabilityTimestamp': availabilityTimestamp!,
+        if (segmentationId != null) 'segmentationId': segmentationId!,
+        if (segmentationName != null) 'segmentationName': segmentationName!,
+        if (segmentationType != null) 'segmentationType': segmentationType!,
       };
 }
 
 /// A conversion containing data relevant to DoubleClick Search.
 class Conversion {
   /// DS ad group ID.
-  core.String adGroupId;
+  core.String? adGroupId;
 
   /// DS ad ID.
-  core.String adId;
+  core.String? adId;
 
   /// DS advertiser ID.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// DS agency ID.
-  core.String agencyId;
+  core.String? agencyId;
 
   /// Available to advertisers only after contacting DoubleClick Search customer
   /// support.
-  core.String attributionModel;
+  core.String? attributionModel;
 
   /// DS campaign ID.
-  core.String campaignId;
+  core.String? campaignId;
 
   /// Sales channel for the product.
   ///
   /// Acceptable values are: - "`local`": a physical store - "`online`": an
   /// online store
-  core.String channel;
+  core.String? channel;
 
   /// DS click ID for the conversion.
-  core.String clickId;
+  core.String? clickId;
 
   /// For offline conversions, advertisers provide this ID.
   ///
@@ -617,97 +576,97 @@ class Conversion {
   /// For online conversions, DS copies the `dsConversionId` or
   /// `floodlightOrderId` into this property depending on the advertiser's
   /// Floodlight instructions.
-  core.String conversionId;
+  core.String? conversionId;
 
   /// The time at which the conversion was last modified, in epoch millis UTC.
-  core.String conversionModifiedTimestamp;
+  core.String? conversionModifiedTimestamp;
 
   /// The time at which the conversion took place, in epoch millis UTC.
-  core.String conversionTimestamp;
+  core.String? conversionTimestamp;
 
   /// Available to advertisers only after contacting DoubleClick Search customer
   /// support.
-  core.String countMillis;
+  core.String? countMillis;
 
   /// DS criterion (keyword) ID.
-  core.String criterionId;
+  core.String? criterionId;
 
   /// The currency code for the conversion's revenue.
   ///
   /// Should be in ISO 4217 alphabetic (3-char) format.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Custom dimensions for the conversion, which can be used to filter data in
   /// a report.
-  core.List<CustomDimension> customDimension;
+  core.List<CustomDimension>? customDimension;
 
   /// Custom metrics for the conversion.
-  core.List<CustomMetric> customMetric;
+  core.List<CustomMetric>? customMetric;
 
   /// The type of device on which the conversion occurred.
-  core.String deviceType;
+  core.String? deviceType;
 
   /// ID that DoubleClick Search generates for each conversion.
-  core.String dsConversionId;
+  core.String? dsConversionId;
 
   /// DS engine account ID.
-  core.String engineAccountId;
+  core.String? engineAccountId;
 
   /// The Floodlight order ID provided by the advertiser for the conversion.
-  core.String floodlightOrderId;
+  core.String? floodlightOrderId;
 
   /// ID that DS generates and uses to uniquely identify the inventory account
   /// that contains the product.
-  core.String inventoryAccountId;
+  core.String? inventoryAccountId;
 
   /// The country registered for the Merchant Center feed that contains the
   /// product.
   ///
   /// Use an ISO 3166 code to specify a country.
-  core.String productCountry;
+  core.String? productCountry;
 
   /// DS product group ID.
-  core.String productGroupId;
+  core.String? productGroupId;
 
   /// The product ID (SKU).
-  core.String productId;
+  core.String? productId;
 
   /// The language registered for the Merchant Center feed that contains the
   /// product.
   ///
   /// Use an ISO 639 code to specify a language.
-  core.String productLanguage;
+  core.String? productLanguage;
 
   /// The quantity of this conversion, in millis.
-  core.String quantityMillis;
+  core.String? quantityMillis;
 
   /// The revenue amount of this `TRANSACTION` conversion, in micros (value
   /// multiplied by 1000000, no decimal).
   ///
   /// For example, to specify a revenue value of "10" enter "10000000" (10
   /// million) in your request.
-  core.String revenueMicros;
+  core.String? revenueMicros;
 
   /// The numeric segmentation identifier (for example, DoubleClick Search
   /// Floodlight activity ID).
-  core.String segmentationId;
+  core.String? segmentationId;
 
   /// The friendly segmentation identifier (for example, DoubleClick Search
   /// Floodlight activity name).
-  core.String segmentationName;
+  core.String? segmentationName;
 
   /// The segmentation type of this conversion (for example, `FLOODLIGHT`).
-  core.String segmentationType;
+  core.String? segmentationType;
 
   /// The state of the conversion, that is, either `ACTIVE` or `REMOVED`.
   ///
   /// Note: state DELETED is deprecated.
-  core.String state;
+  core.String? state;
 
   /// The ID of the local store for which the product was advertised.
   ///
   /// Applicable only when the channel is "`local`".
-  core.String storeId;
+  core.String? storeId;
 
   /// The type of the conversion, that is, either `ACTION` or `TRANSACTION`.
   ///
@@ -715,7 +674,7 @@ class Conversion {
   /// quantifiable value, while a `TRANSACTION` conversion is an action that
   /// does have a monetarily quantifiable value. Examples are email list signups
   /// (`ACTION`) versus ecommerce purchases (`TRANSACTION`).
-  core.String type;
+  core.String? type;
 
   Conversion();
 
@@ -828,58 +787,58 @@ class Conversion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (adGroupId != null) 'adGroupId': adGroupId,
-        if (adId != null) 'adId': adId,
-        if (advertiserId != null) 'advertiserId': advertiserId,
-        if (agencyId != null) 'agencyId': agencyId,
-        if (attributionModel != null) 'attributionModel': attributionModel,
-        if (campaignId != null) 'campaignId': campaignId,
-        if (channel != null) 'channel': channel,
-        if (clickId != null) 'clickId': clickId,
-        if (conversionId != null) 'conversionId': conversionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (adGroupId != null) 'adGroupId': adGroupId!,
+        if (adId != null) 'adId': adId!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (agencyId != null) 'agencyId': agencyId!,
+        if (attributionModel != null) 'attributionModel': attributionModel!,
+        if (campaignId != null) 'campaignId': campaignId!,
+        if (channel != null) 'channel': channel!,
+        if (clickId != null) 'clickId': clickId!,
+        if (conversionId != null) 'conversionId': conversionId!,
         if (conversionModifiedTimestamp != null)
-          'conversionModifiedTimestamp': conversionModifiedTimestamp,
+          'conversionModifiedTimestamp': conversionModifiedTimestamp!,
         if (conversionTimestamp != null)
-          'conversionTimestamp': conversionTimestamp,
-        if (countMillis != null) 'countMillis': countMillis,
-        if (criterionId != null) 'criterionId': criterionId,
-        if (currencyCode != null) 'currencyCode': currencyCode,
+          'conversionTimestamp': conversionTimestamp!,
+        if (countMillis != null) 'countMillis': countMillis!,
+        if (criterionId != null) 'criterionId': criterionId!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
         if (customDimension != null)
           'customDimension':
-              customDimension.map((value) => value.toJson()).toList(),
+              customDimension!.map((value) => value.toJson()).toList(),
         if (customMetric != null)
-          'customMetric': customMetric.map((value) => value.toJson()).toList(),
-        if (deviceType != null) 'deviceType': deviceType,
-        if (dsConversionId != null) 'dsConversionId': dsConversionId,
-        if (engineAccountId != null) 'engineAccountId': engineAccountId,
-        if (floodlightOrderId != null) 'floodlightOrderId': floodlightOrderId,
+          'customMetric': customMetric!.map((value) => value.toJson()).toList(),
+        if (deviceType != null) 'deviceType': deviceType!,
+        if (dsConversionId != null) 'dsConversionId': dsConversionId!,
+        if (engineAccountId != null) 'engineAccountId': engineAccountId!,
+        if (floodlightOrderId != null) 'floodlightOrderId': floodlightOrderId!,
         if (inventoryAccountId != null)
-          'inventoryAccountId': inventoryAccountId,
-        if (productCountry != null) 'productCountry': productCountry,
-        if (productGroupId != null) 'productGroupId': productGroupId,
-        if (productId != null) 'productId': productId,
-        if (productLanguage != null) 'productLanguage': productLanguage,
-        if (quantityMillis != null) 'quantityMillis': quantityMillis,
-        if (revenueMicros != null) 'revenueMicros': revenueMicros,
-        if (segmentationId != null) 'segmentationId': segmentationId,
-        if (segmentationName != null) 'segmentationName': segmentationName,
-        if (segmentationType != null) 'segmentationType': segmentationType,
-        if (state != null) 'state': state,
-        if (storeId != null) 'storeId': storeId,
-        if (type != null) 'type': type,
+          'inventoryAccountId': inventoryAccountId!,
+        if (productCountry != null) 'productCountry': productCountry!,
+        if (productGroupId != null) 'productGroupId': productGroupId!,
+        if (productId != null) 'productId': productId!,
+        if (productLanguage != null) 'productLanguage': productLanguage!,
+        if (quantityMillis != null) 'quantityMillis': quantityMillis!,
+        if (revenueMicros != null) 'revenueMicros': revenueMicros!,
+        if (segmentationId != null) 'segmentationId': segmentationId!,
+        if (segmentationName != null) 'segmentationName': segmentationName!,
+        if (segmentationType != null) 'segmentationType': segmentationType!,
+        if (state != null) 'state': state!,
+        if (storeId != null) 'storeId': storeId!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// A list of conversions.
 class ConversionList {
   /// The conversions being requested.
-  core.List<Conversion> conversion;
+  core.List<Conversion>? conversion;
 
   /// Identifies this as a ConversionList resource.
   ///
   /// Value: the fixed string doubleclicksearch#conversionList.
-  core.String kind;
+  core.String? kind;
 
   ConversionList();
 
@@ -895,20 +854,20 @@ class ConversionList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (conversion != null)
-          'conversion': conversion.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'conversion': conversion!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// A message containing the custom dimension.
 class CustomDimension {
   /// Custom dimension name.
-  core.String name;
+  core.String? name;
 
   /// Custom dimension value.
-  core.String value;
+  core.String? value;
 
   CustomDimension();
 
@@ -921,19 +880,19 @@ class CustomDimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// A message containing the custom metric.
 class CustomMetric {
   /// Custom metric name.
-  core.String name;
+  core.String? name;
 
   /// Custom metric numeric value.
-  core.double value;
+  core.double? value;
 
   CustomMetric();
 
@@ -946,18 +905,18 @@ class CustomMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
 class ReportFiles {
   /// The size of this report file in bytes.
-  core.String byteCount;
+  core.String? byteCount;
 
   /// Use this url to download the report file.
-  core.String url;
+  core.String? url;
 
   ReportFiles();
 
@@ -970,9 +929,9 @@ class ReportFiles {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (byteCount != null) 'byteCount': byteCount,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (byteCount != null) 'byteCount': byteCount!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -985,37 +944,37 @@ class Report {
   ///
   /// Contains a list of generated report files once the report has successfully
   /// completed.
-  core.List<ReportFiles> files;
+  core.List<ReportFiles>? files;
 
   /// Asynchronous report only.
   ///
   /// Id of the report.
-  core.String id;
+  core.String? id;
 
   /// Asynchronous report only.
   ///
   /// True if and only if the report has completed successfully and the report
   /// files are ready to be downloaded.
-  core.bool isReportReady;
+  core.bool? isReportReady;
 
   /// Identifies this as a Report resource.
   ///
   /// Value: the fixed string `doubleclicksearch#report`.
-  core.String kind;
+  core.String? kind;
 
   /// The request that created the report.
   ///
   /// Optional fields not specified in the original request are filled with
   /// default values.
-  ReportRequest request;
+  ReportRequest? request;
 
   /// The number of report rows generated by the report, not including headers.
-  core.int rowCount;
+  core.int? rowCount;
 
   /// Synchronous report only.
   ///
   /// Generated report rows.
-  core.List<ReportRow> rows;
+  core.List<ReportRow>? rows;
 
   /// The currency code of all monetary values produced in the report, including
   /// values that are set by users (e.g., keyword bid settings) and metrics
@@ -1023,13 +982,13 @@ class Report {
   ///
   /// The currency code of a report is determined by the `statisticsCurrency`
   /// field of the report request.
-  core.String statisticsCurrencyCode;
+  core.String? statisticsCurrencyCode;
 
   /// If all statistics of the report are sourced from the same time zone, this
   /// would be it.
   ///
   /// Otherwise the field is unset.
-  core.String statisticsTimeZone;
+  core.String? statisticsTimeZone;
 
   Report();
 
@@ -1070,26 +1029,26 @@ class Report {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (files != null)
-          'files': files.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id,
-        if (isReportReady != null) 'isReportReady': isReportReady,
-        if (kind != null) 'kind': kind,
-        if (request != null) 'request': request.toJson(),
-        if (rowCount != null) 'rowCount': rowCount,
-        if (rows != null) 'rows': rows,
+          'files': files!.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id!,
+        if (isReportReady != null) 'isReportReady': isReportReady!,
+        if (kind != null) 'kind': kind!,
+        if (request != null) 'request': request!.toJson(),
+        if (rowCount != null) 'rowCount': rowCount!,
+        if (rows != null) 'rows': rows!,
         if (statisticsCurrencyCode != null)
-          'statisticsCurrencyCode': statisticsCurrencyCode,
+          'statisticsCurrencyCode': statisticsCurrencyCode!,
         if (statisticsTimeZone != null)
-          'statisticsTimeZone': statisticsTimeZone,
+          'statisticsTimeZone': statisticsTimeZone!,
       };
 }
 
 /// A request object used to create a DoubleClick Search report.
 class ReportApiColumnSpec {
   /// Name of a DoubleClick Search column to include in the report.
-  core.String columnName;
+  core.String? columnName;
 
   /// Segments a report by a custom dimension.
   ///
@@ -1099,37 +1058,37 @@ class ReportApiColumnSpec {
   /// If used in a conversion report, returns the value of the specified custom
   /// dimension for the given conversion, if set. This column does not segment
   /// the conversion report.
-  core.String customDimensionName;
+  core.String? customDimensionName;
 
   /// Name of a custom metric to include in the report.
   ///
   /// The report must be scoped to an advertiser or lower, and the custom metric
   /// must already be set up in DoubleClick Search. The custom metric name,
   /// which appears in DoubleClick Search, is case sensitive.
-  core.String customMetricName;
+  core.String? customMetricName;
 
   /// Inclusive day in YYYY-MM-DD format.
   ///
   /// When provided, this overrides the overall time range of the report for
   /// this column only. Must be provided together with `startDate`.
-  core.String endDate;
+  core.String? endDate;
 
   /// Synchronous report only.
   ///
   /// Set to `true` to group by this column. Defaults to `false`.
-  core.bool groupByColumn;
+  core.bool? groupByColumn;
 
   /// Text used to identify this column in the report output; defaults to
   /// `columnName` or `savedColumnName` when not specified.
   ///
   /// This can be used to prevent collisions between DoubleClick Search columns
   /// and saved columns with the same name.
-  core.String headerText;
+  core.String? headerText;
 
   /// The platform that is used to provide data for the custom dimension.
   ///
   /// Acceptable values are "floodlight".
-  core.String platformSource;
+  core.String? platformSource;
 
   /// Returns metrics only for a specific type of product activity.
   ///
@@ -1137,19 +1096,19 @@ class ReportApiColumnSpec {
   /// were sold - "`advertised`": returns metrics only for products that were
   /// advertised in a Shopping campaign, and that might or might not have been
   /// sold
-  core.String productReportPerspective;
+  core.String? productReportPerspective;
 
   /// Name of a saved column to include in the report.
   ///
   /// The report must be scoped at advertiser or lower, and this saved column
   /// must already be created in the DoubleClick Search UI.
-  core.String savedColumnName;
+  core.String? savedColumnName;
 
   /// Inclusive date in YYYY-MM-DD format.
   ///
   /// When provided, this overrides the overall time range of the report for
   /// this column only. Must be provided together with `endDate`.
-  core.String startDate;
+  core.String? startDate;
 
   ReportApiColumnSpec();
 
@@ -1187,19 +1146,19 @@ class ReportApiColumnSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnName != null) 'columnName': columnName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnName != null) 'columnName': columnName!,
         if (customDimensionName != null)
-          'customDimensionName': customDimensionName,
-        if (customMetricName != null) 'customMetricName': customMetricName,
-        if (endDate != null) 'endDate': endDate,
-        if (groupByColumn != null) 'groupByColumn': groupByColumn,
-        if (headerText != null) 'headerText': headerText,
-        if (platformSource != null) 'platformSource': platformSource,
+          'customDimensionName': customDimensionName!,
+        if (customMetricName != null) 'customMetricName': customMetricName!,
+        if (endDate != null) 'endDate': endDate!,
+        if (groupByColumn != null) 'groupByColumn': groupByColumn!,
+        if (headerText != null) 'headerText': headerText!,
+        if (platformSource != null) 'platformSource': platformSource!,
         if (productReportPerspective != null)
-          'productReportPerspective': productReportPerspective,
-        if (savedColumnName != null) 'savedColumnName': savedColumnName,
-        if (startDate != null) 'startDate': startDate,
+          'productReportPerspective': productReportPerspective!,
+        if (savedColumnName != null) 'savedColumnName': savedColumnName!,
+        if (startDate != null) 'startDate': startDate!,
       };
 }
 
@@ -1207,19 +1166,19 @@ class ReportRequestFilters {
   /// Column to perform the filter on.
   ///
   /// This can be a DoubleClick Search column or a saved column.
-  ReportApiColumnSpec column;
+  ReportApiColumnSpec? column;
 
   /// Operator to use in the filter.
   ///
   /// See the filter reference for a list of available operators.
-  core.String operator;
+  core.String? operator;
 
   /// A list of values to filter the column value against.\ The maximum number
   /// of filter values per request is 300.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> values;
+  core.List<core.Object>? values;
 
   ReportRequestFilters();
 
@@ -1238,10 +1197,10 @@ class ReportRequestFilters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (column != null) 'column': column.toJson(),
-        if (operator != null) 'operator': operator,
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (column != null) 'column': column!.toJson(),
+        if (operator != null) 'operator': operator!,
+        if (values != null) 'values': values!,
       };
 }
 
@@ -1249,10 +1208,10 @@ class ReportRequestOrderBy {
   /// Column to perform the sort on.
   ///
   /// This can be a DoubleClick Search-defined column or a saved column.
-  ReportApiColumnSpec column;
+  ReportApiColumnSpec? column;
 
   /// The sort direction, which is either `ascending` or `descending`.
-  core.String sortOrder;
+  core.String? sortOrder;
 
   ReportRequestOrderBy();
 
@@ -1266,9 +1225,9 @@ class ReportRequestOrderBy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (column != null) 'column': column.toJson(),
-        if (sortOrder != null) 'sortOrder': sortOrder,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (column != null) 'column': column!.toJson(),
+        if (sortOrder != null) 'sortOrder': sortOrder!,
       };
 }
 
@@ -1279,25 +1238,25 @@ class ReportRequestOrderBy {
 /// agency is required.
 class ReportRequestReportScope {
   /// DS ad group ID.
-  core.String adGroupId;
+  core.String? adGroupId;
 
   /// DS ad ID.
-  core.String adId;
+  core.String? adId;
 
   /// DS advertiser ID.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// DS agency ID.
-  core.String agencyId;
+  core.String? agencyId;
 
   /// DS campaign ID.
-  core.String campaignId;
+  core.String? campaignId;
 
   /// DS engine account ID.
-  core.String engineAccountId;
+  core.String? engineAccountId;
 
   /// DS keyword ID.
-  core.String keywordId;
+  core.String? keywordId;
 
   ReportRequestReportScope();
 
@@ -1325,14 +1284,14 @@ class ReportRequestReportScope {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (adGroupId != null) 'adGroupId': adGroupId,
-        if (adId != null) 'adId': adId,
-        if (advertiserId != null) 'advertiserId': advertiserId,
-        if (agencyId != null) 'agencyId': agencyId,
-        if (campaignId != null) 'campaignId': campaignId,
-        if (engineAccountId != null) 'engineAccountId': engineAccountId,
-        if (keywordId != null) 'keywordId': keywordId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (adGroupId != null) 'adGroupId': adGroupId!,
+        if (adId != null) 'adId': adId!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (agencyId != null) 'agencyId': agencyId!,
+        if (campaignId != null) 'campaignId': campaignId!,
+        if (engineAccountId != null) 'engineAccountId': engineAccountId!,
+        if (keywordId != null) 'keywordId': keywordId!,
       };
 }
 
@@ -1342,18 +1301,18 @@ class ReportRequestTimeRange {
   /// Inclusive UTC timestamp in RFC format, e.g., `2013-07-16T10:16:23.555Z`.
   ///
   /// See additional references on how changed attribute reports work.
-  core.String changedAttributesSinceTimestamp;
+  core.String? changedAttributesSinceTimestamp;
 
   /// Inclusive UTC timestamp in RFC format, e.g., `2013-07-16T10:16:23.555Z`.
   ///
   /// See additional references on how changed metrics reports work.
-  core.String changedMetricsSinceTimestamp;
+  core.String? changedMetricsSinceTimestamp;
 
   /// Inclusive date in YYYY-MM-DD format.
-  core.String endDate;
+  core.String? endDate;
 
   /// Inclusive date in YYYY-MM-DD format.
-  core.String startDate;
+  core.String? startDate;
 
   ReportRequestTimeRange();
 
@@ -1374,13 +1333,13 @@ class ReportRequestTimeRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (changedAttributesSinceTimestamp != null)
-          'changedAttributesSinceTimestamp': changedAttributesSinceTimestamp,
+          'changedAttributesSinceTimestamp': changedAttributesSinceTimestamp!,
         if (changedMetricsSinceTimestamp != null)
-          'changedMetricsSinceTimestamp': changedMetricsSinceTimestamp,
-        if (endDate != null) 'endDate': endDate,
-        if (startDate != null) 'startDate': startDate,
+          'changedMetricsSinceTimestamp': changedMetricsSinceTimestamp!,
+        if (endDate != null) 'endDate': endDate!,
+        if (startDate != null) 'startDate': startDate!,
       };
 }
 
@@ -1393,47 +1352,47 @@ class ReportRequest {
   /// For saved columns only the `savedColumnName` parameter is required. Both
   /// `columnName` and `savedColumnName` cannot be set in the same stanza.\ The
   /// maximum number of columns per request is 300.
-  core.List<ReportApiColumnSpec> columns;
+  core.List<ReportApiColumnSpec>? columns;
 
   /// Format that the report should be returned in.
   ///
   /// Currently `csv` or `tsv` is supported.
-  core.String downloadFormat;
+  core.String? downloadFormat;
 
   /// A list of filters to be applied to the report.\ The maximum number of
   /// filters per request is 300.
-  core.List<ReportRequestFilters> filters;
+  core.List<ReportRequestFilters>? filters;
 
   /// Determines if removed entities should be included in the report.
   ///
   /// Defaults to `false`. Deprecated, please use `includeRemovedEntities`
   /// instead.
-  core.bool includeDeletedEntities;
+  core.bool? includeDeletedEntities;
 
   /// Determines if removed entities should be included in the report.
   ///
   /// Defaults to `false`.
-  core.bool includeRemovedEntities;
+  core.bool? includeRemovedEntities;
 
   /// Asynchronous report only.
   ///
   /// The maximum number of rows per report file. A large report is split into
   /// many files based on this field. Acceptable values are `1000000` to
   /// `100000000`, inclusive.
-  core.int maxRowsPerFile;
+  core.int? maxRowsPerFile;
 
   /// Synchronous report only.
   ///
   /// A list of columns and directions defining sorting to be performed on the
   /// report rows.\ The maximum number of orderings per request is 300.
-  core.List<ReportRequestOrderBy> orderBy;
+  core.List<ReportRequestOrderBy>? orderBy;
 
   /// The reportScope is a set of IDs that are used to determine which subset of
   /// entities will be returned in the report.
   ///
   /// The full lineage of IDs from the lowest scoped level desired up through
   /// agency is required.
-  ReportRequestReportScope reportScope;
+  ReportRequestReportScope? reportScope;
 
   /// Determines the type of rows that are returned in the report.
   ///
@@ -1441,19 +1400,19 @@ class ReportRequest {
   /// will contain data about a keyword. See the \[Types of
   /// Reports\](/search-ads/v2/report-types/) reference for the columns that are
   /// available for each type.
-  core.String reportType;
+  core.String? reportType;
 
   /// Synchronous report only.
   ///
   /// The maximum number of rows to return; additional rows are dropped.
   /// Acceptable values are `0` to `10000`, inclusive. Defaults to `10000`.
-  core.int rowCount;
+  core.int? rowCount;
 
   /// Synchronous report only.
   ///
   /// Zero-based index of the first row to return. Acceptable values are `0` to
   /// `50000`, inclusive. Defaults to `0`.
-  core.int startRow;
+  core.int? startRow;
 
   /// Specifies the currency in which monetary will be returned.
   ///
@@ -1461,17 +1420,17 @@ class ReportRequest {
   /// agency or lower), `advertiser` (valid if the report is scoped to *
   /// advertiser or lower), or `account` (valid if the report is scoped to
   /// engine account or lower).
-  core.String statisticsCurrency;
+  core.String? statisticsCurrency;
 
   /// If metrics are requested in a report, this argument will be used to
   /// restrict the metrics to a specific time range.
-  ReportRequestTimeRange timeRange;
+  ReportRequestTimeRange? timeRange;
 
   /// If `true`, the report would only be created if all the requested stat data
   /// are sourced from a single timezone.
   ///
   /// Defaults to `false`.
-  core.bool verifySingleTimeZone;
+  core.bool? verifySingleTimeZone;
 
   ReportRequest();
 
@@ -1531,28 +1490,28 @@ class ReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (columns != null)
-          'columns': columns.map((value) => value.toJson()).toList(),
-        if (downloadFormat != null) 'downloadFormat': downloadFormat,
+          'columns': columns!.map((value) => value.toJson()).toList(),
+        if (downloadFormat != null) 'downloadFormat': downloadFormat!,
         if (filters != null)
-          'filters': filters.map((value) => value.toJson()).toList(),
+          'filters': filters!.map((value) => value.toJson()).toList(),
         if (includeDeletedEntities != null)
-          'includeDeletedEntities': includeDeletedEntities,
+          'includeDeletedEntities': includeDeletedEntities!,
         if (includeRemovedEntities != null)
-          'includeRemovedEntities': includeRemovedEntities,
-        if (maxRowsPerFile != null) 'maxRowsPerFile': maxRowsPerFile,
+          'includeRemovedEntities': includeRemovedEntities!,
+        if (maxRowsPerFile != null) 'maxRowsPerFile': maxRowsPerFile!,
         if (orderBy != null)
-          'orderBy': orderBy.map((value) => value.toJson()).toList(),
-        if (reportScope != null) 'reportScope': reportScope.toJson(),
-        if (reportType != null) 'reportType': reportType,
-        if (rowCount != null) 'rowCount': rowCount,
-        if (startRow != null) 'startRow': startRow,
+          'orderBy': orderBy!.map((value) => value.toJson()).toList(),
+        if (reportScope != null) 'reportScope': reportScope!.toJson(),
+        if (reportType != null) 'reportType': reportType!,
+        if (rowCount != null) 'rowCount': rowCount!,
+        if (startRow != null) 'startRow': startRow!,
         if (statisticsCurrency != null)
-          'statisticsCurrency': statisticsCurrency,
-        if (timeRange != null) 'timeRange': timeRange.toJson(),
+          'statisticsCurrency': statisticsCurrency!,
+        if (timeRange != null) 'timeRange': timeRange!.toJson(),
         if (verifySingleTimeZone != null)
-          'verifySingleTimeZone': verifySingleTimeZone,
+          'verifySingleTimeZone': verifySingleTimeZone!,
       };
 }
 
@@ -1575,7 +1534,7 @@ class ReportRow extends collection.MapBase<core.String, core.Object> {
       core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
-  core.Object operator [](core.Object key) => _innerMap[key];
+  core.Object? operator [](core.Object? key) => _innerMap[key];
 
   @core.override
   void operator []=(core.String key, core.Object value) {
@@ -1591,7 +1550,7 @@ class ReportRow extends collection.MapBase<core.String, core.Object> {
   core.Iterable<core.String> get keys => _innerMap.keys;
 
   @core.override
-  core.Object remove(core.Object key) => _innerMap.remove(key);
+  core.Object? remove(core.Object? key) => _innerMap.remove(key);
 }
 
 /// A saved column
@@ -1599,13 +1558,13 @@ class SavedColumn {
   /// Identifies this as a SavedColumn resource.
   ///
   /// Value: the fixed string doubleclicksearch#savedColumn.
-  core.String kind;
+  core.String? kind;
 
   /// The name of the saved column.
-  core.String savedColumnName;
+  core.String? savedColumnName;
 
   /// The type of data this saved column will produce.
-  core.String type;
+  core.String? type;
 
   SavedColumn();
 
@@ -1621,10 +1580,10 @@ class SavedColumn {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (savedColumnName != null) 'savedColumnName': savedColumnName,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (savedColumnName != null) 'savedColumnName': savedColumnName!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1635,12 +1594,12 @@ class SavedColumn {
 /// you'll need the saved column names that are available from this list.
 class SavedColumnList {
   /// The saved columns being requested.
-  core.List<SavedColumn> items;
+  core.List<SavedColumn>? items;
 
   /// Identifies this as a SavedColumnList resource.
   ///
   /// Value: the fixed string doubleclicksearch#savedColumnList.
-  core.String kind;
+  core.String? kind;
 
   SavedColumnList();
 
@@ -1656,17 +1615,17 @@ class SavedColumnList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// The request to update availability.
 class UpdateAvailabilityRequest {
   /// The availabilities being requested.
-  core.List<Availability> availabilities;
+  core.List<Availability>? availabilities;
 
   UpdateAvailabilityRequest();
 
@@ -1679,17 +1638,17 @@ class UpdateAvailabilityRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (availabilities != null)
           'availabilities':
-              availabilities.map((value) => value.toJson()).toList(),
+              availabilities!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The response to a update availability request.
 class UpdateAvailabilityResponse {
   /// The availabilities being returned.
-  core.List<Availability> availabilities;
+  core.List<Availability>? availabilities;
 
   UpdateAvailabilityResponse();
 
@@ -1702,9 +1661,9 @@ class UpdateAvailabilityResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (availabilities != null)
           'availabilities':
-              availabilities.map((value) => value.toJson()).toList(),
+              availabilities!.map((value) => value.toJson()).toList(),
       };
 }

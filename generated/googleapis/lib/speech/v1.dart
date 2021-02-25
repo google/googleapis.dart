@@ -84,11 +84,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -136,11 +133,11 @@ class OperationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list({
-    core.String filter,
-    core.String name,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? name,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
@@ -191,10 +188,9 @@ class SpeechResource {
   /// this method will complete with the same error.
   async.Future<Operation> longrunningrecognize(
     LongRunningRecognizeRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -229,10 +225,9 @@ class SpeechResource {
   /// this method will complete with the same error.
   async.Future<RecognizeResponse> recognize(
     RecognizeRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -253,10 +248,10 @@ class SpeechResource {
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -272,10 +267,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -285,23 +280,23 @@ class ListOperationsResponse {
 /// `GetOperation` call of the `google::longrunning::Operations` service.
 class LongRunningRecognizeMetadata {
   /// Time of the most recent processing update.
-  core.String lastUpdateTime;
+  core.String? lastUpdateTime;
 
   /// Approximate percentage of audio processed thus far.
   ///
   /// Guaranteed to be 100 when the audio is fully processed and the results are
   /// available.
-  core.int progressPercent;
+  core.int? progressPercent;
 
   /// Time when the request was received.
-  core.String startTime;
+  core.String? startTime;
 
   /// The URI of the audio file being transcribed.
   ///
   /// Empty if the audio was sent as byte content.
   ///
   /// Output only.
-  core.String uri;
+  core.String? uri;
 
   LongRunningRecognizeMetadata();
 
@@ -320,11 +315,11 @@ class LongRunningRecognizeMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime,
-        if (progressPercent != null) 'progressPercent': progressPercent,
-        if (startTime != null) 'startTime': startTime,
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+        if (progressPercent != null) 'progressPercent': progressPercent!,
+        if (startTime != null) 'startTime': startTime!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -334,13 +329,13 @@ class LongRunningRecognizeRequest {
   /// The audio data to be recognized.
   ///
   /// Required.
-  RecognitionAudio audio;
+  RecognitionAudio? audio;
 
   /// Provides information to the recognizer that specifies how to process the
   /// request.
   ///
   /// Required.
-  RecognitionConfig config;
+  RecognitionConfig? config;
 
   LongRunningRecognizeRequest();
 
@@ -355,9 +350,9 @@ class LongRunningRecognizeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audio != null) 'audio': audio.toJson(),
-        if (config != null) 'config': config.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audio != null) 'audio': audio!.toJson(),
+        if (config != null) 'config': config!.toJson(),
       };
 }
 
@@ -371,7 +366,7 @@ class LongRunningRecognizeRequest {
 class LongRunningRecognizeResponse {
   /// Sequential list of transcription results corresponding to sequential
   /// portions of audio.
-  core.List<SpeechRecognitionResult> results;
+  core.List<SpeechRecognitionResult>? results;
 
   LongRunningRecognizeResponse();
 
@@ -385,9 +380,9 @@ class LongRunningRecognizeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
+          'results': results!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -398,10 +393,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -412,14 +407,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -432,7 +427,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -467,12 +462,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -486,8 +481,8 @@ class RecognitionAudio {
   ///
   /// Note: as with all bytes fields, proto buffers use a pure binary
   /// representation, whereas JSON representations use base64.
-  core.String content;
-  core.List<core.int> get contentAsBytes => convert.base64.decode(content);
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
@@ -502,7 +497,7 @@ class RecognitionAudio {
   /// following format: `gs://bucket_name/object_name` (other URI formats return
   /// google.rpc.Code.INVALID_ARGUMENT). For more information, see
   /// [Request URIs](https://cloud.google.com/storage/docs/reference-uris).
-  core.String uri;
+  core.String? uri;
 
   RecognitionAudio();
 
@@ -515,9 +510,9 @@ class RecognitionAudio {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -532,7 +527,7 @@ class RecognitionConfig {
   /// omitted, defaults to one channel (mono). Note: We only recognize the first
   /// channel by default. To perform independent recognition on each channel set
   /// `enable_separate_recognition_per_channel` to 'true'.
-  core.int audioChannelCount;
+  core.int? audioChannelCount;
 
   /// Config to enable speaker diarization and set additional parameters to make
   /// diarization better suited for your application.
@@ -543,14 +538,14 @@ class RecognitionConfig {
   /// learn to identify the speakers in the conversation over time. For
   /// non-streaming requests, the diarization results will be provided only in
   /// the top alternative of the FINAL SpeechRecognitionResult.
-  SpeakerDiarizationConfig diarizationConfig;
+  SpeakerDiarizationConfig? diarizationConfig;
 
   /// If 'true', adds punctuation to recognition result hypotheses.
   ///
   /// This feature is only available in select languages. Setting this for
   /// requests in other languages has no effect at all. The default 'false'
   /// value does not add punctuation to result hypotheses.
-  core.bool enableAutomaticPunctuation;
+  core.bool? enableAutomaticPunctuation;
 
   /// This needs to be set to `true` explicitly and `audio_channel_count` > 1 to
   /// get each channel recognized separately.
@@ -560,14 +555,14 @@ class RecognitionConfig {
   /// recognize the first channel. The request is billed cumulatively for all
   /// channels recognized: `audio_channel_count` multiplied by the length of the
   /// audio.
-  core.bool enableSeparateRecognitionPerChannel;
+  core.bool? enableSeparateRecognitionPerChannel;
 
   /// If `true`, the top result includes a list of words and the start and end
   /// time offsets (timestamps) for those words.
   ///
   /// If `false`, no word-level time offset information is returned. The default
   /// is `false`.
-  core.bool enableWordTimeOffsets;
+  core.bool? enableWordTimeOffsets;
 
   /// Encoding of audio data sent in all `RecognitionAudio` messages.
   ///
@@ -603,7 +598,7 @@ class RecognitionConfig {
   /// (octets) as specified in RFC 5574. In other words, each RTP header is
   /// replaced with a single byte containing the block length. Only Speex
   /// wideband is supported. `sample_rate_hertz` must be 16000.
-  core.String encoding;
+  core.String? encoding;
 
   /// The language of the supplied audio as a
   /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
@@ -613,7 +608,7 @@ class RecognitionConfig {
   /// for a list of the currently supported language codes.
   ///
   /// Required.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Maximum number of recognition hypotheses to be returned.
   ///
@@ -622,10 +617,10 @@ class RecognitionConfig {
   /// fewer than `max_alternatives`. Valid values are `0`-`30`. A value of `0`
   /// or `1` will return a maximum of one. If omitted, will return a maximum of
   /// one.
-  core.int maxAlternatives;
+  core.int? maxAlternatives;
 
   /// Metadata regarding this request.
-  RecognitionMetadata metadata;
+  RecognitionMetadata? metadata;
 
   /// Which model to select for the given request.
   ///
@@ -641,14 +636,14 @@ class RecognitionConfig {
   /// is not one of the specific audio models. For example, long-form audio.
   /// Ideally the audio is high-fidelity, recorded at a 16khz or greater
   /// sampling rate.
-  core.String model;
+  core.String? model;
 
   /// If set to `true`, the server will attempt to filter out profanities,
   /// replacing all but the initial character in each filtered word with
   /// asterisks, e.g. "f***".
   ///
   /// If set to `false` or omitted, profanities won't be filtered out.
-  core.bool profanityFilter;
+  core.bool? profanityFilter;
 
   /// Sample rate in Hertz of the audio data sent in all `RecognitionAudio`
   /// messages.
@@ -658,14 +653,14 @@ class RecognitionConfig {
   /// the native sample rate of the audio source (instead of re-sampling). This
   /// field is optional for FLAC and WAV audio files, but is required for all
   /// other audio formats. For details, see AudioEncoding.
-  core.int sampleRateHertz;
+  core.int? sampleRateHertz;
 
   /// Array of SpeechContext.
   ///
   /// A means to provide context to assist the speech recognition. For more
   /// information, see
   /// [speech adaptation](https://cloud.google.com/speech-to-text/docs/context-strength).
-  core.List<SpeechContext> speechContexts;
+  core.List<SpeechContext>? speechContexts;
 
   /// Set to true to use an enhanced model for speech recognition.
   ///
@@ -674,7 +669,7 @@ class RecognitionConfig {
   /// audio. If `use_enhanced` is true and an enhanced version of the specified
   /// model does not exist, then the speech is recognized using the standard
   /// version of the specified model.
-  core.bool useEnhanced;
+  core.bool? useEnhanced;
 
   RecognitionConfig();
 
@@ -730,28 +725,28 @@ class RecognitionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audioChannelCount != null) 'audioChannelCount': audioChannelCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audioChannelCount != null) 'audioChannelCount': audioChannelCount!,
         if (diarizationConfig != null)
-          'diarizationConfig': diarizationConfig.toJson(),
+          'diarizationConfig': diarizationConfig!.toJson(),
         if (enableAutomaticPunctuation != null)
-          'enableAutomaticPunctuation': enableAutomaticPunctuation,
+          'enableAutomaticPunctuation': enableAutomaticPunctuation!,
         if (enableSeparateRecognitionPerChannel != null)
           'enableSeparateRecognitionPerChannel':
-              enableSeparateRecognitionPerChannel,
+              enableSeparateRecognitionPerChannel!,
         if (enableWordTimeOffsets != null)
-          'enableWordTimeOffsets': enableWordTimeOffsets,
-        if (encoding != null) 'encoding': encoding,
-        if (languageCode != null) 'languageCode': languageCode,
-        if (maxAlternatives != null) 'maxAlternatives': maxAlternatives,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (model != null) 'model': model,
-        if (profanityFilter != null) 'profanityFilter': profanityFilter,
-        if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz,
+          'enableWordTimeOffsets': enableWordTimeOffsets!,
+        if (encoding != null) 'encoding': encoding!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (maxAlternatives != null) 'maxAlternatives': maxAlternatives!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (model != null) 'model': model!,
+        if (profanityFilter != null) 'profanityFilter': profanityFilter!,
+        if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
         if (speechContexts != null)
           'speechContexts':
-              speechContexts.map((value) => value.toJson()).toList(),
-        if (useEnhanced != null) 'useEnhanced': useEnhanced,
+              speechContexts!.map((value) => value.toJson()).toList(),
+        if (useEnhanced != null) 'useEnhanced': useEnhanced!,
       };
 }
 
@@ -760,7 +755,7 @@ class RecognitionMetadata {
   /// Description of the content.
   ///
   /// Eg. "Recordings of federal supreme court hearings from 2012".
-  core.String audioTopic;
+  core.String? audioTopic;
 
   /// The industry vertical to which this speech recognition request most
   /// closely applies.
@@ -768,7 +763,7 @@ class RecognitionMetadata {
   /// This is most indicative of the topics contained in the audio. Use the
   /// 6-digit NAICS code to identify the industry vertical - see
   /// https://www.naics.com/search/.
-  core.int industryNaicsCodeOfAudio;
+  core.int? industryNaicsCodeOfAudio;
 
   /// The use case most closely describing the audio content to be recognized.
   /// Possible string values are:
@@ -791,7 +786,7 @@ class RecognitionMetadata {
   /// device.
   /// - "DICTATION" : Transcribe speech to text to create a written document,
   /// such as a text-message, email or report.
-  core.String interactionType;
+  core.String? interactionType;
 
   /// The audio type that most closely describes the audio being recognized.
   /// Possible string values are:
@@ -801,27 +796,27 @@ class RecognitionMetadata {
   /// is within 1 meter of the microphone.
   /// - "MIDFIELD" : The speaker if within 3 meters of the microphone.
   /// - "FARFIELD" : The speaker is more than 3 meters away from the microphone.
-  core.String microphoneDistance;
+  core.String? microphoneDistance;
 
   /// The original media the speech was recorded on.
   /// Possible string values are:
   /// - "ORIGINAL_MEDIA_TYPE_UNSPECIFIED" : Unknown original media type.
   /// - "AUDIO" : The speech data is an audio recording.
   /// - "VIDEO" : The speech data originally recorded on a video.
-  core.String originalMediaType;
+  core.String? originalMediaType;
 
   /// Mime type of the original audio file.
   ///
   /// For example `audio/m4a`, `audio/x-alaw-basic`, `audio/mp3`, `audio/3gpp`.
   /// A list of possible audio mime types is maintained at
   /// http://www.iana.org/assignments/media-types/media-types.xhtml#audio
-  core.String originalMimeType;
+  core.String? originalMimeType;
 
   /// The device used to make the recording.
   ///
   /// Examples 'Nexus 5X' or 'Polycom SoundStation IP 6000' or 'POTS' or 'VoIP'
   /// or 'Cardioid Microphone'.
-  core.String recordingDeviceName;
+  core.String? recordingDeviceName;
 
   /// The type of device the speech was recorded with.
   /// Possible string values are:
@@ -832,7 +827,7 @@ class RecognitionMetadata {
   /// - "VEHICLE" : Speech was recorded in a vehicle.
   /// - "OTHER_OUTDOOR_DEVICE" : Speech was recorded outdoors.
   /// - "OTHER_INDOOR_DEVICE" : Speech was recorded indoors.
-  core.String recordingDeviceType;
+  core.String? recordingDeviceType;
 
   RecognitionMetadata();
 
@@ -863,19 +858,19 @@ class RecognitionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audioTopic != null) 'audioTopic': audioTopic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audioTopic != null) 'audioTopic': audioTopic!,
         if (industryNaicsCodeOfAudio != null)
-          'industryNaicsCodeOfAudio': industryNaicsCodeOfAudio,
-        if (interactionType != null) 'interactionType': interactionType,
+          'industryNaicsCodeOfAudio': industryNaicsCodeOfAudio!,
+        if (interactionType != null) 'interactionType': interactionType!,
         if (microphoneDistance != null)
-          'microphoneDistance': microphoneDistance,
-        if (originalMediaType != null) 'originalMediaType': originalMediaType,
-        if (originalMimeType != null) 'originalMimeType': originalMimeType,
+          'microphoneDistance': microphoneDistance!,
+        if (originalMediaType != null) 'originalMediaType': originalMediaType!,
+        if (originalMimeType != null) 'originalMimeType': originalMimeType!,
         if (recordingDeviceName != null)
-          'recordingDeviceName': recordingDeviceName,
+          'recordingDeviceName': recordingDeviceName!,
         if (recordingDeviceType != null)
-          'recordingDeviceType': recordingDeviceType,
+          'recordingDeviceType': recordingDeviceType!,
       };
 }
 
@@ -884,13 +879,13 @@ class RecognizeRequest {
   /// The audio data to be recognized.
   ///
   /// Required.
-  RecognitionAudio audio;
+  RecognitionAudio? audio;
 
   /// Provides information to the recognizer that specifies how to process the
   /// request.
   ///
   /// Required.
-  RecognitionConfig config;
+  RecognitionConfig? config;
 
   RecognizeRequest();
 
@@ -905,9 +900,9 @@ class RecognizeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audio != null) 'audio': audio.toJson(),
-        if (config != null) 'config': config.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audio != null) 'audio': audio!.toJson(),
+        if (config != null) 'config': config!.toJson(),
       };
 }
 
@@ -918,7 +913,7 @@ class RecognizeRequest {
 class RecognizeResponse {
   /// Sequential list of transcription results corresponding to sequential
   /// portions of audio.
-  core.List<SpeechRecognitionResult> results;
+  core.List<SpeechRecognitionResult>? results;
 
   RecognizeResponse();
 
@@ -932,9 +927,9 @@ class RecognizeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
+          'results': results!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -943,26 +938,26 @@ class SpeakerDiarizationConfig {
   /// If 'true', enables speaker detection for each recognized word in the top
   /// alternative of the recognition result using a speaker_tag provided in the
   /// WordInfo.
-  core.bool enableSpeakerDiarization;
+  core.bool? enableSpeakerDiarization;
 
   /// Maximum number of speakers in the conversation.
   ///
   /// This range gives you more flexibility by allowing the system to
   /// automatically determine the correct number of speakers. If not set, the
   /// default value is 6.
-  core.int maxSpeakerCount;
+  core.int? maxSpeakerCount;
 
   /// Minimum number of speakers in the conversation.
   ///
   /// This range gives you more flexibility by allowing the system to
   /// automatically determine the correct number of speakers. If not set, the
   /// default value is 2.
-  core.int minSpeakerCount;
+  core.int? minSpeakerCount;
 
   /// Unused.
   ///
   /// Output only.
-  core.int speakerTag;
+  core.int? speakerTag;
 
   SpeakerDiarizationConfig();
 
@@ -981,12 +976,12 @@ class SpeakerDiarizationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (enableSpeakerDiarization != null)
-          'enableSpeakerDiarization': enableSpeakerDiarization,
-        if (maxSpeakerCount != null) 'maxSpeakerCount': maxSpeakerCount,
-        if (minSpeakerCount != null) 'minSpeakerCount': minSpeakerCount,
-        if (speakerTag != null) 'speakerTag': speakerTag,
+          'enableSpeakerDiarization': enableSpeakerDiarization!,
+        if (maxSpeakerCount != null) 'maxSpeakerCount': maxSpeakerCount!,
+        if (minSpeakerCount != null) 'minSpeakerCount': minSpeakerCount!,
+        if (speakerTag != null) 'speakerTag': speakerTag!,
       };
 }
 
@@ -1006,7 +1001,7 @@ class SpeechContext {
   /// providing phrase hints for every month of the year, using the $MONTH class
   /// improves the likelihood of correctly transcribing audio that includes
   /// months.
-  core.List<core.String> phrases;
+  core.List<core.String>? phrases;
 
   SpeechContext();
 
@@ -1018,8 +1013,8 @@ class SpeechContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (phrases != null) 'phrases': phrases,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (phrases != null) 'phrases': phrases!,
       };
 }
 
@@ -1033,16 +1028,16 @@ class SpeechRecognitionAlternative {
   /// `is_final=true`. This field is not guaranteed to be accurate and users
   /// should not rely on it to be always provided. The default of 0.0 is a
   /// sentinel value indicating `confidence` was not set.
-  core.double confidence;
+  core.double? confidence;
 
   /// Transcript text representing the words that the user spoke.
-  core.String transcript;
+  core.String? transcript;
 
   /// A list of word-specific information for each recognized word.
   ///
   /// Note: When `enable_speaker_diarization` is true, you will see all the
   /// words from the beginning of the audio.
-  core.List<WordInfo> words;
+  core.List<WordInfo>? words;
 
   SpeechRecognitionAlternative();
 
@@ -1061,11 +1056,11 @@ class SpeechRecognitionAlternative {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (confidence != null) 'confidence': confidence,
-        if (transcript != null) 'transcript': transcript,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (transcript != null) 'transcript': transcript!,
         if (words != null)
-          'words': words.map((value) => value.toJson()).toList(),
+          'words': words!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1076,13 +1071,13 @@ class SpeechRecognitionResult {
   ///
   /// These alternatives are ordered in terms of accuracy, with the top (first)
   /// alternative being the most probable, as ranked by the recognizer.
-  core.List<SpeechRecognitionAlternative> alternatives;
+  core.List<SpeechRecognitionAlternative>? alternatives;
 
   /// For multi-channel audio, this is the channel number corresponding to the
   /// recognized result for the audio from that channel.
   ///
   /// For audio_channel_count = N, its output values can range from '1' to 'N'.
-  core.int channelTag;
+  core.int? channelTag;
 
   SpeechRecognitionResult();
 
@@ -1099,10 +1094,10 @@ class SpeechRecognitionResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (alternatives != null)
-          'alternatives': alternatives.map((value) => value.toJson()).toList(),
-        if (channelTag != null) 'channelTag': channelTag,
+          'alternatives': alternatives!.map((value) => value.toJson()).toList(),
+        if (channelTag != null) 'channelTag': channelTag!,
       };
 }
 
@@ -1115,7 +1110,7 @@ class SpeechRecognitionResult {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1123,13 +1118,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -1153,10 +1148,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -1168,7 +1163,7 @@ class WordInfo {
   /// This field is only set if `enable_word_time_offsets=true` and only in the
   /// top hypothesis. This is an experimental feature and the accuracy of the
   /// time offset can vary.
-  core.String endTime;
+  core.String? endTime;
 
   /// A distinct integer value is assigned for every speaker within the audio.
   ///
@@ -1178,7 +1173,7 @@ class WordInfo {
   /// top alternative.
   ///
   /// Output only.
-  core.int speakerTag;
+  core.int? speakerTag;
 
   /// Time offset relative to the beginning of the audio, and corresponding to
   /// the start of the spoken word.
@@ -1186,10 +1181,10 @@ class WordInfo {
   /// This field is only set if `enable_word_time_offsets=true` and only in the
   /// top hypothesis. This is an experimental feature and the accuracy of the
   /// time offset can vary.
-  core.String startTime;
+  core.String? startTime;
 
   /// The word corresponding to this set of information.
-  core.String word;
+  core.String? word;
 
   WordInfo();
 
@@ -1208,10 +1203,10 @@ class WordInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (speakerTag != null) 'speakerTag': speakerTag,
-        if (startTime != null) 'startTime': startTime,
-        if (word != null) 'word': word,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (speakerTag != null) 'speakerTag': speakerTag!,
+        if (startTime != null) 'startTime': startTime!,
+        if (word != null) 'word': word!,
       };
 }

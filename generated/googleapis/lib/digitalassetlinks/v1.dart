@@ -174,14 +174,14 @@ class AssetlinksResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CheckResponse> check({
-    core.String relation,
-    core.String source_androidApp_certificate_sha256Fingerprint,
-    core.String source_androidApp_packageName,
-    core.String source_web_site,
-    core.String target_androidApp_certificate_sha256Fingerprint,
-    core.String target_androidApp_packageName,
-    core.String target_web_site,
-    core.String $fields,
+    core.String? relation,
+    core.String? source_androidApp_certificate_sha256Fingerprint,
+    core.String? source_androidApp_packageName,
+    core.String? source_web_site,
+    core.String? target_androidApp_certificate_sha256Fingerprint,
+    core.String? target_androidApp_packageName,
+    core.String? target_web_site,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (relation != null) 'relation': [relation],
@@ -293,11 +293,11 @@ class StatementsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListResponse> list({
-    core.String relation,
-    core.String source_androidApp_certificate_sha256Fingerprint,
-    core.String source_androidApp_packageName,
-    core.String source_web_site,
-    core.String $fields,
+    core.String? relation,
+    core.String? source_androidApp_certificate_sha256Fingerprint,
+    core.String? source_androidApp_packageName,
+    core.String? source_web_site,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (relation != null) 'relation': [relation],
@@ -337,13 +337,13 @@ class AndroidAppAsset {
   /// a key is rotated, however. (Note that the syntaxes for publishing and
   /// querying for statements contain syntactic sugar to easily let you specify
   /// apps that are known by multiple certificates.) REQUIRED
-  CertificateInfo certificate;
+  CertificateInfo? certificate;
 
   /// Android App assets are naturally identified by their Java package name.
   ///
   /// For example, the Google Maps app uses the package name
   /// `com.google.android.apps.maps`. REQUIRED
-  core.String packageName;
+  core.String? packageName;
 
   AndroidAppAsset();
 
@@ -357,9 +357,9 @@ class AndroidAppAsset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (certificate != null) 'certificate': certificate.toJson(),
-        if (packageName != null) 'packageName': packageName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (certificate != null) 'certificate': certificate!.toJson(),
+        if (packageName != null) 'packageName': packageName!,
       };
 }
 
@@ -370,10 +370,10 @@ class AndroidAppAsset {
 /// Android apps, Twitter feeds, and Plus Pages.
 class Asset {
   /// Set if this is an Android App asset.
-  AndroidAppAsset androidApp;
+  AndroidAppAsset? androidApp;
 
   /// Set if this is a web asset.
-  WebAsset web;
+  WebAsset? web;
 
   Asset();
 
@@ -388,9 +388,9 @@ class Asset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (androidApp != null) 'androidApp': androidApp.toJson(),
-        if (web != null) 'web': web.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (androidApp != null) 'androidApp': androidApp!.toJson(),
+        if (web != null) 'web': web!.toJson(),
       };
 }
 
@@ -411,7 +411,7 @@ class CertificateInfo {
   /// certificate into the DER format, compute the SHA-256 hash of that string
   /// and represent the result as a hexstring (that is, uppercase hexadecimal
   /// representations of each octet, separated by colons).
-  core.String sha256Fingerprint;
+  core.String? sha256Fingerprint;
 
   CertificateInfo();
 
@@ -421,8 +421,8 @@ class CertificateInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sha256Fingerprint != null) 'sha256Fingerprint': sha256Fingerprint,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sha256Fingerprint != null) 'sha256Fingerprint': sha256Fingerprint!,
       };
 }
 
@@ -436,20 +436,20 @@ class CheckResponse {
   /// contents or format of this string. Any aspect of it may be subject to
   /// change without notice. You should not attempt to programmatically parse
   /// this data. For programmatic access, use the error_code field below.
-  core.String debugString;
+  core.String? debugString;
 
   /// Error codes that describe the result of the Check operation.
-  core.List<core.String> errorCode;
+  core.List<core.String>? errorCode;
 
   /// Set to true if the assets specified in the request are linked by the
   /// relation specified in the request.
-  core.bool linked;
+  core.bool? linked;
 
   /// From serving time, how much longer the response should be considered valid
   /// barring further updates.
   ///
   /// REQUIRED
-  core.String maxAge;
+  core.String? maxAge;
 
   CheckResponse();
 
@@ -470,11 +470,11 @@ class CheckResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (debugString != null) 'debugString': debugString,
-        if (errorCode != null) 'errorCode': errorCode,
-        if (linked != null) 'linked': linked,
-        if (maxAge != null) 'maxAge': maxAge,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (debugString != null) 'debugString': debugString!,
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (linked != null) 'linked': linked!,
+        if (maxAge != null) 'maxAge': maxAge!,
       };
 }
 
@@ -488,19 +488,19 @@ class ListResponse {
   /// contents or format of this string. Any aspect of it may be subject to
   /// change without notice. You should not attempt to programmatically parse
   /// this data. For programmatic access, use the error_code field below.
-  core.String debugString;
+  core.String? debugString;
 
   /// Error codes that describe the result of the List operation.
-  core.List<core.String> errorCode;
+  core.List<core.String>? errorCode;
 
   /// From serving time, how much longer the response should be considered valid
   /// barring further updates.
   ///
   /// REQUIRED
-  core.String maxAge;
+  core.String? maxAge;
 
   /// A list of all the matching statements that have been found.
-  core.List<Statement> statements;
+  core.List<Statement>? statements;
 
   ListResponse();
 
@@ -524,12 +524,12 @@ class ListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (debugString != null) 'debugString': debugString,
-        if (errorCode != null) 'errorCode': errorCode,
-        if (maxAge != null) 'maxAge': maxAge,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (debugString != null) 'debugString': debugString!,
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (maxAge != null) 'maxAge': maxAge!,
         if (statements != null)
-          'statements': statements.map((value) => value.toJson()).toList(),
+          'statements': statements!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -551,17 +551,17 @@ class Statement {
   /// documentation\](/digital-asset-links/v1/relation-strings) for the current
   /// list of supported relations. Example:
   /// `delegate_permission/common.handle_all_urls` REQUIRED
-  core.String relation;
+  core.String? relation;
 
   /// Every statement has a source asset.
   ///
   /// REQUIRED
-  Asset source;
+  Asset? source;
 
   /// Every statement has a target asset.
   ///
   /// REQUIRED
-  Asset target;
+  Asset? target;
 
   Statement();
 
@@ -579,10 +579,10 @@ class Statement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (relation != null) 'relation': relation,
-        if (source != null) 'source': source.toJson(),
-        if (target != null) 'target': target.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (relation != null) 'relation': relation!,
+        if (source != null) 'source': source!.toJson(),
+        if (target != null) 'target': target!.toJson(),
       };
 }
 
@@ -605,7 +605,7 @@ class WebAsset {
   /// But it does not contain these URLs: * `http://www.google.com/` (wrong
   /// scheme) * `https://google.com/` (hostname does not match) *
   /// `https://www.google.com:444/` (port does not match) REQUIRED
-  core.String site;
+  core.String? site;
 
   WebAsset();
 
@@ -615,7 +615,7 @@ class WebAsset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (site != null) 'site': site,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (site != null) 'site': site!,
       };
 }

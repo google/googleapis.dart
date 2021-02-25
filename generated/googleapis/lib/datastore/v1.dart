@@ -93,13 +93,9 @@ class ProjectsResource {
   async.Future<AllocateIdsResponse> allocateIds(
     AllocateIdsRequest request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -140,13 +136,9 @@ class ProjectsResource {
   async.Future<BeginTransactionResponse> beginTransaction(
     BeginTransactionRequest request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -188,13 +180,9 @@ class ProjectsResource {
   async.Future<CommitResponse> commit(
     CommitRequest request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -242,13 +230,9 @@ class ProjectsResource {
   async.Future<GoogleLongrunningOperation> export(
     GoogleDatastoreAdminV1ExportEntitiesRequest request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -294,13 +278,9 @@ class ProjectsResource {
   async.Future<GoogleLongrunningOperation> import(
     GoogleDatastoreAdminV1ImportEntitiesRequest request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -341,13 +321,9 @@ class ProjectsResource {
   async.Future<LookupResponse> lookup(
     LookupRequest request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -389,13 +365,9 @@ class ProjectsResource {
   async.Future<ReserveIdsResponse> reserveIds(
     ReserveIdsRequest request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -436,13 +408,9 @@ class ProjectsResource {
   async.Future<RollbackResponse> rollback(
     RollbackRequest request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -483,13 +451,9 @@ class ProjectsResource {
   async.Future<RunQueryResponse> runQuery(
     RunQueryRequest request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -544,13 +508,9 @@ class ProjectsIndexesResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleDatastoreAdminV1Index request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -598,14 +558,8 @@ class ProjectsIndexesResource {
   async.Future<GoogleLongrunningOperation> delete(
     core.String projectId,
     core.String indexId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (indexId == null) {
-      throw core.ArgumentError('Parameter indexId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -645,14 +599,8 @@ class ProjectsIndexesResource {
   async.Future<GoogleDatastoreAdminV1Index> get(
     core.String projectId,
     core.String indexId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (indexId == null) {
-      throw core.ArgumentError('Parameter indexId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -700,14 +648,11 @@ class ProjectsIndexesResource {
   /// this method will complete with the same error.
   async.Future<GoogleDatastoreAdminV1ListIndexesResponse> list(
     core.String projectId, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -762,11 +707,8 @@ class ProjectsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -805,11 +747,8 @@ class ProjectsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -846,11 +785,8 @@ class ProjectsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -900,14 +836,11 @@ class ProjectsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -935,7 +868,7 @@ class AllocateIdsRequest {
   /// No key may be reserved/read-only.
   ///
   /// Required.
-  core.List<Key> keys;
+  core.List<Key>? keys;
 
   AllocateIdsRequest();
 
@@ -948,8 +881,8 @@ class AllocateIdsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (keys != null) 'keys': keys.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (keys != null) 'keys': keys!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -957,7 +890,7 @@ class AllocateIdsRequest {
 class AllocateIdsResponse {
   /// The keys specified in the request (in the same order), each with its key
   /// path completed with a newly allocated ID.
-  core.List<Key> keys;
+  core.List<Key>? keys;
 
   AllocateIdsResponse();
 
@@ -970,8 +903,8 @@ class AllocateIdsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (keys != null) 'keys': keys.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (keys != null) 'keys': keys!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -981,7 +914,7 @@ class ArrayValue {
   ///
   /// The order of values in an array is preserved as long as all values have
   /// identical settings for 'exclude_from_indexes'.
-  core.List<Value> values;
+  core.List<Value>? values;
 
   ArrayValue();
 
@@ -994,16 +927,16 @@ class ArrayValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (values != null)
-          'values': values.map((value) => value.toJson()).toList(),
+          'values': values!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The request for Datastore.BeginTransaction.
 class BeginTransactionRequest {
   /// Options for a new transaction.
-  TransactionOptions transactionOptions;
+  TransactionOptions? transactionOptions;
 
   BeginTransactionRequest();
 
@@ -1014,18 +947,18 @@ class BeginTransactionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (transactionOptions != null)
-          'transactionOptions': transactionOptions.toJson(),
+          'transactionOptions': transactionOptions!.toJson(),
       };
 }
 
 /// The response for Datastore.BeginTransaction.
 class BeginTransactionResponse {
   /// The transaction identifier (always present).
-  core.String transaction;
+  core.String? transaction;
   core.List<core.int> get transactionAsBytes =>
-      convert.base64.decode(transaction);
+      convert.base64.decode(transaction!);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -1040,8 +973,8 @@ class BeginTransactionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (transaction != null) 'transaction': transaction,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -1057,7 +990,7 @@ class CommitRequest {
   /// [here](https://cloud.google.com/datastore/docs/concepts/transactions).
   /// - "NON_TRANSACTIONAL" : Non-transactional: The mutations may not apply as
   /// all or none.
-  core.String mode;
+  core.String? mode;
 
   /// The mutations to perform.
   ///
@@ -1067,15 +1000,15 @@ class CommitRequest {
   /// by `insert` - `update` followed by `insert` - `upsert` followed by
   /// `insert` - `delete` followed by `update` When mode is `NON_TRANSACTIONAL`,
   /// no two mutations may affect a single entity.
-  core.List<Mutation> mutations;
+  core.List<Mutation>? mutations;
 
   /// The identifier of the transaction associated with the commit.
   ///
   /// A transaction identifier is returned by a call to
   /// Datastore.BeginTransaction.
-  core.String transaction;
+  core.String? transaction;
   core.List<core.int> get transactionAsBytes =>
-      convert.base64.decode(transaction);
+      convert.base64.decode(transaction!);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -1099,11 +1032,11 @@ class CommitRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (mode != null) 'mode': mode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (mode != null) 'mode': mode!,
         if (mutations != null)
-          'mutations': mutations.map((value) => value.toJson()).toList(),
-        if (transaction != null) 'transaction': transaction,
+          'mutations': mutations!.map((value) => value.toJson()).toList(),
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -1111,12 +1044,12 @@ class CommitRequest {
 class CommitResponse {
   /// The number of index entries updated during the commit, or zero if none
   /// were updated.
-  core.int indexUpdates;
+  core.int? indexUpdates;
 
   /// The result of performing the mutations.
   ///
   /// The i-th mutation result corresponds to the i-th mutation in the request.
-  core.List<MutationResult> mutationResults;
+  core.List<MutationResult>? mutationResults;
 
   CommitResponse();
 
@@ -1132,11 +1065,11 @@ class CommitResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (indexUpdates != null) 'indexUpdates': indexUpdates,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (indexUpdates != null) 'indexUpdates': indexUpdates!,
         if (mutationResults != null)
           'mutationResults':
-              mutationResults.map((value) => value.toJson()).toList(),
+              mutationResults!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1145,14 +1078,14 @@ class CompositeFilter {
   /// The list of filters to combine.
   ///
   /// Must contain at least one filter.
-  core.List<Filter> filters;
+  core.List<Filter>? filters;
 
   /// The operator for combining multiple filters.
   /// Possible string values are:
   /// - "OPERATOR_UNSPECIFIED" : Unspecified. This value must not be used.
   /// - "AND" : The results are required to satisfy each of the combined
   /// filters.
-  core.String op;
+  core.String? op;
 
   CompositeFilter();
 
@@ -1168,10 +1101,10 @@ class CompositeFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (filters != null)
-          'filters': filters.map((value) => value.toJson()).toList(),
-        if (op != null) 'op': op,
+          'filters': filters!.map((value) => value.toJson()).toList(),
+        if (op != null) 'op': op!,
       };
 }
 
@@ -1189,7 +1122,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A Datastore data object.
@@ -1202,7 +1135,7 @@ class Entity {
   /// An entity must have a key, unless otherwise documented (for example, an
   /// entity in `Value.entity_value` may have no key). An entity's kind is its
   /// key path's last element's kind, or null if it has no key.
-  Key key;
+  Key? key;
 
   /// The entity's properties.
   ///
@@ -1210,7 +1143,7 @@ class Entity {
   /// is reserved. A reserved property name is forbidden in certain documented
   /// contexts. The name must not contain more than 500 characters. The name
   /// cannot be `""`.
-  core.Map<core.String, Value> properties;
+  core.Map<core.String, Value>? properties;
 
   Entity();
 
@@ -1219,21 +1152,22 @@ class Entity {
       key = Key.fromJson(_json['key'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('properties')) {
-      properties =
-          (_json['properties'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  Value.fromJson(item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      properties = (_json['properties'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              Value.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!.toJson(),
         if (properties != null)
           'properties':
-              properties.map((key, item) => core.MapEntry(key, item.toJson())),
+              properties!.map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
 
@@ -1242,8 +1176,8 @@ class EntityResult {
   /// A cursor that points to the position after the result entity.
   ///
   /// Set only when the `EntityResult` is part of a `QueryResultBatch` message.
-  core.String cursor;
-  core.List<core.int> get cursorAsBytes => convert.base64.decode(cursor);
+  core.String? cursor;
+  core.List<core.int> get cursorAsBytes => convert.base64.decode(cursor!);
 
   set cursorAsBytes(core.List<core.int> _bytes) {
     cursor =
@@ -1251,7 +1185,7 @@ class EntityResult {
   }
 
   /// The resulting entity.
-  Entity entity;
+  Entity? entity;
 
   /// The version of the entity, a strictly positive number that monotonically
   /// increases with changes to the entity.
@@ -1260,7 +1194,7 @@ class EntityResult {
   /// `LookupResponse`, this is the version of the snapshot that was used to
   /// look up the entity, and it is always set except for eventually consistent
   /// reads.
-  core.String version;
+  core.String? version;
 
   EntityResult();
 
@@ -1277,20 +1211,20 @@ class EntityResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cursor != null) 'cursor': cursor,
-        if (entity != null) 'entity': entity.toJson(),
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cursor != null) 'cursor': cursor!,
+        if (entity != null) 'entity': entity!.toJson(),
+        if (version != null) 'version': version!,
       };
 }
 
 /// A holder for any type of filter.
 class Filter {
   /// A composite filter.
-  CompositeFilter compositeFilter;
+  CompositeFilter? compositeFilter;
 
   /// A filter on a property.
-  PropertyFilter propertyFilter;
+  PropertyFilter? propertyFilter;
 
   Filter();
 
@@ -1305,23 +1239,23 @@ class Filter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (compositeFilter != null)
-          'compositeFilter': compositeFilter.toJson(),
-        if (propertyFilter != null) 'propertyFilter': propertyFilter.toJson(),
+          'compositeFilter': compositeFilter!.toJson(),
+        if (propertyFilter != null) 'propertyFilter': propertyFilter!.toJson(),
       };
 }
 
 /// Metadata common to all Datastore Admin operations.
 class GoogleDatastoreAdminV1CommonMetadata {
   /// The time the operation ended, either successfully or otherwise.
-  core.String endTime;
+  core.String? endTime;
 
   /// The client-assigned labels which were provided when the operation was
   /// created.
   ///
   /// May also include additional labels.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The type of the operation.
   ///
@@ -1332,10 +1266,10 @@ class GoogleDatastoreAdminV1CommonMetadata {
   /// - "IMPORT_ENTITIES" : ImportEntities.
   /// - "CREATE_INDEX" : CreateIndex.
   /// - "DELETE_INDEX" : DeleteIndex.
-  core.String operationType;
+  core.String? operationType;
 
   /// The time that work began on the operation.
-  core.String startTime;
+  core.String? startTime;
 
   /// The current state of the Operation.
   /// Possible string values are:
@@ -1351,7 +1285,7 @@ class GoogleDatastoreAdminV1CommonMetadata {
   /// error.
   /// - "CANCELLED" : Request has finished being cancelled after user called
   /// google.longrunning.Operations.CancelOperation.
-  core.String state;
+  core.String? state;
 
   GoogleDatastoreAdminV1CommonMetadata();
 
@@ -1379,12 +1313,12 @@ class GoogleDatastoreAdminV1CommonMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (labels != null) 'labels': labels,
-        if (operationType != null) 'operationType': operationType,
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (labels != null) 'labels': labels!,
+        if (operationType != null) 'operationType': operationType!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -1400,7 +1334,7 @@ class GoogleDatastoreAdminV1CommonMetadata {
 /// namespace_ids=\['Baz'\]
 class GoogleDatastoreAdminV1EntityFilter {
   /// If empty, then this represents all kinds.
-  core.List<core.String> kinds;
+  core.List<core.String>? kinds;
 
   /// An empty list represents all namespaces.
   ///
@@ -1408,7 +1342,7 @@ class GoogleDatastoreAdminV1EntityFilter {
   /// empty string element represents the default namespace. This should be used
   /// if the project has data in non-default namespaces, but doesn't want to
   /// include them. Each namespace in this list must be unique.
-  core.List<core.String> namespaceIds;
+  core.List<core.String>? namespaceIds;
 
   GoogleDatastoreAdminV1EntityFilter();
 
@@ -1425,19 +1359,19 @@ class GoogleDatastoreAdminV1EntityFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kinds != null) 'kinds': kinds,
-        if (namespaceIds != null) 'namespaceIds': namespaceIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kinds != null) 'kinds': kinds!,
+        if (namespaceIds != null) 'namespaceIds': namespaceIds!,
       };
 }
 
 /// Metadata for ExportEntities operations.
 class GoogleDatastoreAdminV1ExportEntitiesMetadata {
   /// Metadata common to all Datastore Admin operations.
-  GoogleDatastoreAdminV1CommonMetadata common;
+  GoogleDatastoreAdminV1CommonMetadata? common;
 
   /// Description of which entities are being exported.
-  GoogleDatastoreAdminV1EntityFilter entityFilter;
+  GoogleDatastoreAdminV1EntityFilter? entityFilter;
 
   /// Location for the export metadata and data files.
   ///
@@ -1445,13 +1379,13 @@ class GoogleDatastoreAdminV1ExportEntitiesMetadata {
   /// google.datastore.admin.v1.ExportEntitiesRequest.output_url_prefix field.
   /// The final output location is provided in
   /// google.datastore.admin.v1.ExportEntitiesResponse.output_url.
-  core.String outputUrlPrefix;
+  core.String? outputUrlPrefix;
 
   /// An estimate of the number of bytes processed.
-  GoogleDatastoreAdminV1Progress progressBytes;
+  GoogleDatastoreAdminV1Progress? progressBytes;
 
   /// An estimate of the number of entities processed.
-  GoogleDatastoreAdminV1Progress progressEntities;
+  GoogleDatastoreAdminV1Progress? progressEntities;
 
   GoogleDatastoreAdminV1ExportEntitiesMetadata();
 
@@ -1477,23 +1411,23 @@ class GoogleDatastoreAdminV1ExportEntitiesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (common != null) 'common': common.toJson(),
-        if (entityFilter != null) 'entityFilter': entityFilter.toJson(),
-        if (outputUrlPrefix != null) 'outputUrlPrefix': outputUrlPrefix,
-        if (progressBytes != null) 'progressBytes': progressBytes.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (common != null) 'common': common!.toJson(),
+        if (entityFilter != null) 'entityFilter': entityFilter!.toJson(),
+        if (outputUrlPrefix != null) 'outputUrlPrefix': outputUrlPrefix!,
+        if (progressBytes != null) 'progressBytes': progressBytes!.toJson(),
         if (progressEntities != null)
-          'progressEntities': progressEntities.toJson(),
+          'progressEntities': progressEntities!.toJson(),
       };
 }
 
 /// The request for google.datastore.admin.v1.DatastoreAdmin.ExportEntities.
 class GoogleDatastoreAdminV1ExportEntitiesRequest {
   /// Description of what data from the project is included in the export.
-  GoogleDatastoreAdminV1EntityFilter entityFilter;
+  GoogleDatastoreAdminV1EntityFilter? entityFilter;
 
   /// Client-assigned labels.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Location for the export metadata and data files.
   ///
@@ -1512,7 +1446,7 @@ class GoogleDatastoreAdminV1ExportEntitiesRequest {
   /// multiple ExportEntities operations without conflict.
   ///
   /// Required.
-  core.String outputUrlPrefix;
+  core.String? outputUrlPrefix;
 
   GoogleDatastoreAdminV1ExportEntitiesRequest();
 
@@ -1535,10 +1469,10 @@ class GoogleDatastoreAdminV1ExportEntitiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (entityFilter != null) 'entityFilter': entityFilter.toJson(),
-        if (labels != null) 'labels': labels,
-        if (outputUrlPrefix != null) 'outputUrlPrefix': outputUrlPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (entityFilter != null) 'entityFilter': entityFilter!.toJson(),
+        if (labels != null) 'labels': labels!,
+        if (outputUrlPrefix != null) 'outputUrlPrefix': outputUrlPrefix!,
       };
 }
 
@@ -1550,7 +1484,7 @@ class GoogleDatastoreAdminV1ExportEntitiesResponse {
   /// another project). See
   /// google.datastore.admin.v1.ImportEntitiesRequest.input_url. Only present if
   /// the operation completed successfully.
-  core.String outputUrl;
+  core.String? outputUrl;
 
   GoogleDatastoreAdminV1ExportEntitiesResponse();
 
@@ -1560,30 +1494,30 @@ class GoogleDatastoreAdminV1ExportEntitiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (outputUrl != null) 'outputUrl': outputUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (outputUrl != null) 'outputUrl': outputUrl!,
       };
 }
 
 /// Metadata for ImportEntities operations.
 class GoogleDatastoreAdminV1ImportEntitiesMetadata {
   /// Metadata common to all Datastore Admin operations.
-  GoogleDatastoreAdminV1CommonMetadata common;
+  GoogleDatastoreAdminV1CommonMetadata? common;
 
   /// Description of which entities are being imported.
-  GoogleDatastoreAdminV1EntityFilter entityFilter;
+  GoogleDatastoreAdminV1EntityFilter? entityFilter;
 
   /// The location of the import metadata file.
   ///
   /// This will be the same value as the
   /// google.datastore.admin.v1.ExportEntitiesResponse.output_url field.
-  core.String inputUrl;
+  core.String? inputUrl;
 
   /// An estimate of the number of bytes processed.
-  GoogleDatastoreAdminV1Progress progressBytes;
+  GoogleDatastoreAdminV1Progress? progressBytes;
 
   /// An estimate of the number of entities processed.
-  GoogleDatastoreAdminV1Progress progressEntities;
+  GoogleDatastoreAdminV1Progress? progressEntities;
 
   GoogleDatastoreAdminV1ImportEntitiesMetadata();
 
@@ -1609,13 +1543,13 @@ class GoogleDatastoreAdminV1ImportEntitiesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (common != null) 'common': common.toJson(),
-        if (entityFilter != null) 'entityFilter': entityFilter.toJson(),
-        if (inputUrl != null) 'inputUrl': inputUrl,
-        if (progressBytes != null) 'progressBytes': progressBytes.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (common != null) 'common': common!.toJson(),
+        if (entityFilter != null) 'entityFilter': entityFilter!.toJson(),
+        if (inputUrl != null) 'inputUrl': inputUrl!,
+        if (progressBytes != null) 'progressBytes': progressBytes!.toJson(),
         if (progressEntities != null)
-          'progressEntities': progressEntities.toJson(),
+          'progressEntities': progressEntities!.toJson(),
       };
 }
 
@@ -1627,7 +1561,7 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
   /// creating the export, otherwise a FAILED_PRECONDITION error will be
   /// returned. If no filter is specified then all entities from the export are
   /// imported.
-  GoogleDatastoreAdminV1EntityFilter entityFilter;
+  GoogleDatastoreAdminV1EntityFilter? entityFilter;
 
   /// The full resource URL of the external storage location.
   ///
@@ -1644,10 +1578,10 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
   /// google.datastore.admin.v1.ExportEntitiesResponse.output_url.
   ///
   /// Required.
-  core.String inputUrl;
+  core.String? inputUrl;
 
   /// Client-assigned labels.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   GoogleDatastoreAdminV1ImportEntitiesRequest();
 
@@ -1670,10 +1604,10 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (entityFilter != null) 'entityFilter': entityFilter.toJson(),
-        if (inputUrl != null) 'inputUrl': inputUrl,
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (entityFilter != null) 'entityFilter': entityFilter!.toJson(),
+        if (inputUrl != null) 'inputUrl': inputUrl!,
+        if (labels != null) 'labels': labels!,
       };
 }
 
@@ -1688,27 +1622,27 @@ class GoogleDatastoreAdminV1Index {
   /// - "ANCESTOR_MODE_UNSPECIFIED" : The ancestor mode is unspecified.
   /// - "NONE" : Do not include the entity's ancestors in the index.
   /// - "ALL_ANCESTORS" : Include all the entity's ancestors in the index.
-  core.String ancestor;
+  core.String? ancestor;
 
   /// The resource ID of the index.
   ///
   /// Output only.
-  core.String indexId;
+  core.String? indexId;
 
   /// The entity kind to which this index applies.
   ///
   /// Required.
-  core.String kind;
+  core.String? kind;
 
   /// Project ID.
   ///
   /// Output only.
-  core.String projectId;
+  core.String? projectId;
 
   /// An ordered sequence of property names and their index attributes.
   ///
   /// Required.
-  core.List<GoogleDatastoreAdminV1IndexedProperty> properties;
+  core.List<GoogleDatastoreAdminV1IndexedProperty>? properties;
 
   /// The state of the index.
   ///
@@ -1729,7 +1663,7 @@ class GoogleDatastoreAdminV1Index {
   /// long-running operation for the index, and the most recently finished
   /// long-running operation failed. The index is not updated when writing an
   /// entity. Some index data may exist.
-  core.String state;
+  core.String? state;
 
   GoogleDatastoreAdminV1Index();
 
@@ -1758,27 +1692,27 @@ class GoogleDatastoreAdminV1Index {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ancestor != null) 'ancestor': ancestor,
-        if (indexId != null) 'indexId': indexId,
-        if (kind != null) 'kind': kind,
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ancestor != null) 'ancestor': ancestor!,
+        if (indexId != null) 'indexId': indexId!,
+        if (kind != null) 'kind': kind!,
+        if (projectId != null) 'projectId': projectId!,
         if (properties != null)
-          'properties': properties.map((value) => value.toJson()).toList(),
-        if (state != null) 'state': state,
+          'properties': properties!.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state!,
       };
 }
 
 /// Metadata for Index operations.
 class GoogleDatastoreAdminV1IndexOperationMetadata {
   /// Metadata common to all Datastore Admin operations.
-  GoogleDatastoreAdminV1CommonMetadata common;
+  GoogleDatastoreAdminV1CommonMetadata? common;
 
   /// The index resource ID that this operation is acting on.
-  core.String indexId;
+  core.String? indexId;
 
   /// An estimate of the number of entities processed.
-  GoogleDatastoreAdminV1Progress progressEntities;
+  GoogleDatastoreAdminV1Progress? progressEntities;
 
   GoogleDatastoreAdminV1IndexOperationMetadata();
 
@@ -1796,11 +1730,11 @@ class GoogleDatastoreAdminV1IndexOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (common != null) 'common': common.toJson(),
-        if (indexId != null) 'indexId': indexId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (common != null) 'common': common!.toJson(),
+        if (indexId != null) 'indexId': indexId!,
         if (progressEntities != null)
-          'progressEntities': progressEntities.toJson(),
+          'progressEntities': progressEntities!.toJson(),
       };
 }
 
@@ -1817,12 +1751,12 @@ class GoogleDatastoreAdminV1IndexedProperty {
   /// sequencing in ascending order and also query by <, >, <=, >=, and =.
   /// - "DESCENDING" : The property's values are indexed so as to support
   /// sequencing in descending order and also query by <, >, <=, >=, and =.
-  core.String direction;
+  core.String? direction;
 
   /// The property name to index.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   GoogleDatastoreAdminV1IndexedProperty();
 
@@ -1835,19 +1769,19 @@ class GoogleDatastoreAdminV1IndexedProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (direction != null) 'direction': direction,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (direction != null) 'direction': direction!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// The response for google.datastore.admin.v1.DatastoreAdmin.ListIndexes.
 class GoogleDatastoreAdminV1ListIndexesResponse {
   /// The indexes.
-  core.List<GoogleDatastoreAdminV1Index> indexes;
+  core.List<GoogleDatastoreAdminV1Index>? indexes;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleDatastoreAdminV1ListIndexesResponse();
 
@@ -1864,10 +1798,10 @@ class GoogleDatastoreAdminV1ListIndexesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (indexes != null)
-          'indexes': indexes.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'indexes': indexes!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1876,12 +1810,12 @@ class GoogleDatastoreAdminV1Progress {
   /// The amount of work that has been completed.
   ///
   /// Note that this may be greater than work_estimated.
-  core.String workCompleted;
+  core.String? workCompleted;
 
   /// An estimate of how much work needs to be performed.
   ///
   /// May be zero if the work estimate is unavailable.
-  core.String workEstimated;
+  core.String? workEstimated;
 
   GoogleDatastoreAdminV1Progress();
 
@@ -1894,22 +1828,22 @@ class GoogleDatastoreAdminV1Progress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (workCompleted != null) 'workCompleted': workCompleted,
-        if (workEstimated != null) 'workEstimated': workEstimated,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (workCompleted != null) 'workCompleted': workCompleted!,
+        if (workEstimated != null) 'workEstimated': workEstimated!,
       };
 }
 
 /// Metadata common to all Datastore Admin operations.
 class GoogleDatastoreAdminV1beta1CommonMetadata {
   /// The time the operation ended, either successfully or otherwise.
-  core.String endTime;
+  core.String? endTime;
 
   /// The client-assigned labels which were provided when the operation was
   /// created.
   ///
   /// May also include additional labels.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The type of the operation.
   ///
@@ -1918,10 +1852,10 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
   /// - "OPERATION_TYPE_UNSPECIFIED" : Unspecified.
   /// - "EXPORT_ENTITIES" : ExportEntities.
   /// - "IMPORT_ENTITIES" : ImportEntities.
-  core.String operationType;
+  core.String? operationType;
 
   /// The time that work began on the operation.
-  core.String startTime;
+  core.String? startTime;
 
   /// The current state of the Operation.
   /// Possible string values are:
@@ -1937,7 +1871,7 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
   /// error.
   /// - "CANCELLED" : Request has finished being cancelled after user called
   /// google.longrunning.Operations.CancelOperation.
-  core.String state;
+  core.String? state;
 
   GoogleDatastoreAdminV1beta1CommonMetadata();
 
@@ -1965,12 +1899,12 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (labels != null) 'labels': labels,
-        if (operationType != null) 'operationType': operationType,
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (labels != null) 'labels': labels!,
+        if (operationType != null) 'operationType': operationType!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -1986,7 +1920,7 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
 /// namespace_ids=\['Baz'\]
 class GoogleDatastoreAdminV1beta1EntityFilter {
   /// If empty, then this represents all kinds.
-  core.List<core.String> kinds;
+  core.List<core.String>? kinds;
 
   /// An empty list represents all namespaces.
   ///
@@ -1994,7 +1928,7 @@ class GoogleDatastoreAdminV1beta1EntityFilter {
   /// empty string element represents the default namespace. This should be used
   /// if the project has data in non-default namespaces, but doesn't want to
   /// include them. Each namespace in this list must be unique.
-  core.List<core.String> namespaceIds;
+  core.List<core.String>? namespaceIds;
 
   GoogleDatastoreAdminV1beta1EntityFilter();
 
@@ -2011,19 +1945,19 @@ class GoogleDatastoreAdminV1beta1EntityFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kinds != null) 'kinds': kinds,
-        if (namespaceIds != null) 'namespaceIds': namespaceIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kinds != null) 'kinds': kinds!,
+        if (namespaceIds != null) 'namespaceIds': namespaceIds!,
       };
 }
 
 /// Metadata for ExportEntities operations.
 class GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
   /// Metadata common to all Datastore Admin operations.
-  GoogleDatastoreAdminV1beta1CommonMetadata common;
+  GoogleDatastoreAdminV1beta1CommonMetadata? common;
 
   /// Description of which entities are being exported.
-  GoogleDatastoreAdminV1beta1EntityFilter entityFilter;
+  GoogleDatastoreAdminV1beta1EntityFilter? entityFilter;
 
   /// Location for the export metadata and data files.
   ///
@@ -2031,13 +1965,13 @@ class GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
   /// google.datastore.admin.v1beta1.ExportEntitiesRequest.output_url_prefix
   /// field. The final output location is provided in
   /// google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url.
-  core.String outputUrlPrefix;
+  core.String? outputUrlPrefix;
 
   /// An estimate of the number of bytes processed.
-  GoogleDatastoreAdminV1beta1Progress progressBytes;
+  GoogleDatastoreAdminV1beta1Progress? progressBytes;
 
   /// An estimate of the number of entities processed.
-  GoogleDatastoreAdminV1beta1Progress progressEntities;
+  GoogleDatastoreAdminV1beta1Progress? progressEntities;
 
   GoogleDatastoreAdminV1beta1ExportEntitiesMetadata();
 
@@ -2063,13 +1997,13 @@ class GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (common != null) 'common': common.toJson(),
-        if (entityFilter != null) 'entityFilter': entityFilter.toJson(),
-        if (outputUrlPrefix != null) 'outputUrlPrefix': outputUrlPrefix,
-        if (progressBytes != null) 'progressBytes': progressBytes.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (common != null) 'common': common!.toJson(),
+        if (entityFilter != null) 'entityFilter': entityFilter!.toJson(),
+        if (outputUrlPrefix != null) 'outputUrlPrefix': outputUrlPrefix!,
+        if (progressBytes != null) 'progressBytes': progressBytes!.toJson(),
         if (progressEntities != null)
-          'progressEntities': progressEntities.toJson(),
+          'progressEntities': progressEntities!.toJson(),
       };
 }
 
@@ -2082,7 +2016,7 @@ class GoogleDatastoreAdminV1beta1ExportEntitiesResponse {
   /// another project). See
   /// google.datastore.admin.v1beta1.ImportEntitiesRequest.input_url. Only
   /// present if the operation completed successfully.
-  core.String outputUrl;
+  core.String? outputUrl;
 
   GoogleDatastoreAdminV1beta1ExportEntitiesResponse();
 
@@ -2092,30 +2026,30 @@ class GoogleDatastoreAdminV1beta1ExportEntitiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (outputUrl != null) 'outputUrl': outputUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (outputUrl != null) 'outputUrl': outputUrl!,
       };
 }
 
 /// Metadata for ImportEntities operations.
 class GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
   /// Metadata common to all Datastore Admin operations.
-  GoogleDatastoreAdminV1beta1CommonMetadata common;
+  GoogleDatastoreAdminV1beta1CommonMetadata? common;
 
   /// Description of which entities are being imported.
-  GoogleDatastoreAdminV1beta1EntityFilter entityFilter;
+  GoogleDatastoreAdminV1beta1EntityFilter? entityFilter;
 
   /// The location of the import metadata file.
   ///
   /// This will be the same value as the
   /// google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url field.
-  core.String inputUrl;
+  core.String? inputUrl;
 
   /// An estimate of the number of bytes processed.
-  GoogleDatastoreAdminV1beta1Progress progressBytes;
+  GoogleDatastoreAdminV1beta1Progress? progressBytes;
 
   /// An estimate of the number of entities processed.
-  GoogleDatastoreAdminV1beta1Progress progressEntities;
+  GoogleDatastoreAdminV1beta1Progress? progressEntities;
 
   GoogleDatastoreAdminV1beta1ImportEntitiesMetadata();
 
@@ -2141,13 +2075,13 @@ class GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (common != null) 'common': common.toJson(),
-        if (entityFilter != null) 'entityFilter': entityFilter.toJson(),
-        if (inputUrl != null) 'inputUrl': inputUrl,
-        if (progressBytes != null) 'progressBytes': progressBytes.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (common != null) 'common': common!.toJson(),
+        if (entityFilter != null) 'entityFilter': entityFilter!.toJson(),
+        if (inputUrl != null) 'inputUrl': inputUrl!,
+        if (progressBytes != null) 'progressBytes': progressBytes!.toJson(),
         if (progressEntities != null)
-          'progressEntities': progressEntities.toJson(),
+          'progressEntities': progressEntities!.toJson(),
       };
 }
 
@@ -2156,12 +2090,12 @@ class GoogleDatastoreAdminV1beta1Progress {
   /// The amount of work that has been completed.
   ///
   /// Note that this may be greater than work_estimated.
-  core.String workCompleted;
+  core.String? workCompleted;
 
   /// An estimate of how much work needs to be performed.
   ///
   /// May be zero if the work estimate is unavailable.
-  core.String workEstimated;
+  core.String? workEstimated;
 
   GoogleDatastoreAdminV1beta1Progress();
 
@@ -2174,19 +2108,19 @@ class GoogleDatastoreAdminV1beta1Progress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (workCompleted != null) 'workCompleted': workCompleted,
-        if (workEstimated != null) 'workEstimated': workEstimated,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (workCompleted != null) 'workCompleted': workCompleted!,
+        if (workEstimated != null) 'workEstimated': workEstimated!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<GoogleLongrunningOperation> operations;
+  core.List<GoogleLongrunningOperation>? operations;
 
   GoogleLongrunningListOperationsResponse();
 
@@ -2203,10 +2137,10 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2217,10 +2151,10 @@ class GoogleLongrunningOperation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -2231,14 +2165,14 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -2251,7 +2185,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   GoogleLongrunningOperation();
 
@@ -2286,12 +2220,12 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -2303,25 +2237,25 @@ class GqlQuery {
   ///
   /// For example, `SELECT * FROM Kind WHERE a = 'string literal'` is not
   /// allowed, while `SELECT * FROM Kind WHERE a = @value` is.
-  core.bool allowLiterals;
+  core.bool? allowLiterals;
 
   /// For each non-reserved named binding site in the query string, there must
   /// be a named parameter with that name, but not necessarily the inverse.
   ///
   /// Key must match regex `A-Za-z_$*`, must not match regex `__.*__`, and must
   /// not be `""`.
-  core.Map<core.String, GqlQueryParameter> namedBindings;
+  core.Map<core.String, GqlQueryParameter>? namedBindings;
 
   /// Numbered binding site @1 references the first numbered parameter,
   /// effectively using 1-based indexing, rather than the usual 0.
   ///
   /// For each binding site numbered i in `query_string`, there must be an i-th
   /// numbered parameter. The inverse must also be true.
-  core.List<GqlQueryParameter> positionalBindings;
+  core.List<GqlQueryParameter>? positionalBindings;
 
   /// A string of the format described
   /// [here](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
-  core.String queryString;
+  core.String? queryString;
 
   GqlQuery();
 
@@ -2331,7 +2265,7 @@ class GqlQuery {
     }
     if (_json.containsKey('namedBindings')) {
       namedBindings = (_json['namedBindings'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -2351,15 +2285,15 @@ class GqlQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowLiterals != null) 'allowLiterals': allowLiterals,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowLiterals != null) 'allowLiterals': allowLiterals!,
         if (namedBindings != null)
-          'namedBindings': namedBindings
+          'namedBindings': namedBindings!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (positionalBindings != null)
           'positionalBindings':
-              positionalBindings.map((value) => value.toJson()).toList(),
-        if (queryString != null) 'queryString': queryString,
+              positionalBindings!.map((value) => value.toJson()).toList(),
+        if (queryString != null) 'queryString': queryString!,
       };
 }
 
@@ -2368,8 +2302,8 @@ class GqlQueryParameter {
   /// A query cursor.
   ///
   /// Query cursors are returned in query result batches.
-  core.String cursor;
-  core.List<core.int> get cursorAsBytes => convert.base64.decode(cursor);
+  core.String? cursor;
+  core.List<core.int> get cursorAsBytes => convert.base64.decode(cursor!);
 
   set cursorAsBytes(core.List<core.int> _bytes) {
     cursor =
@@ -2377,7 +2311,7 @@ class GqlQueryParameter {
   }
 
   /// A value parameter.
-  Value value;
+  Value? value;
 
   GqlQueryParameter();
 
@@ -2391,9 +2325,9 @@ class GqlQueryParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cursor != null) 'cursor': cursor,
-        if (value != null) 'value': value.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cursor != null) 'cursor': cursor!,
+        if (value != null) 'value': value!.toJson(),
       };
 }
 
@@ -2407,7 +2341,7 @@ class Key {
   /// ID and namespace ID.
   ///
   /// Queries are scoped to a single partition.
-  PartitionId partitionId;
+  PartitionId? partitionId;
 
   /// The entity path.
   ///
@@ -2423,7 +2357,7 @@ class Key {
   /// itself may be omitted. For example, the last path element of the key of
   /// `Mutation.insert` may have no identifier. A path can never be empty, and a
   /// path can have at most 100 elements.
-  core.List<PathElement> path;
+  core.List<PathElement>? path;
 
   Key();
 
@@ -2440,16 +2374,16 @@ class Key {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (partitionId != null) 'partitionId': partitionId.toJson(),
-        if (path != null) 'path': path.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (partitionId != null) 'partitionId': partitionId!.toJson(),
+        if (path != null) 'path': path!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A representation of a kind.
 class KindExpression {
   /// The name of the kind.
-  core.String name;
+  core.String? name;
 
   KindExpression();
 
@@ -2459,8 +2393,8 @@ class KindExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2473,12 +2407,12 @@ class LatLng {
   /// The latitude in degrees.
   ///
   /// It must be in the range \[-90.0, +90.0\].
-  core.double latitude;
+  core.double? latitude;
 
   /// The longitude in degrees.
   ///
   /// It must be in the range \[-180.0, +180.0\].
-  core.double longitude;
+  core.double? longitude;
 
   LatLng();
 
@@ -2491,9 +2425,9 @@ class LatLng {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (latitude != null) 'latitude': latitude,
-        if (longitude != null) 'longitude': longitude,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
       };
 }
 
@@ -2502,10 +2436,10 @@ class LookupRequest {
   /// Keys of entities to look up.
   ///
   /// Required.
-  core.List<Key> keys;
+  core.List<Key>? keys;
 
   /// The options for this lookup request.
-  ReadOptions readOptions;
+  ReadOptions? readOptions;
 
   LookupRequest();
 
@@ -2522,9 +2456,9 @@ class LookupRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (keys != null) 'keys': keys.map((value) => value.toJson()).toList(),
-        if (readOptions != null) 'readOptions': readOptions.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (keys != null) 'keys': keys!.map((value) => value.toJson()).toList(),
+        if (readOptions != null) 'readOptions': readOptions!.toJson(),
       };
 }
 
@@ -2534,19 +2468,19 @@ class LookupResponse {
   ///
   /// The order of results in this field is undefined and has no relation to the
   /// order of the keys in the input.
-  core.List<Key> deferred;
+  core.List<Key>? deferred;
 
   /// Entities found as `ResultType.FULL` entities.
   ///
   /// The order of results in this field is undefined and has no relation to the
   /// order of the keys in the input.
-  core.List<EntityResult> found;
+  core.List<EntityResult>? found;
 
   /// Entities not found as `ResultType.KEY_ONLY` entities.
   ///
   /// The order of results in this field is undefined and has no relation to the
   /// order of the keys in the input.
-  core.List<EntityResult> missing;
+  core.List<EntityResult>? missing;
 
   LookupResponse();
 
@@ -2571,13 +2505,13 @@ class LookupResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deferred != null)
-          'deferred': deferred.map((value) => value.toJson()).toList(),
+          'deferred': deferred!.map((value) => value.toJson()).toList(),
         if (found != null)
-          'found': found.map((value) => value.toJson()).toList(),
+          'found': found!.map((value) => value.toJson()).toList(),
         if (missing != null)
-          'missing': missing.map((value) => value.toJson()).toList(),
+          'missing': missing!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2587,30 +2521,30 @@ class Mutation {
   ///
   /// If this does not match the current version on the server, the mutation
   /// conflicts.
-  core.String baseVersion;
+  core.String? baseVersion;
 
   /// The key of the entity to delete.
   ///
   /// The entity may or may not already exist. Must have a complete key path and
   /// must not be reserved/read-only.
-  Key delete;
+  Key? delete;
 
   /// The entity to insert.
   ///
   /// The entity must not already exist. The entity key's final path element may
   /// be incomplete.
-  Entity insert;
+  Entity? insert;
 
   /// The entity to update.
   ///
   /// The entity must already exist. Must have a complete key path.
-  Entity update;
+  Entity? update;
 
   /// The entity to upsert.
   ///
   /// The entity may or may not already exist. The entity key's final path
   /// element may be incomplete.
-  Entity upsert;
+  Entity? upsert;
 
   Mutation();
 
@@ -2636,12 +2570,12 @@ class Mutation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (baseVersion != null) 'baseVersion': baseVersion,
-        if (delete != null) 'delete': delete.toJson(),
-        if (insert != null) 'insert': insert.toJson(),
-        if (update != null) 'update': update.toJson(),
-        if (upsert != null) 'upsert': upsert.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (baseVersion != null) 'baseVersion': baseVersion!,
+        if (delete != null) 'delete': delete!.toJson(),
+        if (insert != null) 'insert': insert!.toJson(),
+        if (update != null) 'update': update!.toJson(),
+        if (upsert != null) 'upsert': upsert!.toJson(),
       };
 }
 
@@ -2651,12 +2585,12 @@ class MutationResult {
   ///
   /// Always false when a conflict detection strategy field is not set in the
   /// mutation.
-  core.bool conflictDetected;
+  core.bool? conflictDetected;
 
   /// The automatically allocated key.
   ///
   /// Set only when the mutation allocated a key.
-  Key key;
+  Key? key;
 
   /// The version of the entity on the server after processing the mutation.
   ///
@@ -2664,7 +2598,7 @@ class MutationResult {
   /// will be the version of the current entity or, if no entity is present, a
   /// version that is strictly greater than the version of any previous entity
   /// and less than the version of any possible future entity.
-  core.String version;
+  core.String? version;
 
   MutationResult();
 
@@ -2680,10 +2614,10 @@ class MutationResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (conflictDetected != null) 'conflictDetected': conflictDetected,
-        if (key != null) 'key': key.toJson(),
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (conflictDetected != null) 'conflictDetected': conflictDetected!,
+        if (key != null) 'key': key!.toJson(),
+        if (version != null) 'version': version!,
       };
 }
 
@@ -2700,10 +2634,10 @@ class MutationResult {
 /// foreign partition IDs may fail if the project is not in an active state.
 class PartitionId {
   /// If not empty, the ID of the namespace to which the entities belong.
-  core.String namespaceId;
+  core.String? namespaceId;
 
   /// The ID of the project to which the entities belong.
-  core.String projectId;
+  core.String? projectId;
 
   PartitionId();
 
@@ -2716,9 +2650,9 @@ class PartitionId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (namespaceId != null) 'namespaceId': namespaceId,
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (namespaceId != null) 'namespaceId': namespaceId!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
@@ -2731,19 +2665,19 @@ class PathElement {
   ///
   /// Never equal to zero. Values less than zero are discouraged and may not be
   /// supported in the future.
-  core.String id;
+  core.String? id;
 
   /// The kind of the entity.
   ///
   /// A kind matching regex `__.*__` is reserved/read-only. A kind must not
   /// contain more than 1500 bytes when UTF-8 encoded. Cannot be `""`.
-  core.String kind;
+  core.String? kind;
 
   /// The name of the entity.
   ///
   /// A name matching regex `__.*__` is reserved/read-only. A name must not be
   /// more than 1500 bytes when UTF-8 encoded. Cannot be `""`.
-  core.String name;
+  core.String? name;
 
   PathElement();
 
@@ -2759,17 +2693,17 @@ class PathElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// A representation of a property in a projection.
 class Projection {
   /// The property to project.
-  PropertyReference property;
+  PropertyReference? property;
 
   Projection();
 
@@ -2780,8 +2714,8 @@ class Projection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (property != null) 'property': property.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (property != null) 'property': property!.toJson(),
       };
 }
 
@@ -2796,13 +2730,13 @@ class PropertyFilter {
   /// - "GREATER_THAN_OR_EQUAL" : Greater than or equal.
   /// - "EQUAL" : Equal.
   /// - "HAS_ANCESTOR" : Has ancestor.
-  core.String op;
+  core.String? op;
 
   /// The property to filter by.
-  PropertyReference property;
+  PropertyReference? property;
 
   /// The value to compare the property to.
-  Value value;
+  Value? value;
 
   PropertyFilter();
 
@@ -2820,10 +2754,10 @@ class PropertyFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (op != null) 'op': op,
-        if (property != null) 'property': property.toJson(),
-        if (value != null) 'value': value.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (op != null) 'op': op!,
+        if (property != null) 'property': property!.toJson(),
+        if (value != null) 'value': value!.toJson(),
       };
 }
 
@@ -2836,10 +2770,10 @@ class PropertyOrder {
   /// - "DIRECTION_UNSPECIFIED" : Unspecified. This value must not be used.
   /// - "ASCENDING" : Ascending.
   /// - "DESCENDING" : Descending.
-  core.String direction;
+  core.String? direction;
 
   /// The property to order by.
-  PropertyReference property;
+  PropertyReference? property;
 
   PropertyOrder();
 
@@ -2853,9 +2787,9 @@ class PropertyOrder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (direction != null) 'direction': direction,
-        if (property != null) 'property': property.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (direction != null) 'direction': direction!,
+        if (property != null) 'property': property!.toJson(),
       };
 }
 
@@ -2864,7 +2798,7 @@ class PropertyReference {
   /// The name of the property.
   ///
   /// If name includes "."s, it may be interpreted as a property name path.
-  core.String name;
+  core.String? name;
 
   PropertyReference();
 
@@ -2874,8 +2808,8 @@ class PropertyReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2886,14 +2820,14 @@ class Query {
   /// The query results will contain the first result for each distinct
   /// combination of values for the given properties (if empty, all results are
   /// returned).
-  core.List<PropertyReference> distinctOn;
+  core.List<PropertyReference>? distinctOn;
 
   /// An ending point for the query results.
   ///
   /// Query cursors are returned in query result batches and
   /// [can only be used to limit the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).
-  core.String endCursor;
-  core.List<core.int> get endCursorAsBytes => convert.base64.decode(endCursor);
+  core.String? endCursor;
+  core.List<core.int> get endCursorAsBytes => convert.base64.decode(endCursor!);
 
   set endCursorAsBytes(core.List<core.int> _bytes) {
     endCursor =
@@ -2901,40 +2835,40 @@ class Query {
   }
 
   /// The filter to apply.
-  Filter filter;
+  Filter? filter;
 
   /// The kinds to query (if empty, returns entities of all kinds).
   ///
   /// Currently at most 1 kind may be specified.
-  core.List<KindExpression> kind;
+  core.List<KindExpression>? kind;
 
   /// The maximum number of results to return.
   ///
   /// Applies after all other constraints. Optional. Unspecified is interpreted
   /// as no limit. Must be >= 0 if specified.
-  core.int limit;
+  core.int? limit;
 
   /// The number of results to skip.
   ///
   /// Applies before limit, but after all other constraints. Optional. Must be
   /// >= 0 if specified.
-  core.int offset;
+  core.int? offset;
 
   /// The order to apply to the query results (if empty, order is unspecified).
-  core.List<PropertyOrder> order;
+  core.List<PropertyOrder>? order;
 
   /// The projection to return.
   ///
   /// Defaults to returning all properties.
-  core.List<Projection> projection;
+  core.List<Projection>? projection;
 
   /// A starting point for the query results.
   ///
   /// Query cursors are returned in query result batches and
   /// [can only be used to continue the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).
-  core.String startCursor;
+  core.String? startCursor;
   core.List<core.int> get startCursorAsBytes =>
-      convert.base64.decode(startCursor);
+      convert.base64.decode(startCursor!);
 
   set startCursorAsBytes(core.List<core.int> _bytes) {
     startCursor =
@@ -2986,27 +2920,27 @@ class Query {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (distinctOn != null)
-          'distinctOn': distinctOn.map((value) => value.toJson()).toList(),
-        if (endCursor != null) 'endCursor': endCursor,
-        if (filter != null) 'filter': filter.toJson(),
-        if (kind != null) 'kind': kind.map((value) => value.toJson()).toList(),
-        if (limit != null) 'limit': limit,
-        if (offset != null) 'offset': offset,
+          'distinctOn': distinctOn!.map((value) => value.toJson()).toList(),
+        if (endCursor != null) 'endCursor': endCursor!,
+        if (filter != null) 'filter': filter!.toJson(),
+        if (kind != null) 'kind': kind!.map((value) => value.toJson()).toList(),
+        if (limit != null) 'limit': limit!,
+        if (offset != null) 'offset': offset!,
         if (order != null)
-          'order': order.map((value) => value.toJson()).toList(),
+          'order': order!.map((value) => value.toJson()).toList(),
         if (projection != null)
-          'projection': projection.map((value) => value.toJson()).toList(),
-        if (startCursor != null) 'startCursor': startCursor,
+          'projection': projection!.map((value) => value.toJson()).toList(),
+        if (startCursor != null) 'startCursor': startCursor!,
       };
 }
 
 /// A batch of results produced by a query.
 class QueryResultBatch {
   /// A cursor that points to the position after the last result in the batch.
-  core.String endCursor;
-  core.List<core.int> get endCursorAsBytes => convert.base64.decode(endCursor);
+  core.String? endCursor;
+  core.List<core.int> get endCursorAsBytes => convert.base64.decode(endCursor!);
 
   set endCursorAsBytes(core.List<core.int> _bytes) {
     endCursor =
@@ -3020,10 +2954,10 @@ class QueryResultBatch {
   /// - "PROJECTION" : A projected subset of properties. The entity may have no
   /// key.
   /// - "KEY_ONLY" : Only the key.
-  core.String entityResultType;
+  core.String? entityResultType;
 
   /// The results for this batch.
-  core.List<EntityResult> entityResults;
+  core.List<EntityResult>? entityResults;
 
   /// The state of the query after the current batch.
   /// Possible string values are:
@@ -3036,14 +2970,14 @@ class QueryResultBatch {
   /// more results after the end cursor.
   /// - "NO_MORE_RESULTS" : The query is finished, and there are no more
   /// results.
-  core.String moreResults;
+  core.String? moreResults;
 
   /// A cursor that points to the position after the last skipped result.
   ///
   /// Will be set when `skipped_results` != 0.
-  core.String skippedCursor;
+  core.String? skippedCursor;
   core.List<core.int> get skippedCursorAsBytes =>
-      convert.base64.decode(skippedCursor);
+      convert.base64.decode(skippedCursor!);
 
   set skippedCursorAsBytes(core.List<core.int> _bytes) {
     skippedCursor =
@@ -3051,7 +2985,7 @@ class QueryResultBatch {
   }
 
   /// The number of results skipped, typically because of an offset.
-  core.int skippedResults;
+  core.int? skippedResults;
 
   /// The version number of the snapshot this batch was returned from.
   ///
@@ -3062,7 +2996,7 @@ class QueryResultBatch {
   /// snapshot version number. Each batch's snapshot version is valid for all
   /// preceding batches. The value will be zero for eventually consistent
   /// queries.
-  core.String snapshotVersion;
+  core.String? snapshotVersion;
 
   QueryResultBatch();
 
@@ -3093,16 +3027,16 @@ class QueryResultBatch {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endCursor != null) 'endCursor': endCursor,
-        if (entityResultType != null) 'entityResultType': entityResultType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endCursor != null) 'endCursor': endCursor!,
+        if (entityResultType != null) 'entityResultType': entityResultType!,
         if (entityResults != null)
           'entityResults':
-              entityResults.map((value) => value.toJson()).toList(),
-        if (moreResults != null) 'moreResults': moreResults,
-        if (skippedCursor != null) 'skippedCursor': skippedCursor,
-        if (skippedResults != null) 'skippedResults': skippedResults,
-        if (snapshotVersion != null) 'snapshotVersion': snapshotVersion,
+              entityResults!.map((value) => value.toJson()).toList(),
+        if (moreResults != null) 'moreResults': moreResults!,
+        if (skippedCursor != null) 'skippedCursor': skippedCursor!,
+        if (skippedResults != null) 'skippedResults': skippedResults!,
+        if (snapshotVersion != null) 'snapshotVersion': snapshotVersion!,
       };
 }
 
@@ -3114,7 +3048,7 @@ class ReadOnly {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The options shared by read requests.
@@ -3127,15 +3061,15 @@ class ReadOptions {
   /// used.
   /// - "STRONG" : Strong consistency.
   /// - "EVENTUAL" : Eventual consistency.
-  core.String readConsistency;
+  core.String? readConsistency;
 
   /// The identifier of the transaction in which to read.
   ///
   /// A transaction identifier is returned by a call to
   /// Datastore.BeginTransaction.
-  core.String transaction;
+  core.String? transaction;
   core.List<core.int> get transactionAsBytes =>
-      convert.base64.decode(transaction);
+      convert.base64.decode(transaction!);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -3153,18 +3087,18 @@ class ReadOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (readConsistency != null) 'readConsistency': readConsistency,
-        if (transaction != null) 'transaction': transaction,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (readConsistency != null) 'readConsistency': readConsistency!,
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
 /// Options specific to read / write transactions.
 class ReadWrite {
   /// The transaction identifier of the transaction being retried.
-  core.String previousTransaction;
+  core.String? previousTransaction;
   core.List<core.int> get previousTransactionAsBytes =>
-      convert.base64.decode(previousTransaction);
+      convert.base64.decode(previousTransaction!);
 
   set previousTransactionAsBytes(core.List<core.int> _bytes) {
     previousTransaction =
@@ -3179,22 +3113,22 @@ class ReadWrite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (previousTransaction != null)
-          'previousTransaction': previousTransaction,
+          'previousTransaction': previousTransaction!,
       };
 }
 
 /// The request for Datastore.ReserveIds.
 class ReserveIdsRequest {
   /// If not empty, the ID of the database against which to make the request.
-  core.String databaseId;
+  core.String? databaseId;
 
   /// A list of keys with complete key paths whose numeric IDs should not be
   /// auto-allocated.
   ///
   /// Required.
-  core.List<Key> keys;
+  core.List<Key>? keys;
 
   ReserveIdsRequest();
 
@@ -3210,9 +3144,9 @@ class ReserveIdsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (databaseId != null) 'databaseId': databaseId,
-        if (keys != null) 'keys': keys.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (databaseId != null) 'databaseId': databaseId!,
+        if (keys != null) 'keys': keys!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3224,7 +3158,7 @@ class ReserveIdsResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The request for Datastore.Rollback.
@@ -3233,9 +3167,9 @@ class RollbackRequest {
   /// Datastore.BeginTransaction.
   ///
   /// Required.
-  core.String transaction;
+  core.String? transaction;
   core.List<core.int> get transactionAsBytes =>
-      convert.base64.decode(transaction);
+      convert.base64.decode(transaction!);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -3250,8 +3184,8 @@ class RollbackRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (transaction != null) 'transaction': transaction,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -3265,25 +3199,25 @@ class RollbackResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The request for Datastore.RunQuery.
 class RunQueryRequest {
   /// The GQL query to run.
-  GqlQuery gqlQuery;
+  GqlQuery? gqlQuery;
 
   /// Entities are partitioned into subsets, identified by a partition ID.
   ///
   /// Queries are scoped to a single partition. This partition ID is normalized
   /// with the standard default context partition ID.
-  PartitionId partitionId;
+  PartitionId? partitionId;
 
   /// The query to run.
-  Query query;
+  Query? query;
 
   /// The options for this query.
-  ReadOptions readOptions;
+  ReadOptions? readOptions;
 
   RunQueryRequest();
 
@@ -3306,21 +3240,21 @@ class RunQueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gqlQuery != null) 'gqlQuery': gqlQuery.toJson(),
-        if (partitionId != null) 'partitionId': partitionId.toJson(),
-        if (query != null) 'query': query.toJson(),
-        if (readOptions != null) 'readOptions': readOptions.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gqlQuery != null) 'gqlQuery': gqlQuery!.toJson(),
+        if (partitionId != null) 'partitionId': partitionId!.toJson(),
+        if (query != null) 'query': query!.toJson(),
+        if (readOptions != null) 'readOptions': readOptions!.toJson(),
       };
 }
 
 /// The response for Datastore.RunQuery.
 class RunQueryResponse {
   /// A batch of query results (always present).
-  QueryResultBatch batch;
+  QueryResultBatch? batch;
 
   /// The parsed form of the `GqlQuery` from the request, if it was set.
-  Query query;
+  Query? query;
 
   RunQueryResponse();
 
@@ -3335,9 +3269,9 @@ class RunQueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batch != null) 'batch': batch.toJson(),
-        if (query != null) 'query': query.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batch != null) 'batch': batch!.toJson(),
+        if (query != null) 'query': query!.toJson(),
       };
 }
 
@@ -3350,7 +3284,7 @@ class RunQueryResponse {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -3358,13 +3292,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -3388,10 +3322,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -3402,10 +3336,10 @@ class Status {
 /// ReadOptions.new_transaction in read requests.
 class TransactionOptions {
   /// The transaction should only allow reads.
-  ReadOnly readOnly;
+  ReadOnly? readOnly;
 
   /// The transaction should allow both reads and writes.
-  ReadWrite readWrite;
+  ReadWrite? readWrite;
 
   TransactionOptions();
 
@@ -3420,9 +3354,9 @@ class TransactionOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (readOnly != null) 'readOnly': readOnly.toJson(),
-        if (readWrite != null) 'readWrite': readWrite.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (readOnly != null) 'readOnly': readOnly!.toJson(),
+        if (readWrite != null) 'readWrite': readWrite!.toJson(),
       };
 }
 
@@ -3433,14 +3367,14 @@ class Value {
   ///
   /// Cannot contain another array value. A `Value` instance that sets field
   /// `array_value` must not set fields `meaning` or `exclude_from_indexes`.
-  ArrayValue arrayValue;
+  ArrayValue? arrayValue;
 
   /// A blob value.
   ///
   /// May have at most 1,000,000 bytes. When `exclude_from_indexes` is false,
   /// may have at most 1500 bytes. In JSON requests, must be base64-encoded.
-  core.String blobValue;
-  core.List<core.int> get blobValueAsBytes => convert.base64.decode(blobValue);
+  core.String? blobValue;
+  core.List<core.int> get blobValueAsBytes => convert.base64.decode(blobValue!);
 
   set blobValueAsBytes(core.List<core.int> _bytes) {
     blobValue =
@@ -3448,49 +3382,49 @@ class Value {
   }
 
   /// A boolean value.
-  core.bool booleanValue;
+  core.bool? booleanValue;
 
   /// A double value.
-  core.double doubleValue;
+  core.double? doubleValue;
 
   /// An entity value.
   ///
   /// - May have no key. - May have a key with an incomplete key path. - May
   /// have a reserved/read-only key.
-  Entity entityValue;
+  Entity? entityValue;
 
   /// If the value should be excluded from all indexes including those defined
   /// explicitly.
-  core.bool excludeFromIndexes;
+  core.bool? excludeFromIndexes;
 
   /// A geo point value representing a point on the surface of Earth.
-  LatLng geoPointValue;
+  LatLng? geoPointValue;
 
   /// An integer value.
-  core.String integerValue;
+  core.String? integerValue;
 
   /// A key value.
-  Key keyValue;
+  Key? keyValue;
 
   /// The `meaning` field should only be populated for backwards compatibility.
-  core.int meaning;
+  core.int? meaning;
 
   /// A null value.
   /// Possible string values are:
   /// - "NULL_VALUE" : Null value.
-  core.String nullValue;
+  core.String? nullValue;
 
   /// A UTF-8 encoded string value.
   ///
   /// When `exclude_from_indexes` is false (it is indexed) , may have at most
   /// 1500 bytes. Otherwise, may be set to at most 1,000,000 bytes.
-  core.String stringValue;
+  core.String? stringValue;
 
   /// A timestamp value.
   ///
   /// When stored in the Datastore, precise only to microseconds; any additional
   /// precision is rounded down.
-  core.String timestampValue;
+  core.String? timestampValue;
 
   Value();
 
@@ -3540,20 +3474,20 @@ class Value {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (arrayValue != null) 'arrayValue': arrayValue.toJson(),
-        if (blobValue != null) 'blobValue': blobValue,
-        if (booleanValue != null) 'booleanValue': booleanValue,
-        if (doubleValue != null) 'doubleValue': doubleValue,
-        if (entityValue != null) 'entityValue': entityValue.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (arrayValue != null) 'arrayValue': arrayValue!.toJson(),
+        if (blobValue != null) 'blobValue': blobValue!,
+        if (booleanValue != null) 'booleanValue': booleanValue!,
+        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (entityValue != null) 'entityValue': entityValue!.toJson(),
         if (excludeFromIndexes != null)
-          'excludeFromIndexes': excludeFromIndexes,
-        if (geoPointValue != null) 'geoPointValue': geoPointValue.toJson(),
-        if (integerValue != null) 'integerValue': integerValue,
-        if (keyValue != null) 'keyValue': keyValue.toJson(),
-        if (meaning != null) 'meaning': meaning,
-        if (nullValue != null) 'nullValue': nullValue,
-        if (stringValue != null) 'stringValue': stringValue,
-        if (timestampValue != null) 'timestampValue': timestampValue,
+          'excludeFromIndexes': excludeFromIndexes!,
+        if (geoPointValue != null) 'geoPointValue': geoPointValue!.toJson(),
+        if (integerValue != null) 'integerValue': integerValue!,
+        if (keyValue != null) 'keyValue': keyValue!.toJson(),
+        if (meaning != null) 'meaning': meaning!,
+        if (nullValue != null) 'nullValue': nullValue!,
+        if (stringValue != null) 'stringValue': stringValue!,
+        if (timestampValue != null) 'timestampValue': timestampValue!,
       };
 }

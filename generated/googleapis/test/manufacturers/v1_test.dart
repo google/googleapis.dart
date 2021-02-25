@@ -49,8 +49,14 @@ core.List<core.String> buildUnnamed1962() {
 
 void checkUnnamed1962(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.FeatureDescription> buildUnnamed1963() {
@@ -75,8 +81,14 @@ core.List<core.String> buildUnnamed1964() {
 
 void checkUnnamed1964(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed1965() {
@@ -88,8 +100,14 @@ core.List<core.String> buildUnnamed1965() {
 
 void checkUnnamed1965(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.ProductDetail> buildUnnamed1966() {
@@ -114,8 +132,14 @@ core.List<core.String> buildUnnamed1967() {
 
 void checkUnnamed1967(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed1968() {
@@ -127,8 +151,14 @@ core.List<core.String> buildUnnamed1968() {
 
 void checkUnnamed1968(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed1969() {
@@ -140,8 +170,14 @@ core.List<core.String> buildUnnamed1969() {
 
 void checkUnnamed1969(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed1970() {
@@ -153,8 +189,14 @@ core.List<core.String> buildUnnamed1970() {
 
 void checkUnnamed1970(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterAttributes = 0;
@@ -207,43 +249,112 @@ api.Attributes buildAttributes() {
 void checkAttributes(api.Attributes o) {
   buildCounterAttributes++;
   if (buildCounterAttributes < 3) {
-    checkUnnamed1961(o.additionalImageLink);
-    unittest.expect(o.ageGroup, unittest.equals('foo'));
-    unittest.expect(o.brand, unittest.equals('foo'));
-    checkCapacity(o.capacity as api.Capacity);
-    unittest.expect(o.color, unittest.equals('foo'));
-    checkCount(o.count as api.Count);
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.disclosureDate, unittest.equals('foo'));
-    checkUnnamed1962(o.excludedDestination);
-    checkUnnamed1963(o.featureDescription);
-    unittest.expect(o.flavor, unittest.equals('foo'));
-    unittest.expect(o.format, unittest.equals('foo'));
-    unittest.expect(o.gender, unittest.equals('foo'));
-    checkUnnamed1964(o.gtin);
-    checkImage(o.imageLink as api.Image);
-    checkUnnamed1965(o.includedDestination);
-    unittest.expect(o.itemGroupId, unittest.equals('foo'));
-    unittest.expect(o.material, unittest.equals('foo'));
-    unittest.expect(o.mpn, unittest.equals('foo'));
-    unittest.expect(o.pattern, unittest.equals('foo'));
-    checkUnnamed1966(o.productDetail);
-    checkUnnamed1967(o.productHighlight);
-    unittest.expect(o.productLine, unittest.equals('foo'));
-    unittest.expect(o.productName, unittest.equals('foo'));
-    unittest.expect(o.productPageUrl, unittest.equals('foo'));
-    checkUnnamed1968(o.productType);
-    unittest.expect(o.releaseDate, unittest.equals('foo'));
-    checkUnnamed1969(o.richProductContent);
-    unittest.expect(o.scent, unittest.equals('foo'));
-    unittest.expect(o.size, unittest.equals('foo'));
-    unittest.expect(o.sizeSystem, unittest.equals('foo'));
-    unittest.expect(o.sizeType, unittest.equals('foo'));
-    checkPrice(o.suggestedRetailPrice as api.Price);
-    unittest.expect(o.targetClientId, unittest.equals('foo'));
-    unittest.expect(o.theme, unittest.equals('foo'));
-    unittest.expect(o.title, unittest.equals('foo'));
-    checkUnnamed1970(o.videoLink);
+    checkUnnamed1961(o.additionalImageLink!);
+    unittest.expect(
+      o.ageGroup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.brand!,
+      unittest.equals('foo'),
+    );
+    checkCapacity(o.capacity! as api.Capacity);
+    unittest.expect(
+      o.color!,
+      unittest.equals('foo'),
+    );
+    checkCount(o.count! as api.Count);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.disclosureDate!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1962(o.excludedDestination!);
+    checkUnnamed1963(o.featureDescription!);
+    unittest.expect(
+      o.flavor!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.format!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gender!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1964(o.gtin!);
+    checkImage(o.imageLink! as api.Image);
+    checkUnnamed1965(o.includedDestination!);
+    unittest.expect(
+      o.itemGroupId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.material!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mpn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pattern!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1966(o.productDetail!);
+    checkUnnamed1967(o.productHighlight!);
+    unittest.expect(
+      o.productLine!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.productName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.productPageUrl!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1968(o.productType!);
+    unittest.expect(
+      o.releaseDate!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1969(o.richProductContent!);
+    unittest.expect(
+      o.scent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.size!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sizeSystem!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sizeType!,
+      unittest.equals('foo'),
+    );
+    checkPrice(o.suggestedRetailPrice! as api.Price);
+    unittest.expect(
+      o.targetClientId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.theme!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1970(o.videoLink!);
   }
   buildCounterAttributes--;
 }
@@ -263,8 +374,14 @@ api.Capacity buildCapacity() {
 void checkCapacity(api.Capacity o) {
   buildCounterCapacity++;
   if (buildCounterCapacity < 3) {
-    unittest.expect(o.unit, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.unit!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCapacity--;
 }
@@ -284,8 +401,14 @@ api.Count buildCount() {
 void checkCount(api.Count o) {
   buildCounterCount++;
   if (buildCounterCount < 3) {
-    unittest.expect(o.unit, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.unit!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCount--;
 }
@@ -305,8 +428,14 @@ api.DestinationStatus buildDestinationStatus() {
 void checkDestinationStatus(api.DestinationStatus o) {
   buildCounterDestinationStatus++;
   if (buildCounterDestinationStatus < 3) {
-    unittest.expect(o.destination, unittest.equals('foo'));
-    unittest.expect(o.status, unittest.equals('foo'));
+    unittest.expect(
+      o.destination!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDestinationStatus--;
 }
@@ -342,9 +471,15 @@ api.FeatureDescription buildFeatureDescription() {
 void checkFeatureDescription(api.FeatureDescription o) {
   buildCounterFeatureDescription++;
   if (buildCounterFeatureDescription < 3) {
-    unittest.expect(o.headline, unittest.equals('foo'));
-    checkImage(o.image as api.Image);
-    unittest.expect(o.text, unittest.equals('foo'));
+    unittest.expect(
+      o.headline!,
+      unittest.equals('foo'),
+    );
+    checkImage(o.image! as api.Image);
+    unittest.expect(
+      o.text!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterFeatureDescription--;
 }
@@ -365,9 +500,18 @@ api.Image buildImage() {
 void checkImage(api.Image o) {
   buildCounterImage++;
   if (buildCounterImage < 3) {
-    unittest.expect(o.imageUrl, unittest.equals('foo'));
-    unittest.expect(o.status, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.imageUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterImage--;
 }
@@ -393,14 +537,38 @@ api.Issue buildIssue() {
 void checkIssue(api.Issue o) {
   buildCounterIssue++;
   if (buildCounterIssue < 3) {
-    unittest.expect(o.attribute, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.destination, unittest.equals('foo'));
-    unittest.expect(o.resolution, unittest.equals('foo'));
-    unittest.expect(o.severity, unittest.equals('foo'));
-    unittest.expect(o.timestamp, unittest.equals('foo'));
-    unittest.expect(o.title, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.attribute!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.destination!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resolution!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.severity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterIssue--;
 }
@@ -433,8 +601,11 @@ api.ListProductsResponse buildListProductsResponse() {
 void checkListProductsResponse(api.ListProductsResponse o) {
   buildCounterListProductsResponse++;
   if (buildCounterListProductsResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1971(o.products);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1971(o.products!);
   }
   buildCounterListProductsResponse--;
 }
@@ -454,8 +625,14 @@ api.Price buildPrice() {
 void checkPrice(api.Price o) {
   buildCounterPrice++;
   if (buildCounterPrice < 3) {
-    unittest.expect(o.amount, unittest.equals('foo'));
-    unittest.expect(o.currency, unittest.equals('foo'));
+    unittest.expect(
+      o.amount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.currency!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPrice--;
 }
@@ -507,14 +684,29 @@ api.Product buildProduct() {
 void checkProduct(api.Product o) {
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
-    checkAttributes(o.attributes as api.Attributes);
-    unittest.expect(o.contentLanguage, unittest.equals('foo'));
-    checkUnnamed1972(o.destinationStatuses);
-    checkUnnamed1973(o.issues);
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.parent, unittest.equals('foo'));
-    unittest.expect(o.productId, unittest.equals('foo'));
-    unittest.expect(o.targetCountry, unittest.equals('foo'));
+    checkAttributes(o.attributes! as api.Attributes);
+    unittest.expect(
+      o.contentLanguage!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1972(o.destinationStatuses!);
+    checkUnnamed1973(o.issues!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.parent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.productId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetCountry!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterProduct--;
 }
@@ -535,9 +727,18 @@ api.ProductDetail buildProductDetail() {
 void checkProductDetail(api.ProductDetail o) {
   buildCounterProductDetail++;
   if (buildCounterProductDetail < 3) {
-    unittest.expect(o.attributeName, unittest.equals('foo'));
-    unittest.expect(o.attributeValue, unittest.equals('foo'));
-    unittest.expect(o.sectionName, unittest.equals('foo'));
+    unittest.expect(
+      o.attributeName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.attributeValue!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sectionName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterProductDetail--;
 }
@@ -551,8 +752,14 @@ core.List<core.String> buildUnnamed1974() {
 
 void checkUnnamed1974(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed1975() {
@@ -564,8 +771,14 @@ core.List<core.String> buildUnnamed1975() {
 
 void checkUnnamed1975(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -678,10 +891,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -700,7 +917,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -728,10 +948,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -750,8 +974,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["include"], unittest.equals(arg_include));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["include"]!,
+          unittest.equals(arg_include),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -780,10 +1010,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -802,12 +1036,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["include"], unittest.equals(arg_include));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["include"]!,
+          unittest.equals(arg_include),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -843,10 +1087,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -865,7 +1113,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

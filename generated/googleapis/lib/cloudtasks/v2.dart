@@ -93,11 +93,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -137,14 +134,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -207,13 +201,9 @@ class ProjectsLocationsQueuesResource {
   async.Future<Queue> create(
     Queue request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -259,11 +249,8 @@ class ProjectsLocationsQueuesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -299,11 +286,8 @@ class ProjectsLocationsQueuesResource {
   /// this method will complete with the same error.
   async.Future<Queue> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -348,13 +332,9 @@ class ProjectsLocationsQueuesResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -413,14 +393,11 @@ class ProjectsLocationsQueuesResource {
   /// this method will complete with the same error.
   async.Future<ListQueuesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -486,14 +463,10 @@ class ProjectsLocationsQueuesResource {
   async.Future<Queue> patch(
     Queue request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -538,13 +511,9 @@ class ProjectsLocationsQueuesResource {
   async.Future<Queue> pause(
     PauseQueueRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -589,13 +558,9 @@ class ProjectsLocationsQueuesResource {
   async.Future<Queue> purge(
     PurgeQueueRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -643,13 +608,9 @@ class ProjectsLocationsQueuesResource {
   async.Future<Queue> resume(
     ResumeQueueRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -697,13 +658,9 @@ class ProjectsLocationsQueuesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -751,13 +708,9 @@ class ProjectsLocationsQueuesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -811,13 +764,9 @@ class ProjectsLocationsQueuesTasksResource {
   async.Future<Task> create(
     CreateTaskRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -858,11 +807,8 @@ class ProjectsLocationsQueuesTasksResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -917,12 +863,9 @@ class ProjectsLocationsQueuesTasksResource {
   /// this method will complete with the same error.
   async.Future<Task> get(
     core.String name, {
-    core.String responseView,
-    core.String $fields,
+    core.String? responseView,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (responseView != null) 'responseView': [responseView],
       if ($fields != null) 'fields': [$fields],
@@ -994,14 +937,11 @@ class ProjectsLocationsQueuesTasksResource {
   /// this method will complete with the same error.
   async.Future<ListTasksResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String responseView,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? responseView,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1058,13 +998,9 @@ class ProjectsLocationsQueuesTasksResource {
   async.Future<Task> run(
     RunTaskRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1125,14 +1061,14 @@ class AppEngineHttpRequest {
   /// * If app_engine_routing_override is set on the queue, this value is used
   /// for all tasks in the queue, no matter what the setting is for the
   /// task-level app_engine_routing.
-  AppEngineRouting appEngineRouting;
+  AppEngineRouting? appEngineRouting;
 
   /// HTTP request body.
   ///
   /// A request body is allowed only if the HTTP method is POST or PUT. It is an
   /// error to set a body on a task with an incompatible HttpMethod.
-  core.String body;
-  core.List<core.int> get bodyAsBytes => convert.base64.decode(body);
+  core.String? body;
+  core.List<core.int> get bodyAsBytes => convert.base64.decode(body!);
 
   set bodyAsBytes(core.List<core.int> _bytes) {
     body =
@@ -1164,7 +1100,7 @@ class AppEngineHttpRequest {
   /// there is no specific limit for the maximum number of headers or the size,
   /// there is a limit on the maximum size of the Task. For more information,
   /// see the CreateTask documentation.
-  core.Map<core.String, core.String> headers;
+  core.Map<core.String, core.String>? headers;
 
   /// The HTTP method to use for the request.
   ///
@@ -1183,7 +1119,7 @@ class AppEngineHttpRequest {
   /// - "DELETE" : HTTP DELETE
   /// - "PATCH" : HTTP PATCH
   /// - "OPTIONS" : HTTP OPTIONS
-  core.String httpMethod;
+  core.String? httpMethod;
 
   /// The relative URI.
   ///
@@ -1191,7 +1127,7 @@ class AppEngineHttpRequest {
   /// URI. It can contain a path and query string arguments. If the relative URI
   /// is empty, then the root path "/" will be used. No spaces are allowed, and
   /// the maximum length allowed is 2083 characters.
-  core.String relativeUri;
+  core.String? relativeUri;
 
   AppEngineHttpRequest();
 
@@ -1220,13 +1156,13 @@ class AppEngineHttpRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (appEngineRouting != null)
-          'appEngineRouting': appEngineRouting.toJson(),
-        if (body != null) 'body': body,
-        if (headers != null) 'headers': headers,
-        if (httpMethod != null) 'httpMethod': httpMethod,
-        if (relativeUri != null) 'relativeUri': relativeUri,
+          'appEngineRouting': appEngineRouting!.toJson(),
+        if (body != null) 'body': body!,
+        if (headers != null) 'headers': headers!,
+        if (httpMethod != null) 'httpMethod': httpMethod!,
+        if (relativeUri != null) 'relativeUri': relativeUri!,
       };
 }
 
@@ -1254,7 +1190,7 @@ class AppEngineRouting {
   /// [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
   ///
   /// Output only.
-  core.String host;
+  core.String? host;
 
   /// App instance.
   ///
@@ -1265,7 +1201,7 @@ class AppEngineRouting {
   /// [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)
   /// and
   /// [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
-  core.String instance;
+  core.String? instance;
 
   /// App service.
   ///
@@ -1276,7 +1212,7 @@ class AppEngineRouting {
   /// the App Engine SDK use a custom domain name; custom domains are not parsed
   /// by Cloud Tasks. If host is not parsable, then service, version, and
   /// instance are the empty string.
-  core.String service;
+  core.String? service;
 
   /// App version.
   ///
@@ -1287,7 +1223,7 @@ class AppEngineRouting {
   /// the App Engine SDK use a custom domain name; custom domains are not parsed
   /// by Cloud Tasks. If host is not parsable, then service, version, and
   /// instance are the empty string.
-  core.String version;
+  core.String? version;
 
   AppEngineRouting();
 
@@ -1306,11 +1242,11 @@ class AppEngineRouting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (host != null) 'host': host,
-        if (instance != null) 'instance': instance,
-        if (service != null) 'service': service,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (host != null) 'host': host!,
+        if (instance != null) 'instance': instance!,
+        if (service != null) 'service': service!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1321,7 +1257,7 @@ class Attempt {
   /// `dispatch_time` will be truncated to the nearest microsecond.
   ///
   /// Output only.
-  core.String dispatchTime;
+  core.String? dispatchTime;
 
   /// The response from the worker for this attempt.
   ///
@@ -1329,21 +1265,21 @@ class Attempt {
   /// currently running and the `response_status` field is meaningless.
   ///
   /// Output only.
-  Status responseStatus;
+  Status? responseStatus;
 
   /// The time that this attempt response was received.
   ///
   /// `response_time` will be truncated to the nearest microsecond.
   ///
   /// Output only.
-  core.String responseTime;
+  core.String? responseTime;
 
   /// The time that this attempt was scheduled.
   ///
   /// `schedule_time` will be truncated to the nearest microsecond.
   ///
   /// Output only.
-  core.String scheduleTime;
+  core.String? scheduleTime;
 
   Attempt();
 
@@ -1363,11 +1299,11 @@ class Attempt {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dispatchTime != null) 'dispatchTime': dispatchTime,
-        if (responseStatus != null) 'responseStatus': responseStatus.toJson(),
-        if (responseTime != null) 'responseTime': responseTime,
-        if (scheduleTime != null) 'scheduleTime': scheduleTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dispatchTime != null) 'dispatchTime': dispatchTime!,
+        if (responseStatus != null) 'responseStatus': responseStatus!.toJson(),
+        if (responseTime != null) 'responseTime': responseTime!,
+        if (scheduleTime != null) 'scheduleTime': scheduleTime!,
       };
 }
 
@@ -1381,7 +1317,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -1413,12 +1349,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -1437,10 +1373,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1464,7 +1400,7 @@ class CreateTaskRequest {
   /// - "FULL" : All information is returned. Authorization for FULL requires
   /// `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
   /// permission on the Queue resource.
-  core.String responseView;
+  core.String? responseView;
 
   /// The task to add.
   ///
@@ -1491,7 +1427,7 @@ class CreateTaskRequest {
   /// uniform distribution of task ids to store and serve tasks efficiently.
   ///
   /// Required.
-  Task task;
+  Task? task;
 
   CreateTaskRequest();
 
@@ -1505,9 +1441,9 @@ class CreateTaskRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (responseView != null) 'responseView': responseView,
-        if (task != null) 'task': task.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (responseView != null) 'responseView': responseView!,
+        if (task != null) 'task': task!.toJson(),
       };
 }
 
@@ -1525,7 +1461,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1553,24 +1489,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -1589,11 +1525,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1601,7 +1537,7 @@ class Expr {
 class GetIamPolicyRequest {
   /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
   /// `GetIamPolicy`.
-  GetPolicyOptions options;
+  GetPolicyOptions? options;
 
   GetIamPolicyRequest();
 
@@ -1612,8 +1548,8 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (options != null) 'options': options.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (options != null) 'options': options!.toJson(),
       };
 }
 
@@ -1629,7 +1565,7 @@ class GetPolicyOptions {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// Optional.
-  core.int requestedPolicyVersion;
+  core.int? requestedPolicyVersion;
 
   GetPolicyOptions();
 
@@ -1639,9 +1575,9 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion,
+          'requestedPolicyVersion': requestedPolicyVersion!,
       };
 }
 
@@ -1670,8 +1606,8 @@ class HttpRequest {
   ///
   /// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
   /// It is an error to set body on a task with an incompatible HttpMethod.
-  core.String body;
-  core.List<core.int> get bodyAsBytes => convert.base64.decode(body);
+  core.String? body;
+  core.List<core.int> get bodyAsBytes => convert.base64.decode(body!);
 
   set bodyAsBytes(core.List<core.int> _bytes) {
     body =
@@ -1694,7 +1630,7 @@ class HttpRequest {
   /// `"application/json"`. Headers which can have multiple values (according to
   /// RFC2616) can be specified using comma-separated values. The size of the
   /// headers must be less than 80KB.
-  core.Map<core.String, core.String> headers;
+  core.Map<core.String, core.String>? headers;
 
   /// The HTTP method to use for the request.
   ///
@@ -1708,7 +1644,7 @@ class HttpRequest {
   /// - "DELETE" : HTTP DELETE
   /// - "PATCH" : HTTP PATCH
   /// - "OPTIONS" : HTTP OPTIONS
-  core.String httpMethod;
+  core.String? httpMethod;
 
   /// If specified, an
   /// [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
@@ -1717,7 +1653,7 @@ class HttpRequest {
   ///
   /// This type of authorization should generally only be used when calling
   /// Google APIs hosted on *.googleapis.com.
-  OAuthToken oauthToken;
+  OAuthToken? oauthToken;
 
   /// If specified, an
   /// [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
@@ -1727,7 +1663,7 @@ class HttpRequest {
   /// This type of authorization can be used for many scenarios, including
   /// calling Cloud Run, or endpoints where you intend to validate the token
   /// yourself.
-  OidcToken oidcToken;
+  OidcToken? oidcToken;
 
   /// The full url path that the request will be sent to.
   ///
@@ -1739,7 +1675,7 @@ class HttpRequest {
   /// redirect is not counted as a separate attempt.
   ///
   /// Required.
-  core.String url;
+  core.String? url;
 
   HttpRequest();
 
@@ -1772,23 +1708,23 @@ class HttpRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (body != null) 'body': body,
-        if (headers != null) 'headers': headers,
-        if (httpMethod != null) 'httpMethod': httpMethod,
-        if (oauthToken != null) 'oauthToken': oauthToken.toJson(),
-        if (oidcToken != null) 'oidcToken': oidcToken.toJson(),
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (body != null) 'body': body!,
+        if (headers != null) 'headers': headers!,
+        if (httpMethod != null) 'httpMethod': httpMethod!,
+        if (oauthToken != null) 'oauthToken': oauthToken!.toJson(),
+        if (oidcToken != null) 'oidcToken': oidcToken!.toJson(),
+        if (url != null) 'url': url!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -1804,10 +1740,10 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1818,10 +1754,10 @@ class ListQueuesResponse {
   /// To return the next page of results, call ListQueues with this value as the
   /// page_token. If the next_page_token is empty, there are no more results.
   /// The page token is valid for only 2 hours.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of queues.
-  core.List<Queue> queues;
+  core.List<Queue>? queues;
 
   ListQueuesResponse();
 
@@ -1837,10 +1773,10 @@ class ListQueuesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (queues != null)
-          'queues': queues.map((value) => value.toJson()).toList(),
+          'queues': queues!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1850,10 +1786,10 @@ class ListTasksResponse {
   ///
   /// To return the next page of results, call ListTasks with this value as the
   /// page_token. If the next_page_token is empty, there are no more results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of tasks.
-  core.List<Task> tasks;
+  core.List<Task>? tasks;
 
   ListTasksResponse();
 
@@ -1869,10 +1805,10 @@ class ListTasksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (tasks != null)
-          'tasks': tasks.map((value) => value.toJson()).toList(),
+          'tasks': tasks!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1881,17 +1817,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -1899,12 +1835,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -1938,12 +1874,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1957,7 +1893,7 @@ class OAuthToken {
   ///
   /// If not specified, "https://www.googleapis.com/auth/cloud-platform" will be
   /// used.
-  core.String scope;
+  core.String? scope;
 
   /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
   /// to be used for generating OAuth token.
@@ -1965,7 +1901,7 @@ class OAuthToken {
   /// The service account must be within the same project as the queue. The
   /// caller must have iam.serviceAccounts.actAs permission for the service
   /// account.
-  core.String serviceAccountEmail;
+  core.String? serviceAccountEmail;
 
   OAuthToken();
 
@@ -1978,10 +1914,10 @@ class OAuthToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (scope != null) 'scope': scope,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (scope != null) 'scope': scope!,
         if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail,
+          'serviceAccountEmail': serviceAccountEmail!,
       };
 }
 
@@ -1994,7 +1930,7 @@ class OidcToken {
   /// Audience to be used when generating OIDC token.
   ///
   /// If not specified, the URI specified in target will be used.
-  core.String audience;
+  core.String? audience;
 
   /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
   /// to be used for generating OIDC token.
@@ -2002,7 +1938,7 @@ class OidcToken {
   /// The service account must be within the same project as the queue. The
   /// caller must have iam.serviceAccounts.actAs permission for the service
   /// account.
-  core.String serviceAccountEmail;
+  core.String? serviceAccountEmail;
 
   OidcToken();
 
@@ -2015,10 +1951,10 @@ class OidcToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audience != null) 'audience': audience,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audience != null) 'audience': audience!,
         if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail,
+          'serviceAccountEmail': serviceAccountEmail!,
       };
 }
 
@@ -2030,7 +1966,7 @@ class PauseQueueRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -2070,7 +2006,7 @@ class Policy {
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -2084,8 +2020,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -2109,7 +2045,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -2128,11 +2064,11 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -2144,7 +2080,7 @@ class PurgeQueueRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A queue is a container of related tasks.
@@ -2158,7 +2094,7 @@ class Queue {
   /// are not affected. If set, `app_engine_routing_override` is used for all
   /// App Engine tasks in the queue, no matter what the setting is for the
   /// task-level app_engine_routing.
-  AppEngineRouting appEngineRoutingOverride;
+  AppEngineRouting? appEngineRoutingOverride;
 
   /// Caller-specified and required in CreateQueue, after which it becomes
   /// output only.
@@ -2173,7 +2109,7 @@ class Queue {
   /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID`
   /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), or hyphens (-). The
   /// maximum length is 100 characters.
-  core.String name;
+  core.String? name;
 
   /// The last time this queue was purged.
   ///
@@ -2184,7 +2120,7 @@ class Queue {
   /// be unset if the queue has never been purged.
   ///
   /// Output only.
-  core.String purgeTime;
+  core.String? purgeTime;
 
   /// Rate limits for task dispatches.
   ///
@@ -2200,7 +2136,7 @@ class Queue {
   /// queue's state. * System throttling due to `429` (Too Many Requests) or
   /// `503` (Service Unavailable) responses from the worker, high error rates,
   /// or to smooth sudden large traffic spikes.
-  RateLimits rateLimits;
+  RateLimits? rateLimits;
 
   /// Settings that determine the retry behavior.
   ///
@@ -2211,13 +2147,13 @@ class Queue {
   /// queue which do not have retry settings explicitly set on the task and were
   /// created by the App Engine SDK. See
   /// [App Engine documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
-  RetryConfig retryConfig;
+  RetryConfig? retryConfig;
 
   /// Configuration options for writing logs to
   /// [Stackdriver Logging](https://cloud.google.com/logging/docs/).
   ///
   /// If this field is unset, then no logs are written.
-  StackdriverLoggingConfig stackdriverLoggingConfig;
+  StackdriverLoggingConfig? stackdriverLoggingConfig;
 
   /// The state of the queue.
   ///
@@ -2245,7 +2181,7 @@ class Queue {
   /// a queue. When a queue is disabled, tasks can still be added to a queue but
   /// the tasks are not dispatched. To permanently delete this queue and all of
   /// its tasks, call DeleteQueue.
-  core.String state;
+  core.String? state;
 
   Queue();
 
@@ -2279,16 +2215,16 @@ class Queue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (appEngineRoutingOverride != null)
-          'appEngineRoutingOverride': appEngineRoutingOverride.toJson(),
-        if (name != null) 'name': name,
-        if (purgeTime != null) 'purgeTime': purgeTime,
-        if (rateLimits != null) 'rateLimits': rateLimits.toJson(),
-        if (retryConfig != null) 'retryConfig': retryConfig.toJson(),
+          'appEngineRoutingOverride': appEngineRoutingOverride!.toJson(),
+        if (name != null) 'name': name!,
+        if (purgeTime != null) 'purgeTime': purgeTime!,
+        if (rateLimits != null) 'rateLimits': rateLimits!.toJson(),
+        if (retryConfig != null) 'retryConfig': retryConfig!.toJson(),
         if (stackdriverLoggingConfig != null)
-          'stackdriverLoggingConfig': stackdriverLoggingConfig.toJson(),
-        if (state != null) 'state': state,
+          'stackdriverLoggingConfig': stackdriverLoggingConfig!.toJson(),
+        if (state != null) 'state': state!,
       };
 }
 
@@ -2322,7 +2258,7 @@ class RateLimits {
   /// max_dispatches_per_second is updated.
   ///
   /// Output only.
-  core.int maxBurstSize;
+  core.int? maxBurstSize;
 
   /// The maximum number of concurrent tasks that Cloud Tasks allows to be
   /// dispatched for this queue.
@@ -2332,7 +2268,7 @@ class RateLimits {
   /// queue is created, Cloud Tasks will pick the default. The maximum allowed
   /// value is 5,000. This field has the same meaning as
   /// [max_concurrent_requests in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).
-  core.int maxConcurrentDispatches;
+  core.int? maxConcurrentDispatches;
 
   /// The maximum rate at which tasks are dispatched from this queue.
   ///
@@ -2340,7 +2276,7 @@ class RateLimits {
   /// default. * The maximum allowed value is 500. This field has the same
   /// meaning as
   /// [rate in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).
-  core.double maxDispatchesPerSecond;
+  core.double? maxDispatchesPerSecond;
 
   RateLimits();
 
@@ -2357,12 +2293,12 @@ class RateLimits {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxBurstSize != null) 'maxBurstSize': maxBurstSize,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxBurstSize != null) 'maxBurstSize': maxBurstSize!,
         if (maxConcurrentDispatches != null)
-          'maxConcurrentDispatches': maxConcurrentDispatches,
+          'maxConcurrentDispatches': maxConcurrentDispatches!,
         if (maxDispatchesPerSecond != null)
-          'maxDispatchesPerSecond': maxDispatchesPerSecond,
+          'maxDispatchesPerSecond': maxDispatchesPerSecond!,
       };
 }
 
@@ -2374,7 +2310,7 @@ class ResumeQueueRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Retry config.
@@ -2389,7 +2325,7 @@ class RetryConfig {
   /// the default. -1 indicates unlimited attempts. This field has the same
   /// meaning as
   /// [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-  core.int maxAttempts;
+  core.int? maxAttempts;
 
   /// A task will be scheduled for retry between min_backoff and max_backoff
   /// duration after it fails, if the queue's RetryConfig specifies that the
@@ -2399,7 +2335,7 @@ class RetryConfig {
   /// default. `max_backoff` will be truncated to the nearest second. This field
   /// has the same meaning as
   /// [max_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-  core.String maxBackoff;
+  core.String? maxBackoff;
 
   /// The time between retries will double `max_doublings` times.
   ///
@@ -2414,7 +2350,7 @@ class RetryConfig {
   /// 160s, 240s, 300s, 300s, .... If unspecified when the queue is created,
   /// Cloud Tasks will pick the default. This field has the same meaning as
   /// [max_doublings in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-  core.int maxDoublings;
+  core.int? maxDoublings;
 
   /// If positive, `max_retry_duration` specifies the time limit for retrying a
   /// failed task, measured from when the task was first attempted.
@@ -2426,7 +2362,7 @@ class RetryConfig {
   /// `max_retry_duration` will be truncated to the nearest second. This field
   /// has the same meaning as
   /// [task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-  core.String maxRetryDuration;
+  core.String? maxRetryDuration;
 
   /// A task will be scheduled for retry between min_backoff and max_backoff
   /// duration after it fails, if the queue's RetryConfig specifies that the
@@ -2436,7 +2372,7 @@ class RetryConfig {
   /// default. `min_backoff` will be truncated to the nearest second. This field
   /// has the same meaning as
   /// [min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-  core.String minBackoff;
+  core.String? minBackoff;
 
   RetryConfig();
 
@@ -2458,12 +2394,12 @@ class RetryConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxAttempts != null) 'maxAttempts': maxAttempts,
-        if (maxBackoff != null) 'maxBackoff': maxBackoff,
-        if (maxDoublings != null) 'maxDoublings': maxDoublings,
-        if (maxRetryDuration != null) 'maxRetryDuration': maxRetryDuration,
-        if (minBackoff != null) 'minBackoff': minBackoff,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxAttempts != null) 'maxAttempts': maxAttempts!,
+        if (maxBackoff != null) 'maxBackoff': maxBackoff!,
+        if (maxDoublings != null) 'maxDoublings': maxDoublings!,
+        if (maxRetryDuration != null) 'maxRetryDuration': maxRetryDuration!,
+        if (minBackoff != null) 'minBackoff': minBackoff!,
       };
 }
 
@@ -2487,7 +2423,7 @@ class RunTaskRequest {
   /// - "FULL" : All information is returned. Authorization for FULL requires
   /// `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
   /// permission on the Queue resource.
-  core.String responseView;
+  core.String? responseView;
 
   RunTaskRequest();
 
@@ -2497,8 +2433,8 @@ class RunTaskRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (responseView != null) 'responseView': responseView,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (responseView != null) 'responseView': responseView!,
       };
 }
 
@@ -2509,7 +2445,7 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   SetIamPolicyRequest();
 
@@ -2520,8 +2456,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
       };
 }
 
@@ -2533,7 +2469,7 @@ class StackdriverLoggingConfig {
   ///
   /// This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is
   /// the default and means that no operations are logged.
-  core.double samplingRatio;
+  core.double? samplingRatio;
 
   StackdriverLoggingConfig();
 
@@ -2543,8 +2479,8 @@ class StackdriverLoggingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (samplingRatio != null) 'samplingRatio': samplingRatio,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (samplingRatio != null) 'samplingRatio': samplingRatio!,
       };
 }
 
@@ -2557,7 +2493,7 @@ class StackdriverLoggingConfig {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -2565,13 +2501,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -2595,10 +2531,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -2607,14 +2543,14 @@ class Task {
   /// HTTP request that is sent to the App Engine app handler.
   ///
   /// An App Engine task is a task that has AppEngineHttpRequest set.
-  AppEngineHttpRequest appEngineHttpRequest;
+  AppEngineHttpRequest? appEngineHttpRequest;
 
   /// The time that the task was created.
   ///
   /// `create_time` will be truncated to the nearest second.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The number of attempts dispatched.
   ///
@@ -2622,7 +2558,7 @@ class Task {
   /// received a response.
   ///
   /// Output only.
-  core.int dispatchCount;
+  core.int? dispatchCount;
 
   /// The deadline for requests sent to the worker.
   ///
@@ -2649,7 +2585,7 @@ class Task {
   /// [Timeouts](https://cloud.google.com/tasks/docs/creating-appengine-handlers#timeouts).
   /// `dispatch_deadline` will be truncated to the nearest millisecond. The
   /// deadline is an approximate deadline.
-  core.String dispatchDeadline;
+  core.String? dispatchDeadline;
 
   /// The status of the task's first attempt.
   ///
@@ -2657,17 +2593,17 @@ class Task {
   /// retained by Cloud Tasks.
   ///
   /// Output only.
-  Attempt firstAttempt;
+  Attempt? firstAttempt;
 
   /// HTTP request that is sent to the worker.
   ///
   /// An HTTP task is a task that has HttpRequest set.
-  HttpRequest httpRequest;
+  HttpRequest? httpRequest;
 
   /// The status of the task's last attempt.
   ///
   /// Output only.
-  Attempt lastAttempt;
+  Attempt? lastAttempt;
 
   /// Optionally caller-specified in CreateTask.
   ///
@@ -2683,17 +2619,17 @@ class Task {
   /// maximum length is 100 characters. * `TASK_ID` can contain only letters
   /// (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), or underscores (_). The
   /// maximum length is 500 characters.
-  core.String name;
+  core.String? name;
 
   /// The number of attempts which have received a response.
   ///
   /// Output only.
-  core.int responseCount;
+  core.int? responseCount;
 
   /// The time when the task is scheduled to be attempted or retried.
   ///
   /// `schedule_time` will be truncated to the nearest microsecond.
-  core.String scheduleTime;
+  core.String? scheduleTime;
 
   /// The view specifies which subset of the Task has been returned.
   ///
@@ -2708,7 +2644,7 @@ class Task {
   /// - "FULL" : All information is returned. Authorization for FULL requires
   /// `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
   /// permission on the Queue resource.
-  core.String view;
+  core.String? view;
 
   Task();
 
@@ -2752,19 +2688,19 @@ class Task {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (appEngineHttpRequest != null)
-          'appEngineHttpRequest': appEngineHttpRequest.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (dispatchCount != null) 'dispatchCount': dispatchCount,
-        if (dispatchDeadline != null) 'dispatchDeadline': dispatchDeadline,
-        if (firstAttempt != null) 'firstAttempt': firstAttempt.toJson(),
-        if (httpRequest != null) 'httpRequest': httpRequest.toJson(),
-        if (lastAttempt != null) 'lastAttempt': lastAttempt.toJson(),
-        if (name != null) 'name': name,
-        if (responseCount != null) 'responseCount': responseCount,
-        if (scheduleTime != null) 'scheduleTime': scheduleTime,
-        if (view != null) 'view': view,
+          'appEngineHttpRequest': appEngineHttpRequest!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (dispatchCount != null) 'dispatchCount': dispatchCount!,
+        if (dispatchDeadline != null) 'dispatchDeadline': dispatchDeadline!,
+        if (firstAttempt != null) 'firstAttempt': firstAttempt!.toJson(),
+        if (httpRequest != null) 'httpRequest': httpRequest!.toJson(),
+        if (lastAttempt != null) 'lastAttempt': lastAttempt!.toJson(),
+        if (name != null) 'name': name!,
+        if (responseCount != null) 'responseCount': responseCount!,
+        if (scheduleTime != null) 'scheduleTime': scheduleTime!,
+        if (view != null) 'view': view!,
       };
 }
 
@@ -2775,7 +2711,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -2787,8 +2723,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -2796,7 +2732,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -2808,7 +2744,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }

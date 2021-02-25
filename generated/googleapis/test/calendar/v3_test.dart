@@ -58,11 +58,23 @@ api.Acl buildAcl() {
 void checkAcl(api.Acl o) {
   buildCounterAcl++;
   if (buildCounterAcl < 3) {
-    unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed4447(o.items);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    unittest.expect(o.nextSyncToken, unittest.equals('foo'));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4447(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextSyncToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAcl--;
 }
@@ -82,8 +94,14 @@ api.AclRuleScope buildAclRuleScope() {
 void checkAclRuleScope(api.AclRuleScope o) {
   buildCounterAclRuleScope++;
   if (buildCounterAclRuleScope < 3) {
-    unittest.expect(o.type, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAclRuleScope--;
 }
@@ -106,11 +124,23 @@ api.AclRule buildAclRule() {
 void checkAclRule(api.AclRule o) {
   buildCounterAclRule++;
   if (buildCounterAclRule < 3) {
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.role, unittest.equals('foo'));
-    checkAclRuleScope(o.scope as api.AclRuleScope);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
+    checkAclRuleScope(o.scope! as api.AclRuleScope);
   }
   buildCounterAclRule--;
 }
@@ -137,14 +167,35 @@ void checkCalendar(api.Calendar o) {
   buildCounterCalendar++;
   if (buildCounterCalendar < 3) {
     checkConferenceProperties(
-        o.conferenceProperties as api.ConferenceProperties);
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.location, unittest.equals('foo'));
-    unittest.expect(o.summary, unittest.equals('foo'));
-    unittest.expect(o.timeZone, unittest.equals('foo'));
+        o.conferenceProperties! as api.ConferenceProperties);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.summary!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timeZone!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCalendar--;
 }
@@ -180,11 +231,23 @@ api.CalendarList buildCalendarList() {
 void checkCalendarList(api.CalendarList o) {
   buildCounterCalendarList++;
   if (buildCounterCalendarList < 3) {
-    unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed4448(o.items);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    unittest.expect(o.nextSyncToken, unittest.equals('foo'));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4448(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextSyncToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCalendarList--;
 }
@@ -231,7 +294,7 @@ void checkCalendarListEntryNotificationSettings(
     api.CalendarListEntryNotificationSettings o) {
   buildCounterCalendarListEntryNotificationSettings++;
   if (buildCounterCalendarListEntryNotificationSettings < 3) {
-    checkUnnamed4450(o.notifications);
+    checkUnnamed4450(o.notifications!);
   }
   buildCounterCalendarListEntryNotificationSettings--;
 }
@@ -268,27 +331,63 @@ api.CalendarListEntry buildCalendarListEntry() {
 void checkCalendarListEntry(api.CalendarListEntry o) {
   buildCounterCalendarListEntry++;
   if (buildCounterCalendarListEntry < 3) {
-    unittest.expect(o.accessRole, unittest.equals('foo'));
-    unittest.expect(o.backgroundColor, unittest.equals('foo'));
-    unittest.expect(o.colorId, unittest.equals('foo'));
+    unittest.expect(
+      o.accessRole!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.backgroundColor!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.colorId!,
+      unittest.equals('foo'),
+    );
     checkConferenceProperties(
-        o.conferenceProperties as api.ConferenceProperties);
-    checkUnnamed4449(o.defaultReminders);
-    unittest.expect(o.deleted, unittest.isTrue);
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.foregroundColor, unittest.equals('foo'));
-    unittest.expect(o.hidden, unittest.isTrue);
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.location, unittest.equals('foo'));
+        o.conferenceProperties! as api.ConferenceProperties);
+    checkUnnamed4449(o.defaultReminders!);
+    unittest.expect(o.deleted!, unittest.isTrue);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.foregroundColor!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.hidden!, unittest.isTrue);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
     checkCalendarListEntryNotificationSettings(
-        o.notificationSettings as api.CalendarListEntryNotificationSettings);
-    unittest.expect(o.primary, unittest.isTrue);
-    unittest.expect(o.selected, unittest.isTrue);
-    unittest.expect(o.summary, unittest.equals('foo'));
-    unittest.expect(o.summaryOverride, unittest.equals('foo'));
-    unittest.expect(o.timeZone, unittest.equals('foo'));
+        o.notificationSettings! as api.CalendarListEntryNotificationSettings);
+    unittest.expect(o.primary!, unittest.isTrue);
+    unittest.expect(o.selected!, unittest.isTrue);
+    unittest.expect(
+      o.summary!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.summaryOverride!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timeZone!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCalendarListEntry--;
 }
@@ -308,8 +407,14 @@ api.CalendarNotification buildCalendarNotification() {
 void checkCalendarNotification(api.CalendarNotification o) {
   buildCounterCalendarNotification++;
   if (buildCounterCalendarNotification < 3) {
-    unittest.expect(o.method, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.method!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCalendarNotification--;
 }
@@ -323,8 +428,14 @@ core.Map<core.String, core.String> buildUnnamed4451() {
 
 void checkUnnamed4451(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterChannel = 0;
@@ -350,16 +461,40 @@ api.Channel buildChannel() {
 void checkChannel(api.Channel o) {
   buildCounterChannel++;
   if (buildCounterChannel < 3) {
-    unittest.expect(o.address, unittest.equals('foo'));
-    unittest.expect(o.expiration, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed4451(o.params);
-    unittest.expect(o.payload, unittest.isTrue);
-    unittest.expect(o.resourceId, unittest.equals('foo'));
-    unittest.expect(o.resourceUri, unittest.equals('foo'));
-    unittest.expect(o.token, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.address!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expiration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4451(o.params!);
+    unittest.expect(o.payload!, unittest.isTrue);
+    unittest.expect(
+      o.resourceId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resourceUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.token!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterChannel--;
 }
@@ -379,8 +514,14 @@ api.ColorDefinition buildColorDefinition() {
 void checkColorDefinition(api.ColorDefinition o) {
   buildCounterColorDefinition++;
   if (buildCounterColorDefinition < 3) {
-    unittest.expect(o.background, unittest.equals('foo'));
-    unittest.expect(o.foreground, unittest.equals('foo'));
+    unittest.expect(
+      o.background!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.foreground!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterColorDefinition--;
 }
@@ -394,8 +535,8 @@ core.Map<core.String, api.ColorDefinition> buildUnnamed4452() {
 
 void checkUnnamed4452(core.Map<core.String, api.ColorDefinition> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkColorDefinition(o['x'] as api.ColorDefinition);
-  checkColorDefinition(o['y'] as api.ColorDefinition);
+  checkColorDefinition(o['x']! as api.ColorDefinition);
+  checkColorDefinition(o['y']! as api.ColorDefinition);
 }
 
 core.Map<core.String, api.ColorDefinition> buildUnnamed4453() {
@@ -407,8 +548,8 @@ core.Map<core.String, api.ColorDefinition> buildUnnamed4453() {
 
 void checkUnnamed4453(core.Map<core.String, api.ColorDefinition> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkColorDefinition(o['x'] as api.ColorDefinition);
-  checkColorDefinition(o['y'] as api.ColorDefinition);
+  checkColorDefinition(o['x']! as api.ColorDefinition);
+  checkColorDefinition(o['y']! as api.ColorDefinition);
 }
 
 core.int buildCounterColors = 0;
@@ -428,11 +569,16 @@ api.Colors buildColors() {
 void checkColors(api.Colors o) {
   buildCounterColors++;
   if (buildCounterColors < 3) {
-    checkUnnamed4452(o.calendar);
-    checkUnnamed4453(o.event);
-    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed4452(o.calendar!);
+    checkUnnamed4453(o.event!);
     unittest.expect(
-        o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updated!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
   }
   buildCounterColors--;
 }
@@ -470,14 +616,23 @@ api.ConferenceData buildConferenceData() {
 void checkConferenceData(api.ConferenceData o) {
   buildCounterConferenceData++;
   if (buildCounterConferenceData < 3) {
-    unittest.expect(o.conferenceId, unittest.equals('foo'));
-    checkConferenceSolution(o.conferenceSolution as api.ConferenceSolution);
+    unittest.expect(
+      o.conferenceId!,
+      unittest.equals('foo'),
+    );
+    checkConferenceSolution(o.conferenceSolution! as api.ConferenceSolution);
     checkCreateConferenceRequest(
-        o.createRequest as api.CreateConferenceRequest);
-    checkUnnamed4454(o.entryPoints);
-    unittest.expect(o.notes, unittest.equals('foo'));
-    checkConferenceParameters(o.parameters as api.ConferenceParameters);
-    unittest.expect(o.signature, unittest.equals('foo'));
+        o.createRequest! as api.CreateConferenceRequest);
+    checkUnnamed4454(o.entryPoints!);
+    unittest.expect(
+      o.notes!,
+      unittest.equals('foo'),
+    );
+    checkConferenceParameters(o.parameters! as api.ConferenceParameters);
+    unittest.expect(
+      o.signature!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterConferenceData--;
 }
@@ -497,7 +652,7 @@ void checkConferenceParameters(api.ConferenceParameters o) {
   buildCounterConferenceParameters++;
   if (buildCounterConferenceParameters < 3) {
     checkConferenceParametersAddOnParameters(
-        o.addOnParameters as api.ConferenceParametersAddOnParameters);
+        o.addOnParameters! as api.ConferenceParametersAddOnParameters);
   }
   buildCounterConferenceParameters--;
 }
@@ -511,8 +666,14 @@ core.Map<core.String, core.String> buildUnnamed4455() {
 
 void checkUnnamed4455(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterConferenceParametersAddOnParameters = 0;
@@ -531,7 +692,7 @@ void checkConferenceParametersAddOnParameters(
     api.ConferenceParametersAddOnParameters o) {
   buildCounterConferenceParametersAddOnParameters++;
   if (buildCounterConferenceParametersAddOnParameters < 3) {
-    checkUnnamed4455(o.parameters);
+    checkUnnamed4455(o.parameters!);
   }
   buildCounterConferenceParametersAddOnParameters--;
 }
@@ -545,8 +706,14 @@ core.List<core.String> buildUnnamed4456() {
 
 void checkUnnamed4456(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterConferenceProperties = 0;
@@ -563,7 +730,7 @@ api.ConferenceProperties buildConferenceProperties() {
 void checkConferenceProperties(api.ConferenceProperties o) {
   buildCounterConferenceProperties++;
   if (buildCounterConferenceProperties < 3) {
-    checkUnnamed4456(o.allowedConferenceSolutionTypes);
+    checkUnnamed4456(o.allowedConferenceSolutionTypes!);
   }
   buildCounterConferenceProperties--;
 }
@@ -582,7 +749,10 @@ api.ConferenceRequestStatus buildConferenceRequestStatus() {
 void checkConferenceRequestStatus(api.ConferenceRequestStatus o) {
   buildCounterConferenceRequestStatus++;
   if (buildCounterConferenceRequestStatus < 3) {
-    unittest.expect(o.statusCode, unittest.equals('foo'));
+    unittest.expect(
+      o.statusCode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterConferenceRequestStatus--;
 }
@@ -603,9 +773,15 @@ api.ConferenceSolution buildConferenceSolution() {
 void checkConferenceSolution(api.ConferenceSolution o) {
   buildCounterConferenceSolution++;
   if (buildCounterConferenceSolution < 3) {
-    unittest.expect(o.iconUri, unittest.equals('foo'));
-    checkConferenceSolutionKey(o.key as api.ConferenceSolutionKey);
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.iconUri!,
+      unittest.equals('foo'),
+    );
+    checkConferenceSolutionKey(o.key! as api.ConferenceSolutionKey);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterConferenceSolution--;
 }
@@ -624,7 +800,10 @@ api.ConferenceSolutionKey buildConferenceSolutionKey() {
 void checkConferenceSolutionKey(api.ConferenceSolutionKey o) {
   buildCounterConferenceSolutionKey++;
   if (buildCounterConferenceSolutionKey < 3) {
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterConferenceSolutionKey--;
 }
@@ -646,9 +825,12 @@ void checkCreateConferenceRequest(api.CreateConferenceRequest o) {
   buildCounterCreateConferenceRequest++;
   if (buildCounterCreateConferenceRequest < 3) {
     checkConferenceSolutionKey(
-        o.conferenceSolutionKey as api.ConferenceSolutionKey);
-    unittest.expect(o.requestId, unittest.equals('foo'));
-    checkConferenceRequestStatus(o.status as api.ConferenceRequestStatus);
+        o.conferenceSolutionKey! as api.ConferenceSolutionKey);
+    unittest.expect(
+      o.requestId!,
+      unittest.equals('foo'),
+    );
+    checkConferenceRequestStatus(o.status! as api.ConferenceRequestStatus);
   }
   buildCounterCreateConferenceRequest--;
 }
@@ -662,8 +844,14 @@ core.List<core.String> buildUnnamed4457() {
 
 void checkUnnamed4457(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterEntryPoint = 0;
@@ -689,16 +877,43 @@ api.EntryPoint buildEntryPoint() {
 void checkEntryPoint(api.EntryPoint o) {
   buildCounterEntryPoint++;
   if (buildCounterEntryPoint < 3) {
-    unittest.expect(o.accessCode, unittest.equals('foo'));
-    checkUnnamed4457(o.entryPointFeatures);
-    unittest.expect(o.entryPointType, unittest.equals('foo'));
-    unittest.expect(o.label, unittest.equals('foo'));
-    unittest.expect(o.meetingCode, unittest.equals('foo'));
-    unittest.expect(o.passcode, unittest.equals('foo'));
-    unittest.expect(o.password, unittest.equals('foo'));
-    unittest.expect(o.pin, unittest.equals('foo'));
-    unittest.expect(o.regionCode, unittest.equals('foo'));
-    unittest.expect(o.uri, unittest.equals('foo'));
+    unittest.expect(
+      o.accessCode!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4457(o.entryPointFeatures!);
+    unittest.expect(
+      o.entryPointType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.label!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.meetingCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.passcode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.password!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pin!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.regionCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterEntryPoint--;
 }
@@ -718,8 +933,14 @@ api.Error buildError() {
 void checkError(api.Error o) {
   buildCounterError++;
   if (buildCounterError < 3) {
-    unittest.expect(o.domain, unittest.equals('foo'));
-    unittest.expect(o.reason, unittest.equals('foo'));
+    unittest.expect(
+      o.domain!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reason!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterError--;
 }
@@ -767,10 +988,19 @@ api.EventCreator buildEventCreator() {
 void checkEventCreator(api.EventCreator o) {
   buildCounterEventCreator++;
   if (buildCounterEventCreator < 3) {
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    unittest.expect(o.email, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.self, unittest.isTrue);
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.email!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.self!, unittest.isTrue);
   }
   buildCounterEventCreator--;
 }
@@ -784,8 +1014,14 @@ core.Map<core.String, core.String> buildUnnamed4460() {
 
 void checkUnnamed4460(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.Map<core.String, core.String> buildUnnamed4461() {
@@ -797,8 +1033,14 @@ core.Map<core.String, core.String> buildUnnamed4461() {
 
 void checkUnnamed4461(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterEventExtendedProperties = 0;
@@ -816,8 +1058,8 @@ api.EventExtendedProperties buildEventExtendedProperties() {
 void checkEventExtendedProperties(api.EventExtendedProperties o) {
   buildCounterEventExtendedProperties++;
   if (buildCounterEventExtendedProperties < 3) {
-    checkUnnamed4460(o.private);
-    checkUnnamed4461(o.shared);
+    checkUnnamed4460(o.private!);
+    checkUnnamed4461(o.shared!);
   }
   buildCounterEventExtendedProperties--;
 }
@@ -831,8 +1073,14 @@ core.Map<core.String, core.String> buildUnnamed4462() {
 
 void checkUnnamed4462(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterEventGadget = 0;
@@ -856,14 +1104,35 @@ api.EventGadget buildEventGadget() {
 void checkEventGadget(api.EventGadget o) {
   buildCounterEventGadget++;
   if (buildCounterEventGadget < 3) {
-    unittest.expect(o.display, unittest.equals('foo'));
-    unittest.expect(o.height, unittest.equals(42));
-    unittest.expect(o.iconLink, unittest.equals('foo'));
-    unittest.expect(o.link, unittest.equals('foo'));
-    checkUnnamed4462(o.preferences);
-    unittest.expect(o.title, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
-    unittest.expect(o.width, unittest.equals(42));
+    unittest.expect(
+      o.display!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.height!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.iconLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.link!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4462(o.preferences!);
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.width!,
+      unittest.equals(42),
+    );
   }
   buildCounterEventGadget--;
 }
@@ -885,10 +1154,19 @@ api.EventOrganizer buildEventOrganizer() {
 void checkEventOrganizer(api.EventOrganizer o) {
   buildCounterEventOrganizer++;
   if (buildCounterEventOrganizer < 3) {
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    unittest.expect(o.email, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.self, unittest.isTrue);
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.email!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.self!, unittest.isTrue);
   }
   buildCounterEventOrganizer--;
 }
@@ -902,8 +1180,14 @@ core.List<core.String> buildUnnamed4463() {
 
 void checkUnnamed4463(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.EventReminder> buildUnnamed4464() {
@@ -934,8 +1218,8 @@ api.EventReminders buildEventReminders() {
 void checkEventReminders(api.EventReminders o) {
   buildCounterEventReminders++;
   if (buildCounterEventReminders < 3) {
-    checkUnnamed4464(o.overrides);
-    unittest.expect(o.useDefault, unittest.isTrue);
+    checkUnnamed4464(o.overrides!);
+    unittest.expect(o.useDefault!, unittest.isTrue);
   }
   buildCounterEventReminders--;
 }
@@ -955,8 +1239,14 @@ api.EventSource buildEventSource() {
 void checkEventSource(api.EventSource o) {
   buildCounterEventSource++;
   if (buildCounterEventSource < 3) {
-    unittest.expect(o.title, unittest.equals('foo'));
-    unittest.expect(o.url, unittest.equals('foo'));
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterEventSource--;
 }
@@ -1013,48 +1303,100 @@ api.Event buildEvent() {
 void checkEvent(api.Event o) {
   buildCounterEvent++;
   if (buildCounterEvent < 3) {
-    unittest.expect(o.anyoneCanAddSelf, unittest.isTrue);
-    checkUnnamed4458(o.attachments);
-    checkUnnamed4459(o.attendees);
-    unittest.expect(o.attendeesOmitted, unittest.isTrue);
-    unittest.expect(o.colorId, unittest.equals('foo'));
-    checkConferenceData(o.conferenceData as api.ConferenceData);
+    unittest.expect(o.anyoneCanAddSelf!, unittest.isTrue);
+    checkUnnamed4458(o.attachments!);
+    checkUnnamed4459(o.attendees!);
+    unittest.expect(o.attendeesOmitted!, unittest.isTrue);
     unittest.expect(
-        o.created, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkEventCreator(o.creator as api.EventCreator);
-    unittest.expect(o.description, unittest.equals('foo'));
-    checkEventDateTime(o.end as api.EventDateTime);
-    unittest.expect(o.endTimeUnspecified, unittest.isTrue);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.eventType, unittest.equals('foo'));
+      o.colorId!,
+      unittest.equals('foo'),
+    );
+    checkConferenceData(o.conferenceData! as api.ConferenceData);
+    unittest.expect(
+      o.created!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
+    checkEventCreator(o.creator! as api.EventCreator);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    checkEventDateTime(o.end! as api.EventDateTime);
+    unittest.expect(o.endTimeUnspecified!, unittest.isTrue);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.eventType!,
+      unittest.equals('foo'),
+    );
     checkEventExtendedProperties(
-        o.extendedProperties as api.EventExtendedProperties);
-    checkEventGadget(o.gadget as api.EventGadget);
-    unittest.expect(o.guestsCanInviteOthers, unittest.isTrue);
-    unittest.expect(o.guestsCanModify, unittest.isTrue);
-    unittest.expect(o.guestsCanSeeOtherGuests, unittest.isTrue);
-    unittest.expect(o.hangoutLink, unittest.equals('foo'));
-    unittest.expect(o.htmlLink, unittest.equals('foo'));
-    unittest.expect(o.iCalUID, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.location, unittest.equals('foo'));
-    unittest.expect(o.locked, unittest.isTrue);
-    checkEventOrganizer(o.organizer as api.EventOrganizer);
-    checkEventDateTime(o.originalStartTime as api.EventDateTime);
-    unittest.expect(o.privateCopy, unittest.isTrue);
-    checkUnnamed4463(o.recurrence);
-    unittest.expect(o.recurringEventId, unittest.equals('foo'));
-    checkEventReminders(o.reminders as api.EventReminders);
-    unittest.expect(o.sequence, unittest.equals(42));
-    checkEventSource(o.source as api.EventSource);
-    checkEventDateTime(o.start as api.EventDateTime);
-    unittest.expect(o.status, unittest.equals('foo'));
-    unittest.expect(o.summary, unittest.equals('foo'));
-    unittest.expect(o.transparency, unittest.equals('foo'));
+        o.extendedProperties! as api.EventExtendedProperties);
+    checkEventGadget(o.gadget! as api.EventGadget);
+    unittest.expect(o.guestsCanInviteOthers!, unittest.isTrue);
+    unittest.expect(o.guestsCanModify!, unittest.isTrue);
+    unittest.expect(o.guestsCanSeeOtherGuests!, unittest.isTrue);
     unittest.expect(
-        o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    unittest.expect(o.visibility, unittest.equals('foo'));
+      o.hangoutLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.htmlLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iCalUID!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.locked!, unittest.isTrue);
+    checkEventOrganizer(o.organizer! as api.EventOrganizer);
+    checkEventDateTime(o.originalStartTime! as api.EventDateTime);
+    unittest.expect(o.privateCopy!, unittest.isTrue);
+    checkUnnamed4463(o.recurrence!);
+    unittest.expect(
+      o.recurringEventId!,
+      unittest.equals('foo'),
+    );
+    checkEventReminders(o.reminders! as api.EventReminders);
+    unittest.expect(
+      o.sequence!,
+      unittest.equals(42),
+    );
+    checkEventSource(o.source! as api.EventSource);
+    checkEventDateTime(o.start! as api.EventDateTime);
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.summary!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.transparency!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updated!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
+    unittest.expect(
+      o.visibility!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterEvent--;
 }
@@ -1077,11 +1419,26 @@ api.EventAttachment buildEventAttachment() {
 void checkEventAttachment(api.EventAttachment o) {
   buildCounterEventAttachment++;
   if (buildCounterEventAttachment < 3) {
-    unittest.expect(o.fileId, unittest.equals('foo'));
-    unittest.expect(o.fileUrl, unittest.equals('foo'));
-    unittest.expect(o.iconLink, unittest.equals('foo'));
-    unittest.expect(o.mimeType, unittest.equals('foo'));
-    unittest.expect(o.title, unittest.equals('foo'));
+    unittest.expect(
+      o.fileId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fileUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iconLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mimeType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterEventAttachment--;
 }
@@ -1109,16 +1466,34 @@ api.EventAttendee buildEventAttendee() {
 void checkEventAttendee(api.EventAttendee o) {
   buildCounterEventAttendee++;
   if (buildCounterEventAttendee < 3) {
-    unittest.expect(o.additionalGuests, unittest.equals(42));
-    unittest.expect(o.comment, unittest.equals('foo'));
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    unittest.expect(o.email, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.optional, unittest.isTrue);
-    unittest.expect(o.organizer, unittest.isTrue);
-    unittest.expect(o.resource, unittest.isTrue);
-    unittest.expect(o.responseStatus, unittest.equals('foo'));
-    unittest.expect(o.self, unittest.isTrue);
+    unittest.expect(
+      o.additionalGuests!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.comment!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.email!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.optional!, unittest.isTrue);
+    unittest.expect(o.organizer!, unittest.isTrue);
+    unittest.expect(o.resource!, unittest.isTrue);
+    unittest.expect(
+      o.responseStatus!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.self!, unittest.isTrue);
   }
   buildCounterEventAttendee--;
 }
@@ -1140,10 +1515,17 @@ void checkEventDateTime(api.EventDateTime o) {
   buildCounterEventDateTime++;
   if (buildCounterEventDateTime < 3) {
     unittest.expect(
-        o.date, unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")));
-    unittest.expect(o.dateTime,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    unittest.expect(o.timeZone, unittest.equals('foo'));
+      o.date!,
+      unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")),
+    );
+    unittest.expect(
+      o.dateTime!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
+    unittest.expect(
+      o.timeZone!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterEventDateTime--;
 }
@@ -1163,8 +1545,14 @@ api.EventReminder buildEventReminder() {
 void checkEventReminder(api.EventReminder o) {
   buildCounterEventReminder++;
   if (buildCounterEventReminder < 3) {
-    unittest.expect(o.method, unittest.equals('foo'));
-    unittest.expect(o.minutes, unittest.equals(42));
+    unittest.expect(
+      o.method!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.minutes!,
+      unittest.equals(42),
+    );
   }
   buildCounterEventReminder--;
 }
@@ -1219,18 +1607,44 @@ api.Events buildEvents() {
 void checkEvents(api.Events o) {
   buildCounterEvents++;
   if (buildCounterEvents < 3) {
-    unittest.expect(o.accessRole, unittest.equals('foo'));
-    checkUnnamed4465(o.defaultReminders);
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed4466(o.items);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    unittest.expect(o.nextSyncToken, unittest.equals('foo'));
-    unittest.expect(o.summary, unittest.equals('foo'));
-    unittest.expect(o.timeZone, unittest.equals('foo'));
     unittest.expect(
-        o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+      o.accessRole!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4465(o.defaultReminders!);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4466(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextSyncToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.summary!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timeZone!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updated!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
   }
   buildCounterEvents--;
 }
@@ -1276,8 +1690,8 @@ api.FreeBusyCalendar buildFreeBusyCalendar() {
 void checkFreeBusyCalendar(api.FreeBusyCalendar o) {
   buildCounterFreeBusyCalendar++;
   if (buildCounterFreeBusyCalendar < 3) {
-    checkUnnamed4467(o.busy);
-    checkUnnamed4468(o.errors);
+    checkUnnamed4467(o.busy!);
+    checkUnnamed4468(o.errors!);
   }
   buildCounterFreeBusyCalendar--;
 }
@@ -1291,8 +1705,14 @@ core.List<core.String> buildUnnamed4469() {
 
 void checkUnnamed4469(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.Error> buildUnnamed4470() {
@@ -1323,8 +1743,8 @@ api.FreeBusyGroup buildFreeBusyGroup() {
 void checkFreeBusyGroup(api.FreeBusyGroup o) {
   buildCounterFreeBusyGroup++;
   if (buildCounterFreeBusyGroup < 3) {
-    checkUnnamed4469(o.calendars);
-    checkUnnamed4470(o.errors);
+    checkUnnamed4469(o.calendars!);
+    checkUnnamed4470(o.errors!);
   }
   buildCounterFreeBusyGroup--;
 }
@@ -1361,14 +1781,27 @@ api.FreeBusyRequest buildFreeBusyRequest() {
 void checkFreeBusyRequest(api.FreeBusyRequest o) {
   buildCounterFreeBusyRequest++;
   if (buildCounterFreeBusyRequest < 3) {
-    unittest.expect(o.calendarExpansionMax, unittest.equals(42));
-    unittest.expect(o.groupExpansionMax, unittest.equals(42));
-    checkUnnamed4471(o.items);
     unittest.expect(
-        o.timeMax, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+      o.calendarExpansionMax!,
+      unittest.equals(42),
+    );
     unittest.expect(
-        o.timeMin, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    unittest.expect(o.timeZone, unittest.equals('foo'));
+      o.groupExpansionMax!,
+      unittest.equals(42),
+    );
+    checkUnnamed4471(o.items!);
+    unittest.expect(
+      o.timeMax!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
+    unittest.expect(
+      o.timeMin!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
+    unittest.expect(
+      o.timeZone!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterFreeBusyRequest--;
 }
@@ -1387,7 +1820,10 @@ api.FreeBusyRequestItem buildFreeBusyRequestItem() {
 void checkFreeBusyRequestItem(api.FreeBusyRequestItem o) {
   buildCounterFreeBusyRequestItem++;
   if (buildCounterFreeBusyRequestItem < 3) {
-    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterFreeBusyRequestItem--;
 }
@@ -1401,8 +1837,8 @@ core.Map<core.String, api.FreeBusyCalendar> buildUnnamed4472() {
 
 void checkUnnamed4472(core.Map<core.String, api.FreeBusyCalendar> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFreeBusyCalendar(o['x'] as api.FreeBusyCalendar);
-  checkFreeBusyCalendar(o['y'] as api.FreeBusyCalendar);
+  checkFreeBusyCalendar(o['x']! as api.FreeBusyCalendar);
+  checkFreeBusyCalendar(o['y']! as api.FreeBusyCalendar);
 }
 
 core.Map<core.String, api.FreeBusyGroup> buildUnnamed4473() {
@@ -1414,8 +1850,8 @@ core.Map<core.String, api.FreeBusyGroup> buildUnnamed4473() {
 
 void checkUnnamed4473(core.Map<core.String, api.FreeBusyGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFreeBusyGroup(o['x'] as api.FreeBusyGroup);
-  checkFreeBusyGroup(o['y'] as api.FreeBusyGroup);
+  checkFreeBusyGroup(o['x']! as api.FreeBusyGroup);
+  checkFreeBusyGroup(o['y']! as api.FreeBusyGroup);
 }
 
 core.int buildCounterFreeBusyResponse = 0;
@@ -1436,13 +1872,20 @@ api.FreeBusyResponse buildFreeBusyResponse() {
 void checkFreeBusyResponse(api.FreeBusyResponse o) {
   buildCounterFreeBusyResponse++;
   if (buildCounterFreeBusyResponse < 3) {
-    checkUnnamed4472(o.calendars);
-    checkUnnamed4473(o.groups);
-    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed4472(o.calendars!);
+    checkUnnamed4473(o.groups!);
     unittest.expect(
-        o.timeMax, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+      o.kind!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
-        o.timeMin, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+      o.timeMax!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
+    unittest.expect(
+      o.timeMin!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
   }
   buildCounterFreeBusyResponse--;
 }
@@ -1464,10 +1907,22 @@ api.Setting buildSetting() {
 void checkSetting(api.Setting o) {
   buildCounterSetting++;
   if (buildCounterSetting < 3) {
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSetting--;
 }
@@ -1503,11 +1958,23 @@ api.Settings buildSettings() {
 void checkSettings(api.Settings o) {
   buildCounterSettings++;
   if (buildCounterSettings < 3) {
-    unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed4474(o.items);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    unittest.expect(o.nextSyncToken, unittest.equals('foo'));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4474(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextSyncToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSettings--;
 }
@@ -1528,9 +1995,13 @@ void checkTimePeriod(api.TimePeriod o) {
   buildCounterTimePeriod++;
   if (buildCounterTimePeriod < 3) {
     unittest.expect(
-        o.end, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+      o.end!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
     unittest.expect(
-        o.start, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+      o.start!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
   }
   buildCounterTimePeriod--;
 }
@@ -1544,8 +2015,14 @@ core.List<core.String> buildUnnamed4475() {
 
 void checkUnnamed4475(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4476() {
@@ -1557,8 +2034,14 @@ core.List<core.String> buildUnnamed4476() {
 
 void checkUnnamed4476(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4477() {
@@ -1570,8 +2053,14 @@ core.List<core.String> buildUnnamed4477() {
 
 void checkUnnamed4477(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4478() {
@@ -1583,8 +2072,14 @@ core.List<core.String> buildUnnamed4478() {
 
 void checkUnnamed4478(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -1931,26 +2426,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/acl/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/acl/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/acl/"),
+        );
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_ruleId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_ruleId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1967,7 +2476,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1992,26 +2504,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/acl/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/acl/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/acl/"),
+        );
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_ruleId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_ruleId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2028,7 +2554,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2060,22 +2589,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/acl', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 4),
-            unittest.equals("/acl"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 4),
+          unittest.equals("/acl"),
+        );
         pathOffset += 4;
 
         var query = (req.url).query;
@@ -2093,9 +2633,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["sendNotifications"].first,
-            unittest.equals("$arg_sendNotifications"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["sendNotifications"]!.first,
+          unittest.equals("$arg_sendNotifications"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2126,22 +2671,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/acl', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 4),
-            unittest.equals("/acl"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 4),
+          unittest.equals("/acl"),
+        );
         pathOffset += 4;
 
         var query = (req.url).query;
@@ -2159,15 +2715,26 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
         unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
         unittest.expect(
-            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["showDeleted"]!.first,
+          unittest.equals("$arg_showDeleted"),
+        );
+        unittest.expect(
+          queryMap["syncToken"]!.first,
+          unittest.equals(arg_syncToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2205,26 +2772,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/acl/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/acl/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/acl/"),
+        );
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_ruleId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_ruleId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2241,9 +2822,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["sendNotifications"].first,
-            unittest.equals("$arg_sendNotifications"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["sendNotifications"]!.first,
+          unittest.equals("$arg_sendNotifications"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2277,26 +2863,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/acl/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/acl/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/acl/"),
+        );
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_ruleId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_ruleId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2313,9 +2913,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["sendNotifications"].first,
-            unittest.equals("$arg_sendNotifications"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["sendNotifications"]!.first,
+          unittest.equals("$arg_sendNotifications"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2351,22 +2956,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/acl/watch', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/acl/watch"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/acl/watch"),
+        );
         pathOffset += 10;
 
         var query = (req.url).query;
@@ -2384,15 +3000,26 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
         unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
         unittest.expect(
-            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["showDeleted"]!.first,
+          unittest.equals("$arg_showDeleted"),
+        );
+        unittest.expect(
+          queryMap["syncToken"]!.first,
+          unittest.equals(arg_syncToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2425,17 +3052,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22),
-            unittest.equals("users/me/calendarList/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 22),
+          unittest.equals("users/me/calendarList/"),
+        );
         pathOffset += 22;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2452,7 +3088,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2476,17 +3115,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22),
-            unittest.equals("users/me/calendarList/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 22),
+          unittest.equals("users/me/calendarList/"),
+        );
         pathOffset += 22;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2503,7 +3151,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2534,13 +3185,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("users/me/calendarList"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals("users/me/calendarList"),
+        );
         pathOffset += 21;
 
         var query = (req.url).query;
@@ -2558,9 +3215,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["colorRgbFormat"].first,
-            unittest.equals("$arg_colorRgbFormat"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["colorRgbFormat"]!.first,
+          unittest.equals("$arg_colorRgbFormat"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2592,13 +3254,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("users/me/calendarList"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals("users/me/calendarList"),
+        );
         pathOffset += 21;
 
         var query = (req.url).query;
@@ -2616,19 +3284,34 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["minAccessRole"].first,
-            unittest.equals(arg_minAccessRole));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
         unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
+          queryMap["minAccessRole"]!.first,
+          unittest.equals(arg_minAccessRole),
+        );
         unittest.expect(
-            queryMap["showHidden"].first, unittest.equals("$arg_showHidden"));
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
         unittest.expect(
-            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["showDeleted"]!.first,
+          unittest.equals("$arg_showDeleted"),
+        );
+        unittest.expect(
+          queryMap["showHidden"]!.first,
+          unittest.equals("$arg_showHidden"),
+        );
+        unittest.expect(
+          queryMap["syncToken"]!.first,
+          unittest.equals(arg_syncToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2667,17 +3350,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22),
-            unittest.equals("users/me/calendarList/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 22),
+          unittest.equals("users/me/calendarList/"),
+        );
         pathOffset += 22;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2694,9 +3386,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["colorRgbFormat"].first,
-            unittest.equals("$arg_colorRgbFormat"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["colorRgbFormat"]!.first,
+          unittest.equals("$arg_colorRgbFormat"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2729,17 +3426,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22),
-            unittest.equals("users/me/calendarList/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 22),
+          unittest.equals("users/me/calendarList/"),
+        );
         pathOffset += 22;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2756,9 +3462,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["colorRgbFormat"].first,
-            unittest.equals("$arg_colorRgbFormat"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["colorRgbFormat"]!.first,
+          unittest.equals("$arg_colorRgbFormat"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2795,13 +3506,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 27),
-            unittest.equals("users/me/calendarList/watch"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 27),
+          unittest.equals("users/me/calendarList/watch"),
+        );
         pathOffset += 27;
 
         var query = (req.url).query;
@@ -2819,19 +3536,34 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["minAccessRole"].first,
-            unittest.equals(arg_minAccessRole));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
         unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
+          queryMap["minAccessRole"]!.first,
+          unittest.equals(arg_minAccessRole),
+        );
         unittest.expect(
-            queryMap["showHidden"].first, unittest.equals("$arg_showHidden"));
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
         unittest.expect(
-            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["showDeleted"]!.first,
+          unittest.equals("$arg_showDeleted"),
+        );
+        unittest.expect(
+          queryMap["showHidden"]!.first,
+          unittest.equals("$arg_showHidden"),
+        );
+        unittest.expect(
+          queryMap["syncToken"]!.first,
+          unittest.equals(arg_syncToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2866,22 +3598,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/clear', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("/clear"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 6),
+          unittest.equals("/clear"),
+        );
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -2899,7 +3642,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2923,17 +3669,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2950,7 +3705,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2974,17 +3732,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3001,7 +3768,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3031,13 +3801,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("calendars"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("calendars"),
+        );
         pathOffset += 9;
 
         var query = (req.url).query;
@@ -3055,7 +3831,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3086,17 +3865,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3113,7 +3901,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3144,17 +3935,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3171,7 +3971,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3203,13 +4006,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("channels/stop"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals("channels/stop"),
+        );
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -3227,7 +4036,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3252,13 +4064,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("colors"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 6),
+          unittest.equals("colors"),
+        );
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -3276,7 +4094,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3305,26 +4126,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/events/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/events/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/events/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_eventId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_eventId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3341,11 +4176,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["sendNotifications"].first,
-            unittest.equals("$arg_sendNotifications"));
         unittest.expect(
-            queryMap["sendUpdates"].first, unittest.equals(arg_sendUpdates));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["sendNotifications"]!.first,
+          unittest.equals("$arg_sendNotifications"),
+        );
+        unittest.expect(
+          queryMap["sendUpdates"]!.first,
+          unittest.equals(arg_sendUpdates),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3376,26 +4218,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/events/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/events/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/events/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_eventId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_eventId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3412,13 +4268,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["alwaysIncludeEmail"].first,
-            unittest.equals("$arg_alwaysIncludeEmail"));
-        unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
-            unittest.equals(arg_maxAttendees));
         unittest.expect(
-            queryMap["timeZone"].first, unittest.equals(arg_timeZone));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["alwaysIncludeEmail"]!.first,
+          unittest.equals("$arg_alwaysIncludeEmail"),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["maxAttendees"]!.first),
+          unittest.equals(arg_maxAttendees),
+        );
+        unittest.expect(
+          queryMap["timeZone"]!.first,
+          unittest.equals(arg_timeZone),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3455,22 +4320,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/events/import', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14),
-            unittest.equals("/events/import"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 14),
+          unittest.equals("/events/import"),
+        );
         pathOffset += 14;
 
         var query = (req.url).query;
@@ -3488,11 +4364,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["conferenceDataVersion"].first),
-            unittest.equals(arg_conferenceDataVersion));
-        unittest.expect(queryMap["supportsAttachments"].first,
-            unittest.equals("$arg_supportsAttachments"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          core.int.parse(queryMap["conferenceDataVersion"]!.first),
+          unittest.equals(arg_conferenceDataVersion),
+        );
+        unittest.expect(
+          queryMap["supportsAttachments"]!.first,
+          unittest.equals("$arg_supportsAttachments"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3531,22 +4414,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/events', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("/events"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals("/events"),
+        );
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -3564,17 +4458,30 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["conferenceDataVersion"].first),
-            unittest.equals(arg_conferenceDataVersion));
-        unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
-            unittest.equals(arg_maxAttendees));
-        unittest.expect(queryMap["sendNotifications"].first,
-            unittest.equals("$arg_sendNotifications"));
         unittest.expect(
-            queryMap["sendUpdates"].first, unittest.equals(arg_sendUpdates));
-        unittest.expect(queryMap["supportsAttachments"].first,
-            unittest.equals("$arg_supportsAttachments"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["conferenceDataVersion"]!.first),
+          unittest.equals(arg_conferenceDataVersion),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["maxAttendees"]!.first),
+          unittest.equals(arg_maxAttendees),
+        );
+        unittest.expect(
+          queryMap["sendNotifications"]!.first,
+          unittest.equals("$arg_sendNotifications"),
+        );
+        unittest.expect(
+          queryMap["sendUpdates"]!.first,
+          unittest.equals(arg_sendUpdates),
+        );
+        unittest.expect(
+          queryMap["supportsAttachments"]!.first,
+          unittest.equals("$arg_supportsAttachments"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3616,31 +4523,47 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/events/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/events/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/events/"),
+        );
         pathOffset += 8;
         index = path.indexOf('/instances', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_eventId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/instances"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_eventId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/instances"),
+        );
         pathOffset += 10;
 
         var query = (req.url).query;
@@ -3658,25 +4581,46 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["alwaysIncludeEmail"].first,
-            unittest.equals("$arg_alwaysIncludeEmail"));
-        unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
-            unittest.equals(arg_maxAttendees));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["originalStart"].first,
-            unittest.equals(arg_originalStart));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+          queryMap["alwaysIncludeEmail"]!.first,
+          unittest.equals("$arg_alwaysIncludeEmail"),
+        );
         unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
-        unittest.expect(core.DateTime.parse(queryMap["timeMax"].first),
-            unittest.equals(arg_timeMax));
-        unittest.expect(core.DateTime.parse(queryMap["timeMin"].first),
-            unittest.equals(arg_timeMin));
+          core.int.parse(queryMap["maxAttendees"]!.first),
+          unittest.equals(arg_maxAttendees),
+        );
         unittest.expect(
-            queryMap["timeZone"].first, unittest.equals(arg_timeZone));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["originalStart"]!.first,
+          unittest.equals(arg_originalStart),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["showDeleted"]!.first,
+          unittest.equals("$arg_showDeleted"),
+        );
+        unittest.expect(
+          core.DateTime.parse(queryMap["timeMax"]!.first),
+          unittest.equals(arg_timeMax),
+        );
+        unittest.expect(
+          core.DateTime.parse(queryMap["timeMin"]!.first),
+          unittest.equals(arg_timeMin),
+        );
+        unittest.expect(
+          queryMap["timeZone"]!.first,
+          unittest.equals(arg_timeZone),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3729,22 +4673,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/events', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("/events"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals("/events"),
+        );
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -3762,40 +4717,78 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["alwaysIncludeEmail"].first,
-            unittest.equals("$arg_alwaysIncludeEmail"));
         unittest.expect(
-            queryMap["iCalUID"].first, unittest.equals(arg_iCalUID));
-        unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
-            unittest.equals(arg_maxAttendees));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+          queryMap["alwaysIncludeEmail"]!.first,
+          unittest.equals("$arg_alwaysIncludeEmail"),
+        );
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+          queryMap["iCalUID"]!.first,
+          unittest.equals(arg_iCalUID),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["privateExtendedProperty"],
-            unittest.equals(arg_privateExtendedProperty));
-        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
-        unittest.expect(queryMap["sharedExtendedProperty"],
-            unittest.equals(arg_sharedExtendedProperty));
+          core.int.parse(queryMap["maxAttendees"]!.first),
+          unittest.equals(arg_maxAttendees),
+        );
         unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
-        unittest.expect(queryMap["showHiddenInvitations"].first,
-            unittest.equals("$arg_showHiddenInvitations"));
-        unittest.expect(queryMap["singleEvents"].first,
-            unittest.equals("$arg_singleEvents"));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
         unittest.expect(
-            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
-        unittest.expect(core.DateTime.parse(queryMap["timeMax"].first),
-            unittest.equals(arg_timeMax));
-        unittest.expect(core.DateTime.parse(queryMap["timeMin"].first),
-            unittest.equals(arg_timeMin));
+          queryMap["orderBy"]!.first,
+          unittest.equals(arg_orderBy),
+        );
         unittest.expect(
-            queryMap["timeZone"].first, unittest.equals(arg_timeZone));
-        unittest.expect(core.DateTime.parse(queryMap["updatedMin"].first),
-            unittest.equals(arg_updatedMin));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["privateExtendedProperty"]!,
+          unittest.equals(arg_privateExtendedProperty),
+        );
+        unittest.expect(
+          queryMap["q"]!.first,
+          unittest.equals(arg_q),
+        );
+        unittest.expect(
+          queryMap["sharedExtendedProperty"]!,
+          unittest.equals(arg_sharedExtendedProperty),
+        );
+        unittest.expect(
+          queryMap["showDeleted"]!.first,
+          unittest.equals("$arg_showDeleted"),
+        );
+        unittest.expect(
+          queryMap["showHiddenInvitations"]!.first,
+          unittest.equals("$arg_showHiddenInvitations"),
+        );
+        unittest.expect(
+          queryMap["singleEvents"]!.first,
+          unittest.equals("$arg_singleEvents"),
+        );
+        unittest.expect(
+          queryMap["syncToken"]!.first,
+          unittest.equals(arg_syncToken),
+        );
+        unittest.expect(
+          core.DateTime.parse(queryMap["timeMax"]!.first),
+          unittest.equals(arg_timeMax),
+        );
+        unittest.expect(
+          core.DateTime.parse(queryMap["timeMin"]!.first),
+          unittest.equals(arg_timeMin),
+        );
+        unittest.expect(
+          queryMap["timeZone"]!.first,
+          unittest.equals(arg_timeZone),
+        );
+        unittest.expect(
+          core.DateTime.parse(queryMap["updatedMin"]!.first),
+          unittest.equals(arg_updatedMin),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3843,31 +4836,47 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/events/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/events/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/events/"),
+        );
         pathOffset += 8;
         index = path.indexOf('/move', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_eventId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/move"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_eventId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/move"),
+        );
         pathOffset += 5;
 
         var query = (req.url).query;
@@ -3886,12 +4895,21 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["destination"].first, unittest.equals(arg_destination));
-        unittest.expect(queryMap["sendNotifications"].first,
-            unittest.equals("$arg_sendNotifications"));
+          queryMap["destination"]!.first,
+          unittest.equals(arg_destination),
+        );
         unittest.expect(
-            queryMap["sendUpdates"].first, unittest.equals(arg_sendUpdates));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["sendNotifications"]!.first,
+          unittest.equals("$arg_sendNotifications"),
+        );
+        unittest.expect(
+          queryMap["sendUpdates"]!.first,
+          unittest.equals(arg_sendUpdates),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3932,26 +4950,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/events/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/events/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/events/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_eventId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_eventId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3968,19 +5000,34 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["alwaysIncludeEmail"].first,
-            unittest.equals("$arg_alwaysIncludeEmail"));
-        unittest.expect(core.int.parse(queryMap["conferenceDataVersion"].first),
-            unittest.equals(arg_conferenceDataVersion));
-        unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
-            unittest.equals(arg_maxAttendees));
-        unittest.expect(queryMap["sendNotifications"].first,
-            unittest.equals("$arg_sendNotifications"));
         unittest.expect(
-            queryMap["sendUpdates"].first, unittest.equals(arg_sendUpdates));
-        unittest.expect(queryMap["supportsAttachments"].first,
-            unittest.equals("$arg_supportsAttachments"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["alwaysIncludeEmail"]!.first,
+          unittest.equals("$arg_alwaysIncludeEmail"),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["conferenceDataVersion"]!.first),
+          unittest.equals(arg_conferenceDataVersion),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["maxAttendees"]!.first),
+          unittest.equals(arg_maxAttendees),
+        );
+        unittest.expect(
+          queryMap["sendNotifications"]!.first,
+          unittest.equals("$arg_sendNotifications"),
+        );
+        unittest.expect(
+          queryMap["sendUpdates"]!.first,
+          unittest.equals(arg_sendUpdates),
+        );
+        unittest.expect(
+          queryMap["supportsAttachments"]!.first,
+          unittest.equals("$arg_supportsAttachments"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4016,22 +5063,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/events/quickAdd', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 16),
-            unittest.equals("/events/quickAdd"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals("/events/quickAdd"),
+        );
         pathOffset += 16;
 
         var query = (req.url).query;
@@ -4049,12 +5107,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["text"].first, unittest.equals(arg_text));
-        unittest.expect(queryMap["sendNotifications"].first,
-            unittest.equals("$arg_sendNotifications"));
         unittest.expect(
-            queryMap["sendUpdates"].first, unittest.equals(arg_sendUpdates));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["text"]!.first,
+          unittest.equals(arg_text),
+        );
+        unittest.expect(
+          queryMap["sendNotifications"]!.first,
+          unittest.equals("$arg_sendNotifications"),
+        );
+        unittest.expect(
+          queryMap["sendUpdates"]!.first,
+          unittest.equals(arg_sendUpdates),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4095,26 +5163,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/events/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/events/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/events/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_eventId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_eventId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4131,19 +5213,34 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["alwaysIncludeEmail"].first,
-            unittest.equals("$arg_alwaysIncludeEmail"));
-        unittest.expect(core.int.parse(queryMap["conferenceDataVersion"].first),
-            unittest.equals(arg_conferenceDataVersion));
-        unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
-            unittest.equals(arg_maxAttendees));
-        unittest.expect(queryMap["sendNotifications"].first,
-            unittest.equals("$arg_sendNotifications"));
         unittest.expect(
-            queryMap["sendUpdates"].first, unittest.equals(arg_sendUpdates));
-        unittest.expect(queryMap["supportsAttachments"].first,
-            unittest.equals("$arg_supportsAttachments"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["alwaysIncludeEmail"]!.first,
+          unittest.equals("$arg_alwaysIncludeEmail"),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["conferenceDataVersion"]!.first),
+          unittest.equals(arg_conferenceDataVersion),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["maxAttendees"]!.first),
+          unittest.equals(arg_maxAttendees),
+        );
+        unittest.expect(
+          queryMap["sendNotifications"]!.first,
+          unittest.equals("$arg_sendNotifications"),
+        );
+        unittest.expect(
+          queryMap["sendUpdates"]!.first,
+          unittest.equals(arg_sendUpdates),
+        );
+        unittest.expect(
+          queryMap["supportsAttachments"]!.first,
+          unittest.equals("$arg_supportsAttachments"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4198,22 +5295,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("calendars/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("calendars/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/events/watch', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_calendarId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("/events/watch"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_calendarId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals("/events/watch"),
+        );
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -4231,40 +5339,78 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["alwaysIncludeEmail"].first,
-            unittest.equals("$arg_alwaysIncludeEmail"));
         unittest.expect(
-            queryMap["iCalUID"].first, unittest.equals(arg_iCalUID));
-        unittest.expect(core.int.parse(queryMap["maxAttendees"].first),
-            unittest.equals(arg_maxAttendees));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+          queryMap["alwaysIncludeEmail"]!.first,
+          unittest.equals("$arg_alwaysIncludeEmail"),
+        );
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+          queryMap["iCalUID"]!.first,
+          unittest.equals(arg_iCalUID),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["privateExtendedProperty"],
-            unittest.equals(arg_privateExtendedProperty));
-        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
-        unittest.expect(queryMap["sharedExtendedProperty"],
-            unittest.equals(arg_sharedExtendedProperty));
+          core.int.parse(queryMap["maxAttendees"]!.first),
+          unittest.equals(arg_maxAttendees),
+        );
         unittest.expect(
-            queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
-        unittest.expect(queryMap["showHiddenInvitations"].first,
-            unittest.equals("$arg_showHiddenInvitations"));
-        unittest.expect(queryMap["singleEvents"].first,
-            unittest.equals("$arg_singleEvents"));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
         unittest.expect(
-            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
-        unittest.expect(core.DateTime.parse(queryMap["timeMax"].first),
-            unittest.equals(arg_timeMax));
-        unittest.expect(core.DateTime.parse(queryMap["timeMin"].first),
-            unittest.equals(arg_timeMin));
+          queryMap["orderBy"]!.first,
+          unittest.equals(arg_orderBy),
+        );
         unittest.expect(
-            queryMap["timeZone"].first, unittest.equals(arg_timeZone));
-        unittest.expect(core.DateTime.parse(queryMap["updatedMin"].first),
-            unittest.equals(arg_updatedMin));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["privateExtendedProperty"]!,
+          unittest.equals(arg_privateExtendedProperty),
+        );
+        unittest.expect(
+          queryMap["q"]!.first,
+          unittest.equals(arg_q),
+        );
+        unittest.expect(
+          queryMap["sharedExtendedProperty"]!,
+          unittest.equals(arg_sharedExtendedProperty),
+        );
+        unittest.expect(
+          queryMap["showDeleted"]!.first,
+          unittest.equals("$arg_showDeleted"),
+        );
+        unittest.expect(
+          queryMap["showHiddenInvitations"]!.first,
+          unittest.equals("$arg_showHiddenInvitations"),
+        );
+        unittest.expect(
+          queryMap["singleEvents"]!.first,
+          unittest.equals("$arg_singleEvents"),
+        );
+        unittest.expect(
+          queryMap["syncToken"]!.first,
+          unittest.equals(arg_syncToken),
+        );
+        unittest.expect(
+          core.DateTime.parse(queryMap["timeMax"]!.first),
+          unittest.equals(arg_timeMax),
+        );
+        unittest.expect(
+          core.DateTime.parse(queryMap["timeMin"]!.first),
+          unittest.equals(arg_timeMin),
+        );
+        unittest.expect(
+          queryMap["timeZone"]!.first,
+          unittest.equals(arg_timeZone),
+        );
+        unittest.expect(
+          core.DateTime.parse(queryMap["updatedMin"]!.first),
+          unittest.equals(arg_updatedMin),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4314,13 +5460,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("freeBusy"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("freeBusy"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -4338,7 +5490,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4366,17 +5521,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("users/me/settings/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("users/me/settings/"),
+        );
         pathOffset += 18;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_setting'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_setting'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4393,7 +5557,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4421,13 +5588,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("users/me/settings"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("users/me/settings"),
+        );
         pathOffset += 17;
 
         var query = (req.url).query;
@@ -4445,13 +5618,22 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
         unittest.expect(
-            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["syncToken"]!.first,
+          unittest.equals(arg_syncToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4488,13 +5670,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("calendar/v3/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("calendar/v3/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 23),
-            unittest.equals("users/me/settings/watch"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 23),
+          unittest.equals("users/me/settings/watch"),
+        );
         pathOffset += 23;
 
         var query = (req.url).query;
@@ -4512,13 +5700,22 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
         unittest.expect(
-            queryMap["syncToken"].first, unittest.equals(arg_syncToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["syncToken"]!.first,
+          unittest.equals(arg_syncToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

@@ -77,10 +77,9 @@ class V3Resource {
   async.Future<GoogleMapsPlayablelocationsV3LogImpressionsResponse>
       logImpressions(
     GoogleMapsPlayablelocationsV3LogImpressionsRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -119,10 +118,9 @@ class V3Resource {
   async.Future<GoogleMapsPlayablelocationsV3LogPlayerReportsResponse>
       logPlayerReports(
     GoogleMapsPlayablelocationsV3LogPlayerReportsRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -163,10 +161,9 @@ class V3Resource {
   async.Future<GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse>
       samplePlayableLocations(
     GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -194,7 +191,7 @@ class GoogleMapsPlayablelocationsV3Impression {
   /// analysis. You should assign a unique `game_object_type` ID to represent a
   /// distinct type of game object in your game. For example, 1=monster
   /// location, 2=powerup location.
-  core.int gameObjectType;
+  core.int? gameObjectType;
 
   /// The type of impression event.
   ///
@@ -203,12 +200,12 @@ class GoogleMapsPlayablelocationsV3Impression {
   /// - "IMPRESSION_TYPE_UNSPECIFIED" : Unspecified type. Do not use.
   /// - "PRESENTED" : The playable location was presented to a player.
   /// - "INTERACTED" : A player interacted with the playable location.
-  core.String impressionType;
+  core.String? impressionType;
 
   /// The name of the playable location.
   ///
   /// Required.
-  core.String locationName;
+  core.String? locationName;
 
   GoogleMapsPlayablelocationsV3Impression();
 
@@ -224,10 +221,10 @@ class GoogleMapsPlayablelocationsV3Impression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gameObjectType != null) 'gameObjectType': gameObjectType,
-        if (impressionType != null) 'impressionType': impressionType,
-        if (locationName != null) 'locationName': locationName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gameObjectType != null) 'gameObjectType': gameObjectType!,
+        if (impressionType != null) 'impressionType': impressionType!,
+        if (locationName != null) 'locationName': locationName!,
       };
 }
 
@@ -238,14 +235,14 @@ class GoogleMapsPlayablelocationsV3LogImpressionsRequest {
   /// For example, device model and operating system.
   ///
   /// Required.
-  GoogleMapsUnityClientInfo clientInfo;
+  GoogleMapsUnityClientInfo? clientInfo;
 
   /// Impression event details.
   ///
   /// The maximum number of impression reports that you can log at once is 50.
   ///
   /// Required.
-  core.List<GoogleMapsPlayablelocationsV3Impression> impressions;
+  core.List<GoogleMapsPlayablelocationsV3Impression>? impressions;
 
   /// A string that uniquely identifies the log impressions request.
   ///
@@ -255,7 +252,7 @@ class GoogleMapsPlayablelocationsV3LogImpressionsRequest {
   /// this case, the request must be identical to the one that failed.
   ///
   /// Required.
-  core.String requestId;
+  core.String? requestId;
 
   GoogleMapsPlayablelocationsV3LogImpressionsRequest();
 
@@ -276,11 +273,11 @@ class GoogleMapsPlayablelocationsV3LogImpressionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientInfo != null) 'clientInfo': clientInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientInfo != null) 'clientInfo': clientInfo!.toJson(),
         if (impressions != null)
-          'impressions': impressions.map((value) => value.toJson()).toList(),
-        if (requestId != null) 'requestId': requestId,
+          'impressions': impressions!.map((value) => value.toJson()).toList(),
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -294,7 +291,7 @@ class GoogleMapsPlayablelocationsV3LogImpressionsResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A request for logging your player's bad location reports.
@@ -303,14 +300,14 @@ class GoogleMapsPlayablelocationsV3LogPlayerReportsRequest {
   /// operating system).
   ///
   /// Required.
-  GoogleMapsUnityClientInfo clientInfo;
+  GoogleMapsUnityClientInfo? clientInfo;
 
   /// Player reports.
   ///
   /// The maximum number of player reports that you can log at once is 50.
   ///
   /// Required.
-  core.List<GoogleMapsPlayablelocationsV3PlayerReport> playerReports;
+  core.List<GoogleMapsPlayablelocationsV3PlayerReport>? playerReports;
 
   /// A string that uniquely identifies the log player reports request.
   ///
@@ -321,7 +318,7 @@ class GoogleMapsPlayablelocationsV3LogPlayerReportsRequest {
   /// failed.
   ///
   /// Required.
-  core.String requestId;
+  core.String? requestId;
 
   GoogleMapsPlayablelocationsV3LogPlayerReportsRequest();
 
@@ -343,12 +340,12 @@ class GoogleMapsPlayablelocationsV3LogPlayerReportsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientInfo != null) 'clientInfo': clientInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientInfo != null) 'clientInfo': clientInfo!.toJson(),
         if (playerReports != null)
           'playerReports':
-              playerReports.map((value) => value.toJson()).toList(),
-        if (requestId != null) 'requestId': requestId,
+              playerReports!.map((value) => value.toJson()).toList(),
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -362,7 +359,7 @@ class GoogleMapsPlayablelocationsV3LogPlayerReportsResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A report submitted by a player about a playable location that is considered
@@ -373,23 +370,23 @@ class GoogleMapsPlayablelocationsV3PlayerReport {
   ///
   /// Examples are "en", "en-US" or "ja-Latn". For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// The name of the playable location.
   ///
   /// Required.
-  core.String locationName;
+  core.String? locationName;
 
   /// A free-form description detailing why the playable location is considered
   /// bad.
   ///
   /// Required.
-  core.String reasonDetails;
+  core.String? reasonDetails;
 
   /// One or more reasons why this playable location is considered bad.
   ///
   /// Required.
-  core.List<core.String> reasons;
+  core.List<core.String>? reasons;
 
   GoogleMapsPlayablelocationsV3PlayerReport();
 
@@ -410,11 +407,11 @@ class GoogleMapsPlayablelocationsV3PlayerReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode,
-        if (locationName != null) 'locationName': locationName,
-        if (reasonDetails != null) 'reasonDetails': reasonDetails,
-        if (reasons != null) 'reasons': reasons,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (locationName != null) 'locationName': locationName!,
+        if (reasonDetails != null) 'reasonDetails': reasonDetails!,
+        if (reasons != null) 'reasons': reasons!,
       };
 }
 
@@ -432,7 +429,7 @@ class GoogleMapsPlayablelocationsV3SampleAreaFilter {
   /// [Python](https://github.com/google/s2geometry/tree/master/src/python)
   ///
   /// Required.
-  core.String s2CellId;
+  core.String? s2CellId;
 
   GoogleMapsPlayablelocationsV3SampleAreaFilter();
 
@@ -442,8 +439,8 @@ class GoogleMapsPlayablelocationsV3SampleAreaFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (s2CellId != null) 's2CellId': s2CellId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (s2CellId != null) 's2CellId': s2CellId!,
       };
 }
 
@@ -457,11 +454,11 @@ class GoogleMapsPlayablelocationsV3SampleCriterion {
   /// omitted unless you specify them here: * snapped_point * types Note: The
   /// more fields you include, the more expensive in terms of data and
   /// associated latency your query will be.
-  core.String fieldsToReturn;
+  core.String? fieldsToReturn;
 
   /// Specifies filtering options, and specifies what will be included in the
   /// result set.
-  GoogleMapsPlayablelocationsV3SampleFilter filter;
+  GoogleMapsPlayablelocationsV3SampleFilter? filter;
 
   /// An arbitrary, developer-defined identifier of the type of game object that
   /// the playable location is used for.
@@ -473,7 +470,7 @@ class GoogleMapsPlayablelocationsV3SampleCriterion {
   /// location. The response contains a map.
   ///
   /// Required.
-  core.int gameObjectType;
+  core.int? gameObjectType;
 
   GoogleMapsPlayablelocationsV3SampleCriterion();
 
@@ -490,10 +487,10 @@ class GoogleMapsPlayablelocationsV3SampleCriterion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fieldsToReturn != null) 'fieldsToReturn': fieldsToReturn,
-        if (filter != null) 'filter': filter.toJson(),
-        if (gameObjectType != null) 'gameObjectType': gameObjectType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fieldsToReturn != null) 'fieldsToReturn': fieldsToReturn!,
+        if (filter != null) 'filter': filter!.toJson(),
+        if (gameObjectType != null) 'gameObjectType': gameObjectType!,
       };
 }
 
@@ -501,18 +498,18 @@ class GoogleMapsPlayablelocationsV3SampleCriterion {
 class GoogleMapsPlayablelocationsV3SampleFilter {
   /// Restricts the set of playable locations to just the
   /// \[types\](/maps/documentation/gaming/tt/types) that you want.
-  core.List<core.String> includedTypes;
+  core.List<core.String>? includedTypes;
 
   /// Specifies the maximum number of playable locations to return.
   ///
   /// This value must not be greater than 1000. The default value is 100. Only
   /// the top-ranking playable locations are returned.
-  core.int maxLocationCount;
+  core.int? maxLocationCount;
 
   /// A set of options that control the spacing between playable locations.
   ///
   /// By default the minimum distance between locations is 200m.
-  GoogleMapsPlayablelocationsV3SampleSpacingOptions spacing;
+  GoogleMapsPlayablelocationsV3SampleSpacingOptions? spacing;
 
   GoogleMapsPlayablelocationsV3SampleFilter();
 
@@ -531,10 +528,10 @@ class GoogleMapsPlayablelocationsV3SampleFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (includedTypes != null) 'includedTypes': includedTypes,
-        if (maxLocationCount != null) 'maxLocationCount': maxLocationCount,
-        if (spacing != null) 'spacing': spacing.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (includedTypes != null) 'includedTypes': includedTypes!,
+        if (maxLocationCount != null) 'maxLocationCount': maxLocationCount!,
+        if (spacing != null) 'spacing': spacing!.toJson(),
       };
 }
 
@@ -548,29 +545,29 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocation {
   /// SamplePlayableLocations use center-point coordinates.
   ///
   /// Required.
-  GoogleTypeLatLng centerPoint;
+  GoogleTypeLatLng? centerPoint;
 
   /// The name of this playable location.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// A [place ID](https://developers.google.com/places/place-id)
-  core.String placeId;
+  core.String? placeId;
 
   /// A [plus code](http://openlocationcode.com)
-  core.String plusCode;
+  core.String? plusCode;
 
   /// The playable location's coordinates, snapped to the sidewalk of the
   /// nearest road, if a nearby road exists.
-  GoogleTypeLatLng snappedPoint;
+  GoogleTypeLatLng? snappedPoint;
 
   /// A collection of \[Playable Location
   /// Types\](/maps/documentation/gaming/tt/types) for this playable location.
   ///
   /// The first type in the collection is the primary type. Type information
   /// might not be available for all playable locations.
-  core.List<core.String> types;
+  core.List<core.String>? types;
 
   GoogleMapsPlayablelocationsV3SamplePlayableLocation();
 
@@ -599,20 +596,20 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (centerPoint != null) 'centerPoint': centerPoint.toJson(),
-        if (name != null) 'name': name,
-        if (placeId != null) 'placeId': placeId,
-        if (plusCode != null) 'plusCode': plusCode,
-        if (snappedPoint != null) 'snappedPoint': snappedPoint.toJson(),
-        if (types != null) 'types': types,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (centerPoint != null) 'centerPoint': centerPoint!.toJson(),
+        if (name != null) 'name': name!,
+        if (placeId != null) 'placeId': placeId!,
+        if (plusCode != null) 'plusCode': plusCode!,
+        if (snappedPoint != null) 'snappedPoint': snappedPoint!.toJson(),
+        if (types != null) 'types': types!,
       };
 }
 
 /// A list of PlayableLocation objects that satisfies a single Criterion.
 class GoogleMapsPlayablelocationsV3SamplePlayableLocationList {
   /// A list of playable locations for this game object type.
-  core.List<GoogleMapsPlayablelocationsV3SamplePlayableLocation> locations;
+  core.List<GoogleMapsPlayablelocationsV3SamplePlayableLocation>? locations;
 
   GoogleMapsPlayablelocationsV3SamplePlayableLocationList();
 
@@ -627,9 +624,9 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
+          'locations': locations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -652,13 +649,13 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest {
   /// Specifies the area to search within for playable locations.
   ///
   /// Required.
-  GoogleMapsPlayablelocationsV3SampleAreaFilter areaFilter;
+  GoogleMapsPlayablelocationsV3SampleAreaFilter? areaFilter;
 
   /// Specifies one or more (up to 5) criteria for filtering the returned
   /// playable locations.
   ///
   /// Required.
-  core.List<GoogleMapsPlayablelocationsV3SampleCriterion> criteria;
+  core.List<GoogleMapsPlayablelocationsV3SampleCriterion>? criteria;
 
   GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest();
 
@@ -677,10 +674,10 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (areaFilter != null) 'areaFilter': areaFilter.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (areaFilter != null) 'areaFilter': areaFilter!.toJson(),
         if (criteria != null)
-          'criteria': criteria.map((value) => value.toJson()).toList(),
+          'criteria': criteria!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -688,7 +685,8 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest {
 class GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse {
   /// Each PlayableLocation object corresponds to a game_object_type specified
   /// in the request.
-  core.Map<core.String, GoogleMapsPlayablelocationsV3SamplePlayableLocationList>
+  core.Map<core.String,
+          GoogleMapsPlayablelocationsV3SamplePlayableLocationList>?
       locationsPerGameObjectType;
 
   /// Specifies the "time-to-live" for the set of playable locations.
@@ -700,7 +698,7 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse {
   /// have closed for the day, a business might have closed permanently).
   ///
   /// Required.
-  core.String ttl;
+  core.String? ttl;
 
   GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse();
 
@@ -709,7 +707,7 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse {
     if (_json.containsKey('locationsPerGameObjectType')) {
       locationsPerGameObjectType = (_json['locationsPerGameObjectType']
               as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -723,11 +721,11 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locationsPerGameObjectType != null)
-          'locationsPerGameObjectType': locationsPerGameObjectType
+          'locationsPerGameObjectType': locationsPerGameObjectType!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (ttl != null) 'ttl': ttl,
+        if (ttl != null) 'ttl': ttl!,
       };
 }
 
@@ -753,7 +751,7 @@ class GoogleMapsPlayablelocationsV3SampleSpacingOptions {
   /// Z->Z: 200m.
   ///
   /// Required.
-  core.double minSpacingMeters;
+  core.double? minSpacingMeters;
 
   /// Specifies whether the minimum spacing constraint applies to the
   /// center-point or to the snapped point of playable locations.
@@ -768,7 +766,7 @@ class GoogleMapsPlayablelocationsV3SampleSpacingOptions {
   /// the location.
   /// - "SNAPPED_POINT" : The geographic coordinates correspond to the location
   /// snapped to the sidewalk of the nearest road (when a nearby road exists).
-  core.String pointType;
+  core.String? pointType;
 
   GoogleMapsPlayablelocationsV3SampleSpacingOptions();
 
@@ -781,9 +779,9 @@ class GoogleMapsPlayablelocationsV3SampleSpacingOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (minSpacingMeters != null) 'minSpacingMeters': minSpacingMeters,
-        if (pointType != null) 'pointType': pointType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (minSpacingMeters != null) 'minSpacingMeters': minSpacingMeters!,
+        if (pointType != null) 'pointType': pointType!,
       };
 }
 
@@ -793,38 +791,38 @@ class GoogleMapsUnityClientInfo {
   ///
   /// For example, the SDK calling the API. The exact format is up to the
   /// client.
-  core.String apiClient;
+  core.String? apiClient;
 
   /// Application ID, such as the package name on Android and the bundle
   /// identifier on iOS platforms.
-  core.String applicationId;
+  core.String? applicationId;
 
   /// Application version number, such as "1.2.3".
   ///
   /// The exact format is application-dependent.
-  core.String applicationVersion;
+  core.String? applicationVersion;
 
   /// Device model as reported by the device.
   ///
   /// The exact format is platform-dependent.
-  core.String deviceModel;
+  core.String? deviceModel;
 
   /// Language code (in BCP-47 format) indicating the UI language of the client.
   ///
   /// Examples are "en", "en-US" or "ja-Latn". For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Operating system name and version as reported by the OS.
   ///
   /// For example, "Mac OS X 10.10.4". The exact format is platform-dependent.
-  core.String operatingSystem;
+  core.String? operatingSystem;
 
   /// Build number/version of the operating system.
   ///
   /// e.g., the contents of android.os.Build.ID in Android, or the contents of
   /// sysctl "kern.osversion" in iOS.
-  core.String operatingSystemBuild;
+  core.String? operatingSystemBuild;
 
   /// Platform where the application is running.
   /// Possible string values are:
@@ -836,7 +834,7 @@ class GoogleMapsUnityClientInfo {
   /// - "ANDROID" : Android
   /// - "IOS" : iOS
   /// - "WEB_GL" : WebGL.
-  core.String platform;
+  core.String? platform;
 
   GoogleMapsUnityClientInfo();
 
@@ -867,17 +865,17 @@ class GoogleMapsUnityClientInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiClient != null) 'apiClient': apiClient,
-        if (applicationId != null) 'applicationId': applicationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiClient != null) 'apiClient': apiClient!,
+        if (applicationId != null) 'applicationId': applicationId!,
         if (applicationVersion != null)
-          'applicationVersion': applicationVersion,
-        if (deviceModel != null) 'deviceModel': deviceModel,
-        if (languageCode != null) 'languageCode': languageCode,
-        if (operatingSystem != null) 'operatingSystem': operatingSystem,
+          'applicationVersion': applicationVersion!,
+        if (deviceModel != null) 'deviceModel': deviceModel!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (operatingSystem != null) 'operatingSystem': operatingSystem!,
         if (operatingSystemBuild != null)
-          'operatingSystemBuild': operatingSystemBuild,
-        if (platform != null) 'platform': platform,
+          'operatingSystemBuild': operatingSystemBuild!,
+        if (platform != null) 'platform': platform!,
       };
 }
 
@@ -890,12 +888,12 @@ class GoogleTypeLatLng {
   /// The latitude in degrees.
   ///
   /// It must be in the range \[-90.0, +90.0\].
-  core.double latitude;
+  core.double? latitude;
 
   /// The longitude in degrees.
   ///
   /// It must be in the range \[-180.0, +180.0\].
-  core.double longitude;
+  core.double? longitude;
 
   GoogleTypeLatLng();
 
@@ -908,8 +906,8 @@ class GoogleTypeLatLng {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (latitude != null) 'latitude': latitude,
-        if (longitude != null) 'longitude': longitude,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
       };
 }

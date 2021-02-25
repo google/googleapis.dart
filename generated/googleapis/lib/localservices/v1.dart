@@ -115,16 +115,16 @@ class AccountReportsResource {
   /// this method will complete with the same error.
   async.Future<GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse>
       search({
-    core.int endDate_day,
-    core.int endDate_month,
-    core.int endDate_year,
-    core.int pageSize,
-    core.String pageToken,
-    core.String query,
-    core.int startDate_day,
-    core.int startDate_month,
-    core.int startDate_year,
-    core.String $fields,
+    core.int? endDate_day,
+    core.int? endDate_month,
+    core.int? endDate_year,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? query,
+    core.int? startDate_day,
+    core.int? startDate_month,
+    core.int? startDate_year,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (endDate_day != null) 'endDate.day': ['${endDate_day}'],
@@ -215,16 +215,16 @@ class DetailedLeadReportsResource {
   async.Future<
           GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse>
       search({
-    core.int endDate_day,
-    core.int endDate_month,
-    core.int endDate_year,
-    core.int pageSize,
-    core.String pageToken,
-    core.String query,
-    core.int startDate_day,
-    core.int startDate_month,
-    core.int startDate_year,
-    core.String $fields,
+    core.int? endDate_day,
+    core.int? endDate_month,
+    core.int? endDate_year,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? query,
+    core.int? startDate_day,
+    core.int? startDate_month,
+    core.int? startDate_year,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (endDate_day != null) 'endDate.day': ['${endDate_day}'],
@@ -255,62 +255,62 @@ class DetailedLeadReportsResource {
 /// aggregate data gathered from a particular date range.
 class GoogleAdsHomeservicesLocalservicesV1AccountReport {
   /// Unique identifier of the GLS account.
-  core.String accountId;
+  core.String? accountId;
 
   /// Aggregator specific information related to the account.
-  GoogleAdsHomeservicesLocalservicesV1AggregatorInfo aggregatorInfo;
+  GoogleAdsHomeservicesLocalservicesV1AggregatorInfo? aggregatorInfo;
 
   /// Average review rating score from 1-5 stars.
-  core.double averageFiveStarRating;
+  core.double? averageFiveStarRating;
 
   /// Average weekly budget in the currency code of the account.
-  core.double averageWeeklyBudget;
+  core.double? averageWeeklyBudget;
 
   /// Business name of the account.
-  core.String businessName;
+  core.String? businessName;
 
   /// Currency code of the account.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Number of charged leads the account received in current specified period.
-  core.String currentPeriodChargedLeads;
+  core.String? currentPeriodChargedLeads;
 
   /// Number of connected phone calls (duration over 30s) in current specified
   /// period.
-  core.String currentPeriodConnectedPhoneCalls;
+  core.String? currentPeriodConnectedPhoneCalls;
 
   /// Number of phone calls in current specified period, including both
   /// connected and unconnected calls.
-  core.String currentPeriodPhoneCalls;
+  core.String? currentPeriodPhoneCalls;
 
   /// Total cost of the account in current specified period in the account's
   /// specified currency.
-  core.double currentPeriodTotalCost;
+  core.double? currentPeriodTotalCost;
 
   /// Phone lead responsiveness of the account for the past 90 days from current
   /// date.
   ///
   /// This is computed by taking the total number of connected calls from
   /// charged phone leads and dividing by the total number of calls received.
-  core.double phoneLeadResponsiveness;
+  core.double? phoneLeadResponsiveness;
 
   /// Number of charged leads the account received in previous specified period.
-  core.String previousPeriodChargedLeads;
+  core.String? previousPeriodChargedLeads;
 
   /// Number of connected phone calls (duration over 30s) in previous specified
   /// period.
-  core.String previousPeriodConnectedPhoneCalls;
+  core.String? previousPeriodConnectedPhoneCalls;
 
   /// Number of phone calls in previous specified period, including both
   /// connected and unconnected calls.
-  core.String previousPeriodPhoneCalls;
+  core.String? previousPeriodPhoneCalls;
 
   /// Total cost of the account in previous specified period in the account's
   /// specified currency.
-  core.double previousPeriodTotalCost;
+  core.double? previousPeriodTotalCost;
 
   /// Total number of reviews the account has up to current date.
-  core.int totalReview;
+  core.int? totalReview;
 
   GoogleAdsHomeservicesLocalservicesV1AccountReport();
 
@@ -377,35 +377,35 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (aggregatorInfo != null) 'aggregatorInfo': aggregatorInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (aggregatorInfo != null) 'aggregatorInfo': aggregatorInfo!.toJson(),
         if (averageFiveStarRating != null)
-          'averageFiveStarRating': averageFiveStarRating,
+          'averageFiveStarRating': averageFiveStarRating!,
         if (averageWeeklyBudget != null)
-          'averageWeeklyBudget': averageWeeklyBudget,
-        if (businessName != null) 'businessName': businessName,
-        if (currencyCode != null) 'currencyCode': currencyCode,
+          'averageWeeklyBudget': averageWeeklyBudget!,
+        if (businessName != null) 'businessName': businessName!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
         if (currentPeriodChargedLeads != null)
-          'currentPeriodChargedLeads': currentPeriodChargedLeads,
+          'currentPeriodChargedLeads': currentPeriodChargedLeads!,
         if (currentPeriodConnectedPhoneCalls != null)
-          'currentPeriodConnectedPhoneCalls': currentPeriodConnectedPhoneCalls,
+          'currentPeriodConnectedPhoneCalls': currentPeriodConnectedPhoneCalls!,
         if (currentPeriodPhoneCalls != null)
-          'currentPeriodPhoneCalls': currentPeriodPhoneCalls,
+          'currentPeriodPhoneCalls': currentPeriodPhoneCalls!,
         if (currentPeriodTotalCost != null)
-          'currentPeriodTotalCost': currentPeriodTotalCost,
+          'currentPeriodTotalCost': currentPeriodTotalCost!,
         if (phoneLeadResponsiveness != null)
-          'phoneLeadResponsiveness': phoneLeadResponsiveness,
+          'phoneLeadResponsiveness': phoneLeadResponsiveness!,
         if (previousPeriodChargedLeads != null)
-          'previousPeriodChargedLeads': previousPeriodChargedLeads,
+          'previousPeriodChargedLeads': previousPeriodChargedLeads!,
         if (previousPeriodConnectedPhoneCalls != null)
           'previousPeriodConnectedPhoneCalls':
-              previousPeriodConnectedPhoneCalls,
+              previousPeriodConnectedPhoneCalls!,
         if (previousPeriodPhoneCalls != null)
-          'previousPeriodPhoneCalls': previousPeriodPhoneCalls,
+          'previousPeriodPhoneCalls': previousPeriodPhoneCalls!,
         if (previousPeriodTotalCost != null)
-          'previousPeriodTotalCost': previousPeriodTotalCost,
-        if (totalReview != null) 'totalReview': totalReview,
+          'previousPeriodTotalCost': previousPeriodTotalCost!,
+        if (totalReview != null) 'totalReview': totalReview!,
       };
 }
 
@@ -414,7 +414,7 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
 class GoogleAdsHomeservicesLocalservicesV1AggregatorInfo {
   /// Provider id (listed in aggregator system) which maps to a account id in
   /// GLS system.
-  core.String aggregatorProviderId;
+  core.String? aggregatorProviderId;
 
   GoogleAdsHomeservicesLocalservicesV1AggregatorInfo();
 
@@ -424,9 +424,9 @@ class GoogleAdsHomeservicesLocalservicesV1AggregatorInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (aggregatorProviderId != null)
-          'aggregatorProviderId': aggregatorProviderId,
+          'aggregatorProviderId': aggregatorProviderId!,
       };
 }
 
@@ -434,57 +434,57 @@ class GoogleAdsHomeservicesLocalservicesV1AggregatorInfo {
 /// consumer, account, monetization, and lead data.
 class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
   /// Identifies account that received the lead.
-  core.String accountId;
+  core.String? accountId;
 
   /// Aggregator specific information related to the lead.
-  GoogleAdsHomeservicesLocalservicesV1AggregatorInfo aggregatorInfo;
+  GoogleAdsHomeservicesLocalservicesV1AggregatorInfo? aggregatorInfo;
 
   /// Business name associated to the account.
-  core.String businessName;
+  core.String? businessName;
 
   /// Whether the lead has been charged.
   /// Possible string values are:
   /// - "CHARGE_STATUS_UNSPECIFIED" : Not specified.
   /// - "CHARGED" : Charged.
   /// - "NOT_CHARGED" : Not charged.
-  core.String chargeStatus;
+  core.String? chargeStatus;
 
   /// Currency code.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Dispute status related to the lead.
-  core.String disputeStatus;
+  core.String? disputeStatus;
 
   /// Location of the associated account's home city.
-  core.String geo;
+  core.String? geo;
 
   /// Lead category (e.g. hvac, plumber)
-  core.String leadCategory;
+  core.String? leadCategory;
 
   /// Timestamp of when the lead was created.
-  core.String leadCreationTimestamp;
+  core.String? leadCreationTimestamp;
 
   /// Unique identifier of a Detailed Lead Report.
-  core.String leadId;
+  core.String? leadId;
 
   /// Price of the lead (available only after it has been charged).
-  core.double leadPrice;
+  core.double? leadPrice;
 
   /// Lead type.
   /// Possible string values are:
   /// - "LEAD_TYPE_UNSPECIFIED" : Not specified.
   /// - "MESSAGE" : Message lead.
   /// - "PHONE_CALL" : Phone call lead.
-  core.String leadType;
+  core.String? leadType;
 
   /// More information associated to only message leads.
-  GoogleAdsHomeservicesLocalservicesV1MessageLead messageLead;
+  GoogleAdsHomeservicesLocalservicesV1MessageLead? messageLead;
 
   /// More information associated to only phone leads.
-  GoogleAdsHomeservicesLocalservicesV1PhoneLead phoneLead;
+  GoogleAdsHomeservicesLocalservicesV1PhoneLead? phoneLead;
 
   /// Timezone of the particular provider associated to a lead.
-  GoogleTypeTimeZone timezone;
+  GoogleTypeTimeZone? timezone;
 
   GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport();
 
@@ -542,39 +542,39 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (aggregatorInfo != null) 'aggregatorInfo': aggregatorInfo.toJson(),
-        if (businessName != null) 'businessName': businessName,
-        if (chargeStatus != null) 'chargeStatus': chargeStatus,
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (disputeStatus != null) 'disputeStatus': disputeStatus,
-        if (geo != null) 'geo': geo,
-        if (leadCategory != null) 'leadCategory': leadCategory,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (aggregatorInfo != null) 'aggregatorInfo': aggregatorInfo!.toJson(),
+        if (businessName != null) 'businessName': businessName!,
+        if (chargeStatus != null) 'chargeStatus': chargeStatus!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (disputeStatus != null) 'disputeStatus': disputeStatus!,
+        if (geo != null) 'geo': geo!,
+        if (leadCategory != null) 'leadCategory': leadCategory!,
         if (leadCreationTimestamp != null)
-          'leadCreationTimestamp': leadCreationTimestamp,
-        if (leadId != null) 'leadId': leadId,
-        if (leadPrice != null) 'leadPrice': leadPrice,
-        if (leadType != null) 'leadType': leadType,
-        if (messageLead != null) 'messageLead': messageLead.toJson(),
-        if (phoneLead != null) 'phoneLead': phoneLead.toJson(),
-        if (timezone != null) 'timezone': timezone.toJson(),
+          'leadCreationTimestamp': leadCreationTimestamp!,
+        if (leadId != null) 'leadId': leadId!,
+        if (leadPrice != null) 'leadPrice': leadPrice!,
+        if (leadType != null) 'leadType': leadType!,
+        if (messageLead != null) 'messageLead': messageLead!.toJson(),
+        if (phoneLead != null) 'phoneLead': phoneLead!.toJson(),
+        if (timezone != null) 'timezone': timezone!.toJson(),
       };
 }
 
 /// Container for message lead specific information.
 class GoogleAdsHomeservicesLocalservicesV1MessageLead {
   /// Consumer phone number associated with the message lead.
-  core.String consumerPhoneNumber;
+  core.String? consumerPhoneNumber;
 
   /// Name of the customer who created the lead.
-  core.String customerName;
+  core.String? customerName;
 
   /// The job type of the specified lead.
-  core.String jobType;
+  core.String? jobType;
 
   /// The postal code of the customer who created the lead.
-  core.String postalCode;
+  core.String? postalCode;
 
   GoogleAdsHomeservicesLocalservicesV1MessageLead();
 
@@ -593,25 +593,25 @@ class GoogleAdsHomeservicesLocalservicesV1MessageLead {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (consumerPhoneNumber != null)
-          'consumerPhoneNumber': consumerPhoneNumber,
-        if (customerName != null) 'customerName': customerName,
-        if (jobType != null) 'jobType': jobType,
-        if (postalCode != null) 'postalCode': postalCode,
+          'consumerPhoneNumber': consumerPhoneNumber!,
+        if (customerName != null) 'customerName': customerName!,
+        if (jobType != null) 'jobType': jobType!,
+        if (postalCode != null) 'postalCode': postalCode!,
       };
 }
 
 /// Container for phone lead specific information.
 class GoogleAdsHomeservicesLocalservicesV1PhoneLead {
   /// Timestamp of the phone call which resulted in a charged phone lead.
-  core.String chargedCallTimestamp;
+  core.String? chargedCallTimestamp;
 
   /// Duration of the charged phone call in seconds.
-  core.String chargedConnectedCallDurationSeconds;
+  core.String? chargedConnectedCallDurationSeconds;
 
   /// Consumer phone number associated with the phone lead.
-  core.String consumerPhoneNumber;
+  core.String? consumerPhoneNumber;
 
   GoogleAdsHomeservicesLocalservicesV1PhoneLead();
 
@@ -628,14 +628,14 @@ class GoogleAdsHomeservicesLocalservicesV1PhoneLead {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (chargedCallTimestamp != null)
-          'chargedCallTimestamp': chargedCallTimestamp,
+          'chargedCallTimestamp': chargedCallTimestamp!,
         if (chargedConnectedCallDurationSeconds != null)
           'chargedConnectedCallDurationSeconds':
-              chargedConnectedCallDurationSeconds,
+              chargedConnectedCallDurationSeconds!,
         if (consumerPhoneNumber != null)
-          'consumerPhoneNumber': consumerPhoneNumber,
+          'consumerPhoneNumber': consumerPhoneNumber!,
       };
 }
 
@@ -646,13 +646,13 @@ class GoogleAdsHomeservicesLocalservicesV1PhoneLead {
 /// request page.
 class GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse {
   /// List of account reports which maps 1:1 to a particular linked GLS account.
-  core.List<GoogleAdsHomeservicesLocalservicesV1AccountReport> accountReports;
+  core.List<GoogleAdsHomeservicesLocalservicesV1AccountReport>? accountReports;
 
   /// Pagination token to retrieve the next page of results.
   ///
   /// When `next_page_token` is not filled in, there is no next page and the
   /// list returned is the last page in the result set.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse();
 
@@ -670,11 +670,11 @@ class GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accountReports != null)
           'accountReports':
-              accountReports.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              accountReports!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -685,14 +685,14 @@ class GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse {
 /// request page.
 class GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse {
   /// List of detailed lead reports uniquely identified by external lead id.
-  core.List<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>
+  core.List<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>?
       detailedLeadReports;
 
   /// Pagination token to retrieve the next page of results.
   ///
   /// When `next_page_token` is not filled in, there is no next page and the
   /// list returned is the last page in the result set.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse();
 
@@ -710,11 +710,11 @@ class GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (detailedLeadReports != null)
           'detailedLeadReports':
-              detailedLeadReports.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              detailedLeadReports!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -722,12 +722,12 @@ class GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse {
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).
 class GoogleTypeTimeZone {
   /// IANA Time Zone Database time zone, e.g. "America/New_York".
-  core.String id;
+  core.String? id;
 
   /// IANA Time Zone Database version number, e.g. "2019a".
   ///
   /// Optional.
-  core.String version;
+  core.String? version;
 
   GoogleTypeTimeZone();
 
@@ -740,8 +740,8 @@ class GoogleTypeTimeZone {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (version != null) 'version': version!,
       };
 }

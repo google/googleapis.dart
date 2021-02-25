@@ -112,13 +112,9 @@ class ProjectsResource {
   async.Future<TestRulesetResponse> test(
     TestRulesetRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -181,13 +177,9 @@ class ProjectsReleasesResource {
   async.Future<Release> create(
     Release request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -224,11 +216,8 @@ class ProjectsReleasesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -263,11 +252,8 @@ class ProjectsReleasesResource {
   /// this method will complete with the same error.
   async.Future<Release> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -312,12 +298,9 @@ class ProjectsReleasesResource {
   /// this method will complete with the same error.
   async.Future<GetReleaseExecutableResponse> getExecutable(
     core.String name, {
-    core.String executableVersion,
-    core.String $fields,
+    core.String? executableVersion,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (executableVersion != null) 'executableVersion': [executableVersion],
       if ($fields != null) 'fields': [$fields],
@@ -383,14 +366,11 @@ class ProjectsReleasesResource {
   /// this method will complete with the same error.
   async.Future<ListReleasesResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -437,13 +417,9 @@ class ProjectsReleasesResource {
   async.Future<Release> patch(
     UpdateReleaseRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -493,13 +469,9 @@ class ProjectsRulesetsResource {
   async.Future<Ruleset> create(
     Ruleset request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -538,11 +510,8 @@ class ProjectsRulesetsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -577,11 +546,8 @@ class ProjectsRulesetsResource {
   /// this method will complete with the same error.
   async.Future<Ruleset> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -633,14 +599,11 @@ class ProjectsRulesetsResource {
   /// this method will complete with the same error.
   async.Future<ListRulesetsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -664,13 +627,13 @@ class ProjectsRulesetsResource {
 /// Arg matchers for the mock function.
 class Arg {
   /// Argument matches any value provided.
-  Empty anyValue;
+  Empty? anyValue;
 
   /// Argument exactly matches value provided.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object exactValue;
+  core.Object? exactValue;
 
   Arg();
 
@@ -684,9 +647,9 @@ class Arg {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (anyValue != null) 'anyValue': anyValue.toJson(),
-        if (exactValue != null) 'exactValue': exactValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (anyValue != null) 'anyValue': anyValue!.toJson(),
+        if (exactValue != null) 'exactValue': exactValue!,
       };
 }
 
@@ -704,20 +667,20 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Describes where in a file an expression is found and what it was evaluated
 /// to over the course of its use.
 class ExpressionReport {
   /// Subexpressions
-  core.List<ExpressionReport> children;
+  core.List<ExpressionReport>? children;
 
   /// Position of expression in original rules source.
-  SourcePosition sourcePosition;
+  SourcePosition? sourcePosition;
 
   /// Values that this expression evaluated to when encountered.
-  core.List<ValueCount> values;
+  core.List<ValueCount>? values;
 
   ExpressionReport();
 
@@ -740,24 +703,24 @@ class ExpressionReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (children != null)
-          'children': children.map((value) => value.toJson()).toList(),
-        if (sourcePosition != null) 'sourcePosition': sourcePosition.toJson(),
+          'children': children!.map((value) => value.toJson()).toList(),
+        if (sourcePosition != null) 'sourcePosition': sourcePosition!.toJson(),
         if (values != null)
-          'values': values.map((value) => value.toJson()).toList(),
+          'values': values!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// `File` containing source content.
 class File {
   /// Textual Content.
-  core.String content;
+  core.String? content;
 
   /// Fingerprint (e.g. github sha) associated with the `File`.
-  core.String fingerprint;
+  core.String? fingerprint;
   core.List<core.int> get fingerprintAsBytes =>
-      convert.base64.decode(fingerprint);
+      convert.base64.decode(fingerprint!);
 
   set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
@@ -765,7 +728,7 @@ class File {
   }
 
   /// File name.
-  core.String name;
+  core.String? name;
 
   File();
 
@@ -781,10 +744,10 @@ class File {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -795,10 +758,10 @@ class FunctionCall {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> args;
+  core.List<core.Object>? args;
 
   /// Name of the function invoked.
-  core.String function;
+  core.String? function;
 
   FunctionCall();
 
@@ -813,9 +776,9 @@ class FunctionCall {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (args != null) 'args': args,
-        if (function != null) 'function': function,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (args != null) 'args': args!,
+        if (function != null) 'function': function!,
       };
 }
 
@@ -833,15 +796,15 @@ class FunctionMock {
   ///
   /// The order in which the arguments are provided is the order in which they
   /// must appear in the function invocation.
-  core.List<Arg> args;
+  core.List<Arg>? args;
 
   /// The name of the function.
   ///
   /// The function name must match one provided by a service declaration.
-  core.String function;
+  core.String? function;
 
   /// The mock result of the function call.
-  Result result;
+  Result? result;
 
   FunctionMock();
 
@@ -861,19 +824,19 @@ class FunctionMock {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (args != null) 'args': args.map((value) => value.toJson()).toList(),
-        if (function != null) 'function': function,
-        if (result != null) 'result': result.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (args != null) 'args': args!.map((value) => value.toJson()).toList(),
+        if (function != null) 'function': function!,
+        if (result != null) 'result': result!.toJson(),
       };
 }
 
 /// The response for FirebaseRulesService.GetReleaseExecutable
 class GetReleaseExecutableResponse {
   /// Executable view of the `Ruleset` referenced by the `Release`.
-  core.String executable;
+  core.String? executable;
   core.List<core.int> get executableAsBytes =>
-      convert.base64.decode(executable);
+      convert.base64.decode(executable!);
 
   set executableAsBytes(core.List<core.int> _bytes) {
     executable =
@@ -888,7 +851,7 @@ class GetReleaseExecutableResponse {
   /// executable versions: Custom AST for use with Java clients.
   /// - "FIREBASE_RULES_EXECUTABLE_V2" : CEL-based executable for use with C++
   /// clients.
-  core.String executableVersion;
+  core.String? executableVersion;
 
   /// `Language` used to generate the executable bytes.
   /// Possible string values are:
@@ -896,19 +859,19 @@ class GetReleaseExecutableResponse {
   /// FIREBASE_RULES.
   /// - "FIREBASE_RULES" : Firebase Rules language.
   /// - "EVENT_FLOW_TRIGGERS" : Event Flow triggers.
-  core.String language;
+  core.String? language;
 
   /// `Ruleset` name associated with the `Release` executable.
-  core.String rulesetName;
+  core.String? rulesetName;
 
   /// Optional, indicates the freshness of the result.
   ///
   /// The response is guaranteed to be the latest within an interval up to the
   /// sync_time (inclusive).
-  core.String syncTime;
+  core.String? syncTime;
 
   /// Timestamp for the most recent `Release.update_time`.
-  core.String updateTime;
+  core.String? updateTime;
 
   GetReleaseExecutableResponse();
 
@@ -933,20 +896,20 @@ class GetReleaseExecutableResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executable != null) 'executable': executable,
-        if (executableVersion != null) 'executableVersion': executableVersion,
-        if (language != null) 'language': language,
-        if (rulesetName != null) 'rulesetName': rulesetName,
-        if (syncTime != null) 'syncTime': syncTime,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executable != null) 'executable': executable!,
+        if (executableVersion != null) 'executableVersion': executableVersion!,
+        if (language != null) 'language': language!,
+        if (rulesetName != null) 'rulesetName': rulesetName!,
+        if (syncTime != null) 'syncTime': syncTime!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// Issues include warnings, errors, and deprecation notices.
 class Issue {
   /// Short error description.
-  core.String description;
+  core.String? description;
 
   /// The severity of the issue.
   /// Possible string values are:
@@ -956,10 +919,10 @@ class Issue {
   /// - "WARNING" : Warnings such as: unused variables.
   /// - "ERROR" : Errors such as: unmatched curly braces or variable
   /// redefinition.
-  core.String severity;
+  core.String? severity;
 
   /// Position of the issue in the `Source`.
-  SourcePosition sourcePosition;
+  SourcePosition? sourcePosition;
 
   Issue();
 
@@ -976,10 +939,10 @@ class Issue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (severity != null) 'severity': severity,
-        if (sourcePosition != null) 'sourcePosition': sourcePosition.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (severity != null) 'severity': severity!,
+        if (sourcePosition != null) 'sourcePosition': sourcePosition!.toJson(),
       };
 }
 
@@ -988,10 +951,10 @@ class ListReleasesResponse {
   /// The pagination token to retrieve the next page of results.
   ///
   /// If the value is empty, no further results remain.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of `Release` instances.
-  core.List<Release> releases;
+  core.List<Release>? releases;
 
   ListReleasesResponse();
 
@@ -1007,10 +970,10 @@ class ListReleasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (releases != null)
-          'releases': releases.map((value) => value.toJson()).toList(),
+          'releases': releases!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1019,10 +982,10 @@ class ListRulesetsResponse {
   /// The pagination token to retrieve the next page of results.
   ///
   /// If the value is empty, no further results remain.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of `Ruleset` instances.
-  core.List<Ruleset> rulesets;
+  core.List<Ruleset>? rulesets;
 
   ListRulesetsResponse();
 
@@ -1038,10 +1001,10 @@ class ListRulesetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (rulesets != null)
-          'rulesets': rulesets.map((value) => value.toJson()).toList(),
+          'rulesets': rulesets!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1050,7 +1013,7 @@ class Metadata {
   /// Services that this ruleset has declarations for (e.g., "cloud.firestore").
   ///
   /// There may be 0+ of these.
-  core.List<core.String> services;
+  core.List<core.String>? services;
 
   Metadata();
 
@@ -1062,8 +1025,8 @@ class Metadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (services != null) 'services': services,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (services != null) 'services': services!,
       };
 }
 
@@ -1075,7 +1038,7 @@ class Release {
   /// Time the release was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Resource name for the `Release`.
   ///
@@ -1094,17 +1057,17 @@ class Release {
   /// equally well with the release name list filter, but in many ways the
   /// structured paths provide a clearer picture of the relationship between
   /// `Release` instances. Format: `projects/{project_id}/releases/{release_id}`
-  core.String name;
+  core.String? name;
 
   /// Name of the `Ruleset` referred to by this `Release`.
   ///
   /// The `Ruleset` must exist the `Release` to be created.
-  core.String rulesetName;
+  core.String? rulesetName;
 
   /// Time the release was updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Release();
 
@@ -1123,18 +1086,18 @@ class Release {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (name != null) 'name': name,
-        if (rulesetName != null) 'rulesetName': rulesetName,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+        if (rulesetName != null) 'rulesetName': rulesetName!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// Possible result values from the function mock invocation.
 class Result {
   /// The result is undefined, meaning the result could not be computed.
-  Empty undefined;
+  Empty? undefined;
 
   /// The result is an actual value.
   ///
@@ -1142,7 +1105,7 @@ class Result {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object value;
+  core.Object? value;
 
   Result();
 
@@ -1156,9 +1119,9 @@ class Result {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (undefined != null) 'undefined': undefined.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (undefined != null) 'undefined': undefined!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1168,21 +1131,21 @@ class Ruleset {
   /// Time the `Ruleset` was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The metadata for this ruleset.
   ///
   /// Output only.
-  Metadata metadata;
+  Metadata? metadata;
 
   /// Name of the `Ruleset`.
   ///
   /// The ruleset_id is auto generated by the service. Format:
   /// `projects/{project_id}/rulesets/{ruleset_id}` Output only.
-  core.String name;
+  core.String? name;
 
   /// `Source` for the `Ruleset`.
-  Source source;
+  Source? source;
 
   Ruleset();
 
@@ -1203,18 +1166,18 @@ class Ruleset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (name != null) 'name': name,
-        if (source != null) 'source': source.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (name != null) 'name': name!,
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
 /// `Source` is one or more `File` messages comprising a logical set of rules.
 class Source {
   /// `File` set constituting the `Source` bundle.
-  core.List<File> files;
+  core.List<File>? files;
 
   Source();
 
@@ -1227,9 +1190,9 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (files != null)
-          'files': files.map((value) => value.toJson()).toList(),
+          'files': files!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1239,21 +1202,21 @@ class Source {
 /// Used for debug purposes.
 class SourcePosition {
   /// First column on the source line associated with the source fragment.
-  core.int column;
+  core.int? column;
 
   /// Start position relative to the beginning of the file.
-  core.int currentOffset;
+  core.int? currentOffset;
 
   /// End position relative to the beginning of the file.
-  core.int endOffset;
+  core.int? endOffset;
 
   /// Name of the `File`.
-  core.String fileName;
+  core.String? fileName;
 
   /// Line number of the source fragment.
   ///
   /// 1-based.
-  core.int line;
+  core.int? line;
 
   SourcePosition();
 
@@ -1275,12 +1238,12 @@ class SourcePosition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (column != null) 'column': column,
-        if (currentOffset != null) 'currentOffset': currentOffset,
-        if (endOffset != null) 'endOffset': endOffset,
-        if (fileName != null) 'fileName': fileName,
-        if (line != null) 'line': line,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (column != null) 'column': column!,
+        if (currentOffset != null) 'currentOffset': currentOffset!,
+        if (endOffset != null) 'endOffset': endOffset!,
+        if (fileName != null) 'fileName': fileName!,
+        if (line != null) 'line': line!,
       };
 }
 
@@ -1298,7 +1261,7 @@ class TestCase {
   /// - "EXPECTATION_UNSPECIFIED" : Unspecified expectation.
   /// - "ALLOW" : Expect an allowed result.
   /// - "DENY" : Expect a denied result.
-  core.String expectation;
+  core.String? expectation;
 
   /// Specifies what should be included in the response.
   /// Possible string values are:
@@ -1308,13 +1271,13 @@ class TestCase {
   /// - "FULL" : Include detailed reporting on expressions evaluated.
   /// - "VISITED" : Only include the expressions that were visited during
   /// evaluation.
-  core.String expressionReportLevel;
+  core.String? expressionReportLevel;
 
   /// Optional function mocks for service-defined functions.
   ///
   /// If not set, any service defined function is expected to return an error,
   /// which may or may not influence the test outcome.
-  core.List<FunctionMock> functionMocks;
+  core.List<FunctionMock>? functionMocks;
 
   /// Specifies whether paths (such as request.path) are encoded and how.
   /// Possible string values are:
@@ -1323,7 +1286,7 @@ class TestCase {
   /// - "URL_ENCODED" : Treats path segments as URL encoded but with non-encoded
   /// separators ("/"). This is the default behavior.
   /// - "PLAIN" : Treats total path as non-URL encoded e.g. raw.
-  core.String pathEncoding;
+  core.String? pathEncoding;
 
   /// Request context.
   ///
@@ -1338,7 +1301,7 @@ class TestCase {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object request;
+  core.Object? request;
 
   /// Optional resource value as it appears in persistent storage before the
   /// request is fulfilled.
@@ -1347,7 +1310,7 @@ class TestCase {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object resource;
+  core.Object? resource;
 
   TestCase();
 
@@ -1375,16 +1338,16 @@ class TestCase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expectation != null) 'expectation': expectation,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expectation != null) 'expectation': expectation!,
         if (expressionReportLevel != null)
-          'expressionReportLevel': expressionReportLevel,
+          'expressionReportLevel': expressionReportLevel!,
         if (functionMocks != null)
           'functionMocks':
-              functionMocks.map((value) => value.toJson()).toList(),
-        if (pathEncoding != null) 'pathEncoding': pathEncoding,
-        if (request != null) 'request': request,
-        if (resource != null) 'resource': resource,
+              functionMocks!.map((value) => value.toJson()).toList(),
+        if (pathEncoding != null) 'pathEncoding': pathEncoding!,
+        if (request != null) 'request': request!,
+        if (resource != null) 'resource': resource!,
       };
 }
 
@@ -1397,7 +1360,7 @@ class TestResult {
   /// Debug messages may be related to too many or too few invocations of
   /// function mocks or to runtime errors that occur during evaluation. For
   /// example: ```Unable to read variable [name: "resource"]```
-  core.List<core.String> debugMessages;
+  core.List<core.String>? debugMessages;
 
   /// Position in the `Source` or `Ruleset` where the principle runtime error
   /// occurs.
@@ -1406,7 +1369,7 @@ class TestResult {
   /// default, so a `DENY` expectation when an error is generated is valid. When
   /// there is a `DENY` with an error, the `SourcePosition` is returned. E.g.
   /// `error_position { line: 19 column: 37 }`
-  SourcePosition errorPosition;
+  SourcePosition? errorPosition;
 
   /// The mapping from expression in the ruleset AST to the values they were
   /// evaluated to.
@@ -1414,21 +1377,21 @@ class TestResult {
   /// Partially-nested to mirror AST structure. Note that this field is actually
   /// tracking expressions and not permission statements in contrast to the
   /// "visited_expressions" field above. Literal expressions are omitted.
-  core.List<ExpressionReport> expressionReports;
+  core.List<ExpressionReport>? expressionReports;
 
   /// The set of function calls made to service-defined methods.
   ///
   /// Function calls are included in the order in which they are encountered
   /// during evaluation, are provided for both mocked and unmocked functions,
   /// and included on the response regardless of the test `state`.
-  core.List<FunctionCall> functionCalls;
+  core.List<FunctionCall>? functionCalls;
 
   /// State of the test.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Test state is not set.
   /// - "SUCCESS" : Test is a success.
   /// - "FAILURE" : Test is a failure.
-  core.String state;
+  core.String? state;
 
   /// The set of visited permission expressions for a given test.
   ///
@@ -1436,7 +1399,7 @@ class TestResult {
   /// permission expressions which were relevant to the test case, e.g. ```
   /// match /path { allow read if: } ``` For a detailed report of the
   /// intermediate evaluation states, see the `expression_reports` field
-  core.List<VisitedExpression> visitedExpressions;
+  core.List<VisitedExpression>? visitedExpressions;
 
   TestResult();
 
@@ -1473,19 +1436,19 @@ class TestResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (debugMessages != null) 'debugMessages': debugMessages,
-        if (errorPosition != null) 'errorPosition': errorPosition.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (debugMessages != null) 'debugMessages': debugMessages!,
+        if (errorPosition != null) 'errorPosition': errorPosition!.toJson(),
         if (expressionReports != null)
           'expressionReports':
-              expressionReports.map((value) => value.toJson()).toList(),
+              expressionReports!.map((value) => value.toJson()).toList(),
         if (functionCalls != null)
           'functionCalls':
-              functionCalls.map((value) => value.toJson()).toList(),
-        if (state != null) 'state': state,
+              functionCalls!.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state!,
         if (visitedExpressions != null)
           'visitedExpressions':
-              visitedExpressions.map((value) => value.toJson()).toList(),
+              visitedExpressions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1494,10 +1457,10 @@ class TestRulesetRequest {
   /// Optional `Source` to be checked for correctness.
   ///
   /// This field must not be set when the resource name refers to a `Ruleset`.
-  Source source;
+  Source? source;
 
   /// Inline `TestSuite` to run.
-  TestSuite testSuite;
+  TestSuite? testSuite;
 
   TestRulesetRequest();
 
@@ -1512,9 +1475,9 @@ class TestRulesetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (source != null) 'source': source.toJson(),
-        if (testSuite != null) 'testSuite': testSuite.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (source != null) 'source': source!.toJson(),
+        if (testSuite != null) 'testSuite': testSuite!.toJson(),
       };
 }
 
@@ -1523,13 +1486,13 @@ class TestRulesetResponse {
   /// Syntactic and semantic `Source` issues of varying severity.
   ///
   /// Issues of `ERROR` severity will prevent tests from executing.
-  core.List<Issue> issues;
+  core.List<Issue>? issues;
 
   /// The set of test results given the test cases in the `TestSuite`.
   ///
   /// The results will appear in the same order as the test cases appear in the
   /// `TestSuite`.
-  core.List<TestResult> testResults;
+  core.List<TestResult>? testResults;
 
   TestRulesetResponse();
 
@@ -1548,11 +1511,11 @@ class TestRulesetResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (issues != null)
-          'issues': issues.map((value) => value.toJson()).toList(),
+          'issues': issues!.map((value) => value.toJson()).toList(),
         if (testResults != null)
-          'testResults': testResults.map((value) => value.toJson()).toList(),
+          'testResults': testResults!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1563,7 +1526,7 @@ class TestRulesetResponse {
 /// or as part of a `Release` object as a pre-release check.
 class TestSuite {
   /// Collection of test cases associated with the `TestSuite`.
-  core.List<TestCase> testCases;
+  core.List<TestCase>? testCases;
 
   TestSuite();
 
@@ -1576,19 +1539,19 @@ class TestSuite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (testCases != null)
-          'testCases': testCases.map((value) => value.toJson()).toList(),
+          'testCases': testCases!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The request for FirebaseRulesService.UpdateReleasePatch.
 class UpdateReleaseRequest {
   /// `Release` to update.
-  Release release;
+  Release? release;
 
   /// Specifies which fields to update.
-  core.String updateMask;
+  core.String? updateMask;
 
   UpdateReleaseRequest();
 
@@ -1602,9 +1565,9 @@ class UpdateReleaseRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (release != null) 'release': release.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (release != null) 'release': release!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -1612,13 +1575,13 @@ class UpdateReleaseRequest {
 /// ExpressionValue.
 class ValueCount {
   /// The amount of times that expression returned.
-  core.int count;
+  core.int? count;
 
   /// The return value of the expression
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object value;
+  core.Object? value;
 
   ValueCount();
 
@@ -1631,22 +1594,22 @@ class ValueCount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// Store the position and access outcome for an expression visited in rules.
 class VisitedExpression {
   /// Position in the `Source` or `Ruleset` where an expression was visited.
-  SourcePosition sourcePosition;
+  SourcePosition? sourcePosition;
 
   /// The evaluated value for the visited expression, e.g. true/false
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object value;
+  core.Object? value;
 
   VisitedExpression();
 
@@ -1660,8 +1623,8 @@ class VisitedExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sourcePosition != null) 'sourcePosition': sourcePosition.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sourcePosition != null) 'sourcePosition': sourcePosition!.toJson(),
+        if (value != null) 'value': value!,
       };
 }

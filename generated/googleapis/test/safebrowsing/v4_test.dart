@@ -58,7 +58,10 @@ void checkGoogleSecuritySafebrowsingV4Checksum(
     api.GoogleSecuritySafebrowsingV4Checksum o) {
   buildCounterGoogleSecuritySafebrowsingV4Checksum++;
   if (buildCounterGoogleSecuritySafebrowsingV4Checksum < 3) {
-    unittest.expect(o.sha256, unittest.equals('foo'));
+    unittest.expect(
+      o.sha256!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleSecuritySafebrowsingV4Checksum--;
 }
@@ -80,8 +83,14 @@ void checkGoogleSecuritySafebrowsingV4ClientInfo(
     api.GoogleSecuritySafebrowsingV4ClientInfo o) {
   buildCounterGoogleSecuritySafebrowsingV4ClientInfo++;
   if (buildCounterGoogleSecuritySafebrowsingV4ClientInfo < 3) {
-    unittest.expect(o.clientId, unittest.equals('foo'));
-    unittest.expect(o.clientVersion, unittest.equals('foo'));
+    unittest.expect(
+      o.clientId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.clientVersion!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleSecuritySafebrowsingV4ClientInfo--;
 }
@@ -132,8 +141,8 @@ void checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest(
   if (buildCounterGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest <
       3) {
     checkGoogleSecuritySafebrowsingV4ClientInfo(
-        o.client as api.GoogleSecuritySafebrowsingV4ClientInfo);
-    checkUnnamed5044(o.listUpdateRequests);
+        o.client! as api.GoogleSecuritySafebrowsingV4ClientInfo);
+    checkUnnamed5044(o.listUpdateRequests!);
   }
   buildCounterGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest--;
 }
@@ -166,12 +175,24 @@ void checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateReq
   if (buildCounterGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest <
       3) {
     checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints(
-        o.constraints as api
+        o.constraints! as api
             .GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints);
-    unittest.expect(o.platformType, unittest.equals('foo'));
-    unittest.expect(o.state, unittest.equals('foo'));
-    unittest.expect(o.threatEntryType, unittest.equals('foo'));
-    unittest.expect(o.threatType, unittest.equals('foo'));
+    unittest.expect(
+      o.platformType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.threatEntryType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.threatType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest--;
 }
@@ -185,8 +206,14 @@ core.List<core.String> buildUnnamed5045() {
 
 void checkUnnamed5045(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int
@@ -216,12 +243,27 @@ void checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateReq
   buildCounterGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints++;
   if (buildCounterGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints <
       3) {
-    unittest.expect(o.deviceLocation, unittest.equals('foo'));
-    unittest.expect(o.language, unittest.equals('foo'));
-    unittest.expect(o.maxDatabaseEntries, unittest.equals(42));
-    unittest.expect(o.maxUpdateEntries, unittest.equals(42));
-    unittest.expect(o.region, unittest.equals('foo'));
-    checkUnnamed5045(o.supportedCompressions);
+    unittest.expect(
+      o.deviceLocation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.language!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxDatabaseEntries!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.maxUpdateEntries!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.region!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed5045(o.supportedCompressions!);
   }
   buildCounterGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints--;
 }
@@ -271,8 +313,11 @@ void checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse(
   buildCounterGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse++;
   if (buildCounterGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse <
       3) {
-    checkUnnamed5046(o.listUpdateResponses);
-    unittest.expect(o.minimumWaitDuration, unittest.equals('foo'));
+    checkUnnamed5046(o.listUpdateResponses!);
+    unittest.expect(
+      o.minimumWaitDuration!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse--;
 }
@@ -338,15 +383,30 @@ void checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateRe
   buildCounterGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse++;
   if (buildCounterGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse <
       3) {
-    checkUnnamed5047(o.additions);
+    checkUnnamed5047(o.additions!);
     checkGoogleSecuritySafebrowsingV4Checksum(
-        o.checksum as api.GoogleSecuritySafebrowsingV4Checksum);
-    unittest.expect(o.newClientState, unittest.equals('foo'));
-    unittest.expect(o.platformType, unittest.equals('foo'));
-    checkUnnamed5048(o.removals);
-    unittest.expect(o.responseType, unittest.equals('foo'));
-    unittest.expect(o.threatEntryType, unittest.equals('foo'));
-    unittest.expect(o.threatType, unittest.equals('foo'));
+        o.checksum! as api.GoogleSecuritySafebrowsingV4Checksum);
+    unittest.expect(
+      o.newClientState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.platformType!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed5048(o.removals!);
+    unittest.expect(
+      o.responseType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.threatEntryType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.threatType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse--;
 }
@@ -360,8 +420,14 @@ core.List<core.String> buildUnnamed5049() {
 
 void checkUnnamed5049(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleSecuritySafebrowsingV4FindFullHashesRequest = 0;
@@ -384,12 +450,12 @@ void checkGoogleSecuritySafebrowsingV4FindFullHashesRequest(
   buildCounterGoogleSecuritySafebrowsingV4FindFullHashesRequest++;
   if (buildCounterGoogleSecuritySafebrowsingV4FindFullHashesRequest < 3) {
     checkGoogleSecuritySafebrowsingV4ClientInfo(
-        o.apiClient as api.GoogleSecuritySafebrowsingV4ClientInfo);
+        o.apiClient! as api.GoogleSecuritySafebrowsingV4ClientInfo);
     checkGoogleSecuritySafebrowsingV4ClientInfo(
-        o.client as api.GoogleSecuritySafebrowsingV4ClientInfo);
-    checkUnnamed5049(o.clientStates);
+        o.client! as api.GoogleSecuritySafebrowsingV4ClientInfo);
+    checkUnnamed5049(o.clientStates!);
     checkGoogleSecuritySafebrowsingV4ThreatInfo(
-        o.threatInfo as api.GoogleSecuritySafebrowsingV4ThreatInfo);
+        o.threatInfo! as api.GoogleSecuritySafebrowsingV4ThreatInfo);
   }
   buildCounterGoogleSecuritySafebrowsingV4FindFullHashesRequest--;
 }
@@ -428,9 +494,15 @@ void checkGoogleSecuritySafebrowsingV4FindFullHashesResponse(
     api.GoogleSecuritySafebrowsingV4FindFullHashesResponse o) {
   buildCounterGoogleSecuritySafebrowsingV4FindFullHashesResponse++;
   if (buildCounterGoogleSecuritySafebrowsingV4FindFullHashesResponse < 3) {
-    checkUnnamed5050(o.matches);
-    unittest.expect(o.minimumWaitDuration, unittest.equals('foo'));
-    unittest.expect(o.negativeCacheDuration, unittest.equals('foo'));
+    checkUnnamed5050(o.matches!);
+    unittest.expect(
+      o.minimumWaitDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.negativeCacheDuration!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleSecuritySafebrowsingV4FindFullHashesResponse--;
 }
@@ -453,9 +525,9 @@ void checkGoogleSecuritySafebrowsingV4FindThreatMatchesRequest(
   buildCounterGoogleSecuritySafebrowsingV4FindThreatMatchesRequest++;
   if (buildCounterGoogleSecuritySafebrowsingV4FindThreatMatchesRequest < 3) {
     checkGoogleSecuritySafebrowsingV4ClientInfo(
-        o.client as api.GoogleSecuritySafebrowsingV4ClientInfo);
+        o.client! as api.GoogleSecuritySafebrowsingV4ClientInfo);
     checkGoogleSecuritySafebrowsingV4ThreatInfo(
-        o.threatInfo as api.GoogleSecuritySafebrowsingV4ThreatInfo);
+        o.threatInfo! as api.GoogleSecuritySafebrowsingV4ThreatInfo);
   }
   buildCounterGoogleSecuritySafebrowsingV4FindThreatMatchesRequest--;
 }
@@ -492,7 +564,7 @@ void checkGoogleSecuritySafebrowsingV4FindThreatMatchesResponse(
     api.GoogleSecuritySafebrowsingV4FindThreatMatchesResponse o) {
   buildCounterGoogleSecuritySafebrowsingV4FindThreatMatchesResponse++;
   if (buildCounterGoogleSecuritySafebrowsingV4FindThreatMatchesResponse < 3) {
-    checkUnnamed5051(o.matches);
+    checkUnnamed5051(o.matches!);
   }
   buildCounterGoogleSecuritySafebrowsingV4FindThreatMatchesResponse--;
 }
@@ -530,7 +602,7 @@ void checkGoogleSecuritySafebrowsingV4ListThreatListsResponse(
     api.GoogleSecuritySafebrowsingV4ListThreatListsResponse o) {
   buildCounterGoogleSecuritySafebrowsingV4ListThreatListsResponse++;
   if (buildCounterGoogleSecuritySafebrowsingV4ListThreatListsResponse < 3) {
-    checkUnnamed5052(o.threatLists);
+    checkUnnamed5052(o.threatLists!);
   }
   buildCounterGoogleSecuritySafebrowsingV4ListThreatListsResponse--;
 }
@@ -552,8 +624,14 @@ void checkGoogleSecuritySafebrowsingV4RawHashes(
     api.GoogleSecuritySafebrowsingV4RawHashes o) {
   buildCounterGoogleSecuritySafebrowsingV4RawHashes++;
   if (buildCounterGoogleSecuritySafebrowsingV4RawHashes < 3) {
-    unittest.expect(o.prefixSize, unittest.equals(42));
-    unittest.expect(o.rawHashes, unittest.equals('foo'));
+    unittest.expect(
+      o.prefixSize!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.rawHashes!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleSecuritySafebrowsingV4RawHashes--;
 }
@@ -567,8 +645,14 @@ core.List<core.int> buildUnnamed5053() {
 
 void checkUnnamed5053(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42));
-  unittest.expect(o[1], unittest.equals(42));
+  unittest.expect(
+    o[0],
+    unittest.equals(42),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42),
+  );
 }
 
 core.int buildCounterGoogleSecuritySafebrowsingV4RawIndices = 0;
@@ -587,7 +671,7 @@ void checkGoogleSecuritySafebrowsingV4RawIndices(
     api.GoogleSecuritySafebrowsingV4RawIndices o) {
   buildCounterGoogleSecuritySafebrowsingV4RawIndices++;
   if (buildCounterGoogleSecuritySafebrowsingV4RawIndices < 3) {
-    checkUnnamed5053(o.indices);
+    checkUnnamed5053(o.indices!);
   }
   buildCounterGoogleSecuritySafebrowsingV4RawIndices--;
 }
@@ -611,10 +695,22 @@ void checkGoogleSecuritySafebrowsingV4RiceDeltaEncoding(
     api.GoogleSecuritySafebrowsingV4RiceDeltaEncoding o) {
   buildCounterGoogleSecuritySafebrowsingV4RiceDeltaEncoding++;
   if (buildCounterGoogleSecuritySafebrowsingV4RiceDeltaEncoding < 3) {
-    unittest.expect(o.encodedData, unittest.equals('foo'));
-    unittest.expect(o.firstValue, unittest.equals('foo'));
-    unittest.expect(o.numEntries, unittest.equals(42));
-    unittest.expect(o.riceParameter, unittest.equals(42));
+    unittest.expect(
+      o.encodedData!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.firstValue!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numEntries!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.riceParameter!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleSecuritySafebrowsingV4RiceDeltaEncoding--;
 }
@@ -637,9 +733,18 @@ void checkGoogleSecuritySafebrowsingV4ThreatEntry(
     api.GoogleSecuritySafebrowsingV4ThreatEntry o) {
   buildCounterGoogleSecuritySafebrowsingV4ThreatEntry++;
   if (buildCounterGoogleSecuritySafebrowsingV4ThreatEntry < 3) {
-    unittest.expect(o.digest, unittest.equals('foo'));
-    unittest.expect(o.hash, unittest.equals('foo'));
-    unittest.expect(o.url, unittest.equals('foo'));
+    unittest.expect(
+      o.digest!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hash!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleSecuritySafebrowsingV4ThreatEntry--;
 }
@@ -678,7 +783,7 @@ void checkGoogleSecuritySafebrowsingV4ThreatEntryMetadata(
     api.GoogleSecuritySafebrowsingV4ThreatEntryMetadata o) {
   buildCounterGoogleSecuritySafebrowsingV4ThreatEntryMetadata++;
   if (buildCounterGoogleSecuritySafebrowsingV4ThreatEntryMetadata < 3) {
-    checkUnnamed5054(o.entries);
+    checkUnnamed5054(o.entries!);
   }
   buildCounterGoogleSecuritySafebrowsingV4ThreatEntryMetadata--;
 }
@@ -704,8 +809,14 @@ void checkGoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry(
   buildCounterGoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry++;
   if (buildCounterGoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry <
       3) {
-    unittest.expect(o.key, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry--;
 }
@@ -730,15 +841,18 @@ void checkGoogleSecuritySafebrowsingV4ThreatEntrySet(
     api.GoogleSecuritySafebrowsingV4ThreatEntrySet o) {
   buildCounterGoogleSecuritySafebrowsingV4ThreatEntrySet++;
   if (buildCounterGoogleSecuritySafebrowsingV4ThreatEntrySet < 3) {
-    unittest.expect(o.compressionType, unittest.equals('foo'));
+    unittest.expect(
+      o.compressionType!,
+      unittest.equals('foo'),
+    );
     checkGoogleSecuritySafebrowsingV4RawHashes(
-        o.rawHashes as api.GoogleSecuritySafebrowsingV4RawHashes);
+        o.rawHashes! as api.GoogleSecuritySafebrowsingV4RawHashes);
     checkGoogleSecuritySafebrowsingV4RawIndices(
-        o.rawIndices as api.GoogleSecuritySafebrowsingV4RawIndices);
+        o.rawIndices! as api.GoogleSecuritySafebrowsingV4RawIndices);
     checkGoogleSecuritySafebrowsingV4RiceDeltaEncoding(
-        o.riceHashes as api.GoogleSecuritySafebrowsingV4RiceDeltaEncoding);
+        o.riceHashes! as api.GoogleSecuritySafebrowsingV4RiceDeltaEncoding);
     checkGoogleSecuritySafebrowsingV4RiceDeltaEncoding(
-        o.riceIndices as api.GoogleSecuritySafebrowsingV4RiceDeltaEncoding);
+        o.riceIndices! as api.GoogleSecuritySafebrowsingV4RiceDeltaEncoding);
   }
   buildCounterGoogleSecuritySafebrowsingV4ThreatEntrySet--;
 }
@@ -782,14 +896,20 @@ void checkGoogleSecuritySafebrowsingV4ThreatHit(
   buildCounterGoogleSecuritySafebrowsingV4ThreatHit++;
   if (buildCounterGoogleSecuritySafebrowsingV4ThreatHit < 3) {
     checkGoogleSecuritySafebrowsingV4ClientInfo(
-        o.clientInfo as api.GoogleSecuritySafebrowsingV4ClientInfo);
+        o.clientInfo! as api.GoogleSecuritySafebrowsingV4ClientInfo);
     checkGoogleSecuritySafebrowsingV4ThreatEntry(
-        o.entry as api.GoogleSecuritySafebrowsingV4ThreatEntry);
-    unittest.expect(o.platformType, unittest.equals('foo'));
-    checkUnnamed5055(o.resources);
-    unittest.expect(o.threatType, unittest.equals('foo'));
+        o.entry! as api.GoogleSecuritySafebrowsingV4ThreatEntry);
+    unittest.expect(
+      o.platformType!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed5055(o.resources!);
+    unittest.expect(
+      o.threatType!,
+      unittest.equals('foo'),
+    );
     checkGoogleSecuritySafebrowsingV4ThreatHitUserInfo(
-        o.userInfo as api.GoogleSecuritySafebrowsingV4ThreatHitUserInfo);
+        o.userInfo! as api.GoogleSecuritySafebrowsingV4ThreatHitUserInfo);
   }
   buildCounterGoogleSecuritySafebrowsingV4ThreatHit--;
 }
@@ -813,10 +933,22 @@ void checkGoogleSecuritySafebrowsingV4ThreatHitThreatSource(
     api.GoogleSecuritySafebrowsingV4ThreatHitThreatSource o) {
   buildCounterGoogleSecuritySafebrowsingV4ThreatHitThreatSource++;
   if (buildCounterGoogleSecuritySafebrowsingV4ThreatHitThreatSource < 3) {
-    unittest.expect(o.referrer, unittest.equals('foo'));
-    unittest.expect(o.remoteIp, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
-    unittest.expect(o.url, unittest.equals('foo'));
+    unittest.expect(
+      o.referrer!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.remoteIp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleSecuritySafebrowsingV4ThreatHitThreatSource--;
 }
@@ -838,8 +970,14 @@ void checkGoogleSecuritySafebrowsingV4ThreatHitUserInfo(
     api.GoogleSecuritySafebrowsingV4ThreatHitUserInfo o) {
   buildCounterGoogleSecuritySafebrowsingV4ThreatHitUserInfo++;
   if (buildCounterGoogleSecuritySafebrowsingV4ThreatHitUserInfo < 3) {
-    unittest.expect(o.regionCode, unittest.equals('foo'));
-    unittest.expect(o.userId, unittest.equals('foo'));
+    unittest.expect(
+      o.regionCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.userId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleSecuritySafebrowsingV4ThreatHitUserInfo--;
 }
@@ -853,8 +991,14 @@ core.List<core.String> buildUnnamed5056() {
 
 void checkUnnamed5056(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.GoogleSecuritySafebrowsingV4ThreatEntry> buildUnnamed5057() {
@@ -882,8 +1026,14 @@ core.List<core.String> buildUnnamed5058() {
 
 void checkUnnamed5058(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed5059() {
@@ -895,8 +1045,14 @@ core.List<core.String> buildUnnamed5059() {
 
 void checkUnnamed5059(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleSecuritySafebrowsingV4ThreatInfo = 0;
@@ -918,10 +1074,10 @@ void checkGoogleSecuritySafebrowsingV4ThreatInfo(
     api.GoogleSecuritySafebrowsingV4ThreatInfo o) {
   buildCounterGoogleSecuritySafebrowsingV4ThreatInfo++;
   if (buildCounterGoogleSecuritySafebrowsingV4ThreatInfo < 3) {
-    checkUnnamed5056(o.platformTypes);
-    checkUnnamed5057(o.threatEntries);
-    checkUnnamed5058(o.threatEntryTypes);
-    checkUnnamed5059(o.threatTypes);
+    checkUnnamed5056(o.platformTypes!);
+    checkUnnamed5057(o.threatEntries!);
+    checkUnnamed5058(o.threatEntryTypes!);
+    checkUnnamed5059(o.threatTypes!);
   }
   buildCounterGoogleSecuritySafebrowsingV4ThreatInfo--;
 }
@@ -944,9 +1100,18 @@ void checkGoogleSecuritySafebrowsingV4ThreatListDescriptor(
     api.GoogleSecuritySafebrowsingV4ThreatListDescriptor o) {
   buildCounterGoogleSecuritySafebrowsingV4ThreatListDescriptor++;
   if (buildCounterGoogleSecuritySafebrowsingV4ThreatListDescriptor < 3) {
-    unittest.expect(o.platformType, unittest.equals('foo'));
-    unittest.expect(o.threatEntryType, unittest.equals('foo'));
-    unittest.expect(o.threatType, unittest.equals('foo'));
+    unittest.expect(
+      o.platformType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.threatEntryType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.threatType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleSecuritySafebrowsingV4ThreatListDescriptor--;
 }
@@ -973,14 +1138,26 @@ void checkGoogleSecuritySafebrowsingV4ThreatMatch(
     api.GoogleSecuritySafebrowsingV4ThreatMatch o) {
   buildCounterGoogleSecuritySafebrowsingV4ThreatMatch++;
   if (buildCounterGoogleSecuritySafebrowsingV4ThreatMatch < 3) {
-    unittest.expect(o.cacheDuration, unittest.equals('foo'));
-    unittest.expect(o.platformType, unittest.equals('foo'));
+    unittest.expect(
+      o.cacheDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.platformType!,
+      unittest.equals('foo'),
+    );
     checkGoogleSecuritySafebrowsingV4ThreatEntry(
-        o.threat as api.GoogleSecuritySafebrowsingV4ThreatEntry);
-    checkGoogleSecuritySafebrowsingV4ThreatEntryMetadata(o.threatEntryMetadata
+        o.threat! as api.GoogleSecuritySafebrowsingV4ThreatEntry);
+    checkGoogleSecuritySafebrowsingV4ThreatEntryMetadata(o.threatEntryMetadata!
         as api.GoogleSecuritySafebrowsingV4ThreatEntryMetadata);
-    unittest.expect(o.threatEntryType, unittest.equals('foo'));
-    unittest.expect(o.threatType, unittest.equals('foo'));
+    unittest.expect(
+      o.threatEntryType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.threatType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleSecuritySafebrowsingV4ThreatMatch--;
 }
@@ -1284,14 +1461,21 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("v4/encodedFullHashes/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals("v4/encodedFullHashes/"),
+        );
         pathOffset += 21;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_encodedRequest'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_encodedRequest'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1309,10 +1493,17 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["clientId"].first, unittest.equals(arg_clientId));
-        unittest.expect(queryMap["clientVersion"].first,
-            unittest.equals(arg_clientVersion));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["clientId"]!.first,
+          unittest.equals(arg_clientId),
+        );
+        unittest.expect(
+          queryMap["clientVersion"]!.first,
+          unittest.equals(arg_clientVersion),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1347,14 +1538,21 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("v4/encodedUpdates/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("v4/encodedUpdates/"),
+        );
         pathOffset += 18;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_encodedRequest'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_encodedRequest'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1372,10 +1570,17 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["clientId"].first, unittest.equals(arg_clientId));
-        unittest.expect(queryMap["clientVersion"].first,
-            unittest.equals(arg_clientVersion));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["clientId"]!.first,
+          unittest.equals(arg_clientId),
+        );
+        unittest.expect(
+          queryMap["clientVersion"]!.first,
+          unittest.equals(arg_clientVersion),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1415,10 +1620,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("v4/fullHashes:find"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("v4/fullHashes:find"),
+        );
         pathOffset += 18;
 
         var query = (req.url).query;
@@ -1436,7 +1645,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1471,10 +1683,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("v4/threatHits"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals("v4/threatHits"),
+        );
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -1492,7 +1708,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1526,10 +1745,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26),
-            unittest.equals("v4/threatListUpdates:fetch"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 26),
+          unittest.equals("v4/threatListUpdates:fetch"),
+        );
         pathOffset += 26;
 
         var query = (req.url).query;
@@ -1547,7 +1770,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1576,10 +1802,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14),
-            unittest.equals("v4/threatLists"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 14),
+          unittest.equals("v4/threatLists"),
+        );
         pathOffset += 14;
 
         var query = (req.url).query;
@@ -1597,7 +1827,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1632,10 +1865,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("v4/threatMatches:find"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals("v4/threatMatches:find"),
+        );
         pathOffset += 21;
 
         var query = (req.url).query;
@@ -1653,7 +1890,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

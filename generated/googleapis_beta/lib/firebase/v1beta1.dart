@@ -117,9 +117,9 @@ class AvailableProjectsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAvailableProjectsResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -166,11 +166,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -254,13 +251,9 @@ class ProjectsResource {
   async.Future<Operation> addFirebase(
     AddFirebaseRequest request,
     core.String project, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -341,13 +334,9 @@ class ProjectsResource {
   async.Future<Operation> addGoogleAnalytics(
     AddGoogleAnalyticsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -387,11 +376,8 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<FirebaseProject> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -434,11 +420,8 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<AdminSdkConfig> getAdminSdkConfig(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -480,11 +463,8 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<AnalyticsDetails> getAnalyticsDetails(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -532,9 +512,9 @@ class ProjectsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListFirebaseProjectsResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -588,14 +568,10 @@ class ProjectsResource {
   async.Future<FirebaseProject> patch(
     FirebaseProject request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -651,13 +627,9 @@ class ProjectsResource {
   async.Future<Empty> removeAnalytics(
     RemoveAnalyticsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -730,14 +702,11 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<SearchFirebaseAppsResponse> searchApps(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -799,13 +768,9 @@ class ProjectsAndroidAppsResource {
   async.Future<Operation> create(
     AndroidApp request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -847,11 +812,8 @@ class ProjectsAndroidAppsResource {
   /// this method will complete with the same error.
   async.Future<AndroidApp> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -892,11 +854,8 @@ class ProjectsAndroidAppsResource {
   /// this method will complete with the same error.
   async.Future<AndroidAppConfig> getConfig(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -946,13 +905,10 @@ class ProjectsAndroidAppsResource {
   /// this method will complete with the same error.
   async.Future<ListAndroidAppsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1007,14 +963,10 @@ class ProjectsAndroidAppsResource {
   async.Future<AndroidApp> patch(
     AndroidApp request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1067,13 +1019,9 @@ class ProjectsAndroidAppsShaResource {
   async.Future<ShaCertificate> create(
     ShaCertificate request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1118,11 +1066,8 @@ class ProjectsAndroidAppsShaResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1162,11 +1107,8 @@ class ProjectsAndroidAppsShaResource {
   /// this method will complete with the same error.
   async.Future<ListShaCertificatesResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1240,13 +1182,10 @@ class ProjectsAvailableLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListAvailableLocationsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1327,13 +1266,9 @@ class ProjectsDefaultLocationResource {
   async.Future<Operation> finalize(
     FinalizeDefaultLocationRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1387,13 +1322,9 @@ class ProjectsIosAppsResource {
   async.Future<Operation> create(
     IosApp request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1435,11 +1366,8 @@ class ProjectsIosAppsResource {
   /// this method will complete with the same error.
   async.Future<IosApp> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1478,11 +1406,8 @@ class ProjectsIosAppsResource {
   /// this method will complete with the same error.
   async.Future<IosAppConfig> getConfig(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1532,13 +1457,10 @@ class ProjectsIosAppsResource {
   /// this method will complete with the same error.
   async.Future<ListIosAppsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1593,14 +1515,10 @@ class ProjectsIosAppsResource {
   async.Future<IosApp> patch(
     IosApp request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1653,13 +1571,9 @@ class ProjectsWebAppsResource {
   async.Future<Operation> create(
     WebApp request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1701,11 +1615,8 @@ class ProjectsWebAppsResource {
   /// this method will complete with the same error.
   async.Future<WebApp> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1744,11 +1655,8 @@ class ProjectsWebAppsResource {
   /// this method will complete with the same error.
   async.Future<WebAppConfig> getConfig(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1798,13 +1706,10 @@ class ProjectsWebAppsResource {
   /// this method will complete with the same error.
   async.Future<ListWebAppsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1859,14 +1764,10 @@ class ProjectsWebAppsResource {
   async.Future<WebApp> patch(
     WebApp request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1895,7 +1796,7 @@ class AddFirebaseRequest {
   /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
   ///
   /// Deprecated.
-  core.String locationId;
+  core.String? locationId;
 
   /// Instead, to link a Project with a Google Analytics account, call
   /// \[`AddGoogleAnalytics`\](../../v1beta1/projects/addGoogleAnalytics) after
@@ -1906,7 +1807,7 @@ class AddFirebaseRequest {
   /// `com.google.i18n.identifiers.RegionCode`.
   ///
   /// Deprecated.
-  core.String regionCode;
+  core.String? regionCode;
 
   /// Instead, to link a Project with a Google Analytics account, call
   /// \[`AddGoogleAnalytics`\](../../v1beta1/projects/addGoogleAnalytics) after
@@ -1916,7 +1817,7 @@ class AddFirebaseRequest {
   /// example: America/Los_Angeles or Africa/Abidjan
   ///
   /// Deprecated.
-  core.String timeZone;
+  core.String? timeZone;
 
   AddFirebaseRequest();
 
@@ -1932,10 +1833,10 @@ class AddFirebaseRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (locationId != null) 'locationId': locationId,
-        if (regionCode != null) 'regionCode': regionCode,
-        if (timeZone != null) 'timeZone': timeZone,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (locationId != null) 'locationId': locationId!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 
@@ -1947,11 +1848,11 @@ class AddGoogleAnalyticsRequest {
   /// Specifying this field will provision a new Google Analytics property in
   /// your Google Analytics account and associate the new property with the
   /// `FirebaseProject`.
-  core.String analyticsAccountId;
+  core.String? analyticsAccountId;
 
   /// The ID for the existing Google Analytics property that you want to
   /// associate with the `FirebaseProject`.
-  core.String analyticsPropertyId;
+  core.String? analyticsPropertyId;
 
   AddGoogleAnalyticsRequest();
 
@@ -1964,17 +1865,17 @@ class AddGoogleAnalyticsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (analyticsAccountId != null)
-          'analyticsAccountId': analyticsAccountId,
+          'analyticsAccountId': analyticsAccountId!,
         if (analyticsPropertyId != null)
-          'analyticsPropertyId': analyticsPropertyId,
+          'analyticsPropertyId': analyticsPropertyId!,
       };
 }
 
 class AdminSdkConfig {
   /// The default Firebase Realtime Database URL.
-  core.String databaseURL;
+  core.String? databaseURL;
 
   /// The ID of the Project's default GCP resource location.
   ///
@@ -1984,7 +1885,7 @@ class AdminSdkConfig {
   /// finalized yet. To set a Project's default GCP resource location, call
   /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
   /// you add Firebase resources to the Project.
-  core.String locationId;
+  core.String? locationId;
 
   /// A user-assigned unique identifier for the `FirebaseProject`.
   ///
@@ -1993,10 +1894,10 @@ class AdminSdkConfig {
   /// convenience alias to reference the Project.
   ///
   /// Immutable.
-  core.String projectId;
+  core.String? projectId;
 
   /// The default Cloud Storage for Firebase storage bucket name.
-  core.String storageBucket;
+  core.String? storageBucket;
 
   AdminSdkConfig();
 
@@ -2015,11 +1916,11 @@ class AdminSdkConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (databaseURL != null) 'databaseURL': databaseURL,
-        if (locationId != null) 'locationId': locationId,
-        if (projectId != null) 'projectId': projectId,
-        if (storageBucket != null) 'storageBucket': storageBucket,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (databaseURL != null) 'databaseURL': databaseURL!,
+        if (locationId != null) 'locationId': locationId!,
+        if (projectId != null) 'projectId': projectId!,
+        if (storageBucket != null) 'storageBucket': storageBucket!,
       };
 }
 
@@ -2029,7 +1930,7 @@ class AnalyticsDetails {
   ///
   /// This object contains the details of the Google Analytics property
   /// associated with the Project.
-  AnalyticsProperty analyticsProperty;
+  AnalyticsProperty? analyticsProperty;
 
   /// - For `AndroidApps` and `IosApps`: a map of `app` to `streamId` for each
   /// Firebase App in the specified `FirebaseProject`.
@@ -2038,7 +1939,7 @@ class AnalyticsDetails {
   /// `app` to `streamId` and `measurementId` for each `WebApp` in the specified
   /// `FirebaseProject`. Each `app`, `streamId`, and `measurementId` appears
   /// only once.
-  core.List<StreamMapping> streamMappings;
+  core.List<StreamMapping>? streamMappings;
 
   AnalyticsDetails();
 
@@ -2055,12 +1956,12 @@ class AnalyticsDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (analyticsProperty != null)
-          'analyticsProperty': analyticsProperty.toJson(),
+          'analyticsProperty': analyticsProperty!.toJson(),
         if (streamMappings != null)
           'streamMappings':
-              streamMappings.map((value) => value.toJson()).toList(),
+              streamMappings!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2068,7 +1969,7 @@ class AnalyticsDetails {
 class AnalyticsProperty {
   /// The display name of the Google Analytics property associated with the
   /// specified `FirebaseProject`.
-  core.String displayName;
+  core.String? displayName;
 
   /// The globally unique, Google-assigned identifier of the Google Analytics
   /// property associated with the specified `FirebaseProject`.
@@ -2078,7 +1979,7 @@ class AnalyticsProperty {
   /// link the `FirebaseProject` with a Google Analytics account, the value in
   /// this `id` field is the same as the ID of the property either specified or
   /// provisioned with that call to `AddGoogleAnalytics`.
-  core.String id;
+  core.String? id;
 
   AnalyticsProperty();
 
@@ -2091,9 +1992,9 @@ class AnalyticsProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
       };
 }
 
@@ -2105,10 +2006,10 @@ class AndroidApp {
   /// is not specified.
   ///
   /// Immutable.
-  core.String appId;
+  core.String? appId;
 
   /// The user-assigned display name for the `AndroidApp`.
-  core.String displayName;
+  core.String? displayName;
 
   /// The resource name of the AndroidApp, in the format: projects/
   /// PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent
@@ -2122,19 +2023,19 @@ class AndroidApp {
   /// value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
   /// * APP_ID: the globally unique, Firebase-assigned identifier for the App
   /// (see \[`appId`\](../projects.androidApps#AndroidApp.FIELDS.app_id)).
-  core.String name;
+  core.String? name;
 
   /// The canonical package name of the Android app as would appear in the
   /// Google Play Developer Console.
   ///
   /// Immutable.
-  core.String packageName;
+  core.String? packageName;
 
   /// A user-assigned unique identifier of the parent FirebaseProject for the
   /// `AndroidApp`.
   ///
   /// Immutable.
-  core.String projectId;
+  core.String? projectId;
 
   AndroidApp();
 
@@ -2156,21 +2057,21 @@ class AndroidApp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appId != null) 'appId': appId,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (packageName != null) 'packageName': packageName,
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appId != null) 'appId': appId!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (packageName != null) 'packageName': packageName!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
 /// Configuration metadata of a single Firebase App for Android.
 class AndroidAppConfig {
   /// The contents of the JSON configuration file.
-  core.String configFileContents;
+  core.String? configFileContents;
   core.List<core.int> get configFileContentsAsBytes =>
-      convert.base64.decode(configFileContents);
+      convert.base64.decode(configFileContents!);
 
   set configFileContentsAsBytes(core.List<core.int> _bytes) {
     configFileContents =
@@ -2181,7 +2082,7 @@ class AndroidAppConfig {
   /// typically saved as.
   ///
   /// For example: `google-services.json`
-  core.String configFilename;
+  core.String? configFilename;
 
   AndroidAppConfig();
 
@@ -2194,10 +2095,10 @@ class AndroidAppConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (configFileContents != null)
-          'configFileContents': configFileContents,
-        if (configFilename != null) 'configFilename': configFilename,
+          'configFileContents': configFileContents!,
+        if (configFilename != null) 'configFilename': configFilename!,
       };
 }
 
@@ -2212,7 +2113,7 @@ class DefaultResources {
   /// alphanumeric characters to create your default Hosting site name. For
   /// example, if your `projectId` is `myproject123`, your default Hosting site
   /// name might be: `myproject123-a5c16`
-  core.String hostingSite;
+  core.String? hostingSite;
 
   /// The ID of the Project's default GCP resource location.
   ///
@@ -2222,7 +2123,7 @@ class DefaultResources {
   /// finalized yet. To set a Project's default GCP resource location, call
   /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
   /// you add Firebase resources to the Project.
-  core.String locationId;
+  core.String? locationId;
 
   /// The default Firebase Realtime Database instance name, in the format:
   /// PROJECT_ID Though rare, your `projectId` might already be used as the name
@@ -2234,11 +2135,11 @@ class DefaultResources {
   /// alphanumeric characters to create your default Realtime Database instance
   /// name. For example, if your `projectId` is `myproject123`, your default
   /// database instance name might be: `myproject123-a5c16`
-  core.String realtimeDatabaseInstance;
+  core.String? realtimeDatabaseInstance;
 
   /// The default Cloud Storage for Firebase storage bucket, in the format:
   /// PROJECT_ID.appspot.com
-  core.String storageBucket;
+  core.String? storageBucket;
 
   DefaultResources();
 
@@ -2258,12 +2159,12 @@ class DefaultResources {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hostingSite != null) 'hostingSite': hostingSite,
-        if (locationId != null) 'locationId': locationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hostingSite != null) 'hostingSite': hostingSite!,
+        if (locationId != null) 'locationId': locationId!,
         if (realtimeDatabaseInstance != null)
-          'realtimeDatabaseInstance': realtimeDatabaseInstance,
-        if (storageBucket != null) 'storageBucket': storageBucket,
+          'realtimeDatabaseInstance': realtimeDatabaseInstance!,
+        if (storageBucket != null) 'storageBucket': storageBucket!,
       };
 }
 
@@ -2281,7 +2182,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 class FinalizeDefaultLocationRequest {
@@ -2289,7 +2190,7 @@ class FinalizeDefaultLocationRequest {
   ///
   /// The location must be one of the available
   /// [GCP resource locations](https://firebase.google.com/docs/projects/locations).
-  core.String locationId;
+  core.String? locationId;
 
   FinalizeDefaultLocationRequest();
 
@@ -2299,8 +2200,8 @@ class FinalizeDefaultLocationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (locationId != null) 'locationId': locationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (locationId != null) 'locationId': locationId!,
       };
 }
 
@@ -2312,15 +2213,15 @@ class FirebaseAppInfo {
   /// is not specified.
   ///
   /// Output only. Immutable.
-  core.String appId;
+  core.String? appId;
 
   /// The user-assigned display name of the Firebase App.
-  core.String displayName;
+  core.String? displayName;
 
   /// The resource name of the Firebase App, in the format: projects/PROJECT_ID
   /// /iosApps/APP_ID or projects/PROJECT_ID/androidApps/APP_ID or projects/
   /// PROJECT_ID/webApps/APP_ID
-  core.String name;
+  core.String? name;
 
   /// The platform-specific identifier of the App.
   ///
@@ -2333,7 +2234,7 @@ class FirebaseAppInfo {
   /// and its associated Apps.
   ///
   /// Output only. Immutable.
-  core.String namespace;
+  core.String? namespace;
 
   /// The platform of the Firebase App.
   /// Possible string values are:
@@ -2342,7 +2243,7 @@ class FirebaseAppInfo {
   /// - "IOS" : The Firebase App is associated with iOS.
   /// - "ANDROID" : The Firebase App is associated with Android.
   /// - "WEB" : The Firebase App is associated with web.
-  core.String platform;
+  core.String? platform;
 
   FirebaseAppInfo();
 
@@ -2364,12 +2265,12 @@ class FirebaseAppInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appId != null) 'appId': appId,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (namespace != null) 'namespace': namespace,
-        if (platform != null) 'platform': platform,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appId != null) 'appId': appId!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (namespace != null) 'namespace': namespace!,
+        if (platform != null) 'platform': platform!,
       };
 }
 
@@ -2387,7 +2288,7 @@ class FirebaseAppInfo {
 /// allows for easy interop with Google APIs.
 class FirebaseProject {
   /// The user-assigned display name of the Project.
-  core.String displayName;
+  core.String? displayName;
 
   /// The resource name of the Project, in the format:
   /// projects/PROJECT_IDENTIFIER PROJECT_IDENTIFIER: the Project's
@@ -2398,7 +2299,7 @@ class FirebaseProject {
   /// Learn more about using project identifiers in Google's
   /// [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the
   /// value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
-  core.String name;
+  core.String? name;
 
   /// A user-assigned unique identifier for the Project.
   ///
@@ -2407,7 +2308,7 @@ class FirebaseProject {
   /// convenience alias to reference the Project.
   ///
   /// Immutable.
-  core.String projectId;
+  core.String? projectId;
 
   /// The globally unique, Google-assigned canonical identifier for the Project.
   ///
@@ -2415,10 +2316,10 @@ class FirebaseProject {
   /// to Firebase or third-party services.
   ///
   /// Immutable.
-  core.String projectNumber;
+  core.String? projectNumber;
 
   /// The default Firebase resources associated with the Project.
-  DefaultResources resources;
+  DefaultResources? resources;
 
   /// The lifecycle state of the Project.
   ///
@@ -2431,7 +2332,7 @@ class FirebaseProject {
   /// - "STATE_UNSPECIFIED" : Unspecified state.
   /// - "ACTIVE" : The normal and active state.
   /// - "DELETED" : The Project has been marked for deletion by the user.
-  core.String state;
+  core.String? state;
 
   FirebaseProject();
 
@@ -2457,13 +2358,13 @@ class FirebaseProject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (projectId != null) 'projectId': projectId,
-        if (projectNumber != null) 'projectNumber': projectNumber,
-        if (resources != null) 'resources': resources.toJson(),
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (projectId != null) 'projectId': projectId!,
+        if (projectNumber != null) 'projectNumber': projectNumber!,
+        if (resources != null) 'resources': resources!.toJson(),
+        if (state != null) 'state': state!,
       };
 }
 
@@ -2475,20 +2376,20 @@ class IosApp {
   /// is not specified.
   ///
   /// Immutable.
-  core.String appId;
+  core.String? appId;
 
   /// The automatically generated Apple ID assigned to the iOS app by Apple in
   /// the iOS App Store.
-  core.String appStoreId;
+  core.String? appStoreId;
 
   /// The canonical bundle ID of the iOS app as it would appear in the iOS
   /// AppStore.
   ///
   /// Immutable.
-  core.String bundleId;
+  core.String? bundleId;
 
   /// The user-assigned display name for the `IosApp`.
-  core.String displayName;
+  core.String? displayName;
 
   /// The resource name of the IosApp, in the format:
   /// projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the
@@ -2502,13 +2403,13 @@ class IosApp {
   /// value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
   /// * APP_ID: the globally unique, Firebase-assigned identifier for the App
   /// (see \[`appId`\](../projects.iosApps#IosApp.FIELDS.app_id)).
-  core.String name;
+  core.String? name;
 
   /// A user-assigned unique identifier of the parent FirebaseProject for the
   /// `IosApp`.
   ///
   /// Immutable.
-  core.String projectId;
+  core.String? projectId;
 
   IosApp();
 
@@ -2533,22 +2434,22 @@ class IosApp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appId != null) 'appId': appId,
-        if (appStoreId != null) 'appStoreId': appStoreId,
-        if (bundleId != null) 'bundleId': bundleId,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appId != null) 'appId': appId!,
+        if (appStoreId != null) 'appStoreId': appStoreId!,
+        if (bundleId != null) 'bundleId': bundleId!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
 /// Configuration metadata of a single Firebase App for iOS.
 class IosAppConfig {
   /// The content of the XML configuration file.
-  core.String configFileContents;
+  core.String? configFileContents;
   core.List<core.int> get configFileContentsAsBytes =>
-      convert.base64.decode(configFileContents);
+      convert.base64.decode(configFileContents!);
 
   set configFileContentsAsBytes(core.List<core.int> _bytes) {
     configFileContents =
@@ -2559,7 +2460,7 @@ class IosAppConfig {
   /// saved as.
   ///
   /// For example: `GoogleService-Info.plist`
-  core.String configFilename;
+  core.String? configFilename;
 
   IosAppConfig();
 
@@ -2572,16 +2473,16 @@ class IosAppConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (configFileContents != null)
-          'configFileContents': configFileContents,
-        if (configFilename != null) 'configFilename': configFilename,
+          'configFileContents': configFileContents!,
+        if (configFilename != null) 'configFilename': configFilename!,
       };
 }
 
 class ListAndroidAppsResponse {
   /// List of each `AndroidApp` associated with the specified `FirebaseProject`.
-  core.List<AndroidApp> apps;
+  core.List<AndroidApp>? apps;
 
   /// If the result list is too large to fit in a single response, then a token
   /// is returned.
@@ -2590,7 +2491,7 @@ class ListAndroidAppsResponse {
   /// This token can be used in a subsequent call to `ListAndroidApps` to find
   /// the next group of Apps. Page tokens are short-lived and should not be
   /// persisted.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListAndroidAppsResponse();
 
@@ -2606,15 +2507,15 @@ class ListAndroidAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apps != null) 'apps': apps.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apps != null) 'apps': apps!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 class ListAvailableLocationsResponse {
   /// One page of results from a call to `ListAvailableLocations`.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// If the result list is too large to fit in a single response, then a token
   /// is returned.
@@ -2623,7 +2524,7 @@ class ListAvailableLocationsResponse {
   /// all available locations have been listed. This token can be used in a
   /// subsequent call to `ListAvailableLocations` to find more locations. Page
   /// tokens are short-lived and should not be persisted.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListAvailableLocationsResponse();
 
@@ -2639,10 +2540,10 @@ class ListAvailableLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2654,11 +2555,11 @@ class ListAvailableProjectsResponse {
   /// This token can be used in a subsequent calls to `ListAvailableProjects` to
   /// find the next group of Projects. Page tokens are short-lived and should
   /// not be persisted.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of GCP `Projects` which can have Firebase resources added to
   /// them.
-  core.List<ProjectInfo> projectInfo;
+  core.List<ProjectInfo>? projectInfo;
 
   ListAvailableProjectsResponse();
 
@@ -2674,10 +2575,10 @@ class ListAvailableProjectsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (projectInfo != null)
-          'projectInfo': projectInfo.map((value) => value.toJson()).toList(),
+          'projectInfo': projectInfo!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2689,10 +2590,10 @@ class ListFirebaseProjectsResponse {
   /// This token can be used in a subsequent calls to `ListFirebaseProjects` to
   /// find the next group of Projects. Page tokens are short-lived and should
   /// not be persisted.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// One page of the list of Projects that are accessible to the caller.
-  core.List<FirebaseProject> results;
+  core.List<FirebaseProject>? results;
 
   ListFirebaseProjectsResponse();
 
@@ -2708,16 +2609,16 @@ class ListFirebaseProjectsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
+          'results': results!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ListIosAppsResponse {
   /// List of each `IosApp` associated with the specified `FirebaseProject`.
-  core.List<IosApp> apps;
+  core.List<IosApp>? apps;
 
   /// If the result list is too large to fit in a single response, then a token
   /// is returned.
@@ -2726,7 +2627,7 @@ class ListIosAppsResponse {
   /// This token can be used in a subsequent call to `ListIosApps` to find the
   /// next group of Apps. Page tokens are short-lived and should not be
   /// persisted.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListIosAppsResponse();
 
@@ -2742,15 +2643,15 @@ class ListIosAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apps != null) 'apps': apps.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apps != null) 'apps': apps!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 class ListShaCertificatesResponse {
   /// The list of each `ShaCertificate` associated with the `AndroidApp`.
-  core.List<ShaCertificate> certificates;
+  core.List<ShaCertificate>? certificates;
 
   ListShaCertificatesResponse();
 
@@ -2763,15 +2664,15 @@ class ListShaCertificatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (certificates != null)
-          'certificates': certificates.map((value) => value.toJson()).toList(),
+          'certificates': certificates!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ListWebAppsResponse {
   /// List of each `WebApp` associated with the specified `FirebaseProject`.
-  core.List<WebApp> apps;
+  core.List<WebApp>? apps;
 
   /// If the result list is too large to fit in a single response, then a token
   /// is returned.
@@ -2780,7 +2681,7 @@ class ListWebAppsResponse {
   /// This token can be used in a subsequent call to `ListWebApps` to find the
   /// next group of Apps. Page tokens are short-lived and should not be
   /// persisted.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListWebAppsResponse();
 
@@ -2796,22 +2697,22 @@ class ListWebAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apps != null) 'apps': apps.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apps != null) 'apps': apps!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// A GCP resource location that can be selected for a FirebaseProject.
 class Location {
   /// Products and services that are available in the GCP resource location.
-  core.List<core.String> features;
+  core.List<core.String>? features;
 
   /// The ID of the GCP resource location.
   ///
   /// It will be one of the available
   /// [GCP resource locations](https://firebase.google.com/docs/projects/locations#types).
-  core.String locationId;
+  core.String? locationId;
 
   /// Indicates whether the GCP resource location is a \[regional or
   /// multi-regional
@@ -2825,7 +2726,7 @@ class Location {
   /// - "MULTI_REGIONAL" : The location is a multi-regional location. Data in a
   /// multi-region location is replicated in multiple regions. Within each
   /// region, data is replicated in multiple zones.
-  core.String type;
+  core.String? type;
 
   Location();
 
@@ -2843,10 +2744,10 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (features != null) 'features': features,
-        if (locationId != null) 'locationId': locationId,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (features != null) 'features': features!,
+        if (locationId != null) 'locationId': locationId!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2858,7 +2759,7 @@ class MessageSet {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -2868,10 +2769,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -2882,14 +2783,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -2902,7 +2803,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -2937,19 +2838,19 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
 /// A reference to a Google Cloud Platform (GCP) `Project`.
 class ProjectInfo {
   /// The user-assigned display name of the GCP `Project`, for example: `My App`
-  core.String displayName;
+  core.String? displayName;
 
   /// The ID of the Project's default GCP resource location.
   ///
@@ -2960,13 +2861,13 @@ class ProjectInfo {
   /// location. To set a Project's default GCP resource location, call
   /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
   /// you add Firebase resources to the Project.
-  core.String locationId;
+  core.String? locationId;
 
   /// The resource name of the GCP `Project` to which Firebase resources can be
   /// added, in the format: projects/PROJECT_IDENTIFIER Refer to the
   /// `FirebaseProject` \[`name`\](../projects#FirebaseProject.FIELDS.name)
   /// field for details about PROJECT_IDENTIFIER values.
-  core.String project;
+  core.String? project;
 
   ProjectInfo();
 
@@ -2982,10 +2883,10 @@ class ProjectInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (locationId != null) 'locationId': locationId,
-        if (project != null) 'project': project,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (locationId != null) 'locationId': locationId!,
+        if (project != null) 'project': project!,
       };
 }
 
@@ -3000,7 +2901,7 @@ class RemoveAnalyticsRequest {
   /// Failed` error.
   ///
   /// Optional.
-  core.String analyticsPropertyId;
+  core.String? analyticsPropertyId;
 
   RemoveAnalyticsRequest();
 
@@ -3010,15 +2911,15 @@ class RemoveAnalyticsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (analyticsPropertyId != null)
-          'analyticsPropertyId': analyticsPropertyId,
+          'analyticsPropertyId': analyticsPropertyId!,
       };
 }
 
 class SearchFirebaseAppsResponse {
   /// One page of results from a call to `SearchFirebaseApps`.
-  core.List<FirebaseAppInfo> apps;
+  core.List<FirebaseAppInfo>? apps;
 
   /// If the result list is too large to fit in a single response, then a token
   /// is returned.
@@ -3026,7 +2927,7 @@ class SearchFirebaseAppsResponse {
   /// This token can be used in a subsequent calls to `SearchFirebaseApps` to
   /// find the next group of Apps. Page tokens are short-lived and should not be
   /// persisted.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   SearchFirebaseAppsResponse();
 
@@ -3042,9 +2943,9 @@ class SearchFirebaseAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apps != null) 'apps': apps.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apps != null) 'apps': apps!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -3056,7 +2957,7 @@ class ShaCertificate {
   /// for distinguishing unset values.
   /// - "SHA_1" : Certificate is a SHA-1 type certificate.
   /// - "SHA_256" : Certificate is a SHA-256 type certificate.
-  core.String certType;
+  core.String? certType;
 
   /// The resource name of the ShaCertificate for the AndroidApp, in the format:
   /// projects/PROJECT_IDENTIFIER/androidApps/APP_ID/sha/SHA_HASH *
@@ -3072,10 +2973,10 @@ class ShaCertificate {
   /// (see \[`appId`\](../projects.androidApps#AndroidApp.FIELDS.app_id)). *
   /// SHA_HASH: the certificate hash for the App (see
   /// \[`shaHash`\](../projects.androidApps.sha#ShaCertificate.FIELDS.sha_hash)).
-  core.String name;
+  core.String? name;
 
   /// The certificate hash for the `AndroidApp`.
-  core.String shaHash;
+  core.String? shaHash;
 
   ShaCertificate();
 
@@ -3091,10 +2992,10 @@ class ShaCertificate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (certType != null) 'certType': certType,
-        if (name != null) 'name': name,
-        if (shaHash != null) 'shaHash': shaHash,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (certType != null) 'certType': certType!,
+        if (name != null) 'name': name!,
+        if (shaHash != null) 'shaHash': shaHash!,
       };
 }
 
@@ -3107,7 +3008,7 @@ class ShaCertificate {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -3115,13 +3016,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -3145,10 +3046,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -3158,23 +3059,23 @@ class StatusProto {
   /// to this status.
   ///
   /// May be missing.
-  core.int canonicalCode;
+  core.int? canonicalCode;
 
   /// Numeric code drawn from the space specified below.
   ///
   /// Often, this is the canonical error space, and code is drawn from
   /// google3/util/task/codes.proto
-  core.int code;
+  core.int? code;
 
   /// Detail message
-  core.String message;
+  core.String? message;
 
   /// message_set associates an arbitrary proto message with the status.
-  MessageSet messageSet;
+  MessageSet? messageSet;
 
   /// The following are usually only present when code != 0 Space to which this
   /// status belongs
-  core.String space;
+  core.String? space;
 
   StatusProto();
 
@@ -3197,12 +3098,12 @@ class StatusProto {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (canonicalCode != null) 'canonicalCode': canonicalCode,
-        if (code != null) 'code': code,
-        if (message != null) 'message': message,
-        if (messageSet != null) 'messageSet': messageSet.toJson(),
-        if (space != null) 'space': space,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (canonicalCode != null) 'canonicalCode': canonicalCode!,
+        if (code != null) 'code': code!,
+        if (message != null) 'message': message!,
+        if (messageSet != null) 'messageSet': messageSet!.toJson(),
+        if (space != null) 'space': space!,
       };
 }
 
@@ -3214,7 +3115,7 @@ class StreamMapping {
   /// projects/PROJECT_IDENTIFIER /webApps/APP_ID Refer to the `FirebaseProject`
   /// \[`name`\](../projects#FirebaseProject.FIELDS.name) field for details
   /// about PROJECT_IDENTIFIER values.
-  core.String app;
+  core.String? app;
 
   /// Applicable for Firebase Web Apps only.
   ///
@@ -3223,14 +3124,14 @@ class StreamMapping {
   /// interact with Google Analytics APIs. Learn more about this ID and Google
   /// Analytics web streams in the
   /// [Analytics documentation](https://support.google.com/analytics/topic/9303475).
-  core.String measurementId;
+  core.String? measurementId;
 
   /// The unique Google-assigned identifier of the Google Analytics data stream
   /// associated with the Firebase App.
   ///
   /// Learn more about Google Analytics data streams in the
   /// [Analytics documentation](https://support.google.com/analytics/answer/9303323).
-  core.String streamId;
+  core.String? streamId;
 
   StreamMapping();
 
@@ -3246,10 +3147,10 @@ class StreamMapping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (app != null) 'app': app,
-        if (measurementId != null) 'measurementId': measurementId,
-        if (streamId != null) 'streamId': streamId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (app != null) 'app': app!,
+        if (measurementId != null) 'measurementId': measurementId!,
+        if (streamId != null) 'streamId': streamId!,
       };
 }
 
@@ -3261,13 +3162,13 @@ class WebApp {
   /// is not specified.
   ///
   /// Immutable.
-  core.String appId;
+  core.String? appId;
 
   /// The URLs where the `WebApp` is hosted.
-  core.List<core.String> appUrls;
+  core.List<core.String>? appUrls;
 
   /// The user-assigned display name for the `WebApp`.
-  core.String displayName;
+  core.String? displayName;
 
   /// The resource name of the WebApp, in the format:
   /// projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the
@@ -3281,13 +3182,13 @@ class WebApp {
   /// value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`.
   /// * APP_ID: the globally unique, Firebase-assigned identifier for the App
   /// (see \[`appId`\](../projects.webApps#WebApp.FIELDS.app_id)).
-  core.String name;
+  core.String? name;
 
   /// A user-assigned unique identifier of the parent FirebaseProject for the
   /// `WebApp`.
   ///
   /// Immutable.
-  core.String projectId;
+  core.String? projectId;
 
   /// A unique, Firebase-assigned identifier for the `WebApp`.
   ///
@@ -3297,7 +3198,7 @@ class WebApp {
   /// associated Apps.
   ///
   /// Output only. Immutable.
-  core.String webId;
+  core.String? webId;
 
   WebApp();
 
@@ -3324,32 +3225,32 @@ class WebApp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appId != null) 'appId': appId,
-        if (appUrls != null) 'appUrls': appUrls,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (projectId != null) 'projectId': projectId,
-        if (webId != null) 'webId': webId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appId != null) 'appId': appId!,
+        if (appUrls != null) 'appUrls': appUrls!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (projectId != null) 'projectId': projectId!,
+        if (webId != null) 'webId': webId!,
       };
 }
 
 /// Configuration metadata of a single Firebase App for the web.
 class WebAppConfig {
   /// The API key associated with the `WebApp`.
-  core.String apiKey;
+  core.String? apiKey;
 
   /// The globally unique, Firebase-assigned identifier for the `WebApp`.
   ///
   /// Immutable.
-  core.String appId;
+  core.String? appId;
 
   /// The domain Firebase Auth configures for OAuth redirects, in the format:
   /// PROJECT_ID.firebaseapp.com
-  core.String authDomain;
+  core.String? authDomain;
 
   /// The default Firebase Realtime Database URL.
-  core.String databaseURL;
+  core.String? databaseURL;
 
   /// The ID of the Project's default GCP resource location.
   ///
@@ -3359,7 +3260,7 @@ class WebAppConfig {
   /// finalized yet. To set a Project's default GCP resource location, call
   /// \[`FinalizeDefaultLocation`\](../projects.defaultLocation/finalize) after
   /// you add Firebase resources to the Project.
-  core.String locationId;
+  core.String? locationId;
 
   /// The unique Google-assigned identifier of the Google Analytics web stream
   /// associated with the `WebApp`.
@@ -3376,18 +3277,18 @@ class WebAppConfig {
   /// dynamically fetches the `measurementId` when your app initializes
   /// Analytics. Having this ID in your config object is optional, but it does
   /// serve as a fallback in the rare case that the dynamic fetch fails.
-  core.String measurementId;
+  core.String? measurementId;
 
   /// The sender ID for use with Firebase Cloud Messaging.
-  core.String messagingSenderId;
+  core.String? messagingSenderId;
 
   /// A user-assigned unique identifier for the `FirebaseProject`.
   ///
   /// Immutable.
-  core.String projectId;
+  core.String? projectId;
 
   /// The default Cloud Storage for Firebase storage bucket name.
-  core.String storageBucket;
+  core.String? storageBucket;
 
   WebAppConfig();
 
@@ -3421,15 +3322,15 @@ class WebAppConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiKey != null) 'apiKey': apiKey,
-        if (appId != null) 'appId': appId,
-        if (authDomain != null) 'authDomain': authDomain,
-        if (databaseURL != null) 'databaseURL': databaseURL,
-        if (locationId != null) 'locationId': locationId,
-        if (measurementId != null) 'measurementId': measurementId,
-        if (messagingSenderId != null) 'messagingSenderId': messagingSenderId,
-        if (projectId != null) 'projectId': projectId,
-        if (storageBucket != null) 'storageBucket': storageBucket,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiKey != null) 'apiKey': apiKey!,
+        if (appId != null) 'appId': appId!,
+        if (authDomain != null) 'authDomain': authDomain!,
+        if (databaseURL != null) 'databaseURL': databaseURL!,
+        if (locationId != null) 'locationId': locationId!,
+        if (measurementId != null) 'measurementId': measurementId!,
+        if (messagingSenderId != null) 'messagingSenderId': messagingSenderId!,
+        if (projectId != null) 'projectId': projectId!,
+        if (storageBucket != null) 'storageBucket': storageBucket!,
       };
 }

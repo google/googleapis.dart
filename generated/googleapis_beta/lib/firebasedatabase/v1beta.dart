@@ -130,15 +130,11 @@ class ProjectsLocationsInstancesResource {
   async.Future<DatabaseInstance> create(
     DatabaseInstance request,
     core.String parent, {
-    core.String databaseId,
-    core.bool validateOnly,
-    core.String $fields,
+    core.String? databaseId,
+    core.bool? validateOnly,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (databaseId != null) 'databaseId': [databaseId],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
@@ -186,11 +182,8 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<DatabaseInstance> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -235,13 +228,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<DatabaseInstance> disable(
     DisableDatabaseInstanceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -286,11 +275,8 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<DatabaseInstance> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -343,13 +329,10 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<ListDatabaseInstancesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -398,13 +381,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<DatabaseInstance> reenable(
     ReenableDatabaseInstanceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -432,18 +411,18 @@ class DatabaseInstance {
   /// The globally unique hostname of the database.
   ///
   /// Immutable.
-  core.String databaseUrl;
+  core.String? databaseUrl;
 
   /// The fully qualified resource name of the database instance, in the form:
   /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
   ///
   /// Currently the only supported location is 'us-central1'.
-  core.String name;
+  core.String? name;
 
   /// The resource name of the project this instance belongs to.
   ///
   /// For example: `projects/{project-number}`.
-  core.String project;
+  core.String? project;
 
   /// The database's lifecycle state.
   ///
@@ -456,7 +435,7 @@ class DatabaseInstance {
   /// - "DISABLED" : The database is in a disabled state. It can be re-enabled
   /// later.
   /// - "DELETED" : The database is in a deleted state.
-  core.String state;
+  core.String? state;
 
   /// The database instance type.
   ///
@@ -469,7 +448,7 @@ class DatabaseInstance {
   /// - "DEFAULT_DATABASE" : The default database that is provisioned when a
   /// project is created.
   /// - "USER_DATABASE" : A database that the user created.
-  core.String type;
+  core.String? type;
 
   DatabaseInstance();
 
@@ -491,12 +470,12 @@ class DatabaseInstance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (databaseUrl != null) 'databaseUrl': databaseUrl,
-        if (name != null) 'name': name,
-        if (project != null) 'project': project,
-        if (state != null) 'state': state,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (databaseUrl != null) 'databaseUrl': databaseUrl!,
+        if (name != null) 'name': name!,
+        if (project != null) 'project': project!,
+        if (state != null) 'state': state!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -508,13 +487,13 @@ class DisableDatabaseInstanceRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The response from the ListDatabaseInstances method.
 class ListDatabaseInstancesResponse {
   /// List of each DatabaseInstance that is in the parent Firebase project.
-  core.List<DatabaseInstance> instances;
+  core.List<DatabaseInstance>? instances;
 
   /// If the result list is too large to fit in a single response, then a token
   /// is returned.
@@ -523,7 +502,7 @@ class ListDatabaseInstancesResponse {
   /// This token can be used in a subsequent call to `ListDatabaseInstances` to
   /// find the next group of database instances. Page tokens are short-lived and
   /// should not be persisted.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListDatabaseInstancesResponse();
 
@@ -539,10 +518,10 @@ class ListDatabaseInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (instances != null)
-          'instances': instances.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'instances': instances!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -554,5 +533,5 @@ class ReenableDatabaseInstanceRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }

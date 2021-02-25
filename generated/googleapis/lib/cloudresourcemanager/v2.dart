@@ -106,11 +106,10 @@ class FoldersResource {
   /// this method will complete with the same error.
   async.Future<Operation> create(
     Folder request, {
-    core.String parent,
-    core.String $fields,
+    core.String? parent,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (parent != null) 'parent': [parent],
       if ($fields != null) 'fields': [$fields],
@@ -153,11 +152,8 @@ class FoldersResource {
   /// this method will complete with the same error.
   async.Future<Folder> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -196,11 +192,8 @@ class FoldersResource {
   /// this method will complete with the same error.
   async.Future<Folder> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -245,13 +238,9 @@ class FoldersResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -303,11 +292,11 @@ class FoldersResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListFoldersResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String parent,
-    core.bool showDeleted,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.bool? showDeleted,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -365,13 +354,9 @@ class FoldersResource {
   async.Future<Operation> move(
     MoveFolderRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -425,14 +410,10 @@ class FoldersResource {
   async.Future<Folder> patch(
     Folder request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -472,10 +453,9 @@ class FoldersResource {
   /// this method will complete with the same error.
   async.Future<SearchFoldersResponse> search(
     SearchFoldersRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -521,13 +501,9 @@ class FoldersResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -573,13 +549,9 @@ class FoldersResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -628,13 +600,9 @@ class FoldersResource {
   async.Future<Folder> undelete(
     UndeleteFolderRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -679,11 +647,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -718,13 +683,13 @@ class OperationsResource {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -740,11 +705,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -759,7 +724,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -767,7 +732,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -782,9 +747,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -798,7 +763,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -830,12 +795,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -854,10 +819,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -865,22 +830,22 @@ class Binding {
 class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
   /// The resource name of the folder or organization we are either creating the
   /// folder under or moving the folder to.
-  core.String destinationParent;
+  core.String? destinationParent;
 
   /// The display name of the folder.
-  core.String displayName;
+  core.String? displayName;
 
   /// The type of this operation.
   /// Possible string values are:
   /// - "OPERATION_TYPE_UNSPECIFIED" : Operation type not specified.
   /// - "CREATE" : A create folder operation.
   /// - "MOVE" : A move folder operation.
-  core.String operationType;
+  core.String? operationType;
 
   /// The resource name of the folder's parent.
   ///
   /// Only applicable when the operation_type is MOVE.
-  core.String sourceParent;
+  core.String? sourceParent;
 
   CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation();
 
@@ -900,11 +865,11 @@ class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destinationParent != null) 'destinationParent': destinationParent,
-        if (displayName != null) 'displayName': displayName,
-        if (operationType != null) 'operationType': operationType,
-        if (sourceParent != null) 'sourceParent': sourceParent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destinationParent != null) 'destinationParent': destinationParent!,
+        if (displayName != null) 'displayName': displayName!,
+        if (operationType != null) 'operationType': operationType!,
+        if (sourceParent != null) 'sourceParent': sourceParent!,
       };
 }
 
@@ -912,22 +877,22 @@ class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
 class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
   /// The resource name of the folder or organization we are either creating the
   /// folder under or moving the folder to.
-  core.String destinationParent;
+  core.String? destinationParent;
 
   /// The display name of the folder.
-  core.String displayName;
+  core.String? displayName;
 
   /// The type of this operation.
   /// Possible string values are:
   /// - "OPERATION_TYPE_UNSPECIFIED" : Operation type not specified.
   /// - "CREATE" : A create folder operation.
   /// - "MOVE" : A move folder operation.
-  core.String operationType;
+  core.String? operationType;
 
   /// The resource name of the folder's parent.
   ///
   /// Only applicable when the operation_type is MOVE.
-  core.String sourceParent;
+  core.String? sourceParent;
 
   CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation();
 
@@ -947,11 +912,11 @@ class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destinationParent != null) 'destinationParent': destinationParent,
-        if (displayName != null) 'displayName': displayName,
-        if (operationType != null) 'operationType': operationType,
-        if (sourceParent != null) 'sourceParent': sourceParent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destinationParent != null) 'destinationParent': destinationParent!,
+        if (displayName != null) 'displayName': displayName!,
+        if (operationType != null) 'operationType': operationType!,
+        if (sourceParent != null) 'sourceParent': sourceParent!,
       };
 }
 
@@ -963,7 +928,7 @@ class CreateTagKeyMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Runtime operation information for creating a TagValue.
@@ -974,7 +939,7 @@ class CreateTagValueMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Runtime operation information for deleting a TagKey.
@@ -985,7 +950,7 @@ class DeleteTagKeyMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Runtime operation information for deleting a TagValue.
@@ -996,7 +961,7 @@ class DeleteTagValueMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1024,24 +989,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -1060,11 +1025,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1076,7 +1041,7 @@ class Folder {
   /// Assigned by the server.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The folder's display name.
   ///
@@ -1086,7 +1051,7 @@ class Folder {
   /// digits, spaces, hyphens and underscores and can be no longer than 30
   /// characters. This is captured by the regular expression:
   /// `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
-  core.String displayName;
+  core.String? displayName;
 
   /// The lifecycle state of the folder.
   ///
@@ -1099,21 +1064,21 @@ class Folder {
   /// - "ACTIVE" : The normal and active state.
   /// - "DELETE_REQUESTED" : The folder has been marked for deletion by the
   /// user.
-  core.String lifecycleState;
+  core.String? lifecycleState;
 
   /// The resource name of the Folder.
   ///
   /// Its format is `folders/{folder_id}`, for example: "folders/1234".
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The Folder's parent's resource name.
   ///
   /// Updates to the folder's parent must be performed via MoveFolder.
   ///
   /// Required.
-  core.String parent;
+  core.String? parent;
 
   Folder();
 
@@ -1135,12 +1100,12 @@ class Folder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (displayName != null) 'displayName': displayName,
-        if (lifecycleState != null) 'lifecycleState': lifecycleState,
-        if (name != null) 'name': name,
-        if (parent != null) 'parent': parent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (lifecycleState != null) 'lifecycleState': lifecycleState!,
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
       };
 }
 
@@ -1148,22 +1113,22 @@ class Folder {
 class FolderOperation {
   /// The resource name of the folder or organization we are either creating the
   /// folder under or moving the folder to.
-  core.String destinationParent;
+  core.String? destinationParent;
 
   /// The display name of the folder.
-  core.String displayName;
+  core.String? displayName;
 
   /// The type of this operation.
   /// Possible string values are:
   /// - "OPERATION_TYPE_UNSPECIFIED" : Operation type not specified.
   /// - "CREATE" : A create folder operation.
   /// - "MOVE" : A move folder operation.
-  core.String operationType;
+  core.String? operationType;
 
   /// The resource name of the folder's parent.
   ///
   /// Only applicable when the operation_type is MOVE.
-  core.String sourceParent;
+  core.String? sourceParent;
 
   FolderOperation();
 
@@ -1182,11 +1147,11 @@ class FolderOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destinationParent != null) 'destinationParent': destinationParent,
-        if (displayName != null) 'displayName': displayName,
-        if (operationType != null) 'operationType': operationType,
-        if (sourceParent != null) 'sourceParent': sourceParent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destinationParent != null) 'destinationParent': destinationParent!,
+        if (displayName != null) 'displayName': displayName!,
+        if (operationType != null) 'operationType': operationType!,
+        if (sourceParent != null) 'sourceParent': sourceParent!,
       };
 }
 
@@ -1214,7 +1179,7 @@ class FolderOperationError {
   /// to delete contains active resources.
   /// - "DELETED_FOLDER_HEIGHT_VIOLATION" : The attempted action would violate
   /// the max deleted folder depth constraint.
-  core.String errorMessageId;
+  core.String? errorMessageId;
 
   FolderOperationError();
 
@@ -1224,8 +1189,8 @@ class FolderOperationError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorMessageId != null) 'errorMessageId': errorMessageId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorMessageId != null) 'errorMessageId': errorMessageId!,
       };
 }
 
@@ -1233,7 +1198,7 @@ class FolderOperationError {
 class GetIamPolicyRequest {
   /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
   /// `GetIamPolicy`.
-  GetPolicyOptions options;
+  GetPolicyOptions? options;
 
   GetIamPolicyRequest();
 
@@ -1244,8 +1209,8 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (options != null) 'options': options.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (options != null) 'options': options!.toJson(),
       };
 }
 
@@ -1261,7 +1226,7 @@ class GetPolicyOptions {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// Optional.
-  core.int requestedPolicyVersion;
+  core.int? requestedPolicyVersion;
 
   GetPolicyOptions();
 
@@ -1271,9 +1236,9 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion,
+          'requestedPolicyVersion': requestedPolicyVersion!,
       };
 }
 
@@ -1281,11 +1246,11 @@ class GetPolicyOptions {
 class ListFoldersResponse {
   /// A possibly paginated list of Folders that are direct descendants of the
   /// specified parent resource.
-  core.List<Folder> folders;
+  core.List<Folder>? folders;
 
   /// A pagination token returned from a previous call to `ListFolders` that
   /// indicates from where listing should continue.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListFoldersResponse();
 
@@ -1301,10 +1266,10 @@ class ListFoldersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (folders != null)
-          'folders': folders.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'folders': folders!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1316,7 +1281,7 @@ class MoveFolderRequest {
   /// Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
   ///
   /// Required.
-  core.String destinationParent;
+  core.String? destinationParent;
 
   MoveFolderRequest();
 
@@ -1326,8 +1291,8 @@ class MoveFolderRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destinationParent != null) 'destinationParent': destinationParent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destinationParent != null) 'destinationParent': destinationParent!,
       };
 }
 
@@ -1338,10 +1303,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -1352,14 +1317,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -1372,7 +1337,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -1407,12 +1372,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -1449,14 +1414,14 @@ class Operation {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -1470,8 +1435,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -1495,7 +1460,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -1520,13 +1485,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1537,16 +1502,16 @@ class Policy {
 /// completed.
 class ProjectCreationStatus {
   /// Creation time of the project creation workflow.
-  core.String createTime;
+  core.String? createTime;
 
   /// True if the project can be retrieved using GetProject.
   ///
   /// No other operations on the project are guaranteed to work until the
   /// project creation is complete.
-  core.bool gettable;
+  core.bool? gettable;
 
   /// True if the project creation process is complete.
-  core.bool ready;
+  core.bool? ready;
 
   ProjectCreationStatus();
 
@@ -1562,10 +1527,10 @@ class ProjectCreationStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (gettable != null) 'gettable': gettable,
-        if (ready != null) 'ready': ready,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (gettable != null) 'gettable': gettable!,
+        if (ready != null) 'ready': ready!,
       };
 }
 
@@ -1574,13 +1539,13 @@ class SearchFoldersRequest {
   /// The maximum number of folders to return in the response.
   ///
   /// Optional.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// A pagination token returned from a previous call to `SearchFolders` that
   /// indicates from where search should continue.
   ///
   /// Optional.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// Search criteria used to select the Folders to return.
   ///
@@ -1598,7 +1563,7 @@ class SearchFoldersRequest {
   /// returns active Folder resources that have `folders/123` as a parent
   /// resource. * Query `displayName=\\"Test String\\"` returns Folder resources
   /// with display names that include both "Test" and "String".
-  core.String query;
+  core.String? query;
 
   SearchFoldersRequest();
 
@@ -1614,10 +1579,10 @@ class SearchFoldersRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (query != null) 'query': query,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (query != null) 'query': query!,
       };
 }
 
@@ -1626,11 +1591,11 @@ class SearchFoldersResponse {
   /// A possibly paginated folder search results.
   ///
   /// the specified parent resource.
-  core.List<Folder> folders;
+  core.List<Folder>? folders;
 
   /// A pagination token returned from a previous call to `SearchFolders` that
   /// indicates from where searching should continue.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   SearchFoldersResponse();
 
@@ -1646,10 +1611,10 @@ class SearchFoldersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (folders != null)
-          'folders': folders.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'folders': folders!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1660,13 +1625,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -1680,9 +1645,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -1695,7 +1660,7 @@ class SetIamPolicyRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1703,13 +1668,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -1733,10 +1698,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -1747,7 +1712,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -1759,8 +1724,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -1768,7 +1733,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -1780,8 +1745,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -1793,7 +1758,7 @@ class UndeleteFolderRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Runtime operation information for updating a TagKey.
@@ -1804,7 +1769,7 @@ class UpdateTagKeyMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Runtime operation information for updating a TagValue.
@@ -1815,5 +1780,5 @@ class UpdateTagValueMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }

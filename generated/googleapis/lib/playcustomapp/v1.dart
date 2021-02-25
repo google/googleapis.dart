@@ -105,15 +105,11 @@ class AccountsCustomAppsResource {
   async.Future<CustomApp> create(
     CustomApp request,
     core.String account, {
-    core.String $fields,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (account == null) {
-      throw core.ArgumentError('Parameter account is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -148,17 +144,17 @@ class AccountsCustomAppsResource {
 /// This resource represents a custom app.
 class CustomApp {
   /// Default listing language in BCP 47 format.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Package name of the created Android app.
   ///
   /// Only present in the API response.
   ///
   /// Output only.
-  core.String packageName;
+  core.String? packageName;
 
   /// Title for the Android app.
-  core.String title;
+  core.String? title;
 
   CustomApp();
 
@@ -174,9 +170,9 @@ class CustomApp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode,
-        if (packageName != null) 'packageName': packageName,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (packageName != null) 'packageName': packageName!,
+        if (title != null) 'title': title!,
       };
 }

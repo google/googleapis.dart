@@ -108,13 +108,9 @@ class DocumentsResource {
   async.Future<BatchUpdateDocumentResponse> batchUpdate(
     BatchUpdateDocumentRequest request,
     core.String documentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (documentId == null) {
-      throw core.ArgumentError('Parameter documentId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -154,10 +150,9 @@ class DocumentsResource {
   /// this method will complete with the same error.
   async.Future<Document> create(
     Document request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -212,12 +207,9 @@ class DocumentsResource {
   /// this method will complete with the same error.
   async.Future<Document> get(
     core.String documentId, {
-    core.String suggestionsViewMode,
-    core.String $fields,
+    core.String? suggestionsViewMode,
+    core.String? $fields,
   }) async {
-    if (documentId == null) {
-      throw core.ArgumentError('Parameter documentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (suggestionsViewMode != null)
         'suggestionsViewMode': [suggestionsViewMode],
@@ -241,19 +233,19 @@ class AutoText {
   /// The suggested deletion IDs.
   ///
   /// If empty, then there are no suggested deletions of this content.
-  core.List<core.String> suggestedDeletionIds;
+  core.List<core.String>? suggestedDeletionIds;
 
   /// The suggested insertion IDs.
   ///
   /// An AutoText may have multiple insertion IDs if it is a nested suggested
   /// change. If empty, then this is not a suggested insertion.
-  core.List<core.String> suggestedInsertionIds;
+  core.List<core.String>? suggestedInsertionIds;
 
   /// The suggested text style changes to this AutoText, keyed by suggestion ID.
-  core.Map<core.String, SuggestedTextStyle> suggestedTextStyleChanges;
+  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
 
   /// The text style of this AutoText.
-  TextStyle textStyle;
+  TextStyle? textStyle;
 
   /// The type of this auto text.
   /// Possible string values are:
@@ -262,7 +254,7 @@ class AutoText {
   /// number.
   /// - "PAGE_COUNT" : Type for auto text that represents the total number of
   /// pages in the document.
-  core.String type;
+  core.String? type;
 
   AutoText();
 
@@ -280,7 +272,7 @@ class AutoText {
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges =
           (_json['suggestedTextStyleChanges'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -298,23 +290,23 @@ class AutoText {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds,
+          'suggestedDeletionIds': suggestedDeletionIds!,
         if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds,
+          'suggestedInsertionIds': suggestedInsertionIds!,
         if (suggestedTextStyleChanges != null)
-          'suggestedTextStyleChanges': suggestedTextStyleChanges
+          'suggestedTextStyleChanges': suggestedTextStyleChanges!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (textStyle != null) 'textStyle': textStyle.toJson(),
-        if (type != null) 'type': type,
+        if (textStyle != null) 'textStyle': textStyle!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
 /// Represents the background of a document.
 class Background {
   /// The background color.
-  OptionalColor color;
+  OptionalColor? color;
 
   Background();
 
@@ -325,8 +317,8 @@ class Background {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (color != null) 'color': color.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (color != null) 'color': color!.toJson(),
       };
 }
 
@@ -337,7 +329,7 @@ class Background {
 class BackgroundSuggestionState {
   /// Indicates whether the current background color has been modified in this
   /// suggestion.
-  core.bool backgroundColorSuggested;
+  core.bool? backgroundColorSuggested;
 
   BackgroundSuggestionState();
 
@@ -347,19 +339,19 @@ class BackgroundSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundColorSuggested != null)
-          'backgroundColorSuggested': backgroundColorSuggested,
+          'backgroundColorSuggested': backgroundColorSuggested!,
       };
 }
 
 /// Request message for BatchUpdateDocument.
 class BatchUpdateDocumentRequest {
   /// A list of updates to apply to the document.
-  core.List<Request> requests;
+  core.List<Request>? requests;
 
   /// Provides control over how write requests are executed.
-  WriteControl writeControl;
+  WriteControl? writeControl;
 
   BatchUpdateDocumentRequest();
 
@@ -376,26 +368,26 @@ class BatchUpdateDocumentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requests != null)
-          'requests': requests.map((value) => value.toJson()).toList(),
-        if (writeControl != null) 'writeControl': writeControl.toJson(),
+          'requests': requests!.map((value) => value.toJson()).toList(),
+        if (writeControl != null) 'writeControl': writeControl!.toJson(),
       };
 }
 
 /// Response message from a BatchUpdateDocument request.
 class BatchUpdateDocumentResponse {
   /// The ID of the document to which the updates were applied to.
-  core.String documentId;
+  core.String? documentId;
 
   /// The reply of the updates.
   ///
   /// This maps 1:1 with the updates, although replies to some requests may be
   /// empty.
-  core.List<Response> replies;
+  core.List<Response>? replies;
 
   /// The updated write control after applying the request.
-  WriteControl writeControl;
+  WriteControl? writeControl;
 
   BatchUpdateDocumentResponse();
 
@@ -415,11 +407,11 @@ class BatchUpdateDocumentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (documentId != null) 'documentId': documentId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (documentId != null) 'documentId': documentId!,
         if (replies != null)
-          'replies': replies.map((value) => value.toJson()).toList(),
-        if (writeControl != null) 'writeControl': writeControl.toJson(),
+          'replies': replies!.map((value) => value.toJson()).toList(),
+        if (writeControl != null) 'writeControl': writeControl!.toJson(),
       };
 }
 
@@ -431,7 +423,7 @@ class Body {
   /// The contents of the body.
   ///
   /// The indexes for the body's content begin at zero.
-  core.List<StructuralElement> content;
+  core.List<StructuralElement>? content;
 
   Body();
 
@@ -444,22 +436,22 @@ class Body {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (content != null)
-          'content': content.map((value) => value.toJson()).toList(),
+          'content': content!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Describes the bullet of a paragraph.
 class Bullet {
   /// The ID of the list this paragraph belongs to.
-  core.String listId;
+  core.String? listId;
 
   /// The nesting level of this paragraph in the list.
-  core.int nestingLevel;
+  core.int? nestingLevel;
 
   /// The paragraph specific text style applied to this bullet.
-  TextStyle textStyle;
+  TextStyle? textStyle;
 
   Bullet();
 
@@ -476,10 +468,10 @@ class Bullet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (listId != null) 'listId': listId,
-        if (nestingLevel != null) 'nestingLevel': nestingLevel,
-        if (textStyle != null) 'textStyle': textStyle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (listId != null) 'listId': listId!,
+        if (nestingLevel != null) 'nestingLevel': nestingLevel!,
+        if (textStyle != null) 'textStyle': textStyle!.toJson(),
       };
 }
 
@@ -489,14 +481,14 @@ class Bullet {
 /// For any field set to true, there is a new suggested value.
 class BulletSuggestionState {
   /// Indicates if there was a suggested change to the list_id.
-  core.bool listIdSuggested;
+  core.bool? listIdSuggested;
 
   /// Indicates if there was a suggested change to the nesting_level.
-  core.bool nestingLevelSuggested;
+  core.bool? nestingLevelSuggested;
 
   /// A mask that indicates which of the fields in text style have been changed
   /// in this suggestion.
-  TextStyleSuggestionState textStyleSuggestionState;
+  TextStyleSuggestionState? textStyleSuggestionState;
 
   BulletSuggestionState();
 
@@ -514,19 +506,19 @@ class BulletSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (listIdSuggested != null) 'listIdSuggested': listIdSuggested,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (listIdSuggested != null) 'listIdSuggested': listIdSuggested!,
         if (nestingLevelSuggested != null)
-          'nestingLevelSuggested': nestingLevelSuggested,
+          'nestingLevelSuggested': nestingLevelSuggested!,
         if (textStyleSuggestionState != null)
-          'textStyleSuggestionState': textStyleSuggestionState.toJson(),
+          'textStyleSuggestionState': textStyleSuggestionState!.toJson(),
       };
 }
 
 /// A solid color.
 class Color {
   /// The RGB color value.
-  RgbColor rgbColor;
+  RgbColor? rgbColor;
 
   Color();
 
@@ -537,8 +529,8 @@ class Color {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (rgbColor != null) 'rgbColor': rgbColor.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (rgbColor != null) 'rgbColor': rgbColor!.toJson(),
       };
 }
 
@@ -550,24 +542,24 @@ class ColumnBreak {
   /// The suggested deletion IDs.
   ///
   /// If empty, then there are no suggested deletions of this content.
-  core.List<core.String> suggestedDeletionIds;
+  core.List<core.String>? suggestedDeletionIds;
 
   /// The suggested insertion IDs.
   ///
   /// A ColumnBreak may have multiple insertion IDs if it is a nested suggested
   /// change. If empty, then this is not a suggested insertion.
-  core.List<core.String> suggestedInsertionIds;
+  core.List<core.String>? suggestedInsertionIds;
 
   /// The suggested text style changes to this ColumnBreak, keyed by suggestion
   /// ID.
-  core.Map<core.String, SuggestedTextStyle> suggestedTextStyleChanges;
+  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
 
   /// The text style of this ColumnBreak.
   ///
   /// Similar to text content, like text runs and footnote references, the text
   /// style of a column break can affect content layout as well as the styling
   /// of text inserted adjacent to it.
-  TextStyle textStyle;
+  TextStyle? textStyle;
 
   ColumnBreak();
 
@@ -585,7 +577,7 @@ class ColumnBreak {
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges =
           (_json['suggestedTextStyleChanges'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -600,15 +592,15 @@ class ColumnBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds,
+          'suggestedDeletionIds': suggestedDeletionIds!,
         if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds,
+          'suggestedInsertionIds': suggestedInsertionIds!,
         if (suggestedTextStyleChanges != null)
-          'suggestedTextStyleChanges': suggestedTextStyleChanges
+          'suggestedTextStyleChanges': suggestedTextStyleChanges!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (textStyle != null) 'textStyle': textStyle.toJson(),
+        if (textStyle != null) 'textStyle': textStyle!.toJson(),
       };
 }
 
@@ -624,14 +616,14 @@ class CreateFooterRequest {
   ///
   /// If this is unset or refers to the first section break in the document, the
   /// footer applies to the document style.
-  Location sectionBreakLocation;
+  Location? sectionBreakLocation;
 
   /// The type of footer to create.
   /// Possible string values are:
   /// - "HEADER_FOOTER_TYPE_UNSPECIFIED" : The header/footer type is
   /// unspecified.
   /// - "DEFAULT" : A default header/footer.
-  core.String type;
+  core.String? type;
 
   CreateFooterRequest();
 
@@ -645,17 +637,17 @@ class CreateFooterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (sectionBreakLocation != null)
-          'sectionBreakLocation': sectionBreakLocation.toJson(),
-        if (type != null) 'type': type,
+          'sectionBreakLocation': sectionBreakLocation!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
 /// The result of creating a footer.
 class CreateFooterResponse {
   /// The ID of the created footer.
-  core.String footerId;
+  core.String? footerId;
 
   CreateFooterResponse();
 
@@ -665,8 +657,8 @@ class CreateFooterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (footerId != null) 'footerId': footerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (footerId != null) 'footerId': footerId!,
       };
 }
 
@@ -681,7 +673,7 @@ class CreateFootnoteRequest {
   /// Footnote references cannot be inserted inside a header, footer or
   /// footnote. Since footnote references can only be inserted in the body, the
   /// segment ID field must be empty.
-  EndOfSegmentLocation endOfSegmentLocation;
+  EndOfSegmentLocation? endOfSegmentLocation;
 
   /// Inserts the footnote reference at a specific index in the document.
   ///
@@ -691,7 +683,7 @@ class CreateFootnoteRequest {
   /// cannot be inserted inside an equation, header, footer or footnote. Since
   /// footnote references can only be inserted in the body, the segment ID field
   /// must be empty.
-  Location location;
+  Location? location;
 
   CreateFootnoteRequest();
 
@@ -706,17 +698,17 @@ class CreateFootnoteRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (endOfSegmentLocation != null)
-          'endOfSegmentLocation': endOfSegmentLocation.toJson(),
-        if (location != null) 'location': location.toJson(),
+          'endOfSegmentLocation': endOfSegmentLocation!.toJson(),
+        if (location != null) 'location': location!.toJson(),
       };
 }
 
 /// The result of creating a footnote.
 class CreateFootnoteResponse {
   /// The ID of the created footnote.
-  core.String footnoteId;
+  core.String? footnoteId;
 
   CreateFootnoteResponse();
 
@@ -726,8 +718,8 @@ class CreateFootnoteResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (footnoteId != null) 'footnoteId': footnoteId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (footnoteId != null) 'footnoteId': footnoteId!,
       };
 }
 
@@ -743,14 +735,14 @@ class CreateHeaderRequest {
   ///
   /// If \`section_break_location' is unset or if it refers to the first section
   /// break in the document body, the header applies to the DocumentStyle
-  Location sectionBreakLocation;
+  Location? sectionBreakLocation;
 
   /// The type of header to create.
   /// Possible string values are:
   /// - "HEADER_FOOTER_TYPE_UNSPECIFIED" : The header/footer type is
   /// unspecified.
   /// - "DEFAULT" : A default header/footer.
-  core.String type;
+  core.String? type;
 
   CreateHeaderRequest();
 
@@ -764,17 +756,17 @@ class CreateHeaderRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (sectionBreakLocation != null)
-          'sectionBreakLocation': sectionBreakLocation.toJson(),
-        if (type != null) 'type': type,
+          'sectionBreakLocation': sectionBreakLocation!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
 /// The result of creating a header.
 class CreateHeaderResponse {
   /// The ID of the created header.
-  core.String headerId;
+  core.String? headerId;
 
   CreateHeaderResponse();
 
@@ -784,8 +776,8 @@ class CreateHeaderResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (headerId != null) 'headerId': headerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (headerId != null) 'headerId': headerId!,
       };
 }
 
@@ -795,10 +787,10 @@ class CreateNamedRangeRequest {
   ///
   /// Names do not need to be unique. Names must be at least 1 character and no
   /// more than 256 characters, measured in UTF-16 code units.
-  core.String name;
+  core.String? name;
 
   /// The range to apply the name to.
-  Range range;
+  Range? range;
 
   CreateNamedRangeRequest();
 
@@ -812,16 +804,16 @@ class CreateNamedRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
 /// The result of creating a named range.
 class CreateNamedRangeResponse {
   /// The ID of the created named range.
-  core.String namedRangeId;
+  core.String? namedRangeId;
 
   CreateNamedRangeResponse();
 
@@ -831,8 +823,8 @@ class CreateNamedRangeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (namedRangeId != null) 'namedRangeId': namedRangeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
       };
 }
 
@@ -888,10 +880,10 @@ class CreateParagraphBulletsRequest {
   /// - "NUMBERED_ZERODECIMAL_ALPHA_ROMAN" : A numbered list with `ZERODECIMAL`,
   /// `ALPHA` and `ROMAN` numeric glyphs for the first 3 list nesting levels,
   /// followed by periods.
-  core.String bulletPreset;
+  core.String? bulletPreset;
 
   /// The range to apply the bullet preset to.
-  Range range;
+  Range? range;
 
   CreateParagraphBulletsRequest();
 
@@ -905,9 +897,9 @@ class CreateParagraphBulletsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bulletPreset != null) 'bulletPreset': bulletPreset,
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bulletPreset != null) 'bulletPreset': bulletPreset!,
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
@@ -925,27 +917,27 @@ class CropProperties {
   /// radians.
   ///
   /// Rotation is applied after the offsets.
-  core.double angle;
+  core.double? angle;
 
   /// The offset specifies how far inwards the bottom edge of the crop rectangle
   /// is from the bottom edge of the original content as a fraction of the
   /// original content's height.
-  core.double offsetBottom;
+  core.double? offsetBottom;
 
   /// The offset specifies how far inwards the left edge of the crop rectangle
   /// is from the left edge of the original content as a fraction of the
   /// original content's width.
-  core.double offsetLeft;
+  core.double? offsetLeft;
 
   /// The offset specifies how far inwards the right edge of the crop rectangle
   /// is from the right edge of the original content as a fraction of the
   /// original content's width.
-  core.double offsetRight;
+  core.double? offsetRight;
 
   /// The offset specifies how far inwards the top edge of the crop rectangle is
   /// from the top edge of the original content as a fraction of the original
   /// content's height.
-  core.double offsetTop;
+  core.double? offsetTop;
 
   CropProperties();
 
@@ -967,12 +959,12 @@ class CropProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (angle != null) 'angle': angle,
-        if (offsetBottom != null) 'offsetBottom': offsetBottom,
-        if (offsetLeft != null) 'offsetLeft': offsetLeft,
-        if (offsetRight != null) 'offsetRight': offsetRight,
-        if (offsetTop != null) 'offsetTop': offsetTop,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (angle != null) 'angle': angle!,
+        if (offsetBottom != null) 'offsetBottom': offsetBottom!,
+        if (offsetLeft != null) 'offsetLeft': offsetLeft!,
+        if (offsetRight != null) 'offsetRight': offsetRight!,
+        if (offsetTop != null) 'offsetTop': offsetTop!,
       };
 }
 
@@ -982,19 +974,19 @@ class CropProperties {
 /// For any field set to true, there is a new suggested value.
 class CropPropertiesSuggestionState {
   /// Indicates if there was a suggested change to angle.
-  core.bool angleSuggested;
+  core.bool? angleSuggested;
 
   /// Indicates if there was a suggested change to offset_bottom.
-  core.bool offsetBottomSuggested;
+  core.bool? offsetBottomSuggested;
 
   /// Indicates if there was a suggested change to offset_left.
-  core.bool offsetLeftSuggested;
+  core.bool? offsetLeftSuggested;
 
   /// Indicates if there was a suggested change to offset_right.
-  core.bool offsetRightSuggested;
+  core.bool? offsetRightSuggested;
 
   /// Indicates if there was a suggested change to offset_top.
-  core.bool offsetTopSuggested;
+  core.bool? offsetTopSuggested;
 
   CropPropertiesSuggestionState();
 
@@ -1016,16 +1008,16 @@ class CropPropertiesSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (angleSuggested != null) 'angleSuggested': angleSuggested,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (angleSuggested != null) 'angleSuggested': angleSuggested!,
         if (offsetBottomSuggested != null)
-          'offsetBottomSuggested': offsetBottomSuggested,
+          'offsetBottomSuggested': offsetBottomSuggested!,
         if (offsetLeftSuggested != null)
-          'offsetLeftSuggested': offsetLeftSuggested,
+          'offsetLeftSuggested': offsetLeftSuggested!,
         if (offsetRightSuggested != null)
-          'offsetRightSuggested': offsetRightSuggested,
+          'offsetRightSuggested': offsetRightSuggested!,
         if (offsetTopSuggested != null)
-          'offsetTopSuggested': offsetTopSuggested,
+          'offsetTopSuggested': offsetTopSuggested!,
       };
 }
 
@@ -1045,7 +1037,7 @@ class DeleteContentRangeRequest {
   /// TableOfContents or SectionBreak without deleting the element. * Deleting
   /// individual rows or cells of a table. Deleting the content within a table
   /// cell is allowed.
-  Range range;
+  Range? range;
 
   DeleteContentRangeRequest();
 
@@ -1056,8 +1048,8 @@ class DeleteContentRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
@@ -1070,7 +1062,7 @@ class DeleteFooterRequest {
   /// the document. If this footer is defined on a SectionStyle, the reference
   /// to this footer is removed and the footer of that type is now continued
   /// from the previous section.
-  core.String footerId;
+  core.String? footerId;
 
   DeleteFooterRequest();
 
@@ -1080,8 +1072,8 @@ class DeleteFooterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (footerId != null) 'footerId': footerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (footerId != null) 'footerId': footerId!,
       };
 }
 
@@ -1094,7 +1086,7 @@ class DeleteHeaderRequest {
   /// the document. If this header is defined on a SectionStyle, the reference
   /// to this header is removed and the header of that type is now continued
   /// from the previous section.
-  core.String headerId;
+  core.String? headerId;
 
   DeleteHeaderRequest();
 
@@ -1104,8 +1096,8 @@ class DeleteHeaderRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (headerId != null) 'headerId': headerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (headerId != null) 'headerId': headerId!,
       };
 }
 
@@ -1114,10 +1106,10 @@ class DeleteNamedRangeRequest {
   /// The name of the range(s) to delete.
   ///
   /// All named ranges with the given name will be deleted.
-  core.String name;
+  core.String? name;
 
   /// The ID of the named range to delete.
-  core.String namedRangeId;
+  core.String? namedRangeId;
 
   DeleteNamedRangeRequest();
 
@@ -1130,9 +1122,9 @@ class DeleteNamedRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (namedRangeId != null) 'namedRangeId': namedRangeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
       };
 }
 
@@ -1143,7 +1135,7 @@ class DeleteNamedRangeRequest {
 /// indent to the start of the corresponding paragraph.
 class DeleteParagraphBulletsRequest {
   /// The range to delete bullets from.
-  Range range;
+  Range? range;
 
   DeleteParagraphBulletsRequest();
 
@@ -1154,15 +1146,15 @@ class DeleteParagraphBulletsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
 /// Deletes a PositionedObject from the document.
 class DeletePositionedObjectRequest {
   /// The ID of the positioned object to delete.
-  core.String objectId;
+  core.String? objectId;
 
   DeletePositionedObjectRequest();
 
@@ -1172,8 +1164,8 @@ class DeletePositionedObjectRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
@@ -1185,7 +1177,7 @@ class DeleteTableColumnRequest {
   /// spans multiple columns, all columns that the cell spans will be deleted.
   /// If no columns remain in the table after this deletion, the whole table is
   /// deleted.
-  TableCellLocation tableCellLocation;
+  TableCellLocation? tableCellLocation;
 
   DeleteTableColumnRequest();
 
@@ -1196,9 +1188,9 @@ class DeleteTableColumnRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (tableCellLocation != null)
-          'tableCellLocation': tableCellLocation.toJson(),
+          'tableCellLocation': tableCellLocation!.toJson(),
       };
 }
 
@@ -1209,7 +1201,7 @@ class DeleteTableRowRequest {
   /// The row this cell spans will be deleted. If this is a merged cell that
   /// spans multiple rows, all rows that the cell spans will be deleted. If no
   /// rows remain in the table after this deletion, the whole table is deleted.
-  TableCellLocation tableCellLocation;
+  TableCellLocation? tableCellLocation;
 
   DeleteTableRowRequest();
 
@@ -1220,22 +1212,22 @@ class DeleteTableRowRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (tableCellLocation != null)
-          'tableCellLocation': tableCellLocation.toJson(),
+          'tableCellLocation': tableCellLocation!.toJson(),
       };
 }
 
 /// A magnitude in a single direction in the specified units.
 class Dimension {
   /// The magnitude.
-  core.double magnitude;
+  core.double? magnitude;
 
   /// The units for magnitude.
   /// Possible string values are:
   /// - "UNIT_UNSPECIFIED" : The units are unknown.
   /// - "PT" : A point, 1/72 of an inch.
-  core.String unit;
+  core.String? unit;
 
   Dimension();
 
@@ -1248,9 +1240,9 @@ class Dimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (magnitude != null) 'magnitude': magnitude,
-        if (unit != null) 'unit': unit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (magnitude != null) 'magnitude': magnitude!,
+        if (unit != null) 'unit': unit!,
       };
 }
 
@@ -1259,57 +1251,57 @@ class Document {
   /// The main body of the document.
   ///
   /// Output only.
-  Body body;
+  Body? body;
 
   /// The ID of the document.
   ///
   /// Output only.
-  core.String documentId;
+  core.String? documentId;
 
   /// The style of the document.
   ///
   /// Output only.
-  DocumentStyle documentStyle;
+  DocumentStyle? documentStyle;
 
   /// The footers in the document, keyed by footer ID.
   ///
   /// Output only.
-  core.Map<core.String, Footer> footers;
+  core.Map<core.String, Footer>? footers;
 
   /// The footnotes in the document, keyed by footnote ID.
   ///
   /// Output only.
-  core.Map<core.String, Footnote> footnotes;
+  core.Map<core.String, Footnote>? footnotes;
 
   /// The headers in the document, keyed by header ID.
   ///
   /// Output only.
-  core.Map<core.String, Header> headers;
+  core.Map<core.String, Header>? headers;
 
   /// The inline objects in the document, keyed by object ID.
   ///
   /// Output only.
-  core.Map<core.String, InlineObject> inlineObjects;
+  core.Map<core.String, InlineObject>? inlineObjects;
 
   /// The lists in the document, keyed by list ID.
   ///
   /// Output only.
-  core.Map<core.String, List> lists;
+  core.Map<core.String, List>? lists;
 
   /// The named ranges in the document, keyed by name.
   ///
   /// Output only.
-  core.Map<core.String, NamedRanges> namedRanges;
+  core.Map<core.String, NamedRanges>? namedRanges;
 
   /// The named styles of the document.
   ///
   /// Output only.
-  NamedStyles namedStyles;
+  NamedStyles? namedStyles;
 
   /// The positioned objects in the document, keyed by object ID.
   ///
   /// Output only.
-  core.Map<core.String, PositionedObject> positionedObjects;
+  core.Map<core.String, PositionedObject>? positionedObjects;
 
   /// The revision ID of the document.
   ///
@@ -1325,19 +1317,19 @@ class Document {
   /// changed ID can also be due to internal factors such as ID format changes.
   ///
   /// Output only.
-  core.String revisionId;
+  core.String? revisionId;
 
   /// The suggested changes to the style of the document, keyed by suggestion
   /// ID.
   ///
   /// Output only.
-  core.Map<core.String, SuggestedDocumentStyle> suggestedDocumentStyleChanges;
+  core.Map<core.String, SuggestedDocumentStyle>? suggestedDocumentStyleChanges;
 
   /// The suggested changes to the named styles of the document, keyed by
   /// suggestion ID.
   ///
   /// Output only.
-  core.Map<core.String, SuggestedNamedStyles> suggestedNamedStylesChanges;
+  core.Map<core.String, SuggestedNamedStyles>? suggestedNamedStylesChanges;
 
   /// The suggestions view mode applied to the document.
   ///
@@ -1361,10 +1353,10 @@ class Document {
   /// - "PREVIEW_WITHOUT_SUGGESTIONS" : The returned document is a preview with
   /// all suggested changes rejected if there are any suggestions in the
   /// document.
-  core.String suggestionsViewMode;
+  core.String? suggestionsViewMode;
 
   /// The title of the document.
-  core.String title;
+  core.String? title;
 
   Document();
 
@@ -1381,17 +1373,18 @@ class Document {
           _json['documentStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('footers')) {
-      footers =
-          (_json['footers'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  Footer.fromJson(item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      footers = (_json['footers'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              Footer.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('footnotes')) {
       footnotes = (_json['footnotes'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -1400,17 +1393,18 @@ class Document {
           );
     }
     if (_json.containsKey('headers')) {
-      headers =
-          (_json['headers'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  Header.fromJson(item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      headers = (_json['headers'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              Header.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('inlineObjects')) {
       inlineObjects = (_json['inlineObjects'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -1420,7 +1414,9 @@ class Document {
           );
     }
     if (_json.containsKey('lists')) {
-      lists = (_json['lists'] as core.Map).cast<core.String, core.Map>().map(
+      lists = (_json['lists'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               List.fromJson(item as core.Map<core.String, core.dynamic>),
@@ -1429,7 +1425,7 @@ class Document {
     }
     if (_json.containsKey('namedRanges')) {
       namedRanges = (_json['namedRanges'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -1443,7 +1439,7 @@ class Document {
     }
     if (_json.containsKey('positionedObjects')) {
       positionedObjects = (_json['positionedObjects'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -1458,7 +1454,7 @@ class Document {
     if (_json.containsKey('suggestedDocumentStyleChanges')) {
       suggestedDocumentStyleChanges =
           (_json['suggestedDocumentStyleChanges'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -1470,7 +1466,7 @@ class Document {
     if (_json.containsKey('suggestedNamedStylesChanges')) {
       suggestedNamedStylesChanges =
           (_json['suggestedNamedStylesChanges'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -1487,41 +1483,41 @@ class Document {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (body != null) 'body': body.toJson(),
-        if (documentId != null) 'documentId': documentId,
-        if (documentStyle != null) 'documentStyle': documentStyle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (body != null) 'body': body!.toJson(),
+        if (documentId != null) 'documentId': documentId!,
+        if (documentStyle != null) 'documentStyle': documentStyle!.toJson(),
         if (footers != null)
           'footers':
-              footers.map((key, item) => core.MapEntry(key, item.toJson())),
+              footers!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (footnotes != null)
           'footnotes':
-              footnotes.map((key, item) => core.MapEntry(key, item.toJson())),
+              footnotes!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (headers != null)
           'headers':
-              headers.map((key, item) => core.MapEntry(key, item.toJson())),
+              headers!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (inlineObjects != null)
-          'inlineObjects': inlineObjects
+          'inlineObjects': inlineObjects!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (lists != null)
-          'lists': lists.map((key, item) => core.MapEntry(key, item.toJson())),
+          'lists': lists!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (namedRanges != null)
-          'namedRanges':
-              namedRanges.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (namedStyles != null) 'namedStyles': namedStyles.toJson(),
-        if (positionedObjects != null)
-          'positionedObjects': positionedObjects
+          'namedRanges': namedRanges!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (revisionId != null) 'revisionId': revisionId,
+        if (namedStyles != null) 'namedStyles': namedStyles!.toJson(),
+        if (positionedObjects != null)
+          'positionedObjects': positionedObjects!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (revisionId != null) 'revisionId': revisionId!,
         if (suggestedDocumentStyleChanges != null)
-          'suggestedDocumentStyleChanges': suggestedDocumentStyleChanges
+          'suggestedDocumentStyleChanges': suggestedDocumentStyleChanges!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (suggestedNamedStylesChanges != null)
-          'suggestedNamedStylesChanges': suggestedNamedStylesChanges
+          'suggestedNamedStylesChanges': suggestedNamedStylesChanges!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (suggestionsViewMode != null)
-          'suggestionsViewMode': suggestionsViewMode,
-        if (title != null) 'title': title,
+          'suggestionsViewMode': suggestionsViewMode!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1530,31 +1526,31 @@ class DocumentStyle {
   /// The background of the document.
   ///
   /// Documents cannot have a transparent background color.
-  Background background;
+  Background? background;
 
   /// The ID of the default footer.
   ///
   /// If not set, there is no default footer. This property is read-only.
-  core.String defaultFooterId;
+  core.String? defaultFooterId;
 
   /// The ID of the default header.
   ///
   /// If not set, there is no default header. This property is read-only.
-  core.String defaultHeaderId;
+  core.String? defaultHeaderId;
 
   /// The ID of the footer used only for even pages.
   ///
   /// The value of use_even_page_header_footer determines whether to use the
   /// default_footer_id or this value for the footer on even pages. If not set,
   /// there is no even page footer. This property is read-only.
-  core.String evenPageFooterId;
+  core.String? evenPageFooterId;
 
   /// The ID of the header used only for even pages.
   ///
   /// The value of use_even_page_header_footer determines whether to use the
   /// default_header_id or this value for the header on even pages. If not set,
   /// there is no even page header. This property is read-only.
-  core.String evenPageHeaderId;
+  core.String? evenPageHeaderId;
 
   /// The ID of the footer used only for the first page.
   ///
@@ -1562,7 +1558,7 @@ class DocumentStyle {
   /// value of use_first_page_header_footer determines whether to use the
   /// default_footer_id or this value for the footer on the first page. If not
   /// set, there is no first page footer. This property is read-only.
-  core.String firstPageFooterId;
+  core.String? firstPageFooterId;
 
   /// The ID of the header used only for the first page.
   ///
@@ -1570,62 +1566,62 @@ class DocumentStyle {
   /// value of use_first_page_header_footer determines whether to use the
   /// default_header_id or this value for the header on the first page. If not
   /// set, there is no first page header. This property is read-only.
-  core.String firstPageHeaderId;
+  core.String? firstPageHeaderId;
 
   /// The bottom page margin.
   ///
   /// Updating the bottom page margin on the document style clears the bottom
   /// page margin on all section styles.
-  Dimension marginBottom;
+  Dimension? marginBottom;
 
   /// The amount of space between the bottom of the page and the contents of the
   /// footer.
-  Dimension marginFooter;
+  Dimension? marginFooter;
 
   /// The amount of space between the top of the page and the contents of the
   /// header.
-  Dimension marginHeader;
+  Dimension? marginHeader;
 
   /// The left page margin.
   ///
   /// Updating the left page margin on the document style clears the left page
   /// margin on all section styles. It may also cause columns to resize in all
   /// sections.
-  Dimension marginLeft;
+  Dimension? marginLeft;
 
   /// The right page margin.
   ///
   /// Updating the right page margin on the document style clears the right page
   /// margin on all section styles. It may also cause columns to resize in all
   /// sections.
-  Dimension marginRight;
+  Dimension? marginRight;
 
   /// The top page margin.
   ///
   /// Updating the top page margin on the document style clears the top page
   /// margin on all section styles.
-  Dimension marginTop;
+  Dimension? marginTop;
 
   /// The page number from which to start counting the number of pages.
-  core.int pageNumberStart;
+  core.int? pageNumberStart;
 
   /// The size of a page in the document.
-  Size pageSize;
+  Size? pageSize;
 
   /// Indicates whether DocumentStyle margin_header, SectionStyle margin_header
   /// and DocumentStyle margin_footer, SectionStyle margin_footer are respected.
   ///
   /// When false, the default values in the Docs editor for header and footer
   /// margin are used. This property is read-only.
-  core.bool useCustomHeaderFooterMargins;
+  core.bool? useCustomHeaderFooterMargins;
 
   /// Indicates whether to use the even page header / footer IDs for the even
   /// pages.
-  core.bool useEvenPageHeaderFooter;
+  core.bool? useEvenPageHeaderFooter;
 
   /// Indicates whether to use the first page header / footer IDs for the first
   /// page.
-  core.bool useFirstPageHeaderFooter;
+  core.bool? useFirstPageHeaderFooter;
 
   DocumentStyle();
 
@@ -1695,28 +1691,28 @@ class DocumentStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (background != null) 'background': background.toJson(),
-        if (defaultFooterId != null) 'defaultFooterId': defaultFooterId,
-        if (defaultHeaderId != null) 'defaultHeaderId': defaultHeaderId,
-        if (evenPageFooterId != null) 'evenPageFooterId': evenPageFooterId,
-        if (evenPageHeaderId != null) 'evenPageHeaderId': evenPageHeaderId,
-        if (firstPageFooterId != null) 'firstPageFooterId': firstPageFooterId,
-        if (firstPageHeaderId != null) 'firstPageHeaderId': firstPageHeaderId,
-        if (marginBottom != null) 'marginBottom': marginBottom.toJson(),
-        if (marginFooter != null) 'marginFooter': marginFooter.toJson(),
-        if (marginHeader != null) 'marginHeader': marginHeader.toJson(),
-        if (marginLeft != null) 'marginLeft': marginLeft.toJson(),
-        if (marginRight != null) 'marginRight': marginRight.toJson(),
-        if (marginTop != null) 'marginTop': marginTop.toJson(),
-        if (pageNumberStart != null) 'pageNumberStart': pageNumberStart,
-        if (pageSize != null) 'pageSize': pageSize.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (background != null) 'background': background!.toJson(),
+        if (defaultFooterId != null) 'defaultFooterId': defaultFooterId!,
+        if (defaultHeaderId != null) 'defaultHeaderId': defaultHeaderId!,
+        if (evenPageFooterId != null) 'evenPageFooterId': evenPageFooterId!,
+        if (evenPageHeaderId != null) 'evenPageHeaderId': evenPageHeaderId!,
+        if (firstPageFooterId != null) 'firstPageFooterId': firstPageFooterId!,
+        if (firstPageHeaderId != null) 'firstPageHeaderId': firstPageHeaderId!,
+        if (marginBottom != null) 'marginBottom': marginBottom!.toJson(),
+        if (marginFooter != null) 'marginFooter': marginFooter!.toJson(),
+        if (marginHeader != null) 'marginHeader': marginHeader!.toJson(),
+        if (marginLeft != null) 'marginLeft': marginLeft!.toJson(),
+        if (marginRight != null) 'marginRight': marginRight!.toJson(),
+        if (marginTop != null) 'marginTop': marginTop!.toJson(),
+        if (pageNumberStart != null) 'pageNumberStart': pageNumberStart!,
+        if (pageSize != null) 'pageSize': pageSize!.toJson(),
         if (useCustomHeaderFooterMargins != null)
-          'useCustomHeaderFooterMargins': useCustomHeaderFooterMargins,
+          'useCustomHeaderFooterMargins': useCustomHeaderFooterMargins!,
         if (useEvenPageHeaderFooter != null)
-          'useEvenPageHeaderFooter': useEvenPageHeaderFooter,
+          'useEvenPageHeaderFooter': useEvenPageHeaderFooter!,
         if (useFirstPageHeaderFooter != null)
-          'useFirstPageHeaderFooter': useFirstPageHeaderFooter,
+          'useFirstPageHeaderFooter': useFirstPageHeaderFooter!,
       };
 }
 
@@ -1727,60 +1723,60 @@ class DocumentStyle {
 class DocumentStyleSuggestionState {
   /// A mask that indicates which of the fields in background have been changed
   /// in this suggestion.
-  BackgroundSuggestionState backgroundSuggestionState;
+  BackgroundSuggestionState? backgroundSuggestionState;
 
   /// Indicates if there was a suggested change to default_footer_id.
-  core.bool defaultFooterIdSuggested;
+  core.bool? defaultFooterIdSuggested;
 
   /// Indicates if there was a suggested change to default_header_id.
-  core.bool defaultHeaderIdSuggested;
+  core.bool? defaultHeaderIdSuggested;
 
   /// Indicates if there was a suggested change to even_page_footer_id.
-  core.bool evenPageFooterIdSuggested;
+  core.bool? evenPageFooterIdSuggested;
 
   /// Indicates if there was a suggested change to even_page_header_id.
-  core.bool evenPageHeaderIdSuggested;
+  core.bool? evenPageHeaderIdSuggested;
 
   /// Indicates if there was a suggested change to first_page_footer_id.
-  core.bool firstPageFooterIdSuggested;
+  core.bool? firstPageFooterIdSuggested;
 
   /// Indicates if there was a suggested change to first_page_header_id.
-  core.bool firstPageHeaderIdSuggested;
+  core.bool? firstPageHeaderIdSuggested;
 
   /// Indicates if there was a suggested change to margin_bottom.
-  core.bool marginBottomSuggested;
+  core.bool? marginBottomSuggested;
 
   /// Indicates if there was a suggested change to margin_footer.
-  core.bool marginFooterSuggested;
+  core.bool? marginFooterSuggested;
 
   /// Indicates if there was a suggested change to margin_header.
-  core.bool marginHeaderSuggested;
+  core.bool? marginHeaderSuggested;
 
   /// Indicates if there was a suggested change to margin_left.
-  core.bool marginLeftSuggested;
+  core.bool? marginLeftSuggested;
 
   /// Indicates if there was a suggested change to margin_right.
-  core.bool marginRightSuggested;
+  core.bool? marginRightSuggested;
 
   /// Indicates if there was a suggested change to margin_top.
-  core.bool marginTopSuggested;
+  core.bool? marginTopSuggested;
 
   /// Indicates if there was a suggested change to page_number_start.
-  core.bool pageNumberStartSuggested;
+  core.bool? pageNumberStartSuggested;
 
   /// A mask that indicates which of the fields in size have been changed in
   /// this suggestion.
-  SizeSuggestionState pageSizeSuggestionState;
+  SizeSuggestionState? pageSizeSuggestionState;
 
   /// Indicates if there was a suggested change to
   /// use_custom_header_footer_margins.
-  core.bool useCustomHeaderFooterMarginsSuggested;
+  core.bool? useCustomHeaderFooterMarginsSuggested;
 
   /// Indicates if there was a suggested change to use_even_page_header_footer.
-  core.bool useEvenPageHeaderFooterSuggested;
+  core.bool? useEvenPageHeaderFooterSuggested;
 
   /// Indicates if there was a suggested change to use_first_page_header_footer.
-  core.bool useFirstPageHeaderFooterSuggested;
+  core.bool? useFirstPageHeaderFooterSuggested;
 
   DocumentStyleSuggestionState();
 
@@ -1852,45 +1848,45 @@ class DocumentStyleSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundSuggestionState != null)
-          'backgroundSuggestionState': backgroundSuggestionState.toJson(),
+          'backgroundSuggestionState': backgroundSuggestionState!.toJson(),
         if (defaultFooterIdSuggested != null)
-          'defaultFooterIdSuggested': defaultFooterIdSuggested,
+          'defaultFooterIdSuggested': defaultFooterIdSuggested!,
         if (defaultHeaderIdSuggested != null)
-          'defaultHeaderIdSuggested': defaultHeaderIdSuggested,
+          'defaultHeaderIdSuggested': defaultHeaderIdSuggested!,
         if (evenPageFooterIdSuggested != null)
-          'evenPageFooterIdSuggested': evenPageFooterIdSuggested,
+          'evenPageFooterIdSuggested': evenPageFooterIdSuggested!,
         if (evenPageHeaderIdSuggested != null)
-          'evenPageHeaderIdSuggested': evenPageHeaderIdSuggested,
+          'evenPageHeaderIdSuggested': evenPageHeaderIdSuggested!,
         if (firstPageFooterIdSuggested != null)
-          'firstPageFooterIdSuggested': firstPageFooterIdSuggested,
+          'firstPageFooterIdSuggested': firstPageFooterIdSuggested!,
         if (firstPageHeaderIdSuggested != null)
-          'firstPageHeaderIdSuggested': firstPageHeaderIdSuggested,
+          'firstPageHeaderIdSuggested': firstPageHeaderIdSuggested!,
         if (marginBottomSuggested != null)
-          'marginBottomSuggested': marginBottomSuggested,
+          'marginBottomSuggested': marginBottomSuggested!,
         if (marginFooterSuggested != null)
-          'marginFooterSuggested': marginFooterSuggested,
+          'marginFooterSuggested': marginFooterSuggested!,
         if (marginHeaderSuggested != null)
-          'marginHeaderSuggested': marginHeaderSuggested,
+          'marginHeaderSuggested': marginHeaderSuggested!,
         if (marginLeftSuggested != null)
-          'marginLeftSuggested': marginLeftSuggested,
+          'marginLeftSuggested': marginLeftSuggested!,
         if (marginRightSuggested != null)
-          'marginRightSuggested': marginRightSuggested,
+          'marginRightSuggested': marginRightSuggested!,
         if (marginTopSuggested != null)
-          'marginTopSuggested': marginTopSuggested,
+          'marginTopSuggested': marginTopSuggested!,
         if (pageNumberStartSuggested != null)
-          'pageNumberStartSuggested': pageNumberStartSuggested,
+          'pageNumberStartSuggested': pageNumberStartSuggested!,
         if (pageSizeSuggestionState != null)
-          'pageSizeSuggestionState': pageSizeSuggestionState.toJson(),
+          'pageSizeSuggestionState': pageSizeSuggestionState!.toJson(),
         if (useCustomHeaderFooterMarginsSuggested != null)
           'useCustomHeaderFooterMarginsSuggested':
-              useCustomHeaderFooterMarginsSuggested,
+              useCustomHeaderFooterMarginsSuggested!,
         if (useEvenPageHeaderFooterSuggested != null)
-          'useEvenPageHeaderFooterSuggested': useEvenPageHeaderFooterSuggested,
+          'useEvenPageHeaderFooterSuggested': useEvenPageHeaderFooterSuggested!,
         if (useFirstPageHeaderFooterSuggested != null)
           'useFirstPageHeaderFooterSuggested':
-              useFirstPageHeaderFooterSuggested,
+              useFirstPageHeaderFooterSuggested!,
       };
 }
 
@@ -1902,7 +1898,7 @@ class EmbeddedDrawingProperties {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A mask that indicates which of the fields on the base
@@ -1916,7 +1912,7 @@ class EmbeddedDrawingPropertiesSuggestionState {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// An embedded object in the document.
@@ -1924,43 +1920,43 @@ class EmbeddedObject {
   /// The description of the embedded object.
   ///
   /// The `title` and `description` are both combined to display alt text.
-  core.String description;
+  core.String? description;
 
   /// The properties of an embedded drawing.
-  EmbeddedDrawingProperties embeddedDrawingProperties;
+  EmbeddedDrawingProperties? embeddedDrawingProperties;
 
   /// The border of the embedded object.
-  EmbeddedObjectBorder embeddedObjectBorder;
+  EmbeddedObjectBorder? embeddedObjectBorder;
 
   /// The properties of an image.
-  ImageProperties imageProperties;
+  ImageProperties? imageProperties;
 
   /// A reference to the external linked source content.
   ///
   /// For example, it contains a reference to the source Sheets chart when the
   /// embedded object is a linked chart. If unset, then the embedded object is
   /// not linked.
-  LinkedContentReference linkedContentReference;
+  LinkedContentReference? linkedContentReference;
 
   /// The bottom margin of the embedded object.
-  Dimension marginBottom;
+  Dimension? marginBottom;
 
   /// The left margin of the embedded object.
-  Dimension marginLeft;
+  Dimension? marginLeft;
 
   /// The right margin of the embedded object.
-  Dimension marginRight;
+  Dimension? marginRight;
 
   /// The top margin of the embedded object.
-  Dimension marginTop;
+  Dimension? marginTop;
 
   /// The visible size of the image after cropping.
-  Size size;
+  Size? size;
 
   /// The title of the embedded object.
   ///
   /// The `title` and `description` are both combined to display alt text.
-  core.String title;
+  core.String? title;
 
   EmbeddedObject();
 
@@ -2011,29 +2007,29 @@ class EmbeddedObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
         if (embeddedDrawingProperties != null)
-          'embeddedDrawingProperties': embeddedDrawingProperties.toJson(),
+          'embeddedDrawingProperties': embeddedDrawingProperties!.toJson(),
         if (embeddedObjectBorder != null)
-          'embeddedObjectBorder': embeddedObjectBorder.toJson(),
+          'embeddedObjectBorder': embeddedObjectBorder!.toJson(),
         if (imageProperties != null)
-          'imageProperties': imageProperties.toJson(),
+          'imageProperties': imageProperties!.toJson(),
         if (linkedContentReference != null)
-          'linkedContentReference': linkedContentReference.toJson(),
-        if (marginBottom != null) 'marginBottom': marginBottom.toJson(),
-        if (marginLeft != null) 'marginLeft': marginLeft.toJson(),
-        if (marginRight != null) 'marginRight': marginRight.toJson(),
-        if (marginTop != null) 'marginTop': marginTop.toJson(),
-        if (size != null) 'size': size.toJson(),
-        if (title != null) 'title': title,
+          'linkedContentReference': linkedContentReference!.toJson(),
+        if (marginBottom != null) 'marginBottom': marginBottom!.toJson(),
+        if (marginLeft != null) 'marginLeft': marginLeft!.toJson(),
+        if (marginRight != null) 'marginRight': marginRight!.toJson(),
+        if (marginTop != null) 'marginTop': marginTop!.toJson(),
+        if (size != null) 'size': size!.toJson(),
+        if (title != null) 'title': title!,
       };
 }
 
 /// A border around an EmbeddedObject.
 class EmbeddedObjectBorder {
   /// The color of the border.
-  OptionalColor color;
+  OptionalColor? color;
 
   /// The dash style of the border.
   /// Possible string values are:
@@ -2044,7 +2040,7 @@ class EmbeddedObjectBorder {
   /// 'dot'.
   /// - "DASH" : Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value
   /// 'dash'.
-  core.String dashStyle;
+  core.String? dashStyle;
 
   /// The property state of the border property.
   /// Possible string values are:
@@ -2053,10 +2049,10 @@ class EmbeddedObjectBorder {
   /// value.
   /// - "NOT_RENDERED" : If a property's state is NOT_RENDERED, then the element
   /// does not have the corresponding property when rendered in the document.
-  core.String propertyState;
+  core.String? propertyState;
 
   /// The width of the border.
-  Dimension width;
+  Dimension? width;
 
   EmbeddedObjectBorder();
 
@@ -2077,11 +2073,11 @@ class EmbeddedObjectBorder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (color != null) 'color': color.toJson(),
-        if (dashStyle != null) 'dashStyle': dashStyle,
-        if (propertyState != null) 'propertyState': propertyState,
-        if (width != null) 'width': width.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (color != null) 'color': color!.toJson(),
+        if (dashStyle != null) 'dashStyle': dashStyle!,
+        if (propertyState != null) 'propertyState': propertyState!,
+        if (width != null) 'width': width!.toJson(),
       };
 }
 
@@ -2091,16 +2087,16 @@ class EmbeddedObjectBorder {
 /// For any field set to true, there is a new suggested value.
 class EmbeddedObjectBorderSuggestionState {
   /// Indicates if there was a suggested change to color.
-  core.bool colorSuggested;
+  core.bool? colorSuggested;
 
   /// Indicates if there was a suggested change to dash_style.
-  core.bool dashStyleSuggested;
+  core.bool? dashStyleSuggested;
 
   /// Indicates if there was a suggested change to property_state.
-  core.bool propertyStateSuggested;
+  core.bool? propertyStateSuggested;
 
   /// Indicates if there was a suggested change to width.
-  core.bool widthSuggested;
+  core.bool? widthSuggested;
 
   EmbeddedObjectBorderSuggestionState();
 
@@ -2119,13 +2115,13 @@ class EmbeddedObjectBorderSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (colorSuggested != null) 'colorSuggested': colorSuggested,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (colorSuggested != null) 'colorSuggested': colorSuggested!,
         if (dashStyleSuggested != null)
-          'dashStyleSuggested': dashStyleSuggested,
+          'dashStyleSuggested': dashStyleSuggested!,
         if (propertyStateSuggested != null)
-          'propertyStateSuggested': propertyStateSuggested,
-        if (widthSuggested != null) 'widthSuggested': widthSuggested,
+          'propertyStateSuggested': propertyStateSuggested!,
+        if (widthSuggested != null) 'widthSuggested': widthSuggested!,
       };
 }
 
@@ -2135,43 +2131,43 @@ class EmbeddedObjectBorderSuggestionState {
 /// For any field set to true, there is a new suggested value.
 class EmbeddedObjectSuggestionState {
   /// Indicates if there was a suggested change to description.
-  core.bool descriptionSuggested;
+  core.bool? descriptionSuggested;
 
   /// A mask that indicates which of the fields in embedded_drawing_properties
   /// have been changed in this suggestion.
-  EmbeddedDrawingPropertiesSuggestionState
+  EmbeddedDrawingPropertiesSuggestionState?
       embeddedDrawingPropertiesSuggestionState;
 
   /// A mask that indicates which of the fields in embedded_object_border have
   /// been changed in this suggestion.
-  EmbeddedObjectBorderSuggestionState embeddedObjectBorderSuggestionState;
+  EmbeddedObjectBorderSuggestionState? embeddedObjectBorderSuggestionState;
 
   /// A mask that indicates which of the fields in image_properties have been
   /// changed in this suggestion.
-  ImagePropertiesSuggestionState imagePropertiesSuggestionState;
+  ImagePropertiesSuggestionState? imagePropertiesSuggestionState;
 
   /// A mask that indicates which of the fields in linked_content_reference have
   /// been changed in this suggestion.
-  LinkedContentReferenceSuggestionState linkedContentReferenceSuggestionState;
+  LinkedContentReferenceSuggestionState? linkedContentReferenceSuggestionState;
 
   /// Indicates if there was a suggested change to margin_bottom.
-  core.bool marginBottomSuggested;
+  core.bool? marginBottomSuggested;
 
   /// Indicates if there was a suggested change to margin_left.
-  core.bool marginLeftSuggested;
+  core.bool? marginLeftSuggested;
 
   /// Indicates if there was a suggested change to margin_right.
-  core.bool marginRightSuggested;
+  core.bool? marginRightSuggested;
 
   /// Indicates if there was a suggested change to margin_top.
-  core.bool marginTopSuggested;
+  core.bool? marginTopSuggested;
 
   /// A mask that indicates which of the fields in size have been changed in
   /// this suggestion.
-  SizeSuggestionState sizeSuggestionState;
+  SizeSuggestionState? sizeSuggestionState;
 
   /// Indicates if there was a suggested change to title.
-  core.bool titleSuggested;
+  core.bool? titleSuggested;
 
   EmbeddedObjectSuggestionState();
 
@@ -2223,32 +2219,32 @@ class EmbeddedObjectSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (descriptionSuggested != null)
-          'descriptionSuggested': descriptionSuggested,
+          'descriptionSuggested': descriptionSuggested!,
         if (embeddedDrawingPropertiesSuggestionState != null)
           'embeddedDrawingPropertiesSuggestionState':
-              embeddedDrawingPropertiesSuggestionState.toJson(),
+              embeddedDrawingPropertiesSuggestionState!.toJson(),
         if (embeddedObjectBorderSuggestionState != null)
           'embeddedObjectBorderSuggestionState':
-              embeddedObjectBorderSuggestionState.toJson(),
+              embeddedObjectBorderSuggestionState!.toJson(),
         if (imagePropertiesSuggestionState != null)
           'imagePropertiesSuggestionState':
-              imagePropertiesSuggestionState.toJson(),
+              imagePropertiesSuggestionState!.toJson(),
         if (linkedContentReferenceSuggestionState != null)
           'linkedContentReferenceSuggestionState':
-              linkedContentReferenceSuggestionState.toJson(),
+              linkedContentReferenceSuggestionState!.toJson(),
         if (marginBottomSuggested != null)
-          'marginBottomSuggested': marginBottomSuggested,
+          'marginBottomSuggested': marginBottomSuggested!,
         if (marginLeftSuggested != null)
-          'marginLeftSuggested': marginLeftSuggested,
+          'marginLeftSuggested': marginLeftSuggested!,
         if (marginRightSuggested != null)
-          'marginRightSuggested': marginRightSuggested,
+          'marginRightSuggested': marginRightSuggested!,
         if (marginTopSuggested != null)
-          'marginTopSuggested': marginTopSuggested,
+          'marginTopSuggested': marginTopSuggested!,
         if (sizeSuggestionState != null)
-          'sizeSuggestionState': sizeSuggestionState.toJson(),
-        if (titleSuggested != null) 'titleSuggested': titleSuggested,
+          'sizeSuggestionState': sizeSuggestionState!.toJson(),
+        if (titleSuggested != null) 'titleSuggested': titleSuggested!,
       };
 }
 
@@ -2259,7 +2255,7 @@ class EndOfSegmentLocation {
   /// The ID of the header, footer or footnote the location is in.
   ///
   /// An empty segment ID signifies the document's body.
-  core.String segmentId;
+  core.String? segmentId;
 
   EndOfSegmentLocation();
 
@@ -2269,8 +2265,8 @@ class EndOfSegmentLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (segmentId != null) 'segmentId': segmentId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (segmentId != null) 'segmentId': segmentId!,
       };
 }
 
@@ -2279,13 +2275,13 @@ class Equation {
   /// The suggested deletion IDs.
   ///
   /// If empty, then there are no suggested deletions of this content.
-  core.List<core.String> suggestedDeletionIds;
+  core.List<core.String>? suggestedDeletionIds;
 
   /// The suggested insertion IDs.
   ///
   /// A Equation may have multiple insertion IDs if it is a nested suggested
   /// change. If empty, then this is not a suggested insertion.
-  core.List<core.String> suggestedInsertionIds;
+  core.List<core.String>? suggestedInsertionIds;
 
   Equation();
 
@@ -2302,11 +2298,11 @@ class Equation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds,
+          'suggestedDeletionIds': suggestedDeletionIds!,
         if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds,
+          'suggestedInsertionIds': suggestedInsertionIds!,
       };
 }
 
@@ -2315,10 +2311,10 @@ class Footer {
   /// The contents of the footer.
   ///
   /// The indexes for a footer's content begin at zero.
-  core.List<StructuralElement> content;
+  core.List<StructuralElement>? content;
 
   /// The ID of the footer.
-  core.String footerId;
+  core.String? footerId;
 
   Footer();
 
@@ -2334,10 +2330,10 @@ class Footer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (content != null)
-          'content': content.map((value) => value.toJson()).toList(),
-        if (footerId != null) 'footerId': footerId,
+          'content': content!.map((value) => value.toJson()).toList(),
+        if (footerId != null) 'footerId': footerId!,
       };
 }
 
@@ -2346,10 +2342,10 @@ class Footnote {
   /// The contents of the footnote.
   ///
   /// The indexes for a footnote's content begin at zero.
-  core.List<StructuralElement> content;
+  core.List<StructuralElement>? content;
 
   /// The ID of the footnote.
-  core.String footnoteId;
+  core.String? footnoteId;
 
   Footnote();
 
@@ -2365,10 +2361,10 @@ class Footnote {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (content != null)
-          'content': content.map((value) => value.toJson()).toList(),
-        if (footnoteId != null) 'footnoteId': footnoteId,
+          'content': content!.map((value) => value.toJson()).toList(),
+        if (footnoteId != null) 'footnoteId': footnoteId!,
       };
 }
 
@@ -2379,28 +2375,28 @@ class Footnote {
 class FootnoteReference {
   /// The ID of the footnote that contains the content of this footnote
   /// reference.
-  core.String footnoteId;
+  core.String? footnoteId;
 
   /// The rendered number of this footnote.
-  core.String footnoteNumber;
+  core.String? footnoteNumber;
 
   /// The suggested deletion IDs.
   ///
   /// If empty, then there are no suggested deletions of this content.
-  core.List<core.String> suggestedDeletionIds;
+  core.List<core.String>? suggestedDeletionIds;
 
   /// The suggested insertion IDs.
   ///
   /// A FootnoteReference may have multiple insertion IDs if it is a nested
   /// suggested change. If empty, then this is not a suggested insertion.
-  core.List<core.String> suggestedInsertionIds;
+  core.List<core.String>? suggestedInsertionIds;
 
   /// The suggested text style changes to this FootnoteReference, keyed by
   /// suggestion ID.
-  core.Map<core.String, SuggestedTextStyle> suggestedTextStyleChanges;
+  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
 
   /// The text style of this FootnoteReference.
-  TextStyle textStyle;
+  TextStyle? textStyle;
 
   FootnoteReference();
 
@@ -2424,7 +2420,7 @@ class FootnoteReference {
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges =
           (_json['suggestedTextStyleChanges'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -2439,17 +2435,17 @@ class FootnoteReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (footnoteId != null) 'footnoteId': footnoteId,
-        if (footnoteNumber != null) 'footnoteNumber': footnoteNumber,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (footnoteId != null) 'footnoteId': footnoteId!,
+        if (footnoteNumber != null) 'footnoteNumber': footnoteNumber!,
         if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds,
+          'suggestedDeletionIds': suggestedDeletionIds!,
         if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds,
+          'suggestedInsertionIds': suggestedInsertionIds!,
         if (suggestedTextStyleChanges != null)
-          'suggestedTextStyleChanges': suggestedTextStyleChanges
+          'suggestedTextStyleChanges': suggestedTextStyleChanges!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (textStyle != null) 'textStyle': textStyle.toJson(),
+        if (textStyle != null) 'textStyle': textStyle!.toJson(),
       };
 }
 
@@ -2458,10 +2454,10 @@ class Header {
   /// The contents of the header.
   ///
   /// The indexes for a header's content begin at zero.
-  core.List<StructuralElement> content;
+  core.List<StructuralElement>? content;
 
   /// The ID of the header.
-  core.String headerId;
+  core.String? headerId;
 
   Header();
 
@@ -2477,10 +2473,10 @@ class Header {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (content != null)
-          'content': content.map((value) => value.toJson()).toList(),
-        if (headerId != null) 'headerId': headerId,
+          'content': content!.map((value) => value.toJson()).toList(),
+        if (headerId != null) 'headerId': headerId!,
       };
 }
 
@@ -2489,24 +2485,24 @@ class HorizontalRule {
   /// The suggested deletion IDs.
   ///
   /// If empty, then there are no suggested deletions of this content.
-  core.List<core.String> suggestedDeletionIds;
+  core.List<core.String>? suggestedDeletionIds;
 
   /// The suggested insertion IDs.
   ///
   /// A HorizontalRule may have multiple insertion IDs if it is a nested
   /// suggested change. If empty, then this is not a suggested insertion.
-  core.List<core.String> suggestedInsertionIds;
+  core.List<core.String>? suggestedInsertionIds;
 
   /// The suggested text style changes to this HorizontalRule, keyed by
   /// suggestion ID.
-  core.Map<core.String, SuggestedTextStyle> suggestedTextStyleChanges;
+  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
 
   /// The text style of this HorizontalRule.
   ///
   /// Similar to text content, like text runs and footnote references, the text
   /// style of a horizontal rule can affect content layout as well as the
   /// styling of text inserted adjacent to it.
-  TextStyle textStyle;
+  TextStyle? textStyle;
 
   HorizontalRule();
 
@@ -2524,7 +2520,7 @@ class HorizontalRule {
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges =
           (_json['suggestedTextStyleChanges'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -2539,55 +2535,55 @@ class HorizontalRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds,
+          'suggestedDeletionIds': suggestedDeletionIds!,
         if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds,
+          'suggestedInsertionIds': suggestedInsertionIds!,
         if (suggestedTextStyleChanges != null)
-          'suggestedTextStyleChanges': suggestedTextStyleChanges
+          'suggestedTextStyleChanges': suggestedTextStyleChanges!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (textStyle != null) 'textStyle': textStyle.toJson(),
+        if (textStyle != null) 'textStyle': textStyle!.toJson(),
       };
 }
 
 /// The properties of an image.
 class ImageProperties {
   /// The clockwise rotation angle of the image, in radians.
-  core.double angle;
+  core.double? angle;
 
   /// The brightness effect of the image.
   ///
   /// The value should be in the interval \[-1.0, 1.0\], where 0 means no
   /// effect.
-  core.double brightness;
+  core.double? brightness;
 
   /// A URI to the image with a default lifetime of 30 minutes.
   ///
   /// This URI is tagged with the account of the requester. Anyone with the URI
   /// effectively accesses the image as the original requester. Access to the
   /// image may be lost if the document's sharing settings change.
-  core.String contentUri;
+  core.String? contentUri;
 
   /// The contrast effect of the image.
   ///
   /// The value should be in the interval \[-1.0, 1.0\], where 0 means no
   /// effect.
-  core.double contrast;
+  core.double? contrast;
 
   /// The crop properties of the image.
-  CropProperties cropProperties;
+  CropProperties? cropProperties;
 
   /// The source URI is the URI used to insert the image.
   ///
   /// The source URI can be empty.
-  core.String sourceUri;
+  core.String? sourceUri;
 
   /// The transparency effect of the image.
   ///
   /// The value should be in the interval \[0.0, 1.0\], where 0 means no effect
   /// and 1 means completely transparent.
-  core.double transparency;
+  core.double? transparency;
 
   ImageProperties();
 
@@ -2616,14 +2612,14 @@ class ImageProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (angle != null) 'angle': angle,
-        if (brightness != null) 'brightness': brightness,
-        if (contentUri != null) 'contentUri': contentUri,
-        if (contrast != null) 'contrast': contrast,
-        if (cropProperties != null) 'cropProperties': cropProperties.toJson(),
-        if (sourceUri != null) 'sourceUri': sourceUri,
-        if (transparency != null) 'transparency': transparency,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (angle != null) 'angle': angle!,
+        if (brightness != null) 'brightness': brightness!,
+        if (contentUri != null) 'contentUri': contentUri!,
+        if (contrast != null) 'contrast': contrast!,
+        if (cropProperties != null) 'cropProperties': cropProperties!.toJson(),
+        if (sourceUri != null) 'sourceUri': sourceUri!,
+        if (transparency != null) 'transparency': transparency!,
       };
 }
 
@@ -2633,26 +2629,26 @@ class ImageProperties {
 /// For any field set to true, there is a new suggested value.
 class ImagePropertiesSuggestionState {
   /// Indicates if there was a suggested change to angle.
-  core.bool angleSuggested;
+  core.bool? angleSuggested;
 
   /// Indicates if there was a suggested change to brightness.
-  core.bool brightnessSuggested;
+  core.bool? brightnessSuggested;
 
   /// Indicates if there was a suggested change to content_uri.
-  core.bool contentUriSuggested;
+  core.bool? contentUriSuggested;
 
   /// Indicates if there was a suggested change to contrast.
-  core.bool contrastSuggested;
+  core.bool? contrastSuggested;
 
   /// A mask that indicates which of the fields in crop_properties have been
   /// changed in this suggestion.
-  CropPropertiesSuggestionState cropPropertiesSuggestionState;
+  CropPropertiesSuggestionState? cropPropertiesSuggestionState;
 
   /// Indicates if there was a suggested change to source_uri.
-  core.bool sourceUriSuggested;
+  core.bool? sourceUriSuggested;
 
   /// Indicates if there was a suggested change to transparency.
-  core.bool transparencySuggested;
+  core.bool? transparencySuggested;
 
   ImagePropertiesSuggestionState();
 
@@ -2682,20 +2678,20 @@ class ImagePropertiesSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (angleSuggested != null) 'angleSuggested': angleSuggested,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (angleSuggested != null) 'angleSuggested': angleSuggested!,
         if (brightnessSuggested != null)
-          'brightnessSuggested': brightnessSuggested,
+          'brightnessSuggested': brightnessSuggested!,
         if (contentUriSuggested != null)
-          'contentUriSuggested': contentUriSuggested,
-        if (contrastSuggested != null) 'contrastSuggested': contrastSuggested,
+          'contentUriSuggested': contentUriSuggested!,
+        if (contrastSuggested != null) 'contrastSuggested': contrastSuggested!,
         if (cropPropertiesSuggestionState != null)
           'cropPropertiesSuggestionState':
-              cropPropertiesSuggestionState.toJson(),
+              cropPropertiesSuggestionState!.toJson(),
         if (sourceUriSuggested != null)
-          'sourceUriSuggested': sourceUriSuggested,
+          'sourceUriSuggested': sourceUriSuggested!,
         if (transparencySuggested != null)
-          'transparencySuggested': transparencySuggested,
+          'transparencySuggested': transparencySuggested!,
       };
 }
 
@@ -2704,25 +2700,25 @@ class ImagePropertiesSuggestionState {
 /// An InlineObject contains an EmbeddedObject such as an image.
 class InlineObject {
   /// The properties of this inline object.
-  InlineObjectProperties inlineObjectProperties;
+  InlineObjectProperties? inlineObjectProperties;
 
   /// The ID of this inline object.
-  core.String objectId;
+  core.String? objectId;
 
   /// The suggested deletion IDs.
   ///
   /// If empty, then there are no suggested deletions of this content.
-  core.List<core.String> suggestedDeletionIds;
+  core.List<core.String>? suggestedDeletionIds;
 
   /// The suggested changes to the inline object properties, keyed by suggestion
   /// ID.
-  core.Map<core.String, SuggestedInlineObjectProperties>
+  core.Map<core.String, SuggestedInlineObjectProperties>?
       suggestedInlineObjectPropertiesChanges;
 
   /// The suggested insertion ID.
   ///
   /// If empty, then this is not a suggested insertion.
-  core.String suggestedInsertionId;
+  core.String? suggestedInsertionId;
 
   InlineObject();
 
@@ -2743,7 +2739,7 @@ class InlineObject {
     if (_json.containsKey('suggestedInlineObjectPropertiesChanges')) {
       suggestedInlineObjectPropertiesChanges =
           (_json['suggestedInlineObjectPropertiesChanges'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -2757,47 +2753,47 @@ class InlineObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (inlineObjectProperties != null)
-          'inlineObjectProperties': inlineObjectProperties.toJson(),
-        if (objectId != null) 'objectId': objectId,
+          'inlineObjectProperties': inlineObjectProperties!.toJson(),
+        if (objectId != null) 'objectId': objectId!,
         if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds,
+          'suggestedDeletionIds': suggestedDeletionIds!,
         if (suggestedInlineObjectPropertiesChanges != null)
           'suggestedInlineObjectPropertiesChanges':
-              suggestedInlineObjectPropertiesChanges
+              suggestedInlineObjectPropertiesChanges!
                   .map((key, item) => core.MapEntry(key, item.toJson())),
         if (suggestedInsertionId != null)
-          'suggestedInsertionId': suggestedInsertionId,
+          'suggestedInsertionId': suggestedInsertionId!,
       };
 }
 
 /// A ParagraphElement that contains an InlineObject.
 class InlineObjectElement {
   /// The ID of the InlineObject this element contains.
-  core.String inlineObjectId;
+  core.String? inlineObjectId;
 
   /// The suggested deletion IDs.
   ///
   /// If empty, then there are no suggested deletions of this content.
-  core.List<core.String> suggestedDeletionIds;
+  core.List<core.String>? suggestedDeletionIds;
 
   /// The suggested insertion IDs.
   ///
   /// An InlineObjectElement may have multiple insertion IDs if it is a nested
   /// suggested change. If empty, then this is not a suggested insertion.
-  core.List<core.String> suggestedInsertionIds;
+  core.List<core.String>? suggestedInsertionIds;
 
   /// The suggested text style changes to this InlineObject, keyed by suggestion
   /// ID.
-  core.Map<core.String, SuggestedTextStyle> suggestedTextStyleChanges;
+  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
 
   /// The text style of this InlineObjectElement.
   ///
   /// Similar to text content, like text runs and footnote references, the text
   /// style of an inline object element can affect content layout as well as the
   /// styling of text inserted adjacent to it.
-  TextStyle textStyle;
+  TextStyle? textStyle;
 
   InlineObjectElement();
 
@@ -2818,7 +2814,7 @@ class InlineObjectElement {
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges =
           (_json['suggestedTextStyleChanges'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -2833,23 +2829,23 @@ class InlineObjectElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (inlineObjectId != null) 'inlineObjectId': inlineObjectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (inlineObjectId != null) 'inlineObjectId': inlineObjectId!,
         if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds,
+          'suggestedDeletionIds': suggestedDeletionIds!,
         if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds,
+          'suggestedInsertionIds': suggestedInsertionIds!,
         if (suggestedTextStyleChanges != null)
-          'suggestedTextStyleChanges': suggestedTextStyleChanges
+          'suggestedTextStyleChanges': suggestedTextStyleChanges!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (textStyle != null) 'textStyle': textStyle.toJson(),
+        if (textStyle != null) 'textStyle': textStyle!.toJson(),
       };
 }
 
 /// Properties of an InlineObject.
 class InlineObjectProperties {
   /// The embedded object of this inline object.
-  EmbeddedObject embeddedObject;
+  EmbeddedObject? embeddedObject;
 
   InlineObjectProperties();
 
@@ -2860,8 +2856,8 @@ class InlineObjectProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (embeddedObject != null) 'embeddedObject': embeddedObject.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (embeddedObject != null) 'embeddedObject': embeddedObject!.toJson(),
       };
 }
 
@@ -2872,7 +2868,7 @@ class InlineObjectProperties {
 class InlineObjectPropertiesSuggestionState {
   /// A mask that indicates which of the fields in embedded_object have been
   /// changed in this suggestion.
-  EmbeddedObjectSuggestionState embeddedObjectSuggestionState;
+  EmbeddedObjectSuggestionState? embeddedObjectSuggestionState;
 
   InlineObjectPropertiesSuggestionState();
 
@@ -2884,10 +2880,10 @@ class InlineObjectPropertiesSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (embeddedObjectSuggestionState != null)
           'embeddedObjectSuggestionState':
-              embeddedObjectSuggestionState.toJson(),
+              embeddedObjectSuggestionState!.toJson(),
       };
 }
 
@@ -2896,7 +2892,7 @@ class InsertInlineImageRequest {
   /// Inserts the text at the end of a header, footer or the document body.
   ///
   /// Inline images cannot be inserted inside a footnote.
-  EndOfSegmentLocation endOfSegmentLocation;
+  EndOfSegmentLocation? endOfSegmentLocation;
 
   /// Inserts the image at a specific index in the document.
   ///
@@ -2904,7 +2900,7 @@ class InsertInlineImageRequest {
   /// instance, it cannot be inserted at a table's start index (i.e. between the
   /// table and its preceding paragraph). Inline images cannot be inserted
   /// inside a footnote or equation.
-  Location location;
+  Location? location;
 
   /// The size that the image should appear as in the document.
   ///
@@ -2915,7 +2911,7 @@ class InsertInlineImageRequest {
   /// calculated to preserve the aspect ratio of the image. * If both width and
   /// height are specified, the image is scaled to fit within the provided
   /// dimensions while maintaining its aspect ratio.
-  Size objectSize;
+  Size? objectSize;
 
   /// The image URI.
   ///
@@ -2924,7 +2920,7 @@ class InsertInlineImageRequest {
   /// exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format. The
   /// provided URI can be at most 2 kB in length. The URI itself is saved with
   /// the image, and exposed via the ImageProperties.content_uri field.
-  core.String uri;
+  core.String? uri;
 
   InsertInlineImageRequest();
 
@@ -2946,19 +2942,19 @@ class InsertInlineImageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (endOfSegmentLocation != null)
-          'endOfSegmentLocation': endOfSegmentLocation.toJson(),
-        if (location != null) 'location': location.toJson(),
-        if (objectSize != null) 'objectSize': objectSize.toJson(),
-        if (uri != null) 'uri': uri,
+          'endOfSegmentLocation': endOfSegmentLocation!.toJson(),
+        if (location != null) 'location': location!.toJson(),
+        if (objectSize != null) 'objectSize': objectSize!.toJson(),
+        if (uri != null) 'uri': uri!,
       };
 }
 
 /// The result of inserting an inline image.
 class InsertInlineImageResponse {
   /// The ID of the created InlineObject.
-  core.String objectId;
+  core.String? objectId;
 
   InsertInlineImageResponse();
 
@@ -2968,15 +2964,15 @@ class InsertInlineImageResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
 /// The result of inserting an embedded Google Sheets chart.
 class InsertInlineSheetsChartResponse {
   /// The object ID of the inserted chart.
-  core.String objectId;
+  core.String? objectId;
 
   InsertInlineSheetsChartResponse();
 
@@ -2986,8 +2982,8 @@ class InsertInlineSheetsChartResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
@@ -2998,7 +2994,7 @@ class InsertPageBreakRequest {
   /// Page breaks cannot be inserted inside a footnote, header or footer. Since
   /// page breaks can only be inserted inside the body, the segment ID field
   /// must be empty.
-  EndOfSegmentLocation endOfSegmentLocation;
+  EndOfSegmentLocation? endOfSegmentLocation;
 
   /// Inserts the page break at a specific index in the document.
   ///
@@ -3008,7 +3004,7 @@ class InsertPageBreakRequest {
   /// be inserted inside a table, equation, footnote, header or footer. Since
   /// page breaks can only be inserted inside the body, the segment ID field
   /// must be empty.
-  Location location;
+  Location? location;
 
   InsertPageBreakRequest();
 
@@ -3023,10 +3019,10 @@ class InsertPageBreakRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (endOfSegmentLocation != null)
-          'endOfSegmentLocation': endOfSegmentLocation.toJson(),
-        if (location != null) 'location': location.toJson(),
+          'endOfSegmentLocation': endOfSegmentLocation!.toJson(),
+        if (location != null) 'location': location!.toJson(),
       };
 }
 
@@ -3039,7 +3035,7 @@ class InsertSectionBreakRequest {
   /// Section breaks cannot be inserted inside a footnote, header or footer.
   /// Because section breaks can only be inserted inside the body, the segment
   /// ID field must be empty.
-  EndOfSegmentLocation endOfSegmentLocation;
+  EndOfSegmentLocation? endOfSegmentLocation;
 
   /// Inserts a newline and a section break at a specific index in the document.
   ///
@@ -3049,7 +3045,7 @@ class InsertSectionBreakRequest {
   /// cannot be inserted inside a table, equation, footnote, header, or footer.
   /// Since section breaks can only be inserted inside the body, the segment ID
   /// field must be empty.
-  Location location;
+  Location? location;
 
   /// The type of section to insert.
   /// Possible string values are:
@@ -3057,7 +3053,7 @@ class InsertSectionBreakRequest {
   /// - "CONTINUOUS" : The section starts immediately after the last paragraph
   /// of the previous section.
   /// - "NEXT_PAGE" : The section starts on the next page.
-  core.String sectionType;
+  core.String? sectionType;
 
   InsertSectionBreakRequest();
 
@@ -3075,11 +3071,11 @@ class InsertSectionBreakRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (endOfSegmentLocation != null)
-          'endOfSegmentLocation': endOfSegmentLocation.toJson(),
-        if (location != null) 'location': location.toJson(),
-        if (sectionType != null) 'sectionType': sectionType,
+          'endOfSegmentLocation': endOfSegmentLocation!.toJson(),
+        if (location != null) 'location': location!.toJson(),
+        if (sectionType != null) 'sectionType': sectionType!,
       };
 }
 
@@ -3088,14 +3084,14 @@ class InsertTableColumnRequest {
   /// Whether to insert new column to the right of the reference cell location.
   ///
   /// - `True`: insert to the right. - `False`: insert to the left.
-  core.bool insertRight;
+  core.bool? insertRight;
 
   /// The reference table cell location from which columns will be inserted.
   ///
   /// A new column will be inserted to the left (or right) of the column where
   /// the reference cell is. If the reference cell is a merged cell, a new
   /// column will be inserted to the left (or right) of the merged cell.
-  TableCellLocation tableCellLocation;
+  TableCellLocation? tableCellLocation;
 
   InsertTableColumnRequest();
 
@@ -3109,10 +3105,10 @@ class InsertTableColumnRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (insertRight != null) 'insertRight': insertRight,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (insertRight != null) 'insertRight': insertRight!,
         if (tableCellLocation != null)
-          'tableCellLocation': tableCellLocation.toJson(),
+          'tableCellLocation': tableCellLocation!.toJson(),
       };
 }
 
@@ -3121,13 +3117,13 @@ class InsertTableColumnRequest {
 /// A newline character will be inserted before the inserted table.
 class InsertTableRequest {
   /// The number of columns in the table.
-  core.int columns;
+  core.int? columns;
 
   /// Inserts the table at the end of the given header, footer or document body.
   ///
   /// A newline character will be inserted before the inserted table. Tables
   /// cannot be inserted inside a footnote.
-  EndOfSegmentLocation endOfSegmentLocation;
+  EndOfSegmentLocation? endOfSegmentLocation;
 
   /// Inserts the table at a specific model index.
   ///
@@ -3137,10 +3133,10 @@ class InsertTableRequest {
   /// instance, it cannot be inserted at a table's start index (i.e. between an
   /// existing table and its preceding paragraph). Tables cannot be inserted
   /// inside a footnote or equation.
-  Location location;
+  Location? location;
 
   /// The number of rows in the table.
-  core.int rows;
+  core.int? rows;
 
   InsertTableRequest();
 
@@ -3161,12 +3157,12 @@ class InsertTableRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columns != null) 'columns': columns,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columns != null) 'columns': columns!,
         if (endOfSegmentLocation != null)
-          'endOfSegmentLocation': endOfSegmentLocation.toJson(),
-        if (location != null) 'location': location.toJson(),
-        if (rows != null) 'rows': rows,
+          'endOfSegmentLocation': endOfSegmentLocation!.toJson(),
+        if (location != null) 'location': location!.toJson(),
+        if (rows != null) 'rows': rows!,
       };
 }
 
@@ -3175,14 +3171,14 @@ class InsertTableRowRequest {
   /// Whether to insert new row below the reference cell location.
   ///
   /// - `True`: insert below the cell. - `False`: insert above the cell.
-  core.bool insertBelow;
+  core.bool? insertBelow;
 
   /// The reference table cell location from which rows will be inserted.
   ///
   /// A new row will be inserted above (or below) the row where the reference
   /// cell is. If the reference cell is a merged cell, a new row will be
   /// inserted above (or below) the merged cell.
-  TableCellLocation tableCellLocation;
+  TableCellLocation? tableCellLocation;
 
   InsertTableRowRequest();
 
@@ -3196,10 +3192,10 @@ class InsertTableRowRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (insertBelow != null) 'insertBelow': insertBelow,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (insertBelow != null) 'insertBelow': insertBelow!,
         if (tableCellLocation != null)
-          'tableCellLocation': tableCellLocation.toJson(),
+          'tableCellLocation': tableCellLocation!.toJson(),
       };
 }
 
@@ -3207,7 +3203,7 @@ class InsertTableRowRequest {
 class InsertTextRequest {
   /// Inserts the text at the end of a header, footer, footnote or the document
   /// body.
-  EndOfSegmentLocation endOfSegmentLocation;
+  EndOfSegmentLocation? endOfSegmentLocation;
 
   /// Inserts the text at a specific index in the document.
   ///
@@ -3215,7 +3211,7 @@ class InsertTextRequest {
   /// instance, text cannot be inserted at a table's start index (i.e. between
   /// the table and its preceding paragraph). The text must be inserted in the
   /// preceding paragraph.
-  Location location;
+  Location? location;
 
   /// The text to be inserted.
   ///
@@ -3228,7 +3224,7 @@ class InsertTextRequest {
   /// index. Some control characters (U+0000-U+0008, U+000C-U+001F) and
   /// characters from the Unicode Basic Multilingual Plane Private Use Area
   /// (U+E000-U+F8FF) will be stripped out of the inserted text.
-  core.String text;
+  core.String? text;
 
   InsertTextRequest();
 
@@ -3246,24 +3242,24 @@ class InsertTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (endOfSegmentLocation != null)
-          'endOfSegmentLocation': endOfSegmentLocation.toJson(),
-        if (location != null) 'location': location.toJson(),
-        if (text != null) 'text': text,
+          'endOfSegmentLocation': endOfSegmentLocation!.toJson(),
+        if (location != null) 'location': location!.toJson(),
+        if (text != null) 'text': text!,
       };
 }
 
 /// A reference to another portion of a document or an external URL resource.
 class Link {
   /// The ID of a bookmark in this document.
-  core.String bookmarkId;
+  core.String? bookmarkId;
 
   /// The ID of a heading in this document.
-  core.String headingId;
+  core.String? headingId;
 
   /// An external URL.
-  core.String url;
+  core.String? url;
 
   Link();
 
@@ -3279,17 +3275,17 @@ class Link {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bookmarkId != null) 'bookmarkId': bookmarkId,
-        if (headingId != null) 'headingId': headingId,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bookmarkId != null) 'bookmarkId': bookmarkId!,
+        if (headingId != null) 'headingId': headingId!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// A reference to the external linked source content.
 class LinkedContentReference {
   /// A reference to the linked chart.
-  SheetsChartReference sheetsChartReference;
+  SheetsChartReference? sheetsChartReference;
 
   LinkedContentReference();
 
@@ -3300,9 +3296,9 @@ class LinkedContentReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (sheetsChartReference != null)
-          'sheetsChartReference': sheetsChartReference.toJson(),
+          'sheetsChartReference': sheetsChartReference!.toJson(),
       };
 }
 
@@ -3313,7 +3309,7 @@ class LinkedContentReference {
 class LinkedContentReferenceSuggestionState {
   /// A mask that indicates which of the fields in sheets_chart_reference have
   /// been changed in this suggestion.
-  SheetsChartReferenceSuggestionState sheetsChartReferenceSuggestionState;
+  SheetsChartReferenceSuggestionState? sheetsChartReferenceSuggestionState;
 
   LinkedContentReferenceSuggestionState();
 
@@ -3326,10 +3322,10 @@ class LinkedContentReferenceSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (sheetsChartReferenceSuggestionState != null)
           'sheetsChartReferenceSuggestionState':
-              sheetsChartReferenceSuggestionState.toJson(),
+              sheetsChartReferenceSuggestionState!.toJson(),
       };
 }
 
@@ -3340,20 +3336,21 @@ class LinkedContentReferenceSuggestionState {
 /// bullet.
 class List {
   /// The properties of the list.
-  ListProperties listProperties;
+  ListProperties? listProperties;
 
   /// The suggested deletion IDs.
   ///
   /// If empty, then there are no suggested deletions of this list.
-  core.List<core.String> suggestedDeletionIds;
+  core.List<core.String>? suggestedDeletionIds;
 
   /// The suggested insertion ID.
   ///
   /// If empty, then this is not a suggested insertion.
-  core.String suggestedInsertionId;
+  core.String? suggestedInsertionId;
 
   /// The suggested changes to the list properties, keyed by suggestion ID.
-  core.Map<core.String, SuggestedListProperties> suggestedListPropertiesChanges;
+  core.Map<core.String, SuggestedListProperties>?
+      suggestedListPropertiesChanges;
 
   List();
 
@@ -3373,7 +3370,7 @@ class List {
     if (_json.containsKey('suggestedListPropertiesChanges')) {
       suggestedListPropertiesChanges =
           (_json['suggestedListPropertiesChanges'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -3384,14 +3381,14 @@ class List {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (listProperties != null) 'listProperties': listProperties.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (listProperties != null) 'listProperties': listProperties!.toJson(),
         if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds,
+          'suggestedDeletionIds': suggestedDeletionIds!,
         if (suggestedInsertionId != null)
-          'suggestedInsertionId': suggestedInsertionId,
+          'suggestedInsertionId': suggestedInsertionId!,
         if (suggestedListPropertiesChanges != null)
-          'suggestedListPropertiesChanges': suggestedListPropertiesChanges
+          'suggestedListPropertiesChanges': suggestedListPropertiesChanges!
               .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
@@ -3405,7 +3402,7 @@ class ListProperties {
   /// corresponding to the top-most level and nesting level 8 corresponding to
   /// the most nested level. The nesting levels are returned in ascending order
   /// with the least nested returned first.
-  core.List<NestingLevel> nestingLevels;
+  core.List<NestingLevel>? nestingLevels;
 
   ListProperties();
 
@@ -3418,10 +3415,10 @@ class ListProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (nestingLevels != null)
           'nestingLevels':
-              nestingLevels.map((value) => value.toJson()).toList(),
+              nestingLevels!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3435,7 +3432,7 @@ class ListPropertiesSuggestionState {
   ///
   /// The nesting level suggestion states are returned in ascending order of the
   /// nesting level with the least nested returned first.
-  core.List<NestingLevelSuggestionState> nestingLevelsSuggestionStates;
+  core.List<NestingLevelSuggestionState>? nestingLevelsSuggestionStates;
 
   ListPropertiesSuggestionState();
 
@@ -3450,9 +3447,9 @@ class ListPropertiesSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (nestingLevelsSuggestionStates != null)
-          'nestingLevelsSuggestionStates': nestingLevelsSuggestionStates
+          'nestingLevelsSuggestionStates': nestingLevelsSuggestionStates!
               .map((value) => value.toJson())
               .toList(),
       };
@@ -3464,12 +3461,12 @@ class Location {
   ///
   /// The index is relative to the beginning of the segment specified by
   /// segment_id.
-  core.int index;
+  core.int? index;
 
   /// The ID of the header, footer or footnote the location is in.
   ///
   /// An empty segment ID signifies the document's body.
-  core.String segmentId;
+  core.String? segmentId;
 
   Location();
 
@@ -3482,9 +3479,9 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (index != null) 'index': index,
-        if (segmentId != null) 'segmentId': segmentId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (index != null) 'index': index!,
+        if (segmentId != null) 'segmentId': segmentId!,
       };
 }
 
@@ -3498,7 +3495,7 @@ class MergeTableCellsRequest {
   /// range otherwise. If the range is non-rectangular (which can occur in some
   /// cases where the range covers cells that are already merged or where the
   /// table is non-rectangular), a 400 bad request error is returned.
-  TableRange tableRange;
+  TableRange? tableRange;
 
   MergeTableCellsRequest();
 
@@ -3509,8 +3506,8 @@ class MergeTableCellsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (tableRange != null) 'tableRange': tableRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (tableRange != null) 'tableRange': tableRange!.toJson(),
       };
 }
 
@@ -3527,13 +3524,13 @@ class MergeTableCellsRequest {
 /// its named ranges.
 class NamedRange {
   /// The name of the named range.
-  core.String name;
+  core.String? name;
 
   /// The ID of the named range.
-  core.String namedRangeId;
+  core.String? namedRangeId;
 
   /// The ranges that belong to this named range.
-  core.List<Range> ranges;
+  core.List<Range>? ranges;
 
   NamedRange();
 
@@ -3552,21 +3549,21 @@ class NamedRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (namedRangeId != null) 'namedRangeId': namedRangeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
         if (ranges != null)
-          'ranges': ranges.map((value) => value.toJson()).toList(),
+          'ranges': ranges!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A collection of all the NamedRanges in the document that share a given name.
 class NamedRanges {
   /// The name that all the named ranges share.
-  core.String name;
+  core.String? name;
 
   /// The NamedRanges that share the same name.
-  core.List<NamedRange> namedRanges;
+  core.List<NamedRange>? namedRanges;
 
   NamedRanges();
 
@@ -3582,10 +3579,10 @@ class NamedRanges {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
         if (namedRanges != null)
-          'namedRanges': namedRanges.map((value) => value.toJson()).toList(),
+          'namedRanges': namedRanges!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3606,13 +3603,13 @@ class NamedStyle {
   /// - "HEADING_4" : Heading 4.
   /// - "HEADING_5" : Heading 5.
   /// - "HEADING_6" : Heading 6.
-  core.String namedStyleType;
+  core.String? namedStyleType;
 
   /// The paragraph style of this named style.
-  ParagraphStyle paragraphStyle;
+  ParagraphStyle? paragraphStyle;
 
   /// The text style of this named style.
-  TextStyle textStyle;
+  TextStyle? textStyle;
 
   NamedStyle();
 
@@ -3630,10 +3627,10 @@ class NamedStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (namedStyleType != null) 'namedStyleType': namedStyleType,
-        if (paragraphStyle != null) 'paragraphStyle': paragraphStyle.toJson(),
-        if (textStyle != null) 'textStyle': textStyle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (namedStyleType != null) 'namedStyleType': namedStyleType!,
+        if (paragraphStyle != null) 'paragraphStyle': paragraphStyle!.toJson(),
+        if (textStyle != null) 'textStyle': textStyle!.toJson(),
       };
 }
 
@@ -3654,15 +3651,15 @@ class NamedStyleSuggestionState {
   /// - "HEADING_4" : Heading 4.
   /// - "HEADING_5" : Heading 5.
   /// - "HEADING_6" : Heading 6.
-  core.String namedStyleType;
+  core.String? namedStyleType;
 
   /// A mask that indicates which of the fields in paragraph style have been
   /// changed in this suggestion.
-  ParagraphStyleSuggestionState paragraphStyleSuggestionState;
+  ParagraphStyleSuggestionState? paragraphStyleSuggestionState;
 
   /// A mask that indicates which of the fields in text style have been changed
   /// in this suggestion.
-  TextStyleSuggestionState textStyleSuggestionState;
+  TextStyleSuggestionState? textStyleSuggestionState;
 
   NamedStyleSuggestionState();
 
@@ -3682,13 +3679,13 @@ class NamedStyleSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (namedStyleType != null) 'namedStyleType': namedStyleType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (namedStyleType != null) 'namedStyleType': namedStyleType!,
         if (paragraphStyleSuggestionState != null)
           'paragraphStyleSuggestionState':
-              paragraphStyleSuggestionState.toJson(),
+              paragraphStyleSuggestionState!.toJson(),
         if (textStyleSuggestionState != null)
-          'textStyleSuggestionState': textStyleSuggestionState.toJson(),
+          'textStyleSuggestionState': textStyleSuggestionState!.toJson(),
       };
 }
 
@@ -3700,7 +3697,7 @@ class NamedStyles {
   /// The named styles.
   ///
   /// There is an entry for each of the possible named style types.
-  core.List<NamedStyle> styles;
+  core.List<NamedStyle>? styles;
 
   NamedStyles();
 
@@ -3713,9 +3710,9 @@ class NamedStyles {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (styles != null)
-          'styles': styles.map((value) => value.toJson()).toList(),
+          'styles': styles!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3726,7 +3723,7 @@ class NamedStylesSuggestionState {
   ///
   /// The order of these named style suggestion states match the order of the
   /// corresponding named style within the named styles suggestion.
-  core.List<NamedStyleSuggestionState> stylesSuggestionStates;
+  core.List<NamedStyleSuggestionState>? stylesSuggestionStates;
 
   NamedStylesSuggestionState();
 
@@ -3740,10 +3737,10 @@ class NamedStylesSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (stylesSuggestionStates != null)
           'stylesSuggestionStates':
-              stylesSuggestionStates.map((value) => value.toJson()).toList(),
+              stylesSuggestionStates!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3760,7 +3757,7 @@ class NestingLevel {
   /// rendering the bullet.
   /// - "END" : The bullet is aligned to the end of the space allotted for
   /// rendering the bullet. Right-aligned for LTR text, left-aligned otherwise.
-  core.String bulletAlignment;
+  core.String? bulletAlignment;
 
   /// The format string used by bullets at this level of nesting.
   ///
@@ -3782,7 +3779,7 @@ class NestingLevel {
   /// `1.` `2.` ` 2.1.` ` 2.2.` `3.` For nesting levels that are ordered, the
   /// string that replaces a placeholder in the glyph format for a particular
   /// paragraph depends on the paragraph's order within the list.
-  core.String glyphFormat;
+  core.String? glyphFormat;
 
   /// A custom glyph symbol used by bullets when paragraphs at this level of
   /// nesting are unordered.
@@ -3791,7 +3788,7 @@ class NestingLevel {
   /// example, if the glyph_symbol is the solid circle corresponding to Unicode
   /// U+25cf code point and the glyph_format is `%0`, the rendered glyph would
   /// be the solid circle.
-  core.String glyphSymbol;
+  core.String? glyphSymbol;
 
   /// The type of glyph used by bullets when paragraphs at this level of nesting
   /// are ordered.
@@ -3813,17 +3810,17 @@ class NestingLevel {
   /// - "ALPHA" : A lowercase letter, like `a`, `b`, or `c`.
   /// - "UPPER_ROMAN" : An uppercase Roman numeral, like `I`, `II`, or `III`.
   /// - "ROMAN" : A lowercase Roman numeral, like `i`, `ii`, or `iii`.
-  core.String glyphType;
+  core.String? glyphType;
 
   /// The amount of indentation for the first line of paragraphs at this level
   /// of nesting.
-  Dimension indentFirstLine;
+  Dimension? indentFirstLine;
 
   /// The amount of indentation for paragraphs at this level of nesting.
   ///
   /// Applied to the side that corresponds to the start of the text, based on
   /// the paragraph's content direction.
-  Dimension indentStart;
+  Dimension? indentStart;
 
   /// The number of the first list item at this nesting level.
   ///
@@ -3831,10 +3828,10 @@ class NestingLevel {
   /// numeraled lists, i.e. for values of both 0 and 1, lettered and roman
   /// numeraled lists will begin at `a` and `i` respectively. This value is
   /// ignored for nesting levels with unordered glyphs.
-  core.int startNumber;
+  core.int? startNumber;
 
   /// The text style of bullets at this level of nesting.
-  TextStyle textStyle;
+  TextStyle? textStyle;
 
   NestingLevel();
 
@@ -3868,16 +3865,16 @@ class NestingLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bulletAlignment != null) 'bulletAlignment': bulletAlignment,
-        if (glyphFormat != null) 'glyphFormat': glyphFormat,
-        if (glyphSymbol != null) 'glyphSymbol': glyphSymbol,
-        if (glyphType != null) 'glyphType': glyphType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bulletAlignment != null) 'bulletAlignment': bulletAlignment!,
+        if (glyphFormat != null) 'glyphFormat': glyphFormat!,
+        if (glyphSymbol != null) 'glyphSymbol': glyphSymbol!,
+        if (glyphType != null) 'glyphType': glyphType!,
         if (indentFirstLine != null)
-          'indentFirstLine': indentFirstLine.toJson(),
-        if (indentStart != null) 'indentStart': indentStart.toJson(),
-        if (startNumber != null) 'startNumber': startNumber,
-        if (textStyle != null) 'textStyle': textStyle.toJson(),
+          'indentFirstLine': indentFirstLine!.toJson(),
+        if (indentStart != null) 'indentStart': indentStart!.toJson(),
+        if (startNumber != null) 'startNumber': startNumber!,
+        if (textStyle != null) 'textStyle': textStyle!.toJson(),
       };
 }
 
@@ -3887,29 +3884,29 @@ class NestingLevel {
 /// For any field set to true, there is a new suggested value.
 class NestingLevelSuggestionState {
   /// Indicates if there was a suggested change to bullet_alignment.
-  core.bool bulletAlignmentSuggested;
+  core.bool? bulletAlignmentSuggested;
 
   /// Indicates if there was a suggested change to glyph_format.
-  core.bool glyphFormatSuggested;
+  core.bool? glyphFormatSuggested;
 
   /// Indicates if there was a suggested change to glyph_symbol.
-  core.bool glyphSymbolSuggested;
+  core.bool? glyphSymbolSuggested;
 
   /// Indicates if there was a suggested change to glyph_type.
-  core.bool glyphTypeSuggested;
+  core.bool? glyphTypeSuggested;
 
   /// Indicates if there was a suggested change to indent_first_line.
-  core.bool indentFirstLineSuggested;
+  core.bool? indentFirstLineSuggested;
 
   /// Indicates if there was a suggested change to indent_start.
-  core.bool indentStartSuggested;
+  core.bool? indentStartSuggested;
 
   /// Indicates if there was a suggested change to start_number.
-  core.bool startNumberSuggested;
+  core.bool? startNumberSuggested;
 
   /// A mask that indicates which of the fields in text style have been changed
   /// in this suggestion.
-  TextStyleSuggestionState textStyleSuggestionState;
+  TextStyleSuggestionState? textStyleSuggestionState;
 
   NestingLevelSuggestionState();
 
@@ -3942,30 +3939,30 @@ class NestingLevelSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bulletAlignmentSuggested != null)
-          'bulletAlignmentSuggested': bulletAlignmentSuggested,
+          'bulletAlignmentSuggested': bulletAlignmentSuggested!,
         if (glyphFormatSuggested != null)
-          'glyphFormatSuggested': glyphFormatSuggested,
+          'glyphFormatSuggested': glyphFormatSuggested!,
         if (glyphSymbolSuggested != null)
-          'glyphSymbolSuggested': glyphSymbolSuggested,
+          'glyphSymbolSuggested': glyphSymbolSuggested!,
         if (glyphTypeSuggested != null)
-          'glyphTypeSuggested': glyphTypeSuggested,
+          'glyphTypeSuggested': glyphTypeSuggested!,
         if (indentFirstLineSuggested != null)
-          'indentFirstLineSuggested': indentFirstLineSuggested,
+          'indentFirstLineSuggested': indentFirstLineSuggested!,
         if (indentStartSuggested != null)
-          'indentStartSuggested': indentStartSuggested,
+          'indentStartSuggested': indentStartSuggested!,
         if (startNumberSuggested != null)
-          'startNumberSuggested': startNumberSuggested,
+          'startNumberSuggested': startNumberSuggested!,
         if (textStyleSuggestionState != null)
-          'textStyleSuggestionState': textStyleSuggestionState.toJson(),
+          'textStyleSuggestionState': textStyleSuggestionState!.toJson(),
       };
 }
 
 /// A collection of object IDs.
 class ObjectReferences {
   /// The object IDs.
-  core.List<core.String> objectIds;
+  core.List<core.String>? objectIds;
 
   ObjectReferences();
 
@@ -3977,8 +3974,8 @@ class ObjectReferences {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectIds != null) 'objectIds': objectIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectIds != null) 'objectIds': objectIds!,
       };
 }
 
@@ -3987,7 +3984,7 @@ class OptionalColor {
   /// If set, this will be used as an opaque color.
   ///
   /// If unset, this represents a transparent color.
-  Color color;
+  Color? color;
 
   OptionalColor();
 
@@ -3998,8 +3995,8 @@ class OptionalColor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (color != null) 'color': color.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (color != null) 'color': color!.toJson(),
       };
 }
 
@@ -4010,24 +4007,24 @@ class PageBreak {
   /// The suggested deletion IDs.
   ///
   /// If empty, then there are no suggested deletions of this content.
-  core.List<core.String> suggestedDeletionIds;
+  core.List<core.String>? suggestedDeletionIds;
 
   /// The suggested insertion IDs.
   ///
   /// A PageBreak may have multiple insertion IDs if it is a nested suggested
   /// change. If empty, then this is not a suggested insertion.
-  core.List<core.String> suggestedInsertionIds;
+  core.List<core.String>? suggestedInsertionIds;
 
   /// The suggested text style changes to this PageBreak, keyed by suggestion
   /// ID.
-  core.Map<core.String, SuggestedTextStyle> suggestedTextStyleChanges;
+  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
 
   /// The text style of this PageBreak.
   ///
   /// Similar to text content, like text runs and footnote references, the text
   /// style of a page break can affect content layout as well as the styling of
   /// text inserted adjacent to it.
-  TextStyle textStyle;
+  TextStyle? textStyle;
 
   PageBreak();
 
@@ -4045,7 +4042,7 @@ class PageBreak {
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges =
           (_json['suggestedTextStyleChanges'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -4060,15 +4057,15 @@ class PageBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds,
+          'suggestedDeletionIds': suggestedDeletionIds!,
         if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds,
+          'suggestedInsertionIds': suggestedInsertionIds!,
         if (suggestedTextStyleChanges != null)
-          'suggestedTextStyleChanges': suggestedTextStyleChanges
+          'suggestedTextStyleChanges': suggestedTextStyleChanges!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (textStyle != null) 'textStyle': textStyle.toJson(),
+        if (textStyle != null) 'textStyle': textStyle!.toJson(),
       };
 }
 
@@ -4080,27 +4077,28 @@ class Paragraph {
   /// The bullet for this paragraph.
   ///
   /// If not present, the paragraph does not belong to a list.
-  Bullet bullet;
+  Bullet? bullet;
 
   /// The content of the paragraph broken down into its component parts.
-  core.List<ParagraphElement> elements;
+  core.List<ParagraphElement>? elements;
 
   /// The style of this paragraph.
-  ParagraphStyle paragraphStyle;
+  ParagraphStyle? paragraphStyle;
 
   /// The IDs of the positioned objects tethered to this paragraph.
-  core.List<core.String> positionedObjectIds;
+  core.List<core.String>? positionedObjectIds;
 
   /// The suggested changes to this paragraph's bullet.
-  core.Map<core.String, SuggestedBullet> suggestedBulletChanges;
+  core.Map<core.String, SuggestedBullet>? suggestedBulletChanges;
 
   /// The suggested paragraph style changes to this paragraph, keyed by
   /// suggestion ID.
-  core.Map<core.String, SuggestedParagraphStyle> suggestedParagraphStyleChanges;
+  core.Map<core.String, SuggestedParagraphStyle>?
+      suggestedParagraphStyleChanges;
 
   /// The IDs of the positioned objects that are suggested to be attached to
   /// this paragraph, keyed by suggestion ID.
-  core.Map<core.String, ObjectReferences> suggestedPositionedObjectIds;
+  core.Map<core.String, ObjectReferences>? suggestedPositionedObjectIds;
 
   Paragraph();
 
@@ -4126,7 +4124,7 @@ class Paragraph {
     }
     if (_json.containsKey('suggestedBulletChanges')) {
       suggestedBulletChanges = (_json['suggestedBulletChanges'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -4138,7 +4136,7 @@ class Paragraph {
     if (_json.containsKey('suggestedParagraphStyleChanges')) {
       suggestedParagraphStyleChanges =
           (_json['suggestedParagraphStyleChanges'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -4150,7 +4148,7 @@ class Paragraph {
     if (_json.containsKey('suggestedPositionedObjectIds')) {
       suggestedPositionedObjectIds =
           (_json['suggestedPositionedObjectIds'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -4161,21 +4159,21 @@ class Paragraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bullet != null) 'bullet': bullet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bullet != null) 'bullet': bullet!.toJson(),
         if (elements != null)
-          'elements': elements.map((value) => value.toJson()).toList(),
-        if (paragraphStyle != null) 'paragraphStyle': paragraphStyle.toJson(),
+          'elements': elements!.map((value) => value.toJson()).toList(),
+        if (paragraphStyle != null) 'paragraphStyle': paragraphStyle!.toJson(),
         if (positionedObjectIds != null)
-          'positionedObjectIds': positionedObjectIds,
+          'positionedObjectIds': positionedObjectIds!,
         if (suggestedBulletChanges != null)
-          'suggestedBulletChanges': suggestedBulletChanges
+          'suggestedBulletChanges': suggestedBulletChanges!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (suggestedParagraphStyleChanges != null)
-          'suggestedParagraphStyleChanges': suggestedParagraphStyleChanges
+          'suggestedParagraphStyleChanges': suggestedParagraphStyleChanges!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (suggestedPositionedObjectIds != null)
-          'suggestedPositionedObjectIds': suggestedPositionedObjectIds
+          'suggestedPositionedObjectIds': suggestedPositionedObjectIds!
               .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
@@ -4183,7 +4181,7 @@ class Paragraph {
 /// A border around a paragraph.
 class ParagraphBorder {
   /// The color of the border.
-  OptionalColor color;
+  OptionalColor? color;
 
   /// The dash style of the border.
   /// Possible string values are:
@@ -4194,13 +4192,13 @@ class ParagraphBorder {
   /// 'dot'.
   /// - "DASH" : Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value
   /// 'dash'.
-  core.String dashStyle;
+  core.String? dashStyle;
 
   /// The padding of the border.
-  Dimension padding;
+  Dimension? padding;
 
   /// The width of the border.
-  Dimension width;
+  Dimension? width;
 
   ParagraphBorder();
 
@@ -4222,47 +4220,47 @@ class ParagraphBorder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (color != null) 'color': color.toJson(),
-        if (dashStyle != null) 'dashStyle': dashStyle,
-        if (padding != null) 'padding': padding.toJson(),
-        if (width != null) 'width': width.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (color != null) 'color': color!.toJson(),
+        if (dashStyle != null) 'dashStyle': dashStyle!,
+        if (padding != null) 'padding': padding!.toJson(),
+        if (width != null) 'width': width!.toJson(),
       };
 }
 
 /// A ParagraphElement describes content within a Paragraph.
 class ParagraphElement {
   /// An auto text paragraph element.
-  AutoText autoText;
+  AutoText? autoText;
 
   /// A column break paragraph element.
-  ColumnBreak columnBreak;
+  ColumnBreak? columnBreak;
 
   /// The zero-base end index of this paragraph element, exclusive, in UTF-16
   /// code units.
-  core.int endIndex;
+  core.int? endIndex;
 
   /// An equation paragraph element.
-  Equation equation;
+  Equation? equation;
 
   /// A footnote reference paragraph element.
-  FootnoteReference footnoteReference;
+  FootnoteReference? footnoteReference;
 
   /// A horizontal rule paragraph element.
-  HorizontalRule horizontalRule;
+  HorizontalRule? horizontalRule;
 
   /// An inline object paragraph element.
-  InlineObjectElement inlineObjectElement;
+  InlineObjectElement? inlineObjectElement;
 
   /// A page break paragraph element.
-  PageBreak pageBreak;
+  PageBreak? pageBreak;
 
   /// The zero-based start index of this paragraph element, in UTF-16 code
   /// units.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// A text run paragraph element.
-  TextRun textRun;
+  TextRun? textRun;
 
   ParagraphElement();
 
@@ -4307,19 +4305,19 @@ class ParagraphElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (autoText != null) 'autoText': autoText.toJson(),
-        if (columnBreak != null) 'columnBreak': columnBreak.toJson(),
-        if (endIndex != null) 'endIndex': endIndex,
-        if (equation != null) 'equation': equation.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (autoText != null) 'autoText': autoText!.toJson(),
+        if (columnBreak != null) 'columnBreak': columnBreak!.toJson(),
+        if (endIndex != null) 'endIndex': endIndex!,
+        if (equation != null) 'equation': equation!.toJson(),
         if (footnoteReference != null)
-          'footnoteReference': footnoteReference.toJson(),
-        if (horizontalRule != null) 'horizontalRule': horizontalRule.toJson(),
+          'footnoteReference': footnoteReference!.toJson(),
+        if (horizontalRule != null) 'horizontalRule': horizontalRule!.toJson(),
         if (inlineObjectElement != null)
-          'inlineObjectElement': inlineObjectElement.toJson(),
-        if (pageBreak != null) 'pageBreak': pageBreak.toJson(),
-        if (startIndex != null) 'startIndex': startIndex,
-        if (textRun != null) 'textRun': textRun.toJson(),
+          'inlineObjectElement': inlineObjectElement!.toJson(),
+        if (pageBreak != null) 'pageBreak': pageBreak!.toJson(),
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (textRun != null) 'textRun': textRun!.toJson(),
       };
 }
 
@@ -4346,12 +4344,12 @@ class ParagraphStyle {
   /// - "END" : The paragraph is aligned to the end of the line. Right-aligned
   /// for LTR text, left-aligned otherwise.
   /// - "JUSTIFIED" : The paragraph is justified.
-  core.String alignment;
+  core.String? alignment;
 
   /// Whether to avoid widows and orphans for the paragraph.
   ///
   /// If unset, the value is inherited from the parent.
-  core.bool avoidWidowAndOrphan;
+  core.bool? avoidWidowAndOrphan;
 
   /// The border between this paragraph and the next and previous paragraphs.
   ///
@@ -4360,7 +4358,7 @@ class ParagraphStyle {
   /// properties. Paragraph borders cannot be partially updated. When making
   /// changes to a paragraph border the new border must be specified in its
   /// entirety.
-  ParagraphBorder borderBetween;
+  ParagraphBorder? borderBetween;
 
   /// The border at the bottom of this paragraph.
   ///
@@ -4369,21 +4367,21 @@ class ParagraphStyle {
   /// properties. Paragraph borders cannot be partially updated. When making
   /// changes to a paragraph border the new border must be specified in its
   /// entirety.
-  ParagraphBorder borderBottom;
+  ParagraphBorder? borderBottom;
 
   /// The border to the left of this paragraph.
   ///
   /// If unset, the value is inherited from the parent. Paragraph borders cannot
   /// be partially updated. When making changes to a paragraph border the new
   /// border must be specified in its entirety.
-  ParagraphBorder borderLeft;
+  ParagraphBorder? borderLeft;
 
   /// The border to the right of this paragraph.
   ///
   /// If unset, the value is inherited from the parent. Paragraph borders cannot
   /// be partially updated. When making changes to a paragraph border the new
   /// border must be specified in its entirety.
-  ParagraphBorder borderRight;
+  ParagraphBorder? borderRight;
 
   /// The border at the top of this paragraph.
   ///
@@ -4392,7 +4390,7 @@ class ParagraphStyle {
   /// properties. Paragraph borders cannot be partially updated. When making
   /// changes to a paragraph border the new border must be specified in its
   /// entirety.
-  ParagraphBorder borderTop;
+  ParagraphBorder? borderTop;
 
   /// The text direction of this paragraph.
   ///
@@ -4402,48 +4400,48 @@ class ParagraphStyle {
   /// - "CONTENT_DIRECTION_UNSPECIFIED" : The content direction is unspecified.
   /// - "LEFT_TO_RIGHT" : The content goes from left to right.
   /// - "RIGHT_TO_LEFT" : The content goes from right to left.
-  core.String direction;
+  core.String? direction;
 
   /// The heading ID of the paragraph.
   ///
   /// If empty, then this paragraph is not a heading. This property is
   /// read-only.
-  core.String headingId;
+  core.String? headingId;
 
   /// The amount of indentation for the paragraph on the side that corresponds
   /// to the end of the text, based on the current paragraph direction.
   ///
   /// If unset, the value is inherited from the parent.
-  Dimension indentEnd;
+  Dimension? indentEnd;
 
   /// The amount of indentation for the first line of the paragraph.
   ///
   /// If unset, the value is inherited from the parent.
-  Dimension indentFirstLine;
+  Dimension? indentFirstLine;
 
   /// The amount of indentation for the paragraph on the side that corresponds
   /// to the start of the text, based on the current paragraph direction.
   ///
   /// If unset, the value is inherited from the parent.
-  Dimension indentStart;
+  Dimension? indentStart;
 
   /// Whether all lines of the paragraph should be laid out on the same page or
   /// column if possible.
   ///
   /// If unset, the value is inherited from the parent.
-  core.bool keepLinesTogether;
+  core.bool? keepLinesTogether;
 
   /// Whether at least a part of this paragraph should be laid out on the same
   /// page or column as the next paragraph if possible.
   ///
   /// If unset, the value is inherited from the parent.
-  core.bool keepWithNext;
+  core.bool? keepWithNext;
 
   /// The amount of space between lines, as a percentage of normal, where normal
   /// is represented as 100.0.
   ///
   /// If unset, the value is inherited from the parent.
-  core.double lineSpacing;
+  core.double? lineSpacing;
 
   /// The named style type of the paragraph.
   ///
@@ -4461,22 +4459,22 @@ class ParagraphStyle {
   /// - "HEADING_4" : Heading 4.
   /// - "HEADING_5" : Heading 5.
   /// - "HEADING_6" : Heading 6.
-  core.String namedStyleType;
+  core.String? namedStyleType;
 
   /// The shading of the paragraph.
   ///
   /// If unset, the value is inherited from the parent.
-  Shading shading;
+  Shading? shading;
 
   /// The amount of extra space above the paragraph.
   ///
   /// If unset, the value is inherited from the parent.
-  Dimension spaceAbove;
+  Dimension? spaceAbove;
 
   /// The amount of extra space below the paragraph.
   ///
   /// If unset, the value is inherited from the parent.
-  Dimension spaceBelow;
+  Dimension? spaceBelow;
 
   /// The spacing mode for the paragraph.
   /// Possible string values are:
@@ -4484,12 +4482,12 @@ class ParagraphStyle {
   /// parent.
   /// - "NEVER_COLLAPSE" : Paragraph spacing is always rendered.
   /// - "COLLAPSE_LISTS" : Paragraph spacing is skipped between list elements.
-  core.String spacingMode;
+  core.String? spacingMode;
 
   /// A list of the tab stops for this paragraph.
   ///
   /// The list of tab stops is not inherited. This property is read-only.
-  core.List<TabStop> tabStops;
+  core.List<TabStop>? tabStops;
 
   ParagraphStyle();
 
@@ -4573,31 +4571,31 @@ class ParagraphStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alignment != null) 'alignment': alignment,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alignment != null) 'alignment': alignment!,
         if (avoidWidowAndOrphan != null)
-          'avoidWidowAndOrphan': avoidWidowAndOrphan,
-        if (borderBetween != null) 'borderBetween': borderBetween.toJson(),
-        if (borderBottom != null) 'borderBottom': borderBottom.toJson(),
-        if (borderLeft != null) 'borderLeft': borderLeft.toJson(),
-        if (borderRight != null) 'borderRight': borderRight.toJson(),
-        if (borderTop != null) 'borderTop': borderTop.toJson(),
-        if (direction != null) 'direction': direction,
-        if (headingId != null) 'headingId': headingId,
-        if (indentEnd != null) 'indentEnd': indentEnd.toJson(),
+          'avoidWidowAndOrphan': avoidWidowAndOrphan!,
+        if (borderBetween != null) 'borderBetween': borderBetween!.toJson(),
+        if (borderBottom != null) 'borderBottom': borderBottom!.toJson(),
+        if (borderLeft != null) 'borderLeft': borderLeft!.toJson(),
+        if (borderRight != null) 'borderRight': borderRight!.toJson(),
+        if (borderTop != null) 'borderTop': borderTop!.toJson(),
+        if (direction != null) 'direction': direction!,
+        if (headingId != null) 'headingId': headingId!,
+        if (indentEnd != null) 'indentEnd': indentEnd!.toJson(),
         if (indentFirstLine != null)
-          'indentFirstLine': indentFirstLine.toJson(),
-        if (indentStart != null) 'indentStart': indentStart.toJson(),
-        if (keepLinesTogether != null) 'keepLinesTogether': keepLinesTogether,
-        if (keepWithNext != null) 'keepWithNext': keepWithNext,
-        if (lineSpacing != null) 'lineSpacing': lineSpacing,
-        if (namedStyleType != null) 'namedStyleType': namedStyleType,
-        if (shading != null) 'shading': shading.toJson(),
-        if (spaceAbove != null) 'spaceAbove': spaceAbove.toJson(),
-        if (spaceBelow != null) 'spaceBelow': spaceBelow.toJson(),
-        if (spacingMode != null) 'spacingMode': spacingMode,
+          'indentFirstLine': indentFirstLine!.toJson(),
+        if (indentStart != null) 'indentStart': indentStart!.toJson(),
+        if (keepLinesTogether != null) 'keepLinesTogether': keepLinesTogether!,
+        if (keepWithNext != null) 'keepWithNext': keepWithNext!,
+        if (lineSpacing != null) 'lineSpacing': lineSpacing!,
+        if (namedStyleType != null) 'namedStyleType': namedStyleType!,
+        if (shading != null) 'shading': shading!.toJson(),
+        if (spaceAbove != null) 'spaceAbove': spaceAbove!.toJson(),
+        if (spaceBelow != null) 'spaceBelow': spaceBelow!.toJson(),
+        if (spacingMode != null) 'spacingMode': spacingMode!,
         if (tabStops != null)
-          'tabStops': tabStops.map((value) => value.toJson()).toList(),
+          'tabStops': tabStops!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4607,65 +4605,65 @@ class ParagraphStyle {
 /// For any field set to true, there is a new suggested value.
 class ParagraphStyleSuggestionState {
   /// Indicates if there was a suggested change to alignment.
-  core.bool alignmentSuggested;
+  core.bool? alignmentSuggested;
 
   /// Indicates if there was a suggested change to avoid_widow_and_orphan.
-  core.bool avoidWidowAndOrphanSuggested;
+  core.bool? avoidWidowAndOrphanSuggested;
 
   /// Indicates if there was a suggested change to border_between.
-  core.bool borderBetweenSuggested;
+  core.bool? borderBetweenSuggested;
 
   /// Indicates if there was a suggested change to border_bottom.
-  core.bool borderBottomSuggested;
+  core.bool? borderBottomSuggested;
 
   /// Indicates if there was a suggested change to border_left.
-  core.bool borderLeftSuggested;
+  core.bool? borderLeftSuggested;
 
   /// Indicates if there was a suggested change to border_right.
-  core.bool borderRightSuggested;
+  core.bool? borderRightSuggested;
 
   /// Indicates if there was a suggested change to border_top.
-  core.bool borderTopSuggested;
+  core.bool? borderTopSuggested;
 
   /// Indicates if there was a suggested change to direction.
-  core.bool directionSuggested;
+  core.bool? directionSuggested;
 
   /// Indicates if there was a suggested change to heading_id.
-  core.bool headingIdSuggested;
+  core.bool? headingIdSuggested;
 
   /// Indicates if there was a suggested change to indent_end.
-  core.bool indentEndSuggested;
+  core.bool? indentEndSuggested;
 
   /// Indicates if there was a suggested change to indent_first_line.
-  core.bool indentFirstLineSuggested;
+  core.bool? indentFirstLineSuggested;
 
   /// Indicates if there was a suggested change to indent_start.
-  core.bool indentStartSuggested;
+  core.bool? indentStartSuggested;
 
   /// Indicates if there was a suggested change to keep_lines_together.
-  core.bool keepLinesTogetherSuggested;
+  core.bool? keepLinesTogetherSuggested;
 
   /// Indicates if there was a suggested change to keep_with_next.
-  core.bool keepWithNextSuggested;
+  core.bool? keepWithNextSuggested;
 
   /// Indicates if there was a suggested change to line_spacing.
-  core.bool lineSpacingSuggested;
+  core.bool? lineSpacingSuggested;
 
   /// Indicates if there was a suggested change to named_style_type.
-  core.bool namedStyleTypeSuggested;
+  core.bool? namedStyleTypeSuggested;
 
   /// A mask that indicates which of the fields in shading have been changed in
   /// this suggestion.
-  ShadingSuggestionState shadingSuggestionState;
+  ShadingSuggestionState? shadingSuggestionState;
 
   /// Indicates if there was a suggested change to space_above.
-  core.bool spaceAboveSuggested;
+  core.bool? spaceAboveSuggested;
 
   /// Indicates if there was a suggested change to space_below.
-  core.bool spaceBelowSuggested;
+  core.bool? spaceBelowSuggested;
 
   /// Indicates if there was a suggested change to spacing_mode.
-  core.bool spacingModeSuggested;
+  core.bool? spacingModeSuggested;
 
   ParagraphStyleSuggestionState();
 
@@ -4736,47 +4734,47 @@ class ParagraphStyleSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (alignmentSuggested != null)
-          'alignmentSuggested': alignmentSuggested,
+          'alignmentSuggested': alignmentSuggested!,
         if (avoidWidowAndOrphanSuggested != null)
-          'avoidWidowAndOrphanSuggested': avoidWidowAndOrphanSuggested,
+          'avoidWidowAndOrphanSuggested': avoidWidowAndOrphanSuggested!,
         if (borderBetweenSuggested != null)
-          'borderBetweenSuggested': borderBetweenSuggested,
+          'borderBetweenSuggested': borderBetweenSuggested!,
         if (borderBottomSuggested != null)
-          'borderBottomSuggested': borderBottomSuggested,
+          'borderBottomSuggested': borderBottomSuggested!,
         if (borderLeftSuggested != null)
-          'borderLeftSuggested': borderLeftSuggested,
+          'borderLeftSuggested': borderLeftSuggested!,
         if (borderRightSuggested != null)
-          'borderRightSuggested': borderRightSuggested,
+          'borderRightSuggested': borderRightSuggested!,
         if (borderTopSuggested != null)
-          'borderTopSuggested': borderTopSuggested,
+          'borderTopSuggested': borderTopSuggested!,
         if (directionSuggested != null)
-          'directionSuggested': directionSuggested,
+          'directionSuggested': directionSuggested!,
         if (headingIdSuggested != null)
-          'headingIdSuggested': headingIdSuggested,
+          'headingIdSuggested': headingIdSuggested!,
         if (indentEndSuggested != null)
-          'indentEndSuggested': indentEndSuggested,
+          'indentEndSuggested': indentEndSuggested!,
         if (indentFirstLineSuggested != null)
-          'indentFirstLineSuggested': indentFirstLineSuggested,
+          'indentFirstLineSuggested': indentFirstLineSuggested!,
         if (indentStartSuggested != null)
-          'indentStartSuggested': indentStartSuggested,
+          'indentStartSuggested': indentStartSuggested!,
         if (keepLinesTogetherSuggested != null)
-          'keepLinesTogetherSuggested': keepLinesTogetherSuggested,
+          'keepLinesTogetherSuggested': keepLinesTogetherSuggested!,
         if (keepWithNextSuggested != null)
-          'keepWithNextSuggested': keepWithNextSuggested,
+          'keepWithNextSuggested': keepWithNextSuggested!,
         if (lineSpacingSuggested != null)
-          'lineSpacingSuggested': lineSpacingSuggested,
+          'lineSpacingSuggested': lineSpacingSuggested!,
         if (namedStyleTypeSuggested != null)
-          'namedStyleTypeSuggested': namedStyleTypeSuggested,
+          'namedStyleTypeSuggested': namedStyleTypeSuggested!,
         if (shadingSuggestionState != null)
-          'shadingSuggestionState': shadingSuggestionState.toJson(),
+          'shadingSuggestionState': shadingSuggestionState!.toJson(),
         if (spaceAboveSuggested != null)
-          'spaceAboveSuggested': spaceAboveSuggested,
+          'spaceAboveSuggested': spaceAboveSuggested!,
         if (spaceBelowSuggested != null)
-          'spaceBelowSuggested': spaceBelowSuggested,
+          'spaceBelowSuggested': spaceBelowSuggested!,
         if (spacingModeSuggested != null)
-          'spacingModeSuggested': spacingModeSuggested,
+          'spacingModeSuggested': spacingModeSuggested!,
       };
 }
 
@@ -4786,24 +4784,24 @@ class ParagraphStyleSuggestionState {
 /// A PositionedObject contains an EmbeddedObject such as an image.
 class PositionedObject {
   /// The ID of this positioned object.
-  core.String objectId;
+  core.String? objectId;
 
   /// The properties of this positioned object.
-  PositionedObjectProperties positionedObjectProperties;
+  PositionedObjectProperties? positionedObjectProperties;
 
   /// The suggested deletion IDs.
   ///
   /// If empty, then there are no suggested deletions of this content.
-  core.List<core.String> suggestedDeletionIds;
+  core.List<core.String>? suggestedDeletionIds;
 
   /// The suggested insertion ID.
   ///
   /// If empty, then this is not a suggested insertion.
-  core.String suggestedInsertionId;
+  core.String? suggestedInsertionId;
 
   /// The suggested changes to the positioned object properties, keyed by
   /// suggestion ID.
-  core.Map<core.String, SuggestedPositionedObjectProperties>
+  core.Map<core.String, SuggestedPositionedObjectProperties>?
       suggestedPositionedObjectPropertiesChanges;
 
   PositionedObject();
@@ -4828,7 +4826,7 @@ class PositionedObject {
     if (_json.containsKey('suggestedPositionedObjectPropertiesChanges')) {
       suggestedPositionedObjectPropertiesChanges =
           (_json['suggestedPositionedObjectPropertiesChanges'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -4839,17 +4837,17 @@ class PositionedObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
         if (positionedObjectProperties != null)
-          'positionedObjectProperties': positionedObjectProperties.toJson(),
+          'positionedObjectProperties': positionedObjectProperties!.toJson(),
         if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds,
+          'suggestedDeletionIds': suggestedDeletionIds!,
         if (suggestedInsertionId != null)
-          'suggestedInsertionId': suggestedInsertionId,
+          'suggestedInsertionId': suggestedInsertionId!,
         if (suggestedPositionedObjectPropertiesChanges != null)
           'suggestedPositionedObjectPropertiesChanges':
-              suggestedPositionedObjectPropertiesChanges
+              suggestedPositionedObjectPropertiesChanges!
                   .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
@@ -4870,21 +4868,21 @@ class PositionedObjectPositioning {
   /// - "BREAK_LEFT_RIGHT" : Breaks text such that there is no text on the left
   /// or right of the positioned object.
   /// - "IN_FRONT_OF_TEXT" : The positioned object is in front of the text.
-  core.String layout;
+  core.String? layout;
 
   /// The offset of the left edge of the positioned object relative to the
   /// beginning of the Paragraph it is tethered to.
   ///
   /// The exact positioning of the object can depend on other content in the
   /// document and the document's styling.
-  Dimension leftOffset;
+  Dimension? leftOffset;
 
   /// The offset of the top edge of the positioned object relative to the
   /// beginning of the Paragraph it is tethered to.
   ///
   /// The exact positioning of the object can depend on other content in the
   /// document and the document's styling.
-  Dimension topOffset;
+  Dimension? topOffset;
 
   PositionedObjectPositioning();
 
@@ -4902,10 +4900,10 @@ class PositionedObjectPositioning {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (layout != null) 'layout': layout,
-        if (leftOffset != null) 'leftOffset': leftOffset.toJson(),
-        if (topOffset != null) 'topOffset': topOffset.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (layout != null) 'layout': layout!,
+        if (leftOffset != null) 'leftOffset': leftOffset!.toJson(),
+        if (topOffset != null) 'topOffset': topOffset!.toJson(),
       };
 }
 
@@ -4915,13 +4913,13 @@ class PositionedObjectPositioning {
 /// For any field set to true, there is a new suggested value.
 class PositionedObjectPositioningSuggestionState {
   /// Indicates if there was a suggested change to layout.
-  core.bool layoutSuggested;
+  core.bool? layoutSuggested;
 
   /// Indicates if there was a suggested change to left_offset.
-  core.bool leftOffsetSuggested;
+  core.bool? leftOffsetSuggested;
 
   /// Indicates if there was a suggested change to top_offset.
-  core.bool topOffsetSuggested;
+  core.bool? topOffsetSuggested;
 
   PositionedObjectPositioningSuggestionState();
 
@@ -4937,23 +4935,23 @@ class PositionedObjectPositioningSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (layoutSuggested != null) 'layoutSuggested': layoutSuggested,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (layoutSuggested != null) 'layoutSuggested': layoutSuggested!,
         if (leftOffsetSuggested != null)
-          'leftOffsetSuggested': leftOffsetSuggested,
+          'leftOffsetSuggested': leftOffsetSuggested!,
         if (topOffsetSuggested != null)
-          'topOffsetSuggested': topOffsetSuggested,
+          'topOffsetSuggested': topOffsetSuggested!,
       };
 }
 
 /// Properties of a PositionedObject.
 class PositionedObjectProperties {
   /// The embedded object of this positioned object.
-  EmbeddedObject embeddedObject;
+  EmbeddedObject? embeddedObject;
 
   /// The positioning of this positioned object relative to the newline of the
   /// Paragraph that references this positioned object.
-  PositionedObjectPositioning positioning;
+  PositionedObjectPositioning? positioning;
 
   PositionedObjectProperties();
 
@@ -4968,9 +4966,9 @@ class PositionedObjectProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (embeddedObject != null) 'embeddedObject': embeddedObject.toJson(),
-        if (positioning != null) 'positioning': positioning.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (embeddedObject != null) 'embeddedObject': embeddedObject!.toJson(),
+        if (positioning != null) 'positioning': positioning!.toJson(),
       };
 }
 
@@ -4981,11 +4979,11 @@ class PositionedObjectProperties {
 class PositionedObjectPropertiesSuggestionState {
   /// A mask that indicates which of the fields in embedded_object have been
   /// changed in this suggestion.
-  EmbeddedObjectSuggestionState embeddedObjectSuggestionState;
+  EmbeddedObjectSuggestionState? embeddedObjectSuggestionState;
 
   /// A mask that indicates which of the fields in positioning have been changed
   /// in this suggestion.
-  PositionedObjectPositioningSuggestionState positioningSuggestionState;
+  PositionedObjectPositioningSuggestionState? positioningSuggestionState;
 
   PositionedObjectPropertiesSuggestionState();
 
@@ -5003,12 +5001,12 @@ class PositionedObjectPropertiesSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (embeddedObjectSuggestionState != null)
           'embeddedObjectSuggestionState':
-              embeddedObjectSuggestionState.toJson(),
+              embeddedObjectSuggestionState!.toJson(),
         if (positioningSuggestionState != null)
-          'positioningSuggestionState': positioningSuggestionState.toJson(),
+          'positioningSuggestionState': positioningSuggestionState!.toJson(),
       };
 }
 
@@ -5019,19 +5017,19 @@ class Range {
   /// In all current uses, an end index must be provided. This field is an
   /// Int32Value in order to accommodate future use cases with open-ended
   /// ranges.
-  core.int endIndex;
+  core.int? endIndex;
 
   /// The ID of the header, footer or footnote that this range is contained in.
   ///
   /// An empty segment ID signifies the document's body.
-  core.String segmentId;
+  core.String? segmentId;
 
   /// The zero-based start index of this range, in UTF-16 code units.
   ///
   /// In all current uses, a start index must be provided. This field is an
   /// Int32Value in order to accommodate future use cases with open-ended
   /// ranges.
-  core.int startIndex;
+  core.int? startIndex;
 
   Range();
 
@@ -5047,20 +5045,20 @@ class Range {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endIndex != null) 'endIndex': endIndex,
-        if (segmentId != null) 'segmentId': segmentId,
-        if (startIndex != null) 'startIndex': startIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endIndex != null) 'endIndex': endIndex!,
+        if (segmentId != null) 'segmentId': segmentId!,
+        if (startIndex != null) 'startIndex': startIndex!,
       };
 }
 
 /// Replaces all instances of text matching a criteria with replace text.
 class ReplaceAllTextRequest {
   /// Finds text in the document matching this substring.
-  SubstringMatchCriteria containsText;
+  SubstringMatchCriteria? containsText;
 
   /// The text that will replace the matched text.
-  core.String replaceText;
+  core.String? replaceText;
 
   ReplaceAllTextRequest();
 
@@ -5074,16 +5072,16 @@ class ReplaceAllTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (containsText != null) 'containsText': containsText.toJson(),
-        if (replaceText != null) 'replaceText': replaceText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (containsText != null) 'containsText': containsText!.toJson(),
+        if (replaceText != null) 'replaceText': replaceText!,
       };
 }
 
 /// The result of replacing text.
 class ReplaceAllTextResponse {
   /// The number of occurrences changed by replacing all text.
-  core.int occurrencesChanged;
+  core.int? occurrencesChanged;
 
   ReplaceAllTextResponse();
 
@@ -5093,9 +5091,9 @@ class ReplaceAllTextResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (occurrencesChanged != null)
-          'occurrencesChanged': occurrencesChanged,
+          'occurrencesChanged': occurrencesChanged!,
       };
 }
 
@@ -5105,7 +5103,7 @@ class ReplaceAllTextResponse {
 /// order to mirror the behavior of the Docs editor.
 class ReplaceImageRequest {
   /// The ID of the existing image that will be replaced.
-  core.String imageObjectId;
+  core.String? imageObjectId;
 
   /// The replacement method.
   /// Possible string values are:
@@ -5115,7 +5113,7 @@ class ReplaceImageRequest {
   /// original image. The image may be cropped in order to fill the original
   /// image's bounds. The rendered size of the image will be the same as that of
   /// the original image.
-  core.String imageReplaceMethod;
+  core.String? imageReplaceMethod;
 
   /// The URI of the new image.
   ///
@@ -5124,7 +5122,7 @@ class ReplaceImageRequest {
   /// exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format. The
   /// provided URI can be at most 2 kB in length. The URI itself is saved with
   /// the image, and exposed via the ImageProperties.source_uri field.
-  core.String uri;
+  core.String? uri;
 
   ReplaceImageRequest();
 
@@ -5140,11 +5138,11 @@ class ReplaceImageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageObjectId != null) 'imageObjectId': imageObjectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageObjectId != null) 'imageObjectId': imageObjectId!,
         if (imageReplaceMethod != null)
-          'imageReplaceMethod': imageReplaceMethod,
-        if (uri != null) 'uri': uri,
+          'imageReplaceMethod': imageReplaceMethod!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -5161,17 +5159,17 @@ class ReplaceNamedRangeContentRequest {
   ///
   /// If there is no named range with the given ID a 400 bad request error is
   /// returned.
-  core.String namedRangeId;
+  core.String? namedRangeId;
 
   /// The name of the NamedRanges whose content will be replaced.
   ///
   /// If there are multiple named ranges with the given name, then the content
   /// of each one will be replaced. If there are no named ranges with the given
   /// name, then the request will be a no-op.
-  core.String namedRangeName;
+  core.String? namedRangeName;
 
   /// Replaces the content of the specified named range(s) with the given text.
-  core.String text;
+  core.String? text;
 
   ReplaceNamedRangeContentRequest();
 
@@ -5187,110 +5185,110 @@ class ReplaceNamedRangeContentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (namedRangeId != null) 'namedRangeId': namedRangeId,
-        if (namedRangeName != null) 'namedRangeName': namedRangeName,
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
+        if (namedRangeName != null) 'namedRangeName': namedRangeName!,
+        if (text != null) 'text': text!,
       };
 }
 
 /// A single update to apply to a document.
 class Request {
   /// Creates a footer.
-  CreateFooterRequest createFooter;
+  CreateFooterRequest? createFooter;
 
   /// Creates a footnote.
-  CreateFootnoteRequest createFootnote;
+  CreateFootnoteRequest? createFootnote;
 
   /// Creates a header.
-  CreateHeaderRequest createHeader;
+  CreateHeaderRequest? createHeader;
 
   /// Creates a named range.
-  CreateNamedRangeRequest createNamedRange;
+  CreateNamedRangeRequest? createNamedRange;
 
   /// Creates bullets for paragraphs.
-  CreateParagraphBulletsRequest createParagraphBullets;
+  CreateParagraphBulletsRequest? createParagraphBullets;
 
   /// Deletes content from the document.
-  DeleteContentRangeRequest deleteContentRange;
+  DeleteContentRangeRequest? deleteContentRange;
 
   /// Deletes a footer from the document.
-  DeleteFooterRequest deleteFooter;
+  DeleteFooterRequest? deleteFooter;
 
   /// Deletes a header from the document.
-  DeleteHeaderRequest deleteHeader;
+  DeleteHeaderRequest? deleteHeader;
 
   /// Deletes a named range.
-  DeleteNamedRangeRequest deleteNamedRange;
+  DeleteNamedRangeRequest? deleteNamedRange;
 
   /// Deletes bullets from paragraphs.
-  DeleteParagraphBulletsRequest deleteParagraphBullets;
+  DeleteParagraphBulletsRequest? deleteParagraphBullets;
 
   /// Deletes a positioned object from the document.
-  DeletePositionedObjectRequest deletePositionedObject;
+  DeletePositionedObjectRequest? deletePositionedObject;
 
   /// Deletes a column from a table.
-  DeleteTableColumnRequest deleteTableColumn;
+  DeleteTableColumnRequest? deleteTableColumn;
 
   /// Deletes a row from a table.
-  DeleteTableRowRequest deleteTableRow;
+  DeleteTableRowRequest? deleteTableRow;
 
   /// Inserts an inline image at the specified location.
-  InsertInlineImageRequest insertInlineImage;
+  InsertInlineImageRequest? insertInlineImage;
 
   /// Inserts a page break at the specified location.
-  InsertPageBreakRequest insertPageBreak;
+  InsertPageBreakRequest? insertPageBreak;
 
   /// Inserts a section break at the specified location.
-  InsertSectionBreakRequest insertSectionBreak;
+  InsertSectionBreakRequest? insertSectionBreak;
 
   /// Inserts a table at the specified location.
-  InsertTableRequest insertTable;
+  InsertTableRequest? insertTable;
 
   /// Inserts an empty column into a table.
-  InsertTableColumnRequest insertTableColumn;
+  InsertTableColumnRequest? insertTableColumn;
 
   /// Inserts an empty row into a table.
-  InsertTableRowRequest insertTableRow;
+  InsertTableRowRequest? insertTableRow;
 
   /// Inserts text at the specified location.
-  InsertTextRequest insertText;
+  InsertTextRequest? insertText;
 
   /// Merges cells in a table.
-  MergeTableCellsRequest mergeTableCells;
+  MergeTableCellsRequest? mergeTableCells;
 
   /// Replaces all instances of the specified text.
-  ReplaceAllTextRequest replaceAllText;
+  ReplaceAllTextRequest? replaceAllText;
 
   /// Replaces an image in the document.
-  ReplaceImageRequest replaceImage;
+  ReplaceImageRequest? replaceImage;
 
   /// Replaces the content in a named range.
-  ReplaceNamedRangeContentRequest replaceNamedRangeContent;
+  ReplaceNamedRangeContentRequest? replaceNamedRangeContent;
 
   /// Unmerges cells in a table.
-  UnmergeTableCellsRequest unmergeTableCells;
+  UnmergeTableCellsRequest? unmergeTableCells;
 
   /// Updates the style of the document.
-  UpdateDocumentStyleRequest updateDocumentStyle;
+  UpdateDocumentStyleRequest? updateDocumentStyle;
 
   /// Updates the paragraph style at the specified range.
-  UpdateParagraphStyleRequest updateParagraphStyle;
+  UpdateParagraphStyleRequest? updateParagraphStyle;
 
   /// Updates the section style of the specified range.
-  UpdateSectionStyleRequest updateSectionStyle;
+  UpdateSectionStyleRequest? updateSectionStyle;
 
   /// Updates the style of table cells.
-  UpdateTableCellStyleRequest updateTableCellStyle;
+  UpdateTableCellStyleRequest? updateTableCellStyle;
 
   /// Updates the properties of columns in a table.
-  UpdateTableColumnPropertiesRequest updateTableColumnProperties;
+  UpdateTableColumnPropertiesRequest? updateTableColumnProperties;
 
   /// Updates the row style in a table.
-  UpdateTableRowStyleRequest updateTableRowStyle;
+  UpdateTableRowStyleRequest? updateTableRowStyle;
 
   /// Updates the text style at the specified range.
-  UpdateTextStyleRequest updateTextStyle;
+  UpdateTextStyleRequest? updateTextStyle;
 
   Request();
 
@@ -5430,85 +5428,85 @@ class Request {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createFooter != null) 'createFooter': createFooter.toJson(),
-        if (createFootnote != null) 'createFootnote': createFootnote.toJson(),
-        if (createHeader != null) 'createHeader': createHeader.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createFooter != null) 'createFooter': createFooter!.toJson(),
+        if (createFootnote != null) 'createFootnote': createFootnote!.toJson(),
+        if (createHeader != null) 'createHeader': createHeader!.toJson(),
         if (createNamedRange != null)
-          'createNamedRange': createNamedRange.toJson(),
+          'createNamedRange': createNamedRange!.toJson(),
         if (createParagraphBullets != null)
-          'createParagraphBullets': createParagraphBullets.toJson(),
+          'createParagraphBullets': createParagraphBullets!.toJson(),
         if (deleteContentRange != null)
-          'deleteContentRange': deleteContentRange.toJson(),
-        if (deleteFooter != null) 'deleteFooter': deleteFooter.toJson(),
-        if (deleteHeader != null) 'deleteHeader': deleteHeader.toJson(),
+          'deleteContentRange': deleteContentRange!.toJson(),
+        if (deleteFooter != null) 'deleteFooter': deleteFooter!.toJson(),
+        if (deleteHeader != null) 'deleteHeader': deleteHeader!.toJson(),
         if (deleteNamedRange != null)
-          'deleteNamedRange': deleteNamedRange.toJson(),
+          'deleteNamedRange': deleteNamedRange!.toJson(),
         if (deleteParagraphBullets != null)
-          'deleteParagraphBullets': deleteParagraphBullets.toJson(),
+          'deleteParagraphBullets': deleteParagraphBullets!.toJson(),
         if (deletePositionedObject != null)
-          'deletePositionedObject': deletePositionedObject.toJson(),
+          'deletePositionedObject': deletePositionedObject!.toJson(),
         if (deleteTableColumn != null)
-          'deleteTableColumn': deleteTableColumn.toJson(),
-        if (deleteTableRow != null) 'deleteTableRow': deleteTableRow.toJson(),
+          'deleteTableColumn': deleteTableColumn!.toJson(),
+        if (deleteTableRow != null) 'deleteTableRow': deleteTableRow!.toJson(),
         if (insertInlineImage != null)
-          'insertInlineImage': insertInlineImage.toJson(),
+          'insertInlineImage': insertInlineImage!.toJson(),
         if (insertPageBreak != null)
-          'insertPageBreak': insertPageBreak.toJson(),
+          'insertPageBreak': insertPageBreak!.toJson(),
         if (insertSectionBreak != null)
-          'insertSectionBreak': insertSectionBreak.toJson(),
-        if (insertTable != null) 'insertTable': insertTable.toJson(),
+          'insertSectionBreak': insertSectionBreak!.toJson(),
+        if (insertTable != null) 'insertTable': insertTable!.toJson(),
         if (insertTableColumn != null)
-          'insertTableColumn': insertTableColumn.toJson(),
-        if (insertTableRow != null) 'insertTableRow': insertTableRow.toJson(),
-        if (insertText != null) 'insertText': insertText.toJson(),
+          'insertTableColumn': insertTableColumn!.toJson(),
+        if (insertTableRow != null) 'insertTableRow': insertTableRow!.toJson(),
+        if (insertText != null) 'insertText': insertText!.toJson(),
         if (mergeTableCells != null)
-          'mergeTableCells': mergeTableCells.toJson(),
-        if (replaceAllText != null) 'replaceAllText': replaceAllText.toJson(),
-        if (replaceImage != null) 'replaceImage': replaceImage.toJson(),
+          'mergeTableCells': mergeTableCells!.toJson(),
+        if (replaceAllText != null) 'replaceAllText': replaceAllText!.toJson(),
+        if (replaceImage != null) 'replaceImage': replaceImage!.toJson(),
         if (replaceNamedRangeContent != null)
-          'replaceNamedRangeContent': replaceNamedRangeContent.toJson(),
+          'replaceNamedRangeContent': replaceNamedRangeContent!.toJson(),
         if (unmergeTableCells != null)
-          'unmergeTableCells': unmergeTableCells.toJson(),
+          'unmergeTableCells': unmergeTableCells!.toJson(),
         if (updateDocumentStyle != null)
-          'updateDocumentStyle': updateDocumentStyle.toJson(),
+          'updateDocumentStyle': updateDocumentStyle!.toJson(),
         if (updateParagraphStyle != null)
-          'updateParagraphStyle': updateParagraphStyle.toJson(),
+          'updateParagraphStyle': updateParagraphStyle!.toJson(),
         if (updateSectionStyle != null)
-          'updateSectionStyle': updateSectionStyle.toJson(),
+          'updateSectionStyle': updateSectionStyle!.toJson(),
         if (updateTableCellStyle != null)
-          'updateTableCellStyle': updateTableCellStyle.toJson(),
+          'updateTableCellStyle': updateTableCellStyle!.toJson(),
         if (updateTableColumnProperties != null)
-          'updateTableColumnProperties': updateTableColumnProperties.toJson(),
+          'updateTableColumnProperties': updateTableColumnProperties!.toJson(),
         if (updateTableRowStyle != null)
-          'updateTableRowStyle': updateTableRowStyle.toJson(),
+          'updateTableRowStyle': updateTableRowStyle!.toJson(),
         if (updateTextStyle != null)
-          'updateTextStyle': updateTextStyle.toJson(),
+          'updateTextStyle': updateTextStyle!.toJson(),
       };
 }
 
 /// A single response from an update.
 class Response {
   /// The result of creating a footer.
-  CreateFooterResponse createFooter;
+  CreateFooterResponse? createFooter;
 
   /// The result of creating a footnote.
-  CreateFootnoteResponse createFootnote;
+  CreateFootnoteResponse? createFootnote;
 
   /// The result of creating a header.
-  CreateHeaderResponse createHeader;
+  CreateHeaderResponse? createHeader;
 
   /// The result of creating a named range.
-  CreateNamedRangeResponse createNamedRange;
+  CreateNamedRangeResponse? createNamedRange;
 
   /// The result of inserting an inline image.
-  InsertInlineImageResponse insertInlineImage;
+  InsertInlineImageResponse? insertInlineImage;
 
   /// The result of inserting an inline Google Sheets chart.
-  InsertInlineSheetsChartResponse insertInlineSheetsChart;
+  InsertInlineSheetsChartResponse? insertInlineSheetsChart;
 
   /// The result of replacing text.
-  ReplaceAllTextResponse replaceAllText;
+  ReplaceAllTextResponse? replaceAllText;
 
   Response();
 
@@ -5544,30 +5542,30 @@ class Response {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createFooter != null) 'createFooter': createFooter.toJson(),
-        if (createFootnote != null) 'createFootnote': createFootnote.toJson(),
-        if (createHeader != null) 'createHeader': createHeader.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createFooter != null) 'createFooter': createFooter!.toJson(),
+        if (createFootnote != null) 'createFootnote': createFootnote!.toJson(),
+        if (createHeader != null) 'createHeader': createHeader!.toJson(),
         if (createNamedRange != null)
-          'createNamedRange': createNamedRange.toJson(),
+          'createNamedRange': createNamedRange!.toJson(),
         if (insertInlineImage != null)
-          'insertInlineImage': insertInlineImage.toJson(),
+          'insertInlineImage': insertInlineImage!.toJson(),
         if (insertInlineSheetsChart != null)
-          'insertInlineSheetsChart': insertInlineSheetsChart.toJson(),
-        if (replaceAllText != null) 'replaceAllText': replaceAllText.toJson(),
+          'insertInlineSheetsChart': insertInlineSheetsChart!.toJson(),
+        if (replaceAllText != null) 'replaceAllText': replaceAllText!.toJson(),
       };
 }
 
 /// An RGB color.
 class RgbColor {
   /// The blue component of the color, from 0.0 to 1.0.
-  core.double blue;
+  core.double? blue;
 
   /// The green component of the color, from 0.0 to 1.0.
-  core.double green;
+  core.double? green;
 
   /// The red component of the color, from 0.0 to 1.0.
-  core.double red;
+  core.double? red;
 
   RgbColor();
 
@@ -5583,10 +5581,10 @@ class RgbColor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (blue != null) 'blue': blue,
-        if (green != null) 'green': green,
-        if (red != null) 'red': red,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (blue != null) 'blue': blue!,
+        if (green != null) 'green': green!,
+        if (red != null) 'red': red!,
       };
 }
 
@@ -5598,18 +5596,18 @@ class RgbColor {
 /// a section break.
 class SectionBreak {
   /// The style of the section after this section break.
-  SectionStyle sectionStyle;
+  SectionStyle? sectionStyle;
 
   /// The suggested deletion IDs.
   ///
   /// If empty, then there are no suggested deletions of this content.
-  core.List<core.String> suggestedDeletionIds;
+  core.List<core.String>? suggestedDeletionIds;
 
   /// The suggested insertion IDs.
   ///
   /// A SectionBreak may have multiple insertion IDs if it is a nested suggested
   /// change. If empty, then this is not a suggested insertion.
-  core.List<core.String> suggestedInsertionIds;
+  core.List<core.String>? suggestedInsertionIds;
 
   SectionBreak();
 
@@ -5630,24 +5628,24 @@ class SectionBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sectionStyle != null) 'sectionStyle': sectionStyle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sectionStyle != null) 'sectionStyle': sectionStyle!.toJson(),
         if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds,
+          'suggestedDeletionIds': suggestedDeletionIds!,
         if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds,
+          'suggestedInsertionIds': suggestedInsertionIds!,
       };
 }
 
 /// Properties that apply to a section's column.
 class SectionColumnProperties {
   /// The padding at the end of the column.
-  Dimension paddingEnd;
+  Dimension? paddingEnd;
 
   /// The width of the column.
   ///
   /// Output only.
-  Dimension width;
+  Dimension? width;
 
   SectionColumnProperties();
 
@@ -5662,9 +5660,9 @@ class SectionColumnProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (paddingEnd != null) 'paddingEnd': paddingEnd.toJson(),
-        if (width != null) 'width': width.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (paddingEnd != null) 'paddingEnd': paddingEnd!.toJson(),
+        if (width != null) 'width': width!.toJson(),
       };
 }
 
@@ -5676,7 +5674,7 @@ class SectionStyle {
   /// the Docs editor. A section can be updated to have no more than three
   /// columns. When updating this property, setting a concrete value is
   /// required. Unsetting this property will result in a 400 bad request error.
-  core.List<SectionColumnProperties> columnProperties;
+  core.List<SectionColumnProperties>? columnProperties;
 
   /// The style of column separators.
   ///
@@ -5689,7 +5687,7 @@ class SectionStyle {
   /// - "NONE" : No column separator lines between columns.
   /// - "BETWEEN_EACH_COLUMN" : Renders a column separator line between each
   /// column.
-  core.String columnSeparatorStyle;
+  core.String? columnSeparatorStyle;
 
   /// The content direction of this section.
   ///
@@ -5700,21 +5698,21 @@ class SectionStyle {
   /// - "CONTENT_DIRECTION_UNSPECIFIED" : The content direction is unspecified.
   /// - "LEFT_TO_RIGHT" : The content goes from left to right.
   /// - "RIGHT_TO_LEFT" : The content goes from right to left.
-  core.String contentDirection;
+  core.String? contentDirection;
 
   /// The ID of the default footer.
   ///
   /// If unset, the value inherits from the previous SectionBreak's
   /// SectionStyle. If the value is unset in the first SectionBreak, it inherits
   /// from DocumentStyle's default_footer_id. This property is read-only.
-  core.String defaultFooterId;
+  core.String? defaultFooterId;
 
   /// The ID of the default header.
   ///
   /// If unset, the value inherits from the previous SectionBreak's
   /// SectionStyle. If the value is unset in the first SectionBreak, it inherits
   /// from DocumentStyle's default_header_id. This property is read-only.
-  core.String defaultHeaderId;
+  core.String? defaultHeaderId;
 
   /// The ID of the footer used only for even pages.
   ///
@@ -5724,7 +5722,7 @@ class SectionStyle {
   /// value inherits from the previous SectionBreak's SectionStyle. If the value
   /// is unset in the first SectionBreak, it inherits from DocumentStyle's
   /// even_page_footer_id. This property is read-only.
-  core.String evenPageFooterId;
+  core.String? evenPageFooterId;
 
   /// The ID of the header used only for even pages.
   ///
@@ -5734,7 +5732,7 @@ class SectionStyle {
   /// value inherits from the previous SectionBreak's SectionStyle. If the value
   /// is unset in the first SectionBreak, it inherits from DocumentStyle's
   /// even_page_header_id. This property is read-only.
-  core.String evenPageHeaderId;
+  core.String? evenPageHeaderId;
 
   /// The ID of the footer used only for the first page of the section.
   ///
@@ -5744,7 +5742,7 @@ class SectionStyle {
   /// inherits from the previous SectionBreak's SectionStyle. If the value is
   /// unset in the first SectionBreak, it inherits from DocumentStyle's
   /// first_page_footer_id. This property is read-only.
-  core.String firstPageFooterId;
+  core.String? firstPageFooterId;
 
   /// The ID of the header used only for the first page of the section.
   ///
@@ -5754,14 +5752,14 @@ class SectionStyle {
   /// inherits from the previous SectionBreak's SectionStyle. If the value is
   /// unset in the first SectionBreak, it inherits from DocumentStyle's
   /// first_page_header_id. This property is read-only.
-  core.String firstPageHeaderId;
+  core.String? firstPageHeaderId;
 
   /// The bottom page margin of the section.
   ///
   /// If unset, uses margin_bottom from DocumentStyle. When updating this
   /// property, setting a concrete value is required. Unsetting this property
   /// results in a 400 bad request error.
-  Dimension marginBottom;
+  Dimension? marginBottom;
 
   /// The footer margin of the section.
   ///
@@ -5771,7 +5769,7 @@ class SectionStyle {
   /// footer margin is being respected for this section When updating this
   /// property, setting a concrete value is required. Unsetting this property
   /// results in a 400 bad request error.
-  Dimension marginFooter;
+  Dimension? marginFooter;
 
   /// The header margin of the section.
   ///
@@ -5781,7 +5779,7 @@ class SectionStyle {
   /// header margin is being respected for this section. When updating this
   /// property, setting a concrete value is required. Unsetting this property
   /// results in a 400 bad request error.
-  Dimension marginHeader;
+  Dimension? marginHeader;
 
   /// The left page margin of the section.
   ///
@@ -5790,7 +5788,7 @@ class SectionStyle {
   /// it is applied before column properties. When updating this property,
   /// setting a concrete value is required. Unsetting this property results in a
   /// 400 bad request error.
-  Dimension marginLeft;
+  Dimension? marginLeft;
 
   /// The right page margin of the section.
   ///
@@ -5799,14 +5797,14 @@ class SectionStyle {
   /// width, it is applied before column properties. When updating this
   /// property, setting a concrete value is required. Unsetting this property
   /// results in a 400 bad request error.
-  Dimension marginRight;
+  Dimension? marginRight;
 
   /// The top page margin of the section.
   ///
   /// If unset, uses margin_top from DocumentStyle. When updating this property,
   /// setting a concrete value is required. Unsetting this property results in a
   /// 400 bad request error.
-  Dimension marginTop;
+  Dimension? marginTop;
 
   /// The page number from which to start counting the number of pages for this
   /// section.
@@ -5815,7 +5813,7 @@ class SectionStyle {
   /// is unset in the first SectionBreak, refer to DocumentStyle's
   /// page_number_start. When updating this property, setting a concrete value
   /// is required. Unsetting this property results in a 400 bad request error.
-  core.int pageNumberStart;
+  core.int? pageNumberStart;
 
   /// The type of section.
   ///
@@ -5825,7 +5823,7 @@ class SectionStyle {
   /// - "CONTINUOUS" : The section starts immediately after the last paragraph
   /// of the previous section.
   /// - "NEXT_PAGE" : The section starts on the next page.
-  core.String sectionType;
+  core.String? sectionType;
 
   /// Indicates whether to use the first page header / footer IDs for the first
   /// page of the section.
@@ -5835,7 +5833,7 @@ class SectionStyle {
   /// should be interpreted as false. When updating this property, setting a
   /// concrete value is required. Unsetting this property results in a 400 bad
   /// request error.
-  core.bool useFirstPageHeaderFooter;
+  core.bool? useFirstPageHeaderFooter;
 
   SectionStyle();
 
@@ -5906,36 +5904,36 @@ class SectionStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (columnProperties != null)
           'columnProperties':
-              columnProperties.map((value) => value.toJson()).toList(),
+              columnProperties!.map((value) => value.toJson()).toList(),
         if (columnSeparatorStyle != null)
-          'columnSeparatorStyle': columnSeparatorStyle,
-        if (contentDirection != null) 'contentDirection': contentDirection,
-        if (defaultFooterId != null) 'defaultFooterId': defaultFooterId,
-        if (defaultHeaderId != null) 'defaultHeaderId': defaultHeaderId,
-        if (evenPageFooterId != null) 'evenPageFooterId': evenPageFooterId,
-        if (evenPageHeaderId != null) 'evenPageHeaderId': evenPageHeaderId,
-        if (firstPageFooterId != null) 'firstPageFooterId': firstPageFooterId,
-        if (firstPageHeaderId != null) 'firstPageHeaderId': firstPageHeaderId,
-        if (marginBottom != null) 'marginBottom': marginBottom.toJson(),
-        if (marginFooter != null) 'marginFooter': marginFooter.toJson(),
-        if (marginHeader != null) 'marginHeader': marginHeader.toJson(),
-        if (marginLeft != null) 'marginLeft': marginLeft.toJson(),
-        if (marginRight != null) 'marginRight': marginRight.toJson(),
-        if (marginTop != null) 'marginTop': marginTop.toJson(),
-        if (pageNumberStart != null) 'pageNumberStart': pageNumberStart,
-        if (sectionType != null) 'sectionType': sectionType,
+          'columnSeparatorStyle': columnSeparatorStyle!,
+        if (contentDirection != null) 'contentDirection': contentDirection!,
+        if (defaultFooterId != null) 'defaultFooterId': defaultFooterId!,
+        if (defaultHeaderId != null) 'defaultHeaderId': defaultHeaderId!,
+        if (evenPageFooterId != null) 'evenPageFooterId': evenPageFooterId!,
+        if (evenPageHeaderId != null) 'evenPageHeaderId': evenPageHeaderId!,
+        if (firstPageFooterId != null) 'firstPageFooterId': firstPageFooterId!,
+        if (firstPageHeaderId != null) 'firstPageHeaderId': firstPageHeaderId!,
+        if (marginBottom != null) 'marginBottom': marginBottom!.toJson(),
+        if (marginFooter != null) 'marginFooter': marginFooter!.toJson(),
+        if (marginHeader != null) 'marginHeader': marginHeader!.toJson(),
+        if (marginLeft != null) 'marginLeft': marginLeft!.toJson(),
+        if (marginRight != null) 'marginRight': marginRight!.toJson(),
+        if (marginTop != null) 'marginTop': marginTop!.toJson(),
+        if (pageNumberStart != null) 'pageNumberStart': pageNumberStart!,
+        if (sectionType != null) 'sectionType': sectionType!,
         if (useFirstPageHeaderFooter != null)
-          'useFirstPageHeaderFooter': useFirstPageHeaderFooter,
+          'useFirstPageHeaderFooter': useFirstPageHeaderFooter!,
       };
 }
 
 /// The shading of a paragraph.
 class Shading {
   /// The background color of this paragraph shading.
-  OptionalColor backgroundColor;
+  OptionalColor? backgroundColor;
 
   Shading();
 
@@ -5946,9 +5944,9 @@ class Shading {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundColor != null)
-          'backgroundColor': backgroundColor.toJson(),
+          'backgroundColor': backgroundColor!.toJson(),
       };
 }
 
@@ -5958,7 +5956,7 @@ class Shading {
 /// For any field set to true, there is a new suggested value.
 class ShadingSuggestionState {
   /// Indicates if there was a suggested change to the Shading.
-  core.bool backgroundColorSuggested;
+  core.bool? backgroundColorSuggested;
 
   ShadingSuggestionState();
 
@@ -5968,9 +5966,9 @@ class ShadingSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundColorSuggested != null)
-          'backgroundColorSuggested': backgroundColorSuggested,
+          'backgroundColorSuggested': backgroundColorSuggested!,
       };
 }
 
@@ -5978,10 +5976,10 @@ class ShadingSuggestionState {
 class SheetsChartReference {
   /// The ID of the specific chart in the Google Sheets spreadsheet that is
   /// embedded.
-  core.int chartId;
+  core.int? chartId;
 
   /// The ID of the Google Sheets spreadsheet that contains the source chart.
-  core.String spreadsheetId;
+  core.String? spreadsheetId;
 
   SheetsChartReference();
 
@@ -5994,9 +5992,9 @@ class SheetsChartReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (chartId != null) 'chartId': chartId,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (chartId != null) 'chartId': chartId!,
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
       };
 }
 
@@ -6006,10 +6004,10 @@ class SheetsChartReference {
 /// For any field set to true, there is a new suggested value.
 class SheetsChartReferenceSuggestionState {
   /// Indicates if there was a suggested change to chart_id.
-  core.bool chartIdSuggested;
+  core.bool? chartIdSuggested;
 
   /// Indicates if there was a suggested change to spreadsheet_id.
-  core.bool spreadsheetIdSuggested;
+  core.bool? spreadsheetIdSuggested;
 
   SheetsChartReferenceSuggestionState();
 
@@ -6022,20 +6020,20 @@ class SheetsChartReferenceSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (chartIdSuggested != null) 'chartIdSuggested': chartIdSuggested,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (chartIdSuggested != null) 'chartIdSuggested': chartIdSuggested!,
         if (spreadsheetIdSuggested != null)
-          'spreadsheetIdSuggested': spreadsheetIdSuggested,
+          'spreadsheetIdSuggested': spreadsheetIdSuggested!,
       };
 }
 
 /// A width and height.
 class Size {
   /// The height of the object.
-  Dimension height;
+  Dimension? height;
 
   /// The width of the object.
-  Dimension width;
+  Dimension? width;
 
   Size();
 
@@ -6050,9 +6048,9 @@ class Size {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height.toJson(),
-        if (width != null) 'width': width.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!.toJson(),
+        if (width != null) 'width': width!.toJson(),
       };
 }
 
@@ -6062,10 +6060,10 @@ class Size {
 /// For any field set to true, the Size has a new suggested value.
 class SizeSuggestionState {
   /// Indicates if there was a suggested change to height.
-  core.bool heightSuggested;
+  core.bool? heightSuggested;
 
   /// Indicates if there was a suggested change to width.
-  core.bool widthSuggested;
+  core.bool? widthSuggested;
 
   SizeSuggestionState();
 
@@ -6078,9 +6076,9 @@ class SizeSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (heightSuggested != null) 'heightSuggested': heightSuggested,
-        if (widthSuggested != null) 'widthSuggested': widthSuggested,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (heightSuggested != null) 'heightSuggested': heightSuggested!,
+        if (widthSuggested != null) 'widthSuggested': widthSuggested!,
       };
 }
 
@@ -6089,23 +6087,23 @@ class SizeSuggestionState {
 class StructuralElement {
   /// The zero-based end index of this structural element, exclusive, in UTF-16
   /// code units.
-  core.int endIndex;
+  core.int? endIndex;
 
   /// A paragraph type of structural element.
-  Paragraph paragraph;
+  Paragraph? paragraph;
 
   /// A section break type of structural element.
-  SectionBreak sectionBreak;
+  SectionBreak? sectionBreak;
 
   /// The zero-based start index of this structural element, in UTF-16 code
   /// units.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// A table type of structural element.
-  Table table;
+  Table? table;
 
   /// A table of contents type of structural element.
-  TableOfContents tableOfContents;
+  TableOfContents? tableOfContents;
 
   StructuralElement();
 
@@ -6134,14 +6132,14 @@ class StructuralElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endIndex != null) 'endIndex': endIndex,
-        if (paragraph != null) 'paragraph': paragraph.toJson(),
-        if (sectionBreak != null) 'sectionBreak': sectionBreak.toJson(),
-        if (startIndex != null) 'startIndex': startIndex,
-        if (table != null) 'table': table.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endIndex != null) 'endIndex': endIndex!,
+        if (paragraph != null) 'paragraph': paragraph!.toJson(),
+        if (sectionBreak != null) 'sectionBreak': sectionBreak!.toJson(),
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (table != null) 'table': table!.toJson(),
         if (tableOfContents != null)
-          'tableOfContents': tableOfContents.toJson(),
+          'tableOfContents': tableOfContents!.toJson(),
       };
 }
 
@@ -6151,10 +6149,10 @@ class SubstringMatchCriteria {
   /// case sensitive.
   ///
   /// - `False`: the search is case insensitive.
-  core.bool matchCase;
+  core.bool? matchCase;
 
   /// The text to search for in the document.
-  core.String text;
+  core.String? text;
 
   SubstringMatchCriteria();
 
@@ -6167,9 +6165,9 @@ class SubstringMatchCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (matchCase != null) 'matchCase': matchCase,
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (matchCase != null) 'matchCase': matchCase!,
+        if (text != null) 'text': text!,
       };
 }
 
@@ -6179,11 +6177,11 @@ class SuggestedBullet {
   ///
   /// This can be used along with the bullet_suggestion_state to see which
   /// fields have changed and their new values.
-  Bullet bullet;
+  Bullet? bullet;
 
   /// A mask that indicates which of the fields on the base Bullet have been
   /// changed in this suggestion.
-  BulletSuggestionState bulletSuggestionState;
+  BulletSuggestionState? bulletSuggestionState;
 
   SuggestedBullet();
 
@@ -6199,10 +6197,10 @@ class SuggestedBullet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bullet != null) 'bullet': bullet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bullet != null) 'bullet': bullet!.toJson(),
         if (bulletSuggestionState != null)
-          'bulletSuggestionState': bulletSuggestionState.toJson(),
+          'bulletSuggestionState': bulletSuggestionState!.toJson(),
       };
 }
 
@@ -6212,11 +6210,11 @@ class SuggestedDocumentStyle {
   ///
   /// This can be used along with the document_style_suggestion_state to see
   /// which fields have changed and their new values.
-  DocumentStyle documentStyle;
+  DocumentStyle? documentStyle;
 
   /// A mask that indicates which of the fields on the base DocumentStyle have
   /// been changed in this suggestion.
-  DocumentStyleSuggestionState documentStyleSuggestionState;
+  DocumentStyleSuggestionState? documentStyleSuggestionState;
 
   SuggestedDocumentStyle();
 
@@ -6232,10 +6230,11 @@ class SuggestedDocumentStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (documentStyle != null) 'documentStyle': documentStyle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (documentStyle != null) 'documentStyle': documentStyle!.toJson(),
         if (documentStyleSuggestionState != null)
-          'documentStyleSuggestionState': documentStyleSuggestionState.toJson(),
+          'documentStyleSuggestionState':
+              documentStyleSuggestionState!.toJson(),
       };
 }
 
@@ -6246,11 +6245,11 @@ class SuggestedInlineObjectProperties {
   ///
   /// This can be used along with the inline_object_properties_suggestion_state
   /// to see which fields have changed and their new values.
-  InlineObjectProperties inlineObjectProperties;
+  InlineObjectProperties? inlineObjectProperties;
 
   /// A mask that indicates which of the fields on the base
   /// InlineObjectProperties have been changed in this suggestion.
-  InlineObjectPropertiesSuggestionState inlineObjectPropertiesSuggestionState;
+  InlineObjectPropertiesSuggestionState? inlineObjectPropertiesSuggestionState;
 
   SuggestedInlineObjectProperties();
 
@@ -6268,12 +6267,12 @@ class SuggestedInlineObjectProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (inlineObjectProperties != null)
-          'inlineObjectProperties': inlineObjectProperties.toJson(),
+          'inlineObjectProperties': inlineObjectProperties!.toJson(),
         if (inlineObjectPropertiesSuggestionState != null)
           'inlineObjectPropertiesSuggestionState':
-              inlineObjectPropertiesSuggestionState.toJson(),
+              inlineObjectPropertiesSuggestionState!.toJson(),
       };
 }
 
@@ -6283,11 +6282,11 @@ class SuggestedListProperties {
   ///
   /// This can be used along with the list_properties_suggestion_state to see
   /// which fields have changed and their new values.
-  ListProperties listProperties;
+  ListProperties? listProperties;
 
   /// A mask that indicates which of the fields on the base ListProperties have
   /// been changed in this suggestion.
-  ListPropertiesSuggestionState listPropertiesSuggestionState;
+  ListPropertiesSuggestionState? listPropertiesSuggestionState;
 
   SuggestedListProperties();
 
@@ -6303,11 +6302,11 @@ class SuggestedListProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (listProperties != null) 'listProperties': listProperties.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (listProperties != null) 'listProperties': listProperties!.toJson(),
         if (listPropertiesSuggestionState != null)
           'listPropertiesSuggestionState':
-              listPropertiesSuggestionState.toJson(),
+              listPropertiesSuggestionState!.toJson(),
       };
 }
 
@@ -6317,11 +6316,11 @@ class SuggestedNamedStyles {
   ///
   /// This can be used along with the named_styles_suggestion_state to see which
   /// fields have changed and their new values.
-  NamedStyles namedStyles;
+  NamedStyles? namedStyles;
 
   /// A mask that indicates which of the fields on the base NamedStyles have
   /// been changed in this suggestion.
-  NamedStylesSuggestionState namedStylesSuggestionState;
+  NamedStylesSuggestionState? namedStylesSuggestionState;
 
   SuggestedNamedStyles();
 
@@ -6337,10 +6336,10 @@ class SuggestedNamedStyles {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (namedStyles != null) 'namedStyles': namedStyles.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (namedStyles != null) 'namedStyles': namedStyles!.toJson(),
         if (namedStylesSuggestionState != null)
-          'namedStylesSuggestionState': namedStylesSuggestionState.toJson(),
+          'namedStylesSuggestionState': namedStylesSuggestionState!.toJson(),
       };
 }
 
@@ -6350,11 +6349,11 @@ class SuggestedParagraphStyle {
   ///
   /// This can be used along with the paragraph_suggestion_state to see which
   /// fields have changed and their new values.
-  ParagraphStyle paragraphStyle;
+  ParagraphStyle? paragraphStyle;
 
   /// A mask that indicates which of the fields on the base ParagraphStyle have
   /// been changed in this suggestion.
-  ParagraphStyleSuggestionState paragraphStyleSuggestionState;
+  ParagraphStyleSuggestionState? paragraphStyleSuggestionState;
 
   SuggestedParagraphStyle();
 
@@ -6370,11 +6369,11 @@ class SuggestedParagraphStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (paragraphStyle != null) 'paragraphStyle': paragraphStyle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (paragraphStyle != null) 'paragraphStyle': paragraphStyle!.toJson(),
         if (paragraphStyleSuggestionState != null)
           'paragraphStyleSuggestionState':
-              paragraphStyleSuggestionState.toJson(),
+              paragraphStyleSuggestionState!.toJson(),
       };
 }
 
@@ -6386,11 +6385,11 @@ class SuggestedPositionedObjectProperties {
   /// This can be used along with the
   /// positioned_object_properties_suggestion_state to see which fields have
   /// changed and their new values.
-  PositionedObjectProperties positionedObjectProperties;
+  PositionedObjectProperties? positionedObjectProperties;
 
   /// A mask that indicates which of the fields on the base
   /// PositionedObjectProperties have been changed in this suggestion.
-  PositionedObjectPropertiesSuggestionState
+  PositionedObjectPropertiesSuggestionState?
       positionedObjectPropertiesSuggestionState;
 
   SuggestedPositionedObjectProperties();
@@ -6409,12 +6408,12 @@ class SuggestedPositionedObjectProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (positionedObjectProperties != null)
-          'positionedObjectProperties': positionedObjectProperties.toJson(),
+          'positionedObjectProperties': positionedObjectProperties!.toJson(),
         if (positionedObjectPropertiesSuggestionState != null)
           'positionedObjectPropertiesSuggestionState':
-              positionedObjectPropertiesSuggestionState.toJson(),
+              positionedObjectPropertiesSuggestionState!.toJson(),
       };
 }
 
@@ -6424,11 +6423,11 @@ class SuggestedTableCellStyle {
   ///
   /// This can be used along with the table_cell_style_suggestion_state to see
   /// which fields have changed and their new values.
-  TableCellStyle tableCellStyle;
+  TableCellStyle? tableCellStyle;
 
   /// A mask that indicates which of the fields on the base TableCellStyle have
   /// been changed in this suggestion.
-  TableCellStyleSuggestionState tableCellStyleSuggestionState;
+  TableCellStyleSuggestionState? tableCellStyleSuggestionState;
 
   SuggestedTableCellStyle();
 
@@ -6444,11 +6443,11 @@ class SuggestedTableCellStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (tableCellStyle != null) 'tableCellStyle': tableCellStyle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (tableCellStyle != null) 'tableCellStyle': tableCellStyle!.toJson(),
         if (tableCellStyleSuggestionState != null)
           'tableCellStyleSuggestionState':
-              tableCellStyleSuggestionState.toJson(),
+              tableCellStyleSuggestionState!.toJson(),
       };
 }
 
@@ -6458,11 +6457,11 @@ class SuggestedTableRowStyle {
   ///
   /// This can be used along with the table_row_style_suggestion_state to see
   /// which fields have changed and their new values.
-  TableRowStyle tableRowStyle;
+  TableRowStyle? tableRowStyle;
 
   /// A mask that indicates which of the fields on the base TableRowStyle have
   /// been changed in this suggestion.
-  TableRowStyleSuggestionState tableRowStyleSuggestionState;
+  TableRowStyleSuggestionState? tableRowStyleSuggestionState;
 
   SuggestedTableRowStyle();
 
@@ -6478,10 +6477,11 @@ class SuggestedTableRowStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (tableRowStyle != null) 'tableRowStyle': tableRowStyle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (tableRowStyle != null) 'tableRowStyle': tableRowStyle!.toJson(),
         if (tableRowStyleSuggestionState != null)
-          'tableRowStyleSuggestionState': tableRowStyleSuggestionState.toJson(),
+          'tableRowStyleSuggestionState':
+              tableRowStyleSuggestionState!.toJson(),
       };
 }
 
@@ -6491,11 +6491,11 @@ class SuggestedTextStyle {
   ///
   /// This can be used along with the text_style_suggestion_state to see which
   /// fields have changed and their new values.
-  TextStyle textStyle;
+  TextStyle? textStyle;
 
   /// A mask that indicates which of the fields on the base TextStyle have been
   /// changed in this suggestion.
-  TextStyleSuggestionState textStyleSuggestionState;
+  TextStyleSuggestionState? textStyleSuggestionState;
 
   SuggestedTextStyle();
 
@@ -6511,10 +6511,10 @@ class SuggestedTextStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (textStyle != null) 'textStyle': textStyle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (textStyle != null) 'textStyle': textStyle!.toJson(),
         if (textStyleSuggestionState != null)
-          'textStyleSuggestionState': textStyleSuggestionState.toJson(),
+          'textStyleSuggestionState': textStyleSuggestionState!.toJson(),
       };
 }
 
@@ -6530,10 +6530,10 @@ class TabStop {
   /// default.
   /// - "CENTER" : The tab stop is aligned to the center of the line.
   /// - "END" : The tab stop is aligned to the end of the line.
-  core.String alignment;
+  core.String? alignment;
 
   /// The offset between this tab stop and the start margin.
-  Dimension offset;
+  Dimension? offset;
 
   TabStop();
 
@@ -6547,9 +6547,9 @@ class TabStop {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alignment != null) 'alignment': alignment,
-        if (offset != null) 'offset': offset.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alignment != null) 'alignment': alignment!,
+        if (offset != null) 'offset': offset!.toJson(),
       };
 }
 
@@ -6559,27 +6559,27 @@ class Table {
   ///
   /// It is possible for a table to be non-rectangular, so some rows may have a
   /// different number of cells.
-  core.int columns;
+  core.int? columns;
 
   /// Number of rows in the table.
-  core.int rows;
+  core.int? rows;
 
   /// The suggested deletion IDs.
   ///
   /// If empty, then there are no suggested deletions of this content.
-  core.List<core.String> suggestedDeletionIds;
+  core.List<core.String>? suggestedDeletionIds;
 
   /// The suggested insertion IDs.
   ///
   /// A Table may have multiple insertion IDs if it is a nested suggested
   /// change. If empty, then this is not a suggested insertion.
-  core.List<core.String> suggestedInsertionIds;
+  core.List<core.String>? suggestedInsertionIds;
 
   /// The contents and style of each row.
-  core.List<TableRow> tableRows;
+  core.List<TableRow>? tableRows;
 
   /// The style of the table.
-  TableStyle tableStyle;
+  TableStyle? tableStyle;
 
   Table();
 
@@ -6612,46 +6612,47 @@ class Table {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columns != null) 'columns': columns,
-        if (rows != null) 'rows': rows,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columns != null) 'columns': columns!,
+        if (rows != null) 'rows': rows!,
         if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds,
+          'suggestedDeletionIds': suggestedDeletionIds!,
         if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds,
+          'suggestedInsertionIds': suggestedInsertionIds!,
         if (tableRows != null)
-          'tableRows': tableRows.map((value) => value.toJson()).toList(),
-        if (tableStyle != null) 'tableStyle': tableStyle.toJson(),
+          'tableRows': tableRows!.map((value) => value.toJson()).toList(),
+        if (tableStyle != null) 'tableStyle': tableStyle!.toJson(),
       };
 }
 
 /// The contents and style of a cell in a Table.
 class TableCell {
   /// The content of the cell.
-  core.List<StructuralElement> content;
+  core.List<StructuralElement>? content;
 
   /// The zero-based end index of this cell, exclusive, in UTF-16 code units.
-  core.int endIndex;
+  core.int? endIndex;
 
   /// The zero-based start index of this cell, in UTF-16 code units.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The suggested deletion IDs.
   ///
   /// If empty, then there are no suggested deletions of this content.
-  core.List<core.String> suggestedDeletionIds;
+  core.List<core.String>? suggestedDeletionIds;
 
   /// The suggested insertion IDs.
   ///
   /// A TableCell may have multiple insertion IDs if it is a nested suggested
   /// change. If empty, then this is not a suggested insertion.
-  core.List<core.String> suggestedInsertionIds;
+  core.List<core.String>? suggestedInsertionIds;
 
   /// The suggested changes to the table cell style, keyed by suggestion ID.
-  core.Map<core.String, SuggestedTableCellStyle> suggestedTableCellStyleChanges;
+  core.Map<core.String, SuggestedTableCellStyle>?
+      suggestedTableCellStyleChanges;
 
   /// The style of the cell.
-  TableCellStyle tableCellStyle;
+  TableCellStyle? tableCellStyle;
 
   TableCell();
 
@@ -6681,7 +6682,7 @@ class TableCell {
     if (_json.containsKey('suggestedTableCellStyleChanges')) {
       suggestedTableCellStyleChanges =
           (_json['suggestedTableCellStyleChanges'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -6696,19 +6697,19 @@ class TableCell {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (content != null)
-          'content': content.map((value) => value.toJson()).toList(),
-        if (endIndex != null) 'endIndex': endIndex,
-        if (startIndex != null) 'startIndex': startIndex,
+          'content': content!.map((value) => value.toJson()).toList(),
+        if (endIndex != null) 'endIndex': endIndex!,
+        if (startIndex != null) 'startIndex': startIndex!,
         if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds,
+          'suggestedDeletionIds': suggestedDeletionIds!,
         if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds,
+          'suggestedInsertionIds': suggestedInsertionIds!,
         if (suggestedTableCellStyleChanges != null)
-          'suggestedTableCellStyleChanges': suggestedTableCellStyleChanges
+          'suggestedTableCellStyleChanges': suggestedTableCellStyleChanges!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (tableCellStyle != null) 'tableCellStyle': tableCellStyle.toJson(),
+        if (tableCellStyle != null) 'tableCellStyle': tableCellStyle!.toJson(),
       };
 }
 
@@ -6720,7 +6721,7 @@ class TableCellBorder {
   /// The color of the border.
   ///
   /// This color cannot be transparent.
-  OptionalColor color;
+  OptionalColor? color;
 
   /// The dash style of the border.
   /// Possible string values are:
@@ -6731,10 +6732,10 @@ class TableCellBorder {
   /// 'dot'.
   /// - "DASH" : Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value
   /// 'dash'.
-  core.String dashStyle;
+  core.String? dashStyle;
 
   /// The width of the border.
-  Dimension width;
+  Dimension? width;
 
   TableCellBorder();
 
@@ -6752,10 +6753,10 @@ class TableCellBorder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (color != null) 'color': color.toJson(),
-        if (dashStyle != null) 'dashStyle': dashStyle,
-        if (width != null) 'width': width.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (color != null) 'color': color!.toJson(),
+        if (dashStyle != null) 'dashStyle': dashStyle!,
+        if (width != null) 'width': width!.toJson(),
       };
 }
 
@@ -6764,15 +6765,15 @@ class TableCellLocation {
   /// The zero-based column index.
   ///
   /// For example, the second column in the table has a column index of 1.
-  core.int columnIndex;
+  core.int? columnIndex;
 
   /// The zero-based row index.
   ///
   /// For example, the second row in the table has a row index of 1.
-  core.int rowIndex;
+  core.int? rowIndex;
 
   /// The location where the table starts in the document.
-  Location tableStartLocation;
+  Location? tableStartLocation;
 
   TableCellLocation();
 
@@ -6789,11 +6790,11 @@ class TableCellLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnIndex != null) 'columnIndex': columnIndex,
-        if (rowIndex != null) 'rowIndex': rowIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnIndex != null) 'columnIndex': columnIndex!,
+        if (rowIndex != null) 'rowIndex': rowIndex!,
         if (tableStartLocation != null)
-          'tableStartLocation': tableStartLocation.toJson(),
+          'tableStartLocation': tableStartLocation!.toJson(),
       };
 }
 
@@ -6803,24 +6804,24 @@ class TableCellLocation {
 /// A table cell style can inherit from the table's style.
 class TableCellStyle {
   /// The background color of the cell.
-  OptionalColor backgroundColor;
+  OptionalColor? backgroundColor;
 
   /// The bottom border of the cell.
-  TableCellBorder borderBottom;
+  TableCellBorder? borderBottom;
 
   /// The left border of the cell.
-  TableCellBorder borderLeft;
+  TableCellBorder? borderLeft;
 
   /// The right border of the cell.
-  TableCellBorder borderRight;
+  TableCellBorder? borderRight;
 
   /// The top border of the cell.
-  TableCellBorder borderTop;
+  TableCellBorder? borderTop;
 
   /// The column span of the cell.
   ///
   /// This property is read-only.
-  core.int columnSpan;
+  core.int? columnSpan;
 
   /// The alignment of the content in the table cell.
   ///
@@ -6836,24 +6837,24 @@ class TableCellStyle {
   /// content holder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'.
   /// - "BOTTOM" : An alignment that aligns the content to the bottom of the
   /// content holder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'.
-  core.String contentAlignment;
+  core.String? contentAlignment;
 
   /// The bottom padding of the cell.
-  Dimension paddingBottom;
+  Dimension? paddingBottom;
 
   /// The left padding of the cell.
-  Dimension paddingLeft;
+  Dimension? paddingLeft;
 
   /// The right padding of the cell.
-  Dimension paddingRight;
+  Dimension? paddingRight;
 
   /// The top padding of the cell.
-  Dimension paddingTop;
+  Dimension? paddingTop;
 
   /// The row span of the cell.
   ///
   /// This property is read-only.
-  core.int rowSpan;
+  core.int? rowSpan;
 
   TableCellStyle();
 
@@ -6905,20 +6906,20 @@ class TableCellStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundColor != null)
-          'backgroundColor': backgroundColor.toJson(),
-        if (borderBottom != null) 'borderBottom': borderBottom.toJson(),
-        if (borderLeft != null) 'borderLeft': borderLeft.toJson(),
-        if (borderRight != null) 'borderRight': borderRight.toJson(),
-        if (borderTop != null) 'borderTop': borderTop.toJson(),
-        if (columnSpan != null) 'columnSpan': columnSpan,
-        if (contentAlignment != null) 'contentAlignment': contentAlignment,
-        if (paddingBottom != null) 'paddingBottom': paddingBottom.toJson(),
-        if (paddingLeft != null) 'paddingLeft': paddingLeft.toJson(),
-        if (paddingRight != null) 'paddingRight': paddingRight.toJson(),
-        if (paddingTop != null) 'paddingTop': paddingTop.toJson(),
-        if (rowSpan != null) 'rowSpan': rowSpan,
+          'backgroundColor': backgroundColor!.toJson(),
+        if (borderBottom != null) 'borderBottom': borderBottom!.toJson(),
+        if (borderLeft != null) 'borderLeft': borderLeft!.toJson(),
+        if (borderRight != null) 'borderRight': borderRight!.toJson(),
+        if (borderTop != null) 'borderTop': borderTop!.toJson(),
+        if (columnSpan != null) 'columnSpan': columnSpan!,
+        if (contentAlignment != null) 'contentAlignment': contentAlignment!,
+        if (paddingBottom != null) 'paddingBottom': paddingBottom!.toJson(),
+        if (paddingLeft != null) 'paddingLeft': paddingLeft!.toJson(),
+        if (paddingRight != null) 'paddingRight': paddingRight!.toJson(),
+        if (paddingTop != null) 'paddingTop': paddingTop!.toJson(),
+        if (rowSpan != null) 'rowSpan': rowSpan!,
       };
 }
 
@@ -6928,40 +6929,40 @@ class TableCellStyle {
 /// For any field set to true, there is a new suggested value.
 class TableCellStyleSuggestionState {
   /// Indicates if there was a suggested change to background_color.
-  core.bool backgroundColorSuggested;
+  core.bool? backgroundColorSuggested;
 
   /// Indicates if there was a suggested change to border_bottom.
-  core.bool borderBottomSuggested;
+  core.bool? borderBottomSuggested;
 
   /// Indicates if there was a suggested change to border_left.
-  core.bool borderLeftSuggested;
+  core.bool? borderLeftSuggested;
 
   /// Indicates if there was a suggested change to border_right.
-  core.bool borderRightSuggested;
+  core.bool? borderRightSuggested;
 
   /// Indicates if there was a suggested change to border_top.
-  core.bool borderTopSuggested;
+  core.bool? borderTopSuggested;
 
   /// Indicates if there was a suggested change to column_span.
-  core.bool columnSpanSuggested;
+  core.bool? columnSpanSuggested;
 
   /// Indicates if there was a suggested change to content_alignment.
-  core.bool contentAlignmentSuggested;
+  core.bool? contentAlignmentSuggested;
 
   /// Indicates if there was a suggested change to padding_bottom.
-  core.bool paddingBottomSuggested;
+  core.bool? paddingBottomSuggested;
 
   /// Indicates if there was a suggested change to padding_left.
-  core.bool paddingLeftSuggested;
+  core.bool? paddingLeftSuggested;
 
   /// Indicates if there was a suggested change to padding_right.
-  core.bool paddingRightSuggested;
+  core.bool? paddingRightSuggested;
 
   /// Indicates if there was a suggested change to padding_top.
-  core.bool paddingTopSuggested;
+  core.bool? paddingTopSuggested;
 
   /// Indicates if there was a suggested change to row_span.
-  core.bool rowSpanSuggested;
+  core.bool? rowSpanSuggested;
 
   TableCellStyleSuggestionState();
 
@@ -7005,30 +7006,30 @@ class TableCellStyleSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundColorSuggested != null)
-          'backgroundColorSuggested': backgroundColorSuggested,
+          'backgroundColorSuggested': backgroundColorSuggested!,
         if (borderBottomSuggested != null)
-          'borderBottomSuggested': borderBottomSuggested,
+          'borderBottomSuggested': borderBottomSuggested!,
         if (borderLeftSuggested != null)
-          'borderLeftSuggested': borderLeftSuggested,
+          'borderLeftSuggested': borderLeftSuggested!,
         if (borderRightSuggested != null)
-          'borderRightSuggested': borderRightSuggested,
+          'borderRightSuggested': borderRightSuggested!,
         if (borderTopSuggested != null)
-          'borderTopSuggested': borderTopSuggested,
+          'borderTopSuggested': borderTopSuggested!,
         if (columnSpanSuggested != null)
-          'columnSpanSuggested': columnSpanSuggested,
+          'columnSpanSuggested': columnSpanSuggested!,
         if (contentAlignmentSuggested != null)
-          'contentAlignmentSuggested': contentAlignmentSuggested,
+          'contentAlignmentSuggested': contentAlignmentSuggested!,
         if (paddingBottomSuggested != null)
-          'paddingBottomSuggested': paddingBottomSuggested,
+          'paddingBottomSuggested': paddingBottomSuggested!,
         if (paddingLeftSuggested != null)
-          'paddingLeftSuggested': paddingLeftSuggested,
+          'paddingLeftSuggested': paddingLeftSuggested!,
         if (paddingRightSuggested != null)
-          'paddingRightSuggested': paddingRightSuggested,
+          'paddingRightSuggested': paddingRightSuggested!,
         if (paddingTopSuggested != null)
-          'paddingTopSuggested': paddingTopSuggested,
-        if (rowSpanSuggested != null) 'rowSpanSuggested': rowSpanSuggested,
+          'paddingTopSuggested': paddingTopSuggested!,
+        if (rowSpanSuggested != null) 'rowSpanSuggested': rowSpanSuggested!,
       };
 }
 
@@ -7037,7 +7038,7 @@ class TableColumnProperties {
   /// The width of the column.
   ///
   /// Set when the column's `width_type` is FIXED_WIDTH.
-  Dimension width;
+  Dimension? width;
 
   /// The width type of the column.
   /// Possible string values are:
@@ -7048,7 +7049,7 @@ class TableColumnProperties {
   /// table after accounting for all columns with specified widths.
   /// - "FIXED_WIDTH" : A fixed column width. The width property contains the
   /// column's width.
-  core.String widthType;
+  core.String? widthType;
 
   TableColumnProperties();
 
@@ -7062,27 +7063,27 @@ class TableColumnProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (width != null) 'width': width.toJson(),
-        if (widthType != null) 'widthType': widthType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (width != null) 'width': width!.toJson(),
+        if (widthType != null) 'widthType': widthType!,
       };
 }
 
 /// A StructuralElement representing a table of contents.
 class TableOfContents {
   /// The content of the table of contents.
-  core.List<StructuralElement> content;
+  core.List<StructuralElement>? content;
 
   /// The suggested deletion IDs.
   ///
   /// If empty, then there are no suggested deletions of this content.
-  core.List<core.String> suggestedDeletionIds;
+  core.List<core.String>? suggestedDeletionIds;
 
   /// The suggested insertion IDs.
   ///
   /// A TableOfContents may have multiple insertion IDs if it is a nested
   /// suggested change. If empty, then this is not a suggested insertion.
-  core.List<core.String> suggestedInsertionIds;
+  core.List<core.String>? suggestedInsertionIds;
 
   TableOfContents();
 
@@ -7105,13 +7106,13 @@ class TableOfContents {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (content != null)
-          'content': content.map((value) => value.toJson()).toList(),
+          'content': content!.map((value) => value.toJson()).toList(),
         if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds,
+          'suggestedDeletionIds': suggestedDeletionIds!,
         if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds,
+          'suggestedInsertionIds': suggestedInsertionIds!,
       };
 }
 
@@ -7125,13 +7126,13 @@ class TableOfContents {
 /// 2 specifies the following cells: x x \[ x x x \]
 class TableRange {
   /// The column span of the table range.
-  core.int columnSpan;
+  core.int? columnSpan;
 
   /// The row span of the table range.
-  core.int rowSpan;
+  core.int? rowSpan;
 
   /// The cell location where the table range starts.
-  TableCellLocation tableCellLocation;
+  TableCellLocation? tableCellLocation;
 
   TableRange();
 
@@ -7148,44 +7149,44 @@ class TableRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnSpan != null) 'columnSpan': columnSpan,
-        if (rowSpan != null) 'rowSpan': rowSpan,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnSpan != null) 'columnSpan': columnSpan!,
+        if (rowSpan != null) 'rowSpan': rowSpan!,
         if (tableCellLocation != null)
-          'tableCellLocation': tableCellLocation.toJson(),
+          'tableCellLocation': tableCellLocation!.toJson(),
       };
 }
 
 /// The contents and style of a row in a Table.
 class TableRow {
   /// The zero-based end index of this row, exclusive, in UTF-16 code units.
-  core.int endIndex;
+  core.int? endIndex;
 
   /// The zero-based start index of this row, in UTF-16 code units.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The suggested deletion IDs.
   ///
   /// If empty, then there are no suggested deletions of this content.
-  core.List<core.String> suggestedDeletionIds;
+  core.List<core.String>? suggestedDeletionIds;
 
   /// The suggested insertion IDs.
   ///
   /// A TableRow may have multiple insertion IDs if it is a nested suggested
   /// change. If empty, then this is not a suggested insertion.
-  core.List<core.String> suggestedInsertionIds;
+  core.List<core.String>? suggestedInsertionIds;
 
   /// The suggested style changes to this row, keyed by suggestion ID.
-  core.Map<core.String, SuggestedTableRowStyle> suggestedTableRowStyleChanges;
+  core.Map<core.String, SuggestedTableRowStyle>? suggestedTableRowStyleChanges;
 
   /// The contents and style of each cell in this row.
   ///
   /// It is possible for a table to be non-rectangular, so some rows may have a
   /// different number of cells than other rows in the same table.
-  core.List<TableCell> tableCells;
+  core.List<TableCell>? tableCells;
 
   /// The style of the table row.
-  TableRowStyle tableRowStyle;
+  TableRowStyle? tableRowStyle;
 
   TableRow();
 
@@ -7209,7 +7210,7 @@ class TableRow {
     if (_json.containsKey('suggestedTableRowStyleChanges')) {
       suggestedTableRowStyleChanges =
           (_json['suggestedTableRowStyleChanges'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -7230,19 +7231,19 @@ class TableRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endIndex != null) 'endIndex': endIndex,
-        if (startIndex != null) 'startIndex': startIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endIndex != null) 'endIndex': endIndex!,
+        if (startIndex != null) 'startIndex': startIndex!,
         if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds,
+          'suggestedDeletionIds': suggestedDeletionIds!,
         if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds,
+          'suggestedInsertionIds': suggestedInsertionIds!,
         if (suggestedTableRowStyleChanges != null)
-          'suggestedTableRowStyleChanges': suggestedTableRowStyleChanges
+          'suggestedTableRowStyleChanges': suggestedTableRowStyleChanges!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (tableCells != null)
-          'tableCells': tableCells.map((value) => value.toJson()).toList(),
-        if (tableRowStyle != null) 'tableRowStyle': tableRowStyle.toJson(),
+          'tableCells': tableCells!.map((value) => value.toJson()).toList(),
+        if (tableRowStyle != null) 'tableRowStyle': tableRowStyle!.toJson(),
       };
 }
 
@@ -7253,7 +7254,7 @@ class TableRowStyle {
   /// The row will be rendered in the Docs editor at a height equal to or
   /// greater than this value in order to show all the content in the row's
   /// cells.
-  Dimension minRowHeight;
+  Dimension? minRowHeight;
 
   TableRowStyle();
 
@@ -7264,8 +7265,8 @@ class TableRowStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (minRowHeight != null) 'minRowHeight': minRowHeight.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (minRowHeight != null) 'minRowHeight': minRowHeight!.toJson(),
       };
 }
 
@@ -7275,7 +7276,7 @@ class TableRowStyle {
 /// For any field set to true, there is a new suggested value.
 class TableRowStyleSuggestionState {
   /// Indicates if there was a suggested change to min_row_height.
-  core.bool minRowHeightSuggested;
+  core.bool? minRowHeightSuggested;
 
   TableRowStyleSuggestionState();
 
@@ -7285,9 +7286,9 @@ class TableRowStyleSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (minRowHeightSuggested != null)
-          'minRowHeightSuggested': minRowHeightSuggested,
+          'minRowHeightSuggested': minRowHeightSuggested!,
       };
 }
 
@@ -7298,7 +7299,7 @@ class TableStyle {
   /// Note that in Docs, tables contain rows and rows contain cells, similar to
   /// HTML. So the properties for a row can be found on the row's
   /// table_row_style.
-  core.List<TableColumnProperties> tableColumnProperties;
+  core.List<TableColumnProperties>? tableColumnProperties;
 
   TableStyle();
 
@@ -7311,10 +7312,10 @@ class TableStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (tableColumnProperties != null)
           'tableColumnProperties':
-              tableColumnProperties.map((value) => value.toJson()).toList(),
+              tableColumnProperties!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7325,24 +7326,24 @@ class TextRun {
   ///
   /// Any non-text elements in the run are replaced with the Unicode character
   /// U+E907.
-  core.String content;
+  core.String? content;
 
   /// The suggested deletion IDs.
   ///
   /// If empty, then there are no suggested deletions of this content.
-  core.List<core.String> suggestedDeletionIds;
+  core.List<core.String>? suggestedDeletionIds;
 
   /// The suggested insertion IDs.
   ///
   /// A TextRun may have multiple insertion IDs if it is a nested suggested
   /// change. If empty, then this is not a suggested insertion.
-  core.List<core.String> suggestedInsertionIds;
+  core.List<core.String>? suggestedInsertionIds;
 
   /// The suggested text style changes to this run, keyed by suggestion ID.
-  core.Map<core.String, SuggestedTextStyle> suggestedTextStyleChanges;
+  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
 
   /// The text style of this run.
-  TextStyle textStyle;
+  TextStyle? textStyle;
 
   TextRun();
 
@@ -7363,7 +7364,7 @@ class TextRun {
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges =
           (_json['suggestedTextStyleChanges'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -7378,16 +7379,16 @@ class TextRun {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
         if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds,
+          'suggestedDeletionIds': suggestedDeletionIds!,
         if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds,
+          'suggestedInsertionIds': suggestedInsertionIds!,
         if (suggestedTextStyleChanges != null)
-          'suggestedTextStyleChanges': suggestedTextStyleChanges
+          'suggestedTextStyleChanges': suggestedTextStyleChanges!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (textStyle != null) 'textStyle': textStyle.toJson(),
+        if (textStyle != null) 'textStyle': textStyle!.toJson(),
       };
 }
 
@@ -7408,7 +7409,7 @@ class TextStyle {
   ///
   /// If set, the color is either an RGB color or transparent, depending on the
   /// `color` field.
-  OptionalColor backgroundColor;
+  OptionalColor? backgroundColor;
 
   /// The text's vertical offset from its normal position.
   ///
@@ -7421,22 +7422,22 @@ class TextStyle {
   /// - "NONE" : The text is not vertically offset.
   /// - "SUPERSCRIPT" : The text is vertically offset upwards (superscript).
   /// - "SUBSCRIPT" : The text is vertically offset downwards (subscript).
-  core.String baselineOffset;
+  core.String? baselineOffset;
 
   /// Whether or not the text is rendered as bold.
-  core.bool bold;
+  core.bool? bold;
 
   /// The size of the text's font.
-  Dimension fontSize;
+  Dimension? fontSize;
 
   /// The foreground color of the text.
   ///
   /// If set, the color is either an RGB color or transparent, depending on the
   /// `color` field.
-  OptionalColor foregroundColor;
+  OptionalColor? foregroundColor;
 
   /// Whether or not the text is italicized.
-  core.bool italic;
+  core.bool? italic;
 
   /// The hyperlink destination of the text.
   ///
@@ -7455,16 +7456,16 @@ class TextStyle {
   /// range to match the style of the preceding text (or the default text styles
   /// if the preceding text is another link) unless different styles are being
   /// set in the same request.
-  Link link;
+  Link? link;
 
   /// Whether or not the text is in small capital letters.
-  core.bool smallCaps;
+  core.bool? smallCaps;
 
   /// Whether or not the text is struck through.
-  core.bool strikethrough;
+  core.bool? strikethrough;
 
   /// Whether or not the text is underlined.
-  core.bool underline;
+  core.bool? underline;
 
   /// The font family and rendered weight of the text.
   ///
@@ -7474,7 +7475,7 @@ class TextStyle {
   /// `weighted_font_family` is set, then `weighted_font_family#font_family`
   /// must also be set with a non-empty value. Otherwise, a 400 bad request
   /// error is returned.
-  WeightedFontFamily weightedFontFamily;
+  WeightedFontFamily? weightedFontFamily;
 
   TextStyle();
 
@@ -7519,21 +7520,21 @@ class TextStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundColor != null)
-          'backgroundColor': backgroundColor.toJson(),
-        if (baselineOffset != null) 'baselineOffset': baselineOffset,
-        if (bold != null) 'bold': bold,
-        if (fontSize != null) 'fontSize': fontSize.toJson(),
+          'backgroundColor': backgroundColor!.toJson(),
+        if (baselineOffset != null) 'baselineOffset': baselineOffset!,
+        if (bold != null) 'bold': bold!,
+        if (fontSize != null) 'fontSize': fontSize!.toJson(),
         if (foregroundColor != null)
-          'foregroundColor': foregroundColor.toJson(),
-        if (italic != null) 'italic': italic,
-        if (link != null) 'link': link.toJson(),
-        if (smallCaps != null) 'smallCaps': smallCaps,
-        if (strikethrough != null) 'strikethrough': strikethrough,
-        if (underline != null) 'underline': underline,
+          'foregroundColor': foregroundColor!.toJson(),
+        if (italic != null) 'italic': italic!,
+        if (link != null) 'link': link!.toJson(),
+        if (smallCaps != null) 'smallCaps': smallCaps!,
+        if (strikethrough != null) 'strikethrough': strikethrough!,
+        if (underline != null) 'underline': underline!,
         if (weightedFontFamily != null)
-          'weightedFontFamily': weightedFontFamily.toJson(),
+          'weightedFontFamily': weightedFontFamily!.toJson(),
       };
 }
 
@@ -7543,37 +7544,37 @@ class TextStyle {
 /// For any field set to true, there is a new suggested value.
 class TextStyleSuggestionState {
   /// Indicates if there was a suggested change to background_color.
-  core.bool backgroundColorSuggested;
+  core.bool? backgroundColorSuggested;
 
   /// Indicates if there was a suggested change to baseline_offset.
-  core.bool baselineOffsetSuggested;
+  core.bool? baselineOffsetSuggested;
 
   /// Indicates if there was a suggested change to bold.
-  core.bool boldSuggested;
+  core.bool? boldSuggested;
 
   /// Indicates if there was a suggested change to font_size.
-  core.bool fontSizeSuggested;
+  core.bool? fontSizeSuggested;
 
   /// Indicates if there was a suggested change to foreground_color.
-  core.bool foregroundColorSuggested;
+  core.bool? foregroundColorSuggested;
 
   /// Indicates if there was a suggested change to italic.
-  core.bool italicSuggested;
+  core.bool? italicSuggested;
 
   /// Indicates if there was a suggested change to link.
-  core.bool linkSuggested;
+  core.bool? linkSuggested;
 
   /// Indicates if there was a suggested change to small_caps.
-  core.bool smallCapsSuggested;
+  core.bool? smallCapsSuggested;
 
   /// Indicates if there was a suggested change to strikethrough.
-  core.bool strikethroughSuggested;
+  core.bool? strikethroughSuggested;
 
   /// Indicates if there was a suggested change to underline.
-  core.bool underlineSuggested;
+  core.bool? underlineSuggested;
 
   /// Indicates if there was a suggested change to weighted_font_family.
-  core.bool weightedFontFamilySuggested;
+  core.bool? weightedFontFamilySuggested;
 
   TextStyleSuggestionState();
 
@@ -7614,25 +7615,25 @@ class TextStyleSuggestionState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundColorSuggested != null)
-          'backgroundColorSuggested': backgroundColorSuggested,
+          'backgroundColorSuggested': backgroundColorSuggested!,
         if (baselineOffsetSuggested != null)
-          'baselineOffsetSuggested': baselineOffsetSuggested,
-        if (boldSuggested != null) 'boldSuggested': boldSuggested,
-        if (fontSizeSuggested != null) 'fontSizeSuggested': fontSizeSuggested,
+          'baselineOffsetSuggested': baselineOffsetSuggested!,
+        if (boldSuggested != null) 'boldSuggested': boldSuggested!,
+        if (fontSizeSuggested != null) 'fontSizeSuggested': fontSizeSuggested!,
         if (foregroundColorSuggested != null)
-          'foregroundColorSuggested': foregroundColorSuggested,
-        if (italicSuggested != null) 'italicSuggested': italicSuggested,
-        if (linkSuggested != null) 'linkSuggested': linkSuggested,
+          'foregroundColorSuggested': foregroundColorSuggested!,
+        if (italicSuggested != null) 'italicSuggested': italicSuggested!,
+        if (linkSuggested != null) 'linkSuggested': linkSuggested!,
         if (smallCapsSuggested != null)
-          'smallCapsSuggested': smallCapsSuggested,
+          'smallCapsSuggested': smallCapsSuggested!,
         if (strikethroughSuggested != null)
-          'strikethroughSuggested': strikethroughSuggested,
+          'strikethroughSuggested': strikethroughSuggested!,
         if (underlineSuggested != null)
-          'underlineSuggested': underlineSuggested,
+          'underlineSuggested': underlineSuggested!,
         if (weightedFontFamilySuggested != null)
-          'weightedFontFamilySuggested': weightedFontFamilySuggested,
+          'weightedFontFamilySuggested': weightedFontFamilySuggested!,
       };
 }
 
@@ -7646,7 +7647,7 @@ class UnmergeTableCellsRequest {
   /// the text will remain in the "head" cell of the resulting block of unmerged
   /// cells. The "head" cell is the upper-left cell when the content direction
   /// is from left to right, and the upper-right otherwise.
-  TableRange tableRange;
+  TableRange? tableRange;
 
   UnmergeTableCellsRequest();
 
@@ -7657,8 +7658,8 @@ class UnmergeTableCellsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (tableRange != null) 'tableRange': tableRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (tableRange != null) 'tableRange': tableRange!.toJson(),
       };
 }
 
@@ -7669,7 +7670,7 @@ class UpdateDocumentStyleRequest {
   /// Certain document style changes may cause other changes in order to mirror
   /// the behavior of the Docs editor. See the documentation of DocumentStyle
   /// for more information.
-  DocumentStyle documentStyle;
+  DocumentStyle? documentStyle;
 
   /// The fields that should be updated.
   ///
@@ -7677,7 +7678,7 @@ class UpdateDocumentStyleRequest {
   /// and should not be specified. A single `"*"` can be used as short-hand for
   /// listing every field. For example to update the background, set `fields` to
   /// `"background"`.
-  core.String fields;
+  core.String? fields;
 
   UpdateDocumentStyleRequest();
 
@@ -7691,9 +7692,9 @@ class UpdateDocumentStyleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (documentStyle != null) 'documentStyle': documentStyle.toJson(),
-        if (fields != null) 'fields': fields,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (documentStyle != null) 'documentStyle': documentStyle!.toJson(),
+        if (fields != null) 'fields': fields!,
       };
 }
 
@@ -7706,17 +7707,17 @@ class UpdateParagraphStyleRequest {
   /// style's alignment property, set `fields` to `"alignment"`. To reset a
   /// property to its default value, include its field name in the field mask
   /// but leave the field itself unset.
-  core.String fields;
+  core.String? fields;
 
   /// The styles to set on the paragraphs.
   ///
   /// Certain paragraph style changes may cause other changes in order to mirror
   /// the behavior of the Docs editor. See the documentation of ParagraphStyle
   /// for more information.
-  ParagraphStyle paragraphStyle;
+  ParagraphStyle? paragraphStyle;
 
   /// The range overlapping the paragraphs to style.
-  Range range;
+  Range? range;
 
   UpdateParagraphStyleRequest();
 
@@ -7734,10 +7735,10 @@ class UpdateParagraphStyleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (paragraphStyle != null) 'paragraphStyle': paragraphStyle.toJson(),
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (paragraphStyle != null) 'paragraphStyle': paragraphStyle!.toJson(),
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
@@ -7749,20 +7750,20 @@ class UpdateSectionStyleRequest {
   /// and must not be specified. A single `"*"` can be used as short-hand for
   /// listing every field. For example to update the left margin, set `fields`
   /// to `"margin_left"`.
-  core.String fields;
+  core.String? fields;
 
   /// The range overlapping the sections to style.
   ///
   /// Because section breaks can only be inserted inside the body, the segment
   /// ID field must be empty.
-  Range range;
+  Range? range;
 
   /// The styles to be set on the section.
   ///
   /// Certain section style changes may cause other changes in order to mirror
   /// the behavior of the Docs editor. See the documentation of SectionStyle for
   /// more information.
-  SectionStyle sectionStyle;
+  SectionStyle? sectionStyle;
 
   UpdateSectionStyleRequest();
 
@@ -7780,10 +7781,10 @@ class UpdateSectionStyleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (range != null) 'range': range.toJson(),
-        if (sectionStyle != null) 'sectionStyle': sectionStyle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (range != null) 'range': range!.toJson(),
+        if (sectionStyle != null) 'sectionStyle': sectionStyle!.toJson(),
       };
 }
 
@@ -7797,7 +7798,7 @@ class UpdateTableCellStyleRequest {
   /// color, set `fields` to `"backgroundColor"`. To reset a property to its
   /// default value, include its field name in the field mask but leave the
   /// field itself unset.
-  core.String fields;
+  core.String? fields;
 
   /// The style to set on the table cells.
   ///
@@ -7807,16 +7808,16 @@ class UpdateTableCellStyleRequest {
   /// border shared by adjacent cells in the same request can cause conflicting
   /// border updates, border updates are applied in the following order: -
   /// `border_right` - `border_left` - `border_bottom` - `border_top`
-  TableCellStyle tableCellStyle;
+  TableCellStyle? tableCellStyle;
 
   /// The table range representing the subset of the table to which the updates
   /// are applied.
-  TableRange tableRange;
+  TableRange? tableRange;
 
   /// The location where the table starts in the document.
   ///
   /// When specified, the updates are applied to all the cells in the table.
-  Location tableStartLocation;
+  Location? tableStartLocation;
 
   UpdateTableCellStyleRequest();
 
@@ -7838,12 +7839,12 @@ class UpdateTableCellStyleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (tableCellStyle != null) 'tableCellStyle': tableCellStyle.toJson(),
-        if (tableRange != null) 'tableRange': tableRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (tableCellStyle != null) 'tableCellStyle': tableCellStyle!.toJson(),
+        if (tableRange != null) 'tableRange': tableRange!.toJson(),
         if (tableStartLocation != null)
-          'tableStartLocation': tableStartLocation.toJson(),
+          'tableStartLocation': tableStartLocation!.toJson(),
       };
 }
 
@@ -7852,7 +7853,7 @@ class UpdateTableColumnPropertiesRequest {
   /// The list of zero-based column indices whose property should be updated.
   ///
   /// If no indices are specified, all columns will be updated.
-  core.List<core.int> columnIndices;
+  core.List<core.int>? columnIndices;
 
   /// The fields that should be updated.
   ///
@@ -7860,16 +7861,16 @@ class UpdateTableColumnPropertiesRequest {
   /// implied and should not be specified. A single `"*"` can be used as
   /// short-hand for listing every field. For example to update the column
   /// width, set `fields` to `"width"`.
-  core.String fields;
+  core.String? fields;
 
   /// The table column properties to update.
   ///
   /// If the value of `table_column_properties#width` is less than 5 points
   /// (5/72 inch), a 400 bad request error is returned.
-  TableColumnProperties tableColumnProperties;
+  TableColumnProperties? tableColumnProperties;
 
   /// The location where the table starts in the document.
-  Location tableStartLocation;
+  Location? tableStartLocation;
 
   UpdateTableColumnPropertiesRequest();
 
@@ -7893,13 +7894,13 @@ class UpdateTableColumnPropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnIndices != null) 'columnIndices': columnIndices,
-        if (fields != null) 'fields': fields,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnIndices != null) 'columnIndices': columnIndices!,
+        if (fields != null) 'fields': fields!,
         if (tableColumnProperties != null)
-          'tableColumnProperties': tableColumnProperties.toJson(),
+          'tableColumnProperties': tableColumnProperties!.toJson(),
         if (tableStartLocation != null)
-          'tableStartLocation': tableStartLocation.toJson(),
+          'tableStartLocation': tableStartLocation!.toJson(),
       };
 }
 
@@ -7911,18 +7912,18 @@ class UpdateTableRowStyleRequest {
   /// and should not be specified. A single `"*"` can be used as short-hand for
   /// listing every field. For example to update the minimum row height, set
   /// `fields` to `"min_row_height"`.
-  core.String fields;
+  core.String? fields;
 
   /// The list of zero-based row indices whose style should be updated.
   ///
   /// If no indices are specified, all rows will be updated.
-  core.List<core.int> rowIndices;
+  core.List<core.int>? rowIndices;
 
   /// The styles to be set on the rows.
-  TableRowStyle tableRowStyle;
+  TableRowStyle? tableRowStyle;
 
   /// The location where the table starts in the document.
-  Location tableStartLocation;
+  Location? tableStartLocation;
 
   UpdateTableRowStyleRequest();
 
@@ -7945,12 +7946,12 @@ class UpdateTableRowStyleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (rowIndices != null) 'rowIndices': rowIndices,
-        if (tableRowStyle != null) 'tableRowStyle': tableRowStyle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (rowIndices != null) 'rowIndices': rowIndices!,
+        if (tableRowStyle != null) 'tableRowStyle': tableRowStyle!.toJson(),
         if (tableStartLocation != null)
-          'tableStartLocation': tableStartLocation.toJson(),
+          'tableStartLocation': tableStartLocation!.toJson(),
       };
 }
 
@@ -7963,7 +7964,7 @@ class UpdateTextStyleRequest {
   /// listing every field. For example, to update the text style to bold, set
   /// `fields` to `"bold"`. To reset a property to its default value, include
   /// its field name in the field mask but leave the field itself unset.
-  core.String fields;
+  core.String? fields;
 
   /// The range of text to style.
   ///
@@ -7971,7 +7972,7 @@ class UpdateTextStyleRequest {
   /// contains a paragraph belonging to a list, the paragraph's bullet is also
   /// updated with the matching text style. Ranges cannot be inserted inside a
   /// relative UpdateTextStyleRequest.
-  Range range;
+  Range? range;
 
   /// The styles to set on the text.
   ///
@@ -7979,7 +7980,7 @@ class UpdateTextStyleRequest {
   /// will be set to inherit. Certain text style changes may cause other changes
   /// in order to to mirror the behavior of the Docs editor. See the
   /// documentation of TextStyle for more information.
-  TextStyle textStyle;
+  TextStyle? textStyle;
 
   UpdateTextStyleRequest();
 
@@ -7997,10 +7998,10 @@ class UpdateTextStyleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (range != null) 'range': range.toJson(),
-        if (textStyle != null) 'textStyle': textStyle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (range != null) 'range': range!.toJson(),
+        if (textStyle != null) 'textStyle': textStyle!.toJson(),
       };
 }
 
@@ -8011,7 +8012,7 @@ class WeightedFontFamily {
   /// The font family can be any font from the Font menu in Docs or from
   /// [Google Fonts](https://fonts.google.com/). If the font name is
   /// unrecognized, the text is rendered in `Arial`.
-  core.String fontFamily;
+  core.String? fontFamily;
 
   /// The weight of the font.
   ///
@@ -8029,7 +8030,7 @@ class WeightedFontFamily {
   /// weight is greater than or equal to `700`, the rendered weight is equal to
   /// the weight. * If the text is not bold, the rendered weight is equal to the
   /// weight.
-  core.int weight;
+  core.int? weight;
 
   WeightedFontFamily();
 
@@ -8042,9 +8043,9 @@ class WeightedFontFamily {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fontFamily != null) 'fontFamily': fontFamily,
-        if (weight != null) 'weight': weight,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fontFamily != null) 'fontFamily': fontFamily!,
+        if (weight != null) 'weight': weight!,
       };
 }
 
@@ -8056,7 +8057,7 @@ class WriteControl {
   /// be processed and will return a 400 bad request error. When a required
   /// revision ID is returned in a response, it indicates the revision ID of the
   /// document after the request was applied.
-  core.String requiredRevisionId;
+  core.String? requiredRevisionId;
 
   /// The target revision ID of the document that the write request will be
   /// applied to.
@@ -8075,7 +8076,7 @@ class WriteControl {
   /// `revision_id` will remain valid for use as a target revision for several
   /// minutes after it is read, but for frequently-edited documents this window
   /// may be shorter.
-  core.String targetRevisionId;
+  core.String? targetRevisionId;
 
   WriteControl();
 
@@ -8088,9 +8089,9 @@ class WriteControl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requiredRevisionId != null)
-          'requiredRevisionId': requiredRevisionId,
-        if (targetRevisionId != null) 'targetRevisionId': targetRevisionId,
+          'requiredRevisionId': requiredRevisionId!,
+        if (targetRevisionId != null) 'targetRevisionId': targetRevisionId!,
       };
 }

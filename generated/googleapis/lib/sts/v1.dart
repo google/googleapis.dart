@@ -82,10 +82,9 @@ class V1Resource {
   /// this method will complete with the same error.
   async.Future<GoogleIdentityStsV1ExchangeTokenResponse> token(
     GoogleIdentityStsV1ExchangeTokenRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -109,7 +108,7 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
   /// `//iam.googleapis.com/projects//workloadIdentityPools//providers/`.
   ///
   /// Required when exchanging an external credential for a Google access token.
-  core.String audience;
+  core.String? audience;
 
   /// The grant type.
   ///
@@ -117,25 +116,25 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
   /// a token exchange.
   ///
   /// Required.
-  core.String grantType;
+  core.String? grantType;
 
   /// A set of features that Security Token Service supports, in addition to the
   /// standard OAuth 2.0 token exchange, formatted as a serialized JSON object
   /// of Options.
-  core.String options;
+  core.String? options;
 
   /// An identifier for the type of requested security token.
   ///
   /// Must be `urn:ietf:params:oauth:token-type:access_token`.
   ///
   /// Required.
-  core.String requestedTokenType;
+  core.String? requestedTokenType;
 
   /// The OAuth 2.0 scopes to include on the resulting access token, formatted
   /// as a list of space-delimited, case-sensitive strings.
   ///
   /// Required when exchanging an external credential for a Google access token.
-  core.String scope;
+  core.String? scope;
 
   /// The input token.
   ///
@@ -209,7 +208,7 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
   /// attributes.
   ///
   /// Required.
-  core.String subjectToken;
+  core.String? subjectToken;
 
   /// An identifier that indicates the type of the security token in the
   /// `subject_token` parameter.
@@ -219,7 +218,7 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
   /// `urn:ietf:params:oauth:token-type:access_token`.
   ///
   /// Required.
-  core.String subjectTokenType;
+  core.String? subjectTokenType;
 
   GoogleIdentityStsV1ExchangeTokenRequest();
 
@@ -247,15 +246,15 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audience != null) 'audience': audience,
-        if (grantType != null) 'grantType': grantType,
-        if (options != null) 'options': options,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audience != null) 'audience': audience!,
+        if (grantType != null) 'grantType': grantType!,
+        if (options != null) 'options': options!,
         if (requestedTokenType != null)
-          'requestedTokenType': requestedTokenType,
-        if (scope != null) 'scope': scope,
-        if (subjectToken != null) 'subjectToken': subjectToken,
-        if (subjectTokenType != null) 'subjectTokenType': subjectTokenType,
+          'requestedTokenType': requestedTokenType!,
+        if (scope != null) 'scope': scope!,
+        if (subjectToken != null) 'subjectToken': subjectToken!,
+        if (subjectTokenType != null) 'subjectTokenType': subjectTokenType!,
       };
 }
 
@@ -267,7 +266,7 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
   /// Tokens can vary in size, depending in part on the size of mapped claims,
   /// up to a maximum of 12288 bytes (12 KB). Google reserves the right to
   /// change the token size and the maximum length at any time.
-  core.String accessToken;
+  core.String? accessToken;
 
   /// The amount of time, in seconds, between the time when the access token was
   /// issued and the time when the access token will expire.
@@ -275,17 +274,17 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
   /// This field is absent when the `subject_token` in the request is a
   /// Google-issued, short-lived access token. In this case, the access token
   /// has the same expiration time as the `subject_token`.
-  core.int expiresIn;
+  core.int? expiresIn;
 
   /// The token type.
   ///
   /// Always matches the value of `requested_token_type` from the request.
-  core.String issuedTokenType;
+  core.String? issuedTokenType;
 
   /// The type of access token.
   ///
   /// Always has the value `Bearer`.
-  core.String tokenType;
+  core.String? tokenType;
 
   GoogleIdentityStsV1ExchangeTokenResponse();
 
@@ -304,10 +303,10 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessToken != null) 'access_token': accessToken,
-        if (expiresIn != null) 'expires_in': expiresIn,
-        if (issuedTokenType != null) 'issued_token_type': issuedTokenType,
-        if (tokenType != null) 'token_type': tokenType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessToken != null) 'access_token': accessToken!,
+        if (expiresIn != null) 'expires_in': expiresIn!,
+        if (issuedTokenType != null) 'issued_token_type': issuedTokenType!,
+        if (tokenType != null) 'token_type': tokenType!,
       };
 }

@@ -45,11 +45,14 @@ api.Action buildAction() {
 void checkAction(api.Action o) {
   buildCounterAction++;
   if (buildCounterAction < 3) {
-    checkActor(o.actor as api.Actor);
-    checkActionDetail(o.detail as api.ActionDetail);
-    checkTarget(o.target as api.Target);
-    checkTimeRange(o.timeRange as api.TimeRange);
-    unittest.expect(o.timestamp, unittest.equals('foo'));
+    checkActor(o.actor! as api.Actor);
+    checkActionDetail(o.detail! as api.ActionDetail);
+    checkTarget(o.target! as api.Target);
+    checkTimeRange(o.timeRange! as api.TimeRange);
+    unittest.expect(
+      o.timestamp!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAction--;
 }
@@ -78,17 +81,17 @@ api.ActionDetail buildActionDetail() {
 void checkActionDetail(api.ActionDetail o) {
   buildCounterActionDetail++;
   if (buildCounterActionDetail < 3) {
-    checkComment(o.comment as api.Comment);
-    checkCreate(o.create as api.Create);
-    checkDelete(o.delete as api.Delete);
-    checkDataLeakPreventionChange(o.dlpChange as api.DataLeakPreventionChange);
-    checkEdit(o.edit as api.Edit);
-    checkMove(o.move as api.Move);
-    checkPermissionChange(o.permissionChange as api.PermissionChange);
-    checkApplicationReference(o.reference as api.ApplicationReference);
-    checkRename(o.rename as api.Rename);
-    checkRestore(o.restore as api.Restore);
-    checkSettingsChange(o.settingsChange as api.SettingsChange);
+    checkComment(o.comment! as api.Comment);
+    checkCreate(o.create! as api.Create);
+    checkDelete(o.delete! as api.Delete);
+    checkDataLeakPreventionChange(o.dlpChange! as api.DataLeakPreventionChange);
+    checkEdit(o.edit! as api.Edit);
+    checkMove(o.move! as api.Move);
+    checkPermissionChange(o.permissionChange! as api.PermissionChange);
+    checkApplicationReference(o.reference! as api.ApplicationReference);
+    checkRename(o.rename! as api.Rename);
+    checkRestore(o.restore! as api.Restore);
+    checkSettingsChange(o.settingsChange! as api.SettingsChange);
   }
   buildCounterActionDetail--;
 }
@@ -111,11 +114,11 @@ api.Actor buildActor() {
 void checkActor(api.Actor o) {
   buildCounterActor++;
   if (buildCounterActor < 3) {
-    checkAdministrator(o.administrator as api.Administrator);
-    checkAnonymousUser(o.anonymous as api.AnonymousUser);
-    checkImpersonation(o.impersonation as api.Impersonation);
-    checkSystemEvent(o.system as api.SystemEvent);
-    checkUser(o.user as api.User);
+    checkAdministrator(o.administrator! as api.Administrator);
+    checkAnonymousUser(o.anonymous! as api.AnonymousUser);
+    checkImpersonation(o.impersonation! as api.Impersonation);
+    checkSystemEvent(o.system! as api.SystemEvent);
+    checkUser(o.user! as api.User);
   }
   buildCounterActor--;
 }
@@ -179,7 +182,10 @@ api.ApplicationReference buildApplicationReference() {
 void checkApplicationReference(api.ApplicationReference o) {
   buildCounterApplicationReference++;
   if (buildCounterApplicationReference < 3) {
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterApplicationReference--;
 }
@@ -199,8 +205,11 @@ api.Assignment buildAssignment() {
 void checkAssignment(api.Assignment o) {
   buildCounterAssignment++;
   if (buildCounterAssignment < 3) {
-    checkUser(o.assignedUser as api.User);
-    unittest.expect(o.subtype, unittest.equals('foo'));
+    checkUser(o.assignedUser! as api.User);
+    unittest.expect(
+      o.subtype!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAssignment--;
 }
@@ -235,10 +244,10 @@ api.Comment buildComment() {
 void checkComment(api.Comment o) {
   buildCounterComment++;
   if (buildCounterComment < 3) {
-    checkAssignment(o.assignment as api.Assignment);
-    checkUnnamed4426(o.mentionedUsers);
-    checkPost(o.post as api.Post);
-    checkSuggestion(o.suggestion as api.Suggestion);
+    checkAssignment(o.assignment! as api.Assignment);
+    checkUnnamed4426(o.mentionedUsers!);
+    checkPost(o.post! as api.Post);
+    checkSuggestion(o.suggestion! as api.Suggestion);
   }
   buildCounterComment--;
 }
@@ -258,8 +267,8 @@ api.ConsolidationStrategy buildConsolidationStrategy() {
 void checkConsolidationStrategy(api.ConsolidationStrategy o) {
   buildCounterConsolidationStrategy++;
   if (buildCounterConsolidationStrategy < 3) {
-    checkLegacy(o.legacy as api.Legacy);
-    checkNoConsolidation(o.none as api.NoConsolidation);
+    checkLegacy(o.legacy! as api.Legacy);
+    checkNoConsolidation(o.none! as api.NoConsolidation);
   }
   buildCounterConsolidationStrategy--;
 }
@@ -278,7 +287,7 @@ api.Copy buildCopy() {
 void checkCopy(api.Copy o) {
   buildCounterCopy++;
   if (buildCounterCopy < 3) {
-    checkTargetReference(o.originalObject as api.TargetReference);
+    checkTargetReference(o.originalObject! as api.TargetReference);
   }
   buildCounterCopy--;
 }
@@ -299,9 +308,9 @@ api.Create buildCreate() {
 void checkCreate(api.Create o) {
   buildCounterCreate++;
   if (buildCounterCreate < 3) {
-    checkCopy(o.copy as api.Copy);
-    checkNew(o.new_ as api.New);
-    checkUpload(o.upload as api.Upload);
+    checkCopy(o.copy! as api.Copy);
+    checkNew(o.new_! as api.New);
+    checkUpload(o.upload! as api.Upload);
   }
   buildCounterCreate--;
 }
@@ -320,7 +329,10 @@ api.DataLeakPreventionChange buildDataLeakPreventionChange() {
 void checkDataLeakPreventionChange(api.DataLeakPreventionChange o) {
   buildCounterDataLeakPreventionChange++;
   if (buildCounterDataLeakPreventionChange < 3) {
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDataLeakPreventionChange--;
 }
@@ -339,7 +351,10 @@ api.Delete buildDelete() {
 void checkDelete(api.Delete o) {
   buildCounterDelete++;
   if (buildCounterDelete < 3) {
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDelete--;
 }
@@ -374,8 +389,14 @@ api.Domain buildDomain() {
 void checkDomain(api.Domain o) {
   buildCounterDomain++;
   if (buildCounterDomain < 3) {
-    unittest.expect(o.legacyId, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.legacyId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDomain--;
 }
@@ -396,9 +417,15 @@ api.Drive buildDrive() {
 void checkDrive(api.Drive o) {
   buildCounterDrive++;
   if (buildCounterDrive < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkDriveItem(o.root as api.DriveItem);
-    unittest.expect(o.title, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkDriveItem(o.root! as api.DriveItem);
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDrive--;
 }
@@ -461,12 +488,15 @@ api.DriveActivity buildDriveActivity() {
 void checkDriveActivity(api.DriveActivity o) {
   buildCounterDriveActivity++;
   if (buildCounterDriveActivity < 3) {
-    checkUnnamed4427(o.actions);
-    checkUnnamed4428(o.actors);
-    checkActionDetail(o.primaryActionDetail as api.ActionDetail);
-    checkUnnamed4429(o.targets);
-    checkTimeRange(o.timeRange as api.TimeRange);
-    unittest.expect(o.timestamp, unittest.equals('foo'));
+    checkUnnamed4427(o.actions!);
+    checkUnnamed4428(o.actors!);
+    checkActionDetail(o.primaryActionDetail! as api.ActionDetail);
+    checkUnnamed4429(o.targets!);
+    checkTimeRange(o.timeRange! as api.TimeRange);
+    unittest.expect(
+      o.timestamp!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDriveActivity--;
 }
@@ -500,7 +530,10 @@ api.DriveFolder buildDriveFolder() {
 void checkDriveFolder(api.DriveFolder o) {
   buildCounterDriveFolder++;
   if (buildCounterDriveFolder < 3) {
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDriveFolder--;
 }
@@ -526,14 +559,23 @@ api.DriveItem buildDriveItem() {
 void checkDriveItem(api.DriveItem o) {
   buildCounterDriveItem++;
   if (buildCounterDriveItem < 3) {
-    checkDriveFile(o.driveFile as api.DriveFile);
-    checkDriveFolder(o.driveFolder as api.DriveFolder);
-    checkFile(o.file as api.File);
-    checkFolder(o.folder as api.Folder);
-    unittest.expect(o.mimeType, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkOwner(o.owner as api.Owner);
-    unittest.expect(o.title, unittest.equals('foo'));
+    checkDriveFile(o.driveFile! as api.DriveFile);
+    checkDriveFolder(o.driveFolder! as api.DriveFolder);
+    checkFile(o.file! as api.File);
+    checkFolder(o.folder! as api.Folder);
+    unittest.expect(
+      o.mimeType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkOwner(o.owner! as api.Owner);
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDriveItem--;
 }
@@ -557,12 +599,18 @@ api.DriveItemReference buildDriveItemReference() {
 void checkDriveItemReference(api.DriveItemReference o) {
   buildCounterDriveItemReference++;
   if (buildCounterDriveItemReference < 3) {
-    checkDriveFile(o.driveFile as api.DriveFile);
-    checkDriveFolder(o.driveFolder as api.DriveFolder);
-    checkFile(o.file as api.File);
-    checkFolder(o.folder as api.Folder);
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.title, unittest.equals('foo'));
+    checkDriveFile(o.driveFile! as api.DriveFile);
+    checkDriveFolder(o.driveFolder! as api.DriveFolder);
+    checkFile(o.file! as api.File);
+    checkFolder(o.folder! as api.Folder);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDriveItemReference--;
 }
@@ -582,8 +630,14 @@ api.DriveReference buildDriveReference() {
 void checkDriveReference(api.DriveReference o) {
   buildCounterDriveReference++;
   if (buildCounterDriveReference < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.title, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDriveReference--;
 }
@@ -635,10 +689,19 @@ api.FileComment buildFileComment() {
 void checkFileComment(api.FileComment o) {
   buildCounterFileComment++;
   if (buildCounterFileComment < 3) {
-    unittest.expect(o.legacyCommentId, unittest.equals('foo'));
-    unittest.expect(o.legacyDiscussionId, unittest.equals('foo'));
-    unittest.expect(o.linkToDiscussion, unittest.equals('foo'));
-    checkDriveItem(o.parent as api.DriveItem);
+    unittest.expect(
+      o.legacyCommentId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.legacyDiscussionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.linkToDiscussion!,
+      unittest.equals('foo'),
+    );
+    checkDriveItem(o.parent! as api.DriveItem);
   }
   buildCounterFileComment--;
 }
@@ -657,7 +720,10 @@ api.Folder buildFolder() {
 void checkFolder(api.Folder o) {
   buildCounterFolder++;
   if (buildCounterFolder < 3) {
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterFolder--;
 }
@@ -677,8 +743,14 @@ api.Group buildGroup() {
 void checkGroup(api.Group o) {
   buildCounterGroup++;
   if (buildCounterGroup < 3) {
-    unittest.expect(o.email, unittest.equals('foo'));
-    unittest.expect(o.title, unittest.equals('foo'));
+    unittest.expect(
+      o.email!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGroup--;
 }
@@ -697,7 +769,7 @@ api.Impersonation buildImpersonation() {
 void checkImpersonation(api.Impersonation o) {
   buildCounterImpersonation++;
   if (buildCounterImpersonation < 3) {
-    checkUser(o.impersonatedUser as api.User);
+    checkUser(o.impersonatedUser! as api.User);
   }
   buildCounterImpersonation--;
 }
@@ -717,8 +789,11 @@ api.KnownUser buildKnownUser() {
 void checkKnownUser(api.KnownUser o) {
   buildCounterKnownUser++;
   if (buildCounterKnownUser < 3) {
-    unittest.expect(o.isCurrentUser, unittest.isTrue);
-    unittest.expect(o.personName, unittest.equals('foo'));
+    unittest.expect(o.isCurrentUser!, unittest.isTrue);
+    unittest.expect(
+      o.personName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterKnownUser--;
 }
@@ -779,8 +854,8 @@ api.Move buildMove() {
 void checkMove(api.Move o) {
   buildCounterMove++;
   if (buildCounterMove < 3) {
-    checkUnnamed4430(o.addedParents);
-    checkUnnamed4431(o.removedParents);
+    checkUnnamed4430(o.addedParents!);
+    checkUnnamed4431(o.removedParents!);
   }
   buildCounterMove--;
 }
@@ -832,10 +907,10 @@ api.Owner buildOwner() {
 void checkOwner(api.Owner o) {
   buildCounterOwner++;
   if (buildCounterOwner < 3) {
-    checkDomain(o.domain as api.Domain);
-    checkDriveReference(o.drive as api.DriveReference);
-    checkTeamDriveReference(o.teamDrive as api.TeamDriveReference);
-    checkUser(o.user as api.User);
+    checkDomain(o.domain! as api.Domain);
+    checkDriveReference(o.drive! as api.DriveReference);
+    checkTeamDriveReference(o.teamDrive! as api.TeamDriveReference);
+    checkUser(o.user! as api.User);
   }
   buildCounterOwner--;
 }
@@ -859,12 +934,15 @@ api.Permission buildPermission() {
 void checkPermission(api.Permission o) {
   buildCounterPermission++;
   if (buildCounterPermission < 3) {
-    unittest.expect(o.allowDiscovery, unittest.isTrue);
-    checkAnyone(o.anyone as api.Anyone);
-    checkDomain(o.domain as api.Domain);
-    checkGroup(o.group as api.Group);
-    unittest.expect(o.role, unittest.equals('foo'));
-    checkUser(o.user as api.User);
+    unittest.expect(o.allowDiscovery!, unittest.isTrue);
+    checkAnyone(o.anyone! as api.Anyone);
+    checkDomain(o.domain! as api.Domain);
+    checkGroup(o.group! as api.Group);
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
+    checkUser(o.user! as api.User);
   }
   buildCounterPermission--;
 }
@@ -910,8 +988,8 @@ api.PermissionChange buildPermissionChange() {
 void checkPermissionChange(api.PermissionChange o) {
   buildCounterPermissionChange++;
   if (buildCounterPermissionChange < 3) {
-    checkUnnamed4432(o.addedPermissions);
-    checkUnnamed4433(o.removedPermissions);
+    checkUnnamed4432(o.addedPermissions!);
+    checkUnnamed4433(o.removedPermissions!);
   }
   buildCounterPermissionChange--;
 }
@@ -930,7 +1008,10 @@ api.Post buildPost() {
 void checkPost(api.Post o) {
   buildCounterPost++;
   if (buildCounterPost < 3) {
-    unittest.expect(o.subtype, unittest.equals('foo'));
+    unittest.expect(
+      o.subtype!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPost--;
 }
@@ -954,13 +1035,28 @@ api.QueryDriveActivityRequest buildQueryDriveActivityRequest() {
 void checkQueryDriveActivityRequest(api.QueryDriveActivityRequest o) {
   buildCounterQueryDriveActivityRequest++;
   if (buildCounterQueryDriveActivityRequest < 3) {
-    unittest.expect(o.ancestorName, unittest.equals('foo'));
+    unittest.expect(
+      o.ancestorName!,
+      unittest.equals('foo'),
+    );
     checkConsolidationStrategy(
-        o.consolidationStrategy as api.ConsolidationStrategy);
-    unittest.expect(o.filter, unittest.equals('foo'));
-    unittest.expect(o.itemName, unittest.equals('foo'));
-    unittest.expect(o.pageSize, unittest.equals(42));
-    unittest.expect(o.pageToken, unittest.equals('foo'));
+        o.consolidationStrategy! as api.ConsolidationStrategy);
+    unittest.expect(
+      o.filter!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.itemName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pageSize!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.pageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterQueryDriveActivityRequest--;
 }
@@ -993,8 +1089,11 @@ api.QueryDriveActivityResponse buildQueryDriveActivityResponse() {
 void checkQueryDriveActivityResponse(api.QueryDriveActivityResponse o) {
   buildCounterQueryDriveActivityResponse++;
   if (buildCounterQueryDriveActivityResponse < 3) {
-    checkUnnamed4434(o.activities);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed4434(o.activities!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterQueryDriveActivityResponse--;
 }
@@ -1014,8 +1113,14 @@ api.Rename buildRename() {
 void checkRename(api.Rename o) {
   buildCounterRename++;
   if (buildCounterRename < 3) {
-    unittest.expect(o.newTitle, unittest.equals('foo'));
-    unittest.expect(o.oldTitle, unittest.equals('foo'));
+    unittest.expect(
+      o.newTitle!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.oldTitle!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRename--;
 }
@@ -1034,7 +1139,10 @@ api.Restore buildRestore() {
 void checkRestore(api.Restore o) {
   buildCounterRestore++;
   if (buildCounterRestore < 3) {
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRestore--;
 }
@@ -1054,8 +1162,14 @@ api.RestrictionChange buildRestrictionChange() {
 void checkRestrictionChange(api.RestrictionChange o) {
   buildCounterRestrictionChange++;
   if (buildCounterRestrictionChange < 3) {
-    unittest.expect(o.feature, unittest.equals('foo'));
-    unittest.expect(o.newRestriction, unittest.equals('foo'));
+    unittest.expect(
+      o.feature!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.newRestriction!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRestrictionChange--;
 }
@@ -1087,7 +1201,7 @@ api.SettingsChange buildSettingsChange() {
 void checkSettingsChange(api.SettingsChange o) {
   buildCounterSettingsChange++;
   if (buildCounterSettingsChange < 3) {
-    checkUnnamed4435(o.restrictionChanges);
+    checkUnnamed4435(o.restrictionChanges!);
   }
   buildCounterSettingsChange--;
 }
@@ -1106,7 +1220,10 @@ api.Suggestion buildSuggestion() {
 void checkSuggestion(api.Suggestion o) {
   buildCounterSuggestion++;
   if (buildCounterSuggestion < 3) {
-    unittest.expect(o.subtype, unittest.equals('foo'));
+    unittest.expect(
+      o.subtype!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSuggestion--;
 }
@@ -1125,7 +1242,10 @@ api.SystemEvent buildSystemEvent() {
 void checkSystemEvent(api.SystemEvent o) {
   buildCounterSystemEvent++;
   if (buildCounterSystemEvent < 3) {
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSystemEvent--;
 }
@@ -1147,10 +1267,10 @@ api.Target buildTarget() {
 void checkTarget(api.Target o) {
   buildCounterTarget++;
   if (buildCounterTarget < 3) {
-    checkDrive(o.drive as api.Drive);
-    checkDriveItem(o.driveItem as api.DriveItem);
-    checkFileComment(o.fileComment as api.FileComment);
-    checkTeamDrive(o.teamDrive as api.TeamDrive);
+    checkDrive(o.drive! as api.Drive);
+    checkDriveItem(o.driveItem! as api.DriveItem);
+    checkFileComment(o.fileComment! as api.FileComment);
+    checkTeamDrive(o.teamDrive! as api.TeamDrive);
   }
   buildCounterTarget--;
 }
@@ -1171,9 +1291,9 @@ api.TargetReference buildTargetReference() {
 void checkTargetReference(api.TargetReference o) {
   buildCounterTargetReference++;
   if (buildCounterTargetReference < 3) {
-    checkDriveReference(o.drive as api.DriveReference);
-    checkDriveItemReference(o.driveItem as api.DriveItemReference);
-    checkTeamDriveReference(o.teamDrive as api.TeamDriveReference);
+    checkDriveReference(o.drive! as api.DriveReference);
+    checkDriveItemReference(o.driveItem! as api.DriveItemReference);
+    checkTeamDriveReference(o.teamDrive! as api.TeamDriveReference);
   }
   buildCounterTargetReference--;
 }
@@ -1194,9 +1314,15 @@ api.TeamDrive buildTeamDrive() {
 void checkTeamDrive(api.TeamDrive o) {
   buildCounterTeamDrive++;
   if (buildCounterTeamDrive < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkDriveItem(o.root as api.DriveItem);
-    unittest.expect(o.title, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkDriveItem(o.root! as api.DriveItem);
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTeamDrive--;
 }
@@ -1216,8 +1342,14 @@ api.TeamDriveReference buildTeamDriveReference() {
 void checkTeamDriveReference(api.TeamDriveReference o) {
   buildCounterTeamDriveReference++;
   if (buildCounterTeamDriveReference < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.title, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTeamDriveReference--;
 }
@@ -1237,8 +1369,14 @@ api.TimeRange buildTimeRange() {
 void checkTimeRange(api.TimeRange o) {
   buildCounterTimeRange++;
   if (buildCounterTimeRange < 3) {
-    unittest.expect(o.endTime, unittest.equals('foo'));
-    unittest.expect(o.startTime, unittest.equals('foo'));
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTimeRange--;
 }
@@ -1289,9 +1427,9 @@ api.User buildUser() {
 void checkUser(api.User o) {
   buildCounterUser++;
   if (buildCounterUser < 3) {
-    checkDeletedUser(o.deletedUser as api.DeletedUser);
-    checkKnownUser(o.knownUser as api.KnownUser);
-    checkUnknownUser(o.unknownUser as api.UnknownUser);
+    checkDeletedUser(o.deletedUser! as api.DeletedUser);
+    checkKnownUser(o.knownUser! as api.KnownUser);
+    checkUnknownUser(o.unknownUser! as api.UnknownUser);
   }
   buildCounterUser--;
 }
@@ -1745,10 +1883,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("v2/activity:query"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("v2/activity:query"),
+        );
         pathOffset += 17;
 
         var query = (req.url).query;
@@ -1766,7 +1908,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

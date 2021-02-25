@@ -36,8 +36,14 @@ core.List<core.String> buildUnnamed5978() {
 
 void checkUnnamed5978(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2Action = 0;
@@ -60,12 +66,15 @@ void checkBuildBazelRemoteExecutionV2Action(
   buildCounterBuildBazelRemoteExecutionV2Action++;
   if (buildCounterBuildBazelRemoteExecutionV2Action < 3) {
     checkBuildBazelRemoteExecutionV2Digest(
-        o.commandDigest as api.BuildBazelRemoteExecutionV2Digest);
-    unittest.expect(o.doNotCache, unittest.isTrue);
+        o.commandDigest! as api.BuildBazelRemoteExecutionV2Digest);
+    unittest.expect(o.doNotCache!, unittest.isTrue);
     checkBuildBazelRemoteExecutionV2Digest(
-        o.inputRootDigest as api.BuildBazelRemoteExecutionV2Digest);
-    checkUnnamed5978(o.outputNodeProperties);
-    unittest.expect(o.timeout, unittest.equals('foo'));
+        o.inputRootDigest! as api.BuildBazelRemoteExecutionV2Digest);
+    checkUnnamed5978(o.outputNodeProperties!);
+    unittest.expect(
+      o.timeout!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2Action--;
 }
@@ -89,7 +98,7 @@ void checkBuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities(
   buildCounterBuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities++;
   if (buildCounterBuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities <
       3) {
-    unittest.expect(o.updateEnabled, unittest.isTrue);
+    unittest.expect(o.updateEnabled!, unittest.isTrue);
   }
   buildCounterBuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities--;
 }
@@ -200,20 +209,29 @@ void checkBuildBazelRemoteExecutionV2ActionResult(
     api.BuildBazelRemoteExecutionV2ActionResult o) {
   buildCounterBuildBazelRemoteExecutionV2ActionResult++;
   if (buildCounterBuildBazelRemoteExecutionV2ActionResult < 3) {
-    checkBuildBazelRemoteExecutionV2ExecutedActionMetadata(o.executionMetadata
+    checkBuildBazelRemoteExecutionV2ExecutedActionMetadata(o.executionMetadata!
         as api.BuildBazelRemoteExecutionV2ExecutedActionMetadata);
-    unittest.expect(o.exitCode, unittest.equals(42));
-    checkUnnamed5979(o.outputDirectories);
-    checkUnnamed5980(o.outputDirectorySymlinks);
-    checkUnnamed5981(o.outputFileSymlinks);
-    checkUnnamed5982(o.outputFiles);
-    checkUnnamed5983(o.outputSymlinks);
+    unittest.expect(
+      o.exitCode!,
+      unittest.equals(42),
+    );
+    checkUnnamed5979(o.outputDirectories!);
+    checkUnnamed5980(o.outputDirectorySymlinks!);
+    checkUnnamed5981(o.outputFileSymlinks!);
+    checkUnnamed5982(o.outputFiles!);
+    checkUnnamed5983(o.outputSymlinks!);
     checkBuildBazelRemoteExecutionV2Digest(
-        o.stderrDigest as api.BuildBazelRemoteExecutionV2Digest);
-    unittest.expect(o.stderrRaw, unittest.equals('foo'));
+        o.stderrDigest! as api.BuildBazelRemoteExecutionV2Digest);
+    unittest.expect(
+      o.stderrRaw!,
+      unittest.equals('foo'),
+    );
     checkBuildBazelRemoteExecutionV2Digest(
-        o.stdoutDigest as api.BuildBazelRemoteExecutionV2Digest);
-    unittest.expect(o.stdoutRaw, unittest.equals('foo'));
+        o.stdoutDigest! as api.BuildBazelRemoteExecutionV2Digest);
+    unittest.expect(
+      o.stdoutRaw!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2ActionResult--;
 }
@@ -249,7 +267,7 @@ void checkBuildBazelRemoteExecutionV2BatchReadBlobsRequest(
     api.BuildBazelRemoteExecutionV2BatchReadBlobsRequest o) {
   buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsRequest++;
   if (buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsRequest < 3) {
-    checkUnnamed5984(o.digests);
+    checkUnnamed5984(o.digests!);
   }
   buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsRequest--;
 }
@@ -288,7 +306,7 @@ void checkBuildBazelRemoteExecutionV2BatchReadBlobsResponse(
     api.BuildBazelRemoteExecutionV2BatchReadBlobsResponse o) {
   buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsResponse++;
   if (buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsResponse < 3) {
-    checkUnnamed5985(o.responses);
+    checkUnnamed5985(o.responses!);
   }
   buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsResponse--;
 }
@@ -314,10 +332,13 @@ void checkBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse(
   buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse++;
   if (buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse <
       3) {
-    unittest.expect(o.data, unittest.equals('foo'));
+    unittest.expect(
+      o.data!,
+      unittest.equals('foo'),
+    );
     checkBuildBazelRemoteExecutionV2Digest(
-        o.digest as api.BuildBazelRemoteExecutionV2Digest);
-    checkGoogleRpcStatus(o.status as api.GoogleRpcStatus);
+        o.digest! as api.BuildBazelRemoteExecutionV2Digest);
+    checkGoogleRpcStatus(o.status! as api.GoogleRpcStatus);
   }
   buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse--;
 }
@@ -356,7 +377,7 @@ void checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest(
     api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest o) {
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest++;
   if (buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest < 3) {
-    checkUnnamed5986(o.requests);
+    checkUnnamed5986(o.requests!);
   }
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest--;
 }
@@ -381,9 +402,12 @@ void checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest(
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest++;
   if (buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest <
       3) {
-    unittest.expect(o.data, unittest.equals('foo'));
+    unittest.expect(
+      o.data!,
+      unittest.equals('foo'),
+    );
     checkBuildBazelRemoteExecutionV2Digest(
-        o.digest as api.BuildBazelRemoteExecutionV2Digest);
+        o.digest! as api.BuildBazelRemoteExecutionV2Digest);
   }
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest--;
 }
@@ -422,7 +446,7 @@ void checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse(
     api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse o) {
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse++;
   if (buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse < 3) {
-    checkUnnamed5987(o.responses);
+    checkUnnamed5987(o.responses!);
   }
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse--;
 }
@@ -448,8 +472,8 @@ void checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse(
   if (buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse <
       3) {
     checkBuildBazelRemoteExecutionV2Digest(
-        o.digest as api.BuildBazelRemoteExecutionV2Digest);
-    checkGoogleRpcStatus(o.status as api.GoogleRpcStatus);
+        o.digest! as api.BuildBazelRemoteExecutionV2Digest);
+    checkGoogleRpcStatus(o.status! as api.GoogleRpcStatus);
   }
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse--;
 }
@@ -463,8 +487,14 @@ core.List<core.String> buildUnnamed5988() {
 
 void checkUnnamed5988(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2CacheCapabilities = 0;
@@ -490,14 +520,20 @@ void checkBuildBazelRemoteExecutionV2CacheCapabilities(
   buildCounterBuildBazelRemoteExecutionV2CacheCapabilities++;
   if (buildCounterBuildBazelRemoteExecutionV2CacheCapabilities < 3) {
     checkBuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities(
-        o.actionCacheUpdateCapabilities
+        o.actionCacheUpdateCapabilities!
             as api.BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities);
     checkBuildBazelRemoteExecutionV2PriorityCapabilities(
-        o.cachePriorityCapabilities
+        o.cachePriorityCapabilities!
             as api.BuildBazelRemoteExecutionV2PriorityCapabilities);
-    checkUnnamed5988(o.digestFunction);
-    unittest.expect(o.maxBatchTotalSizeBytes, unittest.equals('foo'));
-    unittest.expect(o.symlinkAbsolutePathStrategy, unittest.equals('foo'));
+    checkUnnamed5988(o.digestFunction!);
+    unittest.expect(
+      o.maxBatchTotalSizeBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.symlinkAbsolutePathStrategy!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2CacheCapabilities--;
 }
@@ -511,8 +547,14 @@ core.List<core.String> buildUnnamed5989() {
 
 void checkUnnamed5989(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.BuildBazelRemoteExecutionV2CommandEnvironmentVariable>
@@ -541,8 +583,14 @@ core.List<core.String> buildUnnamed5991() {
 
 void checkUnnamed5991(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed5992() {
@@ -554,8 +602,14 @@ core.List<core.String> buildUnnamed5992() {
 
 void checkUnnamed5992(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed5993() {
@@ -567,8 +621,14 @@ core.List<core.String> buildUnnamed5993() {
 
 void checkUnnamed5993(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2Command = 0;
@@ -593,14 +653,17 @@ void checkBuildBazelRemoteExecutionV2Command(
     api.BuildBazelRemoteExecutionV2Command o) {
   buildCounterBuildBazelRemoteExecutionV2Command++;
   if (buildCounterBuildBazelRemoteExecutionV2Command < 3) {
-    checkUnnamed5989(o.arguments);
-    checkUnnamed5990(o.environmentVariables);
-    checkUnnamed5991(o.outputDirectories);
-    checkUnnamed5992(o.outputFiles);
-    checkUnnamed5993(o.outputPaths);
+    checkUnnamed5989(o.arguments!);
+    checkUnnamed5990(o.environmentVariables!);
+    checkUnnamed5991(o.outputDirectories!);
+    checkUnnamed5992(o.outputFiles!);
+    checkUnnamed5993(o.outputPaths!);
     checkBuildBazelRemoteExecutionV2Platform(
-        o.platform as api.BuildBazelRemoteExecutionV2Platform);
-    unittest.expect(o.workingDirectory, unittest.equals('foo'));
+        o.platform! as api.BuildBazelRemoteExecutionV2Platform);
+    unittest.expect(
+      o.workingDirectory!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2Command--;
 }
@@ -622,8 +685,14 @@ void checkBuildBazelRemoteExecutionV2CommandEnvironmentVariable(
     api.BuildBazelRemoteExecutionV2CommandEnvironmentVariable o) {
   buildCounterBuildBazelRemoteExecutionV2CommandEnvironmentVariable++;
   if (buildCounterBuildBazelRemoteExecutionV2CommandEnvironmentVariable < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2CommandEnvironmentVariable--;
 }
@@ -644,8 +713,14 @@ void checkBuildBazelRemoteExecutionV2Digest(
     api.BuildBazelRemoteExecutionV2Digest o) {
   buildCounterBuildBazelRemoteExecutionV2Digest++;
   if (buildCounterBuildBazelRemoteExecutionV2Digest < 3) {
-    unittest.expect(o.hash, unittest.equals('foo'));
-    unittest.expect(o.sizeBytes, unittest.equals('foo'));
+    unittest.expect(
+      o.hash!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sizeBytes!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2Digest--;
 }
@@ -731,10 +806,10 @@ void checkBuildBazelRemoteExecutionV2Directory(
     api.BuildBazelRemoteExecutionV2Directory o) {
   buildCounterBuildBazelRemoteExecutionV2Directory++;
   if (buildCounterBuildBazelRemoteExecutionV2Directory < 3) {
-    checkUnnamed5994(o.directories);
-    checkUnnamed5995(o.files);
-    checkUnnamed5996(o.nodeProperties);
-    checkUnnamed5997(o.symlinks);
+    checkUnnamed5994(o.directories!);
+    checkUnnamed5995(o.files!);
+    checkUnnamed5996(o.nodeProperties!);
+    checkUnnamed5997(o.symlinks!);
   }
   buildCounterBuildBazelRemoteExecutionV2Directory--;
 }
@@ -757,8 +832,11 @@ void checkBuildBazelRemoteExecutionV2DirectoryNode(
   buildCounterBuildBazelRemoteExecutionV2DirectoryNode++;
   if (buildCounterBuildBazelRemoteExecutionV2DirectoryNode < 3) {
     checkBuildBazelRemoteExecutionV2Digest(
-        o.digest as api.BuildBazelRemoteExecutionV2Digest);
-    unittest.expect(o.name, unittest.equals('foo'));
+        o.digest! as api.BuildBazelRemoteExecutionV2Digest);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2DirectoryNode--;
 }
@@ -783,10 +861,19 @@ void checkBuildBazelRemoteExecutionV2ExecuteOperationMetadata(
   buildCounterBuildBazelRemoteExecutionV2ExecuteOperationMetadata++;
   if (buildCounterBuildBazelRemoteExecutionV2ExecuteOperationMetadata < 3) {
     checkBuildBazelRemoteExecutionV2Digest(
-        o.actionDigest as api.BuildBazelRemoteExecutionV2Digest);
-    unittest.expect(o.stage, unittest.equals('foo'));
-    unittest.expect(o.stderrStreamName, unittest.equals('foo'));
-    unittest.expect(o.stdoutStreamName, unittest.equals('foo'));
+        o.actionDigest! as api.BuildBazelRemoteExecutionV2Digest);
+    unittest.expect(
+      o.stage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.stderrStreamName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.stdoutStreamName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2ExecuteOperationMetadata--;
 }
@@ -811,12 +898,12 @@ void checkBuildBazelRemoteExecutionV2ExecuteRequest(
   buildCounterBuildBazelRemoteExecutionV2ExecuteRequest++;
   if (buildCounterBuildBazelRemoteExecutionV2ExecuteRequest < 3) {
     checkBuildBazelRemoteExecutionV2Digest(
-        o.actionDigest as api.BuildBazelRemoteExecutionV2Digest);
+        o.actionDigest! as api.BuildBazelRemoteExecutionV2Digest);
     checkBuildBazelRemoteExecutionV2ExecutionPolicy(
-        o.executionPolicy as api.BuildBazelRemoteExecutionV2ExecutionPolicy);
-    checkBuildBazelRemoteExecutionV2ResultsCachePolicy(o.resultsCachePolicy
+        o.executionPolicy! as api.BuildBazelRemoteExecutionV2ExecutionPolicy);
+    checkBuildBazelRemoteExecutionV2ResultsCachePolicy(o.resultsCachePolicy!
         as api.BuildBazelRemoteExecutionV2ResultsCachePolicy);
-    unittest.expect(o.skipCacheLookup, unittest.isTrue);
+    unittest.expect(o.skipCacheLookup!, unittest.isTrue);
   }
   buildCounterBuildBazelRemoteExecutionV2ExecuteRequest--;
 }
@@ -833,9 +920,9 @@ void checkUnnamed5998(
     core.Map<core.String, api.BuildBazelRemoteExecutionV2LogFile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuildBazelRemoteExecutionV2LogFile(
-      o['x'] as api.BuildBazelRemoteExecutionV2LogFile);
+      o['x']! as api.BuildBazelRemoteExecutionV2LogFile);
   checkBuildBazelRemoteExecutionV2LogFile(
-      o['y'] as api.BuildBazelRemoteExecutionV2LogFile);
+      o['y']! as api.BuildBazelRemoteExecutionV2LogFile);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2ExecuteResponse = 0;
@@ -858,12 +945,15 @@ void checkBuildBazelRemoteExecutionV2ExecuteResponse(
     api.BuildBazelRemoteExecutionV2ExecuteResponse o) {
   buildCounterBuildBazelRemoteExecutionV2ExecuteResponse++;
   if (buildCounterBuildBazelRemoteExecutionV2ExecuteResponse < 3) {
-    unittest.expect(o.cachedResult, unittest.isTrue);
-    unittest.expect(o.message, unittest.equals('foo'));
+    unittest.expect(o.cachedResult!, unittest.isTrue);
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
     checkBuildBazelRemoteExecutionV2ActionResult(
-        o.result as api.BuildBazelRemoteExecutionV2ActionResult);
-    checkUnnamed5998(o.serverLogs);
-    checkGoogleRpcStatus(o.status as api.GoogleRpcStatus);
+        o.result! as api.BuildBazelRemoteExecutionV2ActionResult);
+    checkUnnamed5998(o.serverLogs!);
+    checkGoogleRpcStatus(o.status! as api.GoogleRpcStatus);
   }
   buildCounterBuildBazelRemoteExecutionV2ExecuteResponse--;
 }
@@ -893,16 +983,46 @@ void checkBuildBazelRemoteExecutionV2ExecutedActionMetadata(
     api.BuildBazelRemoteExecutionV2ExecutedActionMetadata o) {
   buildCounterBuildBazelRemoteExecutionV2ExecutedActionMetadata++;
   if (buildCounterBuildBazelRemoteExecutionV2ExecutedActionMetadata < 3) {
-    unittest.expect(o.executionCompletedTimestamp, unittest.equals('foo'));
-    unittest.expect(o.executionStartTimestamp, unittest.equals('foo'));
-    unittest.expect(o.inputFetchCompletedTimestamp, unittest.equals('foo'));
-    unittest.expect(o.inputFetchStartTimestamp, unittest.equals('foo'));
-    unittest.expect(o.outputUploadCompletedTimestamp, unittest.equals('foo'));
-    unittest.expect(o.outputUploadStartTimestamp, unittest.equals('foo'));
-    unittest.expect(o.queuedTimestamp, unittest.equals('foo'));
-    unittest.expect(o.worker, unittest.equals('foo'));
-    unittest.expect(o.workerCompletedTimestamp, unittest.equals('foo'));
-    unittest.expect(o.workerStartTimestamp, unittest.equals('foo'));
+    unittest.expect(
+      o.executionCompletedTimestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.executionStartTimestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.inputFetchCompletedTimestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.inputFetchStartTimestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.outputUploadCompletedTimestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.outputUploadStartTimestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.queuedTimestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.worker!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.workerCompletedTimestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.workerStartTimestamp!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2ExecutedActionMetadata--;
 }
@@ -916,8 +1036,14 @@ core.List<core.String> buildUnnamed5999() {
 
 void checkUnnamed5999(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2ExecutionCapabilities = 0;
@@ -940,12 +1066,15 @@ void checkBuildBazelRemoteExecutionV2ExecutionCapabilities(
     api.BuildBazelRemoteExecutionV2ExecutionCapabilities o) {
   buildCounterBuildBazelRemoteExecutionV2ExecutionCapabilities++;
   if (buildCounterBuildBazelRemoteExecutionV2ExecutionCapabilities < 3) {
-    unittest.expect(o.digestFunction, unittest.equals('foo'));
-    unittest.expect(o.execEnabled, unittest.isTrue);
+    unittest.expect(
+      o.digestFunction!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.execEnabled!, unittest.isTrue);
     checkBuildBazelRemoteExecutionV2PriorityCapabilities(
-        o.executionPriorityCapabilities
+        o.executionPriorityCapabilities!
             as api.BuildBazelRemoteExecutionV2PriorityCapabilities);
-    checkUnnamed5999(o.supportedNodeProperties);
+    checkUnnamed5999(o.supportedNodeProperties!);
   }
   buildCounterBuildBazelRemoteExecutionV2ExecutionCapabilities--;
 }
@@ -966,7 +1095,10 @@ void checkBuildBazelRemoteExecutionV2ExecutionPolicy(
     api.BuildBazelRemoteExecutionV2ExecutionPolicy o) {
   buildCounterBuildBazelRemoteExecutionV2ExecutionPolicy++;
   if (buildCounterBuildBazelRemoteExecutionV2ExecutionPolicy < 3) {
-    unittest.expect(o.priority, unittest.equals(42));
+    unittest.expect(
+      o.priority!,
+      unittest.equals(42),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2ExecutionPolicy--;
 }
@@ -1007,10 +1139,13 @@ void checkBuildBazelRemoteExecutionV2FileNode(
   buildCounterBuildBazelRemoteExecutionV2FileNode++;
   if (buildCounterBuildBazelRemoteExecutionV2FileNode < 3) {
     checkBuildBazelRemoteExecutionV2Digest(
-        o.digest as api.BuildBazelRemoteExecutionV2Digest);
-    unittest.expect(o.isExecutable, unittest.isTrue);
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed6000(o.nodeProperties);
+        o.digest! as api.BuildBazelRemoteExecutionV2Digest);
+    unittest.expect(o.isExecutable!, unittest.isTrue);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed6000(o.nodeProperties!);
   }
   buildCounterBuildBazelRemoteExecutionV2FileNode--;
 }
@@ -1046,7 +1181,7 @@ void checkBuildBazelRemoteExecutionV2FindMissingBlobsRequest(
     api.BuildBazelRemoteExecutionV2FindMissingBlobsRequest o) {
   buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsRequest++;
   if (buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsRequest < 3) {
-    checkUnnamed6001(o.blobDigests);
+    checkUnnamed6001(o.blobDigests!);
   }
   buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsRequest--;
 }
@@ -1082,7 +1217,7 @@ void checkBuildBazelRemoteExecutionV2FindMissingBlobsResponse(
     api.BuildBazelRemoteExecutionV2FindMissingBlobsResponse o) {
   buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsResponse++;
   if (buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsResponse < 3) {
-    checkUnnamed6002(o.missingBlobDigests);
+    checkUnnamed6002(o.missingBlobDigests!);
   }
   buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsResponse--;
 }
@@ -1119,8 +1254,11 @@ void checkBuildBazelRemoteExecutionV2GetTreeResponse(
     api.BuildBazelRemoteExecutionV2GetTreeResponse o) {
   buildCounterBuildBazelRemoteExecutionV2GetTreeResponse++;
   if (buildCounterBuildBazelRemoteExecutionV2GetTreeResponse < 3) {
-    checkUnnamed6003(o.directories);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed6003(o.directories!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2GetTreeResponse--;
 }
@@ -1143,8 +1281,8 @@ void checkBuildBazelRemoteExecutionV2LogFile(
   buildCounterBuildBazelRemoteExecutionV2LogFile++;
   if (buildCounterBuildBazelRemoteExecutionV2LogFile < 3) {
     checkBuildBazelRemoteExecutionV2Digest(
-        o.digest as api.BuildBazelRemoteExecutionV2Digest);
-    unittest.expect(o.humanReadable, unittest.isTrue);
+        o.digest! as api.BuildBazelRemoteExecutionV2Digest);
+    unittest.expect(o.humanReadable!, unittest.isTrue);
   }
   buildCounterBuildBazelRemoteExecutionV2LogFile--;
 }
@@ -1166,8 +1304,14 @@ void checkBuildBazelRemoteExecutionV2NodeProperty(
     api.BuildBazelRemoteExecutionV2NodeProperty o) {
   buildCounterBuildBazelRemoteExecutionV2NodeProperty++;
   if (buildCounterBuildBazelRemoteExecutionV2NodeProperty < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2NodeProperty--;
 }
@@ -1189,9 +1333,12 @@ void checkBuildBazelRemoteExecutionV2OutputDirectory(
     api.BuildBazelRemoteExecutionV2OutputDirectory o) {
   buildCounterBuildBazelRemoteExecutionV2OutputDirectory++;
   if (buildCounterBuildBazelRemoteExecutionV2OutputDirectory < 3) {
-    unittest.expect(o.path, unittest.equals('foo'));
+    unittest.expect(
+      o.path!,
+      unittest.equals('foo'),
+    );
     checkBuildBazelRemoteExecutionV2Digest(
-        o.treeDigest as api.BuildBazelRemoteExecutionV2Digest);
+        o.treeDigest! as api.BuildBazelRemoteExecutionV2Digest);
   }
   buildCounterBuildBazelRemoteExecutionV2OutputDirectory--;
 }
@@ -1232,12 +1379,18 @@ void checkBuildBazelRemoteExecutionV2OutputFile(
     api.BuildBazelRemoteExecutionV2OutputFile o) {
   buildCounterBuildBazelRemoteExecutionV2OutputFile++;
   if (buildCounterBuildBazelRemoteExecutionV2OutputFile < 3) {
-    unittest.expect(o.contents, unittest.equals('foo'));
+    unittest.expect(
+      o.contents!,
+      unittest.equals('foo'),
+    );
     checkBuildBazelRemoteExecutionV2Digest(
-        o.digest as api.BuildBazelRemoteExecutionV2Digest);
-    unittest.expect(o.isExecutable, unittest.isTrue);
-    checkUnnamed6004(o.nodeProperties);
-    unittest.expect(o.path, unittest.equals('foo'));
+        o.digest! as api.BuildBazelRemoteExecutionV2Digest);
+    unittest.expect(o.isExecutable!, unittest.isTrue);
+    checkUnnamed6004(o.nodeProperties!);
+    unittest.expect(
+      o.path!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2OutputFile--;
 }
@@ -1276,9 +1429,15 @@ void checkBuildBazelRemoteExecutionV2OutputSymlink(
     api.BuildBazelRemoteExecutionV2OutputSymlink o) {
   buildCounterBuildBazelRemoteExecutionV2OutputSymlink++;
   if (buildCounterBuildBazelRemoteExecutionV2OutputSymlink < 3) {
-    checkUnnamed6005(o.nodeProperties);
-    unittest.expect(o.path, unittest.equals('foo'));
-    unittest.expect(o.target, unittest.equals('foo'));
+    checkUnnamed6005(o.nodeProperties!);
+    unittest.expect(
+      o.path!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.target!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2OutputSymlink--;
 }
@@ -1315,7 +1474,7 @@ void checkBuildBazelRemoteExecutionV2Platform(
     api.BuildBazelRemoteExecutionV2Platform o) {
   buildCounterBuildBazelRemoteExecutionV2Platform++;
   if (buildCounterBuildBazelRemoteExecutionV2Platform < 3) {
-    checkUnnamed6006(o.properties);
+    checkUnnamed6006(o.properties!);
   }
   buildCounterBuildBazelRemoteExecutionV2Platform--;
 }
@@ -1337,8 +1496,14 @@ void checkBuildBazelRemoteExecutionV2PlatformProperty(
     api.BuildBazelRemoteExecutionV2PlatformProperty o) {
   buildCounterBuildBazelRemoteExecutionV2PlatformProperty++;
   if (buildCounterBuildBazelRemoteExecutionV2PlatformProperty < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2PlatformProperty--;
 }
@@ -1377,7 +1542,7 @@ void checkBuildBazelRemoteExecutionV2PriorityCapabilities(
     api.BuildBazelRemoteExecutionV2PriorityCapabilities o) {
   buildCounterBuildBazelRemoteExecutionV2PriorityCapabilities++;
   if (buildCounterBuildBazelRemoteExecutionV2PriorityCapabilities < 3) {
-    checkUnnamed6007(o.priorities);
+    checkUnnamed6007(o.priorities!);
   }
   buildCounterBuildBazelRemoteExecutionV2PriorityCapabilities--;
 }
@@ -1403,8 +1568,14 @@ void checkBuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange(
   buildCounterBuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange++;
   if (buildCounterBuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange <
       3) {
-    unittest.expect(o.maxPriority, unittest.equals(42));
-    unittest.expect(o.minPriority, unittest.equals(42));
+    unittest.expect(
+      o.maxPriority!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.minPriority!,
+      unittest.equals(42),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange--;
 }
@@ -1428,11 +1599,20 @@ void checkBuildBazelRemoteExecutionV2RequestMetadata(
     api.BuildBazelRemoteExecutionV2RequestMetadata o) {
   buildCounterBuildBazelRemoteExecutionV2RequestMetadata++;
   if (buildCounterBuildBazelRemoteExecutionV2RequestMetadata < 3) {
-    unittest.expect(o.actionId, unittest.equals('foo'));
-    unittest.expect(o.correlatedInvocationsId, unittest.equals('foo'));
+    unittest.expect(
+      o.actionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.correlatedInvocationsId!,
+      unittest.equals('foo'),
+    );
     checkBuildBazelRemoteExecutionV2ToolDetails(
-        o.toolDetails as api.BuildBazelRemoteExecutionV2ToolDetails);
-    unittest.expect(o.toolInvocationId, unittest.equals('foo'));
+        o.toolDetails! as api.BuildBazelRemoteExecutionV2ToolDetails);
+    unittest.expect(
+      o.toolInvocationId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2RequestMetadata--;
 }
@@ -1453,7 +1633,10 @@ void checkBuildBazelRemoteExecutionV2ResultsCachePolicy(
     api.BuildBazelRemoteExecutionV2ResultsCachePolicy o) {
   buildCounterBuildBazelRemoteExecutionV2ResultsCachePolicy++;
   if (buildCounterBuildBazelRemoteExecutionV2ResultsCachePolicy < 3) {
-    unittest.expect(o.priority, unittest.equals(42));
+    unittest.expect(
+      o.priority!,
+      unittest.equals(42),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2ResultsCachePolicy--;
 }
@@ -1479,15 +1662,16 @@ void checkBuildBazelRemoteExecutionV2ServerCapabilities(
     api.BuildBazelRemoteExecutionV2ServerCapabilities o) {
   buildCounterBuildBazelRemoteExecutionV2ServerCapabilities++;
   if (buildCounterBuildBazelRemoteExecutionV2ServerCapabilities < 3) {
-    checkBuildBazelRemoteExecutionV2CacheCapabilities(o.cacheCapabilities
+    checkBuildBazelRemoteExecutionV2CacheCapabilities(o.cacheCapabilities!
         as api.BuildBazelRemoteExecutionV2CacheCapabilities);
     checkBuildBazelSemverSemVer(
-        o.deprecatedApiVersion as api.BuildBazelSemverSemVer);
+        o.deprecatedApiVersion! as api.BuildBazelSemverSemVer);
     checkBuildBazelRemoteExecutionV2ExecutionCapabilities(
-        o.executionCapabilities
+        o.executionCapabilities!
             as api.BuildBazelRemoteExecutionV2ExecutionCapabilities);
-    checkBuildBazelSemverSemVer(o.highApiVersion as api.BuildBazelSemverSemVer);
-    checkBuildBazelSemverSemVer(o.lowApiVersion as api.BuildBazelSemverSemVer);
+    checkBuildBazelSemverSemVer(
+        o.highApiVersion! as api.BuildBazelSemverSemVer);
+    checkBuildBazelSemverSemVer(o.lowApiVersion! as api.BuildBazelSemverSemVer);
   }
   buildCounterBuildBazelRemoteExecutionV2ServerCapabilities--;
 }
@@ -1526,9 +1710,15 @@ void checkBuildBazelRemoteExecutionV2SymlinkNode(
     api.BuildBazelRemoteExecutionV2SymlinkNode o) {
   buildCounterBuildBazelRemoteExecutionV2SymlinkNode++;
   if (buildCounterBuildBazelRemoteExecutionV2SymlinkNode < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed6008(o.nodeProperties);
-    unittest.expect(o.target, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed6008(o.nodeProperties!);
+    unittest.expect(
+      o.target!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2SymlinkNode--;
 }
@@ -1550,8 +1740,14 @@ void checkBuildBazelRemoteExecutionV2ToolDetails(
     api.BuildBazelRemoteExecutionV2ToolDetails o) {
   buildCounterBuildBazelRemoteExecutionV2ToolDetails++;
   if (buildCounterBuildBazelRemoteExecutionV2ToolDetails < 3) {
-    unittest.expect(o.toolName, unittest.equals('foo'));
-    unittest.expect(o.toolVersion, unittest.equals('foo'));
+    unittest.expect(
+      o.toolName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.toolVersion!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelRemoteExecutionV2ToolDetails--;
 }
@@ -1587,9 +1783,9 @@ void checkBuildBazelRemoteExecutionV2Tree(
     api.BuildBazelRemoteExecutionV2Tree o) {
   buildCounterBuildBazelRemoteExecutionV2Tree++;
   if (buildCounterBuildBazelRemoteExecutionV2Tree < 3) {
-    checkUnnamed6009(o.children);
+    checkUnnamed6009(o.children!);
     checkBuildBazelRemoteExecutionV2Directory(
-        o.root as api.BuildBazelRemoteExecutionV2Directory);
+        o.root! as api.BuildBazelRemoteExecutionV2Directory);
   }
   buildCounterBuildBazelRemoteExecutionV2Tree--;
 }
@@ -1628,10 +1824,22 @@ api.BuildBazelSemverSemVer buildBuildBazelSemverSemVer() {
 void checkBuildBazelSemverSemVer(api.BuildBazelSemverSemVer o) {
   buildCounterBuildBazelSemverSemVer++;
   if (buildCounterBuildBazelSemverSemVer < 3) {
-    unittest.expect(o.major, unittest.equals(42));
-    unittest.expect(o.minor, unittest.equals(42));
-    unittest.expect(o.patch, unittest.equals(42));
-    unittest.expect(o.prerelease, unittest.equals('foo'));
+    unittest.expect(
+      o.major!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.minor!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.patch!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.prerelease!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuildBazelSemverSemVer--;
 }
@@ -1663,18 +1871,54 @@ void checkGoogleDevtoolsRemotebuildbotCommandDurations(
     api.GoogleDevtoolsRemotebuildbotCommandDurations o) {
   buildCounterGoogleDevtoolsRemotebuildbotCommandDurations++;
   if (buildCounterGoogleDevtoolsRemotebuildbotCommandDurations < 3) {
-    unittest.expect(o.cmWaitForAssignment, unittest.equals('foo'));
-    unittest.expect(o.dockerPrep, unittest.equals('foo'));
-    unittest.expect(o.dockerPrepStartTime, unittest.equals('foo'));
-    unittest.expect(o.download, unittest.equals('foo'));
-    unittest.expect(o.downloadStartTime, unittest.equals('foo'));
-    unittest.expect(o.execStartTime, unittest.equals('foo'));
-    unittest.expect(o.execution, unittest.equals('foo'));
-    unittest.expect(o.isoPrepDone, unittest.equals('foo'));
-    unittest.expect(o.overall, unittest.equals('foo'));
-    unittest.expect(o.stdout, unittest.equals('foo'));
-    unittest.expect(o.upload, unittest.equals('foo'));
-    unittest.expect(o.uploadStartTime, unittest.equals('foo'));
+    unittest.expect(
+      o.cmWaitForAssignment!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dockerPrep!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dockerPrepStartTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.download!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.downloadStartTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.execStartTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.execution!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.isoPrepDone!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.overall!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.stdout!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.upload!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uploadStartTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildbotCommandDurations--;
 }
@@ -1701,13 +1945,28 @@ void checkGoogleDevtoolsRemotebuildbotCommandEvents(
     api.GoogleDevtoolsRemotebuildbotCommandEvents o) {
   buildCounterGoogleDevtoolsRemotebuildbotCommandEvents++;
   if (buildCounterGoogleDevtoolsRemotebuildbotCommandEvents < 3) {
-    unittest.expect(o.cmUsage, unittest.equals('foo'));
-    unittest.expect(o.dockerCacheHit, unittest.isTrue);
-    unittest.expect(o.dockerImageName, unittest.equals('foo'));
-    unittest.expect(o.inputCacheMiss, unittest.equals(42.0));
-    unittest.expect(o.numErrors, unittest.equals('foo'));
-    unittest.expect(o.numWarnings, unittest.equals('foo'));
-    unittest.expect(o.usedAsyncContainer, unittest.isTrue);
+    unittest.expect(
+      o.cmUsage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.dockerCacheHit!, unittest.isTrue);
+    unittest.expect(
+      o.dockerImageName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.inputCacheMiss!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.numErrors!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numWarnings!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.usedAsyncContainer!, unittest.isTrue);
   }
   buildCounterGoogleDevtoolsRemotebuildbotCommandEvents--;
 }
@@ -1729,8 +1988,14 @@ void checkGoogleDevtoolsRemotebuildbotCommandStatus(
     api.GoogleDevtoolsRemotebuildbotCommandStatus o) {
   buildCounterGoogleDevtoolsRemotebuildbotCommandStatus++;
   if (buildCounterGoogleDevtoolsRemotebuildbotCommandStatus < 3) {
-    unittest.expect(o.code, unittest.equals('foo'));
-    unittest.expect(o.message, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildbotCommandStatus--;
 }
@@ -1753,11 +2018,14 @@ void checkGoogleDevtoolsRemotebuildbotResourceUsage(
     api.GoogleDevtoolsRemotebuildbotResourceUsage o) {
   buildCounterGoogleDevtoolsRemotebuildbotResourceUsage++;
   if (buildCounterGoogleDevtoolsRemotebuildbotResourceUsage < 3) {
-    unittest.expect(o.cpuUsedPercent, unittest.equals(42.0));
+    unittest.expect(
+      o.cpuUsedPercent!,
+      unittest.equals(42.0),
+    );
     checkGoogleDevtoolsRemotebuildbotResourceUsageStat(
-        o.diskUsage as api.GoogleDevtoolsRemotebuildbotResourceUsageStat);
+        o.diskUsage! as api.GoogleDevtoolsRemotebuildbotResourceUsageStat);
     checkGoogleDevtoolsRemotebuildbotResourceUsageStat(
-        o.memoryUsage as api.GoogleDevtoolsRemotebuildbotResourceUsageStat);
+        o.memoryUsage! as api.GoogleDevtoolsRemotebuildbotResourceUsageStat);
   }
   buildCounterGoogleDevtoolsRemotebuildbotResourceUsage--;
 }
@@ -1779,8 +2047,14 @@ void checkGoogleDevtoolsRemotebuildbotResourceUsageStat(
     api.GoogleDevtoolsRemotebuildbotResourceUsageStat o) {
   buildCounterGoogleDevtoolsRemotebuildbotResourceUsageStat++;
   if (buildCounterGoogleDevtoolsRemotebuildbotResourceUsageStat < 3) {
-    unittest.expect(o.total, unittest.equals('foo'));
-    unittest.expect(o.used, unittest.equals('foo'));
+    unittest.expect(
+      o.total!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.used!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildbotResourceUsageStat--;
 }
@@ -1806,8 +2080,14 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig <
       3) {
-    unittest.expect(o.acceleratorCount, unittest.equals('foo'));
-    unittest.expect(o.acceleratorType, unittest.equals('foo'));
+    unittest.expect(
+      o.acceleratorCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.acceleratorType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig--;
 }
@@ -1830,8 +2110,14 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale(
     api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale o) {
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale < 3) {
-    unittest.expect(o.maxSize, unittest.equals('foo'));
-    unittest.expect(o.minSize, unittest.equals('foo'));
+    unittest.expect(
+      o.maxSize!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.minSize!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale--;
 }
@@ -1859,10 +2145,16 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest <
       3) {
-    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(o.instance
+    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(o.instance!
         as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance);
-    unittest.expect(o.instanceId, unittest.equals('foo'));
-    unittest.expect(o.parent, unittest.equals('foo'));
+    unittest.expect(
+      o.instanceId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.parent!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest--;
 }
@@ -1892,9 +2184,15 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest <
       3) {
-    unittest.expect(o.parent, unittest.equals('foo'));
-    unittest.expect(o.poolId, unittest.equals('foo'));
-    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(o.workerPool
+    unittest.expect(
+      o.parent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.poolId!,
+      unittest.equals('foo'),
+    );
+    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(o.workerPool!
         as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool);
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest--;
@@ -1921,7 +2219,10 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest <
       3) {
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest--;
 }
@@ -1948,7 +2249,10 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest <
       3) {
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest--;
 }
@@ -1989,30 +2293,33 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy(
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy <
       3) {
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-        o.containerImageSources as api
+        o.containerImageSources! as api
             .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-        o.dockerAddCapabilities as api
+        o.dockerAddCapabilities! as api
             .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-        o.dockerChrootPath as api
+        o.dockerChrootPath! as api
             .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-        o.dockerNetwork as api
+        o.dockerNetwork! as api
             .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-        o.dockerPrivileged as api
+        o.dockerPrivileged! as api
             .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-        o.dockerRunAsRoot as api
+        o.dockerRunAsRoot! as api
             .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-        o.dockerRuntime as api
+        o.dockerRuntime! as api
             .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-        o.dockerSiblingContainers as api
+        o.dockerSiblingContainers! as api
             .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
-    unittest.expect(o.linuxIsolation, unittest.equals('foo'));
+    unittest.expect(
+      o.linuxIsolation!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy--;
 }
@@ -2026,8 +2333,14 @@ core.List<core.String> buildUnnamed6010() {
 
 void checkUnnamed6010(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int
@@ -2052,8 +2365,11 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature <
       3) {
-    checkUnnamed6010(o.allowedValues);
-    unittest.expect(o.policy, unittest.equals('foo'));
+    checkUnnamed6010(o.allowedValues!);
+    unittest.expect(
+      o.policy!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature--;
 }
@@ -2079,7 +2395,10 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest <
       3) {
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest--;
 }
@@ -2105,7 +2424,10 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest <
       3) {
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest--;
 }
@@ -2132,12 +2454,21 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance < 3) {
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy(
-        o.featurePolicy
+        o.featurePolicy!
             as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy);
-    unittest.expect(o.location, unittest.equals('foo'));
-    unittest.expect(o.loggingEnabled, unittest.isTrue);
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.state, unittest.equals('foo'));
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.loggingEnabled!, unittest.isTrue);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance--;
 }
@@ -2163,7 +2494,10 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest <
       3) {
-    unittest.expect(o.parent, unittest.equals('foo'));
+    unittest.expect(
+      o.parent!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest--;
 }
@@ -2206,7 +2540,7 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse <
       3) {
-    checkUnnamed6011(o.instances);
+    checkUnnamed6011(o.instances!);
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse--;
 }
@@ -2234,8 +2568,14 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest <
       3) {
-    unittest.expect(o.filter, unittest.equals('foo'));
-    unittest.expect(o.parent, unittest.equals('foo'));
+    unittest.expect(
+      o.filter!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.parent!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest--;
 }
@@ -2279,7 +2619,7 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse <
       3) {
-    checkUnnamed6012(o.workerPools);
+    checkUnnamed6012(o.workerPools!);
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse--;
 }
@@ -2308,11 +2648,17 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest <
       3) {
-    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(o.instance
+    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(o.instance!
         as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance);
-    unittest.expect(o.loggingEnabled, unittest.isTrue);
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.updateMask, unittest.equals('foo'));
+    unittest.expect(o.loggingEnabled!, unittest.isTrue);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateMask!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest--;
 }
@@ -2341,8 +2687,11 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest <
       3) {
-    unittest.expect(o.updateMask, unittest.equals('foo'));
-    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(o.workerPool
+    unittest.expect(
+      o.updateMask!,
+      unittest.equals('foo'),
+    );
+    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(o.workerPool!
         as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool);
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest--;
@@ -2357,8 +2706,14 @@ core.Map<core.String, core.String> buildUnnamed6013() {
 
 void checkUnnamed6013(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int
@@ -2392,18 +2747,42 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig(
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig <
       3) {
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig(o
-            .accelerator
+            .accelerator!
         as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig);
-    unittest.expect(o.diskSizeGb, unittest.equals('foo'));
-    unittest.expect(o.diskType, unittest.equals('foo'));
-    checkUnnamed6013(o.labels);
-    unittest.expect(o.machineType, unittest.equals('foo'));
-    unittest.expect(o.maxConcurrentActions, unittest.equals('foo'));
-    unittest.expect(o.minCpuPlatform, unittest.equals('foo'));
-    unittest.expect(o.networkAccess, unittest.equals('foo'));
-    unittest.expect(o.reserved, unittest.isTrue);
-    unittest.expect(o.soleTenantNodeType, unittest.equals('foo'));
-    unittest.expect(o.vmImage, unittest.equals('foo'));
+    unittest.expect(
+      o.diskSizeGb!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.diskType!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed6013(o.labels!);
+    unittest.expect(
+      o.machineType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxConcurrentActions!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.minCpuPlatform!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.networkAccess!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.reserved!, unittest.isTrue);
+    unittest.expect(
+      o.soleTenantNodeType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.vmImage!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig--;
 }
@@ -2434,15 +2813,27 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool <
       3) {
-    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale(o.autoscale
+    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale(o.autoscale!
         as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale);
-    unittest.expect(o.channel, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.state, unittest.equals('foo'));
+    unittest.expect(
+      o.channel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig(
-        o.workerConfig
+        o.workerConfig!
             as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig);
-    unittest.expect(o.workerCount, unittest.equals('foo'));
+    unittest.expect(
+      o.workerCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool--;
 }
@@ -2464,8 +2855,14 @@ void checkGoogleDevtoolsRemoteworkersV1test2AdminTemp(
     api.GoogleDevtoolsRemoteworkersV1test2AdminTemp o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2AdminTemp++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2AdminTemp < 3) {
-    unittest.expect(o.arg, unittest.equals('foo'));
-    unittest.expect(o.command, unittest.equals('foo'));
+    unittest.expect(
+      o.arg!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.command!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2AdminTemp--;
 }
@@ -2487,9 +2884,12 @@ void checkGoogleDevtoolsRemoteworkersV1test2Blob(
     api.GoogleDevtoolsRemoteworkersV1test2Blob o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2Blob++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2Blob < 3) {
-    unittest.expect(o.contents, unittest.equals('foo'));
+    unittest.expect(
+      o.contents!,
+      unittest.equals('foo'),
+    );
     checkGoogleDevtoolsRemoteworkersV1test2Digest(
-        o.digest as api.GoogleDevtoolsRemoteworkersV1test2Digest);
+        o.digest! as api.GoogleDevtoolsRemoteworkersV1test2Digest);
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2Blob--;
 }
@@ -2511,9 +2911,12 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandOutputs(
     api.GoogleDevtoolsRemoteworkersV1test2CommandOutputs o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandOutputs++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2CommandOutputs < 3) {
-    unittest.expect(o.exitCode, unittest.equals(42));
+    unittest.expect(
+      o.exitCode!,
+      unittest.equals(42),
+    );
     checkGoogleDevtoolsRemoteworkersV1test2Digest(
-        o.outputs as api.GoogleDevtoolsRemoteworkersV1test2Digest);
+        o.outputs! as api.GoogleDevtoolsRemoteworkersV1test2Digest);
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandOutputs--;
 }
@@ -2535,8 +2938,14 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandOverhead(
     api.GoogleDevtoolsRemoteworkersV1test2CommandOverhead o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandOverhead++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2CommandOverhead < 3) {
-    unittest.expect(o.duration, unittest.equals('foo'));
-    unittest.expect(o.overhead, unittest.equals('foo'));
+    unittest.expect(
+      o.duration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.overhead!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandOverhead--;
 }
@@ -2558,16 +2967,34 @@ core.Map<core.String, core.Object> buildUnnamed6014() {
 
 void checkUnnamed6014(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o['x']) as core.Map;
+  var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
-  var casted2 = (o['y']) as core.Map;
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
+  var casted2 = (o['y']!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed6015() {
@@ -2604,13 +3031,22 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandResult(
     api.GoogleDevtoolsRemoteworkersV1test2CommandResult o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandResult++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2CommandResult < 3) {
-    unittest.expect(o.duration, unittest.equals('foo'));
-    unittest.expect(o.exitCode, unittest.equals(42));
-    checkUnnamed6015(o.metadata);
+    unittest.expect(
+      o.duration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.exitCode!,
+      unittest.equals(42),
+    );
+    checkUnnamed6015(o.metadata!);
     checkGoogleDevtoolsRemoteworkersV1test2Digest(
-        o.outputs as api.GoogleDevtoolsRemoteworkersV1test2Digest);
-    unittest.expect(o.overhead, unittest.equals('foo'));
-    checkGoogleRpcStatus(o.status as api.GoogleRpcStatus);
+        o.outputs! as api.GoogleDevtoolsRemoteworkersV1test2Digest);
+    unittest.expect(
+      o.overhead!,
+      unittest.equals('foo'),
+    );
+    checkGoogleRpcStatus(o.status! as api.GoogleRpcStatus);
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandResult--;
 }
@@ -2634,11 +3070,11 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandTask(
     api.GoogleDevtoolsRemoteworkersV1test2CommandTask o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTask++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTask < 3) {
-    checkGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs(o.expectedOutputs
+    checkGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs(o.expectedOutputs!
         as api.GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs);
     checkGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs(
-        o.inputs as api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs);
-    checkGoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts(o.timeouts
+        o.inputs! as api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs);
+    checkGoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts(o.timeouts!
         as api.GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts);
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTask--;
@@ -2653,8 +3089,14 @@ core.List<core.String> buildUnnamed6016() {
 
 void checkUnnamed6016(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<
@@ -2733,11 +3175,14 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs(
     api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs < 3) {
-    checkUnnamed6016(o.arguments);
-    checkUnnamed6017(o.environmentVariables);
-    checkUnnamed6018(o.files);
-    checkUnnamed6019(o.inlineBlobs);
-    unittest.expect(o.workingDirectory, unittest.equals('foo'));
+    checkUnnamed6016(o.arguments!);
+    checkUnnamed6017(o.environmentVariables!);
+    checkUnnamed6018(o.files!);
+    checkUnnamed6019(o.inlineBlobs!);
+    unittest.expect(
+      o.workingDirectory!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs--;
 }
@@ -2765,8 +3210,14 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable <
       3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable--;
 }
@@ -2780,8 +3231,14 @@ core.List<core.String> buildUnnamed6020() {
 
 void checkUnnamed6020(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed6021() {
@@ -2793,8 +3250,14 @@ core.List<core.String> buildUnnamed6021() {
 
 void checkUnnamed6021(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs = 0;
@@ -2816,10 +3279,16 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs(
     api.GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs < 3) {
-    checkUnnamed6020(o.directories);
-    checkUnnamed6021(o.files);
-    unittest.expect(o.stderrDestination, unittest.equals('foo'));
-    unittest.expect(o.stdoutDestination, unittest.equals('foo'));
+    checkUnnamed6020(o.directories!);
+    checkUnnamed6021(o.files!);
+    unittest.expect(
+      o.stderrDestination!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.stdoutDestination!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs--;
 }
@@ -2842,9 +3311,18 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts(
     api.GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts < 3) {
-    unittest.expect(o.execution, unittest.equals('foo'));
-    unittest.expect(o.idle, unittest.equals('foo'));
-    unittest.expect(o.shutdown, unittest.equals('foo'));
+    unittest.expect(
+      o.execution!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.idle!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.shutdown!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts--;
 }
@@ -2866,8 +3344,14 @@ void checkGoogleDevtoolsRemoteworkersV1test2Digest(
     api.GoogleDevtoolsRemoteworkersV1test2Digest o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2Digest++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2Digest < 3) {
-    unittest.expect(o.hash, unittest.equals('foo'));
-    unittest.expect(o.sizeBytes, unittest.equals('foo'));
+    unittest.expect(
+      o.hash!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sizeBytes!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2Digest--;
 }
@@ -2923,8 +3407,8 @@ void checkGoogleDevtoolsRemoteworkersV1test2Directory(
     api.GoogleDevtoolsRemoteworkersV1test2Directory o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2Directory++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2Directory < 3) {
-    checkUnnamed6022(o.directories);
-    checkUnnamed6023(o.files);
+    checkUnnamed6022(o.directories!);
+    checkUnnamed6023(o.files!);
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2Directory--;
 }
@@ -2947,8 +3431,11 @@ void checkGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata(
   buildCounterGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata < 3) {
     checkGoogleDevtoolsRemoteworkersV1test2Digest(
-        o.digest as api.GoogleDevtoolsRemoteworkersV1test2Digest);
-    unittest.expect(o.path, unittest.equals('foo'));
+        o.digest! as api.GoogleDevtoolsRemoteworkersV1test2Digest);
+    unittest.expect(
+      o.path!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata--;
 }
@@ -2972,11 +3459,17 @@ void checkGoogleDevtoolsRemoteworkersV1test2FileMetadata(
     api.GoogleDevtoolsRemoteworkersV1test2FileMetadata o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2FileMetadata++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2FileMetadata < 3) {
-    unittest.expect(o.contents, unittest.equals('foo'));
+    unittest.expect(
+      o.contents!,
+      unittest.equals('foo'),
+    );
     checkGoogleDevtoolsRemoteworkersV1test2Digest(
-        o.digest as api.GoogleDevtoolsRemoteworkersV1test2Digest);
-    unittest.expect(o.isExecutable, unittest.isTrue);
-    unittest.expect(o.path, unittest.equals('foo'));
+        o.digest! as api.GoogleDevtoolsRemoteworkersV1test2Digest);
+    unittest.expect(o.isExecutable!, unittest.isTrue);
+    unittest.expect(
+      o.path!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2FileMetadata--;
 }
@@ -2998,16 +3491,34 @@ core.Map<core.String, core.Object> buildUnnamed6024() {
 
 void checkUnnamed6024(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o['x']) as core.Map;
+  var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3['bool'], unittest.equals(true));
-  unittest.expect(casted3['string'], unittest.equals('foo'));
-  var casted4 = (o['y']) as core.Map;
+  unittest.expect(
+    casted3['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted3['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted3['string'],
+    unittest.equals('foo'),
+  );
+  var casted4 = (o['y']!) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4['bool'], unittest.equals(true));
-  unittest.expect(casted4['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted4['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted4['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted4['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.Map<core.String, core.Object> buildUnnamed6025() {
@@ -3027,16 +3538,34 @@ core.Map<core.String, core.Object> buildUnnamed6025() {
 
 void checkUnnamed6025(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o['x']) as core.Map;
+  var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5['bool'], unittest.equals(true));
-  unittest.expect(casted5['string'], unittest.equals('foo'));
-  var casted6 = (o['y']) as core.Map;
+  unittest.expect(
+    casted5['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted5['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted5['string'],
+    unittest.equals('foo'),
+  );
+  var casted6 = (o['y']!) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6['bool'], unittest.equals(true));
-  unittest.expect(casted6['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted6['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted6['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted6['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleLongrunningOperation = 0;
@@ -3057,11 +3586,14 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
 void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   buildCounterGoogleLongrunningOperation++;
   if (buildCounterGoogleLongrunningOperation < 3) {
-    unittest.expect(o.done, unittest.isTrue);
-    checkGoogleRpcStatus(o.error as api.GoogleRpcStatus);
-    checkUnnamed6024(o.metadata);
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed6025(o.response);
+    unittest.expect(o.done!, unittest.isTrue);
+    checkGoogleRpcStatus(o.error! as api.GoogleRpcStatus);
+    checkUnnamed6024(o.metadata!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed6025(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -3083,16 +3615,34 @@ core.Map<core.String, core.Object> buildUnnamed6026() {
 
 void checkUnnamed6026(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted7 = (o['x']) as core.Map;
+  var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted7['bool'], unittest.equals(true));
-  unittest.expect(casted7['string'], unittest.equals('foo'));
-  var casted8 = (o['y']) as core.Map;
+  unittest.expect(
+    casted7['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted7['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted7['string'],
+    unittest.equals('foo'),
+  );
+  var casted8 = (o['y']!) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted8['bool'], unittest.equals(true));
-  unittest.expect(casted8['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted8['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted8['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted8['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed6027() {
@@ -3124,9 +3674,15 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
 void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
-    unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed6027(o.details);
-    unittest.expect(o.message, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals(42),
+    );
+    checkUnnamed6027(o.details!);
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleRpcStatus--;
 }
@@ -3140,8 +3696,14 @@ core.List<core.String> buildUnnamed6028() {
 
 void checkUnnamed6028(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -4099,10 +4661,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4121,13 +4687,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["inlineOutputFiles"],
-            unittest.equals(arg_inlineOutputFiles));
-        unittest.expect(queryMap["inlineStderr"].first,
-            unittest.equals("$arg_inlineStderr"));
-        unittest.expect(queryMap["inlineStdout"].first,
-            unittest.equals("$arg_inlineStdout"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["inlineOutputFiles"]!,
+          unittest.equals(arg_inlineOutputFiles),
+        );
+        unittest.expect(
+          queryMap["inlineStderr"]!.first,
+          unittest.equals("$arg_inlineStderr"),
+        );
+        unittest.expect(
+          queryMap["inlineStdout"]!.first,
+          unittest.equals("$arg_inlineStdout"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4168,10 +4743,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4191,9 +4770,13 @@ void main() {
           }
         }
         unittest.expect(
-            core.int.parse(queryMap["resultsCachePolicy.priority"].first),
-            unittest.equals(arg_resultsCachePolicy_priority));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["resultsCachePolicy.priority"]!.first),
+          unittest.equals(arg_resultsCachePolicy_priority),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4231,10 +4814,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4253,7 +4840,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4288,10 +4878,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4310,7 +4904,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4346,10 +4943,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4368,7 +4969,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4404,10 +5008,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4426,7 +5034,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4458,10 +5069,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4480,11 +5095,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4523,10 +5145,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4545,7 +5171,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4574,10 +5203,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4596,7 +5229,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

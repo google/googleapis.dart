@@ -61,9 +61,15 @@ void checkGoogleCloudDatalabelingV1alpha1CreateInstructionMetadata(
   buildCounterGoogleCloudDatalabelingV1alpha1CreateInstructionMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1CreateInstructionMetadata <
       3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.instruction, unittest.equals('foo'));
-    checkUnnamed7341(o.partialFailures);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.instruction!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7341(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1CreateInstructionMetadata--;
 }
@@ -103,10 +109,19 @@ void checkGoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata <
       3) {
-    unittest.expect(o.annotatedDataset, unittest.equals('foo'));
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
-    checkUnnamed7342(o.partialFailures);
+    unittest.expect(
+      o.annotatedDataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7342(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata--;
 }
@@ -135,14 +150,26 @@ void checkGoogleCloudDatalabelingV1alpha1ExportDataOperationResponse(
   buildCounterGoogleCloudDatalabelingV1alpha1ExportDataOperationResponse++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1ExportDataOperationResponse <
       3) {
-    unittest.expect(o.annotatedDataset, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
-    unittest.expect(o.exportCount, unittest.equals(42));
+    unittest.expect(
+      o.annotatedDataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.exportCount!,
+      unittest.equals(42),
+    );
     checkGoogleCloudDatalabelingV1alpha1LabelStats(
-        o.labelStats as api.GoogleCloudDatalabelingV1alpha1LabelStats);
+        o.labelStats! as api.GoogleCloudDatalabelingV1alpha1LabelStats);
     checkGoogleCloudDatalabelingV1alpha1OutputConfig(
-        o.outputConfig as api.GoogleCloudDatalabelingV1alpha1OutputConfig);
-    unittest.expect(o.totalCount, unittest.equals(42));
+        o.outputConfig! as api.GoogleCloudDatalabelingV1alpha1OutputConfig);
+    unittest.expect(
+      o.totalCount!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1alpha1ExportDataOperationResponse--;
 }
@@ -164,8 +191,14 @@ void checkGoogleCloudDatalabelingV1alpha1GcsDestination(
     api.GoogleCloudDatalabelingV1alpha1GcsDestination o) {
   buildCounterGoogleCloudDatalabelingV1alpha1GcsDestination++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1GcsDestination < 3) {
-    unittest.expect(o.mimeType, unittest.equals('foo'));
-    unittest.expect(o.outputUri, unittest.equals('foo'));
+    unittest.expect(
+      o.mimeType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.outputUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1alpha1GcsDestination--;
 }
@@ -186,7 +219,10 @@ void checkGoogleCloudDatalabelingV1alpha1GcsFolderDestination(
     api.GoogleCloudDatalabelingV1alpha1GcsFolderDestination o) {
   buildCounterGoogleCloudDatalabelingV1alpha1GcsFolderDestination++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1GcsFolderDestination < 3) {
-    unittest.expect(o.outputFolderUri, unittest.equals('foo'));
+    unittest.expect(
+      o.outputFolderUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1alpha1GcsFolderDestination--;
 }
@@ -200,8 +236,14 @@ core.List<core.String> buildUnnamed7343() {
 
 void checkUnnamed7343(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig = 0;
@@ -228,15 +270,39 @@ void checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(
     api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig o) {
   buildCounterGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig < 3) {
-    unittest.expect(o.annotatedDatasetDescription, unittest.equals('foo'));
-    unittest.expect(o.annotatedDatasetDisplayName, unittest.equals('foo'));
-    checkUnnamed7343(o.contributorEmails);
-    unittest.expect(o.instruction, unittest.equals('foo'));
-    unittest.expect(o.labelGroup, unittest.equals('foo'));
-    unittest.expect(o.languageCode, unittest.equals('foo'));
-    unittest.expect(o.questionDuration, unittest.equals('foo'));
-    unittest.expect(o.replicaCount, unittest.equals(42));
-    unittest.expect(o.userEmailAddress, unittest.equals('foo'));
+    unittest.expect(
+      o.annotatedDatasetDescription!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.annotatedDatasetDisplayName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7343(o.contributorEmails!);
+    unittest.expect(
+      o.instruction!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.labelGroup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.questionDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.replicaCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.userEmailAddress!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig--;
 }
@@ -275,9 +341,15 @@ void checkGoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata <
       3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
-    checkUnnamed7344(o.partialFailures);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7344(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata--;
 }
@@ -303,9 +375,18 @@ void checkGoogleCloudDatalabelingV1alpha1ImportDataOperationResponse(
   buildCounterGoogleCloudDatalabelingV1alpha1ImportDataOperationResponse++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1ImportDataOperationResponse <
       3) {
-    unittest.expect(o.dataset, unittest.equals('foo'));
-    unittest.expect(o.importCount, unittest.equals(42));
-    unittest.expect(o.totalCount, unittest.equals(42));
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.importCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.totalCount!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1alpha1ImportDataOperationResponse--;
 }
@@ -332,7 +413,7 @@ void checkGoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata--;
@@ -360,7 +441,7 @@ void checkGoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata
   buildCounterGoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata--;
@@ -388,7 +469,7 @@ void checkGoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetada
   buildCounterGoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetadata--;
@@ -416,7 +497,7 @@ void checkGoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationM
   buildCounterGoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationMetadata--;
@@ -443,7 +524,7 @@ void checkGoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata--;
@@ -471,7 +552,7 @@ void checkGoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata
   buildCounterGoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata--;
@@ -534,46 +615,58 @@ void checkGoogleCloudDatalabelingV1alpha1LabelOperationMetadata(
     api.GoogleCloudDatalabelingV1alpha1LabelOperationMetadata o) {
   buildCounterGoogleCloudDatalabelingV1alpha1LabelOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1LabelOperationMetadata < 3) {
-    unittest.expect(o.annotatedDataset, unittest.equals('foo'));
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
+    unittest.expect(
+      o.annotatedDataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata(
-        o.imageBoundingBoxDetails as api
+        o.imageBoundingBoxDetails! as api
             .GoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata);
     checkGoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata(
-        o.imageBoundingPolyDetails as api
+        o.imageBoundingPolyDetails! as api
             .GoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata);
     checkGoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetadata(
-        o.imageClassificationDetails as api
+        o.imageClassificationDetails! as api
             .GoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetadata);
     checkGoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationMetadata(
-        o.imageOrientedBoundingBoxDetails as api
+        o.imageOrientedBoundingBoxDetails! as api
             .GoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationMetadata);
     checkGoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata(
-        o.imagePolylineDetails as api
+        o.imagePolylineDetails! as api
             .GoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata);
     checkGoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata(
-        o.imageSegmentationDetails as api
+        o.imageSegmentationDetails! as api
             .GoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata);
-    checkUnnamed7345(o.partialFailures);
-    unittest.expect(o.progressPercent, unittest.equals(42));
+    checkUnnamed7345(o.partialFailures!);
+    unittest.expect(
+      o.progressPercent!,
+      unittest.equals(42),
+    );
     checkGoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata(
-        o.textClassificationDetails as api
+        o.textClassificationDetails! as api
             .GoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata);
     checkGoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetadata(
-        o.textEntityExtractionDetails as api
+        o.textEntityExtractionDetails! as api
             .GoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetadata);
     checkGoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetadata(
-        o.videoClassificationDetails as api
+        o.videoClassificationDetails! as api
             .GoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetadata);
     checkGoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata(o
-            .videoEventDetails
+            .videoEventDetails!
         as api.GoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata);
     checkGoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetadata(
-        o.videoObjectDetectionDetails as api
+        o.videoObjectDetectionDetails! as api
             .GoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetadata);
     checkGoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetadata(
-        o.videoObjectTrackingDetails as api
+        o.videoObjectTrackingDetails! as api
             .GoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetadata);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1LabelOperationMetadata--;
@@ -588,8 +681,14 @@ core.Map<core.String, core.String> buildUnnamed7346() {
 
 void checkUnnamed7346(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudDatalabelingV1alpha1LabelStats = 0;
@@ -608,7 +707,7 @@ void checkGoogleCloudDatalabelingV1alpha1LabelStats(
     api.GoogleCloudDatalabelingV1alpha1LabelStats o) {
   buildCounterGoogleCloudDatalabelingV1alpha1LabelStats++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1LabelStats < 3) {
-    checkUnnamed7346(o.exampleCount);
+    checkUnnamed7346(o.exampleCount!);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1LabelStats--;
 }
@@ -635,7 +734,7 @@ void checkGoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadat
   buildCounterGoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata--;
@@ -663,7 +762,7 @@ void checkGoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetad
   buildCounterGoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetadata--;
@@ -691,7 +790,7 @@ void checkGoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetada
   buildCounterGoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetadata--;
@@ -717,7 +816,7 @@ void checkGoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata--;
@@ -745,7 +844,7 @@ void checkGoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetad
   buildCounterGoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetadata--;
@@ -773,7 +872,7 @@ void checkGoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetada
   buildCounterGoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetadata--;
@@ -798,9 +897,9 @@ void checkGoogleCloudDatalabelingV1alpha1OutputConfig(
   buildCounterGoogleCloudDatalabelingV1alpha1OutputConfig++;
   if (buildCounterGoogleCloudDatalabelingV1alpha1OutputConfig < 3) {
     checkGoogleCloudDatalabelingV1alpha1GcsDestination(
-        o.gcsDestination as api.GoogleCloudDatalabelingV1alpha1GcsDestination);
+        o.gcsDestination! as api.GoogleCloudDatalabelingV1alpha1GcsDestination);
     checkGoogleCloudDatalabelingV1alpha1GcsFolderDestination(
-        o.gcsFolderDestination
+        o.gcsFolderDestination!
             as api.GoogleCloudDatalabelingV1alpha1GcsFolderDestination);
   }
   buildCounterGoogleCloudDatalabelingV1alpha1OutputConfig--;
@@ -815,8 +914,14 @@ core.List<core.String> buildUnnamed7347() {
 
 void checkUnnamed7347(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudDatalabelingV1beta1AnnotatedDataset = 0;
@@ -845,19 +950,43 @@ void checkGoogleCloudDatalabelingV1beta1AnnotatedDataset(
     api.GoogleCloudDatalabelingV1beta1AnnotatedDataset o) {
   buildCounterGoogleCloudDatalabelingV1beta1AnnotatedDataset++;
   if (buildCounterGoogleCloudDatalabelingV1beta1AnnotatedDataset < 3) {
-    unittest.expect(o.annotationSource, unittest.equals('foo'));
-    unittest.expect(o.annotationType, unittest.equals('foo'));
-    checkUnnamed7347(o.blockingResources);
-    unittest.expect(o.completedExampleCount, unittest.equals('foo'));
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    unittest.expect(o.exampleCount, unittest.equals('foo'));
+    unittest.expect(
+      o.annotationSource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.annotationType!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7347(o.blockingResources!);
+    unittest.expect(
+      o.completedExampleCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.exampleCount!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1beta1LabelStats(
-        o.labelStats as api.GoogleCloudDatalabelingV1beta1LabelStats);
-    checkGoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata(o.metadata
+        o.labelStats! as api.GoogleCloudDatalabelingV1beta1LabelStats);
+    checkGoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata(o.metadata!
         as api.GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata);
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1AnnotatedDataset--;
 }
@@ -897,34 +1026,34 @@ void checkGoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata(
     api.GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata o) {
   buildCounterGoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata < 3) {
-    checkGoogleCloudDatalabelingV1beta1BoundingPolyConfig(o.boundingPolyConfig
+    checkGoogleCloudDatalabelingV1beta1BoundingPolyConfig(o.boundingPolyConfig!
         as api.GoogleCloudDatalabelingV1beta1BoundingPolyConfig);
     checkGoogleCloudDatalabelingV1beta1EventConfig(
-        o.eventConfig as api.GoogleCloudDatalabelingV1beta1EventConfig);
+        o.eventConfig! as api.GoogleCloudDatalabelingV1beta1EventConfig);
     checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(
-        o.humanAnnotationConfig
+        o.humanAnnotationConfig!
             as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
     checkGoogleCloudDatalabelingV1beta1ImageClassificationConfig(
-        o.imageClassificationConfig
+        o.imageClassificationConfig!
             as api.GoogleCloudDatalabelingV1beta1ImageClassificationConfig);
     checkGoogleCloudDatalabelingV1beta1ObjectDetectionConfig(
-        o.objectDetectionConfig
+        o.objectDetectionConfig!
             as api.GoogleCloudDatalabelingV1beta1ObjectDetectionConfig);
     checkGoogleCloudDatalabelingV1beta1ObjectTrackingConfig(
-        o.objectTrackingConfig
+        o.objectTrackingConfig!
             as api.GoogleCloudDatalabelingV1beta1ObjectTrackingConfig);
     checkGoogleCloudDatalabelingV1beta1PolylineConfig(
-        o.polylineConfig as api.GoogleCloudDatalabelingV1beta1PolylineConfig);
-    checkGoogleCloudDatalabelingV1beta1SegmentationConfig(o.segmentationConfig
+        o.polylineConfig! as api.GoogleCloudDatalabelingV1beta1PolylineConfig);
+    checkGoogleCloudDatalabelingV1beta1SegmentationConfig(o.segmentationConfig!
         as api.GoogleCloudDatalabelingV1beta1SegmentationConfig);
     checkGoogleCloudDatalabelingV1beta1TextClassificationConfig(
-        o.textClassificationConfig
+        o.textClassificationConfig!
             as api.GoogleCloudDatalabelingV1beta1TextClassificationConfig);
     checkGoogleCloudDatalabelingV1beta1TextEntityExtractionConfig(
-        o.textEntityExtractionConfig
+        o.textEntityExtractionConfig!
             as api.GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig);
     checkGoogleCloudDatalabelingV1beta1VideoClassificationConfig(
-        o.videoClassificationConfig
+        o.videoClassificationConfig!
             as api.GoogleCloudDatalabelingV1beta1VideoClassificationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata--;
@@ -951,13 +1080,22 @@ void checkGoogleCloudDatalabelingV1beta1Annotation(
     api.GoogleCloudDatalabelingV1beta1Annotation o) {
   buildCounterGoogleCloudDatalabelingV1beta1Annotation++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Annotation < 3) {
-    checkGoogleCloudDatalabelingV1beta1AnnotationMetadata(o.annotationMetadata
+    checkGoogleCloudDatalabelingV1beta1AnnotationMetadata(o.annotationMetadata!
         as api.GoogleCloudDatalabelingV1beta1AnnotationMetadata);
-    unittest.expect(o.annotationSentiment, unittest.equals('foo'));
-    unittest.expect(o.annotationSource, unittest.equals('foo'));
-    checkGoogleCloudDatalabelingV1beta1AnnotationValue(
-        o.annotationValue as api.GoogleCloudDatalabelingV1beta1AnnotationValue);
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.annotationSentiment!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.annotationSource!,
+      unittest.equals('foo'),
+    );
+    checkGoogleCloudDatalabelingV1beta1AnnotationValue(o.annotationValue!
+        as api.GoogleCloudDatalabelingV1beta1AnnotationValue);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1Annotation--;
 }
@@ -978,7 +1116,7 @@ void checkGoogleCloudDatalabelingV1beta1AnnotationMetadata(
     api.GoogleCloudDatalabelingV1beta1AnnotationMetadata o) {
   buildCounterGoogleCloudDatalabelingV1beta1AnnotationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1AnnotationMetadata < 3) {
-    checkGoogleCloudDatalabelingV1beta1OperatorMetadata(o.operatorMetadata
+    checkGoogleCloudDatalabelingV1beta1OperatorMetadata(o.operatorMetadata!
         as api.GoogleCloudDatalabelingV1beta1OperatorMetadata);
   }
   buildCounterGoogleCloudDatalabelingV1beta1AnnotationMetadata--;
@@ -1002,9 +1140,18 @@ void checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
     api.GoogleCloudDatalabelingV1beta1AnnotationSpec o) {
   buildCounterGoogleCloudDatalabelingV1beta1AnnotationSpec++;
   if (buildCounterGoogleCloudDatalabelingV1beta1AnnotationSpec < 3) {
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    unittest.expect(o.index, unittest.equals(42));
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.index!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1AnnotationSpec--;
 }
@@ -1034,8 +1181,14 @@ core.List<core.String> buildUnnamed7349() {
 
 void checkUnnamed7349(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudDatalabelingV1beta1AnnotationSpecSet = 0;
@@ -1058,11 +1211,20 @@ void checkGoogleCloudDatalabelingV1beta1AnnotationSpecSet(
     api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet o) {
   buildCounterGoogleCloudDatalabelingV1beta1AnnotationSpecSet++;
   if (buildCounterGoogleCloudDatalabelingV1beta1AnnotationSpecSet < 3) {
-    checkUnnamed7348(o.annotationSpecs);
-    checkUnnamed7349(o.blockingResources);
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
+    checkUnnamed7348(o.annotationSpecs!);
+    checkUnnamed7349(o.blockingResources!);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1AnnotationSpecSet--;
 }
@@ -1084,8 +1246,11 @@ void checkGoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig(
     api.GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig < 3) {
-    unittest.expect(o.allowMultiLabel, unittest.isTrue);
-    unittest.expect(o.annotationSpecSet, unittest.equals('foo'));
+    unittest.expect(o.allowMultiLabel!, unittest.isTrue);
+    unittest.expect(
+      o.annotationSpecSet!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig--;
 }
@@ -1124,31 +1289,31 @@ void checkGoogleCloudDatalabelingV1beta1AnnotationValue(
   buildCounterGoogleCloudDatalabelingV1beta1AnnotationValue++;
   if (buildCounterGoogleCloudDatalabelingV1beta1AnnotationValue < 3) {
     checkGoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation(
-        o.imageBoundingPolyAnnotation
+        o.imageBoundingPolyAnnotation!
             as api.GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation);
     checkGoogleCloudDatalabelingV1beta1ImageClassificationAnnotation(
-        o.imageClassificationAnnotation
+        o.imageClassificationAnnotation!
             as api.GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation);
     checkGoogleCloudDatalabelingV1beta1ImagePolylineAnnotation(
-        o.imagePolylineAnnotation
+        o.imagePolylineAnnotation!
             as api.GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation);
     checkGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation(
-        o.imageSegmentationAnnotation
+        o.imageSegmentationAnnotation!
             as api.GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation);
     checkGoogleCloudDatalabelingV1beta1TextClassificationAnnotation(
-        o.textClassificationAnnotation
+        o.textClassificationAnnotation!
             as api.GoogleCloudDatalabelingV1beta1TextClassificationAnnotation);
     checkGoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation(o
-            .textEntityExtractionAnnotation
+            .textEntityExtractionAnnotation!
         as api.GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation);
     checkGoogleCloudDatalabelingV1beta1VideoClassificationAnnotation(
-        o.videoClassificationAnnotation
+        o.videoClassificationAnnotation!
             as api.GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation);
     checkGoogleCloudDatalabelingV1beta1VideoEventAnnotation(
-        o.videoEventAnnotation
+        o.videoEventAnnotation!
             as api.GoogleCloudDatalabelingV1beta1VideoEventAnnotation);
     checkGoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation(
-        o.videoObjectTrackingAnnotation
+        o.videoObjectTrackingAnnotation!
             as api.GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation);
   }
   buildCounterGoogleCloudDatalabelingV1beta1AnnotationValue--;
@@ -1184,8 +1349,11 @@ void checkGoogleCloudDatalabelingV1beta1Attempt(
     api.GoogleCloudDatalabelingV1beta1Attempt o) {
   buildCounterGoogleCloudDatalabelingV1beta1Attempt++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Attempt < 3) {
-    unittest.expect(o.attemptTime, unittest.equals('foo'));
-    checkUnnamed7350(o.partialFailures);
+    unittest.expect(
+      o.attemptTime!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7350(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1Attempt--;
 }
@@ -1206,7 +1374,10 @@ void checkGoogleCloudDatalabelingV1beta1BigQuerySource(
     api.GoogleCloudDatalabelingV1beta1BigQuerySource o) {
   buildCounterGoogleCloudDatalabelingV1beta1BigQuerySource++;
   if (buildCounterGoogleCloudDatalabelingV1beta1BigQuerySource < 3) {
-    unittest.expect(o.inputUri, unittest.equals('foo'));
+    unittest.expect(
+      o.inputUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1BigQuerySource--;
 }
@@ -1230,7 +1401,10 @@ void checkGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions(
   buildCounterGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions++;
   if (buildCounterGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions <
       3) {
-    unittest.expect(o.iouThreshold, unittest.equals(42.0));
+    unittest.expect(
+      o.iouThreshold!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions--;
 }
@@ -1266,7 +1440,7 @@ void checkGoogleCloudDatalabelingV1beta1BoundingPoly(
     api.GoogleCloudDatalabelingV1beta1BoundingPoly o) {
   buildCounterGoogleCloudDatalabelingV1beta1BoundingPoly++;
   if (buildCounterGoogleCloudDatalabelingV1beta1BoundingPoly < 3) {
-    checkUnnamed7351(o.vertices);
+    checkUnnamed7351(o.vertices!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1BoundingPoly--;
 }
@@ -1288,8 +1462,14 @@ void checkGoogleCloudDatalabelingV1beta1BoundingPolyConfig(
     api.GoogleCloudDatalabelingV1beta1BoundingPolyConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1BoundingPolyConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1BoundingPolyConfig < 3) {
-    unittest.expect(o.annotationSpecSet, unittest.equals('foo'));
-    unittest.expect(o.instructionMessage, unittest.equals('foo'));
+    unittest.expect(
+      o.annotationSpecSet!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.instructionMessage!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1BoundingPolyConfig--;
 }
@@ -1310,7 +1490,7 @@ void checkGoogleCloudDatalabelingV1beta1ClassificationMetadata(
     api.GoogleCloudDatalabelingV1beta1ClassificationMetadata o) {
   buildCounterGoogleCloudDatalabelingV1beta1ClassificationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ClassificationMetadata < 3) {
-    unittest.expect(o.isMultiLabel, unittest.isTrue);
+    unittest.expect(o.isMultiLabel!, unittest.isTrue);
   }
   buildCounterGoogleCloudDatalabelingV1beta1ClassificationMetadata--;
 }
@@ -1332,10 +1512,10 @@ void checkGoogleCloudDatalabelingV1beta1ClassificationMetrics(
     api.GoogleCloudDatalabelingV1beta1ClassificationMetrics o) {
   buildCounterGoogleCloudDatalabelingV1beta1ClassificationMetrics++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ClassificationMetrics < 3) {
-    checkGoogleCloudDatalabelingV1beta1ConfusionMatrix(
-        o.confusionMatrix as api.GoogleCloudDatalabelingV1beta1ConfusionMatrix);
+    checkGoogleCloudDatalabelingV1beta1ConfusionMatrix(o.confusionMatrix!
+        as api.GoogleCloudDatalabelingV1beta1ConfusionMatrix);
     checkGoogleCloudDatalabelingV1beta1PrCurve(
-        o.prCurve as api.GoogleCloudDatalabelingV1beta1PrCurve);
+        o.prCurve! as api.GoogleCloudDatalabelingV1beta1PrCurve);
   }
   buildCounterGoogleCloudDatalabelingV1beta1ClassificationMetrics--;
 }
@@ -1365,16 +1545,46 @@ void checkGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry(
     api.GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry o) {
   buildCounterGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry < 3) {
-    unittest.expect(o.confidenceThreshold, unittest.equals(42.0));
-    unittest.expect(o.f1Score, unittest.equals(42.0));
-    unittest.expect(o.f1ScoreAt1, unittest.equals(42.0));
-    unittest.expect(o.f1ScoreAt5, unittest.equals(42.0));
-    unittest.expect(o.precision, unittest.equals(42.0));
-    unittest.expect(o.precisionAt1, unittest.equals(42.0));
-    unittest.expect(o.precisionAt5, unittest.equals(42.0));
-    unittest.expect(o.recall, unittest.equals(42.0));
-    unittest.expect(o.recallAt1, unittest.equals(42.0));
-    unittest.expect(o.recallAt5, unittest.equals(42.0));
+    unittest.expect(
+      o.confidenceThreshold!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.f1Score!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.f1ScoreAt1!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.f1ScoreAt5!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.precision!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.precisionAt1!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.precisionAt5!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.recall!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.recallAt1!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.recallAt5!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry--;
 }
@@ -1410,7 +1620,7 @@ void checkGoogleCloudDatalabelingV1beta1ConfusionMatrix(
     api.GoogleCloudDatalabelingV1beta1ConfusionMatrix o) {
   buildCounterGoogleCloudDatalabelingV1beta1ConfusionMatrix++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ConfusionMatrix < 3) {
-    checkUnnamed7352(o.row);
+    checkUnnamed7352(o.row!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1ConfusionMatrix--;
 }
@@ -1433,8 +1643,11 @@ void checkGoogleCloudDatalabelingV1beta1ConfusionMatrixEntry(
   buildCounterGoogleCloudDatalabelingV1beta1ConfusionMatrixEntry++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ConfusionMatrixEntry < 3) {
     checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
-        o.annotationSpec as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
-    unittest.expect(o.itemCount, unittest.equals(42));
+        o.annotationSpec! as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
+    unittest.expect(
+      o.itemCount!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ConfusionMatrixEntry--;
 }
@@ -1460,7 +1673,7 @@ void checkGoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest(
   buildCounterGoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest++;
   if (buildCounterGoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest <
       3) {
-    checkGoogleCloudDatalabelingV1beta1AnnotationSpecSet(o.annotationSpecSet
+    checkGoogleCloudDatalabelingV1beta1AnnotationSpecSet(o.annotationSpecSet!
         as api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet);
   }
   buildCounterGoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest--;
@@ -1483,7 +1696,7 @@ void checkGoogleCloudDatalabelingV1beta1CreateDatasetRequest(
   buildCounterGoogleCloudDatalabelingV1beta1CreateDatasetRequest++;
   if (buildCounterGoogleCloudDatalabelingV1beta1CreateDatasetRequest < 3) {
     checkGoogleCloudDatalabelingV1beta1Dataset(
-        o.dataset as api.GoogleCloudDatalabelingV1beta1Dataset);
+        o.dataset! as api.GoogleCloudDatalabelingV1beta1Dataset);
   }
   buildCounterGoogleCloudDatalabelingV1beta1CreateDatasetRequest--;
 }
@@ -1508,7 +1721,7 @@ void checkGoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest(
   if (buildCounterGoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest <
       3) {
     checkGoogleCloudDatalabelingV1beta1EvaluationJob(
-        o.job as api.GoogleCloudDatalabelingV1beta1EvaluationJob);
+        o.job! as api.GoogleCloudDatalabelingV1beta1EvaluationJob);
   }
   buildCounterGoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest--;
 }
@@ -1545,9 +1758,15 @@ void checkGoogleCloudDatalabelingV1beta1CreateInstructionMetadata(
     api.GoogleCloudDatalabelingV1beta1CreateInstructionMetadata o) {
   buildCounterGoogleCloudDatalabelingV1beta1CreateInstructionMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1CreateInstructionMetadata < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.instruction, unittest.equals('foo'));
-    checkUnnamed7353(o.partialFailures);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.instruction!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7353(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1CreateInstructionMetadata--;
 }
@@ -1569,7 +1788,7 @@ void checkGoogleCloudDatalabelingV1beta1CreateInstructionRequest(
   buildCounterGoogleCloudDatalabelingV1beta1CreateInstructionRequest++;
   if (buildCounterGoogleCloudDatalabelingV1beta1CreateInstructionRequest < 3) {
     checkGoogleCloudDatalabelingV1beta1Instruction(
-        o.instruction as api.GoogleCloudDatalabelingV1beta1Instruction);
+        o.instruction! as api.GoogleCloudDatalabelingV1beta1Instruction);
   }
   buildCounterGoogleCloudDatalabelingV1beta1CreateInstructionRequest--;
 }
@@ -1590,7 +1809,10 @@ void checkGoogleCloudDatalabelingV1beta1CsvInstruction(
     api.GoogleCloudDatalabelingV1beta1CsvInstruction o) {
   buildCounterGoogleCloudDatalabelingV1beta1CsvInstruction++;
   if (buildCounterGoogleCloudDatalabelingV1beta1CsvInstruction < 3) {
-    unittest.expect(o.gcsFileUri, unittest.equals('foo'));
+    unittest.expect(
+      o.gcsFileUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1CsvInstruction--;
 }
@@ -1615,12 +1837,15 @@ void checkGoogleCloudDatalabelingV1beta1DataItem(
   buildCounterGoogleCloudDatalabelingV1beta1DataItem++;
   if (buildCounterGoogleCloudDatalabelingV1beta1DataItem < 3) {
     checkGoogleCloudDatalabelingV1beta1ImagePayload(
-        o.imagePayload as api.GoogleCloudDatalabelingV1beta1ImagePayload);
-    unittest.expect(o.name, unittest.equals('foo'));
+        o.imagePayload! as api.GoogleCloudDatalabelingV1beta1ImagePayload);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1beta1TextPayload(
-        o.textPayload as api.GoogleCloudDatalabelingV1beta1TextPayload);
+        o.textPayload! as api.GoogleCloudDatalabelingV1beta1TextPayload);
     checkGoogleCloudDatalabelingV1beta1VideoPayload(
-        o.videoPayload as api.GoogleCloudDatalabelingV1beta1VideoPayload);
+        o.videoPayload! as api.GoogleCloudDatalabelingV1beta1VideoPayload);
   }
   buildCounterGoogleCloudDatalabelingV1beta1DataItem--;
 }
@@ -1634,8 +1859,14 @@ core.List<core.String> buildUnnamed7354() {
 
 void checkUnnamed7354(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.GoogleCloudDatalabelingV1beta1InputConfig> buildUnnamed7355() {
@@ -1677,14 +1908,32 @@ void checkGoogleCloudDatalabelingV1beta1Dataset(
     api.GoogleCloudDatalabelingV1beta1Dataset o) {
   buildCounterGoogleCloudDatalabelingV1beta1Dataset++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Dataset < 3) {
-    checkUnnamed7354(o.blockingResources);
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.dataItemCount, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed7355(o.inputConfigs);
-    unittest.expect(o.lastMigrateTime, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
+    checkUnnamed7354(o.blockingResources!);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataItemCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7355(o.inputConfigs!);
+    unittest.expect(
+      o.lastMigrateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1Dataset--;
 }
@@ -1712,15 +1961,30 @@ void checkGoogleCloudDatalabelingV1beta1Evaluation(
     api.GoogleCloudDatalabelingV1beta1Evaluation o) {
   buildCounterGoogleCloudDatalabelingV1beta1Evaluation++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Evaluation < 3) {
-    unittest.expect(o.annotationType, unittest.equals('foo'));
+    unittest.expect(
+      o.annotationType!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1beta1EvaluationConfig(
-        o.config as api.GoogleCloudDatalabelingV1beta1EvaluationConfig);
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.evaluatedItemCount, unittest.equals('foo'));
-    unittest.expect(o.evaluationJobRunTime, unittest.equals('foo'));
-    checkGoogleCloudDatalabelingV1beta1EvaluationMetrics(o.evaluationMetrics
+        o.config! as api.GoogleCloudDatalabelingV1beta1EvaluationConfig);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.evaluatedItemCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.evaluationJobRunTime!,
+      unittest.equals('foo'),
+    );
+    checkGoogleCloudDatalabelingV1beta1EvaluationMetrics(o.evaluationMetrics!
         as api.GoogleCloudDatalabelingV1beta1EvaluationMetrics);
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1Evaluation--;
 }
@@ -1743,7 +2007,7 @@ void checkGoogleCloudDatalabelingV1beta1EvaluationConfig(
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1EvaluationConfig < 3) {
     checkGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions(
-        o.boundingBoxEvaluationOptions
+        o.boundingBoxEvaluationOptions!
             as api.GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions);
   }
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationConfig--;
@@ -1790,17 +2054,39 @@ void checkGoogleCloudDatalabelingV1beta1EvaluationJob(
     api.GoogleCloudDatalabelingV1beta1EvaluationJob o) {
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationJob++;
   if (buildCounterGoogleCloudDatalabelingV1beta1EvaluationJob < 3) {
-    unittest.expect(o.annotationSpecSet, unittest.equals('foo'));
-    checkUnnamed7356(o.attempts);
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    checkGoogleCloudDatalabelingV1beta1EvaluationJobConfig(o.evaluationJobConfig
-        as api.GoogleCloudDatalabelingV1beta1EvaluationJobConfig);
-    unittest.expect(o.labelMissingGroundTruth, unittest.isTrue);
-    unittest.expect(o.modelVersion, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.schedule, unittest.equals('foo'));
-    unittest.expect(o.state, unittest.equals('foo'));
+    unittest.expect(
+      o.annotationSpecSet!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7356(o.attempts!);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    checkGoogleCloudDatalabelingV1beta1EvaluationJobConfig(
+        o.evaluationJobConfig!
+            as api.GoogleCloudDatalabelingV1beta1EvaluationJobConfig);
+    unittest.expect(o.labelMissingGroundTruth!, unittest.isTrue);
+    unittest.expect(
+      o.modelVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.schedule!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationJob--;
 }
@@ -1822,8 +2108,14 @@ void checkGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig(
     api.GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig < 3) {
-    unittest.expect(o.email, unittest.equals('foo'));
-    unittest.expect(o.minAcceptableMeanAveragePrecision, unittest.equals(42.0));
+    unittest.expect(
+      o.email!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.minAcceptableMeanAveragePrecision!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig--;
 }
@@ -1837,8 +2129,14 @@ core.Map<core.String, core.String> buildUnnamed7357() {
 
 void checkUnnamed7357(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudDatalabelingV1beta1EvaluationJobConfig = 0;
@@ -1871,26 +2169,32 @@ void checkGoogleCloudDatalabelingV1beta1EvaluationJobConfig(
     api.GoogleCloudDatalabelingV1beta1EvaluationJobConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationJobConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1EvaluationJobConfig < 3) {
-    checkUnnamed7357(o.bigqueryImportKeys);
-    checkGoogleCloudDatalabelingV1beta1BoundingPolyConfig(o.boundingPolyConfig
+    checkUnnamed7357(o.bigqueryImportKeys!);
+    checkGoogleCloudDatalabelingV1beta1BoundingPolyConfig(o.boundingPolyConfig!
         as api.GoogleCloudDatalabelingV1beta1BoundingPolyConfig);
-    checkGoogleCloudDatalabelingV1beta1EvaluationConfig(o.evaluationConfig
+    checkGoogleCloudDatalabelingV1beta1EvaluationConfig(o.evaluationConfig!
         as api.GoogleCloudDatalabelingV1beta1EvaluationConfig);
     checkGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig(
-        o.evaluationJobAlertConfig
+        o.evaluationJobAlertConfig!
             as api.GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig);
-    unittest.expect(o.exampleCount, unittest.equals(42));
-    unittest.expect(o.exampleSamplePercentage, unittest.equals(42.0));
+    unittest.expect(
+      o.exampleCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.exampleSamplePercentage!,
+      unittest.equals(42.0),
+    );
     checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(
-        o.humanAnnotationConfig
+        o.humanAnnotationConfig!
             as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
     checkGoogleCloudDatalabelingV1beta1ImageClassificationConfig(
-        o.imageClassificationConfig
+        o.imageClassificationConfig!
             as api.GoogleCloudDatalabelingV1beta1ImageClassificationConfig);
     checkGoogleCloudDatalabelingV1beta1InputConfig(
-        o.inputConfig as api.GoogleCloudDatalabelingV1beta1InputConfig);
+        o.inputConfig! as api.GoogleCloudDatalabelingV1beta1InputConfig);
     checkGoogleCloudDatalabelingV1beta1TextClassificationConfig(
-        o.textClassificationConfig
+        o.textClassificationConfig!
             as api.GoogleCloudDatalabelingV1beta1TextClassificationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationJobConfig--;
@@ -1916,10 +2220,10 @@ void checkGoogleCloudDatalabelingV1beta1EvaluationMetrics(
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationMetrics++;
   if (buildCounterGoogleCloudDatalabelingV1beta1EvaluationMetrics < 3) {
     checkGoogleCloudDatalabelingV1beta1ClassificationMetrics(
-        o.classificationMetrics
+        o.classificationMetrics!
             as api.GoogleCloudDatalabelingV1beta1ClassificationMetrics);
     checkGoogleCloudDatalabelingV1beta1ObjectDetectionMetrics(
-        o.objectDetectionMetrics
+        o.objectDetectionMetrics!
             as api.GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics);
   }
   buildCounterGoogleCloudDatalabelingV1beta1EvaluationMetrics--;
@@ -1934,8 +2238,14 @@ core.List<core.String> buildUnnamed7358() {
 
 void checkUnnamed7358(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudDatalabelingV1beta1EventConfig = 0;
@@ -1956,9 +2266,15 @@ void checkGoogleCloudDatalabelingV1beta1EventConfig(
     api.GoogleCloudDatalabelingV1beta1EventConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1EventConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1EventConfig < 3) {
-    checkUnnamed7358(o.annotationSpecSets);
-    unittest.expect(o.clipLength, unittest.equals(42));
-    unittest.expect(o.overlapLength, unittest.equals(42));
+    checkUnnamed7358(o.annotationSpecSets!);
+    unittest.expect(
+      o.clipLength!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.overlapLength!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1EventConfig--;
 }
@@ -1999,14 +2315,17 @@ void checkGoogleCloudDatalabelingV1beta1Example(
     api.GoogleCloudDatalabelingV1beta1Example o) {
   buildCounterGoogleCloudDatalabelingV1beta1Example++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Example < 3) {
-    checkUnnamed7359(o.annotations);
+    checkUnnamed7359(o.annotations!);
     checkGoogleCloudDatalabelingV1beta1ImagePayload(
-        o.imagePayload as api.GoogleCloudDatalabelingV1beta1ImagePayload);
-    unittest.expect(o.name, unittest.equals('foo'));
+        o.imagePayload! as api.GoogleCloudDatalabelingV1beta1ImagePayload);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1beta1TextPayload(
-        o.textPayload as api.GoogleCloudDatalabelingV1beta1TextPayload);
+        o.textPayload! as api.GoogleCloudDatalabelingV1beta1TextPayload);
     checkGoogleCloudDatalabelingV1beta1VideoPayload(
-        o.videoPayload as api.GoogleCloudDatalabelingV1beta1VideoPayload);
+        o.videoPayload! as api.GoogleCloudDatalabelingV1beta1VideoPayload);
   }
   buildCounterGoogleCloudDatalabelingV1beta1Example--;
 }
@@ -2044,8 +2363,8 @@ void checkGoogleCloudDatalabelingV1beta1ExampleComparison(
   buildCounterGoogleCloudDatalabelingV1beta1ExampleComparison++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ExampleComparison < 3) {
     checkGoogleCloudDatalabelingV1beta1Example(
-        o.groundTruthExample as api.GoogleCloudDatalabelingV1beta1Example);
-    checkUnnamed7360(o.modelCreatedExamples);
+        o.groundTruthExample! as api.GoogleCloudDatalabelingV1beta1Example);
+    checkUnnamed7360(o.modelCreatedExamples!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1ExampleComparison--;
 }
@@ -2085,10 +2404,19 @@ void checkGoogleCloudDatalabelingV1beta1ExportDataOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1beta1ExportDataOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ExportDataOperationMetadata <
       3) {
-    unittest.expect(o.annotatedDataset, unittest.equals('foo'));
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
-    checkUnnamed7361(o.partialFailures);
+    unittest.expect(
+      o.annotatedDataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7361(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1ExportDataOperationMetadata--;
 }
@@ -2117,14 +2445,26 @@ void checkGoogleCloudDatalabelingV1beta1ExportDataOperationResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ExportDataOperationResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ExportDataOperationResponse <
       3) {
-    unittest.expect(o.annotatedDataset, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
-    unittest.expect(o.exportCount, unittest.equals(42));
+    unittest.expect(
+      o.annotatedDataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.exportCount!,
+      unittest.equals(42),
+    );
     checkGoogleCloudDatalabelingV1beta1LabelStats(
-        o.labelStats as api.GoogleCloudDatalabelingV1beta1LabelStats);
+        o.labelStats! as api.GoogleCloudDatalabelingV1beta1LabelStats);
     checkGoogleCloudDatalabelingV1beta1OutputConfig(
-        o.outputConfig as api.GoogleCloudDatalabelingV1beta1OutputConfig);
-    unittest.expect(o.totalCount, unittest.equals(42));
+        o.outputConfig! as api.GoogleCloudDatalabelingV1beta1OutputConfig);
+    unittest.expect(
+      o.totalCount!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ExportDataOperationResponse--;
 }
@@ -2148,11 +2488,20 @@ void checkGoogleCloudDatalabelingV1beta1ExportDataRequest(
     api.GoogleCloudDatalabelingV1beta1ExportDataRequest o) {
   buildCounterGoogleCloudDatalabelingV1beta1ExportDataRequest++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ExportDataRequest < 3) {
-    unittest.expect(o.annotatedDataset, unittest.equals('foo'));
-    unittest.expect(o.filter, unittest.equals('foo'));
+    unittest.expect(
+      o.annotatedDataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.filter!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1beta1OutputConfig(
-        o.outputConfig as api.GoogleCloudDatalabelingV1beta1OutputConfig);
-    unittest.expect(o.userEmailAddress, unittest.equals('foo'));
+        o.outputConfig! as api.GoogleCloudDatalabelingV1beta1OutputConfig);
+    unittest.expect(
+      o.userEmailAddress!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ExportDataRequest--;
 }
@@ -2180,15 +2529,27 @@ void checkGoogleCloudDatalabelingV1beta1FeedbackMessage(
     api.GoogleCloudDatalabelingV1beta1FeedbackMessage o) {
   buildCounterGoogleCloudDatalabelingV1beta1FeedbackMessage++;
   if (buildCounterGoogleCloudDatalabelingV1beta1FeedbackMessage < 3) {
-    unittest.expect(o.body, unittest.equals('foo'));
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.image, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.body!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.image!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata(
-        o.operatorFeedbackMetadata
+        o.operatorFeedbackMetadata!
             as api.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata);
     checkGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata(
-        o.requesterFeedbackMetadata
+        o.requesterFeedbackMetadata!
             as api.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata);
   }
   buildCounterGoogleCloudDatalabelingV1beta1FeedbackMessage--;
@@ -2213,9 +2574,12 @@ void checkGoogleCloudDatalabelingV1beta1FeedbackThread(
   buildCounterGoogleCloudDatalabelingV1beta1FeedbackThread++;
   if (buildCounterGoogleCloudDatalabelingV1beta1FeedbackThread < 3) {
     checkGoogleCloudDatalabelingV1beta1FeedbackThreadMetadata(
-        o.feedbackThreadMetadata
+        o.feedbackThreadMetadata!
             as api.GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata);
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1FeedbackThread--;
 }
@@ -2239,10 +2603,22 @@ void checkGoogleCloudDatalabelingV1beta1FeedbackThreadMetadata(
     api.GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata o) {
   buildCounterGoogleCloudDatalabelingV1beta1FeedbackThreadMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1FeedbackThreadMetadata < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.lastUpdateTime, unittest.equals('foo'));
-    unittest.expect(o.status, unittest.equals('foo'));
-    unittest.expect(o.thumbnail, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastUpdateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.thumbnail!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1FeedbackThreadMetadata--;
 }
@@ -2264,8 +2640,14 @@ void checkGoogleCloudDatalabelingV1beta1GcsDestination(
     api.GoogleCloudDatalabelingV1beta1GcsDestination o) {
   buildCounterGoogleCloudDatalabelingV1beta1GcsDestination++;
   if (buildCounterGoogleCloudDatalabelingV1beta1GcsDestination < 3) {
-    unittest.expect(o.mimeType, unittest.equals('foo'));
-    unittest.expect(o.outputUri, unittest.equals('foo'));
+    unittest.expect(
+      o.mimeType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.outputUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1GcsDestination--;
 }
@@ -2286,7 +2668,10 @@ void checkGoogleCloudDatalabelingV1beta1GcsFolderDestination(
     api.GoogleCloudDatalabelingV1beta1GcsFolderDestination o) {
   buildCounterGoogleCloudDatalabelingV1beta1GcsFolderDestination++;
   if (buildCounterGoogleCloudDatalabelingV1beta1GcsFolderDestination < 3) {
-    unittest.expect(o.outputFolderUri, unittest.equals('foo'));
+    unittest.expect(
+      o.outputFolderUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1GcsFolderDestination--;
 }
@@ -2308,8 +2693,14 @@ void checkGoogleCloudDatalabelingV1beta1GcsSource(
     api.GoogleCloudDatalabelingV1beta1GcsSource o) {
   buildCounterGoogleCloudDatalabelingV1beta1GcsSource++;
   if (buildCounterGoogleCloudDatalabelingV1beta1GcsSource < 3) {
-    unittest.expect(o.inputUri, unittest.equals('foo'));
-    unittest.expect(o.mimeType, unittest.equals('foo'));
+    unittest.expect(
+      o.inputUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mimeType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1GcsSource--;
 }
@@ -2323,8 +2714,14 @@ core.List<core.String> buildUnnamed7362() {
 
 void checkUnnamed7362(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudDatalabelingV1beta1HumanAnnotationConfig = 0;
@@ -2351,15 +2748,39 @@ void checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(
     api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1HumanAnnotationConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1HumanAnnotationConfig < 3) {
-    unittest.expect(o.annotatedDatasetDescription, unittest.equals('foo'));
-    unittest.expect(o.annotatedDatasetDisplayName, unittest.equals('foo'));
-    checkUnnamed7362(o.contributorEmails);
-    unittest.expect(o.instruction, unittest.equals('foo'));
-    unittest.expect(o.labelGroup, unittest.equals('foo'));
-    unittest.expect(o.languageCode, unittest.equals('foo'));
-    unittest.expect(o.questionDuration, unittest.equals('foo'));
-    unittest.expect(o.replicaCount, unittest.equals(42));
-    unittest.expect(o.userEmailAddress, unittest.equals('foo'));
+    unittest.expect(
+      o.annotatedDatasetDescription!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.annotatedDatasetDisplayName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7362(o.contributorEmails!);
+    unittest.expect(
+      o.instruction!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.labelGroup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.questionDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.replicaCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.userEmailAddress!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1HumanAnnotationConfig--;
 }
@@ -2387,11 +2808,11 @@ void checkGoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation(
   if (buildCounterGoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation <
       3) {
     checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
-        o.annotationSpec as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
+        o.annotationSpec! as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
     checkGoogleCloudDatalabelingV1beta1BoundingPoly(
-        o.boundingPoly as api.GoogleCloudDatalabelingV1beta1BoundingPoly);
+        o.boundingPoly! as api.GoogleCloudDatalabelingV1beta1BoundingPoly);
     checkGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly(
-        o.normalizedBoundingPoly
+        o.normalizedBoundingPoly!
             as api.GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly);
   }
   buildCounterGoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation--;
@@ -2417,7 +2838,7 @@ void checkGoogleCloudDatalabelingV1beta1ImageClassificationAnnotation(
   if (buildCounterGoogleCloudDatalabelingV1beta1ImageClassificationAnnotation <
       3) {
     checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
-        o.annotationSpec as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
+        o.annotationSpec! as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
   }
   buildCounterGoogleCloudDatalabelingV1beta1ImageClassificationAnnotation--;
 }
@@ -2441,9 +2862,15 @@ void checkGoogleCloudDatalabelingV1beta1ImageClassificationConfig(
     api.GoogleCloudDatalabelingV1beta1ImageClassificationConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1ImageClassificationConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ImageClassificationConfig < 3) {
-    unittest.expect(o.allowMultiLabel, unittest.isTrue);
-    unittest.expect(o.annotationSpecSet, unittest.equals('foo'));
-    unittest.expect(o.answerAggregationType, unittest.equals('foo'));
+    unittest.expect(o.allowMultiLabel!, unittest.isTrue);
+    unittest.expect(
+      o.annotationSpecSet!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.answerAggregationType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ImageClassificationConfig--;
 }
@@ -2467,10 +2894,22 @@ void checkGoogleCloudDatalabelingV1beta1ImagePayload(
     api.GoogleCloudDatalabelingV1beta1ImagePayload o) {
   buildCounterGoogleCloudDatalabelingV1beta1ImagePayload++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ImagePayload < 3) {
-    unittest.expect(o.imageThumbnail, unittest.equals('foo'));
-    unittest.expect(o.imageUri, unittest.equals('foo'));
-    unittest.expect(o.mimeType, unittest.equals('foo'));
-    unittest.expect(o.signedUri, unittest.equals('foo'));
+    unittest.expect(
+      o.imageThumbnail!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.imageUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mimeType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.signedUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ImagePayload--;
 }
@@ -2495,11 +2934,11 @@ void checkGoogleCloudDatalabelingV1beta1ImagePolylineAnnotation(
   buildCounterGoogleCloudDatalabelingV1beta1ImagePolylineAnnotation++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ImagePolylineAnnotation < 3) {
     checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
-        o.annotationSpec as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
-    checkGoogleCloudDatalabelingV1beta1NormalizedPolyline(o.normalizedPolyline
+        o.annotationSpec! as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
+    checkGoogleCloudDatalabelingV1beta1NormalizedPolyline(o.normalizedPolyline!
         as api.GoogleCloudDatalabelingV1beta1NormalizedPolyline);
     checkGoogleCloudDatalabelingV1beta1Polyline(
-        o.polyline as api.GoogleCloudDatalabelingV1beta1Polyline);
+        o.polyline! as api.GoogleCloudDatalabelingV1beta1Polyline);
   }
   buildCounterGoogleCloudDatalabelingV1beta1ImagePolylineAnnotation--;
 }
@@ -2516,9 +2955,9 @@ void checkUnnamed7363(
     core.Map<core.String, api.GoogleCloudDatalabelingV1beta1AnnotationSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
-      o['x'] as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
+      o['x']! as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
   checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
-      o['y'] as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
+      o['y']! as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
 }
 
 core.int buildCounterGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation =
@@ -2542,9 +2981,15 @@ void checkGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation(
   buildCounterGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation <
       3) {
-    checkUnnamed7363(o.annotationColors);
-    unittest.expect(o.imageBytes, unittest.equals('foo'));
-    unittest.expect(o.mimeType, unittest.equals('foo'));
+    checkUnnamed7363(o.annotationColors!);
+    unittest.expect(
+      o.imageBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mimeType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation--;
 }
@@ -2583,9 +3028,15 @@ void checkGoogleCloudDatalabelingV1beta1ImportDataOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1beta1ImportDataOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ImportDataOperationMetadata <
       3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
-    checkUnnamed7364(o.partialFailures);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7364(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1ImportDataOperationMetadata--;
 }
@@ -2611,9 +3062,18 @@ void checkGoogleCloudDatalabelingV1beta1ImportDataOperationResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ImportDataOperationResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ImportDataOperationResponse <
       3) {
-    unittest.expect(o.dataset, unittest.equals('foo'));
-    unittest.expect(o.importCount, unittest.equals(42));
-    unittest.expect(o.totalCount, unittest.equals(42));
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.importCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.totalCount!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ImportDataOperationResponse--;
 }
@@ -2636,8 +3096,11 @@ void checkGoogleCloudDatalabelingV1beta1ImportDataRequest(
   buildCounterGoogleCloudDatalabelingV1beta1ImportDataRequest++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ImportDataRequest < 3) {
     checkGoogleCloudDatalabelingV1beta1InputConfig(
-        o.inputConfig as api.GoogleCloudDatalabelingV1beta1InputConfig);
-    unittest.expect(o.userEmailAddress, unittest.equals('foo'));
+        o.inputConfig! as api.GoogleCloudDatalabelingV1beta1InputConfig);
+    unittest.expect(
+      o.userEmailAddress!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ImportDataRequest--;
 }
@@ -2664,17 +3127,23 @@ void checkGoogleCloudDatalabelingV1beta1InputConfig(
     api.GoogleCloudDatalabelingV1beta1InputConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1InputConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1InputConfig < 3) {
-    unittest.expect(o.annotationType, unittest.equals('foo'));
+    unittest.expect(
+      o.annotationType!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1beta1BigQuerySource(
-        o.bigquerySource as api.GoogleCloudDatalabelingV1beta1BigQuerySource);
+        o.bigquerySource! as api.GoogleCloudDatalabelingV1beta1BigQuerySource);
     checkGoogleCloudDatalabelingV1beta1ClassificationMetadata(
-        o.classificationMetadata
+        o.classificationMetadata!
             as api.GoogleCloudDatalabelingV1beta1ClassificationMetadata);
-    unittest.expect(o.dataType, unittest.equals('foo'));
+    unittest.expect(
+      o.dataType!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1beta1GcsSource(
-        o.gcsSource as api.GoogleCloudDatalabelingV1beta1GcsSource);
+        o.gcsSource! as api.GoogleCloudDatalabelingV1beta1GcsSource);
     checkGoogleCloudDatalabelingV1beta1TextMetadata(
-        o.textMetadata as api.GoogleCloudDatalabelingV1beta1TextMetadata);
+        o.textMetadata! as api.GoogleCloudDatalabelingV1beta1TextMetadata);
   }
   buildCounterGoogleCloudDatalabelingV1beta1InputConfig--;
 }
@@ -2688,8 +3157,14 @@ core.List<core.String> buildUnnamed7365() {
 
 void checkUnnamed7365(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudDatalabelingV1beta1Instruction = 0;
@@ -2716,17 +3191,35 @@ void checkGoogleCloudDatalabelingV1beta1Instruction(
     api.GoogleCloudDatalabelingV1beta1Instruction o) {
   buildCounterGoogleCloudDatalabelingV1beta1Instruction++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Instruction < 3) {
-    checkUnnamed7365(o.blockingResources);
-    unittest.expect(o.createTime, unittest.equals('foo'));
+    checkUnnamed7365(o.blockingResources!);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1beta1CsvInstruction(
-        o.csvInstruction as api.GoogleCloudDatalabelingV1beta1CsvInstruction);
-    unittest.expect(o.dataType, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
+        o.csvInstruction! as api.GoogleCloudDatalabelingV1beta1CsvInstruction);
+    unittest.expect(
+      o.dataType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1beta1PdfInstruction(
-        o.pdfInstruction as api.GoogleCloudDatalabelingV1beta1PdfInstruction);
-    unittest.expect(o.updateTime, unittest.equals('foo'));
+        o.pdfInstruction! as api.GoogleCloudDatalabelingV1beta1PdfInstruction);
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1Instruction--;
 }
@@ -2753,7 +3246,7 @@ void checkGoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata--;
@@ -2781,7 +3274,7 @@ void checkGoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata--;
@@ -2809,7 +3302,7 @@ void checkGoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadat
   buildCounterGoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadata--;
@@ -2837,7 +3330,7 @@ void checkGoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMe
   buildCounterGoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMetadata--;
@@ -2864,7 +3357,7 @@ void checkGoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata--;
@@ -2894,17 +3387,20 @@ void checkGoogleCloudDatalabelingV1beta1LabelImageRequest(
     api.GoogleCloudDatalabelingV1beta1LabelImageRequest o) {
   buildCounterGoogleCloudDatalabelingV1beta1LabelImageRequest++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelImageRequest < 3) {
-    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
-    checkGoogleCloudDatalabelingV1beta1BoundingPolyConfig(o.boundingPolyConfig
+    checkGoogleCloudDatalabelingV1beta1BoundingPolyConfig(o.boundingPolyConfig!
         as api.GoogleCloudDatalabelingV1beta1BoundingPolyConfig);
-    unittest.expect(o.feature, unittest.equals('foo'));
+    unittest.expect(
+      o.feature!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1beta1ImageClassificationConfig(
-        o.imageClassificationConfig
+        o.imageClassificationConfig!
             as api.GoogleCloudDatalabelingV1beta1ImageClassificationConfig);
     checkGoogleCloudDatalabelingV1beta1PolylineConfig(
-        o.polylineConfig as api.GoogleCloudDatalabelingV1beta1PolylineConfig);
-    checkGoogleCloudDatalabelingV1beta1SegmentationConfig(o.segmentationConfig
+        o.polylineConfig! as api.GoogleCloudDatalabelingV1beta1PolylineConfig);
+    checkGoogleCloudDatalabelingV1beta1SegmentationConfig(o.segmentationConfig!
         as api.GoogleCloudDatalabelingV1beta1SegmentationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelImageRequest--;
@@ -2932,7 +3428,7 @@ void checkGoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata--;
@@ -2995,46 +3491,58 @@ void checkGoogleCloudDatalabelingV1beta1LabelOperationMetadata(
     api.GoogleCloudDatalabelingV1beta1LabelOperationMetadata o) {
   buildCounterGoogleCloudDatalabelingV1beta1LabelOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelOperationMetadata < 3) {
-    unittest.expect(o.annotatedDataset, unittest.equals('foo'));
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
+    unittest.expect(
+      o.annotatedDataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata(
-        o.imageBoundingBoxDetails as api
+        o.imageBoundingBoxDetails! as api
             .GoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata);
     checkGoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata(
-        o.imageBoundingPolyDetails as api
+        o.imageBoundingPolyDetails! as api
             .GoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata);
     checkGoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadata(
-        o.imageClassificationDetails as api
+        o.imageClassificationDetails! as api
             .GoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadata);
     checkGoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMetadata(
-        o.imageOrientedBoundingBoxDetails as api
+        o.imageOrientedBoundingBoxDetails! as api
             .GoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMetadata);
     checkGoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata(
-        o.imagePolylineDetails as api
+        o.imagePolylineDetails! as api
             .GoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata);
     checkGoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata(
-        o.imageSegmentationDetails as api
+        o.imageSegmentationDetails! as api
             .GoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata);
-    checkUnnamed7366(o.partialFailures);
-    unittest.expect(o.progressPercent, unittest.equals(42));
+    checkUnnamed7366(o.partialFailures!);
+    unittest.expect(
+      o.progressPercent!,
+      unittest.equals(42),
+    );
     checkGoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata(
-        o.textClassificationDetails as api
+        o.textClassificationDetails! as api
             .GoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata);
     checkGoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetadata(
-        o.textEntityExtractionDetails as api
+        o.textEntityExtractionDetails! as api
             .GoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetadata);
     checkGoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadata(
-        o.videoClassificationDetails as api
+        o.videoClassificationDetails! as api
             .GoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadata);
     checkGoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata(o
-            .videoEventDetails
+            .videoEventDetails!
         as api.GoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata);
     checkGoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetadata(
-        o.videoObjectDetectionDetails as api
+        o.videoObjectDetectionDetails! as api
             .GoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetadata);
     checkGoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadata(
-        o.videoObjectTrackingDetails as api
+        o.videoObjectTrackingDetails! as api
             .GoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadata);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelOperationMetadata--;
@@ -3049,8 +3557,14 @@ core.Map<core.String, core.String> buildUnnamed7367() {
 
 void checkUnnamed7367(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudDatalabelingV1beta1LabelStats = 0;
@@ -3069,7 +3583,7 @@ void checkGoogleCloudDatalabelingV1beta1LabelStats(
     api.GoogleCloudDatalabelingV1beta1LabelStats o) {
   buildCounterGoogleCloudDatalabelingV1beta1LabelStats++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelStats < 3) {
-    checkUnnamed7367(o.exampleCount);
+    checkUnnamed7367(o.exampleCount!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelStats--;
 }
@@ -3096,7 +3610,7 @@ void checkGoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata
   buildCounterGoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata--;
@@ -3124,7 +3638,7 @@ void checkGoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetada
   buildCounterGoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetadata--;
@@ -3151,14 +3665,17 @@ void checkGoogleCloudDatalabelingV1beta1LabelTextRequest(
     api.GoogleCloudDatalabelingV1beta1LabelTextRequest o) {
   buildCounterGoogleCloudDatalabelingV1beta1LabelTextRequest++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelTextRequest < 3) {
-    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
-    unittest.expect(o.feature, unittest.equals('foo'));
+    unittest.expect(
+      o.feature!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1beta1TextClassificationConfig(
-        o.textClassificationConfig
+        o.textClassificationConfig!
             as api.GoogleCloudDatalabelingV1beta1TextClassificationConfig);
     checkGoogleCloudDatalabelingV1beta1TextEntityExtractionConfig(
-        o.textEntityExtractionConfig
+        o.textEntityExtractionConfig!
             as api.GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelTextRequest--;
@@ -3186,7 +3703,7 @@ void checkGoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadat
   buildCounterGoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadata--;
@@ -3212,7 +3729,7 @@ void checkGoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata--;
@@ -3240,7 +3757,7 @@ void checkGoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetada
   buildCounterGoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetadata--;
@@ -3268,7 +3785,7 @@ void checkGoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadat
   buildCounterGoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadata--;
@@ -3298,19 +3815,22 @@ void checkGoogleCloudDatalabelingV1beta1LabelVideoRequest(
     api.GoogleCloudDatalabelingV1beta1LabelVideoRequest o) {
   buildCounterGoogleCloudDatalabelingV1beta1LabelVideoRequest++;
   if (buildCounterGoogleCloudDatalabelingV1beta1LabelVideoRequest < 3) {
-    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
     checkGoogleCloudDatalabelingV1beta1EventConfig(
-        o.eventConfig as api.GoogleCloudDatalabelingV1beta1EventConfig);
-    unittest.expect(o.feature, unittest.equals('foo'));
+        o.eventConfig! as api.GoogleCloudDatalabelingV1beta1EventConfig);
+    unittest.expect(
+      o.feature!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1beta1ObjectDetectionConfig(
-        o.objectDetectionConfig
+        o.objectDetectionConfig!
             as api.GoogleCloudDatalabelingV1beta1ObjectDetectionConfig);
     checkGoogleCloudDatalabelingV1beta1ObjectTrackingConfig(
-        o.objectTrackingConfig
+        o.objectTrackingConfig!
             as api.GoogleCloudDatalabelingV1beta1ObjectTrackingConfig);
     checkGoogleCloudDatalabelingV1beta1VideoClassificationConfig(
-        o.videoClassificationConfig
+        o.videoClassificationConfig!
             as api.GoogleCloudDatalabelingV1beta1VideoClassificationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1LabelVideoRequest--;
@@ -3353,8 +3873,11 @@ void checkGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse <
       3) {
-    checkUnnamed7368(o.annotatedDatasets);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed7368(o.annotatedDatasets!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse--;
 }
@@ -3397,8 +3920,11 @@ void checkGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse <
       3) {
-    checkUnnamed7369(o.annotationSpecSets);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed7369(o.annotationSpecSets!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse--;
 }
@@ -3435,8 +3961,11 @@ void checkGoogleCloudDatalabelingV1beta1ListDataItemsResponse(
     api.GoogleCloudDatalabelingV1beta1ListDataItemsResponse o) {
   buildCounterGoogleCloudDatalabelingV1beta1ListDataItemsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListDataItemsResponse < 3) {
-    checkUnnamed7370(o.dataItems);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed7370(o.dataItems!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListDataItemsResponse--;
 }
@@ -3473,8 +4002,11 @@ void checkGoogleCloudDatalabelingV1beta1ListDatasetsResponse(
     api.GoogleCloudDatalabelingV1beta1ListDatasetsResponse o) {
   buildCounterGoogleCloudDatalabelingV1beta1ListDatasetsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListDatasetsResponse < 3) {
-    checkUnnamed7371(o.datasets);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed7371(o.datasets!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListDatasetsResponse--;
 }
@@ -3515,8 +4047,11 @@ void checkGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse <
       3) {
-    checkUnnamed7372(o.evaluationJobs);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed7372(o.evaluationJobs!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse--;
 }
@@ -3553,8 +4088,11 @@ void checkGoogleCloudDatalabelingV1beta1ListExamplesResponse(
     api.GoogleCloudDatalabelingV1beta1ListExamplesResponse o) {
   buildCounterGoogleCloudDatalabelingV1beta1ListExamplesResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListExamplesResponse < 3) {
-    checkUnnamed7373(o.examples);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed7373(o.examples!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListExamplesResponse--;
 }
@@ -3596,8 +4134,11 @@ void checkGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse <
       3) {
-    checkUnnamed7374(o.feedbackMessages);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed7374(o.feedbackMessages!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse--;
 }
@@ -3638,8 +4179,11 @@ void checkGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse <
       3) {
-    checkUnnamed7375(o.feedbackThreads);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed7375(o.feedbackThreads!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse--;
 }
@@ -3677,8 +4221,11 @@ void checkGoogleCloudDatalabelingV1beta1ListInstructionsResponse(
     api.GoogleCloudDatalabelingV1beta1ListInstructionsResponse o) {
   buildCounterGoogleCloudDatalabelingV1beta1ListInstructionsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ListInstructionsResponse < 3) {
-    checkUnnamed7376(o.instructions);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed7376(o.instructions!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ListInstructionsResponse--;
 }
@@ -3716,7 +4263,7 @@ void checkGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly(
     api.GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly o) {
   buildCounterGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly++;
   if (buildCounterGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly < 3) {
-    checkUnnamed7377(o.normalizedVertices);
+    checkUnnamed7377(o.normalizedVertices!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly--;
 }
@@ -3754,7 +4301,7 @@ void checkGoogleCloudDatalabelingV1beta1NormalizedPolyline(
     api.GoogleCloudDatalabelingV1beta1NormalizedPolyline o) {
   buildCounterGoogleCloudDatalabelingV1beta1NormalizedPolyline++;
   if (buildCounterGoogleCloudDatalabelingV1beta1NormalizedPolyline < 3) {
-    checkUnnamed7378(o.normalizedVertices);
+    checkUnnamed7378(o.normalizedVertices!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1NormalizedPolyline--;
 }
@@ -3776,8 +4323,14 @@ void checkGoogleCloudDatalabelingV1beta1NormalizedVertex(
     api.GoogleCloudDatalabelingV1beta1NormalizedVertex o) {
   buildCounterGoogleCloudDatalabelingV1beta1NormalizedVertex++;
   if (buildCounterGoogleCloudDatalabelingV1beta1NormalizedVertex < 3) {
-    unittest.expect(o.x, unittest.equals(42.0));
-    unittest.expect(o.y, unittest.equals(42.0));
+    unittest.expect(
+      o.x!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.y!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1NormalizedVertex--;
 }
@@ -3799,8 +4352,14 @@ void checkGoogleCloudDatalabelingV1beta1ObjectDetectionConfig(
     api.GoogleCloudDatalabelingV1beta1ObjectDetectionConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1ObjectDetectionConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ObjectDetectionConfig < 3) {
-    unittest.expect(o.annotationSpecSet, unittest.equals('foo'));
-    unittest.expect(o.extractionFrameRate, unittest.equals(42.0));
+    unittest.expect(
+      o.annotationSpecSet!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.extractionFrameRate!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ObjectDetectionConfig--;
 }
@@ -3822,7 +4381,7 @@ void checkGoogleCloudDatalabelingV1beta1ObjectDetectionMetrics(
   buildCounterGoogleCloudDatalabelingV1beta1ObjectDetectionMetrics++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ObjectDetectionMetrics < 3) {
     checkGoogleCloudDatalabelingV1beta1PrCurve(
-        o.prCurve as api.GoogleCloudDatalabelingV1beta1PrCurve);
+        o.prCurve! as api.GoogleCloudDatalabelingV1beta1PrCurve);
   }
   buildCounterGoogleCloudDatalabelingV1beta1ObjectDetectionMetrics--;
 }
@@ -3845,9 +4404,18 @@ void checkGoogleCloudDatalabelingV1beta1ObjectTrackingConfig(
     api.GoogleCloudDatalabelingV1beta1ObjectTrackingConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1ObjectTrackingConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ObjectTrackingConfig < 3) {
-    unittest.expect(o.annotationSpecSet, unittest.equals('foo'));
-    unittest.expect(o.clipLength, unittest.equals(42));
-    unittest.expect(o.overlapLength, unittest.equals(42));
+    unittest.expect(
+      o.annotationSpecSet!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.clipLength!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.overlapLength!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ObjectTrackingConfig--;
 }
@@ -3872,11 +4440,14 @@ void checkGoogleCloudDatalabelingV1beta1ObjectTrackingFrame(
   buildCounterGoogleCloudDatalabelingV1beta1ObjectTrackingFrame++;
   if (buildCounterGoogleCloudDatalabelingV1beta1ObjectTrackingFrame < 3) {
     checkGoogleCloudDatalabelingV1beta1BoundingPoly(
-        o.boundingPoly as api.GoogleCloudDatalabelingV1beta1BoundingPoly);
+        o.boundingPoly! as api.GoogleCloudDatalabelingV1beta1BoundingPoly);
     checkGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly(
-        o.normalizedBoundingPoly
+        o.normalizedBoundingPoly!
             as api.GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly);
-    unittest.expect(o.timeOffset, unittest.equals('foo'));
+    unittest.expect(
+      o.timeOffset!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1ObjectTrackingFrame--;
 }
@@ -3907,8 +4478,14 @@ core.List<core.String> buildUnnamed7379() {
 
 void checkUnnamed7379(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudDatalabelingV1beta1OperatorMetadata = 0;
@@ -3930,10 +4507,19 @@ void checkGoogleCloudDatalabelingV1beta1OperatorMetadata(
     api.GoogleCloudDatalabelingV1beta1OperatorMetadata o) {
   buildCounterGoogleCloudDatalabelingV1beta1OperatorMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1OperatorMetadata < 3) {
-    checkUnnamed7379(o.comments);
-    unittest.expect(o.labelVotes, unittest.equals(42));
-    unittest.expect(o.score, unittest.equals(42.0));
-    unittest.expect(o.totalVotes, unittest.equals(42));
+    checkUnnamed7379(o.comments!);
+    unittest.expect(
+      o.labelVotes!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.score!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.totalVotes!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1OperatorMetadata--;
 }
@@ -3957,9 +4543,9 @@ void checkGoogleCloudDatalabelingV1beta1OutputConfig(
   buildCounterGoogleCloudDatalabelingV1beta1OutputConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1OutputConfig < 3) {
     checkGoogleCloudDatalabelingV1beta1GcsDestination(
-        o.gcsDestination as api.GoogleCloudDatalabelingV1beta1GcsDestination);
+        o.gcsDestination! as api.GoogleCloudDatalabelingV1beta1GcsDestination);
     checkGoogleCloudDatalabelingV1beta1GcsFolderDestination(
-        o.gcsFolderDestination
+        o.gcsFolderDestination!
             as api.GoogleCloudDatalabelingV1beta1GcsFolderDestination);
   }
   buildCounterGoogleCloudDatalabelingV1beta1OutputConfig--;
@@ -4001,7 +4587,10 @@ void checkGoogleCloudDatalabelingV1beta1PdfInstruction(
     api.GoogleCloudDatalabelingV1beta1PdfInstruction o) {
   buildCounterGoogleCloudDatalabelingV1beta1PdfInstruction++;
   if (buildCounterGoogleCloudDatalabelingV1beta1PdfInstruction < 3) {
-    unittest.expect(o.gcsFileUri, unittest.equals('foo'));
+    unittest.expect(
+      o.gcsFileUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1PdfInstruction--;
 }
@@ -4037,7 +4626,7 @@ void checkGoogleCloudDatalabelingV1beta1Polyline(
     api.GoogleCloudDatalabelingV1beta1Polyline o) {
   buildCounterGoogleCloudDatalabelingV1beta1Polyline++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Polyline < 3) {
-    checkUnnamed7380(o.vertices);
+    checkUnnamed7380(o.vertices!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1Polyline--;
 }
@@ -4059,8 +4648,14 @@ void checkGoogleCloudDatalabelingV1beta1PolylineConfig(
     api.GoogleCloudDatalabelingV1beta1PolylineConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1PolylineConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1PolylineConfig < 3) {
-    unittest.expect(o.annotationSpecSet, unittest.equals('foo'));
-    unittest.expect(o.instructionMessage, unittest.equals('foo'));
+    unittest.expect(
+      o.annotationSpecSet!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.instructionMessage!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1PolylineConfig--;
 }
@@ -4102,10 +4697,16 @@ void checkGoogleCloudDatalabelingV1beta1PrCurve(
   buildCounterGoogleCloudDatalabelingV1beta1PrCurve++;
   if (buildCounterGoogleCloudDatalabelingV1beta1PrCurve < 3) {
     checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
-        o.annotationSpec as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
-    unittest.expect(o.areaUnderCurve, unittest.equals(42.0));
-    checkUnnamed7381(o.confidenceMetricsEntries);
-    unittest.expect(o.meanAveragePrecision, unittest.equals(42.0));
+        o.annotationSpec! as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
+    unittest.expect(
+      o.areaUnderCurve!,
+      unittest.equals(42.0),
+    );
+    checkUnnamed7381(o.confidenceMetricsEntries!);
+    unittest.expect(
+      o.meanAveragePrecision!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1PrCurve--;
 }
@@ -4184,8 +4785,8 @@ void checkGoogleCloudDatalabelingV1beta1Row(
   buildCounterGoogleCloudDatalabelingV1beta1Row++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Row < 3) {
     checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
-        o.annotationSpec as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
-    checkUnnamed7382(o.entries);
+        o.annotationSpec! as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
+    checkUnnamed7382(o.entries!);
   }
   buildCounterGoogleCloudDatalabelingV1beta1Row--;
 }
@@ -4224,8 +4825,11 @@ void checkGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse(
     api.GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse o) {
   buildCounterGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse < 3) {
-    checkUnnamed7383(o.evaluations);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed7383(o.evaluations!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse--;
 }
@@ -4251,8 +4855,14 @@ void checkGoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest(
   buildCounterGoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest++;
   if (buildCounterGoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest <
       3) {
-    unittest.expect(o.pageSize, unittest.equals(42));
-    unittest.expect(o.pageToken, unittest.equals('foo'));
+    unittest.expect(
+      o.pageSize!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.pageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest--;
 }
@@ -4295,8 +4905,11 @@ void checkGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse(
   buildCounterGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse++;
   if (buildCounterGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse <
       3) {
-    checkUnnamed7384(o.exampleComparisons);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed7384(o.exampleComparisons!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse--;
 }
@@ -4318,8 +4931,14 @@ void checkGoogleCloudDatalabelingV1beta1SegmentationConfig(
     api.GoogleCloudDatalabelingV1beta1SegmentationConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1SegmentationConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1SegmentationConfig < 3) {
-    unittest.expect(o.annotationSpecSet, unittest.equals('foo'));
-    unittest.expect(o.instructionMessage, unittest.equals('foo'));
+    unittest.expect(
+      o.annotationSpecSet!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.instructionMessage!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1SegmentationConfig--;
 }
@@ -4340,7 +4959,7 @@ void checkGoogleCloudDatalabelingV1beta1SentimentConfig(
     api.GoogleCloudDatalabelingV1beta1SentimentConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1SentimentConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1SentimentConfig < 3) {
-    unittest.expect(o.enableLabelSentimentSelection, unittest.isTrue);
+    unittest.expect(o.enableLabelSentimentSelection!, unittest.isTrue);
   }
   buildCounterGoogleCloudDatalabelingV1beta1SentimentConfig--;
 }
@@ -4362,8 +4981,14 @@ void checkGoogleCloudDatalabelingV1beta1SequentialSegment(
     api.GoogleCloudDatalabelingV1beta1SequentialSegment o) {
   buildCounterGoogleCloudDatalabelingV1beta1SequentialSegment++;
   if (buildCounterGoogleCloudDatalabelingV1beta1SequentialSegment < 3) {
-    unittest.expect(o.end, unittest.equals(42));
-    unittest.expect(o.start, unittest.equals(42));
+    unittest.expect(
+      o.end!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.start!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1SequentialSegment--;
 }
@@ -4388,7 +5013,7 @@ void checkGoogleCloudDatalabelingV1beta1TextClassificationAnnotation(
   if (buildCounterGoogleCloudDatalabelingV1beta1TextClassificationAnnotation <
       3) {
     checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
-        o.annotationSpec as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
+        o.annotationSpec! as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
   }
   buildCounterGoogleCloudDatalabelingV1beta1TextClassificationAnnotation--;
 }
@@ -4411,10 +5036,13 @@ void checkGoogleCloudDatalabelingV1beta1TextClassificationConfig(
     api.GoogleCloudDatalabelingV1beta1TextClassificationConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1TextClassificationConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1TextClassificationConfig < 3) {
-    unittest.expect(o.allowMultiLabel, unittest.isTrue);
-    unittest.expect(o.annotationSpecSet, unittest.equals('foo'));
-    checkGoogleCloudDatalabelingV1beta1SentimentConfig(
-        o.sentimentConfig as api.GoogleCloudDatalabelingV1beta1SentimentConfig);
+    unittest.expect(o.allowMultiLabel!, unittest.isTrue);
+    unittest.expect(
+      o.annotationSpecSet!,
+      unittest.equals('foo'),
+    );
+    checkGoogleCloudDatalabelingV1beta1SentimentConfig(o.sentimentConfig!
+        as api.GoogleCloudDatalabelingV1beta1SentimentConfig);
   }
   buildCounterGoogleCloudDatalabelingV1beta1TextClassificationConfig--;
 }
@@ -4442,8 +5070,8 @@ void checkGoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation(
   if (buildCounterGoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation <
       3) {
     checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
-        o.annotationSpec as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
-    checkGoogleCloudDatalabelingV1beta1SequentialSegment(o.sequentialSegment
+        o.annotationSpec! as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
+    checkGoogleCloudDatalabelingV1beta1SequentialSegment(o.sequentialSegment!
         as api.GoogleCloudDatalabelingV1beta1SequentialSegment);
   }
   buildCounterGoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation--;
@@ -4468,7 +5096,10 @@ void checkGoogleCloudDatalabelingV1beta1TextEntityExtractionConfig(
   buildCounterGoogleCloudDatalabelingV1beta1TextEntityExtractionConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1TextEntityExtractionConfig <
       3) {
-    unittest.expect(o.annotationSpecSet, unittest.equals('foo'));
+    unittest.expect(
+      o.annotationSpecSet!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1TextEntityExtractionConfig--;
 }
@@ -4489,7 +5120,10 @@ void checkGoogleCloudDatalabelingV1beta1TextMetadata(
     api.GoogleCloudDatalabelingV1beta1TextMetadata o) {
   buildCounterGoogleCloudDatalabelingV1beta1TextMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1beta1TextMetadata < 3) {
-    unittest.expect(o.languageCode, unittest.equals('foo'));
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1TextMetadata--;
 }
@@ -4510,7 +5144,10 @@ void checkGoogleCloudDatalabelingV1beta1TextPayload(
     api.GoogleCloudDatalabelingV1beta1TextPayload o) {
   buildCounterGoogleCloudDatalabelingV1beta1TextPayload++;
   if (buildCounterGoogleCloudDatalabelingV1beta1TextPayload < 3) {
-    unittest.expect(o.textContent, unittest.equals('foo'));
+    unittest.expect(
+      o.textContent!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1TextPayload--;
 }
@@ -4532,8 +5169,14 @@ void checkGoogleCloudDatalabelingV1beta1TimeSegment(
     api.GoogleCloudDatalabelingV1beta1TimeSegment o) {
   buildCounterGoogleCloudDatalabelingV1beta1TimeSegment++;
   if (buildCounterGoogleCloudDatalabelingV1beta1TimeSegment < 3) {
-    unittest.expect(o.endTimeOffset, unittest.equals('foo'));
-    unittest.expect(o.startTimeOffset, unittest.equals('foo'));
+    unittest.expect(
+      o.endTimeOffset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTimeOffset!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1TimeSegment--;
 }
@@ -4555,8 +5198,14 @@ void checkGoogleCloudDatalabelingV1beta1Vertex(
     api.GoogleCloudDatalabelingV1beta1Vertex o) {
   buildCounterGoogleCloudDatalabelingV1beta1Vertex++;
   if (buildCounterGoogleCloudDatalabelingV1beta1Vertex < 3) {
-    unittest.expect(o.x, unittest.equals(42));
-    unittest.expect(o.y, unittest.equals(42));
+    unittest.expect(
+      o.x!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.y!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1Vertex--;
 }
@@ -4582,9 +5231,9 @@ void checkGoogleCloudDatalabelingV1beta1VideoClassificationAnnotation(
   if (buildCounterGoogleCloudDatalabelingV1beta1VideoClassificationAnnotation <
       3) {
     checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
-        o.annotationSpec as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
+        o.annotationSpec! as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
     checkGoogleCloudDatalabelingV1beta1TimeSegment(
-        o.timeSegment as api.GoogleCloudDatalabelingV1beta1TimeSegment);
+        o.timeSegment! as api.GoogleCloudDatalabelingV1beta1TimeSegment);
   }
   buildCounterGoogleCloudDatalabelingV1beta1VideoClassificationAnnotation--;
 }
@@ -4624,8 +5273,8 @@ void checkGoogleCloudDatalabelingV1beta1VideoClassificationConfig(
     api.GoogleCloudDatalabelingV1beta1VideoClassificationConfig o) {
   buildCounterGoogleCloudDatalabelingV1beta1VideoClassificationConfig++;
   if (buildCounterGoogleCloudDatalabelingV1beta1VideoClassificationConfig < 3) {
-    checkUnnamed7385(o.annotationSpecSetConfigs);
-    unittest.expect(o.applyShotDetection, unittest.isTrue);
+    checkUnnamed7385(o.annotationSpecSetConfigs!);
+    unittest.expect(o.applyShotDetection!, unittest.isTrue);
   }
   buildCounterGoogleCloudDatalabelingV1beta1VideoClassificationConfig--;
 }
@@ -4648,9 +5297,9 @@ void checkGoogleCloudDatalabelingV1beta1VideoEventAnnotation(
   buildCounterGoogleCloudDatalabelingV1beta1VideoEventAnnotation++;
   if (buildCounterGoogleCloudDatalabelingV1beta1VideoEventAnnotation < 3) {
     checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
-        o.annotationSpec as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
+        o.annotationSpec! as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
     checkGoogleCloudDatalabelingV1beta1TimeSegment(
-        o.timeSegment as api.GoogleCloudDatalabelingV1beta1TimeSegment);
+        o.timeSegment! as api.GoogleCloudDatalabelingV1beta1TimeSegment);
   }
   buildCounterGoogleCloudDatalabelingV1beta1VideoEventAnnotation--;
 }
@@ -4694,10 +5343,10 @@ void checkGoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation(
   if (buildCounterGoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation <
       3) {
     checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
-        o.annotationSpec as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
-    checkUnnamed7386(o.objectTrackingFrames);
+        o.annotationSpec! as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
+    checkUnnamed7386(o.objectTrackingFrames!);
     checkGoogleCloudDatalabelingV1beta1TimeSegment(
-        o.timeSegment as api.GoogleCloudDatalabelingV1beta1TimeSegment);
+        o.timeSegment! as api.GoogleCloudDatalabelingV1beta1TimeSegment);
   }
   buildCounterGoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation--;
 }
@@ -4738,11 +5387,23 @@ void checkGoogleCloudDatalabelingV1beta1VideoPayload(
     api.GoogleCloudDatalabelingV1beta1VideoPayload o) {
   buildCounterGoogleCloudDatalabelingV1beta1VideoPayload++;
   if (buildCounterGoogleCloudDatalabelingV1beta1VideoPayload < 3) {
-    unittest.expect(o.frameRate, unittest.equals(42.0));
-    unittest.expect(o.mimeType, unittest.equals('foo'));
-    unittest.expect(o.signedUri, unittest.equals('foo'));
-    checkUnnamed7387(o.videoThumbnails);
-    unittest.expect(o.videoUri, unittest.equals('foo'));
+    unittest.expect(
+      o.frameRate!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.mimeType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.signedUri!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7387(o.videoThumbnails!);
+    unittest.expect(
+      o.videoUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1VideoPayload--;
 }
@@ -4764,8 +5425,14 @@ void checkGoogleCloudDatalabelingV1beta1VideoThumbnail(
     api.GoogleCloudDatalabelingV1beta1VideoThumbnail o) {
   buildCounterGoogleCloudDatalabelingV1beta1VideoThumbnail++;
   if (buildCounterGoogleCloudDatalabelingV1beta1VideoThumbnail < 3) {
-    unittest.expect(o.thumbnail, unittest.equals('foo'));
-    unittest.expect(o.timeOffset, unittest.equals('foo'));
+    unittest.expect(
+      o.thumbnail!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timeOffset!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1beta1VideoThumbnail--;
 }
@@ -4804,9 +5471,15 @@ void checkGoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata(
   buildCounterGoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata <
       3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.instruction, unittest.equals('foo'));
-    checkUnnamed7388(o.partialFailures);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.instruction!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7388(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata--;
 }
@@ -4847,10 +5520,19 @@ void checkGoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata <
       3) {
-    unittest.expect(o.annotatedDataset, unittest.equals('foo'));
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
-    checkUnnamed7389(o.partialFailures);
+    unittest.expect(
+      o.annotatedDataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7389(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata--;
 }
@@ -4880,14 +5562,26 @@ void checkGoogleCloudDatalabelingV1p1alpha1ExportDataOperationResponse(
   buildCounterGoogleCloudDatalabelingV1p1alpha1ExportDataOperationResponse++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1ExportDataOperationResponse <
       3) {
-    unittest.expect(o.annotatedDataset, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
-    unittest.expect(o.exportCount, unittest.equals(42));
+    unittest.expect(
+      o.annotatedDataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.exportCount!,
+      unittest.equals(42),
+    );
     checkGoogleCloudDatalabelingV1p1alpha1LabelStats(
-        o.labelStats as api.GoogleCloudDatalabelingV1p1alpha1LabelStats);
+        o.labelStats! as api.GoogleCloudDatalabelingV1p1alpha1LabelStats);
     checkGoogleCloudDatalabelingV1p1alpha1OutputConfig(
-        o.outputConfig as api.GoogleCloudDatalabelingV1p1alpha1OutputConfig);
-    unittest.expect(o.totalCount, unittest.equals(42));
+        o.outputConfig! as api.GoogleCloudDatalabelingV1p1alpha1OutputConfig);
+    unittest.expect(
+      o.totalCount!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1ExportDataOperationResponse--;
 }
@@ -4909,8 +5603,14 @@ void checkGoogleCloudDatalabelingV1p1alpha1GcsDestination(
     api.GoogleCloudDatalabelingV1p1alpha1GcsDestination o) {
   buildCounterGoogleCloudDatalabelingV1p1alpha1GcsDestination++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1GcsDestination < 3) {
-    unittest.expect(o.mimeType, unittest.equals('foo'));
-    unittest.expect(o.outputUri, unittest.equals('foo'));
+    unittest.expect(
+      o.mimeType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.outputUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1GcsDestination--;
 }
@@ -4931,7 +5631,10 @@ void checkGoogleCloudDatalabelingV1p1alpha1GcsFolderDestination(
     api.GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination o) {
   buildCounterGoogleCloudDatalabelingV1p1alpha1GcsFolderDestination++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1GcsFolderDestination < 3) {
-    unittest.expect(o.outputFolderUri, unittest.equals('foo'));
+    unittest.expect(
+      o.outputFolderUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1GcsFolderDestination--;
 }
@@ -4959,8 +5662,14 @@ void checkGoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetada
   buildCounterGoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetadata <
       3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetadata--;
 }
@@ -4974,8 +5683,14 @@ core.List<core.String> buildUnnamed7390() {
 
 void checkUnnamed7390(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig = 0;
@@ -5002,15 +5717,39 @@ void checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(
     api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig o) {
   buildCounterGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig < 3) {
-    unittest.expect(o.annotatedDatasetDescription, unittest.equals('foo'));
-    unittest.expect(o.annotatedDatasetDisplayName, unittest.equals('foo'));
-    checkUnnamed7390(o.contributorEmails);
-    unittest.expect(o.instruction, unittest.equals('foo'));
-    unittest.expect(o.labelGroup, unittest.equals('foo'));
-    unittest.expect(o.languageCode, unittest.equals('foo'));
-    unittest.expect(o.questionDuration, unittest.equals('foo'));
-    unittest.expect(o.replicaCount, unittest.equals(42));
-    unittest.expect(o.userEmailAddress, unittest.equals('foo'));
+    unittest.expect(
+      o.annotatedDatasetDescription!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.annotatedDatasetDisplayName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7390(o.contributorEmails!);
+    unittest.expect(
+      o.instruction!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.labelGroup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.questionDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.replicaCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.userEmailAddress!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig--;
 }
@@ -5050,9 +5789,15 @@ void checkGoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata <
       3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
-    checkUnnamed7391(o.partialFailures);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7391(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata--;
 }
@@ -5079,9 +5824,18 @@ void checkGoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse(
   buildCounterGoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse <
       3) {
-    unittest.expect(o.dataset, unittest.equals('foo'));
-    unittest.expect(o.importCount, unittest.equals(42));
-    unittest.expect(o.totalCount, unittest.equals(42));
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.importCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.totalCount!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse--;
 }
@@ -5109,7 +5863,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadat
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata--;
@@ -5138,7 +5892,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetada
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetadata--;
@@ -5167,7 +5921,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMeta
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMetadata--;
@@ -5196,7 +5950,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperatio
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperationMetadata--;
@@ -5225,7 +5979,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata--;
@@ -5254,7 +6008,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetada
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata--;
@@ -5318,46 +6072,58 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata(
     api.GoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata o) {
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata < 3) {
-    unittest.expect(o.annotatedDataset, unittest.equals('foo'));
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
+    unittest.expect(
+      o.annotatedDataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata(
-        o.imageBoundingBoxDetails as api
+        o.imageBoundingBoxDetails! as api
             .GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata);
     checkGoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetadata(
-        o.imageBoundingPolyDetails as api
+        o.imageBoundingPolyDetails! as api
             .GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetadata);
     checkGoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMetadata(
-        o.imageClassificationDetails as api
+        o.imageClassificationDetails! as api
             .GoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMetadata);
     checkGoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperationMetadata(
-        o.imageOrientedBoundingBoxDetails as api
+        o.imageOrientedBoundingBoxDetails! as api
             .GoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperationMetadata);
     checkGoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata(
-        o.imagePolylineDetails as api
+        o.imagePolylineDetails! as api
             .GoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata);
     checkGoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata(
-        o.imageSegmentationDetails as api
+        o.imageSegmentationDetails! as api
             .GoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata);
-    checkUnnamed7392(o.partialFailures);
-    unittest.expect(o.progressPercent, unittest.equals(42));
+    checkUnnamed7392(o.partialFailures!);
+    unittest.expect(
+      o.progressPercent!,
+      unittest.equals(42),
+    );
     checkGoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata(
-        o.textClassificationDetails as api
+        o.textClassificationDetails! as api
             .GoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata);
     checkGoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMetadata(
-        o.textEntityExtractionDetails as api
+        o.textEntityExtractionDetails! as api
             .GoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMetadata);
     checkGoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMetadata(
-        o.videoClassificationDetails as api
+        o.videoClassificationDetails! as api
             .GoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMetadata);
     checkGoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata(
-        o.videoEventDetails as api
+        o.videoEventDetails! as api
             .GoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata);
     checkGoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMetadata(
-        o.videoObjectDetectionDetails as api
+        o.videoObjectDetectionDetails! as api
             .GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMetadata);
     checkGoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMetadata(
-        o.videoObjectTrackingDetails as api
+        o.videoObjectTrackingDetails! as api
             .GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMetadata);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata--;
@@ -5372,8 +6138,14 @@ core.Map<core.String, core.String> buildUnnamed7393() {
 
 void checkUnnamed7393(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudDatalabelingV1p1alpha1LabelStats = 0;
@@ -5392,7 +6164,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelStats(
     api.GoogleCloudDatalabelingV1p1alpha1LabelStats o) {
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelStats++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1LabelStats < 3) {
-    checkUnnamed7393(o.exampleCount);
+    checkUnnamed7393(o.exampleCount!);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelStats--;
 }
@@ -5420,7 +6192,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetad
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata--;
@@ -5449,7 +6221,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMet
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMetadata--;
@@ -5478,7 +6250,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMeta
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMetadata--;
@@ -5506,7 +6278,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata--;
@@ -5535,7 +6307,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMet
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMetadata--;
@@ -5564,7 +6336,7 @@ void checkGoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMeta
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMetadata--;
@@ -5588,10 +6360,10 @@ void checkGoogleCloudDatalabelingV1p1alpha1OutputConfig(
     api.GoogleCloudDatalabelingV1p1alpha1OutputConfig o) {
   buildCounterGoogleCloudDatalabelingV1p1alpha1OutputConfig++;
   if (buildCounterGoogleCloudDatalabelingV1p1alpha1OutputConfig < 3) {
-    checkGoogleCloudDatalabelingV1p1alpha1GcsDestination(o.gcsDestination
+    checkGoogleCloudDatalabelingV1p1alpha1GcsDestination(o.gcsDestination!
         as api.GoogleCloudDatalabelingV1p1alpha1GcsDestination);
     checkGoogleCloudDatalabelingV1p1alpha1GcsFolderDestination(
-        o.gcsFolderDestination
+        o.gcsFolderDestination!
             as api.GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination);
   }
   buildCounterGoogleCloudDatalabelingV1p1alpha1OutputConfig--;
@@ -5631,9 +6403,15 @@ void checkGoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata(
   buildCounterGoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata <
       3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.instruction, unittest.equals('foo'));
-    checkUnnamed7394(o.partialFailures);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.instruction!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7394(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata--;
 }
@@ -5674,10 +6452,19 @@ void checkGoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata <
       3) {
-    unittest.expect(o.annotatedDataset, unittest.equals('foo'));
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
-    checkUnnamed7395(o.partialFailures);
+    unittest.expect(
+      o.annotatedDataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7395(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata--;
 }
@@ -5707,14 +6494,26 @@ void checkGoogleCloudDatalabelingV1p2alpha1ExportDataOperationResponse(
   buildCounterGoogleCloudDatalabelingV1p2alpha1ExportDataOperationResponse++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1ExportDataOperationResponse <
       3) {
-    unittest.expect(o.annotatedDataset, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
-    unittest.expect(o.exportCount, unittest.equals(42));
+    unittest.expect(
+      o.annotatedDataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.exportCount!,
+      unittest.equals(42),
+    );
     checkGoogleCloudDatalabelingV1p2alpha1LabelStats(
-        o.labelStats as api.GoogleCloudDatalabelingV1p2alpha1LabelStats);
+        o.labelStats! as api.GoogleCloudDatalabelingV1p2alpha1LabelStats);
     checkGoogleCloudDatalabelingV1p2alpha1OutputConfig(
-        o.outputConfig as api.GoogleCloudDatalabelingV1p2alpha1OutputConfig);
-    unittest.expect(o.totalCount, unittest.equals(42));
+        o.outputConfig! as api.GoogleCloudDatalabelingV1p2alpha1OutputConfig);
+    unittest.expect(
+      o.totalCount!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1ExportDataOperationResponse--;
 }
@@ -5736,8 +6535,14 @@ void checkGoogleCloudDatalabelingV1p2alpha1GcsDestination(
     api.GoogleCloudDatalabelingV1p2alpha1GcsDestination o) {
   buildCounterGoogleCloudDatalabelingV1p2alpha1GcsDestination++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1GcsDestination < 3) {
-    unittest.expect(o.mimeType, unittest.equals('foo'));
-    unittest.expect(o.outputUri, unittest.equals('foo'));
+    unittest.expect(
+      o.mimeType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.outputUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1GcsDestination--;
 }
@@ -5758,7 +6563,10 @@ void checkGoogleCloudDatalabelingV1p2alpha1GcsFolderDestination(
     api.GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination o) {
   buildCounterGoogleCloudDatalabelingV1p2alpha1GcsFolderDestination++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1GcsFolderDestination < 3) {
-    unittest.expect(o.outputFolderUri, unittest.equals('foo'));
+    unittest.expect(
+      o.outputFolderUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1GcsFolderDestination--;
 }
@@ -5772,8 +6580,14 @@ core.List<core.String> buildUnnamed7396() {
 
 void checkUnnamed7396(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig = 0;
@@ -5800,15 +6614,39 @@ void checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(
     api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig o) {
   buildCounterGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig < 3) {
-    unittest.expect(o.annotatedDatasetDescription, unittest.equals('foo'));
-    unittest.expect(o.annotatedDatasetDisplayName, unittest.equals('foo'));
-    checkUnnamed7396(o.contributorEmails);
-    unittest.expect(o.instruction, unittest.equals('foo'));
-    unittest.expect(o.labelGroup, unittest.equals('foo'));
-    unittest.expect(o.languageCode, unittest.equals('foo'));
-    unittest.expect(o.questionDuration, unittest.equals('foo'));
-    unittest.expect(o.replicaCount, unittest.equals(42));
-    unittest.expect(o.userEmailAddress, unittest.equals('foo'));
+    unittest.expect(
+      o.annotatedDatasetDescription!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.annotatedDatasetDisplayName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7396(o.contributorEmails!);
+    unittest.expect(
+      o.instruction!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.labelGroup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.questionDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.replicaCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.userEmailAddress!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig--;
 }
@@ -5848,9 +6686,15 @@ void checkGoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata <
       3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
-    checkUnnamed7397(o.partialFailures);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7397(o.partialFailures!);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata--;
 }
@@ -5877,9 +6721,18 @@ void checkGoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse(
   buildCounterGoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse <
       3) {
-    unittest.expect(o.dataset, unittest.equals('foo'));
-    unittest.expect(o.importCount, unittest.equals(42));
-    unittest.expect(o.totalCount, unittest.equals(42));
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.importCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.totalCount!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse--;
 }
@@ -5907,7 +6760,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadat
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata--;
@@ -5936,7 +6789,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetada
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetadata--;
@@ -5965,7 +6818,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMeta
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMetadata--;
@@ -5994,7 +6847,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperatio
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperationMetadata--;
@@ -6023,7 +6876,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata--;
@@ -6052,7 +6905,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetada
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata--;
@@ -6116,46 +6969,58 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata(
     api.GoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata o) {
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata < 3) {
-    unittest.expect(o.annotatedDataset, unittest.equals('foo'));
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.dataset, unittest.equals('foo'));
+    unittest.expect(
+      o.annotatedDataset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataset!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata(
-        o.imageBoundingBoxDetails as api
+        o.imageBoundingBoxDetails! as api
             .GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata);
     checkGoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetadata(
-        o.imageBoundingPolyDetails as api
+        o.imageBoundingPolyDetails! as api
             .GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetadata);
     checkGoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMetadata(
-        o.imageClassificationDetails as api
+        o.imageClassificationDetails! as api
             .GoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMetadata);
     checkGoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperationMetadata(
-        o.imageOrientedBoundingBoxDetails as api
+        o.imageOrientedBoundingBoxDetails! as api
             .GoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperationMetadata);
     checkGoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata(
-        o.imagePolylineDetails as api
+        o.imagePolylineDetails! as api
             .GoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata);
     checkGoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata(
-        o.imageSegmentationDetails as api
+        o.imageSegmentationDetails! as api
             .GoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata);
-    checkUnnamed7398(o.partialFailures);
-    unittest.expect(o.progressPercent, unittest.equals(42));
+    checkUnnamed7398(o.partialFailures!);
+    unittest.expect(
+      o.progressPercent!,
+      unittest.equals(42),
+    );
     checkGoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata(
-        o.textClassificationDetails as api
+        o.textClassificationDetails! as api
             .GoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata);
     checkGoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMetadata(
-        o.textEntityExtractionDetails as api
+        o.textEntityExtractionDetails! as api
             .GoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMetadata);
     checkGoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMetadata(
-        o.videoClassificationDetails as api
+        o.videoClassificationDetails! as api
             .GoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMetadata);
     checkGoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata(
-        o.videoEventDetails as api
+        o.videoEventDetails! as api
             .GoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata);
     checkGoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMetadata(
-        o.videoObjectDetectionDetails as api
+        o.videoObjectDetectionDetails! as api
             .GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMetadata);
     checkGoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMetadata(
-        o.videoObjectTrackingDetails as api
+        o.videoObjectTrackingDetails! as api
             .GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMetadata);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata--;
@@ -6170,8 +7035,14 @@ core.Map<core.String, core.String> buildUnnamed7399() {
 
 void checkUnnamed7399(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudDatalabelingV1p2alpha1LabelStats = 0;
@@ -6190,7 +7061,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelStats(
     api.GoogleCloudDatalabelingV1p2alpha1LabelStats o) {
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelStats++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1LabelStats < 3) {
-    checkUnnamed7399(o.exampleCount);
+    checkUnnamed7399(o.exampleCount!);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelStats--;
 }
@@ -6218,7 +7089,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetad
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata--;
@@ -6247,7 +7118,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMet
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMetadata--;
@@ -6276,7 +7147,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMeta
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMetadata--;
@@ -6304,7 +7175,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata(
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata--;
@@ -6333,7 +7204,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMet
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMetadata--;
@@ -6362,7 +7233,7 @@ void checkGoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMeta
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMetadata++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMetadata <
       3) {
-    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig
+    checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(o.basicConfig!
         as api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMetadata--;
@@ -6386,10 +7257,10 @@ void checkGoogleCloudDatalabelingV1p2alpha1OutputConfig(
     api.GoogleCloudDatalabelingV1p2alpha1OutputConfig o) {
   buildCounterGoogleCloudDatalabelingV1p2alpha1OutputConfig++;
   if (buildCounterGoogleCloudDatalabelingV1p2alpha1OutputConfig < 3) {
-    checkGoogleCloudDatalabelingV1p2alpha1GcsDestination(o.gcsDestination
+    checkGoogleCloudDatalabelingV1p2alpha1GcsDestination(o.gcsDestination!
         as api.GoogleCloudDatalabelingV1p2alpha1GcsDestination);
     checkGoogleCloudDatalabelingV1p2alpha1GcsFolderDestination(
-        o.gcsFolderDestination
+        o.gcsFolderDestination!
             as api.GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination);
   }
   buildCounterGoogleCloudDatalabelingV1p2alpha1OutputConfig--;
@@ -6425,8 +7296,11 @@ void checkGoogleLongrunningListOperationsResponse(
     api.GoogleLongrunningListOperationsResponse o) {
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed7400(o.operations);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7400(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
@@ -6448,16 +7322,34 @@ core.Map<core.String, core.Object> buildUnnamed7401() {
 
 void checkUnnamed7401(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o['x']) as core.Map;
+  var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
-  var casted2 = (o['y']) as core.Map;
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
+  var casted2 = (o['y']!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.Map<core.String, core.Object> buildUnnamed7402() {
@@ -6477,16 +7369,34 @@ core.Map<core.String, core.Object> buildUnnamed7402() {
 
 void checkUnnamed7402(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o['x']) as core.Map;
+  var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3['bool'], unittest.equals(true));
-  unittest.expect(casted3['string'], unittest.equals('foo'));
-  var casted4 = (o['y']) as core.Map;
+  unittest.expect(
+    casted3['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted3['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted3['string'],
+    unittest.equals('foo'),
+  );
+  var casted4 = (o['y']!) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4['bool'], unittest.equals(true));
-  unittest.expect(casted4['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted4['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted4['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted4['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleLongrunningOperation = 0;
@@ -6507,11 +7417,14 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
 void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   buildCounterGoogleLongrunningOperation++;
   if (buildCounterGoogleLongrunningOperation < 3) {
-    unittest.expect(o.done, unittest.isTrue);
-    checkGoogleRpcStatus(o.error as api.GoogleRpcStatus);
-    checkUnnamed7401(o.metadata);
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed7402(o.response);
+    unittest.expect(o.done!, unittest.isTrue);
+    checkGoogleRpcStatus(o.error! as api.GoogleRpcStatus);
+    checkUnnamed7401(o.metadata!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7402(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -6548,16 +7461,34 @@ core.Map<core.String, core.Object> buildUnnamed7403() {
 
 void checkUnnamed7403(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o['x']) as core.Map;
+  var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5['bool'], unittest.equals(true));
-  unittest.expect(casted5['string'], unittest.equals('foo'));
-  var casted6 = (o['y']) as core.Map;
+  unittest.expect(
+    casted5['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted5['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted5['string'],
+    unittest.equals('foo'),
+  );
+  var casted6 = (o['y']!) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6['bool'], unittest.equals(true));
-  unittest.expect(casted6['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted6['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted6['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted6['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed7404() {
@@ -6589,9 +7520,15 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
 void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
-    unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed7404(o.details);
-    unittest.expect(o.message, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals(42),
+    );
+    checkUnnamed7404(o.details!);
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleRpcStatus--;
 }
@@ -8983,10 +9920,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9005,7 +9946,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9033,10 +9977,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9055,7 +10003,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9081,10 +10032,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9103,7 +10058,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9134,10 +10092,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9156,12 +10118,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9204,10 +10176,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9226,7 +10202,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9254,10 +10233,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9276,7 +10259,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9308,10 +10294,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9330,7 +10320,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9357,10 +10350,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9379,7 +10376,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9413,10 +10413,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9435,7 +10439,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9465,10 +10472,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9487,12 +10498,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9526,10 +10547,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9548,7 +10573,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9574,10 +10602,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9596,7 +10628,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9627,10 +10662,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9649,12 +10688,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9694,10 +10743,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9716,7 +10769,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9751,10 +10807,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9773,12 +10833,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9818,10 +10888,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9840,8 +10914,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9876,10 +10956,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9898,12 +10982,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9942,10 +11036,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -9964,7 +11062,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -9994,10 +11095,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10016,7 +11121,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10050,10 +11158,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10072,11 +11184,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10122,10 +11241,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10144,7 +11267,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10176,10 +11302,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10198,7 +11328,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10229,10 +11362,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10251,7 +11388,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10286,10 +11426,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10308,11 +11452,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10345,10 +11496,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10367,7 +11522,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10398,10 +11556,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10420,12 +11582,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10459,10 +11631,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10481,7 +11657,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10525,10 +11704,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10547,7 +11730,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10584,10 +11770,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10606,7 +11796,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10641,10 +11834,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10663,7 +11860,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10698,10 +11898,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10720,7 +11924,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10756,10 +11963,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10778,7 +11989,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10806,10 +12020,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10828,7 +12046,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10854,10 +12075,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10876,7 +12101,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10907,10 +12135,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10929,12 +12161,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -10973,10 +12215,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -10996,8 +12242,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["updateMask"]!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -11033,10 +12284,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -11055,7 +12310,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -11088,10 +12346,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -11110,7 +12372,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -11141,10 +12406,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -11163,12 +12432,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -11210,10 +12489,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -11232,7 +12515,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -11259,10 +12545,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -11281,7 +12571,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -11307,10 +12600,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -11329,7 +12626,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -11360,10 +12660,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -11382,12 +12686,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -11421,10 +12735,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -11443,7 +12761,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -11469,10 +12790,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -11491,7 +12816,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -11517,10 +12845,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -11539,7 +12871,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -11569,10 +12904,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -11591,12 +12930,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

@@ -227,13 +227,9 @@ class UsersDataSourcesResource {
   async.Future<DataSource> create(
     DataSource request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -274,14 +270,8 @@ class UsersDataSourcesResource {
   async.Future<DataSource> delete(
     core.String userId,
     core.String dataSourceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (dataSourceId == null) {
-      throw core.ArgumentError('Parameter dataSourceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -321,14 +311,8 @@ class UsersDataSourcesResource {
   async.Future<DataSource> get(
     core.String userId,
     core.String dataSourceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (dataSourceId == null) {
-      throw core.ArgumentError('Parameter dataSourceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -372,12 +356,9 @@ class UsersDataSourcesResource {
   /// this method will complete with the same error.
   async.Future<ListDataSourcesResponse> list(
     core.String userId, {
-    core.List<core.String> dataTypeName,
-    core.String $fields,
+    core.List<core.String>? dataTypeName,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (dataTypeName != null) 'dataTypeName': dataTypeName,
       if ($fields != null) 'fields': [$fields],
@@ -423,16 +404,9 @@ class UsersDataSourcesResource {
     DataSource request,
     core.String userId,
     core.String dataSourceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (dataSourceId == null) {
-      throw core.ArgumentError('Parameter dataSourceId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -488,16 +462,10 @@ class UsersDataSourcesDataPointChangesResource {
   async.Future<ListDataPointChangesResponse> list(
     core.String userId,
     core.String dataSourceId, {
-    core.int limit,
-    core.String pageToken,
-    core.String $fields,
+    core.int? limit,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (dataSourceId == null) {
-      throw core.ArgumentError('Parameter dataSourceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (limit != null) 'limit': ['${limit}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -564,19 +532,10 @@ class UsersDataSourcesDatasetsResource {
     core.String userId,
     core.String dataSourceId,
     core.String datasetId, {
-    core.String currentTimeMillis,
-    core.String modifiedTimeMillis,
-    core.String $fields,
+    core.String? currentTimeMillis,
+    core.String? modifiedTimeMillis,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (dataSourceId == null) {
-      throw core.ArgumentError('Parameter dataSourceId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (currentTimeMillis != null) 'currentTimeMillis': [currentTimeMillis],
       if (modifiedTimeMillis != null)
@@ -645,19 +604,10 @@ class UsersDataSourcesDatasetsResource {
     core.String userId,
     core.String dataSourceId,
     core.String datasetId, {
-    core.int limit,
-    core.String pageToken,
-    core.String $fields,
+    core.int? limit,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (dataSourceId == null) {
-      throw core.ArgumentError('Parameter dataSourceId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (limit != null) 'limit': ['${limit}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -717,20 +667,10 @@ class UsersDataSourcesDatasetsResource {
     core.String userId,
     core.String dataSourceId,
     core.String datasetId, {
-    core.String currentTimeMillis,
-    core.String $fields,
+    core.String? currentTimeMillis,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (dataSourceId == null) {
-      throw core.ArgumentError('Parameter dataSourceId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (currentTimeMillis != null) 'currentTimeMillis': [currentTimeMillis],
       if ($fields != null) 'fields': [$fields],
@@ -783,13 +723,9 @@ class UsersDatasetResource {
   async.Future<AggregateResponse> aggregate(
     AggregateRequest request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -836,15 +772,9 @@ class UsersSessionsResource {
   async.Future<void> delete(
     core.String userId,
     core.String sessionId, {
-    core.String currentTimeMillis,
-    core.String $fields,
+    core.String? currentTimeMillis,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (sessionId == null) {
-      throw core.ArgumentError('Parameter sessionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (currentTimeMillis != null) 'currentTimeMillis': [currentTimeMillis],
       if ($fields != null) 'fields': [$fields],
@@ -904,16 +834,13 @@ class UsersSessionsResource {
   /// this method will complete with the same error.
   async.Future<ListSessionsResponse> list(
     core.String userId, {
-    core.List<core.int> activityType,
-    core.String endTime,
-    core.bool includeDeleted,
-    core.String pageToken,
-    core.String startTime,
-    core.String $fields,
+    core.List<core.int>? activityType,
+    core.String? endTime,
+    core.bool? includeDeleted,
+    core.String? pageToken,
+    core.String? startTime,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (activityType != null)
         'activityType': activityType.map((item) => '${item}').toList(),
@@ -963,17 +890,10 @@ class UsersSessionsResource {
     Session request,
     core.String userId,
     core.String sessionId, {
-    core.String currentTimeMillis,
-    core.String $fields,
+    core.String? currentTimeMillis,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (sessionId == null) {
-      throw core.ArgumentError('Parameter sessionId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (currentTimeMillis != null) 'currentTimeMillis': [currentTimeMillis],
       if ($fields != null) 'fields': [$fields],
@@ -995,21 +915,21 @@ class UsersSessionsResource {
 
 class AggregateBucket {
   /// Available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT
-  core.int activity;
+  core.int? activity;
 
   /// There will be one dataset per AggregateBy in the request.
-  core.List<Dataset> dataset;
+  core.List<Dataset>? dataset;
 
   /// The end time for the aggregated data, in milliseconds since epoch,
   /// inclusive.
-  core.String endTimeMillis;
+  core.String? endTimeMillis;
 
   /// Available for Bucket.Type.SESSION
-  Session session;
+  Session? session;
 
   /// The start time for the aggregated data, in milliseconds since epoch,
   /// inclusive.
-  core.String startTimeMillis;
+  core.String? startTimeMillis;
 
   /// The type of a bucket signifies how the data aggregation is performed in
   /// the bucket.
@@ -1029,7 +949,7 @@ class AggregateBucket {
   /// segment is requested. This will aggregate data by the time boundaries
   /// specified by each activity segment occurring within the dataset time frame
   /// of interest.
-  core.String type;
+  core.String? type;
 
   AggregateBucket();
 
@@ -1058,14 +978,14 @@ class AggregateBucket {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activity != null) 'activity': activity,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activity != null) 'activity': activity!,
         if (dataset != null)
-          'dataset': dataset.map((value) => value.toJson()).toList(),
-        if (endTimeMillis != null) 'endTimeMillis': endTimeMillis,
-        if (session != null) 'session': session.toJson(),
-        if (startTimeMillis != null) 'startTimeMillis': startTimeMillis,
-        if (type != null) 'type': type,
+          'dataset': dataset!.map((value) => value.toJson()).toList(),
+        if (endTimeMillis != null) 'endTimeMillis': endTimeMillis!,
+        if (session != null) 'session': session!.toJson(),
+        if (startTimeMillis != null) 'startTimeMillis': startTimeMillis!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1078,7 +998,7 @@ class AggregateBy {
   /// in the supplied credentials must grant read access to this data type. The
   /// dataset in the response will have the same data source ID. Note: Data can
   /// be aggregated by either the dataTypeName or the dataSourceId, not both.
-  core.String dataSourceId;
+  core.String? dataSourceId;
 
   /// The data type to aggregate.
   ///
@@ -1088,7 +1008,7 @@ class AggregateBy {
   /// derived::com.google.android.gms:aggregated. If the user has no data for
   /// this data type, an empty data set will be returned. Note: Data can be
   /// aggregated by either the dataTypeName or the dataSourceId, not both.
-  core.String dataTypeName;
+  core.String? dataTypeName;
 
   AggregateBy();
 
@@ -1101,9 +1021,9 @@ class AggregateBy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataSourceId != null) 'dataSourceId': dataSourceId,
-        if (dataTypeName != null) 'dataTypeName': dataTypeName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+        if (dataTypeName != null) 'dataTypeName': dataTypeName!,
       };
 }
 
@@ -1114,7 +1034,7 @@ class AggregateRequest {
   /// At least one aggregateBy spec must be provided. All data that is specified
   /// will be aggregated using the same bucketing criteria. There will be one
   /// dataset in the response for every aggregateBy spec.
-  core.List<AggregateBy> aggregateBy;
+  core.List<AggregateBy>? aggregateBy;
 
   /// Specifies that data be aggregated each activity segment recorded for a
   /// user.
@@ -1122,7 +1042,7 @@ class AggregateRequest {
   /// Similar to bucketByActivitySegment, but bucketing is done for each
   /// activity segment rather than all segments of the same type. Mutually
   /// exclusive of other bucketing specifications.
-  BucketByActivity bucketByActivitySegment;
+  BucketByActivity? bucketByActivitySegment;
 
   /// Specifies that data be aggregated by the type of activity being performed
   /// when the data was recorded.
@@ -1131,36 +1051,36 @@ class AggregateRequest {
   /// time range) will be aggregated into the same bucket. Data that was
   /// recorded while the user was not active will not be included in the
   /// response. Mutually exclusive of other bucketing specifications.
-  BucketByActivity bucketByActivityType;
+  BucketByActivity? bucketByActivityType;
 
   /// Specifies that data be aggregated by user sessions.
   ///
   /// Data that does not fall within the time range of a session will not be
   /// included in the response. Mutually exclusive of other bucketing
   /// specifications.
-  BucketBySession bucketBySession;
+  BucketBySession? bucketBySession;
 
   /// Specifies that data be aggregated by a single time interval.
   ///
   /// Mutually exclusive of other bucketing specifications.
-  BucketByTime bucketByTime;
+  BucketByTime? bucketByTime;
 
   /// The end of a window of time.
   ///
   /// Data that intersects with this time window will be aggregated. The time is
   /// in milliseconds since epoch, inclusive.
-  core.String endTimeMillis;
+  core.String? endTimeMillis;
 
   /// DO NOT POPULATE THIS FIELD.
   ///
   /// It is ignored.
-  core.List<core.String> filteredDataQualityStandard;
+  core.List<core.String>? filteredDataQualityStandard;
 
   /// The start of a window of time.
   ///
   /// Data that intersects with this time window will be aggregated. The time is
   /// in milliseconds since epoch, inclusive.
-  core.String startTimeMillis;
+  core.String? startTimeMillis;
 
   AggregateRequest();
 
@@ -1202,26 +1122,26 @@ class AggregateRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (aggregateBy != null)
-          'aggregateBy': aggregateBy.map((value) => value.toJson()).toList(),
+          'aggregateBy': aggregateBy!.map((value) => value.toJson()).toList(),
         if (bucketByActivitySegment != null)
-          'bucketByActivitySegment': bucketByActivitySegment.toJson(),
+          'bucketByActivitySegment': bucketByActivitySegment!.toJson(),
         if (bucketByActivityType != null)
-          'bucketByActivityType': bucketByActivityType.toJson(),
+          'bucketByActivityType': bucketByActivityType!.toJson(),
         if (bucketBySession != null)
-          'bucketBySession': bucketBySession.toJson(),
-        if (bucketByTime != null) 'bucketByTime': bucketByTime.toJson(),
-        if (endTimeMillis != null) 'endTimeMillis': endTimeMillis,
+          'bucketBySession': bucketBySession!.toJson(),
+        if (bucketByTime != null) 'bucketByTime': bucketByTime!.toJson(),
+        if (endTimeMillis != null) 'endTimeMillis': endTimeMillis!,
         if (filteredDataQualityStandard != null)
-          'filteredDataQualityStandard': filteredDataQualityStandard,
-        if (startTimeMillis != null) 'startTimeMillis': startTimeMillis,
+          'filteredDataQualityStandard': filteredDataQualityStandard!,
+        if (startTimeMillis != null) 'startTimeMillis': startTimeMillis!,
       };
 }
 
 class AggregateResponse {
   /// A list of buckets containing the aggregated data.
-  core.List<AggregateBucket> bucket;
+  core.List<AggregateBucket>? bucket;
 
   AggregateResponse();
 
@@ -1234,15 +1154,15 @@ class AggregateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bucket != null)
-          'bucket': bucket.map((value) => value.toJson()).toList(),
+          'bucket': bucket!.map((value) => value.toJson()).toList(),
       };
 }
 
 class Application {
   /// An optional URI that can be used to link back to the application.
-  core.String detailsUrl;
+  core.String? detailsUrl;
 
   /// The name of this application.
   ///
@@ -1250,7 +1170,7 @@ class Application {
   /// this name. It is provided as a matter of convenience for other developers
   /// who would like to identify which REST created an Application or Data
   /// Source.
-  core.String name;
+  core.String? name;
 
   /// Package name for this application.
   ///
@@ -1258,13 +1178,13 @@ class Application {
   /// but cannot be specified by REST clients. REST clients will have their
   /// developer project number reflected into the Data Source data stream IDs,
   /// instead of the packageName.
-  core.String packageName;
+  core.String? packageName;
 
   /// Version of the application.
   ///
   /// You should update this field whenever the application changes in a way
   /// that affects the computation of the data.
-  core.String version;
+  core.String? version;
 
   Application();
 
@@ -1283,23 +1203,23 @@ class Application {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (detailsUrl != null) 'detailsUrl': detailsUrl,
-        if (name != null) 'name': name,
-        if (packageName != null) 'packageName': packageName,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (detailsUrl != null) 'detailsUrl': detailsUrl!,
+        if (name != null) 'name': name!,
+        if (packageName != null) 'packageName': packageName!,
+        if (version != null) 'version': version!,
       };
 }
 
 class BucketByActivity {
   /// The default activity stream will be used if a specific
   /// activityDataSourceId is not specified.
-  core.String activityDataSourceId;
+  core.String? activityDataSourceId;
 
   /// Specifies that only activity segments of duration longer than
   /// minDurationMillis are considered and used as a container for aggregated
   /// data.
-  core.String minDurationMillis;
+  core.String? minDurationMillis;
 
   BucketByActivity();
 
@@ -1312,17 +1232,17 @@ class BucketByActivity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (activityDataSourceId != null)
-          'activityDataSourceId': activityDataSourceId,
-        if (minDurationMillis != null) 'minDurationMillis': minDurationMillis,
+          'activityDataSourceId': activityDataSourceId!,
+        if (minDurationMillis != null) 'minDurationMillis': minDurationMillis!,
       };
 }
 
 class BucketBySession {
   /// Specifies that only sessions of duration longer than minDurationMillis are
   /// considered and used as a container for aggregated data.
-  core.String minDurationMillis;
+  core.String? minDurationMillis;
 
   BucketBySession();
 
@@ -1332,8 +1252,8 @@ class BucketBySession {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (minDurationMillis != null) 'minDurationMillis': minDurationMillis,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (minDurationMillis != null) 'minDurationMillis': minDurationMillis!,
       };
 }
 
@@ -1343,8 +1263,8 @@ class BucketByTime {
   ///
   /// Time frames that contain no data will be included in the response with an
   /// empty dataset.
-  core.String durationMillis;
-  BucketByTimePeriod period;
+  core.String? durationMillis;
+  BucketByTimePeriod? period;
 
   BucketByTime();
 
@@ -1358,23 +1278,23 @@ class BucketByTime {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (durationMillis != null) 'durationMillis': durationMillis,
-        if (period != null) 'period': period.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (durationMillis != null) 'durationMillis': durationMillis!,
+        if (period != null) 'period': period!.toJson(),
       };
 }
 
 class BucketByTimePeriod {
   /// org.joda.timezone.DateTimeZone
-  core.String timeZoneId;
+  core.String? timeZoneId;
 
   ///
   /// Possible string values are:
   /// - "day"
   /// - "week"
   /// - "month"
-  core.String type;
-  core.int value;
+  core.String? type;
+  core.int? value;
 
   BucketByTimePeriod();
 
@@ -1390,10 +1310,10 @@ class BucketByTimePeriod {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (timeZoneId != null) 'timeZoneId': timeZoneId,
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (timeZoneId != null) 'timeZoneId': timeZoneId!,
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1410,20 +1330,20 @@ class DataPoint {
   /// DO NOT USE THIS FIELD.
   ///
   /// It is ignored, and not stored.
-  core.String computationTimeMillis;
+  core.String? computationTimeMillis;
 
   /// The data type defining the format of the values in this data point.
-  core.String dataTypeName;
+  core.String? dataTypeName;
 
   /// The end time of the interval represented by this data point, in
   /// nanoseconds since epoch.
-  core.String endTimeNanos;
+  core.String? endTimeNanos;
 
   /// Indicates the last time this data point was modified.
   ///
   /// Useful only in contexts where we are listing the data changes, rather than
   /// representing the current state of the data.
-  core.String modifiedTimeMillis;
+  core.String? modifiedTimeMillis;
 
   /// If the data point is contained in a dataset for a derived data source,
   /// this field will be populated with the data source stream ID that created
@@ -1432,14 +1352,14 @@ class DataPoint {
   /// WARNING: do not rely on this field for anything other than debugging. The
   /// value of this field, if it is set at all, is an implementation detail and
   /// is not guaranteed to remain consistent.
-  core.String originDataSourceId;
+  core.String? originDataSourceId;
 
   /// The raw timestamp from the original SensorEvent.
-  core.String rawTimestampNanos;
+  core.String? rawTimestampNanos;
 
   /// The start time of the interval represented by this data point, in
   /// nanoseconds since epoch.
-  core.String startTimeNanos;
+  core.String? startTimeNanos;
 
   /// Values of each data type field for the data point.
   ///
@@ -1448,7 +1368,7 @@ class DataPoint {
   /// specified in a data source. Only one of integer and floating point fields
   /// will be populated, depending on the format enum value within data source's
   /// type field.
-  core.List<Value> value;
+  core.List<Value>? value;
 
   DataPoint();
 
@@ -1482,19 +1402,19 @@ class DataPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (computationTimeMillis != null)
-          'computationTimeMillis': computationTimeMillis,
-        if (dataTypeName != null) 'dataTypeName': dataTypeName,
-        if (endTimeNanos != null) 'endTimeNanos': endTimeNanos,
+          'computationTimeMillis': computationTimeMillis!,
+        if (dataTypeName != null) 'dataTypeName': dataTypeName!,
+        if (endTimeNanos != null) 'endTimeNanos': endTimeNanos!,
         if (modifiedTimeMillis != null)
-          'modifiedTimeMillis': modifiedTimeMillis,
+          'modifiedTimeMillis': modifiedTimeMillis!,
         if (originDataSourceId != null)
-          'originDataSourceId': originDataSourceId,
-        if (rawTimestampNanos != null) 'rawTimestampNanos': rawTimestampNanos,
-        if (startTimeNanos != null) 'startTimeNanos': startTimeNanos,
+          'originDataSourceId': originDataSourceId!,
+        if (rawTimestampNanos != null) 'rawTimestampNanos': rawTimestampNanos!,
+        if (startTimeNanos != null) 'startTimeNanos': startTimeNanos!,
         if (value != null)
-          'value': value.map((value) => value.toJson()).toList(),
+          'value': value!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1516,13 +1436,13 @@ class DataPoint {
 class DataSource {
   /// Information about an application which feeds sensor data into the
   /// platform.
-  Application application;
+  Application? application;
 
   /// DO NOT POPULATE THIS FIELD.
   ///
   /// It is never populated in responses from the platform, and is ignored in
   /// queries. It will be removed in a future version entirely.
-  core.List<core.String> dataQualityStandard;
+  core.List<core.String>? dataQualityStandard;
 
   /// A unique identifier for the data stream produced by this data source.
   ///
@@ -1549,7 +1469,7 @@ class DataSource {
   /// source creator will see the developer project number in clear and normal
   /// form. This means a client will see a different set of data_stream_ids than
   /// another client with different credentials.
-  core.String dataStreamId;
+  core.String? dataStreamId;
 
   /// The stream name uniquely identifies this particular data source among
   /// other data sources of the same type from the same underlying producer.
@@ -1557,18 +1477,18 @@ class DataSource {
   /// Setting the stream name is optional, but should be done whenever an
   /// application exposes two streams for the same data type, or when a device
   /// has two equivalent sensors.
-  core.String dataStreamName;
+  core.String? dataStreamName;
 
   /// The data type defines the schema for a stream of data being collected by,
   /// inserted into, or queried from the Fitness API.
-  DataType dataType;
+  DataType? dataType;
 
   /// Representation of an integrated device (such as a phone or a wearable)
   /// that can hold sensors.
-  Device device;
+  Device? device;
 
   /// An end-user visible name for this data source.
-  core.String name;
+  core.String? name;
 
   /// A constant describing the type of this data source.
   ///
@@ -1576,7 +1496,7 @@ class DataSource {
   /// Possible string values are:
   /// - "raw"
   /// - "derived"
-  core.String type;
+  core.String? type;
 
   DataSource();
 
@@ -1612,28 +1532,28 @@ class DataSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (application != null) 'application': application.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (application != null) 'application': application!.toJson(),
         if (dataQualityStandard != null)
-          'dataQualityStandard': dataQualityStandard,
-        if (dataStreamId != null) 'dataStreamId': dataStreamId,
-        if (dataStreamName != null) 'dataStreamName': dataStreamName,
-        if (dataType != null) 'dataType': dataType.toJson(),
-        if (device != null) 'device': device.toJson(),
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+          'dataQualityStandard': dataQualityStandard!,
+        if (dataStreamId != null) 'dataStreamId': dataStreamId!,
+        if (dataStreamName != null) 'dataStreamName': dataStreamName!,
+        if (dataType != null) 'dataType': dataType!.toJson(),
+        if (device != null) 'device': device!.toJson(),
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
 class DataType {
   /// A field represents one dimension of a data type.
-  core.List<DataTypeField> field;
+  core.List<DataTypeField>? field;
 
   /// Each data type has a unique, namespaced, name.
   ///
   /// All data types in the com.google namespace are shared as part of the
   /// platform.
-  core.String name;
+  core.String? name;
 
   DataType();
 
@@ -1649,10 +1569,10 @@ class DataType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (field != null)
-          'field': field.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+          'field': field!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1672,14 +1592,14 @@ class DataTypeField {
   /// - "integerList"
   /// - "floatList"
   /// - "blob"
-  core.String format;
+  core.String? format;
 
   /// Defines the name and format of data.
   ///
   /// Unlike data type names, field names are not namespaced, and only need to
   /// be unique within the data type.
-  core.String name;
-  core.bool optional;
+  core.String? name;
+  core.bool? optional;
 
   DataTypeField();
 
@@ -1695,10 +1615,10 @@ class DataTypeField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (format != null) 'format': format,
-        if (name != null) 'name': name,
-        if (optional != null) 'optional': optional,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (format != null) 'format': format!,
+        if (name != null) 'name': name!,
+        if (optional != null) 'optional': optional!,
       };
 }
 
@@ -1710,28 +1630,28 @@ class DataTypeField {
 class Dataset {
   /// The data stream ID of the data source that created the points in this
   /// dataset.
-  core.String dataSourceId;
+  core.String? dataSourceId;
 
   /// The largest end time of all data points in this possibly partial
   /// representation of the dataset.
   ///
   /// Time is in nanoseconds from epoch. This should also match the second part
   /// of the dataset identifier.
-  core.String maxEndTimeNs;
+  core.String? maxEndTimeNs;
 
   /// The smallest start time of all data points in this possibly partial
   /// representation of the dataset.
   ///
   /// Time is in nanoseconds from epoch. This should also match the first part
   /// of the dataset identifier.
-  core.String minStartTimeNs;
+  core.String? minStartTimeNs;
 
   /// This token will be set when a dataset is received in response to a GET
   /// request and the dataset is too large to be included in a single response.
   ///
   /// Provide this value in a subsequent GET request to return the next page of
   /// data points within this dataset.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A partial list of data points contained in the dataset, ordered by
   /// endTimeNanos.
@@ -1739,7 +1659,7 @@ class Dataset {
   /// This list is considered complete when retrieving a small dataset and
   /// partial when patching a dataset or retrieving a dataset that is too large
   /// to include in a single response.
-  core.List<DataPoint> point;
+  core.List<DataPoint>? point;
 
   Dataset();
 
@@ -1764,13 +1684,13 @@ class Dataset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataSourceId != null) 'dataSourceId': dataSourceId,
-        if (maxEndTimeNs != null) 'maxEndTimeNs': maxEndTimeNs,
-        if (minStartTimeNs != null) 'minStartTimeNs': minStartTimeNs,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+        if (maxEndTimeNs != null) 'maxEndTimeNs': maxEndTimeNs!,
+        if (minStartTimeNs != null) 'minStartTimeNs': minStartTimeNs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (point != null)
-          'point': point.map((value) => value.toJson()).toList(),
+          'point': point!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1787,10 +1707,10 @@ class Dataset {
 /// those on a phone) - Build different analysis models for each device/version.
 class Device {
   /// Manufacturer of the product/hardware.
-  core.String manufacturer;
+  core.String? manufacturer;
 
   /// End-user visible model name for the device.
-  core.String model;
+  core.String? model;
 
   /// A constant representing the type of the device.
   /// Possible string values are:
@@ -1802,7 +1722,7 @@ class Device {
   /// - "scale" : A scale.
   /// - "headMounted" : Glass or other head-mounted device.
   /// - "smartDisplay" : A smart display e.g. Nest device.
-  core.String type;
+  core.String? type;
 
   /// The serial number or other unique ID for the hardware.
   ///
@@ -1810,10 +1730,10 @@ class Device {
   /// not create the data source. Only the data source creator will see the uid
   /// field in clear and normal form. The obfuscation preserves equality; that
   /// is, given two IDs, if id1 == id2, obfuscated(id1) == obfuscated(id2).
-  core.String uid;
+  core.String? uid;
 
   /// Version string for the device hardware/software.
-  core.String version;
+  core.String? version;
 
   Device();
 
@@ -1835,32 +1755,32 @@ class Device {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (manufacturer != null) 'manufacturer': manufacturer,
-        if (model != null) 'model': model,
-        if (type != null) 'type': type,
-        if (uid != null) 'uid': uid,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (manufacturer != null) 'manufacturer': manufacturer!,
+        if (model != null) 'model': model!,
+        if (type != null) 'type': type!,
+        if (uid != null) 'uid': uid!,
+        if (version != null) 'version': version!,
       };
 }
 
 class ListDataPointChangesResponse {
   /// The data stream ID of the data source with data point changes.
-  core.String dataSourceId;
+  core.String? dataSourceId;
 
   /// Deleted data points for the user.
   ///
   /// Note, for modifications this should be parsed before handling insertions.
-  core.List<DataPoint> deletedDataPoint;
+  core.List<DataPoint>? deletedDataPoint;
 
   /// Inserted data points for the user.
-  core.List<DataPoint> insertedDataPoint;
+  core.List<DataPoint>? insertedDataPoint;
 
   /// The continuation token, which is used to page through large result sets.
   ///
   /// Provide this value in a subsequent request to return the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListDataPointChangesResponse();
 
@@ -1885,21 +1805,21 @@ class ListDataPointChangesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
         if (deletedDataPoint != null)
           'deletedDataPoint':
-              deletedDataPoint.map((value) => value.toJson()).toList(),
+              deletedDataPoint!.map((value) => value.toJson()).toList(),
         if (insertedDataPoint != null)
           'insertedDataPoint':
-              insertedDataPoint.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              insertedDataPoint!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 class ListDataSourcesResponse {
   /// A previously created data source.
-  core.List<DataSource> dataSource;
+  core.List<DataSource>? dataSource;
 
   ListDataSourcesResponse();
 
@@ -1912,9 +1832,9 @@ class ListDataSourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataSource != null)
-          'dataSource': dataSource.map((value) => value.toJson()).toList(),
+          'dataSource': dataSource!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1922,22 +1842,22 @@ class ListSessionsResponse {
   /// If includeDeleted is set to true in the request, and startTime and endTime
   /// are omitted, this will include sessions which were deleted since the last
   /// sync.
-  core.List<Session> deletedSession;
+  core.List<Session>? deletedSession;
 
   /// Flag to indicate server has more data to transfer.
   ///
   /// DO NOT USE THIS FIELD. It is never populated in responses from the server.
-  core.bool hasMoreData;
+  core.bool? hasMoreData;
 
   /// The sync token which is used to sync further changes.
   ///
   /// This will only be provided if both startTime and endTime are omitted from
   /// the request.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Sessions with an end time that is between startTime and endTime of the
   /// request.
-  core.List<Session> session;
+  core.List<Session>? session;
 
   ListSessionsResponse();
 
@@ -1962,14 +1882,14 @@ class ListSessionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deletedSession != null)
           'deletedSession':
-              deletedSession.map((value) => value.toJson()).toList(),
-        if (hasMoreData != null) 'hasMoreData': hasMoreData,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              deletedSession!.map((value) => value.toJson()).toList(),
+        if (hasMoreData != null) 'hasMoreData': hasMoreData!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (session != null)
-          'session': session.map((value) => value.toJson()).toList(),
+          'session': session!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1979,7 +1899,7 @@ class ListSessionsResponse {
 /// supports.
 class MapValue {
   /// Floating point value.
-  core.double fpVal;
+  core.double? fpVal;
 
   MapValue();
 
@@ -1989,8 +1909,8 @@ class MapValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fpVal != null) 'fpVal': fpVal,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fpVal != null) 'fpVal': fpVal!,
       };
 }
 
@@ -2003,32 +1923,32 @@ class Session {
   /// the active time can be shorter and specified by active_time_millis. If the
   /// inactive time during the session is known, it should also be inserted via
   /// a com.google.activity.segment data point with a STILL activity value
-  core.String activeTimeMillis;
+  core.String? activeTimeMillis;
 
   /// The type of activity this session represents.
-  core.int activityType;
+  core.int? activityType;
 
   /// The application that created the session.
-  Application application;
+  Application? application;
 
   /// A description for this session.
-  core.String description;
+  core.String? description;
 
   /// An end time, in milliseconds since epoch, inclusive.
-  core.String endTimeMillis;
+  core.String? endTimeMillis;
 
   /// A client-generated identifier that is unique across all sessions owned by
   /// this particular user.
-  core.String id;
+  core.String? id;
 
   /// A timestamp that indicates when the session was last modified.
-  core.String modifiedTimeMillis;
+  core.String? modifiedTimeMillis;
 
   /// A human readable name of the session.
-  core.String name;
+  core.String? name;
 
   /// A start time, in milliseconds since epoch, inclusive.
-  core.String startTimeMillis;
+  core.String? startTimeMillis;
 
   Session();
 
@@ -2063,17 +1983,17 @@ class Session {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activeTimeMillis != null) 'activeTimeMillis': activeTimeMillis,
-        if (activityType != null) 'activityType': activityType,
-        if (application != null) 'application': application.toJson(),
-        if (description != null) 'description': description,
-        if (endTimeMillis != null) 'endTimeMillis': endTimeMillis,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activeTimeMillis != null) 'activeTimeMillis': activeTimeMillis!,
+        if (activityType != null) 'activityType': activityType!,
+        if (application != null) 'application': application!.toJson(),
+        if (description != null) 'description': description!,
+        if (endTimeMillis != null) 'endTimeMillis': endTimeMillis!,
+        if (id != null) 'id': id!,
         if (modifiedTimeMillis != null)
-          'modifiedTimeMillis': modifiedTimeMillis,
-        if (name != null) 'name': name,
-        if (startTimeMillis != null) 'startTimeMillis': startTimeMillis,
+          'modifiedTimeMillis': modifiedTimeMillis!,
+        if (name != null) 'name': name!,
+        if (startTimeMillis != null) 'startTimeMillis': startTimeMillis!,
       };
 }
 
@@ -2085,12 +2005,12 @@ class Value {
   /// Floating point value.
   ///
   /// When this is set, other values must not be set.
-  core.double fpVal;
+  core.double? fpVal;
 
   /// Integer value.
   ///
   /// When this is set, other values must not be set.
-  core.int intVal;
+  core.int? intVal;
 
   /// Map value.
   ///
@@ -2098,14 +2018,14 @@ class Value {
   /// should be documented as part of the data type definition. Keys should be
   /// kept small whenever possible. Data streams with large keys and high data
   /// frequency may be down sampled.
-  core.List<ValueMapValEntry> mapVal;
+  core.List<ValueMapValEntry>? mapVal;
 
   /// String value.
   ///
   /// When this is set, other values must not be set. Strings should be kept
   /// small whenever possible. Data streams with large string values and high
   /// data frequency may be down sampled.
-  core.String stringVal;
+  core.String? stringVal;
 
   Value();
 
@@ -2127,18 +2047,18 @@ class Value {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fpVal != null) 'fpVal': fpVal,
-        if (intVal != null) 'intVal': intVal,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fpVal != null) 'fpVal': fpVal!,
+        if (intVal != null) 'intVal': intVal!,
         if (mapVal != null)
-          'mapVal': mapVal.map((value) => value.toJson()).toList(),
-        if (stringVal != null) 'stringVal': stringVal,
+          'mapVal': mapVal!.map((value) => value.toJson()).toList(),
+        if (stringVal != null) 'stringVal': stringVal!,
       };
 }
 
 class ValueMapValEntry {
-  core.String key;
-  MapValue value;
+  core.String? key;
+  MapValue? value;
 
   ValueMapValEntry();
 
@@ -2152,8 +2072,8 @@ class ValueMapValEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!.toJson(),
       };
 }

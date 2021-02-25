@@ -44,8 +44,14 @@ void checkSiteVerificationWebResourceGettokenRequestSite(
     api.SiteVerificationWebResourceGettokenRequestSite o) {
   buildCounterSiteVerificationWebResourceGettokenRequestSite++;
   if (buildCounterSiteVerificationWebResourceGettokenRequestSite < 3) {
-    unittest.expect(o.identifier, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.identifier!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSiteVerificationWebResourceGettokenRequestSite--;
 }
@@ -68,8 +74,11 @@ void checkSiteVerificationWebResourceGettokenRequest(
   buildCounterSiteVerificationWebResourceGettokenRequest++;
   if (buildCounterSiteVerificationWebResourceGettokenRequest < 3) {
     checkSiteVerificationWebResourceGettokenRequestSite(
-        o.site as api.SiteVerificationWebResourceGettokenRequestSite);
-    unittest.expect(o.verificationMethod, unittest.equals('foo'));
+        o.site! as api.SiteVerificationWebResourceGettokenRequestSite);
+    unittest.expect(
+      o.verificationMethod!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSiteVerificationWebResourceGettokenRequest--;
 }
@@ -91,8 +100,14 @@ void checkSiteVerificationWebResourceGettokenResponse(
     api.SiteVerificationWebResourceGettokenResponse o) {
   buildCounterSiteVerificationWebResourceGettokenResponse++;
   if (buildCounterSiteVerificationWebResourceGettokenResponse < 3) {
-    unittest.expect(o.method, unittest.equals('foo'));
-    unittest.expect(o.token, unittest.equals('foo'));
+    unittest.expect(
+      o.method!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.token!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSiteVerificationWebResourceGettokenResponse--;
 }
@@ -128,7 +143,7 @@ void checkSiteVerificationWebResourceListResponse(
     api.SiteVerificationWebResourceListResponse o) {
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    checkUnnamed4884(o.items);
+    checkUnnamed4884(o.items!);
   }
   buildCounterSiteVerificationWebResourceListResponse--;
 }
@@ -142,8 +157,14 @@ core.List<core.String> buildUnnamed4885() {
 
 void checkUnnamed4885(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterSiteVerificationWebResourceResourceSite = 0;
@@ -163,8 +184,14 @@ void checkSiteVerificationWebResourceResourceSite(
     api.SiteVerificationWebResourceResourceSite o) {
   buildCounterSiteVerificationWebResourceResourceSite++;
   if (buildCounterSiteVerificationWebResourceResourceSite < 3) {
-    unittest.expect(o.identifier, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.identifier!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSiteVerificationWebResourceResourceSite--;
 }
@@ -187,10 +214,13 @@ void checkSiteVerificationWebResourceResource(
     api.SiteVerificationWebResourceResource o) {
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
-    unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed4885(o.owners);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4885(o.owners!);
     checkSiteVerificationWebResourceResourceSite(
-        o.site as api.SiteVerificationWebResourceResourceSite);
+        o.site! as api.SiteVerificationWebResourceResourceSite);
   }
   buildCounterSiteVerificationWebResourceResource--;
 }
@@ -266,17 +296,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("siteVerification/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("siteVerification/v1/"),
+        );
         pathOffset += 20;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("webResource/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("webResource/"),
+        );
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -293,7 +332,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -317,17 +359,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("siteVerification/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("siteVerification/v1/"),
+        );
         pathOffset += 20;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("webResource/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("webResource/"),
+        );
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -344,7 +395,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -377,13 +431,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("siteVerification/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("siteVerification/v1/"),
+        );
         pathOffset += 20;
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("token"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("token"),
+        );
         pathOffset += 5;
 
         var query = (req.url).query;
@@ -401,7 +461,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -435,13 +498,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("siteVerification/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("siteVerification/v1/"),
+        );
         pathOffset += 20;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("webResource"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("webResource"),
+        );
         pathOffset += 11;
 
         var query = (req.url).query;
@@ -459,9 +528,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["verificationMethod"].first,
-            unittest.equals(arg_verificationMethod));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["verificationMethod"]!.first,
+          unittest.equals(arg_verificationMethod),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -488,13 +562,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("siteVerification/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("siteVerification/v1/"),
+        );
         pathOffset += 20;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("webResource"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("webResource"),
+        );
         pathOffset += 11;
 
         var query = (req.url).query;
@@ -512,7 +592,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -544,17 +627,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("siteVerification/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("siteVerification/v1/"),
+        );
         pathOffset += 20;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("webResource/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("webResource/"),
+        );
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -571,7 +663,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -605,17 +700,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("siteVerification/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("siteVerification/v1/"),
+        );
         pathOffset += 20;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("webResource/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("webResource/"),
+        );
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -632,7 +736,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

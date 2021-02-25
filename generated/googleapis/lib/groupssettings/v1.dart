@@ -78,11 +78,8 @@ class GroupsResource {
   /// this method will complete with the same error.
   async.Future<Groups> get(
     core.String groupUniqueId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (groupUniqueId == null) {
-      throw core.ArgumentError('Parameter groupUniqueId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -120,13 +117,9 @@ class GroupsResource {
   async.Future<Groups> patch(
     Groups request,
     core.String groupUniqueId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (groupUniqueId == null) {
-      throw core.ArgumentError('Parameter groupUniqueId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -163,13 +156,9 @@ class GroupsResource {
   async.Future<Groups> update(
     Groups request,
     core.String groupUniqueId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (groupUniqueId == null) {
-      throw core.ArgumentError('Parameter groupUniqueId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -196,7 +185,7 @@ class Groups {
   /// this group.
   /// - false: Users not belonging to the organization are not allowed to become
   /// members of this group.
-  core.String allowExternalMembers;
+  core.String? allowExternalMembers;
 
   /// Allows Google to contact administrator of the group.
   ///
@@ -207,14 +196,14 @@ class Groups {
   /// - false: Google can not contact managers of this group.
   ///
   /// Deprecated.
-  core.String allowGoogleCommunication;
+  core.String? allowGoogleCommunication;
 
   /// Allows posting from web.
   ///
   /// Possible values are:
   /// - true: Allows any member to post to the group forum.
   /// - false: Members only use Gmail to communicate with the group.
-  core.String allowWebPosting;
+  core.String? allowWebPosting;
 
   /// Allows the group to be archived only.
   ///
@@ -228,12 +217,12 @@ class Groups {
   /// - false: The group is active and can receive messages.
   /// - When false, updating whoCanPostMessage to NONE_CAN_POST, results in an
   /// error.
-  core.String archiveOnly;
+  core.String? archiveOnly;
 
   /// Set the content of custom footer text.
   ///
   /// The maximum number of characters is 1,000.
-  core.String customFooterText;
+  core.String? customFooterText;
 
   /// An email address used when replying to a message if the replyTo property
   /// is set to REPLY_TO_CUSTOM.
@@ -244,7 +233,7 @@ class Groups {
   /// a message.
   /// - If the group's ReplyTo property is set to REPLY_TO_CUSTOM, the
   /// customReplyTo property must have a text value or an error is returned.
-  core.String customReplyTo;
+  core.String? customReplyTo;
 
   /// Specifies whether the group has a custom role that's included in one of
   /// the settings being merged.
@@ -253,7 +242,7 @@ class Groups {
   /// Possible values are:
   /// - true
   /// - false
-  core.String customRolesEnabledForSettingsToBeMerged;
+  core.String? customRolesEnabledForSettingsToBeMerged;
 
   /// When a message is rejected, this is text for the rejection notification
   /// sent to the message's author.
@@ -261,14 +250,14 @@ class Groups {
   /// By default, this property is empty and has no value in the API's response
   /// body. The maximum notification text size is 10,000 characters. Note:
   /// Requires sendMessageDenyNotification property to be true.
-  core.String defaultMessageDenyNotificationText;
+  core.String? defaultMessageDenyNotificationText;
 
   /// Description of the group.
   ///
   /// This property value may be an empty string if no group description has
   /// been entered. If entered, the maximum group description is no more than
   /// 300 characters.
-  core.String description;
+  core.String? description;
 
   /// The group's email address.
   ///
@@ -278,7 +267,7 @@ class Groups {
   /// control panel, you are changing the address your subscribers use to send
   /// email and the web address people use to access your group. People can't
   /// reach your group by visiting the old address.
-  core.String email;
+  core.String? email;
 
   /// Specifies whether a collaborative inbox will remain turned on for the
   /// group.
@@ -286,28 +275,28 @@ class Groups {
   /// Possible values are:
   /// - true
   /// - false
-  core.String enableCollaborativeInbox;
+  core.String? enableCollaborativeInbox;
 
   /// Indicates if favorite replies should be displayed above other replies.
   ///
   ///
   /// - true: Favorite replies will be displayed above other replies.
   /// - false: Favorite replies will not be displayed above other replies.
-  core.String favoriteRepliesOnTop;
+  core.String? favoriteRepliesOnTop;
 
   /// Whether to include custom footer.
   ///
   /// Possible values are:
   /// - true
   /// - false
-  core.String includeCustomFooter;
+  core.String? includeCustomFooter;
 
   /// Enables the group to be included in the Global Address List.
   ///
   /// For more information, see the help center. Possible values are:
   /// - true: Group is included in the Global Address List.
   /// - false: Group is not included in the Global Address List.
-  core.String includeInGlobalAddressList;
+  core.String? includeInGlobalAddressList;
 
   /// Allows the Group contents to be archived.
   ///
@@ -315,17 +304,17 @@ class Groups {
   /// - true: Archive messages sent to the group.
   /// - false: Do not keep an archive of messages sent to this group. If false,
   /// previously archived messages remain in the archive.
-  core.String isArchived;
+  core.String? isArchived;
 
   /// The type of the resource.
   ///
   /// It is always groupsSettings#groups.
-  core.String kind;
+  core.String? kind;
 
   /// The maximum size of a message is 25Mb.
   ///
   /// Deprecated.
-  core.int maxMessageBytes;
+  core.int? maxMessageBytes;
 
   /// Enables members to post messages as the group.
   ///
@@ -336,12 +325,12 @@ class Groups {
   /// individual users or new members do not apply to posts made on behalf of
   /// the group.
   /// - false: Members can not post in behalf of the group's email address.
-  core.String membersCanPostAsTheGroup;
+  core.String? membersCanPostAsTheGroup;
 
   /// The default message display font always has a value of "DEFAULT_FONT".
   ///
   /// Deprecated.
-  core.String messageDisplayFont;
+  core.String? messageDisplayFont;
 
   /// Moderation level of incoming messages.
   ///
@@ -361,16 +350,16 @@ class Groups {
   /// When memberCanPostAsTheGroup is true, any message moderation settings on
   /// individual users or new members will not apply to posts made on behalf of
   /// the group.
-  core.String messageModerationLevel;
+  core.String? messageModerationLevel;
 
   /// Name of the group, which has a maximum size of 75 characters.
-  core.String name;
+  core.String? name;
 
   /// The primary language for group.
   ///
   /// For a group's primary language use the language tags from the G Suite
   /// languages found at G Suite Email Settings API Email Language Tags.
-  core.String primaryLanguage;
+  core.String? primaryLanguage;
 
   /// Specifies who receives the default reply.
   ///
@@ -391,7 +380,7 @@ class Groups {
   /// is sent.
   /// - REPLY_TO_MANAGERS: This reply message is sent to the group's managers,
   /// which includes all managers and the group owner.
-  core.String replyTo;
+  core.String? replyTo;
 
   /// Allows a member to be notified if the member's message to the group is
   /// denied by the group owner.
@@ -403,7 +392,7 @@ class Groups {
   /// sendMessageDenyNotification property being true.
   ///
   /// - false: When a message is rejected, no notification is sent.
-  core.String sendMessageDenyNotification;
+  core.String? sendMessageDenyNotification;
 
   /// This is merged into the new whoCanDiscoverGroup setting.
   ///
@@ -413,7 +402,7 @@ class Groups {
   /// - false: All groups in the account are not listed in the directory.
   ///
   /// Deprecated.
-  core.String showInGroupDirectory;
+  core.String? showInGroupDirectory;
 
   /// Specifies moderation levels for messages detected as spam.
   ///
@@ -423,7 +412,7 @@ class Groups {
   /// - SILENTLY_MODERATE: Send the message to the moderation queue, but do not
   /// send notification to moderators.
   /// - REJECT: Immediately reject the message.
-  core.String spamModerationLevel;
+  core.String? spamModerationLevel;
 
   /// This is merged into the new whoCanModerateMembers setting.
   ///
@@ -435,14 +424,14 @@ class Groups {
   /// - NONE_CAN_ADD: No one can directly add new members.
   ///
   /// Deprecated.
-  core.String whoCanAdd;
+  core.String? whoCanAdd;
 
   /// This functionality is no longer supported in the Google Groups UI.
   ///
   /// The value is always "NONE".
   ///
   /// Deprecated.
-  core.String whoCanAddReferences;
+  core.String? whoCanAddReferences;
 
   /// Specifies who can approve members who ask to join groups.
   ///
@@ -452,7 +441,7 @@ class Groups {
   /// - ALL_MANAGERS_CAN_APPROVE
   /// - ALL_OWNERS_CAN_APPROVE
   /// - NONE_CAN_APPROVE
-  core.String whoCanApproveMembers;
+  core.String? whoCanApproveMembers;
 
   /// This is merged into the new whoCanModerateContent setting.
   ///
@@ -464,7 +453,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanApproveMessages;
+  core.String? whoCanApproveMessages;
 
   /// This is merged into the new whoCanAssistContent setting.
   ///
@@ -477,7 +466,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanAssignTopics;
+  core.String? whoCanAssignTopics;
 
   /// Specifies who can moderate metadata.
   ///
@@ -487,7 +476,7 @@ class Groups {
   /// - MANAGERS_ONLY
   /// - OWNERS_ONLY
   /// - NONE
-  core.String whoCanAssistContent;
+  core.String? whoCanAssistContent;
 
   /// Specifies who can deny membership to users.
   ///
@@ -497,7 +486,7 @@ class Groups {
   /// - OWNERS_AND_MANAGERS
   /// - OWNERS_ONLY
   /// - NONE
-  core.String whoCanBanUsers;
+  core.String? whoCanBanUsers;
 
   /// Permission to contact owner of the group via web UI.
   ///
@@ -507,7 +496,7 @@ class Groups {
   /// - ALL_MEMBERS_CAN_CONTACT
   /// - ANYONE_CAN_CONTACT
   /// - ALL_OWNERS_CAN_CONTACT
-  core.String whoCanContactOwner;
+  core.String? whoCanContactOwner;
 
   /// This is merged into the new whoCanModerateContent setting.
   ///
@@ -519,7 +508,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanDeleteAnyPost;
+  core.String? whoCanDeleteAnyPost;
 
   /// This is merged into the new whoCanModerateContent setting.
   ///
@@ -530,7 +519,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanDeleteTopics;
+  core.String? whoCanDeleteTopics;
 
   /// Specifies the set of users for whom this group is discoverable.
   ///
@@ -538,7 +527,7 @@ class Groups {
   /// - ANYONE_CAN_DISCOVER
   /// - ALL_IN_DOMAIN_CAN_DISCOVER
   /// - ALL_MEMBERS_CAN_DISCOVER
-  core.String whoCanDiscoverGroup;
+  core.String? whoCanDiscoverGroup;
 
   /// This is merged into the new whoCanAssistContent setting.
   ///
@@ -551,7 +540,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanEnterFreeFormTags;
+  core.String? whoCanEnterFreeFormTags;
 
   /// This is merged into the new whoCanModerateContent setting.
   ///
@@ -563,7 +552,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanHideAbuse;
+  core.String? whoCanHideAbuse;
 
   /// This is merged into the new whoCanModerateMembers setting.
   ///
@@ -576,7 +565,7 @@ class Groups {
   /// - NONE_CAN_INVITE: No one can invite a new member candidate.
   ///
   /// Deprecated.
-  core.String whoCanInvite;
+  core.String? whoCanInvite;
 
   /// Permission to join group.
   ///
@@ -591,7 +580,7 @@ class Groups {
   /// external addresses already added to users' groups remain in those groups.
   /// - INVITED_CAN_JOIN: Candidates for membership can be invited to join.
   /// - CAN_REQUEST_TO_JOIN: Non members can request an invitation to join.
-  core.String whoCanJoin;
+  core.String? whoCanJoin;
 
   /// Permission to leave the group.
   ///
@@ -599,7 +588,7 @@ class Groups {
   /// - ALL_MANAGERS_CAN_LEAVE
   /// - ALL_MEMBERS_CAN_LEAVE
   /// - NONE_CAN_LEAVE
-  core.String whoCanLeaveGroup;
+  core.String? whoCanLeaveGroup;
 
   /// This is merged into the new whoCanModerateContent setting.
   ///
@@ -611,7 +600,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanLockTopics;
+  core.String? whoCanLockTopics;
 
   /// This is merged into the new whoCanModerateContent setting.
   ///
@@ -623,7 +612,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanMakeTopicsSticky;
+  core.String? whoCanMakeTopicsSticky;
 
   /// This is merged into the new whoCanAssistContent setting.
   ///
@@ -636,7 +625,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanMarkDuplicate;
+  core.String? whoCanMarkDuplicate;
 
   /// This is merged into the new whoCanAssistContent setting.
   ///
@@ -649,7 +638,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanMarkFavoriteReplyOnAnyTopic;
+  core.String? whoCanMarkFavoriteReplyOnAnyTopic;
 
   /// This is merged into the new whoCanAssistContent setting.
   ///
@@ -662,7 +651,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanMarkFavoriteReplyOnOwnTopic;
+  core.String? whoCanMarkFavoriteReplyOnOwnTopic;
 
   /// This is merged into the new whoCanAssistContent setting.
   ///
@@ -674,7 +663,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanMarkNoResponseNeeded;
+  core.String? whoCanMarkNoResponseNeeded;
 
   /// Specifies who can moderate content.
   ///
@@ -683,7 +672,7 @@ class Groups {
   /// - OWNERS_AND_MANAGERS
   /// - OWNERS_ONLY
   /// - NONE
-  core.String whoCanModerateContent;
+  core.String? whoCanModerateContent;
 
   /// Specifies who can manage members.
   ///
@@ -692,7 +681,7 @@ class Groups {
   /// - OWNERS_AND_MANAGERS
   /// - OWNERS_ONLY
   /// - NONE
-  core.String whoCanModerateMembers;
+  core.String? whoCanModerateMembers;
 
   /// This is merged into the new whoCanModerateMembers setting.
   ///
@@ -703,7 +692,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanModifyMembers;
+  core.String? whoCanModifyMembers;
 
   /// This is merged into the new whoCanAssistContent setting.
   ///
@@ -715,7 +704,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanModifyTagsAndCategories;
+  core.String? whoCanModifyTagsAndCategories;
 
   /// This is merged into the new whoCanModerateContent setting.
   ///
@@ -727,7 +716,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanMoveTopicsIn;
+  core.String? whoCanMoveTopicsIn;
 
   /// This is merged into the new whoCanModerateContent setting.
   ///
@@ -739,7 +728,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanMoveTopicsOut;
+  core.String? whoCanMoveTopicsOut;
 
   /// This is merged into the new whoCanModerateContent setting.
   ///
@@ -751,7 +740,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanPostAnnouncements;
+  core.String? whoCanPostAnnouncements;
 
   /// Permissions to post messages.
   ///
@@ -772,7 +761,7 @@ class Groups {
   /// whoCanPostMessage is set to ANYONE_CAN_POST, we recommend the
   /// messageModerationLevel be set to MODERATE_NON_MEMBERS to protect the group
   /// from possible spam.
-  core.String whoCanPostMessage;
+  core.String? whoCanPostMessage;
 
   /// This is merged into the new whoCanAssistContent setting.
   ///
@@ -784,7 +773,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanTakeTopics;
+  core.String? whoCanTakeTopics;
 
   /// This is merged into the new whoCanAssistContent setting.
   ///
@@ -796,7 +785,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanUnassignTopic;
+  core.String? whoCanUnassignTopic;
 
   /// This is merged into the new whoCanAssistContent setting.
   ///
@@ -808,7 +797,7 @@ class Groups {
   /// - NONE
   ///
   /// Deprecated.
-  core.String whoCanUnmarkFavoriteReplyOnAnyTopic;
+  core.String? whoCanUnmarkFavoriteReplyOnAnyTopic;
 
   /// Permissions to view group messages.
   ///
@@ -818,7 +807,7 @@ class Groups {
   /// messages.
   /// - ALL_MEMBERS_CAN_VIEW: All group members can view the group's messages.
   /// - ALL_MANAGERS_CAN_VIEW: Any group manager can view this group's messages.
-  core.String whoCanViewGroup;
+  core.String? whoCanViewGroup;
 
   /// Permissions to view membership.
   ///
@@ -830,7 +819,7 @@ class Groups {
   ///
   /// - ALL_MEMBERS_CAN_VIEW: The group members can view the group members list.
   /// - ALL_MANAGERS_CAN_VIEW: The group managers can view group members list.
-  core.String whoCanViewMembership;
+  core.String? whoCanViewMembership;
 
   Groups();
 
@@ -1032,111 +1021,111 @@ class Groups {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowExternalMembers != null)
-          'allowExternalMembers': allowExternalMembers,
+          'allowExternalMembers': allowExternalMembers!,
         if (allowGoogleCommunication != null)
-          'allowGoogleCommunication': allowGoogleCommunication,
-        if (allowWebPosting != null) 'allowWebPosting': allowWebPosting,
-        if (archiveOnly != null) 'archiveOnly': archiveOnly,
-        if (customFooterText != null) 'customFooterText': customFooterText,
-        if (customReplyTo != null) 'customReplyTo': customReplyTo,
+          'allowGoogleCommunication': allowGoogleCommunication!,
+        if (allowWebPosting != null) 'allowWebPosting': allowWebPosting!,
+        if (archiveOnly != null) 'archiveOnly': archiveOnly!,
+        if (customFooterText != null) 'customFooterText': customFooterText!,
+        if (customReplyTo != null) 'customReplyTo': customReplyTo!,
         if (customRolesEnabledForSettingsToBeMerged != null)
           'customRolesEnabledForSettingsToBeMerged':
-              customRolesEnabledForSettingsToBeMerged,
+              customRolesEnabledForSettingsToBeMerged!,
         if (defaultMessageDenyNotificationText != null)
           'defaultMessageDenyNotificationText':
-              defaultMessageDenyNotificationText,
-        if (description != null) 'description': description,
-        if (email != null) 'email': email,
+              defaultMessageDenyNotificationText!,
+        if (description != null) 'description': description!,
+        if (email != null) 'email': email!,
         if (enableCollaborativeInbox != null)
-          'enableCollaborativeInbox': enableCollaborativeInbox,
+          'enableCollaborativeInbox': enableCollaborativeInbox!,
         if (favoriteRepliesOnTop != null)
-          'favoriteRepliesOnTop': favoriteRepliesOnTop,
+          'favoriteRepliesOnTop': favoriteRepliesOnTop!,
         if (includeCustomFooter != null)
-          'includeCustomFooter': includeCustomFooter,
+          'includeCustomFooter': includeCustomFooter!,
         if (includeInGlobalAddressList != null)
-          'includeInGlobalAddressList': includeInGlobalAddressList,
-        if (isArchived != null) 'isArchived': isArchived,
-        if (kind != null) 'kind': kind,
-        if (maxMessageBytes != null) 'maxMessageBytes': maxMessageBytes,
+          'includeInGlobalAddressList': includeInGlobalAddressList!,
+        if (isArchived != null) 'isArchived': isArchived!,
+        if (kind != null) 'kind': kind!,
+        if (maxMessageBytes != null) 'maxMessageBytes': maxMessageBytes!,
         if (membersCanPostAsTheGroup != null)
-          'membersCanPostAsTheGroup': membersCanPostAsTheGroup,
+          'membersCanPostAsTheGroup': membersCanPostAsTheGroup!,
         if (messageDisplayFont != null)
-          'messageDisplayFont': messageDisplayFont,
+          'messageDisplayFont': messageDisplayFont!,
         if (messageModerationLevel != null)
-          'messageModerationLevel': messageModerationLevel,
-        if (name != null) 'name': name,
-        if (primaryLanguage != null) 'primaryLanguage': primaryLanguage,
-        if (replyTo != null) 'replyTo': replyTo,
+          'messageModerationLevel': messageModerationLevel!,
+        if (name != null) 'name': name!,
+        if (primaryLanguage != null) 'primaryLanguage': primaryLanguage!,
+        if (replyTo != null) 'replyTo': replyTo!,
         if (sendMessageDenyNotification != null)
-          'sendMessageDenyNotification': sendMessageDenyNotification,
+          'sendMessageDenyNotification': sendMessageDenyNotification!,
         if (showInGroupDirectory != null)
-          'showInGroupDirectory': showInGroupDirectory,
+          'showInGroupDirectory': showInGroupDirectory!,
         if (spamModerationLevel != null)
-          'spamModerationLevel': spamModerationLevel,
-        if (whoCanAdd != null) 'whoCanAdd': whoCanAdd,
+          'spamModerationLevel': spamModerationLevel!,
+        if (whoCanAdd != null) 'whoCanAdd': whoCanAdd!,
         if (whoCanAddReferences != null)
-          'whoCanAddReferences': whoCanAddReferences,
+          'whoCanAddReferences': whoCanAddReferences!,
         if (whoCanApproveMembers != null)
-          'whoCanApproveMembers': whoCanApproveMembers,
+          'whoCanApproveMembers': whoCanApproveMembers!,
         if (whoCanApproveMessages != null)
-          'whoCanApproveMessages': whoCanApproveMessages,
+          'whoCanApproveMessages': whoCanApproveMessages!,
         if (whoCanAssignTopics != null)
-          'whoCanAssignTopics': whoCanAssignTopics,
+          'whoCanAssignTopics': whoCanAssignTopics!,
         if (whoCanAssistContent != null)
-          'whoCanAssistContent': whoCanAssistContent,
-        if (whoCanBanUsers != null) 'whoCanBanUsers': whoCanBanUsers,
+          'whoCanAssistContent': whoCanAssistContent!,
+        if (whoCanBanUsers != null) 'whoCanBanUsers': whoCanBanUsers!,
         if (whoCanContactOwner != null)
-          'whoCanContactOwner': whoCanContactOwner,
+          'whoCanContactOwner': whoCanContactOwner!,
         if (whoCanDeleteAnyPost != null)
-          'whoCanDeleteAnyPost': whoCanDeleteAnyPost,
+          'whoCanDeleteAnyPost': whoCanDeleteAnyPost!,
         if (whoCanDeleteTopics != null)
-          'whoCanDeleteTopics': whoCanDeleteTopics,
+          'whoCanDeleteTopics': whoCanDeleteTopics!,
         if (whoCanDiscoverGroup != null)
-          'whoCanDiscoverGroup': whoCanDiscoverGroup,
+          'whoCanDiscoverGroup': whoCanDiscoverGroup!,
         if (whoCanEnterFreeFormTags != null)
-          'whoCanEnterFreeFormTags': whoCanEnterFreeFormTags,
-        if (whoCanHideAbuse != null) 'whoCanHideAbuse': whoCanHideAbuse,
-        if (whoCanInvite != null) 'whoCanInvite': whoCanInvite,
-        if (whoCanJoin != null) 'whoCanJoin': whoCanJoin,
-        if (whoCanLeaveGroup != null) 'whoCanLeaveGroup': whoCanLeaveGroup,
-        if (whoCanLockTopics != null) 'whoCanLockTopics': whoCanLockTopics,
+          'whoCanEnterFreeFormTags': whoCanEnterFreeFormTags!,
+        if (whoCanHideAbuse != null) 'whoCanHideAbuse': whoCanHideAbuse!,
+        if (whoCanInvite != null) 'whoCanInvite': whoCanInvite!,
+        if (whoCanJoin != null) 'whoCanJoin': whoCanJoin!,
+        if (whoCanLeaveGroup != null) 'whoCanLeaveGroup': whoCanLeaveGroup!,
+        if (whoCanLockTopics != null) 'whoCanLockTopics': whoCanLockTopics!,
         if (whoCanMakeTopicsSticky != null)
-          'whoCanMakeTopicsSticky': whoCanMakeTopicsSticky,
+          'whoCanMakeTopicsSticky': whoCanMakeTopicsSticky!,
         if (whoCanMarkDuplicate != null)
-          'whoCanMarkDuplicate': whoCanMarkDuplicate,
+          'whoCanMarkDuplicate': whoCanMarkDuplicate!,
         if (whoCanMarkFavoriteReplyOnAnyTopic != null)
           'whoCanMarkFavoriteReplyOnAnyTopic':
-              whoCanMarkFavoriteReplyOnAnyTopic,
+              whoCanMarkFavoriteReplyOnAnyTopic!,
         if (whoCanMarkFavoriteReplyOnOwnTopic != null)
           'whoCanMarkFavoriteReplyOnOwnTopic':
-              whoCanMarkFavoriteReplyOnOwnTopic,
+              whoCanMarkFavoriteReplyOnOwnTopic!,
         if (whoCanMarkNoResponseNeeded != null)
-          'whoCanMarkNoResponseNeeded': whoCanMarkNoResponseNeeded,
+          'whoCanMarkNoResponseNeeded': whoCanMarkNoResponseNeeded!,
         if (whoCanModerateContent != null)
-          'whoCanModerateContent': whoCanModerateContent,
+          'whoCanModerateContent': whoCanModerateContent!,
         if (whoCanModerateMembers != null)
-          'whoCanModerateMembers': whoCanModerateMembers,
+          'whoCanModerateMembers': whoCanModerateMembers!,
         if (whoCanModifyMembers != null)
-          'whoCanModifyMembers': whoCanModifyMembers,
+          'whoCanModifyMembers': whoCanModifyMembers!,
         if (whoCanModifyTagsAndCategories != null)
-          'whoCanModifyTagsAndCategories': whoCanModifyTagsAndCategories,
+          'whoCanModifyTagsAndCategories': whoCanModifyTagsAndCategories!,
         if (whoCanMoveTopicsIn != null)
-          'whoCanMoveTopicsIn': whoCanMoveTopicsIn,
+          'whoCanMoveTopicsIn': whoCanMoveTopicsIn!,
         if (whoCanMoveTopicsOut != null)
-          'whoCanMoveTopicsOut': whoCanMoveTopicsOut,
+          'whoCanMoveTopicsOut': whoCanMoveTopicsOut!,
         if (whoCanPostAnnouncements != null)
-          'whoCanPostAnnouncements': whoCanPostAnnouncements,
-        if (whoCanPostMessage != null) 'whoCanPostMessage': whoCanPostMessage,
-        if (whoCanTakeTopics != null) 'whoCanTakeTopics': whoCanTakeTopics,
+          'whoCanPostAnnouncements': whoCanPostAnnouncements!,
+        if (whoCanPostMessage != null) 'whoCanPostMessage': whoCanPostMessage!,
+        if (whoCanTakeTopics != null) 'whoCanTakeTopics': whoCanTakeTopics!,
         if (whoCanUnassignTopic != null)
-          'whoCanUnassignTopic': whoCanUnassignTopic,
+          'whoCanUnassignTopic': whoCanUnassignTopic!,
         if (whoCanUnmarkFavoriteReplyOnAnyTopic != null)
           'whoCanUnmarkFavoriteReplyOnAnyTopic':
-              whoCanUnmarkFavoriteReplyOnAnyTopic,
-        if (whoCanViewGroup != null) 'whoCanViewGroup': whoCanViewGroup,
+              whoCanUnmarkFavoriteReplyOnAnyTopic!,
+        if (whoCanViewGroup != null) 'whoCanViewGroup': whoCanViewGroup!,
         if (whoCanViewMembership != null)
-          'whoCanViewMembership': whoCanViewMembership,
+          'whoCanViewMembership': whoCanViewMembership!,
       };
 }

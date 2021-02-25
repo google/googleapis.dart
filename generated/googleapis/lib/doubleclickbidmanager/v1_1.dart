@@ -87,10 +87,9 @@ class LineitemsResource {
   /// this method will complete with the same error.
   async.Future<DownloadLineItemsResponse> downloadlineitems(
     DownloadLineItemsRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -127,10 +126,9 @@ class LineitemsResource {
   /// this method will complete with the same error.
   async.Future<UploadLineItemsResponse> uploadlineitems(
     UploadLineItemsRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -174,11 +172,10 @@ class QueriesResource {
   /// this method will complete with the same error.
   async.Future<Query> createquery(
     Query request, {
-    core.bool asynchronous,
-    core.String $fields,
+    core.bool? asynchronous,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (asynchronous != null) 'asynchronous': ['${asynchronous}'],
       if ($fields != null) 'fields': [$fields],
@@ -211,11 +208,8 @@ class QueriesResource {
   /// this method will complete with the same error.
   async.Future<void> deletequery(
     core.String queryId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (queryId == null) {
-      throw core.ArgumentError('Parameter queryId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -248,11 +242,8 @@ class QueriesResource {
   /// this method will complete with the same error.
   async.Future<Query> getquery(
     core.String queryId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (queryId == null) {
-      throw core.ArgumentError('Parameter queryId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -287,9 +278,9 @@ class QueriesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListQueriesResponse> listqueries({
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -329,14 +320,10 @@ class QueriesResource {
   async.Future<void> runquery(
     RunQueryRequest request,
     core.String queryId, {
-    core.bool asynchronous,
-    core.String $fields,
+    core.bool? asynchronous,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (queryId == null) {
-      throw core.ArgumentError('Parameter queryId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (asynchronous != null) 'asynchronous': ['${asynchronous}'],
       if ($fields != null) 'fields': [$fields],
@@ -382,13 +369,10 @@ class ReportsResource {
   /// this method will complete with the same error.
   async.Future<ListReportsResponse> listreports(
     core.String queryId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (queryId == null) {
-      throw core.ArgumentError('Parameter queryId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -431,10 +415,9 @@ class SdfResource {
   /// this method will complete with the same error.
   async.Future<DownloadResponse> download(
     DownloadRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -457,15 +440,15 @@ class SdfResource {
 class ChannelGrouping {
   /// The name to apply to an event that does not match any of the rules in the
   /// channel grouping.
-  core.String fallbackName;
+  core.String? fallbackName;
 
   /// Channel Grouping name.
-  core.String name;
+  core.String? name;
 
   /// Rules within Channel Grouping.
   ///
   /// There is a limit of 100 rules that can be set per channel grouping.
-  core.List<Rule> rules;
+  core.List<Rule>? rules;
 
   ChannelGrouping();
 
@@ -484,11 +467,11 @@ class ChannelGrouping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fallbackName != null) 'fallbackName': fallbackName,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fallbackName != null) 'fallbackName': fallbackName!,
+        if (name != null) 'name': name!,
         if (rules != null)
-          'rules': rules.map((value) => value.toJson()).toList(),
+          'rules': rules!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -498,7 +481,7 @@ class DisjunctiveMatchStatement {
   ///
   /// There is a limit of 100 filters that can be set per disjunctive match
   /// statement.
-  core.List<EventFilter> eventFilters;
+  core.List<EventFilter>? eventFilters;
 
   DisjunctiveMatchStatement();
 
@@ -511,9 +494,9 @@ class DisjunctiveMatchStatement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (eventFilters != null)
-          'eventFilters': eventFilters.map((value) => value.toJson()).toList(),
+          'eventFilters': eventFilters!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -525,26 +508,26 @@ class DownloadLineItemsRequest {
   /// Default to EWF.
   /// Possible string values are:
   /// - "EWF"
-  core.String fileSpec;
+  core.String? fileSpec;
 
   /// Ids of the specified filter type used to filter line items to fetch.
   ///
   /// If omitted, all the line items will be returned.
-  core.List<core.String> filterIds;
+  core.List<core.String>? filterIds;
 
   /// Filter type used to filter line items to fetch.
   /// Possible string values are:
   /// - "ADVERTISER_ID"
   /// - "INSERTION_ORDER_ID"
   /// - "LINE_ITEM_ID"
-  core.String filterType;
+  core.String? filterType;
 
   /// Format in which the line items will be returned.
   ///
   /// Default to CSV.
   /// Possible string values are:
   /// - "CSV"
-  core.String format;
+  core.String? format;
 
   DownloadLineItemsRequest();
 
@@ -565,11 +548,11 @@ class DownloadLineItemsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fileSpec != null) 'fileSpec': fileSpec,
-        if (filterIds != null) 'filterIds': filterIds,
-        if (filterType != null) 'filterType': filterType,
-        if (format != null) 'format': format,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fileSpec != null) 'fileSpec': fileSpec!,
+        if (filterIds != null) 'filterIds': filterIds!,
+        if (filterType != null) 'filterType': filterType!,
+        if (format != null) 'format': format!,
       };
 }
 
@@ -578,7 +561,7 @@ class DownloadLineItemsResponse {
   /// Retrieved line items in CSV format.
   ///
   /// For more information about file formats, see Entity Write File Format.
-  core.String lineItems;
+  core.String? lineItems;
 
   DownloadLineItemsResponse();
 
@@ -588,8 +571,8 @@ class DownloadLineItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lineItems != null) 'lineItems': lineItems,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lineItems != null) 'lineItems': lineItems!,
       };
 }
 
@@ -601,13 +584,13 @@ class DownloadRequest {
   /// If INVENTORY_SOURCE is requested, no other file types may be requested.
   /// Acceptable values are: - "AD" - "AD_GROUP" - "CAMPAIGN" -
   /// "INSERTION_ORDER" - "INVENTORY_SOURCE" - "LINE_ITEM"
-  core.List<core.String> fileTypes;
+  core.List<core.String>? fileTypes;
 
   /// The IDs of the specified filter type.
   ///
   /// This is used to filter entities to fetch. At least one ID must be
   /// specified.
-  core.List<core.String> filterIds;
+  core.List<core.String>? filterIds;
 
   /// Filter type used to filter entities to fetch.
   ///
@@ -620,13 +603,13 @@ class DownloadRequest {
   /// - "CAMPAIGN_ID"
   /// - "INVENTORY_SOURCE_ID"
   /// - "PARTNER_ID"
-  core.String filterType;
+  core.String? filterType;
 
   /// SDF Version (column names, types, order) in which the entities will be
   /// returned.
   ///
   /// Default to 5.
-  core.String version;
+  core.String? version;
 
   DownloadRequest();
 
@@ -649,31 +632,31 @@ class DownloadRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fileTypes != null) 'fileTypes': fileTypes,
-        if (filterIds != null) 'filterIds': filterIds,
-        if (filterType != null) 'filterType': filterType,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fileTypes != null) 'fileTypes': fileTypes!,
+        if (filterIds != null) 'filterIds': filterIds!,
+        if (filterType != null) 'filterType': filterType!,
+        if (version != null) 'version': version!,
       };
 }
 
 /// Download response.
 class DownloadResponse {
   /// Retrieved ad groups in SDF format.
-  core.String adGroups;
+  core.String? adGroups;
 
   /// Retrieved ads in SDF format.
-  core.String ads;
+  core.String? ads;
 
   /// Retrieved campaigns in SDF format.
-  core.String campaigns;
+  core.String? campaigns;
 
   /// Retrieved insertion orders in SDF format.
-  core.String insertionOrders;
-  core.String inventorySources;
+  core.String? insertionOrders;
+  core.String? inventorySources;
 
   /// Retrieved line items in SDF format.
-  core.String lineItems;
+  core.String? lineItems;
 
   DownloadResponse();
 
@@ -698,13 +681,13 @@ class DownloadResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (adGroups != null) 'adGroups': adGroups,
-        if (ads != null) 'ads': ads,
-        if (campaigns != null) 'campaigns': campaigns,
-        if (insertionOrders != null) 'insertionOrders': insertionOrders,
-        if (inventorySources != null) 'inventorySources': inventorySources,
-        if (lineItems != null) 'lineItems': lineItems,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (adGroups != null) 'adGroups': adGroups!,
+        if (ads != null) 'ads': ads!,
+        if (campaigns != null) 'campaigns': campaigns!,
+        if (insertionOrders != null) 'insertionOrders': insertionOrders!,
+        if (inventorySources != null) 'inventorySources': inventorySources!,
+        if (lineItems != null) 'lineItems': lineItems!,
       };
 }
 
@@ -712,7 +695,7 @@ class DownloadResponse {
 /// dimension filter.
 class EventFilter {
   /// Filter on a dimension.
-  PathQueryOptionsFilter dimensionFilter;
+  PathQueryOptionsFilter? dimensionFilter;
 
   EventFilter();
 
@@ -723,9 +706,9 @@ class EventFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensionFilter != null)
-          'dimensionFilter': dimensionFilter.toJson(),
+          'dimensionFilter': dimensionFilter!.toJson(),
       };
 }
 
@@ -995,10 +978,10 @@ class FilterPair {
   /// - "FILTER_CHANNEL_GROUPING"
   /// - "FILTER_OM_SDK_AVAILABLE"
   /// - "FILTER_DATA_SOURCE"
-  core.String type;
+  core.String? type;
 
   /// Filter value.
-  core.String value;
+  core.String? value;
 
   FilterPair();
 
@@ -1011,9 +994,9 @@ class FilterPair {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1022,13 +1005,13 @@ class ListQueriesResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "doubleclickbidmanager#listQueriesResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Next page's pagination token if one exists.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Retrieved queries.
-  core.List<Query> queries;
+  core.List<Query>? queries;
 
   ListQueriesResponse();
 
@@ -1047,11 +1030,11 @@ class ListQueriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (queries != null)
-          'queries': queries.map((value) => value.toJson()).toList(),
+          'queries': queries!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1060,13 +1043,13 @@ class ListReportsResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "doubleclickbidmanager#listReportsResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Next page's pagination token if one exists.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Retrieved reports.
-  core.List<Report> reports;
+  core.List<Report>? reports;
 
   ListReportsResponse();
 
@@ -1085,11 +1068,11 @@ class ListReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (reports != null)
-          'reports': reports.map((value) => value.toJson()).toList(),
+          'reports': reports!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1098,10 +1081,10 @@ class Options {
   /// Set to true and filter your report by `FILTER_INSERTION_ORDER` or
   /// `FILTER_LINE_ITEM` to include data for audience lists specifically
   /// targeted by those items.
-  core.bool includeOnlyTargetedUserLists;
+  core.bool? includeOnlyTargetedUserLists;
 
   /// Options that contain Path Filters and Custom Channel Groupings.
-  PathQueryOptions pathQueryOptions;
+  PathQueryOptions? pathQueryOptions;
 
   Options();
 
@@ -1116,32 +1099,32 @@ class Options {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (includeOnlyTargetedUserLists != null)
-          'includeOnlyTargetedUserLists': includeOnlyTargetedUserLists,
+          'includeOnlyTargetedUserLists': includeOnlyTargetedUserLists!,
         if (pathQueryOptions != null)
-          'pathQueryOptions': pathQueryOptions.toJson(),
+          'pathQueryOptions': pathQueryOptions!.toJson(),
       };
 }
 
 /// Parameters of a query or report.
 class Parameters {
   /// Filters used to match traffic data in your report.
-  core.List<FilterPair> filters;
+  core.List<FilterPair>? filters;
 
   /// Data is grouped by the filters listed in this field.
-  core.List<core.String> groupBys;
+  core.List<core.String>? groupBys;
 
   /// This field is no longer in use.
   ///
   /// Deprecated.
-  core.bool includeInviteData;
+  core.bool? includeInviteData;
 
   /// Metrics to include as columns in your report.
-  core.List<core.String> metrics;
+  core.List<core.String>? metrics;
 
   /// Additional query options.
-  Options options;
+  Options? options;
 
   /// Report type.
   /// Possible string values are:
@@ -1179,7 +1162,7 @@ class Parameters {
   /// - "TYPE_LINEAR_TV_SEARCH_LIFT"
   /// - "TYPE_PATH"
   /// - "TYPE_PATH_ATTRIBUTION"
-  core.String type;
+  core.String? type;
 
   Parameters();
 
@@ -1212,14 +1195,14 @@ class Parameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (filters != null)
-          'filters': filters.map((value) => value.toJson()).toList(),
-        if (groupBys != null) 'groupBys': groupBys,
-        if (includeInviteData != null) 'includeInviteData': includeInviteData,
-        if (metrics != null) 'metrics': metrics,
-        if (options != null) 'options': options.toJson(),
-        if (type != null) 'type': type,
+          'filters': filters!.map((value) => value.toJson()).toList(),
+        if (groupBys != null) 'groupBys': groupBys!,
+        if (includeInviteData != null) 'includeInviteData': includeInviteData!,
+        if (metrics != null) 'metrics': metrics!,
+        if (options != null) 'options': options!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1231,7 +1214,7 @@ class Parameters {
 /// position. All other paths will be excluded.
 class PathFilter {
   /// Filter on an event to be applied to some part of the path.
-  core.List<EventFilter> eventFilters;
+  core.List<EventFilter>? eventFilters;
 
   /// Indicates the position of the path the filter should match to (first,
   /// last, or any event in path).
@@ -1239,7 +1222,7 @@ class PathFilter {
   /// - "ANY"
   /// - "FIRST"
   /// - "LAST"
-  core.String pathMatchPosition;
+  core.String? pathMatchPosition;
 
   PathFilter();
 
@@ -1255,22 +1238,22 @@ class PathFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (eventFilters != null)
-          'eventFilters': eventFilters.map((value) => value.toJson()).toList(),
-        if (pathMatchPosition != null) 'pathMatchPosition': pathMatchPosition,
+          'eventFilters': eventFilters!.map((value) => value.toJson()).toList(),
+        if (pathMatchPosition != null) 'pathMatchPosition': pathMatchPosition!,
       };
 }
 
 /// Path Query Options for Report Options.
 class PathQueryOptions {
   /// Custom Channel Groupings.
-  ChannelGrouping channelGrouping;
+  ChannelGrouping? channelGrouping;
 
   /// Path Filters.
   ///
   /// There is a limit of 100 path filters that can be set per report.
-  core.List<PathFilter> pathFilters;
+  core.List<PathFilter>? pathFilters;
 
   PathQueryOptions();
 
@@ -1287,11 +1270,11 @@ class PathQueryOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (channelGrouping != null)
-          'channelGrouping': channelGrouping.toJson(),
+          'channelGrouping': channelGrouping!.toJson(),
         if (pathFilters != null)
-          'pathFilters': pathFilters.map((value) => value.toJson()).toList(),
+          'pathFilters': pathFilters!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1561,7 +1544,7 @@ class PathQueryOptionsFilter {
   /// - "FILTER_CHANNEL_GROUPING"
   /// - "FILTER_OM_SDK_AVAILABLE"
   /// - "FILTER_DATA_SOURCE"
-  core.String filter;
+  core.String? filter;
 
   /// Indicates how the filter should be matched to the value.
   /// Possible string values are:
@@ -1570,10 +1553,10 @@ class PathQueryOptionsFilter {
   /// - "PARTIAL"
   /// - "BEGINS_WITH"
   /// - "WILDCARD_EXPRESSION"
-  core.String match;
+  core.String? match;
 
   /// Value to filter on.
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   PathQueryOptionsFilter();
 
@@ -1591,10 +1574,10 @@ class PathQueryOptionsFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filter != null) 'filter': filter,
-        if (match != null) 'match': match,
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (match != null) 'match': match!,
+        if (values != null) 'values': values!,
       };
 }
 
@@ -1603,36 +1586,36 @@ class Query {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "doubleclickbidmanager#query".
-  core.String kind;
+  core.String? kind;
 
   /// Query metadata.
-  QueryMetadata metadata;
+  QueryMetadata? metadata;
 
   /// Query parameters.
-  Parameters params;
+  Parameters? params;
 
   /// Query ID.
-  core.String queryId;
+  core.String? queryId;
 
   /// The ending time for the data that is shown in the report.
   ///
   /// Note, reportDataEndTimeMs is required if metadata.dataRange is
   /// CUSTOM_DATES and ignored otherwise.
-  core.String reportDataEndTimeMs;
+  core.String? reportDataEndTimeMs;
 
   /// The starting time for the data that is shown in the report.
   ///
   /// Note, reportDataStartTimeMs is required if metadata.dataRange is
   /// CUSTOM_DATES and ignored otherwise.
-  core.String reportDataStartTimeMs;
+  core.String? reportDataStartTimeMs;
 
   /// Information on how often and when to run a query.
-  QuerySchedule schedule;
+  QuerySchedule? schedule;
 
   /// Canonical timezone code for report data time.
   ///
   /// Defaults to America/New_York.
-  core.String timezoneCode;
+  core.String? timezoneCode;
 
   Query();
 
@@ -1666,17 +1649,17 @@ class Query {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (params != null) 'params': params.toJson(),
-        if (queryId != null) 'queryId': queryId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (params != null) 'params': params!.toJson(),
+        if (queryId != null) 'queryId': queryId!,
         if (reportDataEndTimeMs != null)
-          'reportDataEndTimeMs': reportDataEndTimeMs,
+          'reportDataEndTimeMs': reportDataEndTimeMs!,
         if (reportDataStartTimeMs != null)
-          'reportDataStartTimeMs': reportDataStartTimeMs,
-        if (schedule != null) 'schedule': schedule.toJson(),
-        if (timezoneCode != null) 'timezoneCode': timezoneCode,
+          'reportDataStartTimeMs': reportDataStartTimeMs!,
+        if (schedule != null) 'schedule': schedule!.toJson(),
+        if (timezoneCode != null) 'timezoneCode': timezoneCode!,
       };
 }
 
@@ -1704,24 +1687,24 @@ class QueryMetadata {
   /// - "LAST_14_DAYS"
   /// - "TYPE_NOT_SUPPORTED"
   /// - "LAST_60_DAYS"
-  core.String dataRange;
+  core.String? dataRange;
 
   /// Format of the generated report.
   /// Possible string values are:
   /// - "CSV"
   /// - "EXCEL_CSV"
   /// - "XLSX"
-  core.String format;
+  core.String? format;
 
   /// The path to the location in Google Cloud Storage where the latest report
   /// is stored.
-  core.String googleCloudStoragePathForLatestReport;
+  core.String? googleCloudStoragePathForLatestReport;
 
   /// The path in Google Drive for the latest report.
-  core.String googleDrivePathForLatestReport;
+  core.String? googleDrivePathForLatestReport;
 
   /// The time when the latest report started to run.
-  core.String latestReportRunTimeMs;
+  core.String? latestReportRunTimeMs;
 
   /// Locale of the generated reports.
   ///
@@ -1729,29 +1712,29 @@ class QueryMetadata {
   /// ITALIAN ja JAPANESE ko KOREAN pl POLISH pt-BR BRAZILIAN_PORTUGUESE ru
   /// RUSSIAN tr TURKISH uk UKRAINIAN zh-CN CHINA_CHINESE zh-TW TAIWAN_CHINESE
   /// An locale string not in the list above will generate reports in English.
-  core.String locale;
+  core.String? locale;
 
   /// Number of reports that have been generated for the query.
-  core.int reportCount;
+  core.int? reportCount;
 
   /// Whether the latest report is currently running.
-  core.bool running;
+  core.bool? running;
 
   /// Whether to send an email notification when a report is ready.
   ///
   /// Default to false.
-  core.bool sendNotification;
+  core.bool? sendNotification;
 
   /// List of email addresses which are sent email notifications when the report
   /// is finished.
   ///
   /// Separate from sendNotification.
-  core.List<core.String> shareEmailAddress;
+  core.List<core.String>? shareEmailAddress;
 
   /// Query title.
   ///
   /// It is used to name the reports generated from this query.
-  core.String title;
+  core.String? title;
 
   QueryMetadata();
 
@@ -1795,29 +1778,29 @@ class QueryMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataRange != null) 'dataRange': dataRange,
-        if (format != null) 'format': format,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataRange != null) 'dataRange': dataRange!,
+        if (format != null) 'format': format!,
         if (googleCloudStoragePathForLatestReport != null)
           'googleCloudStoragePathForLatestReport':
-              googleCloudStoragePathForLatestReport,
+              googleCloudStoragePathForLatestReport!,
         if (googleDrivePathForLatestReport != null)
-          'googleDrivePathForLatestReport': googleDrivePathForLatestReport,
+          'googleDrivePathForLatestReport': googleDrivePathForLatestReport!,
         if (latestReportRunTimeMs != null)
-          'latestReportRunTimeMs': latestReportRunTimeMs,
-        if (locale != null) 'locale': locale,
-        if (reportCount != null) 'reportCount': reportCount,
-        if (running != null) 'running': running,
-        if (sendNotification != null) 'sendNotification': sendNotification,
-        if (shareEmailAddress != null) 'shareEmailAddress': shareEmailAddress,
-        if (title != null) 'title': title,
+          'latestReportRunTimeMs': latestReportRunTimeMs!,
+        if (locale != null) 'locale': locale!,
+        if (reportCount != null) 'reportCount': reportCount!,
+        if (running != null) 'running': running!,
+        if (sendNotification != null) 'sendNotification': sendNotification!,
+        if (shareEmailAddress != null) 'shareEmailAddress': shareEmailAddress!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// Information on how frequently and when to run a query.
 class QuerySchedule {
   /// Datetime to periodically run the query until.
-  core.String endTimeMs;
+  core.String? endTimeMs;
 
   /// How often the query is run.
   /// Possible string values are:
@@ -1827,23 +1810,23 @@ class QuerySchedule {
   /// - "SEMI_MONTHLY"
   /// - "MONTHLY"
   /// - "QUARTERLY"
-  core.String frequency;
+  core.String? frequency;
 
   /// Time of day at which a new report will be generated, represented as
   /// minutes past midnight.
   ///
   /// Range is 0 to 1439. Only applies to scheduled reports.
-  core.int nextRunMinuteOfDay;
+  core.int? nextRunMinuteOfDay;
 
   /// Canonical timezone code for report generation time.
   ///
   /// Defaults to America/New_York.
-  core.String nextRunTimezoneCode;
+  core.String? nextRunTimezoneCode;
 
   /// When to start running the query.
   ///
   /// Not applicable to `ONE_TIME` frequency.
-  core.String startTimeMs;
+  core.String? startTimeMs;
 
   QuerySchedule();
 
@@ -1865,27 +1848,27 @@ class QuerySchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTimeMs != null) 'endTimeMs': endTimeMs,
-        if (frequency != null) 'frequency': frequency,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTimeMs != null) 'endTimeMs': endTimeMs!,
+        if (frequency != null) 'frequency': frequency!,
         if (nextRunMinuteOfDay != null)
-          'nextRunMinuteOfDay': nextRunMinuteOfDay,
+          'nextRunMinuteOfDay': nextRunMinuteOfDay!,
         if (nextRunTimezoneCode != null)
-          'nextRunTimezoneCode': nextRunTimezoneCode,
-        if (startTimeMs != null) 'startTimeMs': startTimeMs,
+          'nextRunTimezoneCode': nextRunTimezoneCode!,
+        if (startTimeMs != null) 'startTimeMs': startTimeMs!,
       };
 }
 
 /// Represents a report.
 class Report {
   /// Key used to identify a report.
-  ReportKey key;
+  ReportKey? key;
 
   /// Report metadata.
-  ReportMetadata metadata;
+  ReportMetadata? metadata;
 
   /// Report parameters.
-  Parameters params;
+  Parameters? params;
 
   Report();
 
@@ -1904,10 +1887,10 @@ class Report {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key.toJson(),
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (params != null) 'params': params.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!.toJson(),
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (params != null) 'params': params!.toJson(),
       };
 }
 
@@ -1933,7 +1916,7 @@ class ReportFailure {
   /// - "REPORTING_INVALID_QUERY_TOO_MANY_UNFILTERED_LARGE_GROUP_BYS"
   /// - "REPORTING_INVALID_QUERY_TITLE_MISSING"
   /// - "REPORTING_INVALID_QUERY_MISSING_PARTNER_AND_ADVERTISER_FILTERS"
-  core.String errorCode;
+  core.String? errorCode;
 
   ReportFailure();
 
@@ -1943,18 +1926,18 @@ class ReportFailure {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode!,
       };
 }
 
 /// Key used to identify a report.
 class ReportKey {
   /// Query ID.
-  core.String queryId;
+  core.String? queryId;
 
   /// Report ID.
-  core.String reportId;
+  core.String? reportId;
 
   ReportKey();
 
@@ -1967,9 +1950,9 @@ class ReportKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (queryId != null) 'queryId': queryId,
-        if (reportId != null) 'reportId': reportId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (queryId != null) 'queryId': queryId!,
+        if (reportId != null) 'reportId': reportId!,
       };
 }
 
@@ -1977,16 +1960,16 @@ class ReportKey {
 class ReportMetadata {
   /// The path to the location in Google Cloud Storage where the report is
   /// stored.
-  core.String googleCloudStoragePath;
+  core.String? googleCloudStoragePath;
 
   /// The ending time for the data that is shown in the report.
-  core.String reportDataEndTimeMs;
+  core.String? reportDataEndTimeMs;
 
   /// The starting time for the data that is shown in the report.
-  core.String reportDataStartTimeMs;
+  core.String? reportDataStartTimeMs;
 
   /// Report status.
-  ReportStatus status;
+  ReportStatus? status;
 
   ReportMetadata();
 
@@ -2006,38 +1989,38 @@ class ReportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (googleCloudStoragePath != null)
-          'googleCloudStoragePath': googleCloudStoragePath,
+          'googleCloudStoragePath': googleCloudStoragePath!,
         if (reportDataEndTimeMs != null)
-          'reportDataEndTimeMs': reportDataEndTimeMs,
+          'reportDataEndTimeMs': reportDataEndTimeMs!,
         if (reportDataStartTimeMs != null)
-          'reportDataStartTimeMs': reportDataStartTimeMs,
-        if (status != null) 'status': status.toJson(),
+          'reportDataStartTimeMs': reportDataStartTimeMs!,
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
 /// Report status.
 class ReportStatus {
   /// If the report failed, this records the cause.
-  ReportFailure failure;
+  ReportFailure? failure;
 
   /// The time when this report either completed successfully or failed.
-  core.String finishTimeMs;
+  core.String? finishTimeMs;
 
   /// The file type of the report.
   /// Possible string values are:
   /// - "CSV"
   /// - "EXCEL_CSV"
   /// - "XLSX"
-  core.String format;
+  core.String? format;
 
   /// The state of the report.
   /// Possible string values are:
   /// - "RUNNING"
   /// - "DONE"
   /// - "FAILED"
-  core.String state;
+  core.String? state;
 
   ReportStatus();
 
@@ -2057,33 +2040,33 @@ class ReportStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (failure != null) 'failure': failure.toJson(),
-        if (finishTimeMs != null) 'finishTimeMs': finishTimeMs,
-        if (format != null) 'format': format,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (failure != null) 'failure': failure!.toJson(),
+        if (finishTimeMs != null) 'finishTimeMs': finishTimeMs!,
+        if (format != null) 'format': format!,
+        if (state != null) 'state': state!,
       };
 }
 
 /// Represents the upload status of a row in the request.
 class RowStatus {
   /// Whether the stored entity is changed as a result of upload.
-  core.bool changed;
+  core.bool? changed;
 
   /// Entity Id.
-  core.String entityId;
+  core.String? entityId;
 
   /// Entity name.
-  core.String entityName;
+  core.String? entityName;
 
   /// Reasons why the entity can't be uploaded.
-  core.List<core.String> errors;
+  core.List<core.String>? errors;
 
   /// Whether the entity is persisted.
-  core.bool persisted;
+  core.bool? persisted;
 
   /// Row number.
-  core.int rowNumber;
+  core.int? rowNumber;
 
   RowStatus();
 
@@ -2110,13 +2093,13 @@ class RowStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (changed != null) 'changed': changed,
-        if (entityId != null) 'entityId': entityId,
-        if (entityName != null) 'entityName': entityName,
-        if (errors != null) 'errors': errors,
-        if (persisted != null) 'persisted': persisted,
-        if (rowNumber != null) 'rowNumber': rowNumber,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (changed != null) 'changed': changed!,
+        if (entityId != null) 'entityId': entityId!,
+        if (entityName != null) 'entityName': entityName!,
+        if (errors != null) 'errors': errors!,
+        if (persisted != null) 'persisted': persisted!,
+        if (rowNumber != null) 'rowNumber': rowNumber!,
       };
 }
 
@@ -2125,10 +2108,10 @@ class RowStatus {
 /// that can be // applied to a path event to determine if that name should be
 /// applied.
 class Rule {
-  core.List<DisjunctiveMatchStatement> disjunctiveMatchStatements;
+  core.List<DisjunctiveMatchStatement>? disjunctiveMatchStatements;
 
   /// Rule name.
-  core.String name;
+  core.String? name;
 
   Rule();
 
@@ -2146,12 +2129,12 @@ class Rule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (disjunctiveMatchStatements != null)
-          'disjunctiveMatchStatements': disjunctiveMatchStatements
+          'disjunctiveMatchStatements': disjunctiveMatchStatements!
               .map((value) => value.toJson())
               .toList(),
-        if (name != null) 'name': name,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2179,24 +2162,24 @@ class RunQueryRequest {
   /// - "LAST_14_DAYS"
   /// - "TYPE_NOT_SUPPORTED"
   /// - "LAST_60_DAYS"
-  core.String dataRange;
+  core.String? dataRange;
 
   /// The ending time for the data that is shown in the report.
   ///
   /// Note, reportDataEndTimeMs is required if dataRange is CUSTOM_DATES and
   /// ignored otherwise.
-  core.String reportDataEndTimeMs;
+  core.String? reportDataEndTimeMs;
 
   /// The starting time for the data that is shown in the report.
   ///
   /// Note, reportDataStartTimeMs is required if dataRange is CUSTOM_DATES and
   /// ignored otherwise.
-  core.String reportDataStartTimeMs;
+  core.String? reportDataStartTimeMs;
 
   /// Canonical timezone code for report data time.
   ///
   /// Defaults to America/New_York.
-  core.String timezoneCode;
+  core.String? timezoneCode;
 
   RunQueryRequest();
 
@@ -2215,13 +2198,13 @@ class RunQueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataRange != null) 'dataRange': dataRange,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataRange != null) 'dataRange': dataRange!,
         if (reportDataEndTimeMs != null)
-          'reportDataEndTimeMs': reportDataEndTimeMs,
+          'reportDataEndTimeMs': reportDataEndTimeMs!,
         if (reportDataStartTimeMs != null)
-          'reportDataStartTimeMs': reportDataStartTimeMs,
-        if (timezoneCode != null) 'timezoneCode': timezoneCode,
+          'reportDataStartTimeMs': reportDataStartTimeMs!,
+        if (timezoneCode != null) 'timezoneCode': timezoneCode!,
       };
 }
 
@@ -2229,19 +2212,19 @@ class RunQueryRequest {
 class UploadLineItemsRequest {
   /// Set to true to get upload status without actually persisting the line
   /// items.
-  core.bool dryRun;
+  core.bool? dryRun;
 
   /// Format the line items are in.
   ///
   /// Default to CSV.
   /// Possible string values are:
   /// - "CSV"
-  core.String format;
+  core.String? format;
 
   /// Line items in CSV to upload.
   ///
   /// Refer to Entity Write File Format for more information on file format.
-  core.String lineItems;
+  core.String? lineItems;
 
   UploadLineItemsRequest();
 
@@ -2257,17 +2240,17 @@ class UploadLineItemsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dryRun != null) 'dryRun': dryRun,
-        if (format != null) 'format': format,
-        if (lineItems != null) 'lineItems': lineItems,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dryRun != null) 'dryRun': dryRun!,
+        if (format != null) 'format': format!,
+        if (lineItems != null) 'lineItems': lineItems!,
       };
 }
 
 /// Upload line items response.
 class UploadLineItemsResponse {
   /// Status of upload.
-  UploadStatus uploadStatus;
+  UploadStatus? uploadStatus;
 
   UploadLineItemsResponse();
 
@@ -2278,18 +2261,18 @@ class UploadLineItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (uploadStatus != null) 'uploadStatus': uploadStatus.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (uploadStatus != null) 'uploadStatus': uploadStatus!.toJson(),
       };
 }
 
 /// Represents the status of upload.
 class UploadStatus {
   /// Reasons why upload can't be completed.
-  core.List<core.String> errors;
+  core.List<core.String>? errors;
 
   /// Per-row upload status.
-  core.List<RowStatus> rowStatus;
+  core.List<RowStatus>? rowStatus;
 
   UploadStatus();
 
@@ -2307,9 +2290,9 @@ class UploadStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errors != null) 'errors': errors,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errors != null) 'errors': errors!,
         if (rowStatus != null)
-          'rowStatus': rowStatus.map((value) => value.toJson()).toList(),
+          'rowStatus': rowStatus!.map((value) => value.toJson()).toList(),
       };
 }

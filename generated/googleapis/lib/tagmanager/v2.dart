@@ -123,11 +123,8 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<Account> get(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -160,8 +157,8 @@ class AccountsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAccountsResponse> list({
-    core.String pageToken,
-    core.String $fields,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageToken != null) 'pageToken': [pageToken],
@@ -204,14 +201,10 @@ class AccountsResource {
   async.Future<Account> update(
     Account request,
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -267,13 +260,9 @@ class AccountsContainersResource {
   async.Future<Container> create(
     Container request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -309,11 +298,8 @@ class AccountsContainersResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -349,11 +335,8 @@ class AccountsContainersResource {
   /// this method will complete with the same error.
   async.Future<Container> get(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -391,12 +374,9 @@ class AccountsContainersResource {
   /// this method will complete with the same error.
   async.Future<ListContainersResponse> list(
     core.String parent, {
-    core.String pageToken,
-    core.String $fields,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -441,14 +421,10 @@ class AccountsContainersResource {
   async.Future<Container> update(
     Container request,
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -496,13 +472,9 @@ class AccountsContainersEnvironmentsResource {
   async.Future<Environment> create(
     Environment request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -540,11 +512,8 @@ class AccountsContainersEnvironmentsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -581,11 +550,8 @@ class AccountsContainersEnvironmentsResource {
   /// this method will complete with the same error.
   async.Future<Environment> get(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -624,12 +590,9 @@ class AccountsContainersEnvironmentsResource {
   /// this method will complete with the same error.
   async.Future<ListEnvironmentsResponse> list(
     core.String parent, {
-    core.String pageToken,
-    core.String $fields,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -672,13 +635,9 @@ class AccountsContainersEnvironmentsResource {
   async.Future<Environment> reauthorize(
     Environment request,
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -724,14 +683,10 @@ class AccountsContainersEnvironmentsResource {
   async.Future<Environment> update(
     Environment request,
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -777,11 +732,8 @@ class AccountsContainersVersionHeadersResource {
   /// this method will complete with the same error.
   async.Future<ContainerVersionHeader> latest(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -823,13 +775,10 @@ class AccountsContainersVersionHeadersResource {
   /// this method will complete with the same error.
   async.Future<ListContainerVersionsResponse> list(
     core.String parent, {
-    core.bool includeDeleted,
-    core.String pageToken,
-    core.String $fields,
+    core.bool? includeDeleted,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -875,11 +824,8 @@ class AccountsContainersVersionsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -919,12 +865,9 @@ class AccountsContainersVersionsResource {
   /// this method will complete with the same error.
   async.Future<ContainerVersion> get(
     core.String path, {
-    core.String containerVersionId,
-    core.String $fields,
+    core.String? containerVersionId,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (containerVersionId != null)
         'containerVersionId': [containerVersionId],
@@ -963,11 +906,8 @@ class AccountsContainersVersionsResource {
   /// this method will complete with the same error.
   async.Future<ContainerVersion> live(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1009,12 +949,9 @@ class AccountsContainersVersionsResource {
   /// this method will complete with the same error.
   async.Future<PublishContainerVersionResponse> publish(
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -1055,11 +992,8 @@ class AccountsContainersVersionsResource {
   /// this method will complete with the same error.
   async.Future<ContainerVersion> setLatest(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1098,11 +1032,8 @@ class AccountsContainersVersionsResource {
   /// this method will complete with the same error.
   async.Future<ContainerVersion> undelete(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1147,14 +1078,10 @@ class AccountsContainersVersionsResource {
   async.Future<ContainerVersion> update(
     ContainerVersion request,
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -1218,13 +1145,9 @@ class AccountsContainersWorkspacesResource {
   async.Future<Workspace> create(
     Workspace request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1268,13 +1191,9 @@ class AccountsContainersWorkspacesResource {
   async.Future<CreateContainerVersionResponse> createVersion(
     CreateContainerVersionRequestVersionOptions request,
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1312,11 +1231,8 @@ class AccountsContainersWorkspacesResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1353,11 +1269,8 @@ class AccountsContainersWorkspacesResource {
   /// this method will complete with the same error.
   async.Future<Workspace> get(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1394,11 +1307,8 @@ class AccountsContainersWorkspacesResource {
   /// this method will complete with the same error.
   async.Future<GetWorkspaceStatusResponse> getStatus(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1438,12 +1348,9 @@ class AccountsContainersWorkspacesResource {
   /// this method will complete with the same error.
   async.Future<ListWorkspacesResponse> list(
     core.String parent, {
-    core.String pageToken,
-    core.String $fields,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1484,11 +1391,8 @@ class AccountsContainersWorkspacesResource {
   /// this method will complete with the same error.
   async.Future<QuickPreviewResponse> quickPreview(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1532,14 +1436,10 @@ class AccountsContainersWorkspacesResource {
   async.Future<void> resolveConflict(
     Entity request,
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -1581,11 +1481,8 @@ class AccountsContainersWorkspacesResource {
   /// this method will complete with the same error.
   async.Future<SyncWorkspaceResponse> sync(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1630,14 +1527,10 @@ class AccountsContainersWorkspacesResource {
   async.Future<Workspace> update(
     Workspace request,
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -1686,12 +1579,9 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
   /// this method will complete with the same error.
   async.Future<CreateBuiltInVariableResponse> create(
     core.String parent, {
-    core.List<core.String> type,
-    core.String $fields,
+    core.List<core.String>? type,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (type != null) 'type': type,
       if ($fields != null) 'fields': [$fields],
@@ -1731,12 +1621,9 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String path, {
-    core.List<core.String> type,
-    core.String $fields,
+    core.List<core.String>? type,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (type != null) 'type': type,
       if ($fields != null) 'fields': [$fields],
@@ -1776,12 +1663,9 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
   /// this method will complete with the same error.
   async.Future<ListEnabledBuiltInVariablesResponse> list(
     core.String parent, {
-    core.String pageToken,
-    core.String $fields,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1934,12 +1818,9 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
   /// this method will complete with the same error.
   async.Future<RevertBuiltInVariableResponse> revert(
     core.String path, {
-    core.String type,
-    core.String $fields,
+    core.String? type,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (type != null) 'type': [type],
       if ($fields != null) 'fields': [$fields],
@@ -1989,13 +1870,9 @@ class AccountsContainersWorkspacesFoldersResource {
   async.Future<Folder> create(
     Folder request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2032,11 +1909,8 @@ class AccountsContainersWorkspacesFoldersResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2075,12 +1949,9 @@ class AccountsContainersWorkspacesFoldersResource {
   /// this method will complete with the same error.
   async.Future<FolderEntities> entities(
     core.String path, {
-    core.String pageToken,
-    core.String $fields,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -2120,11 +1991,8 @@ class AccountsContainersWorkspacesFoldersResource {
   /// this method will complete with the same error.
   async.Future<Folder> get(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2163,12 +2031,9 @@ class AccountsContainersWorkspacesFoldersResource {
   /// this method will complete with the same error.
   async.Future<ListFoldersResponse> list(
     core.String parent, {
-    core.String pageToken,
-    core.String $fields,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -2215,16 +2080,12 @@ class AccountsContainersWorkspacesFoldersResource {
   async.Future<void> moveEntitiesToFolder(
     Folder request,
     core.String path, {
-    core.List<core.String> tagId,
-    core.List<core.String> triggerId,
-    core.List<core.String> variableId,
-    core.String $fields,
+    core.List<core.String>? tagId,
+    core.List<core.String>? triggerId,
+    core.List<core.String>? variableId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (tagId != null) 'tagId': tagId,
       if (triggerId != null) 'triggerId': triggerId,
@@ -2269,12 +2130,9 @@ class AccountsContainersWorkspacesFoldersResource {
   /// this method will complete with the same error.
   async.Future<RevertFolderResponse> revert(
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -2320,14 +2178,10 @@ class AccountsContainersWorkspacesFoldersResource {
   async.Future<Folder> update(
     Folder request,
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -2376,13 +2230,9 @@ class AccountsContainersWorkspacesTagsResource {
   async.Future<Tag> create(
     Tag request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2419,11 +2269,8 @@ class AccountsContainersWorkspacesTagsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2460,11 +2307,8 @@ class AccountsContainersWorkspacesTagsResource {
   /// this method will complete with the same error.
   async.Future<Tag> get(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2503,12 +2347,9 @@ class AccountsContainersWorkspacesTagsResource {
   /// this method will complete with the same error.
   async.Future<ListTagsResponse> list(
     core.String parent, {
-    core.String pageToken,
-    core.String $fields,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -2551,12 +2392,9 @@ class AccountsContainersWorkspacesTagsResource {
   /// this method will complete with the same error.
   async.Future<RevertTagResponse> revert(
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -2602,14 +2440,10 @@ class AccountsContainersWorkspacesTagsResource {
   async.Future<Tag> update(
     Tag request,
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -2658,13 +2492,9 @@ class AccountsContainersWorkspacesTemplatesResource {
   async.Future<CustomTemplate> create(
     CustomTemplate request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2702,11 +2532,8 @@ class AccountsContainersWorkspacesTemplatesResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2743,11 +2570,8 @@ class AccountsContainersWorkspacesTemplatesResource {
   /// this method will complete with the same error.
   async.Future<CustomTemplate> get(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2787,12 +2611,9 @@ class AccountsContainersWorkspacesTemplatesResource {
   /// this method will complete with the same error.
   async.Future<ListTemplatesResponse> list(
     core.String parent, {
-    core.String pageToken,
-    core.String $fields,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -2835,12 +2656,9 @@ class AccountsContainersWorkspacesTemplatesResource {
   /// this method will complete with the same error.
   async.Future<RevertTemplateResponse> revert(
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -2886,14 +2704,10 @@ class AccountsContainersWorkspacesTemplatesResource {
   async.Future<CustomTemplate> update(
     CustomTemplate request,
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -2943,13 +2757,9 @@ class AccountsContainersWorkspacesTriggersResource {
   async.Future<Trigger> create(
     Trigger request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2986,11 +2796,8 @@ class AccountsContainersWorkspacesTriggersResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3027,11 +2834,8 @@ class AccountsContainersWorkspacesTriggersResource {
   /// this method will complete with the same error.
   async.Future<Trigger> get(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3070,12 +2874,9 @@ class AccountsContainersWorkspacesTriggersResource {
   /// this method will complete with the same error.
   async.Future<ListTriggersResponse> list(
     core.String parent, {
-    core.String pageToken,
-    core.String $fields,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -3118,12 +2919,9 @@ class AccountsContainersWorkspacesTriggersResource {
   /// this method will complete with the same error.
   async.Future<RevertTriggerResponse> revert(
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -3169,14 +2967,10 @@ class AccountsContainersWorkspacesTriggersResource {
   async.Future<Trigger> update(
     Trigger request,
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -3225,13 +3019,9 @@ class AccountsContainersWorkspacesVariablesResource {
   async.Future<Variable> create(
     Variable request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3268,11 +3058,8 @@ class AccountsContainersWorkspacesVariablesResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3309,11 +3096,8 @@ class AccountsContainersWorkspacesVariablesResource {
   /// this method will complete with the same error.
   async.Future<Variable> get(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3352,12 +3136,9 @@ class AccountsContainersWorkspacesVariablesResource {
   /// this method will complete with the same error.
   async.Future<ListVariablesResponse> list(
     core.String parent, {
-    core.String pageToken,
-    core.String $fields,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -3400,12 +3181,9 @@ class AccountsContainersWorkspacesVariablesResource {
   /// this method will complete with the same error.
   async.Future<RevertVariableResponse> revert(
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -3451,14 +3229,10 @@ class AccountsContainersWorkspacesVariablesResource {
   async.Future<Variable> update(
     Variable request,
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -3507,13 +3281,9 @@ class AccountsContainersWorkspacesZonesResource {
   async.Future<Zone> create(
     Zone request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3550,11 +3320,8 @@ class AccountsContainersWorkspacesZonesResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3591,11 +3358,8 @@ class AccountsContainersWorkspacesZonesResource {
   /// this method will complete with the same error.
   async.Future<Zone> get(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3634,12 +3398,9 @@ class AccountsContainersWorkspacesZonesResource {
   /// this method will complete with the same error.
   async.Future<ListZonesResponse> list(
     core.String parent, {
-    core.String pageToken,
-    core.String $fields,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -3682,12 +3443,9 @@ class AccountsContainersWorkspacesZonesResource {
   /// this method will complete with the same error.
   async.Future<RevertZoneResponse> revert(
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -3733,14 +3491,10 @@ class AccountsContainersWorkspacesZonesResource {
   async.Future<Zone> update(
     Zone request,
     core.String path, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -3787,13 +3541,9 @@ class AccountsUserPermissionsResource {
   async.Future<UserPermission> create(
     UserPermission request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3831,11 +3581,8 @@ class AccountsUserPermissionsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3871,11 +3618,8 @@ class AccountsUserPermissionsResource {
   /// this method will complete with the same error.
   async.Future<UserPermission> get(
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3915,12 +3659,9 @@ class AccountsUserPermissionsResource {
   /// this method will complete with the same error.
   async.Future<ListUserPermissionsResponse> list(
     core.String parent, {
-    core.String pageToken,
-    core.String $fields,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -3962,13 +3703,9 @@ class AccountsUserPermissionsResource {
   async.Future<UserPermission> update(
     UserPermission request,
     core.String path, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3990,20 +3727,20 @@ class AccountsUserPermissionsResource {
 /// Represents a Google Tag Manager Account.
 class Account {
   /// The Account ID uniquely identifies the GTM Account.
-  core.String accountId;
+  core.String? accountId;
 
   /// The fingerprint of the GTM Account as computed at storage time.
   ///
   /// This value is recomputed whenever the account is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// Account display name.
   ///
   /// @mutable tagmanager.accounts.create @mutable tagmanager.accounts.update
-  core.String name;
+  core.String? name;
 
   /// GTM Account's API relative path.
-  core.String path;
+  core.String? path;
 
   /// Whether the account shares data anonymously with Google and others.
   ///
@@ -4012,10 +3749,10 @@ class Account {
   /// combine the data with hundreds of other anonymous sites and report
   /// aggregate trends in the benchmarking service. @mutable
   /// tagmanager.accounts.create @mutable tagmanager.accounts.update
-  core.bool shareData;
+  core.bool? shareData;
 
   /// Auto generated link to the tag manager UI
-  core.String tagManagerUrl;
+  core.String? tagManagerUrl;
 
   Account();
 
@@ -4040,13 +3777,13 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (name != null) 'name': name,
-        if (path != null) 'path': path,
-        if (shareData != null) 'shareData': shareData,
-        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (name != null) 'name': name!,
+        if (path != null) 'path': path!,
+        if (shareData != null) 'shareData': shareData!,
+        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
       };
 }
 
@@ -4062,7 +3799,7 @@ class AccountAccess {
   /// - "noAccess"
   /// - "user"
   /// - "admin"
-  core.String permission;
+  core.String? permission;
 
   AccountAccess();
 
@@ -4072,8 +3809,8 @@ class AccountAccess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permission != null) 'permission': permission,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permission != null) 'permission': permission!,
       };
 }
 
@@ -4084,17 +3821,17 @@ class AccountAccess {
 /// layer, monitoring clicks, or accessing elements of a page URL.
 class BuiltInVariable {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// Name of the built-in variable to be used to refer to the built-in
   /// variable.
-  core.String name;
+  core.String? name;
 
   /// GTM BuiltInVariable's API relative path.
-  core.String path;
+  core.String? path;
 
   /// Type of built-in variable.
   ///
@@ -4212,10 +3949,10 @@ class BuiltInVariable {
   /// - "requestMethod"
   /// - "clientName"
   /// - "queryString"
-  core.String type;
+  core.String? type;
 
   /// GTM Workspace ID.
-  core.String workspaceId;
+  core.String? workspaceId;
 
   BuiltInVariable();
 
@@ -4240,72 +3977,72 @@ class BuiltInVariable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (containerId != null) 'containerId': containerId,
-        if (name != null) 'name': name,
-        if (path != null) 'path': path,
-        if (type != null) 'type': type,
-        if (workspaceId != null) 'workspaceId': workspaceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (containerId != null) 'containerId': containerId!,
+        if (name != null) 'name': name!,
+        if (path != null) 'path': path!,
+        if (type != null) 'type': type!,
+        if (workspaceId != null) 'workspaceId': workspaceId!,
       };
 }
 
 class Client {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// The Client ID uniquely identifies the GTM client.
-  core.String clientId;
+  core.String? clientId;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// The fingerprint of the GTM Client as computed at storage time.
   ///
   /// This value is recomputed whenever the client is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// Client display name.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.clients.create @mutable
   /// tagmanager.accounts.containers.workspaces.clients.update
-  core.String name;
+  core.String? name;
 
   /// User notes on how to apply this tag in the container.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.String notes;
+  core.String? notes;
 
   /// The client's parameters.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.clients.create @mutable
   /// tagmanager.accounts.containers.workspaces.clients.update
-  core.List<Parameter> parameter;
+  core.List<Parameter>? parameter;
 
   /// Parent folder id.
-  core.String parentFolderId;
+  core.String? parentFolderId;
 
   /// GTM client's API relative path.
-  core.String path;
+  core.String? path;
 
   /// Priority determines relative firing order.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.clients.create @mutable
   /// tagmanager.accounts.containers.workspaces.clients.update
-  core.int priority;
+  core.int? priority;
 
   /// Auto generated link to the tag manager UI
-  core.String tagManagerUrl;
+  core.String? tagManagerUrl;
 
   /// Client type.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.clients.create @mutable
   /// tagmanager.accounts.containers.workspaces.clients.update
-  core.String type;
+  core.String? type;
 
   /// GTM Workspace ID.
-  core.String workspaceId;
+  core.String? workspaceId;
 
   Client();
 
@@ -4354,21 +4091,21 @@ class Client {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (clientId != null) 'clientId': clientId,
-        if (containerId != null) 'containerId': containerId,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (clientId != null) 'clientId': clientId!,
+        if (containerId != null) 'containerId': containerId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
         if (parameter != null)
-          'parameter': parameter.map((value) => value.toJson()).toList(),
-        if (parentFolderId != null) 'parentFolderId': parentFolderId,
-        if (path != null) 'path': path,
-        if (priority != null) 'priority': priority,
-        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl,
-        if (type != null) 'type': type,
-        if (workspaceId != null) 'workspaceId': workspaceId,
+          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (parentFolderId != null) 'parentFolderId': parentFolderId!,
+        if (path != null) 'path': path!,
+        if (priority != null) 'priority': priority!,
+        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
+        if (type != null) 'type': type!,
+        if (workspaceId != null) 'workspaceId': workspaceId!,
       };
 }
 
@@ -4385,7 +4122,7 @@ class Condition {
   /// include a boolean parameter named negate boolean parameter that is set to
   /// true. @mutable tagmanager.accounts.containers.workspaces.triggers.create
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
-  core.List<Parameter> parameter;
+  core.List<Parameter>? parameter;
 
   /// The type of operator for this condition.
   ///
@@ -4405,7 +4142,7 @@ class Condition {
   /// - "cssSelector"
   /// - "urlMatches" : NOTE(lanzone): When defining a ConditionType here, don't
   /// forget to also define a matching PredicateType (in condition.proto).
-  core.String type;
+  core.String? type;
 
   Condition();
 
@@ -4421,10 +4158,10 @@ class Condition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (parameter != null)
-          'parameter': parameter.map((value) => value.toJson()).toList(),
-        if (type != null) 'type': type,
+          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4432,49 +4169,49 @@ class Condition {
 /// will run on, manages workspaces, and retains container versions.
 class Container {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// The Container ID uniquely identifies the GTM Container.
-  core.String containerId;
+  core.String? containerId;
 
   /// List of domain names associated with the Container.
   ///
   /// @mutable tagmanager.accounts.containers.create @mutable
   /// tagmanager.accounts.containers.update
-  core.List<core.String> domainName;
+  core.List<core.String>? domainName;
 
   /// The fingerprint of the GTM Container as computed at storage time.
   ///
   /// This value is recomputed whenever the account is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// Container display name.
   ///
   /// @mutable tagmanager.accounts.containers.create @mutable
   /// tagmanager.accounts.containers.update
-  core.String name;
+  core.String? name;
 
   /// Container Notes.
   ///
   /// @mutable tagmanager.accounts.containers.create @mutable
   /// tagmanager.accounts.containers.update
-  core.String notes;
+  core.String? notes;
 
   /// GTM Container's API relative path.
-  core.String path;
+  core.String? path;
 
   /// Container Public ID.
-  core.String publicId;
+  core.String? publicId;
 
   /// Auto generated link to the tag manager UI
-  core.String tagManagerUrl;
+  core.String? tagManagerUrl;
 
   /// List of Usage Contexts for the Container.
   ///
   /// Valid values include: web, android, or ios. @mutable
   /// tagmanager.accounts.containers.create @mutable
   /// tagmanager.accounts.containers.update
-  core.List<core.String> usageContext;
+  core.List<core.String>? usageContext;
 
   Container();
 
@@ -4515,17 +4252,17 @@ class Container {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (containerId != null) 'containerId': containerId,
-        if (domainName != null) 'domainName': domainName,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
-        if (path != null) 'path': path,
-        if (publicId != null) 'publicId': publicId,
-        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl,
-        if (usageContext != null) 'usageContext': usageContext,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (containerId != null) 'containerId': containerId!,
+        if (domainName != null) 'domainName': domainName!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
+        if (path != null) 'path': path!,
+        if (publicId != null) 'publicId': publicId!,
+        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
+        if (usageContext != null) 'usageContext': usageContext!,
       };
 }
 
@@ -4535,7 +4272,7 @@ class ContainerAccess {
   ///
   /// @mutable tagmanager.accounts.permissions.create @mutable
   /// tagmanager.accounts.permissions.update
-  core.String containerId;
+  core.String? containerId;
 
   /// List of Container permissions.
   ///
@@ -4548,7 +4285,7 @@ class ContainerAccess {
   /// - "edit"
   /// - "approve"
   /// - "publish"
-  core.String permission;
+  core.String? permission;
 
   ContainerAccess();
 
@@ -4561,73 +4298,73 @@ class ContainerAccess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (containerId != null) 'containerId': containerId,
-        if (permission != null) 'permission': permission,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (containerId != null) 'containerId': containerId!,
+        if (permission != null) 'permission': permission!,
       };
 }
 
 /// Represents a Google Tag Manager Container Version.
 class ContainerVersion {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// The built-in variables in the container that this version was taken from.
-  core.List<BuiltInVariable> builtInVariable;
+  core.List<BuiltInVariable>? builtInVariable;
 
   /// The clients in the container that this version was taken from.
-  core.List<Client> client;
+  core.List<Client>? client;
 
   /// The container that this version was taken from.
-  Container container;
+  Container? container;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// The Container Version ID uniquely identifies the GTM Container Version.
-  core.String containerVersionId;
+  core.String? containerVersionId;
 
   /// The custom templates in the container that this version was taken from.
-  core.List<CustomTemplate> customTemplate;
+  core.List<CustomTemplate>? customTemplate;
 
   /// A value of true indicates this container version has been deleted.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// Container version description.
   ///
   /// @mutable tagmanager.accounts.containers.versions.update
-  core.String description;
+  core.String? description;
 
   /// The fingerprint of the GTM Container Version as computed at storage time.
   ///
   /// This value is recomputed whenever the container version is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// The folders in the container that this version was taken from.
-  core.List<Folder> folder;
+  core.List<Folder>? folder;
 
   /// Container version display name.
   ///
   /// @mutable tagmanager.accounts.containers.versions.update
-  core.String name;
+  core.String? name;
 
   /// GTM ContainerVersions's API relative path.
-  core.String path;
+  core.String? path;
 
   /// The tags in the container that this version was taken from.
-  core.List<Tag> tag;
+  core.List<Tag>? tag;
 
   /// Auto generated link to the tag manager UI
-  core.String tagManagerUrl;
+  core.String? tagManagerUrl;
 
   /// The triggers in the container that this version was taken from.
-  core.List<Trigger> trigger;
+  core.List<Trigger>? trigger;
 
   /// The variables in the container that this version was taken from.
-  core.List<Variable> variable;
+  core.List<Variable>? variable;
 
   /// The zones in the container that this version was taken from.
-  core.List<Zone> zone;
+  core.List<Zone>? zone;
 
   ContainerVersion();
 
@@ -4713,80 +4450,80 @@ class ContainerVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (builtInVariable != null)
           'builtInVariable':
-              builtInVariable.map((value) => value.toJson()).toList(),
+              builtInVariable!.map((value) => value.toJson()).toList(),
         if (client != null)
-          'client': client.map((value) => value.toJson()).toList(),
-        if (container != null) 'container': container.toJson(),
-        if (containerId != null) 'containerId': containerId,
+          'client': client!.map((value) => value.toJson()).toList(),
+        if (container != null) 'container': container!.toJson(),
+        if (containerId != null) 'containerId': containerId!,
         if (containerVersionId != null)
-          'containerVersionId': containerVersionId,
+          'containerVersionId': containerVersionId!,
         if (customTemplate != null)
           'customTemplate':
-              customTemplate.map((value) => value.toJson()).toList(),
-        if (deleted != null) 'deleted': deleted,
-        if (description != null) 'description': description,
-        if (fingerprint != null) 'fingerprint': fingerprint,
+              customTemplate!.map((value) => value.toJson()).toList(),
+        if (deleted != null) 'deleted': deleted!,
+        if (description != null) 'description': description!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
         if (folder != null)
-          'folder': folder.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (path != null) 'path': path,
-        if (tag != null) 'tag': tag.map((value) => value.toJson()).toList(),
-        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl,
+          'folder': folder!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (path != null) 'path': path!,
+        if (tag != null) 'tag': tag!.map((value) => value.toJson()).toList(),
+        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
         if (trigger != null)
-          'trigger': trigger.map((value) => value.toJson()).toList(),
+          'trigger': trigger!.map((value) => value.toJson()).toList(),
         if (variable != null)
-          'variable': variable.map((value) => value.toJson()).toList(),
-        if (zone != null) 'zone': zone.map((value) => value.toJson()).toList(),
+          'variable': variable!.map((value) => value.toJson()).toList(),
+        if (zone != null) 'zone': zone!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Represents a Google Tag Manager Container Version Header.
 class ContainerVersionHeader {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// The Container Version ID uniquely identifies the GTM Container Version.
-  core.String containerVersionId;
+  core.String? containerVersionId;
 
   /// A value of true indicates this container version has been deleted.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// Container version display name.
-  core.String name;
+  core.String? name;
 
   /// Number of clients in the container version.
-  core.String numClients;
+  core.String? numClients;
 
   /// Number of custom templates in the container version.
-  core.String numCustomTemplates;
+  core.String? numCustomTemplates;
 
   /// Number of macros in the container version.
-  core.String numMacros;
+  core.String? numMacros;
 
   /// Number of rules in the container version.
-  core.String numRules;
+  core.String? numRules;
 
   /// Number of tags in the container version.
-  core.String numTags;
+  core.String? numTags;
 
   /// Number of triggers in the container version.
-  core.String numTriggers;
+  core.String? numTriggers;
 
   /// Number of variables in the container version.
-  core.String numVariables;
+  core.String? numVariables;
 
   /// Number of zones in the container version.
-  core.String numZones;
+  core.String? numZones;
 
   /// GTM Container Versions's API relative path.
-  core.String path;
+  core.String? path;
 
   ContainerVersionHeader();
 
@@ -4835,29 +4572,29 @@ class ContainerVersionHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (containerId != null) 'containerId': containerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (containerId != null) 'containerId': containerId!,
         if (containerVersionId != null)
-          'containerVersionId': containerVersionId,
-        if (deleted != null) 'deleted': deleted,
-        if (name != null) 'name': name,
-        if (numClients != null) 'numClients': numClients,
+          'containerVersionId': containerVersionId!,
+        if (deleted != null) 'deleted': deleted!,
+        if (name != null) 'name': name!,
+        if (numClients != null) 'numClients': numClients!,
         if (numCustomTemplates != null)
-          'numCustomTemplates': numCustomTemplates,
-        if (numMacros != null) 'numMacros': numMacros,
-        if (numRules != null) 'numRules': numRules,
-        if (numTags != null) 'numTags': numTags,
-        if (numTriggers != null) 'numTriggers': numTriggers,
-        if (numVariables != null) 'numVariables': numVariables,
-        if (numZones != null) 'numZones': numZones,
-        if (path != null) 'path': path,
+          'numCustomTemplates': numCustomTemplates!,
+        if (numMacros != null) 'numMacros': numMacros!,
+        if (numRules != null) 'numRules': numRules!,
+        if (numTags != null) 'numTags': numTags!,
+        if (numTriggers != null) 'numTriggers': numTriggers!,
+        if (numVariables != null) 'numVariables': numVariables!,
+        if (numZones != null) 'numZones': numZones!,
+        if (path != null) 'path': path!,
       };
 }
 
 class CreateBuiltInVariableResponse {
   /// List of created built-in variables.
-  core.List<BuiltInVariable> builtInVariable;
+  core.List<BuiltInVariable>? builtInVariable;
 
   CreateBuiltInVariableResponse();
 
@@ -4870,20 +4607,20 @@ class CreateBuiltInVariableResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (builtInVariable != null)
           'builtInVariable':
-              builtInVariable.map((value) => value.toJson()).toList(),
+              builtInVariable!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Options for new container versions.
 class CreateContainerVersionRequestVersionOptions {
   /// The name of the container version to be created.
-  core.String name;
+  core.String? name;
 
   /// The notes of the container version to be created.
-  core.String notes;
+  core.String? notes;
 
   CreateContainerVersionRequestVersionOptions();
 
@@ -4896,29 +4633,29 @@ class CreateContainerVersionRequestVersionOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
       };
 }
 
 /// Create container versions response.
 class CreateContainerVersionResponse {
   /// Compiler errors or not.
-  core.bool compilerError;
+  core.bool? compilerError;
 
   /// The container version created.
-  ContainerVersion containerVersion;
+  ContainerVersion? containerVersion;
 
   /// Auto generated workspace path created as a result of version creation.
   ///
   /// This field should only be populated if the created version was not a quick
   /// preview.
-  core.String newWorkspacePath;
+  core.String? newWorkspacePath;
 
   /// Whether version creation failed when syncing the workspace to the latest
   /// container version.
-  SyncStatus syncStatus;
+  SyncStatus? syncStatus;
 
   CreateContainerVersionResponse();
 
@@ -4939,48 +4676,48 @@ class CreateContainerVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (compilerError != null) 'compilerError': compilerError,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (compilerError != null) 'compilerError': compilerError!,
         if (containerVersion != null)
-          'containerVersion': containerVersion.toJson(),
-        if (newWorkspacePath != null) 'newWorkspacePath': newWorkspacePath,
-        if (syncStatus != null) 'syncStatus': syncStatus.toJson(),
+          'containerVersion': containerVersion!.toJson(),
+        if (newWorkspacePath != null) 'newWorkspacePath': newWorkspacePath!,
+        if (syncStatus != null) 'syncStatus': syncStatus!.toJson(),
       };
 }
 
 /// Represents a Google Tag Manager Custom Template's contents.
 class CustomTemplate {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// The fingerprint of the GTM Custom Template as computed at storage time.
   ///
   /// This value is recomputed whenever the template is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// A reference to the Community Template Gallery entry.
-  GalleryReference galleryReference;
+  GalleryReference? galleryReference;
 
   /// Custom Template display name.
-  core.String name;
+  core.String? name;
 
   /// GTM Custom Template's API relative path.
-  core.String path;
+  core.String? path;
 
   /// Auto generated link to the tag manager UI
-  core.String tagManagerUrl;
+  core.String? tagManagerUrl;
 
   /// The custom template in text format.
-  core.String templateData;
+  core.String? templateData;
 
   /// The Custom Template ID uniquely identifies the GTM custom template.
-  core.String templateId;
+  core.String? templateId;
 
   /// GTM Workspace ID.
-  core.String workspaceId;
+  core.String? workspaceId;
 
   CustomTemplate();
 
@@ -5018,18 +4755,18 @@ class CustomTemplate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (containerId != null) 'containerId': containerId,
-        if (fingerprint != null) 'fingerprint': fingerprint,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (containerId != null) 'containerId': containerId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
         if (galleryReference != null)
-          'galleryReference': galleryReference.toJson(),
-        if (name != null) 'name': name,
-        if (path != null) 'path': path,
-        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl,
-        if (templateData != null) 'templateData': templateData,
-        if (templateId != null) 'templateId': templateId,
-        if (workspaceId != null) 'workspaceId': workspaceId,
+          'galleryReference': galleryReference!.toJson(),
+        if (name != null) 'name': name!,
+        if (path != null) 'path': path!,
+        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
+        if (templateData != null) 'templateData': templateData!,
+        if (templateId != null) 'templateId': templateId!,
+        if (workspaceId != null) 'workspaceId': workspaceId!,
       };
 }
 
@@ -5043,22 +4780,22 @@ class Entity {
   /// - "added" : The entity is added to the workspace.
   /// - "deleted" : The entity is deleted from the workspace.
   /// - "updated" : The entity has been updated in the workspace.
-  core.String changeStatus;
+  core.String? changeStatus;
 
   /// The client being represented by the entity.
-  Client client;
+  Client? client;
 
   /// The folder being represented by the entity.
-  Folder folder;
+  Folder? folder;
 
   /// The tag being represented by the entity.
-  Tag tag;
+  Tag? tag;
 
   /// The trigger being represented by the entity.
-  Trigger trigger;
+  Trigger? trigger;
 
   /// The variable being represented by the entity.
-  Variable variable;
+  Variable? variable;
 
   Entity();
 
@@ -5087,13 +4824,13 @@ class Entity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (changeStatus != null) 'changeStatus': changeStatus,
-        if (client != null) 'client': client.toJson(),
-        if (folder != null) 'folder': folder.toJson(),
-        if (tag != null) 'tag': tag.toJson(),
-        if (trigger != null) 'trigger': trigger.toJson(),
-        if (variable != null) 'variable': variable.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (changeStatus != null) 'changeStatus': changeStatus!,
+        if (client != null) 'client': client!.toJson(),
+        if (folder != null) 'folder': folder!.toJson(),
+        if (tag != null) 'tag': tag!.toJson(),
+        if (trigger != null) 'trigger': trigger!.toJson(),
+        if (variable != null) 'variable': variable!.toJson(),
       };
 }
 
@@ -5104,53 +4841,53 @@ class Entity {
 /// types.
 class Environment {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// The environment authorization code.
-  core.String authorizationCode;
+  core.String? authorizationCode;
 
   /// The last update time-stamp for the authorization code.
-  core.String authorizationTimestamp;
+  core.String? authorizationTimestamp;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// Represents a link to a container version.
-  core.String containerVersionId;
+  core.String? containerVersionId;
 
   /// The environment description.
   ///
   /// Can be set or changed only on USER type environments. @mutable
   /// tagmanager.accounts.containers.environments.create @mutable
   /// tagmanager.accounts.containers.environments.update
-  core.String description;
+  core.String? description;
 
   /// Whether or not to enable debug by default for the environment.
   ///
   /// @mutable tagmanager.accounts.containers.environments.create @mutable
   /// tagmanager.accounts.containers.environments.update
-  core.bool enableDebug;
+  core.bool? enableDebug;
 
   /// GTM Environment ID uniquely identifies the GTM Environment.
-  core.String environmentId;
+  core.String? environmentId;
 
   /// The fingerprint of the GTM environment as computed at storage time.
   ///
   /// This value is recomputed whenever the environment is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// The environment display name.
   ///
   /// Can be set or changed only on USER type environments. @mutable
   /// tagmanager.accounts.containers.environments.create @mutable
   /// tagmanager.accounts.containers.environments.update
-  core.String name;
+  core.String? name;
 
   /// GTM Environment's API relative path.
-  core.String path;
+  core.String? path;
 
   /// Auto generated link to the tag manager UI
-  core.String tagManagerUrl;
+  core.String? tagManagerUrl;
 
   /// The type of this environment.
   /// Possible string values are:
@@ -5159,16 +4896,16 @@ class Environment {
   /// - "latest" : Points to the latest container version.
   /// - "workspace" : Automatically managed environment that points to a
   /// workspace preview or version created by a workspace.
-  core.String type;
+  core.String? type;
 
   /// Default preview page url for the environment.
   ///
   /// @mutable tagmanager.accounts.containers.environments.create @mutable
   /// tagmanager.accounts.containers.environments.update
-  core.String url;
+  core.String? url;
 
   /// Represents a link to a quick preview of a workspace.
-  core.String workspaceId;
+  core.String? workspaceId;
 
   Environment();
 
@@ -5220,63 +4957,63 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (authorizationCode != null) 'authorizationCode': authorizationCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (authorizationCode != null) 'authorizationCode': authorizationCode!,
         if (authorizationTimestamp != null)
-          'authorizationTimestamp': authorizationTimestamp,
-        if (containerId != null) 'containerId': containerId,
+          'authorizationTimestamp': authorizationTimestamp!,
+        if (containerId != null) 'containerId': containerId!,
         if (containerVersionId != null)
-          'containerVersionId': containerVersionId,
-        if (description != null) 'description': description,
-        if (enableDebug != null) 'enableDebug': enableDebug,
-        if (environmentId != null) 'environmentId': environmentId,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (name != null) 'name': name,
-        if (path != null) 'path': path,
-        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl,
-        if (type != null) 'type': type,
-        if (url != null) 'url': url,
-        if (workspaceId != null) 'workspaceId': workspaceId,
+          'containerVersionId': containerVersionId!,
+        if (description != null) 'description': description!,
+        if (enableDebug != null) 'enableDebug': enableDebug!,
+        if (environmentId != null) 'environmentId': environmentId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (name != null) 'name': name!,
+        if (path != null) 'path': path!,
+        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
+        if (type != null) 'type': type!,
+        if (url != null) 'url': url!,
+        if (workspaceId != null) 'workspaceId': workspaceId!,
       };
 }
 
 /// Represents a Google Tag Manager Folder.
 class Folder {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// The fingerprint of the GTM Folder as computed at storage time.
   ///
   /// This value is recomputed whenever the folder is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// The Folder ID uniquely identifies the GTM Folder.
-  core.String folderId;
+  core.String? folderId;
 
   /// Folder display name.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.folders.create @mutable
   /// tagmanager.accounts.containers.workspaces.folders.update
-  core.String name;
+  core.String? name;
 
   /// User notes on how to apply this folder in the container.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.folders.create @mutable
   /// tagmanager.accounts.containers.workspaces.folders.update
-  core.String notes;
+  core.String? notes;
 
   /// GTM Folder's API relative path.
-  core.String path;
+  core.String? path;
 
   /// Auto generated link to the tag manager UI
-  core.String tagManagerUrl;
+  core.String? tagManagerUrl;
 
   /// GTM Workspace ID.
-  core.String workspaceId;
+  core.String? workspaceId;
 
   Folder();
 
@@ -5310,32 +5047,32 @@ class Folder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (containerId != null) 'containerId': containerId,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (folderId != null) 'folderId': folderId,
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
-        if (path != null) 'path': path,
-        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl,
-        if (workspaceId != null) 'workspaceId': workspaceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (containerId != null) 'containerId': containerId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (folderId != null) 'folderId': folderId!,
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
+        if (path != null) 'path': path!,
+        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
+        if (workspaceId != null) 'workspaceId': workspaceId!,
       };
 }
 
 /// Represents a Google Tag Manager Folder's contents.
 class FolderEntities {
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of tags inside the folder.
-  core.List<Tag> tag;
+  core.List<Tag>? tag;
 
   /// The list of triggers inside the folder.
-  core.List<Trigger> trigger;
+  core.List<Trigger>? trigger;
 
   /// The list of variables inside the folder.
-  core.List<Variable> variable;
+  core.List<Variable>? variable;
 
   FolderEntities();
 
@@ -5363,13 +5100,13 @@ class FolderEntities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (tag != null) 'tag': tag.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (tag != null) 'tag': tag!.map((value) => value.toJson()).toList(),
         if (trigger != null)
-          'trigger': trigger.map((value) => value.toJson()).toList(),
+          'trigger': trigger!.map((value) => value.toJson()).toList(),
         if (variable != null)
-          'variable': variable.map((value) => value.toJson()).toList(),
+          'variable': variable!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5377,26 +5114,26 @@ class FolderEntities {
 /// Template Gallery site.
 class GalleryReference {
   /// The name of the host for the community gallery template.
-  core.String host;
+  core.String? host;
 
   /// If a user has manually edited the community gallery template.
-  core.bool isModified;
+  core.bool? isModified;
 
   /// The name of the owner for the community gallery template.
-  core.String owner;
+  core.String? owner;
 
   /// The name of the repository for the community gallery template.
-  core.String repository;
+  core.String? repository;
 
   /// The signature of the community gallery template as computed at import
   /// time.
   ///
   /// This value is recomputed whenever the template is updated from the
   /// gallery.
-  core.String signature;
+  core.String? signature;
 
   /// The version of the community gallery template.
-  core.String version;
+  core.String? version;
 
   GalleryReference();
 
@@ -5421,13 +5158,13 @@ class GalleryReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (host != null) 'host': host,
-        if (isModified != null) 'isModified': isModified,
-        if (owner != null) 'owner': owner,
-        if (repository != null) 'repository': repository,
-        if (signature != null) 'signature': signature,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (host != null) 'host': host!,
+        if (isModified != null) 'isModified': isModified!,
+        if (owner != null) 'owner': owner!,
+        if (repository != null) 'repository': repository!,
+        if (signature != null) 'signature': signature!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -5435,10 +5172,10 @@ class GalleryReference {
 /// version.
 class GetWorkspaceStatusResponse {
   /// The merge conflict after sync.
-  core.List<MergeConflict> mergeConflict;
+  core.List<MergeConflict>? mergeConflict;
 
   /// Entities that have been changed in the workspace.
-  core.List<Entity> workspaceChange;
+  core.List<Entity>? workspaceChange;
 
   GetWorkspaceStatusResponse();
 
@@ -5457,23 +5194,23 @@ class GetWorkspaceStatusResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (mergeConflict != null)
           'mergeConflict':
-              mergeConflict.map((value) => value.toJson()).toList(),
+              mergeConflict!.map((value) => value.toJson()).toList(),
         if (workspaceChange != null)
           'workspaceChange':
-              workspaceChange.map((value) => value.toJson()).toList(),
+              workspaceChange!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// List Accounts Response.
 class ListAccountsResponse {
   /// List of GTM Accounts that a user has access to.
-  core.List<Account> account;
+  core.List<Account>? account;
 
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListAccountsResponse();
 
@@ -5489,20 +5226,20 @@ class ListAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (account != null)
-          'account': account.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'account': account!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// List container versions response.
 class ListContainerVersionsResponse {
   /// All container version headers of a GTM Container.
-  core.List<ContainerVersionHeader> containerVersionHeader;
+  core.List<ContainerVersionHeader>? containerVersionHeader;
 
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListContainerVersionsResponse();
 
@@ -5519,21 +5256,21 @@ class ListContainerVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (containerVersionHeader != null)
           'containerVersionHeader':
-              containerVersionHeader.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              containerVersionHeader!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// List Containers Response.
 class ListContainersResponse {
   /// All Containers of a GTM Account.
-  core.List<Container> container;
+  core.List<Container>? container;
 
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListContainersResponse();
 
@@ -5549,20 +5286,20 @@ class ListContainersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (container != null)
-          'container': container.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'container': container!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// A list of enabled built-in variables.
 class ListEnabledBuiltInVariablesResponse {
   /// All GTM BuiltInVariables of a GTM container.
-  core.List<BuiltInVariable> builtInVariable;
+  core.List<BuiltInVariable>? builtInVariable;
 
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListEnabledBuiltInVariablesResponse();
 
@@ -5578,21 +5315,21 @@ class ListEnabledBuiltInVariablesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (builtInVariable != null)
           'builtInVariable':
-              builtInVariable.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              builtInVariable!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// List Environments Response.
 class ListEnvironmentsResponse {
   /// All Environments of a GTM Container.
-  core.List<Environment> environment;
+  core.List<Environment>? environment;
 
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListEnvironmentsResponse();
 
@@ -5608,20 +5345,20 @@ class ListEnvironmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (environment != null)
-          'environment': environment.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'environment': environment!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// List Folders Response.
 class ListFoldersResponse {
   /// All GTM Folders of a GTM Container.
-  core.List<Folder> folder;
+  core.List<Folder>? folder;
 
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListFoldersResponse();
 
@@ -5637,20 +5374,20 @@ class ListFoldersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (folder != null)
-          'folder': folder.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'folder': folder!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// List Tags Response.
 class ListTagsResponse {
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// All GTM Tags of a GTM Container.
-  core.List<Tag> tag;
+  core.List<Tag>? tag;
 
   ListTagsResponse();
 
@@ -5666,18 +5403,18 @@ class ListTagsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (tag != null) 'tag': tag.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (tag != null) 'tag': tag!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ListTemplatesResponse {
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// All GTM Custom Templates of a GTM Container.
-  core.List<CustomTemplate> template;
+  core.List<CustomTemplate>? template;
 
   ListTemplatesResponse();
 
@@ -5693,20 +5430,20 @@ class ListTemplatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (template != null)
-          'template': template.map((value) => value.toJson()).toList(),
+          'template': template!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// List triggers response.
 class ListTriggersResponse {
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// All GTM Triggers of a GTM Container.
-  core.List<Trigger> trigger;
+  core.List<Trigger>? trigger;
 
   ListTriggersResponse();
 
@@ -5722,20 +5459,20 @@ class ListTriggersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (trigger != null)
-          'trigger': trigger.map((value) => value.toJson()).toList(),
+          'trigger': trigger!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// List user permissions response.
 class ListUserPermissionsResponse {
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// All GTM UserPermissions of a GTM Account.
-  core.List<UserPermission> userPermission;
+  core.List<UserPermission>? userPermission;
 
   ListUserPermissionsResponse();
 
@@ -5751,21 +5488,21 @@ class ListUserPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (userPermission != null)
           'userPermission':
-              userPermission.map((value) => value.toJson()).toList(),
+              userPermission!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// List Variables Response.
 class ListVariablesResponse {
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// All GTM Variables of a GTM Container.
-  core.List<Variable> variable;
+  core.List<Variable>? variable;
 
   ListVariablesResponse();
 
@@ -5781,20 +5518,20 @@ class ListVariablesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (variable != null)
-          'variable': variable.map((value) => value.toJson()).toList(),
+          'variable': variable!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A list of workspaces in a container.
 class ListWorkspacesResponse {
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// All Workspaces of a GTM Container.
-  core.List<Workspace> workspace;
+  core.List<Workspace>? workspace;
 
   ListWorkspacesResponse();
 
@@ -5810,19 +5547,19 @@ class ListWorkspacesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (workspace != null)
-          'workspace': workspace.map((value) => value.toJson()).toList(),
+          'workspace': workspace!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ListZonesResponse {
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// All GTM Zones of a GTM Container.
-  core.List<Zone> zone;
+  core.List<Zone>? zone;
 
   ListZonesResponse();
 
@@ -5838,9 +5575,9 @@ class ListZonesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (zone != null) 'zone': zone.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (zone != null) 'zone': zone!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5851,14 +5588,14 @@ class MergeConflict {
   ///
   /// If this field is missing, it means the workspace entity is deleted from
   /// the base version.
-  Entity entityInBaseVersion;
+  Entity? entityInBaseVersion;
 
   /// The workspace entity that has conflicting changes compared to the base
   /// version.
   ///
   /// If an entity is deleted in a workspace, it will still appear with a
   /// deleted change status.
-  Entity entityInWorkspace;
+  Entity? entityInWorkspace;
 
   MergeConflict();
 
@@ -5873,11 +5610,11 @@ class MergeConflict {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entityInBaseVersion != null)
-          'entityInBaseVersion': entityInBaseVersion.toJson(),
+          'entityInBaseVersion': entityInBaseVersion!.toJson(),
         if (entityInWorkspace != null)
-          'entityInWorkspace': entityInWorkspace.toJson(),
+          'entityInWorkspace': entityInWorkspace!.toJson(),
       };
 }
 
@@ -5893,7 +5630,7 @@ class Parameter {
   /// tagmanager.accounts.containers.workspaces.triggers.update @mutable
   /// tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.String key;
+  core.String? key;
 
   /// This list parameter's parameters (keys will be ignored).
   ///
@@ -5903,7 +5640,7 @@ class Parameter {
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
   /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.List<Parameter> list;
+  core.List<Parameter>? list;
 
   /// This map parameter's parameters (must have keys; keys must be unique).
   ///
@@ -5913,7 +5650,7 @@ class Parameter {
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
   /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.List<Parameter> map;
+  core.List<Parameter>? map;
 
   /// The parameter type.
   ///
@@ -5940,7 +5677,7 @@ class Parameter {
   /// - "map"
   /// - "triggerReference"
   /// - "tagReference"
-  core.String type;
+  core.String? type;
 
   /// A parameter's value (may contain variable references such as
   /// "{{myVariable}}") as appropriate to the specified type.
@@ -5951,7 +5688,7 @@ class Parameter {
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
   /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.String value;
+  core.String? value;
 
   Parameter();
 
@@ -5979,22 +5716,22 @@ class Parameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (list != null) 'list': list.map((value) => value.toJson()).toList(),
-        if (map != null) 'map': map.map((value) => value.toJson()).toList(),
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (list != null) 'list': list!.map((value) => value.toJson()).toList(),
+        if (map != null) 'map': map!.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// Publish container version response.
 class PublishContainerVersionResponse {
   /// Compiler errors or not.
-  core.bool compilerError;
+  core.bool? compilerError;
 
   /// The container version created.
-  ContainerVersion containerVersion;
+  ContainerVersion? containerVersion;
 
   PublishContainerVersionResponse();
 
@@ -6008,24 +5745,24 @@ class PublishContainerVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (compilerError != null) 'compilerError': compilerError,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (compilerError != null) 'compilerError': compilerError!,
         if (containerVersion != null)
-          'containerVersion': containerVersion.toJson(),
+          'containerVersion': containerVersion!.toJson(),
       };
 }
 
 /// Response to quick previewing a workspace.
 class QuickPreviewResponse {
   /// Were there compiler errors or not.
-  core.bool compilerError;
+  core.bool? compilerError;
 
   /// The quick previewed container version.
-  ContainerVersion containerVersion;
+  ContainerVersion? containerVersion;
 
   /// Whether quick previewing failed when syncing the workspace to the latest
   /// container version.
-  SyncStatus syncStatus;
+  SyncStatus? syncStatus;
 
   QuickPreviewResponse();
 
@@ -6043,18 +5780,18 @@ class QuickPreviewResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (compilerError != null) 'compilerError': compilerError,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (compilerError != null) 'compilerError': compilerError!,
         if (containerVersion != null)
-          'containerVersion': containerVersion.toJson(),
-        if (syncStatus != null) 'syncStatus': syncStatus.toJson(),
+          'containerVersion': containerVersion!.toJson(),
+        if (syncStatus != null) 'syncStatus': syncStatus!.toJson(),
       };
 }
 
 /// The result of reverting a built-in variable in a workspace.
 class RevertBuiltInVariableResponse {
   /// Whether the built-in variable is enabled after reversion.
-  core.bool enabled;
+  core.bool? enabled;
 
   RevertBuiltInVariableResponse();
 
@@ -6064,8 +5801,8 @@ class RevertBuiltInVariableResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enabled != null) 'enabled': enabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -6076,7 +5813,7 @@ class RevertFolderResponse {
   ///
   /// If no folder is present, that means the folder was deleted in the latest
   /// container version.
-  Folder folder;
+  Folder? folder;
 
   RevertFolderResponse();
 
@@ -6087,8 +5824,8 @@ class RevertFolderResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (folder != null) 'folder': folder.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (folder != null) 'folder': folder!.toJson(),
       };
 }
 
@@ -6099,7 +5836,7 @@ class RevertTagResponse {
   ///
   /// If no tag is present, that means the tag was deleted in the latest
   /// container version.
-  Tag tag;
+  Tag? tag;
 
   RevertTagResponse();
 
@@ -6109,8 +5846,8 @@ class RevertTagResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (tag != null) 'tag': tag.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (tag != null) 'tag': tag!.toJson(),
       };
 }
 
@@ -6121,7 +5858,7 @@ class RevertTemplateResponse {
   ///
   /// If no template is present, that means the template was deleted in the
   /// latest container version.
-  CustomTemplate template;
+  CustomTemplate? template;
 
   RevertTemplateResponse();
 
@@ -6132,8 +5869,8 @@ class RevertTemplateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (template != null) 'template': template.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (template != null) 'template': template!.toJson(),
       };
 }
 
@@ -6144,7 +5881,7 @@ class RevertTriggerResponse {
   ///
   /// If no trigger is present, that means the trigger was deleted in the latest
   /// container version.
-  Trigger trigger;
+  Trigger? trigger;
 
   RevertTriggerResponse();
 
@@ -6155,8 +5892,8 @@ class RevertTriggerResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (trigger != null) 'trigger': trigger.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (trigger != null) 'trigger': trigger!.toJson(),
       };
 }
 
@@ -6167,7 +5904,7 @@ class RevertVariableResponse {
   ///
   /// If no variable is present, that means the variable was deleted in the
   /// latest container version.
-  Variable variable;
+  Variable? variable;
 
   RevertVariableResponse();
 
@@ -6178,8 +5915,8 @@ class RevertVariableResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (variable != null) 'variable': variable.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (variable != null) 'variable': variable!.toJson(),
       };
 }
 
@@ -6190,7 +5927,7 @@ class RevertZoneResponse {
   ///
   /// If no zone is present, that means the zone was deleted in the latest
   /// container version.
-  Zone zone;
+  Zone? zone;
 
   RevertZoneResponse();
 
@@ -6201,8 +5938,8 @@ class RevertZoneResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (zone != null) 'zone': zone.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (zone != null) 'zone': zone!.toJson(),
       };
 }
 
@@ -6213,10 +5950,10 @@ class SetupTag {
   /// successfully.
   ///
   /// If false, fire the main tag regardless of setup tag firing status.
-  core.bool stopOnSetupFailure;
+  core.bool? stopOnSetupFailure;
 
   /// The name of the setup tag.
-  core.String tagName;
+  core.String? tagName;
 
   SetupTag();
 
@@ -6229,20 +5966,20 @@ class SetupTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (stopOnSetupFailure != null)
-          'stopOnSetupFailure': stopOnSetupFailure,
-        if (tagName != null) 'tagName': tagName,
+          'stopOnSetupFailure': stopOnSetupFailure!,
+        if (tagName != null) 'tagName': tagName!,
       };
 }
 
 /// The status of a workspace after synchronization.
 class SyncStatus {
   /// Synchornization operation detected a merge conflict.
-  core.bool mergeConflict;
+  core.bool? mergeConflict;
 
   /// An error occurred during the synchronization operation.
-  core.bool syncError;
+  core.bool? syncError;
 
   SyncStatus();
 
@@ -6255,9 +5992,9 @@ class SyncStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (mergeConflict != null) 'mergeConflict': mergeConflict,
-        if (syncError != null) 'syncError': syncError,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (mergeConflict != null) 'mergeConflict': mergeConflict!,
+        if (syncError != null) 'syncError': syncError!,
       };
 }
 
@@ -6268,10 +6005,10 @@ class SyncWorkspaceResponse {
   ///
   /// If this field is not empty, the sync is still treated as successful. But a
   /// version cannot be created until all conflicts are resolved.
-  core.List<MergeConflict> mergeConflict;
+  core.List<MergeConflict>? mergeConflict;
 
   /// Indicates whether synchronization caused a merge conflict or sync error.
-  SyncStatus syncStatus;
+  SyncStatus? syncStatus;
 
   SyncWorkspaceResponse();
 
@@ -6288,40 +6025,40 @@ class SyncWorkspaceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (mergeConflict != null)
           'mergeConflict':
-              mergeConflict.map((value) => value.toJson()).toList(),
-        if (syncStatus != null) 'syncStatus': syncStatus.toJson(),
+              mergeConflict!.map((value) => value.toJson()).toList(),
+        if (syncStatus != null) 'syncStatus': syncStatus!.toJson(),
       };
 }
 
 /// Represents a Google Tag Manager Tag.
 class Tag {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// Blocking rule IDs.
   ///
   /// If any of the listed rules evaluate to true, the tag will not fire.
   /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.List<core.String> blockingRuleId;
+  core.List<core.String>? blockingRuleId;
 
   /// Blocking trigger IDs.
   ///
   /// If any of the listed triggers evaluate to true, the tag will not fire.
   /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.List<core.String> blockingTriggerId;
+  core.List<core.String>? blockingTriggerId;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// The fingerprint of the GTM Tag as computed at storage time.
   ///
   /// This value is recomputed whenever the tag is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// Firing rule IDs.
   ///
@@ -6329,7 +6066,7 @@ class Tag {
   /// blockingRuleIds (if any specified) are false. @mutable
   /// tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.List<core.String> firingRuleId;
+  core.List<core.String>? firingRuleId;
 
   /// Firing trigger IDs.
   ///
@@ -6337,14 +6074,14 @@ class Tag {
   /// blockingTriggerIds (if any specified) are false. @mutable
   /// tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.List<core.String> firingTriggerId;
+  core.List<core.String>? firingTriggerId;
 
   /// If set to true, this tag will only fire in the live environment (e.g. not
   /// in preview or debug mode).
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.bool liveOnly;
+  core.bool? liveOnly;
 
   /// A map of key-value pairs of tag metadata to be included in the event data
   /// for tag monitoring.
@@ -6353,44 +6090,44 @@ class Tag {
   /// type TEMPLATE, however cannot contain variable references. @mutable
   /// tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  Parameter monitoringMetadata;
+  Parameter? monitoringMetadata;
 
   /// If non-empty, then the tag display name will be included in the monitoring
   /// metadata map using the key specified.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.String monitoringMetadataTagNameKey;
+  core.String? monitoringMetadataTagNameKey;
 
   /// Tag display name.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.String name;
+  core.String? name;
 
   /// User notes on how to apply this tag in the container.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.String notes;
+  core.String? notes;
 
   /// The tag's parameters.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.List<Parameter> parameter;
+  core.List<Parameter>? parameter;
 
   /// Parent folder id.
-  core.String parentFolderId;
+  core.String? parentFolderId;
 
   /// GTM Tag's API relative path.
-  core.String path;
+  core.String? path;
 
   /// Indicates whether the tag is paused, which prevents the tag from firing.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.bool paused;
+  core.bool? paused;
 
   /// User defined numeric priority of the tag.
   ///
@@ -6399,24 +6136,24 @@ class Tag {
   /// value. The default value is 0. @mutable
   /// tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  Parameter priority;
+  Parameter? priority;
 
   /// The end timestamp in milliseconds to schedule a tag.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.String scheduleEndMs;
+  core.String? scheduleEndMs;
 
   /// The start timestamp in milliseconds to schedule a tag.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.String scheduleStartMs;
+  core.String? scheduleStartMs;
 
   /// The list of setup tags.
   ///
   /// Currently we only allow one.
-  core.List<SetupTag> setupTag;
+  core.List<SetupTag>? setupTag;
 
   /// Option to fire this tag.
   /// Possible string values are:
@@ -6426,27 +6163,27 @@ class Tag {
   /// multiple times per load (e.g., app load or page load).
   /// - "oncePerLoad" : Tag can only be fired per load (e.g., app load or page
   /// load).
-  core.String tagFiringOption;
+  core.String? tagFiringOption;
 
   /// The Tag ID uniquely identifies the GTM Tag.
-  core.String tagId;
+  core.String? tagId;
 
   /// Auto generated link to the tag manager UI
-  core.String tagManagerUrl;
+  core.String? tagManagerUrl;
 
   /// The list of teardown tags.
   ///
   /// Currently we only allow one.
-  core.List<TeardownTag> teardownTag;
+  core.List<TeardownTag>? teardownTag;
 
   /// GTM Tag Type.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.tags.create @mutable
   /// tagmanager.accounts.containers.workspaces.tags.update
-  core.String type;
+  core.String? type;
 
   /// GTM Workspace ID.
-  core.String workspaceId;
+  core.String? workspaceId;
 
   Tag();
 
@@ -6551,38 +6288,38 @@ class Tag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (blockingRuleId != null) 'blockingRuleId': blockingRuleId,
-        if (blockingTriggerId != null) 'blockingTriggerId': blockingTriggerId,
-        if (containerId != null) 'containerId': containerId,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (firingRuleId != null) 'firingRuleId': firingRuleId,
-        if (firingTriggerId != null) 'firingTriggerId': firingTriggerId,
-        if (liveOnly != null) 'liveOnly': liveOnly,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (blockingRuleId != null) 'blockingRuleId': blockingRuleId!,
+        if (blockingTriggerId != null) 'blockingTriggerId': blockingTriggerId!,
+        if (containerId != null) 'containerId': containerId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (firingRuleId != null) 'firingRuleId': firingRuleId!,
+        if (firingTriggerId != null) 'firingTriggerId': firingTriggerId!,
+        if (liveOnly != null) 'liveOnly': liveOnly!,
         if (monitoringMetadata != null)
-          'monitoringMetadata': monitoringMetadata.toJson(),
+          'monitoringMetadata': monitoringMetadata!.toJson(),
         if (monitoringMetadataTagNameKey != null)
-          'monitoringMetadataTagNameKey': monitoringMetadataTagNameKey,
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
+          'monitoringMetadataTagNameKey': monitoringMetadataTagNameKey!,
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
         if (parameter != null)
-          'parameter': parameter.map((value) => value.toJson()).toList(),
-        if (parentFolderId != null) 'parentFolderId': parentFolderId,
-        if (path != null) 'path': path,
-        if (paused != null) 'paused': paused,
-        if (priority != null) 'priority': priority.toJson(),
-        if (scheduleEndMs != null) 'scheduleEndMs': scheduleEndMs,
-        if (scheduleStartMs != null) 'scheduleStartMs': scheduleStartMs,
+          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (parentFolderId != null) 'parentFolderId': parentFolderId!,
+        if (path != null) 'path': path!,
+        if (paused != null) 'paused': paused!,
+        if (priority != null) 'priority': priority!.toJson(),
+        if (scheduleEndMs != null) 'scheduleEndMs': scheduleEndMs!,
+        if (scheduleStartMs != null) 'scheduleStartMs': scheduleStartMs!,
         if (setupTag != null)
-          'setupTag': setupTag.map((value) => value.toJson()).toList(),
-        if (tagFiringOption != null) 'tagFiringOption': tagFiringOption,
-        if (tagId != null) 'tagId': tagId,
-        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl,
+          'setupTag': setupTag!.map((value) => value.toJson()).toList(),
+        if (tagFiringOption != null) 'tagFiringOption': tagFiringOption!,
+        if (tagId != null) 'tagId': tagId!,
+        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
         if (teardownTag != null)
-          'teardownTag': teardownTag.map((value) => value.toJson()).toList(),
-        if (type != null) 'type': type,
-        if (workspaceId != null) 'workspaceId': workspaceId,
+          'teardownTag': teardownTag!.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type!,
+        if (workspaceId != null) 'workspaceId': workspaceId!,
       };
 }
 
@@ -6593,10 +6330,10 @@ class TeardownTag {
   /// successfully.
   ///
   /// If false, fire the teardown tag regardless of main tag firing status.
-  core.bool stopTeardownOnFailure;
+  core.bool? stopTeardownOnFailure;
 
   /// The name of the teardown tag.
-  core.String tagName;
+  core.String? tagName;
 
   TeardownTag();
 
@@ -6609,23 +6346,23 @@ class TeardownTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (stopTeardownOnFailure != null)
-          'stopTeardownOnFailure': stopTeardownOnFailure,
-        if (tagName != null) 'tagName': tagName,
+          'stopTeardownOnFailure': stopTeardownOnFailure!,
+        if (tagName != null) 'tagName': tagName!,
       };
 }
 
 /// Represents a Google Tag Manager Trigger
 class Trigger {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// Used in the case of auto event tracking.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
-  core.List<Condition> autoEventFilter;
+  core.List<Condition>? autoEventFilter;
 
   /// Whether or not we should only fire tags if the form submit or link click
   /// event is not cancelled by some other event handler (e.g. because of
@@ -6634,42 +6371,42 @@ class Trigger {
   /// Only valid for Form Submission and Link Click triggers. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter checkValidation;
+  Parameter? checkValidation;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// A visibility trigger minimum continuous visible time (in milliseconds).
   ///
   /// Only valid for AMP Visibility trigger. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter continuousTimeMinMilliseconds;
+  Parameter? continuousTimeMinMilliseconds;
 
   /// Used in the case of custom event, which is fired iff all Conditions are
   /// true.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
-  core.List<Condition> customEventFilter;
+  core.List<Condition>? customEventFilter;
 
   /// Name of the GTM event that is fired.
   ///
   /// Only valid for Timer triggers. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter eventName;
+  Parameter? eventName;
 
   /// The trigger will only fire iff all Conditions are true.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
-  core.List<Condition> filter;
+  core.List<Condition>? filter;
 
   /// The fingerprint of the GTM Trigger as computed at storage time.
   ///
   /// This value is recomputed whenever the trigger is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// List of integer percentage values for scroll triggers.
   ///
@@ -6677,21 +6414,21 @@ class Trigger {
   /// scrolled horizontally. Only valid for AMP scroll triggers. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter horizontalScrollPercentageList;
+  Parameter? horizontalScrollPercentageList;
 
   /// Time between triggering recurring Timer Events (in milliseconds).
   ///
   /// Only valid for Timer triggers. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter interval;
+  Parameter? interval;
 
   /// Time between Timer Events to fire (in seconds).
   ///
   /// Only valid for AMP Timer trigger. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter intervalSeconds;
+  Parameter? intervalSeconds;
 
   /// Limit of the number of GTM events this Timer Trigger will fire.
   ///
@@ -6699,58 +6436,58 @@ class Trigger {
   /// leaves the page. Only valid for Timer triggers. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter limit;
+  Parameter? limit;
 
   /// Max time to fire Timer Events (in seconds).
   ///
   /// Only valid for AMP Timer trigger. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter maxTimerLengthSeconds;
+  Parameter? maxTimerLengthSeconds;
 
   /// Trigger display name.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
-  core.String name;
+  core.String? name;
 
   /// User notes on how to apply this trigger in the container.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
-  core.String notes;
+  core.String? notes;
 
   /// Additional parameters.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
-  core.List<Parameter> parameter;
+  core.List<Parameter>? parameter;
 
   /// Parent folder id.
-  core.String parentFolderId;
+  core.String? parentFolderId;
 
   /// GTM Trigger's API relative path.
-  core.String path;
+  core.String? path;
 
   /// A click trigger CSS selector (i.e. "a", "button" etc.).
   ///
   /// Only valid for AMP Click trigger. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter selector;
+  Parameter? selector;
 
   /// Auto generated link to the tag manager UI
-  core.String tagManagerUrl;
+  core.String? tagManagerUrl;
 
   /// A visibility trigger minimum total visible time (in milliseconds).
   ///
   /// Only valid for AMP Visibility trigger. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter totalTimeMinMilliseconds;
+  Parameter? totalTimeMinMilliseconds;
 
   /// The Trigger ID uniquely identifies the GTM Trigger.
-  core.String triggerId;
+  core.String? triggerId;
 
   /// Defines the data layer event that causes this trigger.
   ///
@@ -6789,7 +6526,7 @@ class Trigger {
   /// - "youTubeVideo"
   /// - "scrollDepth"
   /// - "elementVisibility"
-  core.String type;
+  core.String? type;
 
   /// Globally unique id of the trigger that auto-generates this (a Form Submit,
   /// Link Click or Timer listener) if any.
@@ -6800,7 +6537,7 @@ class Trigger {
   /// Form Submit, Link Click and Timer triggers. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter uniqueTriggerId;
+  Parameter? uniqueTriggerId;
 
   /// List of integer percentage values for scroll triggers.
   ///
@@ -6808,28 +6545,28 @@ class Trigger {
   /// scrolled vertically. Only valid for AMP scroll triggers. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter verticalScrollPercentageList;
+  Parameter? verticalScrollPercentageList;
 
   /// A visibility trigger CSS selector (i.e. "#id").
   ///
   /// Only valid for AMP Visibility trigger. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter visibilitySelector;
+  Parameter? visibilitySelector;
 
   /// A visibility trigger maximum percent visibility.
   ///
   /// Only valid for AMP Visibility trigger. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter visiblePercentageMax;
+  Parameter? visiblePercentageMax;
 
   /// A visibility trigger minimum percent visibility.
   ///
   /// Only valid for AMP Visibility trigger. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter visiblePercentageMin;
+  Parameter? visiblePercentageMin;
 
   /// Whether or not we should delay the form submissions or link opening until
   /// all of the tags have fired (by preventing the default action and later
@@ -6838,7 +6575,7 @@ class Trigger {
   /// Only valid for Form Submission and Link Click triggers. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter waitForTags;
+  Parameter? waitForTags;
 
   /// How long to wait (in milliseconds) for tags to fire when 'waits_for_tags'
   /// above evaluates to true.
@@ -6846,10 +6583,10 @@ class Trigger {
   /// Only valid for Form Submission and Link Click triggers. @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.create @mutable
   /// tagmanager.accounts.containers.workspaces.triggers.update
-  Parameter waitForTagsTimeout;
+  Parameter? waitForTagsTimeout;
 
   /// GTM Workspace ID.
-  core.String workspaceId;
+  core.String? workspaceId;
 
   Trigger();
 
@@ -6985,59 +6722,60 @@ class Trigger {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (autoEventFilter != null)
           'autoEventFilter':
-              autoEventFilter.map((value) => value.toJson()).toList(),
+              autoEventFilter!.map((value) => value.toJson()).toList(),
         if (checkValidation != null)
-          'checkValidation': checkValidation.toJson(),
-        if (containerId != null) 'containerId': containerId,
+          'checkValidation': checkValidation!.toJson(),
+        if (containerId != null) 'containerId': containerId!,
         if (continuousTimeMinMilliseconds != null)
           'continuousTimeMinMilliseconds':
-              continuousTimeMinMilliseconds.toJson(),
+              continuousTimeMinMilliseconds!.toJson(),
         if (customEventFilter != null)
           'customEventFilter':
-              customEventFilter.map((value) => value.toJson()).toList(),
-        if (eventName != null) 'eventName': eventName.toJson(),
+              customEventFilter!.map((value) => value.toJson()).toList(),
+        if (eventName != null) 'eventName': eventName!.toJson(),
         if (filter != null)
-          'filter': filter.map((value) => value.toJson()).toList(),
-        if (fingerprint != null) 'fingerprint': fingerprint,
+          'filter': filter!.map((value) => value.toJson()).toList(),
+        if (fingerprint != null) 'fingerprint': fingerprint!,
         if (horizontalScrollPercentageList != null)
           'horizontalScrollPercentageList':
-              horizontalScrollPercentageList.toJson(),
-        if (interval != null) 'interval': interval.toJson(),
+              horizontalScrollPercentageList!.toJson(),
+        if (interval != null) 'interval': interval!.toJson(),
         if (intervalSeconds != null)
-          'intervalSeconds': intervalSeconds.toJson(),
-        if (limit != null) 'limit': limit.toJson(),
+          'intervalSeconds': intervalSeconds!.toJson(),
+        if (limit != null) 'limit': limit!.toJson(),
         if (maxTimerLengthSeconds != null)
-          'maxTimerLengthSeconds': maxTimerLengthSeconds.toJson(),
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
+          'maxTimerLengthSeconds': maxTimerLengthSeconds!.toJson(),
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
         if (parameter != null)
-          'parameter': parameter.map((value) => value.toJson()).toList(),
-        if (parentFolderId != null) 'parentFolderId': parentFolderId,
-        if (path != null) 'path': path,
-        if (selector != null) 'selector': selector.toJson(),
-        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl,
+          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (parentFolderId != null) 'parentFolderId': parentFolderId!,
+        if (path != null) 'path': path!,
+        if (selector != null) 'selector': selector!.toJson(),
+        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
         if (totalTimeMinMilliseconds != null)
-          'totalTimeMinMilliseconds': totalTimeMinMilliseconds.toJson(),
-        if (triggerId != null) 'triggerId': triggerId,
-        if (type != null) 'type': type,
+          'totalTimeMinMilliseconds': totalTimeMinMilliseconds!.toJson(),
+        if (triggerId != null) 'triggerId': triggerId!,
+        if (type != null) 'type': type!,
         if (uniqueTriggerId != null)
-          'uniqueTriggerId': uniqueTriggerId.toJson(),
+          'uniqueTriggerId': uniqueTriggerId!.toJson(),
         if (verticalScrollPercentageList != null)
-          'verticalScrollPercentageList': verticalScrollPercentageList.toJson(),
+          'verticalScrollPercentageList':
+              verticalScrollPercentageList!.toJson(),
         if (visibilitySelector != null)
-          'visibilitySelector': visibilitySelector.toJson(),
+          'visibilitySelector': visibilitySelector!.toJson(),
         if (visiblePercentageMax != null)
-          'visiblePercentageMax': visiblePercentageMax.toJson(),
+          'visiblePercentageMax': visiblePercentageMax!.toJson(),
         if (visiblePercentageMin != null)
-          'visiblePercentageMin': visiblePercentageMin.toJson(),
-        if (waitForTags != null) 'waitForTags': waitForTags.toJson(),
+          'visiblePercentageMin': visiblePercentageMin!.toJson(),
+        if (waitForTags != null) 'waitForTags': waitForTags!.toJson(),
         if (waitForTagsTimeout != null)
-          'waitForTagsTimeout': waitForTagsTimeout.toJson(),
-        if (workspaceId != null) 'workspaceId': workspaceId,
+          'waitForTagsTimeout': waitForTagsTimeout!.toJson(),
+        if (workspaceId != null) 'workspaceId': workspaceId!,
       };
 }
 
@@ -7047,24 +6785,24 @@ class UserPermission {
   ///
   /// @mutable tagmanager.accounts.permissions.create @mutable
   /// tagmanager.accounts.permissions.update
-  AccountAccess accountAccess;
+  AccountAccess? accountAccess;
 
   /// The Account ID uniquely identifies the GTM Account.
-  core.String accountId;
+  core.String? accountId;
 
   /// GTM Container access permissions.
   ///
   /// @mutable tagmanager.accounts.permissions.create @mutable
   /// tagmanager.accounts.permissions.update
-  core.List<ContainerAccess> containerAccess;
+  core.List<ContainerAccess>? containerAccess;
 
   /// User's email address.
   ///
   /// @mutable tagmanager.accounts.permissions.create
-  core.String emailAddress;
+  core.String? emailAddress;
 
   /// GTM UserPermission's API relative path.
-  core.String path;
+  core.String? path;
 
   UserPermission();
 
@@ -7090,24 +6828,24 @@ class UserPermission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountAccess != null) 'accountAccess': accountAccess.toJson(),
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountAccess != null) 'accountAccess': accountAccess!.toJson(),
+        if (accountId != null) 'accountId': accountId!,
         if (containerAccess != null)
           'containerAccess':
-              containerAccess.map((value) => value.toJson()).toList(),
-        if (emailAddress != null) 'emailAddress': emailAddress,
-        if (path != null) 'path': path,
+              containerAccess!.map((value) => value.toJson()).toList(),
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (path != null) 'path': path!,
       };
 }
 
 /// Represents a Google Tag Manager Variable.
 class Variable {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// For mobile containers only: A list of trigger IDs for disabling
   /// conditional variables; the variable is enabled if one of the enabling
@@ -7116,7 +6854,7 @@ class Variable {
   /// Treated as an unordered set. @mutable
   /// tagmanager.accounts.containers.workspaces.variables.create @mutable
   /// tagmanager.accounts.containers.workspaces.variables.update
-  core.List<core.String> disablingTriggerId;
+  core.List<core.String>? disablingTriggerId;
 
   /// For mobile containers only: A list of trigger IDs for enabling conditional
   /// variables; the variable is enabled if one of the enabling triggers is true
@@ -7125,66 +6863,66 @@ class Variable {
   /// Treated as an unordered set. @mutable
   /// tagmanager.accounts.containers.workspaces.variables.create @mutable
   /// tagmanager.accounts.containers.workspaces.variables.update
-  core.List<core.String> enablingTriggerId;
+  core.List<core.String>? enablingTriggerId;
 
   /// The fingerprint of the GTM Variable as computed at storage time.
   ///
   /// This value is recomputed whenever the variable is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// Option to convert a variable value to other value.
-  VariableFormatValue formatValue;
+  VariableFormatValue? formatValue;
 
   /// Variable display name.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.variables.create
   /// @mutable tagmanager.accounts.containers.workspaces.variables.update
-  core.String name;
+  core.String? name;
 
   /// User notes on how to apply this variable in the container.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.variables.create
   /// @mutable tagmanager.accounts.containers.workspaces.variables.update
-  core.String notes;
+  core.String? notes;
 
   /// The variable's parameters.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.variables.create
   /// @mutable tagmanager.accounts.containers.workspaces.variables.update
-  core.List<Parameter> parameter;
+  core.List<Parameter>? parameter;
 
   /// Parent folder id.
-  core.String parentFolderId;
+  core.String? parentFolderId;
 
   /// GTM Variable's API relative path.
-  core.String path;
+  core.String? path;
 
   /// The end timestamp in milliseconds to schedule a variable.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.variables.create
   /// @mutable tagmanager.accounts.containers.workspaces.variables.update
-  core.String scheduleEndMs;
+  core.String? scheduleEndMs;
 
   /// The start timestamp in milliseconds to schedule a variable.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.variables.create
   /// @mutable tagmanager.accounts.containers.workspaces.variables.update
-  core.String scheduleStartMs;
+  core.String? scheduleStartMs;
 
   /// Auto generated link to the tag manager UI
-  core.String tagManagerUrl;
+  core.String? tagManagerUrl;
 
   /// GTM Variable Type.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.variables.create
   /// @mutable tagmanager.accounts.containers.workspaces.variables.update
-  core.String type;
+  core.String? type;
 
   /// The Variable ID uniquely identifies the GTM Variable.
-  core.String variableId;
+  core.String? variableId;
 
   /// GTM Workspace ID.
-  core.String workspaceId;
+  core.String? workspaceId;
 
   Variable();
 
@@ -7250,26 +6988,26 @@ class Variable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (containerId != null) 'containerId': containerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (containerId != null) 'containerId': containerId!,
         if (disablingTriggerId != null)
-          'disablingTriggerId': disablingTriggerId,
-        if (enablingTriggerId != null) 'enablingTriggerId': enablingTriggerId,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (formatValue != null) 'formatValue': formatValue.toJson(),
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
+          'disablingTriggerId': disablingTriggerId!,
+        if (enablingTriggerId != null) 'enablingTriggerId': enablingTriggerId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (formatValue != null) 'formatValue': formatValue!.toJson(),
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
         if (parameter != null)
-          'parameter': parameter.map((value) => value.toJson()).toList(),
-        if (parentFolderId != null) 'parentFolderId': parentFolderId,
-        if (path != null) 'path': path,
-        if (scheduleEndMs != null) 'scheduleEndMs': scheduleEndMs,
-        if (scheduleStartMs != null) 'scheduleStartMs': scheduleStartMs,
-        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl,
-        if (type != null) 'type': type,
-        if (variableId != null) 'variableId': variableId,
-        if (workspaceId != null) 'workspaceId': workspaceId,
+          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (parentFolderId != null) 'parentFolderId': parentFolderId!,
+        if (path != null) 'path': path!,
+        if (scheduleEndMs != null) 'scheduleEndMs': scheduleEndMs!,
+        if (scheduleStartMs != null) 'scheduleStartMs': scheduleStartMs!,
+        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
+        if (type != null) 'type': type!,
+        if (variableId != null) 'variableId': variableId!,
+        if (workspaceId != null) 'workspaceId': workspaceId!,
       };
 }
 
@@ -7280,19 +7018,19 @@ class VariableFormatValue {
   /// - "none"
   /// - "lowercase" : The option to convert a variable value to lowercase.
   /// - "uppercase" : The option to convert a variable value to uppercase.
-  core.String caseConversionType;
+  core.String? caseConversionType;
 
   /// The value to convert if a variable value is false.
-  Parameter convertFalseToValue;
+  Parameter? convertFalseToValue;
 
   /// The value to convert if a variable value is null.
-  Parameter convertNullToValue;
+  Parameter? convertNullToValue;
 
   /// The value to convert if a variable value is true.
-  Parameter convertTrueToValue;
+  Parameter? convertTrueToValue;
 
   /// The value to convert if a variable value is undefined.
-  Parameter convertUndefinedToValue;
+  Parameter? convertUndefinedToValue;
 
   VariableFormatValue();
 
@@ -7319,53 +7057,53 @@ class VariableFormatValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (caseConversionType != null)
-          'caseConversionType': caseConversionType,
+          'caseConversionType': caseConversionType!,
         if (convertFalseToValue != null)
-          'convertFalseToValue': convertFalseToValue.toJson(),
+          'convertFalseToValue': convertFalseToValue!.toJson(),
         if (convertNullToValue != null)
-          'convertNullToValue': convertNullToValue.toJson(),
+          'convertNullToValue': convertNullToValue!.toJson(),
         if (convertTrueToValue != null)
-          'convertTrueToValue': convertTrueToValue.toJson(),
+          'convertTrueToValue': convertTrueToValue!.toJson(),
         if (convertUndefinedToValue != null)
-          'convertUndefinedToValue': convertUndefinedToValue.toJson(),
+          'convertUndefinedToValue': convertUndefinedToValue!.toJson(),
       };
 }
 
 /// Represents a Google Tag Manager Container Workspace.
 class Workspace {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// Workspace description.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.create @mutable
   /// tagmanager.accounts.containers.workspaces.update
-  core.String description;
+  core.String? description;
 
   /// The fingerprint of the GTM Workspace as computed at storage time.
   ///
   /// This value is recomputed whenever the workspace is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// Workspace display name.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.create @mutable
   /// tagmanager.accounts.containers.workspaces.update
-  core.String name;
+  core.String? name;
 
   /// GTM Workspace's API relative path.
-  core.String path;
+  core.String? path;
 
   /// Auto generated link to the tag manager UI
-  core.String tagManagerUrl;
+  core.String? tagManagerUrl;
 
   /// The Workspace ID uniquely identifies the GTM Workspace.
-  core.String workspaceId;
+  core.String? workspaceId;
 
   Workspace();
 
@@ -7396,57 +7134,57 @@ class Workspace {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (containerId != null) 'containerId': containerId,
-        if (description != null) 'description': description,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (name != null) 'name': name,
-        if (path != null) 'path': path,
-        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl,
-        if (workspaceId != null) 'workspaceId': workspaceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (containerId != null) 'containerId': containerId!,
+        if (description != null) 'description': description!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (name != null) 'name': name!,
+        if (path != null) 'path': path!,
+        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
+        if (workspaceId != null) 'workspaceId': workspaceId!,
       };
 }
 
 /// Represents a Google Tag Manager Zone's contents.
 class Zone {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// This Zone's boundary.
-  ZoneBoundary boundary;
+  ZoneBoundary? boundary;
 
   /// Containers that are children of this Zone.
-  core.List<ZoneChildContainer> childContainer;
+  core.List<ZoneChildContainer>? childContainer;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// The fingerprint of the GTM Zone as computed at storage time.
   ///
   /// This value is recomputed whenever the zone is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// Zone display name.
-  core.String name;
+  core.String? name;
 
   /// User notes on how to apply this zone in the container.
-  core.String notes;
+  core.String? notes;
 
   /// GTM Zone's API relative path.
-  core.String path;
+  core.String? path;
 
   /// Auto generated link to the tag manager UI
-  core.String tagManagerUrl;
+  core.String? tagManagerUrl;
 
   /// This Zone's type restrictions.
-  ZoneTypeRestriction typeRestriction;
+  ZoneTypeRestriction? typeRestriction;
 
   /// GTM Workspace ID.
-  core.String workspaceId;
+  core.String? workspaceId;
 
   /// The Zone ID uniquely identifies the GTM Zone.
-  core.String zoneId;
+  core.String? zoneId;
 
   Zone();
 
@@ -7494,35 +7232,35 @@ class Zone {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (boundary != null) 'boundary': boundary.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (boundary != null) 'boundary': boundary!.toJson(),
         if (childContainer != null)
           'childContainer':
-              childContainer.map((value) => value.toJson()).toList(),
-        if (containerId != null) 'containerId': containerId,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
-        if (path != null) 'path': path,
-        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl,
+              childContainer!.map((value) => value.toJson()).toList(),
+        if (containerId != null) 'containerId': containerId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
+        if (path != null) 'path': path!,
+        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
         if (typeRestriction != null)
-          'typeRestriction': typeRestriction.toJson(),
-        if (workspaceId != null) 'workspaceId': workspaceId,
-        if (zoneId != null) 'zoneId': zoneId,
+          'typeRestriction': typeRestriction!.toJson(),
+        if (workspaceId != null) 'workspaceId': workspaceId!,
+        if (zoneId != null) 'zoneId': zoneId!,
       };
 }
 
 /// Represents a Zone's boundaries.
 class ZoneBoundary {
   /// The conditions that, when conjoined, make up the boundary.
-  core.List<Condition> condition;
+  core.List<Condition>? condition;
 
   /// Custom evaluation trigger IDs.
   ///
   /// A zone will evaluate its boundary conditions when any of the listed
   /// triggers are true.
-  core.List<core.String> customEvaluationTriggerId;
+  core.List<core.String>? customEvaluationTriggerId;
 
   ZoneBoundary();
 
@@ -7541,21 +7279,21 @@ class ZoneBoundary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (condition != null)
-          'condition': condition.map((value) => value.toJson()).toList(),
+          'condition': condition!.map((value) => value.toJson()).toList(),
         if (customEvaluationTriggerId != null)
-          'customEvaluationTriggerId': customEvaluationTriggerId,
+          'customEvaluationTriggerId': customEvaluationTriggerId!,
       };
 }
 
 /// Represents a child container of a Zone.
 class ZoneChildContainer {
   /// The zone's nickname for the child container.
-  core.String nickname;
+  core.String? nickname;
 
   /// The child container's public id.
-  core.String publicId;
+  core.String? publicId;
 
   ZoneChildContainer();
 
@@ -7568,19 +7306,19 @@ class ZoneChildContainer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nickname != null) 'nickname': nickname,
-        if (publicId != null) 'publicId': publicId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nickname != null) 'nickname': nickname!,
+        if (publicId != null) 'publicId': publicId!,
       };
 }
 
 /// Represents a Zone's type restrictions.
 class ZoneTypeRestriction {
   /// True if type restrictions have been enabled for this Zone.
-  core.bool enable;
+  core.bool? enable;
 
   /// List of type public ids that have been whitelisted for use in this Zone.
-  core.List<core.String> whitelistedTypeId;
+  core.List<core.String>? whitelistedTypeId;
 
   ZoneTypeRestriction();
 
@@ -7595,8 +7333,8 @@ class ZoneTypeRestriction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enable != null) 'enable': enable,
-        if (whitelistedTypeId != null) 'whitelistedTypeId': whitelistedTypeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enable != null) 'enable': enable!,
+        if (whitelistedTypeId != null) 'whitelistedTypeId': whitelistedTypeId!,
       };
 }

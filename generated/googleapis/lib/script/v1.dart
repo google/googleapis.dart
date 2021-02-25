@@ -182,18 +182,18 @@ class ProcessesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUserProcessesResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String userProcessFilter_deploymentId,
-    core.String userProcessFilter_endTime,
-    core.String userProcessFilter_functionName,
-    core.String userProcessFilter_projectName,
-    core.String userProcessFilter_scriptId,
-    core.String userProcessFilter_startTime,
-    core.List<core.String> userProcessFilter_statuses,
-    core.List<core.String> userProcessFilter_types,
-    core.List<core.String> userProcessFilter_userAccessLevels,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? userProcessFilter_deploymentId,
+    core.String? userProcessFilter_endTime,
+    core.String? userProcessFilter_functionName,
+    core.String? userProcessFilter_projectName,
+    core.String? userProcessFilter_scriptId,
+    core.String? userProcessFilter_startTime,
+    core.List<core.String>? userProcessFilter_statuses,
+    core.List<core.String>? userProcessFilter_types,
+    core.List<core.String>? userProcessFilter_userAccessLevels,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -280,17 +280,17 @@ class ProcessesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListScriptProcessesResponse> listScriptProcesses({
-    core.int pageSize,
-    core.String pageToken,
-    core.String scriptId,
-    core.String scriptProcessFilter_deploymentId,
-    core.String scriptProcessFilter_endTime,
-    core.String scriptProcessFilter_functionName,
-    core.String scriptProcessFilter_startTime,
-    core.List<core.String> scriptProcessFilter_statuses,
-    core.List<core.String> scriptProcessFilter_types,
-    core.List<core.String> scriptProcessFilter_userAccessLevels,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? scriptId,
+    core.String? scriptProcessFilter_deploymentId,
+    core.String? scriptProcessFilter_endTime,
+    core.String? scriptProcessFilter_functionName,
+    core.String? scriptProcessFilter_startTime,
+    core.List<core.String>? scriptProcessFilter_statuses,
+    core.List<core.String>? scriptProcessFilter_types,
+    core.List<core.String>? scriptProcessFilter_userAccessLevels,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -354,10 +354,9 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<Project> create(
     CreateProjectRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -391,11 +390,8 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<Project> get(
     core.String scriptId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (scriptId == null) {
-      throw core.ArgumentError('Parameter scriptId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -432,12 +428,9 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<Content> getContent(
     core.String scriptId, {
-    core.int versionNumber,
-    core.String $fields,
+    core.int? versionNumber,
+    core.String? $fields,
   }) async {
-    if (scriptId == null) {
-      throw core.ArgumentError('Parameter scriptId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (versionNumber != null) 'versionNumber': ['${versionNumber}'],
       if ($fields != null) 'fields': [$fields],
@@ -485,13 +478,10 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<Metrics> getMetrics(
     core.String scriptId, {
-    core.String metricsFilter_deploymentId,
-    core.String metricsGranularity,
-    core.String $fields,
+    core.String? metricsFilter_deploymentId,
+    core.String? metricsGranularity,
+    core.String? $fields,
   }) async {
-    if (scriptId == null) {
-      throw core.ArgumentError('Parameter scriptId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (metricsFilter_deploymentId != null)
         'metricsFilter.deploymentId': [metricsFilter_deploymentId],
@@ -538,13 +528,9 @@ class ProjectsResource {
   async.Future<Content> updateContent(
     Content request,
     core.String scriptId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (scriptId == null) {
-      throw core.ArgumentError('Parameter scriptId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -590,13 +576,9 @@ class ProjectsDeploymentsResource {
   async.Future<Deployment> create(
     DeploymentConfig request,
     core.String scriptId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (scriptId == null) {
-      throw core.ArgumentError('Parameter scriptId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -636,14 +618,8 @@ class ProjectsDeploymentsResource {
   async.Future<Empty> delete(
     core.String scriptId,
     core.String deploymentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (scriptId == null) {
-      throw core.ArgumentError('Parameter scriptId is required.');
-    }
-    if (deploymentId == null) {
-      throw core.ArgumentError('Parameter deploymentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -682,14 +658,8 @@ class ProjectsDeploymentsResource {
   async.Future<Deployment> get(
     core.String scriptId,
     core.String deploymentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (scriptId == null) {
-      throw core.ArgumentError('Parameter scriptId is required.');
-    }
-    if (deploymentId == null) {
-      throw core.ArgumentError('Parameter deploymentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -733,13 +703,10 @@ class ProjectsDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<ListDeploymentsResponse> list(
     core.String scriptId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (scriptId == null) {
-      throw core.ArgumentError('Parameter scriptId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -783,16 +750,9 @@ class ProjectsDeploymentsResource {
     UpdateDeploymentRequest request,
     core.String scriptId,
     core.String deploymentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (scriptId == null) {
-      throw core.ArgumentError('Parameter scriptId is required.');
-    }
-    if (deploymentId == null) {
-      throw core.ArgumentError('Parameter deploymentId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -840,13 +800,9 @@ class ProjectsVersionsResource {
   async.Future<Version> create(
     Version request,
     core.String scriptId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (scriptId == null) {
-      throw core.ArgumentError('Parameter scriptId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -885,14 +841,8 @@ class ProjectsVersionsResource {
   async.Future<Version> get(
     core.String scriptId,
     core.int versionNumber, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (scriptId == null) {
-      throw core.ArgumentError('Parameter scriptId is required.');
-    }
-    if (versionNumber == null) {
-      throw core.ArgumentError('Parameter versionNumber is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -935,13 +885,10 @@ class ProjectsVersionsResource {
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(
     core.String scriptId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (scriptId == null) {
-      throw core.ArgumentError('Parameter scriptId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1001,13 +948,9 @@ class ScriptsResource {
   async.Future<Operation> run(
     ExecutionRequest request,
     core.String scriptId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (scriptId == null) {
-      throw core.ArgumentError('Parameter scriptId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1032,10 +975,10 @@ class Content {
   /// One of the files is a script manifest; it must be named "appsscript", must
   /// have type of JSON, and include the manifest configurations for the
   /// project.
-  core.List<File> files;
+  core.List<File>? files;
 
   /// The script project's Drive ID.
-  core.String scriptId;
+  core.String? scriptId;
 
   Content();
 
@@ -1051,10 +994,10 @@ class Content {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (files != null)
-          'files': files.map((value) => value.toJson()).toList(),
-        if (scriptId != null) 'scriptId': scriptId,
+          'files': files!.map((value) => value.toJson()).toList(),
+        if (scriptId != null) 'scriptId': scriptId!,
       };
 }
 
@@ -1064,10 +1007,10 @@ class CreateProjectRequest {
   ///
   /// This is usually the ID of a Google Doc, Google Sheet, Google Form, or
   /// Google Slides file. If not set, a standalone script project is created.
-  core.String parentId;
+  core.String? parentId;
 
   /// The title for the project.
-  core.String title;
+  core.String? title;
 
   CreateProjectRequest();
 
@@ -1080,25 +1023,25 @@ class CreateProjectRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (parentId != null) 'parentId': parentId,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (parentId != null) 'parentId': parentId!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// Representation of a single script deployment.
 class Deployment {
   /// The deployment configuration.
-  DeploymentConfig deploymentConfig;
+  DeploymentConfig? deploymentConfig;
 
   /// The deployment ID for this deployment.
-  core.String deploymentId;
+  core.String? deploymentId;
 
   /// The deployment's entry points.
-  core.List<EntryPoint> entryPoints;
+  core.List<EntryPoint>? entryPoints;
 
   /// Last modified date time stamp.
-  core.String updateTime;
+  core.String? updateTime;
 
   Deployment();
 
@@ -1121,29 +1064,29 @@ class Deployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deploymentConfig != null)
-          'deploymentConfig': deploymentConfig.toJson(),
-        if (deploymentId != null) 'deploymentId': deploymentId,
+          'deploymentConfig': deploymentConfig!.toJson(),
+        if (deploymentId != null) 'deploymentId': deploymentId!,
         if (entryPoints != null)
-          'entryPoints': entryPoints.map((value) => value.toJson()).toList(),
-        if (updateTime != null) 'updateTime': updateTime,
+          'entryPoints': entryPoints!.map((value) => value.toJson()).toList(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// Metadata the defines how a deployment is configured.
 class DeploymentConfig {
   /// The description for this deployment.
-  core.String description;
+  core.String? description;
 
   /// The manifest file name for this deployment.
-  core.String manifestFileName;
+  core.String? manifestFileName;
 
   /// The script project's Drive ID.
-  core.String scriptId;
+  core.String? scriptId;
 
   /// The version number on which this deployment is based.
-  core.int versionNumber;
+  core.int? versionNumber;
 
   DeploymentConfig();
 
@@ -1162,11 +1105,11 @@ class DeploymentConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (manifestFileName != null) 'manifestFileName': manifestFileName,
-        if (scriptId != null) 'scriptId': scriptId,
-        if (versionNumber != null) 'versionNumber': versionNumber,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (manifestFileName != null) 'manifestFileName': manifestFileName!,
+        if (scriptId != null) 'scriptId': scriptId!,
+        if (versionNumber != null) 'versionNumber': versionNumber!,
       };
 }
 
@@ -1184,13 +1127,13 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A configuration that defines how a deployment is accessed externally.
 class EntryPoint {
   /// Add-on properties.
-  GoogleAppsScriptTypeAddOnEntryPoint addOn;
+  GoogleAppsScriptTypeAddOnEntryPoint? addOn;
 
   /// The type of the entry point.
   /// Possible string values are:
@@ -1198,13 +1141,13 @@ class EntryPoint {
   /// - "WEB_APP" : A web application entry point.
   /// - "EXECUTION_API" : An API executable entry point.
   /// - "ADD_ON" : An Add-On entry point.
-  core.String entryPointType;
+  core.String? entryPointType;
 
   /// An entry point specification for Apps Script API execution calls.
-  GoogleAppsScriptTypeExecutionApiEntryPoint executionApi;
+  GoogleAppsScriptTypeExecutionApiEntryPoint? executionApi;
 
   /// An entry point specification for web apps.
-  GoogleAppsScriptTypeWebAppEntryPoint webApp;
+  GoogleAppsScriptTypeWebAppEntryPoint? webApp;
 
   EntryPoint();
 
@@ -1226,11 +1169,11 @@ class EntryPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addOn != null) 'addOn': addOn.toJson(),
-        if (entryPointType != null) 'entryPointType': entryPointType,
-        if (executionApi != null) 'executionApi': executionApi.toJson(),
-        if (webApp != null) 'webApp': webApp.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addOn != null) 'addOn': addOn!.toJson(),
+        if (entryPointType != null) 'entryPointType': entryPointType!,
+        if (executionApi != null) 'executionApi': executionApi!.toJson(),
+        if (webApp != null) 'webApp': webApp!.toJson(),
       };
 }
 
@@ -1238,7 +1181,7 @@ class EntryPoint {
 /// project.
 class ExecuteStreamResponse {
   /// The result of the execution.
-  ScriptExecutionResult result;
+  ScriptExecutionResult? result;
 
   ExecuteStreamResponse();
 
@@ -1249,8 +1192,8 @@ class ExecuteStreamResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (result != null) 'result': result.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (result != null) 'result': result!.toJson(),
       };
 }
 
@@ -1264,16 +1207,16 @@ class ExecuteStreamResponse {
 class ExecutionError {
   /// The error message thrown by Apps Script, usually localized into the user's
   /// language.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   /// The error type, for example `TypeError` or `ReferenceError`.
   ///
   /// If the error type is unavailable, this field is not included.
-  core.String errorType;
+  core.String? errorType;
 
   /// An array of objects that provide a stack trace through the script to show
   /// where the execution failed, with the deepest call first.
-  core.List<ScriptStackTraceElement> scriptStackTraceElements;
+  core.List<ScriptStackTraceElement>? scriptStackTraceElements;
 
   ExecutionError();
 
@@ -1294,12 +1237,12 @@ class ExecutionError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorMessage != null) 'errorMessage': errorMessage,
-        if (errorType != null) 'errorType': errorType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (errorType != null) 'errorType': errorType!,
         if (scriptStackTraceElements != null)
           'scriptStackTraceElements':
-              scriptStackTraceElements.map((value) => value.toJson()).toList(),
+              scriptStackTraceElements!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1313,13 +1256,13 @@ class ExecutionRequest {
   /// the Apps Script API.
   ///
   /// Optional; default is `false`.
-  core.bool devMode;
+  core.bool? devMode;
 
   /// The name of the function to execute in the given script.
   ///
   /// The name does not include parentheses or parameters. It can reference a
   /// function in an included library such as `Library.libFunction1`.
-  core.String function;
+  core.String? function;
 
   /// The parameters to be passed to the function being executed.
   ///
@@ -1330,7 +1273,7 @@ class ExecutionRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> parameters;
+  core.List<core.Object>? parameters;
 
   /// *Deprecated*.
   ///
@@ -1346,7 +1289,7 @@ class ExecutionRequest {
   /// call
   /// `Intent.getStringExtra("com.google.android.apps.docs.addons.SessionState")`.
   /// Optional.
-  core.String sessionState;
+  core.String? sessionState;
 
   ExecutionRequest();
 
@@ -1367,11 +1310,11 @@ class ExecutionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (devMode != null) 'devMode': devMode,
-        if (function != null) 'function': function,
-        if (parameters != null) 'parameters': parameters,
-        if (sessionState != null) 'sessionState': sessionState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (devMode != null) 'devMode': devMode!,
+        if (function != null) 'function': function!,
+        if (parameters != null) 'parameters': parameters!,
+        if (sessionState != null) 'sessionState': sessionState!,
       };
 }
 
@@ -1390,7 +1333,7 @@ class ExecutionResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object result;
+  core.Object? result;
 
   ExecutionResponse();
 
@@ -1400,8 +1343,8 @@ class ExecutionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (result != null) 'result': result,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (result != null) 'result': result!,
       };
 }
 
@@ -1415,25 +1358,25 @@ class File {
   ///
   /// This read-only field is only visible to users who have WRITER permission
   /// for the script project.
-  core.String createTime;
+  core.String? createTime;
 
   /// The defined set of functions in the script file, if any.
-  GoogleAppsScriptTypeFunctionSet functionSet;
+  GoogleAppsScriptTypeFunctionSet? functionSet;
 
   /// The user who modified the file most recently.
   ///
   /// This read-only field is only visible to users who have WRITER permission
   /// for the script project.
-  GoogleAppsScriptTypeUser lastModifyUser;
+  GoogleAppsScriptTypeUser? lastModifyUser;
 
   /// The name of the file.
   ///
   /// The file extension is not part of the file name, which can be identified
   /// from the type field.
-  core.String name;
+  core.String? name;
 
   /// The file content.
-  core.String source;
+  core.String? source;
 
   /// The type of the file.
   /// Possible string values are:
@@ -1443,13 +1386,13 @@ class File {
   /// - "JSON" : A file in JSON format. This type is only used for the script
   /// project's manifest. The manifest file content must match the structure of
   /// a valid \[ScriptManifest\](/apps-script/concepts/manifests)
-  core.String type;
+  core.String? type;
 
   /// Last modified date timestamp.
   ///
   /// This read-only field is only visible to users who have WRITER permission
   /// for the script project.
-  core.String updateTime;
+  core.String? updateTime;
 
   File();
 
@@ -1479,14 +1422,14 @@ class File {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (functionSet != null) 'functionSet': functionSet.toJson(),
-        if (lastModifyUser != null) 'lastModifyUser': lastModifyUser.toJson(),
-        if (name != null) 'name': name,
-        if (source != null) 'source': source,
-        if (type != null) 'type': type,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (functionSet != null) 'functionSet': functionSet!.toJson(),
+        if (lastModifyUser != null) 'lastModifyUser': lastModifyUser!.toJson(),
+        if (name != null) 'name': name!,
+        if (source != null) 'source': source!,
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1497,22 +1440,22 @@ class GoogleAppsScriptTypeAddOnEntryPoint {
   /// - "UNKNOWN_ADDON_TYPE" : Default value, unknown add-on type.
   /// - "GMAIL" : Add-on type for Gmail.
   /// - "DATA_STUDIO" : Add-on type for Data Studio.
-  core.String addOnType;
+  core.String? addOnType;
 
   /// The add-on's optional description.
-  core.String description;
+  core.String? description;
 
   /// The add-on's optional help URL.
-  core.String helpUrl;
+  core.String? helpUrl;
 
   /// The add-on's required post install tip URL.
-  core.String postInstallTipUrl;
+  core.String? postInstallTipUrl;
 
   /// The add-on's optional report issue URL.
-  core.String reportIssueUrl;
+  core.String? reportIssueUrl;
 
   /// The add-on's required title.
-  core.String title;
+  core.String? title;
 
   GoogleAppsScriptTypeAddOnEntryPoint();
 
@@ -1537,13 +1480,13 @@ class GoogleAppsScriptTypeAddOnEntryPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addOnType != null) 'addOnType': addOnType,
-        if (description != null) 'description': description,
-        if (helpUrl != null) 'helpUrl': helpUrl,
-        if (postInstallTipUrl != null) 'postInstallTipUrl': postInstallTipUrl,
-        if (reportIssueUrl != null) 'reportIssueUrl': reportIssueUrl,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addOnType != null) 'addOnType': addOnType!,
+        if (description != null) 'description': description!,
+        if (helpUrl != null) 'helpUrl': helpUrl!,
+        if (postInstallTipUrl != null) 'postInstallTipUrl': postInstallTipUrl!,
+        if (reportIssueUrl != null) 'reportIssueUrl': reportIssueUrl!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1560,7 +1503,7 @@ class GoogleAppsScriptTypeExecutionApiConfig {
   /// - "ANYONE" : Any logged in user can access the web app or executable.
   /// - "ANYONE_ANONYMOUS" : Any user, logged in or not, can access the web app
   /// or executable.
-  core.String access;
+  core.String? access;
 
   GoogleAppsScriptTypeExecutionApiConfig();
 
@@ -1570,15 +1513,15 @@ class GoogleAppsScriptTypeExecutionApiConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (access != null) 'access': access,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (access != null) 'access': access!,
       };
 }
 
 /// An API executable entry point.
 class GoogleAppsScriptTypeExecutionApiEntryPoint {
   /// The entry point's configuration.
-  GoogleAppsScriptTypeExecutionApiConfig entryPointConfig;
+  GoogleAppsScriptTypeExecutionApiConfig? entryPointConfig;
 
   GoogleAppsScriptTypeExecutionApiEntryPoint();
 
@@ -1589,16 +1532,16 @@ class GoogleAppsScriptTypeExecutionApiEntryPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entryPointConfig != null)
-          'entryPointConfig': entryPointConfig.toJson(),
+          'entryPointConfig': entryPointConfig!.toJson(),
       };
 }
 
 /// Represents a function in a script project.
 class GoogleAppsScriptTypeFunction {
   /// The function name in the script project.
-  core.String name;
+  core.String? name;
 
   GoogleAppsScriptTypeFunction();
 
@@ -1608,8 +1551,8 @@ class GoogleAppsScriptTypeFunction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1618,7 +1561,7 @@ class GoogleAppsScriptTypeFunction {
 /// No duplicates are permitted.
 class GoogleAppsScriptTypeFunctionSet {
   /// A list of functions composing the set.
-  core.List<GoogleAppsScriptTypeFunction> values;
+  core.List<GoogleAppsScriptTypeFunction>? values;
 
   GoogleAppsScriptTypeFunctionSet();
 
@@ -1632,9 +1575,9 @@ class GoogleAppsScriptTypeFunctionSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (values != null)
-          'values': values.map((value) => value.toJson()).toList(),
+          'values': values!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1645,10 +1588,10 @@ class GoogleAppsScriptTypeFunctionSet {
 /// executions started via the Apps Script API.
 class GoogleAppsScriptTypeProcess {
   /// Duration the execution spent executing.
-  core.String duration;
+  core.String? duration;
 
   /// Name of the function the started the execution.
-  core.String functionName;
+  core.String? functionName;
 
   /// The executions status.
   /// Possible string values are:
@@ -1661,7 +1604,7 @@ class GoogleAppsScriptTypeProcess {
   /// - "TIMED_OUT" : The process timed out.
   /// - "UNKNOWN" : Process status unknown.
   /// - "DELAYED" : The process is delayed, waiting for quota.
-  core.String processStatus;
+  core.String? processStatus;
 
   /// The executions type.
   /// Possible string values are:
@@ -1676,13 +1619,13 @@ class GoogleAppsScriptTypeProcess {
   /// trigger.
   /// - "MENU" : The process was started from a G Suite menu item.
   /// - "BATCH_TASK" : The process was started as a task in a batch job.
-  core.String processType;
+  core.String? processType;
 
   /// Name of the script being executed.
-  core.String projectName;
+  core.String? projectName;
 
   /// Time the execution started.
-  core.String startTime;
+  core.String? startTime;
 
   /// The executing users access level to the script.
   /// Possible string values are:
@@ -1691,7 +1634,7 @@ class GoogleAppsScriptTypeProcess {
   /// - "READ" : The user has read-only access.
   /// - "WRITE" : The user has write access.
   /// - "OWNER" : The user is an owner.
-  core.String userAccessLevel;
+  core.String? userAccessLevel;
 
   GoogleAppsScriptTypeProcess();
 
@@ -1719,30 +1662,30 @@ class GoogleAppsScriptTypeProcess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (duration != null) 'duration': duration,
-        if (functionName != null) 'functionName': functionName,
-        if (processStatus != null) 'processStatus': processStatus,
-        if (processType != null) 'processType': processType,
-        if (projectName != null) 'projectName': projectName,
-        if (startTime != null) 'startTime': startTime,
-        if (userAccessLevel != null) 'userAccessLevel': userAccessLevel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (functionName != null) 'functionName': functionName!,
+        if (processStatus != null) 'processStatus': processStatus!,
+        if (processType != null) 'processType': processType!,
+        if (projectName != null) 'projectName': projectName!,
+        if (startTime != null) 'startTime': startTime!,
+        if (userAccessLevel != null) 'userAccessLevel': userAccessLevel!,
       };
 }
 
 /// A simple user profile resource.
 class GoogleAppsScriptTypeUser {
   /// The user's domain.
-  core.String domain;
+  core.String? domain;
 
   /// The user's identifying email address.
-  core.String email;
+  core.String? email;
 
   /// The user's display name.
-  core.String name;
+  core.String? name;
 
   /// The user's photo.
-  core.String photoUrl;
+  core.String? photoUrl;
 
   GoogleAppsScriptTypeUser();
 
@@ -1761,11 +1704,11 @@ class GoogleAppsScriptTypeUser {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (domain != null) 'domain': domain,
-        if (email != null) 'email': email,
-        if (name != null) 'name': name,
-        if (photoUrl != null) 'photoUrl': photoUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (domain != null) 'domain': domain!,
+        if (email != null) 'email': email!,
+        if (name != null) 'name': name!,
+        if (photoUrl != null) 'photoUrl': photoUrl!,
       };
 }
 
@@ -1782,7 +1725,7 @@ class GoogleAppsScriptTypeWebAppConfig {
   /// - "ANYONE" : Any logged in user can access the web app or executable.
   /// - "ANYONE_ANONYMOUS" : Any user, logged in or not, can access the web app
   /// or executable.
-  core.String access;
+  core.String? access;
 
   /// Who to execute the web app as.
   /// Possible string values are:
@@ -1790,7 +1733,7 @@ class GoogleAppsScriptTypeWebAppConfig {
   /// - "USER_ACCESSING" : The script runs as the user accessing the web app.
   /// - "USER_DEPLOYING" : The script runs as the user who deployed the web app.
   /// Note that this is not necessarily the owner of the script project.
-  core.String executeAs;
+  core.String? executeAs;
 
   GoogleAppsScriptTypeWebAppConfig();
 
@@ -1803,19 +1746,19 @@ class GoogleAppsScriptTypeWebAppConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (access != null) 'access': access,
-        if (executeAs != null) 'executeAs': executeAs,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (access != null) 'access': access!,
+        if (executeAs != null) 'executeAs': executeAs!,
       };
 }
 
 /// A web application entry point.
 class GoogleAppsScriptTypeWebAppEntryPoint {
   /// The entry point's configuration.
-  GoogleAppsScriptTypeWebAppConfig entryPointConfig;
+  GoogleAppsScriptTypeWebAppConfig? entryPointConfig;
 
   /// The URL for the web application.
-  core.String url;
+  core.String? url;
 
   GoogleAppsScriptTypeWebAppEntryPoint();
 
@@ -1829,21 +1772,21 @@ class GoogleAppsScriptTypeWebAppEntryPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entryPointConfig != null)
-          'entryPointConfig': entryPointConfig.toJson(),
-        if (url != null) 'url': url,
+          'entryPointConfig': entryPointConfig!.toJson(),
+        if (url != null) 'url': url!,
       };
 }
 
 /// Response with the list of deployments for the specified Apps Script project.
 class ListDeploymentsResponse {
   /// The list of deployments.
-  core.List<Deployment> deployments;
+  core.List<Deployment>? deployments;
 
   /// The token that can be used in the next call to get the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListDeploymentsResponse();
 
@@ -1859,10 +1802,10 @@ class ListDeploymentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deployments != null)
-          'deployments': deployments.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'deployments': deployments!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1871,10 +1814,10 @@ class ListScriptProcessesResponse {
   /// Token for the next page of results.
   ///
   /// If empty, there are no more pages remaining.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of processes matching request parameters.
-  core.List<GoogleAppsScriptTypeProcess> processes;
+  core.List<GoogleAppsScriptTypeProcess>? processes;
 
   ListScriptProcessesResponse();
 
@@ -1891,10 +1834,10 @@ class ListScriptProcessesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (processes != null)
-          'processes': processes.map((value) => value.toJson()).toList(),
+          'processes': processes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1903,10 +1846,10 @@ class ListUserProcessesResponse {
   /// Token for the next page of results.
   ///
   /// If empty, there are no more pages remaining.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of processes matching request parameters.
-  core.List<GoogleAppsScriptTypeProcess> processes;
+  core.List<GoogleAppsScriptTypeProcess>? processes;
 
   ListUserProcessesResponse();
 
@@ -1923,17 +1866,17 @@ class ListUserProcessesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (processes != null)
-          'processes': processes.map((value) => value.toJson()).toList(),
+          'processes': processes!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// `ListValue` is a wrapper around a repeated field of values.
 class ListValue {
   /// Repeated field of dynamically typed values.
-  core.List<Value> values;
+  core.List<Value>? values;
 
   ListValue();
 
@@ -1946,9 +1889,9 @@ class ListValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (values != null)
-          'values': values.map((value) => value.toJson()).toList(),
+          'values': values!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1957,10 +1900,10 @@ class ListVersionsResponse {
   /// The token use to fetch the next page of records.
   ///
   /// if not exist in the response, that means no more versions to list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of versions.
-  core.List<Version> versions;
+  core.List<Version>? versions;
 
   ListVersionsResponse();
 
@@ -1976,10 +1919,10 @@ class ListVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (versions != null)
-          'versions': versions.map((value) => value.toJson()).toList(),
+          'versions': versions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1987,13 +1930,13 @@ class ListVersionsResponse {
 /// filter and mask present in the request.
 class Metrics {
   /// Number of active users.
-  core.List<MetricsValue> activeUsers;
+  core.List<MetricsValue>? activeUsers;
 
   /// Number of failed executions.
-  core.List<MetricsValue> failedExecutions;
+  core.List<MetricsValue>? failedExecutions;
 
   /// Number of total executions.
-  core.List<MetricsValue> totalExecutions;
+  core.List<MetricsValue>? totalExecutions;
 
   Metrics();
 
@@ -2018,28 +1961,28 @@ class Metrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (activeUsers != null)
-          'activeUsers': activeUsers.map((value) => value.toJson()).toList(),
+          'activeUsers': activeUsers!.map((value) => value.toJson()).toList(),
         if (failedExecutions != null)
           'failedExecutions':
-              failedExecutions.map((value) => value.toJson()).toList(),
+              failedExecutions!.map((value) => value.toJson()).toList(),
         if (totalExecutions != null)
           'totalExecutions':
-              totalExecutions.map((value) => value.toJson()).toList(),
+              totalExecutions!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Metrics value that holds number of executions counted.
 class MetricsValue {
   /// Required field indicating the end time of the interval.
-  core.String endTime;
+  core.String? endTime;
 
   /// Required field indicating the start time of the interval.
-  core.String startTime;
+  core.String? startTime;
 
   /// Indicates the number of executions counted.
-  core.String value;
+  core.String? value;
 
   MetricsValue();
 
@@ -2055,10 +1998,10 @@ class MetricsValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2086,7 +2029,7 @@ class Operation {
   ///
   /// A completed execution has a populated `response` field containing the
   /// ExecutionResponse from function that was executed.
-  core.bool done;
+  core.bool? done;
 
   /// If a `run` call succeeds but the script function (or Apps Script itself)
   /// throws an exception, this field contains a Status object.
@@ -2094,14 +2037,14 @@ class Operation {
   /// The `Status` object's `details` field contains an array with a single
   /// ExecutionError object that provides information about the nature of the
   /// error.
-  Status error;
+  Status? error;
 
   /// If the script function returns successfully, this field contains an
   /// ExecutionResponse object with the function's return value.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -2124,38 +2067,38 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (response != null) 'response': response!,
       };
 }
 
 /// The script project resource.
 class Project {
   /// When the script was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// User who originally created the script.
-  GoogleAppsScriptTypeUser creator;
+  GoogleAppsScriptTypeUser? creator;
 
   /// User who last modified the script.
-  GoogleAppsScriptTypeUser lastModifyUser;
+  GoogleAppsScriptTypeUser? lastModifyUser;
 
   /// The parent's Drive ID that the script will be attached to.
   ///
   /// This is usually the ID of a Google Document or Google Sheet. This filed is
   /// optional, and if not set, a stand-alone script will be created.
-  core.String parentId;
+  core.String? parentId;
 
   /// The script project's Drive ID.
-  core.String scriptId;
+  core.String? scriptId;
 
   /// The title for the project.
-  core.String title;
+  core.String? title;
 
   /// When the script was last updated.
-  core.String updateTime;
+  core.String? updateTime;
 
   Project();
 
@@ -2185,21 +2128,21 @@ class Project {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (creator != null) 'creator': creator.toJson(),
-        if (lastModifyUser != null) 'lastModifyUser': lastModifyUser.toJson(),
-        if (parentId != null) 'parentId': parentId,
-        if (scriptId != null) 'scriptId': scriptId,
-        if (title != null) 'title': title,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (creator != null) 'creator': creator!.toJson(),
+        if (lastModifyUser != null) 'lastModifyUser': lastModifyUser!.toJson(),
+        if (parentId != null) 'parentId': parentId!,
+        if (scriptId != null) 'scriptId': scriptId!,
+        if (title != null) 'title': title!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// The result of an execution.
 class ScriptExecutionResult {
   /// The returned value of the execution.
-  Value returnValue;
+  Value? returnValue;
 
   ScriptExecutionResult();
 
@@ -2210,18 +2153,18 @@ class ScriptExecutionResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (returnValue != null) 'returnValue': returnValue.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (returnValue != null) 'returnValue': returnValue!.toJson(),
       };
 }
 
 /// A stack trace through the script that shows where the execution failed.
 class ScriptStackTraceElement {
   /// The name of the function that failed.
-  core.String function;
+  core.String? function;
 
   /// The line number where the script failed.
-  core.int lineNumber;
+  core.int? lineNumber;
 
   ScriptStackTraceElement();
 
@@ -2234,9 +2177,9 @@ class ScriptStackTraceElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (function != null) 'function': function,
-        if (lineNumber != null) 'lineNumber': lineNumber,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (function != null) 'function': function!,
+        if (lineNumber != null) 'lineNumber': lineNumber!,
       };
 }
 
@@ -2249,20 +2192,20 @@ class Status {
   /// For this API, this value either: - 10, indicating a `SCRIPT_TIMEOUT`
   /// error, - 3, indicating an `INVALID_ARGUMENT` error, or - 1, indicating a
   /// `CANCELLED` execution.
-  core.int code;
+  core.int? code;
 
   /// An array that contains a single ExecutionError object that provides
   /// information about the nature of the error.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which is in English.
   ///
   /// Any user-facing error message is localized and sent in the details field,
   /// or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -2286,10 +2229,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -2297,13 +2240,15 @@ class Status {
 /// to dynamically typed values.
 class Struct {
   /// Unordered map of dynamically typed values.
-  core.Map<core.String, Value> fields;
+  core.Map<core.String, Value>? fields;
 
   Struct();
 
   Struct.fromJson(core.Map _json) {
     if (_json.containsKey('fields')) {
-      fields = (_json['fields'] as core.Map).cast<core.String, core.Map>().map(
+      fields = (_json['fields'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               Value.fromJson(item as core.Map<core.String, core.dynamic>),
@@ -2312,17 +2257,17 @@ class Struct {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fields != null)
           'fields':
-              fields.map((key, item) => core.MapEntry(key, item.toJson())),
+              fields!.map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
 
 /// Request with deployment information to update an existing deployment.
 class UpdateDeploymentRequest {
   /// The deployment configuration.
-  DeploymentConfig deploymentConfig;
+  DeploymentConfig? deploymentConfig;
 
   UpdateDeploymentRequest();
 
@@ -2333,9 +2278,9 @@ class UpdateDeploymentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deploymentConfig != null)
-          'deploymentConfig': deploymentConfig.toJson(),
+          'deploymentConfig': deploymentConfig!.toJson(),
       };
 }
 
@@ -2343,12 +2288,12 @@ class UpdateDeploymentRequest {
 /// executed script.
 class Value {
   /// Represents a boolean value.
-  core.bool boolValue;
+  core.bool? boolValue;
 
   /// Represents raw byte values.
-  core.String bytesValue;
+  core.String? bytesValue;
   core.List<core.int> get bytesValueAsBytes =>
-      convert.base64.decode(bytesValue);
+      convert.base64.decode(bytesValue!);
 
   set bytesValueAsBytes(core.List<core.int> _bytes) {
     bytesValue =
@@ -2356,30 +2301,30 @@ class Value {
   }
 
   /// Represents a date in ms since the epoch.
-  core.String dateValue;
+  core.String? dateValue;
 
   /// Represents a repeated `Value`.
-  ListValue listValue;
+  ListValue? listValue;
 
   /// Represents a null value.
   /// Possible string values are:
   /// - "NULL_VALUE" : Null value.
-  core.String nullValue;
+  core.String? nullValue;
 
   /// Represents a double value.
-  core.double numberValue;
+  core.double? numberValue;
 
   /// Represents a structured proto value.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> protoValue;
+  core.Map<core.String, core.Object>? protoValue;
 
   /// Represents a string value.
-  core.String stringValue;
+  core.String? stringValue;
 
   /// Represents a structured value.
-  Struct structValue;
+  Struct? structValue;
 
   Value();
 
@@ -2422,16 +2367,16 @@ class Value {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue,
-        if (bytesValue != null) 'bytesValue': bytesValue,
-        if (dateValue != null) 'dateValue': dateValue,
-        if (listValue != null) 'listValue': listValue.toJson(),
-        if (nullValue != null) 'nullValue': nullValue,
-        if (numberValue != null) 'numberValue': numberValue,
-        if (protoValue != null) 'protoValue': protoValue,
-        if (stringValue != null) 'stringValue': stringValue,
-        if (structValue != null) 'structValue': structValue.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (bytesValue != null) 'bytesValue': bytesValue!,
+        if (dateValue != null) 'dateValue': dateValue!,
+        if (listValue != null) 'listValue': listValue!.toJson(),
+        if (nullValue != null) 'nullValue': nullValue!,
+        if (numberValue != null) 'numberValue': numberValue!,
+        if (protoValue != null) 'protoValue': protoValue!,
+        if (stringValue != null) 'stringValue': stringValue!,
+        if (structValue != null) 'structValue': structValue!.toJson(),
       };
 }
 
@@ -2442,19 +2387,19 @@ class Value {
 /// specified.
 class Version {
   /// When the version was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// The description for this version.
-  core.String description;
+  core.String? description;
 
   /// The script project's Drive ID.
-  core.String scriptId;
+  core.String? scriptId;
 
   /// The incremental ID that is created by Apps Script when a version is
   /// created.
   ///
   /// This is system assigned number and is immutable once created.
-  core.int versionNumber;
+  core.int? versionNumber;
 
   Version();
 
@@ -2473,10 +2418,10 @@ class Version {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (scriptId != null) 'scriptId': scriptId,
-        if (versionNumber != null) 'versionNumber': versionNumber,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (scriptId != null) 'scriptId': scriptId!,
+        if (versionNumber != null) 'versionNumber': versionNumber!,
       };
 }

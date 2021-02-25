@@ -263,24 +263,18 @@ class ActivitiesResource {
   async.Future<Activities> list(
     core.String userKey,
     core.String applicationName, {
-    core.String actorIpAddress,
-    core.String customerId,
-    core.String endTime,
-    core.String eventName,
-    core.String filters,
-    core.String groupIdFilter,
-    core.int maxResults,
-    core.String orgUnitID,
-    core.String pageToken,
-    core.String startTime,
-    core.String $fields,
+    core.String? actorIpAddress,
+    core.String? customerId,
+    core.String? endTime,
+    core.String? eventName,
+    core.String? filters,
+    core.String? groupIdFilter,
+    core.int? maxResults,
+    core.String? orgUnitID,
+    core.String? pageToken,
+    core.String? startTime,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
-    if (applicationName == null) {
-      throw core.ArgumentError('Parameter applicationName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (actorIpAddress != null) 'actorIpAddress': [actorIpAddress],
       if (customerId != null) 'customerId': [customerId],
@@ -492,26 +486,19 @@ class ActivitiesResource {
     Channel request,
     core.String userKey,
     core.String applicationName, {
-    core.String actorIpAddress,
-    core.String customerId,
-    core.String endTime,
-    core.String eventName,
-    core.String filters,
-    core.String groupIdFilter,
-    core.int maxResults,
-    core.String orgUnitID,
-    core.String pageToken,
-    core.String startTime,
-    core.String $fields,
+    core.String? actorIpAddress,
+    core.String? customerId,
+    core.String? endTime,
+    core.String? eventName,
+    core.String? filters,
+    core.String? groupIdFilter,
+    core.int? maxResults,
+    core.String? orgUnitID,
+    core.String? pageToken,
+    core.String? startTime,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
-    if (applicationName == null) {
-      throw core.ArgumentError('Parameter applicationName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (actorIpAddress != null) 'actorIpAddress': [actorIpAddress],
       if (customerId != null) 'customerId': [customerId],
@@ -563,10 +550,9 @@ class ChannelsResource {
   /// this method will complete with the same error.
   async.Future<void> stop(
     Channel request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -641,14 +627,11 @@ class CustomerUsageReportsResource {
   /// this method will complete with the same error.
   async.Future<UsageReports> get(
     core.String date, {
-    core.String customerId,
-    core.String pageToken,
-    core.String parameters,
-    core.String $fields,
+    core.String? customerId,
+    core.String? pageToken,
+    core.String? parameters,
+    core.String? $fields,
   }) async {
-    if (date == null) {
-      throw core.ArgumentError('Parameter date is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -764,22 +747,13 @@ class EntityUsageReportsResource {
     core.String entityType,
     core.String entityKey,
     core.String date, {
-    core.String customerId,
-    core.String filters,
-    core.int maxResults,
-    core.String pageToken,
-    core.String parameters,
-    core.String $fields,
+    core.String? customerId,
+    core.String? filters,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? parameters,
+    core.String? $fields,
   }) async {
-    if (entityType == null) {
-      throw core.ArgumentError('Parameter entityType is required.');
-    }
-    if (entityKey == null) {
-      throw core.ArgumentError('Parameter entityKey is required.');
-    }
-    if (date == null) {
-      throw core.ArgumentError('Parameter date is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if (filters != null) 'filters': [filters],
@@ -905,21 +879,15 @@ class UserUsageReportResource {
   async.Future<UsageReports> get(
     core.String userKey,
     core.String date, {
-    core.String customerId,
-    core.String filters,
-    core.String groupIdFilter,
-    core.int maxResults,
-    core.String orgUnitID,
-    core.String pageToken,
-    core.String parameters,
-    core.String $fields,
+    core.String? customerId,
+    core.String? filters,
+    core.String? groupIdFilter,
+    core.int? maxResults,
+    core.String? orgUnitID,
+    core.String? pageToken,
+    core.String? parameters,
+    core.String? $fields,
   }) async {
-    if (userKey == null) {
-      throw core.ArgumentError('Parameter userKey is required.');
-    }
-    if (date == null) {
-      throw core.ArgumentError('Parameter date is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if (filters != null) 'filters': [filters],
@@ -949,21 +917,21 @@ class UserUsageReportResource {
 /// JSON template for a collection of activities.
 class Activities {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Each activity record in the response.
-  core.List<Activity> items;
+  core.List<Activity>? items;
 
   /// The type of API resource.
   ///
   /// For an activity report, the value is `reports#activities`.
-  core.String kind;
+  core.String? kind;
 
   /// Token for retrieving the follow-on next page of the report.
   ///
   /// The `nextPageToken` value is used in the request's `pageToken` query
   /// string.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   Activities();
 
@@ -985,35 +953,35 @@ class Activities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// User doing the action.
 class ActivityActor {
   /// The type of actor.
-  core.String callerType;
+  core.String? callerType;
 
   /// The primary email address of the actor.
   ///
   /// May be absent if there is no email address associated with the actor.
-  core.String email;
+  core.String? email;
 
   /// Only present when `callerType` is `KEY`.
   ///
   /// Can be the `consumer_key` of the requestor for OAuth 2LO API requests or
   /// an identifier for robot accounts.
-  core.String key;
+  core.String? key;
 
   /// The unique G Suite profile ID of the actor.
   ///
   /// May be absent if the actor is not a G Suite user.
-  core.String profileId;
+  core.String? profileId;
 
   ActivityActor();
 
@@ -1032,11 +1000,11 @@ class ActivityActor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (callerType != null) 'callerType': callerType,
-        if (email != null) 'email': email,
-        if (key != null) 'key': key,
-        if (profileId != null) 'profileId': profileId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (callerType != null) 'callerType': callerType!,
+        if (email != null) 'email': email!,
+        if (key != null) 'key': key!,
+        if (profileId != null) 'profileId': profileId!,
       };
 }
 
@@ -1047,7 +1015,7 @@ class ActivityActor {
 /// [{name: city, value: abc}]}]`
 class ActivityEventsParametersMessageValue {
   /// Parameter values
-  core.List<NestedParameter> parameter;
+  core.List<NestedParameter>? parameter;
 
   ActivityEventsParametersMessageValue();
 
@@ -1060,15 +1028,15 @@ class ActivityEventsParametersMessageValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (parameter != null)
-          'parameter': parameter.map((value) => value.toJson()).toList(),
+          'parameter': parameter!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ActivityEventsParametersMultiMessageValue {
   /// Parameter values
-  core.List<NestedParameter> parameter;
+  core.List<NestedParameter>? parameter;
 
   ActivityEventsParametersMultiMessageValue();
 
@@ -1081,40 +1049,40 @@ class ActivityEventsParametersMultiMessageValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (parameter != null)
-          'parameter': parameter.map((value) => value.toJson()).toList(),
+          'parameter': parameter!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ActivityEventsParameters {
   /// Boolean value of the parameter.
-  core.bool boolValue;
+  core.bool? boolValue;
 
   /// Integer value of the parameter.
-  core.String intValue;
+  core.String? intValue;
 
   /// Nested parameter value pairs associated with this parameter.
   ///
   /// Complex value type for a parameter are returned as a list of parameter
   /// values. For example, the address parameter may have a value as
   /// `[{parameter: [{name: city, value: abc}]}]`
-  ActivityEventsParametersMessageValue messageValue;
+  ActivityEventsParametersMessageValue? messageValue;
 
   /// Integer values of the parameter.
-  core.List<core.String> multiIntValue;
+  core.List<core.String>? multiIntValue;
 
   /// List of `messageValue` objects.
-  core.List<ActivityEventsParametersMultiMessageValue> multiMessageValue;
+  core.List<ActivityEventsParametersMultiMessageValue>? multiMessageValue;
 
   /// String values of the parameter.
-  core.List<core.String> multiValue;
+  core.List<core.String>? multiValue;
 
   /// The name of the parameter.
-  core.String name;
+  core.String? name;
 
   /// String value of the parameter.
-  core.String value;
+  core.String? value;
 
   ActivityEventsParameters();
 
@@ -1154,17 +1122,17 @@ class ActivityEventsParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue,
-        if (intValue != null) 'intValue': intValue,
-        if (messageValue != null) 'messageValue': messageValue.toJson(),
-        if (multiIntValue != null) 'multiIntValue': multiIntValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (intValue != null) 'intValue': intValue!,
+        if (messageValue != null) 'messageValue': messageValue!.toJson(),
+        if (multiIntValue != null) 'multiIntValue': multiIntValue!,
         if (multiMessageValue != null)
           'multiMessageValue':
-              multiMessageValue.map((value) => value.toJson()).toList(),
-        if (multiValue != null) 'multiValue': multiValue,
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+              multiMessageValue!.map((value) => value.toJson()).toList(),
+        if (multiValue != null) 'multiValue': multiValue!,
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1181,13 +1149,13 @@ class ActivityEvents {
   /// properties in addition to the one requested. For more information about
   /// `eventName` properties, see the list of event names for various
   /// applications above in `applicationName`.
-  core.String name;
+  core.String? name;
 
   /// Parameter value pairs for various applications.
   ///
   /// For more information about `eventName` parameters, see the list of event
   /// names for various applications above in `applicationName`.
-  core.List<ActivityEventsParameters> parameters;
+  core.List<ActivityEventsParameters>? parameters;
 
   /// Type of event.
   ///
@@ -1195,7 +1163,7 @@ class ActivityEvents {
   /// in the `type` property which identifies an event using the `eventName`
   /// property. For a full list of the API's `type` categories, see the list of
   /// event names for various applications above in `applicationName`.
-  core.String type;
+  core.String? type;
 
   ActivityEvents();
 
@@ -1215,11 +1183,11 @@ class ActivityEvents {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
         if (parameters != null)
-          'parameters': parameters.map((value) => value.toJson()).toList(),
-        if (type != null) 'type': type,
+          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1229,18 +1197,18 @@ class ActivityId {
   ///
   /// For possible values see the list of applications above in
   /// `applicationName`.
-  core.String applicationName;
+  core.String? applicationName;
 
   /// The unique identifier for a G suite account.
-  core.String customerId;
+  core.String? customerId;
 
   /// Time of occurrence of the activity.
   ///
   /// This is in UNIX epoch time in seconds.
-  core.DateTime time;
+  core.DateTime? time;
 
   /// Unique qualifier if multiple events have the same time.
-  core.String uniqueQualifier;
+  core.String? uniqueQualifier;
 
   ActivityId();
 
@@ -1259,27 +1227,27 @@ class ActivityId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (applicationName != null) 'applicationName': applicationName,
-        if (customerId != null) 'customerId': customerId,
-        if (time != null) 'time': (time).toIso8601String(),
-        if (uniqueQualifier != null) 'uniqueQualifier': uniqueQualifier,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (applicationName != null) 'applicationName': applicationName!,
+        if (customerId != null) 'customerId': customerId!,
+        if (time != null) 'time': (time!).toIso8601String(),
+        if (uniqueQualifier != null) 'uniqueQualifier': uniqueQualifier!,
       };
 }
 
 /// JSON template for the activity resource.
 class Activity {
   /// User doing the action.
-  ActivityActor actor;
+  ActivityActor? actor;
 
   /// ETag of the entry.
-  core.String etag;
+  core.String? etag;
 
   /// Activity events in the report.
-  core.List<ActivityEvents> events;
+  core.List<ActivityEvents>? events;
 
   /// Unique identifier for each activity record.
-  ActivityId id;
+  ActivityId? id;
 
   /// IP address of the user doing the action.
   ///
@@ -1287,18 +1255,18 @@ class Activity {
   /// Suite which may or may not reflect the user's physical location. For
   /// example, the IP address can be the user's proxy server's address or a
   /// virtual private network (VPN) address. The API supports IPv4 and IPv6.
-  core.String ipAddress;
+  core.String? ipAddress;
 
   /// The type of API resource.
   ///
   /// For an activity report, the value is `audit#activity`.
-  core.String kind;
+  core.String? kind;
 
   /// This is the domain that is affected by the report's event.
   ///
   /// For example domain of Admin console or the Drive application's document
   /// owner.
-  core.String ownerDomain;
+  core.String? ownerDomain;
 
   Activity();
 
@@ -1331,64 +1299,64 @@ class Activity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actor != null) 'actor': actor.toJson(),
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actor != null) 'actor': actor!.toJson(),
+        if (etag != null) 'etag': etag!,
         if (events != null)
-          'events': events.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id.toJson(),
-        if (ipAddress != null) 'ipAddress': ipAddress,
-        if (kind != null) 'kind': kind,
-        if (ownerDomain != null) 'ownerDomain': ownerDomain,
+          'events': events!.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id!.toJson(),
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (kind != null) 'kind': kind!,
+        if (ownerDomain != null) 'ownerDomain': ownerDomain!,
       };
 }
 
 /// A notification channel used to watch for resource changes.
 class Channel {
   /// The address where notifications are delivered for this channel.
-  core.String address;
+  core.String? address;
 
   /// Date and time of notification channel expiration, expressed as a Unix
   /// timestamp, in milliseconds.
   ///
   /// Optional.
-  core.String expiration;
+  core.String? expiration;
 
   /// A UUID or similar unique string that identifies this channel.
-  core.String id;
+  core.String? id;
 
   /// Identifies this as a notification channel used to watch for changes to a
   /// resource, which is "`api#channel`".
-  core.String kind;
+  core.String? kind;
 
   /// Additional parameters controlling delivery channel behavior.
   ///
   /// Optional.
-  core.Map<core.String, core.String> params;
+  core.Map<core.String, core.String>? params;
 
   /// A Boolean value to indicate whether payload is wanted.
   ///
   /// Optional.
-  core.bool payload;
+  core.bool? payload;
 
   /// An opaque ID that identifies the resource being watched on this channel.
   ///
   /// Stable across different API versions.
-  core.String resourceId;
+  core.String? resourceId;
 
   /// A version-specific identifier for the watched resource.
-  core.String resourceUri;
+  core.String? resourceUri;
 
   /// An arbitrary string delivered to the target address with each notification
   /// delivered over this channel.
   ///
   /// Optional.
-  core.String token;
+  core.String? token;
 
   /// The type of delivery mechanism used for this channel.
   ///
   /// The value should be set to `"web_hook"`.
-  core.String type;
+  core.String? type;
 
   Channel();
 
@@ -1431,42 +1399,42 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address,
-        if (expiration != null) 'expiration': expiration,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (params != null) 'params': params,
-        if (payload != null) 'payload': payload,
-        if (resourceId != null) 'resourceId': resourceId,
-        if (resourceUri != null) 'resourceUri': resourceUri,
-        if (token != null) 'token': token,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!,
+        if (expiration != null) 'expiration': expiration!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (params != null) 'params': params!,
+        if (payload != null) 'payload': payload!,
+        if (resourceId != null) 'resourceId': resourceId!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (token != null) 'token': token!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// JSON template for a parameter used in various reports.
 class NestedParameter {
   /// Boolean value of the parameter.
-  core.bool boolValue;
+  core.bool? boolValue;
 
   /// Integer value of the parameter.
-  core.String intValue;
+  core.String? intValue;
 
   /// Multiple boolean values of the parameter.
-  core.List<core.bool> multiBoolValue;
+  core.List<core.bool>? multiBoolValue;
 
   /// Multiple integer values of the parameter.
-  core.List<core.String> multiIntValue;
+  core.List<core.String>? multiIntValue;
 
   /// Multiple string values of the parameter.
-  core.List<core.String> multiValue;
+  core.List<core.String>? multiValue;
 
   /// The name of the parameter.
-  core.String name;
+  core.String? name;
 
   /// String value of the parameter.
-  core.String value;
+  core.String? value;
 
   NestedParameter();
 
@@ -1500,14 +1468,14 @@ class NestedParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue,
-        if (intValue != null) 'intValue': intValue,
-        if (multiBoolValue != null) 'multiBoolValue': multiBoolValue,
-        if (multiIntValue != null) 'multiIntValue': multiIntValue,
-        if (multiValue != null) 'multiValue': multiValue,
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (intValue != null) 'intValue': intValue!,
+        if (multiBoolValue != null) 'multiBoolValue': multiBoolValue!,
+        if (multiIntValue != null) 'multiIntValue': multiIntValue!,
+        if (multiValue != null) 'multiValue': multiValue!,
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1518,7 +1486,7 @@ class UsageReportEntity {
   /// The unique identifier of the customer's account.
   ///
   /// Output only.
-  core.String customerId;
+  core.String? customerId;
 
   /// Object key.
   ///
@@ -1526,26 +1494,26 @@ class UsageReportEntity {
   /// report is "Entities" rather than "Objects".
   ///
   /// Output only.
-  core.String entityId;
+  core.String? entityId;
 
   /// The user's immutable G Suite profile identifier.
   ///
   /// Output only.
-  core.String profileId;
+  core.String? profileId;
 
   /// The type of item.
   ///
   /// The value is `user`.
   ///
   /// Output only.
-  core.String type;
+  core.String? type;
 
   /// The user's email address.
   ///
   /// Only relevant if entity.type = "USER"
   ///
   /// Output only.
-  core.String userEmail;
+  core.String? userEmail;
 
   UsageReportEntity();
 
@@ -1567,12 +1535,12 @@ class UsageReportEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customerId != null) 'customerId': customerId,
-        if (entityId != null) 'entityId': entityId,
-        if (profileId != null) 'profileId': profileId,
-        if (type != null) 'type': type,
-        if (userEmail != null) 'userEmail': userEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customerId != null) 'customerId': customerId!,
+        if (entityId != null) 'entityId': entityId!,
+        if (profileId != null) 'profileId': profileId!,
+        if (type != null) 'type': type!,
+        if (userEmail != null) 'userEmail': userEmail!,
       };
 }
 
@@ -1580,16 +1548,16 @@ class UsageReportParameters {
   /// Boolean value of the parameter.
   ///
   /// Output only.
-  core.bool boolValue;
+  core.bool? boolValue;
 
   /// The RFC 3339 formatted value of the parameter, for example
   /// 2010-10-28T10:26:35.000Z.
-  core.DateTime datetimeValue;
+  core.DateTime? datetimeValue;
 
   /// Integer value of the parameter.
   ///
   /// Output only.
-  core.String intValue;
+  core.String? intValue;
 
   /// Nested message value of the parameter.
   ///
@@ -1597,18 +1565,18 @@ class UsageReportParameters {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> msgValue;
+  core.List<core.Map<core.String, core.Object>>? msgValue;
 
   /// The name of the parameter.
   ///
   /// For the User Usage Report parameter names, see the User Usage parameters
   /// reference.
-  core.String name;
+  core.String? name;
 
   /// String value of the parameter.
   ///
   /// Output only.
-  core.String stringValue;
+  core.String? stringValue;
 
   UsageReportParameters();
 
@@ -1642,14 +1610,14 @@ class UsageReportParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
         if (datetimeValue != null)
-          'datetimeValue': (datetimeValue).toIso8601String(),
-        if (intValue != null) 'intValue': intValue,
-        if (msgValue != null) 'msgValue': msgValue,
-        if (name != null) 'name': name,
-        if (stringValue != null) 'stringValue': stringValue,
+          'datetimeValue': (datetimeValue!).toIso8601String(),
+        if (intValue != null) 'intValue': intValue!,
+        if (msgValue != null) 'msgValue': msgValue!,
+        if (name != null) 'name': name!,
+        if (stringValue != null) 'stringValue': stringValue!,
       };
 }
 
@@ -1658,20 +1626,20 @@ class UsageReport {
   /// The date of the report request.
   ///
   /// Output only.
-  core.String date;
+  core.String? date;
 
   /// Information about the type of the item.
   ///
   /// Output only.
-  UsageReportEntity entity;
+  UsageReportEntity? entity;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The type of API resource.
   ///
   /// For a usage report, the value is `admin#reports#usageReport`.
-  core.String kind;
+  core.String? kind;
 
   /// Parameter value pairs for various applications.
   ///
@@ -1680,7 +1648,7 @@ class UsageReport {
   /// reference\](/admin-sdk/reports/v1/reference/usage-ref-appendix-a/entities).
   ///
   /// Output only.
-  core.List<UsageReportParameters> parameters;
+  core.List<UsageReportParameters>? parameters;
 
   UsageReport();
 
@@ -1706,24 +1674,24 @@ class UsageReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (date != null) 'date': date,
-        if (entity != null) 'entity': entity.toJson(),
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (date != null) 'date': date!,
+        if (entity != null) 'entity': entity!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
         if (parameters != null)
-          'parameters': parameters.map((value) => value.toJson()).toList(),
+          'parameters': parameters!.map((value) => value.toJson()).toList(),
       };
 }
 
 class UsageReportsWarningsData {
   /// Key associated with a key-value pair to give detailed information on the
   /// warning.
-  core.String key;
+  core.String? key;
 
   /// Value associated with a key-value pair to give detailed information on the
   /// warning.
-  core.String value;
+  core.String? value;
 
   UsageReportsWarningsData();
 
@@ -1736,9 +1704,9 @@ class UsageReportsWarningsData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1746,10 +1714,10 @@ class UsageReportsWarnings {
   /// Machine readable code or warning type.
   ///
   /// The warning code value is `200`.
-  core.String code;
+  core.String? code;
 
   /// Key-value pairs to give detailed information on the warning.
-  core.List<UsageReportsWarningsData> data;
+  core.List<UsageReportsWarningsData>? data;
 
   /// The human readable messages for a warning are: - Data is not available
   /// warning - Sorry, data for date yyyy-mm-dd for application "`application
@@ -1758,7 +1726,7 @@ class UsageReportsWarnings {
   /// - Partial data is available warning - Data for date yyyy-mm-dd for
   /// application "`application name`" is not available right now, please try
   /// again after a few hours.
-  core.String message;
+  core.String? message;
 
   UsageReportsWarnings();
 
@@ -1778,34 +1746,34 @@ class UsageReportsWarnings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
+        if (message != null) 'message': message!,
       };
 }
 
 class UsageReports {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The type of API resource.
   ///
   /// For a usage report, the value is `admin#reports#usageReports`.
-  core.String kind;
+  core.String? kind;
 
   /// Token to specify next page.
   ///
   /// A report with multiple pages has a `nextPageToken` property in the
   /// response. For your follow-on requests getting all of the report's pages,
   /// enter the `nextPageToken` value in the `pageToken` query string.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Various application parameter records.
-  core.List<UsageReport> usageReports;
+  core.List<UsageReport>? usageReports;
 
   /// Warnings, if any.
-  core.List<UsageReportsWarnings> warnings;
+  core.List<UsageReportsWarnings>? warnings;
 
   UsageReports();
 
@@ -1833,13 +1801,13 @@ class UsageReports {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (usageReports != null)
-          'usageReports': usageReports.map((value) => value.toJson()).toList(),
+          'usageReports': usageReports!.map((value) => value.toJson()).toList(),
         if (warnings != null)
-          'warnings': warnings.map((value) => value.toJson()).toList(),
+          'warnings': warnings!.map((value) => value.toJson()).toList(),
       };
 }

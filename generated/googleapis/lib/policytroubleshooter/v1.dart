@@ -77,10 +77,9 @@ class IamResource {
   async.Future<GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse>
       troubleshoot(
     GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -108,7 +107,7 @@ class GoogleCloudPolicytroubleshooterV1AccessTuple {
   /// https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
   ///
   /// Required.
-  core.String fullResourceName;
+  core.String? fullResourceName;
 
   /// The IAM permission to check for the specified member and resource.
   ///
@@ -118,7 +117,7 @@ class GoogleCloudPolicytroubleshooterV1AccessTuple {
   /// https://cloud.google.com/iam/help/roles/reference.
   ///
   /// Required.
-  core.String permission;
+  core.String? permission;
 
   /// The member, or principal, whose access you want to check, in the form of
   /// the email address that represents that member.
@@ -129,7 +128,7 @@ class GoogleCloudPolicytroubleshooterV1AccessTuple {
   /// supported.
   ///
   /// Required.
-  core.String principal;
+  core.String? principal;
 
   GoogleCloudPolicytroubleshooterV1AccessTuple();
 
@@ -145,10 +144,10 @@ class GoogleCloudPolicytroubleshooterV1AccessTuple {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fullResourceName != null) 'fullResourceName': fullResourceName,
-        if (permission != null) 'permission': permission,
-        if (principal != null) 'principal': principal,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+        if (permission != null) 'permission': permission!,
+        if (principal != null) 'principal': principal!,
       };
 }
 
@@ -172,14 +171,14 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
   /// condition expression evaluates to `true`.
   /// - "UNKNOWN_INFO_DENIED" : The sender of the request does not have access
   /// to all of the policies that Policy Troubleshooter needs to evaluate.
-  core.String access;
+  core.String? access;
 
   /// A condition expression that prevents access unless the expression
   /// evaluates to `true`.
   ///
   /// To learn about IAM Conditions, see
   /// http://cloud.google.com/iam/help/conditions/overview.
-  GoogleTypeExpr condition;
+  GoogleTypeExpr? condition;
 
   /// Indicates whether each member in the binding includes the member specified
   /// in the request, either directly or indirectly.
@@ -195,7 +194,7 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
   /// the binding, the key is `group:product-eng@example.com`, and the
   /// `membership` field in the value is set to `MEMBERSHIP_INCLUDED`.
   core.Map<core.String,
-          GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership>
+          GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership>?
       memberships;
 
   /// The relevance of this binding to the overall determination for the entire
@@ -206,14 +205,14 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
   /// the data point is unlikely to affect the overall determination.
   /// - "HIGH" : The data point has a strong effect on the result. Changing the
   /// data point is likely to affect the overall determination.
-  core.String relevance;
+  core.String? relevance;
 
   /// The role that this binding grants.
   ///
   /// For example, `roles/compute.serviceAgent`. For a complete list of
   /// predefined IAM roles, as well as the permissions in each role, see
   /// https://cloud.google.com/iam/help/roles/reference.
-  core.String role;
+  core.String? role;
 
   /// Indicates whether the role granted by this binding contains the specified
   /// permission.
@@ -224,7 +223,7 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
   /// role.
   /// - "ROLE_PERMISSION_UNKNOWN_INFO_DENIED" : The sender of the request is not
   /// allowed to access the binding.
-  core.String rolePermission;
+  core.String? rolePermission;
 
   /// The relevance of the permission's existence, or nonexistence, in the role
   /// to the overall determination for the entire policy.
@@ -234,7 +233,7 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
   /// the data point is unlikely to affect the overall determination.
   /// - "HIGH" : The data point has a strong effect on the result. Changing the
   /// data point is likely to affect the overall determination.
-  core.String rolePermissionRelevance;
+  core.String? rolePermissionRelevance;
 
   GoogleCloudPolicytroubleshooterV1BindingExplanation();
 
@@ -247,14 +246,15 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
           _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('memberships')) {
-      memberships =
-          (_json['memberships'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
-                      .fromJson(item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      memberships = (_json['memberships'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
+                  .fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('relevance')) {
       relevance = _json['relevance'] as core.String;
@@ -270,17 +270,17 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (access != null) 'access': access,
-        if (condition != null) 'condition': condition.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (access != null) 'access': access!,
+        if (condition != null) 'condition': condition!.toJson(),
         if (memberships != null)
-          'memberships':
-              memberships.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (relevance != null) 'relevance': relevance,
-        if (role != null) 'role': role,
-        if (rolePermission != null) 'rolePermission': rolePermission,
+          'memberships': memberships!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (relevance != null) 'relevance': relevance!,
+        if (role != null) 'role': role!,
+        if (rolePermission != null) 'rolePermission': rolePermission!,
         if (rolePermissionRelevance != null)
-          'rolePermissionRelevance': rolePermissionRelevance,
+          'rolePermissionRelevance': rolePermissionRelevance!,
       };
 }
 
@@ -299,7 +299,7 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership {
   /// allowed to access the binding.
   /// - "MEMBERSHIP_UNKNOWN_UNSUPPORTED" : The member is an unsupported type.
   /// Only Google Accounts and service accounts are supported.
-  core.String membership;
+  core.String? membership;
 
   /// The relevance of the member's status to the overall determination for the
   /// binding.
@@ -309,7 +309,7 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership {
   /// the data point is unlikely to affect the overall determination.
   /// - "HIGH" : The data point has a strong effect on the result. Changing the
   /// data point is likely to affect the overall determination.
-  core.String relevance;
+  core.String? relevance;
 
   GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership();
 
@@ -323,9 +323,9 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (membership != null) 'membership': membership,
-        if (relevance != null) 'relevance': relevance,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (membership != null) 'membership': membership!,
+        if (relevance != null) 'relevance': relevance!,
       };
 }
 
@@ -346,14 +346,14 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
   /// condition expression evaluates to `true`.
   /// - "UNKNOWN_INFO_DENIED" : The sender of the request does not have access
   /// to all of the policies that Policy Troubleshooter needs to evaluate.
-  core.String access;
+  core.String? access;
 
   /// Details about how each binding in the policy affects the member's ability,
   /// or inability, to use the permission for the resource.
   ///
   /// If the sender of the request does not have access to the policy, this
   /// field is omitted.
-  core.List<GoogleCloudPolicytroubleshooterV1BindingExplanation>
+  core.List<GoogleCloudPolicytroubleshooterV1BindingExplanation>?
       bindingExplanations;
 
   /// The full resource name that identifies the resource.
@@ -364,13 +364,13 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
   /// field is omitted. For examples of full resource names for Google Cloud
   /// services, see
   /// https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
-  core.String fullResourceName;
+  core.String? fullResourceName;
 
   /// The IAM policy attached to the resource.
   ///
   /// If the sender of the request does not have access to the policy, this
   /// field is empty.
-  GoogleIamV1Policy policy;
+  GoogleIamV1Policy? policy;
 
   /// The relevance of this policy to the overall determination in the
   /// TroubleshootIamPolicyResponse.
@@ -383,7 +383,7 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
   /// the data point is unlikely to affect the overall determination.
   /// - "HIGH" : The data point has a strong effect on the result. Changing the
   /// data point is likely to affect the overall determination.
-  core.String relevance;
+  core.String? relevance;
 
   GoogleCloudPolicytroubleshooterV1ExplainedPolicy();
 
@@ -410,14 +410,14 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (access != null) 'access': access,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (access != null) 'access': access!,
         if (bindingExplanations != null)
           'bindingExplanations':
-              bindingExplanations.map((value) => value.toJson()).toList(),
-        if (fullResourceName != null) 'fullResourceName': fullResourceName,
-        if (policy != null) 'policy': policy.toJson(),
-        if (relevance != null) 'relevance': relevance,
+              bindingExplanations!.map((value) => value.toJson()).toList(),
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+        if (policy != null) 'policy': policy!.toJson(),
+        if (relevance != null) 'relevance': relevance!,
       };
 }
 
@@ -425,7 +425,7 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
 class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest {
   /// The information to use for checking whether a member has a permission for
   /// a resource.
-  GoogleCloudPolicytroubleshooterV1AccessTuple accessTuple;
+  GoogleCloudPolicytroubleshooterV1AccessTuple? accessTuple;
 
   GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest();
 
@@ -437,8 +437,8 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessTuple != null) 'accessTuple': accessTuple.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessTuple != null) 'accessTuple': accessTuple!.toJson(),
       };
 }
 
@@ -455,7 +455,7 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
   /// condition expression evaluates to `true`.
   /// - "UNKNOWN_INFO_DENIED" : The sender of the request does not have access
   /// to all of the policies that Policy Troubleshooter needs to evaluate.
-  core.String access;
+  core.String? access;
 
   /// List of IAM policies that were evaluated to check the member's
   /// permissions, with annotations to indicate how each policy contributed to
@@ -466,7 +466,8 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
   /// resource hierarchy, including the organization, the folder, and the
   /// project. To learn more about the resource hierarchy, see
   /// https://cloud.google.com/iam/help/resource-hierarchy.
-  core.List<GoogleCloudPolicytroubleshooterV1ExplainedPolicy> explainedPolicies;
+  core.List<GoogleCloudPolicytroubleshooterV1ExplainedPolicy>?
+      explainedPolicies;
 
   GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse();
 
@@ -484,11 +485,11 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (access != null) 'access': access,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (access != null) 'access': access!,
         if (explainedPolicies != null)
           'explainedPolicies':
-              explainedPolicies.map((value) => value.toJson()).toList(),
+              explainedPolicies!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -511,13 +512,13 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
 /// aliya@example.com from DATA_WRITE logging.
 class GoogleIamV1AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<GoogleIamV1AuditLogConfig> auditLogConfigs;
+  core.List<GoogleIamV1AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   GoogleIamV1AuditConfig();
 
@@ -534,11 +535,11 @@ class GoogleIamV1AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -553,7 +554,7 @@ class GoogleIamV1AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -561,7 +562,7 @@ class GoogleIamV1AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   GoogleIamV1AuditLogConfig();
 
@@ -576,9 +577,9 @@ class GoogleIamV1AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -592,7 +593,7 @@ class GoogleIamV1Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  GoogleTypeExpr condition;
+  GoogleTypeExpr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -624,12 +625,12 @@ class GoogleIamV1Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   GoogleIamV1Binding();
 
@@ -648,10 +649,10 @@ class GoogleIamV1Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -688,14 +689,14 @@ class GoogleIamV1Binding {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class GoogleIamV1Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<GoogleIamV1AuditConfig> auditConfigs;
+  core.List<GoogleIamV1AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<GoogleIamV1Binding> bindings;
+  core.List<GoogleIamV1Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -709,8 +710,8 @@ class GoogleIamV1Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -734,7 +735,7 @@ class GoogleIamV1Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   GoogleIamV1Policy();
 
@@ -760,13 +761,13 @@ class GoogleIamV1Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -795,24 +796,24 @@ class GoogleTypeExpr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   GoogleTypeExpr();
 
@@ -831,10 +832,10 @@ class GoogleTypeExpr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }

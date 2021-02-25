@@ -43,9 +43,18 @@ api.AmpUrl buildAmpUrl() {
 void checkAmpUrl(api.AmpUrl o) {
   buildCounterAmpUrl++;
   if (buildCounterAmpUrl < 3) {
-    unittest.expect(o.ampUrl, unittest.equals('foo'));
-    unittest.expect(o.cdnAmpUrl, unittest.equals('foo'));
-    unittest.expect(o.originalUrl, unittest.equals('foo'));
+    unittest.expect(
+      o.ampUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.cdnAmpUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.originalUrl!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAmpUrl--;
 }
@@ -66,9 +75,18 @@ api.AmpUrlError buildAmpUrlError() {
 void checkAmpUrlError(api.AmpUrlError o) {
   buildCounterAmpUrlError++;
   if (buildCounterAmpUrlError < 3) {
-    unittest.expect(o.errorCode, unittest.equals('foo'));
-    unittest.expect(o.errorMessage, unittest.equals('foo'));
-    unittest.expect(o.originalUrl, unittest.equals('foo'));
+    unittest.expect(
+      o.errorCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.errorMessage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.originalUrl!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAmpUrlError--;
 }
@@ -82,8 +100,14 @@ core.List<core.String> buildUnnamed3682() {
 
 void checkUnnamed3682(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBatchGetAmpUrlsRequest = 0;
@@ -101,8 +125,11 @@ api.BatchGetAmpUrlsRequest buildBatchGetAmpUrlsRequest() {
 void checkBatchGetAmpUrlsRequest(api.BatchGetAmpUrlsRequest o) {
   buildCounterBatchGetAmpUrlsRequest++;
   if (buildCounterBatchGetAmpUrlsRequest < 3) {
-    unittest.expect(o.lookupStrategy, unittest.equals('foo'));
-    checkUnnamed3682(o.urls);
+    unittest.expect(
+      o.lookupStrategy!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3682(o.urls!);
   }
   buildCounterBatchGetAmpUrlsRequest--;
 }
@@ -148,8 +175,8 @@ api.BatchGetAmpUrlsResponse buildBatchGetAmpUrlsResponse() {
 void checkBatchGetAmpUrlsResponse(api.BatchGetAmpUrlsResponse o) {
   buildCounterBatchGetAmpUrlsResponse++;
   if (buildCounterBatchGetAmpUrlsResponse < 3) {
-    checkUnnamed3683(o.ampUrls);
-    checkUnnamed3684(o.urlErrors);
+    checkUnnamed3683(o.ampUrls!);
+    checkUnnamed3684(o.urlErrors!);
   }
   buildCounterBatchGetAmpUrlsResponse--;
 }
@@ -203,10 +230,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("v1/ampUrls:batchGet"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 19),
+          unittest.equals("v1/ampUrls:batchGet"),
+        );
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -224,7 +255,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

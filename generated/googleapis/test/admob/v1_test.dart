@@ -43,9 +43,18 @@ api.Date buildDate() {
 void checkDate(api.Date o) {
   buildCounterDate++;
   if (buildCounterDate < 3) {
-    unittest.expect(o.day, unittest.equals(42));
-    unittest.expect(o.month, unittest.equals(42));
-    unittest.expect(o.year, unittest.equals(42));
+    unittest.expect(
+      o.day!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.month!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.year!,
+      unittest.equals(42),
+    );
   }
   buildCounterDate--;
 }
@@ -65,8 +74,8 @@ api.DateRange buildDateRange() {
 void checkDateRange(api.DateRange o) {
   buildCounterDateRange++;
   if (buildCounterDateRange < 3) {
-    checkDate(o.endDate as api.Date);
-    checkDate(o.startDate as api.Date);
+    checkDate(o.endDate! as api.Date);
+    checkDate(o.startDate! as api.Date);
   }
   buildCounterDateRange--;
 }
@@ -85,7 +94,7 @@ api.GenerateMediationReportRequest buildGenerateMediationReportRequest() {
 void checkGenerateMediationReportRequest(api.GenerateMediationReportRequest o) {
   buildCounterGenerateMediationReportRequest++;
   if (buildCounterGenerateMediationReportRequest < 3) {
-    checkMediationReportSpec(o.reportSpec as api.MediationReportSpec);
+    checkMediationReportSpec(o.reportSpec! as api.MediationReportSpec);
   }
   buildCounterGenerateMediationReportRequest--;
 }
@@ -107,9 +116,9 @@ void checkGenerateMediationReportResponse(
     api.GenerateMediationReportResponse o) {
   buildCounterGenerateMediationReportResponse++;
   if (buildCounterGenerateMediationReportResponse < 3) {
-    checkReportFooter(o.footer as api.ReportFooter);
-    checkReportHeader(o.header as api.ReportHeader);
-    checkReportRow(o.row as api.ReportRow);
+    checkReportFooter(o.footer! as api.ReportFooter);
+    checkReportHeader(o.header! as api.ReportHeader);
+    checkReportRow(o.row! as api.ReportRow);
   }
   buildCounterGenerateMediationReportResponse--;
 }
@@ -128,7 +137,7 @@ api.GenerateNetworkReportRequest buildGenerateNetworkReportRequest() {
 void checkGenerateNetworkReportRequest(api.GenerateNetworkReportRequest o) {
   buildCounterGenerateNetworkReportRequest++;
   if (buildCounterGenerateNetworkReportRequest < 3) {
-    checkNetworkReportSpec(o.reportSpec as api.NetworkReportSpec);
+    checkNetworkReportSpec(o.reportSpec! as api.NetworkReportSpec);
   }
   buildCounterGenerateNetworkReportRequest--;
 }
@@ -149,9 +158,9 @@ api.GenerateNetworkReportResponse buildGenerateNetworkReportResponse() {
 void checkGenerateNetworkReportResponse(api.GenerateNetworkReportResponse o) {
   buildCounterGenerateNetworkReportResponse++;
   if (buildCounterGenerateNetworkReportResponse < 3) {
-    checkReportFooter(o.footer as api.ReportFooter);
-    checkReportHeader(o.header as api.ReportHeader);
-    checkReportRow(o.row as api.ReportRow);
+    checkReportFooter(o.footer! as api.ReportFooter);
+    checkReportHeader(o.header! as api.ReportHeader);
+    checkReportRow(o.row! as api.ReportRow);
   }
   buildCounterGenerateNetworkReportResponse--;
 }
@@ -184,8 +193,11 @@ api.ListPublisherAccountsResponse buildListPublisherAccountsResponse() {
 void checkListPublisherAccountsResponse(api.ListPublisherAccountsResponse o) {
   buildCounterListPublisherAccountsResponse++;
   if (buildCounterListPublisherAccountsResponse < 3) {
-    checkUnnamed6726(o.account);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed6726(o.account!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterListPublisherAccountsResponse--;
 }
@@ -205,8 +217,14 @@ api.LocalizationSettings buildLocalizationSettings() {
 void checkLocalizationSettings(api.LocalizationSettings o) {
   buildCounterLocalizationSettings++;
   if (buildCounterLocalizationSettings < 3) {
-    unittest.expect(o.currencyCode, unittest.equals('foo'));
-    unittest.expect(o.languageCode, unittest.equals('foo'));
+    unittest.expect(
+      o.currencyCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLocalizationSettings--;
 }
@@ -235,8 +253,14 @@ core.List<core.String> buildUnnamed6728() {
 
 void checkUnnamed6728(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed6729() {
@@ -248,8 +272,14 @@ core.List<core.String> buildUnnamed6729() {
 
 void checkUnnamed6729(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.MediationReportSpecSortCondition> buildUnnamed6730() {
@@ -288,15 +318,21 @@ api.MediationReportSpec buildMediationReportSpec() {
 void checkMediationReportSpec(api.MediationReportSpec o) {
   buildCounterMediationReportSpec++;
   if (buildCounterMediationReportSpec < 3) {
-    checkDateRange(o.dateRange as api.DateRange);
-    checkUnnamed6727(o.dimensionFilters);
-    checkUnnamed6728(o.dimensions);
+    checkDateRange(o.dateRange! as api.DateRange);
+    checkUnnamed6727(o.dimensionFilters!);
+    checkUnnamed6728(o.dimensions!);
     checkLocalizationSettings(
-        o.localizationSettings as api.LocalizationSettings);
-    unittest.expect(o.maxReportRows, unittest.equals(42));
-    checkUnnamed6729(o.metrics);
-    checkUnnamed6730(o.sortConditions);
-    unittest.expect(o.timeZone, unittest.equals('foo'));
+        o.localizationSettings! as api.LocalizationSettings);
+    unittest.expect(
+      o.maxReportRows!,
+      unittest.equals(42),
+    );
+    checkUnnamed6729(o.metrics!);
+    checkUnnamed6730(o.sortConditions!);
+    unittest.expect(
+      o.timeZone!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterMediationReportSpec--;
 }
@@ -318,8 +354,11 @@ void checkMediationReportSpecDimensionFilter(
     api.MediationReportSpecDimensionFilter o) {
   buildCounterMediationReportSpecDimensionFilter++;
   if (buildCounterMediationReportSpecDimensionFilter < 3) {
-    unittest.expect(o.dimension, unittest.equals('foo'));
-    checkStringList(o.matchesAny as api.StringList);
+    unittest.expect(
+      o.dimension!,
+      unittest.equals('foo'),
+    );
+    checkStringList(o.matchesAny! as api.StringList);
   }
   buildCounterMediationReportSpecDimensionFilter--;
 }
@@ -341,9 +380,18 @@ void checkMediationReportSpecSortCondition(
     api.MediationReportSpecSortCondition o) {
   buildCounterMediationReportSpecSortCondition++;
   if (buildCounterMediationReportSpecSortCondition < 3) {
-    unittest.expect(o.dimension, unittest.equals('foo'));
-    unittest.expect(o.metric, unittest.equals('foo'));
-    unittest.expect(o.order, unittest.equals('foo'));
+    unittest.expect(
+      o.dimension!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.metric!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.order!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterMediationReportSpecSortCondition--;
 }
@@ -372,8 +420,14 @@ core.List<core.String> buildUnnamed6732() {
 
 void checkUnnamed6732(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed6733() {
@@ -385,8 +439,14 @@ core.List<core.String> buildUnnamed6733() {
 
 void checkUnnamed6733(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.NetworkReportSpecSortCondition> buildUnnamed6734() {
@@ -425,15 +485,21 @@ api.NetworkReportSpec buildNetworkReportSpec() {
 void checkNetworkReportSpec(api.NetworkReportSpec o) {
   buildCounterNetworkReportSpec++;
   if (buildCounterNetworkReportSpec < 3) {
-    checkDateRange(o.dateRange as api.DateRange);
-    checkUnnamed6731(o.dimensionFilters);
-    checkUnnamed6732(o.dimensions);
+    checkDateRange(o.dateRange! as api.DateRange);
+    checkUnnamed6731(o.dimensionFilters!);
+    checkUnnamed6732(o.dimensions!);
     checkLocalizationSettings(
-        o.localizationSettings as api.LocalizationSettings);
-    unittest.expect(o.maxReportRows, unittest.equals(42));
-    checkUnnamed6733(o.metrics);
-    checkUnnamed6734(o.sortConditions);
-    unittest.expect(o.timeZone, unittest.equals('foo'));
+        o.localizationSettings! as api.LocalizationSettings);
+    unittest.expect(
+      o.maxReportRows!,
+      unittest.equals(42),
+    );
+    checkUnnamed6733(o.metrics!);
+    checkUnnamed6734(o.sortConditions!);
+    unittest.expect(
+      o.timeZone!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterNetworkReportSpec--;
 }
@@ -454,8 +520,11 @@ void checkNetworkReportSpecDimensionFilter(
     api.NetworkReportSpecDimensionFilter o) {
   buildCounterNetworkReportSpecDimensionFilter++;
   if (buildCounterNetworkReportSpecDimensionFilter < 3) {
-    unittest.expect(o.dimension, unittest.equals('foo'));
-    checkStringList(o.matchesAny as api.StringList);
+    unittest.expect(
+      o.dimension!,
+      unittest.equals('foo'),
+    );
+    checkStringList(o.matchesAny! as api.StringList);
   }
   buildCounterNetworkReportSpecDimensionFilter--;
 }
@@ -476,9 +545,18 @@ api.NetworkReportSpecSortCondition buildNetworkReportSpecSortCondition() {
 void checkNetworkReportSpecSortCondition(api.NetworkReportSpecSortCondition o) {
   buildCounterNetworkReportSpecSortCondition++;
   if (buildCounterNetworkReportSpecSortCondition < 3) {
-    unittest.expect(o.dimension, unittest.equals('foo'));
-    unittest.expect(o.metric, unittest.equals('foo'));
-    unittest.expect(o.order, unittest.equals('foo'));
+    unittest.expect(
+      o.dimension!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.metric!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.order!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterNetworkReportSpecSortCondition--;
 }
@@ -500,10 +578,22 @@ api.PublisherAccount buildPublisherAccount() {
 void checkPublisherAccount(api.PublisherAccount o) {
   buildCounterPublisherAccount++;
   if (buildCounterPublisherAccount < 3) {
-    unittest.expect(o.currencyCode, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.publisherId, unittest.equals('foo'));
-    unittest.expect(o.reportingTimeZone, unittest.equals('foo'));
+    unittest.expect(
+      o.currencyCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.publisherId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reportingTimeZone!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPublisherAccount--;
 }
@@ -536,8 +626,11 @@ api.ReportFooter buildReportFooter() {
 void checkReportFooter(api.ReportFooter o) {
   buildCounterReportFooter++;
   if (buildCounterReportFooter < 3) {
-    unittest.expect(o.matchingRowCount, unittest.equals('foo'));
-    checkUnnamed6735(o.warnings);
+    unittest.expect(
+      o.matchingRowCount!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed6735(o.warnings!);
   }
   buildCounterReportFooter--;
 }
@@ -558,10 +651,13 @@ api.ReportHeader buildReportHeader() {
 void checkReportHeader(api.ReportHeader o) {
   buildCounterReportHeader++;
   if (buildCounterReportHeader < 3) {
-    checkDateRange(o.dateRange as api.DateRange);
+    checkDateRange(o.dateRange! as api.DateRange);
     checkLocalizationSettings(
-        o.localizationSettings as api.LocalizationSettings);
-    unittest.expect(o.reportingTimeZone, unittest.equals('foo'));
+        o.localizationSettings! as api.LocalizationSettings);
+    unittest.expect(
+      o.reportingTimeZone!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterReportHeader--;
 }
@@ -575,8 +671,8 @@ core.Map<core.String, api.ReportRowDimensionValue> buildUnnamed6736() {
 
 void checkUnnamed6736(core.Map<core.String, api.ReportRowDimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportRowDimensionValue(o['x'] as api.ReportRowDimensionValue);
-  checkReportRowDimensionValue(o['y'] as api.ReportRowDimensionValue);
+  checkReportRowDimensionValue(o['x']! as api.ReportRowDimensionValue);
+  checkReportRowDimensionValue(o['y']! as api.ReportRowDimensionValue);
 }
 
 core.Map<core.String, api.ReportRowMetricValue> buildUnnamed6737() {
@@ -588,8 +684,8 @@ core.Map<core.String, api.ReportRowMetricValue> buildUnnamed6737() {
 
 void checkUnnamed6737(core.Map<core.String, api.ReportRowMetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportRowMetricValue(o['x'] as api.ReportRowMetricValue);
-  checkReportRowMetricValue(o['y'] as api.ReportRowMetricValue);
+  checkReportRowMetricValue(o['x']! as api.ReportRowMetricValue);
+  checkReportRowMetricValue(o['y']! as api.ReportRowMetricValue);
 }
 
 core.int buildCounterReportRow = 0;
@@ -607,8 +703,8 @@ api.ReportRow buildReportRow() {
 void checkReportRow(api.ReportRow o) {
   buildCounterReportRow++;
   if (buildCounterReportRow < 3) {
-    checkUnnamed6736(o.dimensionValues);
-    checkUnnamed6737(o.metricValues);
+    checkUnnamed6736(o.dimensionValues!);
+    checkUnnamed6737(o.metricValues!);
   }
   buildCounterReportRow--;
 }
@@ -628,8 +724,14 @@ api.ReportRowDimensionValue buildReportRowDimensionValue() {
 void checkReportRowDimensionValue(api.ReportRowDimensionValue o) {
   buildCounterReportRowDimensionValue++;
   if (buildCounterReportRowDimensionValue < 3) {
-    unittest.expect(o.displayLabel, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.displayLabel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterReportRowDimensionValue--;
 }
@@ -650,9 +752,18 @@ api.ReportRowMetricValue buildReportRowMetricValue() {
 void checkReportRowMetricValue(api.ReportRowMetricValue o) {
   buildCounterReportRowMetricValue++;
   if (buildCounterReportRowMetricValue < 3) {
-    unittest.expect(o.doubleValue, unittest.equals(42.0));
-    unittest.expect(o.integerValue, unittest.equals('foo'));
-    unittest.expect(o.microsValue, unittest.equals('foo'));
+    unittest.expect(
+      o.doubleValue!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.integerValue!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.microsValue!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterReportRowMetricValue--;
 }
@@ -672,8 +783,14 @@ api.ReportWarning buildReportWarning() {
 void checkReportWarning(api.ReportWarning o) {
   buildCounterReportWarning++;
   if (buildCounterReportWarning < 3) {
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterReportWarning--;
 }
@@ -687,8 +804,14 @@ core.List<core.String> buildUnnamed6738() {
 
 void checkUnnamed6738(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterStringList = 0;
@@ -705,7 +828,7 @@ api.StringList buildStringList() {
 void checkStringList(api.StringList o) {
   buildCounterStringList++;
   if (buildCounterStringList < 3) {
-    checkUnnamed6738(o.values);
+    checkUnnamed6738(o.values!);
   }
   buildCounterStringList--;
 }
@@ -907,10 +1030,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -929,7 +1056,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -956,10 +1086,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("v1/accounts"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("v1/accounts"),
+        );
         pathOffset += 11;
 
         var query = (req.url).query;
@@ -977,11 +1111,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1019,10 +1160,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -1041,7 +1186,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1076,10 +1224,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -1098,7 +1250,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

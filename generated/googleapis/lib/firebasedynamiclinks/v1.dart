@@ -91,10 +91,9 @@ class ManagedShortLinksResource {
   /// this method will complete with the same error.
   async.Future<CreateManagedShortLinkResponse> create(
     CreateManagedShortLinkRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -141,10 +140,9 @@ class ShortLinksResource {
   /// this method will complete with the same error.
   async.Future<CreateShortDynamicLinkResponse> create(
     CreateShortDynamicLinkRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -193,13 +191,10 @@ class V1Resource {
   /// this method will complete with the same error.
   async.Future<DynamicLinkStats> getLinkStats(
     core.String dynamicLink, {
-    core.String durationDays,
-    core.String sdkVersion,
-    core.String $fields,
+    core.String? durationDays,
+    core.String? sdkVersion,
+    core.String? $fields,
   }) async {
-    if (dynamicLink == null) {
-      throw core.ArgumentError('Parameter dynamicLink is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (durationDays != null) 'durationDays': [durationDays],
       if (sdkVersion != null) 'sdkVersion': [sdkVersion],
@@ -236,10 +231,9 @@ class V1Resource {
   /// this method will complete with the same error.
   async.Future<GetIosPostInstallAttributionResponse> installAttribution(
     GetIosPostInstallAttributionRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -274,10 +268,9 @@ class V1Resource {
   /// this method will complete with the same error.
   async.Future<GetIosReopenAttributionResponse> reopenAttribution(
     GetIosReopenAttributionRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -298,10 +291,10 @@ class V1Resource {
 /// Tracking parameters supported by Dynamic Link.
 class AnalyticsInfo {
   /// Google Play Campaign Measurements.
-  GooglePlayAnalytics googlePlayAnalytics;
+  GooglePlayAnalytics? googlePlayAnalytics;
 
   /// iTunes Connect App Analytics.
-  ITunesConnectAnalytics itunesConnectAnalytics;
+  ITunesConnectAnalytics? itunesConnectAnalytics;
 
   AnalyticsInfo();
 
@@ -317,30 +310,30 @@ class AnalyticsInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (googlePlayAnalytics != null)
-          'googlePlayAnalytics': googlePlayAnalytics.toJson(),
+          'googlePlayAnalytics': googlePlayAnalytics!.toJson(),
         if (itunesConnectAnalytics != null)
-          'itunesConnectAnalytics': itunesConnectAnalytics.toJson(),
+          'itunesConnectAnalytics': itunesConnectAnalytics!.toJson(),
       };
 }
 
 /// Android related attributes to the Dynamic Link.
 class AndroidInfo {
   /// Link to open on Android if the app is not installed.
-  core.String androidFallbackLink;
+  core.String? androidFallbackLink;
 
   /// If specified, this overrides the ‘link’ parameter on Android.
-  core.String androidLink;
+  core.String? androidLink;
 
   /// Minimum version code for the Android app.
   ///
   /// If the installed app’s version code is lower, then the user is taken to
   /// the Play Store.
-  core.String androidMinPackageVersionCode;
+  core.String? androidMinPackageVersionCode;
 
   /// Android package name of the app.
-  core.String androidPackageName;
+  core.String? androidPackageName;
 
   AndroidInfo();
 
@@ -360,14 +353,14 @@ class AndroidInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (androidFallbackLink != null)
-          'androidFallbackLink': androidFallbackLink,
-        if (androidLink != null) 'androidLink': androidLink,
+          'androidFallbackLink': androidFallbackLink!,
+        if (androidLink != null) 'androidLink': androidLink!,
         if (androidMinPackageVersionCode != null)
-          'androidMinPackageVersionCode': androidMinPackageVersionCode,
+          'androidMinPackageVersionCode': androidMinPackageVersionCode!,
         if (androidPackageName != null)
-          'androidPackageName': androidPackageName,
+          'androidPackageName': androidPackageName!,
       };
 }
 
@@ -376,31 +369,31 @@ class CreateManagedShortLinkRequest {
   /// Information about the Dynamic Link to be shortened.
   ///
   /// [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
-  DynamicLinkInfo dynamicLinkInfo;
+  DynamicLinkInfo? dynamicLinkInfo;
 
   /// Full long Dynamic Link URL with desired query parameters specified.
   ///
   /// For example,
   /// "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample",
   /// [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
-  core.String longDynamicLink;
+  core.String? longDynamicLink;
 
   /// Link name to associate with the link.
   ///
   /// It's used for marketer to identify manually-created links in the Firebase
   /// console (https://console.firebase.google.com/). Links must be named to be
   /// tracked.
-  core.String name;
+  core.String? name;
 
   /// Google SDK version.
   ///
   /// Version takes the form "$major.$minor.$patch"
-  core.String sdkVersion;
+  core.String? sdkVersion;
 
   /// Short Dynamic Link suffix.
   ///
   /// Optional.
-  Suffix suffix;
+  Suffix? suffix;
 
   CreateManagedShortLinkRequest();
 
@@ -424,13 +417,13 @@ class CreateManagedShortLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dynamicLinkInfo != null)
-          'dynamicLinkInfo': dynamicLinkInfo.toJson(),
-        if (longDynamicLink != null) 'longDynamicLink': longDynamicLink,
-        if (name != null) 'name': name,
-        if (sdkVersion != null) 'sdkVersion': sdkVersion,
-        if (suffix != null) 'suffix': suffix.toJson(),
+          'dynamicLinkInfo': dynamicLinkInfo!.toJson(),
+        if (longDynamicLink != null) 'longDynamicLink': longDynamicLink!,
+        if (name != null) 'name': name!,
+        if (sdkVersion != null) 'sdkVersion': sdkVersion!,
+        if (suffix != null) 'suffix': suffix!.toJson(),
       };
 }
 
@@ -439,15 +432,15 @@ class CreateManagedShortLinkResponse {
   /// Short Dynamic Link value.
   ///
   /// e.g. https://abcd.app.goo.gl/wxyz
-  ManagedShortLink managedShortLink;
+  ManagedShortLink? managedShortLink;
 
   /// Preview link to show the link flow chart.
   ///
   /// (debug info.)
-  core.String previewLink;
+  core.String? previewLink;
 
   /// Information about potential warnings on link creation.
-  core.List<DynamicLinkWarning> warning;
+  core.List<DynamicLinkWarning>? warning;
 
   CreateManagedShortLinkResponse();
 
@@ -467,12 +460,12 @@ class CreateManagedShortLinkResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (managedShortLink != null)
-          'managedShortLink': managedShortLink.toJson(),
-        if (previewLink != null) 'previewLink': previewLink,
+          'managedShortLink': managedShortLink!.toJson(),
+        if (previewLink != null) 'previewLink': previewLink!,
         if (warning != null)
-          'warning': warning.map((value) => value.toJson()).toList(),
+          'warning': warning!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -481,24 +474,24 @@ class CreateShortDynamicLinkRequest {
   /// Information about the Dynamic Link to be shortened.
   ///
   /// [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
-  DynamicLinkInfo dynamicLinkInfo;
+  DynamicLinkInfo? dynamicLinkInfo;
 
   /// Full long Dynamic Link URL with desired query parameters specified.
   ///
   /// For example,
   /// "https://sample.app.goo.gl/?link=http://www.google.com&apn=com.sample",
   /// [Learn more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).
-  core.String longDynamicLink;
+  core.String? longDynamicLink;
 
   /// Google SDK version.
   ///
   /// Version takes the form "$major.$minor.$patch"
-  core.String sdkVersion;
+  core.String? sdkVersion;
 
   /// Short Dynamic Link suffix.
   ///
   /// Optional.
-  Suffix suffix;
+  Suffix? suffix;
 
   CreateShortDynamicLinkRequest();
 
@@ -519,12 +512,12 @@ class CreateShortDynamicLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dynamicLinkInfo != null)
-          'dynamicLinkInfo': dynamicLinkInfo.toJson(),
-        if (longDynamicLink != null) 'longDynamicLink': longDynamicLink,
-        if (sdkVersion != null) 'sdkVersion': sdkVersion,
-        if (suffix != null) 'suffix': suffix.toJson(),
+          'dynamicLinkInfo': dynamicLinkInfo!.toJson(),
+        if (longDynamicLink != null) 'longDynamicLink': longDynamicLink!,
+        if (sdkVersion != null) 'sdkVersion': sdkVersion!,
+        if (suffix != null) 'suffix': suffix!.toJson(),
       };
 }
 
@@ -533,15 +526,15 @@ class CreateShortDynamicLinkResponse {
   /// Preview link to show the link flow chart.
   ///
   /// (debug info.)
-  core.String previewLink;
+  core.String? previewLink;
 
   /// Short Dynamic Link value.
   ///
   /// e.g. https://abcd.app.goo.gl/wxyz
-  core.String shortLink;
+  core.String? shortLink;
 
   /// Information about potential warnings on link creation.
-  core.List<DynamicLinkWarning> warning;
+  core.List<DynamicLinkWarning>? warning;
 
   CreateShortDynamicLinkResponse();
 
@@ -560,18 +553,18 @@ class CreateShortDynamicLinkResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (previewLink != null) 'previewLink': previewLink,
-        if (shortLink != null) 'shortLink': shortLink,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (previewLink != null) 'previewLink': previewLink!,
+        if (shortLink != null) 'shortLink': shortLink!,
         if (warning != null)
-          'warning': warning.map((value) => value.toJson()).toList(),
+          'warning': warning!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Desktop related attributes to the Dynamic Link.
 class DesktopInfo {
   /// Link to open on desktop.
-  core.String desktopFallbackLink;
+  core.String? desktopFallbackLink;
 
   DesktopInfo();
 
@@ -581,39 +574,39 @@ class DesktopInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (desktopFallbackLink != null)
-          'desktopFallbackLink': desktopFallbackLink,
+          'desktopFallbackLink': desktopFallbackLink!,
       };
 }
 
 /// Signals associated with the device making the request.
 class DeviceInfo {
   /// Device model name.
-  core.String deviceModelName;
+  core.String? deviceModelName;
 
   /// Device language code setting.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Device language code setting obtained by executing JavaScript code in
   /// WebView.
-  core.String languageCodeFromWebview;
+  core.String? languageCodeFromWebview;
 
   /// Device language code raw setting.
   ///
   /// iOS does returns language code in different format than iOS WebView. For
   /// example WebView returns en_US, but iOS returns en-US. Field below will
   /// return raw value returned by iOS.
-  core.String languageCodeRaw;
+  core.String? languageCodeRaw;
 
   /// Device display resolution height.
-  core.String screenResolutionHeight;
+  core.String? screenResolutionHeight;
 
   /// Device display resolution width.
-  core.String screenResolutionWidth;
+  core.String? screenResolutionWidth;
 
   /// Device timezone setting.
-  core.String timezone;
+  core.String? timezone;
 
   DeviceInfo();
 
@@ -641,24 +634,24 @@ class DeviceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceModelName != null) 'deviceModelName': deviceModelName,
-        if (languageCode != null) 'languageCode': languageCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceModelName != null) 'deviceModelName': deviceModelName!,
+        if (languageCode != null) 'languageCode': languageCode!,
         if (languageCodeFromWebview != null)
-          'languageCodeFromWebview': languageCodeFromWebview,
-        if (languageCodeRaw != null) 'languageCodeRaw': languageCodeRaw,
+          'languageCodeFromWebview': languageCodeFromWebview!,
+        if (languageCodeRaw != null) 'languageCodeRaw': languageCodeRaw!,
         if (screenResolutionHeight != null)
-          'screenResolutionHeight': screenResolutionHeight,
+          'screenResolutionHeight': screenResolutionHeight!,
         if (screenResolutionWidth != null)
-          'screenResolutionWidth': screenResolutionWidth,
-        if (timezone != null) 'timezone': timezone,
+          'screenResolutionWidth': screenResolutionWidth!,
+        if (timezone != null) 'timezone': timezone!,
       };
 }
 
 /// Dynamic Link event stat.
 class DynamicLinkEventStat {
   /// The number of times this event occurred.
-  core.String count;
+  core.String? count;
 
   /// Link event.
   /// Possible string values are:
@@ -671,7 +664,7 @@ class DynamicLinkEventStat {
   /// after an install triggered by FDLs
   /// - "APP_RE_OPEN" : Indicates that the app is opened via an FDL for
   /// non-first time.
-  core.String event;
+  core.String? event;
 
   /// Requested platform.
   /// Possible string values are:
@@ -683,7 +676,7 @@ class DynamicLinkEventStat {
   /// - "DESKTOP" : Represents desktop.
   /// - "OTHER" : Platforms are not categorized as Android/iOS/Destop fall into
   /// here.
-  core.String platform;
+  core.String? platform;
 
   DynamicLinkEventStat();
 
@@ -699,10 +692,10 @@ class DynamicLinkEventStat {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (event != null) 'event': event,
-        if (platform != null) 'platform': platform,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (event != null) 'event': event!,
+        if (platform != null) 'platform': platform!,
       };
 }
 
@@ -712,25 +705,25 @@ class DynamicLinkInfo {
   ///
   /// See all tracking parameters in the
   /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
-  AnalyticsInfo analyticsInfo;
+  AnalyticsInfo? analyticsInfo;
 
   /// Android related information.
   ///
   /// See Android related parameters in the
   /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
-  AndroidInfo androidInfo;
+  AndroidInfo? androidInfo;
 
   /// Desktop related information.
   ///
   /// See desktop related parameters in the
   /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
-  DesktopInfo desktopInfo;
+  DesktopInfo? desktopInfo;
 
   /// E.g. https://maps.app.goo.gl, https://maps.page.link, https://g.co/maps
   /// More examples can be found in description of getNormalizedUriPrefix in
   /// j/c/g/firebase/dynamiclinks/uri/DdlDomain.java Will fallback to
   /// dynamic_link_domain is this field is missing
-  core.String domainUriPrefix;
+  core.String? domainUriPrefix;
 
   /// Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl
   /// [Learn more](https://firebase.google.com/docs/dynamic-links/android/receive)
@@ -738,13 +731,13 @@ class DynamicLinkInfo {
   /// project.
   ///
   /// Required if missing domain_uri_prefix.
-  core.String dynamicLinkDomain;
+  core.String? dynamicLinkDomain;
 
   /// iOS related information.
   ///
   /// See iOS related parameters in the
   /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
-  IosInfo iosInfo;
+  IosInfo? iosInfo;
 
   /// The link your app will open, You can specify any URL your app can handle.
   ///
@@ -752,15 +745,15 @@ class DynamicLinkInfo {
   /// the HTTP or HTTPS scheme. See 'link' parameters in the
   /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
   /// Required.
-  core.String link;
+  core.String? link;
 
   /// Information of navigation behavior of a Firebase Dynamic Links.
-  NavigationInfo navigationInfo;
+  NavigationInfo? navigationInfo;
 
   /// Parameters for social meta tag params.
   ///
   /// Used to set meta tag data for link previews on social sites.
-  SocialMetaTagInfo socialMetaTagInfo;
+  SocialMetaTagInfo? socialMetaTagInfo;
 
   DynamicLinkInfo();
 
@@ -800,24 +793,24 @@ class DynamicLinkInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (analyticsInfo != null) 'analyticsInfo': analyticsInfo.toJson(),
-        if (androidInfo != null) 'androidInfo': androidInfo.toJson(),
-        if (desktopInfo != null) 'desktopInfo': desktopInfo.toJson(),
-        if (domainUriPrefix != null) 'domainUriPrefix': domainUriPrefix,
-        if (dynamicLinkDomain != null) 'dynamicLinkDomain': dynamicLinkDomain,
-        if (iosInfo != null) 'iosInfo': iosInfo.toJson(),
-        if (link != null) 'link': link,
-        if (navigationInfo != null) 'navigationInfo': navigationInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (analyticsInfo != null) 'analyticsInfo': analyticsInfo!.toJson(),
+        if (androidInfo != null) 'androidInfo': androidInfo!.toJson(),
+        if (desktopInfo != null) 'desktopInfo': desktopInfo!.toJson(),
+        if (domainUriPrefix != null) 'domainUriPrefix': domainUriPrefix!,
+        if (dynamicLinkDomain != null) 'dynamicLinkDomain': dynamicLinkDomain!,
+        if (iosInfo != null) 'iosInfo': iosInfo!.toJson(),
+        if (link != null) 'link': link!,
+        if (navigationInfo != null) 'navigationInfo': navigationInfo!.toJson(),
         if (socialMetaTagInfo != null)
-          'socialMetaTagInfo': socialMetaTagInfo.toJson(),
+          'socialMetaTagInfo': socialMetaTagInfo!.toJson(),
       };
 }
 
 /// Analytics stats of a Dynamic Link for a given timeframe.
 class DynamicLinkStats {
   /// Dynamic Link event stats.
-  core.List<DynamicLinkEventStat> linkEventStats;
+  core.List<DynamicLinkEventStat>? linkEventStats;
 
   DynamicLinkStats();
 
@@ -830,10 +823,10 @@ class DynamicLinkStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (linkEventStats != null)
           'linkEventStats':
-              linkEventStats.map((value) => value.toJson()).toList(),
+              linkEventStats!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -885,13 +878,13 @@ class DynamicLinkWarning {
   /// - "LINK_WITH_FRAGMENTS" : Dynamic Link URL contains fragments.
   /// - "NOT_MATCHING_IOS_BUNDLE_ID_AND_STORE_ID" : The iOS bundle ID does not
   /// match with the given iOS store ID.
-  core.String warningCode;
+  core.String? warningCode;
 
   /// The document describing the warning, and helps resolve.
-  core.String warningDocumentLink;
+  core.String? warningDocumentLink;
 
   /// The warning message to help developers improve their requests.
-  core.String warningMessage;
+  core.String? warningMessage;
 
   DynamicLinkWarning();
 
@@ -907,11 +900,11 @@ class DynamicLinkWarning {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (warningCode != null) 'warningCode': warningCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (warningCode != null) 'warningCode': warningCode!,
         if (warningDocumentLink != null)
-          'warningDocumentLink': warningDocumentLink,
-        if (warningMessage != null) 'warningMessage': warningMessage,
+          'warningDocumentLink': warningDocumentLink!,
+        if (warningMessage != null) 'warningMessage': warningMessage!,
       };
 }
 
@@ -923,18 +916,18 @@ class GetIosPostInstallAttributionRequest {
   /// App installation epoch time (https://en.wikipedia.org/wiki/Unix_time).
   ///
   /// This is a client signal for a more accurate weak match.
-  core.String appInstallationTime;
+  core.String? appInstallationTime;
 
   /// APP bundle ID.
-  core.String bundleId;
+  core.String? bundleId;
 
   /// Device information.
-  DeviceInfo device;
+  DeviceInfo? device;
 
   /// iOS version, ie: 9.3.5.
   ///
   /// Consider adding "build".
-  core.String iosVersion;
+  core.String? iosVersion;
 
   /// App post install attribution retrieval information.
   ///
@@ -949,19 +942,19 @@ class GetIosPostInstallAttributionRequest {
   /// fingerprint upon a dev API call.
   /// - "EXPLICIT_STRONG_AFTER_WEAK_MATCH" : iSDK performs a strong match only
   /// if weak match is found upon a dev API call.
-  core.String retrievalMethod;
+  core.String? retrievalMethod;
 
   /// Google SDK version.
   ///
   /// Version takes the form "$major.$minor.$patch"
-  core.String sdkVersion;
+  core.String? sdkVersion;
 
   /// Possible unique matched link that server need to check before performing
   /// fingerprint match.
   ///
   /// If passed link is short server need to expand the link. If link is long
   /// server need to vslidate the link.
-  core.String uniqueMatchLinkToCheck;
+  core.String? uniqueMatchLinkToCheck;
 
   /// Strong match page information.
   ///
@@ -971,7 +964,7 @@ class GetIosPostInstallAttributionRequest {
   /// - "UNKNOWN_VISUAL_STYLE" : Unknown style.
   /// - "DEFAULT_STYLE" : Default style.
   /// - "CUSTOM_STYLE" : Custom style.
-  core.String visualStyle;
+  core.String? visualStyle;
 
   GetIosPostInstallAttributionRequest();
 
@@ -1003,17 +996,17 @@ class GetIosPostInstallAttributionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (appInstallationTime != null)
-          'appInstallationTime': appInstallationTime,
-        if (bundleId != null) 'bundleId': bundleId,
-        if (device != null) 'device': device.toJson(),
-        if (iosVersion != null) 'iosVersion': iosVersion,
-        if (retrievalMethod != null) 'retrievalMethod': retrievalMethod,
-        if (sdkVersion != null) 'sdkVersion': sdkVersion,
+          'appInstallationTime': appInstallationTime!,
+        if (bundleId != null) 'bundleId': bundleId!,
+        if (device != null) 'device': device!.toJson(),
+        if (iosVersion != null) 'iosVersion': iosVersion!,
+        if (retrievalMethod != null) 'retrievalMethod': retrievalMethod!,
+        if (sdkVersion != null) 'sdkVersion': sdkVersion!,
         if (uniqueMatchLinkToCheck != null)
-          'uniqueMatchLinkToCheck': uniqueMatchLinkToCheck,
-        if (visualStyle != null) 'visualStyle': visualStyle,
+          'uniqueMatchLinkToCheck': uniqueMatchLinkToCheck!,
+        if (visualStyle != null) 'visualStyle': visualStyle!,
       };
 }
 
@@ -1022,7 +1015,7 @@ class GetIosPostInstallAttributionResponse {
   /// The minimum version for app, specified by dev through ?imv= parameter.
   ///
   /// Return to iSDK to allow app to evaluate if current version meets this.
-  core.String appMinimumVersion;
+  core.String? appMinimumVersion;
 
   /// The confidence of the returned attribution.
   /// Possible string values are:
@@ -1032,11 +1025,11 @@ class GetIosPostInstallAttributionResponse {
   /// - "DEFAULT" : Default confidence, match based on fingerprint
   /// - "UNIQUE" : Unique confidence, match based on "unique match link to
   /// check" or other means
-  core.String attributionConfidence;
+  core.String? attributionConfidence;
 
   /// The deep-link attributed post-install via one of several techniques
   /// (fingerprint, copy unique).
-  core.String deepLink;
+  core.String? deepLink;
 
   /// User-agent specific custom-scheme URIs for iSDK to open.
   ///
@@ -1044,40 +1037,40 @@ class GetIosPostInstallAttributionResponse {
   /// made in. There is no Safari-equivalent custom-scheme open URLs. ie:
   /// googlechrome://www.example.com ie:
   /// firefox://open-url?url=http://www.example.com ie: opera-http://example.com
-  core.String externalBrowserDestinationLink;
+  core.String? externalBrowserDestinationLink;
 
   /// The link to navigate to update the app if min version is not met.
   ///
   /// This is either (in order): 1) fallback link (from ?ifl= parameter, if
   /// specified by developer) or 2) AppStore URL (from ?isi= parameter, if
   /// specified), or 3) the payload link (from required link= parameter).
-  core.String fallbackLink;
+  core.String? fallbackLink;
 
   /// Invitation ID attributed post-install via one of several techniques
   /// (fingerprint, copy unique).
-  core.String invitationId;
+  core.String? invitationId;
 
   /// Instruction for iSDK to attemmpt to perform strong match.
   ///
   /// For instance, if browser does not support/allow cookie or outside of
   /// support browsers, this will be false.
-  core.bool isStrongMatchExecutable;
+  core.bool? isStrongMatchExecutable;
 
   /// Describes why match failed, ie: "discarded due to low confidence".
   ///
   /// This message will be publicly visible.
-  core.String matchMessage;
+  core.String? matchMessage;
 
   /// Which IP version the request was made from.
   /// Possible string values are:
   /// - "UNKNOWN_IP_VERSION" : Unset.
   /// - "IP_V4" : Request made from an IPv4 IP address.
   /// - "IP_V6" : Request made from an IPv6 IP address.
-  core.String requestIpVersion;
+  core.String? requestIpVersion;
 
   /// Entire FDL (short or long) attributed post-install via one of several
   /// techniques (fingerprint, copy unique).
-  core.String requestedLink;
+  core.String? requestedLink;
 
   /// The entire FDL, expanded from a short link.
   ///
@@ -1086,22 +1079,22 @@ class GetIosPostInstallAttributionResponse {
   /// utm_\[campaign|medium|source\] to a value when requested_link lack them,
   /// server determine the best fallback_link when requested_link specifies >1
   /// fallback links).
-  core.String resolvedLink;
+  core.String? resolvedLink;
 
   /// Scion campaign value to be propagated by iSDK to Scion at post-install.
-  core.String utmCampaign;
+  core.String? utmCampaign;
 
   /// Scion content value to be propagated by iSDK to Scion at app-reopen.
-  core.String utmContent;
+  core.String? utmContent;
 
   /// Scion medium value to be propagated by iSDK to Scion at post-install.
-  core.String utmMedium;
+  core.String? utmMedium;
 
   /// Scion source value to be propagated by iSDK to Scion at post-install.
-  core.String utmSource;
+  core.String? utmSource;
 
   /// Scion term value to be propagated by iSDK to Scion at app-reopen.
-  core.String utmTerm;
+  core.String? utmTerm;
 
   GetIosPostInstallAttributionResponse();
 
@@ -1157,26 +1150,26 @@ class GetIosPostInstallAttributionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appMinimumVersion != null) 'appMinimumVersion': appMinimumVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appMinimumVersion != null) 'appMinimumVersion': appMinimumVersion!,
         if (attributionConfidence != null)
-          'attributionConfidence': attributionConfidence,
-        if (deepLink != null) 'deepLink': deepLink,
+          'attributionConfidence': attributionConfidence!,
+        if (deepLink != null) 'deepLink': deepLink!,
         if (externalBrowserDestinationLink != null)
-          'externalBrowserDestinationLink': externalBrowserDestinationLink,
-        if (fallbackLink != null) 'fallbackLink': fallbackLink,
-        if (invitationId != null) 'invitationId': invitationId,
+          'externalBrowserDestinationLink': externalBrowserDestinationLink!,
+        if (fallbackLink != null) 'fallbackLink': fallbackLink!,
+        if (invitationId != null) 'invitationId': invitationId!,
         if (isStrongMatchExecutable != null)
-          'isStrongMatchExecutable': isStrongMatchExecutable,
-        if (matchMessage != null) 'matchMessage': matchMessage,
-        if (requestIpVersion != null) 'requestIpVersion': requestIpVersion,
-        if (requestedLink != null) 'requestedLink': requestedLink,
-        if (resolvedLink != null) 'resolvedLink': resolvedLink,
-        if (utmCampaign != null) 'utmCampaign': utmCampaign,
-        if (utmContent != null) 'utmContent': utmContent,
-        if (utmMedium != null) 'utmMedium': utmMedium,
-        if (utmSource != null) 'utmSource': utmSource,
-        if (utmTerm != null) 'utmTerm': utmTerm,
+          'isStrongMatchExecutable': isStrongMatchExecutable!,
+        if (matchMessage != null) 'matchMessage': matchMessage!,
+        if (requestIpVersion != null) 'requestIpVersion': requestIpVersion!,
+        if (requestedLink != null) 'requestedLink': requestedLink!,
+        if (resolvedLink != null) 'resolvedLink': resolvedLink!,
+        if (utmCampaign != null) 'utmCampaign': utmCampaign!,
+        if (utmContent != null) 'utmContent': utmContent!,
+        if (utmMedium != null) 'utmMedium': utmMedium!,
+        if (utmSource != null) 'utmSource': utmSource!,
+        if (utmTerm != null) 'utmTerm': utmTerm!,
       };
 }
 
@@ -1186,18 +1179,18 @@ class GetIosPostInstallAttributionResponse {
 /// This endpoint is meant for only iOS requests.
 class GetIosReopenAttributionRequest {
   /// APP bundle ID.
-  core.String bundleId;
+  core.String? bundleId;
 
   /// FDL link to be verified from an app universal link open.
   ///
   /// The FDL link can be one of: 1) short FDL. e.g. .page.link/, or 2) long
   /// FDL. e.g. .page.link/?{query params}, or 3) Invite FDL. e.g. .page.link/i/
-  core.String requestedLink;
+  core.String? requestedLink;
 
   /// Google SDK version.
   ///
   /// Version takes the form "$major.$minor.$patch"
-  core.String sdkVersion;
+  core.String? sdkVersion;
 
   GetIosReopenAttributionRequest();
 
@@ -1213,10 +1206,10 @@ class GetIosReopenAttributionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bundleId != null) 'bundleId': bundleId,
-        if (requestedLink != null) 'requestedLink': requestedLink,
-        if (sdkVersion != null) 'sdkVersion': sdkVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bundleId != null) 'bundleId': bundleId!,
+        if (requestedLink != null) 'requestedLink': requestedLink!,
+        if (sdkVersion != null) 'sdkVersion': sdkVersion!,
       };
 }
 
@@ -1228,34 +1221,34 @@ class GetIosReopenAttributionResponse {
   /// The deep-link attributed the app universal link open.
   ///
   /// For both regular FDL links and invite FDL links.
-  core.String deepLink;
+  core.String? deepLink;
 
   /// Optional invitation ID, for only invite typed requested FDL links.
-  core.String invitationId;
+  core.String? invitationId;
 
   /// FDL input value of the "&imv=" parameter, minimum app version to be
   /// returned to Google Firebase SDK running on iOS-9.
-  core.String iosMinAppVersion;
+  core.String? iosMinAppVersion;
 
   /// The entire FDL, expanded from a short link.
   ///
   /// It is the same as the requested_link, if it is long.
-  core.String resolvedLink;
+  core.String? resolvedLink;
 
   /// Scion campaign value to be propagated by iSDK to Scion at app-reopen.
-  core.String utmCampaign;
+  core.String? utmCampaign;
 
   /// Scion content value to be propagated by iSDK to Scion at app-reopen.
-  core.String utmContent;
+  core.String? utmContent;
 
   /// Scion medium value to be propagated by iSDK to Scion at app-reopen.
-  core.String utmMedium;
+  core.String? utmMedium;
 
   /// Scion source value to be propagated by iSDK to Scion at app-reopen.
-  core.String utmSource;
+  core.String? utmSource;
 
   /// Scion term value to be propagated by iSDK to Scion at app-reopen.
-  core.String utmTerm;
+  core.String? utmTerm;
 
   GetIosReopenAttributionResponse();
 
@@ -1289,16 +1282,16 @@ class GetIosReopenAttributionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deepLink != null) 'deepLink': deepLink,
-        if (invitationId != null) 'invitationId': invitationId,
-        if (iosMinAppVersion != null) 'iosMinAppVersion': iosMinAppVersion,
-        if (resolvedLink != null) 'resolvedLink': resolvedLink,
-        if (utmCampaign != null) 'utmCampaign': utmCampaign,
-        if (utmContent != null) 'utmContent': utmContent,
-        if (utmMedium != null) 'utmMedium': utmMedium,
-        if (utmSource != null) 'utmSource': utmSource,
-        if (utmTerm != null) 'utmTerm': utmTerm,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deepLink != null) 'deepLink': deepLink!,
+        if (invitationId != null) 'invitationId': invitationId!,
+        if (iosMinAppVersion != null) 'iosMinAppVersion': iosMinAppVersion!,
+        if (resolvedLink != null) 'resolvedLink': resolvedLink!,
+        if (utmCampaign != null) 'utmCampaign': utmCampaign!,
+        if (utmContent != null) 'utmContent': utmContent!,
+        if (utmMedium != null) 'utmMedium': utmMedium!,
+        if (utmSource != null) 'utmSource': utmSource!,
+        if (utmTerm != null) 'utmTerm': utmTerm!,
       };
 }
 
@@ -1310,26 +1303,26 @@ class GooglePlayAnalytics {
   /// used to measure Google AdWords ads.
   ///
   /// This value is generated dynamically and should never be modified.
-  core.String gclid;
+  core.String? gclid;
 
   /// Campaign name; used for keyword analysis to identify a specific product
   /// promotion or strategic campaign.
-  core.String utmCampaign;
+  core.String? utmCampaign;
 
   /// Campaign content; used for A/B testing and content-targeted ads to
   /// differentiate ads or links that point to the same URL.
-  core.String utmContent;
+  core.String? utmContent;
 
   /// Campaign medium; used to identify a medium such as email or
   /// cost-per-click.
-  core.String utmMedium;
+  core.String? utmMedium;
 
   /// Campaign source; used to identify a search engine, newsletter, or other
   /// source.
-  core.String utmSource;
+  core.String? utmSource;
 
   /// Campaign term; used with paid search to supply the keywords for ads.
-  core.String utmTerm;
+  core.String? utmTerm;
 
   GooglePlayAnalytics();
 
@@ -1354,31 +1347,31 @@ class GooglePlayAnalytics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gclid != null) 'gclid': gclid,
-        if (utmCampaign != null) 'utmCampaign': utmCampaign,
-        if (utmContent != null) 'utmContent': utmContent,
-        if (utmMedium != null) 'utmMedium': utmMedium,
-        if (utmSource != null) 'utmSource': utmSource,
-        if (utmTerm != null) 'utmTerm': utmTerm,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gclid != null) 'gclid': gclid!,
+        if (utmCampaign != null) 'utmCampaign': utmCampaign!,
+        if (utmContent != null) 'utmContent': utmContent!,
+        if (utmMedium != null) 'utmMedium': utmMedium!,
+        if (utmSource != null) 'utmSource': utmSource!,
+        if (utmTerm != null) 'utmTerm': utmTerm!,
       };
 }
 
 /// Parameters for iTunes Connect App Analytics.
 class ITunesConnectAnalytics {
   /// Affiliate token used to create affiliate-coded links.
-  core.String at;
+  core.String? at;
 
   /// Campaign text that developers can optionally add to any link in order to
   /// track sales from a specific marketing campaign.
-  core.String ct;
+  core.String? ct;
 
   /// iTune media types, including music, podcasts, audiobooks and so on.
-  core.String mt;
+  core.String? mt;
 
   /// Provider token that enables analytics for Dynamic Links from within iTunes
   /// Connect.
-  core.String pt;
+  core.String? pt;
 
   ITunesConnectAnalytics();
 
@@ -1397,39 +1390,39 @@ class ITunesConnectAnalytics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (at != null) 'at': at,
-        if (ct != null) 'ct': ct,
-        if (mt != null) 'mt': mt,
-        if (pt != null) 'pt': pt,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (at != null) 'at': at!,
+        if (ct != null) 'ct': ct!,
+        if (mt != null) 'mt': mt!,
+        if (pt != null) 'pt': pt!,
       };
 }
 
 /// iOS related attributes to the Dynamic Link..
 class IosInfo {
   /// iOS App Store ID.
-  core.String iosAppStoreId;
+  core.String? iosAppStoreId;
 
   /// iOS bundle ID of the app.
-  core.String iosBundleId;
+  core.String? iosBundleId;
 
   /// Custom (destination) scheme to use for iOS.
   ///
   /// By default, we’ll use the bundle ID as the custom scheme. Developer can
   /// override this behavior using this param.
-  core.String iosCustomScheme;
+  core.String? iosCustomScheme;
 
   /// Link to open on iOS if the app is not installed.
-  core.String iosFallbackLink;
+  core.String? iosFallbackLink;
 
   /// iPad bundle ID of the app.
-  core.String iosIpadBundleId;
+  core.String? iosIpadBundleId;
 
   /// If specified, this overrides the ios_fallback_link value on iPads.
-  core.String iosIpadFallbackLink;
+  core.String? iosIpadFallbackLink;
 
   /// iOS minimum version.
-  core.String iosMinimumVersion;
+  core.String? iosMinimumVersion;
 
   IosInfo();
 
@@ -1457,38 +1450,38 @@ class IosInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (iosAppStoreId != null) 'iosAppStoreId': iosAppStoreId,
-        if (iosBundleId != null) 'iosBundleId': iosBundleId,
-        if (iosCustomScheme != null) 'iosCustomScheme': iosCustomScheme,
-        if (iosFallbackLink != null) 'iosFallbackLink': iosFallbackLink,
-        if (iosIpadBundleId != null) 'iosIpadBundleId': iosIpadBundleId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (iosAppStoreId != null) 'iosAppStoreId': iosAppStoreId!,
+        if (iosBundleId != null) 'iosBundleId': iosBundleId!,
+        if (iosCustomScheme != null) 'iosCustomScheme': iosCustomScheme!,
+        if (iosFallbackLink != null) 'iosFallbackLink': iosFallbackLink!,
+        if (iosIpadBundleId != null) 'iosIpadBundleId': iosIpadBundleId!,
         if (iosIpadFallbackLink != null)
-          'iosIpadFallbackLink': iosIpadFallbackLink,
-        if (iosMinimumVersion != null) 'iosMinimumVersion': iosMinimumVersion,
+          'iosIpadFallbackLink': iosIpadFallbackLink!,
+        if (iosMinimumVersion != null) 'iosMinimumVersion': iosMinimumVersion!,
       };
 }
 
 /// Managed Short Link.
 class ManagedShortLink {
   /// Creation timestamp of the short link.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// Attributes that have been flagged about this short url.
-  core.List<core.String> flaggedAttribute;
+  core.List<core.String>? flaggedAttribute;
 
   /// Full Dyamic Link info
-  DynamicLinkInfo info;
+  DynamicLinkInfo? info;
 
   /// Short durable link url, for example, "https://sample.app.goo.gl/xyz123".
   ///
   /// Required.
-  core.String link;
+  core.String? link;
 
   /// Link name defined by the creator.
   ///
   /// Required.
-  core.String linkName;
+  core.String? linkName;
 
   /// Visibility status of link.
   /// Possible string values are:
@@ -1498,7 +1491,7 @@ class ManagedShortLink {
   /// (but can be shown in the console again if it is unarchived).
   /// - "NEVER_SHOWN" : Link created outside of console and should never be
   /// shown in console.
-  core.String visibility;
+  core.String? visibility;
 
   ManagedShortLink();
 
@@ -1526,13 +1519,13 @@ class ManagedShortLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationTime != null) 'creationTime': creationTime,
-        if (flaggedAttribute != null) 'flaggedAttribute': flaggedAttribute,
-        if (info != null) 'info': info.toJson(),
-        if (link != null) 'link': link,
-        if (linkName != null) 'linkName': linkName,
-        if (visibility != null) 'visibility': visibility,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (flaggedAttribute != null) 'flaggedAttribute': flaggedAttribute!,
+        if (info != null) 'info': info!.toJson(),
+        if (link != null) 'link': link!,
+        if (linkName != null) 'linkName': linkName!,
+        if (visibility != null) 'visibility': visibility!,
       };
 }
 
@@ -1540,7 +1533,7 @@ class ManagedShortLink {
 class NavigationInfo {
   /// If this option is on, FDL click will be forced to redirect rather than
   /// show an interstitial page.
-  core.bool enableForcedRedirect;
+  core.bool? enableForcedRedirect;
 
   NavigationInfo();
 
@@ -1550,9 +1543,9 @@ class NavigationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (enableForcedRedirect != null)
-          'enableForcedRedirect': enableForcedRedirect,
+          'enableForcedRedirect': enableForcedRedirect!,
       };
 }
 
@@ -1563,17 +1556,17 @@ class SocialMetaTagInfo {
   /// A short description of the link.
   ///
   /// Optional.
-  core.String socialDescription;
+  core.String? socialDescription;
 
   /// An image url string.
   ///
   /// Optional.
-  core.String socialImageLink;
+  core.String? socialImageLink;
 
   /// Title to be displayed.
   ///
   /// Optional.
-  core.String socialTitle;
+  core.String? socialTitle;
 
   SocialMetaTagInfo();
 
@@ -1589,17 +1582,17 @@ class SocialMetaTagInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (socialDescription != null) 'socialDescription': socialDescription,
-        if (socialImageLink != null) 'socialImageLink': socialImageLink,
-        if (socialTitle != null) 'socialTitle': socialTitle,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (socialDescription != null) 'socialDescription': socialDescription!,
+        if (socialImageLink != null) 'socialImageLink': socialImageLink!,
+        if (socialTitle != null) 'socialTitle': socialTitle!,
       };
 }
 
 /// Short Dynamic Link suffix.
 class Suffix {
   /// Only applies to Option.CUSTOM.
-  core.String customSuffix;
+  core.String? customSuffix;
 
   /// Suffix option.
   /// Possible string values are:
@@ -1616,7 +1609,7 @@ class Suffix {
   /// - "CUSTOM" : Custom DDL suffix is a client specified string, for example,
   /// "buy2get1free". NOTE: custom suffix should only be available to managed
   /// short link creation
-  core.String option;
+  core.String? option;
 
   Suffix();
 
@@ -1629,8 +1622,8 @@ class Suffix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customSuffix != null) 'customSuffix': customSuffix,
-        if (option != null) 'option': option,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customSuffix != null) 'customSuffix': customSuffix!,
+        if (option != null) 'option': option!,
       };
 }

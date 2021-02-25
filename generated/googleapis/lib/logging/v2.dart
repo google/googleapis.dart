@@ -179,11 +179,8 @@ class BillingAccountsBucketsResource {
   /// this method will complete with the same error.
   async.Future<LogBucket> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -228,11 +225,8 @@ class BillingAccountsBucketsViewsResource {
   /// this method will complete with the same error.
   async.Future<LogView> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -282,13 +276,9 @@ class BillingAccountsExclusionsResource {
   async.Future<LogExclusion> create(
     LogExclusion request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -331,11 +321,8 @@ class BillingAccountsExclusionsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -374,11 +361,8 @@ class BillingAccountsExclusionsResource {
   /// this method will complete with the same error.
   async.Future<LogExclusion> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -424,13 +408,10 @@ class BillingAccountsExclusionsResource {
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -484,14 +465,10 @@ class BillingAccountsExclusionsResource {
   async.Future<LogExclusion> patch(
     LogExclusion request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -538,11 +515,8 @@ class BillingAccountsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -582,14 +556,11 @@ class BillingAccountsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -649,14 +620,10 @@ class BillingAccountsLocationsBucketsResource {
   async.Future<LogBucket> create(
     LogBucket request,
     core.String parent, {
-    core.String bucketId,
-    core.String $fields,
+    core.String? bucketId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (bucketId != null) 'bucketId': [bucketId],
       if ($fields != null) 'fields': [$fields],
@@ -703,11 +670,8 @@ class BillingAccountsLocationsBucketsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -756,13 +720,10 @@ class BillingAccountsLocationsBucketsResource {
   /// this method will complete with the same error.
   async.Future<ListBucketsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -826,14 +787,10 @@ class BillingAccountsLocationsBucketsResource {
   async.Future<LogBucket> patch(
     LogBucket request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -882,13 +839,9 @@ class BillingAccountsLocationsBucketsResource {
   async.Future<Empty> undelete(
     UndeleteBucketRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -942,14 +895,10 @@ class BillingAccountsLocationsBucketsViewsResource {
   async.Future<LogView> create(
     LogView request,
     core.String parent, {
-    core.String viewId,
-    core.String $fields,
+    core.String? viewId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (viewId != null) 'viewId': [viewId],
       if ($fields != null) 'fields': [$fields],
@@ -990,11 +939,8 @@ class BillingAccountsLocationsBucketsViewsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1039,13 +985,10 @@ class BillingAccountsLocationsBucketsViewsResource {
   /// this method will complete with the same error.
   async.Future<ListViewsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1100,14 +1043,10 @@ class BillingAccountsLocationsBucketsViewsResource {
   async.Future<LogView> patch(
     LogView request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1162,11 +1101,8 @@ class BillingAccountsLogsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String logName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (logName == null) {
-      throw core.ArgumentError('Parameter logName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1222,14 +1158,11 @@ class BillingAccountsLogsResource {
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.List<core.String> resourceNames,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.List<core.String>? resourceNames,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1296,14 +1229,10 @@ class BillingAccountsSinksResource {
   async.Future<LogSink> create(
     LogSink request,
     core.String parent, {
-    core.bool uniqueWriterIdentity,
-    core.String $fields,
+    core.bool? uniqueWriterIdentity,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
@@ -1350,11 +1279,8 @@ class BillingAccountsSinksResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String sinkName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1393,11 +1319,8 @@ class BillingAccountsSinksResource {
   /// this method will complete with the same error.
   async.Future<LogSink> get(
     core.String sinkName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1442,13 +1365,10 @@ class BillingAccountsSinksResource {
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1518,15 +1438,11 @@ class BillingAccountsSinksResource {
   async.Future<LogSink> patch(
     LogSink request,
     core.String sinkName, {
-    core.bool uniqueWriterIdentity,
-    core.String updateMask,
-    core.String $fields,
+    core.bool? uniqueWriterIdentity,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
@@ -1596,15 +1512,11 @@ class BillingAccountsSinksResource {
   async.Future<LogSink> update(
     LogSink request,
     core.String sinkName, {
-    core.bool uniqueWriterIdentity,
-    core.String updateMask,
-    core.String $fields,
+    core.bool? uniqueWriterIdentity,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
@@ -1652,10 +1564,9 @@ class EntriesResource {
   /// this method will complete with the same error.
   async.Future<ListLogEntriesResponse> list(
     ListLogEntriesRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1692,10 +1603,9 @@ class EntriesResource {
   /// this method will complete with the same error.
   async.Future<TailLogEntriesResponse> tail(
     TailLogEntriesRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1736,10 +1646,9 @@ class EntriesResource {
   /// this method will complete with the same error.
   async.Future<WriteLogEntriesResponse> write(
     WriteLogEntriesRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1790,13 +1699,9 @@ class ExclusionsResource {
   async.Future<LogExclusion> create(
     LogExclusion request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1839,11 +1744,8 @@ class ExclusionsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1882,11 +1784,8 @@ class ExclusionsResource {
   /// this method will complete with the same error.
   async.Future<LogExclusion> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1932,13 +1831,10 @@ class ExclusionsResource {
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1992,14 +1888,10 @@ class ExclusionsResource {
   async.Future<LogExclusion> patch(
     LogExclusion request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2064,13 +1956,9 @@ class FoldersExclusionsResource {
   async.Future<LogExclusion> create(
     LogExclusion request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2113,11 +2001,8 @@ class FoldersExclusionsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2156,11 +2041,8 @@ class FoldersExclusionsResource {
   /// this method will complete with the same error.
   async.Future<LogExclusion> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2206,13 +2088,10 @@ class FoldersExclusionsResource {
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2266,14 +2145,10 @@ class FoldersExclusionsResource {
   async.Future<LogExclusion> patch(
     LogExclusion request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2319,11 +2194,8 @@ class FoldersLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2363,14 +2235,11 @@ class FoldersLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2430,14 +2299,10 @@ class FoldersLocationsBucketsResource {
   async.Future<LogBucket> create(
     LogBucket request,
     core.String parent, {
-    core.String bucketId,
-    core.String $fields,
+    core.String? bucketId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (bucketId != null) 'bucketId': [bucketId],
       if ($fields != null) 'fields': [$fields],
@@ -2484,11 +2349,8 @@ class FoldersLocationsBucketsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2529,11 +2391,8 @@ class FoldersLocationsBucketsResource {
   /// this method will complete with the same error.
   async.Future<LogBucket> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2582,13 +2441,10 @@ class FoldersLocationsBucketsResource {
   /// this method will complete with the same error.
   async.Future<ListBucketsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2652,14 +2508,10 @@ class FoldersLocationsBucketsResource {
   async.Future<LogBucket> patch(
     LogBucket request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2708,13 +2560,9 @@ class FoldersLocationsBucketsResource {
   async.Future<Empty> undelete(
     UndeleteBucketRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2768,14 +2616,10 @@ class FoldersLocationsBucketsViewsResource {
   async.Future<LogView> create(
     LogView request,
     core.String parent, {
-    core.String viewId,
-    core.String $fields,
+    core.String? viewId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (viewId != null) 'viewId': [viewId],
       if ($fields != null) 'fields': [$fields],
@@ -2816,11 +2660,8 @@ class FoldersLocationsBucketsViewsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2858,11 +2699,8 @@ class FoldersLocationsBucketsViewsResource {
   /// this method will complete with the same error.
   async.Future<LogView> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2907,13 +2745,10 @@ class FoldersLocationsBucketsViewsResource {
   /// this method will complete with the same error.
   async.Future<ListViewsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2968,14 +2803,10 @@ class FoldersLocationsBucketsViewsResource {
   async.Future<LogView> patch(
     LogView request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3029,11 +2860,8 @@ class FoldersLogsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String logName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (logName == null) {
-      throw core.ArgumentError('Parameter logName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3089,14 +2917,11 @@ class FoldersLogsResource {
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.List<core.String> resourceNames,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.List<core.String>? resourceNames,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3162,14 +2987,10 @@ class FoldersSinksResource {
   async.Future<LogSink> create(
     LogSink request,
     core.String parent, {
-    core.bool uniqueWriterIdentity,
-    core.String $fields,
+    core.bool? uniqueWriterIdentity,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
@@ -3216,11 +3037,8 @@ class FoldersSinksResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String sinkName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3259,11 +3077,8 @@ class FoldersSinksResource {
   /// this method will complete with the same error.
   async.Future<LogSink> get(
     core.String sinkName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3308,13 +3123,10 @@ class FoldersSinksResource {
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3384,15 +3196,11 @@ class FoldersSinksResource {
   async.Future<LogSink> patch(
     LogSink request,
     core.String sinkName, {
-    core.bool uniqueWriterIdentity,
-    core.String updateMask,
-    core.String $fields,
+    core.bool? uniqueWriterIdentity,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
@@ -3462,15 +3270,11 @@ class FoldersSinksResource {
   async.Future<LogSink> update(
     LogSink request,
     core.String sinkName, {
-    core.bool uniqueWriterIdentity,
-    core.String updateMask,
-    core.String $fields,
+    core.bool? uniqueWriterIdentity,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
@@ -3516,11 +3320,8 @@ class LocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3560,14 +3361,11 @@ class LocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -3626,14 +3424,10 @@ class LocationsBucketsResource {
   async.Future<LogBucket> create(
     LogBucket request,
     core.String parent, {
-    core.String bucketId,
-    core.String $fields,
+    core.String? bucketId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (bucketId != null) 'bucketId': [bucketId],
       if ($fields != null) 'fields': [$fields],
@@ -3680,11 +3474,8 @@ class LocationsBucketsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3725,11 +3516,8 @@ class LocationsBucketsResource {
   /// this method will complete with the same error.
   async.Future<LogBucket> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3778,13 +3566,10 @@ class LocationsBucketsResource {
   /// this method will complete with the same error.
   async.Future<ListBucketsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3848,14 +3633,10 @@ class LocationsBucketsResource {
   async.Future<LogBucket> patch(
     LogBucket request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3904,13 +3685,9 @@ class LocationsBucketsResource {
   async.Future<Empty> undelete(
     UndeleteBucketRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3964,14 +3741,10 @@ class LocationsBucketsViewsResource {
   async.Future<LogView> create(
     LogView request,
     core.String parent, {
-    core.String viewId,
-    core.String $fields,
+    core.String? viewId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (viewId != null) 'viewId': [viewId],
       if ($fields != null) 'fields': [$fields],
@@ -4012,11 +3785,8 @@ class LocationsBucketsViewsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4054,11 +3824,8 @@ class LocationsBucketsViewsResource {
   /// this method will complete with the same error.
   async.Future<LogView> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4103,13 +3870,10 @@ class LocationsBucketsViewsResource {
   /// this method will complete with the same error.
   async.Future<ListViewsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -4164,14 +3928,10 @@ class LocationsBucketsViewsResource {
   async.Future<LogView> patch(
     LogView request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -4225,11 +3985,8 @@ class LogsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String logName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (logName == null) {
-      throw core.ArgumentError('Parameter logName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4285,14 +4042,11 @@ class LogsResource {
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.List<core.String> resourceNames,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.List<core.String>? resourceNames,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -4343,9 +4097,9 @@ class MonitoredResourceDescriptorsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -4410,11 +4164,8 @@ class OrganizationsResource {
   /// this method will complete with the same error.
   async.Future<CmekSettings> getCmekSettings(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4476,14 +4227,10 @@ class OrganizationsResource {
   async.Future<CmekSettings> updateCmekSettings(
     CmekSettings request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -4538,13 +4285,9 @@ class OrganizationsExclusionsResource {
   async.Future<LogExclusion> create(
     LogExclusion request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4587,11 +4330,8 @@ class OrganizationsExclusionsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4630,11 +4370,8 @@ class OrganizationsExclusionsResource {
   /// this method will complete with the same error.
   async.Future<LogExclusion> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4680,13 +4417,10 @@ class OrganizationsExclusionsResource {
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -4740,14 +4474,10 @@ class OrganizationsExclusionsResource {
   async.Future<LogExclusion> patch(
     LogExclusion request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -4794,11 +4524,8 @@ class OrganizationsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4838,14 +4565,11 @@ class OrganizationsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -4905,14 +4629,10 @@ class OrganizationsLocationsBucketsResource {
   async.Future<LogBucket> create(
     LogBucket request,
     core.String parent, {
-    core.String bucketId,
-    core.String $fields,
+    core.String? bucketId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (bucketId != null) 'bucketId': [bucketId],
       if ($fields != null) 'fields': [$fields],
@@ -4959,11 +4679,8 @@ class OrganizationsLocationsBucketsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5004,11 +4721,8 @@ class OrganizationsLocationsBucketsResource {
   /// this method will complete with the same error.
   async.Future<LogBucket> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5057,13 +4771,10 @@ class OrganizationsLocationsBucketsResource {
   /// this method will complete with the same error.
   async.Future<ListBucketsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -5127,14 +4838,10 @@ class OrganizationsLocationsBucketsResource {
   async.Future<LogBucket> patch(
     LogBucket request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -5183,13 +4890,9 @@ class OrganizationsLocationsBucketsResource {
   async.Future<Empty> undelete(
     UndeleteBucketRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5243,14 +4946,10 @@ class OrganizationsLocationsBucketsViewsResource {
   async.Future<LogView> create(
     LogView request,
     core.String parent, {
-    core.String viewId,
-    core.String $fields,
+    core.String? viewId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (viewId != null) 'viewId': [viewId],
       if ($fields != null) 'fields': [$fields],
@@ -5291,11 +4990,8 @@ class OrganizationsLocationsBucketsViewsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5333,11 +5029,8 @@ class OrganizationsLocationsBucketsViewsResource {
   /// this method will complete with the same error.
   async.Future<LogView> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5382,13 +5075,10 @@ class OrganizationsLocationsBucketsViewsResource {
   /// this method will complete with the same error.
   async.Future<ListViewsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -5443,14 +5133,10 @@ class OrganizationsLocationsBucketsViewsResource {
   async.Future<LogView> patch(
     LogView request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -5504,11 +5190,8 @@ class OrganizationsLogsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String logName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (logName == null) {
-      throw core.ArgumentError('Parameter logName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5564,14 +5247,11 @@ class OrganizationsLogsResource {
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.List<core.String> resourceNames,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.List<core.String>? resourceNames,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -5637,14 +5317,10 @@ class OrganizationsSinksResource {
   async.Future<LogSink> create(
     LogSink request,
     core.String parent, {
-    core.bool uniqueWriterIdentity,
-    core.String $fields,
+    core.bool? uniqueWriterIdentity,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
@@ -5691,11 +5367,8 @@ class OrganizationsSinksResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String sinkName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5734,11 +5407,8 @@ class OrganizationsSinksResource {
   /// this method will complete with the same error.
   async.Future<LogSink> get(
     core.String sinkName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5783,13 +5453,10 @@ class OrganizationsSinksResource {
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -5859,15 +5526,11 @@ class OrganizationsSinksResource {
   async.Future<LogSink> patch(
     LogSink request,
     core.String sinkName, {
-    core.bool uniqueWriterIdentity,
-    core.String updateMask,
-    core.String $fields,
+    core.bool? uniqueWriterIdentity,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
@@ -5937,15 +5600,11 @@ class OrganizationsSinksResource {
   async.Future<LogSink> update(
     LogSink request,
     core.String sinkName, {
-    core.bool uniqueWriterIdentity,
-    core.String updateMask,
-    core.String $fields,
+    core.bool? uniqueWriterIdentity,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
@@ -6012,13 +5671,9 @@ class ProjectsExclusionsResource {
   async.Future<LogExclusion> create(
     LogExclusion request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6061,11 +5716,8 @@ class ProjectsExclusionsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6104,11 +5756,8 @@ class ProjectsExclusionsResource {
   /// this method will complete with the same error.
   async.Future<LogExclusion> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6154,13 +5803,10 @@ class ProjectsExclusionsResource {
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -6214,14 +5860,10 @@ class ProjectsExclusionsResource {
   async.Future<LogExclusion> patch(
     LogExclusion request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -6267,11 +5909,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6311,14 +5950,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -6378,14 +6014,10 @@ class ProjectsLocationsBucketsResource {
   async.Future<LogBucket> create(
     LogBucket request,
     core.String parent, {
-    core.String bucketId,
-    core.String $fields,
+    core.String? bucketId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (bucketId != null) 'bucketId': [bucketId],
       if ($fields != null) 'fields': [$fields],
@@ -6432,11 +6064,8 @@ class ProjectsLocationsBucketsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6477,11 +6106,8 @@ class ProjectsLocationsBucketsResource {
   /// this method will complete with the same error.
   async.Future<LogBucket> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6530,13 +6156,10 @@ class ProjectsLocationsBucketsResource {
   /// this method will complete with the same error.
   async.Future<ListBucketsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -6600,14 +6223,10 @@ class ProjectsLocationsBucketsResource {
   async.Future<LogBucket> patch(
     LogBucket request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -6656,13 +6275,9 @@ class ProjectsLocationsBucketsResource {
   async.Future<Empty> undelete(
     UndeleteBucketRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6716,14 +6331,10 @@ class ProjectsLocationsBucketsViewsResource {
   async.Future<LogView> create(
     LogView request,
     core.String parent, {
-    core.String viewId,
-    core.String $fields,
+    core.String? viewId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (viewId != null) 'viewId': [viewId],
       if ($fields != null) 'fields': [$fields],
@@ -6764,11 +6375,8 @@ class ProjectsLocationsBucketsViewsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6806,11 +6414,8 @@ class ProjectsLocationsBucketsViewsResource {
   /// this method will complete with the same error.
   async.Future<LogView> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6855,13 +6460,10 @@ class ProjectsLocationsBucketsViewsResource {
   /// this method will complete with the same error.
   async.Future<ListViewsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -6916,14 +6518,10 @@ class ProjectsLocationsBucketsViewsResource {
   async.Future<LogView> patch(
     LogView request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -6977,11 +6575,8 @@ class ProjectsLogsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String logName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (logName == null) {
-      throw core.ArgumentError('Parameter logName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7037,14 +6632,11 @@ class ProjectsLogsResource {
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.List<core.String> resourceNames,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.List<core.String>? resourceNames,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -7094,13 +6686,9 @@ class ProjectsMetricsResource {
   async.Future<LogMetric> create(
     LogMetric request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7137,11 +6725,8 @@ class ProjectsMetricsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String metricName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (metricName == null) {
-      throw core.ArgumentError('Parameter metricName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7176,11 +6761,8 @@ class ProjectsMetricsResource {
   /// this method will complete with the same error.
   async.Future<LogMetric> get(
     core.String metricName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (metricName == null) {
-      throw core.ArgumentError('Parameter metricName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7224,13 +6806,10 @@ class ProjectsMetricsResource {
   /// this method will complete with the same error.
   async.Future<ListLogMetricsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -7275,13 +6854,9 @@ class ProjectsMetricsResource {
   async.Future<LogMetric> update(
     LogMetric request,
     core.String metricName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (metricName == null) {
-      throw core.ArgumentError('Parameter metricName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7343,14 +6918,10 @@ class ProjectsSinksResource {
   async.Future<LogSink> create(
     LogSink request,
     core.String parent, {
-    core.bool uniqueWriterIdentity,
-    core.String $fields,
+    core.bool? uniqueWriterIdentity,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
@@ -7397,11 +6968,8 @@ class ProjectsSinksResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String sinkName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7440,11 +7008,8 @@ class ProjectsSinksResource {
   /// this method will complete with the same error.
   async.Future<LogSink> get(
     core.String sinkName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7489,13 +7054,10 @@ class ProjectsSinksResource {
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -7565,15 +7127,11 @@ class ProjectsSinksResource {
   async.Future<LogSink> patch(
     LogSink request,
     core.String sinkName, {
-    core.bool uniqueWriterIdentity,
-    core.String updateMask,
-    core.String $fields,
+    core.bool? uniqueWriterIdentity,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
@@ -7643,15 +7201,11 @@ class ProjectsSinksResource {
   async.Future<LogSink> update(
     LogSink request,
     core.String sinkName, {
-    core.bool uniqueWriterIdentity,
-    core.String updateMask,
-    core.String $fields,
+    core.bool? uniqueWriterIdentity,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
@@ -7716,14 +7270,10 @@ class SinksResource {
   async.Future<LogSink> create(
     LogSink request,
     core.String parent, {
-    core.bool uniqueWriterIdentity,
-    core.String $fields,
+    core.bool? uniqueWriterIdentity,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
@@ -7770,11 +7320,8 @@ class SinksResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String sinkName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7813,11 +7360,8 @@ class SinksResource {
   /// this method will complete with the same error.
   async.Future<LogSink> get(
     core.String sinkName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7862,13 +7406,10 @@ class SinksResource {
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -7938,15 +7479,11 @@ class SinksResource {
   async.Future<LogSink> update(
     LogSink request,
     core.String sinkName, {
-    core.bool uniqueWriterIdentity,
-    core.String updateMask,
-    core.String $fields,
+    core.bool? uniqueWriterIdentity,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (sinkName == null) {
-      throw core.ArgumentError('Parameter sinkName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (uniqueWriterIdentity != null)
         'uniqueWriterIdentity': ['${uniqueWriterIdentity}'],
@@ -8003,11 +7540,8 @@ class V2Resource {
   /// this method will complete with the same error.
   async.Future<CmekSettings> getCmekSettings(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8069,14 +7603,10 @@ class V2Resource {
   async.Future<CmekSettings> updateCmekSettings(
     CmekSettings request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -8110,7 +7640,7 @@ class BigQueryOptions {
   /// timezone.
   ///
   /// Optional.
-  core.bool usePartitionedTables;
+  core.bool? usePartitionedTables;
 
   /// True if new timestamp column based partitioning is in use, false if legacy
   /// ingestion-time partitioning is in use.
@@ -8121,7 +7651,7 @@ class BigQueryOptions {
   /// this field set to false.
   ///
   /// Output only.
-  core.bool usesTimestampColumnPartitioning;
+  core.bool? usesTimestampColumnPartitioning;
 
   BigQueryOptions();
 
@@ -8135,11 +7665,11 @@ class BigQueryOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (usePartitionedTables != null)
-          'usePartitionedTables': usePartitionedTables,
+          'usePartitionedTables': usePartitionedTables!,
         if (usesTimestampColumnPartitioning != null)
-          'usesTimestampColumnPartitioning': usesTimestampColumnPartitioning,
+          'usesTimestampColumnPartitioning': usesTimestampColumnPartitioning!,
       };
 }
 
@@ -8160,13 +7690,13 @@ class BigQueryOptions {
 /// The finite buckets are so-called because both bounds are finite.
 class BucketOptions {
   /// The explicit buckets.
-  Explicit explicitBuckets;
+  Explicit? explicitBuckets;
 
   /// The exponential buckets.
-  Exponential exponentialBuckets;
+  Exponential? exponentialBuckets;
 
   /// The linear bucket.
-  Linear linearBuckets;
+  Linear? linearBuckets;
 
   BucketOptions();
 
@@ -8185,12 +7715,12 @@ class BucketOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (explicitBuckets != null)
-          'explicitBuckets': explicitBuckets.toJson(),
+          'explicitBuckets': explicitBuckets!.toJson(),
         if (exponentialBuckets != null)
-          'exponentialBuckets': exponentialBuckets.toJson(),
-        if (linearBuckets != null) 'linearBuckets': linearBuckets.toJson(),
+          'exponentialBuckets': exponentialBuckets!.toJson(),
+        if (linearBuckets != null) 'linearBuckets': linearBuckets!.toJson(),
       };
 }
 
@@ -8221,12 +7751,12 @@ class CmekSettings {
   /// field to an empty string.See Enabling CMEK for Logs Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
-  core.String kmsKeyName;
+  core.String? kmsKeyName;
 
   /// The resource name of the CMEK settings.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The service account that will be used by the Logs Router to access your
   /// Cloud KMS key.Before enabling CMEK for Logs Router, you must first assign
@@ -8239,7 +7769,7 @@ class CmekSettings {
   /// more information.
   ///
   /// Output only.
-  core.String serviceAccountId;
+  core.String? serviceAccountId;
 
   CmekSettings();
 
@@ -8255,10 +7785,10 @@ class CmekSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
-        if (name != null) 'name': name,
-        if (serviceAccountId != null) 'serviceAccountId': serviceAccountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (name != null) 'name': name!,
+        if (serviceAccountId != null) 'serviceAccountId': serviceAccountId!,
       };
 }
 
@@ -8276,7 +7806,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1
@@ -8289,7 +7819,7 @@ class Empty {
 /// underflow buckets.
 class Explicit {
   /// The values must be monotonically increasing.
-  core.List<core.double> bounds;
+  core.List<core.double>? bounds;
 
   Explicit();
 
@@ -8301,8 +7831,8 @@ class Explicit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bounds != null) 'bounds': bounds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bounds != null) 'bounds': bounds!,
       };
 }
 
@@ -8315,13 +7845,13 @@ class Explicit {
 /// ^ i). Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
 class Exponential {
   /// Must be greater than 1.
-  core.double growthFactor;
+  core.double? growthFactor;
 
   /// Must be greater than 0.
-  core.int numFiniteBuckets;
+  core.int? numFiniteBuckets;
 
   /// Must be greater than 0.
-  core.double scale;
+  core.double? scale;
 
   Exponential();
 
@@ -8337,10 +7867,10 @@ class Exponential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (growthFactor != null) 'growthFactor': growthFactor,
-        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets,
-        if (scale != null) 'scale': scale,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (growthFactor != null) 'growthFactor': growthFactor!,
+        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
+        if (scale != null) 'scale': scale!,
       };
 }
 
@@ -8352,76 +7882,76 @@ class HttpRequest {
   /// The number of HTTP response bytes inserted into cache.
   ///
   /// Set only when a cache fill was attempted.
-  core.String cacheFillBytes;
+  core.String? cacheFillBytes;
 
   /// Whether or not an entity was served from cache (with or without
   /// validation).
-  core.bool cacheHit;
+  core.bool? cacheHit;
 
   /// Whether or not a cache lookup was attempted.
-  core.bool cacheLookup;
+  core.bool? cacheLookup;
 
   /// Whether or not the response was validated with the origin server before
   /// being served from cache.
   ///
   /// This field is only meaningful if cache_hit is True.
-  core.bool cacheValidatedWithOriginServer;
+  core.bool? cacheValidatedWithOriginServer;
 
   /// The request processing latency on the server, from the time the request
   /// was received until the response was sent.
-  core.String latency;
+  core.String? latency;
 
   /// Protocol used for the request.
   ///
   /// Examples: "HTTP/1.1", "HTTP/2", "websocket"
-  core.String protocol;
+  core.String? protocol;
 
   /// The referer URL of the request, as defined in HTTP/1.1 Header Field
   /// Definitions (http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
-  core.String referer;
+  core.String? referer;
 
   /// The IP address (IPv4 or IPv6) of the client that issued the HTTP request.
   ///
   /// This field can include port information. Examples: "192.168.1.1",
   /// "10.0.0.1:80", "FE80::0202:B3FF:FE1E:8329".
-  core.String remoteIp;
+  core.String? remoteIp;
 
   /// The request method.
   ///
   /// Examples: "GET", "HEAD", "PUT", "POST".
-  core.String requestMethod;
+  core.String? requestMethod;
 
   /// The size of the HTTP request message in bytes, including the request
   /// headers and the request body.
-  core.String requestSize;
+  core.String? requestSize;
 
   /// The scheme (http, https), the host name, the path and the query portion of
   /// the URL that was requested.
   ///
   /// Example: "http://example.com/some/info?color=red".
-  core.String requestUrl;
+  core.String? requestUrl;
 
   /// The size of the HTTP response message sent back to the client, in bytes,
   /// including the response headers and the response body.
-  core.String responseSize;
+  core.String? responseSize;
 
   /// The IP address (IPv4 or IPv6) of the origin server that the request was
   /// sent to.
   ///
   /// This field can include port information. Examples: "192.168.1.1",
   /// "10.0.0.1:80", "FE80::0202:B3FF:FE1E:8329".
-  core.String serverIp;
+  core.String? serverIp;
 
   /// The response code indicating the status of response.
   ///
   /// Examples: 200, 404.
-  core.int status;
+  core.int? status;
 
   /// The user agent sent by the client.
   ///
   /// Example: "Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Q312461; .NET CLR
   /// 1.0.3705)".
-  core.String userAgent;
+  core.String? userAgent;
 
   HttpRequest();
 
@@ -8474,40 +8004,40 @@ class HttpRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cacheFillBytes != null) 'cacheFillBytes': cacheFillBytes,
-        if (cacheHit != null) 'cacheHit': cacheHit,
-        if (cacheLookup != null) 'cacheLookup': cacheLookup,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cacheFillBytes != null) 'cacheFillBytes': cacheFillBytes!,
+        if (cacheHit != null) 'cacheHit': cacheHit!,
+        if (cacheLookup != null) 'cacheLookup': cacheLookup!,
         if (cacheValidatedWithOriginServer != null)
-          'cacheValidatedWithOriginServer': cacheValidatedWithOriginServer,
-        if (latency != null) 'latency': latency,
-        if (protocol != null) 'protocol': protocol,
-        if (referer != null) 'referer': referer,
-        if (remoteIp != null) 'remoteIp': remoteIp,
-        if (requestMethod != null) 'requestMethod': requestMethod,
-        if (requestSize != null) 'requestSize': requestSize,
-        if (requestUrl != null) 'requestUrl': requestUrl,
-        if (responseSize != null) 'responseSize': responseSize,
-        if (serverIp != null) 'serverIp': serverIp,
-        if (status != null) 'status': status,
-        if (userAgent != null) 'userAgent': userAgent,
+          'cacheValidatedWithOriginServer': cacheValidatedWithOriginServer!,
+        if (latency != null) 'latency': latency!,
+        if (protocol != null) 'protocol': protocol!,
+        if (referer != null) 'referer': referer!,
+        if (remoteIp != null) 'remoteIp': remoteIp!,
+        if (requestMethod != null) 'requestMethod': requestMethod!,
+        if (requestSize != null) 'requestSize': requestSize!,
+        if (requestUrl != null) 'requestUrl': requestUrl!,
+        if (responseSize != null) 'responseSize': responseSize!,
+        if (serverIp != null) 'serverIp': serverIp!,
+        if (status != null) 'status': status!,
+        if (userAgent != null) 'userAgent': userAgent!,
       };
 }
 
 /// A description of a label.
 class LabelDescriptor {
   /// A human-readable description for the label.
-  core.String description;
+  core.String? description;
 
   /// The label key.
-  core.String key;
+  core.String? key;
 
   /// The type of data that can be assigned to the label.
   /// Possible string values are:
   /// - "STRING" : A variable-length string. This is the default.
   /// - "BOOL" : Boolean; true or false.
   /// - "INT64" : A 64-bit signed integer.
-  core.String valueType;
+  core.String? valueType;
 
   LabelDescriptor();
 
@@ -8523,10 +8053,10 @@ class LabelDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (key != null) 'key': key,
-        if (valueType != null) 'valueType': valueType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (key != null) 'key': key!,
+        if (valueType != null) 'valueType': valueType!,
       };
 }
 
@@ -8539,13 +8069,13 @@ class LabelDescriptor {
 /// Lower bound (1 <= i < N): offset + (width * (i - 1)).
 class Linear {
   /// Must be greater than 0.
-  core.int numFiniteBuckets;
+  core.int? numFiniteBuckets;
 
   /// Lower bound of the first bucket.
-  core.double offset;
+  core.double? offset;
 
   /// Must be greater than 0.
-  core.double width;
+  core.double? width;
 
   Linear();
 
@@ -8561,24 +8091,24 @@ class Linear {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets,
-        if (offset != null) 'offset': offset,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
+        if (offset != null) 'offset': offset!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// The response from ListBuckets.
 class ListBucketsResponse {
   /// A list of buckets.
-  core.List<LogBucket> buckets;
+  core.List<LogBucket>? buckets;
 
   /// If there might be more results than appear in this response, then
   /// nextPageToken is included.
   ///
   /// To get the next set of results, call the same method again using the value
   /// of nextPageToken as pageToken.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListBucketsResponse();
 
@@ -8594,24 +8124,24 @@ class ListBucketsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (buckets != null)
-          'buckets': buckets.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'buckets': buckets!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Result returned from ListExclusions.
 class ListExclusionsResponse {
   /// A list of exclusions.
-  core.List<LogExclusion> exclusions;
+  core.List<LogExclusion>? exclusions;
 
   /// If there might be more results than appear in this response, then
   /// nextPageToken is included.
   ///
   /// To get the next set of results, call the same method again using the value
   /// of nextPageToken as pageToken.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListExclusionsResponse();
 
@@ -8627,20 +8157,20 @@ class ListExclusionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (exclusions != null)
-          'exclusions': exclusions.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'exclusions': exclusions!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -8656,10 +8186,10 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -8676,7 +8206,7 @@ class ListLogEntriesRequest {
   /// characters.
   ///
   /// Optional.
-  core.String filter;
+  core.String? filter;
 
   /// How the results should be sorted.
   ///
@@ -8687,7 +8217,7 @@ class ListLogEntriesRequest {
   /// equal timestamps are returned in order of their insert_id values.
   ///
   /// Optional.
-  core.String orderBy;
+  core.String? orderBy;
 
   /// The maximum number of results to return from this request.
   ///
@@ -8696,7 +8226,7 @@ class ListLogEntriesRequest {
   /// more results might be available.
   ///
   /// Optional.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// If present, then retrieve the next batch of results from the preceding
   /// call to this method.
@@ -8706,7 +8236,7 @@ class ListLogEntriesRequest {
   /// those in the previous call.
   ///
   /// Optional.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// Use resource_names instead.
   ///
@@ -8714,7 +8244,7 @@ class ListLogEntriesRequest {
   /// log entries. Example: "my-project-1A".
   ///
   /// Optional. Deprecated.
-  core.List<core.String> projectIds;
+  core.List<core.String>? projectIds;
 
   /// Names of one or more parent resources from which to retrieve log entries:
   /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
@@ -8727,7 +8257,7 @@ class ListLogEntriesRequest {
   /// listed in the project_ids field are added to this list.
   ///
   /// Required.
-  core.List<core.String> resourceNames;
+  core.List<core.String>? resourceNames;
 
   ListLogEntriesRequest();
 
@@ -8756,13 +8286,13 @@ class ListLogEntriesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filter != null) 'filter': filter,
-        if (orderBy != null) 'orderBy': orderBy,
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (projectIds != null) 'projectIds': projectIds,
-        if (resourceNames != null) 'resourceNames': resourceNames,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (orderBy != null) 'orderBy': orderBy!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (projectIds != null) 'projectIds': projectIds!,
+        if (resourceNames != null) 'resourceNames': resourceNames!,
       };
 }
 
@@ -8772,7 +8302,7 @@ class ListLogEntriesResponse {
   ///
   /// If entries is empty, nextPageToken may still be returned, indicating that
   /// more entries may exist. See nextPageToken for more information.
-  core.List<LogEntry> entries;
+  core.List<LogEntry>? entries;
 
   /// If there might be more results than those appearing in this response, then
   /// nextPageToken is included.
@@ -8785,7 +8315,7 @@ class ListLogEntriesResponse {
   /// Alternatively, consider speeding up the search by changing your filter to
   /// specify a single log name or resource type, or to narrow the time range of
   /// the search.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLogEntriesResponse();
 
@@ -8801,24 +8331,24 @@ class ListLogEntriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Result returned from ListLogMetrics.
 class ListLogMetricsResponse {
   /// A list of logs-based metrics.
-  core.List<LogMetric> metrics;
+  core.List<LogMetric>? metrics;
 
   /// If there might be more results than appear in this response, then
   /// nextPageToken is included.
   ///
   /// To get the next set of results, call this method again using the value of
   /// nextPageToken as pageToken.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLogMetricsResponse();
 
@@ -8834,10 +8364,10 @@ class ListLogMetricsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -8847,14 +8377,14 @@ class ListLogsResponse {
   ///
   /// For example, "projects/my-project/logs/syslog" or
   /// "organizations/123/logs/cloudresourcemanager.googleapis.com%2Factivity".
-  core.List<core.String> logNames;
+  core.List<core.String>? logNames;
 
   /// If there might be more results than those appearing in this response, then
   /// nextPageToken is included.
   ///
   /// To get the next set of results, call this method again using the value of
   /// nextPageToken as pageToken.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLogsResponse();
 
@@ -8869,9 +8399,9 @@ class ListLogsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (logNames != null) 'logNames': logNames,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (logNames != null) 'logNames': logNames!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -8882,10 +8412,10 @@ class ListMonitoredResourceDescriptorsResponse {
   ///
   /// To get the next set of results, call this method again using the value of
   /// nextPageToken as pageToken.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of resource descriptors.
-  core.List<MonitoredResourceDescriptor> resourceDescriptors;
+  core.List<MonitoredResourceDescriptor>? resourceDescriptors;
 
   ListMonitoredResourceDescriptorsResponse();
 
@@ -8902,11 +8432,11 @@ class ListMonitoredResourceDescriptorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resourceDescriptors != null)
           'resourceDescriptors':
-              resourceDescriptors.map((value) => value.toJson()).toList(),
+              resourceDescriptors!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8917,10 +8447,10 @@ class ListSinksResponse {
   ///
   /// To get the next set of results, call the same method again using the value
   /// of nextPageToken as pageToken.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of sinks.
-  core.List<LogSink> sinks;
+  core.List<LogSink>? sinks;
 
   ListSinksResponse();
 
@@ -8936,10 +8466,10 @@ class ListSinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (sinks != null)
-          'sinks': sinks.map((value) => value.toJson()).toList(),
+          'sinks': sinks!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8950,10 +8480,10 @@ class ListViewsResponse {
   ///
   /// To get the next set of results, call the same method again using the value
   /// of nextPageToken as pageToken.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of views.
-  core.List<LogView> views;
+  core.List<LogView>? views;
 
   ListViewsResponse();
 
@@ -8969,10 +8499,10 @@ class ListViewsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (views != null)
-          'views': views.map((value) => value.toJson()).toList(),
+          'views': views!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8981,17 +8511,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: "us-east1".
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -8999,12 +8529,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: "projects/example-project/locations/us-east1"
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -9038,12 +8568,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -9054,10 +8584,10 @@ class LogBucket {
   /// This is not set for any of the default buckets.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Describes this bucket.
-  core.String description;
+  core.String? description;
 
   /// The bucket lifecycle state.
   ///
@@ -9068,13 +8598,13 @@ class LogBucket {
   /// - "ACTIVE" : The normal and active state.
   /// - "DELETE_REQUESTED" : The bucket has been marked for deletion by the
   /// user.
-  core.String lifecycleState;
+  core.String? lifecycleState;
 
   /// Whether the bucket has been locked.
   ///
   /// The retention period on a locked bucket may not be changed. Locked buckets
   /// may only be deleted if they are empty.
-  core.bool locked;
+  core.bool? locked;
 
   /// The resource name of the bucket.
   ///
@@ -9086,19 +8616,19 @@ class LogBucket {
   /// location can not be changed.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Logs will be retained by default for this amount of time, after which they
   /// will automatically be deleted.
   ///
   /// The minimum retention period is 1 day. If this value is set to zero at
   /// bucket creation time, the default time of 30 days will be used.
-  core.int retentionDays;
+  core.int? retentionDays;
 
   /// The last update timestamp of the bucket.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   LogBucket();
 
@@ -9126,14 +8656,14 @@ class LogBucket {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (lifecycleState != null) 'lifecycleState': lifecycleState,
-        if (locked != null) 'locked': locked,
-        if (name != null) 'name': name,
-        if (retentionDays != null) 'retentionDays': retentionDays,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (lifecycleState != null) 'lifecycleState': lifecycleState!,
+        if (locked != null) 'locked': locked!,
+        if (name != null) 'name': name!,
+        if (retentionDays != null) 'retentionDays': retentionDays!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -9143,7 +8673,7 @@ class LogEntry {
   /// applicable.
   ///
   /// Optional.
-  HttpRequest httpRequest;
+  HttpRequest? httpRequest;
 
   /// A unique identifier for the log entry.
   ///
@@ -9156,14 +8686,14 @@ class LogEntry {
   /// log entries that have the same log_name and timestamp values.
   ///
   /// Optional.
-  core.String insertId;
+  core.String? insertId;
 
   /// The log entry payload, represented as a structure that is expressed as a
   /// JSON object.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> jsonPayload;
+  core.Map<core.String, core.Object>? jsonPayload;
 
   /// A set of user-defined (key, value) data that provides additional
   /// information about the log entry.Cloud Logging truncates label keys that
@@ -9174,7 +8704,7 @@ class LogEntry {
   /// string.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The resource name of the log to which this log entry belongs:
   /// "projects/\[PROJECT_ID\]/logs/\[LOG_ID\]"
@@ -9196,7 +8726,7 @@ class LogEntry {
   /// with a leading slash will never return any results.
   ///
   /// Required.
-  core.String logName;
+  core.String? logName;
 
   /// Additional metadata about the monitored resource.Only k8s_container,
   /// k8s_pod, and k8s_node MonitoredResources have this field populated for GKE
@@ -9209,13 +8739,13 @@ class LogEntry {
   /// be available in the log entry.
   ///
   /// Output only. Deprecated.
-  MonitoredResourceMetadata metadata;
+  MonitoredResourceMetadata? metadata;
 
   /// Information about an operation associated with the log entry, if
   /// applicable.
   ///
   /// Optional.
-  LogEntryOperation operation;
+  LogEntryOperation? operation;
 
   /// The log entry payload, represented as a protocol buffer.
   ///
@@ -9226,19 +8756,19 @@ class LogEntry {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> protoPayload;
+  core.Map<core.String, core.Object>? protoPayload;
 
   /// The time the log entry was received by Logging.
   ///
   /// Output only.
-  core.String receiveTimestamp;
+  core.String? receiveTimestamp;
 
   /// The monitored resource that produced this log entry.Example: a log entry
   /// that reports a database error would be associated with the monitored
   /// resource designating the particular database that reported the error.
   ///
   /// Required.
-  MonitoredResource resource;
+  MonitoredResource? resource;
 
   /// The severity of the log entry.
   ///
@@ -9258,22 +8788,22 @@ class LogEntry {
   /// outages.
   /// - "ALERT" : (700) A person must take an action immediately.
   /// - "EMERGENCY" : (800) One or more systems are unusable.
-  core.String severity;
+  core.String? severity;
 
   /// Source code location information associated with the log entry, if any.
   ///
   /// Optional.
-  LogEntrySourceLocation sourceLocation;
+  LogEntrySourceLocation? sourceLocation;
 
   /// The span ID within the trace associated with the log entry.For Trace
   /// spans, this is the same format that the Trace API v2 uses: a 16-character
   /// hexadecimal encoding of an 8-byte array, such as 000000000000004a.
   ///
   /// Optional.
-  core.String spanId;
+  core.String? spanId;
 
   /// The log entry payload, represented as a Unicode string (UTF-8).
-  core.String textPayload;
+  core.String? textPayload;
 
   /// The time the event described by the log entry occurred.
   ///
@@ -9288,7 +8818,7 @@ class LogEntry {
   /// those time boundaries aren't ingested by Logging.
   ///
   /// Optional.
-  core.String timestamp;
+  core.String? timestamp;
 
   /// Resource name of the trace associated with the log entry, if any.
   ///
@@ -9297,7 +8827,7 @@ class LogEntry {
   /// projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824
   ///
   /// Optional.
-  core.String trace;
+  core.String? trace;
 
   /// The sampling decision of the trace associated with the log entry.True
   /// means that the trace resource name in the trace field was sampled for
@@ -9309,7 +8839,7 @@ class LogEntry {
   /// identifier. The default is False.
   ///
   /// Optional.
-  core.bool traceSampled;
+  core.bool? traceSampled;
 
   LogEntry();
 
@@ -9392,24 +8922,24 @@ class LogEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (httpRequest != null) 'httpRequest': httpRequest.toJson(),
-        if (insertId != null) 'insertId': insertId,
-        if (jsonPayload != null) 'jsonPayload': jsonPayload,
-        if (labels != null) 'labels': labels,
-        if (logName != null) 'logName': logName,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (operation != null) 'operation': operation.toJson(),
-        if (protoPayload != null) 'protoPayload': protoPayload,
-        if (receiveTimestamp != null) 'receiveTimestamp': receiveTimestamp,
-        if (resource != null) 'resource': resource.toJson(),
-        if (severity != null) 'severity': severity,
-        if (sourceLocation != null) 'sourceLocation': sourceLocation.toJson(),
-        if (spanId != null) 'spanId': spanId,
-        if (textPayload != null) 'textPayload': textPayload,
-        if (timestamp != null) 'timestamp': timestamp,
-        if (trace != null) 'trace': trace,
-        if (traceSampled != null) 'traceSampled': traceSampled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (httpRequest != null) 'httpRequest': httpRequest!.toJson(),
+        if (insertId != null) 'insertId': insertId!,
+        if (jsonPayload != null) 'jsonPayload': jsonPayload!,
+        if (labels != null) 'labels': labels!,
+        if (logName != null) 'logName': logName!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (operation != null) 'operation': operation!.toJson(),
+        if (protoPayload != null) 'protoPayload': protoPayload!,
+        if (receiveTimestamp != null) 'receiveTimestamp': receiveTimestamp!,
+        if (resource != null) 'resource': resource!.toJson(),
+        if (severity != null) 'severity': severity!,
+        if (sourceLocation != null) 'sourceLocation': sourceLocation!.toJson(),
+        if (spanId != null) 'spanId': spanId!,
+        if (textPayload != null) 'textPayload': textPayload!,
+        if (timestamp != null) 'timestamp': timestamp!,
+        if (trace != null) 'trace': trace!,
+        if (traceSampled != null) 'traceSampled': traceSampled!,
       };
 }
 
@@ -9419,7 +8949,7 @@ class LogEntryOperation {
   /// Set this to True if this is the first log entry in the operation.
   ///
   /// Optional.
-  core.bool first;
+  core.bool? first;
 
   /// An arbitrary operation identifier.
   ///
@@ -9427,12 +8957,12 @@ class LogEntryOperation {
   /// operation.
   ///
   /// Optional.
-  core.String id;
+  core.String? id;
 
   /// Set this to True if this is the last log entry in the operation.
   ///
   /// Optional.
-  core.bool last;
+  core.bool? last;
 
   /// An arbitrary producer identifier.
   ///
@@ -9441,7 +8971,7 @@ class LogEntryOperation {
   /// "github.com/MyProject/MyApplication".
   ///
   /// Optional.
-  core.String producer;
+  core.String? producer;
 
   LogEntryOperation();
 
@@ -9460,11 +8990,11 @@ class LogEntryOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (first != null) 'first': first,
-        if (id != null) 'id': id,
-        if (last != null) 'last': last,
-        if (producer != null) 'producer': producer,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (first != null) 'first': first!,
+        if (id != null) 'id': id!,
+        if (last != null) 'last': last!,
+        if (producer != null) 'producer': producer!,
       };
 }
 
@@ -9477,7 +9007,7 @@ class LogEntrySourceLocation {
   /// fully-qualified name.
   ///
   /// Optional.
-  core.String file;
+  core.String? file;
 
   /// Human-readable name of the function or method being invoked, with optional
   /// context such as the class or package name.
@@ -9488,14 +9018,14 @@ class LogEntrySourceLocation {
   /// function (Python).
   ///
   /// Optional.
-  core.String function;
+  core.String? function;
 
   /// Line within the source file.
   ///
   /// 1-based; 0 indicates no line number available.
   ///
   /// Optional.
-  core.String line;
+  core.String? line;
 
   LogEntrySourceLocation();
 
@@ -9511,10 +9041,10 @@ class LogEntrySourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (file != null) 'file': file,
-        if (function != null) 'function': function,
-        if (line != null) 'line': line,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (file != null) 'file': file!,
+        if (function != null) 'function': function!,
+        if (line != null) 'line': line!,
       };
 }
 
@@ -9530,12 +9060,12 @@ class LogExclusion {
   /// older exclusions.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// A description of this exclusion.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// If set to True, then this exclusion is disabled and it does not exclude
   /// any log entries.
@@ -9543,7 +9073,7 @@ class LogExclusion {
   /// You can update an exclusion to change the value of this field.
   ///
   /// Optional.
-  core.bool disabled;
+  core.bool? disabled;
 
   /// An advanced logs filter
   /// (https://cloud.google.com/logging/docs/view/advanced-queries) that matches
@@ -9557,7 +9087,7 @@ class LogExclusion {
   /// 0.99)"
   ///
   /// Required.
-  core.String filter;
+  core.String? filter;
 
   /// A client-assigned identifier, such as "load-balancer-exclusion".
   ///
@@ -9566,13 +9096,13 @@ class LogExclusion {
   /// alphanumeric.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The last update timestamp of the exclusion.This field may not be present
   /// for older exclusions.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   LogExclusion();
 
@@ -9597,20 +9127,20 @@ class LogExclusion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (disabled != null) 'disabled': disabled,
-        if (filter != null) 'filter': filter,
-        if (name != null) 'name': name,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (disabled != null) 'disabled': disabled!,
+        if (filter != null) 'filter': filter!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// Application log line emitted while processing a request.
 class LogLine {
   /// App-provided log message.
-  core.String logMessage;
+  core.String? logMessage;
 
   /// Severity of this log entry.
   /// Possible string values are:
@@ -9626,13 +9156,13 @@ class LogLine {
   /// outages.
   /// - "ALERT" : (700) A person must take an action immediately.
   /// - "EMERGENCY" : (800) One or more systems are unusable.
-  core.String severity;
+  core.String? severity;
 
   /// Where in the source code this log message was written.
-  SourceLocation sourceLocation;
+  SourceLocation? sourceLocation;
 
   /// Approximate time when this log entry was made.
-  core.String time;
+  core.String? time;
 
   LogLine();
 
@@ -9652,11 +9182,11 @@ class LogLine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (logMessage != null) 'logMessage': logMessage,
-        if (severity != null) 'severity': severity,
-        if (sourceLocation != null) 'sourceLocation': sourceLocation.toJson(),
-        if (time != null) 'time': time,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (logMessage != null) 'logMessage': logMessage!,
+        if (severity != null) 'severity': severity!,
+        if (sourceLocation != null) 'sourceLocation': sourceLocation!.toJson(),
+        if (time != null) 'time': time!,
       };
 }
 
@@ -9673,20 +9203,20 @@ class LogMetric {
   /// create a histogram of the extracted values.
   ///
   /// Optional.
-  BucketOptions bucketOptions;
+  BucketOptions? bucketOptions;
 
   /// The creation timestamp of the metric.This field may not be present for
   /// older metrics.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// A description of this metric, which is used in documentation.
   ///
   /// The maximum length of the description is 8000 characters.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// An advanced logs filter
   /// (https://cloud.google.com/logging/docs/view/advanced_filters) which is
@@ -9696,7 +9226,7 @@ class LogMetric {
   /// the filter is 20000 characters.
   ///
   /// Required.
-  core.String filter;
+  core.String? filter;
 
   /// A map from a label key string to an extractor expression which is used to
   /// extract data from a log entry field and assign as the label value.
@@ -9712,7 +9242,7 @@ class LogMetric {
   /// series that are allowed in a project.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labelExtractors;
+  core.Map<core.String, core.String>? labelExtractors;
 
   /// The metric descriptor associated with the logs-based metric.
   ///
@@ -9731,7 +9261,7 @@ class LogMetric {
   /// but existing labels cannot be modified except for their description.
   ///
   /// Optional.
-  MetricDescriptor metricDescriptor;
+  MetricDescriptor? metricDescriptor;
 
   /// The client-assigned metric identifier.
   ///
@@ -9746,13 +9276,13 @@ class LogMetric {
   /// Example: "projects/my-project/metrics/nginx%2Frequests".
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The last update timestamp of the metric.This field may not be present for
   /// older metrics.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// A value_extractor is required when using a distribution logs-based metric
   /// to extract the values to record from a log entry.
@@ -9772,7 +9302,7 @@ class LogMetric {
   /// ".*quantity=(\d+).*")
   ///
   /// Optional.
-  core.String valueExtractor;
+  core.String? valueExtractor;
 
   /// The API version that created or updated this metric.
   ///
@@ -9782,7 +9312,7 @@ class LogMetric {
   /// Possible string values are:
   /// - "V2" : Logging API v2.
   /// - "V1" : Logging API v1.
-  core.String version;
+  core.String? version;
 
   LogMetric();
 
@@ -9828,18 +9358,18 @@ class LogMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bucketOptions != null) 'bucketOptions': bucketOptions.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (filter != null) 'filter': filter,
-        if (labelExtractors != null) 'labelExtractors': labelExtractors,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bucketOptions != null) 'bucketOptions': bucketOptions!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (filter != null) 'filter': filter!,
+        if (labelExtractors != null) 'labelExtractors': labelExtractors!,
         if (metricDescriptor != null)
-          'metricDescriptor': metricDescriptor.toJson(),
-        if (name != null) 'name': name,
-        if (updateTime != null) 'updateTime': updateTime,
-        if (valueExtractor != null) 'valueExtractor': valueExtractor,
-        if (version != null) 'version': version,
+          'metricDescriptor': metricDescriptor!.toJson(),
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (valueExtractor != null) 'valueExtractor': valueExtractor!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -9853,20 +9383,20 @@ class LogSink {
   /// Options that affect sinks exporting data to BigQuery.
   ///
   /// Optional.
-  BigQueryOptions bigqueryOptions;
+  BigQueryOptions? bigqueryOptions;
 
   /// The creation timestamp of the sink.This field may not be present for older
   /// sinks.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// A description of this sink.
   ///
   /// The maximum length of the description is 8000 characters.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// The export destination: "storage.googleapis.com/\[GCS_BUCKET\]"
   /// "bigquery.googleapis.com/projects/\[PROJECT_ID\]/datasets/\[DATASET\]"
@@ -9878,13 +9408,13 @@ class LogSink {
   /// (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
   ///
   /// Required.
-  core.String destination;
+  core.String? destination;
 
   /// If set to True, then this sink is disabled and it does not export any log
   /// entries.
   ///
   /// Optional.
-  core.bool disabled;
+  core.bool? disabled;
 
   /// Log entries that match any of the exclusion filters will not be exported.
   ///
@@ -9892,7 +9422,7 @@ class LogSink {
   /// will not be exported.
   ///
   /// Optional.
-  core.List<LogExclusion> exclusions;
+  core.List<LogExclusion>? exclusions;
 
   /// An advanced logs filter
   /// (https://cloud.google.com/logging/docs/view/advanced-queries).
@@ -9902,7 +9432,7 @@ class LogSink {
   /// logName="projects/\[PROJECT_ID\]/logs/\[LOG_ID\]" AND severity>=ERROR
   ///
   /// Optional.
-  core.String filter;
+  core.String? filter;
 
   /// This field applies only to sinks owned by organizations and folders.
   ///
@@ -9919,7 +9449,7 @@ class LogSink {
   /// resource.type=gce_instance
   ///
   /// Optional.
-  core.bool includeChildren;
+  core.bool? includeChildren;
 
   /// The client-assigned sink identifier, unique within the project.
   ///
@@ -9929,7 +9459,7 @@ class LogSink {
   /// First character has to be alphanumeric.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// This field is unused.
   ///
@@ -9939,13 +9469,13 @@ class LogSink {
   /// default to V2.
   /// - "V2" : LogEntry version 2 format.
   /// - "V1" : LogEntry version 1 format.
-  core.String outputVersionFormat;
+  core.String? outputVersionFormat;
 
   /// The last update timestamp of the sink.This field may not be present for
   /// older sinks.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// An IAM identity—a service account or group—under which Logging writes the
   /// exported log entries to the sink's destination.
@@ -9959,7 +9489,7 @@ class LogSink {
   /// appropriate IAM roles to assign to the identity.
   ///
   /// Output only.
-  core.String writerIdentity;
+  core.String? writerIdentity;
 
   LogSink();
 
@@ -10006,22 +9536,22 @@ class LogSink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bigqueryOptions != null)
-          'bigqueryOptions': bigqueryOptions.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (destination != null) 'destination': destination,
-        if (disabled != null) 'disabled': disabled,
+          'bigqueryOptions': bigqueryOptions!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (destination != null) 'destination': destination!,
+        if (disabled != null) 'disabled': disabled!,
         if (exclusions != null)
-          'exclusions': exclusions.map((value) => value.toJson()).toList(),
-        if (filter != null) 'filter': filter,
-        if (includeChildren != null) 'includeChildren': includeChildren,
-        if (name != null) 'name': name,
+          'exclusions': exclusions!.map((value) => value.toJson()).toList(),
+        if (filter != null) 'filter': filter!,
+        if (includeChildren != null) 'includeChildren': includeChildren!,
+        if (name != null) 'name': name!,
         if (outputVersionFormat != null)
-          'outputVersionFormat': outputVersionFormat,
-        if (updateTime != null) 'updateTime': updateTime,
-        if (writerIdentity != null) 'writerIdentity': writerIdentity,
+          'outputVersionFormat': outputVersionFormat!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (writerIdentity != null) 'writerIdentity': writerIdentity!,
       };
 }
 
@@ -10030,10 +9560,10 @@ class LogView {
   /// The creation timestamp of the view.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Describes this view.
-  core.String description;
+  core.String? description;
 
   /// Filter that restricts which log entries in a bucket are visible in this
   /// view.
@@ -10042,18 +9572,18 @@ class LogView {
   /// following: originating project/folder/organization/billing account.
   /// resource type log id Example: SOURCE("projects/myproject") AND
   /// resource.type = "gce_instance" AND LOG_ID("stdout")
-  core.String filter;
+  core.String? filter;
 
   /// The resource name of the view.
   ///
   /// For example
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
-  core.String name;
+  core.String? name;
 
   /// The last update timestamp of the view.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   LogView();
 
@@ -10075,12 +9605,12 @@ class LogView {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (filter != null) 'filter': filter,
-        if (name != null) 'name': name,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (filter != null) 'filter': filter!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -10090,14 +9620,14 @@ class LogView {
 /// collection and makes the metric type's existing data unusable.
 class MetricDescriptor {
   /// A detailed description of the metric, which can be used in documentation.
-  core.String description;
+  core.String? description;
 
   /// A concise name for the metric, which can be displayed in user interfaces.
   ///
   /// Use sentence case without an ending period, for example "Request count".
   /// This field is optional but it is recommended to be set for any metrics
   /// associated with user-visible concepts, such as Quota.
-  core.String displayName;
+  core.String? displayName;
 
   /// The set of labels that can be used to describe a specific instance of this
   /// metric type.
@@ -10106,7 +9636,7 @@ class MetricDescriptor {
   /// metric type has a label for the HTTP response code, response_code, so you
   /// can look at latencies for successful responses or just for responses that
   /// failed.
-  core.List<LabelDescriptor> labels;
+  core.List<LabelDescriptor>? labels;
 
   /// The launch stage of the metric definition.
   ///
@@ -10143,12 +9673,12 @@ class MetricDescriptor {
   /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
   /// Platform Subject to the Deprecation Policy
   /// (https://cloud.google.com/terms/deprecation) documentation.
-  core.String launchStage;
+  core.String? launchStage;
 
   /// Metadata which can be used to guide usage of the metric.
   ///
   /// Optional.
-  MetricDescriptorMetadata metadata;
+  MetricDescriptorMetadata? metadata;
 
   /// Whether the metric records instantaneous values, changes to a value, etc.
   ///
@@ -10161,7 +9691,7 @@ class MetricDescriptor {
   /// measurements in a time series should have the same start time and
   /// increasing end times, until an event resets the cumulative value to zero
   /// and sets a new start time for the following points.
-  core.String metricKind;
+  core.String? metricKind;
 
   /// Read-only.
   ///
@@ -10169,10 +9699,10 @@ class MetricDescriptor {
   /// type and a MonitoredResourceDescriptor, that is associated with this
   /// metric type can only be associated with one of the monitored resource
   /// types listed here.
-  core.List<core.String> monitoredResourceTypes;
+  core.List<core.String>? monitoredResourceTypes;
 
   /// The resource name of the metric descriptor.
-  core.String name;
+  core.String? name;
 
   /// The metric type, including its DNS name prefix.
   ///
@@ -10182,7 +9712,7 @@ class MetricDescriptor {
   /// "custom.googleapis.com/invoice/paid/amount"
   /// "external.googleapis.com/prometheus/up"
   /// "appengine.googleapis.com/http/server/response_latencies"
-  core.String type;
+  core.String? type;
 
   /// The units in which the metric value is reported.
   ///
@@ -10232,7 +9762,7 @@ class MetricDescriptor {
   /// indicates a metric contains a ratio, typically in the range 0..1, that
   /// will be multiplied by 100 and displayed as a percentage (so a metric value
   /// 0.03 means "3 percent").
-  core.String unit;
+  core.String? unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc.
   ///
@@ -10247,7 +9777,7 @@ class MetricDescriptor {
   /// if the metric kind is GAUGE.
   /// - "DISTRIBUTION" : The value is a Distribution.
   /// - "MONEY" : The value is money.
-  core.String valueType;
+  core.String? valueType;
 
   MetricDescriptor();
 
@@ -10293,20 +9823,20 @@ class MetricDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (labels != null)
-          'labels': labels.map((value) => value.toJson()).toList(),
-        if (launchStage != null) 'launchStage': launchStage,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (metricKind != null) 'metricKind': metricKind,
+          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (metricKind != null) 'metricKind': metricKind!,
         if (monitoredResourceTypes != null)
-          'monitoredResourceTypes': monitoredResourceTypes,
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
-        if (unit != null) 'unit': unit,
-        if (valueType != null) 'valueType': valueType,
+          'monitoredResourceTypes': monitoredResourceTypes!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+        if (unit != null) 'unit': unit!,
+        if (valueType != null) 'valueType': valueType!,
       };
 }
 
@@ -10316,7 +9846,7 @@ class MetricDescriptorMetadata {
   ///
   /// Data points older than this age are guaranteed to be ingested and
   /// available to be read, excluding data loss due to errors.
-  core.String ingestDelay;
+  core.String? ingestDelay;
 
   /// Must use the MetricDescriptor.launch_stage instead.
   ///
@@ -10353,14 +9883,14 @@ class MetricDescriptorMetadata {
   /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
   /// Platform Subject to the Deprecation Policy
   /// (https://cloud.google.com/terms/deprecation) documentation.
-  core.String launchStage;
+  core.String? launchStage;
 
   /// The sampling period of metric data points.
   ///
   /// For metrics which are written periodically, consecutive data points are
   /// stored at this time interval, excluding data loss due to errors. Metrics
   /// with a higher granularity have a smaller sampling period.
-  core.String samplePeriod;
+  core.String? samplePeriod;
 
   MetricDescriptorMetadata();
 
@@ -10376,10 +9906,10 @@ class MetricDescriptorMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ingestDelay != null) 'ingestDelay': ingestDelay,
-        if (launchStage != null) 'launchStage': launchStage,
-        if (samplePeriod != null) 'samplePeriod': samplePeriod,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ingestDelay != null) 'ingestDelay': ingestDelay!,
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (samplePeriod != null) 'samplePeriod': samplePeriod!,
       };
 }
 
@@ -10403,7 +9933,7 @@ class MonitoredResource {
   /// "instance_id", and "zone".
   ///
   /// Required.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The monitored resource type.
   ///
@@ -10412,7 +9942,7 @@ class MonitoredResource {
   /// gce_instance.
   ///
   /// Required.
-  core.String type;
+  core.String? type;
 
   MonitoredResource();
 
@@ -10431,9 +9961,9 @@ class MonitoredResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -10450,7 +9980,7 @@ class MonitoredResourceDescriptor {
   /// in documentation.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// A concise name for the monitored resource type that might be displayed in
   /// user interfaces.
@@ -10459,7 +9989,7 @@ class MonitoredResourceDescriptor {
   /// determiners. For example, "Google Cloud SQL Database".
   ///
   /// Optional.
-  core.String displayName;
+  core.String? displayName;
 
   /// A set of labels used to describe instances of this monitored resource
   /// type.
@@ -10468,7 +9998,7 @@ class MonitoredResourceDescriptor {
   /// values for the labels "database_id" and "zone".
   ///
   /// Required.
-  core.List<LabelDescriptor> labels;
+  core.List<LabelDescriptor>? labels;
 
   /// The launch stage of the monitored resource definition.
   ///
@@ -10505,7 +10035,7 @@ class MonitoredResourceDescriptor {
   /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
   /// Platform Subject to the Deprecation Policy
   /// (https://cloud.google.com/terms/deprecation) documentation.
-  core.String launchStage;
+  core.String? launchStage;
 
   /// The resource name of the monitored resource descriptor:
   /// "projects/{project_id}/monitoredResourceDescriptors/{type}" where {type}
@@ -10516,7 +10046,7 @@ class MonitoredResourceDescriptor {
   /// "monitoredResourceDescriptors/{type}".
   ///
   /// Optional.
-  core.String name;
+  core.String? name;
 
   /// The monitored resource type.
   ///
@@ -10524,7 +10054,7 @@ class MonitoredResourceDescriptor {
   /// Cloud SQL.
   ///
   /// Required.
-  core.String type;
+  core.String? type;
 
   MonitoredResourceDescriptor();
 
@@ -10552,14 +10082,14 @@ class MonitoredResourceDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (labels != null)
-          'labels': labels.map((value) => value.toJson()).toList(),
-        if (launchStage != null) 'launchStage': launchStage,
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -10583,12 +10113,12 @@ class MonitoredResourceMetadata {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> systemLabels;
+  core.Map<core.String, core.Object>? systemLabels;
 
   /// A map of user-defined metadata labels.
   ///
   /// Output only.
-  core.Map<core.String, core.String> userLabels;
+  core.Map<core.String, core.String>? userLabels;
 
   MonitoredResourceMetadata();
 
@@ -10615,9 +10145,9 @@ class MonitoredResourceMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (systemLabels != null) 'systemLabels': systemLabels,
-        if (userLabels != null) 'userLabels': userLabels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (systemLabels != null) 'systemLabels': systemLabels!,
+        if (userLabels != null) 'userLabels': userLabels!,
       };
 }
 
@@ -10625,62 +10155,62 @@ class MonitoredResourceMetadata {
 /// application.
 class RequestLog {
   /// App Engine release version.
-  core.String appEngineRelease;
+  core.String? appEngineRelease;
 
   /// Application that handled this request.
-  core.String appId;
+  core.String? appId;
 
   /// An indication of the relative cost of serving this request.
-  core.double cost;
+  core.double? cost;
 
   /// Time when the request finished.
-  core.String endTime;
+  core.String? endTime;
 
   /// Whether this request is finished or active.
-  core.bool finished;
+  core.bool? finished;
 
   /// Whether this is the first RequestLog entry for this request.
   ///
   /// If an active request has several RequestLog entries written to Stackdriver
   /// Logging, then this field will be set for one of them.
-  core.bool first;
+  core.bool? first;
 
   /// Internet host and port number of the resource being requested.
-  core.String host;
+  core.String? host;
 
   /// HTTP version of request.
   ///
   /// Example: "HTTP/1.1".
-  core.String httpVersion;
+  core.String? httpVersion;
 
   /// An identifier for the instance that handled the request.
-  core.String instanceId;
+  core.String? instanceId;
 
   /// If the instance processing this request belongs to a manually scaled
   /// module, then this is the 0-based index of the instance.
   ///
   /// Otherwise, this value is -1.
-  core.int instanceIndex;
+  core.int? instanceIndex;
 
   /// Origin IP address.
-  core.String ip;
+  core.String? ip;
 
   /// Latency of the request.
-  core.String latency;
+  core.String? latency;
 
   /// A list of log lines emitted by the application while serving this request.
-  core.List<LogLine> line;
+  core.List<LogLine>? line;
 
   /// Number of CPU megacycles used to process request.
-  core.String megaCycles;
+  core.String? megaCycles;
 
   /// Request method.
   ///
   /// Example: "GET", "HEAD", "PUT", "POST", "DELETE".
-  core.String method;
+  core.String? method;
 
   /// Module of the application that handled this request.
-  core.String moduleId;
+  core.String? moduleId;
 
   /// The logged-in user who made the request.Most likely, this is the part of
   /// the user's email before the @ sign.
@@ -10689,69 +10219,69 @@ class RequestLog {
   /// different users can have similar names. This information is also available
   /// to the application via the App Engine Users API.This field will be
   /// populated starting with App Engine 1.9.21.
-  core.String nickname;
+  core.String? nickname;
 
   /// Time this request spent in the pending request queue.
-  core.String pendingTime;
+  core.String? pendingTime;
 
   /// Referrer URL of request.
-  core.String referrer;
+  core.String? referrer;
 
   /// Globally unique identifier for a request, which is based on the request
   /// start time.
   ///
   /// Request IDs for requests which started later will compare greater as
   /// strings than those for requests which started earlier.
-  core.String requestId;
+  core.String? requestId;
 
   /// Contains the path and query portion of the URL that was requested.
   ///
   /// For example, if the URL was "http://example.com/app?name=val", the
   /// resource would be "/app?name=val". The fragment identifier, which is
   /// identified by the # character, is not included.
-  core.String resource;
+  core.String? resource;
 
   /// Size in bytes sent back to client by request.
-  core.String responseSize;
+  core.String? responseSize;
 
   /// Source code for the application that handled this request.
   ///
   /// There can be more than one source reference per deployed application if
   /// source code is distributed among multiple repositories.
-  core.List<SourceReference> sourceReference;
+  core.List<SourceReference>? sourceReference;
 
   /// Time when the request started.
-  core.String startTime;
+  core.String? startTime;
 
   /// HTTP response status code.
   ///
   /// Example: 200, 404.
-  core.int status;
+  core.int? status;
 
   /// Task name of the request, in the case of an offline request.
-  core.String taskName;
+  core.String? taskName;
 
   /// Queue name of the request, in the case of an offline request.
-  core.String taskQueueName;
+  core.String? taskQueueName;
 
   /// Stackdriver Trace identifier for this request.
-  core.String traceId;
+  core.String? traceId;
 
   /// If true, the value in the 'trace_id' field was sampled for storage in a
   /// trace backend.
-  core.bool traceSampled;
+  core.bool? traceSampled;
 
   /// File or class that handled the request.
-  core.String urlMapEntry;
+  core.String? urlMapEntry;
 
   /// User agent that made the request.
-  core.String userAgent;
+  core.String? userAgent;
 
   /// Version of the application that handled this request.
-  core.String versionId;
+  core.String? versionId;
 
   /// Whether this was a loading request for the instance.
-  core.bool wasLoadingRequest;
+  core.bool? wasLoadingRequest;
 
   RequestLog();
 
@@ -10863,42 +10393,42 @@ class RequestLog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appEngineRelease != null) 'appEngineRelease': appEngineRelease,
-        if (appId != null) 'appId': appId,
-        if (cost != null) 'cost': cost,
-        if (endTime != null) 'endTime': endTime,
-        if (finished != null) 'finished': finished,
-        if (first != null) 'first': first,
-        if (host != null) 'host': host,
-        if (httpVersion != null) 'httpVersion': httpVersion,
-        if (instanceId != null) 'instanceId': instanceId,
-        if (instanceIndex != null) 'instanceIndex': instanceIndex,
-        if (ip != null) 'ip': ip,
-        if (latency != null) 'latency': latency,
-        if (line != null) 'line': line.map((value) => value.toJson()).toList(),
-        if (megaCycles != null) 'megaCycles': megaCycles,
-        if (method != null) 'method': method,
-        if (moduleId != null) 'moduleId': moduleId,
-        if (nickname != null) 'nickname': nickname,
-        if (pendingTime != null) 'pendingTime': pendingTime,
-        if (referrer != null) 'referrer': referrer,
-        if (requestId != null) 'requestId': requestId,
-        if (resource != null) 'resource': resource,
-        if (responseSize != null) 'responseSize': responseSize,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appEngineRelease != null) 'appEngineRelease': appEngineRelease!,
+        if (appId != null) 'appId': appId!,
+        if (cost != null) 'cost': cost!,
+        if (endTime != null) 'endTime': endTime!,
+        if (finished != null) 'finished': finished!,
+        if (first != null) 'first': first!,
+        if (host != null) 'host': host!,
+        if (httpVersion != null) 'httpVersion': httpVersion!,
+        if (instanceId != null) 'instanceId': instanceId!,
+        if (instanceIndex != null) 'instanceIndex': instanceIndex!,
+        if (ip != null) 'ip': ip!,
+        if (latency != null) 'latency': latency!,
+        if (line != null) 'line': line!.map((value) => value.toJson()).toList(),
+        if (megaCycles != null) 'megaCycles': megaCycles!,
+        if (method != null) 'method': method!,
+        if (moduleId != null) 'moduleId': moduleId!,
+        if (nickname != null) 'nickname': nickname!,
+        if (pendingTime != null) 'pendingTime': pendingTime!,
+        if (referrer != null) 'referrer': referrer!,
+        if (requestId != null) 'requestId': requestId!,
+        if (resource != null) 'resource': resource!,
+        if (responseSize != null) 'responseSize': responseSize!,
         if (sourceReference != null)
           'sourceReference':
-              sourceReference.map((value) => value.toJson()).toList(),
-        if (startTime != null) 'startTime': startTime,
-        if (status != null) 'status': status,
-        if (taskName != null) 'taskName': taskName,
-        if (taskQueueName != null) 'taskQueueName': taskQueueName,
-        if (traceId != null) 'traceId': traceId,
-        if (traceSampled != null) 'traceSampled': traceSampled,
-        if (urlMapEntry != null) 'urlMapEntry': urlMapEntry,
-        if (userAgent != null) 'userAgent': userAgent,
-        if (versionId != null) 'versionId': versionId,
-        if (wasLoadingRequest != null) 'wasLoadingRequest': wasLoadingRequest,
+              sourceReference!.map((value) => value.toJson()).toList(),
+        if (startTime != null) 'startTime': startTime!,
+        if (status != null) 'status': status!,
+        if (taskName != null) 'taskName': taskName!,
+        if (taskQueueName != null) 'taskQueueName': taskQueueName!,
+        if (traceId != null) 'traceId': traceId!,
+        if (traceSampled != null) 'traceSampled': traceSampled!,
+        if (urlMapEntry != null) 'urlMapEntry': urlMapEntry!,
+        if (userAgent != null) 'userAgent': userAgent!,
+        if (versionId != null) 'versionId': versionId!,
+        if (wasLoadingRequest != null) 'wasLoadingRequest': wasLoadingRequest!,
       };
 }
 
@@ -10908,7 +10438,7 @@ class SourceLocation {
   ///
   /// Depending on the runtime environment, this might be a simple name or a
   /// fully-qualified name.
-  core.String file;
+  core.String? file;
 
   /// Human-readable name of the function or method being invoked, with optional
   /// context such as the class or package name.
@@ -10917,10 +10447,10 @@ class SourceLocation {
   /// and line number are less meaningful. The format can vary by language. For
   /// example: qual.if.ied.Class.method (Java), dir/package.func (Go), function
   /// (Python).
-  core.String functionName;
+  core.String? functionName;
 
   /// Line within the source file.
-  core.String line;
+  core.String? line;
 
   SourceLocation();
 
@@ -10936,10 +10466,10 @@ class SourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (file != null) 'file': file,
-        if (functionName != null) 'functionName': functionName,
-        if (line != null) 'line': line,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (file != null) 'file': file!,
+        if (functionName != null) 'functionName': functionName!,
+        if (line != null) 'line': line!,
       };
 }
 
@@ -10951,12 +10481,12 @@ class SourceReference {
   /// Example: "https://github.com/GoogleCloudPlatform/kubernetes.git"
   ///
   /// Optional.
-  core.String repository;
+  core.String? repository;
 
   /// The canonical and persistent identifier of the deployed revision.
   ///
   /// Example (git): "0035781c50ec7aa23385dc841529ce8a4b70db1b"
-  core.String revisionId;
+  core.String? revisionId;
 
   SourceReference();
 
@@ -10969,9 +10499,9 @@ class SourceReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (repository != null) 'repository': repository,
-        if (revisionId != null) 'revisionId': revisionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (repository != null) 'repository': repository!,
+        if (revisionId != null) 'revisionId': revisionId!,
       };
 }
 
@@ -10986,10 +10516,10 @@ class SuppressionInfo {
   /// (https://cloud.google.com/logging/quotas#api-limits).
   /// - "NOT_CONSUMED" : Indicates suppression occurred due to the client not
   /// consuming responses quickly enough.
-  core.String reason;
+  core.String? reason;
 
   /// A lower bound on the count of entries omitted due to reason.
-  core.int suppressedCount;
+  core.int? suppressedCount;
 
   SuppressionInfo();
 
@@ -11002,9 +10532,9 @@ class SuppressionInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (reason != null) 'reason': reason,
-        if (suppressedCount != null) 'suppressedCount': suppressedCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (reason != null) 'reason': reason!,
+        if (suppressedCount != null) 'suppressedCount': suppressedCount!,
       };
 }
 
@@ -11017,7 +10547,7 @@ class TailLogEntriesRequest {
   /// milliseconds.
   ///
   /// Optional.
-  core.String bufferWindow;
+  core.String? bufferWindow;
 
   /// A filter that chooses which log entries to return.
   ///
@@ -11029,7 +10559,7 @@ class TailLogEntriesRequest {
   /// return no results. The maximum length of the filter is 20000 characters.
   ///
   /// Optional.
-  core.String filter;
+  core.String? filter;
 
   /// Name of a parent resource from which to retrieve log entries:
   /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
@@ -11041,7 +10571,7 @@ class TailLogEntriesRequest {
   /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/views/VIEW_ID"
   ///
   /// Required.
-  core.List<core.String> resourceNames;
+  core.List<core.String>? resourceNames;
 
   TailLogEntriesRequest();
 
@@ -11059,10 +10589,10 @@ class TailLogEntriesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bufferWindow != null) 'bufferWindow': bufferWindow,
-        if (filter != null) 'filter': filter,
-        if (resourceNames != null) 'resourceNames': resourceNames,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bufferWindow != null) 'bufferWindow': bufferWindow!,
+        if (filter != null) 'filter': filter!,
+        if (resourceNames != null) 'resourceNames': resourceNames!,
       };
 }
 
@@ -11072,7 +10602,7 @@ class TailLogEntriesResponse {
   ///
   /// Each response in the stream will order entries with increasing values of
   /// LogEntry.timestamp. Ordering is not guaranteed between separate responses.
-  core.List<LogEntry> entries;
+  core.List<LogEntry>? entries;
 
   /// If entries that otherwise would have been included in the session were not
   /// sent back to the client, counts of relevant entries omitted from the
@@ -11081,7 +10611,7 @@ class TailLogEntriesResponse {
   /// There will be at most one of each reason per response. The counts
   /// represent the number of suppressed entries since the last streamed
   /// response.
-  core.List<SuppressionInfo> suppressionInfo;
+  core.List<SuppressionInfo>? suppressionInfo;
 
   TailLogEntriesResponse();
 
@@ -11100,12 +10630,12 @@ class TailLogEntriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
         if (suppressionInfo != null)
           'suppressionInfo':
-              suppressionInfo.map((value) => value.toJson()).toList(),
+              suppressionInfo!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -11117,7 +10647,7 @@ class UndeleteBucketRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The parameters to WriteLogEntries.
@@ -11129,7 +10659,7 @@ class WriteLogEntriesRequest {
   /// before sending valuable data.
   ///
   /// Optional.
-  core.bool dryRun;
+  core.bool? dryRun;
 
   /// The log entries to send to Logging.
   ///
@@ -11153,7 +10683,7 @@ class WriteLogEntriesRequest {
   /// rather than calling this method for each individual log entry.
   ///
   /// Required.
-  core.List<LogEntry> entries;
+  core.List<LogEntry>? entries;
 
   /// Default labels that are added to the labels field of all log entries in
   /// entries.
@@ -11162,7 +10692,7 @@ class WriteLogEntriesRequest {
   /// parameter, then the log entry's label is not changed. See LogEntry.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// A default log resource name that is assigned to all log entries in entries
   /// that do not specify a value for log_name:
@@ -11179,7 +10709,7 @@ class WriteLogEntriesRequest {
   /// log entry.
   ///
   /// Optional.
-  core.String logName;
+  core.String? logName;
 
   /// Whether valid entries should be written even if some other entries fail
   /// due to INVALID_ARGUMENT or PERMISSION_DENIED errors.
@@ -11190,7 +10720,7 @@ class WriteLogEntriesRequest {
   /// method.
   ///
   /// Optional.
-  core.bool partialSuccess;
+  core.bool? partialSuccess;
 
   /// A default monitored resource object that is assigned to all log entries in
   /// entries that do not specify a value for resource.
@@ -11199,7 +10729,7 @@ class WriteLogEntriesRequest {
   /// "instance_id": "00000000000000000000" }} See LogEntry.
   ///
   /// Optional.
-  MonitoredResource resource;
+  MonitoredResource? resource;
 
   WriteLogEntriesRequest();
 
@@ -11234,14 +10764,14 @@ class WriteLogEntriesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dryRun != null) 'dryRun': dryRun,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dryRun != null) 'dryRun': dryRun!,
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (labels != null) 'labels': labels,
-        if (logName != null) 'logName': logName,
-        if (partialSuccess != null) 'partialSuccess': partialSuccess,
-        if (resource != null) 'resource': resource.toJson(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels!,
+        if (logName != null) 'logName': logName!,
+        if (partialSuccess != null) 'partialSuccess': partialSuccess!,
+        if (resource != null) 'resource': resource!.toJson(),
       };
 }
 
@@ -11253,5 +10783,5 @@ class WriteLogEntriesResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }

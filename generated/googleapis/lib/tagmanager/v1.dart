@@ -120,11 +120,8 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<Account> get(
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -155,7 +152,7 @@ class AccountsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAccountsResponse> list({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -196,14 +193,10 @@ class AccountsResource {
   async.Future<Account> update(
     Account request,
     core.String accountId, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -266,13 +259,9 @@ class AccountsContainersResource {
   async.Future<Container> create(
     Container request,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -309,14 +298,8 @@ class AccountsContainersResource {
   async.Future<void> delete(
     core.String accountId,
     core.String containerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -355,14 +338,8 @@ class AccountsContainersResource {
   async.Future<Container> get(
     core.String accountId,
     core.String containerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -398,11 +375,8 @@ class AccountsContainersResource {
   /// this method will complete with the same error.
   async.Future<ListContainersResponse> list(
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -447,17 +421,10 @@ class AccountsContainersResource {
     Container request,
     core.String accountId,
     core.String containerId, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -508,16 +475,9 @@ class AccountsContainersEnvironmentsResource {
     Environment request,
     core.String accountId,
     core.String containerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -560,17 +520,8 @@ class AccountsContainersEnvironmentsResource {
     core.String accountId,
     core.String containerId,
     core.String environmentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (environmentId == null) {
-      throw core.ArgumentError('Parameter environmentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -614,17 +565,8 @@ class AccountsContainersEnvironmentsResource {
     core.String accountId,
     core.String containerId,
     core.String environmentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (environmentId == null) {
-      throw core.ArgumentError('Parameter environmentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -666,14 +608,8 @@ class AccountsContainersEnvironmentsResource {
   async.Future<ListEnvironmentsResponse> list(
     core.String accountId,
     core.String containerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -723,20 +659,10 @@ class AccountsContainersEnvironmentsResource {
     core.String accountId,
     core.String containerId,
     core.String environmentId, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (environmentId == null) {
-      throw core.ArgumentError('Parameter environmentId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -793,16 +719,9 @@ class AccountsContainersFoldersResource {
     Folder request,
     core.String accountId,
     core.String containerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -844,17 +763,8 @@ class AccountsContainersFoldersResource {
     core.String accountId,
     core.String containerId,
     core.String folderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (folderId == null) {
-      throw core.ArgumentError('Parameter folderId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -898,17 +808,8 @@ class AccountsContainersFoldersResource {
     core.String accountId,
     core.String containerId,
     core.String folderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (folderId == null) {
-      throw core.ArgumentError('Parameter folderId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -949,14 +850,8 @@ class AccountsContainersFoldersResource {
   async.Future<ListFoldersResponse> list(
     core.String accountId,
     core.String containerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1006,20 +901,10 @@ class AccountsContainersFoldersResource {
     core.String accountId,
     core.String containerId,
     core.String folderId, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (folderId == null) {
-      throw core.ArgumentError('Parameter folderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -1072,17 +957,8 @@ class AccountsContainersFoldersEntitiesResource {
     core.String accountId,
     core.String containerId,
     core.String folderId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (folderId == null) {
-      throw core.ArgumentError('Parameter folderId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1142,22 +1018,12 @@ class AccountsContainersMoveFoldersResource {
     core.String accountId,
     core.String containerId,
     core.String folderId, {
-    core.List<core.String> tagId,
-    core.List<core.String> triggerId,
-    core.List<core.String> variableId,
-    core.String $fields,
+    core.List<core.String>? tagId,
+    core.List<core.String>? triggerId,
+    core.List<core.String>? variableId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (folderId == null) {
-      throw core.ArgumentError('Parameter folderId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (tagId != null) 'tagId': tagId,
       if (triggerId != null) 'triggerId': triggerId,
@@ -1215,19 +1081,9 @@ class AccountsContainersReauthorizeEnvironmentsResource {
     core.String accountId,
     core.String containerId,
     core.String environmentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (environmentId == null) {
-      throw core.ArgumentError('Parameter environmentId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1280,16 +1136,9 @@ class AccountsContainersTagsResource {
     Tag request,
     core.String accountId,
     core.String containerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1331,17 +1180,8 @@ class AccountsContainersTagsResource {
     core.String accountId,
     core.String containerId,
     core.String tagId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (tagId == null) {
-      throw core.ArgumentError('Parameter tagId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1385,17 +1225,8 @@ class AccountsContainersTagsResource {
     core.String accountId,
     core.String containerId,
     core.String tagId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (tagId == null) {
-      throw core.ArgumentError('Parameter tagId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1436,14 +1267,8 @@ class AccountsContainersTagsResource {
   async.Future<ListTagsResponse> list(
     core.String accountId,
     core.String containerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1493,20 +1318,10 @@ class AccountsContainersTagsResource {
     core.String accountId,
     core.String containerId,
     core.String tagId, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (tagId == null) {
-      throw core.ArgumentError('Parameter tagId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -1559,16 +1374,9 @@ class AccountsContainersTriggersResource {
     Trigger request,
     core.String accountId,
     core.String containerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1610,17 +1418,8 @@ class AccountsContainersTriggersResource {
     core.String accountId,
     core.String containerId,
     core.String triggerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (triggerId == null) {
-      throw core.ArgumentError('Parameter triggerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1664,17 +1463,8 @@ class AccountsContainersTriggersResource {
     core.String accountId,
     core.String containerId,
     core.String triggerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (triggerId == null) {
-      throw core.ArgumentError('Parameter triggerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1715,14 +1505,8 @@ class AccountsContainersTriggersResource {
   async.Future<ListTriggersResponse> list(
     core.String accountId,
     core.String containerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1772,20 +1556,10 @@ class AccountsContainersTriggersResource {
     core.String accountId,
     core.String containerId,
     core.String triggerId, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (triggerId == null) {
-      throw core.ArgumentError('Parameter triggerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -1838,16 +1612,9 @@ class AccountsContainersVariablesResource {
     Variable request,
     core.String accountId,
     core.String containerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1889,17 +1656,8 @@ class AccountsContainersVariablesResource {
     core.String accountId,
     core.String containerId,
     core.String variableId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (variableId == null) {
-      throw core.ArgumentError('Parameter variableId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1943,17 +1701,8 @@ class AccountsContainersVariablesResource {
     core.String accountId,
     core.String containerId,
     core.String variableId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (variableId == null) {
-      throw core.ArgumentError('Parameter variableId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1994,14 +1743,8 @@ class AccountsContainersVariablesResource {
   async.Future<ListVariablesResponse> list(
     core.String accountId,
     core.String containerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2051,20 +1794,10 @@ class AccountsContainersVariablesResource {
     core.String accountId,
     core.String containerId,
     core.String variableId, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (variableId == null) {
-      throw core.ArgumentError('Parameter variableId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -2117,16 +1850,9 @@ class AccountsContainersVersionsResource {
     CreateContainerVersionRequestVersionOptions request,
     core.String accountId,
     core.String containerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2169,17 +1895,8 @@ class AccountsContainersVersionsResource {
     core.String accountId,
     core.String containerId,
     core.String containerVersionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (containerVersionId == null) {
-      throw core.ArgumentError('Parameter containerVersionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2224,17 +1941,8 @@ class AccountsContainersVersionsResource {
     core.String accountId,
     core.String containerId,
     core.String containerVersionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (containerVersionId == null) {
-      throw core.ArgumentError('Parameter containerVersionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2280,16 +1988,10 @@ class AccountsContainersVersionsResource {
   async.Future<ListContainerVersionsResponse> list(
     core.String accountId,
     core.String containerId, {
-    core.bool headers,
-    core.bool includeDeleted,
-    core.String $fields,
+    core.bool? headers,
+    core.bool? includeDeleted,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (headers != null) 'headers': ['${headers}'],
       if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
@@ -2338,18 +2040,9 @@ class AccountsContainersVersionsResource {
     core.String accountId,
     core.String containerId,
     core.String containerVersionId, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (containerVersionId == null) {
-      throw core.ArgumentError('Parameter containerVersionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -2400,17 +2093,8 @@ class AccountsContainersVersionsResource {
     core.String accountId,
     core.String containerId,
     core.String containerVersionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (containerVersionId == null) {
-      throw core.ArgumentError('Parameter containerVersionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2456,17 +2140,8 @@ class AccountsContainersVersionsResource {
     core.String accountId,
     core.String containerId,
     core.String containerVersionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (containerVersionId == null) {
-      throw core.ArgumentError('Parameter containerVersionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2518,20 +2193,10 @@ class AccountsContainersVersionsResource {
     core.String accountId,
     core.String containerId,
     core.String containerVersionId, {
-    core.String fingerprint,
-    core.String $fields,
+    core.String? fingerprint,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (containerId == null) {
-      throw core.ArgumentError('Parameter containerId is required.');
-    }
-    if (containerVersionId == null) {
-      throw core.ArgumentError('Parameter containerVersionId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fingerprint != null) 'fingerprint': [fingerprint],
       if ($fields != null) 'fields': [$fields],
@@ -2582,13 +2247,9 @@ class AccountsPermissionsResource {
   async.Future<UserAccess> create(
     UserAccess request,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2627,14 +2288,8 @@ class AccountsPermissionsResource {
   async.Future<void> delete(
     core.String accountId,
     core.String permissionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (permissionId == null) {
-      throw core.ArgumentError('Parameter permissionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2673,14 +2328,8 @@ class AccountsPermissionsResource {
   async.Future<UserAccess> get(
     core.String accountId,
     core.String permissionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (permissionId == null) {
-      throw core.ArgumentError('Parameter permissionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2718,11 +2367,8 @@ class AccountsPermissionsResource {
   /// this method will complete with the same error.
   async.Future<ListAccountUsersResponse> list(
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2764,16 +2410,9 @@ class AccountsPermissionsResource {
     UserAccess request,
     core.String accountId,
     core.String permissionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (permissionId == null) {
-      throw core.ArgumentError('Parameter permissionId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2797,22 +2436,22 @@ class AccountsPermissionsResource {
 /// Represents a Google Tag Manager Account.
 class Account {
   /// The Account ID uniquely identifies the GTM Account.
-  core.String accountId;
+  core.String? accountId;
 
   /// The fingerprint of the GTM Account as computed at storage time.
   ///
   /// This value is recomputed whenever the account is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// Account display name.
   ///
   /// @mutable tagmanager.accounts.create @mutable tagmanager.accounts.update
-  core.String name;
+  core.String? name;
 
   /// Whether the account shares data anonymously with Google and others.
   ///
   /// @mutable tagmanager.accounts.create @mutable tagmanager.accounts.update
-  core.bool shareData;
+  core.bool? shareData;
 
   Account();
 
@@ -2831,11 +2470,11 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (name != null) 'name': name,
-        if (shareData != null) 'shareData': shareData,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (name != null) 'name': name!,
+        if (shareData != null) 'shareData': shareData!,
       };
 }
 
@@ -2846,7 +2485,7 @@ class AccountAccess {
   /// Valid account permissions are read and manage. @mutable
   /// tagmanager.accounts.permissions.create @mutable
   /// tagmanager.accounts.permissions.update
-  core.List<core.String> permission;
+  core.List<core.String>? permission;
 
   AccountAccess();
 
@@ -2858,8 +2497,8 @@ class AccountAccess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permission != null) 'permission': permission,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permission != null) 'permission': permission!,
       };
 }
 
@@ -2876,7 +2515,7 @@ class Condition {
   /// include a boolean parameter named negate boolean parameter that is set to
   /// true. @mutable tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  core.List<Parameter> parameter;
+  core.List<Parameter>? parameter;
 
   /// The type of operator for this condition.
   ///
@@ -2894,7 +2533,7 @@ class Condition {
   /// - "lessOrEquals"
   /// - "cssSelector"
   /// - "urlMatches"
-  core.String type;
+  core.String? type;
 
   Condition();
 
@@ -2910,26 +2549,26 @@ class Condition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (parameter != null)
-          'parameter': parameter.map((value) => value.toJson()).toList(),
-        if (type != null) 'type': type,
+          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type!,
       };
 }
 
 /// Represents a Google Tag Manager Container.
 class Container {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// The Container ID uniquely identifies the GTM Container.
-  core.String containerId;
+  core.String? containerId;
 
   /// Optional list of domain names associated with the Container.
   ///
   /// @mutable tagmanager.accounts.containers.create @mutable
   /// tagmanager.accounts.containers.update
-  core.List<core.String> domainName;
+  core.List<core.String>? domainName;
 
   /// List of enabled built-in variables.
   ///
@@ -2941,46 +2580,46 @@ class Container {
   /// debugMode, randomNumber, containerId. @mutable
   /// tagmanager.accounts.containers.create @mutable
   /// tagmanager.accounts.containers.update
-  core.List<core.String> enabledBuiltInVariable;
+  core.List<core.String>? enabledBuiltInVariable;
 
   /// The fingerprint of the GTM Container as computed at storage time.
   ///
   /// This value is recomputed whenever the account is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// Container display name.
   ///
   /// @mutable tagmanager.accounts.containers.create @mutable
   /// tagmanager.accounts.containers.update
-  core.String name;
+  core.String? name;
 
   /// Container Notes.
   ///
   /// @mutable tagmanager.accounts.containers.create @mutable
   /// tagmanager.accounts.containers.update
-  core.String notes;
+  core.String? notes;
 
   /// Container Public ID.
-  core.String publicId;
+  core.String? publicId;
 
   /// Container Country ID.
   ///
   /// @mutable tagmanager.accounts.containers.create @mutable
   /// tagmanager.accounts.containers.update
-  core.String timeZoneCountryId;
+  core.String? timeZoneCountryId;
 
   /// Container Time Zone ID.
   ///
   /// @mutable tagmanager.accounts.containers.create @mutable
   /// tagmanager.accounts.containers.update
-  core.String timeZoneId;
+  core.String? timeZoneId;
 
   /// List of Usage Contexts for the Container.
   ///
   /// Valid values include: web, android, ios. @mutable
   /// tagmanager.accounts.containers.create @mutable
   /// tagmanager.accounts.containers.update
-  core.List<core.String> usageContext;
+  core.List<core.String>? usageContext;
 
   Container();
 
@@ -3026,19 +2665,19 @@ class Container {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (containerId != null) 'containerId': containerId,
-        if (domainName != null) 'domainName': domainName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (containerId != null) 'containerId': containerId!,
+        if (domainName != null) 'domainName': domainName!,
         if (enabledBuiltInVariable != null)
-          'enabledBuiltInVariable': enabledBuiltInVariable,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
-        if (publicId != null) 'publicId': publicId,
-        if (timeZoneCountryId != null) 'timeZoneCountryId': timeZoneCountryId,
-        if (timeZoneId != null) 'timeZoneId': timeZoneId,
-        if (usageContext != null) 'usageContext': usageContext,
+          'enabledBuiltInVariable': enabledBuiltInVariable!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
+        if (publicId != null) 'publicId': publicId!,
+        if (timeZoneCountryId != null) 'timeZoneCountryId': timeZoneCountryId!,
+        if (timeZoneId != null) 'timeZoneId': timeZoneId!,
+        if (usageContext != null) 'usageContext': usageContext!,
       };
 }
 
@@ -3048,14 +2687,14 @@ class ContainerAccess {
   ///
   /// @mutable tagmanager.accounts.permissions.create @mutable
   /// tagmanager.accounts.permissions.update
-  core.String containerId;
+  core.String? containerId;
 
   /// List of Container permissions.
   ///
   /// Valid container permissions are: read, edit, delete, publish. @mutable
   /// tagmanager.accounts.permissions.create @mutable
   /// tagmanager.accounts.permissions.update
-  core.List<core.String> permission;
+  core.List<core.String>? permission;
 
   ContainerAccess();
 
@@ -3070,61 +2709,61 @@ class ContainerAccess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (containerId != null) 'containerId': containerId,
-        if (permission != null) 'permission': permission,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (containerId != null) 'containerId': containerId!,
+        if (permission != null) 'permission': permission!,
       };
 }
 
 /// Represents a Google Tag Manager Container Version.
 class ContainerVersion {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// The container that this version was taken from.
-  Container container;
+  Container? container;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// The Container Version ID uniquely identifies the GTM Container Version.
-  core.String containerVersionId;
+  core.String? containerVersionId;
 
   /// A value of true indicates this container version has been deleted.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// The fingerprint of the GTM Container Version as computed at storage time.
   ///
   /// This value is recomputed whenever the container version is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// The folders in the container that this version was taken from.
-  core.List<Folder> folder;
+  core.List<Folder>? folder;
 
   /// The macros in the container that this version was taken from.
-  core.List<Macro> macro;
+  core.List<Macro>? macro;
 
   /// Container version display name.
   ///
   /// @mutable tagmanager.accounts.containers.versions.update
-  core.String name;
+  core.String? name;
 
   /// User notes on how to apply this container version in the container.
   ///
   /// @mutable tagmanager.accounts.containers.versions.update
-  core.String notes;
+  core.String? notes;
 
   /// The rules in the container that this version was taken from.
-  core.List<Rule> rule;
+  core.List<Rule>? rule;
 
   /// The tags in the container that this version was taken from.
-  core.List<Tag> tag;
+  core.List<Tag>? tag;
 
   /// The triggers in the container that this version was taken from.
-  core.List<Trigger> trigger;
+  core.List<Trigger>? trigger;
 
   /// The variables in the container that this version was taken from.
-  core.List<Variable> variable;
+  core.List<Variable>? variable;
 
   ContainerVersion();
 
@@ -3192,60 +2831,60 @@ class ContainerVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (container != null) 'container': container.toJson(),
-        if (containerId != null) 'containerId': containerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (container != null) 'container': container!.toJson(),
+        if (containerId != null) 'containerId': containerId!,
         if (containerVersionId != null)
-          'containerVersionId': containerVersionId,
-        if (deleted != null) 'deleted': deleted,
-        if (fingerprint != null) 'fingerprint': fingerprint,
+          'containerVersionId': containerVersionId!,
+        if (deleted != null) 'deleted': deleted!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
         if (folder != null)
-          'folder': folder.map((value) => value.toJson()).toList(),
+          'folder': folder!.map((value) => value.toJson()).toList(),
         if (macro != null)
-          'macro': macro.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
-        if (rule != null) 'rule': rule.map((value) => value.toJson()).toList(),
-        if (tag != null) 'tag': tag.map((value) => value.toJson()).toList(),
+          'macro': macro!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
+        if (rule != null) 'rule': rule!.map((value) => value.toJson()).toList(),
+        if (tag != null) 'tag': tag!.map((value) => value.toJson()).toList(),
         if (trigger != null)
-          'trigger': trigger.map((value) => value.toJson()).toList(),
+          'trigger': trigger!.map((value) => value.toJson()).toList(),
         if (variable != null)
-          'variable': variable.map((value) => value.toJson()).toList(),
+          'variable': variable!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Represents a Google Tag Manager Container Version Header.
 class ContainerVersionHeader {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// The Container Version ID uniquely identifies the GTM Container Version.
-  core.String containerVersionId;
+  core.String? containerVersionId;
 
   /// A value of true indicates this container version has been deleted.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// Container version display name.
-  core.String name;
+  core.String? name;
 
   /// Number of macros in the container version.
-  core.String numMacros;
+  core.String? numMacros;
 
   /// Number of rules in the container version.
-  core.String numRules;
+  core.String? numRules;
 
   /// Number of tags in the container version.
-  core.String numTags;
+  core.String? numTags;
 
   /// Number of triggers in the container version.
-  core.String numTriggers;
+  core.String? numTriggers;
 
   /// Number of variables in the container version.
-  core.String numVariables;
+  core.String? numVariables;
 
   ContainerVersionHeader();
 
@@ -3282,32 +2921,32 @@ class ContainerVersionHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (containerId != null) 'containerId': containerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (containerId != null) 'containerId': containerId!,
         if (containerVersionId != null)
-          'containerVersionId': containerVersionId,
-        if (deleted != null) 'deleted': deleted,
-        if (name != null) 'name': name,
-        if (numMacros != null) 'numMacros': numMacros,
-        if (numRules != null) 'numRules': numRules,
-        if (numTags != null) 'numTags': numTags,
-        if (numTriggers != null) 'numTriggers': numTriggers,
-        if (numVariables != null) 'numVariables': numVariables,
+          'containerVersionId': containerVersionId!,
+        if (deleted != null) 'deleted': deleted!,
+        if (name != null) 'name': name!,
+        if (numMacros != null) 'numMacros': numMacros!,
+        if (numRules != null) 'numRules': numRules!,
+        if (numTags != null) 'numTags': numTags!,
+        if (numTriggers != null) 'numTriggers': numTriggers!,
+        if (numVariables != null) 'numVariables': numVariables!,
       };
 }
 
 /// Options for new container versions.
 class CreateContainerVersionRequestVersionOptions {
   /// The name of the container version to be created.
-  core.String name;
+  core.String? name;
 
   /// The notes of the container version to be created.
-  core.String notes;
+  core.String? notes;
 
   /// The creation of this version may be for quick preview and shouldn't be
   /// saved.
-  core.bool quickPreview;
+  core.bool? quickPreview;
 
   CreateContainerVersionRequestVersionOptions();
 
@@ -3323,20 +2962,20 @@ class CreateContainerVersionRequestVersionOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
-        if (quickPreview != null) 'quickPreview': quickPreview,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
+        if (quickPreview != null) 'quickPreview': quickPreview!,
       };
 }
 
 /// Create container versions response.
 class CreateContainerVersionResponse {
   /// Compiler errors or not.
-  core.bool compilerError;
+  core.bool? compilerError;
 
   /// The container version created.
-  ContainerVersion containerVersion;
+  ContainerVersion? containerVersion;
 
   CreateContainerVersionResponse();
 
@@ -3350,10 +2989,10 @@ class CreateContainerVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (compilerError != null) 'compilerError': compilerError,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (compilerError != null) 'compilerError': compilerError!,
         if (containerVersion != null)
-          'containerVersion': containerVersion.toJson(),
+          'containerVersion': containerVersion!.toJson(),
       };
 }
 
@@ -3364,45 +3003,45 @@ class CreateContainerVersionResponse {
 /// types.
 class Environment {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// The environment authorization code.
-  core.String authorizationCode;
+  core.String? authorizationCode;
 
   /// The last update time-stamp for the authorization code.
-  core.String authorizationTimestampMs;
+  core.String? authorizationTimestampMs;
 
   /// GTM Container ID.
-  core.String containerId;
-  core.String containerVersionId;
+  core.String? containerId;
+  core.String? containerVersionId;
 
   /// The environment description.
   ///
   /// Can be set or changed only on USER type environments. @mutable
   /// tagmanager.accounts.containers.environments.create @mutable
   /// tagmanager.accounts.containers.environments.update
-  core.String description;
+  core.String? description;
 
   /// Whether or not to enable debug by default on for the environment.
   ///
   /// @mutable tagmanager.accounts.containers.environments.create @mutable
   /// tagmanager.accounts.containers.environments.update
-  core.bool enableDebug;
+  core.bool? enableDebug;
 
   /// GTM Environment ID uniquely identifies the GTM Environment.
-  core.String environmentId;
+  core.String? environmentId;
 
   /// The fingerprint of the GTM environment as computed at storage time.
   ///
   /// This value is recomputed whenever the environment is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// The environment display name.
   ///
   /// Can be set or changed only on USER type environments. @mutable
   /// tagmanager.accounts.containers.environments.create @mutable
   /// tagmanager.accounts.containers.environments.update
-  core.String name;
+  core.String? name;
 
   /// The type of this environment.
   /// Possible string values are:
@@ -3413,13 +3052,13 @@ class Environment {
   /// created container version.
   /// - "draft" : Used for Draft environment, which points to the single draft
   /// in the container.
-  core.String type;
+  core.String? type;
 
   /// Default preview page url for the environment.
   ///
   /// @mutable tagmanager.accounts.containers.environments.create @mutable
   /// tagmanager.accounts.containers.environments.update
-  core.String url;
+  core.String? url;
 
   Environment();
 
@@ -3463,45 +3102,45 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (authorizationCode != null) 'authorizationCode': authorizationCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (authorizationCode != null) 'authorizationCode': authorizationCode!,
         if (authorizationTimestampMs != null)
-          'authorizationTimestampMs': authorizationTimestampMs,
-        if (containerId != null) 'containerId': containerId,
+          'authorizationTimestampMs': authorizationTimestampMs!,
+        if (containerId != null) 'containerId': containerId!,
         if (containerVersionId != null)
-          'containerVersionId': containerVersionId,
-        if (description != null) 'description': description,
-        if (enableDebug != null) 'enableDebug': enableDebug,
-        if (environmentId != null) 'environmentId': environmentId,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
-        if (url != null) 'url': url,
+          'containerVersionId': containerVersionId!,
+        if (description != null) 'description': description!,
+        if (enableDebug != null) 'enableDebug': enableDebug!,
+        if (environmentId != null) 'environmentId': environmentId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// Represents a Google Tag Manager Folder.
 class Folder {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// The fingerprint of the GTM Folder as computed at storage time.
   ///
   /// This value is recomputed whenever the folder is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// The Folder ID uniquely identifies the GTM Folder.
-  core.String folderId;
+  core.String? folderId;
 
   /// Folder display name.
   ///
   /// @mutable tagmanager.accounts.containers.folders.create @mutable
   /// tagmanager.accounts.containers.folders.update
-  core.String name;
+  core.String? name;
 
   Folder();
 
@@ -3523,25 +3162,25 @@ class Folder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (containerId != null) 'containerId': containerId,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (folderId != null) 'folderId': folderId,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (containerId != null) 'containerId': containerId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (folderId != null) 'folderId': folderId!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Represents a Google Tag Manager Folder's contents.
 class FolderEntities {
   /// The list of tags inside the folder.
-  core.List<Tag> tag;
+  core.List<Tag>? tag;
 
   /// The list of triggers inside the folder.
-  core.List<Trigger> trigger;
+  core.List<Trigger>? trigger;
 
   /// The list of variables inside the folder.
-  core.List<Variable> variable;
+  core.List<Variable>? variable;
 
   FolderEntities();
 
@@ -3566,19 +3205,19 @@ class FolderEntities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (tag != null) 'tag': tag.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (tag != null) 'tag': tag!.map((value) => value.toJson()).toList(),
         if (trigger != null)
-          'trigger': trigger.map((value) => value.toJson()).toList(),
+          'trigger': trigger!.map((value) => value.toJson()).toList(),
         if (variable != null)
-          'variable': variable.map((value) => value.toJson()).toList(),
+          'variable': variable!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// List AccountUsers Response.
 class ListAccountUsersResponse {
   /// All GTM AccountUsers of a GTM Account.
-  core.List<UserAccess> userAccess;
+  core.List<UserAccess>? userAccess;
 
   ListAccountUsersResponse();
 
@@ -3591,16 +3230,16 @@ class ListAccountUsersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (userAccess != null)
-          'userAccess': userAccess.map((value) => value.toJson()).toList(),
+          'userAccess': userAccess!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// List Accounts Response.
 class ListAccountsResponse {
   /// List of GTM Accounts that a user has access to.
-  core.List<Account> accounts;
+  core.List<Account>? accounts;
 
   ListAccountsResponse();
 
@@ -3613,19 +3252,19 @@ class ListAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accounts != null)
-          'accounts': accounts.map((value) => value.toJson()).toList(),
+          'accounts': accounts!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// List container versions response.
 class ListContainerVersionsResponse {
   /// All versions of a GTM Container.
-  core.List<ContainerVersion> containerVersion;
+  core.List<ContainerVersion>? containerVersion;
 
   /// All container version headers of a GTM Container.
-  core.List<ContainerVersionHeader> containerVersionHeader;
+  core.List<ContainerVersionHeader>? containerVersionHeader;
 
   ListContainerVersionsResponse();
 
@@ -3645,20 +3284,20 @@ class ListContainerVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (containerVersion != null)
           'containerVersion':
-              containerVersion.map((value) => value.toJson()).toList(),
+              containerVersion!.map((value) => value.toJson()).toList(),
         if (containerVersionHeader != null)
           'containerVersionHeader':
-              containerVersionHeader.map((value) => value.toJson()).toList(),
+              containerVersionHeader!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// List Containers Response.
 class ListContainersResponse {
   /// All Containers of a GTM Account.
-  core.List<Container> containers;
+  core.List<Container>? containers;
 
   ListContainersResponse();
 
@@ -3671,16 +3310,16 @@ class ListContainersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (containers != null)
-          'containers': containers.map((value) => value.toJson()).toList(),
+          'containers': containers!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// List Environments Response.
 class ListEnvironmentsResponse {
   /// All Environments of a GTM Container.
-  core.List<Environment> environments;
+  core.List<Environment>? environments;
 
   ListEnvironmentsResponse();
 
@@ -3693,16 +3332,16 @@ class ListEnvironmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (environments != null)
-          'environments': environments.map((value) => value.toJson()).toList(),
+          'environments': environments!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// List Folders Response.
 class ListFoldersResponse {
   /// All GTM Folders of a GTM Container.
-  core.List<Folder> folders;
+  core.List<Folder>? folders;
 
   ListFoldersResponse();
 
@@ -3715,16 +3354,16 @@ class ListFoldersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (folders != null)
-          'folders': folders.map((value) => value.toJson()).toList(),
+          'folders': folders!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// List Tags Response.
 class ListTagsResponse {
   /// All GTM Tags of a GTM Container.
-  core.List<Tag> tags;
+  core.List<Tag>? tags;
 
   ListTagsResponse();
 
@@ -3737,15 +3376,15 @@ class ListTagsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (tags != null) 'tags': tags.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (tags != null) 'tags': tags!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// List triggers response.
 class ListTriggersResponse {
   /// All GTM Triggers of a GTM Container.
-  core.List<Trigger> triggers;
+  core.List<Trigger>? triggers;
 
   ListTriggersResponse();
 
@@ -3758,16 +3397,16 @@ class ListTriggersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (triggers != null)
-          'triggers': triggers.map((value) => value.toJson()).toList(),
+          'triggers': triggers!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// List Variables Response.
 class ListVariablesResponse {
   /// All GTM Variables of a GTM Container.
-  core.List<Variable> variables;
+  core.List<Variable>? variables;
 
   ListVariablesResponse();
 
@@ -3780,19 +3419,19 @@ class ListVariablesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (variables != null)
-          'variables': variables.map((value) => value.toJson()).toList(),
+          'variables': variables!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Represents a Google Tag Manager Macro.
 class Macro {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// For mobile containers only: A list of rule IDs for disabling conditional
   /// macros; the macro is enabled if one of the enabling rules is true while
@@ -3801,7 +3440,7 @@ class Macro {
   /// Treated as an unordered set. @mutable
   /// tagmanager.accounts.containers.macros.create @mutable
   /// tagmanager.accounts.containers.macros.update
-  core.List<core.String> disablingRuleId;
+  core.List<core.String>? disablingRuleId;
 
   /// For mobile containers only: A list of rule IDs for enabling conditional
   /// macros; the macro is enabled if one of the enabling rules is true while
@@ -3810,54 +3449,54 @@ class Macro {
   /// Treated as an unordered set. @mutable
   /// tagmanager.accounts.containers.macros.create @mutable
   /// tagmanager.accounts.containers.macros.update
-  core.List<core.String> enablingRuleId;
+  core.List<core.String>? enablingRuleId;
 
   /// The fingerprint of the GTM Macro as computed at storage time.
   ///
   /// This value is recomputed whenever the macro is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// The Macro ID uniquely identifies the GTM Macro.
-  core.String macroId;
+  core.String? macroId;
 
   /// Macro display name.
   ///
   /// @mutable tagmanager.accounts.containers.macros.create @mutable
   /// tagmanager.accounts.containers.macros.update
-  core.String name;
+  core.String? name;
 
   /// User notes on how to apply this macro in the container.
   ///
   /// @mutable tagmanager.accounts.containers.macros.create @mutable
   /// tagmanager.accounts.containers.macros.update
-  core.String notes;
+  core.String? notes;
 
   /// The macro's parameters.
   ///
   /// @mutable tagmanager.accounts.containers.macros.create @mutable
   /// tagmanager.accounts.containers.macros.update
-  core.List<Parameter> parameter;
+  core.List<Parameter>? parameter;
 
   /// Parent folder id.
-  core.String parentFolderId;
+  core.String? parentFolderId;
 
   /// The end timestamp in milliseconds to schedule a macro.
   ///
   /// @mutable tagmanager.accounts.containers.macros.create @mutable
   /// tagmanager.accounts.containers.macros.update
-  core.String scheduleEndMs;
+  core.String? scheduleEndMs;
 
   /// The start timestamp in milliseconds to schedule a macro.
   ///
   /// @mutable tagmanager.accounts.containers.macros.create @mutable
   /// tagmanager.accounts.containers.macros.update
-  core.String scheduleStartMs;
+  core.String? scheduleStartMs;
 
   /// GTM Macro Type.
   ///
   /// @mutable tagmanager.accounts.containers.macros.create @mutable
   /// tagmanager.accounts.containers.macros.update
-  core.String type;
+  core.String? type;
 
   Macro();
 
@@ -3910,21 +3549,21 @@ class Macro {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (containerId != null) 'containerId': containerId,
-        if (disablingRuleId != null) 'disablingRuleId': disablingRuleId,
-        if (enablingRuleId != null) 'enablingRuleId': enablingRuleId,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (macroId != null) 'macroId': macroId,
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (containerId != null) 'containerId': containerId!,
+        if (disablingRuleId != null) 'disablingRuleId': disablingRuleId!,
+        if (enablingRuleId != null) 'enablingRuleId': enablingRuleId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (macroId != null) 'macroId': macroId!,
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
         if (parameter != null)
-          'parameter': parameter.map((value) => value.toJson()).toList(),
-        if (parentFolderId != null) 'parentFolderId': parentFolderId,
-        if (scheduleEndMs != null) 'scheduleEndMs': scheduleEndMs,
-        if (scheduleStartMs != null) 'scheduleStartMs': scheduleStartMs,
-        if (type != null) 'type': type,
+          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (parentFolderId != null) 'parentFolderId': parentFolderId!,
+        if (scheduleEndMs != null) 'scheduleEndMs': scheduleEndMs!,
+        if (scheduleStartMs != null) 'scheduleStartMs': scheduleStartMs!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3939,7 +3578,7 @@ class Parameter {
   /// tagmanager.accounts.containers.triggers.update @mutable
   /// tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  core.String key;
+  core.String? key;
 
   /// This list parameter's parameters (keys will be ignored).
   ///
@@ -3949,7 +3588,7 @@ class Parameter {
   /// tagmanager.accounts.containers.triggers.update @mutable
   /// tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  core.List<Parameter> list;
+  core.List<Parameter>? list;
 
   /// This map parameter's parameters (must have keys; keys must be unique).
   ///
@@ -3959,7 +3598,7 @@ class Parameter {
   /// tagmanager.accounts.containers.triggers.update @mutable
   /// tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  core.List<Parameter> map;
+  core.List<Parameter>? map;
 
   /// The parameter type.
   ///
@@ -3985,7 +3624,7 @@ class Parameter {
   /// - "map"
   /// - "triggerReference"
   /// - "tagReference"
-  core.String type;
+  core.String? type;
 
   /// A parameter's value (may contain variable references such as
   /// "{{myVariable}}") as appropriate to the specified type.
@@ -3996,7 +3635,7 @@ class Parameter {
   /// tagmanager.accounts.containers.triggers.update @mutable
   /// tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  core.String value;
+  core.String? value;
 
   Parameter();
 
@@ -4024,22 +3663,22 @@ class Parameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (list != null) 'list': list.map((value) => value.toJson()).toList(),
-        if (map != null) 'map': map.map((value) => value.toJson()).toList(),
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (list != null) 'list': list!.map((value) => value.toJson()).toList(),
+        if (map != null) 'map': map!.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// Publish container version response.
 class PublishContainerVersionResponse {
   /// Compiler errors or not.
-  core.bool compilerError;
+  core.bool? compilerError;
 
   /// The container version created.
-  ContainerVersion containerVersion;
+  ContainerVersion? containerVersion;
 
   PublishContainerVersionResponse();
 
@@ -4053,46 +3692,46 @@ class PublishContainerVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (compilerError != null) 'compilerError': compilerError,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (compilerError != null) 'compilerError': compilerError!,
         if (containerVersion != null)
-          'containerVersion': containerVersion.toJson(),
+          'containerVersion': containerVersion!.toJson(),
       };
 }
 
 /// Represents a Google Tag Manager Rule.
 class Rule {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// The list of conditions that make up this rule (implicit AND between them).
   ///
   /// @mutable tagmanager.accounts.containers.rules.create @mutable
   /// tagmanager.accounts.containers.rules.update
-  core.List<Condition> condition;
+  core.List<Condition>? condition;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// The fingerprint of the GTM Rule as computed at storage time.
   ///
   /// This value is recomputed whenever the rule is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// Rule display name.
   ///
   /// @mutable tagmanager.accounts.containers.rules.create @mutable
   /// tagmanager.accounts.containers.rules.update
-  core.String name;
+  core.String? name;
 
   /// User notes on how to apply this rule in the container.
   ///
   /// @mutable tagmanager.accounts.containers.rules.create @mutable
   /// tagmanager.accounts.containers.rules.update
-  core.String notes;
+  core.String? notes;
 
   /// The Rule ID uniquely identifies the GTM Rule.
-  core.String ruleId;
+  core.String? ruleId;
 
   Rule();
 
@@ -4123,15 +3762,15 @@ class Rule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (condition != null)
-          'condition': condition.map((value) => value.toJson()).toList(),
-        if (containerId != null) 'containerId': containerId,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
-        if (ruleId != null) 'ruleId': ruleId,
+          'condition': condition!.map((value) => value.toJson()).toList(),
+        if (containerId != null) 'containerId': containerId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
+        if (ruleId != null) 'ruleId': ruleId!,
       };
 }
 
@@ -4140,10 +3779,10 @@ class SetupTag {
   /// successfully.
   ///
   /// If false, fire the main tag regardless of setup tag firing status.
-  core.bool stopOnSetupFailure;
+  core.bool? stopOnSetupFailure;
 
   /// The name of the setup tag.
-  core.String tagName;
+  core.String? tagName;
 
   SetupTag();
 
@@ -4156,39 +3795,39 @@ class SetupTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (stopOnSetupFailure != null)
-          'stopOnSetupFailure': stopOnSetupFailure,
-        if (tagName != null) 'tagName': tagName,
+          'stopOnSetupFailure': stopOnSetupFailure!,
+        if (tagName != null) 'tagName': tagName!,
       };
 }
 
 /// Represents a Google Tag Manager Tag.
 class Tag {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// Blocking rule IDs.
   ///
   /// If any of the listed rules evaluate to true, the tag will not fire.
   /// @mutable tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  core.List<core.String> blockingRuleId;
+  core.List<core.String>? blockingRuleId;
 
   /// Blocking trigger IDs.
   ///
   /// If any of the listed triggers evaluate to true, the tag will not fire.
   /// @mutable tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  core.List<core.String> blockingTriggerId;
+  core.List<core.String>? blockingTriggerId;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// The fingerprint of the GTM Tag as computed at storage time.
   ///
   /// This value is recomputed whenever the tag is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// Firing rule IDs.
   ///
@@ -4196,7 +3835,7 @@ class Tag {
   /// blockingRuleIds (if any specified) are false. @mutable
   /// tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  core.List<core.String> firingRuleId;
+  core.List<core.String>? firingRuleId;
 
   /// Firing trigger IDs.
   ///
@@ -4204,41 +3843,41 @@ class Tag {
   /// blockingTriggerIds (if any specified) are false. @mutable
   /// tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  core.List<core.String> firingTriggerId;
+  core.List<core.String>? firingTriggerId;
 
   /// If set to true, this tag will only fire in the live environment (e.g. not
   /// in preview or debug mode).
   ///
   /// @mutable tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  core.bool liveOnly;
+  core.bool? liveOnly;
 
   /// Tag display name.
   ///
   /// @mutable tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  core.String name;
+  core.String? name;
 
   /// User notes on how to apply this tag in the container.
   ///
   /// @mutable tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  core.String notes;
+  core.String? notes;
 
   /// The tag's parameters.
   ///
   /// @mutable tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  core.List<Parameter> parameter;
+  core.List<Parameter>? parameter;
 
   /// Parent folder id.
-  core.String parentFolderId;
+  core.String? parentFolderId;
 
   /// True if the tag is paused.
   ///
   /// @mutable tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  core.bool paused;
+  core.bool? paused;
 
   /// User defined numeric priority of the tag.
   ///
@@ -4247,24 +3886,24 @@ class Tag {
   /// value. The default value is 0. @mutable
   /// tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  Parameter priority;
+  Parameter? priority;
 
   /// The end timestamp in milliseconds to schedule a tag.
   ///
   /// @mutable tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  core.String scheduleEndMs;
+  core.String? scheduleEndMs;
 
   /// The start timestamp in milliseconds to schedule a tag.
   ///
   /// @mutable tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  core.String scheduleStartMs;
+  core.String? scheduleStartMs;
 
   /// The list of setup tags.
   ///
   /// Currently we only allow one.
-  core.List<SetupTag> setupTag;
+  core.List<SetupTag>? setupTag;
 
   /// Option to fire this tag.
   /// Possible string values are:
@@ -4273,21 +3912,21 @@ class Tag {
   /// multiple times per load (e.g., app load or page load).
   /// - "oncePerLoad" : Tag can only be fired per load (e.g., app load or page
   /// load).
-  core.String tagFiringOption;
+  core.String? tagFiringOption;
 
   /// The Tag ID uniquely identifies the GTM Tag.
-  core.String tagId;
+  core.String? tagId;
 
   /// The list of teardown tags.
   ///
   /// Currently we only allow one.
-  core.List<TeardownTag> teardownTag;
+  core.List<TeardownTag>? teardownTag;
 
   /// GTM Tag Type.
   ///
   /// @mutable tagmanager.accounts.containers.tags.create @mutable
   /// tagmanager.accounts.containers.tags.update
-  core.String type;
+  core.String? type;
 
   Tag();
 
@@ -4375,31 +4014,31 @@ class Tag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (blockingRuleId != null) 'blockingRuleId': blockingRuleId,
-        if (blockingTriggerId != null) 'blockingTriggerId': blockingTriggerId,
-        if (containerId != null) 'containerId': containerId,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (firingRuleId != null) 'firingRuleId': firingRuleId,
-        if (firingTriggerId != null) 'firingTriggerId': firingTriggerId,
-        if (liveOnly != null) 'liveOnly': liveOnly,
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (blockingRuleId != null) 'blockingRuleId': blockingRuleId!,
+        if (blockingTriggerId != null) 'blockingTriggerId': blockingTriggerId!,
+        if (containerId != null) 'containerId': containerId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (firingRuleId != null) 'firingRuleId': firingRuleId!,
+        if (firingTriggerId != null) 'firingTriggerId': firingTriggerId!,
+        if (liveOnly != null) 'liveOnly': liveOnly!,
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
         if (parameter != null)
-          'parameter': parameter.map((value) => value.toJson()).toList(),
-        if (parentFolderId != null) 'parentFolderId': parentFolderId,
-        if (paused != null) 'paused': paused,
-        if (priority != null) 'priority': priority.toJson(),
-        if (scheduleEndMs != null) 'scheduleEndMs': scheduleEndMs,
-        if (scheduleStartMs != null) 'scheduleStartMs': scheduleStartMs,
+          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (parentFolderId != null) 'parentFolderId': parentFolderId!,
+        if (paused != null) 'paused': paused!,
+        if (priority != null) 'priority': priority!.toJson(),
+        if (scheduleEndMs != null) 'scheduleEndMs': scheduleEndMs!,
+        if (scheduleStartMs != null) 'scheduleStartMs': scheduleStartMs!,
         if (setupTag != null)
-          'setupTag': setupTag.map((value) => value.toJson()).toList(),
-        if (tagFiringOption != null) 'tagFiringOption': tagFiringOption,
-        if (tagId != null) 'tagId': tagId,
+          'setupTag': setupTag!.map((value) => value.toJson()).toList(),
+        if (tagFiringOption != null) 'tagFiringOption': tagFiringOption!,
+        if (tagId != null) 'tagId': tagId!,
         if (teardownTag != null)
-          'teardownTag': teardownTag.map((value) => value.toJson()).toList(),
-        if (type != null) 'type': type,
+          'teardownTag': teardownTag!.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4408,10 +4047,10 @@ class TeardownTag {
   /// successfully.
   ///
   /// If false, fire the teardown tag regardless of main tag firing status.
-  core.bool stopTeardownOnFailure;
+  core.bool? stopTeardownOnFailure;
 
   /// The name of the teardown tag.
-  core.String tagName;
+  core.String? tagName;
 
   TeardownTag();
 
@@ -4424,23 +4063,23 @@ class TeardownTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (stopTeardownOnFailure != null)
-          'stopTeardownOnFailure': stopTeardownOnFailure,
-        if (tagName != null) 'tagName': tagName,
+          'stopTeardownOnFailure': stopTeardownOnFailure!,
+        if (tagName != null) 'tagName': tagName!,
       };
 }
 
 /// Represents a Google Tag Manager Trigger
 class Trigger {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// Used in the case of auto event tracking.
   ///
   /// @mutable tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  core.List<Condition> autoEventFilter;
+  core.List<Condition>? autoEventFilter;
 
   /// Whether or not we should only fire tags if the form submit or link click
   /// event is not cancelled by some other event handler (e.g. because of
@@ -4449,42 +4088,42 @@ class Trigger {
   /// Only valid for Form Submission and Link Click triggers. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter checkValidation;
+  Parameter? checkValidation;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// A visibility trigger minimum continuous visible time (in milliseconds).
   ///
   /// Only valid for AMP Visibility trigger. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter continuousTimeMinMilliseconds;
+  Parameter? continuousTimeMinMilliseconds;
 
   /// Used in the case of custom event, which is fired iff all Conditions are
   /// true.
   ///
   /// @mutable tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  core.List<Condition> customEventFilter;
+  core.List<Condition>? customEventFilter;
 
   /// Name of the GTM event that is fired.
   ///
   /// Only valid for Timer triggers. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter eventName;
+  Parameter? eventName;
 
   /// The trigger will only fire iff all Conditions are true.
   ///
   /// @mutable tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  core.List<Condition> filter;
+  core.List<Condition>? filter;
 
   /// The fingerprint of the GTM Trigger as computed at storage time.
   ///
   /// This value is recomputed whenever the trigger is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// List of integer percentage values for scroll triggers.
   ///
@@ -4492,21 +4131,21 @@ class Trigger {
   /// scrolled horizontally. Only valid for AMP scroll triggers. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter horizontalScrollPercentageList;
+  Parameter? horizontalScrollPercentageList;
 
   /// Time between triggering recurring Timer Events (in milliseconds).
   ///
   /// Only valid for Timer triggers. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter interval;
+  Parameter? interval;
 
   /// Time between Timer Events to fire (in seconds).
   ///
   /// Only valid for AMP Timer trigger. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter intervalSeconds;
+  Parameter? intervalSeconds;
 
   /// Limit of the number of GTM events this Timer Trigger will fire.
   ///
@@ -4514,46 +4153,46 @@ class Trigger {
   /// leaves the page. Only valid for Timer triggers. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter limit;
+  Parameter? limit;
 
   /// Max time to fire Timer Events (in seconds).
   ///
   /// Only valid for AMP Timer trigger. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter maxTimerLengthSeconds;
+  Parameter? maxTimerLengthSeconds;
 
   /// Trigger display name.
   ///
   /// @mutable tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  core.String name;
+  core.String? name;
 
   /// Additional parameters.
   ///
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.create
   /// @mutable tagmanager.accounts.containers.workspaces.triggers.update
-  core.List<Parameter> parameter;
+  core.List<Parameter>? parameter;
 
   /// Parent folder id.
-  core.String parentFolderId;
+  core.String? parentFolderId;
 
   /// A click trigger CSS selector (i.e. "a", "button" etc.).
   ///
   /// Only valid for AMP Click trigger. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter selector;
+  Parameter? selector;
 
   /// A visibility trigger minimum total visible time (in milliseconds).
   ///
   /// Only valid for AMP Visibility trigger. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter totalTimeMinMilliseconds;
+  Parameter? totalTimeMinMilliseconds;
 
   /// The Trigger ID uniquely identifies the GTM Trigger.
-  core.String triggerId;
+  core.String? triggerId;
 
   /// Defines the data layer event that causes this trigger.
   ///
@@ -4579,7 +4218,7 @@ class Trigger {
   /// - "youTubeVideo"
   /// - "scrollDepth"
   /// - "elementVisibility"
-  core.String type;
+  core.String? type;
 
   /// Globally unique id of the trigger that auto-generates this (a Form Submit,
   /// Link Click or Timer listener) if any.
@@ -4590,7 +4229,7 @@ class Trigger {
   /// Form Submit, Link Click and Timer triggers. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter uniqueTriggerId;
+  Parameter? uniqueTriggerId;
 
   /// List of integer percentage values for scroll triggers.
   ///
@@ -4598,28 +4237,28 @@ class Trigger {
   /// scrolled vertically. Only valid for AMP scroll triggers. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter verticalScrollPercentageList;
+  Parameter? verticalScrollPercentageList;
 
   /// A visibility trigger CSS selector (i.e. "#id").
   ///
   /// Only valid for AMP Visibility trigger. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter visibilitySelector;
+  Parameter? visibilitySelector;
 
   /// A visibility trigger maximum percent visibility.
   ///
   /// Only valid for AMP Visibility trigger. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter visiblePercentageMax;
+  Parameter? visiblePercentageMax;
 
   /// A visibility trigger minimum percent visibility.
   ///
   /// Only valid for AMP Visibility trigger. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter visiblePercentageMin;
+  Parameter? visiblePercentageMin;
 
   /// Whether or not we should delay the form submissions or link opening until
   /// all of the tags have fired (by preventing the default action and later
@@ -4628,7 +4267,7 @@ class Trigger {
   /// Only valid for Form Submission and Link Click triggers. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter waitForTags;
+  Parameter? waitForTags;
 
   /// How long to wait (in milliseconds) for tags to fire when 'waits_for_tags'
   /// above evaluates to true.
@@ -4636,7 +4275,7 @@ class Trigger {
   /// Only valid for Form Submission and Link Click triggers. @mutable
   /// tagmanager.accounts.containers.triggers.create @mutable
   /// tagmanager.accounts.containers.triggers.update
-  Parameter waitForTagsTimeout;
+  Parameter? waitForTagsTimeout;
 
   Trigger();
 
@@ -4760,55 +4399,56 @@ class Trigger {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (autoEventFilter != null)
           'autoEventFilter':
-              autoEventFilter.map((value) => value.toJson()).toList(),
+              autoEventFilter!.map((value) => value.toJson()).toList(),
         if (checkValidation != null)
-          'checkValidation': checkValidation.toJson(),
-        if (containerId != null) 'containerId': containerId,
+          'checkValidation': checkValidation!.toJson(),
+        if (containerId != null) 'containerId': containerId!,
         if (continuousTimeMinMilliseconds != null)
           'continuousTimeMinMilliseconds':
-              continuousTimeMinMilliseconds.toJson(),
+              continuousTimeMinMilliseconds!.toJson(),
         if (customEventFilter != null)
           'customEventFilter':
-              customEventFilter.map((value) => value.toJson()).toList(),
-        if (eventName != null) 'eventName': eventName.toJson(),
+              customEventFilter!.map((value) => value.toJson()).toList(),
+        if (eventName != null) 'eventName': eventName!.toJson(),
         if (filter != null)
-          'filter': filter.map((value) => value.toJson()).toList(),
-        if (fingerprint != null) 'fingerprint': fingerprint,
+          'filter': filter!.map((value) => value.toJson()).toList(),
+        if (fingerprint != null) 'fingerprint': fingerprint!,
         if (horizontalScrollPercentageList != null)
           'horizontalScrollPercentageList':
-              horizontalScrollPercentageList.toJson(),
-        if (interval != null) 'interval': interval.toJson(),
+              horizontalScrollPercentageList!.toJson(),
+        if (interval != null) 'interval': interval!.toJson(),
         if (intervalSeconds != null)
-          'intervalSeconds': intervalSeconds.toJson(),
-        if (limit != null) 'limit': limit.toJson(),
+          'intervalSeconds': intervalSeconds!.toJson(),
+        if (limit != null) 'limit': limit!.toJson(),
         if (maxTimerLengthSeconds != null)
-          'maxTimerLengthSeconds': maxTimerLengthSeconds.toJson(),
-        if (name != null) 'name': name,
+          'maxTimerLengthSeconds': maxTimerLengthSeconds!.toJson(),
+        if (name != null) 'name': name!,
         if (parameter != null)
-          'parameter': parameter.map((value) => value.toJson()).toList(),
-        if (parentFolderId != null) 'parentFolderId': parentFolderId,
-        if (selector != null) 'selector': selector.toJson(),
+          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (parentFolderId != null) 'parentFolderId': parentFolderId!,
+        if (selector != null) 'selector': selector!.toJson(),
         if (totalTimeMinMilliseconds != null)
-          'totalTimeMinMilliseconds': totalTimeMinMilliseconds.toJson(),
-        if (triggerId != null) 'triggerId': triggerId,
-        if (type != null) 'type': type,
+          'totalTimeMinMilliseconds': totalTimeMinMilliseconds!.toJson(),
+        if (triggerId != null) 'triggerId': triggerId!,
+        if (type != null) 'type': type!,
         if (uniqueTriggerId != null)
-          'uniqueTriggerId': uniqueTriggerId.toJson(),
+          'uniqueTriggerId': uniqueTriggerId!.toJson(),
         if (verticalScrollPercentageList != null)
-          'verticalScrollPercentageList': verticalScrollPercentageList.toJson(),
+          'verticalScrollPercentageList':
+              verticalScrollPercentageList!.toJson(),
         if (visibilitySelector != null)
-          'visibilitySelector': visibilitySelector.toJson(),
+          'visibilitySelector': visibilitySelector!.toJson(),
         if (visiblePercentageMax != null)
-          'visiblePercentageMax': visiblePercentageMax.toJson(),
+          'visiblePercentageMax': visiblePercentageMax!.toJson(),
         if (visiblePercentageMin != null)
-          'visiblePercentageMin': visiblePercentageMin.toJson(),
-        if (waitForTags != null) 'waitForTags': waitForTags.toJson(),
+          'visiblePercentageMin': visiblePercentageMin!.toJson(),
+        if (waitForTags != null) 'waitForTags': waitForTags!.toJson(),
         if (waitForTagsTimeout != null)
-          'waitForTagsTimeout': waitForTagsTimeout.toJson(),
+          'waitForTagsTimeout': waitForTagsTimeout!.toJson(),
       };
 }
 
@@ -4818,24 +4458,24 @@ class UserAccess {
   ///
   /// @mutable tagmanager.accounts.permissions.create @mutable
   /// tagmanager.accounts.permissions.update
-  AccountAccess accountAccess;
+  AccountAccess? accountAccess;
 
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// GTM Container access permissions.
   ///
   /// @mutable tagmanager.accounts.permissions.create @mutable
   /// tagmanager.accounts.permissions.update
-  core.List<ContainerAccess> containerAccess;
+  core.List<ContainerAccess>? containerAccess;
 
   /// User's email address.
   ///
   /// @mutable tagmanager.accounts.permissions.create
-  core.String emailAddress;
+  core.String? emailAddress;
 
   /// Account Permission ID.
-  core.String permissionId;
+  core.String? permissionId;
 
   UserAccess();
 
@@ -4861,24 +4501,24 @@ class UserAccess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountAccess != null) 'accountAccess': accountAccess.toJson(),
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountAccess != null) 'accountAccess': accountAccess!.toJson(),
+        if (accountId != null) 'accountId': accountId!,
         if (containerAccess != null)
           'containerAccess':
-              containerAccess.map((value) => value.toJson()).toList(),
-        if (emailAddress != null) 'emailAddress': emailAddress,
-        if (permissionId != null) 'permissionId': permissionId,
+              containerAccess!.map((value) => value.toJson()).toList(),
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (permissionId != null) 'permissionId': permissionId!,
       };
 }
 
 /// Represents a Google Tag Manager Variable.
 class Variable {
   /// GTM Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// GTM Container ID.
-  core.String containerId;
+  core.String? containerId;
 
   /// For mobile containers only: A list of trigger IDs for disabling
   /// conditional variables; the variable is enabled if one of the enabling
@@ -4887,7 +4527,7 @@ class Variable {
   /// Treated as an unordered set. @mutable
   /// tagmanager.accounts.containers.variables.create @mutable
   /// tagmanager.accounts.containers.variables.update
-  core.List<core.String> disablingTriggerId;
+  core.List<core.String>? disablingTriggerId;
 
   /// For mobile containers only: A list of trigger IDs for enabling conditional
   /// variables; the variable is enabled if one of the enabling triggers is true
@@ -4896,54 +4536,54 @@ class Variable {
   /// Treated as an unordered set. @mutable
   /// tagmanager.accounts.containers.variables.create @mutable
   /// tagmanager.accounts.containers.variables.update
-  core.List<core.String> enablingTriggerId;
+  core.List<core.String>? enablingTriggerId;
 
   /// The fingerprint of the GTM Variable as computed at storage time.
   ///
   /// This value is recomputed whenever the variable is modified.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// Variable display name.
   ///
   /// @mutable tagmanager.accounts.containers.variables.create @mutable
   /// tagmanager.accounts.containers.variables.update
-  core.String name;
+  core.String? name;
 
   /// User notes on how to apply this variable in the container.
   ///
   /// @mutable tagmanager.accounts.containers.variables.create @mutable
   /// tagmanager.accounts.containers.variables.update
-  core.String notes;
+  core.String? notes;
 
   /// The variable's parameters.
   ///
   /// @mutable tagmanager.accounts.containers.variables.create @mutable
   /// tagmanager.accounts.containers.variables.update
-  core.List<Parameter> parameter;
+  core.List<Parameter>? parameter;
 
   /// Parent folder id.
-  core.String parentFolderId;
+  core.String? parentFolderId;
 
   /// The end timestamp in milliseconds to schedule a variable.
   ///
   /// @mutable tagmanager.accounts.containers.variables.create @mutable
   /// tagmanager.accounts.containers.variables.update
-  core.String scheduleEndMs;
+  core.String? scheduleEndMs;
 
   /// The start timestamp in milliseconds to schedule a variable.
   ///
   /// @mutable tagmanager.accounts.containers.variables.create @mutable
   /// tagmanager.accounts.containers.variables.update
-  core.String scheduleStartMs;
+  core.String? scheduleStartMs;
 
   /// GTM Variable Type.
   ///
   /// @mutable tagmanager.accounts.containers.variables.create @mutable
   /// tagmanager.accounts.containers.variables.update
-  core.String type;
+  core.String? type;
 
   /// The Variable ID uniquely identifies the GTM Variable.
-  core.String variableId;
+  core.String? variableId;
 
   Variable();
 
@@ -4996,21 +4636,21 @@ class Variable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (containerId != null) 'containerId': containerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (containerId != null) 'containerId': containerId!,
         if (disablingTriggerId != null)
-          'disablingTriggerId': disablingTriggerId,
-        if (enablingTriggerId != null) 'enablingTriggerId': enablingTriggerId,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
+          'disablingTriggerId': disablingTriggerId!,
+        if (enablingTriggerId != null) 'enablingTriggerId': enablingTriggerId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
         if (parameter != null)
-          'parameter': parameter.map((value) => value.toJson()).toList(),
-        if (parentFolderId != null) 'parentFolderId': parentFolderId,
-        if (scheduleEndMs != null) 'scheduleEndMs': scheduleEndMs,
-        if (scheduleStartMs != null) 'scheduleStartMs': scheduleStartMs,
-        if (type != null) 'type': type,
-        if (variableId != null) 'variableId': variableId,
+          'parameter': parameter!.map((value) => value.toJson()).toList(),
+        if (parentFolderId != null) 'parentFolderId': parentFolderId!,
+        if (scheduleEndMs != null) 'scheduleEndMs': scheduleEndMs!,
+        if (scheduleStartMs != null) 'scheduleStartMs': scheduleStartMs!,
+        if (type != null) 'type': type!,
+        if (variableId != null) 'variableId': variableId!,
       };
 }

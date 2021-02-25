@@ -101,11 +101,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudLocationLocation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -146,14 +143,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudLocationListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -204,11 +198,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -263,13 +254,9 @@ class ProjectsLocationsProcessorsResource {
   async.Future<GoogleLongrunningOperation> batchProcess(
     GoogleCloudDocumentaiV1beta3BatchProcessRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -315,13 +302,9 @@ class ProjectsLocationsProcessorsResource {
   async.Future<GoogleCloudDocumentaiV1beta3ProcessResponse> process(
     GoogleCloudDocumentaiV1beta3ProcessRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -374,13 +357,9 @@ class ProjectsLocationsProcessorsHumanReviewConfigResource {
   async.Future<GoogleLongrunningOperation> reviewDocument(
     GoogleCloudDocumentaiV1beta3ReviewDocumentRequest request,
     core.String humanReviewConfig, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (humanReviewConfig == null) {
-      throw core.ArgumentError('Parameter humanReviewConfig is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -434,13 +413,9 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
   async.Future<GoogleLongrunningOperation> batchProcess(
     GoogleCloudDocumentaiV1beta3BatchProcessRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -486,13 +461,9 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
   async.Future<GoogleCloudDocumentaiV1beta3ProcessResponse> process(
     GoogleCloudDocumentaiV1beta3ProcessRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -515,7 +486,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
 /// The common metadata for long running operations.
 class GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata {
   /// The creation time of the operation.
-  core.String createTime;
+  core.String? createTime;
 
   /// The state of the operation.
   /// Possible string values are:
@@ -525,13 +496,13 @@ class GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata {
   /// - "SUCCEEDED" : Operation succeeded.
   /// - "FAILED" : Operation failed.
   /// - "CANCELLED" : Operation is cancelled.
-  core.String state;
+  core.String? state;
 
   /// A message providing more details about the current state of processing.
-  core.String stateMessage;
+  core.String? stateMessage;
 
   /// The last update time of the operation.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata();
 
@@ -551,18 +522,18 @@ class GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (state != null) 'state': state,
-        if (stateMessage != null) 'stateMessage': stateMessage,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// The long running operation metadata for CreateLabelerPool.
 class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata {
   /// The basic metadata of the long running operation.
-  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
 
   GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata();
 
@@ -575,15 +546,15 @@ class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
 
 /// The long running operation metadata for DeleteLabelerPool.
 class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata {
   /// The basic metadata of the long running operation.
-  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
 
   GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata();
 
@@ -596,15 +567,15 @@ class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
 
 /// The long running operation metadata for delete processor method.
 class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata {
   /// The basic metadata of the long running operation.
-  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
 
   GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata();
 
@@ -617,15 +588,15 @@ class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
 
 /// The long running operation metadata for delete processor version method.
 class GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata {
   /// The basic metadata of the long running operation.
-  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
 
   GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata();
 
@@ -638,15 +609,15 @@ class GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
 
 /// The long running operation metadata for deploy processor version method.
 class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata {
   /// The basic metadata of the long running operation.
-  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
 
   GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata();
 
@@ -659,8 +630,8 @@ class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
 
@@ -672,13 +643,13 @@ class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The long running operation metadata for disable processor method.
 class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata {
   /// The basic metadata of the long running operation.
-  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
 
   GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata();
 
@@ -691,8 +662,8 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
 
@@ -706,13 +677,13 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The long running operation metadata for enable processor method.
 class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata {
   /// The basic metadata of the long running operation.
-  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
 
   GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata();
 
@@ -725,8 +696,8 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
 
@@ -740,13 +711,13 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Metadata of the EvaluateProcessorVersion method.
 class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata {
   /// The basic metadata of the long running operation.
-  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
 
   GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata();
 
@@ -759,15 +730,15 @@ class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
 
 /// Metadata of the EvaluateProcessorVersion method.
 class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse {
   /// The resource name of the created evaluation.
-  core.String evaluation;
+  core.String? evaluation;
 
   GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse();
 
@@ -778,22 +749,22 @@ class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (evaluation != null) 'evaluation': evaluation,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (evaluation != null) 'evaluation': evaluation!,
       };
 }
 
 /// The metadata that represents a processor version being created.
 class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata {
   /// The basic metadata of the long running operation.
-  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
 
   /// The test dataset validation information.
-  GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation
+  GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation?
       testDatasetValidation;
 
   /// The training dataset validation information.
-  GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation
+  GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation?
       trainingDatasetValidation;
 
   GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata();
@@ -819,12 +790,12 @@ class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
         if (testDatasetValidation != null)
-          'testDatasetValidation': testDatasetValidation.toJson(),
+          'testDatasetValidation': testDatasetValidation!.toJson(),
         if (trainingDatasetValidation != null)
-          'trainingDatasetValidation': trainingDatasetValidation.toJson(),
+          'trainingDatasetValidation': trainingDatasetValidation!.toJson(),
       };
 }
 
@@ -836,13 +807,13 @@ class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidati
   ///
   /// A maximum of 10 dataset errors will be returned. A single dataset error is
   /// terminal for training.
-  core.List<GoogleRpcStatus> datasetErrors;
+  core.List<GoogleRpcStatus>? datasetErrors;
 
   /// Error information pertaining to specific documents.
   ///
   /// A maximum of 10 document errors will be returned. Any document with errors
   /// will not be used throughout training.
-  core.List<GoogleRpcStatus> documentErrors;
+  core.List<GoogleRpcStatus>? documentErrors;
 
   GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation();
 
@@ -862,20 +833,20 @@ class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidati
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (datasetErrors != null)
           'datasetErrors':
-              datasetErrors.map((value) => value.toJson()).toList(),
+              datasetErrors!.map((value) => value.toJson()).toList(),
         if (documentErrors != null)
           'documentErrors':
-              documentErrors.map((value) => value.toJson()).toList(),
+              documentErrors!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The response for the TrainProcessorVersion method.
 class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse {
   /// The resource name of the processor version produced by training.
-  core.String processorVersion;
+  core.String? processorVersion;
 
   GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse();
 
@@ -886,8 +857,8 @@ class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (processorVersion != null) 'processorVersion': processorVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (processorVersion != null) 'processorVersion': processorVersion!,
       };
 }
 
@@ -895,7 +866,7 @@ class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse {
 /// method.
 class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata {
   /// The basic metadata of the long running operation.
-  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
 
   GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata();
 
@@ -908,8 +879,8 @@ class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
 
@@ -921,14 +892,14 @@ class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The long running operation metadata for updating the human review
 /// configuration.
 class GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata {
   /// The basic metadata of the long running operation.
-  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
 
   GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata();
 
@@ -941,15 +912,15 @@ class GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
 
 /// The long running operation metadata for UpdateLabelerPool.
 class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata {
   /// The basic metadata of the long running operation.
-  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata commonMetadata;
+  GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata? commonMetadata;
 
   GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata();
 
@@ -962,18 +933,18 @@ class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
 
 /// The long running operation metadata for batch process method.
 class GoogleCloudDocumentaiV1BatchProcessMetadata {
   /// The creation time of the operation.
-  core.String createTime;
+  core.String? createTime;
 
   /// The list of response details of each document.
-  core.List<GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus>
+  core.List<GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus>?
       individualProcessStatuses;
 
   /// The state of the current batch processing.
@@ -986,15 +957,15 @@ class GoogleCloudDocumentaiV1BatchProcessMetadata {
   /// - "CANCELLING" : The batch processing was being cancelled.
   /// - "CANCELLED" : The batch processing was cancelled.
   /// - "FAILED" : The batch processing has failed.
-  core.String state;
+  core.String? state;
 
   /// A message providing more details about the current state of processing.
   ///
   /// For example, the error message if the operation is failed.
-  core.String stateMessage;
+  core.String? stateMessage;
 
   /// The last update time of the operation.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudDocumentaiV1BatchProcessMetadata();
 
@@ -1022,35 +993,36 @@ class GoogleCloudDocumentaiV1BatchProcessMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
         if (individualProcessStatuses != null)
-          'individualProcessStatuses':
-              individualProcessStatuses.map((value) => value.toJson()).toList(),
-        if (state != null) 'state': state,
-        if (stateMessage != null) 'stateMessage': stateMessage,
-        if (updateTime != null) 'updateTime': updateTime,
+          'individualProcessStatuses': individualProcessStatuses!
+              .map((value) => value.toJson())
+              .toList(),
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// The status of a each individual document in the batch process.
 class GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus {
   /// The status of human review on the processed document.
-  GoogleCloudDocumentaiV1HumanReviewStatus humanReviewStatus;
+  GoogleCloudDocumentaiV1HumanReviewStatus? humanReviewStatus;
 
   /// The source of the document, same as the \[input_gcs_source\] field in the
   /// request when the batch process started.
   ///
   /// The batch process is started by take snapshot of that document, since a
   /// user can move or change that document during the process.
-  core.String inputGcsSource;
+  core.String? inputGcsSource;
 
   /// The output_gcs_destination (in the request as 'output_gcs_destination') of
   /// the processed document if it was successful, otherwise empty.
-  core.String outputGcsDestination;
+  core.String? outputGcsDestination;
 
   /// The status of the processing of the document.
-  GoogleRpcStatus status;
+  GoogleRpcStatus? status;
 
   GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus();
 
@@ -1072,13 +1044,13 @@ class GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (humanReviewStatus != null)
-          'humanReviewStatus': humanReviewStatus.toJson(),
-        if (inputGcsSource != null) 'inputGcsSource': inputGcsSource,
+          'humanReviewStatus': humanReviewStatus!.toJson(),
+        if (inputGcsSource != null) 'inputGcsSource': inputGcsSource!,
         if (outputGcsDestination != null)
-          'outputGcsDestination': outputGcsDestination,
-        if (status != null) 'status': status.toJson(),
+          'outputGcsDestination': outputGcsDestination!,
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -1090,13 +1062,13 @@ class GoogleCloudDocumentaiV1BatchProcessResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The common metadata for long running operations.
 class GoogleCloudDocumentaiV1CommonOperationMetadata {
   /// The creation time of the operation.
-  core.String createTime;
+  core.String? createTime;
 
   /// The state of the operation.
   /// Possible string values are:
@@ -1106,13 +1078,13 @@ class GoogleCloudDocumentaiV1CommonOperationMetadata {
   /// - "SUCCEEDED" : Operation succeeded.
   /// - "FAILED" : Operation failed.
   /// - "CANCELLED" : Operation is cancelled.
-  core.String state;
+  core.String? state;
 
   /// A message providing more details about the current state of processing.
-  core.String stateMessage;
+  core.String? stateMessage;
 
   /// The last update time of the operation.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudDocumentaiV1CommonOperationMetadata();
 
@@ -1131,11 +1103,11 @@ class GoogleCloudDocumentaiV1CommonOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (state != null) 'state': state,
-        if (stateMessage != null) 'stateMessage': stateMessage,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1146,7 +1118,7 @@ class GoogleCloudDocumentaiV1HumanReviewStatus {
   /// This field is populated only when the \[state\] is
   /// \[HUMAN_REVIEW_IN_PROGRESS\]. It has the same response type and metadata
   /// as the long running operation returned by \[ReviewDocument\] method.
-  core.String humanReviewOperation;
+  core.String? humanReviewOperation;
 
   /// The state of human review on the processing request.
   /// Possible string values are:
@@ -1161,10 +1133,10 @@ class GoogleCloudDocumentaiV1HumanReviewStatus {
   /// under review.
   /// - "ERROR" : Some error happened during triggering human review, see the
   /// \[state_message\] for details.
-  core.String state;
+  core.String? state;
 
   /// A message providing more details about the human review state.
-  core.String stateMessage;
+  core.String? stateMessage;
 
   GoogleCloudDocumentaiV1HumanReviewStatus();
 
@@ -1180,18 +1152,18 @@ class GoogleCloudDocumentaiV1HumanReviewStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (humanReviewOperation != null)
-          'humanReviewOperation': humanReviewOperation,
-        if (state != null) 'state': state,
-        if (stateMessage != null) 'stateMessage': stateMessage,
+          'humanReviewOperation': humanReviewOperation!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
       };
 }
 
 /// The long running operation metadata for review document method.
 class GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata {
   /// The basic metadata of the long running operation.
-  GoogleCloudDocumentaiV1CommonOperationMetadata commonMetadata;
+  GoogleCloudDocumentaiV1CommonOperationMetadata? commonMetadata;
 
   GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata();
 
@@ -1203,15 +1175,15 @@ class GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
 
 /// Response message for review document method.
 class GoogleCloudDocumentaiV1ReviewDocumentResponse {
   /// The Cloud Storage uri for the human reviewed document.
-  core.String gcsDestination;
+  core.String? gcsDestination;
 
   GoogleCloudDocumentaiV1ReviewDocumentResponse();
 
@@ -1221,8 +1193,8 @@ class GoogleCloudDocumentaiV1ReviewDocumentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
 
@@ -1231,7 +1203,7 @@ class GoogleCloudDocumentaiV1ReviewDocumentResponse {
 /// This is returned in the LRO Operation after the operation is complete.
 class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse {
   /// Responses for each individual document.
-  core.List<GoogleCloudDocumentaiV1beta1ProcessDocumentResponse> responses;
+  core.List<GoogleCloudDocumentaiV1beta1ProcessDocumentResponse>? responses;
 
   GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse();
 
@@ -1246,19 +1218,19 @@ class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (responses != null)
-          'responses': responses.map((value) => value.toJson()).toList(),
+          'responses': responses!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A bounding polygon for the detected image annotation.
 class GoogleCloudDocumentaiV1beta1BoundingPoly {
   /// The bounding polygon normalized vertices.
-  core.List<GoogleCloudDocumentaiV1beta1NormalizedVertex> normalizedVertices;
+  core.List<GoogleCloudDocumentaiV1beta1NormalizedVertex>? normalizedVertices;
 
   /// The bounding polygon vertices.
-  core.List<GoogleCloudDocumentaiV1beta1Vertex> vertices;
+  core.List<GoogleCloudDocumentaiV1beta1Vertex>? vertices;
 
   GoogleCloudDocumentaiV1beta1BoundingPoly();
 
@@ -1279,12 +1251,12 @@ class GoogleCloudDocumentaiV1beta1BoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (normalizedVertices != null)
           'normalizedVertices':
-              normalizedVertices.map((value) => value.toJson()).toList(),
+              normalizedVertices!.map((value) => value.toJson()).toList(),
         if (vertices != null)
-          'vertices': vertices.map((value) => value.toJson()).toList(),
+          'vertices': vertices!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1299,8 +1271,8 @@ class GoogleCloudDocumentaiV1beta1Document {
   ///
   /// Note: As with all `bytes` fields, protobuffers use a pure binary
   /// representation, whereas JSON representations use base64.
-  core.String content;
-  core.List<core.int> get contentAsBytes => convert.base64.decode(content);
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
@@ -1310,48 +1282,49 @@ class GoogleCloudDocumentaiV1beta1Document {
   /// A list of entities detected on Document.text.
   ///
   /// For document shards, entities in this list may cross shard boundaries.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentEntity> entities;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentEntity>? entities;
 
   /// Relationship among Document.entities.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentEntityRelation> entityRelations;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentEntityRelation>?
+      entityRelations;
 
   /// Any error that occurred while processing this document.
-  GoogleRpcStatus error;
+  GoogleRpcStatus? error;
 
   /// An IANA published MIME type (also referred to as media type).
   ///
   /// For more information, see
   /// https://www.iana.org/assignments/media-types/media-types.xhtml.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// Visual page layout for the Document.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPage> pages;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPage>? pages;
 
   /// Revision history of this document.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentRevision> revisions;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentRevision>? revisions;
 
   /// Information about the sharding if this document is sharded part of a
   /// larger document.
   ///
   /// If the document is not sharded, this message is not specified.
-  GoogleCloudDocumentaiV1beta1DocumentShardInfo shardInfo;
+  GoogleCloudDocumentaiV1beta1DocumentShardInfo? shardInfo;
 
   /// UTF-8 encoded text in reading order from the document.
-  core.String text;
+  core.String? text;
 
   /// A list of text corrections made to \[Document.text\].
   ///
   /// This is usually used for annotating corrections to OCR mistakes. Text
   /// changes for a given revision may not overlap with each other.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentTextChange> textChanges;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentTextChange>? textChanges;
 
   /// Styles for the Document.text.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentStyle> textStyles;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentStyle>? textStyles;
 
   /// A list of translations on Document.text.
   ///
   /// For document shards, translations in this list may cross shard boundaries.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentTranslation> translations;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentTranslation>? translations;
 
   /// Currently supports Google Cloud Storage URI of the form
   /// `gs://bucket_name/object_name`.
@@ -1359,7 +1332,7 @@ class GoogleCloudDocumentaiV1beta1Document {
   /// Object versioning is not supported. See
   /// [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris)
   /// for more info.
-  core.String uri;
+  core.String? uri;
 
   GoogleCloudDocumentaiV1beta1Document();
 
@@ -1435,28 +1408,28 @@ class GoogleCloudDocumentaiV1beta1Document {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
         if (entities != null)
-          'entities': entities.map((value) => value.toJson()).toList(),
+          'entities': entities!.map((value) => value.toJson()).toList(),
         if (entityRelations != null)
           'entityRelations':
-              entityRelations.map((value) => value.toJson()).toList(),
-        if (error != null) 'error': error.toJson(),
-        if (mimeType != null) 'mimeType': mimeType,
+              entityRelations!.map((value) => value.toJson()).toList(),
+        if (error != null) 'error': error!.toJson(),
+        if (mimeType != null) 'mimeType': mimeType!,
         if (pages != null)
-          'pages': pages.map((value) => value.toJson()).toList(),
+          'pages': pages!.map((value) => value.toJson()).toList(),
         if (revisions != null)
-          'revisions': revisions.map((value) => value.toJson()).toList(),
-        if (shardInfo != null) 'shardInfo': shardInfo.toJson(),
-        if (text != null) 'text': text,
+          'revisions': revisions!.map((value) => value.toJson()).toList(),
+        if (shardInfo != null) 'shardInfo': shardInfo!.toJson(),
+        if (text != null) 'text': text!,
         if (textChanges != null)
-          'textChanges': textChanges.map((value) => value.toJson()).toList(),
+          'textChanges': textChanges!.map((value) => value.toJson()).toList(),
         if (textStyles != null)
-          'textStyles': textStyles.map((value) => value.toJson()).toList(),
+          'textStyles': textStyles!.map((value) => value.toJson()).toList(),
         if (translations != null)
-          'translations': translations.map((value) => value.toJson()).toList(),
-        if (uri != null) 'uri': uri,
+          'translations': translations!.map((value) => value.toJson()).toList(),
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -1468,22 +1441,22 @@ class GoogleCloudDocumentaiV1beta1DocumentEntity {
   /// Range \[0, 1\].
   ///
   /// Optional.
-  core.double confidence;
+  core.double? confidence;
 
   /// Canonical id.
   ///
   /// This will be a unique value in the entity list for this document.
   ///
   /// Optional.
-  core.String id;
+  core.String? id;
 
   /// Use `id` field instead.
   ///
   /// Deprecated.
-  core.String mentionId;
+  core.String? mentionId;
 
   /// Text value in the document e.g. `1600 Amphitheatre Pkwy`.
-  core.String mentionText;
+  core.String? mentionText;
 
   /// Normalized entity value.
   ///
@@ -1492,38 +1465,38 @@ class GoogleCloudDocumentaiV1beta1DocumentEntity {
   /// populated for certain supported document types.
   ///
   /// Optional.
-  GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue normalizedValue;
+  GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue? normalizedValue;
 
   /// Represents the provenance of this entity wrt.
   ///
   /// the location on the page where it was found.
   ///
   /// Optional.
-  GoogleCloudDocumentaiV1beta1DocumentPageAnchor pageAnchor;
+  GoogleCloudDocumentaiV1beta1DocumentPageAnchor? pageAnchor;
 
   /// Entities can be nested to form a hierarchical data structure representing
   /// the content in the document.
   ///
   /// Optional.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentEntity> properties;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentEntity>? properties;
 
   /// The history of this annotation.
   ///
   /// Optional.
-  GoogleCloudDocumentaiV1beta1DocumentProvenance provenance;
+  GoogleCloudDocumentaiV1beta1DocumentProvenance? provenance;
 
   /// Whether the entity will be redacted for de-identification purposes.
   ///
   /// Optional.
-  core.bool redacted;
+  core.bool? redacted;
 
   /// Provenance of the entity.
   ///
   /// Text anchor indexing into the Document.text.
-  GoogleCloudDocumentaiV1beta1DocumentTextAnchor textAnchor;
+  GoogleCloudDocumentaiV1beta1DocumentTextAnchor? textAnchor;
 
   /// Entity type from a schema e.g. `Address`.
-  core.String type;
+  core.String? type;
 
   GoogleCloudDocumentaiV1beta1DocumentEntity();
 
@@ -1572,20 +1545,20 @@ class GoogleCloudDocumentaiV1beta1DocumentEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (confidence != null) 'confidence': confidence,
-        if (id != null) 'id': id,
-        if (mentionId != null) 'mentionId': mentionId,
-        if (mentionText != null) 'mentionText': mentionText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (id != null) 'id': id!,
+        if (mentionId != null) 'mentionId': mentionId!,
+        if (mentionText != null) 'mentionText': mentionText!,
         if (normalizedValue != null)
-          'normalizedValue': normalizedValue.toJson(),
-        if (pageAnchor != null) 'pageAnchor': pageAnchor.toJson(),
+          'normalizedValue': normalizedValue!.toJson(),
+        if (pageAnchor != null) 'pageAnchor': pageAnchor!.toJson(),
         if (properties != null)
-          'properties': properties.map((value) => value.toJson()).toList(),
-        if (provenance != null) 'provenance': provenance.toJson(),
-        if (redacted != null) 'redacted': redacted,
-        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
-        if (type != null) 'type': type,
+          'properties': properties!.map((value) => value.toJson()).toList(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (redacted != null) 'redacted': redacted!,
+        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1595,30 +1568,30 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
   ///
   /// See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/postal_address.proto
-  GoogleTypePostalAddress addressValue;
+  GoogleTypePostalAddress? addressValue;
 
   /// Boolean value.
   ///
   /// Can be used for entities with binary values, or for checkboxes.
-  core.bool booleanValue;
+  core.bool? booleanValue;
 
   /// Date value.
   ///
   /// Includes year, month, day. See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/date.proto
-  GoogleTypeDate dateValue;
+  GoogleTypeDate? dateValue;
 
   /// DateTime value.
   ///
   /// Includes date, time, and timezone. See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto
-  GoogleTypeDateTime datetimeValue;
+  GoogleTypeDateTime? datetimeValue;
 
   /// Money value.
   ///
   /// See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
-  GoogleTypeMoney moneyValue;
+  GoogleTypeMoney? moneyValue;
 
   /// Normalized entity value stored as a string.
   ///
@@ -1629,7 +1602,7 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
   /// Datetime type (`datetime_value`) is in the ISO 8601 text format.
   ///
   /// Required.
-  core.String text;
+  core.String? text;
 
   GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue();
 
@@ -1659,26 +1632,26 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addressValue != null) 'addressValue': addressValue.toJson(),
-        if (booleanValue != null) 'booleanValue': booleanValue,
-        if (dateValue != null) 'dateValue': dateValue.toJson(),
-        if (datetimeValue != null) 'datetimeValue': datetimeValue.toJson(),
-        if (moneyValue != null) 'moneyValue': moneyValue.toJson(),
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addressValue != null) 'addressValue': addressValue!.toJson(),
+        if (booleanValue != null) 'booleanValue': booleanValue!,
+        if (dateValue != null) 'dateValue': dateValue!.toJson(),
+        if (datetimeValue != null) 'datetimeValue': datetimeValue!.toJson(),
+        if (moneyValue != null) 'moneyValue': moneyValue!.toJson(),
+        if (text != null) 'text': text!,
       };
 }
 
 /// Relationship between Entities.
 class GoogleCloudDocumentaiV1beta1DocumentEntityRelation {
   /// Object entity id.
-  core.String objectId;
+  core.String? objectId;
 
   /// Relationship description.
-  core.String relation;
+  core.String? relation;
 
   /// Subject entity id.
-  core.String subjectId;
+  core.String? subjectId;
 
   GoogleCloudDocumentaiV1beta1DocumentEntityRelation();
 
@@ -1694,10 +1667,10 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityRelation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
-        if (relation != null) 'relation': relation,
-        if (subjectId != null) 'subjectId': subjectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
+        if (relation != null) 'relation': relation!,
+        if (subjectId != null) 'subjectId': subjectId!,
       };
 }
 
@@ -1707,56 +1680,56 @@ class GoogleCloudDocumentaiV1beta1DocumentPage {
   ///
   /// A block has a set of lines (collected into paragraphs) that have a common
   /// line-spacing and orientation.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageBlock> blocks;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageBlock>? blocks;
 
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Physical dimension of the page.
-  GoogleCloudDocumentaiV1beta1DocumentPageDimension dimension;
+  GoogleCloudDocumentaiV1beta1DocumentPageDimension? dimension;
 
   /// A list of visually detected form fields on the page.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageFormField> formFields;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageFormField>? formFields;
 
   /// Rendered image for this page.
   ///
   /// This image is preprocessed to remove any skew, rotation, and distortions
   /// such that the annotation bounding boxes can be upright and axis-aligned.
-  GoogleCloudDocumentaiV1beta1DocumentPageImage image;
+  GoogleCloudDocumentaiV1beta1DocumentPageImage? image;
 
   /// Layout for the page.
-  GoogleCloudDocumentaiV1beta1DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta1DocumentPageLayout? layout;
 
   /// A list of visually detected text lines on the page.
   ///
   /// A collection of tokens that a human would perceive as a line.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageLine> lines;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageLine>? lines;
 
   /// 1-based index for current Page in a parent Document.
   ///
   /// Useful when a page is taken out of a Document for individual processing.
-  core.int pageNumber;
+  core.int? pageNumber;
 
   /// A list of visually detected text paragraphs on the page.
   ///
   /// A collection of lines that a human would perceive as a paragraph.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageParagraph> paragraphs;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageParagraph>? paragraphs;
 
   /// A list of visually detected tables on the page.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageTable> tables;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageTable>? tables;
 
   /// A list of visually detected tokens on the page.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageToken> tokens;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageToken>? tokens;
 
   /// Transformation matrices that were applied to the original document image
   /// to produce Page.image.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageMatrix> transforms;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageMatrix>? transforms;
 
   /// A list of detected non-text visual elements e.g. checkbox, signature etc.
   ///
   /// on the page.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageVisualElement>
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageVisualElement>?
       visualElements;
 
   GoogleCloudDocumentaiV1beta1DocumentPage();
@@ -1843,31 +1816,31 @@ class GoogleCloudDocumentaiV1beta1DocumentPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (blocks != null)
-          'blocks': blocks.map((value) => value.toJson()).toList(),
+          'blocks': blocks!.map((value) => value.toJson()).toList(),
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (dimension != null) 'dimension': dimension.toJson(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (dimension != null) 'dimension': dimension!.toJson(),
         if (formFields != null)
-          'formFields': formFields.map((value) => value.toJson()).toList(),
-        if (image != null) 'image': image.toJson(),
-        if (layout != null) 'layout': layout.toJson(),
+          'formFields': formFields!.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image!.toJson(),
+        if (layout != null) 'layout': layout!.toJson(),
         if (lines != null)
-          'lines': lines.map((value) => value.toJson()).toList(),
-        if (pageNumber != null) 'pageNumber': pageNumber,
+          'lines': lines!.map((value) => value.toJson()).toList(),
+        if (pageNumber != null) 'pageNumber': pageNumber!,
         if (paragraphs != null)
-          'paragraphs': paragraphs.map((value) => value.toJson()).toList(),
+          'paragraphs': paragraphs!.map((value) => value.toJson()).toList(),
         if (tables != null)
-          'tables': tables.map((value) => value.toJson()).toList(),
+          'tables': tables!.map((value) => value.toJson()).toList(),
         if (tokens != null)
-          'tokens': tokens.map((value) => value.toJson()).toList(),
+          'tokens': tokens!.map((value) => value.toJson()).toList(),
         if (transforms != null)
-          'transforms': transforms.map((value) => value.toJson()).toList(),
+          'transforms': transforms!.map((value) => value.toJson()).toList(),
         if (visualElements != null)
           'visualElements':
-              visualElements.map((value) => value.toJson()).toList(),
+              visualElements!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1877,7 +1850,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPage {
 /// optionally reference specific layout element types.
 class GoogleCloudDocumentaiV1beta1DocumentPageAnchor {
   /// One or more references to visual page elements
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef> pageRefs;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef>? pageRefs;
 
   GoogleCloudDocumentaiV1beta1DocumentPageAnchor();
 
@@ -1891,9 +1864,9 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (pageRefs != null)
-          'pageRefs': pageRefs.map((value) => value.toJson()).toList(),
+          'pageRefs': pageRefs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1902,12 +1875,12 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef {
   /// Identifies the bounding polygon of a layout element on the page.
   ///
   /// Optional.
-  GoogleCloudDocumentaiV1beta1BoundingPoly boundingPoly;
+  GoogleCloudDocumentaiV1beta1BoundingPoly? boundingPoly;
 
   /// Use PageRef.bounding_poly instead.
   ///
   /// Optional. Deprecated.
-  core.String layoutId;
+  core.String? layoutId;
 
   /// The type of the layout element that is being referenced if any.
   ///
@@ -1921,13 +1894,13 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef {
   /// - "VISUAL_ELEMENT" : References a Page.visual_elements element.
   /// - "TABLE" : Refrrences a Page.tables element.
   /// - "FORM_FIELD" : References a Page.form_fields element.
-  core.String layoutType;
+  core.String? layoutType;
 
   /// Index into the Document.pages element, for example using Document.pages to
   /// locate the related page element.
   ///
   /// Required.
-  core.String page;
+  core.String? page;
 
   GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef();
 
@@ -1948,11 +1921,11 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
-        if (layoutId != null) 'layoutId': layoutId,
-        if (layoutType != null) 'layoutType': layoutType,
-        if (page != null) 'page': page,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
+        if (layoutId != null) 'layoutId': layoutId!,
+        if (layoutType != null) 'layoutType': layoutType!,
+        if (page != null) 'page': page!,
       };
 }
 
@@ -1960,14 +1933,14 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef {
 /// line-spacing and orientation.
 class GoogleCloudDocumentaiV1beta1DocumentPageBlock {
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for Block.
-  GoogleCloudDocumentaiV1beta1DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta1DocumentPageLayout? layout;
 
   /// The history of this annotation.
-  GoogleCloudDocumentaiV1beta1DocumentProvenance provenance;
+  GoogleCloudDocumentaiV1beta1DocumentProvenance? provenance;
 
   GoogleCloudDocumentaiV1beta1DocumentPageBlock();
 
@@ -1990,12 +1963,12 @@ class GoogleCloudDocumentaiV1beta1DocumentPageBlock {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (provenance != null) 'provenance': provenance.toJson(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
       };
 }
 
@@ -2004,13 +1977,13 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage {
   /// Confidence of detected language.
   ///
   /// Range \[0, 1\].
-  core.double confidence;
+  core.double? confidence;
 
   /// The BCP-47 language code, such as "en-US" or "sr-Latn".
   ///
   /// For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String languageCode;
+  core.String? languageCode;
 
   GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage();
 
@@ -2024,22 +1997,22 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (confidence != null) 'confidence': confidence,
-        if (languageCode != null) 'languageCode': languageCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (languageCode != null) 'languageCode': languageCode!,
       };
 }
 
 /// Dimension for the page.
 class GoogleCloudDocumentaiV1beta1DocumentPageDimension {
   /// Page height.
-  core.double height;
+  core.double? height;
 
   /// Dimension unit.
-  core.String unit;
+  core.String? unit;
 
   /// Page width.
-  core.double width;
+  core.double? width;
 
   GoogleCloudDocumentaiV1beta1DocumentPageDimension();
 
@@ -2055,10 +2028,10 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (unit != null) 'unit': unit,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (unit != null) 'unit': unit!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -2067,24 +2040,24 @@ class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
   /// Layout for the FormField name.
   ///
   /// e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.
-  GoogleCloudDocumentaiV1beta1DocumentPageLayout fieldName;
+  GoogleCloudDocumentaiV1beta1DocumentPageLayout? fieldName;
 
   /// Layout for the FormField value.
-  GoogleCloudDocumentaiV1beta1DocumentPageLayout fieldValue;
+  GoogleCloudDocumentaiV1beta1DocumentPageLayout? fieldValue;
 
   /// A list of detected languages for name together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>?
       nameDetectedLanguages;
 
   /// A list of detected languages for value together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>?
       valueDetectedLanguages;
 
   /// If the value is non-textual, this field represents the type.
   ///
   /// Current valid values are: - blank (this indicates the field_value is
   /// normal text) - "unfilled_checkbox" - "filled_checkbox"
-  core.String valueType;
+  core.String? valueType;
 
   GoogleCloudDocumentaiV1beta1DocumentPageFormField();
 
@@ -2118,24 +2091,24 @@ class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fieldName != null) 'fieldName': fieldName.toJson(),
-        if (fieldValue != null) 'fieldValue': fieldValue.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fieldName != null) 'fieldName': fieldName!.toJson(),
+        if (fieldValue != null) 'fieldValue': fieldValue!.toJson(),
         if (nameDetectedLanguages != null)
           'nameDetectedLanguages':
-              nameDetectedLanguages.map((value) => value.toJson()).toList(),
+              nameDetectedLanguages!.map((value) => value.toJson()).toList(),
         if (valueDetectedLanguages != null)
           'valueDetectedLanguages':
-              valueDetectedLanguages.map((value) => value.toJson()).toList(),
-        if (valueType != null) 'valueType': valueType,
+              valueDetectedLanguages!.map((value) => value.toJson()).toList(),
+        if (valueType != null) 'valueType': valueType!,
       };
 }
 
 /// Rendered image contents for this page.
 class GoogleCloudDocumentaiV1beta1DocumentPageImage {
   /// Raw byte content of the image.
-  core.String content;
-  core.List<core.int> get contentAsBytes => convert.base64.decode(content);
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
@@ -2143,13 +2116,13 @@ class GoogleCloudDocumentaiV1beta1DocumentPageImage {
   }
 
   /// Height of the image in pixels.
-  core.int height;
+  core.int? height;
 
   /// Encoding mime type for the image.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// Width of the image in pixels.
-  core.int width;
+  core.int? width;
 
   GoogleCloudDocumentaiV1beta1DocumentPageImage();
 
@@ -2168,25 +2141,25 @@ class GoogleCloudDocumentaiV1beta1DocumentPageImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
-        if (height != null) 'height': height,
-        if (mimeType != null) 'mimeType': mimeType,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
+        if (height != null) 'height': height!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// Visual element describing a layout unit on a page.
 class GoogleCloudDocumentaiV1beta1DocumentPageLayout {
   /// The bounding polygon for the Layout.
-  GoogleCloudDocumentaiV1beta1BoundingPoly boundingPoly;
+  GoogleCloudDocumentaiV1beta1BoundingPoly? boundingPoly;
 
   /// Confidence of the current Layout within context of the object this layout
   /// is for.
   ///
   /// e.g. confidence can be for a single token, a table, a visual element, etc.
   /// depending on context. Range \[0, 1\].
-  core.double confidence;
+  core.double? confidence;
 
   /// Detected orientation for the Layout.
   /// Possible string values are:
@@ -2198,10 +2171,10 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLayout {
   /// degrees from upright to read.
   /// - "PAGE_LEFT" : Orientation is aligned with page left. Turn the head 90
   /// degrees counterclockwise from upright to read.
-  core.String orientation;
+  core.String? orientation;
 
   /// Text anchor indexing into the Document.text.
-  GoogleCloudDocumentaiV1beta1DocumentTextAnchor textAnchor;
+  GoogleCloudDocumentaiV1beta1DocumentTextAnchor? textAnchor;
 
   GoogleCloudDocumentaiV1beta1DocumentPageLayout();
 
@@ -2222,11 +2195,11 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLayout {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
-        if (confidence != null) 'confidence': confidence,
-        if (orientation != null) 'orientation': orientation,
-        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
+        if (confidence != null) 'confidence': confidence!,
+        if (orientation != null) 'orientation': orientation!,
+        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
       };
 }
 
@@ -2235,14 +2208,14 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLayout {
 /// Does not cross column boundaries, can be horizontal, vertical, etc.
 class GoogleCloudDocumentaiV1beta1DocumentPageLine {
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for Line.
-  GoogleCloudDocumentaiV1beta1DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta1DocumentPageLayout? layout;
 
   /// The history of this annotation.
-  GoogleCloudDocumentaiV1beta1DocumentProvenance provenance;
+  GoogleCloudDocumentaiV1beta1DocumentProvenance? provenance;
 
   GoogleCloudDocumentaiV1beta1DocumentPageLine();
 
@@ -2265,12 +2238,12 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (provenance != null) 'provenance': provenance.toJson(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
       };
 }
 
@@ -2278,11 +2251,11 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLine {
 /// with OpenCV format for image manipulation.
 class GoogleCloudDocumentaiV1beta1DocumentPageMatrix {
   /// Number of columns in the matrix.
-  core.int cols;
+  core.int? cols;
 
   /// The matrix data.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -2290,14 +2263,14 @@ class GoogleCloudDocumentaiV1beta1DocumentPageMatrix {
   }
 
   /// Number of rows in the matrix.
-  core.int rows;
+  core.int? rows;
 
   /// This encodes information about what data type the matrix uses.
   ///
   /// For example, 0 (CV_8U) is an unsigned 8-bit image. For the full list of
   /// OpenCV primitive data types, please refer to
   /// https://docs.opencv.org/4.3.0/d1/d1b/group__core__hal__interface.html
-  core.int type;
+  core.int? type;
 
   GoogleCloudDocumentaiV1beta1DocumentPageMatrix();
 
@@ -2316,25 +2289,25 @@ class GoogleCloudDocumentaiV1beta1DocumentPageMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cols != null) 'cols': cols,
-        if (data != null) 'data': data,
-        if (rows != null) 'rows': rows,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cols != null) 'cols': cols!,
+        if (data != null) 'data': data!,
+        if (rows != null) 'rows': rows!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// A collection of lines that a human would perceive as a paragraph.
 class GoogleCloudDocumentaiV1beta1DocumentPageParagraph {
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for Paragraph.
-  GoogleCloudDocumentaiV1beta1DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta1DocumentPageLayout? layout;
 
   /// The history of this annotation.
-  GoogleCloudDocumentaiV1beta1DocumentProvenance provenance;
+  GoogleCloudDocumentaiV1beta1DocumentProvenance? provenance;
 
   GoogleCloudDocumentaiV1beta1DocumentPageParagraph();
 
@@ -2357,29 +2330,29 @@ class GoogleCloudDocumentaiV1beta1DocumentPageParagraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (provenance != null) 'provenance': provenance.toJson(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
       };
 }
 
 /// A table representation similar to HTML table structure.
 class GoogleCloudDocumentaiV1beta1DocumentPageTable {
   /// Body rows of the table.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow> bodyRows;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow>? bodyRows;
 
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Header rows of the table.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow> headerRows;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow>? headerRows;
 
   /// Layout for Table.
-  GoogleCloudDocumentaiV1beta1DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta1DocumentPageLayout? layout;
 
   GoogleCloudDocumentaiV1beta1DocumentPageTable();
 
@@ -2412,32 +2385,32 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bodyRows != null)
-          'bodyRows': bodyRows.map((value) => value.toJson()).toList(),
+          'bodyRows': bodyRows!.map((value) => value.toJson()).toList(),
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
         if (headerRows != null)
-          'headerRows': headerRows.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
+          'headerRows': headerRows!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
       };
 }
 
 /// A cell representation inside the table.
 class GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell {
   /// How many columns this cell spans.
-  core.int colSpan;
+  core.int? colSpan;
 
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for TableCell.
-  GoogleCloudDocumentaiV1beta1DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta1DocumentPageLayout? layout;
 
   /// How many rows this cell spans.
-  core.int rowSpan;
+  core.int? rowSpan;
 
   GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell();
 
@@ -2463,20 +2436,20 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (colSpan != null) 'colSpan': colSpan,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (colSpan != null) 'colSpan': colSpan!,
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (rowSpan != null) 'rowSpan': rowSpan,
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (rowSpan != null) 'rowSpan': rowSpan!,
       };
 }
 
 /// A row of table cells.
 class GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow {
   /// Cells that make up this row.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell> cells;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell>? cells;
 
   GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow();
 
@@ -2491,26 +2464,26 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cells != null)
-          'cells': cells.map((value) => value.toJson()).toList(),
+          'cells': cells!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A detected token.
 class GoogleCloudDocumentaiV1beta1DocumentPageToken {
   /// Detected break at the end of a Token.
-  GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak detectedBreak;
+  GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak? detectedBreak;
 
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for Token.
-  GoogleCloudDocumentaiV1beta1DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta1DocumentPageLayout? layout;
 
   /// The history of this annotation.
-  GoogleCloudDocumentaiV1beta1DocumentProvenance provenance;
+  GoogleCloudDocumentaiV1beta1DocumentProvenance? provenance;
 
   GoogleCloudDocumentaiV1beta1DocumentPageToken();
 
@@ -2538,13 +2511,13 @@ class GoogleCloudDocumentaiV1beta1DocumentPageToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (detectedBreak != null) 'detectedBreak': detectedBreak.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (detectedBreak != null) 'detectedBreak': detectedBreak!.toJson(),
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (provenance != null) 'provenance': provenance.toJson(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
       };
 }
 
@@ -2557,7 +2530,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak {
   /// - "WIDE_SPACE" : A wider whitespace.
   /// - "HYPHEN" : A hyphen that indicates that a token has been split across
   /// lines.
-  core.String type;
+  core.String? type;
 
   GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak();
 
@@ -2568,8 +2541,8 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2578,14 +2551,14 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak {
 /// on the page.
 class GoogleCloudDocumentaiV1beta1DocumentPageVisualElement {
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for VisualElement.
-  GoogleCloudDocumentaiV1beta1DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta1DocumentPageLayout? layout;
 
   /// Type of the VisualElement.
-  core.String type;
+  core.String? type;
 
   GoogleCloudDocumentaiV1beta1DocumentPageVisualElement();
 
@@ -2608,12 +2581,12 @@ class GoogleCloudDocumentaiV1beta1DocumentPageVisualElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (type != null) 'type': type,
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2623,13 +2596,13 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenance {
   /// The Id of this operation.
   ///
   /// Needs to be unique within the scope of the revision.
-  core.int id;
+  core.int? id;
 
   /// References to the original elements that are replaced.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentProvenanceParent> parents;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentProvenanceParent>? parents;
 
   /// The index of the revision that produced this element.
-  core.int revision;
+  core.int? revision;
 
   /// The type of provenance operation.
   /// Possible string values are:
@@ -2641,7 +2614,7 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenance {
   /// - "EVAL_REQUESTED" : Element is requested for human review.
   /// - "EVAL_APPROVED" : Element is review and approved at human review,
   /// confidence will be set to 1.0
-  core.String type;
+  core.String? type;
 
   GoogleCloudDocumentaiV1beta1DocumentProvenance();
 
@@ -2664,12 +2637,12 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
         if (parents != null)
-          'parents': parents.map((value) => value.toJson()).toList(),
-        if (revision != null) 'revision': revision,
-        if (type != null) 'type': type,
+          'parents': parents!.map((value) => value.toJson()).toList(),
+        if (revision != null) 'revision': revision!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2679,10 +2652,10 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenance {
 /// identify the elements that are replaced.
 class GoogleCloudDocumentaiV1beta1DocumentProvenanceParent {
   /// The id of the parent provenance.
-  core.int id;
+  core.int? id;
 
   /// The index of the \[Document.revisions\] identifying the parent revision.
-  core.int revision;
+  core.int? revision;
 
   GoogleCloudDocumentaiV1beta1DocumentProvenanceParent();
 
@@ -2696,37 +2669,37 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenanceParent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (revision != null) 'revision': revision,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (revision != null) 'revision': revision!,
       };
 }
 
 /// Contains past or forward revisions of this document.
 class GoogleCloudDocumentaiV1beta1DocumentRevision {
   /// If the change was made by a person specify the name or id of that person.
-  core.String agent;
+  core.String? agent;
 
   /// The time that the revision was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// Human Review information of this revision.
-  GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview humanReview;
+  GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview? humanReview;
 
   /// Id of the revision.
   ///
   /// Unique within the context of the document.
-  core.String id;
+  core.String? id;
 
   /// The revisions that this revision is based on.
   ///
   /// This can include one or more parent (when documents are merged.) This
   /// field represents the index into the `revisions` field.
-  core.List<core.int> parent;
+  core.List<core.int>? parent;
 
   /// If the annotation was made by processor identify the processor by its
   /// resource name.
-  core.String processor;
+  core.String? processor;
 
   GoogleCloudDocumentaiV1beta1DocumentRevision();
 
@@ -2755,13 +2728,13 @@ class GoogleCloudDocumentaiV1beta1DocumentRevision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (agent != null) 'agent': agent,
-        if (createTime != null) 'createTime': createTime,
-        if (humanReview != null) 'humanReview': humanReview.toJson(),
-        if (id != null) 'id': id,
-        if (parent != null) 'parent': parent,
-        if (processor != null) 'processor': processor,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (agent != null) 'agent': agent!,
+        if (createTime != null) 'createTime': createTime!,
+        if (humanReview != null) 'humanReview': humanReview!.toJson(),
+        if (id != null) 'id': id!,
+        if (parent != null) 'parent': parent!,
+        if (processor != null) 'processor': processor!,
       };
 }
 
@@ -2770,12 +2743,12 @@ class GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview {
   /// Human review state.
   ///
   /// e.g. `requested`, `succeeded`, `rejected`.
-  core.String state;
+  core.String? state;
 
   /// A message providing more details about the current state of processing.
   ///
   /// For example, the rejection reason when the state is `rejected`.
-  core.String stateMessage;
+  core.String? stateMessage;
 
   GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview();
 
@@ -2789,9 +2762,9 @@ class GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (state != null) 'state': state,
-        if (stateMessage != null) 'stateMessage': stateMessage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
       };
 }
 
@@ -2801,14 +2774,14 @@ class GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview {
 /// Each document shard contains this field to detail which shard it is.
 class GoogleCloudDocumentaiV1beta1DocumentShardInfo {
   /// Total number of shards.
-  core.String shardCount;
+  core.String? shardCount;
 
   /// The 0-based index of this shard.
-  core.String shardIndex;
+  core.String? shardIndex;
 
   /// The index of the first character in Document.text in the overall document
   /// global text.
-  core.String textOffset;
+  core.String? textOffset;
 
   GoogleCloudDocumentaiV1beta1DocumentShardInfo();
 
@@ -2824,10 +2797,10 @@ class GoogleCloudDocumentaiV1beta1DocumentShardInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (shardCount != null) 'shardCount': shardCount,
-        if (shardIndex != null) 'shardIndex': shardIndex,
-        if (textOffset != null) 'textOffset': textOffset,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (shardCount != null) 'shardCount': shardCount!,
+        if (shardIndex != null) 'shardIndex': shardIndex!,
+        if (textOffset != null) 'textOffset': textOffset!,
       };
 }
 
@@ -2836,34 +2809,34 @@ class GoogleCloudDocumentaiV1beta1DocumentShardInfo {
 /// This adheres to CSS conventions as much as possible.
 class GoogleCloudDocumentaiV1beta1DocumentStyle {
   /// Text background color.
-  GoogleTypeColor backgroundColor;
+  GoogleTypeColor? backgroundColor;
 
   /// Text color.
-  GoogleTypeColor color;
+  GoogleTypeColor? color;
 
   /// Font size.
-  GoogleCloudDocumentaiV1beta1DocumentStyleFontSize fontSize;
+  GoogleCloudDocumentaiV1beta1DocumentStyleFontSize? fontSize;
 
   /// Font weight.
   ///
   /// Possible values are normal, bold, bolder, and lighter.
   /// https://www.w3schools.com/cssref/pr_font_weight.asp
-  core.String fontWeight;
+  core.String? fontWeight;
 
   /// Text anchor indexing into the Document.text.
-  GoogleCloudDocumentaiV1beta1DocumentTextAnchor textAnchor;
+  GoogleCloudDocumentaiV1beta1DocumentTextAnchor? textAnchor;
 
   /// Text decoration.
   ///
   /// Follows CSS standard.
   /// https://www.w3schools.com/cssref/pr_text_text-decoration.asp
-  core.String textDecoration;
+  core.String? textDecoration;
 
   /// Text style.
   ///
   /// Possible values are normal, italic, and oblique.
   /// https://www.w3schools.com/cssref/pr_font_font-style.asp
-  core.String textStyle;
+  core.String? textStyle;
 
   GoogleCloudDocumentaiV1beta1DocumentStyle();
 
@@ -2895,27 +2868,27 @@ class GoogleCloudDocumentaiV1beta1DocumentStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundColor != null)
-          'backgroundColor': backgroundColor.toJson(),
-        if (color != null) 'color': color.toJson(),
-        if (fontSize != null) 'fontSize': fontSize.toJson(),
-        if (fontWeight != null) 'fontWeight': fontWeight,
-        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
-        if (textDecoration != null) 'textDecoration': textDecoration,
-        if (textStyle != null) 'textStyle': textStyle,
+          'backgroundColor': backgroundColor!.toJson(),
+        if (color != null) 'color': color!.toJson(),
+        if (fontSize != null) 'fontSize': fontSize!.toJson(),
+        if (fontWeight != null) 'fontWeight': fontWeight!,
+        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (textDecoration != null) 'textDecoration': textDecoration!,
+        if (textStyle != null) 'textStyle': textStyle!,
       };
 }
 
 /// Font size with unit.
 class GoogleCloudDocumentaiV1beta1DocumentStyleFontSize {
   /// Font size for the text.
-  core.double size;
+  core.double? size;
 
   /// Unit for the font size.
   ///
   /// Follows CSS naming (in, px, pt, etc.).
-  core.String unit;
+  core.String? unit;
 
   GoogleCloudDocumentaiV1beta1DocumentStyleFontSize();
 
@@ -2928,9 +2901,9 @@ class GoogleCloudDocumentaiV1beta1DocumentStyleFontSize {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (size != null) 'size': size,
-        if (unit != null) 'unit': unit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (size != null) 'size': size!,
+        if (unit != null) 'unit': unit!,
       };
 }
 
@@ -2938,10 +2911,10 @@ class GoogleCloudDocumentaiV1beta1DocumentStyleFontSize {
 class GoogleCloudDocumentaiV1beta1DocumentTextAnchor {
   /// Contains the content of the text span so that users do not have to look it
   /// up in the text_segments.
-  core.String content;
+  core.String? content;
 
   /// The text segments from the Document.text.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment>
+  core.List<GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment>?
       textSegments;
 
   GoogleCloudDocumentaiV1beta1DocumentTextAnchor();
@@ -2960,10 +2933,10 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
         if (textSegments != null)
-          'textSegments': textSegments.map((value) => value.toJson()).toList(),
+          'textSegments': textSegments!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2974,10 +2947,10 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchor {
 /// ShardInfo.text_offset
 class GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment {
   /// TextSegment half open end UTF-8 char index in the Document.text.
-  core.String endIndex;
+  core.String? endIndex;
 
   /// TextSegment start UTF-8 char index in the Document.text.
-  core.String startIndex;
+  core.String? startIndex;
 
   GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment();
 
@@ -2991,9 +2964,9 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endIndex != null) 'endIndex': endIndex,
-        if (startIndex != null) 'startIndex': startIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endIndex != null) 'endIndex': endIndex!,
+        if (startIndex != null) 'startIndex': startIndex!,
       };
 }
 
@@ -3002,17 +2975,17 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment {
 /// OCR corrections.
 class GoogleCloudDocumentaiV1beta1DocumentTextChange {
   /// The text that replaces the text identified in the `text_anchor`.
-  core.String changedText;
+  core.String? changedText;
 
   /// The history of this annotation.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentProvenance> provenance;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentProvenance>? provenance;
 
   /// Provenance of the correction.
   ///
   /// Text anchor indexing into the Document.text. There can only be a single
   /// `TextAnchor.text_segments` element. If the start and end index of the text
   /// segment are the same, the text change is inserted before that index.
-  GoogleCloudDocumentaiV1beta1DocumentTextAnchor textAnchor;
+  GoogleCloudDocumentaiV1beta1DocumentTextAnchor? textAnchor;
 
   GoogleCloudDocumentaiV1beta1DocumentTextChange();
 
@@ -3033,11 +3006,11 @@ class GoogleCloudDocumentaiV1beta1DocumentTextChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (changedText != null) 'changedText': changedText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (changedText != null) 'changedText': changedText!,
         if (provenance != null)
-          'provenance': provenance.map((value) => value.toJson()).toList(),
-        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+          'provenance': provenance!.map((value) => value.toJson()).toList(),
+        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
       };
 }
 
@@ -3047,20 +3020,20 @@ class GoogleCloudDocumentaiV1beta1DocumentTranslation {
   ///
   /// For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// The history of this annotation.
-  core.List<GoogleCloudDocumentaiV1beta1DocumentProvenance> provenance;
+  core.List<GoogleCloudDocumentaiV1beta1DocumentProvenance>? provenance;
 
   /// Provenance of the translation.
   ///
   /// Text anchor indexing into the Document.text. There can only be a single
   /// `TextAnchor.text_segments` element. If the start and end index of the text
   /// segment are the same, the text change is inserted before that index.
-  GoogleCloudDocumentaiV1beta1DocumentTextAnchor textAnchor;
+  GoogleCloudDocumentaiV1beta1DocumentTextAnchor? textAnchor;
 
   /// Text translated into the target language.
-  core.String translatedText;
+  core.String? translatedText;
 
   GoogleCloudDocumentaiV1beta1DocumentTranslation();
 
@@ -3084,18 +3057,18 @@ class GoogleCloudDocumentaiV1beta1DocumentTranslation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
         if (provenance != null)
-          'provenance': provenance.map((value) => value.toJson()).toList(),
-        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
-        if (translatedText != null) 'translatedText': translatedText,
+          'provenance': provenance!.map((value) => value.toJson()).toList(),
+        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (translatedText != null) 'translatedText': translatedText!,
       };
 }
 
 /// The Google Cloud Storage location where the output file will be written to.
 class GoogleCloudDocumentaiV1beta1GcsDestination {
-  core.String uri;
+  core.String? uri;
 
   GoogleCloudDocumentaiV1beta1GcsDestination();
 
@@ -3105,14 +3078,14 @@ class GoogleCloudDocumentaiV1beta1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (uri != null) 'uri': uri!,
       };
 }
 
 /// The Google Cloud Storage location where the input file will be read from.
 class GoogleCloudDocumentaiV1beta1GcsSource {
-  core.String uri;
+  core.String? uri;
 
   GoogleCloudDocumentaiV1beta1GcsSource();
 
@@ -3122,8 +3095,8 @@ class GoogleCloudDocumentaiV1beta1GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -3132,7 +3105,7 @@ class GoogleCloudDocumentaiV1beta1InputConfig {
   /// The Google Cloud Storage location to read the input from.
   ///
   /// This must be a single file.
-  GoogleCloudDocumentaiV1beta1GcsSource gcsSource;
+  GoogleCloudDocumentaiV1beta1GcsSource? gcsSource;
 
   /// Mimetype of the input.
   ///
@@ -3142,7 +3115,7 @@ class GoogleCloudDocumentaiV1beta1InputConfig {
   /// to be in Document format.
   ///
   /// Required.
-  core.String mimeType;
+  core.String? mimeType;
 
   GoogleCloudDocumentaiV1beta1InputConfig();
 
@@ -3156,9 +3129,9 @@ class GoogleCloudDocumentaiV1beta1InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
-        if (mimeType != null) 'mimeType': mimeType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+        if (mimeType != null) 'mimeType': mimeType!,
       };
 }
 
@@ -3168,10 +3141,10 @@ class GoogleCloudDocumentaiV1beta1InputConfig {
 /// and range from 0 to 1.
 class GoogleCloudDocumentaiV1beta1NormalizedVertex {
   /// X coordinate.
-  core.double x;
+  core.double? x;
 
   /// Y coordinate.
-  core.double y;
+  core.double? y;
 
   GoogleCloudDocumentaiV1beta1NormalizedVertex();
 
@@ -3184,16 +3157,16 @@ class GoogleCloudDocumentaiV1beta1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (x != null) 'x': x,
-        if (y != null) 'y': y,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
       };
 }
 
 /// Contains metadata for the BatchProcessDocuments operation.
 class GoogleCloudDocumentaiV1beta1OperationMetadata {
   /// The creation time of the operation.
-  core.String createTime;
+  core.String? createTime;
 
   /// The state of the current batch processing.
   /// Possible string values are:
@@ -3205,13 +3178,13 @@ class GoogleCloudDocumentaiV1beta1OperationMetadata {
   /// - "SUCCEEDED" : The batch processing completed successfully.
   /// - "CANCELLED" : The batch processing was cancelled.
   /// - "FAILED" : The batch processing has failed.
-  core.String state;
+  core.String? state;
 
   /// A message providing more details about the current state of processing.
-  core.String stateMessage;
+  core.String? stateMessage;
 
   /// The last update time of the operation.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudDocumentaiV1beta1OperationMetadata();
 
@@ -3230,18 +3203,18 @@ class GoogleCloudDocumentaiV1beta1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (state != null) 'state': state,
-        if (stateMessage != null) 'stateMessage': stateMessage,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// The desired output location and metadata.
 class GoogleCloudDocumentaiV1beta1OutputConfig {
   /// The Google Cloud Storage location to write the output to.
-  GoogleCloudDocumentaiV1beta1GcsDestination gcsDestination;
+  GoogleCloudDocumentaiV1beta1GcsDestination? gcsDestination;
 
   /// The max number of pages to include into each output Document shard JSON on
   /// Google Cloud Storage.
@@ -3254,7 +3227,7 @@ class GoogleCloudDocumentaiV1beta1OutputConfig {
   /// y are 1-indexed page numbers. Example GCS outputs with 157 pages and
   /// pages_per_shard = 50: pages-001-to-050.json pages-051-to-100.json
   /// pages-101-to-150.json pages-151-to-157.json
-  core.int pagesPerShard;
+  core.int? pagesPerShard;
 
   GoogleCloudDocumentaiV1beta1OutputConfig();
 
@@ -3268,9 +3241,9 @@ class GoogleCloudDocumentaiV1beta1OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
-        if (pagesPerShard != null) 'pagesPerShard': pagesPerShard,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
+        if (pagesPerShard != null) 'pagesPerShard': pagesPerShard!,
       };
 }
 
@@ -3279,13 +3252,13 @@ class GoogleCloudDocumentaiV1beta1ProcessDocumentResponse {
   /// Information about the input file.
   ///
   /// This is the same as the corresponding input config in the request.
-  GoogleCloudDocumentaiV1beta1InputConfig inputConfig;
+  GoogleCloudDocumentaiV1beta1InputConfig? inputConfig;
 
   /// The output location of the parsed responses.
   ///
   /// The responses are written to this location as JSON-serialized `Document`
   /// objects.
-  GoogleCloudDocumentaiV1beta1OutputConfig outputConfig;
+  GoogleCloudDocumentaiV1beta1OutputConfig? outputConfig;
 
   GoogleCloudDocumentaiV1beta1ProcessDocumentResponse();
 
@@ -3300,9 +3273,9 @@ class GoogleCloudDocumentaiV1beta1ProcessDocumentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
-        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
+        if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
       };
 }
 
@@ -3311,10 +3284,10 @@ class GoogleCloudDocumentaiV1beta1ProcessDocumentResponse {
 /// NOTE: the vertex coordinates are in the same scale as the original image.
 class GoogleCloudDocumentaiV1beta1Vertex {
   /// X coordinate.
-  core.int x;
+  core.int? x;
 
   /// Y coordinate.
-  core.int y;
+  core.int? y;
 
   GoogleCloudDocumentaiV1beta1Vertex();
 
@@ -3327,9 +3300,9 @@ class GoogleCloudDocumentaiV1beta1Vertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (x != null) 'x': x,
-        if (y != null) 'y': y,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
       };
 }
 
@@ -3338,7 +3311,7 @@ class GoogleCloudDocumentaiV1beta1Vertex {
 /// This is returned in the LRO Operation after the operation is complete.
 class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse {
   /// Responses for each individual document.
-  core.List<GoogleCloudDocumentaiV1beta2ProcessDocumentResponse> responses;
+  core.List<GoogleCloudDocumentaiV1beta2ProcessDocumentResponse>? responses;
 
   GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse();
 
@@ -3353,19 +3326,19 @@ class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (responses != null)
-          'responses': responses.map((value) => value.toJson()).toList(),
+          'responses': responses!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A bounding polygon for the detected image annotation.
 class GoogleCloudDocumentaiV1beta2BoundingPoly {
   /// The bounding polygon normalized vertices.
-  core.List<GoogleCloudDocumentaiV1beta2NormalizedVertex> normalizedVertices;
+  core.List<GoogleCloudDocumentaiV1beta2NormalizedVertex>? normalizedVertices;
 
   /// The bounding polygon vertices.
-  core.List<GoogleCloudDocumentaiV1beta2Vertex> vertices;
+  core.List<GoogleCloudDocumentaiV1beta2Vertex>? vertices;
 
   GoogleCloudDocumentaiV1beta2BoundingPoly();
 
@@ -3386,12 +3359,12 @@ class GoogleCloudDocumentaiV1beta2BoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (normalizedVertices != null)
           'normalizedVertices':
-              normalizedVertices.map((value) => value.toJson()).toList(),
+              normalizedVertices!.map((value) => value.toJson()).toList(),
         if (vertices != null)
-          'vertices': vertices.map((value) => value.toJson()).toList(),
+          'vertices': vertices!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3406,8 +3379,8 @@ class GoogleCloudDocumentaiV1beta2Document {
   ///
   /// Note: As with all `bytes` fields, protobuffers use a pure binary
   /// representation, whereas JSON representations use base64.
-  core.String content;
-  core.List<core.int> get contentAsBytes => convert.base64.decode(content);
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
@@ -3417,51 +3390,52 @@ class GoogleCloudDocumentaiV1beta2Document {
   /// A list of entities detected on Document.text.
   ///
   /// For document shards, entities in this list may cross shard boundaries.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentEntity> entities;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentEntity>? entities;
 
   /// Relationship among Document.entities.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentEntityRelation> entityRelations;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentEntityRelation>?
+      entityRelations;
 
   /// Any error that occurred while processing this document.
-  GoogleRpcStatus error;
+  GoogleRpcStatus? error;
 
   /// Labels for this document.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentLabel> labels;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentLabel>? labels;
 
   /// An IANA published MIME type (also referred to as media type).
   ///
   /// For more information, see
   /// https://www.iana.org/assignments/media-types/media-types.xhtml.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// Visual page layout for the Document.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPage> pages;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPage>? pages;
 
   /// Revision history of this document.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentRevision> revisions;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentRevision>? revisions;
 
   /// Information about the sharding if this document is sharded part of a
   /// larger document.
   ///
   /// If the document is not sharded, this message is not specified.
-  GoogleCloudDocumentaiV1beta2DocumentShardInfo shardInfo;
+  GoogleCloudDocumentaiV1beta2DocumentShardInfo? shardInfo;
 
   /// UTF-8 encoded text in reading order from the document.
-  core.String text;
+  core.String? text;
 
   /// A list of text corrections made to \[Document.text\].
   ///
   /// This is usually used for annotating corrections to OCR mistakes. Text
   /// changes for a given revision may not overlap with each other.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentTextChange> textChanges;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentTextChange>? textChanges;
 
   /// Styles for the Document.text.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentStyle> textStyles;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentStyle>? textStyles;
 
   /// A list of translations on Document.text.
   ///
   /// For document shards, translations in this list may cross shard boundaries.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentTranslation> translations;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentTranslation>? translations;
 
   /// Currently supports Google Cloud Storage URI of the form
   /// `gs://bucket_name/object_name`.
@@ -3469,7 +3443,7 @@ class GoogleCloudDocumentaiV1beta2Document {
   /// Object versioning is not supported. See
   /// [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris)
   /// for more info.
-  core.String uri;
+  core.String? uri;
 
   GoogleCloudDocumentaiV1beta2Document();
 
@@ -3552,30 +3526,30 @@ class GoogleCloudDocumentaiV1beta2Document {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
         if (entities != null)
-          'entities': entities.map((value) => value.toJson()).toList(),
+          'entities': entities!.map((value) => value.toJson()).toList(),
         if (entityRelations != null)
           'entityRelations':
-              entityRelations.map((value) => value.toJson()).toList(),
-        if (error != null) 'error': error.toJson(),
+              entityRelations!.map((value) => value.toJson()).toList(),
+        if (error != null) 'error': error!.toJson(),
         if (labels != null)
-          'labels': labels.map((value) => value.toJson()).toList(),
-        if (mimeType != null) 'mimeType': mimeType,
+          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (mimeType != null) 'mimeType': mimeType!,
         if (pages != null)
-          'pages': pages.map((value) => value.toJson()).toList(),
+          'pages': pages!.map((value) => value.toJson()).toList(),
         if (revisions != null)
-          'revisions': revisions.map((value) => value.toJson()).toList(),
-        if (shardInfo != null) 'shardInfo': shardInfo.toJson(),
-        if (text != null) 'text': text,
+          'revisions': revisions!.map((value) => value.toJson()).toList(),
+        if (shardInfo != null) 'shardInfo': shardInfo!.toJson(),
+        if (text != null) 'text': text!,
         if (textChanges != null)
-          'textChanges': textChanges.map((value) => value.toJson()).toList(),
+          'textChanges': textChanges!.map((value) => value.toJson()).toList(),
         if (textStyles != null)
-          'textStyles': textStyles.map((value) => value.toJson()).toList(),
+          'textStyles': textStyles!.map((value) => value.toJson()).toList(),
         if (translations != null)
-          'translations': translations.map((value) => value.toJson()).toList(),
-        if (uri != null) 'uri': uri,
+          'translations': translations!.map((value) => value.toJson()).toList(),
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -3587,22 +3561,22 @@ class GoogleCloudDocumentaiV1beta2DocumentEntity {
   /// Range \[0, 1\].
   ///
   /// Optional.
-  core.double confidence;
+  core.double? confidence;
 
   /// Canonical id.
   ///
   /// This will be a unique value in the entity list for this document.
   ///
   /// Optional.
-  core.String id;
+  core.String? id;
 
   /// Use `id` field instead.
   ///
   /// Deprecated.
-  core.String mentionId;
+  core.String? mentionId;
 
   /// Text value in the document e.g. `1600 Amphitheatre Pkwy`.
-  core.String mentionText;
+  core.String? mentionText;
 
   /// Normalized entity value.
   ///
@@ -3611,38 +3585,38 @@ class GoogleCloudDocumentaiV1beta2DocumentEntity {
   /// populated for certain supported document types.
   ///
   /// Optional.
-  GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue normalizedValue;
+  GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue? normalizedValue;
 
   /// Represents the provenance of this entity wrt.
   ///
   /// the location on the page where it was found.
   ///
   /// Optional.
-  GoogleCloudDocumentaiV1beta2DocumentPageAnchor pageAnchor;
+  GoogleCloudDocumentaiV1beta2DocumentPageAnchor? pageAnchor;
 
   /// Entities can be nested to form a hierarchical data structure representing
   /// the content in the document.
   ///
   /// Optional.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentEntity> properties;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentEntity>? properties;
 
   /// The history of this annotation.
   ///
   /// Optional.
-  GoogleCloudDocumentaiV1beta2DocumentProvenance provenance;
+  GoogleCloudDocumentaiV1beta2DocumentProvenance? provenance;
 
   /// Whether the entity will be redacted for de-identification purposes.
   ///
   /// Optional.
-  core.bool redacted;
+  core.bool? redacted;
 
   /// Provenance of the entity.
   ///
   /// Text anchor indexing into the Document.text.
-  GoogleCloudDocumentaiV1beta2DocumentTextAnchor textAnchor;
+  GoogleCloudDocumentaiV1beta2DocumentTextAnchor? textAnchor;
 
   /// Entity type from a schema e.g. `Address`.
-  core.String type;
+  core.String? type;
 
   GoogleCloudDocumentaiV1beta2DocumentEntity();
 
@@ -3691,20 +3665,20 @@ class GoogleCloudDocumentaiV1beta2DocumentEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (confidence != null) 'confidence': confidence,
-        if (id != null) 'id': id,
-        if (mentionId != null) 'mentionId': mentionId,
-        if (mentionText != null) 'mentionText': mentionText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (id != null) 'id': id!,
+        if (mentionId != null) 'mentionId': mentionId!,
+        if (mentionText != null) 'mentionText': mentionText!,
         if (normalizedValue != null)
-          'normalizedValue': normalizedValue.toJson(),
-        if (pageAnchor != null) 'pageAnchor': pageAnchor.toJson(),
+          'normalizedValue': normalizedValue!.toJson(),
+        if (pageAnchor != null) 'pageAnchor': pageAnchor!.toJson(),
         if (properties != null)
-          'properties': properties.map((value) => value.toJson()).toList(),
-        if (provenance != null) 'provenance': provenance.toJson(),
-        if (redacted != null) 'redacted': redacted,
-        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
-        if (type != null) 'type': type,
+          'properties': properties!.map((value) => value.toJson()).toList(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (redacted != null) 'redacted': redacted!,
+        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3714,30 +3688,30 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
   ///
   /// See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/postal_address.proto
-  GoogleTypePostalAddress addressValue;
+  GoogleTypePostalAddress? addressValue;
 
   /// Boolean value.
   ///
   /// Can be used for entities with binary values, or for checkboxes.
-  core.bool booleanValue;
+  core.bool? booleanValue;
 
   /// Date value.
   ///
   /// Includes year, month, day. See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/date.proto
-  GoogleTypeDate dateValue;
+  GoogleTypeDate? dateValue;
 
   /// DateTime value.
   ///
   /// Includes date, time, and timezone. See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto
-  GoogleTypeDateTime datetimeValue;
+  GoogleTypeDateTime? datetimeValue;
 
   /// Money value.
   ///
   /// See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
-  GoogleTypeMoney moneyValue;
+  GoogleTypeMoney? moneyValue;
 
   /// Normalized entity value stored as a string.
   ///
@@ -3748,7 +3722,7 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
   /// Datetime type (`datetime_value`) is in the ISO 8601 text format.
   ///
   /// Required.
-  core.String text;
+  core.String? text;
 
   GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue();
 
@@ -3778,26 +3752,26 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addressValue != null) 'addressValue': addressValue.toJson(),
-        if (booleanValue != null) 'booleanValue': booleanValue,
-        if (dateValue != null) 'dateValue': dateValue.toJson(),
-        if (datetimeValue != null) 'datetimeValue': datetimeValue.toJson(),
-        if (moneyValue != null) 'moneyValue': moneyValue.toJson(),
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addressValue != null) 'addressValue': addressValue!.toJson(),
+        if (booleanValue != null) 'booleanValue': booleanValue!,
+        if (dateValue != null) 'dateValue': dateValue!.toJson(),
+        if (datetimeValue != null) 'datetimeValue': datetimeValue!.toJson(),
+        if (moneyValue != null) 'moneyValue': moneyValue!.toJson(),
+        if (text != null) 'text': text!,
       };
 }
 
 /// Relationship between Entities.
 class GoogleCloudDocumentaiV1beta2DocumentEntityRelation {
   /// Object entity id.
-  core.String objectId;
+  core.String? objectId;
 
   /// Relationship description.
-  core.String relation;
+  core.String? relation;
 
   /// Subject entity id.
-  core.String subjectId;
+  core.String? subjectId;
 
   GoogleCloudDocumentaiV1beta2DocumentEntityRelation();
 
@@ -3813,10 +3787,10 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityRelation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
-        if (relation != null) 'relation': relation,
-        if (subjectId != null) 'subjectId': subjectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
+        if (relation != null) 'relation': relation!,
+        if (subjectId != null) 'subjectId': subjectId!,
       };
 }
 
@@ -3831,16 +3805,16 @@ class GoogleCloudDocumentaiV1beta2DocumentLabel {
   ///
   /// This field stores the full resource name of the AutoML model. Format:
   /// `projects/{project-id}/locations/{location-id}/models/{model-id}`
-  core.String automlModel;
+  core.String? automlModel;
 
   /// Confidence score between 0 and 1 for label assignment.
-  core.double confidence;
+  core.double? confidence;
 
   /// Name of the label.
   ///
   /// When the label is generated from AutoML Text Classification model, this
   /// field represents the name of the category.
-  core.String name;
+  core.String? name;
 
   GoogleCloudDocumentaiV1beta2DocumentLabel();
 
@@ -3856,10 +3830,10 @@ class GoogleCloudDocumentaiV1beta2DocumentLabel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (automlModel != null) 'automlModel': automlModel,
-        if (confidence != null) 'confidence': confidence,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (automlModel != null) 'automlModel': automlModel!,
+        if (confidence != null) 'confidence': confidence!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3869,56 +3843,56 @@ class GoogleCloudDocumentaiV1beta2DocumentPage {
   ///
   /// A block has a set of lines (collected into paragraphs) that have a common
   /// line-spacing and orientation.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageBlock> blocks;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageBlock>? blocks;
 
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Physical dimension of the page.
-  GoogleCloudDocumentaiV1beta2DocumentPageDimension dimension;
+  GoogleCloudDocumentaiV1beta2DocumentPageDimension? dimension;
 
   /// A list of visually detected form fields on the page.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageFormField> formFields;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageFormField>? formFields;
 
   /// Rendered image for this page.
   ///
   /// This image is preprocessed to remove any skew, rotation, and distortions
   /// such that the annotation bounding boxes can be upright and axis-aligned.
-  GoogleCloudDocumentaiV1beta2DocumentPageImage image;
+  GoogleCloudDocumentaiV1beta2DocumentPageImage? image;
 
   /// Layout for the page.
-  GoogleCloudDocumentaiV1beta2DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta2DocumentPageLayout? layout;
 
   /// A list of visually detected text lines on the page.
   ///
   /// A collection of tokens that a human would perceive as a line.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageLine> lines;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageLine>? lines;
 
   /// 1-based index for current Page in a parent Document.
   ///
   /// Useful when a page is taken out of a Document for individual processing.
-  core.int pageNumber;
+  core.int? pageNumber;
 
   /// A list of visually detected text paragraphs on the page.
   ///
   /// A collection of lines that a human would perceive as a paragraph.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageParagraph> paragraphs;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageParagraph>? paragraphs;
 
   /// A list of visually detected tables on the page.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageTable> tables;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageTable>? tables;
 
   /// A list of visually detected tokens on the page.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageToken> tokens;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageToken>? tokens;
 
   /// Transformation matrices that were applied to the original document image
   /// to produce Page.image.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageMatrix> transforms;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageMatrix>? transforms;
 
   /// A list of detected non-text visual elements e.g. checkbox, signature etc.
   ///
   /// on the page.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageVisualElement>
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageVisualElement>?
       visualElements;
 
   GoogleCloudDocumentaiV1beta2DocumentPage();
@@ -4005,31 +3979,31 @@ class GoogleCloudDocumentaiV1beta2DocumentPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (blocks != null)
-          'blocks': blocks.map((value) => value.toJson()).toList(),
+          'blocks': blocks!.map((value) => value.toJson()).toList(),
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (dimension != null) 'dimension': dimension.toJson(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (dimension != null) 'dimension': dimension!.toJson(),
         if (formFields != null)
-          'formFields': formFields.map((value) => value.toJson()).toList(),
-        if (image != null) 'image': image.toJson(),
-        if (layout != null) 'layout': layout.toJson(),
+          'formFields': formFields!.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image!.toJson(),
+        if (layout != null) 'layout': layout!.toJson(),
         if (lines != null)
-          'lines': lines.map((value) => value.toJson()).toList(),
-        if (pageNumber != null) 'pageNumber': pageNumber,
+          'lines': lines!.map((value) => value.toJson()).toList(),
+        if (pageNumber != null) 'pageNumber': pageNumber!,
         if (paragraphs != null)
-          'paragraphs': paragraphs.map((value) => value.toJson()).toList(),
+          'paragraphs': paragraphs!.map((value) => value.toJson()).toList(),
         if (tables != null)
-          'tables': tables.map((value) => value.toJson()).toList(),
+          'tables': tables!.map((value) => value.toJson()).toList(),
         if (tokens != null)
-          'tokens': tokens.map((value) => value.toJson()).toList(),
+          'tokens': tokens!.map((value) => value.toJson()).toList(),
         if (transforms != null)
-          'transforms': transforms.map((value) => value.toJson()).toList(),
+          'transforms': transforms!.map((value) => value.toJson()).toList(),
         if (visualElements != null)
           'visualElements':
-              visualElements.map((value) => value.toJson()).toList(),
+              visualElements!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4039,7 +4013,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPage {
 /// optionally reference specific layout element types.
 class GoogleCloudDocumentaiV1beta2DocumentPageAnchor {
   /// One or more references to visual page elements
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef> pageRefs;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef>? pageRefs;
 
   GoogleCloudDocumentaiV1beta2DocumentPageAnchor();
 
@@ -4053,9 +4027,9 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (pageRefs != null)
-          'pageRefs': pageRefs.map((value) => value.toJson()).toList(),
+          'pageRefs': pageRefs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4064,12 +4038,12 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef {
   /// Identifies the bounding polygon of a layout element on the page.
   ///
   /// Optional.
-  GoogleCloudDocumentaiV1beta2BoundingPoly boundingPoly;
+  GoogleCloudDocumentaiV1beta2BoundingPoly? boundingPoly;
 
   /// Use PageRef.bounding_poly instead.
   ///
   /// Optional. Deprecated.
-  core.String layoutId;
+  core.String? layoutId;
 
   /// The type of the layout element that is being referenced if any.
   ///
@@ -4083,13 +4057,13 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef {
   /// - "VISUAL_ELEMENT" : References a Page.visual_elements element.
   /// - "TABLE" : Refrrences a Page.tables element.
   /// - "FORM_FIELD" : References a Page.form_fields element.
-  core.String layoutType;
+  core.String? layoutType;
 
   /// Index into the Document.pages element, for example using Document.pages to
   /// locate the related page element.
   ///
   /// Required.
-  core.String page;
+  core.String? page;
 
   GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef();
 
@@ -4110,11 +4084,11 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
-        if (layoutId != null) 'layoutId': layoutId,
-        if (layoutType != null) 'layoutType': layoutType,
-        if (page != null) 'page': page,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
+        if (layoutId != null) 'layoutId': layoutId!,
+        if (layoutType != null) 'layoutType': layoutType!,
+        if (page != null) 'page': page!,
       };
 }
 
@@ -4122,14 +4096,14 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef {
 /// line-spacing and orientation.
 class GoogleCloudDocumentaiV1beta2DocumentPageBlock {
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for Block.
-  GoogleCloudDocumentaiV1beta2DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta2DocumentPageLayout? layout;
 
   /// The history of this annotation.
-  GoogleCloudDocumentaiV1beta2DocumentProvenance provenance;
+  GoogleCloudDocumentaiV1beta2DocumentProvenance? provenance;
 
   GoogleCloudDocumentaiV1beta2DocumentPageBlock();
 
@@ -4152,12 +4126,12 @@ class GoogleCloudDocumentaiV1beta2DocumentPageBlock {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (provenance != null) 'provenance': provenance.toJson(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
       };
 }
 
@@ -4166,13 +4140,13 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage {
   /// Confidence of detected language.
   ///
   /// Range \[0, 1\].
-  core.double confidence;
+  core.double? confidence;
 
   /// The BCP-47 language code, such as "en-US" or "sr-Latn".
   ///
   /// For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String languageCode;
+  core.String? languageCode;
 
   GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage();
 
@@ -4186,22 +4160,22 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (confidence != null) 'confidence': confidence,
-        if (languageCode != null) 'languageCode': languageCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (languageCode != null) 'languageCode': languageCode!,
       };
 }
 
 /// Dimension for the page.
 class GoogleCloudDocumentaiV1beta2DocumentPageDimension {
   /// Page height.
-  core.double height;
+  core.double? height;
 
   /// Dimension unit.
-  core.String unit;
+  core.String? unit;
 
   /// Page width.
-  core.double width;
+  core.double? width;
 
   GoogleCloudDocumentaiV1beta2DocumentPageDimension();
 
@@ -4217,10 +4191,10 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (unit != null) 'unit': unit,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (unit != null) 'unit': unit!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -4229,24 +4203,24 @@ class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
   /// Layout for the FormField name.
   ///
   /// e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.
-  GoogleCloudDocumentaiV1beta2DocumentPageLayout fieldName;
+  GoogleCloudDocumentaiV1beta2DocumentPageLayout? fieldName;
 
   /// Layout for the FormField value.
-  GoogleCloudDocumentaiV1beta2DocumentPageLayout fieldValue;
+  GoogleCloudDocumentaiV1beta2DocumentPageLayout? fieldValue;
 
   /// A list of detected languages for name together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>?
       nameDetectedLanguages;
 
   /// A list of detected languages for value together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>?
       valueDetectedLanguages;
 
   /// If the value is non-textual, this field represents the type.
   ///
   /// Current valid values are: - blank (this indicates the field_value is
   /// normal text) - "unfilled_checkbox" - "filled_checkbox"
-  core.String valueType;
+  core.String? valueType;
 
   GoogleCloudDocumentaiV1beta2DocumentPageFormField();
 
@@ -4280,24 +4254,24 @@ class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fieldName != null) 'fieldName': fieldName.toJson(),
-        if (fieldValue != null) 'fieldValue': fieldValue.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fieldName != null) 'fieldName': fieldName!.toJson(),
+        if (fieldValue != null) 'fieldValue': fieldValue!.toJson(),
         if (nameDetectedLanguages != null)
           'nameDetectedLanguages':
-              nameDetectedLanguages.map((value) => value.toJson()).toList(),
+              nameDetectedLanguages!.map((value) => value.toJson()).toList(),
         if (valueDetectedLanguages != null)
           'valueDetectedLanguages':
-              valueDetectedLanguages.map((value) => value.toJson()).toList(),
-        if (valueType != null) 'valueType': valueType,
+              valueDetectedLanguages!.map((value) => value.toJson()).toList(),
+        if (valueType != null) 'valueType': valueType!,
       };
 }
 
 /// Rendered image contents for this page.
 class GoogleCloudDocumentaiV1beta2DocumentPageImage {
   /// Raw byte content of the image.
-  core.String content;
-  core.List<core.int> get contentAsBytes => convert.base64.decode(content);
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
@@ -4305,13 +4279,13 @@ class GoogleCloudDocumentaiV1beta2DocumentPageImage {
   }
 
   /// Height of the image in pixels.
-  core.int height;
+  core.int? height;
 
   /// Encoding mime type for the image.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// Width of the image in pixels.
-  core.int width;
+  core.int? width;
 
   GoogleCloudDocumentaiV1beta2DocumentPageImage();
 
@@ -4330,25 +4304,25 @@ class GoogleCloudDocumentaiV1beta2DocumentPageImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
-        if (height != null) 'height': height,
-        if (mimeType != null) 'mimeType': mimeType,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
+        if (height != null) 'height': height!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// Visual element describing a layout unit on a page.
 class GoogleCloudDocumentaiV1beta2DocumentPageLayout {
   /// The bounding polygon for the Layout.
-  GoogleCloudDocumentaiV1beta2BoundingPoly boundingPoly;
+  GoogleCloudDocumentaiV1beta2BoundingPoly? boundingPoly;
 
   /// Confidence of the current Layout within context of the object this layout
   /// is for.
   ///
   /// e.g. confidence can be for a single token, a table, a visual element, etc.
   /// depending on context. Range \[0, 1\].
-  core.double confidence;
+  core.double? confidence;
 
   /// Detected orientation for the Layout.
   /// Possible string values are:
@@ -4360,10 +4334,10 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLayout {
   /// degrees from upright to read.
   /// - "PAGE_LEFT" : Orientation is aligned with page left. Turn the head 90
   /// degrees counterclockwise from upright to read.
-  core.String orientation;
+  core.String? orientation;
 
   /// Text anchor indexing into the Document.text.
-  GoogleCloudDocumentaiV1beta2DocumentTextAnchor textAnchor;
+  GoogleCloudDocumentaiV1beta2DocumentTextAnchor? textAnchor;
 
   GoogleCloudDocumentaiV1beta2DocumentPageLayout();
 
@@ -4384,11 +4358,11 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLayout {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
-        if (confidence != null) 'confidence': confidence,
-        if (orientation != null) 'orientation': orientation,
-        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
+        if (confidence != null) 'confidence': confidence!,
+        if (orientation != null) 'orientation': orientation!,
+        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
       };
 }
 
@@ -4397,14 +4371,14 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLayout {
 /// Does not cross column boundaries, can be horizontal, vertical, etc.
 class GoogleCloudDocumentaiV1beta2DocumentPageLine {
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for Line.
-  GoogleCloudDocumentaiV1beta2DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta2DocumentPageLayout? layout;
 
   /// The history of this annotation.
-  GoogleCloudDocumentaiV1beta2DocumentProvenance provenance;
+  GoogleCloudDocumentaiV1beta2DocumentProvenance? provenance;
 
   GoogleCloudDocumentaiV1beta2DocumentPageLine();
 
@@ -4427,12 +4401,12 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (provenance != null) 'provenance': provenance.toJson(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
       };
 }
 
@@ -4440,11 +4414,11 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLine {
 /// with OpenCV format for image manipulation.
 class GoogleCloudDocumentaiV1beta2DocumentPageMatrix {
   /// Number of columns in the matrix.
-  core.int cols;
+  core.int? cols;
 
   /// The matrix data.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -4452,14 +4426,14 @@ class GoogleCloudDocumentaiV1beta2DocumentPageMatrix {
   }
 
   /// Number of rows in the matrix.
-  core.int rows;
+  core.int? rows;
 
   /// This encodes information about what data type the matrix uses.
   ///
   /// For example, 0 (CV_8U) is an unsigned 8-bit image. For the full list of
   /// OpenCV primitive data types, please refer to
   /// https://docs.opencv.org/4.3.0/d1/d1b/group__core__hal__interface.html
-  core.int type;
+  core.int? type;
 
   GoogleCloudDocumentaiV1beta2DocumentPageMatrix();
 
@@ -4478,25 +4452,25 @@ class GoogleCloudDocumentaiV1beta2DocumentPageMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cols != null) 'cols': cols,
-        if (data != null) 'data': data,
-        if (rows != null) 'rows': rows,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cols != null) 'cols': cols!,
+        if (data != null) 'data': data!,
+        if (rows != null) 'rows': rows!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// A collection of lines that a human would perceive as a paragraph.
 class GoogleCloudDocumentaiV1beta2DocumentPageParagraph {
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for Paragraph.
-  GoogleCloudDocumentaiV1beta2DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta2DocumentPageLayout? layout;
 
   /// The history of this annotation.
-  GoogleCloudDocumentaiV1beta2DocumentProvenance provenance;
+  GoogleCloudDocumentaiV1beta2DocumentProvenance? provenance;
 
   GoogleCloudDocumentaiV1beta2DocumentPageParagraph();
 
@@ -4519,29 +4493,29 @@ class GoogleCloudDocumentaiV1beta2DocumentPageParagraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (provenance != null) 'provenance': provenance.toJson(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
       };
 }
 
 /// A table representation similar to HTML table structure.
 class GoogleCloudDocumentaiV1beta2DocumentPageTable {
   /// Body rows of the table.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow> bodyRows;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow>? bodyRows;
 
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Header rows of the table.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow> headerRows;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow>? headerRows;
 
   /// Layout for Table.
-  GoogleCloudDocumentaiV1beta2DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta2DocumentPageLayout? layout;
 
   GoogleCloudDocumentaiV1beta2DocumentPageTable();
 
@@ -4574,32 +4548,32 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bodyRows != null)
-          'bodyRows': bodyRows.map((value) => value.toJson()).toList(),
+          'bodyRows': bodyRows!.map((value) => value.toJson()).toList(),
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
         if (headerRows != null)
-          'headerRows': headerRows.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
+          'headerRows': headerRows!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
       };
 }
 
 /// A cell representation inside the table.
 class GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell {
   /// How many columns this cell spans.
-  core.int colSpan;
+  core.int? colSpan;
 
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for TableCell.
-  GoogleCloudDocumentaiV1beta2DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta2DocumentPageLayout? layout;
 
   /// How many rows this cell spans.
-  core.int rowSpan;
+  core.int? rowSpan;
 
   GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell();
 
@@ -4625,20 +4599,20 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (colSpan != null) 'colSpan': colSpan,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (colSpan != null) 'colSpan': colSpan!,
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (rowSpan != null) 'rowSpan': rowSpan,
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (rowSpan != null) 'rowSpan': rowSpan!,
       };
 }
 
 /// A row of table cells.
 class GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow {
   /// Cells that make up this row.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell> cells;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell>? cells;
 
   GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow();
 
@@ -4653,26 +4627,26 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cells != null)
-          'cells': cells.map((value) => value.toJson()).toList(),
+          'cells': cells!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A detected token.
 class GoogleCloudDocumentaiV1beta2DocumentPageToken {
   /// Detected break at the end of a Token.
-  GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak detectedBreak;
+  GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak? detectedBreak;
 
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for Token.
-  GoogleCloudDocumentaiV1beta2DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta2DocumentPageLayout? layout;
 
   /// The history of this annotation.
-  GoogleCloudDocumentaiV1beta2DocumentProvenance provenance;
+  GoogleCloudDocumentaiV1beta2DocumentProvenance? provenance;
 
   GoogleCloudDocumentaiV1beta2DocumentPageToken();
 
@@ -4700,13 +4674,13 @@ class GoogleCloudDocumentaiV1beta2DocumentPageToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (detectedBreak != null) 'detectedBreak': detectedBreak.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (detectedBreak != null) 'detectedBreak': detectedBreak!.toJson(),
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (provenance != null) 'provenance': provenance.toJson(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
       };
 }
 
@@ -4719,7 +4693,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak {
   /// - "WIDE_SPACE" : A wider whitespace.
   /// - "HYPHEN" : A hyphen that indicates that a token has been split across
   /// lines.
-  core.String type;
+  core.String? type;
 
   GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak();
 
@@ -4730,8 +4704,8 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4740,14 +4714,14 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak {
 /// on the page.
 class GoogleCloudDocumentaiV1beta2DocumentPageVisualElement {
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for VisualElement.
-  GoogleCloudDocumentaiV1beta2DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta2DocumentPageLayout? layout;
 
   /// Type of the VisualElement.
-  core.String type;
+  core.String? type;
 
   GoogleCloudDocumentaiV1beta2DocumentPageVisualElement();
 
@@ -4770,12 +4744,12 @@ class GoogleCloudDocumentaiV1beta2DocumentPageVisualElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (type != null) 'type': type,
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4785,13 +4759,13 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenance {
   /// The Id of this operation.
   ///
   /// Needs to be unique within the scope of the revision.
-  core.int id;
+  core.int? id;
 
   /// References to the original elements that are replaced.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentProvenanceParent> parents;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentProvenanceParent>? parents;
 
   /// The index of the revision that produced this element.
-  core.int revision;
+  core.int? revision;
 
   /// The type of provenance operation.
   /// Possible string values are:
@@ -4803,7 +4777,7 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenance {
   /// - "EVAL_REQUESTED" : Element is requested for human review.
   /// - "EVAL_APPROVED" : Element is review and approved at human review,
   /// confidence will be set to 1.0
-  core.String type;
+  core.String? type;
 
   GoogleCloudDocumentaiV1beta2DocumentProvenance();
 
@@ -4826,12 +4800,12 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
         if (parents != null)
-          'parents': parents.map((value) => value.toJson()).toList(),
-        if (revision != null) 'revision': revision,
-        if (type != null) 'type': type,
+          'parents': parents!.map((value) => value.toJson()).toList(),
+        if (revision != null) 'revision': revision!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4841,10 +4815,10 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenance {
 /// identify the elements that are replaced.
 class GoogleCloudDocumentaiV1beta2DocumentProvenanceParent {
   /// The id of the parent provenance.
-  core.int id;
+  core.int? id;
 
   /// The index of the \[Document.revisions\] identifying the parent revision.
-  core.int revision;
+  core.int? revision;
 
   GoogleCloudDocumentaiV1beta2DocumentProvenanceParent();
 
@@ -4858,37 +4832,37 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenanceParent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (revision != null) 'revision': revision,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (revision != null) 'revision': revision!,
       };
 }
 
 /// Contains past or forward revisions of this document.
 class GoogleCloudDocumentaiV1beta2DocumentRevision {
   /// If the change was made by a person specify the name or id of that person.
-  core.String agent;
+  core.String? agent;
 
   /// The time that the revision was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// Human Review information of this revision.
-  GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview humanReview;
+  GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview? humanReview;
 
   /// Id of the revision.
   ///
   /// Unique within the context of the document.
-  core.String id;
+  core.String? id;
 
   /// The revisions that this revision is based on.
   ///
   /// This can include one or more parent (when documents are merged.) This
   /// field represents the index into the `revisions` field.
-  core.List<core.int> parent;
+  core.List<core.int>? parent;
 
   /// If the annotation was made by processor identify the processor by its
   /// resource name.
-  core.String processor;
+  core.String? processor;
 
   GoogleCloudDocumentaiV1beta2DocumentRevision();
 
@@ -4917,13 +4891,13 @@ class GoogleCloudDocumentaiV1beta2DocumentRevision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (agent != null) 'agent': agent,
-        if (createTime != null) 'createTime': createTime,
-        if (humanReview != null) 'humanReview': humanReview.toJson(),
-        if (id != null) 'id': id,
-        if (parent != null) 'parent': parent,
-        if (processor != null) 'processor': processor,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (agent != null) 'agent': agent!,
+        if (createTime != null) 'createTime': createTime!,
+        if (humanReview != null) 'humanReview': humanReview!.toJson(),
+        if (id != null) 'id': id!,
+        if (parent != null) 'parent': parent!,
+        if (processor != null) 'processor': processor!,
       };
 }
 
@@ -4932,12 +4906,12 @@ class GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview {
   /// Human review state.
   ///
   /// e.g. `requested`, `succeeded`, `rejected`.
-  core.String state;
+  core.String? state;
 
   /// A message providing more details about the current state of processing.
   ///
   /// For example, the rejection reason when the state is `rejected`.
-  core.String stateMessage;
+  core.String? stateMessage;
 
   GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview();
 
@@ -4951,9 +4925,9 @@ class GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (state != null) 'state': state,
-        if (stateMessage != null) 'stateMessage': stateMessage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
       };
 }
 
@@ -4963,14 +4937,14 @@ class GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview {
 /// Each document shard contains this field to detail which shard it is.
 class GoogleCloudDocumentaiV1beta2DocumentShardInfo {
   /// Total number of shards.
-  core.String shardCount;
+  core.String? shardCount;
 
   /// The 0-based index of this shard.
-  core.String shardIndex;
+  core.String? shardIndex;
 
   /// The index of the first character in Document.text in the overall document
   /// global text.
-  core.String textOffset;
+  core.String? textOffset;
 
   GoogleCloudDocumentaiV1beta2DocumentShardInfo();
 
@@ -4986,10 +4960,10 @@ class GoogleCloudDocumentaiV1beta2DocumentShardInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (shardCount != null) 'shardCount': shardCount,
-        if (shardIndex != null) 'shardIndex': shardIndex,
-        if (textOffset != null) 'textOffset': textOffset,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (shardCount != null) 'shardCount': shardCount!,
+        if (shardIndex != null) 'shardIndex': shardIndex!,
+        if (textOffset != null) 'textOffset': textOffset!,
       };
 }
 
@@ -4998,34 +4972,34 @@ class GoogleCloudDocumentaiV1beta2DocumentShardInfo {
 /// This adheres to CSS conventions as much as possible.
 class GoogleCloudDocumentaiV1beta2DocumentStyle {
   /// Text background color.
-  GoogleTypeColor backgroundColor;
+  GoogleTypeColor? backgroundColor;
 
   /// Text color.
-  GoogleTypeColor color;
+  GoogleTypeColor? color;
 
   /// Font size.
-  GoogleCloudDocumentaiV1beta2DocumentStyleFontSize fontSize;
+  GoogleCloudDocumentaiV1beta2DocumentStyleFontSize? fontSize;
 
   /// Font weight.
   ///
   /// Possible values are normal, bold, bolder, and lighter.
   /// https://www.w3schools.com/cssref/pr_font_weight.asp
-  core.String fontWeight;
+  core.String? fontWeight;
 
   /// Text anchor indexing into the Document.text.
-  GoogleCloudDocumentaiV1beta2DocumentTextAnchor textAnchor;
+  GoogleCloudDocumentaiV1beta2DocumentTextAnchor? textAnchor;
 
   /// Text decoration.
   ///
   /// Follows CSS standard.
   /// https://www.w3schools.com/cssref/pr_text_text-decoration.asp
-  core.String textDecoration;
+  core.String? textDecoration;
 
   /// Text style.
   ///
   /// Possible values are normal, italic, and oblique.
   /// https://www.w3schools.com/cssref/pr_font_font-style.asp
-  core.String textStyle;
+  core.String? textStyle;
 
   GoogleCloudDocumentaiV1beta2DocumentStyle();
 
@@ -5057,27 +5031,27 @@ class GoogleCloudDocumentaiV1beta2DocumentStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundColor != null)
-          'backgroundColor': backgroundColor.toJson(),
-        if (color != null) 'color': color.toJson(),
-        if (fontSize != null) 'fontSize': fontSize.toJson(),
-        if (fontWeight != null) 'fontWeight': fontWeight,
-        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
-        if (textDecoration != null) 'textDecoration': textDecoration,
-        if (textStyle != null) 'textStyle': textStyle,
+          'backgroundColor': backgroundColor!.toJson(),
+        if (color != null) 'color': color!.toJson(),
+        if (fontSize != null) 'fontSize': fontSize!.toJson(),
+        if (fontWeight != null) 'fontWeight': fontWeight!,
+        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (textDecoration != null) 'textDecoration': textDecoration!,
+        if (textStyle != null) 'textStyle': textStyle!,
       };
 }
 
 /// Font size with unit.
 class GoogleCloudDocumentaiV1beta2DocumentStyleFontSize {
   /// Font size for the text.
-  core.double size;
+  core.double? size;
 
   /// Unit for the font size.
   ///
   /// Follows CSS naming (in, px, pt, etc.).
-  core.String unit;
+  core.String? unit;
 
   GoogleCloudDocumentaiV1beta2DocumentStyleFontSize();
 
@@ -5090,9 +5064,9 @@ class GoogleCloudDocumentaiV1beta2DocumentStyleFontSize {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (size != null) 'size': size,
-        if (unit != null) 'unit': unit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (size != null) 'size': size!,
+        if (unit != null) 'unit': unit!,
       };
 }
 
@@ -5100,10 +5074,10 @@ class GoogleCloudDocumentaiV1beta2DocumentStyleFontSize {
 class GoogleCloudDocumentaiV1beta2DocumentTextAnchor {
   /// Contains the content of the text span so that users do not have to look it
   /// up in the text_segments.
-  core.String content;
+  core.String? content;
 
   /// The text segments from the Document.text.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment>
+  core.List<GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment>?
       textSegments;
 
   GoogleCloudDocumentaiV1beta2DocumentTextAnchor();
@@ -5122,10 +5096,10 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
         if (textSegments != null)
-          'textSegments': textSegments.map((value) => value.toJson()).toList(),
+          'textSegments': textSegments!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5136,10 +5110,10 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchor {
 /// ShardInfo.text_offset
 class GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment {
   /// TextSegment half open end UTF-8 char index in the Document.text.
-  core.String endIndex;
+  core.String? endIndex;
 
   /// TextSegment start UTF-8 char index in the Document.text.
-  core.String startIndex;
+  core.String? startIndex;
 
   GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment();
 
@@ -5153,9 +5127,9 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endIndex != null) 'endIndex': endIndex,
-        if (startIndex != null) 'startIndex': startIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endIndex != null) 'endIndex': endIndex!,
+        if (startIndex != null) 'startIndex': startIndex!,
       };
 }
 
@@ -5164,17 +5138,17 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment {
 /// OCR corrections.
 class GoogleCloudDocumentaiV1beta2DocumentTextChange {
   /// The text that replaces the text identified in the `text_anchor`.
-  core.String changedText;
+  core.String? changedText;
 
   /// The history of this annotation.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentProvenance> provenance;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentProvenance>? provenance;
 
   /// Provenance of the correction.
   ///
   /// Text anchor indexing into the Document.text. There can only be a single
   /// `TextAnchor.text_segments` element. If the start and end index of the text
   /// segment are the same, the text change is inserted before that index.
-  GoogleCloudDocumentaiV1beta2DocumentTextAnchor textAnchor;
+  GoogleCloudDocumentaiV1beta2DocumentTextAnchor? textAnchor;
 
   GoogleCloudDocumentaiV1beta2DocumentTextChange();
 
@@ -5195,11 +5169,11 @@ class GoogleCloudDocumentaiV1beta2DocumentTextChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (changedText != null) 'changedText': changedText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (changedText != null) 'changedText': changedText!,
         if (provenance != null)
-          'provenance': provenance.map((value) => value.toJson()).toList(),
-        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+          'provenance': provenance!.map((value) => value.toJson()).toList(),
+        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
       };
 }
 
@@ -5209,20 +5183,20 @@ class GoogleCloudDocumentaiV1beta2DocumentTranslation {
   ///
   /// For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// The history of this annotation.
-  core.List<GoogleCloudDocumentaiV1beta2DocumentProvenance> provenance;
+  core.List<GoogleCloudDocumentaiV1beta2DocumentProvenance>? provenance;
 
   /// Provenance of the translation.
   ///
   /// Text anchor indexing into the Document.text. There can only be a single
   /// `TextAnchor.text_segments` element. If the start and end index of the text
   /// segment are the same, the text change is inserted before that index.
-  GoogleCloudDocumentaiV1beta2DocumentTextAnchor textAnchor;
+  GoogleCloudDocumentaiV1beta2DocumentTextAnchor? textAnchor;
 
   /// Text translated into the target language.
-  core.String translatedText;
+  core.String? translatedText;
 
   GoogleCloudDocumentaiV1beta2DocumentTranslation();
 
@@ -5246,18 +5220,18 @@ class GoogleCloudDocumentaiV1beta2DocumentTranslation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
         if (provenance != null)
-          'provenance': provenance.map((value) => value.toJson()).toList(),
-        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
-        if (translatedText != null) 'translatedText': translatedText,
+          'provenance': provenance!.map((value) => value.toJson()).toList(),
+        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (translatedText != null) 'translatedText': translatedText!,
       };
 }
 
 /// The Google Cloud Storage location where the output file will be written to.
 class GoogleCloudDocumentaiV1beta2GcsDestination {
-  core.String uri;
+  core.String? uri;
 
   GoogleCloudDocumentaiV1beta2GcsDestination();
 
@@ -5267,14 +5241,14 @@ class GoogleCloudDocumentaiV1beta2GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (uri != null) 'uri': uri!,
       };
 }
 
 /// The Google Cloud Storage location where the input file will be read from.
 class GoogleCloudDocumentaiV1beta2GcsSource {
-  core.String uri;
+  core.String? uri;
 
   GoogleCloudDocumentaiV1beta2GcsSource();
 
@@ -5284,8 +5258,8 @@ class GoogleCloudDocumentaiV1beta2GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -5296,8 +5270,8 @@ class GoogleCloudDocumentaiV1beta2InputConfig {
   /// Note: As with all `bytes` fields, proto buffer messages use a pure binary
   /// representation, whereas JSON representations use base64. This field only
   /// works for synchronous ProcessDocument method.
-  core.String contents;
-  core.List<core.int> get contentsAsBytes => convert.base64.decode(contents);
+  core.String? contents;
+  core.List<core.int> get contentsAsBytes => convert.base64.decode(contents!);
 
   set contentsAsBytes(core.List<core.int> _bytes) {
     contents =
@@ -5307,7 +5281,7 @@ class GoogleCloudDocumentaiV1beta2InputConfig {
   /// The Google Cloud Storage location to read the input from.
   ///
   /// This must be a single file.
-  GoogleCloudDocumentaiV1beta2GcsSource gcsSource;
+  GoogleCloudDocumentaiV1beta2GcsSource? gcsSource;
 
   /// Mimetype of the input.
   ///
@@ -5317,7 +5291,7 @@ class GoogleCloudDocumentaiV1beta2InputConfig {
   /// to be in Document format.
   ///
   /// Required.
-  core.String mimeType;
+  core.String? mimeType;
 
   GoogleCloudDocumentaiV1beta2InputConfig();
 
@@ -5334,10 +5308,10 @@ class GoogleCloudDocumentaiV1beta2InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contents != null) 'contents': contents,
-        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
-        if (mimeType != null) 'mimeType': mimeType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contents != null) 'contents': contents!,
+        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
+        if (mimeType != null) 'mimeType': mimeType!,
       };
 }
 
@@ -5347,10 +5321,10 @@ class GoogleCloudDocumentaiV1beta2InputConfig {
 /// and range from 0 to 1.
 class GoogleCloudDocumentaiV1beta2NormalizedVertex {
   /// X coordinate.
-  core.double x;
+  core.double? x;
 
   /// Y coordinate.
-  core.double y;
+  core.double? y;
 
   GoogleCloudDocumentaiV1beta2NormalizedVertex();
 
@@ -5363,16 +5337,16 @@ class GoogleCloudDocumentaiV1beta2NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (x != null) 'x': x,
-        if (y != null) 'y': y,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
       };
 }
 
 /// Contains metadata for the BatchProcessDocuments operation.
 class GoogleCloudDocumentaiV1beta2OperationMetadata {
   /// The creation time of the operation.
-  core.String createTime;
+  core.String? createTime;
 
   /// The state of the current batch processing.
   /// Possible string values are:
@@ -5384,13 +5358,13 @@ class GoogleCloudDocumentaiV1beta2OperationMetadata {
   /// - "SUCCEEDED" : The batch processing completed successfully.
   /// - "CANCELLED" : The batch processing was cancelled.
   /// - "FAILED" : The batch processing has failed.
-  core.String state;
+  core.String? state;
 
   /// A message providing more details about the current state of processing.
-  core.String stateMessage;
+  core.String? stateMessage;
 
   /// The last update time of the operation.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudDocumentaiV1beta2OperationMetadata();
 
@@ -5409,18 +5383,18 @@ class GoogleCloudDocumentaiV1beta2OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (state != null) 'state': state,
-        if (stateMessage != null) 'stateMessage': stateMessage,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// The desired output location and metadata.
 class GoogleCloudDocumentaiV1beta2OutputConfig {
   /// The Google Cloud Storage location to write the output to.
-  GoogleCloudDocumentaiV1beta2GcsDestination gcsDestination;
+  GoogleCloudDocumentaiV1beta2GcsDestination? gcsDestination;
 
   /// The max number of pages to include into each output Document shard JSON on
   /// Google Cloud Storage.
@@ -5433,7 +5407,7 @@ class GoogleCloudDocumentaiV1beta2OutputConfig {
   /// y are 1-indexed page numbers. Example GCS outputs with 157 pages and
   /// pages_per_shard = 50: pages-001-to-050.json pages-051-to-100.json
   /// pages-101-to-150.json pages-151-to-157.json
-  core.int pagesPerShard;
+  core.int? pagesPerShard;
 
   GoogleCloudDocumentaiV1beta2OutputConfig();
 
@@ -5447,9 +5421,9 @@ class GoogleCloudDocumentaiV1beta2OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
-        if (pagesPerShard != null) 'pagesPerShard': pagesPerShard,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
+        if (pagesPerShard != null) 'pagesPerShard': pagesPerShard!,
       };
 }
 
@@ -5458,13 +5432,13 @@ class GoogleCloudDocumentaiV1beta2ProcessDocumentResponse {
   /// Information about the input file.
   ///
   /// This is the same as the corresponding input config in the request.
-  GoogleCloudDocumentaiV1beta2InputConfig inputConfig;
+  GoogleCloudDocumentaiV1beta2InputConfig? inputConfig;
 
   /// The output location of the parsed responses.
   ///
   /// The responses are written to this location as JSON-serialized `Document`
   /// objects.
-  GoogleCloudDocumentaiV1beta2OutputConfig outputConfig;
+  GoogleCloudDocumentaiV1beta2OutputConfig? outputConfig;
 
   GoogleCloudDocumentaiV1beta2ProcessDocumentResponse();
 
@@ -5479,9 +5453,9 @@ class GoogleCloudDocumentaiV1beta2ProcessDocumentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
-        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
+        if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
       };
 }
 
@@ -5490,10 +5464,10 @@ class GoogleCloudDocumentaiV1beta2ProcessDocumentResponse {
 /// NOTE: the vertex coordinates are in the same scale as the original image.
 class GoogleCloudDocumentaiV1beta2Vertex {
   /// X coordinate.
-  core.int x;
+  core.int? x;
 
   /// Y coordinate.
-  core.int y;
+  core.int? y;
 
   GoogleCloudDocumentaiV1beta2Vertex();
 
@@ -5506,20 +5480,20 @@ class GoogleCloudDocumentaiV1beta2Vertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (x != null) 'x': x,
-        if (y != null) 'y': y,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
       };
 }
 
 /// The common config to specify a set of documents used as input.
 class GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig {
   /// The set of documents individually specified on Cloud Storage.
-  GoogleCloudDocumentaiV1beta3GcsDocuments gcsDocuments;
+  GoogleCloudDocumentaiV1beta3GcsDocuments? gcsDocuments;
 
   /// The set of documents that match the specified Cloud Storage
   /// \[gcs_prefix\].
-  GoogleCloudDocumentaiV1beta3GcsPrefix gcsPrefix;
+  GoogleCloudDocumentaiV1beta3GcsPrefix? gcsPrefix;
 
   GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig();
 
@@ -5535,20 +5509,20 @@ class GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsDocuments != null) 'gcsDocuments': gcsDocuments.toJson(),
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsDocuments != null) 'gcsDocuments': gcsDocuments!.toJson(),
+        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!.toJson(),
       };
 }
 
 /// The long running operation metadata for batch process method.
 class GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
   /// The creation time of the operation.
-  core.String createTime;
+  core.String? createTime;
 
   /// The list of response details of each document.
   core.List<
-          GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus>
+          GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus>?
       individualProcessStatuses;
 
   /// The state of the current batch processing.
@@ -5561,15 +5535,15 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
   /// - "CANCELLING" : The batch processing was being cancelled.
   /// - "CANCELLED" : The batch processing was cancelled.
   /// - "FAILED" : The batch processing has failed.
-  core.String state;
+  core.String? state;
 
   /// A message providing more details about the current state of processing.
   ///
   /// For example, the error message if the operation is failed.
-  core.String stateMessage;
+  core.String? stateMessage;
 
   /// The last update time of the operation.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudDocumentaiV1beta3BatchProcessMetadata();
 
@@ -5597,14 +5571,15 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
         if (individualProcessStatuses != null)
-          'individualProcessStatuses':
-              individualProcessStatuses.map((value) => value.toJson()).toList(),
-        if (state != null) 'state': state,
-        if (stateMessage != null) 'stateMessage': stateMessage,
-        if (updateTime != null) 'updateTime': updateTime,
+          'individualProcessStatuses': individualProcessStatuses!
+              .map((value) => value.toJson())
+              .toList(),
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -5615,24 +5590,24 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus {
   /// If the human review process is not triggered, this field will be empty. It
   /// has the same response type and metadata as the long running operation
   /// returned by ReviewDocument method.
-  core.String humanReviewOperation;
+  core.String? humanReviewOperation;
 
   /// The status of human review on the processed document.
-  GoogleCloudDocumentaiV1beta3HumanReviewStatus humanReviewStatus;
+  GoogleCloudDocumentaiV1beta3HumanReviewStatus? humanReviewStatus;
 
   /// The source of the document, same as the \[input_gcs_source\] field in the
   /// request when the batch process started.
   ///
   /// The batch process is started by take snapshot of that document, since a
   /// user can move or change that document during the process.
-  core.String inputGcsSource;
+  core.String? inputGcsSource;
 
   /// The output_gcs_destination (in the request as 'output_gcs_destination') of
   /// the processed document if it was successful, otherwise empty.
-  core.String outputGcsDestination;
+  core.String? outputGcsDestination;
 
   /// The status of the processing of the document.
-  GoogleRpcStatus status;
+  GoogleRpcStatus? status;
 
   GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus();
 
@@ -5659,37 +5634,38 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (humanReviewOperation != null)
-          'humanReviewOperation': humanReviewOperation,
+          'humanReviewOperation': humanReviewOperation!,
         if (humanReviewStatus != null)
-          'humanReviewStatus': humanReviewStatus.toJson(),
-        if (inputGcsSource != null) 'inputGcsSource': inputGcsSource,
+          'humanReviewStatus': humanReviewStatus!.toJson(),
+        if (inputGcsSource != null) 'inputGcsSource': inputGcsSource!,
         if (outputGcsDestination != null)
-          'outputGcsDestination': outputGcsDestination,
-        if (status != null) 'status': status.toJson(),
+          'outputGcsDestination': outputGcsDestination!,
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
 /// Request message for batch process document method.
 class GoogleCloudDocumentaiV1beta3BatchProcessRequest {
   /// The overall output config for batch process.
-  GoogleCloudDocumentaiV1beta3DocumentOutputConfig documentOutputConfig;
+  GoogleCloudDocumentaiV1beta3DocumentOutputConfig? documentOutputConfig;
 
   /// The input config for each single document in the batch process.
-  core.List<GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig>
+  core.List<GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig>?
       inputConfigs;
 
   /// The input documents for batch process.
-  GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig inputDocuments;
+  GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig? inputDocuments;
 
   /// The overall output config for batch process.
-  GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig outputConfig;
+  GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig?
+      outputConfig;
 
   /// Whether Human Review feature should be skipped for this request.
   ///
   /// Default to false.
-  core.bool skipHumanReview;
+  core.bool? skipHumanReview;
 
   GoogleCloudDocumentaiV1beta3BatchProcessRequest();
 
@@ -5724,28 +5700,28 @@ class GoogleCloudDocumentaiV1beta3BatchProcessRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (documentOutputConfig != null)
-          'documentOutputConfig': documentOutputConfig.toJson(),
+          'documentOutputConfig': documentOutputConfig!.toJson(),
         if (inputConfigs != null)
-          'inputConfigs': inputConfigs.map((value) => value.toJson()).toList(),
-        if (inputDocuments != null) 'inputDocuments': inputDocuments.toJson(),
-        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
-        if (skipHumanReview != null) 'skipHumanReview': skipHumanReview,
+          'inputConfigs': inputConfigs!.map((value) => value.toJson()).toList(),
+        if (inputDocuments != null) 'inputDocuments': inputDocuments!.toJson(),
+        if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
+        if (skipHumanReview != null) 'skipHumanReview': skipHumanReview!,
       };
 }
 
 /// The message for input config in batch process.
 class GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig {
   /// The Cloud Storage location as the source of the document.
-  core.String gcsSource;
+  core.String? gcsSource;
 
   /// Mimetype of the input.
   ///
   /// If the input is a raw document, the supported mimetypes are
   /// application/pdf, image/tiff, and image/gif. If the input is a \[Document\]
   /// proto, the type should be application/json.
-  core.String mimeType;
+  core.String? mimeType;
 
   GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig();
 
@@ -5759,16 +5735,16 @@ class GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource,
-        if (mimeType != null) 'mimeType': mimeType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource!,
+        if (mimeType != null) 'mimeType': mimeType!,
       };
 }
 
 /// The message for output config in batch process.
 class GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig {
   /// The output Cloud Storage directory to put the processed documents.
-  core.String gcsDestination;
+  core.String? gcsDestination;
 
   GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig();
 
@@ -5779,8 +5755,8 @@ class GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
 
@@ -5792,16 +5768,16 @@ class GoogleCloudDocumentaiV1beta3BatchProcessResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A bounding polygon for the detected image annotation.
 class GoogleCloudDocumentaiV1beta3BoundingPoly {
   /// The bounding polygon normalized vertices.
-  core.List<GoogleCloudDocumentaiV1beta3NormalizedVertex> normalizedVertices;
+  core.List<GoogleCloudDocumentaiV1beta3NormalizedVertex>? normalizedVertices;
 
   /// The bounding polygon vertices.
-  core.List<GoogleCloudDocumentaiV1beta3Vertex> vertices;
+  core.List<GoogleCloudDocumentaiV1beta3Vertex>? vertices;
 
   GoogleCloudDocumentaiV1beta3BoundingPoly();
 
@@ -5822,19 +5798,19 @@ class GoogleCloudDocumentaiV1beta3BoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (normalizedVertices != null)
           'normalizedVertices':
-              normalizedVertices.map((value) => value.toJson()).toList(),
+              normalizedVertices!.map((value) => value.toJson()).toList(),
         if (vertices != null)
-          'vertices': vertices.map((value) => value.toJson()).toList(),
+          'vertices': vertices!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The common metadata for long running operations.
 class GoogleCloudDocumentaiV1beta3CommonOperationMetadata {
   /// The creation time of the operation.
-  core.String createTime;
+  core.String? createTime;
 
   /// The state of the operation.
   /// Possible string values are:
@@ -5844,13 +5820,13 @@ class GoogleCloudDocumentaiV1beta3CommonOperationMetadata {
   /// - "SUCCEEDED" : Operation succeeded.
   /// - "FAILED" : Operation failed.
   /// - "CANCELLED" : Operation is cancelled.
-  core.String state;
+  core.String? state;
 
   /// A message providing more details about the current state of processing.
-  core.String stateMessage;
+  core.String? stateMessage;
 
   /// The last update time of the operation.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudDocumentaiV1beta3CommonOperationMetadata();
 
@@ -5869,11 +5845,11 @@ class GoogleCloudDocumentaiV1beta3CommonOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (state != null) 'state': state,
-        if (stateMessage != null) 'stateMessage': stateMessage,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -5888,8 +5864,8 @@ class GoogleCloudDocumentaiV1beta3Document {
   ///
   /// Note: As with all `bytes` fields, protobuffers use a pure binary
   /// representation, whereas JSON representations use base64.
-  core.String content;
-  core.List<core.int> get contentAsBytes => convert.base64.decode(content);
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
@@ -5899,48 +5875,49 @@ class GoogleCloudDocumentaiV1beta3Document {
   /// A list of entities detected on Document.text.
   ///
   /// For document shards, entities in this list may cross shard boundaries.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentEntity> entities;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentEntity>? entities;
 
   /// Relationship among Document.entities.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentEntityRelation> entityRelations;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentEntityRelation>?
+      entityRelations;
 
   /// Any error that occurred while processing this document.
-  GoogleRpcStatus error;
+  GoogleRpcStatus? error;
 
   /// An IANA published MIME type (also referred to as media type).
   ///
   /// For more information, see
   /// https://www.iana.org/assignments/media-types/media-types.xhtml.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// Visual page layout for the Document.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPage> pages;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPage>? pages;
 
   /// Revision history of this document.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentRevision> revisions;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentRevision>? revisions;
 
   /// Information about the sharding if this document is sharded part of a
   /// larger document.
   ///
   /// If the document is not sharded, this message is not specified.
-  GoogleCloudDocumentaiV1beta3DocumentShardInfo shardInfo;
+  GoogleCloudDocumentaiV1beta3DocumentShardInfo? shardInfo;
 
   /// UTF-8 encoded text in reading order from the document.
-  core.String text;
+  core.String? text;
 
   /// A list of text corrections made to \[Document.text\].
   ///
   /// This is usually used for annotating corrections to OCR mistakes. Text
   /// changes for a given revision may not overlap with each other.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentTextChange> textChanges;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentTextChange>? textChanges;
 
   /// Styles for the Document.text.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentStyle> textStyles;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentStyle>? textStyles;
 
   /// A list of translations on Document.text.
   ///
   /// For document shards, translations in this list may cross shard boundaries.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentTranslation> translations;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentTranslation>? translations;
 
   /// Currently supports Google Cloud Storage URI of the form
   /// `gs://bucket_name/object_name`.
@@ -5948,7 +5925,7 @@ class GoogleCloudDocumentaiV1beta3Document {
   /// Object versioning is not supported. See
   /// [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris)
   /// for more info.
-  core.String uri;
+  core.String? uri;
 
   GoogleCloudDocumentaiV1beta3Document();
 
@@ -6024,28 +6001,28 @@ class GoogleCloudDocumentaiV1beta3Document {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
         if (entities != null)
-          'entities': entities.map((value) => value.toJson()).toList(),
+          'entities': entities!.map((value) => value.toJson()).toList(),
         if (entityRelations != null)
           'entityRelations':
-              entityRelations.map((value) => value.toJson()).toList(),
-        if (error != null) 'error': error.toJson(),
-        if (mimeType != null) 'mimeType': mimeType,
+              entityRelations!.map((value) => value.toJson()).toList(),
+        if (error != null) 'error': error!.toJson(),
+        if (mimeType != null) 'mimeType': mimeType!,
         if (pages != null)
-          'pages': pages.map((value) => value.toJson()).toList(),
+          'pages': pages!.map((value) => value.toJson()).toList(),
         if (revisions != null)
-          'revisions': revisions.map((value) => value.toJson()).toList(),
-        if (shardInfo != null) 'shardInfo': shardInfo.toJson(),
-        if (text != null) 'text': text,
+          'revisions': revisions!.map((value) => value.toJson()).toList(),
+        if (shardInfo != null) 'shardInfo': shardInfo!.toJson(),
+        if (text != null) 'text': text!,
         if (textChanges != null)
-          'textChanges': textChanges.map((value) => value.toJson()).toList(),
+          'textChanges': textChanges!.map((value) => value.toJson()).toList(),
         if (textStyles != null)
-          'textStyles': textStyles.map((value) => value.toJson()).toList(),
+          'textStyles': textStyles!.map((value) => value.toJson()).toList(),
         if (translations != null)
-          'translations': translations.map((value) => value.toJson()).toList(),
-        if (uri != null) 'uri': uri,
+          'translations': translations!.map((value) => value.toJson()).toList(),
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -6057,22 +6034,22 @@ class GoogleCloudDocumentaiV1beta3DocumentEntity {
   /// Range \[0, 1\].
   ///
   /// Optional.
-  core.double confidence;
+  core.double? confidence;
 
   /// Canonical id.
   ///
   /// This will be a unique value in the entity list for this document.
   ///
   /// Optional.
-  core.String id;
+  core.String? id;
 
   /// Use `id` field instead.
   ///
   /// Deprecated.
-  core.String mentionId;
+  core.String? mentionId;
 
   /// Text value in the document e.g. `1600 Amphitheatre Pkwy`.
-  core.String mentionText;
+  core.String? mentionText;
 
   /// Normalized entity value.
   ///
@@ -6081,38 +6058,38 @@ class GoogleCloudDocumentaiV1beta3DocumentEntity {
   /// populated for certain supported document types.
   ///
   /// Optional.
-  GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue normalizedValue;
+  GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue? normalizedValue;
 
   /// Represents the provenance of this entity wrt.
   ///
   /// the location on the page where it was found.
   ///
   /// Optional.
-  GoogleCloudDocumentaiV1beta3DocumentPageAnchor pageAnchor;
+  GoogleCloudDocumentaiV1beta3DocumentPageAnchor? pageAnchor;
 
   /// Entities can be nested to form a hierarchical data structure representing
   /// the content in the document.
   ///
   /// Optional.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentEntity> properties;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentEntity>? properties;
 
   /// The history of this annotation.
   ///
   /// Optional.
-  GoogleCloudDocumentaiV1beta3DocumentProvenance provenance;
+  GoogleCloudDocumentaiV1beta3DocumentProvenance? provenance;
 
   /// Whether the entity will be redacted for de-identification purposes.
   ///
   /// Optional.
-  core.bool redacted;
+  core.bool? redacted;
 
   /// Provenance of the entity.
   ///
   /// Text anchor indexing into the Document.text.
-  GoogleCloudDocumentaiV1beta3DocumentTextAnchor textAnchor;
+  GoogleCloudDocumentaiV1beta3DocumentTextAnchor? textAnchor;
 
   /// Entity type from a schema e.g. `Address`.
-  core.String type;
+  core.String? type;
 
   GoogleCloudDocumentaiV1beta3DocumentEntity();
 
@@ -6161,20 +6138,20 @@ class GoogleCloudDocumentaiV1beta3DocumentEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (confidence != null) 'confidence': confidence,
-        if (id != null) 'id': id,
-        if (mentionId != null) 'mentionId': mentionId,
-        if (mentionText != null) 'mentionText': mentionText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (id != null) 'id': id!,
+        if (mentionId != null) 'mentionId': mentionId!,
+        if (mentionText != null) 'mentionText': mentionText!,
         if (normalizedValue != null)
-          'normalizedValue': normalizedValue.toJson(),
-        if (pageAnchor != null) 'pageAnchor': pageAnchor.toJson(),
+          'normalizedValue': normalizedValue!.toJson(),
+        if (pageAnchor != null) 'pageAnchor': pageAnchor!.toJson(),
         if (properties != null)
-          'properties': properties.map((value) => value.toJson()).toList(),
-        if (provenance != null) 'provenance': provenance.toJson(),
-        if (redacted != null) 'redacted': redacted,
-        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
-        if (type != null) 'type': type,
+          'properties': properties!.map((value) => value.toJson()).toList(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (redacted != null) 'redacted': redacted!,
+        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -6184,30 +6161,30 @@ class GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue {
   ///
   /// See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/postal_address.proto
-  GoogleTypePostalAddress addressValue;
+  GoogleTypePostalAddress? addressValue;
 
   /// Boolean value.
   ///
   /// Can be used for entities with binary values, or for checkboxes.
-  core.bool booleanValue;
+  core.bool? booleanValue;
 
   /// Date value.
   ///
   /// Includes year, month, day. See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/date.proto
-  GoogleTypeDate dateValue;
+  GoogleTypeDate? dateValue;
 
   /// DateTime value.
   ///
   /// Includes date, time, and timezone. See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/datetime.proto
-  GoogleTypeDateTime datetimeValue;
+  GoogleTypeDateTime? datetimeValue;
 
   /// Money value.
   ///
   /// See also:
   /// https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
-  GoogleTypeMoney moneyValue;
+  GoogleTypeMoney? moneyValue;
 
   /// Normalized entity value stored as a string.
   ///
@@ -6218,7 +6195,7 @@ class GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue {
   /// Datetime type (`datetime_value`) is in the ISO 8601 text format.
   ///
   /// Required.
-  core.String text;
+  core.String? text;
 
   GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue();
 
@@ -6248,26 +6225,26 @@ class GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addressValue != null) 'addressValue': addressValue.toJson(),
-        if (booleanValue != null) 'booleanValue': booleanValue,
-        if (dateValue != null) 'dateValue': dateValue.toJson(),
-        if (datetimeValue != null) 'datetimeValue': datetimeValue.toJson(),
-        if (moneyValue != null) 'moneyValue': moneyValue.toJson(),
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addressValue != null) 'addressValue': addressValue!.toJson(),
+        if (booleanValue != null) 'booleanValue': booleanValue!,
+        if (dateValue != null) 'dateValue': dateValue!.toJson(),
+        if (datetimeValue != null) 'datetimeValue': datetimeValue!.toJson(),
+        if (moneyValue != null) 'moneyValue': moneyValue!.toJson(),
+        if (text != null) 'text': text!,
       };
 }
 
 /// Relationship between Entities.
 class GoogleCloudDocumentaiV1beta3DocumentEntityRelation {
   /// Object entity id.
-  core.String objectId;
+  core.String? objectId;
 
   /// Relationship description.
-  core.String relation;
+  core.String? relation;
 
   /// Subject entity id.
-  core.String subjectId;
+  core.String? subjectId;
 
   GoogleCloudDocumentaiV1beta3DocumentEntityRelation();
 
@@ -6283,10 +6260,10 @@ class GoogleCloudDocumentaiV1beta3DocumentEntityRelation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
-        if (relation != null) 'relation': relation,
-        if (subjectId != null) 'subjectId': subjectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
+        if (relation != null) 'relation': relation!,
+        if (subjectId != null) 'subjectId': subjectId!,
       };
 }
 
@@ -6295,7 +6272,7 @@ class GoogleCloudDocumentaiV1beta3DocumentEntityRelation {
 /// All documents will be written as a JSON file.
 class GoogleCloudDocumentaiV1beta3DocumentOutputConfig {
   /// Output config to write the results to Cloud Storage.
-  GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig
+  GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig?
       gcsOutputConfig;
 
   GoogleCloudDocumentaiV1beta3DocumentOutputConfig();
@@ -6309,16 +6286,16 @@ class GoogleCloudDocumentaiV1beta3DocumentOutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (gcsOutputConfig != null)
-          'gcsOutputConfig': gcsOutputConfig.toJson(),
+          'gcsOutputConfig': gcsOutputConfig!.toJson(),
       };
 }
 
 /// The configuration used when outputting documents.
 class GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig {
   /// The Cloud Storage uri (a directory) of the output.
-  core.String gcsUri;
+  core.String? gcsUri;
 
   GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig();
 
@@ -6329,8 +6306,8 @@ class GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsUri != null) 'gcsUri': gcsUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsUri != null) 'gcsUri': gcsUri!,
       };
 }
 
@@ -6340,56 +6317,56 @@ class GoogleCloudDocumentaiV1beta3DocumentPage {
   ///
   /// A block has a set of lines (collected into paragraphs) that have a common
   /// line-spacing and orientation.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageBlock> blocks;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageBlock>? blocks;
 
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Physical dimension of the page.
-  GoogleCloudDocumentaiV1beta3DocumentPageDimension dimension;
+  GoogleCloudDocumentaiV1beta3DocumentPageDimension? dimension;
 
   /// A list of visually detected form fields on the page.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageFormField> formFields;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageFormField>? formFields;
 
   /// Rendered image for this page.
   ///
   /// This image is preprocessed to remove any skew, rotation, and distortions
   /// such that the annotation bounding boxes can be upright and axis-aligned.
-  GoogleCloudDocumentaiV1beta3DocumentPageImage image;
+  GoogleCloudDocumentaiV1beta3DocumentPageImage? image;
 
   /// Layout for the page.
-  GoogleCloudDocumentaiV1beta3DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta3DocumentPageLayout? layout;
 
   /// A list of visually detected text lines on the page.
   ///
   /// A collection of tokens that a human would perceive as a line.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageLine> lines;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageLine>? lines;
 
   /// 1-based index for current Page in a parent Document.
   ///
   /// Useful when a page is taken out of a Document for individual processing.
-  core.int pageNumber;
+  core.int? pageNumber;
 
   /// A list of visually detected text paragraphs on the page.
   ///
   /// A collection of lines that a human would perceive as a paragraph.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageParagraph> paragraphs;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageParagraph>? paragraphs;
 
   /// A list of visually detected tables on the page.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageTable> tables;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageTable>? tables;
 
   /// A list of visually detected tokens on the page.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageToken> tokens;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageToken>? tokens;
 
   /// Transformation matrices that were applied to the original document image
   /// to produce Page.image.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageMatrix> transforms;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageMatrix>? transforms;
 
   /// A list of detected non-text visual elements e.g. checkbox, signature etc.
   ///
   /// on the page.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageVisualElement>
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageVisualElement>?
       visualElements;
 
   GoogleCloudDocumentaiV1beta3DocumentPage();
@@ -6476,31 +6453,31 @@ class GoogleCloudDocumentaiV1beta3DocumentPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (blocks != null)
-          'blocks': blocks.map((value) => value.toJson()).toList(),
+          'blocks': blocks!.map((value) => value.toJson()).toList(),
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (dimension != null) 'dimension': dimension.toJson(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (dimension != null) 'dimension': dimension!.toJson(),
         if (formFields != null)
-          'formFields': formFields.map((value) => value.toJson()).toList(),
-        if (image != null) 'image': image.toJson(),
-        if (layout != null) 'layout': layout.toJson(),
+          'formFields': formFields!.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image!.toJson(),
+        if (layout != null) 'layout': layout!.toJson(),
         if (lines != null)
-          'lines': lines.map((value) => value.toJson()).toList(),
-        if (pageNumber != null) 'pageNumber': pageNumber,
+          'lines': lines!.map((value) => value.toJson()).toList(),
+        if (pageNumber != null) 'pageNumber': pageNumber!,
         if (paragraphs != null)
-          'paragraphs': paragraphs.map((value) => value.toJson()).toList(),
+          'paragraphs': paragraphs!.map((value) => value.toJson()).toList(),
         if (tables != null)
-          'tables': tables.map((value) => value.toJson()).toList(),
+          'tables': tables!.map((value) => value.toJson()).toList(),
         if (tokens != null)
-          'tokens': tokens.map((value) => value.toJson()).toList(),
+          'tokens': tokens!.map((value) => value.toJson()).toList(),
         if (transforms != null)
-          'transforms': transforms.map((value) => value.toJson()).toList(),
+          'transforms': transforms!.map((value) => value.toJson()).toList(),
         if (visualElements != null)
           'visualElements':
-              visualElements.map((value) => value.toJson()).toList(),
+              visualElements!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6510,7 +6487,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPage {
 /// optionally reference specific layout element types.
 class GoogleCloudDocumentaiV1beta3DocumentPageAnchor {
   /// One or more references to visual page elements
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef> pageRefs;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef>? pageRefs;
 
   GoogleCloudDocumentaiV1beta3DocumentPageAnchor();
 
@@ -6524,9 +6501,9 @@ class GoogleCloudDocumentaiV1beta3DocumentPageAnchor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (pageRefs != null)
-          'pageRefs': pageRefs.map((value) => value.toJson()).toList(),
+          'pageRefs': pageRefs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6535,12 +6512,12 @@ class GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef {
   /// Identifies the bounding polygon of a layout element on the page.
   ///
   /// Optional.
-  GoogleCloudDocumentaiV1beta3BoundingPoly boundingPoly;
+  GoogleCloudDocumentaiV1beta3BoundingPoly? boundingPoly;
 
   /// Use PageRef.bounding_poly instead.
   ///
   /// Optional. Deprecated.
-  core.String layoutId;
+  core.String? layoutId;
 
   /// The type of the layout element that is being referenced if any.
   ///
@@ -6554,13 +6531,13 @@ class GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef {
   /// - "VISUAL_ELEMENT" : References a Page.visual_elements element.
   /// - "TABLE" : Refrrences a Page.tables element.
   /// - "FORM_FIELD" : References a Page.form_fields element.
-  core.String layoutType;
+  core.String? layoutType;
 
   /// Index into the Document.pages element, for example using Document.pages to
   /// locate the related page element.
   ///
   /// Required.
-  core.String page;
+  core.String? page;
 
   GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef();
 
@@ -6581,11 +6558,11 @@ class GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
-        if (layoutId != null) 'layoutId': layoutId,
-        if (layoutType != null) 'layoutType': layoutType,
-        if (page != null) 'page': page,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
+        if (layoutId != null) 'layoutId': layoutId!,
+        if (layoutType != null) 'layoutType': layoutType!,
+        if (page != null) 'page': page!,
       };
 }
 
@@ -6593,14 +6570,14 @@ class GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef {
 /// line-spacing and orientation.
 class GoogleCloudDocumentaiV1beta3DocumentPageBlock {
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for Block.
-  GoogleCloudDocumentaiV1beta3DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta3DocumentPageLayout? layout;
 
   /// The history of this annotation.
-  GoogleCloudDocumentaiV1beta3DocumentProvenance provenance;
+  GoogleCloudDocumentaiV1beta3DocumentProvenance? provenance;
 
   GoogleCloudDocumentaiV1beta3DocumentPageBlock();
 
@@ -6623,12 +6600,12 @@ class GoogleCloudDocumentaiV1beta3DocumentPageBlock {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (provenance != null) 'provenance': provenance.toJson(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
       };
 }
 
@@ -6637,13 +6614,13 @@ class GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage {
   /// Confidence of detected language.
   ///
   /// Range \[0, 1\].
-  core.double confidence;
+  core.double? confidence;
 
   /// The BCP-47 language code, such as "en-US" or "sr-Latn".
   ///
   /// For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String languageCode;
+  core.String? languageCode;
 
   GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage();
 
@@ -6657,22 +6634,22 @@ class GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (confidence != null) 'confidence': confidence,
-        if (languageCode != null) 'languageCode': languageCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (languageCode != null) 'languageCode': languageCode!,
       };
 }
 
 /// Dimension for the page.
 class GoogleCloudDocumentaiV1beta3DocumentPageDimension {
   /// Page height.
-  core.double height;
+  core.double? height;
 
   /// Dimension unit.
-  core.String unit;
+  core.String? unit;
 
   /// Page width.
-  core.double width;
+  core.double? width;
 
   GoogleCloudDocumentaiV1beta3DocumentPageDimension();
 
@@ -6688,10 +6665,10 @@ class GoogleCloudDocumentaiV1beta3DocumentPageDimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (unit != null) 'unit': unit,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (unit != null) 'unit': unit!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -6700,24 +6677,24 @@ class GoogleCloudDocumentaiV1beta3DocumentPageFormField {
   /// Layout for the FormField name.
   ///
   /// e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.
-  GoogleCloudDocumentaiV1beta3DocumentPageLayout fieldName;
+  GoogleCloudDocumentaiV1beta3DocumentPageLayout? fieldName;
 
   /// Layout for the FormField value.
-  GoogleCloudDocumentaiV1beta3DocumentPageLayout fieldValue;
+  GoogleCloudDocumentaiV1beta3DocumentPageLayout? fieldValue;
 
   /// A list of detected languages for name together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>?
       nameDetectedLanguages;
 
   /// A list of detected languages for value together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>?
       valueDetectedLanguages;
 
   /// If the value is non-textual, this field represents the type.
   ///
   /// Current valid values are: - blank (this indicates the field_value is
   /// normal text) - "unfilled_checkbox" - "filled_checkbox"
-  core.String valueType;
+  core.String? valueType;
 
   GoogleCloudDocumentaiV1beta3DocumentPageFormField();
 
@@ -6751,24 +6728,24 @@ class GoogleCloudDocumentaiV1beta3DocumentPageFormField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fieldName != null) 'fieldName': fieldName.toJson(),
-        if (fieldValue != null) 'fieldValue': fieldValue.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fieldName != null) 'fieldName': fieldName!.toJson(),
+        if (fieldValue != null) 'fieldValue': fieldValue!.toJson(),
         if (nameDetectedLanguages != null)
           'nameDetectedLanguages':
-              nameDetectedLanguages.map((value) => value.toJson()).toList(),
+              nameDetectedLanguages!.map((value) => value.toJson()).toList(),
         if (valueDetectedLanguages != null)
           'valueDetectedLanguages':
-              valueDetectedLanguages.map((value) => value.toJson()).toList(),
-        if (valueType != null) 'valueType': valueType,
+              valueDetectedLanguages!.map((value) => value.toJson()).toList(),
+        if (valueType != null) 'valueType': valueType!,
       };
 }
 
 /// Rendered image contents for this page.
 class GoogleCloudDocumentaiV1beta3DocumentPageImage {
   /// Raw byte content of the image.
-  core.String content;
-  core.List<core.int> get contentAsBytes => convert.base64.decode(content);
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
@@ -6776,13 +6753,13 @@ class GoogleCloudDocumentaiV1beta3DocumentPageImage {
   }
 
   /// Height of the image in pixels.
-  core.int height;
+  core.int? height;
 
   /// Encoding mime type for the image.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// Width of the image in pixels.
-  core.int width;
+  core.int? width;
 
   GoogleCloudDocumentaiV1beta3DocumentPageImage();
 
@@ -6801,25 +6778,25 @@ class GoogleCloudDocumentaiV1beta3DocumentPageImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
-        if (height != null) 'height': height,
-        if (mimeType != null) 'mimeType': mimeType,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
+        if (height != null) 'height': height!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// Visual element describing a layout unit on a page.
 class GoogleCloudDocumentaiV1beta3DocumentPageLayout {
   /// The bounding polygon for the Layout.
-  GoogleCloudDocumentaiV1beta3BoundingPoly boundingPoly;
+  GoogleCloudDocumentaiV1beta3BoundingPoly? boundingPoly;
 
   /// Confidence of the current Layout within context of the object this layout
   /// is for.
   ///
   /// e.g. confidence can be for a single token, a table, a visual element, etc.
   /// depending on context. Range \[0, 1\].
-  core.double confidence;
+  core.double? confidence;
 
   /// Detected orientation for the Layout.
   /// Possible string values are:
@@ -6831,10 +6808,10 @@ class GoogleCloudDocumentaiV1beta3DocumentPageLayout {
   /// degrees from upright to read.
   /// - "PAGE_LEFT" : Orientation is aligned with page left. Turn the head 90
   /// degrees counterclockwise from upright to read.
-  core.String orientation;
+  core.String? orientation;
 
   /// Text anchor indexing into the Document.text.
-  GoogleCloudDocumentaiV1beta3DocumentTextAnchor textAnchor;
+  GoogleCloudDocumentaiV1beta3DocumentTextAnchor? textAnchor;
 
   GoogleCloudDocumentaiV1beta3DocumentPageLayout();
 
@@ -6855,11 +6832,11 @@ class GoogleCloudDocumentaiV1beta3DocumentPageLayout {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boundingPoly != null) 'boundingPoly': boundingPoly.toJson(),
-        if (confidence != null) 'confidence': confidence,
-        if (orientation != null) 'orientation': orientation,
-        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
+        if (confidence != null) 'confidence': confidence!,
+        if (orientation != null) 'orientation': orientation!,
+        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
       };
 }
 
@@ -6868,14 +6845,14 @@ class GoogleCloudDocumentaiV1beta3DocumentPageLayout {
 /// Does not cross column boundaries, can be horizontal, vertical, etc.
 class GoogleCloudDocumentaiV1beta3DocumentPageLine {
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for Line.
-  GoogleCloudDocumentaiV1beta3DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta3DocumentPageLayout? layout;
 
   /// The history of this annotation.
-  GoogleCloudDocumentaiV1beta3DocumentProvenance provenance;
+  GoogleCloudDocumentaiV1beta3DocumentProvenance? provenance;
 
   GoogleCloudDocumentaiV1beta3DocumentPageLine();
 
@@ -6898,12 +6875,12 @@ class GoogleCloudDocumentaiV1beta3DocumentPageLine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (provenance != null) 'provenance': provenance.toJson(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
       };
 }
 
@@ -6911,11 +6888,11 @@ class GoogleCloudDocumentaiV1beta3DocumentPageLine {
 /// with OpenCV format for image manipulation.
 class GoogleCloudDocumentaiV1beta3DocumentPageMatrix {
   /// Number of columns in the matrix.
-  core.int cols;
+  core.int? cols;
 
   /// The matrix data.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -6923,14 +6900,14 @@ class GoogleCloudDocumentaiV1beta3DocumentPageMatrix {
   }
 
   /// Number of rows in the matrix.
-  core.int rows;
+  core.int? rows;
 
   /// This encodes information about what data type the matrix uses.
   ///
   /// For example, 0 (CV_8U) is an unsigned 8-bit image. For the full list of
   /// OpenCV primitive data types, please refer to
   /// https://docs.opencv.org/4.3.0/d1/d1b/group__core__hal__interface.html
-  core.int type;
+  core.int? type;
 
   GoogleCloudDocumentaiV1beta3DocumentPageMatrix();
 
@@ -6949,25 +6926,25 @@ class GoogleCloudDocumentaiV1beta3DocumentPageMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cols != null) 'cols': cols,
-        if (data != null) 'data': data,
-        if (rows != null) 'rows': rows,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cols != null) 'cols': cols!,
+        if (data != null) 'data': data!,
+        if (rows != null) 'rows': rows!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// A collection of lines that a human would perceive as a paragraph.
 class GoogleCloudDocumentaiV1beta3DocumentPageParagraph {
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for Paragraph.
-  GoogleCloudDocumentaiV1beta3DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta3DocumentPageLayout? layout;
 
   /// The history of this annotation.
-  GoogleCloudDocumentaiV1beta3DocumentProvenance provenance;
+  GoogleCloudDocumentaiV1beta3DocumentProvenance? provenance;
 
   GoogleCloudDocumentaiV1beta3DocumentPageParagraph();
 
@@ -6990,29 +6967,29 @@ class GoogleCloudDocumentaiV1beta3DocumentPageParagraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (provenance != null) 'provenance': provenance.toJson(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
       };
 }
 
 /// A table representation similar to HTML table structure.
 class GoogleCloudDocumentaiV1beta3DocumentPageTable {
   /// Body rows of the table.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow> bodyRows;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow>? bodyRows;
 
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Header rows of the table.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow> headerRows;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow>? headerRows;
 
   /// Layout for Table.
-  GoogleCloudDocumentaiV1beta3DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta3DocumentPageLayout? layout;
 
   GoogleCloudDocumentaiV1beta3DocumentPageTable();
 
@@ -7045,32 +7022,32 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bodyRows != null)
-          'bodyRows': bodyRows.map((value) => value.toJson()).toList(),
+          'bodyRows': bodyRows!.map((value) => value.toJson()).toList(),
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
         if (headerRows != null)
-          'headerRows': headerRows.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
+          'headerRows': headerRows!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
       };
 }
 
 /// A cell representation inside the table.
 class GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell {
   /// How many columns this cell spans.
-  core.int colSpan;
+  core.int? colSpan;
 
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for TableCell.
-  GoogleCloudDocumentaiV1beta3DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta3DocumentPageLayout? layout;
 
   /// How many rows this cell spans.
-  core.int rowSpan;
+  core.int? rowSpan;
 
   GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell();
 
@@ -7096,20 +7073,20 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (colSpan != null) 'colSpan': colSpan,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (colSpan != null) 'colSpan': colSpan!,
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (rowSpan != null) 'rowSpan': rowSpan,
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (rowSpan != null) 'rowSpan': rowSpan!,
       };
 }
 
 /// A row of table cells.
 class GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow {
   /// Cells that make up this row.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell> cells;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell>? cells;
 
   GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow();
 
@@ -7124,26 +7101,26 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cells != null)
-          'cells': cells.map((value) => value.toJson()).toList(),
+          'cells': cells!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A detected token.
 class GoogleCloudDocumentaiV1beta3DocumentPageToken {
   /// Detected break at the end of a Token.
-  GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak detectedBreak;
+  GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak? detectedBreak;
 
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for Token.
-  GoogleCloudDocumentaiV1beta3DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta3DocumentPageLayout? layout;
 
   /// The history of this annotation.
-  GoogleCloudDocumentaiV1beta3DocumentProvenance provenance;
+  GoogleCloudDocumentaiV1beta3DocumentProvenance? provenance;
 
   GoogleCloudDocumentaiV1beta3DocumentPageToken();
 
@@ -7171,13 +7148,13 @@ class GoogleCloudDocumentaiV1beta3DocumentPageToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (detectedBreak != null) 'detectedBreak': detectedBreak.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (detectedBreak != null) 'detectedBreak': detectedBreak!.toJson(),
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (provenance != null) 'provenance': provenance.toJson(),
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (provenance != null) 'provenance': provenance!.toJson(),
       };
 }
 
@@ -7190,7 +7167,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak {
   /// - "WIDE_SPACE" : A wider whitespace.
   /// - "HYPHEN" : A hyphen that indicates that a token has been split across
   /// lines.
-  core.String type;
+  core.String? type;
 
   GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak();
 
@@ -7201,8 +7178,8 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
@@ -7211,14 +7188,14 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak {
 /// on the page.
 class GoogleCloudDocumentaiV1beta3DocumentPageVisualElement {
   /// A list of detected languages together with confidence.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>
+  core.List<GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage>?
       detectedLanguages;
 
   /// Layout for VisualElement.
-  GoogleCloudDocumentaiV1beta3DocumentPageLayout layout;
+  GoogleCloudDocumentaiV1beta3DocumentPageLayout? layout;
 
   /// Type of the VisualElement.
-  core.String type;
+  core.String? type;
 
   GoogleCloudDocumentaiV1beta3DocumentPageVisualElement();
 
@@ -7241,12 +7218,12 @@ class GoogleCloudDocumentaiV1beta3DocumentPageVisualElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
-              detectedLanguages.map((value) => value.toJson()).toList(),
-        if (layout != null) 'layout': layout.toJson(),
-        if (type != null) 'type': type,
+              detectedLanguages!.map((value) => value.toJson()).toList(),
+        if (layout != null) 'layout': layout!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -7256,13 +7233,13 @@ class GoogleCloudDocumentaiV1beta3DocumentProvenance {
   /// The Id of this operation.
   ///
   /// Needs to be unique within the scope of the revision.
-  core.int id;
+  core.int? id;
 
   /// References to the original elements that are replaced.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentProvenanceParent> parents;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentProvenanceParent>? parents;
 
   /// The index of the revision that produced this element.
-  core.int revision;
+  core.int? revision;
 
   /// The type of provenance operation.
   /// Possible string values are:
@@ -7274,7 +7251,7 @@ class GoogleCloudDocumentaiV1beta3DocumentProvenance {
   /// - "EVAL_REQUESTED" : Element is requested for human review.
   /// - "EVAL_APPROVED" : Element is review and approved at human review,
   /// confidence will be set to 1.0
-  core.String type;
+  core.String? type;
 
   GoogleCloudDocumentaiV1beta3DocumentProvenance();
 
@@ -7297,12 +7274,12 @@ class GoogleCloudDocumentaiV1beta3DocumentProvenance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
         if (parents != null)
-          'parents': parents.map((value) => value.toJson()).toList(),
-        if (revision != null) 'revision': revision,
-        if (type != null) 'type': type,
+          'parents': parents!.map((value) => value.toJson()).toList(),
+        if (revision != null) 'revision': revision!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -7312,10 +7289,10 @@ class GoogleCloudDocumentaiV1beta3DocumentProvenance {
 /// identify the elements that are replaced.
 class GoogleCloudDocumentaiV1beta3DocumentProvenanceParent {
   /// The id of the parent provenance.
-  core.int id;
+  core.int? id;
 
   /// The index of the \[Document.revisions\] identifying the parent revision.
-  core.int revision;
+  core.int? revision;
 
   GoogleCloudDocumentaiV1beta3DocumentProvenanceParent();
 
@@ -7329,37 +7306,37 @@ class GoogleCloudDocumentaiV1beta3DocumentProvenanceParent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (revision != null) 'revision': revision,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (revision != null) 'revision': revision!,
       };
 }
 
 /// Contains past or forward revisions of this document.
 class GoogleCloudDocumentaiV1beta3DocumentRevision {
   /// If the change was made by a person specify the name or id of that person.
-  core.String agent;
+  core.String? agent;
 
   /// The time that the revision was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// Human Review information of this revision.
-  GoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview humanReview;
+  GoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview? humanReview;
 
   /// Id of the revision.
   ///
   /// Unique within the context of the document.
-  core.String id;
+  core.String? id;
 
   /// The revisions that this revision is based on.
   ///
   /// This can include one or more parent (when documents are merged.) This
   /// field represents the index into the `revisions` field.
-  core.List<core.int> parent;
+  core.List<core.int>? parent;
 
   /// If the annotation was made by processor identify the processor by its
   /// resource name.
-  core.String processor;
+  core.String? processor;
 
   GoogleCloudDocumentaiV1beta3DocumentRevision();
 
@@ -7388,13 +7365,13 @@ class GoogleCloudDocumentaiV1beta3DocumentRevision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (agent != null) 'agent': agent,
-        if (createTime != null) 'createTime': createTime,
-        if (humanReview != null) 'humanReview': humanReview.toJson(),
-        if (id != null) 'id': id,
-        if (parent != null) 'parent': parent,
-        if (processor != null) 'processor': processor,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (agent != null) 'agent': agent!,
+        if (createTime != null) 'createTime': createTime!,
+        if (humanReview != null) 'humanReview': humanReview!.toJson(),
+        if (id != null) 'id': id!,
+        if (parent != null) 'parent': parent!,
+        if (processor != null) 'processor': processor!,
       };
 }
 
@@ -7403,12 +7380,12 @@ class GoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview {
   /// Human review state.
   ///
   /// e.g. `requested`, `succeeded`, `rejected`.
-  core.String state;
+  core.String? state;
 
   /// A message providing more details about the current state of processing.
   ///
   /// For example, the rejection reason when the state is `rejected`.
-  core.String stateMessage;
+  core.String? stateMessage;
 
   GoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview();
 
@@ -7422,9 +7399,9 @@ class GoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (state != null) 'state': state,
-        if (stateMessage != null) 'stateMessage': stateMessage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
       };
 }
 
@@ -7434,14 +7411,14 @@ class GoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview {
 /// Each document shard contains this field to detail which shard it is.
 class GoogleCloudDocumentaiV1beta3DocumentShardInfo {
   /// Total number of shards.
-  core.String shardCount;
+  core.String? shardCount;
 
   /// The 0-based index of this shard.
-  core.String shardIndex;
+  core.String? shardIndex;
 
   /// The index of the first character in Document.text in the overall document
   /// global text.
-  core.String textOffset;
+  core.String? textOffset;
 
   GoogleCloudDocumentaiV1beta3DocumentShardInfo();
 
@@ -7457,10 +7434,10 @@ class GoogleCloudDocumentaiV1beta3DocumentShardInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (shardCount != null) 'shardCount': shardCount,
-        if (shardIndex != null) 'shardIndex': shardIndex,
-        if (textOffset != null) 'textOffset': textOffset,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (shardCount != null) 'shardCount': shardCount!,
+        if (shardIndex != null) 'shardIndex': shardIndex!,
+        if (textOffset != null) 'textOffset': textOffset!,
       };
 }
 
@@ -7469,34 +7446,34 @@ class GoogleCloudDocumentaiV1beta3DocumentShardInfo {
 /// This adheres to CSS conventions as much as possible.
 class GoogleCloudDocumentaiV1beta3DocumentStyle {
   /// Text background color.
-  GoogleTypeColor backgroundColor;
+  GoogleTypeColor? backgroundColor;
 
   /// Text color.
-  GoogleTypeColor color;
+  GoogleTypeColor? color;
 
   /// Font size.
-  GoogleCloudDocumentaiV1beta3DocumentStyleFontSize fontSize;
+  GoogleCloudDocumentaiV1beta3DocumentStyleFontSize? fontSize;
 
   /// Font weight.
   ///
   /// Possible values are normal, bold, bolder, and lighter.
   /// https://www.w3schools.com/cssref/pr_font_weight.asp
-  core.String fontWeight;
+  core.String? fontWeight;
 
   /// Text anchor indexing into the Document.text.
-  GoogleCloudDocumentaiV1beta3DocumentTextAnchor textAnchor;
+  GoogleCloudDocumentaiV1beta3DocumentTextAnchor? textAnchor;
 
   /// Text decoration.
   ///
   /// Follows CSS standard.
   /// https://www.w3schools.com/cssref/pr_text_text-decoration.asp
-  core.String textDecoration;
+  core.String? textDecoration;
 
   /// Text style.
   ///
   /// Possible values are normal, italic, and oblique.
   /// https://www.w3schools.com/cssref/pr_font_font-style.asp
-  core.String textStyle;
+  core.String? textStyle;
 
   GoogleCloudDocumentaiV1beta3DocumentStyle();
 
@@ -7528,27 +7505,27 @@ class GoogleCloudDocumentaiV1beta3DocumentStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundColor != null)
-          'backgroundColor': backgroundColor.toJson(),
-        if (color != null) 'color': color.toJson(),
-        if (fontSize != null) 'fontSize': fontSize.toJson(),
-        if (fontWeight != null) 'fontWeight': fontWeight,
-        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
-        if (textDecoration != null) 'textDecoration': textDecoration,
-        if (textStyle != null) 'textStyle': textStyle,
+          'backgroundColor': backgroundColor!.toJson(),
+        if (color != null) 'color': color!.toJson(),
+        if (fontSize != null) 'fontSize': fontSize!.toJson(),
+        if (fontWeight != null) 'fontWeight': fontWeight!,
+        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (textDecoration != null) 'textDecoration': textDecoration!,
+        if (textStyle != null) 'textStyle': textStyle!,
       };
 }
 
 /// Font size with unit.
 class GoogleCloudDocumentaiV1beta3DocumentStyleFontSize {
   /// Font size for the text.
-  core.double size;
+  core.double? size;
 
   /// Unit for the font size.
   ///
   /// Follows CSS naming (in, px, pt, etc.).
-  core.String unit;
+  core.String? unit;
 
   GoogleCloudDocumentaiV1beta3DocumentStyleFontSize();
 
@@ -7561,9 +7538,9 @@ class GoogleCloudDocumentaiV1beta3DocumentStyleFontSize {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (size != null) 'size': size,
-        if (unit != null) 'unit': unit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (size != null) 'size': size!,
+        if (unit != null) 'unit': unit!,
       };
 }
 
@@ -7571,10 +7548,10 @@ class GoogleCloudDocumentaiV1beta3DocumentStyleFontSize {
 class GoogleCloudDocumentaiV1beta3DocumentTextAnchor {
   /// Contains the content of the text span so that users do not have to look it
   /// up in the text_segments.
-  core.String content;
+  core.String? content;
 
   /// The text segments from the Document.text.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment>
+  core.List<GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment>?
       textSegments;
 
   GoogleCloudDocumentaiV1beta3DocumentTextAnchor();
@@ -7593,10 +7570,10 @@ class GoogleCloudDocumentaiV1beta3DocumentTextAnchor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
         if (textSegments != null)
-          'textSegments': textSegments.map((value) => value.toJson()).toList(),
+          'textSegments': textSegments!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7607,10 +7584,10 @@ class GoogleCloudDocumentaiV1beta3DocumentTextAnchor {
 /// ShardInfo.text_offset
 class GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment {
   /// TextSegment half open end UTF-8 char index in the Document.text.
-  core.String endIndex;
+  core.String? endIndex;
 
   /// TextSegment start UTF-8 char index in the Document.text.
-  core.String startIndex;
+  core.String? startIndex;
 
   GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment();
 
@@ -7624,9 +7601,9 @@ class GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endIndex != null) 'endIndex': endIndex,
-        if (startIndex != null) 'startIndex': startIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endIndex != null) 'endIndex': endIndex!,
+        if (startIndex != null) 'startIndex': startIndex!,
       };
 }
 
@@ -7635,17 +7612,17 @@ class GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment {
 /// OCR corrections.
 class GoogleCloudDocumentaiV1beta3DocumentTextChange {
   /// The text that replaces the text identified in the `text_anchor`.
-  core.String changedText;
+  core.String? changedText;
 
   /// The history of this annotation.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentProvenance> provenance;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentProvenance>? provenance;
 
   /// Provenance of the correction.
   ///
   /// Text anchor indexing into the Document.text. There can only be a single
   /// `TextAnchor.text_segments` element. If the start and end index of the text
   /// segment are the same, the text change is inserted before that index.
-  GoogleCloudDocumentaiV1beta3DocumentTextAnchor textAnchor;
+  GoogleCloudDocumentaiV1beta3DocumentTextAnchor? textAnchor;
 
   GoogleCloudDocumentaiV1beta3DocumentTextChange();
 
@@ -7666,11 +7643,11 @@ class GoogleCloudDocumentaiV1beta3DocumentTextChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (changedText != null) 'changedText': changedText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (changedText != null) 'changedText': changedText!,
         if (provenance != null)
-          'provenance': provenance.map((value) => value.toJson()).toList(),
-        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
+          'provenance': provenance!.map((value) => value.toJson()).toList(),
+        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
       };
 }
 
@@ -7680,20 +7657,20 @@ class GoogleCloudDocumentaiV1beta3DocumentTranslation {
   ///
   /// For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// The history of this annotation.
-  core.List<GoogleCloudDocumentaiV1beta3DocumentProvenance> provenance;
+  core.List<GoogleCloudDocumentaiV1beta3DocumentProvenance>? provenance;
 
   /// Provenance of the translation.
   ///
   /// Text anchor indexing into the Document.text. There can only be a single
   /// `TextAnchor.text_segments` element. If the start and end index of the text
   /// segment are the same, the text change is inserted before that index.
-  GoogleCloudDocumentaiV1beta3DocumentTextAnchor textAnchor;
+  GoogleCloudDocumentaiV1beta3DocumentTextAnchor? textAnchor;
 
   /// Text translated into the target language.
-  core.String translatedText;
+  core.String? translatedText;
 
   GoogleCloudDocumentaiV1beta3DocumentTranslation();
 
@@ -7717,22 +7694,22 @@ class GoogleCloudDocumentaiV1beta3DocumentTranslation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
         if (provenance != null)
-          'provenance': provenance.map((value) => value.toJson()).toList(),
-        if (textAnchor != null) 'textAnchor': textAnchor.toJson(),
-        if (translatedText != null) 'translatedText': translatedText,
+          'provenance': provenance!.map((value) => value.toJson()).toList(),
+        if (textAnchor != null) 'textAnchor': textAnchor!.toJson(),
+        if (translatedText != null) 'translatedText': translatedText!,
       };
 }
 
 /// Specifies a document stored on Cloud Storage.
 class GoogleCloudDocumentaiV1beta3GcsDocument {
   /// The Cloud Storage object uri.
-  core.String gcsUri;
+  core.String? gcsUri;
 
   /// An IANA MIME type (RFC6838) of the content.
-  core.String mimeType;
+  core.String? mimeType;
 
   GoogleCloudDocumentaiV1beta3GcsDocument();
 
@@ -7745,16 +7722,16 @@ class GoogleCloudDocumentaiV1beta3GcsDocument {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsUri != null) 'gcsUri': gcsUri,
-        if (mimeType != null) 'mimeType': mimeType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsUri != null) 'gcsUri': gcsUri!,
+        if (mimeType != null) 'mimeType': mimeType!,
       };
 }
 
 /// Specifies a set of documents on Cloud Storage.
 class GoogleCloudDocumentaiV1beta3GcsDocuments {
   /// The list of documents.
-  core.List<GoogleCloudDocumentaiV1beta3GcsDocument> documents;
+  core.List<GoogleCloudDocumentaiV1beta3GcsDocument>? documents;
 
   GoogleCloudDocumentaiV1beta3GcsDocuments();
 
@@ -7768,16 +7745,16 @@ class GoogleCloudDocumentaiV1beta3GcsDocuments {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (documents != null)
-          'documents': documents.map((value) => value.toJson()).toList(),
+          'documents': documents!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Specifies all documents on Cloud Storage with a common prefix.
 class GoogleCloudDocumentaiV1beta3GcsPrefix {
   /// The URI prefix.
-  core.String gcsUriPrefix;
+  core.String? gcsUriPrefix;
 
   GoogleCloudDocumentaiV1beta3GcsPrefix();
 
@@ -7787,8 +7764,8 @@ class GoogleCloudDocumentaiV1beta3GcsPrefix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsUriPrefix != null) 'gcsUriPrefix': gcsUriPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsUriPrefix != null) 'gcsUriPrefix': gcsUriPrefix!,
       };
 }
 
@@ -7799,7 +7776,7 @@ class GoogleCloudDocumentaiV1beta3HumanReviewStatus {
   /// This field is populated only when the \[state\] is
   /// \[HUMAN_REVIEW_IN_PROGRESS\]. It has the same response type and metadata
   /// as the long running operation returned by \[ReviewDocument\] method.
-  core.String humanReviewOperation;
+  core.String? humanReviewOperation;
 
   /// The state of human review on the processing request.
   /// Possible string values are:
@@ -7814,10 +7791,10 @@ class GoogleCloudDocumentaiV1beta3HumanReviewStatus {
   /// under review.
   /// - "ERROR" : Some error happened during triggering human review, see the
   /// \[state_message\] for details.
-  core.String state;
+  core.String? state;
 
   /// A message providing more details about the human review state.
-  core.String stateMessage;
+  core.String? stateMessage;
 
   GoogleCloudDocumentaiV1beta3HumanReviewStatus();
 
@@ -7833,11 +7810,11 @@ class GoogleCloudDocumentaiV1beta3HumanReviewStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (humanReviewOperation != null)
-          'humanReviewOperation': humanReviewOperation,
-        if (state != null) 'state': state,
-        if (stateMessage != null) 'stateMessage': stateMessage,
+          'humanReviewOperation': humanReviewOperation!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
       };
 }
 
@@ -7847,10 +7824,10 @@ class GoogleCloudDocumentaiV1beta3HumanReviewStatus {
 /// and range from 0 to 1.
 class GoogleCloudDocumentaiV1beta3NormalizedVertex {
   /// X coordinate.
-  core.double x;
+  core.double? x;
 
   /// Y coordinate.
-  core.double y;
+  core.double? y;
 
   GoogleCloudDocumentaiV1beta3NormalizedVertex();
 
@@ -7863,9 +7840,9 @@ class GoogleCloudDocumentaiV1beta3NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (x != null) 'x': x,
-        if (y != null) 'y': y,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
       };
 }
 
@@ -7873,18 +7850,18 @@ class GoogleCloudDocumentaiV1beta3NormalizedVertex {
 class GoogleCloudDocumentaiV1beta3ProcessRequest {
   /// The document payload, the \[content\] and \[mime_type\] fields must be
   /// set.
-  GoogleCloudDocumentaiV1beta3Document document;
+  GoogleCloudDocumentaiV1beta3Document? document;
 
   /// An inline document proto.
-  GoogleCloudDocumentaiV1beta3Document inlineDocument;
+  GoogleCloudDocumentaiV1beta3Document? inlineDocument;
 
   /// A raw document content (bytes).
-  GoogleCloudDocumentaiV1beta3RawDocument rawDocument;
+  GoogleCloudDocumentaiV1beta3RawDocument? rawDocument;
 
   /// Whether Human Review feature should be skipped for this request.
   ///
   /// Default to false.
-  core.bool skipHumanReview;
+  core.bool? skipHumanReview;
 
   GoogleCloudDocumentaiV1beta3ProcessRequest();
 
@@ -7906,11 +7883,11 @@ class GoogleCloudDocumentaiV1beta3ProcessRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (document != null) 'document': document.toJson(),
-        if (inlineDocument != null) 'inlineDocument': inlineDocument.toJson(),
-        if (rawDocument != null) 'rawDocument': rawDocument.toJson(),
-        if (skipHumanReview != null) 'skipHumanReview': skipHumanReview,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (document != null) 'document': document!.toJson(),
+        if (inlineDocument != null) 'inlineDocument': inlineDocument!.toJson(),
+        if (rawDocument != null) 'rawDocument': rawDocument!.toJson(),
+        if (skipHumanReview != null) 'skipHumanReview': skipHumanReview!,
       };
 }
 
@@ -7918,17 +7895,17 @@ class GoogleCloudDocumentaiV1beta3ProcessRequest {
 class GoogleCloudDocumentaiV1beta3ProcessResponse {
   /// The document payload, will populate fields based on the processor's
   /// behavior.
-  GoogleCloudDocumentaiV1beta3Document document;
+  GoogleCloudDocumentaiV1beta3Document? document;
 
   /// The name of the operation triggered by the processed document.
   ///
   /// If the human review process is not triggered, this field will be empty. It
   /// has the same response type and metadata as the long running operation
   /// returned by ReviewDocument method.
-  core.String humanReviewOperation;
+  core.String? humanReviewOperation;
 
   /// The status of human review on the processed document.
-  GoogleCloudDocumentaiV1beta3HumanReviewStatus humanReviewStatus;
+  GoogleCloudDocumentaiV1beta3HumanReviewStatus? humanReviewStatus;
 
   GoogleCloudDocumentaiV1beta3ProcessResponse();
 
@@ -7948,20 +7925,20 @@ class GoogleCloudDocumentaiV1beta3ProcessResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (document != null) 'document': document.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (document != null) 'document': document!.toJson(),
         if (humanReviewOperation != null)
-          'humanReviewOperation': humanReviewOperation,
+          'humanReviewOperation': humanReviewOperation!,
         if (humanReviewStatus != null)
-          'humanReviewStatus': humanReviewStatus.toJson(),
+          'humanReviewStatus': humanReviewStatus!.toJson(),
       };
 }
 
 /// Payload message of raw document content (bytes).
 class GoogleCloudDocumentaiV1beta3RawDocument {
   /// Inline document content.
-  core.String content;
-  core.List<core.int> get contentAsBytes => convert.base64.decode(content);
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
@@ -7970,7 +7947,7 @@ class GoogleCloudDocumentaiV1beta3RawDocument {
 
   /// An IANA MIME type (RFC6838) indicating the nature and format of the
   /// \[content\].
-  core.String mimeType;
+  core.String? mimeType;
 
   GoogleCloudDocumentaiV1beta3RawDocument();
 
@@ -7983,19 +7960,19 @@ class GoogleCloudDocumentaiV1beta3RawDocument {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
-        if (mimeType != null) 'mimeType': mimeType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
+        if (mimeType != null) 'mimeType': mimeType!,
       };
 }
 
 /// The long running operation metadata for review document method.
 class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata {
   /// The basic metadata of the long running operation.
-  GoogleCloudDocumentaiV1beta3CommonOperationMetadata commonMetadata;
+  GoogleCloudDocumentaiV1beta3CommonOperationMetadata? commonMetadata;
 
   /// The creation time of the operation.
-  core.String createTime;
+  core.String? createTime;
 
   /// Used only when Operation.done is false.
   /// Possible string values are:
@@ -8005,15 +7982,15 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata {
   /// - "SUCCEEDED" : Operation succeeded.
   /// - "FAILED" : Operation failed.
   /// - "CANCELLED" : Operation is cancelled.
-  core.String state;
+  core.String? state;
 
   /// A message providing more details about the current state of processing.
   ///
   /// For example, the error message if the operation is failed.
-  core.String stateMessage;
+  core.String? stateMessage;
 
   /// The last update time of the operation.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata();
 
@@ -8038,22 +8015,22 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonMetadata != null) 'commonMetadata': commonMetadata.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (state != null) 'state': state,
-        if (stateMessage != null) 'stateMessage': stateMessage,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// Request message for review document method.
 class GoogleCloudDocumentaiV1beta3ReviewDocumentRequest {
   /// The document that needs human review.
-  GoogleCloudDocumentaiV1beta3Document document;
+  GoogleCloudDocumentaiV1beta3Document? document;
 
   /// An inline document proto.
-  GoogleCloudDocumentaiV1beta3Document inlineDocument;
+  GoogleCloudDocumentaiV1beta3Document? inlineDocument;
 
   GoogleCloudDocumentaiV1beta3ReviewDocumentRequest();
 
@@ -8068,16 +8045,16 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (document != null) 'document': document.toJson(),
-        if (inlineDocument != null) 'inlineDocument': inlineDocument.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (document != null) 'document': document!.toJson(),
+        if (inlineDocument != null) 'inlineDocument': inlineDocument!.toJson(),
       };
 }
 
 /// Response message for review document method.
 class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse {
   /// The Cloud Storage uri for the human reviewed document.
-  core.String gcsDestination;
+  core.String? gcsDestination;
 
   GoogleCloudDocumentaiV1beta3ReviewDocumentResponse();
 
@@ -8087,8 +8064,8 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
 
@@ -8097,10 +8074,10 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse {
 /// NOTE: the vertex coordinates are in the same scale as the original image.
 class GoogleCloudDocumentaiV1beta3Vertex {
   /// X coordinate.
-  core.int x;
+  core.int? x;
 
   /// Y coordinate.
-  core.int y;
+  core.int? y;
 
   GoogleCloudDocumentaiV1beta3Vertex();
 
@@ -8113,19 +8090,19 @@ class GoogleCloudDocumentaiV1beta3Vertex {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (x != null) 'x': x,
-        if (y != null) 'y': y,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class GoogleCloudLocationListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<GoogleCloudLocationLocation> locations;
+  core.List<GoogleCloudLocationLocation>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudLocationListLocationsResponse();
 
@@ -8142,10 +8119,10 @@ class GoogleCloudLocationListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -8154,17 +8131,17 @@ class GoogleCloudLocationLocation {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -8172,12 +8149,12 @@ class GoogleCloudLocationLocation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   GoogleCloudLocationLocation();
 
@@ -8211,12 +8188,12 @@ class GoogleCloudLocationLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -8227,10 +8204,10 @@ class GoogleLongrunningOperation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  GoogleRpcStatus error;
+  GoogleRpcStatus? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -8241,14 +8218,14 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -8261,7 +8238,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   GoogleLongrunningOperation();
 
@@ -8296,12 +8273,12 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -8319,7 +8296,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -8331,7 +8308,7 @@ class GoogleProtobufEmpty {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -8339,13 +8316,13 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   GoogleRpcStatus();
 
@@ -8369,10 +8346,10 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -8436,16 +8413,16 @@ class GoogleTypeColor {
   /// between a default value and the value being unset. If omitted, this color
   /// object is to be rendered as a solid color (as if the alpha value had been
   /// explicitly given with a value of 1.0).
-  core.double alpha;
+  core.double? alpha;
 
   /// The amount of blue in the color as a value in the interval \[0, 1\].
-  core.double blue;
+  core.double? blue;
 
   /// The amount of green in the color as a value in the interval \[0, 1\].
-  core.double green;
+  core.double? green;
 
   /// The amount of red in the color as a value in the interval \[0, 1\].
-  core.double red;
+  core.double? red;
 
   GoogleTypeColor();
 
@@ -8464,11 +8441,11 @@ class GoogleTypeColor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alpha != null) 'alpha': alpha,
-        if (blue != null) 'blue': blue,
-        if (green != null) 'green': green,
-        if (red != null) 'red': red,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alpha != null) 'alpha': alpha!,
+        if (blue != null) 'blue': blue!,
+        if (green != null) 'green': green!,
+        if (red != null) 'red': red!,
       };
 }
 
@@ -8486,17 +8463,17 @@ class GoogleTypeDate {
   ///
   /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
   /// year by itself or a year and month where the day isn't significant.
-  core.int day;
+  core.int? day;
 
   /// Month of a year.
   ///
   /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int month;
+  core.int? month;
 
   /// Year of the date.
   ///
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int year;
+  core.int? year;
 
   GoogleTypeDate();
 
@@ -8512,10 +8489,10 @@ class GoogleTypeDate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (month != null) 'month': month,
-        if (year != null) 'year': year,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (month != null) 'month': month!,
+        if (year != null) 'year': year!,
       };
 }
 
@@ -8541,7 +8518,7 @@ class GoogleTypeDateTime {
   /// Must be from 1 to 31 and valid for the year and month.
   ///
   /// Required.
-  core.int day;
+  core.int? day;
 
   /// Hours of day in 24 hour format.
   ///
@@ -8549,28 +8526,28 @@ class GoogleTypeDateTime {
   /// for scenarios like business closing time.
   ///
   /// Required.
-  core.int hours;
+  core.int? hours;
 
   /// Minutes of hour of day.
   ///
   /// Must be from 0 to 59.
   ///
   /// Required.
-  core.int minutes;
+  core.int? minutes;
 
   /// Month of year.
   ///
   /// Must be from 1 to 12.
   ///
   /// Required.
-  core.int month;
+  core.int? month;
 
   /// Fractions of seconds in nanoseconds.
   ///
   /// Must be from 0 to 999,999,999.
   ///
   /// Required.
-  core.int nanos;
+  core.int? nanos;
 
   /// Seconds of minutes of the time.
   ///
@@ -8578,23 +8555,23 @@ class GoogleTypeDateTime {
   /// leap-seconds.
   ///
   /// Required.
-  core.int seconds;
+  core.int? seconds;
 
   /// Time zone.
-  GoogleTypeTimeZone timeZone;
+  GoogleTypeTimeZone? timeZone;
 
   /// UTC offset.
   ///
   /// Must be whole seconds, between -18 hours and +18 hours. For example, a UTC
   /// offset of -4:00 would be represented as { seconds: -14400 }.
-  core.String utcOffset;
+  core.String? utcOffset;
 
   /// Year of date.
   ///
   /// Must be from 1 to 9999, or 0 if specifying a datetime without a year.
   ///
   /// Optional.
-  core.int year;
+  core.int? year;
 
   GoogleTypeDateTime();
 
@@ -8629,23 +8606,23 @@ class GoogleTypeDateTime {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (hours != null) 'hours': hours,
-        if (minutes != null) 'minutes': minutes,
-        if (month != null) 'month': month,
-        if (nanos != null) 'nanos': nanos,
-        if (seconds != null) 'seconds': seconds,
-        if (timeZone != null) 'timeZone': timeZone.toJson(),
-        if (utcOffset != null) 'utcOffset': utcOffset,
-        if (year != null) 'year': year,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (hours != null) 'hours': hours!,
+        if (minutes != null) 'minutes': minutes!,
+        if (month != null) 'month': month!,
+        if (nanos != null) 'nanos': nanos!,
+        if (seconds != null) 'seconds': seconds!,
+        if (timeZone != null) 'timeZone': timeZone!.toJson(),
+        if (utcOffset != null) 'utcOffset': utcOffset!,
+        if (year != null) 'year': year!,
       };
 }
 
 /// Represents an amount of money with its currency type.
 class GoogleTypeMoney {
   /// The three-letter currency code defined in ISO 4217.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Number of nano (10^-9) units of the amount.
   ///
@@ -8654,12 +8631,12 @@ class GoogleTypeMoney {
   /// `nanos` can be positive, zero, or negative. If `units` is negative,
   /// `nanos` must be negative or zero. For example $-1.75 is represented as
   /// `units`=-1 and `nanos`=-750,000,000.
-  core.int nanos;
+  core.int? nanos;
 
   /// The whole units of the amount.
   ///
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-  core.String units;
+  core.String? units;
 
   GoogleTypeMoney();
 
@@ -8675,10 +8652,10 @@ class GoogleTypeMoney {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (nanos != null) 'nanos': nanos,
-        if (units != null) 'units': units,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (nanos != null) 'nanos': nanos!,
+        if (units != null) 'units': units!,
       };
 }
 
@@ -8712,7 +8689,7 @@ class GoogleTypePostalAddress {
   /// region_code and address_lines, and then geocoding is the recommended way
   /// to handle completely unstructured addresses (as opposed to guessing which
   /// parts of the address should be localities or administrative areas).
-  core.List<core.String> addressLines;
+  core.List<core.String>? addressLines;
 
   /// Highest administrative subdivision which is used for postal addresses of a
   /// country or region.
@@ -8724,7 +8701,7 @@ class GoogleTypePostalAddress {
   /// should be left unpopulated.
   ///
   /// Optional.
-  core.String administrativeArea;
+  core.String? administrativeArea;
 
   /// BCP-47 language code of the contents of this address (if known).
   ///
@@ -8737,7 +8714,7 @@ class GoogleTypePostalAddress {
   /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
   ///
   /// Optional.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Generally refers to the city/town portion of the address.
   ///
@@ -8746,12 +8723,12 @@ class GoogleTypePostalAddress {
   /// leave locality empty and use address_lines.
   ///
   /// Optional.
-  core.String locality;
+  core.String? locality;
 
   /// The name of the organization at the address.
   ///
   /// Optional.
-  core.String organization;
+  core.String? organization;
 
   /// Postal code of the address.
   ///
@@ -8760,7 +8737,7 @@ class GoogleTypePostalAddress {
   /// the address (e.g. state/zip validation in the U.S.A.).
   ///
   /// Optional.
-  core.String postalCode;
+  core.String? postalCode;
 
   /// The recipient at the address.
   ///
@@ -8768,7 +8745,7 @@ class GoogleTypePostalAddress {
   /// information. For example, it might contain "care of" information.
   ///
   /// Optional.
-  core.List<core.String> recipients;
+  core.List<core.String>? recipients;
 
   /// CLDR region code of the country/region of the address.
   ///
@@ -8778,13 +8755,13 @@ class GoogleTypePostalAddress {
   /// for details. Example: "CH" for Switzerland.
   ///
   /// Required.
-  core.String regionCode;
+  core.String? regionCode;
 
   /// The schema revision of the `PostalAddress`.
   ///
   /// This must be set to 0, which is the latest revision. All new revisions
   /// **must** be backward compatible with old revisions.
-  core.int revision;
+  core.int? revision;
 
   /// Additional, country-specific, sorting code.
   ///
@@ -8794,14 +8771,14 @@ class GoogleTypePostalAddress {
   /// area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
   ///
   /// Optional.
-  core.String sortingCode;
+  core.String? sortingCode;
 
   /// Sublocality of the address.
   ///
   /// For example, this can be neighborhoods, boroughs, districts.
   ///
   /// Optional.
-  core.String sublocality;
+  core.String? sublocality;
 
   GoogleTypePostalAddress();
 
@@ -8845,19 +8822,19 @@ class GoogleTypePostalAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addressLines != null) 'addressLines': addressLines,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addressLines != null) 'addressLines': addressLines!,
         if (administrativeArea != null)
-          'administrativeArea': administrativeArea,
-        if (languageCode != null) 'languageCode': languageCode,
-        if (locality != null) 'locality': locality,
-        if (organization != null) 'organization': organization,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (recipients != null) 'recipients': recipients,
-        if (regionCode != null) 'regionCode': regionCode,
-        if (revision != null) 'revision': revision,
-        if (sortingCode != null) 'sortingCode': sortingCode,
-        if (sublocality != null) 'sublocality': sublocality,
+          'administrativeArea': administrativeArea!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (locality != null) 'locality': locality!,
+        if (organization != null) 'organization': organization!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (recipients != null) 'recipients': recipients!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (revision != null) 'revision': revision!,
+        if (sortingCode != null) 'sortingCode': sortingCode!,
+        if (sublocality != null) 'sublocality': sublocality!,
       };
 }
 
@@ -8865,12 +8842,12 @@ class GoogleTypePostalAddress {
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).
 class GoogleTypeTimeZone {
   /// IANA Time Zone Database time zone, e.g. "America/New_York".
-  core.String id;
+  core.String? id;
 
   /// IANA Time Zone Database version number, e.g. "2019a".
   ///
   /// Optional.
-  core.String version;
+  core.String? version;
 
   GoogleTypeTimeZone();
 
@@ -8883,8 +8860,8 @@ class GoogleTypeTimeZone {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (version != null) 'version': version!,
       };
 }

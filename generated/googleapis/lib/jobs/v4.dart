@@ -146,17 +146,14 @@ class ProjectsTenantsResource {
   /// this method will complete with the same error.
   async.Future<CompleteQueryResponse> completeQuery(
     core.String tenant, {
-    core.String company,
-    core.List<core.String> languageCodes,
-    core.int pageSize,
-    core.String query,
-    core.String scope,
-    core.String type,
-    core.String $fields,
+    core.String? company,
+    core.List<core.String>? languageCodes,
+    core.int? pageSize,
+    core.String? query,
+    core.String? scope,
+    core.String? type,
+    core.String? $fields,
   }) async {
-    if (tenant == null) {
-      throw core.ArgumentError('Parameter tenant is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (company != null) 'company': [company],
       if (languageCodes != null) 'languageCodes': languageCodes,
@@ -204,13 +201,9 @@ class ProjectsTenantsResource {
   async.Future<Tenant> create(
     Tenant request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -248,11 +241,8 @@ class ProjectsTenantsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -288,11 +278,8 @@ class ProjectsTenantsResource {
   /// this method will complete with the same error.
   async.Future<Tenant> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -333,13 +320,10 @@ class ProjectsTenantsResource {
   /// this method will complete with the same error.
   async.Future<ListTenantsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -388,14 +372,10 @@ class ProjectsTenantsResource {
   async.Future<Tenant> patch(
     Tenant request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -449,13 +429,9 @@ class ProjectsTenantsClientEventsResource {
   async.Future<ClientEvent> create(
     ClientEvent request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -505,13 +481,9 @@ class ProjectsTenantsCompaniesResource {
   async.Future<Company> create(
     Company request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -553,11 +525,8 @@ class ProjectsTenantsCompaniesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -595,11 +564,8 @@ class ProjectsTenantsCompaniesResource {
   /// this method will complete with the same error.
   async.Future<Company> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -644,14 +610,11 @@ class ProjectsTenantsCompaniesResource {
   /// this method will complete with the same error.
   async.Future<ListCompaniesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.bool requireOpenJobs,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? requireOpenJobs,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -702,14 +665,10 @@ class ProjectsTenantsCompaniesResource {
   async.Future<Company> patch(
     Company request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -757,13 +716,9 @@ class ProjectsTenantsJobsResource {
   async.Future<Operation> batchCreate(
     BatchCreateJobsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -806,13 +761,9 @@ class ProjectsTenantsJobsResource {
   async.Future<Operation> batchDelete(
     BatchDeleteJobsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -854,13 +805,9 @@ class ProjectsTenantsJobsResource {
   async.Future<Operation> batchUpdate(
     BatchUpdateJobsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -905,13 +852,9 @@ class ProjectsTenantsJobsResource {
   async.Future<Job> create(
     Job request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -952,11 +895,8 @@ class ProjectsTenantsJobsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -993,11 +933,8 @@ class ProjectsTenantsJobsResource {
   /// this method will complete with the same error.
   async.Future<Job> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1065,15 +1002,12 @@ class ProjectsTenantsJobsResource {
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String jobView,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? jobView,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (jobView != null) 'jobView': [jobView],
@@ -1129,14 +1063,10 @@ class ProjectsTenantsJobsResource {
   async.Future<Job> patch(
     Job request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1180,13 +1110,9 @@ class ProjectsTenantsJobsResource {
   async.Future<SearchJobsResponse> search(
     SearchJobsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1236,13 +1162,9 @@ class ProjectsTenantsJobsResource {
   async.Future<SearchJobsResponse> searchForAlert(
     SearchJobsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1268,7 +1190,7 @@ class ApplicationInfo {
   /// applications can be sent.
   ///
   /// The maximum number of allowed characters for each entry is 255.
-  core.List<core.String> emails;
+  core.List<core.String>? emails;
 
   /// Use this field to provide instructions, such as "Mail your application to
   /// ...", that a candidate can follow to apply for the job.
@@ -1276,13 +1198,13 @@ class ApplicationInfo {
   /// This field accepts and sanitizes HTML input, and also accepts bold,
   /// italic, ordered list, and unordered list markup tags. The maximum number
   /// of allowed characters is 3,000.
-  core.String instruction;
+  core.String? instruction;
 
   /// Use this URI field to direct an applicant to a website, for example to
   /// link to an online application form.
   ///
   /// The maximum number of allowed characters for each entry is 2,000.
-  core.List<core.String> uris;
+  core.List<core.String>? uris;
 
   ApplicationInfo();
 
@@ -1302,10 +1224,10 @@ class ApplicationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (emails != null) 'emails': emails,
-        if (instruction != null) 'instruction': instruction,
-        if (uris != null) 'uris': uris,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (emails != null) 'emails': emails!,
+        if (instruction != null) 'instruction': instruction!,
+        if (uris != null) 'uris': uris!,
       };
 }
 
@@ -1316,7 +1238,7 @@ class BatchCreateJobsRequest {
   /// A maximum of 200 jobs can be created in a batch.
   ///
   /// Required.
-  core.List<Job> jobs;
+  core.List<Job>? jobs;
 
   BatchCreateJobsRequest();
 
@@ -1329,8 +1251,8 @@ class BatchCreateJobsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1342,7 +1264,7 @@ class BatchCreateJobsResponse {
   /// List of job mutation results from a batch create operation.
   ///
   /// It can change until operation status is FINISHED, FAILED or CANCELLED.
-  core.List<JobResult> jobResults;
+  core.List<JobResult>? jobResults;
 
   BatchCreateJobsResponse();
 
@@ -1355,9 +1277,9 @@ class BatchCreateJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (jobResults != null)
-          'jobResults': jobResults.map((value) => value.toJson()).toList(),
+          'jobResults': jobResults!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1368,7 +1290,7 @@ class BatchDeleteJobsRequest {
   /// The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}".
   /// For example, "projects/foo/tenants/bar/jobs/baz". A maximum of 200 jobs
   /// can be deleted in a batch.
-  core.List<core.String> names;
+  core.List<core.String>? names;
 
   BatchDeleteJobsRequest();
 
@@ -1380,8 +1302,8 @@ class BatchDeleteJobsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (names != null) 'names': names,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (names != null) 'names': names!,
       };
 }
 
@@ -1393,7 +1315,7 @@ class BatchDeleteJobsResponse {
   /// List of job mutation results from a batch delete operation.
   ///
   /// It can change until operation status is FINISHED, FAILED or CANCELLED.
-  core.List<JobResult> jobResults;
+  core.List<JobResult>? jobResults;
 
   BatchDeleteJobsResponse();
 
@@ -1406,9 +1328,9 @@ class BatchDeleteJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (jobResults != null)
-          'jobResults': jobResults.map((value) => value.toJson()).toList(),
+          'jobResults': jobResults!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1417,14 +1339,14 @@ class BatchDeleteJobsResponse {
 /// It's used to replace google.longrunning.Operation.metadata.
 class BatchOperationMetadata {
   /// The time when the batch operation is created.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time when the batch operation is finished and
   /// google.longrunning.Operation.done is set to `true`.
-  core.String endTime;
+  core.String? endTime;
 
   /// Count of failed item(s) inside an operation.
-  core.int failureCount;
+  core.int? failureCount;
 
   /// The state of a long running operation.
   /// Possible string values are:
@@ -1440,22 +1362,22 @@ class BatchOperationMetadata {
   /// - "CANCELLED" : The batch operation is done after
   /// google.longrunning.Operations.CancelOperation is called. Any items
   /// processed before cancelling are returned in the response.
-  core.String state;
+  core.String? state;
 
   /// More detailed information about operation state.
-  core.String stateDescription;
+  core.String? stateDescription;
 
   /// Count of successful item(s) inside an operation.
-  core.int successCount;
+  core.int? successCount;
 
   /// Count of total item(s) inside an operation.
-  core.int totalCount;
+  core.int? totalCount;
 
   /// The time when the batch operation status is updated.
   ///
   /// The metadata and the update_time is refreshed every minute otherwise
   /// cached data is returned.
-  core.String updateTime;
+  core.String? updateTime;
 
   BatchOperationMetadata();
 
@@ -1486,15 +1408,15 @@ class BatchOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
-        if (failureCount != null) 'failureCount': failureCount,
-        if (state != null) 'state': state,
-        if (stateDescription != null) 'stateDescription': stateDescription,
-        if (successCount != null) 'successCount': successCount,
-        if (totalCount != null) 'totalCount': totalCount,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (failureCount != null) 'failureCount': failureCount!,
+        if (state != null) 'state': state!,
+        if (stateDescription != null) 'stateDescription': stateDescription!,
+        if (successCount != null) 'successCount': successCount!,
+        if (totalCount != null) 'totalCount': totalCount!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1505,7 +1427,7 @@ class BatchUpdateJobsRequest {
   /// A maximum of 200 jobs can be updated in a batch.
   ///
   /// Required.
-  core.List<Job> jobs;
+  core.List<Job>? jobs;
 
   /// Strongly recommended for the best service experience.
   ///
@@ -1516,7 +1438,7 @@ class BatchUpdateJobsRequest {
   /// supported. If update_mask is provided, The Job inside JobResult will only
   /// contains fields that is updated, plus the Id of the Job. Otherwise, Job
   /// will include all fields, which can yield a very large response.
-  core.String updateMask;
+  core.String? updateMask;
 
   BatchUpdateJobsRequest();
 
@@ -1532,9 +1454,9 @@ class BatchUpdateJobsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -1546,7 +1468,7 @@ class BatchUpdateJobsResponse {
   /// List of job mutation results from a batch update operation.
   ///
   /// It can change until operation status is FINISHED, FAILED or CANCELLED.
-  core.List<JobResult> jobResults;
+  core.List<JobResult>? jobResults;
 
   BatchUpdateJobsResponse();
 
@@ -1559,9 +1481,9 @@ class BatchUpdateJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (jobResults != null)
-          'jobResults': jobResults.map((value) => value.toJson()).toList(),
+          'jobResults': jobResults!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1576,26 +1498,26 @@ class ClientEvent {
   /// The timestamp of the event.
   ///
   /// Required.
-  core.String createTime;
+  core.String? createTime;
 
   /// A unique identifier, generated by the client application.
   ///
   /// Required.
-  core.String eventId;
+  core.String? eventId;
 
   /// Notes about the event provided by recruiters or other users, for example,
   /// feedback on why a job was bookmarked.
-  core.String eventNotes;
+  core.String? eventNotes;
 
   /// An event issued when a job seeker interacts with the application that
   /// implements Cloud Talent Solution.
-  JobEvent jobEvent;
+  JobEvent? jobEvent;
 
   /// Strongly recommended for the best service experience.
   ///
   /// A unique ID generated in the API responses. It can be found in
   /// ResponseMetadata.request_id.
-  core.String requestId;
+  core.String? requestId;
 
   ClientEvent();
 
@@ -1618,12 +1540,12 @@ class ClientEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (eventId != null) 'eventId': eventId,
-        if (eventNotes != null) 'eventNotes': eventNotes,
-        if (jobEvent != null) 'jobEvent': jobEvent.toJson(),
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (eventId != null) 'eventId': eventId!,
+        if (eventNotes != null) 'eventNotes': eventNotes!,
+        if (jobEvent != null) 'jobEvent': jobEvent!.toJson(),
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -1635,7 +1557,7 @@ class CommuteFilter {
   /// level addresses, text matching is used. If this field is set to `false` or
   /// isn't specified, only jobs that include street level addresses will be
   /// returned by commute search.
-  core.bool allowImpreciseAddresses;
+  core.bool? allowImpreciseAddresses;
 
   /// The method of transportation to calculate the commute time for.
   ///
@@ -1645,13 +1567,13 @@ class CommuteFilter {
   /// - "DRIVING" : Commute time is calculated based on driving time.
   /// - "TRANSIT" : Commute time is calculated based on public transit including
   /// bus, metro, subway, and so on.
-  core.String commuteMethod;
+  core.String? commuteMethod;
 
   /// The departure time used to calculate traffic impact, represented as
   /// google.type.TimeOfDay in local time zone.
   ///
   /// Currently traffic model is restricted to hour level resolution.
-  TimeOfDay departureTime;
+  TimeOfDay? departureTime;
 
   /// Specifies the traffic density to use when calculating commute time.
   /// Possible string values are:
@@ -1660,20 +1582,20 @@ class CommuteFilter {
   /// impact.
   /// - "BUSY_HOUR" : Commute time calculation takes in account the peak traffic
   /// impact.
-  core.String roadTraffic;
+  core.String? roadTraffic;
 
   /// The latitude and longitude of the location to calculate the commute time
   /// from.
   ///
   /// Required.
-  LatLng startCoordinates;
+  LatLng? startCoordinates;
 
   /// The maximum travel time in seconds.
   ///
   /// The maximum allowed value is `3600s` (one hour). Format is `123s`.
   ///
   /// Required.
-  core.String travelDuration;
+  core.String? travelDuration;
 
   CommuteFilter();
 
@@ -1700,29 +1622,29 @@ class CommuteFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowImpreciseAddresses != null)
-          'allowImpreciseAddresses': allowImpreciseAddresses,
-        if (commuteMethod != null) 'commuteMethod': commuteMethod,
-        if (departureTime != null) 'departureTime': departureTime.toJson(),
-        if (roadTraffic != null) 'roadTraffic': roadTraffic,
+          'allowImpreciseAddresses': allowImpreciseAddresses!,
+        if (commuteMethod != null) 'commuteMethod': commuteMethod!,
+        if (departureTime != null) 'departureTime': departureTime!.toJson(),
+        if (roadTraffic != null) 'roadTraffic': roadTraffic!,
         if (startCoordinates != null)
-          'startCoordinates': startCoordinates.toJson(),
-        if (travelDuration != null) 'travelDuration': travelDuration,
+          'startCoordinates': startCoordinates!.toJson(),
+        if (travelDuration != null) 'travelDuration': travelDuration!,
       };
 }
 
 /// Commute details related to this job.
 class CommuteInfo {
   /// Location used as the destination in the commute calculation.
-  Location jobLocation;
+  Location? jobLocation;
 
   /// The number of seconds required to travel to the job location from the
   /// query location.
   ///
   /// A duration of 0 seconds indicates that the job isn't reachable within the
   /// requested duration, but was returned as part of an expanded query.
-  core.String travelDuration;
+  core.String? travelDuration;
 
   CommuteInfo();
 
@@ -1736,9 +1658,9 @@ class CommuteInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jobLocation != null) 'jobLocation': jobLocation.toJson(),
-        if (travelDuration != null) 'travelDuration': travelDuration,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jobLocation != null) 'jobLocation': jobLocation!.toJson(),
+        if (travelDuration != null) 'travelDuration': travelDuration!,
       };
 }
 
@@ -1749,30 +1671,30 @@ class CommuteInfo {
 class Company {
   /// The URI to employer's career site or careers page on the employer's web
   /// site, for example, "https://careers.google.com".
-  core.String careerSiteUri;
+  core.String? careerSiteUri;
 
   /// Derived details about the company.
   ///
   /// Output only.
-  CompanyDerivedInfo derivedInfo;
+  CompanyDerivedInfo? derivedInfo;
 
   /// The display name of the company, for example, "Google LLC".
   ///
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   /// Equal Employment Opportunity legal disclaimer text to be associated with
   /// all jobs, and typically to be displayed in all roles.
   ///
   /// The maximum number of allowed characters is 500.
-  core.String eeoText;
+  core.String? eeoText;
 
   /// Client side company identifier, used to uniquely identify the company.
   ///
   /// The maximum number of allowed characters is 255.
   ///
   /// Required.
-  core.String externalId;
+  core.String? externalId;
 
   /// The street address of the company's main headquarters, which may be
   /// different from the job location.
@@ -1780,15 +1702,15 @@ class Company {
   /// The service attempts to geolocate the provided address, and populates a
   /// more specific location wherever possible in
   /// DerivedInfo.headquarters_location.
-  core.String headquartersAddress;
+  core.String? headquartersAddress;
 
   /// Set to true if it is the hiring agency that post jobs for other employers.
   ///
   /// Defaults to false if not provided.
-  core.bool hiringAgency;
+  core.bool? hiringAgency;
 
   /// A URI that hosts the employer's company logo.
-  core.String imageUri;
+  core.String? imageUri;
 
   /// A list of keys of filterable Job.custom_attributes, whose corresponding
   /// `string_values` are used in keyword searches.
@@ -1797,7 +1719,7 @@ class Company {
   /// any of the values match the search keyword. Custom field values with
   /// parenthesis, brackets and special symbols are not searchable as-is, and
   /// those keyword queries must be surrounded by quotes.
-  core.List<core.String> keywordSearchableJobCustomAttributes;
+  core.List<core.String>? keywordSearchableJobCustomAttributes;
 
   /// Required during company update.
   ///
@@ -1805,7 +1727,7 @@ class Company {
   /// company is created. The format is
   /// "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for
   /// example, "projects/foo/tenants/bar/companies/baz".
-  core.String name;
+  core.String? name;
 
   /// The employer's company size.
   /// Possible string values are:
@@ -1817,20 +1739,20 @@ class Company {
   /// - "BIG" : The company has between 1,000 and 4,999 employees.
   /// - "BIGGER" : The company has between 5,000 and 9,999 employees.
   /// - "GIANT" : The company has 10,000 or more employees.
-  core.String size;
+  core.String? size;
 
   /// Indicates whether a company is flagged to be suspended from public
   /// availability by the service when job content appears suspicious, abusive,
   /// or spammy.
   ///
   /// Output only.
-  core.bool suspended;
+  core.bool? suspended;
 
   /// The URI representing the company's primary web site or home page, for
   /// example, "https://www.google.com".
   ///
   /// The maximum number of allowed characters is 255.
-  core.String websiteUri;
+  core.String? websiteUri;
 
   Company();
 
@@ -1880,23 +1802,23 @@ class Company {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (careerSiteUri != null) 'careerSiteUri': careerSiteUri,
-        if (derivedInfo != null) 'derivedInfo': derivedInfo.toJson(),
-        if (displayName != null) 'displayName': displayName,
-        if (eeoText != null) 'eeoText': eeoText,
-        if (externalId != null) 'externalId': externalId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (careerSiteUri != null) 'careerSiteUri': careerSiteUri!,
+        if (derivedInfo != null) 'derivedInfo': derivedInfo!.toJson(),
+        if (displayName != null) 'displayName': displayName!,
+        if (eeoText != null) 'eeoText': eeoText!,
+        if (externalId != null) 'externalId': externalId!,
         if (headquartersAddress != null)
-          'headquartersAddress': headquartersAddress,
-        if (hiringAgency != null) 'hiringAgency': hiringAgency,
-        if (imageUri != null) 'imageUri': imageUri,
+          'headquartersAddress': headquartersAddress!,
+        if (hiringAgency != null) 'hiringAgency': hiringAgency!,
+        if (imageUri != null) 'imageUri': imageUri!,
         if (keywordSearchableJobCustomAttributes != null)
           'keywordSearchableJobCustomAttributes':
-              keywordSearchableJobCustomAttributes,
-        if (name != null) 'name': name,
-        if (size != null) 'size': size,
-        if (suspended != null) 'suspended': suspended,
-        if (websiteUri != null) 'websiteUri': websiteUri,
+              keywordSearchableJobCustomAttributes!,
+        if (name != null) 'name': name!,
+        if (size != null) 'size': size!,
+        if (suspended != null) 'suspended': suspended!,
+        if (websiteUri != null) 'websiteUri': websiteUri!,
       };
 }
 
@@ -1904,7 +1826,7 @@ class Company {
 class CompanyDerivedInfo {
   /// A structured headquarters location of the company, resolved from
   /// Company.headquarters_address if provided.
-  Location headquartersLocation;
+  Location? headquartersLocation;
 
   CompanyDerivedInfo();
 
@@ -1915,9 +1837,9 @@ class CompanyDerivedInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (headquartersLocation != null)
-          'headquartersLocation': headquartersLocation.toJson(),
+          'headquartersLocation': headquartersLocation!.toJson(),
       };
 }
 
@@ -1930,23 +1852,23 @@ class CompanyDerivedInfo {
 /// expected_units_per_year.
 class CompensationEntry {
   /// Compensation amount.
-  Money amount;
+  Money? amount;
 
   /// Compensation description.
   ///
   /// For example, could indicate equity terms or provide additional context to
   /// an estimated bonus.
-  core.String description;
+  core.String? description;
 
   /// Expected number of units paid each year.
   ///
   /// If not specified, when Job.employment_types is FULLTIME, a default value
   /// is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 -
   /// WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1
-  core.double expectedUnitsPerYear;
+  core.double? expectedUnitsPerYear;
 
   /// Compensation range.
-  CompensationRange range;
+  CompensationRange? range;
 
   /// Compensation type.
   ///
@@ -1964,7 +1886,7 @@ class CompensationEntry {
   /// - "COMMISSIONS" : Commission.
   /// - "TIPS" : Tips.
   /// - "OTHER_COMPENSATION_TYPE" : Other compensation type.
-  core.String type;
+  core.String? type;
 
   /// Frequency of the specified amount.
   ///
@@ -1978,7 +1900,7 @@ class CompensationEntry {
   /// - "YEARLY" : Yearly.
   /// - "ONE_TIME" : One time.
   /// - "OTHER_COMPENSATION_UNIT" : Other compensation units.
-  core.String unit;
+  core.String? unit;
 
   CompensationEntry();
 
@@ -2006,14 +1928,14 @@ class CompensationEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amount != null) 'amount': amount.toJson(),
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amount != null) 'amount': amount!.toJson(),
+        if (description != null) 'description': description!,
         if (expectedUnitsPerYear != null)
-          'expectedUnitsPerYear': expectedUnitsPerYear,
-        if (range != null) 'range': range.toJson(),
-        if (type != null) 'type': type,
-        if (unit != null) 'unit': unit,
+          'expectedUnitsPerYear': expectedUnitsPerYear!,
+        if (range != null) 'range': range!.toJson(),
+        if (type != null) 'type': type!,
+        if (unit != null) 'unit': unit!,
       };
 }
 
@@ -2021,10 +1943,10 @@ class CompensationEntry {
 class CompensationFilter {
   /// If set to true, jobs with unspecified compensation range fields are
   /// included.
-  core.bool includeJobsWithUnspecifiedCompensationRange;
+  core.bool? includeJobsWithUnspecifiedCompensationRange;
 
   /// Compensation range.
-  CompensationRange range;
+  CompensationRange? range;
 
   /// Type of filter.
   ///
@@ -2049,13 +1971,13 @@ class CompensationFilter {
   /// - "ANNUALIZED_TOTAL_AMOUNT" : Filter by annualized total compensation
   /// amount and `base compensation entry's` unit . Populate range and zero or
   /// more units.
-  core.String type;
+  core.String? type;
 
   /// Specify desired `base compensation entry's`
   /// CompensationInfo.CompensationUnit.
   ///
   /// Required.
-  core.List<core.String> units;
+  core.List<core.String>? units;
 
   CompensationFilter();
 
@@ -2078,13 +2000,13 @@ class CompensationFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (includeJobsWithUnspecifiedCompensationRange != null)
           'includeJobsWithUnspecifiedCompensationRange':
-              includeJobsWithUnspecifiedCompensationRange,
-        if (range != null) 'range': range.toJson(),
-        if (type != null) 'type': type,
-        if (units != null) 'units': units,
+              includeJobsWithUnspecifiedCompensationRange!,
+        if (range != null) 'range': range!.toJson(),
+        if (type != null) 'type': type!,
+        if (units != null) 'units': units!,
       };
 }
 
@@ -2097,7 +2019,7 @@ class CompensationInfo {
   /// explanation on compensation annualization.
   ///
   /// Output only.
-  CompensationRange annualizedBaseCompensationRange;
+  CompensationRange? annualizedBaseCompensationRange;
 
   /// Annualized total compensation range.
   ///
@@ -2106,13 +2028,13 @@ class CompensationInfo {
   /// explanation on compensation annualization.
   ///
   /// Output only.
-  CompensationRange annualizedTotalCompensationRange;
+  CompensationRange? annualizedTotalCompensationRange;
 
   /// Job compensation information.
   ///
   /// At most one entry can be of type CompensationInfo.CompensationType.BASE,
   /// which is referred as **base compensation entry** for the job.
-  core.List<CompensationEntry> entries;
+  core.List<CompensationEntry>? entries;
 
   CompensationInfo();
 
@@ -2135,15 +2057,15 @@ class CompensationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (annualizedBaseCompensationRange != null)
           'annualizedBaseCompensationRange':
-              annualizedBaseCompensationRange.toJson(),
+              annualizedBaseCompensationRange!.toJson(),
         if (annualizedTotalCompensationRange != null)
           'annualizedTotalCompensationRange':
-              annualizedTotalCompensationRange.toJson(),
+              annualizedTotalCompensationRange!.toJson(),
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2153,13 +2075,13 @@ class CompensationRange {
   ///
   /// If left empty, the value is set to a maximal compensation value and the
   /// currency code is set to match the currency code of min_compensation.
-  Money maxCompensation;
+  Money? maxCompensation;
 
   /// The minimum amount of compensation.
   ///
   /// If left empty, the value is set to zero and the currency code is set to
   /// match the currency code of max_compensation.
-  Money minCompensation;
+  Money? minCompensation;
 
   CompensationRange();
 
@@ -2174,22 +2096,22 @@ class CompensationRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (maxCompensation != null)
-          'maxCompensation': maxCompensation.toJson(),
+          'maxCompensation': maxCompensation!.toJson(),
         if (minCompensation != null)
-          'minCompensation': minCompensation.toJson(),
+          'minCompensation': minCompensation!.toJson(),
       };
 }
 
 /// Response of auto-complete query.
 class CompleteQueryResponse {
   /// Results of the matching job/company candidates.
-  core.List<CompletionResult> completionResults;
+  core.List<CompletionResult>? completionResults;
 
   /// Additional information for the API invocation, such as the request
   /// tracking id.
-  ResponseMetadata metadata;
+  ResponseMetadata? metadata;
 
   CompleteQueryResponse();
 
@@ -2206,21 +2128,21 @@ class CompleteQueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (completionResults != null)
           'completionResults':
-              completionResults.map((value) => value.toJson()).toList(),
-        if (metadata != null) 'metadata': metadata.toJson(),
+              completionResults!.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata!.toJson(),
       };
 }
 
 /// Resource that represents completion results.
 class CompletionResult {
   /// The URI of the company image for COMPANY_NAME.
-  core.String imageUri;
+  core.String? imageUri;
 
   /// The suggestion for the query.
-  core.String suggestion;
+  core.String? suggestion;
 
   /// The completion topic.
   /// Possible string values are:
@@ -2235,7 +2157,7 @@ class CompletionResult {
   /// autocomplete. For CompletionType.COMBINED type, only open jobs with the
   /// same language_codes or companies having open jobs with the same
   /// language_codes are returned.
-  core.String type;
+  core.String? type;
 
   CompletionResult();
 
@@ -2251,10 +2173,10 @@ class CompletionResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageUri != null) 'imageUri': imageUri,
-        if (suggestion != null) 'suggestion': suggestion,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageUri != null) 'imageUri': imageUri!,
+        if (suggestion != null) 'suggestion': suggestion!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2265,21 +2187,21 @@ class CustomAttribute {
   ///
   /// If false, these values may not be used for custom attribute filters.
   /// Default is false.
-  core.bool filterable;
+  core.bool? filterable;
 
   /// If the `keyword_searchable` flag is true, the keywords in custom fields
   /// are searchable by keyword match.
   ///
   /// If false, the values are not searchable by keyword match. Default is
   /// false.
-  core.bool keywordSearchable;
+  core.bool? keywordSearchable;
 
   /// Exactly one of string_values or long_values must be specified.
   ///
   /// This field is used to perform number range search. (`EQ`, `GT`, `GE`,
   /// `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values
   /// is supported.
-  core.List<core.String> longValues;
+  core.List<core.String>? longValues;
 
   /// Exactly one of string_values or long_values must be specified.
   ///
@@ -2289,7 +2211,7 @@ class CustomAttribute {
   /// has a byte size of no more than 500B. For unfilterable `string_values`,
   /// the maximum total byte size of unfilterable `string_values` is 50KB. Empty
   /// string isn't allowed.
-  core.List<core.String> stringValues;
+  core.List<core.String>? stringValues;
 
   CustomAttribute();
 
@@ -2312,11 +2234,11 @@ class CustomAttribute {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filterable != null) 'filterable': filterable,
-        if (keywordSearchable != null) 'keywordSearchable': keywordSearchable,
-        if (longValues != null) 'longValues': longValues,
-        if (stringValues != null) 'stringValues': stringValues,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filterable != null) 'filterable': filterable!,
+        if (keywordSearchable != null) 'keywordSearchable': keywordSearchable!,
+        if (longValues != null) 'longValues': longValues!,
+        if (stringValues != null) 'stringValues': stringValues!,
       };
 }
 
@@ -2350,7 +2272,7 @@ class CustomRankingInfo {
   /// - "EXTREME" : The given ranking expression is of Extreme importance, and
   /// dominates job's final ranking position with existing relevance score
   /// (determined by API algorithm) ignored.
-  core.String importanceLevel;
+  core.String? importanceLevel;
 
   /// Controls over how job documents get ranked on top of existing relevance
   /// score (determined by API algorithm).
@@ -2369,7 +2291,7 @@ class CustomRankingInfo {
   /// + 25) * 0.25 - (freshness / 0.5)
   ///
   /// Required.
-  core.String rankingExpression;
+  core.String? rankingExpression;
 
   CustomRankingInfo();
 
@@ -2382,9 +2304,9 @@ class CustomRankingInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (importanceLevel != null) 'importanceLevel': importanceLevel,
-        if (rankingExpression != null) 'rankingExpression': rankingExpression,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (importanceLevel != null) 'importanceLevel': importanceLevel!,
+        if (rankingExpression != null) 'rankingExpression': rankingExpression!,
       };
 }
 
@@ -2406,13 +2328,13 @@ class DeviceInfo {
   /// - "BOT" : A bot, as opposed to a device operated by human beings, such as
   /// a web crawler.
   /// - "OTHER" : Other devices types.
-  core.String deviceType;
+  core.String? deviceType;
 
   /// A device-specific ID.
   ///
   /// The ID must be a unique identifier that distinguishes the device from
   /// other devices.
-  core.String id;
+  core.String? id;
 
   DeviceInfo();
 
@@ -2425,9 +2347,9 @@ class DeviceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceType != null) 'deviceType': deviceType,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceType != null) 'deviceType': deviceType!,
+        if (id != null) 'id': id!,
       };
 }
 
@@ -2445,7 +2367,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The histogram request.
@@ -2454,7 +2376,7 @@ class HistogramQuery {
   /// searches.
   ///
   /// See SearchJobsRequest.histogram_queries for details about syntax.
-  core.String histogramQuery;
+  core.String? histogramQuery;
 
   HistogramQuery();
 
@@ -2464,8 +2386,8 @@ class HistogramQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (histogramQuery != null) 'histogramQuery': histogramQuery,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (histogramQuery != null) 'histogramQuery': histogramQuery!,
       };
 }
 
@@ -2479,10 +2401,10 @@ class HistogramQueryResult {
   /// like for `bucket(0, MAX, "non-negative")`, the key will be `non-negative`.
   /// * (for anonymous numeric bucket) range formatted as `-`, for example,
   /// `0-1000`, `MIN-0`, and `0-MAX`.
-  core.Map<core.String, core.String> histogram;
+  core.Map<core.String, core.String>? histogram;
 
   /// Requested histogram expression.
-  core.String histogramQuery;
+  core.String? histogramQuery;
 
   HistogramQueryResult();
 
@@ -2501,9 +2423,9 @@ class HistogramQueryResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (histogram != null) 'histogram': histogram,
-        if (histogramQuery != null) 'histogramQuery': histogramQuery,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (histogram != null) 'histogram': histogram!,
+        if (histogramQuery != null) 'histogramQuery': histogramQuery!,
       };
 }
 
@@ -2526,10 +2448,10 @@ class Job {
   /// field should be used for storage. It is also suggested to group the
   /// locations that close to each other in the same job for better search
   /// experience. The maximum number of allowed characters is 500.
-  core.List<core.String> addresses;
+  core.List<core.String>? addresses;
 
   /// Job application information.
-  ApplicationInfo applicationInfo;
+  ApplicationInfo? applicationInfo;
 
   /// The resource name of the company listing the job.
   ///
@@ -2538,16 +2460,16 @@ class Job {
   /// example, "projects/foo/tenants/bar/companies/baz".
   ///
   /// Required.
-  core.String company;
+  core.String? company;
 
   /// Display name of the company listing the job.
   ///
   /// Output only.
-  core.String companyDisplayName;
+  core.String? companyDisplayName;
 
   /// Job compensation information (a.k.a. "pay rate") i.e., the compensation
   /// that will paid to the employee.
-  CompensationInfo compensationInfo;
+  CompensationInfo? compensationInfo;
 
   /// A map of fields to hold both filterable and non-filterable custom job
   /// attributes that are not covered by the provided structured fields.
@@ -2558,21 +2480,21 @@ class Job {
   /// `string_values`, across all keys at most 200 values are allowed, with each
   /// string no more than 255 characters. For unfilterable `string_values`, the
   /// maximum total size of `string_values` across all keys is 50KB.
-  core.Map<core.String, CustomAttribute> customAttributes;
+  core.Map<core.String, CustomAttribute>? customAttributes;
 
   /// The desired education degrees for the job, such as Bachelors, Masters.
-  core.List<core.String> degreeTypes;
+  core.List<core.String>? degreeTypes;
 
   /// The department or functional area within the company with the open
   /// position.
   ///
   /// The maximum number of allowed characters is 255.
-  core.String department;
+  core.String? department;
 
   /// Derived details about the job posting.
   ///
   /// Output only.
-  JobDerivedInfo derivedInfo;
+  JobDerivedInfo? derivedInfo;
 
   /// The description of the job, which typically includes a multi-paragraph
   /// description of the company and related information.
@@ -2584,25 +2506,25 @@ class Job {
   /// The maximum number of allowed characters is 100,000.
   ///
   /// Required.
-  core.String description;
+  core.String? description;
 
   /// The employment type(s) of a job, for example, full time or part time.
-  core.List<core.String> employmentTypes;
+  core.List<core.String>? employmentTypes;
 
   /// A description of bonus, commission, and other compensation incentives
   /// associated with the job not including salary or pay.
   ///
   /// The maximum number of allowed characters is 10,000.
-  core.String incentives;
+  core.String? incentives;
 
   /// The benefits included with the job.
-  core.List<core.String> jobBenefits;
+  core.List<core.String>? jobBenefits;
 
   /// The end timestamp of the job.
   ///
   /// Typically this field is used for contracting engagements. Invalid
   /// timestamps are ignored.
-  core.String jobEndTime;
+  core.String? jobEndTime;
 
   /// The experience level associated with the job, such as "Entry Level".
   /// Possible string values are:
@@ -2618,13 +2540,13 @@ class Job {
   /// managers.
   /// - "EXECUTIVE" : Executive-level managers and above, including C-level
   /// positions.
-  core.String jobLevel;
+  core.String? jobLevel;
 
   /// The start timestamp of the job in UTC time zone.
   ///
   /// Typically this field is used for contracting engagements. Invalid
   /// timestamps are ignored.
-  core.String jobStartTime;
+  core.String? jobStartTime;
 
   /// The language of the posting.
   ///
@@ -2635,7 +2557,7 @@ class Job {
   /// class="external" target="_blank" }. If this field is unspecified and
   /// Job.description is present, detected language code based on
   /// Job.description is assigned, otherwise defaults to 'en_US'.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Required during job update.
   ///
@@ -2645,12 +2567,12 @@ class Job {
   /// "projects/foo/tenants/bar/jobs/baz". Use of this field in job queries and
   /// API calls is preferred over the use of requisition_id since this value is
   /// unique.
-  core.String name;
+  core.String? name;
 
   /// The timestamp when this job posting was created.
   ///
   /// Output only.
-  core.String postingCreateTime;
+  core.String? postingCreateTime;
 
   /// Strongly recommended for the best service experience.
   ///
@@ -2683,13 +2605,13 @@ class Job {
   /// the masks are empty meaning that every field is updated, the job posting
   /// expires after 30 days from the job's last update time. Otherwise the
   /// expiration date isn't updated.
-  core.String postingExpireTime;
+  core.String? postingExpireTime;
 
   /// The timestamp this job posting was most recently published.
   ///
   /// The default value is the time the request arrives at the server. Invalid
   /// timestamps are ignored.
-  core.String postingPublishTime;
+  core.String? postingPublishTime;
 
   /// The job PostingRegion (for example, state, country) throughout which the
   /// job is available.
@@ -2716,15 +2638,15 @@ class Job {
   /// - "TELECOMMUTE" : Job allows employees to work remotely (telecommute). If
   /// locations are provided with this value, the job is considered as having a
   /// location, but telecommuting is allowed.
-  core.String postingRegion;
+  core.String? postingRegion;
 
   /// The timestamp when this job posting was last updated.
   ///
   /// Output only.
-  core.String postingUpdateTime;
+  core.String? postingUpdateTime;
 
   /// Options for job processing.
-  ProcessingOptions processingOptions;
+  ProcessingOptions? processingOptions;
 
   /// A promotion value of the job, as determined by the client.
   ///
@@ -2734,7 +2656,7 @@ class Job {
   /// Only the jobs with a promotionValue >0 are returned in a
   /// FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated
   /// as 0.
-  core.int promotionValue;
+  core.int? promotionValue;
 
   /// A description of the qualifications required to perform the job.
   ///
@@ -2742,7 +2664,7 @@ class Job {
   /// general description field. This field accepts and sanitizes HTML input,
   /// and also accepts bold, italic, ordered list, and unordered list markup
   /// tags. The maximum number of allowed characters is 10,000.
-  core.String qualifications;
+  core.String? qualifications;
 
   /// The requisition ID, also referred to as the posting ID, is assigned by the
   /// client to identify a job.
@@ -2753,7 +2675,7 @@ class Job {
   /// maximum number of allowed characters is 255.
   ///
   /// Required.
-  core.String requisitionId;
+  core.String? requisitionId;
 
   /// A description of job responsibilities.
   ///
@@ -2761,13 +2683,13 @@ class Job {
   /// general description field. This field accepts and sanitizes HTML input,
   /// and also accepts bold, italic, ordered list, and unordered list markup
   /// tags. The maximum number of allowed characters is 10,000.
-  core.String responsibilities;
+  core.String? responsibilities;
 
   /// The title of the job, such as "Software Engineer" The maximum number of
   /// allowed characters is 500.
   ///
   /// Required.
-  core.String title;
+  core.String? title;
 
   /// The job is only visible to the owner.
   ///
@@ -2783,7 +2705,7 @@ class Job {
   /// visible to other applications and processes at Google.
   /// - "SHARED_WITH_PUBLIC" : The resource is visible to the owner and may be
   /// visible to all other API clients.
-  core.String visibility;
+  core.String? visibility;
 
   Job();
 
@@ -2809,7 +2731,7 @@ class Job {
     }
     if (_json.containsKey('customAttributes')) {
       customAttributes = (_json['customAttributes'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -2900,56 +2822,56 @@ class Job {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addresses != null) 'addresses': addresses,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addresses != null) 'addresses': addresses!,
         if (applicationInfo != null)
-          'applicationInfo': applicationInfo.toJson(),
-        if (company != null) 'company': company,
+          'applicationInfo': applicationInfo!.toJson(),
+        if (company != null) 'company': company!,
         if (companyDisplayName != null)
-          'companyDisplayName': companyDisplayName,
+          'companyDisplayName': companyDisplayName!,
         if (compensationInfo != null)
-          'compensationInfo': compensationInfo.toJson(),
+          'compensationInfo': compensationInfo!.toJson(),
         if (customAttributes != null)
-          'customAttributes': customAttributes
+          'customAttributes': customAttributes!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (degreeTypes != null) 'degreeTypes': degreeTypes,
-        if (department != null) 'department': department,
-        if (derivedInfo != null) 'derivedInfo': derivedInfo.toJson(),
-        if (description != null) 'description': description,
-        if (employmentTypes != null) 'employmentTypes': employmentTypes,
-        if (incentives != null) 'incentives': incentives,
-        if (jobBenefits != null) 'jobBenefits': jobBenefits,
-        if (jobEndTime != null) 'jobEndTime': jobEndTime,
-        if (jobLevel != null) 'jobLevel': jobLevel,
-        if (jobStartTime != null) 'jobStartTime': jobStartTime,
-        if (languageCode != null) 'languageCode': languageCode,
-        if (name != null) 'name': name,
-        if (postingCreateTime != null) 'postingCreateTime': postingCreateTime,
-        if (postingExpireTime != null) 'postingExpireTime': postingExpireTime,
+        if (degreeTypes != null) 'degreeTypes': degreeTypes!,
+        if (department != null) 'department': department!,
+        if (derivedInfo != null) 'derivedInfo': derivedInfo!.toJson(),
+        if (description != null) 'description': description!,
+        if (employmentTypes != null) 'employmentTypes': employmentTypes!,
+        if (incentives != null) 'incentives': incentives!,
+        if (jobBenefits != null) 'jobBenefits': jobBenefits!,
+        if (jobEndTime != null) 'jobEndTime': jobEndTime!,
+        if (jobLevel != null) 'jobLevel': jobLevel!,
+        if (jobStartTime != null) 'jobStartTime': jobStartTime!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (name != null) 'name': name!,
+        if (postingCreateTime != null) 'postingCreateTime': postingCreateTime!,
+        if (postingExpireTime != null) 'postingExpireTime': postingExpireTime!,
         if (postingPublishTime != null)
-          'postingPublishTime': postingPublishTime,
-        if (postingRegion != null) 'postingRegion': postingRegion,
-        if (postingUpdateTime != null) 'postingUpdateTime': postingUpdateTime,
+          'postingPublishTime': postingPublishTime!,
+        if (postingRegion != null) 'postingRegion': postingRegion!,
+        if (postingUpdateTime != null) 'postingUpdateTime': postingUpdateTime!,
         if (processingOptions != null)
-          'processingOptions': processingOptions.toJson(),
-        if (promotionValue != null) 'promotionValue': promotionValue,
-        if (qualifications != null) 'qualifications': qualifications,
-        if (requisitionId != null) 'requisitionId': requisitionId,
-        if (responsibilities != null) 'responsibilities': responsibilities,
-        if (title != null) 'title': title,
-        if (visibility != null) 'visibility': visibility,
+          'processingOptions': processingOptions!.toJson(),
+        if (promotionValue != null) 'promotionValue': promotionValue!,
+        if (qualifications != null) 'qualifications': qualifications!,
+        if (requisitionId != null) 'requisitionId': requisitionId!,
+        if (responsibilities != null) 'responsibilities': responsibilities!,
+        if (title != null) 'title': title!,
+        if (visibility != null) 'visibility': visibility!,
       };
 }
 
 /// Derived details about the job posting.
 class JobDerivedInfo {
   /// Job categories derived from Job.title and Job.description.
-  core.List<core.String> jobCategories;
+  core.List<core.String>? jobCategories;
 
   /// Structured locations of the job, resolved from Job.addresses.
   ///
   /// locations are exactly matched to Job.addresses in the same order.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   JobDerivedInfo();
 
@@ -2967,10 +2889,10 @@ class JobDerivedInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jobCategories != null) 'jobCategories': jobCategories,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jobCategories != null) 'jobCategories': jobCategories!,
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
+          'locations': locations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2986,7 +2908,7 @@ class JobEvent {
   /// "projects/foo/tenants/bar/jobs/baz".
   ///
   /// Required.
-  core.List<core.String> jobs;
+  core.List<core.String>? jobs;
 
   /// The type of the event (see JobEventType).
   ///
@@ -3054,7 +2976,7 @@ class JobEvent {
   /// granted an interview as part of an application that was initiated by a
   /// search conducted through / recommendation provided by the Cloud Talent
   /// Solution service.
-  core.String type;
+  core.String? type;
 
   JobEvent();
 
@@ -3069,9 +2991,9 @@ class JobEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jobs != null) 'jobs': jobs,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jobs != null) 'jobs': jobs!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3083,7 +3005,7 @@ class JobQuery {
   /// Note: This only works when you specify a CommuteMethod. In this case,
   /// location_filters is ignored. Currently we don't support sorting by commute
   /// time.
-  CommuteFilter commuteFilter;
+  CommuteFilter? commuteFilter;
 
   /// This filter specifies the company entities to search against.
   ///
@@ -3093,7 +3015,7 @@ class JobQuery {
   /// "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For
   /// example, "projects/foo/tenants/bar/companies/baz". At most 20 company
   /// filters are allowed.
-  core.List<core.String> companies;
+  core.List<core.String>? companies;
 
   /// This filter specifies the exact company Company.display_name of the jobs
   /// to search against.
@@ -3102,14 +3024,14 @@ class JobQuery {
   /// with any company. If multiple values are specified, jobs within the search
   /// results may be associated with any of the specified companies. At most 20
   /// company display name filters are allowed.
-  core.List<core.String> companyDisplayNames;
+  core.List<core.String>? companyDisplayNames;
 
   /// This search filter is applied only to Job.compensation_info.
   ///
   /// For example, if the filter is specified as "Hourly job with per-hour
   /// compensation > $15", only jobs meeting these criteria are searched. If a
   /// filter isn't defined, all open jobs are searched.
-  CompensationFilter compensationFilter;
+  CompensationFilter? compensationFilter;
 
   /// This filter specifies a structured syntax to match against the
   /// Job.custom_attributes marked as `filterable`.
@@ -3126,14 +3048,14 @@ class JobQuery {
   /// expression must be < 6000 bytes in length. Sample Query:
   /// `(LOWER(driving_license)="class \"a\"" OR EMPTY(driving_license)) AND
   /// driving_years > 10`
-  core.String customAttributeFilter;
+  core.String? customAttributeFilter;
 
   /// This flag controls the spell-check feature.
   ///
   /// If false, the service attempts to correct a misspelled query, for example,
   /// "enginee" is corrected to "engineer". Defaults to false: a spell check is
   /// performed.
-  core.bool disableSpellCheck;
+  core.bool? disableSpellCheck;
 
   /// The employment type filter specifies the employment type of jobs to search
   /// against, such as EmploymentType.FULL_TIME.
@@ -3141,19 +3063,19 @@ class JobQuery {
   /// If a value isn't specified, jobs in the search results includes any
   /// employment type. If multiple values are specified, jobs in the search
   /// results include any of the specified employment types.
-  core.List<core.String> employmentTypes;
+  core.List<core.String>? employmentTypes;
 
   /// This filter specifies a list of job names to be excluded during search.
   ///
   /// At most 400 excluded job names are allowed.
-  core.List<core.String> excludedJobs;
+  core.List<core.String>? excludedJobs;
 
   /// The category filter specifies the categories of jobs to search against.
   ///
   /// See JobCategory for more information. If a value isn't specified, jobs
   /// from any category are searched against. If multiple values are specified,
   /// jobs from any of the specified categories are searched against.
-  core.List<core.String> jobCategories;
+  core.List<core.String>? jobCategories;
 
   /// This filter specifies the locale of jobs to search against, for example,
   /// "en-US".
@@ -3163,7 +3085,7 @@ class JobQuery {
   /// "sr-Latn". For more information, see
   /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). At
   /// most 10 language code filters are allowed.
-  core.List<core.String> languageCodes;
+  core.List<core.String>? languageCodes;
 
   /// The location filter specifies geo-regions containing the jobs to search
   /// against.
@@ -3175,17 +3097,17 @@ class JobQuery {
   /// specified for the LocationFilter.distance_in_miles parameter, the maximum
   /// provided distance is used for all locations. At most 5 location filters
   /// are allowed.
-  core.List<LocationFilter> locationFilters;
+  core.List<LocationFilter>? locationFilters;
 
   /// Jobs published within a range specified by this filter are searched
   /// against.
-  TimestampRange publishTimeRange;
+  TimestampRange? publishTimeRange;
 
   /// The query string that matches against the job title, description, and
   /// location fields.
   ///
   /// The maximum number of allowed characters is 255.
-  core.String query;
+  core.String? query;
 
   /// The language code of query.
   ///
@@ -3194,7 +3116,7 @@ class JobQuery {
   /// which may not be accurate. Language code should be in BCP-47 format, such
   /// as "en-US" or "sr-Latn". For more information, see
   /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-  core.String queryLanguageCode;
+  core.String? queryLanguageCode;
 
   JobQuery();
 
@@ -3261,27 +3183,27 @@ class JobQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commuteFilter != null) 'commuteFilter': commuteFilter.toJson(),
-        if (companies != null) 'companies': companies,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commuteFilter != null) 'commuteFilter': commuteFilter!.toJson(),
+        if (companies != null) 'companies': companies!,
         if (companyDisplayNames != null)
-          'companyDisplayNames': companyDisplayNames,
+          'companyDisplayNames': companyDisplayNames!,
         if (compensationFilter != null)
-          'compensationFilter': compensationFilter.toJson(),
+          'compensationFilter': compensationFilter!.toJson(),
         if (customAttributeFilter != null)
-          'customAttributeFilter': customAttributeFilter,
-        if (disableSpellCheck != null) 'disableSpellCheck': disableSpellCheck,
-        if (employmentTypes != null) 'employmentTypes': employmentTypes,
-        if (excludedJobs != null) 'excludedJobs': excludedJobs,
-        if (jobCategories != null) 'jobCategories': jobCategories,
-        if (languageCodes != null) 'languageCodes': languageCodes,
+          'customAttributeFilter': customAttributeFilter!,
+        if (disableSpellCheck != null) 'disableSpellCheck': disableSpellCheck!,
+        if (employmentTypes != null) 'employmentTypes': employmentTypes!,
+        if (excludedJobs != null) 'excludedJobs': excludedJobs!,
+        if (jobCategories != null) 'jobCategories': jobCategories!,
+        if (languageCodes != null) 'languageCodes': languageCodes!,
         if (locationFilters != null)
           'locationFilters':
-              locationFilters.map((value) => value.toJson()).toList(),
+              locationFilters!.map((value) => value.toJson()).toList(),
         if (publishTimeRange != null)
-          'publishTimeRange': publishTimeRange.toJson(),
-        if (query != null) 'query': query,
-        if (queryLanguageCode != null) 'queryLanguageCode': queryLanguageCode,
+          'publishTimeRange': publishTimeRange!.toJson(),
+        if (query != null) 'query': query!,
+        if (queryLanguageCode != null) 'queryLanguageCode': queryLanguageCode!,
       };
 }
 
@@ -3290,12 +3212,12 @@ class JobResult {
   /// Here Job only contains basic information including name, company,
   /// language_code and requisition_id, use getJob method to retrieve detailed
   /// information of the created/updated job.
-  Job job;
+  Job? job;
 
   /// The status of the job processed.
   ///
   /// This field is populated if the processing of the job fails.
-  Status status;
+  Status? status;
 
   JobResult();
 
@@ -3309,9 +3231,9 @@ class JobResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (job != null) 'job': job.toJson(),
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (job != null) 'job': job!.toJson(),
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -3324,12 +3246,12 @@ class LatLng {
   /// The latitude in degrees.
   ///
   /// It must be in the range \[-90.0, +90.0\].
-  core.double latitude;
+  core.double? latitude;
 
   /// The longitude in degrees.
   ///
   /// It must be in the range \[-180.0, +180.0\].
-  core.double longitude;
+  core.double? longitude;
 
   LatLng();
 
@@ -3342,23 +3264,23 @@ class LatLng {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (latitude != null) 'latitude': latitude,
-        if (longitude != null) 'longitude': longitude,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
       };
 }
 
 /// The List companies response object.
 class ListCompaniesResponse {
   /// Companies for the current client.
-  core.List<Company> companies;
+  core.List<Company>? companies;
 
   /// Additional information for the API invocation, such as the request
   /// tracking id.
-  ResponseMetadata metadata;
+  ResponseMetadata? metadata;
 
   /// A token to retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListCompaniesResponse();
 
@@ -3378,11 +3300,11 @@ class ListCompaniesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (companies != null)
-          'companies': companies.map((value) => value.toJson()).toList(),
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'companies': companies!.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -3392,14 +3314,14 @@ class ListJobsResponse {
   ///
   /// The maximum number of items returned is based on the limit field provided
   /// in the request.
-  core.List<Job> jobs;
+  core.List<Job>? jobs;
 
   /// Additional information for the API invocation, such as the request
   /// tracking id.
-  ResponseMetadata metadata;
+  ResponseMetadata? metadata;
 
   /// A token to retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListJobsResponse();
 
@@ -3419,10 +3341,10 @@ class ListJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -3430,13 +3352,13 @@ class ListJobsResponse {
 class ListTenantsResponse {
   /// Additional information for the API invocation, such as the request
   /// tracking id.
-  ResponseMetadata metadata;
+  ResponseMetadata? metadata;
 
   /// A token to retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Tenants for the current client.
-  core.List<Tenant> tenants;
+  core.List<Tenant>? tenants;
 
   ListTenantsResponse();
 
@@ -3456,18 +3378,18 @@ class ListTenantsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (tenants != null)
-          'tenants': tenants.map((value) => value.toJson()).toList(),
+          'tenants': tenants!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A resource that represents a location with full geographic information.
 class Location {
   /// An object representing a latitude/longitude pair.
-  LatLng latLng;
+  LatLng? latLng;
 
   /// The type of a location, which corresponds to the address lines field of
   /// google.type.PostalAddress.
@@ -3491,14 +3413,14 @@ class Location {
   /// - "SUB_LOCALITY_2" : A smaller district or equivalent level display.
   /// - "NEIGHBORHOOD" : A neighborhood level location.
   /// - "STREET_ADDRESS" : A street address level location.
-  core.String locationType;
+  core.String? locationType;
 
   /// Postal address of the location that includes human readable information,
   /// such as postal delivery and payments addresses.
   ///
   /// Given a postal address, a postal service can deliver items to a premises,
   /// P.O. Box, or other delivery location.
-  PostalAddress postalAddress;
+  PostalAddress? postalAddress;
 
   /// Radius in miles of the job location.
   ///
@@ -3506,7 +3428,7 @@ class Location {
   /// with the specified radius centered from google.type.LatLng covers the area
   /// associated with the job location. For example, currently, "Mountain View,
   /// CA, USA" has a radius of 6.17 miles.
-  core.double radiusMiles;
+  core.double? radiusMiles;
 
   Location();
 
@@ -3527,30 +3449,30 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (latLng != null) 'latLng': latLng.toJson(),
-        if (locationType != null) 'locationType': locationType,
-        if (postalAddress != null) 'postalAddress': postalAddress.toJson(),
-        if (radiusMiles != null) 'radiusMiles': radiusMiles,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (latLng != null) 'latLng': latLng!.toJson(),
+        if (locationType != null) 'locationType': locationType!,
+        if (postalAddress != null) 'postalAddress': postalAddress!.toJson(),
+        if (radiusMiles != null) 'radiusMiles': radiusMiles!,
       };
 }
 
 /// Geographic region of the search.
 class LocationFilter {
   /// The address name, such as "Mountain View" or "Bay Area".
-  core.String address;
+  core.String? address;
 
   /// The distance_in_miles is applied when the location being searched for is
   /// identified as a city or smaller.
   ///
   /// This field is ignored if the location being searched for is a state or
   /// larger.
-  core.double distanceInMiles;
+  core.double? distanceInMiles;
 
   /// The latitude and longitude of the geographic center to search from.
   ///
   /// This field is ignored if `address` is provided.
-  LatLng latLng;
+  LatLng? latLng;
 
   /// CLDR region code of the country/region of the address.
   ///
@@ -3561,7 +3483,7 @@ class LocationFilter {
   /// States by default. See
   /// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
   /// for details. Example: "CH" for Switzerland.
-  core.String regionCode;
+  core.String? regionCode;
 
   /// Allows the client to return jobs without a set location, specifically,
   /// telecommuting jobs (telecommuting is considered by the service as a
@@ -3583,7 +3505,7 @@ class LocationFilter {
   /// preference isn't specified.
   /// - "TELECOMMUTE_EXCLUDED" : Exclude telecommute jobs.
   /// - "TELECOMMUTE_ALLOWED" : Allow telecommute jobs.
-  core.String telecommutePreference;
+  core.String? telecommutePreference;
 
   LocationFilter();
 
@@ -3606,40 +3528,40 @@ class LocationFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address,
-        if (distanceInMiles != null) 'distanceInMiles': distanceInMiles,
-        if (latLng != null) 'latLng': latLng.toJson(),
-        if (regionCode != null) 'regionCode': regionCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!,
+        if (distanceInMiles != null) 'distanceInMiles': distanceInMiles!,
+        if (latLng != null) 'latLng': latLng!.toJson(),
+        if (regionCode != null) 'regionCode': regionCode!,
         if (telecommutePreference != null)
-          'telecommutePreference': telecommutePreference,
+          'telecommutePreference': telecommutePreference!,
       };
 }
 
 /// Job entry with metadata inside SearchJobsResponse.
 class MatchingJob {
   /// Commute information which is generated based on specified CommuteFilter.
-  CommuteInfo commuteInfo;
+  CommuteInfo? commuteInfo;
 
   /// Job resource that matches the specified SearchJobsRequest.
-  Job job;
+  Job? job;
 
   /// A summary of the job with core information that's displayed on the search
   /// results listing page.
-  core.String jobSummary;
+  core.String? jobSummary;
 
   /// Contains snippets of text from the Job.title field most closely matching a
   /// search query's keywords, if available.
   ///
   /// The matching query keywords are enclosed in HTML bold tags.
-  core.String jobTitleSnippet;
+  core.String? jobTitleSnippet;
 
   /// Contains snippets of text from the Job.description and similar fields that
   /// most closely match a search query's keywords, if available.
   ///
   /// All HTML tags in the original fields are stripped when returned in this
   /// field, and matching query keywords are enclosed in HTML bold tags.
-  core.String searchTextSnippet;
+  core.String? searchTextSnippet;
 
   MatchingJob();
 
@@ -3662,12 +3584,12 @@ class MatchingJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commuteInfo != null) 'commuteInfo': commuteInfo.toJson(),
-        if (job != null) 'job': job.toJson(),
-        if (jobSummary != null) 'jobSummary': jobSummary,
-        if (jobTitleSnippet != null) 'jobTitleSnippet': jobTitleSnippet,
-        if (searchTextSnippet != null) 'searchTextSnippet': searchTextSnippet,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commuteInfo != null) 'commuteInfo': commuteInfo!.toJson(),
+        if (job != null) 'job': job!.toJson(),
+        if (jobSummary != null) 'jobSummary': jobSummary!,
+        if (jobTitleSnippet != null) 'jobTitleSnippet': jobTitleSnippet!,
+        if (searchTextSnippet != null) 'searchTextSnippet': searchTextSnippet!,
       };
 }
 
@@ -3684,14 +3606,14 @@ class MendelDebugInput {
   /// NamespacedMendelDebugInput with the server's namespace. When both
   /// NamespacedMendelDebugInput protos are present, they are merged. See
   /// go/mendel-debug-forcing for more details.
-  core.Map<core.String, NamespacedDebugInput> namespacedDebugInput;
+  core.Map<core.String, NamespacedDebugInput>? namespacedDebugInput;
 
   MendelDebugInput();
 
   MendelDebugInput.fromJson(core.Map _json) {
     if (_json.containsKey('namespacedDebugInput')) {
       namespacedDebugInput = (_json['namespacedDebugInput'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -3702,9 +3624,9 @@ class MendelDebugInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (namespacedDebugInput != null)
-          'namespacedDebugInput': namespacedDebugInput
+          'namespacedDebugInput': namespacedDebugInput!
               .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
@@ -3712,7 +3634,7 @@ class MendelDebugInput {
 /// Represents an amount of money with its currency type.
 class Money {
   /// The three-letter currency code defined in ISO 4217.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Number of nano (10^-9) units of the amount.
   ///
@@ -3721,12 +3643,12 @@ class Money {
   /// `nanos` can be positive, zero, or negative. If `units` is negative,
   /// `nanos` must be negative or zero. For example $-1.75 is represented as
   /// `units`=-1 and `nanos`=-750,000,000.
-  core.int nanos;
+  core.int? nanos;
 
   /// The whole units of the amount.
   ///
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-  core.String units;
+  core.String? units;
 
   Money();
 
@@ -3742,10 +3664,10 @@ class Money {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (nanos != null) 'nanos': nanos,
-        if (units != null) 'units': units,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (nanos != null) 'nanos': nanos!,
+        if (units != null) 'units': units!,
       };
 }
 
@@ -3754,43 +3676,43 @@ class NamespacedDebugInput {
   /// Set of experiment names to be absolutely forced.
   ///
   /// These experiments will be forced without evaluating the conditions.
-  core.List<core.String> absolutelyForcedExpNames;
+  core.List<core.String>? absolutelyForcedExpNames;
 
   /// Set of experiment tags to be absolutely forced.
   ///
   /// The experiments with these tags will be forced without evaluating the
   /// conditions.
-  core.List<core.String> absolutelyForcedExpTags;
+  core.List<core.String>? absolutelyForcedExpTags;
 
   /// Set of experiment ids to be absolutely forced.
   ///
   /// These ids will be forced without evaluating the conditions.
-  core.List<core.int> absolutelyForcedExps;
+  core.List<core.int>? absolutelyForcedExps;
 
   /// Set of experiment names to be conditionally forced.
   ///
   /// These experiments will be forced only if their conditions and their parent
   /// domain's conditions are true.
-  core.List<core.String> conditionallyForcedExpNames;
+  core.List<core.String>? conditionallyForcedExpNames;
 
   /// Set of experiment tags to be conditionally forced.
   ///
   /// The experiments with these tags will be forced only if their conditions
   /// and their parent domain's conditions are true.
-  core.List<core.String> conditionallyForcedExpTags;
+  core.List<core.String>? conditionallyForcedExpTags;
 
   /// Set of experiment ids to be conditionally forced.
   ///
   /// These ids will be forced only if their conditions and their parent
   /// domain's conditions are true.
-  core.List<core.int> conditionallyForcedExps;
+  core.List<core.int>? conditionallyForcedExps;
 
   /// If true, disable automatic enrollment selection (at all diversion points).
   ///
   /// Automatic enrollment selection means experiment selection process based on
   /// the experiment's automatic enrollment condition. This does not disable
   /// selection of forced experiments.
-  core.bool disableAutomaticEnrollmentSelection;
+  core.bool? disableAutomaticEnrollmentSelection;
 
   /// Set of experiment names to be disabled.
   ///
@@ -3799,7 +3721,7 @@ class NamespacedDebugInput {
   /// an experiment with an enrollment is disabled, the enrollment is disabled
   /// together. If a name corresponds to a domain, the domain itself and all
   /// descendant experiments and domains are disabled together.
-  core.List<core.String> disableExpNames;
+  core.List<core.String>? disableExpNames;
 
   /// Set of experiment tags to be disabled.
   ///
@@ -3808,7 +3730,7 @@ class NamespacedDebugInput {
   /// If an aggregate experiment is disabled, its partitions are disabled
   /// together. If an experiment with an enrollment is disabled, the enrollment
   /// is disabled together.
-  core.List<core.String> disableExpTags;
+  core.List<core.String>? disableExpTags;
 
   /// Set of experiment ids to be disabled.
   ///
@@ -3817,14 +3739,14 @@ class NamespacedDebugInput {
   /// an experiment with an enrollment is disabled, the enrollment is disabled
   /// together. If an ID corresponds to a domain, the domain itself and all
   /// descendant experiments and domains are disabled together.
-  core.List<core.int> disableExps;
+  core.List<core.int>? disableExps;
 
   /// If true, disable manual enrollment selection (at all diversion points).
   ///
   /// Manual enrollment selection means experiment selection process based on
   /// the request's manual enrollment states (a.k.a. opt-in experiments). This
   /// does not disable selection of forced experiments.
-  core.bool disableManualEnrollmentSelection;
+  core.bool? disableManualEnrollmentSelection;
 
   /// If true, disable organic experiment selection (at all diversion points).
   ///
@@ -3834,17 +3756,17 @@ class NamespacedDebugInput {
   /// known whether experiment selection behavior is responsible for a error or
   /// breakage. Disabling organic selection may help to isolate the cause of a
   /// given problem.
-  core.bool disableOrganicSelection;
+  core.bool? disableOrganicSelection;
 
   /// Flags to force in a particular experiment state.
   ///
   /// Map from flag name to flag value.
-  core.Map<core.String, core.String> forcedFlags;
+  core.Map<core.String, core.String>? forcedFlags;
 
   /// Rollouts to force in a particular experiment state.
   ///
   /// Map from rollout name to rollout value.
-  core.Map<core.String, core.bool> forcedRollouts;
+  core.Map<core.String, core.bool>? forcedRollouts;
 
   NamespacedDebugInput();
 
@@ -3930,31 +3852,31 @@ class NamespacedDebugInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (absolutelyForcedExpNames != null)
-          'absolutelyForcedExpNames': absolutelyForcedExpNames,
+          'absolutelyForcedExpNames': absolutelyForcedExpNames!,
         if (absolutelyForcedExpTags != null)
-          'absolutelyForcedExpTags': absolutelyForcedExpTags,
+          'absolutelyForcedExpTags': absolutelyForcedExpTags!,
         if (absolutelyForcedExps != null)
-          'absolutelyForcedExps': absolutelyForcedExps,
+          'absolutelyForcedExps': absolutelyForcedExps!,
         if (conditionallyForcedExpNames != null)
-          'conditionallyForcedExpNames': conditionallyForcedExpNames,
+          'conditionallyForcedExpNames': conditionallyForcedExpNames!,
         if (conditionallyForcedExpTags != null)
-          'conditionallyForcedExpTags': conditionallyForcedExpTags,
+          'conditionallyForcedExpTags': conditionallyForcedExpTags!,
         if (conditionallyForcedExps != null)
-          'conditionallyForcedExps': conditionallyForcedExps,
+          'conditionallyForcedExps': conditionallyForcedExps!,
         if (disableAutomaticEnrollmentSelection != null)
           'disableAutomaticEnrollmentSelection':
-              disableAutomaticEnrollmentSelection,
-        if (disableExpNames != null) 'disableExpNames': disableExpNames,
-        if (disableExpTags != null) 'disableExpTags': disableExpTags,
-        if (disableExps != null) 'disableExps': disableExps,
+              disableAutomaticEnrollmentSelection!,
+        if (disableExpNames != null) 'disableExpNames': disableExpNames!,
+        if (disableExpTags != null) 'disableExpTags': disableExpTags!,
+        if (disableExps != null) 'disableExps': disableExps!,
         if (disableManualEnrollmentSelection != null)
-          'disableManualEnrollmentSelection': disableManualEnrollmentSelection,
+          'disableManualEnrollmentSelection': disableManualEnrollmentSelection!,
         if (disableOrganicSelection != null)
-          'disableOrganicSelection': disableOrganicSelection,
-        if (forcedFlags != null) 'forcedFlags': forcedFlags,
-        if (forcedRollouts != null) 'forcedRollouts': forcedRollouts,
+          'disableOrganicSelection': disableOrganicSelection!,
+        if (forcedFlags != null) 'forcedFlags': forcedFlags!,
+        if (forcedRollouts != null) 'forcedRollouts': forcedRollouts!,
       };
 }
 
@@ -3965,10 +3887,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -3979,14 +3901,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -3999,7 +3921,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -4034,12 +3956,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -4073,7 +3995,7 @@ class PostalAddress {
   /// region_code and address_lines, and then geocoding is the recommended way
   /// to handle completely unstructured addresses (as opposed to guessing which
   /// parts of the address should be localities or administrative areas).
-  core.List<core.String> addressLines;
+  core.List<core.String>? addressLines;
 
   /// Highest administrative subdivision which is used for postal addresses of a
   /// country or region.
@@ -4085,7 +4007,7 @@ class PostalAddress {
   /// should be left unpopulated.
   ///
   /// Optional.
-  core.String administrativeArea;
+  core.String? administrativeArea;
 
   /// BCP-47 language code of the contents of this address (if known).
   ///
@@ -4098,7 +4020,7 @@ class PostalAddress {
   /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
   ///
   /// Optional.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Generally refers to the city/town portion of the address.
   ///
@@ -4107,12 +4029,12 @@ class PostalAddress {
   /// leave locality empty and use address_lines.
   ///
   /// Optional.
-  core.String locality;
+  core.String? locality;
 
   /// The name of the organization at the address.
   ///
   /// Optional.
-  core.String organization;
+  core.String? organization;
 
   /// Postal code of the address.
   ///
@@ -4121,7 +4043,7 @@ class PostalAddress {
   /// the address (e.g. state/zip validation in the U.S.A.).
   ///
   /// Optional.
-  core.String postalCode;
+  core.String? postalCode;
 
   /// The recipient at the address.
   ///
@@ -4129,7 +4051,7 @@ class PostalAddress {
   /// information. For example, it might contain "care of" information.
   ///
   /// Optional.
-  core.List<core.String> recipients;
+  core.List<core.String>? recipients;
 
   /// CLDR region code of the country/region of the address.
   ///
@@ -4139,13 +4061,13 @@ class PostalAddress {
   /// for details. Example: "CH" for Switzerland.
   ///
   /// Required.
-  core.String regionCode;
+  core.String? regionCode;
 
   /// The schema revision of the `PostalAddress`.
   ///
   /// This must be set to 0, which is the latest revision. All new revisions
   /// **must** be backward compatible with old revisions.
-  core.int revision;
+  core.int? revision;
 
   /// Additional, country-specific, sorting code.
   ///
@@ -4155,14 +4077,14 @@ class PostalAddress {
   /// area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
   ///
   /// Optional.
-  core.String sortingCode;
+  core.String? sortingCode;
 
   /// Sublocality of the address.
   ///
   /// For example, this can be neighborhoods, boroughs, districts.
   ///
   /// Optional.
-  core.String sublocality;
+  core.String? sublocality;
 
   PostalAddress();
 
@@ -4206,19 +4128,19 @@ class PostalAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addressLines != null) 'addressLines': addressLines,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addressLines != null) 'addressLines': addressLines!,
         if (administrativeArea != null)
-          'administrativeArea': administrativeArea,
-        if (languageCode != null) 'languageCode': languageCode,
-        if (locality != null) 'locality': locality,
-        if (organization != null) 'organization': organization,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (recipients != null) 'recipients': recipients,
-        if (regionCode != null) 'regionCode': regionCode,
-        if (revision != null) 'revision': revision,
-        if (sortingCode != null) 'sortingCode': sortingCode,
-        if (sublocality != null) 'sublocality': sublocality,
+          'administrativeArea': administrativeArea!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (locality != null) 'locality': locality!,
+        if (organization != null) 'organization': organization!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (recipients != null) 'recipients': recipients!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (revision != null) 'revision': revision!,
+        if (sortingCode != null) 'sortingCode': sortingCode!,
+        if (sublocality != null) 'sublocality': sublocality!,
       };
 }
 
@@ -4226,7 +4148,7 @@ class PostalAddress {
 class ProcessingOptions {
   /// If set to `true`, the service does not attempt to resolve a more precise
   /// address for the job.
-  core.bool disableStreetAddressResolution;
+  core.bool? disableStreetAddressResolution;
 
   /// Option for job HTML content sanitization.
   ///
@@ -4239,7 +4161,7 @@ class ProcessingOptions {
   /// - "HTML_SANITIZATION_DISABLED" : Disables sanitization on HTML input.
   /// - "SIMPLE_FORMATTING_ONLY" : Sanitizes HTML input, only accepts bold,
   /// italic, ordered list, and unordered list markup tags.
-  core.String htmlSanitization;
+  core.String? htmlSanitization;
 
   ProcessingOptions();
 
@@ -4253,10 +4175,10 @@ class ProcessingOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (disableStreetAddressResolution != null)
-          'disableStreetAddressResolution': disableStreetAddressResolution,
-        if (htmlSanitization != null) 'htmlSanitization': htmlSanitization,
+          'disableStreetAddressResolution': disableStreetAddressResolution!,
+        if (htmlSanitization != null) 'htmlSanitization': htmlSanitization!,
       };
 }
 
@@ -4270,11 +4192,11 @@ class RequestMetadata {
   ///
   /// It is highly recommended not to set this field and provide accurate
   /// domain, session_id and user_id for the best service experience.
-  core.bool allowMissingIds;
+  core.bool? allowMissingIds;
 
   /// The type of device used by the job seeker at the time of the call to the
   /// service.
-  DeviceInfo deviceInfo;
+  DeviceInfo? deviceInfo;
 
   /// Required if allow_missing_ids is unset or `false`.
   ///
@@ -4286,7 +4208,7 @@ class RequestMetadata {
   /// career site. Note that any improvements to the model for a particular
   /// tenant site rely on this field being set correctly to a unique domain. The
   /// maximum number of allowed characters is 255.
-  core.String domain;
+  core.String? domain;
 
   /// Required if allow_missing_ids is unset or `false`.
   ///
@@ -4296,7 +4218,7 @@ class RequestMetadata {
   /// the service. Note that any improvements to the model for a particular
   /// tenant site rely on this field being set correctly to a unique session ID.
   /// The maximum number of allowed characters is 255.
-  core.String sessionId;
+  core.String? sessionId;
 
   /// Required if allow_missing_ids is unset or `false`.
   ///
@@ -4306,7 +4228,7 @@ class RequestMetadata {
   /// to the service. Note that any improvements to the model for a particular
   /// tenant site rely on this field being set correctly to a unique user ID.
   /// The maximum number of allowed characters is 255.
-  core.String userId;
+  core.String? userId;
 
   RequestMetadata();
 
@@ -4329,12 +4251,12 @@ class RequestMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowMissingIds != null) 'allowMissingIds': allowMissingIds,
-        if (deviceInfo != null) 'deviceInfo': deviceInfo.toJson(),
-        if (domain != null) 'domain': domain,
-        if (sessionId != null) 'sessionId': sessionId,
-        if (userId != null) 'userId': userId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowMissingIds != null) 'allowMissingIds': allowMissingIds!,
+        if (deviceInfo != null) 'deviceInfo': deviceInfo!.toJson(),
+        if (domain != null) 'domain': domain!,
+        if (sessionId != null) 'sessionId': sessionId!,
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -4343,7 +4265,7 @@ class ResponseMetadata {
   /// A unique id associated with this call.
   ///
   /// This id is logged for tracking purposes.
-  core.String requestId;
+  core.String? requestId;
 
   ResponseMetadata();
 
@@ -4353,8 +4275,8 @@ class ResponseMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -4362,7 +4284,7 @@ class ResponseMetadata {
 class SearchJobsRequest {
   /// Controls over how job documents get ranked on top of existing relevance
   /// score (determined by API algorithm).
-  CustomRankingInfo customRankingInfo;
+  CustomRankingInfo? customRankingInfo;
 
   /// Controls whether to disable exact keyword match on Job.title,
   /// Job.description, Job.company_display_name, Job.addresses,
@@ -4380,7 +4302,7 @@ class SearchJobsRequest {
   /// globally matched custom field/attribute string values are needed. Enabling
   /// keyword match improves recall of subsequent search requests. Defaults to
   /// false.
-  core.bool disableKeywordMatch;
+  core.bool? disableKeywordMatch;
 
   /// Controls whether highly similar jobs are returned next to each other in
   /// the search results.
@@ -4403,13 +4325,13 @@ class SearchJobsRequest {
   /// latency might be lower but we can't guarantee that all results are
   /// returned. If you are using page offset, latency might be higher but all
   /// results are returned.
-  core.String diversificationLevel;
+  core.String? diversificationLevel;
 
   /// Controls whether to broaden the search when it produces sparse results.
   ///
   /// Broadened queries append results to the end of the matching results list.
   /// Defaults to false.
-  core.bool enableBroadening;
+  core.bool? enableBroadening;
 
   /// An expression specifies a histogram request against matching jobs.
   ///
@@ -4470,10 +4392,10 @@ class SearchJobsRequest {
   /// `count(string_custom_attribute["some-string-custom-attribute"])` *
   /// `count(numeric_custom_attribute["some-numeric-custom-attribute"],
   /// [bucket(MIN, 0, "negative"), bucket(0, MAX, "non-negative"])`
-  core.List<HistogramQuery> histogramQueries;
+  core.List<HistogramQuery>? histogramQueries;
 
   /// Query used to search against jobs, such as keyword, location filters, etc.
-  JobQuery jobQuery;
+  JobQuery? jobQuery;
 
   /// The desired job attributes returned for jobs in the search response.
   ///
@@ -4491,13 +4413,13 @@ class SearchJobsRequest {
   /// Job.description.
   /// - "JOB_VIEW_FULL" : All available attributes are included in the search
   /// results.
-  core.String jobView;
+  core.String? jobView;
 
   /// A limit on the number of jobs returned in the search results.
   ///
   /// Increasing this value above the default value of 10 can increase search
   /// response time. The value can be between 1 and 100.
-  core.int maxPageSize;
+  core.int? maxPageSize;
 
   /// An integer that specifies the current offset (that is, starting result
   /// location, amongst the jobs deemed by the API as relevant) in search
@@ -4508,7 +4430,7 @@ class SearchJobsRequest {
   /// return results starting from the first matching job, and 10 means to
   /// return from the 11th job. This can be used for pagination, (for example,
   /// pageSize = 10 and offset = 10 means to return from the second page).
-  core.int offset;
+  core.int? offset;
 
   /// The criteria determining how search results are sorted.
   ///
@@ -4546,13 +4468,13 @@ class SearchJobsRequest {
   /// don't have locations will be ranked at the bottom. Distance is calculated
   /// with a precision of 11.3 meters (37.4 feet). Diversification strategy is
   /// still applied unless explicitly disabled in diversification_level.
-  core.String orderBy;
+  core.String? orderBy;
 
   /// The token specifying the current offset within search results.
   ///
   /// See SearchJobsResponse.next_page_token for an explanation of how to obtain
   /// the next set of query results.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// The meta information collected about the job searcher, used to improve the
   /// search quality of the service.
@@ -4561,7 +4483,7 @@ class SearchJobsRequest {
   /// unique and consistent.
   ///
   /// Required.
-  RequestMetadata requestMetadata;
+  RequestMetadata? requestMetadata;
 
   /// Mode of a search.
   ///
@@ -4577,7 +4499,7 @@ class SearchJobsRequest {
   /// having a promotionValue <= 0. The search results order is determined by
   /// the promotionValue (jobs with a higher promotionValue are returned higher
   /// up in the search results), with relevance being used as a tiebreaker.
-  core.String searchMode;
+  core.String? searchMode;
 
   SearchJobsRequest();
 
@@ -4629,26 +4551,26 @@ class SearchJobsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customRankingInfo != null)
-          'customRankingInfo': customRankingInfo.toJson(),
+          'customRankingInfo': customRankingInfo!.toJson(),
         if (disableKeywordMatch != null)
-          'disableKeywordMatch': disableKeywordMatch,
+          'disableKeywordMatch': disableKeywordMatch!,
         if (diversificationLevel != null)
-          'diversificationLevel': diversificationLevel,
-        if (enableBroadening != null) 'enableBroadening': enableBroadening,
+          'diversificationLevel': diversificationLevel!,
+        if (enableBroadening != null) 'enableBroadening': enableBroadening!,
         if (histogramQueries != null)
           'histogramQueries':
-              histogramQueries.map((value) => value.toJson()).toList(),
-        if (jobQuery != null) 'jobQuery': jobQuery.toJson(),
-        if (jobView != null) 'jobView': jobView,
-        if (maxPageSize != null) 'maxPageSize': maxPageSize,
-        if (offset != null) 'offset': offset,
-        if (orderBy != null) 'orderBy': orderBy,
-        if (pageToken != null) 'pageToken': pageToken,
+              histogramQueries!.map((value) => value.toJson()).toList(),
+        if (jobQuery != null) 'jobQuery': jobQuery!.toJson(),
+        if (jobView != null) 'jobView': jobView!,
+        if (maxPageSize != null) 'maxPageSize': maxPageSize!,
+        if (offset != null) 'offset': offset!,
+        if (orderBy != null) 'orderBy': orderBy!,
+        if (pageToken != null) 'pageToken': pageToken!,
         if (requestMetadata != null)
-          'requestMetadata': requestMetadata.toJson(),
-        if (searchMode != null) 'searchMode': searchMode,
+          'requestMetadata': requestMetadata!.toJson(),
+        if (searchMode != null) 'searchMode': searchMode!,
       };
 }
 
@@ -4663,38 +4585,38 @@ class SearchJobsResponse {
   /// in the jobs list are from the original (without broadening) query. If this
   /// field is non-zero, subsequent requests with offset after this result set
   /// should contain all broadened results.
-  core.int broadenedQueryJobsCount;
+  core.int? broadenedQueryJobsCount;
 
   /// The histogram results that match with specified
   /// SearchJobsRequest.histogram_queries.
-  core.List<HistogramQueryResult> histogramQueryResults;
+  core.List<HistogramQueryResult>? histogramQueryResults;
 
   /// The location filters that the service applied to the specified query.
   ///
   /// If any filters are lat-lng based, the Location.location_type is
   /// Location.LocationType.LOCATION_TYPE_UNSPECIFIED.
-  core.List<Location> locationFilters;
+  core.List<Location>? locationFilters;
 
   /// The Job entities that match the specified SearchJobsRequest.
-  core.List<MatchingJob> matchingJobs;
+  core.List<MatchingJob>? matchingJobs;
 
   /// Additional information for the API invocation, such as the request
   /// tracking id.
-  ResponseMetadata metadata;
+  ResponseMetadata? metadata;
 
   /// The token that specifies the starting position of the next page of
   /// results.
   ///
   /// This field is empty if there are no more results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The spell checking result, and correction.
-  SpellingCorrection spellCorrection;
+  SpellingCorrection? spellCorrection;
 
   /// Number of jobs that match the specified query.
   ///
   /// Note: This size is precise only if the total is less than 100,000.
-  core.int totalSize;
+  core.int? totalSize;
 
   SearchJobsResponse();
 
@@ -4736,29 +4658,29 @@ class SearchJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (broadenedQueryJobsCount != null)
-          'broadenedQueryJobsCount': broadenedQueryJobsCount,
+          'broadenedQueryJobsCount': broadenedQueryJobsCount!,
         if (histogramQueryResults != null)
           'histogramQueryResults':
-              histogramQueryResults.map((value) => value.toJson()).toList(),
+              histogramQueryResults!.map((value) => value.toJson()).toList(),
         if (locationFilters != null)
           'locationFilters':
-              locationFilters.map((value) => value.toJson()).toList(),
+              locationFilters!.map((value) => value.toJson()).toList(),
         if (matchingJobs != null)
-          'matchingJobs': matchingJobs.map((value) => value.toJson()).toList(),
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'matchingJobs': matchingJobs!.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (spellCorrection != null)
-          'spellCorrection': spellCorrection.toJson(),
-        if (totalSize != null) 'totalSize': totalSize,
+          'spellCorrection': spellCorrection!.toJson(),
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
 /// Spell check result.
 class SpellingCorrection {
   /// Indicates if the query was corrected by the spell checker.
-  core.bool corrected;
+  core.bool? corrected;
 
   /// Corrected output with html tags to highlight the corrected words.
   ///
@@ -4766,10 +4688,10 @@ class SpellingCorrection {
   /// the user input query is "software enginear", where the second word,
   /// "enginear," is incorrect. It should be "engineer". When spelling
   /// correction is enabled, this value is "software *engineer*".
-  core.String correctedHtml;
+  core.String? correctedHtml;
 
   /// Correction output consisting of the corrected keyword string.
-  core.String correctedText;
+  core.String? correctedText;
 
   SpellingCorrection();
 
@@ -4785,10 +4707,10 @@ class SpellingCorrection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (corrected != null) 'corrected': corrected,
-        if (correctedHtml != null) 'correctedHtml': correctedHtml,
-        if (correctedText != null) 'correctedText': correctedText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (corrected != null) 'corrected': corrected!,
+        if (correctedHtml != null) 'correctedHtml': correctedHtml!,
+        if (correctedText != null) 'correctedText': correctedText!,
       };
 }
 
@@ -4801,7 +4723,7 @@ class SpellingCorrection {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -4809,13 +4731,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -4839,10 +4761,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -4857,7 +4779,7 @@ class Tenant {
   /// The maximum number of allowed characters is 255.
   ///
   /// Required.
-  core.String externalId;
+  core.String? externalId;
 
   /// Required during tenant update.
   ///
@@ -4865,7 +4787,7 @@ class Tenant {
   /// tenant is created. The format is
   /// "projects/{project_id}/tenants/{tenant_id}", for example,
   /// "projects/foo/tenants/bar".
-  core.String name;
+  core.String? name;
 
   Tenant();
 
@@ -4878,9 +4800,9 @@ class Tenant {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (externalId != null) 'externalId': externalId,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (externalId != null) 'externalId': externalId!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -4894,23 +4816,23 @@ class TimeOfDay {
   ///
   /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
   /// for scenarios like business closing time.
-  core.int hours;
+  core.int? hours;
 
   /// Minutes of hour of day.
   ///
   /// Must be from 0 to 59.
-  core.int minutes;
+  core.int? minutes;
 
   /// Fractions of seconds in nanoseconds.
   ///
   /// Must be from 0 to 999,999,999.
-  core.int nanos;
+  core.int? nanos;
 
   /// Seconds of minutes of the time.
   ///
   /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
   /// leap-seconds.
-  core.int seconds;
+  core.int? seconds;
 
   TimeOfDay();
 
@@ -4929,21 +4851,21 @@ class TimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hours != null) 'hours': hours,
-        if (minutes != null) 'minutes': minutes,
-        if (nanos != null) 'nanos': nanos,
-        if (seconds != null) 'seconds': seconds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hours != null) 'hours': hours!,
+        if (minutes != null) 'minutes': minutes!,
+        if (nanos != null) 'nanos': nanos!,
+        if (seconds != null) 'seconds': seconds!,
       };
 }
 
 /// Message representing a period of time between two timestamps.
 class TimestampRange {
   /// End of the period (exclusive).
-  core.String endTime;
+  core.String? endTime;
 
   /// Begin of the period (inclusive).
-  core.String startTime;
+  core.String? startTime;
 
   TimestampRange();
 
@@ -4956,8 +4878,8 @@ class TimestampRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }

@@ -201,10 +201,9 @@ class CoursesResource {
   /// this method will complete with the same error.
   async.Future<Course> create(
     Course request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -243,11 +242,8 @@ class CoursesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -285,11 +281,8 @@ class CoursesResource {
   /// this method will complete with the same error.
   async.Future<Course> get(
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -349,12 +342,12 @@ class CoursesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCoursesResponse> list({
-    core.List<core.String> courseStates,
-    core.int pageSize,
-    core.String pageToken,
-    core.String studentId,
-    core.String teacherId,
-    core.String $fields,
+    core.List<core.String>? courseStates,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? studentId,
+    core.String? teacherId,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (courseStates != null) 'courseStates': courseStates,
@@ -414,14 +407,10 @@ class CoursesResource {
   async.Future<Course> patch(
     Course request,
     core.String id, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -466,13 +455,9 @@ class CoursesResource {
   async.Future<Course> update(
     Course request,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -523,13 +508,9 @@ class CoursesAliasesResource {
   async.Future<CourseAlias> create(
     CourseAlias request,
     core.String courseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -577,14 +558,8 @@ class CoursesAliasesResource {
   async.Future<Empty> delete(
     core.String courseId,
     core.String alias, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (alias == null) {
-      throw core.ArgumentError('Parameter alias is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -634,13 +609,10 @@ class CoursesAliasesResource {
   /// this method will complete with the same error.
   async.Future<ListCourseAliasesResponse> list(
     core.String courseId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -696,13 +668,9 @@ class CoursesAnnouncementsResource {
   async.Future<Announcement> create(
     Announcement request,
     core.String courseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -753,14 +721,8 @@ class CoursesAnnouncementsResource {
   async.Future<Empty> delete(
     core.String courseId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -806,14 +768,8 @@ class CoursesAnnouncementsResource {
   async.Future<Announcement> get(
     core.String courseId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -877,15 +833,12 @@ class CoursesAnnouncementsResource {
   /// this method will complete with the same error.
   async.Future<ListAnnouncementsResponse> list(
     core.String courseId, {
-    core.List<core.String> announcementStates,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.List<core.String>? announcementStates,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (announcementStates != null) 'announcementStates': announcementStates,
       if (orderBy != null) 'orderBy': [orderBy],
@@ -939,16 +892,9 @@ class CoursesAnnouncementsResource {
     ModifyAnnouncementAssigneesRequest request,
     core.String courseId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1010,17 +956,10 @@ class CoursesAnnouncementsResource {
     Announcement request,
     core.String courseId,
     core.String id, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1085,13 +1024,9 @@ class CoursesCourseWorkResource {
   async.Future<CourseWork> create(
     CourseWork request,
     core.String courseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1142,14 +1077,8 @@ class CoursesCourseWorkResource {
   async.Future<Empty> delete(
     core.String courseId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1195,14 +1124,8 @@ class CoursesCourseWorkResource {
   async.Future<CourseWork> get(
     core.String courseId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1266,15 +1189,12 @@ class CoursesCourseWorkResource {
   /// this method will complete with the same error.
   async.Future<ListCourseWorkResponse> list(
     core.String courseId, {
-    core.List<core.String> courseWorkStates,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.List<core.String>? courseWorkStates,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (courseWorkStates != null) 'courseWorkStates': courseWorkStates,
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1328,16 +1248,9 @@ class CoursesCourseWorkResource {
     ModifyCourseWorkAssigneesRequest request,
     core.String courseId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1406,17 +1319,10 @@ class CoursesCourseWorkResource {
     CourseWork request,
     core.String courseId,
     core.String id, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1474,17 +1380,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String courseId,
     core.String courseWorkId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (courseWorkId == null) {
-      throw core.ArgumentError('Parameter courseWorkId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1566,19 +1463,13 @@ class CoursesCourseWorkStudentSubmissionsResource {
   async.Future<ListStudentSubmissionsResponse> list(
     core.String courseId,
     core.String courseWorkId, {
-    core.String late,
-    core.int pageSize,
-    core.String pageToken,
-    core.List<core.String> states,
-    core.String userId,
-    core.String $fields,
+    core.String? late,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.List<core.String>? states,
+    core.String? userId,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (courseWorkId == null) {
-      throw core.ArgumentError('Parameter courseWorkId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (late != null) 'late': [late],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1643,19 +1534,9 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String courseId,
     core.String courseWorkId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (courseWorkId == null) {
-      throw core.ArgumentError('Parameter courseWorkId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1723,20 +1604,10 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String courseId,
     core.String courseWorkId,
     core.String id, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (courseWorkId == null) {
-      throw core.ArgumentError('Parameter courseWorkId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1801,19 +1672,9 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String courseId,
     core.String courseWorkId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (courseWorkId == null) {
-      throw core.ArgumentError('Parameter courseWorkId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1877,19 +1738,9 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String courseId,
     core.String courseWorkId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (courseWorkId == null) {
-      throw core.ArgumentError('Parameter courseWorkId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1951,19 +1802,9 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String courseId,
     core.String courseWorkId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (courseWorkId == null) {
-      throw core.ArgumentError('Parameter courseWorkId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2022,13 +1863,9 @@ class CoursesCourseWorkMaterialsResource {
   async.Future<CourseWorkMaterial> create(
     CourseWorkMaterial request,
     core.String courseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2080,14 +1917,8 @@ class CoursesCourseWorkMaterialsResource {
   async.Future<Empty> delete(
     core.String courseId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2133,14 +1964,8 @@ class CoursesCourseWorkMaterialsResource {
   async.Future<CourseWorkMaterial> get(
     core.String courseId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2213,17 +2038,14 @@ class CoursesCourseWorkMaterialsResource {
   /// this method will complete with the same error.
   async.Future<ListCourseWorkMaterialResponse> list(
     core.String courseId, {
-    core.List<core.String> courseWorkMaterialStates,
-    core.String materialDriveId,
-    core.String materialLink,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.List<core.String>? courseWorkMaterialStates,
+    core.String? materialDriveId,
+    core.String? materialLink,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (courseWorkMaterialStates != null)
         'courseWorkMaterialStates': courseWorkMaterialStates,
@@ -2289,17 +2111,10 @@ class CoursesCourseWorkMaterialsResource {
     CourseWorkMaterial request,
     core.String courseId,
     core.String id, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2361,14 +2176,10 @@ class CoursesStudentsResource {
   async.Future<Student> create(
     Student request,
     core.String courseId, {
-    core.String enrollmentCode,
-    core.String $fields,
+    core.String? enrollmentCode,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (enrollmentCode != null) 'enrollmentCode': [enrollmentCode],
       if ($fields != null) 'fields': [$fields],
@@ -2417,14 +2228,8 @@ class CoursesStudentsResource {
   async.Future<Empty> delete(
     core.String courseId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2472,14 +2277,8 @@ class CoursesStudentsResource {
   async.Future<Student> get(
     core.String courseId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2529,13 +2328,10 @@ class CoursesStudentsResource {
   /// this method will complete with the same error.
   async.Future<ListStudentsResponse> list(
     core.String courseId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2592,13 +2388,9 @@ class CoursesTeachersResource {
   async.Future<Teacher> create(
     Teacher request,
     core.String courseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2647,14 +2439,8 @@ class CoursesTeachersResource {
   async.Future<Empty> delete(
     core.String courseId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2702,14 +2488,8 @@ class CoursesTeachersResource {
   async.Future<Teacher> get(
     core.String courseId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2759,13 +2539,10 @@ class CoursesTeachersResource {
   /// this method will complete with the same error.
   async.Future<ListTeachersResponse> list(
     core.String courseId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2819,13 +2596,9 @@ class CoursesTopicsResource {
   async.Future<Topic> create(
     Topic request,
     core.String courseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2870,14 +2643,8 @@ class CoursesTopicsResource {
   async.Future<Empty> delete(
     core.String courseId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2921,14 +2688,8 @@ class CoursesTopicsResource {
   async.Future<Topic> get(
     core.String courseId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2979,13 +2740,10 @@ class CoursesTopicsResource {
   /// this method will complete with the same error.
   async.Future<ListTopicResponse> list(
     core.String courseId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3042,17 +2800,10 @@ class CoursesTopicsResource {
     Topic request,
     core.String courseId,
     core.String id, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (courseId == null) {
-      throw core.ArgumentError('Parameter courseId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3105,11 +2856,8 @@ class InvitationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> accept(
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3152,10 +2900,9 @@ class InvitationsResource {
   /// this method will complete with the same error.
   async.Future<Invitation> create(
     Invitation request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3195,11 +2942,8 @@ class InvitationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3237,11 +2981,8 @@ class InvitationsResource {
   /// this method will complete with the same error.
   async.Future<Invitation> get(
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3294,11 +3035,11 @@ class InvitationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInvitationsResponse> list({
-    core.String courseId,
-    core.int pageSize,
-    core.String pageToken,
-    core.String userId,
-    core.String $fields,
+    core.String? courseId,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? userId,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (courseId != null) 'courseId': [courseId],
@@ -3366,10 +3107,9 @@ class RegistrationsResource {
   /// this method will complete with the same error.
   async.Future<Registration> create(
     Registration request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3406,11 +3146,8 @@ class RegistrationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String registrationId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (registrationId == null) {
-      throw core.ArgumentError('Parameter registrationId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3462,11 +3199,8 @@ class UserProfilesResource {
   /// this method will complete with the same error.
   async.Future<UserProfile> get(
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3534,13 +3268,9 @@ class UserProfilesGuardianInvitationsResource {
   async.Future<GuardianInvitation> create(
     GuardianInvitation request,
     core.String studentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (studentId == null) {
-      throw core.ArgumentError('Parameter studentId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3592,14 +3322,8 @@ class UserProfilesGuardianInvitationsResource {
   async.Future<GuardianInvitation> get(
     core.String studentId,
     core.String invitationId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (studentId == null) {
-      throw core.ArgumentError('Parameter studentId is required.');
-    }
-    if (invitationId == null) {
-      throw core.ArgumentError('Parameter invitationId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3669,15 +3393,12 @@ class UserProfilesGuardianInvitationsResource {
   /// this method will complete with the same error.
   async.Future<ListGuardianInvitationsResponse> list(
     core.String studentId, {
-    core.String invitedEmailAddress,
-    core.int pageSize,
-    core.String pageToken,
-    core.List<core.String> states,
-    core.String $fields,
+    core.String? invitedEmailAddress,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.List<core.String>? states,
+    core.String? $fields,
   }) async {
-    if (studentId == null) {
-      throw core.ArgumentError('Parameter studentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (invitedEmailAddress != null)
         'invitedEmailAddress': [invitedEmailAddress],
@@ -3745,17 +3466,10 @@ class UserProfilesGuardianInvitationsResource {
     GuardianInvitation request,
     core.String studentId,
     core.String invitationId, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (studentId == null) {
-      throw core.ArgumentError('Parameter studentId is required.');
-    }
-    if (invitationId == null) {
-      throw core.ArgumentError('Parameter invitationId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3819,14 +3533,8 @@ class UserProfilesGuardiansResource {
   async.Future<Empty> delete(
     core.String studentId,
     core.String guardianId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (studentId == null) {
-      throw core.ArgumentError('Parameter studentId is required.');
-    }
-    if (guardianId == null) {
-      throw core.ArgumentError('Parameter guardianId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3879,14 +3587,8 @@ class UserProfilesGuardiansResource {
   async.Future<Guardian> get(
     core.String studentId,
     core.String guardianId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (studentId == null) {
-      throw core.ArgumentError('Parameter studentId is required.');
-    }
-    if (guardianId == null) {
-      throw core.ArgumentError('Parameter guardianId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3956,14 +3658,11 @@ class UserProfilesGuardiansResource {
   /// this method will complete with the same error.
   async.Future<ListGuardiansResponse> list(
     core.String studentId, {
-    core.String invitedEmailAddress,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? invitedEmailAddress,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (studentId == null) {
-      throw core.ArgumentError('Parameter studentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (invitedEmailAddress != null)
         'invitedEmailAddress': [invitedEmailAddress],
@@ -3991,7 +3690,7 @@ class Announcement {
   /// Absolute link to this announcement in the Classroom web UI.
   ///
   /// This is only populated if `state` is `PUBLISHED`. Read-only.
-  core.String alternateLink;
+  core.String? alternateLink;
 
   /// Assignee mode of the announcement.
   ///
@@ -4001,42 +3700,42 @@ class Announcement {
   /// - "ALL_STUDENTS" : All students can see the item. This is the default
   /// state.
   /// - "INDIVIDUAL_STUDENTS" : A subset of the students can see the item.
-  core.String assigneeMode;
+  core.String? assigneeMode;
 
   /// Identifier of the course.
   ///
   /// Read-only.
-  core.String courseId;
+  core.String? courseId;
 
   /// Timestamp when this announcement was created.
   ///
   /// Read-only.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// Identifier for the user that created the announcement.
   ///
   /// Read-only.
-  core.String creatorUserId;
+  core.String? creatorUserId;
 
   /// Classroom-assigned identifier of this announcement, unique per course.
   ///
   /// Read-only.
-  core.String id;
+  core.String? id;
 
   /// Identifiers of students with access to the announcement.
   ///
   /// This field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`. If the
   /// `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students specified in
   /// this field can see the announcement.
-  IndividualStudentsOptions individualStudentsOptions;
+  IndividualStudentsOptions? individualStudentsOptions;
 
   /// Additional materials.
   ///
   /// Announcements must have no more than 20 material items.
-  core.List<Material> materials;
+  core.List<Material>? materials;
 
   /// Optional timestamp when this announcement is scheduled to be published.
-  core.String scheduledTime;
+  core.String? scheduledTime;
 
   /// Status of this announcement.
   ///
@@ -4053,18 +3752,18 @@ class Announcement {
   /// deleted. Announcement in this state is visible only to course teachers and
   /// domain administrators. Announcement in this state is deleted after some
   /// time.
-  core.String state;
+  core.String? state;
 
   /// Description of this announcement.
   ///
   /// The text must be a valid UTF-8 string containing no more than 30,000
   /// characters.
-  core.String text;
+  core.String? text;
 
   /// Timestamp of the most recent change to this announcement.
   ///
   /// Read-only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Announcement();
 
@@ -4112,21 +3811,21 @@ class Announcement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alternateLink != null) 'alternateLink': alternateLink,
-        if (assigneeMode != null) 'assigneeMode': assigneeMode,
-        if (courseId != null) 'courseId': courseId,
-        if (creationTime != null) 'creationTime': creationTime,
-        if (creatorUserId != null) 'creatorUserId': creatorUserId,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alternateLink != null) 'alternateLink': alternateLink!,
+        if (assigneeMode != null) 'assigneeMode': assigneeMode!,
+        if (courseId != null) 'courseId': courseId!,
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (creatorUserId != null) 'creatorUserId': creatorUserId!,
+        if (id != null) 'id': id!,
         if (individualStudentsOptions != null)
-          'individualStudentsOptions': individualStudentsOptions.toJson(),
+          'individualStudentsOptions': individualStudentsOptions!.toJson(),
         if (materials != null)
-          'materials': materials.map((value) => value.toJson()).toList(),
-        if (scheduledTime != null) 'scheduledTime': scheduledTime,
-        if (state != null) 'state': state,
-        if (text != null) 'text': text,
-        if (updateTime != null) 'updateTime': updateTime,
+          'materials': materials!.map((value) => value.toJson()).toList(),
+        if (scheduledTime != null) 'scheduledTime': scheduledTime!,
+        if (state != null) 'state': state!,
+        if (text != null) 'text': text!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -4135,7 +3834,7 @@ class Assignment {
   /// Drive folder where attachments from student submissions are placed.
   ///
   /// This is only populated for course teachers and administrators.
-  DriveFolder studentWorkFolder;
+  DriveFolder? studentWorkFolder;
 
   Assignment();
 
@@ -4146,9 +3845,9 @@ class Assignment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (studentWorkFolder != null)
-          'studentWorkFolder': studentWorkFolder.toJson(),
+          'studentWorkFolder': studentWorkFolder!.toJson(),
       };
 }
 
@@ -4161,7 +3860,7 @@ class AssignmentSubmission {
   /// Classroom. Some attachment metadata is only populated if the requesting
   /// user has permission to access it. Identifier and alternate_link fields are
   /// always available, but others (for example, title) may not be.
-  core.List<Attachment> attachments;
+  core.List<Attachment>? attachments;
 
   AssignmentSubmission();
 
@@ -4174,9 +3873,9 @@ class AssignmentSubmission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (attachments != null)
-          'attachments': attachments.map((value) => value.toJson()).toList(),
+          'attachments': attachments!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4185,16 +3884,16 @@ class AssignmentSubmission {
 /// When creating attachments, setting the `form` field is not supported.
 class Attachment {
   /// Google Drive file attachment.
-  DriveFile driveFile;
+  DriveFile? driveFile;
 
   /// Google Forms attachment.
-  Form form;
+  Form? form;
 
   /// Link attachment.
-  Link link;
+  Link? link;
 
   /// Youtube video attachment.
-  YouTubeVideo youTubeVideo;
+  YouTubeVideo? youTubeVideo;
 
   Attachment();
 
@@ -4217,11 +3916,11 @@ class Attachment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (driveFile != null) 'driveFile': driveFile.toJson(),
-        if (form != null) 'form': form.toJson(),
-        if (link != null) 'link': link.toJson(),
-        if (youTubeVideo != null) 'youTubeVideo': youTubeVideo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (driveFile != null) 'driveFile': driveFile!.toJson(),
+        if (form != null) 'form': form!.toJson(),
+        if (link != null) 'link': link!.toJson(),
+        if (youTubeVideo != null) 'youTubeVideo': youTubeVideo!.toJson(),
       };
 }
 
@@ -4233,7 +3932,7 @@ class Attachment {
 class CloudPubsubTopic {
   /// The `name` field of a Cloud Pub/Sub
   /// [Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).
-  core.String topicName;
+  core.String? topicName;
 
   CloudPubsubTopic();
 
@@ -4243,8 +3942,8 @@ class CloudPubsubTopic {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (topicName != null) 'topicName': topicName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (topicName != null) 'topicName': topicName!,
       };
 }
 
@@ -4253,24 +3952,24 @@ class Course {
   /// Absolute link to this course in the Classroom web UI.
   ///
   /// Read-only.
-  core.String alternateLink;
+  core.String? alternateLink;
 
   /// The Calendar ID for a calendar that all course members can see, to which
   /// Classroom adds events for course work and announcements in the course.
   ///
   /// Read-only.
-  core.String calendarId;
+  core.String? calendarId;
 
   /// The email address of a Google group containing all members of the course.
   ///
   /// This group does not accept email and can only be used for permissions.
   /// Read-only.
-  core.String courseGroupEmail;
+  core.String? courseGroupEmail;
 
   /// Sets of materials that appear on the "about" page of this course.
   ///
   /// Read-only.
-  core.List<CourseMaterialSet> courseMaterialSets;
+  core.List<CourseMaterialSet>? courseMaterialSets;
 
   /// State of the course.
   ///
@@ -4294,13 +3993,13 @@ class Course {
   /// course, and only the user identified by the `owner_id` can view the
   /// course. A course may be placed in this state if it potentially violates
   /// the Terms of Service.
-  core.String courseState;
+  core.String? courseState;
 
   /// Creation time of the course.
   ///
   /// Specifying this field in a course update mask results in an error.
   /// Read-only.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// Optional description.
   ///
@@ -4308,24 +4007,24 @@ class Course {
   /// from a combination of textbooks, guest lectures, and lab work. Expect to
   /// be excited!" If set, this field must be a valid UTF-8 string and no longer
   /// than 30,000 characters.
-  core.String description;
+  core.String? description;
 
   /// Optional heading for the description.
   ///
   /// For example, "Welcome to 10th Grade Biology." If set, this field must be a
   /// valid UTF-8 string and no longer than 3600 characters.
-  core.String descriptionHeading;
+  core.String? descriptionHeading;
 
   /// Enrollment code to use when joining this course.
   ///
   /// Specifying this field in a course update mask results in an error.
   /// Read-only.
-  core.String enrollmentCode;
+  core.String? enrollmentCode;
 
   /// Whether or not guardian notifications are enabled for this course.
   ///
   /// Read-only.
-  core.bool guardiansEnabled;
+  core.bool? guardiansEnabled;
 
   /// Identifier for this course assigned by Classroom.
   ///
@@ -4333,13 +4032,13 @@ class Course {
   /// string in the request to create a corresponding alias. The `id` is still
   /// assigned by Classroom and cannot be updated after the course is created.
   /// Specifying this field in a course update mask results in an error.
-  core.String id;
+  core.String? id;
 
   /// Name of the course.
   ///
   /// For example, "10th Grade Biology". The name is required. It must be
   /// between 1 and 750 characters and a valid UTF-8 string.
-  core.String name;
+  core.String? name;
 
   /// The identifier of the owner of a course.
   ///
@@ -4349,38 +4048,38 @@ class Course {
   /// literal `"me"`, indicating the requesting user This must be set in a
   /// create request. Admins can also specify this field in a patch course
   /// request to transfer ownership. In other contexts, it is read-only.
-  core.String ownerId;
+  core.String? ownerId;
 
   /// Optional room location.
   ///
   /// For example, "301". If set, this field must be a valid UTF-8 string and no
   /// longer than 650 characters.
-  core.String room;
+  core.String? room;
 
   /// Section of the course.
   ///
   /// For example, "Period 2". If set, this field must be a valid UTF-8 string
   /// and no longer than 2800 characters.
-  core.String section;
+  core.String? section;
 
   /// Information about a Drive Folder that is shared with all teachers of the
   /// course.
   ///
   /// This field will only be set for teachers of the course and domain
   /// administrators. Read-only.
-  DriveFolder teacherFolder;
+  DriveFolder? teacherFolder;
 
   /// The email address of a Google group containing all teachers of the course.
   ///
   /// This group does not accept email and can only be used for permissions.
   /// Read-only.
-  core.String teacherGroupEmail;
+  core.String? teacherGroupEmail;
 
   /// Time of the most recent update to this course.
   ///
   /// Specifying this field in a course update mask results in an error.
   /// Read-only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Course();
 
@@ -4445,28 +4144,28 @@ class Course {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alternateLink != null) 'alternateLink': alternateLink,
-        if (calendarId != null) 'calendarId': calendarId,
-        if (courseGroupEmail != null) 'courseGroupEmail': courseGroupEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alternateLink != null) 'alternateLink': alternateLink!,
+        if (calendarId != null) 'calendarId': calendarId!,
+        if (courseGroupEmail != null) 'courseGroupEmail': courseGroupEmail!,
         if (courseMaterialSets != null)
           'courseMaterialSets':
-              courseMaterialSets.map((value) => value.toJson()).toList(),
-        if (courseState != null) 'courseState': courseState,
-        if (creationTime != null) 'creationTime': creationTime,
-        if (description != null) 'description': description,
+              courseMaterialSets!.map((value) => value.toJson()).toList(),
+        if (courseState != null) 'courseState': courseState!,
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (description != null) 'description': description!,
         if (descriptionHeading != null)
-          'descriptionHeading': descriptionHeading,
-        if (enrollmentCode != null) 'enrollmentCode': enrollmentCode,
-        if (guardiansEnabled != null) 'guardiansEnabled': guardiansEnabled,
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
-        if (ownerId != null) 'ownerId': ownerId,
-        if (room != null) 'room': room,
-        if (section != null) 'section': section,
-        if (teacherFolder != null) 'teacherFolder': teacherFolder.toJson(),
-        if (teacherGroupEmail != null) 'teacherGroupEmail': teacherGroupEmail,
-        if (updateTime != null) 'updateTime': updateTime,
+          'descriptionHeading': descriptionHeading!,
+        if (enrollmentCode != null) 'enrollmentCode': enrollmentCode!,
+        if (guardiansEnabled != null) 'guardiansEnabled': guardiansEnabled!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (ownerId != null) 'ownerId': ownerId!,
+        if (room != null) 'room': room!,
+        if (section != null) 'section': section!,
+        if (teacherFolder != null) 'teacherFolder': teacherFolder!.toJson(),
+        if (teacherGroupEmail != null) 'teacherGroupEmail': teacherGroupEmail!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -4490,7 +4189,7 @@ class CourseAlias {
   /// indicates a domain-scoped alias. Example: `d:math_101` * `p:` indicates a
   /// project-scoped alias. Example: `p:abc123` This field has a maximum length
   /// of 256 characters.
-  core.String alias;
+  core.String? alias;
 
   CourseAlias();
 
@@ -4500,24 +4199,24 @@ class CourseAlias {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alias != null) 'alias': alias,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alias != null) 'alias': alias!,
       };
 }
 
 /// A material attached to a course as part of a material set.
 class CourseMaterial {
   /// Google Drive file attachment.
-  DriveFile driveFile;
+  DriveFile? driveFile;
 
   /// Google Forms attachment.
-  Form form;
+  Form? form;
 
   /// Link atatchment.
-  Link link;
+  Link? link;
 
   /// Youtube video attachment.
-  YouTubeVideo youTubeVideo;
+  YouTubeVideo? youTubeVideo;
 
   CourseMaterial();
 
@@ -4540,11 +4239,11 @@ class CourseMaterial {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (driveFile != null) 'driveFile': driveFile.toJson(),
-        if (form != null) 'form': form.toJson(),
-        if (link != null) 'link': link.toJson(),
-        if (youTubeVideo != null) 'youTubeVideo': youTubeVideo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (driveFile != null) 'driveFile': driveFile!.toJson(),
+        if (form != null) 'form': form!.toJson(),
+        if (link != null) 'link': link!.toJson(),
+        if (youTubeVideo != null) 'youTubeVideo': youTubeVideo!.toJson(),
       };
 }
 
@@ -4554,10 +4253,10 @@ class CourseMaterial {
 /// information relating to the course as a whole.
 class CourseMaterialSet {
   /// Materials attached to this set.
-  core.List<CourseMaterial> materials;
+  core.List<CourseMaterial>? materials;
 
   /// Title for this set.
-  core.String title;
+  core.String? title;
 
   CourseMaterialSet();
 
@@ -4573,17 +4272,17 @@ class CourseMaterialSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (materials != null)
-          'materials': materials.map((value) => value.toJson()).toList(),
-        if (title != null) 'title': title,
+          'materials': materials!.map((value) => value.toJson()).toList(),
+        if (title != null) 'title': title!,
       };
 }
 
 /// Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`.
 class CourseRosterChangesInfo {
   /// The `course_id` of the course to subscribe to roster changes for.
-  core.String courseId;
+  core.String? courseId;
 
   CourseRosterChangesInfo();
 
@@ -4593,8 +4292,8 @@ class CourseRosterChangesInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (courseId != null) 'courseId': courseId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (courseId != null) 'courseId': courseId!,
       };
 }
 
@@ -4603,7 +4302,7 @@ class CourseWork {
   /// Absolute link to this course work in the Classroom web UI.
   ///
   /// This is only populated if `state` is `PUBLISHED`. Read-only.
-  core.String alternateLink;
+  core.String? alternateLink;
 
   /// Assignee mode of the coursework.
   ///
@@ -4613,73 +4312,73 @@ class CourseWork {
   /// - "ALL_STUDENTS" : All students can see the item. This is the default
   /// state.
   /// - "INDIVIDUAL_STUDENTS" : A subset of the students can see the item.
-  core.String assigneeMode;
+  core.String? assigneeMode;
 
   /// Assignment details.
   ///
   /// This is populated only when `work_type` is `ASSIGNMENT`. Read-only.
-  Assignment assignment;
+  Assignment? assignment;
 
   /// Whether this course work item is associated with the Developer Console
   /// project making the request.
   ///
   /// See CreateCourseWork for more details. Read-only.
-  core.bool associatedWithDeveloper;
+  core.bool? associatedWithDeveloper;
 
   /// Identifier of the course.
   ///
   /// Read-only.
-  core.String courseId;
+  core.String? courseId;
 
   /// Timestamp when this course work was created.
   ///
   /// Read-only.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// Identifier for the user that created the coursework.
   ///
   /// Read-only.
-  core.String creatorUserId;
+  core.String? creatorUserId;
 
   /// Optional description of this course work.
   ///
   /// If set, the description must be a valid UTF-8 string containing no more
   /// than 30,000 characters.
-  core.String description;
+  core.String? description;
 
   /// Optional date, in UTC, that submissions for this course work are due.
   ///
   /// This must be specified if `due_time` is specified.
-  Date dueDate;
+  Date? dueDate;
 
   /// Optional time of day, in UTC, that submissions for this course work are
   /// due.
   ///
   /// This must be specified if `due_date` is specified.
-  TimeOfDay dueTime;
+  TimeOfDay? dueTime;
 
   /// Classroom-assigned identifier of this course work, unique per course.
   ///
   /// Read-only.
-  core.String id;
+  core.String? id;
 
   /// Identifiers of students with access to the coursework.
   ///
   /// This field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`. If the
   /// `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students specified in
   /// this field are assigned the coursework.
-  IndividualStudentsOptions individualStudentsOptions;
+  IndividualStudentsOptions? individualStudentsOptions;
 
   /// Additional materials.
   ///
   /// CourseWork must have no more than 20 material items.
-  core.List<Material> materials;
+  core.List<Material>? materials;
 
   /// Maximum grade for this course work.
   ///
   /// If zero or unspecified, this assignment is considered ungraded. This must
   /// be a non-negative integer value.
-  core.double maxPoints;
+  core.double? maxPoints;
 
   /// Multiple choice question details.
   ///
@@ -4687,10 +4386,10 @@ class CourseWork {
   /// `MULTIPLE_CHOICE_QUESTION`. For write operations, this field must be
   /// specified when creating course work with a `work_type` of
   /// `MULTIPLE_CHOICE_QUESTION`, and it must not be set otherwise.
-  MultipleChoiceQuestion multipleChoiceQuestion;
+  MultipleChoiceQuestion? multipleChoiceQuestion;
 
   /// Optional timestamp when this course work is scheduled to be published.
-  core.String scheduledTime;
+  core.String? scheduledTime;
 
   /// Status of this course work.
   ///
@@ -4705,7 +4404,7 @@ class CourseWork {
   /// - "DELETED" : Status for work that was published but is now deleted. Work
   /// in this state is visible only to course teachers and domain
   /// administrators. Work in this state is deleted after some time.
-  core.String state;
+  core.String? state;
 
   /// Setting to determine when students are allowed to modify submissions.
   ///
@@ -4716,23 +4415,23 @@ class CourseWork {
   /// - "MODIFIABLE_UNTIL_TURNED_IN" : Submissions can be modified before being
   /// turned in.
   /// - "MODIFIABLE" : Submissions can be modified at any time.
-  core.String submissionModificationMode;
+  core.String? submissionModificationMode;
 
   /// Title of this course work.
   ///
   /// The title must be a valid UTF-8 string containing between 1 and 3000
   /// characters.
-  core.String title;
+  core.String? title;
 
   /// Identifier for the topic that this coursework is associated with.
   ///
   /// Must match an existing topic in the course.
-  core.String topicId;
+  core.String? topicId;
 
   /// Timestamp of the most recent change to this course work.
   ///
   /// Read-only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// Type of this course work.
   ///
@@ -4743,7 +4442,7 @@ class CourseWork {
   /// - "ASSIGNMENT" : An assignment.
   /// - "SHORT_ANSWER_QUESTION" : A short answer question.
   /// - "MULTIPLE_CHOICE_QUESTION" : A multiple-choice question.
-  core.String workType;
+  core.String? workType;
 
   CourseWork();
 
@@ -4827,41 +4526,41 @@ class CourseWork {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alternateLink != null) 'alternateLink': alternateLink,
-        if (assigneeMode != null) 'assigneeMode': assigneeMode,
-        if (assignment != null) 'assignment': assignment.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alternateLink != null) 'alternateLink': alternateLink!,
+        if (assigneeMode != null) 'assigneeMode': assigneeMode!,
+        if (assignment != null) 'assignment': assignment!.toJson(),
         if (associatedWithDeveloper != null)
-          'associatedWithDeveloper': associatedWithDeveloper,
-        if (courseId != null) 'courseId': courseId,
-        if (creationTime != null) 'creationTime': creationTime,
-        if (creatorUserId != null) 'creatorUserId': creatorUserId,
-        if (description != null) 'description': description,
-        if (dueDate != null) 'dueDate': dueDate.toJson(),
-        if (dueTime != null) 'dueTime': dueTime.toJson(),
-        if (id != null) 'id': id,
+          'associatedWithDeveloper': associatedWithDeveloper!,
+        if (courseId != null) 'courseId': courseId!,
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (creatorUserId != null) 'creatorUserId': creatorUserId!,
+        if (description != null) 'description': description!,
+        if (dueDate != null) 'dueDate': dueDate!.toJson(),
+        if (dueTime != null) 'dueTime': dueTime!.toJson(),
+        if (id != null) 'id': id!,
         if (individualStudentsOptions != null)
-          'individualStudentsOptions': individualStudentsOptions.toJson(),
+          'individualStudentsOptions': individualStudentsOptions!.toJson(),
         if (materials != null)
-          'materials': materials.map((value) => value.toJson()).toList(),
-        if (maxPoints != null) 'maxPoints': maxPoints,
+          'materials': materials!.map((value) => value.toJson()).toList(),
+        if (maxPoints != null) 'maxPoints': maxPoints!,
         if (multipleChoiceQuestion != null)
-          'multipleChoiceQuestion': multipleChoiceQuestion.toJson(),
-        if (scheduledTime != null) 'scheduledTime': scheduledTime,
-        if (state != null) 'state': state,
+          'multipleChoiceQuestion': multipleChoiceQuestion!.toJson(),
+        if (scheduledTime != null) 'scheduledTime': scheduledTime!,
+        if (state != null) 'state': state!,
         if (submissionModificationMode != null)
-          'submissionModificationMode': submissionModificationMode,
-        if (title != null) 'title': title,
-        if (topicId != null) 'topicId': topicId,
-        if (updateTime != null) 'updateTime': updateTime,
-        if (workType != null) 'workType': workType,
+          'submissionModificationMode': submissionModificationMode!,
+        if (title != null) 'title': title!,
+        if (topicId != null) 'topicId': topicId!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (workType != null) 'workType': workType!,
       };
 }
 
 /// Information about a `Feed` with a `feed_type` of `COURSE_WORK_CHANGES`.
 class CourseWorkChangesInfo {
   /// The `course_id` of the course to subscribe to work changes for.
-  core.String courseId;
+  core.String? courseId;
 
   CourseWorkChangesInfo();
 
@@ -4871,8 +4570,8 @@ class CourseWorkChangesInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (courseId != null) 'courseId': courseId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (courseId != null) 'courseId': courseId!,
       };
 }
 
@@ -4881,7 +4580,7 @@ class CourseWorkMaterial {
   /// Absolute link to this course work material in the Classroom web UI.
   ///
   /// This is only populated if `state` is `PUBLISHED`. Read-only.
-  core.String alternateLink;
+  core.String? alternateLink;
 
   /// Assignee mode of the course work material.
   ///
@@ -4891,50 +4590,50 @@ class CourseWorkMaterial {
   /// - "ALL_STUDENTS" : All students can see the item. This is the default
   /// state.
   /// - "INDIVIDUAL_STUDENTS" : A subset of the students can see the item.
-  core.String assigneeMode;
+  core.String? assigneeMode;
 
   /// Identifier of the course.
   ///
   /// Read-only.
-  core.String courseId;
+  core.String? courseId;
 
   /// Timestamp when this course work material was created.
   ///
   /// Read-only.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// Identifier for the user that created the course work material.
   ///
   /// Read-only.
-  core.String creatorUserId;
+  core.String? creatorUserId;
 
   /// Optional description of this course work material.
   ///
   /// The text must be a valid UTF-8 string containing no more than 30,000
   /// characters.
-  core.String description;
+  core.String? description;
 
   /// Classroom-assigned identifier of this course work material, unique per
   /// course.
   ///
   /// Read-only.
-  core.String id;
+  core.String? id;
 
   /// Identifiers of students with access to the course work material.
   ///
   /// This field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`. If the
   /// `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students specified in
   /// this field can see the course work material.
-  IndividualStudentsOptions individualStudentsOptions;
+  IndividualStudentsOptions? individualStudentsOptions;
 
   /// Additional materials.
   ///
   /// A course work material must have no more than 20 material items.
-  core.List<Material> materials;
+  core.List<Material>? materials;
 
   /// Optional timestamp when this course work material is scheduled to be
   /// published.
-  core.String scheduledTime;
+  core.String? scheduledTime;
 
   /// Status of this course work material.
   ///
@@ -4951,24 +4650,24 @@ class CourseWorkMaterial {
   /// now deleted. Course work material in this state is visible only to course
   /// teachers and domain administrators. Course work material in this state is
   /// deleted after some time.
-  core.String state;
+  core.String? state;
 
   /// Title of this course work material.
   ///
   /// The title must be a valid UTF-8 string containing between 1 and 3000
   /// characters.
-  core.String title;
+  core.String? title;
 
   /// Identifier for the topic that this course work material is associated
   /// with.
   ///
   /// Must match an existing topic in the course.
-  core.String topicId;
+  core.String? topicId;
 
   /// Timestamp of the most recent change to this course work material.
   ///
   /// Read-only.
-  core.String updateTime;
+  core.String? updateTime;
 
   CourseWorkMaterial();
 
@@ -5022,23 +4721,23 @@ class CourseWorkMaterial {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alternateLink != null) 'alternateLink': alternateLink,
-        if (assigneeMode != null) 'assigneeMode': assigneeMode,
-        if (courseId != null) 'courseId': courseId,
-        if (creationTime != null) 'creationTime': creationTime,
-        if (creatorUserId != null) 'creatorUserId': creatorUserId,
-        if (description != null) 'description': description,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alternateLink != null) 'alternateLink': alternateLink!,
+        if (assigneeMode != null) 'assigneeMode': assigneeMode!,
+        if (courseId != null) 'courseId': courseId!,
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (creatorUserId != null) 'creatorUserId': creatorUserId!,
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
         if (individualStudentsOptions != null)
-          'individualStudentsOptions': individualStudentsOptions.toJson(),
+          'individualStudentsOptions': individualStudentsOptions!.toJson(),
         if (materials != null)
-          'materials': materials.map((value) => value.toJson()).toList(),
-        if (scheduledTime != null) 'scheduledTime': scheduledTime,
-        if (state != null) 'state': state,
-        if (title != null) 'title': title,
-        if (topicId != null) 'topicId': topicId,
-        if (updateTime != null) 'updateTime': updateTime,
+          'materials': materials!.map((value) => value.toJson()).toList(),
+        if (scheduledTime != null) 'scheduledTime': scheduledTime!,
+        if (state != null) 'state': state!,
+        if (title != null) 'title': title!,
+        if (topicId != null) 'topicId': topicId!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -5056,17 +4755,17 @@ class Date {
   ///
   /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
   /// year by itself or a year and month where the day isn't significant.
-  core.int day;
+  core.int? day;
 
   /// Month of a year.
   ///
   /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int month;
+  core.int? month;
 
   /// Year of the date.
   ///
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int year;
+  core.int? year;
 
   Date();
 
@@ -5082,10 +4781,10 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (month != null) 'month': month,
-        if (year != null) 'year': year,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (month != null) 'month': month!,
+        if (year != null) 'year': year!,
       };
 }
 
@@ -5094,20 +4793,20 @@ class DriveFile {
   /// URL that can be used to access the Drive item.
   ///
   /// Read-only.
-  core.String alternateLink;
+  core.String? alternateLink;
 
   /// Drive API resource ID.
-  core.String id;
+  core.String? id;
 
   /// URL of a thumbnail image of the Drive item.
   ///
   /// Read-only.
-  core.String thumbnailUrl;
+  core.String? thumbnailUrl;
 
   /// Title of the Drive item.
   ///
   /// Read-only.
-  core.String title;
+  core.String? title;
 
   DriveFile();
 
@@ -5126,11 +4825,11 @@ class DriveFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alternateLink != null) 'alternateLink': alternateLink,
-        if (id != null) 'id': id,
-        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alternateLink != null) 'alternateLink': alternateLink!,
+        if (id != null) 'id': id!,
+        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -5139,15 +4838,15 @@ class DriveFolder {
   /// URL that can be used to access the Drive folder.
   ///
   /// Read-only.
-  core.String alternateLink;
+  core.String? alternateLink;
 
   /// Drive API resource ID.
-  core.String id;
+  core.String? id;
 
   /// Title of the Drive folder.
   ///
   /// Read-only.
-  core.String title;
+  core.String? title;
 
   DriveFolder();
 
@@ -5163,10 +4862,10 @@ class DriveFolder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alternateLink != null) 'alternateLink': alternateLink,
-        if (id != null) 'id': id,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alternateLink != null) 'alternateLink': alternateLink!,
+        if (id != null) 'id': id!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -5184,7 +4883,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A class of notifications that an application can register to receive.
@@ -5194,12 +4893,12 @@ class Feed {
   /// Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`.
   ///
   /// This field must be specified if `feed_type` is `COURSE_ROSTER_CHANGES`.
-  CourseRosterChangesInfo courseRosterChangesInfo;
+  CourseRosterChangesInfo? courseRosterChangesInfo;
 
   /// Information about a `Feed` with a `feed_type` of `COURSE_WORK_CHANGES`.
   ///
   /// This field must be specified if `feed_type` is `COURSE_WORK_CHANGES`.
-  CourseWorkChangesInfo courseWorkChangesInfo;
+  CourseWorkChangesInfo? courseWorkChangesInfo;
 
   /// The type of feed.
   /// Possible string values are:
@@ -5221,7 +4920,7 @@ class Feed {
   /// the creation or modification of its parent CourseWork object (but a
   /// notification will be generated for that CourseWork object's creation or
   /// modification).
-  core.String feedType;
+  core.String? feedType;
 
   Feed();
 
@@ -5241,35 +4940,35 @@ class Feed {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (courseRosterChangesInfo != null)
-          'courseRosterChangesInfo': courseRosterChangesInfo.toJson(),
+          'courseRosterChangesInfo': courseRosterChangesInfo!.toJson(),
         if (courseWorkChangesInfo != null)
-          'courseWorkChangesInfo': courseWorkChangesInfo.toJson(),
-        if (feedType != null) 'feedType': feedType,
+          'courseWorkChangesInfo': courseWorkChangesInfo!.toJson(),
+        if (feedType != null) 'feedType': feedType!,
       };
 }
 
 /// Google Forms item.
 class Form {
   /// URL of the form.
-  core.String formUrl;
+  core.String? formUrl;
 
   /// URL of the form responses document.
   ///
   /// Only set if respsonses have been recorded and only when the requesting
   /// user is an editor of the form. Read-only.
-  core.String responseUrl;
+  core.String? responseUrl;
 
   /// URL of a thumbnail image of the Form.
   ///
   /// Read-only.
-  core.String thumbnailUrl;
+  core.String? thumbnailUrl;
 
   /// Title of the Form.
   ///
   /// Read-only.
-  core.String title;
+  core.String? title;
 
   Form();
 
@@ -5288,11 +4987,11 @@ class Form {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (formUrl != null) 'formUrl': formUrl,
-        if (responseUrl != null) 'responseUrl': responseUrl,
-        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (formUrl != null) 'formUrl': formUrl!,
+        if (responseUrl != null) 'responseUrl': responseUrl!,
+        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -5303,7 +5002,7 @@ class GlobalPermission {
   /// - "PERMISSION_UNSPECIFIED" : No permission is specified. This is not
   /// returned and is not a valid value.
   /// - "CREATE_COURSE" : User is permitted to create a course.
-  core.String permission;
+  core.String? permission;
 
   GlobalPermission();
 
@@ -5313,15 +5012,15 @@ class GlobalPermission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permission != null) 'permission': permission,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permission != null) 'permission': permission!,
       };
 }
 
 /// The history of each grade on this submission.
 class GradeHistory {
   /// The teacher who made the grade change.
-  core.String actorUserId;
+  core.String? actorUserId;
 
   /// The type of grade change at this time in the submission grade history.
   /// Possible string values are:
@@ -5332,16 +5031,16 @@ class GradeHistory {
   /// - "ASSIGNED_GRADE_POINTS_EARNED_CHANGE" : A change in the numerator of the
   /// assigned grade.
   /// - "MAX_POINTS_CHANGE" : A change in the denominator of the grade.
-  core.String gradeChangeType;
+  core.String? gradeChangeType;
 
   /// When the grade of the submission was changed.
-  core.String gradeTimestamp;
+  core.String? gradeTimestamp;
 
   /// The denominator of the grade at this time in the submission grade history.
-  core.double maxPoints;
+  core.double? maxPoints;
 
   /// The numerator of the grade at this time in the submission grade history.
-  core.double pointsEarned;
+  core.double? pointsEarned;
 
   GradeHistory();
 
@@ -5363,12 +5062,12 @@ class GradeHistory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actorUserId != null) 'actorUserId': actorUserId,
-        if (gradeChangeType != null) 'gradeChangeType': gradeChangeType,
-        if (gradeTimestamp != null) 'gradeTimestamp': gradeTimestamp,
-        if (maxPoints != null) 'maxPoints': maxPoints,
-        if (pointsEarned != null) 'pointsEarned': pointsEarned,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actorUserId != null) 'actorUserId': actorUserId!,
+        if (gradeChangeType != null) 'gradeChangeType': gradeChangeType!,
+        if (gradeTimestamp != null) 'gradeTimestamp': gradeTimestamp!,
+        if (maxPoints != null) 'maxPoints': maxPoints!,
+        if (pointsEarned != null) 'pointsEarned': pointsEarned!,
       };
 }
 
@@ -5377,18 +5076,18 @@ class GradeHistory {
 /// The guardian may receive information about the student's course work.
 class Guardian {
   /// Identifier for the guardian.
-  core.String guardianId;
+  core.String? guardianId;
 
   /// User profile for the guardian.
-  UserProfile guardianProfile;
+  UserProfile? guardianProfile;
 
   /// The email address to which the initial guardian invitation was sent.
   ///
   /// This field is only visible to domain administrators.
-  core.String invitedEmailAddress;
+  core.String? invitedEmailAddress;
 
   /// Identifier for the student to whom the guardian relationship applies.
-  core.String studentId;
+  core.String? studentId;
 
   Guardian();
 
@@ -5408,13 +5107,13 @@ class Guardian {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (guardianId != null) 'guardianId': guardianId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (guardianId != null) 'guardianId': guardianId!,
         if (guardianProfile != null)
-          'guardianProfile': guardianProfile.toJson(),
+          'guardianProfile': guardianProfile!.toJson(),
         if (invitedEmailAddress != null)
-          'invitedEmailAddress': invitedEmailAddress,
-        if (studentId != null) 'studentId': studentId,
+          'invitedEmailAddress': invitedEmailAddress!,
+        if (studentId != null) 'studentId': studentId!,
       };
 }
 
@@ -5424,17 +5123,17 @@ class GuardianInvitation {
   /// The time that this invitation was created.
   ///
   /// Read-only.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// Unique identifier for this invitation.
   ///
   /// Read-only.
-  core.String invitationId;
+  core.String? invitationId;
 
   /// Email address that the invitation was sent to.
   ///
   /// This field is only visible to domain administrators.
-  core.String invitedEmailAddress;
+  core.String? invitedEmailAddress;
 
   /// The state that this invitation is in.
   /// Possible string values are:
@@ -5442,10 +5141,10 @@ class GuardianInvitation {
   /// - "PENDING" : The invitation is active and awaiting a response.
   /// - "COMPLETE" : The invitation is no longer active. It may have been
   /// accepted, declined, withdrawn or it may have expired.
-  core.String state;
+  core.String? state;
 
   /// ID of the student (in standard format)
-  core.String studentId;
+  core.String? studentId;
 
   GuardianInvitation();
 
@@ -5467,13 +5166,13 @@ class GuardianInvitation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationTime != null) 'creationTime': creationTime,
-        if (invitationId != null) 'invitationId': invitationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (invitationId != null) 'invitationId': invitationId!,
         if (invitedEmailAddress != null)
-          'invitedEmailAddress': invitedEmailAddress,
-        if (state != null) 'state': state,
-        if (studentId != null) 'studentId': studentId,
+          'invitedEmailAddress': invitedEmailAddress!,
+        if (state != null) 'state': state!,
+        if (studentId != null) 'studentId': studentId!,
       };
 }
 
@@ -5483,7 +5182,7 @@ class GuardianInvitation {
 class IndividualStudentsOptions {
   /// Identifiers for the students that have access to the
   /// coursework/announcement.
-  core.List<core.String> studentIds;
+  core.List<core.String>? studentIds;
 
   IndividualStudentsOptions();
 
@@ -5495,20 +5194,20 @@ class IndividualStudentsOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (studentIds != null) 'studentIds': studentIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (studentIds != null) 'studentIds': studentIds!,
       };
 }
 
 /// An invitation to join a course.
 class Invitation {
   /// Identifier of the course to invite the user to.
-  core.String courseId;
+  core.String? courseId;
 
   /// Identifier assigned by Classroom.
   ///
   /// Read-only.
-  core.String id;
+  core.String? id;
 
   /// Role to invite the user to have.
   ///
@@ -5518,7 +5217,7 @@ class Invitation {
   /// - "STUDENT" : Student in the course.
   /// - "TEACHER" : Teacher of the course.
   /// - "OWNER" : Owner of the course.
-  core.String role;
+  core.String? role;
 
   /// Identifier of the invited user.
   ///
@@ -5526,7 +5225,7 @@ class Invitation {
   /// one of the following: * the numeric identifier for the user * the email
   /// address of the user * the string literal `"me"`, indicating the requesting
   /// user
-  core.String userId;
+  core.String? userId;
 
   Invitation();
 
@@ -5545,11 +5244,11 @@ class Invitation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (courseId != null) 'courseId': courseId,
-        if (id != null) 'id': id,
-        if (role != null) 'role': role,
-        if (userId != null) 'userId': userId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (courseId != null) 'courseId': courseId!,
+        if (id != null) 'id': id!,
+        if (role != null) 'role': role!,
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -5558,18 +5257,18 @@ class Link {
   /// URL of a thumbnail image of the target URL.
   ///
   /// Read-only.
-  core.String thumbnailUrl;
+  core.String? thumbnailUrl;
 
   /// Title of the target of the URL.
   ///
   /// Read-only.
-  core.String title;
+  core.String? title;
 
   /// URL to link to.
   ///
   /// This must be a valid UTF-8 string containing between 1 and 2024
   /// characters.
-  core.String url;
+  core.String? url;
 
   Link();
 
@@ -5585,22 +5284,22 @@ class Link {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl,
-        if (title != null) 'title': title,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
+        if (title != null) 'title': title!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// Response when listing course work.
 class ListAnnouncementsResponse {
   /// Announcement items that match the request.
-  core.List<Announcement> announcements;
+  core.List<Announcement>? announcements;
 
   /// Token identifying the next page of results to return.
   ///
   /// If empty, no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListAnnouncementsResponse();
 
@@ -5616,23 +5315,23 @@ class ListAnnouncementsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (announcements != null)
           'announcements':
-              announcements.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              announcements!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response when listing course aliases.
 class ListCourseAliasesResponse {
   /// The course aliases.
-  core.List<CourseAlias> aliases;
+  core.List<CourseAlias>? aliases;
 
   /// Token identifying the next page of results to return.
   ///
   /// If empty, no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListCourseAliasesResponse();
 
@@ -5648,22 +5347,22 @@ class ListCourseAliasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (aliases != null)
-          'aliases': aliases.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'aliases': aliases!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response when listing course work material.
 class ListCourseWorkMaterialResponse {
   /// Course work material items that match the request.
-  core.List<CourseWorkMaterial> courseWorkMaterial;
+  core.List<CourseWorkMaterial>? courseWorkMaterial;
 
   /// Token identifying the next page of results to return.
   ///
   /// If empty, no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListCourseWorkMaterialResponse();
 
@@ -5679,23 +5378,23 @@ class ListCourseWorkMaterialResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (courseWorkMaterial != null)
           'courseWorkMaterial':
-              courseWorkMaterial.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              courseWorkMaterial!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response when listing course work.
 class ListCourseWorkResponse {
   /// Course work items that match the request.
-  core.List<CourseWork> courseWork;
+  core.List<CourseWork>? courseWork;
 
   /// Token identifying the next page of results to return.
   ///
   /// If empty, no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListCourseWorkResponse();
 
@@ -5711,22 +5410,22 @@ class ListCourseWorkResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (courseWork != null)
-          'courseWork': courseWork.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'courseWork': courseWork!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response when listing courses.
 class ListCoursesResponse {
   /// Courses that match the list request.
-  core.List<Course> courses;
+  core.List<Course>? courses;
 
   /// Token identifying the next page of results to return.
   ///
   /// If empty, no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListCoursesResponse();
 
@@ -5742,22 +5441,22 @@ class ListCoursesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (courses != null)
-          'courses': courses.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'courses': courses!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response when listing guardian invitations.
 class ListGuardianInvitationsResponse {
   /// Guardian invitations that matched the list request.
-  core.List<GuardianInvitation> guardianInvitations;
+  core.List<GuardianInvitation>? guardianInvitations;
 
   /// Token identifying the next page of results to return.
   ///
   /// If empty, no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListGuardianInvitationsResponse();
 
@@ -5773,11 +5472,11 @@ class ListGuardianInvitationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (guardianInvitations != null)
           'guardianInvitations':
-              guardianInvitations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              guardianInvitations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -5785,12 +5484,12 @@ class ListGuardianInvitationsResponse {
 class ListGuardiansResponse {
   /// Guardians on this page of results that met the criteria specified in the
   /// request.
-  core.List<Guardian> guardians;
+  core.List<Guardian>? guardians;
 
   /// Token identifying the next page of results to return.
   ///
   /// If empty, no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListGuardiansResponse();
 
@@ -5806,22 +5505,22 @@ class ListGuardiansResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (guardians != null)
-          'guardians': guardians.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'guardians': guardians!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response when listing invitations.
 class ListInvitationsResponse {
   /// Invitations that match the list request.
-  core.List<Invitation> invitations;
+  core.List<Invitation>? invitations;
 
   /// Token identifying the next page of results to return.
   ///
   /// If empty, no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListInvitationsResponse();
 
@@ -5837,10 +5536,10 @@ class ListInvitationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (invitations != null)
-          'invitations': invitations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'invitations': invitations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -5849,10 +5548,10 @@ class ListStudentSubmissionsResponse {
   /// Token identifying the next page of results to return.
   ///
   /// If empty, no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Student work that matches the request.
-  core.List<StudentSubmission> studentSubmissions;
+  core.List<StudentSubmission>? studentSubmissions;
 
   ListStudentSubmissionsResponse();
 
@@ -5868,11 +5567,11 @@ class ListStudentSubmissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (studentSubmissions != null)
           'studentSubmissions':
-              studentSubmissions.map((value) => value.toJson()).toList(),
+              studentSubmissions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5881,10 +5580,10 @@ class ListStudentsResponse {
   /// Token identifying the next page of results to return.
   ///
   /// If empty, no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Students who match the list request.
-  core.List<Student> students;
+  core.List<Student>? students;
 
   ListStudentsResponse();
 
@@ -5900,10 +5599,10 @@ class ListStudentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (students != null)
-          'students': students.map((value) => value.toJson()).toList(),
+          'students': students!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5912,10 +5611,10 @@ class ListTeachersResponse {
   /// Token identifying the next page of results to return.
   ///
   /// If empty, no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Teachers who match the list request.
-  core.List<Teacher> teachers;
+  core.List<Teacher>? teachers;
 
   ListTeachersResponse();
 
@@ -5931,10 +5630,10 @@ class ListTeachersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (teachers != null)
-          'teachers': teachers.map((value) => value.toJson()).toList(),
+          'teachers': teachers!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5943,10 +5642,10 @@ class ListTopicResponse {
   /// Token identifying the next page of results to return.
   ///
   /// If empty, no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Topic items that match the request.
-  core.List<Topic> topic;
+  core.List<Topic>? topic;
 
   ListTopicResponse();
 
@@ -5962,10 +5661,10 @@ class ListTopicResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (topic != null)
-          'topic': topic.map((value) => value.toJson()).toList(),
+          'topic': topic!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5974,19 +5673,19 @@ class ListTopicResponse {
 /// When creating attachments, setting the `form` field is not supported.
 class Material {
   /// Google Drive file material.
-  SharedDriveFile driveFile;
+  SharedDriveFile? driveFile;
 
   /// Google Forms material.
-  Form form;
+  Form? form;
 
   /// Link material.
   ///
   /// On creation, this is upgraded to a more appropriate type if possible, and
   /// this is reflected in the response.
-  Link link;
+  Link? link;
 
   /// YouTube video material.
-  YouTubeVideo youtubeVideo;
+  YouTubeVideo? youtubeVideo;
 
   Material();
 
@@ -6009,11 +5708,11 @@ class Material {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (driveFile != null) 'driveFile': driveFile.toJson(),
-        if (form != null) 'form': form.toJson(),
-        if (link != null) 'link': link.toJson(),
-        if (youtubeVideo != null) 'youtubeVideo': youtubeVideo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (driveFile != null) 'driveFile': driveFile!.toJson(),
+        if (form != null) 'form': form!.toJson(),
+        if (link != null) 'link': link!.toJson(),
+        if (youtubeVideo != null) 'youtubeVideo': youtubeVideo!.toJson(),
       };
 }
 
@@ -6026,12 +5725,12 @@ class ModifyAnnouncementAssigneesRequest {
   /// - "ALL_STUDENTS" : All students can see the item. This is the default
   /// state.
   /// - "INDIVIDUAL_STUDENTS" : A subset of the students can see the item.
-  core.String assigneeMode;
+  core.String? assigneeMode;
 
   /// Set which students can view or cannot view the announcement.
   ///
   /// Must be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`.
-  ModifyIndividualStudentsOptions modifyIndividualStudentsOptions;
+  ModifyIndividualStudentsOptions? modifyIndividualStudentsOptions;
 
   ModifyAnnouncementAssigneesRequest();
 
@@ -6047,11 +5746,11 @@ class ModifyAnnouncementAssigneesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (assigneeMode != null) 'assigneeMode': assigneeMode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (assigneeMode != null) 'assigneeMode': assigneeMode!,
         if (modifyIndividualStudentsOptions != null)
           'modifyIndividualStudentsOptions':
-              modifyIndividualStudentsOptions.toJson(),
+              modifyIndividualStudentsOptions!.toJson(),
       };
 }
 
@@ -6061,7 +5760,7 @@ class ModifyAttachmentsRequest {
   ///
   /// A student submission may not have more than 20 attachments. Form
   /// attachments are not supported.
-  core.List<Attachment> addAttachments;
+  core.List<Attachment>? addAttachments;
 
   ModifyAttachmentsRequest();
 
@@ -6074,10 +5773,10 @@ class ModifyAttachmentsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (addAttachments != null)
           'addAttachments':
-              addAttachments.map((value) => value.toJson()).toList(),
+              addAttachments!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6090,12 +5789,12 @@ class ModifyCourseWorkAssigneesRequest {
   /// - "ALL_STUDENTS" : All students can see the item. This is the default
   /// state.
   /// - "INDIVIDUAL_STUDENTS" : A subset of the students can see the item.
-  core.String assigneeMode;
+  core.String? assigneeMode;
 
   /// Set which students are assigned or not assigned to the coursework.
   ///
   /// Must be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`.
-  ModifyIndividualStudentsOptions modifyIndividualStudentsOptions;
+  ModifyIndividualStudentsOptions? modifyIndividualStudentsOptions;
 
   ModifyCourseWorkAssigneesRequest();
 
@@ -6111,11 +5810,11 @@ class ModifyCourseWorkAssigneesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (assigneeMode != null) 'assigneeMode': assigneeMode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (assigneeMode != null) 'assigneeMode': assigneeMode!,
         if (modifyIndividualStudentsOptions != null)
           'modifyIndividualStudentsOptions':
-              modifyIndividualStudentsOptions.toJson(),
+              modifyIndividualStudentsOptions!.toJson(),
       };
 }
 
@@ -6124,11 +5823,11 @@ class ModifyCourseWorkAssigneesRequest {
 class ModifyIndividualStudentsOptions {
   /// IDs of students to be added as having access to this
   /// coursework/announcement.
-  core.List<core.String> addStudentIds;
+  core.List<core.String>? addStudentIds;
 
   /// IDs of students to be removed from having access to this
   /// coursework/announcement.
-  core.List<core.String> removeStudentIds;
+  core.List<core.String>? removeStudentIds;
 
   ModifyIndividualStudentsOptions();
 
@@ -6145,16 +5844,16 @@ class ModifyIndividualStudentsOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addStudentIds != null) 'addStudentIds': addStudentIds,
-        if (removeStudentIds != null) 'removeStudentIds': removeStudentIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addStudentIds != null) 'addStudentIds': addStudentIds!,
+        if (removeStudentIds != null) 'removeStudentIds': removeStudentIds!,
       };
 }
 
 /// Additional details for multiple-choice questions.
 class MultipleChoiceQuestion {
   /// Possible choices.
-  core.List<core.String> choices;
+  core.List<core.String>? choices;
 
   MultipleChoiceQuestion();
 
@@ -6166,15 +5865,15 @@ class MultipleChoiceQuestion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (choices != null) 'choices': choices,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (choices != null) 'choices': choices!,
       };
 }
 
 /// Student work for a multiple-choice question.
 class MultipleChoiceSubmission {
   /// Student's select choice.
-  core.String answer;
+  core.String? answer;
 
   MultipleChoiceSubmission();
 
@@ -6184,8 +5883,8 @@ class MultipleChoiceSubmission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (answer != null) 'answer': answer,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (answer != null) 'answer': answer!,
       };
 }
 
@@ -6194,18 +5893,18 @@ class Name {
   /// The user's last name.
   ///
   /// Read-only.
-  core.String familyName;
+  core.String? familyName;
 
   /// The user's full name formed by concatenating the first and last name
   /// values.
   ///
   /// Read-only.
-  core.String fullName;
+  core.String? fullName;
 
   /// The user's first name.
   ///
   /// Read-only.
-  core.String givenName;
+  core.String? givenName;
 
   Name();
 
@@ -6221,10 +5920,10 @@ class Name {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (familyName != null) 'familyName': familyName,
-        if (fullName != null) 'fullName': fullName,
-        if (givenName != null) 'givenName': givenName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (familyName != null) 'familyName': familyName!,
+        if (fullName != null) 'fullName': fullName!,
+        if (givenName != null) 'givenName': givenName!,
       };
 }
 
@@ -6236,28 +5935,28 @@ class ReclaimStudentSubmissionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// An instruction to Classroom to send notifications from the `feed` to the
 /// provided destination.
 class Registration {
   /// The Cloud Pub/Sub topic that notifications are to be sent to.
-  CloudPubsubTopic cloudPubsubTopic;
+  CloudPubsubTopic? cloudPubsubTopic;
 
   /// The time until which the `Registration` is effective.
   ///
   /// This is a read-only field assigned by the server.
-  core.String expiryTime;
+  core.String? expiryTime;
 
   /// Specification for the class of notifications that Classroom should deliver
   /// to the destination.
-  Feed feed;
+  Feed? feed;
 
   /// A server-generated unique identifier for this `Registration`.
   ///
   /// Read-only.
-  core.String registrationId;
+  core.String? registrationId;
 
   Registration();
 
@@ -6278,12 +5977,12 @@ class Registration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cloudPubsubTopic != null)
-          'cloudPubsubTopic': cloudPubsubTopic.toJson(),
-        if (expiryTime != null) 'expiryTime': expiryTime,
-        if (feed != null) 'feed': feed.toJson(),
-        if (registrationId != null) 'registrationId': registrationId,
+          'cloudPubsubTopic': cloudPubsubTopic!.toJson(),
+        if (expiryTime != null) 'expiryTime': expiryTime!,
+        if (feed != null) 'feed': feed!.toJson(),
+        if (registrationId != null) 'registrationId': registrationId!,
       };
 }
 
@@ -6295,13 +5994,13 @@ class ReturnStudentSubmissionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Drive file that is used as material for course work.
 class SharedDriveFile {
   /// Drive file details.
-  DriveFile driveFile;
+  DriveFile? driveFile;
 
   /// Mechanism by which students access the Drive item.
   /// Possible string values are:
@@ -6310,7 +6009,7 @@ class SharedDriveFile {
   /// - "VIEW" : Students can view the shared file.
   /// - "EDIT" : Students can edit the shared file.
   /// - "STUDENT_COPY" : Students have a personal copy of the shared file.
-  core.String shareMode;
+  core.String? shareMode;
 
   SharedDriveFile();
 
@@ -6324,16 +6023,16 @@ class SharedDriveFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (driveFile != null) 'driveFile': driveFile.toJson(),
-        if (shareMode != null) 'shareMode': shareMode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (driveFile != null) 'driveFile': driveFile!.toJson(),
+        if (shareMode != null) 'shareMode': shareMode!,
       };
 }
 
 /// Student work for a short answer question.
 class ShortAnswerSubmission {
   /// Student response to a short-answer question.
-  core.String answer;
+  core.String? answer;
 
   ShortAnswerSubmission();
 
@@ -6343,15 +6042,15 @@ class ShortAnswerSubmission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (answer != null) 'answer': answer,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (answer != null) 'answer': answer!,
       };
 }
 
 /// The history of each state this submission has been in.
 class StateHistory {
   /// The teacher or student who made the change.
-  core.String actorUserId;
+  core.String? actorUserId;
 
   /// The workflow pipeline stage.
   /// Possible string values are:
@@ -6367,10 +6066,10 @@ class StateHistory {
   /// - "STUDENT_EDITED_AFTER_TURN_IN" : The student edited their submission
   /// after turning it in. Currently, only used by Questions, when the student
   /// edits their answer.
-  core.String state;
+  core.String? state;
 
   /// When the submission entered this state.
-  core.String stateTimestamp;
+  core.String? stateTimestamp;
 
   StateHistory();
 
@@ -6386,10 +6085,10 @@ class StateHistory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actorUserId != null) 'actorUserId': actorUserId,
-        if (state != null) 'state': state,
-        if (stateTimestamp != null) 'stateTimestamp': stateTimestamp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actorUserId != null) 'actorUserId': actorUserId!,
+        if (state != null) 'state': state!,
+        if (stateTimestamp != null) 'stateTimestamp': stateTimestamp!,
       };
 }
 
@@ -6398,24 +6097,24 @@ class Student {
   /// Identifier of the course.
   ///
   /// Read-only.
-  core.String courseId;
+  core.String? courseId;
 
   /// Global user information for the student.
   ///
   /// Read-only.
-  UserProfile profile;
+  UserProfile? profile;
 
   /// Information about a Drive Folder for this student's work in this course.
   ///
   /// Only visible to the student and domain administrators. Read-only.
-  DriveFolder studentWorkFolder;
+  DriveFolder? studentWorkFolder;
 
   /// Identifier of the user.
   ///
   /// When specified as a parameter of a request, this identifier can be one of
   /// the following: * the numeric identifier for the user * the email address
   /// of the user * the string literal `"me"`, indicating the requesting user
-  core.String userId;
+  core.String? userId;
 
   Student();
 
@@ -6436,12 +6135,12 @@ class Student {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (courseId != null) 'courseId': courseId,
-        if (profile != null) 'profile': profile.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (courseId != null) 'courseId': courseId!,
+        if (profile != null) 'profile': profile!.toJson(),
         if (studentWorkFolder != null)
-          'studentWorkFolder': studentWorkFolder.toJson(),
-        if (userId != null) 'userId': userId,
+          'studentWorkFolder': studentWorkFolder!.toJson(),
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -6454,35 +6153,35 @@ class StudentSubmission {
   /// Absolute link to the submission in the Classroom web UI.
   ///
   /// Read-only.
-  core.String alternateLink;
+  core.String? alternateLink;
 
   /// Optional grade.
   ///
   /// If unset, no grade was set. This value must be non-negative. Decimal (that
   /// is, non-integer) values are allowed, but are rounded to two decimal
   /// places. This may be modified only by course teachers.
-  core.double assignedGrade;
+  core.double? assignedGrade;
 
   /// Submission content when course_work_type is ASSIGNMENT.
   ///
   /// Students can modify this content using ModifyAttachments.
-  AssignmentSubmission assignmentSubmission;
+  AssignmentSubmission? assignmentSubmission;
 
   /// Whether this student submission is associated with the Developer Console
   /// project making the request.
   ///
   /// See CreateCourseWork for more details. Read-only.
-  core.bool associatedWithDeveloper;
+  core.bool? associatedWithDeveloper;
 
   /// Identifier of the course.
   ///
   /// Read-only.
-  core.String courseId;
+  core.String? courseId;
 
   /// Identifier for the course work this corresponds to.
   ///
   /// Read-only.
-  core.String courseWorkId;
+  core.String? courseWorkId;
 
   /// Type of course work this submission is for.
   ///
@@ -6493,35 +6192,35 @@ class StudentSubmission {
   /// - "ASSIGNMENT" : An assignment.
   /// - "SHORT_ANSWER_QUESTION" : A short answer question.
   /// - "MULTIPLE_CHOICE_QUESTION" : A multiple-choice question.
-  core.String courseWorkType;
+  core.String? courseWorkType;
 
   /// Creation time of this submission.
   ///
   /// This may be unset if the student has not accessed this item. Read-only.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// Optional pending grade.
   ///
   /// If unset, no grade was set. This value must be non-negative. Decimal (that
   /// is, non-integer) values are allowed, but are rounded to two decimal
   /// places. This is only visible to and modifiable by course teachers.
-  core.double draftGrade;
+  core.double? draftGrade;
 
   /// Classroom-assigned Identifier for the student submission.
   ///
   /// This is unique among submissions for the relevant course work. Read-only.
-  core.String id;
+  core.String? id;
 
   /// Whether this submission is late.
   ///
   /// Read-only.
-  core.bool late;
+  core.bool? late;
 
   /// Submission content when course_work_type is MULTIPLE_CHOICE_QUESTION.
-  MultipleChoiceSubmission multipleChoiceSubmission;
+  MultipleChoiceSubmission? multipleChoiceSubmission;
 
   /// Submission content when course_work_type is SHORT_ANSWER_QUESTION.
-  ShortAnswerSubmission shortAnswerSubmission;
+  ShortAnswerSubmission? shortAnswerSubmission;
 
   /// State of this submission.
   ///
@@ -6535,22 +6234,22 @@ class StudentSubmission {
   /// - "TURNED_IN" : Has been turned in to the teacher.
   /// - "RETURNED" : Has been returned to the student.
   /// - "RECLAIMED_BY_STUDENT" : Student chose to "unsubmit" the assignment.
-  core.String state;
+  core.String? state;
 
   /// The history of the submission (includes state and grade histories).
   ///
   /// Read-only.
-  core.List<SubmissionHistory> submissionHistory;
+  core.List<SubmissionHistory>? submissionHistory;
 
   /// Last update time of this submission.
   ///
   /// This may be unset if the student has not accessed this item. Read-only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// Identifier for the student that owns this submission.
   ///
   /// Read-only.
-  core.String userId;
+  core.String? userId;
 
   StudentSubmission();
 
@@ -6616,30 +6315,30 @@ class StudentSubmission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alternateLink != null) 'alternateLink': alternateLink,
-        if (assignedGrade != null) 'assignedGrade': assignedGrade,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alternateLink != null) 'alternateLink': alternateLink!,
+        if (assignedGrade != null) 'assignedGrade': assignedGrade!,
         if (assignmentSubmission != null)
-          'assignmentSubmission': assignmentSubmission.toJson(),
+          'assignmentSubmission': assignmentSubmission!.toJson(),
         if (associatedWithDeveloper != null)
-          'associatedWithDeveloper': associatedWithDeveloper,
-        if (courseId != null) 'courseId': courseId,
-        if (courseWorkId != null) 'courseWorkId': courseWorkId,
-        if (courseWorkType != null) 'courseWorkType': courseWorkType,
-        if (creationTime != null) 'creationTime': creationTime,
-        if (draftGrade != null) 'draftGrade': draftGrade,
-        if (id != null) 'id': id,
-        if (late != null) 'late': late,
+          'associatedWithDeveloper': associatedWithDeveloper!,
+        if (courseId != null) 'courseId': courseId!,
+        if (courseWorkId != null) 'courseWorkId': courseWorkId!,
+        if (courseWorkType != null) 'courseWorkType': courseWorkType!,
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (draftGrade != null) 'draftGrade': draftGrade!,
+        if (id != null) 'id': id!,
+        if (late != null) 'late': late!,
         if (multipleChoiceSubmission != null)
-          'multipleChoiceSubmission': multipleChoiceSubmission.toJson(),
+          'multipleChoiceSubmission': multipleChoiceSubmission!.toJson(),
         if (shortAnswerSubmission != null)
-          'shortAnswerSubmission': shortAnswerSubmission.toJson(),
-        if (state != null) 'state': state,
+          'shortAnswerSubmission': shortAnswerSubmission!.toJson(),
+        if (state != null) 'state': state!,
         if (submissionHistory != null)
           'submissionHistory':
-              submissionHistory.map((value) => value.toJson()).toList(),
-        if (updateTime != null) 'updateTime': updateTime,
-        if (userId != null) 'userId': userId,
+              submissionHistory!.map((value) => value.toJson()).toList(),
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -6648,10 +6347,10 @@ class StudentSubmission {
 /// This currently includes state and grade histories.
 class SubmissionHistory {
   /// The grade history information of the submission, if present.
-  GradeHistory gradeHistory;
+  GradeHistory? gradeHistory;
 
   /// The state history information of the submission, if present.
-  StateHistory stateHistory;
+  StateHistory? stateHistory;
 
   SubmissionHistory();
 
@@ -6666,9 +6365,9 @@ class SubmissionHistory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gradeHistory != null) 'gradeHistory': gradeHistory.toJson(),
-        if (stateHistory != null) 'stateHistory': stateHistory.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gradeHistory != null) 'gradeHistory': gradeHistory!.toJson(),
+        if (stateHistory != null) 'stateHistory': stateHistory!.toJson(),
       };
 }
 
@@ -6677,19 +6376,19 @@ class Teacher {
   /// Identifier of the course.
   ///
   /// Read-only.
-  core.String courseId;
+  core.String? courseId;
 
   /// Global user information for the teacher.
   ///
   /// Read-only.
-  UserProfile profile;
+  UserProfile? profile;
 
   /// Identifier of the user.
   ///
   /// When specified as a parameter of a request, this identifier can be one of
   /// the following: * the numeric identifier for the user * the email address
   /// of the user * the string literal `"me"`, indicating the requesting user
-  core.String userId;
+  core.String? userId;
 
   Teacher();
 
@@ -6706,10 +6405,10 @@ class Teacher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (courseId != null) 'courseId': courseId,
-        if (profile != null) 'profile': profile.toJson(),
-        if (userId != null) 'userId': userId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (courseId != null) 'courseId': courseId!,
+        if (profile != null) 'profile': profile!.toJson(),
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -6723,23 +6422,23 @@ class TimeOfDay {
   ///
   /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
   /// for scenarios like business closing time.
-  core.int hours;
+  core.int? hours;
 
   /// Minutes of hour of day.
   ///
   /// Must be from 0 to 59.
-  core.int minutes;
+  core.int? minutes;
 
   /// Fractions of seconds in nanoseconds.
   ///
   /// Must be from 0 to 999,999,999.
-  core.int nanos;
+  core.int? nanos;
 
   /// Seconds of minutes of the time.
   ///
   /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
   /// leap-seconds.
-  core.int seconds;
+  core.int? seconds;
 
   TimeOfDay();
 
@@ -6758,11 +6457,11 @@ class TimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hours != null) 'hours': hours,
-        if (minutes != null) 'minutes': minutes,
-        if (nanos != null) 'nanos': nanos,
-        if (seconds != null) 'seconds': seconds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hours != null) 'hours': hours!,
+        if (minutes != null) 'minutes': minutes!,
+        if (nanos != null) 'nanos': nanos!,
+        if (seconds != null) 'seconds': seconds!,
       };
 }
 
@@ -6771,7 +6470,7 @@ class Topic {
   /// Identifier of the course.
   ///
   /// Read-only.
-  core.String courseId;
+  core.String? courseId;
 
   /// The name of the topic, generated by the user.
   ///
@@ -6779,17 +6478,17 @@ class Topic {
   /// consecutive whitespaces are collapsed into one inside the name. The result
   /// must be a non-empty string. Topic names are case sensitive, and must be no
   /// longer than 100 characters.
-  core.String name;
+  core.String? name;
 
   /// Unique identifier for the topic.
   ///
   /// Read-only.
-  core.String topicId;
+  core.String? topicId;
 
   /// The time the topic was last updated by the system.
   ///
   /// Read-only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Topic();
 
@@ -6808,11 +6507,11 @@ class Topic {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (courseId != null) 'courseId': courseId,
-        if (name != null) 'name': name,
-        if (topicId != null) 'topicId': topicId,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (courseId != null) 'courseId': courseId!,
+        if (name != null) 'name': name!,
+        if (topicId != null) 'topicId': topicId!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -6824,7 +6523,7 @@ class TurnInStudentSubmissionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Global information for a user.
@@ -6832,34 +6531,34 @@ class UserProfile {
   /// Email address of the user.
   ///
   /// Read-only.
-  core.String emailAddress;
+  core.String? emailAddress;
 
   /// Identifier of the user.
   ///
   /// Read-only.
-  core.String id;
+  core.String? id;
 
   /// Name of the user.
   ///
   /// Read-only.
-  Name name;
+  Name? name;
 
   /// Global permissions of the user.
   ///
   /// Read-only.
-  core.List<GlobalPermission> permissions;
+  core.List<GlobalPermission>? permissions;
 
   /// URL of user's profile photo.
   ///
   /// Read-only.
-  core.String photoUrl;
+  core.String? photoUrl;
 
   /// Represents whether a G Suite for Education user's domain administrator has
   /// explicitly verified them as being a teacher.
   ///
   /// If the user is not a member of a G Suite for Education domain, than this
   /// field is always false. Read-only
-  core.bool verifiedTeacher;
+  core.bool? verifiedTeacher;
 
   UserProfile();
 
@@ -6888,14 +6587,14 @@ class UserProfile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (emailAddress != null) 'emailAddress': emailAddress,
-        if (id != null) 'id': id,
-        if (name != null) 'name': name.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!.toJson(),
         if (permissions != null)
-          'permissions': permissions.map((value) => value.toJson()).toList(),
-        if (photoUrl != null) 'photoUrl': photoUrl,
-        if (verifiedTeacher != null) 'verifiedTeacher': verifiedTeacher,
+          'permissions': permissions!.map((value) => value.toJson()).toList(),
+        if (photoUrl != null) 'photoUrl': photoUrl!,
+        if (verifiedTeacher != null) 'verifiedTeacher': verifiedTeacher!,
       };
 }
 
@@ -6904,20 +6603,20 @@ class YouTubeVideo {
   /// URL that can be used to view the YouTube video.
   ///
   /// Read-only.
-  core.String alternateLink;
+  core.String? alternateLink;
 
   /// YouTube API resource ID.
-  core.String id;
+  core.String? id;
 
   /// URL of a thumbnail image of the YouTube video.
   ///
   /// Read-only.
-  core.String thumbnailUrl;
+  core.String? thumbnailUrl;
 
   /// Title of the YouTube video.
   ///
   /// Read-only.
-  core.String title;
+  core.String? title;
 
   YouTubeVideo();
 
@@ -6936,10 +6635,10 @@ class YouTubeVideo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alternateLink != null) 'alternateLink': alternateLink,
-        if (id != null) 'id': id,
-        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alternateLink != null) 'alternateLink': alternateLink!,
+        if (id != null) 'id': id!,
+        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
+        if (title != null) 'title': title!,
       };
 }

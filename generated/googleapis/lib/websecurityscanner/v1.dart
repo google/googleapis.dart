@@ -102,13 +102,9 @@ class ProjectsScanConfigsResource {
   async.Future<ScanConfig> create(
     ScanConfig request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -148,11 +144,8 @@ class ProjectsScanConfigsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -188,11 +181,8 @@ class ProjectsScanConfigsResource {
   /// this method will complete with the same error.
   async.Future<ScanConfig> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -236,13 +226,10 @@ class ProjectsScanConfigsResource {
   /// this method will complete with the same error.
   async.Future<ListScanConfigsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -292,14 +279,10 @@ class ProjectsScanConfigsResource {
   async.Future<ScanConfig> patch(
     ScanConfig request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -341,13 +324,9 @@ class ProjectsScanConfigsResource {
   async.Future<ScanRun> start(
     StartScanRunRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -400,11 +379,8 @@ class ProjectsScanConfigsScanRunsResource {
   /// this method will complete with the same error.
   async.Future<ScanRun> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -449,13 +425,10 @@ class ProjectsScanConfigsScanRunsResource {
   /// this method will complete with the same error.
   async.Future<ListScanRunsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -501,13 +474,9 @@ class ProjectsScanConfigsScanRunsResource {
   async.Future<ScanRun> stop(
     StopScanRunRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -561,13 +530,10 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResource {
   /// this method will complete with the same error.
   async.Future<ListCrawledUrlsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -617,11 +583,8 @@ class ProjectsScanConfigsScanRunsFindingTypeStatsResource {
   /// this method will complete with the same error.
   async.Future<ListFindingTypeStatsResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -668,11 +631,8 @@ class ProjectsScanConfigsScanRunsFindingsResource {
   /// this method will complete with the same error.
   async.Future<Finding> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -720,14 +680,11 @@ class ProjectsScanConfigsScanRunsFindingsResource {
   /// this method will complete with the same error.
   async.Future<ListFindingsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -751,13 +708,13 @@ class ProjectsScanConfigsScanRunsFindingsResource {
 /// Scan authentication configuration.
 class Authentication {
   /// Authentication using a custom account.
-  CustomAccount customAccount;
+  CustomAccount? customAccount;
 
   /// Authentication using a Google account.
-  GoogleAccount googleAccount;
+  GoogleAccount? googleAccount;
 
   /// Authentication using Identity-Aware-Proxy (IAP).
-  IapCredential iapCredential;
+  IapCredential? iapCredential;
 
   Authentication();
 
@@ -776,10 +733,10 @@ class Authentication {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customAccount != null) 'customAccount': customAccount.toJson(),
-        if (googleAccount != null) 'googleAccount': googleAccount.toJson(),
-        if (iapCredential != null) 'iapCredential': iapCredential.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customAccount != null) 'customAccount': customAccount!.toJson(),
+        if (googleAccount != null) 'googleAccount': googleAccount!.toJson(),
+        if (iapCredential != null) 'iapCredential': iapCredential!.toJson(),
       };
 }
 
@@ -791,18 +748,18 @@ class CrawledUrl {
   /// The body of the request that was used to visit the URL.
   ///
   /// Output only.
-  core.String body;
+  core.String? body;
 
   /// The http method of the request that was used to visit the URL, in
   /// uppercase.
   ///
   /// Output only.
-  core.String httpMethod;
+  core.String? httpMethod;
 
   /// The URL that was crawled.
   ///
   /// Output only.
-  core.String url;
+  core.String? url;
 
   CrawledUrl();
 
@@ -818,10 +775,10 @@ class CrawledUrl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (body != null) 'body': body,
-        if (httpMethod != null) 'httpMethod': httpMethod,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (body != null) 'body': body!,
+        if (httpMethod != null) 'httpMethod': httpMethod!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -830,7 +787,7 @@ class CustomAccount {
   /// The login form URL of the website.
   ///
   /// Required.
-  core.String loginUrl;
+  core.String? loginUrl;
 
   /// Input only.
   ///
@@ -838,12 +795,12 @@ class CustomAccount {
   /// not returned in any response nor included in audit logs.
   ///
   /// Required.
-  core.String password;
+  core.String? password;
 
   /// The user name of the custom account.
   ///
   /// Required.
-  core.String username;
+  core.String? username;
 
   CustomAccount();
 
@@ -859,10 +816,10 @@ class CustomAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (loginUrl != null) 'loginUrl': loginUrl,
-        if (password != null) 'password': password,
-        if (username != null) 'username': username,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (loginUrl != null) 'loginUrl': loginUrl!,
+        if (password != null) 'password': password!,
+        if (username != null) 'username': username!,
       };
 }
 
@@ -880,7 +837,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A Finding resource represents a vulnerability instance identified during a
@@ -889,17 +846,17 @@ class Finding {
   /// The body of the request that triggered the vulnerability.
   ///
   /// Output only.
-  core.String body;
+  core.String? body;
 
   /// The description of the vulnerability.
   ///
   /// Output only.
-  core.String description;
+  core.String? description;
 
   /// The URL where the browser lands when the vulnerability is detected.
   ///
   /// Output only.
-  core.String finalUrl;
+  core.String? finalUrl;
 
   /// The type of the Finding.
   ///
@@ -907,31 +864,31 @@ class Finding {
   /// https://cloud.google.com/security-command-center/docs/how-to-remediate-web-security-scanner-findings
   ///
   /// Output only.
-  core.String findingType;
+  core.String? findingType;
 
   /// An addon containing information reported for a vulnerability with an HTML
   /// form, if any.
   ///
   /// Output only.
-  Form form;
+  Form? form;
 
   /// If the vulnerability was originated from nested IFrame, the immediate
   /// parent IFrame is reported.
   ///
   /// Output only.
-  core.String frameUrl;
+  core.String? frameUrl;
 
   /// The URL produced by the server-side fuzzer and used in the request that
   /// triggered the vulnerability.
   ///
   /// Output only.
-  core.String fuzzedUrl;
+  core.String? fuzzedUrl;
 
   /// The http method of the request that triggered the vulnerability, in
   /// uppercase.
   ///
   /// Output only.
-  core.String httpMethod;
+  core.String? httpMethod;
 
   /// The resource name of the Finding.
   ///
@@ -940,18 +897,18 @@ class Finding {
   /// The finding IDs are generated by the system.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// An addon containing information about outdated libraries.
   ///
   /// Output only.
-  OutdatedLibrary outdatedLibrary;
+  OutdatedLibrary? outdatedLibrary;
 
   /// The URL containing human-readable payload that user can leverage to
   /// reproduce the vulnerability.
   ///
   /// Output only.
-  core.String reproductionUrl;
+  core.String? reproductionUrl;
 
   /// The severity level of the reported vulnerability.
   ///
@@ -962,35 +919,35 @@ class Finding {
   /// - "HIGH" : High severity.
   /// - "MEDIUM" : Medium severity.
   /// - "LOW" : Low severity.
-  core.String severity;
+  core.String? severity;
 
   /// The tracking ID uniquely identifies a vulnerability instance across
   /// multiple ScanRuns.
   ///
   /// Output only.
-  core.String trackingId;
+  core.String? trackingId;
 
   /// An addon containing detailed information regarding any resource causing
   /// the vulnerability such as JavaScript sources, image, audio files, etc.
   ///
   /// Output only.
-  ViolatingResource violatingResource;
+  ViolatingResource? violatingResource;
 
   /// An addon containing information about vulnerable or missing HTTP headers.
   ///
   /// Output only.
-  VulnerableHeaders vulnerableHeaders;
+  VulnerableHeaders? vulnerableHeaders;
 
   /// An addon containing information about request parameters which were found
   /// to be vulnerable.
   ///
   /// Output only.
-  VulnerableParameters vulnerableParameters;
+  VulnerableParameters? vulnerableParameters;
 
   /// An addon containing information reported for an XSS, if any.
   ///
   /// Output only.
-  Xss xss;
+  Xss? xss;
 
   Finding();
 
@@ -1053,28 +1010,28 @@ class Finding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (body != null) 'body': body,
-        if (description != null) 'description': description,
-        if (finalUrl != null) 'finalUrl': finalUrl,
-        if (findingType != null) 'findingType': findingType,
-        if (form != null) 'form': form.toJson(),
-        if (frameUrl != null) 'frameUrl': frameUrl,
-        if (fuzzedUrl != null) 'fuzzedUrl': fuzzedUrl,
-        if (httpMethod != null) 'httpMethod': httpMethod,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (body != null) 'body': body!,
+        if (description != null) 'description': description!,
+        if (finalUrl != null) 'finalUrl': finalUrl!,
+        if (findingType != null) 'findingType': findingType!,
+        if (form != null) 'form': form!.toJson(),
+        if (frameUrl != null) 'frameUrl': frameUrl!,
+        if (fuzzedUrl != null) 'fuzzedUrl': fuzzedUrl!,
+        if (httpMethod != null) 'httpMethod': httpMethod!,
+        if (name != null) 'name': name!,
         if (outdatedLibrary != null)
-          'outdatedLibrary': outdatedLibrary.toJson(),
-        if (reproductionUrl != null) 'reproductionUrl': reproductionUrl,
-        if (severity != null) 'severity': severity,
-        if (trackingId != null) 'trackingId': trackingId,
+          'outdatedLibrary': outdatedLibrary!.toJson(),
+        if (reproductionUrl != null) 'reproductionUrl': reproductionUrl!,
+        if (severity != null) 'severity': severity!,
+        if (trackingId != null) 'trackingId': trackingId!,
         if (violatingResource != null)
-          'violatingResource': violatingResource.toJson(),
+          'violatingResource': violatingResource!.toJson(),
         if (vulnerableHeaders != null)
-          'vulnerableHeaders': vulnerableHeaders.toJson(),
+          'vulnerableHeaders': vulnerableHeaders!.toJson(),
         if (vulnerableParameters != null)
-          'vulnerableParameters': vulnerableParameters.toJson(),
-        if (xss != null) 'xss': xss.toJson(),
+          'vulnerableParameters': vulnerableParameters!.toJson(),
+        if (xss != null) 'xss': xss!.toJson(),
       };
 }
 
@@ -1084,12 +1041,12 @@ class FindingTypeStats {
   /// The count of findings belonging to this finding type.
   ///
   /// Output only.
-  core.int findingCount;
+  core.int? findingCount;
 
   /// The finding type associated with the stats.
   ///
   /// Output only.
-  core.String findingType;
+  core.String? findingType;
 
   FindingTypeStats();
 
@@ -1102,19 +1059,19 @@ class FindingTypeStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (findingCount != null) 'findingCount': findingCount,
-        if (findingType != null) 'findingType': findingType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (findingCount != null) 'findingCount': findingCount!,
+        if (findingType != null) 'findingType': findingType!,
       };
 }
 
 /// ! Information about a vulnerability with an HTML.
 class Form {
   /// ! The URI where to send the form when it's submitted.
-  core.String actionUri;
+  core.String? actionUri;
 
   /// ! The names of form fields related to the vulnerability.
-  core.List<core.String> fields;
+  core.List<core.String>? fields;
 
   Form();
 
@@ -1129,9 +1086,9 @@ class Form {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionUri != null) 'actionUri': actionUri,
-        if (fields != null) 'fields': fields,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionUri != null) 'actionUri': actionUri!,
+        if (fields != null) 'fields': fields!,
       };
 }
 
@@ -1143,12 +1100,12 @@ class GoogleAccount {
   /// not returned in any response nor included in audit logs.
   ///
   /// Required.
-  core.String password;
+  core.String? password;
 
   /// The user name of the Google account.
   ///
   /// Required.
-  core.String username;
+  core.String? username;
 
   GoogleAccount();
 
@@ -1161,19 +1118,19 @@ class GoogleAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (password != null) 'password': password,
-        if (username != null) 'username': username,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (password != null) 'password': password!,
+        if (username != null) 'username': username!,
       };
 }
 
 /// Describes a HTTP Header.
 class Header {
   /// Header name.
-  core.String name;
+  core.String? name;
 
   /// Header value.
-  core.String value;
+  core.String? value;
 
   Header();
 
@@ -1186,9 +1143,9 @@ class Header {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1196,7 +1153,7 @@ class Header {
 class IapCredential {
   /// Authentication configuration when Web-Security-Scanner service account is
   /// added in Identity-Aware-Proxy (IAP) access policies.
-  IapTestServiceAccountInfo iapTestServiceAccountInfo;
+  IapTestServiceAccountInfo? iapTestServiceAccountInfo;
 
   IapCredential();
 
@@ -1208,9 +1165,9 @@ class IapCredential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (iapTestServiceAccountInfo != null)
-          'iapTestServiceAccountInfo': iapTestServiceAccountInfo.toJson(),
+          'iapTestServiceAccountInfo': iapTestServiceAccountInfo!.toJson(),
       };
 }
 
@@ -1221,7 +1178,7 @@ class IapTestServiceAccountInfo {
   /// (IAP).
   ///
   /// Required.
-  core.String targetAudienceClientId;
+  core.String? targetAudienceClientId;
 
   IapTestServiceAccountInfo();
 
@@ -1231,20 +1188,20 @@ class IapTestServiceAccountInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (targetAudienceClientId != null)
-          'targetAudienceClientId': targetAudienceClientId,
+          'targetAudienceClientId': targetAudienceClientId!,
       };
 }
 
 /// Response for the `ListCrawledUrls` method.
 class ListCrawledUrlsResponse {
   /// The list of CrawledUrls returned.
-  core.List<CrawledUrl> crawledUrls;
+  core.List<CrawledUrl>? crawledUrls;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListCrawledUrlsResponse();
 
@@ -1260,17 +1217,17 @@ class ListCrawledUrlsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (crawledUrls != null)
-          'crawledUrls': crawledUrls.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'crawledUrls': crawledUrls!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response for the `ListFindingTypeStats` method.
 class ListFindingTypeStatsResponse {
   /// The list of FindingTypeStats returned.
-  core.List<FindingTypeStats> findingTypeStats;
+  core.List<FindingTypeStats>? findingTypeStats;
 
   ListFindingTypeStatsResponse();
 
@@ -1283,21 +1240,21 @@ class ListFindingTypeStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (findingTypeStats != null)
           'findingTypeStats':
-              findingTypeStats.map((value) => value.toJson()).toList(),
+              findingTypeStats!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response for the `ListFindings` method.
 class ListFindingsResponse {
   /// The list of Findings returned.
-  core.List<Finding> findings;
+  core.List<Finding>? findings;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListFindingsResponse();
 
@@ -1313,10 +1270,10 @@ class ListFindingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (findings != null)
-          'findings': findings.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'findings': findings!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1324,10 +1281,10 @@ class ListFindingsResponse {
 class ListScanConfigsResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of ScanConfigs returned.
-  core.List<ScanConfig> scanConfigs;
+  core.List<ScanConfig>? scanConfigs;
 
   ListScanConfigsResponse();
 
@@ -1343,10 +1300,10 @@ class ListScanConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (scanConfigs != null)
-          'scanConfigs': scanConfigs.map((value) => value.toJson()).toList(),
+          'scanConfigs': scanConfigs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1354,10 +1311,10 @@ class ListScanConfigsResponse {
 class ListScanRunsResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of ScanRuns returned.
-  core.List<ScanRun> scanRuns;
+  core.List<ScanRun>? scanRuns;
 
   ListScanRunsResponse();
 
@@ -1373,23 +1330,23 @@ class ListScanRunsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (scanRuns != null)
-          'scanRuns': scanRuns.map((value) => value.toJson()).toList(),
+          'scanRuns': scanRuns!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Information reported for an outdated library.
 class OutdatedLibrary {
   /// URLs to learn more information about the vulnerabilities in the library.
-  core.List<core.String> learnMoreUrls;
+  core.List<core.String>? learnMoreUrls;
 
   /// The name of the outdated library.
-  core.String libraryName;
+  core.String? libraryName;
 
   /// The version number.
-  core.String version;
+  core.String? version;
 
   OutdatedLibrary();
 
@@ -1407,10 +1364,10 @@ class OutdatedLibrary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (learnMoreUrls != null) 'learnMoreUrls': learnMoreUrls,
-        if (libraryName != null) 'libraryName': libraryName,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (learnMoreUrls != null) 'learnMoreUrls': learnMoreUrls!,
+        if (libraryName != null) 'libraryName': libraryName!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1420,16 +1377,16 @@ class ScanConfig {
   ///
   /// If specified, service will use the authentication configuration during
   /// scanning.
-  Authentication authentication;
+  Authentication? authentication;
 
   /// The excluded URL patterns as described in
   /// https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
-  core.List<core.String> blacklistPatterns;
+  core.List<core.String>? blacklistPatterns;
 
   /// The user provided display name of the ScanConfig.
   ///
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   /// Controls export of scan configurations and results to Security Command
   /// Center.
@@ -1439,44 +1396,44 @@ class ScanConfig {
   /// - "ENABLED" : Export results of this scan to Security Command Center.
   /// - "DISABLED" : Do not export results of this scan to Security Command
   /// Center.
-  core.String exportToSecurityCommandCenter;
+  core.String? exportToSecurityCommandCenter;
 
   /// Whether the scan config is managed by Web Security Scanner, output only.
-  core.bool managedScan;
+  core.bool? managedScan;
 
   /// The maximum QPS during scanning.
   ///
   /// A valid value ranges from 5 to 20 inclusively. If the field is unspecified
   /// or its value is set 0, server will default to 15. Other values outside of
   /// \[5, 20\] range will be rejected with INVALID_ARGUMENT error.
-  core.int maxQps;
+  core.int? maxQps;
 
   /// The resource name of the ScanConfig.
   ///
   /// The name follows the format of
   /// 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are
   /// generated by the system.
-  core.String name;
+  core.String? name;
 
   /// The risk level selected for the scan
   /// Possible string values are:
   /// - "RISK_LEVEL_UNSPECIFIED" : Use default, which is NORMAL.
   /// - "NORMAL" : Normal scanning (Recommended)
   /// - "LOW" : Lower impact scanning
-  core.String riskLevel;
+  core.String? riskLevel;
 
   /// The schedule of the ScanConfig.
-  Schedule schedule;
+  Schedule? schedule;
 
   /// The starting URLs from which the scanner finds site pages.
   ///
   /// Required.
-  core.List<core.String> startingUrls;
+  core.List<core.String>? startingUrls;
 
   /// Whether the scan configuration has enabled static IP address scan feature.
   ///
   /// If enabled, the scanner will access applications from static IP addresses.
-  core.bool staticIpScan;
+  core.bool? staticIpScan;
 
   /// The user agent used during scanning.
   /// Possible string values are:
@@ -1486,7 +1443,7 @@ class ScanConfig {
   /// unspecified.
   /// - "CHROME_ANDROID" : Chrome on Android.
   /// - "SAFARI_IPHONE" : Safari on IPhone.
-  core.String userAgent;
+  core.String? userAgent;
 
   ScanConfig();
 
@@ -1536,20 +1493,20 @@ class ScanConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (authentication != null) 'authentication': authentication.toJson(),
-        if (blacklistPatterns != null) 'blacklistPatterns': blacklistPatterns,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (authentication != null) 'authentication': authentication!.toJson(),
+        if (blacklistPatterns != null) 'blacklistPatterns': blacklistPatterns!,
+        if (displayName != null) 'displayName': displayName!,
         if (exportToSecurityCommandCenter != null)
-          'exportToSecurityCommandCenter': exportToSecurityCommandCenter,
-        if (managedScan != null) 'managedScan': managedScan,
-        if (maxQps != null) 'maxQps': maxQps,
-        if (name != null) 'name': name,
-        if (riskLevel != null) 'riskLevel': riskLevel,
-        if (schedule != null) 'schedule': schedule.toJson(),
-        if (startingUrls != null) 'startingUrls': startingUrls,
-        if (staticIpScan != null) 'staticIpScan': staticIpScan,
-        if (userAgent != null) 'userAgent': userAgent,
+          'exportToSecurityCommandCenter': exportToSecurityCommandCenter!,
+        if (managedScan != null) 'managedScan': managedScan!,
+        if (maxQps != null) 'maxQps': maxQps!,
+        if (name != null) 'name': name!,
+        if (riskLevel != null) 'riskLevel': riskLevel!,
+        if (schedule != null) 'schedule': schedule!.toJson(),
+        if (startingUrls != null) 'startingUrls': startingUrls!,
+        if (staticIpScan != null) 'staticIpScan': staticIpScan!,
+        if (userAgent != null) 'userAgent': userAgent!,
       };
 }
 
@@ -1642,7 +1599,7 @@ class ScanConfigError {
   /// For example, we do not provide findings of the given finding type.
   /// - "UNSUPPORTED_URL_SCHEME" : The URL scheme of one or more of the supplied
   /// URLs is not supported.
-  core.String code;
+  core.String? code;
 
   /// Indicates the full name of the ScanConfig field that triggers this error,
   /// for example "scan_config.max_qps".
@@ -1651,7 +1608,7 @@ class ScanConfigError {
   /// value can change in the future.
   ///
   /// Output only.
-  core.String fieldName;
+  core.String? fieldName;
 
   ScanConfigError();
 
@@ -1664,9 +1621,9 @@ class ScanConfigError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (fieldName != null) 'fieldName': fieldName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (fieldName != null) 'fieldName': fieldName!,
       };
 }
 
@@ -1678,13 +1635,13 @@ class ScanRun {
   /// is either finished or stopped by user.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// If result_state is an ERROR, this field provides the primary reason for
   /// scan's termination and more details, if such are available.
   ///
   /// Output only.
-  ScanRunErrorTrace errorTrace;
+  ScanRunErrorTrace? errorTrace;
 
   /// The execution state of the ScanRun.
   ///
@@ -1695,12 +1652,12 @@ class ScanRun {
   /// - "QUEUED" : The scan is waiting in the queue.
   /// - "SCANNING" : The scan is in progress.
   /// - "FINISHED" : The scan is either finished or stopped by user.
-  core.String executionState;
+  core.String? executionState;
 
   /// Whether the scan run has found any vulnerabilities.
   ///
   /// Output only.
-  core.bool hasVulnerabilities;
+  core.bool? hasVulnerabilities;
 
   /// The resource name of the ScanRun.
   ///
@@ -1709,7 +1666,7 @@ class ScanRun {
   /// The ScanRun IDs are generated by the system.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The percentage of total completion ranging from 0 to 100.
   ///
@@ -1717,7 +1674,7 @@ class ScanRun {
   /// ranges from 0 to 100. If the scan is finished, the value is 100.
   ///
   /// Output only.
-  core.int progressPercent;
+  core.int? progressPercent;
 
   /// The result state of the ScanRun.
   ///
@@ -1730,12 +1687,12 @@ class ScanRun {
   /// - "SUCCESS" : The scan finished without errors.
   /// - "ERROR" : The scan finished with errors.
   /// - "KILLED" : The scan was terminated by user.
-  core.String resultState;
+  core.String? resultState;
 
   /// The time at which the ScanRun started.
   ///
   /// Output only.
-  core.String startTime;
+  core.String? startTime;
 
   /// The number of URLs crawled during this ScanRun.
   ///
@@ -1743,7 +1700,7 @@ class ScanRun {
   /// crawled up to now.
   ///
   /// Output only.
-  core.String urlsCrawledCount;
+  core.String? urlsCrawledCount;
 
   /// The number of URLs tested during this ScanRun.
   ///
@@ -1753,12 +1710,12 @@ class ScanRun {
   /// payloads.
   ///
   /// Output only.
-  core.String urlsTestedCount;
+  core.String? urlsTestedCount;
 
   /// A list of warnings, if such are encountered during this scan run.
   ///
   /// Output only.
-  core.List<ScanRunWarningTrace> warningTraces;
+  core.List<ScanRunWarningTrace>? warningTraces;
 
   ScanRun();
 
@@ -1802,21 +1759,21 @@ class ScanRun {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (errorTrace != null) 'errorTrace': errorTrace.toJson(),
-        if (executionState != null) 'executionState': executionState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (errorTrace != null) 'errorTrace': errorTrace!.toJson(),
+        if (executionState != null) 'executionState': executionState!,
         if (hasVulnerabilities != null)
-          'hasVulnerabilities': hasVulnerabilities,
-        if (name != null) 'name': name,
-        if (progressPercent != null) 'progressPercent': progressPercent,
-        if (resultState != null) 'resultState': resultState,
-        if (startTime != null) 'startTime': startTime,
-        if (urlsCrawledCount != null) 'urlsCrawledCount': urlsCrawledCount,
-        if (urlsTestedCount != null) 'urlsTestedCount': urlsTestedCount,
+          'hasVulnerabilities': hasVulnerabilities!,
+        if (name != null) 'name': name!,
+        if (progressPercent != null) 'progressPercent': progressPercent!,
+        if (resultState != null) 'resultState': resultState!,
+        if (startTime != null) 'startTime': startTime!,
+        if (urlsCrawledCount != null) 'urlsCrawledCount': urlsCrawledCount!,
+        if (urlsTestedCount != null) 'urlsTestedCount': urlsTestedCount!,
         if (warningTraces != null)
           'warningTraces':
-              warningTraces.map((value) => value.toJson()).toList(),
+              warningTraces!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1845,7 +1802,7 @@ class ScanRunErrorTrace {
   /// errors from the web site pages. When available,
   /// most_common_http_error_code field indicates the most common HTTP error
   /// code encountered during the scan.
-  core.String code;
+  core.String? code;
 
   /// If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most
   /// common HTTP error code, if such is available.
@@ -1854,14 +1811,14 @@ class ScanRunErrorTrace {
   /// NOT_FOUND responses.
   ///
   /// Output only.
-  core.int mostCommonHttpErrorCode;
+  core.int? mostCommonHttpErrorCode;
 
   /// If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error
   /// message encountered during scan configuration validation that is performed
   /// before each scan run.
   ///
   /// Output only.
-  ScanConfigError scanConfigError;
+  ScanConfigError? scanConfigError;
 
   ScanRunErrorTrace();
 
@@ -1878,12 +1835,12 @@ class ScanRunErrorTrace {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
         if (mostCommonHttpErrorCode != null)
-          'mostCommonHttpErrorCode': mostCommonHttpErrorCode,
+          'mostCommonHttpErrorCode': mostCommonHttpErrorCode!,
         if (scanConfigError != null)
-          'scanConfigError': scanConfigError.toJson(),
+          'scanConfigError': scanConfigError!.toJson(),
       };
 }
 
@@ -1911,7 +1868,7 @@ class ScanRunWarningTrace {
   /// - "BLOCKED_BY_IAP" : Indicates that a scan is blocked by IAP.
   /// - "NO_STARTING_URL_FOUND_FOR_MANAGED_SCAN" : Indicates that no seeds is
   /// found for a scan
-  core.String code;
+  core.String? code;
 
   ScanRunWarningTrace();
 
@@ -1921,8 +1878,8 @@ class ScanRunWarningTrace {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
       };
 }
 
@@ -1931,14 +1888,14 @@ class Schedule {
   /// The duration of time between executions in days.
   ///
   /// Required.
-  core.int intervalDurationDays;
+  core.int? intervalDurationDays;
 
   /// A timestamp indicates when the next run will be scheduled.
   ///
   /// The value is refreshed by the server after each run. If unspecified, it
   /// will default to current server time, which means the scan will be
   /// scheduled to start immediately.
-  core.String scheduleTime;
+  core.String? scheduleTime;
 
   Schedule();
 
@@ -1951,10 +1908,10 @@ class Schedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (intervalDurationDays != null)
-          'intervalDurationDays': intervalDurationDays,
-        if (scheduleTime != null) 'scheduleTime': scheduleTime,
+          'intervalDurationDays': intervalDurationDays!,
+        if (scheduleTime != null) 'scheduleTime': scheduleTime!,
       };
 }
 
@@ -1966,7 +1923,7 @@ class StartScanRunRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request for the `StopScanRun` method.
@@ -1977,17 +1934,17 @@ class StopScanRunRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Information regarding any resource causing the vulnerability such as
 /// JavaScript sources, image, audio files, etc.
 class ViolatingResource {
   /// The MIME type of this resource.
-  core.String contentType;
+  core.String? contentType;
 
   /// URL of this violating resource.
-  core.String resourceUrl;
+  core.String? resourceUrl;
 
   ViolatingResource();
 
@@ -2000,19 +1957,19 @@ class ViolatingResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentType != null) 'contentType': contentType,
-        if (resourceUrl != null) 'resourceUrl': resourceUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentType != null) 'contentType': contentType!,
+        if (resourceUrl != null) 'resourceUrl': resourceUrl!,
       };
 }
 
 /// Information about vulnerable or missing HTTP Headers.
 class VulnerableHeaders {
   /// List of vulnerable headers.
-  core.List<Header> headers;
+  core.List<Header>? headers;
 
   /// List of missing headers.
-  core.List<Header> missingHeaders;
+  core.List<Header>? missingHeaders;
 
   VulnerableHeaders();
 
@@ -2031,19 +1988,19 @@ class VulnerableHeaders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (headers != null)
-          'headers': headers.map((value) => value.toJson()).toList(),
+          'headers': headers!.map((value) => value.toJson()).toList(),
         if (missingHeaders != null)
           'missingHeaders':
-              missingHeaders.map((value) => value.toJson()).toList(),
+              missingHeaders!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Information about vulnerable request parameters.
 class VulnerableParameters {
   /// The vulnerable parameter names.
-  core.List<core.String> parameterNames;
+  core.List<core.String>? parameterNames;
 
   VulnerableParameters();
 
@@ -2055,8 +2012,8 @@ class VulnerableParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (parameterNames != null) 'parameterNames': parameterNames,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (parameterNames != null) 'parameterNames': parameterNames!,
       };
 }
 
@@ -2086,16 +2043,16 @@ class Xss {
   /// a GET parameter.
   /// - "USER_CONTROLLABLE_URL" : The attack payload is received from a
   /// third-party host via a URL that is user-controllable
-  core.String attackVector;
+  core.String? attackVector;
 
   /// An error message generated by a javascript breakage.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   /// Stack traces leading to the point where the XSS occurred.
-  core.List<core.String> stackTraces;
+  core.List<core.String>? stackTraces;
 
   /// The reproduction url for the seeding POST request of a Stored XSS.
-  core.String storedXssSeedingUrl;
+  core.String? storedXssSeedingUrl;
 
   Xss();
 
@@ -2116,11 +2073,11 @@ class Xss {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attackVector != null) 'attackVector': attackVector,
-        if (errorMessage != null) 'errorMessage': errorMessage,
-        if (stackTraces != null) 'stackTraces': stackTraces,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attackVector != null) 'attackVector': attackVector!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (stackTraces != null) 'stackTraces': stackTraces!,
         if (storedXssSeedingUrl != null)
-          'storedXssSeedingUrl': storedXssSeedingUrl,
+          'storedXssSeedingUrl': storedXssSeedingUrl!,
       };
 }

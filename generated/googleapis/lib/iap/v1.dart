@@ -105,13 +105,9 @@ class ProjectsBrandsResource {
   async.Future<Brand> create(
     Brand request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -148,11 +144,8 @@ class ProjectsBrandsResource {
   /// this method will complete with the same error.
   async.Future<Brand> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -187,11 +180,8 @@ class ProjectsBrandsResource {
   /// this method will complete with the same error.
   async.Future<ListBrandsResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -242,13 +232,9 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
   async.Future<IdentityAwareProxyClient> create(
     IdentityAwareProxyClient request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -293,11 +279,8 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -336,11 +319,8 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
   /// this method will complete with the same error.
   async.Future<IdentityAwareProxyClient> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -387,13 +367,10 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
   /// this method will complete with the same error.
   async.Future<ListIdentityAwareProxyClientsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -441,13 +418,9 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
   async.Future<IdentityAwareProxyClient> resetSecret(
     ResetIdentityAwareProxyClientSecretRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -499,13 +472,9 @@ class V1Resource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -544,11 +513,8 @@ class V1Resource {
   /// this method will complete with the same error.
   async.Future<IapSettings> getIapSettings(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -594,13 +560,9 @@ class V1Resource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -646,13 +608,9 @@ class V1Resource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -699,14 +657,10 @@ class V1Resource {
   async.Future<IapSettings> updateIapSettings(
     IapSettings request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -733,7 +687,7 @@ class V1Resource {
 /// IAP error page will be displayed instead.
 class AccessDeniedPageSettings {
   /// The URI to be redirected to when access is denied.
-  core.String accessDeniedPageUri;
+  core.String? accessDeniedPageUri;
 
   AccessDeniedPageSettings();
 
@@ -743,28 +697,28 @@ class AccessDeniedPageSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accessDeniedPageUri != null)
-          'accessDeniedPageUri': accessDeniedPageUri,
+          'accessDeniedPageUri': accessDeniedPageUri!,
       };
 }
 
 /// Access related settings for IAP protected apps.
 class AccessSettings {
   /// Configuration to allow cross-origin requests via IAP.
-  CorsSettings corsSettings;
+  CorsSettings? corsSettings;
 
   /// GCIP claims and endpoint configurations for 3p identity providers.
-  GcipSettings gcipSettings;
+  GcipSettings? gcipSettings;
 
   /// Settings to configure IAP's OAuth behavior.
-  OAuthSettings oauthSettings;
+  OAuthSettings? oauthSettings;
 
   /// Settings to configure Policy delegation for apps hosted in tenant
   /// projects.
   ///
   /// INTERNAL_ONLY.
-  PolicyDelegationSettings policyDelegationSettings;
+  PolicyDelegationSettings? policyDelegationSettings;
 
   AccessSettings();
 
@@ -788,28 +742,28 @@ class AccessSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (corsSettings != null) 'corsSettings': corsSettings.toJson(),
-        if (gcipSettings != null) 'gcipSettings': gcipSettings.toJson(),
-        if (oauthSettings != null) 'oauthSettings': oauthSettings.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (corsSettings != null) 'corsSettings': corsSettings!.toJson(),
+        if (gcipSettings != null) 'gcipSettings': gcipSettings!.toJson(),
+        if (oauthSettings != null) 'oauthSettings': oauthSettings!.toJson(),
         if (policyDelegationSettings != null)
-          'policyDelegationSettings': policyDelegationSettings.toJson(),
+          'policyDelegationSettings': policyDelegationSettings!.toJson(),
       };
 }
 
 /// Wrapper over application specific settings for IAP.
 class ApplicationSettings {
   /// Customization for Access Denied page.
-  AccessDeniedPageSettings accessDeniedPageSettings;
+  AccessDeniedPageSettings? accessDeniedPageSettings;
 
   /// The Domain value to set for cookies generated by IAP.
   ///
   /// This value is not validated by the API, but will be ignored at runtime if
   /// invalid.
-  core.String cookieDomain;
+  core.String? cookieDomain;
 
   /// Settings to configure IAP's behavior for a CSM mesh.
-  CsmSettings csmSettings;
+  CsmSettings? csmSettings;
 
   ApplicationSettings();
 
@@ -828,11 +782,11 @@ class ApplicationSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accessDeniedPageSettings != null)
-          'accessDeniedPageSettings': accessDeniedPageSettings.toJson(),
-        if (cookieDomain != null) 'cookieDomain': cookieDomain,
-        if (csmSettings != null) 'csmSettings': csmSettings.toJson(),
+          'accessDeniedPageSettings': accessDeniedPageSettings!.toJson(),
+        if (cookieDomain != null) 'cookieDomain': cookieDomain!,
+        if (csmSettings != null) 'csmSettings': csmSettings!.toJson(),
       };
 }
 
@@ -846,7 +800,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -878,12 +832,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -902,10 +856,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -914,7 +868,7 @@ class Binding {
 /// NOTE: Only contains a portion of the data that describes a brand.
 class Brand {
   /// Application name displayed on OAuth consent screen.
-  core.String applicationTitle;
+  core.String? applicationTitle;
 
   /// Identifier of the brand.
   ///
@@ -922,16 +876,16 @@ class Brand {
   /// only one brand per project can be created.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Whether the brand is only intended for usage inside the G Suite
   /// organization only.
   ///
   /// Output only.
-  core.bool orgInternalOnly;
+  core.bool? orgInternalOnly;
 
   /// Support email displayed on the OAuth consent screen.
-  core.String supportEmail;
+  core.String? supportEmail;
 
   Brand();
 
@@ -950,11 +904,11 @@ class Brand {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (applicationTitle != null) 'applicationTitle': applicationTitle,
-        if (name != null) 'name': name,
-        if (orgInternalOnly != null) 'orgInternalOnly': orgInternalOnly,
-        if (supportEmail != null) 'supportEmail': supportEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (applicationTitle != null) 'applicationTitle': applicationTitle!,
+        if (name != null) 'name': name!,
+        if (orgInternalOnly != null) 'orgInternalOnly': orgInternalOnly!,
+        if (supportEmail != null) 'supportEmail': supportEmail!,
       };
 }
 
@@ -964,7 +918,7 @@ class CorsSettings {
   /// Configuration to allow HTTP OPTIONS calls to skip authorization.
   ///
   /// If undefined, IAP will not apply any special logic to OPTIONS requests.
-  core.bool allowHttpOptions;
+  core.bool? allowHttpOptions;
 
   CorsSettings();
 
@@ -974,8 +928,8 @@ class CorsSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowHttpOptions != null) 'allowHttpOptions': allowHttpOptions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowHttpOptions != null) 'allowHttpOptions': allowHttpOptions!,
       };
 }
 
@@ -988,7 +942,7 @@ class CsmSettings {
   /// Audience claim set in the generated RCToken.
   ///
   /// This value is not validated by IAP.
-  core.String rctokenAud;
+  core.String? rctokenAud;
 
   CsmSettings();
 
@@ -998,8 +952,8 @@ class CsmSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (rctokenAud != null) 'rctokenAud': rctokenAud,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (rctokenAud != null) 'rctokenAud': rctokenAud!,
       };
 }
 
@@ -1017,7 +971,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1045,24 +999,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -1081,11 +1035,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1095,7 +1049,7 @@ class GcipSettings {
   ///
   /// Typically, all resources within the same project share the same login
   /// page, though it could be overridden at the sub resource level.
-  core.String loginPageUri;
+  core.String? loginPageUri;
 
   /// GCIP tenant ids that are linked to the IAP resource.
   ///
@@ -1104,7 +1058,7 @@ class GcipSettings {
   /// authenticating with GCIP agent flow. If agent flow is used, tenant_ids
   /// should only contain one single element, while for tenant flow, tenant_ids
   /// can contain multiple elements.
-  core.List<core.String> tenantIds;
+  core.List<core.String>? tenantIds;
 
   GcipSettings();
 
@@ -1119,9 +1073,9 @@ class GcipSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (loginPageUri != null) 'loginPageUri': loginPageUri,
-        if (tenantIds != null) 'tenantIds': tenantIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (loginPageUri != null) 'loginPageUri': loginPageUri!,
+        if (tenantIds != null) 'tenantIds': tenantIds!,
       };
 }
 
@@ -1129,7 +1083,7 @@ class GcipSettings {
 class GetIamPolicyRequest {
   /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
   /// `GetIamPolicy`.
-  GetPolicyOptions options;
+  GetPolicyOptions? options;
 
   GetIamPolicyRequest();
 
@@ -1140,8 +1094,8 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (options != null) 'options': options.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (options != null) 'options': options!.toJson(),
       };
 }
 
@@ -1157,7 +1111,7 @@ class GetPolicyOptions {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// Optional.
-  core.int requestedPolicyVersion;
+  core.int? requestedPolicyVersion;
 
   GetPolicyOptions();
 
@@ -1167,24 +1121,24 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion,
+          'requestedPolicyVersion': requestedPolicyVersion!,
       };
 }
 
 /// The IAP configurable settings.
 class IapSettings {
   /// Top level wrapper for all access related setting in IAP
-  AccessSettings accessSettings;
+  AccessSettings? accessSettings;
 
   /// Top level wrapper for all application related settings in IAP
-  ApplicationSettings applicationSettings;
+  ApplicationSettings? applicationSettings;
 
   /// The resource name of the IAP protected resource.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   IapSettings();
 
@@ -1202,28 +1156,28 @@ class IapSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessSettings != null) 'accessSettings': accessSettings.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessSettings != null) 'accessSettings': accessSettings!.toJson(),
         if (applicationSettings != null)
-          'applicationSettings': applicationSettings.toJson(),
-        if (name != null) 'name': name,
+          'applicationSettings': applicationSettings!.toJson(),
+        if (name != null) 'name': name!,
       };
 }
 
 /// Contains the data that describes an Identity Aware Proxy owned client.
 class IdentityAwareProxyClient {
   /// Human-friendly name given to the OAuth client.
-  core.String displayName;
+  core.String? displayName;
 
   /// Unique identifier of the OAuth client.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Client secret of the OAuth client.
   ///
   /// Output only.
-  core.String secret;
+  core.String? secret;
 
   IdentityAwareProxyClient();
 
@@ -1239,17 +1193,17 @@ class IdentityAwareProxyClient {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (secret != null) 'secret': secret,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (secret != null) 'secret': secret!,
       };
 }
 
 /// Response message for ListBrands.
 class ListBrandsResponse {
   /// Brands existing in the project.
-  core.List<Brand> brands;
+  core.List<Brand>? brands;
 
   ListBrandsResponse();
 
@@ -1262,21 +1216,21 @@ class ListBrandsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (brands != null)
-          'brands': brands.map((value) => value.toJson()).toList(),
+          'brands': brands!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for ListIdentityAwareProxyClients.
 class ListIdentityAwareProxyClientsResponse {
   /// Clients existing in the brand.
-  core.List<IdentityAwareProxyClient> identityAwareProxyClients;
+  core.List<IdentityAwareProxyClient>? identityAwareProxyClients;
 
   /// A token, which can be send as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListIdentityAwareProxyClientsResponse();
 
@@ -1294,11 +1248,12 @@ class ListIdentityAwareProxyClientsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (identityAwareProxyClients != null)
-          'identityAwareProxyClients':
-              identityAwareProxyClients.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'identityAwareProxyClients': identityAwareProxyClients!
+              .map((value) => value.toJson())
+              .toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1311,7 +1266,7 @@ class OAuthSettings {
   /// https://developers.google.com/identity/protocols/OpenIDConnect#hd-param
   /// Note: IAP does not verify that the id token's hd claim matches this value
   /// since access behavior is managed by IAM policies.
-  core.String loginHint;
+  core.String? loginHint;
 
   OAuthSettings();
 
@@ -1321,8 +1276,8 @@ class OAuthSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (loginHint != null) 'loginHint': loginHint,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (loginHint != null) 'loginHint': loginHint!,
       };
 }
 
@@ -1363,7 +1318,7 @@ class Policy {
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -1377,8 +1332,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -1402,7 +1357,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -1421,11 +1376,11 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1437,20 +1392,20 @@ class Policy {
 /// by google internal teams, hence the restriction on the proto.
 class PolicyDelegationSettings {
   /// Permission to check in IAM.
-  core.String iamPermission;
+  core.String? iamPermission;
 
   /// The DNS name of the service (e.g. "resourcemanager.googleapis.com").
   ///
   /// This should be the domain name part of the full resource names (see
   /// https://aip.dev/122#full-resource-names), which is usually the same as
   /// IamServiceSpec.service of the service where the resource type is defined.
-  core.String iamServiceName;
+  core.String? iamServiceName;
 
   /// Policy name to be checked
-  PolicyName policyName;
+  PolicyName? policyName;
 
   /// IAM resource to check permission on
-  Resource resource;
+  Resource? resource;
 
   PolicyDelegationSettings();
 
@@ -1471,16 +1426,16 @@ class PolicyDelegationSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (iamPermission != null) 'iamPermission': iamPermission,
-        if (iamServiceName != null) 'iamServiceName': iamServiceName,
-        if (policyName != null) 'policyName': policyName.toJson(),
-        if (resource != null) 'resource': resource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (iamPermission != null) 'iamPermission': iamPermission!,
+        if (iamServiceName != null) 'iamServiceName': iamServiceName!,
+        if (policyName != null) 'policyName': policyName!.toJson(),
+        if (resource != null) 'resource': resource!.toJson(),
       };
 }
 
 class PolicyName {
-  core.String id;
+  core.String? id;
 
   /// For Cloud IAM: The location of the Policy.
   ///
@@ -1488,10 +1443,10 @@ class PolicyName {
   /// region from prodspec/cloud-iam-cloudspec for Regional IAM Policies, see
   /// go/iam-faq#where-is-iam-currently-deployed. For Local IAM: This field
   /// should be set to "local".
-  core.String region;
+  core.String? region;
 
   /// Valid values for type might be 'gce', 'gcs', 'project', 'account' etc.
-  core.String type;
+  core.String? type;
 
   PolicyName();
 
@@ -1507,10 +1462,10 @@ class PolicyName {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (region != null) 'region': region,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (region != null) 'region': region!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1522,7 +1477,7 @@ class ResetIdentityAwareProxyClientSecretRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 class Resource {
@@ -1540,7 +1495,7 @@ class Resource {
   /// go/iam-conditions-labels-comm and ensure your service can meet the data
   /// availability and management requirements. * Talk to iam-conditions-eng@
   /// about your use case.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Name of the resource on which conditions will be evaluated.
   ///
@@ -1552,7 +1507,7 @@ class Resource {
   /// names. For a `list` permission check, the resource.name value must be set
   /// to the parent resource. If the parent resource is a project, this field
   /// should be left unset.
-  core.String name;
+  core.String? name;
 
   /// The name of the service this resource belongs to.
   ///
@@ -1561,7 +1516,7 @@ class Resource {
   /// example, the official_service_name of cloud resource manager service is
   /// set as 'cloudresourcemanager.googleapis.com' according to
   /// //configs/cloud/resourcetypes/google/cloud/resourcemanager/prod.yaml
-  core.String service;
+  core.String? service;
 
   /// The public resource type name of the resource on which conditions will be
   /// evaluated.
@@ -1572,7 +1527,7 @@ class Resource {
   /// 'cloudresourcemanager.googleapis.com/Project' according to
   /// //configs/cloud/resourcetypes/google/cloud/resourcemanager/prod.yaml For
   /// details see go/iam-conditions-integration-guide.
-  core.String type;
+  core.String? type;
 
   Resource();
 
@@ -1597,11 +1552,11 @@ class Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (service != null) 'service': service,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (service != null) 'service': service!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1612,7 +1567,7 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   SetIamPolicyRequest();
 
@@ -1623,8 +1578,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
       };
 }
 
@@ -1635,7 +1590,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -1647,8 +1602,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -1656,7 +1611,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -1668,7 +1623,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }

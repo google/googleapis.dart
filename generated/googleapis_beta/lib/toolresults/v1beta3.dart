@@ -93,11 +93,8 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<ProjectSettings> getSettings(
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -152,11 +149,8 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<ProjectSettings> initializeSettings(
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -212,14 +206,10 @@ class ProjectsHistoriesResource {
   async.Future<History> create(
     History request,
     core.String projectId, {
-    core.String requestId,
-    core.String $fields,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -263,14 +253,8 @@ class ProjectsHistoriesResource {
   async.Future<History> get(
     core.String projectId,
     core.String historyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -323,14 +307,11 @@ class ProjectsHistoriesResource {
   /// this method will complete with the same error.
   async.Future<ListHistoriesResponse> list(
     core.String projectId, {
-    core.String filterByName,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filterByName,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filterByName != null) 'filterByName': [filterByName],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -397,17 +378,10 @@ class ProjectsHistoriesExecutionsResource {
     Execution request,
     core.String projectId,
     core.String historyId, {
-    core.String requestId,
-    core.String $fields,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -456,17 +430,8 @@ class ProjectsHistoriesExecutionsResource {
     core.String projectId,
     core.String historyId,
     core.String executionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -521,16 +486,10 @@ class ProjectsHistoriesExecutionsResource {
   async.Future<ListExecutionsResponse> list(
     core.String projectId,
     core.String historyId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -588,20 +547,10 @@ class ProjectsHistoriesExecutionsResource {
     core.String projectId,
     core.String historyId,
     core.String executionId, {
-    core.String requestId,
-    core.String $fields,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -657,20 +606,8 @@ class ProjectsHistoriesExecutionsClustersResource {
     core.String historyId,
     core.String executionId,
     core.String clusterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
-    if (clusterId == null) {
-      throw core.ArgumentError('Parameter clusterId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -724,17 +661,8 @@ class ProjectsHistoriesExecutionsClustersResource {
     core.String projectId,
     core.String historyId,
     core.String executionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -794,20 +722,8 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     core.String historyId,
     core.String executionId,
     core.String environmentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
-    if (environmentId == null) {
-      throw core.ArgumentError('Parameter environmentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -865,19 +781,10 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     core.String projectId,
     core.String historyId,
     core.String executionId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -953,12 +860,9 @@ class ProjectsHistoriesExecutionsStepsResource {
   /// this method will complete with the same error.
   async.Future<ListStepAccessibilityClustersResponse> accessibilityClusters(
     core.String name, {
-    core.String locale,
-    core.String $fields,
+    core.String? locale,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (locale != null) 'locale': [locale],
       if ($fields != null) 'fields': [$fields],
@@ -1013,20 +917,10 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String projectId,
     core.String historyId,
     core.String executionId, {
-    core.String requestId,
-    core.String $fields,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -1080,20 +974,8 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String historyId,
     core.String executionId,
     core.String stepId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
-    if (stepId == null) {
-      throw core.ArgumentError('Parameter stepId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1145,20 +1027,8 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String historyId,
     core.String executionId,
     core.String stepId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
-    if (stepId == null) {
-      throw core.ArgumentError('Parameter stepId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1221,19 +1091,10 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String projectId,
     core.String historyId,
     core.String executionId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1297,23 +1158,10 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String historyId,
     core.String executionId,
     core.String stepId, {
-    core.String requestId,
-    core.String $fields,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
-    if (stepId == null) {
-      throw core.ArgumentError('Parameter stepId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -1374,22 +1222,9 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String historyId,
     core.String executionId,
     core.String stepId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
-    if (stepId == null) {
-      throw core.ArgumentError('Parameter stepId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1455,22 +1290,9 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
     core.String historyId,
     core.String executionId,
     core.String stepId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
-    if (stepId == null) {
-      throw core.ArgumentError('Parameter stepId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1541,22 +1363,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     core.String historyId,
     core.String executionId,
     core.String stepId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
-    if (stepId == null) {
-      throw core.ArgumentError('Parameter stepId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1614,23 +1423,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     core.String executionId,
     core.String stepId,
     core.String sampleSeriesId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
-    if (stepId == null) {
-      throw core.ArgumentError('Parameter stepId is required.');
-    }
-    if (sampleSeriesId == null) {
-      throw core.ArgumentError('Parameter sampleSeriesId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1691,21 +1485,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     core.String historyId,
     core.String executionId,
     core.String stepId, {
-    core.List<core.String> filter,
-    core.String $fields,
+    core.List<core.String>? filter,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
-    if (stepId == null) {
-      throw core.ArgumentError('Parameter stepId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': filter,
       if ($fields != null) 'fields': [$fields],
@@ -1780,25 +1562,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     core.String executionId,
     core.String stepId,
     core.String sampleSeriesId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
-    if (stepId == null) {
-      throw core.ArgumentError('Parameter stepId is required.');
-    }
-    if (sampleSeriesId == null) {
-      throw core.ArgumentError('Parameter sampleSeriesId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1870,25 +1636,10 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     core.String executionId,
     core.String stepId,
     core.String sampleSeriesId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
-    if (stepId == null) {
-      throw core.ArgumentError('Parameter stepId is required.');
-    }
-    if (sampleSeriesId == null) {
-      throw core.ArgumentError('Parameter sampleSeriesId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1959,23 +1710,8 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     core.String executionId,
     core.String stepId,
     core.String testCaseId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
-    if (stepId == null) {
-      throw core.ArgumentError('Parameter stepId is required.');
-    }
-    if (testCaseId == null) {
-      throw core.ArgumentError('Parameter testCaseId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2039,22 +1775,10 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     core.String historyId,
     core.String executionId,
     core.String stepId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
-    if (stepId == null) {
-      throw core.ArgumentError('Parameter stepId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2127,22 +1851,10 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
     core.String historyId,
     core.String executionId,
     core.String stepId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (historyId == null) {
-      throw core.ArgumentError('Parameter historyId is required.');
-    }
-    if (executionId == null) {
-      throw core.ArgumentError('Parameter executionId is required.');
-    }
-    if (stepId == null) {
-      throw core.ArgumentError('Parameter stepId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2174,7 +1886,7 @@ class ANR {
   /// The stack trace of the ANR crash.
   ///
   /// Optional.
-  StackTrace stackTrace;
+  StackTrace? stackTrace;
 
   ANR();
 
@@ -2185,8 +1897,8 @@ class ANR {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (stackTrace != null) 'stackTrace': stackTrace.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (stackTrace != null) 'stackTrace': stackTrace!.toJson(),
       };
 }
 
@@ -2195,22 +1907,22 @@ class AndroidAppInfo {
   /// The name of the app.
   ///
   /// Optional
-  core.String name;
+  core.String? name;
 
   /// The package name of the app.
   ///
   /// Required.
-  core.String packageName;
+  core.String? packageName;
 
   /// The internal version code of the app.
   ///
   /// Optional.
-  core.String versionCode;
+  core.String? versionCode;
 
   /// The version name of the app.
   ///
   /// Optional.
-  core.String versionName;
+  core.String? versionName;
 
   AndroidAppInfo();
 
@@ -2229,11 +1941,11 @@ class AndroidAppInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (packageName != null) 'packageName': packageName,
-        if (versionCode != null) 'versionCode': versionCode,
-        if (versionName != null) 'versionName': versionName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (packageName != null) 'packageName': packageName!,
+        if (versionCode != null) 'versionCode': versionCode!,
+        if (versionName != null) 'versionName': versionName!,
       };
 }
 
@@ -2245,22 +1957,22 @@ class AndroidInstrumentationTest {
   /// The java package for the test to be executed.
   ///
   /// Required
-  core.String testPackageId;
+  core.String? testPackageId;
 
   /// The InstrumentationTestRunner class.
   ///
   /// Required
-  core.String testRunnerClass;
+  core.String? testRunnerClass;
 
   /// Each target must be fully qualified with the package name or class name,
   /// in one of these formats: - "package package_name" - "class
   /// package_name.class_name" - "class package_name.class_name#method_name" If
   /// empty, all targets in the module will be run.
-  core.List<core.String> testTargets;
+  core.List<core.String>? testTargets;
 
   /// The flag indicates whether Android Test Orchestrator will be used to run
   /// test or not.
-  core.bool useOrchestrator;
+  core.bool? useOrchestrator;
 
   AndroidInstrumentationTest();
 
@@ -2281,11 +1993,11 @@ class AndroidInstrumentationTest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (testPackageId != null) 'testPackageId': testPackageId,
-        if (testRunnerClass != null) 'testRunnerClass': testRunnerClass,
-        if (testTargets != null) 'testTargets': testTargets,
-        if (useOrchestrator != null) 'useOrchestrator': useOrchestrator,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (testPackageId != null) 'testPackageId': testPackageId!,
+        if (testRunnerClass != null) 'testRunnerClass': testRunnerClass!,
+        if (testTargets != null) 'testTargets': testTargets!,
+        if (useOrchestrator != null) 'useOrchestrator': useOrchestrator!,
       };
 }
 
@@ -2295,27 +2007,27 @@ class AndroidRoboTest {
   /// The initial activity that should be used to start the app.
   ///
   /// Optional
-  core.String appInitialActivity;
+  core.String? appInitialActivity;
 
   /// The java package for the bootstrap.
   ///
   /// Optional
-  core.String bootstrapPackageId;
+  core.String? bootstrapPackageId;
 
   /// The runner class for the bootstrap.
   ///
   /// Optional
-  core.String bootstrapRunnerClass;
+  core.String? bootstrapRunnerClass;
 
   /// The max depth of the traversal stack Robo can explore.
   ///
   /// Optional
-  core.int maxDepth;
+  core.int? maxDepth;
 
   /// The max number of steps/actions Robo can execute.
   ///
   /// Default is no limit (0). Optional
-  core.int maxSteps;
+  core.int? maxSteps;
 
   AndroidRoboTest();
 
@@ -2337,34 +2049,34 @@ class AndroidRoboTest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (appInitialActivity != null)
-          'appInitialActivity': appInitialActivity,
+          'appInitialActivity': appInitialActivity!,
         if (bootstrapPackageId != null)
-          'bootstrapPackageId': bootstrapPackageId,
+          'bootstrapPackageId': bootstrapPackageId!,
         if (bootstrapRunnerClass != null)
-          'bootstrapRunnerClass': bootstrapRunnerClass,
-        if (maxDepth != null) 'maxDepth': maxDepth,
-        if (maxSteps != null) 'maxSteps': maxSteps,
+          'bootstrapRunnerClass': bootstrapRunnerClass!,
+        if (maxDepth != null) 'maxDepth': maxDepth!,
+        if (maxSteps != null) 'maxSteps': maxSteps!,
       };
 }
 
 /// An Android mobile test specification.
 class AndroidTest {
   /// Information about the application under test.
-  AndroidAppInfo androidAppInfo;
+  AndroidAppInfo? androidAppInfo;
 
   /// An Android instrumentation test.
-  AndroidInstrumentationTest androidInstrumentationTest;
+  AndroidInstrumentationTest? androidInstrumentationTest;
 
   /// An Android robo test.
-  AndroidRoboTest androidRoboTest;
+  AndroidRoboTest? androidRoboTest;
 
   /// An Android test loop.
-  AndroidTestLoop androidTestLoop;
+  AndroidTestLoop? androidTestLoop;
 
   /// Max time a test is allowed to run before it is automatically cancelled.
-  Duration testTimeout;
+  Duration? testTimeout;
 
   AndroidTest();
 
@@ -2392,15 +2104,15 @@ class AndroidTest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (androidAppInfo != null) 'androidAppInfo': androidAppInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (androidAppInfo != null) 'androidAppInfo': androidAppInfo!.toJson(),
         if (androidInstrumentationTest != null)
-          'androidInstrumentationTest': androidInstrumentationTest.toJson(),
+          'androidInstrumentationTest': androidInstrumentationTest!.toJson(),
         if (androidRoboTest != null)
-          'androidRoboTest': androidRoboTest.toJson(),
+          'androidRoboTest': androidRoboTest!.toJson(),
         if (androidTestLoop != null)
-          'androidTestLoop': androidTestLoop.toJson(),
-        if (testTimeout != null) 'testTimeout': testTimeout.toJson(),
+          'androidTestLoop': androidTestLoop!.toJson(),
+        if (testTimeout != null) 'testTimeout': testTimeout!.toJson(),
       };
 }
 
@@ -2413,7 +2125,7 @@ class AndroidTestLoop {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// `Any` contains an arbitrary serialized protocol buffer message along with a
@@ -2464,11 +2176,11 @@ class Any {
   /// protobuf release, and it is not used for type URLs beginning with
   /// type.googleapis.com. Schemes other than `http`, `https` (or the empty
   /// scheme) might be used with implementation specific semantics.
-  core.String typeUrl;
+  core.String? typeUrl;
 
   /// Must be a valid serialized protocol buffer of the above specified type.
-  core.String value;
-  core.List<core.int> get valueAsBytes => convert.base64.decode(value);
+  core.String? value;
+  core.List<core.int> get valueAsBytes => convert.base64.decode(value!);
 
   set valueAsBytes(core.List<core.int> _bytes) {
     value =
@@ -2486,9 +2198,9 @@ class Any {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (typeUrl != null) 'typeUrl': typeUrl,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (typeUrl != null) 'typeUrl': typeUrl!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2501,14 +2213,14 @@ class AppStartTime {
   /// https://developer.android.com/topic/performance/launch-time.html#time-full
   ///
   /// Optional.
-  Duration fullyDrawnTime;
+  Duration? fullyDrawnTime;
 
   /// The time from app start to the first displayed activity being drawn, as
   /// reported in Logcat.
   ///
   /// See
   /// https://developer.android.com/topic/performance/launch-time.html#time-initial
-  Duration initialDisplayTime;
+  Duration? initialDisplayTime;
 
   AppStartTime();
 
@@ -2523,10 +2235,10 @@ class AppStartTime {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fullyDrawnTime != null) 'fullyDrawnTime': fullyDrawnTime.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fullyDrawnTime != null) 'fullyDrawnTime': fullyDrawnTime!.toJson(),
         if (initialDisplayTime != null)
-          'initialDisplayTime': initialDisplayTime.toJson(),
+          'initialDisplayTime': initialDisplayTime!.toJson(),
       };
 }
 
@@ -2538,7 +2250,7 @@ class AvailableDeepLinks {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Encapsulates the metadata for basic sample series represented by a line
@@ -2551,7 +2263,7 @@ class BasicPerfSampleSeries {
   /// - "cpu"
   /// - "network"
   /// - "graphics"
-  core.String perfMetricType;
+  core.String? perfMetricType;
 
   ///
   /// Possible string values are:
@@ -2561,7 +2273,7 @@ class BasicPerfSampleSeries {
   /// - "bytesPerSecond"
   /// - "framesPerSecond"
   /// - "byte"
-  core.String perfUnit;
+  core.String? perfUnit;
 
   ///
   /// Possible string values are:
@@ -2578,7 +2290,7 @@ class BasicPerfSampleSeries {
   /// - "networkSent"
   /// - "networkReceived"
   /// - "graphicsFrameRate" : Graphics sample series
-  core.String sampleSeriesLabel;
+  core.String? sampleSeriesLabel;
 
   BasicPerfSampleSeries();
 
@@ -2594,10 +2306,10 @@ class BasicPerfSampleSeries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (perfMetricType != null) 'perfMetricType': perfMetricType,
-        if (perfUnit != null) 'perfUnit': perfUnit,
-        if (sampleSeriesLabel != null) 'sampleSeriesLabel': sampleSeriesLabel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (perfMetricType != null) 'perfMetricType': perfMetricType!,
+        if (perfUnit != null) 'perfUnit': perfUnit!,
+        if (sampleSeriesLabel != null) 'sampleSeriesLabel': sampleSeriesLabel!,
       };
 }
 
@@ -2605,7 +2317,7 @@ class BasicPerfSampleSeries {
 /// larger sample size will cause an INVALID_ARGUMENT error
 class BatchCreatePerfSamplesRequest {
   /// The set of PerfSamples to create should not include existing timestamps
-  core.List<PerfSample> perfSamples;
+  core.List<PerfSample>? perfSamples;
 
   BatchCreatePerfSamplesRequest();
 
@@ -2618,14 +2330,14 @@ class BatchCreatePerfSamplesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (perfSamples != null)
-          'perfSamples': perfSamples.map((value) => value.toJson()).toList(),
+          'perfSamples': perfSamples!.map((value) => value.toJson()).toList(),
       };
 }
 
 class BatchCreatePerfSamplesResponse {
-  core.List<PerfSample> perfSamples;
+  core.List<PerfSample>? perfSamples;
 
   BatchCreatePerfSamplesResponse();
 
@@ -2638,9 +2350,9 @@ class BatchCreatePerfSamplesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (perfSamples != null)
-          'perfSamples': perfSamples.map((value) => value.toJson()).toList(),
+          'perfSamples': perfSamples!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2648,7 +2360,7 @@ class BatchCreatePerfSamplesResponse {
 /// indicate a problem with the app.
 class BlankScreen {
   /// The screen id of the element
-  core.String screenId;
+  core.String? screenId;
 
   BlankScreen();
 
@@ -2658,20 +2370,20 @@ class BlankScreen {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (screenId != null) 'screenId': screenId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (screenId != null) 'screenId': screenId!,
       };
 }
 
 class CPUInfo {
   /// description of the device processor ie '1.8 GHz hexa core 64-bit ARMv8-A'
-  core.String cpuProcessor;
+  core.String? cpuProcessor;
 
   /// the CPU clock speed in GHz
-  core.double cpuSpeedInGhz;
+  core.double? cpuSpeedInGhz;
 
   /// the number of CPU cores
-  core.int numberOfCores;
+  core.int? numberOfCores;
 
   CPUInfo();
 
@@ -2687,17 +2399,17 @@ class CPUInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cpuProcessor != null) 'cpuProcessor': cpuProcessor,
-        if (cpuSpeedInGhz != null) 'cpuSpeedInGhz': cpuSpeedInGhz,
-        if (numberOfCores != null) 'numberOfCores': numberOfCores,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cpuProcessor != null) 'cpuProcessor': cpuProcessor!,
+        if (cpuSpeedInGhz != null) 'cpuSpeedInGhz': cpuSpeedInGhz!,
+        if (numberOfCores != null) 'numberOfCores': numberOfCores!,
       };
 }
 
 /// Crash dialog was detected during the test execution
 class CrashDialogError {
   /// The name of the package that caused the dialog.
-  core.String crashPackage;
+  core.String? crashPackage;
 
   CrashDialogError();
 
@@ -2707,8 +2419,8 @@ class CrashDialogError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (crashPackage != null) 'crashPackage': crashPackage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (crashPackage != null) 'crashPackage': crashPackage!,
       };
 }
 
@@ -2720,7 +2432,7 @@ class DeviceOutOfMemory {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A Duration represents a signed, fixed-length span of time represented as a
@@ -2737,14 +2449,14 @@ class Duration {
   /// and a positive or negative `nanos` field. For durations of one second or
   /// more, a non-zero value for the `nanos` field must be of the same sign as
   /// the `seconds` field. Must be from -999,999,999 to +999,999,999 inclusive.
-  core.int nanos;
+  core.int? nanos;
 
   /// Signed seconds of the span of time.
   ///
   /// Must be from -315,576,000,000 to +315,576,000,000 inclusive. Note: these
   /// bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25
   /// days/year * 10000 years
-  core.String seconds;
+  core.String? seconds;
 
   Duration();
 
@@ -2757,19 +2469,19 @@ class Duration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nanos != null) 'nanos': nanos,
-        if (seconds != null) 'seconds': seconds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nanos != null) 'nanos': nanos!,
+        if (seconds != null) 'seconds': seconds!,
       };
 }
 
 /// Additional details about encountered login screens.
 class EncounteredLoginScreen {
   /// Number of encountered distinct login screens.
-  core.int distinctScreens;
+  core.int? distinctScreens;
 
   /// Subset of login screens.
-  core.List<core.String> screenIds;
+  core.List<core.String>? screenIds;
 
   EncounteredLoginScreen();
 
@@ -2784,9 +2496,9 @@ class EncounteredLoginScreen {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (distinctScreens != null) 'distinctScreens': distinctScreens,
-        if (screenIds != null) 'screenIds': screenIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (distinctScreens != null) 'distinctScreens': distinctScreens!,
+        if (screenIds != null) 'screenIds': screenIds!,
       };
 }
 
@@ -2794,10 +2506,10 @@ class EncounteredLoginScreen {
 /// Android UI widgets.
 class EncounteredNonAndroidUiWidgetScreen {
   /// Number of encountered distinct screens with non Android UI widgets.
-  core.int distinctScreens;
+  core.int? distinctScreens;
 
   /// Subset of screens which contain non Android UI widgets.
-  core.List<core.String> screenIds;
+  core.List<core.String>? screenIds;
 
   EncounteredNonAndroidUiWidgetScreen();
 
@@ -2812,9 +2524,9 @@ class EncounteredNonAndroidUiWidgetScreen {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (distinctScreens != null) 'distinctScreens': distinctScreens,
-        if (screenIds != null) 'screenIds': screenIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (distinctScreens != null) 'distinctScreens': distinctScreens!,
+        if (screenIds != null) 'screenIds': screenIds!,
       };
 }
 
@@ -2831,50 +2543,50 @@ class Environment {
   /// This value will be set automatically when state transitions to COMPLETE.
   ///
   /// Output only.
-  Timestamp completionTime;
+  Timestamp? completionTime;
 
   /// The time when the Environment was created.
   ///
   /// Output only.
-  Timestamp creationTime;
+  Timestamp? creationTime;
 
   /// Dimension values describing the environment.
   ///
   /// Dimension values always consist of "Model", "Version", "Locale", and
   /// "Orientation". - In response: always set - In create request: always set -
   /// In update request: never set
-  core.List<EnvironmentDimensionValueEntry> dimensionValue;
+  core.List<EnvironmentDimensionValueEntry>? dimensionValue;
 
   /// A short human-readable name to display in the UI.
   ///
   /// Maximum of 100 characters. For example: Nexus 5, API 27.
-  core.String displayName;
+  core.String? displayName;
 
   /// An Environment id.
   ///
   /// Output only.
-  core.String environmentId;
+  core.String? environmentId;
 
   /// Merged result of the environment.
-  MergedResult environmentResult;
+  MergedResult? environmentResult;
 
   /// An Execution id.
   ///
   /// Output only.
-  core.String executionId;
+  core.String? executionId;
 
   /// A History id.
   ///
   /// Output only.
-  core.String historyId;
+  core.String? historyId;
 
   /// A Project id.
   ///
   /// Output only.
-  core.String projectId;
+  core.String? projectId;
 
   /// The location where output files are stored in the user bucket.
-  ResultsStorage resultsStorage;
+  ResultsStorage? resultsStorage;
 
   /// Summaries of shards.
   ///
@@ -2882,7 +2594,7 @@ class Environment {
   /// TestExecutionService.
   ///
   /// Output only.
-  core.List<ShardSummary> shardSummaries;
+  core.List<ShardSummary>? shardSummaries;
 
   Environment();
 
@@ -2933,29 +2645,29 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (completionTime != null) 'completionTime': completionTime.toJson(),
-        if (creationTime != null) 'creationTime': creationTime.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (completionTime != null) 'completionTime': completionTime!.toJson(),
+        if (creationTime != null) 'creationTime': creationTime!.toJson(),
         if (dimensionValue != null)
           'dimensionValue':
-              dimensionValue.map((value) => value.toJson()).toList(),
-        if (displayName != null) 'displayName': displayName,
-        if (environmentId != null) 'environmentId': environmentId,
+              dimensionValue!.map((value) => value.toJson()).toList(),
+        if (displayName != null) 'displayName': displayName!,
+        if (environmentId != null) 'environmentId': environmentId!,
         if (environmentResult != null)
-          'environmentResult': environmentResult.toJson(),
-        if (executionId != null) 'executionId': executionId,
-        if (historyId != null) 'historyId': historyId,
-        if (projectId != null) 'projectId': projectId,
-        if (resultsStorage != null) 'resultsStorage': resultsStorage.toJson(),
+          'environmentResult': environmentResult!.toJson(),
+        if (executionId != null) 'executionId': executionId!,
+        if (historyId != null) 'historyId': historyId!,
+        if (projectId != null) 'projectId': projectId!,
+        if (resultsStorage != null) 'resultsStorage': resultsStorage!.toJson(),
         if (shardSummaries != null)
           'shardSummaries':
-              shardSummaries.map((value) => value.toJson()).toList(),
+              shardSummaries!.map((value) => value.toJson()).toList(),
       };
 }
 
 class EnvironmentDimensionValueEntry {
-  core.String key;
-  core.String value;
+  core.String? key;
+  core.String? value;
 
   EnvironmentDimensionValueEntry();
 
@@ -2968,9 +2680,9 @@ class EnvironmentDimensionValueEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2987,13 +2699,13 @@ class Execution {
   /// This value will be set automatically when state transitions to COMPLETE. -
   /// In response: set if the execution state is COMPLETE. - In create/update
   /// request: never set
-  Timestamp completionTime;
+  Timestamp? completionTime;
 
   /// The time when the Execution was created.
   ///
   /// This value will be set automatically when CreateExecution is called. - In
   /// response: always set - In create/update request: never set
-  Timestamp creationTime;
+  Timestamp? creationTime;
 
   /// The dimensions along which different steps in this execution may vary.
   ///
@@ -3003,24 +2715,24 @@ class Execution {
   /// dimension_definition. Returns INVALID_ARGUMENT if the size of the list is
   /// over 100. - In response: present if set by create - In create request:
   /// optional - In update request: never set
-  core.List<MatrixDimensionDefinition> dimensionDefinitions;
+  core.List<MatrixDimensionDefinition>? dimensionDefinitions;
 
   /// A unique identifier within a History for this Execution.
   ///
   /// Returns INVALID_ARGUMENT if this field is set or overwritten by the
   /// caller. - In response always set - In create/update request: never set
-  core.String executionId;
+  core.String? executionId;
 
   /// Classify the result, for example into SUCCESS or FAILURE - In response:
   /// present if set by create/update request - In create/update request:
   /// optional
-  Outcome outcome;
+  Outcome? outcome;
 
   /// Lightweight information about execution request.
   ///
   /// - In response: present if set by create - In create: optional - In update:
   /// optional
-  Specification specification;
+  Specification? specification;
 
   /// The initial state is IN_PROGRESS.
   ///
@@ -3041,13 +2753,13 @@ class Execution {
   /// - "inProgress" : The Execution/Step is in progress.
   /// - "complete" : The finalized, immutable state. Steps/Executions in this
   /// state cannot be modified.
-  core.String state;
+  core.String? state;
 
   /// TestExecution Matrix ID that the TestExecutionService uses.
   ///
   /// - In response: present if set by create - In create: optional - In update:
   /// never set
-  core.String testExecutionMatrixId;
+  core.String? testExecutionMatrixId;
 
   Execution();
 
@@ -3086,18 +2798,18 @@ class Execution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (completionTime != null) 'completionTime': completionTime.toJson(),
-        if (creationTime != null) 'creationTime': creationTime.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (completionTime != null) 'completionTime': completionTime!.toJson(),
+        if (creationTime != null) 'creationTime': creationTime!.toJson(),
         if (dimensionDefinitions != null)
           'dimensionDefinitions':
-              dimensionDefinitions.map((value) => value.toJson()).toList(),
-        if (executionId != null) 'executionId': executionId,
-        if (outcome != null) 'outcome': outcome.toJson(),
-        if (specification != null) 'specification': specification.toJson(),
-        if (state != null) 'state': state,
+              dimensionDefinitions!.map((value) => value.toJson()).toList(),
+        if (executionId != null) 'executionId': executionId!,
+        if (outcome != null) 'outcome': outcome!.toJson(),
+        if (specification != null) 'specification': specification!.toJson(),
+        if (state != null) 'state': state!,
         if (testExecutionMatrixId != null)
-          'testExecutionMatrixId': testExecutionMatrixId,
+          'testExecutionMatrixId': testExecutionMatrixId!,
       };
 }
 
@@ -3109,36 +2821,36 @@ class FailedToInstall {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Details for an outcome with a FAILURE outcome summary.
 class FailureDetail {
   /// If the failure was severe because the system (app) under test crashed.
-  core.bool crashed;
+  core.bool? crashed;
 
   /// If the device ran out of memory during a test, causing the test to crash.
-  core.bool deviceOutOfMemory;
+  core.bool? deviceOutOfMemory;
 
   /// If the Roboscript failed to complete successfully, e.g., because a
   /// Roboscript action or assertion failed or a Roboscript action could not be
   /// matched during the entire crawl.
-  core.bool failedRoboscript;
+  core.bool? failedRoboscript;
 
   /// If an app is not installed and thus no test can be run with the app.
   ///
   /// This might be caused by trying to run a test on an unsupported platform.
-  core.bool notInstalled;
+  core.bool? notInstalled;
 
   /// If a native process (including any other than the app) crashed.
-  core.bool otherNativeCrash;
+  core.bool? otherNativeCrash;
 
   /// If the test overran some time limit, and that is why it failed.
-  core.bool timedOut;
+  core.bool? timedOut;
 
   /// If the robo was unable to crawl the app; perhaps because the app did not
   /// start.
-  core.bool unableToCrawl;
+  core.bool? unableToCrawl;
 
   FailureDetail();
 
@@ -3166,14 +2878,14 @@ class FailureDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (crashed != null) 'crashed': crashed,
-        if (deviceOutOfMemory != null) 'deviceOutOfMemory': deviceOutOfMemory,
-        if (failedRoboscript != null) 'failedRoboscript': failedRoboscript,
-        if (notInstalled != null) 'notInstalled': notInstalled,
-        if (otherNativeCrash != null) 'otherNativeCrash': otherNativeCrash,
-        if (timedOut != null) 'timedOut': timedOut,
-        if (unableToCrawl != null) 'unableToCrawl': unableToCrawl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (crashed != null) 'crashed': crashed!,
+        if (deviceOutOfMemory != null) 'deviceOutOfMemory': deviceOutOfMemory!,
+        if (failedRoboscript != null) 'failedRoboscript': failedRoboscript!,
+        if (notInstalled != null) 'notInstalled': notInstalled!,
+        if (otherNativeCrash != null) 'otherNativeCrash': otherNativeCrash!,
+        if (timedOut != null) 'timedOut': timedOut!,
+        if (unableToCrawl != null) 'unableToCrawl': unableToCrawl!,
       };
 }
 
@@ -3182,7 +2894,7 @@ class FatalException {
   /// The stack trace of the fatal exception.
   ///
   /// Optional.
-  StackTrace stackTrace;
+  StackTrace? stackTrace;
 
   FatalException();
 
@@ -3193,8 +2905,8 @@ class FatalException {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (stackTrace != null) 'stackTrace': stackTrace.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (stackTrace != null) 'stackTrace': stackTrace!.toJson(),
       };
 }
 
@@ -3207,7 +2919,7 @@ class FileReference {
   /// gs://mybucket/path/to/test.xml#1360383693690000 An INVALID_ARGUMENT error
   /// will be returned if the URI format is not supported. - In response: always
   /// set - In create/update request: always set
-  core.String fileUri;
+  core.String? fileUri;
 
   FileReference();
 
@@ -3217,8 +2929,8 @@ class FileReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fileUri != null) 'fileUri': fileUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fileUri != null) 'fileUri': fileUri!,
       };
 }
 
@@ -3233,42 +2945,42 @@ class GraphicsStats {
   ///
   /// There should be 154 buckets ranging from \[5ms, 6ms) to \[4950ms,
   /// infinity)
-  core.List<GraphicsStatsBucket> buckets;
+  core.List<GraphicsStatsBucket>? buckets;
 
   /// Total "high input latency" events.
-  core.String highInputLatencyCount;
+  core.String? highInputLatencyCount;
 
   /// Total frames with slow render time.
   ///
   /// Should be <= total_frames.
-  core.String jankyFrames;
+  core.String? jankyFrames;
 
   /// Total "missed vsync" events.
-  core.String missedVsyncCount;
+  core.String? missedVsyncCount;
 
   /// 50th percentile frame render time in milliseconds.
-  core.String p50Millis;
+  core.String? p50Millis;
 
   /// 90th percentile frame render time in milliseconds.
-  core.String p90Millis;
+  core.String? p90Millis;
 
   /// 95th percentile frame render time in milliseconds.
-  core.String p95Millis;
+  core.String? p95Millis;
 
   /// 99th percentile frame render time in milliseconds.
-  core.String p99Millis;
+  core.String? p99Millis;
 
   /// Total "slow bitmap upload" events.
-  core.String slowBitmapUploadCount;
+  core.String? slowBitmapUploadCount;
 
   /// Total "slow draw" events.
-  core.String slowDrawCount;
+  core.String? slowDrawCount;
 
   /// Total "slow UI thread" events.
-  core.String slowUiThreadCount;
+  core.String? slowUiThreadCount;
 
   /// Total frames rendered by package.
-  core.String totalFrames;
+  core.String? totalFrames;
 
   GraphicsStats();
 
@@ -3314,31 +3026,31 @@ class GraphicsStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (buckets != null)
-          'buckets': buckets.map((value) => value.toJson()).toList(),
+          'buckets': buckets!.map((value) => value.toJson()).toList(),
         if (highInputLatencyCount != null)
-          'highInputLatencyCount': highInputLatencyCount,
-        if (jankyFrames != null) 'jankyFrames': jankyFrames,
-        if (missedVsyncCount != null) 'missedVsyncCount': missedVsyncCount,
-        if (p50Millis != null) 'p50Millis': p50Millis,
-        if (p90Millis != null) 'p90Millis': p90Millis,
-        if (p95Millis != null) 'p95Millis': p95Millis,
-        if (p99Millis != null) 'p99Millis': p99Millis,
+          'highInputLatencyCount': highInputLatencyCount!,
+        if (jankyFrames != null) 'jankyFrames': jankyFrames!,
+        if (missedVsyncCount != null) 'missedVsyncCount': missedVsyncCount!,
+        if (p50Millis != null) 'p50Millis': p50Millis!,
+        if (p90Millis != null) 'p90Millis': p90Millis!,
+        if (p95Millis != null) 'p95Millis': p95Millis!,
+        if (p99Millis != null) 'p99Millis': p99Millis!,
         if (slowBitmapUploadCount != null)
-          'slowBitmapUploadCount': slowBitmapUploadCount,
-        if (slowDrawCount != null) 'slowDrawCount': slowDrawCount,
-        if (slowUiThreadCount != null) 'slowUiThreadCount': slowUiThreadCount,
-        if (totalFrames != null) 'totalFrames': totalFrames,
+          'slowBitmapUploadCount': slowBitmapUploadCount!,
+        if (slowDrawCount != null) 'slowDrawCount': slowDrawCount!,
+        if (slowUiThreadCount != null) 'slowUiThreadCount': slowUiThreadCount!,
+        if (totalFrames != null) 'totalFrames': totalFrames!,
       };
 }
 
 class GraphicsStatsBucket {
   /// Number of frames in the bucket.
-  core.String frameCount;
+  core.String? frameCount;
 
   /// Lower bound of render time in milliseconds.
-  core.String renderMillis;
+  core.String? renderMillis;
 
   GraphicsStatsBucket();
 
@@ -3351,9 +3063,9 @@ class GraphicsStatsBucket {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (frameCount != null) 'frameCount': frameCount,
-        if (renderMillis != null) 'renderMillis': renderMillis,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (frameCount != null) 'frameCount': frameCount!,
+        if (renderMillis != null) 'renderMillis': renderMillis!,
       };
 }
 
@@ -3369,19 +3081,19 @@ class History {
   ///
   /// Maximum of 100 characters. - In response: present if set during create. -
   /// In create request: optional
-  core.String displayName;
+  core.String? displayName;
 
   /// A unique identifier within a project for this History.
   ///
   /// Returns INVALID_ARGUMENT if this field is set or overwritten by the
   /// caller. - In response always set - In create request: never set
-  core.String historyId;
+  core.String? historyId;
 
   /// A name to uniquely identify a history within a project.
   ///
   /// Maximum of 200 characters. - In response always set - In create request:
   /// always set
-  core.String name;
+  core.String? name;
 
   /// The platform of the test history.
   ///
@@ -3391,7 +3103,7 @@ class History {
   /// - "unknownPlatform"
   /// - "android"
   /// - "ios"
-  core.String testPlatform;
+  core.String? testPlatform;
 
   History();
 
@@ -3410,32 +3122,32 @@ class History {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (historyId != null) 'historyId': historyId,
-        if (name != null) 'name': name,
-        if (testPlatform != null) 'testPlatform': testPlatform,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (historyId != null) 'historyId': historyId!,
+        if (name != null) 'name': name!,
+        if (testPlatform != null) 'testPlatform': testPlatform!,
       };
 }
 
 /// An image, with a link to the main image and a thumbnail.
 class Image {
   /// An error explaining why the thumbnail could not be rendered.
-  Status error;
+  Status? error;
 
   /// A reference to the full-size, original image.
   ///
   /// This is the same as the tool_outputs entry for the image under its Step.
   /// Always set.
-  ToolOutputReference sourceImage;
+  ToolOutputReference? sourceImage;
 
   /// The step to which the image is attached.
   ///
   /// Always set.
-  core.String stepId;
+  core.String? stepId;
 
   /// The thumbnail.
-  Thumbnail thumbnail;
+  Thumbnail? thumbnail;
 
   Image();
 
@@ -3457,11 +3169,11 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (error != null) 'error': error.toJson(),
-        if (sourceImage != null) 'sourceImage': sourceImage.toJson(),
-        if (stepId != null) 'stepId': stepId,
-        if (thumbnail != null) 'thumbnail': thumbnail.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (error != null) 'error': error!.toJson(),
+        if (sourceImage != null) 'sourceImage': sourceImage!.toJson(),
+        if (stepId != null) 'stepId': stepId!,
+        if (thumbnail != null) 'thumbnail': thumbnail!.toJson(),
       };
 }
 
@@ -3469,10 +3181,10 @@ class Image {
 class InAppPurchasesFound {
   /// The total number of in-app purchases flows explored: how many times the
   /// robo tries to buy a SKU.
-  core.int inAppPurchasesFlowsExplored;
+  core.int? inAppPurchasesFlowsExplored;
 
   /// The total number of in-app purchases flows started.
-  core.int inAppPurchasesFlowsStarted;
+  core.int? inAppPurchasesFlowsStarted;
 
   InAppPurchasesFound();
 
@@ -3487,11 +3199,11 @@ class InAppPurchasesFound {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (inAppPurchasesFlowsExplored != null)
-          'inAppPurchasesFlowsExplored': inAppPurchasesFlowsExplored,
+          'inAppPurchasesFlowsExplored': inAppPurchasesFlowsExplored!,
         if (inAppPurchasesFlowsStarted != null)
-          'inAppPurchasesFlowsStarted': inAppPurchasesFlowsStarted,
+          'inAppPurchasesFlowsStarted': inAppPurchasesFlowsStarted!,
       };
 }
 
@@ -3502,18 +3214,18 @@ class InconclusiveDetail {
   ///
   /// For example, the user pressed ctrl-c which sent a kill signal to the test
   /// runner while the test was running.
-  core.bool abortedByUser;
+  core.bool? abortedByUser;
 
   /// If results are being provided to the user in certain cases of
   /// infrastructure failures
-  core.bool hasErrorLogs;
+  core.bool? hasErrorLogs;
 
   /// If the test runner could not determine success or failure because the test
   /// depends on a component other than the system under test which failed.
   ///
   /// For example, a mobile test requires provisioning a device where the test
   /// executes, and that provisioning can fail.
-  core.bool infrastructureFailure;
+  core.bool? infrastructureFailure;
 
   InconclusiveDetail();
 
@@ -3529,11 +3241,11 @@ class InconclusiveDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (abortedByUser != null) 'abortedByUser': abortedByUser,
-        if (hasErrorLogs != null) 'hasErrorLogs': hasErrorLogs,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (abortedByUser != null) 'abortedByUser': abortedByUser!,
+        if (hasErrorLogs != null) 'hasErrorLogs': hasErrorLogs!,
         if (infrastructureFailure != null)
-          'infrastructureFailure': infrastructureFailure,
+          'infrastructureFailure': infrastructureFailure!,
       };
 }
 
@@ -3544,7 +3256,7 @@ class IndividualOutcome {
   ///
   /// Ranges from 0(inclusive) to total number of steps(exclusive). The primary
   /// step is 0.
-  core.int multistepNumber;
+  core.int? multistepNumber;
 
   ///
   /// Possible string values are:
@@ -3561,11 +3273,11 @@ class IndividualOutcome {
   /// configurations were incompatible.
   /// - "flaky" : A group of steps that were run with the same configuration had
   /// both failure and success outcomes.
-  core.String outcomeSummary;
+  core.String? outcomeSummary;
 
   /// How long it took for this step to run.
-  Duration runDuration;
-  core.String stepId;
+  Duration? runDuration;
+  core.String? stepId;
 
   IndividualOutcome();
 
@@ -3585,11 +3297,11 @@ class IndividualOutcome {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (multistepNumber != null) 'multistepNumber': multistepNumber,
-        if (outcomeSummary != null) 'outcomeSummary': outcomeSummary,
-        if (runDuration != null) 'runDuration': runDuration.toJson(),
-        if (stepId != null) 'stepId': stepId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (multistepNumber != null) 'multistepNumber': multistepNumber!,
+        if (outcomeSummary != null) 'outcomeSummary': outcomeSummary!,
+        if (runDuration != null) 'runDuration': runDuration!.toJson(),
+        if (stepId != null) 'stepId': stepId!,
       };
 }
 
@@ -3601,7 +3313,7 @@ class InsufficientCoverage {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Additional details for an iOS app crash.
@@ -3609,7 +3321,7 @@ class IosAppCrashed {
   /// The stack trace, if one is available.
   ///
   /// Optional.
-  StackTrace stackTrace;
+  StackTrace? stackTrace;
 
   IosAppCrashed();
 
@@ -3620,8 +3332,8 @@ class IosAppCrashed {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (stackTrace != null) 'stackTrace': stackTrace.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (stackTrace != null) 'stackTrace': stackTrace!.toJson(),
       };
 }
 
@@ -3630,7 +3342,7 @@ class IosAppInfo {
   /// The name of the app.
   ///
   /// Required
-  core.String name;
+  core.String? name;
 
   IosAppInfo();
 
@@ -3640,8 +3352,8 @@ class IosAppInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3653,25 +3365,25 @@ class IosRoboTest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A iOS mobile test specification
 class IosTest {
   /// Information about the application under test.
-  IosAppInfo iosAppInfo;
+  IosAppInfo? iosAppInfo;
 
   /// An iOS Robo test.
-  IosRoboTest iosRoboTest;
+  IosRoboTest? iosRoboTest;
 
   /// An iOS test loop.
-  IosTestLoop iosTestLoop;
+  IosTestLoop? iosTestLoop;
 
   /// An iOS XCTest.
-  IosXcTest iosXcTest;
+  IosXcTest? iosXcTest;
 
   /// Max time a test is allowed to run before it is automatically cancelled.
-  Duration testTimeout;
+  Duration? testTimeout;
 
   IosTest();
 
@@ -3698,19 +3410,19 @@ class IosTest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (iosAppInfo != null) 'iosAppInfo': iosAppInfo.toJson(),
-        if (iosRoboTest != null) 'iosRoboTest': iosRoboTest.toJson(),
-        if (iosTestLoop != null) 'iosTestLoop': iosTestLoop.toJson(),
-        if (iosXcTest != null) 'iosXcTest': iosXcTest.toJson(),
-        if (testTimeout != null) 'testTimeout': testTimeout.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (iosAppInfo != null) 'iosAppInfo': iosAppInfo!.toJson(),
+        if (iosRoboTest != null) 'iosRoboTest': iosRoboTest!.toJson(),
+        if (iosTestLoop != null) 'iosTestLoop': iosTestLoop!.toJson(),
+        if (iosXcTest != null) 'iosXcTest': iosXcTest!.toJson(),
+        if (testTimeout != null) 'testTimeout': testTimeout!.toJson(),
       };
 }
 
 /// A game loop test of an iOS application.
 class IosTestLoop {
   /// Bundle ID of the app.
-  core.String bundleId;
+  core.String? bundleId;
 
   IosTestLoop();
 
@@ -3720,18 +3432,18 @@ class IosTestLoop {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bundleId != null) 'bundleId': bundleId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bundleId != null) 'bundleId': bundleId!,
       };
 }
 
 /// A test of an iOS application that uses the XCTest framework.
 class IosXcTest {
   /// Bundle ID of the app.
-  core.String bundleId;
+  core.String? bundleId;
 
   /// Xcode version that the test was run with.
-  core.String xcodeVersion;
+  core.String? xcodeVersion;
 
   IosXcTest();
 
@@ -3744,9 +3456,9 @@ class IosXcTest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bundleId != null) 'bundleId': bundleId,
-        if (xcodeVersion != null) 'xcodeVersion': xcodeVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bundleId != null) 'bundleId': bundleId!,
+        if (xcodeVersion != null) 'xcodeVersion': xcodeVersion!,
       };
 }
 
@@ -3758,7 +3470,7 @@ class LauncherActivityNotFound {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response message for EnvironmentService.ListEnvironments.
@@ -3766,25 +3478,25 @@ class ListEnvironmentsResponse {
   /// Environments.
   ///
   /// Always set.
-  core.List<Environment> environments;
+  core.List<Environment>? environments;
 
   /// A Execution id Always set.
-  core.String executionId;
+  core.String? executionId;
 
   /// A History id.
   ///
   /// Always set.
-  core.String historyId;
+  core.String? historyId;
 
   /// A continuation token to resume the query at the next item.
   ///
   /// Will only be set if there are more Environments to fetch.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A Project id.
   ///
   /// Always set.
-  core.String projectId;
+  core.String? projectId;
 
   ListEnvironmentsResponse();
 
@@ -3809,13 +3521,13 @@ class ListEnvironmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (environments != null)
-          'environments': environments.map((value) => value.toJson()).toList(),
-        if (executionId != null) 'executionId': executionId,
-        if (historyId != null) 'historyId': historyId,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (projectId != null) 'projectId': projectId,
+          'environments': environments!.map((value) => value.toJson()).toList(),
+        if (executionId != null) 'executionId': executionId!,
+        if (historyId != null) 'historyId': historyId!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
@@ -3823,12 +3535,12 @@ class ListExecutionsResponse {
   /// Executions.
   ///
   /// Always set.
-  core.List<Execution> executions;
+  core.List<Execution>? executions;
 
   /// A continuation token to resume the query at the next item.
   ///
   /// Will only be set if there are more Executions to fetch.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListExecutionsResponse();
 
@@ -3844,17 +3556,17 @@ class ListExecutionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (executions != null)
-          'executions': executions.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'executions': executions!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for HistoryService.List
 class ListHistoriesResponse {
   /// Histories.
-  core.List<History> histories;
+  core.List<History>? histories;
 
   /// A continuation token to resume the query at the next item.
   ///
@@ -3863,7 +3575,7 @@ class ListHistoriesResponse {
   /// if you make a list request at 1PM and use the token from this first
   /// request 10 minutes later, the token from this second response will only be
   /// valid for 50 minutes.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListHistoriesResponse();
 
@@ -3879,16 +3591,16 @@ class ListHistoriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (histories != null)
-          'histories': histories.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'histories': histories!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 class ListPerfSampleSeriesResponse {
   /// The resulting PerfSampleSeries sorted by id
-  core.List<PerfSampleSeries> perfSampleSeries;
+  core.List<PerfSampleSeries>? perfSampleSeries;
 
   ListPerfSampleSeriesResponse();
 
@@ -3901,10 +3613,10 @@ class ListPerfSampleSeriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (perfSampleSeries != null)
           'perfSampleSeries':
-              perfSampleSeries.map((value) => value.toJson()).toList(),
+              perfSampleSeries!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3914,8 +3626,8 @@ class ListPerfSamplesResponse {
   ///
   /// It indicates the last sample timestamp to be used as page_token in
   /// subsequent request
-  core.String nextPageToken;
-  core.List<PerfSample> perfSamples;
+  core.String? nextPageToken;
+  core.List<PerfSample>? perfSamples;
 
   ListPerfSamplesResponse();
 
@@ -3931,16 +3643,16 @@ class ListPerfSamplesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (perfSamples != null)
-          'perfSamples': perfSamples.map((value) => value.toJson()).toList(),
+          'perfSamples': perfSamples!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ListScreenshotClustersResponse {
   /// The set of clusters associated with an execution Always set
-  core.List<ScreenshotCluster> clusters;
+  core.List<ScreenshotCluster>? clusters;
 
   ListScreenshotClustersResponse();
 
@@ -3953,9 +3665,9 @@ class ListScreenshotClustersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clusters != null)
-          'clusters': clusters.map((value) => value.toJson()).toList(),
+          'clusters': clusters!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3967,13 +3679,13 @@ class ListStepAccessibilityClustersResponse {
   /// should be adjacent. Within each category, clusters should be ordered by
   /// their SuggestionPriority (ERRORs first). The categories should be ordered
   /// by their highest priority cluster.
-  core.List<SuggestionClusterProto> clusters;
+  core.List<SuggestionClusterProto>? clusters;
 
   /// A full resource name of the step.
   ///
   /// For example, projects/my-project/histories/bh.1234567890abcdef/executions/
   /// 1234567890123456789/steps/bs.1234567890abcdef Always presents.
-  core.String name;
+  core.String? name;
 
   ListStepAccessibilityClustersResponse();
 
@@ -3990,10 +3702,10 @@ class ListStepAccessibilityClustersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clusters != null)
-          'clusters': clusters.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+          'clusters': clusters!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -4003,7 +3715,7 @@ class ListStepThumbnailsResponse {
   ///
   /// If set, indicates that there are more thumbnails to read, by calling list
   /// again with this value in the page_token field.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of image data.
   ///
@@ -4013,7 +3725,7 @@ class ListStepThumbnailsResponse {
   /// Second, by their creation time. Images without a creation time are greater
   /// than images with one. * Third, by the order in which they were added to
   /// the step (by calls to CreateStep or UpdateStep).
-  core.List<Image> thumbnails;
+  core.List<Image>? thumbnails;
 
   ListStepThumbnailsResponse();
 
@@ -4029,10 +3741,10 @@ class ListStepThumbnailsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (thumbnails != null)
-          'thumbnails': thumbnails.map((value) => value.toJson()).toList(),
+          'thumbnails': thumbnails!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4042,10 +3754,10 @@ class ListStepsResponse {
   ///
   /// If set, indicates that there are more steps to read, by calling list again
   /// with this value in the page_token field.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Steps.
-  core.List<Step> steps;
+  core.List<Step>? steps;
 
   ListStepsResponse();
 
@@ -4061,19 +3773,19 @@ class ListStepsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (steps != null)
-          'steps': steps.map((value) => value.toJson()).toList(),
+          'steps': steps!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for StepService.ListTestCases.
 class ListTestCasesResponse {
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of test cases.
-  core.List<TestCase> testCases;
+  core.List<TestCase>? testCases;
 
   ListTestCasesResponse();
 
@@ -4089,10 +3801,10 @@ class ListTestCasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (testCases != null)
-          'testCases': testCases.map((value) => value.toJson()).toList(),
+          'testCases': testCases!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4104,7 +3816,7 @@ class LogcatCollectionError {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// One dimension of the matrix of different runs of a step.
@@ -4115,15 +3827,15 @@ class MatrixDimensionDefinition {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 class MemoryInfo {
   /// Maximum memory that can be allocated to the process in KiB
-  core.String memoryCapInKibibyte;
+  core.String? memoryCapInKibibyte;
 
   /// Total memory available on the device in KiB
-  core.String memoryTotalInKibibyte;
+  core.String? memoryTotalInKibibyte;
 
   MemoryInfo();
 
@@ -4136,11 +3848,11 @@ class MemoryInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (memoryCapInKibibyte != null)
-          'memoryCapInKibibyte': memoryCapInKibibyte,
+          'memoryCapInKibibyte': memoryCapInKibibyte!,
         if (memoryTotalInKibibyte != null)
-          'memoryTotalInKibibyte': memoryTotalInKibibyte,
+          'memoryTotalInKibibyte': memoryTotalInKibibyte!,
       };
 }
 
@@ -4152,7 +3864,7 @@ class MemoryInfo {
 /// the same environment are merged into one environment result.
 class MergedResult {
   /// Outcome of the resource
-  Outcome outcome;
+  Outcome? outcome;
 
   /// State of the resource
   /// Possible string values are:
@@ -4164,7 +3876,7 @@ class MergedResult {
   /// - "inProgress" : The Execution/Step is in progress.
   /// - "complete" : The finalized, immutable state. Steps/Executions in this
   /// state cannot be modified.
-  core.String state;
+  core.String? state;
 
   /// The combined and rolled-up result of each test suite that was run as part
   /// of this environment.
@@ -4176,7 +3888,7 @@ class MergedResult {
   /// multiple times (flaky), the results are combined (e.g., if testcase1.run1
   /// fails, testcase1.run2 passes, and both testcase2.run1 and testcase2.run2
   /// fail then the overview flaky_count = 1 and failure_count = 1).
-  core.List<TestSuiteOverview> testSuiteOverviews;
+  core.List<TestSuiteOverview>? testSuiteOverviews;
 
   MergedResult();
 
@@ -4196,12 +3908,12 @@ class MergedResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (outcome != null) 'outcome': outcome.toJson(),
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (outcome != null) 'outcome': outcome!.toJson(),
+        if (state != null) 'state': state!,
         if (testSuiteOverviews != null)
           'testSuiteOverviews':
-              testSuiteOverviews.map((value) => value.toJson()).toList(),
+              testSuiteOverviews!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4211,13 +3923,13 @@ class MultiStep {
   ///
   /// Ranges from 0(inclusive) to total number of steps(exclusive). The primary
   /// step is 0.
-  core.int multistepNumber;
+  core.int? multistepNumber;
 
   /// Present if it is a primary (original) step.
-  PrimaryStep primaryStep;
+  PrimaryStep? primaryStep;
 
   /// Step Id of the primary (original) step, which might be this step.
-  core.String primaryStepId;
+  core.String? primaryStepId;
 
   MultiStep();
 
@@ -4234,10 +3946,10 @@ class MultiStep {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (multistepNumber != null) 'multistepNumber': multistepNumber,
-        if (primaryStep != null) 'primaryStep': primaryStep.toJson(),
-        if (primaryStepId != null) 'primaryStepId': primaryStepId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (multistepNumber != null) 'multistepNumber': multistepNumber!,
+        if (primaryStep != null) 'primaryStep': primaryStep!.toJson(),
+        if (primaryStepId != null) 'primaryStepId': primaryStepId!,
       };
 }
 
@@ -4246,7 +3958,7 @@ class NativeCrash {
   /// The stack trace of the native crash.
   ///
   /// Optional.
-  StackTrace stackTrace;
+  StackTrace? stackTrace;
 
   NativeCrash();
 
@@ -4257,8 +3969,8 @@ class NativeCrash {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (stackTrace != null) 'stackTrace': stackTrace.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (stackTrace != null) 'stackTrace': stackTrace!.toJson(),
       };
 }
 
@@ -4266,16 +3978,16 @@ class NativeCrash {
 /// https://developer.android.com/distribute/best-practices/develop/restrictions-non-sdk-interfaces
 class NonSdkApi {
   /// The signature of the Non-SDK API
-  core.String apiSignature;
+  core.String? apiSignature;
 
   /// Example stack traces of this API being called.
-  core.List<core.String> exampleStackTraces;
+  core.List<core.String>? exampleStackTraces;
 
   /// Optional debugging insights for non-SDK API violations.
-  core.List<NonSdkApiInsight> insights;
+  core.List<NonSdkApiInsight>? insights;
 
   /// The total number of times this API was observed to have been called.
-  core.int invocationCount;
+  core.int? invocationCount;
 
   /// Which list this API appears on
   /// Possible string values are:
@@ -4287,7 +3999,7 @@ class NonSdkApi {
   /// - "GREY_MAX_P"
   /// - "GREY_MAX_Q"
   /// - "GREY_MAX_R"
-  core.String list;
+  core.String? list;
 
   NonSdkApi();
 
@@ -4314,14 +4026,14 @@ class NonSdkApi {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiSignature != null) 'apiSignature': apiSignature,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiSignature != null) 'apiSignature': apiSignature!,
         if (exampleStackTraces != null)
-          'exampleStackTraces': exampleStackTraces,
+          'exampleStackTraces': exampleStackTraces!,
         if (insights != null)
-          'insights': insights.map((value) => value.toJson()).toList(),
-        if (invocationCount != null) 'invocationCount': invocationCount,
-        if (list != null) 'list': list,
+          'insights': insights!.map((value) => value.toJson()).toList(),
+        if (invocationCount != null) 'invocationCount': invocationCount!,
+        if (list != null) 'list': list!,
       };
 }
 
@@ -4329,21 +4041,21 @@ class NonSdkApi {
 class NonSdkApiInsight {
   /// Optional sample stack traces, for which this insight applies (there should
   /// be at least one).
-  core.List<core.String> exampleTraceMessages;
+  core.List<core.String>? exampleTraceMessages;
 
   /// A unique ID, to be used for determining the effectiveness of this
   /// particular insight in the context of a matcher.
   ///
   /// (required)
-  core.String matcherId;
+  core.String? matcherId;
 
   /// An insight indicating that the hidden API usage originates from a
   /// Google-provided library.
-  PendingGoogleUpdateInsight pendingGoogleUpdateInsight;
+  PendingGoogleUpdateInsight? pendingGoogleUpdateInsight;
 
   /// An insight indicating that the hidden API usage originates from the use of
   /// a library that needs to be upgraded.
-  UpgradeInsight upgradeInsight;
+  UpgradeInsight? upgradeInsight;
 
   NonSdkApiInsight();
 
@@ -4367,23 +4079,23 @@ class NonSdkApiInsight {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (exampleTraceMessages != null)
-          'exampleTraceMessages': exampleTraceMessages,
-        if (matcherId != null) 'matcherId': matcherId,
+          'exampleTraceMessages': exampleTraceMessages!,
+        if (matcherId != null) 'matcherId': matcherId!,
         if (pendingGoogleUpdateInsight != null)
-          'pendingGoogleUpdateInsight': pendingGoogleUpdateInsight.toJson(),
-        if (upgradeInsight != null) 'upgradeInsight': upgradeInsight.toJson(),
+          'pendingGoogleUpdateInsight': pendingGoogleUpdateInsight!.toJson(),
+        if (upgradeInsight != null) 'upgradeInsight': upgradeInsight!.toJson(),
       };
 }
 
 /// Additional details for a non-sdk API usage violation.
 class NonSdkApiUsageViolation {
   /// Signatures of a subset of those hidden API's.
-  core.List<core.String> apiSignatures;
+  core.List<core.String>? apiSignatures;
 
   /// Total number of unique hidden API's accessed.
-  core.int uniqueApis;
+  core.int? uniqueApis;
 
   NonSdkApiUsageViolation();
 
@@ -4398,25 +4110,25 @@ class NonSdkApiUsageViolation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiSignatures != null) 'apiSignatures': apiSignatures,
-        if (uniqueApis != null) 'uniqueApis': uniqueApis,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiSignatures != null) 'apiSignatures': apiSignatures!,
+        if (uniqueApis != null) 'uniqueApis': uniqueApis!,
       };
 }
 
 /// Contains a summary and examples of non-sdk API usage violations.
 class NonSdkApiUsageViolationReport {
   /// Examples of the detected API usages.
-  core.List<NonSdkApi> exampleApis;
+  core.List<NonSdkApi>? exampleApis;
 
   /// Minimum API level required for the application to run.
-  core.int minSdkVersion;
+  core.int? minSdkVersion;
 
   /// Specifies the API Level on which the application is designed to run.
-  core.int targetSdkVersion;
+  core.int? targetSdkVersion;
 
   /// Total number of unique Non-SDK API's accessed.
-  core.int uniqueApis;
+  core.int? uniqueApis;
 
   NonSdkApiUsageViolationReport();
 
@@ -4438,12 +4150,12 @@ class NonSdkApiUsageViolationReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (exampleApis != null)
-          'exampleApis': exampleApis.map((value) => value.toJson()).toList(),
-        if (minSdkVersion != null) 'minSdkVersion': minSdkVersion,
-        if (targetSdkVersion != null) 'targetSdkVersion': targetSdkVersion,
-        if (uniqueApis != null) 'uniqueApis': uniqueApis,
+          'exampleApis': exampleApis!.map((value) => value.toJson()).toList(),
+        if (minSdkVersion != null) 'minSdkVersion': minSdkVersion!,
+        if (targetSdkVersion != null) 'targetSdkVersion': targetSdkVersion!,
+        if (uniqueApis != null) 'uniqueApis': uniqueApis!,
       };
 }
 
@@ -4453,25 +4165,25 @@ class Outcome {
   ///
   /// Returns INVALID_ARGUMENT if this field is set but the summary is not
   /// FAILURE. Optional
-  FailureDetail failureDetail;
+  FailureDetail? failureDetail;
 
   /// More information about an INCONCLUSIVE outcome.
   ///
   /// Returns INVALID_ARGUMENT if this field is set but the summary is not
   /// INCONCLUSIVE. Optional
-  InconclusiveDetail inconclusiveDetail;
+  InconclusiveDetail? inconclusiveDetail;
 
   /// More information about a SKIPPED outcome.
   ///
   /// Returns INVALID_ARGUMENT if this field is set but the summary is not
   /// SKIPPED. Optional
-  SkippedDetail skippedDetail;
+  SkippedDetail? skippedDetail;
 
   /// More information about a SUCCESS outcome.
   ///
   /// Returns INVALID_ARGUMENT if this field is set but the summary is not
   /// SUCCESS. Optional
-  SuccessDetail successDetail;
+  SuccessDetail? successDetail;
 
   /// The simplest way to interpret a result.
   ///
@@ -4490,7 +4202,7 @@ class Outcome {
   /// configurations were incompatible.
   /// - "flaky" : A group of steps that were run with the same configuration had
   /// both failure and success outcomes.
-  core.String summary;
+  core.String? summary;
 
   Outcome();
 
@@ -4516,13 +4228,13 @@ class Outcome {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (failureDetail != null) 'failureDetail': failureDetail.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (failureDetail != null) 'failureDetail': failureDetail!.toJson(),
         if (inconclusiveDetail != null)
-          'inconclusiveDetail': inconclusiveDetail.toJson(),
-        if (skippedDetail != null) 'skippedDetail': skippedDetail.toJson(),
-        if (successDetail != null) 'successDetail': successDetail.toJson(),
-        if (summary != null) 'summary': summary,
+          'inconclusiveDetail': inconclusiveDetail!.toJson(),
+        if (skippedDetail != null) 'skippedDetail': skippedDetail!.toJson(),
+        if (successDetail != null) 'successDetail': successDetail!.toJson(),
+        if (summary != null) 'summary': summary!,
       };
 }
 
@@ -4530,10 +4242,10 @@ class Outcome {
 /// elements; this may indicate a potential UI issue.
 class OverlappingUIElements {
   /// Resource names of the overlapping screen elements
-  core.List<core.String> resourceName;
+  core.List<core.String>? resourceName;
 
   /// The screen id of the elements
-  core.String screenId;
+  core.String? screenId;
 
   OverlappingUIElements();
 
@@ -4548,9 +4260,9 @@ class OverlappingUIElements {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName,
-        if (screenId != null) 'screenId': screenId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceName != null) 'resourceName': resourceName!,
+        if (screenId != null) 'screenId': screenId!,
       };
 }
 
@@ -4560,7 +4272,7 @@ class OverlappingUIElements {
 /// Users need not take any action.
 class PendingGoogleUpdateInsight {
   /// The name of the Google-provided library with the non-SDK API dependency.
-  core.String nameOfGoogleLibrary;
+  core.String? nameOfGoogleLibrary;
 
   PendingGoogleUpdateInsight();
 
@@ -4570,19 +4282,19 @@ class PendingGoogleUpdateInsight {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (nameOfGoogleLibrary != null)
-          'nameOfGoogleLibrary': nameOfGoogleLibrary,
+          'nameOfGoogleLibrary': nameOfGoogleLibrary!,
       };
 }
 
 /// Encapsulates performance environment info
 class PerfEnvironment {
   /// CPU related environment info
-  CPUInfo cpuInfo;
+  CPUInfo? cpuInfo;
 
   /// Memory related environment info
-  MemoryInfo memoryInfo;
+  MemoryInfo? memoryInfo;
 
   PerfEnvironment();
 
@@ -4597,45 +4309,45 @@ class PerfEnvironment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cpuInfo != null) 'cpuInfo': cpuInfo.toJson(),
-        if (memoryInfo != null) 'memoryInfo': memoryInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cpuInfo != null) 'cpuInfo': cpuInfo!.toJson(),
+        if (memoryInfo != null) 'memoryInfo': memoryInfo!.toJson(),
       };
 }
 
 /// A summary of perf metrics collected and performance environment info
 class PerfMetricsSummary {
-  AppStartTime appStartTime;
+  AppStartTime? appStartTime;
 
   /// A tool results execution ID.
   ///
   /// @OutputOnly
-  core.String executionId;
+  core.String? executionId;
 
   /// Graphics statistics for the entire run.
   ///
   /// Statistics are reset at the beginning of the run and collected at the end
   /// of the run.
-  GraphicsStats graphicsStats;
+  GraphicsStats? graphicsStats;
 
   /// A tool results history ID.
   ///
   /// @OutputOnly
-  core.String historyId;
+  core.String? historyId;
 
   /// Describes the environment in which the performance metrics were collected
-  PerfEnvironment perfEnvironment;
+  PerfEnvironment? perfEnvironment;
 
   /// Set of resource collected
-  core.List<core.String> perfMetrics;
+  core.List<core.String>? perfMetrics;
 
   /// The cloud project @OutputOnly
-  core.String projectId;
+  core.String? projectId;
 
   /// A tool results step ID.
   ///
   /// @OutputOnly
-  core.String stepId;
+  core.String? stepId;
 
   PerfMetricsSummary();
 
@@ -4671,26 +4383,26 @@ class PerfMetricsSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appStartTime != null) 'appStartTime': appStartTime.toJson(),
-        if (executionId != null) 'executionId': executionId,
-        if (graphicsStats != null) 'graphicsStats': graphicsStats.toJson(),
-        if (historyId != null) 'historyId': historyId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appStartTime != null) 'appStartTime': appStartTime!.toJson(),
+        if (executionId != null) 'executionId': executionId!,
+        if (graphicsStats != null) 'graphicsStats': graphicsStats!.toJson(),
+        if (historyId != null) 'historyId': historyId!,
         if (perfEnvironment != null)
-          'perfEnvironment': perfEnvironment.toJson(),
-        if (perfMetrics != null) 'perfMetrics': perfMetrics,
-        if (projectId != null) 'projectId': projectId,
-        if (stepId != null) 'stepId': stepId,
+          'perfEnvironment': perfEnvironment!.toJson(),
+        if (perfMetrics != null) 'perfMetrics': perfMetrics!,
+        if (projectId != null) 'projectId': projectId!,
+        if (stepId != null) 'stepId': stepId!,
       };
 }
 
 /// Resource representing a single performance measure or data point
 class PerfSample {
   /// Timestamp of collection.
-  Timestamp sampleTime;
+  Timestamp? sampleTime;
 
   /// Value observed
-  core.double value;
+  core.double? value;
 
   PerfSample();
 
@@ -4704,37 +4416,37 @@ class PerfSample {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sampleTime != null) 'sampleTime': sampleTime.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sampleTime != null) 'sampleTime': sampleTime!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
 /// Resource representing a collection of performance samples (or data points)
 class PerfSampleSeries {
   /// Basic series represented by a line chart
-  BasicPerfSampleSeries basicPerfSampleSeries;
+  BasicPerfSampleSeries? basicPerfSampleSeries;
 
   /// A tool results execution ID.
   ///
   /// @OutputOnly
-  core.String executionId;
+  core.String? executionId;
 
   /// A tool results history ID.
   ///
   /// @OutputOnly
-  core.String historyId;
+  core.String? historyId;
 
   /// The cloud project @OutputOnly
-  core.String projectId;
+  core.String? projectId;
 
   /// A sample series id @OutputOnly
-  core.String sampleSeriesId;
+  core.String? sampleSeriesId;
 
   /// A tool results step ID.
   ///
   /// @OutputOnly
-  core.String stepId;
+  core.String? stepId;
 
   PerfSampleSeries();
 
@@ -4761,14 +4473,14 @@ class PerfSampleSeries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (basicPerfSampleSeries != null)
-          'basicPerfSampleSeries': basicPerfSampleSeries.toJson(),
-        if (executionId != null) 'executionId': executionId,
-        if (historyId != null) 'historyId': historyId,
-        if (projectId != null) 'projectId': projectId,
-        if (sampleSeriesId != null) 'sampleSeriesId': sampleSeriesId,
-        if (stepId != null) 'stepId': stepId,
+          'basicPerfSampleSeries': basicPerfSampleSeries!.toJson(),
+        if (executionId != null) 'executionId': executionId!,
+        if (historyId != null) 'historyId': historyId!,
+        if (projectId != null) 'projectId': projectId!,
+        if (sampleSeriesId != null) 'sampleSeriesId': sampleSeriesId!,
+        if (stepId != null) 'stepId': stepId!,
       };
 }
 
@@ -4780,13 +4492,13 @@ class PerformedGoogleLogin {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A notification that Robo performed some monkey actions.
 class PerformedMonkeyActions {
   /// The total number of monkey actions performed during the crawl.
-  core.int totalActions;
+  core.int? totalActions;
 
   PerformedMonkeyActions();
 
@@ -4796,8 +4508,8 @@ class PerformedMonkeyActions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (totalActions != null) 'totalActions': totalActions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (totalActions != null) 'totalActions': totalActions!,
       };
 }
 
@@ -4805,7 +4517,7 @@ class PerformedMonkeyActions {
 /// outcome of each individual step.
 class PrimaryStep {
   /// Step Id and outcome of each individual step.
-  core.List<IndividualOutcome> individualOutcome;
+  core.List<IndividualOutcome>? individualOutcome;
 
   /// Rollup test status of multiple steps that were run with the same
   /// configuration as a group.
@@ -4823,7 +4535,7 @@ class PrimaryStep {
   /// configurations were incompatible.
   /// - "flaky" : A group of steps that were run with the same configuration had
   /// both failure and success outcomes.
-  core.String rollUp;
+  core.String? rollUp;
 
   PrimaryStep();
 
@@ -4839,11 +4551,11 @@ class PrimaryStep {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (individualOutcome != null)
           'individualOutcome':
-              individualOutcome.map((value) => value.toJson()).toList(),
-        if (rollUp != null) 'rollUp': rollUp,
+              individualOutcome!.map((value) => value.toJson()).toList(),
+        if (rollUp != null) 'rollUp': rollUp!,
       };
 }
 
@@ -4853,13 +4565,13 @@ class ProjectSettings {
   ///
   /// By default, this is unset. In update request: optional In response:
   /// optional
-  core.String defaultBucket;
+  core.String? defaultBucket;
 
   /// The name of the project's settings.
   ///
   /// Always of the form: projects/{project-id}/settings In update request:
   /// never set In response: always set
-  core.String name;
+  core.String? name;
 
   ProjectSettings();
 
@@ -4872,9 +4584,9 @@ class ProjectSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (defaultBucket != null) 'defaultBucket': defaultBucket,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (defaultBucket != null) 'defaultBucket': defaultBucket!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -4884,7 +4596,7 @@ class PublishXunitXmlFilesRequest {
   ///
   /// The maximum size of the file this reference is pointing to is 50MB.
   /// Required.
-  core.List<FileReference> xunitXmlFiles;
+  core.List<FileReference>? xunitXmlFiles;
 
   PublishXunitXmlFilesRequest();
 
@@ -4897,10 +4609,10 @@ class PublishXunitXmlFilesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (xunitXmlFiles != null)
           'xunitXmlFiles':
-              xunitXmlFiles.map((value) => value.toJson()).toList(),
+              xunitXmlFiles!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4909,22 +4621,22 @@ class RegionProto {
   /// The height, in pixels.
   ///
   /// Always set.
-  core.int heightPx;
+  core.int? heightPx;
 
   /// The left side of the rectangle, in pixels.
   ///
   /// Always set.
-  core.int leftPx;
+  core.int? leftPx;
 
   /// The top of the rectangle, in pixels.
   ///
   /// Always set.
-  core.int topPx;
+  core.int? topPx;
 
   /// The width, in pixels.
   ///
   /// Always set.
-  core.int widthPx;
+  core.int? widthPx;
 
   RegionProto();
 
@@ -4943,21 +4655,21 @@ class RegionProto {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (heightPx != null) 'heightPx': heightPx,
-        if (leftPx != null) 'leftPx': leftPx,
-        if (topPx != null) 'topPx': topPx,
-        if (widthPx != null) 'widthPx': widthPx,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (heightPx != null) 'heightPx': heightPx!,
+        if (leftPx != null) 'leftPx': leftPx!,
+        if (topPx != null) 'topPx': topPx!,
+        if (widthPx != null) 'widthPx': widthPx!,
       };
 }
 
 /// The storage for test results.
 class ResultsStorage {
   /// The root directory for test results.
-  FileReference resultsStoragePath;
+  FileReference? resultsStoragePath;
 
   /// The path to the Xunit XML file.
-  FileReference xunitXmlFile;
+  FileReference? xunitXmlFile;
 
   ResultsStorage();
 
@@ -4972,20 +4684,20 @@ class ResultsStorage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (resultsStoragePath != null)
-          'resultsStoragePath': resultsStoragePath.toJson(),
-        if (xunitXmlFile != null) 'xunitXmlFile': xunitXmlFile.toJson(),
+          'resultsStoragePath': resultsStoragePath!.toJson(),
+        if (xunitXmlFile != null) 'xunitXmlFile': xunitXmlFile!.toJson(),
       };
 }
 
 /// Execution stats for a user-provided Robo script.
 class RoboScriptExecution {
   /// The number of Robo script actions executed successfully.
-  core.int successfulActions;
+  core.int? successfulActions;
 
   /// The total number of actions in the Robo script.
-  core.int totalActions;
+  core.int? totalActions;
 
   RoboScriptExecution();
 
@@ -4998,9 +4710,9 @@ class RoboScriptExecution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (successfulActions != null) 'successfulActions': successfulActions,
-        if (totalActions != null) 'totalActions': totalActions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (successfulActions != null) 'successfulActions': successfulActions!,
+        if (totalActions != null) 'totalActions': totalActions!,
       };
 }
 
@@ -5017,7 +4729,7 @@ class SafeHtmlProto {
   ///
   /// See documentation at the top of .proto file for programming language
   /// packages with which to create or read this message.
-  core.String privateDoNotAccessOrElseSafeHtmlWrappedValue;
+  core.String? privateDoNotAccessOrElseSafeHtmlWrappedValue;
 
   SafeHtmlProto();
 
@@ -5028,10 +4740,10 @@ class SafeHtmlProto {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (privateDoNotAccessOrElseSafeHtmlWrappedValue != null)
           'privateDoNotAccessOrElseSafeHtmlWrappedValue':
-              privateDoNotAccessOrElseSafeHtmlWrappedValue,
+              privateDoNotAccessOrElseSafeHtmlWrappedValue!,
       };
 }
 
@@ -5039,22 +4751,22 @@ class Screen {
   /// File reference of the png file.
   ///
   /// Required.
-  core.String fileReference;
+  core.String? fileReference;
 
   /// Locale of the device that the screenshot was taken on.
   ///
   /// Required.
-  core.String locale;
+  core.String? locale;
 
   /// Model of the device that the screenshot was taken on.
   ///
   /// Required.
-  core.String model;
+  core.String? model;
 
   /// OS version of the device that the screenshot was taken on.
   ///
   /// Required.
-  core.String version;
+  core.String? version;
 
   Screen();
 
@@ -5073,32 +4785,32 @@ class Screen {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fileReference != null) 'fileReference': fileReference,
-        if (locale != null) 'locale': locale,
-        if (model != null) 'model': model,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fileReference != null) 'fileReference': fileReference!,
+        if (locale != null) 'locale': locale!,
+        if (model != null) 'model': model!,
+        if (version != null) 'version': version!,
       };
 }
 
 class ScreenshotCluster {
   /// A string that describes the activity of every screen in the cluster.
-  core.String activity;
+  core.String? activity;
 
   /// A unique identifier for the cluster.
   ///
   /// @OutputOnly
-  core.String clusterId;
+  core.String? clusterId;
 
   /// A singular screen that represents the cluster as a whole.
   ///
   /// This screen will act as the "cover" of the entire cluster. When users look
   /// at the clusters, only the key screen from each cluster will be shown.
   /// Which screen is the key screen is determined by the ClusteringAlgorithm
-  Screen keyScreen;
+  Screen? keyScreen;
 
   /// Full list of screens.
-  core.List<Screen> screens;
+  core.List<Screen>? screens;
 
   ScreenshotCluster();
 
@@ -5121,12 +4833,12 @@ class ScreenshotCluster {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activity != null) 'activity': activity,
-        if (clusterId != null) 'clusterId': clusterId,
-        if (keyScreen != null) 'keyScreen': keyScreen.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activity != null) 'activity': activity!,
+        if (clusterId != null) 'clusterId': clusterId!,
+        if (keyScreen != null) 'keyScreen': keyScreen!.toJson(),
         if (screens != null)
-          'screens': screens.map((value) => value.toJson()).toList(),
+          'screens': screens!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5136,10 +4848,10 @@ class ShardSummary {
   ///
   /// With flaky_test_attempts enabled from TestExecutionService, more than one
   /// run (Step) can present. And the runs will be sorted by multistep_number.
-  core.List<StepSummary> runs;
+  core.List<StepSummary>? runs;
 
   /// Merged result of the shard.
-  MergedResult shardResult;
+  MergedResult? shardResult;
 
   ShardSummary();
 
@@ -5156,22 +4868,22 @@ class ShardSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (runs != null) 'runs': runs.map((value) => value.toJson()).toList(),
-        if (shardResult != null) 'shardResult': shardResult.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (runs != null) 'runs': runs!.map((value) => value.toJson()).toList(),
+        if (shardResult != null) 'shardResult': shardResult!.toJson(),
       };
 }
 
 /// Details for an outcome with a SKIPPED outcome summary.
 class SkippedDetail {
   /// If the App doesn't support the specific API level.
-  core.bool incompatibleAppVersion;
+  core.bool? incompatibleAppVersion;
 
   /// If the App doesn't run on the specific architecture, for example, x86.
-  core.bool incompatibleArchitecture;
+  core.bool? incompatibleArchitecture;
 
   /// If the requested OS version doesn't run on the specific device model.
-  core.bool incompatibleDevice;
+  core.bool? incompatibleDevice;
 
   SkippedDetail();
 
@@ -5187,23 +4899,23 @@ class SkippedDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (incompatibleAppVersion != null)
-          'incompatibleAppVersion': incompatibleAppVersion,
+          'incompatibleAppVersion': incompatibleAppVersion!,
         if (incompatibleArchitecture != null)
-          'incompatibleArchitecture': incompatibleArchitecture,
+          'incompatibleArchitecture': incompatibleArchitecture!,
         if (incompatibleDevice != null)
-          'incompatibleDevice': incompatibleDevice,
+          'incompatibleDevice': incompatibleDevice!,
       };
 }
 
 /// The details about how to run the execution.
 class Specification {
   /// An Android mobile test execution specification.
-  AndroidTest androidTest;
+  AndroidTest? androidTest;
 
   /// An iOS mobile test execution specification.
-  IosTest iosTest;
+  IosTest? iosTest;
 
   Specification();
 
@@ -5218,9 +4930,9 @@ class Specification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (androidTest != null) 'androidTest': androidTest.toJson(),
-        if (iosTest != null) 'iosTest': iosTest.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (androidTest != null) 'androidTest': androidTest!.toJson(),
+        if (iosTest != null) 'iosTest': iosTest!.toJson(),
       };
 }
 
@@ -5229,7 +4941,7 @@ class StackTrace {
   /// The stack trace message.
   ///
   /// Required
-  core.String exception;
+  core.String? exception;
 
   StackTrace();
 
@@ -5239,15 +4951,15 @@ class StackTrace {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exception != null) 'exception': exception,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exception != null) 'exception': exception!,
       };
 }
 
 /// User provided intent failed to resolve to an activity.
 class StartActivityNotFound {
-  core.String action;
-  core.String uri;
+  core.String? action;
+  core.String? uri;
 
   StartActivityNotFound();
 
@@ -5260,9 +4972,9 @@ class StartActivityNotFound {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action,
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -5275,7 +4987,7 @@ class StartActivityNotFound {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -5283,13 +4995,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -5313,10 +5025,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -5340,17 +5052,17 @@ class Step {
   /// This value will be set automatically when state transitions to COMPLETE. -
   /// In response: set if the execution state is COMPLETE. - In create/update
   /// request: never set
-  Timestamp completionTime;
+  Timestamp? completionTime;
 
   /// The time when the step was created.
   ///
   /// - In response: always set - In create/update request: never set
-  Timestamp creationTime;
+  Timestamp? creationTime;
 
   /// A description of this tool For example: mvn clean package -D
   /// skipTests=true - In response: present if set by create/update request - In
   /// create/update request: optional
-  core.String description;
+  core.String? description;
 
   /// How much the device resource is used to perform the test.
   ///
@@ -5360,7 +5072,7 @@ class Step {
   /// a device_usage on a step which already has this field set. - In response:
   /// present if previously set. - In create request: optional - In update
   /// request: optional
-  Duration deviceUsageDuration;
+  Duration? deviceUsageDuration;
 
   /// If the execution containing this step has any dimension_definition set,
   /// then this field allows the child to specify the values of the dimensions.
@@ -5383,13 +5095,13 @@ class Step {
   /// in the execution which is not specified as one of the keys. - In response:
   /// present if set by create - In create request: optional - In update
   /// request: never set
-  core.List<StepDimensionValueEntry> dimensionValue;
+  core.List<StepDimensionValueEntry>? dimensionValue;
 
   /// Whether any of the outputs of this step are images whose thumbnails can be
   /// fetched with ListThumbnails.
   ///
   /// - In response: always set - In create/update request: never set
-  core.bool hasImages;
+  core.bool? hasImages;
 
   /// Arbitrary user-supplied key/value pairs that are associated with the step.
   ///
@@ -5400,7 +5112,7 @@ class Step {
   /// optional - In update request: optional; any new key/value pair will be
   /// added to the map, and any new value for an existing key will update that
   /// key's value
-  core.List<StepLabelsEntry> labels;
+  core.List<StepLabelsEntry>? labels;
 
   /// Details when multiple steps are run with the same configuration as a
   /// group.
@@ -5410,7 +5122,7 @@ class Step {
   /// members. - In response: present if previously set. - In create request:
   /// optional, set iff this step was performed more than once. - In update
   /// request: optional
-  MultiStep multiStep;
+  MultiStep? multiStep;
 
   /// A short human-readable name to display in the UI.
   ///
@@ -5421,12 +5133,12 @@ class Step {
   /// name. For instance, if the same set of tests is run on two different
   /// platforms, the two steps should have the same name. - In response: always
   /// set - In create request: always set - In update request: never set
-  core.String name;
+  core.String? name;
 
   /// Classification of the result, for example into SUCCESS or FAILURE - In
   /// response: present if set by create/update request - In create/update
   /// request: optional
-  Outcome outcome;
+  Outcome? outcome;
 
   /// How long it took for this step to run.
   ///
@@ -5439,7 +5151,7 @@ class Step {
   /// attempts to set a run_duration on a step which already has this field set.
   /// - In response: present if previously set; always present on COMPLETE step
   /// - In create request: optional - In update request: optional
-  Duration runDuration;
+  Duration? runDuration;
 
   /// The initial state is IN_PROGRESS.
   ///
@@ -5458,19 +5170,19 @@ class Step {
   /// - "inProgress" : The Execution/Step is in progress.
   /// - "complete" : The finalized, immutable state. Steps/Executions in this
   /// state cannot be modified.
-  core.String state;
+  core.String? state;
 
   /// A unique identifier within a Execution for this Step.
   ///
   /// Returns INVALID_ARGUMENT if this field is set or overwritten by the
   /// caller. - In response: always set - In create/update request: never set
-  core.String stepId;
+  core.String? stepId;
 
   /// An execution of a test runner.
-  TestExecutionStep testExecutionStep;
+  TestExecutionStep? testExecutionStep;
 
   /// An execution of a tool (used for steps we don't explicitly support).
-  ToolExecutionStep toolExecutionStep;
+  ToolExecutionStep? toolExecutionStep;
 
   Step();
 
@@ -5537,34 +5249,34 @@ class Step {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (completionTime != null) 'completionTime': completionTime.toJson(),
-        if (creationTime != null) 'creationTime': creationTime.toJson(),
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (completionTime != null) 'completionTime': completionTime!.toJson(),
+        if (creationTime != null) 'creationTime': creationTime!.toJson(),
+        if (description != null) 'description': description!,
         if (deviceUsageDuration != null)
-          'deviceUsageDuration': deviceUsageDuration.toJson(),
+          'deviceUsageDuration': deviceUsageDuration!.toJson(),
         if (dimensionValue != null)
           'dimensionValue':
-              dimensionValue.map((value) => value.toJson()).toList(),
-        if (hasImages != null) 'hasImages': hasImages,
+              dimensionValue!.map((value) => value.toJson()).toList(),
+        if (hasImages != null) 'hasImages': hasImages!,
         if (labels != null)
-          'labels': labels.map((value) => value.toJson()).toList(),
-        if (multiStep != null) 'multiStep': multiStep.toJson(),
-        if (name != null) 'name': name,
-        if (outcome != null) 'outcome': outcome.toJson(),
-        if (runDuration != null) 'runDuration': runDuration.toJson(),
-        if (state != null) 'state': state,
-        if (stepId != null) 'stepId': stepId,
+          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (multiStep != null) 'multiStep': multiStep!.toJson(),
+        if (name != null) 'name': name!,
+        if (outcome != null) 'outcome': outcome!.toJson(),
+        if (runDuration != null) 'runDuration': runDuration!.toJson(),
+        if (state != null) 'state': state!,
+        if (stepId != null) 'stepId': stepId!,
         if (testExecutionStep != null)
-          'testExecutionStep': testExecutionStep.toJson(),
+          'testExecutionStep': testExecutionStep!.toJson(),
         if (toolExecutionStep != null)
-          'toolExecutionStep': toolExecutionStep.toJson(),
+          'toolExecutionStep': toolExecutionStep!.toJson(),
       };
 }
 
 class StepDimensionValueEntry {
-  core.String key;
-  core.String value;
+  core.String? key;
+  core.String? value;
 
   StepDimensionValueEntry();
 
@@ -5577,15 +5289,15 @@ class StepDimensionValueEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
 class StepLabelsEntry {
-  core.String key;
-  core.String value;
+  core.String? key;
+  core.String? value;
 
   StepLabelsEntry();
 
@@ -5598,9 +5310,9 @@ class StepLabelsEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -5612,7 +5324,7 @@ class StepSummary {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Details for an outcome with a SUCCESS outcome summary.
@@ -5620,7 +5332,7 @@ class StepSummary {
 /// LINT.IfChange
 class SuccessDetail {
   /// If a native process other than the app crashed.
-  core.bool otherNativeCrash;
+  core.bool? otherNativeCrash;
 
   SuccessDetail();
 
@@ -5630,8 +5342,8 @@ class SuccessDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (otherNativeCrash != null) 'otherNativeCrash': otherNativeCrash,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (otherNativeCrash != null) 'otherNativeCrash': otherNativeCrash!,
       };
 }
 
@@ -5650,14 +5362,14 @@ class SuggestionClusterProto {
   /// - "touchTargetSize"
   /// - "lowContrast"
   /// - "implementation"
-  core.String category;
+  core.String? category;
 
   /// A sequence of suggestions.
   ///
   /// All of the suggestions within a cluster must have the same
   /// SuggestionPriority and belong to the same SuggestionCategory. Suggestions
   /// with the same screenshot URL should be adjacent.
-  core.List<SuggestionProto> suggestions;
+  core.List<SuggestionProto>? suggestions;
 
   SuggestionClusterProto();
 
@@ -5673,10 +5385,10 @@ class SuggestionClusterProto {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (category != null) 'category': category,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (category != null) 'category': category!,
         if (suggestions != null)
-          'suggestions': suggestions.map((value) => value.toJson()).toList(),
+          'suggestions': suggestions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5684,13 +5396,13 @@ class SuggestionProto {
   /// Reference to a help center article concerning this type of suggestion.
   ///
   /// Always set.
-  core.String helpUrl;
+  core.String? helpUrl;
 
   /// Message, in the user's language, explaining the suggestion, which may
   /// contain markup.
   ///
   /// Always set.
-  SafeHtmlProto longMessage;
+  SafeHtmlProto? longMessage;
 
   /// Relative importance of a suggestion.
   ///
@@ -5700,29 +5412,29 @@ class SuggestionProto {
   /// - "error"
   /// - "warning"
   /// - "info"
-  core.String priority;
+  core.String? priority;
 
   /// A somewhat human readable identifier of the source view, if it does not
   /// have a resource_name.
   ///
   /// This is a path within the accessibility hierarchy, an element with
   /// resource name; similar to an XPath.
-  core.String pseudoResourceId;
+  core.String? pseudoResourceId;
 
   /// Region within the screenshot that is relevant to this suggestion.
   ///
   /// Optional.
-  RegionProto region;
+  RegionProto? region;
 
   /// Reference to a view element, identified by its resource name, if it has
   /// one.
-  core.String resourceName;
+  core.String? resourceName;
 
   /// ID of the screen for the suggestion.
   ///
   /// It is used for getting the corresponding screenshot path. For example,
   /// screen_id "1" corresponds to "1.png" file in GCS. Always set.
-  core.String screenId;
+  core.String? screenId;
 
   /// Relative importance of a suggestion as compared with other suggestions
   /// that have the same priority and category.
@@ -5730,18 +5442,18 @@ class SuggestionProto {
   /// This is a meaningless value that can be used to order suggestions that are
   /// in the same category and have the same priority. The larger values have
   /// higher priority (i.e., are more important). Optional.
-  core.double secondaryPriority;
+  core.double? secondaryPriority;
 
   /// Concise message, in the user's language, representing the suggestion,
   /// which may contain markup.
   ///
   /// Always set.
-  SafeHtmlProto shortMessage;
+  SafeHtmlProto? shortMessage;
 
   /// General title for the suggestion, in the user's language, without markup.
   ///
   /// Always set.
-  core.String title;
+  core.String? title;
 
   SuggestionProto();
 
@@ -5781,17 +5493,17 @@ class SuggestionProto {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (helpUrl != null) 'helpUrl': helpUrl,
-        if (longMessage != null) 'longMessage': longMessage.toJson(),
-        if (priority != null) 'priority': priority,
-        if (pseudoResourceId != null) 'pseudoResourceId': pseudoResourceId,
-        if (region != null) 'region': region.toJson(),
-        if (resourceName != null) 'resourceName': resourceName,
-        if (screenId != null) 'screenId': screenId,
-        if (secondaryPriority != null) 'secondaryPriority': secondaryPriority,
-        if (shortMessage != null) 'shortMessage': shortMessage.toJson(),
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (helpUrl != null) 'helpUrl': helpUrl!,
+        if (longMessage != null) 'longMessage': longMessage!.toJson(),
+        if (priority != null) 'priority': priority!,
+        if (pseudoResourceId != null) 'pseudoResourceId': pseudoResourceId!,
+        if (region != null) 'region': region!.toJson(),
+        if (resourceName != null) 'resourceName': resourceName!,
+        if (screenId != null) 'screenId': screenId!,
+        if (secondaryPriority != null) 'secondaryPriority': secondaryPriority!,
+        if (shortMessage != null) 'shortMessage': shortMessage!.toJson(),
+        if (title != null) 'title': title!,
       };
 }
 
@@ -5799,24 +5511,24 @@ class TestCase {
   /// The elapsed run time of the test case.
   ///
   /// Required.
-  Duration elapsedTime;
+  Duration? elapsedTime;
 
   /// The end time of the test case.
-  Timestamp endTime;
+  Timestamp? endTime;
 
   /// Why the test case was skipped.
   ///
   /// Present only for skipped test case
-  core.String skippedMessage;
+  core.String? skippedMessage;
 
   /// The stack trace details if the test case failed or encountered an error.
   ///
   /// The maximum size of the stack traces is 100KiB, beyond which the stack
   /// track will be truncated. Zero if the test case passed.
-  core.List<StackTrace> stackTraces;
+  core.List<StackTrace>? stackTraces;
 
   /// The start time of the test case.
-  Timestamp startTime;
+  Timestamp? startTime;
 
   /// The status of the test case.
   ///
@@ -5829,20 +5541,20 @@ class TestCase {
   /// - "flaky" : Test flaked. Present only for rollup test cases; test cases
   /// from steps that were run with the same configuration had both failure and
   /// success outcomes.
-  core.String status;
+  core.String? status;
 
   /// A unique identifier within a Step for this Test Case.
-  core.String testCaseId;
+  core.String? testCaseId;
 
   /// Test case reference, e.g. name, class name and test suite name.
   ///
   /// Required.
-  TestCaseReference testCaseReference;
+  TestCaseReference? testCaseReference;
 
   /// References to opaque files of any format output by the tool execution.
   ///
   /// @OutputOnly
-  core.List<ToolOutputReference> toolOutputs;
+  core.List<ToolOutputReference>? toolOutputs;
 
   TestCase();
 
@@ -5886,19 +5598,19 @@ class TestCase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (elapsedTime != null) 'elapsedTime': elapsedTime.toJson(),
-        if (endTime != null) 'endTime': endTime.toJson(),
-        if (skippedMessage != null) 'skippedMessage': skippedMessage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (elapsedTime != null) 'elapsedTime': elapsedTime!.toJson(),
+        if (endTime != null) 'endTime': endTime!.toJson(),
+        if (skippedMessage != null) 'skippedMessage': skippedMessage!,
         if (stackTraces != null)
-          'stackTraces': stackTraces.map((value) => value.toJson()).toList(),
-        if (startTime != null) 'startTime': startTime.toJson(),
-        if (status != null) 'status': status,
-        if (testCaseId != null) 'testCaseId': testCaseId,
+          'stackTraces': stackTraces!.map((value) => value.toJson()).toList(),
+        if (startTime != null) 'startTime': startTime!.toJson(),
+        if (status != null) 'status': status!,
+        if (testCaseId != null) 'testCaseId': testCaseId!,
         if (testCaseReference != null)
-          'testCaseReference': testCaseReference.toJson(),
+          'testCaseReference': testCaseReference!.toJson(),
         if (toolOutputs != null)
-          'toolOutputs': toolOutputs.map((value) => value.toJson()).toList(),
+          'toolOutputs': toolOutputs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5909,15 +5621,15 @@ class TestCase {
 /// Third, by name.
 class TestCaseReference {
   /// The name of the class.
-  core.String className;
+  core.String? className;
 
   /// The name of the test case.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The name of the test suite to which this test case belongs.
-  core.String testSuiteName;
+  core.String? testSuiteName;
 
   TestCaseReference();
 
@@ -5933,10 +5645,10 @@ class TestCaseReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (className != null) 'className': className,
-        if (name != null) 'name': name,
-        if (testSuiteName != null) 'testSuiteName': testSuiteName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (className != null) 'className': className!,
+        if (name != null) 'name': name!,
+        if (testSuiteName != null) 'testSuiteName': testSuiteName!,
       };
 }
 
@@ -5953,7 +5665,7 @@ class TestExecutionStep {
   /// error message and the stack trace content can be recorded here to assist
   /// debugging. - In response: present if set by create or update - In
   /// create/update request: optional
-  core.List<TestIssue> testIssues;
+  core.List<TestIssue>? testIssues;
 
   /// List of test suite overview contents.
   ///
@@ -5962,19 +5674,19 @@ class TestExecutionStep {
   /// parsed or uploaded. The maximum allowed number of test suite overviews per
   /// step is 1000. - In response: always set - In create request: optional - In
   /// update request: never (use publishXunitXmlFiles custom method instead)
-  core.List<TestSuiteOverview> testSuiteOverviews;
+  core.List<TestSuiteOverview>? testSuiteOverviews;
 
   /// The timing break down of the test execution.
   ///
   /// - In response: present if set by create or update - In create/update
   /// request: optional
-  TestTiming testTiming;
+  TestTiming? testTiming;
 
   /// Represents the execution of the test runner.
   ///
   /// The exit code of this tool will be used to determine if the test passed. -
   /// In response: always set - In create/update request: optional
-  ToolExecution toolExecution;
+  ToolExecution? toolExecution;
 
   TestExecutionStep();
 
@@ -6001,14 +5713,14 @@ class TestExecutionStep {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (testIssues != null)
-          'testIssues': testIssues.map((value) => value.toJson()).toList(),
+          'testIssues': testIssues!.map((value) => value.toJson()).toList(),
         if (testSuiteOverviews != null)
           'testSuiteOverviews':
-              testSuiteOverviews.map((value) => value.toJson()).toList(),
-        if (testTiming != null) 'testTiming': testTiming.toJson(),
-        if (toolExecution != null) 'toolExecution': toolExecution.toJson(),
+              testSuiteOverviews!.map((value) => value.toJson()).toList(),
+        if (testTiming != null) 'testTiming': testTiming!.toJson(),
+        if (toolExecution != null) 'toolExecution': toolExecution!.toJson(),
       };
 }
 
@@ -6023,12 +5735,12 @@ class TestIssue {
   /// - "common" : Issue is not specific to a particular test kind (e.g., a
   /// native crash).
   /// - "robo" : Issue is specific to Robo run.
-  core.String category;
+  core.String? category;
 
   /// A brief human-readable message describing the issue.
   ///
   /// Required.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   /// Severity of issue.
   ///
@@ -6042,10 +5754,10 @@ class TestIssue {
   /// improving their testing experience, e.g., suggesting to use Game Loops.
   /// - "warning" : Potentially critical issue.
   /// - "severe" : Critical issue.
-  core.String severity;
+  core.String? severity;
 
   /// Deprecated in favor of stack trace fields inside specific warnings.
-  StackTrace stackTrace;
+  StackTrace? stackTrace;
 
   /// Type of issue.
   ///
@@ -6095,13 +5807,13 @@ class TestIssue {
   /// crash apps).
   /// - "deviceOutOfMemory" : Device running out of memory was detected
   /// - "logcatCollectionError" : Problems detected while collecting logcat
-  core.String type;
+  core.String? type;
 
   /// Warning message with additional details of the issue.
   ///
   /// Should always be a message from
   /// com.google.devtools.toolresults.v1.warnings
-  Any warning;
+  Any? warning;
 
   TestIssue();
 
@@ -6128,13 +5840,13 @@ class TestIssue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (category != null) 'category': category,
-        if (errorMessage != null) 'errorMessage': errorMessage,
-        if (severity != null) 'severity': severity,
-        if (stackTrace != null) 'stackTrace': stackTrace.toJson(),
-        if (type != null) 'type': type,
-        if (warning != null) 'warning': warning.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (category != null) 'category': category!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (severity != null) 'severity': severity!,
+        if (stackTrace != null) 'stackTrace': stackTrace!.toJson(),
+        if (type != null) 'type': type!,
+        if (warning != null) 'warning': warning!.toJson(),
       };
 }
 
@@ -6146,44 +5858,44 @@ class TestIssue {
 /// corresponding step.
 class TestSuiteOverview {
   /// Elapsed time of test suite.
-  Duration elapsedTime;
+  Duration? elapsedTime;
 
   /// Number of test cases in error, typically set by the service by parsing the
   /// xml_source.
   ///
   /// - In create/response: always set - In update request: never
-  core.int errorCount;
+  core.int? errorCount;
 
   /// Number of failed test cases, typically set by the service by parsing the
   /// xml_source.
   ///
   /// May also be set by the user. - In create/response: always set - In update
   /// request: never
-  core.int failureCount;
+  core.int? failureCount;
 
   /// Number of flaky test cases, set by the service by rolling up flaky test
   /// attempts.
   ///
   /// Present only for rollup test suite overview at environment level. A step
   /// cannot have flaky test cases.
-  core.int flakyCount;
+  core.int? flakyCount;
 
   /// The name of the test suite.
   ///
   /// - In create/response: always set - In update request: never
-  core.String name;
+  core.String? name;
 
   /// Number of test cases not run, typically set by the service by parsing the
   /// xml_source.
   ///
   /// - In create/response: always set - In update request: never
-  core.int skippedCount;
+  core.int? skippedCount;
 
   /// Number of test cases, typically set by the service by parsing the
   /// xml_source.
   ///
   /// - In create/response: always set - In update request: never
-  core.int totalCount;
+  core.int? totalCount;
 
   /// If this test suite was parsed from XML, this is the URI where the original
   /// XML file is stored.
@@ -6191,7 +5903,7 @@ class TestSuiteOverview {
   /// Note: Multiple test suites can share the same xml_source Returns
   /// INVALID_ARGUMENT if the uri format is not supported. - In create/response:
   /// optional - In update request: never
-  FileReference xmlSource;
+  FileReference? xmlSource;
 
   TestSuiteOverview();
 
@@ -6224,15 +5936,15 @@ class TestSuiteOverview {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (elapsedTime != null) 'elapsedTime': elapsedTime.toJson(),
-        if (errorCount != null) 'errorCount': errorCount,
-        if (failureCount != null) 'failureCount': failureCount,
-        if (flakyCount != null) 'flakyCount': flakyCount,
-        if (name != null) 'name': name,
-        if (skippedCount != null) 'skippedCount': skippedCount,
-        if (totalCount != null) 'totalCount': totalCount,
-        if (xmlSource != null) 'xmlSource': xmlSource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (elapsedTime != null) 'elapsedTime': elapsedTime!.toJson(),
+        if (errorCount != null) 'errorCount': errorCount!,
+        if (failureCount != null) 'failureCount': failureCount!,
+        if (flakyCount != null) 'flakyCount': flakyCount!,
+        if (name != null) 'name': name!,
+        if (skippedCount != null) 'skippedCount': skippedCount!,
+        if (totalCount != null) 'totalCount': totalCount!,
+        if (xmlSource != null) 'xmlSource': xmlSource!.toJson(),
       };
 }
 
@@ -6242,7 +5954,7 @@ class TestTiming {
   ///
   /// - In response: present if previously set. - In create/update request:
   /// optional
-  Duration testProcessDuration;
+  Duration? testProcessDuration;
 
   TestTiming();
 
@@ -6253,9 +5965,9 @@ class TestTiming {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (testProcessDuration != null)
-          'testProcessDuration': testProcessDuration.toJson(),
+          'testProcessDuration': testProcessDuration!.toJson(),
       };
 }
 
@@ -6264,15 +5976,15 @@ class Thumbnail {
   /// The thumbnail's content type, i.e. "image/png".
   ///
   /// Always set.
-  core.String contentType;
+  core.String? contentType;
 
   /// The thumbnail file itself.
   ///
   /// That is, the bytes here are precisely the bytes that make up the thumbnail
   /// file; they can be served as an image as-is (with the appropriate content
   /// type.) Always set.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -6282,12 +5994,12 @@ class Thumbnail {
   /// The height of the thumbnail, in pixels.
   ///
   /// Always set.
-  core.int heightPx;
+  core.int? heightPx;
 
   /// The width of the thumbnail, in pixels.
   ///
   /// Always set.
-  core.int widthPx;
+  core.int? widthPx;
 
   Thumbnail();
 
@@ -6306,11 +6018,11 @@ class Thumbnail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentType != null) 'contentType': contentType,
-        if (data != null) 'data': data,
-        if (heightPx != null) 'heightPx': heightPx,
-        if (widthPx != null) 'widthPx': widthPx,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentType != null) 'contentType': contentType!,
+        if (data != null) 'data': data!,
+        if (heightPx != null) 'heightPx': heightPx!,
+        if (widthPx != null) 'widthPx': widthPx!,
       };
 }
 
@@ -6332,12 +6044,12 @@ class Timestamp {
   /// Negative second values with fractions must still have non-negative nanos
   /// values that count forward in time. Must be from 0 to 999,999,999
   /// inclusive.
-  core.int nanos;
+  core.int? nanos;
 
   /// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z.
   ///
   /// Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
-  core.String seconds;
+  core.String? seconds;
 
   Timestamp();
 
@@ -6350,9 +6062,9 @@ class Timestamp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nanos != null) 'nanos': nanos,
-        if (seconds != null) 'seconds': seconds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nanos != null) 'nanos': nanos!,
+        if (seconds != null) 'seconds': seconds!,
       };
 }
 
@@ -6365,7 +6077,7 @@ class ToolExecution {
   ///
   /// - In response: present if set by create request - In create request:
   /// optional - In update request: never set
-  core.List<core.String> commandLineArguments;
+  core.List<core.String>? commandLineArguments;
 
   /// Tool execution exit code.
   ///
@@ -6373,7 +6085,7 @@ class ToolExecution {
   /// set by create/update request - In create request: optional - In update
   /// request: optional, a FAILED_PRECONDITION error will be returned if an
   /// exit_code is already set.
-  ToolExitCode exitCode;
+  ToolExitCode? exitCode;
 
   /// References to any plain text logs output the tool execution.
   ///
@@ -6383,7 +6095,7 @@ class ToolExecution {
   /// present if set by create/update request - In create request: optional - In
   /// update request: optional, any value provided will be appended to the
   /// existing list
-  core.List<FileReference> toolLogs;
+  core.List<FileReference>? toolLogs;
 
   /// References to opaque files of any format output by the tool execution.
   ///
@@ -6391,7 +6103,7 @@ class ToolExecution {
   /// response: present if set by create/update request - In create request:
   /// optional - In update request: optional, any value provided will be
   /// appended to the existing list
-  core.List<ToolOutputReference> toolOutputs;
+  core.List<ToolOutputReference>? toolOutputs;
 
   ToolExecution();
 
@@ -6419,14 +6131,14 @@ class ToolExecution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (commandLineArguments != null)
-          'commandLineArguments': commandLineArguments,
-        if (exitCode != null) 'exitCode': exitCode.toJson(),
+          'commandLineArguments': commandLineArguments!,
+        if (exitCode != null) 'exitCode': exitCode!.toJson(),
         if (toolLogs != null)
-          'toolLogs': toolLogs.map((value) => value.toJson()).toList(),
+          'toolLogs': toolLogs!.map((value) => value.toJson()).toList(),
         if (toolOutputs != null)
-          'toolOutputs': toolOutputs.map((value) => value.toJson()).toList(),
+          'toolOutputs': toolOutputs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6438,7 +6150,7 @@ class ToolExecutionStep {
   ///
   /// - In response: present if set by create/update request - In create/update
   /// request: optional
-  ToolExecution toolExecution;
+  ToolExecution? toolExecution;
 
   ToolExecutionStep();
 
@@ -6449,8 +6161,8 @@ class ToolExecutionStep {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (toolExecution != null) 'toolExecution': toolExecution.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (toolExecution != null) 'toolExecution': toolExecution!.toJson(),
       };
 }
 
@@ -6460,7 +6172,7 @@ class ToolExitCode {
   ///
   /// A value of 0 means that the execution was successful. - In response:
   /// always set - In create/update request: always set
-  core.int number;
+  core.int? number;
 
   ToolExitCode();
 
@@ -6470,8 +6182,8 @@ class ToolExitCode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (number != null) 'number': number,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (number != null) 'number': number!,
       };
 }
 
@@ -6481,18 +6193,18 @@ class ToolOutputReference {
   ///
   /// - In response: present if set by create/update request - In create/update
   /// request: optional
-  Timestamp creationTime;
+  Timestamp? creationTime;
 
   /// A FileReference to an output file.
   ///
   /// - In response: always set - In create/update request: always set
-  FileReference output;
+  FileReference? output;
 
   /// The test case to which this output file belongs.
   ///
   /// - In response: present if set by create/update request - In create/update
   /// request: optional
-  TestCaseReference testCase;
+  TestCaseReference? testCase;
 
   ToolOutputReference();
 
@@ -6511,10 +6223,10 @@ class ToolOutputReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationTime != null) 'creationTime': creationTime.toJson(),
-        if (output != null) 'output': output.toJson(),
-        if (testCase != null) 'testCase': testCase.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime!.toJson(),
+        if (output != null) 'output': output!.toJson(),
+        if (testCase != null) 'testCase': testCase!.toJson(),
       };
 }
 
@@ -6522,13 +6234,13 @@ class ToolOutputReference {
 /// threshold.
 class UIElementTooDeep {
   /// The depth of the screen element
-  core.int depth;
+  core.int? depth;
 
   /// The screen id of the element
-  core.String screenId;
+  core.String? screenId;
 
   /// The screen state id of the element
-  core.String screenStateId;
+  core.String? screenStateId;
 
   UIElementTooDeep();
 
@@ -6544,10 +6256,10 @@ class UIElementTooDeep {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (depth != null) 'depth': depth,
-        if (screenId != null) 'screenId': screenId,
-        if (screenStateId != null) 'screenStateId': screenStateId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (depth != null) 'depth': depth!,
+        if (screenId != null) 'screenId': screenId!,
+        if (screenStateId != null) 'screenStateId': screenStateId!,
       };
 }
 
@@ -6559,13 +6271,13 @@ class UnspecifiedWarning {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Additional details of an unused robodirective.
 class UnusedRoboDirective {
   /// The name of the resource that was unused.
-  core.String resourceName;
+  core.String? resourceName;
 
   UnusedRoboDirective();
 
@@ -6575,8 +6287,8 @@ class UnusedRoboDirective {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceName != null) 'resourceName': resourceName!,
       };
 }
 
@@ -6584,12 +6296,12 @@ class UnusedRoboDirective {
 /// version, in order to avoid dependencies on non-SDK APIs.
 class UpgradeInsight {
   /// The name of the package to be upgraded.
-  core.String packageName;
+  core.String? packageName;
 
   /// The suggested version to upgrade to.
   ///
   /// Optional: In case we are not sure which version solves this problem
-  core.String upgradeToVersion;
+  core.String? upgradeToVersion;
 
   UpgradeInsight();
 
@@ -6602,16 +6314,16 @@ class UpgradeInsight {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (packageName != null) 'packageName': packageName,
-        if (upgradeToVersion != null) 'upgradeToVersion': upgradeToVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (packageName != null) 'packageName': packageName!,
+        if (upgradeToVersion != null) 'upgradeToVersion': upgradeToVersion!,
       };
 }
 
 /// Additional details of a used Robo directive.
 class UsedRoboDirective {
   /// The name of the resource that was used.
-  core.String resourceName;
+  core.String? resourceName;
 
   UsedRoboDirective();
 
@@ -6621,8 +6333,8 @@ class UsedRoboDirective {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceName != null) 'resourceName': resourceName!,
       };
 }
 
@@ -6631,7 +6343,7 @@ class UsedRoboDirective {
 /// Note: This is a different scenario than unused directive.
 class UsedRoboIgnoreDirective {
   /// The name of the resource that was ignored.
-  core.String resourceName;
+  core.String? resourceName;
 
   UsedRoboIgnoreDirective();
 
@@ -6641,7 +6353,7 @@ class UsedRoboIgnoreDirective {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceName != null) 'resourceName': resourceName!,
       };
 }

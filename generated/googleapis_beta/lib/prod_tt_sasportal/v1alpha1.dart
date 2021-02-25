@@ -104,11 +104,8 @@ class CustomersResource {
   /// this method will complete with the same error.
   async.Future<SasPortalCustomer> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -144,9 +141,9 @@ class CustomersResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SasPortalListCustomersResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -189,14 +186,10 @@ class CustomersResource {
   async.Future<SasPortalCustomer> patch(
     SasPortalCustomer request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -247,13 +240,9 @@ class CustomersDeploymentsResource {
   async.Future<SasPortalDeployment> create(
     SasPortalDeployment request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -291,11 +280,8 @@ class CustomersDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<SasPortalEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -330,11 +316,8 @@ class CustomersDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<SasPortalDeployment> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -379,14 +362,11 @@ class CustomersDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<SasPortalListDeploymentsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -429,13 +409,9 @@ class CustomersDeploymentsResource {
   async.Future<SasPortalOperation> move(
     SasPortalMoveDeploymentRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -477,14 +453,10 @@ class CustomersDeploymentsResource {
   async.Future<SasPortalDeployment> patch(
     SasPortalDeployment request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -531,13 +503,9 @@ class CustomersDeploymentsDevicesResource {
   async.Future<SasPortalDevice> create(
     SasPortalDevice request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -578,13 +546,9 @@ class CustomersDeploymentsDevicesResource {
   async.Future<SasPortalDevice> createSigned(
     SasPortalCreateSignedDeviceRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -633,14 +597,11 @@ class CustomersDeploymentsDevicesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalListDevicesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -689,13 +650,9 @@ class CustomersDevicesResource {
   async.Future<SasPortalDevice> create(
     SasPortalDevice request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -736,13 +693,9 @@ class CustomersDevicesResource {
   async.Future<SasPortalDevice> createSigned(
     SasPortalCreateSignedDeviceRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -780,11 +733,8 @@ class CustomersDevicesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -819,11 +769,8 @@ class CustomersDevicesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalDevice> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -869,14 +816,11 @@ class CustomersDevicesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalListDevicesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -919,13 +863,9 @@ class CustomersDevicesResource {
   async.Future<SasPortalOperation> move(
     SasPortalMoveDeviceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -967,14 +907,10 @@ class CustomersDevicesResource {
   async.Future<SasPortalDevice> patch(
     SasPortalDevice request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1014,13 +950,9 @@ class CustomersDevicesResource {
   async.Future<SasPortalEmpty> signDevice(
     SasPortalSignDeviceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1061,13 +993,9 @@ class CustomersDevicesResource {
   async.Future<SasPortalDevice> updateSigned(
     SasPortalUpdateSignedDeviceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1122,13 +1050,9 @@ class CustomersNodesResource {
   async.Future<SasPortalNode> create(
     SasPortalNode request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1166,11 +1090,8 @@ class CustomersNodesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1205,11 +1126,8 @@ class CustomersNodesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalNode> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1253,14 +1171,11 @@ class CustomersNodesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalListNodesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1303,13 +1218,9 @@ class CustomersNodesResource {
   async.Future<SasPortalOperation> move(
     SasPortalMoveNodeRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1351,14 +1262,10 @@ class CustomersNodesResource {
   async.Future<SasPortalNode> patch(
     SasPortalNode request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1406,13 +1313,9 @@ class CustomersNodesDeploymentsResource {
   async.Future<SasPortalDeployment> create(
     SasPortalDeployment request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1460,14 +1363,11 @@ class CustomersNodesDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<SasPortalListDeploymentsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1517,13 +1417,9 @@ class CustomersNodesDevicesResource {
   async.Future<SasPortalDevice> create(
     SasPortalDevice request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1564,13 +1460,9 @@ class CustomersNodesDevicesResource {
   async.Future<SasPortalDevice> createSigned(
     SasPortalCreateSignedDeviceRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1619,14 +1511,11 @@ class CustomersNodesDevicesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalListDevicesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1677,13 +1566,9 @@ class CustomersNodesNodesResource {
   async.Future<SasPortalNode> create(
     SasPortalNode request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1730,14 +1615,11 @@ class CustomersNodesNodesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalListNodesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1786,11 +1668,8 @@ class DeploymentsResource {
   /// this method will complete with the same error.
   async.Future<SasPortalDeployment> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1831,11 +1710,8 @@ class DeploymentsDevicesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1870,11 +1746,8 @@ class DeploymentsDevicesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalDevice> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1912,13 +1785,9 @@ class DeploymentsDevicesResource {
   async.Future<SasPortalOperation> move(
     SasPortalMoveDeviceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1960,14 +1829,10 @@ class DeploymentsDevicesResource {
   async.Future<SasPortalDevice> patch(
     SasPortalDevice request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2007,13 +1872,9 @@ class DeploymentsDevicesResource {
   async.Future<SasPortalEmpty> signDevice(
     SasPortalSignDeviceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2054,13 +1915,9 @@ class DeploymentsDevicesResource {
   async.Future<SasPortalDevice> updateSigned(
     SasPortalUpdateSignedDeviceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2103,10 +1960,9 @@ class InstallerResource {
   /// this method will complete with the same error.
   async.Future<SasPortalGenerateSecretResponse> generateSecret(
     SasPortalGenerateSecretRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2141,10 +1997,9 @@ class InstallerResource {
   /// this method will complete with the same error.
   async.Future<SasPortalValidateInstallerResponse> validate(
     SasPortalValidateInstallerRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2191,11 +2046,8 @@ class NodesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalNode> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2239,11 +2091,8 @@ class NodesDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<SasPortalEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2278,11 +2127,8 @@ class NodesDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<SasPortalDeployment> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2327,14 +2173,11 @@ class NodesDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<SasPortalListDeploymentsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2377,13 +2220,9 @@ class NodesDeploymentsResource {
   async.Future<SasPortalOperation> move(
     SasPortalMoveDeploymentRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2425,14 +2264,10 @@ class NodesDeploymentsResource {
   async.Future<SasPortalDeployment> patch(
     SasPortalDeployment request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2479,13 +2314,9 @@ class NodesDeploymentsDevicesResource {
   async.Future<SasPortalDevice> create(
     SasPortalDevice request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2526,13 +2357,9 @@ class NodesDeploymentsDevicesResource {
   async.Future<SasPortalDevice> createSigned(
     SasPortalCreateSignedDeviceRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2581,14 +2408,11 @@ class NodesDeploymentsDevicesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalListDevicesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2637,13 +2461,9 @@ class NodesDevicesResource {
   async.Future<SasPortalDevice> create(
     SasPortalDevice request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2684,13 +2504,9 @@ class NodesDevicesResource {
   async.Future<SasPortalDevice> createSigned(
     SasPortalCreateSignedDeviceRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2728,11 +2544,8 @@ class NodesDevicesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2767,11 +2580,8 @@ class NodesDevicesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalDevice> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2817,14 +2627,11 @@ class NodesDevicesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalListDevicesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2867,13 +2674,9 @@ class NodesDevicesResource {
   async.Future<SasPortalOperation> move(
     SasPortalMoveDeviceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2915,14 +2718,10 @@ class NodesDevicesResource {
   async.Future<SasPortalDevice> patch(
     SasPortalDevice request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2962,13 +2761,9 @@ class NodesDevicesResource {
   async.Future<SasPortalEmpty> signDevice(
     SasPortalSignDeviceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3009,13 +2804,9 @@ class NodesDevicesResource {
   async.Future<SasPortalDevice> updateSigned(
     SasPortalUpdateSignedDeviceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3069,13 +2860,9 @@ class NodesNodesResource {
   async.Future<SasPortalNode> create(
     SasPortalNode request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3113,11 +2900,8 @@ class NodesNodesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3152,11 +2936,8 @@ class NodesNodesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalNode> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3200,14 +2981,11 @@ class NodesNodesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalListNodesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -3250,13 +3028,9 @@ class NodesNodesResource {
   async.Future<SasPortalOperation> move(
     SasPortalMoveNodeRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3298,14 +3072,10 @@ class NodesNodesResource {
   async.Future<SasPortalNode> patch(
     SasPortalNode request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3353,13 +3123,9 @@ class NodesNodesDeploymentsResource {
   async.Future<SasPortalDeployment> create(
     SasPortalDeployment request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3407,14 +3173,11 @@ class NodesNodesDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<SasPortalListDeploymentsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -3463,13 +3226,9 @@ class NodesNodesDevicesResource {
   async.Future<SasPortalDevice> create(
     SasPortalDevice request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3510,13 +3269,9 @@ class NodesNodesDevicesResource {
   async.Future<SasPortalDevice> createSigned(
     SasPortalCreateSignedDeviceRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3565,14 +3320,11 @@ class NodesNodesDevicesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalListDevicesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -3622,13 +3374,9 @@ class NodesNodesNodesResource {
   async.Future<SasPortalNode> create(
     SasPortalNode request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3675,14 +3423,11 @@ class NodesNodesNodesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalListNodesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -3730,10 +3475,9 @@ class PoliciesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalPolicy> get(
     SasPortalGetPolicyRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3770,10 +3514,9 @@ class PoliciesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalPolicy> set(
     SasPortalSetPolicyRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3808,10 +3551,9 @@ class PoliciesResource {
   /// this method will complete with the same error.
   async.Future<SasPortalTestPermissionsResponse> test(
     SasPortalTestPermissionsRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3837,12 +3579,12 @@ class SasPortalAssignment {
   /// represents a specific Google account. For example: `alice@gmail.com`. *
   /// `{group_email}`: An email address that represents a Google group. For
   /// example, `viewers@gmail.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// Required.
-  core.String role;
+  core.String? role;
 
   SasPortalAssignment();
 
@@ -3857,9 +3599,9 @@ class SasPortalAssignment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -3871,9 +3613,9 @@ class SasPortalCreateSignedDeviceRequest {
   /// set.
   ///
   /// Required.
-  core.String encodedDevice;
+  core.String? encodedDevice;
   core.List<core.int> get encodedDeviceAsBytes =>
-      convert.base64.decode(encodedDevice);
+      convert.base64.decode(encodedDevice!);
 
   set encodedDeviceAsBytes(core.List<core.int> _bytes) {
     encodedDevice =
@@ -3884,7 +3626,7 @@ class SasPortalCreateSignedDeviceRequest {
   /// database.
   ///
   /// Required.
-  core.String installerId;
+  core.String? installerId;
 
   SasPortalCreateSignedDeviceRequest();
 
@@ -3897,9 +3639,9 @@ class SasPortalCreateSignedDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (encodedDevice != null) 'encodedDevice': encodedDevice,
-        if (installerId != null) 'installerId': installerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (encodedDevice != null) 'encodedDevice': encodedDevice!,
+        if (installerId != null) 'installerId': installerId!,
       };
 }
 
@@ -3908,15 +3650,15 @@ class SasPortalCustomer {
   /// Name of the organization that the customer entity represents.
   ///
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   /// Resource name of the customer.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// User IDs used by the devices belonging to this customer.
-  core.List<core.String> sasUserIds;
+  core.List<core.String>? sasUserIds;
 
   SasPortalCustomer();
 
@@ -3934,17 +3676,17 @@ class SasPortalCustomer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (sasUserIds != null) 'sasUserIds': sasUserIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (sasUserIds != null) 'sasUserIds': sasUserIds!,
       };
 }
 
 /// The Deployment.
 class SasPortalDeployment {
   /// The allowed billing modes under this deployment.
-  core.List<core.String> allowedBillingModes;
+  core.List<core.String>? allowedBillingModes;
 
   /// Default billing mode for the deployment and devices under it.
   /// Possible string values are:
@@ -3952,20 +3694,20 @@ class SasPortalDeployment {
   /// - "MOBILE" : Price is based on category of CBSD: Category A, Category B
   /// registered with SAS.
   /// - "FIXED_WIRELESS" : Price is based on type of CBSD: Base station or CPE.
-  core.String defaultBillingMode;
+  core.String? defaultBillingMode;
 
   /// The deployment's display name.
-  core.String displayName;
+  core.String? displayName;
 
   /// Resource name.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// User ID used by the devices belonging to this deployment.
   ///
   /// Each deployment should be associated with one unique user ID.
-  core.List<core.String> sasUserIds;
+  core.List<core.String>? sasUserIds;
 
   SasPortalDeployment();
 
@@ -3991,14 +3733,14 @@ class SasPortalDeployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedBillingModes != null)
-          'allowedBillingModes': allowedBillingModes,
+          'allowedBillingModes': allowedBillingModes!,
         if (defaultBillingMode != null)
-          'defaultBillingMode': defaultBillingMode,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (sasUserIds != null) 'sasUserIds': sasUserIds,
+          'defaultBillingMode': defaultBillingMode!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (sasUserIds != null) 'sasUserIds': sasUserIds!,
       };
 }
 
@@ -4006,36 +3748,36 @@ class SasPortalDevice {
   /// Current configuration of the device as registered to the SAS.
   ///
   /// Output only.
-  SasPortalDeviceConfig activeConfig;
+  SasPortalDeviceConfig? activeConfig;
 
   /// Device parameters that can be overridden by both SAS Portal and SAS
   /// registration requests.
-  SasPortalDeviceMetadata deviceMetadata;
+  SasPortalDeviceMetadata? deviceMetadata;
 
   /// Device display name.
-  core.String displayName;
+  core.String? displayName;
 
   /// The FCC identifier of the device.
-  core.String fccId;
+  core.String? fccId;
 
   /// Only ranges within the allowlists are available for new grants.
-  core.List<SasPortalFrequencyRange> grantRangeAllowlists;
+  core.List<SasPortalFrequencyRange>? grantRangeAllowlists;
 
   /// Grants held by the device.
   ///
   /// Output only.
-  core.List<SasPortalDeviceGrant> grants;
+  core.List<SasPortalDeviceGrant>? grants;
 
   /// The resource path name.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Configuration of the device, as specified via SAS Portal API.
-  SasPortalDeviceConfig preloadedConfig;
+  SasPortalDeviceConfig? preloadedConfig;
 
   /// A serial number assigned to the device by the device manufacturer.
-  core.String serialNumber;
+  core.String? serialNumber;
 
   /// Device state.
   ///
@@ -4046,7 +3788,7 @@ class SasPortalDevice {
   /// registered with SAS.
   /// - "REGISTERED" : Device registered with SAS.
   /// - "DEREGISTERED" : Device de-registered with SAS.
-  core.String state;
+  core.String? state;
 
   SasPortalDevice();
 
@@ -4093,21 +3835,21 @@ class SasPortalDevice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activeConfig != null) 'activeConfig': activeConfig.toJson(),
-        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata.toJson(),
-        if (displayName != null) 'displayName': displayName,
-        if (fccId != null) 'fccId': fccId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activeConfig != null) 'activeConfig': activeConfig!.toJson(),
+        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!.toJson(),
+        if (displayName != null) 'displayName': displayName!,
+        if (fccId != null) 'fccId': fccId!,
         if (grantRangeAllowlists != null)
           'grantRangeAllowlists':
-              grantRangeAllowlists.map((value) => value.toJson()).toList(),
+              grantRangeAllowlists!.map((value) => value.toJson()).toList(),
         if (grants != null)
-          'grants': grants.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+          'grants': grants!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
         if (preloadedConfig != null)
-          'preloadedConfig': preloadedConfig.toJson(),
-        if (serialNumber != null) 'serialNumber': serialNumber,
-        if (state != null) 'state': state,
+          'preloadedConfig': preloadedConfig!.toJson(),
+        if (serialNumber != null) 'serialNumber': serialNumber!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -4127,14 +3869,14 @@ class SasPortalDeviceAirInterface {
   /// - "CW"
   /// - "REDLINE"
   /// - "TARANA_WIRELESS"
-  core.String radioTechnology;
+  core.String? radioTechnology;
 
   /// This field is related to the `radioTechnology` and provides the air
   /// interface specification that the CBSD is compliant with at the time of
   /// registration.
   ///
   /// Optional.
-  core.String supportedSpec;
+  core.String? supportedSpec;
 
   SasPortalDeviceAirInterface();
 
@@ -4147,55 +3889,55 @@ class SasPortalDeviceAirInterface {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (radioTechnology != null) 'radioTechnology': radioTechnology,
-        if (supportedSpec != null) 'supportedSpec': supportedSpec,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (radioTechnology != null) 'radioTechnology': radioTechnology!,
+        if (supportedSpec != null) 'supportedSpec': supportedSpec!,
       };
 }
 
 /// Information about the device configuration.
 class SasPortalDeviceConfig {
   /// Information about this device's air interface.
-  SasPortalDeviceAirInterface airInterface;
+  SasPortalDeviceAirInterface? airInterface;
 
   /// The call sign of the device operator.
-  core.String callSign;
+  core.String? callSign;
 
   /// FCC category of the device.
   /// Possible string values are:
   /// - "DEVICE_CATEGORY_UNSPECIFIED" : Unspecified device category.
   /// - "DEVICE_CATEGORY_A" : Category A.
   /// - "DEVICE_CATEGORY_B" : Category B.
-  core.String category;
+  core.String? category;
 
   /// Installation parameters for the device.
-  SasPortalInstallationParams installationParams;
+  SasPortalInstallationParams? installationParams;
 
   /// Whether the configuration has been signed by a CPI.
   ///
   /// Output only.
-  core.bool isSigned;
+  core.bool? isSigned;
 
   /// Measurement reporting capabilities of the device.
-  core.List<core.String> measurementCapabilities;
+  core.List<core.String>? measurementCapabilities;
 
   /// Information about this device model.
-  SasPortalDeviceModel model;
+  SasPortalDeviceModel? model;
 
   /// State of the configuration.
   /// Possible string values are:
   /// - "DEVICE_CONFIG_STATE_UNSPECIFIED"
   /// - "DRAFT"
   /// - "FINAL"
-  core.String state;
+  core.String? state;
 
   /// The last time the device configuration was edited.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// The identifier of a device user.
-  core.String userId;
+  core.String? userId;
 
   SasPortalDeviceConfig();
 
@@ -4237,19 +3979,19 @@ class SasPortalDeviceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (airInterface != null) 'airInterface': airInterface.toJson(),
-        if (callSign != null) 'callSign': callSign,
-        if (category != null) 'category': category,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (airInterface != null) 'airInterface': airInterface!.toJson(),
+        if (callSign != null) 'callSign': callSign!,
+        if (category != null) 'category': category!,
         if (installationParams != null)
-          'installationParams': installationParams.toJson(),
-        if (isSigned != null) 'isSigned': isSigned,
+          'installationParams': installationParams!.toJson(),
+        if (isSigned != null) 'isSigned': isSigned!,
         if (measurementCapabilities != null)
-          'measurementCapabilities': measurementCapabilities,
-        if (model != null) 'model': model.toJson(),
-        if (state != null) 'state': state,
-        if (updateTime != null) 'updateTime': updateTime,
-        if (userId != null) 'userId': userId,
+          'measurementCapabilities': measurementCapabilities!,
+        if (model != null) 'model': model!.toJson(),
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -4264,16 +4006,16 @@ class SasPortalDeviceGrant {
   /// - "CHANNEL_TYPE_UNSPECIFIED"
   /// - "CHANNEL_TYPE_GAA"
   /// - "CHANNEL_TYPE_PAL"
-  core.String channelType;
+  core.String? channelType;
 
   /// The expiration time of the grant.
-  core.String expireTime;
+  core.String? expireTime;
 
   /// The transmission frequency range.
-  SasPortalFrequencyRange frequencyRange;
+  SasPortalFrequencyRange? frequencyRange;
 
   /// Grant Id.
-  core.String grantId;
+  core.String? grantId;
 
   /// Maximum Equivalent Isotropically Radiated Power (EIRP) permitted by the
   /// grant.
@@ -4281,10 +4023,10 @@ class SasPortalDeviceGrant {
   /// The maximum EIRP is in units of dBm/MHz. The value of `maxEirp` represents
   /// the average (RMS) EIRP that would be measured by the procedure defined in
   /// FCC part 96.41(e)(3).
-  core.double maxEirp;
+  core.double? maxEirp;
 
   /// The DPA move lists on which this grant appears.
-  core.List<SasPortalDpaMoveList> moveList;
+  core.List<SasPortalDpaMoveList>? moveList;
 
   /// State of the grant.
   /// Possible string values are:
@@ -4295,10 +4037,10 @@ class SasPortalDeviceGrant {
   /// - "GRANT_STATE_SUSPENDED" : The grant has been suspended by the SAS.
   /// - "GRANT_STATE_AUTHORIZED" : The device is currently transmitting.
   /// - "GRANT_STATE_EXPIRED" : The grant has expired.
-  core.String state;
+  core.String? state;
 
   /// If the grant is suspended, the reason(s) for suspension.
-  core.List<core.String> suspensionReason;
+  core.List<core.String>? suspensionReason;
 
   SasPortalDeviceGrant();
 
@@ -4335,16 +4077,16 @@ class SasPortalDeviceGrant {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channelType != null) 'channelType': channelType,
-        if (expireTime != null) 'expireTime': expireTime,
-        if (frequencyRange != null) 'frequencyRange': frequencyRange.toJson(),
-        if (grantId != null) 'grantId': grantId,
-        if (maxEirp != null) 'maxEirp': maxEirp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channelType != null) 'channelType': channelType!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (frequencyRange != null) 'frequencyRange': frequencyRange!.toJson(),
+        if (grantId != null) 'grantId': grantId!,
+        if (maxEirp != null) 'maxEirp': maxEirp!,
         if (moveList != null)
-          'moveList': moveList.map((value) => value.toJson()).toList(),
-        if (state != null) 'state': state,
-        if (suspensionReason != null) 'suspensionReason': suspensionReason,
+          'moveList': moveList!.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state!,
+        if (suspensionReason != null) 'suspensionReason': suspensionReason!,
       };
 }
 
@@ -4356,25 +4098,25 @@ class SasPortalDeviceMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Information about the model of the device.
 class SasPortalDeviceModel {
   /// The firmware version of the device.
-  core.String firmwareVersion;
+  core.String? firmwareVersion;
 
   /// The hardware version of the device.
-  core.String hardwareVersion;
+  core.String? hardwareVersion;
 
   /// The name of the device model.
-  core.String name;
+  core.String? name;
 
   /// The software version of the device.
-  core.String softwareVersion;
+  core.String? softwareVersion;
 
   /// The name of the device vendor.
-  core.String vendor;
+  core.String? vendor;
 
   SasPortalDeviceModel();
 
@@ -4396,22 +4138,22 @@ class SasPortalDeviceModel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (firmwareVersion != null) 'firmwareVersion': firmwareVersion,
-        if (hardwareVersion != null) 'hardwareVersion': hardwareVersion,
-        if (name != null) 'name': name,
-        if (softwareVersion != null) 'softwareVersion': softwareVersion,
-        if (vendor != null) 'vendor': vendor,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
+        if (hardwareVersion != null) 'hardwareVersion': hardwareVersion!,
+        if (name != null) 'name': name!,
+        if (softwareVersion != null) 'softwareVersion': softwareVersion!,
+        if (vendor != null) 'vendor': vendor!,
       };
 }
 
 /// An entry in a DPA's move list.
 class SasPortalDpaMoveList {
   /// The ID of the DPA.
-  core.String dpaId;
+  core.String? dpaId;
 
   /// The frequency range that the move list affects.
-  SasPortalFrequencyRange frequencyRange;
+  SasPortalFrequencyRange? frequencyRange;
 
   SasPortalDpaMoveList();
 
@@ -4425,9 +4167,9 @@ class SasPortalDpaMoveList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dpaId != null) 'dpaId': dpaId,
-        if (frequencyRange != null) 'frequencyRange': frequencyRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dpaId != null) 'dpaId': dpaId!,
+        if (frequencyRange != null) 'frequencyRange': frequencyRange!.toJson(),
       };
 }
 
@@ -4445,16 +4187,16 @@ class SasPortalEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Frequency range from `low_frequency` to `high_frequency`.
 class SasPortalFrequencyRange {
   /// The highest frequency of the frequency range in MHz.
-  core.double highFrequencyMhz;
+  core.double? highFrequencyMhz;
 
   /// The lowest frequency of the frequency range in MHz.
-  core.double lowFrequencyMhz;
+  core.double? lowFrequencyMhz;
 
   SasPortalFrequencyRange();
 
@@ -4467,9 +4209,9 @@ class SasPortalFrequencyRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (highFrequencyMhz != null) 'highFrequencyMhz': highFrequencyMhz,
-        if (lowFrequencyMhz != null) 'lowFrequencyMhz': lowFrequencyMhz,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (highFrequencyMhz != null) 'highFrequencyMhz': highFrequencyMhz!,
+        if (lowFrequencyMhz != null) 'lowFrequencyMhz': lowFrequencyMhz!,
       };
 }
 
@@ -4481,13 +4223,13 @@ class SasPortalGenerateSecretRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response for GenerateSecret.
 class SasPortalGenerateSecretResponse {
   /// The secret generated by the string and used by ValidateInstaller.
-  core.String secret;
+  core.String? secret;
 
   SasPortalGenerateSecretResponse();
 
@@ -4497,8 +4239,8 @@ class SasPortalGenerateSecretResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (secret != null) 'secret': secret,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (secret != null) 'secret': secret!,
       };
 }
 
@@ -4507,7 +4249,7 @@ class SasPortalGetPolicyRequest {
   /// The resource for which the policy is being requested.
   ///
   /// Required.
-  core.String resource;
+  core.String? resource;
 
   SasPortalGetPolicyRequest();
 
@@ -4517,8 +4259,8 @@ class SasPortalGetPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resource != null) 'resource': resource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resource != null) 'resource': resource!,
       };
 }
 
@@ -4531,14 +4273,14 @@ class SasPortalInstallationParams {
   /// inclusive. A value of 0 degrees means true north; a value of 90 degrees
   /// means east. This parameter is optional for Category A devices and
   /// conditional for Category B devices.
-  core.int antennaAzimuth;
+  core.int? antennaAzimuth;
 
   /// 3-dB antenna beamwidth of the antenna in the horizontal-plane in degrees.
   ///
   /// This parameter is an unsigned integer having a value between 0 and 360
   /// (degrees) inclusive; it is optional for Category A devices and conditional
   /// for Category B devices.
-  core.int antennaBeamwidth;
+  core.int? antennaBeamwidth;
 
   /// Antenna downtilt in degrees and is an integer with a value between -90 and
   /// +90 inclusive; a negative value means the antenna is tilted up (above
@@ -4546,37 +4288,37 @@ class SasPortalInstallationParams {
   ///
   /// This parameter is optional for Category A devices and conditional for
   /// Category B devices.
-  core.int antennaDowntilt;
+  core.int? antennaDowntilt;
 
   /// Peak antenna gain in dBi.
   ///
   /// This parameter is an integer with a value between -127 and +128 (dBi)
   /// inclusive.
-  core.int antennaGain;
+  core.int? antennaGain;
 
   /// If an external antenna is used, the antenna model is optionally provided
   /// in this field.
   ///
   /// The string has a maximum length of 128 octets.
-  core.String antennaModel;
+  core.String? antennaModel;
 
   /// If present, this parameter specifies whether the CBSD is a CPE-CBSD or
   /// not.
-  core.bool cpeCbsdIndication;
+  core.bool? cpeCbsdIndication;
 
   /// This parameter is the maximum device EIRP in units of dBm/10MHz and is an
   /// integer with a value between -127 and +47 (dBm/10 MHz) inclusive.
   ///
   /// If not included, SAS interprets it as maximum allowable EIRP in units of
   /// dBm/10MHz for device category.
-  core.int eirpCapability;
+  core.int? eirpCapability;
 
   /// Device antenna height in meters.
   ///
   /// When the `heightType` parameter value is "AGL", the antenna height should
   /// be given relative to ground level. When the `heightType` parameter value
   /// is "AMSL", it is given with respect to WGS84 datum.
-  core.double height;
+  core.double? height;
 
   /// Specifies how the height is measured.
   /// Possible string values are:
@@ -4584,19 +4326,19 @@ class SasPortalInstallationParams {
   /// - "HEIGHT_TYPE_AGL" : AGL height is measured relative to the ground level.
   /// - "HEIGHT_TYPE_AMSL" : AMSL height is measured relative to the mean sea
   /// level.
-  core.String heightType;
+  core.String? heightType;
 
   /// A positive number in meters to indicate accuracy of the device antenna
   /// horizontal location.
   ///
   /// This optional parameter should only be present if its value is less than
   /// the FCC requirement of 50 meters.
-  core.double horizontalAccuracy;
+  core.double? horizontalAccuracy;
 
   /// Whether the device antenna is indoor or not.
   ///
   /// `true`: indoor. `false`: outdoor.
-  core.bool indoorDeployment;
+  core.bool? indoorDeployment;
 
   /// Latitude of the device antenna location in degrees relative to the WGS 84
   /// datum.
@@ -4604,7 +4346,7 @@ class SasPortalInstallationParams {
   /// The allowed range is from -90.000000 to +90.000000. Positive values
   /// represent latitudes north of the equator; negative values south of the
   /// equator.
-  core.double latitude;
+  core.double? latitude;
 
   /// Longitude of the device antenna location in degrees relative to the WGS 84
   /// datum.
@@ -4612,14 +4354,14 @@ class SasPortalInstallationParams {
   /// The allowed range is from -180.000000 to +180.000000. Positive values
   /// represent longitudes east of the prime meridian; negative values west of
   /// the prime meridian.
-  core.double longitude;
+  core.double? longitude;
 
   /// A positive number in meters to indicate accuracy of the device antenna
   /// vertical location.
   ///
   /// This optional parameter should only be present if its value is less than
   /// the FCC requirement of 3 meters.
-  core.double verticalAccuracy;
+  core.double? verticalAccuracy;
 
   SasPortalInstallationParams();
 
@@ -4668,35 +4410,35 @@ class SasPortalInstallationParams {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (antennaAzimuth != null) 'antennaAzimuth': antennaAzimuth,
-        if (antennaBeamwidth != null) 'antennaBeamwidth': antennaBeamwidth,
-        if (antennaDowntilt != null) 'antennaDowntilt': antennaDowntilt,
-        if (antennaGain != null) 'antennaGain': antennaGain,
-        if (antennaModel != null) 'antennaModel': antennaModel,
-        if (cpeCbsdIndication != null) 'cpeCbsdIndication': cpeCbsdIndication,
-        if (eirpCapability != null) 'eirpCapability': eirpCapability,
-        if (height != null) 'height': height,
-        if (heightType != null) 'heightType': heightType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (antennaAzimuth != null) 'antennaAzimuth': antennaAzimuth!,
+        if (antennaBeamwidth != null) 'antennaBeamwidth': antennaBeamwidth!,
+        if (antennaDowntilt != null) 'antennaDowntilt': antennaDowntilt!,
+        if (antennaGain != null) 'antennaGain': antennaGain!,
+        if (antennaModel != null) 'antennaModel': antennaModel!,
+        if (cpeCbsdIndication != null) 'cpeCbsdIndication': cpeCbsdIndication!,
+        if (eirpCapability != null) 'eirpCapability': eirpCapability!,
+        if (height != null) 'height': height!,
+        if (heightType != null) 'heightType': heightType!,
         if (horizontalAccuracy != null)
-          'horizontalAccuracy': horizontalAccuracy,
-        if (indoorDeployment != null) 'indoorDeployment': indoorDeployment,
-        if (latitude != null) 'latitude': latitude,
-        if (longitude != null) 'longitude': longitude,
-        if (verticalAccuracy != null) 'verticalAccuracy': verticalAccuracy,
+          'horizontalAccuracy': horizontalAccuracy!,
+        if (indoorDeployment != null) 'indoorDeployment': indoorDeployment!,
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
+        if (verticalAccuracy != null) 'verticalAccuracy': verticalAccuracy!,
       };
 }
 
 /// Response for `ListCustomers`.
 class SasPortalListCustomersResponse {
   /// The list of customers that match the request.
-  core.List<SasPortalCustomer> customers;
+  core.List<SasPortalCustomer>? customers;
 
   /// A pagination token returned from a previous call to ListCustomers that
   /// indicates from where listing should continue.
   ///
   /// If the field is missing or empty, it means there are no more customers.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   SasPortalListCustomersResponse();
 
@@ -4712,23 +4454,23 @@ class SasPortalListCustomersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customers != null)
-          'customers': customers.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'customers': customers!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response for ListDeployments.
 class SasPortalListDeploymentsResponse {
   /// The deployments that match the request.
-  core.List<SasPortalDeployment> deployments;
+  core.List<SasPortalDeployment>? deployments;
 
   /// A pagination token returned from a previous call to ListDeployments that
   /// indicates from where listing should continue.
   ///
   /// If the field is missing or empty, it means there are no more deployments.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   SasPortalListDeploymentsResponse();
 
@@ -4744,23 +4486,23 @@ class SasPortalListDeploymentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deployments != null)
-          'deployments': deployments.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'deployments': deployments!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response for ListDevices.
 class SasPortalListDevicesResponse {
   /// The devices that match the request.
-  core.List<SasPortalDevice> devices;
+  core.List<SasPortalDevice>? devices;
 
   /// A pagination token returned from a previous call to ListDevices that
   /// indicates from where listing should continue.
   ///
   /// If the field is missing or empty, it means there is no more devices.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   SasPortalListDevicesResponse();
 
@@ -4776,10 +4518,10 @@ class SasPortalListDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (devices != null)
-          'devices': devices.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'devices': devices!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -4789,10 +4531,10 @@ class SasPortalListNodesResponse {
   /// indicates from where listing should continue.
   ///
   /// If the field is missing or empty, it means there is no more nodes.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The nodes that match the request.
-  core.List<SasPortalNode> nodes;
+  core.List<SasPortalNode>? nodes;
 
   SasPortalListNodesResponse();
 
@@ -4808,10 +4550,10 @@ class SasPortalListNodesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (nodes != null)
-          'nodes': nodes.map((value) => value.toJson()).toList(),
+          'nodes': nodes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4821,7 +4563,7 @@ class SasPortalMoveDeploymentRequest {
   /// deployment under.
   ///
   /// Required.
-  core.String destination;
+  core.String? destination;
 
   SasPortalMoveDeploymentRequest();
 
@@ -4831,8 +4573,8 @@ class SasPortalMoveDeploymentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destination != null) 'destination': destination,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destination != null) 'destination': destination!,
       };
 }
 
@@ -4842,7 +4584,7 @@ class SasPortalMoveDeviceRequest {
   /// device under.
   ///
   /// Required.
-  core.String destination;
+  core.String? destination;
 
   SasPortalMoveDeviceRequest();
 
@@ -4852,8 +4594,8 @@ class SasPortalMoveDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destination != null) 'destination': destination,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destination != null) 'destination': destination!,
       };
 }
 
@@ -4863,7 +4605,7 @@ class SasPortalMoveNodeRequest {
   /// under.
   ///
   /// Required.
-  core.String destination;
+  core.String? destination;
 
   SasPortalMoveNodeRequest();
 
@@ -4873,23 +4615,23 @@ class SasPortalMoveNodeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destination != null) 'destination': destination,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destination != null) 'destination': destination!,
       };
 }
 
 /// The Node.
 class SasPortalNode {
   /// The node's display name.
-  core.String displayName;
+  core.String? displayName;
 
   /// Resource name.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// User ids used by the devices belonging to this node.
-  core.List<core.String> sasUserIds;
+  core.List<core.String>? sasUserIds;
 
   SasPortalNode();
 
@@ -4907,10 +4649,10 @@ class SasPortalNode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (sasUserIds != null) 'sasUserIds': sasUserIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (sasUserIds != null) 'sasUserIds': sasUserIds!,
       };
 }
 
@@ -4921,10 +4663,10 @@ class SasPortalOperation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  SasPortalStatus error;
+  SasPortalStatus? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -4935,14 +4677,14 @@ class SasPortalOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -4955,7 +4697,7 @@ class SasPortalOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   SasPortalOperation();
 
@@ -4990,19 +4732,19 @@ class SasPortalOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
 /// Defines an access control policy to the resources.
 class SasPortalPolicy {
   /// List of assignments
-  core.List<SasPortalAssignment> assignments;
+  core.List<SasPortalAssignment>? assignments;
 
   /// The etag is used for optimistic concurrency control as a way to help
   /// prevent simultaneous updates of a policy from overwriting each other.
@@ -5014,8 +4756,8 @@ class SasPortalPolicy {
   /// their change will be applied to the same version of the policy. If no etag
   /// is provided in the call to GetPolicy, then the existing policy is
   /// overwritten blindly.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -5036,10 +4778,10 @@ class SasPortalPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (assignments != null)
-          'assignments': assignments.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
+          'assignments': assignments!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
       };
 }
 
@@ -5048,14 +4790,14 @@ class SasPortalSetPolicyRequest {
   /// The policy to be applied to the `resource`.
   ///
   /// Required.
-  SasPortalPolicy policy;
+  SasPortalPolicy? policy;
 
   /// The resource for which the policy is being specified.
   ///
   /// This policy replaces any existing policy.
   ///
   /// Required.
-  core.String resource;
+  core.String? resource;
 
   SasPortalSetPolicyRequest();
 
@@ -5069,9 +4811,9 @@ class SasPortalSetPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (resource != null) 'resource': resource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (resource != null) 'resource': resource!,
       };
 }
 
@@ -5083,7 +4825,7 @@ class SasPortalSignDeviceRequest {
   /// field must be set.
   ///
   /// Required.
-  SasPortalDevice device;
+  SasPortalDevice? device;
 
   SasPortalSignDeviceRequest();
 
@@ -5094,8 +4836,8 @@ class SasPortalSignDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (device != null) 'device': device.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (device != null) 'device': device!.toJson(),
       };
 }
 
@@ -5108,7 +4850,7 @@ class SasPortalSignDeviceRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class SasPortalStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -5116,13 +4858,13 @@ class SasPortalStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   SasPortalStatus();
 
@@ -5146,22 +4888,22 @@ class SasPortalStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
 /// Request message for `TestPermissions` method.
 class SasPortalTestPermissionsRequest {
   /// The set of permissions to check for the `resource`.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   /// The resource for which the permissions are being requested.
   ///
   /// Required.
-  core.String resource;
+  core.String? resource;
 
   SasPortalTestPermissionsRequest();
 
@@ -5176,16 +4918,16 @@ class SasPortalTestPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
-        if (resource != null) 'resource': resource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+        if (resource != null) 'resource': resource!,
       };
 }
 
 /// Response message for `TestPermissions` method.
 class SasPortalTestPermissionsResponse {
   /// A set of permissions that the caller is allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   SasPortalTestPermissionsResponse();
 
@@ -5197,8 +4939,8 @@ class SasPortalTestPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -5210,9 +4952,9 @@ class SasPortalUpdateSignedDeviceRequest {
   /// set.
   ///
   /// Required.
-  core.String encodedDevice;
+  core.String? encodedDevice;
   core.List<core.int> get encodedDeviceAsBytes =>
-      convert.base64.decode(encodedDevice);
+      convert.base64.decode(encodedDevice!);
 
   set encodedDeviceAsBytes(core.List<core.int> _bytes) {
     encodedDevice =
@@ -5223,7 +4965,7 @@ class SasPortalUpdateSignedDeviceRequest {
   /// database.
   ///
   /// Required.
-  core.String installerId;
+  core.String? installerId;
 
   SasPortalUpdateSignedDeviceRequest();
 
@@ -5236,9 +4978,9 @@ class SasPortalUpdateSignedDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (encodedDevice != null) 'encodedDevice': encodedDevice,
-        if (installerId != null) 'installerId': installerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (encodedDevice != null) 'encodedDevice': encodedDevice!,
+        if (installerId != null) 'installerId': installerId!,
       };
 }
 
@@ -5249,18 +4991,18 @@ class SasPortalValidateInstallerRequest {
   /// Payload must include a "secret" claim whose value is the secret.
   ///
   /// Required.
-  core.String encodedSecret;
+  core.String? encodedSecret;
 
   /// Unique installer id (CPI ID) from the Certified Professional Installers
   /// database.
   ///
   /// Required.
-  core.String installerId;
+  core.String? installerId;
 
   /// Secret returned by the GenerateSecret.
   ///
   /// Required.
-  core.String secret;
+  core.String? secret;
 
   SasPortalValidateInstallerRequest();
 
@@ -5276,10 +5018,10 @@ class SasPortalValidateInstallerRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (encodedSecret != null) 'encodedSecret': encodedSecret,
-        if (installerId != null) 'installerId': installerId,
-        if (secret != null) 'secret': secret,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (encodedSecret != null) 'encodedSecret': encodedSecret!,
+        if (installerId != null) 'installerId': installerId!,
+        if (secret != null) 'secret': secret!,
       };
 }
 
@@ -5291,5 +5033,5 @@ class SasPortalValidateInstallerResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }

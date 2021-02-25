@@ -114,11 +114,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -158,11 +155,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -200,11 +194,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -253,14 +244,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -315,12 +303,9 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> wait(
     core.String name, {
-    core.String timeout,
-    core.String $fields,
+    core.String? timeout,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (timeout != null) 'timeout': [timeout],
       if ($fields != null) 'fields': [$fields],
@@ -370,13 +355,9 @@ class ProjectsLocationsScansResource {
   async.Future<Operation> analyzePackages(
     AnalyzePackagesRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -428,13 +409,10 @@ class ProjectsLocationsScansVulnerabilitiesResource {
   /// this method will complete with the same error.
   async.Future<ListVulnerabilitiesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -464,10 +442,10 @@ class AliasContext {
   /// - "MOVABLE" : Git branch.
   /// - "OTHER" : Used to specify non-standard aliases. For example, if a Git
   /// repo has a ref named "refs/foo/bar".
-  core.String kind;
+  core.String? kind;
 
   /// The alias name.
-  core.String name;
+  core.String? name;
 
   AliasContext();
 
@@ -480,9 +458,9 @@ class AliasContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -490,10 +468,10 @@ class AliasContext {
 /// image.
 class AnalyzePackagesMetadata {
   /// When the scan was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// The resource URI of the container image being scanned.
-  core.String resourceUri;
+  core.String? resourceUri;
 
   AnalyzePackagesMetadata();
 
@@ -506,9 +484,9 @@ class AnalyzePackagesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (resourceUri != null) 'resourceUri': resourceUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
       };
 }
 
@@ -516,12 +494,12 @@ class AnalyzePackagesMetadata {
 /// create Vulnerability Occurrences for it.
 class AnalyzePackagesRequest {
   /// The packages to analyze.
-  core.List<PackageData> packages;
+  core.List<PackageData>? packages;
 
   /// The resource URI of the container image being scanned.
   ///
   /// Required.
-  core.String resourceUri;
+  core.String? resourceUri;
 
   AnalyzePackagesRequest();
 
@@ -537,10 +515,10 @@ class AnalyzePackagesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (packages != null)
-          'packages': packages.map((value) => value.toJson()).toList(),
-        if (resourceUri != null) 'resourceUri': resourceUri,
+          'packages': packages!.map((value) => value.toJson()).toList(),
+        if (resourceUri != null) 'resourceUri': resourceUri!,
       };
 }
 
@@ -548,7 +526,7 @@ class AnalyzePackagesRequest {
 /// for the given scan.
 class AnalyzePackagesResponse {
   /// The name of the scan resource created by this successful scan.
-  core.String scan;
+  core.String? scan;
 
   AnalyzePackagesResponse();
 
@@ -558,8 +536,8 @@ class AnalyzePackagesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (scan != null) 'scan': scan,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (scan != null) 'scan': scan!,
       };
 }
 
@@ -567,11 +545,11 @@ class AnalyzePackagesResponse {
 class Artifact {
   /// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a
   /// container.
-  core.String checksum;
+  core.String? checksum;
 
   /// Artifact ID, if any; for container images, this will be a URL by digest
   /// like `gcr.io/projectID/imagename@sha256:123456`.
-  core.String id;
+  core.String? id;
 
   /// Related artifact names.
   ///
@@ -580,7 +558,7 @@ class Artifact {
   /// Container Registry, as presented to `docker push`. Note that a single
   /// Artifact ID can have multiple names, for example if two tags are applied
   /// to one image.
-  core.List<core.String> names;
+  core.List<core.String>? names;
 
   Artifact();
 
@@ -598,10 +576,10 @@ class Artifact {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (checksum != null) 'checksum': checksum,
-        if (id != null) 'id': id,
-        if (names != null) 'names': names,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (checksum != null) 'checksum': checksum!,
+        if (id != null) 'id': id!,
+        if (names != null) 'names': names!,
       };
 }
 
@@ -624,14 +602,14 @@ class AttestationOccurrence {
   /// Each JWT SHOULD encode a claim specific to the `resource_uri` of this
   /// Occurrence, but this is not validated by Grafeas metadata API
   /// implementations. The JWT itself is opaque to Grafeas.
-  core.List<Jwt> jwts;
+  core.List<Jwt>? jwts;
 
   /// The serialized payload that is verified by one or more `signatures`.
   ///
   /// Required.
-  core.String serializedPayload;
+  core.String? serializedPayload;
   core.List<core.int> get serializedPayloadAsBytes =>
-      convert.base64.decode(serializedPayload);
+      convert.base64.decode(serializedPayload!);
 
   set serializedPayloadAsBytes(core.List<core.int> _bytes) {
     serializedPayload =
@@ -643,7 +621,7 @@ class AttestationOccurrence {
   /// Verifier implementations should consider this attestation message verified
   /// if at least one `signature` verifies `serialized_payload`. See `Signature`
   /// in common.proto for more details on signature structure and verification.
-  core.List<Signature> signatures;
+  core.List<Signature>? signatures;
 
   AttestationOccurrence();
 
@@ -665,11 +643,11 @@ class AttestationOccurrence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jwts != null) 'jwts': jwts.map((value) => value.toJson()).toList(),
-        if (serializedPayload != null) 'serializedPayload': serializedPayload,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jwts != null) 'jwts': jwts!.map((value) => value.toJson()).toList(),
+        if (serializedPayload != null) 'serializedPayload': serializedPayload!,
         if (signatures != null)
-          'signatures': signatures.map((value) => value.toJson()).toList(),
+          'signatures': signatures!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -678,7 +656,7 @@ class BuildOccurrence {
   /// The actual provenance for the build.
   ///
   /// Required.
-  BuildProvenance provenance;
+  BuildProvenance? provenance;
 
   /// Serialized JSON representation of the provenance, used in generating the
   /// build signature in the corresponding build note.
@@ -690,7 +668,7 @@ class BuildOccurrence {
   /// format for signature verification. The serialized form is captured both to
   /// avoid ambiguity in how the provenance is marshalled to json as well to
   /// prevent incompatibilities with future changes.
-  core.String provenanceBytes;
+  core.String? provenanceBytes;
 
   BuildOccurrence();
 
@@ -704,9 +682,9 @@ class BuildOccurrence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (provenance != null) 'provenance': provenance.toJson(),
-        if (provenanceBytes != null) 'provenanceBytes': provenanceBytes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (provenance != null) 'provenance': provenance!.toJson(),
+        if (provenanceBytes != null) 'provenanceBytes': provenanceBytes!,
       };
 }
 
@@ -719,48 +697,48 @@ class BuildProvenance {
   ///
   /// This is a catch-all field where build providers can enter any desired
   /// additional details.
-  core.Map<core.String, core.String> buildOptions;
+  core.Map<core.String, core.String>? buildOptions;
 
   /// Version string of the builder at the time this build was executed.
-  core.String builderVersion;
+  core.String? builderVersion;
 
   /// Output of the build.
-  core.List<Artifact> builtArtifacts;
+  core.List<Artifact>? builtArtifacts;
 
   /// Commands requested by the build.
-  core.List<Command> commands;
+  core.List<Command>? commands;
 
   /// Time at which the build was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// E-mail address of the user who initiated this build.
   ///
   /// Note that this was the user's e-mail address at the time the build was
   /// initiated; this address may not represent the same end-user for all time.
-  core.String creator;
+  core.String? creator;
 
   /// Time at which execution of the build was finished.
-  core.String endTime;
+  core.String? endTime;
 
   /// Unique identifier of the build.
   ///
   /// Required.
-  core.String id;
+  core.String? id;
 
   /// URI where any logs for this provenance were written.
-  core.String logsUri;
+  core.String? logsUri;
 
   /// ID of the project.
-  core.String projectId;
+  core.String? projectId;
 
   /// Details of the Source input to the build.
-  Source sourceProvenance;
+  Source? sourceProvenance;
 
   /// Time at which execution of the build was started.
-  core.String startTime;
+  core.String? startTime;
 
   /// Trigger identifier if the build was triggered automatically; empty if not.
-  core.String triggerId;
+  core.String? triggerId;
 
   BuildProvenance();
 
@@ -820,34 +798,34 @@ class BuildProvenance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (buildOptions != null) 'buildOptions': buildOptions,
-        if (builderVersion != null) 'builderVersion': builderVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (buildOptions != null) 'buildOptions': buildOptions!,
+        if (builderVersion != null) 'builderVersion': builderVersion!,
         if (builtArtifacts != null)
           'builtArtifacts':
-              builtArtifacts.map((value) => value.toJson()).toList(),
+              builtArtifacts!.map((value) => value.toJson()).toList(),
         if (commands != null)
-          'commands': commands.map((value) => value.toJson()).toList(),
-        if (createTime != null) 'createTime': createTime,
-        if (creator != null) 'creator': creator,
-        if (endTime != null) 'endTime': endTime,
-        if (id != null) 'id': id,
-        if (logsUri != null) 'logsUri': logsUri,
-        if (projectId != null) 'projectId': projectId,
+          'commands': commands!.map((value) => value.toJson()).toList(),
+        if (createTime != null) 'createTime': createTime!,
+        if (creator != null) 'creator': creator!,
+        if (endTime != null) 'endTime': endTime!,
+        if (id != null) 'id': id!,
+        if (logsUri != null) 'logsUri': logsUri!,
+        if (projectId != null) 'projectId': projectId!,
         if (sourceProvenance != null)
-          'sourceProvenance': sourceProvenance.toJson(),
-        if (startTime != null) 'startTime': startTime,
-        if (triggerId != null) 'triggerId': triggerId,
+          'sourceProvenance': sourceProvenance!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
+        if (triggerId != null) 'triggerId': triggerId!,
       };
 }
 
 /// The category to which the update belongs.
 class Category {
   /// The identifier of the category.
-  core.String categoryId;
+  core.String? categoryId;
 
   /// The localized name of the category.
-  core.String name;
+  core.String? name;
 
   Category();
 
@@ -860,9 +838,9 @@ class Category {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (categoryId != null) 'categoryId': categoryId,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (categoryId != null) 'categoryId': categoryId!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -870,13 +848,13 @@ class Category {
 /// Source Repo.
 class CloudRepoSourceContext {
   /// An alias, which may be a branch or tag.
-  AliasContext aliasContext;
+  AliasContext? aliasContext;
 
   /// The ID of the repo.
-  RepoId repoId;
+  RepoId? repoId;
 
   /// A revision ID.
-  core.String revisionId;
+  core.String? revisionId;
 
   CloudRepoSourceContext();
 
@@ -894,37 +872,37 @@ class CloudRepoSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aliasContext != null) 'aliasContext': aliasContext.toJson(),
-        if (repoId != null) 'repoId': repoId.toJson(),
-        if (revisionId != null) 'revisionId': revisionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aliasContext != null) 'aliasContext': aliasContext!.toJson(),
+        if (repoId != null) 'repoId': repoId!.toJson(),
+        if (revisionId != null) 'revisionId': revisionId!,
       };
 }
 
 /// Command describes a step performed as part of the build pipeline.
 class Command {
   /// Command-line arguments used when executing this command.
-  core.List<core.String> args;
+  core.List<core.String>? args;
 
   /// Working directory (relative to project source root) used when running this
   /// command.
-  core.String dir;
+  core.String? dir;
 
   /// Environment variables set before running this command.
-  core.List<core.String> env;
+  core.List<core.String>? env;
 
   /// Optional unique identifier for this command, used in wait_for to reference
   /// this command as a dependency.
-  core.String id;
+  core.String? id;
 
   /// Name of the command, as presented on the command line, or if the command
   /// is packaged as a Docker container, as presented to `docker pull`.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The ID(s) of the command(s) that this command depends on.
-  core.List<core.String> waitFor;
+  core.List<core.String>? waitFor;
 
   Command();
 
@@ -955,28 +933,28 @@ class Command {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (args != null) 'args': args,
-        if (dir != null) 'dir': dir,
-        if (env != null) 'env': env,
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
-        if (waitFor != null) 'waitFor': waitFor,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (args != null) 'args': args!,
+        if (dir != null) 'dir': dir!,
+        if (env != null) 'env': env!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (waitFor != null) 'waitFor': waitFor!,
       };
 }
 
 /// The period during which some deployable was active in a runtime.
 class DeploymentOccurrence {
   /// Address of the runtime element hosting this deployment.
-  core.String address;
+  core.String? address;
 
   /// Configuration used to create this deployment.
-  core.String config;
+  core.String? config;
 
   /// Beginning of the lifetime of this deployment.
   ///
   /// Required.
-  core.String deployTime;
+  core.String? deployTime;
 
   /// Platform hosting this deployment.
   /// Possible string values are:
@@ -984,19 +962,19 @@ class DeploymentOccurrence {
   /// - "GKE" : Google Container Engine.
   /// - "FLEX" : Google App Engine: Flexible Environment.
   /// - "CUSTOM" : Custom user-defined platform.
-  core.String platform;
+  core.String? platform;
 
   /// Resource URI for the artifact being deployed taken from the deployable
   /// field with the same name.
   ///
   /// Output only.
-  core.List<core.String> resourceUri;
+  core.List<core.String>? resourceUri;
 
   /// End of the lifetime of this deployment.
-  core.String undeployTime;
+  core.String? undeployTime;
 
   /// Identity of the user that triggered this deployment.
-  core.String userEmail;
+  core.String? userEmail;
 
   DeploymentOccurrence();
 
@@ -1026,14 +1004,14 @@ class DeploymentOccurrence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address,
-        if (config != null) 'config': config,
-        if (deployTime != null) 'deployTime': deployTime,
-        if (platform != null) 'platform': platform,
-        if (resourceUri != null) 'resourceUri': resourceUri,
-        if (undeployTime != null) 'undeployTime': undeployTime,
-        if (userEmail != null) 'userEmail': userEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!,
+        if (config != null) 'config': config!,
+        if (deployTime != null) 'deployTime': deployTime!,
+        if (platform != null) 'platform': platform!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (undeployTime != null) 'undeployTime': undeployTime!,
+        if (userEmail != null) 'userEmail': userEmail!,
       };
 }
 
@@ -1048,26 +1026,26 @@ class DiscoveryOccurrence {
   /// - "FINISHED_FAILED" : Analysis has finished unsuccessfully, the analysis
   /// itself is in a bad state.
   /// - "FINISHED_UNSUPPORTED" : The resource is known not to be supported
-  core.String analysisStatus;
+  core.String? analysisStatus;
 
   /// When an error is encountered this will contain a LocalizedMessage under
   /// details to show to the user.
   ///
   /// The LocalizedMessage is output only and populated by the API.
-  Status analysisStatusError;
+  Status? analysisStatusError;
 
   /// Whether the resource is continuously analyzed.
   /// Possible string values are:
   /// - "CONTINUOUS_ANALYSIS_UNSPECIFIED" : Unknown.
   /// - "ACTIVE" : The resource is continuously analyzed.
   /// - "INACTIVE" : The resource is ignored for continuous analysis.
-  core.String continuousAnalysis;
+  core.String? continuousAnalysis;
 
   /// The CPE of the resource being scanned.
-  core.String cpe;
+  core.String? cpe;
 
   /// The last time this resource was scanned.
-  core.String lastScanTime;
+  core.String? lastScanTime;
 
   DiscoveryOccurrence();
 
@@ -1090,14 +1068,14 @@ class DiscoveryOccurrence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (analysisStatus != null) 'analysisStatus': analysisStatus,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (analysisStatus != null) 'analysisStatus': analysisStatus!,
         if (analysisStatusError != null)
-          'analysisStatusError': analysisStatusError.toJson(),
+          'analysisStatusError': analysisStatusError!.toJson(),
         if (continuousAnalysis != null)
-          'continuousAnalysis': continuousAnalysis,
-        if (cpe != null) 'cpe': cpe,
-        if (lastScanTime != null) 'lastScanTime': lastScanTime,
+          'continuousAnalysis': continuousAnalysis!,
+        if (cpe != null) 'cpe': cpe!,
+        if (lastScanTime != null) 'lastScanTime': lastScanTime!,
       };
 }
 
@@ -1115,7 +1093,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Container message for hashes of byte content of files, used in source
@@ -1124,7 +1102,7 @@ class FileHashes {
   /// Collection of file hashes.
   ///
   /// Required.
-  core.List<Hash> fileHash;
+  core.List<Hash>? fileHash;
 
   FileHashes();
 
@@ -1137,9 +1115,9 @@ class FileHashes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fileHash != null)
-          'fileHash': fileHash.map((value) => value.toJson()).toList(),
+          'fileHash': fileHash!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1148,19 +1126,19 @@ class Fingerprint {
   /// The layer ID of the final layer in the Docker image's v1 representation.
   ///
   /// Required.
-  core.String v1Name;
+  core.String? v1Name;
 
   /// The ordered list of v2 blobs that represent a given image.
   ///
   /// Required.
-  core.List<core.String> v2Blob;
+  core.List<core.String>? v2Blob;
 
   /// The name of the image's v2 blobs computed via: \[bottom\] := v2_blobbottom
   /// := sha256(v2_blob\[N\] + " " + v2_name\[N+1\]) Only the name of the final
   /// blob is kept.
   ///
   /// Output only.
-  core.String v2Name;
+  core.String? v2Name;
 
   Fingerprint();
 
@@ -1178,29 +1156,29 @@ class Fingerprint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (v1Name != null) 'v1Name': v1Name,
-        if (v2Blob != null) 'v2Blob': v2Blob,
-        if (v2Name != null) 'v2Name': v2Name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (v1Name != null) 'v1Name': v1Name!,
+        if (v2Blob != null) 'v2Blob': v2Blob!,
+        if (v2Name != null) 'v2Name': v2Name!,
       };
 }
 
 /// A SourceContext referring to a Gerrit project.
 class GerritSourceContext {
   /// An alias, which may be a branch or tag.
-  AliasContext aliasContext;
+  AliasContext? aliasContext;
 
   /// The full project name within the host.
   ///
   /// Projects may be nested, so "project/subproject" is a valid project name.
   /// The "repo name" is the hostURI/project.
-  core.String gerritProject;
+  core.String? gerritProject;
 
   /// The URI of a running Gerrit instance.
-  core.String hostUri;
+  core.String? hostUri;
 
   /// A revision (commit) ID.
-  core.String revisionId;
+  core.String? revisionId;
 
   GerritSourceContext();
 
@@ -1220,11 +1198,11 @@ class GerritSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aliasContext != null) 'aliasContext': aliasContext.toJson(),
-        if (gerritProject != null) 'gerritProject': gerritProject,
-        if (hostUri != null) 'hostUri': hostUri,
-        if (revisionId != null) 'revisionId': revisionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aliasContext != null) 'aliasContext': aliasContext!.toJson(),
+        if (gerritProject != null) 'gerritProject': gerritProject!,
+        if (hostUri != null) 'hostUri': hostUri!,
+        if (revisionId != null) 'revisionId': revisionId!,
       };
 }
 
@@ -1232,10 +1210,10 @@ class GerritSourceContext {
 /// repository (e.g., GitHub).
 class GitSourceContext {
   /// Git commit hash.
-  core.String revisionId;
+  core.String? revisionId;
 
   /// Git repository URL.
-  core.String url;
+  core.String? url;
 
   GitSourceContext();
 
@@ -1248,9 +1226,9 @@ class GitSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (revisionId != null) 'revisionId': revisionId,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -1259,13 +1237,13 @@ class Hash {
   /// The type of hash that was performed, e.g. "SHA-256".
   ///
   /// Required.
-  core.String type;
+  core.String? type;
 
   /// The hash value.
   ///
   /// Required.
-  core.String value;
-  core.List<core.int> get valueAsBytes => convert.base64.decode(value);
+  core.String? value;
+  core.List<core.int> get valueAsBytes => convert.base64.decode(value!);
 
   set valueAsBytes(core.List<core.int> _bytes) {
     value =
@@ -1283,19 +1261,19 @@ class Hash {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// The unique identifier of the update.
 class Identity {
   /// The revision number of the update.
-  core.int revision;
+  core.int? revision;
 
   /// The revision independent identifier of the update.
-  core.String updateId;
+  core.String? updateId;
 
   Identity();
 
@@ -1308,9 +1286,9 @@ class Identity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (revision != null) 'revision': revision,
-        if (updateId != null) 'updateId': updateId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (revision != null) 'revision': revision!,
+        if (updateId != null) 'updateId': updateId!,
       };
 }
 
@@ -1321,23 +1299,23 @@ class ImageOccurrence {
   /// This contains the base image URL for the derived image occurrence.
   ///
   /// Output only.
-  core.String baseResourceUrl;
+  core.String? baseResourceUrl;
 
   /// The number of layers by which this image differs from the associated image
   /// basis.
   ///
   /// Output only.
-  core.int distance;
+  core.int? distance;
 
   /// The fingerprint of the derived image.
   ///
   /// Required.
-  Fingerprint fingerprint;
+  Fingerprint? fingerprint;
 
   /// This contains layer-specific metadata, if populated it has length
   /// "distance" and is ordered with \[distance\] being the layer immediately
   /// following the base image and \[1\] being the final layer.
-  core.List<Layer> layerInfo;
+  core.List<Layer>? layerInfo;
 
   ImageOccurrence();
 
@@ -1360,12 +1338,12 @@ class ImageOccurrence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (baseResourceUrl != null) 'baseResourceUrl': baseResourceUrl,
-        if (distance != null) 'distance': distance,
-        if (fingerprint != null) 'fingerprint': fingerprint.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (baseResourceUrl != null) 'baseResourceUrl': baseResourceUrl!,
+        if (distance != null) 'distance': distance!,
+        if (fingerprint != null) 'fingerprint': fingerprint!.toJson(),
         if (layerInfo != null)
-          'layerInfo': layerInfo.map((value) => value.toJson()).toList(),
+          'layerInfo': layerInfo!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1374,7 +1352,7 @@ class Jwt {
   /// strings joined by periods.
   ///
   /// For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1
-  core.String compactJwt;
+  core.String? compactJwt;
 
   Jwt();
 
@@ -1384,15 +1362,15 @@ class Jwt {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (compactJwt != null) 'compactJwt': compactJwt,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (compactJwt != null) 'compactJwt': compactJwt!,
       };
 }
 
 /// Layer holds metadata specific to a layer of a Docker image.
 class Layer {
   /// The recovered arguments to the Dockerfile directive.
-  core.String arguments;
+  core.String? arguments;
 
   /// The recovered Dockerfile directive used to construct this layer.
   ///
@@ -1400,7 +1378,7 @@ class Layer {
   /// information.
   ///
   /// Required.
-  core.String directive;
+  core.String? directive;
 
   Layer();
 
@@ -1413,19 +1391,19 @@ class Layer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (arguments != null) 'arguments': arguments,
-        if (directive != null) 'directive': directive,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (arguments != null) 'arguments': arguments!,
+        if (directive != null) 'directive': directive!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -1441,10 +1419,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1453,10 +1431,10 @@ class ListOperationsResponse {
 class ListVulnerabilitiesResponse {
   /// A page token that can be used in a subsequent call to ListVulnerabilities
   /// to continue retrieving results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of Vulnerability Occurrences resulting from a scan.
-  core.List<Occurrence> occurrences;
+  core.List<Occurrence>? occurrences;
 
   ListVulnerabilitiesResponse();
 
@@ -1472,10 +1450,10 @@ class ListVulnerabilitiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (occurrences != null)
-          'occurrences': occurrences.map((value) => value.toJson()).toList(),
+          'occurrences': occurrences!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1488,13 +1466,13 @@ class Location {
   /// the package manager version distributing a package.
   ///
   /// Required.
-  core.String cpeUri;
+  core.String? cpeUri;
 
   /// The path from which we gathered that this package/version is installed.
-  core.String path;
+  core.String? path;
 
   /// The version installed at this location.
-  Version version;
+  Version? version;
 
   Location();
 
@@ -1511,34 +1489,34 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cpeUri != null) 'cpeUri': cpeUri,
-        if (path != null) 'path': path,
-        if (version != null) 'version': version.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cpeUri != null) 'cpeUri': cpeUri!,
+        if (path != null) 'path': path!,
+        if (version != null) 'version': version!.toJson(),
       };
 }
 
 /// An instance of an analysis type that has been found on a resource.
 class Occurrence {
   /// Describes an attestation of an artifact.
-  AttestationOccurrence attestation;
+  AttestationOccurrence? attestation;
 
   /// Describes a verifiable build.
-  BuildOccurrence build;
+  BuildOccurrence? build;
 
   /// The time this occurrence was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Describes the deployment of an artifact on a runtime.
-  DeploymentOccurrence deployment;
+  DeploymentOccurrence? deployment;
 
   /// Describes when a resource was discovered.
-  DiscoveryOccurrence discovery;
+  DiscoveryOccurrence? discovery;
 
   /// Describes how this resource derives from the basis in the associated note.
-  ImageOccurrence image;
+  ImageOccurrence? image;
 
   /// This explicitly denotes which of the occurrence details are specified.
   ///
@@ -1558,13 +1536,13 @@ class Occurrence {
   /// - "ATTESTATION" : This represents a logical "role" that can attest to
   /// artifacts.
   /// - "UPGRADE" : This represents an available package upgrade.
-  core.String kind;
+  core.String? kind;
 
   /// The name of the occurrence in the form of
   /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The analysis note associated with this occurrence, in the form of
   /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
@@ -1572,13 +1550,13 @@ class Occurrence {
   /// This field can be used as a filter in list requests.
   ///
   /// Required. Immutable.
-  core.String noteName;
+  core.String? noteName;
 
   /// Describes the installation of a package on the linked resource.
-  PackageOccurrence package;
+  PackageOccurrence? package;
 
   /// A description of actions that can be taken to remedy the note.
-  core.String remediation;
+  core.String? remediation;
 
   /// A URI that represents the resource for which the occurrence applies.
   ///
@@ -1586,18 +1564,18 @@ class Occurrence {
   /// image.
   ///
   /// Required. Immutable.
-  core.String resourceUri;
+  core.String? resourceUri;
 
   /// The time this occurrence was last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// Describes an available package upgrade on the linked resource.
-  UpgradeOccurrence upgrade;
+  UpgradeOccurrence? upgrade;
 
   /// Describes a security vulnerability.
-  VulnerabilityOccurrence vulnerability;
+  VulnerabilityOccurrence? vulnerability;
 
   Occurrence();
 
@@ -1657,22 +1635,22 @@ class Occurrence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attestation != null) 'attestation': attestation.toJson(),
-        if (build != null) 'build': build.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (deployment != null) 'deployment': deployment.toJson(),
-        if (discovery != null) 'discovery': discovery.toJson(),
-        if (image != null) 'image': image.toJson(),
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (noteName != null) 'noteName': noteName,
-        if (package != null) 'package': package.toJson(),
-        if (remediation != null) 'remediation': remediation,
-        if (resourceUri != null) 'resourceUri': resourceUri,
-        if (updateTime != null) 'updateTime': updateTime,
-        if (upgrade != null) 'upgrade': upgrade.toJson(),
-        if (vulnerability != null) 'vulnerability': vulnerability.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attestation != null) 'attestation': attestation!.toJson(),
+        if (build != null) 'build': build!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (deployment != null) 'deployment': deployment!.toJson(),
+        if (discovery != null) 'discovery': discovery!.toJson(),
+        if (image != null) 'image': image!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (noteName != null) 'noteName': noteName!,
+        if (package != null) 'package': package!.toJson(),
+        if (remediation != null) 'remediation': remediation!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (upgrade != null) 'upgrade': upgrade!.toJson(),
+        if (vulnerability != null) 'vulnerability': vulnerability!.toJson(),
       };
 }
 
@@ -1683,10 +1661,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -1697,14 +1675,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -1717,7 +1695,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -1752,12 +1730,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -1766,21 +1744,21 @@ class PackageData {
   /// the vulnerability may manifest.
   ///
   /// Examples include distro or storage location for vulnerable jar.
-  core.String cpeUri;
+  core.String? cpeUri;
 
   /// The OS affected by a vulnerability This field is deprecated and the
   /// information is in cpe_uri
-  core.String os;
+  core.String? os;
 
   /// The version of the OS This field is deprecated and the information is in
   /// cpe_uri
-  core.String osVersion;
+  core.String? osVersion;
 
   /// The package being analysed for vulnerabilities
-  core.String package;
+  core.String? package;
 
   /// The version of the package being analysed
-  core.String version;
+  core.String? version;
 
   PackageData();
 
@@ -1802,12 +1780,12 @@ class PackageData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cpeUri != null) 'cpeUri': cpeUri,
-        if (os != null) 'os': os,
-        if (osVersion != null) 'osVersion': osVersion,
-        if (package != null) 'package': package,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cpeUri != null) 'cpeUri': cpeUri!,
+        if (os != null) 'os': os!,
+        if (osVersion != null) 'osVersion': osVersion!,
+        if (package != null) 'package': package!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1818,41 +1796,41 @@ class PackageIssue {
   /// found in.
   ///
   /// Required.
-  core.String affectedCpeUri;
+  core.String? affectedCpeUri;
 
   /// The package this vulnerability was found in.
   ///
   /// Required.
-  core.String affectedPackage;
+  core.String? affectedPackage;
 
   /// The version of the package that is installed on the resource affected by
   /// this vulnerability.
   ///
   /// Required.
-  Version affectedVersion;
+  Version? affectedVersion;
 
   /// Whether a fix is available for this package.
   ///
   /// Output only.
-  core.bool fixAvailable;
+  core.bool? fixAvailable;
 
   /// The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was
   /// fixed in.
   ///
   /// It is possible for this to be different from the affected_cpe_uri.
-  core.String fixedCpeUri;
+  core.String? fixedCpeUri;
 
   /// The package this vulnerability was fixed in.
   ///
   /// It is possible for this to be different from the affected_package.
-  core.String fixedPackage;
+  core.String? fixedPackage;
 
   /// The version of the package this vulnerability was fixed in.
   ///
   /// Setting this to VersionKind.MAXIMUM means no fix is yet available.
   ///
   /// Required.
-  Version fixedVersion;
+  Version? fixedVersion;
 
   PackageIssue();
 
@@ -1882,15 +1860,15 @@ class PackageIssue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (affectedCpeUri != null) 'affectedCpeUri': affectedCpeUri,
-        if (affectedPackage != null) 'affectedPackage': affectedPackage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (affectedCpeUri != null) 'affectedCpeUri': affectedCpeUri!,
+        if (affectedPackage != null) 'affectedPackage': affectedPackage!,
         if (affectedVersion != null)
-          'affectedVersion': affectedVersion.toJson(),
-        if (fixAvailable != null) 'fixAvailable': fixAvailable,
-        if (fixedCpeUri != null) 'fixedCpeUri': fixedCpeUri,
-        if (fixedPackage != null) 'fixedPackage': fixedPackage,
-        if (fixedVersion != null) 'fixedVersion': fixedVersion.toJson(),
+          'affectedVersion': affectedVersion!.toJson(),
+        if (fixAvailable != null) 'fixAvailable': fixAvailable!,
+        if (fixedCpeUri != null) 'fixedCpeUri': fixedCpeUri!,
+        if (fixedPackage != null) 'fixedPackage': fixedPackage!,
+        if (fixedVersion != null) 'fixedVersion': fixedVersion!.toJson(),
       };
 }
 
@@ -1900,12 +1878,12 @@ class PackageOccurrence {
   /// found.
   ///
   /// Required.
-  core.List<Location> location;
+  core.List<Location>? location;
 
   /// The name of the installed package.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   PackageOccurrence();
 
@@ -1921,10 +1899,10 @@ class PackageOccurrence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (location != null)
-          'location': location.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+          'location': location!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1932,12 +1910,12 @@ class PackageOccurrence {
 /// winged-cargo-31) and a repo name within that project.
 class ProjectRepoId {
   /// The ID of the project.
-  core.String projectId;
+  core.String? projectId;
 
   /// The name of the repo.
   ///
   /// Leave empty for the default repo.
-  core.String repoName;
+  core.String? repoName;
 
   ProjectRepoId();
 
@@ -1950,19 +1928,19 @@ class ProjectRepoId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (projectId != null) 'projectId': projectId,
-        if (repoName != null) 'repoName': repoName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (projectId != null) 'projectId': projectId!,
+        if (repoName != null) 'repoName': repoName!,
       };
 }
 
 /// Metadata for any related URL information.
 class RelatedUrl {
   /// Label to describe usage of the URL.
-  core.String label;
+  core.String? label;
 
   /// Specific URL associated with the resource.
-  core.String url;
+  core.String? url;
 
   RelatedUrl();
 
@@ -1975,19 +1953,19 @@ class RelatedUrl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (label != null) 'label': label,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (label != null) 'label': label!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// A unique identifier for a Cloud Repo.
 class RepoId {
   /// A combination of a project ID and a repo name.
-  ProjectRepoId projectRepoId;
+  ProjectRepoId? projectRepoId;
 
   /// A server-assigned, globally unique identifier.
-  core.String uid;
+  core.String? uid;
 
   RepoId();
 
@@ -2001,9 +1979,9 @@ class RepoId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (projectRepoId != null) 'projectRepoId': projectRepoId.toJson(),
-        if (uid != null) 'uid': uid,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (projectRepoId != null) 'projectRepoId': projectRepoId!.toJson(),
+        if (uid != null) 'uid': uid!,
       };
 }
 
@@ -2039,7 +2017,7 @@ class Signature {
   /// of the DER serialization): *
   /// "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" *
   /// "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"
-  core.String publicKeyId;
+  core.String? publicKeyId;
 
   /// The content of the signature, an opaque bytestring.
   ///
@@ -2048,8 +2026,8 @@ class Signature {
   /// the payload explicitly. Alternatively, a message might have a canonical
   /// serialization that can always be unambiguously computed to derive the
   /// payload.
-  core.String signature;
-  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature);
+  core.String? signature;
+  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
 
   set signatureAsBytes(core.List<core.int> _bytes) {
     signature =
@@ -2067,9 +2045,9 @@ class Signature {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (publicKeyId != null) 'publicKeyId': publicKeyId,
-        if (signature != null) 'signature': signature,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (publicKeyId != null) 'publicKeyId': publicKeyId!,
+        if (signature != null) 'signature': signature!,
       };
 }
 
@@ -2080,14 +2058,14 @@ class Source {
   /// remotes or submodules.
   ///
   /// This list will not include the context specified in the context field.
-  core.List<SourceContext> additionalContexts;
+  core.List<SourceContext>? additionalContexts;
 
   /// If provided, the input binary artifacts for the build came from this
   /// location.
-  core.String artifactStorageSourceUri;
+  core.String? artifactStorageSourceUri;
 
   /// If provided, the source code used for the build came from this location.
-  SourceContext context;
+  SourceContext? context;
 
   /// Hash(es) of the build source, which can be used to verify that the
   /// original source integrity was maintained in the build.
@@ -2096,7 +2074,7 @@ class Source {
   /// contain the hash values for those files. If the build source came in a
   /// single package such as a gzipped tarfile (.tar.gz), the FileHash will be
   /// for the single path to that file.
-  core.Map<core.String, FileHashes> fileHashes;
+  core.Map<core.String, FileHashes>? fileHashes;
 
   Source();
 
@@ -2117,7 +2095,7 @@ class Source {
     }
     if (_json.containsKey('fileHashes')) {
       fileHashes = (_json['fileHashes'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -2127,16 +2105,16 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additionalContexts != null)
           'additionalContexts':
-              additionalContexts.map((value) => value.toJson()).toList(),
+              additionalContexts!.map((value) => value.toJson()).toList(),
         if (artifactStorageSourceUri != null)
-          'artifactStorageSourceUri': artifactStorageSourceUri,
-        if (context != null) 'context': context.toJson(),
+          'artifactStorageSourceUri': artifactStorageSourceUri!,
+        if (context != null) 'context': context!.toJson(),
         if (fileHashes != null)
           'fileHashes':
-              fileHashes.map((key, item) => core.MapEntry(key, item.toJson())),
+              fileHashes!.map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
 
@@ -2146,16 +2124,16 @@ class Source {
 /// file or directory.
 class SourceContext {
   /// A SourceContext referring to a revision in a Google Cloud Source Repo.
-  CloudRepoSourceContext cloudRepo;
+  CloudRepoSourceContext? cloudRepo;
 
   /// A SourceContext referring to a Gerrit project.
-  GerritSourceContext gerrit;
+  GerritSourceContext? gerrit;
 
   /// A SourceContext referring to any third party Git repo (e.g., GitHub).
-  GitSourceContext git;
+  GitSourceContext? git;
 
   /// Labels with user defined metadata.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   SourceContext();
 
@@ -2183,11 +2161,11 @@ class SourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cloudRepo != null) 'cloudRepo': cloudRepo.toJson(),
-        if (gerrit != null) 'gerrit': gerrit.toJson(),
-        if (git != null) 'git': git.toJson(),
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cloudRepo != null) 'cloudRepo': cloudRepo!.toJson(),
+        if (gerrit != null) 'gerrit': gerrit!.toJson(),
+        if (git != null) 'git': git!.toJson(),
+        if (labels != null) 'labels': labels!,
       };
 }
 
@@ -2200,7 +2178,7 @@ class SourceContext {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -2208,13 +2186,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -2238,10 +2216,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -2256,18 +2234,18 @@ class UpgradeDistribution {
   ///
   /// For Windows the classification is one of the category_ids listed at
   /// https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ff357803(v=vs.85)
-  core.String classification;
+  core.String? classification;
 
   /// Required - The specific operating system this metadata applies to.
   ///
   /// See https://cpe.mitre.org/specification/.
-  core.String cpeUri;
+  core.String? cpeUri;
 
   /// The cve tied to this Upgrade.
-  core.List<core.String> cve;
+  core.List<core.String>? cve;
 
   /// The severity as specified by the upstream operating system.
-  core.String severity;
+  core.String? severity;
 
   UpgradeDistribution();
 
@@ -2288,11 +2266,11 @@ class UpgradeDistribution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (classification != null) 'classification': classification,
-        if (cpeUri != null) 'cpeUri': cpeUri,
-        if (cve != null) 'cve': cve,
-        if (severity != null) 'severity': severity,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (classification != null) 'classification': classification!,
+        if (cpeUri != null) 'cpeUri': cpeUri!,
+        if (cve != null) 'cve': cve!,
+        if (severity != null) 'severity': severity!,
       };
 }
 
@@ -2309,22 +2287,22 @@ class UpgradeOccurrence {
   ///
   /// This allows efficient filtering, as well as making it easier to use the
   /// occurrence.
-  UpgradeDistribution distribution;
+  UpgradeDistribution? distribution;
 
   /// Required for non-Windows OS.
   ///
   /// The package this Upgrade is for.
-  core.String package;
+  core.String? package;
 
   /// Required for non-Windows OS.
   ///
   /// The version of the package in a machine + human readable form.
-  Version parsedVersion;
+  Version? parsedVersion;
 
   /// Required for Windows OS.
   ///
   /// Represents the metadata about the Windows update.
-  WindowsUpdate windowsUpdate;
+  WindowsUpdate? windowsUpdate;
 
   UpgradeOccurrence();
 
@@ -2346,23 +2324,23 @@ class UpgradeOccurrence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (distribution != null) 'distribution': distribution.toJson(),
-        if (package != null) 'package': package,
-        if (parsedVersion != null) 'parsedVersion': parsedVersion.toJson(),
-        if (windowsUpdate != null) 'windowsUpdate': windowsUpdate.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (distribution != null) 'distribution': distribution!.toJson(),
+        if (package != null) 'package': package!,
+        if (parsedVersion != null) 'parsedVersion': parsedVersion!.toJson(),
+        if (windowsUpdate != null) 'windowsUpdate': windowsUpdate!.toJson(),
       };
 }
 
 /// Version contains structured information about the version of a package.
 class Version {
   /// Used to correct mistakes in the version numbering scheme.
-  core.int epoch;
+  core.int? epoch;
 
   /// Human readable version string.
   ///
   /// This string is of the form :- and is only set when kind is NORMAL.
-  core.String fullName;
+  core.String? fullName;
 
   /// Whether this version is specifying part of an inclusive range.
   ///
@@ -2371,7 +2349,7 @@ class Version {
   /// insufficient - we also need to specify whether the version is included in
   /// the range or is excluded from the range. This boolean is expected to be
   /// set to true when the version is included in a range.
-  core.bool inclusive;
+  core.bool? inclusive;
 
   /// Distinguishes between sentinel MIN/MAX versions and normal versions.
   ///
@@ -2381,15 +2359,15 @@ class Version {
   /// - "NORMAL" : A standard package version.
   /// - "MINIMUM" : A special version representing negative infinity.
   /// - "MAXIMUM" : A special version representing positive infinity.
-  core.String kind;
+  core.String? kind;
 
   /// Required only when version kind is NORMAL.
   ///
   /// The main part of the version name.
-  core.String name;
+  core.String? name;
 
   /// The iteration of the package build from the above version.
-  core.String revision;
+  core.String? revision;
 
   Version();
 
@@ -2414,13 +2392,13 @@ class Version {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (epoch != null) 'epoch': epoch,
-        if (fullName != null) 'fullName': fullName,
-        if (inclusive != null) 'inclusive': inclusive,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (revision != null) 'revision': revision,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (epoch != null) 'epoch': epoch!,
+        if (fullName != null) 'fullName': fullName!,
+        if (inclusive != null) 'inclusive': inclusive!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (revision != null) 'revision': revision!,
       };
 }
 
@@ -2432,7 +2410,7 @@ class VulnerabilityOccurrence {
   /// indicates high severity.
   ///
   /// Output only.
-  core.double cvssScore;
+  core.double? cvssScore;
 
   /// The distro assigned severity for this vulnerability when it is available,
   /// otherwise this is the note provider assigned severity.
@@ -2443,28 +2421,28 @@ class VulnerabilityOccurrence {
   /// - "MEDIUM" : Medium severity.
   /// - "HIGH" : High severity.
   /// - "CRITICAL" : Critical severity.
-  core.String effectiveSeverity;
+  core.String? effectiveSeverity;
 
   /// Whether at least one of the affected packages has a fix available.
   ///
   /// Output only.
-  core.bool fixAvailable;
+  core.bool? fixAvailable;
 
   /// A detailed description of this vulnerability.
   ///
   /// Output only.
-  core.String longDescription;
+  core.String? longDescription;
 
   /// The set of affected locations and their fixes (if available) within the
   /// associated resource.
   ///
   /// Required.
-  core.List<PackageIssue> packageIssue;
+  core.List<PackageIssue>? packageIssue;
 
   /// URLs related to this vulnerability.
   ///
   /// Output only.
-  core.List<RelatedUrl> relatedUrls;
+  core.List<RelatedUrl>? relatedUrls;
 
   /// The note provider assigned severity of this vulnerability.
   ///
@@ -2476,16 +2454,16 @@ class VulnerabilityOccurrence {
   /// - "MEDIUM" : Medium severity.
   /// - "HIGH" : High severity.
   /// - "CRITICAL" : Critical severity.
-  core.String severity;
+  core.String? severity;
 
   /// A one sentence description of this vulnerability.
   ///
   /// Output only.
-  core.String shortDescription;
+  core.String? shortDescription;
 
   /// The type of package; whether native or non native (e.g., ruby gems,
   /// node.js packages, etc.).
-  core.String type;
+  core.String? type;
 
   VulnerabilityOccurrence();
 
@@ -2525,18 +2503,18 @@ class VulnerabilityOccurrence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cvssScore != null) 'cvssScore': cvssScore,
-        if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity,
-        if (fixAvailable != null) 'fixAvailable': fixAvailable,
-        if (longDescription != null) 'longDescription': longDescription,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cvssScore != null) 'cvssScore': cvssScore!,
+        if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity!,
+        if (fixAvailable != null) 'fixAvailable': fixAvailable!,
+        if (longDescription != null) 'longDescription': longDescription!,
         if (packageIssue != null)
-          'packageIssue': packageIssue.map((value) => value.toJson()).toList(),
+          'packageIssue': packageIssue!.map((value) => value.toJson()).toList(),
         if (relatedUrls != null)
-          'relatedUrls': relatedUrls.map((value) => value.toJson()).toList(),
-        if (severity != null) 'severity': severity,
-        if (shortDescription != null) 'shortDescription': shortDescription,
-        if (type != null) 'type': type,
+          'relatedUrls': relatedUrls!.map((value) => value.toJson()).toList(),
+        if (severity != null) 'severity': severity!,
+        if (shortDescription != null) 'shortDescription': shortDescription!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2547,26 +2525,26 @@ class VulnerabilityOccurrence {
 /// https://docs.microsoft.com/en-us/windows/win32/api/wuapi/nn-wuapi-iupdate.
 class WindowsUpdate {
   /// The list of categories to which the update belongs.
-  core.List<Category> categories;
+  core.List<Category>? categories;
 
   /// The localized description of the update.
-  core.String description;
+  core.String? description;
 
   /// Required - The unique identifier for the update.
-  Identity identity;
+  Identity? identity;
 
   /// The Microsoft Knowledge Base article IDs that are associated with the
   /// update.
-  core.List<core.String> kbArticleIds;
+  core.List<core.String>? kbArticleIds;
 
   /// The last published timestamp of the update.
-  core.String lastPublishedTimestamp;
+  core.String? lastPublishedTimestamp;
 
   /// The hyperlink to the support information for the update.
-  core.String supportUrl;
+  core.String? supportUrl;
 
   /// The localized title of the update.
-  core.String title;
+  core.String? title;
 
   WindowsUpdate();
 
@@ -2600,15 +2578,15 @@ class WindowsUpdate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (categories != null)
-          'categories': categories.map((value) => value.toJson()).toList(),
-        if (description != null) 'description': description,
-        if (identity != null) 'identity': identity.toJson(),
-        if (kbArticleIds != null) 'kbArticleIds': kbArticleIds,
+          'categories': categories!.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description!,
+        if (identity != null) 'identity': identity!.toJson(),
+        if (kbArticleIds != null) 'kbArticleIds': kbArticleIds!,
         if (lastPublishedTimestamp != null)
-          'lastPublishedTimestamp': lastPublishedTimestamp,
-        if (supportUrl != null) 'supportUrl': supportUrl,
-        if (title != null) 'title': title,
+          'lastPublishedTimestamp': lastPublishedTimestamp!,
+        if (supportUrl != null) 'supportUrl': supportUrl!,
+        if (title != null) 'title': title!,
       };
 }

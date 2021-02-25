@@ -93,10 +93,9 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<Account> create(
     Account request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -134,11 +133,8 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<Account> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -190,11 +186,11 @@ class AccountsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAccountsResponse> list({
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String parentAccount,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parentAccount,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
@@ -246,15 +242,11 @@ class AccountsResource {
   async.Future<Account> patch(
     Account request,
     core.String name, {
-    core.String updateMask,
-    core.bool validateOnly,
-    core.String $fields,
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
@@ -306,13 +298,9 @@ class AccountsAdminsResource {
   async.Future<Admin> create(
     Admin request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -349,11 +337,8 @@ class AccountsAdminsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -388,11 +373,8 @@ class AccountsAdminsResource {
   /// this method will complete with the same error.
   async.Future<ListAccountAdminsResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -437,14 +419,10 @@ class AccountsAdminsResource {
   async.Future<Admin> patch(
     Admin request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -491,13 +469,9 @@ class AccountsInvitationsResource {
   async.Future<Empty> accept(
     AcceptInvitationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -537,13 +511,9 @@ class AccountsInvitationsResource {
   async.Future<Empty> decline(
     DeclineInvitationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -583,12 +553,9 @@ class AccountsInvitationsResource {
   /// this method will complete with the same error.
   async.Future<ListInvitationsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String $fields,
+    core.String? filter,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if ($fields != null) 'fields': [$fields],
@@ -649,13 +616,9 @@ class LocationsAdminsResource {
   async.Future<Admin> create(
     Admin request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -692,11 +655,8 @@ class LocationsAdminsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -731,11 +691,8 @@ class LocationsAdminsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationAdminsResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -782,14 +739,10 @@ class LocationsAdminsResource {
   async.Future<Admin> patch(
     Admin request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -815,7 +768,7 @@ class AcceptInvitationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// An account is a container for your location.
@@ -831,24 +784,24 @@ class Account {
   /// user account.
   ///
   /// Required.
-  core.String accountName;
+  core.String? accountName;
 
   /// Account reference number if provisioned.
   ///
   /// Output only.
-  core.String accountNumber;
+  core.String? accountNumber;
 
   /// The resource name, in the format `accounts/{account_id}`.
   ///
   /// Immutable.
-  core.String name;
+  core.String? name;
 
   /// Additional info for an organization.
   ///
   /// This is populated only for an organization account.
   ///
   /// Output only.
-  OrganizationInfo organizationInfo;
+  OrganizationInfo? organizationInfo;
 
   /// Specifies the permission level the user has for this account.
   ///
@@ -857,7 +810,7 @@ class Account {
   /// - "PERMISSION_LEVEL_UNSPECIFIED" : Not specified.
   /// - "OWNER_LEVEL" : The user has owner level permission.
   /// - "MEMBER_LEVEL" : The user has member level permission.
-  core.String permissionLevel;
+  core.String? permissionLevel;
 
   /// Input only.
   ///
@@ -865,7 +818,7 @@ class Account {
   /// account being created. It should be of the form `accounts/{account_id}/`.
   ///
   /// Required.
-  core.String primaryOwner;
+  core.String? primaryOwner;
 
   /// Specifies the AccountRole of this account.
   ///
@@ -877,7 +830,7 @@ class Account {
   /// - "MANAGER" : The user can manage this account.
   /// - "SITE_MANAGER" : The user can manage a limited set of features for the
   /// account.
-  core.String role;
+  core.String? role;
 
   /// Contains the type of account.
   ///
@@ -896,7 +849,7 @@ class Account {
   /// - "ORGANIZATION" : An organization representing a company. For more
   /// information, see the
   /// [help center article](https://support.google.com/business/answer/7663063)
-  core.String type;
+  core.String? type;
 
   /// If verified, future locations that are created are automatically connected
   /// to Google Maps, and have Google+ pages created, without requiring
@@ -910,7 +863,7 @@ class Account {
   /// been requested.
   /// - "VERIFICATION_REQUESTED" : Account that is not verified, but
   /// verification has been requested.
-  core.String verificationState;
+  core.String? verificationState;
 
   /// Indicates whether the account is vetted by Google.
   ///
@@ -926,7 +879,7 @@ class Account {
   /// account.
   /// - "INVALID" : The account is vetted but in an invalid state. The account
   /// will behave like an unvetted account.
-  core.String vettedState;
+  core.String? vettedState;
 
   Account();
 
@@ -964,18 +917,18 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountName != null) 'accountName': accountName,
-        if (accountNumber != null) 'accountNumber': accountNumber,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountName != null) 'accountName': accountName!,
+        if (accountNumber != null) 'accountNumber': accountNumber!,
+        if (name != null) 'name': name!,
         if (organizationInfo != null)
-          'organizationInfo': organizationInfo.toJson(),
-        if (permissionLevel != null) 'permissionLevel': permissionLevel,
-        if (primaryOwner != null) 'primaryOwner': primaryOwner,
-        if (role != null) 'role': role,
-        if (type != null) 'type': type,
-        if (verificationState != null) 'verificationState': verificationState,
-        if (vettedState != null) 'vettedState': vettedState,
+          'organizationInfo': organizationInfo!.toJson(),
+        if (permissionLevel != null) 'permissionLevel': permissionLevel!,
+        if (primaryOwner != null) 'primaryOwner': primaryOwner!,
+        if (role != null) 'role': role!,
+        if (type != null) 'type': type!,
+        if (verificationState != null) 'verificationState': verificationState!,
+        if (vettedState != null) 'vettedState': vettedState!,
       };
 }
 
@@ -989,7 +942,7 @@ class Admin {
   /// This field is only needed to be set during admin creation.
   ///
   /// Optional.
-  core.String admin;
+  core.String? admin;
 
   /// The resource name.
   ///
@@ -999,13 +952,13 @@ class Admin {
   /// ignored if set during admin creation.
   ///
   /// Immutable.
-  core.String name;
+  core.String? name;
 
   /// Indicates whether this admin has a pending invitation for the specified
   /// resource.
   ///
   /// Output only.
-  core.bool pendingInvitation;
+  core.bool? pendingInvitation;
 
   /// Specifies the role that this admin uses with the specified Account or
   /// Location.
@@ -1020,7 +973,7 @@ class Admin {
   /// - "SITE_MANAGER" : The admin can manage social (Google+) pages. (Displays
   /// as 'Site Manager' in UI). This API doesn't allow creating an account admin
   /// with a SITE_MANAGER role.
-  core.String role;
+  core.String? role;
 
   Admin();
 
@@ -1039,11 +992,11 @@ class Admin {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (admin != null) 'admin': admin,
-        if (name != null) 'name': name,
-        if (pendingInvitation != null) 'pendingInvitation': pendingInvitation,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (admin != null) 'admin': admin!,
+        if (name != null) 'name': name!,
+        if (pendingInvitation != null) 'pendingInvitation': pendingInvitation!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1055,7 +1008,7 @@ class DeclineInvitationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1072,7 +1025,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a pending invitation.
@@ -1082,7 +1035,7 @@ class Invitation {
   /// `accounts/{account_id}/invitations/{invitation_id}`.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The invited role on the account.
   ///
@@ -1096,13 +1049,13 @@ class Invitation {
   /// - "SITE_MANAGER" : The admin can manage social (Google+) pages. (Displays
   /// as 'Site Manager' in UI). This API doesn't allow creating an account admin
   /// with a SITE_MANAGER role.
-  core.String role;
+  core.String? role;
 
   /// The sparsely populated account this invitation is for.
-  Account targetAccount;
+  Account? targetAccount;
 
   /// The target location this invitation is for.
-  TargetLocation targetLocation;
+  TargetLocation? targetLocation;
 
   /// Specifies which target types should appear in the response.
   ///
@@ -1111,7 +1064,7 @@ class Invitation {
   /// - "TARGET_TYPE_UNSPECIFIED" : Set when target type is unspecified.
   /// - "ACCOUNTS_ONLY" : List invitations only for targets of type Account.
   /// - "LOCATIONS_ONLY" : List invitations only for targets of type Location.
-  core.String targetType;
+  core.String? targetType;
 
   Invitation();
 
@@ -1135,19 +1088,19 @@ class Invitation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (role != null) 'role': role,
-        if (targetAccount != null) 'targetAccount': targetAccount.toJson(),
-        if (targetLocation != null) 'targetLocation': targetLocation.toJson(),
-        if (targetType != null) 'targetType': targetType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (role != null) 'role': role!,
+        if (targetAccount != null) 'targetAccount': targetAccount!.toJson(),
+        if (targetLocation != null) 'targetLocation': targetLocation!.toJson(),
+        if (targetType != null) 'targetType': targetType!,
       };
 }
 
 /// Response message for AccessControl.ListAccountAdmins.
 class ListAccountAdminsResponse {
   /// A collection of Admin instances.
-  core.List<Admin> accountAdmins;
+  core.List<Admin>? accountAdmins;
 
   ListAccountAdminsResponse();
 
@@ -1160,10 +1113,10 @@ class ListAccountAdminsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accountAdmins != null)
           'accountAdmins':
-              accountAdmins.map((value) => value.toJson()).toList(),
+              accountAdmins!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1173,14 +1126,14 @@ class ListAccountsResponse {
   ///
   /// The personal account of the user doing the query will always be the first
   /// item of the result, unless it is filtered out.
-  core.List<Account> accounts;
+  core.List<Account>? accounts;
 
   /// If the number of accounts exceeds the requested page size, this field is
   /// populated with a token to fetch the next page of accounts on a subsequent
   /// call to `accounts.list`.
   ///
   /// If there are no more accounts, this field is not present in the response.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListAccountsResponse();
 
@@ -1196,10 +1149,10 @@ class ListAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accounts != null)
-          'accounts': accounts.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'accounts': accounts!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1208,7 +1161,7 @@ class ListInvitationsResponse {
   /// A collection of invitations that are pending for the account.
   ///
   /// The number of invitations listed here cannot exceed 1000.
-  core.List<Invitation> invitations;
+  core.List<Invitation>? invitations;
 
   ListInvitationsResponse();
 
@@ -1221,16 +1174,16 @@ class ListInvitationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (invitations != null)
-          'invitations': invitations.map((value) => value.toJson()).toList(),
+          'invitations': invitations!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for AccessControl.ListLocationAdmins.
 class ListLocationAdminsResponse {
   /// A collection of Admins.
-  core.List<Admin> admins;
+  core.List<Admin>? admins;
 
   ListLocationAdminsResponse();
 
@@ -1243,9 +1196,9 @@ class ListLocationAdminsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (admins != null)
-          'admins': admins.map((value) => value.toJson()).toList(),
+          'admins': admins!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1254,17 +1207,17 @@ class OrganizationInfo {
   /// The postal address for the account.
   ///
   /// Output only.
-  PostalAddress address;
+  PostalAddress? address;
 
   /// The contact number for the organization.
   ///
   /// Output only.
-  core.String phoneNumber;
+  core.String? phoneNumber;
 
   /// The registered domain for the account.
   ///
   /// Output only.
-  core.String registeredDomain;
+  core.String? registeredDomain;
 
   OrganizationInfo();
 
@@ -1281,10 +1234,10 @@ class OrganizationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address.toJson(),
-        if (phoneNumber != null) 'phoneNumber': phoneNumber,
-        if (registeredDomain != null) 'registeredDomain': registeredDomain,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!.toJson(),
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+        if (registeredDomain != null) 'registeredDomain': registeredDomain!,
       };
 }
 
@@ -1318,7 +1271,7 @@ class PostalAddress {
   /// region_code and address_lines, and then geocoding is the recommended way
   /// to handle completely unstructured addresses (as opposed to guessing which
   /// parts of the address should be localities or administrative areas).
-  core.List<core.String> addressLines;
+  core.List<core.String>? addressLines;
 
   /// Highest administrative subdivision which is used for postal addresses of a
   /// country or region.
@@ -1330,7 +1283,7 @@ class PostalAddress {
   /// should be left unpopulated.
   ///
   /// Optional.
-  core.String administrativeArea;
+  core.String? administrativeArea;
 
   /// BCP-47 language code of the contents of this address (if known).
   ///
@@ -1343,7 +1296,7 @@ class PostalAddress {
   /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
   ///
   /// Optional.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Generally refers to the city/town portion of the address.
   ///
@@ -1352,12 +1305,12 @@ class PostalAddress {
   /// leave locality empty and use address_lines.
   ///
   /// Optional.
-  core.String locality;
+  core.String? locality;
 
   /// The name of the organization at the address.
   ///
   /// Optional.
-  core.String organization;
+  core.String? organization;
 
   /// Postal code of the address.
   ///
@@ -1366,7 +1319,7 @@ class PostalAddress {
   /// the address (e.g. state/zip validation in the U.S.A.).
   ///
   /// Optional.
-  core.String postalCode;
+  core.String? postalCode;
 
   /// The recipient at the address.
   ///
@@ -1374,7 +1327,7 @@ class PostalAddress {
   /// information. For example, it might contain "care of" information.
   ///
   /// Optional.
-  core.List<core.String> recipients;
+  core.List<core.String>? recipients;
 
   /// CLDR region code of the country/region of the address.
   ///
@@ -1384,13 +1337,13 @@ class PostalAddress {
   /// for details. Example: "CH" for Switzerland.
   ///
   /// Required.
-  core.String regionCode;
+  core.String? regionCode;
 
   /// The schema revision of the `PostalAddress`.
   ///
   /// This must be set to 0, which is the latest revision. All new revisions
   /// **must** be backward compatible with old revisions.
-  core.int revision;
+  core.int? revision;
 
   /// Additional, country-specific, sorting code.
   ///
@@ -1400,14 +1353,14 @@ class PostalAddress {
   /// area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
   ///
   /// Optional.
-  core.String sortingCode;
+  core.String? sortingCode;
 
   /// Sublocality of the address.
   ///
   /// For example, this can be neighborhoods, boroughs, districts.
   ///
   /// Optional.
-  core.String sublocality;
+  core.String? sublocality;
 
   PostalAddress();
 
@@ -1451,29 +1404,29 @@ class PostalAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addressLines != null) 'addressLines': addressLines,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addressLines != null) 'addressLines': addressLines!,
         if (administrativeArea != null)
-          'administrativeArea': administrativeArea,
-        if (languageCode != null) 'languageCode': languageCode,
-        if (locality != null) 'locality': locality,
-        if (organization != null) 'organization': organization,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (recipients != null) 'recipients': recipients,
-        if (regionCode != null) 'regionCode': regionCode,
-        if (revision != null) 'revision': revision,
-        if (sortingCode != null) 'sortingCode': sortingCode,
-        if (sublocality != null) 'sublocality': sublocality,
+          'administrativeArea': administrativeArea!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (locality != null) 'locality': locality!,
+        if (organization != null) 'organization': organization!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (recipients != null) 'recipients': recipients!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (revision != null) 'revision': revision!,
+        if (sortingCode != null) 'sortingCode': sortingCode!,
+        if (sublocality != null) 'sublocality': sublocality!,
       };
 }
 
 /// Represents a target location for a pending invitation.
 class TargetLocation {
   /// The address of the location to which the user is invited.
-  core.String address;
+  core.String? address;
 
   /// The name of the location to which the user is invited.
-  core.String locationName;
+  core.String? locationName;
 
   TargetLocation();
 
@@ -1486,8 +1439,8 @@ class TargetLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address,
-        if (locationName != null) 'locationName': locationName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!,
+        if (locationName != null) 'locationName': locationName!,
       };
 }

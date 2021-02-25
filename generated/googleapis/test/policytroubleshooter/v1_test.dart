@@ -45,9 +45,18 @@ void checkGoogleCloudPolicytroubleshooterV1AccessTuple(
     api.GoogleCloudPolicytroubleshooterV1AccessTuple o) {
   buildCounterGoogleCloudPolicytroubleshooterV1AccessTuple++;
   if (buildCounterGoogleCloudPolicytroubleshooterV1AccessTuple < 3) {
-    unittest.expect(o.fullResourceName, unittest.equals('foo'));
-    unittest.expect(o.permission, unittest.equals('foo'));
-    unittest.expect(o.principal, unittest.equals('foo'));
+    unittest.expect(
+      o.fullResourceName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.permission!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.principal!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudPolicytroubleshooterV1AccessTuple--;
 }
@@ -70,10 +79,10 @@ void checkUnnamed685(
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership(
-      o['x'] as api
+      o['x']! as api
           .GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership);
   checkGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership(
-      o['y'] as api
+      o['y']! as api
           .GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership);
 }
 
@@ -99,13 +108,28 @@ void checkGoogleCloudPolicytroubleshooterV1BindingExplanation(
     api.GoogleCloudPolicytroubleshooterV1BindingExplanation o) {
   buildCounterGoogleCloudPolicytroubleshooterV1BindingExplanation++;
   if (buildCounterGoogleCloudPolicytroubleshooterV1BindingExplanation < 3) {
-    unittest.expect(o.access, unittest.equals('foo'));
-    checkGoogleTypeExpr(o.condition as api.GoogleTypeExpr);
-    checkUnnamed685(o.memberships);
-    unittest.expect(o.relevance, unittest.equals('foo'));
-    unittest.expect(o.role, unittest.equals('foo'));
-    unittest.expect(o.rolePermission, unittest.equals('foo'));
-    unittest.expect(o.rolePermissionRelevance, unittest.equals('foo'));
+    unittest.expect(
+      o.access!,
+      unittest.equals('foo'),
+    );
+    checkGoogleTypeExpr(o.condition! as api.GoogleTypeExpr);
+    checkUnnamed685(o.memberships!);
+    unittest.expect(
+      o.relevance!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rolePermission!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rolePermissionRelevance!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudPolicytroubleshooterV1BindingExplanation--;
 }
@@ -133,8 +157,14 @@ void checkGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
   buildCounterGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership++;
   if (buildCounterGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership <
       3) {
-    unittest.expect(o.membership, unittest.equals('foo'));
-    unittest.expect(o.relevance, unittest.equals('foo'));
+    unittest.expect(
+      o.membership!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.relevance!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership--;
 }
@@ -176,11 +206,20 @@ void checkGoogleCloudPolicytroubleshooterV1ExplainedPolicy(
     api.GoogleCloudPolicytroubleshooterV1ExplainedPolicy o) {
   buildCounterGoogleCloudPolicytroubleshooterV1ExplainedPolicy++;
   if (buildCounterGoogleCloudPolicytroubleshooterV1ExplainedPolicy < 3) {
-    unittest.expect(o.access, unittest.equals('foo'));
-    checkUnnamed686(o.bindingExplanations);
-    unittest.expect(o.fullResourceName, unittest.equals('foo'));
-    checkGoogleIamV1Policy(o.policy as api.GoogleIamV1Policy);
-    unittest.expect(o.relevance, unittest.equals('foo'));
+    unittest.expect(
+      o.access!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed686(o.bindingExplanations!);
+    unittest.expect(
+      o.fullResourceName!,
+      unittest.equals('foo'),
+    );
+    checkGoogleIamV1Policy(o.policy! as api.GoogleIamV1Policy);
+    unittest.expect(
+      o.relevance!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudPolicytroubleshooterV1ExplainedPolicy--;
 }
@@ -206,7 +245,7 @@ void checkGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest(
   if (buildCounterGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest <
       3) {
     checkGoogleCloudPolicytroubleshooterV1AccessTuple(
-        o.accessTuple as api.GoogleCloudPolicytroubleshooterV1AccessTuple);
+        o.accessTuple! as api.GoogleCloudPolicytroubleshooterV1AccessTuple);
   }
   buildCounterGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest--;
 }
@@ -249,8 +288,11 @@ void checkGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse(
   buildCounterGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse++;
   if (buildCounterGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse <
       3) {
-    unittest.expect(o.access, unittest.equals('foo'));
-    checkUnnamed687(o.explainedPolicies);
+    unittest.expect(
+      o.access!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed687(o.explainedPolicies!);
   }
   buildCounterGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse--;
 }
@@ -283,8 +325,11 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
 void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    checkUnnamed688(o.auditLogConfigs);
-    unittest.expect(o.service, unittest.equals('foo'));
+    checkUnnamed688(o.auditLogConfigs!);
+    unittest.expect(
+      o.service!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleIamV1AuditConfig--;
 }
@@ -298,8 +343,14 @@ core.List<core.String> buildUnnamed689() {
 
 void checkUnnamed689(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleIamV1AuditLogConfig = 0;
@@ -317,8 +368,11 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
 void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    checkUnnamed689(o.exemptedMembers);
-    unittest.expect(o.logType, unittest.equals('foo'));
+    checkUnnamed689(o.exemptedMembers!);
+    unittest.expect(
+      o.logType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleIamV1AuditLogConfig--;
 }
@@ -332,8 +386,14 @@ core.List<core.String> buildUnnamed690() {
 
 void checkUnnamed690(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleIamV1Binding = 0;
@@ -352,9 +412,12 @@ api.GoogleIamV1Binding buildGoogleIamV1Binding() {
 void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
-    checkGoogleTypeExpr(o.condition as api.GoogleTypeExpr);
-    checkUnnamed690(o.members);
-    unittest.expect(o.role, unittest.equals('foo'));
+    checkGoogleTypeExpr(o.condition! as api.GoogleTypeExpr);
+    checkUnnamed690(o.members!);
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleIamV1Binding--;
 }
@@ -402,10 +465,16 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
 void checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    checkUnnamed691(o.auditConfigs);
-    checkUnnamed692(o.bindings);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.version, unittest.equals(42));
+    checkUnnamed691(o.auditConfigs!);
+    checkUnnamed692(o.bindings!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleIamV1Policy--;
 }
@@ -427,10 +496,22 @@ api.GoogleTypeExpr buildGoogleTypeExpr() {
 void checkGoogleTypeExpr(api.GoogleTypeExpr o) {
   buildCounterGoogleTypeExpr++;
   if (buildCounterGoogleTypeExpr < 3) {
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.expression, unittest.equals('foo'));
-    unittest.expect(o.location, unittest.equals('foo'));
-    unittest.expect(o.title, unittest.equals('foo'));
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expression!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleTypeExpr--;
 }
@@ -571,10 +652,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("v1/iam:troubleshoot"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 19),
+          unittest.equals("v1/iam:troubleshoot"),
+        );
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -592,7 +677,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

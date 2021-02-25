@@ -36,8 +36,14 @@ core.List<core.int> buildUnnamed1516() {
 
 void checkUnnamed1516(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42));
-  unittest.expect(o[1], unittest.equals(42));
+  unittest.expect(
+    o[0],
+    unittest.equals(42),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42),
+  );
 }
 
 core.List<core.int> buildUnnamed1517() {
@@ -49,8 +55,14 @@ core.List<core.int> buildUnnamed1517() {
 
 void checkUnnamed1517(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42));
-  unittest.expect(o[1], unittest.equals(42));
+  unittest.expect(
+    o[0],
+    unittest.equals(42),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42),
+  );
 }
 
 core.List<core.int> buildUnnamed1518() {
@@ -62,8 +74,14 @@ core.List<core.int> buildUnnamed1518() {
 
 void checkUnnamed1518(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42));
-  unittest.expect(o[1], unittest.equals(42));
+  unittest.expect(
+    o[0],
+    unittest.equals(42),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42),
+  );
 }
 
 core.int buildCounterArea = 0;
@@ -87,14 +105,20 @@ api.Area buildArea() {
 void checkArea(api.Area o) {
   buildCounterArea++;
   if (buildCounterArea < 3) {
-    checkBasemapZOrder(o.basemapZOrder as api.BasemapZOrder);
-    unittest.expect(o.hasExternalEdges, unittest.isTrue);
-    checkUnnamed1516(o.internalEdges);
-    checkUnnamed1517(o.loopBreaks);
-    checkUnnamed1518(o.triangleIndices);
-    unittest.expect(o.type, unittest.equals('foo'));
-    checkVertex2DList(o.vertexOffsets as api.Vertex2DList);
-    unittest.expect(o.zOrder, unittest.equals(42));
+    checkBasemapZOrder(o.basemapZOrder! as api.BasemapZOrder);
+    unittest.expect(o.hasExternalEdges!, unittest.isTrue);
+    checkUnnamed1516(o.internalEdges!);
+    checkUnnamed1517(o.loopBreaks!);
+    checkUnnamed1518(o.triangleIndices!);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    checkVertex2DList(o.vertexOffsets! as api.Vertex2DList);
+    unittest.expect(
+      o.zOrder!,
+      unittest.equals(42),
+    );
   }
   buildCounterArea--;
 }
@@ -115,9 +139,18 @@ api.BasemapZOrder buildBasemapZOrder() {
 void checkBasemapZOrder(api.BasemapZOrder o) {
   buildCounterBasemapZOrder++;
   if (buildCounterBasemapZOrder < 3) {
-    unittest.expect(o.zGrade, unittest.equals(42));
-    unittest.expect(o.zPlane, unittest.equals(42));
-    unittest.expect(o.zWithinGrade, unittest.equals(42));
+    unittest.expect(
+      o.zGrade!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.zPlane!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.zWithinGrade!,
+      unittest.equals(42),
+    );
   }
   buildCounterBasemapZOrder--;
 }
@@ -138,9 +171,15 @@ api.ExtrudedArea buildExtrudedArea() {
 void checkExtrudedArea(api.ExtrudedArea o) {
   buildCounterExtrudedArea++;
   if (buildCounterExtrudedArea < 3) {
-    checkArea(o.area as api.Area);
-    unittest.expect(o.maxZ, unittest.equals(42));
-    unittest.expect(o.minZ, unittest.equals(42));
+    checkArea(o.area! as api.Area);
+    unittest.expect(
+      o.maxZ!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.minZ!,
+      unittest.equals(42),
+    );
   }
   buildCounterExtrudedArea--;
 }
@@ -177,12 +216,21 @@ api.Feature buildFeature() {
 void checkFeature(api.Feature o) {
   buildCounterFeature++;
   if (buildCounterFeature < 3) {
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    checkGeometry(o.geometry as api.Geometry);
-    unittest.expect(o.placeId, unittest.equals('foo'));
-    checkUnnamed1519(o.relations);
-    checkSegmentInfo(o.segmentInfo as api.SegmentInfo);
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    checkGeometry(o.geometry! as api.Geometry);
+    unittest.expect(
+      o.placeId!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1519(o.relations!);
+    checkSegmentInfo(o.segmentInfo! as api.SegmentInfo);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterFeature--;
 }
@@ -232,12 +280,21 @@ api.FeatureTile buildFeatureTile() {
 void checkFeatureTile(api.FeatureTile o) {
   buildCounterFeatureTile++;
   if (buildCounterFeatureTile < 3) {
-    checkTileCoordinates(o.coordinates as api.TileCoordinates);
-    checkUnnamed1520(o.features);
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1521(o.providers);
-    unittest.expect(o.status, unittest.equals('foo'));
-    unittest.expect(o.versionId, unittest.equals('foo'));
+    checkTileCoordinates(o.coordinates! as api.TileCoordinates);
+    checkUnnamed1520(o.features!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1521(o.providers!);
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.versionId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterFeatureTile--;
 }
@@ -270,8 +327,11 @@ api.FirstDerivativeElevationGrid buildFirstDerivativeElevationGrid() {
 void checkFirstDerivativeElevationGrid(api.FirstDerivativeElevationGrid o) {
   buildCounterFirstDerivativeElevationGrid++;
   if (buildCounterFirstDerivativeElevationGrid < 3) {
-    unittest.expect(o.altitudeMultiplier, unittest.equals(42.0));
-    checkUnnamed1522(o.rows);
+    unittest.expect(
+      o.altitudeMultiplier!,
+      unittest.equals(42.0),
+    );
+    checkUnnamed1522(o.rows!);
   }
   buildCounterFirstDerivativeElevationGrid--;
 }
@@ -345,10 +405,10 @@ api.Geometry buildGeometry() {
 void checkGeometry(api.Geometry o) {
   buildCounterGeometry++;
   if (buildCounterGeometry < 3) {
-    checkUnnamed1523(o.areas);
-    checkUnnamed1524(o.extrudedAreas);
-    checkUnnamed1525(o.lines);
-    checkUnnamed1526(o.modeledVolumes);
+    checkUnnamed1523(o.areas!);
+    checkUnnamed1524(o.extrudedAreas!);
+    checkUnnamed1525(o.lines!);
+    checkUnnamed1526(o.modeledVolumes!);
   }
   buildCounterGeometry--;
 }
@@ -369,9 +429,12 @@ api.Line buildLine() {
 void checkLine(api.Line o) {
   buildCounterLine++;
   if (buildCounterLine < 3) {
-    checkBasemapZOrder(o.basemapZOrder as api.BasemapZOrder);
-    checkVertex2DList(o.vertexOffsets as api.Vertex2DList);
-    unittest.expect(o.zOrder, unittest.equals(42));
+    checkBasemapZOrder(o.basemapZOrder! as api.BasemapZOrder);
+    checkVertex2DList(o.vertexOffsets! as api.Vertex2DList);
+    unittest.expect(
+      o.zOrder!,
+      unittest.equals(42),
+    );
   }
   buildCounterLine--;
 }
@@ -404,8 +467,8 @@ api.ModeledVolume buildModeledVolume() {
 void checkModeledVolume(api.ModeledVolume o) {
   buildCounterModeledVolume++;
   if (buildCounterModeledVolume < 3) {
-    checkUnnamed1527(o.strips);
-    checkVertex3DList(o.vertexOffsets as api.Vertex3DList);
+    checkUnnamed1527(o.strips!);
+    checkVertex3DList(o.vertexOffsets! as api.Vertex3DList);
   }
   buildCounterModeledVolume--;
 }
@@ -424,7 +487,10 @@ api.ProviderInfo buildProviderInfo() {
 void checkProviderInfo(api.ProviderInfo o) {
   buildCounterProviderInfo++;
   if (buildCounterProviderInfo < 3) {
-    unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterProviderInfo--;
 }
@@ -444,8 +510,14 @@ api.Relation buildRelation() {
 void checkRelation(api.Relation o) {
   buildCounterRelation++;
   if (buildCounterRelation < 3) {
-    unittest.expect(o.relatedFeatureIndex, unittest.equals(42));
-    unittest.expect(o.relationType, unittest.equals('foo'));
+    unittest.expect(
+      o.relatedFeatureIndex!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.relationType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRelation--;
 }
@@ -464,7 +536,7 @@ api.RoadInfo buildRoadInfo() {
 void checkRoadInfo(api.RoadInfo o) {
   buildCounterRoadInfo++;
   if (buildCounterRoadInfo < 3) {
-    unittest.expect(o.isPrivate, unittest.isTrue);
+    unittest.expect(o.isPrivate!, unittest.isTrue);
   }
   buildCounterRoadInfo--;
 }
@@ -478,8 +550,14 @@ core.List<core.int> buildUnnamed1528() {
 
 void checkUnnamed1528(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42));
-  unittest.expect(o[1], unittest.equals(42));
+  unittest.expect(
+    o[0],
+    unittest.equals(42),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42),
+  );
 }
 
 core.int buildCounterRow = 0;
@@ -496,7 +574,7 @@ api.Row buildRow() {
 void checkRow(api.Row o) {
   buildCounterRow++;
   if (buildCounterRow < 3) {
-    checkUnnamed1528(o.altitudeDiffs);
+    checkUnnamed1528(o.altitudeDiffs!);
   }
   buildCounterRow--;
 }
@@ -518,10 +596,22 @@ api.SecondDerivativeElevationGrid buildSecondDerivativeElevationGrid() {
 void checkSecondDerivativeElevationGrid(api.SecondDerivativeElevationGrid o) {
   buildCounterSecondDerivativeElevationGrid++;
   if (buildCounterSecondDerivativeElevationGrid < 3) {
-    unittest.expect(o.altitudeMultiplier, unittest.equals(42.0));
-    unittest.expect(o.columnCount, unittest.equals(42));
-    unittest.expect(o.encodedData, unittest.equals('foo'));
-    unittest.expect(o.rowCount, unittest.equals(42));
+    unittest.expect(
+      o.altitudeMultiplier!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.columnCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.encodedData!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rowCount!,
+      unittest.equals(42),
+    );
   }
   buildCounterSecondDerivativeElevationGrid--;
 }
@@ -540,7 +630,7 @@ api.SegmentInfo buildSegmentInfo() {
 void checkSegmentInfo(api.SegmentInfo o) {
   buildCounterSegmentInfo++;
   if (buildCounterSegmentInfo < 3) {
-    checkRoadInfo(o.roadInfo as api.RoadInfo);
+    checkRoadInfo(o.roadInfo! as api.RoadInfo);
   }
   buildCounterSegmentInfo--;
 }
@@ -562,12 +652,15 @@ api.TerrainTile buildTerrainTile() {
 void checkTerrainTile(api.TerrainTile o) {
   buildCounterTerrainTile++;
   if (buildCounterTerrainTile < 3) {
-    checkTileCoordinates(o.coordinates as api.TileCoordinates);
+    checkTileCoordinates(o.coordinates! as api.TileCoordinates);
     checkFirstDerivativeElevationGrid(
-        o.firstDerivative as api.FirstDerivativeElevationGrid);
-    unittest.expect(o.name, unittest.equals('foo'));
+        o.firstDerivative! as api.FirstDerivativeElevationGrid);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkSecondDerivativeElevationGrid(
-        o.secondDerivative as api.SecondDerivativeElevationGrid);
+        o.secondDerivative! as api.SecondDerivativeElevationGrid);
   }
   buildCounterTerrainTile--;
 }
@@ -588,9 +681,18 @@ api.TileCoordinates buildTileCoordinates() {
 void checkTileCoordinates(api.TileCoordinates o) {
   buildCounterTileCoordinates++;
   if (buildCounterTileCoordinates < 3) {
-    unittest.expect(o.x, unittest.equals(42));
-    unittest.expect(o.y, unittest.equals(42));
-    unittest.expect(o.zoom, unittest.equals(42));
+    unittest.expect(
+      o.x!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.y!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.zoom!,
+      unittest.equals(42),
+    );
   }
   buildCounterTileCoordinates--;
 }
@@ -604,8 +706,14 @@ core.List<core.int> buildUnnamed1529() {
 
 void checkUnnamed1529(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42));
-  unittest.expect(o[1], unittest.equals(42));
+  unittest.expect(
+    o[0],
+    unittest.equals(42),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42),
+  );
 }
 
 core.int buildCounterTriangleStrip = 0;
@@ -622,7 +730,7 @@ api.TriangleStrip buildTriangleStrip() {
 void checkTriangleStrip(api.TriangleStrip o) {
   buildCounterTriangleStrip++;
   if (buildCounterTriangleStrip < 3) {
-    checkUnnamed1529(o.vertexIndices);
+    checkUnnamed1529(o.vertexIndices!);
   }
   buildCounterTriangleStrip--;
 }
@@ -636,8 +744,14 @@ core.List<core.int> buildUnnamed1530() {
 
 void checkUnnamed1530(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42));
-  unittest.expect(o[1], unittest.equals(42));
+  unittest.expect(
+    o[0],
+    unittest.equals(42),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42),
+  );
 }
 
 core.List<core.int> buildUnnamed1531() {
@@ -649,8 +763,14 @@ core.List<core.int> buildUnnamed1531() {
 
 void checkUnnamed1531(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42));
-  unittest.expect(o[1], unittest.equals(42));
+  unittest.expect(
+    o[0],
+    unittest.equals(42),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42),
+  );
 }
 
 core.int buildCounterVertex2DList = 0;
@@ -668,8 +788,8 @@ api.Vertex2DList buildVertex2DList() {
 void checkVertex2DList(api.Vertex2DList o) {
   buildCounterVertex2DList++;
   if (buildCounterVertex2DList < 3) {
-    checkUnnamed1530(o.xOffsets);
-    checkUnnamed1531(o.yOffsets);
+    checkUnnamed1530(o.xOffsets!);
+    checkUnnamed1531(o.yOffsets!);
   }
   buildCounterVertex2DList--;
 }
@@ -683,8 +803,14 @@ core.List<core.int> buildUnnamed1532() {
 
 void checkUnnamed1532(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42));
-  unittest.expect(o[1], unittest.equals(42));
+  unittest.expect(
+    o[0],
+    unittest.equals(42),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42),
+  );
 }
 
 core.List<core.int> buildUnnamed1533() {
@@ -696,8 +822,14 @@ core.List<core.int> buildUnnamed1533() {
 
 void checkUnnamed1533(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42));
-  unittest.expect(o[1], unittest.equals(42));
+  unittest.expect(
+    o[0],
+    unittest.equals(42),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42),
+  );
 }
 
 core.List<core.int> buildUnnamed1534() {
@@ -709,8 +841,14 @@ core.List<core.int> buildUnnamed1534() {
 
 void checkUnnamed1534(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42));
-  unittest.expect(o[1], unittest.equals(42));
+  unittest.expect(
+    o[0],
+    unittest.equals(42),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42),
+  );
 }
 
 core.int buildCounterVertex3DList = 0;
@@ -729,9 +867,9 @@ api.Vertex3DList buildVertex3DList() {
 void checkVertex3DList(api.Vertex3DList o) {
   buildCounterVertex3DList++;
   if (buildCounterVertex3DList < 3) {
-    checkUnnamed1532(o.xOffsets);
-    checkUnnamed1533(o.yOffsets);
-    checkUnnamed1534(o.zOffsets);
+    checkUnnamed1532(o.xOffsets!);
+    checkUnnamed1533(o.yOffsets!);
+    checkUnnamed1534(o.zOffsets!);
   }
   buildCounterVertex3DList--;
 }
@@ -745,8 +883,14 @@ core.List<core.String> buildUnnamed1535() {
 
 void checkUnnamed1535(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -940,10 +1084,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -962,41 +1110,78 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["alwaysIncludeBuildingFootprints"].first,
-            unittest.equals("$arg_alwaysIncludeBuildingFootprints"));
-        unittest.expect(queryMap["clientInfo.apiClient"].first,
-            unittest.equals(arg_clientInfo_apiClient));
-        unittest.expect(queryMap["clientInfo.applicationId"].first,
-            unittest.equals(arg_clientInfo_applicationId));
-        unittest.expect(queryMap["clientInfo.applicationVersion"].first,
-            unittest.equals(arg_clientInfo_applicationVersion));
-        unittest.expect(queryMap["clientInfo.deviceModel"].first,
-            unittest.equals(arg_clientInfo_deviceModel));
-        unittest.expect(queryMap["clientInfo.operatingSystem"].first,
-            unittest.equals(arg_clientInfo_operatingSystem));
-        unittest.expect(queryMap["clientInfo.platform"].first,
-            unittest.equals(arg_clientInfo_platform));
-        unittest.expect(queryMap["clientInfo.userId"].first,
-            unittest.equals(arg_clientInfo_userId));
-        unittest.expect(queryMap["clientTileVersionId"].first,
-            unittest.equals(arg_clientTileVersionId));
-        unittest.expect(queryMap["enableDetailedHighwayTypes"].first,
-            unittest.equals("$arg_enableDetailedHighwayTypes"));
-        unittest.expect(queryMap["enableFeatureNames"].first,
-            unittest.equals("$arg_enableFeatureNames"));
-        unittest.expect(queryMap["enableModeledVolumes"].first,
-            unittest.equals("$arg_enableModeledVolumes"));
-        unittest.expect(queryMap["enablePoliticalFeatures"].first,
-            unittest.equals("$arg_enablePoliticalFeatures"));
-        unittest.expect(queryMap["enablePrivateRoads"].first,
-            unittest.equals("$arg_enablePrivateRoads"));
-        unittest.expect(queryMap["enableUnclippedBuildings"].first,
-            unittest.equals("$arg_enableUnclippedBuildings"));
         unittest.expect(
-            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
+          queryMap["alwaysIncludeBuildingFootprints"]!.first,
+          unittest.equals("$arg_alwaysIncludeBuildingFootprints"),
+        );
         unittest.expect(
-            queryMap["regionCode"].first, unittest.equals(arg_regionCode));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["clientInfo.apiClient"]!.first,
+          unittest.equals(arg_clientInfo_apiClient),
+        );
+        unittest.expect(
+          queryMap["clientInfo.applicationId"]!.first,
+          unittest.equals(arg_clientInfo_applicationId),
+        );
+        unittest.expect(
+          queryMap["clientInfo.applicationVersion"]!.first,
+          unittest.equals(arg_clientInfo_applicationVersion),
+        );
+        unittest.expect(
+          queryMap["clientInfo.deviceModel"]!.first,
+          unittest.equals(arg_clientInfo_deviceModel),
+        );
+        unittest.expect(
+          queryMap["clientInfo.operatingSystem"]!.first,
+          unittest.equals(arg_clientInfo_operatingSystem),
+        );
+        unittest.expect(
+          queryMap["clientInfo.platform"]!.first,
+          unittest.equals(arg_clientInfo_platform),
+        );
+        unittest.expect(
+          queryMap["clientInfo.userId"]!.first,
+          unittest.equals(arg_clientInfo_userId),
+        );
+        unittest.expect(
+          queryMap["clientTileVersionId"]!.first,
+          unittest.equals(arg_clientTileVersionId),
+        );
+        unittest.expect(
+          queryMap["enableDetailedHighwayTypes"]!.first,
+          unittest.equals("$arg_enableDetailedHighwayTypes"),
+        );
+        unittest.expect(
+          queryMap["enableFeatureNames"]!.first,
+          unittest.equals("$arg_enableFeatureNames"),
+        );
+        unittest.expect(
+          queryMap["enableModeledVolumes"]!.first,
+          unittest.equals("$arg_enableModeledVolumes"),
+        );
+        unittest.expect(
+          queryMap["enablePoliticalFeatures"]!.first,
+          unittest.equals("$arg_enablePoliticalFeatures"),
+        );
+        unittest.expect(
+          queryMap["enablePrivateRoads"]!.first,
+          unittest.equals("$arg_enablePrivateRoads"),
+        );
+        unittest.expect(
+          queryMap["enableUnclippedBuildings"]!.first,
+          unittest.equals("$arg_enableUnclippedBuildings"),
+        );
+        unittest.expect(
+          queryMap["languageCode"]!.first,
+          unittest.equals(arg_languageCode),
+        );
+        unittest.expect(
+          queryMap["regionCode"]!.first,
+          unittest.equals(arg_regionCode),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1054,10 +1239,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -1077,31 +1266,53 @@ void main() {
           }
         }
         unittest.expect(
-            core.int.parse(queryMap["altitudePrecisionCentimeters"].first),
-            unittest.equals(arg_altitudePrecisionCentimeters));
-        unittest.expect(queryMap["clientInfo.apiClient"].first,
-            unittest.equals(arg_clientInfo_apiClient));
-        unittest.expect(queryMap["clientInfo.applicationId"].first,
-            unittest.equals(arg_clientInfo_applicationId));
-        unittest.expect(queryMap["clientInfo.applicationVersion"].first,
-            unittest.equals(arg_clientInfo_applicationVersion));
-        unittest.expect(queryMap["clientInfo.deviceModel"].first,
-            unittest.equals(arg_clientInfo_deviceModel));
-        unittest.expect(queryMap["clientInfo.operatingSystem"].first,
-            unittest.equals(arg_clientInfo_operatingSystem));
-        unittest.expect(queryMap["clientInfo.platform"].first,
-            unittest.equals(arg_clientInfo_platform));
-        unittest.expect(queryMap["clientInfo.userId"].first,
-            unittest.equals(arg_clientInfo_userId));
+          core.int.parse(queryMap["altitudePrecisionCentimeters"]!.first),
+          unittest.equals(arg_altitudePrecisionCentimeters),
+        );
         unittest.expect(
-            core.int.parse(queryMap["maxElevationResolutionCells"].first),
-            unittest.equals(arg_maxElevationResolutionCells));
+          queryMap["clientInfo.apiClient"]!.first,
+          unittest.equals(arg_clientInfo_apiClient),
+        );
         unittest.expect(
-            core.int.parse(queryMap["minElevationResolutionCells"].first),
-            unittest.equals(arg_minElevationResolutionCells));
+          queryMap["clientInfo.applicationId"]!.first,
+          unittest.equals(arg_clientInfo_applicationId),
+        );
         unittest.expect(
-            queryMap["terrainFormats"], unittest.equals(arg_terrainFormats));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["clientInfo.applicationVersion"]!.first,
+          unittest.equals(arg_clientInfo_applicationVersion),
+        );
+        unittest.expect(
+          queryMap["clientInfo.deviceModel"]!.first,
+          unittest.equals(arg_clientInfo_deviceModel),
+        );
+        unittest.expect(
+          queryMap["clientInfo.operatingSystem"]!.first,
+          unittest.equals(arg_clientInfo_operatingSystem),
+        );
+        unittest.expect(
+          queryMap["clientInfo.platform"]!.first,
+          unittest.equals(arg_clientInfo_platform),
+        );
+        unittest.expect(
+          queryMap["clientInfo.userId"]!.first,
+          unittest.equals(arg_clientInfo_userId),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["maxElevationResolutionCells"]!.first),
+          unittest.equals(arg_maxElevationResolutionCells),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["minElevationResolutionCells"]!.first),
+          unittest.equals(arg_minElevationResolutionCells),
+        );
+        unittest.expect(
+          queryMap["terrainFormats"]!,
+          unittest.equals(arg_terrainFormats),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

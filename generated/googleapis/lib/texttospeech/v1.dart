@@ -82,10 +82,9 @@ class TextResource {
   /// this method will complete with the same error.
   async.Future<SynthesizeSpeechResponse> synthesize(
     SynthesizeSpeechRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -132,8 +131,8 @@ class VoicesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVoicesResponse> list({
-    core.String languageCode,
-    core.String $fields,
+    core.String? languageCode,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
@@ -167,7 +166,7 @@ class AudioConfig {
   /// will be a file which can be played natively on Android, and in browsers
   /// (at least Chrome and Firefox). The quality of the encoding is considerably
   /// higher than MP3 while using approximately the same bitrate.
-  core.String audioEncoding;
+  core.String? audioEncoding;
 
   /// Input only.
   ///
@@ -178,7 +177,7 @@ class AudioConfig {
   /// for current supported profile ids.
   ///
   /// Optional.
-  core.List<core.String> effectsProfileId;
+  core.List<core.String>? effectsProfileId;
 
   /// Input only.
   ///
@@ -187,7 +186,7 @@ class AudioConfig {
   /// the original pitch.
   ///
   /// Optional.
-  core.double pitch;
+  core.double? pitch;
 
   /// The synthesis sample rate (in hertz) for this audio.
   ///
@@ -199,7 +198,7 @@ class AudioConfig {
   /// google.rpc.Code.INVALID_ARGUMENT.
   ///
   /// Optional.
-  core.int sampleRateHertz;
+  core.int? sampleRateHertz;
 
   /// Input only.
   ///
@@ -209,7 +208,7 @@ class AudioConfig {
   /// values < 0.25 or > 4.0 will return an error.
   ///
   /// Optional.
-  core.double speakingRate;
+  core.double? speakingRate;
 
   /// Input only.
   ///
@@ -223,7 +222,7 @@ class AudioConfig {
   /// any value greater than that.
   ///
   /// Optional.
-  core.double volumeGainDb;
+  core.double? volumeGainDb;
 
   AudioConfig();
 
@@ -250,20 +249,20 @@ class AudioConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audioEncoding != null) 'audioEncoding': audioEncoding,
-        if (effectsProfileId != null) 'effectsProfileId': effectsProfileId,
-        if (pitch != null) 'pitch': pitch,
-        if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz,
-        if (speakingRate != null) 'speakingRate': speakingRate,
-        if (volumeGainDb != null) 'volumeGainDb': volumeGainDb,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audioEncoding != null) 'audioEncoding': audioEncoding!,
+        if (effectsProfileId != null) 'effectsProfileId': effectsProfileId!,
+        if (pitch != null) 'pitch': pitch!,
+        if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
+        if (speakingRate != null) 'speakingRate': speakingRate!,
+        if (volumeGainDb != null) 'volumeGainDb': volumeGainDb!,
       };
 }
 
 /// The message returned to the client by the `ListVoices` method.
 class ListVoicesResponse {
   /// The list of voices.
-  core.List<Voice> voices;
+  core.List<Voice>? voices;
 
   ListVoicesResponse();
 
@@ -276,9 +275,9 @@ class ListVoicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (voices != null)
-          'voices': voices.map((value) => value.toJson()).toList(),
+          'voices': voices!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -293,10 +292,10 @@ class SynthesisInput {
   /// The SSML document must be valid and well-formed. Otherwise the RPC will
   /// fail and return google.rpc.Code.INVALID_ARGUMENT. For more information,
   /// see [SSML](https://cloud.google.com/text-to-speech/docs/ssml).
-  core.String ssml;
+  core.String? ssml;
 
   /// The raw text to be synthesized.
-  core.String text;
+  core.String? text;
 
   SynthesisInput();
 
@@ -309,9 +308,9 @@ class SynthesisInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ssml != null) 'ssml': ssml,
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ssml != null) 'ssml': ssml!,
+        if (text != null) 'text': text!,
       };
 }
 
@@ -320,17 +319,17 @@ class SynthesizeSpeechRequest {
   /// The configuration of the synthesized audio.
   ///
   /// Required.
-  AudioConfig audioConfig;
+  AudioConfig? audioConfig;
 
   /// The Synthesizer requires either plain text or SSML as input.
   ///
   /// Required.
-  SynthesisInput input;
+  SynthesisInput? input;
 
   /// The desired voice of the synthesized audio.
   ///
   /// Required.
-  VoiceSelectionParams voice;
+  VoiceSelectionParams? voice;
 
   SynthesizeSpeechRequest();
 
@@ -349,10 +348,10 @@ class SynthesizeSpeechRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audioConfig != null) 'audioConfig': audioConfig.toJson(),
-        if (input != null) 'input': input.toJson(),
-        if (voice != null) 'voice': voice.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audioConfig != null) 'audioConfig': audioConfig!.toJson(),
+        if (input != null) 'input': input!.toJson(),
+        if (voice != null) 'voice': voice!.toJson(),
       };
 }
 
@@ -364,9 +363,9 @@ class SynthesizeSpeechResponse {
   /// For LINEAR16 audio, we include the WAV header. Note: as with all bytes
   /// fields, protobuffers use a pure binary representation, whereas JSON
   /// representations use base64.
-  core.String audioContent;
+  core.String? audioContent;
   core.List<core.int> get audioContentAsBytes =>
-      convert.base64.decode(audioContent);
+      convert.base64.decode(audioContent!);
 
   set audioContentAsBytes(core.List<core.int> _bytes) {
     audioContent =
@@ -381,8 +380,8 @@ class SynthesizeSpeechResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audioContent != null) 'audioContent': audioContent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audioContent != null) 'audioContent': audioContent!,
       };
 }
 
@@ -391,15 +390,15 @@ class Voice {
   /// The languages that this voice supports, expressed as
   /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags
   /// (e.g. "en-US", "es-419", "cmn-tw").
-  core.List<core.String> languageCodes;
+  core.List<core.String>? languageCodes;
 
   /// The name of this voice.
   ///
   /// Each distinct voice has a unique name.
-  core.String name;
+  core.String? name;
 
   /// The natural sample rate (in hertz) for this voice.
-  core.int naturalSampleRateHertz;
+  core.int? naturalSampleRateHertz;
 
   /// The gender of this voice.
   /// Possible string values are:
@@ -411,7 +410,7 @@ class Voice {
   /// - "MALE" : A male voice.
   /// - "FEMALE" : A female voice.
   /// - "NEUTRAL" : A gender-neutral voice. This voice is not yet supported.
-  core.String ssmlGender;
+  core.String? ssmlGender;
 
   Voice();
 
@@ -432,12 +431,12 @@ class Voice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (languageCodes != null) 'languageCodes': languageCodes,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (languageCodes != null) 'languageCodes': languageCodes!,
+        if (name != null) 'name': name!,
         if (naturalSampleRateHertz != null)
-          'naturalSampleRateHertz': naturalSampleRateHertz,
-        if (ssmlGender != null) 'ssmlGender': ssmlGender,
+          'naturalSampleRateHertz': naturalSampleRateHertz!,
+        if (ssmlGender != null) 'ssmlGender': ssmlGender!,
       };
 }
 
@@ -457,13 +456,13 @@ class VoiceSelectionParams {
   /// e.g. using "nb" (Norwegian Bokmal) instead of "no" (Norwegian)".
   ///
   /// Required.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// The name of the voice.
   ///
   /// If not set, the service will choose a voice based on the other parameters
   /// such as language_code and gender.
-  core.String name;
+  core.String? name;
 
   /// The preferred gender of the voice.
   ///
@@ -481,7 +480,7 @@ class VoiceSelectionParams {
   /// - "MALE" : A male voice.
   /// - "FEMALE" : A female voice.
   /// - "NEUTRAL" : A gender-neutral voice. This voice is not yet supported.
-  core.String ssmlGender;
+  core.String? ssmlGender;
 
   VoiceSelectionParams();
 
@@ -497,9 +496,9 @@ class VoiceSelectionParams {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode,
-        if (name != null) 'name': name,
-        if (ssmlGender != null) 'ssmlGender': ssmlGender,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (name != null) 'name': name!,
+        if (ssmlGender != null) 'ssmlGender': ssmlGender!,
       };
 }

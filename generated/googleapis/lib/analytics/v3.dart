@@ -209,29 +209,17 @@ class DataGaResource {
     core.String startDate,
     core.String endDate,
     core.String metrics, {
-    core.String dimensions,
-    core.String filters,
-    core.bool includeEmptyRows,
-    core.int maxResults,
-    core.String output,
-    core.String samplingLevel,
-    core.String segment,
-    core.String sort,
-    core.int startIndex,
-    core.String $fields,
+    core.String? dimensions,
+    core.String? filters,
+    core.bool? includeEmptyRows,
+    core.int? maxResults,
+    core.String? output,
+    core.String? samplingLevel,
+    core.String? segment,
+    core.String? sort,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (ids == null) {
-      throw core.ArgumentError('Parameter ids is required.');
-    }
-    if (startDate == null) {
-      throw core.ArgumentError('Parameter startDate is required.');
-    }
-    if (endDate == null) {
-      throw core.ArgumentError('Parameter endDate is required.');
-    }
-    if (metrics == null) {
-      throw core.ArgumentError('Parameter metrics is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'ids': [ids],
       'start-date': [startDate],
@@ -331,26 +319,14 @@ class DataMcfResource {
     core.String startDate,
     core.String endDate,
     core.String metrics, {
-    core.String dimensions,
-    core.String filters,
-    core.int maxResults,
-    core.String samplingLevel,
-    core.String sort,
-    core.int startIndex,
-    core.String $fields,
+    core.String? dimensions,
+    core.String? filters,
+    core.int? maxResults,
+    core.String? samplingLevel,
+    core.String? sort,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (ids == null) {
-      throw core.ArgumentError('Parameter ids is required.');
-    }
-    if (startDate == null) {
-      throw core.ArgumentError('Parameter startDate is required.');
-    }
-    if (endDate == null) {
-      throw core.ArgumentError('Parameter endDate is required.');
-    }
-    if (metrics == null) {
-      throw core.ArgumentError('Parameter metrics is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'ids': [ids],
       'start-date': [startDate],
@@ -420,18 +396,12 @@ class DataRealtimeResource {
   async.Future<RealtimeData> get(
     core.String ids,
     core.String metrics, {
-    core.String dimensions,
-    core.String filters,
-    core.int maxResults,
-    core.String sort,
-    core.String $fields,
+    core.String? dimensions,
+    core.String? filters,
+    core.int? maxResults,
+    core.String? sort,
+    core.String? $fields,
   }) async {
-    if (ids == null) {
-      throw core.ArgumentError('Parameter ids is required.');
-    }
-    if (metrics == null) {
-      throw core.ArgumentError('Parameter metrics is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'ids': [ids],
       'metrics': [metrics],
@@ -528,9 +498,9 @@ class ManagementAccountSummariesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountSummaries> list({
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
@@ -575,14 +545,8 @@ class ManagementAccountUserLinksResource {
   async.Future<void> delete(
     core.String accountId,
     core.String linkId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (linkId == null) {
-      throw core.ArgumentError('Parameter linkId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -621,13 +585,9 @@ class ManagementAccountUserLinksResource {
   async.Future<EntityUserLink> insert(
     EntityUserLink request,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -671,13 +631,10 @@ class ManagementAccountUserLinksResource {
   /// this method will complete with the same error.
   async.Future<EntityUserLinks> list(
     core.String accountId, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
       if (startIndex != null) 'start-index': ['${startIndex}'],
@@ -721,16 +678,9 @@ class ManagementAccountUserLinksResource {
     EntityUserLink request,
     core.String accountId,
     core.String linkId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (linkId == null) {
-      throw core.ArgumentError('Parameter linkId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -776,9 +726,9 @@ class ManagementAccountsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Accounts> list({
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
@@ -820,10 +770,9 @@ class ManagementClientIdResource {
   /// this method will complete with the same error.
   async.Future<HashClientIdResponse> hashClientId(
     HashClientIdRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -877,16 +826,10 @@ class ManagementCustomDataSourcesResource {
   async.Future<CustomDataSources> list(
     core.String accountId,
     core.String webPropertyId, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
       if (startIndex != null) 'start-index': ['${startIndex}'],
@@ -939,17 +882,8 @@ class ManagementCustomDimensionsResource {
     core.String accountId,
     core.String webPropertyId,
     core.String customDimensionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (customDimensionId == null) {
-      throw core.ArgumentError('Parameter customDimensionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -994,16 +928,9 @@ class ManagementCustomDimensionsResource {
     CustomDimension request,
     core.String accountId,
     core.String webPropertyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1051,16 +978,10 @@ class ManagementCustomDimensionsResource {
   async.Future<CustomDimensions> list(
     core.String accountId,
     core.String webPropertyId, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
       if (startIndex != null) 'start-index': ['${startIndex}'],
@@ -1116,20 +1037,10 @@ class ManagementCustomDimensionsResource {
     core.String accountId,
     core.String webPropertyId,
     core.String customDimensionId, {
-    core.bool ignoreCustomDataSourceLinks,
-    core.String $fields,
+    core.bool? ignoreCustomDataSourceLinks,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (customDimensionId == null) {
-      throw core.ArgumentError('Parameter customDimensionId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (ignoreCustomDataSourceLinks != null)
         'ignoreCustomDataSourceLinks': ['${ignoreCustomDataSourceLinks}'],
@@ -1185,20 +1096,10 @@ class ManagementCustomDimensionsResource {
     core.String accountId,
     core.String webPropertyId,
     core.String customDimensionId, {
-    core.bool ignoreCustomDataSourceLinks,
-    core.String $fields,
+    core.bool? ignoreCustomDataSourceLinks,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (customDimensionId == null) {
-      throw core.ArgumentError('Parameter customDimensionId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (ignoreCustomDataSourceLinks != null)
         'ignoreCustomDataSourceLinks': ['${ignoreCustomDataSourceLinks}'],
@@ -1253,17 +1154,8 @@ class ManagementCustomMetricsResource {
     core.String accountId,
     core.String webPropertyId,
     core.String customMetricId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (customMetricId == null) {
-      throw core.ArgumentError('Parameter customMetricId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1308,16 +1200,9 @@ class ManagementCustomMetricsResource {
     CustomMetric request,
     core.String accountId,
     core.String webPropertyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1365,16 +1250,10 @@ class ManagementCustomMetricsResource {
   async.Future<CustomMetrics> list(
     core.String accountId,
     core.String webPropertyId, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
       if (startIndex != null) 'start-index': ['${startIndex}'],
@@ -1429,20 +1308,10 @@ class ManagementCustomMetricsResource {
     core.String accountId,
     core.String webPropertyId,
     core.String customMetricId, {
-    core.bool ignoreCustomDataSourceLinks,
-    core.String $fields,
+    core.bool? ignoreCustomDataSourceLinks,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (customMetricId == null) {
-      throw core.ArgumentError('Parameter customMetricId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (ignoreCustomDataSourceLinks != null)
         'ignoreCustomDataSourceLinks': ['${ignoreCustomDataSourceLinks}'],
@@ -1497,20 +1366,10 @@ class ManagementCustomMetricsResource {
     core.String accountId,
     core.String webPropertyId,
     core.String customMetricId, {
-    core.bool ignoreCustomDataSourceLinks,
-    core.String $fields,
+    core.bool? ignoreCustomDataSourceLinks,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (customMetricId == null) {
-      throw core.ArgumentError('Parameter customMetricId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (ignoreCustomDataSourceLinks != null)
         'ignoreCustomDataSourceLinks': ['${ignoreCustomDataSourceLinks}'],
@@ -1566,20 +1425,8 @@ class ManagementExperimentsResource {
     core.String webPropertyId,
     core.String profileId,
     core.String experimentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (experimentId == null) {
-      throw core.ArgumentError('Parameter experimentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1628,20 +1475,8 @@ class ManagementExperimentsResource {
     core.String webPropertyId,
     core.String profileId,
     core.String experimentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (experimentId == null) {
-      throw core.ArgumentError('Parameter experimentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1691,19 +1526,9 @@ class ManagementExperimentsResource {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1759,19 +1584,10 @@ class ManagementExperimentsResource {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
       if (startIndex != null) 'start-index': ['${startIndex}'],
@@ -1827,22 +1643,9 @@ class ManagementExperimentsResource {
     core.String webPropertyId,
     core.String profileId,
     core.String experimentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (experimentId == null) {
-      throw core.ArgumentError('Parameter experimentId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1896,22 +1699,9 @@ class ManagementExperimentsResource {
     core.String webPropertyId,
     core.String profileId,
     core.String experimentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (experimentId == null) {
-      throw core.ArgumentError('Parameter experimentId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1962,14 +1752,8 @@ class ManagementFiltersResource {
   async.Future<Filter> delete(
     core.String accountId,
     core.String filterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (filterId == null) {
-      throw core.ArgumentError('Parameter filterId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2008,14 +1792,8 @@ class ManagementFiltersResource {
   async.Future<Filter> get(
     core.String accountId,
     core.String filterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (filterId == null) {
-      throw core.ArgumentError('Parameter filterId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2054,13 +1832,9 @@ class ManagementFiltersResource {
   async.Future<Filter> insert(
     Filter request,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2102,13 +1876,10 @@ class ManagementFiltersResource {
   /// this method will complete with the same error.
   async.Future<Filters> list(
     core.String accountId, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
       if (startIndex != null) 'start-index': ['${startIndex}'],
@@ -2153,16 +1924,9 @@ class ManagementFiltersResource {
     Filter request,
     core.String accountId,
     core.String filterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (filterId == null) {
-      throw core.ArgumentError('Parameter filterId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2205,16 +1969,9 @@ class ManagementFiltersResource {
     Filter request,
     core.String accountId,
     core.String filterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (filterId == null) {
-      throw core.ArgumentError('Parameter filterId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2266,20 +2023,8 @@ class ManagementGoalsResource {
     core.String webPropertyId,
     core.String profileId,
     core.String goalId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (goalId == null) {
-      throw core.ArgumentError('Parameter goalId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2328,19 +2073,9 @@ class ManagementGoalsResource {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2397,19 +2132,10 @@ class ManagementGoalsResource {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
       if (startIndex != null) 'start-index': ['${startIndex}'],
@@ -2464,22 +2190,9 @@ class ManagementGoalsResource {
     core.String webPropertyId,
     core.String profileId,
     core.String goalId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (goalId == null) {
-      throw core.ArgumentError('Parameter goalId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2532,22 +2245,9 @@ class ManagementGoalsResource {
     core.String webPropertyId,
     core.String profileId,
     core.String goalId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (goalId == null) {
-      throw core.ArgumentError('Parameter goalId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2607,20 +2307,8 @@ class ManagementProfileFilterLinksResource {
     core.String webPropertyId,
     core.String profileId,
     core.String linkId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (linkId == null) {
-      throw core.ArgumentError('Parameter linkId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2673,20 +2361,8 @@ class ManagementProfileFilterLinksResource {
     core.String webPropertyId,
     core.String profileId,
     core.String linkId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (linkId == null) {
-      throw core.ArgumentError('Parameter linkId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2739,19 +2415,9 @@ class ManagementProfileFilterLinksResource {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2809,19 +2475,10 @@ class ManagementProfileFilterLinksResource {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
       if (startIndex != null) 'start-index': ['${startIndex}'],
@@ -2881,22 +2538,9 @@ class ManagementProfileFilterLinksResource {
     core.String webPropertyId,
     core.String profileId,
     core.String linkId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (linkId == null) {
-      throw core.ArgumentError('Parameter linkId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2954,22 +2598,9 @@ class ManagementProfileFilterLinksResource {
     core.String webPropertyId,
     core.String profileId,
     core.String linkId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (linkId == null) {
-      throw core.ArgumentError('Parameter linkId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3025,20 +2656,8 @@ class ManagementProfileUserLinksResource {
     core.String webPropertyId,
     core.String profileId,
     core.String linkId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (linkId == null) {
-      throw core.ArgumentError('Parameter linkId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3087,19 +2706,9 @@ class ManagementProfileUserLinksResource {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3157,19 +2766,10 @@ class ManagementProfileUserLinksResource {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
       if (startIndex != null) 'start-index': ['${startIndex}'],
@@ -3223,22 +2823,9 @@ class ManagementProfileUserLinksResource {
     core.String webPropertyId,
     core.String profileId,
     core.String linkId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (linkId == null) {
-      throw core.ArgumentError('Parameter linkId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3290,17 +2877,8 @@ class ManagementProfilesResource {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3347,17 +2925,8 @@ class ManagementProfilesResource {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3401,16 +2970,9 @@ class ManagementProfilesResource {
     Profile request,
     core.String accountId,
     core.String webPropertyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3461,16 +3023,10 @@ class ManagementProfilesResource {
   async.Future<Profiles> list(
     core.String accountId,
     core.String webPropertyId, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
       if (startIndex != null) 'start-index': ['${startIndex}'],
@@ -3520,19 +3076,9 @@ class ManagementProfilesResource {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3580,19 +3126,9 @@ class ManagementProfilesResource {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3643,17 +3179,8 @@ class ManagementRemarketingAudienceResource {
     core.String accountId,
     core.String webPropertyId,
     core.String remarketingAudienceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (remarketingAudienceId == null) {
-      throw core.ArgumentError('Parameter remarketingAudienceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3698,17 +3225,8 @@ class ManagementRemarketingAudienceResource {
     core.String accountId,
     core.String webPropertyId,
     core.String remarketingAudienceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (remarketingAudienceId == null) {
-      throw core.ArgumentError('Parameter remarketingAudienceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3754,16 +3272,9 @@ class ManagementRemarketingAudienceResource {
     RemarketingAudience request,
     core.String accountId,
     core.String webPropertyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3814,17 +3325,11 @@ class ManagementRemarketingAudienceResource {
   async.Future<RemarketingAudiences> list(
     core.String accountId,
     core.String webPropertyId, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String type,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? type,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
       if (startIndex != null) 'start-index': ['${startIndex}'],
@@ -3877,19 +3382,9 @@ class ManagementRemarketingAudienceResource {
     core.String accountId,
     core.String webPropertyId,
     core.String remarketingAudienceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (remarketingAudienceId == null) {
-      throw core.ArgumentError('Parameter remarketingAudienceId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3939,19 +3434,9 @@ class ManagementRemarketingAudienceResource {
     core.String accountId,
     core.String webPropertyId,
     core.String remarketingAudienceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (remarketingAudienceId == null) {
-      throw core.ArgumentError('Parameter remarketingAudienceId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3999,9 +3484,9 @@ class ManagementSegmentsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Segments> list({
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
@@ -4051,20 +3536,8 @@ class ManagementUnsampledReportsResource {
     core.String webPropertyId,
     core.String profileId,
     core.String unsampledReportId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (unsampledReportId == null) {
-      throw core.ArgumentError('Parameter unsampledReportId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4113,20 +3586,8 @@ class ManagementUnsampledReportsResource {
     core.String webPropertyId,
     core.String profileId,
     core.String unsampledReportId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (unsampledReportId == null) {
-      throw core.ArgumentError('Parameter unsampledReportId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4176,19 +3637,9 @@ class ManagementUnsampledReportsResource {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4245,19 +3696,10 @@ class ManagementUnsampledReportsResource {
     core.String accountId,
     core.String webPropertyId,
     core.String profileId, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
       if (startIndex != null) 'start-index': ['${startIndex}'],
@@ -4316,19 +3758,9 @@ class ManagementUploadsResource {
     core.String accountId,
     core.String webPropertyId,
     core.String customDataSourceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (customDataSourceId == null) {
-      throw core.ArgumentError('Parameter customDataSourceId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4381,20 +3813,8 @@ class ManagementUploadsResource {
     core.String webPropertyId,
     core.String customDataSourceId,
     core.String uploadId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (customDataSourceId == null) {
-      throw core.ArgumentError('Parameter customDataSourceId is required.');
-    }
-    if (uploadId == null) {
-      throw core.ArgumentError('Parameter uploadId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4448,19 +3868,10 @@ class ManagementUploadsResource {
     core.String accountId,
     core.String webPropertyId,
     core.String customDataSourceId, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (customDataSourceId == null) {
-      throw core.ArgumentError('Parameter customDataSourceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
       if (startIndex != null) 'start-index': ['${startIndex}'],
@@ -4516,19 +3927,10 @@ class ManagementUploadsResource {
     core.String accountId,
     core.String webPropertyId,
     core.String customDataSourceId, {
-    core.String $fields,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (customDataSourceId == null) {
-      throw core.ArgumentError('Parameter customDataSourceId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4599,18 +4001,8 @@ class ManagementWebPropertyAdWordsLinksResource {
     core.String accountId,
     core.String webPropertyId,
     core.String webPropertyAdWordsLinkId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (webPropertyAdWordsLinkId == null) {
-      throw core.ArgumentError(
-          'Parameter webPropertyAdWordsLinkId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4654,18 +4046,8 @@ class ManagementWebPropertyAdWordsLinksResource {
     core.String accountId,
     core.String webPropertyId,
     core.String webPropertyAdWordsLinkId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (webPropertyAdWordsLinkId == null) {
-      throw core.ArgumentError(
-          'Parameter webPropertyAdWordsLinkId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4710,16 +4092,9 @@ class ManagementWebPropertyAdWordsLinksResource {
     EntityAdWordsLink request,
     core.String accountId,
     core.String webPropertyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4769,16 +4144,10 @@ class ManagementWebPropertyAdWordsLinksResource {
   async.Future<EntityAdWordsLinks> list(
     core.String accountId,
     core.String webPropertyId, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
       if (startIndex != null) 'start-index': ['${startIndex}'],
@@ -4829,20 +4198,9 @@ class ManagementWebPropertyAdWordsLinksResource {
     core.String accountId,
     core.String webPropertyId,
     core.String webPropertyAdWordsLinkId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (webPropertyAdWordsLinkId == null) {
-      throw core.ArgumentError(
-          'Parameter webPropertyAdWordsLinkId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4891,20 +4249,9 @@ class ManagementWebPropertyAdWordsLinksResource {
     core.String accountId,
     core.String webPropertyId,
     core.String webPropertyAdWordsLinkId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (webPropertyAdWordsLinkId == null) {
-      throw core.ArgumentError(
-          'Parameter webPropertyAdWordsLinkId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4956,14 +4303,8 @@ class ManagementWebpropertiesResource {
   async.Future<Webproperty> get(
     core.String accountId,
     core.String webPropertyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5006,13 +4347,9 @@ class ManagementWebpropertiesResource {
   async.Future<Webproperty> insert(
     Webproperty request,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5057,13 +4394,10 @@ class ManagementWebpropertiesResource {
   /// this method will complete with the same error.
   async.Future<Webproperties> list(
     core.String accountId, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
       if (startIndex != null) 'start-index': ['${startIndex}'],
@@ -5109,16 +4443,9 @@ class ManagementWebpropertiesResource {
     Webproperty request,
     core.String accountId,
     core.String webPropertyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5162,16 +4489,9 @@ class ManagementWebpropertiesResource {
     Webproperty request,
     core.String accountId,
     core.String webPropertyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5220,17 +4540,8 @@ class ManagementWebpropertyUserLinksResource {
     core.String accountId,
     core.String webPropertyId,
     core.String linkId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (linkId == null) {
-      throw core.ArgumentError('Parameter linkId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5274,16 +4585,9 @@ class ManagementWebpropertyUserLinksResource {
     EntityUserLink request,
     core.String accountId,
     core.String webPropertyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5334,16 +4638,10 @@ class ManagementWebpropertyUserLinksResource {
   async.Future<EntityUserLinks> list(
     core.String accountId,
     core.String webPropertyId, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'max-results': ['${maxResults}'],
       if (startIndex != null) 'start-index': ['${startIndex}'],
@@ -5392,19 +4690,9 @@ class ManagementWebpropertyUserLinksResource {
     core.String accountId,
     core.String webPropertyId,
     core.String linkId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (webPropertyId == null) {
-      throw core.ArgumentError('Parameter webPropertyId is required.');
-    }
-    if (linkId == null) {
-      throw core.ArgumentError('Parameter linkId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5460,11 +4748,8 @@ class MetadataColumnsResource {
   /// this method will complete with the same error.
   async.Future<Columns> list(
     core.String reportType, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (reportType == null) {
-      throw core.ArgumentError('Parameter reportType is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5504,10 +4789,9 @@ class ProvisioningResource {
   /// this method will complete with the same error.
   async.Future<AccountTicket> createAccountTicket(
     AccountTicket request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5542,10 +4826,9 @@ class ProvisioningResource {
   /// this method will complete with the same error.
   async.Future<AccountTreeResponse> createAccountTree(
     AccountTreeRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5596,10 +4879,9 @@ class UserDeletionUserDeletionRequestResource {
   /// this method will complete with the same error.
   async.Future<UserDeletionRequest> upsert(
     UserDeletionRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5622,12 +4904,12 @@ class UserDeletionUserDeletionRequestResource {
 /// Points to the list of web properties for this account.
 class AccountChildLink {
   /// Link to the list of web properties for this account.
-  core.String href;
+  core.String? href;
 
   /// Type of the child link.
   ///
   /// Its value is "analytics#webproperties".
-  core.String type;
+  core.String? type;
 
   AccountChildLink();
 
@@ -5640,9 +4922,9 @@ class AccountChildLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (href != null) 'href': href,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (href != null) 'href': href!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -5651,7 +4933,7 @@ class AccountPermissions {
   /// All the permissions that the user has for this account.
   ///
   /// These include any implied permissions (e.g., EDIT implies VIEW).
-  core.List<core.String> effective;
+  core.List<core.String>? effective;
 
   AccountPermissions();
 
@@ -5663,8 +4945,8 @@ class AccountPermissions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (effective != null) 'effective': effective,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (effective != null) 'effective': effective!,
       };
 }
 
@@ -5673,31 +4955,31 @@ class Account {
   /// Child link for an account entry.
   ///
   /// Points to the list of web properties for this account.
-  AccountChildLink childLink;
+  AccountChildLink? childLink;
 
   /// Time the account was created.
-  core.DateTime created;
+  core.DateTime? created;
 
   /// Account ID.
-  core.String id;
+  core.String? id;
 
   /// Resource type for Analytics account.
-  core.String kind;
+  core.String? kind;
 
   /// Account name.
-  core.String name;
+  core.String? name;
 
   /// Permissions the user has for this account.
-  AccountPermissions permissions;
+  AccountPermissions? permissions;
 
   /// Link for this account.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Indicates whether this account is starred or not.
-  core.bool starred;
+  core.bool? starred;
 
   /// Time the account was last modified.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   Account();
 
@@ -5733,32 +5015,32 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (childLink != null) 'childLink': childLink.toJson(),
-        if (created != null) 'created': (created).toIso8601String(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (permissions != null) 'permissions': permissions.toJson(),
-        if (selfLink != null) 'selfLink': selfLink,
-        if (starred != null) 'starred': starred,
-        if (updated != null) 'updated': (updated).toIso8601String(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (childLink != null) 'childLink': childLink!.toJson(),
+        if (created != null) 'created': (created!).toIso8601String(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (permissions != null) 'permissions': permissions!.toJson(),
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (starred != null) 'starred': starred!,
+        if (updated != null) 'updated': (updated!).toIso8601String(),
       };
 }
 
 /// JSON template for a linked account.
 class AccountRef {
   /// Link for this account.
-  core.String href;
+  core.String? href;
 
   /// Account ID.
-  core.String id;
+  core.String? id;
 
   /// Analytics account reference.
-  core.String kind;
+  core.String? kind;
 
   /// Account name.
-  core.String name;
+  core.String? name;
 
   AccountRef();
 
@@ -5777,11 +5059,11 @@ class AccountRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (href != null) 'href': href,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (href != null) 'href': href!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -5791,34 +5073,34 @@ class AccountRef {
 /// Each resource in the collection corresponds to a single AccountSummary.
 class AccountSummaries {
   /// A list of AccountSummaries.
-  core.List<AccountSummary> items;
+  core.List<AccountSummary>? items;
 
   /// The maximum number of resources the response can contain, regardless of
   /// the actual number of resources returned.
   ///
   /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Link to next page for this AccountSummary collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Link to previous page for this AccountSummary collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the resources, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// results in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Email ID of the authenticated user
-  core.String username;
+  core.String? username;
 
   AccountSummaries();
 
@@ -5852,16 +5134,16 @@ class AccountSummaries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
-        if (username != null) 'username': username,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
+        if (username != null) 'username': username!,
       };
 }
 
@@ -5870,19 +5152,19 @@ class AccountSummaries {
 /// An AccountSummary is a lightweight tree comprised of properties/profiles.
 class AccountSummary {
   /// Account ID.
-  core.String id;
+  core.String? id;
 
   /// Resource type for Analytics AccountSummary.
-  core.String kind;
+  core.String? kind;
 
   /// Account name.
-  core.String name;
+  core.String? name;
 
   /// Indicates whether this account is starred or not.
-  core.bool starred;
+  core.bool? starred;
 
   /// List of web properties under this account.
-  core.List<WebPropertySummary> webProperties;
+  core.List<WebPropertySummary>? webProperties;
 
   AccountSummary();
 
@@ -5907,14 +5189,14 @@ class AccountSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (starred != null) 'starred': starred,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (starred != null) 'starred': starred!,
         if (webProperties != null)
           'webProperties':
-              webProperties.map((value) => value.toJson()).toList(),
+              webProperties!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5924,24 +5206,24 @@ class AccountSummary {
 /// the account, property and profile.
 class AccountTicket {
   /// Account for this ticket.
-  Account account;
+  Account? account;
 
   /// Account ticket ID used to access the account ticket.
-  core.String id;
+  core.String? id;
 
   /// Resource type for account ticket.
-  core.String kind;
+  core.String? kind;
 
   /// View (Profile) for the account.
-  Profile profile;
+  Profile? profile;
 
   /// Redirect URI where the user will be sent after accepting Terms of Service.
   ///
   /// Must be configured in APIs console as a callback URL.
-  core.String redirectUri;
+  core.String? redirectUri;
 
   /// Web property for the account.
-  Webproperty webproperty;
+  Webproperty? webproperty;
 
   AccountTicket();
 
@@ -5969,13 +5251,13 @@ class AccountTicket {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (account != null) 'account': account.toJson(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (profile != null) 'profile': profile.toJson(),
-        if (redirectUri != null) 'redirectUri': redirectUri,
-        if (webproperty != null) 'webproperty': webproperty.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (account != null) 'account': account!.toJson(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (profile != null) 'profile': profile!.toJson(),
+        if (redirectUri != null) 'redirectUri': redirectUri!,
+        if (webproperty != null) 'webproperty': webproperty!.toJson(),
       };
 }
 
@@ -5985,14 +5267,14 @@ class AccountTicket {
 /// account, property, and view (profile). It contains the basic information
 /// required to make these fields.
 class AccountTreeRequest {
-  core.String accountName;
+  core.String? accountName;
 
   /// Resource type for account ticket.
-  core.String kind;
-  core.String profileName;
-  core.String timezone;
-  core.String webpropertyName;
-  core.String websiteUrl;
+  core.String? kind;
+  core.String? profileName;
+  core.String? timezone;
+  core.String? webpropertyName;
+  core.String? websiteUrl;
 
   AccountTreeRequest();
 
@@ -6017,13 +5299,13 @@ class AccountTreeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountName != null) 'accountName': accountName,
-        if (kind != null) 'kind': kind,
-        if (profileName != null) 'profileName': profileName,
-        if (timezone != null) 'timezone': timezone,
-        if (webpropertyName != null) 'webpropertyName': webpropertyName,
-        if (websiteUrl != null) 'websiteUrl': websiteUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountName != null) 'accountName': accountName!,
+        if (kind != null) 'kind': kind!,
+        if (profileName != null) 'profileName': profileName!,
+        if (timezone != null) 'timezone': timezone!,
+        if (webpropertyName != null) 'webpropertyName': webpropertyName!,
+        if (websiteUrl != null) 'websiteUrl': websiteUrl!,
       };
 }
 
@@ -6033,16 +5315,16 @@ class AccountTreeRequest {
 /// result of creating an account, property, and view (profile).
 class AccountTreeResponse {
   /// The account created.
-  Account account;
+  Account? account;
 
   /// Resource type for account ticket.
-  core.String kind;
+  core.String? kind;
 
   /// View (Profile) for the account.
-  Profile profile;
+  Profile? profile;
 
   /// Web property for the account.
-  Webproperty webproperty;
+  Webproperty? webproperty;
 
   AccountTreeResponse();
 
@@ -6064,11 +5346,11 @@ class AccountTreeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (account != null) 'account': account.toJson(),
-        if (kind != null) 'kind': kind,
-        if (profile != null) 'profile': profile.toJson(),
-        if (webproperty != null) 'webproperty': webproperty.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (account != null) 'account': account!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (profile != null) 'profile': profile!.toJson(),
+        if (webproperty != null) 'webproperty': webproperty!.toJson(),
       };
 }
 
@@ -6079,34 +5361,34 @@ class AccountTreeResponse {
 /// Each resource in the collection corresponds to a single Analytics account.
 class Accounts {
   /// A list of accounts.
-  core.List<Account> items;
+  core.List<Account>? items;
 
   /// The maximum number of entries the response can contain, regardless of the
   /// actual number of entries returned.
   ///
   /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Next link for this account collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Previous link for this account collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the entries, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// results in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Email ID of the authenticated user
-  core.String username;
+  core.String? username;
 
   Accounts();
 
@@ -6140,16 +5422,16 @@ class Accounts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
-        if (username != null) 'username': username,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
+        if (username != null) 'username': username!,
       };
 }
 
@@ -6158,15 +5440,15 @@ class AdWordsAccount {
   /// True if auto-tagging is enabled on the Google Ads account.
   ///
   /// Read-only after the insert operation.
-  core.bool autoTaggingEnabled;
+  core.bool? autoTaggingEnabled;
 
   /// Customer ID.
   ///
   /// This field is required when creating a Google Ads link.
-  core.String customerId;
+  core.String? customerId;
 
   /// Resource type for Google Ads account.
-  core.String kind;
+  core.String? kind;
 
   AdWordsAccount();
 
@@ -6182,18 +5464,18 @@ class AdWordsAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (autoTaggingEnabled != null)
-          'autoTaggingEnabled': autoTaggingEnabled,
-        if (customerId != null) 'customerId': customerId,
-        if (kind != null) 'kind': kind,
+          'autoTaggingEnabled': autoTaggingEnabled!,
+        if (customerId != null) 'customerId': customerId!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Request template for the delete upload data request.
 class AnalyticsDataimportDeleteUploadDataRequest {
   /// A list of upload UIDs.
-  core.List<core.String> customDataImportUids;
+  core.List<core.String>? customDataImportUids;
 
   AnalyticsDataimportDeleteUploadDataRequest();
 
@@ -6205,22 +5487,22 @@ class AnalyticsDataimportDeleteUploadDataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customDataImportUids != null)
-          'customDataImportUids': customDataImportUids,
+          'customDataImportUids': customDataImportUids!,
       };
 }
 
 /// JSON template for a metadata column.
 class Column {
   /// Map of attribute name and value for this column.
-  core.Map<core.String, core.String> attributes;
+  core.Map<core.String, core.String>? attributes;
 
   /// Column id.
-  core.String id;
+  core.String? id;
 
   /// Resource type for Analytics column.
-  core.String kind;
+  core.String? kind;
 
   Column();
 
@@ -6243,32 +5525,32 @@ class Column {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributes != null) 'attributes': attributes,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Lists columns (dimensions and metrics) for a particular report type.
 class Columns {
   /// List of attributes names returned by columns.
-  core.List<core.String> attributeNames;
+  core.List<core.String>? attributeNames;
 
   /// Etag of collection.
   ///
   /// This etag can be compared with the last response etag to check if response
   /// has changed.
-  core.String etag;
+  core.String? etag;
 
   /// List of columns for a report type.
-  core.List<Column> items;
+  core.List<Column>? items;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Total number of columns returned in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   Columns();
 
@@ -6295,13 +5577,13 @@ class Columns {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributeNames != null) 'attributeNames': attributeNames,
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributeNames != null) 'attributeNames': attributeNames!,
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (totalResults != null) 'totalResults': totalResults,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (totalResults != null) 'totalResults': totalResults!,
       };
 }
 
@@ -6309,12 +5591,12 @@ class CustomDataSourceChildLink {
   /// Link to the list of daily uploads for this custom data source.
   ///
   /// Link to the list of uploads for this custom data source.
-  core.String href;
+  core.String? href;
 
   /// Value is "analytics#dailyUploads".
   ///
   /// Value is "analytics#uploads".
-  core.String type;
+  core.String? type;
 
   CustomDataSourceChildLink();
 
@@ -6327,9 +5609,9 @@ class CustomDataSourceChildLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (href != null) 'href': href,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (href != null) 'href': href!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -6338,10 +5620,10 @@ class CustomDataSourceChildLink {
 /// Points to the web property to which this custom data source belongs.
 class CustomDataSourceParentLink {
   /// Link to the web property to which this custom data source belongs.
-  core.String href;
+  core.String? href;
 
   /// Value is "analytics#webproperty".
-  core.String type;
+  core.String? type;
 
   CustomDataSourceParentLink();
 
@@ -6354,60 +5636,60 @@ class CustomDataSourceParentLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (href != null) 'href': href,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (href != null) 'href': href!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// JSON template for an Analytics custom data source.
 class CustomDataSource {
   /// Account ID to which this custom data source belongs.
-  core.String accountId;
-  CustomDataSourceChildLink childLink;
+  core.String? accountId;
+  CustomDataSourceChildLink? childLink;
 
   /// Time this custom data source was created.
-  core.DateTime created;
+  core.DateTime? created;
 
   /// Description of custom data source.
-  core.String description;
+  core.String? description;
 
   /// Custom data source ID.
-  core.String id;
-  core.String importBehavior;
+  core.String? id;
+  core.String? importBehavior;
 
   /// Resource type for Analytics custom data source.
-  core.String kind;
+  core.String? kind;
 
   /// Name of this custom data source.
-  core.String name;
+  core.String? name;
 
   /// Parent link for this custom data source.
   ///
   /// Points to the web property to which this custom data source belongs.
-  CustomDataSourceParentLink parentLink;
+  CustomDataSourceParentLink? parentLink;
 
   /// IDs of views (profiles) linked to the custom data source.
-  core.List<core.String> profilesLinked;
+  core.List<core.String>? profilesLinked;
 
   /// Collection of schema headers of the custom data source.
-  core.List<core.String> schema;
+  core.List<core.String>? schema;
 
   /// Link for this Analytics custom data source.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Type of the custom data source.
-  core.String type;
+  core.String? type;
 
   /// Time this custom data source was last modified.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   /// Upload type of the custom data source.
-  core.String uploadType;
+  core.String? uploadType;
 
   /// Web property ID of the form UA-XXXXX-YY to which this custom data source
   /// belongs.
-  core.String webPropertyId;
+  core.String? webPropertyId;
 
   CustomDataSource();
 
@@ -6468,23 +5750,23 @@ class CustomDataSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (childLink != null) 'childLink': childLink.toJson(),
-        if (created != null) 'created': (created).toIso8601String(),
-        if (description != null) 'description': description,
-        if (id != null) 'id': id,
-        if (importBehavior != null) 'importBehavior': importBehavior,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (parentLink != null) 'parentLink': parentLink.toJson(),
-        if (profilesLinked != null) 'profilesLinked': profilesLinked,
-        if (schema != null) 'schema': schema,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (type != null) 'type': type,
-        if (updated != null) 'updated': (updated).toIso8601String(),
-        if (uploadType != null) 'uploadType': uploadType,
-        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (childLink != null) 'childLink': childLink!.toJson(),
+        if (created != null) 'created': (created!).toIso8601String(),
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
+        if (importBehavior != null) 'importBehavior': importBehavior!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (parentLink != null) 'parentLink': parentLink!.toJson(),
+        if (profilesLinked != null) 'profilesLinked': profilesLinked!,
+        if (schema != null) 'schema': schema!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (type != null) 'type': type!,
+        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (uploadType != null) 'uploadType': uploadType!,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
 
@@ -6494,34 +5776,34 @@ class CustomDataSource {
 /// data source.
 class CustomDataSources {
   /// Collection of custom data sources.
-  core.List<CustomDataSource> items;
+  core.List<CustomDataSource>? items;
 
   /// The maximum number of resources the response can contain, regardless of
   /// the actual number of resources returned.
   ///
   /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Link to next page for this custom data source collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Link to previous page for this custom data source collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the resources, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// results in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Email ID of the authenticated user
-  core.String username;
+  core.String? username;
 
   CustomDataSources();
 
@@ -6555,16 +5837,16 @@ class CustomDataSources {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
-        if (username != null) 'username': username,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
+        if (username != null) 'username': username!,
       };
 }
 
@@ -6573,12 +5855,12 @@ class CustomDataSources {
 /// Points to the property to which the custom dimension belongs.
 class CustomDimensionParentLink {
   /// Link to the property to which the custom dimension belongs.
-  core.String href;
+  core.String? href;
 
   /// Type of the parent link.
   ///
   /// Set to "analytics#webproperty".
-  core.String type;
+  core.String? type;
 
   CustomDimensionParentLink();
 
@@ -6591,53 +5873,53 @@ class CustomDimensionParentLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (href != null) 'href': href,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (href != null) 'href': href!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// JSON template for Analytics Custom Dimension.
 class CustomDimension {
   /// Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// Boolean indicating whether the custom dimension is active.
-  core.bool active;
+  core.bool? active;
 
   /// Time the custom dimension was created.
-  core.DateTime created;
+  core.DateTime? created;
 
   /// Custom dimension ID.
-  core.String id;
+  core.String? id;
 
   /// Index of the custom dimension.
-  core.int index;
+  core.int? index;
 
   /// Kind value for a custom dimension.
   ///
   /// Set to "analytics#customDimension". It is a read-only field.
-  core.String kind;
+  core.String? kind;
 
   /// Name of the custom dimension.
-  core.String name;
+  core.String? name;
 
   /// Parent link for the custom dimension.
   ///
   /// Points to the property to which the custom dimension belongs.
-  CustomDimensionParentLink parentLink;
+  CustomDimensionParentLink? parentLink;
 
   /// Scope of the custom dimension: HIT, SESSION, USER or PRODUCT.
-  core.String scope;
+  core.String? scope;
 
   /// Link for the custom dimension
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Time the custom dimension was last modified.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   /// Property ID.
-  core.String webPropertyId;
+  core.String? webPropertyId;
 
   CustomDimension();
 
@@ -6681,19 +5963,19 @@ class CustomDimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (active != null) 'active': active,
-        if (created != null) 'created': (created).toIso8601String(),
-        if (id != null) 'id': id,
-        if (index != null) 'index': index,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (parentLink != null) 'parentLink': parentLink.toJson(),
-        if (scope != null) 'scope': scope,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (updated != null) 'updated': (updated).toIso8601String(),
-        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (active != null) 'active': active!,
+        if (created != null) 'created': (created!).toIso8601String(),
+        if (id != null) 'id': id!,
+        if (index != null) 'index': index!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (parentLink != null) 'parentLink': parentLink!.toJson(),
+        if (scope != null) 'scope': scope!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
 
@@ -6704,34 +5986,34 @@ class CustomDimension {
 /// dimension.
 class CustomDimensions {
   /// Collection of custom dimensions.
-  core.List<CustomDimension> items;
+  core.List<CustomDimension>? items;
 
   /// The maximum number of resources the response can contain, regardless of
   /// the actual number of resources returned.
   ///
   /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Link to next page for this custom dimension collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Link to previous page for this custom dimension collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the resources, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// results in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Email ID of the authenticated user
-  core.String username;
+  core.String? username;
 
   CustomDimensions();
 
@@ -6765,16 +6047,16 @@ class CustomDimensions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
-        if (username != null) 'username': username,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
+        if (username != null) 'username': username!,
       };
 }
 
@@ -6783,12 +6065,12 @@ class CustomDimensions {
 /// Points to the property to which the custom metric belongs.
 class CustomMetricParentLink {
   /// Link to the property to which the custom metric belongs.
-  core.String href;
+  core.String? href;
 
   /// Type of the parent link.
   ///
   /// Set to "analytics#webproperty".
-  core.String type;
+  core.String? type;
 
   CustomMetricParentLink();
 
@@ -6801,62 +6083,62 @@ class CustomMetricParentLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (href != null) 'href': href,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (href != null) 'href': href!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// JSON template for Analytics Custom Metric.
 class CustomMetric {
   /// Account ID.
-  core.String accountId;
+  core.String? accountId;
 
   /// Boolean indicating whether the custom metric is active.
-  core.bool active;
+  core.bool? active;
 
   /// Time the custom metric was created.
-  core.DateTime created;
+  core.DateTime? created;
 
   /// Custom metric ID.
-  core.String id;
+  core.String? id;
 
   /// Index of the custom metric.
-  core.int index;
+  core.int? index;
 
   /// Kind value for a custom metric.
   ///
   /// Set to "analytics#customMetric". It is a read-only field.
-  core.String kind;
+  core.String? kind;
 
   /// Max value of custom metric.
-  core.String maxValue;
+  core.String? maxValue;
 
   /// Min value of custom metric.
-  core.String minValue;
+  core.String? minValue;
 
   /// Name of the custom metric.
-  core.String name;
+  core.String? name;
 
   /// Parent link for the custom metric.
   ///
   /// Points to the property to which the custom metric belongs.
-  CustomMetricParentLink parentLink;
+  CustomMetricParentLink? parentLink;
 
   /// Scope of the custom metric: HIT or PRODUCT.
-  core.String scope;
+  core.String? scope;
 
   /// Link for the custom metric
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Data type of custom metric.
-  core.String type;
+  core.String? type;
 
   /// Time the custom metric was last modified.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   /// Property ID.
-  core.String webPropertyId;
+  core.String? webPropertyId;
 
   CustomMetric();
 
@@ -6909,22 +6191,22 @@ class CustomMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (active != null) 'active': active,
-        if (created != null) 'created': (created).toIso8601String(),
-        if (id != null) 'id': id,
-        if (index != null) 'index': index,
-        if (kind != null) 'kind': kind,
-        if (maxValue != null) 'max_value': maxValue,
-        if (minValue != null) 'min_value': minValue,
-        if (name != null) 'name': name,
-        if (parentLink != null) 'parentLink': parentLink.toJson(),
-        if (scope != null) 'scope': scope,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (type != null) 'type': type,
-        if (updated != null) 'updated': (updated).toIso8601String(),
-        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (active != null) 'active': active!,
+        if (created != null) 'created': (created!).toIso8601String(),
+        if (id != null) 'id': id!,
+        if (index != null) 'index': index!,
+        if (kind != null) 'kind': kind!,
+        if (maxValue != null) 'max_value': maxValue!,
+        if (minValue != null) 'min_value': minValue!,
+        if (name != null) 'name': name!,
+        if (parentLink != null) 'parentLink': parentLink!.toJson(),
+        if (scope != null) 'scope': scope!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (type != null) 'type': type!,
+        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
 
@@ -6935,34 +6217,34 @@ class CustomMetric {
 /// metric.
 class CustomMetrics {
   /// Collection of custom metrics.
-  core.List<CustomMetric> items;
+  core.List<CustomMetric>? items;
 
   /// The maximum number of resources the response can contain, regardless of
   /// the actual number of resources returned.
   ///
   /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Link to next page for this custom metric collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Link to previous page for this custom metric collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the resources, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// results in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Email ID of the authenticated user
-  core.String username;
+  core.String? username;
 
   CustomMetrics();
 
@@ -6996,22 +6278,22 @@ class CustomMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
-        if (username != null) 'username': username,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
+        if (username != null) 'username': username!,
       };
 }
 
 /// Web property being linked.
 class EntityAdWordsLinkEntity {
-  WebPropertyRef webPropertyRef;
+  WebPropertyRef? webPropertyRef;
 
   EntityAdWordsLinkEntity();
 
@@ -7022,8 +6304,8 @@ class EntityAdWordsLinkEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (webPropertyRef != null) 'webPropertyRef': webPropertyRef.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (webPropertyRef != null) 'webPropertyRef': webPropertyRef!.toJson(),
       };
 }
 
@@ -7033,27 +6315,27 @@ class EntityAdWordsLink {
   ///
   /// These cannot be MCC accounts. This field is required when creating a
   /// Google Ads link. It cannot be empty.
-  core.List<AdWordsAccount> adWordsAccounts;
+  core.List<AdWordsAccount>? adWordsAccounts;
 
   /// Web property being linked.
-  EntityAdWordsLinkEntity entity;
+  EntityAdWordsLinkEntity? entity;
 
   /// Entity Google Ads link ID
-  core.String id;
+  core.String? id;
 
   /// Resource type for entity Google Ads link.
-  core.String kind;
+  core.String? kind;
 
   /// Name of the link.
   ///
   /// This field is required when creating a Google Ads link.
-  core.String name;
+  core.String? name;
 
   /// IDs of linked Views (Profiles) represented as strings.
-  core.List<core.String> profileIds;
+  core.List<core.String>? profileIds;
 
   /// URL link for this Google Analytics - Google Ads link.
-  core.String selfLink;
+  core.String? selfLink;
 
   EntityAdWordsLink();
 
@@ -7087,16 +6369,16 @@ class EntityAdWordsLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (adWordsAccounts != null)
           'adWordsAccounts':
-              adWordsAccounts.map((value) => value.toJson()).toList(),
-        if (entity != null) 'entity': entity.toJson(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (profileIds != null) 'profileIds': profileIds,
-        if (selfLink != null) 'selfLink': selfLink,
+              adWordsAccounts!.map((value) => value.toJson()).toList(),
+        if (entity != null) 'entity': entity!.toJson(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (profileIds != null) 'profileIds': profileIds!,
+        if (selfLink != null) 'selfLink': selfLink!,
       };
 }
 
@@ -7104,31 +6386,31 @@ class EntityAdWordsLink {
 /// Each resource in this collection corresponds to a single link.
 class EntityAdWordsLinks {
   /// A list of entity Google Ads links.
-  core.List<EntityAdWordsLink> items;
+  core.List<EntityAdWordsLink>? items;
 
   /// The maximum number of entries the response can contain, regardless of the
   /// actual number of entries returned.
   ///
   /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Next link for this Google Ads link collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Previous link for this Google Ads link collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the entries, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// results in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   EntityAdWordsLinks();
 
@@ -7159,15 +6441,15 @@ class EntityAdWordsLinks {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
       };
 }
 
@@ -7176,13 +6458,13 @@ class EntityAdWordsLinks {
 /// It can be an account, a web property, or a view (profile).
 class EntityUserLinkEntity {
   /// Account for this link.
-  AccountRef accountRef;
+  AccountRef? accountRef;
 
   /// View (Profile) for this link.
-  ProfileRef profileRef;
+  ProfileRef? profileRef;
 
   /// Web property for this link.
-  WebPropertyRef webPropertyRef;
+  WebPropertyRef? webPropertyRef;
 
   EntityUserLinkEntity();
 
@@ -7201,10 +6483,10 @@ class EntityUserLinkEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountRef != null) 'accountRef': accountRef.toJson(),
-        if (profileRef != null) 'profileRef': profileRef.toJson(),
-        if (webPropertyRef != null) 'webPropertyRef': webPropertyRef.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountRef != null) 'accountRef': accountRef!.toJson(),
+        if (profileRef != null) 'profileRef': profileRef!.toJson(),
+        if (webPropertyRef != null) 'webPropertyRef': webPropertyRef!.toJson(),
       };
 }
 
@@ -7216,13 +6498,13 @@ class EntityUserLinkPermissions {
   /// These include any implied permissions (e.g., EDIT implies VIEW) or
   /// inherited permissions from the parent entity. Effective permissions are
   /// read-only.
-  core.List<core.String> effective;
+  core.List<core.String>? effective;
 
   /// Permissions that a user has been assigned at this very level.
   ///
   /// Does not include any implied or inherited permissions. Local permissions
   /// are modifiable.
-  core.List<core.String> local;
+  core.List<core.String>? local;
 
   EntityUserLinkPermissions();
 
@@ -7239,9 +6521,9 @@ class EntityUserLinkPermissions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (effective != null) 'effective': effective,
-        if (local != null) 'local': local,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (effective != null) 'effective': effective!,
+        if (local != null) 'local': local!,
       };
 }
 
@@ -7252,22 +6534,22 @@ class EntityUserLink {
   /// Entity for this link.
   ///
   /// It can be an account, a web property, or a view (profile).
-  EntityUserLinkEntity entity;
+  EntityUserLinkEntity? entity;
 
   /// Entity user link ID
-  core.String id;
+  core.String? id;
 
   /// Resource type for entity user link.
-  core.String kind;
+  core.String? kind;
 
   /// Permissions the user has for this entity.
-  EntityUserLinkPermissions permissions;
+  EntityUserLinkPermissions? permissions;
 
   /// Self link for this resource.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// User reference.
-  UserRef userRef;
+  UserRef? userRef;
 
   EntityUserLink();
 
@@ -7295,13 +6577,13 @@ class EntityUserLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (entity != null) 'entity': entity.toJson(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (permissions != null) 'permissions': permissions.toJson(),
-        if (selfLink != null) 'selfLink': selfLink,
-        if (userRef != null) 'userRef': userRef.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (entity != null) 'entity': entity!.toJson(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (permissions != null) 'permissions': permissions!.toJson(),
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (userRef != null) 'userRef': userRef!.toJson(),
       };
 }
 
@@ -7309,31 +6591,31 @@ class EntityUserLink {
 /// resource in this collection corresponds to a single link.
 class EntityUserLinks {
   /// A list of entity user links.
-  core.List<EntityUserLink> items;
+  core.List<EntityUserLink>? items;
 
   /// The maximum number of entries the response can contain, regardless of the
   /// actual number of entries returned.
   ///
   /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Next link for this account collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Previous link for this account collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the entries, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// results in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   EntityUserLinks();
 
@@ -7364,15 +6646,15 @@ class EntityUserLinks {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
       };
 }
 
@@ -7383,12 +6665,12 @@ class ExperimentParentLink {
   /// Link to the view (profile) to which this experiment belongs.
   ///
   /// This field is read-only.
-  core.String href;
+  core.String? href;
 
   /// Value is "analytics#profile".
   ///
   /// This field is read-only.
-  core.String type;
+  core.String? type;
 
   ExperimentParentLink();
 
@@ -7401,9 +6683,9 @@ class ExperimentParentLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (href != null) 'href': href,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (href != null) 'href': href!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -7412,30 +6694,30 @@ class ExperimentVariations {
   ///
   /// This field is required when creating an experiment. This field may not be
   /// changed for an experiment whose status is ENDED.
-  core.String name;
+  core.String? name;
 
   /// Status of the variation.
   ///
   /// Possible values: "ACTIVE", "INACTIVE". INACTIVE variations are not served.
   /// This field may not be changed for an experiment whose status is ENDED.
-  core.String status;
+  core.String? status;
 
   /// The URL of the variation.
   ///
   /// This field may not be changed for an experiment whose status is RUNNING or
   /// ENDED.
-  core.String url;
+  core.String? url;
 
   /// Weight that this variation should receive.
   ///
   /// Only present if the experiment is running. This field is read-only.
-  core.double weight;
+  core.double? weight;
 
   /// True if the experiment has ended and this variation performed
   /// (statistically) significantly better than the original.
   ///
   /// This field is read-only.
-  core.bool won;
+  core.bool? won;
 
   ExperimentVariations();
 
@@ -7457,12 +6739,12 @@ class ExperimentVariations {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (status != null) 'status': status,
-        if (url != null) 'url': url,
-        if (weight != null) 'weight': weight,
-        if (won != null) 'won': won,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (status != null) 'status': status!,
+        if (url != null) 'url': url!,
+        if (weight != null) 'weight': weight!,
+        if (won != null) 'won': won!,
       };
 }
 
@@ -7471,26 +6753,26 @@ class Experiment {
   /// Account ID to which this experiment belongs.
   ///
   /// This field is read-only.
-  core.String accountId;
+  core.String? accountId;
 
   /// Time the experiment was created.
   ///
   /// This field is read-only.
-  core.DateTime created;
+  core.DateTime? created;
 
   /// Notes about this experiment.
-  core.String description;
+  core.String? description;
 
   /// If true, the end user will be able to edit the experiment via the Google
   /// Analytics user interface.
-  core.bool editableInGaUi;
+  core.bool? editableInGaUi;
 
   /// The ending time of the experiment (the time the status changed from
   /// RUNNING to ENDED).
   ///
   /// This field is present only if the experiment has ended. This field is
   /// read-only.
-  core.DateTime endTime;
+  core.DateTime? endTime;
 
   /// Boolean specifying whether to distribute traffic evenly across all
   /// variations.
@@ -7499,35 +6781,35 @@ class Experiment {
   /// adjusting traffic dynamically based on variation performance. Optional --
   /// defaults to False. This field may not be changed for an experiment whose
   /// status is ENDED.
-  core.bool equalWeighting;
+  core.bool? equalWeighting;
 
   /// Experiment ID.
   ///
   /// Required for patch and update. Disallowed for create.
-  core.String id;
+  core.String? id;
 
   /// Internal ID for the web property to which this experiment belongs.
   ///
   /// This field is read-only.
-  core.String internalWebPropertyId;
+  core.String? internalWebPropertyId;
 
   /// Resource type for an Analytics experiment.
   ///
   /// This field is read-only.
-  core.String kind;
+  core.String? kind;
 
   /// An integer number in \[3, 90\].
   ///
   /// Specifies the minimum length of the experiment. Can be changed for a
   /// running experiment. This field may not be changed for an experiments whose
   /// status is ENDED.
-  core.int minimumExperimentLengthInDays;
+  core.int? minimumExperimentLengthInDays;
 
   /// Experiment name.
   ///
   /// This field may not be changed for an experiment whose status is ENDED.
   /// This field is required when creating an experiment.
-  core.String name;
+  core.String? name;
 
   /// The metric that the experiment is optimizing.
   ///
@@ -7536,24 +6818,24 @@ class Experiment {
   /// "ga:sessionDuration", "ga:transactions", "ga:transactionRevenue". This
   /// field is required if status is "RUNNING" and servingFramework is one of
   /// "REDIRECT" or "API".
-  core.String objectiveMetric;
+  core.String? objectiveMetric;
 
   /// Whether the objectiveMetric should be minimized or maximized.
   ///
   /// Possible values: "MAXIMUM", "MINIMUM". Optional--defaults to "MAXIMUM".
   /// Cannot be specified without objectiveMetric. Cannot be modified when
   /// status is "RUNNING" or "ENDED".
-  core.String optimizationType;
+  core.String? optimizationType;
 
   /// Parent link for an experiment.
   ///
   /// Points to the view (profile) to which this experiment belongs.
-  ExperimentParentLink parentLink;
+  ExperimentParentLink? parentLink;
 
   /// View (Profile) ID to which this experiment belongs.
   ///
   /// This field is read-only.
-  core.String profileId;
+  core.String? profileId;
 
   /// Why the experiment ended.
   ///
@@ -7562,18 +6844,18 @@ class Experiment {
   /// means that the experiment didn't expire but no winner was projected to be
   /// found. If the experiment status is changed via the API to ENDED this field
   /// is set to STOPPED_BY_USER. This field is read-only.
-  core.String reasonExperimentEnded;
+  core.String? reasonExperimentEnded;
 
   /// Boolean specifying whether variations URLS are rewritten to match those of
   /// the original.
   ///
   /// This field may not be changed for an experiments whose status is ENDED.
-  core.bool rewriteVariationUrlsAsOriginal;
+  core.bool? rewriteVariationUrlsAsOriginal;
 
   /// Link for this experiment.
   ///
   /// This field is read-only.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The framework used to serve the experiment variations and evaluate the
   /// results.
@@ -7587,61 +6869,61 @@ class Experiment {
   /// - EXTERNAL: The variations will be served externally and the chosen
   /// variation reported to Google Analytics. The caller is responsible for
   /// serving the selected variation and evaluating the results.
-  core.String servingFramework;
+  core.String? servingFramework;
 
   /// The snippet of code to include on the control page(s).
   ///
   /// This field is read-only.
-  core.String snippet;
+  core.String? snippet;
 
   /// The starting time of the experiment (the time the status changed from
   /// READY_TO_RUN to RUNNING).
   ///
   /// This field is present only if the experiment has started. This field is
   /// read-only.
-  core.DateTime startTime;
+  core.DateTime? startTime;
 
   /// Experiment status.
   ///
   /// Possible values: "DRAFT", "READY_TO_RUN", "RUNNING", "ENDED". Experiments
   /// can be created in the "DRAFT", "READY_TO_RUN" or "RUNNING" state. This
   /// field is required when creating an experiment.
-  core.String status;
+  core.String? status;
 
   /// A floating-point number in (0, 1\].
   ///
   /// Specifies the fraction of the traffic that participates in the experiment.
   /// Can be changed for a running experiment. This field may not be changed for
   /// an experiments whose status is ENDED.
-  core.double trafficCoverage;
+  core.double? trafficCoverage;
 
   /// Time the experiment was last modified.
   ///
   /// This field is read-only.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   /// Array of variations.
   ///
   /// The first variation in the array is the original. The number of variations
   /// may not change once an experiment is in the RUNNING state. At least two
   /// variations are required before status can be set to RUNNING.
-  core.List<ExperimentVariations> variations;
+  core.List<ExperimentVariations>? variations;
 
   /// Web property ID to which this experiment belongs.
   ///
   /// The web property ID is of the form UA-XXXXX-YY. This field is read-only.
-  core.String webPropertyId;
+  core.String? webPropertyId;
 
   /// A floating-point number in (0, 1).
   ///
   /// Specifies the necessary confidence level to choose a winner. This field
   /// may not be changed for an experiments whose status is ENDED.
-  core.double winnerConfidenceLevel;
+  core.double? winnerConfidenceLevel;
 
   /// Boolean specifying whether a winner has been found for this experiment.
   ///
   /// This field is read-only.
-  core.bool winnerFound;
+  core.bool? winnerFound;
 
   Experiment();
 
@@ -7739,41 +7021,41 @@ class Experiment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (created != null) 'created': (created).toIso8601String(),
-        if (description != null) 'description': description,
-        if (editableInGaUi != null) 'editableInGaUi': editableInGaUi,
-        if (endTime != null) 'endTime': (endTime).toIso8601String(),
-        if (equalWeighting != null) 'equalWeighting': equalWeighting,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (created != null) 'created': (created!).toIso8601String(),
+        if (description != null) 'description': description!,
+        if (editableInGaUi != null) 'editableInGaUi': editableInGaUi!,
+        if (endTime != null) 'endTime': (endTime!).toIso8601String(),
+        if (equalWeighting != null) 'equalWeighting': equalWeighting!,
+        if (id != null) 'id': id!,
         if (internalWebPropertyId != null)
-          'internalWebPropertyId': internalWebPropertyId,
-        if (kind != null) 'kind': kind,
+          'internalWebPropertyId': internalWebPropertyId!,
+        if (kind != null) 'kind': kind!,
         if (minimumExperimentLengthInDays != null)
-          'minimumExperimentLengthInDays': minimumExperimentLengthInDays,
-        if (name != null) 'name': name,
-        if (objectiveMetric != null) 'objectiveMetric': objectiveMetric,
-        if (optimizationType != null) 'optimizationType': optimizationType,
-        if (parentLink != null) 'parentLink': parentLink.toJson(),
-        if (profileId != null) 'profileId': profileId,
+          'minimumExperimentLengthInDays': minimumExperimentLengthInDays!,
+        if (name != null) 'name': name!,
+        if (objectiveMetric != null) 'objectiveMetric': objectiveMetric!,
+        if (optimizationType != null) 'optimizationType': optimizationType!,
+        if (parentLink != null) 'parentLink': parentLink!.toJson(),
+        if (profileId != null) 'profileId': profileId!,
         if (reasonExperimentEnded != null)
-          'reasonExperimentEnded': reasonExperimentEnded,
+          'reasonExperimentEnded': reasonExperimentEnded!,
         if (rewriteVariationUrlsAsOriginal != null)
-          'rewriteVariationUrlsAsOriginal': rewriteVariationUrlsAsOriginal,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (servingFramework != null) 'servingFramework': servingFramework,
-        if (snippet != null) 'snippet': snippet,
-        if (startTime != null) 'startTime': (startTime).toIso8601String(),
-        if (status != null) 'status': status,
-        if (trafficCoverage != null) 'trafficCoverage': trafficCoverage,
-        if (updated != null) 'updated': (updated).toIso8601String(),
+          'rewriteVariationUrlsAsOriginal': rewriteVariationUrlsAsOriginal!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (servingFramework != null) 'servingFramework': servingFramework!,
+        if (snippet != null) 'snippet': snippet!,
+        if (startTime != null) 'startTime': (startTime!).toIso8601String(),
+        if (status != null) 'status': status!,
+        if (trafficCoverage != null) 'trafficCoverage': trafficCoverage!,
+        if (updated != null) 'updated': (updated!).toIso8601String(),
         if (variations != null)
-          'variations': variations.map((value) => value.toJson()).toList(),
-        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+          'variations': variations!.map((value) => value.toJson()).toList(),
+        if (webPropertyId != null) 'webPropertyId': webPropertyId!,
         if (winnerConfidenceLevel != null)
-          'winnerConfidenceLevel': winnerConfidenceLevel,
-        if (winnerFound != null) 'winnerFound': winnerFound,
+          'winnerConfidenceLevel': winnerConfidenceLevel!,
+        if (winnerFound != null) 'winnerFound': winnerFound!,
       };
 }
 
@@ -7784,34 +7066,34 @@ class Experiment {
 /// Experiment collection corresponds to a single Analytics experiment.
 class Experiments {
   /// A list of experiments.
-  core.List<Experiment> items;
+  core.List<Experiment>? items;
 
   /// The maximum number of resources the response can contain, regardless of
   /// the actual number of resources returned.
   ///
   /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Link to next page for this experiment collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Link to previous page for this experiment collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the resources, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// resources in the result.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Email ID of the authenticated user
-  core.String username;
+  core.String? username;
 
   Experiments();
 
@@ -7845,66 +7127,66 @@ class Experiments {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
-        if (username != null) 'username': username,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
+        if (username != null) 'username': username!,
       };
 }
 
 /// Details for the filter of the type ADVANCED.
 class FilterAdvancedDetails {
   /// Indicates if the filter expressions are case sensitive.
-  core.bool caseSensitive;
+  core.bool? caseSensitive;
 
   /// Expression to extract from field A.
-  core.String extractA;
+  core.String? extractA;
 
   /// Expression to extract from field B.
-  core.String extractB;
+  core.String? extractB;
 
   /// Field A.
-  core.String fieldA;
+  core.String? fieldA;
 
   /// The Index of the custom dimension.
   ///
   /// Required if field is a CUSTOM_DIMENSION.
-  core.int fieldAIndex;
+  core.int? fieldAIndex;
 
   /// Indicates if field A is required to match.
-  core.bool fieldARequired;
+  core.bool? fieldARequired;
 
   /// Field B.
-  core.String fieldB;
+  core.String? fieldB;
 
   /// The Index of the custom dimension.
   ///
   /// Required if field is a CUSTOM_DIMENSION.
-  core.int fieldBIndex;
+  core.int? fieldBIndex;
 
   /// Indicates if field B is required to match.
-  core.bool fieldBRequired;
+  core.bool? fieldBRequired;
 
   /// Expression used to construct the output value.
-  core.String outputConstructor;
+  core.String? outputConstructor;
 
   /// Output field.
-  core.String outputToField;
+  core.String? outputToField;
 
   /// The Index of the custom dimension.
   ///
   /// Required if field is a CUSTOM_DIMENSION.
-  core.int outputToFieldIndex;
+  core.int? outputToFieldIndex;
 
   /// Indicates if the existing value of the output field, if any, should be
   /// overridden by the output expression.
-  core.bool overrideOutputField;
+  core.bool? overrideOutputField;
 
   FilterAdvancedDetails();
 
@@ -7950,34 +7232,34 @@ class FilterAdvancedDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive,
-        if (extractA != null) 'extractA': extractA,
-        if (extractB != null) 'extractB': extractB,
-        if (fieldA != null) 'fieldA': fieldA,
-        if (fieldAIndex != null) 'fieldAIndex': fieldAIndex,
-        if (fieldARequired != null) 'fieldARequired': fieldARequired,
-        if (fieldB != null) 'fieldB': fieldB,
-        if (fieldBIndex != null) 'fieldBIndex': fieldBIndex,
-        if (fieldBRequired != null) 'fieldBRequired': fieldBRequired,
-        if (outputConstructor != null) 'outputConstructor': outputConstructor,
-        if (outputToField != null) 'outputToField': outputToField,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+        if (extractA != null) 'extractA': extractA!,
+        if (extractB != null) 'extractB': extractB!,
+        if (fieldA != null) 'fieldA': fieldA!,
+        if (fieldAIndex != null) 'fieldAIndex': fieldAIndex!,
+        if (fieldARequired != null) 'fieldARequired': fieldARequired!,
+        if (fieldB != null) 'fieldB': fieldB!,
+        if (fieldBIndex != null) 'fieldBIndex': fieldBIndex!,
+        if (fieldBRequired != null) 'fieldBRequired': fieldBRequired!,
+        if (outputConstructor != null) 'outputConstructor': outputConstructor!,
+        if (outputToField != null) 'outputToField': outputToField!,
         if (outputToFieldIndex != null)
-          'outputToFieldIndex': outputToFieldIndex,
+          'outputToFieldIndex': outputToFieldIndex!,
         if (overrideOutputField != null)
-          'overrideOutputField': overrideOutputField,
+          'overrideOutputField': overrideOutputField!,
       };
 }
 
 /// Details for the filter of the type LOWER.
 class FilterLowercaseDetails {
   /// Field to use in the filter.
-  core.String field;
+  core.String? field;
 
   /// The Index of the custom dimension.
   ///
   /// Required if field is a CUSTOM_DIMENSION.
-  core.int fieldIndex;
+  core.int? fieldIndex;
 
   FilterLowercaseDetails();
 
@@ -7990,9 +7272,9 @@ class FilterLowercaseDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (field != null) 'field': field,
-        if (fieldIndex != null) 'fieldIndex': fieldIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (field != null) 'field': field!,
+        if (fieldIndex != null) 'fieldIndex': fieldIndex!,
       };
 }
 
@@ -8001,10 +7283,10 @@ class FilterLowercaseDetails {
 /// Points to the account to which this filter belongs.
 class FilterParentLink {
   /// Link to the account to which this filter belongs.
-  core.String href;
+  core.String? href;
 
   /// Value is "analytics#account".
-  core.String type;
+  core.String? type;
 
   FilterParentLink();
 
@@ -8017,30 +7299,30 @@ class FilterParentLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (href != null) 'href': href,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (href != null) 'href': href!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// Details for the filter of the type SEARCH_AND_REPLACE.
 class FilterSearchAndReplaceDetails {
   /// Determines if the filter is case sensitive.
-  core.bool caseSensitive;
+  core.bool? caseSensitive;
 
   /// Field to use in the filter.
-  core.String field;
+  core.String? field;
 
   /// The Index of the custom dimension.
   ///
   /// Required if field is a CUSTOM_DIMENSION.
-  core.int fieldIndex;
+  core.int? fieldIndex;
 
   /// Term to replace the search term with.
-  core.String replaceString;
+  core.String? replaceString;
 
   /// Term to search.
-  core.String searchString;
+  core.String? searchString;
 
   FilterSearchAndReplaceDetails();
 
@@ -8062,24 +7344,24 @@ class FilterSearchAndReplaceDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive,
-        if (field != null) 'field': field,
-        if (fieldIndex != null) 'fieldIndex': fieldIndex,
-        if (replaceString != null) 'replaceString': replaceString,
-        if (searchString != null) 'searchString': searchString,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+        if (field != null) 'field': field!,
+        if (fieldIndex != null) 'fieldIndex': fieldIndex!,
+        if (replaceString != null) 'replaceString': replaceString!,
+        if (searchString != null) 'searchString': searchString!,
       };
 }
 
 /// Details for the filter of the type UPPER.
 class FilterUppercaseDetails {
   /// Field to use in the filter.
-  core.String field;
+  core.String? field;
 
   /// The Index of the custom dimension.
   ///
   /// Required if field is a CUSTOM_DIMENSION.
-  core.int fieldIndex;
+  core.int? fieldIndex;
 
   FilterUppercaseDetails();
 
@@ -8092,63 +7374,63 @@ class FilterUppercaseDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (field != null) 'field': field,
-        if (fieldIndex != null) 'fieldIndex': fieldIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (field != null) 'field': field!,
+        if (fieldIndex != null) 'fieldIndex': fieldIndex!,
       };
 }
 
 /// JSON template for an Analytics account filter.
 class Filter {
   /// Account ID to which this filter belongs.
-  core.String accountId;
+  core.String? accountId;
 
   /// Details for the filter of the type ADVANCED.
-  FilterAdvancedDetails advancedDetails;
+  FilterAdvancedDetails? advancedDetails;
 
   /// Time this filter was created.
-  core.DateTime created;
+  core.DateTime? created;
 
   /// Details for the filter of the type EXCLUDE.
-  FilterExpression excludeDetails;
+  FilterExpression? excludeDetails;
 
   /// Filter ID.
-  core.String id;
+  core.String? id;
 
   /// Details for the filter of the type INCLUDE.
-  FilterExpression includeDetails;
+  FilterExpression? includeDetails;
 
   /// Resource type for Analytics filter.
-  core.String kind;
+  core.String? kind;
 
   /// Details for the filter of the type LOWER.
-  FilterLowercaseDetails lowercaseDetails;
+  FilterLowercaseDetails? lowercaseDetails;
 
   /// Name of this filter.
-  core.String name;
+  core.String? name;
 
   /// Parent link for this filter.
   ///
   /// Points to the account to which this filter belongs.
-  FilterParentLink parentLink;
+  FilterParentLink? parentLink;
 
   /// Details for the filter of the type SEARCH_AND_REPLACE.
-  FilterSearchAndReplaceDetails searchAndReplaceDetails;
+  FilterSearchAndReplaceDetails? searchAndReplaceDetails;
 
   /// Link for this filter.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Type of this filter.
   ///
   /// Possible values are INCLUDE, EXCLUDE, LOWERCASE, UPPERCASE,
   /// SEARCH_AND_REPLACE and ADVANCED.
-  core.String type;
+  core.String? type;
 
   /// Time this filter was last modified.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   /// Details for the filter of the type UPPER.
-  FilterUppercaseDetails uppercaseDetails;
+  FilterUppercaseDetails? uppercaseDetails;
 
   Filter();
 
@@ -8208,36 +7490,36 @@ class Filter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (advancedDetails != null)
-          'advancedDetails': advancedDetails.toJson(),
-        if (created != null) 'created': (created).toIso8601String(),
-        if (excludeDetails != null) 'excludeDetails': excludeDetails.toJson(),
-        if (id != null) 'id': id,
-        if (includeDetails != null) 'includeDetails': includeDetails.toJson(),
-        if (kind != null) 'kind': kind,
+          'advancedDetails': advancedDetails!.toJson(),
+        if (created != null) 'created': (created!).toIso8601String(),
+        if (excludeDetails != null) 'excludeDetails': excludeDetails!.toJson(),
+        if (id != null) 'id': id!,
+        if (includeDetails != null) 'includeDetails': includeDetails!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (lowercaseDetails != null)
-          'lowercaseDetails': lowercaseDetails.toJson(),
-        if (name != null) 'name': name,
-        if (parentLink != null) 'parentLink': parentLink.toJson(),
+          'lowercaseDetails': lowercaseDetails!.toJson(),
+        if (name != null) 'name': name!,
+        if (parentLink != null) 'parentLink': parentLink!.toJson(),
         if (searchAndReplaceDetails != null)
-          'searchAndReplaceDetails': searchAndReplaceDetails.toJson(),
-        if (selfLink != null) 'selfLink': selfLink,
-        if (type != null) 'type': type,
-        if (updated != null) 'updated': (updated).toIso8601String(),
+          'searchAndReplaceDetails': searchAndReplaceDetails!.toJson(),
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (type != null) 'type': type!,
+        if (updated != null) 'updated': (updated!).toIso8601String(),
         if (uppercaseDetails != null)
-          'uppercaseDetails': uppercaseDetails.toJson(),
+          'uppercaseDetails': uppercaseDetails!.toJson(),
       };
 }
 
 /// JSON template for an Analytics filter expression.
 class FilterExpression {
   /// Determines if the filter is case sensitive.
-  core.bool caseSensitive;
+  core.bool? caseSensitive;
 
   /// Filter expression value
-  core.String expressionValue;
+  core.String? expressionValue;
 
   /// Field to filter.
   ///
@@ -8328,22 +7610,22 @@ class FilterExpression {
   /// - SOCIAL_ACTION_TARGET,
   /// - Custom dimension
   /// - CUSTOM_DIMENSION (See accompanying field index),
-  core.String field;
+  core.String? field;
 
   /// The Index of the custom dimension.
   ///
   /// Set only if the field is a is CUSTOM_DIMENSION.
-  core.int fieldIndex;
+  core.int? fieldIndex;
 
   /// Kind value for filter expression
-  core.String kind;
+  core.String? kind;
 
   /// Match type for this filter.
   ///
   /// Possible values are BEGINS_WITH, EQUAL, ENDS_WITH, CONTAINS, or MATCHES.
   /// GEO_DOMAIN, GEO_IP_ADDRESS, PAGE_REQUEST_URI, or PAGE_HOSTNAME filters can
   /// use any match type; all other filters must use MATCHES.
-  core.String matchType;
+  core.String? matchType;
 
   FilterExpression();
 
@@ -8368,32 +7650,32 @@ class FilterExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive,
-        if (expressionValue != null) 'expressionValue': expressionValue,
-        if (field != null) 'field': field,
-        if (fieldIndex != null) 'fieldIndex': fieldIndex,
-        if (kind != null) 'kind': kind,
-        if (matchType != null) 'matchType': matchType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+        if (expressionValue != null) 'expressionValue': expressionValue!,
+        if (field != null) 'field': field!,
+        if (fieldIndex != null) 'fieldIndex': fieldIndex!,
+        if (kind != null) 'kind': kind!,
+        if (matchType != null) 'matchType': matchType!,
       };
 }
 
 /// JSON template for a profile filter link.
 class FilterRef {
   /// Account ID to which this filter belongs.
-  core.String accountId;
+  core.String? accountId;
 
   /// Link for this filter.
-  core.String href;
+  core.String? href;
 
   /// Filter ID.
-  core.String id;
+  core.String? id;
 
   /// Kind value for filter reference.
-  core.String kind;
+  core.String? kind;
 
   /// Name of this filter.
-  core.String name;
+  core.String? name;
 
   FilterRef();
 
@@ -8415,12 +7697,12 @@ class FilterRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (href != null) 'href': href,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (href != null) 'href': href!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -8429,34 +7711,34 @@ class FilterRef {
 /// Each resource in the collection corresponds to a filter.
 class Filters {
   /// A list of filters.
-  core.List<Filter> items;
+  core.List<Filter>? items;
 
   /// The maximum number of resources the response can contain, regardless of
   /// the actual number of resources returned.
   ///
   /// Its value ranges from 1 to 1,000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Link to next page for this filter collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Link to previous page for this filter collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the resources, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// results in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Email ID of the authenticated user
-  core.String username;
+  core.String? username;
 
   Filters();
 
@@ -8490,16 +7772,16 @@ class Filters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
-        if (username != null) 'username': username,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
+        if (username != null) 'username': username!,
       };
 }
 
@@ -8507,17 +7789,17 @@ class GaDataColumnHeaders {
   /// Column Type.
   ///
   /// Either DIMENSION or METRIC.
-  core.String columnType;
+  core.String? columnType;
 
   /// Data type.
   ///
   /// Dimension column headers have only STRING as the data type. Metric column
   /// headers have data types for metric values such as INTEGER, DOUBLE,
   /// CURRENCY etc.
-  core.String dataType;
+  core.String? dataType;
 
   /// Column name.
-  core.String name;
+  core.String? name;
 
   GaDataColumnHeaders();
 
@@ -8533,17 +7815,17 @@ class GaDataColumnHeaders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnType != null) 'columnType': columnType,
-        if (dataType != null) 'dataType': dataType,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnType != null) 'columnType': columnType!,
+        if (dataType != null) 'dataType': dataType!,
+        if (name != null) 'name': name!,
       };
 }
 
 class GaDataDataTableCols {
-  core.String id;
-  core.String label;
-  core.String type;
+  core.String? id;
+  core.String? label;
+  core.String? type;
 
   GaDataDataTableCols();
 
@@ -8559,15 +7841,15 @@ class GaDataDataTableCols {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (label != null) 'label': label,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (label != null) 'label': label!,
+        if (type != null) 'type': type!,
       };
 }
 
 class GaDataDataTableRowsC {
-  core.String v;
+  core.String? v;
 
   GaDataDataTableRowsC();
 
@@ -8577,13 +7859,13 @@ class GaDataDataTableRowsC {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (v != null) 'v': v,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (v != null) 'v': v!,
       };
 }
 
 class GaDataDataTableRows {
-  core.List<GaDataDataTableRowsC> c;
+  core.List<GaDataDataTableRowsC>? c;
 
   GaDataDataTableRows();
 
@@ -8596,14 +7878,14 @@ class GaDataDataTableRows {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (c != null) 'c': c.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (c != null) 'c': c!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GaDataDataTable {
-  core.List<GaDataDataTableCols> cols;
-  core.List<GaDataDataTableRows> rows;
+  core.List<GaDataDataTableCols>? cols;
+  core.List<GaDataDataTableRows>? rows;
 
   GaDataDataTable();
 
@@ -8622,9 +7904,9 @@ class GaDataDataTable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cols != null) 'cols': cols.map((value) => value.toJson()).toList(),
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cols != null) 'cols': cols!.map((value) => value.toJson()).toList(),
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8632,22 +7914,22 @@ class GaDataDataTable {
 /// requested.
 class GaDataProfileInfo {
   /// Account ID to which this view (profile) belongs.
-  core.String accountId;
+  core.String? accountId;
 
   /// Internal ID for the web property to which this view (profile) belongs.
-  core.String internalWebPropertyId;
+  core.String? internalWebPropertyId;
 
   /// View (Profile) ID.
-  core.String profileId;
+  core.String? profileId;
 
   /// View (Profile) name.
-  core.String profileName;
+  core.String? profileName;
 
   /// Table ID for view (profile).
-  core.String tableId;
+  core.String? tableId;
 
   /// Web Property ID to which this view (profile) belongs.
-  core.String webPropertyId;
+  core.String? webPropertyId;
 
   GaDataProfileInfo();
 
@@ -8672,51 +7954,51 @@ class GaDataProfileInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (internalWebPropertyId != null)
-          'internalWebPropertyId': internalWebPropertyId,
-        if (profileId != null) 'profileId': profileId,
-        if (profileName != null) 'profileName': profileName,
-        if (tableId != null) 'tableId': tableId,
-        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+          'internalWebPropertyId': internalWebPropertyId!,
+        if (profileId != null) 'profileId': profileId!,
+        if (profileName != null) 'profileName': profileName!,
+        if (tableId != null) 'tableId': tableId!,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
 
 /// Analytics data request query parameters.
 class GaDataQuery {
   /// List of analytics dimensions.
-  core.String dimensions;
+  core.String? dimensions;
 
   /// End date.
-  core.String endDate;
+  core.String? endDate;
 
   /// Comma-separated list of dimension or metric filters.
-  core.String filters;
+  core.String? filters;
 
   /// Unique table ID.
-  core.String ids;
+  core.String? ids;
 
   /// Maximum results per page.
-  core.int maxResults;
+  core.int? maxResults;
 
   /// List of analytics metrics.
-  core.List<core.String> metrics;
+  core.List<core.String>? metrics;
 
   /// Desired sampling level
-  core.String samplingLevel;
+  core.String? samplingLevel;
 
   /// Analytics advanced segment.
-  core.String segment;
+  core.String? segment;
 
   /// List of dimensions or metrics based on which Analytics data is sorted.
-  core.List<core.String> sort;
+  core.List<core.String>? sort;
 
   /// Start date.
-  core.String startDate;
+  core.String? startDate;
 
   /// Start index.
-  core.int startIndex;
+  core.int? startIndex;
 
   GaDataQuery();
 
@@ -8760,18 +8042,18 @@ class GaDataQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimensions != null) 'dimensions': dimensions,
-        if (endDate != null) 'end-date': endDate,
-        if (filters != null) 'filters': filters,
-        if (ids != null) 'ids': ids,
-        if (maxResults != null) 'max-results': maxResults,
-        if (metrics != null) 'metrics': metrics,
-        if (samplingLevel != null) 'samplingLevel': samplingLevel,
-        if (segment != null) 'segment': segment,
-        if (sort != null) 'sort': sort,
-        if (startDate != null) 'start-date': startDate,
-        if (startIndex != null) 'start-index': startIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (endDate != null) 'end-date': endDate!,
+        if (filters != null) 'filters': filters!,
+        if (ids != null) 'ids': ids!,
+        if (maxResults != null) 'max-results': maxResults!,
+        if (metrics != null) 'metrics': metrics!,
+        if (samplingLevel != null) 'samplingLevel': samplingLevel!,
+        if (segment != null) 'segment': segment!,
+        if (sort != null) 'sort': sort!,
+        if (startDate != null) 'start-date': startDate!,
+        if (startIndex != null) 'start-index': startIndex!,
       };
 }
 
@@ -8780,66 +8062,66 @@ class GaData {
   /// Column headers that list dimension names followed by the metric names.
   ///
   /// The order of dimensions and metrics is same as specified in the request.
-  core.List<GaDataColumnHeaders> columnHeaders;
+  core.List<GaDataColumnHeaders>? columnHeaders;
 
   /// Determines if Analytics data contains samples.
-  core.bool containsSampledData;
+  core.bool? containsSampledData;
 
   /// The last refreshed time in seconds for Analytics data.
-  core.String dataLastRefreshed;
-  GaDataDataTable dataTable;
+  core.String? dataLastRefreshed;
+  GaDataDataTable? dataTable;
 
   /// Unique ID for this data response.
-  core.String id;
+  core.String? id;
 
   /// The maximum number of rows the response can contain, regardless of the
   /// actual number of rows returned.
   ///
   /// Its value ranges from 1 to 10,000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// Link to next page for this Analytics data query.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Link to previous page for this Analytics data query.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// Information for the view (profile), for which the Analytics data was
   /// requested.
-  GaDataProfileInfo profileInfo;
+  GaDataProfileInfo? profileInfo;
 
   /// Analytics data request query parameters.
-  GaDataQuery query;
+  GaDataQuery? query;
 
   /// Analytics data rows, where each row contains a list of dimension values
   /// followed by the metric values.
   ///
   /// The order of dimensions and metrics is same as specified in the request.
-  core.List<core.List<core.String>> rows;
+  core.List<core.List<core.String>>? rows;
 
   /// The number of samples used to calculate the result.
-  core.String sampleSize;
+  core.String? sampleSize;
 
   /// Total size of the sample space from which the samples were selected.
-  core.String sampleSpace;
+  core.String? sampleSpace;
 
   /// Link to this page.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The total number of rows for the query, regardless of the number of rows
   /// in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Total values for the requested metrics over all the results, not just the
   /// results returned in this response.
   ///
   /// The order of the metric totals is same as the metric order specified in
   /// the request.
-  core.Map<core.String, core.String> totalsForAllResults;
+  core.Map<core.String, core.String>? totalsForAllResults;
 
   GaData();
 
@@ -8914,28 +8196,28 @@ class GaData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (columnHeaders != null)
           'columnHeaders':
-              columnHeaders.map((value) => value.toJson()).toList(),
+              columnHeaders!.map((value) => value.toJson()).toList(),
         if (containsSampledData != null)
-          'containsSampledData': containsSampledData,
-        if (dataLastRefreshed != null) 'dataLastRefreshed': dataLastRefreshed,
-        if (dataTable != null) 'dataTable': dataTable.toJson(),
-        if (id != null) 'id': id,
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (profileInfo != null) 'profileInfo': profileInfo.toJson(),
-        if (query != null) 'query': query.toJson(),
-        if (rows != null) 'rows': rows,
-        if (sampleSize != null) 'sampleSize': sampleSize,
-        if (sampleSpace != null) 'sampleSpace': sampleSpace,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (totalResults != null) 'totalResults': totalResults,
+          'containsSampledData': containsSampledData!,
+        if (dataLastRefreshed != null) 'dataLastRefreshed': dataLastRefreshed!,
+        if (dataTable != null) 'dataTable': dataTable!.toJson(),
+        if (id != null) 'id': id!,
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (profileInfo != null) 'profileInfo': profileInfo!.toJson(),
+        if (query != null) 'query': query!.toJson(),
+        if (rows != null) 'rows': rows!,
+        if (sampleSize != null) 'sampleSize': sampleSize!,
+        if (sampleSpace != null) 'sampleSpace': sampleSpace!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (totalResults != null) 'totalResults': totalResults!,
         if (totalsForAllResults != null)
-          'totalsForAllResults': totalsForAllResults,
+          'totalsForAllResults': totalsForAllResults!,
       };
 }
 
@@ -8943,23 +8225,23 @@ class GoalEventDetailsEventConditions {
   /// Type of comparison.
   ///
   /// Possible values are LESS_THAN, GREATER_THAN or EQUAL.
-  core.String comparisonType;
+  core.String? comparisonType;
 
   /// Value used for this comparison.
-  core.String comparisonValue;
+  core.String? comparisonValue;
 
   /// Expression used for this match.
-  core.String expression;
+  core.String? expression;
 
   /// Type of the match to be performed.
   ///
   /// Possible values are REGEXP, BEGINS_WITH, or EXACT.
-  core.String matchType;
+  core.String? matchType;
 
   /// Type of this event condition.
   ///
   /// Possible values are CATEGORY, ACTION, LABEL, or VALUE.
-  core.String type;
+  core.String? type;
 
   GoalEventDetailsEventConditions();
 
@@ -8981,22 +8263,22 @@ class GoalEventDetailsEventConditions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (comparisonType != null) 'comparisonType': comparisonType,
-        if (comparisonValue != null) 'comparisonValue': comparisonValue,
-        if (expression != null) 'expression': expression,
-        if (matchType != null) 'matchType': matchType,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (comparisonType != null) 'comparisonType': comparisonType!,
+        if (comparisonValue != null) 'comparisonValue': comparisonValue!,
+        if (expression != null) 'expression': expression!,
+        if (matchType != null) 'matchType': matchType!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// Details for the goal of the type EVENT.
 class GoalEventDetails {
   /// List of event conditions.
-  core.List<GoalEventDetailsEventConditions> eventConditions;
+  core.List<GoalEventDetailsEventConditions>? eventConditions;
 
   /// Determines if the event value should be used as the value for this goal.
-  core.bool useEventValue;
+  core.bool? useEventValue;
 
   GoalEventDetails();
 
@@ -9013,11 +8295,11 @@ class GoalEventDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (eventConditions != null)
           'eventConditions':
-              eventConditions.map((value) => value.toJson()).toList(),
-        if (useEventValue != null) 'useEventValue': useEventValue,
+              eventConditions!.map((value) => value.toJson()).toList(),
+        if (useEventValue != null) 'useEventValue': useEventValue!,
       };
 }
 
@@ -9026,10 +8308,10 @@ class GoalEventDetails {
 /// Points to the view (profile) to which this goal belongs.
 class GoalParentLink {
   /// Link to the view (profile) to which this goal belongs.
-  core.String href;
+  core.String? href;
 
   /// Value is "analytics#profile".
-  core.String type;
+  core.String? type;
 
   GoalParentLink();
 
@@ -9042,21 +8324,21 @@ class GoalParentLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (href != null) 'href': href,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (href != null) 'href': href!,
+        if (type != null) 'type': type!,
       };
 }
 
 class GoalUrlDestinationDetailsSteps {
   /// Step name.
-  core.String name;
+  core.String? name;
 
   /// Step number.
-  core.int number;
+  core.int? number;
 
   /// URL for this step.
-  core.String url;
+  core.String? url;
 
   GoalUrlDestinationDetailsSteps();
 
@@ -9072,10 +8354,10 @@ class GoalUrlDestinationDetailsSteps {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (number != null) 'number': number,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (number != null) 'number': number!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -9083,21 +8365,21 @@ class GoalUrlDestinationDetailsSteps {
 class GoalUrlDestinationDetails {
   /// Determines if the goal URL must exactly match the capitalization of
   /// visited URLs.
-  core.bool caseSensitive;
+  core.bool? caseSensitive;
 
   /// Determines if the first step in this goal is required.
-  core.bool firstStepRequired;
+  core.bool? firstStepRequired;
 
   /// Match type for the goal URL.
   ///
   /// Possible values are HEAD, EXACT, or REGEX.
-  core.String matchType;
+  core.String? matchType;
 
   /// List of steps configured for this goal funnel.
-  core.List<GoalUrlDestinationDetailsSteps> steps;
+  core.List<GoalUrlDestinationDetailsSteps>? steps;
 
   /// URL for this goal.
-  core.String url;
+  core.String? url;
 
   GoalUrlDestinationDetails();
 
@@ -9123,13 +8405,13 @@ class GoalUrlDestinationDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive,
-        if (firstStepRequired != null) 'firstStepRequired': firstStepRequired,
-        if (matchType != null) 'matchType': matchType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+        if (firstStepRequired != null) 'firstStepRequired': firstStepRequired!,
+        if (matchType != null) 'matchType': matchType!,
         if (steps != null)
-          'steps': steps.map((value) => value.toJson()).toList(),
-        if (url != null) 'url': url,
+          'steps': steps!.map((value) => value.toJson()).toList(),
+        if (url != null) 'url': url!,
       };
 }
 
@@ -9138,10 +8420,10 @@ class GoalVisitNumPagesDetails {
   /// Type of comparison.
   ///
   /// Possible values are LESS_THAN, GREATER_THAN, or EQUAL.
-  core.String comparisonType;
+  core.String? comparisonType;
 
   /// Value used for this comparison.
-  core.String comparisonValue;
+  core.String? comparisonValue;
 
   GoalVisitNumPagesDetails();
 
@@ -9154,9 +8436,9 @@ class GoalVisitNumPagesDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (comparisonType != null) 'comparisonType': comparisonType,
-        if (comparisonValue != null) 'comparisonValue': comparisonValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (comparisonType != null) 'comparisonType': comparisonType!,
+        if (comparisonValue != null) 'comparisonValue': comparisonValue!,
       };
 }
 
@@ -9165,10 +8447,10 @@ class GoalVisitTimeOnSiteDetails {
   /// Type of comparison.
   ///
   /// Possible values are LESS_THAN or GREATER_THAN.
-  core.String comparisonType;
+  core.String? comparisonType;
 
   /// Value used for this comparison.
-  core.String comparisonValue;
+  core.String? comparisonValue;
 
   GoalVisitTimeOnSiteDetails();
 
@@ -9181,74 +8463,74 @@ class GoalVisitTimeOnSiteDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (comparisonType != null) 'comparisonType': comparisonType,
-        if (comparisonValue != null) 'comparisonValue': comparisonValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (comparisonType != null) 'comparisonType': comparisonType!,
+        if (comparisonValue != null) 'comparisonValue': comparisonValue!,
       };
 }
 
 /// JSON template for Analytics goal resource.
 class Goal {
   /// Account ID to which this goal belongs.
-  core.String accountId;
+  core.String? accountId;
 
   /// Determines whether this goal is active.
-  core.bool active;
+  core.bool? active;
 
   /// Time this goal was created.
-  core.DateTime created;
+  core.DateTime? created;
 
   /// Details for the goal of the type EVENT.
-  GoalEventDetails eventDetails;
+  GoalEventDetails? eventDetails;
 
   /// Goal ID.
-  core.String id;
+  core.String? id;
 
   /// Internal ID for the web property to which this goal belongs.
-  core.String internalWebPropertyId;
+  core.String? internalWebPropertyId;
 
   /// Resource type for an Analytics goal.
-  core.String kind;
+  core.String? kind;
 
   /// Goal name.
-  core.String name;
+  core.String? name;
 
   /// Parent link for a goal.
   ///
   /// Points to the view (profile) to which this goal belongs.
-  GoalParentLink parentLink;
+  GoalParentLink? parentLink;
 
   /// View (Profile) ID to which this goal belongs.
-  core.String profileId;
+  core.String? profileId;
 
   /// Link for this goal.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Goal type.
   ///
   /// Possible values are URL_DESTINATION, VISIT_TIME_ON_SITE, VISIT_NUM_PAGES,
   /// AND EVENT.
-  core.String type;
+  core.String? type;
 
   /// Time this goal was last modified.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   /// Details for the goal of the type URL_DESTINATION.
-  GoalUrlDestinationDetails urlDestinationDetails;
+  GoalUrlDestinationDetails? urlDestinationDetails;
 
   /// Goal value.
-  core.double value;
+  core.double? value;
 
   /// Details for the goal of the type VISIT_NUM_PAGES.
-  GoalVisitNumPagesDetails visitNumPagesDetails;
+  GoalVisitNumPagesDetails? visitNumPagesDetails;
 
   /// Details for the goal of the type VISIT_TIME_ON_SITE.
-  GoalVisitTimeOnSiteDetails visitTimeOnSiteDetails;
+  GoalVisitTimeOnSiteDetails? visitTimeOnSiteDetails;
 
   /// Web property ID to which this goal belongs.
   ///
   /// The web property ID is of the form UA-XXXXX-YY.
-  core.String webPropertyId;
+  core.String? webPropertyId;
 
   Goal();
 
@@ -9316,29 +8598,29 @@ class Goal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (active != null) 'active': active,
-        if (created != null) 'created': (created).toIso8601String(),
-        if (eventDetails != null) 'eventDetails': eventDetails.toJson(),
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (active != null) 'active': active!,
+        if (created != null) 'created': (created!).toIso8601String(),
+        if (eventDetails != null) 'eventDetails': eventDetails!.toJson(),
+        if (id != null) 'id': id!,
         if (internalWebPropertyId != null)
-          'internalWebPropertyId': internalWebPropertyId,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (parentLink != null) 'parentLink': parentLink.toJson(),
-        if (profileId != null) 'profileId': profileId,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (type != null) 'type': type,
-        if (updated != null) 'updated': (updated).toIso8601String(),
+          'internalWebPropertyId': internalWebPropertyId!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (parentLink != null) 'parentLink': parentLink!.toJson(),
+        if (profileId != null) 'profileId': profileId!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (type != null) 'type': type!,
+        if (updated != null) 'updated': (updated!).toIso8601String(),
         if (urlDestinationDetails != null)
-          'urlDestinationDetails': urlDestinationDetails.toJson(),
-        if (value != null) 'value': value,
+          'urlDestinationDetails': urlDestinationDetails!.toJson(),
+        if (value != null) 'value': value!,
         if (visitNumPagesDetails != null)
-          'visitNumPagesDetails': visitNumPagesDetails.toJson(),
+          'visitNumPagesDetails': visitNumPagesDetails!.toJson(),
         if (visitTimeOnSiteDetails != null)
-          'visitTimeOnSiteDetails': visitTimeOnSiteDetails.toJson(),
-        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+          'visitTimeOnSiteDetails': visitTimeOnSiteDetails!.toJson(),
+        if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
 
@@ -9348,34 +8630,34 @@ class Goal {
 /// collection corresponds to a single Analytics goal.
 class Goals {
   /// A list of goals.
-  core.List<Goal> items;
+  core.List<Goal>? items;
 
   /// The maximum number of resources the response can contain, regardless of
   /// the actual number of resources returned.
   ///
   /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Link to next page for this goal collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Link to previous page for this goal collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the resources, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// resources in the result.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Email ID of the authenticated user
-  core.String username;
+  core.String? username;
 
   Goals();
 
@@ -9409,24 +8691,24 @@ class Goals {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
-        if (username != null) 'username': username,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
+        if (username != null) 'username': username!,
       };
 }
 
 /// JSON template for a hash Client Id request resource.
 class HashClientIdRequest {
-  core.String clientId;
-  core.String kind;
-  core.String webPropertyId;
+  core.String? clientId;
+  core.String? kind;
+  core.String? webPropertyId;
 
   HashClientIdRequest();
 
@@ -9442,19 +8724,19 @@ class HashClientIdRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientId != null) 'clientId': clientId,
-        if (kind != null) 'kind': kind,
-        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (kind != null) 'kind': kind!,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
 
 /// JSON template for a hash Client Id response resource.
 class HashClientIdResponse {
-  core.String clientId;
-  core.String hashedClientId;
-  core.String kind;
-  core.String webPropertyId;
+  core.String? clientId;
+  core.String? hashedClientId;
+  core.String? kind;
+  core.String? webPropertyId;
 
   HashClientIdResponse();
 
@@ -9473,11 +8755,11 @@ class HashClientIdResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientId != null) 'clientId': clientId,
-        if (hashedClientId != null) 'hashedClientId': hashedClientId,
-        if (kind != null) 'kind': kind,
-        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (hashedClientId != null) 'hashedClientId': hashedClientId!,
+        if (kind != null) 'kind': kind!,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
 
@@ -9490,21 +8772,21 @@ class IncludeConditions {
   /// Transactions Greater than 2, and you set the look-back window to 14 days,
   /// then any user from Central Asia whose cumulative transactions exceed 2
   /// during the last 14 days is added to the audience.
-  core.int daysToLookBack;
+  core.int? daysToLookBack;
 
   /// Boolean indicating whether this segment is a smart list.
   ///
   /// https://support.google.com/analytics/answer/4628577
-  core.bool isSmartList;
+  core.bool? isSmartList;
 
   /// Resource type for include conditions.
-  core.String kind;
+  core.String? kind;
 
   /// Number of days (in the range 1 to 540) a user remains in the audience.
-  core.int membershipDurationDays;
+  core.int? membershipDurationDays;
 
   /// The segment condition that will cause a user to be added to an audience.
-  core.String segment;
+  core.String? segment;
 
   IncludeConditions();
 
@@ -9526,54 +8808,54 @@ class IncludeConditions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (daysToLookBack != null) 'daysToLookBack': daysToLookBack,
-        if (isSmartList != null) 'isSmartList': isSmartList,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (daysToLookBack != null) 'daysToLookBack': daysToLookBack!,
+        if (isSmartList != null) 'isSmartList': isSmartList!,
+        if (kind != null) 'kind': kind!,
         if (membershipDurationDays != null)
-          'membershipDurationDays': membershipDurationDays,
-        if (segment != null) 'segment': segment,
+          'membershipDurationDays': membershipDurationDays!,
+        if (segment != null) 'segment': segment!,
       };
 }
 
 /// JSON template for an Analytics Remarketing Audience Foreign Link.
 class LinkedForeignAccount {
   /// Account ID to which this linked foreign account belongs.
-  core.String accountId;
+  core.String? accountId;
 
   /// Boolean indicating whether this is eligible for search.
-  core.bool eligibleForSearch;
+  core.bool? eligibleForSearch;
 
   /// Entity ad account link ID.
-  core.String id;
+  core.String? id;
 
   /// Internal ID for the web property to which this linked foreign account
   /// belongs.
-  core.String internalWebPropertyId;
+  core.String? internalWebPropertyId;
 
   /// Resource type for linked foreign account.
-  core.String kind;
+  core.String? kind;
 
   /// The foreign account ID.
   ///
   /// For example the an Google Ads `linkedAccountId` has the following format
   /// XXX-XXX-XXXX.
-  core.String linkedAccountId;
+  core.String? linkedAccountId;
 
   /// Remarketing audience ID to which this linked foreign account belongs.
-  core.String remarketingAudienceId;
+  core.String? remarketingAudienceId;
 
   /// The status of this foreign account link.
-  core.String status;
+  core.String? status;
 
   /// The type of the foreign account.
   ///
   /// For example, `ADWORDS_LINKS`, `DBM_LINKS`, `MCC_LINKS` or `OPTIMIZE`.
-  core.String type;
+  core.String? type;
 
   /// Web property ID of the form UA-XXXXX-YY to which this linked foreign
   /// account belongs.
-  core.String webPropertyId;
+  core.String? webPropertyId;
 
   LinkedForeignAccount();
 
@@ -9610,19 +8892,19 @@ class LinkedForeignAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (eligibleForSearch != null) 'eligibleForSearch': eligibleForSearch,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (eligibleForSearch != null) 'eligibleForSearch': eligibleForSearch!,
+        if (id != null) 'id': id!,
         if (internalWebPropertyId != null)
-          'internalWebPropertyId': internalWebPropertyId,
-        if (kind != null) 'kind': kind,
-        if (linkedAccountId != null) 'linkedAccountId': linkedAccountId,
+          'internalWebPropertyId': internalWebPropertyId!,
+        if (kind != null) 'kind': kind!,
+        if (linkedAccountId != null) 'linkedAccountId': linkedAccountId!,
         if (remarketingAudienceId != null)
-          'remarketingAudienceId': remarketingAudienceId,
-        if (status != null) 'status': status,
-        if (type != null) 'type': type,
-        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+          'remarketingAudienceId': remarketingAudienceId!,
+        if (status != null) 'status': status!,
+        if (type != null) 'type': type!,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
 
@@ -9630,16 +8912,16 @@ class McfDataColumnHeaders {
   /// Column Type.
   ///
   /// Either DIMENSION or METRIC.
-  core.String columnType;
+  core.String? columnType;
 
   /// Data type.
   ///
   /// Dimension and metric values data types such as INTEGER, DOUBLE, CURRENCY,
   /// MCF_SEQUENCE etc.
-  core.String dataType;
+  core.String? dataType;
 
   /// Column name.
-  core.String name;
+  core.String? name;
 
   McfDataColumnHeaders();
 
@@ -9655,10 +8937,10 @@ class McfDataColumnHeaders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnType != null) 'columnType': columnType,
-        if (dataType != null) 'dataType': dataType,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnType != null) 'columnType': columnType!,
+        if (dataType != null) 'dataType': dataType!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -9666,22 +8948,22 @@ class McfDataColumnHeaders {
 /// requested.
 class McfDataProfileInfo {
   /// Account ID to which this view (profile) belongs.
-  core.String accountId;
+  core.String? accountId;
 
   /// Internal ID for the web property to which this view (profile) belongs.
-  core.String internalWebPropertyId;
+  core.String? internalWebPropertyId;
 
   /// View (Profile) ID.
-  core.String profileId;
+  core.String? profileId;
 
   /// View (Profile) name.
-  core.String profileName;
+  core.String? profileName;
 
   /// Table ID for view (profile).
-  core.String tableId;
+  core.String? tableId;
 
   /// Web Property ID to which this view (profile) belongs.
-  core.String webPropertyId;
+  core.String? webPropertyId;
 
   McfDataProfileInfo();
 
@@ -9706,51 +8988,51 @@ class McfDataProfileInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (internalWebPropertyId != null)
-          'internalWebPropertyId': internalWebPropertyId,
-        if (profileId != null) 'profileId': profileId,
-        if (profileName != null) 'profileName': profileName,
-        if (tableId != null) 'tableId': tableId,
-        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+          'internalWebPropertyId': internalWebPropertyId!,
+        if (profileId != null) 'profileId': profileId!,
+        if (profileName != null) 'profileName': profileName!,
+        if (tableId != null) 'tableId': tableId!,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
 
 /// Analytics data request query parameters.
 class McfDataQuery {
   /// List of analytics dimensions.
-  core.String dimensions;
+  core.String? dimensions;
 
   /// End date.
-  core.String endDate;
+  core.String? endDate;
 
   /// Comma-separated list of dimension or metric filters.
-  core.String filters;
+  core.String? filters;
 
   /// Unique table ID.
-  core.String ids;
+  core.String? ids;
 
   /// Maximum results per page.
-  core.int maxResults;
+  core.int? maxResults;
 
   /// List of analytics metrics.
-  core.List<core.String> metrics;
+  core.List<core.String>? metrics;
 
   /// Desired sampling level
-  core.String samplingLevel;
+  core.String? samplingLevel;
 
   /// Analytics advanced segment.
-  core.String segment;
+  core.String? segment;
 
   /// List of dimensions or metrics based on which Analytics data is sorted.
-  core.List<core.String> sort;
+  core.List<core.String>? sort;
 
   /// Start date.
-  core.String startDate;
+  core.String? startDate;
 
   /// Start index.
-  core.int startIndex;
+  core.int? startIndex;
 
   McfDataQuery();
 
@@ -9794,18 +9076,18 @@ class McfDataQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimensions != null) 'dimensions': dimensions,
-        if (endDate != null) 'end-date': endDate,
-        if (filters != null) 'filters': filters,
-        if (ids != null) 'ids': ids,
-        if (maxResults != null) 'max-results': maxResults,
-        if (metrics != null) 'metrics': metrics,
-        if (samplingLevel != null) 'samplingLevel': samplingLevel,
-        if (segment != null) 'segment': segment,
-        if (sort != null) 'sort': sort,
-        if (startDate != null) 'start-date': startDate,
-        if (startIndex != null) 'start-index': startIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (endDate != null) 'end-date': endDate!,
+        if (filters != null) 'filters': filters!,
+        if (ids != null) 'ids': ids!,
+        if (maxResults != null) 'max-results': maxResults!,
+        if (metrics != null) 'metrics': metrics!,
+        if (samplingLevel != null) 'samplingLevel': samplingLevel!,
+        if (segment != null) 'segment': segment!,
+        if (sort != null) 'sort': sort!,
+        if (startDate != null) 'start-date': startDate!,
+        if (startIndex != null) 'start-index': startIndex!,
       };
 }
 
@@ -9813,12 +9095,12 @@ class McfDataRowsConversionPathValue {
   /// Type of an interaction on conversion path.
   ///
   /// Such as CLICK, IMPRESSION etc.
-  core.String interactionType;
+  core.String? interactionType;
 
   /// Node value of an interaction on conversion path.
   ///
   /// Such as source, medium etc.
-  core.String nodeValue;
+  core.String? nodeValue;
 
   McfDataRowsConversionPathValue();
 
@@ -9831,9 +9113,9 @@ class McfDataRowsConversionPathValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (interactionType != null) 'interactionType': interactionType,
-        if (nodeValue != null) 'nodeValue': nodeValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (interactionType != null) 'interactionType': interactionType!,
+        if (nodeValue != null) 'nodeValue': nodeValue!,
       };
 }
 
@@ -9844,12 +9126,12 @@ class McfDataRowsConversionPathValue {
 class McfDataRows {
   /// A conversion path dimension value, containing a list of interactions with
   /// their attributes.
-  core.List<McfDataRowsConversionPathValue> conversionPathValue;
+  core.List<McfDataRowsConversionPathValue>? conversionPathValue;
 
   /// A primitive dimension value.
   ///
   /// A primitive metric value.
-  core.String primitiveValue;
+  core.String? primitiveValue;
 
   McfDataRows();
 
@@ -9866,11 +9148,11 @@ class McfDataRows {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (conversionPathValue != null)
           'conversionPathValue':
-              conversionPathValue.map((value) => value.toJson()).toList(),
-        if (primitiveValue != null) 'primitiveValue': primitiveValue,
+              conversionPathValue!.map((value) => value.toJson()).toList(),
+        if (primitiveValue != null) 'primitiveValue': primitiveValue!,
       };
 }
 
@@ -9879,62 +9161,62 @@ class McfData {
   /// Column headers that list dimension names followed by the metric names.
   ///
   /// The order of dimensions and metrics is same as specified in the request.
-  core.List<McfDataColumnHeaders> columnHeaders;
+  core.List<McfDataColumnHeaders>? columnHeaders;
 
   /// Determines if the Analytics data contains sampled data.
-  core.bool containsSampledData;
+  core.bool? containsSampledData;
 
   /// Unique ID for this data response.
-  core.String id;
+  core.String? id;
 
   /// The maximum number of rows the response can contain, regardless of the
   /// actual number of rows returned.
   ///
   /// Its value ranges from 1 to 10,000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// Link to next page for this Analytics data query.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Link to previous page for this Analytics data query.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// Information for the view (profile), for which the Analytics data was
   /// requested.
-  McfDataProfileInfo profileInfo;
+  McfDataProfileInfo? profileInfo;
 
   /// Analytics data request query parameters.
-  McfDataQuery query;
+  McfDataQuery? query;
 
   /// Analytics data rows, where each row contains a list of dimension values
   /// followed by the metric values.
   ///
   /// The order of dimensions and metrics is same as specified in the request.
-  core.List<core.List<McfDataRows>> rows;
+  core.List<core.List<McfDataRows>>? rows;
 
   /// The number of samples used to calculate the result.
-  core.String sampleSize;
+  core.String? sampleSize;
 
   /// Total size of the sample space from which the samples were selected.
-  core.String sampleSpace;
+  core.String? sampleSpace;
 
   /// Link to this page.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The total number of rows for the query, regardless of the number of rows
   /// in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Total values for the requested metrics over all the results, not just the
   /// results returned in this response.
   ///
   /// The order of the metric totals is same as the metric order specified in
   /// the request.
-  core.Map<core.String, core.String> totalsForAllResults;
+  core.Map<core.String, core.String>? totalsForAllResults;
 
   McfData();
 
@@ -10003,29 +9285,29 @@ class McfData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (columnHeaders != null)
           'columnHeaders':
-              columnHeaders.map((value) => value.toJson()).toList(),
+              columnHeaders!.map((value) => value.toJson()).toList(),
         if (containsSampledData != null)
-          'containsSampledData': containsSampledData,
-        if (id != null) 'id': id,
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (profileInfo != null) 'profileInfo': profileInfo.toJson(),
-        if (query != null) 'query': query.toJson(),
+          'containsSampledData': containsSampledData!,
+        if (id != null) 'id': id!,
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (profileInfo != null) 'profileInfo': profileInfo!.toJson(),
+        if (query != null) 'query': query!.toJson(),
         if (rows != null)
-          'rows': rows
+          'rows': rows!
               .map((value) => value.map((value) => value.toJson()).toList())
               .toList(),
-        if (sampleSize != null) 'sampleSize': sampleSize,
-        if (sampleSpace != null) 'sampleSpace': sampleSpace,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (totalResults != null) 'totalResults': totalResults,
+        if (sampleSize != null) 'sampleSize': sampleSize!,
+        if (sampleSpace != null) 'sampleSpace': sampleSpace!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (totalResults != null) 'totalResults': totalResults!,
         if (totalsForAllResults != null)
-          'totalsForAllResults': totalsForAllResults,
+          'totalsForAllResults': totalsForAllResults!,
       };
 }
 
@@ -10034,10 +9316,10 @@ class McfData {
 /// Points to the list of goals for this view (profile).
 class ProfileChildLink {
   /// Link to the list of goals for this view (profile).
-  core.String href;
+  core.String? href;
 
   /// Value is "analytics#goals".
-  core.String type;
+  core.String? type;
 
   ProfileChildLink();
 
@@ -10050,9 +9332,9 @@ class ProfileChildLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (href != null) 'href': href,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (href != null) 'href': href!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -10061,10 +9343,10 @@ class ProfileChildLink {
 /// Points to the web property to which this view (profile) belongs.
 class ProfileParentLink {
   /// Link to the web property to which this view (profile) belongs.
-  core.String href;
+  core.String? href;
 
   /// Value is "analytics#webproperty".
-  core.String type;
+  core.String? type;
 
   ProfileParentLink();
 
@@ -10077,9 +9359,9 @@ class ProfileParentLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (href != null) 'href': href,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (href != null) 'href': href!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -10089,7 +9371,7 @@ class ProfilePermissions {
   ///
   /// These include any implied permissions (e.g., EDIT implies VIEW) or
   /// inherited permissions from the parent web property.
-  core.List<core.String> effective;
+  core.List<core.String>? effective;
 
   ProfilePermissions();
 
@@ -10101,26 +9383,26 @@ class ProfilePermissions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (effective != null) 'effective': effective,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (effective != null) 'effective': effective!,
       };
 }
 
 /// JSON template for an Analytics view (profile).
 class Profile {
   /// Account ID to which this view (profile) belongs.
-  core.String accountId;
+  core.String? accountId;
 
   /// Indicates whether bot filtering is enabled for this view (profile).
-  core.bool botFilteringEnabled;
+  core.bool? botFilteringEnabled;
 
   /// Child link for this view (profile).
   ///
   /// Points to the list of goals for this view (profile).
-  ProfileChildLink childLink;
+  ProfileChildLink? childLink;
 
   /// Time this view (profile) was created.
-  core.DateTime created;
+  core.DateTime? created;
 
   /// The currency type associated with this view (profile), defaults to USD.
   ///
@@ -10129,82 +9411,82 @@ class Profile {
   /// HKD, THB, IDR, ARS, MXN, VND, PHP, INR, CHF, CAD, CZK, NZD, HUF, BGN, LTL,
   /// ZAR, UAH, AED, BOB, CLP, COP, EGP, HRK, ILS, MAD, MYR, PEN, PKR, RON, RSD,
   /// SAR, SGD, VEF, LVL
-  core.String currency;
+  core.String? currency;
 
   /// Default page for this view (profile).
-  core.String defaultPage;
+  core.String? defaultPage;
 
   /// Indicates whether ecommerce tracking is enabled for this view (profile).
-  core.bool eCommerceTracking;
+  core.bool? eCommerceTracking;
 
   /// Indicates whether enhanced ecommerce tracking is enabled for this view
   /// (profile).
   ///
   /// This property can only be enabled if ecommerce tracking is enabled.
-  core.bool enhancedECommerceTracking;
+  core.bool? enhancedECommerceTracking;
 
   /// The query parameters that are excluded from this view (profile).
-  core.String excludeQueryParameters;
+  core.String? excludeQueryParameters;
 
   /// View (Profile) ID.
-  core.String id;
+  core.String? id;
 
   /// Internal ID for the web property to which this view (profile) belongs.
-  core.String internalWebPropertyId;
+  core.String? internalWebPropertyId;
 
   /// Resource type for Analytics view (profile).
-  core.String kind;
+  core.String? kind;
 
   /// Name of this view (profile).
-  core.String name;
+  core.String? name;
 
   /// Parent link for this view (profile).
   ///
   /// Points to the web property to which this view (profile) belongs.
-  ProfileParentLink parentLink;
+  ProfileParentLink? parentLink;
 
   /// Permissions the user has for this view (profile).
-  ProfilePermissions permissions;
+  ProfilePermissions? permissions;
 
   /// Link for this view (profile).
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Site search category parameters for this view (profile).
-  core.String siteSearchCategoryParameters;
+  core.String? siteSearchCategoryParameters;
 
   /// The site search query parameters for this view (profile).
-  core.String siteSearchQueryParameters;
+  core.String? siteSearchQueryParameters;
 
   /// Indicates whether this view (profile) is starred or not.
-  core.bool starred;
+  core.bool? starred;
 
   /// Whether or not Analytics will strip search category parameters from the
   /// URLs in your reports.
-  core.bool stripSiteSearchCategoryParameters;
+  core.bool? stripSiteSearchCategoryParameters;
 
   /// Whether or not Analytics will strip search query parameters from the URLs
   /// in your reports.
-  core.bool stripSiteSearchQueryParameters;
+  core.bool? stripSiteSearchQueryParameters;
 
   /// Time zone for which this view (profile) has been configured.
   ///
   /// Time zones are identified by strings from the TZ database.
-  core.String timezone;
+  core.String? timezone;
 
   /// View (Profile) type.
   ///
   /// Supported types: WEB or APP.
-  core.String type;
+  core.String? type;
 
   /// Time this view (profile) was last modified.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   /// Web property ID of the form UA-XXXXX-YY to which this view (profile)
   /// belongs.
-  core.String webPropertyId;
+  core.String? webPropertyId;
 
   /// Website URL for this view (profile).
-  core.String websiteUrl;
+  core.String? websiteUrl;
 
   Profile();
 
@@ -10297,58 +9579,58 @@ class Profile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (botFilteringEnabled != null)
-          'botFilteringEnabled': botFilteringEnabled,
-        if (childLink != null) 'childLink': childLink.toJson(),
-        if (created != null) 'created': (created).toIso8601String(),
-        if (currency != null) 'currency': currency,
-        if (defaultPage != null) 'defaultPage': defaultPage,
-        if (eCommerceTracking != null) 'eCommerceTracking': eCommerceTracking,
+          'botFilteringEnabled': botFilteringEnabled!,
+        if (childLink != null) 'childLink': childLink!.toJson(),
+        if (created != null) 'created': (created!).toIso8601String(),
+        if (currency != null) 'currency': currency!,
+        if (defaultPage != null) 'defaultPage': defaultPage!,
+        if (eCommerceTracking != null) 'eCommerceTracking': eCommerceTracking!,
         if (enhancedECommerceTracking != null)
-          'enhancedECommerceTracking': enhancedECommerceTracking,
+          'enhancedECommerceTracking': enhancedECommerceTracking!,
         if (excludeQueryParameters != null)
-          'excludeQueryParameters': excludeQueryParameters,
-        if (id != null) 'id': id,
+          'excludeQueryParameters': excludeQueryParameters!,
+        if (id != null) 'id': id!,
         if (internalWebPropertyId != null)
-          'internalWebPropertyId': internalWebPropertyId,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (parentLink != null) 'parentLink': parentLink.toJson(),
-        if (permissions != null) 'permissions': permissions.toJson(),
-        if (selfLink != null) 'selfLink': selfLink,
+          'internalWebPropertyId': internalWebPropertyId!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (parentLink != null) 'parentLink': parentLink!.toJson(),
+        if (permissions != null) 'permissions': permissions!.toJson(),
+        if (selfLink != null) 'selfLink': selfLink!,
         if (siteSearchCategoryParameters != null)
-          'siteSearchCategoryParameters': siteSearchCategoryParameters,
+          'siteSearchCategoryParameters': siteSearchCategoryParameters!,
         if (siteSearchQueryParameters != null)
-          'siteSearchQueryParameters': siteSearchQueryParameters,
-        if (starred != null) 'starred': starred,
+          'siteSearchQueryParameters': siteSearchQueryParameters!,
+        if (starred != null) 'starred': starred!,
         if (stripSiteSearchCategoryParameters != null)
           'stripSiteSearchCategoryParameters':
-              stripSiteSearchCategoryParameters,
+              stripSiteSearchCategoryParameters!,
         if (stripSiteSearchQueryParameters != null)
-          'stripSiteSearchQueryParameters': stripSiteSearchQueryParameters,
-        if (timezone != null) 'timezone': timezone,
-        if (type != null) 'type': type,
-        if (updated != null) 'updated': (updated).toIso8601String(),
-        if (webPropertyId != null) 'webPropertyId': webPropertyId,
-        if (websiteUrl != null) 'websiteUrl': websiteUrl,
+          'stripSiteSearchQueryParameters': stripSiteSearchQueryParameters!,
+        if (timezone != null) 'timezone': timezone!,
+        if (type != null) 'type': type!,
+        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (webPropertyId != null) 'webPropertyId': webPropertyId!,
+        if (websiteUrl != null) 'websiteUrl': websiteUrl!,
       };
 }
 
 /// JSON template for an Analytics profile filter link.
 class ProfileFilterLink {
   /// Filter for this link.
-  FilterRef filterRef;
+  FilterRef? filterRef;
 
   /// Profile filter link ID.
-  core.String id;
+  core.String? id;
 
   /// Resource type for Analytics filter.
-  core.String kind;
+  core.String? kind;
 
   /// View (Profile) for this link.
-  ProfileRef profileRef;
+  ProfileRef? profileRef;
 
   /// The rank of this profile filter link relative to the other filters linked
   /// to the same profile.
@@ -10363,10 +9645,10 @@ class ProfileFilterLink {
   /// with the same or lower rank down the list. After the link is
   /// inserted/updated/deleted all profile filter links will be renumbered
   /// starting at 1.
-  core.int rank;
+  core.int? rank;
 
   /// Link for this profile filter link.
-  core.String selfLink;
+  core.String? selfLink;
 
   ProfileFilterLink();
 
@@ -10393,13 +9675,13 @@ class ProfileFilterLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filterRef != null) 'filterRef': filterRef.toJson(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (profileRef != null) 'profileRef': profileRef.toJson(),
-        if (rank != null) 'rank': rank,
-        if (selfLink != null) 'selfLink': selfLink,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filterRef != null) 'filterRef': filterRef!.toJson(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (profileRef != null) 'profileRef': profileRef!.toJson(),
+        if (rank != null) 'rank': rank!,
+        if (selfLink != null) 'selfLink': selfLink!,
       };
 }
 
@@ -10409,34 +9691,34 @@ class ProfileFilterLink {
 /// Each resource in the collection corresponds to a profile filter link.
 class ProfileFilterLinks {
   /// A list of profile filter links.
-  core.List<ProfileFilterLink> items;
+  core.List<ProfileFilterLink>? items;
 
   /// The maximum number of resources the response can contain, regardless of
   /// the actual number of resources returned.
   ///
   /// Its value ranges from 1 to 1,000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Link to next page for this profile filter link collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Link to previous page for this profile filter link collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the resources, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// results in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Email ID of the authenticated user
-  core.String username;
+  core.String? username;
 
   ProfileFilterLinks();
 
@@ -10470,42 +9752,42 @@ class ProfileFilterLinks {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
-        if (username != null) 'username': username,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
+        if (username != null) 'username': username!,
       };
 }
 
 /// JSON template for a linked view (profile).
 class ProfileRef {
   /// Account ID to which this view (profile) belongs.
-  core.String accountId;
+  core.String? accountId;
 
   /// Link for this view (profile).
-  core.String href;
+  core.String? href;
 
   /// View (Profile) ID.
-  core.String id;
+  core.String? id;
 
   /// Internal ID for the web property to which this view (profile) belongs.
-  core.String internalWebPropertyId;
+  core.String? internalWebPropertyId;
 
   /// Analytics view (profile) reference.
-  core.String kind;
+  core.String? kind;
 
   /// Name of this view (profile).
-  core.String name;
+  core.String? name;
 
   /// Web property ID of the form UA-XXXXX-YY to which this view (profile)
   /// belongs.
-  core.String webPropertyId;
+  core.String? webPropertyId;
 
   ProfileRef();
 
@@ -10533,15 +9815,15 @@ class ProfileRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (href != null) 'href': href,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (href != null) 'href': href!,
+        if (id != null) 'id': id!,
         if (internalWebPropertyId != null)
-          'internalWebPropertyId': internalWebPropertyId,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+          'internalWebPropertyId': internalWebPropertyId!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
 
@@ -10550,21 +9832,21 @@ class ProfileRef {
 /// ProfileSummary returns basic information (i.e., summary) for a profile.
 class ProfileSummary {
   /// View (profile) ID.
-  core.String id;
+  core.String? id;
 
   /// Resource type for Analytics ProfileSummary.
-  core.String kind;
+  core.String? kind;
 
   /// View (profile) name.
-  core.String name;
+  core.String? name;
 
   /// Indicates whether this view (profile) is starred or not.
-  core.bool starred;
+  core.bool? starred;
 
   /// View (Profile) type.
   ///
   /// Supported types: WEB or APP.
-  core.String type;
+  core.String? type;
 
   ProfileSummary();
 
@@ -10586,12 +9868,12 @@ class ProfileSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (starred != null) 'starred': starred,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (starred != null) 'starred': starred!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -10602,34 +9884,34 @@ class ProfileSummary {
 /// (profile).
 class Profiles {
   /// A list of views (profiles).
-  core.List<Profile> items;
+  core.List<Profile>? items;
 
   /// The maximum number of resources the response can contain, regardless of
   /// the actual number of resources returned.
   ///
   /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Link to next page for this view (profile) collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Link to previous page for this view (profile) collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the resources, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// results in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Email ID of the authenticated user
-  core.String username;
+  core.String? username;
 
   Profiles();
 
@@ -10663,16 +9945,16 @@ class Profiles {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
-        if (username != null) 'username': username,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
+        if (username != null) 'username': username!,
       };
 }
 
@@ -10680,17 +9962,17 @@ class RealtimeDataColumnHeaders {
   /// Column Type.
   ///
   /// Either DIMENSION or METRIC.
-  core.String columnType;
+  core.String? columnType;
 
   /// Data type.
   ///
   /// Dimension column headers have only STRING as the data type. Metric column
   /// headers have data types for metric values such as INTEGER, DOUBLE,
   /// CURRENCY etc.
-  core.String dataType;
+  core.String? dataType;
 
   /// Column name.
-  core.String name;
+  core.String? name;
 
   RealtimeDataColumnHeaders();
 
@@ -10706,10 +9988,10 @@ class RealtimeDataColumnHeaders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnType != null) 'columnType': columnType,
-        if (dataType != null) 'dataType': dataType,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnType != null) 'columnType': columnType!,
+        if (dataType != null) 'dataType': dataType!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -10717,22 +9999,22 @@ class RealtimeDataColumnHeaders {
 /// requested.
 class RealtimeDataProfileInfo {
   /// Account ID to which this view (profile) belongs.
-  core.String accountId;
+  core.String? accountId;
 
   /// Internal ID for the web property to which this view (profile) belongs.
-  core.String internalWebPropertyId;
+  core.String? internalWebPropertyId;
 
   /// View (Profile) ID.
-  core.String profileId;
+  core.String? profileId;
 
   /// View (Profile) name.
-  core.String profileName;
+  core.String? profileName;
 
   /// Table ID for view (profile).
-  core.String tableId;
+  core.String? tableId;
 
   /// Web Property ID to which this view (profile) belongs.
-  core.String webPropertyId;
+  core.String? webPropertyId;
 
   RealtimeDataProfileInfo();
 
@@ -10757,36 +10039,36 @@ class RealtimeDataProfileInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (internalWebPropertyId != null)
-          'internalWebPropertyId': internalWebPropertyId,
-        if (profileId != null) 'profileId': profileId,
-        if (profileName != null) 'profileName': profileName,
-        if (tableId != null) 'tableId': tableId,
-        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+          'internalWebPropertyId': internalWebPropertyId!,
+        if (profileId != null) 'profileId': profileId!,
+        if (profileName != null) 'profileName': profileName!,
+        if (tableId != null) 'tableId': tableId!,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
 
 /// Real time data request query parameters.
 class RealtimeDataQuery {
   /// List of real time dimensions.
-  core.String dimensions;
+  core.String? dimensions;
 
   /// Comma-separated list of dimension or metric filters.
-  core.String filters;
+  core.String? filters;
 
   /// Unique table ID.
-  core.String ids;
+  core.String? ids;
 
   /// Maximum results per page.
-  core.int maxResults;
+  core.int? maxResults;
 
   /// List of real time metrics.
-  core.List<core.String> metrics;
+  core.List<core.String>? metrics;
 
   /// List of dimensions or metrics based on which real time data is sorted.
-  core.List<core.String> sort;
+  core.List<core.String>? sort;
 
   RealtimeDataQuery();
 
@@ -10815,13 +10097,13 @@ class RealtimeDataQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimensions != null) 'dimensions': dimensions,
-        if (filters != null) 'filters': filters,
-        if (ids != null) 'ids': ids,
-        if (maxResults != null) 'max-results': maxResults,
-        if (metrics != null) 'metrics': metrics,
-        if (sort != null) 'sort': sort,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (filters != null) 'filters': filters!,
+        if (ids != null) 'ids': ids!,
+        if (maxResults != null) 'max-results': maxResults!,
+        if (metrics != null) 'metrics': metrics!,
+        if (sort != null) 'sort': sort!,
       };
 }
 
@@ -10830,40 +10112,40 @@ class RealtimeData {
   /// Column headers that list dimension names followed by the metric names.
   ///
   /// The order of dimensions and metrics is same as specified in the request.
-  core.List<RealtimeDataColumnHeaders> columnHeaders;
+  core.List<RealtimeDataColumnHeaders>? columnHeaders;
 
   /// Unique ID for this data response.
-  core.String id;
+  core.String? id;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// Information for the view (profile), for which the real time data was
   /// requested.
-  RealtimeDataProfileInfo profileInfo;
+  RealtimeDataProfileInfo? profileInfo;
 
   /// Real time data request query parameters.
-  RealtimeDataQuery query;
+  RealtimeDataQuery? query;
 
   /// Real time data rows, where each row contains a list of dimension values
   /// followed by the metric values.
   ///
   /// The order of dimensions and metrics is same as specified in the request.
-  core.List<core.List<core.String>> rows;
+  core.List<core.List<core.String>>? rows;
 
   /// Link to this page.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The total number of rows for the query, regardless of the number of rows
   /// in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Total values for the requested metrics over all the results, not just the
   /// results returned in this response.
   ///
   /// The order of the metric totals is same as the metric order specified in
   /// the request.
-  core.Map<core.String, core.String> totalsForAllResults;
+  core.Map<core.String, core.String>? totalsForAllResults;
 
   RealtimeData();
 
@@ -10914,19 +10196,19 @@ class RealtimeData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (columnHeaders != null)
           'columnHeaders':
-              columnHeaders.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (profileInfo != null) 'profileInfo': profileInfo.toJson(),
-        if (query != null) 'query': query.toJson(),
-        if (rows != null) 'rows': rows,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (totalResults != null) 'totalResults': totalResults,
+              columnHeaders!.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (profileInfo != null) 'profileInfo': profileInfo!.toJson(),
+        if (query != null) 'query': query!.toJson(),
+        if (rows != null) 'rows': rows!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (totalResults != null) 'totalResults': totalResults!,
         if (totalsForAllResults != null)
-          'totalsForAllResults': totalsForAllResults,
+          'totalsForAllResults': totalsForAllResults!,
       };
 }
 
@@ -10934,7 +10216,7 @@ class RealtimeData {
 /// audience.
 class RemarketingAudienceAudienceDefinition {
   /// Defines the conditions to include users to the audience.
-  IncludeConditions includeConditions;
+  IncludeConditions? includeConditions;
 
   RemarketingAudienceAudienceDefinition();
 
@@ -10945,20 +10227,20 @@ class RemarketingAudienceAudienceDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (includeConditions != null)
-          'includeConditions': includeConditions.toJson(),
+          'includeConditions': includeConditions!.toJson(),
       };
 }
 
 /// Defines the conditions to exclude users from the audience.
 class RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions {
   /// Whether to make the exclusion TEMPORARY or PERMANENT.
-  core.String exclusionDuration;
+  core.String? exclusionDuration;
 
   /// The segment condition that will cause a user to be removed from an
   /// audience.
-  core.String segment;
+  core.String? segment;
 
   RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions();
 
@@ -10972,9 +10254,9 @@ class RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exclusionDuration != null) 'exclusionDuration': exclusionDuration,
-        if (segment != null) 'segment': segment,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exclusionDuration != null) 'exclusionDuration': exclusionDuration!,
+        if (segment != null) 'segment': segment!,
       };
 }
 
@@ -10982,11 +10264,11 @@ class RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions {
 /// removed from an audience.
 class RemarketingAudienceStateBasedAudienceDefinition {
   /// Defines the conditions to exclude users from the audience.
-  RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions
+  RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions?
       excludeConditions;
 
   /// Defines the conditions to include users to the audience.
-  IncludeConditions includeConditions;
+  IncludeConditions? includeConditions;
 
   RemarketingAudienceStateBasedAudienceDefinition();
 
@@ -11003,63 +10285,63 @@ class RemarketingAudienceStateBasedAudienceDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (excludeConditions != null)
-          'excludeConditions': excludeConditions.toJson(),
+          'excludeConditions': excludeConditions!.toJson(),
         if (includeConditions != null)
-          'includeConditions': includeConditions.toJson(),
+          'includeConditions': includeConditions!.toJson(),
       };
 }
 
 /// JSON template for an Analytics remarketing audience.
 class RemarketingAudience {
   /// Account ID to which this remarketing audience belongs.
-  core.String accountId;
+  core.String? accountId;
 
   /// The simple audience definition that will cause a user to be added to an
   /// audience.
-  RemarketingAudienceAudienceDefinition audienceDefinition;
+  RemarketingAudienceAudienceDefinition? audienceDefinition;
 
   /// The type of audience, either SIMPLE or STATE_BASED.
-  core.String audienceType;
+  core.String? audienceType;
 
   /// Time this remarketing audience was created.
-  core.DateTime created;
+  core.DateTime? created;
 
   /// The description of this remarketing audience.
-  core.String description;
+  core.String? description;
 
   /// Remarketing Audience ID.
-  core.String id;
+  core.String? id;
 
   /// Internal ID for the web property to which this remarketing audience
   /// belongs.
-  core.String internalWebPropertyId;
+  core.String? internalWebPropertyId;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// The linked ad accounts associated with this remarketing audience.
   ///
   /// A remarketing audience can have only one linkedAdAccount currently.
-  core.List<LinkedForeignAccount> linkedAdAccounts;
+  core.List<LinkedForeignAccount>? linkedAdAccounts;
 
   /// The views (profiles) that this remarketing audience is linked to.
-  core.List<core.String> linkedViews;
+  core.List<core.String>? linkedViews;
 
   /// The name of this remarketing audience.
-  core.String name;
+  core.String? name;
 
   /// A state based audience definition that will cause a user to be added or
   /// removed from an audience.
-  RemarketingAudienceStateBasedAudienceDefinition stateBasedAudienceDefinition;
+  RemarketingAudienceStateBasedAudienceDefinition? stateBasedAudienceDefinition;
 
   /// Time this remarketing audience was last modified.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   /// Web property ID of the form UA-XXXXX-YY to which this remarketing audience
   /// belongs.
-  core.String webPropertyId;
+  core.String? webPropertyId;
 
   RemarketingAudience();
 
@@ -11117,26 +10399,27 @@ class RemarketingAudience {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (audienceDefinition != null)
-          'audienceDefinition': audienceDefinition.toJson(),
-        if (audienceType != null) 'audienceType': audienceType,
-        if (created != null) 'created': (created).toIso8601String(),
-        if (description != null) 'description': description,
-        if (id != null) 'id': id,
+          'audienceDefinition': audienceDefinition!.toJson(),
+        if (audienceType != null) 'audienceType': audienceType!,
+        if (created != null) 'created': (created!).toIso8601String(),
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
         if (internalWebPropertyId != null)
-          'internalWebPropertyId': internalWebPropertyId,
-        if (kind != null) 'kind': kind,
+          'internalWebPropertyId': internalWebPropertyId!,
+        if (kind != null) 'kind': kind!,
         if (linkedAdAccounts != null)
           'linkedAdAccounts':
-              linkedAdAccounts.map((value) => value.toJson()).toList(),
-        if (linkedViews != null) 'linkedViews': linkedViews,
-        if (name != null) 'name': name,
+              linkedAdAccounts!.map((value) => value.toJson()).toList(),
+        if (linkedViews != null) 'linkedViews': linkedViews!,
+        if (name != null) 'name': name!,
         if (stateBasedAudienceDefinition != null)
-          'stateBasedAudienceDefinition': stateBasedAudienceDefinition.toJson(),
-        if (updated != null) 'updated': (updated).toIso8601String(),
-        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+          'stateBasedAudienceDefinition':
+              stateBasedAudienceDefinition!.toJson(),
+        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
 
@@ -11147,34 +10430,34 @@ class RemarketingAudience {
 /// remarketing audience.
 class RemarketingAudiences {
   /// A list of remarketing audiences.
-  core.List<RemarketingAudience> items;
+  core.List<RemarketingAudience>? items;
 
   /// The maximum number of resources the response can contain, regardless of
   /// the actual number of resources returned.
   ///
   /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Link to next page for this remarketing audience collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Link to previous page for this view (profile) collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the resources, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// results in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Email ID of the authenticated user
-  core.String username;
+  core.String? username;
 
   RemarketingAudiences();
 
@@ -11208,51 +10491,51 @@ class RemarketingAudiences {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
-        if (username != null) 'username': username,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
+        if (username != null) 'username': username!,
       };
 }
 
 /// JSON template for an Analytics segment.
 class Segment {
   /// Time the segment was created.
-  core.DateTime created;
+  core.DateTime? created;
 
   /// Segment definition.
-  core.String definition;
+  core.String? definition;
 
   /// Segment ID.
-  core.String id;
+  core.String? id;
 
   /// Resource type for Analytics segment.
-  core.String kind;
+  core.String? kind;
 
   /// Segment name.
-  core.String name;
+  core.String? name;
 
   /// Segment ID.
   ///
   /// Can be used with the 'segment' parameter in Core Reporting API.
-  core.String segmentId;
+  core.String? segmentId;
 
   /// Link for this segment.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Type for a segment.
   ///
   /// Possible values are "BUILT_IN" or "CUSTOM".
-  core.String type;
+  core.String? type;
 
   /// Time the segment was last modified.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   Segment();
 
@@ -11286,16 +10569,16 @@ class Segment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (created != null) 'created': (created).toIso8601String(),
-        if (definition != null) 'definition': definition,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (segmentId != null) 'segmentId': segmentId,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (type != null) 'type': type,
-        if (updated != null) 'updated': (updated).toIso8601String(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (created != null) 'created': (created!).toIso8601String(),
+        if (definition != null) 'definition': definition!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (segmentId != null) 'segmentId': segmentId!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (type != null) 'type': type!,
+        if (updated != null) 'updated': (updated!).toIso8601String(),
       };
 }
 
@@ -11304,34 +10587,34 @@ class Segment {
 /// Each resource in the collection corresponds to a single Analytics segment.
 class Segments {
   /// A list of segments.
-  core.List<Segment> items;
+  core.List<Segment>? items;
 
   /// The maximum number of resources the response can contain, regardless of
   /// the actual number of resources returned.
   ///
   /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type for segments.
-  core.String kind;
+  core.String? kind;
 
   /// Link to next page for this segment collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Link to previous page for this segment collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the resources, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// results in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Email ID of the authenticated user
-  core.String username;
+  core.String? username;
 
   Segments();
 
@@ -11365,26 +10648,26 @@ class Segments {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
-        if (username != null) 'username': username,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
+        if (username != null) 'username': username!,
       };
 }
 
 /// Download details for a file stored in Google Cloud Storage.
 class UnsampledReportCloudStorageDownloadDetails {
   /// Id of the bucket the file object is stored in.
-  core.String bucketId;
+  core.String? bucketId;
 
   /// Id of the file object containing the report data.
-  core.String objectId;
+  core.String? objectId;
 
   UnsampledReportCloudStorageDownloadDetails();
 
@@ -11397,16 +10680,16 @@ class UnsampledReportCloudStorageDownloadDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bucketId != null) 'bucketId': bucketId,
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bucketId != null) 'bucketId': bucketId!,
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
 /// Download details for a file stored in Google Drive.
 class UnsampledReportDriveDownloadDetails {
   /// Id of the document/file containing the report data.
-  core.String documentId;
+  core.String? documentId;
 
   UnsampledReportDriveDownloadDetails();
 
@@ -11416,24 +10699,24 @@ class UnsampledReportDriveDownloadDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (documentId != null) 'documentId': documentId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (documentId != null) 'documentId': documentId!,
       };
 }
 
 /// JSON template for Analytics unsampled report resource.
 class UnsampledReport {
   /// Account ID to which this unsampled report belongs.
-  core.String accountId;
+  core.String? accountId;
 
   /// Download details for a file stored in Google Cloud Storage.
-  UnsampledReportCloudStorageDownloadDetails cloudStorageDownloadDetails;
+  UnsampledReportCloudStorageDownloadDetails? cloudStorageDownloadDetails;
 
   /// Time this unsampled report was created.
-  core.DateTime created;
+  core.DateTime? created;
 
   /// The dimensions for the unsampled report.
-  core.String dimensions;
+  core.String? dimensions;
 
   /// The type of download you need to use for the report data file.
   ///
@@ -11441,53 +10724,53 @@ class UnsampledReport {
   /// value is `GOOGLE_DRIVE`, see the `driveDownloadDetails` field. If the
   /// value is `GOOGLE_CLOUD_STORAGE`, see the `cloudStorageDownloadDetails`
   /// field.
-  core.String downloadType;
+  core.String? downloadType;
 
   /// Download details for a file stored in Google Drive.
-  UnsampledReportDriveDownloadDetails driveDownloadDetails;
+  UnsampledReportDriveDownloadDetails? driveDownloadDetails;
 
   /// The end date for the unsampled report.
-  core.String endDate;
+  core.String? endDate;
 
   /// The filters for the unsampled report.
-  core.String filters;
+  core.String? filters;
 
   /// Unsampled report ID.
-  core.String id;
+  core.String? id;
 
   /// Resource type for an Analytics unsampled report.
-  core.String kind;
+  core.String? kind;
 
   /// The metrics for the unsampled report.
-  core.String metrics;
+  core.String? metrics;
 
   /// View (Profile) ID to which this unsampled report belongs.
-  core.String profileId;
+  core.String? profileId;
 
   /// The segment for the unsampled report.
-  core.String segment;
+  core.String? segment;
 
   /// Link for this unsampled report.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The start date for the unsampled report.
-  core.String startDate;
+  core.String? startDate;
 
   /// Status of this unsampled report.
   ///
   /// Possible values are PENDING, COMPLETED, or FAILED.
-  core.String status;
+  core.String? status;
 
   /// Title of the unsampled report.
-  core.String title;
+  core.String? title;
 
   /// Time this unsampled report was last modified.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   /// Web property ID to which this unsampled report belongs.
   ///
   /// The web property ID is of the form UA-XXXXX-YY.
-  core.String webPropertyId;
+  core.String? webPropertyId;
 
   UnsampledReport();
 
@@ -11555,28 +10838,28 @@ class UnsampledReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (cloudStorageDownloadDetails != null)
-          'cloudStorageDownloadDetails': cloudStorageDownloadDetails.toJson(),
-        if (created != null) 'created': (created).toIso8601String(),
-        if (dimensions != null) 'dimensions': dimensions,
-        if (downloadType != null) 'downloadType': downloadType,
+          'cloudStorageDownloadDetails': cloudStorageDownloadDetails!.toJson(),
+        if (created != null) 'created': (created!).toIso8601String(),
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (downloadType != null) 'downloadType': downloadType!,
         if (driveDownloadDetails != null)
-          'driveDownloadDetails': driveDownloadDetails.toJson(),
-        if (endDate != null) 'end-date': endDate,
-        if (filters != null) 'filters': filters,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (metrics != null) 'metrics': metrics,
-        if (profileId != null) 'profileId': profileId,
-        if (segment != null) 'segment': segment,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (startDate != null) 'start-date': startDate,
-        if (status != null) 'status': status,
-        if (title != null) 'title': title,
-        if (updated != null) 'updated': (updated).toIso8601String(),
-        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+          'driveDownloadDetails': driveDownloadDetails!.toJson(),
+        if (endDate != null) 'end-date': endDate!,
+        if (filters != null) 'filters': filters!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (metrics != null) 'metrics': metrics!,
+        if (profileId != null) 'profileId': profileId!,
+        if (segment != null) 'segment': segment!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (startDate != null) 'start-date': startDate!,
+        if (status != null) 'status': status!,
+        if (title != null) 'title': title!,
+        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
 
@@ -11588,34 +10871,34 @@ class UnsampledReport {
 /// report.
 class UnsampledReports {
   /// A list of unsampled reports.
-  core.List<UnsampledReport> items;
+  core.List<UnsampledReport>? items;
 
   /// The maximum number of resources the response can contain, regardless of
   /// the actual number of resources returned.
   ///
   /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Link to next page for this unsampled report collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Link to previous page for this unsampled report collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the resources, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// resources in the result.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Email ID of the authenticated user
-  core.String username;
+  core.String? username;
 
   UnsampledReports();
 
@@ -11649,43 +10932,43 @@ class UnsampledReports {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
-        if (username != null) 'username': username,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
+        if (username != null) 'username': username!,
       };
 }
 
 /// Metadata returned for an upload operation.
 class Upload {
   /// Account Id to which this upload belongs.
-  core.String accountId;
+  core.String? accountId;
 
   /// Custom data source Id to which this data import belongs.
-  core.String customDataSourceId;
+  core.String? customDataSourceId;
 
   /// Data import errors collection.
-  core.List<core.String> errors;
+  core.List<core.String>? errors;
 
   /// A unique ID for this upload.
-  core.String id;
+  core.String? id;
 
   /// Resource type for Analytics upload.
-  core.String kind;
+  core.String? kind;
 
   /// Upload status.
   ///
   /// Possible values: PENDING, COMPLETED, FAILED, DELETING, DELETED.
-  core.String status;
+  core.String? status;
 
   /// Time this file is uploaded.
-  core.DateTime uploadTime;
+  core.DateTime? uploadTime;
 
   Upload();
 
@@ -11715,15 +10998,15 @@ class Upload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (customDataSourceId != null)
-          'customDataSourceId': customDataSourceId,
-        if (errors != null) 'errors': errors,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (status != null) 'status': status,
-        if (uploadTime != null) 'uploadTime': (uploadTime).toIso8601String(),
+          'customDataSourceId': customDataSourceId!,
+        if (errors != null) 'errors': errors!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (status != null) 'status': status!,
+        if (uploadTime != null) 'uploadTime': (uploadTime!).toIso8601String(),
       };
 }
 
@@ -11733,31 +11016,31 @@ class Upload {
 /// upload collection corresponds to a single Analytics data upload.
 class Uploads {
   /// A list of uploads.
-  core.List<Upload> items;
+  core.List<Upload>? items;
 
   /// The maximum number of resources the response can contain, regardless of
   /// the actual number of resources returned.
   ///
   /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Link to next page for this upload collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Link to previous page for this upload collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the resources, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// resources in the result.
-  core.int totalResults;
+  core.int? totalResults;
 
   Uploads();
 
@@ -11788,25 +11071,25 @@ class Uploads {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
       };
 }
 
 /// User ID.
 class UserDeletionRequestId {
   /// Type of user
-  core.String type;
+  core.String? type;
 
   /// The User's id
-  core.String userId;
+  core.String? userId;
 
   UserDeletionRequestId();
 
@@ -11819,9 +11102,9 @@ class UserDeletionRequestId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
-        if (userId != null) 'userId': userId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -11829,22 +11112,22 @@ class UserDeletionRequestId {
 class UserDeletionRequest {
   /// This marks the point in time for which all user data before should be
   /// deleted
-  core.DateTime deletionRequestTime;
+  core.DateTime? deletionRequestTime;
 
   /// Firebase Project Id
-  core.String firebaseProjectId;
+  core.String? firebaseProjectId;
 
   /// User ID.
-  UserDeletionRequestId id;
+  UserDeletionRequestId? id;
 
   /// Value is "analytics#userDeletionRequest".
-  core.String kind;
+  core.String? kind;
 
   /// Property ID
-  core.String propertyId;
+  core.String? propertyId;
 
   /// Web property ID of the form UA-XXXXX-YY.
-  core.String webPropertyId;
+  core.String? webPropertyId;
 
   UserDeletionRequest();
 
@@ -11871,25 +11154,25 @@ class UserDeletionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deletionRequestTime != null)
-          'deletionRequestTime': (deletionRequestTime).toIso8601String(),
-        if (firebaseProjectId != null) 'firebaseProjectId': firebaseProjectId,
-        if (id != null) 'id': id.toJson(),
-        if (kind != null) 'kind': kind,
-        if (propertyId != null) 'propertyId': propertyId,
-        if (webPropertyId != null) 'webPropertyId': webPropertyId,
+          'deletionRequestTime': (deletionRequestTime!).toIso8601String(),
+        if (firebaseProjectId != null) 'firebaseProjectId': firebaseProjectId!,
+        if (id != null) 'id': id!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (propertyId != null) 'propertyId': propertyId!,
+        if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
 
 /// JSON template for a user reference.
 class UserRef {
   /// Email ID of this user.
-  core.String email;
+  core.String? email;
 
   /// User ID.
-  core.String id;
-  core.String kind;
+  core.String? id;
+  core.String? kind;
 
   UserRef();
 
@@ -11905,32 +11188,32 @@ class UserRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// JSON template for a web property reference.
 class WebPropertyRef {
   /// Account ID to which this web property belongs.
-  core.String accountId;
+  core.String? accountId;
 
   /// Link for this web property.
-  core.String href;
+  core.String? href;
 
   /// Web property ID of the form UA-XXXXX-YY.
-  core.String id;
+  core.String? id;
 
   /// Internal ID for this web property.
-  core.String internalWebPropertyId;
+  core.String? internalWebPropertyId;
 
   /// Analytics web property reference.
-  core.String kind;
+  core.String? kind;
 
   /// Name of this web property.
-  core.String name;
+  core.String? name;
 
   WebPropertyRef();
 
@@ -11955,14 +11238,14 @@ class WebPropertyRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (href != null) 'href': href,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (href != null) 'href': href!,
+        if (id != null) 'id': id!,
         if (internalWebPropertyId != null)
-          'internalWebPropertyId': internalWebPropertyId,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+          'internalWebPropertyId': internalWebPropertyId!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -11972,30 +11255,30 @@ class WebPropertyRef {
 /// property.
 class WebPropertySummary {
   /// Web property ID of the form UA-XXXXX-YY.
-  core.String id;
+  core.String? id;
 
   /// Internal ID for this web property.
-  core.String internalWebPropertyId;
+  core.String? internalWebPropertyId;
 
   /// Resource type for Analytics WebPropertySummary.
-  core.String kind;
+  core.String? kind;
 
   /// Level for this web property.
   ///
   /// Possible values are STANDARD or PREMIUM.
-  core.String level;
+  core.String? level;
 
   /// Web property name.
-  core.String name;
+  core.String? name;
 
   /// List of profiles under this web property.
-  core.List<ProfileSummary> profiles;
+  core.List<ProfileSummary>? profiles;
 
   /// Indicates whether this web property is starred or not.
-  core.bool starred;
+  core.bool? starred;
 
   /// Website url for this web property.
-  core.String websiteUrl;
+  core.String? websiteUrl;
 
   WebPropertySummary();
 
@@ -12029,17 +11312,17 @@ class WebPropertySummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
         if (internalWebPropertyId != null)
-          'internalWebPropertyId': internalWebPropertyId,
-        if (kind != null) 'kind': kind,
-        if (level != null) 'level': level,
-        if (name != null) 'name': name,
+          'internalWebPropertyId': internalWebPropertyId!,
+        if (kind != null) 'kind': kind!,
+        if (level != null) 'level': level!,
+        if (name != null) 'name': name!,
         if (profiles != null)
-          'profiles': profiles.map((value) => value.toJson()).toList(),
-        if (starred != null) 'starred': starred,
-        if (websiteUrl != null) 'websiteUrl': websiteUrl,
+          'profiles': profiles!.map((value) => value.toJson()).toList(),
+        if (starred != null) 'starred': starred!,
+        if (websiteUrl != null) 'websiteUrl': websiteUrl!,
       };
 }
 
@@ -12050,34 +11333,34 @@ class WebPropertySummary {
 /// property.
 class Webproperties {
   /// A list of web properties.
-  core.List<Webproperty> items;
+  core.List<Webproperty>? items;
 
   /// The maximum number of resources the response can contain, regardless of
   /// the actual number of resources returned.
   ///
   /// Its value ranges from 1 to 1000 with a value of 1000 by default, or
   /// otherwise specified by the max-results query parameter.
-  core.int itemsPerPage;
+  core.int? itemsPerPage;
 
   /// Collection type.
-  core.String kind;
+  core.String? kind;
 
   /// Link to next page for this web property collection.
-  core.String nextLink;
+  core.String? nextLink;
 
   /// Link to previous page for this web property collection.
-  core.String previousLink;
+  core.String? previousLink;
 
   /// The starting index of the resources, which is 1 by default or otherwise
   /// specified by the start-index query parameter.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The total number of results for the query, regardless of the number of
   /// results in the response.
-  core.int totalResults;
+  core.int? totalResults;
 
   /// Email ID of the authenticated user
-  core.String username;
+  core.String? username;
 
   Webproperties();
 
@@ -12111,16 +11394,16 @@ class Webproperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage,
-        if (kind != null) 'kind': kind,
-        if (nextLink != null) 'nextLink': nextLink,
-        if (previousLink != null) 'previousLink': previousLink,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
-        if (username != null) 'username': username,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
+        if (kind != null) 'kind': kind!,
+        if (nextLink != null) 'nextLink': nextLink!,
+        if (previousLink != null) 'previousLink': previousLink!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
+        if (username != null) 'username': username!,
       };
 }
 
@@ -12129,12 +11412,12 @@ class Webproperties {
 /// Points to the list of views (profiles) for this web property.
 class WebpropertyChildLink {
   /// Link to the list of views (profiles) for this web property.
-  core.String href;
+  core.String? href;
 
   /// Type of the parent link.
   ///
   /// Its value is "analytics#profiles".
-  core.String type;
+  core.String? type;
 
   WebpropertyChildLink();
 
@@ -12147,9 +11430,9 @@ class WebpropertyChildLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (href != null) 'href': href,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (href != null) 'href': href!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -12158,12 +11441,12 @@ class WebpropertyChildLink {
 /// Points to the account to which this web property belongs.
 class WebpropertyParentLink {
   /// Link to the account for this web property.
-  core.String href;
+  core.String? href;
 
   /// Type of the parent link.
   ///
   /// Its value is "analytics#account".
-  core.String type;
+  core.String? type;
 
   WebpropertyParentLink();
 
@@ -12176,9 +11459,9 @@ class WebpropertyParentLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (href != null) 'href': href,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (href != null) 'href': href!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -12188,7 +11471,7 @@ class WebpropertyPermissions {
   ///
   /// These include any implied permissions (e.g., EDIT implies VIEW) or
   /// inherited permissions from the parent account.
-  core.List<core.String> effective;
+  core.List<core.String>? effective;
 
   WebpropertyPermissions();
 
@@ -12200,23 +11483,23 @@ class WebpropertyPermissions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (effective != null) 'effective': effective,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (effective != null) 'effective': effective!,
       };
 }
 
 /// JSON template for an Analytics web property.
 class Webproperty {
   /// Account ID to which this web property belongs.
-  core.String accountId;
+  core.String? accountId;
 
   /// Child link for this web property.
   ///
   /// Points to the list of views (profiles) for this web property.
-  WebpropertyChildLink childLink;
+  WebpropertyChildLink? childLink;
 
   /// Time this web property was created.
-  core.DateTime created;
+  core.DateTime? created;
 
   /// Set to true to reset the retention period of the user identifier with each
   /// new event from that user (thus setting the expiration date to current time
@@ -12224,57 +11507,57 @@ class Webproperty {
   /// Set to false to delete data associated with the user identifier
   /// automatically after the rentention period.
   /// This property cannot be set on insert.
-  core.bool dataRetentionResetOnNewActivity;
+  core.bool? dataRetentionResetOnNewActivity;
 
   /// The length of time for which user and event data is retained.
   /// This property cannot be set on insert.
-  core.String dataRetentionTtl;
+  core.String? dataRetentionTtl;
 
   /// Default view (profile) ID.
-  core.String defaultProfileId;
+  core.String? defaultProfileId;
 
   /// Web property ID of the form UA-XXXXX-YY.
-  core.String id;
+  core.String? id;
 
   /// The industry vertical/category selected for this web property.
-  core.String industryVertical;
+  core.String? industryVertical;
 
   /// Internal ID for this web property.
-  core.String internalWebPropertyId;
+  core.String? internalWebPropertyId;
 
   /// Resource type for Analytics WebProperty.
-  core.String kind;
+  core.String? kind;
 
   /// Level for this web property.
   ///
   /// Possible values are STANDARD or PREMIUM.
-  core.String level;
+  core.String? level;
 
   /// Name of this web property.
-  core.String name;
+  core.String? name;
 
   /// Parent link for this web property.
   ///
   /// Points to the account to which this web property belongs.
-  WebpropertyParentLink parentLink;
+  WebpropertyParentLink? parentLink;
 
   /// Permissions the user has for this web property.
-  WebpropertyPermissions permissions;
+  WebpropertyPermissions? permissions;
 
   /// View (Profile) count for this web property.
-  core.int profileCount;
+  core.int? profileCount;
 
   /// Link for this web property.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Indicates whether this web property is starred or not.
-  core.bool starred;
+  core.bool? starred;
 
   /// Time this web property was last modified.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   /// Website url for this web property.
-  core.String websiteUrl;
+  core.String? websiteUrl;
 
   Webproperty();
 
@@ -12342,27 +11625,27 @@ class Webproperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (childLink != null) 'childLink': childLink.toJson(),
-        if (created != null) 'created': (created).toIso8601String(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (childLink != null) 'childLink': childLink!.toJson(),
+        if (created != null) 'created': (created!).toIso8601String(),
         if (dataRetentionResetOnNewActivity != null)
-          'dataRetentionResetOnNewActivity': dataRetentionResetOnNewActivity,
-        if (dataRetentionTtl != null) 'dataRetentionTtl': dataRetentionTtl,
-        if (defaultProfileId != null) 'defaultProfileId': defaultProfileId,
-        if (id != null) 'id': id,
-        if (industryVertical != null) 'industryVertical': industryVertical,
+          'dataRetentionResetOnNewActivity': dataRetentionResetOnNewActivity!,
+        if (dataRetentionTtl != null) 'dataRetentionTtl': dataRetentionTtl!,
+        if (defaultProfileId != null) 'defaultProfileId': defaultProfileId!,
+        if (id != null) 'id': id!,
+        if (industryVertical != null) 'industryVertical': industryVertical!,
         if (internalWebPropertyId != null)
-          'internalWebPropertyId': internalWebPropertyId,
-        if (kind != null) 'kind': kind,
-        if (level != null) 'level': level,
-        if (name != null) 'name': name,
-        if (parentLink != null) 'parentLink': parentLink.toJson(),
-        if (permissions != null) 'permissions': permissions.toJson(),
-        if (profileCount != null) 'profileCount': profileCount,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (starred != null) 'starred': starred,
-        if (updated != null) 'updated': (updated).toIso8601String(),
-        if (websiteUrl != null) 'websiteUrl': websiteUrl,
+          'internalWebPropertyId': internalWebPropertyId!,
+        if (kind != null) 'kind': kind!,
+        if (level != null) 'level': level!,
+        if (name != null) 'name': name!,
+        if (parentLink != null) 'parentLink': parentLink!.toJson(),
+        if (permissions != null) 'permissions': permissions!.toJson(),
+        if (profileCount != null) 'profileCount': profileCount!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (starred != null) 'starred': starred!,
+        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (websiteUrl != null) 'websiteUrl': websiteUrl!,
       };
 }

@@ -158,11 +158,8 @@ class UsersResource {
   /// this method will complete with the same error.
   async.Future<Profile> getProfile(
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -196,11 +193,8 @@ class UsersResource {
   /// this method will complete with the same error.
   async.Future<void> stop(
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -238,13 +232,9 @@ class UsersResource {
   async.Future<WatchResponse> watch(
     WatchRequest request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -296,15 +286,11 @@ class UsersDraftsResource {
   async.Future<Draft> create(
     Draft request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -357,14 +343,8 @@ class UsersDraftsResource {
   async.Future<void> delete(
     core.String userId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -417,15 +397,9 @@ class UsersDraftsResource {
   async.Future<Draft> get(
     core.String userId,
     core.String id, {
-    core.String format,
-    core.String $fields,
+    core.String? format,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (format != null) 'format': [format],
       if ($fields != null) 'fields': [$fields],
@@ -475,15 +449,12 @@ class UsersDraftsResource {
   /// this method will complete with the same error.
   async.Future<ListDraftsResponse> list(
     core.String userId, {
-    core.bool includeSpamTrash,
-    core.int maxResults,
-    core.String pageToken,
-    core.String q,
-    core.String $fields,
+    core.bool? includeSpamTrash,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? q,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeSpamTrash != null) 'includeSpamTrash': ['${includeSpamTrash}'],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -534,15 +505,11 @@ class UsersDraftsResource {
   async.Future<Message> send(
     Draft request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -604,18 +571,11 @@ class UsersDraftsResource {
     Draft request,
     core.String userId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -698,16 +658,13 @@ class UsersHistoryResource {
   /// this method will complete with the same error.
   async.Future<ListHistoryResponse> list(
     core.String userId, {
-    core.List<core.String> historyTypes,
-    core.String labelId,
-    core.int maxResults,
-    core.String pageToken,
-    core.String startHistoryId,
-    core.String $fields,
+    core.List<core.String>? historyTypes,
+    core.String? labelId,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? startHistoryId,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (historyTypes != null) 'historyTypes': historyTypes,
       if (labelId != null) 'labelId': [labelId],
@@ -758,13 +715,9 @@ class UsersLabelsResource {
   async.Future<Label> create(
     Label request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -803,14 +756,8 @@ class UsersLabelsResource {
   async.Future<void> delete(
     core.String userId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -850,14 +797,8 @@ class UsersLabelsResource {
   async.Future<Label> get(
     core.String userId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -894,11 +835,8 @@ class UsersLabelsResource {
   /// this method will complete with the same error.
   async.Future<ListLabelsResponse> list(
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -941,16 +879,9 @@ class UsersLabelsResource {
     Label request,
     core.String userId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -994,16 +925,9 @@ class UsersLabelsResource {
     Label request,
     core.String userId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1054,13 +978,9 @@ class UsersMessagesResource {
   async.Future<void> batchDelete(
     BatchDeleteMessagesRequest request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1098,13 +1018,9 @@ class UsersMessagesResource {
   async.Future<void> batchModify(
     BatchModifyMessagesRequest request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1144,14 +1060,8 @@ class UsersMessagesResource {
   async.Future<void> delete(
     core.String userId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1209,16 +1119,10 @@ class UsersMessagesResource {
   async.Future<Message> get(
     core.String userId,
     core.String id, {
-    core.String format,
-    core.List<core.String> metadataHeaders,
-    core.String $fields,
+    core.String? format,
+    core.List<core.String>? metadataHeaders,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (format != null) 'format': [format],
       if (metadataHeaders != null) 'metadataHeaders': metadataHeaders,
@@ -1287,19 +1191,15 @@ class UsersMessagesResource {
   async.Future<Message> import(
     Message request,
     core.String userId, {
-    core.bool deleted,
-    core.String internalDateSource,
-    core.bool neverMarkSpam,
-    core.bool processForCalendar,
-    core.String $fields,
+    core.bool? deleted,
+    core.String? internalDateSource,
+    core.bool? neverMarkSpam,
+    core.bool? processForCalendar,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (deleted != null) 'deleted': ['${deleted}'],
       if (internalDateSource != null)
@@ -1378,17 +1278,13 @@ class UsersMessagesResource {
   async.Future<Message> insert(
     Message request,
     core.String userId, {
-    core.bool deleted,
-    core.String internalDateSource,
-    core.String $fields,
+    core.bool? deleted,
+    core.String? internalDateSource,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (deleted != null) 'deleted': ['${deleted}'],
       if (internalDateSource != null)
@@ -1457,16 +1353,13 @@ class UsersMessagesResource {
   /// this method will complete with the same error.
   async.Future<ListMessagesResponse> list(
     core.String userId, {
-    core.bool includeSpamTrash,
-    core.List<core.String> labelIds,
-    core.int maxResults,
-    core.String pageToken,
-    core.String q,
-    core.String $fields,
+    core.bool? includeSpamTrash,
+    core.List<core.String>? labelIds,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? q,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeSpamTrash != null) 'includeSpamTrash': ['${includeSpamTrash}'],
       if (labelIds != null) 'labelIds': labelIds,
@@ -1514,16 +1407,9 @@ class UsersMessagesResource {
     ModifyMessageRequest request,
     core.String userId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1572,15 +1458,11 @@ class UsersMessagesResource {
   async.Future<Message> send(
     Message request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1633,14 +1515,8 @@ class UsersMessagesResource {
   async.Future<Message> trash(
     core.String userId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1681,14 +1557,8 @@ class UsersMessagesResource {
   async.Future<Message> untrash(
     core.String userId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1739,17 +1609,8 @@ class UsersMessagesAttachmentsResource {
     core.String userId,
     core.String messageId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (messageId == null) {
-      throw core.ArgumentError('Parameter messageId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1804,11 +1665,8 @@ class UsersSettingsResource {
   /// this method will complete with the same error.
   async.Future<AutoForwarding> getAutoForwarding(
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1845,11 +1703,8 @@ class UsersSettingsResource {
   /// this method will complete with the same error.
   async.Future<ImapSettings> getImap(
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1886,11 +1741,8 @@ class UsersSettingsResource {
   /// this method will complete with the same error.
   async.Future<LanguageSettings> getLanguage(
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1927,11 +1779,8 @@ class UsersSettingsResource {
   /// this method will complete with the same error.
   async.Future<PopSettings> getPop(
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1968,11 +1817,8 @@ class UsersSettingsResource {
   /// this method will complete with the same error.
   async.Future<VacationSettings> getVacation(
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2016,13 +1862,9 @@ class UsersSettingsResource {
   async.Future<AutoForwarding> updateAutoForwarding(
     AutoForwarding request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2063,13 +1905,9 @@ class UsersSettingsResource {
   async.Future<ImapSettings> updateImap(
     ImapSettings request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2116,13 +1954,9 @@ class UsersSettingsResource {
   async.Future<LanguageSettings> updateLanguage(
     LanguageSettings request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2163,13 +1997,9 @@ class UsersSettingsResource {
   async.Future<PopSettings> updatePop(
     PopSettings request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2210,13 +2040,9 @@ class UsersSettingsResource {
   async.Future<VacationSettings> updateVacation(
     VacationSettings request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2276,13 +2102,9 @@ class UsersSettingsDelegatesResource {
   async.Future<Delegate> create(
     Delegate request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2326,14 +2148,8 @@ class UsersSettingsDelegatesResource {
   async.Future<void> delete(
     core.String userId,
     core.String delegateEmail, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (delegateEmail == null) {
-      throw core.ArgumentError('Parameter delegateEmail is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2378,14 +2194,8 @@ class UsersSettingsDelegatesResource {
   async.Future<Delegate> get(
     core.String userId,
     core.String delegateEmail, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (delegateEmail == null) {
-      throw core.ArgumentError('Parameter delegateEmail is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2425,11 +2235,8 @@ class UsersSettingsDelegatesResource {
   /// this method will complete with the same error.
   async.Future<ListDelegatesResponse> list(
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2478,13 +2285,9 @@ class UsersSettingsFiltersResource {
   async.Future<Filter> create(
     Filter request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2522,14 +2325,8 @@ class UsersSettingsFiltersResource {
   async.Future<void> delete(
     core.String userId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2569,14 +2366,8 @@ class UsersSettingsFiltersResource {
   async.Future<Filter> get(
     core.String userId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2613,11 +2404,8 @@ class UsersSettingsFiltersResource {
   /// this method will complete with the same error.
   async.Future<ListFiltersResponse> list(
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2670,13 +2458,9 @@ class UsersSettingsForwardingAddressesResource {
   async.Future<ForwardingAddress> create(
     ForwardingAddress request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2719,14 +2503,8 @@ class UsersSettingsForwardingAddressesResource {
   async.Future<void> delete(
     core.String userId,
     core.String forwardingEmail, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (forwardingEmail == null) {
-      throw core.ArgumentError('Parameter forwardingEmail is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2766,14 +2544,8 @@ class UsersSettingsForwardingAddressesResource {
   async.Future<ForwardingAddress> get(
     core.String userId,
     core.String forwardingEmail, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (forwardingEmail == null) {
-      throw core.ArgumentError('Parameter forwardingEmail is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2811,11 +2583,8 @@ class UsersSettingsForwardingAddressesResource {
   /// this method will complete with the same error.
   async.Future<ListForwardingAddressesResponse> list(
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2874,13 +2643,9 @@ class UsersSettingsSendAsResource {
   async.Future<SendAs> create(
     SendAs request,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2922,14 +2687,8 @@ class UsersSettingsSendAsResource {
   async.Future<void> delete(
     core.String userId,
     core.String sendAsEmail, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (sendAsEmail == null) {
-      throw core.ArgumentError('Parameter sendAsEmail is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2972,14 +2731,8 @@ class UsersSettingsSendAsResource {
   async.Future<SendAs> get(
     core.String userId,
     core.String sendAsEmail, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (sendAsEmail == null) {
-      throw core.ArgumentError('Parameter sendAsEmail is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3019,11 +2772,8 @@ class UsersSettingsSendAsResource {
   /// this method will complete with the same error.
   async.Future<ListSendAsResponse> list(
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3066,16 +2816,9 @@ class UsersSettingsSendAsResource {
     SendAs request,
     core.String userId,
     core.String sendAsEmail, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (sendAsEmail == null) {
-      throw core.ArgumentError('Parameter sendAsEmail is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3124,16 +2867,9 @@ class UsersSettingsSendAsResource {
     SendAs request,
     core.String userId,
     core.String sendAsEmail, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (sendAsEmail == null) {
-      throw core.ArgumentError('Parameter sendAsEmail is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3175,14 +2911,8 @@ class UsersSettingsSendAsResource {
   async.Future<void> verify(
     core.String userId,
     core.String sendAsEmail, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (sendAsEmail == null) {
-      throw core.ArgumentError('Parameter sendAsEmail is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3232,17 +2962,8 @@ class UsersSettingsSendAsSmimeInfoResource {
     core.String userId,
     core.String sendAsEmail,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (sendAsEmail == null) {
-      throw core.ArgumentError('Parameter sendAsEmail is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3288,17 +3009,8 @@ class UsersSettingsSendAsSmimeInfoResource {
     core.String userId,
     core.String sendAsEmail,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (sendAsEmail == null) {
-      throw core.ArgumentError('Parameter sendAsEmail is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3346,16 +3058,9 @@ class UsersSettingsSendAsSmimeInfoResource {
     SmimeInfo request,
     core.String userId,
     core.String sendAsEmail, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (sendAsEmail == null) {
-      throw core.ArgumentError('Parameter sendAsEmail is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3398,14 +3103,8 @@ class UsersSettingsSendAsSmimeInfoResource {
   async.Future<ListSmimeInfoResponse> list(
     core.String userId,
     core.String sendAsEmail, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (sendAsEmail == null) {
-      throw core.ArgumentError('Parameter sendAsEmail is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3449,17 +3148,8 @@ class UsersSettingsSendAsSmimeInfoResource {
     core.String userId,
     core.String sendAsEmail,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (sendAsEmail == null) {
-      throw core.ArgumentError('Parameter sendAsEmail is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3508,14 +3198,8 @@ class UsersThreadsResource {
   async.Future<void> delete(
     core.String userId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3567,16 +3251,10 @@ class UsersThreadsResource {
   async.Future<Thread> get(
     core.String userId,
     core.String id, {
-    core.String format,
-    core.List<core.String> metadataHeaders,
-    core.String $fields,
+    core.String? format,
+    core.List<core.String>? metadataHeaders,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (format != null) 'format': [format],
       if (metadataHeaders != null) 'metadataHeaders': metadataHeaders,
@@ -3631,16 +3309,13 @@ class UsersThreadsResource {
   /// this method will complete with the same error.
   async.Future<ListThreadsResponse> list(
     core.String userId, {
-    core.bool includeSpamTrash,
-    core.List<core.String> labelIds,
-    core.int maxResults,
-    core.String pageToken,
-    core.String q,
-    core.String $fields,
+    core.bool? includeSpamTrash,
+    core.List<core.String>? labelIds,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? q,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeSpamTrash != null) 'includeSpamTrash': ['${includeSpamTrash}'],
       if (labelIds != null) 'labelIds': labelIds,
@@ -3690,16 +3365,9 @@ class UsersThreadsResource {
     ModifyThreadRequest request,
     core.String userId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3741,14 +3409,8 @@ class UsersThreadsResource {
   async.Future<Thread> trash(
     core.String userId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3789,14 +3451,8 @@ class UsersThreadsResource {
   async.Future<Thread> untrash(
     core.String userId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3825,15 +3481,15 @@ class AutoForwarding {
   /// - "archive" : Archive the message.
   /// - "trash" : Move the message to the `TRASH`.
   /// - "markRead" : Leave the message in the `INBOX` and mark it as read.
-  core.String disposition;
+  core.String? disposition;
 
   /// Email address to which all incoming messages are forwarded.
   ///
   /// This email address must be a verified member of the forwarding addresses.
-  core.String emailAddress;
+  core.String? emailAddress;
 
   /// Whether all incoming mail is automatically forwarded to another address.
-  core.bool enabled;
+  core.bool? enabled;
 
   AutoForwarding();
 
@@ -3849,16 +3505,16 @@ class AutoForwarding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (disposition != null) 'disposition': disposition,
-        if (emailAddress != null) 'emailAddress': emailAddress,
-        if (enabled != null) 'enabled': enabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (disposition != null) 'disposition': disposition!,
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
 class BatchDeleteMessagesRequest {
   /// The IDs of the messages to delete.
-  core.List<core.String> ids;
+  core.List<core.String>? ids;
 
   BatchDeleteMessagesRequest();
 
@@ -3870,22 +3526,22 @@ class BatchDeleteMessagesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ids != null) 'ids': ids,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ids != null) 'ids': ids!,
       };
 }
 
 class BatchModifyMessagesRequest {
   /// A list of label IDs to add to messages.
-  core.List<core.String> addLabelIds;
+  core.List<core.String>? addLabelIds;
 
   /// The IDs of the messages to modify.
   ///
   /// There is a limit of 1000 ids per request.
-  core.List<core.String> ids;
+  core.List<core.String>? ids;
 
   /// A list of label IDs to remove from messages.
-  core.List<core.String> removeLabelIds;
+  core.List<core.String>? removeLabelIds;
 
   BatchModifyMessagesRequest();
 
@@ -3907,10 +3563,10 @@ class BatchModifyMessagesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addLabelIds != null) 'addLabelIds': addLabelIds,
-        if (ids != null) 'ids': ids,
-        if (removeLabelIds != null) 'removeLabelIds': removeLabelIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addLabelIds != null) 'addLabelIds': addLabelIds!,
+        if (ids != null) 'ids': ids!,
+        if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
       };
 }
 
@@ -3921,7 +3577,7 @@ class BatchModifyMessagesRequest {
 /// information about delegates.
 class Delegate {
   /// The email address of the delegate.
-  core.String delegateEmail;
+  core.String? delegateEmail;
 
   /// Indicates whether this address has been verified and can act as a delegate
   /// for the account.
@@ -3936,7 +3592,7 @@ class Delegate {
   /// owner rejected it.
   /// - "expired" : A verification request was mailed to the address, and it
   /// expired without verification.
-  core.String verificationStatus;
+  core.String? verificationStatus;
 
   Delegate();
 
@@ -3949,20 +3605,20 @@ class Delegate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (delegateEmail != null) 'delegateEmail': delegateEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (delegateEmail != null) 'delegateEmail': delegateEmail!,
         if (verificationStatus != null)
-          'verificationStatus': verificationStatus,
+          'verificationStatus': verificationStatus!,
       };
 }
 
 /// A draft email in the user's mailbox.
 class Draft {
   /// The immutable ID of the draft.
-  core.String id;
+  core.String? id;
 
   /// The message content of the draft.
-  Message message;
+  Message? message;
 
   Draft();
 
@@ -3976,9 +3632,9 @@ class Draft {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (message != null) 'message': message.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (message != null) 'message': message!.toJson(),
       };
 }
 
@@ -3987,13 +3643,13 @@ class Draft {
 /// Filters apply to specific messages instead of an entire email thread.
 class Filter {
   /// Action that the filter performs.
-  FilterAction action;
+  FilterAction? action;
 
   /// Matching criteria for the filter.
-  FilterCriteria criteria;
+  FilterCriteria? criteria;
 
   /// The server assigned ID of the filter.
-  core.String id;
+  core.String? id;
 
   Filter();
 
@@ -4011,23 +3667,23 @@ class Filter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action.toJson(),
-        if (criteria != null) 'criteria': criteria.toJson(),
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!.toJson(),
+        if (criteria != null) 'criteria': criteria!.toJson(),
+        if (id != null) 'id': id!,
       };
 }
 
 /// A set of actions to perform on a message.
 class FilterAction {
   /// List of labels to add to the message.
-  core.List<core.String> addLabelIds;
+  core.List<core.String>? addLabelIds;
 
   /// Email address that the message should be forwarded to.
-  core.String forward;
+  core.String? forward;
 
   /// List of labels to remove from the message.
-  core.List<core.String> removeLabelIds;
+  core.List<core.String>? removeLabelIds;
 
   FilterAction();
 
@@ -4047,59 +3703,59 @@ class FilterAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addLabelIds != null) 'addLabelIds': addLabelIds,
-        if (forward != null) 'forward': forward,
-        if (removeLabelIds != null) 'removeLabelIds': removeLabelIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addLabelIds != null) 'addLabelIds': addLabelIds!,
+        if (forward != null) 'forward': forward!,
+        if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
       };
 }
 
 /// Message matching criteria.
 class FilterCriteria {
   /// Whether the response should exclude chats.
-  core.bool excludeChats;
+  core.bool? excludeChats;
 
   /// The sender's display name or email address.
-  core.String from;
+  core.String? from;
 
   /// Whether the message has any attachment.
-  core.bool hasAttachment;
+  core.bool? hasAttachment;
 
   /// Only return messages not matching the specified query.
   ///
   /// Supports the same query format as the Gmail search box. For example,
   /// `"from:someuser@example.com rfc822msgid: is:unread"`.
-  core.String negatedQuery;
+  core.String? negatedQuery;
 
   /// Only return messages matching the specified query.
   ///
   /// Supports the same query format as the Gmail search box. For example,
   /// `"from:someuser@example.com rfc822msgid: is:unread"`.
-  core.String query;
+  core.String? query;
 
   /// The size of the entire RFC822 message in bytes, including all headers and
   /// attachments.
-  core.int size;
+  core.int? size;
 
   /// How the message size in bytes should be in relation to the size field.
   /// Possible string values are:
   /// - "unspecified"
   /// - "smaller" : Find messages smaller than the given size.
   /// - "larger" : Find messages larger than the given size.
-  core.String sizeComparison;
+  core.String? sizeComparison;
 
   /// Case-insensitive phrase found in the message's subject.
   ///
   /// Trailing and leading whitespace are be trimmed and adjacent spaces are
   /// collapsed.
-  core.String subject;
+  core.String? subject;
 
   /// The recipient's display name or email address.
   ///
   /// Includes recipients in the "to", "cc", and "bcc" header fields. You can
   /// use simply the local part of the email address. For example, "example" and
   /// "example@" both match "example@gmail.com". This field is case-insensitive.
-  core.String to;
+  core.String? to;
 
   FilterCriteria();
 
@@ -4133,23 +3789,23 @@ class FilterCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (excludeChats != null) 'excludeChats': excludeChats,
-        if (from != null) 'from': from,
-        if (hasAttachment != null) 'hasAttachment': hasAttachment,
-        if (negatedQuery != null) 'negatedQuery': negatedQuery,
-        if (query != null) 'query': query,
-        if (size != null) 'size': size,
-        if (sizeComparison != null) 'sizeComparison': sizeComparison,
-        if (subject != null) 'subject': subject,
-        if (to != null) 'to': to,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (excludeChats != null) 'excludeChats': excludeChats!,
+        if (from != null) 'from': from!,
+        if (hasAttachment != null) 'hasAttachment': hasAttachment!,
+        if (negatedQuery != null) 'negatedQuery': negatedQuery!,
+        if (query != null) 'query': query!,
+        if (size != null) 'size': size!,
+        if (sizeComparison != null) 'sizeComparison': sizeComparison!,
+        if (subject != null) 'subject': subject!,
+        if (to != null) 'to': to!,
       };
 }
 
 /// Settings for a forwarding address.
 class ForwardingAddress {
   /// An email address to which messages can be forwarded.
-  core.String forwardingEmail;
+  core.String? forwardingEmail;
 
   /// Indicates whether this address has been verified and is usable for
   /// forwarding.
@@ -4159,7 +3815,7 @@ class ForwardingAddress {
   /// - "verificationStatusUnspecified" : Unspecified verification status.
   /// - "accepted" : The address is ready to use for forwarding.
   /// - "pending" : The address is awaiting verification by the owner.
-  core.String verificationStatus;
+  core.String? verificationStatus;
 
   ForwardingAddress();
 
@@ -4172,10 +3828,10 @@ class ForwardingAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (forwardingEmail != null) 'forwardingEmail': forwardingEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (forwardingEmail != null) 'forwardingEmail': forwardingEmail!,
         if (verificationStatus != null)
-          'verificationStatus': verificationStatus,
+          'verificationStatus': verificationStatus!,
       };
 }
 
@@ -4184,26 +3840,26 @@ class ForwardingAddress {
 /// Each history change may affect multiple messages in multiple ways.
 class History {
   /// The mailbox sequence ID.
-  core.String id;
+  core.String? id;
 
   /// Labels added to messages in this history record.
-  core.List<HistoryLabelAdded> labelsAdded;
+  core.List<HistoryLabelAdded>? labelsAdded;
 
   /// Labels removed from messages in this history record.
-  core.List<HistoryLabelRemoved> labelsRemoved;
+  core.List<HistoryLabelRemoved>? labelsRemoved;
 
   /// List of messages changed in this history record.
   ///
   /// The fields for specific change types, such as `messagesAdded` may
   /// duplicate messages in this field. We recommend using the specific
   /// change-type fields instead of this.
-  core.List<Message> messages;
+  core.List<Message>? messages;
 
   /// Messages added to the mailbox in this history record.
-  core.List<HistoryMessageAdded> messagesAdded;
+  core.List<HistoryMessageAdded>? messagesAdded;
 
   /// Messages deleted (not Trashed) from the mailbox in this history record.
-  core.List<HistoryMessageDeleted> messagesDeleted;
+  core.List<HistoryMessageDeleted>? messagesDeleted;
 
   History();
 
@@ -4243,28 +3899,28 @@ class History {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
         if (labelsAdded != null)
-          'labelsAdded': labelsAdded.map((value) => value.toJson()).toList(),
+          'labelsAdded': labelsAdded!.map((value) => value.toJson()).toList(),
         if (labelsRemoved != null)
           'labelsRemoved':
-              labelsRemoved.map((value) => value.toJson()).toList(),
+              labelsRemoved!.map((value) => value.toJson()).toList(),
         if (messages != null)
-          'messages': messages.map((value) => value.toJson()).toList(),
+          'messages': messages!.map((value) => value.toJson()).toList(),
         if (messagesAdded != null)
           'messagesAdded':
-              messagesAdded.map((value) => value.toJson()).toList(),
+              messagesAdded!.map((value) => value.toJson()).toList(),
         if (messagesDeleted != null)
           'messagesDeleted':
-              messagesDeleted.map((value) => value.toJson()).toList(),
+              messagesDeleted!.map((value) => value.toJson()).toList(),
       };
 }
 
 class HistoryLabelAdded {
   /// Label IDs added to the message.
-  core.List<core.String> labelIds;
-  Message message;
+  core.List<core.String>? labelIds;
+  Message? message;
 
   HistoryLabelAdded();
 
@@ -4280,16 +3936,16 @@ class HistoryLabelAdded {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labelIds != null) 'labelIds': labelIds,
-        if (message != null) 'message': message.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labelIds != null) 'labelIds': labelIds!,
+        if (message != null) 'message': message!.toJson(),
       };
 }
 
 class HistoryLabelRemoved {
   /// Label IDs removed from the message.
-  core.List<core.String> labelIds;
-  Message message;
+  core.List<core.String>? labelIds;
+  Message? message;
 
   HistoryLabelRemoved();
 
@@ -4305,14 +3961,14 @@ class HistoryLabelRemoved {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labelIds != null) 'labelIds': labelIds,
-        if (message != null) 'message': message.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labelIds != null) 'labelIds': labelIds!,
+        if (message != null) 'message': message!.toJson(),
       };
 }
 
 class HistoryMessageAdded {
-  Message message;
+  Message? message;
 
   HistoryMessageAdded();
 
@@ -4323,13 +3979,13 @@ class HistoryMessageAdded {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (message != null) 'message': message.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (message != null) 'message': message!.toJson(),
       };
 }
 
 class HistoryMessageDeleted {
-  Message message;
+  Message? message;
 
   HistoryMessageDeleted();
 
@@ -4340,8 +3996,8 @@ class HistoryMessageDeleted {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (message != null) 'message': message.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (message != null) 'message': message!.toJson(),
       };
 }
 
@@ -4352,10 +4008,10 @@ class ImapSettings {
   ///
   /// Otherwise, Gmail will wait for an update from the client before expunging
   /// messages marked as deleted.
-  core.bool autoExpunge;
+  core.bool? autoExpunge;
 
   /// Whether IMAP is enabled for the account.
-  core.bool enabled;
+  core.bool? enabled;
 
   /// The action that will be executed on a message when it is marked as deleted
   /// and expunged from the last visible IMAP folder.
@@ -4365,14 +4021,14 @@ class ImapSettings {
   /// - "trash" : Move messages marked as deleted to the trash.
   /// - "deleteForever" : Immediately and permanently delete messages marked as
   /// deleted. The expunged messages cannot be recovered.
-  core.String expungeBehavior;
+  core.String? expungeBehavior;
 
   /// An optional limit on the number of messages that an IMAP folder may
   /// contain.
   ///
   /// Legal values are 0, 1000, 2000, 5000 or 10000. A value of zero is
   /// interpreted to mean that there is no limit.
-  core.int maxFolderSize;
+  core.int? maxFolderSize;
 
   ImapSettings();
 
@@ -4391,11 +4047,11 @@ class ImapSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (autoExpunge != null) 'autoExpunge': autoExpunge,
-        if (enabled != null) 'enabled': enabled,
-        if (expungeBehavior != null) 'expungeBehavior': expungeBehavior,
-        if (maxFolderSize != null) 'maxFolderSize': maxFolderSize,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (autoExpunge != null) 'autoExpunge': autoExpunge!,
+        if (enabled != null) 'enabled': enabled!,
+        if (expungeBehavior != null) 'expungeBehavior': expungeBehavior!,
+        if (maxFolderSize != null) 'maxFolderSize': maxFolderSize!,
       };
 }
 
@@ -4405,10 +4061,10 @@ class Label {
   /// The color to assign to the label.
   ///
   /// Color is only available for labels that have their `type` set to `user`.
-  LabelColor color;
+  LabelColor? color;
 
   /// The immutable ID of the label.
-  core.String id;
+  core.String? id;
 
   /// The visibility of the label in the label list in the Gmail web interface.
   /// Possible string values are:
@@ -4416,29 +4072,29 @@ class Label {
   /// - "labelShowIfUnread" : Show the label if there are any unread messages
   /// with that label.
   /// - "labelHide" : Do not show the label in the label list.
-  core.String labelListVisibility;
+  core.String? labelListVisibility;
 
   /// The visibility of messages with this label in the message list in the
   /// Gmail web interface.
   /// Possible string values are:
   /// - "show" : Show the label in the message list.
   /// - "hide" : Do not show the label in the message list.
-  core.String messageListVisibility;
+  core.String? messageListVisibility;
 
   /// The total number of messages with the label.
-  core.int messagesTotal;
+  core.int? messagesTotal;
 
   /// The number of unread messages with the label.
-  core.int messagesUnread;
+  core.int? messagesUnread;
 
   /// The display name of the label.
-  core.String name;
+  core.String? name;
 
   /// The total number of threads with the label.
-  core.int threadsTotal;
+  core.int? threadsTotal;
 
   /// The number of unread threads with the label.
-  core.int threadsUnread;
+  core.int? threadsUnread;
 
   /// The owner type for the label.
   ///
@@ -4453,7 +4109,7 @@ class Label {
   /// Possible string values are:
   /// - "system" : Labels created by Gmail.
   /// - "user" : Custom labels created by the user or application.
-  core.String type;
+  core.String? type;
 
   Label();
 
@@ -4491,19 +4147,19 @@ class Label {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (color != null) 'color': color.toJson(),
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (color != null) 'color': color!.toJson(),
+        if (id != null) 'id': id!,
         if (labelListVisibility != null)
-          'labelListVisibility': labelListVisibility,
+          'labelListVisibility': labelListVisibility!,
         if (messageListVisibility != null)
-          'messageListVisibility': messageListVisibility,
-        if (messagesTotal != null) 'messagesTotal': messagesTotal,
-        if (messagesUnread != null) 'messagesUnread': messagesUnread,
-        if (name != null) 'name': name,
-        if (threadsTotal != null) 'threadsTotal': threadsTotal,
-        if (threadsUnread != null) 'threadsUnread': threadsUnread,
-        if (type != null) 'type': type,
+          'messageListVisibility': messageListVisibility!,
+        if (messagesTotal != null) 'messagesTotal': messagesTotal!,
+        if (messagesUnread != null) 'messagesUnread': messagesUnread!,
+        if (name != null) 'name': name!,
+        if (threadsTotal != null) 'threadsTotal': threadsTotal!,
+        if (threadsUnread != null) 'threadsUnread': threadsUnread!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4525,7 +4181,7 @@ class LabelColor {
   /// #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7,
   /// #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde,
   /// #cca6ac, #094228, #42d692, #16a765
-  core.String backgroundColor;
+  core.String? backgroundColor;
 
   /// The text color of the label, represented as hex string.
   ///
@@ -4544,7 +4200,7 @@ class LabelColor {
   /// #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7,
   /// #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde,
   /// #cca6ac, #094228, #42d692, #16a765
-  core.String textColor;
+  core.String? textColor;
 
   LabelColor();
 
@@ -4557,9 +4213,9 @@ class LabelColor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (backgroundColor != null) 'backgroundColor': backgroundColor,
-        if (textColor != null) 'textColor': textColor,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
+        if (textColor != null) 'textColor': textColor!,
       };
 }
 
@@ -4580,7 +4236,7 @@ class LanguageSettings {
   /// a user's display language is not available for use on a particular client,
   /// said client automatically chooses to display in the closest supported
   /// variant (or a reasonable default).
-  core.String displayLanguage;
+  core.String? displayLanguage;
 
   LanguageSettings();
 
@@ -4590,8 +4246,8 @@ class LanguageSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayLanguage != null) 'displayLanguage': displayLanguage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayLanguage != null) 'displayLanguage': displayLanguage!,
       };
 }
 
@@ -4600,7 +4256,7 @@ class ListDelegatesResponse {
   /// List of the user's delegates (with any verification status).
   ///
   /// If an account doesn't have delegates, this field doesn't appear.
-  core.List<Delegate> delegates;
+  core.List<Delegate>? delegates;
 
   ListDelegatesResponse();
 
@@ -4613,9 +4269,9 @@ class ListDelegatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (delegates != null)
-          'delegates': delegates.map((value) => value.toJson()).toList(),
+          'delegates': delegates!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4625,13 +4281,13 @@ class ListDraftsResponse {
   /// Note that the `Message` property in each `Draft` resource only contains an
   /// `id` and a `threadId`. The messages.get method can fetch additional
   /// message details.
-  core.List<Draft> drafts;
+  core.List<Draft>? drafts;
 
   /// Token to retrieve the next page of results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Estimated total number of results.
-  core.int resultSizeEstimate;
+  core.int? resultSizeEstimate;
 
   ListDraftsResponse();
 
@@ -4650,19 +4306,19 @@ class ListDraftsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (drafts != null)
-          'drafts': drafts.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'drafts': drafts!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resultSizeEstimate != null)
-          'resultSizeEstimate': resultSizeEstimate,
+          'resultSizeEstimate': resultSizeEstimate!,
       };
 }
 
 /// Response for the ListFilters method.
 class ListFiltersResponse {
   /// List of a user's filters.
-  core.List<Filter> filter;
+  core.List<Filter>? filter;
 
   ListFiltersResponse();
 
@@ -4675,16 +4331,16 @@ class ListFiltersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (filter != null)
-          'filter': filter.map((value) => value.toJson()).toList(),
+          'filter': filter!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response for the ListForwardingAddresses method.
 class ListForwardingAddressesResponse {
   /// List of addresses that may be used for forwarding.
-  core.List<ForwardingAddress> forwardingAddresses;
+  core.List<ForwardingAddress>? forwardingAddresses;
 
   ListForwardingAddressesResponse();
 
@@ -4697,10 +4353,10 @@ class ListForwardingAddressesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (forwardingAddresses != null)
           'forwardingAddresses':
-              forwardingAddresses.map((value) => value.toJson()).toList(),
+              forwardingAddresses!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4709,13 +4365,13 @@ class ListHistoryResponse {
   ///
   /// Any `messages` contained in the response will typically only have `id` and
   /// `threadId` fields populated.
-  core.List<History> history;
+  core.List<History>? history;
 
   /// The ID of the mailbox's current history record.
-  core.String historyId;
+  core.String? historyId;
 
   /// Page token to retrieve the next page of results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListHistoryResponse();
 
@@ -4734,11 +4390,11 @@ class ListHistoryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (history != null)
-          'history': history.map((value) => value.toJson()).toList(),
-        if (historyId != null) 'historyId': historyId,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'history': history!.map((value) => value.toJson()).toList(),
+        if (historyId != null) 'historyId': historyId!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -4748,7 +4404,7 @@ class ListLabelsResponse {
   /// Note that each label resource only contains an `id`, `name`,
   /// `messageListVisibility`, `labelListVisibility`, and `type`. The labels.get
   /// method can fetch additional label details.
-  core.List<Label> labels;
+  core.List<Label>? labels;
 
   ListLabelsResponse();
 
@@ -4761,9 +4417,9 @@ class ListLabelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (labels != null)
-          'labels': labels.map((value) => value.toJson()).toList(),
+          'labels': labels!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4772,13 +4428,13 @@ class ListMessagesResponse {
   ///
   /// Note that each message resource contains only an `id` and a `threadId`.
   /// Additional message details can be fetched using the messages.get method.
-  core.List<Message> messages;
+  core.List<Message>? messages;
 
   /// Token to retrieve the next page of results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Estimated total number of results.
-  core.int resultSizeEstimate;
+  core.int? resultSizeEstimate;
 
   ListMessagesResponse();
 
@@ -4797,19 +4453,19 @@ class ListMessagesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (messages != null)
-          'messages': messages.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'messages': messages!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resultSizeEstimate != null)
-          'resultSizeEstimate': resultSizeEstimate,
+          'resultSizeEstimate': resultSizeEstimate!,
       };
 }
 
 /// Response for the ListSendAs method.
 class ListSendAsResponse {
   /// List of send-as aliases.
-  core.List<SendAs> sendAs;
+  core.List<SendAs>? sendAs;
 
   ListSendAsResponse();
 
@@ -4822,15 +4478,15 @@ class ListSendAsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (sendAs != null)
-          'sendAs': sendAs.map((value) => value.toJson()).toList(),
+          'sendAs': sendAs!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ListSmimeInfoResponse {
   /// List of SmimeInfo.
-  core.List<SmimeInfo> smimeInfo;
+  core.List<SmimeInfo>? smimeInfo;
 
   ListSmimeInfoResponse();
 
@@ -4843,25 +4499,25 @@ class ListSmimeInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (smimeInfo != null)
-          'smimeInfo': smimeInfo.map((value) => value.toJson()).toList(),
+          'smimeInfo': smimeInfo!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ListThreadsResponse {
   /// Page token to retrieve the next page of results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Estimated total number of results.
-  core.int resultSizeEstimate;
+  core.int? resultSizeEstimate;
 
   /// List of threads.
   ///
   /// Note that each thread resource does not contain a list of `messages`. The
   /// list of `messages` for a given thread can be fetched using the threads.get
   /// method.
-  core.List<Thread> threads;
+  core.List<Thread>? threads;
 
   ListThreadsResponse();
 
@@ -4880,22 +4536,22 @@ class ListThreadsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resultSizeEstimate != null)
-          'resultSizeEstimate': resultSizeEstimate,
+          'resultSizeEstimate': resultSizeEstimate!,
         if (threads != null)
-          'threads': threads.map((value) => value.toJson()).toList(),
+          'threads': threads!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// An email message.
 class Message {
   /// The ID of the last history record that modified this message.
-  core.String historyId;
+  core.String? historyId;
 
   /// The immutable ID of the message.
-  core.String id;
+  core.String? id;
 
   /// The internal message creation timestamp (epoch ms), which determines
   /// ordering in the inbox.
@@ -4904,21 +4560,21 @@ class Message {
   /// originally accepted by Google, which is more reliable than the `Date`
   /// header. However, for API-migrated mail, it can be configured by client to
   /// be based on the `Date` header.
-  core.String internalDate;
+  core.String? internalDate;
 
   /// List of IDs of labels applied to this message.
-  core.List<core.String> labelIds;
+  core.List<core.String>? labelIds;
 
   /// The parsed email structure in the message parts.
-  MessagePart payload;
+  MessagePart? payload;
 
   /// The entire email message in an RFC 2822 formatted and base64url encoded
   /// string.
   ///
   /// Returned in `messages.get` and `drafts.get` responses when the
   /// `format=RAW` parameter is supplied.
-  core.String raw;
-  core.List<core.int> get rawAsBytes => convert.base64.decode(raw);
+  core.String? raw;
+  core.List<core.int> get rawAsBytes => convert.base64.decode(raw!);
 
   set rawAsBytes(core.List<core.int> _bytes) {
     raw =
@@ -4926,10 +4582,10 @@ class Message {
   }
 
   /// Estimated size in bytes of the message.
-  core.int sizeEstimate;
+  core.int? sizeEstimate;
 
   /// A short part of the message text.
-  core.String snippet;
+  core.String? snippet;
 
   /// The ID of the thread the message belongs to.
   ///
@@ -4939,7 +4595,7 @@ class Message {
   /// `In-Reply-To` headers must be set in compliance with the
   /// [RFC 2822](https://tools.ietf.org/html/rfc2822) standard. 3. The `Subject`
   /// headers must match.
-  core.String threadId;
+  core.String? threadId;
 
   Message();
 
@@ -4976,16 +4632,16 @@ class Message {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (historyId != null) 'historyId': historyId,
-        if (id != null) 'id': id,
-        if (internalDate != null) 'internalDate': internalDate,
-        if (labelIds != null) 'labelIds': labelIds,
-        if (payload != null) 'payload': payload.toJson(),
-        if (raw != null) 'raw': raw,
-        if (sizeEstimate != null) 'sizeEstimate': sizeEstimate,
-        if (snippet != null) 'snippet': snippet,
-        if (threadId != null) 'threadId': threadId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (historyId != null) 'historyId': historyId!,
+        if (id != null) 'id': id!,
+        if (internalDate != null) 'internalDate': internalDate!,
+        if (labelIds != null) 'labelIds': labelIds!,
+        if (payload != null) 'payload': payload!.toJson(),
+        if (raw != null) 'raw': raw!,
+        if (sizeEstimate != null) 'sizeEstimate': sizeEstimate!,
+        if (snippet != null) 'snippet': snippet!,
+        if (threadId != null) 'threadId': threadId!,
       };
 }
 
@@ -4993,32 +4649,32 @@ class Message {
 class MessagePart {
   /// The message part body for this part, which may be empty for container MIME
   /// message parts.
-  MessagePartBody body;
+  MessagePartBody? body;
 
   /// The filename of the attachment.
   ///
   /// Only present if this message part represents an attachment.
-  core.String filename;
+  core.String? filename;
 
   /// List of headers on this message part.
   ///
   /// For the top-level message part, representing the entire message payload,
   /// it will contain the standard RFC 2822 email headers such as `To`, `From`,
   /// and `Subject`.
-  core.List<MessagePartHeader> headers;
+  core.List<MessagePartHeader>? headers;
 
   /// The MIME type of the message part.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// The immutable ID of the message part.
-  core.String partId;
+  core.String? partId;
 
   /// The child MIME message parts of this part.
   ///
   /// This only applies to container MIME message parts, for example `multipart
   /// / * `. For non- container MIME message part types, such as `text/plain`,
   /// this field is empty. For more information, see RFC 1521.
-  core.List<MessagePart> parts;
+  core.List<MessagePart>? parts;
 
   MessagePart();
 
@@ -5050,15 +4706,15 @@ class MessagePart {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (body != null) 'body': body.toJson(),
-        if (filename != null) 'filename': filename,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (body != null) 'body': body!.toJson(),
+        if (filename != null) 'filename': filename!,
         if (headers != null)
-          'headers': headers.map((value) => value.toJson()).toList(),
-        if (mimeType != null) 'mimeType': mimeType,
-        if (partId != null) 'partId': partId,
+          'headers': headers!.map((value) => value.toJson()).toList(),
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (partId != null) 'partId': partId!,
         if (parts != null)
-          'parts': parts.map((value) => value.toJson()).toList(),
+          'parts': parts!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5069,15 +4725,15 @@ class MessagePartBody {
   ///
   /// When not present, the entire content of the message part body is contained
   /// in the data field.
-  core.String attachmentId;
+  core.String? attachmentId;
 
   /// The body data of a MIME message part as a base64url encoded string.
   ///
   /// May be empty for MIME container types that have no message body or when
   /// the body data is sent as a separate attachment. An attachment ID is
   /// present if the body data is contained in a separate attachment.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -5085,7 +4741,7 @@ class MessagePartBody {
   }
 
   /// Number of bytes for the message part data (encoding notwithstanding).
-  core.int size;
+  core.int? size;
 
   MessagePartBody();
 
@@ -5101,10 +4757,10 @@ class MessagePartBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attachmentId != null) 'attachmentId': attachmentId,
-        if (data != null) 'data': data,
-        if (size != null) 'size': size,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attachmentId != null) 'attachmentId': attachmentId!,
+        if (data != null) 'data': data!,
+        if (size != null) 'size': size!,
       };
 }
 
@@ -5112,12 +4768,12 @@ class MessagePartHeader {
   /// The name of the header before the `:` separator.
   ///
   /// For example, `To`.
-  core.String name;
+  core.String? name;
 
   /// The value of the header after the `:` separator.
   ///
   /// For example, `someuser@example.com`.
-  core.String value;
+  core.String? value;
 
   MessagePartHeader();
 
@@ -5130,18 +4786,18 @@ class MessagePartHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
 class ModifyMessageRequest {
   /// A list of IDs of labels to add to this message.
-  core.List<core.String> addLabelIds;
+  core.List<core.String>? addLabelIds;
 
   /// A list IDs of labels to remove from this message.
-  core.List<core.String> removeLabelIds;
+  core.List<core.String>? removeLabelIds;
 
   ModifyMessageRequest();
 
@@ -5158,18 +4814,18 @@ class ModifyMessageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addLabelIds != null) 'addLabelIds': addLabelIds,
-        if (removeLabelIds != null) 'removeLabelIds': removeLabelIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addLabelIds != null) 'addLabelIds': addLabelIds!,
+        if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
       };
 }
 
 class ModifyThreadRequest {
   /// A list of IDs of labels to add to this thread.
-  core.List<core.String> addLabelIds;
+  core.List<core.String>? addLabelIds;
 
   /// A list of IDs of labels to remove from this thread.
-  core.List<core.String> removeLabelIds;
+  core.List<core.String>? removeLabelIds;
 
   ModifyThreadRequest();
 
@@ -5186,9 +4842,9 @@ class ModifyThreadRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addLabelIds != null) 'addLabelIds': addLabelIds,
-        if (removeLabelIds != null) 'removeLabelIds': removeLabelIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addLabelIds != null) 'addLabelIds': addLabelIds!,
+        if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
       };
 }
 
@@ -5202,7 +4858,7 @@ class PopSettings {
   /// point in time are accessible via POP.
   /// - "allMail" : Indicates that all unfetched messages are accessible via
   /// POP.
-  core.String accessWindow;
+  core.String? accessWindow;
 
   /// The action that will be executed on a message after it has been fetched
   /// via POP.
@@ -5212,7 +4868,7 @@ class PopSettings {
   /// - "archive" : Archive the message.
   /// - "trash" : Move the message to the `TRASH`.
   /// - "markRead" : Leave the message in the `INBOX` and mark it as read.
-  core.String disposition;
+  core.String? disposition;
 
   PopSettings();
 
@@ -5225,25 +4881,25 @@ class PopSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessWindow != null) 'accessWindow': accessWindow,
-        if (disposition != null) 'disposition': disposition,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessWindow != null) 'accessWindow': accessWindow!,
+        if (disposition != null) 'disposition': disposition!,
       };
 }
 
 /// Profile for a Gmail user.
 class Profile {
   /// The user's email address.
-  core.String emailAddress;
+  core.String? emailAddress;
 
   /// The ID of the mailbox's current history record.
-  core.String historyId;
+  core.String? historyId;
 
   /// The total number of messages in the mailbox.
-  core.int messagesTotal;
+  core.int? messagesTotal;
 
   /// The total number of threads in the mailbox.
-  core.int threadsTotal;
+  core.int? threadsTotal;
 
   Profile();
 
@@ -5262,11 +4918,11 @@ class Profile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (emailAddress != null) 'emailAddress': emailAddress,
-        if (historyId != null) 'historyId': historyId,
-        if (messagesTotal != null) 'messagesTotal': messagesTotal,
-        if (threadsTotal != null) 'threadsTotal': threadsTotal,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (historyId != null) 'historyId': historyId!,
+        if (messagesTotal != null) 'messagesTotal': messagesTotal!,
+        if (threadsTotal != null) 'threadsTotal': threadsTotal!,
       };
 }
 
@@ -5283,7 +4939,7 @@ class SendAs {
   /// associated with the account. If the admin has disabled the ability for
   /// users to update their name format, requests to update this field for the
   /// primary login will silently fail.
-  core.String displayName;
+  core.String? displayName;
 
   /// Whether this address is selected as the default "From:" address in
   /// situations such as composing a new message or sending a vacation
@@ -5293,29 +4949,29 @@ class SendAs {
   /// legal value that clients may write to this field is `true`. Changing this
   /// from `false` to `true` for an address will result in this field becoming
   /// `false` for the other previous default address.
-  core.bool isDefault;
+  core.bool? isDefault;
 
   /// Whether this address is the primary address used to login to the account.
   ///
   /// Every Gmail account has exactly one primary address, and it cannot be
   /// deleted from the collection of send-as aliases. This field is read-only.
-  core.bool isPrimary;
+  core.bool? isPrimary;
 
   /// An optional email address that is included in a "Reply-To:" header for
   /// mail sent using this alias.
   ///
   /// If this is empty, Gmail will not generate a "Reply-To:" header.
-  core.String replyToAddress;
+  core.String? replyToAddress;
 
   /// The email address that appears in the "From:" header for mail sent using
   /// this alias.
   ///
   /// This is read-only for all operations except create.
-  core.String sendAsEmail;
+  core.String? sendAsEmail;
 
   /// An optional HTML signature that is included in messages composed with this
   /// alias in the Gmail web UI.
-  core.String signature;
+  core.String? signature;
 
   /// An optional SMTP service that will be used as an outbound relay for mail
   /// sent using this alias.
@@ -5323,13 +4979,13 @@ class SendAs {
   /// If this is empty, outbound mail will be sent directly from Gmail's servers
   /// to the destination SMTP service. This setting only applies to custom
   /// "from" aliases.
-  SmtpMsa smtpMsa;
+  SmtpMsa? smtpMsa;
 
   /// Whether Gmail should treat this address as an alias for the user's primary
   /// email address.
   ///
   /// This setting only applies to custom "from" aliases.
-  core.bool treatAsAlias;
+  core.bool? treatAsAlias;
 
   /// Indicates whether this address has been verified for use as a send-as
   /// alias.
@@ -5339,7 +4995,7 @@ class SendAs {
   /// - "verificationStatusUnspecified" : Unspecified verification status.
   /// - "accepted" : The address is ready to use as a send-as alias.
   /// - "pending" : The address is awaiting verification by the owner.
-  core.String verificationStatus;
+  core.String? verificationStatus;
 
   SendAs();
 
@@ -5374,43 +5030,43 @@ class SendAs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (isDefault != null) 'isDefault': isDefault,
-        if (isPrimary != null) 'isPrimary': isPrimary,
-        if (replyToAddress != null) 'replyToAddress': replyToAddress,
-        if (sendAsEmail != null) 'sendAsEmail': sendAsEmail,
-        if (signature != null) 'signature': signature,
-        if (smtpMsa != null) 'smtpMsa': smtpMsa.toJson(),
-        if (treatAsAlias != null) 'treatAsAlias': treatAsAlias,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (isDefault != null) 'isDefault': isDefault!,
+        if (isPrimary != null) 'isPrimary': isPrimary!,
+        if (replyToAddress != null) 'replyToAddress': replyToAddress!,
+        if (sendAsEmail != null) 'sendAsEmail': sendAsEmail!,
+        if (signature != null) 'signature': signature!,
+        if (smtpMsa != null) 'smtpMsa': smtpMsa!.toJson(),
+        if (treatAsAlias != null) 'treatAsAlias': treatAsAlias!,
         if (verificationStatus != null)
-          'verificationStatus': verificationStatus,
+          'verificationStatus': verificationStatus!,
       };
 }
 
 /// An S/MIME email config.
 class SmimeInfo {
   /// Encrypted key password, when key is encrypted.
-  core.String encryptedKeyPassword;
+  core.String? encryptedKeyPassword;
 
   /// When the certificate expires (in milliseconds since epoch).
-  core.String expiration;
+  core.String? expiration;
 
   /// The immutable ID for the SmimeInfo.
-  core.String id;
+  core.String? id;
 
   /// Whether this SmimeInfo is the default one for this user's send-as address.
-  core.bool isDefault;
+  core.bool? isDefault;
 
   /// The S/MIME certificate issuer's common name.
-  core.String issuerCn;
+  core.String? issuerCn;
 
   /// PEM formatted X509 concatenated certificate string (standard base64
   /// encoding).
   ///
   /// Format used for returning key, which includes public key as well as
   /// certificate chain (not private key).
-  core.String pem;
+  core.String? pem;
 
   /// PKCS#12 format containing a single private/public key pair and certificate
   /// chain.
@@ -5419,8 +5075,8 @@ class SmimeInfo {
   /// is never returned, because the private key is not intended to be exported.
   /// PKCS#12 may be encrypted, in which case encryptedKeyPassword should be set
   /// appropriately.
-  core.String pkcs12;
-  core.List<core.int> get pkcs12AsBytes => convert.base64.decode(pkcs12);
+  core.String? pkcs12;
+  core.List<core.int> get pkcs12AsBytes => convert.base64.decode(pkcs12!);
 
   set pkcs12AsBytes(core.List<core.int> _bytes) {
     pkcs12 =
@@ -5453,15 +5109,15 @@ class SmimeInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (encryptedKeyPassword != null)
-          'encryptedKeyPassword': encryptedKeyPassword,
-        if (expiration != null) 'expiration': expiration,
-        if (id != null) 'id': id,
-        if (isDefault != null) 'isDefault': isDefault,
-        if (issuerCn != null) 'issuerCn': issuerCn,
-        if (pem != null) 'pem': pem,
-        if (pkcs12 != null) 'pkcs12': pkcs12,
+          'encryptedKeyPassword': encryptedKeyPassword!,
+        if (expiration != null) 'expiration': expiration!,
+        if (id != null) 'id': id!,
+        if (isDefault != null) 'isDefault': isDefault!,
+        if (issuerCn != null) 'issuerCn': issuerCn!,
+        if (pem != null) 'pem': pem!,
+        if (pkcs12 != null) 'pkcs12': pkcs12!,
       };
 }
 
@@ -5470,18 +5126,18 @@ class SmtpMsa {
   /// The hostname of the SMTP service.
   ///
   /// Required.
-  core.String host;
+  core.String? host;
 
   /// The password that will be used for authentication with the SMTP service.
   ///
   /// This is a write-only field that can be specified in requests to create or
   /// update SendAs settings; it is never populated in responses.
-  core.String password;
+  core.String? password;
 
   /// The port of the SMTP service.
   ///
   /// Required.
-  core.int port;
+  core.int? port;
 
   /// The protocol that will be used to secure communication with the SMTP
   /// service.
@@ -5494,13 +5150,13 @@ class SmtpMsa {
   /// - "ssl" : Communication with the remote SMTP service is secured using SSL.
   /// - "starttls" : Communication with the remote SMTP service is secured using
   /// STARTTLS.
-  core.String securityMode;
+  core.String? securityMode;
 
   /// The username that will be used for authentication with the SMTP service.
   ///
   /// This is a write-only field that can be specified in requests to create or
   /// update SendAs settings; it is never populated in responses.
-  core.String username;
+  core.String? username;
 
   SmtpMsa();
 
@@ -5522,28 +5178,28 @@ class SmtpMsa {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (host != null) 'host': host,
-        if (password != null) 'password': password,
-        if (port != null) 'port': port,
-        if (securityMode != null) 'securityMode': securityMode,
-        if (username != null) 'username': username,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (host != null) 'host': host!,
+        if (password != null) 'password': password!,
+        if (port != null) 'port': port!,
+        if (securityMode != null) 'securityMode': securityMode!,
+        if (username != null) 'username': username!,
       };
 }
 
 /// A collection of messages representing a conversation.
 class Thread {
   /// The ID of the last history record that modified this thread.
-  core.String historyId;
+  core.String? historyId;
 
   /// The unique ID of the thread.
-  core.String id;
+  core.String? id;
 
   /// The list of messages in the thread.
-  core.List<Message> messages;
+  core.List<Message>? messages;
 
   /// A short part of the message text.
-  core.String snippet;
+  core.String? snippet;
 
   Thread();
 
@@ -5565,12 +5221,12 @@ class Thread {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (historyId != null) 'historyId': historyId,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (historyId != null) 'historyId': historyId!,
+        if (id != null) 'id': id!,
         if (messages != null)
-          'messages': messages.map((value) => value.toJson()).toList(),
-        if (snippet != null) 'snippet': snippet,
+          'messages': messages!.map((value) => value.toJson()).toList(),
+        if (snippet != null) 'snippet': snippet!,
       };
 }
 
@@ -5580,50 +5236,50 @@ class Thread {
 /// interface.
 class VacationSettings {
   /// Flag that controls whether Gmail automatically replies to messages.
-  core.bool enableAutoReply;
+  core.bool? enableAutoReply;
 
   /// An optional end time for sending auto-replies (epoch ms).
   ///
   /// When this is specified, Gmail will automatically reply only to messages
   /// that it receives before the end time. If both `startTime` and `endTime`
   /// are specified, `startTime` must precede `endTime`.
-  core.String endTime;
+  core.String? endTime;
 
   /// Response body in HTML format.
   ///
   /// Gmail will sanitize the HTML before storing it. If both
   /// `response_body_plain_text` and `response_body_html` are specified,
   /// `response_body_html` will be used.
-  core.String responseBodyHtml;
+  core.String? responseBodyHtml;
 
   /// Response body in plain text format.
   ///
   /// If both `response_body_plain_text` and `response_body_html` are specified,
   /// `response_body_html` will be used.
-  core.String responseBodyPlainText;
+  core.String? responseBodyPlainText;
 
   /// Optional text to prepend to the subject line in vacation responses.
   ///
   /// In order to enable auto-replies, either the response subject or the
   /// response body must be nonempty.
-  core.String responseSubject;
+  core.String? responseSubject;
 
   /// Flag that determines whether responses are sent to recipients who are not
   /// in the user's list of contacts.
-  core.bool restrictToContacts;
+  core.bool? restrictToContacts;
 
   /// Flag that determines whether responses are sent to recipients who are
   /// outside of the user's domain.
   ///
   /// This feature is only available for G Suite users.
-  core.bool restrictToDomain;
+  core.bool? restrictToDomain;
 
   /// An optional start time for sending auto-replies (epoch ms).
   ///
   /// When this is specified, Gmail will automatically reply only to messages
   /// that it receives after the start time. If both `startTime` and `endTime`
   /// are specified, `startTime` must precede `endTime`.
-  core.String startTime;
+  core.String? startTime;
 
   VacationSettings();
 
@@ -5654,17 +5310,17 @@ class VacationSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enableAutoReply != null) 'enableAutoReply': enableAutoReply,
-        if (endTime != null) 'endTime': endTime,
-        if (responseBodyHtml != null) 'responseBodyHtml': responseBodyHtml,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enableAutoReply != null) 'enableAutoReply': enableAutoReply!,
+        if (endTime != null) 'endTime': endTime!,
+        if (responseBodyHtml != null) 'responseBodyHtml': responseBodyHtml!,
         if (responseBodyPlainText != null)
-          'responseBodyPlainText': responseBodyPlainText,
-        if (responseSubject != null) 'responseSubject': responseSubject,
+          'responseBodyPlainText': responseBodyPlainText!,
+        if (responseSubject != null) 'responseSubject': responseSubject!,
         if (restrictToContacts != null)
-          'restrictToContacts': restrictToContacts,
-        if (restrictToDomain != null) 'restrictToDomain': restrictToDomain,
-        if (startTime != null) 'startTime': startTime,
+          'restrictToContacts': restrictToContacts!,
+        if (restrictToDomain != null) 'restrictToDomain': restrictToDomain!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -5676,14 +5332,14 @@ class WatchRequest {
   /// labelIds specified.
   /// - "exclude" : Get push notifications for all message changes except those
   /// relating to labelIds specified.
-  core.String labelFilterAction;
+  core.String? labelFilterAction;
 
   /// List of label_ids to restrict notifications about.
   ///
   /// By default, if unspecified, all changes are pushed out. If specified then
   /// dictates which labels are required for a push notification to be
   /// generated.
-  core.List<core.String> labelIds;
+  core.List<core.String>? labelIds;
 
   /// A fully qualified Google Cloud Pub/Sub API topic name to publish the
   /// events to.
@@ -5694,7 +5350,7 @@ class WatchRequest {
   /// Pub/Sub "v1" topic naming format). Note that the "my-project-identifier"
   /// portion must exactly match your Google developer project id (the one
   /// executing this watch request).
-  core.String topicName;
+  core.String? topicName;
 
   WatchRequest();
 
@@ -5712,10 +5368,10 @@ class WatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labelFilterAction != null) 'labelFilterAction': labelFilterAction,
-        if (labelIds != null) 'labelIds': labelIds,
-        if (topicName != null) 'topicName': topicName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labelFilterAction != null) 'labelFilterAction': labelFilterAction!,
+        if (labelIds != null) 'labelIds': labelIds!,
+        if (topicName != null) 'topicName': topicName!,
       };
 }
 
@@ -5725,10 +5381,10 @@ class WatchResponse {
   /// millis).
   ///
   /// Call `watch` again before this time to renew the watch.
-  core.String expiration;
+  core.String? expiration;
 
   /// The ID of the mailbox's current history record.
-  core.String historyId;
+  core.String? historyId;
 
   WatchResponse();
 
@@ -5741,8 +5397,8 @@ class WatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expiration != null) 'expiration': expiration,
-        if (historyId != null) 'historyId': historyId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expiration != null) 'expiration': expiration!,
+        if (historyId != null) 'historyId': historyId!,
       };
 }

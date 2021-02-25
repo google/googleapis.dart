@@ -92,13 +92,10 @@ class UsersResource {
   /// this method will complete with the same error.
   async.Future<LoginProfile> getLoginProfile(
     core.String name, {
-    core.String projectId,
-    core.String systemId,
-    core.String $fields,
+    core.String? projectId,
+    core.String? systemId,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if (systemId != null) 'systemId': [systemId],
@@ -145,14 +142,10 @@ class UsersResource {
   async.Future<ImportSshPublicKeyResponse> importSshPublicKey(
     SshPublicKey request,
     core.String parent, {
-    core.String projectId,
-    core.String $fields,
+    core.String? projectId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
@@ -200,11 +193,8 @@ class UsersProjectsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -246,11 +236,8 @@ class UsersSshPublicKeysResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -286,11 +273,8 @@ class UsersSshPublicKeysResource {
   /// this method will complete with the same error.
   async.Future<SshPublicKey> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -335,14 +319,10 @@ class UsersSshPublicKeysResource {
   async.Future<SshPublicKey> patch(
     SshPublicKey request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -375,16 +355,16 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A response message for importing an SSH public key.
 class ImportSshPublicKeyResponse {
   /// Detailed information about import results.
-  core.String details;
+  core.String? details;
 
   /// The login profile information for the user.
-  LoginProfile loginProfile;
+  LoginProfile? loginProfile;
 
   ImportSshPublicKeyResponse();
 
@@ -398,9 +378,9 @@ class ImportSshPublicKeyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (details != null) 'details': details,
-        if (loginProfile != null) 'loginProfile': loginProfile.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (details != null) 'details': details!,
+        if (loginProfile != null) 'loginProfile': loginProfile!.toJson(),
       };
 }
 
@@ -410,13 +390,13 @@ class LoginProfile {
   /// A unique user ID.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The list of POSIX accounts associated with the user.
-  core.List<PosixAccount> posixAccounts;
+  core.List<PosixAccount>? posixAccounts;
 
   /// A map from SSH public key fingerprint to the associated key object.
-  core.Map<core.String, SshPublicKey> sshPublicKeys;
+  core.Map<core.String, SshPublicKey>? sshPublicKeys;
 
   LoginProfile();
 
@@ -432,7 +412,7 @@ class LoginProfile {
     }
     if (_json.containsKey('sshPublicKeys')) {
       sshPublicKeys = (_json['sshPublicKeys'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -443,13 +423,13 @@ class LoginProfile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
         if (posixAccounts != null)
           'posixAccounts':
-              posixAccounts.map((value) => value.toJson()).toList(),
+              posixAccounts!.map((value) => value.toJson()).toList(),
         if (sshPublicKeys != null)
-          'sshPublicKeys': sshPublicKeys
+          'sshPublicKeys': sshPublicKeys!
               .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
@@ -459,21 +439,21 @@ class PosixAccount {
   /// A POSIX account identifier.
   ///
   /// Output only.
-  core.String accountId;
+  core.String? accountId;
 
   /// The GECOS (user information) entry for this account.
-  core.String gecos;
+  core.String? gecos;
 
   /// The default group ID.
-  core.String gid;
+  core.String? gid;
 
   /// The path to the home directory for this account.
-  core.String homeDirectory;
+  core.String? homeDirectory;
 
   /// The canonical resource name.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The operating system type where this account applies.
   /// Possible string values are:
@@ -481,24 +461,24 @@ class PosixAccount {
   /// associated with the user account information is unspecified.
   /// - "LINUX" : Linux user account information.
   /// - "WINDOWS" : Windows user account information.
-  core.String operatingSystemType;
+  core.String? operatingSystemType;
 
   /// Only one POSIX account can be marked as primary.
-  core.bool primary;
+  core.bool? primary;
 
   /// The path to the logic shell for this account.
-  core.String shell;
+  core.String? shell;
 
   /// System identifier for which account the username or uid applies to.
   ///
   /// By default, the empty value is used.
-  core.String systemId;
+  core.String? systemId;
 
   /// The user ID.
-  core.String uid;
+  core.String? uid;
 
   /// The username of the POSIX account.
-  core.String username;
+  core.String? username;
 
   PosixAccount();
 
@@ -538,39 +518,39 @@ class PosixAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (gecos != null) 'gecos': gecos,
-        if (gid != null) 'gid': gid,
-        if (homeDirectory != null) 'homeDirectory': homeDirectory,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (gecos != null) 'gecos': gecos!,
+        if (gid != null) 'gid': gid!,
+        if (homeDirectory != null) 'homeDirectory': homeDirectory!,
+        if (name != null) 'name': name!,
         if (operatingSystemType != null)
-          'operatingSystemType': operatingSystemType,
-        if (primary != null) 'primary': primary,
-        if (shell != null) 'shell': shell,
-        if (systemId != null) 'systemId': systemId,
-        if (uid != null) 'uid': uid,
-        if (username != null) 'username': username,
+          'operatingSystemType': operatingSystemType!,
+        if (primary != null) 'primary': primary!,
+        if (shell != null) 'shell': shell!,
+        if (systemId != null) 'systemId': systemId!,
+        if (uid != null) 'uid': uid!,
+        if (username != null) 'username': username!,
       };
 }
 
 /// The SSH public key information associated with a Google account.
 class SshPublicKey {
   /// An expiration time in microseconds since epoch.
-  core.String expirationTimeUsec;
+  core.String? expirationTimeUsec;
 
   /// The SHA-256 fingerprint of the SSH public key.
   ///
   /// Output only.
-  core.String fingerprint;
+  core.String? fingerprint;
 
   /// Public key text in SSH format, defined by RFC4253 section 6.6.
-  core.String key;
+  core.String? key;
 
   /// The canonical resource name.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   SshPublicKey();
 
@@ -589,11 +569,11 @@ class SshPublicKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (expirationTimeUsec != null)
-          'expirationTimeUsec': expirationTimeUsec,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (key != null) 'key': key,
-        if (name != null) 'name': name,
+          'expirationTimeUsec': expirationTimeUsec!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (key != null) 'key': key!,
+        if (name != null) 'name': name!,
       };
 }

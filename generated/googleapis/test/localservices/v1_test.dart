@@ -59,24 +59,68 @@ void checkGoogleAdsHomeservicesLocalservicesV1AccountReport(
     api.GoogleAdsHomeservicesLocalservicesV1AccountReport o) {
   buildCounterGoogleAdsHomeservicesLocalservicesV1AccountReport++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1AccountReport < 3) {
-    unittest.expect(o.accountId, unittest.equals('foo'));
-    checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(o.aggregatorInfo
-        as api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo);
-    unittest.expect(o.averageFiveStarRating, unittest.equals(42.0));
-    unittest.expect(o.averageWeeklyBudget, unittest.equals(42.0));
-    unittest.expect(o.businessName, unittest.equals('foo'));
-    unittest.expect(o.currencyCode, unittest.equals('foo'));
-    unittest.expect(o.currentPeriodChargedLeads, unittest.equals('foo'));
-    unittest.expect(o.currentPeriodConnectedPhoneCalls, unittest.equals('foo'));
-    unittest.expect(o.currentPeriodPhoneCalls, unittest.equals('foo'));
-    unittest.expect(o.currentPeriodTotalCost, unittest.equals(42.0));
-    unittest.expect(o.phoneLeadResponsiveness, unittest.equals(42.0));
-    unittest.expect(o.previousPeriodChargedLeads, unittest.equals('foo'));
     unittest.expect(
-        o.previousPeriodConnectedPhoneCalls, unittest.equals('foo'));
-    unittest.expect(o.previousPeriodPhoneCalls, unittest.equals('foo'));
-    unittest.expect(o.previousPeriodTotalCost, unittest.equals(42.0));
-    unittest.expect(o.totalReview, unittest.equals(42));
+      o.accountId!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(o.aggregatorInfo!
+        as api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo);
+    unittest.expect(
+      o.averageFiveStarRating!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.averageWeeklyBudget!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.businessName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.currencyCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.currentPeriodChargedLeads!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.currentPeriodConnectedPhoneCalls!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.currentPeriodPhoneCalls!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.currentPeriodTotalCost!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.phoneLeadResponsiveness!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.previousPeriodChargedLeads!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.previousPeriodConnectedPhoneCalls!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.previousPeriodPhoneCalls!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.previousPeriodTotalCost!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.totalReview!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleAdsHomeservicesLocalservicesV1AccountReport--;
 }
@@ -97,7 +141,10 @@ void checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(
     api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo o) {
   buildCounterGoogleAdsHomeservicesLocalservicesV1AggregatorInfo++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1AggregatorInfo < 3) {
-    unittest.expect(o.aggregatorProviderId, unittest.equals('foo'));
+    unittest.expect(
+      o.aggregatorProviderId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleAdsHomeservicesLocalservicesV1AggregatorInfo--;
 }
@@ -133,24 +180,57 @@ void checkGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(
     api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport o) {
   buildCounterGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport < 3) {
-    unittest.expect(o.accountId, unittest.equals('foo'));
-    checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(o.aggregatorInfo
+    unittest.expect(
+      o.accountId!,
+      unittest.equals('foo'),
+    );
+    checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(o.aggregatorInfo!
         as api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo);
-    unittest.expect(o.businessName, unittest.equals('foo'));
-    unittest.expect(o.chargeStatus, unittest.equals('foo'));
-    unittest.expect(o.currencyCode, unittest.equals('foo'));
-    unittest.expect(o.disputeStatus, unittest.equals('foo'));
-    unittest.expect(o.geo, unittest.equals('foo'));
-    unittest.expect(o.leadCategory, unittest.equals('foo'));
-    unittest.expect(o.leadCreationTimestamp, unittest.equals('foo'));
-    unittest.expect(o.leadId, unittest.equals('foo'));
-    unittest.expect(o.leadPrice, unittest.equals(42.0));
-    unittest.expect(o.leadType, unittest.equals('foo'));
+    unittest.expect(
+      o.businessName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.chargeStatus!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.currencyCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.disputeStatus!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.geo!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.leadCategory!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.leadCreationTimestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.leadId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.leadPrice!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.leadType!,
+      unittest.equals('foo'),
+    );
     checkGoogleAdsHomeservicesLocalservicesV1MessageLead(
-        o.messageLead as api.GoogleAdsHomeservicesLocalservicesV1MessageLead);
+        o.messageLead! as api.GoogleAdsHomeservicesLocalservicesV1MessageLead);
     checkGoogleAdsHomeservicesLocalservicesV1PhoneLead(
-        o.phoneLead as api.GoogleAdsHomeservicesLocalservicesV1PhoneLead);
-    checkGoogleTypeTimeZone(o.timezone as api.GoogleTypeTimeZone);
+        o.phoneLead! as api.GoogleAdsHomeservicesLocalservicesV1PhoneLead);
+    checkGoogleTypeTimeZone(o.timezone! as api.GoogleTypeTimeZone);
   }
   buildCounterGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport--;
 }
@@ -174,10 +254,22 @@ void checkGoogleAdsHomeservicesLocalservicesV1MessageLead(
     api.GoogleAdsHomeservicesLocalservicesV1MessageLead o) {
   buildCounterGoogleAdsHomeservicesLocalservicesV1MessageLead++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1MessageLead < 3) {
-    unittest.expect(o.consumerPhoneNumber, unittest.equals('foo'));
-    unittest.expect(o.customerName, unittest.equals('foo'));
-    unittest.expect(o.jobType, unittest.equals('foo'));
-    unittest.expect(o.postalCode, unittest.equals('foo'));
+    unittest.expect(
+      o.consumerPhoneNumber!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.customerName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.jobType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.postalCode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleAdsHomeservicesLocalservicesV1MessageLead--;
 }
@@ -200,10 +292,18 @@ void checkGoogleAdsHomeservicesLocalservicesV1PhoneLead(
     api.GoogleAdsHomeservicesLocalservicesV1PhoneLead o) {
   buildCounterGoogleAdsHomeservicesLocalservicesV1PhoneLead++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1PhoneLead < 3) {
-    unittest.expect(o.chargedCallTimestamp, unittest.equals('foo'));
     unittest.expect(
-        o.chargedConnectedCallDurationSeconds, unittest.equals('foo'));
-    unittest.expect(o.consumerPhoneNumber, unittest.equals('foo'));
+      o.chargedCallTimestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.chargedConnectedCallDurationSeconds!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.consumerPhoneNumber!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleAdsHomeservicesLocalservicesV1PhoneLead--;
 }
@@ -247,8 +347,11 @@ void checkGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse(
   buildCounterGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse <
       3) {
-    checkUnnamed2858(o.accountReports);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed2858(o.accountReports!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse--;
 }
@@ -293,8 +396,11 @@ void checkGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse(
   buildCounterGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse++;
   if (buildCounterGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse <
       3) {
-    checkUnnamed2859(o.detailedLeadReports);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed2859(o.detailedLeadReports!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse--;
 }
@@ -314,8 +420,14 @@ api.GoogleTypeTimeZone buildGoogleTypeTimeZone() {
 void checkGoogleTypeTimeZone(api.GoogleTypeTimeZone o) {
   buildCounterGoogleTypeTimeZone++;
   if (buildCounterGoogleTypeTimeZone < 3) {
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.version, unittest.equals('foo'));
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleTypeTimeZone--;
 }
@@ -435,10 +547,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 24),
-            unittest.equals("v1/accountReports:search"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 24),
+          unittest.equals("v1/accountReports:search"),
+        );
         pathOffset += 24;
 
         var query = (req.url).query;
@@ -456,24 +572,46 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["endDate.day"].first),
-            unittest.equals(arg_endDate_day));
-        unittest.expect(core.int.parse(queryMap["endDate.month"].first),
-            unittest.equals(arg_endDate_month));
-        unittest.expect(core.int.parse(queryMap["endDate.year"].first),
-            unittest.equals(arg_endDate_year));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
-        unittest.expect(core.int.parse(queryMap["startDate.day"].first),
-            unittest.equals(arg_startDate_day));
-        unittest.expect(core.int.parse(queryMap["startDate.month"].first),
-            unittest.equals(arg_startDate_month));
-        unittest.expect(core.int.parse(queryMap["startDate.year"].first),
-            unittest.equals(arg_startDate_year));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["endDate.day"]!.first),
+          unittest.equals(arg_endDate_day),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["endDate.month"]!.first),
+          unittest.equals(arg_endDate_month),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["endDate.year"]!.first),
+          unittest.equals(arg_endDate_year),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["query"]!.first,
+          unittest.equals(arg_query),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["startDate.day"]!.first),
+          unittest.equals(arg_startDate_day),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["startDate.month"]!.first),
+          unittest.equals(arg_startDate_month),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["startDate.year"]!.first),
+          unittest.equals(arg_startDate_year),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -522,10 +660,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 29),
-            unittest.equals("v1/detailedLeadReports:search"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 29),
+          unittest.equals("v1/detailedLeadReports:search"),
+        );
         pathOffset += 29;
 
         var query = (req.url).query;
@@ -543,24 +685,46 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["endDate.day"].first),
-            unittest.equals(arg_endDate_day));
-        unittest.expect(core.int.parse(queryMap["endDate.month"].first),
-            unittest.equals(arg_endDate_month));
-        unittest.expect(core.int.parse(queryMap["endDate.year"].first),
-            unittest.equals(arg_endDate_year));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
-        unittest.expect(core.int.parse(queryMap["startDate.day"].first),
-            unittest.equals(arg_startDate_day));
-        unittest.expect(core.int.parse(queryMap["startDate.month"].first),
-            unittest.equals(arg_startDate_month));
-        unittest.expect(core.int.parse(queryMap["startDate.year"].first),
-            unittest.equals(arg_startDate_year));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["endDate.day"]!.first),
+          unittest.equals(arg_endDate_day),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["endDate.month"]!.first),
+          unittest.equals(arg_endDate_month),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["endDate.year"]!.first),
+          unittest.equals(arg_endDate_year),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["query"]!.first,
+          unittest.equals(arg_query),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["startDate.day"]!.first),
+          unittest.equals(arg_startDate_day),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["startDate.month"]!.first),
+          unittest.equals(arg_startDate_month),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["startDate.year"]!.first),
+          unittest.equals(arg_startDate_year),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

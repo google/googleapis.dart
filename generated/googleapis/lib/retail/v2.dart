@@ -135,13 +135,10 @@ class ProjectsLocationsCatalogsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRetailV2ListCatalogsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -189,14 +186,10 @@ class ProjectsLocationsCatalogsResource {
   async.Future<GoogleCloudRetailV2Catalog> patch(
     GoogleCloudRetailV2Catalog request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -257,11 +250,8 @@ class ProjectsLocationsCatalogsBranchesOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -316,14 +306,10 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   async.Future<GoogleCloudRetailV2Product> create(
     GoogleCloudRetailV2Product request,
     core.String parent, {
-    core.String productId,
-    core.String $fields,
+    core.String? productId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (productId != null) 'productId': [productId],
       if ($fields != null) 'fields': [$fields],
@@ -370,11 +356,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -414,11 +397,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudRetailV2Product> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -464,13 +444,9 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   async.Future<GoogleLongrunningOperation> import(
     GoogleCloudRetailV2ImportProductsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -524,15 +500,11 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   async.Future<GoogleCloudRetailV2Product> patch(
     GoogleCloudRetailV2Product request,
     core.String name, {
-    core.bool allowMissing,
-    core.String updateMask,
-    core.String $fields,
+    core.bool? allowMissing,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -581,11 +553,8 @@ class ProjectsLocationsCatalogsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -636,14 +605,11 @@ class ProjectsLocationsCatalogsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -713,13 +679,9 @@ class ProjectsLocationsCatalogsPlacementsResource {
   async.Future<GoogleCloudRetailV2PredictResponse> predict(
     GoogleCloudRetailV2PredictRequest request,
     core.String placement, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (placement == null) {
-      throw core.ArgumentError('Parameter placement is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -782,14 +744,11 @@ class ProjectsLocationsCatalogsUserEventsResource {
   /// this method will complete with the same error.
   async.Future<GoogleApiHttpBody> collect(
     core.String parent, {
-    core.String ets,
-    core.String uri,
-    core.String userEvent,
-    core.String $fields,
+    core.String? ets,
+    core.String? uri,
+    core.String? userEvent,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (ets != null) 'ets': [ets],
       if (uri != null) 'uri': [uri],
@@ -840,13 +799,9 @@ class ProjectsLocationsCatalogsUserEventsResource {
   async.Future<GoogleLongrunningOperation> import(
     GoogleCloudRetailV2ImportUserEventsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -894,13 +849,9 @@ class ProjectsLocationsCatalogsUserEventsResource {
   async.Future<GoogleLongrunningOperation> purge(
     GoogleCloudRetailV2PurgeUserEventsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -950,13 +901,9 @@ class ProjectsLocationsCatalogsUserEventsResource {
   async.Future<GoogleLongrunningOperation> rejoin(
     GoogleCloudRetailV2RejoinUserEventsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -999,13 +946,9 @@ class ProjectsLocationsCatalogsUserEventsResource {
   async.Future<GoogleCloudRetailV2UserEvent> write(
     GoogleCloudRetailV2UserEvent request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1054,11 +997,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1108,14 +1048,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1157,11 +1094,11 @@ class ProjectsLocationsOperationsResource {
 class GoogleApiHttpBody {
   /// The HTTP Content-Type header value specifying the content type of the
   /// body.
-  core.String contentType;
+  core.String? contentType;
 
   /// The HTTP request/response body as raw binary.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -1174,7 +1111,7 @@ class GoogleApiHttpBody {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> extensions;
+  core.List<core.Map<core.String, core.Object>>? extensions;
 
   GoogleApiHttpBody();
 
@@ -1198,21 +1135,21 @@ class GoogleApiHttpBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentType != null) 'contentType': contentType,
-        if (data != null) 'data': data,
-        if (extensions != null) 'extensions': extensions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentType != null) 'contentType': contentType!,
+        if (data != null) 'data': data!,
+        if (extensions != null) 'extensions': extensions!,
       };
 }
 
 /// A description of the context in which an error occurred.
 class GoogleCloudRetailLoggingErrorContext {
   /// The HTTP request which was processed when the error was triggered.
-  GoogleCloudRetailLoggingHttpRequestContext httpRequest;
+  GoogleCloudRetailLoggingHttpRequestContext? httpRequest;
 
   /// The location in the source code where the decision was made to report the
   /// error, usually the place where it was logged.
-  GoogleCloudRetailLoggingSourceLocation reportLocation;
+  GoogleCloudRetailLoggingSourceLocation? reportLocation;
 
   GoogleCloudRetailLoggingErrorContext();
 
@@ -1227,9 +1164,9 @@ class GoogleCloudRetailLoggingErrorContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (httpRequest != null) 'httpRequest': httpRequest.toJson(),
-        if (reportLocation != null) 'reportLocation': reportLocation.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (httpRequest != null) 'httpRequest': httpRequest!.toJson(),
+        if (reportLocation != null) 'reportLocation': reportLocation!.toJson(),
       };
 }
 
@@ -1239,13 +1176,13 @@ class GoogleCloudRetailLoggingErrorContext {
 /// google.devtools.clouderrorreporting.v1beta1.ReportedErrorEvent.
 class GoogleCloudRetailLoggingErrorLog {
   /// A description of the context in which the error occurred.
-  GoogleCloudRetailLoggingErrorContext context;
+  GoogleCloudRetailLoggingErrorContext? context;
 
   /// The error payload that is populated on LRO import APIs.
-  GoogleCloudRetailLoggingImportErrorContext importPayload;
+  GoogleCloudRetailLoggingImportErrorContext? importPayload;
 
   /// A message describing the error.
-  core.String message;
+  core.String? message;
 
   /// The API request payload, represented as a protocol buffer.
   ///
@@ -1255,7 +1192,7 @@ class GoogleCloudRetailLoggingErrorLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> requestPayload;
+  core.Map<core.String, core.Object>? requestPayload;
 
   /// The API response payload, represented as a protocol buffer.
   ///
@@ -1268,13 +1205,13 @@ class GoogleCloudRetailLoggingErrorLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> responsePayload;
+  core.Map<core.String, core.Object>? responsePayload;
 
   /// The service context in which this error has occurred.
-  GoogleCloudRetailLoggingServiceContext serviceContext;
+  GoogleCloudRetailLoggingServiceContext? serviceContext;
 
   /// The RPC status associated with the error log.
-  GoogleRpcStatus status;
+  GoogleRpcStatus? status;
 
   GoogleCloudRetailLoggingErrorLog();
 
@@ -1320,21 +1257,21 @@ class GoogleCloudRetailLoggingErrorLog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (context != null) 'context': context.toJson(),
-        if (importPayload != null) 'importPayload': importPayload.toJson(),
-        if (message != null) 'message': message,
-        if (requestPayload != null) 'requestPayload': requestPayload,
-        if (responsePayload != null) 'responsePayload': responsePayload,
-        if (serviceContext != null) 'serviceContext': serviceContext.toJson(),
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (context != null) 'context': context!.toJson(),
+        if (importPayload != null) 'importPayload': importPayload!.toJson(),
+        if (message != null) 'message': message!,
+        if (requestPayload != null) 'requestPayload': requestPayload!,
+        if (responsePayload != null) 'responsePayload': responsePayload!,
+        if (serviceContext != null) 'serviceContext': serviceContext!.toJson(),
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
 /// HTTP request data that is related to a reported error.
 class GoogleCloudRetailLoggingHttpRequestContext {
   /// The HTTP response status code for the request.
-  core.int responseStatusCode;
+  core.int? responseStatusCode;
 
   GoogleCloudRetailLoggingHttpRequestContext();
 
@@ -1344,9 +1281,9 @@ class GoogleCloudRetailLoggingHttpRequestContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (responseStatusCode != null)
-          'responseStatusCode': responseStatusCode,
+          'responseStatusCode': responseStatusCode!,
       };
 }
 
@@ -1356,26 +1293,26 @@ class GoogleCloudRetailLoggingHttpRequestContext {
 /// "google.cloud.retail.v2.EventService.ImportUserEvents"
 class GoogleCloudRetailLoggingImportErrorContext {
   /// The detailed content which caused the error on importing a catalog item.
-  core.String catalogItem;
+  core.String? catalogItem;
 
   /// GCS file path of the import source.
   ///
   /// Can be set for batch operation error.
-  core.String gcsPath;
+  core.String? gcsPath;
 
   /// Line number of the content in file.
   ///
   /// Should be empty for permission or batch operation error.
-  core.String lineNumber;
+  core.String? lineNumber;
 
   /// The operation resource name of the LRO.
-  core.String operationName;
+  core.String? operationName;
 
   /// The detailed content which caused the error on importing a product.
-  core.String product;
+  core.String? product;
 
   /// The detailed content which caused the error on importing a user event.
-  core.String userEvent;
+  core.String? userEvent;
 
   GoogleCloudRetailLoggingImportErrorContext();
 
@@ -1400,13 +1337,13 @@ class GoogleCloudRetailLoggingImportErrorContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (catalogItem != null) 'catalogItem': catalogItem,
-        if (gcsPath != null) 'gcsPath': gcsPath,
-        if (lineNumber != null) 'lineNumber': lineNumber,
-        if (operationName != null) 'operationName': operationName,
-        if (product != null) 'product': product,
-        if (userEvent != null) 'userEvent': userEvent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (catalogItem != null) 'catalogItem': catalogItem!,
+        if (gcsPath != null) 'gcsPath': gcsPath!,
+        if (lineNumber != null) 'lineNumber': lineNumber!,
+        if (operationName != null) 'operationName': operationName!,
+        if (product != null) 'product': product!,
+        if (userEvent != null) 'userEvent': userEvent!,
       };
 }
 
@@ -1415,7 +1352,7 @@ class GoogleCloudRetailLoggingServiceContext {
   /// An identifier of the service.
   ///
   /// For example, "retail.googleapis.com".
-  core.String service;
+  core.String? service;
 
   GoogleCloudRetailLoggingServiceContext();
 
@@ -1425,8 +1362,8 @@ class GoogleCloudRetailLoggingServiceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (service != null) 'service': service,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (service != null) 'service': service!,
       };
 }
 
@@ -1436,7 +1373,7 @@ class GoogleCloudRetailLoggingSourceLocation {
   /// Human-readable name of a function or method.
   ///
   /// For example, "google.cloud.retail.v2.UserEventService.ImportUserEvents".
-  core.String functionName;
+  core.String? functionName;
 
   GoogleCloudRetailLoggingSourceLocation();
 
@@ -1446,8 +1383,8 @@ class GoogleCloudRetailLoggingSourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (functionName != null) 'functionName': functionName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (functionName != null) 'functionName': functionName!,
       };
 }
 
@@ -1462,32 +1399,32 @@ class GoogleCloudRetailV2BigQuerySource {
   /// Supported values for user events imports: * `user_event` (default): One
   /// JSON UserEvent per line. * `user_event_ga360`: Using
   /// https://support.google.com/analytics/answer/3437719?hl=en.
-  core.String dataSchema;
+  core.String? dataSchema;
 
   /// The BigQuery data set to copy the data from with a length limit of 1,024
   /// characters.
   ///
   /// Required.
-  core.String datasetId;
+  core.String? datasetId;
 
   /// Intermediate Cloud Storage directory used for the import with a length
   /// limit of 2,000 characters.
   ///
   /// Can be specified if one wants to have the BigQuery export to a specific
   /// Cloud Storage directory.
-  core.String gcsStagingDir;
+  core.String? gcsStagingDir;
 
   /// The project id (can be project # or id) that the BigQuery source is in
   /// with a length limit of 128 characters.
   ///
   /// If not specified, inherits the project id from the parent request.
-  core.String projectId;
+  core.String? projectId;
 
   /// The BigQuery table to copy the data from with a length limit of 1,024
   /// characters.
   ///
   /// Required.
-  core.String tableId;
+  core.String? tableId;
 
   GoogleCloudRetailV2BigQuerySource();
 
@@ -1509,12 +1446,12 @@ class GoogleCloudRetailV2BigQuerySource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataSchema != null) 'dataSchema': dataSchema,
-        if (datasetId != null) 'datasetId': datasetId,
-        if (gcsStagingDir != null) 'gcsStagingDir': gcsStagingDir,
-        if (projectId != null) 'projectId': projectId,
-        if (tableId != null) 'tableId': tableId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataSchema != null) 'dataSchema': dataSchema!,
+        if (datasetId != null) 'datasetId': datasetId!,
+        if (gcsStagingDir != null) 'gcsStagingDir': gcsStagingDir!,
+        if (projectId != null) 'projectId': projectId!,
+        if (tableId != null) 'tableId': tableId!,
       };
 }
 
@@ -1526,17 +1463,17 @@ class GoogleCloudRetailV2Catalog {
   /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
   ///
   /// Required. Immutable.
-  core.String displayName;
+  core.String? displayName;
 
   /// The fully qualified resource name of the catalog.
   ///
   /// Required. Immutable.
-  core.String name;
+  core.String? name;
 
   /// The product level configuration.
   ///
   /// Required.
-  GoogleCloudRetailV2ProductLevelConfig productLevelConfig;
+  GoogleCloudRetailV2ProductLevelConfig? productLevelConfig;
 
   GoogleCloudRetailV2Catalog();
 
@@ -1553,11 +1490,11 @@ class GoogleCloudRetailV2Catalog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
         if (productLevelConfig != null)
-          'productLevelConfig': productLevelConfig.toJson(),
+          'productLevelConfig': productLevelConfig!.toJson(),
       };
 }
 
@@ -1569,7 +1506,7 @@ class GoogleCloudRetailV2CustomAttribute {
   /// values are allowed.Otherwise, an INVALID_ARGUMENT error is returned.
   /// Exactly one of text or numbers should be set. Otherwise, an
   /// INVALID_ARGUMENT error is returned.
-  core.List<core.double> numbers;
+  core.List<core.double>? numbers;
 
   /// The textual values of this custom attribute.
   ///
@@ -1578,7 +1515,7 @@ class GoogleCloudRetailV2CustomAttribute {
   /// UTF-8 encoded string with a length limit of 256 characters. Otherwise, an
   /// INVALID_ARGUMENT error is returned. Exactly one of text or numbers should
   /// be set. Otherwise, an INVALID_ARGUMENT error is returned.
-  core.List<core.String> text;
+  core.List<core.String>? text;
 
   GoogleCloudRetailV2CustomAttribute();
 
@@ -1595,9 +1532,9 @@ class GoogleCloudRetailV2CustomAttribute {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (numbers != null) 'numbers': numbers,
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (numbers != null) 'numbers': numbers!,
+        if (text != null) 'text': text!,
       };
 }
 
@@ -1614,7 +1551,7 @@ class GoogleCloudRetailV2GcsSource {
   /// Supported values for user events imports: * `user_event` (default): One
   /// JSON UserEvent per line. * `user_event_ga360`: Using
   /// https://support.google.com/analytics/answer/3437719?hl=en.
-  core.String dataSchema;
+  core.String? dataSchema;
 
   /// Google Cloud Storage URIs to input files.
   ///
@@ -1626,7 +1563,7 @@ class GoogleCloudRetailV2GcsSource {
   /// for the expected file format and setup instructions.
   ///
   /// Required.
-  core.List<core.String> inputUris;
+  core.List<core.String>? inputUris;
 
   GoogleCloudRetailV2GcsSource();
 
@@ -1641,9 +1578,9 @@ class GoogleCloudRetailV2GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataSchema != null) 'dataSchema': dataSchema,
-        if (inputUris != null) 'inputUris': inputUris,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataSchema != null) 'dataSchema': dataSchema!,
+        if (inputUris != null) 'inputUris': inputUris!,
       };
 }
 
@@ -1653,7 +1590,7 @@ class GoogleCloudRetailV2Image {
   ///
   /// This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is
   /// returned.
-  core.int height;
+  core.int? height;
 
   /// URI of the image.
   ///
@@ -1664,13 +1601,13 @@ class GoogleCloudRetailV2Image {
   /// Schema.org property [Product.image](https://schema.org/image).
   ///
   /// Required.
-  core.String uri;
+  core.String? uri;
 
   /// Width of the image in number of pixels.
   ///
   /// This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is
   /// returned.
-  core.int width;
+  core.int? width;
 
   GoogleCloudRetailV2Image();
 
@@ -1686,10 +1623,10 @@ class GoogleCloudRetailV2Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (uri != null) 'uri': uri,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (uri != null) 'uri': uri!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -1700,7 +1637,7 @@ class GoogleCloudRetailV2ImportErrorsConfig {
   /// This must be an empty, existing Cloud Storage bucket. Import errors will
   /// be written to a file in this bucket, one per line, as a JSON-encoded
   /// `google.rpc.Status` message.
-  core.String gcsPrefix;
+  core.String? gcsPrefix;
 
   GoogleCloudRetailV2ImportErrorsConfig();
 
@@ -1710,8 +1647,8 @@ class GoogleCloudRetailV2ImportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
 
@@ -1720,18 +1657,18 @@ class GoogleCloudRetailV2ImportErrorsConfig {
 /// This will be returned by the google.longrunning.Operation.metadata field.
 class GoogleCloudRetailV2ImportMetadata {
   /// Operation create time.
-  core.String createTime;
+  core.String? createTime;
 
   /// Count of entries that encountered errors while processing.
-  core.String failureCount;
+  core.String? failureCount;
 
   /// Count of entries that were processed successfully.
-  core.String successCount;
+  core.String? successCount;
 
   /// Operation last update time.
   ///
   /// If the operation is done, this is also the finish time.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudRetailV2ImportMetadata();
 
@@ -1750,28 +1687,28 @@ class GoogleCloudRetailV2ImportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (failureCount != null) 'failureCount': failureCount,
-        if (successCount != null) 'successCount': successCount,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (failureCount != null) 'failureCount': failureCount!,
+        if (successCount != null) 'successCount': successCount!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// Request message for Import methods.
 class GoogleCloudRetailV2ImportProductsRequest {
   /// The desired location of errors incurred during the Import.
-  GoogleCloudRetailV2ImportErrorsConfig errorsConfig;
+  GoogleCloudRetailV2ImportErrorsConfig? errorsConfig;
 
   /// The desired input location of the data.
   ///
   /// Required.
-  GoogleCloudRetailV2ProductInputConfig inputConfig;
+  GoogleCloudRetailV2ProductInputConfig? inputConfig;
 
   /// Indicates which fields in the provided imported 'products' to update.
   ///
   /// If not set, will by default update all fields.
-  core.String updateMask;
+  core.String? updateMask;
 
   GoogleCloudRetailV2ImportProductsRequest();
 
@@ -1789,10 +1726,10 @@ class GoogleCloudRetailV2ImportProductsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
-        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -1803,10 +1740,10 @@ class GoogleCloudRetailV2ImportProductsRequest {
 /// successful.
 class GoogleCloudRetailV2ImportProductsResponse {
   /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus> errorSamples;
+  core.List<GoogleRpcStatus>? errorSamples;
 
   /// Echoes the destination for the complete errors in the request if set.
-  GoogleCloudRetailV2ImportErrorsConfig errorsConfig;
+  GoogleCloudRetailV2ImportErrorsConfig? errorsConfig;
 
   GoogleCloudRetailV2ImportProductsResponse();
 
@@ -1823,10 +1760,10 @@ class GoogleCloudRetailV2ImportProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorSamples != null)
-          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
+          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
       };
 }
 
@@ -1835,12 +1772,12 @@ class GoogleCloudRetailV2ImportUserEventsRequest {
   /// The desired location of errors incurred during the Import.
   ///
   /// Cannot be set for inline user event imports.
-  GoogleCloudRetailV2ImportErrorsConfig errorsConfig;
+  GoogleCloudRetailV2ImportErrorsConfig? errorsConfig;
 
   /// The desired input location of the data.
   ///
   /// Required.
-  GoogleCloudRetailV2UserEventInputConfig inputConfig;
+  GoogleCloudRetailV2UserEventInputConfig? inputConfig;
 
   GoogleCloudRetailV2ImportUserEventsRequest();
 
@@ -1855,9 +1792,9 @@ class GoogleCloudRetailV2ImportUserEventsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
-        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
       };
 }
 
@@ -1868,14 +1805,14 @@ class GoogleCloudRetailV2ImportUserEventsRequest {
 /// successful.
 class GoogleCloudRetailV2ImportUserEventsResponse {
   /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus> errorSamples;
+  core.List<GoogleRpcStatus>? errorSamples;
 
   /// Echoes the destination for the complete errors if this field was set in
   /// the request.
-  GoogleCloudRetailV2ImportErrorsConfig errorsConfig;
+  GoogleCloudRetailV2ImportErrorsConfig? errorsConfig;
 
   /// Aggregated statistics of user event import status.
-  GoogleCloudRetailV2UserEventImportSummary importSummary;
+  GoogleCloudRetailV2UserEventImportSummary? importSummary;
 
   GoogleCloudRetailV2ImportUserEventsResponse();
 
@@ -1896,24 +1833,24 @@ class GoogleCloudRetailV2ImportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorSamples != null)
-          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
-        if (importSummary != null) 'importSummary': importSummary.toJson(),
+          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (importSummary != null) 'importSummary': importSummary!.toJson(),
       };
 }
 
 /// Response for CatalogService.ListCatalogs method.
 class GoogleCloudRetailV2ListCatalogsResponse {
   /// All the customer's Catalogs.
-  core.List<GoogleCloudRetailV2Catalog> catalogs;
+  core.List<GoogleCloudRetailV2Catalog>? catalogs;
 
   /// A token that can be sent as ListCatalogsRequest.page_token to retrieve the
   /// next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudRetailV2ListCatalogsResponse();
 
@@ -1930,10 +1867,10 @@ class GoogleCloudRetailV2ListCatalogsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (catalogs != null)
-          'catalogs': catalogs.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'catalogs': catalogs!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1956,7 +1893,7 @@ class GoogleCloudRetailV2PredictRequest {
   /// nothing will be returned. If you want generic (unfiltered) popular
   /// products to be returned instead, set `strictFiltering` to false in
   /// `PredictRequest.params`.
-  core.String filter;
+  core.String? filter;
 
   /// The labels for the predict request.
   ///
@@ -1966,17 +1903,17 @@ class GoogleCloudRetailV2PredictRequest {
   /// a letter, and must end with a letter or digit. * No more than 64 labels
   /// can be associated with a given request. See https://goo.gl/xmQnxf for more
   /// information on and examples of labels.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Maximum number of results to return per page.
   ///
   /// Set this property to the number of prediction results needed. If zero, the
   /// service will choose a reasonable default. The maximum allowed value is
   /// 100. Values above 100 will be coerced to 100.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// The previous PredictResponse.next_page_token.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// Additional domain specific parameters for the predictions.
   ///
@@ -1992,7 +1929,7 @@ class GoogleCloudRetailV2PredictRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> params;
+  core.Map<core.String, core.Object>? params;
 
   /// Context about the user, what they are looking at and what action they took
   /// to trigger the predict request.
@@ -2001,14 +1938,14 @@ class GoogleCloudRetailV2PredictRequest {
   /// Thus, a separate userEvent write request is required for event logging.
   ///
   /// Required.
-  GoogleCloudRetailV2UserEvent userEvent;
+  GoogleCloudRetailV2UserEvent? userEvent;
 
   /// Use validate only mode for this prediction query.
   ///
   /// If set to true, a dummy model will be used that returns arbitrary
   /// products. Note that the validate only mode should only be used for testing
   /// the API, or if the model is not ready.
-  core.bool validateOnly;
+  core.bool? validateOnly;
 
   GoogleCloudRetailV2PredictRequest();
 
@@ -2049,14 +1986,14 @@ class GoogleCloudRetailV2PredictRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filter != null) 'filter': filter,
-        if (labels != null) 'labels': labels,
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (params != null) 'params': params,
-        if (userEvent != null) 'userEvent': userEvent.toJson(),
-        if (validateOnly != null) 'validateOnly': validateOnly,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (labels != null) 'labels': labels!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (params != null) 'params': params!,
+        if (userEvent != null) 'userEvent': userEvent!.toJson(),
+        if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
 
@@ -2067,19 +2004,19 @@ class GoogleCloudRetailV2PredictResponse {
   /// This should be included in the UserEvent logs resulting from this
   /// recommendation, which enables accurate attribution of recommendation model
   /// performance.
-  core.String attributionToken;
+  core.String? attributionToken;
 
   /// IDs of products in the request that were missing from the inventory.
-  core.List<core.String> missingIds;
+  core.List<core.String>? missingIds;
 
   /// A list of recommended products.
   ///
   /// The order represents the ranking (from the most relevant product to the
   /// least).
-  core.List<GoogleCloudRetailV2PredictResponsePredictionResult> results;
+  core.List<GoogleCloudRetailV2PredictResponsePredictionResult>? results;
 
   /// True if the validateOnly property was set in the request.
-  core.bool validateOnly;
+  core.bool? validateOnly;
 
   GoogleCloudRetailV2PredictResponse();
 
@@ -2104,19 +2041,19 @@ class GoogleCloudRetailV2PredictResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributionToken != null) 'attributionToken': attributionToken,
-        if (missingIds != null) 'missingIds': missingIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributionToken != null) 'attributionToken': attributionToken!,
+        if (missingIds != null) 'missingIds': missingIds!,
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
-        if (validateOnly != null) 'validateOnly': validateOnly,
+          'results': results!.map((value) => value.toJson()).toList(),
+        if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
 
 /// PredictionResult represents the recommendation prediction results.
 class GoogleCloudRetailV2PredictResponsePredictionResult {
   /// ID of the recommended product
-  core.String id;
+  core.String? id;
 
   /// Additional product metadata / annotations.
   ///
@@ -2127,7 +2064,7 @@ class GoogleCloudRetailV2PredictResponsePredictionResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   GoogleCloudRetailV2PredictResponsePredictionResult();
 
@@ -2146,9 +2083,9 @@ class GoogleCloudRetailV2PredictResponsePredictionResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (metadata != null) 'metadata': metadata,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (metadata != null) 'metadata': metadata!,
       };
 }
 
@@ -2159,19 +2096,19 @@ class GoogleCloudRetailV2PriceInfo {
   /// Used for gross profit reporting. * Profit = price - cost Google Merchant
   /// Center property
   /// [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
-  core.double cost;
+  core.double? cost;
 
   /// The 3-letter currency code defined in
   /// [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html).
   ///
   /// If this field is an unrecognizable currency code, an INVALID_ARGUMENT
   /// error is returned.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Price of the product without any discount.
   ///
   /// If zero, by default set to be the price.
-  core.double originalPrice;
+  core.double? originalPrice;
 
   /// Price of the product.
   ///
@@ -2179,7 +2116,7 @@ class GoogleCloudRetailV2PriceInfo {
   /// [price](https://support.google.com/merchants/answer/6324371). Schema.org
   /// property
   /// [Offer.priceSpecification](https://schema.org/priceSpecification).
-  core.double price;
+  core.double? price;
 
   GoogleCloudRetailV2PriceInfo();
 
@@ -2198,11 +2135,11 @@ class GoogleCloudRetailV2PriceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cost != null) 'cost': cost,
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (originalPrice != null) 'originalPrice': originalPrice,
-        if (price != null) 'price': price,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cost != null) 'cost': cost!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (originalPrice != null) 'originalPrice': originalPrice!,
+        if (price != null) 'price': price!,
       };
 }
 
@@ -2226,7 +2163,7 @@ class GoogleCloudRetailV2Product {
   /// Type.VARIANT. * Max indexable entries count: 150 by default; 40 for
   /// Type.VARIANT. * Max searchable entries count: 30. * The key must be a
   /// UTF-8 encoded string with a length limit of 128 characters.
-  core.Map<core.String, GoogleCloudRetailV2CustomAttribute> attributes;
+  core.Map<core.String, GoogleCloudRetailV2CustomAttribute>? attributes;
 
   /// The online availability of the Product.
   ///
@@ -2241,13 +2178,13 @@ class GoogleCloudRetailV2Product {
   /// - "PREORDER" : Product that is in pre-order state.
   /// - "BACKORDER" : Product that is back-ordered (i.e. temporarily out of
   /// stock).
-  core.String availability;
+  core.String? availability;
 
   /// The available quantity of the item.
-  core.int availableQuantity;
+  core.int? availableQuantity;
 
   /// The timestamp when this Product becomes available for recommendation.
-  core.String availableTime;
+  core.String? availableTime;
 
   /// Product categories.
   ///
@@ -2268,7 +2205,7 @@ class GoogleCloudRetailV2Product {
   /// [Product.category](https://schema.org/category).
   /// \[mc_google_product_category\]:
   /// https://support.google.com/merchants/answer/6324436
-  core.List<core.String> categories;
+  core.List<core.String>? categories;
 
   /// Product description.
   ///
@@ -2277,7 +2214,7 @@ class GoogleCloudRetailV2Product {
   /// Merchant Center property
   /// [description](https://support.google.com/merchants/answer/6324468).
   /// schema.org property [Product.description](https://schema.org/description).
-  core.String description;
+  core.String? description;
 
   /// Product identifier, which is the final component of name.
   ///
@@ -2290,7 +2227,7 @@ class GoogleCloudRetailV2Product {
   /// Property [Product.sku](https://schema.org/sku).
   ///
   /// Immutable.
-  core.String id;
+  core.String? id;
 
   /// Product images for the product.Highly recommended to put the main image to
   /// the first.
@@ -2298,7 +2235,7 @@ class GoogleCloudRetailV2Product {
   /// A maximum of 300 images are allowed. Google Merchant Center property
   /// [image_link](https://support.google.com/merchants/answer/6324350).
   /// Schema.org property [Product.image](https://schema.org/image).
-  core.List<GoogleCloudRetailV2Image> images;
+  core.List<GoogleCloudRetailV2Image>? images;
 
   /// Full resource name of the product, such as `projects / *
   /// /locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
@@ -2306,13 +2243,13 @@ class GoogleCloudRetailV2Product {
   /// The branch ID must be "default_branch".
   ///
   /// Immutable.
-  core.String name;
+  core.String? name;
 
   /// Product price and cost information.
   ///
   /// Google Merchant Center property
   /// [price](https://support.google.com/merchants/answer/6324371).
-  GoogleCloudRetailV2PriceInfo priceInfo;
+  GoogleCloudRetailV2PriceInfo? priceInfo;
 
   /// Variant group identifier.
   ///
@@ -2327,7 +2264,7 @@ class GoogleCloudRetailV2Product {
   /// [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID).
   /// This field must be enabled before it can be used. \[Learn
   /// more\](/recommendations-ai/docs/catalog#item-group-id).
-  core.String primaryProductId;
+  core.String? primaryProductId;
 
   /// Custom tags associated with the product.
   ///
@@ -2337,7 +2274,7 @@ class GoogleCloudRetailV2Product {
   /// recommendation results by passing the tag as part of the
   /// PredictRequest.filter. Google Merchant Center property
   /// \[custom_label_0–4\](https://support.google.com/merchants/answer/6324473).
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   /// Product title.
   ///
@@ -2348,7 +2285,7 @@ class GoogleCloudRetailV2Product {
   /// property [Product.name](https://schema.org/name).
   ///
   /// Required.
-  core.String title;
+  core.String? title;
 
   /// The type of the product.
   ///
@@ -2366,7 +2303,7 @@ class GoogleCloudRetailV2Product {
   /// - "COLLECTION" : The collection type. Collection products are bundled
   /// Type.PRIMARY Products or Type.VARIANT Products that are sold together,
   /// such as a jewelry set with necklaces, earrings and rings, etc.
-  core.String type;
+  core.String? type;
 
   /// Canonical URL directly linking to the product detail page.
   ///
@@ -2377,20 +2314,21 @@ class GoogleCloudRetailV2Product {
   /// Merchant Center property
   /// [link](https://support.google.com/merchants/answer/6324416). Schema.org
   /// property [Offer.url](https://schema.org/url).
-  core.String uri;
+  core.String? uri;
 
   GoogleCloudRetailV2Product();
 
   GoogleCloudRetailV2Product.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes =
-          (_json['attributes'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  GoogleCloudRetailV2CustomAttribute.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      attributes = (_json['attributes'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              GoogleCloudRetailV2CustomAttribute.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('availability')) {
       availability = _json['availability'] as core.String;
@@ -2445,25 +2383,25 @@ class GoogleCloudRetailV2Product {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (attributes != null)
           'attributes':
-              attributes.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (availability != null) 'availability': availability,
-        if (availableQuantity != null) 'availableQuantity': availableQuantity,
-        if (availableTime != null) 'availableTime': availableTime,
-        if (categories != null) 'categories': categories,
-        if (description != null) 'description': description,
-        if (id != null) 'id': id,
+              attributes!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (availability != null) 'availability': availability!,
+        if (availableQuantity != null) 'availableQuantity': availableQuantity!,
+        if (availableTime != null) 'availableTime': availableTime!,
+        if (categories != null) 'categories': categories!,
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
         if (images != null)
-          'images': images.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (priceInfo != null) 'priceInfo': priceInfo.toJson(),
-        if (primaryProductId != null) 'primaryProductId': primaryProductId,
-        if (tags != null) 'tags': tags,
-        if (title != null) 'title': title,
-        if (type != null) 'type': type,
-        if (uri != null) 'uri': uri,
+          'images': images!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (priceInfo != null) 'priceInfo': priceInfo!.toJson(),
+        if (primaryProductId != null) 'primaryProductId': primaryProductId!,
+        if (tags != null) 'tags': tags!,
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -2475,14 +2413,14 @@ class GoogleCloudRetailV2ProductDetail {
   /// fields are ignored as we will look them up from the catalog.
   ///
   /// Required.
-  GoogleCloudRetailV2Product product;
+  GoogleCloudRetailV2Product? product;
 
   /// Quantity of the product associated with the user event.
   ///
   /// For example, this field will be 2 if two products are added to the
   /// shopping cart for `purchase-complete` event. Required for `add-to-cart`
   /// and `purchase-complete` event types.
-  core.int quantity;
+  core.int? quantity;
 
   GoogleCloudRetailV2ProductDetail();
 
@@ -2496,9 +2434,9 @@ class GoogleCloudRetailV2ProductDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (product != null) 'product': product.toJson(),
-        if (quantity != null) 'quantity': quantity,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (product != null) 'product': product!.toJson(),
+        if (quantity != null) 'quantity': quantity!,
       };
 }
 
@@ -2509,7 +2447,7 @@ class GoogleCloudRetailV2ProductInlineSource {
   /// Each product must have a valid Product.id. Recommended max of 10k items.
   ///
   /// Required.
-  core.List<GoogleCloudRetailV2Product> products;
+  core.List<GoogleCloudRetailV2Product>? products;
 
   GoogleCloudRetailV2ProductInlineSource();
 
@@ -2523,22 +2461,22 @@ class GoogleCloudRetailV2ProductInlineSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (products != null)
-          'products': products.map((value) => value.toJson()).toList(),
+          'products': products!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The input config source for products.
 class GoogleCloudRetailV2ProductInputConfig {
   /// BigQuery input source.
-  GoogleCloudRetailV2BigQuerySource bigQuerySource;
+  GoogleCloudRetailV2BigQuerySource? bigQuerySource;
 
   /// Google Cloud Storage location for the input content.
-  GoogleCloudRetailV2GcsSource gcsSource;
+  GoogleCloudRetailV2GcsSource? gcsSource;
 
   /// The Inline source for the input content for products.
-  GoogleCloudRetailV2ProductInlineSource productInlineSource;
+  GoogleCloudRetailV2ProductInlineSource? productInlineSource;
 
   GoogleCloudRetailV2ProductInputConfig();
 
@@ -2557,11 +2495,11 @@ class GoogleCloudRetailV2ProductInputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource.toJson(),
-        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!.toJson(),
+        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
         if (productInlineSource != null)
-          'productInlineSource': productInlineSource.toJson(),
+          'productInlineSource': productInlineSource!.toJson(),
       };
 }
 
@@ -2580,7 +2518,7 @@ class GoogleCloudRetailV2ProductLevelConfig {
   /// `itemGroupId`, an INVALID_ARGUMENT error is returned. See \[Using catalog
   /// levels\](/retail/recommendations-ai/docs/catalog#catalog-levels) for more
   /// details.
-  core.String ingestionProductType;
+  core.String? ingestionProductType;
 
   /// Which field of \[Merchant Center
   /// Product\](/bigquery-transfer/docs/merchant-center-products-schema) should
@@ -2595,7 +2533,7 @@ class GoogleCloudRetailV2ProductLevelConfig {
   /// `variant`, an INVALID_ARGUMENT error is returned. See \[Using catalog
   /// levels\](/retail/recommendations-ai/docs/catalog#catalog-levels) for more
   /// details.
-  core.String merchantCenterProductIdField;
+  core.String? merchantCenterProductIdField;
 
   GoogleCloudRetailV2ProductLevelConfig();
 
@@ -2609,11 +2547,11 @@ class GoogleCloudRetailV2ProductLevelConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (ingestionProductType != null)
-          'ingestionProductType': ingestionProductType,
+          'ingestionProductType': ingestionProductType!,
         if (merchantCenterProductIdField != null)
-          'merchantCenterProductIdField': merchantCenterProductIdField,
+          'merchantCenterProductIdField': merchantCenterProductIdField!,
       };
 }
 
@@ -2623,17 +2561,17 @@ class GoogleCloudRetailV2PurchaseTransaction {
   ///
   /// These can be manufacturing costs, shipping expenses not borne by the end
   /// user, or any other costs, such that: * Profit = revenue - tax - cost
-  core.double cost;
+  core.double? cost;
 
   /// Currency code.
   ///
   /// Use three-character ISO-4217 code.
   ///
   /// Required.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// The transaction ID with a length limit of 128 characters.
-  core.String id;
+  core.String? id;
 
   /// Total non-zero revenue or grand total associated with the transaction.
   ///
@@ -2641,10 +2579,10 @@ class GoogleCloudRetailV2PurchaseTransaction {
   /// that you want to include as part of your revenue calculations.
   ///
   /// Required.
-  core.double revenue;
+  core.double? revenue;
 
   /// All the taxes associated with the transaction.
-  core.double tax;
+  core.double? tax;
 
   GoogleCloudRetailV2PurchaseTransaction();
 
@@ -2666,12 +2604,12 @@ class GoogleCloudRetailV2PurchaseTransaction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cost != null) 'cost': cost,
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (id != null) 'id': id,
-        if (revenue != null) 'revenue': revenue,
-        if (tax != null) 'tax': tax,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cost != null) 'cost': cost!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (id != null) 'id': id!,
+        if (revenue != null) 'revenue': revenue!,
+        if (tax != null) 'tax': tax!,
       };
 }
 
@@ -2685,7 +2623,7 @@ class GoogleCloudRetailV2PurgeMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for PurgeUserEvents method.
@@ -2706,13 +2644,13 @@ class GoogleCloudRetailV2PurgeUserEventsRequest {
   /// fields are assumed to have an implicit AND.
   ///
   /// Required.
-  core.String filter;
+  core.String? filter;
 
   /// Actually perform the purge.
   ///
   /// If `force` is set to false, the method will return the expected purge
   /// count without deleting any user events.
-  core.bool force;
+  core.bool? force;
 
   GoogleCloudRetailV2PurgeUserEventsRequest();
 
@@ -2725,9 +2663,9 @@ class GoogleCloudRetailV2PurgeUserEventsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filter != null) 'filter': filter,
-        if (force != null) 'force': force,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (force != null) 'force': force!,
       };
 }
 
@@ -2737,7 +2675,7 @@ class GoogleCloudRetailV2PurgeUserEventsRequest {
 /// returned by the google.longrunning.Operations.response field.
 class GoogleCloudRetailV2PurgeUserEventsResponse {
   /// The total count of events purged as a result of the operation.
-  core.String purgedEventsCount;
+  core.String? purgedEventsCount;
 
   GoogleCloudRetailV2PurgeUserEventsResponse();
 
@@ -2747,8 +2685,8 @@ class GoogleCloudRetailV2PurgeUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
       };
 }
 
@@ -2760,7 +2698,7 @@ class GoogleCloudRetailV2RejoinUserEventsMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for RejoinUserEvents method.
@@ -2777,7 +2715,7 @@ class GoogleCloudRetailV2RejoinUserEventsRequest {
   /// catalog.
   /// - "UNJOINED_EVENTS" : Only rejoin unjoined events with the latest product
   /// catalog.
-  core.String userEventRejoinScope;
+  core.String? userEventRejoinScope;
 
   GoogleCloudRetailV2RejoinUserEventsRequest();
 
@@ -2787,16 +2725,16 @@ class GoogleCloudRetailV2RejoinUserEventsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (userEventRejoinScope != null)
-          'userEventRejoinScope': userEventRejoinScope,
+          'userEventRejoinScope': userEventRejoinScope!,
       };
 }
 
 /// Response message for RejoinUserEvents method.
 class GoogleCloudRetailV2RejoinUserEventsResponse {
   /// Number of user events that were joined with latest product catalog.
-  core.String rejoinedUserEventsCount;
+  core.String? rejoinedUserEventsCount;
 
   GoogleCloudRetailV2RejoinUserEventsResponse();
 
@@ -2806,9 +2744,9 @@ class GoogleCloudRetailV2RejoinUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (rejoinedUserEventsCount != null)
-          'rejoinedUserEventsCount': rejoinedUserEventsCount,
+          'rejoinedUserEventsCount': rejoinedUserEventsCount!,
       };
 }
 
@@ -2822,7 +2760,7 @@ class GoogleCloudRetailV2UserEvent {
   /// recommendation, an example of extra user information is traffic_channel,
   /// i.e. how user arrives at the site. Users can arrive at the site by coming
   /// to the site directly, or coming through Google search, and etc.
-  core.Map<core.String, GoogleCloudRetailV2CustomAttribute> attributes;
+  core.Map<core.String, GoogleCloudRetailV2CustomAttribute>? attributes;
 
   /// Highly recommended for user events that are the result of
   /// PredictionService.Predict.
@@ -2836,19 +2774,19 @@ class GoogleCloudRetailV2UserEvent {
   /// recommendation results, pass PredictResponse.attribution_token as a URL
   /// parameter to product K's page. When recording events on product K's page,
   /// log the PredictResponse.attribution_token to this field.
-  core.String attributionToken;
+  core.String? attributionToken;
 
   /// The id or name of the associated shopping cart.
   ///
   /// This id is used to associate multiple items added or present in the cart
   /// before purchase. This can only be set for `add-to-cart`,
   /// `purchase-complete`, or `shopping-cart-page-view` events.
-  core.String cartId;
+  core.String? cartId;
 
   /// Only required for UserEventService.ImportUserEvents method.
   ///
   /// Timestamp of when the user event happened.
-  core.String eventTime;
+  core.String? eventTime;
 
   /// User event type.
   ///
@@ -2861,7 +2799,7 @@ class GoogleCloudRetailV2UserEvent {
   /// Product search. * `shopping-cart-page-view`: User viewing a shopping cart.
   ///
   /// Required.
-  core.String eventType;
+  core.String? eventType;
 
   /// A list of identifiers for the independent experiment groups this user
   /// event belongs to.
@@ -2869,7 +2807,7 @@ class GoogleCloudRetailV2UserEvent {
   /// This is used to distinguish between user events associated with different
   /// experiment setups (e.g. using Retail API, using different recommendation
   /// models).
-  core.List<core.String> experimentIds;
+  core.List<core.String>? experimentIds;
 
   /// The categories associated with a category page.
   ///
@@ -2881,7 +2819,7 @@ class GoogleCloudRetailV2UserEvent {
   /// Required for `category-page-view` events. At least one of search_query or
   /// page_categories is required for `search` events. Other event types should
   /// not set this field. Otherwise, an INVALID_ARGUMENT error is returned.
-  core.List<core.String> pageCategories;
+  core.List<core.String>? pageCategories;
 
   /// A unique id of a web page view.
   ///
@@ -2891,7 +2829,7 @@ class GoogleCloudRetailV2UserEvent {
   /// be kept the same for all these events so that they can be grouped together
   /// properly. When using the client side event reporting with JavaScript pixel
   /// and Google Tag Manager, this value is filled in automatically.
-  core.String pageViewId;
+  core.String? pageViewId;
 
   /// The main product details related to the event.
   ///
@@ -2902,19 +2840,19 @@ class GoogleCloudRetailV2UserEvent {
   /// page is returned to the end user, after pagination/filtering/ordering even
   /// for the same query, a new `search` event with different product_details is
   /// desired. The end user may have not finished broswing the whole page yet.
-  core.List<GoogleCloudRetailV2ProductDetail> productDetails;
+  core.List<GoogleCloudRetailV2ProductDetail>? productDetails;
 
   /// A transaction represents the entire purchase transaction.
   ///
   /// Required for `purchase-complete` events. Other event types should not set
   /// this field. Otherwise, an INVALID_ARGUMENT error is returned.
-  GoogleCloudRetailV2PurchaseTransaction purchaseTransaction;
+  GoogleCloudRetailV2PurchaseTransaction? purchaseTransaction;
 
   /// The referrer URL of the current page.
   ///
   /// When using the client side event reporting with JavaScript pixel and
   /// Google Tag Manager, this value is filled in automatically.
-  core.String referrerUri;
+  core.String? referrerUri;
 
   /// The user's search query.
   ///
@@ -2923,17 +2861,17 @@ class GoogleCloudRetailV2UserEvent {
   /// of search_query or page_categories is required for `search` events. Other
   /// event types should not set this field. Otherwise, an INVALID_ARGUMENT
   /// error is returned.
-  core.String searchQuery;
+  core.String? searchQuery;
 
   /// Complete URL (window.location.href) of the user's current page.
   ///
   /// When using the client side event reporting with JavaScript pixel and
   /// Google Tag Manager, this value is filled in automatically. Maximum length
   /// 5,000 characters.
-  core.String uri;
+  core.String? uri;
 
   /// User information.
-  GoogleCloudRetailV2UserInfo userInfo;
+  GoogleCloudRetailV2UserInfo? userInfo;
 
   /// A unique identifier for tracking visitors.
   ///
@@ -2944,20 +2882,21 @@ class GoogleCloudRetailV2UserEvent {
   /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
   ///
   /// Required.
-  core.String visitorId;
+  core.String? visitorId;
 
   GoogleCloudRetailV2UserEvent();
 
   GoogleCloudRetailV2UserEvent.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes =
-          (_json['attributes'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  GoogleCloudRetailV2CustomAttribute.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      attributes = (_json['attributes'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              GoogleCloudRetailV2CustomAttribute.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('attributionToken')) {
       attributionToken = _json['attributionToken'] as core.String;
@@ -3013,27 +2952,27 @@ class GoogleCloudRetailV2UserEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (attributes != null)
           'attributes':
-              attributes.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (attributionToken != null) 'attributionToken': attributionToken,
-        if (cartId != null) 'cartId': cartId,
-        if (eventTime != null) 'eventTime': eventTime,
-        if (eventType != null) 'eventType': eventType,
-        if (experimentIds != null) 'experimentIds': experimentIds,
-        if (pageCategories != null) 'pageCategories': pageCategories,
-        if (pageViewId != null) 'pageViewId': pageViewId,
+              attributes!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (attributionToken != null) 'attributionToken': attributionToken!,
+        if (cartId != null) 'cartId': cartId!,
+        if (eventTime != null) 'eventTime': eventTime!,
+        if (eventType != null) 'eventType': eventType!,
+        if (experimentIds != null) 'experimentIds': experimentIds!,
+        if (pageCategories != null) 'pageCategories': pageCategories!,
+        if (pageViewId != null) 'pageViewId': pageViewId!,
         if (productDetails != null)
           'productDetails':
-              productDetails.map((value) => value.toJson()).toList(),
+              productDetails!.map((value) => value.toJson()).toList(),
         if (purchaseTransaction != null)
-          'purchaseTransaction': purchaseTransaction.toJson(),
-        if (referrerUri != null) 'referrerUri': referrerUri,
-        if (searchQuery != null) 'searchQuery': searchQuery,
-        if (uri != null) 'uri': uri,
-        if (userInfo != null) 'userInfo': userInfo.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'purchaseTransaction': purchaseTransaction!.toJson(),
+        if (referrerUri != null) 'referrerUri': referrerUri!,
+        if (searchQuery != null) 'searchQuery': searchQuery!,
+        if (uri != null) 'uri': uri!,
+        if (userInfo != null) 'userInfo': userInfo!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
@@ -3042,11 +2981,11 @@ class GoogleCloudRetailV2UserEvent {
 /// The UserEventImportSummary summarizes the import status for user events.
 class GoogleCloudRetailV2UserEventImportSummary {
   /// Count of user events imported with complete existing catalog information.
-  core.String joinedEventsCount;
+  core.String? joinedEventsCount;
 
   /// Count of user events imported, but with catalog information not found in
   /// the imported catalog.
-  core.String unjoinedEventsCount;
+  core.String? unjoinedEventsCount;
 
   GoogleCloudRetailV2UserEventImportSummary();
 
@@ -3059,10 +2998,10 @@ class GoogleCloudRetailV2UserEventImportSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
         if (unjoinedEventsCount != null)
-          'unjoinedEventsCount': unjoinedEventsCount,
+          'unjoinedEventsCount': unjoinedEventsCount!,
       };
 }
 
@@ -3073,7 +3012,7 @@ class GoogleCloudRetailV2UserEventInlineSource {
   /// Recommended max of 10k items.
   ///
   /// Required.
-  core.List<GoogleCloudRetailV2UserEvent> userEvents;
+  core.List<GoogleCloudRetailV2UserEvent>? userEvents;
 
   GoogleCloudRetailV2UserEventInlineSource();
 
@@ -3087,9 +3026,9 @@ class GoogleCloudRetailV2UserEventInlineSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (userEvents != null)
-          'userEvents': userEvents.map((value) => value.toJson()).toList(),
+          'userEvents': userEvents!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3098,17 +3037,17 @@ class GoogleCloudRetailV2UserEventInputConfig {
   /// BigQuery input source.
   ///
   /// Required.
-  GoogleCloudRetailV2BigQuerySource bigQuerySource;
+  GoogleCloudRetailV2BigQuerySource? bigQuerySource;
 
   /// Google Cloud Storage location for the input content.
   ///
   /// Required.
-  GoogleCloudRetailV2GcsSource gcsSource;
+  GoogleCloudRetailV2GcsSource? gcsSource;
 
   /// The Inline source for the input content for UserEvents.
   ///
   /// Required.
-  GoogleCloudRetailV2UserEventInlineSource userEventInlineSource;
+  GoogleCloudRetailV2UserEventInlineSource? userEventInlineSource;
 
   GoogleCloudRetailV2UserEventInputConfig();
 
@@ -3128,11 +3067,11 @@ class GoogleCloudRetailV2UserEventInputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource.toJson(),
-        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!.toJson(),
+        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
         if (userEventInlineSource != null)
-          'userEventInlineSource': userEventInlineSource.toJson(),
+          'userEventInlineSource': userEventInlineSource!.toJson(),
       };
 }
 
@@ -3145,7 +3084,7 @@ class GoogleCloudRetailV2UserInfo {
   /// end user such as a mobile app (and not if a gateway or a server is
   /// processing and pushing the user events). This should not be set when using
   /// the JavaScript tag in UserEventService.CollectUserEvent.
-  core.bool directUserRequest;
+  core.bool? directUserRequest;
 
   /// The end user's IP address.
   ///
@@ -3155,7 +3094,7 @@ class GoogleCloudRetailV2UserInfo {
   /// INVALID_ARGUMENT error is returned. This should not be set when using the
   /// JavaScript tag in UserEventService.CollectUserEvent or if
   /// direct_user_request is set.
-  core.String ipAddress;
+  core.String? ipAddress;
 
   /// User agent as included in the HTTP header.
   ///
@@ -3164,14 +3103,14 @@ class GoogleCloudRetailV2UserInfo {
   /// not be set when using the client side event reporting with GTM or
   /// JavaScript tag in UserEventService.CollectUserEvent or if
   /// direct_user_request is set.
-  core.String userAgent;
+  core.String? userAgent;
 
   /// Highly recommended for logged-in users.
   ///
   /// Unique identifier for logged-in user, such as a user name. The field must
   /// be a UTF-8 encoded string with a length limit of 128 characters.
   /// Otherwise, an INVALID_ARGUMENT error is returned.
-  core.String userId;
+  core.String? userId;
 
   GoogleCloudRetailV2UserInfo();
 
@@ -3190,11 +3129,11 @@ class GoogleCloudRetailV2UserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (directUserRequest != null) 'directUserRequest': directUserRequest,
-        if (ipAddress != null) 'ipAddress': ipAddress,
-        if (userAgent != null) 'userAgent': userAgent,
-        if (userId != null) 'userId': userId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (directUserRequest != null) 'directUserRequest': directUserRequest!,
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (userAgent != null) 'userAgent': userAgent!,
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -3205,7 +3144,7 @@ class GoogleCloudRetailV2alphaExportErrorsConfig {
   /// This must be an empty, existing Cloud Storage bucket. Export errors will
   /// be written to a file in this bucket, one per line, as a JSON-encoded
   /// `google.rpc.Status` message.
-  core.String gcsPrefix;
+  core.String? gcsPrefix;
 
   GoogleCloudRetailV2alphaExportErrorsConfig();
 
@@ -3215,8 +3154,8 @@ class GoogleCloudRetailV2alphaExportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
 
@@ -3225,12 +3164,12 @@ class GoogleCloudRetailV2alphaExportErrorsConfig {
 /// This will be returned by the google.longrunning.Operation.metadata field.
 class GoogleCloudRetailV2alphaExportMetadata {
   /// Operation create time.
-  core.String createTime;
+  core.String? createTime;
 
   /// Operation last update time.
   ///
   /// If the operation is done, this is also the finish time.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudRetailV2alphaExportMetadata();
 
@@ -3243,9 +3182,9 @@ class GoogleCloudRetailV2alphaExportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3256,10 +3195,10 @@ class GoogleCloudRetailV2alphaExportMetadata {
 /// successful.
 class GoogleCloudRetailV2alphaExportProductsResponse {
   /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus> errorSamples;
+  core.List<GoogleRpcStatus>? errorSamples;
 
   /// Echoes the destination for the complete errors in the request if set.
-  GoogleCloudRetailV2alphaExportErrorsConfig errorsConfig;
+  GoogleCloudRetailV2alphaExportErrorsConfig? errorsConfig;
 
   GoogleCloudRetailV2alphaExportProductsResponse();
 
@@ -3276,10 +3215,10 @@ class GoogleCloudRetailV2alphaExportProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorSamples != null)
-          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
+          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
       };
 }
 
@@ -3290,11 +3229,11 @@ class GoogleCloudRetailV2alphaExportProductsResponse {
 /// successful.
 class GoogleCloudRetailV2alphaExportUserEventsResponse {
   /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus> errorSamples;
+  core.List<GoogleRpcStatus>? errorSamples;
 
   /// Echoes the destination for the complete errors if this field was set in
   /// the request.
-  GoogleCloudRetailV2alphaExportErrorsConfig errorsConfig;
+  GoogleCloudRetailV2alphaExportErrorsConfig? errorsConfig;
 
   GoogleCloudRetailV2alphaExportUserEventsResponse();
 
@@ -3311,10 +3250,10 @@ class GoogleCloudRetailV2alphaExportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorSamples != null)
-          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
+          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
       };
 }
 
@@ -3325,7 +3264,7 @@ class GoogleCloudRetailV2alphaImportErrorsConfig {
   /// This must be an empty, existing Cloud Storage bucket. Import errors will
   /// be written to a file in this bucket, one per line, as a JSON-encoded
   /// `google.rpc.Status` message.
-  core.String gcsPrefix;
+  core.String? gcsPrefix;
 
   GoogleCloudRetailV2alphaImportErrorsConfig();
 
@@ -3335,8 +3274,8 @@ class GoogleCloudRetailV2alphaImportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
 
@@ -3345,18 +3284,18 @@ class GoogleCloudRetailV2alphaImportErrorsConfig {
 /// This will be returned by the google.longrunning.Operation.metadata field.
 class GoogleCloudRetailV2alphaImportMetadata {
   /// Operation create time.
-  core.String createTime;
+  core.String? createTime;
 
   /// Count of entries that encountered errors while processing.
-  core.String failureCount;
+  core.String? failureCount;
 
   /// Count of entries that were processed successfully.
-  core.String successCount;
+  core.String? successCount;
 
   /// Operation last update time.
   ///
   /// If the operation is done, this is also the finish time.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudRetailV2alphaImportMetadata();
 
@@ -3375,11 +3314,11 @@ class GoogleCloudRetailV2alphaImportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (failureCount != null) 'failureCount': failureCount,
-        if (successCount != null) 'successCount': successCount,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (failureCount != null) 'failureCount': failureCount!,
+        if (successCount != null) 'successCount': successCount!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3390,10 +3329,10 @@ class GoogleCloudRetailV2alphaImportMetadata {
 /// successful.
 class GoogleCloudRetailV2alphaImportProductsResponse {
   /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus> errorSamples;
+  core.List<GoogleRpcStatus>? errorSamples;
 
   /// Echoes the destination for the complete errors in the request if set.
-  GoogleCloudRetailV2alphaImportErrorsConfig errorsConfig;
+  GoogleCloudRetailV2alphaImportErrorsConfig? errorsConfig;
 
   GoogleCloudRetailV2alphaImportProductsResponse();
 
@@ -3410,10 +3349,10 @@ class GoogleCloudRetailV2alphaImportProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorSamples != null)
-          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
+          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
       };
 }
 
@@ -3424,14 +3363,14 @@ class GoogleCloudRetailV2alphaImportProductsResponse {
 /// successful.
 class GoogleCloudRetailV2alphaImportUserEventsResponse {
   /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus> errorSamples;
+  core.List<GoogleRpcStatus>? errorSamples;
 
   /// Echoes the destination for the complete errors if this field was set in
   /// the request.
-  GoogleCloudRetailV2alphaImportErrorsConfig errorsConfig;
+  GoogleCloudRetailV2alphaImportErrorsConfig? errorsConfig;
 
   /// Aggregated statistics of user event import status.
-  GoogleCloudRetailV2alphaUserEventImportSummary importSummary;
+  GoogleCloudRetailV2alphaUserEventImportSummary? importSummary;
 
   GoogleCloudRetailV2alphaImportUserEventsResponse();
 
@@ -3452,11 +3391,11 @@ class GoogleCloudRetailV2alphaImportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorSamples != null)
-          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
-        if (importSummary != null) 'importSummary': importSummary.toJson(),
+          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (importSummary != null) 'importSummary': importSummary!.toJson(),
       };
 }
 
@@ -3470,7 +3409,7 @@ class GoogleCloudRetailV2alphaPurgeMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response of the PurgeUserEventsRequest.
@@ -3479,7 +3418,7 @@ class GoogleCloudRetailV2alphaPurgeMetadata {
 /// returned by the google.longrunning.Operations.response field.
 class GoogleCloudRetailV2alphaPurgeUserEventsResponse {
   /// The total count of events purged as a result of the operation.
-  core.String purgedEventsCount;
+  core.String? purgedEventsCount;
 
   GoogleCloudRetailV2alphaPurgeUserEventsResponse();
 
@@ -3489,8 +3428,8 @@ class GoogleCloudRetailV2alphaPurgeUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
       };
 }
 
@@ -3502,13 +3441,13 @@ class GoogleCloudRetailV2alphaRejoinUserEventsMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response message for RejoinUserEvents method.
 class GoogleCloudRetailV2alphaRejoinUserEventsResponse {
   /// Number of user events that were joined with latest product catalog.
-  core.String rejoinedUserEventsCount;
+  core.String? rejoinedUserEventsCount;
 
   GoogleCloudRetailV2alphaRejoinUserEventsResponse();
 
@@ -3518,9 +3457,9 @@ class GoogleCloudRetailV2alphaRejoinUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (rejoinedUserEventsCount != null)
-          'rejoinedUserEventsCount': rejoinedUserEventsCount,
+          'rejoinedUserEventsCount': rejoinedUserEventsCount!,
       };
 }
 
@@ -3529,11 +3468,11 @@ class GoogleCloudRetailV2alphaRejoinUserEventsResponse {
 /// The UserEventImportSummary summarizes the import status for user events.
 class GoogleCloudRetailV2alphaUserEventImportSummary {
   /// Count of user events imported with complete existing catalog information.
-  core.String joinedEventsCount;
+  core.String? joinedEventsCount;
 
   /// Count of user events imported, but with catalog information not found in
   /// the imported catalog.
-  core.String unjoinedEventsCount;
+  core.String? unjoinedEventsCount;
 
   GoogleCloudRetailV2alphaUserEventImportSummary();
 
@@ -3546,10 +3485,10 @@ class GoogleCloudRetailV2alphaUserEventImportSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
         if (unjoinedEventsCount != null)
-          'unjoinedEventsCount': unjoinedEventsCount,
+          'unjoinedEventsCount': unjoinedEventsCount!,
       };
 }
 
@@ -3560,7 +3499,7 @@ class GoogleCloudRetailV2betaExportErrorsConfig {
   /// This must be an empty, existing Cloud Storage bucket. Export errors will
   /// be written to a file in this bucket, one per line, as a JSON-encoded
   /// `google.rpc.Status` message.
-  core.String gcsPrefix;
+  core.String? gcsPrefix;
 
   GoogleCloudRetailV2betaExportErrorsConfig();
 
@@ -3570,8 +3509,8 @@ class GoogleCloudRetailV2betaExportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
 
@@ -3580,12 +3519,12 @@ class GoogleCloudRetailV2betaExportErrorsConfig {
 /// This will be returned by the google.longrunning.Operation.metadata field.
 class GoogleCloudRetailV2betaExportMetadata {
   /// Operation create time.
-  core.String createTime;
+  core.String? createTime;
 
   /// Operation last update time.
   ///
   /// If the operation is done, this is also the finish time.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudRetailV2betaExportMetadata();
 
@@ -3598,9 +3537,9 @@ class GoogleCloudRetailV2betaExportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3611,10 +3550,10 @@ class GoogleCloudRetailV2betaExportMetadata {
 /// successful.
 class GoogleCloudRetailV2betaExportProductsResponse {
   /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus> errorSamples;
+  core.List<GoogleRpcStatus>? errorSamples;
 
   /// Echoes the destination for the complete errors in the request if set.
-  GoogleCloudRetailV2betaExportErrorsConfig errorsConfig;
+  GoogleCloudRetailV2betaExportErrorsConfig? errorsConfig;
 
   GoogleCloudRetailV2betaExportProductsResponse();
 
@@ -3631,10 +3570,10 @@ class GoogleCloudRetailV2betaExportProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorSamples != null)
-          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
+          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
       };
 }
 
@@ -3645,11 +3584,11 @@ class GoogleCloudRetailV2betaExportProductsResponse {
 /// successful.
 class GoogleCloudRetailV2betaExportUserEventsResponse {
   /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus> errorSamples;
+  core.List<GoogleRpcStatus>? errorSamples;
 
   /// Echoes the destination for the complete errors if this field was set in
   /// the request.
-  GoogleCloudRetailV2betaExportErrorsConfig errorsConfig;
+  GoogleCloudRetailV2betaExportErrorsConfig? errorsConfig;
 
   GoogleCloudRetailV2betaExportUserEventsResponse();
 
@@ -3666,10 +3605,10 @@ class GoogleCloudRetailV2betaExportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorSamples != null)
-          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
+          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
       };
 }
 
@@ -3680,7 +3619,7 @@ class GoogleCloudRetailV2betaImportErrorsConfig {
   /// This must be an empty, existing Cloud Storage bucket. Import errors will
   /// be written to a file in this bucket, one per line, as a JSON-encoded
   /// `google.rpc.Status` message.
-  core.String gcsPrefix;
+  core.String? gcsPrefix;
 
   GoogleCloudRetailV2betaImportErrorsConfig();
 
@@ -3690,8 +3629,8 @@ class GoogleCloudRetailV2betaImportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
 
@@ -3700,18 +3639,18 @@ class GoogleCloudRetailV2betaImportErrorsConfig {
 /// This will be returned by the google.longrunning.Operation.metadata field.
 class GoogleCloudRetailV2betaImportMetadata {
   /// Operation create time.
-  core.String createTime;
+  core.String? createTime;
 
   /// Count of entries that encountered errors while processing.
-  core.String failureCount;
+  core.String? failureCount;
 
   /// Count of entries that were processed successfully.
-  core.String successCount;
+  core.String? successCount;
 
   /// Operation last update time.
   ///
   /// If the operation is done, this is also the finish time.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudRetailV2betaImportMetadata();
 
@@ -3730,11 +3669,11 @@ class GoogleCloudRetailV2betaImportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (failureCount != null) 'failureCount': failureCount,
-        if (successCount != null) 'successCount': successCount,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (failureCount != null) 'failureCount': failureCount!,
+        if (successCount != null) 'successCount': successCount!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3745,10 +3684,10 @@ class GoogleCloudRetailV2betaImportMetadata {
 /// successful.
 class GoogleCloudRetailV2betaImportProductsResponse {
   /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus> errorSamples;
+  core.List<GoogleRpcStatus>? errorSamples;
 
   /// Echoes the destination for the complete errors in the request if set.
-  GoogleCloudRetailV2betaImportErrorsConfig errorsConfig;
+  GoogleCloudRetailV2betaImportErrorsConfig? errorsConfig;
 
   GoogleCloudRetailV2betaImportProductsResponse();
 
@@ -3765,10 +3704,10 @@ class GoogleCloudRetailV2betaImportProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorSamples != null)
-          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
+          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
       };
 }
 
@@ -3779,14 +3718,14 @@ class GoogleCloudRetailV2betaImportProductsResponse {
 /// successful.
 class GoogleCloudRetailV2betaImportUserEventsResponse {
   /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus> errorSamples;
+  core.List<GoogleRpcStatus>? errorSamples;
 
   /// Echoes the destination for the complete errors if this field was set in
   /// the request.
-  GoogleCloudRetailV2betaImportErrorsConfig errorsConfig;
+  GoogleCloudRetailV2betaImportErrorsConfig? errorsConfig;
 
   /// Aggregated statistics of user event import status.
-  GoogleCloudRetailV2betaUserEventImportSummary importSummary;
+  GoogleCloudRetailV2betaUserEventImportSummary? importSummary;
 
   GoogleCloudRetailV2betaImportUserEventsResponse();
 
@@ -3807,11 +3746,11 @@ class GoogleCloudRetailV2betaImportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorSamples != null)
-          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
-        if (importSummary != null) 'importSummary': importSummary.toJson(),
+          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (importSummary != null) 'importSummary': importSummary!.toJson(),
       };
 }
 
@@ -3825,7 +3764,7 @@ class GoogleCloudRetailV2betaPurgeMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response of the PurgeUserEventsRequest.
@@ -3834,7 +3773,7 @@ class GoogleCloudRetailV2betaPurgeMetadata {
 /// returned by the google.longrunning.Operations.response field.
 class GoogleCloudRetailV2betaPurgeUserEventsResponse {
   /// The total count of events purged as a result of the operation.
-  core.String purgedEventsCount;
+  core.String? purgedEventsCount;
 
   GoogleCloudRetailV2betaPurgeUserEventsResponse();
 
@@ -3844,8 +3783,8 @@ class GoogleCloudRetailV2betaPurgeUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
       };
 }
 
@@ -3857,13 +3796,13 @@ class GoogleCloudRetailV2betaRejoinUserEventsMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response message for RejoinUserEvents method.
 class GoogleCloudRetailV2betaRejoinUserEventsResponse {
   /// Number of user events that were joined with latest product catalog.
-  core.String rejoinedUserEventsCount;
+  core.String? rejoinedUserEventsCount;
 
   GoogleCloudRetailV2betaRejoinUserEventsResponse();
 
@@ -3873,9 +3812,9 @@ class GoogleCloudRetailV2betaRejoinUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (rejoinedUserEventsCount != null)
-          'rejoinedUserEventsCount': rejoinedUserEventsCount,
+          'rejoinedUserEventsCount': rejoinedUserEventsCount!,
       };
 }
 
@@ -3884,11 +3823,11 @@ class GoogleCloudRetailV2betaRejoinUserEventsResponse {
 /// The UserEventImportSummary summarizes the import status for user events.
 class GoogleCloudRetailV2betaUserEventImportSummary {
   /// Count of user events imported with complete existing catalog information.
-  core.String joinedEventsCount;
+  core.String? joinedEventsCount;
 
   /// Count of user events imported, but with catalog information not found in
   /// the imported catalog.
-  core.String unjoinedEventsCount;
+  core.String? unjoinedEventsCount;
 
   GoogleCloudRetailV2betaUserEventImportSummary();
 
@@ -3901,10 +3840,10 @@ class GoogleCloudRetailV2betaUserEventImportSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
         if (unjoinedEventsCount != null)
-          'unjoinedEventsCount': unjoinedEventsCount,
+          'unjoinedEventsCount': unjoinedEventsCount!,
       };
 }
 
@@ -3915,7 +3854,7 @@ class GoogleCloudRetailV2mainExportErrorsConfig {
   /// This must be an empty, existing Cloud Storage bucket. Export errors will
   /// be written to a file in this bucket, one per line, as a JSON-encoded
   /// `google.rpc.Status` message.
-  core.String gcsPrefix;
+  core.String? gcsPrefix;
 
   GoogleCloudRetailV2mainExportErrorsConfig();
 
@@ -3925,8 +3864,8 @@ class GoogleCloudRetailV2mainExportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
 
@@ -3935,12 +3874,12 @@ class GoogleCloudRetailV2mainExportErrorsConfig {
 /// This will be returned by the google.longrunning.Operation.metadata field.
 class GoogleCloudRetailV2mainExportMetadata {
   /// Operation create time.
-  core.String createTime;
+  core.String? createTime;
 
   /// Operation last update time.
   ///
   /// If the operation is done, this is also the finish time.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudRetailV2mainExportMetadata();
 
@@ -3953,9 +3892,9 @@ class GoogleCloudRetailV2mainExportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3966,10 +3905,10 @@ class GoogleCloudRetailV2mainExportMetadata {
 /// successful.
 class GoogleCloudRetailV2mainExportProductsResponse {
   /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus> errorSamples;
+  core.List<GoogleRpcStatus>? errorSamples;
 
   /// Echoes the destination for the complete errors in the request if set.
-  GoogleCloudRetailV2mainExportErrorsConfig errorsConfig;
+  GoogleCloudRetailV2mainExportErrorsConfig? errorsConfig;
 
   GoogleCloudRetailV2mainExportProductsResponse();
 
@@ -3986,10 +3925,10 @@ class GoogleCloudRetailV2mainExportProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorSamples != null)
-          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
+          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
       };
 }
 
@@ -4000,11 +3939,11 @@ class GoogleCloudRetailV2mainExportProductsResponse {
 /// successful.
 class GoogleCloudRetailV2mainExportUserEventsResponse {
   /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus> errorSamples;
+  core.List<GoogleRpcStatus>? errorSamples;
 
   /// Echoes the destination for the complete errors if this field was set in
   /// the request.
-  GoogleCloudRetailV2mainExportErrorsConfig errorsConfig;
+  GoogleCloudRetailV2mainExportErrorsConfig? errorsConfig;
 
   GoogleCloudRetailV2mainExportUserEventsResponse();
 
@@ -4021,10 +3960,10 @@ class GoogleCloudRetailV2mainExportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorSamples != null)
-          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
+          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
       };
 }
 
@@ -4035,7 +3974,7 @@ class GoogleCloudRetailV2mainImportErrorsConfig {
   /// This must be an empty, existing Cloud Storage bucket. Import errors will
   /// be written to a file in this bucket, one per line, as a JSON-encoded
   /// `google.rpc.Status` message.
-  core.String gcsPrefix;
+  core.String? gcsPrefix;
 
   GoogleCloudRetailV2mainImportErrorsConfig();
 
@@ -4045,8 +3984,8 @@ class GoogleCloudRetailV2mainImportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
 
@@ -4055,18 +3994,18 @@ class GoogleCloudRetailV2mainImportErrorsConfig {
 /// This will be returned by the google.longrunning.Operation.metadata field.
 class GoogleCloudRetailV2mainImportMetadata {
   /// Operation create time.
-  core.String createTime;
+  core.String? createTime;
 
   /// Count of entries that encountered errors while processing.
-  core.String failureCount;
+  core.String? failureCount;
 
   /// Count of entries that were processed successfully.
-  core.String successCount;
+  core.String? successCount;
 
   /// Operation last update time.
   ///
   /// If the operation is done, this is also the finish time.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudRetailV2mainImportMetadata();
 
@@ -4085,11 +4024,11 @@ class GoogleCloudRetailV2mainImportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (failureCount != null) 'failureCount': failureCount,
-        if (successCount != null) 'successCount': successCount,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (failureCount != null) 'failureCount': failureCount!,
+        if (successCount != null) 'successCount': successCount!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -4100,10 +4039,10 @@ class GoogleCloudRetailV2mainImportMetadata {
 /// successful.
 class GoogleCloudRetailV2mainImportProductsResponse {
   /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus> errorSamples;
+  core.List<GoogleRpcStatus>? errorSamples;
 
   /// Echoes the destination for the complete errors in the request if set.
-  GoogleCloudRetailV2mainImportErrorsConfig errorsConfig;
+  GoogleCloudRetailV2mainImportErrorsConfig? errorsConfig;
 
   GoogleCloudRetailV2mainImportProductsResponse();
 
@@ -4120,10 +4059,10 @@ class GoogleCloudRetailV2mainImportProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorSamples != null)
-          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
+          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
       };
 }
 
@@ -4134,14 +4073,14 @@ class GoogleCloudRetailV2mainImportProductsResponse {
 /// successful.
 class GoogleCloudRetailV2mainImportUserEventsResponse {
   /// A sample of errors encountered while processing the request.
-  core.List<GoogleRpcStatus> errorSamples;
+  core.List<GoogleRpcStatus>? errorSamples;
 
   /// Echoes the destination for the complete errors if this field was set in
   /// the request.
-  GoogleCloudRetailV2mainImportErrorsConfig errorsConfig;
+  GoogleCloudRetailV2mainImportErrorsConfig? errorsConfig;
 
   /// Aggregated statistics of user event import status.
-  GoogleCloudRetailV2mainUserEventImportSummary importSummary;
+  GoogleCloudRetailV2mainUserEventImportSummary? importSummary;
 
   GoogleCloudRetailV2mainImportUserEventsResponse();
 
@@ -4162,11 +4101,11 @@ class GoogleCloudRetailV2mainImportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorSamples != null)
-          'errorSamples': errorSamples.map((value) => value.toJson()).toList(),
-        if (errorsConfig != null) 'errorsConfig': errorsConfig.toJson(),
-        if (importSummary != null) 'importSummary': importSummary.toJson(),
+          'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
+        if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
+        if (importSummary != null) 'importSummary': importSummary!.toJson(),
       };
 }
 
@@ -4180,7 +4119,7 @@ class GoogleCloudRetailV2mainPurgeMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response of the PurgeUserEventsRequest.
@@ -4189,7 +4128,7 @@ class GoogleCloudRetailV2mainPurgeMetadata {
 /// returned by the google.longrunning.Operations.response field.
 class GoogleCloudRetailV2mainPurgeUserEventsResponse {
   /// The total count of events purged as a result of the operation.
-  core.String purgedEventsCount;
+  core.String? purgedEventsCount;
 
   GoogleCloudRetailV2mainPurgeUserEventsResponse();
 
@@ -4199,8 +4138,8 @@ class GoogleCloudRetailV2mainPurgeUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
       };
 }
 
@@ -4212,13 +4151,13 @@ class GoogleCloudRetailV2mainRejoinUserEventsMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response message for RejoinUserEvents method.
 class GoogleCloudRetailV2mainRejoinUserEventsResponse {
   /// Number of user events that were joined with latest product catalog.
-  core.String rejoinedUserEventsCount;
+  core.String? rejoinedUserEventsCount;
 
   GoogleCloudRetailV2mainRejoinUserEventsResponse();
 
@@ -4228,9 +4167,9 @@ class GoogleCloudRetailV2mainRejoinUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (rejoinedUserEventsCount != null)
-          'rejoinedUserEventsCount': rejoinedUserEventsCount,
+          'rejoinedUserEventsCount': rejoinedUserEventsCount!,
       };
 }
 
@@ -4239,11 +4178,11 @@ class GoogleCloudRetailV2mainRejoinUserEventsResponse {
 /// The UserEventImportSummary summarizes the import status for user events.
 class GoogleCloudRetailV2mainUserEventImportSummary {
   /// Count of user events imported with complete existing catalog information.
-  core.String joinedEventsCount;
+  core.String? joinedEventsCount;
 
   /// Count of user events imported, but with catalog information not found in
   /// the imported catalog.
-  core.String unjoinedEventsCount;
+  core.String? unjoinedEventsCount;
 
   GoogleCloudRetailV2mainUserEventImportSummary();
 
@@ -4256,20 +4195,20 @@ class GoogleCloudRetailV2mainUserEventImportSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
         if (unjoinedEventsCount != null)
-          'unjoinedEventsCount': unjoinedEventsCount,
+          'unjoinedEventsCount': unjoinedEventsCount!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<GoogleLongrunningOperation> operations;
+  core.List<GoogleLongrunningOperation>? operations;
 
   GoogleLongrunningListOperationsResponse();
 
@@ -4286,10 +4225,10 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4300,10 +4239,10 @@ class GoogleLongrunningOperation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  GoogleRpcStatus error;
+  GoogleRpcStatus? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -4314,14 +4253,14 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -4334,7 +4273,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   GoogleLongrunningOperation();
 
@@ -4369,12 +4308,12 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -4392,7 +4331,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4404,7 +4343,7 @@ class GoogleProtobufEmpty {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -4412,13 +4351,13 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   GoogleRpcStatus();
 
@@ -4442,9 +4381,9 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }

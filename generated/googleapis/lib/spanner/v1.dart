@@ -111,11 +111,8 @@ class ProjectsInstanceConfigsResource {
   /// this method will complete with the same error.
   async.Future<InstanceConfig> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -158,13 +155,10 @@ class ProjectsInstanceConfigsResource {
   /// this method will complete with the same error.
   async.Future<ListInstanceConfigsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -242,13 +236,9 @@ class ProjectsInstancesResource {
   async.Future<Operation> create(
     CreateInstanceRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -290,11 +280,8 @@ class ProjectsInstancesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -333,12 +320,9 @@ class ProjectsInstancesResource {
   /// this method will complete with the same error.
   async.Future<Instance> get(
     core.String name, {
-    core.String fieldMask,
-    core.String $fields,
+    core.String? fieldMask,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fieldMask != null) 'fieldMask': [fieldMask],
       if ($fields != null) 'fields': [$fields],
@@ -381,13 +365,9 @@ class ProjectsInstancesResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -447,15 +427,12 @@ class ProjectsInstancesResource {
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String instanceDeadline,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? instanceDeadline,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (instanceDeadline != null) 'instanceDeadline': [instanceDeadline],
@@ -523,13 +500,9 @@ class ProjectsInstancesResource {
   async.Future<Operation> patch(
     UpdateInstanceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -572,13 +545,9 @@ class ProjectsInstancesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -626,13 +595,9 @@ class ProjectsInstancesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -720,14 +685,11 @@ class ProjectsInstancesBackupOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListBackupOperationsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -813,16 +775,12 @@ class ProjectsInstancesBackupsResource {
   async.Future<Operation> create(
     Backup request,
     core.String parent, {
-    core.String backupId,
-    core.String encryptionConfig_encryptionType,
-    core.String encryptionConfig_kmsKeyName,
-    core.String $fields,
+    core.String? backupId,
+    core.String? encryptionConfig_encryptionType,
+    core.String? encryptionConfig_kmsKeyName,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (backupId != null) 'backupId': [backupId],
       if (encryptionConfig_encryptionType != null)
@@ -865,11 +823,8 @@ class ProjectsInstancesBackupsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -905,11 +860,8 @@ class ProjectsInstancesBackupsResource {
   /// this method will complete with the same error.
   async.Future<Backup> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -954,13 +906,9 @@ class ProjectsInstancesBackupsResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1030,14 +978,11 @@ class ProjectsInstancesBackupsResource {
   /// this method will complete with the same error.
   async.Future<ListBackupsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1093,14 +1038,10 @@ class ProjectsInstancesBackupsResource {
   async.Future<Backup> patch(
     Backup request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1147,13 +1088,9 @@ class ProjectsInstancesBackupsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1204,13 +1141,9 @@ class ProjectsInstancesBackupsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1265,11 +1198,8 @@ class ProjectsInstancesBackupsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1309,11 +1239,8 @@ class ProjectsInstancesBackupsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1351,11 +1278,8 @@ class ProjectsInstancesBackupsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1405,14 +1329,11 @@ class ProjectsInstancesBackupsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1499,14 +1420,11 @@ class ProjectsInstancesDatabaseOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListDatabaseOperationsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1567,13 +1485,9 @@ class ProjectsInstancesDatabasesResource {
   async.Future<Operation> create(
     CreateDatabaseRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1613,11 +1527,8 @@ class ProjectsInstancesDatabasesResource {
   /// this method will complete with the same error.
   async.Future<Empty> dropDatabase(
     core.String database, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1653,11 +1564,8 @@ class ProjectsInstancesDatabasesResource {
   /// this method will complete with the same error.
   async.Future<Database> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1697,11 +1605,8 @@ class ProjectsInstancesDatabasesResource {
   /// this method will complete with the same error.
   async.Future<GetDatabaseDdlResponse> getDdl(
     core.String database, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1748,13 +1653,9 @@ class ProjectsInstancesDatabasesResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1798,13 +1699,10 @@ class ProjectsInstancesDatabasesResource {
   /// this method will complete with the same error.
   async.Future<ListDatabasesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1860,13 +1758,9 @@ class ProjectsInstancesDatabasesResource {
   async.Future<Operation> restore(
     RestoreDatabaseRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1914,13 +1808,9 @@ class ProjectsInstancesDatabasesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1971,13 +1861,9 @@ class ProjectsInstancesDatabasesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2025,13 +1911,9 @@ class ProjectsInstancesDatabasesResource {
   async.Future<Operation> updateDdl(
     UpdateDatabaseDdlRequest request,
     core.String database, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2084,11 +1966,8 @@ class ProjectsInstancesDatabasesOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2128,11 +2007,8 @@ class ProjectsInstancesDatabasesOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2170,11 +2046,8 @@ class ProjectsInstancesDatabasesOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2224,14 +2097,11 @@ class ProjectsInstancesDatabasesOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2283,13 +2153,9 @@ class ProjectsInstancesDatabasesSessionsResource {
   async.Future<BatchCreateSessionsResponse> batchCreate(
     BatchCreateSessionsRequest request,
     core.String database, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2334,13 +2200,9 @@ class ProjectsInstancesDatabasesSessionsResource {
   async.Future<Transaction> beginTransaction(
     BeginTransactionRequest request,
     core.String session, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (session == null) {
-      throw core.ArgumentError('Parameter session is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2394,13 +2256,9 @@ class ProjectsInstancesDatabasesSessionsResource {
   async.Future<CommitResponse> commit(
     CommitRequest request,
     core.String session, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (session == null) {
-      throw core.ArgumentError('Parameter session is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2454,13 +2312,9 @@ class ProjectsInstancesDatabasesSessionsResource {
   async.Future<Session> create(
     CreateSessionRequest request,
     core.String database, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2501,11 +2355,8 @@ class ProjectsInstancesDatabasesSessionsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2552,13 +2403,9 @@ class ProjectsInstancesDatabasesSessionsResource {
   async.Future<ExecuteBatchDmlResponse> executeBatchDml(
     ExecuteBatchDmlRequest request,
     core.String session, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (session == null) {
-      throw core.ArgumentError('Parameter session is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2609,13 +2456,9 @@ class ProjectsInstancesDatabasesSessionsResource {
   async.Future<ResultSet> executeSql(
     ExecuteSqlRequest request,
     core.String session, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (session == null) {
-      throw core.ArgumentError('Parameter session is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2661,13 +2504,9 @@ class ProjectsInstancesDatabasesSessionsResource {
   async.Future<PartialResultSet> executeStreamingSql(
     ExecuteSqlRequest request,
     core.String session, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (session == null) {
-      throw core.ArgumentError('Parameter session is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2709,11 +2548,8 @@ class ProjectsInstancesDatabasesSessionsResource {
   /// this method will complete with the same error.
   async.Future<Session> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2761,14 +2597,11 @@ class ProjectsInstancesDatabasesSessionsResource {
   /// this method will complete with the same error.
   async.Future<ListSessionsResponse> list(
     core.String database, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2822,13 +2655,9 @@ class ProjectsInstancesDatabasesSessionsResource {
   async.Future<PartitionResponse> partitionQuery(
     PartitionQueryRequest request,
     core.String session, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (session == null) {
-      throw core.ArgumentError('Parameter session is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2883,13 +2712,9 @@ class ProjectsInstancesDatabasesSessionsResource {
   async.Future<PartitionResponse> partitionRead(
     PartitionReadRequest request,
     core.String session, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (session == null) {
-      throw core.ArgumentError('Parameter session is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2940,13 +2765,9 @@ class ProjectsInstancesDatabasesSessionsResource {
   async.Future<ResultSet> read(
     ReadRequest request,
     core.String session, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (session == null) {
-      throw core.ArgumentError('Parameter session is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2993,13 +2814,9 @@ class ProjectsInstancesDatabasesSessionsResource {
   async.Future<Empty> rollback(
     RollbackRequest request,
     core.String session, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (session == null) {
-      throw core.ArgumentError('Parameter session is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3043,13 +2860,9 @@ class ProjectsInstancesDatabasesSessionsResource {
   async.Future<PartialResultSet> streamingRead(
     ReadRequest request,
     core.String session, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (session == null) {
-      throw core.ArgumentError('Parameter session is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3104,11 +2917,8 @@ class ProjectsInstancesOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3148,11 +2958,8 @@ class ProjectsInstancesOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3190,11 +2997,8 @@ class ProjectsInstancesOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3243,14 +3047,11 @@ class ProjectsInstancesOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -3278,19 +3079,19 @@ class Backup {
   /// backup will be equivalent to the `create_time`.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Required for the CreateBackup operation.
   ///
   /// Name of the database from which this backup was created. This needs to be
   /// in the same instance as the backup. Values are of the form
   /// `projects//instances//databases/`.
-  core.String database;
+  core.String? database;
 
   /// The encryption information for the backup.
   ///
   /// Output only.
-  EncryptionInfo encryptionInfo;
+  EncryptionInfo? encryptionInfo;
 
   /// Required for the CreateBackup operation.
   ///
@@ -3299,7 +3100,7 @@ class Backup {
   /// request is processed. Once the `expire_time` has passed, the backup is
   /// eligible to be automatically deleted by Cloud Spanner to free the
   /// resources used by the backup.
-  core.String expireTime;
+  core.String? expireTime;
 
   /// Output only for the CreateBackup operation.
   ///
@@ -3310,7 +3111,7 @@ class Backup {
   /// location(s) specified in the instance configuration of the instance
   /// containing the backup, identified by the prefix of the backup name of the
   /// form `projects//instances/`.
-  core.String name;
+  core.String? name;
 
   /// The names of the restored databases that reference the backup.
   ///
@@ -3321,12 +3122,12 @@ class Backup {
   /// to the backup is removed.
   ///
   /// Output only.
-  core.List<core.String> referencingDatabases;
+  core.List<core.String>? referencingDatabases;
 
   /// Size of the backup in bytes.
   ///
   /// Output only.
-  core.String sizeBytes;
+  core.String? sizeBytes;
 
   /// The current state of the backup.
   ///
@@ -3336,14 +3137,14 @@ class Backup {
   /// - "CREATING" : The pending backup is still being created. Operations on
   /// the backup may fail with `FAILED_PRECONDITION` in this state.
   /// - "READY" : The backup is complete and ready for use.
-  core.String state;
+  core.String? state;
 
   /// The backup will contain an externally consistent copy of the database at
   /// the timestamp specified by `version_time`.
   ///
   /// If `version_time` is not specified, the system will set `version_time` to
   /// the `create_time` of the backup.
-  core.String versionTime;
+  core.String? versionTime;
 
   Backup();
 
@@ -3380,37 +3181,37 @@ class Backup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (database != null) 'database': database,
-        if (encryptionInfo != null) 'encryptionInfo': encryptionInfo.toJson(),
-        if (expireTime != null) 'expireTime': expireTime,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (database != null) 'database': database!,
+        if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!.toJson(),
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (name != null) 'name': name!,
         if (referencingDatabases != null)
-          'referencingDatabases': referencingDatabases,
-        if (sizeBytes != null) 'sizeBytes': sizeBytes,
-        if (state != null) 'state': state,
-        if (versionTime != null) 'versionTime': versionTime,
+          'referencingDatabases': referencingDatabases!,
+        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
+        if (state != null) 'state': state!,
+        if (versionTime != null) 'versionTime': versionTime!,
       };
 }
 
 /// Information about a backup.
 class BackupInfo {
   /// Name of the backup.
-  core.String backup;
+  core.String? backup;
 
   /// The time the CreateBackup request was received.
-  core.String createTime;
+  core.String? createTime;
 
   /// Name of the database the backup was created from.
-  core.String sourceDatabase;
+  core.String? sourceDatabase;
 
   /// The backup contains an externally consistent copy of `source_database` at
   /// the timestamp specified by `version_time`.
   ///
   /// If the CreateBackup request did not specify `version_time`, the
   /// `version_time` of the backup is equivalent to the `create_time`.
-  core.String versionTime;
+  core.String? versionTime;
 
   BackupInfo();
 
@@ -3429,11 +3230,11 @@ class BackupInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (backup != null) 'backup': backup,
-        if (createTime != null) 'createTime': createTime,
-        if (sourceDatabase != null) 'sourceDatabase': sourceDatabase,
-        if (versionTime != null) 'versionTime': versionTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (backup != null) 'backup': backup!,
+        if (createTime != null) 'createTime': createTime!,
+        if (sourceDatabase != null) 'sourceDatabase': sourceDatabase!,
+        if (versionTime != null) 'versionTime': versionTime!,
       };
 }
 
@@ -3446,10 +3247,10 @@ class BatchCreateSessionsRequest {
   /// calls to BatchCreateSessions (adjusting session_count as necessary).
   ///
   /// Required.
-  core.int sessionCount;
+  core.int? sessionCount;
 
   /// Parameters to be applied to each created session.
-  Session sessionTemplate;
+  Session? sessionTemplate;
 
   BatchCreateSessionsRequest();
 
@@ -3463,17 +3264,17 @@ class BatchCreateSessionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sessionCount != null) 'sessionCount': sessionCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sessionCount != null) 'sessionCount': sessionCount!,
         if (sessionTemplate != null)
-          'sessionTemplate': sessionTemplate.toJson(),
+          'sessionTemplate': sessionTemplate!.toJson(),
       };
 }
 
 /// The response for BatchCreateSessions.
 class BatchCreateSessionsResponse {
   /// The freshly created sessions.
-  core.List<Session> session;
+  core.List<Session>? session;
 
   BatchCreateSessionsResponse();
 
@@ -3486,9 +3287,9 @@ class BatchCreateSessionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (session != null)
-          'session': session.map((value) => value.toJson()).toList(),
+          'session': session!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3497,7 +3298,7 @@ class BeginTransactionRequest {
   /// Options for the new transaction.
   ///
   /// Required.
-  TransactionOptions options;
+  TransactionOptions? options;
 
   BeginTransactionRequest();
 
@@ -3508,8 +3309,8 @@ class BeginTransactionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (options != null) 'options': options.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (options != null) 'options': options!.toJson(),
       };
 }
 
@@ -3523,7 +3324,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -3555,12 +3356,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -3579,10 +3380,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -3590,14 +3391,14 @@ class Binding {
 /// PlanNode.
 class ChildLink {
   /// The node to which the link points.
-  core.int childIndex;
+  core.int? childIndex;
 
   /// The type of the link.
   ///
   /// For example, in Hash Joins this could be used to distinguish between the
   /// build child and the probe child, or in the case of the child being an
   /// output variable, to represent the tag associated with the output variable.
-  core.String type;
+  core.String? type;
 
   /// Only present if the child node is SCALAR and corresponds to an output
   /// variable of the parent node.
@@ -3607,7 +3408,7 @@ class ChildLink {
   /// the `SCALAR` nodes representing the output variables created for each
   /// column that is read by the operator. The corresponding `variable` fields
   /// will be set to the variable names assigned to the columns.
-  core.String variable;
+  core.String? variable;
 
   ChildLink();
 
@@ -3623,10 +3424,10 @@ class ChildLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (childIndex != null) 'childIndex': childIndex,
-        if (type != null) 'type': type,
-        if (variable != null) 'variable': variable,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (childIndex != null) 'childIndex': childIndex!,
+        if (type != null) 'type': type!,
+        if (variable != null) 'variable': variable!,
       };
 }
 
@@ -3636,13 +3437,13 @@ class CommitRequest {
   ///
   /// All mutations are applied atomically, in the order they appear in this
   /// list.
-  core.List<Mutation> mutations;
+  core.List<Mutation>? mutations;
 
   /// If `true`, then statistics related to the transaction will be included in
   /// the CommitResponse.
   ///
   /// Default value is `false`.
-  core.bool returnCommitStats;
+  core.bool? returnCommitStats;
 
   /// Execute mutations in a temporary transaction.
   ///
@@ -3652,12 +3453,12 @@ class CommitRequest {
   /// the application, or in the transport library), it is possible that the
   /// mutations are executed more than once. If this is undesirable, use
   /// BeginTransaction and Commit instead.
-  TransactionOptions singleUseTransaction;
+  TransactionOptions? singleUseTransaction;
 
   /// Commit a previously-started transaction.
-  core.String transactionId;
+  core.String? transactionId;
   core.List<core.int> get transactionIdAsBytes =>
-      convert.base64.decode(transactionId);
+      convert.base64.decode(transactionId!);
 
   set transactionIdAsBytes(core.List<core.int> _bytes) {
     transactionId =
@@ -3685,13 +3486,13 @@ class CommitRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (mutations != null)
-          'mutations': mutations.map((value) => value.toJson()).toList(),
-        if (returnCommitStats != null) 'returnCommitStats': returnCommitStats,
+          'mutations': mutations!.map((value) => value.toJson()).toList(),
+        if (returnCommitStats != null) 'returnCommitStats': returnCommitStats!,
         if (singleUseTransaction != null)
-          'singleUseTransaction': singleUseTransaction.toJson(),
-        if (transactionId != null) 'transactionId': transactionId,
+          'singleUseTransaction': singleUseTransaction!.toJson(),
+        if (transactionId != null) 'transactionId': transactionId!,
       };
 }
 
@@ -3701,10 +3502,10 @@ class CommitResponse {
   ///
   /// Not returned by default. For more information, see
   /// CommitRequest.return_commit_stats.
-  CommitStats commitStats;
+  CommitStats? commitStats;
 
   /// The Cloud Spanner timestamp at which the transaction committed.
-  core.String commitTimestamp;
+  core.String? commitTimestamp;
 
   CommitResponse();
 
@@ -3718,9 +3519,9 @@ class CommitResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commitStats != null) 'commitStats': commitStats.toJson(),
-        if (commitTimestamp != null) 'commitTimestamp': commitTimestamp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commitStats != null) 'commitStats': commitStats!.toJson(),
+        if (commitTimestamp != null) 'commitTimestamp': commitTimestamp!,
       };
 }
 
@@ -3735,7 +3536,7 @@ class CommitStats {
   /// [limit](http://cloud.google.com/spanner/quotas#limits_for_creating_reading_updating_and_deleting_data).
   /// If the number of mutations exceeds the limit, the server returns
   /// [INVALID_ARGUMENT](http://cloud.google.com/spanner/docs/reference/rest/v1/Code#ENUM_VALUES.INVALID_ARGUMENT).
-  core.String mutationCount;
+  core.String? mutationCount;
 
   CommitStats();
 
@@ -3745,8 +3546,8 @@ class CommitStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (mutationCount != null) 'mutationCount': mutationCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (mutationCount != null) 'mutationCount': mutationCount!,
       };
 }
 
@@ -3762,16 +3563,16 @@ class CreateBackupMetadata {
   /// successful cancellation, the operation is not deleted; instead, it becomes
   /// an operation with an Operation.error value with a google.rpc.Status.code
   /// of 1, corresponding to `Code.CANCELLED`.
-  core.String cancelTime;
+  core.String? cancelTime;
 
   /// The name of the database the backup is created from.
-  core.String database;
+  core.String? database;
 
   /// The name of the backup being created.
-  core.String name;
+  core.String? name;
 
   /// The progress of the CreateBackup operation.
-  OperationProgress progress;
+  OperationProgress? progress;
 
   CreateBackupMetadata();
 
@@ -3791,18 +3592,18 @@ class CreateBackupMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cancelTime != null) 'cancelTime': cancelTime,
-        if (database != null) 'database': database,
-        if (name != null) 'name': name,
-        if (progress != null) 'progress': progress.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cancelTime != null) 'cancelTime': cancelTime!,
+        if (database != null) 'database': database!,
+        if (name != null) 'name': name!,
+        if (progress != null) 'progress': progress!.toJson(),
       };
 }
 
 /// Metadata type for the operation returned by CreateDatabase.
 class CreateDatabaseMetadata {
   /// The database being created.
-  core.String database;
+  core.String? database;
 
   CreateDatabaseMetadata();
 
@@ -3812,8 +3613,8 @@ class CreateDatabaseMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (database != null) 'database': database,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (database != null) 'database': database!,
       };
 }
 
@@ -3828,7 +3629,7 @@ class CreateDatabaseRequest {
   /// in backticks (\`\` \` \`\`).
   ///
   /// Required.
-  core.String createStatement;
+  core.String? createStatement;
 
   /// The encryption configuration for the database.
   ///
@@ -3836,7 +3637,7 @@ class CreateDatabaseRequest {
   /// data at rest using Google default encryption.
   ///
   /// Optional.
-  EncryptionConfig encryptionConfig;
+  EncryptionConfig? encryptionConfig;
 
   /// A list of DDL statements to run inside the newly created database.
   ///
@@ -3845,7 +3646,7 @@ class CreateDatabaseRequest {
   /// statement, the database is not created.
   ///
   /// Optional.
-  core.List<core.String> extraStatements;
+  core.List<core.String>? extraStatements;
 
   CreateDatabaseRequest();
 
@@ -3864,11 +3665,11 @@ class CreateDatabaseRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createStatement != null) 'createStatement': createStatement,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createStatement != null) 'createStatement': createStatement!,
         if (encryptionConfig != null)
-          'encryptionConfig': encryptionConfig.toJson(),
-        if (extraStatements != null) 'extraStatements': extraStatements,
+          'encryptionConfig': encryptionConfig!.toJson(),
+        if (extraStatements != null) 'extraStatements': extraStatements!,
       };
 }
 
@@ -3878,16 +3679,16 @@ class CreateInstanceMetadata {
   ///
   /// If set, this operation is in the process of undoing itself (which is
   /// guaranteed to succeed) and cannot be cancelled again.
-  core.String cancelTime;
+  core.String? cancelTime;
 
   /// The time at which this operation failed or was completed successfully.
-  core.String endTime;
+  core.String? endTime;
 
   /// The instance being created.
-  Instance instance;
+  Instance? instance;
 
   /// The time at which the CreateInstance request was received.
-  core.String startTime;
+  core.String? startTime;
 
   CreateInstanceMetadata();
 
@@ -3907,11 +3708,11 @@ class CreateInstanceMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cancelTime != null) 'cancelTime': cancelTime,
-        if (endTime != null) 'endTime': endTime,
-        if (instance != null) 'instance': instance.toJson(),
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cancelTime != null) 'cancelTime': cancelTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (instance != null) 'instance': instance!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -3922,7 +3723,7 @@ class CreateInstanceRequest {
   /// The name may be omitted, but if specified must be `/instances/`.
   ///
   /// Required.
-  Instance instance;
+  Instance? instance;
 
   /// The ID of the instance to create.
   ///
@@ -3930,7 +3731,7 @@ class CreateInstanceRequest {
   /// 64 characters in length.
   ///
   /// Required.
-  core.String instanceId;
+  core.String? instanceId;
 
   CreateInstanceRequest();
 
@@ -3944,9 +3745,9 @@ class CreateInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (instance != null) 'instance': instance.toJson(),
-        if (instanceId != null) 'instanceId': instanceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (instance != null) 'instance': instance!.toJson(),
+        if (instanceId != null) 'instanceId': instanceId!,
       };
 }
 
@@ -3955,7 +3756,7 @@ class CreateSessionRequest {
   /// The session to create.
   ///
   /// Required.
-  Session session;
+  Session? session;
 
   CreateSessionRequest();
 
@@ -3966,8 +3767,8 @@ class CreateSessionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (session != null) 'session': session.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (session != null) 'session': session!.toJson(),
       };
 }
 
@@ -3976,7 +3777,7 @@ class Database {
   /// If exists, the time at which the database creation started.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Earliest timestamp at which older versions of the data can be read.
   ///
@@ -3986,7 +3787,7 @@ class Database {
   /// the moment when you initiate the recovery.
   ///
   /// Output only.
-  core.String earliestVersionTime;
+  core.String? earliestVersionTime;
 
   /// For databases that are using customer managed encryption, this field
   /// contains the encryption configuration for the database.
@@ -3995,7 +3796,7 @@ class Database {
   /// this field is empty.
   ///
   /// Output only.
-  EncryptionConfig encryptionConfig;
+  EncryptionConfig? encryptionConfig;
 
   /// For databases that are using customer managed encryption, this field
   /// contains the encryption information for the database, such as encryption
@@ -4007,7 +3808,7 @@ class Database {
   /// appears in this field.
   ///
   /// Output only.
-  core.List<EncryptionInfo> encryptionInfo;
+  core.List<EncryptionInfo>? encryptionInfo;
 
   /// The name of the database.
   ///
@@ -4016,14 +3817,14 @@ class Database {
   /// other API methods to identify the database.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Applicable only for restored databases.
   ///
   /// Contains information about the restore source.
   ///
   /// Output only.
-  RestoreInfo restoreInfo;
+  RestoreInfo? restoreInfo;
 
   /// The current database state.
   ///
@@ -4039,7 +3840,7 @@ class Database {
   /// from, preventing the backup from being deleted. When optimizations are
   /// complete, the full performance of the database will be restored, and the
   /// database will transition to `READY` state.
-  core.String state;
+  core.String? state;
 
   /// The period in which Cloud Spanner retains all versions of data for the
   /// database.
@@ -4048,7 +3849,7 @@ class Database {
   /// set using UpdateDatabaseDdl. Defaults to 1 hour, if not set.
   ///
   /// Output only.
-  core.String versionRetentionPeriod;
+  core.String? versionRetentionPeriod;
 
   Database();
 
@@ -4084,20 +3885,20 @@ class Database {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
         if (earliestVersionTime != null)
-          'earliestVersionTime': earliestVersionTime,
+          'earliestVersionTime': earliestVersionTime!,
         if (encryptionConfig != null)
-          'encryptionConfig': encryptionConfig.toJson(),
+          'encryptionConfig': encryptionConfig!.toJson(),
         if (encryptionInfo != null)
           'encryptionInfo':
-              encryptionInfo.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (restoreInfo != null) 'restoreInfo': restoreInfo.toJson(),
-        if (state != null) 'state': state,
+              encryptionInfo!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (restoreInfo != null) 'restoreInfo': restoreInfo!.toJson(),
+        if (state != null) 'state': state!,
         if (versionRetentionPeriod != null)
-          'versionRetentionPeriod': versionRetentionPeriod,
+          'versionRetentionPeriod': versionRetentionPeriod!,
       };
 }
 
@@ -4111,12 +3912,12 @@ class Delete {
   /// transaction will succeed even if some or all rows do not exist.
   ///
   /// Required.
-  KeySet keySet;
+  KeySet? keySet;
 
   /// The table whose rows will be deleted.
   ///
   /// Required.
-  core.String table;
+  core.String? table;
 
   Delete();
 
@@ -4130,9 +3931,9 @@ class Delete {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (keySet != null) 'keySet': keySet.toJson(),
-        if (table != null) 'table': table,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (keySet != null) 'keySet': keySet!.toJson(),
+        if (table != null) 'table': table!,
       };
 }
 
@@ -4150,7 +3951,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Encryption configuration for a Cloud Spanner database.
@@ -4158,7 +3959,7 @@ class EncryptionConfig {
   /// The Cloud KMS key to be used for encrypting and decrypting the database.
   ///
   /// Values are of the form `projects//locations//keyRings//cryptoKeys/`.
-  core.String kmsKeyName;
+  core.String? kmsKeyName;
 
   EncryptionConfig();
 
@@ -4168,8 +3969,8 @@ class EncryptionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
       };
 }
 
@@ -4181,7 +3982,7 @@ class EncryptionInfo {
   /// Regardless of status, data is always encrypted at rest.
   ///
   /// Output only.
-  Status encryptionStatus;
+  Status? encryptionStatus;
 
   /// The type of encryption.
   ///
@@ -4196,13 +3997,13 @@ class EncryptionInfo {
   /// that is managed by the customer. The active version of the key.
   /// `kms_key_version` will be populated, and `encryption_status` may be
   /// populated.
-  core.String encryptionType;
+  core.String? encryptionType;
 
   /// A Cloud KMS key version that is being used to protect the database or
   /// backup.
   ///
   /// Output only.
-  core.String kmsKeyVersion;
+  core.String? kmsKeyVersion;
 
   EncryptionInfo();
 
@@ -4219,11 +4020,11 @@ class EncryptionInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (encryptionStatus != null)
-          'encryptionStatus': encryptionStatus.toJson(),
-        if (encryptionType != null) 'encryptionType': encryptionType,
-        if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion,
+          'encryptionStatus': encryptionStatus!.toJson(),
+        if (encryptionType != null) 'encryptionType': encryptionType!,
+        if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion!,
       };
 }
 
@@ -4239,7 +4040,7 @@ class ExecuteBatchDmlRequest {
   /// yield the same response as the first execution.
   ///
   /// Required.
-  core.String seqno;
+  core.String? seqno;
 
   /// The list of statements to execute in this batch.
   ///
@@ -4249,7 +4050,7 @@ class ExecuteBatchDmlRequest {
   /// are not executed. Callers must provide at least one statement.
   ///
   /// Required.
-  core.List<Statement> statements;
+  core.List<Statement>? statements;
 
   /// The transaction to use.
   ///
@@ -4258,7 +4059,7 @@ class ExecuteBatchDmlRequest {
   /// transaction ID or begin a new transaction.
   ///
   /// Required.
-  TransactionSelector transaction;
+  TransactionSelector? transaction;
 
   ExecuteBatchDmlRequest();
 
@@ -4278,11 +4079,11 @@ class ExecuteBatchDmlRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (seqno != null) 'seqno': seqno,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (seqno != null) 'seqno': seqno!,
         if (statements != null)
-          'statements': statements.map((value) => value.toJson()).toList(),
-        if (transaction != null) 'transaction': transaction.toJson(),
+          'statements': statements!.map((value) => value.toJson()).toList(),
+        if (transaction != null) 'transaction': transaction!.toJson(),
       };
 }
 
@@ -4310,12 +4111,12 @@ class ExecuteBatchDmlResponse {
   /// Each ResultSet does not contain any rows. The ResultSetStats in each
   /// ResultSet contain the number of rows modified by the statement. Only the
   /// first ResultSet in the response contains valid ResultSetMetadata.
-  core.List<ResultSet> resultSets;
+  core.List<ResultSet>? resultSets;
 
   /// If all DML statements are executed successfully, the status is `OK`.
   ///
   /// Otherwise, the error status of the first failed statement.
-  Status status;
+  Status? status;
 
   ExecuteBatchDmlResponse();
 
@@ -4332,10 +4133,10 @@ class ExecuteBatchDmlResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (resultSets != null)
-          'resultSets': resultSets.map((value) => value.toJson()).toList(),
-        if (status != null) 'status': status.toJson(),
+          'resultSets': resultSets!.map((value) => value.toJson()).toList(),
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -4349,7 +4150,7 @@ class ExecuteSqlRequest {
   /// used to specify the exact SQL type for some or all of the SQL statement
   /// parameters. See the definition of Type for more information about SQL
   /// types.
-  core.Map<core.String, Type> paramTypes;
+  core.Map<core.String, Type>? paramTypes;
 
   /// Parameter names and values that bind to placeholders in the SQL string.
   ///
@@ -4364,7 +4165,7 @@ class ExecuteSqlRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> params;
+  core.Map<core.String, core.Object>? params;
 
   /// If present, results will be restricted to the specified partition
   /// previously created using PartitionQuery().
@@ -4372,9 +4173,9 @@ class ExecuteSqlRequest {
   /// There must be an exact match for the values of fields common to this
   /// message and the PartitionQueryRequest message used to create this
   /// partition_token.
-  core.String partitionToken;
+  core.String? partitionToken;
   core.List<core.int> get partitionTokenAsBytes =>
-      convert.base64.decode(partitionToken);
+      convert.base64.decode(partitionToken!);
 
   set partitionTokenAsBytes(core.List<core.int> _bytes) {
     partitionToken =
@@ -4391,10 +4192,10 @@ class ExecuteSqlRequest {
   /// execution statistics information.
   /// - "PROFILE" : This mode returns both the query plan and the execution
   /// statistics along with the results.
-  core.String queryMode;
+  core.String? queryMode;
 
   /// Query optimizer configuration to use for the given query.
-  QueryOptions queryOptions;
+  QueryOptions? queryOptions;
 
   /// If this request is resuming a previously interrupted SQL statement
   /// execution, `resume_token` should be copied from the last PartialResultSet
@@ -4403,9 +4204,9 @@ class ExecuteSqlRequest {
   /// Doing this enables the new SQL statement execution to resume where the
   /// last one left off. The rest of the request parameters must exactly match
   /// the request that yielded this token.
-  core.String resumeToken;
+  core.String? resumeToken;
   core.List<core.int> get resumeTokenAsBytes =>
-      convert.base64.decode(resumeToken);
+      convert.base64.decode(resumeToken!);
 
   set resumeTokenAsBytes(core.List<core.int> _bytes) {
     resumeToken =
@@ -4421,12 +4222,12 @@ class ExecuteSqlRequest {
   /// transaction may be aborted. Replays of previously handled requests will
   /// yield the same response as the first execution. Required for DML
   /// statements. Ignored for queries.
-  core.String seqno;
+  core.String? seqno;
 
   /// The SQL string.
   ///
   /// Required.
-  core.String sql;
+  core.String? sql;
 
   /// The transaction to use.
   ///
@@ -4436,19 +4237,20 @@ class ExecuteSqlRequest {
   /// transactions are not supported. The caller must either supply an existing
   /// transaction ID or begin a new transaction. Partitioned DML requires an
   /// existing Partitioned DML transaction ID.
-  TransactionSelector transaction;
+  TransactionSelector? transaction;
 
   ExecuteSqlRequest();
 
   ExecuteSqlRequest.fromJson(core.Map _json) {
     if (_json.containsKey('paramTypes')) {
-      paramTypes =
-          (_json['paramTypes'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  Type.fromJson(item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      paramTypes = (_json['paramTypes'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              Type.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('params')) {
       params =
@@ -4484,18 +4286,18 @@ class ExecuteSqlRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (paramTypes != null)
           'paramTypes':
-              paramTypes.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (params != null) 'params': params,
-        if (partitionToken != null) 'partitionToken': partitionToken,
-        if (queryMode != null) 'queryMode': queryMode,
-        if (queryOptions != null) 'queryOptions': queryOptions.toJson(),
-        if (resumeToken != null) 'resumeToken': resumeToken,
-        if (seqno != null) 'seqno': seqno,
-        if (sql != null) 'sql': sql,
-        if (transaction != null) 'transaction': transaction.toJson(),
+              paramTypes!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (params != null) 'params': params!,
+        if (partitionToken != null) 'partitionToken': partitionToken!,
+        if (queryMode != null) 'queryMode': queryMode!,
+        if (queryOptions != null) 'queryOptions': queryOptions!.toJson(),
+        if (resumeToken != null) 'resumeToken': resumeToken!,
+        if (seqno != null) 'seqno': seqno!,
+        if (sql != null) 'sql': sql!,
+        if (transaction != null) 'transaction': transaction!.toJson(),
       };
 }
 
@@ -4524,24 +4326,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -4560,11 +4362,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -4578,10 +4380,10 @@ class Field {
   /// Table"`). Some columns might have an empty name (e.g., `"SELECT
   /// UPPER(ColName)"`). Note that a query result can contain multiple fields
   /// with the same name.
-  core.String name;
+  core.String? name;
 
   /// The type of the field.
-  Type type;
+  Type? type;
 
   Field();
 
@@ -4595,9 +4397,9 @@ class Field {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (type != null) 'type': type.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!.toJson(),
       };
 }
 
@@ -4605,7 +4407,7 @@ class Field {
 class GetDatabaseDdlResponse {
   /// A list of formatted DDL statements defining the schema of the database
   /// specified in the request.
-  core.List<core.String> statements;
+  core.List<core.String>? statements;
 
   GetDatabaseDdlResponse();
 
@@ -4617,8 +4419,8 @@ class GetDatabaseDdlResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (statements != null) 'statements': statements,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (statements != null) 'statements': statements!,
       };
 }
 
@@ -4626,7 +4428,7 @@ class GetDatabaseDdlResponse {
 class GetIamPolicyRequest {
   /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
   /// `GetIamPolicy`.
-  GetPolicyOptions options;
+  GetPolicyOptions? options;
 
   GetIamPolicyRequest();
 
@@ -4637,8 +4439,8 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (options != null) 'options': options.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (options != null) 'options': options!.toJson(),
       };
 }
 
@@ -4654,7 +4456,7 @@ class GetPolicyOptions {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// Optional.
-  core.int requestedPolicyVersion;
+  core.int? requestedPolicyVersion;
 
   GetPolicyOptions();
 
@@ -4664,9 +4466,9 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion,
+          'requestedPolicyVersion': requestedPolicyVersion!,
       };
 }
 
@@ -4678,19 +4480,19 @@ class Instance {
   /// InstanceConfig and ListInstanceConfigs.
   ///
   /// Required.
-  core.String config;
+  core.String? config;
 
   /// The descriptive name for this instance as it appears in UIs.
   ///
   /// Must be unique per project and between 4 and 30 characters in length.
   ///
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   /// This field is not populated.
   ///
   /// Deprecated.
-  core.List<core.String> endpointUris;
+  core.List<core.String>? endpointUris;
 
   /// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
   /// resources into groups that reflect a customer's organizational needs and
@@ -4711,7 +4513,7 @@ class Instance {
   /// such as JSON, which doesn't rely upon specific characters being
   /// disallowed. For example, representing labels as the string: name + "_" +
   /// value would prove problematic if we were to allow "_" in a future release.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// A unique identifier for the instance, which cannot be changed after the
   /// instance is created.
@@ -4720,7 +4522,7 @@ class Instance {
   /// segment of the name must be between 2 and 64 characters in length.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The number of nodes allocated to this instance.
   ///
@@ -4728,7 +4530,7 @@ class Instance {
   /// `READY`. See
   /// [the documentation](https://cloud.google.com/spanner/docs/instances#node_count)
   /// for more information about nodes.
-  core.int nodeCount;
+  core.int? nodeCount;
 
   /// The current instance state.
   ///
@@ -4742,7 +4544,7 @@ class Instance {
   /// available yet, and operations such as database creation may not work.
   /// - "READY" : The instance is fully created and ready to do work such as
   /// creating databases.
-  core.String state;
+  core.String? state;
 
   Instance();
 
@@ -4778,14 +4580,14 @@ class Instance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (config != null) 'config': config,
-        if (displayName != null) 'displayName': displayName,
-        if (endpointUris != null) 'endpointUris': endpointUris,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (nodeCount != null) 'nodeCount': nodeCount,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (config != null) 'config': config!,
+        if (displayName != null) 'displayName': displayName!,
+        if (endpointUris != null) 'endpointUris': endpointUris!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (nodeCount != null) 'nodeCount': nodeCount!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -4795,16 +4597,16 @@ class Instance {
 /// replication.
 class InstanceConfig {
   /// The name of this instance configuration as it appears in UIs.
-  core.String displayName;
+  core.String? displayName;
 
   /// A unique identifier for the instance configuration.
   ///
   /// Values are of the form `projects//instanceConfigs/a-z*`
-  core.String name;
+  core.String? name;
 
   /// The geographic placement of nodes in this instance configuration and their
   /// replication properties.
-  core.List<ReplicaInfo> replicas;
+  core.List<ReplicaInfo>? replicas;
 
   InstanceConfig();
 
@@ -4823,11 +4625,11 @@ class InstanceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
         if (replicas != null)
-          'replicas': replicas.map((value) => value.toJson()).toList(),
+          'replicas': replicas!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4873,28 +4675,28 @@ class KeyRange {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> endClosed;
+  core.List<core.Object>? endClosed;
 
   /// If the end is open, then the range excludes rows whose first
   /// `len(end_open)` key columns exactly match `end_open`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> endOpen;
+  core.List<core.Object>? endOpen;
 
   /// If the start is closed, then the range includes all rows whose first
   /// `len(start_closed)` key columns exactly match `start_closed`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> startClosed;
+  core.List<core.Object>? startClosed;
 
   /// If the start is open, then the range excludes rows whose first
   /// `len(start_open)` key columns exactly match `start_open`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> startOpen;
+  core.List<core.Object>? startOpen;
 
   KeyRange();
 
@@ -4921,11 +4723,11 @@ class KeyRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endClosed != null) 'endClosed': endClosed,
-        if (endOpen != null) 'endOpen': endOpen,
-        if (startClosed != null) 'startClosed': startClosed,
-        if (startOpen != null) 'startOpen': startOpen,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endClosed != null) 'endClosed': endClosed!,
+        if (endOpen != null) 'endOpen': endOpen!,
+        if (startClosed != null) 'startClosed': startClosed!,
+        if (startOpen != null) 'startOpen': startOpen!,
       };
 }
 
@@ -4940,7 +4742,7 @@ class KeySet {
   /// matches all keys in the table or index.
   ///
   /// Note that any keys specified in `keys` or `ranges` are only yielded once.
-  core.bool all;
+  core.bool? all;
 
   /// A list of specific keys.
   ///
@@ -4950,12 +4752,12 @@ class KeySet {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.List<core.Object>> keys;
+  core.List<core.List<core.Object>>? keys;
 
   /// A list of key ranges.
   ///
   /// See KeyRange for more information about key range specifications.
-  core.List<KeyRange> ranges;
+  core.List<KeyRange>? ranges;
 
   KeySet();
 
@@ -4978,11 +4780,11 @@ class KeySet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (all != null) 'all': all,
-        if (keys != null) 'keys': keys,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (all != null) 'all': all!,
+        if (keys != null) 'keys': keys!,
         if (ranges != null)
-          'ranges': ranges.map((value) => value.toJson()).toList(),
+          'ranges': ranges!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4990,7 +4792,7 @@ class KeySet {
 class ListBackupOperationsResponse {
   /// `next_page_token` can be sent in a subsequent ListBackupOperations call to
   /// fetch more of the matching metadata.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of matching backup long-running operations.
   ///
@@ -5000,7 +4802,7 @@ class ListBackupOperationsResponse {
   /// within the last 7 days. Operations returned are ordered by
   /// `operation.metadata.value.progress.start_time` in descending order
   /// starting from the most recently started operation.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListBackupOperationsResponse();
 
@@ -5016,10 +4818,10 @@ class ListBackupOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5029,11 +4831,11 @@ class ListBackupsResponse {
   ///
   /// Backups returned are ordered by `create_time` in descending order,
   /// starting from the most recent `create_time`.
-  core.List<Backup> backups;
+  core.List<Backup>? backups;
 
   /// `next_page_token` can be sent in a subsequent ListBackups call to fetch
   /// more of the matching backups.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListBackupsResponse();
 
@@ -5049,10 +4851,10 @@ class ListBackupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backups != null)
-          'backups': backups.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'backups': backups!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -5060,14 +4862,14 @@ class ListBackupsResponse {
 class ListDatabaseOperationsResponse {
   /// `next_page_token` can be sent in a subsequent ListDatabaseOperations call
   /// to fetch more of the matching metadata.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of matching database long-running operations.
   ///
   /// Each operation's name will be prefixed by the database's name. The
   /// operation's metadata field type `metadata.type_url` describes the type of
   /// the metadata.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListDatabaseOperationsResponse();
 
@@ -5083,21 +4885,21 @@ class ListDatabaseOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The response for ListDatabases.
 class ListDatabasesResponse {
   /// Databases that matched the request.
-  core.List<Database> databases;
+  core.List<Database>? databases;
 
   /// `next_page_token` can be sent in a subsequent ListDatabases call to fetch
   /// more of the matching databases.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListDatabasesResponse();
 
@@ -5113,21 +4915,21 @@ class ListDatabasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (databases != null)
-          'databases': databases.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'databases': databases!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response for ListInstanceConfigs.
 class ListInstanceConfigsResponse {
   /// The list of requested instance configurations.
-  core.List<InstanceConfig> instanceConfigs;
+  core.List<InstanceConfig>? instanceConfigs;
 
   /// `next_page_token` can be sent in a subsequent ListInstanceConfigs call to
   /// fetch more of the matching instance configurations.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListInstanceConfigsResponse();
 
@@ -5143,28 +4945,28 @@ class ListInstanceConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (instanceConfigs != null)
           'instanceConfigs':
-              instanceConfigs.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              instanceConfigs!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response for ListInstances.
 class ListInstancesResponse {
   /// The list of requested instances.
-  core.List<Instance> instances;
+  core.List<Instance>? instances;
 
   /// `next_page_token` can be sent in a subsequent ListInstances call to fetch
   /// more of the matching instances.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of unreachable instances.
   ///
   /// It includes the names of instances whose metadata could not be retrieved
   /// within instance_deadline.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListInstancesResponse();
 
@@ -5185,21 +4987,21 @@ class ListInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (instances != null)
-          'instances': instances.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+          'instances': instances!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -5215,10 +5017,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5226,10 +5028,10 @@ class ListOperationsResponse {
 class ListSessionsResponse {
   /// `next_page_token` can be sent in a subsequent ListSessions call to fetch
   /// more of the matching sessions.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of requested sessions.
-  core.List<Session> sessions;
+  core.List<Session>? sessions;
 
   ListSessionsResponse();
 
@@ -5245,10 +5047,10 @@ class ListSessionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (sessions != null)
-          'sessions': sessions.map((value) => value.toJson()).toList(),
+          'sessions': sessions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5260,13 +5062,13 @@ class Mutation {
   /// Delete rows from a table.
   ///
   /// Succeeds whether or not the named rows were present.
-  Delete delete;
+  Delete? delete;
 
   /// Insert new rows in a table.
   ///
   /// If any of the rows already exist, the write or transaction fails with
   /// error `ALREADY_EXISTS`.
-  Write insert;
+  Write? insert;
 
   /// Like insert, except that if the row already exists, then its column values
   /// are overwritten with the ones provided.
@@ -5275,7 +5077,7 @@ class Mutation {
   /// insert_or_update, just as when using insert, all `NOT NULL` columns in the
   /// table must be given a value. This holds true even when the row already
   /// exists and will therefore actually be updated.
-  Write insertOrUpdate;
+  Write? insertOrUpdate;
 
   /// Like insert, except that if the row already exists, it is deleted, and the
   /// column values provided are inserted instead.
@@ -5285,13 +5087,13 @@ class Mutation {
   /// the `ON DELETE CASCADE` annotation, then replacing a parent row also
   /// deletes the child rows. Otherwise, you must delete the child rows before
   /// you replace the parent row.
-  Write replace;
+  Write? replace;
 
   /// Update existing rows in a table.
   ///
   /// If any of the rows does not already exist, the transaction fails with
   /// error `NOT_FOUND`.
-  Write update;
+  Write? update;
 
   Mutation();
 
@@ -5318,12 +5120,12 @@ class Mutation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (delete != null) 'delete': delete.toJson(),
-        if (insert != null) 'insert': insert.toJson(),
-        if (insertOrUpdate != null) 'insertOrUpdate': insertOrUpdate.toJson(),
-        if (replace != null) 'replace': replace.toJson(),
-        if (update != null) 'update': update.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (delete != null) 'delete': delete!.toJson(),
+        if (insert != null) 'insert': insert!.toJson(),
+        if (insertOrUpdate != null) 'insertOrUpdate': insertOrUpdate!.toJson(),
+        if (replace != null) 'replace': replace!.toJson(),
+        if (update != null) 'update': update!.toJson(),
       };
 }
 
@@ -5334,10 +5136,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -5348,14 +5150,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -5368,7 +5170,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -5403,12 +5205,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -5417,15 +5219,15 @@ class Operation {
 class OperationProgress {
   /// If set, the time at which this operation failed or was completed
   /// successfully.
-  core.String endTime;
+  core.String? endTime;
 
   /// Percent completion of the operation.
   ///
   /// Values are between 0 and 100 inclusive.
-  core.int progressPercent;
+  core.int? progressPercent;
 
   /// Time the request was received.
-  core.String startTime;
+  core.String? startTime;
 
   OperationProgress();
 
@@ -5441,10 +5243,10 @@ class OperationProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (progressPercent != null) 'progressPercent': progressPercent,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (progressPercent != null) 'progressPercent': progressPercent!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -5455,10 +5257,10 @@ class OperationProgress {
 /// successful completion of a database restore, and cannot be cancelled.
 class OptimizeRestoredDatabaseMetadata {
   /// Name of the restored database being optimized.
-  core.String name;
+  core.String? name;
 
   /// The progress of the post-restore optimizations.
-  OperationProgress progress;
+  OperationProgress? progress;
 
   OptimizeRestoredDatabaseMetadata();
 
@@ -5472,9 +5274,9 @@ class OptimizeRestoredDatabaseMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (progress != null) 'progress': progress.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (progress != null) 'progress': progress!.toJson(),
       };
 }
 
@@ -5486,12 +5288,12 @@ class PartialResultSet {
   /// If true, then the final value in values is chunked, and must be combined
   /// with more values from subsequent `PartialResultSet`s to obtain a complete
   /// field value.
-  core.bool chunkedValue;
+  core.bool? chunkedValue;
 
   /// Metadata about the result set, such as row type information.
   ///
   /// Only present in the first response.
-  ResultSetMetadata metadata;
+  ResultSetMetadata? metadata;
 
   /// Streaming calls might be interrupted for a variety of reasons, such as TCP
   /// connection loss.
@@ -5499,9 +5301,9 @@ class PartialResultSet {
   /// If this occurs, the stream of results can be resumed by re-sending the
   /// original request and including `resume_token`. Note that executing any
   /// other transaction in the same session invalidates the token.
-  core.String resumeToken;
+  core.String? resumeToken;
   core.List<core.int> get resumeTokenAsBytes =>
-      convert.base64.decode(resumeToken);
+      convert.base64.decode(resumeToken!);
 
   set resumeTokenAsBytes(core.List<core.int> _bytes) {
     resumeToken =
@@ -5514,7 +5316,7 @@ class PartialResultSet {
   /// These can be requested by setting ExecuteSqlRequest.query_mode and are
   /// sent only once with the last response in the stream. This field will also
   /// be present in the last response for DML statements.
-  ResultSetStats stats;
+  ResultSetStats? stats;
 
   /// A streamed result set consists of a stream of values, which might be split
   /// into many `PartialResultSet` messages to accommodate large rows and/or
@@ -5555,7 +5357,7 @@ class PartialResultSet {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> values;
+  core.List<core.Object>? values;
 
   PartialResultSet();
 
@@ -5581,12 +5383,12 @@ class PartialResultSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (chunkedValue != null) 'chunkedValue': chunkedValue,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (resumeToken != null) 'resumeToken': resumeToken,
-        if (stats != null) 'stats': stats.toJson(),
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (chunkedValue != null) 'chunkedValue': chunkedValue!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (resumeToken != null) 'resumeToken': resumeToken!,
+        if (stats != null) 'stats': stats!.toJson(),
+        if (values != null) 'values': values!,
       };
 }
 
@@ -5595,9 +5397,9 @@ class Partition {
   /// This token can be passed to Read, StreamingRead, ExecuteSql, or
   /// ExecuteStreamingSql requests to restrict the results to those identified
   /// by this partition token.
-  core.String partitionToken;
+  core.String? partitionToken;
   core.List<core.int> get partitionTokenAsBytes =>
-      convert.base64.decode(partitionToken);
+      convert.base64.decode(partitionToken!);
 
   set partitionTokenAsBytes(core.List<core.int> _bytes) {
     partitionToken =
@@ -5612,8 +5414,8 @@ class Partition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (partitionToken != null) 'partitionToken': partitionToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (partitionToken != null) 'partitionToken': partitionToken!,
       };
 }
 
@@ -5627,7 +5429,7 @@ class PartitionOptions {
   /// currently 10,000. The maximum value is currently 200,000. This is only a
   /// hint. The actual number of partitions returned may be smaller or larger
   /// than this maximum count request.
-  core.String maxPartitions;
+  core.String? maxPartitions;
 
   /// **Note:** This hint is currently ignored by PartitionQuery and
   /// PartitionRead requests.
@@ -5635,7 +5437,7 @@ class PartitionOptions {
   /// The desired data size for each partition generated. The default for this
   /// option is currently 1 GiB. This is only a hint. The actual size of each
   /// partition may be smaller or larger than this size request.
-  core.String partitionSizeBytes;
+  core.String? partitionSizeBytes;
 
   PartitionOptions();
 
@@ -5648,10 +5450,10 @@ class PartitionOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxPartitions != null) 'maxPartitions': maxPartitions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxPartitions != null) 'maxPartitions': maxPartitions!,
         if (partitionSizeBytes != null)
-          'partitionSizeBytes': partitionSizeBytes,
+          'partitionSizeBytes': partitionSizeBytes!,
       };
 }
 
@@ -5665,7 +5467,7 @@ class PartitionQueryRequest {
   /// used to specify the exact SQL type for some or all of the SQL query
   /// parameters. See the definition of Type for more information about SQL
   /// types.
-  core.Map<core.String, Type> paramTypes;
+  core.Map<core.String, Type>? paramTypes;
 
   /// Parameter names and values that bind to placeholders in the SQL string.
   ///
@@ -5678,10 +5480,10 @@ class PartitionQueryRequest {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> params;
+  core.Map<core.String, core.Object>? params;
 
   /// Additional options that affect how many partitions are created.
-  PartitionOptions partitionOptions;
+  PartitionOptions? partitionOptions;
 
   /// The query request to generate partitions for.
   ///
@@ -5694,23 +5496,24 @@ class PartitionQueryRequest {
   /// a PartitionedDml transaction for large, partition-friendly DML operations.
   ///
   /// Required.
-  core.String sql;
+  core.String? sql;
 
   /// Read only snapshot transactions are supported, read/write and single use
   /// transactions are not.
-  TransactionSelector transaction;
+  TransactionSelector? transaction;
 
   PartitionQueryRequest();
 
   PartitionQueryRequest.fromJson(core.Map _json) {
     if (_json.containsKey('paramTypes')) {
-      paramTypes =
-          (_json['paramTypes'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  Type.fromJson(item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      paramTypes = (_json['paramTypes'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              Type.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('params')) {
       params =
@@ -5734,28 +5537,28 @@ class PartitionQueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (paramTypes != null)
           'paramTypes':
-              paramTypes.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (params != null) 'params': params,
+              paramTypes!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (params != null) 'params': params!,
         if (partitionOptions != null)
-          'partitionOptions': partitionOptions.toJson(),
-        if (sql != null) 'sql': sql,
-        if (transaction != null) 'transaction': transaction.toJson(),
+          'partitionOptions': partitionOptions!.toJson(),
+        if (sql != null) 'sql': sql!,
+        if (transaction != null) 'transaction': transaction!.toJson(),
       };
 }
 
 /// The request for PartitionRead
 class PartitionReadRequest {
   /// The columns of table to be returned for each row matching this request.
-  core.List<core.String> columns;
+  core.List<core.String>? columns;
 
   /// If non-empty, the name of an index on table.
   ///
   /// This index is used instead of the table primary key when interpreting
   /// key_set and sorting result rows. See key_set for further information.
-  core.String index;
+  core.String? index;
 
   /// `key_set` identifies the rows to be yielded.
   ///
@@ -5766,19 +5569,19 @@ class PartitionReadRequest {
   /// rows.
   ///
   /// Required.
-  KeySet keySet;
+  KeySet? keySet;
 
   /// Additional options that affect how many partitions are created.
-  PartitionOptions partitionOptions;
+  PartitionOptions? partitionOptions;
 
   /// The name of the table in the database to be read.
   ///
   /// Required.
-  core.String table;
+  core.String? table;
 
   /// Read only snapshot transactions are supported, read/write and single use
   /// transactions are not.
-  TransactionSelector transaction;
+  TransactionSelector? transaction;
 
   PartitionReadRequest();
 
@@ -5808,24 +5611,24 @@ class PartitionReadRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columns != null) 'columns': columns,
-        if (index != null) 'index': index,
-        if (keySet != null) 'keySet': keySet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columns != null) 'columns': columns!,
+        if (index != null) 'index': index!,
+        if (keySet != null) 'keySet': keySet!.toJson(),
         if (partitionOptions != null)
-          'partitionOptions': partitionOptions.toJson(),
-        if (table != null) 'table': table,
-        if (transaction != null) 'transaction': transaction.toJson(),
+          'partitionOptions': partitionOptions!.toJson(),
+        if (table != null) 'table': table!,
+        if (transaction != null) 'transaction': transaction!.toJson(),
       };
 }
 
 /// The response for PartitionQuery or PartitionRead
 class PartitionResponse {
   /// Partitions created by this request.
-  core.List<Partition> partitions;
+  core.List<Partition>? partitions;
 
   /// Transaction created by this request.
-  Transaction transaction;
+  Transaction? transaction;
 
   PartitionResponse();
 
@@ -5842,10 +5645,10 @@ class PartitionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (partitions != null)
-          'partitions': partitions.map((value) => value.toJson()).toList(),
-        if (transaction != null) 'transaction': transaction.toJson(),
+          'partitions': partitions!.map((value) => value.toJson()).toList(),
+        if (transaction != null) 'transaction': transaction!.toJson(),
       };
 }
 
@@ -5857,16 +5660,16 @@ class PartitionedDml {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Node information for nodes appearing in a QueryPlan.plan_nodes.
 class PlanNode {
   /// List of child node `index`es and their relationship to this parent.
-  core.List<ChildLink> childLinks;
+  core.List<ChildLink>? childLinks;
 
   /// The display name for the node.
-  core.String displayName;
+  core.String? displayName;
 
   /// The execution statistics associated with the node, contained in a group of
   /// key-value pairs.
@@ -5876,10 +5679,10 @@ class PlanNode {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> executionStats;
+  core.Map<core.String, core.Object>? executionStats;
 
   /// The `PlanNode`'s index in node list.
-  core.int index;
+  core.int? index;
 
   /// Used to determine the type of node.
   ///
@@ -5897,7 +5700,7 @@ class PlanNode {
   /// represent non-iterable entities in the query plan. For example, constants
   /// or arithmetic operators appearing inside predicate expressions or
   /// references to column names.
-  core.String kind;
+  core.String? kind;
 
   /// Attributes relevant to the node contained in a group of key-value pairs.
   ///
@@ -5907,10 +5710,10 @@ class PlanNode {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Condensed representation for SCALAR nodes.
-  ShortRepresentation shortRepresentation;
+  ShortRepresentation? shortRepresentation;
 
   PlanNode();
 
@@ -5955,16 +5758,16 @@ class PlanNode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (childLinks != null)
-          'childLinks': childLinks.map((value) => value.toJson()).toList(),
-        if (displayName != null) 'displayName': displayName,
-        if (executionStats != null) 'executionStats': executionStats,
-        if (index != null) 'index': index,
-        if (kind != null) 'kind': kind,
-        if (metadata != null) 'metadata': metadata,
+          'childLinks': childLinks!.map((value) => value.toJson()).toList(),
+        if (displayName != null) 'displayName': displayName!,
+        if (executionStats != null) 'executionStats': executionStats!,
+        if (index != null) 'index': index!,
+        if (kind != null) 'kind': kind!,
+        if (metadata != null) 'metadata': metadata!,
         if (shortRepresentation != null)
-          'shortRepresentation': shortRepresentation.toJson(),
+          'shortRepresentation': shortRepresentation!.toJson(),
       };
 }
 
@@ -6005,7 +5808,7 @@ class Policy {
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -6019,8 +5822,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -6044,7 +5847,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -6063,11 +5866,11 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -6088,7 +5891,7 @@ class QueryOptions {
   /// https://cloud.google.com/spanner/docs/query-optimizer/manage-query-optimizer
   /// for more information on managing the query optimizer. The
   /// `optimizer_version` statement hint has precedence over this setting.
-  core.String optimizerVersion;
+  core.String? optimizerVersion;
 
   QueryOptions();
 
@@ -6098,8 +5901,8 @@ class QueryOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (optimizerVersion != null) 'optimizerVersion': optimizerVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (optimizerVersion != null) 'optimizerVersion': optimizerVersion!,
       };
 }
 
@@ -6109,7 +5912,7 @@ class QueryPlan {
   ///
   /// Plan nodes are returned in pre-order starting with the plan root. Each
   /// PlanNode's `id` corresponds to its index in `plan_nodes`.
-  core.List<PlanNode> planNodes;
+  core.List<PlanNode>? planNodes;
 
   QueryPlan();
 
@@ -6122,9 +5925,9 @@ class QueryPlan {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (planNodes != null)
-          'planNodes': planNodes.map((value) => value.toJson()).toList(),
+          'planNodes': planNodes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6138,7 +5941,7 @@ class ReadOnly {
   /// mode works even if the client's local clock is substantially skewed from
   /// Cloud Spanner commit timestamps. Useful for reading at nearby replicas
   /// without the distributed timestamp negotiation overhead of `max_staleness`.
-  core.String exactStaleness;
+  core.String? exactStaleness;
 
   /// Read data at a timestamp >= `NOW - max_staleness` seconds.
   ///
@@ -6149,7 +5952,7 @@ class ReadOnly {
   /// reading the freshest data available at a nearby replica, while bounding
   /// the possible staleness if the local replica has fallen behind. Note that
   /// this option can only be used in single-use transactions.
-  core.String maxStaleness;
+  core.String? maxStaleness;
 
   /// Executes all reads at a timestamp >= `min_read_timestamp`.
   ///
@@ -6159,7 +5962,7 @@ class ReadOnly {
   /// only be used in single-use transactions. A timestamp in RFC3339 UTC
   /// \"Zulu\" format, accurate to nanoseconds. Example:
   /// `"2014-10-02T15:01:23.045123456Z"`.
-  core.String minReadTimestamp;
+  core.String? minReadTimestamp;
 
   /// Executes all reads at the given timestamp.
   ///
@@ -6170,15 +5973,15 @@ class ReadOnly {
   /// as mapreduces, or for coordinating many reads against a consistent
   /// snapshot of the data. A timestamp in RFC3339 UTC \"Zulu\" format, accurate
   /// to nanoseconds. Example: `"2014-10-02T15:01:23.045123456Z"`.
-  core.String readTimestamp;
+  core.String? readTimestamp;
 
   /// If true, the Cloud Spanner-selected read timestamp is included in the
   /// Transaction message that describes the transaction.
-  core.bool returnReadTimestamp;
+  core.bool? returnReadTimestamp;
 
   /// Read at a timestamp where all previously committed transactions are
   /// visible.
-  core.bool strong;
+  core.bool? strong;
 
   ReadOnly();
 
@@ -6203,14 +6006,14 @@ class ReadOnly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exactStaleness != null) 'exactStaleness': exactStaleness,
-        if (maxStaleness != null) 'maxStaleness': maxStaleness,
-        if (minReadTimestamp != null) 'minReadTimestamp': minReadTimestamp,
-        if (readTimestamp != null) 'readTimestamp': readTimestamp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exactStaleness != null) 'exactStaleness': exactStaleness!,
+        if (maxStaleness != null) 'maxStaleness': maxStaleness!,
+        if (minReadTimestamp != null) 'minReadTimestamp': minReadTimestamp!,
+        if (readTimestamp != null) 'readTimestamp': readTimestamp!,
         if (returnReadTimestamp != null)
-          'returnReadTimestamp': returnReadTimestamp,
-        if (strong != null) 'strong': strong,
+          'returnReadTimestamp': returnReadTimestamp!,
+        if (strong != null) 'strong': strong!,
       };
 }
 
@@ -6219,13 +6022,13 @@ class ReadRequest {
   /// The columns of table to be returned for each row matching this request.
   ///
   /// Required.
-  core.List<core.String> columns;
+  core.List<core.String>? columns;
 
   /// If non-empty, the name of an index on table.
   ///
   /// This index is used instead of the table primary key when interpreting
   /// key_set and sorting result rows. See key_set for further information.
-  core.String index;
+  core.String? index;
 
   /// `key_set` identifies the rows to be yielded.
   ///
@@ -6239,13 +6042,13 @@ class ReadRequest {
   /// nothing for nonexistent rows.
   ///
   /// Required.
-  KeySet keySet;
+  KeySet? keySet;
 
   /// If greater than zero, only the first `limit` rows are yielded.
   ///
   /// If `limit` is zero, the default is no limit. A limit cannot be specified
   /// if `partition_token` is set.
-  core.String limit;
+  core.String? limit;
 
   /// If present, results will be restricted to the specified partition
   /// previously created using PartitionRead().
@@ -6253,9 +6056,9 @@ class ReadRequest {
   /// There must be an exact match for the values of fields common to this
   /// message and the PartitionReadRequest message used to create this
   /// partition_token.
-  core.String partitionToken;
+  core.String? partitionToken;
   core.List<core.int> get partitionTokenAsBytes =>
-      convert.base64.decode(partitionToken);
+      convert.base64.decode(partitionToken!);
 
   set partitionTokenAsBytes(core.List<core.int> _bytes) {
     partitionToken =
@@ -6269,9 +6072,9 @@ class ReadRequest {
   /// Doing this enables the new read to resume where the last read left off.
   /// The rest of the request parameters must exactly match the request that
   /// yielded this token.
-  core.String resumeToken;
+  core.String? resumeToken;
   core.List<core.int> get resumeTokenAsBytes =>
-      convert.base64.decode(resumeToken);
+      convert.base64.decode(resumeToken!);
 
   set resumeTokenAsBytes(core.List<core.int> _bytes) {
     resumeToken =
@@ -6281,13 +6084,13 @@ class ReadRequest {
   /// The name of the table in the database to be read.
   ///
   /// Required.
-  core.String table;
+  core.String? table;
 
   /// The transaction to use.
   ///
   /// If none is provided, the default is a temporary read-only transaction with
   /// strong concurrency.
-  TransactionSelector transaction;
+  TransactionSelector? transaction;
 
   ReadRequest();
 
@@ -6322,15 +6125,15 @@ class ReadRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columns != null) 'columns': columns,
-        if (index != null) 'index': index,
-        if (keySet != null) 'keySet': keySet.toJson(),
-        if (limit != null) 'limit': limit,
-        if (partitionToken != null) 'partitionToken': partitionToken,
-        if (resumeToken != null) 'resumeToken': resumeToken,
-        if (table != null) 'table': table,
-        if (transaction != null) 'transaction': transaction.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columns != null) 'columns': columns!,
+        if (index != null) 'index': index!,
+        if (keySet != null) 'keySet': keySet!.toJson(),
+        if (limit != null) 'limit': limit!,
+        if (partitionToken != null) 'partitionToken': partitionToken!,
+        if (resumeToken != null) 'resumeToken': resumeToken!,
+        if (table != null) 'table': table!,
+        if (transaction != null) 'transaction': transaction!.toJson(),
       };
 }
 
@@ -6344,7 +6147,7 @@ class ReadWrite {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 class ReplicaInfo {
@@ -6354,10 +6157,10 @@ class ReplicaInfo {
   /// See the
   /// [region types documentation](https://cloud.google.com/spanner/docs/instances#region_types)
   /// for more details.
-  core.bool defaultLeaderLocation;
+  core.bool? defaultLeaderLocation;
 
   /// The location of the serving resources, e.g. "us-central1".
-  core.String location;
+  core.String? location;
 
   /// The type of replica.
   /// Possible string values are:
@@ -6374,7 +6177,7 @@ class ReplicaInfo {
   /// voting to commit writes. Witness replicas: * Do not maintain a full copy
   /// of data. * Do not serve reads. * Vote whether to commit writes. *
   /// Participate in leader election but are not eligible to become leader.
-  core.String type;
+  core.String? type;
 
   ReplicaInfo();
 
@@ -6390,11 +6193,11 @@ class ReplicaInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (defaultLeaderLocation != null)
-          'defaultLeaderLocation': defaultLeaderLocation,
-        if (location != null) 'location': location,
-        if (type != null) 'type': type,
+          'defaultLeaderLocation': defaultLeaderLocation!,
+        if (location != null) 'location': location!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -6410,7 +6213,7 @@ class RestoreDatabaseEncryptionConfig {
   /// - "GOOGLE_DEFAULT_ENCRYPTION" : Use Google default encryption.
   /// - "CUSTOMER_MANAGED_ENCRYPTION" : Use customer managed encryption. If
   /// specified, `kms_key_name` must must contain a valid Cloud KMS key.
-  core.String encryptionType;
+  core.String? encryptionType;
 
   /// The Cloud KMS key that will be used to encrypt/decrypt the restored
   /// database.
@@ -6420,7 +6223,7 @@ class RestoreDatabaseEncryptionConfig {
   /// `projects//locations//keyRings//cryptoKeys/`.
   ///
   /// Optional.
-  core.String kmsKeyName;
+  core.String? kmsKeyName;
 
   RestoreDatabaseEncryptionConfig();
 
@@ -6433,16 +6236,16 @@ class RestoreDatabaseEncryptionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (encryptionType != null) 'encryptionType': encryptionType,
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (encryptionType != null) 'encryptionType': encryptionType!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
       };
 }
 
 /// Metadata type for the long-running operation returned by RestoreDatabase.
 class RestoreDatabaseMetadata {
   /// Information about the backup used to restore the database.
-  BackupInfo backupInfo;
+  BackupInfo? backupInfo;
 
   /// The time at which cancellation of this operation was received.
   ///
@@ -6454,10 +6257,10 @@ class RestoreDatabaseMetadata {
   /// successful cancellation, the operation is not deleted; instead, it becomes
   /// an operation with an Operation.error value with a google.rpc.Status.code
   /// of 1, corresponding to `Code.CANCELLED`.
-  core.String cancelTime;
+  core.String? cancelTime;
 
   /// Name of the database being created and restored to.
-  core.String name;
+  core.String? name;
 
   /// If exists, the name of the long-running operation that will be used to
   /// track the post-restore optimization process to optimize the performance of
@@ -6470,16 +6273,16 @@ class RestoreDatabaseMetadata {
   /// automatically created by the system after the RestoreDatabase long-running
   /// operation completes successfully. This operation will not be created if
   /// the restore was not successful.
-  core.String optimizeDatabaseOperationName;
+  core.String? optimizeDatabaseOperationName;
 
   /// The progress of the RestoreDatabase operation.
-  OperationProgress progress;
+  OperationProgress? progress;
 
   /// The type of the restore source.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : No restore associated.
   /// - "BACKUP" : A backup was used as the source of the restore.
-  core.String sourceType;
+  core.String? sourceType;
 
   RestoreDatabaseMetadata();
 
@@ -6507,14 +6310,14 @@ class RestoreDatabaseMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (backupInfo != null) 'backupInfo': backupInfo.toJson(),
-        if (cancelTime != null) 'cancelTime': cancelTime,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (backupInfo != null) 'backupInfo': backupInfo!.toJson(),
+        if (cancelTime != null) 'cancelTime': cancelTime!,
+        if (name != null) 'name': name!,
         if (optimizeDatabaseOperationName != null)
-          'optimizeDatabaseOperationName': optimizeDatabaseOperationName,
-        if (progress != null) 'progress': progress.toJson(),
-        if (sourceType != null) 'sourceType': sourceType,
+          'optimizeDatabaseOperationName': optimizeDatabaseOperationName!,
+        if (progress != null) 'progress': progress!.toJson(),
+        if (sourceType != null) 'sourceType': sourceType!,
       };
 }
 
@@ -6523,7 +6326,7 @@ class RestoreDatabaseRequest {
   /// Name of the backup from which to restore.
   ///
   /// Values are of the form `projects//instances//backups/`.
-  core.String backup;
+  core.String? backup;
 
   /// The id of the database to create and restore to.
   ///
@@ -6532,7 +6335,7 @@ class RestoreDatabaseRequest {
   /// `projects//instances//databases/`.
   ///
   /// Required.
-  core.String databaseId;
+  core.String? databaseId;
 
   /// An encryption configuration describing the encryption type and key
   /// resources in Cloud KMS used to encrypt/decrypt the database to restore to.
@@ -6542,7 +6345,7 @@ class RestoreDatabaseRequest {
   /// = `USE_CONFIG_DEFAULT_OR_DATABASE_ENCRYPTION`.
   ///
   /// Optional.
-  RestoreDatabaseEncryptionConfig encryptionConfig;
+  RestoreDatabaseEncryptionConfig? encryptionConfig;
 
   RestoreDatabaseRequest();
 
@@ -6559,11 +6362,11 @@ class RestoreDatabaseRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (backup != null) 'backup': backup,
-        if (databaseId != null) 'databaseId': databaseId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (backup != null) 'backup': backup!,
+        if (databaseId != null) 'databaseId': databaseId!,
         if (encryptionConfig != null)
-          'encryptionConfig': encryptionConfig.toJson(),
+          'encryptionConfig': encryptionConfig!.toJson(),
       };
 }
 
@@ -6572,13 +6375,13 @@ class RestoreInfo {
   /// Information about the backup used to restore the database.
   ///
   /// The backup may no longer exist.
-  BackupInfo backupInfo;
+  BackupInfo? backupInfo;
 
   /// The type of the restore source.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : No restore associated.
   /// - "BACKUP" : A backup was used as the source of the restore.
-  core.String sourceType;
+  core.String? sourceType;
 
   RestoreInfo();
 
@@ -6592,16 +6395,16 @@ class RestoreInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (backupInfo != null) 'backupInfo': backupInfo.toJson(),
-        if (sourceType != null) 'sourceType': sourceType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (backupInfo != null) 'backupInfo': backupInfo!.toJson(),
+        if (sourceType != null) 'sourceType': sourceType!,
       };
 }
 
 /// Results from Read or ExecuteSql.
 class ResultSet {
   /// Metadata about the result set, such as row type information.
-  ResultSetMetadata metadata;
+  ResultSetMetadata? metadata;
 
   /// Each element in `rows` is a row whose format is defined by
   /// metadata.row_type.
@@ -6611,7 +6414,7 @@ class ResultSet {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.List<core.Object>> rows;
+  core.List<core.List<core.Object>>? rows;
 
   /// Query plan and execution statistics for the SQL statement that produced
   /// this result set.
@@ -6621,7 +6424,7 @@ class ResultSet {
   /// unless executed using the ExecuteSqlRequest.QueryMode.PLAN
   /// ExecuteSqlRequest.query_mode. Other fields may or may not be populated,
   /// based on the ExecuteSqlRequest.query_mode.
-  ResultSetStats stats;
+  ResultSetStats? stats;
 
   ResultSet();
 
@@ -6643,10 +6446,10 @@ class ResultSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (rows != null) 'rows': rows,
-        if (stats != null) 'stats': stats.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (rows != null) 'rows': rows!,
+        if (stats != null) 'stats': stats!.toJson(),
       };
 }
 
@@ -6658,11 +6461,11 @@ class ResultSetMetadata {
   /// return a `row_type` value like: "fields": \[ { "name": "UserId", "type": {
   /// "code": "INT64" } }, { "name": "UserName", "type": { "code": "STRING" } },
   /// \]
-  StructType rowType;
+  StructType? rowType;
 
   /// If the read or SQL query began a transaction as a side-effect, the
   /// information about the new transaction is yielded here.
-  Transaction transaction;
+  Transaction? transaction;
 
   ResultSetMetadata();
 
@@ -6677,16 +6480,16 @@ class ResultSetMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (rowType != null) 'rowType': rowType.toJson(),
-        if (transaction != null) 'transaction': transaction.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (rowType != null) 'rowType': rowType!.toJson(),
+        if (transaction != null) 'transaction': transaction!.toJson(),
       };
 }
 
 /// Additional statistics about a ResultSet or PartialResultSet.
 class ResultSetStats {
   /// QueryPlan for the query associated with this result.
-  QueryPlan queryPlan;
+  QueryPlan? queryPlan;
 
   /// Aggregated statistics from the execution of the query.
   ///
@@ -6696,14 +6499,14 @@ class ResultSetStats {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> queryStats;
+  core.Map<core.String, core.Object>? queryStats;
 
   /// Standard DML returns an exact count of rows that were modified.
-  core.String rowCountExact;
+  core.String? rowCountExact;
 
   /// Partitioned DML does not offer exactly-once semantics, so it returns a
   /// lower bound of the rows modified.
-  core.String rowCountLowerBound;
+  core.String? rowCountLowerBound;
 
   ResultSetStats();
 
@@ -6730,12 +6533,12 @@ class ResultSetStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (queryPlan != null) 'queryPlan': queryPlan.toJson(),
-        if (queryStats != null) 'queryStats': queryStats,
-        if (rowCountExact != null) 'rowCountExact': rowCountExact,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (queryPlan != null) 'queryPlan': queryPlan!.toJson(),
+        if (queryStats != null) 'queryStats': queryStats!,
+        if (rowCountExact != null) 'rowCountExact': rowCountExact!,
         if (rowCountLowerBound != null)
-          'rowCountLowerBound': rowCountLowerBound,
+          'rowCountLowerBound': rowCountLowerBound!,
       };
 }
 
@@ -6744,9 +6547,9 @@ class RollbackRequest {
   /// The transaction to roll back.
   ///
   /// Required.
-  core.String transactionId;
+  core.String? transactionId;
   core.List<core.int> get transactionIdAsBytes =>
-      convert.base64.decode(transactionId);
+      convert.base64.decode(transactionId!);
 
   set transactionIdAsBytes(core.List<core.int> _bytes) {
     transactionId =
@@ -6761,8 +6564,8 @@ class RollbackRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (transactionId != null) 'transactionId': transactionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (transactionId != null) 'transactionId': transactionId!,
       };
 }
 
@@ -6773,12 +6576,12 @@ class Session {
   /// It is typically earlier than the actual last use time.
   ///
   /// Output only.
-  core.String approximateLastUseTime;
+  core.String? approximateLastUseTime;
 
   /// The timestamp when the session is created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The labels for the session.
   ///
@@ -6788,14 +6591,14 @@ class Session {
   /// regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64
   /// labels can be associated with a given session. See https://goo.gl/xmQnxf
   /// for more information on and examples of labels.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The name of the session.
   ///
   /// This is always system-assigned.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   Session();
 
@@ -6820,12 +6623,12 @@ class Session {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (approximateLastUseTime != null)
-          'approximateLastUseTime': approximateLastUseTime,
-        if (createTime != null) 'createTime': createTime,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
+          'approximateLastUseTime': approximateLastUseTime!,
+        if (createTime != null) 'createTime': createTime!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -6836,7 +6639,7 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   SetIamPolicyRequest();
 
@@ -6847,8 +6650,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
       };
 }
 
@@ -6857,7 +6660,7 @@ class SetIamPolicyRequest {
 /// Only present for `SCALAR` PlanNode(s).
 class ShortRepresentation {
   /// A string representation of the expression subtree rooted at this node.
-  core.String description;
+  core.String? description;
 
   /// A mapping of (subquery variable name) -> (subquery node id) for cases
   /// where the `description` string of this node references a `SCALAR` subquery
@@ -6865,7 +6668,7 @@ class ShortRepresentation {
   ///
   /// The referenced `SCALAR` subquery may not necessarily be a direct child of
   /// this node.
-  core.Map<core.String, core.int> subqueries;
+  core.Map<core.String, core.int>? subqueries;
 
   ShortRepresentation();
 
@@ -6884,9 +6687,9 @@ class ShortRepresentation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (subqueries != null) 'subqueries': subqueries,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (subqueries != null) 'subqueries': subqueries!,
       };
 }
 
@@ -6900,7 +6703,7 @@ class Statement {
   /// used to specify the exact SQL type for some or all of the SQL statement
   /// parameters. See the definition of Type for more information about SQL
   /// types.
-  core.Map<core.String, Type> paramTypes;
+  core.Map<core.String, Type>? paramTypes;
 
   /// Parameter names and values that bind to placeholders in the DML string.
   ///
@@ -6913,24 +6716,25 @@ class Statement {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> params;
+  core.Map<core.String, core.Object>? params;
 
   /// The DML string.
   ///
   /// Required.
-  core.String sql;
+  core.String? sql;
 
   Statement();
 
   Statement.fromJson(core.Map _json) {
     if (_json.containsKey('paramTypes')) {
-      paramTypes =
-          (_json['paramTypes'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  Type.fromJson(item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      paramTypes = (_json['paramTypes'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              Type.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('params')) {
       params =
@@ -6946,12 +6750,12 @@ class Statement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (paramTypes != null)
           'paramTypes':
-              paramTypes.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (params != null) 'params': params,
-        if (sql != null) 'sql': sql,
+              paramTypes!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (params != null) 'params': params!,
+        if (sql != null) 'sql': sql!,
       };
 }
 
@@ -6964,7 +6768,7 @@ class Statement {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -6972,13 +6776,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -7002,10 +6806,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -7018,7 +6822,7 @@ class StructType {
   /// the StructType. In turn, the order of fields matches the order of columns
   /// in a read request, or the order of fields in the `SELECT` clause of a
   /// query.
-  core.List<Field> fields;
+  core.List<Field>? fields;
 
   StructType();
 
@@ -7031,9 +6835,9 @@ class StructType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fields != null)
-          'fields': fields.map((value) => value.toJson()).toList(),
+          'fields': fields!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7043,7 +6847,7 @@ class TestIamPermissionsRequest {
   ///
   /// Permissions with wildcards (such as '*', 'spanner.*',
   /// 'spanner.instances.*') are not allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -7055,8 +6859,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -7064,7 +6868,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -7076,8 +6880,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -7088,8 +6892,8 @@ class Transaction {
   ///
   /// Single-use read-only transactions do not have IDs, because single-use
   /// transactions do not support multiple requests.
-  core.String id;
-  core.List<core.int> get idAsBytes => convert.base64.decode(id);
+  core.String? id;
+  core.List<core.int> get idAsBytes => convert.base64.decode(id!);
 
   set idAsBytes(core.List<core.int> _bytes) {
     id =
@@ -7103,7 +6907,7 @@ class Transaction {
   /// TransactionOptions.ReadOnly.return_read_timestamp. A timestamp in RFC3339
   /// UTC \"Zulu\" format, accurate to nanoseconds. Example:
   /// `"2014-10-02T15:01:23.045123456Z"`.
-  core.String readTimestamp;
+  core.String? readTimestamp;
 
   Transaction();
 
@@ -7116,9 +6920,9 @@ class Transaction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (readTimestamp != null) 'readTimestamp': readTimestamp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (readTimestamp != null) 'readTimestamp': readTimestamp!,
       };
 }
 
@@ -7295,21 +7099,21 @@ class TransactionOptions {
   /// Authorization to begin a Partitioned DML transaction requires
   /// `spanner.databases.beginPartitionedDmlTransaction` permission on the
   /// `session` resource.
-  PartitionedDml partitionedDml;
+  PartitionedDml? partitionedDml;
 
   /// Transaction will not write.
   ///
   /// Authorization to begin a read-only transaction requires
   /// `spanner.databases.beginReadOnlyTransaction` permission on the `session`
   /// resource.
-  ReadOnly readOnly;
+  ReadOnly? readOnly;
 
   /// Transaction may write.
   ///
   /// Authorization to begin a read-write transaction requires
   /// `spanner.databases.beginOrRollbackReadWriteTransaction` permission on the
   /// `session` resource.
-  ReadWrite readWrite;
+  ReadWrite? readWrite;
 
   TransactionOptions();
 
@@ -7328,10 +7132,10 @@ class TransactionOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (partitionedDml != null) 'partitionedDml': partitionedDml.toJson(),
-        if (readOnly != null) 'readOnly': readOnly.toJson(),
-        if (readWrite != null) 'readWrite': readWrite.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (partitionedDml != null) 'partitionedDml': partitionedDml!.toJson(),
+        if (readOnly != null) 'readOnly': readOnly!.toJson(),
+        if (readWrite != null) 'readWrite': readWrite!.toJson(),
       };
 }
 
@@ -7344,11 +7148,11 @@ class TransactionSelector {
   ///
   /// The transaction ID of the new transaction is returned in
   /// ResultSetMetadata.transaction, which is a Transaction.
-  TransactionOptions begin;
+  TransactionOptions? begin;
 
   /// Execute the read or SQL query in a previously-started transaction.
-  core.String id;
-  core.List<core.int> get idAsBytes => convert.base64.decode(id);
+  core.String? id;
+  core.List<core.int> get idAsBytes => convert.base64.decode(id!);
 
   set idAsBytes(core.List<core.int> _bytes) {
     id =
@@ -7359,7 +7163,7 @@ class TransactionSelector {
   ///
   /// This is the most efficient way to execute a transaction that consists of a
   /// single SQL query.
-  TransactionOptions singleUse;
+  TransactionOptions? singleUse;
 
   TransactionSelector();
 
@@ -7377,10 +7181,10 @@ class TransactionSelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (begin != null) 'begin': begin.toJson(),
-        if (id != null) 'id': id,
-        if (singleUse != null) 'singleUse': singleUse.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (begin != null) 'begin': begin!.toJson(),
+        if (id != null) 'id': id!,
+        if (singleUse != null) 'singleUse': singleUse!.toJson(),
       };
 }
 
@@ -7389,7 +7193,7 @@ class TransactionSelector {
 class Type {
   /// If code == ARRAY, then `array_element_type` is the type of the array
   /// elements.
-  Type arrayElementType;
+  Type? arrayElementType;
 
   /// The TypeCode for this type.
   ///
@@ -7419,11 +7223,11 @@ class Type {
   /// Scientific notation: `[+-]Digits[.[Digits]][ExponentIndicator[+-]Digits]`
   /// or `+-.Digits[ExponentIndicator[+-]Digits]` (ExponentIndicator is `"e"` or
   /// `"E"`)
-  core.String code;
+  core.String? code;
 
   /// If code == STRUCT, then `struct_type` provides type information for the
   /// struct's fields.
-  StructType structType;
+  StructType? structType;
 
   Type();
 
@@ -7441,11 +7245,11 @@ class Type {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (arrayElementType != null)
-          'arrayElementType': arrayElementType.toJson(),
-        if (code != null) 'code': code,
-        if (structType != null) 'structType': structType.toJson(),
+          'arrayElementType': arrayElementType!.toJson(),
+        if (code != null) 'code': code!,
+        if (structType != null) 'structType': structType!.toJson(),
       };
 }
 
@@ -7454,15 +7258,15 @@ class UpdateDatabaseDdlMetadata {
   /// Reports the commit timestamps of all statements that have succeeded so
   /// far, where `commit_timestamps[i]` is the commit timestamp for the
   /// statement `statements[i]`.
-  core.List<core.String> commitTimestamps;
+  core.List<core.String>? commitTimestamps;
 
   /// The database being modified.
-  core.String database;
+  core.String? database;
 
   /// For an update this list contains all the statements.
   ///
   /// For an individual statement, this list contains only that statement.
-  core.List<core.String> statements;
+  core.List<core.String>? statements;
 
   /// When true, indicates that the operation is throttled e.g due to resource
   /// constraints.
@@ -7471,7 +7275,7 @@ class UpdateDatabaseDdlMetadata {
   /// will be false again.
   ///
   /// Output only.
-  core.bool throttled;
+  core.bool? throttled;
 
   UpdateDatabaseDdlMetadata();
 
@@ -7494,11 +7298,11 @@ class UpdateDatabaseDdlMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commitTimestamps != null) 'commitTimestamps': commitTimestamps,
-        if (database != null) 'database': database,
-        if (statements != null) 'statements': statements,
-        if (throttled != null) 'throttled': throttled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commitTimestamps != null) 'commitTimestamps': commitTimestamps!,
+        if (database != null) 'database': database!,
+        if (statements != null) 'statements': statements!,
+        if (throttled != null) 'throttled': throttled!,
       };
 }
 
@@ -7529,12 +7333,12 @@ class UpdateDatabaseDdlRequest {
   /// Note that automatically-generated operation IDs always begin with an
   /// underscore. If the named operation already exists, UpdateDatabaseDdl
   /// returns `ALREADY_EXISTS`.
-  core.String operationId;
+  core.String? operationId;
 
   /// DDL statements to be applied to the database.
   ///
   /// Required.
-  core.List<core.String> statements;
+  core.List<core.String>? statements;
 
   UpdateDatabaseDdlRequest();
 
@@ -7549,9 +7353,9 @@ class UpdateDatabaseDdlRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operationId != null) 'operationId': operationId,
-        if (statements != null) 'statements': statements,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operationId != null) 'operationId': operationId!,
+        if (statements != null) 'statements': statements!,
       };
 }
 
@@ -7561,16 +7365,16 @@ class UpdateInstanceMetadata {
   ///
   /// If set, this operation is in the process of undoing itself (which is
   /// guaranteed to succeed) and cannot be cancelled again.
-  core.String cancelTime;
+  core.String? cancelTime;
 
   /// The time at which this operation failed or was completed successfully.
-  core.String endTime;
+  core.String? endTime;
 
   /// The desired end state of the update.
-  Instance instance;
+  Instance? instance;
 
   /// The time at which UpdateInstance request was received.
-  core.String startTime;
+  core.String? startTime;
 
   UpdateInstanceMetadata();
 
@@ -7590,11 +7394,11 @@ class UpdateInstanceMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cancelTime != null) 'cancelTime': cancelTime,
-        if (endTime != null) 'endTime': endTime,
-        if (instance != null) 'instance': instance.toJson(),
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cancelTime != null) 'cancelTime': cancelTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (instance != null) 'instance': instance!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -7607,14 +7411,14 @@ class UpdateInstanceRequest {
   /// about them.
   ///
   /// Required.
-  core.String fieldMask;
+  core.String? fieldMask;
 
   /// The instance to update, which must always include the instance name.
   ///
   /// Otherwise, only fields mentioned in field_mask need be included.
   ///
   /// Required.
-  Instance instance;
+  Instance? instance;
 
   UpdateInstanceRequest();
 
@@ -7628,9 +7432,9 @@ class UpdateInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fieldMask != null) 'fieldMask': fieldMask,
-        if (instance != null) 'instance': instance.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fieldMask != null) 'fieldMask': fieldMask!,
+        if (instance != null) 'instance': instance!.toJson(),
       };
 }
 
@@ -7640,12 +7444,12 @@ class Write {
   ///
   /// The list of columns must contain enough columns to allow Cloud Spanner to
   /// derive values for all primary key columns in the row(s) to be modified.
-  core.List<core.String> columns;
+  core.List<core.String>? columns;
 
   /// The table whose rows will be written.
   ///
   /// Required.
-  core.String table;
+  core.String? table;
 
   /// The values to be written.
   ///
@@ -7658,7 +7462,7 @@ class Write {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.List<core.Object>> values;
+  core.List<core.List<core.Object>>? values;
 
   Write();
 
@@ -7680,9 +7484,9 @@ class Write {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columns != null) 'columns': columns,
-        if (table != null) 'table': table,
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columns != null) 'columns': columns!,
+        if (table != null) 'table': table!,
+        if (values != null) 'values': values!,
       };
 }

@@ -96,11 +96,8 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<ProjectConfig> getConfig(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -140,13 +137,9 @@ class ProjectsResource {
   async.Future<ProjectConfig> updateConfig(
     UpdateProjectConfigRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -196,13 +189,9 @@ class ProjectsReposResource {
   async.Future<Repo> create(
     Repo request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -239,11 +228,8 @@ class ProjectsReposResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -278,11 +264,8 @@ class ProjectsReposResource {
   /// this method will complete with the same error.
   async.Future<Repo> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -329,12 +312,9 @@ class ProjectsReposResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -383,13 +363,10 @@ class ProjectsReposResource {
   /// this method will complete with the same error.
   async.Future<ListReposResponse> list(
     core.String name, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -431,13 +408,9 @@ class ProjectsReposResource {
   async.Future<Repo> patch(
     UpdateRepoRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -479,13 +452,9 @@ class ProjectsReposResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -528,13 +497,9 @@ class ProjectsReposResource {
   async.Future<Operation> sync(
     SyncRepoRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -578,13 +543,9 @@ class ProjectsReposResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -623,13 +584,13 @@ class ProjectsReposResource {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -645,11 +606,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -664,7 +625,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -672,7 +633,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -687,9 +648,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -703,7 +664,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -735,12 +696,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -759,10 +720,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -780,7 +741,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -808,24 +769,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -844,11 +805,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -860,10 +821,10 @@ class ListReposResponse {
   ///
   /// These can be retrieved by including this value in the next
   /// ListReposRequest's page_token field.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The listed repos.
-  core.List<Repo> repos;
+  core.List<Repo>? repos;
 
   ListReposResponse();
 
@@ -879,10 +840,10 @@ class ListReposResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (repos != null)
-          'repos': repos.map((value) => value.toJson()).toList(),
+          'repos': repos!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -893,17 +854,17 @@ class MirrorConfig {
   ///
   /// Removing this key from the other service would deauthorize Google Cloud
   /// Source Repositories from mirroring.
-  core.String deployKeyId;
+  core.String? deployKeyId;
 
   /// URL of the main repository at the other hosting service.
-  core.String url;
+  core.String? url;
 
   /// ID of the webhook listening to updates to trigger mirroring.
   ///
   /// Removing this webhook from the other hosting service will stop Google
   /// Cloud Source Repositories from receiving notifications, and thereby
   /// disabling mirroring.
-  core.String webhookId;
+  core.String? webhookId;
 
   MirrorConfig();
 
@@ -919,10 +880,10 @@ class MirrorConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deployKeyId != null) 'deployKeyId': deployKeyId,
-        if (url != null) 'url': url,
-        if (webhookId != null) 'webhookId': webhookId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deployKeyId != null) 'deployKeyId': deployKeyId!,
+        if (url != null) 'url': url!,
+        if (webhookId != null) 'webhookId': webhookId!,
       };
 }
 
@@ -933,10 +894,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -947,14 +908,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -967,7 +928,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -1002,12 +963,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -1044,14 +1005,14 @@ class Operation {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -1065,8 +1026,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -1090,7 +1051,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -1115,31 +1076,31 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
 /// Cloud Source Repositories configuration of a project.
 class ProjectConfig {
   /// Reject a Git push that contains a private key.
-  core.bool enablePrivateKeyCheck;
+  core.bool? enablePrivateKeyCheck;
 
   /// The name of the project.
   ///
   /// Values are of the form `projects/`.
-  core.String name;
+  core.String? name;
 
   /// How this project publishes a change in the repositories through Cloud
   /// Pub/Sub.
   ///
   /// Keyed by the topic names.
-  core.Map<core.String, PubsubConfig> pubsubConfigs;
+  core.Map<core.String, PubsubConfig>? pubsubConfigs;
 
   ProjectConfig();
 
@@ -1152,7 +1113,7 @@ class ProjectConfig {
     }
     if (_json.containsKey('pubsubConfigs')) {
       pubsubConfigs = (_json['pubsubConfigs'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -1163,12 +1124,12 @@ class ProjectConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (enablePrivateKeyCheck != null)
-          'enablePrivateKeyCheck': enablePrivateKeyCheck,
-        if (name != null) 'name': name,
+          'enablePrivateKeyCheck': enablePrivateKeyCheck!,
+        if (name != null) 'name': name!,
         if (pubsubConfigs != null)
-          'pubsubConfigs': pubsubConfigs
+          'pubsubConfigs': pubsubConfigs!
               .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
@@ -1181,7 +1142,7 @@ class PubsubConfig {
   /// - "PROTOBUF" : The message payload is a serialized protocol buffer of
   /// SourceRepoEvent.
   /// - "JSON" : The message payload is a JSON string of SourceRepoEvent.
-  core.String messageFormat;
+  core.String? messageFormat;
 
   /// Email address of the service account used for publishing Cloud Pub/Sub
   /// messages.
@@ -1190,13 +1151,13 @@ class PubsubConfig {
   /// When added, the caller needs to have iam.serviceAccounts.actAs permission
   /// on this service account. If unspecified, it defaults to the compute engine
   /// default service account.
-  core.String serviceAccountEmail;
+  core.String? serviceAccountEmail;
 
   /// A topic of Cloud Pub/Sub.
   ///
   /// Values are of the form `projects//topics/`. The project needs to be the
   /// same project as this config is in.
-  core.String topic;
+  core.String? topic;
 
   PubsubConfig();
 
@@ -1212,11 +1173,11 @@ class PubsubConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (messageFormat != null) 'messageFormat': messageFormat,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (messageFormat != null) 'messageFormat': messageFormat!,
         if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail,
-        if (topic != null) 'topic': topic,
+          'serviceAccountEmail': serviceAccountEmail!,
+        if (topic != null) 'topic': topic!,
       };
 }
 
@@ -1225,29 +1186,29 @@ class Repo {
   /// How this repository mirrors a repository managed by another service.
   ///
   /// Read-only field.
-  MirrorConfig mirrorConfig;
+  MirrorConfig? mirrorConfig;
 
   /// Resource name of the repository, of the form `projects//repos/`.
   ///
   /// The repo name may contain slashes. eg,
   /// `projects/myproject/repos/name/with/slash`
-  core.String name;
+  core.String? name;
 
   /// How this repository publishes a change in the repository through Cloud
   /// Pub/Sub.
   ///
   /// Keyed by the topic names.
-  core.Map<core.String, PubsubConfig> pubsubConfigs;
+  core.Map<core.String, PubsubConfig>? pubsubConfigs;
 
   /// The disk usage of the repo, in bytes.
   ///
   /// Read-only field. Size is only returned by GetRepo.
-  core.String size;
+  core.String? size;
 
   /// URL to clone the repository from Google Cloud Source Repositories.
   ///
   /// Read-only field.
-  core.String url;
+  core.String? url;
 
   Repo();
 
@@ -1261,7 +1222,7 @@ class Repo {
     }
     if (_json.containsKey('pubsubConfigs')) {
       pubsubConfigs = (_json['pubsubConfigs'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -1278,14 +1239,14 @@ class Repo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (mirrorConfig != null) 'mirrorConfig': mirrorConfig.toJson(),
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (mirrorConfig != null) 'mirrorConfig': mirrorConfig!.toJson(),
+        if (name != null) 'name': name!,
         if (pubsubConfigs != null)
-          'pubsubConfigs': pubsubConfigs
+          'pubsubConfigs': pubsubConfigs!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (size != null) 'size': size,
-        if (url != null) 'url': url,
+        if (size != null) 'size': size!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -1296,13 +1257,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -1316,9 +1277,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -1331,7 +1292,7 @@ class SetIamPolicyRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1339,13 +1300,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -1369,10 +1330,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -1383,16 +1344,16 @@ class SyncRepoMetadata {
   /// The name of the repo being synchronized.
   ///
   /// Values are of the form `projects//repos/`.
-  core.String name;
+  core.String? name;
 
   /// The time this operation is started.
-  core.String startTime;
+  core.String? startTime;
 
   /// The latest status message on syncing the repository.
-  core.String statusMessage;
+  core.String? statusMessage;
 
   /// The time this operation's status message is updated.
-  core.String updateTime;
+  core.String? updateTime;
 
   SyncRepoMetadata();
 
@@ -1411,11 +1372,11 @@ class SyncRepoMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (startTime != null) 'startTime': startTime,
-        if (statusMessage != null) 'statusMessage': statusMessage,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (startTime != null) 'startTime': startTime!,
+        if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1427,7 +1388,7 @@ class SyncRepoRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -1437,7 +1398,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -1449,8 +1410,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -1458,7 +1419,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -1470,21 +1431,21 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
 /// Request for UpdateProjectConfig.
 class UpdateProjectConfigRequest {
   /// The new configuration for the project.
-  ProjectConfig projectConfig;
+  ProjectConfig? projectConfig;
 
   /// A FieldMask specifying which fields of the project_config to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, this
   /// request is no-op.
-  core.String updateMask;
+  core.String? updateMask;
 
   UpdateProjectConfigRequest();
 
@@ -1498,22 +1459,22 @@ class UpdateProjectConfigRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (projectConfig != null) 'projectConfig': projectConfig.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (projectConfig != null) 'projectConfig': projectConfig!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
 /// Request for UpdateRepo.
 class UpdateRepoRequest {
   /// The new configuration for the repository.
-  Repo repo;
+  Repo? repo;
 
   /// A FieldMask specifying which fields of the repo to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, this
   /// request is no-op.
-  core.String updateMask;
+  core.String? updateMask;
 
   UpdateRepoRequest();
 
@@ -1527,8 +1488,8 @@ class UpdateRepoRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (repo != null) 'repo': repo.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (repo != null) 'repo': repo!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }

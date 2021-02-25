@@ -82,8 +82,8 @@ class WebfontsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<WebfontList> list({
-    core.String sort,
-    core.String $fields,
+    core.String? sort,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (sort != null) 'sort': [sort],
@@ -105,29 +105,29 @@ class WebfontsResource {
 /// Metadata describing a family of fonts.
 class Webfont {
   /// The category of the font.
-  core.String category;
+  core.String? category;
 
   /// The name of the font.
-  core.String family;
+  core.String? family;
 
   /// The font files (with all supported scripts) for each one of the available
   /// variants, as a key : value map.
-  core.Map<core.String, core.String> files;
+  core.Map<core.String, core.String>? files;
 
   /// This kind represents a webfont object in the webfonts service.
-  core.String kind;
+  core.String? kind;
 
   /// The date (format "yyyy-MM-dd") the font was modified for the last time.
-  core.String lastModified;
+  core.String? lastModified;
 
   /// The scripts supported by the font.
-  core.List<core.String> subsets;
+  core.List<core.String>? subsets;
 
   /// The available variants for the font.
-  core.List<core.String> variants;
+  core.List<core.String>? variants;
 
   /// The font version.
-  core.String version;
+  core.String? version;
 
   Webfont();
 
@@ -167,15 +167,15 @@ class Webfont {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (category != null) 'category': category,
-        if (family != null) 'family': family,
-        if (files != null) 'files': files,
-        if (kind != null) 'kind': kind,
-        if (lastModified != null) 'lastModified': lastModified,
-        if (subsets != null) 'subsets': subsets,
-        if (variants != null) 'variants': variants,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (category != null) 'category': category!,
+        if (family != null) 'family': family!,
+        if (files != null) 'files': files!,
+        if (kind != null) 'kind': kind!,
+        if (lastModified != null) 'lastModified': lastModified!,
+        if (subsets != null) 'subsets': subsets!,
+        if (variants != null) 'variants': variants!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -183,10 +183,10 @@ class Webfont {
 /// API.
 class WebfontList {
   /// The list of fonts currently served by the Google Fonts API.
-  core.List<Webfont> items;
+  core.List<Webfont>? items;
 
   /// This kind represents a list of webfont objects in the webfonts service.
-  core.String kind;
+  core.String? kind;
 
   WebfontList();
 
@@ -202,9 +202,9 @@ class WebfontList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }

@@ -98,13 +98,9 @@ class EnterprisesDevicesResource {
       executeCommand(
     GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -143,11 +139,8 @@ class EnterprisesDevicesResource {
   /// this method will complete with the same error.
   async.Future<GoogleHomeEnterpriseSdmV1Device> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -191,14 +184,11 @@ class EnterprisesDevicesResource {
   /// this method will complete with the same error.
   async.Future<GoogleHomeEnterpriseSdmV1ListDevicesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -248,11 +238,8 @@ class EnterprisesStructuresResource {
   /// this method will complete with the same error.
   async.Future<GoogleHomeEnterpriseSdmV1Structure> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -295,14 +282,11 @@ class EnterprisesStructuresResource {
   /// this method will complete with the same error.
   async.Future<GoogleHomeEnterpriseSdmV1ListStructuresResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -351,11 +335,8 @@ class EnterprisesStructuresRoomsResource {
   /// this method will complete with the same error.
   async.Future<GoogleHomeEnterpriseSdmV1Room> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -396,13 +377,10 @@ class EnterprisesStructuresRoomsResource {
   /// this method will complete with the same error.
   async.Future<GoogleHomeEnterpriseSdmV1ListRoomsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -430,10 +408,10 @@ class GoogleHomeEnterpriseSdmV1Device {
   /// For example: "enterprises/XYZ/devices/123".
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Assignee details of the device.
-  core.List<GoogleHomeEnterpriseSdmV1ParentRelation> parentRelations;
+  core.List<GoogleHomeEnterpriseSdmV1ParentRelation>? parentRelations;
 
   /// Device traits.
   ///
@@ -441,7 +419,7 @@ class GoogleHomeEnterpriseSdmV1Device {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> traits;
+  core.Map<core.String, core.Object>? traits;
 
   /// Type of the device for general display purposes.
   ///
@@ -450,7 +428,7 @@ class GoogleHomeEnterpriseSdmV1Device {
   /// the returned traits for the device.
   ///
   /// Output only.
-  core.String type;
+  core.String? type;
 
   GoogleHomeEnterpriseSdmV1Device();
 
@@ -479,13 +457,13 @@ class GoogleHomeEnterpriseSdmV1Device {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
         if (parentRelations != null)
           'parentRelations':
-              parentRelations.map((value) => value.toJson()).toList(),
-        if (traits != null) 'traits': traits,
-        if (type != null) 'type': type,
+              parentRelations!.map((value) => value.toJson()).toList(),
+        if (traits != null) 'traits': traits!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -493,13 +471,13 @@ class GoogleHomeEnterpriseSdmV1Device {
 class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
   /// The command name to execute, represented by the fully qualified protobuf
   /// message name.
-  core.String command;
+  core.String? command;
 
   /// The command message to execute, represented as a Struct.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> params;
+  core.Map<core.String, core.Object>? params;
 
   GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest();
 
@@ -519,9 +497,9 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (command != null) 'command': command,
-        if (params != null) 'params': params,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (command != null) 'command': command!,
+        if (params != null) 'params': params!,
       };
 }
 
@@ -531,7 +509,7 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> results;
+  core.Map<core.String, core.Object>? results;
 
   GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse();
 
@@ -548,18 +526,18 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (results != null) 'results': results,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (results != null) 'results': results!,
       };
 }
 
 /// Response message for SmartDeviceManagementService.ListDevices
 class GoogleHomeEnterpriseSdmV1ListDevicesResponse {
   /// The list of devices.
-  core.List<GoogleHomeEnterpriseSdmV1Device> devices;
+  core.List<GoogleHomeEnterpriseSdmV1Device>? devices;
 
   /// The pagination token to retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleHomeEnterpriseSdmV1ListDevicesResponse();
 
@@ -576,10 +554,10 @@ class GoogleHomeEnterpriseSdmV1ListDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (devices != null)
-          'devices': devices.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'devices': devices!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -588,10 +566,10 @@ class GoogleHomeEnterpriseSdmV1ListRoomsResponse {
   /// The pagination token to retrieve the next page of results.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of rooms.
-  core.List<GoogleHomeEnterpriseSdmV1Room> rooms;
+  core.List<GoogleHomeEnterpriseSdmV1Room>? rooms;
 
   GoogleHomeEnterpriseSdmV1ListRoomsResponse();
 
@@ -608,10 +586,10 @@ class GoogleHomeEnterpriseSdmV1ListRoomsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (rooms != null)
-          'rooms': rooms.map((value) => value.toJson()).toList(),
+          'rooms': rooms!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -620,10 +598,10 @@ class GoogleHomeEnterpriseSdmV1ListStructuresResponse {
   /// The pagination token to retrieve the next page of results.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of structures.
-  core.List<GoogleHomeEnterpriseSdmV1Structure> structures;
+  core.List<GoogleHomeEnterpriseSdmV1Structure>? structures;
 
   GoogleHomeEnterpriseSdmV1ListStructuresResponse();
 
@@ -640,10 +618,10 @@ class GoogleHomeEnterpriseSdmV1ListStructuresResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (structures != null)
-          'structures': structures.map((value) => value.toJson()).toList(),
+          'structures': structures!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -654,7 +632,7 @@ class GoogleHomeEnterpriseSdmV1ParentRelation {
   /// is assigned to.
   ///
   /// Output only.
-  core.String displayName;
+  core.String? displayName;
 
   /// The name of the relation -- e.g., structure/room where the device is
   /// assigned to.
@@ -663,7 +641,7 @@ class GoogleHomeEnterpriseSdmV1ParentRelation {
   /// "enterprises/XYZ/structures/ABC/rooms/123"
   ///
   /// Output only.
-  core.String parent;
+  core.String? parent;
 
   GoogleHomeEnterpriseSdmV1ParentRelation();
 
@@ -676,9 +654,9 @@ class GoogleHomeEnterpriseSdmV1ParentRelation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (parent != null) 'parent': parent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (parent != null) 'parent': parent!,
       };
 }
 
@@ -690,13 +668,13 @@ class GoogleHomeEnterpriseSdmV1Room {
   /// For example: "enterprises/XYZ/structures/ABC/rooms/123".
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Room traits.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> traits;
+  core.Map<core.String, core.Object>? traits;
 
   GoogleHomeEnterpriseSdmV1Room();
 
@@ -715,9 +693,9 @@ class GoogleHomeEnterpriseSdmV1Room {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (traits != null) 'traits': traits,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (traits != null) 'traits': traits!,
       };
 }
 
@@ -729,13 +707,13 @@ class GoogleHomeEnterpriseSdmV1Structure {
   /// For example: "enterprises/XYZ/structures/ABC".
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Structure traits.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> traits;
+  core.Map<core.String, core.Object>? traits;
 
   GoogleHomeEnterpriseSdmV1Structure();
 
@@ -754,8 +732,8 @@ class GoogleHomeEnterpriseSdmV1Structure {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (traits != null) 'traits': traits,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (traits != null) 'traits': traits!,
       };
 }

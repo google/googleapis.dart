@@ -107,9 +107,9 @@ class AccountSummariesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaListAccountSummariesResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -164,11 +164,8 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -204,11 +201,8 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaAccount> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -248,11 +242,8 @@ class AccountsResource {
   async.Future<GoogleAnalyticsAdminV1alphaDataSharingSettings>
       getDataSharingSettings(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -301,10 +292,10 @@ class AccountsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaListAccountsResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.bool showDeleted,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -352,14 +343,10 @@ class AccountsResource {
   async.Future<GoogleAnalyticsAdminV1alphaAccount> patch(
     GoogleAnalyticsAdminV1alphaAccount request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -397,10 +384,9 @@ class AccountsResource {
   async.Future<GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse>
       provisionAccountTicket(
     GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -453,13 +439,9 @@ class AccountsUserLinksResource {
   async.Future<GoogleAnalyticsAdminV1alphaAuditUserLinksResponse> audit(
     GoogleAnalyticsAdminV1alphaAuditUserLinksRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -508,13 +490,9 @@ class AccountsUserLinksResource {
       batchCreate(
     GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -557,13 +535,9 @@ class AccountsUserLinksResource {
   async.Future<GoogleProtobufEmpty> batchDelete(
     GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -607,12 +581,9 @@ class AccountsUserLinksResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse> batchGet(
     core.String parent, {
-    core.List<core.String> names,
-    core.String $fields,
+    core.List<core.String>? names,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (names != null) 'names': names,
       if ($fields != null) 'fields': [$fields],
@@ -657,13 +628,9 @@ class AccountsUserLinksResource {
       batchUpdate(
     GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -711,14 +678,10 @@ class AccountsUserLinksResource {
   async.Future<GoogleAnalyticsAdminV1alphaUserLink> create(
     GoogleAnalyticsAdminV1alphaUserLink request,
     core.String parent, {
-    core.bool notifyNewUser,
-    core.String $fields,
+    core.bool? notifyNewUser,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (notifyNewUser != null) 'notifyNewUser': ['${notifyNewUser}'],
       if ($fields != null) 'fields': [$fields],
@@ -757,11 +720,8 @@ class AccountsUserLinksResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -796,11 +756,8 @@ class AccountsUserLinksResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaUserLink> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -845,13 +802,10 @@ class AccountsUserLinksResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaListUserLinksResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -893,13 +847,9 @@ class AccountsUserLinksResource {
   async.Future<GoogleAnalyticsAdminV1alphaUserLink> patch(
     GoogleAnalyticsAdminV1alphaUserLink request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -953,10 +903,9 @@ class PropertiesResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaProperty> create(
     GoogleAnalyticsAdminV1alphaProperty request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1000,11 +949,8 @@ class PropertiesResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1040,11 +986,8 @@ class PropertiesResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaProperty> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1103,11 +1046,11 @@ class PropertiesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaListPropertiesResponse> list({
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.bool showDeleted,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
@@ -1156,14 +1099,10 @@ class PropertiesResource {
   async.Future<GoogleAnalyticsAdminV1alphaProperty> patch(
     GoogleAnalyticsAdminV1alphaProperty request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1217,13 +1156,9 @@ class PropertiesAndroidAppDataStreamsResource {
   async.Future<GoogleAnalyticsAdminV1alphaAndroidAppDataStream> create(
     GoogleAnalyticsAdminV1alphaAndroidAppDataStream request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1264,11 +1199,8 @@ class PropertiesAndroidAppDataStreamsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1306,11 +1238,8 @@ class PropertiesAndroidAppDataStreamsResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaAndroidAppDataStream> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1361,13 +1290,10 @@ class PropertiesAndroidAppDataStreamsResource {
   async.Future<GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse>
       list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1417,14 +1343,10 @@ class PropertiesAndroidAppDataStreamsResource {
   async.Future<GoogleAnalyticsAdminV1alphaAndroidAppDataStream> patch(
     GoogleAnalyticsAdminV1alphaAndroidAppDataStream request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1474,13 +1396,9 @@ class PropertiesFirebaseLinksResource {
   async.Future<GoogleAnalyticsAdminV1alphaFirebaseLink> create(
     GoogleAnalyticsAdminV1alphaFirebaseLink request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1520,11 +1438,8 @@ class PropertiesFirebaseLinksResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1572,13 +1487,10 @@ class PropertiesFirebaseLinksResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1625,14 +1537,10 @@ class PropertiesFirebaseLinksResource {
   async.Future<GoogleAnalyticsAdminV1alphaFirebaseLink> patch(
     GoogleAnalyticsAdminV1alphaFirebaseLink request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1679,13 +1587,9 @@ class PropertiesGoogleAdsLinksResource {
   async.Future<GoogleAnalyticsAdminV1alphaGoogleAdsLink> create(
     GoogleAnalyticsAdminV1alphaGoogleAdsLink request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1723,11 +1627,8 @@ class PropertiesGoogleAdsLinksResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1771,13 +1672,10 @@ class PropertiesGoogleAdsLinksResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1826,14 +1724,10 @@ class PropertiesGoogleAdsLinksResource {
   async.Future<GoogleAnalyticsAdminV1alphaGoogleAdsLink> patch(
     GoogleAnalyticsAdminV1alphaGoogleAdsLink request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1887,13 +1781,9 @@ class PropertiesIosAppDataStreamsResource {
   async.Future<GoogleAnalyticsAdminV1alphaIosAppDataStream> create(
     GoogleAnalyticsAdminV1alphaIosAppDataStream request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1933,11 +1823,8 @@ class PropertiesIosAppDataStreamsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1974,11 +1861,8 @@ class PropertiesIosAppDataStreamsResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaIosAppDataStream> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2027,13 +1911,10 @@ class PropertiesIosAppDataStreamsResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2082,14 +1963,10 @@ class PropertiesIosAppDataStreamsResource {
   async.Future<GoogleAnalyticsAdminV1alphaIosAppDataStream> patch(
     GoogleAnalyticsAdminV1alphaIosAppDataStream request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2144,13 +2021,9 @@ class PropertiesUserLinksResource {
   async.Future<GoogleAnalyticsAdminV1alphaAuditUserLinksResponse> audit(
     GoogleAnalyticsAdminV1alphaAuditUserLinksRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2199,13 +2072,9 @@ class PropertiesUserLinksResource {
       batchCreate(
     GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2248,13 +2117,9 @@ class PropertiesUserLinksResource {
   async.Future<GoogleProtobufEmpty> batchDelete(
     GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2298,12 +2163,9 @@ class PropertiesUserLinksResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse> batchGet(
     core.String parent, {
-    core.List<core.String> names,
-    core.String $fields,
+    core.List<core.String>? names,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (names != null) 'names': names,
       if ($fields != null) 'fields': [$fields],
@@ -2348,13 +2210,9 @@ class PropertiesUserLinksResource {
       batchUpdate(
     GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2402,14 +2260,10 @@ class PropertiesUserLinksResource {
   async.Future<GoogleAnalyticsAdminV1alphaUserLink> create(
     GoogleAnalyticsAdminV1alphaUserLink request,
     core.String parent, {
-    core.bool notifyNewUser,
-    core.String $fields,
+    core.bool? notifyNewUser,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (notifyNewUser != null) 'notifyNewUser': ['${notifyNewUser}'],
       if ($fields != null) 'fields': [$fields],
@@ -2448,11 +2302,8 @@ class PropertiesUserLinksResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2487,11 +2338,8 @@ class PropertiesUserLinksResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaUserLink> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2536,13 +2384,10 @@ class PropertiesUserLinksResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaListUserLinksResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2584,13 +2429,9 @@ class PropertiesUserLinksResource {
   async.Future<GoogleAnalyticsAdminV1alphaUserLink> patch(
     GoogleAnalyticsAdminV1alphaUserLink request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2637,13 +2478,9 @@ class PropertiesWebDataStreamsResource {
   async.Future<GoogleAnalyticsAdminV1alphaWebDataStream> create(
     GoogleAnalyticsAdminV1alphaWebDataStream request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2683,11 +2520,8 @@ class PropertiesWebDataStreamsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2724,11 +2558,8 @@ class PropertiesWebDataStreamsResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaWebDataStream> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2770,11 +2601,8 @@ class PropertiesWebDataStreamsResource {
   async.Future<GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings>
       getEnhancedMeasurementSettings(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2815,11 +2643,8 @@ class PropertiesWebDataStreamsResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaGlobalSiteTag> getGlobalSiteTag(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2867,13 +2692,10 @@ class PropertiesWebDataStreamsResource {
   /// this method will complete with the same error.
   async.Future<GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2922,14 +2744,10 @@ class PropertiesWebDataStreamsResource {
   async.Future<GoogleAnalyticsAdminV1alphaWebDataStream> patch(
     GoogleAnalyticsAdminV1alphaWebDataStream request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2981,14 +2799,10 @@ class PropertiesWebDataStreamsResource {
       updateEnhancedMeasurementSettings(
     GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3012,7 +2826,7 @@ class GoogleAnalyticsAdminV1alphaAccount {
   /// Time when this account was originally created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Indicates whether this Account is soft-deleted or not.
   ///
@@ -3020,29 +2834,29 @@ class GoogleAnalyticsAdminV1alphaAccount {
   /// requested.
   ///
   /// Output only.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// Human-readable display name for this account.
   ///
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   /// Resource name of this account.
   ///
   /// Format: accounts/{account} Example: "accounts/100"
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Country of business.
   ///
   /// Must be a Unicode CLDR region code.
-  core.String regionCode;
+  core.String? regionCode;
 
   /// Time when account payload fields were last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleAnalyticsAdminV1alphaAccount();
 
@@ -3067,13 +2881,13 @@ class GoogleAnalyticsAdminV1alphaAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (deleted != null) 'deleted': deleted,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (regionCode != null) 'regionCode': regionCode,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (deleted != null) 'deleted': deleted!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3082,18 +2896,18 @@ class GoogleAnalyticsAdminV1alphaAccount {
 class GoogleAnalyticsAdminV1alphaAccountSummary {
   /// Resource name of account referred to by this account summary Format:
   /// accounts/{account_id} Example: "accounts/1000"
-  core.String account;
+  core.String? account;
 
   /// Display name for the account referred to in this account summary.
-  core.String displayName;
+  core.String? displayName;
 
   /// Resource name for this account summary.
   ///
   /// Format: accountSummaries/{account_id} Example: "accountSummaries/1000"
-  core.String name;
+  core.String? name;
 
   /// List of summaries for child accounts of this account.
-  core.List<GoogleAnalyticsAdminV1alphaPropertySummary> propertySummaries;
+  core.List<GoogleAnalyticsAdminV1alphaPropertySummary>? propertySummaries;
 
   GoogleAnalyticsAdminV1alphaAccountSummary();
 
@@ -3116,13 +2930,13 @@ class GoogleAnalyticsAdminV1alphaAccountSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (account != null) 'account': account,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (account != null) 'account': account!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
         if (propertySummaries != null)
           'propertySummaries':
-              propertySummaries.map((value) => value.toJson()).toList(),
+              propertySummaries!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3131,19 +2945,19 @@ class GoogleAnalyticsAdminV1alphaAndroidAppDataStream {
   /// Time when this stream was originally created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Human-readable display name for the Data Stream.
   ///
   /// The max allowed display name length is 255 UTF-16 code units.
-  core.String displayName;
+  core.String? displayName;
 
   /// ID of the corresponding Android app in Firebase, if any.
   ///
   /// This ID can change if the Android app is deleted and recreated.
   ///
   /// Output only.
-  core.String firebaseAppId;
+  core.String? firebaseAppId;
 
   /// Resource name of this Data Stream.
   ///
@@ -3151,19 +2965,19 @@ class GoogleAnalyticsAdminV1alphaAndroidAppDataStream {
   /// Example: "properties/1000/androidAppDataStreams/2000"
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The package name for the app being measured.
   ///
   /// Example: "com.example.myandroidapp"
   ///
   /// Immutable.
-  core.String packageName;
+  core.String? packageName;
 
   /// Time when stream payload fields were last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleAnalyticsAdminV1alphaAndroidAppDataStream();
 
@@ -3188,13 +3002,13 @@ class GoogleAnalyticsAdminV1alphaAndroidAppDataStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (displayName != null) 'displayName': displayName,
-        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId,
-        if (name != null) 'name': name,
-        if (packageName != null) 'packageName': packageName,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId!,
+        if (name != null) 'name': name!,
+        if (packageName != null) 'packageName': packageName!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3204,19 +3018,19 @@ class GoogleAnalyticsAdminV1alphaAuditUserLink {
   ///
   /// Format: predefinedRoles/read Excludes roles that are inherited from an
   /// account (if this is for a property), group, or organization admin role.
-  core.List<core.String> directRoles;
+  core.List<core.String>? directRoles;
 
   /// Union of all permissions a user has at this account or property (includes
   /// direct permissions, group-inherited permissions, etc.).
   ///
   /// Format: predefinedRoles/read
-  core.List<core.String> effectiveRoles;
+  core.List<core.String>? effectiveRoles;
 
   /// Email address of the linked user
-  core.String emailAddress;
+  core.String? emailAddress;
 
   /// Example format: properties/1234/userLinks/5678
-  core.String name;
+  core.String? name;
 
   GoogleAnalyticsAdminV1alphaAuditUserLink();
 
@@ -3239,11 +3053,11 @@ class GoogleAnalyticsAdminV1alphaAuditUserLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (directRoles != null) 'directRoles': directRoles,
-        if (effectiveRoles != null) 'effectiveRoles': effectiveRoles,
-        if (emailAddress != null) 'emailAddress': emailAddress,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (directRoles != null) 'directRoles': directRoles!,
+        if (effectiveRoles != null) 'effectiveRoles': effectiveRoles!,
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3254,14 +3068,14 @@ class GoogleAnalyticsAdminV1alphaAuditUserLinksRequest {
   /// The service may return fewer than this value. If unspecified, at most 1000
   /// user links will be returned. The maximum value is 5000; values above 5000
   /// will be coerced to 5000.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// A page token, received from a previous `AuditUserLinks` call.
   ///
   /// Provide this to retrieve the subsequent page. When paginating, all other
   /// parameters provided to `AuditUserLinks` must match the call that provided
   /// the page token.
-  core.String pageToken;
+  core.String? pageToken;
 
   GoogleAnalyticsAdminV1alphaAuditUserLinksRequest();
 
@@ -3274,9 +3088,9 @@ class GoogleAnalyticsAdminV1alphaAuditUserLinksRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
       };
 }
 
@@ -3285,12 +3099,12 @@ class GoogleAnalyticsAdminV1alphaAuditUserLinksResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of AuditUserLinks.
   ///
   /// These will be ordered stably, but in an arbitrary order.
-  core.List<GoogleAnalyticsAdminV1alphaAuditUserLink> userLinks;
+  core.List<GoogleAnalyticsAdminV1alphaAuditUserLink>? userLinks;
 
   GoogleAnalyticsAdminV1alphaAuditUserLinksResponse();
 
@@ -3307,10 +3121,10 @@ class GoogleAnalyticsAdminV1alphaAuditUserLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (userLinks != null)
-          'userLinks': userLinks.map((value) => value.toJson()).toList(),
+          'userLinks': userLinks!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3323,14 +3137,14 @@ class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest {
   /// each individual request is ignored.
   ///
   /// Optional.
-  core.bool notifyNewUsers;
+  core.bool? notifyNewUsers;
 
   /// The requests specifying the user links to create.
   ///
   /// A maximum of 1000 user links can be created in a batch.
   ///
   /// Required.
-  core.List<GoogleAnalyticsAdminV1alphaCreateUserLinkRequest> requests;
+  core.List<GoogleAnalyticsAdminV1alphaCreateUserLinkRequest>? requests;
 
   GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest();
 
@@ -3348,17 +3162,17 @@ class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (notifyNewUsers != null) 'notifyNewUsers': notifyNewUsers,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (notifyNewUsers != null) 'notifyNewUsers': notifyNewUsers!,
         if (requests != null)
-          'requests': requests.map((value) => value.toJson()).toList(),
+          'requests': requests!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for BatchCreateUserLinks RPC.
 class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse {
   /// The user links created.
-  core.List<GoogleAnalyticsAdminV1alphaUserLink> userLinks;
+  core.List<GoogleAnalyticsAdminV1alphaUserLink>? userLinks;
 
   GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse();
 
@@ -3373,9 +3187,9 @@ class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (userLinks != null)
-          'userLinks': userLinks.map((value) => value.toJson()).toList(),
+          'userLinks': userLinks!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3386,7 +3200,7 @@ class GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest {
   /// A maximum of 1000 user links can be updated in a batch.
   ///
   /// Required.
-  core.List<GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest> requests;
+  core.List<GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest>? requests;
 
   GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest();
 
@@ -3401,16 +3215,16 @@ class GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requests != null)
-          'requests': requests.map((value) => value.toJson()).toList(),
+          'requests': requests!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for BatchGetUserLinks RPC.
 class GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse {
   /// The requested user links.
-  core.List<GoogleAnalyticsAdminV1alphaUserLink> userLinks;
+  core.List<GoogleAnalyticsAdminV1alphaUserLink>? userLinks;
 
   GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse();
 
@@ -3425,9 +3239,9 @@ class GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (userLinks != null)
-          'userLinks': userLinks.map((value) => value.toJson()).toList(),
+          'userLinks': userLinks!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3438,7 +3252,7 @@ class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest {
   /// A maximum of 1000 user links can be updated in a batch.
   ///
   /// Required.
-  core.List<GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest> requests;
+  core.List<GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest>? requests;
 
   GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest();
 
@@ -3453,16 +3267,16 @@ class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requests != null)
-          'requests': requests.map((value) => value.toJson()).toList(),
+          'requests': requests!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for BatchUpdateUserLinks RPC.
 class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse {
   /// The user links updated.
-  core.List<GoogleAnalyticsAdminV1alphaUserLink> userLinks;
+  core.List<GoogleAnalyticsAdminV1alphaUserLink>? userLinks;
 
   GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse();
 
@@ -3477,9 +3291,9 @@ class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (userLinks != null)
-          'userLinks': userLinks.map((value) => value.toJson()).toList(),
+          'userLinks': userLinks!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3496,17 +3310,17 @@ class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest {
   /// permissions to the resource.
   ///
   /// Optional.
-  core.bool notifyNewUser;
+  core.bool? notifyNewUser;
 
   /// Example format: accounts/1234
   ///
   /// Required.
-  core.String parent;
+  core.String? parent;
 
   /// The user link to create.
   ///
   /// Required.
-  GoogleAnalyticsAdminV1alphaUserLink userLink;
+  GoogleAnalyticsAdminV1alphaUserLink? userLink;
 
   GoogleAnalyticsAdminV1alphaCreateUserLinkRequest();
 
@@ -3523,10 +3337,10 @@ class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (notifyNewUser != null) 'notifyNewUser': notifyNewUser,
-        if (parent != null) 'parent': parent,
-        if (userLink != null) 'userLink': userLink.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (notifyNewUser != null) 'notifyNewUser': notifyNewUser!,
+        if (parent != null) 'parent': parent!,
+        if (userLink != null) 'userLink': userLink!.toJson(),
       };
 }
 
@@ -3539,28 +3353,28 @@ class GoogleAnalyticsAdminV1alphaDataSharingSettings {
   /// "accounts/1000/dataSharingSettings"
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Allows any of Google sales to access the data in order to suggest
   /// configuration changes to improve results.
-  core.bool sharingWithGoogleAnySalesEnabled;
+  core.bool? sharingWithGoogleAnySalesEnabled;
 
   /// Allows Google sales teams that are assigned to the customer to access the
   /// data in order to suggest configuration changes to improve results.
   ///
   /// Sales team restrictions still apply when enabled.
-  core.bool sharingWithGoogleAssignedSalesEnabled;
+  core.bool? sharingWithGoogleAssignedSalesEnabled;
 
   /// Allows Google to use the data to improve other Google products or
   /// services.
-  core.bool sharingWithGoogleProductsEnabled;
+  core.bool? sharingWithGoogleProductsEnabled;
 
   /// Allows Google support to access the data in order to help troubleshoot
   /// issues.
-  core.bool sharingWithGoogleSupportEnabled;
+  core.bool? sharingWithGoogleSupportEnabled;
 
   /// Allows Google to share the data anonymously in aggregate form with others.
-  core.bool sharingWithOthersEnabled;
+  core.bool? sharingWithOthersEnabled;
 
   GoogleAnalyticsAdminV1alphaDataSharingSettings();
 
@@ -3589,19 +3403,19 @@ class GoogleAnalyticsAdminV1alphaDataSharingSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
         if (sharingWithGoogleAnySalesEnabled != null)
-          'sharingWithGoogleAnySalesEnabled': sharingWithGoogleAnySalesEnabled,
+          'sharingWithGoogleAnySalesEnabled': sharingWithGoogleAnySalesEnabled!,
         if (sharingWithGoogleAssignedSalesEnabled != null)
           'sharingWithGoogleAssignedSalesEnabled':
-              sharingWithGoogleAssignedSalesEnabled,
+              sharingWithGoogleAssignedSalesEnabled!,
         if (sharingWithGoogleProductsEnabled != null)
-          'sharingWithGoogleProductsEnabled': sharingWithGoogleProductsEnabled,
+          'sharingWithGoogleProductsEnabled': sharingWithGoogleProductsEnabled!,
         if (sharingWithGoogleSupportEnabled != null)
-          'sharingWithGoogleSupportEnabled': sharingWithGoogleSupportEnabled,
+          'sharingWithGoogleSupportEnabled': sharingWithGoogleSupportEnabled!,
         if (sharingWithOthersEnabled != null)
-          'sharingWithOthersEnabled': sharingWithOthersEnabled,
+          'sharingWithOthersEnabled': sharingWithOthersEnabled!,
       };
 }
 
@@ -3610,7 +3424,7 @@ class GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest {
   /// Example format: accounts/1234/userLinks/5678
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest();
 
@@ -3620,8 +3434,8 @@ class GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3631,7 +3445,7 @@ class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings {
   /// If enabled, capture a file download event each time a link is clicked with
   /// a common document, compressed file, application, video, or audio
   /// extension.
-  core.bool fileDownloadsEnabled;
+  core.bool? fileDownloadsEnabled;
 
   /// Resource name of this Data Stream.
   ///
@@ -3640,57 +3454,57 @@ class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings {
   /// Example: "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// If enabled, capture an outbound click event each time a visitor clicks a
   /// link that leads them away from your domain.
-  core.bool outboundClicksEnabled;
+  core.bool? outboundClicksEnabled;
 
   /// If enabled, capture a page view event each time the website changes the
   /// browser history state.
-  core.bool pageChangesEnabled;
+  core.bool? pageChangesEnabled;
 
   /// If enabled, capture a page view event each time a page loads.
   ///
   /// Output only.
-  core.bool pageLoadsEnabled;
+  core.bool? pageLoadsEnabled;
 
   /// If enabled, capture a page view event each time a page loads or the
   /// website changes the browser history state.
   ///
   /// Output only.
-  core.bool pageViewsEnabled;
+  core.bool? pageViewsEnabled;
 
   /// If enabled, capture scroll events each time a visitor gets to the bottom
   /// of a page.
-  core.bool scrollsEnabled;
+  core.bool? scrollsEnabled;
 
   /// URL query parameters to interpret as site search parameters.
   ///
   /// Max length is 1024 characters. Must not be empty.
   ///
   /// Required.
-  core.String searchQueryParameter;
+  core.String? searchQueryParameter;
 
   /// If enabled, capture a view search results event each time a visitor
   /// performs a search on your site (based on a query parameter).
-  core.bool siteSearchEnabled;
+  core.bool? siteSearchEnabled;
 
   /// Indicates whether Enhanced Measurement Settings will be used to
   /// automatically measure interactions and content on this web stream.
   ///
   /// Changing this value does not affect the settings themselves, but
   /// determines whether they are respected.
-  core.bool streamEnabled;
+  core.bool? streamEnabled;
 
   /// Additional URL query parameters.
   ///
   /// Max length is 1024 characters.
-  core.String uriQueryParameter;
+  core.String? uriQueryParameter;
 
   /// If enabled, capture video play, progress, and complete events as visitors
   /// view embedded videos on your site.
-  core.bool videoEngagementEnabled;
+  core.bool? videoEngagementEnabled;
 
   GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings();
 
@@ -3734,24 +3548,24 @@ class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fileDownloadsEnabled != null)
-          'fileDownloadsEnabled': fileDownloadsEnabled,
-        if (name != null) 'name': name,
+          'fileDownloadsEnabled': fileDownloadsEnabled!,
+        if (name != null) 'name': name!,
         if (outboundClicksEnabled != null)
-          'outboundClicksEnabled': outboundClicksEnabled,
+          'outboundClicksEnabled': outboundClicksEnabled!,
         if (pageChangesEnabled != null)
-          'pageChangesEnabled': pageChangesEnabled,
-        if (pageLoadsEnabled != null) 'pageLoadsEnabled': pageLoadsEnabled,
-        if (pageViewsEnabled != null) 'pageViewsEnabled': pageViewsEnabled,
-        if (scrollsEnabled != null) 'scrollsEnabled': scrollsEnabled,
+          'pageChangesEnabled': pageChangesEnabled!,
+        if (pageLoadsEnabled != null) 'pageLoadsEnabled': pageLoadsEnabled!,
+        if (pageViewsEnabled != null) 'pageViewsEnabled': pageViewsEnabled!,
+        if (scrollsEnabled != null) 'scrollsEnabled': scrollsEnabled!,
         if (searchQueryParameter != null)
-          'searchQueryParameter': searchQueryParameter,
-        if (siteSearchEnabled != null) 'siteSearchEnabled': siteSearchEnabled,
-        if (streamEnabled != null) 'streamEnabled': streamEnabled,
-        if (uriQueryParameter != null) 'uriQueryParameter': uriQueryParameter,
+          'searchQueryParameter': searchQueryParameter!,
+        if (siteSearchEnabled != null) 'siteSearchEnabled': siteSearchEnabled!,
+        if (streamEnabled != null) 'streamEnabled': streamEnabled!,
+        if (uriQueryParameter != null) 'uriQueryParameter': uriQueryParameter!,
         if (videoEngagementEnabled != null)
-          'videoEngagementEnabled': videoEngagementEnabled,
+          'videoEngagementEnabled': videoEngagementEnabled!,
       };
 }
 
@@ -3760,7 +3574,7 @@ class GoogleAnalyticsAdminV1alphaFirebaseLink {
   /// Time when this FirebaseLink was originally created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Maximum user access to the GA4 property allowed to admins of the linked
   /// Firebase project.
@@ -3773,12 +3587,12 @@ class GoogleAnalyticsAdminV1alphaFirebaseLink {
   /// the Analytics property, but may not manage the Firebase link.
   /// - "EDITOR_INCLUDING_LINK_MANAGEMENT" : Firebase users have edit access to
   /// the Analytics property and may manage the Firebase link.
-  core.String maximumUserAccess;
+  core.String? maximumUserAccess;
 
   /// Example format: properties/1234/firebaseLinks/5678
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Firebase project resource name.
   ///
@@ -3789,7 +3603,7 @@ class GoogleAnalyticsAdminV1alphaFirebaseLink {
   /// 'projects/1234'
   ///
   /// Immutable.
-  core.String project;
+  core.String? project;
 
   GoogleAnalyticsAdminV1alphaFirebaseLink();
 
@@ -3808,11 +3622,11 @@ class GoogleAnalyticsAdminV1alphaFirebaseLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (maximumUserAccess != null) 'maximumUserAccess': maximumUserAccess,
-        if (name != null) 'name': name,
-        if (project != null) 'project': project,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (maximumUserAccess != null) 'maximumUserAccess': maximumUserAccess!,
+        if (name != null) 'name': name!,
+        if (project != null) 'project': project!,
       };
 }
 
@@ -3824,13 +3638,13 @@ class GoogleAnalyticsAdminV1alphaGlobalSiteTag {
   /// Format: properties/{propertyId}/globalSiteTag
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// JavaScript code snippet to be pasted as the first item into the head tag
   /// of every webpage to measure.
   ///
   /// Immutable.
-  core.String snippet;
+  core.String? snippet;
 
   GoogleAnalyticsAdminV1alphaGlobalSiteTag();
 
@@ -3843,9 +3657,9 @@ class GoogleAnalyticsAdminV1alphaGlobalSiteTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (snippet != null) 'snippet': snippet,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (snippet != null) 'snippet': snippet!,
       };
 }
 
@@ -3856,40 +3670,40 @@ class GoogleAnalyticsAdminV1alphaGoogleAdsLink {
   /// Automatically publish my Google Analytics audience lists and Google
   /// Analytics remarketing events/parameters to the linked Google Ads account.
   /// If this field is not set on create/update it will be defaulted to true.
-  core.bool adsPersonalizationEnabled;
+  core.bool? adsPersonalizationEnabled;
 
   /// If true, this link is for a Google Ads manager account.
   ///
   /// Output only.
-  core.bool canManageClients;
+  core.bool? canManageClients;
 
   /// Time when this link was originally created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Google Ads customer ID.
   ///
   /// Immutable.
-  core.String customerId;
+  core.String? customerId;
 
   /// Email address of the user that created the link.
   ///
   /// An empty string will be returned if the email address can't be retrieved.
   ///
   /// Output only.
-  core.String emailAddress;
+  core.String? emailAddress;
 
   /// Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note:
   /// googleAdsLinkId is not the Google Ads customer ID.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Time when this link was last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleAnalyticsAdminV1alphaGoogleAdsLink();
 
@@ -3918,15 +3732,15 @@ class GoogleAnalyticsAdminV1alphaGoogleAdsLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (adsPersonalizationEnabled != null)
-          'adsPersonalizationEnabled': adsPersonalizationEnabled,
-        if (canManageClients != null) 'canManageClients': canManageClients,
-        if (createTime != null) 'createTime': createTime,
-        if (customerId != null) 'customerId': customerId,
-        if (emailAddress != null) 'emailAddress': emailAddress,
-        if (name != null) 'name': name,
-        if (updateTime != null) 'updateTime': updateTime,
+          'adsPersonalizationEnabled': adsPersonalizationEnabled!,
+        if (canManageClients != null) 'canManageClients': canManageClients!,
+        if (createTime != null) 'createTime': createTime!,
+        if (customerId != null) 'customerId': customerId!,
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3935,24 +3749,24 @@ class GoogleAnalyticsAdminV1alphaIosAppDataStream {
   /// The Apple App Store Bundle ID for the app Example: "com.example.myiosapp"
   ///
   /// Required. Immutable.
-  core.String bundleId;
+  core.String? bundleId;
 
   /// Time when this stream was originally created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Human-readable display name for the Data Stream.
   ///
   /// The max allowed display name length is 255 UTF-16 code units.
-  core.String displayName;
+  core.String? displayName;
 
   /// ID of the corresponding iOS app in Firebase, if any.
   ///
   /// This ID can change if the iOS app is deleted and recreated.
   ///
   /// Output only.
-  core.String firebaseAppId;
+  core.String? firebaseAppId;
 
   /// Resource name of this Data Stream.
   ///
@@ -3960,12 +3774,12 @@ class GoogleAnalyticsAdminV1alphaIosAppDataStream {
   /// "properties/1000/iosAppDataStreams/2000"
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Time when stream payload fields were last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleAnalyticsAdminV1alphaIosAppDataStream();
 
@@ -3990,25 +3804,25 @@ class GoogleAnalyticsAdminV1alphaIosAppDataStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bundleId != null) 'bundleId': bundleId,
-        if (createTime != null) 'createTime': createTime,
-        if (displayName != null) 'displayName': displayName,
-        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId,
-        if (name != null) 'name': name,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bundleId != null) 'bundleId': bundleId!,
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// Response message for ListAccountSummaries RPC.
 class GoogleAnalyticsAdminV1alphaListAccountSummariesResponse {
   /// Account summaries of all accounts the caller has access to.
-  core.List<GoogleAnalyticsAdminV1alphaAccountSummary> accountSummaries;
+  core.List<GoogleAnalyticsAdminV1alphaAccountSummary>? accountSummaries;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleAnalyticsAdminV1alphaListAccountSummariesResponse();
 
@@ -4026,23 +3840,23 @@ class GoogleAnalyticsAdminV1alphaListAccountSummariesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accountSummaries != null)
           'accountSummaries':
-              accountSummaries.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              accountSummaries!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Request message for ListAccounts RPC.
 class GoogleAnalyticsAdminV1alphaListAccountsResponse {
   /// Results that were accessible to the caller.
-  core.List<GoogleAnalyticsAdminV1alphaAccount> accounts;
+  core.List<GoogleAnalyticsAdminV1alphaAccount>? accounts;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleAnalyticsAdminV1alphaListAccountsResponse();
 
@@ -4059,10 +3873,10 @@ class GoogleAnalyticsAdminV1alphaListAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accounts != null)
-          'accounts': accounts.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'accounts': accounts!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -4070,13 +3884,13 @@ class GoogleAnalyticsAdminV1alphaListAccountsResponse {
 class GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse {
   /// Results that matched the filter criteria and were accessible to the
   /// caller.
-  core.List<GoogleAnalyticsAdminV1alphaAndroidAppDataStream>
+  core.List<GoogleAnalyticsAdminV1alphaAndroidAppDataStream>?
       androidAppDataStreams;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse();
 
@@ -4094,11 +3908,11 @@ class GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (androidAppDataStreams != null)
           'androidAppDataStreams':
-              androidAppDataStreams.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              androidAppDataStreams!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -4107,14 +3921,14 @@ class GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse {
   /// List of FirebaseLinks.
   ///
   /// This will have at most one value.
-  core.List<GoogleAnalyticsAdminV1alphaFirebaseLink> firebaseLinks;
+  core.List<GoogleAnalyticsAdminV1alphaFirebaseLink>? firebaseLinks;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages. Currently, Google
   /// Analytics supports only one FirebaseLink per property, so this will never
   /// be populated.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse();
 
@@ -4132,23 +3946,23 @@ class GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (firebaseLinks != null)
           'firebaseLinks':
-              firebaseLinks.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              firebaseLinks!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for ListGoogleAdsLinks RPC.
 class GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse {
   /// List of GoogleAdsLinks.
-  core.List<GoogleAnalyticsAdminV1alphaGoogleAdsLink> googleAdsLinks;
+  core.List<GoogleAnalyticsAdminV1alphaGoogleAdsLink>? googleAdsLinks;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse();
 
@@ -4166,11 +3980,11 @@ class GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (googleAdsLinks != null)
           'googleAdsLinks':
-              googleAdsLinks.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              googleAdsLinks!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -4178,12 +3992,12 @@ class GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse {
 class GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse {
   /// Results that matched the filter criteria and were accessible to the
   /// caller.
-  core.List<GoogleAnalyticsAdminV1alphaIosAppDataStream> iosAppDataStreams;
+  core.List<GoogleAnalyticsAdminV1alphaIosAppDataStream>? iosAppDataStreams;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse();
 
@@ -4201,11 +4015,11 @@ class GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (iosAppDataStreams != null)
           'iosAppDataStreams':
-              iosAppDataStreams.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              iosAppDataStreams!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -4214,11 +4028,11 @@ class GoogleAnalyticsAdminV1alphaListPropertiesResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Results that matched the filter criteria and were accessible to the
   /// caller.
-  core.List<GoogleAnalyticsAdminV1alphaProperty> properties;
+  core.List<GoogleAnalyticsAdminV1alphaProperty>? properties;
 
   GoogleAnalyticsAdminV1alphaListPropertiesResponse();
 
@@ -4235,10 +4049,10 @@ class GoogleAnalyticsAdminV1alphaListPropertiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (properties != null)
-          'properties': properties.map((value) => value.toJson()).toList(),
+          'properties': properties!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4247,12 +4061,12 @@ class GoogleAnalyticsAdminV1alphaListUserLinksResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of UserLinks.
   ///
   /// These will be ordered stably, but in an arbitrary order.
-  core.List<GoogleAnalyticsAdminV1alphaUserLink> userLinks;
+  core.List<GoogleAnalyticsAdminV1alphaUserLink>? userLinks;
 
   GoogleAnalyticsAdminV1alphaListUserLinksResponse();
 
@@ -4269,10 +4083,10 @@ class GoogleAnalyticsAdminV1alphaListUserLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (userLinks != null)
-          'userLinks': userLinks.map((value) => value.toJson()).toList(),
+          'userLinks': userLinks!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4281,11 +4095,11 @@ class GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Results that matched the filter criteria and were accessible to the
   /// caller.
-  core.List<GoogleAnalyticsAdminV1alphaWebDataStream> webDataStreams;
+  core.List<GoogleAnalyticsAdminV1alphaWebDataStream>? webDataStreams;
 
   GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse();
 
@@ -4303,11 +4117,11 @@ class GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (webDataStreams != null)
           'webDataStreams':
-              webDataStreams.map((value) => value.toJson()).toList(),
+              webDataStreams!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4316,13 +4130,13 @@ class GoogleAnalyticsAdminV1alphaProperty {
   /// Time when the entity was originally created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The currency type used in reports involving monetary values.
   ///
   /// Format: https://en.wikipedia.org/wiki/ISO_4217 Examples: "USD", "EUR",
   /// "JPY"
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Indicates whether this Property is soft-deleted or not.
   ///
@@ -4330,14 +4144,14 @@ class GoogleAnalyticsAdminV1alphaProperty {
   /// requested.
   ///
   /// Output only.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// Human-readable display name for this property.
   ///
   /// The max allowed display name length is 100 UTF-16 code units.
   ///
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   /// Industry associated with this property Example: AUTOMOTIVE, FOOD_AND_DRINK
   /// Possible string values are:
@@ -4368,14 +4182,14 @@ class GoogleAnalyticsAdminV1alphaProperty {
   /// - "SPORTS" : Sports
   /// - "JOBS_AND_EDUCATION" : Jobs and education
   /// - "SHOPPING" : Shopping
-  core.String industryCategory;
+  core.String? industryCategory;
 
   /// Resource name of this property.
   ///
   /// Format: properties/{property_id} Example: "properties/1000"
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Resource name of this property's logical parent.
   ///
@@ -4383,7 +4197,7 @@ class GoogleAnalyticsAdminV1alphaProperty {
   /// accounts/{account} Example: "accounts/100"
   ///
   /// Immutable.
-  core.String parent;
+  core.String? parent;
 
   /// Reporting Time Zone, used as the day boundary for reports, regardless of
   /// where the data originates.
@@ -4392,12 +4206,12 @@ class GoogleAnalyticsAdminV1alphaProperty {
   /// changes. NOTE: Changing the time zone only affects data going forward, and
   /// is not applied retroactively. Format: https://www.iana.org/time-zones
   /// Example: "America/Los_Angeles"
-  core.String timeZone;
+  core.String? timeZone;
 
   /// Time when entity payload fields were last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleAnalyticsAdminV1alphaProperty();
 
@@ -4431,27 +4245,27 @@ class GoogleAnalyticsAdminV1alphaProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (deleted != null) 'deleted': deleted,
-        if (displayName != null) 'displayName': displayName,
-        if (industryCategory != null) 'industryCategory': industryCategory,
-        if (name != null) 'name': name,
-        if (parent != null) 'parent': parent,
-        if (timeZone != null) 'timeZone': timeZone,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (deleted != null) 'deleted': deleted!,
+        if (displayName != null) 'displayName': displayName!,
+        if (industryCategory != null) 'industryCategory': industryCategory!,
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
+        if (timeZone != null) 'timeZone': timeZone!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// A virtual resource representing metadata for an GA4 property.
 class GoogleAnalyticsAdminV1alphaPropertySummary {
   /// Display name for the property referred to in this account summary.
-  core.String displayName;
+  core.String? displayName;
 
   /// Resource name of property referred to by this property summary Format:
   /// properties/{property_id} Example: "properties/1000"
-  core.String property;
+  core.String? property;
 
   GoogleAnalyticsAdminV1alphaPropertySummary();
 
@@ -4464,21 +4278,21 @@ class GoogleAnalyticsAdminV1alphaPropertySummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (property != null) 'property': property,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (property != null) 'property': property!,
       };
 }
 
 /// Request message for ProvisionAccountTicket RPC.
 class GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest {
   /// The account to create.
-  GoogleAnalyticsAdminV1alphaAccount account;
+  GoogleAnalyticsAdminV1alphaAccount? account;
 
   /// Redirect URI where the user will be sent after accepting Terms of Service.
   ///
   /// Must be configured in Developers Console as a Redirect URI
-  core.String redirectUri;
+  core.String? redirectUri;
 
   GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest();
 
@@ -4493,16 +4307,16 @@ class GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (account != null) 'account': account.toJson(),
-        if (redirectUri != null) 'redirectUri': redirectUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (account != null) 'account': account!.toJson(),
+        if (redirectUri != null) 'redirectUri': redirectUri!,
       };
 }
 
 /// Response message for ProvisionAccountTicket RPC.
 class GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse {
   /// The param to be passed in the ToS link.
-  core.String accountTicketId;
+  core.String? accountTicketId;
 
   GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse();
 
@@ -4513,8 +4327,8 @@ class GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountTicketId != null) 'accountTicketId': accountTicketId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountTicketId != null) 'accountTicketId': accountTicketId!,
       };
 }
 
@@ -4523,7 +4337,7 @@ class GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest {
   /// The user link to update.
   ///
   /// Required.
-  GoogleAnalyticsAdminV1alphaUserLink userLink;
+  GoogleAnalyticsAdminV1alphaUserLink? userLink;
 
   GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest();
 
@@ -4534,8 +4348,8 @@ class GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (userLink != null) 'userLink': userLink.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (userLink != null) 'userLink': userLink!.toJson(),
       };
 }
 
@@ -4549,13 +4363,13 @@ class GoogleAnalyticsAdminV1alphaUserLink {
   /// inherited from a higher-level entity, group, or organization admin role. A
   /// UserLink that is updated to have an empty list of direct_roles will be
   /// deleted.
-  core.List<core.String> directRoles;
+  core.List<core.String>? directRoles;
 
   /// Email address of the user to link
-  core.String emailAddress;
+  core.String? emailAddress;
 
   /// Example format: properties/1234/userLinks/5678
-  core.String name;
+  core.String? name;
 
   GoogleAnalyticsAdminV1alphaUserLink();
 
@@ -4573,10 +4387,10 @@ class GoogleAnalyticsAdminV1alphaUserLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (directRoles != null) 'directRoles': directRoles,
-        if (emailAddress != null) 'emailAddress': emailAddress,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (directRoles != null) 'directRoles': directRoles!,
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -4585,35 +4399,35 @@ class GoogleAnalyticsAdminV1alphaWebDataStream {
   /// Time when this stream was originally created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Domain name of the web app being measured, or empty.
   ///
   /// Example: "http://www.google.com", "https://www.google.com"
   ///
   /// Immutable.
-  core.String defaultUri;
+  core.String? defaultUri;
 
   /// Human-readable display name for the Data Stream.
   ///
   /// The max allowed display name length is 100 UTF-16 code units.
   ///
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   /// ID of the corresponding web app in Firebase, if any.
   ///
   /// This ID can change if the web app is deleted and recreated.
   ///
   /// Output only.
-  core.String firebaseAppId;
+  core.String? firebaseAppId;
 
   /// Analytics "Measurement ID", without the "G-" prefix.
   ///
   /// Example: "G-1A2BCD345E" would just be "1A2BCD345E"
   ///
   /// Output only.
-  core.String measurementId;
+  core.String? measurementId;
 
   /// Resource name of this Data Stream.
   ///
@@ -4621,12 +4435,12 @@ class GoogleAnalyticsAdminV1alphaWebDataStream {
   /// "properties/1000/webDataStreams/2000"
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Time when stream payload fields were last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleAnalyticsAdminV1alphaWebDataStream();
 
@@ -4654,14 +4468,14 @@ class GoogleAnalyticsAdminV1alphaWebDataStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (defaultUri != null) 'defaultUri': defaultUri,
-        if (displayName != null) 'displayName': displayName,
-        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId,
-        if (measurementId != null) 'measurementId': measurementId,
-        if (name != null) 'name': name,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (defaultUri != null) 'defaultUri': defaultUri!,
+        if (displayName != null) 'displayName': displayName!,
+        if (firebaseAppId != null) 'firebaseAppId': firebaseAppId!,
+        if (measurementId != null) 'measurementId': measurementId!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -4679,5 +4493,5 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }

@@ -99,11 +99,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -143,14 +140,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -214,13 +208,9 @@ class ProjectsLocationsGlobalDomainsResource {
   async.Future<Operation> attachTrust(
     AttachTrustRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -269,14 +259,10 @@ class ProjectsLocationsGlobalDomainsResource {
   async.Future<Operation> create(
     Domain request,
     core.String parent, {
-    core.String domainName,
-    core.String $fields,
+    core.String? domainName,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (domainName != null) 'domainName': [domainName],
       if ($fields != null) 'fields': [$fields],
@@ -315,11 +301,8 @@ class ProjectsLocationsGlobalDomainsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -359,13 +342,9 @@ class ProjectsLocationsGlobalDomainsResource {
   async.Future<Operation> detachTrust(
     DetachTrustRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -403,11 +382,8 @@ class ProjectsLocationsGlobalDomainsResource {
   /// this method will complete with the same error.
   async.Future<Domain> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -455,12 +431,9 @@ class ProjectsLocationsGlobalDomainsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -515,15 +488,12 @@ class ProjectsLocationsGlobalDomainsResource {
   /// this method will complete with the same error.
   async.Future<ListDomainsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -573,14 +543,10 @@ class ProjectsLocationsGlobalDomainsResource {
   async.Future<Operation> patch(
     Domain request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -622,13 +588,9 @@ class ProjectsLocationsGlobalDomainsResource {
   async.Future<Operation> reconfigureTrust(
     ReconfigureTrustRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -670,13 +632,9 @@ class ProjectsLocationsGlobalDomainsResource {
   async.Future<ResetAdminPasswordResponse> resetAdminPassword(
     ResetAdminPasswordRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -723,13 +681,9 @@ class ProjectsLocationsGlobalDomainsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -777,13 +731,9 @@ class ProjectsLocationsGlobalDomainsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -828,13 +778,9 @@ class ProjectsLocationsGlobalDomainsResource {
   async.Future<Operation> validateTrust(
     ValidateTrustRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -891,13 +837,9 @@ class ProjectsLocationsGlobalOperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -938,11 +880,8 @@ class ProjectsLocationsGlobalOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -980,11 +919,8 @@ class ProjectsLocationsGlobalOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1033,14 +969,11 @@ class ProjectsLocationsGlobalOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1065,7 +998,7 @@ class AttachTrustRequest {
   /// The domain trust resource.
   ///
   /// Required.
-  Trust trust;
+  Trust? trust;
 
   AttachTrustRequest();
 
@@ -1076,8 +1009,8 @@ class AttachTrustRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (trust != null) 'trust': trust.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (trust != null) 'trust': trust!.toJson(),
       };
 }
 
@@ -1091,7 +1024,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -1123,12 +1056,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -1147,10 +1080,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1162,7 +1095,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Time window specified for daily operations.
@@ -1170,10 +1103,10 @@ class DailyCycle {
   /// Duration of the time window, set by service producer.
   ///
   /// Output only.
-  core.String duration;
+  core.String? duration;
 
   /// Time within the day to start the operations.
-  TimeOfDay startTime;
+  TimeOfDay? startTime;
 
   DailyCycle();
 
@@ -1187,9 +1120,9 @@ class DailyCycle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (duration != null) 'duration': duration,
-        if (startTime != null) 'startTime': startTime.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (startTime != null) 'startTime': startTime!.toJson(),
       };
 }
 
@@ -1207,17 +1140,17 @@ class Date {
   ///
   /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
   /// year by itself or a year and month where the day isn't significant.
-  core.int day;
+  core.int? day;
 
   /// Month of a year.
   ///
   /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int month;
+  core.int? month;
 
   /// Year of the date.
   ///
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int year;
+  core.int? year;
 
   Date();
 
@@ -1233,10 +1166,10 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (month != null) 'month': month,
-        if (year != null) 'year': year,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (month != null) 'month': month!,
+        if (year != null) 'year': year!,
       };
 }
 
@@ -1250,7 +1183,7 @@ class DenyMaintenancePeriod {
   /// This can be: * A full date, with non-zero year, month and day values. * A
   /// month and day value, with a zero year. Allows recurring deny periods each
   /// year. Date matching this period will have to be before the end.
-  Date endDate;
+  Date? endDate;
 
   /// Deny period start date.
   ///
@@ -1258,13 +1191,13 @@ class DenyMaintenancePeriod {
   /// month and day value, with a zero year. Allows recurring deny periods each
   /// year. Date matching this period will have to be the same or after the
   /// start.
-  Date startDate;
+  Date? startDate;
 
   /// Time in UTC when the Blackout period starts on start_date and ends on
   /// end_date.
   ///
   /// This can be: * Full time. * All zeros for 00:00:00 UTC
-  TimeOfDay time;
+  TimeOfDay? time;
 
   DenyMaintenancePeriod();
 
@@ -1283,10 +1216,10 @@ class DenyMaintenancePeriod {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endDate != null) 'endDate': endDate.toJson(),
-        if (startDate != null) 'startDate': startDate.toJson(),
-        if (time != null) 'time': time.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endDate != null) 'endDate': endDate!.toJson(),
+        if (startDate != null) 'startDate': startDate!.toJson(),
+        if (time != null) 'time': time!.toJson(),
       };
 }
 
@@ -1295,7 +1228,7 @@ class DetachTrustRequest {
   /// The domain trust resource to removed.
   ///
   /// Required.
-  Trust trust;
+  Trust? trust;
 
   DetachTrustRequest();
 
@@ -1306,8 +1239,8 @@ class DetachTrustRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (trust != null) 'trust': trust.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (trust != null) 'trust': trust!.toJson(),
       };
 }
 
@@ -1323,7 +1256,7 @@ class Domain {
   /// If not specified, `setupadmin` will be used.
   ///
   /// Optional.
-  core.String admin;
+  core.String? admin;
 
   /// The full names of the Google Compute Engine
   /// \[networks\](/compute/docs/networks-and-firewalls#networks) the domain
@@ -1334,12 +1267,12 @@ class Domain {
   /// networks, domain creation will fail.
   ///
   /// Optional.
-  core.List<core.String> authorizedNetworks;
+  core.List<core.String>? authorizedNetworks;
 
   /// The time the instance was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The fully-qualified domain name of the exposed domain used by clients to
   /// connect to the service.
@@ -1348,12 +1281,12 @@ class Domain {
   /// internal network.
   ///
   /// Output only.
-  core.String fqdn;
+  core.String? fqdn;
 
   /// Resource labels that can contain user-provided metadata.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Locations where domain needs to be provisioned.
   ///
@@ -1361,13 +1294,13 @@ class Domain {
   /// once. Each location will use a /26 block.
   ///
   /// Required.
-  core.List<core.String> locations;
+  core.List<core.String>? locations;
 
   /// The unique name of the domain using the form:
   /// `projects/{project_id}/locations/global/domains/{domain_name}`.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The CIDR range of internal addresses that are reserved for this domain.
   ///
@@ -1376,7 +1309,7 @@ class Domain {
   /// \[Domain\].\[authorized_networks\].
   ///
   /// Required.
-  core.String reservedIpRange;
+  core.String? reservedIpRange;
 
   /// The current state of this domain.
   ///
@@ -1391,23 +1324,23 @@ class Domain {
   /// can be found in the `status_message` field.
   /// - "PERFORMING_MAINTENANCE" : The domain is undergoing maintenance.
   /// - "UNAVAILABLE" : The domain is not serving requests.
-  core.String state;
+  core.String? state;
 
   /// Additional information about the current status of this domain, if
   /// available.
   ///
   /// Output only.
-  core.String statusMessage;
+  core.String? statusMessage;
 
   /// The current trusts associated with the domain.
   ///
   /// Output only.
-  core.List<Trust> trusts;
+  core.List<Trust>? trusts;
 
   /// The last update time.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Domain();
 
@@ -1463,21 +1396,21 @@ class Domain {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (admin != null) 'admin': admin,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (admin != null) 'admin': admin!,
         if (authorizedNetworks != null)
-          'authorizedNetworks': authorizedNetworks,
-        if (createTime != null) 'createTime': createTime,
-        if (fqdn != null) 'fqdn': fqdn,
-        if (labels != null) 'labels': labels,
-        if (locations != null) 'locations': locations,
-        if (name != null) 'name': name,
-        if (reservedIpRange != null) 'reservedIpRange': reservedIpRange,
-        if (state != null) 'state': state,
-        if (statusMessage != null) 'statusMessage': statusMessage,
+          'authorizedNetworks': authorizedNetworks!,
+        if (createTime != null) 'createTime': createTime!,
+        if (fqdn != null) 'fqdn': fqdn!,
+        if (labels != null) 'labels': labels!,
+        if (locations != null) 'locations': locations!,
+        if (name != null) 'name': name!,
+        if (reservedIpRange != null) 'reservedIpRange': reservedIpRange!,
+        if (state != null) 'state': state!,
+        if (statusMessage != null) 'statusMessage': statusMessage!,
         if (trusts != null)
-          'trusts': trusts.map((value) => value.toJson()).toList(),
-        if (updateTime != null) 'updateTime': updateTime,
+          'trusts': trusts!.map((value) => value.toJson()).toList(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1495,7 +1428,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1523,24 +1456,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -1559,11 +1492,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1572,17 +1505,17 @@ class GoogleCloudManagedidentitiesV1OpMetadata {
   /// API version used to start the operation.
   ///
   /// Output only.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// The time the operation was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time the operation finished running.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
@@ -1591,17 +1524,17 @@ class GoogleCloudManagedidentitiesV1OpMetadata {
   /// `Code.CANCELLED`.
   ///
   /// Output only.
-  core.bool requestedCancellation;
+  core.bool? requestedCancellation;
 
   /// Server-defined resource path for the target of the operation.
   ///
   /// Output only.
-  core.String target;
+  core.String? target;
 
   /// Name of the verb executed by the operation.
   ///
   /// Output only.
-  core.String verb;
+  core.String? verb;
 
   GoogleCloudManagedidentitiesV1OpMetadata();
 
@@ -1626,14 +1559,14 @@ class GoogleCloudManagedidentitiesV1OpMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
         if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation,
-        if (target != null) 'target': target,
-        if (verb != null) 'verb': verb,
+          'requestedCancellation': requestedCancellation!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
@@ -1642,17 +1575,17 @@ class GoogleCloudManagedidentitiesV1alpha1OpMetadata {
   /// API version used to start the operation.
   ///
   /// Output only.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// The time the operation was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time the operation finished running.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
@@ -1661,17 +1594,17 @@ class GoogleCloudManagedidentitiesV1alpha1OpMetadata {
   /// `Code.CANCELLED`.
   ///
   /// Output only.
-  core.bool requestedCancellation;
+  core.bool? requestedCancellation;
 
   /// Server-defined resource path for the target of the operation.
   ///
   /// Output only.
-  core.String target;
+  core.String? target;
 
   /// Name of the verb executed by the operation.
   ///
   /// Output only.
-  core.String verb;
+  core.String? verb;
 
   GoogleCloudManagedidentitiesV1alpha1OpMetadata();
 
@@ -1696,14 +1629,14 @@ class GoogleCloudManagedidentitiesV1alpha1OpMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
         if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation,
-        if (target != null) 'target': target,
-        if (verb != null) 'verb': verb,
+          'requestedCancellation': requestedCancellation!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
@@ -1712,17 +1645,17 @@ class GoogleCloudManagedidentitiesV1beta1OpMetadata {
   /// API version used to start the operation.
   ///
   /// Output only.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// The time the operation was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time the operation finished running.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
@@ -1731,17 +1664,17 @@ class GoogleCloudManagedidentitiesV1beta1OpMetadata {
   /// `Code.CANCELLED`.
   ///
   /// Output only.
-  core.bool requestedCancellation;
+  core.bool? requestedCancellation;
 
   /// Server-defined resource path for the target of the operation.
   ///
   /// Output only.
-  core.String target;
+  core.String? target;
 
   /// Name of the verb executed by the operation.
   ///
   /// Output only.
-  core.String verb;
+  core.String? verb;
 
   GoogleCloudManagedidentitiesV1beta1OpMetadata();
 
@@ -1766,14 +1699,14 @@ class GoogleCloudManagedidentitiesV1beta1OpMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
         if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation,
-        if (target != null) 'target': target,
-        if (verb != null) 'verb': verb,
+          'requestedCancellation': requestedCancellation!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
@@ -1784,12 +1717,12 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// so consumers are not necessarily aware of it. consumer_defined_name is
   /// used for notification/UI purposes for consumer to recognize their
   /// instances.
-  core.String consumerDefinedName;
+  core.String? consumerDefinedName;
 
   /// Timestamp when the resource was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Resource labels to represent user provided metadata.
   ///
@@ -1797,7 +1730,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// arbitrary strings provided by the user.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The MaintenancePolicies that have been attached to the instance.
   ///
@@ -1807,25 +1740,25 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// go/cloud-saas-mw-ug.
   ///
   /// Deprecated.
-  core.Map<core.String, core.String> maintenancePolicyNames;
+  core.Map<core.String, core.String>? maintenancePolicyNames;
 
   /// The MaintenanceSchedule contains the scheduling information of published
   /// maintenance schedule with same key as software_versions.
   core.Map<core.String,
-          GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>
+          GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>?
       maintenanceSchedules;
 
   /// The MaintenanceSettings associated with instance.
   ///
   /// Optional.
-  GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings
+  GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings?
       maintenanceSettings;
 
   /// Unique name of the resource.
   ///
   /// It uses the form:
   /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-  core.String name;
+  core.String? name;
 
   /// Custom string attributes used primarily to expose producer-specific
   /// information in monitoring dashboards.
@@ -1833,7 +1766,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// See go/get-instance-metadata.
   ///
   /// Output only.
-  core.Map<core.String, core.String> producerMetadata;
+  core.Map<core.String, core.String>? producerMetadata;
 
   /// The list of data plane resources provisioned for this instance, e.g.
   /// compute VMs.
@@ -1841,7 +1774,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// See go/get-instance-metadata.
   ///
   /// Output only.
-  core.List<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>
+  core.List<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>?
       provisionedResources;
 
   /// Link to the SLM instance template.
@@ -1850,7 +1783,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// adaptor. Service producers with custom control plane (e.g. Cloud SQL)
   /// doesn't need to populate this field. Instead they should use
   /// software_versions.
-  core.String slmInstanceTemplate;
+  core.String? slmInstanceTemplate;
 
   /// SLO metadata for instance classification in the Standardized dataplane SLO
   /// platform.
@@ -1858,12 +1791,12 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// See go/cloud-ssa-standard-slo for feature description.
   ///
   /// Output only.
-  GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata sloMetadata;
+  GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata? sloMetadata;
 
   /// Software versions that are used to deploy this instance.
   ///
   /// This can be mutated by rollout services.
-  core.Map<core.String, core.String> softwareVersions;
+  core.Map<core.String, core.String>? softwareVersions;
 
   /// Current lifecycle state of the resource (e.g. if it's being created or
   /// ready to use).
@@ -1877,19 +1810,19 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// - "REPAIRING" : Instance is unheathy and under repair.
   /// - "DELETING" : Instance is being deleted.
   /// - "ERROR" : Instance encountered an error and is in indeterministic state.
-  core.String state;
+  core.String? state;
 
   /// ID of the associated GCP tenant project.
   ///
   /// See go/get-instance-metadata.
   ///
   /// Output only.
-  core.String tenantProjectId;
+  core.String? tenantProjectId;
 
   /// Timestamp when the resource was last modified.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudSaasacceleratorManagementProvidersV1Instance();
 
@@ -1922,7 +1855,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
     }
     if (_json.containsKey('maintenanceSchedules')) {
       maintenanceSchedules = (_json['maintenanceSchedules'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -1987,30 +1920,30 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (consumerDefinedName != null)
-          'consumerDefinedName': consumerDefinedName,
-        if (createTime != null) 'createTime': createTime,
-        if (labels != null) 'labels': labels,
+          'consumerDefinedName': consumerDefinedName!,
+        if (createTime != null) 'createTime': createTime!,
+        if (labels != null) 'labels': labels!,
         if (maintenancePolicyNames != null)
-          'maintenancePolicyNames': maintenancePolicyNames,
+          'maintenancePolicyNames': maintenancePolicyNames!,
         if (maintenanceSchedules != null)
-          'maintenanceSchedules': maintenanceSchedules
+          'maintenanceSchedules': maintenanceSchedules!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (maintenanceSettings != null)
-          'maintenanceSettings': maintenanceSettings.toJson(),
-        if (name != null) 'name': name,
-        if (producerMetadata != null) 'producerMetadata': producerMetadata,
+          'maintenanceSettings': maintenanceSettings!.toJson(),
+        if (name != null) 'name': name!,
+        if (producerMetadata != null) 'producerMetadata': producerMetadata!,
         if (provisionedResources != null)
           'provisionedResources':
-              provisionedResources.map((value) => value.toJson()).toList(),
+              provisionedResources!.map((value) => value.toJson()).toList(),
         if (slmInstanceTemplate != null)
-          'slmInstanceTemplate': slmInstanceTemplate,
-        if (sloMetadata != null) 'sloMetadata': sloMetadata.toJson(),
-        if (softwareVersions != null) 'softwareVersions': softwareVersions,
-        if (state != null) 'state': state,
-        if (tenantProjectId != null) 'tenantProjectId': tenantProjectId,
-        if (updateTime != null) 'updateTime': updateTime,
+          'slmInstanceTemplate': slmInstanceTemplate!,
+        if (sloMetadata != null) 'sloMetadata': sloMetadata!.toJson(),
+        if (softwareVersions != null) 'softwareVersions': softwareVersions!,
+        if (state != null) 'state': state!,
+        if (tenantProjectId != null) 'tenantProjectId': tenantProjectId!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2020,17 +1953,17 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
   /// Can this scheduled update be rescheduled? By default, it's true and API
   /// needs to do explicitly check whether it's set, if it's set as false
   /// explicitly, it's false
-  core.bool canReschedule;
+  core.bool? canReschedule;
 
   /// The scheduled end time for the maintenance.
-  core.String endTime;
+  core.String? endTime;
 
   /// The rollout management policy this maintenance schedule is associated
   /// with.
   ///
   /// When doing reschedule update request, the reschedule should be against
   /// this given policy.
-  core.String rolloutManagementPolicy;
+  core.String? rolloutManagementPolicy;
 
   /// schedule_deadline_time is the time deadline any schedule start time cannot
   /// go beyond, including reschedule.
@@ -2038,10 +1971,10 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
   /// It's normally the initial schedule start time plus maintenance window
   /// length (1 day or 1 week). Maintenance cannot be scheduled to start beyond
   /// this deadline.
-  core.String scheduleDeadlineTime;
+  core.String? scheduleDeadlineTime;
 
   /// The scheduled start time for the maintenance.
-  core.String startTime;
+  core.String? startTime;
 
   GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule();
 
@@ -2064,14 +1997,14 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (canReschedule != null) 'canReschedule': canReschedule,
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (canReschedule != null) 'canReschedule': canReschedule!,
+        if (endTime != null) 'endTime': endTime!,
         if (rolloutManagementPolicy != null)
-          'rolloutManagementPolicy': rolloutManagementPolicy,
+          'rolloutManagementPolicy': rolloutManagementPolicy!,
         if (scheduleDeadlineTime != null)
-          'scheduleDeadlineTime': scheduleDeadlineTime,
-        if (startTime != null) 'startTime': startTime,
+          'scheduleDeadlineTime': scheduleDeadlineTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -2087,12 +2020,12 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
   /// not attempted.
   ///
   /// Optional.
-  core.bool exclude;
+  core.bool? exclude;
 
   /// If the update call is triggered from rollback, set the value as true.
   ///
   /// Optional.
-  core.bool isRollback;
+  core.bool? isRollback;
 
   /// The MaintenancePolicies that have been attached to the instance.
   ///
@@ -2104,7 +2037,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
   /// MaintenancePolicy.name.
   ///
   /// Optional.
-  core.Map<core.String, MaintenancePolicy> maintenancePolicies;
+  core.Map<core.String, MaintenancePolicy>? maintenancePolicies;
 
   GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings();
 
@@ -2118,7 +2051,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
     }
     if (_json.containsKey('maintenancePolicies')) {
       maintenancePolicies = (_json['maintenancePolicies'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -2129,11 +2062,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exclude != null) 'exclude': exclude,
-        if (isRollback != null) 'isRollback': isRollback,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exclude != null) 'exclude': exclude!,
+        if (isRollback != null) 'isRollback': isRollback!,
         if (maintenancePolicies != null)
-          'maintenancePolicies': maintenancePolicies
+          'maintenancePolicies': maintenancePolicies!
               .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
@@ -2150,16 +2083,16 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
   /// semantic see SloMetadata.exclusions. If both instance and node level
   /// exclusions are present for time period, the node level's reason will be
   /// reported by Eligibility Exporter.
-  core.List<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>
+  core.List<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>?
       exclusions;
 
   /// The location of the node, if different from instance location.
-  core.String location;
+  core.String? location;
 
   /// The id of the node.
   ///
   /// This should be equal to SaasInstanceNode.node_id.
-  core.String nodeId;
+  core.String? nodeId;
 
   GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata();
 
@@ -2181,11 +2114,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (exclusions != null)
-          'exclusions': exclusions.map((value) => value.toJson()).toList(),
-        if (location != null) 'location': location,
-        if (nodeId != null) 'nodeId': nodeId,
+          'exclusions': exclusions!.map((value) => value.toJson()).toList(),
+        if (location != null) 'location': location!,
+        if (nodeId != null) 'nodeId': nodeId!,
       };
 }
 
@@ -2206,7 +2139,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility {
   /// Eligibility Exporter log and the metric for the SLI in question will not
   /// be emitted.
   core.Map<core.String,
-          GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility>
+          GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility>?
       eligibilities;
 
   GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility();
@@ -2215,7 +2148,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility {
       core.Map _json) {
     if (_json.containsKey('eligibilities')) {
       eligibilities = (_json['eligibilities'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -2226,9 +2159,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (eligibilities != null)
-          'eligibilities': eligibilities
+          'eligibilities': eligibilities!
               .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
@@ -2243,11 +2176,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
   /// (https://cloud.google.com/compute/docs/reference/rest/v1/), prefixed with
   /// 'compute-', for example: 'compute-instance', 'compute-disk',
   /// 'compute-autoscaler'.
-  core.String resourceType;
+  core.String? resourceType;
 
   /// URL identifying the resource, e.g.
   /// "https://www.googleapis.com/compute/v1/projects/...)".
-  core.String resourceUrl;
+  core.String? resourceUrl;
 
   GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource();
 
@@ -2261,9 +2194,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceType != null) 'resourceType': resourceType,
-        if (resourceUrl != null) 'resourceUrl': resourceUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceType != null) 'resourceType': resourceType!,
+        if (resourceUrl != null) 'resourceUrl': resourceUrl!,
       };
 }
 
@@ -2272,13 +2205,13 @@ class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
 /// SLO-related calculations along with a user-defined reason.
 class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
   /// Whether an instance is eligible or ineligible.
-  core.bool eligible;
+  core.bool? eligible;
 
   /// User-defined reason for the current value of instance eligibility.
   ///
   /// Usually, this can be directly mapped to the internal state. An empty
   /// reason is allowed.
-  core.String reason;
+  core.String? reason;
 
   GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility();
 
@@ -2292,9 +2225,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (eligible != null) 'eligible': eligible,
-        if (reason != null) 'reason': reason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (eligible != null) 'eligible': eligible!,
+        if (reason != null) 'reason': reason!,
       };
 }
 
@@ -2309,25 +2242,25 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
   /// committed at least 10 minutes before the original exclusion expiration -
   /// otherwise it is possible that there will be "gaps" in the exclusion
   /// application in the exported timeseries.
-  core.String duration;
+  core.String? duration;
 
   /// Human-readable reason for the exclusion.
   ///
   /// This should be a static string (e.g. "Disruptive update in progress") and
   /// should not contain dynamically generated data (e.g. instance name). Can be
   /// left empty.
-  core.String reason;
+  core.String? reason;
 
   /// Name of an SLI that this exclusion applies to.
   ///
   /// Can be left empty, signaling that the instance should be excluded from all
   /// SLIs.
-  core.String sliName;
+  core.String? sliName;
 
   /// Start time of the exclusion.
   ///
   /// No alignment (e.g. to a full minute) needed.
-  core.String startTime;
+  core.String? startTime;
 
   GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion();
 
@@ -2347,11 +2280,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (duration != null) 'duration': duration,
-        if (reason != null) 'reason': reason,
-        if (sliName != null) 'sliName': sliName,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (reason != null) 'reason': reason!,
+        if (sliName != null) 'sliName': sliName!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -2364,7 +2297,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   /// used.
   ///
   /// Optional.
-  GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility eligibility;
+  GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility? eligibility;
 
   /// List of SLO exclusion windows.
   ///
@@ -2378,7 +2311,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   /// used to mark the instance as temporary ineligible for the purpose of SLO
   /// calculation. For permanent instance SLO exclusion, use of custom instance
   /// eligibility is recommended. See 'eligibility' field below.
-  core.List<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>
+  core.List<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>?
       exclusions;
 
   /// List of nodes.
@@ -2389,7 +2322,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   /// metric to Monarch.
   ///
   /// Optional.
-  core.List<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>
+  core.List<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>?
       nodes;
 
   /// Multiple per-instance SLI eligibilities which apply for individual SLIs.
@@ -2398,14 +2331,14 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   /// used.
   ///
   /// Optional.
-  GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility
+  GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility?
       perSliEligibility;
 
   /// Name of the SLO tier the Instance belongs to.
   ///
   /// This name will be expected to match the tiers specified in the service SLO
   /// configuration. Field is mandatory and must not be empty.
-  core.String tier;
+  core.String? tier;
 
   GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata();
 
@@ -2444,29 +2377,29 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (eligibility != null) 'eligibility': eligibility.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (eligibility != null) 'eligibility': eligibility!.toJson(),
         if (exclusions != null)
-          'exclusions': exclusions.map((value) => value.toJson()).toList(),
+          'exclusions': exclusions!.map((value) => value.toJson()).toList(),
         if (nodes != null)
-          'nodes': nodes.map((value) => value.toJson()).toList(),
+          'nodes': nodes!.map((value) => value.toJson()).toList(),
         if (perSliEligibility != null)
-          'perSliEligibility': perSliEligibility.toJson(),
-        if (tier != null) 'tier': tier,
+          'perSliEligibility': perSliEligibility!.toJson(),
+        if (tier != null) 'tier': tier!,
       };
 }
 
 /// Response message for ListDomains
 class ListDomainsResponse {
   /// A list of Managed Identities Service domains in the project.
-  core.List<Domain> domains;
+  core.List<Domain>? domains;
 
   /// A token to retrieve the next page of results, or empty if there are no
   /// more results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListDomainsResponse();
 
@@ -2487,21 +2420,21 @@ class ListDomainsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (domains != null)
-          'domains': domains.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+          'domains': domains!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -2517,20 +2450,20 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -2546,10 +2479,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2558,17 +2491,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -2576,12 +2509,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -2615,12 +2548,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2629,7 +2562,7 @@ class MaintenancePolicy {
   /// The time when the resource was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Description of what this policy is for.
   ///
@@ -2637,7 +2570,7 @@ class MaintenancePolicy {
   /// than 512.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Resource labels to represent user provided metadata.
   ///
@@ -2645,7 +2578,7 @@ class MaintenancePolicy {
   /// arbitrary strings provided by the user.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// MaintenancePolicy name using the form:
   /// `projects/{project_id}/locations/{location_id}/maintenancePolicies/{maintenance_policy_id}`
@@ -2655,7 +2588,7 @@ class MaintenancePolicy {
   /// `[a-z0-9]([-a-z0-9]*[a-z0-9])?`.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The state of the policy.
   ///
@@ -2665,15 +2598,15 @@ class MaintenancePolicy {
   /// - "READY" : Resource is ready to be used.
   /// - "DELETING" : Resource is being deleted. It can no longer be attached to
   /// instances.
-  core.String state;
+  core.String? state;
 
   /// Maintenance policy applicable to instance update.
-  UpdatePolicy updatePolicy;
+  UpdatePolicy? updatePolicy;
 
   /// The time when the resource was updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   MaintenancePolicy();
 
@@ -2708,24 +2641,24 @@ class MaintenancePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
-        if (updatePolicy != null) 'updatePolicy': updatePolicy.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (updatePolicy != null) 'updatePolicy': updatePolicy!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// MaintenanceWindow definition.
 class MaintenanceWindow {
   /// Daily cycle.
-  DailyCycle dailyCycle;
+  DailyCycle? dailyCycle;
 
   /// Weekly cycle.
-  WeeklyCycle weeklyCycle;
+  WeeklyCycle? weeklyCycle;
 
   MaintenanceWindow();
 
@@ -2740,9 +2673,9 @@ class MaintenanceWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dailyCycle != null) 'dailyCycle': dailyCycle.toJson(),
-        if (weeklyCycle != null) 'weeklyCycle': weeklyCycle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dailyCycle != null) 'dailyCycle': dailyCycle!.toJson(),
+        if (weeklyCycle != null) 'weeklyCycle': weeklyCycle!.toJson(),
       };
 }
 
@@ -2753,10 +2686,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -2767,14 +2700,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -2787,7 +2720,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -2822,12 +2755,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -2836,7 +2769,7 @@ class OperationMetadata {
   /// API version used to start the operation.
   ///
   /// Output only.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
@@ -2845,32 +2778,32 @@ class OperationMetadata {
   /// `Code.CANCELLED`.
   ///
   /// Output only.
-  core.bool cancelRequested;
+  core.bool? cancelRequested;
 
   /// The time the operation was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time the operation finished running.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// Human-readable status of the operation, if any.
   ///
   /// Output only.
-  core.String statusDetail;
+  core.String? statusDetail;
 
   /// Server-defined resource path for the target of the operation.
   ///
   /// Output only.
-  core.String target;
+  core.String? target;
 
   /// Name of the verb executed by the operation.
   ///
   /// Output only.
-  core.String verb;
+  core.String? verb;
 
   OperationMetadata();
 
@@ -2898,14 +2831,14 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (cancelRequested != null) 'cancelRequested': cancelRequested,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
-        if (statusDetail != null) 'statusDetail': statusDetail,
-        if (target != null) 'target': target,
-        if (verb != null) 'verb': verb,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (cancelRequested != null) 'cancelRequested': cancelRequested!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (statusDetail != null) 'statusDetail': statusDetail!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
@@ -2946,7 +2879,7 @@ class Policy {
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -2960,8 +2893,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -2985,7 +2918,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -3004,11 +2937,11 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -3018,13 +2951,13 @@ class ReconfigureTrustRequest {
   /// in the trust.
   ///
   /// Required.
-  core.List<core.String> targetDnsIpAddresses;
+  core.List<core.String>? targetDnsIpAddresses;
 
   /// The fully-qualified target domain name which will be in trust with current
   /// domain.
   ///
   /// Required.
-  core.String targetDomainName;
+  core.String? targetDomainName;
 
   ReconfigureTrustRequest();
 
@@ -3039,10 +2972,10 @@ class ReconfigureTrustRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (targetDnsIpAddresses != null)
-          'targetDnsIpAddresses': targetDnsIpAddresses,
-        if (targetDomainName != null) 'targetDomainName': targetDomainName,
+          'targetDnsIpAddresses': targetDnsIpAddresses!,
+        if (targetDomainName != null) 'targetDomainName': targetDomainName!,
       };
 }
 
@@ -3054,7 +2987,7 @@ class ResetAdminPasswordRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response message for ResetAdminPassword
@@ -3062,7 +2995,7 @@ class ResetAdminPasswordResponse {
   /// A random password.
   ///
   /// See admin for more information.
-  core.String password;
+  core.String? password;
 
   ResetAdminPasswordResponse();
 
@@ -3072,8 +3005,8 @@ class ResetAdminPasswordResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (password != null) 'password': password,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (password != null) 'password': password!,
       };
 }
 
@@ -3089,15 +3022,15 @@ class Schedule {
   /// - "FRIDAY" : Friday
   /// - "SATURDAY" : Saturday
   /// - "SUNDAY" : Sunday
-  core.String day;
+  core.String? day;
 
   /// Duration of the time window, set by service producer.
   ///
   /// Output only.
-  core.String duration;
+  core.String? duration;
 
   /// Time within the window to start the operations.
-  TimeOfDay startTime;
+  TimeOfDay? startTime;
 
   Schedule();
 
@@ -3114,10 +3047,10 @@ class Schedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (duration != null) 'duration': duration,
-        if (startTime != null) 'startTime': startTime.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (duration != null) 'duration': duration!,
+        if (startTime != null) 'startTime': startTime!.toJson(),
       };
 }
 
@@ -3128,7 +3061,7 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   SetIamPolicyRequest();
 
@@ -3139,8 +3072,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
       };
 }
 
@@ -3153,7 +3086,7 @@ class SetIamPolicyRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -3161,13 +3094,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -3191,10 +3124,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -3205,7 +3138,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -3217,8 +3150,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -3226,7 +3159,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -3238,8 +3171,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -3253,23 +3186,23 @@ class TimeOfDay {
   ///
   /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
   /// for scenarios like business closing time.
-  core.int hours;
+  core.int? hours;
 
   /// Minutes of hour of day.
   ///
   /// Must be from 0 to 59.
-  core.int minutes;
+  core.int? minutes;
 
   /// Fractions of seconds in nanoseconds.
   ///
   /// Must be from 0 to 999,999,999.
-  core.int nanos;
+  core.int? nanos;
 
   /// Seconds of minutes of the time.
   ///
   /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
   /// leap-seconds.
-  core.int seconds;
+  core.int? seconds;
 
   TimeOfDay();
 
@@ -3288,11 +3221,11 @@ class TimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hours != null) 'hours': hours,
-        if (minutes != null) 'minutes': minutes,
-        if (nanos != null) 'nanos': nanos,
-        if (seconds != null) 'seconds': seconds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hours != null) 'hours': hours!,
+        if (minutes != null) 'minutes': minutes!,
+        if (nanos != null) 'nanos': nanos!,
+        if (seconds != null) 'seconds': seconds!,
       };
 }
 
@@ -3306,19 +3239,19 @@ class Trust {
   /// The time the instance was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The last heartbeat time when the trust was known to be connected.
   ///
   /// Output only.
-  core.String lastTrustHeartbeatTime;
+  core.String? lastTrustHeartbeatTime;
 
   /// The trust authentication type, which decides whether the trusted side has
   /// forest/domain wide access or selective access to an approved set of
   /// resources.
   ///
   /// Optional.
-  core.bool selectiveAuthentication;
+  core.bool? selectiveAuthentication;
 
   /// The current state of the trust.
   ///
@@ -3330,24 +3263,24 @@ class Trust {
   /// - "DELETING" : The domain trust is being deleted.
   /// - "CONNECTED" : The domain trust is connected.
   /// - "DISCONNECTED" : The domain trust is disconnected.
-  core.String state;
+  core.String? state;
 
   /// Additional information about the current state of the trust, if available.
   ///
   /// Output only.
-  core.String stateDescription;
+  core.String? stateDescription;
 
   /// The target DNS server IP addresses which can resolve the remote domain
   /// involved in the trust.
   ///
   /// Required.
-  core.List<core.String> targetDnsIpAddresses;
+  core.List<core.String>? targetDnsIpAddresses;
 
   /// The fully qualified target domain name which will be in trust with the
   /// current domain.
   ///
   /// Required.
-  core.String targetDomainName;
+  core.String? targetDomainName;
 
   /// The trust direction, which decides if the current domain is trusted,
   /// trusting, or both.
@@ -3359,14 +3292,14 @@ class Trust {
   /// - "OUTBOUND" : The outboud direction represents the trusted side.
   /// - "BIDIRECTIONAL" : The bidirectional direction represents the trusted /
   /// trusting side.
-  core.String trustDirection;
+  core.String? trustDirection;
 
   /// The trust secret used for the handshake with the target domain.
   ///
   /// This will not be stored.
   ///
   /// Required.
-  core.String trustHandshakeSecret;
+  core.String? trustHandshakeSecret;
 
   /// The type of trust represented by the trust resource.
   ///
@@ -3375,12 +3308,12 @@ class Trust {
   /// - "TRUST_TYPE_UNSPECIFIED" : Not set.
   /// - "FOREST" : The forest trust.
   /// - "EXTERNAL" : The external domain trust.
-  core.String trustType;
+  core.String? trustType;
 
   /// The last update time.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Trust();
 
@@ -3422,22 +3355,22 @@ class Trust {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
         if (lastTrustHeartbeatTime != null)
-          'lastTrustHeartbeatTime': lastTrustHeartbeatTime,
+          'lastTrustHeartbeatTime': lastTrustHeartbeatTime!,
         if (selectiveAuthentication != null)
-          'selectiveAuthentication': selectiveAuthentication,
-        if (state != null) 'state': state,
-        if (stateDescription != null) 'stateDescription': stateDescription,
+          'selectiveAuthentication': selectiveAuthentication!,
+        if (state != null) 'state': state!,
+        if (stateDescription != null) 'stateDescription': stateDescription!,
         if (targetDnsIpAddresses != null)
-          'targetDnsIpAddresses': targetDnsIpAddresses,
-        if (targetDomainName != null) 'targetDomainName': targetDomainName,
-        if (trustDirection != null) 'trustDirection': trustDirection,
+          'targetDnsIpAddresses': targetDnsIpAddresses!,
+        if (targetDomainName != null) 'targetDomainName': targetDomainName!,
+        if (trustDirection != null) 'trustDirection': trustDirection!,
         if (trustHandshakeSecret != null)
-          'trustHandshakeSecret': trustHandshakeSecret,
-        if (trustType != null) 'trustType': trustType,
-        if (updateTime != null) 'updateTime': updateTime,
+          'trustHandshakeSecret': trustHandshakeSecret!,
+        if (trustType != null) 'trustType': trustType!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3450,19 +3383,19 @@ class UpdatePolicy {
   /// - "UPDATE_CHANNEL_UNSPECIFIED" : Unspecified channel.
   /// - "EARLIER" : Early channel within a customer project.
   /// - "LATER" : Later channel within a customer project.
-  core.String channel;
+  core.String? channel;
 
   /// Deny Maintenance Period that is applied to resource to indicate when
   /// maintenance is forbidden.
   ///
   /// User can specify zero or more non-overlapping deny periods. For V1,
   /// Maximum number of deny_maintenance_periods is expected to be one.
-  core.List<DenyMaintenancePeriod> denyMaintenancePeriods;
+  core.List<DenyMaintenancePeriod>? denyMaintenancePeriods;
 
   /// Maintenance window that is applied to resources covered by this policy.
   ///
   /// Optional.
-  MaintenanceWindow window;
+  MaintenanceWindow? window;
 
   UpdatePolicy();
 
@@ -3482,12 +3415,12 @@ class UpdatePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channel != null) 'channel': channel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channel != null) 'channel': channel!,
         if (denyMaintenancePeriods != null)
           'denyMaintenancePeriods':
-              denyMaintenancePeriods.map((value) => value.toJson()).toList(),
-        if (window != null) 'window': window.toJson(),
+              denyMaintenancePeriods!.map((value) => value.toJson()).toList(),
+        if (window != null) 'window': window!.toJson(),
       };
 }
 
@@ -3496,7 +3429,7 @@ class ValidateTrustRequest {
   /// The domain trust to validate trust state for.
   ///
   /// Required.
-  Trust trust;
+  Trust? trust;
 
   ValidateTrustRequest();
 
@@ -3507,8 +3440,8 @@ class ValidateTrustRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (trust != null) 'trust': trust.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (trust != null) 'trust': trust!.toJson(),
       };
 }
 
@@ -3517,7 +3450,7 @@ class WeeklyCycle {
   /// User can specify multiple windows in a week.
   ///
   /// Minimum of 1 window.
-  core.List<Schedule> schedule;
+  core.List<Schedule>? schedule;
 
   WeeklyCycle();
 
@@ -3530,8 +3463,8 @@ class WeeklyCycle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (schedule != null)
-          'schedule': schedule.map((value) => value.toJson()).toList(),
+          'schedule': schedule!.map((value) => value.toJson()).toList(),
       };
 }

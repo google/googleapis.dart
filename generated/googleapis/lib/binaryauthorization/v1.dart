@@ -94,11 +94,8 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getPolicy(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -142,13 +139,9 @@ class ProjectsResource {
   async.Future<Policy> updatePolicy(
     Policy request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -197,14 +190,10 @@ class ProjectsAttestorsResource {
   async.Future<Attestor> create(
     Attestor request,
     core.String parent, {
-    core.String attestorId,
-    core.String $fields,
+    core.String? attestorId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (attestorId != null) 'attestorId': [attestorId],
       if ($fields != null) 'fields': [$fields],
@@ -244,11 +233,8 @@ class ProjectsAttestorsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -285,11 +271,8 @@ class ProjectsAttestorsResource {
   /// this method will complete with the same error.
   async.Future<Attestor> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -336,12 +319,9 @@ class ProjectsAttestorsResource {
   /// this method will complete with the same error.
   async.Future<IamPolicy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -390,13 +370,10 @@ class ProjectsAttestorsResource {
   /// this method will complete with the same error.
   async.Future<ListAttestorsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -442,13 +419,9 @@ class ProjectsAttestorsResource {
   async.Future<IamPolicy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -495,13 +468,9 @@ class ProjectsAttestorsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -545,13 +514,9 @@ class ProjectsAttestorsResource {
   async.Future<Attestor> update(
     Attestor request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -592,13 +557,9 @@ class ProjectsAttestorsResource {
       validateAttestationOccurrence(
     ValidateAttestationOccurrenceRequest request,
     core.String attestor, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (attestor == null) {
-      throw core.ArgumentError('Parameter attestor is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -655,12 +616,9 @@ class ProjectsPolicyResource {
   /// this method will complete with the same error.
   async.Future<IamPolicy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -706,13 +664,9 @@ class ProjectsPolicyResource {
   async.Future<IamPolicy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -759,13 +713,9 @@ class ProjectsPolicyResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -810,11 +760,8 @@ class SystempolicyResource {
   /// this method will complete with the same error.
   async.Future<Policy> getPolicy(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -847,7 +794,7 @@ class AdmissionRule {
   /// - "DRYRUN_AUDIT_LOG_ONLY" : Dryrun mode: Audit logging only. This will
   /// allow the pod creation as if the admission request had specified
   /// break-glass.
-  core.String enforcementMode;
+  core.String? enforcementMode;
 
   /// How this admission rule will be evaluated.
   ///
@@ -859,7 +806,7 @@ class AdmissionRule {
   /// attestors listed in 'require_attestations_by' have valid attestations for
   /// all of the images in the pod spec.
   /// - "ALWAYS_DENY" : This rule denies all pod creations.
-  core.String evaluationMode;
+  core.String? evaluationMode;
 
   /// The resource names of the attestors that must attest to a container image,
   /// in the format `projects / * /attestors / * `.
@@ -871,7 +818,7 @@ class AdmissionRule {
   /// must be empty.
   ///
   /// Optional.
-  core.List<core.String> requireAttestationsBy;
+  core.List<core.String>? requireAttestationsBy;
 
   AdmissionRule();
 
@@ -889,11 +836,11 @@ class AdmissionRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enforcementMode != null) 'enforcementMode': enforcementMode,
-        if (evaluationMode != null) 'evaluationMode': evaluationMode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enforcementMode != null) 'enforcementMode': enforcementMode!,
+        if (evaluationMode != null) 'evaluationMode': evaluationMode!,
         if (requireAttestationsBy != null)
-          'requireAttestationsBy': requireAttestationsBy,
+          'requireAttestationsBy': requireAttestationsBy!,
       };
 }
 
@@ -904,7 +851,7 @@ class AdmissionWhitelistPattern {
   ///
   /// This supports a trailing `*` as a wildcard, but this is allowed only in
   /// text after the `registry/` part.
-  core.String namePattern;
+  core.String? namePattern;
 
   AdmissionWhitelistPattern();
 
@@ -914,8 +861,8 @@ class AdmissionWhitelistPattern {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (namePattern != null) 'namePattern': namePattern,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (namePattern != null) 'namePattern': namePattern!,
       };
 }
 
@@ -938,14 +885,14 @@ class AttestationOccurrence {
   /// Each JWT SHOULD encode a claim specific to the `resource_uri` of this
   /// Occurrence, but this is not validated by Grafeas metadata API
   /// implementations. The JWT itself is opaque to Grafeas.
-  core.List<Jwt> jwts;
+  core.List<Jwt>? jwts;
 
   /// The serialized payload that is verified by one or more `signatures`.
   ///
   /// Required.
-  core.String serializedPayload;
+  core.String? serializedPayload;
   core.List<core.int> get serializedPayloadAsBytes =>
-      convert.base64.decode(serializedPayload);
+      convert.base64.decode(serializedPayload!);
 
   set serializedPayloadAsBytes(core.List<core.int> _bytes) {
     serializedPayload =
@@ -957,7 +904,7 @@ class AttestationOccurrence {
   /// Verifier implementations should consider this attestation message verified
   /// if at least one `signature` verifies `serialized_payload`. See `Signature`
   /// in common.proto for more details on signature structure and verification.
-  core.List<Signature> signatures;
+  core.List<Signature>? signatures;
 
   AttestationOccurrence();
 
@@ -979,11 +926,11 @@ class AttestationOccurrence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jwts != null) 'jwts': jwts.map((value) => value.toJson()).toList(),
-        if (serializedPayload != null) 'serializedPayload': serializedPayload,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jwts != null) 'jwts': jwts!.map((value) => value.toJson()).toList(),
+        if (serializedPayload != null) 'serializedPayload': serializedPayload!,
         if (signatures != null)
-          'signatures': signatures.map((value) => value.toJson()).toList(),
+          'signatures': signatures!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -996,23 +943,23 @@ class Attestor {
   /// This field may be updated. The field may be displayed in chooser dialogs.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// The resource name, in the format: `projects / * /attestors / * `.
   ///
   /// This field may not be updated.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Time when the attestor was last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// This specifies how an attestation will be read, and how it will be used
   /// during policy enforcement.
-  UserOwnedGrafeasNote userOwnedGrafeasNote;
+  UserOwnedGrafeasNote? userOwnedGrafeasNote;
 
   Attestor();
 
@@ -1032,12 +979,12 @@ class Attestor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (name != null) 'name': name,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
         if (userOwnedGrafeasNote != null)
-          'userOwnedGrafeasNote': userOwnedGrafeasNote.toJson(),
+          'userOwnedGrafeasNote': userOwnedGrafeasNote!.toJson(),
       };
 }
 
@@ -1053,14 +1000,14 @@ class AttestorPublicKey {
   /// computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as
   /// upper-case hex. If `id` is provided by the caller, it will be overwritten
   /// by the API-calculated ID.
-  core.String asciiArmoredPgpPublicKey;
+  core.String? asciiArmoredPgpPublicKey;
 
   /// A descriptive comment.
   ///
   /// This field may be updated.
   ///
   /// Optional.
-  core.String comment;
+  core.String? comment;
 
   /// The ID of this public key.
   ///
@@ -1069,7 +1016,7 @@ class AttestorPublicKey {
   /// field exactly. Additional restrictions on this field can be imposed based
   /// on which public key type is encapsulated. See the documentation on
   /// `public_key` cases below for details.
-  core.String id;
+  core.String? id;
 
   /// A raw PKIX SubjectPublicKeyInfo format public key.
   ///
@@ -1077,7 +1024,7 @@ class AttestorPublicKey {
   /// of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank,
   /// a default one will be computed based on the digest of the DER encoding of
   /// the public key.
-  PkixPublicKey pkixPublicKey;
+  PkixPublicKey? pkixPublicKey;
 
   AttestorPublicKey();
 
@@ -1098,12 +1045,12 @@ class AttestorPublicKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (asciiArmoredPgpPublicKey != null)
-          'asciiArmoredPgpPublicKey': asciiArmoredPgpPublicKey,
-        if (comment != null) 'comment': comment,
-        if (id != null) 'id': id,
-        if (pkixPublicKey != null) 'pkixPublicKey': pkixPublicKey.toJson(),
+          'asciiArmoredPgpPublicKey': asciiArmoredPgpPublicKey!,
+        if (comment != null) 'comment': comment!,
+        if (id != null) 'id': id!,
+        if (pkixPublicKey != null) 'pkixPublicKey': pkixPublicKey!.toJson(),
       };
 }
 
@@ -1117,7 +1064,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -1149,12 +1096,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -1173,10 +1120,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1194,7 +1141,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1222,24 +1169,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -1258,11 +1205,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1303,7 +1250,7 @@ class IamPolicy {
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -1317,8 +1264,8 @@ class IamPolicy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -1342,7 +1289,7 @@ class IamPolicy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   IamPolicy();
 
@@ -1361,11 +1308,11 @@ class IamPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1374,7 +1321,7 @@ class Jwt {
   /// strings joined by periods.
   ///
   /// For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1
-  core.String compactJwt;
+  core.String? compactJwt;
 
   Jwt();
 
@@ -1384,22 +1331,22 @@ class Jwt {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (compactJwt != null) 'compactJwt': compactJwt,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (compactJwt != null) 'compactJwt': compactJwt!,
       };
 }
 
 /// Response message for BinauthzManagementService.ListAttestors.
 class ListAttestorsResponse {
   /// The list of attestors.
-  core.List<Attestor> attestors;
+  core.List<Attestor>? attestors;
 
   /// A token to retrieve the next page of results.
   ///
   /// Pass this value in the ListAttestorsRequest.page_token field in the
   /// subsequent call to the `ListAttestors` method to retrieve the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListAttestorsResponse();
 
@@ -1415,10 +1362,10 @@ class ListAttestorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (attestors != null)
-          'attestors': attestors.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'attestors': attestors!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1430,7 +1377,7 @@ class ListAttestorsResponse {
 class PkixPublicKey {
   /// A PEM-encoded public key, as described in
   /// https://tools.ietf.org/html/rfc7468#section-13
-  core.String publicKeyPem;
+  core.String? publicKeyPem;
 
   /// The signature algorithm used to verify a message against a signature using
   /// this key.
@@ -1464,7 +1411,7 @@ class PkixPublicKey {
   /// digest.
   /// - "EC_SIGN_P521_SHA512" : ECDSA on the NIST P-521 curve with a SHA512
   /// digest.
-  core.String signatureAlgorithm;
+  core.String? signatureAlgorithm;
 
   PkixPublicKey();
 
@@ -1477,10 +1424,10 @@ class PkixPublicKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (publicKeyPem != null) 'publicKeyPem': publicKeyPem,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (publicKeyPem != null) 'publicKeyPem': publicKeyPem!,
         if (signatureAlgorithm != null)
-          'signatureAlgorithm': signatureAlgorithm,
+          'signatureAlgorithm': signatureAlgorithm!,
       };
 }
 
@@ -1493,7 +1440,7 @@ class Policy {
   /// Binary Authorization policies.
   ///
   /// Optional.
-  core.List<AdmissionWhitelistPattern> admissionWhitelistPatterns;
+  core.List<AdmissionWhitelistPattern>? admissionWhitelistPatterns;
 
   /// Per-cluster admission rules.
   ///
@@ -1504,18 +1451,18 @@ class Policy {
   /// https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.
   ///
   /// Optional.
-  core.Map<core.String, AdmissionRule> clusterAdmissionRules;
+  core.Map<core.String, AdmissionRule>? clusterAdmissionRules;
 
   /// Default admission rule for a cluster without a per-cluster, per-
   /// kubernetes-service-account, or per-istio-service-identity admission rule.
   ///
   /// Required.
-  AdmissionRule defaultAdmissionRule;
+  AdmissionRule? defaultAdmissionRule;
 
   /// A descriptive comment.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Controls the evaluation of a Google-maintained global admission policy for
   /// common system-level images.
@@ -1530,7 +1477,7 @@ class Policy {
   /// assumed.
   /// - "ENABLE" : Enables global policy evaluation.
   /// - "DISABLE" : Disables global policy evaluation.
-  core.String globalPolicyEvaluationMode;
+  core.String? globalPolicyEvaluationMode;
 
   /// Per-istio-service-identity admission rules.
   ///
@@ -1538,14 +1485,14 @@ class Policy {
   /// spiffe://example.com/ns/test-ns/sa/default
   ///
   /// Optional.
-  core.Map<core.String, AdmissionRule> istioServiceIdentityAdmissionRules;
+  core.Map<core.String, AdmissionRule>? istioServiceIdentityAdmissionRules;
 
   /// Per-kubernetes-namespace admission rules.
   ///
   /// K8s namespace spec format: \[a-z.-\]+, e.g. 'some-namespace'
   ///
   /// Optional.
-  core.Map<core.String, AdmissionRule> kubernetesNamespaceAdmissionRules;
+  core.Map<core.String, AdmissionRule>? kubernetesNamespaceAdmissionRules;
 
   /// Per-kubernetes-service-account admission rules.
   ///
@@ -1553,19 +1500,19 @@ class Policy {
   /// 'test-ns:default'
   ///
   /// Optional.
-  core.Map<core.String, AdmissionRule> kubernetesServiceAccountAdmissionRules;
+  core.Map<core.String, AdmissionRule>? kubernetesServiceAccountAdmissionRules;
 
   /// The resource name, in the format `projects / * /policy`.
   ///
   /// There is at most one policy per project.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Time when the policy was last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Policy();
 
@@ -1580,7 +1527,7 @@ class Policy {
     }
     if (_json.containsKey('clusterAdmissionRules')) {
       clusterAdmissionRules = (_json['clusterAdmissionRules'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -1603,7 +1550,7 @@ class Policy {
     if (_json.containsKey('istioServiceIdentityAdmissionRules')) {
       istioServiceIdentityAdmissionRules =
           (_json['istioServiceIdentityAdmissionRules'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -1615,7 +1562,7 @@ class Policy {
     if (_json.containsKey('kubernetesNamespaceAdmissionRules')) {
       kubernetesNamespaceAdmissionRules =
           (_json['kubernetesNamespaceAdmissionRules'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -1627,7 +1574,7 @@ class Policy {
     if (_json.containsKey('kubernetesServiceAccountAdmissionRules')) {
       kubernetesServiceAccountAdmissionRules =
           (_json['kubernetesServiceAccountAdmissionRules'] as core.Map)
-              .cast<core.String, core.Map>()
+              .cast<core.String, core.Map<core.String, core.Object?>>()
               .map(
                 (key, item) => core.MapEntry(
                   key,
@@ -1644,32 +1591,33 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (admissionWhitelistPatterns != null)
-          'admissionWhitelistPatterns': admissionWhitelistPatterns
+          'admissionWhitelistPatterns': admissionWhitelistPatterns!
               .map((value) => value.toJson())
               .toList(),
         if (clusterAdmissionRules != null)
-          'clusterAdmissionRules': clusterAdmissionRules
+          'clusterAdmissionRules': clusterAdmissionRules!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (defaultAdmissionRule != null)
-          'defaultAdmissionRule': defaultAdmissionRule.toJson(),
-        if (description != null) 'description': description,
+          'defaultAdmissionRule': defaultAdmissionRule!.toJson(),
+        if (description != null) 'description': description!,
         if (globalPolicyEvaluationMode != null)
-          'globalPolicyEvaluationMode': globalPolicyEvaluationMode,
+          'globalPolicyEvaluationMode': globalPolicyEvaluationMode!,
         if (istioServiceIdentityAdmissionRules != null)
           'istioServiceIdentityAdmissionRules':
-              istioServiceIdentityAdmissionRules
+              istioServiceIdentityAdmissionRules!
                   .map((key, item) => core.MapEntry(key, item.toJson())),
         if (kubernetesNamespaceAdmissionRules != null)
-          'kubernetesNamespaceAdmissionRules': kubernetesNamespaceAdmissionRules
-              .map((key, item) => core.MapEntry(key, item.toJson())),
+          'kubernetesNamespaceAdmissionRules':
+              kubernetesNamespaceAdmissionRules!
+                  .map((key, item) => core.MapEntry(key, item.toJson())),
         if (kubernetesServiceAccountAdmissionRules != null)
           'kubernetesServiceAccountAdmissionRules':
-              kubernetesServiceAccountAdmissionRules
+              kubernetesServiceAccountAdmissionRules!
                   .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (name != null) 'name': name,
-        if (updateTime != null) 'updateTime': updateTime,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1680,7 +1628,7 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  IamPolicy policy;
+  IamPolicy? policy;
 
   SetIamPolicyRequest();
 
@@ -1691,8 +1639,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
       };
 }
 
@@ -1728,7 +1676,7 @@ class Signature {
   /// of the DER serialization): *
   /// "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" *
   /// "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"
-  core.String publicKeyId;
+  core.String? publicKeyId;
 
   /// The content of the signature, an opaque bytestring.
   ///
@@ -1737,8 +1685,8 @@ class Signature {
   /// the payload explicitly. Alternatively, a message might have a canonical
   /// serialization that can always be unambiguously computed to derive the
   /// payload.
-  core.String signature;
-  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature);
+  core.String? signature;
+  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
 
   set signatureAsBytes(core.List<core.int> _bytes) {
     signature =
@@ -1756,9 +1704,9 @@ class Signature {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (publicKeyId != null) 'publicKeyId': publicKeyId,
-        if (signature != null) 'signature': signature,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (publicKeyId != null) 'publicKeyId': publicKeyId!,
+        if (signature != null) 'signature': signature!,
       };
 }
 
@@ -1769,7 +1717,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -1781,8 +1729,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -1790,7 +1738,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -1802,8 +1750,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -1821,7 +1769,7 @@ class UserOwnedGrafeasNote {
   /// an email based on a different naming pattern.
   ///
   /// Output only.
-  core.String delegationServiceAccountEmail;
+  core.String? delegationServiceAccountEmail;
 
   /// The Grafeas resource name of a Attestation.Authority Note, created by the
   /// user, in the format: `projects / * /notes / * `.
@@ -1831,7 +1779,7 @@ class UserOwnedGrafeasNote {
   /// and that links to this Note. Grafeas is an external dependency.
   ///
   /// Required.
-  core.String noteReference;
+  core.String? noteReference;
 
   /// Public keys that verify attestations signed by this attestor.
   ///
@@ -1841,7 +1789,7 @@ class UserOwnedGrafeasNote {
   /// is empty, this attestor always returns that no valid attestations exist.
   ///
   /// Optional.
-  core.List<AttestorPublicKey> publicKeys;
+  core.List<AttestorPublicKey>? publicKeys;
 
   UserOwnedGrafeasNote();
 
@@ -1861,12 +1809,12 @@ class UserOwnedGrafeasNote {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (delegationServiceAccountEmail != null)
-          'delegationServiceAccountEmail': delegationServiceAccountEmail,
-        if (noteReference != null) 'noteReference': noteReference,
+          'delegationServiceAccountEmail': delegationServiceAccountEmail!,
+        if (noteReference != null) 'noteReference': noteReference!,
         if (publicKeys != null)
-          'publicKeys': publicKeys.map((value) => value.toJson()).toList(),
+          'publicKeys': publicKeys!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1879,19 +1827,19 @@ class ValidateAttestationOccurrenceRequest {
   /// otherwise be a valid AttestationOccurrence.
   ///
   /// Required.
-  AttestationOccurrence attestation;
+  AttestationOccurrence? attestation;
 
   /// The resource name of the Note to which the containing Occurrence is
   /// associated.
   ///
   /// Required.
-  core.String occurrenceNote;
+  core.String? occurrenceNote;
 
   /// The URI of the artifact (e.g. container image) that is the subject of the
   /// containing Occurrence.
   ///
   /// Required.
-  core.String occurrenceResourceUri;
+  core.String? occurrenceResourceUri;
 
   ValidateAttestationOccurrenceRequest();
 
@@ -1908,18 +1856,18 @@ class ValidateAttestationOccurrenceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attestation != null) 'attestation': attestation.toJson(),
-        if (occurrenceNote != null) 'occurrenceNote': occurrenceNote,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attestation != null) 'attestation': attestation!.toJson(),
+        if (occurrenceNote != null) 'occurrenceNote': occurrenceNote!,
         if (occurrenceResourceUri != null)
-          'occurrenceResourceUri': occurrenceResourceUri,
+          'occurrenceResourceUri': occurrenceResourceUri!,
       };
 }
 
 /// Response message for ValidationHelperV1.ValidateAttestationOccurrence.
 class ValidateAttestationOccurrenceResponse {
   /// The reason for denial if the Attestation couldn't be validated.
-  core.String denialReason;
+  core.String? denialReason;
 
   /// The result of the Attestation validation.
   /// Possible string values are:
@@ -1927,7 +1875,7 @@ class ValidateAttestationOccurrenceResponse {
   /// - "VERIFIED" : The Attestation was able to verified by the Attestor.
   /// - "ATTESTATION_NOT_VERIFIABLE" : The Attestation was not able to verified
   /// by the Attestor.
-  core.String result;
+  core.String? result;
 
   ValidateAttestationOccurrenceResponse();
 
@@ -1940,8 +1888,8 @@ class ValidateAttestationOccurrenceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (denialReason != null) 'denialReason': denialReason,
-        if (result != null) 'result': result,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (denialReason != null) 'denialReason': denialReason!,
+        if (result != null) 'result': result!,
       };
 }

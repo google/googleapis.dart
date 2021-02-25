@@ -91,13 +91,9 @@ class FeedsResource {
   async.Future<Feed> create(
     CreateFeedRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -135,11 +131,8 @@ class FeedsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -175,11 +168,8 @@ class FeedsResource {
   /// this method will complete with the same error.
   async.Future<Feed> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -216,11 +206,8 @@ class FeedsResource {
   /// this method will complete with the same error.
   async.Future<ListFeedsResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -264,13 +251,9 @@ class FeedsResource {
   async.Future<Feed> patch(
     UpdateFeedRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -314,11 +297,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -454,22 +434,19 @@ class V1Resource {
   /// this method will complete with the same error.
   async.Future<AnalyzeIamPolicyResponse> analyzeIamPolicy(
     core.String scope, {
-    core.List<core.String> analysisQuery_accessSelector_permissions,
-    core.List<core.String> analysisQuery_accessSelector_roles,
-    core.String analysisQuery_identitySelector_identity,
-    core.bool analysisQuery_options_analyzeServiceAccountImpersonation,
-    core.bool analysisQuery_options_expandGroups,
-    core.bool analysisQuery_options_expandResources,
-    core.bool analysisQuery_options_expandRoles,
-    core.bool analysisQuery_options_outputGroupEdges,
-    core.bool analysisQuery_options_outputResourceEdges,
-    core.String analysisQuery_resourceSelector_fullResourceName,
-    core.String executionTimeout,
-    core.String $fields,
+    core.List<core.String>? analysisQuery_accessSelector_permissions,
+    core.List<core.String>? analysisQuery_accessSelector_roles,
+    core.String? analysisQuery_identitySelector_identity,
+    core.bool? analysisQuery_options_analyzeServiceAccountImpersonation,
+    core.bool? analysisQuery_options_expandGroups,
+    core.bool? analysisQuery_options_expandResources,
+    core.bool? analysisQuery_options_expandRoles,
+    core.bool? analysisQuery_options_outputGroupEdges,
+    core.bool? analysisQuery_options_outputResourceEdges,
+    core.String? analysisQuery_resourceSelector_fullResourceName,
+    core.String? executionTimeout,
+    core.String? $fields,
   }) async {
-    if (scope == null) {
-      throw core.ArgumentError('Parameter scope is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (analysisQuery_accessSelector_permissions != null)
         'analysisQuery.accessSelector.permissions':
@@ -565,13 +542,9 @@ class V1Resource {
   async.Future<Operation> analyzeIamPolicyLongrunning(
     AnalyzeIamPolicyLongrunningRequest request,
     core.String scope, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (scope == null) {
-      throw core.ArgumentError('Parameter scope is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -639,15 +612,12 @@ class V1Resource {
   /// this method will complete with the same error.
   async.Future<BatchGetAssetsHistoryResponse> batchGetAssetsHistory(
     core.String parent, {
-    core.List<core.String> assetNames,
-    core.String contentType,
-    core.String readTimeWindow_endTime,
-    core.String readTimeWindow_startTime,
-    core.String $fields,
+    core.List<core.String>? assetNames,
+    core.String? contentType,
+    core.String? readTimeWindow_endTime,
+    core.String? readTimeWindow_startTime,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (assetNames != null) 'assetNames': assetNames,
       if (contentType != null) 'contentType': [contentType],
@@ -706,13 +676,9 @@ class V1Resource {
   async.Future<Operation> exportAssets(
     ExportAssetsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -804,14 +770,11 @@ class V1Resource {
   /// this method will complete with the same error.
   async.Future<SearchAllIamPoliciesResponse> searchAllIamPolicies(
     core.String scope, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String query,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? query,
+    core.String? $fields,
   }) async {
-    if (scope == null) {
-      throw core.ArgumentError('Parameter scope is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -923,16 +886,13 @@ class V1Resource {
   /// this method will complete with the same error.
   async.Future<SearchAllResourcesResponse> searchAllResources(
     core.String scope, {
-    core.List<core.String> assetTypes,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String query,
-    core.String $fields,
+    core.List<core.String>? assetTypes,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? query,
+    core.String? $fields,
   }) async {
-    if (scope == null) {
-      throw core.ArgumentError('Parameter scope is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (assetTypes != null) 'assetTypes': assetTypes,
       if (orderBy != null) 'orderBy': [orderBy],
@@ -966,12 +926,12 @@ class AccessSelector {
   /// The permissions to appear in result.
   ///
   /// Optional.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   /// The roles to appear in result.
   ///
   /// Optional.
-  core.List<core.String> roles;
+  core.List<core.String>? roles;
 
   AccessSelector();
 
@@ -988,9 +948,9 @@ class AccessSelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
-        if (roles != null) 'roles': roles,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+        if (roles != null) 'roles': roles!,
       };
 }
 
@@ -999,12 +959,12 @@ class AnalyzeIamPolicyLongrunningRequest {
   /// The request query.
   ///
   /// Required.
-  IamPolicyAnalysisQuery analysisQuery;
+  IamPolicyAnalysisQuery? analysisQuery;
 
   /// Output configuration indicating where the results will be output to.
   ///
   /// Required.
-  IamPolicyAnalysisOutputConfig outputConfig;
+  IamPolicyAnalysisOutputConfig? outputConfig;
 
   AnalyzeIamPolicyLongrunningRequest();
 
@@ -1019,9 +979,9 @@ class AnalyzeIamPolicyLongrunningRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (analysisQuery != null) 'analysisQuery': analysisQuery.toJson(),
-        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (analysisQuery != null) 'analysisQuery': analysisQuery!.toJson(),
+        if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
       };
 }
 
@@ -1030,14 +990,14 @@ class AnalyzeIamPolicyResponse {
   /// Represents whether all entries in the main_analysis and
   /// service_account_impersonation_analysis have been fully explored to answer
   /// the query in the request.
-  core.bool fullyExplored;
+  core.bool? fullyExplored;
 
   /// The main analysis that matches the original request.
-  IamPolicyAnalysis mainAnalysis;
+  IamPolicyAnalysis? mainAnalysis;
 
   /// The service account impersonation analysis if
   /// AnalyzeIamPolicyRequest.analyze_service_account_impersonation is enabled.
-  core.List<IamPolicyAnalysis> serviceAccountImpersonationAnalysis;
+  core.List<IamPolicyAnalysis>? serviceAccountImpersonationAnalysis;
 
   AnalyzeIamPolicyResponse();
 
@@ -1058,12 +1018,12 @@ class AnalyzeIamPolicyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fullyExplored != null) 'fullyExplored': fullyExplored,
-        if (mainAnalysis != null) 'mainAnalysis': mainAnalysis.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fullyExplored != null) 'fullyExplored': fullyExplored!,
+        if (mainAnalysis != null) 'mainAnalysis': mainAnalysis!.toJson(),
         if (serviceAccountImpersonationAnalysis != null)
           'serviceAccountImpersonationAnalysis':
-              serviceAccountImpersonationAnalysis
+              serviceAccountImpersonationAnalysis!
                   .map((value) => value.toJson())
                   .toList(),
       };
@@ -1081,11 +1041,11 @@ class AnalyzeIamPolicyResponse {
 class Asset {
   /// Please also refer to the
   /// [access level user guide](https://cloud.google.com/access-context-manager/docs/overview#access-levels).
-  GoogleIdentityAccesscontextmanagerV1AccessLevel accessLevel;
+  GoogleIdentityAccesscontextmanagerV1AccessLevel? accessLevel;
 
   /// Please also refer to the
   /// [access policy user guide](https://cloud.google.com/access-context-manager/docs/overview#access-policies).
-  GoogleIdentityAccesscontextmanagerV1AccessPolicy accessPolicy;
+  GoogleIdentityAccesscontextmanagerV1AccessPolicy? accessPolicy;
 
   /// The ancestry path of an asset in Google Cloud
   /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
@@ -1095,14 +1055,14 @@ class Asset {
   /// ends at root. If the asset is a project, folder, or organization, the
   /// ancestry path starts from the asset itself. Example:
   /// `["projects/123456789", "folders/5432", "organizations/1234"]`
-  core.List<core.String> ancestors;
+  core.List<core.String>? ancestors;
 
   /// The type of the asset.
   ///
   /// Example: `compute.googleapis.com/Disk` See
   /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
   /// for more information.
-  core.String assetType;
+  core.String? assetType;
 
   /// A representation of the Cloud IAM policy set on a Google Cloud resource.
   ///
@@ -1114,7 +1074,7 @@ class Asset {
   /// levels in the hierarchy. See
   /// [this topic](https://cloud.google.com/iam/docs/policies#inheritance) for
   /// more information.
-  Policy iamPolicy;
+  Policy? iamPolicy;
 
   /// The full name of the asset.
   ///
@@ -1123,33 +1083,33 @@ class Asset {
   /// See
   /// [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
   /// for more information.
-  core.String name;
+  core.String? name;
 
   /// A representation of an
   /// [organization policy](https://cloud.google.com/resource-manager/docs/organization-policy/overview#organization_policy).
   ///
   /// There can be more than one organization policy with different constraints
   /// set on a given resource.
-  core.List<GoogleCloudOrgpolicyV1Policy> orgPolicy;
+  core.List<GoogleCloudOrgpolicyV1Policy>? orgPolicy;
 
   /// A representation of runtime OS Inventory information.
   ///
   /// See
   /// [this topic](https://cloud.google.com/compute/docs/instances/os-inventory-management)
   /// for more information.
-  Inventory osInventory;
+  Inventory? osInventory;
 
   /// A representation of the resource.
-  Resource resource;
+  Resource? resource;
 
   /// Please also refer to the
   /// [service perimeter user guide](https://cloud.google.com/vpc-service-controls/docs/overview).
-  GoogleIdentityAccesscontextmanagerV1ServicePerimeter servicePerimeter;
+  GoogleIdentityAccesscontextmanagerV1ServicePerimeter? servicePerimeter;
 
   /// The last update timestamp of an asset.
   ///
   /// update_time is updated when create/update/delete operation is performed.
-  core.String updateTime;
+  core.String? updateTime;
 
   Asset();
 
@@ -1202,20 +1162,20 @@ class Asset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessLevel != null) 'accessLevel': accessLevel.toJson(),
-        if (accessPolicy != null) 'accessPolicy': accessPolicy.toJson(),
-        if (ancestors != null) 'ancestors': ancestors,
-        if (assetType != null) 'assetType': assetType,
-        if (iamPolicy != null) 'iamPolicy': iamPolicy.toJson(),
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessLevel != null) 'accessLevel': accessLevel!.toJson(),
+        if (accessPolicy != null) 'accessPolicy': accessPolicy!.toJson(),
+        if (ancestors != null) 'ancestors': ancestors!,
+        if (assetType != null) 'assetType': assetType!,
+        if (iamPolicy != null) 'iamPolicy': iamPolicy!.toJson(),
+        if (name != null) 'name': name!,
         if (orgPolicy != null)
-          'orgPolicy': orgPolicy.map((value) => value.toJson()).toList(),
-        if (osInventory != null) 'osInventory': osInventory.toJson(),
-        if (resource != null) 'resource': resource.toJson(),
+          'orgPolicy': orgPolicy!.map((value) => value.toJson()).toList(),
+        if (osInventory != null) 'osInventory': osInventory!.toJson(),
+        if (resource != null) 'resource': resource!.toJson(),
         if (servicePerimeter != null)
-          'servicePerimeter': servicePerimeter.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
+          'servicePerimeter': servicePerimeter!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1238,13 +1198,13 @@ class Asset {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -1260,11 +1220,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -1279,7 +1239,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -1287,7 +1247,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -1302,16 +1262,16 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
 /// Batch get assets history response.
 class BatchGetAssetsHistoryResponse {
   /// A list of assets with valid time windows.
-  core.List<TemporalAsset> assets;
+  core.List<TemporalAsset>? assets;
 
   BatchGetAssetsHistoryResponse();
 
@@ -1324,9 +1284,9 @@ class BatchGetAssetsHistoryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (assets != null)
-          'assets': assets.map((value) => value.toJson()).toList(),
+          'assets': assets!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1339,14 +1299,14 @@ class BigQueryDestination {
   /// INVALID_ARGUMENT error.
   ///
   /// Required.
-  core.String dataset;
+  core.String? dataset;
 
   /// If the destination table already exists and this flag is `TRUE`, the table
   /// will be overwritten by the contents of assets snapshot.
   ///
   /// If the flag is `FALSE` or unset and the destination table already exists,
   /// the export call returns an INVALID_ARGUMEMT error.
-  core.bool force;
+  core.bool? force;
 
   /// \[partition_spec\] determines whether to export to partitioned table(s)
   /// and how to partition the data.
@@ -1364,7 +1324,7 @@ class BigQueryDestination {
   /// (data in different partitions will remain intact); if \[force\] is unset
   /// or `FALSE`, it will append the data. An error will be returned if the
   /// schema update or data appension fails.
-  PartitionSpec partitionSpec;
+  PartitionSpec? partitionSpec;
 
   /// If this flag is `TRUE`, the snapshot results will be written to one or
   /// multiple tables, each of which contains results of one asset type.
@@ -1390,7 +1350,7 @@ class BigQueryDestination {
   /// table_type_A succeeds when exporting to table_type_B fails during one
   /// export call, the results in table_type_A will persist and there will not
   /// be partial results persisting in a table.
-  core.bool separateTablesPerAssetType;
+  core.bool? separateTablesPerAssetType;
 
   /// The BigQuery table to which the snapshot result should be written.
   ///
@@ -1398,7 +1358,7 @@ class BigQueryDestination {
   /// created.
   ///
   /// Required.
-  core.String table;
+  core.String? table;
 
   BigQueryDestination();
 
@@ -1422,13 +1382,13 @@ class BigQueryDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataset != null) 'dataset': dataset,
-        if (force != null) 'force': force,
-        if (partitionSpec != null) 'partitionSpec': partitionSpec.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataset != null) 'dataset': dataset!,
+        if (force != null) 'force': force!,
+        if (partitionSpec != null) 'partitionSpec': partitionSpec!.toJson(),
         if (separateTablesPerAssetType != null)
-          'separateTablesPerAssetType': separateTablesPerAssetType,
-        if (table != null) 'table': table,
+          'separateTablesPerAssetType': separateTablesPerAssetType!,
+        if (table != null) 'table': table!,
       };
 }
 
@@ -1442,7 +1402,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -1474,12 +1434,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -1498,10 +1458,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1514,13 +1474,13 @@ class CreateFeedRequest {
   /// organizations/organization_number/feeds/feed_id
   ///
   /// Required.
-  Feed feed;
+  Feed? feed;
 
   /// This is the client-assigned asset feed identifier and it needs to be
   /// unique under a specific parent project/folder/organization.
   ///
   /// Required.
-  core.String feedId;
+  core.String? feedId;
 
   CreateFeedRequest();
 
@@ -1534,9 +1494,9 @@ class CreateFeedRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (feed != null) 'feed': feed.toJson(),
-        if (feedId != null) 'feedId': feedId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (feed != null) 'feed': feed!.toJson(),
+        if (feedId != null) 'feedId': feedId!,
       };
 }
 
@@ -1554,7 +1514,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Explanation about the IAM policy search result.
@@ -1567,14 +1527,14 @@ class Explanation {
   /// `{"roles/owner": ["compute.disk.get"]}`. The roles can also be found in
   /// the returned `policy` bindings. Note that the map is populated only for
   /// requests with permission queries.
-  core.Map<core.String, Permissions> matchedPermissions;
+  core.Map<core.String, Permissions>? matchedPermissions;
 
   Explanation();
 
   Explanation.fromJson(core.Map _json) {
     if (_json.containsKey('matchedPermissions')) {
       matchedPermissions = (_json['matchedPermissions'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -1584,9 +1544,9 @@ class Explanation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (matchedPermissions != null)
-          'matchedPermissions': matchedPermissions
+          'matchedPermissions': matchedPermissions!
               .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
@@ -1607,7 +1567,7 @@ class ExportAssetsRequest {
   /// snapshot all asset types. See
   /// [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview)
   /// for all supported asset types.
-  core.List<core.String> assetTypes;
+  core.List<core.String>? assetTypes;
 
   /// Asset content type.
   ///
@@ -1620,12 +1580,12 @@ class ExportAssetsRequest {
   /// - "ACCESS_POLICY" : The Cloud Access context manager Policy set on an
   /// asset.
   /// - "OS_INVENTORY" : The runtime OS Inventory information.
-  core.String contentType;
+  core.String? contentType;
 
   /// Output configuration indicating where the results will be output to.
   ///
   /// Required.
-  OutputConfig outputConfig;
+  OutputConfig? outputConfig;
 
   /// Timestamp to take an asset snapshot.
   ///
@@ -1634,7 +1594,7 @@ class ExportAssetsRequest {
   /// will be used. Due to delays in resource data collection and indexing,
   /// there is a volatile window during which running the same query may get
   /// different results.
-  core.String readTime;
+  core.String? readTime;
 
   ExportAssetsRequest();
 
@@ -1656,11 +1616,11 @@ class ExportAssetsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (assetTypes != null) 'assetTypes': assetTypes,
-        if (contentType != null) 'contentType': contentType,
-        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
-        if (readTime != null) 'readTime': readTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (assetTypes != null) 'assetTypes': assetTypes!,
+        if (contentType != null) 'contentType': contentType!,
+        if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
+        if (readTime != null) 'readTime': readTime!,
       };
 }
 
@@ -1689,24 +1649,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -1725,11 +1685,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1748,7 +1708,7 @@ class Feed {
   /// See
   /// [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
   /// for more info.
-  core.List<core.String> assetNames;
+  core.List<core.String>? assetNames;
 
   /// A list of types of the assets to receive updates.
   ///
@@ -1757,7 +1717,7 @@ class Feed {
   /// feed. Example: `"compute.googleapis.com/Disk"` See
   /// [this topic](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
   /// for a list of all supported asset types.
-  core.List<core.String> assetTypes;
+  core.List<core.String>? assetTypes;
 
   /// A condition which determines whether an asset update should be published.
   ///
@@ -1769,7 +1729,7 @@ class Feed {
   /// Other fields of `Expr` are optional. See our
   /// [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition)
   /// for detailed instructions.
-  Expr condition;
+  Expr? condition;
 
   /// Asset content type.
   ///
@@ -1782,13 +1742,13 @@ class Feed {
   /// - "ACCESS_POLICY" : The Cloud Access context manager Policy set on an
   /// asset.
   /// - "OS_INVENTORY" : The runtime OS Inventory information.
-  core.String contentType;
+  core.String? contentType;
 
   /// Feed output configuration defining where the asset updates are published
   /// to.
   ///
   /// Required.
-  FeedOutputConfig feedOutputConfig;
+  FeedOutputConfig? feedOutputConfig;
 
   /// The format will be
   /// projects/{project_number}/feeds/{client-assigned_feed_identifier} or
@@ -1798,7 +1758,7 @@ class Feed {
   /// project/folder/organization.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   Feed();
 
@@ -1829,21 +1789,21 @@ class Feed {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (assetNames != null) 'assetNames': assetNames,
-        if (assetTypes != null) 'assetTypes': assetTypes,
-        if (condition != null) 'condition': condition.toJson(),
-        if (contentType != null) 'contentType': contentType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (assetNames != null) 'assetNames': assetNames!,
+        if (assetTypes != null) 'assetTypes': assetTypes!,
+        if (condition != null) 'condition': condition!.toJson(),
+        if (contentType != null) 'contentType': contentType!,
         if (feedOutputConfig != null)
-          'feedOutputConfig': feedOutputConfig.toJson(),
-        if (name != null) 'name': name,
+          'feedOutputConfig': feedOutputConfig!.toJson(),
+        if (name != null) 'name': name!,
       };
 }
 
 /// Output configuration for asset feed destination.
 class FeedOutputConfig {
   /// Destination on Pub/Sub.
-  PubsubDestination pubsubDestination;
+  PubsubDestination? pubsubDestination;
 
   FeedOutputConfig();
 
@@ -1854,9 +1814,9 @@ class FeedOutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (pubsubDestination != null)
-          'pubsubDestination': pubsubDestination.toJson(),
+          'pubsubDestination': pubsubDestination!.toJson(),
       };
 }
 
@@ -1868,7 +1828,7 @@ class GcsDestination {
   /// "gs://bucket_name/object_name". See
   /// [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata)
   /// for more information.
-  core.String uri;
+  core.String? uri;
 
   /// The uri prefix of all generated Cloud Storage objects.
   ///
@@ -1879,7 +1839,7 @@ class GcsDestination {
   /// first shard of output objects containing all compute.googleapis.com/Disk
   /// assets. An INVALID_ARGUMENT error will be returned if file with the same
   /// name "gs://bucket_name/object_name_prefix" already exists.
-  core.String uriPrefix;
+  core.String? uriPrefix;
 
   GcsDestination();
 
@@ -1892,22 +1852,22 @@ class GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (uri != null) 'uri': uri,
-        if (uriPrefix != null) 'uriPrefix': uriPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (uri != null) 'uri': uri!,
+        if (uriPrefix != null) 'uriPrefix': uriPrefix!,
       };
 }
 
 /// An IAM role or permission under analysis.
 class GoogleCloudAssetV1Access {
   /// The analysis state of this access.
-  IamPolicyAnalysisState analysisState;
+  IamPolicyAnalysisState? analysisState;
 
   /// The permission.
-  core.String permission;
+  core.String? permission;
 
   /// The role.
-  core.String role;
+  core.String? role;
 
   GoogleCloudAssetV1Access();
 
@@ -1924,10 +1884,10 @@ class GoogleCloudAssetV1Access {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (analysisState != null) 'analysisState': analysisState.toJson(),
-        if (permission != null) 'permission': permission,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (analysisState != null) 'analysisState': analysisState!.toJson(),
+        if (permission != null) 'permission': permission!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1946,7 +1906,7 @@ class GoogleCloudAssetV1AccessControlList {
   /// The accesses that match one of the following conditions: - The
   /// access_selector, if it is specified in request; - Otherwise, access
   /// specifiers reachable from the policy binding's role.
-  core.List<GoogleCloudAssetV1Access> accesses;
+  core.List<GoogleCloudAssetV1Access>? accesses;
 
   /// Resource edges of the graph starting from the policy attached resource to
   /// any descendant resources.
@@ -1955,12 +1915,12 @@ class GoogleCloudAssetV1AccessControlList {
   /// and Edge.target_node contains the full resource name of a child resource.
   /// This field is present only if the output_resource_edges option is enabled
   /// in request.
-  core.List<GoogleCloudAssetV1Edge> resourceEdges;
+  core.List<GoogleCloudAssetV1Edge>? resourceEdges;
 
   /// The resources that match one of the following conditions: - The
   /// resource_selector, if it is specified in request; - Otherwise, resources
   /// reachable from the policy attached resource.
-  core.List<GoogleCloudAssetV1Resource> resources;
+  core.List<GoogleCloudAssetV1Resource>? resources;
 
   GoogleCloudAssetV1AccessControlList();
 
@@ -1988,14 +1948,14 @@ class GoogleCloudAssetV1AccessControlList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accesses != null)
-          'accesses': accesses.map((value) => value.toJson()).toList(),
+          'accesses': accesses!.map((value) => value.toJson()).toList(),
         if (resourceEdges != null)
           'resourceEdges':
-              resourceEdges.map((value) => value.toJson()).toList(),
+              resourceEdges!.map((value) => value.toJson()).toList(),
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2008,7 +1968,7 @@ class GoogleCloudAssetV1BigQueryDestination {
   /// INVALID_ARGUMENT error.
   ///
   /// Required.
-  core.String dataset;
+  core.String? dataset;
 
   /// The partition key for BigQuery partitioned table.
   /// Possible string values are:
@@ -2018,7 +1978,7 @@ class GoogleCloudAssetV1BigQueryDestination {
   /// partition key, the result table(s) is partitoned by the RequestTime
   /// column, an additional timestamp column representing when the request was
   /// received.
-  core.String partitionKey;
+  core.String? partitionKey;
 
   /// The prefix of the BigQuery tables to which the analysis results will be
   /// written.
@@ -2030,7 +1990,7 @@ class GoogleCloudAssetV1BigQueryDestination {
   /// the \[partition_key\].
   ///
   /// Required.
-  core.String tablePrefix;
+  core.String? tablePrefix;
 
   /// Specifies the action that occurs if the destination table or partition
   /// already exists.
@@ -2046,7 +2006,7 @@ class GoogleCloudAssetV1BigQueryDestination {
   /// https://cloud.google.com/bigquery/docs/loading-data-local#appending_to_or_overwriting_a_table_using_a_local_file.
   ///
   /// Optional.
-  core.String writeDisposition;
+  core.String? writeDisposition;
 
   GoogleCloudAssetV1BigQueryDestination();
 
@@ -2065,11 +2025,11 @@ class GoogleCloudAssetV1BigQueryDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataset != null) 'dataset': dataset,
-        if (partitionKey != null) 'partitionKey': partitionKey,
-        if (tablePrefix != null) 'tablePrefix': tablePrefix,
-        if (writeDisposition != null) 'writeDisposition': writeDisposition,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataset != null) 'dataset': dataset!,
+        if (partitionKey != null) 'partitionKey': partitionKey!,
+        if (tablePrefix != null) 'tablePrefix': tablePrefix!,
+        if (writeDisposition != null) 'writeDisposition': writeDisposition!,
       };
 }
 
@@ -2079,13 +2039,13 @@ class GoogleCloudAssetV1Edge {
   ///
   /// For example, it could be a full resource name for a resource node or an
   /// email of an identity.
-  core.String sourceNode;
+  core.String? sourceNode;
 
   /// The target node of the edge.
   ///
   /// For example, it could be a full resource name for a resource node or an
   /// email of an identity.
-  core.String targetNode;
+  core.String? targetNode;
 
   GoogleCloudAssetV1Edge();
 
@@ -2098,9 +2058,9 @@ class GoogleCloudAssetV1Edge {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sourceNode != null) 'sourceNode': sourceNode,
-        if (targetNode != null) 'targetNode': targetNode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sourceNode != null) 'sourceNode': sourceNode!,
+        if (targetNode != null) 'targetNode': targetNode!,
       };
 }
 
@@ -2114,7 +2074,7 @@ class GoogleCloudAssetV1GcsDestination {
   /// examples.
   ///
   /// Required.
-  core.String uri;
+  core.String? uri;
 
   GoogleCloudAssetV1GcsDestination();
 
@@ -2124,22 +2084,22 @@ class GoogleCloudAssetV1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (uri != null) 'uri': uri!,
       };
 }
 
 /// An identity under analysis.
 class GoogleCloudAssetV1Identity {
   /// The analysis state of this identity.
-  IamPolicyAnalysisState analysisState;
+  IamPolicyAnalysisState? analysisState;
 
   /// The identity name in any form of members appear in
   /// [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding),
   /// such as: - user:foo@google.com - group:group1@google.com -
   /// serviceAccount:s1@prj1.iam.gserviceaccount.com -
   /// projectOwner:some_project_id - domain:google.com - allUsers - etc.
-  core.String name;
+  core.String? name;
 
   GoogleCloudAssetV1Identity();
 
@@ -2153,9 +2113,9 @@ class GoogleCloudAssetV1Identity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (analysisState != null) 'analysisState': analysisState.toJson(),
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (analysisState != null) 'analysisState': analysisState!.toJson(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2168,12 +2128,12 @@ class GoogleCloudAssetV1IdentityList {
   /// The Edge.target_node contains a member of the group, such as
   /// `group:child@google.com` or `user:foo@google.com`. This field is present
   /// only if the output_group_edges option is enabled in request.
-  core.List<GoogleCloudAssetV1Edge> groupEdges;
+  core.List<GoogleCloudAssetV1Edge>? groupEdges;
 
   /// Only the identities that match one of the following conditions will be
   /// presented: - The identity_selector, if it is specified in request; -
   /// Otherwise, identities reachable from the policy binding's members.
-  core.List<GoogleCloudAssetV1Identity> identities;
+  core.List<GoogleCloudAssetV1Identity>? identities;
 
   GoogleCloudAssetV1IdentityList();
 
@@ -2194,22 +2154,22 @@ class GoogleCloudAssetV1IdentityList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (groupEdges != null)
-          'groupEdges': groupEdges.map((value) => value.toJson()).toList(),
+          'groupEdges': groupEdges!.map((value) => value.toJson()).toList(),
         if (identities != null)
-          'identities': identities.map((value) => value.toJson()).toList(),
+          'identities': identities!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A Google Cloud resource under analysis.
 class GoogleCloudAssetV1Resource {
   /// The analysis state of this resource.
-  IamPolicyAnalysisState analysisState;
+  IamPolicyAnalysisState? analysisState;
 
   /// The
   /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
-  core.String fullResourceName;
+  core.String? fullResourceName;
 
   GoogleCloudAssetV1Resource();
 
@@ -2223,9 +2183,9 @@ class GoogleCloudAssetV1Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (analysisState != null) 'analysisState': analysisState.toJson(),
-        if (fullResourceName != null) 'fullResourceName': fullResourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (analysisState != null) 'analysisState': analysisState!.toJson(),
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
       };
 }
 
@@ -2258,7 +2218,7 @@ class GoogleCloudOrgpolicyV1BooleanPolicy {
   /// has a `Policy` with: {RestoreDefault: {}} The constraint at
   /// `organizations/foo` is enforced. The constraint at `projects/bar` is not
   /// enforced, because `constraint_default` for the `Constraint` is `ALLOW`.
-  core.bool enforced;
+  core.bool? enforced;
 
   GoogleCloudOrgpolicyV1BooleanPolicy();
 
@@ -2268,8 +2228,8 @@ class GoogleCloudOrgpolicyV1BooleanPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enforced != null) 'enforced': enforced,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enforced != null) 'enforced': enforced!,
       };
 }
 
@@ -2298,17 +2258,17 @@ class GoogleCloudOrgpolicyV1ListPolicy {
   /// denied_values must be set.
   /// - "ALLOW" : A policy with this set allows all values.
   /// - "DENY" : A policy with this set denies all values.
-  core.String allValues;
+  core.String? allValues;
 
   /// List of values allowed at this resource.
   ///
   /// Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`.
-  core.List<core.String> allowedValues;
+  core.List<core.String>? allowedValues;
 
   /// List of values denied at this resource.
   ///
   /// Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`.
-  core.List<core.String> deniedValues;
+  core.List<core.String>? deniedValues;
 
   /// Determines the inheritance behavior for this `Policy`.
   ///
@@ -2371,7 +2331,7 @@ class GoogleCloudOrgpolicyV1ListPolicy {
   /// `organizations/O1`, `folders/F1`, `folders/F2`, `projects/P1`,
   /// `projects/P2`, `projects/P3`. The accepted values at `projects/bar` are
   /// `organizations/O1`, `folders/F1`, `projects/P1`.
-  core.bool inheritFromParent;
+  core.bool? inheritFromParent;
 
   /// The Google Cloud Console will try to default to a configuration that
   /// matches the value specified in this `Policy`.
@@ -2380,7 +2340,7 @@ class GoogleCloudOrgpolicyV1ListPolicy {
   /// higher in the hierarchy, unless `inherit_from_parent` is `false`.
   ///
   /// Optional.
-  core.String suggestedValue;
+  core.String? suggestedValue;
 
   GoogleCloudOrgpolicyV1ListPolicy();
 
@@ -2406,12 +2366,12 @@ class GoogleCloudOrgpolicyV1ListPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allValues != null) 'allValues': allValues,
-        if (allowedValues != null) 'allowedValues': allowedValues,
-        if (deniedValues != null) 'deniedValues': deniedValues,
-        if (inheritFromParent != null) 'inheritFromParent': inheritFromParent,
-        if (suggestedValue != null) 'suggestedValue': suggestedValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allValues != null) 'allValues': allValues!,
+        if (allowedValues != null) 'allowedValues': allowedValues!,
+        if (deniedValues != null) 'deniedValues': deniedValues!,
+        if (inheritFromParent != null) 'inheritFromParent': inheritFromParent!,
+        if (suggestedValue != null) 'suggestedValue': suggestedValue!,
       };
 }
 
@@ -2419,7 +2379,7 @@ class GoogleCloudOrgpolicyV1ListPolicy {
 /// for configurations of Cloud Platform resources.
 class GoogleCloudOrgpolicyV1Policy {
   /// For boolean `Constraints`, whether to enforce the `Constraint` or not.
-  GoogleCloudOrgpolicyV1BooleanPolicy booleanPolicy;
+  GoogleCloudOrgpolicyV1BooleanPolicy? booleanPolicy;
 
   /// The name of the `Constraint` the `Policy` is configuring, for example,
   /// `constraints/serviceuser.services`.
@@ -2427,7 +2387,7 @@ class GoogleCloudOrgpolicyV1Policy {
   /// A \[list of available
   /// constraints\](/resource-manager/docs/organization-policy/org-policy-constraints)
   /// is available. Immutable after creation.
-  core.String constraint;
+  core.String? constraint;
 
   /// An opaque tag indicating the current version of the `Policy`, used for
   /// concurrency control.
@@ -2441,8 +2401,8 @@ class GoogleCloudOrgpolicyV1Policy {
   /// read-modify-write loop for concurrency control. Not setting the `etag`in a
   /// `SetOrgPolicy` request will result in an unconditional write of the
   /// `Policy`.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -2450,23 +2410,23 @@ class GoogleCloudOrgpolicyV1Policy {
   }
 
   /// List of values either allowed or disallowed.
-  GoogleCloudOrgpolicyV1ListPolicy listPolicy;
+  GoogleCloudOrgpolicyV1ListPolicy? listPolicy;
 
   /// Restores the default behavior of the constraint; independent of
   /// `Constraint` type.
-  GoogleCloudOrgpolicyV1RestoreDefault restoreDefault;
+  GoogleCloudOrgpolicyV1RestoreDefault? restoreDefault;
 
   /// The time stamp the `Policy` was previously updated.
   ///
   /// This is set by the server, not specified by the caller, and represents the
   /// last time a call to `SetOrgPolicy` was made for that `Policy`. Any value
   /// set by the client will be ignored.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// Version of the `Policy`.
   ///
   /// Default version is 0;
-  core.int version;
+  core.int? version;
 
   GoogleCloudOrgpolicyV1Policy();
 
@@ -2497,14 +2457,14 @@ class GoogleCloudOrgpolicyV1Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (booleanPolicy != null) 'booleanPolicy': booleanPolicy.toJson(),
-        if (constraint != null) 'constraint': constraint,
-        if (etag != null) 'etag': etag,
-        if (listPolicy != null) 'listPolicy': listPolicy.toJson(),
-        if (restoreDefault != null) 'restoreDefault': restoreDefault.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (booleanPolicy != null) 'booleanPolicy': booleanPolicy!.toJson(),
+        if (constraint != null) 'constraint': constraint!,
+        if (etag != null) 'etag': etag!,
+        if (listPolicy != null) 'listPolicy': listPolicy!.toJson(),
+        if (restoreDefault != null) 'restoreDefault': restoreDefault!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -2527,7 +2487,7 @@ class GoogleCloudOrgpolicyV1RestoreDefault {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// An `AccessLevel` is a label that can be applied to requests to Google Cloud
@@ -2535,15 +2495,15 @@ class GoogleCloudOrgpolicyV1RestoreDefault {
 /// applied.
 class GoogleIdentityAccesscontextmanagerV1AccessLevel {
   /// A `BasicLevel` composed of `Conditions`.
-  GoogleIdentityAccesscontextmanagerV1BasicLevel basic;
+  GoogleIdentityAccesscontextmanagerV1BasicLevel? basic;
 
   /// A `CustomLevel` written in the Common Expression Language.
-  GoogleIdentityAccesscontextmanagerV1CustomLevel custom;
+  GoogleIdentityAccesscontextmanagerV1CustomLevel? custom;
 
   /// Description of the `AccessLevel` and its use.
   ///
   /// Does not affect behavior.
-  core.String description;
+  core.String? description;
 
   /// Resource name for the Access Level.
   ///
@@ -2553,12 +2513,12 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
   /// of the `short_name` component is 50 characters.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Human readable title.
   ///
   /// Must be unique within the Policy.
-  core.String title;
+  core.String? title;
 
   GoogleIdentityAccesscontextmanagerV1AccessLevel();
 
@@ -2582,12 +2542,12 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (basic != null) 'basic': basic.toJson(),
-        if (custom != null) 'custom': custom.toJson(),
-        if (description != null) 'description': description,
-        if (name != null) 'name': name,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (basic != null) 'basic': basic!.toJson(),
+        if (custom != null) 'custom': custom!.toJson(),
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -2605,14 +2565,14 @@ class GoogleIdentityAccesscontextmanagerV1AccessPolicy {
   /// Clients should not expect this to be in any specific format.
   ///
   /// Output only.
-  core.String etag;
+  core.String? etag;
 
   /// Resource name of the `AccessPolicy`.
   ///
   /// Format: `accessPolicies/{policy_id}`
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy.
   ///
@@ -2620,14 +2580,14 @@ class GoogleIdentityAccesscontextmanagerV1AccessPolicy {
   /// `organizations/{organization_id}`
   ///
   /// Required.
-  core.String parent;
+  core.String? parent;
 
   /// Human readable title.
   ///
   /// Does not affect behavior.
   ///
   /// Required.
-  core.String title;
+  core.String? title;
 
   GoogleIdentityAccesscontextmanagerV1AccessPolicy();
 
@@ -2646,11 +2606,11 @@ class GoogleIdentityAccesscontextmanagerV1AccessPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (name != null) 'name': name,
-        if (parent != null) 'parent': parent,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -2662,14 +2622,15 @@ class GoogleIdentityAccesscontextmanagerV1ApiOperation {
   /// `service_name` field. A single MethodSelector entry with `*` specified for
   /// the `method` field will allow all methods AND permissions for the service
   /// specified in `service_name`.
-  core.List<GoogleIdentityAccesscontextmanagerV1MethodSelector> methodSelectors;
+  core.List<GoogleIdentityAccesscontextmanagerV1MethodSelector>?
+      methodSelectors;
 
   /// The name of the API whose methods or permissions the IngressPolicy or
   /// EgressPolicy want to allow.
   ///
   /// A single ApiOperation with `service_name` field set to `*` will allow all
   /// methods AND permissions for all services.
-  core.String serviceName;
+  core.String? serviceName;
 
   GoogleIdentityAccesscontextmanagerV1ApiOperation();
 
@@ -2686,11 +2647,11 @@ class GoogleIdentityAccesscontextmanagerV1ApiOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (methodSelectors != null)
           'methodSelectors':
-              methodSelectors.map((value) => value.toJson()).toList(),
-        if (serviceName != null) 'serviceName': serviceName,
+              methodSelectors!.map((value) => value.toJson()).toList(),
+        if (serviceName != null) 'serviceName': serviceName!,
       };
 }
 
@@ -2707,12 +2668,12 @@ class GoogleIdentityAccesscontextmanagerV1BasicLevel {
   /// - "AND" : All `Conditions` must be true for the `BasicLevel` to be true.
   /// - "OR" : If at least one `Condition` is true, then the `BasicLevel` is
   /// true.
-  core.String combiningFunction;
+  core.String? combiningFunction;
 
   /// A list of requirements for the `AccessLevel` to be granted.
   ///
   /// Required.
-  core.List<GoogleIdentityAccesscontextmanagerV1Condition> conditions;
+  core.List<GoogleIdentityAccesscontextmanagerV1Condition>? conditions;
 
   GoogleIdentityAccesscontextmanagerV1BasicLevel();
 
@@ -2729,10 +2690,10 @@ class GoogleIdentityAccesscontextmanagerV1BasicLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (combiningFunction != null) 'combiningFunction': combiningFunction,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (combiningFunction != null) 'combiningFunction': combiningFunction!,
         if (conditions != null)
-          'conditions': conditions.map((value) => value.toJson()).toList(),
+          'conditions': conditions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2748,7 +2709,7 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
   /// to be true.
   ///
   /// If not specified, all devices are allowed.
-  GoogleIdentityAccesscontextmanagerV1DevicePolicy devicePolicy;
+  GoogleIdentityAccesscontextmanagerV1DevicePolicy? devicePolicy;
 
   /// CIDR block IP subnetwork specification.
   ///
@@ -2759,26 +2720,26 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
   /// "2001:db8::/32" is accepted whereas "2001:db8::1/32" is not. The
   /// originating IP of a request must be in one of the listed subnets in order
   /// for this Condition to be true. If empty, all IP addresses are allowed.
-  core.List<core.String> ipSubnetworks;
+  core.List<core.String>? ipSubnetworks;
 
   /// The request must be made by one of the provided user or service accounts.
   ///
   /// Groups are not supported. Syntax: `user:{emailid}`
   /// `serviceAccount:{emailid}` If not specified, a request may come from any
   /// user.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Whether to negate the Condition.
   ///
   /// If true, the Condition becomes a NAND over its non-empty fields, each
   /// field must be false for the Condition overall to be satisfied. Defaults to
   /// false.
-  core.bool negate;
+  core.bool? negate;
 
   /// The request must originate from one of the provided countries/regions.
   ///
   /// Must be valid ISO 3166-1 alpha-2 codes.
-  core.List<core.String> regions;
+  core.List<core.String>? regions;
 
   /// A list of other access levels defined in the same `Policy`, referenced by
   /// resource name.
@@ -2786,7 +2747,7 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
   /// Referencing an `AccessLevel` which does not exist is an error. All access
   /// levels listed must be granted for the Condition to be true. Example:
   /// "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
-  core.List<core.String> requiredAccessLevels;
+  core.List<core.String>? requiredAccessLevels;
 
   GoogleIdentityAccesscontextmanagerV1Condition();
 
@@ -2820,14 +2781,14 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (devicePolicy != null) 'devicePolicy': devicePolicy.toJson(),
-        if (ipSubnetworks != null) 'ipSubnetworks': ipSubnetworks,
-        if (members != null) 'members': members,
-        if (negate != null) 'negate': negate,
-        if (regions != null) 'regions': regions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (devicePolicy != null) 'devicePolicy': devicePolicy!.toJson(),
+        if (ipSubnetworks != null) 'ipSubnetworks': ipSubnetworks!,
+        if (members != null) 'members': members!,
+        if (negate != null) 'negate': negate!,
+        if (regions != null) 'regions': regions!,
         if (requiredAccessLevels != null)
-          'requiredAccessLevels': requiredAccessLevels,
+          'requiredAccessLevels': requiredAccessLevels!,
       };
 }
 
@@ -2839,7 +2800,7 @@ class GoogleIdentityAccesscontextmanagerV1CustomLevel {
   /// A Cloud CEL expression evaluating to a boolean.
   ///
   /// Required.
-  Expr expr;
+  Expr? expr;
 
   GoogleIdentityAccesscontextmanagerV1CustomLevel();
 
@@ -2850,8 +2811,8 @@ class GoogleIdentityAccesscontextmanagerV1CustomLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expr != null) 'expr': expr.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expr != null) 'expr': expr!.toJson(),
       };
 }
 
@@ -2869,24 +2830,24 @@ class GoogleIdentityAccesscontextmanagerV1CustomLevel {
 class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
   /// Allowed device management levels, an empty list allows all management
   /// levels.
-  core.List<core.String> allowedDeviceManagementLevels;
+  core.List<core.String>? allowedDeviceManagementLevels;
 
   /// Allowed encryptions statuses, an empty list allows all statuses.
-  core.List<core.String> allowedEncryptionStatuses;
+  core.List<core.String>? allowedEncryptionStatuses;
 
   /// Allowed OS versions, an empty list allows all types and all versions.
-  core.List<GoogleIdentityAccesscontextmanagerV1OsConstraint> osConstraints;
+  core.List<GoogleIdentityAccesscontextmanagerV1OsConstraint>? osConstraints;
 
   /// Whether the device needs to be approved by the customer admin.
-  core.bool requireAdminApproval;
+  core.bool? requireAdminApproval;
 
   /// Whether the device needs to be corp owned.
-  core.bool requireCorpOwned;
+  core.bool? requireCorpOwned;
 
   /// Whether or not screenlock is required for the DevicePolicy to be true.
   ///
   /// Defaults to `false`.
-  core.bool requireScreenlock;
+  core.bool? requireScreenlock;
 
   GoogleIdentityAccesscontextmanagerV1DevicePolicy();
 
@@ -2921,18 +2882,18 @@ class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedDeviceManagementLevels != null)
-          'allowedDeviceManagementLevels': allowedDeviceManagementLevels,
+          'allowedDeviceManagementLevels': allowedDeviceManagementLevels!,
         if (allowedEncryptionStatuses != null)
-          'allowedEncryptionStatuses': allowedEncryptionStatuses,
+          'allowedEncryptionStatuses': allowedEncryptionStatuses!,
         if (osConstraints != null)
           'osConstraints':
-              osConstraints.map((value) => value.toJson()).toList(),
+              osConstraints!.map((value) => value.toJson()).toList(),
         if (requireAdminApproval != null)
-          'requireAdminApproval': requireAdminApproval,
-        if (requireCorpOwned != null) 'requireCorpOwned': requireCorpOwned,
-        if (requireScreenlock != null) 'requireScreenlock': requireScreenlock,
+          'requireAdminApproval': requireAdminApproval!,
+        if (requireCorpOwned != null) 'requireCorpOwned': requireCorpOwned!,
+        if (requireScreenlock != null) 'requireScreenlock': requireScreenlock!,
       };
 }
 
@@ -2948,7 +2909,7 @@ class GoogleIdentityAccesscontextmanagerV1EgressFrom {
   ///
   /// Should be in the format of email address. The email address should
   /// represent individual user or service account only.
-  core.List<core.String> identities;
+  core.List<core.String>? identities;
 
   /// Specifies the type of identities that are allowed access to outside the
   /// perimeter.
@@ -2963,7 +2924,7 @@ class GoogleIdentityAccesscontextmanagerV1EgressFrom {
   /// perimeter.
   /// - "ANY_SERVICE_ACCOUNT" : Authorize access from all service accounts
   /// outside the perimeter.
-  core.String identityType;
+  core.String? identityType;
 
   GoogleIdentityAccesscontextmanagerV1EgressFrom();
 
@@ -2978,9 +2939,9 @@ class GoogleIdentityAccesscontextmanagerV1EgressFrom {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (identities != null) 'identities': identities,
-        if (identityType != null) 'identityType': identityType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (identities != null) 'identities': identities!,
+        if (identityType != null) 'identityType': identityType!,
       };
 }
 
@@ -3001,11 +2962,11 @@ class GoogleIdentityAccesscontextmanagerV1EgressFrom {
 class GoogleIdentityAccesscontextmanagerV1EgressPolicy {
   /// Defines conditions on the source of a request causing this EgressPolicy to
   /// apply.
-  GoogleIdentityAccesscontextmanagerV1EgressFrom egressFrom;
+  GoogleIdentityAccesscontextmanagerV1EgressFrom? egressFrom;
 
   /// Defines the conditions on the ApiOperation and destination resources that
   /// cause this EgressPolicy to apply.
-  GoogleIdentityAccesscontextmanagerV1EgressTo egressTo;
+  GoogleIdentityAccesscontextmanagerV1EgressTo? egressTo;
 
   GoogleIdentityAccesscontextmanagerV1EgressPolicy();
 
@@ -3020,9 +2981,9 @@ class GoogleIdentityAccesscontextmanagerV1EgressPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (egressFrom != null) 'egressFrom': egressFrom.toJson(),
-        if (egressTo != null) 'egressTo': egressTo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (egressFrom != null) 'egressFrom': egressFrom!.toJson(),
+        if (egressTo != null) 'egressTo': egressTo!.toJson(),
       };
 }
 
@@ -3037,7 +2998,7 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo {
   /// A list of ApiOperations that this egress rule applies to.
   ///
   /// A request matches if it contains an operation/service in this list.
-  core.List<GoogleIdentityAccesscontextmanagerV1ApiOperation> operations;
+  core.List<GoogleIdentityAccesscontextmanagerV1ApiOperation>? operations;
 
   /// A list of resources, currently only projects in the form `projects/`, that
   /// match this to stanza.
@@ -3045,7 +3006,7 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo {
   /// A request matches if it contains a resource in this list. If `*` is
   /// specified for resources, then this EgressTo rule will authorize access to
   /// all resources outside the perimeter.
-  core.List<core.String> resources;
+  core.List<core.String>? resources;
 
   GoogleIdentityAccesscontextmanagerV1EgressTo();
 
@@ -3064,10 +3025,10 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
-        if (resources != null) 'resources': resources,
+          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -3079,7 +3040,7 @@ class GoogleIdentityAccesscontextmanagerV1IngressFrom {
   ///
   /// Should be in the format of email address. The email address should
   /// represent individual user or service account only.
-  core.List<core.String> identities;
+  core.List<core.String>? identities;
 
   /// Specifies the type of identities that are allowed access from outside the
   /// perimeter.
@@ -3094,10 +3055,10 @@ class GoogleIdentityAccesscontextmanagerV1IngressFrom {
   /// perimeter.
   /// - "ANY_SERVICE_ACCOUNT" : Authorize access from all service accounts
   /// outside the perimeter.
-  core.String identityType;
+  core.String? identityType;
 
   /// Sources that this IngressPolicy authorizes access from.
-  core.List<GoogleIdentityAccesscontextmanagerV1IngressSource> sources;
+  core.List<GoogleIdentityAccesscontextmanagerV1IngressSource>? sources;
 
   GoogleIdentityAccesscontextmanagerV1IngressFrom();
 
@@ -3119,11 +3080,11 @@ class GoogleIdentityAccesscontextmanagerV1IngressFrom {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (identities != null) 'identities': identities,
-        if (identityType != null) 'identityType': identityType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (identities != null) 'identities': identities!,
+        if (identityType != null) 'identityType': identityType!,
         if (sources != null)
-          'sources': sources.map((value) => value.toJson()).toList(),
+          'sources': sources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3142,11 +3103,11 @@ class GoogleIdentityAccesscontextmanagerV1IngressFrom {
 class GoogleIdentityAccesscontextmanagerV1IngressPolicy {
   /// Defines the conditions on the source of a request causing this
   /// IngressPolicy to apply.
-  GoogleIdentityAccesscontextmanagerV1IngressFrom ingressFrom;
+  GoogleIdentityAccesscontextmanagerV1IngressFrom? ingressFrom;
 
   /// Defines the conditions on the ApiOperation and request destination that
   /// cause this IngressPolicy to apply.
-  GoogleIdentityAccesscontextmanagerV1IngressTo ingressTo;
+  GoogleIdentityAccesscontextmanagerV1IngressTo? ingressTo;
 
   GoogleIdentityAccesscontextmanagerV1IngressPolicy();
 
@@ -3161,9 +3122,9 @@ class GoogleIdentityAccesscontextmanagerV1IngressPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ingressFrom != null) 'ingressFrom': ingressFrom.toJson(),
-        if (ingressTo != null) 'ingressTo': ingressTo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ingressFrom != null) 'ingressFrom': ingressFrom!.toJson(),
+        if (ingressTo != null) 'ingressTo': ingressTo!.toJson(),
       };
 }
 
@@ -3178,7 +3139,7 @@ class GoogleIdentityAccesscontextmanagerV1IngressSource {
   /// accessed via Google Cloud calls with request origins within the perimeter.
   /// Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If `*` is
   /// specified, then all IngressSources will be allowed.
-  core.String accessLevel;
+  core.String? accessLevel;
 
   /// A Google Cloud resource that is allowed to ingress the perimeter.
   ///
@@ -3187,7 +3148,7 @@ class GoogleIdentityAccesscontextmanagerV1IngressSource {
   /// The project may be in any Google Cloud organization, not just the
   /// organization that the perimeter is defined in. `*` is not allowed, the
   /// case of allowing all Google Cloud resources only is not supported.
-  core.String resource;
+  core.String? resource;
 
   GoogleIdentityAccesscontextmanagerV1IngressSource();
 
@@ -3200,9 +3161,9 @@ class GoogleIdentityAccesscontextmanagerV1IngressSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessLevel != null) 'accessLevel': accessLevel,
-        if (resource != null) 'resource': resource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessLevel != null) 'accessLevel': accessLevel!,
+        if (resource != null) 'resource': resource!,
       };
 }
 
@@ -3213,7 +3174,7 @@ class GoogleIdentityAccesscontextmanagerV1IngressSource {
 class GoogleIdentityAccesscontextmanagerV1IngressTo {
   /// A list of ApiOperations the sources specified in corresponding IngressFrom
   /// are allowed to perform in this ServicePerimeter.
-  core.List<GoogleIdentityAccesscontextmanagerV1ApiOperation> operations;
+  core.List<GoogleIdentityAccesscontextmanagerV1ApiOperation>? operations;
 
   /// A list of resources, currently only projects in the form `projects/`,
   /// protected by this ServicePerimeter that are allowed to be accessed by
@@ -3223,7 +3184,7 @@ class GoogleIdentityAccesscontextmanagerV1IngressTo {
   /// specified for resources, then this IngressTo rule will authorize access to
   /// all resources inside the perimeter, provided that the request also matches
   /// the `operations` field.
-  core.List<core.String> resources;
+  core.List<core.String>? resources;
 
   GoogleIdentityAccesscontextmanagerV1IngressTo();
 
@@ -3242,10 +3203,10 @@ class GoogleIdentityAccesscontextmanagerV1IngressTo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
-        if (resources != null) 'resources': resources,
+          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -3256,11 +3217,11 @@ class GoogleIdentityAccesscontextmanagerV1MethodSelector {
   ///
   /// If `*` used as value for `method`, then ALL methods and permissions are
   /// allowed.
-  core.String method;
+  core.String? method;
 
   /// Value for `permission` should be a valid Cloud IAM permission for the
   /// corresponding `service_name` in ApiOperation.
-  core.String permission;
+  core.String? permission;
 
   GoogleIdentityAccesscontextmanagerV1MethodSelector();
 
@@ -3273,9 +3234,9 @@ class GoogleIdentityAccesscontextmanagerV1MethodSelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (method != null) 'method': method,
-        if (permission != null) 'permission': permission,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (method != null) 'method': method!,
+        if (permission != null) 'permission': permission!,
       };
 }
 
@@ -3285,7 +3246,7 @@ class GoogleIdentityAccesscontextmanagerV1OsConstraint {
   ///
   /// If not set, any version of this OS satisfies the constraint. Format:
   /// `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
-  core.String minimumVersion;
+  core.String? minimumVersion;
 
   /// The allowed OS type.
   ///
@@ -3299,14 +3260,14 @@ class GoogleIdentityAccesscontextmanagerV1OsConstraint {
   /// - "DESKTOP_CHROME_OS" : A desktop ChromeOS operating system.
   /// - "ANDROID" : An Android operating system.
   /// - "IOS" : An iOS operating system.
-  core.String osType;
+  core.String? osType;
 
   /// Only allows requests from devices with a verified Chrome OS.
   ///
   /// Verifications includes requirements that the device is enterprise-managed,
   /// conformant to domain policies, and the caller has permission to call the
   /// API targeted by the request.
-  core.bool requireVerifiedChromeOs;
+  core.bool? requireVerifiedChromeOs;
 
   GoogleIdentityAccesscontextmanagerV1OsConstraint();
 
@@ -3322,11 +3283,11 @@ class GoogleIdentityAccesscontextmanagerV1OsConstraint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (minimumVersion != null) 'minimumVersion': minimumVersion,
-        if (osType != null) 'osType': osType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (minimumVersion != null) 'minimumVersion': minimumVersion!,
+        if (osType != null) 'osType': osType!,
         if (requireVerifiedChromeOs != null)
-          'requireVerifiedChromeOs': requireVerifiedChromeOs,
+          'requireVerifiedChromeOs': requireVerifiedChromeOs!,
       };
 }
 
@@ -3346,7 +3307,7 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
   /// Description of the `ServicePerimeter` and its use.
   ///
   /// Does not affect behavior.
-  core.String description;
+  core.String? description;
 
   /// Resource name for the ServicePerimeter.
   ///
@@ -3355,7 +3316,7 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
   /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Perimeter type indicator.
   ///
@@ -3367,25 +3328,25 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
   /// Possible string values are:
   /// - "PERIMETER_TYPE_REGULAR" : Regular Perimeter.
   /// - "PERIMETER_TYPE_BRIDGE" : Perimeter Bridge.
-  core.String perimeterType;
+  core.String? perimeterType;
 
   /// Proposed (or dry run) ServicePerimeter configuration.
   ///
   /// This configuration allows to specify and test ServicePerimeter
   /// configuration without enforcing actual access restrictions. Only allowed
   /// to be set when the "use_explicit_dry_run_spec" flag is set.
-  GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig spec;
+  GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig? spec;
 
   /// Current ServicePerimeter configuration.
   ///
   /// Specifies sets of resources, restricted services and access levels that
   /// determine perimeter content and boundaries.
-  GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig status;
+  GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig? status;
 
   /// Human readable title.
   ///
   /// Must be unique within the Policy.
-  core.String title;
+  core.String? title;
 
   /// Use explicit dry run spec flag.
   ///
@@ -3399,7 +3360,7 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
   /// between currently enforced and suggested restrictions.
   /// use_explicit_dry_run_spec must bet set to True if any of the fields in the
   /// spec are set to non-default values.
-  core.bool useExplicitDryRunSpec;
+  core.bool? useExplicitDryRunSpec;
 
   GoogleIdentityAccesscontextmanagerV1ServicePerimeter();
 
@@ -3432,15 +3393,15 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (name != null) 'name': name,
-        if (perimeterType != null) 'perimeterType': perimeterType,
-        if (spec != null) 'spec': spec.toJson(),
-        if (status != null) 'status': status.toJson(),
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (perimeterType != null) 'perimeterType': perimeterType!,
+        if (spec != null) 'spec': spec!.toJson(),
+        if (status != null) 'status': status!.toJson(),
+        if (title != null) 'title': title!,
         if (useExplicitDryRunSpec != null)
-          'useExplicitDryRunSpec': useExplicitDryRunSpec,
+          'useExplicitDryRunSpec': useExplicitDryRunSpec!,
       };
 }
 
@@ -3457,26 +3418,26 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
   /// within the perimeter. Example:
   /// `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter
   /// Bridge, must be empty.
-  core.List<core.String> accessLevels;
+  core.List<core.String>? accessLevels;
 
   /// List of EgressPolicies to apply to the perimeter.
   ///
   /// A perimeter may have multiple EgressPolicies, each of which is evaluated
   /// separately. Access is granted if any EgressPolicy grants it. Must be empty
   /// for a perimeter bridge.
-  core.List<GoogleIdentityAccesscontextmanagerV1EgressPolicy> egressPolicies;
+  core.List<GoogleIdentityAccesscontextmanagerV1EgressPolicy>? egressPolicies;
 
   /// List of IngressPolicies to apply to the perimeter.
   ///
   /// A perimeter may have multiple IngressPolicies, each of which is evaluated
   /// separately. Access is granted if any Ingress Policy grants it. Must be
   /// empty for a perimeter bridge.
-  core.List<GoogleIdentityAccesscontextmanagerV1IngressPolicy> ingressPolicies;
+  core.List<GoogleIdentityAccesscontextmanagerV1IngressPolicy>? ingressPolicies;
 
   /// A list of Google Cloud resources that are inside of the service perimeter.
   ///
   /// Currently only projects are allowed. Format: `projects/{project_number}`
-  core.List<core.String> resources;
+  core.List<core.String>? resources;
 
   /// Google Cloud services that are subject to the Service Perimeter
   /// restrictions.
@@ -3484,10 +3445,10 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
   /// For example, if `storage.googleapis.com` is specified, access to the
   /// storage buckets inside the perimeter must meet the perimeter's access
   /// restrictions.
-  core.List<core.String> restrictedServices;
+  core.List<core.String>? restrictedServices;
 
   /// Configuration for APIs allowed within Perimeter.
-  GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
+  GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices?
       vpcAccessibleServices;
 
   GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig();
@@ -3531,19 +3492,19 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessLevels != null) 'accessLevels': accessLevels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessLevels != null) 'accessLevels': accessLevels!,
         if (egressPolicies != null)
           'egressPolicies':
-              egressPolicies.map((value) => value.toJson()).toList(),
+              egressPolicies!.map((value) => value.toJson()).toList(),
         if (ingressPolicies != null)
           'ingressPolicies':
-              ingressPolicies.map((value) => value.toJson()).toList(),
-        if (resources != null) 'resources': resources,
+              ingressPolicies!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
         if (restrictedServices != null)
-          'restrictedServices': restrictedServices,
+          'restrictedServices': restrictedServices!,
         if (vpcAccessibleServices != null)
-          'vpcAccessibleServices': vpcAccessibleServices.toJson(),
+          'vpcAccessibleServices': vpcAccessibleServices!.toJson(),
       };
 }
 
@@ -3555,11 +3516,11 @@ class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices {
   /// of individual services, as well as include the 'RESTRICTED-SERVICES'
   /// value, which automatically includes all of the services protected by the
   /// perimeter.
-  core.List<core.String> allowedServices;
+  core.List<core.String>? allowedServices;
 
   /// Whether to restrict API calls within the Service Perimeter to the list of
   /// APIs specified in 'allowed_services'.
-  core.bool enableRestriction;
+  core.bool? enableRestriction;
 
   GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices();
 
@@ -3575,27 +3536,27 @@ class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowedServices != null) 'allowedServices': allowedServices,
-        if (enableRestriction != null) 'enableRestriction': enableRestriction,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowedServices != null) 'allowedServices': allowedServices!,
+        if (enableRestriction != null) 'enableRestriction': enableRestriction!,
       };
 }
 
 /// An analysis message to group the query and results.
 class IamPolicyAnalysis {
   /// The analysis query.
-  IamPolicyAnalysisQuery analysisQuery;
+  IamPolicyAnalysisQuery? analysisQuery;
 
   /// A list of IamPolicyAnalysisResult that matches the analysis query, or
   /// empty if no result is found.
-  core.List<IamPolicyAnalysisResult> analysisResults;
+  core.List<IamPolicyAnalysisResult>? analysisResults;
 
   /// Represents whether all entries in the analysis_results have been fully
   /// explored to answer the query.
-  core.bool fullyExplored;
+  core.bool? fullyExplored;
 
   /// A list of non-critical errors happened during the query handling.
-  core.List<IamPolicyAnalysisState> nonCriticalErrors;
+  core.List<IamPolicyAnalysisState>? nonCriticalErrors;
 
   IamPolicyAnalysis();
 
@@ -3623,25 +3584,25 @@ class IamPolicyAnalysis {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (analysisQuery != null) 'analysisQuery': analysisQuery.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (analysisQuery != null) 'analysisQuery': analysisQuery!.toJson(),
         if (analysisResults != null)
           'analysisResults':
-              analysisResults.map((value) => value.toJson()).toList(),
-        if (fullyExplored != null) 'fullyExplored': fullyExplored,
+              analysisResults!.map((value) => value.toJson()).toList(),
+        if (fullyExplored != null) 'fullyExplored': fullyExplored!,
         if (nonCriticalErrors != null)
           'nonCriticalErrors':
-              nonCriticalErrors.map((value) => value.toJson()).toList(),
+              nonCriticalErrors!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Output configuration for export IAM policy analysis destination.
 class IamPolicyAnalysisOutputConfig {
   /// Destination on BigQuery.
-  GoogleCloudAssetV1BigQueryDestination bigqueryDestination;
+  GoogleCloudAssetV1BigQueryDestination? bigqueryDestination;
 
   /// Destination on Cloud Storage.
-  GoogleCloudAssetV1GcsDestination gcsDestination;
+  GoogleCloudAssetV1GcsDestination? gcsDestination;
 
   IamPolicyAnalysisOutputConfig();
 
@@ -3656,10 +3617,10 @@ class IamPolicyAnalysisOutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bigqueryDestination != null)
-          'bigqueryDestination': bigqueryDestination.toJson(),
-        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+          'bigqueryDestination': bigqueryDestination!.toJson(),
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
       };
 }
 
@@ -3670,22 +3631,22 @@ class IamPolicyAnalysisQuery {
   /// This is optional.
   ///
   /// Optional.
-  AccessSelector accessSelector;
+  AccessSelector? accessSelector;
 
   /// Specifies an identity for analysis.
   ///
   /// Optional.
-  IdentitySelector identitySelector;
+  IdentitySelector? identitySelector;
 
   /// The query options.
   ///
   /// Optional.
-  Options options;
+  Options? options;
 
   /// Specifies a resource for analysis.
   ///
   /// Optional.
-  ResourceSelector resourceSelector;
+  ResourceSelector? resourceSelector;
 
   /// The relative name of the root asset.
   ///
@@ -3699,7 +3660,7 @@ class IamPolicyAnalysisQuery {
   /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
   ///
   /// Required.
-  core.String scope;
+  core.String? scope;
 
   IamPolicyAnalysisQuery();
 
@@ -3725,14 +3686,14 @@ class IamPolicyAnalysisQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessSelector != null) 'accessSelector': accessSelector.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessSelector != null) 'accessSelector': accessSelector!.toJson(),
         if (identitySelector != null)
-          'identitySelector': identitySelector.toJson(),
-        if (options != null) 'options': options.toJson(),
+          'identitySelector': identitySelector!.toJson(),
+        if (options != null) 'options': options!.toJson(),
         if (resourceSelector != null)
-          'resourceSelector': resourceSelector.toJson(),
-        if (scope != null) 'scope': scope,
+          'resourceSelector': resourceSelector!.toJson(),
+        if (scope != null) 'scope': scope!,
       };
 }
 
@@ -3741,23 +3702,23 @@ class IamPolicyAnalysisQuery {
 class IamPolicyAnalysisResult {
   /// The access control lists derived from the iam_binding that match or
   /// potentially match resource and access selectors specified in the request.
-  core.List<GoogleCloudAssetV1AccessControlList> accessControlLists;
+  core.List<GoogleCloudAssetV1AccessControlList>? accessControlLists;
 
   /// The
   /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
   /// of the resource to which the iam_binding policy attaches.
-  core.String attachedResourceFullName;
+  core.String? attachedResourceFullName;
 
   /// Represents whether all analyses on the iam_binding have successfully
   /// finished.
-  core.bool fullyExplored;
+  core.bool? fullyExplored;
 
   /// The Cloud IAM policy binding under analysis.
-  Binding iamBinding;
+  Binding? iamBinding;
 
   /// The identity list derived from members of the iam_binding that match or
   /// potentially match identity selector specified in the request.
-  GoogleCloudAssetV1IdentityList identityList;
+  GoogleCloudAssetV1IdentityList? identityList;
 
   IamPolicyAnalysisResult();
 
@@ -3786,15 +3747,15 @@ class IamPolicyAnalysisResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accessControlLists != null)
           'accessControlLists':
-              accessControlLists.map((value) => value.toJson()).toList(),
+              accessControlLists!.map((value) => value.toJson()).toList(),
         if (attachedResourceFullName != null)
-          'attachedResourceFullName': attachedResourceFullName,
-        if (fullyExplored != null) 'fullyExplored': fullyExplored,
-        if (iamBinding != null) 'iamBinding': iamBinding.toJson(),
-        if (identityList != null) 'identityList': identityList.toJson(),
+          'attachedResourceFullName': attachedResourceFullName!,
+        if (fullyExplored != null) 'fullyExplored': fullyExplored!,
+        if (iamBinding != null) 'iamBinding': iamBinding!.toJson(),
+        if (identityList != null) 'identityList': identityList!.toJson(),
       };
 }
 
@@ -3802,7 +3763,7 @@ class IamPolicyAnalysisResult {
 /// resource, an identity or an access.
 class IamPolicyAnalysisState {
   /// The human-readable description of the cause of failure.
-  core.String cause;
+  core.String? cause;
 
   /// The Google standard error code that best describes the state.
   ///
@@ -3890,7 +3851,7 @@ class IamPolicyAnalysisState {
   /// Service Unavailable
   /// - "DATA_LOSS" : Unrecoverable data loss or corruption. HTTP Mapping: 500
   /// Internal Server Error
-  core.String code;
+  core.String? code;
 
   IamPolicyAnalysisState();
 
@@ -3903,9 +3864,9 @@ class IamPolicyAnalysisState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cause != null) 'cause': cause,
-        if (code != null) 'code': code,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cause != null) 'cause': cause!,
+        if (code != null) 'code': code!,
       };
 }
 
@@ -3915,7 +3876,7 @@ class IamPolicySearchResult {
   ///
   /// It contains additional information to explain why the search result
   /// matches the query.
-  Explanation explanation;
+  Explanation? explanation;
 
   /// The IAM policy directly set on the given resource.
   ///
@@ -3928,7 +3889,7 @@ class IamPolicySearchResult {
   /// `policy:roles/compute.admin` - query by the policy contained roles'
   /// included permissions. Example:
   /// `policy.role.permissions:compute.instances.create`
-  Policy policy;
+  Policy? policy;
 
   /// The project that the associated GCP resource belongs to, in the form of
   /// projects/{PROJECT_NUMBER}.
@@ -3938,7 +3899,7 @@ class IamPolicySearchResult {
   /// resource. If an IAM policy is set on a folder or orgnization, this field
   /// will be empty. To search against the `project`: * specify the `scope`
   /// field as this project in your search request.
-  core.String project;
+  core.String? project;
 
   /// The full resource name of the resource associated with this IAM policy.
   ///
@@ -3948,7 +3909,7 @@ class IamPolicySearchResult {
   /// [Cloud Asset Inventory Resource Name Format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
   /// for more information. To search against the `resource`: * use a field
   /// query. Example: `resource:organizations/123`
-  core.String resource;
+  core.String? resource;
 
   IamPolicySearchResult();
 
@@ -3969,11 +3930,11 @@ class IamPolicySearchResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (explanation != null) 'explanation': explanation.toJson(),
-        if (policy != null) 'policy': policy.toJson(),
-        if (project != null) 'project': project,
-        if (resource != null) 'resource': resource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (explanation != null) 'explanation': explanation!.toJson(),
+        if (policy != null) 'policy': policy!.toJson(),
+        if (project != null) 'project': project!,
+        if (resource != null) 'resource': resource!,
       };
 }
 
@@ -3991,7 +3952,7 @@ class IdentitySelector {
   /// specific identity.
   ///
   /// Required.
-  core.String identity;
+  core.String? identity;
 
   IdentitySelector();
 
@@ -4001,8 +3962,8 @@ class IdentitySelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (identity != null) 'identity': identity,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (identity != null) 'identity': identity!,
       };
 }
 
@@ -4013,16 +3974,18 @@ class Inventory {
   ///
   /// The identifier is unique to each distinct and addressable inventory item
   /// and will change, when there is a new package version.
-  core.Map<core.String, Item> items;
+  core.Map<core.String, Item>? items;
 
   /// Base level operating system information for the VM.
-  OsInfo osInfo;
+  OsInfo? osInfo;
 
   Inventory();
 
   Inventory.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
-      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+      items = (_json['items'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               Item.fromJson(item as core.Map<core.String, core.dynamic>),
@@ -4035,33 +3998,33 @@ class Inventory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (osInfo != null) 'osInfo': osInfo.toJson(),
+          'items': items!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (osInfo != null) 'osInfo': osInfo!.toJson(),
       };
 }
 
 /// A single piece of inventory on a VM.
 class Item {
   /// Software package available to be installed on the VM instance.
-  SoftwarePackage availablePackage;
+  SoftwarePackage? availablePackage;
 
   /// When this inventory item was first detected.
-  core.String createTime;
+  core.String? createTime;
 
   /// Identifier for this item, unique across items for this VM.
-  core.String id;
+  core.String? id;
 
   /// Software package present on the VM instance.
-  SoftwarePackage installedPackage;
+  SoftwarePackage? installedPackage;
 
   /// The origin of this inventory item.
   /// Possible string values are:
   /// - "ORIGIN_TYPE_UNSPECIFIED" : Invalid. An origin type must be specified.
   /// - "INVENTORY_REPORT" : This inventory item was discovered as the result of
   /// the agent reporting inventory via the reporting API.
-  core.String originType;
+  core.String? originType;
 
   /// The specific type of inventory, correlating to its specific details.
   /// Possible string values are:
@@ -4070,10 +4033,10 @@ class Item {
   /// VM.
   /// - "AVAILABLE_PACKAGE" : This represents an update that is available for a
   /// package.
-  core.String type;
+  core.String? type;
 
   /// When this inventory item was last modified.
-  core.String updateTime;
+  core.String? updateTime;
 
   Item();
 
@@ -4103,22 +4066,22 @@ class Item {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (availablePackage != null)
-          'availablePackage': availablePackage.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (id != null) 'id': id,
+          'availablePackage': availablePackage!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (id != null) 'id': id!,
         if (installedPackage != null)
-          'installedPackage': installedPackage.toJson(),
-        if (originType != null) 'originType': originType,
-        if (type != null) 'type': type,
-        if (updateTime != null) 'updateTime': updateTime,
+          'installedPackage': installedPackage!.toJson(),
+        if (originType != null) 'originType': originType!,
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 class ListFeedsResponse {
   /// A list of feeds.
-  core.List<Feed> feeds;
+  core.List<Feed>? feeds;
 
   ListFeedsResponse();
 
@@ -4131,9 +4094,9 @@ class ListFeedsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (feeds != null)
-          'feeds': feeds.map((value) => value.toJson()).toList(),
+          'feeds': feeds!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4144,10 +4107,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -4158,14 +4121,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -4178,7 +4141,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -4213,12 +4176,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -4247,7 +4210,7 @@ class Options {
   /// is false.
   ///
   /// Optional.
-  core.bool analyzeServiceAccountImpersonation;
+  core.bool? analyzeServiceAccountImpersonation;
 
   /// If true, the identities section of the result will expand any Google
   /// groups appearing in an IAM policy binding.
@@ -4257,7 +4220,7 @@ class Options {
   /// allowed to set. Default is false.
   ///
   /// Optional.
-  core.bool expandGroups;
+  core.bool? expandGroups;
 
   /// If true and IamPolicyAnalysisQuery.resource_selector is not specified, the
   /// resource section of the result will expand any resource attached to an IAM
@@ -4276,7 +4239,7 @@ class Options {
   /// on that project or any lower resource. Default is false.
   ///
   /// Optional.
-  core.bool expandResources;
+  core.bool? expandResources;
 
   /// If true, the access section of result will expand any roles appearing in
   /// IAM policy bindings to include their permissions.
@@ -4286,7 +4249,7 @@ class Options {
   /// allowed to set. Default is false.
   ///
   /// Optional.
-  core.bool expandRoles;
+  core.bool? expandRoles;
 
   /// If true, the result will output group identity edges, starting from the
   /// binding's group members, to any expanded identities.
@@ -4294,7 +4257,7 @@ class Options {
   /// Default is false.
   ///
   /// Optional.
-  core.bool outputGroupEdges;
+  core.bool? outputGroupEdges;
 
   /// If true, the result will output resource edges, starting from the policy
   /// attached resource, to any expanded resources.
@@ -4302,7 +4265,7 @@ class Options {
   /// Default is false.
   ///
   /// Optional.
-  core.bool outputResourceEdges;
+  core.bool? outputResourceEdges;
 
   Options();
 
@@ -4328,49 +4291,49 @@ class Options {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (analyzeServiceAccountImpersonation != null)
           'analyzeServiceAccountImpersonation':
-              analyzeServiceAccountImpersonation,
-        if (expandGroups != null) 'expandGroups': expandGroups,
-        if (expandResources != null) 'expandResources': expandResources,
-        if (expandRoles != null) 'expandRoles': expandRoles,
-        if (outputGroupEdges != null) 'outputGroupEdges': outputGroupEdges,
+              analyzeServiceAccountImpersonation!,
+        if (expandGroups != null) 'expandGroups': expandGroups!,
+        if (expandResources != null) 'expandResources': expandResources!,
+        if (expandRoles != null) 'expandRoles': expandRoles!,
+        if (outputGroupEdges != null) 'outputGroupEdges': outputGroupEdges!,
         if (outputResourceEdges != null)
-          'outputResourceEdges': outputResourceEdges,
+          'outputResourceEdges': outputResourceEdges!,
       };
 }
 
 /// Operating system information for the VM.
 class OsInfo {
   /// The system architecture of the operating system.
-  core.String architecture;
+  core.String? architecture;
 
   /// The VM hostname.
-  core.String hostname;
+  core.String? hostname;
 
   /// The kernel release of the operating system.
-  core.String kernelRelease;
+  core.String? kernelRelease;
 
   /// The kernel version of the operating system.
-  core.String kernelVersion;
+  core.String? kernelVersion;
 
   /// The operating system long name.
   ///
   /// For example 'Debian GNU/Linux 9' or 'Microsoft Window Server 2019
   /// Datacenter'.
-  core.String longName;
+  core.String? longName;
 
   /// The current version of the OS Config agent running on the VM.
-  core.String osconfigAgentVersion;
+  core.String? osconfigAgentVersion;
 
   /// The operating system short name.
   ///
   /// For example, 'windows' or 'debian'.
-  core.String shortName;
+  core.String? shortName;
 
   /// The version of the operating system.
-  core.String version;
+  core.String? version;
 
   OsInfo();
 
@@ -4401,16 +4364,16 @@ class OsInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (architecture != null) 'architecture': architecture,
-        if (hostname != null) 'hostname': hostname,
-        if (kernelRelease != null) 'kernelRelease': kernelRelease,
-        if (kernelVersion != null) 'kernelVersion': kernelVersion,
-        if (longName != null) 'longName': longName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (hostname != null) 'hostname': hostname!,
+        if (kernelRelease != null) 'kernelRelease': kernelRelease!,
+        if (kernelVersion != null) 'kernelVersion': kernelVersion!,
+        if (longName != null) 'longName': longName!,
         if (osconfigAgentVersion != null)
-          'osconfigAgentVersion': osconfigAgentVersion,
-        if (shortName != null) 'shortName': shortName,
-        if (version != null) 'version': version,
+          'osconfigAgentVersion': osconfigAgentVersion!,
+        if (shortName != null) 'shortName': shortName!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -4419,10 +4382,10 @@ class OutputConfig {
   /// Destination on BigQuery.
   ///
   /// The output table stores the fields in asset proto as columns in BigQuery.
-  BigQueryDestination bigqueryDestination;
+  BigQueryDestination? bigqueryDestination;
 
   /// Destination on Cloud Storage.
-  GcsDestination gcsDestination;
+  GcsDestination? gcsDestination;
 
   OutputConfig();
 
@@ -4437,10 +4400,10 @@ class OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bigqueryDestination != null)
-          'bigqueryDestination': bigqueryDestination.toJson(),
-        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+          'bigqueryDestination': bigqueryDestination!.toJson(),
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
       };
 }
 
@@ -4459,7 +4422,7 @@ class PartitionSpec {
   /// processed. If specified as partition key, the result table(s) is
   /// partitoned by the requestTime column, an additional timestamp column
   /// representing when the request was received.
-  core.String partitionKey;
+  core.String? partitionKey;
 
   PartitionSpec();
 
@@ -4469,8 +4432,8 @@ class PartitionSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (partitionKey != null) 'partitionKey': partitionKey,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (partitionKey != null) 'partitionKey': partitionKey!,
       };
 }
 
@@ -4479,7 +4442,7 @@ class Permissions {
   /// A list of permissions.
   ///
   /// A sample permission string: `compute.disk.get`.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   Permissions();
 
@@ -4491,8 +4454,8 @@ class Permissions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -4529,14 +4492,14 @@ class Permissions {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -4550,8 +4513,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -4575,7 +4538,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -4600,13 +4563,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -4615,7 +4578,7 @@ class PubsubDestination {
   /// The name of the Pub/Sub topic to publish to.
   ///
   /// Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
-  core.String topic;
+  core.String? topic;
 
   PubsubDestination();
 
@@ -4625,8 +4588,8 @@ class PubsubDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (topic != null) 'topic': topic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (topic != null) 'topic': topic!,
       };
 }
 
@@ -4637,25 +4600,25 @@ class Resource {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> data;
+  core.Map<core.String, core.Object>? data;
 
   /// The URL of the discovery document containing the resource's JSON schema.
   ///
   /// Example: `https://www.googleapis.com/discovery/v1/apis/compute/v1/rest`
   /// This value is unspecified for resources that do not have an API based on a
   /// discovery document, such as Cloud Bigtable.
-  core.String discoveryDocumentUri;
+  core.String? discoveryDocumentUri;
 
   /// The JSON schema name listed in the discovery document.
   ///
   /// Example: `Project` This value is unspecified for resources that do not
   /// have an API based on a discovery document, such as Cloud Bigtable.
-  core.String discoveryName;
+  core.String? discoveryName;
 
   /// The location of the resource in Google Cloud, such as its zone and region.
   ///
   /// For more information, see https://cloud.google.com/about/locations/.
-  core.String location;
+  core.String? location;
 
   /// The full name of the immediate parent of this resource.
   ///
@@ -4666,19 +4629,19 @@ class Resource {
   /// [Cloud IAM policy hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).
   /// Example: `//cloudresourcemanager.googleapis.com/projects/my_project_123`
   /// For third-party assets, this field may be set differently.
-  core.String parent;
+  core.String? parent;
 
   /// The REST URL for accessing the resource.
   ///
   /// An HTTP `GET` request using this URL returns the resource itself. Example:
   /// `https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`
   /// This value is unspecified for resources without a REST API.
-  core.String resourceUrl;
+  core.String? resourceUrl;
 
   /// The API version.
   ///
   /// Example: `v1`
-  core.String version;
+  core.String? version;
 
   Resource();
 
@@ -4711,15 +4674,15 @@ class Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!,
         if (discoveryDocumentUri != null)
-          'discoveryDocumentUri': discoveryDocumentUri,
-        if (discoveryName != null) 'discoveryName': discoveryName,
-        if (location != null) 'location': location,
-        if (parent != null) 'parent': parent,
-        if (resourceUrl != null) 'resourceUrl': resourceUrl,
-        if (version != null) 'version': version,
+          'discoveryDocumentUri': discoveryDocumentUri!,
+        if (discoveryName != null) 'discoveryName': discoveryName!,
+        if (location != null) 'location': location!,
+        if (parent != null) 'parent': parent!,
+        if (resourceUrl != null) 'resourceUrl': resourceUrl!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -4743,13 +4706,13 @@ class ResourceSearchResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> additionalAttributes;
+  core.Map<core.String, core.Object>? additionalAttributes;
 
   /// The type of this resource.
   ///
   /// Example: `compute.googleapis.com/Disk`. To search against the
   /// `asset_type`: * specify the `asset_type` field in your search request.
-  core.String assetType;
+  core.String? assetType;
 
   /// The create timestamp of this resource, at which the resource was created.
   ///
@@ -4757,7 +4720,7 @@ class ResourceSearchResult {
   /// field is available only when the resource's proto contains it. To search
   /// against `create_time`: * use a field query (value in seconds). Example:
   /// `createTime >= 1594294238`
-  core.String createTime;
+  core.String? createTime;
 
   /// One or more paragraphs of text description of this resource.
   ///
@@ -4765,7 +4728,7 @@ class ResourceSearchResult {
   /// the resource's proto contains it. To search against the `description`: *
   /// use a field query. Example: `description:"important instance"` * use a
   /// free text query. Example: `"important instance"`
-  core.String description;
+  core.String? description;
 
   /// The display name of this resource.
   ///
@@ -4773,7 +4736,7 @@ class ResourceSearchResult {
   /// search against the `display_name`: * use a field query. Example:
   /// `displayName:"My Instance"` * use a free text query. Example: `"My
   /// Instance"`
-  core.String displayName;
+  core.String? displayName;
 
   /// The folder(s) that this resource belongs to, in the form of
   /// folders/{FOLDER_NUMBER}.
@@ -4782,7 +4745,7 @@ class ResourceSearchResult {
   /// To search against `folders`: * use a field query. Example: `folders:(123
   /// OR 456)` * use a free text query. Example: `123` * specify the `scope`
   /// field as this folder in your search request.
-  core.List<core.String> folders;
+  core.List<core.String>? folders;
 
   /// The Cloud KMS
   /// [CryptoKey](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys?hl=en)
@@ -4793,7 +4756,7 @@ class ResourceSearchResult {
   /// This field is available only when the resource's proto contains it. To
   /// search against the `kms_key`: * use a field query. Example: `kmsKey:key` *
   /// use a free text query. Example: `key`
-  core.String kmsKey;
+  core.String? kmsKey;
 
   /// Labels associated with this resource.
   ///
@@ -4805,7 +4768,7 @@ class ResourceSearchResult {
   /// given label. Example: `labels.env:prod` - query by a given label's
   /// existence. Example: `labels.env:*` * use a free text query. Example:
   /// `prod`
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Location can be `global`, regional like `us-east1`, or zonal like
   /// `us-west1-b`.
@@ -4813,7 +4776,7 @@ class ResourceSearchResult {
   /// This field is available only when the resource's proto contains it. To
   /// search against the `location`: * use a field query. Example:
   /// `location:us-west*` * use a free text query. Example: `us-west*`
-  core.String location;
+  core.String? location;
 
   /// The full resource name of this resource.
   ///
@@ -4823,7 +4786,7 @@ class ResourceSearchResult {
   /// [Cloud Asset Inventory Resource Name Format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
   /// for more information. To search against the `name`: * use a field query.
   /// Example: `name:instance1` * use a free text query. Example: `instance1`
-  core.String name;
+  core.String? name;
 
   /// Network tags associated with this resource.
   ///
@@ -4834,7 +4797,7 @@ class ResourceSearchResult {
   /// proto contains it. To search against the `network_tags`: * use a field
   /// query. Example: `networkTags:internal` * use a free text query. Example:
   /// `internal`
-  core.List<core.String> networkTags;
+  core.List<core.String>? networkTags;
 
   /// The organization that this resource belongs to, in the form of
   /// organizations/{ORGANIZATION_NUMBER}.
@@ -4843,17 +4806,17 @@ class ResourceSearchResult {
   /// search against `organization`: * use a field query. Example:
   /// `organization:123` * use a free text query. Example: `123` * specify the
   /// `scope` field as this organization in your search request.
-  core.String organization;
+  core.String? organization;
 
   /// The type of this resource's immediate parent, if there is one.
   ///
   /// To search against the `parent_asset_type`: * use a field query. Example:
   /// `parentAssetType:"cloudresourcemanager.googleapis.com/Project"` * use a
   /// free text query. Example: `cloudresourcemanager.googleapis.com/Project`
-  core.String parentAssetType;
+  core.String? parentAssetType;
 
   /// The full resource name of this resource's parent, if it has one.
-  core.String parentFullResourceName;
+  core.String? parentFullResourceName;
 
   /// The project that this resource belongs to, in the form of
   /// projects/{PROJECT_NUMBER}.
@@ -4862,7 +4825,7 @@ class ResourceSearchResult {
   /// against `project`: * use a field query. Example: `project:12345` * use a
   /// free text query. Example: `12345` * specify the `scope` field as this
   /// project in your search request.
-  core.String project;
+  core.String? project;
 
   /// The state of this resource.
   ///
@@ -4879,7 +4842,7 @@ class ResourceSearchResult {
   /// [API Reference](https://cloud.google.com/resource-manager/reference/rest/v1/projects).
   /// To search against the `state`: * use a field query. Example:
   /// `state:RUNNING` * use a free text query. Example: `RUNNING`
-  core.String state;
+  core.String? state;
 
   /// The last update timestamp of this resource, at which the resource was last
   /// modified or deleted.
@@ -4888,7 +4851,7 @@ class ResourceSearchResult {
   /// field is available only when the resource's proto contains it. To search
   /// against `update_time`: * use a field query (value in seconds). Example:
   /// `updateTime < 1594294238`
-  core.String updateTime;
+  core.String? updateTime;
 
   ResourceSearchResult();
 
@@ -4963,26 +4926,26 @@ class ResourceSearchResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additionalAttributes != null)
-          'additionalAttributes': additionalAttributes,
-        if (assetType != null) 'assetType': assetType,
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (folders != null) 'folders': folders,
-        if (kmsKey != null) 'kmsKey': kmsKey,
-        if (labels != null) 'labels': labels,
-        if (location != null) 'location': location,
-        if (name != null) 'name': name,
-        if (networkTags != null) 'networkTags': networkTags,
-        if (organization != null) 'organization': organization,
-        if (parentAssetType != null) 'parentAssetType': parentAssetType,
+          'additionalAttributes': additionalAttributes!,
+        if (assetType != null) 'assetType': assetType!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (folders != null) 'folders': folders!,
+        if (kmsKey != null) 'kmsKey': kmsKey!,
+        if (labels != null) 'labels': labels!,
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
+        if (networkTags != null) 'networkTags': networkTags!,
+        if (organization != null) 'organization': organization!,
+        if (parentAssetType != null) 'parentAssetType': parentAssetType!,
         if (parentFullResourceName != null)
-          'parentFullResourceName': parentFullResourceName,
-        if (project != null) 'project': project,
-        if (state != null) 'state': state,
-        if (updateTime != null) 'updateTime': updateTime,
+          'parentFullResourceName': parentFullResourceName!,
+        if (project != null) 'project': project!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -4996,7 +4959,7 @@ class ResourceSelector {
   /// [supported resource types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#analyzable_asset_types).
   ///
   /// Required.
-  core.String fullResourceName;
+  core.String? fullResourceName;
 
   ResourceSelector();
 
@@ -5006,8 +4969,8 @@ class ResourceSelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fullResourceName != null) 'fullResourceName': fullResourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
       };
 }
 
@@ -5016,13 +4979,13 @@ class SearchAllIamPoliciesResponse {
   /// Set if there are more results than those appearing in this response; to
   /// get the next set of results, call this method again, using this value as
   /// the `page_token`.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of IamPolicy that match the search query.
   ///
   /// Related information such as the associated resource is returned along with
   /// the policy.
-  core.List<IamPolicySearchResult> results;
+  core.List<IamPolicySearchResult>? results;
 
   SearchAllIamPoliciesResponse();
 
@@ -5038,10 +5001,10 @@ class SearchAllIamPoliciesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
+          'results': results!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5052,12 +5015,12 @@ class SearchAllResourcesResponse {
   ///
   /// To get the next set of results, call this method again using the value of
   /// `next_page_token` as `page_token`.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of Resources that match the search query.
   ///
   /// It contains the resource standard metadata information.
-  core.List<ResourceSearchResult> results;
+  core.List<ResourceSearchResult>? results;
 
   SearchAllResourcesResponse();
 
@@ -5073,10 +5036,10 @@ class SearchAllResourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
+          'results': results!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5086,47 +5049,47 @@ class SoftwarePackage {
   ///
   /// For details about the apt package manager, see
   /// https://wiki.debian.org/Apt.
-  VersionedPackage aptPackage;
+  VersionedPackage? aptPackage;
 
   /// Details of a COS package.
-  VersionedPackage cosPackage;
+  VersionedPackage? cosPackage;
 
   /// Details of a Googet package.
   ///
   /// For details about the googet package manager, see
   /// https://github.com/google/googet.
-  VersionedPackage googetPackage;
+  VersionedPackage? googetPackage;
 
   /// Details of a Windows Quick Fix engineering package.
   ///
   /// See
   /// https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering
   /// for info in Windows Quick Fix Engineering.
-  WindowsQuickFixEngineeringPackage qfePackage;
+  WindowsQuickFixEngineeringPackage? qfePackage;
 
   /// Details of a Windows Update package.
   ///
   /// See https://docs.microsoft.com/en-us/windows/win32/api/_wua/ for
   /// information about Windows Update.
-  WindowsUpdatePackage wuaPackage;
+  WindowsUpdatePackage? wuaPackage;
 
   /// Yum package info.
   ///
   /// For details about the yum package manager, see
   /// https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/ch-yum.
-  VersionedPackage yumPackage;
+  VersionedPackage? yumPackage;
 
   /// Details of a Zypper package.
   ///
   /// For details about the Zypper package manager, see
   /// https://en.opensuse.org/SDB:Zypper_manual.
-  VersionedPackage zypperPackage;
+  VersionedPackage? zypperPackage;
 
   /// Details of a Zypper patch.
   ///
   /// For details about the Zypper package manager, see
   /// https://en.opensuse.org/SDB:Zypper_manual.
-  ZypperPatch zypperPatch;
+  ZypperPatch? zypperPatch;
 
   SoftwarePackage();
 
@@ -5165,15 +5128,15 @@ class SoftwarePackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aptPackage != null) 'aptPackage': aptPackage.toJson(),
-        if (cosPackage != null) 'cosPackage': cosPackage.toJson(),
-        if (googetPackage != null) 'googetPackage': googetPackage.toJson(),
-        if (qfePackage != null) 'qfePackage': qfePackage.toJson(),
-        if (wuaPackage != null) 'wuaPackage': wuaPackage.toJson(),
-        if (yumPackage != null) 'yumPackage': yumPackage.toJson(),
-        if (zypperPackage != null) 'zypperPackage': zypperPackage.toJson(),
-        if (zypperPatch != null) 'zypperPatch': zypperPatch.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aptPackage != null) 'aptPackage': aptPackage!.toJson(),
+        if (cosPackage != null) 'cosPackage': cosPackage!.toJson(),
+        if (googetPackage != null) 'googetPackage': googetPackage!.toJson(),
+        if (qfePackage != null) 'qfePackage': qfePackage!.toJson(),
+        if (wuaPackage != null) 'wuaPackage': wuaPackage!.toJson(),
+        if (yumPackage != null) 'yumPackage': yumPackage!.toJson(),
+        if (zypperPackage != null) 'zypperPackage': zypperPackage!.toJson(),
+        if (zypperPatch != null) 'zypperPatch': zypperPatch!.toJson(),
       };
 }
 
@@ -5186,7 +5149,7 @@ class SoftwarePackage {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -5194,13 +5157,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -5224,10 +5187,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -5235,16 +5198,16 @@ class Status {
 /// window when it was observed and its status during that window.
 class TemporalAsset {
   /// An asset in Google Cloud.
-  Asset asset;
+  Asset? asset;
 
   /// Whether the asset has been deleted or not.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// Prior copy of the asset.
   ///
   /// Populated if prior_asset_state is PRESENT. Currently this is only set for
   /// responses in Real-Time Feed.
-  Asset priorAsset;
+  Asset? priorAsset;
 
   /// State of prior_asset.
   /// Possible string values are:
@@ -5254,10 +5217,10 @@ class TemporalAsset {
   /// - "INVALID" : Failed to set prior_asset.
   /// - "DOES_NOT_EXIST" : Current asset is the first known state.
   /// - "DELETED" : prior_asset is a deletion.
-  core.String priorAssetState;
+  core.String? priorAssetState;
 
   /// The time window when the asset data and state was observed.
-  TimeWindow window;
+  TimeWindow? window;
 
   TemporalAsset();
 
@@ -5282,12 +5245,12 @@ class TemporalAsset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (asset != null) 'asset': asset.toJson(),
-        if (deleted != null) 'deleted': deleted,
-        if (priorAsset != null) 'priorAsset': priorAsset.toJson(),
-        if (priorAssetState != null) 'priorAssetState': priorAssetState,
-        if (window != null) 'window': window.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (asset != null) 'asset': asset!.toJson(),
+        if (deleted != null) 'deleted': deleted!,
+        if (priorAsset != null) 'priorAsset': priorAsset!.toJson(),
+        if (priorAssetState != null) 'priorAssetState': priorAssetState!,
+        if (window != null) 'window': window!.toJson(),
       };
 }
 
@@ -5296,10 +5259,10 @@ class TimeWindow {
   /// End time of the time window (inclusive).
   ///
   /// If not specified, the current timestamp is used instead.
-  core.String endTime;
+  core.String? endTime;
 
   /// Start time of the time window (exclusive).
-  core.String startTime;
+  core.String? startTime;
 
   TimeWindow();
 
@@ -5312,9 +5275,9 @@ class TimeWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -5328,7 +5291,7 @@ class UpdateFeedRequest {
   /// organizations/organization_number/feeds/feed_id.
   ///
   /// Required.
-  Feed feed;
+  Feed? feed;
 
   /// Only updates the `feed` fields indicated by this mask.
   ///
@@ -5336,7 +5299,7 @@ class UpdateFeedRequest {
   /// immutable or only set by the server.
   ///
   /// Required.
-  core.String updateMask;
+  core.String? updateMask;
 
   UpdateFeedRequest();
 
@@ -5350,9 +5313,9 @@ class UpdateFeedRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (feed != null) 'feed': feed.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (feed != null) 'feed': feed!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -5362,13 +5325,13 @@ class UpdateFeedRequest {
 /// managers.
 class VersionedPackage {
   /// The system architecture this package is intended for.
-  core.String architecture;
+  core.String? architecture;
 
   /// The name of the package.
-  core.String packageName;
+  core.String? packageName;
 
   /// The version of the package.
-  core.String version;
+  core.String? version;
 
   VersionedPackage();
 
@@ -5384,10 +5347,10 @@ class VersionedPackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (architecture != null) 'architecture': architecture,
-        if (packageName != null) 'packageName': packageName,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (packageName != null) 'packageName': packageName!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -5398,18 +5361,18 @@ class VersionedPackage {
 /// https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering
 class WindowsQuickFixEngineeringPackage {
   /// A short textual description of the QFE update.
-  core.String caption;
+  core.String? caption;
 
   /// A textual description of the QFE update.
-  core.String description;
+  core.String? description;
 
   /// Unique identifier associated with a particular QFE update.
-  core.String hotFixId;
+  core.String? hotFixId;
 
   /// Date that the QFE update was installed.
   ///
   /// Mapped from installed_on field.
-  core.String installTime;
+  core.String? installTime;
 
   WindowsQuickFixEngineeringPackage();
 
@@ -5428,21 +5391,21 @@ class WindowsQuickFixEngineeringPackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (caption != null) 'caption': caption,
-        if (description != null) 'description': description,
-        if (hotFixId != null) 'hotFixId': hotFixId,
-        if (installTime != null) 'installTime': installTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (caption != null) 'caption': caption!,
+        if (description != null) 'description': description!,
+        if (hotFixId != null) 'hotFixId': hotFixId!,
+        if (installTime != null) 'installTime': installTime!,
       };
 }
 
 /// Categories specified by the Windows Update.
 class WindowsUpdateCategory {
   /// The identifier of the windows update category.
-  core.String id;
+  core.String? id;
 
   /// The name of the windows update category.
-  core.String name;
+  core.String? name;
 
   WindowsUpdateCategory();
 
@@ -5455,9 +5418,9 @@ class WindowsUpdateCategory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -5469,35 +5432,35 @@ class WindowsUpdateCategory {
 /// being updated.
 class WindowsUpdatePackage {
   /// The categories that are associated with this update package.
-  core.List<WindowsUpdateCategory> categories;
+  core.List<WindowsUpdateCategory>? categories;
 
   /// The localized description of the update package.
-  core.String description;
+  core.String? description;
 
   /// A collection of Microsoft Knowledge Base article IDs that are associated
   /// with the update package.
-  core.List<core.String> kbArticleIds;
+  core.List<core.String>? kbArticleIds;
 
   /// The last published date of the update, in (UTC) date and time.
-  core.String lastDeploymentChangeTime;
+  core.String? lastDeploymentChangeTime;
 
   /// A collection of URLs that provide more information about the update
   /// package.
-  core.List<core.String> moreInfoUrls;
+  core.List<core.String>? moreInfoUrls;
 
   /// The revision number of this update package.
-  core.int revisionNumber;
+  core.int? revisionNumber;
 
   /// A hyperlink to the language-specific support information for the update.
-  core.String supportUrl;
+  core.String? supportUrl;
 
   /// The localized title of the update package.
-  core.String title;
+  core.String? title;
 
   /// Gets the identifier of an update package.
   ///
   /// Stays the same across revisions.
-  core.String updateId;
+  core.String? updateId;
 
   WindowsUpdatePackage();
 
@@ -5539,34 +5502,34 @@ class WindowsUpdatePackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (categories != null)
-          'categories': categories.map((value) => value.toJson()).toList(),
-        if (description != null) 'description': description,
-        if (kbArticleIds != null) 'kbArticleIds': kbArticleIds,
+          'categories': categories!.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description!,
+        if (kbArticleIds != null) 'kbArticleIds': kbArticleIds!,
         if (lastDeploymentChangeTime != null)
-          'lastDeploymentChangeTime': lastDeploymentChangeTime,
-        if (moreInfoUrls != null) 'moreInfoUrls': moreInfoUrls,
-        if (revisionNumber != null) 'revisionNumber': revisionNumber,
-        if (supportUrl != null) 'supportUrl': supportUrl,
-        if (title != null) 'title': title,
-        if (updateId != null) 'updateId': updateId,
+          'lastDeploymentChangeTime': lastDeploymentChangeTime!,
+        if (moreInfoUrls != null) 'moreInfoUrls': moreInfoUrls!,
+        if (revisionNumber != null) 'revisionNumber': revisionNumber!,
+        if (supportUrl != null) 'supportUrl': supportUrl!,
+        if (title != null) 'title': title!,
+        if (updateId != null) 'updateId': updateId!,
       };
 }
 
 /// Details related to a Zypper Patch.
 class ZypperPatch {
   /// The category of the patch.
-  core.String category;
+  core.String? category;
 
   /// The name of the patch.
-  core.String patchName;
+  core.String? patchName;
 
   /// The severity specified for this patch
-  core.String severity;
+  core.String? severity;
 
   /// Any summary information provided about this patch.
-  core.String summary;
+  core.String? summary;
 
   ZypperPatch();
 
@@ -5585,10 +5548,10 @@ class ZypperPatch {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (category != null) 'category': category,
-        if (patchName != null) 'patchName': patchName,
-        if (severity != null) 'severity': severity,
-        if (summary != null) 'summary': summary,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (category != null) 'category': category!,
+        if (patchName != null) 'patchName': patchName!,
+        if (severity != null) 'severity': severity!,
+        if (summary != null) 'summary': summary!,
       };
 }

@@ -1,9 +1,13 @@
 name: sample
 
 environment:
-  sdk: '>=2.10.0 <3.0.0'
+  sdk: '>=2.12.0-0 <3.0.0'
 
 dependencies:
   googleapis:
     path: ../../generated/googleapis
   googleapis_auth: any
+
+dependency_overrides:
+  _discoveryapis_commons:
+    path: ../../discoveryapis_commons

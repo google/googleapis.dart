@@ -130,7 +130,7 @@ class AboutResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<About> get({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -177,11 +177,11 @@ class ChangesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<StartPageToken> getStartPageToken({
-    core.String driveId,
-    core.bool supportsAllDrives,
-    core.bool supportsTeamDrives,
-    core.String teamDriveId,
-    core.String $fields,
+    core.String? driveId,
+    core.bool? supportsAllDrives,
+    core.bool? supportsTeamDrives,
+    core.String? teamDriveId,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (driveId != null) 'driveId': [driveId],
@@ -264,23 +264,20 @@ class ChangesResource {
   /// this method will complete with the same error.
   async.Future<ChangeList> list(
     core.String pageToken, {
-    core.String driveId,
-    core.bool includeCorpusRemovals,
-    core.bool includeItemsFromAllDrives,
-    core.String includePermissionsForView,
-    core.bool includeRemoved,
-    core.bool includeTeamDriveItems,
-    core.int pageSize,
-    core.bool restrictToMyDrive,
-    core.String spaces,
-    core.bool supportsAllDrives,
-    core.bool supportsTeamDrives,
-    core.String teamDriveId,
-    core.String $fields,
+    core.String? driveId,
+    core.bool? includeCorpusRemovals,
+    core.bool? includeItemsFromAllDrives,
+    core.String? includePermissionsForView,
+    core.bool? includeRemoved,
+    core.bool? includeTeamDriveItems,
+    core.int? pageSize,
+    core.bool? restrictToMyDrive,
+    core.String? spaces,
+    core.bool? supportsAllDrives,
+    core.bool? supportsTeamDrives,
+    core.String? teamDriveId,
+    core.String? $fields,
   }) async {
-    if (pageToken == null) {
-      throw core.ArgumentError('Parameter pageToken is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'pageToken': [pageToken],
       if (driveId != null) 'driveId': [driveId],
@@ -379,25 +376,21 @@ class ChangesResource {
   async.Future<Channel> watch(
     Channel request,
     core.String pageToken, {
-    core.String driveId,
-    core.bool includeCorpusRemovals,
-    core.bool includeItemsFromAllDrives,
-    core.String includePermissionsForView,
-    core.bool includeRemoved,
-    core.bool includeTeamDriveItems,
-    core.int pageSize,
-    core.bool restrictToMyDrive,
-    core.String spaces,
-    core.bool supportsAllDrives,
-    core.bool supportsTeamDrives,
-    core.String teamDriveId,
-    core.String $fields,
+    core.String? driveId,
+    core.bool? includeCorpusRemovals,
+    core.bool? includeItemsFromAllDrives,
+    core.String? includePermissionsForView,
+    core.bool? includeRemoved,
+    core.bool? includeTeamDriveItems,
+    core.int? pageSize,
+    core.bool? restrictToMyDrive,
+    core.String? spaces,
+    core.bool? supportsAllDrives,
+    core.bool? supportsTeamDrives,
+    core.String? teamDriveId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (pageToken == null) {
-      throw core.ArgumentError('Parameter pageToken is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'pageToken': [pageToken],
       if (driveId != null) 'driveId': [driveId],
@@ -455,10 +448,9 @@ class ChannelsResource {
   /// this method will complete with the same error.
   async.Future<void> stop(
     Channel request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -501,13 +493,9 @@ class CommentsResource {
   async.Future<Comment> create(
     Comment request,
     core.String fileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -543,14 +531,8 @@ class CommentsResource {
   async.Future<void> delete(
     core.String fileId,
     core.String commentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (commentId == null) {
-      throw core.ArgumentError('Parameter commentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -592,15 +574,9 @@ class CommentsResource {
   async.Future<Comment> get(
     core.String fileId,
     core.String commentId, {
-    core.bool includeDeleted,
-    core.String $fields,
+    core.bool? includeDeleted,
+    core.String? $fields,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (commentId == null) {
-      throw core.ArgumentError('Parameter commentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
       if ($fields != null) 'fields': [$fields],
@@ -650,15 +626,12 @@ class CommentsResource {
   /// this method will complete with the same error.
   async.Future<CommentList> list(
     core.String fileId, {
-    core.bool includeDeleted,
-    core.int pageSize,
-    core.String pageToken,
-    core.String startModifiedTime,
-    core.String $fields,
+    core.bool? includeDeleted,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? startModifiedTime,
+    core.String? $fields,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -703,16 +676,9 @@ class CommentsResource {
     Comment request,
     core.String fileId,
     core.String commentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (commentId == null) {
-      throw core.ArgumentError('Parameter commentId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -762,13 +728,9 @@ class DrivesResource {
   async.Future<Drive> create(
     Drive request,
     core.String requestId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (requestId == null) {
-      throw core.ArgumentError('Parameter requestId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -803,11 +765,8 @@ class DrivesResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String driveId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (driveId == null) {
-      throw core.ArgumentError('Parameter driveId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -844,12 +803,9 @@ class DrivesResource {
   /// this method will complete with the same error.
   async.Future<Drive> get(
     core.String driveId, {
-    core.bool useDomainAdminAccess,
-    core.String $fields,
+    core.bool? useDomainAdminAccess,
+    core.String? $fields,
   }) async {
-    if (driveId == null) {
-      throw core.ArgumentError('Parameter driveId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (useDomainAdminAccess != null)
         'useDomainAdminAccess': ['${useDomainAdminAccess}'],
@@ -884,11 +840,8 @@ class DrivesResource {
   /// this method will complete with the same error.
   async.Future<Drive> hide(
     core.String driveId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (driveId == null) {
-      throw core.ArgumentError('Parameter driveId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -930,11 +883,11 @@ class DrivesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DriveList> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String q,
-    core.bool useDomainAdminAccess,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? q,
+    core.bool? useDomainAdminAccess,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -973,11 +926,8 @@ class DrivesResource {
   /// this method will complete with the same error.
   async.Future<Drive> unhide(
     core.String driveId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (driveId == null) {
-      throw core.ArgumentError('Parameter driveId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1018,14 +968,10 @@ class DrivesResource {
   async.Future<Drive> update(
     Drive request,
     core.String driveId, {
-    core.bool useDomainAdminAccess,
-    core.String $fields,
+    core.bool? useDomainAdminAccess,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (driveId == null) {
-      throw core.ArgumentError('Parameter driveId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (useDomainAdminAccess != null)
         'useDomainAdminAccess': ['${useDomainAdminAccess}'],
@@ -1098,20 +1044,16 @@ class FilesResource {
   async.Future<File> copy(
     File request,
     core.String fileId, {
-    core.bool enforceSingleParent,
-    core.bool ignoreDefaultVisibility,
-    core.String includePermissionsForView,
-    core.bool keepRevisionForever,
-    core.String ocrLanguage,
-    core.bool supportsAllDrives,
-    core.bool supportsTeamDrives,
-    core.String $fields,
+    core.bool? enforceSingleParent,
+    core.bool? ignoreDefaultVisibility,
+    core.String? includePermissionsForView,
+    core.bool? keepRevisionForever,
+    core.String? ocrLanguage,
+    core.bool? supportsAllDrives,
+    core.bool? supportsTeamDrives,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (enforceSingleParent != null)
         'enforceSingleParent': ['${enforceSingleParent}'],
@@ -1192,20 +1134,19 @@ class FilesResource {
   /// this method will complete with the same error.
   async.Future<File> create(
     File request, {
-    core.bool enforceSingleParent,
-    core.bool ignoreDefaultVisibility,
-    core.String includePermissionsForView,
-    core.bool keepRevisionForever,
-    core.String ocrLanguage,
-    core.bool supportsAllDrives,
-    core.bool supportsTeamDrives,
-    core.bool useContentAsIndexableText,
-    core.String $fields,
+    core.bool? enforceSingleParent,
+    core.bool? ignoreDefaultVisibility,
+    core.String? includePermissionsForView,
+    core.bool? keepRevisionForever,
+    core.String? ocrLanguage,
+    core.bool? supportsAllDrives,
+    core.bool? supportsTeamDrives,
+    core.bool? useContentAsIndexableText,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (enforceSingleParent != null)
         'enforceSingleParent': ['${enforceSingleParent}'],
@@ -1275,14 +1216,11 @@ class FilesResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String fileId, {
-    core.bool enforceSingleParent,
-    core.bool supportsAllDrives,
-    core.bool supportsTeamDrives,
-    core.String $fields,
+    core.bool? enforceSingleParent,
+    core.bool? supportsAllDrives,
+    core.bool? supportsTeamDrives,
+    core.String? $fields,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (enforceSingleParent != null)
         'enforceSingleParent': ['${enforceSingleParent}'],
@@ -1320,8 +1258,8 @@ class FilesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<void> emptyTrash({
-    core.bool enforceSingleParent,
-    core.String $fields,
+    core.bool? enforceSingleParent,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (enforceSingleParent != null)
@@ -1362,18 +1300,12 @@ class FilesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<core.Object> export(
+  async.Future<commons.Media?> export(
     core.String fileId,
     core.String mimeType, {
-    core.String $fields,
+    core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (mimeType == null) {
-      throw core.ArgumentError('Parameter mimeType is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'mimeType': [mimeType],
       if ($fields != null) 'fields': [$fields],
@@ -1391,7 +1323,7 @@ class FilesResource {
     if (downloadOptions.isMetadataDownload) {
       return null;
     } else {
-      return _response;
+      return _response as commons.Media;
     }
   }
 
@@ -1417,9 +1349,9 @@ class FilesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GeneratedIds> generateIds({
-    core.int count,
-    core.String space,
-    core.String $fields,
+    core.int? count,
+    core.String? space,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (count != null) 'count': ['${count}'],
@@ -1476,16 +1408,13 @@ class FilesResource {
   /// this method will complete with the same error.
   async.Future<core.Object> get(
     core.String fileId, {
-    core.bool acknowledgeAbuse,
-    core.String includePermissionsForView,
-    core.bool supportsAllDrives,
-    core.bool supportsTeamDrives,
-    core.String $fields,
+    core.bool? acknowledgeAbuse,
+    core.String? includePermissionsForView,
+    core.bool? supportsAllDrives,
+    core.bool? supportsTeamDrives,
+    core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (acknowledgeAbuse != null) 'acknowledgeAbuse': ['${acknowledgeAbuse}'],
       if (includePermissionsForView != null)
@@ -1508,7 +1437,7 @@ class FilesResource {
     if (downloadOptions.isMetadataDownload) {
       return File.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
-      return _response;
+      return _response as commons.Media;
     }
   }
 
@@ -1584,21 +1513,21 @@ class FilesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FileList> list({
-    core.String corpora,
-    core.String corpus,
-    core.String driveId,
-    core.bool includeItemsFromAllDrives,
-    core.String includePermissionsForView,
-    core.bool includeTeamDriveItems,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String q,
-    core.String spaces,
-    core.bool supportsAllDrives,
-    core.bool supportsTeamDrives,
-    core.String teamDriveId,
-    core.String $fields,
+    core.String? corpora,
+    core.String? corpus,
+    core.String? driveId,
+    core.bool? includeItemsFromAllDrives,
+    core.String? includePermissionsForView,
+    core.bool? includeTeamDriveItems,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? q,
+    core.String? spaces,
+    core.bool? supportsAllDrives,
+    core.bool? supportsTeamDrives,
+    core.String? teamDriveId,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (corpora != null) 'corpora': [corpora],
@@ -1688,24 +1617,20 @@ class FilesResource {
   async.Future<File> update(
     File request,
     core.String fileId, {
-    core.String addParents,
-    core.bool enforceSingleParent,
-    core.String includePermissionsForView,
-    core.bool keepRevisionForever,
-    core.String ocrLanguage,
-    core.String removeParents,
-    core.bool supportsAllDrives,
-    core.bool supportsTeamDrives,
-    core.bool useContentAsIndexableText,
-    core.String $fields,
+    core.String? addParents,
+    core.bool? enforceSingleParent,
+    core.String? includePermissionsForView,
+    core.bool? keepRevisionForever,
+    core.String? ocrLanguage,
+    core.String? removeParents,
+    core.bool? supportsAllDrives,
+    core.bool? supportsTeamDrives,
+    core.bool? useContentAsIndexableText,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (addParents != null) 'addParents': [addParents],
       if (enforceSingleParent != null)
@@ -1788,18 +1713,14 @@ class FilesResource {
   async.Future<core.Object> watch(
     Channel request,
     core.String fileId, {
-    core.bool acknowledgeAbuse,
-    core.String includePermissionsForView,
-    core.bool supportsAllDrives,
-    core.bool supportsTeamDrives,
-    core.String $fields,
+    core.bool? acknowledgeAbuse,
+    core.String? includePermissionsForView,
+    core.bool? supportsAllDrives,
+    core.bool? supportsTeamDrives,
+    core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (acknowledgeAbuse != null) 'acknowledgeAbuse': ['${acknowledgeAbuse}'],
       if (includePermissionsForView != null)
@@ -1823,7 +1744,7 @@ class FilesResource {
     if (downloadOptions.isMetadataDownload) {
       return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
-      return _response;
+      return _response as commons.Media;
     }
   }
 }
@@ -1884,21 +1805,17 @@ class PermissionsResource {
   async.Future<Permission> create(
     Permission request,
     core.String fileId, {
-    core.String emailMessage,
-    core.bool enforceSingleParent,
-    core.bool moveToNewOwnersRoot,
-    core.bool sendNotificationEmail,
-    core.bool supportsAllDrives,
-    core.bool supportsTeamDrives,
-    core.bool transferOwnership,
-    core.bool useDomainAdminAccess,
-    core.String $fields,
+    core.String? emailMessage,
+    core.bool? enforceSingleParent,
+    core.bool? moveToNewOwnersRoot,
+    core.bool? sendNotificationEmail,
+    core.bool? supportsAllDrives,
+    core.bool? supportsTeamDrives,
+    core.bool? transferOwnership,
+    core.bool? useDomainAdminAccess,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (emailMessage != null) 'emailMessage': [emailMessage],
       if (enforceSingleParent != null)
@@ -1960,17 +1877,11 @@ class PermissionsResource {
   async.Future<void> delete(
     core.String fileId,
     core.String permissionId, {
-    core.bool supportsAllDrives,
-    core.bool supportsTeamDrives,
-    core.bool useDomainAdminAccess,
-    core.String $fields,
+    core.bool? supportsAllDrives,
+    core.bool? supportsTeamDrives,
+    core.bool? useDomainAdminAccess,
+    core.String? $fields,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (permissionId == null) {
-      throw core.ArgumentError('Parameter permissionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (supportsAllDrives != null)
         'supportsAllDrives': ['${supportsAllDrives}'],
@@ -2025,17 +1936,11 @@ class PermissionsResource {
   async.Future<Permission> get(
     core.String fileId,
     core.String permissionId, {
-    core.bool supportsAllDrives,
-    core.bool supportsTeamDrives,
-    core.bool useDomainAdminAccess,
-    core.String $fields,
+    core.bool? supportsAllDrives,
+    core.bool? supportsTeamDrives,
+    core.bool? useDomainAdminAccess,
+    core.String? $fields,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (permissionId == null) {
-      throw core.ArgumentError('Parameter permissionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (supportsAllDrives != null)
         'supportsAllDrives': ['${supportsAllDrives}'],
@@ -2101,17 +2006,14 @@ class PermissionsResource {
   /// this method will complete with the same error.
   async.Future<PermissionList> list(
     core.String fileId, {
-    core.String includePermissionsForView,
-    core.int pageSize,
-    core.String pageToken,
-    core.bool supportsAllDrives,
-    core.bool supportsTeamDrives,
-    core.bool useDomainAdminAccess,
-    core.String $fields,
+    core.String? includePermissionsForView,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? supportsAllDrives,
+    core.bool? supportsTeamDrives,
+    core.bool? useDomainAdminAccess,
+    core.String? $fields,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (includePermissionsForView != null)
         'includePermissionsForView': [includePermissionsForView],
@@ -2178,21 +2080,14 @@ class PermissionsResource {
     Permission request,
     core.String fileId,
     core.String permissionId, {
-    core.bool removeExpiration,
-    core.bool supportsAllDrives,
-    core.bool supportsTeamDrives,
-    core.bool transferOwnership,
-    core.bool useDomainAdminAccess,
-    core.String $fields,
+    core.bool? removeExpiration,
+    core.bool? supportsAllDrives,
+    core.bool? supportsTeamDrives,
+    core.bool? transferOwnership,
+    core.bool? useDomainAdminAccess,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (permissionId == null) {
-      throw core.ArgumentError('Parameter permissionId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (removeExpiration != null) 'removeExpiration': ['${removeExpiration}'],
       if (supportsAllDrives != null)
@@ -2251,16 +2146,9 @@ class RepliesResource {
     Reply request,
     core.String fileId,
     core.String commentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (commentId == null) {
-      throw core.ArgumentError('Parameter commentId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2302,17 +2190,8 @@ class RepliesResource {
     core.String fileId,
     core.String commentId,
     core.String replyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (commentId == null) {
-      throw core.ArgumentError('Parameter commentId is required.');
-    }
-    if (replyId == null) {
-      throw core.ArgumentError('Parameter replyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2359,18 +2238,9 @@ class RepliesResource {
     core.String fileId,
     core.String commentId,
     core.String replyId, {
-    core.bool includeDeleted,
-    core.String $fields,
+    core.bool? includeDeleted,
+    core.String? $fields,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (commentId == null) {
-      throw core.ArgumentError('Parameter commentId is required.');
-    }
-    if (replyId == null) {
-      throw core.ArgumentError('Parameter replyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
       if ($fields != null) 'fields': [$fields],
@@ -2422,17 +2292,11 @@ class RepliesResource {
   async.Future<ReplyList> list(
     core.String fileId,
     core.String commentId, {
-    core.bool includeDeleted,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.bool? includeDeleted,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (commentId == null) {
-      throw core.ArgumentError('Parameter commentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeDeleted != null) 'includeDeleted': ['${includeDeleted}'],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2481,19 +2345,9 @@ class RepliesResource {
     core.String fileId,
     core.String commentId,
     core.String replyId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (commentId == null) {
-      throw core.ArgumentError('Parameter commentId is required.');
-    }
-    if (replyId == null) {
-      throw core.ArgumentError('Parameter replyId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2543,14 +2397,8 @@ class RevisionsResource {
   async.Future<void> delete(
     core.String fileId,
     core.String revisionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (revisionId == null) {
-      throw core.ArgumentError('Parameter revisionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2601,16 +2449,10 @@ class RevisionsResource {
   async.Future<core.Object> get(
     core.String fileId,
     core.String revisionId, {
-    core.bool acknowledgeAbuse,
-    core.String $fields,
+    core.bool? acknowledgeAbuse,
+    core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (revisionId == null) {
-      throw core.ArgumentError('Parameter revisionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (acknowledgeAbuse != null) 'acknowledgeAbuse': ['${acknowledgeAbuse}'],
       if ($fields != null) 'fields': [$fields],
@@ -2631,7 +2473,7 @@ class RevisionsResource {
       return Revision.fromJson(
           _response as core.Map<core.String, core.dynamic>);
     } else {
-      return _response;
+      return _response as commons.Media;
     }
   }
 
@@ -2660,13 +2502,10 @@ class RevisionsResource {
   /// this method will complete with the same error.
   async.Future<RevisionList> list(
     core.String fileId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2709,16 +2548,9 @@ class RevisionsResource {
     Revision request,
     core.String fileId,
     core.String revisionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
-    if (revisionId == null) {
-      throw core.ArgumentError('Parameter revisionId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2768,13 +2600,9 @@ class TeamdrivesResource {
   async.Future<TeamDrive> create(
     TeamDrive request,
     core.String requestId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (requestId == null) {
-      throw core.ArgumentError('Parameter requestId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -2807,11 +2635,8 @@ class TeamdrivesResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String teamDriveId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (teamDriveId == null) {
-      throw core.ArgumentError('Parameter teamDriveId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2848,12 +2673,9 @@ class TeamdrivesResource {
   /// this method will complete with the same error.
   async.Future<TeamDrive> get(
     core.String teamDriveId, {
-    core.bool useDomainAdminAccess,
-    core.String $fields,
+    core.bool? useDomainAdminAccess,
+    core.String? $fields,
   }) async {
-    if (teamDriveId == null) {
-      throw core.ArgumentError('Parameter teamDriveId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (useDomainAdminAccess != null)
         'useDomainAdminAccess': ['${useDomainAdminAccess}'],
@@ -2896,11 +2718,11 @@ class TeamdrivesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TeamDriveList> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String q,
-    core.bool useDomainAdminAccess,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? q,
+    core.bool? useDomainAdminAccess,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2947,14 +2769,10 @@ class TeamdrivesResource {
   async.Future<TeamDrive> update(
     TeamDrive request,
     core.String teamDriveId, {
-    core.bool useDomainAdminAccess,
-    core.String $fields,
+    core.bool? useDomainAdminAccess,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (teamDriveId == null) {
-      throw core.ArgumentError('Parameter teamDriveId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (useDomainAdminAccess != null)
         'useDomainAdminAccess': ['${useDomainAdminAccess}'],
@@ -2975,13 +2793,13 @@ class TeamdrivesResource {
 
 class AboutDriveThemes {
   /// A link to this theme's background image.
-  core.String backgroundImageLink;
+  core.String? backgroundImageLink;
 
   /// The color of this theme as an RGB hex string.
-  core.String colorRgb;
+  core.String? colorRgb;
 
   /// The ID of the theme.
-  core.String id;
+  core.String? id;
 
   AboutDriveThemes();
 
@@ -2997,11 +2815,11 @@ class AboutDriveThemes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundImageLink != null)
-          'backgroundImageLink': backgroundImageLink,
-        if (colorRgb != null) 'colorRgb': colorRgb,
-        if (id != null) 'id': id,
+          'backgroundImageLink': backgroundImageLink!,
+        if (colorRgb != null) 'colorRgb': colorRgb!,
+        if (id != null) 'id': id!,
       };
 }
 
@@ -3012,16 +2830,16 @@ class AboutStorageQuota {
   /// The usage limit, if applicable.
   ///
   /// This will not be present if the user has unlimited storage.
-  core.String limit;
+  core.String? limit;
 
   /// The total usage across all services.
-  core.String usage;
+  core.String? usage;
 
   /// The usage by all files in Google Drive.
-  core.String usageInDrive;
+  core.String? usageInDrive;
 
   /// The usage by trashed files in Google Drive.
-  core.String usageInDriveTrash;
+  core.String? usageInDriveTrash;
 
   AboutStorageQuota();
 
@@ -3040,23 +2858,23 @@ class AboutStorageQuota {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (limit != null) 'limit': limit,
-        if (usage != null) 'usage': usage,
-        if (usageInDrive != null) 'usageInDrive': usageInDrive,
-        if (usageInDriveTrash != null) 'usageInDriveTrash': usageInDriveTrash,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (limit != null) 'limit': limit!,
+        if (usage != null) 'usage': usage!,
+        if (usageInDrive != null) 'usageInDrive': usageInDrive!,
+        if (usageInDriveTrash != null) 'usageInDriveTrash': usageInDriveTrash!,
       };
 }
 
 class AboutTeamDriveThemes {
   /// Deprecated - use driveThemes/backgroundImageLink instead.
-  core.String backgroundImageLink;
+  core.String? backgroundImageLink;
 
   /// Deprecated - use driveThemes/colorRgb instead.
-  core.String colorRgb;
+  core.String? colorRgb;
 
   /// Deprecated - use driveThemes/id instead.
-  core.String id;
+  core.String? id;
 
   AboutTeamDriveThemes();
 
@@ -3072,58 +2890,58 @@ class AboutTeamDriveThemes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundImageLink != null)
-          'backgroundImageLink': backgroundImageLink,
-        if (colorRgb != null) 'colorRgb': colorRgb,
-        if (id != null) 'id': id,
+          'backgroundImageLink': backgroundImageLink!,
+        if (colorRgb != null) 'colorRgb': colorRgb!,
+        if (id != null) 'id': id!,
       };
 }
 
 /// Information about the user, the user's Drive, and system capabilities.
 class About {
   /// Whether the user has installed the requesting app.
-  core.bool appInstalled;
+  core.bool? appInstalled;
 
   /// Whether the user can create shared drives.
-  core.bool canCreateDrives;
+  core.bool? canCreateDrives;
 
   /// Deprecated - use canCreateDrives instead.
-  core.bool canCreateTeamDrives;
+  core.bool? canCreateTeamDrives;
 
   /// A list of themes that are supported for shared drives.
-  core.List<AboutDriveThemes> driveThemes;
+  core.List<AboutDriveThemes>? driveThemes;
 
   /// A map of source MIME type to possible targets for all supported exports.
-  core.Map<core.String, core.List<core.String>> exportFormats;
+  core.Map<core.String, core.List<core.String>>? exportFormats;
 
   /// The currently supported folder colors as RGB hex strings.
-  core.List<core.String> folderColorPalette;
+  core.List<core.String>? folderColorPalette;
 
   /// A map of source MIME type to possible targets for all supported imports.
-  core.Map<core.String, core.List<core.String>> importFormats;
+  core.Map<core.String, core.List<core.String>>? importFormats;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#about".
-  core.String kind;
+  core.String? kind;
 
   /// A map of maximum import sizes by MIME type, in bytes.
-  core.Map<core.String, core.String> maxImportSizes;
+  core.Map<core.String, core.String>? maxImportSizes;
 
   /// The maximum upload size in bytes.
-  core.String maxUploadSize;
+  core.String? maxUploadSize;
 
   /// The user's storage quota limits and usage.
   ///
   /// All fields are measured in bytes.
-  AboutStorageQuota storageQuota;
+  AboutStorageQuota? storageQuota;
 
   /// Deprecated - use driveThemes instead.
-  core.List<AboutTeamDriveThemes> teamDriveThemes;
+  core.List<AboutTeamDriveThemes>? teamDriveThemes;
 
   /// The authenticated user.
-  User user;
+  User? user;
 
   About();
 
@@ -3145,7 +2963,7 @@ class About {
     }
     if (_json.containsKey('exportFormats')) {
       exportFormats = (_json['exportFormats'] as core.Map)
-          .cast<core.String, core.List>()
+          .cast<core.String, core.List<core.String>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -3162,7 +2980,7 @@ class About {
     }
     if (_json.containsKey('importFormats')) {
       importFormats = (_json['importFormats'] as core.Map)
-          .cast<core.String, core.List>()
+          .cast<core.String, core.List<core.String>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -3204,25 +3022,25 @@ class About {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appInstalled != null) 'appInstalled': appInstalled,
-        if (canCreateDrives != null) 'canCreateDrives': canCreateDrives,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appInstalled != null) 'appInstalled': appInstalled!,
+        if (canCreateDrives != null) 'canCreateDrives': canCreateDrives!,
         if (canCreateTeamDrives != null)
-          'canCreateTeamDrives': canCreateTeamDrives,
+          'canCreateTeamDrives': canCreateTeamDrives!,
         if (driveThemes != null)
-          'driveThemes': driveThemes.map((value) => value.toJson()).toList(),
-        if (exportFormats != null) 'exportFormats': exportFormats,
+          'driveThemes': driveThemes!.map((value) => value.toJson()).toList(),
+        if (exportFormats != null) 'exportFormats': exportFormats!,
         if (folderColorPalette != null)
-          'folderColorPalette': folderColorPalette,
-        if (importFormats != null) 'importFormats': importFormats,
-        if (kind != null) 'kind': kind,
-        if (maxImportSizes != null) 'maxImportSizes': maxImportSizes,
-        if (maxUploadSize != null) 'maxUploadSize': maxUploadSize,
-        if (storageQuota != null) 'storageQuota': storageQuota.toJson(),
+          'folderColorPalette': folderColorPalette!,
+        if (importFormats != null) 'importFormats': importFormats!,
+        if (kind != null) 'kind': kind!,
+        if (maxImportSizes != null) 'maxImportSizes': maxImportSizes!,
+        if (maxUploadSize != null) 'maxUploadSize': maxUploadSize!,
+        if (storageQuota != null) 'storageQuota': storageQuota!.toJson(),
         if (teamDriveThemes != null)
           'teamDriveThemes':
-              teamDriveThemes.map((value) => value.toJson()).toList(),
-        if (user != null) 'user': user.toJson(),
+              teamDriveThemes!.map((value) => value.toJson()).toList(),
+        if (user != null) 'user': user!.toJson(),
       };
 }
 
@@ -3231,46 +3049,46 @@ class Change {
   /// The type of the change.
   ///
   /// Possible values are file and drive.
-  core.String changeType;
+  core.String? changeType;
 
   /// The updated state of the shared drive.
   ///
   /// Present if the changeType is drive, the user is still a member of the
   /// shared drive, and the shared drive has not been deleted.
-  Drive drive;
+  Drive? drive;
 
   /// The ID of the shared drive associated with this change.
-  core.String driveId;
+  core.String? driveId;
 
   /// The updated state of the file.
   ///
   /// Present if the type is file and the file has not been removed from this
   /// list of changes.
-  File file;
+  File? file;
 
   /// The ID of the file which has changed.
-  core.String fileId;
+  core.String? fileId;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#change".
-  core.String kind;
+  core.String? kind;
 
   /// Whether the file or shared drive has been removed from this list of
   /// changes, for example by deletion or loss of access.
-  core.bool removed;
+  core.bool? removed;
 
   /// Deprecated - use drive instead.
-  TeamDrive teamDrive;
+  TeamDrive? teamDrive;
 
   /// Deprecated - use driveId instead.
-  core.String teamDriveId;
+  core.String? teamDriveId;
 
   /// The time of this change (RFC 3339 date-time).
-  core.DateTime time;
+  core.DateTime? time;
 
   /// Deprecated - use changeType instead.
-  core.String type;
+  core.String? type;
 
   Change();
 
@@ -3313,18 +3131,18 @@ class Change {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (changeType != null) 'changeType': changeType,
-        if (drive != null) 'drive': drive.toJson(),
-        if (driveId != null) 'driveId': driveId,
-        if (file != null) 'file': file.toJson(),
-        if (fileId != null) 'fileId': fileId,
-        if (kind != null) 'kind': kind,
-        if (removed != null) 'removed': removed,
-        if (teamDrive != null) 'teamDrive': teamDrive.toJson(),
-        if (teamDriveId != null) 'teamDriveId': teamDriveId,
-        if (time != null) 'time': (time).toIso8601String(),
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (changeType != null) 'changeType': changeType!,
+        if (drive != null) 'drive': drive!.toJson(),
+        if (driveId != null) 'driveId': driveId!,
+        if (file != null) 'file': file!.toJson(),
+        if (fileId != null) 'fileId': fileId!,
+        if (kind != null) 'kind': kind!,
+        if (removed != null) 'removed': removed!,
+        if (teamDrive != null) 'teamDrive': teamDrive!.toJson(),
+        if (teamDriveId != null) 'teamDriveId': teamDriveId!,
+        if (time != null) 'time': (time!).toIso8601String(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3334,25 +3152,25 @@ class ChangeList {
   ///
   /// If nextPageToken is populated, then this list may be incomplete and an
   /// additional page of results should be fetched.
-  core.List<Change> changes;
+  core.List<Change>? changes;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#changeList".
-  core.String kind;
+  core.String? kind;
 
   /// The starting page token for future changes.
   ///
   /// This will be present only if the end of the current changes list has been
   /// reached.
-  core.String newStartPageToken;
+  core.String? newStartPageToken;
 
   /// The page token for the next page of changes.
   ///
   /// This will be absent if the end of the changes list has been reached. If
   /// the token is rejected for any reason, it should be discarded, and
   /// pagination should be restarted from the first page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ChangeList();
 
@@ -3374,59 +3192,59 @@ class ChangeList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (changes != null)
-          'changes': changes.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (newStartPageToken != null) 'newStartPageToken': newStartPageToken,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'changes': changes!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (newStartPageToken != null) 'newStartPageToken': newStartPageToken!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// An notification channel used to watch for resource changes.
 class Channel {
   /// The address where notifications are delivered for this channel.
-  core.String address;
+  core.String? address;
 
   /// Date and time of notification channel expiration, expressed as a Unix
   /// timestamp, in milliseconds.
   ///
   /// Optional.
-  core.String expiration;
+  core.String? expiration;
 
   /// A UUID or similar unique string that identifies this channel.
-  core.String id;
+  core.String? id;
 
   /// Identifies this as a notification channel used to watch for changes to a
   /// resource, which is "api#channel".
-  core.String kind;
+  core.String? kind;
 
   /// Additional parameters controlling delivery channel behavior.
   ///
   /// Optional.
-  core.Map<core.String, core.String> params;
+  core.Map<core.String, core.String>? params;
 
   /// A Boolean value to indicate whether payload is wanted.
   ///
   /// Optional.
-  core.bool payload;
+  core.bool? payload;
 
   /// An opaque ID that identifies the resource being watched on this channel.
   ///
   /// Stable across different API versions.
-  core.String resourceId;
+  core.String? resourceId;
 
   /// A version-specific identifier for the watched resource.
-  core.String resourceUri;
+  core.String? resourceUri;
 
   /// An arbitrary string delivered to the target address with each notification
   /// delivered over this channel.
   ///
   /// Optional.
-  core.String token;
+  core.String? token;
 
   /// The type of delivery mechanism used for this channel.
-  core.String type;
+  core.String? type;
 
   Channel();
 
@@ -3469,17 +3287,17 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address,
-        if (expiration != null) 'expiration': expiration,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (params != null) 'params': params,
-        if (payload != null) 'payload': payload,
-        if (resourceId != null) 'resourceId': resourceId,
-        if (resourceUri != null) 'resourceUri': resourceUri,
-        if (token != null) 'token': token,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!,
+        if (expiration != null) 'expiration': expiration!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (params != null) 'params': params!,
+        if (payload != null) 'payload': payload!,
+        if (resourceId != null) 'resourceId': resourceId!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (token != null) 'token': token!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3490,12 +3308,12 @@ class Channel {
 /// comment.
 class CommentQuotedFileContent {
   /// The MIME type of the quoted content.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// The quoted content itself.
   ///
   /// This is interpreted as plain text if set through the API.
-  core.String value;
+  core.String? value;
 
   CommentQuotedFileContent();
 
@@ -3508,9 +3326,9 @@ class CommentQuotedFileContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (mimeType != null) 'mimeType': mimeType,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -3520,54 +3338,54 @@ class Comment {
   ///
   /// See anchor documentation for details on how to define and interpret anchor
   /// properties.
-  core.String anchor;
+  core.String? anchor;
 
   /// The author of the comment.
   ///
   /// The author's email address and permission ID will not be populated.
-  User author;
+  User? author;
 
   /// The plain text content of the comment.
   ///
   /// This field is used for setting the content, while htmlContent should be
   /// displayed.
-  core.String content;
+  core.String? content;
 
   /// The time at which the comment was created (RFC 3339 date-time).
-  core.DateTime createdTime;
+  core.DateTime? createdTime;
 
   /// Whether the comment has been deleted.
   ///
   /// A deleted comment has no content.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// The content of the comment with HTML formatting.
-  core.String htmlContent;
+  core.String? htmlContent;
 
   /// The ID of the comment.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#comment".
-  core.String kind;
+  core.String? kind;
 
   /// The last time the comment or any of its replies was modified (RFC 3339
   /// date-time).
-  core.DateTime modifiedTime;
+  core.DateTime? modifiedTime;
 
   /// The file content to which the comment refers, typically within the anchor
   /// region.
   ///
   /// For a text file, for example, this would be the text at the location of
   /// the comment.
-  CommentQuotedFileContent quotedFileContent;
+  CommentQuotedFileContent? quotedFileContent;
 
   /// The full list of replies to the comment in chronological order.
-  core.List<Reply> replies;
+  core.List<Reply>? replies;
 
   /// Whether the comment has been resolved by one of its replies.
-  core.bool resolved;
+  core.bool? resolved;
 
   Comment();
 
@@ -3615,22 +3433,23 @@ class Comment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (anchor != null) 'anchor': anchor,
-        if (author != null) 'author': author.toJson(),
-        if (content != null) 'content': content,
-        if (createdTime != null) 'createdTime': (createdTime).toIso8601String(),
-        if (deleted != null) 'deleted': deleted,
-        if (htmlContent != null) 'htmlContent': htmlContent,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (anchor != null) 'anchor': anchor!,
+        if (author != null) 'author': author!.toJson(),
+        if (content != null) 'content': content!,
+        if (createdTime != null)
+          'createdTime': (createdTime!).toIso8601String(),
+        if (deleted != null) 'deleted': deleted!,
+        if (htmlContent != null) 'htmlContent': htmlContent!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (modifiedTime != null)
-          'modifiedTime': (modifiedTime).toIso8601String(),
+          'modifiedTime': (modifiedTime!).toIso8601String(),
         if (quotedFileContent != null)
-          'quotedFileContent': quotedFileContent.toJson(),
+          'quotedFileContent': quotedFileContent!.toJson(),
         if (replies != null)
-          'replies': replies.map((value) => value.toJson()).toList(),
-        if (resolved != null) 'resolved': resolved,
+          'replies': replies!.map((value) => value.toJson()).toList(),
+        if (resolved != null) 'resolved': resolved!,
       };
 }
 
@@ -3640,19 +3459,19 @@ class CommentList {
   ///
   /// If nextPageToken is populated, then this list may be incomplete and an
   /// additional page of results should be fetched.
-  core.List<Comment> comments;
+  core.List<Comment>? comments;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#commentList".
-  core.String kind;
+  core.String? kind;
 
   /// The page token for the next page of comments.
   ///
   /// This will be absent if the end of the comments list has been reached. If
   /// the token is rejected for any reason, it should be discarded, and
   /// pagination should be restarted from the first page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   CommentList();
 
@@ -3671,11 +3490,11 @@ class CommentList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (comments != null)
-          'comments': comments.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'comments': comments!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -3686,28 +3505,28 @@ class ContentRestriction {
   /// If a file is read-only, a new revision of the file may not be added,
   /// comments may not be added or modified, and the title of the file may not
   /// be modified.
-  core.bool readOnly;
+  core.bool? readOnly;
 
   /// Reason for why the content of the file is restricted.
   ///
   /// This is only mutable on requests that also set readOnly=true.
-  core.String reason;
+  core.String? reason;
 
   /// The user who set the content restriction.
   ///
   /// Only populated if readOnly is true.
-  User restrictingUser;
+  User? restrictingUser;
 
   /// The time at which the content restriction was set (formatted RFC 3339
   /// timestamp).
   ///
   /// Only populated if readOnly is true.
-  core.DateTime restrictionTime;
+  core.DateTime? restrictionTime;
 
   /// The type of the content restriction.
   ///
   /// Currently the only possible value is globalContentRestriction.
-  core.String type;
+  core.String? type;
 
   ContentRestriction();
 
@@ -3731,14 +3550,14 @@ class ContentRestriction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (readOnly != null) 'readOnly': readOnly,
-        if (reason != null) 'reason': reason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (readOnly != null) 'readOnly': readOnly!,
+        if (reason != null) 'reason': reason!,
         if (restrictingUser != null)
-          'restrictingUser': restrictingUser.toJson(),
+          'restrictingUser': restrictingUser!.toJson(),
         if (restrictionTime != null)
-          'restrictionTime': (restrictionTime).toIso8601String(),
-        if (type != null) 'type': type,
+          'restrictionTime': (restrictionTime!).toIso8601String(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3750,7 +3569,7 @@ class ContentRestriction {
 /// backgroundImageFile must be set.
 class DriveBackgroundImageFile {
   /// The ID of an image file in Google Drive to use for the background image.
-  core.String id;
+  core.String? id;
 
   /// The width of the cropped image in the closed range of 0 to 1.
   ///
@@ -3758,7 +3577,7 @@ class DriveBackgroundImageFile {
   /// of the entire image. The height is computed by applying a width to height
   /// aspect ratio of 80 to 9. The resulting image must be at least 1280 pixels
   /// wide and 144 pixels high.
-  core.double width;
+  core.double? width;
 
   /// The X coordinate of the upper left corner of the cropping area in the
   /// background image.
@@ -3766,7 +3585,7 @@ class DriveBackgroundImageFile {
   /// This is a value in the closed range of 0 to 1. This value represents the
   /// horizontal distance from the left side of the entire image to the left
   /// side of the cropping area divided by the width of the entire image.
-  core.double xCoordinate;
+  core.double? xCoordinate;
 
   /// The Y coordinate of the upper left corner of the cropping area in the
   /// background image.
@@ -3774,7 +3593,7 @@ class DriveBackgroundImageFile {
   /// This is a value in the closed range of 0 to 1. This value represents the
   /// vertical distance from the top side of the entire image to the top side of
   /// the cropping area divided by the height of the entire image.
-  core.double yCoordinate;
+  core.double? yCoordinate;
 
   DriveBackgroundImageFile();
 
@@ -3793,80 +3612,80 @@ class DriveBackgroundImageFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (width != null) 'width': width,
-        if (xCoordinate != null) 'xCoordinate': xCoordinate,
-        if (yCoordinate != null) 'yCoordinate': yCoordinate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (width != null) 'width': width!,
+        if (xCoordinate != null) 'xCoordinate': xCoordinate!,
+        if (yCoordinate != null) 'yCoordinate': yCoordinate!,
       };
 }
 
 /// Capabilities the current user has on this shared drive.
 class DriveCapabilities {
   /// Whether the current user can add children to folders in this shared drive.
-  core.bool canAddChildren;
+  core.bool? canAddChildren;
 
   /// Whether the current user can change the copyRequiresWriterPermission
   /// restriction of this shared drive.
-  core.bool canChangeCopyRequiresWriterPermissionRestriction;
+  core.bool? canChangeCopyRequiresWriterPermissionRestriction;
 
   /// Whether the current user can change the domainUsersOnly restriction of
   /// this shared drive.
-  core.bool canChangeDomainUsersOnlyRestriction;
+  core.bool? canChangeDomainUsersOnlyRestriction;
 
   /// Whether the current user can change the background of this shared drive.
-  core.bool canChangeDriveBackground;
+  core.bool? canChangeDriveBackground;
 
   /// Whether the current user can change the driveMembersOnly restriction of
   /// this shared drive.
-  core.bool canChangeDriveMembersOnlyRestriction;
+  core.bool? canChangeDriveMembersOnlyRestriction;
 
   /// Whether the current user can comment on files in this shared drive.
-  core.bool canComment;
+  core.bool? canComment;
 
   /// Whether the current user can copy files in this shared drive.
-  core.bool canCopy;
+  core.bool? canCopy;
 
   /// Whether the current user can delete children from folders in this shared
   /// drive.
-  core.bool canDeleteChildren;
+  core.bool? canDeleteChildren;
 
   /// Whether the current user can delete this shared drive.
   ///
   /// Attempting to delete the shared drive may still fail if there are
   /// untrashed items inside the shared drive.
-  core.bool canDeleteDrive;
+  core.bool? canDeleteDrive;
 
   /// Whether the current user can download files in this shared drive.
-  core.bool canDownload;
+  core.bool? canDownload;
 
   /// Whether the current user can edit files in this shared drive
-  core.bool canEdit;
+  core.bool? canEdit;
 
   /// Whether the current user can list the children of folders in this shared
   /// drive.
-  core.bool canListChildren;
+  core.bool? canListChildren;
 
   /// Whether the current user can add members to this shared drive or remove
   /// them or change their role.
-  core.bool canManageMembers;
+  core.bool? canManageMembers;
 
   /// Whether the current user can read the revisions resource of files in this
   /// shared drive.
-  core.bool canReadRevisions;
+  core.bool? canReadRevisions;
 
   /// Whether the current user can rename files or folders in this shared drive.
-  core.bool canRename;
+  core.bool? canRename;
 
   /// Whether the current user can rename this shared drive.
-  core.bool canRenameDrive;
+  core.bool? canRenameDrive;
 
   /// Whether the current user can share files or folders in this shared drive.
-  core.bool canShare;
+  core.bool? canShare;
 
   /// Whether the current user can trash children from folders in this shared
   /// drive.
-  core.bool canTrashChildren;
+  core.bool? canTrashChildren;
 
   DriveCapabilities();
 
@@ -3931,32 +3750,32 @@ class DriveCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (canAddChildren != null) 'canAddChildren': canAddChildren,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (canAddChildren != null) 'canAddChildren': canAddChildren!,
         if (canChangeCopyRequiresWriterPermissionRestriction != null)
           'canChangeCopyRequiresWriterPermissionRestriction':
-              canChangeCopyRequiresWriterPermissionRestriction,
+              canChangeCopyRequiresWriterPermissionRestriction!,
         if (canChangeDomainUsersOnlyRestriction != null)
           'canChangeDomainUsersOnlyRestriction':
-              canChangeDomainUsersOnlyRestriction,
+              canChangeDomainUsersOnlyRestriction!,
         if (canChangeDriveBackground != null)
-          'canChangeDriveBackground': canChangeDriveBackground,
+          'canChangeDriveBackground': canChangeDriveBackground!,
         if (canChangeDriveMembersOnlyRestriction != null)
           'canChangeDriveMembersOnlyRestriction':
-              canChangeDriveMembersOnlyRestriction,
-        if (canComment != null) 'canComment': canComment,
-        if (canCopy != null) 'canCopy': canCopy,
-        if (canDeleteChildren != null) 'canDeleteChildren': canDeleteChildren,
-        if (canDeleteDrive != null) 'canDeleteDrive': canDeleteDrive,
-        if (canDownload != null) 'canDownload': canDownload,
-        if (canEdit != null) 'canEdit': canEdit,
-        if (canListChildren != null) 'canListChildren': canListChildren,
-        if (canManageMembers != null) 'canManageMembers': canManageMembers,
-        if (canReadRevisions != null) 'canReadRevisions': canReadRevisions,
-        if (canRename != null) 'canRename': canRename,
-        if (canRenameDrive != null) 'canRenameDrive': canRenameDrive,
-        if (canShare != null) 'canShare': canShare,
-        if (canTrashChildren != null) 'canTrashChildren': canTrashChildren,
+              canChangeDriveMembersOnlyRestriction!,
+        if (canComment != null) 'canComment': canComment!,
+        if (canCopy != null) 'canCopy': canCopy!,
+        if (canDeleteChildren != null) 'canDeleteChildren': canDeleteChildren!,
+        if (canDeleteDrive != null) 'canDeleteDrive': canDeleteDrive!,
+        if (canDownload != null) 'canDownload': canDownload!,
+        if (canEdit != null) 'canEdit': canEdit!,
+        if (canListChildren != null) 'canListChildren': canListChildren!,
+        if (canManageMembers != null) 'canManageMembers': canManageMembers!,
+        if (canReadRevisions != null) 'canReadRevisions': canReadRevisions!,
+        if (canRename != null) 'canRename': canRename!,
+        if (canRenameDrive != null) 'canRenameDrive': canRenameDrive!,
+        if (canShare != null) 'canShare': canShare!,
+        if (canTrashChildren != null) 'canTrashChildren': canTrashChildren!,
       };
 }
 
@@ -3965,25 +3784,25 @@ class DriveCapabilities {
 class DriveRestrictions {
   /// Whether administrative privileges on this shared drive are required to
   /// modify restrictions.
-  core.bool adminManagedRestrictions;
+  core.bool? adminManagedRestrictions;
 
   /// Whether the options to copy, print, or download files inside this shared
   /// drive, should be disabled for readers and commenters.
   ///
   /// When this restriction is set to true, it will override the similarly named
   /// field to true for any file inside this shared drive.
-  core.bool copyRequiresWriterPermission;
+  core.bool? copyRequiresWriterPermission;
 
   /// Whether access to this shared drive and items inside this shared drive is
   /// restricted to users of the domain to which this shared drive belongs.
   ///
   /// This restriction may be overridden by other sharing policies controlled
   /// outside of this shared drive.
-  core.bool domainUsersOnly;
+  core.bool? domainUsersOnly;
 
   /// Whether access to items inside this shared drive is restricted to its
   /// members.
-  core.bool driveMembersOnly;
+  core.bool? driveMembersOnly;
 
   DriveRestrictions();
 
@@ -4003,13 +3822,13 @@ class DriveRestrictions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (adminManagedRestrictions != null)
-          'adminManagedRestrictions': adminManagedRestrictions,
+          'adminManagedRestrictions': adminManagedRestrictions!,
         if (copyRequiresWriterPermission != null)
-          'copyRequiresWriterPermission': copyRequiresWriterPermission,
-        if (domainUsersOnly != null) 'domainUsersOnly': domainUsersOnly,
-        if (driveMembersOnly != null) 'driveMembersOnly': driveMembersOnly,
+          'copyRequiresWriterPermission': copyRequiresWriterPermission!,
+        if (domainUsersOnly != null) 'domainUsersOnly': domainUsersOnly!,
+        if (driveMembersOnly != null) 'driveMembersOnly': driveMembersOnly!,
       };
 }
 
@@ -4021,41 +3840,41 @@ class Drive {
   /// This is a write only field; it can only be set on drive.drives.update
   /// requests that don't set themeId. When specified, all fields of the
   /// backgroundImageFile must be set.
-  DriveBackgroundImageFile backgroundImageFile;
+  DriveBackgroundImageFile? backgroundImageFile;
 
   /// A short-lived link to this shared drive's background image.
-  core.String backgroundImageLink;
+  core.String? backgroundImageLink;
 
   /// Capabilities the current user has on this shared drive.
-  DriveCapabilities capabilities;
+  DriveCapabilities? capabilities;
 
   /// The color of this shared drive as an RGB hex string.
   ///
   /// It can only be set on a drive.drives.update request that does not set
   /// themeId.
-  core.String colorRgb;
+  core.String? colorRgb;
 
   /// The time at which the shared drive was created (RFC 3339 date-time).
-  core.DateTime createdTime;
+  core.DateTime? createdTime;
 
   /// Whether the shared drive is hidden from default view.
-  core.bool hidden;
+  core.bool? hidden;
 
   /// The ID of this shared drive which is also the ID of the top level folder
   /// of this shared drive.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#drive".
-  core.String kind;
+  core.String? kind;
 
   /// The name of this shared drive.
-  core.String name;
+  core.String? name;
 
   /// A set of restrictions that apply to this shared drive or items inside this
   /// shared drive.
-  DriveRestrictions restrictions;
+  DriveRestrictions? restrictions;
 
   /// The ID of the theme from which the background image and color will be set.
   ///
@@ -4064,7 +3883,7 @@ class Drive {
   /// theme is chosen from which the background image and color are set. This is
   /// a write-only field; it can only be set on requests that don't set colorRgb
   /// or backgroundImageFile.
-  core.String themeId;
+  core.String? themeId;
 
   Drive();
 
@@ -4107,20 +3926,21 @@ class Drive {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundImageFile != null)
-          'backgroundImageFile': backgroundImageFile.toJson(),
+          'backgroundImageFile': backgroundImageFile!.toJson(),
         if (backgroundImageLink != null)
-          'backgroundImageLink': backgroundImageLink,
-        if (capabilities != null) 'capabilities': capabilities.toJson(),
-        if (colorRgb != null) 'colorRgb': colorRgb,
-        if (createdTime != null) 'createdTime': (createdTime).toIso8601String(),
-        if (hidden != null) 'hidden': hidden,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (restrictions != null) 'restrictions': restrictions.toJson(),
-        if (themeId != null) 'themeId': themeId,
+          'backgroundImageLink': backgroundImageLink!,
+        if (capabilities != null) 'capabilities': capabilities!.toJson(),
+        if (colorRgb != null) 'colorRgb': colorRgb!,
+        if (createdTime != null)
+          'createdTime': (createdTime!).toIso8601String(),
+        if (hidden != null) 'hidden': hidden!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (restrictions != null) 'restrictions': restrictions!.toJson(),
+        if (themeId != null) 'themeId': themeId!,
       };
 }
 
@@ -4130,19 +3950,19 @@ class DriveList {
   ///
   /// If nextPageToken is populated, then this list may be incomplete and an
   /// additional page of results should be fetched.
-  core.List<Drive> drives;
+  core.List<Drive>? drives;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#driveList".
-  core.String kind;
+  core.String? kind;
 
   /// The page token for the next page of shared drives.
   ///
   /// This will be absent if the end of the list has been reached. If the token
   /// is rejected for any reason, it should be discarded, and pagination should
   /// be restarted from the first page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   DriveList();
 
@@ -4161,11 +3981,11 @@ class DriveList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (drives != null)
-          'drives': drives.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'drives': drives!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -4176,76 +3996,76 @@ class FileCapabilities {
   /// Whether the current user can add children to this folder.
   ///
   /// This is always false when the item is not a folder.
-  core.bool canAddChildren;
+  core.bool? canAddChildren;
 
   /// Whether the current user can add a folder from another drive (different
   /// shared drive or My Drive) to this folder.
   ///
   /// This is false when the item is not a folder. Only populated for items in
   /// shared drives.
-  core.bool canAddFolderFromAnotherDrive;
+  core.bool? canAddFolderFromAnotherDrive;
 
   /// Whether the current user can add a parent for the item without removing an
   /// existing parent in the same request.
   ///
   /// Not populated for shared drive files.
-  core.bool canAddMyDriveParent;
+  core.bool? canAddMyDriveParent;
 
   /// Whether the current user can change the copyRequiresWriterPermission
   /// restriction of this file.
-  core.bool canChangeCopyRequiresWriterPermission;
+  core.bool? canChangeCopyRequiresWriterPermission;
 
   /// Deprecated
-  core.bool canChangeViewersCanCopyContent;
+  core.bool? canChangeViewersCanCopyContent;
 
   /// Whether the current user can comment on this file.
-  core.bool canComment;
+  core.bool? canComment;
 
   /// Whether the current user can copy this file.
   ///
   /// For an item in a shared drive, whether the current user can copy
   /// non-folder descendants of this item, or this item itself if it is not a
   /// folder.
-  core.bool canCopy;
+  core.bool? canCopy;
 
   /// Whether the current user can delete this file.
-  core.bool canDelete;
+  core.bool? canDelete;
 
   /// Whether the current user can delete children of this folder.
   ///
   /// This is false when the item is not a folder. Only populated for items in
   /// shared drives.
-  core.bool canDeleteChildren;
+  core.bool? canDeleteChildren;
 
   /// Whether the current user can download this file.
-  core.bool canDownload;
+  core.bool? canDownload;
 
   /// Whether the current user can edit this file.
   ///
   /// Other factors may limit the type of changes a user can make to a file. For
   /// example, see canChangeCopyRequiresWriterPermission or canModifyContent.
-  core.bool canEdit;
+  core.bool? canEdit;
 
   /// Whether the current user can list the children of this folder.
   ///
   /// This is always false when the item is not a folder.
-  core.bool canListChildren;
+  core.bool? canListChildren;
 
   /// Whether the current user can modify the content of this file.
-  core.bool canModifyContent;
+  core.bool? canModifyContent;
 
   /// Whether the current user can modify restrictions on content of this file.
-  core.bool canModifyContentRestriction;
+  core.bool? canModifyContentRestriction;
 
   /// Whether the current user can move children of this folder outside of the
   /// shared drive.
   ///
   /// This is false when the item is not a folder. Only populated for items in
   /// shared drives.
-  core.bool canMoveChildrenOutOfDrive;
+  core.bool? canMoveChildrenOutOfDrive;
 
   /// Deprecated - use canMoveChildrenOutOfDrive instead.
-  core.bool canMoveChildrenOutOfTeamDrive;
+  core.bool? canMoveChildrenOutOfTeamDrive;
 
   /// Whether the current user can move children of this folder within this
   /// drive.
@@ -4253,81 +4073,81 @@ class FileCapabilities {
   /// This is false when the item is not a folder. Note that a request to move
   /// the child may still fail depending on the current user's access to the
   /// child and to the destination folder.
-  core.bool canMoveChildrenWithinDrive;
+  core.bool? canMoveChildrenWithinDrive;
 
   /// Deprecated - use canMoveChildrenWithinDrive instead.
-  core.bool canMoveChildrenWithinTeamDrive;
+  core.bool? canMoveChildrenWithinTeamDrive;
 
   /// Deprecated - use canMoveItemOutOfDrive instead.
-  core.bool canMoveItemIntoTeamDrive;
+  core.bool? canMoveItemIntoTeamDrive;
 
   /// Whether the current user can move this item outside of this drive by
   /// changing its parent.
   ///
   /// Note that a request to change the parent of the item may still fail
   /// depending on the new parent that is being added.
-  core.bool canMoveItemOutOfDrive;
+  core.bool? canMoveItemOutOfDrive;
 
   /// Deprecated - use canMoveItemOutOfDrive instead.
-  core.bool canMoveItemOutOfTeamDrive;
+  core.bool? canMoveItemOutOfTeamDrive;
 
   /// Whether the current user can move this item within this drive.
   ///
   /// Note that a request to change the parent of the item may still fail
   /// depending on the new parent that is being added and the parent that is
   /// being removed.
-  core.bool canMoveItemWithinDrive;
+  core.bool? canMoveItemWithinDrive;
 
   /// Deprecated - use canMoveItemWithinDrive instead.
-  core.bool canMoveItemWithinTeamDrive;
+  core.bool? canMoveItemWithinTeamDrive;
 
   /// Deprecated - use canMoveItemWithinDrive or canMoveItemOutOfDrive instead.
-  core.bool canMoveTeamDriveItem;
+  core.bool? canMoveTeamDriveItem;
 
   /// Whether the current user can read the shared drive to which this file
   /// belongs.
   ///
   /// Only populated for items in shared drives.
-  core.bool canReadDrive;
+  core.bool? canReadDrive;
 
   /// Whether the current user can read the revisions resource of this file.
   ///
   /// For a shared drive item, whether revisions of non-folder descendants of
   /// this item, or this item itself if it is not a folder, can be read.
-  core.bool canReadRevisions;
+  core.bool? canReadRevisions;
 
   /// Deprecated - use canReadDrive instead.
-  core.bool canReadTeamDrive;
+  core.bool? canReadTeamDrive;
 
   /// Whether the current user can remove children from this folder.
   ///
   /// This is always false when the item is not a folder. For a folder in a
   /// shared drive, use canDeleteChildren or canTrashChildren instead.
-  core.bool canRemoveChildren;
+  core.bool? canRemoveChildren;
 
   /// Whether the current user can remove a parent from the item without adding
   /// another parent in the same request.
   ///
   /// Not populated for shared drive files.
-  core.bool canRemoveMyDriveParent;
+  core.bool? canRemoveMyDriveParent;
 
   /// Whether the current user can rename this file.
-  core.bool canRename;
+  core.bool? canRename;
 
   /// Whether the current user can modify the sharing settings for this file.
-  core.bool canShare;
+  core.bool? canShare;
 
   /// Whether the current user can move this file to trash.
-  core.bool canTrash;
+  core.bool? canTrash;
 
   /// Whether the current user can trash children of this folder.
   ///
   /// This is false when the item is not a folder. Only populated for items in
   /// shared drives.
-  core.bool canTrashChildren;
+  core.bool? canTrashChildren;
 
   /// Whether the current user can restore this file from trash.
-  core.bool canUntrash;
+  core.bool? canUntrash;
 
   FileCapabilities();
 
@@ -4446,58 +4266,58 @@ class FileCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (canAddChildren != null) 'canAddChildren': canAddChildren,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (canAddChildren != null) 'canAddChildren': canAddChildren!,
         if (canAddFolderFromAnotherDrive != null)
-          'canAddFolderFromAnotherDrive': canAddFolderFromAnotherDrive,
+          'canAddFolderFromAnotherDrive': canAddFolderFromAnotherDrive!,
         if (canAddMyDriveParent != null)
-          'canAddMyDriveParent': canAddMyDriveParent,
+          'canAddMyDriveParent': canAddMyDriveParent!,
         if (canChangeCopyRequiresWriterPermission != null)
           'canChangeCopyRequiresWriterPermission':
-              canChangeCopyRequiresWriterPermission,
+              canChangeCopyRequiresWriterPermission!,
         if (canChangeViewersCanCopyContent != null)
-          'canChangeViewersCanCopyContent': canChangeViewersCanCopyContent,
-        if (canComment != null) 'canComment': canComment,
-        if (canCopy != null) 'canCopy': canCopy,
-        if (canDelete != null) 'canDelete': canDelete,
-        if (canDeleteChildren != null) 'canDeleteChildren': canDeleteChildren,
-        if (canDownload != null) 'canDownload': canDownload,
-        if (canEdit != null) 'canEdit': canEdit,
-        if (canListChildren != null) 'canListChildren': canListChildren,
-        if (canModifyContent != null) 'canModifyContent': canModifyContent,
+          'canChangeViewersCanCopyContent': canChangeViewersCanCopyContent!,
+        if (canComment != null) 'canComment': canComment!,
+        if (canCopy != null) 'canCopy': canCopy!,
+        if (canDelete != null) 'canDelete': canDelete!,
+        if (canDeleteChildren != null) 'canDeleteChildren': canDeleteChildren!,
+        if (canDownload != null) 'canDownload': canDownload!,
+        if (canEdit != null) 'canEdit': canEdit!,
+        if (canListChildren != null) 'canListChildren': canListChildren!,
+        if (canModifyContent != null) 'canModifyContent': canModifyContent!,
         if (canModifyContentRestriction != null)
-          'canModifyContentRestriction': canModifyContentRestriction,
+          'canModifyContentRestriction': canModifyContentRestriction!,
         if (canMoveChildrenOutOfDrive != null)
-          'canMoveChildrenOutOfDrive': canMoveChildrenOutOfDrive,
+          'canMoveChildrenOutOfDrive': canMoveChildrenOutOfDrive!,
         if (canMoveChildrenOutOfTeamDrive != null)
-          'canMoveChildrenOutOfTeamDrive': canMoveChildrenOutOfTeamDrive,
+          'canMoveChildrenOutOfTeamDrive': canMoveChildrenOutOfTeamDrive!,
         if (canMoveChildrenWithinDrive != null)
-          'canMoveChildrenWithinDrive': canMoveChildrenWithinDrive,
+          'canMoveChildrenWithinDrive': canMoveChildrenWithinDrive!,
         if (canMoveChildrenWithinTeamDrive != null)
-          'canMoveChildrenWithinTeamDrive': canMoveChildrenWithinTeamDrive,
+          'canMoveChildrenWithinTeamDrive': canMoveChildrenWithinTeamDrive!,
         if (canMoveItemIntoTeamDrive != null)
-          'canMoveItemIntoTeamDrive': canMoveItemIntoTeamDrive,
+          'canMoveItemIntoTeamDrive': canMoveItemIntoTeamDrive!,
         if (canMoveItemOutOfDrive != null)
-          'canMoveItemOutOfDrive': canMoveItemOutOfDrive,
+          'canMoveItemOutOfDrive': canMoveItemOutOfDrive!,
         if (canMoveItemOutOfTeamDrive != null)
-          'canMoveItemOutOfTeamDrive': canMoveItemOutOfTeamDrive,
+          'canMoveItemOutOfTeamDrive': canMoveItemOutOfTeamDrive!,
         if (canMoveItemWithinDrive != null)
-          'canMoveItemWithinDrive': canMoveItemWithinDrive,
+          'canMoveItemWithinDrive': canMoveItemWithinDrive!,
         if (canMoveItemWithinTeamDrive != null)
-          'canMoveItemWithinTeamDrive': canMoveItemWithinTeamDrive,
+          'canMoveItemWithinTeamDrive': canMoveItemWithinTeamDrive!,
         if (canMoveTeamDriveItem != null)
-          'canMoveTeamDriveItem': canMoveTeamDriveItem,
-        if (canReadDrive != null) 'canReadDrive': canReadDrive,
-        if (canReadRevisions != null) 'canReadRevisions': canReadRevisions,
-        if (canReadTeamDrive != null) 'canReadTeamDrive': canReadTeamDrive,
-        if (canRemoveChildren != null) 'canRemoveChildren': canRemoveChildren,
+          'canMoveTeamDriveItem': canMoveTeamDriveItem!,
+        if (canReadDrive != null) 'canReadDrive': canReadDrive!,
+        if (canReadRevisions != null) 'canReadRevisions': canReadRevisions!,
+        if (canReadTeamDrive != null) 'canReadTeamDrive': canReadTeamDrive!,
+        if (canRemoveChildren != null) 'canRemoveChildren': canRemoveChildren!,
         if (canRemoveMyDriveParent != null)
-          'canRemoveMyDriveParent': canRemoveMyDriveParent,
-        if (canRename != null) 'canRename': canRename,
-        if (canShare != null) 'canShare': canShare,
-        if (canTrash != null) 'canTrash': canTrash,
-        if (canTrashChildren != null) 'canTrashChildren': canTrashChildren,
-        if (canUntrash != null) 'canUntrash': canUntrash,
+          'canRemoveMyDriveParent': canRemoveMyDriveParent!,
+        if (canRename != null) 'canRename': canRename!,
+        if (canShare != null) 'canShare': canShare!,
+        if (canTrash != null) 'canTrash': canTrash!,
+        if (canTrashChildren != null) 'canTrashChildren': canTrashChildren!,
+        if (canUntrash != null) 'canUntrash': canUntrash!,
       };
 }
 
@@ -4506,8 +4326,8 @@ class FileCapabilities {
 /// This will only be used if Google Drive cannot generate a standard thumbnail.
 class FileContentHintsThumbnail {
   /// The thumbnail data encoded with URL-safe Base64 (RFC 4648 section 5).
-  core.String image;
-  core.List<core.int> get imageAsBytes => convert.base64.decode(image);
+  core.String? image;
+  core.List<core.int> get imageAsBytes => convert.base64.decode(image!);
 
   set imageAsBytes(core.List<core.int> _bytes) {
     image =
@@ -4515,7 +4335,7 @@ class FileContentHintsThumbnail {
   }
 
   /// The MIME type of the thumbnail.
-  core.String mimeType;
+  core.String? mimeType;
 
   FileContentHintsThumbnail();
 
@@ -4528,9 +4348,9 @@ class FileContentHintsThumbnail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (image != null) 'image': image,
-        if (mimeType != null) 'mimeType': mimeType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (image != null) 'image': image!,
+        if (mimeType != null) 'mimeType': mimeType!,
       };
 }
 
@@ -4541,13 +4361,13 @@ class FileContentHints {
   /// Text to be indexed for the file to improve fullText queries.
   ///
   /// This is limited to 128KB in length and may contain HTML elements.
-  core.String indexableText;
+  core.String? indexableText;
 
   /// A thumbnail for the file.
   ///
   /// This will only be used if Google Drive cannot generate a standard
   /// thumbnail.
-  FileContentHintsThumbnail thumbnail;
+  FileContentHintsThumbnail? thumbnail;
 
   FileContentHints();
 
@@ -4561,22 +4381,22 @@ class FileContentHints {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (indexableText != null) 'indexableText': indexableText,
-        if (thumbnail != null) 'thumbnail': thumbnail.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (indexableText != null) 'indexableText': indexableText!,
+        if (thumbnail != null) 'thumbnail': thumbnail!.toJson(),
       };
 }
 
 /// Geographic location information stored in the image.
 class FileImageMediaMetadataLocation {
   /// The altitude stored in the image.
-  core.double altitude;
+  core.double? altitude;
 
   /// The latitude stored in the image.
-  core.double latitude;
+  core.double? latitude;
 
   /// The longitude stored in the image.
-  core.double longitude;
+  core.double? longitude;
 
   FileImageMediaMetadataLocation();
 
@@ -4592,79 +4412,79 @@ class FileImageMediaMetadataLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (altitude != null) 'altitude': altitude,
-        if (latitude != null) 'latitude': latitude,
-        if (longitude != null) 'longitude': longitude,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (altitude != null) 'altitude': altitude!,
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
       };
 }
 
 /// Additional metadata about image media, if available.
 class FileImageMediaMetadata {
   /// The aperture used to create the photo (f-number).
-  core.double aperture;
+  core.double? aperture;
 
   /// The make of the camera used to create the photo.
-  core.String cameraMake;
+  core.String? cameraMake;
 
   /// The model of the camera used to create the photo.
-  core.String cameraModel;
+  core.String? cameraModel;
 
   /// The color space of the photo.
-  core.String colorSpace;
+  core.String? colorSpace;
 
   /// The exposure bias of the photo (APEX value).
-  core.double exposureBias;
+  core.double? exposureBias;
 
   /// The exposure mode used to create the photo.
-  core.String exposureMode;
+  core.String? exposureMode;
 
   /// The length of the exposure, in seconds.
-  core.double exposureTime;
+  core.double? exposureTime;
 
   /// Whether a flash was used to create the photo.
-  core.bool flashUsed;
+  core.bool? flashUsed;
 
   /// The focal length used to create the photo, in millimeters.
-  core.double focalLength;
+  core.double? focalLength;
 
   /// The height of the image in pixels.
-  core.int height;
+  core.int? height;
 
   /// The ISO speed used to create the photo.
-  core.int isoSpeed;
+  core.int? isoSpeed;
 
   /// The lens used to create the photo.
-  core.String lens;
+  core.String? lens;
 
   /// Geographic location information stored in the image.
-  FileImageMediaMetadataLocation location;
+  FileImageMediaMetadataLocation? location;
 
   /// The smallest f-number of the lens at the focal length used to create the
   /// photo (APEX value).
-  core.double maxApertureValue;
+  core.double? maxApertureValue;
 
   /// The metering mode used to create the photo.
-  core.String meteringMode;
+  core.String? meteringMode;
 
   /// The number of clockwise 90 degree rotations applied from the image's
   /// original orientation.
-  core.int rotation;
+  core.int? rotation;
 
   /// The type of sensor used to create the photo.
-  core.String sensor;
+  core.String? sensor;
 
   /// The distance to the subject of the photo, in meters.
-  core.int subjectDistance;
+  core.int? subjectDistance;
 
   /// The date and time the photo was taken (EXIF DateTime).
-  core.String time;
+  core.String? time;
 
   /// The white balance mode used to create the photo.
-  core.String whiteBalance;
+  core.String? whiteBalance;
 
   /// The width of the image in pixels.
-  core.int width;
+  core.int? width;
 
   FileImageMediaMetadata();
 
@@ -4735,28 +4555,28 @@ class FileImageMediaMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aperture != null) 'aperture': aperture,
-        if (cameraMake != null) 'cameraMake': cameraMake,
-        if (cameraModel != null) 'cameraModel': cameraModel,
-        if (colorSpace != null) 'colorSpace': colorSpace,
-        if (exposureBias != null) 'exposureBias': exposureBias,
-        if (exposureMode != null) 'exposureMode': exposureMode,
-        if (exposureTime != null) 'exposureTime': exposureTime,
-        if (flashUsed != null) 'flashUsed': flashUsed,
-        if (focalLength != null) 'focalLength': focalLength,
-        if (height != null) 'height': height,
-        if (isoSpeed != null) 'isoSpeed': isoSpeed,
-        if (lens != null) 'lens': lens,
-        if (location != null) 'location': location.toJson(),
-        if (maxApertureValue != null) 'maxApertureValue': maxApertureValue,
-        if (meteringMode != null) 'meteringMode': meteringMode,
-        if (rotation != null) 'rotation': rotation,
-        if (sensor != null) 'sensor': sensor,
-        if (subjectDistance != null) 'subjectDistance': subjectDistance,
-        if (time != null) 'time': time,
-        if (whiteBalance != null) 'whiteBalance': whiteBalance,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aperture != null) 'aperture': aperture!,
+        if (cameraMake != null) 'cameraMake': cameraMake!,
+        if (cameraModel != null) 'cameraModel': cameraModel!,
+        if (colorSpace != null) 'colorSpace': colorSpace!,
+        if (exposureBias != null) 'exposureBias': exposureBias!,
+        if (exposureMode != null) 'exposureMode': exposureMode!,
+        if (exposureTime != null) 'exposureTime': exposureTime!,
+        if (flashUsed != null) 'flashUsed': flashUsed!,
+        if (focalLength != null) 'focalLength': focalLength!,
+        if (height != null) 'height': height!,
+        if (isoSpeed != null) 'isoSpeed': isoSpeed!,
+        if (lens != null) 'lens': lens!,
+        if (location != null) 'location': location!.toJson(),
+        if (maxApertureValue != null) 'maxApertureValue': maxApertureValue!,
+        if (meteringMode != null) 'meteringMode': meteringMode!,
+        if (rotation != null) 'rotation': rotation!,
+        if (sensor != null) 'sensor': sensor!,
+        if (subjectDistance != null) 'subjectDistance': subjectDistance!,
+        if (time != null) 'time': time!,
+        if (whiteBalance != null) 'whiteBalance': whiteBalance!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -4766,13 +4586,13 @@ class FileImageMediaMetadata {
 /// application/vnd.google-apps.shortcut.
 class FileShortcutDetails {
   /// The ID of the file that this shortcut points to.
-  core.String targetId;
+  core.String? targetId;
 
   /// The MIME type of the file that this shortcut points to.
   ///
   /// The value of this field is a snapshot of the target's MIME type, captured
   /// when the shortcut is created.
-  core.String targetMimeType;
+  core.String? targetMimeType;
 
   FileShortcutDetails();
 
@@ -4785,9 +4605,9 @@ class FileShortcutDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (targetId != null) 'targetId': targetId,
-        if (targetMimeType != null) 'targetMimeType': targetMimeType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (targetId != null) 'targetId': targetId!,
+        if (targetMimeType != null) 'targetMimeType': targetMimeType!,
       };
 }
 
@@ -4796,13 +4616,13 @@ class FileShortcutDetails {
 /// This may not be available immediately upon upload.
 class FileVideoMediaMetadata {
   /// The duration of the video in milliseconds.
-  core.String durationMillis;
+  core.String? durationMillis;
 
   /// The height of the video in pixels.
-  core.int height;
+  core.int? height;
 
   /// The width of the video in pixels.
-  core.int width;
+  core.int? width;
 
   FileVideoMediaMetadata();
 
@@ -4818,10 +4638,10 @@ class FileVideoMediaMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (durationMillis != null) 'durationMillis': durationMillis,
-        if (height != null) 'height': height,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (durationMillis != null) 'durationMillis': durationMillis!,
+        if (height != null) 'height': height!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -4834,49 +4654,49 @@ class File {
   /// These properties can only be retrieved using an authenticated request. An
   /// authenticated request uses an access token obtained with a OAuth 2 client
   /// ID. You cannot use an API key to retrieve private properties.
-  core.Map<core.String, core.String> appProperties;
+  core.Map<core.String, core.String>? appProperties;
 
   /// Capabilities the current user has on this file.
   ///
   /// Each capability corresponds to a fine-grained action that a user may take.
-  FileCapabilities capabilities;
+  FileCapabilities? capabilities;
 
   /// Additional information about the content of the file.
   ///
   /// These fields are never populated in responses.
-  FileContentHints contentHints;
+  FileContentHints? contentHints;
 
   /// Restrictions for accessing the content of the file.
   ///
   /// Only populated if such a restriction exists.
-  core.List<ContentRestriction> contentRestrictions;
+  core.List<ContentRestriction>? contentRestrictions;
 
   /// Whether the options to copy, print, or download this file, should be
   /// disabled for readers and commenters.
-  core.bool copyRequiresWriterPermission;
+  core.bool? copyRequiresWriterPermission;
 
   /// The time at which the file was created (RFC 3339 date-time).
-  core.DateTime createdTime;
+  core.DateTime? createdTime;
 
   /// A short description of the file.
-  core.String description;
+  core.String? description;
 
   /// ID of the shared drive the file resides in.
   ///
   /// Only populated for items in shared drives.
-  core.String driveId;
+  core.String? driveId;
 
   /// Whether the file has been explicitly trashed, as opposed to recursively
   /// trashed from a parent folder.
-  core.bool explicitlyTrashed;
+  core.bool? explicitlyTrashed;
 
   /// Links for exporting Docs Editors files to specific formats.
-  core.Map<core.String, core.String> exportLinks;
+  core.Map<core.String, core.String>? exportLinks;
 
   /// The final component of fullFileExtension.
   ///
   /// This is only available for files with binary content in Google Drive.
-  core.String fileExtension;
+  core.String? fileExtension;
 
   /// The color for a folder as an RGB hex string.
   ///
@@ -4884,7 +4704,7 @@ class File {
   /// About resource.
   /// If an unsupported color is specified, the closest color in the palette
   /// will be used instead.
-  core.String folderColorRgb;
+  core.String? folderColorRgb;
 
   /// The full file extension extracted from the name field.
   ///
@@ -4892,50 +4712,50 @@ class File {
   /// only available for files with binary content in Google Drive.
   /// This is automatically updated when the name field changes, however it is
   /// not cleared if the new name does not contain a valid extension.
-  core.String fullFileExtension;
+  core.String? fullFileExtension;
 
   /// Whether there are permissions directly on this file.
   ///
   /// This field is only populated for items in shared drives.
-  core.bool hasAugmentedPermissions;
+  core.bool? hasAugmentedPermissions;
 
   /// Whether this file has a thumbnail.
   ///
   /// This does not indicate whether the requesting app has access to the
   /// thumbnail. To check access, look for the presence of the thumbnailLink
   /// field.
-  core.bool hasThumbnail;
+  core.bool? hasThumbnail;
 
   /// The ID of the file's head revision.
   ///
   /// This is currently only available for files with binary content in Google
   /// Drive.
-  core.String headRevisionId;
+  core.String? headRevisionId;
 
   /// A static, unauthenticated link to the file's icon.
-  core.String iconLink;
+  core.String? iconLink;
 
   /// The ID of the file.
-  core.String id;
+  core.String? id;
 
   /// Additional metadata about image media, if available.
-  FileImageMediaMetadata imageMediaMetadata;
+  FileImageMediaMetadata? imageMediaMetadata;
 
   /// Whether the file was created or opened by the requesting app.
-  core.bool isAppAuthorized;
+  core.bool? isAppAuthorized;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#file".
-  core.String kind;
+  core.String? kind;
 
   /// The last user to modify the file.
-  User lastModifyingUser;
+  User? lastModifyingUser;
 
   /// The MD5 checksum for the content of the file.
   ///
   /// This is only applicable to files with binary content in Google Drive.
-  core.String md5Checksum;
+  core.String? md5Checksum;
 
   /// The MIME type of the file.
   /// Google Drive will attempt to automatically detect an appropriate value
@@ -4945,42 +4765,42 @@ class File {
   /// If a file is created with a Google Doc MIME type, the uploaded content
   /// will be imported if possible. The supported import formats are published
   /// in the About resource.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// Whether the file has been modified by this user.
-  core.bool modifiedByMe;
+  core.bool? modifiedByMe;
 
   /// The last time the file was modified by the user (RFC 3339 date-time).
-  core.DateTime modifiedByMeTime;
+  core.DateTime? modifiedByMeTime;
 
   /// The last time the file was modified by anyone (RFC 3339 date-time).
   /// Note that setting modifiedTime will also update modifiedByMeTime for the
   /// user.
-  core.DateTime modifiedTime;
+  core.DateTime? modifiedTime;
 
   /// The name of the file.
   ///
   /// This is not necessarily unique within a folder. Note that for immutable
   /// items such as the top level folders of shared drives, My Drive root
   /// folder, and Application Data folder the name is constant.
-  core.String name;
+  core.String? name;
 
   /// The original filename of the uploaded content if available, or else the
   /// original value of the name field.
   ///
   /// This is only available for files with binary content in Google Drive.
-  core.String originalFilename;
+  core.String? originalFilename;
 
   /// Whether the user owns the file.
   ///
   /// Not populated for items in shared drives.
-  core.bool ownedByMe;
+  core.bool? ownedByMe;
 
   /// The owners of the file.
   ///
   /// Currently, only certain legacy files may have more than one owner. Not
   /// populated for items in shared drives.
-  core.List<User> owners;
+  core.List<User>? owners;
 
   /// The IDs of the parent folders which contain the file.
   /// If not specified as part of a create request, the file will be placed
@@ -4989,60 +4809,60 @@ class File {
   /// If not specified as part of a copy request, the file will inherit any
   /// discoverable parents of the source file. Update requests must use the
   /// addParents and removeParents parameters to modify the parents list.
-  core.List<core.String> parents;
+  core.List<core.String>? parents;
 
   /// List of permission IDs for users with access to this file.
-  core.List<core.String> permissionIds;
+  core.List<core.String>? permissionIds;
 
   /// The full list of permissions for the file.
   ///
   /// This is only available if the requesting user can share the file. Not
   /// populated for items in shared drives.
-  core.List<Permission> permissions;
+  core.List<Permission>? permissions;
 
   /// A collection of arbitrary key-value pairs which are visible to all apps.
   /// Entries with null values are cleared in update and copy requests.
-  core.Map<core.String, core.String> properties;
+  core.Map<core.String, core.String>? properties;
 
   /// The number of storage quota bytes used by the file.
   ///
   /// This includes the head revision as well as previous revisions with
   /// keepForever enabled.
-  core.String quotaBytesUsed;
+  core.String? quotaBytesUsed;
 
   /// Whether the file has been shared.
   ///
   /// Not populated for items in shared drives.
-  core.bool shared;
+  core.bool? shared;
 
   /// The time at which the file was shared with the user, if applicable (RFC
   /// 3339 date-time).
-  core.DateTime sharedWithMeTime;
+  core.DateTime? sharedWithMeTime;
 
   /// The user who shared the file with the requesting user, if applicable.
-  User sharingUser;
+  User? sharingUser;
 
   /// Shortcut file details.
   ///
   /// Only populated for shortcut files, which have the mimeType field set to
   /// application/vnd.google-apps.shortcut.
-  FileShortcutDetails shortcutDetails;
+  FileShortcutDetails? shortcutDetails;
 
   /// The size of the file's content in bytes.
   ///
   /// This is applicable to binary files in Google Drive and Google Docs files.
-  core.String size;
+  core.String? size;
 
   /// The list of spaces which contain the file.
   ///
   /// The currently supported values are 'drive', 'appDataFolder' and 'photos'.
-  core.List<core.String> spaces;
+  core.List<core.String>? spaces;
 
   /// Whether the user has starred the file.
-  core.bool starred;
+  core.bool? starred;
 
   /// Deprecated - use driveId instead.
-  core.String teamDriveId;
+  core.String? teamDriveId;
 
   /// A short-lived link to the file's thumbnail, if available.
   ///
@@ -5050,10 +4870,10 @@ class File {
   /// app can access the file's content. If the file isn't shared publicly, the
   /// URL returned in Files.thumbnailLink must be fetched using a credentialed
   /// request.
-  core.String thumbnailLink;
+  core.String? thumbnailLink;
 
   /// The thumbnail version for use in thumbnail cache invalidation.
-  core.String thumbnailVersion;
+  core.String? thumbnailVersion;
 
   /// Whether the file has been trashed, either explicitly or from a trashed
   /// parent folder.
@@ -5063,52 +4883,52 @@ class File {
   /// However, all users with access to the file can see the trashed item
   /// metadata in an API response. All users with access can copy, download,
   /// export, and share the file.
-  core.bool trashed;
+  core.bool? trashed;
 
   /// The time that the item was trashed (RFC 3339 date-time).
   ///
   /// Only populated for items in shared drives.
-  core.DateTime trashedTime;
+  core.DateTime? trashedTime;
 
   /// If the file has been explicitly trashed, the user who trashed it.
   ///
   /// Only populated for items in shared drives.
-  User trashingUser;
+  User? trashingUser;
 
   /// A monotonically increasing version number for the file.
   ///
   /// This reflects every change made to the file on the server, even those not
   /// visible to the user.
-  core.String version;
+  core.String? version;
 
   /// Additional metadata about video media.
   ///
   /// This may not be available immediately upon upload.
-  FileVideoMediaMetadata videoMediaMetadata;
+  FileVideoMediaMetadata? videoMediaMetadata;
 
   /// Whether the file has been viewed by this user.
-  core.bool viewedByMe;
+  core.bool? viewedByMe;
 
   /// The last time the file was viewed by the user (RFC 3339 date-time).
-  core.DateTime viewedByMeTime;
+  core.DateTime? viewedByMeTime;
 
   /// Deprecated - use copyRequiresWriterPermission instead.
-  core.bool viewersCanCopyContent;
+  core.bool? viewersCanCopyContent;
 
   /// A link for downloading the content of the file in a browser.
   ///
   /// This is only available for files with binary content in Google Drive.
-  core.String webContentLink;
+  core.String? webContentLink;
 
   /// A link for opening the file in a relevant Google editor or viewer in a
   /// browser.
-  core.String webViewLink;
+  core.String? webViewLink;
 
   /// Whether users with only writer permission can modify the file's
   /// permissions.
   ///
   /// Not populated for items in shared drives.
-  core.bool writersCanShare;
+  core.bool? writersCanShare;
 
   File();
 
@@ -5334,79 +5154,81 @@ class File {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appProperties != null) 'appProperties': appProperties,
-        if (capabilities != null) 'capabilities': capabilities.toJson(),
-        if (contentHints != null) 'contentHints': contentHints.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appProperties != null) 'appProperties': appProperties!,
+        if (capabilities != null) 'capabilities': capabilities!.toJson(),
+        if (contentHints != null) 'contentHints': contentHints!.toJson(),
         if (contentRestrictions != null)
           'contentRestrictions':
-              contentRestrictions.map((value) => value.toJson()).toList(),
+              contentRestrictions!.map((value) => value.toJson()).toList(),
         if (copyRequiresWriterPermission != null)
-          'copyRequiresWriterPermission': copyRequiresWriterPermission,
-        if (createdTime != null) 'createdTime': (createdTime).toIso8601String(),
-        if (description != null) 'description': description,
-        if (driveId != null) 'driveId': driveId,
-        if (explicitlyTrashed != null) 'explicitlyTrashed': explicitlyTrashed,
-        if (exportLinks != null) 'exportLinks': exportLinks,
-        if (fileExtension != null) 'fileExtension': fileExtension,
-        if (folderColorRgb != null) 'folderColorRgb': folderColorRgb,
-        if (fullFileExtension != null) 'fullFileExtension': fullFileExtension,
+          'copyRequiresWriterPermission': copyRequiresWriterPermission!,
+        if (createdTime != null)
+          'createdTime': (createdTime!).toIso8601String(),
+        if (description != null) 'description': description!,
+        if (driveId != null) 'driveId': driveId!,
+        if (explicitlyTrashed != null) 'explicitlyTrashed': explicitlyTrashed!,
+        if (exportLinks != null) 'exportLinks': exportLinks!,
+        if (fileExtension != null) 'fileExtension': fileExtension!,
+        if (folderColorRgb != null) 'folderColorRgb': folderColorRgb!,
+        if (fullFileExtension != null) 'fullFileExtension': fullFileExtension!,
         if (hasAugmentedPermissions != null)
-          'hasAugmentedPermissions': hasAugmentedPermissions,
-        if (hasThumbnail != null) 'hasThumbnail': hasThumbnail,
-        if (headRevisionId != null) 'headRevisionId': headRevisionId,
-        if (iconLink != null) 'iconLink': iconLink,
-        if (id != null) 'id': id,
+          'hasAugmentedPermissions': hasAugmentedPermissions!,
+        if (hasThumbnail != null) 'hasThumbnail': hasThumbnail!,
+        if (headRevisionId != null) 'headRevisionId': headRevisionId!,
+        if (iconLink != null) 'iconLink': iconLink!,
+        if (id != null) 'id': id!,
         if (imageMediaMetadata != null)
-          'imageMediaMetadata': imageMediaMetadata.toJson(),
-        if (isAppAuthorized != null) 'isAppAuthorized': isAppAuthorized,
-        if (kind != null) 'kind': kind,
+          'imageMediaMetadata': imageMediaMetadata!.toJson(),
+        if (isAppAuthorized != null) 'isAppAuthorized': isAppAuthorized!,
+        if (kind != null) 'kind': kind!,
         if (lastModifyingUser != null)
-          'lastModifyingUser': lastModifyingUser.toJson(),
-        if (md5Checksum != null) 'md5Checksum': md5Checksum,
-        if (mimeType != null) 'mimeType': mimeType,
-        if (modifiedByMe != null) 'modifiedByMe': modifiedByMe,
+          'lastModifyingUser': lastModifyingUser!.toJson(),
+        if (md5Checksum != null) 'md5Checksum': md5Checksum!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (modifiedByMe != null) 'modifiedByMe': modifiedByMe!,
         if (modifiedByMeTime != null)
-          'modifiedByMeTime': (modifiedByMeTime).toIso8601String(),
+          'modifiedByMeTime': (modifiedByMeTime!).toIso8601String(),
         if (modifiedTime != null)
-          'modifiedTime': (modifiedTime).toIso8601String(),
-        if (name != null) 'name': name,
-        if (originalFilename != null) 'originalFilename': originalFilename,
-        if (ownedByMe != null) 'ownedByMe': ownedByMe,
+          'modifiedTime': (modifiedTime!).toIso8601String(),
+        if (name != null) 'name': name!,
+        if (originalFilename != null) 'originalFilename': originalFilename!,
+        if (ownedByMe != null) 'ownedByMe': ownedByMe!,
         if (owners != null)
-          'owners': owners.map((value) => value.toJson()).toList(),
-        if (parents != null) 'parents': parents,
-        if (permissionIds != null) 'permissionIds': permissionIds,
+          'owners': owners!.map((value) => value.toJson()).toList(),
+        if (parents != null) 'parents': parents!,
+        if (permissionIds != null) 'permissionIds': permissionIds!,
         if (permissions != null)
-          'permissions': permissions.map((value) => value.toJson()).toList(),
-        if (properties != null) 'properties': properties,
-        if (quotaBytesUsed != null) 'quotaBytesUsed': quotaBytesUsed,
-        if (shared != null) 'shared': shared,
+          'permissions': permissions!.map((value) => value.toJson()).toList(),
+        if (properties != null) 'properties': properties!,
+        if (quotaBytesUsed != null) 'quotaBytesUsed': quotaBytesUsed!,
+        if (shared != null) 'shared': shared!,
         if (sharedWithMeTime != null)
-          'sharedWithMeTime': (sharedWithMeTime).toIso8601String(),
-        if (sharingUser != null) 'sharingUser': sharingUser.toJson(),
+          'sharedWithMeTime': (sharedWithMeTime!).toIso8601String(),
+        if (sharingUser != null) 'sharingUser': sharingUser!.toJson(),
         if (shortcutDetails != null)
-          'shortcutDetails': shortcutDetails.toJson(),
-        if (size != null) 'size': size,
-        if (spaces != null) 'spaces': spaces,
-        if (starred != null) 'starred': starred,
-        if (teamDriveId != null) 'teamDriveId': teamDriveId,
-        if (thumbnailLink != null) 'thumbnailLink': thumbnailLink,
-        if (thumbnailVersion != null) 'thumbnailVersion': thumbnailVersion,
-        if (trashed != null) 'trashed': trashed,
-        if (trashedTime != null) 'trashedTime': (trashedTime).toIso8601String(),
-        if (trashingUser != null) 'trashingUser': trashingUser.toJson(),
-        if (version != null) 'version': version,
+          'shortcutDetails': shortcutDetails!.toJson(),
+        if (size != null) 'size': size!,
+        if (spaces != null) 'spaces': spaces!,
+        if (starred != null) 'starred': starred!,
+        if (teamDriveId != null) 'teamDriveId': teamDriveId!,
+        if (thumbnailLink != null) 'thumbnailLink': thumbnailLink!,
+        if (thumbnailVersion != null) 'thumbnailVersion': thumbnailVersion!,
+        if (trashed != null) 'trashed': trashed!,
+        if (trashedTime != null)
+          'trashedTime': (trashedTime!).toIso8601String(),
+        if (trashingUser != null) 'trashingUser': trashingUser!.toJson(),
+        if (version != null) 'version': version!,
         if (videoMediaMetadata != null)
-          'videoMediaMetadata': videoMediaMetadata.toJson(),
-        if (viewedByMe != null) 'viewedByMe': viewedByMe,
+          'videoMediaMetadata': videoMediaMetadata!.toJson(),
+        if (viewedByMe != null) 'viewedByMe': viewedByMe!,
         if (viewedByMeTime != null)
-          'viewedByMeTime': (viewedByMeTime).toIso8601String(),
+          'viewedByMeTime': (viewedByMeTime!).toIso8601String(),
         if (viewersCanCopyContent != null)
-          'viewersCanCopyContent': viewersCanCopyContent,
-        if (webContentLink != null) 'webContentLink': webContentLink,
-        if (webViewLink != null) 'webViewLink': webViewLink,
-        if (writersCanShare != null) 'writersCanShare': writersCanShare,
+          'viewersCanCopyContent': viewersCanCopyContent!,
+        if (webContentLink != null) 'webContentLink': webContentLink!,
+        if (webViewLink != null) 'webViewLink': webViewLink!,
+        if (writersCanShare != null) 'writersCanShare': writersCanShare!,
       };
 }
 
@@ -5416,7 +5238,7 @@ class FileList {
   ///
   /// If nextPageToken is populated, then this list may be incomplete and an
   /// additional page of results should be fetched.
-  core.List<File> files;
+  core.List<File>? files;
 
   /// Whether the search process was incomplete.
   ///
@@ -5425,19 +5247,19 @@ class FileList {
   /// "allDrives" corpora, but all corpora could not be searched. When this
   /// happens, it is suggested that clients narrow their query by choosing a
   /// different corpus such as "user" or "drive".
-  core.bool incompleteSearch;
+  core.bool? incompleteSearch;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#fileList".
-  core.String kind;
+  core.String? kind;
 
   /// The page token for the next page of files.
   ///
   /// This will be absent if the end of the files list has been reached. If the
   /// token is rejected for any reason, it should be discarded, and pagination
   /// should be restarted from the first page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   FileList();
 
@@ -5459,27 +5281,27 @@ class FileList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (files != null)
-          'files': files.map((value) => value.toJson()).toList(),
-        if (incompleteSearch != null) 'incompleteSearch': incompleteSearch,
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'files': files!.map((value) => value.toJson()).toList(),
+        if (incompleteSearch != null) 'incompleteSearch': incompleteSearch!,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// A list of generated file IDs which can be provided in create requests.
 class GeneratedIds {
   /// The IDs generated for the requesting user in the specified space.
-  core.List<core.String> ids;
+  core.List<core.String>? ids;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#generatedIds".
-  core.String kind;
+  core.String? kind;
 
   /// The type of file that can be created with these IDs.
-  core.String space;
+  core.String? space;
 
   GeneratedIds();
 
@@ -5497,10 +5319,10 @@ class GeneratedIds {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ids != null) 'ids': ids,
-        if (kind != null) 'kind': kind,
-        if (space != null) 'space': space,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ids != null) 'ids': ids!,
+        if (kind != null) 'kind': kind!,
+        if (space != null) 'space': space!,
       };
 }
 
@@ -5508,12 +5330,12 @@ class PermissionPermissionDetails {
   /// Whether this permission is inherited.
   ///
   /// This field is always populated. This is an output-only field.
-  core.bool inherited;
+  core.bool? inherited;
 
   /// The ID of the item from which this permission is inherited.
   ///
   /// This is an output-only field.
-  core.String inheritedFrom;
+  core.String? inheritedFrom;
 
   /// The permission type for this user.
   ///
@@ -5521,7 +5343,7 @@ class PermissionPermissionDetails {
   /// possible:
   /// - file
   /// - member
-  core.String permissionType;
+  core.String? permissionType;
 
   /// The primary role for this user.
   ///
@@ -5532,7 +5354,7 @@ class PermissionPermissionDetails {
   /// - writer
   /// - commenter
   /// - reader
-  core.String role;
+  core.String? role;
 
   PermissionPermissionDetails();
 
@@ -5551,26 +5373,26 @@ class PermissionPermissionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (inherited != null) 'inherited': inherited,
-        if (inheritedFrom != null) 'inheritedFrom': inheritedFrom,
-        if (permissionType != null) 'permissionType': permissionType,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (inherited != null) 'inherited': inherited!,
+        if (inheritedFrom != null) 'inheritedFrom': inheritedFrom!,
+        if (permissionType != null) 'permissionType': permissionType!,
+        if (role != null) 'role': role!,
       };
 }
 
 class PermissionTeamDrivePermissionDetails {
   /// Deprecated - use permissionDetails/inherited instead.
-  core.bool inherited;
+  core.bool? inherited;
 
   /// Deprecated - use permissionDetails/inheritedFrom instead.
-  core.String inheritedFrom;
+  core.String? inheritedFrom;
 
   /// Deprecated - use permissionDetails/role instead.
-  core.String role;
+  core.String? role;
 
   /// Deprecated - use permissionDetails/permissionType instead.
-  core.String teamDrivePermissionType;
+  core.String? teamDrivePermissionType;
 
   PermissionTeamDrivePermissionDetails();
 
@@ -5589,12 +5411,12 @@ class PermissionTeamDrivePermissionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (inherited != null) 'inherited': inherited,
-        if (inheritedFrom != null) 'inheritedFrom': inheritedFrom,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (inherited != null) 'inherited': inherited!,
+        if (inheritedFrom != null) 'inheritedFrom': inheritedFrom!,
+        if (role != null) 'role': role!,
         if (teamDrivePermissionType != null)
-          'teamDrivePermissionType': teamDrivePermissionType,
+          'teamDrivePermissionType': teamDrivePermissionType!,
       };
 }
 
@@ -5606,12 +5428,12 @@ class Permission {
   /// Whether the permission allows the file to be discovered through search.
   ///
   /// This is only applicable for permissions of type domain or anyone.
-  core.bool allowFileDiscovery;
+  core.bool? allowFileDiscovery;
 
   /// Whether the account associated with this permission has been deleted.
   ///
   /// This field only pertains to user and group permissions.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// The "pretty" name of the value of the permission.
   ///
@@ -5621,13 +5443,13 @@ class Permission {
   /// - group - Name of the Google Group, such as "The Company Administrators."
   /// - domain - String domain name, such as "thecompany.com."
   /// - anyone - No displayName is present.
-  core.String displayName;
+  core.String? displayName;
 
   /// The domain to which this permission refers.
-  core.String domain;
+  core.String? domain;
 
   /// The email address of the user or group to which this permission refers.
-  core.String emailAddress;
+  core.String? emailAddress;
 
   /// The time at which this permission will expire (RFC 3339 date-time).
   ///
@@ -5635,27 +5457,27 @@ class Permission {
   /// - They can only be set on user and group permissions
   /// - The time must be in the future
   /// - The time cannot be more than a year in the future
-  core.DateTime expirationTime;
+  core.DateTime? expirationTime;
 
   /// The ID of this permission.
   ///
   /// This is a unique identifier for the grantee, and is published in User
   /// resources as permissionId. IDs should be treated as opaque values.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#permission".
-  core.String kind;
+  core.String? kind;
 
   /// Details of whether the permissions on this shared drive item are inherited
   /// or directly on this item.
   ///
   /// This is an output-only field which is present only for shared drive items.
-  core.List<PermissionPermissionDetails> permissionDetails;
+  core.List<PermissionPermissionDetails>? permissionDetails;
 
   /// A link to the user's profile photo, if available.
-  core.String photoLink;
+  core.String? photoLink;
 
   /// The role granted by this permission.
   ///
@@ -5667,10 +5489,10 @@ class Permission {
   /// - writer
   /// - commenter
   /// - reader
-  core.String role;
+  core.String? role;
 
   /// Deprecated - use permissionDetails instead.
-  core.List<PermissionTeamDrivePermissionDetails> teamDrivePermissionDetails;
+  core.List<PermissionTeamDrivePermissionDetails>? teamDrivePermissionDetails;
 
   /// The type of the grantee.
   ///
@@ -5682,13 +5504,13 @@ class Permission {
   /// provide an emailAddress for the user or group. When type is domain, you
   /// must provide a domain. There isn't extra information required for a anyone
   /// type.
-  core.String type;
+  core.String? type;
 
   /// Indicates the view for this permission.
   ///
   /// Only populated for permissions that belong to a view. published is the
   /// only supported value.
-  core.String view;
+  core.String? view;
 
   Permission();
 
@@ -5747,28 +5569,28 @@ class Permission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowFileDiscovery != null)
-          'allowFileDiscovery': allowFileDiscovery,
-        if (deleted != null) 'deleted': deleted,
-        if (displayName != null) 'displayName': displayName,
-        if (domain != null) 'domain': domain,
-        if (emailAddress != null) 'emailAddress': emailAddress,
+          'allowFileDiscovery': allowFileDiscovery!,
+        if (deleted != null) 'deleted': deleted!,
+        if (displayName != null) 'displayName': displayName!,
+        if (domain != null) 'domain': domain!,
+        if (emailAddress != null) 'emailAddress': emailAddress!,
         if (expirationTime != null)
-          'expirationTime': (expirationTime).toIso8601String(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+          'expirationTime': (expirationTime!).toIso8601String(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (permissionDetails != null)
           'permissionDetails':
-              permissionDetails.map((value) => value.toJson()).toList(),
-        if (photoLink != null) 'photoLink': photoLink,
-        if (role != null) 'role': role,
+              permissionDetails!.map((value) => value.toJson()).toList(),
+        if (photoLink != null) 'photoLink': photoLink!,
+        if (role != null) 'role': role!,
         if (teamDrivePermissionDetails != null)
-          'teamDrivePermissionDetails': teamDrivePermissionDetails
+          'teamDrivePermissionDetails': teamDrivePermissionDetails!
               .map((value) => value.toJson())
               .toList(),
-        if (type != null) 'type': type,
-        if (view != null) 'view': view,
+        if (type != null) 'type': type!,
+        if (view != null) 'view': view!,
       };
 }
 
@@ -5777,20 +5599,20 @@ class PermissionList {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#permissionList".
-  core.String kind;
+  core.String? kind;
 
   /// The page token for the next page of permissions.
   ///
   /// This field will be absent if the end of the permissions list has been
   /// reached. If the token is rejected for any reason, it should be discarded,
   /// and pagination should be restarted from the first page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of permissions.
   ///
   /// If nextPageToken is populated, then this list may be incomplete and an
   /// additional page of results should be fetched.
-  core.List<Permission> permissions;
+  core.List<Permission>? permissions;
 
   PermissionList();
 
@@ -5809,11 +5631,11 @@ class PermissionList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (permissions != null)
-          'permissions': permissions.map((value) => value.toJson()).toList(),
+          'permissions': permissions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5824,40 +5646,40 @@ class Reply {
   /// Valid values are:
   /// - resolve
   /// - reopen
-  core.String action;
+  core.String? action;
 
   /// The author of the reply.
   ///
   /// The author's email address and permission ID will not be populated.
-  User author;
+  User? author;
 
   /// The plain text content of the reply.
   ///
   /// This field is used for setting the content, while htmlContent should be
   /// displayed. This is required on creates if no action is specified.
-  core.String content;
+  core.String? content;
 
   /// The time at which the reply was created (RFC 3339 date-time).
-  core.DateTime createdTime;
+  core.DateTime? createdTime;
 
   /// Whether the reply has been deleted.
   ///
   /// A deleted reply has no content.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// The content of the reply with HTML formatting.
-  core.String htmlContent;
+  core.String? htmlContent;
 
   /// The ID of the reply.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#reply".
-  core.String kind;
+  core.String? kind;
 
   /// The last time the reply was modified (RFC 3339 date-time).
-  core.DateTime modifiedTime;
+  core.DateTime? modifiedTime;
 
   Reply();
 
@@ -5892,17 +5714,18 @@ class Reply {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action,
-        if (author != null) 'author': author.toJson(),
-        if (content != null) 'content': content,
-        if (createdTime != null) 'createdTime': (createdTime).toIso8601String(),
-        if (deleted != null) 'deleted': deleted,
-        if (htmlContent != null) 'htmlContent': htmlContent,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!,
+        if (author != null) 'author': author!.toJson(),
+        if (content != null) 'content': content!,
+        if (createdTime != null)
+          'createdTime': (createdTime!).toIso8601String(),
+        if (deleted != null) 'deleted': deleted!,
+        if (htmlContent != null) 'htmlContent': htmlContent!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (modifiedTime != null)
-          'modifiedTime': (modifiedTime).toIso8601String(),
+          'modifiedTime': (modifiedTime!).toIso8601String(),
       };
 }
 
@@ -5911,20 +5734,20 @@ class ReplyList {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#replyList".
-  core.String kind;
+  core.String? kind;
 
   /// The page token for the next page of replies.
   ///
   /// This will be absent if the end of the replies list has been reached. If
   /// the token is rejected for any reason, it should be discarded, and
   /// pagination should be restarted from the first page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of replies.
   ///
   /// If nextPageToken is populated, then this list may be incomplete and an
   /// additional page of results should be fetched.
-  core.List<Reply> replies;
+  core.List<Reply>? replies;
 
   ReplyList();
 
@@ -5943,21 +5766,21 @@ class ReplyList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (replies != null)
-          'replies': replies.map((value) => value.toJson()).toList(),
+          'replies': replies!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The metadata for a revision to a file.
 class Revision {
   /// Links for exporting Docs Editors files to specific formats.
-  core.Map<core.String, core.String> exportLinks;
+  core.Map<core.String, core.String>? exportLinks;
 
   /// The ID of the revision.
-  core.String id;
+  core.String? id;
 
   /// Whether to keep this revision forever, even if it is no longer the head
   /// revision.
@@ -5966,56 +5789,56 @@ class Revision {
   /// content is uploaded. This can be set on a maximum of 200 revisions for a
   /// file.
   /// This field is only applicable to files with binary content in Drive.
-  core.bool keepForever;
+  core.bool? keepForever;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#revision".
-  core.String kind;
+  core.String? kind;
 
   /// The last user to modify this revision.
-  User lastModifyingUser;
+  User? lastModifyingUser;
 
   /// The MD5 checksum of the revision's content.
   ///
   /// This is only applicable to files with binary content in Drive.
-  core.String md5Checksum;
+  core.String? md5Checksum;
 
   /// The MIME type of the revision.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// The last time the revision was modified (RFC 3339 date-time).
-  core.DateTime modifiedTime;
+  core.DateTime? modifiedTime;
 
   /// The original filename used to create this revision.
   ///
   /// This is only applicable to files with binary content in Drive.
-  core.String originalFilename;
+  core.String? originalFilename;
 
   /// Whether subsequent revisions will be automatically republished.
   ///
   /// This is only applicable to Docs Editors files.
-  core.bool publishAuto;
+  core.bool? publishAuto;
 
   /// Whether this revision is published.
   ///
   /// This is only applicable to Docs Editors files.
-  core.bool published;
+  core.bool? published;
 
   /// A link to the published revision.
   ///
   /// This is only populated for Google Sites files.
-  core.String publishedLink;
+  core.String? publishedLink;
 
   /// Whether this revision is published outside the domain.
   ///
   /// This is only applicable to Docs Editors files.
-  core.bool publishedOutsideDomain;
+  core.bool? publishedOutsideDomain;
 
   /// The size of the revision's content in bytes.
   ///
   /// This is only applicable to files with binary content in Drive.
-  core.String size;
+  core.String? size;
 
   Revision();
 
@@ -6072,24 +5895,24 @@ class Revision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exportLinks != null) 'exportLinks': exportLinks,
-        if (id != null) 'id': id,
-        if (keepForever != null) 'keepForever': keepForever,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exportLinks != null) 'exportLinks': exportLinks!,
+        if (id != null) 'id': id!,
+        if (keepForever != null) 'keepForever': keepForever!,
+        if (kind != null) 'kind': kind!,
         if (lastModifyingUser != null)
-          'lastModifyingUser': lastModifyingUser.toJson(),
-        if (md5Checksum != null) 'md5Checksum': md5Checksum,
-        if (mimeType != null) 'mimeType': mimeType,
+          'lastModifyingUser': lastModifyingUser!.toJson(),
+        if (md5Checksum != null) 'md5Checksum': md5Checksum!,
+        if (mimeType != null) 'mimeType': mimeType!,
         if (modifiedTime != null)
-          'modifiedTime': (modifiedTime).toIso8601String(),
-        if (originalFilename != null) 'originalFilename': originalFilename,
-        if (publishAuto != null) 'publishAuto': publishAuto,
-        if (published != null) 'published': published,
-        if (publishedLink != null) 'publishedLink': publishedLink,
+          'modifiedTime': (modifiedTime!).toIso8601String(),
+        if (originalFilename != null) 'originalFilename': originalFilename!,
+        if (publishAuto != null) 'publishAuto': publishAuto!,
+        if (published != null) 'published': published!,
+        if (publishedLink != null) 'publishedLink': publishedLink!,
         if (publishedOutsideDomain != null)
-          'publishedOutsideDomain': publishedOutsideDomain,
-        if (size != null) 'size': size,
+          'publishedOutsideDomain': publishedOutsideDomain!,
+        if (size != null) 'size': size!,
       };
 }
 
@@ -6098,20 +5921,20 @@ class RevisionList {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#revisionList".
-  core.String kind;
+  core.String? kind;
 
   /// The page token for the next page of revisions.
   ///
   /// This will be absent if the end of the revisions list has been reached. If
   /// the token is rejected for any reason, it should be discarded, and
   /// pagination should be restarted from the first page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of revisions.
   ///
   /// If nextPageToken is populated, then this list may be incomplete and an
   /// additional page of results should be fetched.
-  core.List<Revision> revisions;
+  core.List<Revision>? revisions;
 
   RevisionList();
 
@@ -6130,11 +5953,11 @@ class RevisionList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (revisions != null)
-          'revisions': revisions.map((value) => value.toJson()).toList(),
+          'revisions': revisions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6142,10 +5965,10 @@ class StartPageToken {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#startPageToken".
-  core.String kind;
+  core.String? kind;
 
   /// The starting page token for listing changes.
-  core.String startPageToken;
+  core.String? startPageToken;
 
   StartPageToken();
 
@@ -6158,9 +5981,9 @@ class StartPageToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (startPageToken != null) 'startPageToken': startPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (startPageToken != null) 'startPageToken': startPageToken!,
       };
 }
 
@@ -6172,7 +5995,7 @@ class StartPageToken {
 /// backgroundImageFile must be set.
 class TeamDriveBackgroundImageFile {
   /// The ID of an image file in Drive to use for the background image.
-  core.String id;
+  core.String? id;
 
   /// The width of the cropped image in the closed range of 0 to 1.
   ///
@@ -6180,7 +6003,7 @@ class TeamDriveBackgroundImageFile {
   /// of the entire image. The height is computed by applying a width to height
   /// aspect ratio of 80 to 9. The resulting image must be at least 1280 pixels
   /// wide and 144 pixels high.
-  core.double width;
+  core.double? width;
 
   /// The X coordinate of the upper left corner of the cropping area in the
   /// background image.
@@ -6188,7 +6011,7 @@ class TeamDriveBackgroundImageFile {
   /// This is a value in the closed range of 0 to 1. This value represents the
   /// horizontal distance from the left side of the entire image to the left
   /// side of the cropping area divided by the width of the entire image.
-  core.double xCoordinate;
+  core.double? xCoordinate;
 
   /// The Y coordinate of the upper left corner of the cropping area in the
   /// background image.
@@ -6196,7 +6019,7 @@ class TeamDriveBackgroundImageFile {
   /// This is a value in the closed range of 0 to 1. This value represents the
   /// vertical distance from the top side of the entire image to the top side of
   /// the cropping area divided by the height of the entire image.
-  core.double yCoordinate;
+  core.double? yCoordinate;
 
   TeamDriveBackgroundImageFile();
 
@@ -6215,83 +6038,83 @@ class TeamDriveBackgroundImageFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (width != null) 'width': width,
-        if (xCoordinate != null) 'xCoordinate': xCoordinate,
-        if (yCoordinate != null) 'yCoordinate': yCoordinate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (width != null) 'width': width!,
+        if (xCoordinate != null) 'xCoordinate': xCoordinate!,
+        if (yCoordinate != null) 'yCoordinate': yCoordinate!,
       };
 }
 
 /// Capabilities the current user has on this Team Drive.
 class TeamDriveCapabilities {
   /// Whether the current user can add children to folders in this Team Drive.
-  core.bool canAddChildren;
+  core.bool? canAddChildren;
 
   /// Whether the current user can change the copyRequiresWriterPermission
   /// restriction of this Team Drive.
-  core.bool canChangeCopyRequiresWriterPermissionRestriction;
+  core.bool? canChangeCopyRequiresWriterPermissionRestriction;
 
   /// Whether the current user can change the domainUsersOnly restriction of
   /// this Team Drive.
-  core.bool canChangeDomainUsersOnlyRestriction;
+  core.bool? canChangeDomainUsersOnlyRestriction;
 
   /// Whether the current user can change the background of this Team Drive.
-  core.bool canChangeTeamDriveBackground;
+  core.bool? canChangeTeamDriveBackground;
 
   /// Whether the current user can change the teamMembersOnly restriction of
   /// this Team Drive.
-  core.bool canChangeTeamMembersOnlyRestriction;
+  core.bool? canChangeTeamMembersOnlyRestriction;
 
   /// Whether the current user can comment on files in this Team Drive.
-  core.bool canComment;
+  core.bool? canComment;
 
   /// Whether the current user can copy files in this Team Drive.
-  core.bool canCopy;
+  core.bool? canCopy;
 
   /// Whether the current user can delete children from folders in this Team
   /// Drive.
-  core.bool canDeleteChildren;
+  core.bool? canDeleteChildren;
 
   /// Whether the current user can delete this Team Drive.
   ///
   /// Attempting to delete the Team Drive may still fail if there are untrashed
   /// items inside the Team Drive.
-  core.bool canDeleteTeamDrive;
+  core.bool? canDeleteTeamDrive;
 
   /// Whether the current user can download files in this Team Drive.
-  core.bool canDownload;
+  core.bool? canDownload;
 
   /// Whether the current user can edit files in this Team Drive
-  core.bool canEdit;
+  core.bool? canEdit;
 
   /// Whether the current user can list the children of folders in this Team
   /// Drive.
-  core.bool canListChildren;
+  core.bool? canListChildren;
 
   /// Whether the current user can add members to this Team Drive or remove them
   /// or change their role.
-  core.bool canManageMembers;
+  core.bool? canManageMembers;
 
   /// Whether the current user can read the revisions resource of files in this
   /// Team Drive.
-  core.bool canReadRevisions;
+  core.bool? canReadRevisions;
 
   /// Deprecated - use canDeleteChildren or canTrashChildren instead.
-  core.bool canRemoveChildren;
+  core.bool? canRemoveChildren;
 
   /// Whether the current user can rename files or folders in this Team Drive.
-  core.bool canRename;
+  core.bool? canRename;
 
   /// Whether the current user can rename this Team Drive.
-  core.bool canRenameTeamDrive;
+  core.bool? canRenameTeamDrive;
 
   /// Whether the current user can share files or folders in this Team Drive.
-  core.bool canShare;
+  core.bool? canShare;
 
   /// Whether the current user can trash children from folders in this Team
   /// Drive.
-  core.bool canTrashChildren;
+  core.bool? canTrashChildren;
 
   TeamDriveCapabilities();
 
@@ -6360,35 +6183,35 @@ class TeamDriveCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (canAddChildren != null) 'canAddChildren': canAddChildren,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (canAddChildren != null) 'canAddChildren': canAddChildren!,
         if (canChangeCopyRequiresWriterPermissionRestriction != null)
           'canChangeCopyRequiresWriterPermissionRestriction':
-              canChangeCopyRequiresWriterPermissionRestriction,
+              canChangeCopyRequiresWriterPermissionRestriction!,
         if (canChangeDomainUsersOnlyRestriction != null)
           'canChangeDomainUsersOnlyRestriction':
-              canChangeDomainUsersOnlyRestriction,
+              canChangeDomainUsersOnlyRestriction!,
         if (canChangeTeamDriveBackground != null)
-          'canChangeTeamDriveBackground': canChangeTeamDriveBackground,
+          'canChangeTeamDriveBackground': canChangeTeamDriveBackground!,
         if (canChangeTeamMembersOnlyRestriction != null)
           'canChangeTeamMembersOnlyRestriction':
-              canChangeTeamMembersOnlyRestriction,
-        if (canComment != null) 'canComment': canComment,
-        if (canCopy != null) 'canCopy': canCopy,
-        if (canDeleteChildren != null) 'canDeleteChildren': canDeleteChildren,
+              canChangeTeamMembersOnlyRestriction!,
+        if (canComment != null) 'canComment': canComment!,
+        if (canCopy != null) 'canCopy': canCopy!,
+        if (canDeleteChildren != null) 'canDeleteChildren': canDeleteChildren!,
         if (canDeleteTeamDrive != null)
-          'canDeleteTeamDrive': canDeleteTeamDrive,
-        if (canDownload != null) 'canDownload': canDownload,
-        if (canEdit != null) 'canEdit': canEdit,
-        if (canListChildren != null) 'canListChildren': canListChildren,
-        if (canManageMembers != null) 'canManageMembers': canManageMembers,
-        if (canReadRevisions != null) 'canReadRevisions': canReadRevisions,
-        if (canRemoveChildren != null) 'canRemoveChildren': canRemoveChildren,
-        if (canRename != null) 'canRename': canRename,
+          'canDeleteTeamDrive': canDeleteTeamDrive!,
+        if (canDownload != null) 'canDownload': canDownload!,
+        if (canEdit != null) 'canEdit': canEdit!,
+        if (canListChildren != null) 'canListChildren': canListChildren!,
+        if (canManageMembers != null) 'canManageMembers': canManageMembers!,
+        if (canReadRevisions != null) 'canReadRevisions': canReadRevisions!,
+        if (canRemoveChildren != null) 'canRemoveChildren': canRemoveChildren!,
+        if (canRename != null) 'canRename': canRename!,
         if (canRenameTeamDrive != null)
-          'canRenameTeamDrive': canRenameTeamDrive,
-        if (canShare != null) 'canShare': canShare,
-        if (canTrashChildren != null) 'canTrashChildren': canTrashChildren,
+          'canRenameTeamDrive': canRenameTeamDrive!,
+        if (canShare != null) 'canShare': canShare!,
+        if (canTrashChildren != null) 'canTrashChildren': canTrashChildren!,
       };
 }
 
@@ -6397,25 +6220,25 @@ class TeamDriveCapabilities {
 class TeamDriveRestrictions {
   /// Whether administrative privileges on this Team Drive are required to
   /// modify restrictions.
-  core.bool adminManagedRestrictions;
+  core.bool? adminManagedRestrictions;
 
   /// Whether the options to copy, print, or download files inside this Team
   /// Drive, should be disabled for readers and commenters.
   ///
   /// When this restriction is set to true, it will override the similarly named
   /// field to true for any file inside this Team Drive.
-  core.bool copyRequiresWriterPermission;
+  core.bool? copyRequiresWriterPermission;
 
   /// Whether access to this Team Drive and items inside this Team Drive is
   /// restricted to users of the domain to which this Team Drive belongs.
   ///
   /// This restriction may be overridden by other sharing policies controlled
   /// outside of this Team Drive.
-  core.bool domainUsersOnly;
+  core.bool? domainUsersOnly;
 
   /// Whether access to items inside this Team Drive is restricted to members of
   /// this Team Drive.
-  core.bool teamMembersOnly;
+  core.bool? teamMembersOnly;
 
   TeamDriveRestrictions();
 
@@ -6435,13 +6258,13 @@ class TeamDriveRestrictions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (adminManagedRestrictions != null)
-          'adminManagedRestrictions': adminManagedRestrictions,
+          'adminManagedRestrictions': adminManagedRestrictions!,
         if (copyRequiresWriterPermission != null)
-          'copyRequiresWriterPermission': copyRequiresWriterPermission,
-        if (domainUsersOnly != null) 'domainUsersOnly': domainUsersOnly,
-        if (teamMembersOnly != null) 'teamMembersOnly': teamMembersOnly,
+          'copyRequiresWriterPermission': copyRequiresWriterPermission!,
+        if (domainUsersOnly != null) 'domainUsersOnly': domainUsersOnly!,
+        if (teamMembersOnly != null) 'teamMembersOnly': teamMembersOnly!,
       };
 }
 
@@ -6453,38 +6276,38 @@ class TeamDrive {
   /// This is a write only field; it can only be set on drive.teamdrives.update
   /// requests that don't set themeId. When specified, all fields of the
   /// backgroundImageFile must be set.
-  TeamDriveBackgroundImageFile backgroundImageFile;
+  TeamDriveBackgroundImageFile? backgroundImageFile;
 
   /// A short-lived link to this Team Drive's background image.
-  core.String backgroundImageLink;
+  core.String? backgroundImageLink;
 
   /// Capabilities the current user has on this Team Drive.
-  TeamDriveCapabilities capabilities;
+  TeamDriveCapabilities? capabilities;
 
   /// The color of this Team Drive as an RGB hex string.
   ///
   /// It can only be set on a drive.teamdrives.update request that does not set
   /// themeId.
-  core.String colorRgb;
+  core.String? colorRgb;
 
   /// The time at which the Team Drive was created (RFC 3339 date-time).
-  core.DateTime createdTime;
+  core.DateTime? createdTime;
 
   /// The ID of this Team Drive which is also the ID of the top level folder of
   /// this Team Drive.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#teamDrive".
-  core.String kind;
+  core.String? kind;
 
   /// The name of this Team Drive.
-  core.String name;
+  core.String? name;
 
   /// A set of restrictions that apply to this Team Drive or items inside this
   /// Team Drive.
-  TeamDriveRestrictions restrictions;
+  TeamDriveRestrictions? restrictions;
 
   /// The ID of the theme from which the background image and color will be set.
   ///
@@ -6493,7 +6316,7 @@ class TeamDrive {
   /// request, a random theme is chosen from which the background image and
   /// color are set. This is a write-only field; it can only be set on requests
   /// that don't set colorRgb or backgroundImageFile.
-  core.String themeId;
+  core.String? themeId;
 
   TeamDrive();
 
@@ -6533,19 +6356,20 @@ class TeamDrive {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundImageFile != null)
-          'backgroundImageFile': backgroundImageFile.toJson(),
+          'backgroundImageFile': backgroundImageFile!.toJson(),
         if (backgroundImageLink != null)
-          'backgroundImageLink': backgroundImageLink,
-        if (capabilities != null) 'capabilities': capabilities.toJson(),
-        if (colorRgb != null) 'colorRgb': colorRgb,
-        if (createdTime != null) 'createdTime': (createdTime).toIso8601String(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (restrictions != null) 'restrictions': restrictions.toJson(),
-        if (themeId != null) 'themeId': themeId,
+          'backgroundImageLink': backgroundImageLink!,
+        if (capabilities != null) 'capabilities': capabilities!.toJson(),
+        if (colorRgb != null) 'colorRgb': colorRgb!,
+        if (createdTime != null)
+          'createdTime': (createdTime!).toIso8601String(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (restrictions != null) 'restrictions': restrictions!.toJson(),
+        if (themeId != null) 'themeId': themeId!,
       };
 }
 
@@ -6554,20 +6378,20 @@ class TeamDriveList {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#teamDriveList".
-  core.String kind;
+  core.String? kind;
 
   /// The page token for the next page of Team Drives.
   ///
   /// This will be absent if the end of the Team Drives list has been reached.
   /// If the token is rejected for any reason, it should be discarded, and
   /// pagination should be restarted from the first page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of Team Drives.
   ///
   /// If nextPageToken is populated, then this list may be incomplete and an
   /// additional page of results should be fetched.
-  core.List<TeamDrive> teamDrives;
+  core.List<TeamDrive>? teamDrives;
 
   TeamDriveList();
 
@@ -6586,38 +6410,38 @@ class TeamDriveList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (teamDrives != null)
-          'teamDrives': teamDrives.map((value) => value.toJson()).toList(),
+          'teamDrives': teamDrives!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Information about a Drive user.
 class User {
   /// A plain text displayable name for this user.
-  core.String displayName;
+  core.String? displayName;
 
   /// The email address of the user.
   ///
   /// This may not be present in certain contexts if the user has not made their
   /// email address visible to the requester.
-  core.String emailAddress;
+  core.String? emailAddress;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "drive#user".
-  core.String kind;
+  core.String? kind;
 
   /// Whether this user is the requesting user.
-  core.bool me;
+  core.bool? me;
 
   /// The user's ID as visible in Permission resources.
-  core.String permissionId;
+  core.String? permissionId;
 
   /// A link to the user's profile photo, if available.
-  core.String photoLink;
+  core.String? photoLink;
 
   User();
 
@@ -6642,12 +6466,12 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (emailAddress != null) 'emailAddress': emailAddress,
-        if (kind != null) 'kind': kind,
-        if (me != null) 'me': me,
-        if (permissionId != null) 'permissionId': permissionId,
-        if (photoLink != null) 'photoLink': photoLink,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (kind != null) 'kind': kind!,
+        if (me != null) 'me': me!,
+        if (permissionId != null) 'permissionId': permissionId!,
+        if (photoLink != null) 'photoLink': photoLink!,
       };
 }

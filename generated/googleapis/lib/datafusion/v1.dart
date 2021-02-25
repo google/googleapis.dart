@@ -111,11 +111,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -158,15 +155,12 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.bool includeUnrevealedLocations,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.bool? includeUnrevealedLocations,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (includeUnrevealedLocations != null)
@@ -220,14 +214,10 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> create(
     Instance request,
     core.String parent, {
-    core.String instanceId,
-    core.String $fields,
+    core.String? instanceId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (instanceId != null) 'instanceId': [instanceId],
       if ($fields != null) 'fields': [$fields],
@@ -266,11 +256,8 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -306,11 +293,8 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<Instance> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -358,12 +342,9 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -414,15 +395,12 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -474,14 +452,10 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> patch(
     Instance request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -524,13 +498,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> restart(
     RestartInstanceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -575,13 +545,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -629,13 +595,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -693,13 +655,9 @@ class ProjectsLocationsOperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -740,11 +698,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -782,11 +737,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -835,14 +787,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -901,14 +850,11 @@ class ProjectsLocationsVersionsResource {
   /// this method will complete with the same error.
   async.Future<ListAvailableVersionsResponse> list(
     core.String parent, {
-    core.bool latestPatchOnly,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.bool? latestPatchOnly,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (latestPatchOnly != null) 'latestPatchOnly': ['${latestPatchOnly}'],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -938,7 +884,7 @@ class Accelerator {
   /// - "HEALTHCARE" : Cloud Healthcare accelerator for CDF. This accelerator is
   /// to enable Cloud Healthcare specific CDF plugins developed by Healthcare
   /// team.
-  core.String acceleratorType;
+  core.String? acceleratorType;
 
   /// The state of the accelerator
   /// Possible string values are:
@@ -949,7 +895,7 @@ class Accelerator {
   /// available to use
   /// - "UNKNOWN" : Indicates that accelerator state is currently unknown.
   /// Requests for enable, disable could be retried while in this state
-  core.String state;
+  core.String? state;
 
   Accelerator();
 
@@ -962,9 +908,9 @@ class Accelerator {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (acceleratorType != null) 'acceleratorType': acceleratorType,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (acceleratorType != null) 'acceleratorType': acceleratorType!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -987,13 +933,13 @@ class Accelerator {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -1009,11 +955,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -1028,7 +974,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -1036,7 +982,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -1051,9 +997,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -1067,7 +1013,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -1099,12 +1045,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -1123,10 +1069,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1138,7 +1084,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1155,7 +1101,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1183,24 +1129,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -1219,98 +1165,98 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// Represents a Data Fusion instance.
 class Instance {
   /// List of accelerators enabled for this CDF instance.
-  core.List<Accelerator> accelerators;
+  core.List<Accelerator>? accelerators;
 
   /// Endpoint on which the REST APIs is accessible.
   ///
   /// Output only.
-  core.String apiEndpoint;
+  core.String? apiEndpoint;
 
   /// Available versions that the instance can be upgraded to using
   /// UpdateInstanceRequest.
-  core.List<Version> availableVersion;
+  core.List<Version>? availableVersion;
 
   /// The time the instance was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// User-managed service account to set on Dataproc when Cloud Data Fusion
   /// creates Dataproc to run data processing pipelines.
   ///
   /// This allows users to have fine-grained access control on Dataproc's
   /// accesses to cloud resources.
-  core.String dataprocServiceAccount;
+  core.String? dataprocServiceAccount;
 
   /// A description of this instance.
-  core.String description;
+  core.String? description;
 
   /// Display name for an instance.
-  core.String displayName;
+  core.String? displayName;
 
   /// Option to enable Stackdriver Logging.
-  core.bool enableStackdriverLogging;
+  core.bool? enableStackdriverLogging;
 
   /// Option to enable Stackdriver Monitoring.
-  core.bool enableStackdriverMonitoring;
+  core.bool? enableStackdriverMonitoring;
 
   /// Cloud Storage bucket generated by Data Fusion in the customer project.
   ///
   /// Output only.
-  core.String gcsBucket;
+  core.String? gcsBucket;
 
   /// The resource labels for instance to use to annotate any related underlying
   /// resources such as GCE VMs.
   ///
   /// The character '=' is not allowed to be used within the labels.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The name of this instance is in the form of
   /// projects/{project}/locations/{location}/instances/{instance}.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Network configuration options.
   ///
   /// These are required when a private Data Fusion instance is to be created.
-  NetworkConfig networkConfig;
+  NetworkConfig? networkConfig;
 
   /// Map of additional options used to configure the behavior of Data Fusion
   /// instance.
-  core.Map<core.String, core.String> options;
+  core.Map<core.String, core.String>? options;
 
   /// P4 service account for the customer project.
   ///
   /// Output only.
-  core.String p4ServiceAccount;
+  core.String? p4ServiceAccount;
 
   /// Specifies whether the Data Fusion instance should be private.
   ///
   /// If set to true, all Data Fusion nodes will have private IP addresses and
   /// will not be able to access the public internet.
-  core.bool privateInstance;
+  core.bool? privateInstance;
 
   /// Use tenant_project_id instead to extract the tenant project ID.
   ///
   /// Output only. Deprecated.
-  core.String serviceAccount;
+  core.String? serviceAccount;
 
   /// Endpoint on which the Data Fusion UI is accessible.
   ///
   /// Output only.
-  core.String serviceEndpoint;
+  core.String? serviceEndpoint;
 
   /// The current state of this Data Fusion instance.
   ///
@@ -1327,18 +1273,18 @@ class Instance {
   /// - "UPDATING" : Instance is being updated on customer request
   /// - "AUTO_UPDATING" : Instance is being auto-updated
   /// - "AUTO_UPGRADING" : Instance is being auto-upgraded
-  core.String state;
+  core.String? state;
 
   /// Additional information about the current state of this Data Fusion
   /// instance if available.
   ///
   /// Output only.
-  core.String stateMessage;
+  core.String? stateMessage;
 
   /// The name of the tenant project.
   ///
   /// Output only.
-  core.String tenantProjectId;
+  core.String? tenantProjectId;
 
   /// Instance type.
   ///
@@ -1356,22 +1302,22 @@ class Instance {
   /// user will have all features available but with restrictive capabilities.
   /// This is to help enterprises design and develop their data ingestion and
   /// integration pipelines at low cost.
-  core.String type;
+  core.String? type;
 
   /// The time the instance was last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// Current version of the Data Fusion.
   ///
   /// Only specifiable in Update.
-  core.String version;
+  core.String? version;
 
   /// Name of the zone in which the Data Fusion instance will be created.
   ///
   /// Only DEVELOPER instances use this field.
-  core.String zone;
+  core.String? zone;
 
   Instance();
 
@@ -1473,49 +1419,49 @@ class Instance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accelerators != null)
-          'accelerators': accelerators.map((value) => value.toJson()).toList(),
-        if (apiEndpoint != null) 'apiEndpoint': apiEndpoint,
+          'accelerators': accelerators!.map((value) => value.toJson()).toList(),
+        if (apiEndpoint != null) 'apiEndpoint': apiEndpoint!,
         if (availableVersion != null)
           'availableVersion':
-              availableVersion.map((value) => value.toJson()).toList(),
-        if (createTime != null) 'createTime': createTime,
+              availableVersion!.map((value) => value.toJson()).toList(),
+        if (createTime != null) 'createTime': createTime!,
         if (dataprocServiceAccount != null)
-          'dataprocServiceAccount': dataprocServiceAccount,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+          'dataprocServiceAccount': dataprocServiceAccount!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (enableStackdriverLogging != null)
-          'enableStackdriverLogging': enableStackdriverLogging,
+          'enableStackdriverLogging': enableStackdriverLogging!,
         if (enableStackdriverMonitoring != null)
-          'enableStackdriverMonitoring': enableStackdriverMonitoring,
-        if (gcsBucket != null) 'gcsBucket': gcsBucket,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (networkConfig != null) 'networkConfig': networkConfig.toJson(),
-        if (options != null) 'options': options,
-        if (p4ServiceAccount != null) 'p4ServiceAccount': p4ServiceAccount,
-        if (privateInstance != null) 'privateInstance': privateInstance,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount,
-        if (serviceEndpoint != null) 'serviceEndpoint': serviceEndpoint,
-        if (state != null) 'state': state,
-        if (stateMessage != null) 'stateMessage': stateMessage,
-        if (tenantProjectId != null) 'tenantProjectId': tenantProjectId,
-        if (type != null) 'type': type,
-        if (updateTime != null) 'updateTime': updateTime,
-        if (version != null) 'version': version,
-        if (zone != null) 'zone': zone,
+          'enableStackdriverMonitoring': enableStackdriverMonitoring!,
+        if (gcsBucket != null) 'gcsBucket': gcsBucket!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (networkConfig != null) 'networkConfig': networkConfig!.toJson(),
+        if (options != null) 'options': options!,
+        if (p4ServiceAccount != null) 'p4ServiceAccount': p4ServiceAccount!,
+        if (privateInstance != null) 'privateInstance': privateInstance!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (serviceEndpoint != null) 'serviceEndpoint': serviceEndpoint!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (tenantProjectId != null) 'tenantProjectId': tenantProjectId!,
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (version != null) 'version': version!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
 /// Response message for the list available versions request.
 class ListAvailableVersionsResponse {
   /// Represents a list of versions that are supported.
-  core.List<Version> availableVersions;
+  core.List<Version>? availableVersions;
 
   /// Token to retrieve the next page of results or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListAvailableVersionsResponse();
 
@@ -1531,25 +1477,25 @@ class ListAvailableVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (availableVersions != null)
           'availableVersions':
-              availableVersions.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              availableVersions!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for the list instance request.
 class ListInstancesResponse {
   /// Represents a list of Data Fusion instances.
-  core.List<Instance> instances;
+  core.List<Instance>? instances;
 
   /// Token to retrieve the next page of results or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListInstancesResponse();
 
@@ -1570,21 +1516,21 @@ class ListInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (instances != null)
-          'instances': instances.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+          'instances': instances!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -1600,20 +1546,20 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -1629,10 +1575,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1641,17 +1587,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -1659,12 +1605,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -1698,12 +1644,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1721,7 +1667,7 @@ class NetworkConfig {
   ///
   /// This range must not overlap with any other ranges used in the customer
   /// network.
-  core.String ipAllocation;
+  core.String? ipAllocation;
 
   /// Name of the network in the customer project with which the Tenant Project
   /// will be peered for executing pipelines.
@@ -1729,7 +1675,7 @@ class NetworkConfig {
   /// In case of shared VPC where the network resides in another host project
   /// the network should specified in the form of
   /// projects/{host-project-id}/global/networks/{network}
-  core.String network;
+  core.String? network;
 
   NetworkConfig();
 
@@ -1742,9 +1688,9 @@ class NetworkConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ipAllocation != null) 'ipAllocation': ipAllocation,
-        if (network != null) 'network': network,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ipAllocation != null) 'ipAllocation': ipAllocation!,
+        if (network != null) 'network': network!,
       };
 }
 
@@ -1755,10 +1701,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -1769,14 +1715,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -1789,7 +1735,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -1824,12 +1770,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -1838,32 +1784,32 @@ class OperationMetadata {
   /// Map to hold any additonal status info for the operation If there is an
   /// accelerator being enabled/disabled/deleted, this will be populated with
   /// accelerator name as key and status as ENABLING, DISABLING or DELETING
-  core.Map<core.String, core.String> additionalStatus;
+  core.Map<core.String, core.String>? additionalStatus;
 
   /// API version used to start the operation.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// The time the operation was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time the operation finished running.
-  core.String endTime;
+  core.String? endTime;
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
   /// Operations that have successfully been cancelled have Operation.error
   /// value with a google.rpc.Status.code of 1, corresponding to
   /// `Code.CANCELLED`.
-  core.bool requestedCancellation;
+  core.bool? requestedCancellation;
 
   /// Human-readable status of the operation if any.
-  core.String statusDetail;
+  core.String? statusDetail;
 
   /// Server-defined resource path for the target of the operation.
-  core.String target;
+  core.String? target;
 
   /// Name of the verb executed by the operation.
-  core.String verb;
+  core.String? verb;
 
   OperationMetadata();
 
@@ -1901,16 +1847,16 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (additionalStatus != null) 'additionalStatus': additionalStatus,
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (additionalStatus != null) 'additionalStatus': additionalStatus!,
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
         if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation,
-        if (statusDetail != null) 'statusDetail': statusDetail,
-        if (target != null) 'target': target,
-        if (verb != null) 'verb': verb,
+          'requestedCancellation': requestedCancellation!,
+        if (statusDetail != null) 'statusDetail': statusDetail!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
@@ -1947,14 +1893,14 @@ class OperationMetadata {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -1968,8 +1914,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -1993,7 +1939,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -2018,13 +1964,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -2036,7 +1982,7 @@ class RestartInstanceRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -2046,13 +1992,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -2066,9 +2012,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -2081,7 +2027,7 @@ class SetIamPolicyRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -2089,13 +2035,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -2119,10 +2065,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -2133,7 +2079,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -2145,8 +2091,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -2154,7 +2100,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -2166,8 +2112,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -2177,13 +2123,13 @@ class TestIamPermissionsResponse {
 /// which is used for Data Fusion version upgrade.
 class Version {
   /// Represents a list of available feature names for a given version.
-  core.List<core.String> availableFeatures;
+  core.List<core.String>? availableFeatures;
 
   /// Whether this is currently the default version for Cloud Data Fusion
-  core.bool defaultVersion;
+  core.bool? defaultVersion;
 
   /// The version number of the Data Fusion instance, such as '6.0.1.0'.
-  core.String versionNumber;
+  core.String? versionNumber;
 
   Version();
 
@@ -2201,9 +2147,9 @@ class Version {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (availableFeatures != null) 'availableFeatures': availableFeatures,
-        if (defaultVersion != null) 'defaultVersion': defaultVersion,
-        if (versionNumber != null) 'versionNumber': versionNumber,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (availableFeatures != null) 'availableFeatures': availableFeatures!,
+        if (defaultVersion != null) 'defaultVersion': defaultVersion!,
+        if (versionNumber != null) 'versionNumber': versionNumber!,
       };
 }

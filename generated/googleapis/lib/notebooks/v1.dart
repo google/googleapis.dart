@@ -107,11 +107,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -151,14 +148,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -212,14 +206,10 @@ class ProjectsLocationsEnvironmentsResource {
   async.Future<Operation> create(
     Environment request,
     core.String parent, {
-    core.String environmentId,
-    core.String $fields,
+    core.String? environmentId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (environmentId != null) 'environmentId': [environmentId],
       if ($fields != null) 'fields': [$fields],
@@ -259,11 +249,8 @@ class ProjectsLocationsEnvironmentsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -299,11 +286,8 @@ class ProjectsLocationsEnvironmentsResource {
   /// this method will complete with the same error.
   async.Future<Environment> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -343,13 +327,10 @@ class ProjectsLocationsEnvironmentsResource {
   /// this method will complete with the same error.
   async.Future<ListEnvironmentsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -401,14 +382,10 @@ class ProjectsLocationsExecutionsResource {
   async.Future<Operation> create(
     Execution request,
     core.String parent, {
-    core.String executionId,
-    core.String $fields,
+    core.String? executionId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (executionId != null) 'executionId': [executionId],
       if ($fields != null) 'fields': [$fields],
@@ -448,11 +425,8 @@ class ProjectsLocationsExecutionsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -488,11 +462,8 @@ class ProjectsLocationsExecutionsResource {
   /// this method will complete with the same error.
   async.Future<Execution> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -536,15 +507,12 @@ class ProjectsLocationsExecutionsResource {
   /// this method will complete with the same error.
   async.Future<ListExecutionsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -598,14 +566,10 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> create(
     Instance request,
     core.String parent, {
-    core.String instanceId,
-    core.String $fields,
+    core.String? instanceId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (instanceId != null) 'instanceId': [instanceId],
       if ($fields != null) 'fields': [$fields],
@@ -644,11 +608,8 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -684,11 +645,8 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<Instance> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -736,12 +694,9 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -781,11 +736,8 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<GetInstanceHealthResponse> getInstanceHealth(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -824,11 +776,8 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<IsInstanceUpgradeableResponse> isUpgradeable(
     core.String notebookInstance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (notebookInstance == null) {
-      throw core.ArgumentError('Parameter notebookInstance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -871,13 +820,10 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -924,13 +870,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> register(
     RegisterInstanceRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -976,13 +918,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> report(
     ReportInstanceInfoRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1023,13 +961,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> reset(
     ResetInstanceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1070,13 +1004,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> setAccelerator(
     SetInstanceAcceleratorRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1122,13 +1052,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1170,13 +1096,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> setLabels(
     SetInstanceLabelsRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1217,13 +1139,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> setMachineType(
     SetInstanceMachineTypeRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1265,13 +1183,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> start(
     StartInstanceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1312,13 +1226,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> stop(
     StopInstanceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1365,13 +1275,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1414,13 +1320,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> upgrade(
     UpgradeInstanceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1463,13 +1365,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> upgradeInternal(
     UpgradeInstanceInternalRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1526,13 +1424,9 @@ class ProjectsLocationsOperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1573,11 +1467,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1615,11 +1506,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1668,14 +1556,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1727,14 +1612,10 @@ class ProjectsLocationsSchedulesResource {
   async.Future<Operation> create(
     Schedule request,
     core.String parent, {
-    core.String scheduleId,
-    core.String $fields,
+    core.String? scheduleId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (scheduleId != null) 'scheduleId': [scheduleId],
       if ($fields != null) 'fields': [$fields],
@@ -1773,11 +1654,8 @@ class ProjectsLocationsSchedulesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1813,11 +1691,8 @@ class ProjectsLocationsSchedulesResource {
   /// this method will complete with the same error.
   async.Future<Schedule> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1861,15 +1736,12 @@ class ProjectsLocationsSchedulesResource {
   /// this method will complete with the same error.
   async.Future<ListSchedulesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1914,13 +1786,9 @@ class ProjectsLocationsSchedulesResource {
   async.Future<Operation> trigger(
     TriggerScheduleRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1945,7 +1813,7 @@ class ProjectsLocationsSchedulesResource {
 /// combination. TPUs are not supported.
 class AcceleratorConfig {
   /// Count of cores of this accelerator.
-  core.String coreCount;
+  core.String? coreCount;
 
   /// Type of this accelerator.
   /// Possible string values are:
@@ -1964,7 +1832,7 @@ class AcceleratorConfig {
   /// Workstations.
   /// - "TPU_V2" : (Coming soon) Accelerator type is TPU V2.
   /// - "TPU_V3" : (Coming soon) Accelerator type is TPU V3.
-  core.String type;
+  core.String? type;
 
   AcceleratorConfig();
 
@@ -1977,9 +1845,9 @@ class AcceleratorConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (coreCount != null) 'coreCount': coreCount,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (coreCount != null) 'coreCount': coreCount!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1993,7 +1861,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -2025,12 +1893,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -2049,10 +1917,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -2064,7 +1932,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Definition of a container image for starting a notebook instance with the
@@ -2075,12 +1943,12 @@ class ContainerImage {
   /// For example: `gcr.io/{project_id}/{image_name}`
   ///
   /// Required.
-  core.String repository;
+  core.String? repository;
 
   /// The tag of the container image.
   ///
   /// If not specified, this defaults to the latest tag.
-  core.String tag;
+  core.String? tag;
 
   ContainerImage();
 
@@ -2093,9 +1961,9 @@ class ContainerImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (repository != null) 'repository': repository,
-        if (tag != null) 'tag': tag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (repository != null) 'repository': repository!,
+        if (tag != null) 'tag': tag!,
       };
 }
 
@@ -2103,13 +1971,13 @@ class ContainerImage {
 class Disk {
   /// Indicates whether the disk will be auto-deleted when the instance is
   /// deleted (but not when the disk is detached from the instance).
-  core.bool autoDelete;
+  core.bool? autoDelete;
 
   /// Indicates that this is a boot disk.
   ///
   /// The virtual machine will use the first partition of the disk for its root
   /// filesystem.
-  core.bool boot;
+  core.bool? boot;
 
   /// Indicates a unique device name of your choice that is reflected into the
   /// /dev/disk/by-id/google-* tree of a Linux operating system running within
@@ -2120,22 +1988,22 @@ class Disk {
   /// default device name to apply to this disk, in the form persistent-disk-x,
   /// where x is a number assigned by Google Compute Engine.This field is only
   /// applicable for persistent disks.
-  core.String deviceName;
+  core.String? deviceName;
 
   /// Indicates the size of the disk in base-2 GB.
-  core.String diskSizeGb;
+  core.String? diskSizeGb;
 
   /// Indicates a list of features to enable on the guest operating system.
   ///
   /// Applicable only for bootable images. Read Enabling guest operating system
   /// features to see a list of available options.
-  core.List<GuestOsFeature> guestOsFeatures;
+  core.List<GuestOsFeature>? guestOsFeatures;
 
   /// A zero-based index to this disk, where 0 is reserved for the boot disk.
   ///
   /// If you have many disks attached to an instance, each disk would have a
   /// unique index number.
-  core.String index;
+  core.String? index;
 
   /// Indicates the disk interface to use for attaching this disk, which is
   /// either SCSI or NVME.
@@ -2145,33 +2013,33 @@ class Disk {
   /// than SCSI. Local SSDs can use either NVME or SCSI. For performance
   /// characteristics of SCSI over NVMe, see Local SSD performance. Valid
   /// values: NVME SCSI
-  core.String interface;
+  core.String? interface;
 
   /// Type of the resource.
   ///
   /// Always compute#attachedDisk for attached disks.
-  core.String kind;
+  core.String? kind;
 
   /// A list of publicly visible licenses.
   ///
   /// Reserved for Google's use. A License represents billing and aggregate
   /// usage data for public and marketplace images.
-  core.List<core.String> licenses;
+  core.List<core.String>? licenses;
 
   /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
   ///
   /// If not specified, the default is to attach the disk in READ_WRITE mode.
   /// Valid values: READ_ONLY READ_WRITE
-  core.String mode;
+  core.String? mode;
 
   /// Indicates a valid partial or full URL to an existing Persistent Disk
   /// resource.
-  core.String source;
+  core.String? source;
 
   /// Indicates the type of the disk, either SCRATCH or PERSISTENT.
   ///
   /// Valid values: PERSISTENT SCRATCH
-  core.String type;
+  core.String? type;
 
   Disk();
 
@@ -2219,21 +2087,21 @@ class Disk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (autoDelete != null) 'autoDelete': autoDelete,
-        if (boot != null) 'boot': boot,
-        if (deviceName != null) 'deviceName': deviceName,
-        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (autoDelete != null) 'autoDelete': autoDelete!,
+        if (boot != null) 'boot': boot!,
+        if (deviceName != null) 'deviceName': deviceName!,
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (guestOsFeatures != null)
           'guestOsFeatures':
-              guestOsFeatures.map((value) => value.toJson()).toList(),
-        if (index != null) 'index': index,
-        if (interface != null) 'interface': interface,
-        if (kind != null) 'kind': kind,
-        if (licenses != null) 'licenses': licenses,
-        if (mode != null) 'mode': mode,
-        if (source != null) 'source': source,
-        if (type != null) 'type': type,
+              guestOsFeatures!.map((value) => value.toJson()).toList(),
+        if (index != null) 'index': index!,
+        if (interface != null) 'interface': interface!,
+        if (kind != null) 'kind': kind!,
+        if (licenses != null) 'licenses': licenses!,
+        if (mode != null) 'mode': mode!,
+        if (source != null) 'source': source!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2251,25 +2119,25 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Definition of a software environment that is used to start a notebook
 /// instance.
 class Environment {
   /// Use a container image to start the notebook instance.
-  ContainerImage containerImage;
+  ContainerImage? containerImage;
 
   /// The time at which this environment was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// A brief description of this environment.
-  core.String description;
+  core.String? description;
 
   /// Display name of this environment for the UI.
-  core.String displayName;
+  core.String? displayName;
 
   /// Name of this environment.
   ///
@@ -2277,17 +2145,17 @@ class Environment {
   /// `projects/{project_id}/locations/{location}/environments/{environment_id}`
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Path to a Bash script that automatically runs after a notebook instance
   /// fully boots up.
   ///
   /// The path must be a URL or Cloud Storage path. Example:
   /// `"gs://path-to-file/file-name"`
-  core.String postStartupScript;
+  core.String? postStartupScript;
 
   /// Use a Compute Engine VM image to start the notebook instance.
-  VmImage vmImage;
+  VmImage? vmImage;
 
   Environment();
 
@@ -2317,14 +2185,14 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (containerImage != null) 'containerImage': containerImage.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (postStartupScript != null) 'postStartupScript': postStartupScript,
-        if (vmImage != null) 'vmImage': vmImage.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (containerImage != null) 'containerImage': containerImage!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (postStartupScript != null) 'postStartupScript': postStartupScript!,
+        if (vmImage != null) 'vmImage': vmImage!.toJson(),
       };
 }
 
@@ -2333,20 +2201,20 @@ class Execution {
   /// Time the Execution was instantiated.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// A brief description of this execution.
-  core.String description;
+  core.String? description;
 
   /// Name used for UI purposes.
   ///
   /// Name can only contain alphanumeric characters and underscores '_'.
   ///
   /// Output only.
-  core.String displayName;
+  core.String? displayName;
 
   /// execute metadata including name, hardware spec, region, labels, etc.
-  ExecutionTemplate executionTemplate;
+  ExecutionTemplate? executionTemplate;
 
   /// The resource name of the execute.
   ///
@@ -2354,10 +2222,10 @@ class Execution {
   /// \`projects/{project_id}/locations/{location}/execution/{execution_id}
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Output notebook file generated by this execution
-  core.String outputNotebookFile;
+  core.String? outputNotebookFile;
 
   /// State of the underlying AI Platform job.
   ///
@@ -2375,12 +2243,12 @@ class Execution {
   /// describe the reason for the cancellation.
   /// - "CANCELLED" : The job has been cancelled. `error_message` should
   /// describe the reason for the cancellation.
-  core.String state;
+  core.String? state;
 
   /// Time the Execution was last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Execution();
 
@@ -2412,17 +2280,17 @@ class Execution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (executionTemplate != null)
-          'executionTemplate': executionTemplate.toJson(),
-        if (name != null) 'name': name,
+          'executionTemplate': executionTemplate!.toJson(),
+        if (name != null) 'name': name!,
         if (outputNotebookFile != null)
-          'outputNotebookFile': outputNotebookFile,
-        if (state != null) 'state': state,
-        if (updateTime != null) 'updateTime': updateTime,
+          'outputNotebookFile': outputNotebookFile!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2430,20 +2298,20 @@ class Execution {
 class ExecutionTemplate {
   /// Configuration (count and accelerator type) for hardware running notebook
   /// execution.
-  SchedulerAcceleratorConfig acceleratorConfig;
+  SchedulerAcceleratorConfig? acceleratorConfig;
 
   /// Container Image URI to a DLVM Example:
   /// 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be
   /// found at:
   /// https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
-  core.String containerImageUri;
+  core.String? containerImageUri;
 
   /// Path to the notebook file to execute.
   ///
   /// Must be in a Google Cloud Storage bucket. Format:
   /// gs://{project_id}/{folder}/{notebook_file_name} Ex:
   /// gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
-  core.String inputNotebookFile;
+  core.String? inputNotebookFile;
 
   /// Labels for execution.
   ///
@@ -2451,7 +2319,7 @@ class ExecutionTemplate {
   /// Otherwise, it is an immediate execution, and an included field will be
   /// 'nbs-immediate'. Use fields to efficiently index between various types of
   /// executions.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Specifies the type of virtual machine to use for your training job's
   /// master worker.
@@ -2470,13 +2338,13 @@ class ExecutionTemplate {
   /// `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to
   /// use a TPU for training, specify `cloud_tpu` in this field. Learn more
   /// about the \[special configuration options for training with TPU.
-  core.String masterType;
+  core.String? masterType;
 
   /// Path to the notebook folder to write to.
   ///
   /// Must be in a Google Cloud Storage bucket path. Format:
   /// gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
-  core.String outputNotebookFolder;
+  core.String? outputNotebookFolder;
 
   /// Parameters to be overridden in the notebook during execution.
   ///
@@ -2484,7 +2352,7 @@ class ExecutionTemplate {
   /// how to specifying parameters in the input notebook and pass them here in
   /// an YAML file. Ex:
   /// gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
-  core.String paramsYamlFile;
+  core.String? paramsYamlFile;
 
   /// Scale tier of the hardware used for notebook execution.
   ///
@@ -2514,7 +2382,7 @@ class ExecutionTemplate {
   /// different from your parameter server type and master type. Your parameter
   /// servers must likewise use the same machine type, which can be different
   /// from your worker type and master type.
-  core.String scaleTier;
+  core.String? scaleTier;
 
   ExecutionTemplate();
 
@@ -2552,17 +2420,17 @@ class ExecutionTemplate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (acceleratorConfig != null)
-          'acceleratorConfig': acceleratorConfig.toJson(),
-        if (containerImageUri != null) 'containerImageUri': containerImageUri,
-        if (inputNotebookFile != null) 'inputNotebookFile': inputNotebookFile,
-        if (labels != null) 'labels': labels,
-        if (masterType != null) 'masterType': masterType,
+          'acceleratorConfig': acceleratorConfig!.toJson(),
+        if (containerImageUri != null) 'containerImageUri': containerImageUri!,
+        if (inputNotebookFile != null) 'inputNotebookFile': inputNotebookFile!,
+        if (labels != null) 'labels': labels!,
+        if (masterType != null) 'masterType': masterType!,
         if (outputNotebookFolder != null)
-          'outputNotebookFolder': outputNotebookFolder,
-        if (paramsYamlFile != null) 'paramsYamlFile': paramsYamlFile,
-        if (scaleTier != null) 'scaleTier': scaleTier,
+          'outputNotebookFolder': outputNotebookFolder!,
+        if (paramsYamlFile != null) 'paramsYamlFile': paramsYamlFile!,
+        if (scaleTier != null) 'scaleTier': scaleTier!,
       };
 }
 
@@ -2591,24 +2459,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -2627,11 +2495,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -2644,7 +2512,7 @@ class GetInstanceHealthResponse {
   /// "2020-10-18 09:40:03.573409" }
   ///
   /// Output only.
-  core.Map<core.String, core.String> healthInfo;
+  core.Map<core.String, core.String>? healthInfo;
 
   /// Runtime health_state.
   ///
@@ -2659,7 +2527,7 @@ class GetInstanceHealthResponse {
   /// agent. Applies to ACTIVE state.
   /// - "AGENT_NOT_RUNNING" : The instance health monitoring agent is not
   /// running. Applies to ACTIVE state.
-  core.String healthState;
+  core.String? healthState;
 
   GetInstanceHealthResponse();
 
@@ -2679,9 +2547,9 @@ class GetInstanceHealthResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (healthInfo != null) 'healthInfo': healthInfo,
-        if (healthState != null) 'healthState': healthState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (healthInfo != null) 'healthInfo': healthInfo!,
+        if (healthState != null) 'healthState': healthState!,
       };
 }
 
@@ -2692,7 +2560,7 @@ class GuestOsFeature {
   /// Read Enabling guest operating system features to see a list of available
   /// options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET
   /// SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
-  core.String type;
+  core.String? type;
 
   GuestOsFeature();
 
@@ -2702,8 +2570,8 @@ class GuestOsFeature {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2714,14 +2582,14 @@ class Instance {
   /// If you use accelerators, make sure that your configuration has \[enough
   /// vCPUs and memory to support the `machine_type` you have
   /// selected\](/compute/docs/gpus/#gpus-list).
-  AcceleratorConfig acceleratorConfig;
+  AcceleratorConfig? acceleratorConfig;
 
   /// Input only.
   ///
   /// The size of the boot disk in GB attached to this instance, up to a maximum
   /// of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not
   /// specified, this defaults to 100.
-  core.String bootDiskSizeGb;
+  core.String? bootDiskSizeGb;
 
   /// Input only.
   ///
@@ -2732,27 +2600,27 @@ class Instance {
   /// - "PD_STANDARD" : Standard persistent disk type.
   /// - "PD_SSD" : SSD persistent disk type.
   /// - "PD_BALANCED" : Balanced persistent disk type.
-  core.String bootDiskType;
+  core.String? bootDiskType;
 
   /// Use a container image to start the notebook instance.
-  ContainerImage containerImage;
+  ContainerImage? containerImage;
 
   /// Instance creation time.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Specify a custom Cloud Storage path where the GPU driver is stored.
   ///
   /// If not specified, we'll automatically choose from official GPU drivers.
-  core.String customGpuDriverPath;
+  core.String? customGpuDriverPath;
 
   /// Input only.
   ///
   /// The size of the data disk in GB attached to this instance, up to a maximum
   /// of 64000 GB (64 TB). You can choose the size of the data disk based on how
   /// big your notebooks and data are. If not specified, this defaults to 100.
-  core.String dataDiskSizeGb;
+  core.String? dataDiskSizeGb;
 
   /// Input only.
   ///
@@ -2763,7 +2631,7 @@ class Instance {
   /// - "PD_STANDARD" : Standard persistent disk type.
   /// - "PD_SSD" : SSD persistent disk type.
   /// - "PD_BALANCED" : Balanced persistent disk type.
-  core.String dataDiskType;
+  core.String? dataDiskType;
 
   /// Input only.
   ///
@@ -2772,26 +2640,26 @@ class Instance {
   /// - "DISK_ENCRYPTION_UNSPECIFIED" : Disk encryption is not specified.
   /// - "GMEK" : Use Google managed encryption keys to encrypt the boot disk.
   /// - "CMEK" : Use customer managed encryption keys to encrypt the boot disk.
-  core.String diskEncryption;
+  core.String? diskEncryption;
 
   /// Attached disks to notebook instance.
   ///
   /// Output only.
-  core.List<Disk> disks;
+  core.List<Disk>? disks;
 
   /// Whether the end user authorizes Google Cloud to install GPU driver on this
   /// instance.
   ///
   /// If this field is empty or set to false, the GPU driver won't be installed.
   /// Only applicable to instances with GPUs.
-  core.bool installGpuDriver;
+  core.bool? installGpuDriver;
 
   /// Input only.
   ///
   /// The owner of this instance after creation. Format: `alias@example.com`
   /// Currently supports one owner only. If not specified, all of the service
   /// account users of your VM instance's service account can use the instance.
-  core.List<core.String> instanceOwners;
+  core.List<core.String>? instanceOwners;
 
   /// Input only.
   ///
@@ -2799,21 +2667,21 @@ class Instance {
   /// is CMEK. Format:
   /// `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
   /// Learn more about \[using your own encryption keys\](/kms/docs/quickstart).
-  core.String kmsKey;
+  core.String? kmsKey;
 
   /// Labels to apply to this instance.
   ///
   /// These can be later modified by the setLabels method.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The \[Compute Engine machine type\](/compute/docs/machine-types) of this
   /// instance.
   ///
   /// Required.
-  core.String machineType;
+  core.String? machineType;
 
   /// Custom metadata to apply to this instance.
-  core.Map<core.String, core.String> metadata;
+  core.Map<core.String, core.String>? metadata;
 
   /// The name of this notebook instance.
   ///
@@ -2821,36 +2689,36 @@ class Instance {
   /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The name of the VPC that this instance is in.
   ///
   /// Format: `projects/{project_id}/global/networks/{network_id}`
-  core.String network;
+  core.String? network;
 
   /// If true, the notebook instance will not register with the proxy.
-  core.bool noProxyAccess;
+  core.bool? noProxyAccess;
 
   /// If true, no public IP will be assigned to this instance.
-  core.bool noPublicIp;
+  core.bool? noPublicIp;
 
   /// Input only.
   ///
   /// If true, the data disk will not be auto deleted when deleting the
   /// instance.
-  core.bool noRemoveDataDisk;
+  core.bool? noRemoveDataDisk;
 
   /// Path to a Bash script that automatically runs after a notebook instance
   /// fully boots up.
   ///
   /// The path must be a URL or Cloud Storage path
   /// (gs://path-to-file/file-name).
-  core.String postStartupScript;
+  core.String? postStartupScript;
 
   /// The proxy endpoint that is used to access the Jupyter notebook.
   ///
   /// Output only.
-  core.String proxyUri;
+  core.String? proxyUri;
 
   /// The service account on this instance, giving access to other Google Cloud
   /// services.
@@ -2860,7 +2728,7 @@ class Instance {
   /// the
   /// [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account)
   /// is used.
-  core.String serviceAccount;
+  core.String? serviceAccount;
 
   /// The URIs of service account scopes to be included in Compute Engine
   /// instances.
@@ -2872,14 +2740,14 @@ class Instance {
   /// scopes, you need at least: https://www.googleapis.com/auth/compute
   ///
   /// Optional.
-  core.List<core.String> serviceAccountScopes;
+  core.List<core.String>? serviceAccountScopes;
 
   /// Shielded VM configuration.
   ///
   /// [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
   ///
   /// Optional.
-  ShieldedInstanceConfig shieldedInstanceConfig;
+  ShieldedInstanceConfig? shieldedInstanceConfig;
 
   /// The state of this instance.
   ///
@@ -2896,30 +2764,30 @@ class Instance {
   /// - "UPGRADING" : The instance is upgrading.
   /// - "INITIALIZING" : The instance is being created.
   /// - "REGISTERING" : The instance is getting registered.
-  core.String state;
+  core.String? state;
 
   /// The name of the subnet that this instance is in.
   ///
   /// Format:
   /// `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
-  core.String subnet;
+  core.String? subnet;
 
   /// The Compute Engine tags to add to runtime (see
   /// [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
   ///
   /// Optional.
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   /// Instance update time.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// The upgrade history of this instance.
-  core.List<UpgradeHistoryEntry> upgradeHistory;
+  core.List<UpgradeHistoryEntry>? upgradeHistory;
 
   /// Use a Compute Engine VM image to start the notebook instance.
-  VmImage vmImage;
+  VmImage? vmImage;
 
   Instance();
 
@@ -3051,62 +2919,62 @@ class Instance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (acceleratorConfig != null)
-          'acceleratorConfig': acceleratorConfig.toJson(),
-        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb,
-        if (bootDiskType != null) 'bootDiskType': bootDiskType,
-        if (containerImage != null) 'containerImage': containerImage.toJson(),
-        if (createTime != null) 'createTime': createTime,
+          'acceleratorConfig': acceleratorConfig!.toJson(),
+        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
+        if (bootDiskType != null) 'bootDiskType': bootDiskType!,
+        if (containerImage != null) 'containerImage': containerImage!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
         if (customGpuDriverPath != null)
-          'customGpuDriverPath': customGpuDriverPath,
-        if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb,
-        if (dataDiskType != null) 'dataDiskType': dataDiskType,
-        if (diskEncryption != null) 'diskEncryption': diskEncryption,
+          'customGpuDriverPath': customGpuDriverPath!,
+        if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb!,
+        if (dataDiskType != null) 'dataDiskType': dataDiskType!,
+        if (diskEncryption != null) 'diskEncryption': diskEncryption!,
         if (disks != null)
-          'disks': disks.map((value) => value.toJson()).toList(),
-        if (installGpuDriver != null) 'installGpuDriver': installGpuDriver,
-        if (instanceOwners != null) 'instanceOwners': instanceOwners,
-        if (kmsKey != null) 'kmsKey': kmsKey,
-        if (labels != null) 'labels': labels,
-        if (machineType != null) 'machineType': machineType,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (network != null) 'network': network,
-        if (noProxyAccess != null) 'noProxyAccess': noProxyAccess,
-        if (noPublicIp != null) 'noPublicIp': noPublicIp,
-        if (noRemoveDataDisk != null) 'noRemoveDataDisk': noRemoveDataDisk,
-        if (postStartupScript != null) 'postStartupScript': postStartupScript,
-        if (proxyUri != null) 'proxyUri': proxyUri,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+          'disks': disks!.map((value) => value.toJson()).toList(),
+        if (installGpuDriver != null) 'installGpuDriver': installGpuDriver!,
+        if (instanceOwners != null) 'instanceOwners': instanceOwners!,
+        if (kmsKey != null) 'kmsKey': kmsKey!,
+        if (labels != null) 'labels': labels!,
+        if (machineType != null) 'machineType': machineType!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
+        if (noProxyAccess != null) 'noProxyAccess': noProxyAccess!,
+        if (noPublicIp != null) 'noPublicIp': noPublicIp!,
+        if (noRemoveDataDisk != null) 'noRemoveDataDisk': noRemoveDataDisk!,
+        if (postStartupScript != null) 'postStartupScript': postStartupScript!,
+        if (proxyUri != null) 'proxyUri': proxyUri!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (serviceAccountScopes != null)
-          'serviceAccountScopes': serviceAccountScopes,
+          'serviceAccountScopes': serviceAccountScopes!,
         if (shieldedInstanceConfig != null)
-          'shieldedInstanceConfig': shieldedInstanceConfig.toJson(),
-        if (state != null) 'state': state,
-        if (subnet != null) 'subnet': subnet,
-        if (tags != null) 'tags': tags,
-        if (updateTime != null) 'updateTime': updateTime,
+          'shieldedInstanceConfig': shieldedInstanceConfig!.toJson(),
+        if (state != null) 'state': state!,
+        if (subnet != null) 'subnet': subnet!,
+        if (tags != null) 'tags': tags!,
+        if (updateTime != null) 'updateTime': updateTime!,
         if (upgradeHistory != null)
           'upgradeHistory':
-              upgradeHistory.map((value) => value.toJson()).toList(),
-        if (vmImage != null) 'vmImage': vmImage.toJson(),
+              upgradeHistory!.map((value) => value.toJson()).toList(),
+        if (vmImage != null) 'vmImage': vmImage!.toJson(),
       };
 }
 
 /// Response for checking if a notebook instance is upgradeable.
 class IsInstanceUpgradeableResponse {
   /// Additional information about upgrade.
-  core.String upgradeInfo;
+  core.String? upgradeInfo;
 
   /// The version this instance will be upgraded to if calling the upgrade
   /// endpoint.
   ///
   /// This field will only be populated if field upgradeable is true.
-  core.String upgradeVersion;
+  core.String? upgradeVersion;
 
   /// If an instance is upgradeable.
-  core.bool upgradeable;
+  core.bool? upgradeable;
 
   IsInstanceUpgradeableResponse();
 
@@ -3122,24 +2990,24 @@ class IsInstanceUpgradeableResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (upgradeInfo != null) 'upgradeInfo': upgradeInfo,
-        if (upgradeVersion != null) 'upgradeVersion': upgradeVersion,
-        if (upgradeable != null) 'upgradeable': upgradeable,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (upgradeInfo != null) 'upgradeInfo': upgradeInfo!,
+        if (upgradeVersion != null) 'upgradeVersion': upgradeVersion!,
+        if (upgradeable != null) 'upgradeable': upgradeable!,
       };
 }
 
 /// Response for listing environments.
 class ListEnvironmentsResponse {
   /// A list of returned environments.
-  core.List<Environment> environments;
+  core.List<Environment>? environments;
 
   /// A page token that can be used to continue listing from the last result in
   /// the next list call.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListEnvironmentsResponse();
 
@@ -3160,29 +3028,29 @@ class ListEnvironmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (environments != null)
-          'environments': environments.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+          'environments': environments!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// Response for listing scheduled notebook executions
 class ListExecutionsResponse {
   /// A list of returned instances.
-  core.List<Execution> executions;
+  core.List<Execution>? executions;
 
   /// Page token that can be used to continue listing from the last result in
   /// the next list call.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Executions IDs that could not be reached.
   ///
   /// For example,
   /// \['projects/{project_id}/location/{location}/executions/imagenet_test1',
   /// 'projects/{project_id}/location/{location}/executions/classifier_train1'\].
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListExecutionsResponse();
 
@@ -3203,28 +3071,28 @@ class ListExecutionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (executions != null)
-          'executions': executions.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+          'executions': executions!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// Response for listing notebook instances.
 class ListInstancesResponse {
   /// A list of returned instances.
-  core.List<Instance> instances;
+  core.List<Instance>? instances;
 
   /// Page token that can be used to continue listing from the last result in
   /// the next list call.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Locations that could not be reached.
   ///
   /// For example, \['us-west1-a', 'us-central1-b'\]. A ListInstancesResponse
   /// will only contain either instances or unreachables,
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListInstancesResponse();
 
@@ -3245,21 +3113,21 @@ class ListInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (instances != null)
-          'instances': instances.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+          'instances': instances!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -3275,20 +3143,20 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -3304,10 +3172,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3315,17 +3183,17 @@ class ListOperationsResponse {
 class ListSchedulesResponse {
   /// Page token that can be used to continue listing from the last result in
   /// the next list call.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of returned instances.
-  core.List<Schedule> schedules;
+  core.List<Schedule>? schedules;
 
   /// Schedules that could not be reached.
   ///
   /// For example,
   /// \['projects/{project_id}/location/{location}/schedules/monthly_digest',
   /// 'projects/{project_id}/location/{location}/schedules/weekly_sentiment'\].
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListSchedulesResponse();
 
@@ -3346,11 +3214,11 @@ class ListSchedulesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (schedules != null)
-          'schedules': schedules.map((value) => value.toJson()).toList(),
-        if (unreachable != null) 'unreachable': unreachable,
+          'schedules': schedules!.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -3359,17 +3227,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -3377,12 +3245,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -3416,12 +3284,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3432,10 +3300,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -3446,14 +3314,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -3466,7 +3334,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -3501,44 +3369,44 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
 /// Represents the metadata of the long-running operation.
 class OperationMetadata {
   /// API version used to start the operation.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// The time the operation was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time the operation finished running.
-  core.String endTime;
+  core.String? endTime;
 
   /// API endpoint name of this operation.
-  core.String endpoint;
+  core.String? endpoint;
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
   /// Operations that have successfully been cancelled have Operation.error
   /// value with a google.rpc.Status.code of 1, corresponding to
   /// `Code.CANCELLED`.
-  core.bool requestedCancellation;
+  core.bool? requestedCancellation;
 
   /// Human-readable status of the operation, if any.
-  core.String statusMessage;
+  core.String? statusMessage;
 
   /// Server-defined resource path for the target of the operation.
-  core.String target;
+  core.String? target;
 
   /// Name of the verb executed by the operation.
-  core.String verb;
+  core.String? verb;
 
   OperationMetadata();
 
@@ -3569,16 +3437,16 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
-        if (endpoint != null) 'endpoint': endpoint,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (endpoint != null) 'endpoint': endpoint!,
         if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation,
-        if (statusMessage != null) 'statusMessage': statusMessage,
-        if (target != null) 'target': target,
-        if (verb != null) 'verb': verb,
+          'requestedCancellation': requestedCancellation!,
+        if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
@@ -3619,7 +3487,7 @@ class Policy {
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -3633,8 +3501,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -3658,7 +3526,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -3677,11 +3545,11 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -3694,7 +3562,7 @@ class RegisterInstanceRequest {
   /// must be a lowercase letter and the last character cannot be a dash.
   ///
   /// Required.
-  core.String instanceId;
+  core.String? instanceId;
 
   RegisterInstanceRequest();
 
@@ -3704,8 +3572,8 @@ class RegisterInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (instanceId != null) 'instanceId': instanceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (instanceId != null) 'instanceId': instanceId!,
       };
 }
 
@@ -3714,14 +3582,14 @@ class ReportInstanceInfoRequest {
   /// The metadata reported to Notebooks API.
   ///
   /// This will be merged to the instance metadata store
-  core.Map<core.String, core.String> metadata;
+  core.Map<core.String, core.String>? metadata;
 
   /// The VM hardware token for authenticating the VM.
   ///
   /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
   ///
   /// Required.
-  core.String vmId;
+  core.String? vmId;
 
   ReportInstanceInfoRequest();
 
@@ -3740,9 +3608,9 @@ class ReportInstanceInfoRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metadata != null) 'metadata': metadata,
-        if (vmId != null) 'vmId': vmId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metadata != null) 'metadata': metadata!,
+        if (vmId != null) 'vmId': vmId!,
       };
 }
 
@@ -3754,7 +3622,7 @@ class ResetInstanceRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The definition of a schedule.
@@ -3762,15 +3630,15 @@ class Schedule {
   /// Time the schedule was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Cron-tab formatted schedule by which the job will execute Format: minute,
   /// hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday
   /// More examples: https://crontab.guru/examples.html
-  core.String cronSchedule;
+  core.String? cronSchedule;
 
   /// A brief description of this environment.
-  core.String description;
+  core.String? description;
 
   /// Display name used for UI purposes.
   ///
@@ -3778,10 +3646,10 @@ class Schedule {
   /// underscores ‘_’.
   ///
   /// Output only.
-  core.String displayName;
+  core.String? displayName;
 
   /// Notebook Execution Template corresponding to this schedule.
-  ExecutionTemplate executionTemplate;
+  ExecutionTemplate? executionTemplate;
 
   /// The name of this schedule.
   ///
@@ -3789,7 +3657,7 @@ class Schedule {
   /// `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   ///
   /// Possible string values are:
@@ -3802,7 +3670,7 @@ class Schedule {
   /// - "UPDATE_FAILED" : The job state resulting from a failed
   /// CloudScheduler.UpdateJob operation. To recover a job from this state,
   /// retry CloudScheduler.UpdateJob until a successful response is received.
-  core.String state;
+  core.String? state;
 
   /// Timezone on which the cron_schedule.
   ///
@@ -3812,12 +3680,12 @@ class Schedule {
   /// The rules for daylight saving time are determined by the chosen tz. For
   /// UTC use the string "utc". If a time zone is not specified, the default
   /// will be in UTC (also known as GMT).
-  core.String timeZone;
+  core.String? timeZone;
 
   /// TIme the schedule was last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Schedule();
 
@@ -3852,17 +3720,17 @@ class Schedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (cronSchedule != null) 'cronSchedule': cronSchedule,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (cronSchedule != null) 'cronSchedule': cronSchedule!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (executionTemplate != null)
-          'executionTemplate': executionTemplate.toJson(),
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
-        if (timeZone != null) 'timeZone': timeZone,
-        if (updateTime != null) 'updateTime': updateTime,
+          'executionTemplate': executionTemplate!.toJson(),
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (timeZone != null) 'timeZone': timeZone!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3872,7 +3740,7 @@ class Schedule {
 /// GPUs on Compute Engine to find a valid combination. TPUs are not supported.
 class SchedulerAcceleratorConfig {
   /// Count of cores of this accelerator.
-  core.String coreCount;
+  core.String? coreCount;
 
   /// Type of this accelerator.
   /// Possible string values are:
@@ -3885,7 +3753,7 @@ class SchedulerAcceleratorConfig {
   /// - "NVIDIA_TESLA_T4" : Nvidia Tesla T4 GPU.
   /// - "TPU_V2" : TPU v2.
   /// - "TPU_V3" : TPU v3.
-  core.String type;
+  core.String? type;
 
   SchedulerAcceleratorConfig();
 
@@ -3898,9 +3766,9 @@ class SchedulerAcceleratorConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (coreCount != null) 'coreCount': coreCount,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (coreCount != null) 'coreCount': coreCount!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3911,7 +3779,7 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   SetIamPolicyRequest();
 
@@ -3922,8 +3790,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
       };
 }
 
@@ -3936,7 +3804,7 @@ class SetInstanceAcceleratorRequest {
   /// to find a valid combination. TPUs are not supported.
   ///
   /// Required.
-  core.String coreCount;
+  core.String? coreCount;
 
   /// Type of this accelerator.
   ///
@@ -3957,7 +3825,7 @@ class SetInstanceAcceleratorRequest {
   /// Workstations.
   /// - "TPU_V2" : (Coming soon) Accelerator type is TPU V2.
   /// - "TPU_V3" : (Coming soon) Accelerator type is TPU V3.
-  core.String type;
+  core.String? type;
 
   SetInstanceAcceleratorRequest();
 
@@ -3970,9 +3838,9 @@ class SetInstanceAcceleratorRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (coreCount != null) 'coreCount': coreCount,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (coreCount != null) 'coreCount': coreCount!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3981,7 +3849,7 @@ class SetInstanceLabelsRequest {
   /// Labels to apply to this instance.
   ///
   /// These can be later modified by the setLabels method
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   SetInstanceLabelsRequest();
 
@@ -3997,8 +3865,8 @@ class SetInstanceLabelsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
       };
 }
 
@@ -4008,7 +3876,7 @@ class SetInstanceMachineTypeRequest {
   /// [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types).
   ///
   /// Required.
-  core.String machineType;
+  core.String? machineType;
 
   SetInstanceMachineTypeRequest();
 
@@ -4018,8 +3886,8 @@ class SetInstanceMachineTypeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (machineType != null) 'machineType': machineType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (machineType != null) 'machineType': machineType!,
       };
 }
 
@@ -4034,19 +3902,19 @@ class ShieldedInstanceConfig {
   /// The attestation is performed against the integrity policy baseline. This
   /// baseline is initially derived from the implicitly trusted boot image when
   /// the instance is created. Enabled by default.
-  core.bool enableIntegrityMonitoring;
+  core.bool? enableIntegrityMonitoring;
 
   /// Defines whether the instance has Secure Boot enabled.
   ///
   /// Secure Boot helps ensure that the system only runs authentic software by
   /// verifying the digital signature of all boot components, and halting the
   /// boot process if signature verification fails. Disabled by default.
-  core.bool enableSecureBoot;
+  core.bool? enableSecureBoot;
 
   /// Defines whether the instance has the vTPM enabled.
   ///
   /// Enabled by default.
-  core.bool enableVtpm;
+  core.bool? enableVtpm;
 
   ShieldedInstanceConfig();
 
@@ -4063,11 +3931,11 @@ class ShieldedInstanceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (enableIntegrityMonitoring != null)
-          'enableIntegrityMonitoring': enableIntegrityMonitoring,
-        if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot,
-        if (enableVtpm != null) 'enableVtpm': enableVtpm,
+          'enableIntegrityMonitoring': enableIntegrityMonitoring!,
+        if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
+        if (enableVtpm != null) 'enableVtpm': enableVtpm!,
       };
 }
 
@@ -4079,7 +3947,7 @@ class StartInstanceRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4091,7 +3959,7 @@ class StartInstanceRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -4099,13 +3967,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -4129,10 +3997,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -4144,7 +4012,7 @@ class StopInstanceRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -4154,7 +4022,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -4166,8 +4034,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -4175,7 +4043,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -4187,8 +4055,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -4200,7 +4068,7 @@ class TriggerScheduleRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The entry of VM image upgrade history.
@@ -4212,19 +4080,19 @@ class UpgradeHistoryEntry {
   /// - "ACTION_UNSPECIFIED" : Operation is not specified.
   /// - "UPGRADE" : Upgrade.
   /// - "ROLLBACK" : Rollback.
-  core.String action;
+  core.String? action;
 
   /// The container image before this instance upgrade.
-  core.String containerImage;
+  core.String? containerImage;
 
   /// The time that this instance upgrade history entry is created.
-  core.String createTime;
+  core.String? createTime;
 
   /// The framework of this notebook instance.
-  core.String framework;
+  core.String? framework;
 
   /// The snapshot of the boot disk of this notebook instance before upgrade.
-  core.String snapshot;
+  core.String? snapshot;
 
   /// The state of this instance upgrade history entry.
   /// Possible string values are:
@@ -4232,18 +4100,18 @@ class UpgradeHistoryEntry {
   /// - "STARTED" : The instance upgrade is started.
   /// - "SUCCEEDED" : The instance upgrade is succeeded.
   /// - "FAILED" : The instance upgrade is failed.
-  core.String state;
+  core.String? state;
 
   /// Target VM Image.
   ///
   /// Format: ainotebooks-vm/project/image-name/name.
-  core.String targetImage;
+  core.String? targetImage;
 
   /// The version of the notebook instance before this upgrade.
-  core.String version;
+  core.String? version;
 
   /// The VM image before this instance upgrade.
-  core.String vmImage;
+  core.String? vmImage;
 
   UpgradeHistoryEntry();
 
@@ -4277,16 +4145,16 @@ class UpgradeHistoryEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action,
-        if (containerImage != null) 'containerImage': containerImage,
-        if (createTime != null) 'createTime': createTime,
-        if (framework != null) 'framework': framework,
-        if (snapshot != null) 'snapshot': snapshot,
-        if (state != null) 'state': state,
-        if (targetImage != null) 'targetImage': targetImage,
-        if (version != null) 'version': version,
-        if (vmImage != null) 'vmImage': vmImage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!,
+        if (containerImage != null) 'containerImage': containerImage!,
+        if (createTime != null) 'createTime': createTime!,
+        if (framework != null) 'framework': framework!,
+        if (snapshot != null) 'snapshot': snapshot!,
+        if (state != null) 'state': state!,
+        if (targetImage != null) 'targetImage': targetImage!,
+        if (version != null) 'version': version!,
+        if (vmImage != null) 'vmImage': vmImage!,
       };
 }
 
@@ -4297,7 +4165,7 @@ class UpgradeInstanceInternalRequest {
   /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
   ///
   /// Required.
-  core.String vmId;
+  core.String? vmId;
 
   UpgradeInstanceInternalRequest();
 
@@ -4307,8 +4175,8 @@ class UpgradeInstanceInternalRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (vmId != null) 'vmId': vmId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (vmId != null) 'vmId': vmId!,
       };
 }
 
@@ -4320,7 +4188,7 @@ class UpgradeInstanceRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Definition of a custom Compute Engine virtual machine image for starting a
@@ -4328,17 +4196,17 @@ class UpgradeInstanceRequest {
 class VmImage {
   /// Use this VM image family to find the image; the newest image in this
   /// family will be used.
-  core.String imageFamily;
+  core.String? imageFamily;
 
   /// Use VM image name to find the image.
-  core.String imageName;
+  core.String? imageName;
 
   /// The name of the Google Cloud project that this VM image belongs to.
   ///
   /// Format: `projects/{project_id}`
   ///
   /// Required.
-  core.String project;
+  core.String? project;
 
   VmImage();
 
@@ -4354,9 +4222,9 @@ class VmImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageFamily != null) 'imageFamily': imageFamily,
-        if (imageName != null) 'imageName': imageName,
-        if (project != null) 'project': project,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageFamily != null) 'imageFamily': imageFamily!,
+        if (imageName != null) 'imageName': imageName!,
+        if (project != null) 'project': project!,
       };
 }

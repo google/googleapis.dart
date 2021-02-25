@@ -98,10 +98,9 @@ class PhotoResource {
   /// this method will complete with the same error.
   async.Future<Photo> create(
     Photo request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -140,11 +139,8 @@ class PhotoResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String photoId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (photoId == null) {
-      throw core.ArgumentError('Parameter photoId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -197,13 +193,10 @@ class PhotoResource {
   /// this method will complete with the same error.
   async.Future<Photo> get(
     core.String photoId, {
-    core.String languageCode,
-    core.String view,
-    core.String $fields,
+    core.String? languageCode,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (photoId == null) {
-      throw core.ArgumentError('Parameter photoId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if (view != null) 'view': [view],
@@ -250,10 +243,9 @@ class PhotoResource {
   /// this method will complete with the same error.
   async.Future<UploadRef> startUpload(
     Empty request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -312,14 +304,10 @@ class PhotoResource {
   async.Future<Photo> update(
     Photo request,
     core.String id, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -367,10 +355,9 @@ class PhotosResource {
   /// this method will complete with the same error.
   async.Future<BatchDeletePhotosResponse> batchDelete(
     BatchDeletePhotosRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -425,10 +412,10 @@ class PhotosResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetPhotosResponse> batchGet({
-    core.String languageCode,
-    core.List<core.String> photoIds,
-    core.String view,
-    core.String $fields,
+    core.String? languageCode,
+    core.List<core.String>? photoIds,
+    core.String? view,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
@@ -479,10 +466,9 @@ class PhotosResource {
   /// this method will complete with the same error.
   async.Future<BatchUpdatePhotosResponse> batchUpdate(
     BatchUpdatePhotosRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -544,12 +530,12 @@ class PhotosResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPhotosResponse> list({
-    core.String filter,
-    core.String languageCode,
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.String? filter,
+    core.String? languageCode,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
@@ -580,7 +566,7 @@ class BatchDeletePhotosRequest {
   /// parameter: `photoIds=&photoIds=&...`.
   ///
   /// Required.
-  core.List<core.String> photoIds;
+  core.List<core.String>? photoIds;
 
   BatchDeletePhotosRequest();
 
@@ -592,8 +578,8 @@ class BatchDeletePhotosRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (photoIds != null) 'photoIds': photoIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (photoIds != null) 'photoIds': photoIds!,
       };
 }
 
@@ -601,7 +587,7 @@ class BatchDeletePhotosRequest {
 class BatchDeletePhotosResponse {
   /// The status for the operation to delete a single Photo in the batch
   /// request.
-  core.List<Status> status;
+  core.List<Status>? status;
 
   BatchDeletePhotosResponse();
 
@@ -614,9 +600,9 @@ class BatchDeletePhotosResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (status != null)
-          'status': status.map((value) => value.toJson()).toList(),
+          'status': status!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -624,7 +610,7 @@ class BatchDeletePhotosResponse {
 class BatchGetPhotosResponse {
   /// List of results for each individual Photo requested, in the same order as
   /// the requests in BatchGetPhotos.
-  core.List<PhotoResponse> results;
+  core.List<PhotoResponse>? results;
 
   BatchGetPhotosResponse();
 
@@ -637,9 +623,9 @@ class BatchGetPhotosResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
+          'results': results!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -650,7 +636,7 @@ class BatchUpdatePhotosRequest {
   /// List of UpdatePhotoRequests.
   ///
   /// Required.
-  core.List<UpdatePhotoRequest> updatePhotoRequests;
+  core.List<UpdatePhotoRequest>? updatePhotoRequests;
 
   BatchUpdatePhotosRequest();
 
@@ -663,10 +649,10 @@ class BatchUpdatePhotosRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (updatePhotoRequests != null)
           'updatePhotoRequests':
-              updatePhotoRequests.map((value) => value.toJson()).toList(),
+              updatePhotoRequests!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -674,7 +660,7 @@ class BatchUpdatePhotosRequest {
 class BatchUpdatePhotosResponse {
   /// List of results for each individual Photo updated, in the same order as
   /// the request.
-  core.List<PhotoResponse> results;
+  core.List<PhotoResponse>? results;
 
   BatchUpdatePhotosResponse();
 
@@ -687,9 +673,9 @@ class BatchUpdatePhotosResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
+          'results': results!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -699,7 +685,7 @@ class Connection {
   /// photo.
   ///
   /// Required.
-  PhotoId target;
+  PhotoId? target;
 
   Connection();
 
@@ -710,8 +696,8 @@ class Connection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (target != null) 'target': target.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (target != null) 'target': target!.toJson(),
       };
 }
 
@@ -729,7 +715,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// An object that represents a latitude/longitude pair.
@@ -741,12 +727,12 @@ class LatLng {
   /// The latitude in degrees.
   ///
   /// It must be in the range \[-90.0, +90.0\].
-  core.double latitude;
+  core.double? latitude;
 
   /// The longitude in degrees.
   ///
   /// It must be in the range \[-180.0, +180.0\].
-  core.double longitude;
+  core.double? longitude;
 
   LatLng();
 
@@ -759,9 +745,9 @@ class LatLng {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (latitude != null) 'latitude': latitude,
-        if (longitude != null) 'longitude': longitude,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
       };
 }
 
@@ -773,14 +759,14 @@ class Level {
   /// was an elevator.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Floor number, used for ordering.
   ///
   /// 0 indicates the ground level, 1 indicates the first level above ground
   /// level, -1 indicates the first level under ground level. Non-integer values
   /// are OK.
-  core.double number;
+  core.double? number;
 
   Level();
 
@@ -793,9 +779,9 @@ class Level {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (number != null) 'number': number,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (number != null) 'number': number!,
       };
 }
 
@@ -803,12 +789,12 @@ class Level {
 class ListPhotosResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of photos.
   ///
   /// The pageSize field in the request determines the number of items returned.
-  core.List<Photo> photos;
+  core.List<Photo>? photos;
 
   ListPhotosResponse();
 
@@ -824,10 +810,10 @@ class ListPhotosResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (photos != null)
-          'photos': photos.map((value) => value.toJson()).toList(),
+          'photos': photos!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -838,10 +824,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -852,14 +838,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -872,7 +858,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -907,12 +893,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -922,12 +908,12 @@ class Photo {
   ///
   /// When the photo has no exif timestamp, this is used to set a timestamp in
   /// the photo metadata.
-  core.String captureTime;
+  core.String? captureTime;
 
   /// Connections to other photos.
   ///
   /// A connection represents the link from this photo to another photo.
-  core.List<Connection> connections;
+  core.List<Connection>? connections;
 
   /// The download URL for the photo bytes.
   ///
@@ -935,7 +921,7 @@ class Photo {
   /// PhotoView.INCLUDE_DOWNLOAD_URL.
   ///
   /// Output only.
-  core.String downloadUrl;
+  core.String? downloadUrl;
 
   /// Status in Google Maps, whether this photo was published or rejected.
   ///
@@ -946,29 +932,29 @@ class Photo {
   /// - "UNSPECIFIED_MAPS_PUBLISH_STATUS" : The status of the photo is unknown.
   /// - "PUBLISHED" : The photo is published to the public through Google Maps.
   /// - "REJECTED_UNKNOWN" : The photo has been rejected for an unknown reason.
-  core.String mapsPublishStatus;
+  core.String? mapsPublishStatus;
 
   /// Required when updating a photo.
   ///
   /// Output only when creating a photo. Identifier for the photo, which is
   /// unique among all photos in Google.
-  PhotoId photoId;
+  PhotoId? photoId;
 
   /// Places where this photo belongs.
-  core.List<Place> places;
+  core.List<Place>? places;
 
   /// Pose of the photo.
-  Pose pose;
+  Pose? pose;
 
   /// The share link for the photo.
   ///
   /// Output only.
-  core.String shareLink;
+  core.String? shareLink;
 
   /// The thumbnail URL for showing a preview of the given photo.
   ///
   /// Output only.
-  core.String thumbnailUrl;
+  core.String? thumbnailUrl;
 
   /// Status of rights transfer on this photo.
   ///
@@ -986,17 +972,17 @@ class Photo {
   /// - "CANCELLED" : The sender cancelled this photo transfer.
   /// - "RECEIVED_VIA_TRANSFER" : The recipient owns this photo due to a rights
   /// transfer.
-  core.String transferStatus;
+  core.String? transferStatus;
 
   /// Required when creating a photo.
   ///
   /// Input only. The resource URL where the photo bytes are uploaded to.
-  UploadRef uploadReference;
+  UploadRef? uploadReference;
 
   /// View count of the photo.
   ///
   /// Output only.
-  core.String viewCount;
+  core.String? viewCount;
 
   Photo();
 
@@ -1048,22 +1034,22 @@ class Photo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (captureTime != null) 'captureTime': captureTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (captureTime != null) 'captureTime': captureTime!,
         if (connections != null)
-          'connections': connections.map((value) => value.toJson()).toList(),
-        if (downloadUrl != null) 'downloadUrl': downloadUrl,
-        if (mapsPublishStatus != null) 'mapsPublishStatus': mapsPublishStatus,
-        if (photoId != null) 'photoId': photoId.toJson(),
+          'connections': connections!.map((value) => value.toJson()).toList(),
+        if (downloadUrl != null) 'downloadUrl': downloadUrl!,
+        if (mapsPublishStatus != null) 'mapsPublishStatus': mapsPublishStatus!,
+        if (photoId != null) 'photoId': photoId!.toJson(),
         if (places != null)
-          'places': places.map((value) => value.toJson()).toList(),
-        if (pose != null) 'pose': pose.toJson(),
-        if (shareLink != null) 'shareLink': shareLink,
-        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl,
-        if (transferStatus != null) 'transferStatus': transferStatus,
+          'places': places!.map((value) => value.toJson()).toList(),
+        if (pose != null) 'pose': pose!.toJson(),
+        if (shareLink != null) 'shareLink': shareLink!,
+        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
+        if (transferStatus != null) 'transferStatus': transferStatus!,
         if (uploadReference != null)
-          'uploadReference': uploadReference.toJson(),
-        if (viewCount != null) 'viewCount': viewCount,
+          'uploadReference': uploadReference!.toJson(),
+        if (viewCount != null) 'viewCount': viewCount!,
       };
 }
 
@@ -1072,7 +1058,7 @@ class PhotoId {
   /// A unique identifier for a photo.
   ///
   /// Required.
-  core.String id;
+  core.String? id;
 
   PhotoId();
 
@@ -1082,8 +1068,8 @@ class PhotoId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
       };
 }
 
@@ -1091,11 +1077,11 @@ class PhotoId {
 /// BatchGetPhotos and BatchUpdatePhotos.
 class PhotoResponse {
   /// The Photo resource, if the request was successful.
-  Photo photo;
+  Photo? photo;
 
   /// The status for the operation to get or update a single photo in the batch
   /// request.
-  Status status;
+  Status? status;
 
   PhotoResponse();
 
@@ -1110,9 +1096,9 @@ class PhotoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (photo != null) 'photo': photo.toJson(),
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (photo != null) 'photo': photo!.toJson(),
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -1122,16 +1108,16 @@ class Place {
   ///
   /// The language_code that the name is localized with. This should be the
   /// language_code specified in the request, but may be a fallback.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Output-only.
   ///
   /// The name of the place, localized to the language_code.
-  core.String name;
+  core.String? name;
 
   /// Place identifier, as described in
   /// https://developers.google.com/places/place-id.
-  core.String placeId;
+  core.String? placeId;
 
   Place();
 
@@ -1147,10 +1133,10 @@ class Place {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode,
-        if (name != null) 'name': name,
-        if (placeId != null) 'placeId': placeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (name != null) 'name': name!,
+        if (placeId != null) 'placeId': placeId!,
       };
 }
 
@@ -1163,18 +1149,18 @@ class Pose {
   /// https://developer.android.com/reference/android/location/Location#getAccuracy().
   /// Other platforms have different methods of obtaining similar accuracy
   /// estimations.
-  core.double accuracyMeters;
+  core.double? accuracyMeters;
 
   /// Altitude of the pose in meters above WGS84 ellipsoid.
   ///
   /// NaN indicates an unmeasured quantity.
-  core.double altitude;
+  core.double? altitude;
 
   /// Compass heading, measured at the center of the photo in degrees clockwise
   /// from North.
   ///
   /// Value must be >=0 and <360. NaN indicates an unmeasured quantity.
-  core.double heading;
+  core.double? heading;
 
   /// Latitude and longitude pair of the pose, as explained here:
   /// https://cloud.google.com/datastore/docs/reference/rest/Shared.Types/LatLng
@@ -1183,23 +1169,23 @@ class Pose {
   ///
   /// A latitude and longitude pair not provided in the photo or exif header
   /// causes the photo process to fail.
-  LatLng latLngPair;
+  LatLng? latLngPair;
 
   /// Level (the floor in a building) used to configure vertical navigation.
-  Level level;
+  Level? level;
 
   /// Pitch, measured at the center of the photo in degrees.
   ///
   /// Value must be >=-90 and <= 90. A value of -90 means looking directly down,
   /// and a value of 90 means looking directly up. NaN indicates an unmeasured
   /// quantity.
-  core.double pitch;
+  core.double? pitch;
 
   /// Roll, measured in degrees.
   ///
   /// Value must be >= 0 and <360. A value of 0 means level with the horizon.
   /// NaN indicates an unmeasured quantity.
-  core.double roll;
+  core.double? roll;
 
   Pose();
 
@@ -1229,14 +1215,14 @@ class Pose {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accuracyMeters != null) 'accuracyMeters': accuracyMeters,
-        if (altitude != null) 'altitude': altitude,
-        if (heading != null) 'heading': heading,
-        if (latLngPair != null) 'latLngPair': latLngPair.toJson(),
-        if (level != null) 'level': level.toJson(),
-        if (pitch != null) 'pitch': pitch,
-        if (roll != null) 'roll': roll,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accuracyMeters != null) 'accuracyMeters': accuracyMeters!,
+        if (altitude != null) 'altitude': altitude!,
+        if (heading != null) 'heading': heading!,
+        if (latLngPair != null) 'latLngPair': latLngPair!.toJson(),
+        if (level != null) 'level': level!.toJson(),
+        if (pitch != null) 'pitch': pitch!,
+        if (roll != null) 'roll': roll!,
       };
 }
 
@@ -1249,7 +1235,7 @@ class Pose {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1257,13 +1243,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -1287,10 +1273,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -1301,7 +1287,7 @@ class UpdatePhotoRequest {
   /// Photo object containing the new metadata.
   ///
   /// Required.
-  Photo photo;
+  Photo? photo;
 
   /// Mask that identifies fields on the photo metadata to update.
   ///
@@ -1317,7 +1303,7 @@ class UpdatePhotoRequest {
   /// removed.
   ///
   /// Required.
-  core.String updateMask;
+  core.String? updateMask;
 
   UpdatePhotoRequest();
 
@@ -1331,9 +1317,9 @@ class UpdatePhotoRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (photo != null) 'photo': photo.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (photo != null) 'photo': photo!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -1343,7 +1329,7 @@ class UploadRef {
   ///
   /// It follows the form:
   /// "https://streetviewpublish.googleapis.com/media/user/{account_id}/photo/{upload_reference}"
-  core.String uploadUrl;
+  core.String? uploadUrl;
 
   UploadRef();
 
@@ -1353,7 +1339,7 @@ class UploadRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (uploadUrl != null) 'uploadUrl': uploadUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (uploadUrl != null) 'uploadUrl': uploadUrl!,
       };
 }

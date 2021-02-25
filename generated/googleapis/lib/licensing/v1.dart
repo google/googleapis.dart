@@ -93,17 +93,8 @@ class LicenseAssignmentsResource {
     core.String productId,
     core.String skuId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
-    if (skuId == null) {
-      throw core.ArgumentError('Parameter skuId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -153,17 +144,8 @@ class LicenseAssignmentsResource {
     core.String productId,
     core.String skuId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
-    if (skuId == null) {
-      throw core.ArgumentError('Parameter skuId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -210,16 +192,9 @@ class LicenseAssignmentsResource {
     LicenseAssignmentInsert request,
     core.String productId,
     core.String skuId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
-    if (skuId == null) {
-      throw core.ArgumentError('Parameter skuId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -274,16 +249,10 @@ class LicenseAssignmentsResource {
   async.Future<LicenseAssignmentList> listForProduct(
     core.String productId,
     core.String customerId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'customerId': [customerId],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -342,19 +311,10 @@ class LicenseAssignmentsResource {
     core.String productId,
     core.String skuId,
     core.String customerId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
-    if (skuId == null) {
-      throw core.ArgumentError('Parameter skuId is required.');
-    }
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'customerId': [customerId],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -412,19 +372,9 @@ class LicenseAssignmentsResource {
     core.String productId,
     core.String skuId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
-    if (skuId == null) {
-      throw core.ArgumentError('Parameter skuId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -479,19 +429,9 @@ class LicenseAssignmentsResource {
     core.String productId,
     core.String skuId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
-    if (skuId == null) {
-      throw core.ArgumentError('Parameter skuId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -528,38 +468,38 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Representation of a license assignment.
 class LicenseAssignment {
   /// ETag of the resource.
-  core.String etags;
+  core.String? etags;
 
   /// Identifies the resource as a LicenseAssignment, which is
   /// `licensing#licenseAssignment`.
-  core.String kind;
+  core.String? kind;
 
   /// A product's unique identifier.
   ///
   /// For more information about products in this version of the API, see
   /// Product and SKU IDs.
-  core.String productId;
+  core.String? productId;
 
   /// Display Name of the product.
-  core.String productName;
+  core.String? productName;
 
   /// Link to this page.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// A product SKU's unique identifier.
   ///
   /// For more information about available SKUs in this version of the API, see
   /// Products and SKUs.
-  core.String skuId;
+  core.String? skuId;
 
   /// Display Name of the sku of the product.
-  core.String skuName;
+  core.String? skuName;
 
   /// The user's current primary email address.
   ///
@@ -568,7 +508,7 @@ class LicenseAssignment {
   /// value as a key for persistent data. This key could break if the current
   /// user's email address changes. If the `userId` is suspended, the license
   /// status changes.
-  core.String userId;
+  core.String? userId;
 
   LicenseAssignment();
 
@@ -599,22 +539,22 @@ class LicenseAssignment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etags != null) 'etags': etags,
-        if (kind != null) 'kind': kind,
-        if (productId != null) 'productId': productId,
-        if (productName != null) 'productName': productName,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (skuId != null) 'skuId': skuId,
-        if (skuName != null) 'skuName': skuName,
-        if (userId != null) 'userId': userId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etags != null) 'etags': etags!,
+        if (kind != null) 'kind': kind!,
+        if (productId != null) 'productId': productId!,
+        if (productName != null) 'productName': productName!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (skuId != null) 'skuId': skuId!,
+        if (skuName != null) 'skuName': skuName!,
+        if (userId != null) 'userId': userId!,
       };
 }
 
 /// Representation of a license assignment.
 class LicenseAssignmentInsert {
   /// Email id of the user
-  core.String userId;
+  core.String? userId;
 
   LicenseAssignmentInsert();
 
@@ -624,27 +564,27 @@ class LicenseAssignmentInsert {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (userId != null) 'userId': userId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (userId != null) 'userId': userId!,
       };
 }
 
 class LicenseAssignmentList {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The LicenseAssignments in this page of results.
-  core.List<LicenseAssignment> items;
+  core.List<LicenseAssignment>? items;
 
   /// Identifies the resource as a collection of LicenseAssignments.
-  core.String kind;
+  core.String? kind;
 
   /// The token that you must submit in a subsequent request to retrieve
   /// additional license results matching your query parameters.
   ///
   /// The `maxResults` query string is related to the `nextPageToken` since
   /// `maxResults` determines how many entries are returned on each next page.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   LicenseAssignmentList();
 
@@ -666,11 +606,11 @@ class LicenseAssignmentList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

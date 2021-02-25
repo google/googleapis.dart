@@ -110,10 +110,9 @@ class ControllerDebuggeesResource {
   /// this method will complete with the same error.
   async.Future<RegisterDebuggeeResponse> register(
     RegisterDebuggeeRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -179,14 +178,11 @@ class ControllerDebuggeesBreakpointsResource {
   /// this method will complete with the same error.
   async.Future<ListActiveBreakpointsResponse> list(
     core.String debuggeeId, {
-    core.String agentId,
-    core.bool successOnTimeout,
-    core.String waitToken,
-    core.String $fields,
+    core.String? agentId,
+    core.bool? successOnTimeout,
+    core.String? waitToken,
+    core.String? $fields,
   }) async {
-    if (debuggeeId == null) {
-      throw core.ArgumentError('Parameter debuggeeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (agentId != null) 'agentId': [agentId],
       if (successOnTimeout != null) 'successOnTimeout': ['${successOnTimeout}'],
@@ -238,16 +234,9 @@ class ControllerDebuggeesBreakpointsResource {
     UpdateActiveBreakpointRequest request,
     core.String debuggeeId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (debuggeeId == null) {
-      throw core.ArgumentError('Parameter debuggeeId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -309,10 +298,10 @@ class DebuggerDebuggeesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDebuggeesResponse> list({
-    core.String clientVersion,
-    core.bool includeInactive,
-    core.String project,
-    core.String $fields,
+    core.String? clientVersion,
+    core.bool? includeInactive,
+    core.String? project,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientVersion != null) 'clientVersion': [clientVersion],
@@ -363,15 +352,9 @@ class DebuggerDebuggeesBreakpointsResource {
   async.Future<Empty> delete(
     core.String debuggeeId,
     core.String breakpointId, {
-    core.String clientVersion,
-    core.String $fields,
+    core.String? clientVersion,
+    core.String? $fields,
   }) async {
-    if (debuggeeId == null) {
-      throw core.ArgumentError('Parameter debuggeeId is required.');
-    }
-    if (breakpointId == null) {
-      throw core.ArgumentError('Parameter breakpointId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientVersion != null) 'clientVersion': [clientVersion],
       if ($fields != null) 'fields': [$fields],
@@ -414,15 +397,9 @@ class DebuggerDebuggeesBreakpointsResource {
   async.Future<GetBreakpointResponse> get(
     core.String debuggeeId,
     core.String breakpointId, {
-    core.String clientVersion,
-    core.String $fields,
+    core.String? clientVersion,
+    core.String? $fields,
   }) async {
-    if (debuggeeId == null) {
-      throw core.ArgumentError('Parameter debuggeeId is required.');
-    }
-    if (breakpointId == null) {
-      throw core.ArgumentError('Parameter breakpointId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientVersion != null) 'clientVersion': [clientVersion],
       if ($fields != null) 'fields': [$fields],
@@ -489,17 +466,14 @@ class DebuggerDebuggeesBreakpointsResource {
   /// this method will complete with the same error.
   async.Future<ListBreakpointsResponse> list(
     core.String debuggeeId, {
-    core.String action_value,
-    core.String clientVersion,
-    core.bool includeAllUsers,
-    core.bool includeInactive,
-    core.bool stripResults,
-    core.String waitToken,
-    core.String $fields,
+    core.String? action_value,
+    core.String? clientVersion,
+    core.bool? includeAllUsers,
+    core.bool? includeInactive,
+    core.bool? stripResults,
+    core.String? waitToken,
+    core.String? $fields,
   }) async {
-    if (debuggeeId == null) {
-      throw core.ArgumentError('Parameter debuggeeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (action_value != null) 'action.value': [action_value],
       if (clientVersion != null) 'clientVersion': [clientVersion],
@@ -560,15 +534,11 @@ class DebuggerDebuggeesBreakpointsResource {
   async.Future<SetBreakpointResponse> set(
     Breakpoint request,
     core.String debuggeeId, {
-    core.String canaryOption,
-    core.String clientVersion,
-    core.String $fields,
+    core.String? canaryOption,
+    core.String? clientVersion,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (debuggeeId == null) {
-      throw core.ArgumentError('Parameter debuggeeId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (canaryOption != null) 'canaryOption': [canaryOption],
       if (clientVersion != null) 'clientVersion': [clientVersion],
@@ -600,10 +570,10 @@ class AliasContext {
   /// - "OTHER" : OTHER is used to specify non-standard aliases, those not of
   /// the kinds above. For example, if a Git repo has a ref named
   /// "refs/foo/bar", it is considered to be of kind OTHER.
-  core.String kind;
+  core.String? kind;
 
   /// The alias name.
-  core.String name;
+  core.String? name;
 
   AliasContext();
 
@@ -616,9 +586,9 @@ class AliasContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -634,22 +604,22 @@ class Breakpoint {
   /// final state.
   /// - "LOG" : Log each breakpoint hit. The breakpoint remains active until
   /// deleted or expired.
-  core.String action;
+  core.String? action;
 
   /// The deadline for the breakpoint to stay in CANARY_ACTIVE state.
   ///
   /// The value is meaningless when the breakpoint is not in CANARY_ACTIVE
   /// state.
-  core.String canaryExpireTime;
+  core.String? canaryExpireTime;
 
   /// Condition that triggers the breakpoint.
   ///
   /// The condition is a compound boolean expression composed using expressions
   /// in a programming language at the source location.
-  core.String condition;
+  core.String? condition;
 
   /// Time this breakpoint was created by the server in seconds resolution.
-  core.String createTime;
+  core.String? createTime;
 
   /// Values of evaluated expressions at breakpoint time.
   ///
@@ -658,32 +628,32 @@ class Breakpoint {
   /// text, the `value` or `members` field holds the result of the evaluated
   /// expression. If the expression cannot be evaluated, the `status` inside the
   /// `Variable` will indicate an error and contain the error text.
-  core.List<Variable> evaluatedExpressions;
+  core.List<Variable>? evaluatedExpressions;
 
   /// List of read-only expressions to evaluate at the breakpoint location.
   ///
   /// The expressions are composed using expressions in the programming language
   /// at the source location. If the breakpoint action is `LOG`, the evaluated
   /// expressions are included in log statements.
-  core.List<core.String> expressions;
+  core.List<core.String>? expressions;
 
   /// Time this breakpoint was finalized as seen by the server in seconds
   /// resolution.
-  core.String finalTime;
+  core.String? finalTime;
 
   /// Breakpoint identifier, unique in the scope of the debuggee.
-  core.String id;
+  core.String? id;
 
   /// When true, indicates that this is a final result and the breakpoint state
   /// will not change from here on.
-  core.bool isFinalState;
+  core.bool? isFinalState;
 
   /// A set of custom breakpoint properties, populated by the agent, to be
   /// displayed to the user.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Breakpoint source location.
-  SourceLocation location;
+  SourceLocation? location;
 
   /// Indicates the severity of the log.
   ///
@@ -692,7 +662,7 @@ class Breakpoint {
   /// - "INFO" : Information log message.
   /// - "WARNING" : Warning log message.
   /// - "ERROR" : Error log message.
-  core.String logLevel;
+  core.String? logLevel;
 
   /// Only relevant when action is `LOG`.
   ///
@@ -702,11 +672,11 @@ class Breakpoint {
   /// Expressions not referenced in `log_message_format` are not logged.
   /// Example: `Message received, id = $0, count = $1` with `expressions` = `[
   /// message.id, message.count ]`.
-  core.String logMessageFormat;
+  core.String? logMessageFormat;
 
   /// The stack at breakpoint time, where stack_frames\[0\] represents the most
   /// recently entered function.
-  core.List<StackFrame> stackFrames;
+  core.List<StackFrame>? stackFrames;
 
   /// The current state of the breakpoint.
   /// Possible string values are:
@@ -717,7 +687,7 @@ class Breakpoint {
   /// canary agents.
   /// - "STATE_ROLLING_TO_ALL" : Breakpoint rolling out to all agents.
   /// - "STATE_IS_FINAL" : Breakpoint is hit/complete/failed.
-  core.String state;
+  core.String? state;
 
   /// Breakpoint status.
   ///
@@ -728,10 +698,10 @@ class Breakpoint {
   /// Example (non-final state): `Still loading symbols...` Examples (final
   /// state): * `Invalid line number` referring to location * `Field f not found
   /// in class C` referring to condition
-  StatusMessage status;
+  StatusMessage? status;
 
   /// E-mail address of the user that created this breakpoint
-  core.String userEmail;
+  core.String? userEmail;
 
   /// The `variable_table` exists to aid with computation, memory and network
   /// traffic optimization.
@@ -745,7 +715,7 @@ class Breakpoint {
   /// objects are nameless and get their name from the referencing variable. The
   /// effective variable is a merge of the referencing variable and the
   /// referenced variable.
-  core.List<Variable> variableTable;
+  core.List<Variable>? variableTable;
 
   Breakpoint();
 
@@ -825,30 +795,30 @@ class Breakpoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action,
-        if (canaryExpireTime != null) 'canaryExpireTime': canaryExpireTime,
-        if (condition != null) 'condition': condition,
-        if (createTime != null) 'createTime': createTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!,
+        if (canaryExpireTime != null) 'canaryExpireTime': canaryExpireTime!,
+        if (condition != null) 'condition': condition!,
+        if (createTime != null) 'createTime': createTime!,
         if (evaluatedExpressions != null)
           'evaluatedExpressions':
-              evaluatedExpressions.map((value) => value.toJson()).toList(),
-        if (expressions != null) 'expressions': expressions,
-        if (finalTime != null) 'finalTime': finalTime,
-        if (id != null) 'id': id,
-        if (isFinalState != null) 'isFinalState': isFinalState,
-        if (labels != null) 'labels': labels,
-        if (location != null) 'location': location.toJson(),
-        if (logLevel != null) 'logLevel': logLevel,
-        if (logMessageFormat != null) 'logMessageFormat': logMessageFormat,
+              evaluatedExpressions!.map((value) => value.toJson()).toList(),
+        if (expressions != null) 'expressions': expressions!,
+        if (finalTime != null) 'finalTime': finalTime!,
+        if (id != null) 'id': id!,
+        if (isFinalState != null) 'isFinalState': isFinalState!,
+        if (labels != null) 'labels': labels!,
+        if (location != null) 'location': location!.toJson(),
+        if (logLevel != null) 'logLevel': logLevel!,
+        if (logMessageFormat != null) 'logMessageFormat': logMessageFormat!,
         if (stackFrames != null)
-          'stackFrames': stackFrames.map((value) => value.toJson()).toList(),
-        if (state != null) 'state': state,
-        if (status != null) 'status': status.toJson(),
-        if (userEmail != null) 'userEmail': userEmail,
+          'stackFrames': stackFrames!.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state!,
+        if (status != null) 'status': status!.toJson(),
+        if (userEmail != null) 'userEmail': userEmail!,
         if (variableTable != null)
           'variableTable':
-              variableTable.map((value) => value.toJson()).toList(),
+              variableTable!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -856,16 +826,16 @@ class Breakpoint {
 /// repo hosted by the Google Cloud Platform).
 class CloudRepoSourceContext {
   /// An alias, which may be a branch or tag.
-  AliasContext aliasContext;
+  AliasContext? aliasContext;
 
   /// The name of an alias (branch, tag, etc.).
-  core.String aliasName;
+  core.String? aliasName;
 
   /// The ID of the repo.
-  RepoId repoId;
+  RepoId? repoId;
 
   /// A revision ID.
-  core.String revisionId;
+  core.String? revisionId;
 
   CloudRepoSourceContext();
 
@@ -886,11 +856,11 @@ class CloudRepoSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aliasContext != null) 'aliasContext': aliasContext.toJson(),
-        if (aliasName != null) 'aliasName': aliasName,
-        if (repoId != null) 'repoId': repoId.toJson(),
-        if (revisionId != null) 'revisionId': revisionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aliasContext != null) 'aliasContext': aliasContext!.toJson(),
+        if (aliasName != null) 'aliasName': aliasName!,
+        if (repoId != null) 'repoId': repoId!.toJson(),
+        if (revisionId != null) 'revisionId': revisionId!,
       };
 }
 
@@ -903,10 +873,10 @@ class CloudWorkspaceId {
   ///
   /// This is the name chosen by the client in the Source API's CreateWorkspace
   /// method.
-  core.String name;
+  core.String? name;
 
   /// The ID of the repo containing the workspace.
-  RepoId repoId;
+  RepoId? repoId;
 
   CloudWorkspaceId();
 
@@ -920,9 +890,9 @@ class CloudWorkspaceId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (repoId != null) 'repoId': repoId.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (repoId != null) 'repoId': repoId!.toJson(),
       };
 }
 
@@ -931,10 +901,10 @@ class CloudWorkspaceSourceContext {
   /// The ID of the snapshot.
   ///
   /// An empty snapshot_id refers to the most recent snapshot.
-  core.String snapshotId;
+  core.String? snapshotId;
 
   /// The ID of the workspace.
-  CloudWorkspaceId workspaceId;
+  CloudWorkspaceId? workspaceId;
 
   CloudWorkspaceSourceContext();
 
@@ -948,9 +918,9 @@ class CloudWorkspaceSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (snapshotId != null) 'snapshotId': snapshotId,
-        if (workspaceId != null) 'workspaceId': workspaceId.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (snapshotId != null) 'snapshotId': snapshotId!,
+        if (workspaceId != null) 'workspaceId': workspaceId!.toJson(),
       };
 }
 
@@ -966,7 +936,7 @@ class Debuggee {
   ///
   /// Schema: `domain/language-platform/vmajor.minor` (for example
   /// `google.com/java-gcp/v1.1`).
-  core.String agentVersion;
+  core.String? agentVersion;
 
   /// Used when setting breakpoint canary for this debuggee.
   /// Possible string values are:
@@ -983,47 +953,47 @@ class Debuggee {
   /// - "CANARY_MODE_DEFAULT_DISABLED" : Depends on the breakpoint's canary
   /// option. Disable canary by default if the breakpoint's canary option is not
   /// specified.
-  core.String canaryMode;
+  core.String? canaryMode;
 
   /// Human readable description of the debuggee.
   ///
   /// Including a human-readable project name, environment name and version
   /// information is recommended.
-  core.String description;
+  core.String? description;
 
   /// References to the locations and revisions of the source code used in the
   /// deployed application.
-  core.List<ExtendedSourceContext> extSourceContexts;
+  core.List<ExtendedSourceContext>? extSourceContexts;
 
   /// Unique identifier for the debuggee generated by the controller service.
-  core.String id;
+  core.String? id;
 
   /// If set to `true`, indicates that the agent should disable itself and
   /// detach from the debuggee.
-  core.bool isDisabled;
+  core.bool? isDisabled;
 
   /// If set to `true`, indicates that Controller service does not detect any
   /// activity from the debuggee agents and the application is possibly stopped.
-  core.bool isInactive;
+  core.bool? isInactive;
 
   /// A set of custom debuggee properties, populated by the agent, to be
   /// displayed to the user.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Project the debuggee is associated with.
   ///
   /// Use project number or id when registering a Google Cloud Platform project.
-  core.String project;
+  core.String? project;
 
   /// References to the locations and revisions of the source code used in the
   /// deployed application.
-  core.List<SourceContext> sourceContexts;
+  core.List<SourceContext>? sourceContexts;
 
   /// Human readable message to be displayed to the user about this debuggee.
   ///
   /// Absence of this field indicates no status. The message can be either
   /// informational or an error status.
-  StatusMessage status;
+  StatusMessage? status;
 
   /// Uniquifier to further distinguish the application.
   ///
@@ -1032,7 +1002,7 @@ class Debuggee {
   /// by the Controller service. This field adds salt to further distinguish the
   /// application. Agents should consider seeding this field with value that
   /// identifies the code, binary, configuration and environment.
-  core.String uniquifier;
+  core.String? uniquifier;
 
   Debuggee();
 
@@ -1088,23 +1058,23 @@ class Debuggee {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (agentVersion != null) 'agentVersion': agentVersion,
-        if (canaryMode != null) 'canaryMode': canaryMode,
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (agentVersion != null) 'agentVersion': agentVersion!,
+        if (canaryMode != null) 'canaryMode': canaryMode!,
+        if (description != null) 'description': description!,
         if (extSourceContexts != null)
           'extSourceContexts':
-              extSourceContexts.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id,
-        if (isDisabled != null) 'isDisabled': isDisabled,
-        if (isInactive != null) 'isInactive': isInactive,
-        if (labels != null) 'labels': labels,
-        if (project != null) 'project': project,
+              extSourceContexts!.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id!,
+        if (isDisabled != null) 'isDisabled': isDisabled!,
+        if (isInactive != null) 'isInactive': isInactive!,
+        if (labels != null) 'labels': labels!,
+        if (project != null) 'project': project!,
         if (sourceContexts != null)
           'sourceContexts':
-              sourceContexts.map((value) => value.toJson()).toList(),
-        if (status != null) 'status': status.toJson(),
-        if (uniquifier != null) 'uniquifier': uniquifier,
+              sourceContexts!.map((value) => value.toJson()).toList(),
+        if (status != null) 'status': status!.toJson(),
+        if (uniquifier != null) 'uniquifier': uniquifier!,
       };
 }
 
@@ -1122,17 +1092,17 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// An ExtendedSourceContext is a SourceContext combined with additional details
 /// describing the context.
 class ExtendedSourceContext {
   /// Any source context.
-  SourceContext context;
+  SourceContext? context;
 
   /// Labels with user defined metadata.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   ExtendedSourceContext();
 
@@ -1152,9 +1122,9 @@ class ExtendedSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (context != null) 'context': context.toJson(),
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (context != null) 'context': context!.toJson(),
+        if (labels != null) 'labels': labels!,
       };
 }
 
@@ -1166,10 +1136,10 @@ class FormatMessage {
   /// `$$` can be used to denote the `$` character. Examples: * `Failed to load
   /// '$0' which helps debug $1 the first time it is loaded. Again, $0 is very
   /// important.` * `Please pay $$10 to use $0 instead of $1.`
-  core.String format;
+  core.String? format;
 
   /// Optional parameters to be embedded into the message.
-  core.List<core.String> parameters;
+  core.List<core.String>? parameters;
 
   FormatMessage();
 
@@ -1184,31 +1154,31 @@ class FormatMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (format != null) 'format': format,
-        if (parameters != null) 'parameters': parameters,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (format != null) 'format': format!,
+        if (parameters != null) 'parameters': parameters!,
       };
 }
 
 /// A SourceContext referring to a Gerrit project.
 class GerritSourceContext {
   /// An alias, which may be a branch or tag.
-  AliasContext aliasContext;
+  AliasContext? aliasContext;
 
   /// The name of an alias (branch, tag, etc.).
-  core.String aliasName;
+  core.String? aliasName;
 
   /// The full project name within the host.
   ///
   /// Projects may be nested, so "project/subproject" is a valid project name.
   /// The "repo name" is hostURI/project.
-  core.String gerritProject;
+  core.String? gerritProject;
 
   /// The URI of a running Gerrit instance.
-  core.String hostUri;
+  core.String? hostUri;
 
   /// A revision (commit) ID.
-  core.String revisionId;
+  core.String? revisionId;
 
   GerritSourceContext();
 
@@ -1231,12 +1201,12 @@ class GerritSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aliasContext != null) 'aliasContext': aliasContext.toJson(),
-        if (aliasName != null) 'aliasName': aliasName,
-        if (gerritProject != null) 'gerritProject': gerritProject,
-        if (hostUri != null) 'hostUri': hostUri,
-        if (revisionId != null) 'revisionId': revisionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aliasContext != null) 'aliasContext': aliasContext!.toJson(),
+        if (aliasName != null) 'aliasName': aliasName!,
+        if (gerritProject != null) 'gerritProject': gerritProject!,
+        if (hostUri != null) 'hostUri': hostUri!,
+        if (revisionId != null) 'revisionId': revisionId!,
       };
 }
 
@@ -1245,7 +1215,7 @@ class GetBreakpointResponse {
   /// Complete breakpoint state.
   ///
   /// The fields `id` and `location` are guaranteed to be set.
-  Breakpoint breakpoint;
+  Breakpoint? breakpoint;
 
   GetBreakpointResponse();
 
@@ -1256,8 +1226,8 @@ class GetBreakpointResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (breakpoint != null) 'breakpoint': breakpoint.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (breakpoint != null) 'breakpoint': breakpoint!.toJson(),
       };
 }
 
@@ -1267,10 +1237,10 @@ class GitSourceContext {
   /// Git commit hash.
   ///
   /// required.
-  core.String revisionId;
+  core.String? revisionId;
 
   /// Git repository URL.
-  core.String url;
+  core.String? url;
 
   GitSourceContext();
 
@@ -1283,9 +1253,9 @@ class GitSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (revisionId != null) 'revisionId': revisionId,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -1295,17 +1265,17 @@ class ListActiveBreakpointsResponse {
   ///
   /// The fields `id` and `location` are guaranteed to be set on each
   /// breakpoint.
-  core.List<Breakpoint> breakpoints;
+  core.List<Breakpoint>? breakpoints;
 
   /// A token that can be used in the next method call to block until the list
   /// of breakpoints changes.
-  core.String nextWaitToken;
+  core.String? nextWaitToken;
 
   /// If set to `true`, indicates that there is no change to the list of active
   /// breakpoints and the server-selected timeout has expired.
   ///
   /// The `breakpoints` field would be empty and should be ignored.
-  core.bool waitExpired;
+  core.bool? waitExpired;
 
   ListActiveBreakpointsResponse();
 
@@ -1324,11 +1294,11 @@ class ListActiveBreakpointsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (breakpoints != null)
-          'breakpoints': breakpoints.map((value) => value.toJson()).toList(),
-        if (nextWaitToken != null) 'nextWaitToken': nextWaitToken,
-        if (waitExpired != null) 'waitExpired': waitExpired,
+          'breakpoints': breakpoints!.map((value) => value.toJson()).toList(),
+        if (nextWaitToken != null) 'nextWaitToken': nextWaitToken!,
+        if (waitExpired != null) 'waitExpired': waitExpired!,
       };
 }
 
@@ -1339,12 +1309,12 @@ class ListBreakpointsResponse {
   /// The fields `id` and `location` are guaranteed to be set on each
   /// breakpoint. The fields: `stack_frames`, `evaluated_expressions` and
   /// `variable_table` are cleared on each breakpoint regardless of its status.
-  core.List<Breakpoint> breakpoints;
+  core.List<Breakpoint>? breakpoints;
 
   /// A wait token that can be used in the next call to `list` (REST) or
   /// `ListBreakpoints` (RPC) to block until the list of breakpoints has
   /// changes.
-  core.String nextWaitToken;
+  core.String? nextWaitToken;
 
   ListBreakpointsResponse();
 
@@ -1360,10 +1330,10 @@ class ListBreakpointsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (breakpoints != null)
-          'breakpoints': breakpoints.map((value) => value.toJson()).toList(),
-        if (nextWaitToken != null) 'nextWaitToken': nextWaitToken,
+          'breakpoints': breakpoints!.map((value) => value.toJson()).toList(),
+        if (nextWaitToken != null) 'nextWaitToken': nextWaitToken!,
       };
 }
 
@@ -1374,7 +1344,7 @@ class ListDebuggeesResponse {
   /// The fields `debuggee.id` and `description` are guaranteed to be set. The
   /// `description` field is a human readable field provided by agents and can
   /// be displayed to users.
-  core.List<Debuggee> debuggees;
+  core.List<Debuggee>? debuggees;
 
   ListDebuggeesResponse();
 
@@ -1387,9 +1357,9 @@ class ListDebuggeesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (debuggees != null)
-          'debuggees': debuggees.map((value) => value.toJson()).toList(),
+          'debuggees': debuggees!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1397,12 +1367,12 @@ class ListDebuggeesResponse {
 /// winged-cargo-31) and a repo name within that project.
 class ProjectRepoId {
   /// The ID of the project.
-  core.String projectId;
+  core.String? projectId;
 
   /// The name of the repo.
   ///
   /// Leave empty for the default repo.
-  core.String repoName;
+  core.String? repoName;
 
   ProjectRepoId();
 
@@ -1415,9 +1385,9 @@ class ProjectRepoId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (projectId != null) 'projectId': projectId,
-        if (repoName != null) 'repoName': repoName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (projectId != null) 'projectId': projectId!,
+        if (repoName != null) 'repoName': repoName!,
       };
 }
 
@@ -1429,7 +1399,7 @@ class RegisterDebuggeeRequest {
   /// the debuggee must be set.
   ///
   /// Required.
-  Debuggee debuggee;
+  Debuggee? debuggee;
 
   RegisterDebuggeeRequest();
 
@@ -1440,8 +1410,8 @@ class RegisterDebuggeeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (debuggee != null) 'debuggee': debuggee.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (debuggee != null) 'debuggee': debuggee!.toJson(),
       };
 }
 
@@ -1450,7 +1420,7 @@ class RegisterDebuggeeResponse {
   /// A unique ID generated for the agent.
   ///
   /// Each RegisterDebuggee request will generate a new agent ID.
-  core.String agentId;
+  core.String? agentId;
 
   /// Debuggee resource.
   ///
@@ -1458,7 +1428,7 @@ class RegisterDebuggeeResponse {
   /// If the field `is_disabled` is set to `true`, the agent should disable
   /// itself by removing all breakpoints and detaching from the application. It
   /// should however continue to poll `RegisterDebuggee` until reenabled.
-  Debuggee debuggee;
+  Debuggee? debuggee;
 
   RegisterDebuggeeResponse();
 
@@ -1472,19 +1442,19 @@ class RegisterDebuggeeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (agentId != null) 'agentId': agentId,
-        if (debuggee != null) 'debuggee': debuggee.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (agentId != null) 'agentId': agentId!,
+        if (debuggee != null) 'debuggee': debuggee!.toJson(),
       };
 }
 
 /// A unique identifier for a cloud repo.
 class RepoId {
   /// A combination of a project ID and a repo name.
-  ProjectRepoId projectRepoId;
+  ProjectRepoId? projectRepoId;
 
   /// A server-assigned, globally unique identifier.
-  core.String uid;
+  core.String? uid;
 
   RepoId();
 
@@ -1498,9 +1468,9 @@ class RepoId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (projectRepoId != null) 'projectRepoId': projectRepoId.toJson(),
-        if (uid != null) 'uid': uid,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (projectRepoId != null) 'projectRepoId': projectRepoId!.toJson(),
+        if (uid != null) 'uid': uid!,
       };
 }
 
@@ -1509,7 +1479,7 @@ class SetBreakpointResponse {
   /// Breakpoint resource.
   ///
   /// The field `id` is guaranteed to be set (in addition to the echoed fields).
-  Breakpoint breakpoint;
+  Breakpoint? breakpoint;
 
   SetBreakpointResponse();
 
@@ -1520,8 +1490,8 @@ class SetBreakpointResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (breakpoint != null) 'breakpoint': breakpoint.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (breakpoint != null) 'breakpoint': breakpoint!.toJson(),
       };
 }
 
@@ -1531,16 +1501,16 @@ class SetBreakpointResponse {
 /// file or directory.
 class SourceContext {
   /// A SourceContext referring to a revision in a cloud repo.
-  CloudRepoSourceContext cloudRepo;
+  CloudRepoSourceContext? cloudRepo;
 
   /// A SourceContext referring to a snapshot in a cloud workspace.
-  CloudWorkspaceSourceContext cloudWorkspace;
+  CloudWorkspaceSourceContext? cloudWorkspace;
 
   /// A SourceContext referring to a Gerrit project.
-  GerritSourceContext gerrit;
+  GerritSourceContext? gerrit;
 
   /// A SourceContext referring to any third party Git repo (e.g. GitHub).
-  GitSourceContext git;
+  GitSourceContext? git;
 
   SourceContext();
 
@@ -1563,11 +1533,11 @@ class SourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cloudRepo != null) 'cloudRepo': cloudRepo.toJson(),
-        if (cloudWorkspace != null) 'cloudWorkspace': cloudWorkspace.toJson(),
-        if (gerrit != null) 'gerrit': gerrit.toJson(),
-        if (git != null) 'git': git.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cloudRepo != null) 'cloudRepo': cloudRepo!.toJson(),
+        if (cloudWorkspace != null) 'cloudWorkspace': cloudWorkspace!.toJson(),
+        if (gerrit != null) 'gerrit': gerrit!.toJson(),
+        if (git != null) 'git': git!.toJson(),
       };
 }
 
@@ -1577,15 +1547,15 @@ class SourceLocation {
   ///
   /// The first column in a line as the value `1`. Agents that do not support
   /// setting breakpoints on specific columns ignore this field.
-  core.int column;
+  core.int? column;
 
   /// Line inside the file.
   ///
   /// The first line in the file has the value `1`.
-  core.int line;
+  core.int? line;
 
   /// Path to the source file within the source context of the target binary.
-  core.String path;
+  core.String? path;
 
   SourceLocation();
 
@@ -1601,10 +1571,10 @@ class SourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (column != null) 'column': column,
-        if (line != null) 'line': line,
-        if (path != null) 'path': path,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (column != null) 'column': column!,
+        if (line != null) 'line': line!,
+        if (path != null) 'path': path!,
       };
 }
 
@@ -1613,18 +1583,18 @@ class StackFrame {
   /// Set of arguments passed to this function.
   ///
   /// Note that this might not be populated for all stack frames.
-  core.List<Variable> arguments;
+  core.List<Variable>? arguments;
 
   /// Demangled function name at the call site.
-  core.String function;
+  core.String? function;
 
   /// Set of local variables at the stack frame location.
   ///
   /// Note that this might not be populated for all stack frames.
-  core.List<Variable> locals;
+  core.List<Variable>? locals;
 
   /// Source location of the call site.
-  SourceLocation location;
+  SourceLocation? location;
 
   StackFrame();
 
@@ -1650,13 +1620,13 @@ class StackFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (arguments != null)
-          'arguments': arguments.map((value) => value.toJson()).toList(),
-        if (function != null) 'function': function,
+          'arguments': arguments!.map((value) => value.toJson()).toList(),
+        if (function != null) 'function': function!,
         if (locals != null)
-          'locals': locals.map((value) => value.toJson()).toList(),
-        if (location != null) 'location': location.toJson(),
+          'locals': locals!.map((value) => value.toJson()).toList(),
+        if (location != null) 'location': location!.toJson(),
       };
 }
 
@@ -1668,10 +1638,10 @@ class StackFrame {
 /// `BREAKPOINT_SOURCE_LOCATION` with the message `Location not found`.
 class StatusMessage {
   /// Status message text.
-  FormatMessage description;
+  FormatMessage? description;
 
   /// Distinguishes errors from informational messages.
-  core.bool isError;
+  core.bool? isError;
 
   /// Reference to which the message applies.
   /// Possible string values are:
@@ -1689,7 +1659,7 @@ class StatusMessage {
   /// - "VARIABLE_NAME" : Status applies to the entire variable.
   /// - "VARIABLE_VALUE" : Status applies to variable value (variable name is
   /// valid).
-  core.String refersTo;
+  core.String? refersTo;
 
   StatusMessage();
 
@@ -1706,10 +1676,10 @@ class StatusMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description.toJson(),
-        if (isError != null) 'isError': isError,
-        if (refersTo != null) 'refersTo': refersTo,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!.toJson(),
+        if (isError != null) 'isError': isError!,
+        if (refersTo != null) 'refersTo': refersTo!,
       };
 }
 
@@ -1721,7 +1691,7 @@ class UpdateActiveBreakpointRequest {
   /// specification fields in the update.
   ///
   /// Required.
-  Breakpoint breakpoint;
+  Breakpoint? breakpoint;
 
   UpdateActiveBreakpointRequest();
 
@@ -1732,8 +1702,8 @@ class UpdateActiveBreakpointRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (breakpoint != null) 'breakpoint': breakpoint.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (breakpoint != null) 'breakpoint': breakpoint!.toJson(),
       };
 }
 
@@ -1747,7 +1717,7 @@ class UpdateActiveBreakpointResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a variable or an argument possibly of a compound object type.
@@ -1787,10 +1757,10 @@ class UpdateActiveBreakpointResponse {
 /// optional. The debugger agent may or may not support it.
 class Variable {
   /// Members contained or pointed to by the variable.
-  core.List<Variable> members;
+  core.List<Variable>? members;
 
   /// Name of the variable, if any.
-  core.String name;
+  core.String? name;
 
   /// Status associated with the variable.
   ///
@@ -1804,23 +1774,23 @@ class Variable {
   /// syntax`. Example of information message applied to value: `Not captured`.
   /// Examples of error message applied to value: * `Malformed string`, * `Field
   /// f not found in class C` * `Null pointer dereference`
-  StatusMessage status;
+  StatusMessage? status;
 
   /// Variable type (e.g. `MyClass`).
   ///
   /// If the variable is split with `var_table_index`, `type` goes next to
   /// `value`. The interpretation of a type is agent specific. It is recommended
   /// to include the dynamic type rather than a static type of an object.
-  core.String type;
+  core.String? type;
 
   /// Simple value of the variable.
-  core.String value;
+  core.String? value;
 
   /// Reference to a variable in the shared variable table.
   ///
   /// More than one variable can reference the same variable in the table. The
   /// `var_table_index` field is an index into `variable_table` in Breakpoint.
-  core.int varTableIndex;
+  core.int? varTableIndex;
 
   Variable();
 
@@ -1849,13 +1819,13 @@ class Variable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (members != null)
-          'members': members.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (status != null) 'status': status.toJson(),
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
-        if (varTableIndex != null) 'varTableIndex': varTableIndex,
+          'members': members!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (status != null) 'status': status!.toJson(),
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
+        if (varTableIndex != null) 'varTableIndex': varTableIndex!,
       };
 }

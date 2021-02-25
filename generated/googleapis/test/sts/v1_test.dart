@@ -49,13 +49,34 @@ void checkGoogleIdentityStsV1ExchangeTokenRequest(
     api.GoogleIdentityStsV1ExchangeTokenRequest o) {
   buildCounterGoogleIdentityStsV1ExchangeTokenRequest++;
   if (buildCounterGoogleIdentityStsV1ExchangeTokenRequest < 3) {
-    unittest.expect(o.audience, unittest.equals('foo'));
-    unittest.expect(o.grantType, unittest.equals('foo'));
-    unittest.expect(o.options, unittest.equals('foo'));
-    unittest.expect(o.requestedTokenType, unittest.equals('foo'));
-    unittest.expect(o.scope, unittest.equals('foo'));
-    unittest.expect(o.subjectToken, unittest.equals('foo'));
-    unittest.expect(o.subjectTokenType, unittest.equals('foo'));
+    unittest.expect(
+      o.audience!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.grantType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.options!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestedTokenType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.scope!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.subjectToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.subjectTokenType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleIdentityStsV1ExchangeTokenRequest--;
 }
@@ -79,10 +100,22 @@ void checkGoogleIdentityStsV1ExchangeTokenResponse(
     api.GoogleIdentityStsV1ExchangeTokenResponse o) {
   buildCounterGoogleIdentityStsV1ExchangeTokenResponse++;
   if (buildCounterGoogleIdentityStsV1ExchangeTokenResponse < 3) {
-    unittest.expect(o.accessToken, unittest.equals('foo'));
-    unittest.expect(o.expiresIn, unittest.equals(42));
-    unittest.expect(o.issuedTokenType, unittest.equals('foo'));
-    unittest.expect(o.tokenType, unittest.equals('foo'));
+    unittest.expect(
+      o.accessToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expiresIn!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.issuedTokenType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tokenType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleIdentityStsV1ExchangeTokenResponse--;
 }
@@ -124,10 +157,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1/token"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1/token"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -145,7 +182,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

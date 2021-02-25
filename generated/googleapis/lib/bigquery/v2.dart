@@ -136,15 +136,9 @@ class DatasetsResource {
   async.Future<void> delete(
     core.String projectId,
     core.String datasetId, {
-    core.bool deleteContents,
-    core.String $fields,
+    core.bool? deleteContents,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (deleteContents != null) 'deleteContents': ['${deleteContents}'],
       if ($fields != null) 'fields': [$fields],
@@ -184,14 +178,8 @@ class DatasetsResource {
   async.Future<Dataset> get(
     core.String projectId,
     core.String datasetId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -230,13 +218,9 @@ class DatasetsResource {
   async.Future<Dataset> insert(
     Dataset request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -285,15 +269,12 @@ class DatasetsResource {
   /// this method will complete with the same error.
   async.Future<DatasetList> list(
     core.String projectId, {
-    core.bool all,
-    core.String filter,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.bool? all,
+    core.String? filter,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (all != null) 'all': ['${all}'],
       if (filter != null) 'filter': [filter],
@@ -342,16 +323,9 @@ class DatasetsResource {
     Dataset request,
     core.String projectId,
     core.String datasetId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -398,16 +372,9 @@ class DatasetsResource {
     Dataset request,
     core.String projectId,
     core.String datasetId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -461,15 +428,9 @@ class JobsResource {
   async.Future<JobCancelResponse> cancel(
     core.String projectId,
     core.String jobId, {
-    core.String location,
-    core.String $fields,
+    core.String? location,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (location != null) 'location': [location],
       if ($fields != null) 'fields': [$fields],
@@ -519,15 +480,9 @@ class JobsResource {
   async.Future<Job> get(
     core.String projectId,
     core.String jobId, {
-    core.String location,
-    core.String $fields,
+    core.String? location,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (location != null) 'location': [location],
       if ($fields != null) 'fields': [$fields],
@@ -582,19 +537,13 @@ class JobsResource {
   async.Future<GetQueryResultsResponse> getQueryResults(
     core.String projectId,
     core.String jobId, {
-    core.String location,
-    core.int maxResults,
-    core.String pageToken,
-    core.String startIndex,
-    core.int timeoutMs,
-    core.String $fields,
+    core.String? location,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? startIndex,
+    core.int? timeoutMs,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (location != null) 'location': [location],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -647,15 +596,11 @@ class JobsResource {
   async.Future<Job> insert(
     Job request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -734,19 +679,16 @@ class JobsResource {
   /// this method will complete with the same error.
   async.Future<JobList> list(
     core.String projectId, {
-    core.bool allUsers,
-    core.String maxCreationTime,
-    core.int maxResults,
-    core.String minCreationTime,
-    core.String pageToken,
-    core.String parentJobId,
-    core.String projection,
-    core.List<core.String> stateFilter,
-    core.String $fields,
+    core.bool? allUsers,
+    core.String? maxCreationTime,
+    core.int? maxResults,
+    core.String? minCreationTime,
+    core.String? pageToken,
+    core.String? parentJobId,
+    core.String? projection,
+    core.List<core.String>? stateFilter,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (allUsers != null) 'allUsers': ['${allUsers}'],
       if (maxCreationTime != null) 'maxCreationTime': [maxCreationTime],
@@ -792,13 +734,9 @@ class JobsResource {
   async.Future<QueryResponse> query(
     QueryRequest request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -847,17 +785,8 @@ class ModelsResource {
     core.String projectId,
     core.String datasetId,
     core.String modelId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
-    if (modelId == null) {
-      throw core.ArgumentError('Parameter modelId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -904,17 +833,8 @@ class ModelsResource {
     core.String projectId,
     core.String datasetId,
     core.String modelId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
-    if (modelId == null) {
-      throw core.ArgumentError('Parameter modelId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -966,16 +886,10 @@ class ModelsResource {
   async.Future<ListModelsResponse> list(
     core.String projectId,
     core.String datasetId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1027,19 +941,9 @@ class ModelsResource {
     core.String projectId,
     core.String datasetId,
     core.String modelId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
-    if (modelId == null) {
-      throw core.ArgumentError('Parameter modelId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1085,11 +989,8 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<GetServiceAccountResponse> getServiceAccount(
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1127,9 +1028,9 @@ class ProjectsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProjectList> list({
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -1179,17 +1080,8 @@ class RoutinesResource {
     core.String projectId,
     core.String datasetId,
     core.String routineId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
-    if (routineId == null) {
-      throw core.ArgumentError('Parameter routineId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1239,18 +1131,9 @@ class RoutinesResource {
     core.String projectId,
     core.String datasetId,
     core.String routineId, {
-    core.String readMask,
-    core.String $fields,
+    core.String? readMask,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
-    if (routineId == null) {
-      throw core.ArgumentError('Parameter routineId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (readMask != null) 'readMask': [readMask],
       if ($fields != null) 'fields': [$fields],
@@ -1297,16 +1180,9 @@ class RoutinesResource {
     Routine request,
     core.String projectId,
     core.String datasetId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1369,18 +1245,12 @@ class RoutinesResource {
   async.Future<ListRoutinesResponse> list(
     core.String projectId,
     core.String datasetId, {
-    core.String filter,
-    core.int maxResults,
-    core.String pageToken,
-    core.String readMask,
-    core.String $fields,
+    core.String? filter,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? readMask,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -1436,19 +1306,9 @@ class RoutinesResource {
     core.String projectId,
     core.String datasetId,
     core.String routineId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
-    if (routineId == null) {
-      throw core.ArgumentError('Parameter routineId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1503,13 +1363,9 @@ class RowAccessPoliciesResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1559,19 +1415,10 @@ class RowAccessPoliciesResource {
     core.String projectId,
     core.String datasetId,
     core.String tableId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
-    if (tableId == null) {
-      throw core.ArgumentError('Parameter tableId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1623,13 +1470,9 @@ class RowAccessPoliciesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1676,13 +1519,9 @@ class RowAccessPoliciesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1736,19 +1575,9 @@ class TabledataResource {
     core.String projectId,
     core.String datasetId,
     core.String tableId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
-    if (tableId == null) {
-      throw core.ArgumentError('Parameter tableId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1807,21 +1636,12 @@ class TabledataResource {
     core.String projectId,
     core.String datasetId,
     core.String tableId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String selectedFields,
-    core.String startIndex,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? selectedFields,
+    core.String? startIndex,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
-    if (tableId == null) {
-      throw core.ArgumentError('Parameter tableId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1877,17 +1697,8 @@ class TablesResource {
     core.String projectId,
     core.String datasetId,
     core.String tableId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
-    if (tableId == null) {
-      throw core.ArgumentError('Parameter tableId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1937,18 +1748,9 @@ class TablesResource {
     core.String projectId,
     core.String datasetId,
     core.String tableId, {
-    core.String selectedFields,
-    core.String $fields,
+    core.String? selectedFields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
-    if (tableId == null) {
-      throw core.ArgumentError('Parameter tableId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (selectedFields != null) 'selectedFields': [selectedFields],
       if ($fields != null) 'fields': [$fields],
@@ -1997,13 +1799,9 @@ class TablesResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2044,16 +1842,9 @@ class TablesResource {
     Table request,
     core.String projectId,
     core.String datasetId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2101,16 +1892,10 @@ class TablesResource {
   async.Future<TableList> list(
     core.String projectId,
     core.String datasetId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2162,19 +1947,9 @@ class TablesResource {
     core.String projectId,
     core.String datasetId,
     core.String tableId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
-    if (tableId == null) {
-      throw core.ArgumentError('Parameter tableId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2223,13 +1998,9 @@ class TablesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2276,13 +2047,9 @@ class TablesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2331,19 +2098,9 @@ class TablesResource {
     core.String projectId,
     core.String datasetId,
     core.String tableId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (datasetId == null) {
-      throw core.ArgumentError('Parameter datasetId is required.');
-    }
-    if (tableId == null) {
-      throw core.ArgumentError('Parameter tableId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2376,41 +2133,41 @@ class AggregateClassificationMetrics {
   /// Accuracy is the fraction of predictions given the correct label.
   ///
   /// For multiclass this is a micro-averaged metric.
-  core.double accuracy;
+  core.double? accuracy;
 
   /// The F1 score is an average of recall and precision.
   ///
   /// For multiclass this is a macro-averaged metric.
-  core.double f1Score;
+  core.double? f1Score;
 
   /// Logarithmic Loss.
   ///
   /// For multiclass this is a macro-averaged metric.
-  core.double logLoss;
+  core.double? logLoss;
 
   /// Precision is the fraction of actual positive predictions that had positive
   /// actual labels.
   ///
   /// For multiclass this is a macro-averaged metric treating each class as a
   /// binary classifier.
-  core.double precision;
+  core.double? precision;
 
   /// Recall is the fraction of actual positive labels that were given a
   /// positive prediction.
   ///
   /// For multiclass this is a macro-averaged metric.
-  core.double recall;
+  core.double? recall;
 
   /// Area Under a ROC Curve.
   ///
   /// For multiclass this is a macro-averaged metric.
-  core.double rocAuc;
+  core.double? rocAuc;
 
   /// Threshold at which the metrics are computed.
   ///
   /// For binary classification models this is the positive class threshold. For
   /// multi-class classfication models this is the confidence threshold.
-  core.double threshold;
+  core.double? threshold;
 
   AggregateClassificationMetrics();
 
@@ -2438,14 +2195,14 @@ class AggregateClassificationMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accuracy != null) 'accuracy': accuracy,
-        if (f1Score != null) 'f1Score': f1Score,
-        if (logLoss != null) 'logLoss': logLoss,
-        if (precision != null) 'precision': precision,
-        if (recall != null) 'recall': recall,
-        if (rocAuc != null) 'rocAuc': rocAuc,
-        if (threshold != null) 'threshold': threshold,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accuracy != null) 'accuracy': accuracy!,
+        if (f1Score != null) 'f1Score': f1Score!,
+        if (logLoss != null) 'logLoss': logLoss!,
+        if (precision != null) 'precision': precision!,
+        if (recall != null) 'recall': recall!,
+        if (rocAuc != null) 'rocAuc': rocAuc!,
+        if (threshold != null) 'threshold': threshold!,
       };
 }
 
@@ -2460,10 +2217,10 @@ class Argument {
   /// which can be a struct or an array, but not a table.
   /// - "ANY_TYPE" : The argument is any type, including struct or array, but
   /// not a table. To be added: FIXED_TABLE, ANY_TABLE
-  core.String argumentKind;
+  core.String? argumentKind;
 
   /// Required unless argument_kind = ANY_TYPE.
-  StandardSqlDataType dataType;
+  StandardSqlDataType? dataType;
 
   /// Specifies whether the argument is input or output.
   ///
@@ -2475,14 +2232,14 @@ class Argument {
   /// - "IN" : The argument is input-only.
   /// - "OUT" : The argument is output-only.
   /// - "INOUT" : The argument is both an input and an output.
-  core.String mode;
+  core.String? mode;
 
   /// The name of this argument.
   ///
   /// Can be absent for function return argument.
   ///
   /// Optional.
-  core.String name;
+  core.String? name;
 
   Argument();
 
@@ -2502,24 +2259,24 @@ class Argument {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (argumentKind != null) 'argumentKind': argumentKind,
-        if (dataType != null) 'dataType': dataType.toJson(),
-        if (mode != null) 'mode': mode,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (argumentKind != null) 'argumentKind': argumentKind!,
+        if (dataType != null) 'dataType': dataType!.toJson(),
+        if (mode != null) 'mode': mode!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Arima coefficients.
 class ArimaCoefficients {
   /// Auto-regressive coefficients, an array of double.
-  core.List<core.double> autoRegressiveCoefficients;
+  core.List<core.double>? autoRegressiveCoefficients;
 
   /// Intercept coefficient, just a double not an array.
-  core.double interceptCoefficient;
+  core.double? interceptCoefficient;
 
   /// Moving-average coefficients, an array of double.
-  core.List<core.double> movingAverageCoefficients;
+  core.List<core.double>? movingAverageCoefficients;
 
   ArimaCoefficients();
 
@@ -2542,26 +2299,26 @@ class ArimaCoefficients {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (autoRegressiveCoefficients != null)
-          'autoRegressiveCoefficients': autoRegressiveCoefficients,
+          'autoRegressiveCoefficients': autoRegressiveCoefficients!,
         if (interceptCoefficient != null)
-          'interceptCoefficient': interceptCoefficient,
+          'interceptCoefficient': interceptCoefficient!,
         if (movingAverageCoefficients != null)
-          'movingAverageCoefficients': movingAverageCoefficients,
+          'movingAverageCoefficients': movingAverageCoefficients!,
       };
 }
 
 /// ARIMA model fitting metrics.
 class ArimaFittingMetrics {
   /// AIC.
-  core.double aic;
+  core.double? aic;
 
   /// Log-likelihood.
-  core.double logLikelihood;
+  core.double? logLikelihood;
 
   /// Variance.
-  core.double variance;
+  core.double? variance;
 
   ArimaFittingMetrics();
 
@@ -2577,38 +2334,38 @@ class ArimaFittingMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aic != null) 'aic': aic,
-        if (logLikelihood != null) 'logLikelihood': logLikelihood,
-        if (variance != null) 'variance': variance,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aic != null) 'aic': aic!,
+        if (logLikelihood != null) 'logLikelihood': logLikelihood!,
+        if (variance != null) 'variance': variance!,
       };
 }
 
 /// Model evaluation metrics for ARIMA forecasting models.
 class ArimaForecastingMetrics {
   /// Arima model fitting metrics.
-  core.List<ArimaFittingMetrics> arimaFittingMetrics;
+  core.List<ArimaFittingMetrics>? arimaFittingMetrics;
 
   /// Repeated as there can be many metric sets (one for each model) in
   /// auto-arima and the large-scale case.
-  core.List<ArimaSingleModelForecastingMetrics>
+  core.List<ArimaSingleModelForecastingMetrics>?
       arimaSingleModelForecastingMetrics;
 
   /// Whether Arima model fitted with drift or not.
   ///
   /// It is always false when d is not 1.
-  core.List<core.bool> hasDrift;
+  core.List<core.bool>? hasDrift;
 
   /// Non-seasonal order.
-  core.List<ArimaOrder> nonSeasonalOrder;
+  core.List<ArimaOrder>? nonSeasonalOrder;
 
   /// Seasonal periods.
   ///
   /// Repeated because multiple periods are supported for one time series.
-  core.List<core.String> seasonalPeriods;
+  core.List<core.String>? seasonalPeriods;
 
   /// Id to differentiate different time series for the large-scale case.
-  core.List<core.String> timeSeriesId;
+  core.List<core.String>? timeSeriesId;
 
   ArimaForecastingMetrics();
 
@@ -2650,47 +2407,47 @@ class ArimaForecastingMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (arimaFittingMetrics != null)
           'arimaFittingMetrics':
-              arimaFittingMetrics.map((value) => value.toJson()).toList(),
+              arimaFittingMetrics!.map((value) => value.toJson()).toList(),
         if (arimaSingleModelForecastingMetrics != null)
           'arimaSingleModelForecastingMetrics':
-              arimaSingleModelForecastingMetrics
+              arimaSingleModelForecastingMetrics!
                   .map((value) => value.toJson())
                   .toList(),
-        if (hasDrift != null) 'hasDrift': hasDrift,
+        if (hasDrift != null) 'hasDrift': hasDrift!,
         if (nonSeasonalOrder != null)
           'nonSeasonalOrder':
-              nonSeasonalOrder.map((value) => value.toJson()).toList(),
-        if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods,
-        if (timeSeriesId != null) 'timeSeriesId': timeSeriesId,
+              nonSeasonalOrder!.map((value) => value.toJson()).toList(),
+        if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods!,
+        if (timeSeriesId != null) 'timeSeriesId': timeSeriesId!,
       };
 }
 
 /// Arima model information.
 class ArimaModelInfo {
   /// Arima coefficients.
-  ArimaCoefficients arimaCoefficients;
+  ArimaCoefficients? arimaCoefficients;
 
   /// Arima fitting metrics.
-  ArimaFittingMetrics arimaFittingMetrics;
+  ArimaFittingMetrics? arimaFittingMetrics;
 
   /// Whether Arima model fitted with drift or not.
   ///
   /// It is always false when d is not 1.
-  core.bool hasDrift;
+  core.bool? hasDrift;
 
   /// Non-seasonal order.
-  ArimaOrder nonSeasonalOrder;
+  ArimaOrder? nonSeasonalOrder;
 
   /// Seasonal periods.
   ///
   /// Repeated because multiple periods are supported for one time series.
-  core.List<core.String> seasonalPeriods;
+  core.List<core.String>? seasonalPeriods;
 
   /// The id to indicate different time series.
-  core.String timeSeriesId;
+  core.String? timeSeriesId;
 
   ArimaModelInfo();
 
@@ -2720,29 +2477,29 @@ class ArimaModelInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (arimaCoefficients != null)
-          'arimaCoefficients': arimaCoefficients.toJson(),
+          'arimaCoefficients': arimaCoefficients!.toJson(),
         if (arimaFittingMetrics != null)
-          'arimaFittingMetrics': arimaFittingMetrics.toJson(),
-        if (hasDrift != null) 'hasDrift': hasDrift,
+          'arimaFittingMetrics': arimaFittingMetrics!.toJson(),
+        if (hasDrift != null) 'hasDrift': hasDrift!,
         if (nonSeasonalOrder != null)
-          'nonSeasonalOrder': nonSeasonalOrder.toJson(),
-        if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods,
-        if (timeSeriesId != null) 'timeSeriesId': timeSeriesId,
+          'nonSeasonalOrder': nonSeasonalOrder!.toJson(),
+        if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods!,
+        if (timeSeriesId != null) 'timeSeriesId': timeSeriesId!,
       };
 }
 
 /// Arima order, can be used for both non-seasonal and seasonal parts.
 class ArimaOrder {
   /// Order of the differencing part.
-  core.String d;
+  core.String? d;
 
   /// Order of the autoregressive part.
-  core.String p;
+  core.String? p;
 
   /// Order of the moving-average part.
-  core.String q;
+  core.String? q;
 
   ArimaOrder();
 
@@ -2758,10 +2515,10 @@ class ArimaOrder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (d != null) 'd': d,
-        if (p != null) 'p': p,
-        if (q != null) 'q': q,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (d != null) 'd': d!,
+        if (p != null) 'p': p!,
+        if (q != null) 'q': q!,
       };
 }
 
@@ -2774,12 +2531,12 @@ class ArimaResult {
   /// auto-arima.
   ///
   /// For non-auto-arima model, its size is one.
-  core.List<ArimaModelInfo> arimaModelInfo;
+  core.List<ArimaModelInfo>? arimaModelInfo;
 
   /// Seasonal periods.
   ///
   /// Repeated because multiple periods are supported for one time series.
-  core.List<core.String> seasonalPeriods;
+  core.List<core.String>? seasonalPeriods;
 
   ArimaResult();
 
@@ -2797,34 +2554,34 @@ class ArimaResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (arimaModelInfo != null)
           'arimaModelInfo':
-              arimaModelInfo.map((value) => value.toJson()).toList(),
-        if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods,
+              arimaModelInfo!.map((value) => value.toJson()).toList(),
+        if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods!,
       };
 }
 
 /// Model evaluation metrics for a single ARIMA forecasting model.
 class ArimaSingleModelForecastingMetrics {
   /// Arima fitting metrics.
-  ArimaFittingMetrics arimaFittingMetrics;
+  ArimaFittingMetrics? arimaFittingMetrics;
 
   /// Is arima model fitted with drift or not.
   ///
   /// It is always false when d is not 1.
-  core.bool hasDrift;
+  core.bool? hasDrift;
 
   /// Non-seasonal order.
-  ArimaOrder nonSeasonalOrder;
+  ArimaOrder? nonSeasonalOrder;
 
   /// Seasonal periods.
   ///
   /// Repeated because multiple periods are supported for one time series.
-  core.List<core.String> seasonalPeriods;
+  core.List<core.String>? seasonalPeriods;
 
   /// The id to indicate different time series.
-  core.String timeSeriesId;
+  core.String? timeSeriesId;
 
   ArimaSingleModelForecastingMetrics();
 
@@ -2850,14 +2607,14 @@ class ArimaSingleModelForecastingMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (arimaFittingMetrics != null)
-          'arimaFittingMetrics': arimaFittingMetrics.toJson(),
-        if (hasDrift != null) 'hasDrift': hasDrift,
+          'arimaFittingMetrics': arimaFittingMetrics!.toJson(),
+        if (hasDrift != null) 'hasDrift': hasDrift!,
         if (nonSeasonalOrder != null)
-          'nonSeasonalOrder': nonSeasonalOrder.toJson(),
-        if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods,
-        if (timeSeriesId != null) 'timeSeriesId': timeSeriesId,
+          'nonSeasonalOrder': nonSeasonalOrder!.toJson(),
+        if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods!,
+        if (timeSeriesId != null) 'timeSeriesId': timeSeriesId!,
       };
 }
 
@@ -2880,13 +2637,13 @@ class ArimaSingleModelForecastingMetrics {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -2902,11 +2659,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -2921,7 +2678,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -2929,7 +2686,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -2944,9 +2701,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -2954,14 +2711,14 @@ class BigQueryModelTraining {
   /// \[Output-only, Beta\] Index of current ML training iteration.
   ///
   /// Updated during create model query job to show job progress.
-  core.int currentIteration;
+  core.int? currentIteration;
 
   /// \[Output-only, Beta\] Expected number of iterations for the create model
   /// query job specified as num_iterations in the input query.
   ///
   /// The actual total number of iterations may be less than this number due to
   /// early stop.
-  core.String expectedTotalIterations;
+  core.String? expectedTotalIterations;
 
   BigQueryModelTraining();
 
@@ -2974,10 +2731,10 @@ class BigQueryModelTraining {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currentIteration != null) 'currentIteration': currentIteration,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currentIteration != null) 'currentIteration': currentIteration!,
         if (expectedTotalIterations != null)
-          'expectedTotalIterations': expectedTotalIterations,
+          'expectedTotalIterations': expectedTotalIterations!,
       };
 }
 
@@ -2991,14 +2748,14 @@ class BigtableColumn {
   /// if 'encoding' is set at both levels.
   ///
   /// Optional.
-  core.String encoding;
+  core.String? encoding;
 
   /// If the qualifier is not a valid BigQuery field identifier i.e. does not
   /// match \[a-zA-Z\]\[a-zA-Z0-9_\]*, a valid identifier must be provided as
   /// the column field name and is used as field name in queries.
   ///
   /// Optional.
-  core.String fieldName;
+  core.String? fieldName;
 
   /// If this is set, only the latest version of value in this column are
   /// exposed.
@@ -3008,7 +2765,7 @@ class BigtableColumn {
   /// levels.
   ///
   /// Optional.
-  core.bool onlyReadLatest;
+  core.bool? onlyReadLatest;
 
   /// Qualifier of the column.
   ///
@@ -3021,16 +2778,16 @@ class BigtableColumn {
   /// identifier must be provided as field_name.
   ///
   /// Required.
-  core.String qualifierEncoded;
+  core.String? qualifierEncoded;
   core.List<core.int> get qualifierEncodedAsBytes =>
-      convert.base64.decode(qualifierEncoded);
+      convert.base64.decode(qualifierEncoded!);
 
   set qualifierEncodedAsBytes(core.List<core.int> _bytes) {
     qualifierEncoded =
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  core.String qualifierString;
+  core.String? qualifierString;
 
   /// The type to convert the value in cells of this column.
   ///
@@ -3041,7 +2798,7 @@ class BigtableColumn {
   /// setting at this level takes precedence if 'type' is set at both levels.
   ///
   /// Optional.
-  core.String type;
+  core.String? type;
 
   BigtableColumn();
 
@@ -3066,13 +2823,13 @@ class BigtableColumn {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (encoding != null) 'encoding': encoding,
-        if (fieldName != null) 'fieldName': fieldName,
-        if (onlyReadLatest != null) 'onlyReadLatest': onlyReadLatest,
-        if (qualifierEncoded != null) 'qualifierEncoded': qualifierEncoded,
-        if (qualifierString != null) 'qualifierString': qualifierString,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (encoding != null) 'encoding': encoding!,
+        if (fieldName != null) 'fieldName': fieldName!,
+        if (onlyReadLatest != null) 'onlyReadLatest': onlyReadLatest!,
+        if (qualifierEncoded != null) 'qualifierEncoded': qualifierEncoded!,
+        if (qualifierString != null) 'qualifierString': qualifierString!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3085,7 +2842,7 @@ class BigtableColumnFamily {
   /// field.
   ///
   /// Optional.
-  core.List<BigtableColumn> columns;
+  core.List<BigtableColumn>? columns;
 
   /// The encoding of the values when the type is not STRING.
   ///
@@ -3096,10 +2853,10 @@ class BigtableColumnFamily {
   /// it.
   ///
   /// Optional.
-  core.String encoding;
+  core.String? encoding;
 
   /// Identifier of the column family.
-  core.String familyId;
+  core.String? familyId;
 
   /// If this is set only the latest version of value are exposed for all
   /// columns in this column family.
@@ -3108,7 +2865,7 @@ class BigtableColumnFamily {
   /// 'columns' and specifying a different setting for that column.
   ///
   /// Optional.
-  core.bool onlyReadLatest;
+  core.bool? onlyReadLatest;
 
   /// The type to convert the value in cells of this column family.
   ///
@@ -3119,7 +2876,7 @@ class BigtableColumnFamily {
   /// in 'columns' and specifying a type for it.
   ///
   /// Optional.
-  core.String type;
+  core.String? type;
 
   BigtableColumnFamily();
 
@@ -3144,13 +2901,13 @@ class BigtableColumnFamily {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (columns != null)
-          'columns': columns.map((value) => value.toJson()).toList(),
-        if (encoding != null) 'encoding': encoding,
-        if (familyId != null) 'familyId': familyId,
-        if (onlyReadLatest != null) 'onlyReadLatest': onlyReadLatest,
-        if (type != null) 'type': type,
+          'columns': columns!.map((value) => value.toJson()).toList(),
+        if (encoding != null) 'encoding': encoding!,
+        if (familyId != null) 'familyId': familyId!,
+        if (onlyReadLatest != null) 'onlyReadLatest': onlyReadLatest!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3166,7 +2923,7 @@ class BigtableOptions {
   /// referenced in that query are read from Bigtable.
   ///
   /// Optional.
-  core.List<BigtableColumnFamily> columnFamilies;
+  core.List<BigtableColumnFamily>? columnFamilies;
 
   /// If field is true, then the column families that are not specified in
   /// columnFamilies list are not exposed in the table schema.
@@ -3175,7 +2932,7 @@ class BigtableOptions {
   /// false.
   ///
   /// Optional.
-  core.bool ignoreUnspecifiedColumnFamilies;
+  core.bool? ignoreUnspecifiedColumnFamilies;
 
   /// If field is true, then the rowkey column families will be read and
   /// converted to string.
@@ -3184,7 +2941,7 @@ class BigtableOptions {
   /// cast them with CAST if necessary. The default value is false.
   ///
   /// Optional.
-  core.bool readRowkeyAsString;
+  core.bool? readRowkeyAsString;
 
   BigtableOptions();
 
@@ -3204,30 +2961,30 @@ class BigtableOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (columnFamilies != null)
           'columnFamilies':
-              columnFamilies.map((value) => value.toJson()).toList(),
+              columnFamilies!.map((value) => value.toJson()).toList(),
         if (ignoreUnspecifiedColumnFamilies != null)
-          'ignoreUnspecifiedColumnFamilies': ignoreUnspecifiedColumnFamilies,
+          'ignoreUnspecifiedColumnFamilies': ignoreUnspecifiedColumnFamilies!,
         if (readRowkeyAsString != null)
-          'readRowkeyAsString': readRowkeyAsString,
+          'readRowkeyAsString': readRowkeyAsString!,
       };
 }
 
 /// Evaluation metrics for binary classification/classifier models.
 class BinaryClassificationMetrics {
   /// Aggregate classification metrics.
-  AggregateClassificationMetrics aggregateClassificationMetrics;
+  AggregateClassificationMetrics? aggregateClassificationMetrics;
 
   /// Binary confusion matrix at multiple thresholds.
-  core.List<BinaryConfusionMatrix> binaryConfusionMatrixList;
+  core.List<BinaryConfusionMatrix>? binaryConfusionMatrixList;
 
   /// Label representing the negative class.
-  core.String negativeLabel;
+  core.String? negativeLabel;
 
   /// Label representing the positive class.
-  core.String positiveLabel;
+  core.String? positiveLabel;
 
   BinaryClassificationMetrics();
 
@@ -3252,48 +3009,49 @@ class BinaryClassificationMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (aggregateClassificationMetrics != null)
           'aggregateClassificationMetrics':
-              aggregateClassificationMetrics.toJson(),
+              aggregateClassificationMetrics!.toJson(),
         if (binaryConfusionMatrixList != null)
-          'binaryConfusionMatrixList':
-              binaryConfusionMatrixList.map((value) => value.toJson()).toList(),
-        if (negativeLabel != null) 'negativeLabel': negativeLabel,
-        if (positiveLabel != null) 'positiveLabel': positiveLabel,
+          'binaryConfusionMatrixList': binaryConfusionMatrixList!
+              .map((value) => value.toJson())
+              .toList(),
+        if (negativeLabel != null) 'negativeLabel': negativeLabel!,
+        if (positiveLabel != null) 'positiveLabel': positiveLabel!,
       };
 }
 
 /// Confusion matrix for binary classification models.
 class BinaryConfusionMatrix {
   /// The fraction of predictions given the correct label.
-  core.double accuracy;
+  core.double? accuracy;
 
   /// The equally weighted average of recall and precision.
-  core.double f1Score;
+  core.double? f1Score;
 
   /// Number of false samples predicted as false.
-  core.String falseNegatives;
+  core.String? falseNegatives;
 
   /// Number of false samples predicted as true.
-  core.String falsePositives;
+  core.String? falsePositives;
 
   /// Threshold value used when computing each of the following metric.
-  core.double positiveClassThreshold;
+  core.double? positiveClassThreshold;
 
   /// The fraction of actual positive predictions that had positive actual
   /// labels.
-  core.double precision;
+  core.double? precision;
 
   /// The fraction of actual positive labels that were given a positive
   /// prediction.
-  core.double recall;
+  core.double? recall;
 
   /// Number of true samples predicted as false.
-  core.String trueNegatives;
+  core.String? trueNegatives;
 
   /// Number of true samples predicted as true.
-  core.String truePositives;
+  core.String? truePositives;
 
   BinaryConfusionMatrix();
 
@@ -3328,17 +3086,17 @@ class BinaryConfusionMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accuracy != null) 'accuracy': accuracy,
-        if (f1Score != null) 'f1Score': f1Score,
-        if (falseNegatives != null) 'falseNegatives': falseNegatives,
-        if (falsePositives != null) 'falsePositives': falsePositives,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accuracy != null) 'accuracy': accuracy!,
+        if (f1Score != null) 'f1Score': f1Score!,
+        if (falseNegatives != null) 'falseNegatives': falseNegatives!,
+        if (falsePositives != null) 'falsePositives': falsePositives!,
         if (positiveClassThreshold != null)
-          'positiveClassThreshold': positiveClassThreshold,
-        if (precision != null) 'precision': precision,
-        if (recall != null) 'recall': recall,
-        if (trueNegatives != null) 'trueNegatives': trueNegatives,
-        if (truePositives != null) 'truePositives': truePositives,
+          'positiveClassThreshold': positiveClassThreshold!,
+        if (precision != null) 'precision': precision!,
+        if (recall != null) 'recall': recall!,
+        if (trueNegatives != null) 'trueNegatives': trueNegatives!,
+        if (truePositives != null) 'truePositives': truePositives!,
       };
 }
 
@@ -3352,7 +3110,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -3384,12 +3142,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -3408,17 +3166,17 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
 class BqmlIterationResult {
   /// \[Output-only, Beta\] Time taken to run the training iteration in
   /// milliseconds.
-  core.String durationMs;
+  core.String? durationMs;
 
   /// \[Output-only, Beta\] Eval loss computed on the eval data at the end of
   /// the iteration.
@@ -3426,22 +3184,22 @@ class BqmlIterationResult {
   /// The eval loss is used for early stopping to avoid overfitting. No eval
   /// loss if eval_split_method option is specified as no_split or auto_split
   /// with input data size less than 500 rows.
-  core.double evalLoss;
+  core.double? evalLoss;
 
   /// \[Output-only, Beta\] Index of the ML training iteration, starting from
   /// zero for each training run.
-  core.int index;
+  core.int? index;
 
   /// \[Output-only, Beta\] Learning rate used for this iteration, it varies for
   /// different training iterations if learn_rate_strategy option is not
   /// constant.
-  core.double learnRate;
+  core.double? learnRate;
 
   /// \[Output-only, Beta\] Training loss computed on the training data at the
   /// end of the iteration.
   ///
   /// The training loss function is defined by model type.
-  core.double trainingLoss;
+  core.double? trainingLoss;
 
   BqmlIterationResult();
 
@@ -3463,12 +3221,12 @@ class BqmlIterationResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (durationMs != null) 'durationMs': durationMs,
-        if (evalLoss != null) 'evalLoss': evalLoss,
-        if (index != null) 'index': index,
-        if (learnRate != null) 'learnRate': learnRate,
-        if (trainingLoss != null) 'trainingLoss': trainingLoss,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (durationMs != null) 'durationMs': durationMs!,
+        if (evalLoss != null) 'evalLoss': evalLoss!,
+        if (index != null) 'index': index!,
+        if (learnRate != null) 'learnRate': learnRate!,
+        if (trainingLoss != null) 'trainingLoss': trainingLoss!,
       };
 }
 
@@ -3479,15 +3237,15 @@ class BqmlIterationResult {
 /// training run. For subsequent training runs, any option not explicitly
 /// specified in the input query will be copied from the previous training run.
 class BqmlTrainingRunTrainingOptions {
-  core.bool earlyStop;
-  core.double l1Reg;
-  core.double l2Reg;
-  core.double learnRate;
-  core.String learnRateStrategy;
-  core.double lineSearchInitLearnRate;
-  core.String maxIteration;
-  core.double minRelProgress;
-  core.bool warmStart;
+  core.bool? earlyStop;
+  core.double? l1Reg;
+  core.double? l2Reg;
+  core.double? learnRate;
+  core.String? learnRateStrategy;
+  core.double? lineSearchInitLearnRate;
+  core.String? maxIteration;
+  core.double? minRelProgress;
+  core.bool? warmStart;
 
   BqmlTrainingRunTrainingOptions();
 
@@ -3522,34 +3280,34 @@ class BqmlTrainingRunTrainingOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (earlyStop != null) 'earlyStop': earlyStop,
-        if (l1Reg != null) 'l1Reg': l1Reg,
-        if (l2Reg != null) 'l2Reg': l2Reg,
-        if (learnRate != null) 'learnRate': learnRate,
-        if (learnRateStrategy != null) 'learnRateStrategy': learnRateStrategy,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (earlyStop != null) 'earlyStop': earlyStop!,
+        if (l1Reg != null) 'l1Reg': l1Reg!,
+        if (l2Reg != null) 'l2Reg': l2Reg!,
+        if (learnRate != null) 'learnRate': learnRate!,
+        if (learnRateStrategy != null) 'learnRateStrategy': learnRateStrategy!,
         if (lineSearchInitLearnRate != null)
-          'lineSearchInitLearnRate': lineSearchInitLearnRate,
-        if (maxIteration != null) 'maxIteration': maxIteration,
-        if (minRelProgress != null) 'minRelProgress': minRelProgress,
-        if (warmStart != null) 'warmStart': warmStart,
+          'lineSearchInitLearnRate': lineSearchInitLearnRate!,
+        if (maxIteration != null) 'maxIteration': maxIteration!,
+        if (minRelProgress != null) 'minRelProgress': minRelProgress!,
+        if (warmStart != null) 'warmStart': warmStart!,
       };
 }
 
 class BqmlTrainingRun {
   /// \[Output-only, Beta\] List of each iteration results.
-  core.List<BqmlIterationResult> iterationResults;
+  core.List<BqmlIterationResult>? iterationResults;
 
   /// \[Output-only, Beta\] Training run start time in milliseconds since the
   /// epoch.
-  core.DateTime startTime;
+  core.DateTime? startTime;
 
   /// \[Output-only, Beta\] Different state applicable for a training run.
   ///
   /// IN PROGRESS: Training run is in progress. FAILED: Training run ended due
   /// to a non-retryable failure. SUCCEEDED: Training run successfully
   /// completed. CANCELLED: Training run cancelled by the user.
-  core.String state;
+  core.String? state;
 
   /// \[Output-only, Beta\] Training options used by this training run.
   ///
@@ -3558,7 +3316,7 @@ class BqmlTrainingRun {
   /// first training run. For subsequent training runs, any option not
   /// explicitly specified in the input query will be copied from the previous
   /// training run.
-  BqmlTrainingRunTrainingOptions trainingOptions;
+  BqmlTrainingRunTrainingOptions? trainingOptions;
 
   BqmlTrainingRun();
 
@@ -3581,14 +3339,14 @@ class BqmlTrainingRun {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (iterationResults != null)
           'iterationResults':
-              iterationResults.map((value) => value.toJson()).toList(),
-        if (startTime != null) 'startTime': (startTime).toIso8601String(),
-        if (state != null) 'state': state,
+              iterationResults!.map((value) => value.toJson()).toList(),
+        if (startTime != null) 'startTime': (startTime!).toIso8601String(),
+        if (state != null) 'state': state!,
         if (trainingOptions != null)
-          'trainingOptions': trainingOptions.toJson(),
+          'trainingOptions': trainingOptions!.toJson(),
       };
 }
 
@@ -3599,7 +3357,7 @@ class CategoricalValue {
   /// If there are more than ten categories, we return top ten (by count) and
   /// return one more CategoryCount with category "_OTHER_" and count as
   /// aggregate counts of remaining categories.
-  core.List<CategoryCount> categoryCounts;
+  core.List<CategoryCount>? categoryCounts;
 
   CategoricalValue();
 
@@ -3612,20 +3370,20 @@ class CategoricalValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (categoryCounts != null)
           'categoryCounts':
-              categoryCounts.map((value) => value.toJson()).toList(),
+              categoryCounts!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Represents the count of a single category within the cluster.
 class CategoryCount {
   /// The name of category.
-  core.String category;
+  core.String? category;
 
   /// The count of training samples matching the category within the cluster.
-  core.String count;
+  core.String? count;
 
   CategoryCount();
 
@@ -3638,22 +3396,22 @@ class CategoryCount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (category != null) 'category': category,
-        if (count != null) 'count': count,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (category != null) 'category': category!,
+        if (count != null) 'count': count!,
       };
 }
 
 /// Message containing the information about one cluster.
 class Cluster {
   /// Centroid id.
-  core.String centroidId;
+  core.String? centroidId;
 
   /// Count of training data rows that were assigned to this cluster.
-  core.String count;
+  core.String? count;
 
   /// Values of highly variant features for this cluster.
-  core.List<FeatureValue> featureValues;
+  core.List<FeatureValue>? featureValues;
 
   Cluster();
 
@@ -3672,26 +3430,26 @@ class Cluster {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (centroidId != null) 'centroidId': centroidId,
-        if (count != null) 'count': count,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (centroidId != null) 'centroidId': centroidId!,
+        if (count != null) 'count': count!,
         if (featureValues != null)
           'featureValues':
-              featureValues.map((value) => value.toJson()).toList(),
+              featureValues!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Information about a single cluster for clustering model.
 class ClusterInfo {
   /// Centroid id.
-  core.String centroidId;
+  core.String? centroidId;
 
   /// Cluster radius, the average distance from centroid to each point assigned
   /// to the cluster.
-  core.double clusterRadius;
+  core.double? clusterRadius;
 
   /// Cluster size, the total number of points assigned to the cluster.
-  core.String clusterSize;
+  core.String? clusterSize;
 
   ClusterInfo();
 
@@ -3707,10 +3465,10 @@ class ClusterInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (centroidId != null) 'centroidId': centroidId,
-        if (clusterRadius != null) 'clusterRadius': clusterRadius,
-        if (clusterSize != null) 'clusterSize': clusterSize,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (centroidId != null) 'centroidId': centroidId!,
+        if (clusterRadius != null) 'clusterRadius': clusterRadius!,
+        if (clusterSize != null) 'clusterSize': clusterSize!,
       };
 }
 
@@ -3721,7 +3479,7 @@ class Clustering {
   /// cluster a table using multiple columns, the order of columns you specify
   /// is important. The order of the specified columns determines the sort order
   /// of the data.
-  core.List<core.String> fields;
+  core.List<core.String>? fields;
 
   Clustering();
 
@@ -3733,21 +3491,21 @@ class Clustering {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
       };
 }
 
 /// Evaluation metrics for clustering models.
 class ClusteringMetrics {
   /// Information for all clusters.
-  core.List<Cluster> clusters;
+  core.List<Cluster>? clusters;
 
   /// Davies-Bouldin index.
-  core.double daviesBouldinIndex;
+  core.double? daviesBouldinIndex;
 
   /// Mean of squared distances between each sample to its cluster centroid.
-  core.double meanSquaredDistance;
+  core.double? meanSquaredDistance;
 
   ClusteringMetrics();
 
@@ -3767,13 +3525,13 @@ class ClusteringMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clusters != null)
-          'clusters': clusters.map((value) => value.toJson()).toList(),
+          'clusters': clusters!.map((value) => value.toJson()).toList(),
         if (daviesBouldinIndex != null)
-          'daviesBouldinIndex': daviesBouldinIndex,
+          'daviesBouldinIndex': daviesBouldinIndex!,
         if (meanSquaredDistance != null)
-          'meanSquaredDistance': meanSquaredDistance,
+          'meanSquaredDistance': meanSquaredDistance!,
       };
 }
 
@@ -3781,10 +3539,10 @@ class ClusteringMetrics {
 class ConfusionMatrix {
   /// Confidence threshold used when computing the entries of the confusion
   /// matrix.
-  core.double confidenceThreshold;
+  core.double? confidenceThreshold;
 
   /// One row per actual label.
-  core.List<Row> rows;
+  core.List<Row>? rows;
 
   ConfusionMatrix();
 
@@ -3801,10 +3559,10 @@ class ConfusionMatrix {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (confidenceThreshold != null)
-          'confidenceThreshold': confidenceThreshold,
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+          'confidenceThreshold': confidenceThreshold!,
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3812,12 +3570,12 @@ class ConnectionProperty {
   /// Name of the connection property to set.
   ///
   /// Required.
-  core.String key;
+  core.String? key;
 
   /// Value of the connection property.
   ///
   /// Required.
-  core.String value;
+  core.String? value;
 
   ConnectionProperty();
 
@@ -3830,9 +3588,9 @@ class ConnectionProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -3846,7 +3604,7 @@ class CsvOptions {
   /// job result. The default value is false.
   ///
   /// Optional.
-  core.bool allowJaggedRows;
+  core.bool? allowJaggedRows;
 
   /// Indicates if BigQuery should allow quoted data sections that contain
   /// newline characters in a CSV file.
@@ -3854,7 +3612,7 @@ class CsvOptions {
   /// The default value is false.
   ///
   /// Optional.
-  core.bool allowQuotedNewlines;
+  core.bool? allowQuotedNewlines;
 
   /// The character encoding of the data.
   ///
@@ -3863,7 +3621,7 @@ class CsvOptions {
   /// the values of the quote and fieldDelimiter properties.
   ///
   /// Optional.
-  core.String encoding;
+  core.String? encoding;
 
   /// The separator for fields in a CSV file.
   ///
@@ -3873,7 +3631,7 @@ class CsvOptions {
   /// separator. The default value is a comma (',').
   ///
   /// Optional.
-  core.String fieldDelimiter;
+  core.String? fieldDelimiter;
 
   /// The value that is used to quote data sections in a CSV file.
   ///
@@ -3885,7 +3643,7 @@ class CsvOptions {
   /// allowQuotedNewlines property to true.
   ///
   /// Optional.
-  core.String quote;
+  core.String? quote;
 
   /// The number of rows at the top of a CSV file that BigQuery will skip when
   /// reading the data.
@@ -3902,7 +3660,7 @@ class CsvOptions {
   /// to extract column names for the detected schema.
   ///
   /// Optional.
-  core.String skipLeadingRows;
+  core.String? skipLeadingRows;
 
   CsvOptions();
 
@@ -3927,14 +3685,14 @@ class CsvOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowJaggedRows != null) 'allowJaggedRows': allowJaggedRows,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowJaggedRows != null) 'allowJaggedRows': allowJaggedRows!,
         if (allowQuotedNewlines != null)
-          'allowQuotedNewlines': allowQuotedNewlines,
-        if (encoding != null) 'encoding': encoding,
-        if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter,
-        if (quote != null) 'quote': quote,
-        if (skipLeadingRows != null) 'skipLeadingRows': skipLeadingRows,
+          'allowQuotedNewlines': allowQuotedNewlines!,
+        if (encoding != null) 'encoding': encoding!,
+        if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter!,
+        if (quote != null) 'quote': quote!,
+        if (skipLeadingRows != null) 'skipLeadingRows': skipLeadingRows!,
       };
 }
 
@@ -3944,10 +3702,10 @@ class CsvOptions {
 /// were used to train the model.
 class DataSplitResult {
   /// Table reference of the evaluation data after split.
-  TableReference evaluationTable;
+  TableReference? evaluationTable;
 
   /// Table reference of the training data after split.
-  TableReference trainingTable;
+  TableReference? trainingTable;
 
   DataSplitResult();
 
@@ -3962,10 +3720,10 @@ class DataSplitResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (evaluationTable != null)
-          'evaluationTable': evaluationTable.toJson(),
-        if (trainingTable != null) 'trainingTable': trainingTable.toJson(),
+          'evaluationTable': evaluationTable!.toJson(),
+        if (trainingTable != null) 'trainingTable': trainingTable!.toJson(),
       };
 }
 
@@ -3976,23 +3734,23 @@ class DatasetAccess {
   /// Only views are supported for now. The role field is not required when this
   /// field is set. If that dataset is deleted and re-created, its access needs
   /// to be granted again via an update operation.
-  DatasetAccessEntry dataset;
+  DatasetAccessEntry? dataset;
 
   /// \[Pick one\] A domain to grant access to.
   ///
   /// Any users signed in with the domain specified will be granted the
   /// specified access. Example: "example.com". Maps to IAM policy member
   /// "domain:DOMAIN".
-  core.String domain;
+  core.String? domain;
 
   /// \[Pick one\] An email address of a Google Group to grant access to.
   ///
   /// Maps to IAM policy member "group:GROUP".
-  core.String groupByEmail;
+  core.String? groupByEmail;
 
   /// \[Pick one\] Some other type of member that appears in the IAM Policy but
   /// isn't a user, group, domain, or special group.
-  core.String iamMember;
+  core.String? iamMember;
 
   /// An IAM role ID that should be granted to the user, group, or domain
   /// specified in this access entry.
@@ -4004,7 +3762,7 @@ class DatasetAccess {
   /// to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
   ///
   /// Required.
-  core.String role;
+  core.String? role;
 
   /// \[Pick one\] A routine from a different dataset to grant access to.
   ///
@@ -4013,7 +3771,7 @@ class DatasetAccess {
   /// role field is not required when this field is set. If that routine is
   /// updated by any user, access to the routine needs to be granted again via
   /// an update operation.
-  RoutineReference routine;
+  RoutineReference? routine;
 
   /// \[Pick one\] A special group to grant access to.
   ///
@@ -4021,13 +3779,13 @@ class DatasetAccess {
   /// projectReaders: Readers of the enclosing project. projectWriters: Writers
   /// of the enclosing project. allAuthenticatedUsers: All authenticated
   /// BigQuery users. Maps to similarly-named IAM members.
-  core.String specialGroup;
+  core.String? specialGroup;
 
   /// \[Pick one\] An email address of a user to grant access to.
   ///
   /// For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or
   /// "serviceAccount:EMAIL".
-  core.String userByEmail;
+  core.String? userByEmail;
 
   /// \[Pick one\] A view from a different dataset to grant access to.
   ///
@@ -4035,7 +3793,7 @@ class DatasetAccess {
   /// dataset. The role field is not required when this field is set. If that
   /// view is updated by any user, access to the view needs to be granted again
   /// via an update operation.
-  TableReference view;
+  TableReference? view;
 
   DatasetAccess();
 
@@ -4072,16 +3830,16 @@ class DatasetAccess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataset != null) 'dataset': dataset.toJson(),
-        if (domain != null) 'domain': domain,
-        if (groupByEmail != null) 'groupByEmail': groupByEmail,
-        if (iamMember != null) 'iamMember': iamMember,
-        if (role != null) 'role': role,
-        if (routine != null) 'routine': routine.toJson(),
-        if (specialGroup != null) 'specialGroup': specialGroup,
-        if (userByEmail != null) 'userByEmail': userByEmail,
-        if (view != null) 'view': view.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataset != null) 'dataset': dataset!.toJson(),
+        if (domain != null) 'domain': domain!,
+        if (groupByEmail != null) 'groupByEmail': groupByEmail!,
+        if (iamMember != null) 'iamMember': iamMember!,
+        if (role != null) 'role': role!,
+        if (routine != null) 'routine': routine!.toJson(),
+        if (specialGroup != null) 'specialGroup': specialGroup!,
+        if (userByEmail != null) 'userByEmail': userByEmail!,
+        if (view != null) 'view': view!.toJson(),
       };
 }
 
@@ -4097,17 +3855,17 @@ class Dataset {
   /// access.userByEmail: \[dataset creator email\]; access.role: OWNER;
   ///
   /// Optional.
-  core.List<DatasetAccess> access;
+  core.List<DatasetAccess>? access;
 
   /// \[Output-only\] The time when this dataset was created, in milliseconds
   /// since the epoch.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// A reference that identifies the dataset.
   ///
   /// Required.
-  DatasetReference datasetReference;
-  EncryptionConfiguration defaultEncryptionConfiguration;
+  DatasetReference? datasetReference;
+  EncryptionConfiguration? defaultEncryptionConfiguration;
 
   /// The default partition expiration for all partitioned tables in the
   /// dataset, in milliseconds.
@@ -4125,7 +3883,7 @@ class Dataset {
   /// partition expiration time indicated by this property.
   ///
   /// Optional.
-  core.String defaultPartitionExpirationMs;
+  core.String? defaultPartitionExpirationMs;
 
   /// The default lifetime of all tables in the dataset, in milliseconds.
   ///
@@ -4140,20 +3898,20 @@ class Dataset {
   /// default expiration time indicated by this property.
   ///
   /// Optional.
-  core.String defaultTableExpirationMs;
+  core.String? defaultTableExpirationMs;
 
   /// A user-friendly description of the dataset.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// \[Output-only\] A hash of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// A descriptive name for the dataset.
   ///
   /// Optional.
-  core.String friendlyName;
+  core.String? friendlyName;
 
   /// \[Output-only\] The fully-qualified unique name of the dataset in the
   /// format projectId:datasetId.
@@ -4161,35 +3919,35 @@ class Dataset {
   /// The dataset name without the project name is given in the datasetId field.
   /// When creating a new dataset, leave this field blank, and instead specify
   /// the datasetId field.
-  core.String id;
+  core.String? id;
 
   /// \[Output-only\] The resource type.
-  core.String kind;
+  core.String? kind;
 
   /// The labels associated with this dataset.
   ///
   /// You can use these to organize and group your datasets. You can set this
   /// property when inserting or updating a dataset. See Creating and Updating
   /// Dataset Labels for more information.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// \[Output-only\] The date when this dataset or any of its tables was last
   /// modified, in milliseconds since the epoch.
-  core.String lastModifiedTime;
+  core.String? lastModifiedTime;
 
   /// The geographic location where the dataset should reside.
   ///
   /// The default value is US. See details at
   /// https://cloud.google.com/bigquery/docs/locations.
-  core.String location;
+  core.String? location;
 
   /// \[Output-only\] Reserved for future use.
-  core.bool satisfiesPZS;
+  core.bool? satisfiesPZS;
 
   /// \[Output-only\] A URL that can be used to access the resource again.
   ///
   /// You can use this URL in Get or Update requests to the resource.
-  core.String selfLink;
+  core.String? selfLink;
 
   Dataset();
 
@@ -4258,29 +4016,29 @@ class Dataset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (access != null)
-          'access': access.map((value) => value.toJson()).toList(),
-        if (creationTime != null) 'creationTime': creationTime,
+          'access': access!.map((value) => value.toJson()).toList(),
+        if (creationTime != null) 'creationTime': creationTime!,
         if (datasetReference != null)
-          'datasetReference': datasetReference.toJson(),
+          'datasetReference': datasetReference!.toJson(),
         if (defaultEncryptionConfiguration != null)
           'defaultEncryptionConfiguration':
-              defaultEncryptionConfiguration.toJson(),
+              defaultEncryptionConfiguration!.toJson(),
         if (defaultPartitionExpirationMs != null)
-          'defaultPartitionExpirationMs': defaultPartitionExpirationMs,
+          'defaultPartitionExpirationMs': defaultPartitionExpirationMs!,
         if (defaultTableExpirationMs != null)
-          'defaultTableExpirationMs': defaultTableExpirationMs,
-        if (description != null) 'description': description,
-        if (etag != null) 'etag': etag,
-        if (friendlyName != null) 'friendlyName': friendlyName,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (labels != null) 'labels': labels,
-        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime,
-        if (location != null) 'location': location,
-        if (satisfiesPZS != null) 'satisfiesPZS': satisfiesPZS,
-        if (selfLink != null) 'selfLink': selfLink,
+          'defaultTableExpirationMs': defaultTableExpirationMs!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (friendlyName != null) 'friendlyName': friendlyName!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (labels != null) 'labels': labels!,
+        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
+        if (location != null) 'location': location!,
+        if (satisfiesPZS != null) 'satisfiesPZS': satisfiesPZS!,
+        if (selfLink != null) 'selfLink': selfLink!,
       };
 }
 
@@ -4292,7 +4050,7 @@ class DatasetAccessEntryTargetTypes {
   /// views in the dataset.
   ///
   /// Required.
-  core.String targetType;
+  core.String? targetType;
 
   DatasetAccessEntryTargetTypes();
 
@@ -4302,8 +4060,8 @@ class DatasetAccessEntryTargetTypes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (targetType != null) 'targetType': targetType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (targetType != null) 'targetType': targetType!,
       };
 }
 
@@ -4311,8 +4069,8 @@ class DatasetAccessEntry {
   /// The dataset this entry applies to.
   ///
   /// Required.
-  DatasetReference dataset;
-  core.List<DatasetAccessEntryTargetTypes> targetTypes;
+  DatasetReference? dataset;
+  core.List<DatasetAccessEntryTargetTypes>? targetTypes;
 
   DatasetAccessEntry();
 
@@ -4330,10 +4088,10 @@ class DatasetAccessEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataset != null) 'dataset': dataset.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataset != null) 'dataset': dataset!.toJson(),
         if (targetTypes != null)
-          'target_types': targetTypes.map((value) => value.toJson()).toList(),
+          'target_types': targetTypes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4342,26 +4100,26 @@ class DatasetListDatasets {
   ///
   /// Use this property to access specific parts of the dataset's ID, such as
   /// project ID or dataset ID.
-  DatasetReference datasetReference;
+  DatasetReference? datasetReference;
 
   /// A descriptive name for the dataset, if one exists.
-  core.String friendlyName;
+  core.String? friendlyName;
 
   /// The fully-qualified, unique, opaque ID of the dataset.
-  core.String id;
+  core.String? id;
 
   /// The resource type.
   ///
   /// This property always returns the value "bigquery#dataset".
-  core.String kind;
+  core.String? kind;
 
   /// The labels associated with this dataset.
   ///
   /// You can use these to organize and group your datasets.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The geographic location where the data resides.
-  core.String location;
+  core.String? location;
 
   DatasetListDatasets();
 
@@ -4393,14 +4151,14 @@ class DatasetListDatasets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (datasetReference != null)
-          'datasetReference': datasetReference.toJson(),
-        if (friendlyName != null) 'friendlyName': friendlyName,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (labels != null) 'labels': labels,
-        if (location != null) 'location': location,
+          'datasetReference': datasetReference!.toJson(),
+        if (friendlyName != null) 'friendlyName': friendlyName!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (labels != null) 'labels': labels!,
+        if (location != null) 'location': location!,
       };
 }
 
@@ -4410,23 +4168,23 @@ class DatasetList {
   /// Each resource contains basic information. For full information about a
   /// particular dataset resource, use the Datasets: get method. This property
   /// is omitted when there are no datasets in the project.
-  core.List<DatasetListDatasets> datasets;
+  core.List<DatasetListDatasets>? datasets;
 
   /// A hash value of the results page.
   ///
   /// You can use this property to determine if the page has changed since the
   /// last request.
-  core.String etag;
+  core.String? etag;
 
   /// The list type.
   ///
   /// This property always returns the value "bigquery#datasetList".
-  core.String kind;
+  core.String? kind;
 
   /// A token that can be used to request the next results page.
   ///
   /// This property is omitted on the final results page.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   DatasetList();
 
@@ -4448,12 +4206,12 @@ class DatasetList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (datasets != null)
-          'datasets': datasets.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'datasets': datasets!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -4464,12 +4222,12 @@ class DatasetReference {
   /// (_). The maximum length is 1,024 characters.
   ///
   /// Required.
-  core.String datasetId;
+  core.String? datasetId;
 
   /// The ID of the project containing this dataset.
   ///
   /// Optional.
-  core.String projectId;
+  core.String? projectId;
 
   DatasetReference();
 
@@ -4482,9 +4240,9 @@ class DatasetReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (datasetId != null) 'datasetId': datasetId,
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
@@ -4496,7 +4254,7 @@ class DestinationTableProperties {
   /// provided, the job will fail.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// The friendly name for the destination table.
   ///
@@ -4505,7 +4263,7 @@ class DestinationTableProperties {
   /// is provided, the job will fail.
   ///
   /// Optional.
-  core.String friendlyName;
+  core.String? friendlyName;
 
   /// The labels associated with this table.
   ///
@@ -4515,7 +4273,7 @@ class DestinationTableProperties {
   /// job will fail.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   DestinationTableProperties();
 
@@ -4537,10 +4295,10 @@ class DestinationTableProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (friendlyName != null) 'friendlyName': friendlyName,
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (friendlyName != null) 'friendlyName': friendlyName!,
+        if (labels != null) 'labels': labels!,
       };
 }
 
@@ -4548,7 +4306,7 @@ class DestinationTableProperties {
 class DimensionalityReductionMetrics {
   /// Total percentage of variance explained by the selected principal
   /// components.
-  core.double totalExplainedVarianceRatio;
+  core.double? totalExplainedVarianceRatio;
 
   DimensionalityReductionMetrics();
 
@@ -4559,9 +4317,9 @@ class DimensionalityReductionMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (totalExplainedVarianceRatio != null)
-          'totalExplainedVarianceRatio': totalExplainedVarianceRatio,
+          'totalExplainedVarianceRatio': totalExplainedVarianceRatio!,
       };
 }
 
@@ -4573,7 +4331,7 @@ class EncryptionConfiguration {
   /// to this encryption key.
   ///
   /// Optional.
-  core.String kmsKeyName;
+  core.String? kmsKeyName;
 
   EncryptionConfiguration();
 
@@ -4583,21 +4341,21 @@ class EncryptionConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
       };
 }
 
 /// A single entry in the confusion matrix.
 class Entry {
   /// Number of items being predicted as this label.
-  core.String itemCount;
+  core.String? itemCount;
 
   /// The predicted label.
   ///
   /// For confidence_threshold > 0, we will also add an entry indicating the
   /// number of items under the confidence threshold.
-  core.String predictedLabel;
+  core.String? predictedLabel;
 
   Entry();
 
@@ -4610,9 +4368,9 @@ class Entry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (itemCount != null) 'itemCount': itemCount,
-        if (predictedLabel != null) 'predictedLabel': predictedLabel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (itemCount != null) 'itemCount': itemCount!,
+        if (predictedLabel != null) 'predictedLabel': predictedLabel!,
       };
 }
 
@@ -4620,16 +4378,16 @@ class ErrorProto {
   /// Debugging information.
   ///
   /// This property is internal to Google and should not be used.
-  core.String debugInfo;
+  core.String? debugInfo;
 
   /// Specifies where the error occurred, if present.
-  core.String location;
+  core.String? location;
 
   /// A human-readable description of the error.
-  core.String message;
+  core.String? message;
 
   /// A short error code that summarizes the error.
-  core.String reason;
+  core.String? reason;
 
   ErrorProto();
 
@@ -4648,11 +4406,11 @@ class ErrorProto {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (debugInfo != null) 'debugInfo': debugInfo,
-        if (location != null) 'location': location,
-        if (message != null) 'message': message,
-        if (reason != null) 'reason': reason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (debugInfo != null) 'debugInfo': debugInfo!,
+        if (location != null) 'location': location!,
+        if (message != null) 'message': message!,
+        if (reason != null) 'reason': reason!,
       };
 }
 
@@ -4663,27 +4421,27 @@ class ErrorProto {
 /// imported models.
 class EvaluationMetrics {
   /// Populated for ARIMA models.
-  ArimaForecastingMetrics arimaForecastingMetrics;
+  ArimaForecastingMetrics? arimaForecastingMetrics;
 
   /// Populated for binary classification/classifier models.
-  BinaryClassificationMetrics binaryClassificationMetrics;
+  BinaryClassificationMetrics? binaryClassificationMetrics;
 
   /// Populated for clustering models.
-  ClusteringMetrics clusteringMetrics;
+  ClusteringMetrics? clusteringMetrics;
 
   /// Evaluation metrics when the model is a dimensionality reduction model,
   /// which currently includes PCA.
-  DimensionalityReductionMetrics dimensionalityReductionMetrics;
+  DimensionalityReductionMetrics? dimensionalityReductionMetrics;
 
   /// Populated for multi-class classification/classifier models.
-  MultiClassClassificationMetrics multiClassClassificationMetrics;
+  MultiClassClassificationMetrics? multiClassClassificationMetrics;
 
   /// Populated for implicit feedback type matrix factorization models.
-  RankingMetrics rankingMetrics;
+  RankingMetrics? rankingMetrics;
 
   /// Populated for regression models and explicit feedback type matrix
   /// factorization models.
-  RegressionMetrics regressionMetrics;
+  RegressionMetrics? regressionMetrics;
 
   EvaluationMetrics();
 
@@ -4723,116 +4481,116 @@ class EvaluationMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (arimaForecastingMetrics != null)
-          'arimaForecastingMetrics': arimaForecastingMetrics.toJson(),
+          'arimaForecastingMetrics': arimaForecastingMetrics!.toJson(),
         if (binaryClassificationMetrics != null)
-          'binaryClassificationMetrics': binaryClassificationMetrics.toJson(),
+          'binaryClassificationMetrics': binaryClassificationMetrics!.toJson(),
         if (clusteringMetrics != null)
-          'clusteringMetrics': clusteringMetrics.toJson(),
+          'clusteringMetrics': clusteringMetrics!.toJson(),
         if (dimensionalityReductionMetrics != null)
           'dimensionalityReductionMetrics':
-              dimensionalityReductionMetrics.toJson(),
+              dimensionalityReductionMetrics!.toJson(),
         if (multiClassClassificationMetrics != null)
           'multiClassClassificationMetrics':
-              multiClassClassificationMetrics.toJson(),
-        if (rankingMetrics != null) 'rankingMetrics': rankingMetrics.toJson(),
+              multiClassClassificationMetrics!.toJson(),
+        if (rankingMetrics != null) 'rankingMetrics': rankingMetrics!.toJson(),
         if (regressionMetrics != null)
-          'regressionMetrics': regressionMetrics.toJson(),
+          'regressionMetrics': regressionMetrics!.toJson(),
       };
 }
 
 class ExplainQueryStage {
   /// Number of parallel input segments completed.
-  core.String completedParallelInputs;
+  core.String? completedParallelInputs;
 
   /// Milliseconds the average shard spent on CPU-bound tasks.
-  core.String computeMsAvg;
+  core.String? computeMsAvg;
 
   /// Milliseconds the slowest shard spent on CPU-bound tasks.
-  core.String computeMsMax;
+  core.String? computeMsMax;
 
   /// Relative amount of time the average shard spent on CPU-bound tasks.
-  core.double computeRatioAvg;
+  core.double? computeRatioAvg;
 
   /// Relative amount of time the slowest shard spent on CPU-bound tasks.
-  core.double computeRatioMax;
+  core.double? computeRatioMax;
 
   /// Stage end time represented as milliseconds since epoch.
-  core.String endMs;
+  core.String? endMs;
 
   /// Unique ID for stage within plan.
-  core.String id;
+  core.String? id;
 
   /// IDs for stages that are inputs to this stage.
-  core.List<core.String> inputStages;
+  core.List<core.String>? inputStages;
 
   /// Human-readable name for stage.
-  core.String name;
+  core.String? name;
 
   /// Number of parallel input segments to be processed.
-  core.String parallelInputs;
+  core.String? parallelInputs;
 
   /// Milliseconds the average shard spent reading input.
-  core.String readMsAvg;
+  core.String? readMsAvg;
 
   /// Milliseconds the slowest shard spent reading input.
-  core.String readMsMax;
+  core.String? readMsMax;
 
   /// Relative amount of time the average shard spent reading input.
-  core.double readRatioAvg;
+  core.double? readRatioAvg;
 
   /// Relative amount of time the slowest shard spent reading input.
-  core.double readRatioMax;
+  core.double? readRatioMax;
 
   /// Number of records read into the stage.
-  core.String recordsRead;
+  core.String? recordsRead;
 
   /// Number of records written by the stage.
-  core.String recordsWritten;
+  core.String? recordsWritten;
 
   /// Total number of bytes written to shuffle.
-  core.String shuffleOutputBytes;
+  core.String? shuffleOutputBytes;
 
   /// Total number of bytes written to shuffle and spilled to disk.
-  core.String shuffleOutputBytesSpilled;
+  core.String? shuffleOutputBytesSpilled;
 
   /// Slot-milliseconds used by the stage.
-  core.String slotMs;
+  core.String? slotMs;
 
   /// Stage start time represented as milliseconds since epoch.
-  core.String startMs;
+  core.String? startMs;
 
   /// Current status for the stage.
-  core.String status;
+  core.String? status;
 
   /// List of operations within the stage in dependency order (approximately
   /// chronological).
-  core.List<ExplainQueryStep> steps;
+  core.List<ExplainQueryStep>? steps;
 
   /// Milliseconds the average shard spent waiting to be scheduled.
-  core.String waitMsAvg;
+  core.String? waitMsAvg;
 
   /// Milliseconds the slowest shard spent waiting to be scheduled.
-  core.String waitMsMax;
+  core.String? waitMsMax;
 
   /// Relative amount of time the average shard spent waiting to be scheduled.
-  core.double waitRatioAvg;
+  core.double? waitRatioAvg;
 
   /// Relative amount of time the slowest shard spent waiting to be scheduled.
-  core.double waitRatioMax;
+  core.double? waitRatioMax;
 
   /// Milliseconds the average shard spent on writing output.
-  core.String writeMsAvg;
+  core.String? writeMsAvg;
 
   /// Milliseconds the slowest shard spent on writing output.
-  core.String writeMsMax;
+  core.String? writeMsMax;
 
   /// Relative amount of time the average shard spent on writing output.
-  core.double writeRatioAvg;
+  core.double? writeRatioAvg;
 
   /// Relative amount of time the slowest shard spent on writing output.
-  core.double writeRatioMax;
+  core.double? writeRatioMax;
 
   ExplainQueryStage();
 
@@ -4935,50 +4693,50 @@ class ExplainQueryStage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (completedParallelInputs != null)
-          'completedParallelInputs': completedParallelInputs,
-        if (computeMsAvg != null) 'computeMsAvg': computeMsAvg,
-        if (computeMsMax != null) 'computeMsMax': computeMsMax,
-        if (computeRatioAvg != null) 'computeRatioAvg': computeRatioAvg,
-        if (computeRatioMax != null) 'computeRatioMax': computeRatioMax,
-        if (endMs != null) 'endMs': endMs,
-        if (id != null) 'id': id,
-        if (inputStages != null) 'inputStages': inputStages,
-        if (name != null) 'name': name,
-        if (parallelInputs != null) 'parallelInputs': parallelInputs,
-        if (readMsAvg != null) 'readMsAvg': readMsAvg,
-        if (readMsMax != null) 'readMsMax': readMsMax,
-        if (readRatioAvg != null) 'readRatioAvg': readRatioAvg,
-        if (readRatioMax != null) 'readRatioMax': readRatioMax,
-        if (recordsRead != null) 'recordsRead': recordsRead,
-        if (recordsWritten != null) 'recordsWritten': recordsWritten,
+          'completedParallelInputs': completedParallelInputs!,
+        if (computeMsAvg != null) 'computeMsAvg': computeMsAvg!,
+        if (computeMsMax != null) 'computeMsMax': computeMsMax!,
+        if (computeRatioAvg != null) 'computeRatioAvg': computeRatioAvg!,
+        if (computeRatioMax != null) 'computeRatioMax': computeRatioMax!,
+        if (endMs != null) 'endMs': endMs!,
+        if (id != null) 'id': id!,
+        if (inputStages != null) 'inputStages': inputStages!,
+        if (name != null) 'name': name!,
+        if (parallelInputs != null) 'parallelInputs': parallelInputs!,
+        if (readMsAvg != null) 'readMsAvg': readMsAvg!,
+        if (readMsMax != null) 'readMsMax': readMsMax!,
+        if (readRatioAvg != null) 'readRatioAvg': readRatioAvg!,
+        if (readRatioMax != null) 'readRatioMax': readRatioMax!,
+        if (recordsRead != null) 'recordsRead': recordsRead!,
+        if (recordsWritten != null) 'recordsWritten': recordsWritten!,
         if (shuffleOutputBytes != null)
-          'shuffleOutputBytes': shuffleOutputBytes,
+          'shuffleOutputBytes': shuffleOutputBytes!,
         if (shuffleOutputBytesSpilled != null)
-          'shuffleOutputBytesSpilled': shuffleOutputBytesSpilled,
-        if (slotMs != null) 'slotMs': slotMs,
-        if (startMs != null) 'startMs': startMs,
-        if (status != null) 'status': status,
+          'shuffleOutputBytesSpilled': shuffleOutputBytesSpilled!,
+        if (slotMs != null) 'slotMs': slotMs!,
+        if (startMs != null) 'startMs': startMs!,
+        if (status != null) 'status': status!,
         if (steps != null)
-          'steps': steps.map((value) => value.toJson()).toList(),
-        if (waitMsAvg != null) 'waitMsAvg': waitMsAvg,
-        if (waitMsMax != null) 'waitMsMax': waitMsMax,
-        if (waitRatioAvg != null) 'waitRatioAvg': waitRatioAvg,
-        if (waitRatioMax != null) 'waitRatioMax': waitRatioMax,
-        if (writeMsAvg != null) 'writeMsAvg': writeMsAvg,
-        if (writeMsMax != null) 'writeMsMax': writeMsMax,
-        if (writeRatioAvg != null) 'writeRatioAvg': writeRatioAvg,
-        if (writeRatioMax != null) 'writeRatioMax': writeRatioMax,
+          'steps': steps!.map((value) => value.toJson()).toList(),
+        if (waitMsAvg != null) 'waitMsAvg': waitMsAvg!,
+        if (waitMsMax != null) 'waitMsMax': waitMsMax!,
+        if (waitRatioAvg != null) 'waitRatioAvg': waitRatioAvg!,
+        if (waitRatioMax != null) 'waitRatioMax': waitRatioMax!,
+        if (writeMsAvg != null) 'writeMsAvg': writeMsAvg!,
+        if (writeMsMax != null) 'writeMsMax': writeMsMax!,
+        if (writeRatioAvg != null) 'writeRatioAvg': writeRatioAvg!,
+        if (writeRatioMax != null) 'writeRatioMax': writeRatioMax!,
       };
 }
 
 class ExplainQueryStep {
   /// Machine-readable operation type.
-  core.String kind;
+  core.String? kind;
 
   /// Human-readable stage descriptions.
-  core.List<core.String> substeps;
+  core.List<core.String>? substeps;
 
   ExplainQueryStep();
 
@@ -4993,22 +4751,22 @@ class ExplainQueryStep {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (substeps != null) 'substeps': substeps,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (substeps != null) 'substeps': substeps!,
       };
 }
 
 /// Explanation for a single feature.
 class Explanation {
   /// Attribution of feature.
-  core.double attribution;
+  core.double? attribution;
 
   /// Full name of the feature.
   ///
   /// For non-numerical features, will be formatted like .. Overall size of
   /// feature name will always be truncated to first 120 characters.
-  core.String featureName;
+  core.String? featureName;
 
   Explanation();
 
@@ -5021,9 +4779,9 @@ class Explanation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attribution != null) 'attribution': attribution,
-        if (featureName != null) 'featureName': featureName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attribution != null) 'attribution': attribution!,
+        if (featureName != null) 'featureName': featureName!,
       };
 }
 
@@ -5052,24 +4810,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -5088,11 +4846,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -5100,12 +4858,12 @@ class ExternalDataConfiguration {
   /// Try to detect schema and format options automatically.
   ///
   /// Any option specified explicitly will be honored.
-  core.bool autodetect;
+  core.bool? autodetect;
 
   /// Additional options if sourceFormat is set to BIGTABLE.
   ///
   /// Optional.
-  BigtableOptions bigtableOptions;
+  BigtableOptions? bigtableOptions;
 
   /// The compression type of the data source.
   ///
@@ -5114,23 +4872,23 @@ class ExternalDataConfiguration {
   /// backups and Avro formats.
   ///
   /// Optional.
-  core.String compression;
+  core.String? compression;
 
   /// \[Optional, Trusted Tester\] Connection for external data source.
-  core.String connectionId;
+  core.String? connectionId;
 
   /// Additional properties to set if sourceFormat is set to CSV.
-  CsvOptions csvOptions;
+  CsvOptions? csvOptions;
 
   /// Additional options if sourceFormat is set to GOOGLE_SHEETS.
   ///
   /// Optional.
-  GoogleSheetsOptions googleSheetsOptions;
+  GoogleSheetsOptions? googleSheetsOptions;
 
   /// Options to configure hive partitioning support.
   ///
   /// Optional.
-  HivePartitioningOptions hivePartitioningOptions;
+  HivePartitioningOptions? hivePartitioningOptions;
 
   /// Indicates if BigQuery should allow extra values that are not represented
   /// in the table schema.
@@ -5144,7 +4902,7 @@ class ExternalDataConfiguration {
   /// Datastore backups: This setting is ignored. Avro: This setting is ignored.
   ///
   /// Optional.
-  core.bool ignoreUnknownValues;
+  core.bool? ignoreUnknownValues;
 
   /// The maximum number of bad records that BigQuery can ignore when reading
   /// data.
@@ -5156,7 +4914,7 @@ class ExternalDataConfiguration {
   /// backups and Avro formats.
   ///
   /// Optional.
-  core.int maxBadRecords;
+  core.int? maxBadRecords;
 
   /// The schema for the data.
   ///
@@ -5164,7 +4922,7 @@ class ExternalDataConfiguration {
   /// Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
   ///
   /// Optional.
-  TableSchema schema;
+  TableSchema? schema;
 
   /// The data format.
   ///
@@ -5175,7 +4933,7 @@ class ExternalDataConfiguration {
   /// "BIGTABLE".
   ///
   /// Required.
-  core.String sourceFormat;
+  core.String? sourceFormat;
 
   /// The fully-qualified URIs that point to your data in Google Cloud.
   ///
@@ -5188,7 +4946,7 @@ class ExternalDataConfiguration {
   /// character is not allowed.
   ///
   /// Required.
-  core.List<core.String> sourceUris;
+  core.List<core.String>? sourceUris;
 
   ExternalDataConfiguration();
 
@@ -5239,38 +4997,38 @@ class ExternalDataConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (autodetect != null) 'autodetect': autodetect,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (autodetect != null) 'autodetect': autodetect!,
         if (bigtableOptions != null)
-          'bigtableOptions': bigtableOptions.toJson(),
-        if (compression != null) 'compression': compression,
-        if (connectionId != null) 'connectionId': connectionId,
-        if (csvOptions != null) 'csvOptions': csvOptions.toJson(),
+          'bigtableOptions': bigtableOptions!.toJson(),
+        if (compression != null) 'compression': compression!,
+        if (connectionId != null) 'connectionId': connectionId!,
+        if (csvOptions != null) 'csvOptions': csvOptions!.toJson(),
         if (googleSheetsOptions != null)
-          'googleSheetsOptions': googleSheetsOptions.toJson(),
+          'googleSheetsOptions': googleSheetsOptions!.toJson(),
         if (hivePartitioningOptions != null)
-          'hivePartitioningOptions': hivePartitioningOptions.toJson(),
+          'hivePartitioningOptions': hivePartitioningOptions!.toJson(),
         if (ignoreUnknownValues != null)
-          'ignoreUnknownValues': ignoreUnknownValues,
-        if (maxBadRecords != null) 'maxBadRecords': maxBadRecords,
-        if (schema != null) 'schema': schema.toJson(),
-        if (sourceFormat != null) 'sourceFormat': sourceFormat,
-        if (sourceUris != null) 'sourceUris': sourceUris,
+          'ignoreUnknownValues': ignoreUnknownValues!,
+        if (maxBadRecords != null) 'maxBadRecords': maxBadRecords!,
+        if (schema != null) 'schema': schema!.toJson(),
+        if (sourceFormat != null) 'sourceFormat': sourceFormat!,
+        if (sourceUris != null) 'sourceUris': sourceUris!,
       };
 }
 
 /// Representative value of a single feature within the cluster.
 class FeatureValue {
   /// The categorical feature value.
-  CategoricalValue categoricalValue;
+  CategoricalValue? categoricalValue;
 
   /// The feature column name.
-  core.String featureColumn;
+  core.String? featureColumn;
 
   /// The numerical feature value.
   ///
   /// This is the centroid value for this feature.
-  core.double numericalValue;
+  core.double? numericalValue;
 
   FeatureValue();
 
@@ -5287,11 +5045,11 @@ class FeatureValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (categoricalValue != null)
-          'categoricalValue': categoricalValue.toJson(),
-        if (featureColumn != null) 'featureColumn': featureColumn,
-        if (numericalValue != null) 'numericalValue': numericalValue,
+          'categoricalValue': categoricalValue!.toJson(),
+        if (featureColumn != null) 'featureColumn': featureColumn!,
+        if (numericalValue != null) 'numericalValue': numericalValue!,
       };
 }
 
@@ -5299,7 +5057,7 @@ class FeatureValue {
 class GetIamPolicyRequest {
   /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
   /// `GetIamPolicy`.
-  GetPolicyOptions options;
+  GetPolicyOptions? options;
 
   GetIamPolicyRequest();
 
@@ -5310,8 +5068,8 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (options != null) 'options': options.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (options != null) 'options': options!.toJson(),
       };
 }
 
@@ -5327,7 +5085,7 @@ class GetPolicyOptions {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// Optional.
-  core.int requestedPolicyVersion;
+  core.int? requestedPolicyVersion;
 
   GetPolicyOptions();
 
@@ -5337,15 +5095,15 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion,
+          'requestedPolicyVersion': requestedPolicyVersion!,
       };
 }
 
 class GetQueryResultsResponse {
   /// Whether the query result was fetched from the query cache.
-  core.bool cacheHit;
+  core.bool? cacheHit;
 
   /// \[Output-only\] The first errors or warnings encountered during the
   /// running of the job.
@@ -5353,16 +5111,16 @@ class GetQueryResultsResponse {
   /// The final message includes the number of errors that caused the process to
   /// stop. Errors here do not necessarily mean that the job has completed or
   /// was unsuccessful.
-  core.List<ErrorProto> errors;
+  core.List<ErrorProto>? errors;
 
   /// A hash of this response.
-  core.String etag;
+  core.String? etag;
 
   /// Whether the query has completed or not.
   ///
   /// If rows or totalRows are present, this will always be true. If this is
   /// false, totalRows will not be available.
-  core.bool jobComplete;
+  core.bool? jobComplete;
 
   /// Reference to the BigQuery Job that was created to run the query.
   ///
@@ -5370,18 +5128,18 @@ class GetQueryResultsResponse {
   /// which case GetQueryResults can be used to read the results once the query
   /// has completed. Since this API only returns the first page of results,
   /// subsequent pages can be fetched via the same mechanism (GetQueryResults).
-  JobReference jobReference;
+  JobReference? jobReference;
 
   /// The resource type of the response.
-  core.String kind;
+  core.String? kind;
 
   /// \[Output-only\] The number of rows affected by a DML statement.
   ///
   /// Present only for DML statements INSERT, UPDATE or DELETE.
-  core.String numDmlAffectedRows;
+  core.String? numDmlAffectedRows;
 
   /// A token used for paging results.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// An object with as many results as can be contained within the maximum
   /// permitted reply size.
@@ -5389,21 +5147,21 @@ class GetQueryResultsResponse {
   /// To get any additional rows, you can call GetQueryResults and specify the
   /// jobReference returned above. Present only when the query completes
   /// successfully.
-  core.List<TableRow> rows;
+  core.List<TableRow>? rows;
 
   /// The schema of the results.
   ///
   /// Present only when the query completes successfully.
-  TableSchema schema;
+  TableSchema? schema;
 
   /// The total number of bytes processed for this query.
-  core.String totalBytesProcessed;
+  core.String? totalBytesProcessed;
 
   /// The total number of rows in the complete query result set, which can be
   /// more than the number of rows in this single page of results.
   ///
   /// Present only when the query completes successfully.
-  core.String totalRows;
+  core.String? totalRows;
 
   GetQueryResultsResponse();
 
@@ -5454,31 +5212,31 @@ class GetQueryResultsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cacheHit != null) 'cacheHit': cacheHit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cacheHit != null) 'cacheHit': cacheHit!,
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (jobComplete != null) 'jobComplete': jobComplete,
-        if (jobReference != null) 'jobReference': jobReference.toJson(),
-        if (kind != null) 'kind': kind,
+          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (jobComplete != null) 'jobComplete': jobComplete!,
+        if (jobReference != null) 'jobReference': jobReference!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (numDmlAffectedRows != null)
-          'numDmlAffectedRows': numDmlAffectedRows,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
-        if (schema != null) 'schema': schema.toJson(),
+          'numDmlAffectedRows': numDmlAffectedRows!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (schema != null) 'schema': schema!.toJson(),
         if (totalBytesProcessed != null)
-          'totalBytesProcessed': totalBytesProcessed,
-        if (totalRows != null) 'totalRows': totalRows,
+          'totalBytesProcessed': totalBytesProcessed!,
+        if (totalRows != null) 'totalRows': totalRows!,
       };
 }
 
 class GetServiceAccountResponse {
   /// The service account email address.
-  core.String email;
+  core.String? email;
 
   /// The resource type of the response.
-  core.String kind;
+  core.String? kind;
 
   GetServiceAccountResponse();
 
@@ -5491,9 +5249,9 @@ class GetServiceAccountResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -5504,12 +5262,12 @@ class GlobalExplanation {
   ///
   /// Will be empty/null for binary logistic and linear regression models.
   /// Sorted alphabetically in descending order.
-  core.String classLabel;
+  core.String? classLabel;
 
   /// A list of the top global explanations.
   ///
   /// Sorted by absolute value of attribution in descending order.
-  core.List<Explanation> explanations;
+  core.List<Explanation>? explanations;
 
   GlobalExplanation();
 
@@ -5525,10 +5283,10 @@ class GlobalExplanation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (classLabel != null) 'classLabel': classLabel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (classLabel != null) 'classLabel': classLabel!,
         if (explanations != null)
-          'explanations': explanations.map((value) => value.toJson()).toList(),
+          'explanations': explanations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5540,7 +5298,7 @@ class GoogleSheetsOptions {
   /// sheet1!A1:B20
   ///
   /// Optional.
-  core.String range;
+  core.String? range;
 
   /// The number of rows at the top of a sheet that BigQuery will skip when
   /// reading the data.
@@ -5557,7 +5315,7 @@ class GoogleSheetsOptions {
   /// names for the detected schema.
   ///
   /// Optional.
-  core.String skipLeadingRows;
+  core.String? skipLeadingRows;
 
   GoogleSheetsOptions();
 
@@ -5570,9 +5328,9 @@ class GoogleSheetsOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (range != null) 'range': range,
-        if (skipLeadingRows != null) 'skipLeadingRows': skipLeadingRows,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (range != null) 'range': range!,
+        if (skipLeadingRows != null) 'skipLeadingRows': skipLeadingRows!,
       };
 }
 
@@ -5588,7 +5346,7 @@ class HivePartitioningOptions {
   /// CSV, JSON, ORC and Parquet.
   ///
   /// Optional.
-  core.String mode;
+  core.String? mode;
 
   /// If set to true, queries over this table require a partition filter that
   /// can be used for partition elimination to be specified.
@@ -5598,7 +5356,7 @@ class HivePartitioningOptions {
   /// loads with requirePartitionFilter explicitly set to true will fail.
   ///
   /// Optional.
-  core.bool requirePartitionFilter;
+  core.bool? requirePartitionFilter;
 
   /// When hive partition detection is requested, a common prefix for all source
   /// uris should be supplied.
@@ -5612,7 +5370,7 @@ class HivePartitioningOptions {
   /// gs://bucket/path_to_table/ (trailing slash does not matter).
   ///
   /// Optional.
-  core.String sourceUriPrefix;
+  core.String? sourceUriPrefix;
 
   HivePartitioningOptions();
 
@@ -5628,38 +5386,38 @@ class HivePartitioningOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (mode != null) 'mode': mode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (mode != null) 'mode': mode!,
         if (requirePartitionFilter != null)
-          'requirePartitionFilter': requirePartitionFilter,
-        if (sourceUriPrefix != null) 'sourceUriPrefix': sourceUriPrefix,
+          'requirePartitionFilter': requirePartitionFilter!,
+        if (sourceUriPrefix != null) 'sourceUriPrefix': sourceUriPrefix!,
       };
 }
 
 /// Information about a single iteration of the training run.
 class IterationResult {
-  ArimaResult arimaResult;
+  ArimaResult? arimaResult;
 
   /// Information about top clusters for clustering models.
-  core.List<ClusterInfo> clusterInfos;
+  core.List<ClusterInfo>? clusterInfos;
 
   /// Time taken to run the iteration in milliseconds.
-  core.String durationMs;
+  core.String? durationMs;
 
   /// Loss computed on the eval data at the end of iteration.
-  core.double evalLoss;
+  core.double? evalLoss;
 
   /// Index of the iteration, 0 based.
-  core.int index;
+  core.int? index;
 
   /// Learn rate used for this iteration.
-  core.double learnRate;
+  core.double? learnRate;
 
   /// The information of the principal components.
-  core.List<PrincipalComponentInfo> principalComponentInfos;
+  core.List<PrincipalComponentInfo>? principalComponentInfos;
 
   /// Loss computed on the training data at the end of iteration.
-  core.double trainingLoss;
+  core.double? trainingLoss;
 
   IterationResult();
 
@@ -5698,18 +5456,18 @@ class IterationResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (arimaResult != null) 'arimaResult': arimaResult.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (arimaResult != null) 'arimaResult': arimaResult!.toJson(),
         if (clusterInfos != null)
-          'clusterInfos': clusterInfos.map((value) => value.toJson()).toList(),
-        if (durationMs != null) 'durationMs': durationMs,
-        if (evalLoss != null) 'evalLoss': evalLoss,
-        if (index != null) 'index': index,
-        if (learnRate != null) 'learnRate': learnRate,
+          'clusterInfos': clusterInfos!.map((value) => value.toJson()).toList(),
+        if (durationMs != null) 'durationMs': durationMs!,
+        if (evalLoss != null) 'evalLoss': evalLoss!,
+        if (index != null) 'index': index!,
+        if (learnRate != null) 'learnRate': learnRate!,
         if (principalComponentInfos != null)
           'principalComponentInfos':
-              principalComponentInfos.map((value) => value.toJson()).toList(),
-        if (trainingLoss != null) 'trainingLoss': trainingLoss,
+              principalComponentInfos!.map((value) => value.toJson()).toList(),
+        if (trainingLoss != null) 'trainingLoss': trainingLoss!,
       };
 }
 
@@ -5717,37 +5475,37 @@ class Job {
   /// Describes the job configuration.
   ///
   /// Required.
-  JobConfiguration configuration;
+  JobConfiguration? configuration;
 
   /// \[Output-only\] A hash of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// \[Output-only\] Opaque ID field of the job
-  core.String id;
+  core.String? id;
 
   /// Reference describing the unique-per-user name of the job.
   ///
   /// Optional.
-  JobReference jobReference;
+  JobReference? jobReference;
 
   /// \[Output-only\] The type of the resource.
-  core.String kind;
+  core.String? kind;
 
   /// \[Output-only\] A URL that can be used to access this resource again.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// \[Output-only\] Information about the job, including starting time and
   /// ending time of the job.
-  JobStatistics statistics;
+  JobStatistics? statistics;
 
   /// \[Output-only\] The status of this job.
   ///
   /// Examine this value when polling an asynchronous job to see if the job is
   /// complete.
-  JobStatus status;
+  JobStatus? status;
 
   /// \[Output-only\] Email address of the user who ran the job.
-  core.String userEmail;
+  core.String? userEmail;
 
   Job();
 
@@ -5785,25 +5543,25 @@ class Job {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (configuration != null) 'configuration': configuration.toJson(),
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (jobReference != null) 'jobReference': jobReference.toJson(),
-        if (kind != null) 'kind': kind,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (statistics != null) 'statistics': statistics.toJson(),
-        if (status != null) 'status': status.toJson(),
-        if (userEmail != null) 'user_email': userEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (configuration != null) 'configuration': configuration!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (jobReference != null) 'jobReference': jobReference!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (statistics != null) 'statistics': statistics!.toJson(),
+        if (status != null) 'status': status!.toJson(),
+        if (userEmail != null) 'user_email': userEmail!,
       };
 }
 
 class JobCancelResponse {
   /// The final state of the job.
-  Job job;
+  Job? job;
 
   /// The resource type of the response.
-  core.String kind;
+  core.String? kind;
 
   JobCancelResponse();
 
@@ -5816,15 +5574,15 @@ class JobCancelResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (job != null) 'job': job.toJson(),
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (job != null) 'job': job!.toJson(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class JobConfiguration {
   /// \[Pick one\] Copies a table.
-  JobConfigurationTableCopy copy;
+  JobConfigurationTableCopy? copy;
 
   /// If set, don't actually run this job.
   ///
@@ -5833,22 +5591,22 @@ class JobConfiguration {
   /// it wasn't a dry run. Behavior of non-query jobs is undefined.
   ///
   /// Optional.
-  core.bool dryRun;
+  core.bool? dryRun;
 
   /// \[Pick one\] Configures an extract job.
-  JobConfigurationExtract extract;
+  JobConfigurationExtract? extract;
 
   /// Job timeout in milliseconds.
   ///
   /// If this time limit is exceeded, BigQuery may attempt to terminate the job.
   ///
   /// Optional.
-  core.String jobTimeoutMs;
+  core.String? jobTimeoutMs;
 
   /// \[Output-only\] The type of the job.
   ///
   /// Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
-  core.String jobType;
+  core.String? jobType;
 
   /// The labels associated with this job.
   ///
@@ -5857,13 +5615,13 @@ class JobConfiguration {
   /// numeric characters, underscores and dashes. International characters are
   /// allowed. Label values are optional. Label keys must start with a letter
   /// and each label in the list must have a different key.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// \[Pick one\] Configures a load job.
-  JobConfigurationLoad load;
+  JobConfigurationLoad? load;
 
   /// \[Pick one\] Configures a query job.
-  JobConfigurationQuery query;
+  JobConfigurationQuery? query;
 
   JobConfiguration();
 
@@ -5904,15 +5662,15 @@ class JobConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (copy != null) 'copy': copy.toJson(),
-        if (dryRun != null) 'dryRun': dryRun,
-        if (extract != null) 'extract': extract.toJson(),
-        if (jobTimeoutMs != null) 'jobTimeoutMs': jobTimeoutMs,
-        if (jobType != null) 'jobType': jobType,
-        if (labels != null) 'labels': labels,
-        if (load != null) 'load': load.toJson(),
-        if (query != null) 'query': query.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (copy != null) 'copy': copy!.toJson(),
+        if (dryRun != null) 'dryRun': dryRun!,
+        if (extract != null) 'extract': extract!.toJson(),
+        if (jobTimeoutMs != null) 'jobTimeoutMs': jobTimeoutMs!,
+        if (jobType != null) 'jobType': jobType!,
+        if (labels != null) 'labels': labels!,
+        if (load != null) 'load': load!.toJson(),
+        if (query != null) 'query': query!.toJson(),
       };
 }
 
@@ -5924,7 +5682,7 @@ class JobConfigurationExtract {
   /// when extracting models.
   ///
   /// Optional.
-  core.String compression;
+  core.String? compression;
 
   /// The exported file format.
   ///
@@ -5934,38 +5692,38 @@ class JobConfigurationExtract {
   /// exported as CSV. The default value for models is ML_TF_SAVED_MODEL.
   ///
   /// Optional.
-  core.String destinationFormat;
+  core.String? destinationFormat;
 
   /// \[Pick one\] DEPRECATED: Use destinationUris instead, passing only one URI
   /// as necessary.
   ///
   /// The fully-qualified Google Cloud Storage URI where the extracted table
   /// should be written.
-  core.String destinationUri;
+  core.String? destinationUri;
 
   /// \[Pick one\] A list of fully-qualified Google Cloud Storage URIs where the
   /// extracted table should be written.
-  core.List<core.String> destinationUris;
+  core.List<core.String>? destinationUris;
 
   /// Delimiter to use between fields in the exported data.
   ///
   /// Default is ','. Not applicable when extracting models.
   ///
   /// Optional.
-  core.String fieldDelimiter;
+  core.String? fieldDelimiter;
 
   /// Whether to print out a header row in the results.
   ///
   /// Default is true. Not applicable when extracting models.
   ///
   /// Optional.
-  core.bool printHeader;
+  core.bool? printHeader;
 
   /// A reference to the model being exported.
-  ModelReference sourceModel;
+  ModelReference? sourceModel;
 
   /// A reference to the table being exported.
-  TableReference sourceTable;
+  TableReference? sourceTable;
 
   /// If destinationFormat is set to "AVRO", this flag indicates whether to
   /// enable extracting applicable column types (such as TIMESTAMP) to their
@@ -5975,7 +5733,7 @@ class JobConfigurationExtract {
   /// Not applicable when extracting models.
   ///
   /// Optional.
-  core.bool useAvroLogicalTypes;
+  core.bool? useAvroLogicalTypes;
 
   JobConfigurationExtract();
 
@@ -6013,17 +5771,17 @@ class JobConfigurationExtract {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (compression != null) 'compression': compression,
-        if (destinationFormat != null) 'destinationFormat': destinationFormat,
-        if (destinationUri != null) 'destinationUri': destinationUri,
-        if (destinationUris != null) 'destinationUris': destinationUris,
-        if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter,
-        if (printHeader != null) 'printHeader': printHeader,
-        if (sourceModel != null) 'sourceModel': sourceModel.toJson(),
-        if (sourceTable != null) 'sourceTable': sourceTable.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (compression != null) 'compression': compression!,
+        if (destinationFormat != null) 'destinationFormat': destinationFormat!,
+        if (destinationUri != null) 'destinationUri': destinationUri!,
+        if (destinationUris != null) 'destinationUris': destinationUris!,
+        if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter!,
+        if (printHeader != null) 'printHeader': printHeader!,
+        if (sourceModel != null) 'sourceModel': sourceModel!.toJson(),
+        if (sourceTable != null) 'sourceTable': sourceTable!.toJson(),
         if (useAvroLogicalTypes != null)
-          'useAvroLogicalTypes': useAvroLogicalTypes,
+          'useAvroLogicalTypes': useAvroLogicalTypes!,
       };
 }
 
@@ -6036,25 +5794,25 @@ class JobConfigurationLoad {
   /// is false. Only applicable to CSV, ignored for other formats.
   ///
   /// Optional.
-  core.bool allowJaggedRows;
+  core.bool? allowJaggedRows;
 
   /// Indicates if BigQuery should allow quoted data sections that contain
   /// newline characters in a CSV file.
   ///
   /// The default value is false.
-  core.bool allowQuotedNewlines;
+  core.bool? allowQuotedNewlines;
 
   /// Indicates if we should automatically infer the options and schema for CSV
   /// and JSON sources.
   ///
   /// Optional.
-  core.bool autodetect;
+  core.bool? autodetect;
 
   /// \[Beta\] Clustering specification for the destination table.
   ///
   /// Must be specified with time-based partitioning, data in the table will be
   /// first partitioned and subsequently clustered.
-  Clustering clustering;
+  Clustering? clustering;
 
   /// Specifies whether the job is allowed to create new tables.
   ///
@@ -6065,7 +5823,7 @@ class JobConfigurationLoad {
   /// append actions occur as one atomic update upon job completion.
   ///
   /// Optional.
-  core.String createDisposition;
+  core.String? createDisposition;
 
   /// Defines the list of possible SQL data types to which the source decimal
   /// values are converted.
@@ -6088,19 +5846,19 @@ class JobConfigurationLoad {
   /// "BIGNUMERIC"\] and NUMERIC always takes precedence over BIGNUMERIC.
   /// Defaults to \["NUMERIC", "STRING"\] for ORC and \["NUMERIC"\] for the
   /// other file formats.
-  core.List<core.String> decimalTargetTypes;
+  core.List<core.String>? decimalTargetTypes;
 
   /// Custom encryption configuration (e.g., Cloud KMS keys).
-  EncryptionConfiguration destinationEncryptionConfiguration;
+  EncryptionConfiguration? destinationEncryptionConfiguration;
 
   /// The destination table to load the data into.
   ///
   /// Required.
-  TableReference destinationTable;
+  TableReference? destinationTable;
 
   /// \[Beta\] \[Optional\] Properties with which to create the destination
   /// table if it is new.
-  DestinationTableProperties destinationTableProperties;
+  DestinationTableProperties? destinationTableProperties;
 
   /// The character encoding of the data.
   ///
@@ -6109,7 +5867,7 @@ class JobConfigurationLoad {
   /// the values of the quote and fieldDelimiter properties.
   ///
   /// Optional.
-  core.String encoding;
+  core.String? encoding;
 
   /// The separator for fields in a CSV file.
   ///
@@ -6121,12 +5879,12 @@ class JobConfigurationLoad {
   /// separator. The default value is a comma (',').
   ///
   /// Optional.
-  core.String fieldDelimiter;
+  core.String? fieldDelimiter;
 
   /// Options to configure hive partitioning support.
   ///
   /// Optional.
-  HivePartitioningOptions hivePartitioningOptions;
+  HivePartitioningOptions? hivePartitioningOptions;
 
   /// Indicates if BigQuery should allow extra values that are not represented
   /// in the table schema.
@@ -6139,7 +5897,7 @@ class JobConfigurationLoad {
   /// column names
   ///
   /// Optional.
-  core.bool ignoreUnknownValues;
+  core.bool? ignoreUnknownValues;
 
   /// If sourceFormat is set to newline-delimited JSON, indicates whether it
   /// should be processed as a JSON variant such as GeoJSON.
@@ -6149,7 +5907,7 @@ class JobConfigurationLoad {
   /// GEOJSON.
   ///
   /// Optional.
-  core.String jsonExtension;
+  core.String? jsonExtension;
 
   /// The maximum number of bad records that BigQuery can ignore when running
   /// the job.
@@ -6159,7 +5917,7 @@ class JobConfigurationLoad {
   /// default value is 0, which requires that all records are valid.
   ///
   /// Optional.
-  core.int maxBadRecords;
+  core.int? maxBadRecords;
 
   /// Specifies a string that represents a null value in a CSV file.
   ///
@@ -6171,7 +5929,7 @@ class JobConfigurationLoad {
   /// value.
   ///
   /// Optional.
-  core.String nullMarker;
+  core.String? nullMarker;
 
   /// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity
   /// properties to load into BigQuery from a Cloud Datastore backup.
@@ -6180,7 +5938,7 @@ class JobConfigurationLoad {
   /// properties are specified, BigQuery loads all properties. If any named
   /// property isn't found in the Cloud Datastore backup, an invalid error is
   /// returned in the job result.
-  core.List<core.String> projectionFields;
+  core.List<core.String>? projectionFields;
 
   /// The value that is used to quote data sections in a CSV file.
   ///
@@ -6192,12 +5950,12 @@ class JobConfigurationLoad {
   /// allowQuotedNewlines property to true.
   ///
   /// Optional.
-  core.String quote;
+  core.String? quote;
 
   /// \[TrustedTester\] Range partitioning specification for this table.
   ///
   /// Only one of timePartitioning and rangePartitioning should be specified.
-  RangePartitioning rangePartitioning;
+  RangePartitioning? rangePartitioning;
 
   /// The schema for the destination table.
   ///
@@ -6205,7 +5963,7 @@ class JobConfigurationLoad {
   /// you're loading data from Google Cloud Datastore.
   ///
   /// Optional.
-  TableSchema schema;
+  TableSchema? schema;
 
   /// The inline schema.
   ///
@@ -6213,12 +5971,12 @@ class JobConfigurationLoad {
   /// "foo:STRING, bar:INTEGER, baz:FLOAT".
   ///
   /// Deprecated.
-  core.String schemaInline;
+  core.String? schemaInline;
 
   /// The format of the schemaInline property.
   ///
   /// Deprecated.
-  core.String schemaInlineFormat;
+  core.String? schemaInlineFormat;
 
   /// Allows the schema of the destination table to be updated as a side effect
   /// of the load job if a schema is autodetected or supplied in the job
@@ -6231,7 +5989,7 @@ class JobConfigurationLoad {
   /// more of the following values are specified: ALLOW_FIELD_ADDITION: allow
   /// adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow
   /// relaxing a required field in the original schema to nullable.
-  core.List<core.String> schemaUpdateOptions;
+  core.List<core.String>? schemaUpdateOptions;
 
   /// The number of rows at the top of a CSV file that BigQuery will skip when
   /// loading the data.
@@ -6240,7 +5998,7 @@ class JobConfigurationLoad {
   /// the file that should be skipped.
   ///
   /// Optional.
-  core.int skipLeadingRows;
+  core.int? skipLeadingRows;
 
   /// The format of the data files.
   ///
@@ -6250,7 +6008,7 @@ class JobConfigurationLoad {
   /// "PARQUET". For orc, specify "ORC". The default value is CSV.
   ///
   /// Optional.
-  core.String sourceFormat;
+  core.String? sourceFormat;
 
   /// The fully-qualified URIs that point to your data in Google Cloud.
   ///
@@ -6263,12 +6021,12 @@ class JobConfigurationLoad {
   /// character is not allowed.
   ///
   /// Required.
-  core.List<core.String> sourceUris;
+  core.List<core.String>? sourceUris;
 
   /// Time-based partitioning specification for the destination table.
   ///
   /// Only one of timePartitioning and rangePartitioning should be specified.
-  TimePartitioning timePartitioning;
+  TimePartitioning? timePartitioning;
 
   /// If sourceFormat is set to "AVRO", indicates whether to enable interpreting
   /// logical types into their corresponding types (ie.
@@ -6276,7 +6034,7 @@ class JobConfigurationLoad {
   /// TIMESTAMP), instead of only using their raw types (ie. INTEGER).
   ///
   /// Optional.
-  core.bool useAvroLogicalTypes;
+  core.bool? useAvroLogicalTypes;
 
   /// Specifies the action that occurs if the destination table already exists.
   ///
@@ -6290,7 +6048,7 @@ class JobConfigurationLoad {
   /// update upon job completion.
   ///
   /// Optional.
-  core.String writeDisposition;
+  core.String? writeDisposition;
 
   JobConfigurationLoad();
 
@@ -6403,49 +6161,49 @@ class JobConfigurationLoad {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowJaggedRows != null) 'allowJaggedRows': allowJaggedRows,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowJaggedRows != null) 'allowJaggedRows': allowJaggedRows!,
         if (allowQuotedNewlines != null)
-          'allowQuotedNewlines': allowQuotedNewlines,
-        if (autodetect != null) 'autodetect': autodetect,
-        if (clustering != null) 'clustering': clustering.toJson(),
-        if (createDisposition != null) 'createDisposition': createDisposition,
+          'allowQuotedNewlines': allowQuotedNewlines!,
+        if (autodetect != null) 'autodetect': autodetect!,
+        if (clustering != null) 'clustering': clustering!.toJson(),
+        if (createDisposition != null) 'createDisposition': createDisposition!,
         if (decimalTargetTypes != null)
-          'decimalTargetTypes': decimalTargetTypes,
+          'decimalTargetTypes': decimalTargetTypes!,
         if (destinationEncryptionConfiguration != null)
           'destinationEncryptionConfiguration':
-              destinationEncryptionConfiguration.toJson(),
+              destinationEncryptionConfiguration!.toJson(),
         if (destinationTable != null)
-          'destinationTable': destinationTable.toJson(),
+          'destinationTable': destinationTable!.toJson(),
         if (destinationTableProperties != null)
-          'destinationTableProperties': destinationTableProperties.toJson(),
-        if (encoding != null) 'encoding': encoding,
-        if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter,
+          'destinationTableProperties': destinationTableProperties!.toJson(),
+        if (encoding != null) 'encoding': encoding!,
+        if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter!,
         if (hivePartitioningOptions != null)
-          'hivePartitioningOptions': hivePartitioningOptions.toJson(),
+          'hivePartitioningOptions': hivePartitioningOptions!.toJson(),
         if (ignoreUnknownValues != null)
-          'ignoreUnknownValues': ignoreUnknownValues,
-        if (jsonExtension != null) 'jsonExtension': jsonExtension,
-        if (maxBadRecords != null) 'maxBadRecords': maxBadRecords,
-        if (nullMarker != null) 'nullMarker': nullMarker,
-        if (projectionFields != null) 'projectionFields': projectionFields,
-        if (quote != null) 'quote': quote,
+          'ignoreUnknownValues': ignoreUnknownValues!,
+        if (jsonExtension != null) 'jsonExtension': jsonExtension!,
+        if (maxBadRecords != null) 'maxBadRecords': maxBadRecords!,
+        if (nullMarker != null) 'nullMarker': nullMarker!,
+        if (projectionFields != null) 'projectionFields': projectionFields!,
+        if (quote != null) 'quote': quote!,
         if (rangePartitioning != null)
-          'rangePartitioning': rangePartitioning.toJson(),
-        if (schema != null) 'schema': schema.toJson(),
-        if (schemaInline != null) 'schemaInline': schemaInline,
+          'rangePartitioning': rangePartitioning!.toJson(),
+        if (schema != null) 'schema': schema!.toJson(),
+        if (schemaInline != null) 'schemaInline': schemaInline!,
         if (schemaInlineFormat != null)
-          'schemaInlineFormat': schemaInlineFormat,
+          'schemaInlineFormat': schemaInlineFormat!,
         if (schemaUpdateOptions != null)
-          'schemaUpdateOptions': schemaUpdateOptions,
-        if (skipLeadingRows != null) 'skipLeadingRows': skipLeadingRows,
-        if (sourceFormat != null) 'sourceFormat': sourceFormat,
-        if (sourceUris != null) 'sourceUris': sourceUris,
+          'schemaUpdateOptions': schemaUpdateOptions!,
+        if (skipLeadingRows != null) 'skipLeadingRows': skipLeadingRows!,
+        if (sourceFormat != null) 'sourceFormat': sourceFormat!,
+        if (sourceUris != null) 'sourceUris': sourceUris!,
         if (timePartitioning != null)
-          'timePartitioning': timePartitioning.toJson(),
+          'timePartitioning': timePartitioning!.toJson(),
         if (useAvroLogicalTypes != null)
-          'useAvroLogicalTypes': useAvroLogicalTypes,
-        if (writeDisposition != null) 'writeDisposition': writeDisposition,
+          'useAvroLogicalTypes': useAvroLogicalTypes!,
+        if (writeDisposition != null) 'writeDisposition': writeDisposition!,
       };
 }
 
@@ -6459,16 +6217,16 @@ class JobConfigurationQuery {
   /// size.
   ///
   /// Optional.
-  core.bool allowLargeResults;
+  core.bool? allowLargeResults;
 
   /// \[Beta\] Clustering specification for the destination table.
   ///
   /// Must be specified with time-based partitioning, data in the table will be
   /// first partitioned and subsequently clustered.
-  Clustering clustering;
+  Clustering? clustering;
 
   /// Connection properties.
-  core.List<ConnectionProperty> connectionProperties;
+  core.List<ConnectionProperty>? connectionProperties;
 
   /// Specifies whether the job is allowed to create new tables.
   ///
@@ -6479,7 +6237,7 @@ class JobConfigurationQuery {
   /// append actions occur as one atomic update upon job completion.
   ///
   /// Optional.
-  core.String createDisposition;
+  core.String? createDisposition;
 
   /// Specifies the default dataset to use for unqualified table names in the
   /// query.
@@ -6487,10 +6245,10 @@ class JobConfigurationQuery {
   /// Note that this does not alter behavior of unqualified dataset names.
   ///
   /// Optional.
-  DatasetReference defaultDataset;
+  DatasetReference? defaultDataset;
 
   /// Custom encryption configuration (e.g., Cloud KMS keys).
-  EncryptionConfiguration destinationEncryptionConfiguration;
+  EncryptionConfiguration? destinationEncryptionConfiguration;
 
   /// Describes the table where the query results should be stored.
   ///
@@ -6499,7 +6257,7 @@ class JobConfigurationQuery {
   /// size.
   ///
   /// Optional.
-  TableReference destinationTable;
+  TableReference? destinationTable;
 
   /// If true and query uses legacy SQL dialect, flattens all nested and
   /// repeated fields in the query results.
@@ -6508,7 +6266,7 @@ class JobConfigurationQuery {
   /// queries, this flag is ignored and results are never flattened.
   ///
   /// Optional.
-  core.bool flattenResults;
+  core.bool? flattenResults;
 
   /// Limits the billing tier for this job.
   ///
@@ -6517,7 +6275,7 @@ class JobConfigurationQuery {
   /// default.
   ///
   /// Optional.
-  core.int maximumBillingTier;
+  core.int? maximumBillingTier;
 
   /// Limits the bytes billed for this job.
   ///
@@ -6526,18 +6284,18 @@ class JobConfigurationQuery {
   /// default.
   ///
   /// Optional.
-  core.String maximumBytesBilled;
+  core.String? maximumBytesBilled;
 
   /// Standard SQL only.
   ///
   /// Set to POSITIONAL to use positional (?) query parameters or to NAMED to
   /// use named (@myparam) query parameters in this query.
-  core.String parameterMode;
+  core.String? parameterMode;
 
   /// This property is deprecated.
   ///
   /// Deprecated.
-  core.bool preserveNulls;
+  core.bool? preserveNulls;
 
   /// Specifies a priority for the query.
   ///
@@ -6545,7 +6303,7 @@ class JobConfigurationQuery {
   /// INTERACTIVE.
   ///
   /// Optional.
-  core.String priority;
+  core.String? priority;
 
   /// SQL query text to execute.
   ///
@@ -6553,15 +6311,15 @@ class JobConfigurationQuery {
   /// legacy SQL or standard SQL.
   ///
   /// Required.
-  core.String query;
+  core.String? query;
 
   /// Query parameters for standard SQL queries.
-  core.List<QueryParameter> queryParameters;
+  core.List<QueryParameter>? queryParameters;
 
   /// \[TrustedTester\] Range partitioning specification for this table.
   ///
   /// Only one of timePartitioning and rangePartitioning should be specified.
-  RangePartitioning rangePartitioning;
+  RangePartitioning? rangePartitioning;
 
   /// Allows the schema of the destination table to be updated as a side effect
   /// of the query job.
@@ -6573,7 +6331,7 @@ class JobConfigurationQuery {
   /// more of the following values are specified: ALLOW_FIELD_ADDITION: allow
   /// adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow
   /// relaxing a required field in the original schema to nullable.
-  core.List<core.String> schemaUpdateOptions;
+  core.List<core.String>? schemaUpdateOptions;
 
   /// If querying an external data source outside of BigQuery, describes the
   /// data format, location and other properties of the data source.
@@ -6582,12 +6340,12 @@ class JobConfigurationQuery {
   /// were a standard BigQuery table.
   ///
   /// Optional.
-  core.Map<core.String, ExternalDataConfiguration> tableDefinitions;
+  core.Map<core.String, ExternalDataConfiguration>? tableDefinitions;
 
   /// Time-based partitioning specification for the destination table.
   ///
   /// Only one of timePartitioning and rangePartitioning should be specified.
-  TimePartitioning timePartitioning;
+  TimePartitioning? timePartitioning;
 
   /// Specifies whether to use BigQuery's legacy SQL dialect for this query.
   ///
@@ -6595,7 +6353,7 @@ class JobConfigurationQuery {
   /// standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
   /// useLegacySql is set to false, the value of flattenResults is ignored;
   /// query will be run as if flattenResults is false.
-  core.bool useLegacySql;
+  core.bool? useLegacySql;
 
   /// Whether to look for the result in the query cache.
   ///
@@ -6605,10 +6363,10 @@ class JobConfigurationQuery {
   /// default value is true.
   ///
   /// Optional.
-  core.bool useQueryCache;
+  core.bool? useQueryCache;
 
   /// Describes user-defined function resources used in the query.
-  core.List<UserDefinedFunctionResource> userDefinedFunctionResources;
+  core.List<UserDefinedFunctionResource>? userDefinedFunctionResources;
 
   /// Specifies the action that occurs if the destination table already exists.
   ///
@@ -6622,7 +6380,7 @@ class JobConfigurationQuery {
   /// and append actions occur as one atomic update upon job completion.
   ///
   /// Optional.
-  core.String writeDisposition;
+  core.String? writeDisposition;
 
   JobConfigurationQuery();
 
@@ -6694,7 +6452,7 @@ class JobConfigurationQuery {
     }
     if (_json.containsKey('tableDefinitions')) {
       tableDefinitions = (_json['tableDefinitions'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -6726,47 +6484,47 @@ class JobConfigurationQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowLargeResults != null) 'allowLargeResults': allowLargeResults,
-        if (clustering != null) 'clustering': clustering.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowLargeResults != null) 'allowLargeResults': allowLargeResults!,
+        if (clustering != null) 'clustering': clustering!.toJson(),
         if (connectionProperties != null)
           'connectionProperties':
-              connectionProperties.map((value) => value.toJson()).toList(),
-        if (createDisposition != null) 'createDisposition': createDisposition,
-        if (defaultDataset != null) 'defaultDataset': defaultDataset.toJson(),
+              connectionProperties!.map((value) => value.toJson()).toList(),
+        if (createDisposition != null) 'createDisposition': createDisposition!,
+        if (defaultDataset != null) 'defaultDataset': defaultDataset!.toJson(),
         if (destinationEncryptionConfiguration != null)
           'destinationEncryptionConfiguration':
-              destinationEncryptionConfiguration.toJson(),
+              destinationEncryptionConfiguration!.toJson(),
         if (destinationTable != null)
-          'destinationTable': destinationTable.toJson(),
-        if (flattenResults != null) 'flattenResults': flattenResults,
+          'destinationTable': destinationTable!.toJson(),
+        if (flattenResults != null) 'flattenResults': flattenResults!,
         if (maximumBillingTier != null)
-          'maximumBillingTier': maximumBillingTier,
+          'maximumBillingTier': maximumBillingTier!,
         if (maximumBytesBilled != null)
-          'maximumBytesBilled': maximumBytesBilled,
-        if (parameterMode != null) 'parameterMode': parameterMode,
-        if (preserveNulls != null) 'preserveNulls': preserveNulls,
-        if (priority != null) 'priority': priority,
-        if (query != null) 'query': query,
+          'maximumBytesBilled': maximumBytesBilled!,
+        if (parameterMode != null) 'parameterMode': parameterMode!,
+        if (preserveNulls != null) 'preserveNulls': preserveNulls!,
+        if (priority != null) 'priority': priority!,
+        if (query != null) 'query': query!,
         if (queryParameters != null)
           'queryParameters':
-              queryParameters.map((value) => value.toJson()).toList(),
+              queryParameters!.map((value) => value.toJson()).toList(),
         if (rangePartitioning != null)
-          'rangePartitioning': rangePartitioning.toJson(),
+          'rangePartitioning': rangePartitioning!.toJson(),
         if (schemaUpdateOptions != null)
-          'schemaUpdateOptions': schemaUpdateOptions,
+          'schemaUpdateOptions': schemaUpdateOptions!,
         if (tableDefinitions != null)
-          'tableDefinitions': tableDefinitions
+          'tableDefinitions': tableDefinitions!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (timePartitioning != null)
-          'timePartitioning': timePartitioning.toJson(),
-        if (useLegacySql != null) 'useLegacySql': useLegacySql,
-        if (useQueryCache != null) 'useQueryCache': useQueryCache,
+          'timePartitioning': timePartitioning!.toJson(),
+        if (useLegacySql != null) 'useLegacySql': useLegacySql!,
+        if (useQueryCache != null) 'useQueryCache': useQueryCache!,
         if (userDefinedFunctionResources != null)
-          'userDefinedFunctionResources': userDefinedFunctionResources
+          'userDefinedFunctionResources': userDefinedFunctionResources!
               .map((value) => value.toJson())
               .toList(),
-        if (writeDisposition != null) 'writeDisposition': writeDisposition,
+        if (writeDisposition != null) 'writeDisposition': writeDisposition!,
       };
 }
 
@@ -6780,10 +6538,10 @@ class JobConfigurationTableCopy {
   /// append actions occur as one atomic update upon job completion.
   ///
   /// Optional.
-  core.String createDisposition;
+  core.String? createDisposition;
 
   /// Custom encryption configuration (e.g., Cloud KMS keys).
-  EncryptionConfiguration destinationEncryptionConfiguration;
+  EncryptionConfiguration? destinationEncryptionConfiguration;
 
   /// The time when the destination table expires.
   ///
@@ -6793,23 +6551,23 @@ class JobConfigurationTableCopy {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object destinationExpirationTime;
+  core.Object? destinationExpirationTime;
 
   /// The destination table
   ///
   /// Required.
-  TableReference destinationTable;
+  TableReference? destinationTable;
 
   /// Supported operation types in table copy job.
   ///
   /// Optional.
-  core.String operationType;
+  core.String? operationType;
 
   /// \[Pick one\] Source table to copy.
-  TableReference sourceTable;
+  TableReference? sourceTable;
 
   /// \[Pick one\] Source tables to copy.
-  core.List<TableReference> sourceTables;
+  core.List<TableReference>? sourceTables;
 
   /// Specifies the action that occurs if the destination table already exists.
   ///
@@ -6823,7 +6581,7 @@ class JobConfigurationTableCopy {
   /// update upon job completion.
   ///
   /// Optional.
-  core.String writeDisposition;
+  core.String? writeDisposition;
 
   JobConfigurationTableCopy();
 
@@ -6862,54 +6620,54 @@ class JobConfigurationTableCopy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createDisposition != null) 'createDisposition': createDisposition,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createDisposition != null) 'createDisposition': createDisposition!,
         if (destinationEncryptionConfiguration != null)
           'destinationEncryptionConfiguration':
-              destinationEncryptionConfiguration.toJson(),
+              destinationEncryptionConfiguration!.toJson(),
         if (destinationExpirationTime != null)
-          'destinationExpirationTime': destinationExpirationTime,
+          'destinationExpirationTime': destinationExpirationTime!,
         if (destinationTable != null)
-          'destinationTable': destinationTable.toJson(),
-        if (operationType != null) 'operationType': operationType,
-        if (sourceTable != null) 'sourceTable': sourceTable.toJson(),
+          'destinationTable': destinationTable!.toJson(),
+        if (operationType != null) 'operationType': operationType!,
+        if (sourceTable != null) 'sourceTable': sourceTable!.toJson(),
         if (sourceTables != null)
-          'sourceTables': sourceTables.map((value) => value.toJson()).toList(),
-        if (writeDisposition != null) 'writeDisposition': writeDisposition,
+          'sourceTables': sourceTables!.map((value) => value.toJson()).toList(),
+        if (writeDisposition != null) 'writeDisposition': writeDisposition!,
       };
 }
 
 class JobListJobs {
   /// \[Full-projection-only\] Specifies the job configuration.
-  JobConfiguration configuration;
+  JobConfiguration? configuration;
 
   /// A result object that will be present only if the job has failed.
-  ErrorProto errorResult;
+  ErrorProto? errorResult;
 
   /// Unique opaque ID of the job.
-  core.String id;
+  core.String? id;
 
   /// Job reference uniquely identifying the job.
-  JobReference jobReference;
+  JobReference? jobReference;
 
   /// The resource type.
-  core.String kind;
+  core.String? kind;
 
   /// Running state of the job.
   ///
   /// When the state is DONE, errorResult can be checked to determine whether
   /// the job succeeded or failed.
-  core.String state;
+  core.String? state;
 
   /// \[Output-only\] Information about the job, including starting time and
   /// ending time of the job.
-  JobStatistics statistics;
+  JobStatistics? statistics;
 
   /// \[Full-projection-only\] Describes the state of the job.
-  JobStatus status;
+  JobStatus? status;
 
   /// \[Full-projection-only\] Email address of the user who ran the job.
-  core.String userEmail;
+  core.String? userEmail;
 
   JobListJobs();
 
@@ -6948,31 +6706,31 @@ class JobListJobs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (configuration != null) 'configuration': configuration.toJson(),
-        if (errorResult != null) 'errorResult': errorResult.toJson(),
-        if (id != null) 'id': id,
-        if (jobReference != null) 'jobReference': jobReference.toJson(),
-        if (kind != null) 'kind': kind,
-        if (state != null) 'state': state,
-        if (statistics != null) 'statistics': statistics.toJson(),
-        if (status != null) 'status': status.toJson(),
-        if (userEmail != null) 'user_email': userEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (configuration != null) 'configuration': configuration!.toJson(),
+        if (errorResult != null) 'errorResult': errorResult!.toJson(),
+        if (id != null) 'id': id!,
+        if (jobReference != null) 'jobReference': jobReference!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (state != null) 'state': state!,
+        if (statistics != null) 'statistics': statistics!.toJson(),
+        if (status != null) 'status': status!.toJson(),
+        if (userEmail != null) 'user_email': userEmail!,
       };
 }
 
 class JobList {
   /// A hash of this page of results.
-  core.String etag;
+  core.String? etag;
 
   /// List of jobs that were requested.
-  core.List<JobListJobs> jobs;
+  core.List<JobListJobs>? jobs;
 
   /// The resource type of the response.
-  core.String kind;
+  core.String? kind;
 
   /// A token to request the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   JobList();
 
@@ -6994,11 +6752,11 @@ class JobList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -7009,18 +6767,18 @@ class JobReference {
   /// (_), or dashes (-). The maximum length is 1,024 characters.
   ///
   /// Required.
-  core.String jobId;
+  core.String? jobId;
 
   /// The geographic location of the job.
   ///
   /// See details at
   /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
-  core.String location;
+  core.String? location;
 
   /// The ID of the project containing this job.
   ///
   /// Required.
-  core.String projectId;
+  core.String? projectId;
 
   JobReference();
 
@@ -7036,20 +6794,20 @@ class JobReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jobId != null) 'jobId': jobId,
-        if (location != null) 'location': location,
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jobId != null) 'jobId': jobId!,
+        if (location != null) 'location': location!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
 class JobStatisticsReservationUsage {
   /// \[Output-only\] Reservation name or "unreserved" for on-demand resources
   /// usage.
-  core.String name;
+  core.String? name;
 
   /// \[Output-only\] Slot-milliseconds the job spent in the given reservation.
-  core.String slotMs;
+  core.String? slotMs;
 
   JobStatisticsReservationUsage();
 
@@ -7062,80 +6820,80 @@ class JobStatisticsReservationUsage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (slotMs != null) 'slotMs': slotMs,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (slotMs != null) 'slotMs': slotMs!,
       };
 }
 
 class JobStatistics {
   /// \[TrustedTester\] \[Output-only\] Job progress (0.0 -> 1.0) for LOAD and
   /// EXTRACT jobs.
-  core.double completionRatio;
+  core.double? completionRatio;
 
   /// \[Output-only\] Creation time of this job, in milliseconds since the
   /// epoch.
   ///
   /// This field will be present on all jobs.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// \[Output-only\] End time of this job, in milliseconds since the epoch.
   ///
   /// This field will be present whenever a job is in the DONE state.
-  core.String endTime;
+  core.String? endTime;
 
   /// \[Output-only\] Statistics for an extract job.
-  JobStatistics4 extract;
+  JobStatistics4? extract;
 
   /// \[Output-only\] Statistics for a load job.
-  JobStatistics3 load;
+  JobStatistics3? load;
 
   /// \[Output-only\] Number of child jobs executed.
-  core.String numChildJobs;
+  core.String? numChildJobs;
 
   /// \[Output-only\] If this is a child job, the id of the parent.
-  core.String parentJobId;
+  core.String? parentJobId;
 
   /// \[Output-only\] Statistics for a query job.
-  JobStatistics2 query;
+  JobStatistics2? query;
 
   /// \[Output-only\] Quotas which delayed this job's start time.
-  core.List<core.String> quotaDeferments;
+  core.List<core.String>? quotaDeferments;
 
   /// \[Output-only\] Job resource usage breakdown by reservation.
-  core.List<JobStatisticsReservationUsage> reservationUsage;
+  core.List<JobStatisticsReservationUsage>? reservationUsage;
 
   /// \[Output-only\] Name of the primary reservation assigned to this job.
   ///
   /// Note that this could be different than reservations reported in the
   /// reservation usage field if parent reservations were used to execute this
   /// job.
-  core.String reservationId;
+  core.String? reservationId;
 
   /// \[Output-only\] \[Preview\] Statistics for row-level security.
   ///
   /// Present only for query and extract jobs.
-  RowLevelSecurityStatistics rowLevelSecurityStatistics;
+  RowLevelSecurityStatistics? rowLevelSecurityStatistics;
 
   /// \[Output-only\] Statistics for a child job of a script.
-  ScriptStatistics scriptStatistics;
+  ScriptStatistics? scriptStatistics;
 
   /// \[Output-only\] Start time of this job, in milliseconds since the epoch.
   ///
   /// This field will be present when the job transitions from the PENDING state
   /// to either RUNNING or DONE.
-  core.String startTime;
+  core.String? startTime;
 
   /// \[Output-only\] \[Deprecated\] Use the bytes processed in the query
   /// statistics instead.
-  core.String totalBytesProcessed;
+  core.String? totalBytesProcessed;
 
   /// \[Output-only\] Slot-milliseconds for the job.
-  core.String totalSlotMs;
+  core.String? totalSlotMs;
 
   /// \[Output-only\] \[Alpha\] Information of the multi-statement transaction
   /// if this job is part of one.
-  TransactionInfo transactionInfoTemplate;
+  TransactionInfo? transactionInfoTemplate;
 
   JobStatistics();
 
@@ -7207,40 +6965,40 @@ class JobStatistics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (completionRatio != null) 'completionRatio': completionRatio,
-        if (creationTime != null) 'creationTime': creationTime,
-        if (endTime != null) 'endTime': endTime,
-        if (extract != null) 'extract': extract.toJson(),
-        if (load != null) 'load': load.toJson(),
-        if (numChildJobs != null) 'numChildJobs': numChildJobs,
-        if (parentJobId != null) 'parentJobId': parentJobId,
-        if (query != null) 'query': query.toJson(),
-        if (quotaDeferments != null) 'quotaDeferments': quotaDeferments,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (completionRatio != null) 'completionRatio': completionRatio!,
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (extract != null) 'extract': extract!.toJson(),
+        if (load != null) 'load': load!.toJson(),
+        if (numChildJobs != null) 'numChildJobs': numChildJobs!,
+        if (parentJobId != null) 'parentJobId': parentJobId!,
+        if (query != null) 'query': query!.toJson(),
+        if (quotaDeferments != null) 'quotaDeferments': quotaDeferments!,
         if (reservationUsage != null)
           'reservationUsage':
-              reservationUsage.map((value) => value.toJson()).toList(),
-        if (reservationId != null) 'reservation_id': reservationId,
+              reservationUsage!.map((value) => value.toJson()).toList(),
+        if (reservationId != null) 'reservation_id': reservationId!,
         if (rowLevelSecurityStatistics != null)
-          'rowLevelSecurityStatistics': rowLevelSecurityStatistics.toJson(),
+          'rowLevelSecurityStatistics': rowLevelSecurityStatistics!.toJson(),
         if (scriptStatistics != null)
-          'scriptStatistics': scriptStatistics.toJson(),
-        if (startTime != null) 'startTime': startTime,
+          'scriptStatistics': scriptStatistics!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
         if (totalBytesProcessed != null)
-          'totalBytesProcessed': totalBytesProcessed,
-        if (totalSlotMs != null) 'totalSlotMs': totalSlotMs,
+          'totalBytesProcessed': totalBytesProcessed!,
+        if (totalSlotMs != null) 'totalSlotMs': totalSlotMs!,
         if (transactionInfoTemplate != null)
-          'transactionInfoTemplate': transactionInfoTemplate.toJson(),
+          'transactionInfoTemplate': transactionInfoTemplate!.toJson(),
       };
 }
 
 class JobStatistics2ReservationUsage {
   /// \[Output-only\] Reservation name or "unreserved" for on-demand resources
   /// usage.
-  core.String name;
+  core.String? name;
 
   /// \[Output-only\] Slot-milliseconds the job spent in the given reservation.
-  core.String slotMs;
+  core.String? slotMs;
 
   JobStatistics2ReservationUsage();
 
@@ -7253,24 +7011,24 @@ class JobStatistics2ReservationUsage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (slotMs != null) 'slotMs': slotMs,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (slotMs != null) 'slotMs': slotMs!,
       };
 }
 
 class JobStatistics2 {
   /// \[Output-only\] Billing tier for the job.
-  core.int billingTier;
+  core.int? billingTier;
 
   /// \[Output-only\] Whether the query result was fetched from the query cache.
-  core.bool cacheHit;
+  core.bool? cacheHit;
 
   /// \[Output-only\] \[Preview\] The number of row access policies affected by
   /// a DDL statement.
   ///
   /// Present only for DROP ALL ROW ACCESS POLICIES queries.
-  core.String ddlAffectedRowAccessPolicyCount;
+  core.String? ddlAffectedRowAccessPolicyCount;
 
   /// The DDL operation performed, possibly dependent on the pre-existence of
   /// the DDL target.
@@ -7282,65 +7040,65 @@ class JobStatistics2 {
   /// replaced the DDL target. Example case: the query is CREATE OR REPLACE
   /// TABLE, and the table already exists. "DROP": The query deleted the DDL
   /// target.
-  core.String ddlOperationPerformed;
+  core.String? ddlOperationPerformed;
 
   /// \[Output-only\] The DDL target dataset.
   ///
   /// Present only for CREATE/ALTER/DROP SCHEMA queries.
-  DatasetReference ddlTargetDataset;
+  DatasetReference? ddlTargetDataset;
 
   /// The DDL target routine.
   ///
   /// Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
-  RoutineReference ddlTargetRoutine;
+  RoutineReference? ddlTargetRoutine;
 
   /// \[Output-only\] \[Preview\] The DDL target row access policy.
   ///
   /// Present only for CREATE/DROP ROW ACCESS POLICY queries.
-  RowAccessPolicyReference ddlTargetRowAccessPolicy;
+  RowAccessPolicyReference? ddlTargetRowAccessPolicy;
 
   /// \[Output-only\] The DDL target table.
   ///
   /// Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES
   /// queries.
-  TableReference ddlTargetTable;
+  TableReference? ddlTargetTable;
 
   /// \[Output-only\] The original estimate of bytes processed for the job.
-  core.String estimatedBytesProcessed;
+  core.String? estimatedBytesProcessed;
 
   /// \[Output-only, Beta\] Information about create model query job progress.
-  BigQueryModelTraining modelTraining;
+  BigQueryModelTraining? modelTraining;
 
   /// \[Output-only, Beta\] Deprecated; do not use.
-  core.int modelTrainingCurrentIteration;
+  core.int? modelTrainingCurrentIteration;
 
   /// \[Output-only, Beta\] Deprecated; do not use.
-  core.String modelTrainingExpectedTotalIteration;
+  core.String? modelTrainingExpectedTotalIteration;
 
   /// \[Output-only\] The number of rows affected by a DML statement.
   ///
   /// Present only for DML statements INSERT, UPDATE or DELETE.
-  core.String numDmlAffectedRows;
+  core.String? numDmlAffectedRows;
 
   /// \[Output-only\] Describes execution plan for the query.
-  core.List<ExplainQueryStage> queryPlan;
+  core.List<ExplainQueryStage>? queryPlan;
 
   /// \[Output-only\] Referenced routines (persistent user-defined functions and
   /// stored procedures) for the job.
-  core.List<RoutineReference> referencedRoutines;
+  core.List<RoutineReference>? referencedRoutines;
 
   /// \[Output-only\] Referenced tables for the job.
   ///
   /// Queries that reference more than 50 tables will not have a complete list.
-  core.List<TableReference> referencedTables;
+  core.List<TableReference>? referencedTables;
 
   /// \[Output-only\] Job resource usage breakdown by reservation.
-  core.List<JobStatistics2ReservationUsage> reservationUsage;
+  core.List<JobStatistics2ReservationUsage>? reservationUsage;
 
   /// \[Output-only\] The schema of the results.
   ///
   /// Present only for successful dry run of non-legacy SQL queries.
-  TableSchema schema;
+  TableSchema? schema;
 
   /// The type of query statement, if valid.
   ///
@@ -7362,16 +7120,16 @@ class JobStatistics2 {
   /// REPLACE\] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query.
   /// "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query.
   /// "DROP_VIEW": DROP VIEW query.
-  core.String statementType;
+  core.String? statementType;
 
   /// \[Output-only\] \[Beta\] Describes a timeline of job execution.
-  core.List<QueryTimelineSample> timeline;
+  core.List<QueryTimelineSample>? timeline;
 
   /// \[Output-only\] Total bytes billed for the job.
-  core.String totalBytesBilled;
+  core.String? totalBytesBilled;
 
   /// \[Output-only\] Total bytes processed for the job.
-  core.String totalBytesProcessed;
+  core.String? totalBytesProcessed;
 
   /// \[Output-only\] For dry-run jobs, totalBytesProcessed is an estimate and
   /// this field specifies the accuracy of the estimate.
@@ -7380,18 +7138,18 @@ class JobStatistics2 {
   /// PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what
   /// the query would cost. UPPER_BOUND: estimate is upper bound of what the
   /// query would cost.
-  core.String totalBytesProcessedAccuracy;
+  core.String? totalBytesProcessedAccuracy;
 
   /// \[Output-only\] Total number of partitions processed from all partitioned
   /// tables referenced in the job.
-  core.String totalPartitionsProcessed;
+  core.String? totalPartitionsProcessed;
 
   /// \[Output-only\] Slot-milliseconds for the job.
-  core.String totalSlotMs;
+  core.String? totalSlotMs;
 
   /// Standard SQL only: list of undeclared query parameters detected during a
   /// dry run validation.
-  core.List<QueryParameter> undeclaredQueryParameters;
+  core.List<QueryParameter>? undeclaredQueryParameters;
 
   JobStatistics2();
 
@@ -7508,56 +7266,57 @@ class JobStatistics2 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (billingTier != null) 'billingTier': billingTier,
-        if (cacheHit != null) 'cacheHit': cacheHit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (billingTier != null) 'billingTier': billingTier!,
+        if (cacheHit != null) 'cacheHit': cacheHit!,
         if (ddlAffectedRowAccessPolicyCount != null)
-          'ddlAffectedRowAccessPolicyCount': ddlAffectedRowAccessPolicyCount,
+          'ddlAffectedRowAccessPolicyCount': ddlAffectedRowAccessPolicyCount!,
         if (ddlOperationPerformed != null)
-          'ddlOperationPerformed': ddlOperationPerformed,
+          'ddlOperationPerformed': ddlOperationPerformed!,
         if (ddlTargetDataset != null)
-          'ddlTargetDataset': ddlTargetDataset.toJson(),
+          'ddlTargetDataset': ddlTargetDataset!.toJson(),
         if (ddlTargetRoutine != null)
-          'ddlTargetRoutine': ddlTargetRoutine.toJson(),
+          'ddlTargetRoutine': ddlTargetRoutine!.toJson(),
         if (ddlTargetRowAccessPolicy != null)
-          'ddlTargetRowAccessPolicy': ddlTargetRowAccessPolicy.toJson(),
-        if (ddlTargetTable != null) 'ddlTargetTable': ddlTargetTable.toJson(),
+          'ddlTargetRowAccessPolicy': ddlTargetRowAccessPolicy!.toJson(),
+        if (ddlTargetTable != null) 'ddlTargetTable': ddlTargetTable!.toJson(),
         if (estimatedBytesProcessed != null)
-          'estimatedBytesProcessed': estimatedBytesProcessed,
-        if (modelTraining != null) 'modelTraining': modelTraining.toJson(),
+          'estimatedBytesProcessed': estimatedBytesProcessed!,
+        if (modelTraining != null) 'modelTraining': modelTraining!.toJson(),
         if (modelTrainingCurrentIteration != null)
-          'modelTrainingCurrentIteration': modelTrainingCurrentIteration,
+          'modelTrainingCurrentIteration': modelTrainingCurrentIteration!,
         if (modelTrainingExpectedTotalIteration != null)
           'modelTrainingExpectedTotalIteration':
-              modelTrainingExpectedTotalIteration,
+              modelTrainingExpectedTotalIteration!,
         if (numDmlAffectedRows != null)
-          'numDmlAffectedRows': numDmlAffectedRows,
+          'numDmlAffectedRows': numDmlAffectedRows!,
         if (queryPlan != null)
-          'queryPlan': queryPlan.map((value) => value.toJson()).toList(),
+          'queryPlan': queryPlan!.map((value) => value.toJson()).toList(),
         if (referencedRoutines != null)
           'referencedRoutines':
-              referencedRoutines.map((value) => value.toJson()).toList(),
+              referencedRoutines!.map((value) => value.toJson()).toList(),
         if (referencedTables != null)
           'referencedTables':
-              referencedTables.map((value) => value.toJson()).toList(),
+              referencedTables!.map((value) => value.toJson()).toList(),
         if (reservationUsage != null)
           'reservationUsage':
-              reservationUsage.map((value) => value.toJson()).toList(),
-        if (schema != null) 'schema': schema.toJson(),
-        if (statementType != null) 'statementType': statementType,
+              reservationUsage!.map((value) => value.toJson()).toList(),
+        if (schema != null) 'schema': schema!.toJson(),
+        if (statementType != null) 'statementType': statementType!,
         if (timeline != null)
-          'timeline': timeline.map((value) => value.toJson()).toList(),
-        if (totalBytesBilled != null) 'totalBytesBilled': totalBytesBilled,
+          'timeline': timeline!.map((value) => value.toJson()).toList(),
+        if (totalBytesBilled != null) 'totalBytesBilled': totalBytesBilled!,
         if (totalBytesProcessed != null)
-          'totalBytesProcessed': totalBytesProcessed,
+          'totalBytesProcessed': totalBytesProcessed!,
         if (totalBytesProcessedAccuracy != null)
-          'totalBytesProcessedAccuracy': totalBytesProcessedAccuracy,
+          'totalBytesProcessedAccuracy': totalBytesProcessedAccuracy!,
         if (totalPartitionsProcessed != null)
-          'totalPartitionsProcessed': totalPartitionsProcessed,
-        if (totalSlotMs != null) 'totalSlotMs': totalSlotMs,
+          'totalPartitionsProcessed': totalPartitionsProcessed!,
+        if (totalSlotMs != null) 'totalSlotMs': totalSlotMs!,
         if (undeclaredQueryParameters != null)
-          'undeclaredQueryParameters':
-              undeclaredQueryParameters.map((value) => value.toJson()).toList(),
+          'undeclaredQueryParameters': undeclaredQueryParameters!
+              .map((value) => value.toJson())
+              .toList(),
       };
 }
 
@@ -7568,24 +7327,24 @@ class JobStatistics3 {
   /// than the maximum allowed in the load job configuration, then this number
   /// can be less than the total number of bad records present in the input
   /// data.
-  core.String badRecords;
+  core.String? badRecords;
 
   /// \[Output-only\] Number of bytes of source data in a load job.
-  core.String inputFileBytes;
+  core.String? inputFileBytes;
 
   /// \[Output-only\] Number of source files in a load job.
-  core.String inputFiles;
+  core.String? inputFiles;
 
   /// \[Output-only\] Size of the loaded data in bytes.
   ///
   /// Note that while a load job is in the running state, this value may change.
-  core.String outputBytes;
+  core.String? outputBytes;
 
   /// \[Output-only\] Number of rows imported in a load job.
   ///
   /// Note that while an import job is in the running state, this value may
   /// change.
-  core.String outputRows;
+  core.String? outputRows;
 
   JobStatistics3();
 
@@ -7607,12 +7366,12 @@ class JobStatistics3 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (badRecords != null) 'badRecords': badRecords,
-        if (inputFileBytes != null) 'inputFileBytes': inputFileBytes,
-        if (inputFiles != null) 'inputFiles': inputFiles,
-        if (outputBytes != null) 'outputBytes': outputBytes,
-        if (outputRows != null) 'outputRows': outputRows,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (badRecords != null) 'badRecords': badRecords!,
+        if (inputFileBytes != null) 'inputFileBytes': inputFileBytes!,
+        if (inputFiles != null) 'inputFiles': inputFiles!,
+        if (outputBytes != null) 'outputBytes': outputBytes!,
+        if (outputRows != null) 'outputRows': outputRows!,
       };
 }
 
@@ -7622,12 +7381,12 @@ class JobStatistics4 {
   ///
   /// These values will be in the same order as the URIs specified in the
   /// 'destinationUris' field.
-  core.List<core.String> destinationUriFileCounts;
+  core.List<core.String>? destinationUriFileCounts;
 
   /// \[Output-only\] Number of user bytes extracted into the result.
   ///
   /// This is the byte count as computed by BigQuery for billing purposes.
-  core.String inputBytes;
+  core.String? inputBytes;
 
   JobStatistics4();
 
@@ -7643,10 +7402,10 @@ class JobStatistics4 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (destinationUriFileCounts != null)
-          'destinationUriFileCounts': destinationUriFileCounts,
-        if (inputBytes != null) 'inputBytes': inputBytes,
+          'destinationUriFileCounts': destinationUriFileCounts!,
+        if (inputBytes != null) 'inputBytes': inputBytes!,
       };
 }
 
@@ -7654,7 +7413,7 @@ class JobStatus {
   /// \[Output-only\] Final error result of the job.
   ///
   /// If present, indicates that the job has completed and was unsuccessful.
-  ErrorProto errorResult;
+  ErrorProto? errorResult;
 
   /// \[Output-only\] The first errors encountered during the running of the
   /// job.
@@ -7662,10 +7421,10 @@ class JobStatus {
   /// The final message includes the number of errors that caused the process to
   /// stop. Errors here do not necessarily mean that the job has completed or
   /// was unsuccessful.
-  core.List<ErrorProto> errors;
+  core.List<ErrorProto>? errors;
 
   /// \[Output-only\] Running state of the job.
-  core.String state;
+  core.String? state;
 
   JobStatus();
 
@@ -7685,11 +7444,11 @@ class JobStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorResult != null) 'errorResult': errorResult.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorResult != null) 'errorResult': errorResult!.toJson(),
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
-        if (state != null) 'state': state,
+          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state!,
       };
 }
 
@@ -7709,7 +7468,7 @@ class JsonObject extends collection.MapBase<core.String, core.Object> {
       core.Map<core.String, core.dynamic>.of(this);
 
   @core.override
-  core.Object operator [](core.Object key) => _innerMap[key];
+  core.Object? operator [](core.Object? key) => _innerMap[key];
 
   @core.override
   void operator []=(core.String key, core.Object value) {
@@ -7725,7 +7484,7 @@ class JsonObject extends collection.MapBase<core.String, core.Object> {
   core.Iterable<core.String> get keys => _innerMap.keys;
 
   @core.override
-  core.Object remove(core.Object key) => _innerMap.remove(key);
+  core.Object? remove(core.Object? key) => _innerMap.remove(key);
 }
 
 class ListModelsResponse {
@@ -7733,10 +7492,10 @@ class ListModelsResponse {
   ///
   /// Only the following fields are populated: model_reference, model_type,
   /// creation_time, last_modified_time and labels.
-  core.List<Model> models;
+  core.List<Model>? models;
 
   /// A token to request the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListModelsResponse();
 
@@ -7752,23 +7511,23 @@ class ListModelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (models != null)
-          'models': models.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'models': models!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 class ListRoutinesResponse {
   /// A token to request the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Routines in the requested dataset.
   ///
   /// Unless read_mask is set in the request, only the following fields are
   /// populated: etag, project_id, dataset_id, routine_id, routine_type,
   /// creation_time, last_modified_time, and language.
-  core.List<Routine> routines;
+  core.List<Routine>? routines;
 
   ListRoutinesResponse();
 
@@ -7784,20 +7543,20 @@ class ListRoutinesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (routines != null)
-          'routines': routines.map((value) => value.toJson()).toList(),
+          'routines': routines!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for the ListRowAccessPolicies method.
 class ListRowAccessPoliciesResponse {
   /// A token to request the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Row access policies on the requested table.
-  core.List<RowAccessPolicy> rowAccessPolicies;
+  core.List<RowAccessPolicy>? rowAccessPolicies;
 
   ListRowAccessPoliciesResponse();
 
@@ -7813,11 +7572,11 @@ class ListRowAccessPoliciesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (rowAccessPolicies != null)
           'rowAccessPolicies':
-              rowAccessPolicies.map((value) => value.toJson()).toList(),
+              rowAccessPolicies!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7830,7 +7589,7 @@ class LocationMetadata {
   ///
   /// This is for any API consumers that need the legacy “US” and “EU”
   /// locations.
-  core.String legacyLocationId;
+  core.String? legacyLocationId;
 
   LocationMetadata();
 
@@ -7840,8 +7599,8 @@ class LocationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (legacyLocationId != null) 'legacyLocationId': legacyLocationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (legacyLocationId != null) 'legacyLocationId': legacyLocationId!,
       };
 }
 
@@ -7852,16 +7611,16 @@ class MaterializedViewDefinition {
   /// The default value is "true".
   ///
   /// Optional.
-  core.bool enableRefresh;
+  core.bool? enableRefresh;
 
   /// \[Output-only\] \[TrustedTester\] The time when this materialized view was
   /// last modified, in milliseconds since the epoch.
-  core.String lastRefreshTime;
+  core.String? lastRefreshTime;
 
   /// A query whose result is persisted.
   ///
   /// Required.
-  core.String query;
+  core.String? query;
 
   /// \[TrustedTester\] The maximum frequency at which this materialized view
   /// will be refreshed.
@@ -7869,7 +7628,7 @@ class MaterializedViewDefinition {
   /// The default value is "1800000" (30 minutes).
   ///
   /// Optional.
-  core.String refreshIntervalMs;
+  core.String? refreshIntervalMs;
 
   MaterializedViewDefinition();
 
@@ -7888,11 +7647,11 @@ class MaterializedViewDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enableRefresh != null) 'enableRefresh': enableRefresh,
-        if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime,
-        if (query != null) 'query': query,
-        if (refreshIntervalMs != null) 'refreshIntervalMs': refreshIntervalMs,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enableRefresh != null) 'enableRefresh': enableRefresh!,
+        if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
+        if (query != null) 'query': query!,
+        if (refreshIntervalMs != null) 'refreshIntervalMs': refreshIntervalMs!,
       };
 }
 
@@ -7900,24 +7659,24 @@ class Model {
   /// The time when this model was created, in millisecs since the epoch.
   ///
   /// Output only.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// A user-friendly description of this model.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Custom encryption configuration (e.g., Cloud KMS keys).
   ///
   /// This shows the encryption configuration of the model data while stored in
   /// BigQuery storage. This field can be used with PatchModel to update
   /// encryption key for an already encrypted model.
-  EncryptionConfiguration encryptionConfiguration;
+  EncryptionConfiguration? encryptionConfiguration;
 
   /// A hash of this resource.
   ///
   /// Output only.
-  core.String etag;
+  core.String? etag;
 
   /// The time when this model expires, in milliseconds since the epoch.
   ///
@@ -7927,24 +7686,24 @@ class Model {
   /// expirationTime on newly created models.
   ///
   /// Optional.
-  core.String expirationTime;
+  core.String? expirationTime;
 
   /// Input feature columns that were used to train this model.
   ///
   /// Output only.
-  core.List<StandardSqlField> featureColumns;
+  core.List<StandardSqlField>? featureColumns;
 
   /// A descriptive name for this model.
   ///
   /// Optional.
-  core.String friendlyName;
+  core.String? friendlyName;
 
   /// Label columns that were used to train this model.
   ///
   /// The output of the model will have a "predicted_" prefix to these columns.
   ///
   /// Output only.
-  core.List<StandardSqlField> labelColumns;
+  core.List<StandardSqlField>? labelColumns;
 
   /// The labels associated with this model.
   ///
@@ -7953,24 +7712,24 @@ class Model {
   /// numeric characters, underscores and dashes. International characters are
   /// allowed. Label values are optional. Label keys must start with a letter
   /// and each label in the list must have a different key.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The time when this model was last modified, in millisecs since the epoch.
   ///
   /// Output only.
-  core.String lastModifiedTime;
+  core.String? lastModifiedTime;
 
   /// The geographic location where the model resides.
   ///
   /// This value is inherited from the dataset.
   ///
   /// Output only.
-  core.String location;
+  core.String? location;
 
   /// Unique identifier for this model.
   ///
   /// Required.
-  ModelReference modelReference;
+  ModelReference? modelReference;
 
   /// Type of the model resource.
   ///
@@ -7989,12 +7748,12 @@ class Model {
   /// - "ARIMA" : ARIMA model.
   /// - "AUTOML_REGRESSOR" : \[Beta\] AutoML Tables regression model.
   /// - "AUTOML_CLASSIFIER" : \[Beta\] AutoML Tables classification model.
-  core.String modelType;
+  core.String? modelType;
 
   /// Information for all training runs in increasing order of start_time.
   ///
   /// Output only.
-  core.List<TrainingRun> trainingRuns;
+  core.List<TrainingRun>? trainingRuns;
 
   Model();
 
@@ -8061,26 +7820,26 @@ class Model {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationTime != null) 'creationTime': creationTime,
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (description != null) 'description': description!,
         if (encryptionConfiguration != null)
-          'encryptionConfiguration': encryptionConfiguration.toJson(),
-        if (etag != null) 'etag': etag,
-        if (expirationTime != null) 'expirationTime': expirationTime,
+          'encryptionConfiguration': encryptionConfiguration!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (expirationTime != null) 'expirationTime': expirationTime!,
         if (featureColumns != null)
           'featureColumns':
-              featureColumns.map((value) => value.toJson()).toList(),
-        if (friendlyName != null) 'friendlyName': friendlyName,
+              featureColumns!.map((value) => value.toJson()).toList(),
+        if (friendlyName != null) 'friendlyName': friendlyName!,
         if (labelColumns != null)
-          'labelColumns': labelColumns.map((value) => value.toJson()).toList(),
-        if (labels != null) 'labels': labels,
-        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime,
-        if (location != null) 'location': location,
-        if (modelReference != null) 'modelReference': modelReference.toJson(),
-        if (modelType != null) 'modelType': modelType,
+          'labelColumns': labelColumns!.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels!,
+        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
+        if (location != null) 'location': location!,
+        if (modelReference != null) 'modelReference': modelReference!.toJson(),
+        if (modelType != null) 'modelType': modelType!,
         if (trainingRuns != null)
-          'trainingRuns': trainingRuns.map((value) => value.toJson()).toList(),
+          'trainingRuns': trainingRuns!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8089,9 +7848,9 @@ class Model {
 /// These options are immutable for subsequent training runs. Default values are
 /// used for any options not specified in the input query.
 class ModelDefinitionModelOptions {
-  core.List<core.String> labels;
-  core.String lossType;
-  core.String modelType;
+  core.List<core.String>? labels;
+  core.String? lossType;
+  core.String? modelType;
 
   ModelDefinitionModelOptions();
 
@@ -8109,10 +7868,10 @@ class ModelDefinitionModelOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
-        if (lossType != null) 'lossType': lossType,
-        if (modelType != null) 'modelType': modelType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
+        if (lossType != null) 'lossType': lossType!,
+        if (modelType != null) 'modelType': modelType!,
       };
 }
 
@@ -8121,13 +7880,13 @@ class ModelDefinition {
   ///
   /// These options are immutable for subsequent training runs. Default values
   /// are used for any options not specified in the input query.
-  ModelDefinitionModelOptions modelOptions;
+  ModelDefinitionModelOptions? modelOptions;
 
   /// \[Output-only, Beta\] Information about ml training runs, each training
   /// run comprises of multiple iterations and there may be multiple training
   /// runs for the model if warm start is used or if a user decides to continue
   /// a previously cancelled query.
-  core.List<BqmlTrainingRun> trainingRuns;
+  core.List<BqmlTrainingRun>? trainingRuns;
 
   ModelDefinition();
 
@@ -8144,10 +7903,10 @@ class ModelDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (modelOptions != null) 'modelOptions': modelOptions.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (modelOptions != null) 'modelOptions': modelOptions!.toJson(),
         if (trainingRuns != null)
-          'trainingRuns': trainingRuns.map((value) => value.toJson()).toList(),
+          'trainingRuns': trainingRuns!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8155,7 +7914,7 @@ class ModelReference {
   /// The ID of the dataset containing this model.
   ///
   /// Required.
-  core.String datasetId;
+  core.String? datasetId;
 
   /// The ID of the model.
   ///
@@ -8163,12 +7922,12 @@ class ModelReference {
   /// (_). The maximum length is 1,024 characters.
   ///
   /// Required.
-  core.String modelId;
+  core.String? modelId;
 
   /// The ID of the project containing this model.
   ///
   /// Required.
-  core.String projectId;
+  core.String? projectId;
 
   ModelReference();
 
@@ -8184,20 +7943,20 @@ class ModelReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (datasetId != null) 'datasetId': datasetId,
-        if (modelId != null) 'modelId': modelId,
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId!,
+        if (modelId != null) 'modelId': modelId!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
 /// Evaluation metrics for multi-class classification/classifier models.
 class MultiClassClassificationMetrics {
   /// Aggregate classification metrics.
-  AggregateClassificationMetrics aggregateClassificationMetrics;
+  AggregateClassificationMetrics? aggregateClassificationMetrics;
 
   /// Confusion matrix at different thresholds.
-  core.List<ConfusionMatrix> confusionMatrixList;
+  core.List<ConfusionMatrix>? confusionMatrixList;
 
   MultiClassClassificationMetrics();
 
@@ -8215,13 +7974,13 @@ class MultiClassClassificationMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (aggregateClassificationMetrics != null)
           'aggregateClassificationMetrics':
-              aggregateClassificationMetrics.toJson(),
+              aggregateClassificationMetrics!.toJson(),
         if (confusionMatrixList != null)
           'confusionMatrixList':
-              confusionMatrixList.map((value) => value.toJson()).toList(),
+              confusionMatrixList!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8258,14 +8017,14 @@ class MultiClassClassificationMetrics {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -8279,8 +8038,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -8304,7 +8063,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -8329,13 +8088,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -8346,17 +8105,17 @@ class Policy {
 class PrincipalComponentInfo {
   /// The explained_variance is pre-ordered in the descending order to compute
   /// the cumulative explained variance ratio.
-  core.double cumulativeExplainedVarianceRatio;
+  core.double? cumulativeExplainedVarianceRatio;
 
   /// Explained variance by this principal component, which is simply the
   /// eigenvalue.
-  core.double explainedVariance;
+  core.double? explainedVariance;
 
   /// Explained_variance over the total explained variance.
-  core.double explainedVarianceRatio;
+  core.double? explainedVarianceRatio;
 
   /// Id of the principal component.
-  core.String principalComponentId;
+  core.String? principalComponentId;
 
   PrincipalComponentInfo();
 
@@ -8377,32 +8136,32 @@ class PrincipalComponentInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cumulativeExplainedVarianceRatio != null)
-          'cumulativeExplainedVarianceRatio': cumulativeExplainedVarianceRatio,
-        if (explainedVariance != null) 'explainedVariance': explainedVariance,
+          'cumulativeExplainedVarianceRatio': cumulativeExplainedVarianceRatio!,
+        if (explainedVariance != null) 'explainedVariance': explainedVariance!,
         if (explainedVarianceRatio != null)
-          'explainedVarianceRatio': explainedVarianceRatio,
+          'explainedVarianceRatio': explainedVarianceRatio!,
         if (principalComponentId != null)
-          'principalComponentId': principalComponentId,
+          'principalComponentId': principalComponentId!,
       };
 }
 
 class ProjectListProjects {
   /// A descriptive name for this project.
-  core.String friendlyName;
+  core.String? friendlyName;
 
   /// An opaque ID of this project.
-  core.String id;
+  core.String? id;
 
   /// The resource type.
-  core.String kind;
+  core.String? kind;
 
   /// The numeric ID of this project.
-  core.String numericId;
+  core.String? numericId;
 
   /// A unique reference to this project.
-  ProjectReference projectReference;
+  ProjectReference? projectReference;
 
   ProjectListProjects();
 
@@ -8425,31 +8184,31 @@ class ProjectListProjects {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (friendlyName != null) 'friendlyName': friendlyName,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (numericId != null) 'numericId': numericId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (friendlyName != null) 'friendlyName': friendlyName!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (numericId != null) 'numericId': numericId!,
         if (projectReference != null)
-          'projectReference': projectReference.toJson(),
+          'projectReference': projectReference!.toJson(),
       };
 }
 
 class ProjectList {
   /// A hash of the page of results
-  core.String etag;
+  core.String? etag;
 
   /// The type of list.
-  core.String kind;
+  core.String? kind;
 
   /// A token to request the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Projects to which you have at least READ access.
-  core.List<ProjectListProjects> projects;
+  core.List<ProjectListProjects>? projects;
 
   /// The total number of projects in the list.
-  core.int totalItems;
+  core.int? totalItems;
 
   ProjectList();
 
@@ -8474,13 +8233,13 @@ class ProjectList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (projects != null)
-          'projects': projects.map((value) => value.toJson()).toList(),
-        if (totalItems != null) 'totalItems': totalItems,
+          'projects': projects!.map((value) => value.toJson()).toList(),
+        if (totalItems != null) 'totalItems': totalItems!,
       };
 }
 
@@ -8490,7 +8249,7 @@ class ProjectReference {
   /// Can be either the numeric ID or the assigned ID of the project.
   ///
   /// Required.
-  core.String projectId;
+  core.String? projectId;
 
   ProjectReference();
 
@@ -8500,8 +8259,8 @@ class ProjectReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
@@ -8511,17 +8270,17 @@ class QueryParameter {
   /// Otherwise, should be unique within a query.
   ///
   /// Optional.
-  core.String name;
+  core.String? name;
 
   /// The type of this parameter.
   ///
   /// Required.
-  QueryParameterType parameterType;
+  QueryParameterType? parameterType;
 
   /// The value of this parameter.
   ///
   /// Required.
-  QueryParameterValue parameterValue;
+  QueryParameterValue? parameterValue;
 
   QueryParameter();
 
@@ -8539,10 +8298,10 @@ class QueryParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (parameterType != null) 'parameterType': parameterType.toJson(),
-        if (parameterValue != null) 'parameterValue': parameterValue.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (parameterType != null) 'parameterType': parameterType!.toJson(),
+        if (parameterValue != null) 'parameterValue': parameterValue!.toJson(),
       };
 }
 
@@ -8550,17 +8309,17 @@ class QueryParameterTypeStructTypes {
   /// Human-oriented description of the field.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// The name of this field.
   ///
   /// Optional.
-  core.String name;
+  core.String? name;
 
   /// The type of this field.
   ///
   /// Required.
-  QueryParameterType type;
+  QueryParameterType? type;
 
   QueryParameterTypeStructTypes();
 
@@ -8577,10 +8336,10 @@ class QueryParameterTypeStructTypes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (name != null) 'name': name,
-        if (type != null) 'type': type.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!.toJson(),
       };
 }
 
@@ -8588,17 +8347,17 @@ class QueryParameterType {
   /// The type of the array's elements, if this is an array.
   ///
   /// Optional.
-  QueryParameterType arrayType;
+  QueryParameterType? arrayType;
 
   /// The types of the fields of this struct, in order, if this is a struct.
   ///
   /// Optional.
-  core.List<QueryParameterTypeStructTypes> structTypes;
+  core.List<QueryParameterTypeStructTypes>? structTypes;
 
   /// The top level type of this field.
   ///
   /// Required.
-  core.String type;
+  core.String? type;
 
   QueryParameterType();
 
@@ -8619,11 +8378,11 @@ class QueryParameterType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (arrayType != null) 'arrayType': arrayType.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (arrayType != null) 'arrayType': arrayType!.toJson(),
         if (structTypes != null)
-          'structTypes': structTypes.map((value) => value.toJson()).toList(),
-        if (type != null) 'type': type,
+          'structTypes': structTypes!.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -8631,17 +8390,17 @@ class QueryParameterValue {
   /// The array values, if this is an array type.
   ///
   /// Optional.
-  core.List<QueryParameterValue> arrayValues;
+  core.List<QueryParameterValue>? arrayValues;
 
   /// The struct field values, in order of the struct type's declaration.
   ///
   /// Optional.
-  core.Map<core.String, QueryParameterValue> structValues;
+  core.Map<core.String, QueryParameterValue>? structValues;
 
   /// The value of this value, if a simple scalar type.
   ///
   /// Optional.
-  core.String value;
+  core.String? value;
 
   QueryParameterValue();
 
@@ -8653,33 +8412,34 @@ class QueryParameterValue {
           .toList();
     }
     if (_json.containsKey('structValues')) {
-      structValues =
-          (_json['structValues'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  QueryParameterValue.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      structValues = (_json['structValues'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              QueryParameterValue.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('value')) {
       value = _json['value'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (arrayValues != null)
-          'arrayValues': arrayValues.map((value) => value.toJson()).toList(),
+          'arrayValues': arrayValues!.map((value) => value.toJson()).toList(),
         if (structValues != null)
-          'structValues': structValues
+          'structValues': structValues!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (value != null) 'value': value,
+        if (value != null) 'value': value!,
       };
 }
 
 class QueryRequest {
   /// Connection properties.
-  core.List<ConnectionProperty> connectionProperties;
+  core.List<ConnectionProperty>? connectionProperties;
 
   /// Specifies the default datasetId and projectId to assume for any
   /// unqualified table names in the query.
@@ -8688,7 +8448,7 @@ class QueryRequest {
   /// format 'datasetId.tableId'.
   ///
   /// Optional.
-  DatasetReference defaultDataset;
+  DatasetReference? defaultDataset;
 
   /// If set to true, BigQuery doesn't run the job.
   ///
@@ -8697,10 +8457,10 @@ class QueryRequest {
   /// error returns. The default value is false.
   ///
   /// Optional.
-  core.bool dryRun;
+  core.bool? dryRun;
 
   /// The resource type of the request.
-  core.String kind;
+  core.String? kind;
 
   /// The labels associated with this job.
   ///
@@ -8709,13 +8469,13 @@ class QueryRequest {
   /// numeric characters, underscores and dashes. International characters are
   /// allowed. Label values are optional. Label keys must start with a letter
   /// and each label in the list must have a different key.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The geographic location where the job should run.
   ///
   /// See details at
   /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
-  core.String location;
+  core.String? location;
 
   /// The maximum number of rows of data to return per page of results.
   ///
@@ -8725,7 +8485,7 @@ class QueryRequest {
   /// there is no maximum row count, and only the byte limit applies.
   ///
   /// Optional.
-  core.int maxResults;
+  core.int? maxResults;
 
   /// Limits the bytes billed for this job.
   ///
@@ -8734,18 +8494,18 @@ class QueryRequest {
   /// default.
   ///
   /// Optional.
-  core.String maximumBytesBilled;
+  core.String? maximumBytesBilled;
 
   /// Standard SQL only.
   ///
   /// Set to POSITIONAL to use positional (?) query parameters or to NAMED to
   /// use named (@myparam) query parameters in this query.
-  core.String parameterMode;
+  core.String? parameterMode;
 
   /// This property is deprecated.
   ///
   /// Deprecated.
-  core.bool preserveNulls;
+  core.bool? preserveNulls;
 
   /// A query string, following the BigQuery query syntax, of the query to
   /// execute.
@@ -8753,10 +8513,10 @@ class QueryRequest {
   /// Example: "SELECT count(f1) FROM \[myProjectId:myDatasetId.myTableId\]".
   ///
   /// Required.
-  core.String query;
+  core.String? query;
 
   /// Query parameters for Standard SQL queries.
-  core.List<QueryParameter> queryParameters;
+  core.List<QueryParameter>? queryParameters;
 
   /// A unique user provided identifier to ensure idempotent behavior for
   /// queries.
@@ -8780,7 +8540,7 @@ class QueryRequest {
   /// lifetime is limited to 15 minutes. In other words, if two requests are
   /// sent with the same request_id, but more than 15 minutes apart, idempotency
   /// is not guaranteed.
-  core.String requestId;
+  core.String? requestId;
 
   /// How long to wait for the query to complete, in milliseconds, before the
   /// request times out and returns.
@@ -8792,7 +8552,7 @@ class QueryRequest {
   /// The default value is 10000 milliseconds (10 seconds).
   ///
   /// Optional.
-  core.int timeoutMs;
+  core.int? timeoutMs;
 
   /// Specifies whether to use BigQuery's legacy SQL dialect for this query.
   ///
@@ -8800,7 +8560,7 @@ class QueryRequest {
   /// standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
   /// useLegacySql is set to false, the value of flattenResults is ignored;
   /// query will be run as if flattenResults is false.
-  core.bool useLegacySql;
+  core.bool? useLegacySql;
 
   /// Whether to look for the result in the query cache.
   ///
@@ -8808,7 +8568,7 @@ class QueryRequest {
   /// tables in the query are modified. The default value is true.
   ///
   /// Optional.
-  core.bool useQueryCache;
+  core.bool? useQueryCache;
 
   QueryRequest();
 
@@ -8876,34 +8636,34 @@ class QueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (connectionProperties != null)
           'connectionProperties':
-              connectionProperties.map((value) => value.toJson()).toList(),
-        if (defaultDataset != null) 'defaultDataset': defaultDataset.toJson(),
-        if (dryRun != null) 'dryRun': dryRun,
-        if (kind != null) 'kind': kind,
-        if (labels != null) 'labels': labels,
-        if (location != null) 'location': location,
-        if (maxResults != null) 'maxResults': maxResults,
+              connectionProperties!.map((value) => value.toJson()).toList(),
+        if (defaultDataset != null) 'defaultDataset': defaultDataset!.toJson(),
+        if (dryRun != null) 'dryRun': dryRun!,
+        if (kind != null) 'kind': kind!,
+        if (labels != null) 'labels': labels!,
+        if (location != null) 'location': location!,
+        if (maxResults != null) 'maxResults': maxResults!,
         if (maximumBytesBilled != null)
-          'maximumBytesBilled': maximumBytesBilled,
-        if (parameterMode != null) 'parameterMode': parameterMode,
-        if (preserveNulls != null) 'preserveNulls': preserveNulls,
-        if (query != null) 'query': query,
+          'maximumBytesBilled': maximumBytesBilled!,
+        if (parameterMode != null) 'parameterMode': parameterMode!,
+        if (preserveNulls != null) 'preserveNulls': preserveNulls!,
+        if (query != null) 'query': query!,
         if (queryParameters != null)
           'queryParameters':
-              queryParameters.map((value) => value.toJson()).toList(),
-        if (requestId != null) 'requestId': requestId,
-        if (timeoutMs != null) 'timeoutMs': timeoutMs,
-        if (useLegacySql != null) 'useLegacySql': useLegacySql,
-        if (useQueryCache != null) 'useQueryCache': useQueryCache,
+              queryParameters!.map((value) => value.toJson()).toList(),
+        if (requestId != null) 'requestId': requestId!,
+        if (timeoutMs != null) 'timeoutMs': timeoutMs!,
+        if (useLegacySql != null) 'useLegacySql': useLegacySql!,
+        if (useQueryCache != null) 'useQueryCache': useQueryCache!,
       };
 }
 
 class QueryResponse {
   /// Whether the query result was fetched from the query cache.
-  core.bool cacheHit;
+  core.bool? cacheHit;
 
   /// \[Output-only\] The first errors or warnings encountered during the
   /// running of the job.
@@ -8911,13 +8671,13 @@ class QueryResponse {
   /// The final message includes the number of errors that caused the process to
   /// stop. Errors here do not necessarily mean that the job has completed or
   /// was unsuccessful.
-  core.List<ErrorProto> errors;
+  core.List<ErrorProto>? errors;
 
   /// Whether the query has completed or not.
   ///
   /// If rows or totalRows are present, this will always be true. If this is
   /// false, totalRows will not be available.
-  core.bool jobComplete;
+  core.bool? jobComplete;
 
   /// Reference to the Job that was created to run the query.
   ///
@@ -8925,40 +8685,40 @@ class QueryResponse {
   /// which case GetQueryResults can be used to read the results once the query
   /// has completed. Since this API only returns the first page of results,
   /// subsequent pages can be fetched via the same mechanism (GetQueryResults).
-  JobReference jobReference;
+  JobReference? jobReference;
 
   /// The resource type.
-  core.String kind;
+  core.String? kind;
 
   /// \[Output-only\] The number of rows affected by a DML statement.
   ///
   /// Present only for DML statements INSERT, UPDATE or DELETE.
-  core.String numDmlAffectedRows;
+  core.String? numDmlAffectedRows;
 
   /// A token used for paging results.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// An object with as many results as can be contained within the maximum
   /// permitted reply size.
   ///
   /// To get any additional rows, you can call GetQueryResults and specify the
   /// jobReference returned above.
-  core.List<TableRow> rows;
+  core.List<TableRow>? rows;
 
   /// The schema of the results.
   ///
   /// Present only when the query completes successfully.
-  TableSchema schema;
+  TableSchema? schema;
 
   /// The total number of bytes processed for this query.
   ///
   /// If this query was a dry run, this is the number of bytes that would be
   /// processed if the query were run.
-  core.String totalBytesProcessed;
+  core.String? totalBytesProcessed;
 
   /// The total number of rows in the complete query result set, which can be
   /// more than the number of rows in this single page of results.
-  core.String totalRows;
+  core.String? totalRows;
 
   QueryResponse();
 
@@ -9006,21 +8766,21 @@ class QueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cacheHit != null) 'cacheHit': cacheHit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cacheHit != null) 'cacheHit': cacheHit!,
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
-        if (jobComplete != null) 'jobComplete': jobComplete,
-        if (jobReference != null) 'jobReference': jobReference.toJson(),
-        if (kind != null) 'kind': kind,
+          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (jobComplete != null) 'jobComplete': jobComplete!,
+        if (jobReference != null) 'jobReference': jobReference!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (numDmlAffectedRows != null)
-          'numDmlAffectedRows': numDmlAffectedRows,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
-        if (schema != null) 'schema': schema.toJson(),
+          'numDmlAffectedRows': numDmlAffectedRows!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (schema != null) 'schema': schema!.toJson(),
         if (totalBytesProcessed != null)
-          'totalBytesProcessed': totalBytesProcessed,
-        if (totalRows != null) 'totalRows': totalRows,
+          'totalBytesProcessed': totalBytesProcessed!,
+        if (totalRows != null) 'totalRows': totalRows!,
       };
 }
 
@@ -9029,19 +8789,19 @@ class QueryTimelineSample {
   ///
   /// This does not correspond directly to slot usage. This is the largest value
   /// observed since the last sample.
-  core.String activeUnits;
+  core.String? activeUnits;
 
   /// Total parallel units of work completed by this query.
-  core.String completedUnits;
+  core.String? completedUnits;
 
   /// Milliseconds elapsed since the start of query execution.
-  core.String elapsedMs;
+  core.String? elapsedMs;
 
   /// Total parallel units of work remaining for the active stages.
-  core.String pendingUnits;
+  core.String? pendingUnits;
 
   /// Cumulative slot-ms consumed by the query.
-  core.String totalSlotMs;
+  core.String? totalSlotMs;
 
   QueryTimelineSample();
 
@@ -9063,25 +8823,25 @@ class QueryTimelineSample {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activeUnits != null) 'activeUnits': activeUnits,
-        if (completedUnits != null) 'completedUnits': completedUnits,
-        if (elapsedMs != null) 'elapsedMs': elapsedMs,
-        if (pendingUnits != null) 'pendingUnits': pendingUnits,
-        if (totalSlotMs != null) 'totalSlotMs': totalSlotMs,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activeUnits != null) 'activeUnits': activeUnits!,
+        if (completedUnits != null) 'completedUnits': completedUnits!,
+        if (elapsedMs != null) 'elapsedMs': elapsedMs!,
+        if (pendingUnits != null) 'pendingUnits': pendingUnits!,
+        if (totalSlotMs != null) 'totalSlotMs': totalSlotMs!,
       };
 }
 
 /// \[TrustedTester\] \[Required\] Defines the ranges for range partitioning.
 class RangePartitioningRange {
   /// \[TrustedTester\] \[Required\] The end of range partitioning, exclusive.
-  core.String end;
+  core.String? end;
 
   /// \[TrustedTester\] \[Required\] The width of each interval.
-  core.String interval;
+  core.String? interval;
 
   /// \[TrustedTester\] \[Required\] The start of range partitioning, inclusive.
-  core.String start;
+  core.String? start;
 
   RangePartitioningRange();
 
@@ -9097,10 +8857,10 @@ class RangePartitioningRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (end != null) 'end': end,
-        if (interval != null) 'interval': interval,
-        if (start != null) 'start': start,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (end != null) 'end': end!,
+        if (interval != null) 'interval': interval!,
+        if (start != null) 'start': start!,
       };
 }
 
@@ -9109,10 +8869,10 @@ class RangePartitioning {
   ///
   /// The field must be a top-level NULLABLE/REQUIRED field. The only supported
   /// type is INTEGER/INT64.
-  core.String field;
+  core.String? field;
 
   /// \[TrustedTester\] \[Required\] Defines the ranges for range partitioning.
-  RangePartitioningRange range;
+  RangePartitioningRange? range;
 
   RangePartitioning();
 
@@ -9126,9 +8886,9 @@ class RangePartitioning {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (field != null) 'field': field,
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (field != null) 'field': field!,
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
@@ -9137,22 +8897,22 @@ class RangePartitioning {
 class RankingMetrics {
   /// Determines the goodness of a ranking by computing the percentile rank from
   /// the predicted confidence and dividing it by the original rank.
-  core.double averageRank;
+  core.double? averageRank;
 
   /// Calculates a precision per user for all the items by ranking them and then
   /// averages all the precisions across all the users.
-  core.double meanAveragePrecision;
+  core.double? meanAveragePrecision;
 
   /// Similar to the mean squared error computed in regression and explicit
   /// recommendation models except instead of computing the rating directly, the
   /// output from evaluate is computed against a preference which is 1 or 0
   /// depending on if the rating exists or not.
-  core.double meanSquaredError;
+  core.double? meanSquaredError;
 
   /// A metric to determine the goodness of a ranking calculated from the
   /// predicted confidence by comparing it to an ideal rank measured by the
   /// original ratings.
-  core.double normalizedDiscountedCumulativeGain;
+  core.double? normalizedDiscountedCumulativeGain;
 
   RankingMetrics();
 
@@ -9173,14 +8933,14 @@ class RankingMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (averageRank != null) 'averageRank': averageRank,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (averageRank != null) 'averageRank': averageRank!,
         if (meanAveragePrecision != null)
-          'meanAveragePrecision': meanAveragePrecision,
-        if (meanSquaredError != null) 'meanSquaredError': meanSquaredError,
+          'meanAveragePrecision': meanAveragePrecision!,
+        if (meanSquaredError != null) 'meanSquaredError': meanSquaredError!,
         if (normalizedDiscountedCumulativeGain != null)
           'normalizedDiscountedCumulativeGain':
-              normalizedDiscountedCumulativeGain,
+              normalizedDiscountedCumulativeGain!,
       };
 }
 
@@ -9188,21 +8948,21 @@ class RankingMetrics {
 /// factorization models.
 class RegressionMetrics {
   /// Mean absolute error.
-  core.double meanAbsoluteError;
+  core.double? meanAbsoluteError;
 
   /// Mean squared error.
-  core.double meanSquaredError;
+  core.double? meanSquaredError;
 
   /// Mean squared log error.
-  core.double meanSquaredLogError;
+  core.double? meanSquaredLogError;
 
   /// Median absolute error.
-  core.double medianAbsoluteError;
+  core.double? medianAbsoluteError;
 
   /// R^2 score.
   ///
   /// This corresponds to r2_score in ML.EVALUATE.
-  core.double rSquared;
+  core.double? rSquared;
 
   RegressionMetrics();
 
@@ -9226,26 +8986,26 @@ class RegressionMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (meanAbsoluteError != null) 'meanAbsoluteError': meanAbsoluteError,
-        if (meanSquaredError != null) 'meanSquaredError': meanSquaredError,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (meanAbsoluteError != null) 'meanAbsoluteError': meanAbsoluteError!,
+        if (meanSquaredError != null) 'meanSquaredError': meanSquaredError!,
         if (meanSquaredLogError != null)
-          'meanSquaredLogError': meanSquaredLogError,
+          'meanSquaredLogError': meanSquaredLogError!,
         if (medianAbsoluteError != null)
-          'medianAbsoluteError': medianAbsoluteError,
-        if (rSquared != null) 'rSquared': rSquared,
+          'medianAbsoluteError': medianAbsoluteError!,
+        if (rSquared != null) 'rSquared': rSquared!,
       };
 }
 
 /// A user-defined function or a stored procedure.
 class Routine {
   /// Optional.
-  core.List<Argument> arguments;
+  core.List<Argument>? arguments;
 
   /// The time when this routine was created, in milliseconds since the epoch.
   ///
   /// Output only.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// The body of the routine.
   ///
@@ -9261,12 +9021,12 @@ class Routine {
   /// linebreaks.
   ///
   /// Required.
-  core.String definitionBody;
+  core.String? definitionBody;
 
   /// \[Experimental\] The description of the routine if defined.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// \[Experimental\] The determinism level of the JavaScript UDF if defined.
   ///
@@ -9278,18 +9038,18 @@ class Routine {
   /// calls with the same inputs always produce the same result, even across 2
   /// query runs.
   /// - "NOT_DETERMINISTIC" : The UDF is not deterministic.
-  core.String determinismLevel;
+  core.String? determinismLevel;
 
   /// A hash of this resource.
   ///
   /// Output only.
-  core.String etag;
+  core.String? etag;
 
   /// If language = "JAVASCRIPT", this field stores the path of the imported
   /// JAVASCRIPT libraries.
   ///
   /// Optional.
-  core.List<core.String> importedLibraries;
+  core.List<core.String>? importedLibraries;
 
   /// Defaults to "SQL".
   ///
@@ -9298,13 +9058,13 @@ class Routine {
   /// - "LANGUAGE_UNSPECIFIED"
   /// - "SQL" : SQL language.
   /// - "JAVASCRIPT" : JavaScript language.
-  core.String language;
+  core.String? language;
 
   /// The time when this routine was last modified, in milliseconds since the
   /// epoch.
   ///
   /// Output only.
-  core.String lastModifiedTime;
+  core.String? lastModifiedTime;
 
   /// Optional if language = "SQL"; required otherwise.
   ///
@@ -9321,12 +9081,12 @@ class Routine {
   /// (x + y);` Then the inferred return type of `Increment` is automatically
   /// changed to INT64 at query time, while the return type of `Decrement`
   /// remains FLOAT64.
-  StandardSqlDataType returnType;
+  StandardSqlDataType? returnType;
 
   /// Reference describing the ID of this routine.
   ///
   /// Required.
-  RoutineReference routineReference;
+  RoutineReference? routineReference;
 
   /// The type of routine.
   ///
@@ -9335,7 +9095,7 @@ class Routine {
   /// - "ROUTINE_TYPE_UNSPECIFIED"
   /// - "SCALAR_FUNCTION" : Non-builtin permanent scalar function.
   /// - "PROCEDURE" : Stored procedure.
-  core.String routineType;
+  core.String? routineType;
 
   Routine();
 
@@ -9385,21 +9145,21 @@ class Routine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (arguments != null)
-          'arguments': arguments.map((value) => value.toJson()).toList(),
-        if (creationTime != null) 'creationTime': creationTime,
-        if (definitionBody != null) 'definitionBody': definitionBody,
-        if (description != null) 'description': description,
-        if (determinismLevel != null) 'determinismLevel': determinismLevel,
-        if (etag != null) 'etag': etag,
-        if (importedLibraries != null) 'importedLibraries': importedLibraries,
-        if (language != null) 'language': language,
-        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime,
-        if (returnType != null) 'returnType': returnType.toJson(),
+          'arguments': arguments!.map((value) => value.toJson()).toList(),
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (definitionBody != null) 'definitionBody': definitionBody!,
+        if (description != null) 'description': description!,
+        if (determinismLevel != null) 'determinismLevel': determinismLevel!,
+        if (etag != null) 'etag': etag!,
+        if (importedLibraries != null) 'importedLibraries': importedLibraries!,
+        if (language != null) 'language': language!,
+        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
+        if (returnType != null) 'returnType': returnType!.toJson(),
         if (routineReference != null)
-          'routineReference': routineReference.toJson(),
-        if (routineType != null) 'routineType': routineType,
+          'routineReference': routineReference!.toJson(),
+        if (routineType != null) 'routineType': routineType!,
       };
 }
 
@@ -9407,12 +9167,12 @@ class RoutineReference {
   /// The ID of the dataset containing this routine.
   ///
   /// Required.
-  core.String datasetId;
+  core.String? datasetId;
 
   /// The ID of the project containing this routine.
   ///
   /// Required.
-  core.String projectId;
+  core.String? projectId;
 
   /// The ID of the routine.
   ///
@@ -9420,7 +9180,7 @@ class RoutineReference {
   /// (_). The maximum length is 256 characters.
   ///
   /// Required.
-  core.String routineId;
+  core.String? routineId;
 
   RoutineReference();
 
@@ -9436,20 +9196,20 @@ class RoutineReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (datasetId != null) 'datasetId': datasetId,
-        if (projectId != null) 'projectId': projectId,
-        if (routineId != null) 'routineId': routineId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId!,
+        if (projectId != null) 'projectId': projectId!,
+        if (routineId != null) 'routineId': routineId!,
       };
 }
 
 /// A single row in the confusion matrix.
 class Row {
   /// The original label of this row.
-  core.String actualLabel;
+  core.String? actualLabel;
 
   /// Info describing predicted label distribution.
-  core.List<Entry> entries;
+  core.List<Entry>? entries;
 
   Row();
 
@@ -9465,10 +9225,10 @@ class Row {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actualLabel != null) 'actualLabel': actualLabel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actualLabel != null) 'actualLabel': actualLabel!,
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
+          'entries': entries!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -9481,12 +9241,12 @@ class RowAccessPolicy {
   /// the epoch.
   ///
   /// Output only.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// A hash of this resource.
   ///
   /// Output only.
-  core.String etag;
+  core.String? etag;
 
   /// A SQL boolean expression that represents the rows defined by this row
   /// access policy, similar to the boolean expression in a WHERE clause of a
@@ -9497,18 +9257,18 @@ class RowAccessPolicy {
   /// nullable_field is not NULL numeric_field BETWEEN 1.0 AND 5.0
   ///
   /// Required.
-  core.String filterPredicate;
+  core.String? filterPredicate;
 
   /// The time when this row access policy was last modified, in milliseconds
   /// since the epoch.
   ///
   /// Output only.
-  core.String lastModifiedTime;
+  core.String? lastModifiedTime;
 
   /// Reference describing the ID of this row access policy.
   ///
   /// Required.
-  RowAccessPolicyReference rowAccessPolicyReference;
+  RowAccessPolicyReference? rowAccessPolicyReference;
 
   RowAccessPolicy();
 
@@ -9532,13 +9292,13 @@ class RowAccessPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationTime != null) 'creationTime': creationTime,
-        if (etag != null) 'etag': etag,
-        if (filterPredicate != null) 'filterPredicate': filterPredicate,
-        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (etag != null) 'etag': etag!,
+        if (filterPredicate != null) 'filterPredicate': filterPredicate!,
+        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
         if (rowAccessPolicyReference != null)
-          'rowAccessPolicyReference': rowAccessPolicyReference.toJson(),
+          'rowAccessPolicyReference': rowAccessPolicyReference!.toJson(),
       };
 }
 
@@ -9546,7 +9306,7 @@ class RowAccessPolicyReference {
   /// The ID of the dataset containing this row access policy.
   ///
   /// Required.
-  core.String datasetId;
+  core.String? datasetId;
 
   /// The ID of the row access policy.
   ///
@@ -9554,17 +9314,17 @@ class RowAccessPolicyReference {
   /// (_). The maximum length is 256 characters.
   ///
   /// Required.
-  core.String policyId;
+  core.String? policyId;
 
   /// The ID of the project containing this row access policy.
   ///
   /// Required.
-  core.String projectId;
+  core.String? projectId;
 
   /// The ID of the table containing this row access policy.
   ///
   /// Required.
-  core.String tableId;
+  core.String? tableId;
 
   RowAccessPolicyReference();
 
@@ -9583,18 +9343,18 @@ class RowAccessPolicyReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (datasetId != null) 'datasetId': datasetId,
-        if (policyId != null) 'policyId': policyId,
-        if (projectId != null) 'projectId': projectId,
-        if (tableId != null) 'tableId': tableId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId!,
+        if (policyId != null) 'policyId': policyId!,
+        if (projectId != null) 'projectId': projectId!,
+        if (tableId != null) 'tableId': tableId!,
       };
 }
 
 class RowLevelSecurityStatistics {
   /// \[Output-only\] \[Preview\] Whether any accessed data was protected by row
   /// access policies.
-  core.bool rowLevelSecurityApplied;
+  core.bool? rowLevelSecurityApplied;
 
   RowLevelSecurityStatistics();
 
@@ -9604,31 +9364,31 @@ class RowLevelSecurityStatistics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (rowLevelSecurityApplied != null)
-          'rowLevelSecurityApplied': rowLevelSecurityApplied,
+          'rowLevelSecurityApplied': rowLevelSecurityApplied!,
       };
 }
 
 class ScriptStackFrame {
   /// \[Output-only\] One-based end column.
-  core.int endColumn;
+  core.int? endColumn;
 
   /// \[Output-only\] One-based end line.
-  core.int endLine;
+  core.int? endLine;
 
   /// \[Output-only\] Name of the active procedure, empty if in a top-level
   /// script.
-  core.String procedureId;
+  core.String? procedureId;
 
   /// \[Output-only\] One-based start column.
-  core.int startColumn;
+  core.int? startColumn;
 
   /// \[Output-only\] One-based start line.
-  core.int startLine;
+  core.int? startLine;
 
   /// \[Output-only\] Text of the current statement/expression.
-  core.String text;
+  core.String? text;
 
   ScriptStackFrame();
 
@@ -9653,25 +9413,25 @@ class ScriptStackFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endColumn != null) 'endColumn': endColumn,
-        if (endLine != null) 'endLine': endLine,
-        if (procedureId != null) 'procedureId': procedureId,
-        if (startColumn != null) 'startColumn': startColumn,
-        if (startLine != null) 'startLine': startLine,
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endColumn != null) 'endColumn': endColumn!,
+        if (endLine != null) 'endLine': endLine!,
+        if (procedureId != null) 'procedureId': procedureId!,
+        if (startColumn != null) 'startColumn': startColumn!,
+        if (startLine != null) 'startLine': startLine!,
+        if (text != null) 'text': text!,
       };
 }
 
 class ScriptStatistics {
   /// \[Output-only\] Whether this child job was a statement or expression.
-  core.String evaluationKind;
+  core.String? evaluationKind;
 
   /// Stack trace showing the line/column/procedure name of each frame on the
   /// stack at the point where the current evaluation happened.
   ///
   /// The leaf frame is first, the primary script is last. Never empty.
-  core.List<ScriptStackFrame> stackFrames;
+  core.List<ScriptStackFrame>? stackFrames;
 
   ScriptStatistics();
 
@@ -9687,10 +9447,10 @@ class ScriptStatistics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (evaluationKind != null) 'evaluationKind': evaluationKind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (evaluationKind != null) 'evaluationKind': evaluationKind!,
         if (stackFrames != null)
-          'stackFrames': stackFrames.map((value) => value.toJson()).toList(),
+          'stackFrames': stackFrames!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -9701,13 +9461,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -9721,9 +9481,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -9731,12 +9491,12 @@ class SnapshotDefinition {
   /// Reference describing the ID of the table that is snapshotted.
   ///
   /// Required.
-  TableReference baseTableReference;
+  TableReference? baseTableReference;
 
   /// The time at which the base table was snapshot.
   ///
   /// Required.
-  core.DateTime snapshotTime;
+  core.DateTime? snapshotTime;
 
   SnapshotDefinition();
 
@@ -9750,11 +9510,11 @@ class SnapshotDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (baseTableReference != null)
-          'baseTableReference': baseTableReference.toJson(),
+          'baseTableReference': baseTableReference!.toJson(),
         if (snapshotTime != null)
-          'snapshotTime': (snapshotTime).toIso8601String(),
+          'snapshotTime': (snapshotTime!).toIso8601String(),
       };
 }
 
@@ -9766,10 +9526,10 @@ class SnapshotDefinition {
 /// type={type_kind="ARRAY", array_element_type="DATE"}} \]}}
 class StandardSqlDataType {
   /// The type of the array's elements, if type_kind = "ARRAY".
-  StandardSqlDataType arrayElementType;
+  StandardSqlDataType? arrayElementType;
 
   /// The fields of this struct, in order, if type_kind = "STRUCT".
-  StandardSqlStructType structType;
+  StandardSqlStructType? structType;
 
   /// The top level type of this field.
   ///
@@ -9796,7 +9556,7 @@ class StandardSqlDataType {
   /// - "ARRAY" : Encoded as a list with types matching Type.array_type.
   /// - "STRUCT" : Encoded as a list with fields of type Type.struct_type\[i\].
   /// List is used because a JSON object cannot have duplicate field names.
-  core.String typeKind;
+  core.String? typeKind;
 
   StandardSqlDataType();
 
@@ -9814,11 +9574,11 @@ class StandardSqlDataType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (arrayElementType != null)
-          'arrayElementType': arrayElementType.toJson(),
-        if (structType != null) 'structType': structType.toJson(),
-        if (typeKind != null) 'typeKind': typeKind,
+          'arrayElementType': arrayElementType!.toJson(),
+        if (structType != null) 'structType': structType!.toJson(),
+        if (typeKind != null) 'typeKind': typeKind!,
       };
 }
 
@@ -9829,7 +9589,7 @@ class StandardSqlField {
   /// Can be absent for struct fields.
   ///
   /// Optional.
-  core.String name;
+  core.String? name;
 
   /// The type of this parameter.
   ///
@@ -9838,7 +9598,7 @@ class StandardSqlField {
   /// "type" field).
   ///
   /// Optional.
-  StandardSqlDataType type;
+  StandardSqlDataType? type;
 
   StandardSqlField();
 
@@ -9852,14 +9612,14 @@ class StandardSqlField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (type != null) 'type': type.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!.toJson(),
       };
 }
 
 class StandardSqlStructType {
-  core.List<StandardSqlField> fields;
+  core.List<StandardSqlField>? fields;
 
   StandardSqlStructType();
 
@@ -9872,25 +9632,25 @@ class StandardSqlStructType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fields != null)
-          'fields': fields.map((value) => value.toJson()).toList(),
+          'fields': fields!.map((value) => value.toJson()).toList(),
       };
 }
 
 class Streamingbuffer {
   /// \[Output-only\] A lower-bound estimate of the number of bytes currently in
   /// the streaming buffer.
-  core.String estimatedBytes;
+  core.String? estimatedBytes;
 
   /// \[Output-only\] A lower-bound estimate of the number of rows currently in
   /// the streaming buffer.
-  core.String estimatedRows;
+  core.String? estimatedRows;
 
   /// \[Output-only\] Contains the timestamp of the oldest entry in the
   /// streaming buffer, in milliseconds since the epoch, if the streaming buffer
   /// is available.
-  core.String oldestEntryTime;
+  core.String? oldestEntryTime;
 
   Streamingbuffer();
 
@@ -9906,10 +9666,10 @@ class Streamingbuffer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (estimatedBytes != null) 'estimatedBytes': estimatedBytes,
-        if (estimatedRows != null) 'estimatedRows': estimatedRows,
-        if (oldestEntryTime != null) 'oldestEntryTime': oldestEntryTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (estimatedBytes != null) 'estimatedBytes': estimatedBytes!,
+        if (estimatedRows != null) 'estimatedRows': estimatedRows!,
+        if (oldestEntryTime != null) 'oldestEntryTime': oldestEntryTime!,
       };
 }
 
@@ -9918,26 +9678,26 @@ class Table {
   ///
   /// Must be specified with partitioning, data in the table will be first
   /// partitioned and subsequently clustered.
-  Clustering clustering;
+  Clustering? clustering;
 
   /// \[Output-only\] The time when this table was created, in milliseconds
   /// since the epoch.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// A user-friendly description of this table.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Custom encryption configuration (e.g., Cloud KMS keys).
-  EncryptionConfiguration encryptionConfiguration;
+  EncryptionConfiguration? encryptionConfiguration;
 
   /// \[Output-only\] A hash of the table metadata.
   ///
   /// Used to ensure there were no concurrent modifications to the resource when
   /// attempting an update. Not guaranteed to change when the table contents or
   /// the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
-  core.String etag;
+  core.String? etag;
 
   /// The time when this table expires, in milliseconds since the epoch.
   ///
@@ -9947,7 +9707,7 @@ class Table {
   /// expirationTime on newly created tables.
   ///
   /// Optional.
-  core.String expirationTime;
+  core.String? expirationTime;
 
   /// Describes the data format, location, and other properties of a table
   /// stored outside of BigQuery.
@@ -9956,18 +9716,18 @@ class Table {
   /// were a standard BigQuery table.
   ///
   /// Optional.
-  ExternalDataConfiguration externalDataConfiguration;
+  ExternalDataConfiguration? externalDataConfiguration;
 
   /// A descriptive name for this table.
   ///
   /// Optional.
-  core.String friendlyName;
+  core.String? friendlyName;
 
   /// \[Output-only\] An opaque ID uniquely identifying the table.
-  core.String id;
+  core.String? id;
 
   /// \[Output-only\] The type of the resource.
-  core.String kind;
+  core.String? kind;
 
   /// The labels associated with this table.
   ///
@@ -9976,84 +9736,84 @@ class Table {
   /// numeric characters, underscores and dashes. International characters are
   /// allowed. Label values are optional. Label keys must start with a letter
   /// and each label in the list must have a different key.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// \[Output-only\] The time when this table was last modified, in
   /// milliseconds since the epoch.
-  core.String lastModifiedTime;
+  core.String? lastModifiedTime;
 
   /// \[Output-only\] The geographic location where the table resides.
   ///
   /// This value is inherited from the dataset.
-  core.String location;
+  core.String? location;
 
   /// Materialized view definition.
   ///
   /// Optional.
-  MaterializedViewDefinition materializedView;
+  MaterializedViewDefinition? materializedView;
 
   /// \[Output-only, Beta\] Present iff this table represents a ML model.
   ///
   /// Describes the training information for the model, and it is required to
   /// run 'PREDICT' queries.
-  ModelDefinition model;
+  ModelDefinition? model;
 
   /// \[Output-only\] The size of this table in bytes, excluding any data in the
   /// streaming buffer.
-  core.String numBytes;
+  core.String? numBytes;
 
   /// \[Output-only\] The number of bytes in the table that are considered
   /// "long-term storage".
-  core.String numLongTermBytes;
+  core.String? numLongTermBytes;
 
   /// \[Output-only\] \[TrustedTester\] The physical size of this table in
   /// bytes, excluding any data in the streaming buffer.
   ///
   /// This includes compression and storage used for time travel.
-  core.String numPhysicalBytes;
+  core.String? numPhysicalBytes;
 
   /// \[Output-only\] The number of rows of data in this table, excluding any
   /// data in the streaming buffer.
-  core.String numRows;
+  core.String? numRows;
 
   /// \[TrustedTester\] Range partitioning specification for this table.
   ///
   /// Only one of timePartitioning and rangePartitioning should be specified.
-  RangePartitioning rangePartitioning;
+  RangePartitioning? rangePartitioning;
 
   /// If set to true, queries over this table require a partition filter that
   /// can be used for partition elimination to be specified.
   ///
   /// Optional.
-  core.bool requirePartitionFilter;
+  core.bool? requirePartitionFilter;
 
   /// Describes the schema of this table.
   ///
   /// Optional.
-  TableSchema schema;
+  TableSchema? schema;
 
   /// \[Output-only\] A URL that can be used to access this resource again.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// \[Output-only\] Snapshot definition.
-  SnapshotDefinition snapshotDefinition;
+  SnapshotDefinition? snapshotDefinition;
 
   /// \[Output-only\] Contains information regarding this table's streaming
   /// buffer, if one is present.
   ///
   /// This field will be absent if the table is not being streamed to or if
   /// there is no data in the streaming buffer.
-  Streamingbuffer streamingBuffer;
+  Streamingbuffer? streamingBuffer;
 
   /// Reference describing the ID of this table.
   ///
   /// Required.
-  TableReference tableReference;
+  TableReference? tableReference;
 
   /// Time-based partitioning specification for this table.
   ///
   /// Only one of timePartitioning and rangePartitioning should be specified.
-  TimePartitioning timePartitioning;
+  TimePartitioning? timePartitioning;
 
   /// \[Output-only\] Describes the table type.
   ///
@@ -10063,12 +9823,12 @@ class Table {
   /// MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table
   /// that references data stored in an external storage system, such as Google
   /// Cloud Storage. The default value is TABLE.
-  core.String type;
+  core.String? type;
 
   /// The view definition.
   ///
   /// Optional.
-  ViewDefinition view;
+  ViewDefinition? view;
 
   Table();
 
@@ -10182,44 +9942,44 @@ class Table {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clustering != null) 'clustering': clustering.toJson(),
-        if (creationTime != null) 'creationTime': creationTime,
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clustering != null) 'clustering': clustering!.toJson(),
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (description != null) 'description': description!,
         if (encryptionConfiguration != null)
-          'encryptionConfiguration': encryptionConfiguration.toJson(),
-        if (etag != null) 'etag': etag,
-        if (expirationTime != null) 'expirationTime': expirationTime,
+          'encryptionConfiguration': encryptionConfiguration!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (expirationTime != null) 'expirationTime': expirationTime!,
         if (externalDataConfiguration != null)
-          'externalDataConfiguration': externalDataConfiguration.toJson(),
-        if (friendlyName != null) 'friendlyName': friendlyName,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (labels != null) 'labels': labels,
-        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime,
-        if (location != null) 'location': location,
+          'externalDataConfiguration': externalDataConfiguration!.toJson(),
+        if (friendlyName != null) 'friendlyName': friendlyName!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (labels != null) 'labels': labels!,
+        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
+        if (location != null) 'location': location!,
         if (materializedView != null)
-          'materializedView': materializedView.toJson(),
-        if (model != null) 'model': model.toJson(),
-        if (numBytes != null) 'numBytes': numBytes,
-        if (numLongTermBytes != null) 'numLongTermBytes': numLongTermBytes,
-        if (numPhysicalBytes != null) 'numPhysicalBytes': numPhysicalBytes,
-        if (numRows != null) 'numRows': numRows,
+          'materializedView': materializedView!.toJson(),
+        if (model != null) 'model': model!.toJson(),
+        if (numBytes != null) 'numBytes': numBytes!,
+        if (numLongTermBytes != null) 'numLongTermBytes': numLongTermBytes!,
+        if (numPhysicalBytes != null) 'numPhysicalBytes': numPhysicalBytes!,
+        if (numRows != null) 'numRows': numRows!,
         if (rangePartitioning != null)
-          'rangePartitioning': rangePartitioning.toJson(),
+          'rangePartitioning': rangePartitioning!.toJson(),
         if (requirePartitionFilter != null)
-          'requirePartitionFilter': requirePartitionFilter,
-        if (schema != null) 'schema': schema.toJson(),
-        if (selfLink != null) 'selfLink': selfLink,
+          'requirePartitionFilter': requirePartitionFilter!,
+        if (schema != null) 'schema': schema!.toJson(),
+        if (selfLink != null) 'selfLink': selfLink!,
         if (snapshotDefinition != null)
-          'snapshotDefinition': snapshotDefinition.toJson(),
+          'snapshotDefinition': snapshotDefinition!.toJson(),
         if (streamingBuffer != null)
-          'streamingBuffer': streamingBuffer.toJson(),
-        if (tableReference != null) 'tableReference': tableReference.toJson(),
+          'streamingBuffer': streamingBuffer!.toJson(),
+        if (tableReference != null) 'tableReference': tableReference!.toJson(),
         if (timePartitioning != null)
-          'timePartitioning': timePartitioning.toJson(),
-        if (type != null) 'type': type,
-        if (view != null) 'view': view.toJson(),
+          'timePartitioning': timePartitioning!.toJson(),
+        if (type != null) 'type': type!,
+        if (view != null) 'view': view!.toJson(),
       };
 }
 
@@ -10228,7 +9988,7 @@ class TableCell {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object v;
+  core.Object? v;
 
   TableCell();
 
@@ -10238,8 +9998,8 @@ class TableCell {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (v != null) 'v': v,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (v != null) 'v': v!,
       };
 }
 
@@ -10250,7 +10010,7 @@ class TableDataInsertAllRequestRows {
   /// best-effort basis.
   ///
   /// Optional.
-  core.String insertId;
+  core.String? insertId;
 
   /// A JSON object that contains a row of data.
   ///
@@ -10258,7 +10018,7 @@ class TableDataInsertAllRequestRows {
   /// schema.
   ///
   /// Required.
-  JsonObject json;
+  JsonObject? json;
 
   TableDataInsertAllRequestRows();
 
@@ -10272,9 +10032,9 @@ class TableDataInsertAllRequestRows {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (insertId != null) 'insertId': insertId,
-        if (json != null) 'json': json,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (insertId != null) 'insertId': insertId!,
+        if (json != null) 'json': json!,
       };
 }
 
@@ -10285,13 +10045,13 @@ class TableDataInsertAllRequest {
   /// values as errors.
   ///
   /// Optional.
-  core.bool ignoreUnknownValues;
+  core.bool? ignoreUnknownValues;
 
   /// The resource type of the response.
-  core.String kind;
+  core.String? kind;
 
   /// The rows to insert.
-  core.List<TableDataInsertAllRequestRows> rows;
+  core.List<TableDataInsertAllRequestRows>? rows;
 
   /// Insert all valid rows of a request, even if invalid rows exist.
   ///
@@ -10299,7 +10059,7 @@ class TableDataInsertAllRequest {
   /// invalid rows exist.
   ///
   /// Optional.
-  core.bool skipInvalidRows;
+  core.bool? skipInvalidRows;
 
   /// If specified, treats the destination table as a base template, and inserts
   /// the rows into an instance table named "{destination}{templateSuffix}".
@@ -10308,7 +10068,7 @@ class TableDataInsertAllRequest {
   /// the base template table. See
   /// https://cloud.google.com/bigquery/streaming-data-into-bigquery#template-tables
   /// for considerations when working with templates tables.
-  core.String templateSuffix;
+  core.String? templateSuffix;
 
   TableDataInsertAllRequest();
 
@@ -10334,22 +10094,22 @@ class TableDataInsertAllRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (ignoreUnknownValues != null)
-          'ignoreUnknownValues': ignoreUnknownValues,
-        if (kind != null) 'kind': kind,
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
-        if (skipInvalidRows != null) 'skipInvalidRows': skipInvalidRows,
-        if (templateSuffix != null) 'templateSuffix': templateSuffix,
+          'ignoreUnknownValues': ignoreUnknownValues!,
+        if (kind != null) 'kind': kind!,
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (skipInvalidRows != null) 'skipInvalidRows': skipInvalidRows!,
+        if (templateSuffix != null) 'templateSuffix': templateSuffix!,
       };
 }
 
 class TableDataInsertAllResponseInsertErrors {
   /// Error information for the row indicated by the index property.
-  core.List<ErrorProto> errors;
+  core.List<ErrorProto>? errors;
 
   /// The index of the row that error applies to.
-  core.int index;
+  core.int? index;
 
   TableDataInsertAllResponseInsertErrors();
 
@@ -10365,19 +10125,19 @@ class TableDataInsertAllResponseInsertErrors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
-        if (index != null) 'index': index,
+          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (index != null) 'index': index!,
       };
 }
 
 class TableDataInsertAllResponse {
   /// An array of errors for rows that were not inserted.
-  core.List<TableDataInsertAllResponseInsertErrors> insertErrors;
+  core.List<TableDataInsertAllResponseInsertErrors>? insertErrors;
 
   /// The resource type of the response.
-  core.String kind;
+  core.String? kind;
 
   TableDataInsertAllResponse();
 
@@ -10394,31 +10154,31 @@ class TableDataInsertAllResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (insertErrors != null)
-          'insertErrors': insertErrors.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'insertErrors': insertErrors!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class TableDataList {
   /// A hash of this page of results.
-  core.String etag;
+  core.String? etag;
 
   /// The resource type of the response.
-  core.String kind;
+  core.String? kind;
 
   /// A token used for paging results.
   ///
   /// Providing this token instead of the startIndex parameter can help you
   /// retrieve stable results when an underlying table is changing.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// Rows of results.
-  core.List<TableRow> rows;
+  core.List<TableRow>? rows;
 
   /// The total number of rows in the complete table.
-  core.String totalRows;
+  core.String? totalRows;
 
   TableDataList();
 
@@ -10443,12 +10203,12 @@ class TableDataList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
-        if (totalRows != null) 'totalRows': totalRows,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (totalRows != null) 'totalRows': totalRows!,
       };
 }
 
@@ -10460,7 +10220,7 @@ class TableFieldSchemaCategories {
   ///
   /// For example, "projects/1/taxonomies/2/categories/3". At most 5 categories
   /// are allowed.
-  core.List<core.String> names;
+  core.List<core.String>? names;
 
   TableFieldSchemaCategories();
 
@@ -10472,8 +10232,8 @@ class TableFieldSchemaCategories {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (names != null) 'names': names,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (names != null) 'names': names!,
       };
 }
 
@@ -10482,7 +10242,7 @@ class TableFieldSchemaPolicyTags {
   ///
   /// For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1
   /// policy tag is allowed.
-  core.List<core.String> names;
+  core.List<core.String>? names;
 
   TableFieldSchemaPolicyTags();
 
@@ -10494,8 +10254,8 @@ class TableFieldSchemaPolicyTags {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (names != null) 'names': names,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (names != null) 'names': names!,
       };
 }
 
@@ -10504,19 +10264,19 @@ class TableFieldSchema {
   /// control.
   ///
   /// Optional.
-  TableFieldSchemaCategories categories;
+  TableFieldSchemaCategories? categories;
 
   /// The field description.
   ///
   /// The maximum length is 1,024 characters.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Describes the nested schema fields if the type property is set to RECORD.
   ///
   /// Optional.
-  core.List<TableFieldSchema> fields;
+  core.List<TableFieldSchema>? fields;
 
   /// The field mode.
   ///
@@ -10524,7 +10284,7 @@ class TableFieldSchema {
   /// is NULLABLE.
   ///
   /// Optional.
-  core.String mode;
+  core.String? mode;
 
   /// The field name.
   ///
@@ -10533,8 +10293,8 @@ class TableFieldSchema {
   /// length is 128 characters.
   ///
   /// Required.
-  core.String name;
-  TableFieldSchemaPolicyTags policyTags;
+  core.String? name;
+  TableFieldSchemaPolicyTags? policyTags;
 
   /// The field data type.
   ///
@@ -10545,7 +10305,7 @@ class TableFieldSchema {
   /// RECORD).
   ///
   /// Required.
-  core.String type;
+  core.String? type;
 
   TableFieldSchema();
 
@@ -10578,22 +10338,22 @@ class TableFieldSchema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (categories != null) 'categories': categories.toJson(),
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (categories != null) 'categories': categories!.toJson(),
+        if (description != null) 'description': description!,
         if (fields != null)
-          'fields': fields.map((value) => value.toJson()).toList(),
-        if (mode != null) 'mode': mode,
-        if (name != null) 'name': name,
-        if (policyTags != null) 'policyTags': policyTags.toJson(),
-        if (type != null) 'type': type,
+          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (mode != null) 'mode': mode!,
+        if (name != null) 'name': name!,
+        if (policyTags != null) 'policyTags': policyTags!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
 /// Additional details for a view.
 class TableListTablesView {
   /// True if view is defined in legacy SQL dialect, false if in standard SQL.
-  core.bool useLegacySql;
+  core.bool? useLegacySql;
 
   TableListTablesView();
 
@@ -10603,17 +10363,17 @@ class TableListTablesView {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (useLegacySql != null) 'useLegacySql': useLegacySql,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (useLegacySql != null) 'useLegacySql': useLegacySql!,
       };
 }
 
 class TableListTables {
   /// \[Beta\] Clustering specification for this table, if configured.
-  Clustering clustering;
+  Clustering? clustering;
 
   /// The time when this table was created, in milliseconds since the epoch.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// The time when this table expires, in milliseconds since the epoch.
   ///
@@ -10621,38 +10381,38 @@ class TableListTables {
   /// be deleted and their storage reclaimed.
   ///
   /// Optional.
-  core.String expirationTime;
+  core.String? expirationTime;
 
   /// The user-friendly name for this table.
-  core.String friendlyName;
+  core.String? friendlyName;
 
   /// An opaque ID of the table
-  core.String id;
+  core.String? id;
 
   /// The resource type.
-  core.String kind;
+  core.String? kind;
 
   /// The labels associated with this table.
   ///
   /// You can use these to organize and group your tables.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The range partitioning specification for this table, if configured.
-  RangePartitioning rangePartitioning;
+  RangePartitioning? rangePartitioning;
 
   /// A reference uniquely identifying the table.
-  TableReference tableReference;
+  TableReference? tableReference;
 
   /// The time-based partitioning specification for this table, if configured.
-  TimePartitioning timePartitioning;
+  TimePartitioning? timePartitioning;
 
   /// The type of table.
   ///
   /// Possible values are: TABLE, VIEW.
-  core.String type;
+  core.String? type;
 
   /// Additional details for a view.
-  TableListTablesView view;
+  TableListTablesView? view;
 
   TableListTables();
 
@@ -10706,39 +10466,39 @@ class TableListTables {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clustering != null) 'clustering': clustering.toJson(),
-        if (creationTime != null) 'creationTime': creationTime,
-        if (expirationTime != null) 'expirationTime': expirationTime,
-        if (friendlyName != null) 'friendlyName': friendlyName,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clustering != null) 'clustering': clustering!.toJson(),
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (expirationTime != null) 'expirationTime': expirationTime!,
+        if (friendlyName != null) 'friendlyName': friendlyName!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (labels != null) 'labels': labels!,
         if (rangePartitioning != null)
-          'rangePartitioning': rangePartitioning.toJson(),
-        if (tableReference != null) 'tableReference': tableReference.toJson(),
+          'rangePartitioning': rangePartitioning!.toJson(),
+        if (tableReference != null) 'tableReference': tableReference!.toJson(),
         if (timePartitioning != null)
-          'timePartitioning': timePartitioning.toJson(),
-        if (type != null) 'type': type,
-        if (view != null) 'view': view.toJson(),
+          'timePartitioning': timePartitioning!.toJson(),
+        if (type != null) 'type': type!,
+        if (view != null) 'view': view!.toJson(),
       };
 }
 
 class TableList {
   /// A hash of this page of results.
-  core.String etag;
+  core.String? etag;
 
   /// The type of list.
-  core.String kind;
+  core.String? kind;
 
   /// A token to request the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Tables in the requested dataset.
-  core.List<TableListTables> tables;
+  core.List<TableListTables>? tables;
 
   /// The total number of tables in the dataset.
-  core.int totalItems;
+  core.int? totalItems;
 
   TableList();
 
@@ -10763,13 +10523,13 @@ class TableList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (tables != null)
-          'tables': tables.map((value) => value.toJson()).toList(),
-        if (totalItems != null) 'totalItems': totalItems,
+          'tables': tables!.map((value) => value.toJson()).toList(),
+        if (totalItems != null) 'totalItems': totalItems!,
       };
 }
 
@@ -10777,12 +10537,12 @@ class TableReference {
   /// The ID of the dataset containing this table.
   ///
   /// Required.
-  core.String datasetId;
+  core.String? datasetId;
 
   /// The ID of the project containing this table.
   ///
   /// Required.
-  core.String projectId;
+  core.String? projectId;
 
   /// The ID of the table.
   ///
@@ -10790,7 +10550,7 @@ class TableReference {
   /// (_). The maximum length is 1,024 characters.
   ///
   /// Required.
-  core.String tableId;
+  core.String? tableId;
 
   TableReference();
 
@@ -10806,17 +10566,17 @@ class TableReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (datasetId != null) 'datasetId': datasetId,
-        if (projectId != null) 'projectId': projectId,
-        if (tableId != null) 'tableId': tableId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId!,
+        if (projectId != null) 'projectId': projectId!,
+        if (tableId != null) 'tableId': tableId!,
       };
 }
 
 class TableRow {
   /// Represents a single row in the result set, consisting of one or more
   /// fields.
-  core.List<TableCell> f;
+  core.List<TableCell>? f;
 
   TableRow();
 
@@ -10829,14 +10589,14 @@ class TableRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (f != null) 'f': f.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (f != null) 'f': f!.map((value) => value.toJson()).toList(),
       };
 }
 
 class TableSchema {
   /// Describes the fields in a table.
-  core.List<TableFieldSchema> fields;
+  core.List<TableFieldSchema>? fields;
 
   TableSchema();
 
@@ -10849,9 +10609,9 @@ class TableSchema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fields != null)
-          'fields': fields.map((value) => value.toJson()).toList(),
+          'fields': fields!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -10862,7 +10622,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -10874,8 +10634,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -10883,7 +10643,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -10895,8 +10655,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -10908,7 +10668,7 @@ class TimePartitioning {
   /// time plus this value.
   ///
   /// Optional.
-  core.String expirationMs;
+  core.String? expirationMs;
 
   /// \[Beta\] \[Optional\] If not set, the table is partitioned by pseudo
   /// column, referenced via either '_PARTITIONTIME' as TIMESTAMP type, or
@@ -10917,8 +10677,8 @@ class TimePartitioning {
   /// If field is specified, the table is instead partitioned by this field. The
   /// field must be a top-level TIMESTAMP or DATE field. Its mode must be
   /// NULLABLE or REQUIRED.
-  core.String field;
-  core.bool requirePartitionFilter;
+  core.String? field;
+  core.bool? requirePartitionFilter;
 
   /// The supported types are DAY, HOUR, MONTH, and YEAR, which will generate
   /// one partition per day, hour, month, and year, respectively.
@@ -10926,7 +10686,7 @@ class TimePartitioning {
   /// When the type is not specified, the default behavior is DAY.
   ///
   /// Required.
-  core.String type;
+  core.String? type;
 
   TimePartitioning();
 
@@ -10945,25 +10705,25 @@ class TimePartitioning {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expirationMs != null) 'expirationMs': expirationMs,
-        if (field != null) 'field': field,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expirationMs != null) 'expirationMs': expirationMs!,
+        if (field != null) 'field': field!,
         if (requirePartitionFilter != null)
-          'requirePartitionFilter': requirePartitionFilter,
-        if (type != null) 'type': type,
+          'requirePartitionFilter': requirePartitionFilter!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// Options used in model training.
 class TrainingOptions {
   /// Whether to enable auto ARIMA or not.
-  core.bool autoArima;
+  core.bool? autoArima;
 
   /// The max value of non-seasonal p and q.
-  core.String autoArimaMaxOrder;
+  core.String? autoArimaMaxOrder;
 
   /// Batch size for dnn models.
-  core.String batchSize;
+  core.String? batchSize;
 
   /// The data frequency of a time series.
   /// Possible string values are:
@@ -10976,7 +10736,7 @@ class TrainingOptions {
   /// - "DAILY" : Daily data.
   /// - "HOURLY" : Hourly data.
   /// - "PER_MINUTE" : Per-minute data.
-  core.String dataFrequency;
+  core.String? dataFrequency;
 
   /// The column to split data with.
   ///
@@ -10988,13 +10748,13 @@ class TrainingOptions {
   /// data, and the rest are eval data. It respects the order in Orderable data
   /// types:
   /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data-type-properties
-  core.String dataSplitColumn;
+  core.String? dataSplitColumn;
 
   /// The fraction of evaluation data over the whole input data.
   ///
   /// The rest of data will be used as training data. The format should be
   /// double. Accurate to two decimal places. Default value is 0.2.
-  core.double dataSplitEvalFraction;
+  core.double? dataSplitEvalFraction;
 
   /// The data split type for training and evaluation, e.g. RANDOM.
   /// Possible string values are:
@@ -11005,23 +10765,23 @@ class TrainingOptions {
   /// - "NO_SPLIT" : Data split will be skipped.
   /// - "AUTO_SPLIT" : Splits data automatically: Uses NO_SPLIT if the data size
   /// is small. Otherwise uses RANDOM.
-  core.String dataSplitMethod;
+  core.String? dataSplitMethod;
 
   /// Distance type for clustering models.
   /// Possible string values are:
   /// - "DISTANCE_TYPE_UNSPECIFIED"
   /// - "EUCLIDEAN" : Eculidean distance.
   /// - "COSINE" : Cosine distance.
-  core.String distanceType;
+  core.String? distanceType;
 
   /// Dropout probability for dnn models.
-  core.double dropout;
+  core.double? dropout;
 
   /// Whether to stop early when the loss doesn't improve significantly any more
   /// (compared to min_relative_progress).
   ///
   /// Used only for iterative training algorithms.
-  core.bool earlyStop;
+  core.bool? earlyStop;
 
   /// Feedback type that specifies which algorithm to run for matrix
   /// factorization.
@@ -11029,10 +10789,10 @@ class TrainingOptions {
   /// - "FEEDBACK_TYPE_UNSPECIFIED"
   /// - "IMPLICIT" : Use weighted-als for implicit feedback problems.
   /// - "EXPLICIT" : Use nonweighted-als for explicit feedback problems.
-  core.String feedbackType;
+  core.String? feedbackType;
 
   /// Hidden units for dnn models.
-  core.List<core.String> hiddenUnits;
+  core.List<core.String>? hiddenUnits;
 
   /// The geographical region based on which the holidays are considered in time
   /// series modeling.
@@ -11109,27 +10869,27 @@ class TrainingOptions {
   /// - "VE" : Venezuela
   /// - "VN" : Viet Nam
   /// - "ZA" : South Africa
-  core.String holidayRegion;
+  core.String? holidayRegion;
 
   /// The number of periods ahead that need to be forecasted.
-  core.String horizon;
+  core.String? horizon;
 
   /// Include drift when fitting an ARIMA model.
-  core.bool includeDrift;
+  core.bool? includeDrift;
 
   /// Specifies the initial learning rate for the line search learn rate
   /// strategy.
-  core.double initialLearnRate;
+  core.double? initialLearnRate;
 
   /// Name of input label columns in training data.
-  core.List<core.String> inputLabelColumns;
+  core.List<core.String>? inputLabelColumns;
 
   /// Item column specified for matrix factorization models.
-  core.String itemColumn;
+  core.String? itemColumn;
 
   /// The column used to provide the initial centroids for kmeans algorithm when
   /// kmeans_initialization_method is CUSTOM.
-  core.String kmeansInitializationColumn;
+  core.String? kmeansInitializationColumn;
 
   /// The method used to initialize the centroids for kmeans algorithm.
   /// Possible string values are:
@@ -11139,71 +10899,71 @@ class TrainingOptions {
   /// - "CUSTOM" : Initializes the centroids using data specified in
   /// kmeans_initialization_column.
   /// - "KMEANS_PLUS_PLUS" : Initializes with kmeans++.
-  core.String kmeansInitializationMethod;
+  core.String? kmeansInitializationMethod;
 
   /// L1 regularization coefficient.
-  core.double l1Regularization;
+  core.double? l1Regularization;
 
   /// L2 regularization coefficient.
-  core.double l2Regularization;
+  core.double? l2Regularization;
 
   /// Weights associated with each label class, for rebalancing the training
   /// data.
   ///
   /// Only applicable for classification models.
-  core.Map<core.String, core.double> labelClassWeights;
+  core.Map<core.String, core.double>? labelClassWeights;
 
   /// Learning rate in training.
   ///
   /// Used only for iterative training algorithms.
-  core.double learnRate;
+  core.double? learnRate;
 
   /// The strategy to determine learn rate for the current iteration.
   /// Possible string values are:
   /// - "LEARN_RATE_STRATEGY_UNSPECIFIED"
   /// - "LINE_SEARCH" : Use line search to determine learning rate.
   /// - "CONSTANT" : Use a constant learning rate.
-  core.String learnRateStrategy;
+  core.String? learnRateStrategy;
 
   /// Type of loss function used during training run.
   /// Possible string values are:
   /// - "LOSS_TYPE_UNSPECIFIED"
   /// - "MEAN_SQUARED_LOSS" : Mean squared loss, used for linear regression.
   /// - "MEAN_LOG_LOSS" : Mean log loss, used for logistic regression.
-  core.String lossType;
+  core.String? lossType;
 
   /// The maximum number of iterations in training.
   ///
   /// Used only for iterative training algorithms.
-  core.String maxIterations;
+  core.String? maxIterations;
 
   /// Maximum depth of a tree for boosted tree models.
-  core.String maxTreeDepth;
+  core.String? maxTreeDepth;
 
   /// When early_stop is true, stops training when accuracy improvement is less
   /// than 'min_relative_progress'.
   ///
   /// Used only for iterative training algorithms.
-  core.double minRelativeProgress;
+  core.double? minRelativeProgress;
 
   /// Minimum split loss for boosted tree models.
-  core.double minSplitLoss;
+  core.double? minSplitLoss;
 
   /// Google Cloud Storage URI from which the model was imported.
   ///
   /// Only applicable for imported models.
-  core.String modelUri;
+  core.String? modelUri;
 
   /// A specification of the non-seasonal part of the ARIMA model: the three
   /// components (p, d, q) are the AR order, the degree of differencing, and the
   /// MA order.
-  ArimaOrder nonSeasonalOrder;
+  ArimaOrder? nonSeasonalOrder;
 
   /// Number of clusters for clustering models.
-  core.String numClusters;
+  core.String? numClusters;
 
   /// Num factors specified for matrix factorization models.
-  core.String numFactors;
+  core.String? numFactors;
 
   /// Optimization strategy for training linear regression models.
   /// Possible string values are:
@@ -11212,37 +10972,37 @@ class TrainingOptions {
   /// algorithm.
   /// - "NORMAL_EQUATION" : Uses a normal equation to solve linear regression
   /// problem.
-  core.String optimizationStrategy;
+  core.String? optimizationStrategy;
 
   /// Whether to preserve the input structs in output feature names.
   ///
   /// Suppose there is a struct A with field b. When false (default), the output
   /// feature name is A_b. When true, the output feature name is A.b.
-  core.bool preserveInputStructs;
+  core.bool? preserveInputStructs;
 
   /// Subsample fraction of the training data to grow tree to prevent
   /// overfitting for boosted tree models.
-  core.double subsample;
+  core.double? subsample;
 
   /// Column to be designated as time series data for ARIMA model.
-  core.String timeSeriesDataColumn;
+  core.String? timeSeriesDataColumn;
 
   /// The id column that will be used to indicate different time series to
   /// forecast in parallel.
-  core.String timeSeriesIdColumn;
+  core.String? timeSeriesIdColumn;
 
   /// Column to be designated as time series timestamp for ARIMA model.
-  core.String timeSeriesTimestampColumn;
+  core.String? timeSeriesTimestampColumn;
 
   /// User column specified for matrix factorization models.
-  core.String userColumn;
+  core.String? userColumn;
 
   /// Hyperparameter for matrix factoration when implicit feedback type is
   /// specified.
-  core.double walsAlpha;
+  core.double? walsAlpha;
 
   /// Whether to train a model from the last checkpoint.
-  core.bool warmStart;
+  core.bool? warmStart;
 
   TrainingOptions();
 
@@ -11322,7 +11082,7 @@ class TrainingOptions {
     }
     if (_json.containsKey('labelClassWeights')) {
       labelClassWeights = (_json['labelClassWeights'] as core.Map)
-          .cast<core.String, core.num>()
+          .cast<core.String, core.double>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -11395,60 +11155,60 @@ class TrainingOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (autoArima != null) 'autoArima': autoArima,
-        if (autoArimaMaxOrder != null) 'autoArimaMaxOrder': autoArimaMaxOrder,
-        if (batchSize != null) 'batchSize': batchSize,
-        if (dataFrequency != null) 'dataFrequency': dataFrequency,
-        if (dataSplitColumn != null) 'dataSplitColumn': dataSplitColumn,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (autoArima != null) 'autoArima': autoArima!,
+        if (autoArimaMaxOrder != null) 'autoArimaMaxOrder': autoArimaMaxOrder!,
+        if (batchSize != null) 'batchSize': batchSize!,
+        if (dataFrequency != null) 'dataFrequency': dataFrequency!,
+        if (dataSplitColumn != null) 'dataSplitColumn': dataSplitColumn!,
         if (dataSplitEvalFraction != null)
-          'dataSplitEvalFraction': dataSplitEvalFraction,
-        if (dataSplitMethod != null) 'dataSplitMethod': dataSplitMethod,
-        if (distanceType != null) 'distanceType': distanceType,
-        if (dropout != null) 'dropout': dropout,
-        if (earlyStop != null) 'earlyStop': earlyStop,
-        if (feedbackType != null) 'feedbackType': feedbackType,
-        if (hiddenUnits != null) 'hiddenUnits': hiddenUnits,
-        if (holidayRegion != null) 'holidayRegion': holidayRegion,
-        if (horizon != null) 'horizon': horizon,
-        if (includeDrift != null) 'includeDrift': includeDrift,
-        if (initialLearnRate != null) 'initialLearnRate': initialLearnRate,
-        if (inputLabelColumns != null) 'inputLabelColumns': inputLabelColumns,
-        if (itemColumn != null) 'itemColumn': itemColumn,
+          'dataSplitEvalFraction': dataSplitEvalFraction!,
+        if (dataSplitMethod != null) 'dataSplitMethod': dataSplitMethod!,
+        if (distanceType != null) 'distanceType': distanceType!,
+        if (dropout != null) 'dropout': dropout!,
+        if (earlyStop != null) 'earlyStop': earlyStop!,
+        if (feedbackType != null) 'feedbackType': feedbackType!,
+        if (hiddenUnits != null) 'hiddenUnits': hiddenUnits!,
+        if (holidayRegion != null) 'holidayRegion': holidayRegion!,
+        if (horizon != null) 'horizon': horizon!,
+        if (includeDrift != null) 'includeDrift': includeDrift!,
+        if (initialLearnRate != null) 'initialLearnRate': initialLearnRate!,
+        if (inputLabelColumns != null) 'inputLabelColumns': inputLabelColumns!,
+        if (itemColumn != null) 'itemColumn': itemColumn!,
         if (kmeansInitializationColumn != null)
-          'kmeansInitializationColumn': kmeansInitializationColumn,
+          'kmeansInitializationColumn': kmeansInitializationColumn!,
         if (kmeansInitializationMethod != null)
-          'kmeansInitializationMethod': kmeansInitializationMethod,
-        if (l1Regularization != null) 'l1Regularization': l1Regularization,
-        if (l2Regularization != null) 'l2Regularization': l2Regularization,
-        if (labelClassWeights != null) 'labelClassWeights': labelClassWeights,
-        if (learnRate != null) 'learnRate': learnRate,
-        if (learnRateStrategy != null) 'learnRateStrategy': learnRateStrategy,
-        if (lossType != null) 'lossType': lossType,
-        if (maxIterations != null) 'maxIterations': maxIterations,
-        if (maxTreeDepth != null) 'maxTreeDepth': maxTreeDepth,
+          'kmeansInitializationMethod': kmeansInitializationMethod!,
+        if (l1Regularization != null) 'l1Regularization': l1Regularization!,
+        if (l2Regularization != null) 'l2Regularization': l2Regularization!,
+        if (labelClassWeights != null) 'labelClassWeights': labelClassWeights!,
+        if (learnRate != null) 'learnRate': learnRate!,
+        if (learnRateStrategy != null) 'learnRateStrategy': learnRateStrategy!,
+        if (lossType != null) 'lossType': lossType!,
+        if (maxIterations != null) 'maxIterations': maxIterations!,
+        if (maxTreeDepth != null) 'maxTreeDepth': maxTreeDepth!,
         if (minRelativeProgress != null)
-          'minRelativeProgress': minRelativeProgress,
-        if (minSplitLoss != null) 'minSplitLoss': minSplitLoss,
-        if (modelUri != null) 'modelUri': modelUri,
+          'minRelativeProgress': minRelativeProgress!,
+        if (minSplitLoss != null) 'minSplitLoss': minSplitLoss!,
+        if (modelUri != null) 'modelUri': modelUri!,
         if (nonSeasonalOrder != null)
-          'nonSeasonalOrder': nonSeasonalOrder.toJson(),
-        if (numClusters != null) 'numClusters': numClusters,
-        if (numFactors != null) 'numFactors': numFactors,
+          'nonSeasonalOrder': nonSeasonalOrder!.toJson(),
+        if (numClusters != null) 'numClusters': numClusters!,
+        if (numFactors != null) 'numFactors': numFactors!,
         if (optimizationStrategy != null)
-          'optimizationStrategy': optimizationStrategy,
+          'optimizationStrategy': optimizationStrategy!,
         if (preserveInputStructs != null)
-          'preserveInputStructs': preserveInputStructs,
-        if (subsample != null) 'subsample': subsample,
+          'preserveInputStructs': preserveInputStructs!,
+        if (subsample != null) 'subsample': subsample!,
         if (timeSeriesDataColumn != null)
-          'timeSeriesDataColumn': timeSeriesDataColumn,
+          'timeSeriesDataColumn': timeSeriesDataColumn!,
         if (timeSeriesIdColumn != null)
-          'timeSeriesIdColumn': timeSeriesIdColumn,
+          'timeSeriesIdColumn': timeSeriesIdColumn!,
         if (timeSeriesTimestampColumn != null)
-          'timeSeriesTimestampColumn': timeSeriesTimestampColumn,
-        if (userColumn != null) 'userColumn': userColumn,
-        if (walsAlpha != null) 'walsAlpha': walsAlpha,
-        if (warmStart != null) 'warmStart': warmStart,
+          'timeSeriesTimestampColumn': timeSeriesTimestampColumn!,
+        if (userColumn != null) 'userColumn': userColumn!,
+        if (walsAlpha != null) 'walsAlpha': walsAlpha!,
+        if (warmStart != null) 'warmStart': warmStart!,
       };
 }
 
@@ -11457,27 +11217,27 @@ class TrainingRun {
   /// Data split result of the training run.
   ///
   /// Only set when the input data is actually split.
-  DataSplitResult dataSplitResult;
+  DataSplitResult? dataSplitResult;
 
   /// The evaluation metrics over training/eval data that were computed at the
   /// end of training.
-  EvaluationMetrics evaluationMetrics;
+  EvaluationMetrics? evaluationMetrics;
 
   /// Global explanations for important features of the model.
   ///
   /// For multi-class models, there is one entry for each label class. For other
   /// models, there is only one entry in the list.
-  core.List<GlobalExplanation> globalExplanations;
+  core.List<GlobalExplanation>? globalExplanations;
 
   /// Output of each iteration run, results.size() <= max_iterations.
-  core.List<IterationResult> results;
+  core.List<IterationResult>? results;
 
   /// The start time of this training run.
-  core.String startTime;
+  core.String? startTime;
 
   /// Options that were used for this training run, includes user specified and
   /// default options that were used.
-  TrainingOptions trainingOptions;
+  TrainingOptions? trainingOptions;
 
   TrainingRun();
 
@@ -11511,25 +11271,25 @@ class TrainingRun {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataSplitResult != null)
-          'dataSplitResult': dataSplitResult.toJson(),
+          'dataSplitResult': dataSplitResult!.toJson(),
         if (evaluationMetrics != null)
-          'evaluationMetrics': evaluationMetrics.toJson(),
+          'evaluationMetrics': evaluationMetrics!.toJson(),
         if (globalExplanations != null)
           'globalExplanations':
-              globalExplanations.map((value) => value.toJson()).toList(),
+              globalExplanations!.map((value) => value.toJson()).toList(),
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
-        if (startTime != null) 'startTime': startTime,
+          'results': results!.map((value) => value.toJson()).toList(),
+        if (startTime != null) 'startTime': startTime!,
         if (trainingOptions != null)
-          'trainingOptions': trainingOptions.toJson(),
+          'trainingOptions': trainingOptions!.toJson(),
       };
 }
 
 class TransactionInfo {
   /// \[Output-only\] // \[Alpha\] Id of the transaction.
-  core.String transactionId;
+  core.String? transactionId;
 
   TransactionInfo();
 
@@ -11539,8 +11299,8 @@ class TransactionInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (transactionId != null) 'transactionId': transactionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (transactionId != null) 'transactionId': transactionId!,
       };
 }
 
@@ -11557,11 +11317,11 @@ class UserDefinedFunctionResource {
   ///
   /// Providing a inline code resource is equivalent to providing a URI for a
   /// file containing the same code.
-  core.String inlineCode;
+  core.String? inlineCode;
 
   /// \[Pick one\] A code resource to load from a Google Cloud Storage URI
   /// (gs://bucket/path).
-  core.String resourceUri;
+  core.String? resourceUri;
 
   UserDefinedFunctionResource();
 
@@ -11574,9 +11334,9 @@ class UserDefinedFunctionResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (inlineCode != null) 'inlineCode': inlineCode,
-        if (resourceUri != null) 'resourceUri': resourceUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (inlineCode != null) 'inlineCode': inlineCode!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
       };
 }
 
@@ -11584,17 +11344,17 @@ class ViewDefinition {
   /// A query that BigQuery executes when the view is referenced.
   ///
   /// Required.
-  core.String query;
+  core.String? query;
 
   /// Specifies whether to use BigQuery's legacy SQL for this view.
   ///
   /// The default value is true. If set to false, the view will use BigQuery's
   /// standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and
   /// views that reference this view must use the same flag value.
-  core.bool useLegacySql;
+  core.bool? useLegacySql;
 
   /// Describes user-defined function resources used in the query.
-  core.List<UserDefinedFunctionResource> userDefinedFunctionResources;
+  core.List<UserDefinedFunctionResource>? userDefinedFunctionResources;
 
   ViewDefinition();
 
@@ -11615,11 +11375,11 @@ class ViewDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (query != null) 'query': query,
-        if (useLegacySql != null) 'useLegacySql': useLegacySql,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (query != null) 'query': query!,
+        if (useLegacySql != null) 'useLegacySql': useLegacySql!,
         if (userDefinedFunctionResources != null)
-          'userDefinedFunctionResources': userDefinedFunctionResources
+          'userDefinedFunctionResources': userDefinedFunctionResources!
               .map((value) => value.toJson())
               .toList(),
       };

@@ -94,11 +94,8 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<Account> get(
     core.int id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -128,7 +125,7 @@ class AccountsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountsList> list({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -168,13 +165,9 @@ class AccountsResource {
   async.Future<Account> patch(
     Account request,
     core.int id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -211,13 +204,9 @@ class AccountsResource {
   async.Future<Account> update(
     Account request,
     core.int id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -257,11 +246,8 @@ class BillingInfoResource {
   /// this method will complete with the same error.
   async.Future<BillingInfo> get(
     core.int accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -293,7 +279,7 @@ class BillingInfoResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BillingInfoList> list({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -338,14 +324,8 @@ class BudgetResource {
   async.Future<Budget> get(
     core.String accountId,
     core.String billingId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (billingId == null) {
-      throw core.ArgumentError('Parameter billingId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -390,16 +370,9 @@ class BudgetResource {
     Budget request,
     core.String accountId,
     core.String billingId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (billingId == null) {
-      throw core.ArgumentError('Parameter billingId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -443,16 +416,9 @@ class BudgetResource {
     Budget request,
     core.String accountId,
     core.String billingId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (billingId == null) {
-      throw core.ArgumentError('Parameter billingId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -500,14 +466,8 @@ class CreativesResource {
   async.Future<Creative> get(
     core.int accountId,
     core.String buyerCreativeId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (buyerCreativeId == null) {
-      throw core.ArgumentError('Parameter buyerCreativeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -543,10 +503,9 @@ class CreativesResource {
   /// this method will complete with the same error.
   async.Future<Creative> insert(
     Creative request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -600,12 +559,12 @@ class CreativesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativesList> list({
-    core.List<core.int> accountId,
-    core.List<core.String> buyerCreativeId,
-    core.int maxResults,
-    core.String pageToken,
-    core.String statusFilter,
-    core.String $fields,
+    core.List<core.int>? accountId,
+    core.List<core.String>? buyerCreativeId,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? statusFilter,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (accountId != null)
@@ -652,11 +611,8 @@ class DirectDealsResource {
   /// this method will complete with the same error.
   async.Future<DirectDeal> get(
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -687,7 +643,7 @@ class DirectDealsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DirectDealsList> list({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -744,19 +700,10 @@ class PerformanceReportResource {
     core.String accountId,
     core.String endDateTime,
     core.String startDateTime, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (endDateTime == null) {
-      throw core.ArgumentError('Parameter endDateTime is required.');
-    }
-    if (startDateTime == null) {
-      throw core.ArgumentError('Parameter startDateTime is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'accountId': [accountId],
       'endDateTime': [endDateTime],
@@ -802,14 +749,8 @@ class PretargetingConfigResource {
   async.Future<void> delete(
     core.String accountId,
     core.String configId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (configId == null) {
-      throw core.ArgumentError('Parameter configId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -848,14 +789,8 @@ class PretargetingConfigResource {
   async.Future<PretargetingConfig> get(
     core.String accountId,
     core.String configId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (configId == null) {
-      throw core.ArgumentError('Parameter configId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -895,13 +830,9 @@ class PretargetingConfigResource {
   async.Future<PretargetingConfig> insert(
     PretargetingConfig request,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -937,11 +868,8 @@ class PretargetingConfigResource {
   /// this method will complete with the same error.
   async.Future<PretargetingConfigList> list(
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -984,16 +912,9 @@ class PretargetingConfigResource {
     PretargetingConfig request,
     core.String accountId,
     core.String configId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (configId == null) {
-      throw core.ArgumentError('Parameter configId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1037,16 +958,9 @@ class PretargetingConfigResource {
     PretargetingConfig request,
     core.String accountId,
     core.String configId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (configId == null) {
-      throw core.ArgumentError('Parameter configId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1069,7 +983,7 @@ class PretargetingConfigResource {
 
 class AccountBidderLocation {
   /// The maximum queries per second the Ad Exchange will send.
-  core.int maximumQps;
+  core.int? maximumQps;
 
   /// The geographical region the Ad Exchange should send requests from.
   ///
@@ -1079,10 +993,10 @@ class AccountBidderLocation {
   /// - EUROPE
   /// - US_EAST
   /// - US_WEST
-  core.String region;
+  core.String? region;
 
   /// The URL to which the Ad Exchange will send bid requests.
-  core.String url;
+  core.String? url;
 
   AccountBidderLocation();
 
@@ -1098,46 +1012,46 @@ class AccountBidderLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maximumQps != null) 'maximumQps': maximumQps,
-        if (region != null) 'region': region,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maximumQps != null) 'maximumQps': maximumQps!,
+        if (region != null) 'region': region!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// Configuration data for an Ad Exchange buyer account.
 class Account {
   /// Your bidder locations that have distinct URLs.
-  core.List<AccountBidderLocation> bidderLocation;
+  core.List<AccountBidderLocation>? bidderLocation;
 
   /// The nid parameter value used in cookie match requests.
   ///
   /// Please contact your technical account manager if you need to change this.
-  core.String cookieMatchingNid;
+  core.String? cookieMatchingNid;
 
   /// The base URL used in cookie match requests.
-  core.String cookieMatchingUrl;
+  core.String? cookieMatchingUrl;
 
   /// Account id.
-  core.int id;
+  core.int? id;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// The maximum number of active creatives that an account can have, where a
   /// creative is active if it was inserted or bid with in the last 30 days.
   ///
   /// Please contact your technical account manager if you need to change this.
-  core.int maximumActiveCreatives;
+  core.int? maximumActiveCreatives;
 
   /// The sum of all bidderLocation.maximumQps values cannot exceed this.
   ///
   /// Please contact your technical account manager if you need to change this.
-  core.int maximumTotalQps;
+  core.int? maximumTotalQps;
 
   /// The number of creatives that this account inserted or bid with in the last
   /// 30 days.
-  core.int numberActiveCreatives;
+  core.int? numberActiveCreatives;
 
   Account();
 
@@ -1171,19 +1085,19 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bidderLocation != null)
           'bidderLocation':
-              bidderLocation.map((value) => value.toJson()).toList(),
-        if (cookieMatchingNid != null) 'cookieMatchingNid': cookieMatchingNid,
-        if (cookieMatchingUrl != null) 'cookieMatchingUrl': cookieMatchingUrl,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+              bidderLocation!.map((value) => value.toJson()).toList(),
+        if (cookieMatchingNid != null) 'cookieMatchingNid': cookieMatchingNid!,
+        if (cookieMatchingUrl != null) 'cookieMatchingUrl': cookieMatchingUrl!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (maximumActiveCreatives != null)
-          'maximumActiveCreatives': maximumActiveCreatives,
-        if (maximumTotalQps != null) 'maximumTotalQps': maximumTotalQps,
+          'maximumActiveCreatives': maximumActiveCreatives!,
+        if (maximumTotalQps != null) 'maximumTotalQps': maximumTotalQps!,
         if (numberActiveCreatives != null)
-          'numberActiveCreatives': numberActiveCreatives,
+          'numberActiveCreatives': numberActiveCreatives!,
       };
 }
 
@@ -1193,10 +1107,10 @@ class Account {
 /// Each entry in the feed corresponds to a single buyer account.
 class AccountsList {
   /// A list of accounts.
-  core.List<Account> items;
+  core.List<Account>? items;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   AccountsList();
 
@@ -1212,29 +1126,29 @@ class AccountsList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// The configuration data for an Ad Exchange billing info.
 class BillingInfo {
   /// Account id.
-  core.int accountId;
+  core.int? accountId;
 
   /// Account name.
-  core.String accountName;
+  core.String? accountName;
 
   /// A list of adgroup IDs associated with this particular account.
   ///
   /// These IDs may show up as part of a realtime bidding BidRequest, which
   /// indicates a bid request for this account.
-  core.List<core.String> billingId;
+  core.List<core.String>? billingId;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   BillingInfo();
 
@@ -1255,11 +1169,11 @@ class BillingInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (accountName != null) 'accountName': accountName,
-        if (billingId != null) 'billingId': billingId,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (accountName != null) 'accountName': accountName!,
+        if (billingId != null) 'billingId': billingId!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -1269,10 +1183,10 @@ class BillingInfo {
 /// Each entry in the feed corresponds to a single billing info.
 class BillingInfoList {
   /// A list of billing info relevant for your account.
-  core.List<BillingInfo> items;
+  core.List<BillingInfo>? items;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   BillingInfoList();
 
@@ -1288,10 +1202,10 @@ class BillingInfoList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -1300,30 +1214,30 @@ class Budget {
   /// The id of the account.
   ///
   /// This is required for get and update requests.
-  core.String accountId;
+  core.String? accountId;
 
   /// The billing id to determine which adgroup to provide budget information
   /// for.
   ///
   /// This is required for get and update requests.
-  core.String billingId;
+  core.String? billingId;
 
   /// The daily budget amount in unit amount of the account currency to apply
   /// for the billingId provided.
   ///
   /// This is required for update requests.
-  core.String budgetAmount;
+  core.String? budgetAmount;
 
   /// The currency code for the buyer.
   ///
   /// This cannot be altered here.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// The unique id that describes this item.
-  core.String id;
+  core.String? id;
 
   /// The kind of the resource, i.e. "adexchangebuyer#budget".
-  core.String kind;
+  core.String? kind;
 
   Budget();
 
@@ -1348,13 +1262,13 @@ class Budget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (billingId != null) 'billingId': billingId,
-        if (budgetAmount != null) 'budgetAmount': budgetAmount,
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (billingId != null) 'billingId': billingId!,
+        if (budgetAmount != null) 'budgetAmount': budgetAmount!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -1372,7 +1286,7 @@ class CreativeAdTechnologyProviders {
   /// Area (EEA) user with this creative is not compliant with the GDPR policies
   /// as mentioned in the "Third-party Ad Technology Vendors" section of
   /// Authorized Buyers Program Guidelines.
-  core.List<core.String> detectedProviderIds;
+  core.List<core.String>? detectedProviderIds;
 
   /// Whether the creative contains an unidentified ad technology provider.
   ///
@@ -1380,7 +1294,7 @@ class CreativeAdTechnologyProviders {
   /// creative is not compliant with the GDPR policies as mentioned in the
   /// "Third-party Ad Technology Vendors" section of Authorized Buyers Program
   /// Guidelines.
-  core.bool hasUnidentifiedProvider;
+  core.bool? hasUnidentifiedProvider;
 
   CreativeAdTechnologyProviders();
 
@@ -1395,20 +1309,20 @@ class CreativeAdTechnologyProviders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (detectedProviderIds != null)
-          'detectedProviderIds': detectedProviderIds,
+          'detectedProviderIds': detectedProviderIds!,
         if (hasUnidentifiedProvider != null)
-          'hasUnidentifiedProvider': hasUnidentifiedProvider,
+          'hasUnidentifiedProvider': hasUnidentifiedProvider!,
       };
 }
 
 class CreativeCorrections {
   /// Additional details about the correction.
-  core.List<core.String> details;
+  core.List<core.String>? details;
 
   /// The type of correction that was applied to the creative.
-  core.String reason;
+  core.String? reason;
 
   CreativeCorrections();
 
@@ -1423,18 +1337,18 @@ class CreativeCorrections {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (details != null) 'details': details,
-        if (reason != null) 'reason': reason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (details != null) 'details': details!,
+        if (reason != null) 'reason': reason!,
       };
 }
 
 class CreativeDisapprovalReasons {
   /// Additional details about the reason for disapproval.
-  core.List<core.String> details;
+  core.List<core.String>? details;
 
   /// The categorized reason for disapproval.
-  core.String reason;
+  core.String? reason;
 
   CreativeDisapprovalReasons();
 
@@ -1449,9 +1363,9 @@ class CreativeDisapprovalReasons {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (details != null) 'details': details,
-        if (reason != null) 'reason': reason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (details != null) 'details': details!,
+        if (reason != null) 'reason': reason!,
       };
 }
 
@@ -1459,12 +1373,12 @@ class CreativeFilteringReasonsReasons {
   /// The number of times the creative was filtered for the status.
   ///
   /// The count is aggregated across all publishers on the exchange.
-  core.String filteringCount;
+  core.String? filteringCount;
 
   /// The filtering status code.
   ///
   /// Please refer to the creative-status-codes.txt file for different statuses.
-  core.int filteringStatus;
+  core.int? filteringStatus;
 
   CreativeFilteringReasonsReasons();
 
@@ -1477,9 +1391,9 @@ class CreativeFilteringReasonsReasons {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filteringCount != null) 'filteringCount': filteringCount,
-        if (filteringStatus != null) 'filteringStatus': filteringStatus,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filteringCount != null) 'filteringCount': filteringCount!,
+        if (filteringStatus != null) 'filteringStatus': filteringStatus!,
       };
 }
 
@@ -1490,10 +1404,10 @@ class CreativeFilteringReasons {
   /// The date in ISO 8601 format for the data.
   ///
   /// The data is collected from 00:00:00 to 23:59:59 in PST.
-  core.String date;
+  core.String? date;
 
   /// The filtering reasons.
-  core.List<CreativeFilteringReasonsReasons> reasons;
+  core.List<CreativeFilteringReasonsReasons>? reasons;
 
   CreativeFilteringReasons();
 
@@ -1510,18 +1424,18 @@ class CreativeFilteringReasons {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (date != null) 'date': date,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (date != null) 'date': date!,
         if (reasons != null)
-          'reasons': reasons.map((value) => value.toJson()).toList(),
+          'reasons': reasons!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The app icon, for app download ads.
 class CreativeNativeAdAppIcon {
-  core.int height;
-  core.String url;
-  core.int width;
+  core.int? height;
+  core.String? url;
+  core.int? width;
 
   CreativeNativeAdAppIcon();
 
@@ -1537,18 +1451,18 @@ class CreativeNativeAdAppIcon {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (url != null) 'url': url,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (url != null) 'url': url!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// A large image.
 class CreativeNativeAdImage {
-  core.int height;
-  core.String url;
-  core.int width;
+  core.int? height;
+  core.String? url;
+  core.int? width;
 
   CreativeNativeAdImage();
 
@@ -1564,18 +1478,18 @@ class CreativeNativeAdImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (url != null) 'url': url,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (url != null) 'url': url!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// A smaller image, for the advertiser logo.
 class CreativeNativeAdLogo {
-  core.int height;
-  core.String url;
-  core.int width;
+  core.int? height;
+  core.String? url;
+  core.int? width;
 
   CreativeNativeAdLogo();
 
@@ -1591,48 +1505,48 @@ class CreativeNativeAdLogo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (url != null) 'url': url,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (url != null) 'url': url!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// If nativeAd is set, HTMLSnippet and videoURL should not be set.
 class CreativeNativeAd {
-  core.String advertiser;
+  core.String? advertiser;
 
   /// The app icon, for app download ads.
-  CreativeNativeAdAppIcon appIcon;
+  CreativeNativeAdAppIcon? appIcon;
 
   /// A long description of the ad.
-  core.String body;
+  core.String? body;
 
   /// A label for the button that the user is supposed to click.
-  core.String callToAction;
+  core.String? callToAction;
 
   /// The URL to use for click tracking.
-  core.String clickTrackingUrl;
+  core.String? clickTrackingUrl;
 
   /// A short title for the ad.
-  core.String headline;
+  core.String? headline;
 
   /// A large image.
-  CreativeNativeAdImage image;
+  CreativeNativeAdImage? image;
 
   /// The URLs are called when the impression is rendered.
-  core.List<core.String> impressionTrackingUrl;
+  core.List<core.String>? impressionTrackingUrl;
 
   /// A smaller image, for the advertiser logo.
-  CreativeNativeAdLogo logo;
+  CreativeNativeAdLogo? logo;
 
   /// The price of the promoted app including the currency info.
-  core.String price;
+  core.String? price;
 
   /// The app rating in the app store.
   ///
   /// Must be in the range \[0-5\].
-  core.double starRating;
+  core.double? starRating;
 
   CreativeNativeAd();
 
@@ -1677,19 +1591,19 @@ class CreativeNativeAd {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (advertiser != null) 'advertiser': advertiser,
-        if (appIcon != null) 'appIcon': appIcon.toJson(),
-        if (body != null) 'body': body,
-        if (callToAction != null) 'callToAction': callToAction,
-        if (clickTrackingUrl != null) 'clickTrackingUrl': clickTrackingUrl,
-        if (headline != null) 'headline': headline,
-        if (image != null) 'image': image.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (advertiser != null) 'advertiser': advertiser!,
+        if (appIcon != null) 'appIcon': appIcon!.toJson(),
+        if (body != null) 'body': body!,
+        if (callToAction != null) 'callToAction': callToAction!,
+        if (clickTrackingUrl != null) 'clickTrackingUrl': clickTrackingUrl!,
+        if (headline != null) 'headline': headline!,
+        if (image != null) 'image': image!.toJson(),
         if (impressionTrackingUrl != null)
-          'impressionTrackingUrl': impressionTrackingUrl,
-        if (logo != null) 'logo': logo.toJson(),
-        if (price != null) 'price': price,
-        if (starRating != null) 'starRating': starRating,
+          'impressionTrackingUrl': impressionTrackingUrl!,
+        if (logo != null) 'logo': logo!.toJson(),
+        if (price != null) 'price': price!,
+        if (starRating != null) 'starRating': starRating!,
       };
 }
 
@@ -1698,42 +1612,42 @@ class Creative {
   /// The HTML snippet that displays the ad when inserted in the web page.
   ///
   /// If set, videoURL should not be set.
-  core.String HTMLSnippet;
+  core.String? HTMLSnippet;
 
   /// Account id.
-  core.int accountId;
-  CreativeAdTechnologyProviders adTechnologyProviders;
+  core.int? accountId;
+  CreativeAdTechnologyProviders? adTechnologyProviders;
 
   /// Detected advertiser id, if any.
   ///
   /// Read-only. This field should not be set in requests.
-  core.List<core.String> advertiserId;
+  core.List<core.String>? advertiserId;
 
   /// The name of the company being advertised in the creative.
-  core.String advertiserName;
+  core.String? advertiserName;
 
   /// The agency id for this creative.
-  core.String agencyId;
+  core.String? agencyId;
 
   /// The last upload timestamp of this creative if it was uploaded via API.
   ///
   /// Read-only. The value of this field is generated, and will be ignored for
   /// uploads. (formatted RFC 3339 timestamp).
-  core.DateTime apiUploadTimestamp;
+  core.DateTime? apiUploadTimestamp;
 
   /// All attributes for the ads that may be shown from this snippet.
-  core.List<core.int> attribute;
+  core.List<core.int>? attribute;
 
   /// A buyer-specific id identifying the creative in this ad.
-  core.String buyerCreativeId;
+  core.String? buyerCreativeId;
 
   /// The set of destination urls for the snippet.
-  core.List<core.String> clickThroughUrl;
+  core.List<core.String>? clickThroughUrl;
 
   /// Shows any corrections that were applied to this creative.
   ///
   /// Read-only. This field should not be set in requests.
-  core.List<CreativeCorrections> corrections;
+  core.List<CreativeCorrections>? corrections;
 
   /// The reasons for disapproval, if any.
   ///
@@ -1742,58 +1656,58 @@ class Creative {
   /// list for disapproval_reasons. In this case, please reach out to your TAM
   /// to help debug the issue. Read-only. This field should not be set in
   /// requests.
-  core.List<CreativeDisapprovalReasons> disapprovalReasons;
+  core.List<CreativeDisapprovalReasons>? disapprovalReasons;
 
   /// The filtering reasons for the creative.
   ///
   /// Read-only. This field should not be set in requests.
-  CreativeFilteringReasons filteringReasons;
+  CreativeFilteringReasons? filteringReasons;
 
   /// Ad height.
-  core.int height;
+  core.int? height;
 
   /// The set of urls to be called to record an impression.
-  core.List<core.String> impressionTrackingUrl;
+  core.List<core.String>? impressionTrackingUrl;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// If nativeAd is set, HTMLSnippet and videoURL should not be set.
-  CreativeNativeAd nativeAd;
+  CreativeNativeAd? nativeAd;
 
   /// Detected product categories, if any.
   ///
   /// Read-only. This field should not be set in requests.
-  core.List<core.int> productCategories;
+  core.List<core.int>? productCategories;
 
   /// All restricted categories for the ads that may be shown from this snippet.
-  core.List<core.int> restrictedCategories;
+  core.List<core.int>? restrictedCategories;
 
   /// Detected sensitive categories, if any.
   ///
   /// Read-only. This field should not be set in requests.
-  core.List<core.int> sensitiveCategories;
+  core.List<core.int>? sensitiveCategories;
 
   /// Creative serving status.
   ///
   /// Read-only. This field should not be set in requests.
-  core.String status;
+  core.String? status;
 
   /// All vendor types for the ads that may be shown from this snippet.
-  core.List<core.int> vendorType;
+  core.List<core.int>? vendorType;
 
   /// The version for this creative.
   ///
   /// Read-only. This field should not be set in requests.
-  core.int version;
+  core.int? version;
 
   /// The URL to fetch a video ad.
   ///
   /// If set, HTMLSnippet and the nativeAd should not be set.
-  core.String videoURL;
+  core.String? videoURL;
 
   /// Ad width.
-  core.int width;
+  core.int? width;
 
   Creative();
 
@@ -1903,41 +1817,41 @@ class Creative {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (HTMLSnippet != null) 'HTMLSnippet': HTMLSnippet,
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (HTMLSnippet != null) 'HTMLSnippet': HTMLSnippet!,
+        if (accountId != null) 'accountId': accountId!,
         if (adTechnologyProviders != null)
-          'adTechnologyProviders': adTechnologyProviders.toJson(),
-        if (advertiserId != null) 'advertiserId': advertiserId,
-        if (advertiserName != null) 'advertiserName': advertiserName,
-        if (agencyId != null) 'agencyId': agencyId,
+          'adTechnologyProviders': adTechnologyProviders!.toJson(),
+        if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (advertiserName != null) 'advertiserName': advertiserName!,
+        if (agencyId != null) 'agencyId': agencyId!,
         if (apiUploadTimestamp != null)
-          'apiUploadTimestamp': (apiUploadTimestamp).toIso8601String(),
-        if (attribute != null) 'attribute': attribute,
-        if (buyerCreativeId != null) 'buyerCreativeId': buyerCreativeId,
-        if (clickThroughUrl != null) 'clickThroughUrl': clickThroughUrl,
+          'apiUploadTimestamp': (apiUploadTimestamp!).toIso8601String(),
+        if (attribute != null) 'attribute': attribute!,
+        if (buyerCreativeId != null) 'buyerCreativeId': buyerCreativeId!,
+        if (clickThroughUrl != null) 'clickThroughUrl': clickThroughUrl!,
         if (corrections != null)
-          'corrections': corrections.map((value) => value.toJson()).toList(),
+          'corrections': corrections!.map((value) => value.toJson()).toList(),
         if (disapprovalReasons != null)
           'disapprovalReasons':
-              disapprovalReasons.map((value) => value.toJson()).toList(),
+              disapprovalReasons!.map((value) => value.toJson()).toList(),
         if (filteringReasons != null)
-          'filteringReasons': filteringReasons.toJson(),
-        if (height != null) 'height': height,
+          'filteringReasons': filteringReasons!.toJson(),
+        if (height != null) 'height': height!,
         if (impressionTrackingUrl != null)
-          'impressionTrackingUrl': impressionTrackingUrl,
-        if (kind != null) 'kind': kind,
-        if (nativeAd != null) 'nativeAd': nativeAd.toJson(),
-        if (productCategories != null) 'productCategories': productCategories,
+          'impressionTrackingUrl': impressionTrackingUrl!,
+        if (kind != null) 'kind': kind!,
+        if (nativeAd != null) 'nativeAd': nativeAd!.toJson(),
+        if (productCategories != null) 'productCategories': productCategories!,
         if (restrictedCategories != null)
-          'restrictedCategories': restrictedCategories,
+          'restrictedCategories': restrictedCategories!,
         if (sensitiveCategories != null)
-          'sensitiveCategories': sensitiveCategories,
-        if (status != null) 'status': status,
-        if (vendorType != null) 'vendorType': vendorType,
-        if (version != null) 'version': version,
-        if (videoURL != null) 'videoURL': videoURL,
-        if (width != null) 'width': width,
+          'sensitiveCategories': sensitiveCategories!,
+        if (status != null) 'status': status!,
+        if (vendorType != null) 'vendorType': vendorType!,
+        if (version != null) 'version': version!,
+        if (videoURL != null) 'videoURL': videoURL!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -1947,16 +1861,16 @@ class Creative {
 /// Each entry in the feed corresponds to a single creative.
 class CreativesList {
   /// A list of creatives.
-  core.List<Creative> items;
+  core.List<Creative>? items;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// Continuation token used to page through creatives.
   ///
   /// To retrieve the next page of results, set the next request's "pageToken"
   /// value to this.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   CreativesList();
 
@@ -1975,80 +1889,80 @@ class CreativesList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The configuration data for an Ad Exchange direct deal.
 class DirectDeal {
   /// The account id of the buyer this deal is for.
-  core.int accountId;
+  core.int? accountId;
 
   /// The name of the advertiser this deal is for.
-  core.String advertiser;
+  core.String? advertiser;
 
   /// Whether the publisher for this deal is eligible for alcohol ads.
-  core.bool allowsAlcohol;
+  core.bool? allowsAlcohol;
 
   /// The account id that this deal was negotiated for.
   ///
   /// It is either the buyer or the client that this deal was negotiated on
   /// behalf of.
-  core.String buyerAccountId;
+  core.String? buyerAccountId;
 
   /// The currency code that applies to the fixed_cpm value.
   ///
   /// If not set then assumed to be USD.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// The deal type such as programmatic reservation or fixed price and so on.
-  core.String dealTier;
+  core.String? dealTier;
 
   /// End time for when this deal stops being active.
   ///
   /// If not set then this deal is valid until manually disabled by the
   /// publisher. In seconds since the epoch.
-  core.String endTime;
+  core.String? endTime;
 
   /// The fixed price for this direct deal.
   ///
   /// In cpm micros of currency according to currency_code. If set, then this
   /// deal is eligible for the fixed price tier of buying (highest priority, pay
   /// exactly the configured fixed price).
-  core.String fixedCpm;
+  core.String? fixedCpm;
 
   /// Deal id.
-  core.String id;
+  core.String? id;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// Deal name.
-  core.String name;
+  core.String? name;
 
   /// The minimum price for this direct deal.
   ///
   /// In cpm micros of currency according to currency_code. If set, then this
   /// deal is eligible for the private exchange tier of buying (below fixed
   /// price priority, run as a second price auction).
-  core.String privateExchangeMinCpm;
+  core.String? privateExchangeMinCpm;
 
   /// If true, the publisher has opted to have their blocks ignored when a
   /// creative is bid with for this deal.
-  core.bool publisherBlocksOverriden;
+  core.bool? publisherBlocksOverriden;
 
   /// The name of the publisher offering this direct deal.
-  core.String sellerNetwork;
+  core.String? sellerNetwork;
 
   /// Start time for when this deal becomes active.
   ///
   /// If not set then this deal is active immediately upon creation. In seconds
   /// since the epoch.
-  core.String startTime;
+  core.String? startTime;
 
   DirectDeal();
 
@@ -2100,24 +2014,24 @@ class DirectDeal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (advertiser != null) 'advertiser': advertiser,
-        if (allowsAlcohol != null) 'allowsAlcohol': allowsAlcohol,
-        if (buyerAccountId != null) 'buyerAccountId': buyerAccountId,
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (dealTier != null) 'dealTier': dealTier,
-        if (endTime != null) 'endTime': endTime,
-        if (fixedCpm != null) 'fixedCpm': fixedCpm,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (advertiser != null) 'advertiser': advertiser!,
+        if (allowsAlcohol != null) 'allowsAlcohol': allowsAlcohol!,
+        if (buyerAccountId != null) 'buyerAccountId': buyerAccountId!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (dealTier != null) 'dealTier': dealTier!,
+        if (endTime != null) 'endTime': endTime!,
+        if (fixedCpm != null) 'fixedCpm': fixedCpm!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
         if (privateExchangeMinCpm != null)
-          'privateExchangeMinCpm': privateExchangeMinCpm,
+          'privateExchangeMinCpm': privateExchangeMinCpm!,
         if (publisherBlocksOverriden != null)
-          'publisherBlocksOverriden': publisherBlocksOverriden,
-        if (sellerNetwork != null) 'sellerNetwork': sellerNetwork,
-        if (startTime != null) 'startTime': startTime,
+          'publisherBlocksOverriden': publisherBlocksOverriden!,
+        if (sellerNetwork != null) 'sellerNetwork': sellerNetwork!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -2128,10 +2042,10 @@ class DirectDeal {
 /// merged stream seats.
 class DirectDealsList {
   /// A list of direct deals relevant for your account.
-  core.List<DirectDeal> directDeals;
+  core.List<DirectDeal>? directDeals;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   DirectDealsList();
 
@@ -2147,20 +2061,20 @@ class DirectDealsList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (directDeals != null)
-          'directDeals': directDeals.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'directDeals': directDeals!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// The configuration data for an Ad Exchange performance report list.
 class PerformanceReport {
   /// The number of bid responses with an ad.
-  core.double bidRate;
+  core.double? bidRate;
 
   /// The number of bid requests sent to your bidder.
-  core.double bidRequestRate;
+  core.double? bidRequestRate;
 
   /// Rate of various prefiltering statuses per match.
   ///
@@ -2168,13 +2082,13 @@ class PerformanceReport {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> calloutStatusRate;
+  core.List<core.Object>? calloutStatusRate;
 
   /// Average QPS for cookie matcher operations.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> cookieMatcherStatusRate;
+  core.List<core.Object>? cookieMatcherStatusRate;
 
   /// Rate of ads with a given status.
   ///
@@ -2182,67 +2096,67 @@ class PerformanceReport {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> creativeStatusRate;
+  core.List<core.Object>? creativeStatusRate;
 
   /// The number of bid responses that were filtered due to a policy violation
   /// or other errors.
-  core.double filteredBidRate;
+  core.double? filteredBidRate;
 
   /// Average QPS for hosted match operations.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> hostedMatchStatusRate;
+  core.List<core.Object>? hostedMatchStatusRate;
 
   /// The number of potential queries based on your pretargeting settings.
-  core.double inventoryMatchRate;
+  core.double? inventoryMatchRate;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// The 50th percentile round trip latency(ms) as perceived from Google
   /// servers for the duration period covered by the report.
-  core.double latency50thPercentile;
+  core.double? latency50thPercentile;
 
   /// The 85th percentile round trip latency(ms) as perceived from Google
   /// servers for the duration period covered by the report.
-  core.double latency85thPercentile;
+  core.double? latency85thPercentile;
 
   /// The 95th percentile round trip latency(ms) as perceived from Google
   /// servers for the duration period covered by the report.
-  core.double latency95thPercentile;
+  core.double? latency95thPercentile;
 
   /// Rate of various quota account statuses per quota check.
-  core.double noQuotaInRegion;
+  core.double? noQuotaInRegion;
 
   /// Rate of various quota account statuses per quota check.
-  core.double outOfQuota;
+  core.double? outOfQuota;
 
   /// Average QPS for pixel match requests from clients.
-  core.double pixelMatchRequests;
+  core.double? pixelMatchRequests;
 
   /// Average QPS for pixel match responses from clients.
-  core.double pixelMatchResponses;
+  core.double? pixelMatchResponses;
 
   /// The configured quota limits for this account.
-  core.double quotaConfiguredLimit;
+  core.double? quotaConfiguredLimit;
 
   /// The throttled quota limits for this account.
-  core.double quotaThrottledLimit;
+  core.double? quotaThrottledLimit;
 
   /// The trading location of this data.
-  core.String region;
+  core.String? region;
 
   /// The number of properly formed bid responses received by our servers within
   /// the deadline.
-  core.double successfulRequestRate;
+  core.double? successfulRequestRate;
 
   /// The unix timestamp of the starting time of this performance data.
-  core.String timestamp;
+  core.String? timestamp;
 
   /// The number of bid responses that were unsuccessful due to timeouts,
   /// incorrect formatting, etc.
-  core.double unsuccessfulRequestRate;
+  core.double? unsuccessfulRequestRate;
 
   PerformanceReport();
 
@@ -2331,52 +2245,52 @@ class PerformanceReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bidRate != null) 'bidRate': bidRate,
-        if (bidRequestRate != null) 'bidRequestRate': bidRequestRate,
-        if (calloutStatusRate != null) 'calloutStatusRate': calloutStatusRate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bidRate != null) 'bidRate': bidRate!,
+        if (bidRequestRate != null) 'bidRequestRate': bidRequestRate!,
+        if (calloutStatusRate != null) 'calloutStatusRate': calloutStatusRate!,
         if (cookieMatcherStatusRate != null)
-          'cookieMatcherStatusRate': cookieMatcherStatusRate,
+          'cookieMatcherStatusRate': cookieMatcherStatusRate!,
         if (creativeStatusRate != null)
-          'creativeStatusRate': creativeStatusRate,
-        if (filteredBidRate != null) 'filteredBidRate': filteredBidRate,
+          'creativeStatusRate': creativeStatusRate!,
+        if (filteredBidRate != null) 'filteredBidRate': filteredBidRate!,
         if (hostedMatchStatusRate != null)
-          'hostedMatchStatusRate': hostedMatchStatusRate,
+          'hostedMatchStatusRate': hostedMatchStatusRate!,
         if (inventoryMatchRate != null)
-          'inventoryMatchRate': inventoryMatchRate,
-        if (kind != null) 'kind': kind,
+          'inventoryMatchRate': inventoryMatchRate!,
+        if (kind != null) 'kind': kind!,
         if (latency50thPercentile != null)
-          'latency50thPercentile': latency50thPercentile,
+          'latency50thPercentile': latency50thPercentile!,
         if (latency85thPercentile != null)
-          'latency85thPercentile': latency85thPercentile,
+          'latency85thPercentile': latency85thPercentile!,
         if (latency95thPercentile != null)
-          'latency95thPercentile': latency95thPercentile,
-        if (noQuotaInRegion != null) 'noQuotaInRegion': noQuotaInRegion,
-        if (outOfQuota != null) 'outOfQuota': outOfQuota,
+          'latency95thPercentile': latency95thPercentile!,
+        if (noQuotaInRegion != null) 'noQuotaInRegion': noQuotaInRegion!,
+        if (outOfQuota != null) 'outOfQuota': outOfQuota!,
         if (pixelMatchRequests != null)
-          'pixelMatchRequests': pixelMatchRequests,
+          'pixelMatchRequests': pixelMatchRequests!,
         if (pixelMatchResponses != null)
-          'pixelMatchResponses': pixelMatchResponses,
+          'pixelMatchResponses': pixelMatchResponses!,
         if (quotaConfiguredLimit != null)
-          'quotaConfiguredLimit': quotaConfiguredLimit,
+          'quotaConfiguredLimit': quotaConfiguredLimit!,
         if (quotaThrottledLimit != null)
-          'quotaThrottledLimit': quotaThrottledLimit,
-        if (region != null) 'region': region,
+          'quotaThrottledLimit': quotaThrottledLimit!,
+        if (region != null) 'region': region!,
         if (successfulRequestRate != null)
-          'successfulRequestRate': successfulRequestRate,
-        if (timestamp != null) 'timestamp': timestamp,
+          'successfulRequestRate': successfulRequestRate!,
+        if (timestamp != null) 'timestamp': timestamp!,
         if (unsuccessfulRequestRate != null)
-          'unsuccessfulRequestRate': unsuccessfulRequestRate,
+          'unsuccessfulRequestRate': unsuccessfulRequestRate!,
       };
 }
 
 /// The configuration data for an Ad Exchange performance report list.
 class PerformanceReportList {
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   /// A list of performance reports relevant for the account.
-  core.List<PerformanceReport> performanceReport;
+  core.List<PerformanceReport>? performanceReport;
 
   PerformanceReportList();
 
@@ -2392,20 +2306,20 @@ class PerformanceReportList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (performanceReport != null)
           'performanceReport':
-              performanceReport.map((value) => value.toJson()).toList(),
+              performanceReport!.map((value) => value.toJson()).toList(),
       };
 }
 
 class PretargetingConfigDimensions {
   /// Height in pixels.
-  core.String height;
+  core.String? height;
 
   /// Width in pixels.
-  core.String width;
+  core.String? width;
 
   PretargetingConfigDimensions();
 
@@ -2418,9 +2332,9 @@ class PretargetingConfigDimensions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -2430,10 +2344,10 @@ class PretargetingConfigExcludedPlacements {
   /// Interpretation depends on the placement type, e.g. URL for a site
   /// placement, channel name for a channel placement, app id for a mobile app
   /// placement.
-  core.String token;
+  core.String? token;
 
   /// The type of the placement.
-  core.String type;
+  core.String? type;
 
   PretargetingConfigExcludedPlacements();
 
@@ -2446,9 +2360,9 @@ class PretargetingConfigExcludedPlacements {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (token != null) 'token': token,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (token != null) 'token': token!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2458,10 +2372,10 @@ class PretargetingConfigPlacements {
   /// Interpretation depends on the placement type, e.g. URL for a site
   /// placement, channel name for a channel placement, app id for a mobile app
   /// placement.
-  core.String token;
+  core.String? token;
 
   /// The type of the placement.
-  core.String type;
+  core.String? type;
 
   PretargetingConfigPlacements();
 
@@ -2474,9 +2388,9 @@ class PretargetingConfigPlacements {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (token != null) 'token': token,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (token != null) 'token': token!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2485,60 +2399,60 @@ class PretargetingConfig {
   ///
   /// Leave this field blank for insert requests; the id will be generated
   /// automatically.
-  core.String billingId;
+  core.String? billingId;
 
   /// The config id; generated automatically.
   ///
   /// Leave this field blank for insert requests.
-  core.String configId;
+  core.String? configId;
 
   /// The name of the config.
   ///
   /// Must be unique. Required for all requests.
-  core.String configName;
+  core.String? configName;
 
   /// List must contain exactly one of PRETARGETING_CREATIVE_TYPE_HTML or
   /// PRETARGETING_CREATIVE_TYPE_VIDEO.
-  core.List<core.String> creativeType;
+  core.List<core.String>? creativeType;
 
   /// Requests which allow one of these (width, height) pairs will match.
   ///
   /// All pairs must be supported ad dimensions.
-  core.List<PretargetingConfigDimensions> dimensions;
+  core.List<PretargetingConfigDimensions>? dimensions;
 
   /// Requests with any of these content labels will not match.
   ///
   /// Values are from content-labels.txt in the downloadable files section.
-  core.List<core.String> excludedContentLabels;
+  core.List<core.String>? excludedContentLabels;
 
   /// Requests containing any of these geo criteria ids will not match.
-  core.List<core.String> excludedGeoCriteriaIds;
+  core.List<core.String>? excludedGeoCriteriaIds;
 
   /// Requests containing any of these placements will not match.
-  core.List<PretargetingConfigExcludedPlacements> excludedPlacements;
+  core.List<PretargetingConfigExcludedPlacements>? excludedPlacements;
 
   /// Requests containing any of these users list ids will not match.
-  core.List<core.String> excludedUserLists;
+  core.List<core.String>? excludedUserLists;
 
   /// Requests containing any of these vertical ids will not match.
   ///
   /// Values are from the publisher-verticals.txt file in the downloadable files
   /// section.
-  core.List<core.String> excludedVerticals;
+  core.List<core.String>? excludedVerticals;
 
   /// Requests containing any of these geo criteria ids will match.
-  core.List<core.String> geoCriteriaIds;
+  core.List<core.String>? geoCriteriaIds;
 
   /// Whether this config is active.
   ///
   /// Required for all requests.
-  core.bool isActive;
+  core.bool? isActive;
 
   /// The kind of the resource, i.e. "adexchangebuyer#pretargetingConfig".
-  core.String kind;
+  core.String? kind;
 
   /// Request containing any of these language codes will match.
-  core.List<core.String> languages;
+  core.List<core.String>? languages;
 
   /// The maximum QPS allocated to this pretargeting configuration, used for
   /// pretargeting-level QPS limits.
@@ -2546,50 +2460,50 @@ class PretargetingConfig {
   /// By default, this is not set, which indicates that there is no QPS limit at
   /// the configuration level (a global or account-level limit may still be
   /// imposed).
-  core.String maximumQps;
+  core.String? maximumQps;
 
   /// Requests containing any of these mobile carrier ids will match.
   ///
   /// Values are from mobile-carriers.csv in the downloadable files section.
-  core.List<core.String> mobileCarriers;
+  core.List<core.String>? mobileCarriers;
 
   /// Requests containing any of these mobile device ids will match.
   ///
   /// Values are from mobile-devices.csv in the downloadable files section.
-  core.List<core.String> mobileDevices;
+  core.List<core.String>? mobileDevices;
 
   /// Requests containing any of these mobile operating system version ids will
   /// match.
   ///
   /// Values are from mobile-os.csv in the downloadable files section.
-  core.List<core.String> mobileOperatingSystemVersions;
+  core.List<core.String>? mobileOperatingSystemVersions;
 
   /// Requests containing any of these placements will match.
-  core.List<PretargetingConfigPlacements> placements;
+  core.List<PretargetingConfigPlacements>? placements;
 
   /// Requests matching any of these platforms will match.
   ///
   /// Possible values are PRETARGETING_PLATFORM_MOBILE,
   /// PRETARGETING_PLATFORM_DESKTOP, and PRETARGETING_PLATFORM_TABLET.
-  core.List<core.String> platforms;
+  core.List<core.String>? platforms;
 
   /// Creative attributes should be declared here if all creatives corresponding
   /// to this pretargeting configuration have that creative attribute.
   ///
   /// Values are from pretargetable-creative-attributes.txt in the downloadable
   /// files section.
-  core.List<core.String> supportedCreativeAttributes;
+  core.List<core.String>? supportedCreativeAttributes;
 
   /// Requests containing any of these user list ids will match.
-  core.List<core.String> userLists;
+  core.List<core.String>? userLists;
 
   /// Requests that allow any of these vendor ids will match.
   ///
   /// Values are from vendors.txt in the downloadable files section.
-  core.List<core.String> vendorTypes;
+  core.List<core.String>? vendorTypes;
 
   /// Requests containing any of these vertical ids will match.
-  core.List<core.String> verticals;
+  core.List<core.String>? verticals;
 
   PretargetingConfig();
 
@@ -2712,48 +2626,48 @@ class PretargetingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (billingId != null) 'billingId': billingId,
-        if (configId != null) 'configId': configId,
-        if (configName != null) 'configName': configName,
-        if (creativeType != null) 'creativeType': creativeType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (billingId != null) 'billingId': billingId!,
+        if (configId != null) 'configId': configId!,
+        if (configName != null) 'configName': configName!,
+        if (creativeType != null) 'creativeType': creativeType!,
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
         if (excludedContentLabels != null)
-          'excludedContentLabels': excludedContentLabels,
+          'excludedContentLabels': excludedContentLabels!,
         if (excludedGeoCriteriaIds != null)
-          'excludedGeoCriteriaIds': excludedGeoCriteriaIds,
+          'excludedGeoCriteriaIds': excludedGeoCriteriaIds!,
         if (excludedPlacements != null)
           'excludedPlacements':
-              excludedPlacements.map((value) => value.toJson()).toList(),
-        if (excludedUserLists != null) 'excludedUserLists': excludedUserLists,
-        if (excludedVerticals != null) 'excludedVerticals': excludedVerticals,
-        if (geoCriteriaIds != null) 'geoCriteriaIds': geoCriteriaIds,
-        if (isActive != null) 'isActive': isActive,
-        if (kind != null) 'kind': kind,
-        if (languages != null) 'languages': languages,
-        if (maximumQps != null) 'maximumQps': maximumQps,
-        if (mobileCarriers != null) 'mobileCarriers': mobileCarriers,
-        if (mobileDevices != null) 'mobileDevices': mobileDevices,
+              excludedPlacements!.map((value) => value.toJson()).toList(),
+        if (excludedUserLists != null) 'excludedUserLists': excludedUserLists!,
+        if (excludedVerticals != null) 'excludedVerticals': excludedVerticals!,
+        if (geoCriteriaIds != null) 'geoCriteriaIds': geoCriteriaIds!,
+        if (isActive != null) 'isActive': isActive!,
+        if (kind != null) 'kind': kind!,
+        if (languages != null) 'languages': languages!,
+        if (maximumQps != null) 'maximumQps': maximumQps!,
+        if (mobileCarriers != null) 'mobileCarriers': mobileCarriers!,
+        if (mobileDevices != null) 'mobileDevices': mobileDevices!,
         if (mobileOperatingSystemVersions != null)
-          'mobileOperatingSystemVersions': mobileOperatingSystemVersions,
+          'mobileOperatingSystemVersions': mobileOperatingSystemVersions!,
         if (placements != null)
-          'placements': placements.map((value) => value.toJson()).toList(),
-        if (platforms != null) 'platforms': platforms,
+          'placements': placements!.map((value) => value.toJson()).toList(),
+        if (platforms != null) 'platforms': platforms!,
         if (supportedCreativeAttributes != null)
-          'supportedCreativeAttributes': supportedCreativeAttributes,
-        if (userLists != null) 'userLists': userLists,
-        if (vendorTypes != null) 'vendorTypes': vendorTypes,
-        if (verticals != null) 'verticals': verticals,
+          'supportedCreativeAttributes': supportedCreativeAttributes!,
+        if (userLists != null) 'userLists': userLists!,
+        if (vendorTypes != null) 'vendorTypes': vendorTypes!,
+        if (verticals != null) 'verticals': verticals!,
       };
 }
 
 class PretargetingConfigList {
   /// A list of pretargeting configs
-  core.List<PretargetingConfig> items;
+  core.List<PretargetingConfig>? items;
 
   /// Resource type.
-  core.String kind;
+  core.String? kind;
 
   PretargetingConfigList();
 
@@ -2769,9 +2683,9 @@ class PretargetingConfigList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }

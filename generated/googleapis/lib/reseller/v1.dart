@@ -97,11 +97,8 @@ class CustomersResource {
   /// this method will complete with the same error.
   async.Future<Customer> get(
     core.String customerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -160,11 +157,10 @@ class CustomersResource {
   /// this method will complete with the same error.
   async.Future<Customer> insert(
     Customer request, {
-    core.String customerAuthToken,
-    core.String $fields,
+    core.String? customerAuthToken,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerAuthToken != null) 'customerAuthToken': [customerAuthToken],
       if ($fields != null) 'fields': [$fields],
@@ -207,13 +203,9 @@ class CustomersResource {
   async.Future<Customer> patch(
     Customer request,
     core.String customerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -257,13 +249,9 @@ class CustomersResource {
   async.Future<Customer> update(
     Customer request,
     core.String customerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -301,7 +289,7 @@ class ResellernotifyResource_1 {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ResellernotifyGetwatchdetailsResponse> getwatchdetails({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -336,8 +324,8 @@ class ResellernotifyResource_1 {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ResellernotifyResource> register({
-    core.String serviceAccountEmailAddress,
-    core.String $fields,
+    core.String? serviceAccountEmailAddress,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (serviceAccountEmailAddress != null)
@@ -374,8 +362,8 @@ class ResellernotifyResource_1 {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ResellernotifyResource> unregister({
-    core.String serviceAccountEmailAddress,
-    core.String $fields,
+    core.String? serviceAccountEmailAddress,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (serviceAccountEmailAddress != null)
@@ -432,14 +420,8 @@ class SubscriptionsResource {
   async.Future<Subscription> activate(
     core.String customerId,
     core.String subscriptionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (subscriptionId == null) {
-      throw core.ArgumentError('Parameter subscriptionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -496,16 +478,9 @@ class SubscriptionsResource {
     ChangePlanRequest request,
     core.String customerId,
     core.String subscriptionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (subscriptionId == null) {
-      throw core.ArgumentError('Parameter subscriptionId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -561,16 +536,9 @@ class SubscriptionsResource {
     RenewalSettings request,
     core.String customerId,
     core.String subscriptionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (subscriptionId == null) {
-      throw core.ArgumentError('Parameter subscriptionId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -626,16 +594,9 @@ class SubscriptionsResource {
     Seats request,
     core.String customerId,
     core.String subscriptionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (subscriptionId == null) {
-      throw core.ArgumentError('Parameter subscriptionId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -695,17 +656,8 @@ class SubscriptionsResource {
     core.String customerId,
     core.String subscriptionId,
     core.String deletionType, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (subscriptionId == null) {
-      throw core.ArgumentError('Parameter subscriptionId is required.');
-    }
-    if (deletionType == null) {
-      throw core.ArgumentError('Parameter deletionType is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'deletionType': [deletionType],
       if ($fields != null) 'fields': [$fields],
@@ -758,14 +710,8 @@ class SubscriptionsResource {
   async.Future<Subscription> get(
     core.String customerId,
     core.String subscriptionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (subscriptionId == null) {
-      throw core.ArgumentError('Parameter subscriptionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -829,14 +775,10 @@ class SubscriptionsResource {
   async.Future<Subscription> insert(
     Subscription request,
     core.String customerId, {
-    core.String customerAuthToken,
-    core.String $fields,
+    core.String? customerAuthToken,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerAuthToken != null) 'customerAuthToken': [customerAuthToken],
       if ($fields != null) 'fields': [$fields],
@@ -904,12 +846,12 @@ class SubscriptionsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subscriptions> list({
-    core.String customerAuthToken,
-    core.String customerId,
-    core.String customerNamePrefix,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? customerAuthToken,
+    core.String? customerId,
+    core.String? customerNamePrefix,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerAuthToken != null) 'customerAuthToken': [customerAuthToken],
@@ -965,14 +907,8 @@ class SubscriptionsResource {
   async.Future<Subscription> startPaidService(
     core.String customerId,
     core.String subscriptionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (subscriptionId == null) {
-      throw core.ArgumentError('Parameter subscriptionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1031,14 +967,8 @@ class SubscriptionsResource {
   async.Future<Subscription> suspend(
     core.String customerId,
     core.String subscriptionId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (customerId == null) {
-      throw core.ArgumentError('Parameter customerId is required.');
-    }
-    if (subscriptionId == null) {
-      throw core.ArgumentError('Parameter subscriptionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1065,45 +995,45 @@ class Address {
   ///
   /// An address can be composed of one to three lines. The `addressline2` and
   /// `addressLine3` are optional.
-  core.String addressLine1;
+  core.String? addressLine1;
 
   /// Line 2 of the address.
-  core.String addressLine2;
+  core.String? addressLine2;
 
   /// Line 3 of the address.
-  core.String addressLine3;
+  core.String? addressLine3;
 
   /// The customer contact's name.
   ///
   /// This is required.
-  core.String contactName;
+  core.String? contactName;
 
   /// For `countryCode` information, see the ISO 3166 country code elements.
   ///
   /// Verify that country is approved for resale of Google products. This
   /// property is required when creating a new customer.
-  core.String countryCode;
+  core.String? countryCode;
 
   /// Identifies the resource as a customer address.
   ///
   /// Value: `customers#address`
-  core.String kind;
+  core.String? kind;
 
   /// An example of a `locality` value is the city of `San Francisco`.
-  core.String locality;
+  core.String? locality;
 
   /// The company or company division name.
   ///
   /// This is required.
-  core.String organizationName;
+  core.String? organizationName;
 
   /// A `postalCode` example is a postal zip code such as `94043`.
   ///
   /// This property is required when creating a new customer.
-  core.String postalCode;
+  core.String? postalCode;
 
   /// An example of a `region` value is `CA` for the state of California.
-  core.String region;
+  core.String? region;
 
   Address();
 
@@ -1140,17 +1070,17 @@ class Address {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addressLine1 != null) 'addressLine1': addressLine1,
-        if (addressLine2 != null) 'addressLine2': addressLine2,
-        if (addressLine3 != null) 'addressLine3': addressLine3,
-        if (contactName != null) 'contactName': contactName,
-        if (countryCode != null) 'countryCode': countryCode,
-        if (kind != null) 'kind': kind,
-        if (locality != null) 'locality': locality,
-        if (organizationName != null) 'organizationName': organizationName,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (region != null) 'region': region,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addressLine1 != null) 'addressLine1': addressLine1!,
+        if (addressLine2 != null) 'addressLine2': addressLine2!,
+        if (addressLine3 != null) 'addressLine3': addressLine3!,
+        if (contactName != null) 'contactName': contactName!,
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (kind != null) 'kind': kind!,
+        if (locality != null) 'locality': locality!,
+        if (organizationName != null) 'organizationName': organizationName!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (region != null) 'region': region!,
       };
 }
 
@@ -1166,12 +1096,12 @@ class ChangePlanRequest {
   /// deal code that is already present on the subscription). If a deal code has
   /// never been added to a subscription and this property is left blank,
   /// regular pricing will apply.
-  core.String dealCode;
+  core.String? dealCode;
 
   /// Identifies the resource as a subscription change plan request.
   ///
   /// Value: `subscriptions#changePlanRequest`
-  core.String kind;
+  core.String? kind;
 
   /// The `planName` property is required.
   ///
@@ -1182,7 +1112,7 @@ class ChangePlanRequest {
   /// responses. - `ANNUAL_YEARLY_PAY` - The annual commitment plan with yearly
   /// payments - `FLEXIBLE` - The flexible plan - `TRIAL` - The 30-day free
   /// trial plan
-  core.String planName;
+  core.String? planName;
 
   /// This is an optional property.
   ///
@@ -1190,12 +1120,12 @@ class ChangePlanRequest {
   /// company tracking usage. If a `purchaseOrderId` value is given it appears
   /// in the API responses and shows up in the invoice. The property accepts up
   /// to 80 plain text characters.
-  core.String purchaseOrderId;
+  core.String? purchaseOrderId;
 
   /// This is a required property.
   ///
   /// The seats property is the number of user seat licenses.
-  Seats seats;
+  Seats? seats;
 
   ChangePlanRequest();
 
@@ -1218,12 +1148,12 @@ class ChangePlanRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dealCode != null) 'dealCode': dealCode,
-        if (kind != null) 'kind': kind,
-        if (planName != null) 'planName': planName,
-        if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId,
-        if (seats != null) 'seats': seats.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dealCode != null) 'dealCode': dealCode!,
+        if (kind != null) 'kind': kind!,
+        if (planName != null) 'planName': planName!,
+        if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId!,
+        if (seats != null) 'seats': seats!.toJson(),
       };
 }
 
@@ -1238,28 +1168,28 @@ class Customer {
   ///
   /// This property is required when creating a new customer and should not use
   /// the same domain as `customerDomain`.
-  core.String alternateEmail;
+  core.String? alternateEmail;
 
   /// The customer's primary domain name string.
   ///
   /// `customerDomain` is required when creating a new customer. Do not include
   /// the `www` prefix in the domain when adding a customer.
-  core.String customerDomain;
+  core.String? customerDomain;
 
   /// Whether the customer's primary domain has been verified.
-  core.bool customerDomainVerified;
+  core.bool? customerDomainVerified;
 
   /// This property will always be returned in a response as the unique
   /// identifier generated by Google.
   ///
   /// In a request, this property can be either the primary domain or the unique
   /// identifier generated by Google.
-  core.String customerId;
+  core.String? customerId;
 
   /// Identifies the resource as a customer.
   ///
   /// Value: `reseller#customer`
-  core.String kind;
+  core.String? kind;
 
   /// Customer contact phone number.
   ///
@@ -1267,19 +1197,19 @@ class Customer {
   /// can be contiguous numbers or respect the phone local format conventions,
   /// but it must be a real phone number and not, for example, "123". This field
   /// is silently ignored if invalid.
-  core.String phoneNumber;
+  core.String? phoneNumber;
 
   /// A customer's address information.
   ///
   /// Each field has a limit of 255 charcters.
-  Address postalAddress;
+  Address? postalAddress;
 
   /// URL to customer's Admin console dashboard.
   ///
   /// The read-only URL is generated by the API service. This is used if your
   /// client application requires the customer to complete a task in the Admin
   /// console.
-  core.String resourceUiUrl;
+  core.String? resourceUiUrl;
 
   Customer();
 
@@ -1311,16 +1241,16 @@ class Customer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alternateEmail != null) 'alternateEmail': alternateEmail,
-        if (customerDomain != null) 'customerDomain': customerDomain,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alternateEmail != null) 'alternateEmail': alternateEmail!,
+        if (customerDomain != null) 'customerDomain': customerDomain!,
         if (customerDomainVerified != null)
-          'customerDomainVerified': customerDomainVerified,
-        if (customerId != null) 'customerId': customerId,
-        if (kind != null) 'kind': kind,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber,
-        if (postalAddress != null) 'postalAddress': postalAddress.toJson(),
-        if (resourceUiUrl != null) 'resourceUiUrl': resourceUiUrl,
+          'customerDomainVerified': customerDomainVerified!,
+        if (customerId != null) 'customerId': customerId!,
+        if (kind != null) 'kind': kind!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+        if (postalAddress != null) 'postalAddress': postalAddress!.toJson(),
+        if (resourceUiUrl != null) 'resourceUiUrl': resourceUiUrl!,
       };
 }
 
@@ -1329,14 +1259,14 @@ class RenewalSettings {
   /// Identifies the resource as a subscription renewal setting.
   ///
   /// Value: `subscriptions#renewalSettings`
-  core.String kind;
+  core.String? kind;
 
   /// Renewal settings for the annual commitment plan.
   ///
   /// For more detailed information, see renewal options in the administrator
   /// help center. When renewing a subscription, the `renewalType` is a required
   /// property.
-  core.String renewalType;
+  core.String? renewalType;
 
   RenewalSettings();
 
@@ -1349,19 +1279,19 @@ class RenewalSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (renewalType != null) 'renewalType': renewalType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (renewalType != null) 'renewalType': renewalType!,
       };
 }
 
 /// JSON template for resellernotify getwatchdetails response.
 class ResellernotifyGetwatchdetailsResponse {
   /// List of registered service accounts.
-  core.List<core.String> serviceAccountEmailAddresses;
+  core.List<core.String>? serviceAccountEmailAddresses;
 
   /// Topic name of the PubSub
-  core.String topicName;
+  core.String? topicName;
 
   ResellernotifyGetwatchdetailsResponse();
 
@@ -1377,17 +1307,17 @@ class ResellernotifyGetwatchdetailsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (serviceAccountEmailAddresses != null)
-          'serviceAccountEmailAddresses': serviceAccountEmailAddresses,
-        if (topicName != null) 'topicName': topicName,
+          'serviceAccountEmailAddresses': serviceAccountEmailAddresses!,
+        if (topicName != null) 'topicName': topicName!,
       };
 }
 
 /// JSON template for resellernotify response.
 class ResellernotifyResource {
   /// Topic name of the PubSub
-  core.String topicName;
+  core.String? topicName;
 
   ResellernotifyResource();
 
@@ -1397,8 +1327,8 @@ class ResellernotifyResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (topicName != null) 'topicName': topicName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (topicName != null) 'topicName': topicName!,
       };
 }
 
@@ -1407,7 +1337,7 @@ class Seats {
   /// Identifies the resource as a subscription seat setting.
   ///
   /// Value: `subscriptions#seats`
-  core.String kind;
+  core.String? kind;
 
   /// Read-only field containing the current number of users that are assigned a
   /// license for the product defined in `skuId`.
@@ -1415,7 +1345,7 @@ class Seats {
   /// This field's value is equivalent to the numerical count of users returned
   /// by the Enterprise License Manager API method:
   /// \[`listForProductAndSku`\](/admin-sdk/licensing/v1/reference/licenseAssignments/listForProductAndSku).
-  core.int licensedNumberOfSeats;
+  core.int? licensedNumberOfSeats;
 
   /// This is a required property and is exclusive to subscriptions with
   /// `FLEXIBLE` or `TRIAL` plans.
@@ -1425,7 +1355,7 @@ class Seats {
   /// defined in the reseller's contract. The minimum quantity is the current
   /// number of users in the customer account. *Note: *G Suite subscriptions
   /// automatically assign a license to every user.
-  core.int maximumNumberOfSeats;
+  core.int? maximumNumberOfSeats;
 
   /// This is a required property and is exclusive to subscriptions with
   /// `ANNUAL_MONTHLY_PAY` and `ANNUAL_YEARLY_PAY` plans.
@@ -1436,7 +1366,7 @@ class Seats {
   /// based on the `numberOfSeats` value regardless of how many of these user
   /// licenses are assigned. *Note: *G Suite subscriptions automatically assign
   /// a license to every user.
-  core.int numberOfSeats;
+  core.int? numberOfSeats;
 
   Seats();
 
@@ -1455,13 +1385,13 @@ class Seats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (licensedNumberOfSeats != null)
-          'licensedNumberOfSeats': licensedNumberOfSeats,
+          'licensedNumberOfSeats': licensedNumberOfSeats!,
         if (maximumNumberOfSeats != null)
-          'maximumNumberOfSeats': maximumNumberOfSeats,
-        if (numberOfSeats != null) 'numberOfSeats': numberOfSeats,
+          'maximumNumberOfSeats': maximumNumberOfSeats!,
+        if (numberOfSeats != null) 'numberOfSeats': numberOfSeats!,
       };
 }
 
@@ -1474,13 +1404,13 @@ class SubscriptionPlanCommitmentInterval {
   /// UNIX Epoch format.
   ///
   /// See an example Epoch converter.
-  core.String endTime;
+  core.String? endTime;
 
   /// An annual commitment plan's interval's `startTime` in milliseconds using
   /// UNIX Epoch format.
   ///
   /// See an example Epoch converter.
-  core.String startTime;
+  core.String? startTime;
 
   SubscriptionPlanCommitmentInterval();
 
@@ -1493,9 +1423,9 @@ class SubscriptionPlanCommitmentInterval {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -1509,14 +1439,14 @@ class SubscriptionPlan {
   ///
   /// *Note: *When `billingMethod` value is `OFFLINE`, the subscription property
   /// object `plan.commitmentInterval` is omitted in all API responses.
-  SubscriptionPlanCommitmentInterval commitmentInterval;
+  SubscriptionPlanCommitmentInterval? commitmentInterval;
 
   /// The `isCommitmentPlan` property's boolean value identifies the plan as an
   /// annual commitment plan: - `true` — The subscription's plan is an annual
   /// commitment plan.
   ///
   /// - `false` — The plan is not an annual commitment plan.
-  core.bool isCommitmentPlan;
+  core.bool? isCommitmentPlan;
 
   /// The `planName` property is required.
   ///
@@ -1532,7 +1462,7 @@ class SubscriptionPlan {
   /// automatically begin its assigned payment plan after its 30th free day or
   /// immediately after calling `startPaidService`. - `FREE` — The free plan is
   /// exclusive to the Cloud Identity SKU and does not incur any billing.
-  core.String planName;
+  core.String? planName;
 
   SubscriptionPlan();
 
@@ -1549,11 +1479,11 @@ class SubscriptionPlan {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (commitmentInterval != null)
-          'commitmentInterval': commitmentInterval.toJson(),
-        if (isCommitmentPlan != null) 'isCommitmentPlan': isCommitmentPlan,
-        if (planName != null) 'planName': planName,
+          'commitmentInterval': commitmentInterval!.toJson(),
+        if (isCommitmentPlan != null) 'isCommitmentPlan': isCommitmentPlan!,
+        if (planName != null) 'planName': planName!,
       };
 }
 
@@ -1567,12 +1497,12 @@ class SubscriptionTransferInfo {
   ///
   /// For example, if the customer has 20 users, the reseller cannot place a
   /// transfer order of 15 seats. The minimum is 20 seats.
-  core.int minimumTransferableSeats;
+  core.int? minimumTransferableSeats;
 
   /// The time when transfer token or intent to transfer will expire.
   ///
   /// The time is in milliseconds using UNIX Epoch format.
-  core.String transferabilityExpirationTime;
+  core.String? transferabilityExpirationTime;
 
   SubscriptionTransferInfo();
 
@@ -1586,11 +1516,11 @@ class SubscriptionTransferInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (minimumTransferableSeats != null)
-          'minimumTransferableSeats': minimumTransferableSeats,
+          'minimumTransferableSeats': minimumTransferableSeats!,
         if (transferabilityExpirationTime != null)
-          'transferabilityExpirationTime': transferabilityExpirationTime,
+          'transferabilityExpirationTime': transferabilityExpirationTime!,
       };
 }
 
@@ -1603,13 +1533,13 @@ class SubscriptionTrialSettings {
   /// `true` — The plan is in trial.
   ///
   /// - `false` — The plan is not in trial.
-  core.bool isInTrial;
+  core.bool? isInTrial;
 
   /// Date when the trial ends.
   ///
   /// The value is in milliseconds using the UNIX Epoch format. See an example
   /// Epoch converter.
-  core.String trialEndTime;
+  core.String? trialEndTime;
 
   SubscriptionTrialSettings();
 
@@ -1622,9 +1552,9 @@ class SubscriptionTrialSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (isInTrial != null) 'isInTrial': isInTrial,
-        if (trialEndTime != null) 'trialEndTime': trialEndTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (isInTrial != null) 'isInTrial': isInTrial!,
+        if (trialEndTime != null) 'trialEndTime': trialEndTime!,
       };
 }
 
@@ -1632,23 +1562,23 @@ class SubscriptionTrialSettings {
 class Subscription {
   /// Read-only field that returns the current billing method for a
   /// subscription.
-  core.String billingMethod;
+  core.String? billingMethod;
 
   /// The `creationTime` property is the date when subscription was created.
   ///
   /// It is in milliseconds using the Epoch format. See an example Epoch
   /// converter.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// Primary domain name of the customer
-  core.String customerDomain;
+  core.String? customerDomain;
 
   /// This property will always be returned in a response as the unique
   /// identifier generated by Google.
   ///
   /// In a request, this property can be either the primary domain or the unique
   /// identifier generated by Google.
-  core.String customerId;
+  core.String? customerId;
 
   /// Google-issued code (100 char max) for discounted pricing on subscription
   /// plans.
@@ -1656,19 +1586,19 @@ class Subscription {
   /// Deal code must be included in `insert` requests in order to receive
   /// discounted rate. This property is optional, regular pricing applies if
   /// left empty.
-  core.String dealCode;
+  core.String? dealCode;
 
   /// Identifies the resource as a Subscription.
   ///
   /// Value: `reseller#subscription`
-  core.String kind;
+  core.String? kind;
 
   /// The `plan` property is required.
   ///
   /// In this version of the API, the G Suite plans are the flexible plan,
   /// annual commitment plan, and the 30-day free trial plan. For more
   /// information about the API"s payment plans, see the API concepts.
-  SubscriptionPlan plan;
+  SubscriptionPlan? plan;
 
   /// This is an optional property.
   ///
@@ -1676,42 +1606,42 @@ class Subscription {
   /// company tracking usage. If a `purchaseOrderId` value is given it appears
   /// in the API responses and shows up in the invoice. The property accepts up
   /// to 80 plain text characters.
-  core.String purchaseOrderId;
+  core.String? purchaseOrderId;
 
   /// Renewal settings for the annual commitment plan.
   ///
   /// For more detailed information, see renewal options in the administrator
   /// help center.
-  RenewalSettings renewalSettings;
+  RenewalSettings? renewalSettings;
 
   /// URL to customer's Subscriptions page in the Admin console.
   ///
   /// The read-only URL is generated by the API service. This is used if your
   /// client application requires the customer to complete a task using the
   /// Subscriptions page in the Admin console.
-  core.String resourceUiUrl;
+  core.String? resourceUiUrl;
 
   /// This is a required property.
   ///
   /// The number and limit of user seat licenses in the plan.
-  Seats seats;
+  Seats? seats;
 
   /// A required property.
   ///
   /// The `skuId` is a unique system identifier for a product's SKU assigned to
   /// a customer in the subscription. For products and SKUs available in this
   /// version of the API, see Product and SKU IDs.
-  core.String skuId;
+  core.String? skuId;
 
   /// Read-only external display name for a product's SKU assigned to a customer
   /// in the subscription.
   ///
   /// SKU names are subject to change at Google's discretion. For products and
   /// SKUs available in this version of the API, see Product and SKU IDs.
-  core.String skuName;
+  core.String? skuName;
 
   /// This is an optional property.
-  core.String status;
+  core.String? status;
 
   /// The `subscriptionId` is the subscription identifier and is unique for each
   /// customer.
@@ -1720,7 +1650,7 @@ class Subscription {
   /// subscription is updated, we recommend not using this ID as a key for
   /// persistent data. Use the `subscriptionId` as described in retrieve all
   /// reseller subscriptions.
-  core.String subscriptionId;
+  core.String? subscriptionId;
 
   /// Read-only field containing an enumerable of all the current suspension
   /// reasons for a subscription.
@@ -1735,19 +1665,19 @@ class Subscription {
   /// Reseller. - `TRIAL_ENDED` - The customer's trial expired without a plan
   /// selected. - `OTHER` - The customer is suspended for an internal Google
   /// reason (e.g. abuse or otherwise).
-  core.List<core.String> suspensionReasons;
+  core.List<core.String>? suspensionReasons;
 
   /// Read-only transfer related information for the subscription.
   ///
   /// For more information, see retrieve transferable subscriptions for a
   /// customer.
-  SubscriptionTransferInfo transferInfo;
+  SubscriptionTransferInfo? transferInfo;
 
   /// The G Suite annual commitment and flexible payment plans can be in a
   /// 30-day free trial.
   ///
   /// For more information, see the API concepts.
-  SubscriptionTrialSettings trialSettings;
+  SubscriptionTrialSettings? trialSettings;
 
   Subscription();
 
@@ -1815,26 +1745,26 @@ class Subscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (billingMethod != null) 'billingMethod': billingMethod,
-        if (creationTime != null) 'creationTime': creationTime,
-        if (customerDomain != null) 'customerDomain': customerDomain,
-        if (customerId != null) 'customerId': customerId,
-        if (dealCode != null) 'dealCode': dealCode,
-        if (kind != null) 'kind': kind,
-        if (plan != null) 'plan': plan.toJson(),
-        if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (billingMethod != null) 'billingMethod': billingMethod!,
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (customerDomain != null) 'customerDomain': customerDomain!,
+        if (customerId != null) 'customerId': customerId!,
+        if (dealCode != null) 'dealCode': dealCode!,
+        if (kind != null) 'kind': kind!,
+        if (plan != null) 'plan': plan!.toJson(),
+        if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId!,
         if (renewalSettings != null)
-          'renewalSettings': renewalSettings.toJson(),
-        if (resourceUiUrl != null) 'resourceUiUrl': resourceUiUrl,
-        if (seats != null) 'seats': seats.toJson(),
-        if (skuId != null) 'skuId': skuId,
-        if (skuName != null) 'skuName': skuName,
-        if (status != null) 'status': status,
-        if (subscriptionId != null) 'subscriptionId': subscriptionId,
-        if (suspensionReasons != null) 'suspensionReasons': suspensionReasons,
-        if (transferInfo != null) 'transferInfo': transferInfo.toJson(),
-        if (trialSettings != null) 'trialSettings': trialSettings.toJson(),
+          'renewalSettings': renewalSettings!.toJson(),
+        if (resourceUiUrl != null) 'resourceUiUrl': resourceUiUrl!,
+        if (seats != null) 'seats': seats!.toJson(),
+        if (skuId != null) 'skuId': skuId!,
+        if (skuName != null) 'skuName': skuName!,
+        if (status != null) 'status': status!,
+        if (subscriptionId != null) 'subscriptionId': subscriptionId!,
+        if (suspensionReasons != null) 'suspensionReasons': suspensionReasons!,
+        if (transferInfo != null) 'transferInfo': transferInfo!.toJson(),
+        if (trialSettings != null) 'trialSettings': trialSettings!.toJson(),
       };
 }
 
@@ -1848,16 +1778,16 @@ class Subscriptions {
   /// Identifies the resource as a collection of subscriptions.
   ///
   /// Value: reseller#subscriptions
-  core.String kind;
+  core.String? kind;
 
   /// The continuation token, used to page through large result sets.
   ///
   /// Provide this value in a subsequent request to return the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The subscriptions in this page of results.
-  core.List<Subscription> subscriptions;
+  core.List<Subscription>? subscriptions;
 
   Subscriptions();
 
@@ -1876,11 +1806,11 @@ class Subscriptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (subscriptions != null)
           'subscriptions':
-              subscriptions.map((value) => value.toJson()).toList(),
+              subscriptions!.map((value) => value.toJson()).toList(),
       };
 }

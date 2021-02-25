@@ -90,11 +90,8 @@ class DomainsResource {
   /// this method will complete with the same error.
   async.Future<Domain> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -135,9 +132,9 @@ class DomainsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDomainsResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -186,11 +183,8 @@ class DomainsTrafficStatsResource {
   /// this method will complete with the same error.
   async.Future<TrafficStats> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -258,19 +252,16 @@ class DomainsTrafficStatsResource {
   /// this method will complete with the same error.
   async.Future<ListTrafficStatsResponse> list(
     core.String parent, {
-    core.int endDate_day,
-    core.int endDate_month,
-    core.int endDate_year,
-    core.int pageSize,
-    core.String pageToken,
-    core.int startDate_day,
-    core.int startDate_month,
-    core.int startDate_year,
-    core.String $fields,
+    core.int? endDate_day,
+    core.int? endDate_month,
+    core.int? endDate_year,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.int? startDate_day,
+    core.int? startDate_month,
+    core.int? startDate_year,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (endDate_day != null) 'endDate.day': ['${endDate_day}'],
       if (endDate_month != null) 'endDate.month': ['${endDate_month}'],
@@ -306,11 +297,11 @@ class DeliveryError {
   /// - "PERMANENT_ERROR" : Delivery of message has been rejected.
   /// - "TEMPORARY_ERROR" : Temporary failure of message delivery to the
   /// recipient.
-  core.String errorClass;
+  core.String? errorClass;
 
   /// The ratio of messages where the error occurred vs all authenticated
   /// traffic.
-  core.double errorRatio;
+  core.double? errorRatio;
 
   /// The type of delivery error.
   /// Possible string values are:
@@ -338,7 +329,7 @@ class DeliveryError {
   /// to get your domain delisted.
   /// - "BAD_PTR_RECORD" : The sending IP is missing a
   /// [PTR record](https://support.google.com/domains/answer/3251147#ptr).
-  core.String errorType;
+  core.String? errorType;
 
   DeliveryError();
 
@@ -354,10 +345,10 @@ class DeliveryError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorClass != null) 'errorClass': errorClass,
-        if (errorRatio != null) 'errorRatio': errorRatio,
-        if (errorType != null) 'errorType': errorType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorClass != null) 'errorClass': errorClass!,
+        if (errorRatio != null) 'errorRatio': errorRatio!,
+        if (errorType != null) 'errorType': errorType!,
       };
 }
 
@@ -366,13 +357,13 @@ class Domain {
   /// Timestamp when the user registered this domain.
   ///
   /// Assigned by the server.
-  core.String createTime;
+  core.String? createTime;
 
   /// The resource name of the Domain.
   ///
   /// Domain names have the form `domains/{domain_name}`, where domain_name is
   /// the fully qualified domain name (i.e., mymail.mydomain.com).
-  core.String name;
+  core.String? name;
 
   /// User’s permission for this domain.
   ///
@@ -386,7 +377,7 @@ class Domain {
   /// - "NONE" : User doesn't have permission to access information about the
   /// domain. User did not verify ownership of domain nor was access granted by
   /// other domain owners.
-  core.String permission;
+  core.String? permission;
 
   Domain();
 
@@ -402,10 +393,10 @@ class Domain {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (name != null) 'name': name,
-        if (permission != null) 'permission': permission,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+        if (permission != null) 'permission': permission!,
       };
 }
 
@@ -413,11 +404,11 @@ class Domain {
 /// information.
 class FeedbackLoop {
   /// Feedback loop identifier that uniquely identifies individual campaigns.
-  core.String id;
+  core.String? id;
 
   /// The ratio of user marked spam messages with the identifier vs the total
   /// number of inboxed messages with that identifier.
-  core.double spamRatio;
+  core.double? spamRatio;
 
   FeedbackLoop();
 
@@ -430,9 +421,9 @@ class FeedbackLoop {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (spamRatio != null) 'spamRatio': spamRatio,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (spamRatio != null) 'spamRatio': spamRatio!,
       };
 }
 
@@ -443,7 +434,7 @@ class IpReputation {
   ///
   /// This metric only pertains to traffic that passed
   /// [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/).
-  core.String ipCount;
+  core.String? ipCount;
 
   /// The reputation category this IP reputation represents.
   /// Possible string values are:
@@ -462,10 +453,10 @@ class IpReputation {
   /// - "BAD" : History of sending an enormously high volume of spam. Mail
   /// coming from this entity will almost always be rejected at SMTP level or
   /// marked as spam.
-  core.String reputation;
+  core.String? reputation;
 
   /// A sample of IPs in this reputation category.
-  core.List<core.String> sampleIps;
+  core.List<core.String>? sampleIps;
 
   IpReputation();
 
@@ -483,21 +474,21 @@ class IpReputation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ipCount != null) 'ipCount': ipCount,
-        if (reputation != null) 'reputation': reputation,
-        if (sampleIps != null) 'sampleIps': sampleIps,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ipCount != null) 'ipCount': ipCount!,
+        if (reputation != null) 'reputation': reputation!,
+        if (sampleIps != null) 'sampleIps': sampleIps!,
       };
 }
 
 /// Response message for ListDomains.
 class ListDomainsResponse {
   /// The list of domains.
-  core.List<Domain> domains;
+  core.List<Domain>? domains;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListDomainsResponse();
 
@@ -513,10 +504,10 @@ class ListDomainsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (domains != null)
-          'domains': domains.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'domains': domains!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -524,10 +515,10 @@ class ListDomainsResponse {
 class ListTrafficStatsResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of TrafficStats.
-  core.List<TrafficStats> trafficStats;
+  core.List<TrafficStats>? trafficStats;
 
   ListTrafficStatsResponse();
 
@@ -543,10 +534,10 @@ class ListTrafficStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (trafficStats != null)
-          'trafficStats': trafficStats.map((value) => value.toJson()).toList(),
+          'trafficStats': trafficStats!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -556,18 +547,18 @@ class TrafficStats {
   ///
   /// This metric only pertains to traffic that passed
   /// [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/).
-  core.List<DeliveryError> deliveryErrors;
+  core.List<DeliveryError>? deliveryErrors;
 
   /// The ratio of mail that successfully authenticated with DKIM vs.
   ///
   /// all mail that attempted to authenticate with [DKIM](http://www.dkim.org/).
   /// Spoofed mail is excluded.
-  core.double dkimSuccessRatio;
+  core.double? dkimSuccessRatio;
 
   /// The ratio of mail that passed [DMARC](https://dmarc.org/) alignment checks
   /// vs all mail received from the domain that successfully authenticated with
   /// either of [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/).
-  core.double dmarcSuccessRatio;
+  core.double? dmarcSuccessRatio;
 
   /// Reputation of the domain.
   /// Possible string values are:
@@ -586,21 +577,21 @@ class TrafficStats {
   /// - "BAD" : History of sending an enormously high volume of spam. Mail
   /// coming from this entity will almost always be rejected at SMTP level or
   /// marked as spam.
-  core.String domainReputation;
+  core.String? domainReputation;
 
   /// The ratio of incoming mail (to Gmail), that passed secure transport (TLS)
   /// vs all mail received from that domain.
   ///
   /// This metric only pertains to traffic that passed
   /// [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/).
-  core.double inboundEncryptionRatio;
+  core.double? inboundEncryptionRatio;
 
   /// Reputation information pertaining to the IP addresses of the email servers
   /// for the domain.
   ///
   /// There is exactly one entry for each reputation category except
   /// REPUTATION_CATEGORY_UNSPECIFIED.
-  core.List<IpReputation> ipReputations;
+  core.List<IpReputation>? ipReputations;
 
   /// The resource name of the traffic statistics.
   ///
@@ -610,11 +601,11 @@ class TrafficStats {
   /// traffic statistics pertains to and date is the date in yyyymmdd format
   /// that these statistics corresponds to. For example:
   /// domains/mymail.mydomain.com/trafficStats/20160807
-  core.String name;
+  core.String? name;
 
   /// The ratio of outgoing mail (from Gmail) that was accepted over secure
   /// transport (TLS).
-  core.double outboundEncryptionRatio;
+  core.double? outboundEncryptionRatio;
 
   /// Spammy
   /// [Feedback loop identifiers](https://support.google.com/mail/answer/6254652)
@@ -622,19 +613,19 @@ class TrafficStats {
   ///
   /// This metric only pertains to traffic that is authenticated by
   /// [DKIM](http://www.dkim.org/).
-  core.List<FeedbackLoop> spammyFeedbackLoops;
+  core.List<FeedbackLoop>? spammyFeedbackLoops;
 
   /// The ratio of mail that successfully authenticated with SPF vs.
   ///
   /// all mail that attempted to authenticate with
   /// [SPF](http://www.openspf.org/). Spoofed mail is excluded.
-  core.double spfSuccessRatio;
+  core.double? spfSuccessRatio;
 
   /// The ratio of user-report spam vs.
   ///
   /// email that was sent to the inbox. This metric only pertains to emails
   /// authenticated by [DKIM](http://www.dkim.org/).
-  core.double userReportedSpamRatio;
+  core.double? userReportedSpamRatio;
 
   TrafficStats();
 
@@ -686,26 +677,26 @@ class TrafficStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deliveryErrors != null)
           'deliveryErrors':
-              deliveryErrors.map((value) => value.toJson()).toList(),
-        if (dkimSuccessRatio != null) 'dkimSuccessRatio': dkimSuccessRatio,
-        if (dmarcSuccessRatio != null) 'dmarcSuccessRatio': dmarcSuccessRatio,
-        if (domainReputation != null) 'domainReputation': domainReputation,
+              deliveryErrors!.map((value) => value.toJson()).toList(),
+        if (dkimSuccessRatio != null) 'dkimSuccessRatio': dkimSuccessRatio!,
+        if (dmarcSuccessRatio != null) 'dmarcSuccessRatio': dmarcSuccessRatio!,
+        if (domainReputation != null) 'domainReputation': domainReputation!,
         if (inboundEncryptionRatio != null)
-          'inboundEncryptionRatio': inboundEncryptionRatio,
+          'inboundEncryptionRatio': inboundEncryptionRatio!,
         if (ipReputations != null)
           'ipReputations':
-              ipReputations.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+              ipReputations!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
         if (outboundEncryptionRatio != null)
-          'outboundEncryptionRatio': outboundEncryptionRatio,
+          'outboundEncryptionRatio': outboundEncryptionRatio!,
         if (spammyFeedbackLoops != null)
           'spammyFeedbackLoops':
-              spammyFeedbackLoops.map((value) => value.toJson()).toList(),
-        if (spfSuccessRatio != null) 'spfSuccessRatio': spfSuccessRatio,
+              spammyFeedbackLoops!.map((value) => value.toJson()).toList(),
+        if (spfSuccessRatio != null) 'spfSuccessRatio': spfSuccessRatio!,
         if (userReportedSpamRatio != null)
-          'userReportedSpamRatio': userReportedSpamRatio,
+          'userReportedSpamRatio': userReportedSpamRatio!,
       };
 }

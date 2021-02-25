@@ -86,12 +86,9 @@ class AgentUsersResource {
   /// this method will complete with the same error.
   async_1.Future<Empty> delete(
     core.String agentUserId, {
-    core.String requestId,
-    core.String $fields,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    if (agentUserId == null) {
-      throw core.ArgumentError('Parameter agentUserId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -136,10 +133,9 @@ class DevicesResource {
   /// this method will complete with the same error.
   async_1.Future<QueryResponse> query(
     QueryRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -186,10 +182,9 @@ class DevicesResource {
   /// this method will complete with the same error.
   async_1.Future<ReportStateAndNotificationResponse> reportStateAndNotification(
     ReportStateAndNotificationRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -230,10 +225,9 @@ class DevicesResource {
   /// this method will complete with the same error.
   async_1.Future<RequestSyncDevicesResponse> requestSync(
     RequestSyncDevicesRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -272,10 +266,9 @@ class DevicesResource {
   /// this method will complete with the same error.
   async_1.Future<SyncResponse> sync(
     SyncRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -296,7 +289,7 @@ class DevicesResource {
 /// Third-party device ID for one device.
 class AgentDeviceId {
   /// Third-party device ID.
-  core.String id;
+  core.String? id;
 
   AgentDeviceId();
 
@@ -306,18 +299,18 @@ class AgentDeviceId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
       };
 }
 
 /// Alternate third-party device ID.
 class AgentOtherDeviceId {
   /// Project ID for your smart home Action.
-  core.String agentId;
+  core.String? agentId;
 
   /// Unique third-party device ID.
-  core.String deviceId;
+  core.String? deviceId;
 
   AgentOtherDeviceId();
 
@@ -330,9 +323,9 @@ class AgentOtherDeviceId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (agentId != null) 'agentId': agentId,
-        if (deviceId != null) 'deviceId': deviceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (agentId != null) 'agentId': agentId!,
+        if (deviceId != null) 'deviceId': deviceId!,
       };
 }
 
@@ -344,7 +337,7 @@ class Device {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> attributes;
+  core.Map<core.String, core.Object>? attributes;
 
   /// Custom device attributes stored in Home Graph and provided to your smart
   /// home Action in each
@@ -358,16 +351,16 @@ class Device {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> customData;
+  core.Map<core.String, core.Object>? customData;
 
   /// Device manufacturer, model, hardware version, and software version.
-  DeviceInfo deviceInfo;
+  DeviceInfo? deviceInfo;
 
   /// Third-party device ID.
-  core.String id;
+  core.String? id;
 
   /// Names given to this device by your smart home Action.
-  DeviceNames name;
+  DeviceNames? name;
 
   /// See description for "traits".
   ///
@@ -375,46 +368,46 @@ class Device {
   /// be executed on 3P cloud, e.g. "non_local_traits": \[ { "trait":
   /// "action.devices.traits.MediaInitiation" }, { "trait":
   /// "action.devices.traits.Channel" } \] go/shed-per-trait-routing.
-  core.List<NonLocalTrait> nonLocalTraits;
+  core.List<NonLocalTrait>? nonLocalTraits;
 
   /// Indicates whether your smart home Action will report notifications to
   /// Google for this device via ReportStateAndNotification.
   ///
   /// If your smart home Action enables users to control device notifications,
   /// you should update this field and call RequestSyncDevices.
-  core.bool notificationSupportedByAgent;
+  core.bool? notificationSupportedByAgent;
 
   /// Alternate IDs associated with this device.
   ///
   /// This is used to identify cloud synced devices enabled for
   /// [local fulfillment](https://developers.google.com/assistant/smarthome/concepts/local).
-  core.List<AgentOtherDeviceId> otherDeviceIds;
+  core.List<AgentOtherDeviceId>? otherDeviceIds;
 
   /// Suggested name for the room where this device is installed.
   ///
   /// Google attempts to use this value during user setup.
-  core.String roomHint;
+  core.String? roomHint;
 
   /// Suggested name for the structure where this device is installed.
   ///
   /// Google attempts to use this value during user setup.
-  core.String structureHint;
+  core.String? structureHint;
 
   /// Traits supported by the device.
   ///
   /// See
   /// [device traits](https://developers.google.com/assistant/smarthome/traits).
-  core.List<core.String> traits;
+  core.List<core.String>? traits;
 
   /// Hardware type of the device.
   ///
   /// See
   /// [device types](https://developers.google.com/assistant/smarthome/guides).
-  core.String type;
+  core.String? type;
 
   /// Indicates whether your smart home Action will report state of this device
   /// to Google via ReportStateAndNotification.
-  core.bool willReportState;
+  core.bool? willReportState;
 
   Device();
 
@@ -485,41 +478,41 @@ class Device {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributes != null) 'attributes': attributes,
-        if (customData != null) 'customData': customData,
-        if (deviceInfo != null) 'deviceInfo': deviceInfo.toJson(),
-        if (id != null) 'id': id,
-        if (name != null) 'name': name.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+        if (customData != null) 'customData': customData!,
+        if (deviceInfo != null) 'deviceInfo': deviceInfo!.toJson(),
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!.toJson(),
         if (nonLocalTraits != null)
           'nonLocalTraits':
-              nonLocalTraits.map((value) => value.toJson()).toList(),
+              nonLocalTraits!.map((value) => value.toJson()).toList(),
         if (notificationSupportedByAgent != null)
-          'notificationSupportedByAgent': notificationSupportedByAgent,
+          'notificationSupportedByAgent': notificationSupportedByAgent!,
         if (otherDeviceIds != null)
           'otherDeviceIds':
-              otherDeviceIds.map((value) => value.toJson()).toList(),
-        if (roomHint != null) 'roomHint': roomHint,
-        if (structureHint != null) 'structureHint': structureHint,
-        if (traits != null) 'traits': traits,
-        if (type != null) 'type': type,
-        if (willReportState != null) 'willReportState': willReportState,
+              otherDeviceIds!.map((value) => value.toJson()).toList(),
+        if (roomHint != null) 'roomHint': roomHint!,
+        if (structureHint != null) 'structureHint': structureHint!,
+        if (traits != null) 'traits': traits!,
+        if (type != null) 'type': type!,
+        if (willReportState != null) 'willReportState': willReportState!,
       };
 }
 
 /// Device information.
 class DeviceInfo {
   /// Device hardware version.
-  core.String hwVersion;
+  core.String? hwVersion;
 
   /// Device manufacturer.
-  core.String manufacturer;
+  core.String? manufacturer;
 
   /// Device model.
-  core.String model;
+  core.String? model;
 
   /// Device software version.
-  core.String swVersion;
+  core.String? swVersion;
 
   DeviceInfo();
 
@@ -538,11 +531,11 @@ class DeviceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hwVersion != null) 'hwVersion': hwVersion,
-        if (manufacturer != null) 'manufacturer': manufacturer,
-        if (model != null) 'model': model,
-        if (swVersion != null) 'swVersion': swVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hwVersion != null) 'hwVersion': hwVersion!,
+        if (manufacturer != null) 'manufacturer': manufacturer!,
+        if (model != null) 'model': model!,
+        if (swVersion != null) 'swVersion': swVersion!,
       };
 }
 
@@ -550,13 +543,13 @@ class DeviceInfo {
 class DeviceNames {
   /// List of names provided by the manufacturer rather than the user, such as
   /// serial numbers, SKUs, etc.
-  core.List<core.String> defaultNames;
+  core.List<core.String>? defaultNames;
 
   /// Primary name of the device, generally provided by the user.
-  core.String name;
+  core.String? name;
 
   /// Additional names provided by the user for the device.
-  core.List<core.String> nicknames;
+  core.List<core.String>? nicknames;
 
   DeviceNames();
 
@@ -576,10 +569,10 @@ class DeviceNames {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (defaultNames != null) 'defaultNames': defaultNames,
-        if (name != null) 'name': name,
-        if (nicknames != null) 'nicknames': nicknames,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (defaultNames != null) 'defaultNames': defaultNames!,
+        if (name != null) 'name': name!,
+        if (nicknames != null) 'nicknames': nicknames!,
       };
 }
 
@@ -597,7 +590,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// LINT.IfChange go/shed-per-trait-routing.
@@ -609,7 +602,7 @@ class NonLocalTrait {
   ///
   /// See
   /// [device traits](https://developers.google.com/assistant/smarthome/traits).
-  core.String trait;
+  core.String? trait;
 
   NonLocalTrait();
 
@@ -619,8 +612,8 @@ class NonLocalTrait {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (trait != null) 'trait': trait,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (trait != null) 'trait': trait!,
       };
 }
 
@@ -630,16 +623,16 @@ class QueryRequest {
   /// Third-party user ID.
   ///
   /// Required.
-  core.String agentUserId;
+  core.String? agentUserId;
 
   /// Inputs containing third-party device IDs for which to get the device
   /// states.
   ///
   /// Required.
-  core.List<QueryRequestInput> inputs;
+  core.List<QueryRequestInput>? inputs;
 
   /// Request ID used for debugging.
-  core.String requestId;
+  core.String? requestId;
 
   QueryRequest();
 
@@ -658,18 +651,18 @@ class QueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (agentUserId != null) 'agentUserId': agentUserId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (agentUserId != null) 'agentUserId': agentUserId!,
         if (inputs != null)
-          'inputs': inputs.map((value) => value.toJson()).toList(),
-        if (requestId != null) 'requestId': requestId,
+          'inputs': inputs!.map((value) => value.toJson()).toList(),
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
 /// Device ID inputs to QueryRequest.
 class QueryRequestInput {
   /// Payload containing third-party device IDs.
-  QueryRequestPayload payload;
+  QueryRequestPayload? payload;
 
   QueryRequestInput();
 
@@ -680,15 +673,15 @@ class QueryRequestInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (payload != null) 'payload': payload.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (payload != null) 'payload': payload!.toJson(),
       };
 }
 
 /// Payload containing device IDs.
 class QueryRequestPayload {
   /// Third-party device IDs for which to get the device states.
-  core.List<AgentDeviceId> devices;
+  core.List<AgentDeviceId>? devices;
 
   QueryRequestPayload();
 
@@ -701,9 +694,9 @@ class QueryRequestPayload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (devices != null)
-          'devices': devices.map((value) => value.toJson()).toList(),
+          'devices': devices!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -719,12 +712,12 @@ class QueryRequestPayload {
 /// "spectrumRGB": 31655 } } } } } ```
 class QueryResponse {
   /// Device states for the devices given in the request.
-  QueryResponsePayload payload;
+  QueryResponsePayload? payload;
 
   /// Request ID used for debugging.
   ///
   /// Copied from the request.
-  core.String requestId;
+  core.String? requestId;
 
   QueryResponse();
 
@@ -738,9 +731,9 @@ class QueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (payload != null) 'payload': payload.toJson(),
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (payload != null) 'payload': payload!.toJson(),
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -752,29 +745,30 @@ class QueryResponsePayload {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Map<core.String, core.Object>> devices;
+  core.Map<core.String, core.Map<core.String, core.Object>>? devices;
 
   QueryResponsePayload();
 
   QueryResponsePayload.fromJson(core.Map _json) {
     if (_json.containsKey('devices')) {
-      devices =
-          (_json['devices'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  (item as core.Map).cast<core.String, core.Object>().map(
-                        (key, item) => core.MapEntry(
-                          key,
-                          item as core.Object,
-                        ),
-                      ),
-                ),
-              );
+      devices = (_json['devices'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              (item as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ),
+            ),
+          );
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (devices != null) 'devices': devices,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (devices != null) 'devices': devices!,
       };
 }
 
@@ -787,7 +781,7 @@ class ReportStateAndNotificationDevice {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> notifications;
+  core.Map<core.String, core.Object>? notifications;
 
   /// States of devices to update.
   ///
@@ -796,7 +790,7 @@ class ReportStateAndNotificationDevice {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> states;
+  core.Map<core.String, core.Object>? states;
 
   ReportStateAndNotificationDevice();
 
@@ -822,9 +816,9 @@ class ReportStateAndNotificationDevice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (notifications != null) 'notifications': notifications,
-        if (states != null) 'states': states,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (notifications != null) 'notifications': notifications!,
+        if (states != null) 'states': states!,
       };
 }
 
@@ -842,25 +836,25 @@ class ReportStateAndNotificationRequest {
   /// Third-party user ID.
   ///
   /// Required.
-  core.String agentUserId;
+  core.String? agentUserId;
 
   /// Unique identifier per event (for example, a doorbell press).
-  core.String eventId;
+  core.String? eventId;
 
   /// Token to maintain state in the follow up notification response.
   ///
   /// Deprecated. See the
   /// [notifications guide](https://developers.google.com/assistant/smarthome/develop/notifications)
   /// for details on implementing follow up notifications.
-  core.String followUpToken;
+  core.String? followUpToken;
 
   /// State of devices to update and notification metadata for devices.
   ///
   /// Required.
-  StateAndNotificationPayload payload;
+  StateAndNotificationPayload? payload;
 
   /// Request ID used for debugging.
-  core.String requestId;
+  core.String? requestId;
 
   ReportStateAndNotificationRequest();
 
@@ -883,12 +877,12 @@ class ReportStateAndNotificationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (agentUserId != null) 'agentUserId': agentUserId,
-        if (eventId != null) 'eventId': eventId,
-        if (followUpToken != null) 'followUpToken': followUpToken,
-        if (payload != null) 'payload': payload.toJson(),
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (agentUserId != null) 'agentUserId': agentUserId!,
+        if (eventId != null) 'eventId': eventId!,
+        if (followUpToken != null) 'followUpToken': followUpToken!,
+        if (payload != null) 'payload': payload!.toJson(),
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -897,7 +891,7 @@ class ReportStateAndNotificationRequest {
 /// call.
 class ReportStateAndNotificationResponse {
   /// Request ID copied from ReportStateAndNotificationRequest.
-  core.String requestId;
+  core.String? requestId;
 
   ReportStateAndNotificationResponse();
 
@@ -907,8 +901,8 @@ class ReportStateAndNotificationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -919,7 +913,7 @@ class RequestSyncDevicesRequest {
   /// Third-party user ID.
   ///
   /// Required.
-  core.String agentUserId;
+  core.String? agentUserId;
 
   /// If set, the request will be added to a queue and a response will be
   /// returned immediately.
@@ -928,7 +922,7 @@ class RequestSyncDevicesRequest {
   /// caller will not receive any error responses.
   ///
   /// Optional.
-  core.bool async;
+  core.bool? async;
 
   RequestSyncDevicesRequest();
 
@@ -941,9 +935,9 @@ class RequestSyncDevicesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (agentUserId != null) 'agentUserId': agentUserId,
-        if (async != null) 'async': async,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (agentUserId != null) 'agentUserId': agentUserId!,
+        if (async != null) 'async': async!,
       };
 }
 
@@ -960,13 +954,13 @@ class RequestSyncDevicesResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Payload containing the state and notification information for devices.
 class StateAndNotificationPayload {
   /// The devices for updating state and sending notifications.
-  ReportStateAndNotificationDevice devices;
+  ReportStateAndNotificationDevice? devices;
 
   StateAndNotificationPayload();
 
@@ -977,8 +971,8 @@ class StateAndNotificationPayload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (devices != null) 'devices': devices.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (devices != null) 'devices': devices!.toJson(),
       };
 }
 
@@ -988,10 +982,10 @@ class SyncRequest {
   /// Third-party user ID.
   ///
   /// Required.
-  core.String agentUserId;
+  core.String? agentUserId;
 
   /// Request ID used for debugging.
-  core.String requestId;
+  core.String? requestId;
 
   SyncRequest();
 
@@ -1004,9 +998,9 @@ class SyncRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (agentUserId != null) 'agentUserId': agentUserId,
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (agentUserId != null) 'agentUserId': agentUserId!,
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -1026,12 +1020,12 @@ class SyncRequest {
 /// { "fooValue": 74, "barValue": true, "bazValue": "foo" } }] } } ```
 class SyncResponse {
   /// Devices associated with the third-party user.
-  SyncResponsePayload payload;
+  SyncResponsePayload? payload;
 
   /// Request ID used for debugging.
   ///
   /// Copied from the request.
-  core.String requestId;
+  core.String? requestId;
 
   SyncResponse();
 
@@ -1045,19 +1039,19 @@ class SyncResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (payload != null) 'payload': payload.toJson(),
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (payload != null) 'payload': payload!.toJson(),
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
 /// Payload containing device information.
 class SyncResponsePayload {
   /// Third-party user ID
-  core.String agentUserId;
+  core.String? agentUserId;
 
   /// Devices associated with the third-party user.
-  core.List<Device> devices;
+  core.List<Device>? devices;
 
   SyncResponsePayload();
 
@@ -1073,9 +1067,9 @@ class SyncResponsePayload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (agentUserId != null) 'agentUserId': agentUserId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (agentUserId != null) 'agentUserId': agentUserId!,
         if (devices != null)
-          'devices': devices.map((value) => value.toJson()).toList(),
+          'devices': devices!.map((value) => value.toJson()).toList(),
       };
 }

@@ -91,13 +91,9 @@ class OperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -138,11 +134,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -205,14 +198,11 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -240,23 +230,23 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Describes a Compute Engine resource that is being managed by a running
 /// pipeline.
 class ComputeEngine {
   /// The names of the disks that were created for this pipeline.
-  core.List<core.String> diskNames;
+  core.List<core.String>? diskNames;
 
   /// The instance on which the operation is running.
-  core.String instanceName;
+  core.String? instanceName;
 
   /// The machine type of the instance.
-  core.String machineType;
+  core.String? machineType;
 
   /// The availability zone in which the instance resides.
-  core.String zone;
+  core.String? zone;
 
   ComputeEngine();
 
@@ -277,11 +267,11 @@ class ComputeEngine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (diskNames != null) 'diskNames': diskNames,
-        if (instanceName != null) 'instanceName': instanceName,
-        if (machineType != null) 'machineType': machineType,
-        if (zone != null) 'zone': zone,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (diskNames != null) 'diskNames': diskNames!,
+        if (instanceName != null) 'instanceName': instanceName!,
+        if (machineType != null) 'machineType': machineType!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -291,7 +281,7 @@ class ComputeEngine {
 /// specified by the user.
 class ContainerKilledEvent {
   /// The numeric ID of the action that started the container.
-  core.int actionId;
+  core.int? actionId;
 
   ContainerKilledEvent();
 
@@ -301,28 +291,28 @@ class ContainerKilledEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionId != null) 'actionId': actionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionId != null) 'actionId': actionId!,
       };
 }
 
 /// An event generated when a container starts.
 class ContainerStartedEvent {
   /// The numeric ID of the action that started this container.
-  core.int actionId;
+  core.int? actionId;
 
   /// The public IP address that can be used to connect to the container.
   ///
   /// This field is only populated when at least one port mapping is present. If
   /// the instance was created with a private address, this field will be empty
   /// even if port mappings exist.
-  core.String ipAddress;
+  core.String? ipAddress;
 
   /// The container-to-host port mappings installed for this container.
   ///
   /// This set will contain any ports exposed using the `PUBLISH_EXPOSED_PORTS`
   /// flag as well as any specified in the `Action` definition.
-  core.Map<core.String, core.int> portMappings;
+  core.Map<core.String, core.int>? portMappings;
 
   ContainerStartedEvent();
 
@@ -344,20 +334,20 @@ class ContainerStartedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionId != null) 'actionId': actionId,
-        if (ipAddress != null) 'ipAddress': ipAddress,
-        if (portMappings != null) 'portMappings': portMappings,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionId != null) 'actionId': actionId!,
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (portMappings != null) 'portMappings': portMappings!,
       };
 }
 
 /// An event generated when a container exits.
 class ContainerStoppedEvent {
   /// The numeric ID of the action that started this container.
-  core.int actionId;
+  core.int? actionId;
 
   /// The exit status of the container.
-  core.int exitStatus;
+  core.int? exitStatus;
 
   /// The tail end of any content written to standard error by the container.
   ///
@@ -367,7 +357,7 @@ class ContainerStoppedEvent {
   /// amount of the end of the stream is captured here. The entire stream is
   /// stored in the `/google/logs` directory mounted into each action, and can
   /// be copied off the machine as described elsewhere.
-  core.String stderr;
+  core.String? stderr;
 
   ContainerStoppedEvent();
 
@@ -383,10 +373,10 @@ class ContainerStoppedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionId != null) 'actionId': actionId,
-        if (exitStatus != null) 'exitStatus': exitStatus,
-        if (stderr != null) 'stderr': stderr,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionId != null) 'actionId': actionId!,
+        if (exitStatus != null) 'exitStatus': exitStatus!,
+        if (stderr != null) 'stderr': stderr!,
       };
 }
 
@@ -397,7 +387,7 @@ class DelayedEvent {
   ///
   /// The string can change without notice because it is often generated by
   /// another service (such as Compute Engine).
-  core.String cause;
+  core.String? cause;
 
   /// If the delay was caused by a resource shortage, this field lists the
   /// Compute Engine metrics that are preventing this operation from running
@@ -405,7 +395,7 @@ class DelayedEvent {
   ///
   /// If the particular metric is not known, a single `UNKNOWN` metric will be
   /// present.
-  core.List<core.String> metrics;
+  core.List<core.String>? metrics;
 
   DelayedEvent();
 
@@ -420,9 +410,9 @@ class DelayedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cause != null) 'cause': cause,
-        if (metrics != null) 'metrics': metrics,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cause != null) 'cause': cause!,
+        if (metrics != null) 'metrics': metrics!,
       };
 }
 
@@ -440,7 +430,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Carries information about events that occur during pipeline execution.
@@ -449,16 +439,16 @@ class Event {
   ///
   /// Note that these strings can change at any time without notice. Any
   /// application logic must use the information in the `details` field.
-  core.String description;
+  core.String? description;
 
   /// Machine-readable details about the event.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> details;
+  core.Map<core.String, core.Object>? details;
 
   /// The time at which the event occurred.
-  core.String timestamp;
+  core.String? timestamp;
 
   Event();
 
@@ -480,10 +470,10 @@ class Event {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (details != null) 'details': details,
-        if (timestamp != null) 'timestamp': timestamp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (details != null) 'details': details!,
+        if (timestamp != null) 'timestamp': timestamp!,
       };
 }
 
@@ -492,7 +482,7 @@ class Event {
 /// Note that other events can continue to occur after this event.
 class FailedEvent {
   /// The human-readable description of the cause of the failure.
-  core.String cause;
+  core.String? cause;
 
   /// The Google standard error code that best describes this failure.
   /// Possible string values are:
@@ -575,7 +565,7 @@ class FailedEvent {
   /// Service Unavailable
   /// - "DATA_LOSS" : Unrecoverable data loss or corruption. HTTP Mapping: 500
   /// Internal Server Error
-  core.String code;
+  core.String? code;
 
   FailedEvent();
 
@@ -588,19 +578,19 @@ class FailedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cause != null) 'cause': cause,
-        if (code != null) 'code': code,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cause != null) 'cause': cause!,
+        if (code != null) 'code': code!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -616,10 +606,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -630,10 +620,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// An OperationMetadata or Metadata object.
   ///
@@ -641,19 +631,19 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// For example: `operations/CJHU7Oi_ChDrveSpBRjfuL-qzoWAgEw`
-  core.String name;
+  core.String? name;
 
   /// An Empty object.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -688,28 +678,28 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
 /// An event that occurred during an Operation.
 class OperationEvent {
   /// Required description of event.
-  core.String description;
+  core.String? description;
 
   /// Optional time of when event finished.
   ///
   /// An event can have a start time and no finish time. If an event has a
   /// finish time, there must be a start time.
-  core.String endTime;
+  core.String? endTime;
 
   /// Optional time of when event started.
-  core.String startTime;
+  core.String? startTime;
 
   OperationEvent();
 
@@ -725,10 +715,10 @@ class OperationEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -738,26 +728,26 @@ class OperationMetadata {
   ///
   /// Use `labels` instead. Optionally provided by the caller when submitting
   /// the request that creates the operation.
-  core.String clientId;
+  core.String? clientId;
 
   /// The time at which the job was submitted to the Genomics service.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time at which the job stopped running.
-  core.String endTime;
+  core.String? endTime;
 
   /// Optional event messages that were generated during the job's execution.
   ///
   /// This also contains any warnings that were generated during import or
   /// export.
-  core.List<OperationEvent> events;
+  core.List<OperationEvent>? events;
 
   /// Optionally provided by the caller when submitting the request that creates
   /// the operation.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The Google Cloud Project in which the job is scoped.
-  core.String projectId;
+  core.String? projectId;
 
   /// The original request that started the operation.
   ///
@@ -767,16 +757,16 @@ class OperationMetadata {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> request;
+  core.Map<core.String, core.Object>? request;
 
   /// Runtime metadata on this Operation.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> runtimeMetadata;
+  core.Map<core.String, core.Object>? runtimeMetadata;
 
   /// The time at which the job began to run.
-  core.String startTime;
+  core.String? startTime;
 
   OperationMetadata();
 
@@ -832,24 +822,24 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientId != null) 'clientId': clientId,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
         if (events != null)
-          'events': events.map((value) => value.toJson()).toList(),
-        if (labels != null) 'labels': labels,
-        if (projectId != null) 'projectId': projectId,
-        if (request != null) 'request': request,
-        if (runtimeMetadata != null) 'runtimeMetadata': runtimeMetadata,
-        if (startTime != null) 'startTime': startTime,
+          'events': events!.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels!,
+        if (projectId != null) 'projectId': projectId!,
+        if (request != null) 'request': request!,
+        if (runtimeMetadata != null) 'runtimeMetadata': runtimeMetadata!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
 /// An event generated when the worker starts pulling an image.
 class PullStartedEvent {
   /// The URI of the image that was pulled.
-  core.String imageUri;
+  core.String? imageUri;
 
   PullStartedEvent();
 
@@ -859,15 +849,15 @@ class PullStartedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageUri != null) 'imageUri': imageUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageUri != null) 'imageUri': imageUri!,
       };
 }
 
 /// An event generated when the worker stops pulling an image.
 class PullStoppedEvent {
   /// The URI of the image that was pulled.
-  core.String imageUri;
+  core.String? imageUri;
 
   PullStoppedEvent();
 
@@ -877,8 +867,8 @@ class PullStoppedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageUri != null) 'imageUri': imageUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageUri != null) 'imageUri': imageUri!,
       };
 }
 
@@ -891,14 +881,14 @@ class RunPipelineResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Runtime metadata that will be populated in the runtimeMetadata field of the
 /// Operation associated with a RunPipeline execution.
 class RuntimeMetadata {
   /// Execution information specific to Google Compute Engine.
-  ComputeEngine computeEngine;
+  ComputeEngine? computeEngine;
 
   RuntimeMetadata();
 
@@ -909,8 +899,8 @@ class RuntimeMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (computeEngine != null) 'computeEngine': computeEngine.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (computeEngine != null) 'computeEngine': computeEngine!.toJson(),
       };
 }
 
@@ -923,7 +913,7 @@ class RuntimeMetadata {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -931,13 +921,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -961,10 +951,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -975,10 +965,10 @@ class Status {
 /// will be executed. Other actions will be skipped.
 class UnexpectedExitStatusEvent {
   /// The numeric ID of the action that started the container.
-  core.int actionId;
+  core.int? actionId;
 
   /// The exit status of the container.
-  core.int exitStatus;
+  core.int? exitStatus;
 
   UnexpectedExitStatusEvent();
 
@@ -991,22 +981,22 @@ class UnexpectedExitStatusEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionId != null) 'actionId': actionId,
-        if (exitStatus != null) 'exitStatus': exitStatus,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionId != null) 'actionId': actionId!,
+        if (exitStatus != null) 'exitStatus': exitStatus!,
       };
 }
 
 /// An event generated after a worker VM has been assigned to run the pipeline.
 class WorkerAssignedEvent {
   /// The worker's instance name.
-  core.String instance;
+  core.String? instance;
 
   /// The machine type that was assigned for the worker.
-  core.String machineType;
+  core.String? machineType;
 
   /// The zone the worker is running in.
-  core.String zone;
+  core.String? zone;
 
   WorkerAssignedEvent();
 
@@ -1022,10 +1012,10 @@ class WorkerAssignedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (instance != null) 'instance': instance,
-        if (machineType != null) 'machineType': machineType,
-        if (zone != null) 'zone': zone,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (instance != null) 'instance': instance!,
+        if (machineType != null) 'machineType': machineType!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -1033,10 +1023,10 @@ class WorkerAssignedEvent {
 /// been released (deleted).
 class WorkerReleasedEvent {
   /// The worker's instance name.
-  core.String instance;
+  core.String? instance;
 
   /// The zone the worker was running in.
-  core.String zone;
+  core.String? zone;
 
   WorkerReleasedEvent();
 
@@ -1049,8 +1039,8 @@ class WorkerReleasedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (instance != null) 'instance': instance,
-        if (zone != null) 'zone': zone,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (instance != null) 'instance': instance!,
+        if (zone != null) 'zone': zone!,
       };
 }

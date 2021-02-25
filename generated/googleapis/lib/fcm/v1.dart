@@ -97,13 +97,9 @@ class ProjectsMessagesResource {
   async.Future<Message> send(
     SendMessageRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -129,25 +125,25 @@ class AndroidConfig {
   /// the last message gets sent when delivery can be resumed.
   ///
   /// A maximum of 4 different collapse keys is allowed at any given time.
-  core.String collapseKey;
+  core.String? collapseKey;
 
   /// Arbitrary key/value payload.
   ///
   /// If present, it will override google.firebase.fcm.v1.Message.data.
-  core.Map<core.String, core.String> data;
+  core.Map<core.String, core.String>? data;
 
   /// If set to true, messages will be allowed to be delivered to the app while
   /// the device is in direct boot mode.
   ///
   /// See
   /// [Support Direct Boot mode](https://developer.android.com/training/articles/direct-boot).
-  core.bool directBootOk;
+  core.bool? directBootOk;
 
   /// Options for features provided by the FCM SDK for Android.
-  AndroidFcmOptions fcmOptions;
+  AndroidFcmOptions? fcmOptions;
 
   /// Notification to send to android devices.
-  AndroidNotification notification;
+  AndroidNotification? notification;
 
   /// Message priority.
   ///
@@ -168,11 +164,11 @@ class AndroidConfig {
   /// message is time-critical and requires the user's immediate interaction,
   /// but beware that setting your messages to high priority contributes more to
   /// battery drain compared with normal priority messages.
-  core.String priority;
+  core.String? priority;
 
   /// Package name of the application where the registration token must match in
   /// order to receive the message.
-  core.String restrictedPackageName;
+  core.String? restrictedPackageName;
 
   /// How long (in seconds) the message should be kept in FCM storage if the
   /// device is offline.
@@ -186,7 +182,7 @@ class AndroidConfig {
   /// encoded in JSON format as "3s", while 3 seconds and 1 nanosecond should be
   /// expressed in JSON format as "3.000000001s". The ttl will be rounded down
   /// to the nearest second.
-  core.String ttl;
+  core.String? ttl;
 
   AndroidConfig();
 
@@ -224,23 +220,23 @@ class AndroidConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (collapseKey != null) 'collapseKey': collapseKey,
-        if (data != null) 'data': data,
-        if (directBootOk != null) 'directBootOk': directBootOk,
-        if (fcmOptions != null) 'fcmOptions': fcmOptions.toJson(),
-        if (notification != null) 'notification': notification.toJson(),
-        if (priority != null) 'priority': priority,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (collapseKey != null) 'collapseKey': collapseKey!,
+        if (data != null) 'data': data!,
+        if (directBootOk != null) 'directBootOk': directBootOk!,
+        if (fcmOptions != null) 'fcmOptions': fcmOptions!.toJson(),
+        if (notification != null) 'notification': notification!.toJson(),
+        if (priority != null) 'priority': priority!,
         if (restrictedPackageName != null)
-          'restrictedPackageName': restrictedPackageName,
-        if (ttl != null) 'ttl': ttl,
+          'restrictedPackageName': restrictedPackageName!,
+        if (ttl != null) 'ttl': ttl!,
       };
 }
 
 /// Options for features provided by the FCM SDK for Android.
 class AndroidFcmOptions {
   /// Label associated with the message's analytics data.
-  core.String analyticsLabel;
+  core.String? analyticsLabel;
 
   AndroidFcmOptions();
 
@@ -250,8 +246,8 @@ class AndroidFcmOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (analyticsLabel != null) 'analyticsLabel': analyticsLabel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
       };
 }
 
@@ -260,20 +256,20 @@ class AndroidNotification {
   /// The notification's body text.
   ///
   /// If present, it will override google.firebase.fcm.v1.Notification.body.
-  core.String body;
+  core.String? body;
 
   /// Variable string values to be used in place of the format specifiers in
   /// body_loc_key to use to localize the body text to the user's current
   /// localization.
   ///
   /// See [Formatting and Styling](https://goo.gl/MalYE3) for more information.
-  core.List<core.String> bodyLocArgs;
+  core.List<core.String>? bodyLocArgs;
 
   /// The key to the body string in the app's string resources to use to
   /// localize the body text to the user's current localization.
   ///
   /// See [String Resources](https://goo.gl/NdFZGI) for more information.
-  core.String bodyLocKey;
+  core.String? bodyLocKey;
 
   /// The
   /// [notification's channel id](https://developer.android.com/guide/topics/ui/notifiers/notifications#ManageChannels)
@@ -283,16 +279,16 @@ class AndroidNotification {
   /// with this channel ID is received. If you don't send this channel ID in the
   /// request, or if the channel ID provided has not yet been created by the
   /// app, FCM uses the channel ID specified in the app manifest.
-  core.String channelId;
+  core.String? channelId;
 
   /// The action associated with a user click on the notification.
   ///
   /// If specified, an activity with a matching intent filter is launched when a
   /// user clicks on the notification.
-  core.String clickAction;
+  core.String? clickAction;
 
   /// The notification's icon color, expressed in #rrggbb format.
-  core.String color;
+  core.String? color;
 
   /// If set to true, use the Android framework's default LED light settings for
   /// the notification.
@@ -302,14 +298,14 @@ class AndroidNotification {
   /// If `default_light_settings` is set to true and `light_settings` is also
   /// set, the user-specified `light_settings` is used instead of the default
   /// value.
-  core.bool defaultLightSettings;
+  core.bool? defaultLightSettings;
 
   /// If set to true, use the Android framework's default sound for the
   /// notification.
   ///
   /// Default values are specified in
   /// [config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).
-  core.bool defaultSound;
+  core.bool? defaultSound;
 
   /// If set to true, use the Android framework's default vibrate pattern for
   /// the notification.
@@ -319,33 +315,33 @@ class AndroidNotification {
   /// If `default_vibrate_timings` is set to true and `vibrate_timings` is also
   /// set, the default value is used instead of the user-specified
   /// `vibrate_timings`.
-  core.bool defaultVibrateTimings;
+  core.bool? defaultVibrateTimings;
 
   /// Set the time that the event in the notification occurred.
   ///
   /// Notifications in the panel are sorted by this time. A point in time is
   /// represented using
   /// [protobuf.Timestamp](https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/Timestamp).
-  core.String eventTime;
+  core.String? eventTime;
 
   /// The notification's icon.
   ///
   /// Sets the notification icon to myicon for drawable resource myicon. If you
   /// don't send this key in the request, FCM displays the launcher icon
   /// specified in your app manifest.
-  core.String icon;
+  core.String? icon;
 
   /// Contains the URL of an image that is going to be displayed in a
   /// notification.
   ///
   /// If present, it will override google.firebase.fcm.v1.Notification.image.
-  core.String image;
+  core.String? image;
 
   /// Settings to control the notification's LED blinking rate and color if LED
   /// is available on the device.
   ///
   /// The total blinking time is controlled by the OS.
-  LightSettings lightSettings;
+  LightSettings? lightSettings;
 
   /// Set whether or not this notification is relevant only to the current
   /// device.
@@ -354,7 +350,7 @@ class AndroidNotification {
   /// such as a Wear OS watch. This hint can be set to recommend this
   /// notification not be bridged. See
   /// [Wear OS guides](https://developer.android.com/training/wearables/notifications/bridger#existing-method-of-preventing-bridging)
-  core.bool localOnly;
+  core.bool? localOnly;
 
   /// Sets the number of items this notification represents.
   ///
@@ -365,7 +361,7 @@ class AndroidNotification {
   /// the number of total new messages. If zero or unspecified, systems that
   /// support badging use the default, which is to increment a number displayed
   /// on the long-press menu each time a new notification arrives.
-  core.int notificationCount;
+  core.int? notificationCount;
 
   /// Set the relative priority for this notification.
   ///
@@ -397,19 +393,19 @@ class AndroidNotification {
   /// - "PRIORITY_MAX" : Highest notification priority. Use this for the
   /// application's most important items that require the user's prompt
   /// attention or input.
-  core.String notificationPriority;
+  core.String? notificationPriority;
 
   /// The sound to play when the device receives the notification.
   ///
   /// Supports "default" or the filename of a sound resource bundled in the app.
   /// Sound files must reside in /res/raw/.
-  core.String sound;
+  core.String? sound;
 
   /// When set to false or unset, the notification is automatically dismissed
   /// when the user clicks it in the panel.
   ///
   /// When set to true, the notification persists even when the user clicks it.
-  core.bool sticky;
+  core.bool? sticky;
 
   /// Identifier used to replace existing notifications in the notification
   /// drawer.
@@ -417,31 +413,31 @@ class AndroidNotification {
   /// If not specified, each request creates a new notification. If specified
   /// and a notification with the same tag is already being shown, the new
   /// notification replaces the existing one in the notification drawer.
-  core.String tag;
+  core.String? tag;
 
   /// Sets the "ticker" text, which is sent to accessibility services.
   ///
   /// Prior to API level 21 (`Lollipop`), sets the text that is displayed in the
   /// status bar when the notification first arrives.
-  core.String ticker;
+  core.String? ticker;
 
   /// The notification's title.
   ///
   /// If present, it will override google.firebase.fcm.v1.Notification.title.
-  core.String title;
+  core.String? title;
 
   /// Variable string values to be used in place of the format specifiers in
   /// title_loc_key to use to localize the title text to the user's current
   /// localization.
   ///
   /// See [Formatting and Styling](https://goo.gl/MalYE3) for more information.
-  core.List<core.String> titleLocArgs;
+  core.List<core.String>? titleLocArgs;
 
   /// The key to the title string in the app's string resources to use to
   /// localize the title text to the user's current localization.
   ///
   /// See [String Resources](https://goo.gl/NdFZGI) for more information.
-  core.String titleLocKey;
+  core.String? titleLocKey;
 
   /// Set the vibration pattern to use.
   ///
@@ -453,7 +449,7 @@ class AndroidNotification {
   /// `Duration` to turn the vibrator off and to turn the vibrator on. If
   /// `vibrate_timings` is set and `default_vibrate_timings` is set to `true`,
   /// the default value is used instead of the user-specified `vibrate_timings`.
-  core.List<core.String> vibrateTimings;
+  core.List<core.String>? vibrateTimings;
 
   /// Set the
   /// [Notification.visibility](https://developer.android.com/reference/android/app/Notification.html#visibility)
@@ -466,7 +462,7 @@ class AndroidNotification {
   /// - "PUBLIC" : Show this notification in its entirety on all lockscreens.
   /// - "SECRET" : Do not reveal any part of this notification on a secure
   /// lockscreen.
-  core.String visibility;
+  core.String? visibility;
 
   AndroidNotification();
 
@@ -555,49 +551,49 @@ class AndroidNotification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (body != null) 'body': body,
-        if (bodyLocArgs != null) 'bodyLocArgs': bodyLocArgs,
-        if (bodyLocKey != null) 'bodyLocKey': bodyLocKey,
-        if (channelId != null) 'channelId': channelId,
-        if (clickAction != null) 'clickAction': clickAction,
-        if (color != null) 'color': color,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (body != null) 'body': body!,
+        if (bodyLocArgs != null) 'bodyLocArgs': bodyLocArgs!,
+        if (bodyLocKey != null) 'bodyLocKey': bodyLocKey!,
+        if (channelId != null) 'channelId': channelId!,
+        if (clickAction != null) 'clickAction': clickAction!,
+        if (color != null) 'color': color!,
         if (defaultLightSettings != null)
-          'defaultLightSettings': defaultLightSettings,
-        if (defaultSound != null) 'defaultSound': defaultSound,
+          'defaultLightSettings': defaultLightSettings!,
+        if (defaultSound != null) 'defaultSound': defaultSound!,
         if (defaultVibrateTimings != null)
-          'defaultVibrateTimings': defaultVibrateTimings,
-        if (eventTime != null) 'eventTime': eventTime,
-        if (icon != null) 'icon': icon,
-        if (image != null) 'image': image,
-        if (lightSettings != null) 'lightSettings': lightSettings.toJson(),
-        if (localOnly != null) 'localOnly': localOnly,
-        if (notificationCount != null) 'notificationCount': notificationCount,
+          'defaultVibrateTimings': defaultVibrateTimings!,
+        if (eventTime != null) 'eventTime': eventTime!,
+        if (icon != null) 'icon': icon!,
+        if (image != null) 'image': image!,
+        if (lightSettings != null) 'lightSettings': lightSettings!.toJson(),
+        if (localOnly != null) 'localOnly': localOnly!,
+        if (notificationCount != null) 'notificationCount': notificationCount!,
         if (notificationPriority != null)
-          'notificationPriority': notificationPriority,
-        if (sound != null) 'sound': sound,
-        if (sticky != null) 'sticky': sticky,
-        if (tag != null) 'tag': tag,
-        if (ticker != null) 'ticker': ticker,
-        if (title != null) 'title': title,
-        if (titleLocArgs != null) 'titleLocArgs': titleLocArgs,
-        if (titleLocKey != null) 'titleLocKey': titleLocKey,
-        if (vibrateTimings != null) 'vibrateTimings': vibrateTimings,
-        if (visibility != null) 'visibility': visibility,
+          'notificationPriority': notificationPriority!,
+        if (sound != null) 'sound': sound!,
+        if (sticky != null) 'sticky': sticky!,
+        if (tag != null) 'tag': tag!,
+        if (ticker != null) 'ticker': ticker!,
+        if (title != null) 'title': title!,
+        if (titleLocArgs != null) 'titleLocArgs': titleLocArgs!,
+        if (titleLocKey != null) 'titleLocKey': titleLocKey!,
+        if (vibrateTimings != null) 'vibrateTimings': vibrateTimings!,
+        if (visibility != null) 'visibility': visibility!,
       };
 }
 
 /// [Apple Push Notification Service](https://goo.gl/MXRTPa) specific options.
 class ApnsConfig {
   /// Options for features provided by the FCM SDK for iOS.
-  ApnsFcmOptions fcmOptions;
+  ApnsFcmOptions? fcmOptions;
 
   /// HTTP request headers defined in Apple Push Notification Service.
   ///
   /// Refer to
   /// [APNs request headers](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)
   /// for supported headers, e.g. "apns-priority": "10".
-  core.Map<core.String, core.String> headers;
+  core.Map<core.String, core.String>? headers;
 
   /// APNs payload as a JSON object, including both `aps` dictionary and custom
   /// payload.
@@ -609,7 +605,7 @@ class ApnsConfig {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> payload;
+  core.Map<core.String, core.Object>? payload;
 
   ApnsConfig();
 
@@ -638,23 +634,23 @@ class ApnsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fcmOptions != null) 'fcmOptions': fcmOptions.toJson(),
-        if (headers != null) 'headers': headers,
-        if (payload != null) 'payload': payload,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fcmOptions != null) 'fcmOptions': fcmOptions!.toJson(),
+        if (headers != null) 'headers': headers!,
+        if (payload != null) 'payload': payload!,
       };
 }
 
 /// Options for features provided by the FCM SDK for iOS.
 class ApnsFcmOptions {
   /// Label associated with the message's analytics data.
-  core.String analyticsLabel;
+  core.String? analyticsLabel;
 
   /// Contains the URL of an image that is going to be displayed in a
   /// notification.
   ///
   /// If present, it will override google.firebase.fcm.v1.Notification.image.
-  core.String image;
+  core.String? image;
 
   ApnsFcmOptions();
 
@@ -667,9 +663,9 @@ class ApnsFcmOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (analyticsLabel != null) 'analyticsLabel': analyticsLabel,
-        if (image != null) 'image': image,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
+        if (image != null) 'image': image!,
       };
 }
 
@@ -733,16 +729,16 @@ class Color {
   /// between a default value and the value being unset. If omitted, this color
   /// object is to be rendered as a solid color (as if the alpha value had been
   /// explicitly given with a value of 1.0).
-  core.double alpha;
+  core.double? alpha;
 
   /// The amount of blue in the color as a value in the interval \[0, 1\].
-  core.double blue;
+  core.double? blue;
 
   /// The amount of green in the color as a value in the interval \[0, 1\].
-  core.double green;
+  core.double? green;
 
   /// The amount of red in the color as a value in the interval \[0, 1\].
-  core.double red;
+  core.double? red;
 
   Color();
 
@@ -761,18 +757,18 @@ class Color {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alpha != null) 'alpha': alpha,
-        if (blue != null) 'blue': blue,
-        if (green != null) 'green': green,
-        if (red != null) 'red': red,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alpha != null) 'alpha': alpha!,
+        if (blue != null) 'blue': blue!,
+        if (green != null) 'green': green!,
+        if (red != null) 'red': red!,
       };
 }
 
 /// Platform independent options for features provided by the FCM SDKs.
 class FcmOptions {
   /// Label associated with the message's analytics data.
-  core.String analyticsLabel;
+  core.String? analyticsLabel;
 
   FcmOptions();
 
@@ -782,8 +778,8 @@ class FcmOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (analyticsLabel != null) 'analyticsLabel': analyticsLabel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
       };
 }
 
@@ -793,7 +789,7 @@ class LightSettings {
   /// [google.type.Color](https://github.com/googleapis/googleapis/blob/master/google/type/color.proto).
   ///
   /// Required.
-  Color color;
+  Color? color;
 
   /// Along with `light_on_duration `, define the blink rate of LED flashes.
   ///
@@ -801,7 +797,7 @@ class LightSettings {
   /// [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
   ///
   /// Required.
-  core.String lightOffDuration;
+  core.String? lightOffDuration;
 
   /// Along with `light_off_duration`, define the blink rate of LED flashes.
   ///
@@ -809,7 +805,7 @@ class LightSettings {
   /// [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
   ///
   /// Required.
-  core.String lightOnDuration;
+  core.String? lightOnDuration;
 
   LightSettings();
 
@@ -826,10 +822,10 @@ class LightSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (color != null) 'color': color.toJson(),
-        if (lightOffDuration != null) 'lightOffDuration': lightOffDuration,
-        if (lightOnDuration != null) 'lightOnDuration': lightOnDuration,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (color != null) 'color': color!.toJson(),
+        if (lightOffDuration != null) 'lightOffDuration': lightOffDuration!,
+        if (lightOnDuration != null) 'lightOnDuration': lightOnDuration!,
       };
 }
 
@@ -839,50 +835,50 @@ class Message {
   ///
   /// Android specific options for messages sent through
   /// [FCM connection server](https://goo.gl/4GLdUl).
-  AndroidConfig android;
+  AndroidConfig? android;
 
   /// Input only.
   ///
   /// [Apple Push Notification Service](https://goo.gl/MXRTPa) specific options.
-  ApnsConfig apns;
+  ApnsConfig? apns;
 
   /// Condition to send a message to, e.g. "'foo' in topics && 'bar' in topics".
-  core.String condition;
+  core.String? condition;
 
   /// Input only.
   ///
   /// Arbitrary key/value payload. The key should not be a reserved word
   /// ("from", "message_type", or any word starting with "google" or "gcm").
-  core.Map<core.String, core.String> data;
+  core.Map<core.String, core.String>? data;
 
   /// Input only.
   ///
   /// Template for FCM SDK feature options to use across all platforms.
-  FcmOptions fcmOptions;
+  FcmOptions? fcmOptions;
 
   /// The identifier of the message sent, in the format of `projects / *
   /// /messages/{message_id}`.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Input only.
   ///
   /// Basic notification template to use across all platforms.
-  Notification notification;
+  Notification? notification;
 
   /// Registration token to send a message to.
-  core.String token;
+  core.String? token;
 
   /// Topic name to send a message to, e.g. "weather".
   ///
   /// Note: "/topics/" prefix should not be provided.
-  core.String topic;
+  core.String? topic;
 
   /// Input only.
   ///
   /// [Webpush protocol](https://tools.ietf.org/html/rfc8030) options.
-  WebpushConfig webpush;
+  WebpushConfig? webpush;
 
   Message();
 
@@ -929,24 +925,24 @@ class Message {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (android != null) 'android': android.toJson(),
-        if (apns != null) 'apns': apns.toJson(),
-        if (condition != null) 'condition': condition,
-        if (data != null) 'data': data,
-        if (fcmOptions != null) 'fcmOptions': fcmOptions.toJson(),
-        if (name != null) 'name': name,
-        if (notification != null) 'notification': notification.toJson(),
-        if (token != null) 'token': token,
-        if (topic != null) 'topic': topic,
-        if (webpush != null) 'webpush': webpush.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (android != null) 'android': android!.toJson(),
+        if (apns != null) 'apns': apns!.toJson(),
+        if (condition != null) 'condition': condition!,
+        if (data != null) 'data': data!,
+        if (fcmOptions != null) 'fcmOptions': fcmOptions!.toJson(),
+        if (name != null) 'name': name!,
+        if (notification != null) 'notification': notification!.toJson(),
+        if (token != null) 'token': token!,
+        if (topic != null) 'topic': topic!,
+        if (webpush != null) 'webpush': webpush!.toJson(),
       };
 }
 
 /// Basic notification template to use across all platforms.
 class Notification {
   /// The notification's body text.
-  core.String body;
+  core.String? body;
 
   /// Contains the URL of an image that is going to be downloaded on the device
   /// and displayed in a notification.
@@ -956,10 +952,10 @@ class Notification {
   /// platforms and platform versions. Android has 1MB image size limit. Quota
   /// usage and implications/costs for hosting image on Firebase Storage:
   /// https://firebase.google.com/pricing
-  core.String image;
+  core.String? image;
 
   /// The notification's title.
-  core.String title;
+  core.String? title;
 
   Notification();
 
@@ -975,10 +971,10 @@ class Notification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (body != null) 'body': body,
-        if (image != null) 'image': image,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (body != null) 'body': body!,
+        if (image != null) 'image': image!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -987,10 +983,10 @@ class SendMessageRequest {
   /// Message to send.
   ///
   /// Required.
-  Message message;
+  Message? message;
 
   /// Flag for testing the request without actually delivering the message.
-  core.bool validateOnly;
+  core.bool? validateOnly;
 
   SendMessageRequest();
 
@@ -1004,9 +1000,9 @@ class SendMessageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (message != null) 'message': message.toJson(),
-        if (validateOnly != null) 'validateOnly': validateOnly,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (message != null) 'message': message!.toJson(),
+        if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
 
@@ -1015,16 +1011,16 @@ class WebpushConfig {
   /// Arbitrary key/value payload.
   ///
   /// If present, it will override google.firebase.fcm.v1.Message.data.
-  core.Map<core.String, core.String> data;
+  core.Map<core.String, core.String>? data;
 
   /// Options for features provided by the FCM SDK for Web.
-  WebpushFcmOptions fcmOptions;
+  WebpushFcmOptions? fcmOptions;
 
   /// HTTP headers defined in webpush protocol.
   ///
   /// Refer to [Webpush protocol](https://tools.ietf.org/html/rfc8030#section-5)
   /// for supported headers, e.g. "TTL": "15".
-  core.Map<core.String, core.String> headers;
+  core.Map<core.String, core.String>? headers;
 
   /// Web Notification options as a JSON object.
   ///
@@ -1036,7 +1032,7 @@ class WebpushConfig {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> notification;
+  core.Map<core.String, core.Object>? notification;
 
   WebpushConfig();
 
@@ -1074,23 +1070,23 @@ class WebpushConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data,
-        if (fcmOptions != null) 'fcmOptions': fcmOptions.toJson(),
-        if (headers != null) 'headers': headers,
-        if (notification != null) 'notification': notification,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!,
+        if (fcmOptions != null) 'fcmOptions': fcmOptions!.toJson(),
+        if (headers != null) 'headers': headers!,
+        if (notification != null) 'notification': notification!,
       };
 }
 
 /// Options for features provided by the FCM SDK for Web.
 class WebpushFcmOptions {
   /// Label associated with the message's analytics data.
-  core.String analyticsLabel;
+  core.String? analyticsLabel;
 
   /// The link to open when the user clicks on the notification.
   ///
   /// For all URL values, HTTPS is required.
-  core.String link;
+  core.String? link;
 
   WebpushFcmOptions();
 
@@ -1103,8 +1099,8 @@ class WebpushFcmOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (analyticsLabel != null) 'analyticsLabel': analyticsLabel,
-        if (link != null) 'link': link,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
+        if (link != null) 'link': link!,
       };
 }

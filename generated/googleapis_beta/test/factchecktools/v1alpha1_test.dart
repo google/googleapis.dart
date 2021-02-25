@@ -63,10 +63,19 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1Claim(
     api.GoogleFactcheckingFactchecktoolsV1alpha1Claim o) {
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Claim++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Claim < 3) {
-    unittest.expect(o.claimDate, unittest.equals('foo'));
-    checkUnnamed7178(o.claimReview);
-    unittest.expect(o.claimant, unittest.equals('foo'));
-    unittest.expect(o.text, unittest.equals('foo'));
+    unittest.expect(
+      o.claimDate!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7178(o.claimReview!);
+    unittest.expect(
+      o.claimant!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.text!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Claim--;
 }
@@ -90,10 +99,22 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor(
     api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor o) {
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor < 3) {
-    unittest.expect(o.imageUrl, unittest.equals('foo'));
-    unittest.expect(o.jobTitle, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.sameAs, unittest.equals('foo'));
+    unittest.expect(
+      o.imageUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.jobTitle!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sameAs!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor--;
 }
@@ -119,12 +140,30 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating(
     api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating o) {
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating < 3) {
-    unittest.expect(o.bestRating, unittest.equals(42));
-    unittest.expect(o.imageUrl, unittest.equals('foo'));
-    unittest.expect(o.ratingExplanation, unittest.equals('foo'));
-    unittest.expect(o.ratingValue, unittest.equals(42));
-    unittest.expect(o.textualRating, unittest.equals('foo'));
-    unittest.expect(o.worstRating, unittest.equals(42));
+    unittest.expect(
+      o.bestRating!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.imageUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ratingExplanation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ratingValue!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.textualRating!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.worstRating!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating--;
 }
@@ -150,13 +189,28 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview(
     api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview o) {
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview < 3) {
-    unittest.expect(o.languageCode, unittest.equals('foo'));
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
     checkGoogleFactcheckingFactchecktoolsV1alpha1Publisher(
-        o.publisher as api.GoogleFactcheckingFactchecktoolsV1alpha1Publisher);
-    unittest.expect(o.reviewDate, unittest.equals('foo'));
-    unittest.expect(o.textualRating, unittest.equals('foo'));
-    unittest.expect(o.title, unittest.equals('foo'));
-    unittest.expect(o.url, unittest.equals('foo'));
+        o.publisher! as api.GoogleFactcheckingFactchecktoolsV1alpha1Publisher);
+    unittest.expect(
+      o.reviewDate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.textualRating!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview--;
 }
@@ -181,8 +235,14 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor(
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor <
       3) {
-    unittest.expect(o.imageUrl, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.imageUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor--;
 }
@@ -196,8 +256,14 @@ core.List<core.String> buildUnnamed7179() {
 
 void checkUnnamed7179(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup =
@@ -226,16 +292,31 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup(
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup <
       3) {
-    checkUnnamed7179(o.claimAppearances);
-    checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor(o.claimAuthor
+    checkUnnamed7179(o.claimAppearances!);
+    checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor(o.claimAuthor!
         as api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor);
-    unittest.expect(o.claimDate, unittest.equals('foo'));
-    unittest.expect(o.claimFirstAppearance, unittest.equals('foo'));
-    unittest.expect(o.claimLocation, unittest.equals('foo'));
-    unittest.expect(o.claimReviewed, unittest.equals('foo'));
+    unittest.expect(
+      o.claimDate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.claimFirstAppearance!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.claimLocation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.claimReviewed!,
+      unittest.equals('foo'),
+    );
     checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating(
-        o.rating as api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating);
-    unittest.expect(o.url, unittest.equals('foo'));
+        o.rating! as api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating);
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup--;
 }
@@ -285,13 +366,25 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage <
       3) {
     checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor(
-        o.claimReviewAuthor
+        o.claimReviewAuthor!
             as api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor);
-    checkUnnamed7180(o.claimReviewMarkups);
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.pageUrl, unittest.equals('foo'));
-    unittest.expect(o.publishDate, unittest.equals('foo'));
-    unittest.expect(o.versionId, unittest.equals('foo'));
+    checkUnnamed7180(o.claimReviewMarkups!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pageUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.publishDate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.versionId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage--;
 }
@@ -336,8 +429,11 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse <
       3) {
-    checkUnnamed7181(o.claims);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed7181(o.claims!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse--;
 }
@@ -383,8 +479,11 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResp
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse <
       3) {
-    checkUnnamed7182(o.claimReviewMarkupPages);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed7182(o.claimReviewMarkupPages!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse--;
 }
@@ -406,8 +505,14 @@ void checkGoogleFactcheckingFactchecktoolsV1alpha1Publisher(
     api.GoogleFactcheckingFactchecktoolsV1alpha1Publisher o) {
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Publisher++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Publisher < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.site, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.site!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Publisher--;
 }
@@ -576,10 +681,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22),
-            unittest.equals("v1alpha1/claims:search"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 22),
+          unittest.equals("v1alpha1/claims:search"),
+        );
         pathOffset += 22;
 
         var query = (req.url).query;
@@ -598,19 +707,37 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
-        unittest.expect(core.int.parse(queryMap["maxAgeDays"].first),
-            unittest.equals(arg_maxAgeDays));
-        unittest.expect(core.int.parse(queryMap["offset"].first),
-            unittest.equals(arg_offset));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
+          queryMap["languageCode"]!.first,
+          unittest.equals(arg_languageCode),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
-        unittest.expect(queryMap["reviewPublisherSiteFilter"].first,
-            unittest.equals(arg_reviewPublisherSiteFilter));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxAgeDays"]!.first),
+          unittest.equals(arg_maxAgeDays),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["offset"]!.first),
+          unittest.equals(arg_offset),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["query"]!.first,
+          unittest.equals(arg_query),
+        );
+        unittest.expect(
+          queryMap["reviewPublisherSiteFilter"]!.first,
+          unittest.equals(arg_reviewPublisherSiteFilter),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -657,10 +784,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14),
-            unittest.equals("v1alpha1/pages"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 14),
+          unittest.equals("v1alpha1/pages"),
+        );
         pathOffset += 14;
 
         var query = (req.url).query;
@@ -678,7 +809,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -707,10 +841,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -729,7 +867,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -755,10 +896,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -777,7 +922,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -810,10 +958,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14),
-            unittest.equals("v1alpha1/pages"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 14),
+          unittest.equals("v1alpha1/pages"),
+        );
         pathOffset += 14;
 
         var query = (req.url).query;
@@ -831,16 +983,30 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["offset"].first),
-            unittest.equals(arg_offset));
         unittest.expect(
-            queryMap["organization"].first, unittest.equals(arg_organization));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
+          core.int.parse(queryMap["offset"]!.first),
+          unittest.equals(arg_offset),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["url"].first, unittest.equals(arg_url));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["organization"]!.first,
+          unittest.equals(arg_organization),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["url"]!.first,
+          unittest.equals(arg_url),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -884,10 +1050,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -906,7 +1076,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

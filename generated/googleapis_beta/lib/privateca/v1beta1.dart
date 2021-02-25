@@ -108,11 +108,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -152,14 +149,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -225,13 +219,9 @@ class ProjectsLocationsCertificateAuthoritiesResource {
   async.Future<Operation> activate(
     ActivateCertificateAuthorityRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -287,15 +277,11 @@ class ProjectsLocationsCertificateAuthoritiesResource {
   async.Future<Operation> create(
     CertificateAuthority request,
     core.String parent, {
-    core.String certificateAuthorityId,
-    core.String requestId,
-    core.String $fields,
+    core.String? certificateAuthorityId,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (certificateAuthorityId != null)
         'certificateAuthorityId': [certificateAuthorityId],
@@ -340,13 +326,9 @@ class ProjectsLocationsCertificateAuthoritiesResource {
   async.Future<Operation> disable(
     DisableCertificateAuthorityRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -388,13 +370,9 @@ class ProjectsLocationsCertificateAuthoritiesResource {
   async.Future<Operation> enable(
     EnableCertificateAuthorityRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -437,11 +415,8 @@ class ProjectsLocationsCertificateAuthoritiesResource {
   /// this method will complete with the same error.
   async.Future<FetchCertificateAuthorityCsrResponse> fetch(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -478,11 +453,8 @@ class ProjectsLocationsCertificateAuthoritiesResource {
   /// this method will complete with the same error.
   async.Future<CertificateAuthority> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -531,12 +503,9 @@ class ProjectsLocationsCertificateAuthoritiesResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -589,15 +558,12 @@ class ProjectsLocationsCertificateAuthoritiesResource {
   /// this method will complete with the same error.
   async.Future<ListCertificateAuthoritiesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -657,15 +623,11 @@ class ProjectsLocationsCertificateAuthoritiesResource {
   async.Future<Operation> patch(
     CertificateAuthority request,
     core.String name, {
-    core.String requestId,
-    core.String updateMask,
-    core.String $fields,
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -707,13 +669,9 @@ class ProjectsLocationsCertificateAuthoritiesResource {
   async.Future<Operation> restore(
     RestoreCertificateAuthorityRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -755,13 +713,9 @@ class ProjectsLocationsCertificateAuthoritiesResource {
   async.Future<Operation> scheduleDelete(
     ScheduleDeleteCertificateAuthorityRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -807,13 +761,9 @@ class ProjectsLocationsCertificateAuthoritiesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -861,13 +811,9 @@ class ProjectsLocationsCertificateAuthoritiesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -914,11 +860,8 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
   /// this method will complete with the same error.
   async.Future<CertificateRevocationList> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -967,12 +910,9 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -1027,15 +967,12 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
   /// this method will complete with the same error.
   async.Future<ListCertificateRevocationListsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1096,15 +1033,11 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
   async.Future<Operation> patch(
     CertificateRevocationList request,
     core.String name, {
-    core.String requestId,
-    core.String updateMask,
-    core.String $fields,
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1150,13 +1083,9 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1204,13 +1133,9 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1280,15 +1205,11 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
   async.Future<Certificate> create(
     Certificate request,
     core.String parent, {
-    core.String certificateId,
-    core.String requestId,
-    core.String $fields,
+    core.String? certificateId,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (certificateId != null) 'certificateId': [certificateId],
       if (requestId != null) 'requestId': [requestId],
@@ -1329,11 +1250,8 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
   /// this method will complete with the same error.
   async.Future<Certificate> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1387,15 +1305,12 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
   /// this method will complete with the same error.
   async.Future<ListCertificatesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1458,15 +1373,11 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
   async.Future<Certificate> patch(
     Certificate request,
     core.String name, {
-    core.String requestId,
-    core.String updateMask,
-    core.String $fields,
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1510,13 +1421,9 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
   async.Future<Certificate> revoke(
     RevokeCertificateRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1573,13 +1480,9 @@ class ProjectsLocationsOperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1620,11 +1523,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1662,11 +1562,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1715,14 +1612,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1770,11 +1664,8 @@ class ProjectsLocationsReusableConfigsResource {
   /// this method will complete with the same error.
   async.Future<ReusableConfig> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1823,12 +1714,9 @@ class ProjectsLocationsReusableConfigsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -1880,15 +1768,12 @@ class ProjectsLocationsReusableConfigsResource {
   /// this method will complete with the same error.
   async.Future<ListReusableConfigsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1938,13 +1823,9 @@ class ProjectsLocationsReusableConfigsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1992,13 +1873,9 @@ class ProjectsLocationsReusableConfigsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2023,12 +1900,12 @@ class AccessUrls {
   /// The URL where this CertificateAuthority's CA certificate is published.
   ///
   /// This will only be set for CAs that have been activated.
-  core.String caCertificateAccessUrl;
+  core.String? caCertificateAccessUrl;
 
   /// The URL where this CertificateAuthority's CRLs are published.
   ///
   /// This will only be set for CAs that have been activated.
-  core.String crlAccessUrl;
+  core.String? crlAccessUrl;
 
   AccessUrls();
 
@@ -2041,10 +1918,10 @@ class AccessUrls {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (caCertificateAccessUrl != null)
-          'caCertificateAccessUrl': caCertificateAccessUrl,
-        if (crlAccessUrl != null) 'crlAccessUrl': crlAccessUrl,
+          'caCertificateAccessUrl': caCertificateAccessUrl!,
+        if (crlAccessUrl != null) 'crlAccessUrl': crlAccessUrl!,
       };
 }
 
@@ -2055,7 +1932,7 @@ class ActivateCertificateAuthorityRequest {
   /// FetchCertificateAuthorityCsrResponse.pem_csr.
   ///
   /// Required.
-  core.String pemCaCertificate;
+  core.String? pemCaCertificate;
 
   /// An ID to identify requests.
   ///
@@ -2071,13 +1948,13 @@ class ActivateCertificateAuthorityRequest {
   /// supported (00000000-0000-0000-0000-000000000000).
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   /// Must include information about the issuer of 'pem_ca_certificate', and any
   /// further issuers until the self-signed CA.
   ///
   /// Required.
-  SubordinateConfig subordinateConfig;
+  SubordinateConfig? subordinateConfig;
 
   ActivateCertificateAuthorityRequest();
 
@@ -2094,11 +1971,11 @@ class ActivateCertificateAuthorityRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pemCaCertificate != null) 'pemCaCertificate': pemCaCertificate,
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pemCaCertificate != null) 'pemCaCertificate': pemCaCertificate!,
+        if (requestId != null) 'requestId': requestId!,
         if (subordinateConfig != null)
-          'subordinateConfig': subordinateConfig.toJson(),
+          'subordinateConfig': subordinateConfig!.toJson(),
       };
 }
 
@@ -2110,7 +1987,7 @@ class AllowedConfigList {
   /// for that field.
   ///
   /// Required.
-  core.List<ReusableConfigWrapper> allowedConfigValues;
+  core.List<ReusableConfigWrapper>? allowedConfigValues;
 
   AllowedConfigList();
 
@@ -2123,10 +2000,10 @@ class AllowedConfigList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedConfigValues != null)
           'allowedConfigValues':
-              allowedConfigValues.map((value) => value.toJson()).toList(),
+              allowedConfigValues!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2136,7 +2013,7 @@ class AllowedSubjectAltNames {
   /// Specifies if to allow custom X509Extension values.
   ///
   /// Optional.
-  core.bool allowCustomSans;
+  core.bool? allowCustomSans;
 
   /// Specifies if glob patterns used for allowed_dns_names allow wildcard
   /// certificates.
@@ -2147,7 +2024,7 @@ class AllowedSubjectAltNames {
   /// only if allowed_dns_names contains a literal wildcard.
   ///
   /// Optional.
-  core.bool allowGlobbingDnsWildcards;
+  core.bool? allowGlobbingDnsWildcards;
 
   /// Contains valid, fully-qualified host names.
   ///
@@ -2158,14 +2035,14 @@ class AllowedSubjectAltNames {
   /// '\*.bar.com' will allow '*.bar.com', but not 'foo.bar.com'.
   ///
   /// Optional.
-  core.List<core.String> allowedDnsNames;
+  core.List<core.String>? allowedDnsNames;
 
   /// Contains valid RFC 2822 E-mail addresses.
   ///
   /// Glob patterns are also supported.
   ///
   /// Optional.
-  core.List<core.String> allowedEmailAddresses;
+  core.List<core.String>? allowedEmailAddresses;
 
   /// Contains valid 32-bit IPv4 addresses and subnet ranges or RFC 4291 IPv6
   /// addresses and subnet ranges.
@@ -2175,7 +2052,7 @@ class AllowedSubjectAltNames {
   /// entries (i.e. not for subnet ranges).
   ///
   /// Optional.
-  core.List<core.String> allowedIps;
+  core.List<core.String>? allowedIps;
 
   /// Contains valid RFC 3986 URIs.
   ///
@@ -2183,7 +2060,7 @@ class AllowedSubjectAltNames {
   /// '/') use the double star glob pattern (i.e. '**').
   ///
   /// Optional.
-  core.List<core.String> allowedUris;
+  core.List<core.String>? allowedUris;
 
   AllowedSubjectAltNames();
 
@@ -2217,15 +2094,15 @@ class AllowedSubjectAltNames {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowCustomSans != null) 'allowCustomSans': allowCustomSans,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowCustomSans != null) 'allowCustomSans': allowCustomSans!,
         if (allowGlobbingDnsWildcards != null)
-          'allowGlobbingDnsWildcards': allowGlobbingDnsWildcards,
-        if (allowedDnsNames != null) 'allowedDnsNames': allowedDnsNames,
+          'allowGlobbingDnsWildcards': allowGlobbingDnsWildcards!,
+        if (allowedDnsNames != null) 'allowedDnsNames': allowedDnsNames!,
         if (allowedEmailAddresses != null)
-          'allowedEmailAddresses': allowedEmailAddresses,
-        if (allowedIps != null) 'allowedIps': allowedIps,
-        if (allowedUris != null) 'allowedUris': allowedUris,
+          'allowedEmailAddresses': allowedEmailAddresses!,
+        if (allowedIps != null) 'allowedIps': allowedIps!,
+        if (allowedUris != null) 'allowedUris': allowedUris!,
       };
 }
 
@@ -2248,13 +2125,13 @@ class AllowedSubjectAltNames {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -2270,11 +2147,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -2289,7 +2166,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -2297,7 +2174,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -2312,9 +2189,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -2326,7 +2203,7 @@ class BillingView {
   ///
   /// See go/billing-view-construction for documentation on constructing billing
   /// view report requests.
-  core.List<GoogleApiServicecontrolV1ReportRequest> reportRequests;
+  core.List<GoogleApiServicecontrolV1ReportRequest>? reportRequests;
 
   BillingView();
 
@@ -2340,10 +2217,10 @@ class BillingView {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (reportRequests != null)
           'reportRequests':
-              reportRequests.map((value) => value.toJson()).toList(),
+              reportRequests!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2357,7 +2234,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -2389,12 +2266,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -2413,10 +2290,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -2428,7 +2305,7 @@ class CaOptions {
   /// certificate.
   ///
   /// Optional.
-  core.bool isCa;
+  core.bool? isCa;
 
   /// Refers to the path length restriction X.509 extension.
   ///
@@ -2438,7 +2315,7 @@ class CaOptions {
   /// from the CA certificate.
   ///
   /// Optional.
-  core.int maxIssuerPathLength;
+  core.int? maxIssuerPathLength;
 
   CaOptions();
 
@@ -2451,10 +2328,10 @@ class CaOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (isCa != null) 'isCa': isCa,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (isCa != null) 'isCa': isCa!,
         if (maxIssuerPathLength != null)
-          'maxIssuerPathLength': maxIssuerPathLength,
+          'maxIssuerPathLength': maxIssuerPathLength!,
       };
 }
 
@@ -2466,7 +2343,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A Certificate corresponds to a signed X.509 certificate issued by a
@@ -2475,23 +2352,23 @@ class Certificate {
   /// A structured description of the issued X.509 certificate.
   ///
   /// Output only.
-  CertificateDescription certificateDescription;
+  CertificateDescription? certificateDescription;
 
   /// A description of the certificate and key that does not require X.509 or
   /// ASN.1.
   ///
   /// Immutable.
-  CertificateConfig config;
+  CertificateConfig? config;
 
   /// The time at which this Certificate was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Labels with user-defined metadata.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The desired lifetime of a certificate.
   ///
@@ -2500,30 +2377,30 @@ class Certificate {
   /// extend past the life of any certificate authority in the issuing chain.
   ///
   /// Required. Immutable.
-  core.String lifetime;
+  core.String? lifetime;
 
   /// The resource path for this Certificate in the format `projects / *
   /// /locations / * /certificateAuthorities / * /certificates / * `.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The pem-encoded, signed X.509 certificate.
   ///
   /// Output only.
-  core.String pemCertificate;
+  core.String? pemCertificate;
 
   /// The chain that may be used to verify the X.509 certificate.
   ///
   /// Expected to be in issuer-to-root order according to RFC 5246.
   ///
   /// Output only.
-  core.List<core.String> pemCertificateChain;
+  core.List<core.String>? pemCertificateChain;
 
   /// A pem-encoded X.509 certificate signing request (CSR).
   ///
   /// Immutable.
-  core.String pemCsr;
+  core.String? pemCsr;
 
   /// Details regarding the revocation of this Certificate.
   ///
@@ -2531,12 +2408,12 @@ class Certificate {
   /// present.
   ///
   /// Output only.
-  RevocationDetails revocationDetails;
+  RevocationDetails? revocationDetails;
 
   /// The time at which this Certificate was updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Certificate();
 
@@ -2588,21 +2465,21 @@ class Certificate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (certificateDescription != null)
-          'certificateDescription': certificateDescription.toJson(),
-        if (config != null) 'config': config.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (labels != null) 'labels': labels,
-        if (lifetime != null) 'lifetime': lifetime,
-        if (name != null) 'name': name,
-        if (pemCertificate != null) 'pemCertificate': pemCertificate,
+          'certificateDescription': certificateDescription!.toJson(),
+        if (config != null) 'config': config!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (labels != null) 'labels': labels!,
+        if (lifetime != null) 'lifetime': lifetime!,
+        if (name != null) 'name': name!,
+        if (pemCertificate != null) 'pemCertificate': pemCertificate!,
         if (pemCertificateChain != null)
-          'pemCertificateChain': pemCertificateChain,
-        if (pemCsr != null) 'pemCsr': pemCsr,
+          'pemCertificateChain': pemCertificateChain!,
+        if (pemCsr != null) 'pemCsr': pemCsr!,
         if (revocationDetails != null)
-          'revocationDetails': revocationDetails.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
+          'revocationDetails': revocationDetails!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2614,7 +2491,7 @@ class CertificateAuthority {
   /// certificate and CRLs.
   ///
   /// Output only.
-  AccessUrls accessUrls;
+  AccessUrls? accessUrls;
 
   /// A structured description of this CertificateAuthority's CA certificate and
   /// its issuers.
@@ -2622,29 +2499,29 @@ class CertificateAuthority {
   /// Ordered as self-to-root.
   ///
   /// Output only.
-  core.List<CertificateDescription> caCertificateDescriptions;
+  core.List<CertificateDescription>? caCertificateDescriptions;
 
   /// The CertificateAuthorityPolicy to enforce when issuing Certificates from
   /// this CertificateAuthority.
   ///
   /// Optional.
-  CertificateAuthorityPolicy certificatePolicy;
+  CertificateAuthorityPolicy? certificatePolicy;
 
   /// The config used to create a self-signed X.509 certificate or CSR.
   ///
   /// Required. Immutable.
-  CertificateConfig config;
+  CertificateConfig? config;
 
   /// The time at which this CertificateAuthority was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time at which this CertificateAuthority will be deleted, if scheduled
   /// for deletion.
   ///
   /// Output only.
-  core.String deleteTime;
+  core.String? deleteTime;
 
   /// The name of a Cloud Storage bucket where this CertificateAuthority will
   /// publish content, such as the CA certificate and CRLs.
@@ -2655,13 +2532,13 @@ class CertificateAuthority {
   /// managed bucket will be created.
   ///
   /// Immutable.
-  core.String gcsBucket;
+  core.String? gcsBucket;
 
   /// The IssuingOptions to follow when issuing Certificates from this
   /// CertificateAuthority.
   ///
   /// Optional.
-  IssuingOptions issuingOptions;
+  IssuingOptions? issuingOptions;
 
   /// Used when issuing certificates for this CertificateAuthority.
   ///
@@ -2670,12 +2547,12 @@ class CertificateAuthority {
   /// used to sign a CSR.
   ///
   /// Required. Immutable.
-  KeyVersionSpec keySpec;
+  KeyVersionSpec? keySpec;
 
   /// Labels with user-defined metadata.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The desired lifetime of the CA certificate.
   ///
@@ -2683,13 +2560,13 @@ class CertificateAuthority {
   /// X.509 certificate.
   ///
   /// Required.
-  core.String lifetime;
+  core.String? lifetime;
 
   /// The resource name for this CertificateAuthority in the format `projects /
   /// * /locations / * /certificateAuthorities / * `.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// This CertificateAuthority's certificate chain, including the current
   /// CertificateAuthority's certificate.
@@ -2699,7 +2576,7 @@ class CertificateAuthority {
   /// CertificateAuthority's certificate.
   ///
   /// Output only.
-  core.List<core.String> pemCaCertificates;
+  core.List<core.String>? pemCaCertificates;
 
   /// The State for this CertificateAuthority.
   ///
@@ -2714,7 +2591,7 @@ class CertificateAuthority {
   /// will not be generated.
   /// - "PENDING_DELETION" : Certificates cannot be issued from this CA. CRLs
   /// will not be generated.
-  core.String state;
+  core.String? state;
 
   /// If this is a subordinate CertificateAuthority, this field will be set with
   /// the subordinate configuration, which describes its issuers.
@@ -2723,7 +2600,7 @@ class CertificateAuthority {
   /// validate.
   ///
   /// Optional.
-  SubordinateConfig subordinateConfig;
+  SubordinateConfig? subordinateConfig;
 
   /// The Tier of this CertificateAuthority.
   ///
@@ -2732,7 +2609,7 @@ class CertificateAuthority {
   /// - "TIER_UNSPECIFIED" : Not specified.
   /// - "ENTERPRISE" : Enterprise tier.
   /// - "DEVOPS" : DevOps tier.
-  core.String tier;
+  core.String? tier;
 
   /// The Type of this CertificateAuthority.
   ///
@@ -2742,12 +2619,12 @@ class CertificateAuthority {
   /// - "SELF_SIGNED" : Self-signed CA.
   /// - "SUBORDINATE" : Subordinate CA. Could be issued by a Private CA
   /// CertificateAuthority or an unmanaged CA.
-  core.String type;
+  core.String? type;
 
   /// The time at which this CertificateAuthority was updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   CertificateAuthority();
 
@@ -2827,29 +2704,30 @@ class CertificateAuthority {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessUrls != null) 'accessUrls': accessUrls.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessUrls != null) 'accessUrls': accessUrls!.toJson(),
         if (caCertificateDescriptions != null)
-          'caCertificateDescriptions':
-              caCertificateDescriptions.map((value) => value.toJson()).toList(),
+          'caCertificateDescriptions': caCertificateDescriptions!
+              .map((value) => value.toJson())
+              .toList(),
         if (certificatePolicy != null)
-          'certificatePolicy': certificatePolicy.toJson(),
-        if (config != null) 'config': config.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (deleteTime != null) 'deleteTime': deleteTime,
-        if (gcsBucket != null) 'gcsBucket': gcsBucket,
-        if (issuingOptions != null) 'issuingOptions': issuingOptions.toJson(),
-        if (keySpec != null) 'keySpec': keySpec.toJson(),
-        if (labels != null) 'labels': labels,
-        if (lifetime != null) 'lifetime': lifetime,
-        if (name != null) 'name': name,
-        if (pemCaCertificates != null) 'pemCaCertificates': pemCaCertificates,
-        if (state != null) 'state': state,
+          'certificatePolicy': certificatePolicy!.toJson(),
+        if (config != null) 'config': config!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (gcsBucket != null) 'gcsBucket': gcsBucket!,
+        if (issuingOptions != null) 'issuingOptions': issuingOptions!.toJson(),
+        if (keySpec != null) 'keySpec': keySpec!.toJson(),
+        if (labels != null) 'labels': labels!,
+        if (lifetime != null) 'lifetime': lifetime!,
+        if (name != null) 'name': name!,
+        if (pemCaCertificates != null) 'pemCaCertificates': pemCaCertificates!,
+        if (state != null) 'state': state!,
         if (subordinateConfig != null)
-          'subordinateConfig': subordinateConfig.toJson(),
-        if (tier != null) 'tier': tier,
-        if (type != null) 'type': type,
-        if (updateTime != null) 'updateTime': updateTime,
+          'subordinateConfig': subordinateConfig!.toJson(),
+        if (tier != null) 'tier': tier!,
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2865,19 +2743,19 @@ class CertificateAuthorityPolicy {
   /// patterns are also supported.
   ///
   /// Optional.
-  core.List<core.String> allowedCommonNames;
+  core.List<core.String>? allowedCommonNames;
 
   /// All Certificates issued by the CertificateAuthority must match at least
   /// one listed ReusableConfigWrapper in the list.
   ///
   /// Optional.
-  AllowedConfigList allowedConfigList;
+  AllowedConfigList? allowedConfigList;
 
   /// If specified, then only methods allowed in the IssuanceModes may be used
   /// to issue Certificates.
   ///
   /// Optional.
-  IssuanceModes allowedIssuanceModes;
+  IssuanceModes? allowedIssuanceModes;
 
   /// If any Subject is specified here, then all Certificates issued by the
   /// CertificateAuthority must match at least one listed Subject.
@@ -2885,7 +2763,7 @@ class CertificateAuthorityPolicy {
   /// If a Subject has an empty field, any value will be allowed for that field.
   ///
   /// Optional.
-  core.List<Subject> allowedLocationsAndOrganizations;
+  core.List<Subject>? allowedLocationsAndOrganizations;
 
   /// If a AllowedSubjectAltNames is specified here, then all Certificates
   /// issued by the CertificateAuthority must match AllowedSubjectAltNames.
@@ -2894,7 +2772,7 @@ class CertificateAuthorityPolicy {
   /// the SubjectAltNames field.
   ///
   /// Optional.
-  AllowedSubjectAltNames allowedSans;
+  AllowedSubjectAltNames? allowedSans;
 
   /// The maximum lifetime allowed by the CertificateAuthority.
   ///
@@ -2903,13 +2781,13 @@ class CertificateAuthorityPolicy {
   /// explicitly truncated.
   ///
   /// Optional.
-  core.String maximumLifetime;
+  core.String? maximumLifetime;
 
   /// All Certificates issued by the CertificateAuthority will use the provided
   /// configuration values, overwriting any requested configuration values.
   ///
   /// Optional.
-  ReusableConfigWrapper overwriteConfigValues;
+  ReusableConfigWrapper? overwriteConfigValues;
 
   CertificateAuthorityPolicy();
 
@@ -2948,21 +2826,21 @@ class CertificateAuthorityPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedCommonNames != null)
-          'allowedCommonNames': allowedCommonNames,
+          'allowedCommonNames': allowedCommonNames!,
         if (allowedConfigList != null)
-          'allowedConfigList': allowedConfigList.toJson(),
+          'allowedConfigList': allowedConfigList!.toJson(),
         if (allowedIssuanceModes != null)
-          'allowedIssuanceModes': allowedIssuanceModes.toJson(),
+          'allowedIssuanceModes': allowedIssuanceModes!.toJson(),
         if (allowedLocationsAndOrganizations != null)
-          'allowedLocationsAndOrganizations': allowedLocationsAndOrganizations
+          'allowedLocationsAndOrganizations': allowedLocationsAndOrganizations!
               .map((value) => value.toJson())
               .toList(),
-        if (allowedSans != null) 'allowedSans': allowedSans.toJson(),
-        if (maximumLifetime != null) 'maximumLifetime': maximumLifetime,
+        if (allowedSans != null) 'allowedSans': allowedSans!.toJson(),
+        if (maximumLifetime != null) 'maximumLifetime': maximumLifetime!,
         if (overwriteConfigValues != null)
-          'overwriteConfigValues': overwriteConfigValues.toJson(),
+          'overwriteConfigValues': overwriteConfigValues!.toJson(),
       };
 }
 
@@ -2975,19 +2853,19 @@ class CertificateConfig {
   /// creating a self-signed CertificateAuthority or CertificateAuthority CSR.
   ///
   /// Optional.
-  PublicKey publicKey;
+  PublicKey? publicKey;
 
   /// Describes how some of the technical fields in a certificate should be
   /// populated.
   ///
   /// Required.
-  ReusableConfigWrapper reusableConfig;
+  ReusableConfigWrapper? reusableConfig;
 
   /// Specifies some of the values in a certificate that are related to the
   /// subject.
   ///
   /// Required.
-  SubjectConfig subjectConfig;
+  SubjectConfig? subjectConfig;
 
   CertificateConfig();
 
@@ -3006,10 +2884,10 @@ class CertificateConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (publicKey != null) 'publicKey': publicKey.toJson(),
-        if (reusableConfig != null) 'reusableConfig': reusableConfig.toJson(),
-        if (subjectConfig != null) 'subjectConfig': subjectConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (publicKey != null) 'publicKey': publicKey!.toJson(),
+        if (reusableConfig != null) 'reusableConfig': reusableConfig!.toJson(),
+        if (subjectConfig != null) 'subjectConfig': subjectConfig!.toJson(),
       };
 }
 
@@ -3018,33 +2896,33 @@ class CertificateConfig {
 class CertificateDescription {
   /// Describes lists of issuer CA certificate URLs that appear in the
   /// "Authority Information Access" extension in the certificate.
-  core.List<core.String> aiaIssuingCertificateUrls;
+  core.List<core.String>? aiaIssuingCertificateUrls;
 
   /// Identifies the subject_key_id of the parent certificate, per
   /// https://tools.ietf.org/html/rfc5280#section-4.2.1.1
-  KeyId authorityKeyId;
+  KeyId? authorityKeyId;
 
   /// The hash of the x.509 certificate.
-  CertificateFingerprint certFingerprint;
+  CertificateFingerprint? certFingerprint;
 
   /// Describes some of the technical fields in a certificate.
-  ReusableConfigValues configValues;
+  ReusableConfigValues? configValues;
 
   /// Describes a list of locations to obtain CRL information, i.e. the
   /// DistributionPoint.fullName described by
   /// https://tools.ietf.org/html/rfc5280#section-4.2.1.13
-  core.List<core.String> crlDistributionPoints;
+  core.List<core.String>? crlDistributionPoints;
 
   /// The public key that corresponds to an issued certificate.
-  PublicKey publicKey;
+  PublicKey? publicKey;
 
   /// Describes some of the values in a certificate that are related to the
   /// subject and lifetime.
-  SubjectDescription subjectDescription;
+  SubjectDescription? subjectDescription;
 
   /// Provides a means of identifiying certificates that contain a particular
   /// public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
-  KeyId subjectKeyId;
+  KeyId? subjectKeyId;
 
   CertificateDescription();
 
@@ -3086,26 +2964,26 @@ class CertificateDescription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (aiaIssuingCertificateUrls != null)
-          'aiaIssuingCertificateUrls': aiaIssuingCertificateUrls,
-        if (authorityKeyId != null) 'authorityKeyId': authorityKeyId.toJson(),
+          'aiaIssuingCertificateUrls': aiaIssuingCertificateUrls!,
+        if (authorityKeyId != null) 'authorityKeyId': authorityKeyId!.toJson(),
         if (certFingerprint != null)
-          'certFingerprint': certFingerprint.toJson(),
-        if (configValues != null) 'configValues': configValues.toJson(),
+          'certFingerprint': certFingerprint!.toJson(),
+        if (configValues != null) 'configValues': configValues!.toJson(),
         if (crlDistributionPoints != null)
-          'crlDistributionPoints': crlDistributionPoints,
-        if (publicKey != null) 'publicKey': publicKey.toJson(),
+          'crlDistributionPoints': crlDistributionPoints!,
+        if (publicKey != null) 'publicKey': publicKey!.toJson(),
         if (subjectDescription != null)
-          'subjectDescription': subjectDescription.toJson(),
-        if (subjectKeyId != null) 'subjectKeyId': subjectKeyId.toJson(),
+          'subjectDescription': subjectDescription!.toJson(),
+        if (subjectKeyId != null) 'subjectKeyId': subjectKeyId!.toJson(),
       };
 }
 
 /// A group of fingerprints for the x509 certificate.
 class CertificateFingerprint {
   /// The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
-  core.String sha256Hash;
+  core.String? sha256Hash;
 
   CertificateFingerprint();
 
@@ -3115,8 +2993,8 @@ class CertificateFingerprint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sha256Hash != null) 'sha256Hash': sha256Hash,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sha256Hash != null) 'sha256Hash': sha256Hash!,
       };
 }
 
@@ -3129,39 +3007,39 @@ class CertificateRevocationList {
   /// The location where 'pem_crl' can be accessed.
   ///
   /// Output only.
-  core.String accessUrl;
+  core.String? accessUrl;
 
   /// The time at which this CertificateRevocationList was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Labels with user-defined metadata.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The resource path for this CertificateRevocationList in the format
   /// `projects / * /locations / * /certificateAuthorities / * /
   /// certificateRevocationLists / * `.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The PEM-encoded X.509 CRL.
   ///
   /// Output only.
-  core.String pemCrl;
+  core.String? pemCrl;
 
   /// The revoked serial numbers that appear in pem_crl.
   ///
   /// Output only.
-  core.List<RevokedCertificate> revokedCertificates;
+  core.List<RevokedCertificate>? revokedCertificates;
 
   /// The CRL sequence number that appears in pem_crl.
   ///
   /// Output only.
-  core.String sequenceNumber;
+  core.String? sequenceNumber;
 
   /// The State for this CertificateRevocationList.
   ///
@@ -3170,12 +3048,12 @@ class CertificateRevocationList {
   /// - "STATE_UNSPECIFIED" : Not specified.
   /// - "ACTIVE" : The CertificateRevocationList is up to date.
   /// - "SUPERSEDED" : The CertificateRevocationList is no longer current.
-  core.String state;
+  core.String? state;
 
   /// The time at which this CertificateRevocationList was updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   CertificateRevocationList();
 
@@ -3218,18 +3096,18 @@ class CertificateRevocationList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessUrl != null) 'accessUrl': accessUrl,
-        if (createTime != null) 'createTime': createTime,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (pemCrl != null) 'pemCrl': pemCrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessUrl != null) 'accessUrl': accessUrl!,
+        if (createTime != null) 'createTime': createTime!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (pemCrl != null) 'pemCrl': pemCrl!,
         if (revokedCertificates != null)
           'revokedCertificates':
-              revokedCertificates.map((value) => value.toJson()).toList(),
-        if (sequenceNumber != null) 'sequenceNumber': sequenceNumber,
-        if (state != null) 'state': state,
-        if (updateTime != null) 'updateTime': updateTime,
+              revokedCertificates!.map((value) => value.toJson()).toList(),
+        if (sequenceNumber != null) 'sequenceNumber': sequenceNumber!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3249,7 +3127,7 @@ class DisableCertificateAuthorityRequest {
   /// supported (00000000-0000-0000-0000-000000000000).
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   DisableCertificateAuthorityRequest();
 
@@ -3259,8 +3137,8 @@ class DisableCertificateAuthorityRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -3278,7 +3156,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for CertificateAuthorityService.EnableCertificateAuthority.
@@ -3297,7 +3175,7 @@ class EnableCertificateAuthorityRequest {
   /// supported (00000000-0000-0000-0000-000000000000).
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   EnableCertificateAuthorityRequest();
 
@@ -3307,8 +3185,8 @@ class EnableCertificateAuthorityRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -3331,15 +3209,15 @@ class Exemplar {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> attachments;
+  core.List<core.Map<core.String, core.Object>>? attachments;
 
   /// The observation (sampling) time of the above value.
-  core.String timestamp;
+  core.String? timestamp;
 
   /// Value of the exemplar point.
   ///
   /// This value determines to which bucket the exemplar belongs.
-  core.double value;
+  core.double? value;
 
   Exemplar();
 
@@ -3363,10 +3241,10 @@ class Exemplar {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attachments != null) 'attachments': attachments,
-        if (timestamp != null) 'timestamp': timestamp,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attachments != null) 'attachments': attachments!,
+        if (timestamp != null) 'timestamp': timestamp!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -3395,24 +3273,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -3431,11 +3309,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -3446,34 +3324,34 @@ class ExtendedKeyUsageOptions {
   ///
   /// Officially described as "TLS WWW client authentication", though regularly
   /// used for non-WWW TLS.
-  core.bool clientAuth;
+  core.bool? clientAuth;
 
   /// Corresponds to OID 1.3.6.1.5.5.7.3.3.
   ///
   /// Officially described as "Signing of downloadable executable code client
   /// authentication".
-  core.bool codeSigning;
+  core.bool? codeSigning;
 
   /// Corresponds to OID 1.3.6.1.5.5.7.3.4.
   ///
   /// Officially described as "Email protection".
-  core.bool emailProtection;
+  core.bool? emailProtection;
 
   /// Corresponds to OID 1.3.6.1.5.5.7.3.9.
   ///
   /// Officially described as "Signing OCSP responses".
-  core.bool ocspSigning;
+  core.bool? ocspSigning;
 
   /// Corresponds to OID 1.3.6.1.5.5.7.3.1.
   ///
   /// Officially described as "TLS WWW server authentication", though regularly
   /// used for non-WWW TLS.
-  core.bool serverAuth;
+  core.bool? serverAuth;
 
   /// Corresponds to OID 1.3.6.1.5.5.7.3.8.
   ///
   /// Officially described as "Binding the hash of an object to a time".
-  core.bool timeStamping;
+  core.bool? timeStamping;
 
   ExtendedKeyUsageOptions();
 
@@ -3498,13 +3376,13 @@ class ExtendedKeyUsageOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientAuth != null) 'clientAuth': clientAuth,
-        if (codeSigning != null) 'codeSigning': codeSigning,
-        if (emailProtection != null) 'emailProtection': emailProtection,
-        if (ocspSigning != null) 'ocspSigning': ocspSigning,
-        if (serverAuth != null) 'serverAuth': serverAuth,
-        if (timeStamping != null) 'timeStamping': timeStamping,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientAuth != null) 'clientAuth': clientAuth!,
+        if (codeSigning != null) 'codeSigning': codeSigning!,
+        if (emailProtection != null) 'emailProtection': emailProtection!,
+        if (ocspSigning != null) 'ocspSigning': ocspSigning!,
+        if (serverAuth != null) 'serverAuth': serverAuth!,
+        if (timeStamping != null) 'timeStamping': timeStamping!,
       };
 }
 
@@ -3514,7 +3392,7 @@ class FetchCertificateAuthorityCsrResponse {
   /// The PEM-encoded signed certificate signing request (CSR).
   ///
   /// Output only.
-  core.String pemCsr;
+  core.String? pemCsr;
 
   FetchCertificateAuthorityCsrResponse();
 
@@ -3524,21 +3402,21 @@ class FetchCertificateAuthorityCsrResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pemCsr != null) 'pemCsr': pemCsr,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pemCsr != null) 'pemCsr': pemCsr!,
       };
 }
 
 /// The allowed types for \[VALUE\] in a `[KEY]:[VALUE]` attribute.
 class GoogleApiServicecontrolV1AttributeValue {
   /// A Boolean value represented by `true` or `false`.
-  core.bool boolValue;
+  core.bool? boolValue;
 
   /// A 64-bit signed integer.
-  core.String intValue;
+  core.String? intValue;
 
   /// A string up to 256 bytes long.
-  GoogleApiServicecontrolV1TruncatableString stringValue;
+  GoogleApiServicecontrolV1TruncatableString? stringValue;
 
   GoogleApiServicecontrolV1AttributeValue();
 
@@ -3555,10 +3433,10 @@ class GoogleApiServicecontrolV1AttributeValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue,
-        if (intValue != null) 'intValue': intValue,
-        if (stringValue != null) 'stringValue': stringValue.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (intValue != null) 'intValue': intValue!,
+        if (stringValue != null) 'stringValue': stringValue!.toJson(),
       };
 }
 
@@ -3571,39 +3449,40 @@ class GoogleApiServicecontrolV1Attributes {
   /// `true` and `false`. For example: "/instance_id": "my-instance"
   /// "/http/user_agent": "" "/http/request_bytes": 300 "abc.com/myattribute":
   /// true
-  core.Map<core.String, GoogleApiServicecontrolV1AttributeValue> attributeMap;
+  core.Map<core.String, GoogleApiServicecontrolV1AttributeValue>? attributeMap;
 
   /// The number of attributes that were discarded.
   ///
   /// Attributes can be discarded because their keys are too long or because
   /// there are too many attributes. If this value is 0 then all attributes are
   /// valid.
-  core.int droppedAttributesCount;
+  core.int? droppedAttributesCount;
 
   GoogleApiServicecontrolV1Attributes();
 
   GoogleApiServicecontrolV1Attributes.fromJson(core.Map _json) {
     if (_json.containsKey('attributeMap')) {
-      attributeMap =
-          (_json['attributeMap'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  GoogleApiServicecontrolV1AttributeValue.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      attributeMap = (_json['attributeMap'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              GoogleApiServicecontrolV1AttributeValue.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('droppedAttributesCount')) {
       droppedAttributesCount = _json['droppedAttributesCount'] as core.int;
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (attributeMap != null)
-          'attributeMap': attributeMap
+          'attributeMap': attributeMap!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (droppedAttributesCount != null)
-          'droppedAttributesCount': droppedAttributesCount,
+          'droppedAttributesCount': droppedAttributesCount!,
       };
 }
 
@@ -3625,48 +3504,48 @@ class GoogleApiServicecontrolV1Distribution {
   /// number of samples in the overflow bucket. See the comments of
   /// \`bucket_option\` below for more details. Any suffix of trailing zeros may
   /// be omitted.
-  core.List<core.String> bucketCounts;
+  core.List<core.String>? bucketCounts;
 
   /// The total number of samples in the distribution.
   ///
   /// Must be >= 0.
-  core.String count;
+  core.String? count;
 
   /// Example points.
   ///
   /// Must be in increasing order of `value` field.
-  core.List<Exemplar> exemplars;
+  core.List<Exemplar>? exemplars;
 
   /// Buckets with arbitrary user-provided width.
-  GoogleApiServicecontrolV1ExplicitBuckets explicitBuckets;
+  GoogleApiServicecontrolV1ExplicitBuckets? explicitBuckets;
 
   /// Buckets with exponentially growing width.
-  GoogleApiServicecontrolV1ExponentialBuckets exponentialBuckets;
+  GoogleApiServicecontrolV1ExponentialBuckets? exponentialBuckets;
 
   /// Buckets with constant width.
-  GoogleApiServicecontrolV1LinearBuckets linearBuckets;
+  GoogleApiServicecontrolV1LinearBuckets? linearBuckets;
 
   /// The maximum of the population of values.
   ///
   /// Ignored if `count` is zero.
-  core.double maximum;
+  core.double? maximum;
 
   /// The arithmetic mean of the samples in the distribution.
   ///
   /// If `count` is zero then this field must be zero.
-  core.double mean;
+  core.double? mean;
 
   /// The minimum of the population of values.
   ///
   /// Ignored if `count` is zero.
-  core.double minimum;
+  core.double? minimum;
 
   /// The sum of squared deviations from the mean: Sum\[i=1..count\]((x_i -
   /// mean)^2) where each x_i is a sample values.
   ///
   /// If `count` is zero then this field must be zero, otherwise validation of
   /// the request fails.
-  core.double sumOfSquaredDeviation;
+  core.double? sumOfSquaredDeviation;
 
   GoogleApiServicecontrolV1Distribution();
 
@@ -3712,21 +3591,21 @@ class GoogleApiServicecontrolV1Distribution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bucketCounts != null) 'bucketCounts': bucketCounts,
-        if (count != null) 'count': count,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bucketCounts != null) 'bucketCounts': bucketCounts!,
+        if (count != null) 'count': count!,
         if (exemplars != null)
-          'exemplars': exemplars.map((value) => value.toJson()).toList(),
+          'exemplars': exemplars!.map((value) => value.toJson()).toList(),
         if (explicitBuckets != null)
-          'explicitBuckets': explicitBuckets.toJson(),
+          'explicitBuckets': explicitBuckets!.toJson(),
         if (exponentialBuckets != null)
-          'exponentialBuckets': exponentialBuckets.toJson(),
-        if (linearBuckets != null) 'linearBuckets': linearBuckets.toJson(),
-        if (maximum != null) 'maximum': maximum,
-        if (mean != null) 'mean': mean,
-        if (minimum != null) 'minimum': minimum,
+          'exponentialBuckets': exponentialBuckets!.toJson(),
+        if (linearBuckets != null) 'linearBuckets': linearBuckets!.toJson(),
+        if (maximum != null) 'maximum': maximum!,
+        if (mean != null) 'mean': mean!,
+        if (minimum != null) 'minimum': minimum!,
         if (sumOfSquaredDeviation != null)
-          'sumOfSquaredDeviation': sumOfSquaredDeviation,
+          'sumOfSquaredDeviation': sumOfSquaredDeviation!,
       };
 }
 
@@ -3743,7 +3622,7 @@ class GoogleApiServicecontrolV1ExplicitBuckets {
   /// number lower bound upper bound i == 0 (underflow) -inf bound\[i\] 0 < i <
   /// bound_size() bound\[i-1\] bound\[i\] i == bound_size() (overflow)
   /// bound\[i-1\] +inf
-  core.List<core.double> bounds;
+  core.List<core.double>? bounds;
 
   GoogleApiServicecontrolV1ExplicitBuckets();
 
@@ -3755,8 +3634,8 @@ class GoogleApiServicecontrolV1ExplicitBuckets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bounds != null) 'bounds': bounds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bounds != null) 'bounds': bounds!,
       };
 }
 
@@ -3767,20 +3646,20 @@ class GoogleApiServicecontrolV1ExponentialBuckets {
   /// num_finite_buckets inclusive.
   ///
   /// Must be larger than 1.0.
-  core.double growthFactor;
+  core.double? growthFactor;
 
   /// The number of finite buckets.
   ///
   /// With the underflow and overflow buckets, the total number of buckets is
   /// `num_finite_buckets` + 2. See comments on `bucket_options` for details.
-  core.int numFiniteBuckets;
+  core.int? numFiniteBuckets;
 
   /// The i'th exponential bucket covers the interval \[scale *
   /// growth_factor^(i-1), scale * growth_factor^i) where i ranges from 1 to
   /// num_finite_buckets inclusive.
   ///
   /// Must be > 0.
-  core.double scale;
+  core.double? scale;
 
   GoogleApiServicecontrolV1ExponentialBuckets();
 
@@ -3796,10 +3675,10 @@ class GoogleApiServicecontrolV1ExponentialBuckets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (growthFactor != null) 'growthFactor': growthFactor,
-        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets,
-        if (scale != null) 'scale': scale,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (growthFactor != null) 'growthFactor': growthFactor!,
+        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
+        if (scale != null) 'scale': scale!,
       };
 }
 
@@ -3811,72 +3690,72 @@ class GoogleApiServicecontrolV1HttpRequest {
   /// The number of HTTP response bytes inserted into cache.
   ///
   /// Set only when a cache fill was attempted.
-  core.String cacheFillBytes;
+  core.String? cacheFillBytes;
 
   /// Whether or not an entity was served from cache (with or without
   /// validation).
-  core.bool cacheHit;
+  core.bool? cacheHit;
 
   /// Whether or not a cache lookup was attempted.
-  core.bool cacheLookup;
+  core.bool? cacheLookup;
 
   /// Whether or not the response was validated with the origin server before
   /// being served from cache.
   ///
   /// This field is only meaningful if `cache_hit` is True.
-  core.bool cacheValidatedWithOriginServer;
+  core.bool? cacheValidatedWithOriginServer;
 
   /// The request processing latency on the server, from the time the request
   /// was received until the response was sent.
-  core.String latency;
+  core.String? latency;
 
   /// Protocol used for the request.
   ///
   /// Examples: "HTTP/1.1", "HTTP/2", "websocket"
-  core.String protocol;
+  core.String? protocol;
 
   /// The referer URL of the request, as defined in
   /// [HTTP/1.1 Header Field Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
-  core.String referer;
+  core.String? referer;
 
   /// The IP address (IPv4 or IPv6) of the client that issued the HTTP request.
   ///
   /// Examples: `"192.168.1.1"`, `"FE80::0202:B3FF:FE1E:8329"`.
-  core.String remoteIp;
+  core.String? remoteIp;
 
   /// The request method.
   ///
   /// Examples: `"GET"`, `"HEAD"`, `"PUT"`, `"POST"`.
-  core.String requestMethod;
+  core.String? requestMethod;
 
   /// The size of the HTTP request message in bytes, including the request
   /// headers and the request body.
-  core.String requestSize;
+  core.String? requestSize;
 
   /// The scheme (http, https), the host name, the path, and the query portion
   /// of the URL that was requested.
   ///
   /// Example: `"http://example.com/some/info?color=red"`.
-  core.String requestUrl;
+  core.String? requestUrl;
 
   /// The size of the HTTP response message sent back to the client, in bytes,
   /// including the response headers and the response body.
-  core.String responseSize;
+  core.String? responseSize;
 
   /// The IP address (IPv4 or IPv6) of the origin server that the request was
   /// sent to.
-  core.String serverIp;
+  core.String? serverIp;
 
   /// The response code indicating the status of the response.
   ///
   /// Examples: 200, 404.
-  core.int status;
+  core.int? status;
 
   /// The user agent sent by the client.
   ///
   /// Example: `"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Q312461; .NET
   /// CLR 1.0.3705)"`.
-  core.String userAgent;
+  core.String? userAgent;
 
   GoogleApiServicecontrolV1HttpRequest();
 
@@ -3929,23 +3808,23 @@ class GoogleApiServicecontrolV1HttpRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cacheFillBytes != null) 'cacheFillBytes': cacheFillBytes,
-        if (cacheHit != null) 'cacheHit': cacheHit,
-        if (cacheLookup != null) 'cacheLookup': cacheLookup,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cacheFillBytes != null) 'cacheFillBytes': cacheFillBytes!,
+        if (cacheHit != null) 'cacheHit': cacheHit!,
+        if (cacheLookup != null) 'cacheLookup': cacheLookup!,
         if (cacheValidatedWithOriginServer != null)
-          'cacheValidatedWithOriginServer': cacheValidatedWithOriginServer,
-        if (latency != null) 'latency': latency,
-        if (protocol != null) 'protocol': protocol,
-        if (referer != null) 'referer': referer,
-        if (remoteIp != null) 'remoteIp': remoteIp,
-        if (requestMethod != null) 'requestMethod': requestMethod,
-        if (requestSize != null) 'requestSize': requestSize,
-        if (requestUrl != null) 'requestUrl': requestUrl,
-        if (responseSize != null) 'responseSize': responseSize,
-        if (serverIp != null) 'serverIp': serverIp,
-        if (status != null) 'status': status,
-        if (userAgent != null) 'userAgent': userAgent,
+          'cacheValidatedWithOriginServer': cacheValidatedWithOriginServer!,
+        if (latency != null) 'latency': latency!,
+        if (protocol != null) 'protocol': protocol!,
+        if (referer != null) 'referer': referer!,
+        if (remoteIp != null) 'remoteIp': remoteIp!,
+        if (requestMethod != null) 'requestMethod': requestMethod!,
+        if (requestSize != null) 'requestSize': requestSize!,
+        if (requestUrl != null) 'requestUrl': requestUrl!,
+        if (responseSize != null) 'responseSize': responseSize!,
+        if (serverIp != null) 'serverIp': serverIp!,
+        if (status != null) 'status': status!,
+        if (userAgent != null) 'userAgent': userAgent!,
       };
 }
 
@@ -3955,19 +3834,19 @@ class GoogleApiServicecontrolV1LinearBuckets {
   ///
   /// With the underflow and overflow buckets, the total number of buckets is
   /// `num_finite_buckets` + 2. See comments on `bucket_options` for details.
-  core.int numFiniteBuckets;
+  core.int? numFiniteBuckets;
 
   /// The i'th linear bucket covers the interval \[offset + (i-1) * width,
   /// offset + i * width) where i ranges from 1 to num_finite_buckets,
   /// inclusive.
-  core.double offset;
+  core.double? offset;
 
   /// The i'th linear bucket covers the interval \[offset + (i-1) * width,
   /// offset + i * width) where i ranges from 1 to num_finite_buckets,
   /// inclusive.
   ///
   /// Must be strictly positive.
-  core.double width;
+  core.double? width;
 
   GoogleApiServicecontrolV1LinearBuckets();
 
@@ -3983,10 +3862,10 @@ class GoogleApiServicecontrolV1LinearBuckets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets,
-        if (offset != null) 'offset': offset,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
+        if (offset != null) 'offset': offset!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -3996,29 +3875,29 @@ class GoogleApiServicecontrolV1LogEntry {
   /// applicable.
   ///
   /// Optional.
-  GoogleApiServicecontrolV1HttpRequest httpRequest;
+  GoogleApiServicecontrolV1HttpRequest? httpRequest;
 
   /// A unique ID for the log entry used for deduplication.
   ///
   /// If omitted, the implementation will generate one based on operation_id.
-  core.String insertId;
+  core.String? insertId;
 
   /// A set of user-defined (key, value) data that provides additional
   /// information about the log entry.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The log to which this log entry belongs.
   ///
   /// Examples: `"syslog"`, `"book_log"`.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Information about an operation associated with the log entry, if
   /// applicable.
   ///
   /// Optional.
-  GoogleApiServicecontrolV1LogEntryOperation operation;
+  GoogleApiServicecontrolV1LogEntryOperation? operation;
 
   /// The log entry payload, represented as a protocol buffer that is expressed
   /// as a JSON object.
@@ -4027,7 +3906,7 @@ class GoogleApiServicecontrolV1LogEntry {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> protoPayload;
+  core.Map<core.String, core.Object>? protoPayload;
 
   /// The severity of the log entry.
   ///
@@ -4045,27 +3924,27 @@ class GoogleApiServicecontrolV1LogEntry {
   /// outages.
   /// - "ALERT" : (700) A person must take an action immediately.
   /// - "EMERGENCY" : (800) One or more systems are unusable.
-  core.String severity;
+  core.String? severity;
 
   /// Source code location information associated with the log entry, if any.
   ///
   /// Optional.
-  GoogleApiServicecontrolV1LogEntrySourceLocation sourceLocation;
+  GoogleApiServicecontrolV1LogEntrySourceLocation? sourceLocation;
 
   /// The log entry payload, represented as a structure that is expressed as a
   /// JSON object.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> structPayload;
+  core.Map<core.String, core.Object>? structPayload;
 
   /// The log entry payload, represented as a Unicode string (UTF-8).
-  core.String textPayload;
+  core.String? textPayload;
 
   /// The time the event described by the log entry occurred.
   ///
   /// If omitted, defaults to operation start time.
-  core.String timestamp;
+  core.String? timestamp;
 
   /// Resource name of the trace associated with the log entry, if any.
   ///
@@ -4074,7 +3953,7 @@ class GoogleApiServicecontrolV1LogEntry {
   /// `projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824`
   ///
   /// Optional.
-  core.String trace;
+  core.String? trace;
 
   GoogleApiServicecontrolV1LogEntry();
 
@@ -4140,19 +4019,19 @@ class GoogleApiServicecontrolV1LogEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (httpRequest != null) 'httpRequest': httpRequest.toJson(),
-        if (insertId != null) 'insertId': insertId,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (operation != null) 'operation': operation.toJson(),
-        if (protoPayload != null) 'protoPayload': protoPayload,
-        if (severity != null) 'severity': severity,
-        if (sourceLocation != null) 'sourceLocation': sourceLocation.toJson(),
-        if (structPayload != null) 'structPayload': structPayload,
-        if (textPayload != null) 'textPayload': textPayload,
-        if (timestamp != null) 'timestamp': timestamp,
-        if (trace != null) 'trace': trace,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (httpRequest != null) 'httpRequest': httpRequest!.toJson(),
+        if (insertId != null) 'insertId': insertId!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (operation != null) 'operation': operation!.toJson(),
+        if (protoPayload != null) 'protoPayload': protoPayload!,
+        if (severity != null) 'severity': severity!,
+        if (sourceLocation != null) 'sourceLocation': sourceLocation!.toJson(),
+        if (structPayload != null) 'structPayload': structPayload!,
+        if (textPayload != null) 'textPayload': textPayload!,
+        if (timestamp != null) 'timestamp': timestamp!,
+        if (trace != null) 'trace': trace!,
       };
 }
 
@@ -4162,7 +4041,7 @@ class GoogleApiServicecontrolV1LogEntryOperation {
   /// Set this to True if this is the first log entry in the operation.
   ///
   /// Optional.
-  core.bool first;
+  core.bool? first;
 
   /// An arbitrary operation identifier.
   ///
@@ -4170,12 +4049,12 @@ class GoogleApiServicecontrolV1LogEntryOperation {
   /// operation.
   ///
   /// Optional.
-  core.String id;
+  core.String? id;
 
   /// Set this to True if this is the last log entry in the operation.
   ///
   /// Optional.
-  core.bool last;
+  core.bool? last;
 
   /// An arbitrary producer identifier.
   ///
@@ -4184,7 +4063,7 @@ class GoogleApiServicecontrolV1LogEntryOperation {
   /// `"github.com/MyProject/MyApplication"`.
   ///
   /// Optional.
-  core.String producer;
+  core.String? producer;
 
   GoogleApiServicecontrolV1LogEntryOperation();
 
@@ -4203,11 +4082,11 @@ class GoogleApiServicecontrolV1LogEntryOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (first != null) 'first': first,
-        if (id != null) 'id': id,
-        if (last != null) 'last': last,
-        if (producer != null) 'producer': producer,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (first != null) 'first': first!,
+        if (id != null) 'id': id!,
+        if (last != null) 'last': last!,
+        if (producer != null) 'producer': producer!,
       };
 }
 
@@ -4220,7 +4099,7 @@ class GoogleApiServicecontrolV1LogEntrySourceLocation {
   /// fully-qualified name.
   ///
   /// Optional.
-  core.String file;
+  core.String? file;
 
   /// Human-readable name of the function or method being invoked, with optional
   /// context such as the class or package name.
@@ -4231,14 +4110,14 @@ class GoogleApiServicecontrolV1LogEntrySourceLocation {
   /// `function` (Python).
   ///
   /// Optional.
-  core.String function;
+  core.String? function;
 
   /// Line within the source file.
   ///
   /// 1-based; 0 indicates no line number available.
   ///
   /// Optional.
-  core.String line;
+  core.String? line;
 
   GoogleApiServicecontrolV1LogEntrySourceLocation();
 
@@ -4254,43 +4133,43 @@ class GoogleApiServicecontrolV1LogEntrySourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (file != null) 'file': file,
-        if (function != null) 'function': function,
-        if (line != null) 'line': line,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (file != null) 'file': file!,
+        if (function != null) 'function': function!,
+        if (line != null) 'line': line!,
       };
 }
 
 /// Represents a single metric value.
 class GoogleApiServicecontrolV1MetricValue {
   /// A boolean value.
-  core.bool boolValue;
+  core.bool? boolValue;
 
   /// A distribution value.
-  GoogleApiServicecontrolV1Distribution distributionValue;
+  GoogleApiServicecontrolV1Distribution? distributionValue;
 
   /// A double precision floating point value.
-  core.double doubleValue;
+  core.double? doubleValue;
 
   /// The end of the time period over which this metric value's measurement
   /// applies.
   ///
   /// If not specified, google.api.servicecontrol.v1.Operation.end_time will be
   /// used.
-  core.String endTime;
+  core.String? endTime;
 
   /// A signed 64-bit integer value.
-  core.String int64Value;
+  core.String? int64Value;
 
   /// The labels describing the metric value.
   ///
   /// See comments on google.api.servicecontrol.v1.Operation.labels for the
   /// overriding relationship. Note that this map must not contain monitored
   /// resource labels.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// A money value.
-  Money moneyValue;
+  Money? moneyValue;
 
   /// The start of the time period over which this metric value's measurement
   /// applies.
@@ -4299,10 +4178,10 @@ class GoogleApiServicecontrolV1MetricValue {
   /// (cumulative, delta, and gauge). See the metric definition documentation in
   /// the service configuration for details. If not specified,
   /// google.api.servicecontrol.v1.Operation.start_time will be used.
-  core.String startTime;
+  core.String? startTime;
 
   /// A text string value.
-  core.String stringValue;
+  core.String? stringValue;
 
   GoogleApiServicecontrolV1MetricValue();
 
@@ -4344,17 +4223,17 @@ class GoogleApiServicecontrolV1MetricValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
         if (distributionValue != null)
-          'distributionValue': distributionValue.toJson(),
-        if (doubleValue != null) 'doubleValue': doubleValue,
-        if (endTime != null) 'endTime': endTime,
-        if (int64Value != null) 'int64Value': int64Value,
-        if (labels != null) 'labels': labels,
-        if (moneyValue != null) 'moneyValue': moneyValue.toJson(),
-        if (startTime != null) 'startTime': startTime,
-        if (stringValue != null) 'stringValue': stringValue,
+          'distributionValue': distributionValue!.toJson(),
+        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (endTime != null) 'endTime': endTime!,
+        if (int64Value != null) 'int64Value': int64Value!,
+        if (labels != null) 'labels': labels!,
+        if (moneyValue != null) 'moneyValue': moneyValue!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
+        if (stringValue != null) 'stringValue': stringValue!,
       };
 }
 
@@ -4364,10 +4243,10 @@ class GoogleApiServicecontrolV1MetricValue {
 /// end time, and label values.
 class GoogleApiServicecontrolV1MetricValueSet {
   /// The metric name defined in the service configuration.
-  core.String metricName;
+  core.String? metricName;
 
   /// The values in this metric.
-  core.List<GoogleApiServicecontrolV1MetricValue> metricValues;
+  core.List<GoogleApiServicecontrolV1MetricValue>? metricValues;
 
   GoogleApiServicecontrolV1MetricValueSet();
 
@@ -4384,10 +4263,10 @@ class GoogleApiServicecontrolV1MetricValueSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metricName != null) 'metricName': metricName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metricName != null) 'metricName': metricName!,
         if (metricValues != null)
-          'metricValues': metricValues.map((value) => value.toJson()).toList(),
+          'metricValues': metricValues!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4401,19 +4280,19 @@ class GoogleApiServicecontrolV1Operation {
   /// project:PROJECT_ID, - project`_`number:PROJECT_NUMBER, -
   /// projects/PROJECT_ID or PROJECT_NUMBER, - folders/FOLDER_NUMBER, -
   /// organizations/ORGANIZATION_NUMBER, - api`_`key:API_KEY.
-  core.String consumerId;
+  core.String? consumerId;
 
   /// End time of the operation.
   ///
   /// Required when the operation is used in ServiceController.Report, but
   /// optional when the operation is used in ServiceController.Check.
-  core.String endTime;
+  core.String? endTime;
 
   /// Unimplemented.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> extensions;
+  core.List<core.Map<core.String, core.Object>>? extensions;
 
   /// DO NOT USE.
   ///
@@ -4428,7 +4307,7 @@ class GoogleApiServicecontrolV1Operation {
   /// additional validation logic. It should only be used during the onboarding
   /// process. It is only available to Google internal services, and the service
   /// must be approved by chemist-dev@google.com in order to use this level.
-  core.String importance;
+  core.String? importance;
 
   /// Labels describing the operation.
   ///
@@ -4443,10 +4322,10 @@ class GoogleApiServicecontrolV1Operation {
   /// to handle the API request (e.g. ESP), -
   /// `servicecontrol.googleapis.com/platform` describing the platform where the
   /// API is served, such as App Engine, Compute Engine, or Kubernetes Engine.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Represents information to be logged.
-  core.List<GoogleApiServicecontrolV1LogEntry> logEntries;
+  core.List<GoogleApiServicecontrolV1LogEntry>? logEntries;
 
   /// Represents information about this operation.
   ///
@@ -4457,7 +4336,7 @@ class GoogleApiServicecontrolV1Operation {
   /// that have the same metric names and identical label value combinations. If
   /// a request has such duplicated MetricValue instances, the entire request is
   /// rejected with an invalid argument error.
-  core.List<GoogleApiServicecontrolV1MetricValueSet> metricValueSets;
+  core.List<GoogleApiServicecontrolV1MetricValueSet>? metricValueSets;
 
   /// Identity of the operation.
   ///
@@ -4468,28 +4347,28 @@ class GoogleApiServicecontrolV1Operation {
   /// computed from existing information and an idempotent id is desirable for
   /// deduplication purpose, UUID version 5 is recommended. See RFC 4122 for
   /// details.
-  core.String operationId;
+  core.String? operationId;
 
   /// Fully qualified name of the operation.
   ///
   /// Reserved for future use.
-  core.String operationName;
+  core.String? operationName;
 
   /// Represents the properties needed for quota check.
   ///
   /// Applicable only if this operation is for a quota check request. If this is
   /// not specified, no quota check will be performed.
-  GoogleApiServicecontrolV1QuotaProperties quotaProperties;
+  GoogleApiServicecontrolV1QuotaProperties? quotaProperties;
 
   /// The resources that are involved in the operation.
   ///
   /// The maximum supported number of entries in this field is 100.
-  core.List<GoogleApiServicecontrolV1ResourceInfo> resources;
+  core.List<GoogleApiServicecontrolV1ResourceInfo>? resources;
 
   /// Start time of the operation.
   ///
   /// Required.
-  core.String startTime;
+  core.String? startTime;
 
   /// A list of Cloud Trace spans.
   ///
@@ -4497,13 +4376,13 @@ class GoogleApiServicecontrolV1Operation {
   /// be either the produce or the consumer project.
   ///
   /// Unimplemented.
-  core.List<GoogleApiServicecontrolV1TraceSpan> traceSpans;
+  core.List<GoogleApiServicecontrolV1TraceSpan>? traceSpans;
 
   /// Private Preview.
   ///
   /// This feature is only available for approved services. User defined labels
   /// for the resource that this operation is associated with.
-  core.Map<core.String, core.String> userLabels;
+  core.Map<core.String, core.String>? userLabels;
 
   GoogleApiServicecontrolV1Operation();
 
@@ -4590,27 +4469,27 @@ class GoogleApiServicecontrolV1Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (consumerId != null) 'consumerId': consumerId,
-        if (endTime != null) 'endTime': endTime,
-        if (extensions != null) 'extensions': extensions,
-        if (importance != null) 'importance': importance,
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (consumerId != null) 'consumerId': consumerId!,
+        if (endTime != null) 'endTime': endTime!,
+        if (extensions != null) 'extensions': extensions!,
+        if (importance != null) 'importance': importance!,
+        if (labels != null) 'labels': labels!,
         if (logEntries != null)
-          'logEntries': logEntries.map((value) => value.toJson()).toList(),
+          'logEntries': logEntries!.map((value) => value.toJson()).toList(),
         if (metricValueSets != null)
           'metricValueSets':
-              metricValueSets.map((value) => value.toJson()).toList(),
-        if (operationId != null) 'operationId': operationId,
-        if (operationName != null) 'operationName': operationName,
+              metricValueSets!.map((value) => value.toJson()).toList(),
+        if (operationId != null) 'operationId': operationId!,
+        if (operationName != null) 'operationName': operationName!,
         if (quotaProperties != null)
-          'quotaProperties': quotaProperties.toJson(),
+          'quotaProperties': quotaProperties!.toJson(),
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
-        if (startTime != null) 'startTime': startTime,
+          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (startTime != null) 'startTime': startTime!,
         if (traceSpans != null)
-          'traceSpans': traceSpans.map((value) => value.toJson()).toList(),
-        if (userLabels != null) 'userLabels': userLabels,
+          'traceSpans': traceSpans!.map((value) => value.toJson()).toList(),
+        if (userLabels != null) 'userLabels': userLabels!,
       };
 }
 
@@ -4628,7 +4507,7 @@ class GoogleApiServicecontrolV1QuotaProperties {
   /// enough quota. No lock is placed on the checked tokens neither.
   /// - "RELEASE" : Increases available quota by the operation cost specified
   /// for the operation.
-  core.String quotaMode;
+  core.String? quotaMode;
 
   GoogleApiServicecontrolV1QuotaProperties();
 
@@ -4638,8 +4517,8 @@ class GoogleApiServicecontrolV1QuotaProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (quotaMode != null) 'quotaMode': quotaMode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (quotaMode != null) 'quotaMode': quotaMode!,
       };
 }
 
@@ -4653,21 +4532,21 @@ class GoogleApiServicecontrolV1ReportRequest {
   /// report. There is no limit on the number of operations in the same
   /// ReportRequest, however the ReportRequest size should be no larger than
   /// 1MB. See ReportResponse.report_errors for partial failure behavior.
-  core.List<GoogleApiServicecontrolV1Operation> operations;
+  core.List<GoogleApiServicecontrolV1Operation>? operations;
 
   /// Specifies which version of service config should be used to process the
   /// request.
   ///
   /// If unspecified or no matching version can be found, the latest one will be
   /// used.
-  core.String serviceConfigId;
+  core.String? serviceConfigId;
 
   /// The service name as specified in its service configuration.
   ///
   /// For example, `"pubsub.googleapis.com"`. See
   /// [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service)
   /// for the definition of a service name.
-  core.String serviceName;
+  core.String? serviceName;
 
   GoogleApiServicecontrolV1ReportRequest();
 
@@ -4687,11 +4566,11 @@ class GoogleApiServicecontrolV1ReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
-        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId,
-        if (serviceName != null) 'serviceName': serviceName,
+          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
+        if (serviceName != null) 'serviceName': serviceName!,
       };
 }
 
@@ -4701,19 +4580,19 @@ class GoogleApiServicecontrolV1ResourceInfo {
   ///
   /// Must be in one of the following formats: - `projects/` - `folders/` -
   /// `organizations/`
-  core.String resourceContainer;
+  core.String? resourceContainer;
 
   /// The location of the resource.
   ///
   /// If not empty, the resource will be checked against location policy. The
   /// value must be a valid zone, region or multiregion. For example:
   /// "europe-west4" or "northamerica-northeast1-a"
-  core.String resourceLocation;
+  core.String? resourceLocation;
 
   /// Name of the resource.
   ///
   /// This is used for auditing purposes.
-  core.String resourceName;
+  core.String? resourceName;
 
   GoogleApiServicecontrolV1ResourceInfo();
 
@@ -4729,10 +4608,10 @@ class GoogleApiServicecontrolV1ResourceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceContainer != null) 'resourceContainer': resourceContainer,
-        if (resourceLocation != null) 'resourceLocation': resourceLocation,
-        if (resourceName != null) 'resourceName': resourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceContainer != null) 'resourceContainer': resourceContainer!,
+        if (resourceLocation != null) 'resourceLocation': resourceLocation!,
+        if (resourceName != null) 'resourceName': resourceName!,
       };
 }
 
@@ -4747,13 +4626,13 @@ class GoogleApiServicecontrolV1TraceSpan {
   /// A set of attributes on the span.
   ///
   /// You can have up to 32 attributes per span.
-  GoogleApiServicecontrolV1Attributes attributes;
+  GoogleApiServicecontrolV1Attributes? attributes;
 
   /// An optional number of child spans that were generated while this span was
   /// active.
   ///
   /// If set, allows implementation to detect missing child spans.
-  core.int childSpanCount;
+  core.int? childSpanCount;
 
   /// A description of the span's operation (up to 128 bytes).
   ///
@@ -4762,14 +4641,14 @@ class GoogleApiServicecontrolV1TraceSpan {
   /// file name and a line number where the operation is called. A best practice
   /// is to use the same display name within an application and at the same call
   /// point. This makes it easier to correlate spans in different traces.
-  GoogleApiServicecontrolV1TruncatableString displayName;
+  GoogleApiServicecontrolV1TruncatableString? displayName;
 
   /// The end time of the span.
   ///
   /// On the client side, this is the time kept by the local machine where the
   /// span execution ends. On the server side, this is the time when the server
   /// application handler stops running.
-  core.String endTime;
+  core.String? endTime;
 
   /// The resource name of the span in the following format:
   /// projects/\[PROJECT_ID\]/traces/\[TRACE_ID\]/spans/SPAN_ID is a unique
@@ -4778,22 +4657,22 @@ class GoogleApiServicecontrolV1TraceSpan {
   ///
   /// \[SPAN_ID\] is a unique identifier for a span within a trace; it is a
   /// 16-character hexadecimal encoding of an 8-byte array.
-  core.String name;
+  core.String? name;
 
   /// The \[SPAN_ID\] of this span's parent span.
   ///
   /// If this is a root span, then this field must be empty.
-  core.String parentSpanId;
+  core.String? parentSpanId;
 
   /// (Optional) Set this parameter to indicate whether this span is in the same
   /// process as its parent.
   ///
   /// If you do not set this parameter, Stackdriver Trace is unable to take
   /// advantage of this helpful information.
-  core.bool sameProcessAsParentSpan;
+  core.bool? sameProcessAsParentSpan;
 
   /// The \[SPAN_ID\] portion of the span's resource name.
-  core.String spanId;
+  core.String? spanId;
 
   /// Distinguishes between spans generated in a particular context.
   ///
@@ -4815,17 +4694,17 @@ class GoogleApiServicecontrolV1TraceSpan {
   /// message from a broker. Unlike client and server, there is no direct
   /// critical path latency relationship between producer and consumer spans
   /// (e.g. receiving a message from a pubsub service subscription).
-  core.String spanKind;
+  core.String? spanKind;
 
   /// The start time of the span.
   ///
   /// On the client side, this is the time kept by the local machine where the
   /// span execution starts. On the server side, this is the time when the
   /// server's application handler starts running.
-  core.String startTime;
+  core.String? startTime;
 
   /// An optional final status for this span.
-  Status status;
+  Status? status;
 
   GoogleApiServicecontrolV1TraceSpan();
 
@@ -4868,19 +4747,19 @@ class GoogleApiServicecontrolV1TraceSpan {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributes != null) 'attributes': attributes.toJson(),
-        if (childSpanCount != null) 'childSpanCount': childSpanCount,
-        if (displayName != null) 'displayName': displayName.toJson(),
-        if (endTime != null) 'endTime': endTime,
-        if (name != null) 'name': name,
-        if (parentSpanId != null) 'parentSpanId': parentSpanId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributes != null) 'attributes': attributes!.toJson(),
+        if (childSpanCount != null) 'childSpanCount': childSpanCount!,
+        if (displayName != null) 'displayName': displayName!.toJson(),
+        if (endTime != null) 'endTime': endTime!,
+        if (name != null) 'name': name!,
+        if (parentSpanId != null) 'parentSpanId': parentSpanId!,
         if (sameProcessAsParentSpan != null)
-          'sameProcessAsParentSpan': sameProcessAsParentSpan,
-        if (spanId != null) 'spanId': spanId,
-        if (spanKind != null) 'spanKind': spanKind,
-        if (startTime != null) 'startTime': startTime,
-        if (status != null) 'status': status.toJson(),
+          'sameProcessAsParentSpan': sameProcessAsParentSpan!,
+        if (spanId != null) 'spanId': spanId!,
+        if (spanKind != null) 'spanKind': spanKind!,
+        if (startTime != null) 'startTime': startTime!,
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -4889,7 +4768,7 @@ class GoogleApiServicecontrolV1TruncatableString {
   /// The number of bytes removed from the original string.
   ///
   /// If this value is 0, then the string was not shortened.
-  core.int truncatedByteCount;
+  core.int? truncatedByteCount;
 
   /// The shortened string.
   ///
@@ -4898,7 +4777,7 @@ class GoogleApiServicecontrolV1TruncatableString {
   /// 500-byte string. Truncation always happens on a UTF8 character boundary.
   /// If there are multi-byte characters in the string, then the length of the
   /// shortened string might be less than the size limit.
-  core.String value;
+  core.String? value;
 
   GoogleApiServicecontrolV1TruncatableString();
 
@@ -4911,10 +4790,10 @@ class GoogleApiServicecontrolV1TruncatableString {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (truncatedByteCount != null)
-          'truncatedByteCount': truncatedByteCount,
-        if (value != null) 'value': value,
+          'truncatedByteCount': truncatedByteCount!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -4925,12 +4804,12 @@ class IssuanceModes {
   /// CertificateConfig.
   ///
   /// Required.
-  core.bool allowConfigBasedIssuance;
+  core.bool? allowConfigBasedIssuance;
 
   /// When true, allows callers to create Certificates by specifying a CSR.
   ///
   /// Required.
-  core.bool allowCsrBasedIssuance;
+  core.bool? allowCsrBasedIssuance;
 
   IssuanceModes();
 
@@ -4943,11 +4822,11 @@ class IssuanceModes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowConfigBasedIssuance != null)
-          'allowConfigBasedIssuance': allowConfigBasedIssuance,
+          'allowConfigBasedIssuance': allowConfigBasedIssuance!,
         if (allowCsrBasedIssuance != null)
-          'allowCsrBasedIssuance': allowCsrBasedIssuance,
+          'allowCsrBasedIssuance': allowCsrBasedIssuance!,
       };
 }
 
@@ -4957,7 +4836,7 @@ class IssuingOptions {
   /// information access" X.509 extension.
   ///
   /// Required.
-  core.bool includeCaCertUrl;
+  core.bool? includeCaCertUrl;
 
   /// When true, includes a URL to the CRL corresponding to certificates issued
   /// from a CertificateAuthority.
@@ -4966,7 +4845,7 @@ class IssuingOptions {
   /// daily. CRLs are also rebuilt shortly after a certificate is revoked.
   ///
   /// Required.
-  core.bool includeCrlAccessUrl;
+  core.bool? includeCrlAccessUrl;
 
   IssuingOptions();
 
@@ -4979,10 +4858,10 @@ class IssuingOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (includeCaCertUrl != null) 'includeCaCertUrl': includeCaCertUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (includeCaCertUrl != null) 'includeCaCertUrl': includeCaCertUrl!,
         if (includeCrlAccessUrl != null)
-          'includeCrlAccessUrl': includeCrlAccessUrl,
+          'includeCrlAccessUrl': includeCrlAccessUrl!,
       };
 }
 
@@ -4993,7 +4872,7 @@ class KeyId {
   /// This is most likely the 160 bit SHA-1 hash of the public key.
   ///
   /// Optional.
-  core.String keyId;
+  core.String? keyId;
 
   KeyId();
 
@@ -5003,8 +4882,8 @@ class KeyId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (keyId != null) 'keyId': keyId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (keyId != null) 'keyId': keyId!,
       };
 }
 
@@ -5012,14 +4891,14 @@ class KeyId {
 /// certificate.
 class KeyUsage {
   /// Describes high-level ways in which a key may be used.
-  KeyUsageOptions baseKeyUsage;
+  KeyUsageOptions? baseKeyUsage;
 
   /// Detailed scenarios in which a key may be used.
-  ExtendedKeyUsageOptions extendedKeyUsage;
+  ExtendedKeyUsageOptions? extendedKeyUsage;
 
   /// Used to describe extended key usages that are not listed in the
   /// KeyUsage.ExtendedKeyUsageOptions message.
-  core.List<ObjectId> unknownExtendedKeyUsages;
+  core.List<ObjectId>? unknownExtendedKeyUsages;
 
   KeyUsage();
 
@@ -5041,13 +4920,13 @@ class KeyUsage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (baseKeyUsage != null) 'baseKeyUsage': baseKeyUsage.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (baseKeyUsage != null) 'baseKeyUsage': baseKeyUsage!.toJson(),
         if (extendedKeyUsage != null)
-          'extendedKeyUsage': extendedKeyUsage.toJson(),
+          'extendedKeyUsage': extendedKeyUsage!.toJson(),
         if (unknownExtendedKeyUsages != null)
           'unknownExtendedKeyUsages':
-              unknownExtendedKeyUsages.map((value) => value.toJson()).toList(),
+              unknownExtendedKeyUsages!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5055,33 +4934,33 @@ class KeyUsage {
 /// https://tools.ietf.org/html/rfc5280#section-4.2.1.3.
 class KeyUsageOptions {
   /// The key may be used to sign certificates.
-  core.bool certSign;
+  core.bool? certSign;
 
   /// The key may be used for cryptographic commitments.
   ///
   /// Note that this may also be referred to as "non-repudiation".
-  core.bool contentCommitment;
+  core.bool? contentCommitment;
 
   /// The key may be used sign certificate revocation lists.
-  core.bool crlSign;
+  core.bool? crlSign;
 
   /// The key may be used to encipher data.
-  core.bool dataEncipherment;
+  core.bool? dataEncipherment;
 
   /// The key may be used to decipher only.
-  core.bool decipherOnly;
+  core.bool? decipherOnly;
 
   /// The key may be used for digital signatures.
-  core.bool digitalSignature;
+  core.bool? digitalSignature;
 
   /// The key may be used to encipher only.
-  core.bool encipherOnly;
+  core.bool? encipherOnly;
 
   /// The key may be used in a key agreement protocol.
-  core.bool keyAgreement;
+  core.bool? keyAgreement;
 
   /// The key may be used to encipher other keys.
-  core.bool keyEncipherment;
+  core.bool? keyEncipherment;
 
   KeyUsageOptions();
 
@@ -5115,16 +4994,16 @@ class KeyUsageOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (certSign != null) 'certSign': certSign,
-        if (contentCommitment != null) 'contentCommitment': contentCommitment,
-        if (crlSign != null) 'crlSign': crlSign,
-        if (dataEncipherment != null) 'dataEncipherment': dataEncipherment,
-        if (decipherOnly != null) 'decipherOnly': decipherOnly,
-        if (digitalSignature != null) 'digitalSignature': digitalSignature,
-        if (encipherOnly != null) 'encipherOnly': encipherOnly,
-        if (keyAgreement != null) 'keyAgreement': keyAgreement,
-        if (keyEncipherment != null) 'keyEncipherment': keyEncipherment,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (certSign != null) 'certSign': certSign!,
+        if (contentCommitment != null) 'contentCommitment': contentCommitment!,
+        if (crlSign != null) 'crlSign': crlSign!,
+        if (dataEncipherment != null) 'dataEncipherment': dataEncipherment!,
+        if (decipherOnly != null) 'decipherOnly': decipherOnly!,
+        if (digitalSignature != null) 'digitalSignature': digitalSignature!,
+        if (encipherOnly != null) 'encipherOnly': encipherOnly!,
+        if (keyAgreement != null) 'keyAgreement': keyAgreement!,
+        if (keyEncipherment != null) 'keyEncipherment': keyEncipherment!,
       };
 }
 
@@ -5152,7 +5031,7 @@ class KeyVersionSpec {
   /// CryptoKeyVersionAlgorithm.RSA_SIGN_PKCS1_4096_SHA256
   /// - "EC_P256_SHA256" : maps to CryptoKeyVersionAlgorithm.EC_SIGN_P256_SHA256
   /// - "EC_P384_SHA384" : maps to CryptoKeyVersionAlgorithm.EC_SIGN_P384_SHA384
-  core.String algorithm;
+  core.String? algorithm;
 
   /// The resource name for an existing Cloud KMS CryptoKeyVersion in the format
   /// `projects / * /locations / * /keyRings / * /cryptoKeys / *
@@ -5162,7 +5041,7 @@ class KeyVersionSpec {
   /// properties.
   ///
   /// Required.
-  core.String cloudKmsKeyVersion;
+  core.String? cloudKmsKeyVersion;
 
   KeyVersionSpec();
 
@@ -5175,26 +5054,26 @@ class KeyVersionSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
         if (cloudKmsKeyVersion != null)
-          'cloudKmsKeyVersion': cloudKmsKeyVersion,
+          'cloudKmsKeyVersion': cloudKmsKeyVersion!,
       };
 }
 
 /// Response message for CertificateAuthorityService.ListCertificateAuthorities.
 class ListCertificateAuthoritiesResponse {
   /// The list of CertificateAuthorities.
-  core.List<CertificateAuthority> certificateAuthorities;
+  core.List<CertificateAuthority>? certificateAuthorities;
 
   /// A token to retrieve next page of results.
   ///
   /// Pass this value in ListCertificateAuthoritiesRequest.next_page_token to
   /// retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of locations (e.g. "us-west1") that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListCertificateAuthoritiesResponse();
 
@@ -5215,12 +5094,12 @@ class ListCertificateAuthoritiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (certificateAuthorities != null)
           'certificateAuthorities':
-              certificateAuthorities.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+              certificateAuthorities!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -5228,16 +5107,16 @@ class ListCertificateAuthoritiesResponse {
 /// CertificateAuthorityService.ListCertificateRevocationLists.
 class ListCertificateRevocationListsResponse {
   /// The list of CertificateRevocationLists.
-  core.List<CertificateRevocationList> certificateRevocationLists;
+  core.List<CertificateRevocationList>? certificateRevocationLists;
 
   /// A token to retrieve next page of results.
   ///
   /// Pass this value in ListCertificateRevocationListsRequest.next_page_token
   /// to retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of locations (e.g. "us-west1") that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListCertificateRevocationListsResponse();
 
@@ -5260,29 +5139,29 @@ class ListCertificateRevocationListsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (certificateRevocationLists != null)
-          'certificateRevocationLists': certificateRevocationLists
+          'certificateRevocationLists': certificateRevocationLists!
               .map((value) => value.toJson())
               .toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// Response message for CertificateAuthorityService.ListCertificates.
 class ListCertificatesResponse {
   /// The list of Certificates.
-  core.List<Certificate> certificates;
+  core.List<Certificate>? certificates;
 
   /// A token to retrieve next page of results.
   ///
   /// Pass this value in ListCertificatesRequest.next_page_token to retrieve the
   /// next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of locations (e.g. "us-west1") that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListCertificatesResponse();
 
@@ -5303,21 +5182,21 @@ class ListCertificatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (certificates != null)
-          'certificates': certificates.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+          'certificates': certificates!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -5333,20 +5212,20 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -5362,10 +5241,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5375,13 +5254,13 @@ class ListReusableConfigsResponse {
   ///
   /// Pass this value in ListReusableConfigsRequest.next_page_token to retrieve
   /// the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of ReusableConfigs.
-  core.List<ReusableConfig> reusableConfigs;
+  core.List<ReusableConfig>? reusableConfigs;
 
   /// A list of locations (e.g. "us-west1") that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListReusableConfigsResponse();
 
@@ -5402,12 +5281,12 @@ class ListReusableConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (reusableConfigs != null)
           'reusableConfigs':
-              reusableConfigs.map((value) => value.toJson()).toList(),
-        if (unreachable != null) 'unreachable': unreachable,
+              reusableConfigs!.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -5416,17 +5295,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -5434,12 +5313,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -5473,19 +5352,19 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Represents an amount of money with its currency type.
 class Money {
   /// The three-letter currency code defined in ISO 4217.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Number of nano (10^-9) units of the amount.
   ///
@@ -5494,12 +5373,12 @@ class Money {
   /// `nanos` can be positive, zero, or negative. If `units` is negative,
   /// `nanos` must be negative or zero. For example $-1.75 is represented as
   /// `units`=-1 and `nanos`=-750,000,000.
-  core.int nanos;
+  core.int? nanos;
 
   /// The whole units of the amount.
   ///
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-  core.String units;
+  core.String? units;
 
   Money();
 
@@ -5515,10 +5394,10 @@ class Money {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (nanos != null) 'nanos': nanos,
-        if (units != null) 'units': units,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (nanos != null) 'nanos': nanos!,
+        if (units != null) 'units': units!,
       };
 }
 
@@ -5531,7 +5410,7 @@ class ObjectId {
   /// The most significant parts of the path come first.
   ///
   /// Required.
-  core.List<core.int> objectIdPath;
+  core.List<core.int>? objectIdPath;
 
   ObjectId();
 
@@ -5543,8 +5422,8 @@ class ObjectId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectIdPath != null) 'objectIdPath': objectIdPath,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectIdPath != null) 'objectIdPath': objectIdPath!,
       };
 }
 
@@ -5555,10 +5434,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -5569,14 +5448,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -5589,7 +5468,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -5624,12 +5503,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -5638,17 +5517,17 @@ class OperationMetadata {
   /// API version used to start the operation.
   ///
   /// Output only.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// The time the operation was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time the operation finished running.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
@@ -5657,22 +5536,22 @@ class OperationMetadata {
   /// `Code.CANCELLED`.
   ///
   /// Output only.
-  core.bool requestedCancellation;
+  core.bool? requestedCancellation;
 
   /// Human-readable status of the operation, if any.
   ///
   /// Output only.
-  core.String statusMessage;
+  core.String? statusMessage;
 
   /// Server-defined resource path for the target of the operation.
   ///
   /// Output only.
-  core.String target;
+  core.String? target;
 
   /// Name of the verb executed by the operation.
   ///
   /// Output only.
-  core.String verb;
+  core.String? verb;
 
   OperationMetadata();
 
@@ -5700,15 +5579,15 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
         if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation,
-        if (statusMessage != null) 'statusMessage': statusMessage,
-        if (target != null) 'target': target,
-        if (verb != null) 'verb': verb,
+          'requestedCancellation': requestedCancellation!,
+        if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
@@ -5745,14 +5624,14 @@ class OperationMetadata {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -5766,8 +5645,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -5791,7 +5670,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -5816,13 +5695,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -5837,8 +5716,8 @@ class PublicKey {
   /// structure containing an algorithm identifier and a key.
   ///
   /// Required.
-  core.String key;
-  core.List<core.int> get keyAsBytes => convert.base64.decode(key);
+  core.String? key;
+  core.List<core.int> get keyAsBytes => convert.base64.decode(key!);
 
   set keyAsBytes(core.List<core.int> _bytes) {
     key =
@@ -5860,7 +5739,7 @@ class PublicKey {
   /// [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1)
   /// structure containing a PEM-encoded compressed NIST
   /// P-256/secp256r1/prime256v1 or P-384 key.
-  core.String type;
+  core.String? type;
 
   PublicKey();
 
@@ -5873,9 +5752,9 @@ class PublicKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -5895,7 +5774,7 @@ class RestoreCertificateAuthorityRequest {
   /// supported (00000000-0000-0000-0000-000000000000).
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   RestoreCertificateAuthorityRequest();
 
@@ -5905,8 +5784,8 @@ class RestoreCertificateAuthorityRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -5919,34 +5798,34 @@ class ReusableConfig {
   /// The time at which this ReusableConfig was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// A human-readable description of scenarios these ReusableConfigValues may
   /// be compatible with.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Labels with user-defined metadata.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The resource path for this ReusableConfig in the format `projects / *
   /// /locations / * /reusableConfigs / * `.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The time at which this ReusableConfig was updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// The config values.
   ///
   /// Required.
-  ReusableConfigValues values;
+  ReusableConfigValues? values;
 
   ReusableConfig();
 
@@ -5978,13 +5857,13 @@ class ReusableConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (updateTime != null) 'updateTime': updateTime,
-        if (values != null) 'values': values.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (values != null) 'values': values!.toJson(),
       };
 }
 
@@ -5995,31 +5874,31 @@ class ReusableConfigValues {
   /// Describes custom X.509 extensions.
   ///
   /// Optional.
-  core.List<X509Extension> additionalExtensions;
+  core.List<X509Extension>? additionalExtensions;
 
   /// Describes Online Certificate Status Protocol (OCSP) endpoint addresses
   /// that appear in the "Authority Information Access" extension in the
   /// certificate.
   ///
   /// Optional.
-  core.List<core.String> aiaOcspServers;
+  core.List<core.String>? aiaOcspServers;
 
   /// Describes options in this ReusableConfigValues that are relevant in a CA
   /// certificate.
   ///
   /// Optional.
-  CaOptions caOptions;
+  CaOptions? caOptions;
 
   /// Indicates the intended use for keys that correspond to a certificate.
   ///
   /// Optional.
-  KeyUsage keyUsage;
+  KeyUsage? keyUsage;
 
   /// Describes the X.509 certificate policy object identifiers, per
   /// https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
   ///
   /// Optional.
-  core.List<ObjectId> policyIds;
+  core.List<ObjectId>? policyIds;
 
   ReusableConfigValues();
 
@@ -6051,15 +5930,15 @@ class ReusableConfigValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additionalExtensions != null)
           'additionalExtensions':
-              additionalExtensions.map((value) => value.toJson()).toList(),
-        if (aiaOcspServers != null) 'aiaOcspServers': aiaOcspServers,
-        if (caOptions != null) 'caOptions': caOptions.toJson(),
-        if (keyUsage != null) 'keyUsage': keyUsage.toJson(),
+              additionalExtensions!.map((value) => value.toJson()).toList(),
+        if (aiaOcspServers != null) 'aiaOcspServers': aiaOcspServers!,
+        if (caOptions != null) 'caOptions': caOptions!.toJson(),
+        if (keyUsage != null) 'keyUsage': keyUsage!.toJson(),
         if (policyIds != null)
-          'policyIds': policyIds.map((value) => value.toJson()).toList(),
+          'policyIds': policyIds!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6070,12 +5949,12 @@ class ReusableConfigWrapper {
   /// / * /reusableConfigs / * `.
   ///
   /// Required.
-  core.String reusableConfig;
+  core.String? reusableConfig;
 
   /// A user-specified inline ReusableConfigValues.
   ///
   /// Required.
-  ReusableConfigValues reusableConfigValues;
+  ReusableConfigValues? reusableConfigValues;
 
   ReusableConfigWrapper();
 
@@ -6089,10 +5968,10 @@ class ReusableConfigWrapper {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (reusableConfig != null) 'reusableConfig': reusableConfig,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (reusableConfig != null) 'reusableConfig': reusableConfig!,
         if (reusableConfigValues != null)
-          'reusableConfigValues': reusableConfigValues.toJson(),
+          'reusableConfigValues': reusableConfigValues!.toJson(),
       };
 }
 
@@ -6117,10 +5996,10 @@ class RevocationDetails {
   /// assert the listed attributes.
   /// - "ATTRIBUTE_AUTHORITY_COMPROMISE" : The authority which determines
   /// appropriate attributes for a Certificate may have been compromised.
-  core.String revocationState;
+  core.String? revocationState;
 
   /// The time at which this Certificate was revoked.
-  core.String revocationTime;
+  core.String? revocationTime;
 
   RevocationDetails();
 
@@ -6133,9 +6012,9 @@ class RevocationDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (revocationState != null) 'revocationState': revocationState,
-        if (revocationTime != null) 'revocationTime': revocationTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (revocationState != null) 'revocationState': revocationState!,
+        if (revocationTime != null) 'revocationTime': revocationTime!,
       };
 }
 
@@ -6162,7 +6041,7 @@ class RevokeCertificateRequest {
   /// assert the listed attributes.
   /// - "ATTRIBUTE_AUTHORITY_COMPROMISE" : The authority which determines
   /// appropriate attributes for a Certificate may have been compromised.
-  core.String reason;
+  core.String? reason;
 
   /// An ID to identify requests.
   ///
@@ -6178,7 +6057,7 @@ class RevokeCertificateRequest {
   /// supported (00000000-0000-0000-0000-000000000000).
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   RevokeCertificateRequest();
 
@@ -6191,9 +6070,9 @@ class RevokeCertificateRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (reason != null) 'reason': reason,
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (reason != null) 'reason': reason!,
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -6201,10 +6080,10 @@ class RevokeCertificateRequest {
 class RevokedCertificate {
   /// The resource path for the Certificate in the format `projects / *
   /// /locations / * /certificateAuthorities / * /certificates / * `.
-  core.String certificate;
+  core.String? certificate;
 
   /// The serial number of the Certificate.
-  core.String hexSerialNumber;
+  core.String? hexSerialNumber;
 
   /// The reason the Certificate was revoked.
   /// Possible string values are:
@@ -6225,7 +6104,7 @@ class RevokedCertificate {
   /// assert the listed attributes.
   /// - "ATTRIBUTE_AUTHORITY_COMPROMISE" : The authority which determines
   /// appropriate attributes for a Certificate may have been compromised.
-  core.String revocationReason;
+  core.String? revocationReason;
 
   RevokedCertificate();
 
@@ -6241,10 +6120,10 @@ class RevokedCertificate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (certificate != null) 'certificate': certificate,
-        if (hexSerialNumber != null) 'hexSerialNumber': hexSerialNumber,
-        if (revocationReason != null) 'revocationReason': revocationReason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (certificate != null) 'certificate': certificate!,
+        if (hexSerialNumber != null) 'hexSerialNumber': hexSerialNumber!,
+        if (revocationReason != null) 'revocationReason': revocationReason!,
       };
 }
 
@@ -6257,7 +6136,7 @@ class ScheduleDeleteCertificateAuthorityRequest {
   /// Active certs include both unrevoked and unexpired certs.
   ///
   /// Optional.
-  core.bool ignoreActiveCertificates;
+  core.bool? ignoreActiveCertificates;
 
   /// An ID to identify requests.
   ///
@@ -6273,7 +6152,7 @@ class ScheduleDeleteCertificateAuthorityRequest {
   /// supported (00000000-0000-0000-0000-000000000000).
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   ScheduleDeleteCertificateAuthorityRequest();
 
@@ -6286,10 +6165,10 @@ class ScheduleDeleteCertificateAuthorityRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (ignoreActiveCertificates != null)
-          'ignoreActiveCertificates': ignoreActiveCertificates,
-        if (requestId != null) 'requestId': requestId,
+          'ignoreActiveCertificates': ignoreActiveCertificates!,
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -6300,13 +6179,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -6320,9 +6199,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -6335,7 +6214,7 @@ class SetIamPolicyRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -6343,13 +6222,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -6373,10 +6252,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -6384,25 +6263,25 @@ class Status {
 /// subject of the certificate.
 class Subject {
   /// The country code of the subject.
-  core.String countryCode;
+  core.String? countryCode;
 
   /// The locality or city of the subject.
-  core.String locality;
+  core.String? locality;
 
   /// The organization of the subject.
-  core.String organization;
+  core.String? organization;
 
   /// The organizational_unit of the subject.
-  core.String organizationalUnit;
+  core.String? organizationalUnit;
 
   /// The postal code of the subject.
-  core.String postalCode;
+  core.String? postalCode;
 
   /// The province, territory, or regional state of the subject.
-  core.String province;
+  core.String? province;
 
   /// The street address of the subject.
-  core.String streetAddress;
+  core.String? streetAddress;
 
   Subject();
 
@@ -6430,15 +6309,15 @@ class Subject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (countryCode != null) 'countryCode': countryCode,
-        if (locality != null) 'locality': locality,
-        if (organization != null) 'organization': organization,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (locality != null) 'locality': locality!,
+        if (organization != null) 'organization': organization!,
         if (organizationalUnit != null)
-          'organizationalUnit': organizationalUnit,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (province != null) 'province': province,
-        if (streetAddress != null) 'streetAddress': streetAddress,
+          'organizationalUnit': organizationalUnit!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (province != null) 'province': province!,
+        if (streetAddress != null) 'streetAddress': streetAddress!,
       };
 }
 
@@ -6447,19 +6326,19 @@ class Subject {
 /// in the distinguished name).
 class SubjectAltNames {
   /// Contains additional subject alternative name values.
-  core.List<X509Extension> customSans;
+  core.List<X509Extension>? customSans;
 
   /// Contains only valid, fully-qualified host names.
-  core.List<core.String> dnsNames;
+  core.List<core.String>? dnsNames;
 
   /// Contains only valid RFC 2822 E-mail addresses.
-  core.List<core.String> emailAddresses;
+  core.List<core.String>? emailAddresses;
 
   /// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
-  core.List<core.String> ipAddresses;
+  core.List<core.String>? ipAddresses;
 
   /// Contains only valid RFC 3986 URIs.
-  core.List<core.String> uris;
+  core.List<core.String>? uris;
 
   SubjectAltNames();
 
@@ -6492,13 +6371,13 @@ class SubjectAltNames {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customSans != null)
-          'customSans': customSans.map((value) => value.toJson()).toList(),
-        if (dnsNames != null) 'dnsNames': dnsNames,
-        if (emailAddresses != null) 'emailAddresses': emailAddresses,
-        if (ipAddresses != null) 'ipAddresses': ipAddresses,
-        if (uris != null) 'uris': uris,
+          'customSans': customSans!.map((value) => value.toJson()).toList(),
+        if (dnsNames != null) 'dnsNames': dnsNames!,
+        if (emailAddresses != null) 'emailAddresses': emailAddresses!,
+        if (ipAddresses != null) 'ipAddresses': ipAddresses!,
+        if (uris != null) 'uris': uris!,
       };
 }
 
@@ -6508,17 +6387,17 @@ class SubjectConfig {
   /// The "common name" of the distinguished name.
   ///
   /// Optional.
-  core.String commonName;
+  core.String? commonName;
 
   /// Contains distinguished name fields such as the location and organization.
   ///
   /// Required.
-  Subject subject;
+  Subject? subject;
 
   /// The subject alternative name fields.
   ///
   /// Optional.
-  SubjectAltNames subjectAltName;
+  SubjectAltNames? subjectAltName;
 
   SubjectConfig();
 
@@ -6536,10 +6415,10 @@ class SubjectConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonName != null) 'commonName': commonName,
-        if (subject != null) 'subject': subject.toJson(),
-        if (subjectAltName != null) 'subjectAltName': subjectAltName.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonName != null) 'commonName': commonName!,
+        if (subject != null) 'subject': subject!.toJson(),
+        if (subjectAltName != null) 'subjectAltName': subjectAltName!.toJson(),
       };
 }
 
@@ -6547,27 +6426,27 @@ class SubjectConfig {
 /// distinguished name, subject alternative names, serial number, and lifetime.
 class SubjectDescription {
   /// The "common name" of the distinguished name.
-  core.String commonName;
+  core.String? commonName;
 
   /// The serial number encoded in lowercase hexadecimal.
-  core.String hexSerialNumber;
+  core.String? hexSerialNumber;
 
   /// For convenience, the actual lifetime of an issued certificate.
   ///
   /// Corresponds to 'not_after_time' - 'not_before_time'.
-  core.String lifetime;
+  core.String? lifetime;
 
   /// The time at which the certificate expires.
-  core.String notAfterTime;
+  core.String? notAfterTime;
 
   /// The time at which the certificate becomes valid.
-  core.String notBeforeTime;
+  core.String? notBeforeTime;
 
   /// Contains distinguished name fields such as the location and organization.
-  Subject subject;
+  Subject? subject;
 
   /// The subject alternative name fields.
-  SubjectAltNames subjectAltName;
+  SubjectAltNames? subjectAltName;
 
   SubjectDescription();
 
@@ -6597,14 +6476,14 @@ class SubjectDescription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonName != null) 'commonName': commonName,
-        if (hexSerialNumber != null) 'hexSerialNumber': hexSerialNumber,
-        if (lifetime != null) 'lifetime': lifetime,
-        if (notAfterTime != null) 'notAfterTime': notAfterTime,
-        if (notBeforeTime != null) 'notBeforeTime': notBeforeTime,
-        if (subject != null) 'subject': subject.toJson(),
-        if (subjectAltName != null) 'subjectAltName': subjectAltName.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonName != null) 'commonName': commonName!,
+        if (hexSerialNumber != null) 'hexSerialNumber': hexSerialNumber!,
+        if (lifetime != null) 'lifetime': lifetime!,
+        if (notAfterTime != null) 'notAfterTime': notAfterTime!,
+        if (notBeforeTime != null) 'notBeforeTime': notBeforeTime!,
+        if (subject != null) 'subject': subject!.toJson(),
+        if (subjectAltName != null) 'subjectAltName': subjectAltName!.toJson(),
       };
 }
 
@@ -6621,13 +6500,13 @@ class SubordinateConfig {
   /// /certificateAuthorities / * `.
   ///
   /// Required.
-  core.String certificateAuthority;
+  core.String? certificateAuthority;
 
   /// Contains the PEM certificate chain for the issuers of this
   /// CertificateAuthority, but not pem certificate for this CA itself.
   ///
   /// Required.
-  SubordinateConfigChain pemIssuerChain;
+  SubordinateConfigChain? pemIssuerChain;
 
   SubordinateConfig();
 
@@ -6641,10 +6520,10 @@ class SubordinateConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (certificateAuthority != null)
-          'certificateAuthority': certificateAuthority,
-        if (pemIssuerChain != null) 'pemIssuerChain': pemIssuerChain.toJson(),
+          'certificateAuthority': certificateAuthority!,
+        if (pemIssuerChain != null) 'pemIssuerChain': pemIssuerChain!.toJson(),
       };
 }
 
@@ -6655,7 +6534,7 @@ class SubordinateConfigChain {
   /// Expected to be in leaf-to-root order according to RFC 5246.
   ///
   /// Required.
-  core.List<core.String> pemCertificates;
+  core.List<core.String>? pemCertificates;
 
   SubordinateConfigChain();
 
@@ -6667,8 +6546,8 @@ class SubordinateConfigChain {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pemCertificates != null) 'pemCertificates': pemCertificates,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pemCertificates != null) 'pemCertificates': pemCertificates!,
       };
 }
 
@@ -6679,7 +6558,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -6691,8 +6570,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -6700,7 +6579,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -6712,8 +6591,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -6725,18 +6604,18 @@ class X509Extension {
   /// this to be an error).
   ///
   /// Required.
-  core.bool critical;
+  core.bool? critical;
 
   /// The OID for this X.509 extension.
   ///
   /// Required.
-  ObjectId objectId;
+  ObjectId? objectId;
 
   /// The value of this X.509 extension.
   ///
   /// Required.
-  core.String value;
-  core.List<core.int> get valueAsBytes => convert.base64.decode(value);
+  core.String? value;
+  core.List<core.int> get valueAsBytes => convert.base64.decode(value!);
 
   set valueAsBytes(core.List<core.int> _bytes) {
     value =
@@ -6758,9 +6637,9 @@ class X509Extension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (critical != null) 'critical': critical,
-        if (objectId != null) 'objectId': objectId.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (critical != null) 'critical': critical!,
+        if (objectId != null) 'objectId': objectId!.toJson(),
+        if (value != null) 'value': value!,
       };
 }

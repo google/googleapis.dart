@@ -80,11 +80,8 @@ class TasklistsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String tasklist, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (tasklist == null) {
-      throw core.ArgumentError('Parameter tasklist is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -118,11 +115,8 @@ class TasklistsResource {
   /// this method will complete with the same error.
   async.Future<TaskList> get(
     core.String tasklist, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (tasklist == null) {
-      throw core.ArgumentError('Parameter tasklist is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -157,10 +151,9 @@ class TasklistsResource {
   /// this method will complete with the same error.
   async.Future<TaskList> insert(
     TaskList request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -196,9 +189,9 @@ class TasklistsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TaskLists> list({
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -239,13 +232,9 @@ class TasklistsResource {
   async.Future<TaskList> patch(
     TaskList request,
     core.String tasklist, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (tasklist == null) {
-      throw core.ArgumentError('Parameter tasklist is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -283,13 +272,9 @@ class TasklistsResource {
   async.Future<TaskList> update(
     TaskList request,
     core.String tasklist, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (tasklist == null) {
-      throw core.ArgumentError('Parameter tasklist is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -331,11 +316,8 @@ class TasksResource {
   /// this method will complete with the same error.
   async.Future<void> clear(
     core.String tasklist, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (tasklist == null) {
-      throw core.ArgumentError('Parameter tasklist is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -371,14 +353,8 @@ class TasksResource {
   async.Future<void> delete(
     core.String tasklist,
     core.String task, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (tasklist == null) {
-      throw core.ArgumentError('Parameter tasklist is required.');
-    }
-    if (task == null) {
-      throw core.ArgumentError('Parameter task is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -417,14 +393,8 @@ class TasksResource {
   async.Future<Task> get(
     core.String tasklist,
     core.String task, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (tasklist == null) {
-      throw core.ArgumentError('Parameter tasklist is required.');
-    }
-    if (task == null) {
-      throw core.ArgumentError('Parameter task is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -470,15 +440,11 @@ class TasksResource {
   async.Future<Task> insert(
     Task request,
     core.String tasklist, {
-    core.String parent,
-    core.String previous,
-    core.String $fields,
+    core.String? parent,
+    core.String? previous,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (tasklist == null) {
-      throw core.ArgumentError('Parameter tasklist is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (parent != null) 'parent': [parent],
       if (previous != null) 'previous': [previous],
@@ -550,21 +516,18 @@ class TasksResource {
   /// this method will complete with the same error.
   async.Future<Tasks> list(
     core.String tasklist, {
-    core.String completedMax,
-    core.String completedMin,
-    core.String dueMax,
-    core.String dueMin,
-    core.int maxResults,
-    core.String pageToken,
-    core.bool showCompleted,
-    core.bool showDeleted,
-    core.bool showHidden,
-    core.String updatedMin,
-    core.String $fields,
+    core.String? completedMax,
+    core.String? completedMin,
+    core.String? dueMax,
+    core.String? dueMin,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.bool? showCompleted,
+    core.bool? showDeleted,
+    core.bool? showHidden,
+    core.String? updatedMin,
+    core.String? $fields,
   }) async {
-    if (tasklist == null) {
-      throw core.ArgumentError('Parameter tasklist is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (completedMax != null) 'completedMax': [completedMax],
       if (completedMin != null) 'completedMin': [completedMin],
@@ -622,16 +585,10 @@ class TasksResource {
   async.Future<Task> move(
     core.String tasklist,
     core.String task, {
-    core.String parent,
-    core.String previous,
-    core.String $fields,
+    core.String? parent,
+    core.String? previous,
+    core.String? $fields,
   }) async {
-    if (tasklist == null) {
-      throw core.ArgumentError('Parameter tasklist is required.');
-    }
-    if (task == null) {
-      throw core.ArgumentError('Parameter task is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (parent != null) 'parent': [parent],
       if (previous != null) 'previous': [previous],
@@ -678,16 +635,9 @@ class TasksResource {
     Task request,
     core.String tasklist,
     core.String task, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (tasklist == null) {
-      throw core.ArgumentError('Parameter tasklist is required.');
-    }
-    if (task == null) {
-      throw core.ArgumentError('Parameter task is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -730,16 +680,9 @@ class TasksResource {
     Task request,
     core.String tasklist,
     core.String task, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (tasklist == null) {
-      throw core.ArgumentError('Parameter tasklist is required.');
-    }
-    if (task == null) {
-      throw core.ArgumentError('Parameter task is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -763,13 +706,13 @@ class TaskLinks {
   /// The description.
   ///
   /// In HTML speak: Everything between <a> and </a>.
-  core.String description;
+  core.String? description;
 
   /// The URL.
-  core.String link;
+  core.String? link;
 
   /// Type of the link, e.g. "email".
-  core.String type;
+  core.String? type;
 
   TaskLinks();
 
@@ -785,10 +728,10 @@ class TaskLinks {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (link != null) 'link': link,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (link != null) 'link': link!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -796,53 +739,53 @@ class Task {
   /// Completion date of the task (as a RFC 3339 timestamp).
   ///
   /// This field is omitted if the task has not been completed.
-  core.String completed;
+  core.String? completed;
 
   /// Flag indicating whether the task has been deleted.
   ///
   /// The default is False.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// Due date of the task (as a RFC 3339 timestamp).
   ///
   /// Optional. The due date only records date information; the time portion of
   /// the timestamp is discarded when setting the due date. It isn't possible to
   /// read or write the time that a task is due via the API.
-  core.String due;
+  core.String? due;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Flag indicating whether the task is hidden.
   ///
   /// This is the case if the task had been marked completed when the task list
   /// was last cleared. The default is False. This field is read-only.
-  core.bool hidden;
+  core.bool? hidden;
 
   /// Task identifier.
-  core.String id;
+  core.String? id;
 
   /// Type of the resource.
   ///
   /// This is always "tasks#task".
-  core.String kind;
+  core.String? kind;
 
   /// Collection of links.
   ///
   /// This collection is read-only.
-  core.List<TaskLinks> links;
+  core.List<TaskLinks>? links;
 
   /// Notes describing the task.
   ///
   /// Optional.
-  core.String notes;
+  core.String? notes;
 
   /// Parent task identifier.
   ///
   /// This field is omitted if it is a top-level task. This field is read-only.
   /// Use the "move" method to move the task under a different parent or to the
   /// top level.
-  core.String parent;
+  core.String? parent;
 
   /// String indicating the position of the task among its sibling tasks under
   /// the same parent task or at the top level.
@@ -852,23 +795,23 @@ class Task {
   /// the other task under the same parent task (or at the top level). This
   /// field is read-only. Use the "move" method to move the task to another
   /// position.
-  core.String position;
+  core.String? position;
 
   /// URL pointing to this task.
   ///
   /// Used to retrieve, update, or delete this task.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Status of the task.
   ///
   /// This is either "needsAction" or "completed".
-  core.String status;
+  core.String? status;
 
   /// Title of the task.
-  core.String title;
+  core.String? title;
 
   /// Last modification time of the task (as a RFC 3339 timestamp).
-  core.String updated;
+  core.String? updated;
 
   Task();
 
@@ -923,48 +866,48 @@ class Task {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (completed != null) 'completed': completed,
-        if (deleted != null) 'deleted': deleted,
-        if (due != null) 'due': due,
-        if (etag != null) 'etag': etag,
-        if (hidden != null) 'hidden': hidden,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (completed != null) 'completed': completed!,
+        if (deleted != null) 'deleted': deleted!,
+        if (due != null) 'due': due!,
+        if (etag != null) 'etag': etag!,
+        if (hidden != null) 'hidden': hidden!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (links != null)
-          'links': links.map((value) => value.toJson()).toList(),
-        if (notes != null) 'notes': notes,
-        if (parent != null) 'parent': parent,
-        if (position != null) 'position': position,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (status != null) 'status': status,
-        if (title != null) 'title': title,
-        if (updated != null) 'updated': updated,
+          'links': links!.map((value) => value.toJson()).toList(),
+        if (notes != null) 'notes': notes!,
+        if (parent != null) 'parent': parent!,
+        if (position != null) 'position': position!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (status != null) 'status': status!,
+        if (title != null) 'title': title!,
+        if (updated != null) 'updated': updated!,
       };
 }
 
 class TaskList {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Task list identifier.
-  core.String id;
+  core.String? id;
 
   /// Type of the resource.
   ///
   /// This is always "tasks#taskList".
-  core.String kind;
+  core.String? kind;
 
   /// URL pointing to this task list.
   ///
   /// Used to retrieve, update, or delete this task list.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Title of the task list.
-  core.String title;
+  core.String? title;
 
   /// Last modification time of the task list (as a RFC 3339 timestamp).
-  core.String updated;
+  core.String? updated;
 
   TaskList();
 
@@ -989,30 +932,30 @@ class TaskList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (title != null) 'title': title,
-        if (updated != null) 'updated': updated,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (title != null) 'title': title!,
+        if (updated != null) 'updated': updated!,
       };
 }
 
 class TaskLists {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Collection of task lists.
-  core.List<TaskList> items;
+  core.List<TaskList>? items;
 
   /// Type of the resource.
   ///
   /// This is always "tasks#taskLists".
-  core.String kind;
+  core.String? kind;
 
   /// Token that can be used to request the next page of this result.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   TaskLists();
 
@@ -1034,29 +977,29 @@ class TaskLists {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 class Tasks {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Collection of tasks.
-  core.List<Task> items;
+  core.List<Task>? items;
 
   /// Type of the resource.
   ///
   /// This is always "tasks#tasks".
-  core.String kind;
+  core.String? kind;
 
   /// Token used to access the next page of this result.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   Tasks();
 
@@ -1078,11 +1021,11 @@ class Tasks {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

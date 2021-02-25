@@ -95,13 +95,9 @@ class OperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -141,11 +137,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -182,11 +175,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -235,14 +225,11 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -303,13 +290,9 @@ class UsersEnvironmentsResource {
   async.Future<Operation> addPublicKey(
     AddPublicKeyRequest request,
     core.String environment, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (environment == null) {
-      throw core.ArgumentError('Parameter environment is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -355,13 +338,9 @@ class UsersEnvironmentsResource {
   async.Future<Operation> authorize(
     AuthorizeEnvironmentRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -401,11 +380,8 @@ class UsersEnvironmentsResource {
   /// this method will complete with the same error.
   async.Future<Environment> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -448,13 +424,9 @@ class UsersEnvironmentsResource {
   async.Future<Operation> removePublicKey(
     RemovePublicKeyRequest request,
     core.String environment, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (environment == null) {
-      throw core.ArgumentError('Parameter environment is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -502,13 +474,9 @@ class UsersEnvironmentsResource {
   async.Future<Operation> start(
     StartEnvironmentRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -535,7 +503,7 @@ class AddPublicKeyMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for AddPublicKey.
@@ -546,7 +514,7 @@ class AddPublicKeyRequest {
   /// `ecdsa-sha2-nistp256` (see RFC5656), `ecdsa-sha2-nistp384` (see RFC5656)
   /// and `ecdsa-sha2-nistp521` (see RFC5656). It should be structured as
   /// <format> <content>, where <content> part is encoded with Base64.
-  core.String key;
+  core.String? key;
 
   AddPublicKeyRequest();
 
@@ -556,15 +524,15 @@ class AddPublicKeyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
       };
 }
 
 /// Response message for AddPublicKey.
 class AddPublicKeyResponse {
   /// Key that was added to the environment.
-  core.String key;
+  core.String? key;
 
   AddPublicKeyResponse();
 
@@ -574,8 +542,8 @@ class AddPublicKeyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
       };
 }
 
@@ -588,22 +556,22 @@ class AuthorizeEnvironmentMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for AuthorizeEnvironment.
 class AuthorizeEnvironmentRequest {
   /// The OAuth access token that should be sent to the environment.
-  core.String accessToken;
+  core.String? accessToken;
 
   /// The time when the credentials expire.
   ///
   /// If not set, defaults to one hour from when the server received the
   /// request.
-  core.String expireTime;
+  core.String? expireTime;
 
   /// The OAuth ID token that should be sent to the environment.
-  core.String idToken;
+  core.String? idToken;
 
   AuthorizeEnvironmentRequest();
 
@@ -619,10 +587,10 @@ class AuthorizeEnvironmentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessToken != null) 'accessToken': accessToken,
-        if (expireTime != null) 'expireTime': expireTime,
-        if (idToken != null) 'idToken': idToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessToken != null) 'accessToken': accessToken!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (idToken != null) 'idToken': idToken!,
       };
 }
 
@@ -634,7 +602,7 @@ class AuthorizeEnvironmentResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The request message for Operations.CancelOperation.
@@ -645,7 +613,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Message included in the metadata field of operations returned from
@@ -657,7 +625,7 @@ class CreateEnvironmentMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Message included in the metadata field of operations returned from
@@ -669,7 +637,7 @@ class DeleteEnvironmentMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -686,7 +654,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A Cloud Shell environment, which is defined as the combination of a Docker
@@ -699,12 +667,12 @@ class Environment {
   /// "gcr.io/dev-con/cloud-devshell:latest".
   ///
   /// Required. Immutable.
-  core.String dockerImage;
+  core.String? dockerImage;
 
   /// The environment's identifier, unique among the user's environments.
   ///
   /// Output only.
-  core.String id;
+  core.String? id;
 
   /// Full name of this resource, in the format
   /// `users/{owner_email}/environments/{environment_id}`.
@@ -714,7 +682,7 @@ class Environment {
   /// example, `users/someone@example.com/environments/default`.
   ///
   /// Immutable.
-  core.String name;
+  core.String? name;
 
   /// Public keys associated with the environment.
   ///
@@ -724,25 +692,25 @@ class Environment {
   /// RemovePublicKey methods.
   ///
   /// Output only.
-  core.List<core.String> publicKeys;
+  core.List<core.String>? publicKeys;
 
   /// Host to which clients can connect to initiate SSH sessions with the
   /// environment.
   ///
   /// Output only.
-  core.String sshHost;
+  core.String? sshHost;
 
   /// Port to which clients can connect to initiate SSH sessions with the
   /// environment.
   ///
   /// Output only.
-  core.int sshPort;
+  core.int? sshPort;
 
   /// Username that clients should use when initiating SSH sessions with the
   /// environment.
   ///
   /// Output only.
-  core.String sshUsername;
+  core.String? sshUsername;
 
   /// Current execution state of this environment.
   ///
@@ -757,13 +725,13 @@ class Environment {
   /// It will automatically transition back to DISABLED after a period of
   /// inactivity or if another environment is started.
   /// - "DELETING" : The environment is being deleted and can't be connected to.
-  core.String state;
+  core.String? state;
 
   /// Host to which clients can connect to initiate HTTPS or WSS connections
   /// with the environment.
   ///
   /// Output only.
-  core.String webHost;
+  core.String? webHost;
 
   Environment();
 
@@ -799,26 +767,26 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dockerImage != null) 'dockerImage': dockerImage,
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
-        if (publicKeys != null) 'publicKeys': publicKeys,
-        if (sshHost != null) 'sshHost': sshHost,
-        if (sshPort != null) 'sshPort': sshPort,
-        if (sshUsername != null) 'sshUsername': sshUsername,
-        if (state != null) 'state': state,
-        if (webHost != null) 'webHost': webHost,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dockerImage != null) 'dockerImage': dockerImage!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (publicKeys != null) 'publicKeys': publicKeys!,
+        if (sshHost != null) 'sshHost': sshHost!,
+        if (sshPort != null) 'sshPort': sshPort!,
+        if (sshUsername != null) 'sshUsername': sshUsername!,
+        if (state != null) 'state': state!,
+        if (webHost != null) 'webHost': webHost!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -834,10 +802,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -848,10 +816,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -862,14 +830,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -882,7 +850,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -917,12 +885,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -935,13 +903,13 @@ class RemovePublicKeyMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for RemovePublicKey.
 class RemovePublicKeyRequest {
   /// Key that should be removed from the environment.
-  core.String key;
+  core.String? key;
 
   RemovePublicKeyRequest();
 
@@ -951,8 +919,8 @@ class RemovePublicKeyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
       };
 }
 
@@ -964,7 +932,7 @@ class RemovePublicKeyResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Message included in the metadata field of operations returned from
@@ -987,7 +955,7 @@ class StartEnvironmentMetadata {
   /// successful, the user should be able to establish an SSH connection to
   /// their environment. Otherwise, the operation will contain details of the
   /// failure.
-  core.String state;
+  core.String? state;
 
   StartEnvironmentMetadata();
 
@@ -997,8 +965,8 @@ class StartEnvironmentMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (state != null) 'state': state!,
       };
 }
 
@@ -1010,10 +978,10 @@ class StartEnvironmentRequest {
   /// with gcloud so that the user can run gcloud commands in Cloud Shell
   /// without having to log in. This code can be updated later by calling
   /// AuthorizeEnvironment.
-  core.String accessToken;
+  core.String? accessToken;
 
   /// Public keys that should be added to the environment before it is started.
-  core.List<core.String> publicKeys;
+  core.List<core.String>? publicKeys;
 
   StartEnvironmentRequest();
 
@@ -1028,9 +996,9 @@ class StartEnvironmentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessToken != null) 'accessToken': accessToken,
-        if (publicKeys != null) 'publicKeys': publicKeys,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessToken != null) 'accessToken': accessToken!,
+        if (publicKeys != null) 'publicKeys': publicKeys!,
       };
 }
 
@@ -1038,7 +1006,7 @@ class StartEnvironmentRequest {
 /// StartEnvironment once the operation is complete.
 class StartEnvironmentResponse {
   /// Environment that was started.
-  Environment environment;
+  Environment? environment;
 
   StartEnvironmentResponse();
 
@@ -1049,8 +1017,8 @@ class StartEnvironmentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (environment != null) 'environment': environment.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (environment != null) 'environment': environment!.toJson(),
       };
 }
 
@@ -1063,7 +1031,7 @@ class StartEnvironmentResponse {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1071,13 +1039,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -1101,9 +1069,9 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }

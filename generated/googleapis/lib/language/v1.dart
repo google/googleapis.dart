@@ -87,10 +87,9 @@ class DocumentsResource {
   /// this method will complete with the same error.
   async.Future<AnalyzeEntitiesResponse> analyzeEntities(
     AnalyzeEntitiesRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -126,10 +125,9 @@ class DocumentsResource {
   /// this method will complete with the same error.
   async.Future<AnalyzeEntitySentimentResponse> analyzeEntitySentiment(
     AnalyzeEntitySentimentRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -164,10 +162,9 @@ class DocumentsResource {
   /// this method will complete with the same error.
   async.Future<AnalyzeSentimentResponse> analyzeSentiment(
     AnalyzeSentimentRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -204,10 +201,9 @@ class DocumentsResource {
   /// this method will complete with the same error.
   async.Future<AnalyzeSyntaxResponse> analyzeSyntax(
     AnalyzeSyntaxRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -243,10 +239,9 @@ class DocumentsResource {
   /// this method will complete with the same error.
   async.Future<AnnotateTextResponse> annotateText(
     AnnotateTextRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -281,10 +276,9 @@ class DocumentsResource {
   /// this method will complete with the same error.
   async.Future<ClassifyTextResponse> classifyText(
     ClassifyTextRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -307,7 +301,7 @@ class AnalyzeEntitiesRequest {
   /// Input document.
   ///
   /// Required.
-  Document document;
+  Document? document;
 
   /// The encoding type used by the API to calculate offsets.
   /// Possible string values are:
@@ -322,7 +316,7 @@ class AnalyzeEntitiesRequest {
   /// - "UTF32" : Encoding-dependent information (such as `begin_offset`) is
   /// calculated based on the UTF-32 encoding of the input. Python is an example
   /// of a language that uses this encoding natively.
-  core.String encodingType;
+  core.String? encodingType;
 
   AnalyzeEntitiesRequest();
 
@@ -336,22 +330,22 @@ class AnalyzeEntitiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (document != null) 'document': document.toJson(),
-        if (encodingType != null) 'encodingType': encodingType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (document != null) 'document': document!.toJson(),
+        if (encodingType != null) 'encodingType': encodingType!,
       };
 }
 
 /// The entity analysis response message.
 class AnalyzeEntitiesResponse {
   /// The recognized entities in the input document.
-  core.List<Entity> entities;
+  core.List<Entity>? entities;
 
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
   ///
   /// See Document.language field for more details.
-  core.String language;
+  core.String? language;
 
   AnalyzeEntitiesResponse();
 
@@ -367,10 +361,10 @@ class AnalyzeEntitiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entities != null)
-          'entities': entities.map((value) => value.toJson()).toList(),
-        if (language != null) 'language': language,
+          'entities': entities!.map((value) => value.toJson()).toList(),
+        if (language != null) 'language': language!,
       };
 }
 
@@ -379,7 +373,7 @@ class AnalyzeEntitySentimentRequest {
   /// Input document.
   ///
   /// Required.
-  Document document;
+  Document? document;
 
   /// The encoding type used by the API to calculate offsets.
   /// Possible string values are:
@@ -394,7 +388,7 @@ class AnalyzeEntitySentimentRequest {
   /// - "UTF32" : Encoding-dependent information (such as `begin_offset`) is
   /// calculated based on the UTF-32 encoding of the input. Python is an example
   /// of a language that uses this encoding natively.
-  core.String encodingType;
+  core.String? encodingType;
 
   AnalyzeEntitySentimentRequest();
 
@@ -408,22 +402,22 @@ class AnalyzeEntitySentimentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (document != null) 'document': document.toJson(),
-        if (encodingType != null) 'encodingType': encodingType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (document != null) 'document': document!.toJson(),
+        if (encodingType != null) 'encodingType': encodingType!,
       };
 }
 
 /// The entity-level sentiment analysis response message.
 class AnalyzeEntitySentimentResponse {
   /// The recognized entities in the input document with associated sentiments.
-  core.List<Entity> entities;
+  core.List<Entity>? entities;
 
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
   ///
   /// See Document.language field for more details.
-  core.String language;
+  core.String? language;
 
   AnalyzeEntitySentimentResponse();
 
@@ -439,10 +433,10 @@ class AnalyzeEntitySentimentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entities != null)
-          'entities': entities.map((value) => value.toJson()).toList(),
-        if (language != null) 'language': language,
+          'entities': entities!.map((value) => value.toJson()).toList(),
+        if (language != null) 'language': language!,
       };
 }
 
@@ -451,7 +445,7 @@ class AnalyzeSentimentRequest {
   /// Input document.
   ///
   /// Required.
-  Document document;
+  Document? document;
 
   /// The encoding type used by the API to calculate sentence offsets.
   /// Possible string values are:
@@ -466,7 +460,7 @@ class AnalyzeSentimentRequest {
   /// - "UTF32" : Encoding-dependent information (such as `begin_offset`) is
   /// calculated based on the UTF-32 encoding of the input. Python is an example
   /// of a language that uses this encoding natively.
-  core.String encodingType;
+  core.String? encodingType;
 
   AnalyzeSentimentRequest();
 
@@ -480,25 +474,25 @@ class AnalyzeSentimentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (document != null) 'document': document.toJson(),
-        if (encodingType != null) 'encodingType': encodingType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (document != null) 'document': document!.toJson(),
+        if (encodingType != null) 'encodingType': encodingType!,
       };
 }
 
 /// The sentiment analysis response message.
 class AnalyzeSentimentResponse {
   /// The overall sentiment of the input document.
-  Sentiment documentSentiment;
+  Sentiment? documentSentiment;
 
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
   ///
   /// See Document.language field for more details.
-  core.String language;
+  core.String? language;
 
   /// The sentiment for all the sentences in the document.
-  core.List<Sentence> sentences;
+  core.List<Sentence>? sentences;
 
   AnalyzeSentimentResponse();
 
@@ -518,12 +512,12 @@ class AnalyzeSentimentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (documentSentiment != null)
-          'documentSentiment': documentSentiment.toJson(),
-        if (language != null) 'language': language,
+          'documentSentiment': documentSentiment!.toJson(),
+        if (language != null) 'language': language!,
         if (sentences != null)
-          'sentences': sentences.map((value) => value.toJson()).toList(),
+          'sentences': sentences!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -532,7 +526,7 @@ class AnalyzeSyntaxRequest {
   /// Input document.
   ///
   /// Required.
-  Document document;
+  Document? document;
 
   /// The encoding type used by the API to calculate offsets.
   /// Possible string values are:
@@ -547,7 +541,7 @@ class AnalyzeSyntaxRequest {
   /// - "UTF32" : Encoding-dependent information (such as `begin_offset`) is
   /// calculated based on the UTF-32 encoding of the input. Python is an example
   /// of a language that uses this encoding natively.
-  core.String encodingType;
+  core.String? encodingType;
 
   AnalyzeSyntaxRequest();
 
@@ -561,9 +555,9 @@ class AnalyzeSyntaxRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (document != null) 'document': document.toJson(),
-        if (encodingType != null) 'encodingType': encodingType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (document != null) 'document': document!.toJson(),
+        if (encodingType != null) 'encodingType': encodingType!,
       };
 }
 
@@ -573,13 +567,13 @@ class AnalyzeSyntaxResponse {
   /// in the request or, if not specified, the automatically-detected language.
   ///
   /// See Document.language field for more details.
-  core.String language;
+  core.String? language;
 
   /// Sentences in the input document.
-  core.List<Sentence> sentences;
+  core.List<Sentence>? sentences;
 
   /// Tokens, along with their syntactic information, in the input document.
-  core.List<Token> tokens;
+  core.List<Token>? tokens;
 
   AnalyzeSyntaxResponse();
 
@@ -601,12 +595,12 @@ class AnalyzeSyntaxResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (language != null) 'language': language,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (language != null) 'language': language!,
         if (sentences != null)
-          'sentences': sentences.map((value) => value.toJson()).toList(),
+          'sentences': sentences!.map((value) => value.toJson()).toList(),
         if (tokens != null)
-          'tokens': tokens.map((value) => value.toJson()).toList(),
+          'tokens': tokens!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -616,7 +610,7 @@ class AnnotateTextRequest {
   /// Input document.
   ///
   /// Required.
-  Document document;
+  Document? document;
 
   /// The encoding type used by the API to calculate offsets.
   /// Possible string values are:
@@ -631,12 +625,12 @@ class AnnotateTextRequest {
   /// - "UTF32" : Encoding-dependent information (such as `begin_offset`) is
   /// calculated based on the UTF-32 encoding of the input. Python is an example
   /// of a language that uses this encoding natively.
-  core.String encodingType;
+  core.String? encodingType;
 
   /// The enabled features.
   ///
   /// Required.
-  Features features;
+  Features? features;
 
   AnnotateTextRequest();
 
@@ -654,45 +648,45 @@ class AnnotateTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (document != null) 'document': document.toJson(),
-        if (encodingType != null) 'encodingType': encodingType,
-        if (features != null) 'features': features.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (document != null) 'document': document!.toJson(),
+        if (encodingType != null) 'encodingType': encodingType!,
+        if (features != null) 'features': features!.toJson(),
       };
 }
 
 /// The text annotations response message.
 class AnnotateTextResponse {
   /// Categories identified in the input document.
-  core.List<ClassificationCategory> categories;
+  core.List<ClassificationCategory>? categories;
 
   /// The overall sentiment for the document.
   ///
   /// Populated if the user enables
   /// AnnotateTextRequest.Features.extract_document_sentiment.
-  Sentiment documentSentiment;
+  Sentiment? documentSentiment;
 
   /// Entities, along with their semantic information, in the input document.
   ///
   /// Populated if the user enables
   /// AnnotateTextRequest.Features.extract_entities.
-  core.List<Entity> entities;
+  core.List<Entity>? entities;
 
   /// The language of the text, which will be the same as the language specified
   /// in the request or, if not specified, the automatically-detected language.
   ///
   /// See Document.language field for more details.
-  core.String language;
+  core.String? language;
 
   /// Sentences in the input document.
   ///
   /// Populated if the user enables AnnotateTextRequest.Features.extract_syntax.
-  core.List<Sentence> sentences;
+  core.List<Sentence>? sentences;
 
   /// Tokens, along with their syntactic information, in the input document.
   ///
   /// Populated if the user enables AnnotateTextRequest.Features.extract_syntax.
-  core.List<Token> tokens;
+  core.List<Token>? tokens;
 
   AnnotateTextResponse();
 
@@ -731,18 +725,18 @@ class AnnotateTextResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (categories != null)
-          'categories': categories.map((value) => value.toJson()).toList(),
+          'categories': categories!.map((value) => value.toJson()).toList(),
         if (documentSentiment != null)
-          'documentSentiment': documentSentiment.toJson(),
+          'documentSentiment': documentSentiment!.toJson(),
         if (entities != null)
-          'entities': entities.map((value) => value.toJson()).toList(),
-        if (language != null) 'language': language,
+          'entities': entities!.map((value) => value.toJson()).toList(),
+        if (language != null) 'language': language!,
         if (sentences != null)
-          'sentences': sentences.map((value) => value.toJson()).toList(),
+          'sentences': sentences!.map((value) => value.toJson()).toList(),
         if (tokens != null)
-          'tokens': tokens.map((value) => value.toJson()).toList(),
+          'tokens': tokens!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -752,11 +746,11 @@ class ClassificationCategory {
   ///
   /// Number represents how certain the classifier is that this category
   /// represents the given text.
-  core.double confidence;
+  core.double? confidence;
 
   /// The name of the category representing the document, from the
   /// [predefined taxonomy](https://cloud.google.com/natural-language/docs/categories).
-  core.String name;
+  core.String? name;
 
   ClassificationCategory();
 
@@ -769,9 +763,9 @@ class ClassificationCategory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (confidence != null) 'confidence': confidence,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (confidence != null) 'confidence': confidence!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -780,7 +774,7 @@ class ClassifyTextRequest {
   /// Input document.
   ///
   /// Required.
-  Document document;
+  Document? document;
 
   ClassifyTextRequest();
 
@@ -791,15 +785,15 @@ class ClassifyTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (document != null) 'document': document.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (document != null) 'document': document!.toJson(),
       };
 }
 
 /// The document classification response message.
 class ClassifyTextResponse {
   /// Categories representing the input document.
-  core.List<ClassificationCategory> categories;
+  core.List<ClassificationCategory>? categories;
 
   ClassifyTextResponse();
 
@@ -813,9 +807,9 @@ class ClassifyTextResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (categories != null)
-          'categories': categories.map((value) => value.toJson()).toList(),
+          'categories': categories!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -830,7 +824,7 @@ class DependencyEdge {
   /// index is the position of the token in the array of tokens returned by the
   /// API method. If this token is a root token, then the `head_token_index` is
   /// its own index.
-  core.int headTokenIndex;
+  core.int? headTokenIndex;
 
   /// The parse label for the token.
   /// Possible string values are:
@@ -918,7 +912,7 @@ class DependencyEdge {
   /// - "INFMOD" : Infinitival modifier
   /// - "MES" : Measure
   /// - "NCOMP" : Nominal complement of a noun
-  core.String label;
+  core.String? label;
 
   DependencyEdge();
 
@@ -931,9 +925,9 @@ class DependencyEdge {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (headTokenIndex != null) 'headTokenIndex': headTokenIndex,
-        if (label != null) 'label': label,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (headTokenIndex != null) 'headTokenIndex': headTokenIndex!,
+        if (label != null) 'label': label!,
       };
 }
 
@@ -943,14 +937,14 @@ class Document {
   /// The content of the input in string format.
   ///
   /// Cloud audit logging exempt since it is based on user data.
-  core.String content;
+  core.String? content;
 
   /// The Google Cloud Storage URI where the file content is located.
   ///
   /// This URI must be of the form: gs://bucket_name/object_name. For more
   /// details, see https://cloud.google.com/storage/docs/reference-uris. NOTE:
   /// Cloud Storage object versioning is not supported.
-  core.String gcsContentUri;
+  core.String? gcsContentUri;
 
   /// The language of the document (if not specified, the language is
   /// automatically detected).
@@ -961,7 +955,7 @@ class Document {
   /// (either specified by the caller or automatically detected) is not
   /// supported by the called API method, an `INVALID_ARGUMENT` error is
   /// returned.
-  core.String language;
+  core.String? language;
 
   /// If the type is not set or is `TYPE_UNSPECIFIED`, returns an
   /// `INVALID_ARGUMENT` error.
@@ -971,7 +965,7 @@ class Document {
   /// - "TYPE_UNSPECIFIED" : The content type is not specified.
   /// - "PLAIN_TEXT" : Plain text
   /// - "HTML" : HTML
-  core.String type;
+  core.String? type;
 
   Document();
 
@@ -990,11 +984,11 @@ class Document {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
-        if (gcsContentUri != null) 'gcsContentUri': gcsContentUri,
-        if (language != null) 'language': language,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
+        if (gcsContentUri != null) 'gcsContentUri': gcsContentUri!,
+        if (language != null) 'language': language!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1007,30 +1001,30 @@ class Entity {
   /// The mentions of this entity in the input document.
   ///
   /// The API currently supports proper noun mentions.
-  core.List<EntityMention> mentions;
+  core.List<EntityMention>? mentions;
 
   /// Metadata associated with the entity.
   ///
   /// For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`)
   /// and Knowledge Graph MID (`mid`), if they are available. For the metadata
   /// associated with other entity types, see the Type table below.
-  core.Map<core.String, core.String> metadata;
+  core.Map<core.String, core.String>? metadata;
 
   /// The representative name for the entity.
-  core.String name;
+  core.String? name;
 
   /// The salience score associated with the entity in the \[0, 1.0\] range.
   ///
   /// The salience score for an entity provides information about the importance
   /// or centrality of that entity to the entire document text. Scores closer to
   /// 0 are less salient, while scores closer to 1.0 are highly salient.
-  core.double salience;
+  core.double? salience;
 
   /// For calls to AnalyzeEntitySentiment or if
   /// AnnotateTextRequest.Features.extract_entity_sentiment is set to true, this
   /// field will contain the aggregate sentiment expressed for this entity in
   /// the provided document.
-  Sentiment sentiment;
+  Sentiment? sentiment;
 
   /// The entity type.
   /// Possible string values are:
@@ -1061,7 +1055,7 @@ class Entity {
   /// if detected * `day` - two digit day number, if detected
   /// - "NUMBER" : Number The metadata is the number itself.
   /// - "PRICE" : Price The metadata identifies the `value` and `currency`.
-  core.String type;
+  core.String? type;
 
   Entity();
 
@@ -1096,14 +1090,14 @@ class Entity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (mentions != null)
-          'mentions': mentions.map((value) => value.toJson()).toList(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (salience != null) 'salience': salience,
-        if (sentiment != null) 'sentiment': sentiment.toJson(),
-        if (type != null) 'type': type,
+          'mentions': mentions!.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (salience != null) 'salience': salience!,
+        if (sentiment != null) 'sentiment': sentiment!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1115,17 +1109,17 @@ class EntityMention {
   /// AnnotateTextRequest.Features.extract_entity_sentiment is set to true, this
   /// field will contain the sentiment expressed for this mention of the entity
   /// in the provided document.
-  Sentiment sentiment;
+  Sentiment? sentiment;
 
   /// The mention text.
-  TextSpan text;
+  TextSpan? text;
 
   /// The type of the entity mention.
   /// Possible string values are:
   /// - "TYPE_UNKNOWN" : Unknown
   /// - "PROPER" : Proper name
   /// - "COMMON" : Common noun (or noun compound)
-  core.String type;
+  core.String? type;
 
   EntityMention();
 
@@ -1143,10 +1137,10 @@ class EntityMention {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sentiment != null) 'sentiment': sentiment.toJson(),
-        if (text != null) 'text': text.toJson(),
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sentiment != null) 'sentiment': sentiment!.toJson(),
+        if (text != null) 'text': text!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1155,19 +1149,19 @@ class EntityMention {
 /// Setting each one to true will enable that specific analysis for the input.
 class Features {
   /// Classify the full document into categories.
-  core.bool classifyText;
+  core.bool? classifyText;
 
   /// Extract document-level sentiment.
-  core.bool extractDocumentSentiment;
+  core.bool? extractDocumentSentiment;
 
   /// Extract entities.
-  core.bool extractEntities;
+  core.bool? extractEntities;
 
   /// Extract entities and their associated sentiment.
-  core.bool extractEntitySentiment;
+  core.bool? extractEntitySentiment;
 
   /// Extract syntax information.
-  core.bool extractSyntax;
+  core.bool? extractSyntax;
 
   Features();
 
@@ -1189,14 +1183,14 @@ class Features {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (classifyText != null) 'classifyText': classifyText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (classifyText != null) 'classifyText': classifyText!,
         if (extractDocumentSentiment != null)
-          'extractDocumentSentiment': extractDocumentSentiment,
-        if (extractEntities != null) 'extractEntities': extractEntities,
+          'extractDocumentSentiment': extractDocumentSentiment!,
+        if (extractEntities != null) 'extractEntities': extractEntities!,
         if (extractEntitySentiment != null)
-          'extractEntitySentiment': extractEntitySentiment,
-        if (extractSyntax != null) 'extractSyntax': extractSyntax,
+          'extractEntitySentiment': extractEntitySentiment!,
+        if (extractSyntax != null) 'extractSyntax': extractSyntax!,
       };
 }
 
@@ -1212,7 +1206,7 @@ class PartOfSpeech {
   /// - "PERFECTIVE" : Perfective
   /// - "IMPERFECTIVE" : Imperfective
   /// - "PROGRESSIVE" : Progressive
-  core.String aspect;
+  core.String? aspect;
 
   /// The grammatical case.
   /// Possible string values are:
@@ -1232,7 +1226,7 @@ class PartOfSpeech {
   /// - "REFLEXIVE_CASE" : Reflexive
   /// - "RELATIVE_CASE" : Relative
   /// - "VOCATIVE" : Vocative
-  core.String case_;
+  core.String? case_;
 
   /// The grammatical form.
   /// Possible string values are:
@@ -1249,7 +1243,7 @@ class PartOfSpeech {
   /// - "LONG" : Long form
   /// - "ORDER" : Order form
   /// - "SPECIFIC" : Specific form
-  core.String form;
+  core.String? form;
 
   /// The grammatical gender.
   /// Possible string values are:
@@ -1258,7 +1252,7 @@ class PartOfSpeech {
   /// - "FEMININE" : Feminine
   /// - "MASCULINE" : Masculine
   /// - "NEUTER" : Neuter
-  core.String gender;
+  core.String? gender;
 
   /// The grammatical mood.
   /// Possible string values are:
@@ -1270,7 +1264,7 @@ class PartOfSpeech {
   /// - "INTERROGATIVE" : Interrogative
   /// - "JUSSIVE" : Jussive
   /// - "SUBJUNCTIVE" : Subjunctive
-  core.String mood;
+  core.String? mood;
 
   /// The grammatical number.
   /// Possible string values are:
@@ -1279,7 +1273,7 @@ class PartOfSpeech {
   /// - "SINGULAR" : Singular
   /// - "PLURAL" : Plural
   /// - "DUAL" : Dual
-  core.String number;
+  core.String? number;
 
   /// The grammatical person.
   /// Possible string values are:
@@ -1289,7 +1283,7 @@ class PartOfSpeech {
   /// - "SECOND" : Second
   /// - "THIRD" : Third
   /// - "REFLEXIVE_PERSON" : Reflexive
-  core.String person;
+  core.String? person;
 
   /// The grammatical properness.
   /// Possible string values are:
@@ -1297,7 +1291,7 @@ class PartOfSpeech {
   /// is not predicted.
   /// - "PROPER" : Proper
   /// - "NOT_PROPER" : Not proper
-  core.String proper;
+  core.String? proper;
 
   /// The grammatical reciprocity.
   /// Possible string values are:
@@ -1305,7 +1299,7 @@ class PartOfSpeech {
   /// language or is not predicted.
   /// - "RECIPROCAL" : Reciprocal
   /// - "NON_RECIPROCAL" : Non-reciprocal
-  core.String reciprocity;
+  core.String? reciprocity;
 
   /// The part of speech tag.
   /// Possible string values are:
@@ -1323,7 +1317,7 @@ class PartOfSpeech {
   /// - "VERB" : Verb (all tenses and modes)
   /// - "X" : Other: foreign words, typos, abbreviations
   /// - "AFFIX" : Affix
-  core.String tag;
+  core.String? tag;
 
   /// The grammatical tense.
   /// Possible string values are:
@@ -1335,7 +1329,7 @@ class PartOfSpeech {
   /// - "PRESENT" : Present
   /// - "IMPERFECT" : Imperfect
   /// - "PLUPERFECT" : Pluperfect
-  core.String tense;
+  core.String? tense;
 
   /// The grammatical voice.
   /// Possible string values are:
@@ -1344,7 +1338,7 @@ class PartOfSpeech {
   /// - "ACTIVE" : Active
   /// - "CAUSATIVE" : Causative
   /// - "PASSIVE" : Passive
-  core.String voice;
+  core.String? voice;
 
   PartOfSpeech();
 
@@ -1387,19 +1381,19 @@ class PartOfSpeech {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aspect != null) 'aspect': aspect,
-        if (case_ != null) 'case': case_,
-        if (form != null) 'form': form,
-        if (gender != null) 'gender': gender,
-        if (mood != null) 'mood': mood,
-        if (number != null) 'number': number,
-        if (person != null) 'person': person,
-        if (proper != null) 'proper': proper,
-        if (reciprocity != null) 'reciprocity': reciprocity,
-        if (tag != null) 'tag': tag,
-        if (tense != null) 'tense': tense,
-        if (voice != null) 'voice': voice,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aspect != null) 'aspect': aspect!,
+        if (case_ != null) 'case': case_!,
+        if (form != null) 'form': form!,
+        if (gender != null) 'gender': gender!,
+        if (mood != null) 'mood': mood!,
+        if (number != null) 'number': number!,
+        if (person != null) 'person': person!,
+        if (proper != null) 'proper': proper!,
+        if (reciprocity != null) 'reciprocity': reciprocity!,
+        if (tag != null) 'tag': tag!,
+        if (tense != null) 'tense': tense!,
+        if (voice != null) 'voice': voice!,
       };
 }
 
@@ -1408,10 +1402,10 @@ class Sentence {
   /// For calls to AnalyzeSentiment or if
   /// AnnotateTextRequest.Features.extract_document_sentiment is set to true,
   /// this field will contain the sentiment for the sentence.
-  Sentiment sentiment;
+  Sentiment? sentiment;
 
   /// The sentence text.
-  TextSpan text;
+  TextSpan? text;
 
   Sentence();
 
@@ -1426,9 +1420,9 @@ class Sentence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sentiment != null) 'sentiment': sentiment.toJson(),
-        if (text != null) 'text': text.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sentiment != null) 'sentiment': sentiment!.toJson(),
+        if (text != null) 'text': text!.toJson(),
       };
 }
 
@@ -1438,11 +1432,11 @@ class Sentiment {
   /// A non-negative number in the \[0, +inf) range, which represents the
   /// absolute magnitude of sentiment regardless of score (positive or
   /// negative).
-  core.double magnitude;
+  core.double? magnitude;
 
   /// Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
   /// sentiment).
-  core.double score;
+  core.double? score;
 
   Sentiment();
 
@@ -1455,9 +1449,9 @@ class Sentiment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (magnitude != null) 'magnitude': magnitude,
-        if (score != null) 'score': score,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (magnitude != null) 'magnitude': magnitude!,
+        if (score != null) 'score': score!,
       };
 }
 
@@ -1470,7 +1464,7 @@ class Sentiment {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1478,13 +1472,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -1508,10 +1502,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -1519,10 +1513,10 @@ class Status {
 class TextSpan {
   /// The API calculates the beginning offset of the content in the original
   /// document according to the EncodingType specified in the API request.
-  core.int beginOffset;
+  core.int? beginOffset;
 
   /// The content of the output text.
-  core.String content;
+  core.String? content;
 
   TextSpan();
 
@@ -1535,26 +1529,26 @@ class TextSpan {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (beginOffset != null) 'beginOffset': beginOffset,
-        if (content != null) 'content': content,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (beginOffset != null) 'beginOffset': beginOffset!,
+        if (content != null) 'content': content!,
       };
 }
 
 /// Represents the smallest syntactic building block of the text.
 class Token {
   /// Dependency tree parse for this token.
-  DependencyEdge dependencyEdge;
+  DependencyEdge? dependencyEdge;
 
   /// [Lemma](https://en.wikipedia.org/wiki/Lemma_%28morphology%29) of the
   /// token.
-  core.String lemma;
+  core.String? lemma;
 
   /// Parts of speech tag for this token.
-  PartOfSpeech partOfSpeech;
+  PartOfSpeech? partOfSpeech;
 
   /// The token text.
-  TextSpan text;
+  TextSpan? text;
 
   Token();
 
@@ -1576,10 +1570,10 @@ class Token {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dependencyEdge != null) 'dependencyEdge': dependencyEdge.toJson(),
-        if (lemma != null) 'lemma': lemma,
-        if (partOfSpeech != null) 'partOfSpeech': partOfSpeech.toJson(),
-        if (text != null) 'text': text.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dependencyEdge != null) 'dependencyEdge': dependencyEdge!.toJson(),
+        if (lemma != null) 'lemma': lemma!,
+        if (partOfSpeech != null) 'partOfSpeech': partOfSpeech!.toJson(),
+        if (text != null) 'text': text!.toJson(),
       };
 }

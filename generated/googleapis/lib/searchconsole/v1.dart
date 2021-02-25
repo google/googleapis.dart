@@ -102,13 +102,9 @@ class SearchanalyticsResource {
   async.Future<SearchAnalyticsQueryResponse> query(
     SearchAnalyticsQueryRequest request,
     core.String siteUrl, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (siteUrl == null) {
-      throw core.ArgumentError('Parameter siteUrl is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -154,14 +150,8 @@ class SitemapsResource {
   async.Future<void> delete(
     core.String siteUrl,
     core.String feedpath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (siteUrl == null) {
-      throw core.ArgumentError('Parameter siteUrl is required.');
-    }
-    if (feedpath == null) {
-      throw core.ArgumentError('Parameter feedpath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -202,14 +192,8 @@ class SitemapsResource {
   async.Future<WmxSitemap> get(
     core.String siteUrl,
     core.String feedpath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (siteUrl == null) {
-      throw core.ArgumentError('Parameter siteUrl is required.');
-    }
-    if (feedpath == null) {
-      throw core.ArgumentError('Parameter feedpath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -252,12 +236,9 @@ class SitemapsResource {
   /// this method will complete with the same error.
   async.Future<SitemapsListResponse> list(
     core.String siteUrl, {
-    core.String sitemapIndex,
-    core.String $fields,
+    core.String? sitemapIndex,
+    core.String? $fields,
   }) async {
-    if (siteUrl == null) {
-      throw core.ArgumentError('Parameter siteUrl is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (sitemapIndex != null) 'sitemapIndex': [sitemapIndex],
       if ($fields != null) 'fields': [$fields],
@@ -297,14 +278,8 @@ class SitemapsResource {
   async.Future<void> submit(
     core.String siteUrl,
     core.String feedpath, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (siteUrl == null) {
-      throw core.ArgumentError('Parameter siteUrl is required.');
-    }
-    if (feedpath == null) {
-      throw core.ArgumentError('Parameter feedpath is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -344,11 +319,8 @@ class SitesResource {
   /// this method will complete with the same error.
   async.Future<void> add(
     core.String siteUrl, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (siteUrl == null) {
-      throw core.ArgumentError('Parameter siteUrl is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -381,11 +353,8 @@ class SitesResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String siteUrl, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (siteUrl == null) {
-      throw core.ArgumentError('Parameter siteUrl is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -420,11 +389,8 @@ class SitesResource {
   /// this method will complete with the same error.
   async.Future<WmxSite> get(
     core.String siteUrl, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (siteUrl == null) {
-      throw core.ArgumentError('Parameter siteUrl is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -455,7 +421,7 @@ class SitesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SitesListResponse> list({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -506,10 +472,9 @@ class UrlTestingToolsMobileFriendlyTestResource {
   /// this method will complete with the same error.
   async.Future<RunMobileFriendlyTestResponse> run(
     RunMobileFriendlyTestRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -528,11 +493,11 @@ class UrlTestingToolsMobileFriendlyTestResource {
 }
 
 class ApiDataRow {
-  core.double clicks;
-  core.double ctr;
-  core.double impressions;
-  core.List<core.String> keys;
-  core.double position;
+  core.double? clicks;
+  core.double? ctr;
+  core.double? impressions;
+  core.List<core.String>? keys;
+  core.double? position;
 
   ApiDataRow();
 
@@ -556,12 +521,12 @@ class ApiDataRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clicks != null) 'clicks': clicks,
-        if (ctr != null) 'ctr': ctr,
-        if (impressions != null) 'impressions': impressions,
-        if (keys != null) 'keys': keys,
-        if (position != null) 'position': position,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clicks != null) 'clicks': clicks!,
+        if (ctr != null) 'ctr': ctr!,
+        if (impressions != null) 'impressions': impressions!,
+        if (keys != null) 'keys': keys!,
+        if (position != null) 'position': position!,
       };
 }
 
@@ -580,8 +545,8 @@ class ApiDimensionFilter {
   /// - "COUNTRY"
   /// - "DEVICE"
   /// - "SEARCH_APPEARANCE"
-  core.String dimension;
-  core.String expression;
+  core.String? dimension;
+  core.String? expression;
 
   ///
   /// Possible string values are:
@@ -589,7 +554,7 @@ class ApiDimensionFilter {
   /// - "NOT_EQUALS"
   /// - "CONTAINS"
   /// - "NOT_CONTAINS"
-  core.String operator;
+  core.String? operator;
 
   ApiDimensionFilter();
 
@@ -605,10 +570,10 @@ class ApiDimensionFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimension != null) 'dimension': dimension,
-        if (expression != null) 'expression': expression,
-        if (operator != null) 'operator': operator,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimension != null) 'dimension': dimension!,
+        if (expression != null) 'expression': expression!,
+        if (operator != null) 'operator': operator!,
       };
 }
 
@@ -618,12 +583,12 @@ class ApiDimensionFilter {
 /// filter group are either AND'ed or OR'ed together, depending on the group
 /// type selected. All filter groups are AND'ed together.
 class ApiDimensionFilterGroup {
-  core.List<ApiDimensionFilter> filters;
+  core.List<ApiDimensionFilter>? filters;
 
   ///
   /// Possible string values are:
   /// - "AND"
-  core.String groupType;
+  core.String? groupType;
 
   ApiDimensionFilterGroup();
 
@@ -639,17 +604,17 @@ class ApiDimensionFilterGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (filters != null)
-          'filters': filters.map((value) => value.toJson()).toList(),
-        if (groupType != null) 'groupType': groupType,
+          'filters': filters!.map((value) => value.toJson()).toList(),
+        if (groupType != null) 'groupType': groupType!,
       };
 }
 
 /// Blocked resource.
 class BlockedResource {
   /// URL of the blocked resource.
-  core.String url;
+  core.String? url;
 
   BlockedResource();
 
@@ -659,8 +624,8 @@ class BlockedResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (url != null) 'url': url!,
       };
 }
 
@@ -670,8 +635,8 @@ class Image {
   ///
   /// Currently, the format will always be "image/png", but this might change in
   /// the future.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -679,7 +644,7 @@ class Image {
   }
 
   /// The mime-type of the image data.
-  core.String mimeType;
+  core.String? mimeType;
 
   Image();
 
@@ -692,9 +657,9 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data,
-        if (mimeType != null) 'mimeType': mimeType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!,
+        if (mimeType != null) 'mimeType': mimeType!,
       };
 }
 
@@ -719,7 +684,7 @@ class MobileFriendlyIssue {
   /// [Learn More](https://support.google.com/webmasters/answer/6352293#small_font_size).
   /// - "TAP_TARGETS_TOO_CLOSE" : Touch elements are too close to each other.
   /// [Learn more](https://support.google.com/webmasters/answer/6352293#touch_elements_too_close).
-  core.String rule;
+  core.String? rule;
 
   MobileFriendlyIssue();
 
@@ -729,15 +694,15 @@ class MobileFriendlyIssue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (rule != null) 'rule': rule,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (rule != null) 'rule': rule!,
       };
 }
 
 /// Information about a resource with issue.
 class ResourceIssue {
   /// Describes a blocked resource issue.
-  BlockedResource blockedResource;
+  BlockedResource? blockedResource;
 
   ResourceIssue();
 
@@ -748,9 +713,9 @@ class ResourceIssue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (blockedResource != null)
-          'blockedResource': blockedResource.toJson(),
+          'blockedResource': blockedResource!.toJson(),
       };
 }
 
@@ -759,10 +724,10 @@ class RunMobileFriendlyTestRequest {
   /// Whether or not screenshot is requested.
   ///
   /// Default is false.
-  core.bool requestScreenshot;
+  core.bool? requestScreenshot;
 
   /// URL for inspection.
-  core.String url;
+  core.String? url;
 
   RunMobileFriendlyTestRequest();
 
@@ -775,9 +740,9 @@ class RunMobileFriendlyTestRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (requestScreenshot != null) 'requestScreenshot': requestScreenshot,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (requestScreenshot != null) 'requestScreenshot': requestScreenshot!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -790,19 +755,19 @@ class RunMobileFriendlyTestResponse {
   /// this test. Please try running the test again.
   /// - "MOBILE_FRIENDLY" : The page is mobile friendly.
   /// - "NOT_MOBILE_FRIENDLY" : The page is not mobile friendly.
-  core.String mobileFriendliness;
+  core.String? mobileFriendliness;
 
   /// List of mobile-usability issues.
-  core.List<MobileFriendlyIssue> mobileFriendlyIssues;
+  core.List<MobileFriendlyIssue>? mobileFriendlyIssues;
 
   /// Information about embedded resources issues.
-  core.List<ResourceIssue> resourceIssues;
+  core.List<ResourceIssue>? resourceIssues;
 
   /// Screenshot of the requested URL.
-  Image screenshot;
+  Image? screenshot;
 
   /// Final state of the test, can be either complete or an error.
-  TestStatus testStatus;
+  TestStatus? testStatus;
 
   RunMobileFriendlyTestResponse();
 
@@ -832,17 +797,17 @@ class RunMobileFriendlyTestResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (mobileFriendliness != null)
-          'mobileFriendliness': mobileFriendliness,
+          'mobileFriendliness': mobileFriendliness!,
         if (mobileFriendlyIssues != null)
           'mobileFriendlyIssues':
-              mobileFriendlyIssues.map((value) => value.toJson()).toList(),
+              mobileFriendlyIssues!.map((value) => value.toJson()).toList(),
         if (resourceIssues != null)
           'resourceIssues':
-              resourceIssues.map((value) => value.toJson()).toList(),
-        if (screenshot != null) 'screenshot': screenshot.toJson(),
-        if (testStatus != null) 'testStatus': testStatus.toJson(),
+              resourceIssues!.map((value) => value.toJson()).toList(),
+        if (screenshot != null) 'screenshot': screenshot!.toJson(),
+        if (testStatus != null) 'testStatus': testStatus!.toJson(),
       };
 }
 
@@ -863,7 +828,7 @@ class SearchAnalyticsQueryRequest {
   /// - "AUTO"
   /// - "BY_PROPERTY"
   /// - "BY_PAGE"
-  core.String aggregationType;
+  core.String? aggregationType;
 
   /// The data state to be fetched, can be full or all, the latter including
   /// full and partial data.
@@ -871,7 +836,7 @@ class SearchAnalyticsQueryRequest {
   /// - "DATA_STATE_UNSPECIFIED" : Default value, should not be used.
   /// - "FINAL" : Include full final data only, without partial.
   /// - "ALL" : Include all data, full and partial.
-  core.String dataState;
+  core.String? dataState;
 
   /// Zero or more filters to apply to the dimension grouping values; for
   /// example, 'query contains \"buy\"' to see only data where the query string
@@ -880,7 +845,7 @@ class SearchAnalyticsQueryRequest {
   /// You can filter by a dimension without grouping by it.
   ///
   /// Optional.
-  core.List<ApiDimensionFilterGroup> dimensionFilterGroups;
+  core.List<ApiDimensionFilterGroup>? dimensionFilterGroups;
 
   /// Zero or more dimensions to group results by.
   ///
@@ -889,7 +854,7 @@ class SearchAnalyticsQueryRequest {
   /// are grouped in the order that you supply these dimensions.
   ///
   /// Optional.
-  core.List<core.String> dimensions;
+  core.List<core.String>? dimensions;
 
   /// End date of the requested date range, in YYYY-MM-DD format, in PST (UTC -
   /// 8:00).
@@ -898,12 +863,12 @@ class SearchAnalyticsQueryRequest {
   /// the range.
   ///
   /// Required.
-  core.String endDate;
+  core.String? endDate;
 
   /// \[Optional; Default is 1000\] The maximum number of rows to return.
   ///
   /// Must be a number from 1 to 25,000 (inclusive).
-  core.int rowLimit;
+  core.int? rowLimit;
 
   /// \[Optional; Default is \"web\"\] The search type to filter for.
   /// Possible string values are:
@@ -911,20 +876,20 @@ class SearchAnalyticsQueryRequest {
   /// - "IMAGE"
   /// - "VIDEO"
   /// - "NEWS"
-  core.String searchType;
+  core.String? searchType;
 
   /// \[Required\] Start date of the requested date range, in YYYY-MM-DD format,
   /// in PST time (UTC - 8:00).
   ///
   /// Must be less than or equal to the end date. This value is included in the
   /// range.
-  core.String startDate;
+  core.String? startDate;
 
   /// \[Optional; Default is 0\] Zero-based index of the first row in the
   /// response.
   ///
   /// Must be a non-negative number.
-  core.int startRow;
+  core.int? startRow;
 
   SearchAnalyticsQueryRequest();
 
@@ -964,18 +929,18 @@ class SearchAnalyticsQueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aggregationType != null) 'aggregationType': aggregationType,
-        if (dataState != null) 'dataState': dataState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aggregationType != null) 'aggregationType': aggregationType!,
+        if (dataState != null) 'dataState': dataState!,
         if (dimensionFilterGroups != null)
           'dimensionFilterGroups':
-              dimensionFilterGroups.map((value) => value.toJson()).toList(),
-        if (dimensions != null) 'dimensions': dimensions,
-        if (endDate != null) 'endDate': endDate,
-        if (rowLimit != null) 'rowLimit': rowLimit,
-        if (searchType != null) 'searchType': searchType,
-        if (startDate != null) 'startDate': startDate,
-        if (startRow != null) 'startRow': startRow,
+              dimensionFilterGroups!.map((value) => value.toJson()).toList(),
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (endDate != null) 'endDate': endDate!,
+        if (rowLimit != null) 'rowLimit': rowLimit!,
+        if (searchType != null) 'searchType': searchType!,
+        if (startDate != null) 'startDate': startDate!,
+        if (startRow != null) 'startRow': startRow!,
       };
 }
 
@@ -989,10 +954,10 @@ class SearchAnalyticsQueryResponse {
   /// - "AUTO"
   /// - "BY_PROPERTY"
   /// - "BY_PAGE"
-  core.String responseAggregationType;
+  core.String? responseAggregationType;
 
   /// A list of rows grouped by the key values in the order given in the query.
-  core.List<ApiDataRow> rows;
+  core.List<ApiDataRow>? rows;
 
   SearchAnalyticsQueryResponse();
 
@@ -1008,10 +973,10 @@ class SearchAnalyticsQueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (responseAggregationType != null)
-          'responseAggregationType': responseAggregationType,
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+          'responseAggregationType': responseAggregationType!,
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1019,7 +984,7 @@ class SearchAnalyticsQueryResponse {
 class SitemapsListResponse {
   /// Contains detailed information about a specific URL submitted as a
   /// [sitemap](https://support.google.com/webmasters/answer/156184).
-  core.List<WmxSitemap> sitemap;
+  core.List<WmxSitemap>? sitemap;
 
   SitemapsListResponse();
 
@@ -1032,9 +997,9 @@ class SitemapsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (sitemap != null)
-          'sitemap': sitemap.map((value) => value.toJson()).toList(),
+          'sitemap': sitemap!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1044,7 +1009,7 @@ class SitesListResponse {
   ///
   /// For more information, see
   /// [Permissions in Search Console](https://support.google.com/webmasters/answer/2451999).
-  core.List<WmxSite> siteEntry;
+  core.List<WmxSite>? siteEntry;
 
   SitesListResponse();
 
@@ -1057,16 +1022,16 @@ class SitesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (siteEntry != null)
-          'siteEntry': siteEntry.map((value) => value.toJson()).toList(),
+          'siteEntry': siteEntry!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Final state of the test, including error details if necessary.
 class TestStatus {
   /// Error details if applicable.
-  core.String details;
+  core.String? details;
 
   /// Status of the test.
   /// Possible string values are:
@@ -1080,7 +1045,7 @@ class TestStatus {
   /// error such as a robots.txt blockage, a 403 or 500 code etc. Please make
   /// sure that the URL provided is accessible by Googlebot and is not password
   /// protected.
-  core.String status;
+  core.String? status;
 
   TestStatus();
 
@@ -1093,9 +1058,9 @@ class TestStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (details != null) 'details': details,
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (details != null) 'details': details!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -1113,10 +1078,10 @@ class WmxSite {
   /// - "SITE_RESTRICTED_USER" : Restricted users can access most of the data,
   /// and perform some operations.
   /// - "SITE_UNVERIFIED_USER" : Unverified user has no access to site's data.
-  core.String permissionLevel;
+  core.String? permissionLevel;
 
   /// The URL of the site.
-  core.String siteUrl;
+  core.String? siteUrl;
 
   WmxSite();
 
@@ -1129,9 +1094,9 @@ class WmxSite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissionLevel != null) 'permissionLevel': permissionLevel,
-        if (siteUrl != null) 'siteUrl': siteUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissionLevel != null) 'permissionLevel': permissionLevel!,
+        if (siteUrl != null) 'siteUrl': siteUrl!,
       };
 }
 
@@ -1139,32 +1104,32 @@ class WmxSite {
 /// [sitemap](https://support.google.com/webmasters/answer/156184).
 class WmxSitemap {
   /// The various content types in the sitemap.
-  core.List<WmxSitemapContent> contents;
+  core.List<WmxSitemapContent>? contents;
 
   /// Number of errors in the sitemap.
   ///
   /// These are issues with the sitemap itself that need to be fixed before it
   /// can be processed correctly.
-  core.String errors;
+  core.String? errors;
 
   /// If true, the sitemap has not been processed.
-  core.bool isPending;
+  core.bool? isPending;
 
   /// If true, the sitemap is a collection of sitemaps.
-  core.bool isSitemapsIndex;
+  core.bool? isSitemapsIndex;
 
   /// Date & time in which this sitemap was last downloaded.
   ///
   /// Date format is in RFC 3339 format (yyyy-mm-dd).
-  core.String lastDownloaded;
+  core.String? lastDownloaded;
 
   /// Date & time in which this sitemap was submitted.
   ///
   /// Date format is in RFC 3339 format (yyyy-mm-dd).
-  core.String lastSubmitted;
+  core.String? lastSubmitted;
 
   /// The url of the sitemap.
-  core.String path;
+  core.String? path;
 
   /// The type of the sitemap.
   ///
@@ -1177,12 +1142,12 @@ class WmxSitemap {
   /// - "ATOM_FEED"
   /// - "PATTERN_SITEMAP" : Unsupported sitemap types.
   /// - "OCEANFRONT"
-  core.String type;
+  core.String? type;
 
   /// Number of warnings for the sitemap.
   ///
   /// These are generally non-critical issues with URLs in the sitemaps.
-  core.String warnings;
+  core.String? warnings;
 
   WmxSitemap();
 
@@ -1219,17 +1184,17 @@ class WmxSitemap {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (contents != null)
-          'contents': contents.map((value) => value.toJson()).toList(),
-        if (errors != null) 'errors': errors,
-        if (isPending != null) 'isPending': isPending,
-        if (isSitemapsIndex != null) 'isSitemapsIndex': isSitemapsIndex,
-        if (lastDownloaded != null) 'lastDownloaded': lastDownloaded,
-        if (lastSubmitted != null) 'lastSubmitted': lastSubmitted,
-        if (path != null) 'path': path,
-        if (type != null) 'type': type,
-        if (warnings != null) 'warnings': warnings,
+          'contents': contents!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!,
+        if (isPending != null) 'isPending': isPending!,
+        if (isSitemapsIndex != null) 'isSitemapsIndex': isSitemapsIndex!,
+        if (lastDownloaded != null) 'lastDownloaded': lastDownloaded!,
+        if (lastSubmitted != null) 'lastSubmitted': lastSubmitted!,
+        if (path != null) 'path': path!,
+        if (type != null) 'type': type!,
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -1237,10 +1202,10 @@ class WmxSitemap {
 class WmxSitemapContent {
   /// The number of URLs from the sitemap that were indexed (of the content
   /// type).
-  core.String indexed;
+  core.String? indexed;
 
   /// The number of URLs in the sitemap (of the content type).
-  core.String submitted;
+  core.String? submitted;
 
   /// The specific type of content in this sitemap.
   ///
@@ -1255,7 +1220,7 @@ class WmxSitemapContent {
   /// - "PATTERN" : Unsupported content type.
   /// - "IOS_APP"
   /// - "DATA_FEED_ELEMENT" : Unsupported content type.
-  core.String type;
+  core.String? type;
 
   WmxSitemapContent();
 
@@ -1271,9 +1236,9 @@ class WmxSitemapContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (indexed != null) 'indexed': indexed,
-        if (submitted != null) 'submitted': submitted,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (indexed != null) 'indexed': indexed!,
+        if (submitted != null) 'submitted': submitted!,
+        if (type != null) 'type': type!,
       };
 }

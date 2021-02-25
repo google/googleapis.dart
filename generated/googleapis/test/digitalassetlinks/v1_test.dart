@@ -42,8 +42,11 @@ api.AndroidAppAsset buildAndroidAppAsset() {
 void checkAndroidAppAsset(api.AndroidAppAsset o) {
   buildCounterAndroidAppAsset++;
   if (buildCounterAndroidAppAsset < 3) {
-    checkCertificateInfo(o.certificate as api.CertificateInfo);
-    unittest.expect(o.packageName, unittest.equals('foo'));
+    checkCertificateInfo(o.certificate! as api.CertificateInfo);
+    unittest.expect(
+      o.packageName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAndroidAppAsset--;
 }
@@ -63,8 +66,8 @@ api.Asset buildAsset() {
 void checkAsset(api.Asset o) {
   buildCounterAsset++;
   if (buildCounterAsset < 3) {
-    checkAndroidAppAsset(o.androidApp as api.AndroidAppAsset);
-    checkWebAsset(o.web as api.WebAsset);
+    checkAndroidAppAsset(o.androidApp! as api.AndroidAppAsset);
+    checkWebAsset(o.web! as api.WebAsset);
   }
   buildCounterAsset--;
 }
@@ -83,7 +86,10 @@ api.CertificateInfo buildCertificateInfo() {
 void checkCertificateInfo(api.CertificateInfo o) {
   buildCounterCertificateInfo++;
   if (buildCounterCertificateInfo < 3) {
-    unittest.expect(o.sha256Fingerprint, unittest.equals('foo'));
+    unittest.expect(
+      o.sha256Fingerprint!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCertificateInfo--;
 }
@@ -97,8 +103,14 @@ core.List<core.String> buildUnnamed3205() {
 
 void checkUnnamed3205(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterCheckResponse = 0;
@@ -118,10 +130,16 @@ api.CheckResponse buildCheckResponse() {
 void checkCheckResponse(api.CheckResponse o) {
   buildCounterCheckResponse++;
   if (buildCounterCheckResponse < 3) {
-    unittest.expect(o.debugString, unittest.equals('foo'));
-    checkUnnamed3205(o.errorCode);
-    unittest.expect(o.linked, unittest.isTrue);
-    unittest.expect(o.maxAge, unittest.equals('foo'));
+    unittest.expect(
+      o.debugString!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3205(o.errorCode!);
+    unittest.expect(o.linked!, unittest.isTrue);
+    unittest.expect(
+      o.maxAge!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCheckResponse--;
 }
@@ -135,8 +153,14 @@ core.List<core.String> buildUnnamed3206() {
 
 void checkUnnamed3206(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.Statement> buildUnnamed3207() {
@@ -169,10 +193,16 @@ api.ListResponse buildListResponse() {
 void checkListResponse(api.ListResponse o) {
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
-    unittest.expect(o.debugString, unittest.equals('foo'));
-    checkUnnamed3206(o.errorCode);
-    unittest.expect(o.maxAge, unittest.equals('foo'));
-    checkUnnamed3207(o.statements);
+    unittest.expect(
+      o.debugString!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3206(o.errorCode!);
+    unittest.expect(
+      o.maxAge!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3207(o.statements!);
   }
   buildCounterListResponse--;
 }
@@ -193,9 +223,12 @@ api.Statement buildStatement() {
 void checkStatement(api.Statement o) {
   buildCounterStatement++;
   if (buildCounterStatement < 3) {
-    unittest.expect(o.relation, unittest.equals('foo'));
-    checkAsset(o.source as api.Asset);
-    checkAsset(o.target as api.Asset);
+    unittest.expect(
+      o.relation!,
+      unittest.equals('foo'),
+    );
+    checkAsset(o.source! as api.Asset);
+    checkAsset(o.target! as api.Asset);
   }
   buildCounterStatement--;
 }
@@ -214,7 +247,10 @@ api.WebAsset buildWebAsset() {
 void checkWebAsset(api.WebAsset o) {
   buildCounterWebAsset++;
   if (buildCounterWebAsset < 3) {
-    unittest.expect(o.site, unittest.equals('foo'));
+    unittest.expect(
+      o.site!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterWebAsset--;
 }
@@ -294,10 +330,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("v1/assetlinks:check"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 19),
+          unittest.equals("v1/assetlinks:check"),
+        );
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -316,24 +356,37 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["relation"].first, unittest.equals(arg_relation));
+          queryMap["relation"]!.first,
+          unittest.equals(arg_relation),
+        );
         unittest.expect(
-            queryMap["source.androidApp.certificate.sha256Fingerprint"].first,
-            unittest
-                .equals(arg_source_androidApp_certificate_sha256Fingerprint));
-        unittest.expect(queryMap["source.androidApp.packageName"].first,
-            unittest.equals(arg_source_androidApp_packageName));
-        unittest.expect(queryMap["source.web.site"].first,
-            unittest.equals(arg_source_web_site));
+          queryMap["source.androidApp.certificate.sha256Fingerprint"]!.first,
+          unittest.equals(arg_source_androidApp_certificate_sha256Fingerprint),
+        );
         unittest.expect(
-            queryMap["target.androidApp.certificate.sha256Fingerprint"].first,
-            unittest
-                .equals(arg_target_androidApp_certificate_sha256Fingerprint));
-        unittest.expect(queryMap["target.androidApp.packageName"].first,
-            unittest.equals(arg_target_androidApp_packageName));
-        unittest.expect(queryMap["target.web.site"].first,
-            unittest.equals(arg_target_web_site));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["source.androidApp.packageName"]!.first,
+          unittest.equals(arg_source_androidApp_packageName),
+        );
+        unittest.expect(
+          queryMap["source.web.site"]!.first,
+          unittest.equals(arg_source_web_site),
+        );
+        unittest.expect(
+          queryMap["target.androidApp.certificate.sha256Fingerprint"]!.first,
+          unittest.equals(arg_target_androidApp_certificate_sha256Fingerprint),
+        );
+        unittest.expect(
+          queryMap["target.androidApp.packageName"]!.first,
+          unittest.equals(arg_target_androidApp_packageName),
+        );
+        unittest.expect(
+          queryMap["target.web.site"]!.first,
+          unittest.equals(arg_target_web_site),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -374,10 +427,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("v1/statements:list"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("v1/statements:list"),
+        );
         pathOffset += 18;
 
         var query = (req.url).query;
@@ -396,16 +453,25 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["relation"].first, unittest.equals(arg_relation));
+          queryMap["relation"]!.first,
+          unittest.equals(arg_relation),
+        );
         unittest.expect(
-            queryMap["source.androidApp.certificate.sha256Fingerprint"].first,
-            unittest
-                .equals(arg_source_androidApp_certificate_sha256Fingerprint));
-        unittest.expect(queryMap["source.androidApp.packageName"].first,
-            unittest.equals(arg_source_androidApp_packageName));
-        unittest.expect(queryMap["source.web.site"].first,
-            unittest.equals(arg_source_web_site));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["source.androidApp.certificate.sha256Fingerprint"]!.first,
+          unittest.equals(arg_source_androidApp_certificate_sha256Fingerprint),
+        );
+        unittest.expect(
+          queryMap["source.androidApp.packageName"]!.first,
+          unittest.equals(arg_source_androidApp_packageName),
+        );
+        unittest.expect(
+          queryMap["source.web.site"]!.first,
+          unittest.equals(arg_source_web_site),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

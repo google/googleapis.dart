@@ -143,13 +143,9 @@ class AccountsClientsResource {
   async.Future<Client> create(
     Client request,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -190,14 +186,8 @@ class AccountsClientsResource {
   async.Future<Client> get(
     core.String accountId,
     core.String clientAccountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (clientAccountId == null) {
-      throw core.ArgumentError('Parameter clientAccountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -245,14 +235,11 @@ class AccountsClientsResource {
   /// this method will complete with the same error.
   async.Future<ListClientsResponse> list(
     core.String accountId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String partnerClientId,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? partnerClientId,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -300,16 +287,9 @@ class AccountsClientsResource {
     Client request,
     core.String accountId,
     core.String clientAccountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (clientAccountId == null) {
-      throw core.ArgumentError('Parameter clientAccountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -362,16 +342,9 @@ class AccountsClientsInvitationsResource {
     ClientUserInvitation request,
     core.String accountId,
     core.String clientAccountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (clientAccountId == null) {
-      throw core.ArgumentError('Parameter clientAccountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -419,17 +392,8 @@ class AccountsClientsInvitationsResource {
     core.String accountId,
     core.String clientAccountId,
     core.String invitationId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (clientAccountId == null) {
-      throw core.ArgumentError('Parameter clientAccountId is required.');
-    }
-    if (invitationId == null) {
-      throw core.ArgumentError('Parameter invitationId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -484,16 +448,10 @@ class AccountsClientsInvitationsResource {
   async.Future<ListClientUserInvitationsResponse> list(
     core.String accountId,
     core.String clientAccountId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (clientAccountId == null) {
-      throw core.ArgumentError('Parameter clientAccountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -548,17 +506,8 @@ class AccountsClientsUsersResource {
     core.String accountId,
     core.String clientAccountId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (clientAccountId == null) {
-      throw core.ArgumentError('Parameter clientAccountId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -612,16 +561,10 @@ class AccountsClientsUsersResource {
   async.Future<ListClientUsersResponse> list(
     core.String accountId,
     core.String clientAccountId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (clientAccountId == null) {
-      throw core.ArgumentError('Parameter clientAccountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -674,19 +617,9 @@ class AccountsClientsUsersResource {
     core.String accountId,
     core.String clientAccountId,
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (clientAccountId == null) {
-      throw core.ArgumentError('Parameter clientAccountId is required.');
-    }
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -751,14 +684,10 @@ class AccountsCreativesResource {
   async.Future<Creative> create(
     Creative request,
     core.String accountId, {
-    core.String duplicateIdMode,
-    core.String $fields,
+    core.String? duplicateIdMode,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (duplicateIdMode != null) 'duplicateIdMode': [duplicateIdMode],
       if ($fields != null) 'fields': [$fields],
@@ -798,14 +727,8 @@ class AccountsCreativesResource {
   async.Future<Creative> get(
     core.String accountId,
     core.String creativeId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (creativeId == null) {
-      throw core.ArgumentError('Parameter creativeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -862,14 +785,11 @@ class AccountsCreativesResource {
   /// this method will complete with the same error.
   async.Future<ListCreativesResponse> list(
     core.String accountId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String query,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? query,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -918,16 +838,9 @@ class AccountsCreativesResource {
     StopWatchingCreativeRequest request,
     core.String accountId,
     core.String creativeId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (creativeId == null) {
-      throw core.ArgumentError('Parameter creativeId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -973,16 +886,9 @@ class AccountsCreativesResource {
     Creative request,
     core.String accountId,
     core.String creativeId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (creativeId == null) {
-      throw core.ArgumentError('Parameter creativeId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1031,16 +937,9 @@ class AccountsCreativesResource {
     WatchCreativeRequest request,
     core.String accountId,
     core.String creativeId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (creativeId == null) {
-      throw core.ArgumentError('Parameter creativeId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1091,16 +990,9 @@ class AccountsCreativesDealAssociationsResource {
     AddDealAssociationRequest request,
     core.String accountId,
     core.String creativeId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (creativeId == null) {
-      throw core.ArgumentError('Parameter creativeId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1159,17 +1051,11 @@ class AccountsCreativesDealAssociationsResource {
   async.Future<ListDealAssociationsResponse> list(
     core.String accountId,
     core.String creativeId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String query,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? query,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (creativeId == null) {
-      throw core.ArgumentError('Parameter creativeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1216,16 +1102,9 @@ class AccountsCreativesDealAssociationsResource {
     RemoveDealAssociationRequest request,
     core.String accountId,
     core.String creativeId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (creativeId == null) {
-      throw core.ArgumentError('Parameter creativeId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1294,15 +1173,12 @@ class AccountsFinalizedProposalsResource {
   /// this method will complete with the same error.
   async.Future<ListProposalsResponse> list(
     core.String accountId, {
-    core.String filter,
-    core.String filterSyntax,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? filterSyntax,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (filterSyntax != null) 'filterSyntax': [filterSyntax],
@@ -1351,14 +1227,8 @@ class AccountsProductsResource {
   async.Future<Product> get(
     core.String accountId,
     core.String productId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1405,14 +1275,11 @@ class AccountsProductsResource {
   /// this method will complete with the same error.
   async.Future<ListProductsResponse> list(
     core.String accountId, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1469,16 +1336,9 @@ class AccountsProposalsResource {
     AcceptProposalRequest request,
     core.String accountId,
     core.String proposalId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (proposalId == null) {
-      throw core.ArgumentError('Parameter proposalId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1525,16 +1385,9 @@ class AccountsProposalsResource {
     AddNoteRequest request,
     core.String accountId,
     core.String proposalId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (proposalId == null) {
-      throw core.ArgumentError('Parameter proposalId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1581,16 +1434,9 @@ class AccountsProposalsResource {
     CancelNegotiationRequest request,
     core.String accountId,
     core.String proposalId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (proposalId == null) {
-      throw core.ArgumentError('Parameter proposalId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1640,16 +1486,9 @@ class AccountsProposalsResource {
     CompleteSetupRequest request,
     core.String accountId,
     core.String proposalId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (proposalId == null) {
-      throw core.ArgumentError('Parameter proposalId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1693,13 +1532,9 @@ class AccountsProposalsResource {
   async.Future<Proposal> create(
     Proposal request,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1740,14 +1575,8 @@ class AccountsProposalsResource {
   async.Future<Proposal> get(
     core.String accountId,
     core.String proposalId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (proposalId == null) {
-      throw core.ArgumentError('Parameter proposalId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1811,15 +1640,12 @@ class AccountsProposalsResource {
   /// this method will complete with the same error.
   async.Future<ListProposalsResponse> list(
     core.String accountId, {
-    core.String filter,
-    core.String filterSyntax,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? filterSyntax,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (filterSyntax != null) 'filterSyntax': [filterSyntax],
@@ -1871,16 +1697,9 @@ class AccountsProposalsResource {
     PauseProposalRequest request,
     core.String accountId,
     core.String proposalId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (proposalId == null) {
-      throw core.ArgumentError('Parameter proposalId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1931,16 +1750,9 @@ class AccountsProposalsResource {
     ResumeProposalRequest request,
     core.String accountId,
     core.String proposalId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (proposalId == null) {
-      throw core.ArgumentError('Parameter proposalId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1994,16 +1806,9 @@ class AccountsProposalsResource {
     Proposal request,
     core.String accountId,
     core.String proposalId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (proposalId == null) {
-      throw core.ArgumentError('Parameter proposalId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2050,14 +1855,8 @@ class AccountsPublisherProfilesResource {
   async.Future<PublisherProfile> get(
     core.String accountId,
     core.String publisherProfileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
-    if (publisherProfileId == null) {
-      throw core.ArgumentError('Parameter publisherProfileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2098,13 +1897,10 @@ class AccountsPublisherProfilesResource {
   /// this method will complete with the same error.
   async.Future<ListPublisherProfilesResponse> list(
     core.String accountId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2202,14 +1998,10 @@ class BiddersAccountsFilterSetsResource {
   async.Future<FilterSet> create(
     FilterSet request,
     core.String ownerName, {
-    core.bool isTransient,
-    core.String $fields,
+    core.bool? isTransient,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (ownerName == null) {
-      throw core.ArgumentError('Parameter ownerName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (isTransient != null) 'isTransient': ['${isTransient}'],
       if ($fields != null) 'fields': [$fields],
@@ -2254,11 +2046,8 @@ class BiddersAccountsFilterSetsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2299,11 +2088,8 @@ class BiddersAccountsFilterSetsResource {
   /// this method will complete with the same error.
   async.Future<FilterSet> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2350,13 +2136,10 @@ class BiddersAccountsFilterSetsResource {
   /// this method will complete with the same error.
   async.Future<ListFilterSetsResponse> list(
     core.String ownerName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (ownerName == null) {
-      throw core.ArgumentError('Parameter ownerName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2417,13 +2200,10 @@ class BiddersAccountsFilterSetsBidMetricsResource {
   /// this method will complete with the same error.
   async.Future<ListBidMetricsResponse> list(
     core.String filterSetName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2486,13 +2266,10 @@ class BiddersAccountsFilterSetsBidResponseErrorsResource {
   /// this method will complete with the same error.
   async.Future<ListBidResponseErrorsResponse> list(
     core.String filterSetName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2556,13 +2333,10 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResource {
   /// this method will complete with the same error.
   async.Future<ListBidResponsesWithoutBidsResponse> list(
     core.String filterSetName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2625,13 +2399,10 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResource {
   /// this method will complete with the same error.
   async.Future<ListFilteredBidRequestsResponse> list(
     core.String filterSetName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2698,13 +2469,10 @@ class BiddersAccountsFilterSetsFilteredBidsResource {
   /// this method will complete with the same error.
   async.Future<ListFilteredBidsResponse> list(
     core.String filterSetName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2772,16 +2540,10 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResource {
   async.Future<ListCreativeStatusBreakdownByCreativeResponse> list(
     core.String filterSetName,
     core.int creativeStatusId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
-    if (creativeStatusId == null) {
-      throw core.ArgumentError('Parameter creativeStatusId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2853,16 +2615,10 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResource {
   async.Future<ListCreativeStatusBreakdownByDetailResponse> list(
     core.String filterSetName,
     core.int creativeStatusId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
-    if (creativeStatusId == null) {
-      throw core.ArgumentError('Parameter creativeStatusId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2926,13 +2682,10 @@ class BiddersAccountsFilterSetsImpressionMetricsResource {
   /// this method will complete with the same error.
   async.Future<ListImpressionMetricsResponse> list(
     core.String filterSetName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2994,13 +2747,10 @@ class BiddersAccountsFilterSetsLosingBidsResource {
   /// this method will complete with the same error.
   async.Future<ListLosingBidsResponse> list(
     core.String filterSetName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3063,13 +2813,10 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResource {
   /// this method will complete with the same error.
   async.Future<ListNonBillableWinningBidsResponse> list(
     core.String filterSetName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3145,14 +2892,10 @@ class BiddersFilterSetsResource {
   async.Future<FilterSet> create(
     FilterSet request,
     core.String ownerName, {
-    core.bool isTransient,
-    core.String $fields,
+    core.bool? isTransient,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (ownerName == null) {
-      throw core.ArgumentError('Parameter ownerName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (isTransient != null) 'isTransient': ['${isTransient}'],
       if ($fields != null) 'fields': [$fields],
@@ -3196,11 +2939,8 @@ class BiddersFilterSetsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3240,11 +2980,8 @@ class BiddersFilterSetsResource {
   /// this method will complete with the same error.
   async.Future<FilterSet> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3291,13 +3028,10 @@ class BiddersFilterSetsResource {
   /// this method will complete with the same error.
   async.Future<ListFilterSetsResponse> list(
     core.String ownerName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (ownerName == null) {
-      throw core.ArgumentError('Parameter ownerName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3357,13 +3091,10 @@ class BiddersFilterSetsBidMetricsResource {
   /// this method will complete with the same error.
   async.Future<ListBidMetricsResponse> list(
     core.String filterSetName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3424,13 +3155,10 @@ class BiddersFilterSetsBidResponseErrorsResource {
   /// this method will complete with the same error.
   async.Future<ListBidResponseErrorsResponse> list(
     core.String filterSetName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3492,13 +3220,10 @@ class BiddersFilterSetsBidResponsesWithoutBidsResource {
   /// this method will complete with the same error.
   async.Future<ListBidResponsesWithoutBidsResponse> list(
     core.String filterSetName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3559,13 +3284,10 @@ class BiddersFilterSetsFilteredBidRequestsResource {
   /// this method will complete with the same error.
   async.Future<ListFilteredBidRequestsResponse> list(
     core.String filterSetName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3631,13 +3353,10 @@ class BiddersFilterSetsFilteredBidsResource {
   /// this method will complete with the same error.
   async.Future<ListFilteredBidsResponse> list(
     core.String filterSetName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3703,16 +3422,10 @@ class BiddersFilterSetsFilteredBidsCreativesResource {
   async.Future<ListCreativeStatusBreakdownByCreativeResponse> list(
     core.String filterSetName,
     core.int creativeStatusId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
-    if (creativeStatusId == null) {
-      throw core.ArgumentError('Parameter creativeStatusId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3782,16 +3495,10 @@ class BiddersFilterSetsFilteredBidsDetailsResource {
   async.Future<ListCreativeStatusBreakdownByDetailResponse> list(
     core.String filterSetName,
     core.int creativeStatusId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
-    if (creativeStatusId == null) {
-      throw core.ArgumentError('Parameter creativeStatusId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3853,13 +3560,10 @@ class BiddersFilterSetsImpressionMetricsResource {
   /// this method will complete with the same error.
   async.Future<ListImpressionMetricsResponse> list(
     core.String filterSetName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3920,13 +3624,10 @@ class BiddersFilterSetsLosingBidsResource {
   /// this method will complete with the same error.
   async.Future<ListLosingBidsResponse> list(
     core.String filterSetName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3987,13 +3688,10 @@ class BiddersFilterSetsNonBillableWinningBidsResource {
   /// this method will complete with the same error.
   async.Future<ListNonBillableWinningBidsResponse> list(
     core.String filterSetName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filterSetName == null) {
-      throw core.ArgumentError('Parameter filterSetName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -4025,13 +3723,13 @@ class AbsoluteDateRange {
   ///
   /// Must be within the 30 days leading up to current date, and must be equal
   /// to or after start_date.
-  Date endDate;
+  Date? endDate;
 
   /// The start date of the range (inclusive).
   ///
   /// Must be within the 30 days leading up to current date, and must be equal
   /// to or before end_date.
-  Date startDate;
+  Date? startDate;
 
   AbsoluteDateRange();
 
@@ -4046,16 +3744,16 @@ class AbsoluteDateRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endDate != null) 'endDate': endDate.toJson(),
-        if (startDate != null) 'startDate': startDate.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endDate != null) 'endDate': endDate!.toJson(),
+        if (startDate != null) 'startDate': startDate!.toJson(),
       };
 }
 
 /// Request to accept a proposal.
 class AcceptProposalRequest {
   /// The last known client revision number of the proposal.
-  core.String proposalRevision;
+  core.String? proposalRevision;
 
   AcceptProposalRequest();
 
@@ -4065,8 +3763,8 @@ class AcceptProposalRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (proposalRevision != null) 'proposalRevision': proposalRevision,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (proposalRevision != null) 'proposalRevision': proposalRevision!,
       };
 }
 
@@ -4075,7 +3773,7 @@ class AdSize {
   /// The height of the ad slot in pixels.
   ///
   /// This field will be present only when size type is `PIXEL`.
-  core.String height;
+  core.String? height;
 
   /// The size type of the ad slot.
   /// Possible string values are:
@@ -4085,12 +3783,12 @@ class AdSize {
   /// - "NATIVE" : Native (mobile) ads rendered by the publisher.
   /// - "FLUID" : Fluid size (i.e., responsive size) can be resized
   /// automatically with the change of outside environment.
-  core.String sizeType;
+  core.String? sizeType;
 
   /// The width of the ad slot in pixels.
   ///
   /// This field will be present only when size type is `PIXEL`.
-  core.String width;
+  core.String? width;
 
   AdSize();
 
@@ -4106,10 +3804,10 @@ class AdSize {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (sizeType != null) 'sizeType': sizeType,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (sizeType != null) 'sizeType': sizeType!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -4130,14 +3828,14 @@ class AdTechnologyProviders {
   /// protocol)\[https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto\],
   /// and a bid is submitted with that creative for an impression that will
   /// serve to an EEA user, the bid will be filtered before the auction.
-  core.List<core.String> detectedProviderIds;
+  core.List<core.String>? detectedProviderIds;
 
   /// Whether the creative contains an unidentified ad technology provider.
   ///
   /// If true for a given creative, any bid submitted with that creative for an
   /// impression that will serve to an EEA user will be filtered before the
   /// auction.
-  core.bool hasUnidentifiedProvider;
+  core.bool? hasUnidentifiedProvider;
 
   AdTechnologyProviders();
 
@@ -4152,18 +3850,18 @@ class AdTechnologyProviders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (detectedProviderIds != null)
-          'detectedProviderIds': detectedProviderIds,
+          'detectedProviderIds': detectedProviderIds!,
         if (hasUnidentifiedProvider != null)
-          'hasUnidentifiedProvider': hasUnidentifiedProvider,
+          'hasUnidentifiedProvider': hasUnidentifiedProvider!,
       };
 }
 
 /// A request for associating a deal and a creative.
 class AddDealAssociationRequest {
   /// The association between a creative and a deal that should be added.
-  CreativeDealAssociation association;
+  CreativeDealAssociation? association;
 
   AddDealAssociationRequest();
 
@@ -4174,15 +3872,15 @@ class AddDealAssociationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (association != null) 'association': association.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (association != null) 'association': association!.toJson(),
       };
 }
 
 /// Request message for adding a note to a given proposal.
 class AddNoteRequest {
   /// Details of the note to add.
-  Note note;
+  Note? note;
 
   AddNoteRequest();
 
@@ -4193,8 +3891,8 @@ class AddNoteRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (note != null) 'note': note.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (note != null) 'note': note!.toJson(),
       };
 }
 
@@ -4203,7 +3901,7 @@ class AddNoteRequest {
 /// Output only.
 class AppContext {
   /// The app types this restriction applies to.
-  core.List<core.String> appTypes;
+  core.List<core.String>? appTypes;
 
   AppContext();
 
@@ -4215,8 +3913,8 @@ class AppContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appTypes != null) 'appTypes': appTypes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appTypes != null) 'appTypes': appTypes!,
       };
 }
 
@@ -4225,7 +3923,7 @@ class AppContext {
 /// Output only.
 class AuctionContext {
   /// The auction types this restriction applies to.
-  core.List<core.String> auctionTypes;
+  core.List<core.String>? auctionTypes;
 
   AuctionContext();
 
@@ -4237,8 +3935,8 @@ class AuctionContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (auctionTypes != null) 'auctionTypes': auctionTypes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (auctionTypes != null) 'auctionTypes': auctionTypes!,
       };
 }
 
@@ -4247,31 +3945,31 @@ class AuctionContext {
 /// each stage of the bidding funnel;
 class BidMetricsRow {
   /// The number of bids that Ad Exchange received from the buyer.
-  MetricValue bids;
+  MetricValue? bids;
 
   /// The number of bids that were permitted to compete in the auction.
-  MetricValue bidsInAuction;
+  MetricValue? bidsInAuction;
 
   /// The number of bids for which the buyer was billed.
-  MetricValue billedImpressions;
+  MetricValue? billedImpressions;
 
   /// The number of bids that won the auction.
-  MetricValue impressionsWon;
+  MetricValue? impressionsWon;
 
   /// The number of bids for which the corresponding impression was measurable
   /// for viewability (as defined by Active View).
-  MetricValue measurableImpressions;
+  MetricValue? measurableImpressions;
 
   /// The number of bids that won the auction and also won the mediation
   /// waterfall (if any).
-  MetricValue reachedQueries;
+  MetricValue? reachedQueries;
 
   /// The values of all dimensions associated with metric values in this row.
-  RowDimensions rowDimensions;
+  RowDimensions? rowDimensions;
 
   /// The number of bids for which the corresponding impression was viewable (as
   /// defined by Active View).
-  MetricValue viewableImpressions;
+  MetricValue? viewableImpressions;
 
   BidMetricsRow();
 
@@ -4311,18 +4009,18 @@ class BidMetricsRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bids != null) 'bids': bids.toJson(),
-        if (bidsInAuction != null) 'bidsInAuction': bidsInAuction.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bids != null) 'bids': bids!.toJson(),
+        if (bidsInAuction != null) 'bidsInAuction': bidsInAuction!.toJson(),
         if (billedImpressions != null)
-          'billedImpressions': billedImpressions.toJson(),
-        if (impressionsWon != null) 'impressionsWon': impressionsWon.toJson(),
+          'billedImpressions': billedImpressions!.toJson(),
+        if (impressionsWon != null) 'impressionsWon': impressionsWon!.toJson(),
         if (measurableImpressions != null)
-          'measurableImpressions': measurableImpressions.toJson(),
-        if (reachedQueries != null) 'reachedQueries': reachedQueries.toJson(),
-        if (rowDimensions != null) 'rowDimensions': rowDimensions.toJson(),
+          'measurableImpressions': measurableImpressions!.toJson(),
+        if (reachedQueries != null) 'reachedQueries': reachedQueries!.toJson(),
+        if (rowDimensions != null) 'rowDimensions': rowDimensions!.toJson(),
         if (viewableImpressions != null)
-          'viewableImpressions': viewableImpressions.toJson(),
+          'viewableImpressions': viewableImpressions!.toJson(),
       };
 }
 
@@ -4331,10 +4029,10 @@ class BidMetricsRow {
 class BidResponseWithoutBidsStatusRow {
   /// The number of impressions for which there was a bid response with the
   /// specified status.
-  MetricValue impressionCount;
+  MetricValue? impressionCount;
 
   /// The values of all dimensions associated with metric values in this row.
-  RowDimensions rowDimensions;
+  RowDimensions? rowDimensions;
 
   /// The status specifying why the bid responses were considered to have no
   /// applicable bids.
@@ -4352,7 +4050,7 @@ class BidResponseWithoutBidsStatusRow {
   /// bidder and an account filter is not present, this also includes responses
   /// that have bids on behalf of accounts other than the account to which the
   /// deal belongs.
-  core.String status;
+  core.String? status;
 
   BidResponseWithoutBidsStatusRow();
 
@@ -4370,11 +4068,11 @@ class BidResponseWithoutBidsStatusRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (impressionCount != null)
-          'impressionCount': impressionCount.toJson(),
-        if (rowDimensions != null) 'rowDimensions': rowDimensions.toJson(),
-        if (status != null) 'status': status,
+          'impressionCount': impressionCount!.toJson(),
+        if (rowDimensions != null) 'rowDimensions': rowDimensions!.toJson(),
+        if (status != null) 'status': status!,
       };
 }
 
@@ -4383,7 +4081,7 @@ class BidResponseWithoutBidsStatusRow {
 /// Each buyer is identified by a unique Authorized Buyers account ID.
 class Buyer {
   /// Authorized Buyers account ID of the buyer.
-  core.String accountId;
+  core.String? accountId;
 
   Buyer();
 
@@ -4393,8 +4091,8 @@ class Buyer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
       };
 }
 
@@ -4406,14 +4104,14 @@ class CalloutStatusRow {
   ///
   /// See
   /// \[callout-status-codes\](https://developers.google.com/authorized-buyers/rtb/downloads/callout-status-codes).
-  core.int calloutStatusId;
+  core.int? calloutStatusId;
 
   /// The number of impressions for which there was a bid request or bid
   /// response with the specified callout status.
-  MetricValue impressionCount;
+  MetricValue? impressionCount;
 
   /// The values of all dimensions associated with metric values in this row.
-  RowDimensions rowDimensions;
+  RowDimensions? rowDimensions;
 
   CalloutStatusRow();
 
@@ -4431,11 +4129,11 @@ class CalloutStatusRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (calloutStatusId != null) 'calloutStatusId': calloutStatusId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (calloutStatusId != null) 'calloutStatusId': calloutStatusId!,
         if (impressionCount != null)
-          'impressionCount': impressionCount.toJson(),
-        if (rowDimensions != null) 'rowDimensions': rowDimensions.toJson(),
+          'impressionCount': impressionCount!.toJson(),
+        if (rowDimensions != null) 'rowDimensions': rowDimensions!.toJson(),
       };
 }
 
@@ -4447,7 +4145,7 @@ class CancelNegotiationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A client resource represents a client buyer—an agency, a brand, or an
@@ -4461,14 +4159,14 @@ class Client {
   /// The globally-unique numerical ID of the client.
   ///
   /// The value of this field is ignored in create and update operations.
-  core.String clientAccountId;
+  core.String? clientAccountId;
 
   /// Name used to represent this client to publishers.
   ///
   /// You may have multiple clients that map to the same entity, but for each
   /// client the combination of `clientName` and entity must be unique. You can
   /// specify this field as empty.
-  core.String clientName;
+  core.String? clientName;
 
   /// Numerical identifier of the client entity.
   ///
@@ -4484,13 +4182,13 @@ class Client {
   /// the
   /// [agencies.txt](https://storage.googleapis.com/adx-rtb-dictionaries/agencies.txt)
   /// file.
-  core.String entityId;
+  core.String? entityId;
 
   /// The name of the entity.
   ///
   /// This field is automatically fetched based on the type and ID. The value of
   /// this field is ignored in create and update operations.
-  core.String entityName;
+  core.String? entityName;
 
   /// An optional field for specifying the type of the client entity:
   /// `ADVERTISER`, `BRAND`, or `AGENCY`.
@@ -4502,7 +4200,7 @@ class Client {
   /// - "AGENCY" : An advertising agency.
   /// - "ENTITY_TYPE_UNCLASSIFIED" : An explicit value for a client that was not
   /// yet classified as any particular entity.
-  core.String entityType;
+  core.String? entityType;
 
   /// Optional arbitrary unique identifier of this client buyer from the
   /// standpoint of its Ad Exchange sponsor buyer.
@@ -4512,7 +4210,7 @@ class Client {
   /// identifier and verify whether an Ad Exchange counterpart of a given client
   /// buyer already exists. If present, must be unique among all the client
   /// buyers for its Ad Exchange sponsor buyer.
-  core.String partnerClientId;
+  core.String? partnerClientId;
 
   /// The role which is assigned to the client buyer.
   ///
@@ -4532,7 +4230,7 @@ class Client {
   /// eligible deals on your behalf. Some deals may still explicitly require
   /// publisher finalization. If this role is not selected, the sponsor buyer
   /// will need to manually approve each of their deals.
-  core.String role;
+  core.String? role;
 
   /// The status of the client buyer.
   /// Possible string values are:
@@ -4540,10 +4238,10 @@ class Client {
   /// status.
   /// - "DISABLED" : A client that is currently disabled.
   /// - "ACTIVE" : A client that is currently active.
-  core.String status;
+  core.String? status;
 
   /// Whether the client buyer will be visible to sellers.
-  core.bool visibleToSeller;
+  core.bool? visibleToSeller;
 
   Client();
 
@@ -4577,16 +4275,16 @@ class Client {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientAccountId != null) 'clientAccountId': clientAccountId,
-        if (clientName != null) 'clientName': clientName,
-        if (entityId != null) 'entityId': entityId,
-        if (entityName != null) 'entityName': entityName,
-        if (entityType != null) 'entityType': entityType,
-        if (partnerClientId != null) 'partnerClientId': partnerClientId,
-        if (role != null) 'role': role,
-        if (status != null) 'status': status,
-        if (visibleToSeller != null) 'visibleToSeller': visibleToSeller,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientAccountId != null) 'clientAccountId': clientAccountId!,
+        if (clientName != null) 'clientName': clientName!,
+        if (entityId != null) 'entityId': entityId!,
+        if (entityName != null) 'entityName': entityName!,
+        if (entityType != null) 'entityType': entityType!,
+        if (partnerClientId != null) 'partnerClientId': partnerClientId!,
+        if (role != null) 'role': role!,
+        if (status != null) 'status': status!,
+        if (visibleToSeller != null) 'visibleToSeller': visibleToSeller!,
       };
 }
 
@@ -4602,12 +4300,12 @@ class ClientUser {
   /// associated; the buyer must be a client of the current sponsor buyer.
   ///
   /// The value of this field is ignored in an update operation.
-  core.String clientAccountId;
+  core.String? clientAccountId;
 
   /// User's email address.
   ///
   /// The value of this field is ignored in an update operation.
-  core.String email;
+  core.String? email;
 
   /// The status of the client user.
   /// Possible string values are:
@@ -4616,13 +4314,13 @@ class ClientUser {
   /// invitation yet.
   /// - "ACTIVE" : A user that is currently active.
   /// - "DISABLED" : A user that is currently disabled.
-  core.String status;
+  core.String? status;
 
   /// The unique numerical ID of the client user that has accepted an
   /// invitation.
   ///
   /// The value of this field is ignored in an update operation.
-  core.String userId;
+  core.String? userId;
 
   ClientUser();
 
@@ -4641,11 +4339,11 @@ class ClientUser {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientAccountId != null) 'clientAccountId': clientAccountId,
-        if (email != null) 'email': email,
-        if (status != null) 'status': status,
-        if (userId != null) 'userId': userId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientAccountId != null) 'clientAccountId': clientAccountId!,
+        if (email != null) 'email': email!,
+        if (status != null) 'status': status!,
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -4658,18 +4356,18 @@ class ClientUserInvitation {
   /// associated with.
   ///
   /// The value of this field is ignored in create operations.
-  core.String clientAccountId;
+  core.String? clientAccountId;
 
   /// The email address to which the invitation is sent.
   ///
   /// Email addresses should be unique among all client users under each sponsor
   /// buyer.
-  core.String email;
+  core.String? email;
 
   /// The unique numerical ID of the invitation that is sent to the user.
   ///
   /// The value of this field is ignored in create operations.
-  core.String invitationId;
+  core.String? invitationId;
 
   ClientUserInvitation();
 
@@ -4685,10 +4383,10 @@ class ClientUserInvitation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientAccountId != null) 'clientAccountId': clientAccountId,
-        if (email != null) 'email': email,
-        if (invitationId != null) 'invitationId': invitationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientAccountId != null) 'clientAccountId': clientAccountId!,
+        if (email != null) 'email': email!,
+        if (invitationId != null) 'invitationId': invitationId!,
       };
 }
 
@@ -4700,16 +4398,16 @@ class CompleteSetupRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Contains information on how a buyer or seller can be reached.
 class ContactInformation {
   /// Email address for the contact.
-  core.String email;
+  core.String? email;
 
   /// The name of the contact.
-  core.String name;
+  core.String? name;
 
   ContactInformation();
 
@@ -4722,9 +4420,9 @@ class ContactInformation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -4733,10 +4431,10 @@ class ContactInformation {
 /// Output only.
 class Correction {
   /// The contexts for the correction.
-  core.List<ServingContext> contexts;
+  core.List<ServingContext>? contexts;
 
   /// Additional details about what was corrected.
-  core.List<core.String> details;
+  core.List<core.String>? details;
 
   /// The type of correction that was applied to the creative.
   /// Possible string values are:
@@ -4764,7 +4462,7 @@ class Correction {
   /// - "FLASH_ATTRIBUTE_REMOVED" : The ad unnecessarily declared the Flash
   /// attribute, so the Flash attribute was removed.
   /// - "VIDEO_IN_SNIPPET_ATTRIBUTE_ADDED" : The ad contains video content.
-  core.String type;
+  core.String? type;
 
   Correction();
 
@@ -4785,11 +4483,11 @@ class Correction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (contexts != null)
-          'contexts': contexts.map((value) => value.toJson()).toList(),
-        if (details != null) 'details': details,
-        if (type != null) 'type': type,
+          'contexts': contexts!.map((value) => value.toJson()).toList(),
+        if (details != null) 'details': details!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4798,44 +4496,44 @@ class Creative {
   /// The account that this creative belongs to.
   ///
   /// Can be used to filter the response of the creatives.list method.
-  core.String accountId;
+  core.String? accountId;
 
   /// The link to AdChoices destination page.
-  core.String adChoicesDestinationUrl;
+  core.String? adChoicesDestinationUrl;
 
   /// The detected ad technology providers.
   ///
   /// Output only.
-  AdTechnologyProviders adTechnologyProviders;
+  AdTechnologyProviders? adTechnologyProviders;
 
   /// The name of the company being advertised in the creative.
-  core.String advertiserName;
+  core.String? advertiserName;
 
   /// The agency ID for this creative.
-  core.String agencyId;
+  core.String? agencyId;
 
   /// The last update timestamp of the creative via API.
   ///
   /// Output only.
-  core.String apiUpdateTime;
+  core.String? apiUpdateTime;
 
   /// All attributes for the ads that may be shown from this creative.
   ///
   /// Can be used to filter the response of the creatives.list method.
-  core.List<core.String> attributes;
+  core.List<core.String>? attributes;
 
   /// The set of destination URLs for the creative.
-  core.List<core.String> clickThroughUrls;
+  core.List<core.String>? clickThroughUrls;
 
   /// Shows any corrections that were applied to this creative.
   ///
   /// Output only.
-  core.List<Correction> corrections;
+  core.List<Correction>? corrections;
 
   /// The buyer-defined creative ID of this creative.
   ///
   /// Can be used to filter the response of the creatives.list method.
-  core.String creativeId;
+  core.String? creativeId;
 
   /// The top-level deals status of this creative.
   ///
@@ -4857,20 +4555,20 @@ class Creative {
   /// used.
   /// - "STATUS_TYPE_UNSPECIFIED" : Placeholder for transition to v1beta1.
   /// Currently not used.
-  core.String dealsStatus;
+  core.String? dealsStatus;
 
   /// The set of declared destination URLs for the creative.
-  core.List<core.String> declaredClickThroughUrls;
+  core.List<core.String>? declaredClickThroughUrls;
 
   /// Detected advertiser IDs, if any.
   ///
   /// Output only.
-  core.List<core.String> detectedAdvertiserIds;
+  core.List<core.String>? detectedAdvertiserIds;
 
   /// The detected domains for this creative.
   ///
   /// Output only.
-  core.List<core.String> detectedDomains;
+  core.List<core.String>? detectedDomains;
 
   /// The detected languages for this creative.
   ///
@@ -4878,7 +4576,7 @@ class Creative {
   /// at https://developers.google.com/adwords/api/docs/appendix/languagecodes.
   ///
   /// Output only.
-  core.List<core.String> detectedLanguages;
+  core.List<core.String>? detectedLanguages;
 
   /// Detected product categories, if any.
   ///
@@ -4886,7 +4584,7 @@ class Creative {
   /// a list of IDs.
   ///
   /// Output only.
-  core.List<core.int> detectedProductCategories;
+  core.List<core.int>? detectedProductCategories;
 
   /// Detected sensitive categories, if any.
   ///
@@ -4895,16 +4593,16 @@ class Creative {
   /// excluded-sensitive-category field in the bid request to filter your bids.
   ///
   /// Output only.
-  core.List<core.int> detectedSensitiveCategories;
+  core.List<core.int>? detectedSensitiveCategories;
 
   /// An HTML creative.
-  HtmlContent html;
+  HtmlContent? html;
 
   /// The set of URLs to be called to record an impression.
-  core.List<core.String> impressionTrackingUrls;
+  core.List<core.String>? impressionTrackingUrls;
 
   /// A native creative.
-  NativeContent native;
+  NativeContent? native;
 
   /// The top-level open auction status of this creative.
   ///
@@ -4926,11 +4624,11 @@ class Creative {
   /// used.
   /// - "STATUS_TYPE_UNSPECIFIED" : Placeholder for transition to v1beta1.
   /// Currently not used.
-  core.String openAuctionStatus;
+  core.String? openAuctionStatus;
 
   /// All restricted categories for the ads that may be shown from this
   /// creative.
-  core.List<core.String> restrictedCategories;
+  core.List<core.String>? restrictedCategories;
 
   /// The granular status of this ad in specific contexts.
   ///
@@ -4939,21 +4637,21 @@ class Creative {
   /// auction).
   ///
   /// Output only.
-  core.List<ServingRestriction> servingRestrictions;
+  core.List<ServingRestriction>? servingRestrictions;
 
   /// All vendor IDs for the ads that may be shown from this creative.
   ///
   /// See https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt for
   /// possible values.
-  core.List<core.int> vendorIds;
+  core.List<core.int>? vendorIds;
 
   /// The version of this creative.
   ///
   /// Output only.
-  core.int version;
+  core.int? version;
 
   /// A video creative.
-  VideoContent video;
+  VideoContent? video;
 
   Creative();
 
@@ -5074,57 +4772,57 @@ class Creative {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (adChoicesDestinationUrl != null)
-          'adChoicesDestinationUrl': adChoicesDestinationUrl,
+          'adChoicesDestinationUrl': adChoicesDestinationUrl!,
         if (adTechnologyProviders != null)
-          'adTechnologyProviders': adTechnologyProviders.toJson(),
-        if (advertiserName != null) 'advertiserName': advertiserName,
-        if (agencyId != null) 'agencyId': agencyId,
-        if (apiUpdateTime != null) 'apiUpdateTime': apiUpdateTime,
-        if (attributes != null) 'attributes': attributes,
-        if (clickThroughUrls != null) 'clickThroughUrls': clickThroughUrls,
+          'adTechnologyProviders': adTechnologyProviders!.toJson(),
+        if (advertiserName != null) 'advertiserName': advertiserName!,
+        if (agencyId != null) 'agencyId': agencyId!,
+        if (apiUpdateTime != null) 'apiUpdateTime': apiUpdateTime!,
+        if (attributes != null) 'attributes': attributes!,
+        if (clickThroughUrls != null) 'clickThroughUrls': clickThroughUrls!,
         if (corrections != null)
-          'corrections': corrections.map((value) => value.toJson()).toList(),
-        if (creativeId != null) 'creativeId': creativeId,
-        if (dealsStatus != null) 'dealsStatus': dealsStatus,
+          'corrections': corrections!.map((value) => value.toJson()).toList(),
+        if (creativeId != null) 'creativeId': creativeId!,
+        if (dealsStatus != null) 'dealsStatus': dealsStatus!,
         if (declaredClickThroughUrls != null)
-          'declaredClickThroughUrls': declaredClickThroughUrls,
+          'declaredClickThroughUrls': declaredClickThroughUrls!,
         if (detectedAdvertiserIds != null)
-          'detectedAdvertiserIds': detectedAdvertiserIds,
-        if (detectedDomains != null) 'detectedDomains': detectedDomains,
-        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages,
+          'detectedAdvertiserIds': detectedAdvertiserIds!,
+        if (detectedDomains != null) 'detectedDomains': detectedDomains!,
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
         if (detectedProductCategories != null)
-          'detectedProductCategories': detectedProductCategories,
+          'detectedProductCategories': detectedProductCategories!,
         if (detectedSensitiveCategories != null)
-          'detectedSensitiveCategories': detectedSensitiveCategories,
-        if (html != null) 'html': html.toJson(),
+          'detectedSensitiveCategories': detectedSensitiveCategories!,
+        if (html != null) 'html': html!.toJson(),
         if (impressionTrackingUrls != null)
-          'impressionTrackingUrls': impressionTrackingUrls,
-        if (native != null) 'native': native.toJson(),
-        if (openAuctionStatus != null) 'openAuctionStatus': openAuctionStatus,
+          'impressionTrackingUrls': impressionTrackingUrls!,
+        if (native != null) 'native': native!.toJson(),
+        if (openAuctionStatus != null) 'openAuctionStatus': openAuctionStatus!,
         if (restrictedCategories != null)
-          'restrictedCategories': restrictedCategories,
+          'restrictedCategories': restrictedCategories!,
         if (servingRestrictions != null)
           'servingRestrictions':
-              servingRestrictions.map((value) => value.toJson()).toList(),
-        if (vendorIds != null) 'vendorIds': vendorIds,
-        if (version != null) 'version': version,
-        if (video != null) 'video': video.toJson(),
+              servingRestrictions!.map((value) => value.toJson()).toList(),
+        if (vendorIds != null) 'vendorIds': vendorIds!,
+        if (version != null) 'version': version!,
+        if (video != null) 'video': video!.toJson(),
       };
 }
 
 /// The association between a creative and a deal.
 class CreativeDealAssociation {
   /// The account the creative belongs to.
-  core.String accountId;
+  core.String? accountId;
 
   /// The ID of the creative associated with the deal.
-  core.String creativeId;
+  core.String? creativeId;
 
   /// The externalDealId for the deal associated with the creative.
-  core.String dealsId;
+  core.String? dealsId;
 
   CreativeDealAssociation();
 
@@ -5140,10 +4838,10 @@ class CreativeDealAssociation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (creativeId != null) 'creativeId': creativeId,
-        if (dealsId != null) 'dealsId': dealsId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (creativeId != null) 'creativeId': creativeId!,
+        if (dealsId != null) 'dealsId': dealsId!,
       };
 }
 
@@ -5160,8 +4858,8 @@ class CreativeRestrictions {
   /// browser.
   /// - "VIDEO" : A video creative that will be displayed in environments such
   /// as a video player.
-  core.String creativeFormat;
-  core.List<CreativeSpecification> creativeSpecifications;
+  core.String? creativeFormat;
+  core.List<CreativeSpecification>? creativeSpecifications;
 
   /// Skippable video ads allow viewers to skip ads after 5 seconds.
   /// Possible string values are:
@@ -5173,7 +4871,7 @@ class CreativeRestrictions {
   /// YouTube only, and viewcount of the YouTube video increments after the
   /// engaged view.
   /// - "NOT_SKIPPABLE" : This video ad is not skippable.
-  core.String skippableAdType;
+  core.String? skippableAdType;
 
   CreativeRestrictions();
 
@@ -5192,12 +4890,12 @@ class CreativeRestrictions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creativeFormat != null) 'creativeFormat': creativeFormat,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creativeFormat != null) 'creativeFormat': creativeFormat!,
         if (creativeSpecifications != null)
           'creativeSpecifications':
-              creativeSpecifications.map((value) => value.toJson()).toList(),
-        if (skippableAdType != null) 'skippableAdType': skippableAdType,
+              creativeSpecifications!.map((value) => value.toJson()).toList(),
+        if (skippableAdType != null) 'skippableAdType': skippableAdType!,
       };
 }
 
@@ -5208,12 +4906,12 @@ class CreativeSize {
   /// If this repeated field is empty then all formats are allowed. For example,
   /// if this field contains AllowedFormatType.AUDIO then the publisher only
   /// allows an audio ad (without any video).
-  core.List<core.String> allowedFormats;
+  core.List<core.String>? allowedFormats;
 
   /// For video creatives specifies the sizes of companion ads (if present).
   ///
   /// Companion sizes may be filled in only when creative_size_type = VIDEO
-  core.List<Size> companionSizes;
+  core.List<Size>? companionSizes;
 
   /// The creative size type.
   /// Possible string values are:
@@ -5223,7 +4921,7 @@ class CreativeSize {
   /// - "INTERSTITIAL" : The creative is an interstitial creative.
   /// - "VIDEO" : The creative is a video creative.
   /// - "NATIVE" : The creative is a native (mobile) creative.
-  core.String creativeSizeType;
+  core.String? creativeSizeType;
 
   /// The native template for this creative.
   ///
@@ -5240,11 +4938,11 @@ class CreativeSize {
   /// content ad.
   /// - "NATIVE_VIDEO_APP_INSTALL_AD" : The creative is linked to native video
   /// app install ad.
-  core.String nativeTemplate;
+  core.String? nativeTemplate;
 
   /// For regular or video creative size type, specifies the size of the
   /// creative
-  Size size;
+  Size? size;
 
   /// The type of skippable ad for this creative.
   ///
@@ -5258,7 +4956,7 @@ class CreativeSize {
   /// only, and viewcount of the YouTube video increments after the engaged
   /// view.
   /// - "NOT_SKIPPABLE" : This video ad is not skippable.
-  core.String skippableAdType;
+  core.String? skippableAdType;
 
   CreativeSize();
 
@@ -5289,15 +4987,15 @@ class CreativeSize {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowedFormats != null) 'allowedFormats': allowedFormats,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowedFormats != null) 'allowedFormats': allowedFormats!,
         if (companionSizes != null)
           'companionSizes':
-              companionSizes.map((value) => value.toJson()).toList(),
-        if (creativeSizeType != null) 'creativeSizeType': creativeSizeType,
-        if (nativeTemplate != null) 'nativeTemplate': nativeTemplate,
-        if (size != null) 'size': size.toJson(),
-        if (skippableAdType != null) 'skippableAdType': skippableAdType,
+              companionSizes!.map((value) => value.toJson()).toList(),
+        if (creativeSizeType != null) 'creativeSizeType': creativeSizeType!,
+        if (nativeTemplate != null) 'nativeTemplate': nativeTemplate!,
+        if (size != null) 'size': size!.toJson(),
+        if (skippableAdType != null) 'skippableAdType': skippableAdType!,
       };
 }
 
@@ -5305,10 +5003,10 @@ class CreativeSize {
 /// Guaranteed/Preferred Deal in Ad Manager.
 class CreativeSpecification {
   /// Companion sizes may be filled in only when this is a video creative.
-  core.List<AdSize> creativeCompanionSizes;
+  core.List<AdSize>? creativeCompanionSizes;
 
   /// The size of the creative.
-  AdSize creativeSize;
+  AdSize? creativeSize;
 
   CreativeSpecification();
 
@@ -5325,11 +5023,11 @@ class CreativeSpecification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (creativeCompanionSizes != null)
           'creativeCompanionSizes':
-              creativeCompanionSizes.map((value) => value.toJson()).toList(),
-        if (creativeSize != null) 'creativeSize': creativeSize.toJson(),
+              creativeCompanionSizes!.map((value) => value.toJson()).toList(),
+        if (creativeSize != null) 'creativeSize': creativeSize!.toJson(),
       };
 }
 
@@ -5338,16 +5036,16 @@ class CreativeSpecification {
 /// by the specified creative status.
 class CreativeStatusRow {
   /// The number of bids with the specified status.
-  MetricValue bidCount;
+  MetricValue? bidCount;
 
   /// The ID of the creative status.
   ///
   /// See
   /// \[creative-status-codes\](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
-  core.int creativeStatusId;
+  core.int? creativeStatusId;
 
   /// The values of all dimensions associated with metric values in this row.
-  RowDimensions rowDimensions;
+  RowDimensions? rowDimensions;
 
   CreativeStatusRow();
 
@@ -5365,10 +5063,10 @@ class CreativeStatusRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bidCount != null) 'bidCount': bidCount.toJson(),
-        if (creativeStatusId != null) 'creativeStatusId': creativeStatusId,
-        if (rowDimensions != null) 'rowDimensions': rowDimensions.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bidCount != null) 'bidCount': bidCount!.toJson(),
+        if (creativeStatusId != null) 'creativeStatusId': creativeStatusId!,
+        if (rowDimensions != null) 'rowDimensions': rowDimensions!.toJson(),
       };
 }
 
@@ -5376,10 +5074,10 @@ class CreativeStatusRow {
 /// included and excluded numeric IDs.
 class CriteriaTargeting {
   /// A list of numeric IDs to be excluded.
-  core.List<core.String> excludedCriteriaIds;
+  core.List<core.String>? excludedCriteriaIds;
 
   /// A list of numeric IDs to be included.
-  core.List<core.String> targetedCriteriaIds;
+  core.List<core.String>? targetedCriteriaIds;
 
   CriteriaTargeting();
 
@@ -5396,11 +5094,11 @@ class CriteriaTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (excludedCriteriaIds != null)
-          'excludedCriteriaIds': excludedCriteriaIds,
+          'excludedCriteriaIds': excludedCriteriaIds!,
         if (targetedCriteriaIds != null)
-          'targetedCriteriaIds': targetedCriteriaIds,
+          'targetedCriteriaIds': targetedCriteriaIds!,
       };
 }
 
@@ -5418,17 +5116,17 @@ class Date {
   ///
   /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
   /// year by itself or a year and month where the day isn't significant.
-  core.int day;
+  core.int? day;
 
   /// Month of a year.
   ///
   /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int month;
+  core.int? month;
 
   /// Year of the date.
   ///
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int year;
+  core.int? year;
 
   Date();
 
@@ -5444,10 +5142,10 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (month != null) 'month': month,
-        if (year != null) 'year': year,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (month != null) 'month': month!,
+        if (year != null) 'year': year!,
       };
 }
 
@@ -5467,19 +5165,19 @@ class DayPart {
   /// - "FRIDAY" : Friday
   /// - "SATURDAY" : Saturday
   /// - "SUNDAY" : Sunday
-  core.String dayOfWeek;
+  core.String? dayOfWeek;
 
   /// The ending time of the day for the ad to show (minute level granularity).
   ///
   /// The end time is exclusive. This field is not available for filtering in
   /// PQL queries.
-  TimeOfDay endTime;
+  TimeOfDay? endTime;
 
   /// The starting time of day for the ad to show (minute level granularity).
   ///
   /// The start time is inclusive. This field is not available for filtering in
   /// PQL queries.
-  TimeOfDay startTime;
+  TimeOfDay? startTime;
 
   DayPart();
 
@@ -5497,17 +5195,17 @@ class DayPart {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek,
-        if (endTime != null) 'endTime': endTime.toJson(),
-        if (startTime != null) 'startTime': startTime.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
+        if (endTime != null) 'endTime': endTime!.toJson(),
+        if (startTime != null) 'startTime': startTime!.toJson(),
       };
 }
 
 /// Specifies the day part targeting criteria.
 class DayPartTargeting {
   /// A list of day part targeting criterion.
-  core.List<DayPart> dayParts;
+  core.List<DayPart>? dayParts;
 
   /// The timezone to use for interpreting the day part targeting.
   /// Possible string values are:
@@ -5515,7 +5213,7 @@ class DayPartTargeting {
   /// zone source.
   /// - "PUBLISHER" : Use publisher's time zone setting.
   /// - "USER" : Use the user's time zone setting.
-  core.String timeZoneType;
+  core.String? timeZoneType;
 
   DayPartTargeting();
 
@@ -5531,10 +5229,10 @@ class DayPartTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dayParts != null)
-          'dayParts': dayParts.map((value) => value.toJson()).toList(),
-        if (timeZoneType != null) 'timeZoneType': timeZoneType,
+          'dayParts': dayParts!.map((value) => value.toJson()).toList(),
+        if (timeZoneType != null) 'timeZoneType': timeZoneType!,
       };
 }
 
@@ -5547,7 +5245,7 @@ class Deal {
   ///
   /// This will generally be stored in a granularity of a second. A value is not
   /// required for Private Auction deals or Preferred Deals.
-  core.String availableEndTime;
+  core.String? availableEndTime;
 
   /// Proposed flight start time of the deal.
   ///
@@ -5557,16 +5255,16 @@ class Deal {
   /// time in seconds.
   ///
   /// Optional.
-  core.String availableStartTime;
+  core.String? availableStartTime;
 
   /// Buyer private data (hidden from seller).
-  PrivateData buyerPrivateData;
+  PrivateData? buyerPrivateData;
 
   /// The product ID from which this deal was created.
   ///
   /// Note: This field may be set only when creating the resource. Modifying
   /// this field while updating the resource will result in an error.
-  core.String createProductId;
+  core.String? createProductId;
 
   /// Revision number of the product that the deal was created from.
   ///
@@ -5576,12 +5274,12 @@ class Deal {
   /// Modifying this field while updating the resource will result in an error.
   ///
   /// Optional.
-  core.String createProductRevision;
+  core.String? createProductRevision;
 
   /// The time of the deal creation.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Specifies the creative pre-approval policy.
   ///
@@ -5593,14 +5291,14 @@ class Deal {
   /// creative before it can serve.
   /// - "SELLER_PRE_APPROVAL_NOT_REQUIRED" : The seller does not need to approve
   /// each creative before it can serve.
-  core.String creativePreApprovalPolicy;
+  core.String? creativePreApprovalPolicy;
 
   /// Restricitions about the creatives associated with the deal (i.e., size)
   /// This is available for Programmatic Guaranteed/Preferred Deals in Ad
   /// Manager.
   ///
   /// Output only.
-  CreativeRestrictions creativeRestrictions;
+  CreativeRestrictions? creativeRestrictions;
 
   /// Specifies whether the creative is safeFrame compatible.
   ///
@@ -5612,44 +5310,44 @@ class Deal {
   /// option.
   /// - "INCOMPATIBLE" : The creatives can be incompatible with the safe frame
   /// option.
-  core.String creativeSafeFrameCompatibility;
+  core.String? creativeSafeFrameCompatibility;
 
   /// A unique deal ID for the deal (server-assigned).
   ///
   /// Output only.
-  core.String dealId;
+  core.String? dealId;
 
   /// Metadata about the serving status of this deal.
   ///
   /// Output only.
-  DealServingMetadata dealServingMetadata;
+  DealServingMetadata? dealServingMetadata;
 
   /// The negotiable terms of the deal.
-  DealTerms dealTerms;
+  DealTerms? dealTerms;
 
   /// The set of fields around delivery control that are interesting for a buyer
   /// to see but are non-negotiable.
   ///
   /// These are set by the publisher.
-  DeliveryControl deliveryControl;
+  DeliveryControl? deliveryControl;
 
   /// Description for the deal terms.
-  core.String description;
+  core.String? description;
 
   /// The name of the deal.
-  core.String displayName;
+  core.String? displayName;
 
   /// The external deal ID assigned to this deal once the deal is finalized.
   ///
   /// This is the deal ID that shows up in serving/reporting etc.
   ///
   /// Output only.
-  core.String externalDealId;
+  core.String? externalDealId;
 
   /// True, if the buyside inventory setup is complete for this deal.
   ///
   /// Output only.
-  core.bool isSetupComplete;
+  core.bool? isSetupComplete;
 
   /// Specifies the creative source for programmatic deals.
   ///
@@ -5662,17 +5360,17 @@ class Deal {
   /// undefined programmatic creative source.
   /// - "ADVERTISER" : The advertiser provides the creatives.
   /// - "PUBLISHER" : The publisher provides the creatives to be served.
-  core.String programmaticCreativeSource;
+  core.String? programmaticCreativeSource;
 
   /// ID of the proposal that this deal is part of.
   ///
   /// Output only.
-  core.String proposalId;
+  core.String? proposalId;
 
   /// Seller contact information for the deal.
   ///
   /// Output only.
-  core.List<ContactInformation> sellerContacts;
+  core.List<ContactInformation>? sellerContacts;
 
   /// The syndication product associated with the deal.
   ///
@@ -5685,25 +5383,25 @@ class Deal {
   /// - "MOBILE" : This represents a mobile property.
   /// - "VIDEO" : This represents video ad formats.
   /// - "GAMES" : This represents ads shown within games.
-  core.String syndicationProduct;
+  core.String? syndicationProduct;
 
   /// Specifies the subset of inventory targeted by the deal.
   ///
   /// Output only.
-  MarketplaceTargeting targeting;
+  MarketplaceTargeting? targeting;
 
   /// The shared targeting visible to buyers and sellers.
   ///
   /// Each shared targeting entity is AND'd together.
-  core.List<TargetingCriteria> targetingCriterion;
+  core.List<TargetingCriteria>? targetingCriterion;
 
   /// The time when the deal was last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// The web property code for the seller copied over from the product.
-  core.String webPropertyCode;
+  core.String? webPropertyCode;
 
   Deal();
 
@@ -5800,46 +5498,46 @@ class Deal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (availableEndTime != null) 'availableEndTime': availableEndTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (availableEndTime != null) 'availableEndTime': availableEndTime!,
         if (availableStartTime != null)
-          'availableStartTime': availableStartTime,
+          'availableStartTime': availableStartTime!,
         if (buyerPrivateData != null)
-          'buyerPrivateData': buyerPrivateData.toJson(),
-        if (createProductId != null) 'createProductId': createProductId,
+          'buyerPrivateData': buyerPrivateData!.toJson(),
+        if (createProductId != null) 'createProductId': createProductId!,
         if (createProductRevision != null)
-          'createProductRevision': createProductRevision,
-        if (createTime != null) 'createTime': createTime,
+          'createProductRevision': createProductRevision!,
+        if (createTime != null) 'createTime': createTime!,
         if (creativePreApprovalPolicy != null)
-          'creativePreApprovalPolicy': creativePreApprovalPolicy,
+          'creativePreApprovalPolicy': creativePreApprovalPolicy!,
         if (creativeRestrictions != null)
-          'creativeRestrictions': creativeRestrictions.toJson(),
+          'creativeRestrictions': creativeRestrictions!.toJson(),
         if (creativeSafeFrameCompatibility != null)
-          'creativeSafeFrameCompatibility': creativeSafeFrameCompatibility,
-        if (dealId != null) 'dealId': dealId,
+          'creativeSafeFrameCompatibility': creativeSafeFrameCompatibility!,
+        if (dealId != null) 'dealId': dealId!,
         if (dealServingMetadata != null)
-          'dealServingMetadata': dealServingMetadata.toJson(),
-        if (dealTerms != null) 'dealTerms': dealTerms.toJson(),
+          'dealServingMetadata': dealServingMetadata!.toJson(),
+        if (dealTerms != null) 'dealTerms': dealTerms!.toJson(),
         if (deliveryControl != null)
-          'deliveryControl': deliveryControl.toJson(),
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (externalDealId != null) 'externalDealId': externalDealId,
-        if (isSetupComplete != null) 'isSetupComplete': isSetupComplete,
+          'deliveryControl': deliveryControl!.toJson(),
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (externalDealId != null) 'externalDealId': externalDealId!,
+        if (isSetupComplete != null) 'isSetupComplete': isSetupComplete!,
         if (programmaticCreativeSource != null)
-          'programmaticCreativeSource': programmaticCreativeSource,
-        if (proposalId != null) 'proposalId': proposalId,
+          'programmaticCreativeSource': programmaticCreativeSource!,
+        if (proposalId != null) 'proposalId': proposalId!,
         if (sellerContacts != null)
           'sellerContacts':
-              sellerContacts.map((value) => value.toJson()).toList(),
+              sellerContacts!.map((value) => value.toJson()).toList(),
         if (syndicationProduct != null)
-          'syndicationProduct': syndicationProduct,
-        if (targeting != null) 'targeting': targeting.toJson(),
+          'syndicationProduct': syndicationProduct!,
+        if (targeting != null) 'targeting': targeting!.toJson(),
         if (targetingCriterion != null)
           'targetingCriterion':
-              targetingCriterion.map((value) => value.toJson()).toList(),
-        if (updateTime != null) 'updateTime': updateTime,
-        if (webPropertyCode != null) 'webPropertyCode': webPropertyCode,
+              targetingCriterion!.map((value) => value.toJson()).toList(),
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (webPropertyCode != null) 'webPropertyCode': webPropertyCode!,
       };
 }
 
@@ -5849,7 +5547,7 @@ class Deal {
 /// true.
 class DealPauseStatus {
   /// The buyer's reason for pausing, if the buyer paused the deal.
-  core.String buyerPauseReason;
+  core.String? buyerPauseReason;
 
   /// The role of the person who first paused this deal.
   /// Possible string values are:
@@ -5857,16 +5555,16 @@ class DealPauseStatus {
   /// buyer/seller role.
   /// - "BUYER" : Specifies the role as buyer.
   /// - "SELLER" : Specifies the role as seller.
-  core.String firstPausedBy;
+  core.String? firstPausedBy;
 
   /// True, if the buyer has paused the deal unilaterally.
-  core.bool hasBuyerPaused;
+  core.bool? hasBuyerPaused;
 
   /// True, if the seller has paused the deal unilaterally.
-  core.bool hasSellerPaused;
+  core.bool? hasSellerPaused;
 
   /// The seller's reason for pausing, if the seller paused the deal.
-  core.String sellerPauseReason;
+  core.String? sellerPauseReason;
 
   DealPauseStatus();
 
@@ -5888,12 +5586,12 @@ class DealPauseStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (buyerPauseReason != null) 'buyerPauseReason': buyerPauseReason,
-        if (firstPausedBy != null) 'firstPausedBy': firstPausedBy,
-        if (hasBuyerPaused != null) 'hasBuyerPaused': hasBuyerPaused,
-        if (hasSellerPaused != null) 'hasSellerPaused': hasSellerPaused,
-        if (sellerPauseReason != null) 'sellerPauseReason': sellerPauseReason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (buyerPauseReason != null) 'buyerPauseReason': buyerPauseReason!,
+        if (firstPausedBy != null) 'firstPausedBy': firstPausedBy!,
+        if (hasBuyerPaused != null) 'hasBuyerPaused': hasBuyerPaused!,
+        if (hasSellerPaused != null) 'hasSellerPaused': hasSellerPaused!,
+        if (sellerPauseReason != null) 'sellerPauseReason': sellerPauseReason!,
       };
 }
 
@@ -5902,7 +5600,7 @@ class DealServingMetadata {
   /// Tracks which parties (if any) have paused a deal.
   ///
   /// Output only.
-  DealPauseStatus dealPauseStatus;
+  DealPauseStatus? dealPauseStatus;
 
   DealServingMetadata();
 
@@ -5913,9 +5611,9 @@ class DealServingMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dealPauseStatus != null)
-          'dealPauseStatus': dealPauseStatus.toJson(),
+          'dealPauseStatus': dealPauseStatus!.toJson(),
       };
 }
 
@@ -5933,29 +5631,29 @@ class DealTerms {
   /// - "BRANDED" : Full URL is included in bid requests.
   /// - "SEMI_TRANSPARENT" : A TopLevelDomain or masked URL is sent in bid
   /// requests rather than the full one.
-  core.String brandingType;
+  core.String? brandingType;
 
   /// Publisher provided description for the terms.
-  core.String description;
+  core.String? description;
 
   /// Non-binding estimate of the estimated gross spend for this deal.
   ///
   /// Can be set by buyer or seller.
-  Price estimatedGrossSpend;
+  Price? estimatedGrossSpend;
 
   /// Non-binding estimate of the impressions served per day.
   ///
   /// Can be set by buyer or seller.
-  core.String estimatedImpressionsPerDay;
+  core.String? estimatedImpressionsPerDay;
 
   /// The terms for guaranteed fixed price deals.
-  GuaranteedFixedPriceTerms guaranteedFixedPriceTerms;
+  GuaranteedFixedPriceTerms? guaranteedFixedPriceTerms;
 
   /// The terms for non-guaranteed auction deals.
-  NonGuaranteedAuctionTerms nonGuaranteedAuctionTerms;
+  NonGuaranteedAuctionTerms? nonGuaranteedAuctionTerms;
 
   /// The terms for non-guaranteed fixed price deals.
-  NonGuaranteedFixedPriceTerms nonGuaranteedFixedPriceTerms;
+  NonGuaranteedFixedPriceTerms? nonGuaranteedFixedPriceTerms;
 
   /// The time zone name.
   ///
@@ -5963,7 +5661,7 @@ class DealTerms {
   /// the boundaries of a day. It should be an IANA TZ name, such as
   /// "America/Los_Angeles". For more information, see
   /// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones.
-  core.String sellerTimeZone;
+  core.String? sellerTimeZone;
 
   DealTerms();
 
@@ -6002,20 +5700,21 @@ class DealTerms {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (brandingType != null) 'brandingType': brandingType,
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (brandingType != null) 'brandingType': brandingType!,
+        if (description != null) 'description': description!,
         if (estimatedGrossSpend != null)
-          'estimatedGrossSpend': estimatedGrossSpend.toJson(),
+          'estimatedGrossSpend': estimatedGrossSpend!.toJson(),
         if (estimatedImpressionsPerDay != null)
-          'estimatedImpressionsPerDay': estimatedImpressionsPerDay,
+          'estimatedImpressionsPerDay': estimatedImpressionsPerDay!,
         if (guaranteedFixedPriceTerms != null)
-          'guaranteedFixedPriceTerms': guaranteedFixedPriceTerms.toJson(),
+          'guaranteedFixedPriceTerms': guaranteedFixedPriceTerms!.toJson(),
         if (nonGuaranteedAuctionTerms != null)
-          'nonGuaranteedAuctionTerms': nonGuaranteedAuctionTerms.toJson(),
+          'nonGuaranteedAuctionTerms': nonGuaranteedAuctionTerms!.toJson(),
         if (nonGuaranteedFixedPriceTerms != null)
-          'nonGuaranteedFixedPriceTerms': nonGuaranteedFixedPriceTerms.toJson(),
-        if (sellerTimeZone != null) 'sellerTimeZone': sellerTimeZone,
+          'nonGuaranteedFixedPriceTerms':
+              nonGuaranteedFixedPriceTerms!.toJson(),
+        if (sellerTimeZone != null) 'sellerTimeZone': sellerTimeZone!,
       };
 }
 
@@ -6030,7 +5729,7 @@ class DeliveryControl {
   /// - "PUBLISHER_BLOCKING_RULES" : Publisher blocking rules will be applied.
   /// - "ADX_POLICY_BLOCKING_ONLY" : The Ad Exchange policy blocking rules will
   /// be applied.
-  core.String creativeBlockingLevel;
+  core.String? creativeBlockingLevel;
 
   /// Specifies how the impression delivery will be paced.
   ///
@@ -6041,12 +5740,12 @@ class DeliveryControl {
   /// - "EVENLY" : Impressions are served uniformly over the life of the deal.
   /// - "FRONT_LOADED" : Impressions are served front-loaded.
   /// - "AS_FAST_AS_POSSIBLE" : Impressions are served as fast as possible.
-  core.String deliveryRateType;
+  core.String? deliveryRateType;
 
   /// Specifies any frequency caps.
   ///
   /// Output only.
-  core.List<FrequencyCap> frequencyCaps;
+  core.List<FrequencyCap>? frequencyCaps;
 
   DeliveryControl();
 
@@ -6065,13 +5764,13 @@ class DeliveryControl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (creativeBlockingLevel != null)
-          'creativeBlockingLevel': creativeBlockingLevel,
-        if (deliveryRateType != null) 'deliveryRateType': deliveryRateType,
+          'creativeBlockingLevel': creativeBlockingLevel!,
+        if (deliveryRateType != null) 'deliveryRateType': deliveryRateType!,
         if (frequencyCaps != null)
           'frequencyCaps':
-              frequencyCaps.map((value) => value.toJson()).toList(),
+              frequencyCaps!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6080,7 +5779,7 @@ class DeliveryControl {
 /// Output only.
 class Disapproval {
   /// Additional details about the reason for disapproval.
-  core.List<core.String> details;
+  core.List<core.String>? details;
 
   /// The categorized reason for disapproval.
   /// Possible string values are:
@@ -6237,7 +5936,7 @@ class Disapproval {
   /// - "BAIL_BONDS" : Promotes services related to bail bonds.
   /// - "EXPERIMENTAL_MEDICAL_TREATMENT" : Promotes speculative and/or
   /// experimental medical treatments.
-  core.String reason;
+  core.String? reason;
 
   Disapproval();
 
@@ -6252,9 +5951,9 @@ class Disapproval {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (details != null) 'details': details,
-        if (reason != null) 'reason': reason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (details != null) 'details': details!,
+        if (reason != null) 'reason': reason!,
       };
 }
 
@@ -6272,7 +5971,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A set of filters that is applied to a request for data.
@@ -6285,28 +5984,28 @@ class FilterSet {
   /// An absolute date range, defined by a start date and an end date.
   ///
   /// Interpreted relative to Pacific time zone.
-  AbsoluteDateRange absoluteDateRange;
+  AbsoluteDateRange? absoluteDateRange;
 
   /// The set of dimensions along which to break down the response; may be
   /// empty.
   ///
   /// If multiple dimensions are requested, the breakdown is along the Cartesian
   /// product of the requested dimensions.
-  core.List<core.String> breakdownDimensions;
+  core.List<core.String>? breakdownDimensions;
 
   /// The ID of the creative on which to filter; optional.
   ///
   /// This field may be set only for a filter set that accesses account-level
   /// troubleshooting data, i.e., one whose name matches the `bidders / *
   /// /accounts / * /filterSets / * ` pattern.
-  core.String creativeId;
+  core.String? creativeId;
 
   /// The ID of the deal on which to filter; optional.
   ///
   /// This field may be set only for a filter set that accesses account-level
   /// troubleshooting data, i.e., one whose name matches the `bidders / *
   /// /accounts / * /filterSets / * ` pattern.
-  core.String dealId;
+  core.String? dealId;
 
   /// The environment on which to filter; optional.
   /// Possible string values are:
@@ -6314,7 +6013,7 @@ class FilterSet {
   /// indicates that no environment filter will be applied.
   /// - "WEB" : The ad impression appears on the web.
   /// - "APP" : The ad impression appears in an app.
-  core.String environment;
+  core.String? environment;
 
   /// Creative format bidded on or allowed to bid on, can be empty.
   /// Possible string values are:
@@ -6327,14 +6026,14 @@ class FilterSet {
   /// (i.e., image) format.
   /// - "NON_NATIVE_VIDEO" : The ad impression is not a native ad, and video
   /// format.
-  core.String format;
+  core.String? format;
 
   /// Creative formats bidded on or allowed to bid on, can be empty.
   ///
   /// Although this field is a list, it can only be populated with a single
   /// item. A HTTP 400 bad request error will be returned in the response if you
   /// specify multiple items.
-  core.List<core.String> formats;
+  core.List<core.String>? formats;
 
   /// A user-defined name of the filter set.
   ///
@@ -6343,28 +6042,28 @@ class FilterSet {
   /// data) - `bidders / * /accounts / * /filterSets / * ` (for accessing
   /// account-level troubleshooting data) This field is required in create
   /// operations.
-  core.String name;
+  core.String? name;
 
   /// The list of platforms on which to filter; may be empty.
   ///
   /// The filters represented by multiple platforms are ORed together (i.e., if
   /// non-empty, results must match any one of the platforms).
-  core.List<core.String> platforms;
+  core.List<core.String>? platforms;
 
   /// For Open Bidding partners only.
   ///
   /// The list of publisher identifiers on which to filter; may be empty. The
   /// filters represented by multiple publisher identifiers are ORed together.
-  core.List<core.String> publisherIdentifiers;
+  core.List<core.String>? publisherIdentifiers;
 
   /// An open-ended realtime time range, defined by the aggregation start
   /// timestamp.
-  RealtimeTimeRange realtimeTimeRange;
+  RealtimeTimeRange? realtimeTimeRange;
 
   /// A relative date range, defined by an offset from today and a duration.
   ///
   /// Interpreted relative to Pacific time zone.
-  RelativeDateRange relativeDateRange;
+  RelativeDateRange? relativeDateRange;
 
   /// For Authorized Buyers only.
   ///
@@ -6374,7 +6073,7 @@ class FilterSet {
   /// networks). See
   /// \[seller-network-ids\](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids)
   /// file for the set of existing seller network IDs.
-  core.List<core.int> sellerNetworkIds;
+  core.List<core.int>? sellerNetworkIds;
 
   /// The granularity of time intervals if a time series breakdown is desired;
   /// optional.
@@ -6384,7 +6083,7 @@ class FilterSet {
   /// data for the entire requested time range.
   /// - "HOURLY" : Indicates that data will be broken down by the hour.
   /// - "DAILY" : Indicates that data will be broken down by the day.
-  core.String timeSeriesGranularity;
+  core.String? timeSeriesGranularity;
 
   FilterSet();
 
@@ -6446,27 +6145,27 @@ class FilterSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (absoluteDateRange != null)
-          'absoluteDateRange': absoluteDateRange.toJson(),
+          'absoluteDateRange': absoluteDateRange!.toJson(),
         if (breakdownDimensions != null)
-          'breakdownDimensions': breakdownDimensions,
-        if (creativeId != null) 'creativeId': creativeId,
-        if (dealId != null) 'dealId': dealId,
-        if (environment != null) 'environment': environment,
-        if (format != null) 'format': format,
-        if (formats != null) 'formats': formats,
-        if (name != null) 'name': name,
-        if (platforms != null) 'platforms': platforms,
+          'breakdownDimensions': breakdownDimensions!,
+        if (creativeId != null) 'creativeId': creativeId!,
+        if (dealId != null) 'dealId': dealId!,
+        if (environment != null) 'environment': environment!,
+        if (format != null) 'format': format!,
+        if (formats != null) 'formats': formats!,
+        if (name != null) 'name': name!,
+        if (platforms != null) 'platforms': platforms!,
         if (publisherIdentifiers != null)
-          'publisherIdentifiers': publisherIdentifiers,
+          'publisherIdentifiers': publisherIdentifiers!,
         if (realtimeTimeRange != null)
-          'realtimeTimeRange': realtimeTimeRange.toJson(),
+          'realtimeTimeRange': realtimeTimeRange!.toJson(),
         if (relativeDateRange != null)
-          'relativeDateRange': relativeDateRange.toJson(),
-        if (sellerNetworkIds != null) 'sellerNetworkIds': sellerNetworkIds,
+          'relativeDateRange': relativeDateRange!.toJson(),
+        if (sellerNetworkIds != null) 'sellerNetworkIds': sellerNetworkIds!,
         if (timeSeriesGranularity != null)
-          'timeSeriesGranularity': timeSeriesGranularity,
+          'timeSeriesGranularity': timeSeriesGranularity!,
       };
 }
 
@@ -6474,13 +6173,13 @@ class FilterSet {
 /// the specified creative.
 class FilteredBidCreativeRow {
   /// The number of bids with the specified creative.
-  MetricValue bidCount;
+  MetricValue? bidCount;
 
   /// The ID of the creative.
-  core.String creativeId;
+  core.String? creativeId;
 
   /// The values of all dimensions associated with metric values in this row.
-  RowDimensions rowDimensions;
+  RowDimensions? rowDimensions;
 
   FilteredBidCreativeRow();
 
@@ -6498,10 +6197,10 @@ class FilteredBidCreativeRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bidCount != null) 'bidCount': bidCount.toJson(),
-        if (creativeId != null) 'creativeId': creativeId,
-        if (rowDimensions != null) 'rowDimensions': rowDimensions.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bidCount != null) 'bidCount': bidCount!.toJson(),
+        if (creativeId != null) 'creativeId': creativeId!,
+        if (rowDimensions != null) 'rowDimensions': rowDimensions!.toJson(),
       };
 }
 
@@ -6510,13 +6209,13 @@ class FilteredBidCreativeRow {
 /// have the specified detail.
 class FilteredBidDetailRow {
   /// The number of bids with the specified detail.
-  MetricValue bidCount;
+  MetricValue? bidCount;
 
   /// The ID of the detail, can be numeric or text.
   ///
   /// The associated value can be looked up in the dictionary file corresponding
   /// to the DetailType in the response message.
-  core.String detail;
+  core.String? detail;
 
   /// Note: this field will be deprecated, use "detail" field instead.
   ///
@@ -6525,10 +6224,10 @@ class FilteredBidDetailRow {
   /// will be 0. The ID of the detail. The associated value can be looked up in
   /// the dictionary file corresponding to the DetailType in the response
   /// message.
-  core.int detailId;
+  core.int? detailId;
 
   /// The values of all dimensions associated with metric values in this row.
-  RowDimensions rowDimensions;
+  RowDimensions? rowDimensions;
 
   FilteredBidDetailRow();
 
@@ -6549,11 +6248,11 @@ class FilteredBidDetailRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bidCount != null) 'bidCount': bidCount.toJson(),
-        if (detail != null) 'detail': detail,
-        if (detailId != null) 'detailId': detailId,
-        if (rowDimensions != null) 'rowDimensions': rowDimensions.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bidCount != null) 'bidCount': bidCount!.toJson(),
+        if (detail != null) 'detail': detail!,
+        if (detailId != null) 'detailId': detailId!,
+        if (rowDimensions != null) 'rowDimensions': rowDimensions!.toJson(),
       };
 }
 
@@ -6566,10 +6265,10 @@ class FilteredBidDetailRow {
 /// store URL. First party mobile applications is either included or excluded.
 class FirstPartyMobileApplicationTargeting {
   /// A list of application IDs to be excluded.
-  core.List<core.String> excludedAppIds;
+  core.List<core.String>? excludedAppIds;
 
   /// A list of application IDs to be included.
-  core.List<core.String> targetedAppIds;
+  core.List<core.String>? targetedAppIds;
 
   FirstPartyMobileApplicationTargeting();
 
@@ -6586,9 +6285,9 @@ class FirstPartyMobileApplicationTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (excludedAppIds != null) 'excludedAppIds': excludedAppIds,
-        if (targetedAppIds != null) 'targetedAppIds': targetedAppIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (excludedAppIds != null) 'excludedAppIds': excludedAppIds!,
+        if (targetedAppIds != null) 'targetedAppIds': targetedAppIds!,
       };
 }
 
@@ -6596,13 +6295,13 @@ class FirstPartyMobileApplicationTargeting {
 class FrequencyCap {
   /// The maximum number of impressions that can be served to a user within the
   /// specified time period.
-  core.int maxImpressions;
+  core.int? maxImpressions;
 
   /// The amount of time, in the units specified by time_unit_type.
   ///
   /// Defines the amount of time over which impressions per user are counted and
   /// capped.
-  core.int numTimeUnits;
+  core.int? numTimeUnits;
 
   /// The time unit.
   ///
@@ -6618,7 +6317,7 @@ class FrequencyCap {
   /// - "WEEK" : Week
   /// - "MONTH" : Month
   /// - "LIFETIME" : Lifetime
-  core.String timeUnitType;
+  core.String? timeUnitType;
 
   FrequencyCap();
 
@@ -6634,31 +6333,31 @@ class FrequencyCap {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxImpressions != null) 'maxImpressions': maxImpressions,
-        if (numTimeUnits != null) 'numTimeUnits': numTimeUnits,
-        if (timeUnitType != null) 'timeUnitType': timeUnitType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxImpressions != null) 'maxImpressions': maxImpressions!,
+        if (numTimeUnits != null) 'numTimeUnits': numTimeUnits!,
+        if (timeUnitType != null) 'timeUnitType': timeUnitType!,
       };
 }
 
 /// Terms for Programmatic Guaranteed Deals.
 class GuaranteedFixedPriceTerms {
   /// Fixed price for the specified buyer.
-  core.List<PricePerBuyer> fixedPrices;
+  core.List<PricePerBuyer>? fixedPrices;
 
   /// Guaranteed impressions as a percentage.
   ///
   /// This is the percentage of guaranteed looks that the buyer is guaranteeing
   /// to buy.
-  core.String guaranteedImpressions;
+  core.String? guaranteedImpressions;
 
   /// Count of guaranteed looks.
   ///
   /// Required for deal, optional for product.
-  core.String guaranteedLooks;
+  core.String? guaranteedLooks;
 
   /// Daily minimum looks for CPD deal types.
-  core.String minimumDailyLooks;
+  core.String? minimumDailyLooks;
 
   GuaranteedFixedPriceTerms();
 
@@ -6680,26 +6379,26 @@ class GuaranteedFixedPriceTerms {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fixedPrices != null)
-          'fixedPrices': fixedPrices.map((value) => value.toJson()).toList(),
+          'fixedPrices': fixedPrices!.map((value) => value.toJson()).toList(),
         if (guaranteedImpressions != null)
-          'guaranteedImpressions': guaranteedImpressions,
-        if (guaranteedLooks != null) 'guaranteedLooks': guaranteedLooks,
-        if (minimumDailyLooks != null) 'minimumDailyLooks': minimumDailyLooks,
+          'guaranteedImpressions': guaranteedImpressions!,
+        if (guaranteedLooks != null) 'guaranteedLooks': guaranteedLooks!,
+        if (minimumDailyLooks != null) 'minimumDailyLooks': minimumDailyLooks!,
       };
 }
 
 /// HTML content for a creative.
 class HtmlContent {
   /// The height of the HTML snippet in pixels.
-  core.int height;
+  core.int? height;
 
   /// The HTML snippet that displays the ad when inserted in the web page.
-  core.String snippet;
+  core.String? snippet;
 
   /// The width of the HTML snippet in pixels.
-  core.int width;
+  core.int? width;
 
   HtmlContent();
 
@@ -6715,10 +6414,10 @@ class HtmlContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (snippet != null) 'snippet': snippet,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (snippet != null) 'snippet': snippet!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -6728,13 +6427,13 @@ class HtmlContent {
 /// ratio is preserved.
 class Image {
   /// Image height in pixels.
-  core.int height;
+  core.int? height;
 
   /// The URL of the image.
-  core.String url;
+  core.String? url;
 
   /// Image width in pixels.
-  core.int width;
+  core.int? width;
 
   Image();
 
@@ -6750,10 +6449,10 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (url != null) 'url': url,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (url != null) 'url': url!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -6764,25 +6463,25 @@ class ImpressionMetricsRow {
   /// The number of impressions available to the buyer on Ad Exchange.
   ///
   /// In some cases this value may be unavailable.
-  MetricValue availableImpressions;
+  MetricValue? availableImpressions;
 
   /// The number of impressions for which Ad Exchange sent the buyer a bid
   /// request.
-  MetricValue bidRequests;
+  MetricValue? bidRequests;
 
   /// The number of impressions that match the buyer's inventory pretargeting.
-  MetricValue inventoryMatches;
+  MetricValue? inventoryMatches;
 
   /// The number of impressions for which Ad Exchange received a response from
   /// the buyer that contained at least one applicable bid.
-  MetricValue responsesWithBids;
+  MetricValue? responsesWithBids;
 
   /// The values of all dimensions associated with metric values in this row.
-  RowDimensions rowDimensions;
+  RowDimensions? rowDimensions;
 
   /// The number of impressions for which the buyer successfully sent a response
   /// to Ad Exchange.
-  MetricValue successfulResponses;
+  MetricValue? successfulResponses;
 
   ImpressionMetricsRow();
 
@@ -6813,17 +6512,17 @@ class ImpressionMetricsRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (availableImpressions != null)
-          'availableImpressions': availableImpressions.toJson(),
-        if (bidRequests != null) 'bidRequests': bidRequests.toJson(),
+          'availableImpressions': availableImpressions!.toJson(),
+        if (bidRequests != null) 'bidRequests': bidRequests!.toJson(),
         if (inventoryMatches != null)
-          'inventoryMatches': inventoryMatches.toJson(),
+          'inventoryMatches': inventoryMatches!.toJson(),
         if (responsesWithBids != null)
-          'responsesWithBids': responsesWithBids.toJson(),
-        if (rowDimensions != null) 'rowDimensions': rowDimensions.toJson(),
+          'responsesWithBids': responsesWithBids!.toJson(),
+        if (rowDimensions != null) 'rowDimensions': rowDimensions!.toJson(),
         if (successfulResponses != null)
-          'successfulResponses': successfulResponses.toJson(),
+          'successfulResponses': successfulResponses!.toJson(),
       };
 }
 
@@ -6834,10 +6533,10 @@ class ImpressionMetricsRow {
 /// Preferred Deals in Ad Manager.
 class InventorySizeTargeting {
   /// A list of inventory sizes to be excluded.
-  core.List<AdSize> excludedInventorySizes;
+  core.List<AdSize>? excludedInventorySizes;
 
   /// A list of inventory sizes to be included.
-  core.List<AdSize> targetedInventorySizes;
+  core.List<AdSize>? targetedInventorySizes;
 
   InventorySizeTargeting();
 
@@ -6856,13 +6555,13 @@ class InventorySizeTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (excludedInventorySizes != null)
           'excludedInventorySizes':
-              excludedInventorySizes.map((value) => value.toJson()).toList(),
+              excludedInventorySizes!.map((value) => value.toJson()).toList(),
         if (targetedInventorySizes != null)
           'targetedInventorySizes':
-              targetedInventorySizes.map((value) => value.toJson()).toList(),
+              targetedInventorySizes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6870,14 +6569,14 @@ class InventorySizeTargeting {
 /// bids.
 class ListBidMetricsResponse {
   /// List of rows, each containing a set of bid metrics.
-  core.List<BidMetricsRow> bidMetricsRows;
+  core.List<BidMetricsRow>? bidMetricsRows;
 
   /// A token to retrieve the next page of results.
   ///
   /// Pass this value in the ListBidMetricsRequest.pageToken field in the
   /// subsequent call to the bidMetrics.list method to retrieve the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListBidMetricsResponse();
 
@@ -6893,11 +6592,11 @@ class ListBidMetricsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bidMetricsRows != null)
           'bidMetricsRows':
-              bidMetricsRows.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              bidMetricsRows!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -6905,14 +6604,14 @@ class ListBidMetricsResponse {
 /// error.
 class ListBidResponseErrorsResponse {
   /// List of rows, with counts of bid responses aggregated by callout status.
-  core.List<CalloutStatusRow> calloutStatusRows;
+  core.List<CalloutStatusRow>? calloutStatusRows;
 
   /// A token to retrieve the next page of results.
   ///
   /// Pass this value in the ListBidResponseErrorsRequest.pageToken field in the
   /// subsequent call to the bidResponseErrors.list method to retrieve the next
   /// page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListBidResponseErrorsResponse();
 
@@ -6928,11 +6627,11 @@ class ListBidResponseErrorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (calloutStatusRows != null)
           'calloutStatusRows':
-              calloutStatusRows.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              calloutStatusRows!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -6941,14 +6640,14 @@ class ListBidResponseErrorsResponse {
 class ListBidResponsesWithoutBidsResponse {
   /// List of rows, with counts of bid responses without bids aggregated by
   /// status.
-  core.List<BidResponseWithoutBidsStatusRow> bidResponseWithoutBidsStatusRows;
+  core.List<BidResponseWithoutBidsStatusRow>? bidResponseWithoutBidsStatusRows;
 
   /// A token to retrieve the next page of results.
   ///
   /// Pass this value in the ListBidResponsesWithoutBidsRequest.pageToken field
   /// in the subsequent call to the bidResponsesWithoutBids.list method to
   /// retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListBidResponsesWithoutBidsResponse();
 
@@ -6966,25 +6665,25 @@ class ListBidResponsesWithoutBidsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bidResponseWithoutBidsStatusRows != null)
-          'bidResponseWithoutBidsStatusRows': bidResponseWithoutBidsStatusRows
+          'bidResponseWithoutBidsStatusRows': bidResponseWithoutBidsStatusRows!
               .map((value) => value.toJson())
               .toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 class ListClientUserInvitationsResponse {
   /// The returned list of client users.
-  core.List<ClientUserInvitation> invitations;
+  core.List<ClientUserInvitation>? invitations;
 
   /// A token to retrieve the next page of results.
   ///
   /// Pass this value in the ListClientUserInvitationsRequest.pageToken field in
   /// the subsequent call to the clients.invitations.list method to retrieve the
   /// next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListClientUserInvitationsResponse();
 
@@ -7000,10 +6699,10 @@ class ListClientUserInvitationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (invitations != null)
-          'invitations': invitations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'invitations': invitations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -7013,10 +6712,10 @@ class ListClientUsersResponse {
   /// Pass this value in the ListClientUsersRequest.pageToken field in the
   /// subsequent call to the clients.invitations.list method to retrieve the
   /// next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The returned list of client users.
-  core.List<ClientUser> users;
+  core.List<ClientUser>? users;
 
   ListClientUsersResponse();
 
@@ -7032,23 +6731,23 @@ class ListClientUsersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (users != null)
-          'users': users.map((value) => value.toJson()).toList(),
+          'users': users!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ListClientsResponse {
   /// The returned list of clients.
-  core.List<Client> clients;
+  core.List<Client>? clients;
 
   /// A token to retrieve the next page of results.
   ///
   /// Pass this value in the ListClientsRequest.pageToken field in the
   /// subsequent call to the accounts.clients.list method to retrieve the next
   /// page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListClientsResponse();
 
@@ -7064,10 +6763,10 @@ class ListClientsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clients != null)
-          'clients': clients.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'clients': clients!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -7076,7 +6775,7 @@ class ListClientsResponse {
 class ListCreativeStatusBreakdownByCreativeResponse {
   /// List of rows, with counts of bids with a given creative status aggregated
   /// by creative.
-  core.List<FilteredBidCreativeRow> filteredBidCreativeRows;
+  core.List<FilteredBidCreativeRow>? filteredBidCreativeRows;
 
   /// A token to retrieve the next page of results.
   ///
@@ -7084,7 +6783,7 @@ class ListCreativeStatusBreakdownByCreativeResponse {
   /// ListCreativeStatusBreakdownByCreativeRequest.pageToken field in the
   /// subsequent call to the filteredBids.creatives.list method to retrieve the
   /// next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListCreativeStatusBreakdownByCreativeResponse();
 
@@ -7101,11 +6800,11 @@ class ListCreativeStatusBreakdownByCreativeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (filteredBidCreativeRows != null)
           'filteredBidCreativeRows':
-              filteredBidCreativeRows.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              filteredBidCreativeRows!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -7143,11 +6842,11 @@ class ListCreativeStatusBreakdownByDetailResponse {
   /// - "GVL_ID" : Indicates that the detail ID refers an IAB GVL ID which
   /// Google did not detect in the latest TCF Vendor List. See
   /// [Global Vendor List](https://vendor-list.consensu.org/v2/vendor-list.json)
-  core.String detailType;
+  core.String? detailType;
 
   /// List of rows, with counts of bids with a given creative status aggregated
   /// by detail.
-  core.List<FilteredBidDetailRow> filteredBidDetailRows;
+  core.List<FilteredBidDetailRow>? filteredBidDetailRows;
 
   /// A token to retrieve the next page of results.
   ///
@@ -7155,7 +6854,7 @@ class ListCreativeStatusBreakdownByDetailResponse {
   /// ListCreativeStatusBreakdownByDetailRequest.pageToken field in the
   /// subsequent call to the filteredBids.details.list method to retrieve the
   /// next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListCreativeStatusBreakdownByDetailResponse();
 
@@ -7174,26 +6873,26 @@ class ListCreativeStatusBreakdownByDetailResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (detailType != null) 'detailType': detailType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (detailType != null) 'detailType': detailType!,
         if (filteredBidDetailRows != null)
           'filteredBidDetailRows':
-              filteredBidDetailRows.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              filteredBidDetailRows!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// A response for listing creatives.
 class ListCreativesResponse {
   /// The list of creatives.
-  core.List<Creative> creatives;
+  core.List<Creative>? creatives;
 
   /// A token to retrieve the next page of results.
   ///
   /// Pass this value in the ListCreativesRequest.page_token field in the
   /// subsequent call to `ListCreatives` method to retrieve the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListCreativesResponse();
 
@@ -7209,24 +6908,24 @@ class ListCreativesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (creatives != null)
-          'creatives': creatives.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'creatives': creatives!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// A response for listing creative and deal associations
 class ListDealAssociationsResponse {
   /// The list of associations.
-  core.List<CreativeDealAssociation> associations;
+  core.List<CreativeDealAssociation>? associations;
 
   /// A token to retrieve the next page of results.
   ///
   /// Pass this value in the ListDealAssociationsRequest.page_token field in the
   /// subsequent call to 'ListDealAssociation' method to retrieve the next page
   /// of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListDealAssociationsResponse();
 
@@ -7243,24 +6942,24 @@ class ListDealAssociationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (associations != null)
-          'associations': associations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'associations': associations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for listing filter sets.
 class ListFilterSetsResponse {
   /// The filter sets belonging to the buyer.
-  core.List<FilterSet> filterSets;
+  core.List<FilterSet>? filterSets;
 
   /// A token to retrieve the next page of results.
   ///
   /// Pass this value in the ListFilterSetsRequest.pageToken field in the
   /// subsequent call to the accounts.filterSets.list method to retrieve the
   /// next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListFilterSetsResponse();
 
@@ -7276,10 +6975,10 @@ class ListFilterSetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (filterSets != null)
-          'filterSets': filterSets.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'filterSets': filterSets!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -7288,14 +6987,14 @@ class ListFilterSetsResponse {
 class ListFilteredBidRequestsResponse {
   /// List of rows, with counts of filtered bid requests aggregated by callout
   /// status.
-  core.List<CalloutStatusRow> calloutStatusRows;
+  core.List<CalloutStatusRow>? calloutStatusRows;
 
   /// A token to retrieve the next page of results.
   ///
   /// Pass this value in the ListFilteredBidRequestsRequest.pageToken field in
   /// the subsequent call to the filteredBidRequests.list method to retrieve the
   /// next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListFilteredBidRequestsResponse();
 
@@ -7311,11 +7010,11 @@ class ListFilteredBidRequestsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (calloutStatusRows != null)
           'calloutStatusRows':
-              calloutStatusRows.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              calloutStatusRows!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -7324,14 +7023,14 @@ class ListFilteredBidRequestsResponse {
 class ListFilteredBidsResponse {
   /// List of rows, with counts of filtered bids aggregated by filtering reason
   /// (i.e. creative status).
-  core.List<CreativeStatusRow> creativeStatusRows;
+  core.List<CreativeStatusRow>? creativeStatusRows;
 
   /// A token to retrieve the next page of results.
   ///
   /// Pass this value in the ListFilteredBidsRequest.pageToken field in the
   /// subsequent call to the filteredBids.list method to retrieve the next page
   /// of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListFilteredBidsResponse();
 
@@ -7347,11 +7046,11 @@ class ListFilteredBidsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (creativeStatusRows != null)
           'creativeStatusRows':
-              creativeStatusRows.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              creativeStatusRows!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -7359,14 +7058,14 @@ class ListFilteredBidsResponse {
 /// impressions.
 class ListImpressionMetricsResponse {
   /// List of rows, each containing a set of impression metrics.
-  core.List<ImpressionMetricsRow> impressionMetricsRows;
+  core.List<ImpressionMetricsRow>? impressionMetricsRows;
 
   /// A token to retrieve the next page of results.
   ///
   /// Pass this value in the ListImpressionMetricsRequest.pageToken field in the
   /// subsequent call to the impressionMetrics.list method to retrieve the next
   /// page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListImpressionMetricsResponse();
 
@@ -7382,11 +7081,11 @@ class ListImpressionMetricsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (impressionMetricsRows != null)
           'impressionMetricsRows':
-              impressionMetricsRows.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              impressionMetricsRows!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -7394,14 +7093,14 @@ class ListImpressionMetricsResponse {
 class ListLosingBidsResponse {
   /// List of rows, with counts of losing bids aggregated by loss reason (i.e.
   /// creative status).
-  core.List<CreativeStatusRow> creativeStatusRows;
+  core.List<CreativeStatusRow>? creativeStatusRows;
 
   /// A token to retrieve the next page of results.
   ///
   /// Pass this value in the ListLosingBidsRequest.pageToken field in the
   /// subsequent call to the losingBids.list method to retrieve the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLosingBidsResponse();
 
@@ -7417,11 +7116,11 @@ class ListLosingBidsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (creativeStatusRows != null)
           'creativeStatusRows':
-              creativeStatusRows.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              creativeStatusRows!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -7433,10 +7132,10 @@ class ListNonBillableWinningBidsResponse {
   /// Pass this value in the ListNonBillableWinningBidsRequest.pageToken field
   /// in the subsequent call to the nonBillableWinningBids.list method to
   /// retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of rows, with counts of bids not billed aggregated by reason.
-  core.List<NonBillableWinningBidStatusRow> nonBillableWinningBidStatusRows;
+  core.List<NonBillableWinningBidStatusRow>? nonBillableWinningBidStatusRows;
 
   ListNonBillableWinningBidsResponse();
 
@@ -7454,10 +7153,10 @@ class ListNonBillableWinningBidsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (nonBillableWinningBidStatusRows != null)
-          'nonBillableWinningBidStatusRows': nonBillableWinningBidStatusRows
+          'nonBillableWinningBidStatusRows': nonBillableWinningBidStatusRows!
               .map((value) => value.toJson())
               .toList(),
       };
@@ -7466,10 +7165,10 @@ class ListNonBillableWinningBidsResponse {
 /// Response message for listing products visible to the buyer.
 class ListProductsResponse {
   /// List pagination support.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of matching products at their head revision number.
-  core.List<Product> products;
+  core.List<Product>? products;
 
   ListProductsResponse();
 
@@ -7485,20 +7184,20 @@ class ListProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (products != null)
-          'products': products.map((value) => value.toJson()).toList(),
+          'products': products!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for listing proposals.
 class ListProposalsResponse {
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of proposals.
-  core.List<Proposal> proposals;
+  core.List<Proposal>? proposals;
 
   ListProposalsResponse();
 
@@ -7514,20 +7213,20 @@ class ListProposalsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (proposals != null)
-          'proposals': proposals.map((value) => value.toJson()).toList(),
+          'proposals': proposals!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for profiles visible to the buyer.
 class ListPublisherProfilesResponse {
   /// List pagination support
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of matching publisher profiles.
-  core.List<PublisherProfile> publisherProfiles;
+  core.List<PublisherProfile>? publisherProfiles;
 
   ListPublisherProfilesResponse();
 
@@ -7543,11 +7242,11 @@ class ListPublisherProfilesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (publisherProfiles != null)
           'publisherProfiles':
-              publisherProfiles.map((value) => value.toJson()).toList(),
+              publisherProfiles!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7560,7 +7259,7 @@ class LocationContext {
   /// Please refer to the
   /// \[geo-table.csv\](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv)
   /// file for different geo criteria IDs.
-  core.List<core.int> geoCriteriaIds;
+  core.List<core.int>? geoCriteriaIds;
 
   LocationContext();
 
@@ -7572,8 +7271,8 @@ class LocationContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (geoCriteriaIds != null) 'geoCriteriaIds': geoCriteriaIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (geoCriteriaIds != null) 'geoCriteriaIds': geoCriteriaIds!,
       };
 }
 
@@ -7585,19 +7284,19 @@ class LocationContext {
 /// unless noted otherwise.
 class MarketplaceTargeting {
   /// Geo criteria IDs to be included/excluded.
-  CriteriaTargeting geoTargeting;
+  CriteriaTargeting? geoTargeting;
 
   /// Inventory sizes to be included/excluded.
-  InventorySizeTargeting inventorySizeTargeting;
+  InventorySizeTargeting? inventorySizeTargeting;
 
   /// Placement targeting information, e.g., URL, mobile applications.
-  PlacementTargeting placementTargeting;
+  PlacementTargeting? placementTargeting;
 
   /// Technology targeting information, e.g., operating system, device category.
-  TechnologyTargeting technologyTargeting;
+  TechnologyTargeting? technologyTargeting;
 
   /// Video targeting information.
-  VideoTargeting videoTargeting;
+  VideoTargeting? videoTargeting;
 
   MarketplaceTargeting();
 
@@ -7625,15 +7324,15 @@ class MarketplaceTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (geoTargeting != null) 'geoTargeting': geoTargeting.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (geoTargeting != null) 'geoTargeting': geoTargeting!.toJson(),
         if (inventorySizeTargeting != null)
-          'inventorySizeTargeting': inventorySizeTargeting.toJson(),
+          'inventorySizeTargeting': inventorySizeTargeting!.toJson(),
         if (placementTargeting != null)
-          'placementTargeting': placementTargeting.toJson(),
+          'placementTargeting': placementTargeting!.toJson(),
         if (technologyTargeting != null)
-          'technologyTargeting': technologyTargeting.toJson(),
-        if (videoTargeting != null) 'videoTargeting': videoTargeting.toJson(),
+          'technologyTargeting': technologyTargeting!.toJson(),
+        if (videoTargeting != null) 'videoTargeting': videoTargeting!.toJson(),
       };
 }
 
@@ -7641,7 +7340,7 @@ class MarketplaceTargeting {
 /// that may be either exact or estimated (i.e. when sampled).
 class MetricValue {
   /// The expected value of the metric.
-  core.String value;
+  core.String? value;
 
   /// The variance (i.e. square of the standard deviation) of the metric value.
   ///
@@ -7650,7 +7349,7 @@ class MetricValue {
   /// standard constant that depends on the desired size of the confidence
   /// interval (e.g. for 90% confidence interval, use Z = 1.645): marginOfError
   /// = 100 * Z * sqrt(variance) / value
-  core.String variance;
+  core.String? variance;
 
   MetricValue();
 
@@ -7663,9 +7362,9 @@ class MetricValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (value != null) 'value': value,
-        if (variance != null) 'variance': variance,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (value != null) 'value': value!,
+        if (variance != null) 'variance': variance!,
       };
 }
 
@@ -7673,7 +7372,7 @@ class MetricValue {
 class MobileApplicationTargeting {
   /// Publisher owned apps to be targeted or excluded by the publisher to
   /// display the ads in.
-  FirstPartyMobileApplicationTargeting firstPartyTargeting;
+  FirstPartyMobileApplicationTargeting? firstPartyTargeting;
 
   MobileApplicationTargeting();
 
@@ -7684,16 +7383,16 @@ class MobileApplicationTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (firstPartyTargeting != null)
-          'firstPartyTargeting': firstPartyTargeting.toJson(),
+          'firstPartyTargeting': firstPartyTargeting!.toJson(),
       };
 }
 
 /// Represents an amount of money with its currency type.
 class Money {
   /// The three-letter currency code defined in ISO 4217.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Number of nano (10^-9) units of the amount.
   ///
@@ -7702,12 +7401,12 @@ class Money {
   /// `nanos` can be positive, zero, or negative. If `units` is negative,
   /// `nanos` must be negative or zero. For example $-1.75 is represented as
   /// `units`=-1 and `nanos`=-750,000,000.
-  core.int nanos;
+  core.int? nanos;
 
   /// The whole units of the amount.
   ///
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-  core.String units;
+  core.String? units;
 
   Money();
 
@@ -7723,55 +7422,55 @@ class Money {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (nanos != null) 'nanos': nanos,
-        if (units != null) 'units': units,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (nanos != null) 'nanos': nanos!,
+        if (units != null) 'units': units!,
       };
 }
 
 /// Native content for a creative.
 class NativeContent {
   /// The name of the advertiser or sponsor, to be displayed in the ad creative.
-  core.String advertiserName;
+  core.String? advertiserName;
 
   /// The app icon, for app download ads.
-  Image appIcon;
+  Image? appIcon;
 
   /// A long description of the ad.
-  core.String body;
+  core.String? body;
 
   /// A label for the button that the user is supposed to click.
-  core.String callToAction;
+  core.String? callToAction;
 
   /// The URL that the browser/SDK will load when the user clicks the ad.
-  core.String clickLinkUrl;
+  core.String? clickLinkUrl;
 
   /// The URL to use for click tracking.
-  core.String clickTrackingUrl;
+  core.String? clickTrackingUrl;
 
   /// A short title for the ad.
-  core.String headline;
+  core.String? headline;
 
   /// A large image.
-  Image image;
+  Image? image;
 
   /// A smaller image, for the advertiser's logo.
-  Image logo;
+  Image? logo;
 
   /// The price of the promoted app including currency info.
-  core.String priceDisplayText;
+  core.String? priceDisplayText;
 
   /// The app rating in the app store.
   ///
   /// Must be in the range \[0-5\].
-  core.double starRating;
+  core.double? starRating;
 
   /// The URL to the app store to purchase/download the promoted app.
-  core.String storeUrl;
+  core.String? storeUrl;
 
   /// The URL to fetch a native video ad.
-  core.String videoUrl;
+  core.String? videoUrl;
 
   NativeContent();
 
@@ -7820,20 +7519,20 @@ class NativeContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (advertiserName != null) 'advertiserName': advertiserName,
-        if (appIcon != null) 'appIcon': appIcon.toJson(),
-        if (body != null) 'body': body,
-        if (callToAction != null) 'callToAction': callToAction,
-        if (clickLinkUrl != null) 'clickLinkUrl': clickLinkUrl,
-        if (clickTrackingUrl != null) 'clickTrackingUrl': clickTrackingUrl,
-        if (headline != null) 'headline': headline,
-        if (image != null) 'image': image.toJson(),
-        if (logo != null) 'logo': logo.toJson(),
-        if (priceDisplayText != null) 'priceDisplayText': priceDisplayText,
-        if (starRating != null) 'starRating': starRating,
-        if (storeUrl != null) 'storeUrl': storeUrl,
-        if (videoUrl != null) 'videoUrl': videoUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (advertiserName != null) 'advertiserName': advertiserName!,
+        if (appIcon != null) 'appIcon': appIcon!.toJson(),
+        if (body != null) 'body': body!,
+        if (callToAction != null) 'callToAction': callToAction!,
+        if (clickLinkUrl != null) 'clickLinkUrl': clickLinkUrl!,
+        if (clickTrackingUrl != null) 'clickTrackingUrl': clickTrackingUrl!,
+        if (headline != null) 'headline': headline!,
+        if (image != null) 'image': image!.toJson(),
+        if (logo != null) 'logo': logo!.toJson(),
+        if (priceDisplayText != null) 'priceDisplayText': priceDisplayText!,
+        if (starRating != null) 'starRating': starRating!,
+        if (storeUrl != null) 'storeUrl': storeUrl!,
+        if (videoUrl != null) 'videoUrl': videoUrl!,
       };
 }
 
@@ -7841,10 +7540,10 @@ class NativeContent {
 /// buyer was not billed, as described by the specified status.
 class NonBillableWinningBidStatusRow {
   /// The number of bids with the specified status.
-  MetricValue bidCount;
+  MetricValue? bidCount;
 
   /// The values of all dimensions associated with metric values in this row.
-  RowDimensions rowDimensions;
+  RowDimensions? rowDimensions;
 
   /// The status specifying why the winning bids were not billed.
   /// Possible string values are:
@@ -7858,7 +7557,7 @@ class NonBillableWinningBidStatusRow {
   /// reported from the client during playback.
   /// - "LOST_IN_MEDIATION" : The buyer was not billed because the ad was
   /// outplaced in the mediation waterfall.
-  core.String status;
+  core.String? status;
 
   NonBillableWinningBidStatusRow();
 
@@ -7876,10 +7575,10 @@ class NonBillableWinningBidStatusRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bidCount != null) 'bidCount': bidCount.toJson(),
-        if (rowDimensions != null) 'rowDimensions': rowDimensions.toJson(),
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bidCount != null) 'bidCount': bidCount!.toJson(),
+        if (rowDimensions != null) 'rowDimensions': rowDimensions!.toJson(),
+        if (status != null) 'status': status!,
       };
 }
 
@@ -7890,10 +7589,10 @@ class NonBillableWinningBidStatusRow {
 class NonGuaranteedAuctionTerms {
   /// True if open auction buyers are allowed to compete with invited buyers in
   /// this private auction.
-  core.bool autoOptimizePrivateAuction;
+  core.bool? autoOptimizePrivateAuction;
 
   /// Reserve price for the specified buyer.
-  core.List<PricePerBuyer> reservePricesPerBuyer;
+  core.List<PricePerBuyer>? reservePricesPerBuyer;
 
   NonGuaranteedAuctionTerms();
 
@@ -7910,12 +7609,12 @@ class NonGuaranteedAuctionTerms {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (autoOptimizePrivateAuction != null)
-          'autoOptimizePrivateAuction': autoOptimizePrivateAuction,
+          'autoOptimizePrivateAuction': autoOptimizePrivateAuction!,
         if (reservePricesPerBuyer != null)
           'reservePricesPerBuyer':
-              reservePricesPerBuyer.map((value) => value.toJson()).toList(),
+              reservePricesPerBuyer!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7925,7 +7624,7 @@ class NonGuaranteedAuctionTerms {
 /// can be returned in a get or list request.
 class NonGuaranteedFixedPriceTerms {
   /// Fixed price for the specified buyer.
-  core.List<PricePerBuyer> fixedPrices;
+  core.List<PricePerBuyer>? fixedPrices;
 
   NonGuaranteedFixedPriceTerms();
 
@@ -7938,9 +7637,9 @@ class NonGuaranteedFixedPriceTerms {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fixedPrices != null)
-          'fixedPrices': fixedPrices.map((value) => value.toJson()).toList(),
+          'fixedPrices': fixedPrices!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7949,7 +7648,7 @@ class Note {
   /// The timestamp for when this note was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The role of the person (buyer/seller) creating the note.
   ///
@@ -7959,24 +7658,24 @@ class Note {
   /// buyer/seller role.
   /// - "BUYER" : Specifies the role as buyer.
   /// - "SELLER" : Specifies the role as seller.
-  core.String creatorRole;
+  core.String? creatorRole;
 
   /// The actual note to attach.
   ///
   /// (max-length: 1024 unicode code units) Note: This field may be set only
   /// when creating the resource. Modifying this field while updating the
   /// resource will result in an error.
-  core.String note;
+  core.String? note;
 
   /// The unique ID for the note.
   ///
   /// Output only.
-  core.String noteId;
+  core.String? noteId;
 
   /// The revision number of the proposal when the note is created.
   ///
   /// Output only.
-  core.String proposalRevision;
+  core.String? proposalRevision;
 
   Note();
 
@@ -7998,22 +7697,22 @@ class Note {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (creatorRole != null) 'creatorRole': creatorRole,
-        if (note != null) 'note': note,
-        if (noteId != null) 'noteId': noteId,
-        if (proposalRevision != null) 'proposalRevision': proposalRevision,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (creatorRole != null) 'creatorRole': creatorRole!,
+        if (note != null) 'note': note!,
+        if (noteId != null) 'noteId': noteId!,
+        if (proposalRevision != null) 'proposalRevision': proposalRevision!,
       };
 }
 
 /// Represents targeting information for operating systems.
 class OperatingSystemTargeting {
   /// IDs of operating systems to be included/excluded.
-  CriteriaTargeting operatingSystemCriteria;
+  CriteriaTargeting? operatingSystemCriteria;
 
   /// IDs of operating system versions to be included/excluded.
-  CriteriaTargeting operatingSystemVersionCriteria;
+  CriteriaTargeting? operatingSystemVersionCriteria;
 
   OperatingSystemTargeting();
 
@@ -8030,12 +7729,12 @@ class OperatingSystemTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operatingSystemCriteria != null)
-          'operatingSystemCriteria': operatingSystemCriteria.toJson(),
+          'operatingSystemCriteria': operatingSystemCriteria!.toJson(),
         if (operatingSystemVersionCriteria != null)
           'operatingSystemVersionCriteria':
-              operatingSystemVersionCriteria.toJson(),
+              operatingSystemVersionCriteria!.toJson(),
       };
 }
 
@@ -8045,7 +7744,7 @@ class PauseProposalRequest {
   ///
   /// This human readable message will be displayed in the seller's UI. (Max
   /// length: 1000 unicode code units.)
-  core.String reason;
+  core.String? reason;
 
   PauseProposalRequest();
 
@@ -8055,8 +7754,8 @@ class PauseProposalRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (reason != null) 'reason': reason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (reason != null) 'reason': reason!,
       };
 }
 
@@ -8068,10 +7767,10 @@ class PlacementTargeting {
   /// Mobile application targeting information in a deal.
   ///
   /// This doesn't apply to Auction Packages.
-  MobileApplicationTargeting mobileApplicationTargeting;
+  MobileApplicationTargeting? mobileApplicationTargeting;
 
   /// URLs to be included/excluded.
-  UrlTargeting urlTargeting;
+  UrlTargeting? urlTargeting;
 
   PlacementTargeting();
 
@@ -8087,10 +7786,10 @@ class PlacementTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (mobileApplicationTargeting != null)
-          'mobileApplicationTargeting': mobileApplicationTargeting.toJson(),
-        if (urlTargeting != null) 'urlTargeting': urlTargeting.toJson(),
+          'mobileApplicationTargeting': mobileApplicationTargeting!.toJson(),
+        if (urlTargeting != null) 'urlTargeting': urlTargeting!.toJson(),
       };
 }
 
@@ -8099,7 +7798,7 @@ class PlacementTargeting {
 /// Output only.
 class PlatformContext {
   /// The platforms this restriction applies to.
-  core.List<core.String> platforms;
+  core.List<core.String>? platforms;
 
   PlatformContext();
 
@@ -8111,15 +7810,15 @@ class PlatformContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (platforms != null) 'platforms': platforms,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (platforms != null) 'platforms': platforms!,
       };
 }
 
 /// Represents a price and a pricing type for a product / deal.
 class Price {
   /// The actual price with currency specified.
-  Money amount;
+  Money? amount;
 
   /// The pricing type for the deal/product.
   ///
@@ -8130,7 +7829,7 @@ class Price {
   /// instead.
   /// - "COST_PER_MILLE" : Cost per thousand impressions.
   /// - "COST_PER_DAY" : Cost per day
-  core.String pricingType;
+  core.String? pricingType;
 
   Price();
 
@@ -8144,9 +7843,9 @@ class Price {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amount != null) 'amount': amount.toJson(),
-        if (pricingType != null) 'pricingType': pricingType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amount != null) 'amount': amount!.toJson(),
+        if (pricingType != null) 'pricingType': pricingType!,
       };
 }
 
@@ -8161,16 +7860,16 @@ class PricePerBuyer {
   /// The list of advertisers for this price when associated with this buyer.
   ///
   /// If empty, all advertisers with this buyer pay this price.
-  core.List<core.String> advertiserIds;
+  core.List<core.String>? advertiserIds;
 
   /// The buyer who will pay this price.
   ///
   /// If unset, all buyers can pay this price (if the advertisers match, and
   /// there's no more specific rule matching the buyer).
-  Buyer buyer;
+  Buyer? buyer;
 
   /// The specified price.
-  Price price;
+  Price? price;
 
   PricePerBuyer();
 
@@ -8190,10 +7889,10 @@ class PricePerBuyer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (advertiserIds != null) 'advertiserIds': advertiserIds,
-        if (buyer != null) 'buyer': buyer.toJson(),
-        if (price != null) 'price': price.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (advertiserIds != null) 'advertiserIds': advertiserIds!,
+        if (buyer != null) 'buyer': buyer!.toJson(),
+        if (price != null) 'price': price!.toJson(),
       };
 }
 
@@ -8204,7 +7903,7 @@ class PrivateData {
   ///
   /// This can be queried in the list operations (max-length: 1024 unicode code
   /// units).
-  core.String referenceId;
+  core.String? referenceId;
 
   PrivateData();
 
@@ -8214,8 +7913,8 @@ class PrivateData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (referenceId != null) 'referenceId': referenceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (referenceId != null) 'referenceId': referenceId!,
       };
 }
 
@@ -8229,43 +7928,43 @@ class Product {
   /// The proposed end time for the deal.
   ///
   /// The field will be truncated to the order of seconds during serving.
-  core.String availableEndTime;
+  core.String? availableEndTime;
 
   /// Inventory availability dates.
   ///
   /// The start time will be truncated to seconds during serving. Thus, a field
   /// specified as 3:23:34.456 (HH:mm:ss.SSS) will be truncated to 3:23:34 when
   /// serving.
-  core.String availableStartTime;
+  core.String? availableStartTime;
 
   /// Creation time.
-  core.String createTime;
+  core.String? createTime;
 
   /// Optional contact information for the creator of this product.
-  core.List<ContactInformation> creatorContacts;
+  core.List<ContactInformation>? creatorContacts;
 
   /// The display name for this product as set by the seller.
-  core.String displayName;
+  core.String? displayName;
 
   /// If the creator has already signed off on the product, then the buyer can
   /// finalize the deal by accepting the product as is.
   ///
   /// When copying to a proposal, if any of the terms are changed, then
   /// auto_finalize is automatically set to false.
-  core.bool hasCreatorSignedOff;
+  core.bool? hasCreatorSignedOff;
 
   /// The unique ID for the product.
-  core.String productId;
+  core.String? productId;
 
   /// The revision number of the product (auto-assigned by Marketplace).
-  core.String productRevision;
+  core.String? productRevision;
 
   /// An ID which can be used by the Publisher Profile API to get more
   /// information about the seller that created this product.
-  core.String publisherProfileId;
+  core.String? publisherProfileId;
 
   /// Information about the seller that created this product.
-  Seller seller;
+  Seller? seller;
 
   /// The syndication product associated with the deal.
   /// Possible string values are:
@@ -8275,24 +7974,24 @@ class Product {
   /// - "MOBILE" : This represents a mobile property.
   /// - "VIDEO" : This represents video ad formats.
   /// - "GAMES" : This represents ads shown within games.
-  core.String syndicationProduct;
+  core.String? syndicationProduct;
 
   /// Targeting that is shared between the buyer and the seller.
   ///
   /// Each targeting criterion has a specified key and for each key there is a
   /// list of inclusion value or exclusion values.
-  core.List<TargetingCriteria> targetingCriterion;
+  core.List<TargetingCriteria>? targetingCriterion;
 
   /// The negotiable terms of the deal.
-  DealTerms terms;
+  DealTerms? terms;
 
   /// Time of last update.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// The web-property code for the seller.
   ///
   /// This needs to be copied as is when adding a new deal to a proposal.
-  core.String webPropertyCode;
+  core.String? webPropertyCode;
 
   Product();
 
@@ -8352,30 +8051,30 @@ class Product {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (availableEndTime != null) 'availableEndTime': availableEndTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (availableEndTime != null) 'availableEndTime': availableEndTime!,
         if (availableStartTime != null)
-          'availableStartTime': availableStartTime,
-        if (createTime != null) 'createTime': createTime,
+          'availableStartTime': availableStartTime!,
+        if (createTime != null) 'createTime': createTime!,
         if (creatorContacts != null)
           'creatorContacts':
-              creatorContacts.map((value) => value.toJson()).toList(),
-        if (displayName != null) 'displayName': displayName,
+              creatorContacts!.map((value) => value.toJson()).toList(),
+        if (displayName != null) 'displayName': displayName!,
         if (hasCreatorSignedOff != null)
-          'hasCreatorSignedOff': hasCreatorSignedOff,
-        if (productId != null) 'productId': productId,
-        if (productRevision != null) 'productRevision': productRevision,
+          'hasCreatorSignedOff': hasCreatorSignedOff!,
+        if (productId != null) 'productId': productId!,
+        if (productRevision != null) 'productRevision': productRevision!,
         if (publisherProfileId != null)
-          'publisherProfileId': publisherProfileId,
-        if (seller != null) 'seller': seller.toJson(),
+          'publisherProfileId': publisherProfileId!,
+        if (seller != null) 'seller': seller!.toJson(),
         if (syndicationProduct != null)
-          'syndicationProduct': syndicationProduct,
+          'syndicationProduct': syndicationProduct!,
         if (targetingCriterion != null)
           'targetingCriterion':
-              targetingCriterion.map((value) => value.toJson()).toList(),
-        if (terms != null) 'terms': terms.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
-        if (webPropertyCode != null) 'webPropertyCode': webPropertyCode,
+              targetingCriterion!.map((value) => value.toJson()).toList(),
+        if (terms != null) 'terms': terms!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (webPropertyCode != null) 'webPropertyCode': webPropertyCode!,
       };
 }
 
@@ -8391,40 +8090,40 @@ class Proposal {
   /// Reference to the buyer that will get billed for this proposal.
   ///
   /// Output only.
-  Buyer billedBuyer;
+  Buyer? billedBuyer;
 
   /// Reference to the buyer on the proposal.
   ///
   /// Note: This field may be set only when creating the resource. Modifying
   /// this field while updating the resource will result in an error.
-  Buyer buyer;
+  Buyer? buyer;
 
   /// Contact information for the buyer.
-  core.List<ContactInformation> buyerContacts;
+  core.List<ContactInformation>? buyerContacts;
 
   /// Private data for buyer.
   ///
   /// (hidden from seller).
-  PrivateData buyerPrivateData;
+  PrivateData? buyerPrivateData;
 
   /// The deals associated with this proposal.
   ///
   /// For Private Auction proposals (whose deals have
   /// NonGuaranteedAuctionTerms), there will only be one deal.
-  core.List<Deal> deals;
+  core.List<Deal>? deals;
 
   /// The name for the proposal.
-  core.String displayName;
+  core.String? displayName;
 
   /// True if the proposal is being renegotiated.
   ///
   /// Output only.
-  core.bool isRenegotiating;
+  core.bool? isRenegotiating;
 
   /// True, if the buyside inventory setup is complete for this proposal.
   ///
   /// Output only.
-  core.bool isSetupComplete;
+  core.bool? isSetupComplete;
 
   /// The role of the last user that either updated the proposal or left a
   /// comment.
@@ -8435,12 +8134,12 @@ class Proposal {
   /// buyer/seller role.
   /// - "BUYER" : Specifies the role as buyer.
   /// - "SELLER" : Specifies the role as seller.
-  core.String lastUpdaterOrCommentorRole;
+  core.String? lastUpdaterOrCommentorRole;
 
   /// The notes associated with this proposal.
   ///
   /// Output only.
-  core.List<Note> notes;
+  core.List<Note>? notes;
 
   /// Indicates whether the buyer/seller created the proposal.
   ///
@@ -8450,17 +8149,17 @@ class Proposal {
   /// buyer/seller role.
   /// - "BUYER" : Specifies the role as buyer.
   /// - "SELLER" : Specifies the role as seller.
-  core.String originatorRole;
+  core.String? originatorRole;
 
   /// Private auction ID if this proposal is a private auction proposal.
   ///
   /// Output only.
-  core.String privateAuctionId;
+  core.String? privateAuctionId;
 
   /// The unique ID of the proposal.
   ///
   /// Output only.
-  core.String proposalId;
+  core.String? proposalId;
 
   /// The revision number for the proposal.
   ///
@@ -8472,7 +8171,7 @@ class Proposal {
   /// subsequent update was made.
   ///
   /// Output only.
-  core.String proposalRevision;
+  core.String? proposalRevision;
 
   /// The current state of the proposal.
   ///
@@ -8487,28 +8186,28 @@ class Proposal {
   /// proposal was never finalized.
   /// - "FINALIZED" : The proposal is finalized. During renegotiation, the
   /// proposal may not be in this state.
-  core.String proposalState;
+  core.String? proposalState;
 
   /// Reference to the seller on the proposal.
   ///
   /// Note: This field may be set only when creating the resource. Modifying
   /// this field while updating the resource will result in an error.
-  Seller seller;
+  Seller? seller;
 
   /// Contact information for the seller.
   ///
   /// Output only.
-  core.List<ContactInformation> sellerContacts;
+  core.List<ContactInformation>? sellerContacts;
 
   /// The terms and conditions set by the publisher for this proposal.
   ///
   /// Output only.
-  core.String termsAndConditions;
+  core.String? termsAndConditions;
 
   /// The time when the proposal was last revised.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Proposal();
 
@@ -8589,35 +8288,35 @@ class Proposal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (billedBuyer != null) 'billedBuyer': billedBuyer.toJson(),
-        if (buyer != null) 'buyer': buyer.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (billedBuyer != null) 'billedBuyer': billedBuyer!.toJson(),
+        if (buyer != null) 'buyer': buyer!.toJson(),
         if (buyerContacts != null)
           'buyerContacts':
-              buyerContacts.map((value) => value.toJson()).toList(),
+              buyerContacts!.map((value) => value.toJson()).toList(),
         if (buyerPrivateData != null)
-          'buyerPrivateData': buyerPrivateData.toJson(),
+          'buyerPrivateData': buyerPrivateData!.toJson(),
         if (deals != null)
-          'deals': deals.map((value) => value.toJson()).toList(),
-        if (displayName != null) 'displayName': displayName,
-        if (isRenegotiating != null) 'isRenegotiating': isRenegotiating,
-        if (isSetupComplete != null) 'isSetupComplete': isSetupComplete,
+          'deals': deals!.map((value) => value.toJson()).toList(),
+        if (displayName != null) 'displayName': displayName!,
+        if (isRenegotiating != null) 'isRenegotiating': isRenegotiating!,
+        if (isSetupComplete != null) 'isSetupComplete': isSetupComplete!,
         if (lastUpdaterOrCommentorRole != null)
-          'lastUpdaterOrCommentorRole': lastUpdaterOrCommentorRole,
+          'lastUpdaterOrCommentorRole': lastUpdaterOrCommentorRole!,
         if (notes != null)
-          'notes': notes.map((value) => value.toJson()).toList(),
-        if (originatorRole != null) 'originatorRole': originatorRole,
-        if (privateAuctionId != null) 'privateAuctionId': privateAuctionId,
-        if (proposalId != null) 'proposalId': proposalId,
-        if (proposalRevision != null) 'proposalRevision': proposalRevision,
-        if (proposalState != null) 'proposalState': proposalState,
-        if (seller != null) 'seller': seller.toJson(),
+          'notes': notes!.map((value) => value.toJson()).toList(),
+        if (originatorRole != null) 'originatorRole': originatorRole!,
+        if (privateAuctionId != null) 'privateAuctionId': privateAuctionId!,
+        if (proposalId != null) 'proposalId': proposalId!,
+        if (proposalRevision != null) 'proposalRevision': proposalRevision!,
+        if (proposalState != null) 'proposalState': proposalState!,
+        if (seller != null) 'seller': seller!.toJson(),
         if (sellerContacts != null)
           'sellerContacts':
-              sellerContacts.map((value) => value.toJson()).toList(),
+              sellerContacts!.map((value) => value.toJson()).toList(),
         if (termsAndConditions != null)
-          'termsAndConditions': termsAndConditions,
-        if (updateTime != null) 'updateTime': updateTime,
+          'termsAndConditions': termsAndConditions!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -8630,30 +8329,30 @@ class Proposal {
 /// publisher unless noted otherwise.
 class PublisherProfile {
   /// Description on the publisher's audience.
-  core.String audienceDescription;
+  core.String? audienceDescription;
 
   /// Statement explaining what's unique about publisher's business, and why
   /// buyers should partner with the publisher.
-  core.String buyerPitchStatement;
+  core.String? buyerPitchStatement;
 
   /// Contact information for direct reservation deals.
   ///
   /// This is free text entered by the publisher and may include information
   /// like names, phone numbers and email addresses.
-  core.String directDealsContact;
+  core.String? directDealsContact;
 
   /// Name of the publisher profile.
-  core.String displayName;
+  core.String? displayName;
 
   /// The list of domains represented in this publisher profile.
   ///
   /// Empty if this is a parent profile. These are top private domains, meaning
   /// that these will not contain a string like "photos.google.co.uk/123", but
   /// will instead contain "google.co.uk".
-  core.List<core.String> domains;
+  core.List<core.String>? domains;
 
   /// URL to publisher's Google+ page.
-  core.String googlePlusUrl;
+  core.String? googlePlusUrl;
 
   /// Indicates if this profile is the parent profile of the seller.
   ///
@@ -8664,47 +8363,47 @@ class PublisherProfile {
   /// same value of field
   /// google.ads.adexchange.buyer.v2beta1.PublisherProfile.seller. See
   /// https://support.google.com/admanager/answer/6035806 for details.
-  core.bool isParent;
+  core.bool? isParent;
 
   /// A Google public URL to the logo for this publisher profile.
   ///
   /// The logo is stored as a PNG, JPG, or GIF image.
-  core.String logoUrl;
+  core.String? logoUrl;
 
   /// URL to additional marketing and sales materials.
-  core.String mediaKitUrl;
+  core.String? mediaKitUrl;
 
   /// The list of apps represented in this publisher profile.
   ///
   /// Empty if this is a parent profile.
-  core.List<PublisherProfileMobileApplication> mobileApps;
+  core.List<PublisherProfileMobileApplication>? mobileApps;
 
   /// Overview of the publisher.
-  core.String overview;
+  core.String? overview;
 
   /// Contact information for programmatic deals.
   ///
   /// This is free text entered by the publisher and may include information
   /// like names, phone numbers and email addresses.
-  core.String programmaticDealsContact;
+  core.String? programmaticDealsContact;
 
   /// Unique ID for publisher profile.
-  core.String publisherProfileId;
+  core.String? publisherProfileId;
 
   /// URL to a publisher rate card.
-  core.String rateCardInfoUrl;
+  core.String? rateCardInfoUrl;
 
   /// URL to a sample content page.
-  core.String samplePageUrl;
+  core.String? samplePageUrl;
 
   /// Seller of the publisher profile.
-  Seller seller;
+  Seller? seller;
 
   /// Up to three key metrics and rankings.
   ///
   /// Max 100 characters each. For example "#1 Mobile News Site for 20 Straight
   /// Months".
-  core.List<core.String> topHeadlines;
+  core.List<core.String>? topHeadlines;
 
   PublisherProfile();
 
@@ -8772,30 +8471,30 @@ class PublisherProfile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (audienceDescription != null)
-          'audienceDescription': audienceDescription,
+          'audienceDescription': audienceDescription!,
         if (buyerPitchStatement != null)
-          'buyerPitchStatement': buyerPitchStatement,
+          'buyerPitchStatement': buyerPitchStatement!,
         if (directDealsContact != null)
-          'directDealsContact': directDealsContact,
-        if (displayName != null) 'displayName': displayName,
-        if (domains != null) 'domains': domains,
-        if (googlePlusUrl != null) 'googlePlusUrl': googlePlusUrl,
-        if (isParent != null) 'isParent': isParent,
-        if (logoUrl != null) 'logoUrl': logoUrl,
-        if (mediaKitUrl != null) 'mediaKitUrl': mediaKitUrl,
+          'directDealsContact': directDealsContact!,
+        if (displayName != null) 'displayName': displayName!,
+        if (domains != null) 'domains': domains!,
+        if (googlePlusUrl != null) 'googlePlusUrl': googlePlusUrl!,
+        if (isParent != null) 'isParent': isParent!,
+        if (logoUrl != null) 'logoUrl': logoUrl!,
+        if (mediaKitUrl != null) 'mediaKitUrl': mediaKitUrl!,
         if (mobileApps != null)
-          'mobileApps': mobileApps.map((value) => value.toJson()).toList(),
-        if (overview != null) 'overview': overview,
+          'mobileApps': mobileApps!.map((value) => value.toJson()).toList(),
+        if (overview != null) 'overview': overview!,
         if (programmaticDealsContact != null)
-          'programmaticDealsContact': programmaticDealsContact,
+          'programmaticDealsContact': programmaticDealsContact!,
         if (publisherProfileId != null)
-          'publisherProfileId': publisherProfileId,
-        if (rateCardInfoUrl != null) 'rateCardInfoUrl': rateCardInfoUrl,
-        if (samplePageUrl != null) 'samplePageUrl': samplePageUrl,
-        if (seller != null) 'seller': seller.toJson(),
-        if (topHeadlines != null) 'topHeadlines': topHeadlines,
+          'publisherProfileId': publisherProfileId!,
+        if (rateCardInfoUrl != null) 'rateCardInfoUrl': rateCardInfoUrl!,
+        if (samplePageUrl != null) 'samplePageUrl': samplePageUrl!,
+        if (seller != null) 'seller': seller!.toJson(),
+        if (topHeadlines != null) 'topHeadlines': topHeadlines!,
       };
 }
 
@@ -8816,13 +8515,13 @@ class PublisherProfileMobileApplication {
   /// - "SAMSUNG" : Samsung Galaxy Store
   /// - "VIVO" : VIVO App Store
   /// - "XIAOMI" : Xiaomi GetApps
-  core.String appStore;
+  core.String? appStore;
 
   /// The external ID for the app from its app store.
-  core.String externalAppId;
+  core.String? externalAppId;
 
   /// The name of the app.
-  core.String name;
+  core.String? name;
 
   PublisherProfileMobileApplication();
 
@@ -8838,10 +8537,10 @@ class PublisherProfileMobileApplication {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appStore != null) 'appStore': appStore,
-        if (externalAppId != null) 'externalAppId': externalAppId,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appStore != null) 'appStore': appStore!,
+        if (externalAppId != null) 'externalAppId': externalAppId!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -8851,7 +8550,7 @@ class PublisherProfileMobileApplication {
 /// be aggregated throughout the lifetime of the filter set.
 class RealtimeTimeRange {
   /// The start timestamp of the real-time RTB metrics aggregation.
-  core.String startTimestamp;
+  core.String? startTimestamp;
 
   RealtimeTimeRange();
 
@@ -8861,8 +8560,8 @@ class RealtimeTimeRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (startTimestamp != null) 'startTimestamp': startTimestamp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (startTimestamp != null) 'startTimestamp': startTimestamp!,
       };
 }
 
@@ -8876,11 +8575,11 @@ class RelativeDateRange {
   /// today: 1.
   ///
   /// For a range spanning the last 7 days: 7.
-  core.int durationDays;
+  core.int? durationDays;
 
   /// The end date of the filter set, specified as the number of days before
   /// today, e.g., for a range where the last date is today: 0.
-  core.int offsetDays;
+  core.int? offsetDays;
 
   RelativeDateRange();
 
@@ -8893,16 +8592,16 @@ class RelativeDateRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (durationDays != null) 'durationDays': durationDays,
-        if (offsetDays != null) 'offsetDays': offsetDays,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (durationDays != null) 'durationDays': durationDays!,
+        if (offsetDays != null) 'offsetDays': offsetDays!,
       };
 }
 
 /// A request for removing the association between a deal and a creative.
 class RemoveDealAssociationRequest {
   /// The association between a creative and a deal that should be removed.
-  CreativeDealAssociation association;
+  CreativeDealAssociation? association;
 
   RemoveDealAssociationRequest();
 
@@ -8913,8 +8612,8 @@ class RemoveDealAssociationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (association != null) 'association': association.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (association != null) 'association': association!.toJson(),
       };
 }
 
@@ -8927,7 +8626,7 @@ class ResumeProposalRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A response may include multiple rows, breaking down along various
@@ -8938,10 +8637,10 @@ class RowDimensions {
   /// The publisher identifier for this row, if a breakdown by
   /// [BreakdownDimension.PUBLISHER_IDENTIFIER](https://developers.google.com/authorized-buyers/apis/reference/rest/v2beta1/bidders.accounts.filterSets#FilterSet.BreakdownDimension)
   /// was requested.
-  core.String publisherIdentifier;
+  core.String? publisherIdentifier;
 
   /// The time interval that this row represents.
-  TimeInterval timeInterval;
+  TimeInterval? timeInterval;
 
   RowDimensions();
 
@@ -8955,10 +8654,10 @@ class RowDimensions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (publisherIdentifier != null)
-          'publisherIdentifier': publisherIdentifier,
-        if (timeInterval != null) 'timeInterval': timeInterval.toJson(),
+          'publisherIdentifier': publisherIdentifier!,
+        if (timeInterval != null) 'timeInterval': timeInterval!.toJson(),
       };
 }
 
@@ -8967,7 +8666,7 @@ class RowDimensions {
 /// Output only.
 class SecurityContext {
   /// The security types in this context.
-  core.List<core.String> securities;
+  core.List<core.String>? securities;
 
   SecurityContext();
 
@@ -8979,8 +8678,8 @@ class SecurityContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (securities != null) 'securities': securities,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (securities != null) 'securities': securities!,
       };
 }
 
@@ -8992,10 +8691,10 @@ class Seller {
   ///
   /// The seller fills in this field. The seller account ID is then available to
   /// buyer in the product.
-  core.String accountId;
+  core.String? accountId;
 
   /// Optional sub-account ID for the seller.
-  core.String subAccountId;
+  core.String? subAccountId;
 
   Seller();
 
@@ -9008,9 +8707,9 @@ class Seller {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (subAccountId != null) 'subAccountId': subAccountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (subAccountId != null) 'subAccountId': subAccountId!,
       };
 }
 
@@ -9019,23 +8718,23 @@ class ServingContext {
   /// Matches all contexts.
   /// Possible string values are:
   /// - "SIMPLE_CONTEXT" : A simple context.
-  core.String all;
+  core.String? all;
 
   /// Matches impressions for a particular app type.
-  AppContext appType;
+  AppContext? appType;
 
   /// Matches impressions for a particular auction type.
-  AuctionContext auctionType;
+  AuctionContext? auctionType;
 
   /// Matches impressions coming from users *or* publishers in a specific
   /// location.
-  LocationContext location;
+  LocationContext? location;
 
   /// Matches impressions coming from a particular platform.
-  PlatformContext platform;
+  PlatformContext? platform;
 
   /// Matches impressions for a particular security type.
-  SecurityContext securityType;
+  SecurityContext? securityType;
 
   ServingContext();
 
@@ -9065,13 +8764,13 @@ class ServingContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (all != null) 'all': all,
-        if (appType != null) 'appType': appType.toJson(),
-        if (auctionType != null) 'auctionType': auctionType.toJson(),
-        if (location != null) 'location': location.toJson(),
-        if (platform != null) 'platform': platform.toJson(),
-        if (securityType != null) 'securityType': securityType.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (all != null) 'all': all!,
+        if (appType != null) 'appType': appType!.toJson(),
+        if (auctionType != null) 'auctionType': auctionType!.toJson(),
+        if (location != null) 'location': location!.toJson(),
+        if (platform != null) 'platform': platform!.toJson(),
+        if (securityType != null) 'securityType': securityType!.toJson(),
       };
 }
 
@@ -9084,20 +8783,20 @@ class ServingContext {
 /// Output only.
 class ServingRestriction {
   /// The contexts for the restriction.
-  core.List<ServingContext> contexts;
+  core.List<ServingContext>? contexts;
 
   /// Disapproval bound to this restriction.
   ///
   /// Only present if status=DISAPPROVED. Can be used to filter the response of
   /// the creatives.list method.
-  Disapproval disapproval;
+  Disapproval? disapproval;
 
   /// Any disapprovals bound to this restriction.
   ///
   /// Only present if status=DISAPPROVED. Can be used to filter the response of
   /// the creatives.list method. Deprecated; please use disapproval field
   /// instead.
-  core.List<Disapproval> disapprovalReasons;
+  core.List<Disapproval>? disapprovalReasons;
 
   /// The status of the creative in this context (for example, it has been
   /// explicitly disapproved or is pending review).
@@ -9105,7 +8804,7 @@ class ServingRestriction {
   /// - "STATUS_UNSPECIFIED" : The status is not known.
   /// - "DISAPPROVAL" : The ad was disapproved in this context.
   /// - "PENDING_REVIEW" : The ad is pending review in this context.
-  core.String status;
+  core.String? status;
 
   ServingRestriction();
 
@@ -9131,14 +8830,14 @@ class ServingRestriction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (contexts != null)
-          'contexts': contexts.map((value) => value.toJson()).toList(),
-        if (disapproval != null) 'disapproval': disapproval.toJson(),
+          'contexts': contexts!.map((value) => value.toJson()).toList(),
+        if (disapproval != null) 'disapproval': disapproval!.toJson(),
         if (disapprovalReasons != null)
           'disapprovalReasons':
-              disapprovalReasons.map((value) => value.toJson()).toList(),
-        if (status != null) 'status': status,
+              disapprovalReasons!.map((value) => value.toJson()).toList(),
+        if (status != null) 'status': status!,
       };
 }
 
@@ -9147,10 +8846,10 @@ class ServingRestriction {
 /// The units of width and height depend on the type of the targeting.
 class Size {
   /// The height of the creative.
-  core.int height;
+  core.int? height;
 
   /// The width of the creative
-  core.int width;
+  core.int? width;
 
   Size();
 
@@ -9163,9 +8862,9 @@ class Size {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -9177,7 +8876,7 @@ class StopWatchingCreativeRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Advertisers can target different attributes of an ad slot.
@@ -9188,12 +8887,12 @@ class TargetingCriteria {
   /// The list of values to exclude from targeting.
   ///
   /// Each value is AND'd together.
-  core.List<TargetingValue> exclusions;
+  core.List<TargetingValue>? exclusions;
 
   /// The list of value to include as part of the targeting.
   ///
   /// Each value is OR'd together.
-  core.List<TargetingValue> inclusions;
+  core.List<TargetingValue>? inclusions;
 
   /// The key representing the shared targeting criterion.
   ///
@@ -9201,7 +8900,7 @@ class TargetingCriteria {
   /// Third parties may define their own keys. A list of permissible keys along
   /// with the acceptable values will be provided as part of the external
   /// documentation.
-  core.String key;
+  core.String? key;
 
   TargetingCriteria();
 
@@ -9223,12 +8922,12 @@ class TargetingCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (exclusions != null)
-          'exclusions': exclusions.map((value) => value.toJson()).toList(),
+          'exclusions': exclusions!.map((value) => value.toJson()).toList(),
         if (inclusions != null)
-          'inclusions': inclusions.map((value) => value.toJson()).toList(),
-        if (key != null) 'key': key,
+          'inclusions': inclusions!.map((value) => value.toJson()).toList(),
+        if (key != null) 'key': key!,
       };
 }
 
@@ -9237,19 +8936,19 @@ class TargetingValue {
   /// The creative size value to include/exclude.
   ///
   /// Filled in when key = GOOG_CREATIVE_SIZE
-  CreativeSize creativeSizeValue;
+  CreativeSize? creativeSizeValue;
 
   /// The daypart targeting to include / exclude.
   ///
   /// Filled in when the key is GOOG_DAYPART_TARGETING. The definition of this
   /// targeting is derived from the structure used by Ad Manager.
-  DayPartTargeting dayPartTargetingValue;
+  DayPartTargeting? dayPartTargetingValue;
 
   /// The long value to include/exclude.
-  core.String longValue;
+  core.String? longValue;
 
   /// The string value to include/exclude.
-  core.String stringValue;
+  core.String? stringValue;
 
   TargetingValue();
 
@@ -9271,26 +8970,26 @@ class TargetingValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (creativeSizeValue != null)
-          'creativeSizeValue': creativeSizeValue.toJson(),
+          'creativeSizeValue': creativeSizeValue!.toJson(),
         if (dayPartTargetingValue != null)
-          'dayPartTargetingValue': dayPartTargetingValue.toJson(),
-        if (longValue != null) 'longValue': longValue,
-        if (stringValue != null) 'stringValue': stringValue,
+          'dayPartTargetingValue': dayPartTargetingValue!.toJson(),
+        if (longValue != null) 'longValue': longValue!,
+        if (stringValue != null) 'stringValue': stringValue!,
       };
 }
 
 /// Represents targeting about various types of technology.
 class TechnologyTargeting {
   /// IDs of device capabilities to be included/excluded.
-  CriteriaTargeting deviceCapabilityTargeting;
+  CriteriaTargeting? deviceCapabilityTargeting;
 
   /// IDs of device categories to be included/excluded.
-  CriteriaTargeting deviceCategoryTargeting;
+  CriteriaTargeting? deviceCategoryTargeting;
 
   /// Operating system related targeting information.
-  OperatingSystemTargeting operatingSystemTargeting;
+  OperatingSystemTargeting? operatingSystemTargeting;
 
   TechnologyTargeting();
 
@@ -9312,13 +9011,13 @@ class TechnologyTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deviceCapabilityTargeting != null)
-          'deviceCapabilityTargeting': deviceCapabilityTargeting.toJson(),
+          'deviceCapabilityTargeting': deviceCapabilityTargeting!.toJson(),
         if (deviceCategoryTargeting != null)
-          'deviceCategoryTargeting': deviceCategoryTargeting.toJson(),
+          'deviceCategoryTargeting': deviceCategoryTargeting!.toJson(),
         if (operatingSystemTargeting != null)
-          'operatingSystemTargeting': operatingSystemTargeting.toJson(),
+          'operatingSystemTargeting': operatingSystemTargeting!.toJson(),
       };
 }
 
@@ -9326,11 +9025,11 @@ class TechnologyTargeting {
 class TimeInterval {
   /// The timestamp marking the end of the range (exclusive) for which data is
   /// included.
-  core.String endTime;
+  core.String? endTime;
 
   /// The timestamp marking the start of the range (inclusive) for which data is
   /// included.
-  core.String startTime;
+  core.String? startTime;
 
   TimeInterval();
 
@@ -9343,9 +9042,9 @@ class TimeInterval {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -9359,23 +9058,23 @@ class TimeOfDay {
   ///
   /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
   /// for scenarios like business closing time.
-  core.int hours;
+  core.int? hours;
 
   /// Minutes of hour of day.
   ///
   /// Must be from 0 to 59.
-  core.int minutes;
+  core.int? minutes;
 
   /// Fractions of seconds in nanoseconds.
   ///
   /// Must be from 0 to 999,999,999.
-  core.int nanos;
+  core.int? nanos;
 
   /// Seconds of minutes of the time.
   ///
   /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
   /// leap-seconds.
-  core.int seconds;
+  core.int? seconds;
 
   TimeOfDay();
 
@@ -9394,11 +9093,11 @@ class TimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hours != null) 'hours': hours,
-        if (minutes != null) 'minutes': minutes,
-        if (nanos != null) 'nanos': nanos,
-        if (seconds != null) 'seconds': seconds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hours != null) 'hours': hours!,
+        if (minutes != null) 'minutes': minutes!,
+        if (nanos != null) 'nanos': nanos!,
+        if (seconds != null) 'seconds': seconds!,
       };
 }
 
@@ -9409,10 +9108,10 @@ class TimeOfDay {
 /// apply.
 class UrlTargeting {
   /// A list of URLs to be excluded.
-  core.List<core.String> excludedUrls;
+  core.List<core.String>? excludedUrls;
 
   /// A list of URLs to be included.
-  core.List<core.String> targetedUrls;
+  core.List<core.String>? targetedUrls;
 
   UrlTargeting();
 
@@ -9429,21 +9128,21 @@ class UrlTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (excludedUrls != null) 'excludedUrls': excludedUrls,
-        if (targetedUrls != null) 'targetedUrls': targetedUrls,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (excludedUrls != null) 'excludedUrls': excludedUrls!,
+        if (targetedUrls != null) 'targetedUrls': targetedUrls!,
       };
 }
 
 /// Video content for a creative.
 class VideoContent {
   /// The URL to fetch a video ad.
-  core.String videoUrl;
+  core.String? videoUrl;
 
   /// The contents of a VAST document for a video ad.
   ///
   /// This document should conform to the VAST 2.0 or 3.0 standard.
-  core.String videoVastXml;
+  core.String? videoVastXml;
 
   VideoContent();
 
@@ -9456,9 +9155,9 @@ class VideoContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (videoUrl != null) 'videoUrl': videoUrl,
-        if (videoVastXml != null) 'videoVastXml': videoVastXml,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (videoUrl != null) 'videoUrl': videoUrl!,
+        if (videoVastXml != null) 'videoVastXml': videoVastXml!,
       };
 }
 
@@ -9467,13 +9166,13 @@ class VideoTargeting {
   /// A list of video positions to be excluded.
   ///
   /// Position types can either be included or excluded (XOR).
-  core.List<core.String> excludedPositionTypes;
+  core.List<core.String>? excludedPositionTypes;
 
   /// A list of video positions to be included.
   ///
   /// When the included list is present, the excluded list must be empty. When
   /// the excluded list is present, the included list must be empty.
-  core.List<core.String> targetedPositionTypes;
+  core.List<core.String>? targetedPositionTypes;
 
   VideoTargeting();
 
@@ -9490,11 +9189,11 @@ class VideoTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (excludedPositionTypes != null)
-          'excludedPositionTypes': excludedPositionTypes,
+          'excludedPositionTypes': excludedPositionTypes!,
         if (targetedPositionTypes != null)
-          'targetedPositionTypes': targetedPositionTypes,
+          'targetedPositionTypes': targetedPositionTypes!,
       };
 }
 
@@ -9506,7 +9205,7 @@ class WatchCreativeRequest {
   /// ad-exchange-buyside-reports@google.com to write to the topic. This should
   /// be the full resource name in "projects/{project_id}/topics/{topic_id}"
   /// format.
-  core.String topic;
+  core.String? topic;
 
   WatchCreativeRequest();
 
@@ -9516,7 +9215,7 @@ class WatchCreativeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (topic != null) 'topic': topic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (topic != null) 'topic': topic!,
       };
 }

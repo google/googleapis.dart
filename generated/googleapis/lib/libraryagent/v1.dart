@@ -82,11 +82,8 @@ class ShelvesResource {
   /// this method will complete with the same error.
   async.Future<GoogleExampleLibraryagentV1Shelf> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -128,9 +125,9 @@ class ShelvesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleExampleLibraryagentV1ListShelvesResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -178,11 +175,8 @@ class ShelvesBooksResource {
   /// this method will complete with the same error.
   async.Future<GoogleExampleLibraryagentV1Book> borrow(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -220,11 +214,8 @@ class ShelvesBooksResource {
   /// this method will complete with the same error.
   async.Future<GoogleExampleLibraryagentV1Book> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -270,13 +261,10 @@ class ShelvesBooksResource {
   /// this method will complete with the same error.
   async.Future<GoogleExampleLibraryagentV1ListBooksResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -318,11 +306,8 @@ class ShelvesBooksResource {
   /// this method will complete with the same error.
   async.Future<GoogleExampleLibraryagentV1Book> return_(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -343,19 +328,19 @@ class ShelvesBooksResource {
 /// A single book in the library.
 class GoogleExampleLibraryagentV1Book {
   /// The name of the book author.
-  core.String author;
+  core.String? author;
 
   /// The resource name of the book.
   ///
   /// Book names have the form `shelves/{shelf_id}/books/{book_id}`. The name is
   /// ignored when creating a book.
-  core.String name;
+  core.String? name;
 
   /// Value indicating whether the book has been read.
-  core.bool read;
+  core.bool? read;
 
   /// The title of the book.
-  core.String title;
+  core.String? title;
 
   GoogleExampleLibraryagentV1Book();
 
@@ -374,24 +359,24 @@ class GoogleExampleLibraryagentV1Book {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (author != null) 'author': author,
-        if (name != null) 'name': name,
-        if (read != null) 'read': read,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (author != null) 'author': author!,
+        if (name != null) 'name': name!,
+        if (read != null) 'read': read!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// Response message for LibraryAgent.ListBooks.
 class GoogleExampleLibraryagentV1ListBooksResponse {
   /// The list of books.
-  core.List<GoogleExampleLibraryagentV1Book> books;
+  core.List<GoogleExampleLibraryagentV1Book>? books;
 
   /// A token to retrieve next page of results.
   ///
   /// Pass this value in the ListBooksRequest.page_token field in the subsequent
   /// call to `ListBooks` method to retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleExampleLibraryagentV1ListBooksResponse();
 
@@ -408,10 +393,10 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (books != null)
-          'books': books.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'books': books!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -422,10 +407,10 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
   /// Pass this value in the ListShelvesRequest.page_token field in the
   /// subsequent call to `ListShelves` method to retrieve the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of shelves.
-  core.List<GoogleExampleLibraryagentV1Shelf> shelves;
+  core.List<GoogleExampleLibraryagentV1Shelf>? shelves;
 
   GoogleExampleLibraryagentV1ListShelvesResponse();
 
@@ -442,10 +427,10 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (shelves != null)
-          'shelves': shelves.map((value) => value.toJson()).toList(),
+          'shelves': shelves!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -457,10 +442,10 @@ class GoogleExampleLibraryagentV1Shelf {
   /// creating a shelf.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The theme of the shelf
-  core.String theme;
+  core.String? theme;
 
   GoogleExampleLibraryagentV1Shelf();
 
@@ -473,8 +458,8 @@ class GoogleExampleLibraryagentV1Shelf {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (theme != null) 'theme': theme,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (theme != null) 'theme': theme!,
       };
 }

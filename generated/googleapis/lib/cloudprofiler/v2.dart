@@ -108,13 +108,9 @@ class ProjectsProfilesResource {
   async.Future<Profile> create(
     CreateProfileRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -156,13 +152,9 @@ class ProjectsProfilesResource {
   async.Future<Profile> createOffline(
     Profile request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -212,14 +204,10 @@ class ProjectsProfilesResource {
   async.Future<Profile> patch(
     Profile request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -244,10 +232,10 @@ class ProjectsProfilesResource {
 /// profile of one of these types needs to be collected.
 class CreateProfileRequest {
   /// Deployment details.
-  Deployment deployment;
+  Deployment? deployment;
 
   /// One or more profile types that the agent is capable of providing.
-  core.List<core.String> profileType;
+  core.List<core.String>? profileType;
 
   CreateProfileRequest();
 
@@ -263,9 +251,9 @@ class CreateProfileRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deployment != null) 'deployment': deployment.toJson(),
-        if (profileType != null) 'profileType': profileType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deployment != null) 'deployment': deployment!.toJson(),
+        if (profileType != null) 'profileType': profileType!,
       };
 }
 
@@ -282,12 +270,12 @@ class Deployment {
   /// Platform, "zone" or "region" label should be present describing the
   /// deployment location. An example of a zone is "us-central1-a", an example
   /// of a region is "us-central1" or "us-central".
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Project ID is the ID of a cloud project.
   ///
   /// Validation regex: `^a-z{4,61}[a-z0-9]$`.
-  core.String projectId;
+  core.String? projectId;
 
   /// Target is the service name used to group related deployments: * Service
   /// name for GAE Flex / Standard.
@@ -295,7 +283,7 @@ class Deployment {
   /// * Cluster and container name for GKE. * User-specified string for direct
   /// GCE profiling (e.g. Java). * Job name for Dataflow. Validation regex:
   /// `^[a-z]([-a-z0-9_.]{0,253}[a-z0-9])?$`.
-  core.String target;
+  core.String? target;
 
   Deployment();
 
@@ -317,17 +305,17 @@ class Deployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
-        if (projectId != null) 'projectId': projectId,
-        if (target != null) 'target': target,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
+        if (projectId != null) 'projectId': projectId!,
+        if (target != null) 'target': target!,
       };
 }
 
 /// Profile resource.
 class Profile {
   /// Deployment this profile corresponds to.
-  Deployment deployment;
+  Deployment? deployment;
 
   /// Duration of the profiling session.
   ///
@@ -336,27 +324,27 @@ class Profile {
   /// effective profiling duration, which is recorded in the profile data, in
   /// case the profiling can't be stopped immediately (e.g. in case stopping the
   /// profiling is handled asynchronously).
-  core.String duration;
+  core.String? duration;
 
   /// Input only.
   ///
   /// Labels associated to this specific profile. These labels will get merged
   /// with the deployment labels for the final data set. See documentation on
   /// deployment labels for validation rules and limits.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Opaque, server-assigned, unique ID for this profile.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Input only.
   ///
   /// Profile bytes, as a gzip compressed serialized proto, the format is
   /// https://github.com/google/pprof/blob/master/proto/profile.proto.
-  core.String profileBytes;
+  core.String? profileBytes;
   core.List<core.int> get profileBytesAsBytes =>
-      convert.base64.decode(profileBytes);
+      convert.base64.decode(profileBytes!);
 
   set profileBytesAsBytes(core.List<core.int> _bytes) {
     profileBytes =
@@ -382,7 +370,7 @@ class Profile {
   /// profiling interval. The profile is in particular useful for garbage
   /// collecting languages to understand which parts of the code create most of
   /// the garbage collection pressure to see if those can be optimized.
-  core.String profileType;
+  core.String? profileType;
 
   Profile();
 
@@ -414,12 +402,12 @@ class Profile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deployment != null) 'deployment': deployment.toJson(),
-        if (duration != null) 'duration': duration,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (profileBytes != null) 'profileBytes': profileBytes,
-        if (profileType != null) 'profileType': profileType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deployment != null) 'deployment': deployment!.toJson(),
+        if (duration != null) 'duration': duration!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (profileBytes != null) 'profileBytes': profileBytes!,
+        if (profileType != null) 'profileType': profileType!,
       };
 }

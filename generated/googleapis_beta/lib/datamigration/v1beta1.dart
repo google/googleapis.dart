@@ -99,11 +99,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -143,14 +140,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -209,15 +203,11 @@ class ProjectsLocationsConnectionProfilesResource {
   async.Future<Operation> create(
     ConnectionProfile request,
     core.String parent, {
-    core.String connectionProfileId,
-    core.String requestId,
-    core.String $fields,
+    core.String? connectionProfileId,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (connectionProfileId != null)
         'connectionProfileId': [connectionProfileId],
@@ -270,13 +260,10 @@ class ProjectsLocationsConnectionProfilesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.bool force,
-    core.String requestId,
-    core.String $fields,
+    core.bool? force,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (force != null) 'force': ['${force}'],
       if (requestId != null) 'requestId': [requestId],
@@ -313,11 +300,8 @@ class ProjectsLocationsConnectionProfilesResource {
   /// this method will complete with the same error.
   async.Future<ConnectionProfile> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -366,12 +350,9 @@ class ProjectsLocationsConnectionProfilesResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -433,15 +414,12 @@ class ProjectsLocationsConnectionProfilesResource {
   /// this method will complete with the same error.
   async.Future<ListConnectionProfilesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -496,15 +474,11 @@ class ProjectsLocationsConnectionProfilesResource {
   async.Future<Operation> patch(
     ConnectionProfile request,
     core.String name, {
-    core.String requestId,
-    core.String updateMask,
-    core.String $fields,
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -550,13 +524,9 @@ class ProjectsLocationsConnectionProfilesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -604,13 +574,9 @@ class ProjectsLocationsConnectionProfilesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -667,15 +633,11 @@ class ProjectsLocationsMigrationJobsResource {
   async.Future<Operation> create(
     MigrationJob request,
     core.String parent, {
-    core.String migrationJobId,
-    core.String requestId,
-    core.String $fields,
+    core.String? migrationJobId,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (migrationJobId != null) 'migrationJobId': [migrationJobId],
       if (requestId != null) 'requestId': [requestId],
@@ -725,13 +687,10 @@ class ProjectsLocationsMigrationJobsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.bool force,
-    core.String requestId,
-    core.String $fields,
+    core.bool? force,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (force != null) 'force': ['${force}'],
       if (requestId != null) 'requestId': [requestId],
@@ -773,13 +732,9 @@ class ProjectsLocationsMigrationJobsResource {
   async.Future<SshScript> generateSshScript(
     GenerateSshScriptRequest request,
     core.String migrationJob, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (migrationJob == null) {
-      throw core.ArgumentError('Parameter migrationJob is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -817,11 +772,8 @@ class ProjectsLocationsMigrationJobsResource {
   /// this method will complete with the same error.
   async.Future<MigrationJob> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -870,12 +822,9 @@ class ProjectsLocationsMigrationJobsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -938,15 +887,12 @@ class ProjectsLocationsMigrationJobsResource {
   /// this method will complete with the same error.
   async.Future<ListMigrationJobsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1001,15 +947,11 @@ class ProjectsLocationsMigrationJobsResource {
   async.Future<Operation> patch(
     MigrationJob request,
     core.String name, {
-    core.String requestId,
-    core.String updateMask,
-    core.String $fields,
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1051,13 +993,9 @@ class ProjectsLocationsMigrationJobsResource {
   async.Future<Operation> promote(
     PromoteMigrationJobRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1100,13 +1038,9 @@ class ProjectsLocationsMigrationJobsResource {
   async.Future<Operation> restart(
     RestartMigrationJobRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1148,13 +1082,9 @@ class ProjectsLocationsMigrationJobsResource {
   async.Future<Operation> resume(
     ResumeMigrationJobRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1199,13 +1129,9 @@ class ProjectsLocationsMigrationJobsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1246,13 +1172,9 @@ class ProjectsLocationsMigrationJobsResource {
   async.Future<Operation> start(
     StartMigrationJobRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1292,13 +1214,9 @@ class ProjectsLocationsMigrationJobsResource {
   async.Future<Operation> stop(
     StopMigrationJobRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1345,13 +1263,9 @@ class ProjectsLocationsMigrationJobsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1394,13 +1308,9 @@ class ProjectsLocationsMigrationJobsResource {
   async.Future<Operation> verify(
     VerifyMigrationJobRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1456,13 +1366,9 @@ class ProjectsLocationsOperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1503,11 +1409,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1545,11 +1448,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1598,14 +1498,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1646,13 +1543,13 @@ class ProjectsLocationsOperationsResource {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -1668,11 +1565,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -1687,7 +1584,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -1695,7 +1592,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -1710,9 +1607,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -1726,7 +1623,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -1758,12 +1655,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -1782,10 +1679,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1797,7 +1694,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Specifies required connection parameters, and, optionally, the parameters
@@ -1806,22 +1703,22 @@ class CloudSqlConnectionProfile {
   /// The Cloud SQL instance ID that this connection profile is associated with.
   ///
   /// Output only.
-  core.String cloudSqlId;
+  core.String? cloudSqlId;
 
   /// The Cloud SQL database instance's private IP.
   ///
   /// Output only.
-  core.String privateIp;
+  core.String? privateIp;
 
   /// The Cloud SQL database instance's public IP.
   ///
   /// Output only.
-  core.String publicIp;
+  core.String? publicIp;
 
   /// Metadata used to create the destination Cloud SQL database.
   ///
   /// Immutable.
-  CloudSqlSettings settings;
+  CloudSqlSettings? settings;
 
   CloudSqlConnectionProfile();
 
@@ -1841,11 +1738,11 @@ class CloudSqlConnectionProfile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cloudSqlId != null) 'cloudSqlId': cloudSqlId,
-        if (privateIp != null) 'privateIp': privateIp,
-        if (publicIp != null) 'publicIp': publicIp,
-        if (settings != null) 'settings': settings.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cloudSqlId != null) 'cloudSqlId': cloudSqlId!,
+        if (privateIp != null) 'privateIp': privateIp!,
+        if (publicIp != null) 'publicIp': publicIp!,
+        if (settings != null) 'settings': settings!.toJson(),
       };
 }
 
@@ -1861,7 +1758,7 @@ class CloudSqlSettings {
   /// - "SQL_ACTIVATION_POLICY_UNSPECIFIED" : unspecified policy.
   /// - "ALWAYS" : The instance is always up and running.
   /// - "NEVER" : The instance should never spin up.
-  core.String activationPolicy;
+  core.String? activationPolicy;
 
   /// \[default: ON\] If you enable this setting, Cloud SQL checks your
   /// available storage every 30 seconds.
@@ -1870,25 +1767,25 @@ class CloudSqlSettings {
   /// automatically adds additional storage capacity. If the available storage
   /// repeatedly falls below the threshold size, Cloud SQL continues to add
   /// storage until it reaches the maximum of 30 TB.
-  core.bool autoStorageIncrease;
+  core.bool? autoStorageIncrease;
 
   /// The storage capacity available to the database, in GB.
   ///
   /// The minimum (and default) size is 10GB.
-  core.String dataDiskSizeGb;
+  core.String? dataDiskSizeGb;
 
   /// The type of storage: `PD_SSD` (default) or `PD_HDD`.
   /// Possible string values are:
   /// - "SQL_DATA_DISK_TYPE_UNSPECIFIED" : Unspecified.
   /// - "PD_SSD" : SSD disk.
   /// - "PD_HDD" : HDD disk.
-  core.String dataDiskType;
+  core.String? dataDiskType;
 
   /// The database flags passed to the Cloud SQL instance at startup.
   ///
   /// An object containing a list of "key": value pairs. Example: { "name":
   /// "wrench", "mass": "1.3kg", "count": "3" }.
-  core.Map<core.String, core.String> databaseFlags;
+  core.Map<core.String, core.String>? databaseFlags;
 
   /// The database engine type and version.
   /// Possible string values are:
@@ -1896,51 +1793,51 @@ class CloudSqlSettings {
   /// - "MYSQL_5_6" : MySQL 5.6.
   /// - "MYSQL_5_7" : MySQL 5.7.
   /// - "MYSQL_8_0" : MySQL 8.0.
-  core.String databaseVersion;
+  core.String? databaseVersion;
 
   /// The settings for IP Management.
   ///
   /// This allows to enable or disable the instance IP and manage which external
   /// networks can connect to the instance. The IPv4 address cannot be disabled.
-  SqlIpConfig ipConfig;
+  SqlIpConfig? ipConfig;
 
   /// Input only.
   ///
   /// Initial root password.
-  core.String rootPassword;
+  core.String? rootPassword;
 
   /// Indicates If this connection profile root password is stored.
   ///
   /// Output only.
-  core.bool rootPasswordSet;
+  core.bool? rootPasswordSet;
 
   /// The Database Migration Service source connection profile ID, in the
   /// format:
   /// `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
-  core.String sourceId;
+  core.String? sourceId;
 
   /// The maximum size to which storage capacity can be automatically increased.
   ///
   /// The default value is 0, which specifies that there is no limit.
-  core.String storageAutoResizeLimit;
+  core.String? storageAutoResizeLimit;
 
   /// The tier (or machine type) for this instance, for example:
   /// `db-n1-standard-1` (MySQL instances).
   ///
   /// For more information, see
   /// [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
-  core.String tier;
+  core.String? tier;
 
   /// The resource labels for a Cloud SQL instance to use to annotate any
   /// related underlying resources such as Compute Engine VMs.
   ///
   /// An object containing a list of "key": "value" pairs. Example: `{ "name":
   /// "wrench", "mass": "18kg", "count": "3" }`.
-  core.Map<core.String, core.String> userLabels;
+  core.Map<core.String, core.String>? userLabels;
 
   /// The Google Cloud Platform zone where your Cloud SQL datdabse instance is
   /// located.
-  core.String zone;
+  core.String? zone;
 
   CloudSqlSettings();
 
@@ -2004,30 +1901,30 @@ class CloudSqlSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activationPolicy != null) 'activationPolicy': activationPolicy,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activationPolicy != null) 'activationPolicy': activationPolicy!,
         if (autoStorageIncrease != null)
-          'autoStorageIncrease': autoStorageIncrease,
-        if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb,
-        if (dataDiskType != null) 'dataDiskType': dataDiskType,
-        if (databaseFlags != null) 'databaseFlags': databaseFlags,
-        if (databaseVersion != null) 'databaseVersion': databaseVersion,
-        if (ipConfig != null) 'ipConfig': ipConfig.toJson(),
-        if (rootPassword != null) 'rootPassword': rootPassword,
-        if (rootPasswordSet != null) 'rootPasswordSet': rootPasswordSet,
-        if (sourceId != null) 'sourceId': sourceId,
+          'autoStorageIncrease': autoStorageIncrease!,
+        if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb!,
+        if (dataDiskType != null) 'dataDiskType': dataDiskType!,
+        if (databaseFlags != null) 'databaseFlags': databaseFlags!,
+        if (databaseVersion != null) 'databaseVersion': databaseVersion!,
+        if (ipConfig != null) 'ipConfig': ipConfig!.toJson(),
+        if (rootPassword != null) 'rootPassword': rootPassword!,
+        if (rootPasswordSet != null) 'rootPasswordSet': rootPasswordSet!,
+        if (sourceId != null) 'sourceId': sourceId!,
         if (storageAutoResizeLimit != null)
-          'storageAutoResizeLimit': storageAutoResizeLimit,
-        if (tier != null) 'tier': tier,
-        if (userLabels != null) 'userLabels': userLabels,
-        if (zone != null) 'zone': zone,
+          'storageAutoResizeLimit': storageAutoResizeLimit!,
+        if (tier != null) 'tier': tier!,
+        if (userLabels != null) 'userLabels': userLabels!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
 /// A connection profile definition.
 class ConnectionProfile {
   /// A CloudSQL database connection profile.
-  CloudSqlConnectionProfile cloudsql;
+  CloudSqlConnectionProfile? cloudsql;
 
   /// The timestamp when the resource was created.
   ///
@@ -2035,36 +1932,36 @@ class ConnectionProfile {
   /// Example: "2014-10-02T15:01:23.045123456Z".
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The connection profile display name.
-  core.String displayName;
+  core.String? displayName;
 
   /// The error details in case of state FAILED.
   ///
   /// Output only.
-  Status error;
+  Status? error;
 
   /// The resource labels for connection profile to use to annotate any related
   /// underlying resources such as Compute Engine VMs.
   ///
   /// An object containing a list of "key": "value" pairs. Example: `{ "name":
   /// "wrench", "mass": "1.3kg", "count": "3" }`.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// A MySQL database connection profile.
-  MySqlConnectionProfile mysql;
+  MySqlConnectionProfile? mysql;
 
   /// The name of this connection profile resource in the form of
   /// projects/{project}/locations/{location}/instances/{instance}.
-  core.String name;
+  core.String? name;
 
   /// The database provider.
   /// Possible string values are:
   /// - "DATABASE_PROVIDER_UNSPECIFIED" : The database provider is unknown.
   /// - "CLOUDSQL" : CloudSQL runs the database.
   /// - "RDS" : RDS runs the database.
-  core.String provider;
+  core.String? provider;
 
   /// The current connection profile state (e.g. DRAFT, READY, or FAILED).
   /// Possible string values are:
@@ -2076,7 +1973,7 @@ class ConnectionProfile {
   /// - "DELETING" : The connection profile is being deleted.
   /// - "DELETED" : The connection profile has been deleted.
   /// - "FAILED" : The last action on the connection profile failed.
-  core.String state;
+  core.String? state;
 
   /// The timestamp when the resource was last updated.
   ///
@@ -2084,7 +1981,7 @@ class ConnectionProfile {
   /// Example: "2014-10-02T15:01:23.045123456Z".
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   ConnectionProfile();
 
@@ -2130,17 +2027,17 @@ class ConnectionProfile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cloudsql != null) 'cloudsql': cloudsql.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (displayName != null) 'displayName': displayName,
-        if (error != null) 'error': error.toJson(),
-        if (labels != null) 'labels': labels,
-        if (mysql != null) 'mysql': mysql.toJson(),
-        if (name != null) 'name': name,
-        if (provider != null) 'provider': provider,
-        if (state != null) 'state': state,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cloudsql != null) 'cloudsql': cloudsql!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (error != null) 'error': error!.toJson(),
+        if (labels != null) 'labels': labels!,
+        if (mysql != null) 'mysql': mysql!.toJson(),
+        if (name != null) 'name': name!,
+        if (provider != null) 'provider': provider!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2151,14 +2048,14 @@ class DatabaseType {
   /// - "DATABASE_ENGINE_UNSPECIFIED" : The source database engine of the
   /// migration job is unknown.
   /// - "MYSQL" : The source engine is MySQL.
-  core.String engine;
+  core.String? engine;
 
   /// The database provider.
   /// Possible string values are:
   /// - "DATABASE_PROVIDER_UNSPECIFIED" : The database provider is unknown.
   /// - "CLOUDSQL" : CloudSQL runs the database.
   /// - "RDS" : RDS runs the database.
-  core.String provider;
+  core.String? provider;
 
   DatabaseType();
 
@@ -2171,9 +2068,9 @@ class DatabaseType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (engine != null) 'engine': engine,
-        if (provider != null) 'provider': provider,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (engine != null) 'engine': engine!,
+        if (provider != null) 'provider': provider!,
       };
 }
 
@@ -2191,7 +2088,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2219,24 +2116,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -2255,11 +2152,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -2268,16 +2165,16 @@ class GenerateSshScriptRequest {
   /// Bastion VM Instance name to use or to create.
   ///
   /// Required.
-  core.String vm;
+  core.String? vm;
 
   /// The VM creation configuration
-  VmCreationConfig vmCreationConfig;
+  VmCreationConfig? vmCreationConfig;
 
   /// The port that will be open on the bastion host
-  core.int vmPort;
+  core.int? vmPort;
 
   /// The VM selection configuration
-  VmSelectionConfig vmSelectionConfig;
+  VmSelectionConfig? vmSelectionConfig;
 
   GenerateSshScriptRequest();
 
@@ -2298,13 +2195,13 @@ class GenerateSshScriptRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (vm != null) 'vm': vm,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (vm != null) 'vm': vm!,
         if (vmCreationConfig != null)
-          'vmCreationConfig': vmCreationConfig.toJson(),
-        if (vmPort != null) 'vmPort': vmPort,
+          'vmCreationConfig': vmCreationConfig!.toJson(),
+        if (vmPort != null) 'vmPort': vmPort!,
         if (vmSelectionConfig != null)
-          'vmSelectionConfig': vmSelectionConfig.toJson(),
+          'vmSelectionConfig': vmSelectionConfig!.toJson(),
       };
 }
 
@@ -2313,17 +2210,17 @@ class GoogleCloudClouddmsV1beta1OperationMetadata {
   /// API version used to start the operation.
   ///
   /// Output only.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// The time the operation was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time the operation finished running.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
@@ -2332,22 +2229,22 @@ class GoogleCloudClouddmsV1beta1OperationMetadata {
   /// `Code.CANCELLED`.
   ///
   /// Output only.
-  core.bool requestedCancellation;
+  core.bool? requestedCancellation;
 
   /// Human-readable status of the operation, if any.
   ///
   /// Output only.
-  core.String statusMessage;
+  core.String? statusMessage;
 
   /// Server-defined resource path for the target of the operation.
   ///
   /// Output only.
-  core.String target;
+  core.String? target;
 
   /// Name of the verb executed by the operation.
   ///
   /// Output only.
-  core.String verb;
+  core.String? verb;
 
   GoogleCloudClouddmsV1beta1OperationMetadata();
 
@@ -2375,30 +2272,30 @@ class GoogleCloudClouddmsV1beta1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
         if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation,
-        if (statusMessage != null) 'statusMessage': statusMessage,
-        if (target != null) 'target': target,
-        if (verb != null) 'verb': verb,
+          'requestedCancellation': requestedCancellation!,
+        if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
 /// Response message for 'ListConnectionProfiles' request.
 class ListConnectionProfilesResponse {
   /// The response list of connection profiles.
-  core.List<ConnectionProfile> connectionProfiles;
+  core.List<ConnectionProfile>? connectionProfiles;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListConnectionProfilesResponse();
 
@@ -2419,22 +2316,22 @@ class ListConnectionProfilesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (connectionProfiles != null)
           'connectionProfiles':
-              connectionProfiles.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+              connectionProfiles!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -2450,25 +2347,25 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for 'ListMigrationJobs' request.
 class ListMigrationJobsResponse {
   /// The list of migration jobs objects.
-  core.List<MigrationJob> migrationJobs;
+  core.List<MigrationJob>? migrationJobs;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListMigrationJobsResponse();
 
@@ -2489,22 +2386,22 @@ class ListMigrationJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (migrationJobs != null)
           'migrationJobs':
-              migrationJobs.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+              migrationJobs!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -2520,10 +2417,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2532,17 +2429,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -2550,12 +2447,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -2589,12 +2486,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2606,22 +2503,22 @@ class MigrationJob {
   /// Example: "2014-10-02T15:01:23.045123456Z".
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The resource name (URI) of the destination connection profile.
   ///
   /// Required.
-  core.String destination;
+  core.String? destination;
 
   /// The database engine type and provider of the destination.
-  DatabaseType destinationDatabase;
+  DatabaseType? destinationDatabase;
 
   /// The migration job display name.
-  core.String displayName;
+  core.String? displayName;
 
   /// The path to the dump file in Google Cloud Storage, in the format:
   /// (gs://\[BUCKET_NAME\]/\[OBJECT_NAME\]).
-  core.String dumpPath;
+  core.String? dumpPath;
 
   /// The duration of the migration job (in seconds).
   ///
@@ -2629,28 +2526,28 @@ class MigrationJob {
   /// 's'. Example: "3.5s".
   ///
   /// Output only.
-  core.String duration;
+  core.String? duration;
 
   /// If the migration job is completed, the time when it was completed.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// The error details in case of state FAILED.
   ///
   /// Output only.
-  Status error;
+  Status? error;
 
   /// The resource labels for migration job to use to annotate any related
   /// underlying resources such as Compute Engine VMs.
   ///
   /// An object containing a list of "key": "value" pairs. Example: `{ "name":
   /// "wrench", "mass": "1.3kg", "count": "3" }`.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The name (URI) of this migration job resource, in the form of:
   /// projects/{project}/locations/{location}/instances/{instance}.
-  core.String name;
+  core.String? name;
 
   /// The current migration job phase.
   ///
@@ -2664,19 +2561,19 @@ class MigrationJob {
   /// writes to stop
   /// - "PREPARING_THE_DUMP" : Only RDS flow - the sources writes stopped,
   /// waiting for dump to begin
-  core.String phase;
+  core.String? phase;
 
   /// The details needed to communicate to the source over Reverse SSH tunnel
   /// connectivity.
-  ReverseSshConnectivity reverseSshConnectivity;
+  ReverseSshConnectivity? reverseSshConnectivity;
 
   /// The resource name (URI) of the source connection profile.
   ///
   /// Required.
-  core.String source;
+  core.String? source;
 
   /// The database engine type and provider of the source.
-  DatabaseType sourceDatabase;
+  DatabaseType? sourceDatabase;
 
   /// The current migration job state.
   /// Possible string values are:
@@ -2698,10 +2595,10 @@ class MigrationJob {
   /// - "STARTING" : The migration job is starting.
   /// - "RESTARTING" : The migration job is restarting.
   /// - "RESUMING" : The migration job is resuming.
-  core.String state;
+  core.String? state;
 
   /// static ip connectivity data (default, no additional details needed).
-  StaticIpConnectivity staticIpConnectivity;
+  StaticIpConnectivity? staticIpConnectivity;
 
   /// The migration job type.
   ///
@@ -2710,7 +2607,7 @@ class MigrationJob {
   /// - "TYPE_UNSPECIFIED" : The type of the migration job is unknown.
   /// - "ONE_TIME" : The migration job is a one time migration.
   /// - "CONTINUOUS" : The migration job is a continuous migration.
-  core.String type;
+  core.String? type;
 
   /// The timestamp when the migration job resource was last updated.
   ///
@@ -2718,10 +2615,10 @@ class MigrationJob {
   /// Example: "2014-10-02T15:01:23.045123456Z".
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// The details of the VPC network that the source database is located in.
-  VpcPeeringConnectivity vpcPeeringConnectivity;
+  VpcPeeringConnectivity? vpcPeeringConnectivity;
 
   MigrationJob();
 
@@ -2799,30 +2696,30 @@ class MigrationJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (destination != null) 'destination': destination,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (destination != null) 'destination': destination!,
         if (destinationDatabase != null)
-          'destinationDatabase': destinationDatabase.toJson(),
-        if (displayName != null) 'displayName': displayName,
-        if (dumpPath != null) 'dumpPath': dumpPath,
-        if (duration != null) 'duration': duration,
-        if (endTime != null) 'endTime': endTime,
-        if (error != null) 'error': error.toJson(),
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (phase != null) 'phase': phase,
+          'destinationDatabase': destinationDatabase!.toJson(),
+        if (displayName != null) 'displayName': displayName!,
+        if (dumpPath != null) 'dumpPath': dumpPath!,
+        if (duration != null) 'duration': duration!,
+        if (endTime != null) 'endTime': endTime!,
+        if (error != null) 'error': error!.toJson(),
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (phase != null) 'phase': phase!,
         if (reverseSshConnectivity != null)
-          'reverseSshConnectivity': reverseSshConnectivity.toJson(),
-        if (source != null) 'source': source,
-        if (sourceDatabase != null) 'sourceDatabase': sourceDatabase.toJson(),
-        if (state != null) 'state': state,
+          'reverseSshConnectivity': reverseSshConnectivity!.toJson(),
+        if (source != null) 'source': source!,
+        if (sourceDatabase != null) 'sourceDatabase': sourceDatabase!.toJson(),
+        if (state != null) 'state': state!,
         if (staticIpConnectivity != null)
-          'staticIpConnectivity': staticIpConnectivity.toJson(),
-        if (type != null) 'type': type,
-        if (updateTime != null) 'updateTime': updateTime,
+          'staticIpConnectivity': staticIpConnectivity!.toJson(),
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
         if (vpcPeeringConnectivity != null)
-          'vpcPeeringConnectivity': vpcPeeringConnectivity.toJson(),
+          'vpcPeeringConnectivity': vpcPeeringConnectivity!.toJson(),
       };
 }
 
@@ -2846,17 +2743,17 @@ class MigrationJobVerificationError {
   /// - "UNSUPPORTED_GTID_MODE" : The gtid_mode is not supported, applicable for
   /// MySQL.
   /// - "UNSUPPORTED_DEFINER" : The definer is not supported.
-  core.String errorCode;
+  core.String? errorCode;
 
   /// A specific detailed error message, if supplied by the engine.
   ///
   /// Output only.
-  core.String errorDetailMessage;
+  core.String? errorDetailMessage;
 
   /// A formatted message with further details about the error and a CTA.
   ///
   /// Output only.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   MigrationJobVerificationError();
 
@@ -2872,11 +2769,11 @@ class MigrationJobVerificationError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode!,
         if (errorDetailMessage != null)
-          'errorDetailMessage': errorDetailMessage,
-        if (errorMessage != null) 'errorMessage': errorMessage,
+          'errorDetailMessage': errorDetailMessage!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
       };
 }
 
@@ -2884,12 +2781,12 @@ class MigrationJobVerificationError {
 class MySqlConnectionProfile {
   /// If the source is a Cloud SQL database, use this field to provide the Cloud
   /// SQL instance ID of the source.
-  core.String cloudSqlId;
+  core.String? cloudSqlId;
 
   /// The IP or hostname of the source MySQL database.
   ///
   /// Required.
-  core.String host;
+  core.String? host;
 
   /// Input only.
   ///
@@ -2898,20 +2795,20 @@ class MySqlConnectionProfile {
   /// value is encrypted when stored in Database Migration Service.
   ///
   /// Required.
-  core.String password;
+  core.String? password;
 
   /// Indicates If this connection profile password is stored.
   ///
   /// Output only.
-  core.bool passwordSet;
+  core.bool? passwordSet;
 
   /// The network port of the source MySQL database.
   ///
   /// Required.
-  core.int port;
+  core.int? port;
 
   /// SSL configuration for the destination to connect to the source database.
-  SslConfig ssl;
+  SslConfig? ssl;
 
   /// The username that Database Migration Service will use to connect to the
   /// database.
@@ -2919,7 +2816,7 @@ class MySqlConnectionProfile {
   /// The value is encrypted when stored in Database Migration Service.
   ///
   /// Required.
-  core.String username;
+  core.String? username;
 
   MySqlConnectionProfile();
 
@@ -2948,14 +2845,14 @@ class MySqlConnectionProfile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cloudSqlId != null) 'cloudSqlId': cloudSqlId,
-        if (host != null) 'host': host,
-        if (password != null) 'password': password,
-        if (passwordSet != null) 'passwordSet': passwordSet,
-        if (port != null) 'port': port,
-        if (ssl != null) 'ssl': ssl.toJson(),
-        if (username != null) 'username': username,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cloudSqlId != null) 'cloudSqlId': cloudSqlId!,
+        if (host != null) 'host': host!,
+        if (password != null) 'password': password!,
+        if (passwordSet != null) 'passwordSet': passwordSet!,
+        if (port != null) 'port': port!,
+        if (ssl != null) 'ssl': ssl!.toJson(),
+        if (username != null) 'username': username!,
       };
 }
 
@@ -2966,10 +2863,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -2980,14 +2877,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -3000,7 +2897,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -3035,12 +2932,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -3077,14 +2974,14 @@ class Operation {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -3098,8 +2995,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -3123,7 +3020,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -3148,13 +3045,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -3166,7 +3063,7 @@ class PromoteMigrationJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for 'RestartMigrationJob' request.
@@ -3177,7 +3074,7 @@ class RestartMigrationJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for 'ResumeMigrationJob' request.
@@ -3188,7 +3085,7 @@ class ResumeMigrationJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The details needed to configure a reverse SSH tunnel between the source and
@@ -3201,22 +3098,22 @@ class ResumeMigrationJobRequest {
 class ReverseSshConnectivity {
   /// The name of the virtual machine (Compute Engine) used as the bastion
   /// server for the SSH tunnel.
-  core.String vm;
+  core.String? vm;
 
   /// The IP of the virtual machine (Compute Engine) used as the bastion server
   /// for the SSH tunnel.
   ///
   /// Required.
-  core.String vmIp;
+  core.String? vmIp;
 
   /// The forwarding port of the virtual machine (Compute Engine) used as the
   /// bastion server for the SSH tunnel.
   ///
   /// Required.
-  core.int vmPort;
+  core.int? vmPort;
 
   /// The name of the VPC to peer with the Cloud SQL private network.
-  core.String vpc;
+  core.String? vpc;
 
   ReverseSshConnectivity();
 
@@ -3235,11 +3132,11 @@ class ReverseSshConnectivity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (vm != null) 'vm': vm,
-        if (vmIp != null) 'vmIp': vmIp,
-        if (vmPort != null) 'vmPort': vmPort,
-        if (vpc != null) 'vpc': vpc,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (vm != null) 'vm': vm!,
+        if (vmIp != null) 'vmIp': vmIp!,
+        if (vmPort != null) 'vmPort': vmPort!,
+        if (vpc != null) 'vpc': vpc!,
       };
 }
 
@@ -3250,13 +3147,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -3270,9 +3167,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -3281,18 +3178,18 @@ class SqlAclEntry {
   /// The time when this access control entry expires in
   /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example:
   /// `2012-11-15T16:19:00.094Z`.
-  core.String expireTime;
+  core.String? expireTime;
 
   /// A label to identify this entry.
-  core.String label;
+  core.String? label;
 
   /// Input only.
   ///
   /// The time-to-leave of this access control entry.
-  core.String ttl;
+  core.String? ttl;
 
   /// The allowlisted value for the access control list.
-  core.String value;
+  core.String? value;
 
   SqlAclEntry();
 
@@ -3311,11 +3208,11 @@ class SqlAclEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expireTime != null) 'expireTime': expireTime,
-        if (label != null) 'label': label,
-        if (ttl != null) 'ttl': ttl,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (label != null) 'label': label!,
+        if (ttl != null) 'ttl': ttl!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -3326,20 +3223,20 @@ class SqlIpConfig {
   ///
   /// See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known
   /// as 'slash' notation (e.g. `192.168.100.0/24`).
-  core.List<SqlAclEntry> authorizedNetworks;
+  core.List<SqlAclEntry>? authorizedNetworks;
 
   /// Whether the instance should be assigned an IPv4 address or not.
-  core.bool enableIpv4;
+  core.bool? enableIpv4;
 
   /// The resource link for the VPC network from which the Cloud SQL instance is
   /// accessible for private IP.
   ///
   /// For example, `/projects/myProject/global/networks/default`. This setting
   /// can be updated, but it cannot be removed after it is set.
-  core.String privateNetwork;
+  core.String? privateNetwork;
 
   /// Whether SSL connections over IP should be enforced or not.
-  core.bool requireSsl;
+  core.bool? requireSsl;
 
   SqlIpConfig();
 
@@ -3361,20 +3258,20 @@ class SqlIpConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (authorizedNetworks != null)
           'authorizedNetworks':
-              authorizedNetworks.map((value) => value.toJson()).toList(),
-        if (enableIpv4 != null) 'enableIpv4': enableIpv4,
-        if (privateNetwork != null) 'privateNetwork': privateNetwork,
-        if (requireSsl != null) 'requireSsl': requireSsl,
+              authorizedNetworks!.map((value) => value.toJson()).toList(),
+        if (enableIpv4 != null) 'enableIpv4': enableIpv4!,
+        if (privateNetwork != null) 'privateNetwork': privateNetwork!,
+        if (requireSsl != null) 'requireSsl': requireSsl!,
       };
 }
 
 /// Response message for 'GenerateSshScript' request.
 class SshScript {
   /// The ssh configuration script.
-  core.String script;
+  core.String? script;
 
   SshScript();
 
@@ -3384,8 +3281,8 @@ class SshScript {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (script != null) 'script': script,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (script != null) 'script': script!,
       };
 }
 
@@ -3398,21 +3295,21 @@ class SslConfig {
   /// connecting to the right host.
   ///
   /// Required.
-  core.String caCertificate;
+  core.String? caCertificate;
 
   /// Input only.
   ///
   /// The x509 PEM-encoded certificate that will be used by the replica to
   /// authenticate against the source database server.If this field is used then
   /// the 'client_key' field is mandatory.
-  core.String clientCertificate;
+  core.String? clientCertificate;
 
   /// Input only.
   ///
   /// The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with
   /// the Client Certificate. If this field is used then the
   /// 'client_certificate' field is mandatory.
-  core.String clientKey;
+  core.String? clientKey;
 
   /// The ssl config type according to 'client_key', 'client_certificate' and
   /// 'ca_certificate'.
@@ -3423,7 +3320,7 @@ class SslConfig {
   /// - "SERVER_ONLY" : Only 'ca_certificate' specified.
   /// - "SERVER_CLIENT" : Both server ('ca_certificate'), and client
   /// ('client_key', 'client_certificate') specified.
-  core.String type;
+  core.String? type;
 
   SslConfig();
 
@@ -3442,11 +3339,11 @@ class SslConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (caCertificate != null) 'caCertificate': caCertificate,
-        if (clientCertificate != null) 'clientCertificate': clientCertificate,
-        if (clientKey != null) 'clientKey': clientKey,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (caCertificate != null) 'caCertificate': caCertificate!,
+        if (clientCertificate != null) 'clientCertificate': clientCertificate!,
+        if (clientKey != null) 'clientKey': clientKey!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3458,7 +3355,7 @@ class StartMigrationJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The source database will allow incoming connections from the destination
@@ -3473,7 +3370,7 @@ class StaticIpConnectivity {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3485,7 +3382,7 @@ class StaticIpConnectivity {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -3493,13 +3390,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -3523,10 +3420,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -3538,7 +3435,7 @@ class StopMigrationJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -3548,7 +3445,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -3560,8 +3457,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -3569,7 +3466,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -3581,8 +3478,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -3594,21 +3491,21 @@ class VerifyMigrationJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// VM creation configuration message
 class VmCreationConfig {
   /// The subnet name the vm needs to be created in.
-  core.String subnet;
+  core.String? subnet;
 
   /// VM instance machine type to create.
   ///
   /// Required.
-  core.String vmMachineType;
+  core.String? vmMachineType;
 
   /// The Google Cloud Platform zone to create the VM in.
-  core.String vmZone;
+  core.String? vmZone;
 
   VmCreationConfig();
 
@@ -3624,10 +3521,10 @@ class VmCreationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (subnet != null) 'subnet': subnet,
-        if (vmMachineType != null) 'vmMachineType': vmMachineType,
-        if (vmZone != null) 'vmZone': vmZone,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (subnet != null) 'subnet': subnet!,
+        if (vmMachineType != null) 'vmMachineType': vmMachineType!,
+        if (vmZone != null) 'vmZone': vmZone!,
       };
 }
 
@@ -3636,7 +3533,7 @@ class VmSelectionConfig {
   /// The Google Cloud Platform zone the VM is located.
   ///
   /// Required.
-  core.String vmZone;
+  core.String? vmZone;
 
   VmSelectionConfig();
 
@@ -3646,8 +3543,8 @@ class VmSelectionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (vmZone != null) 'vmZone': vmZone,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (vmZone != null) 'vmZone': vmZone!,
       };
 }
 
@@ -3657,7 +3554,7 @@ class VmSelectionConfig {
 /// Cloud SQL and this VPC.
 class VpcPeeringConnectivity {
   /// The name of the VPC network to peer with the Cloud SQL private network.
-  core.String vpc;
+  core.String? vpc;
 
   VpcPeeringConnectivity();
 
@@ -3667,7 +3564,7 @@ class VpcPeeringConnectivity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (vpc != null) 'vpc': vpc,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (vpc != null) 'vpc': vpc!,
       };
 }

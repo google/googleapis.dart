@@ -185,12 +185,11 @@ class AbuseReportsResource {
   async.Future<AbuseReport> insert(
     AbuseReport request,
     core.List<core.String> part, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -260,18 +259,18 @@ class ActivitiesResource {
   /// this method will complete with the same error.
   async.Future<ActivityListResponse> list(
     core.List<core.String> part, {
-    core.String channelId,
-    core.bool home,
-    core.int maxResults,
-    core.bool mine,
-    core.String pageToken,
-    core.String publishedAfter,
-    core.String publishedBefore,
-    core.String regionCode,
-    core.String $fields,
+    core.String? channelId,
+    core.bool? home,
+    core.int? maxResults,
+    core.bool? mine,
+    core.String? pageToken,
+    core.String? publishedAfter,
+    core.String? publishedBefore,
+    core.String? regionCode,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -333,13 +332,10 @@ class CaptionsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String id, {
-    core.String onBehalfOf,
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOf,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if (onBehalfOf != null) 'onBehalfOf': [onBehalfOf],
@@ -396,18 +392,15 @@ class CaptionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<core.Object> download(
+  async.Future<commons.Media?> download(
     core.String id, {
-    core.String onBehalfOf,
-    core.String onBehalfOfContentOwner,
-    core.String tfmt,
-    core.String tlang,
-    core.String $fields,
+    core.String? onBehalfOf,
+    core.String? onBehalfOfContentOwner,
+    core.String? tfmt,
+    core.String? tlang,
+    core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (onBehalfOf != null) 'onBehalfOf': [onBehalfOf],
       if (onBehalfOfContentOwner != null)
@@ -428,7 +421,7 @@ class CaptionsResource {
     if (downloadOptions.isMetadataDownload) {
       return null;
     } else {
-      return _response;
+      return _response as commons.Media;
     }
   }
 
@@ -477,17 +470,16 @@ class CaptionsResource {
   async.Future<Caption> insert(
     Caption request,
     core.List<core.String> part, {
-    core.String onBehalfOf,
-    core.String onBehalfOfContentOwner,
-    core.bool sync,
-    core.String $fields,
+    core.String? onBehalfOf,
+    core.String? onBehalfOfContentOwner,
+    core.bool? sync,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -557,16 +549,13 @@ class CaptionsResource {
   async.Future<CaptionListResponse> list(
     core.List<core.String> part,
     core.String videoId, {
-    core.List<core.String> id,
-    core.String onBehalfOf,
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.List<core.String>? id,
+    core.String? onBehalfOf,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
-    }
-    if (videoId == null) {
-      throw core.ArgumentError('Parameter videoId is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -635,17 +624,16 @@ class CaptionsResource {
   async.Future<Caption> update(
     Caption request,
     core.List<core.String> part, {
-    core.String onBehalfOf,
-    core.String onBehalfOfContentOwner,
-    core.bool sync,
-    core.String $fields,
+    core.String? onBehalfOf,
+    core.String? onBehalfOfContentOwner,
+    core.bool? sync,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -737,15 +725,14 @@ class ChannelBannersResource {
   /// this method will complete with the same error.
   async.Future<ChannelBannerResource> insert(
     ChannelBannerResource request, {
-    core.String channelId,
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.String $fields,
+    core.String? channelId,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (channelId != null) 'channelId': [channelId],
       if (onBehalfOfContentOwner != null)
@@ -809,12 +796,9 @@ class ChannelSectionsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String id, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if (onBehalfOfContentOwner != null)
@@ -884,14 +868,13 @@ class ChannelSectionsResource {
   async.Future<ChannelSection> insert(
     ChannelSection request,
     core.List<core.String> part, {
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -960,15 +943,15 @@ class ChannelSectionsResource {
   /// this method will complete with the same error.
   async.Future<ChannelSectionListResponse> list(
     core.List<core.String> part, {
-    core.String channelId,
-    core.String hl,
-    core.List<core.String> id,
-    core.bool mine,
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? channelId,
+    core.String? hl,
+    core.List<core.String>? id,
+    core.bool? mine,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -1027,13 +1010,12 @@ class ChannelSectionsResource {
   async.Future<ChannelSection> update(
     ChannelSection request,
     core.List<core.String> part, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -1121,20 +1103,20 @@ class ChannelsResource {
   /// this method will complete with the same error.
   async.Future<ChannelListResponse> list(
     core.List<core.String> part, {
-    core.String categoryId,
-    core.String forUsername,
-    core.String hl,
-    core.List<core.String> id,
-    core.bool managedByMe,
-    core.int maxResults,
-    core.bool mine,
-    core.bool mySubscribers,
-    core.String onBehalfOfContentOwner,
-    core.String pageToken,
-    core.String $fields,
+    core.String? categoryId,
+    core.String? forUsername,
+    core.String? hl,
+    core.List<core.String>? id,
+    core.bool? managedByMe,
+    core.int? maxResults,
+    core.bool? mine,
+    core.bool? mySubscribers,
+    core.String? onBehalfOfContentOwner,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -1201,13 +1183,12 @@ class ChannelsResource {
   async.Future<Channel> update(
     Channel request,
     core.List<core.String> part, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -1256,12 +1237,11 @@ class CommentThreadsResource {
   async.Future<CommentThread> insert(
     CommentThread request,
     core.List<core.String> part, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -1342,20 +1322,20 @@ class CommentThreadsResource {
   /// this method will complete with the same error.
   async.Future<CommentThreadListResponse> list(
     core.List<core.String> part, {
-    core.String allThreadsRelatedToChannelId,
-    core.String channelId,
-    core.List<core.String> id,
-    core.int maxResults,
-    core.String moderationStatus,
-    core.String order,
-    core.String pageToken,
-    core.String searchTerms,
-    core.String textFormat,
-    core.String videoId,
-    core.String $fields,
+    core.String? allThreadsRelatedToChannelId,
+    core.String? channelId,
+    core.List<core.String>? id,
+    core.int? maxResults,
+    core.String? moderationStatus,
+    core.String? order,
+    core.String? pageToken,
+    core.String? searchTerms,
+    core.String? textFormat,
+    core.String? videoId,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -1408,12 +1388,11 @@ class CommentThreadsResource {
   async.Future<CommentThread> update(
     CommentThread request,
     core.List<core.String> part, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -1454,11 +1433,8 @@ class CommentsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -1497,12 +1473,11 @@ class CommentsResource {
   async.Future<Comment> insert(
     Comment request,
     core.List<core.String> part, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -1559,15 +1534,15 @@ class CommentsResource {
   /// this method will complete with the same error.
   async.Future<CommentListResponse> list(
     core.List<core.String> part, {
-    core.List<core.String> id,
-    core.int maxResults,
-    core.String pageToken,
-    core.String parentId,
-    core.String textFormat,
-    core.String $fields,
+    core.List<core.String>? id,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? parentId,
+    core.String? textFormat,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -1608,10 +1583,10 @@ class CommentsResource {
   /// this method will complete with the same error.
   async.Future<void> markAsSpam(
     core.List<core.String> id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (id == null || id.isEmpty) {
-      throw core.ArgumentError('Parameter id is required.');
+    if (id.isEmpty) {
+      throw core.ArgumentError('Parameter id cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': id,
@@ -1660,14 +1635,11 @@ class CommentsResource {
   async.Future<void> setModerationStatus(
     core.List<core.String> id,
     core.String moderationStatus, {
-    core.bool banAuthor,
-    core.String $fields,
+    core.bool? banAuthor,
+    core.String? $fields,
   }) async {
-    if (id == null || id.isEmpty) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
-    if (moderationStatus == null) {
-      throw core.ArgumentError('Parameter moderationStatus is required.');
+    if (id.isEmpty) {
+      throw core.ArgumentError('Parameter id cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': id,
@@ -1710,12 +1682,11 @@ class CommentsResource {
   async.Future<Comment> update(
     Comment request,
     core.List<core.String> part, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -1761,11 +1732,11 @@ class I18nLanguagesResource {
   /// this method will complete with the same error.
   async.Future<I18nLanguageListResponse> list(
     core.List<core.String> part, {
-    core.String hl,
-    core.String $fields,
+    core.String? hl,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -1811,11 +1782,11 @@ class I18nRegionsResource {
   /// this method will complete with the same error.
   async.Future<I18nRegionListResponse> list(
     core.List<core.String> part, {
-    core.String hl,
-    core.String $fields,
+    core.String? hl,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -1894,16 +1865,13 @@ class LiveBroadcastsResource {
   async.Future<LiveBroadcast> bind(
     core.String id,
     core.List<core.String> part, {
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.String streamId,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.String? streamId,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
@@ -1971,13 +1939,10 @@ class LiveBroadcastsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String id, {
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if (onBehalfOfContentOwner != null)
@@ -2050,14 +2015,13 @@ class LiveBroadcastsResource {
   async.Future<LiveBroadcast> insert(
     LiveBroadcast request,
     core.List<core.String> part, {
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -2157,18 +2121,18 @@ class LiveBroadcastsResource {
   /// this method will complete with the same error.
   async.Future<LiveBroadcastListResponse> list(
     core.List<core.String> part, {
-    core.String broadcastStatus,
-    core.String broadcastType,
-    core.List<core.String> id,
-    core.int maxResults,
-    core.bool mine,
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.String pageToken,
-    core.String $fields,
+    core.String? broadcastStatus,
+    core.String? broadcastType,
+    core.List<core.String>? id,
+    core.int? maxResults,
+    core.bool? mine,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -2261,18 +2225,12 @@ class LiveBroadcastsResource {
     core.String broadcastStatus,
     core.String id,
     core.List<core.String> part, {
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.String? $fields,
   }) async {
-    if (broadcastStatus == null) {
-      throw core.ArgumentError('Parameter broadcastStatus is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'broadcastStatus': [broadcastStatus],
@@ -2357,14 +2315,13 @@ class LiveBroadcastsResource {
   async.Future<LiveBroadcast> update(
     LiveBroadcast request,
     core.List<core.String> part, {
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -2409,11 +2366,8 @@ class LiveChatBansResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -2453,12 +2407,11 @@ class LiveChatBansResource {
   async.Future<LiveChatBan> insert(
     LiveChatBan request,
     core.List<core.String> part, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -2499,11 +2452,8 @@ class LiveChatMessagesResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -2542,12 +2492,11 @@ class LiveChatMessagesResource {
   async.Future<LiveChatMessage> insert(
     LiveChatMessage request,
     core.List<core.String> part, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -2604,17 +2553,14 @@ class LiveChatMessagesResource {
   async.Future<LiveChatMessageListResponse> list(
     core.String liveChatId,
     core.List<core.String> part, {
-    core.String hl,
-    core.int maxResults,
-    core.String pageToken,
-    core.int profileImageSize,
-    core.String $fields,
+    core.String? hl,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.int? profileImageSize,
+    core.String? $fields,
   }) async {
-    if (liveChatId == null) {
-      throw core.ArgumentError('Parameter liveChatId is required.');
-    }
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'liveChatId': [liveChatId],
@@ -2659,11 +2605,8 @@ class LiveChatModeratorsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -2703,12 +2646,11 @@ class LiveChatModeratorsResource {
   async.Future<LiveChatModerator> insert(
     LiveChatModerator request,
     core.List<core.String> part, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -2759,15 +2701,12 @@ class LiveChatModeratorsResource {
   async.Future<LiveChatModeratorListResponse> list(
     core.String liveChatId,
     core.List<core.String> part, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (liveChatId == null) {
-      throw core.ArgumentError('Parameter liveChatId is required.');
-    }
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'liveChatId': [liveChatId],
@@ -2838,13 +2777,10 @@ class LiveStreamsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String id, {
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if (onBehalfOfContentOwner != null)
@@ -2917,14 +2853,13 @@ class LiveStreamsResource {
   async.Future<LiveStream> insert(
     LiveStream request,
     core.List<core.String> part, {
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -3010,16 +2945,16 @@ class LiveStreamsResource {
   /// this method will complete with the same error.
   async.Future<LiveStreamListResponse> list(
     core.List<core.String> part, {
-    core.List<core.String> id,
-    core.int maxResults,
-    core.bool mine,
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.String pageToken,
-    core.String $fields,
+    core.List<core.String>? id,
+    core.int? maxResults,
+    core.bool? mine,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -3101,14 +3036,13 @@ class LiveStreamsResource {
   async.Future<LiveStream> update(
     LiveStream request,
     core.List<core.String> part, {
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -3177,15 +3111,15 @@ class MembersResource {
   /// this method will complete with the same error.
   async.Future<MemberListResponse> list(
     core.List<core.String> part, {
-    core.String filterByMemberChannelId,
-    core.String hasAccessToLevel,
-    core.int maxResults,
-    core.String mode,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filterByMemberChannelId,
+    core.String? hasAccessToLevel,
+    core.int? maxResults,
+    core.String? mode,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -3235,10 +3169,10 @@ class MembershipsLevelsResource {
   /// this method will complete with the same error.
   async.Future<MembershipsLevelListResponse> list(
     core.List<core.String> part, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -3289,12 +3223,9 @@ class PlaylistItemsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String id, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if (onBehalfOfContentOwner != null)
@@ -3346,13 +3277,12 @@ class PlaylistItemsResource {
   async.Future<PlaylistItem> insert(
     PlaylistItem request,
     core.List<core.String> part, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -3423,16 +3353,16 @@ class PlaylistItemsResource {
   /// this method will complete with the same error.
   async.Future<PlaylistItemListResponse> list(
     core.List<core.String> part, {
-    core.List<core.String> id,
-    core.int maxResults,
-    core.String onBehalfOfContentOwner,
-    core.String pageToken,
-    core.String playlistId,
-    core.String videoId,
-    core.String $fields,
+    core.List<core.String>? id,
+    core.int? maxResults,
+    core.String? onBehalfOfContentOwner,
+    core.String? pageToken,
+    core.String? playlistId,
+    core.String? videoId,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -3501,13 +3431,12 @@ class PlaylistItemsResource {
   async.Future<PlaylistItem> update(
     PlaylistItem request,
     core.List<core.String> part, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -3561,12 +3490,9 @@ class PlaylistsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String id, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if (onBehalfOfContentOwner != null)
@@ -3635,14 +3561,13 @@ class PlaylistsResource {
   async.Future<Playlist> insert(
     Playlist request,
     core.List<core.String> part, {
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -3732,18 +3657,18 @@ class PlaylistsResource {
   /// this method will complete with the same error.
   async.Future<PlaylistListResponse> list(
     core.List<core.String> part, {
-    core.String channelId,
-    core.String hl,
-    core.List<core.String> id,
-    core.int maxResults,
-    core.bool mine,
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.String pageToken,
-    core.String $fields,
+    core.String? channelId,
+    core.String? hl,
+    core.List<core.String>? id,
+    core.int? maxResults,
+    core.bool? mine,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -3811,13 +3736,12 @@ class PlaylistsResource {
   async.Future<Playlist> update(
     Playlist request,
     core.List<core.String> part, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -4011,40 +3935,40 @@ class SearchResource {
   /// this method will complete with the same error.
   async.Future<SearchListResponse> list(
     core.List<core.String> part, {
-    core.String channelId,
-    core.String channelType,
-    core.String eventType,
-    core.bool forContentOwner,
-    core.bool forDeveloper,
-    core.bool forMine,
-    core.String location,
-    core.String locationRadius,
-    core.int maxResults,
-    core.String onBehalfOfContentOwner,
-    core.String order,
-    core.String pageToken,
-    core.String publishedAfter,
-    core.String publishedBefore,
-    core.String q,
-    core.String regionCode,
-    core.String relatedToVideoId,
-    core.String relevanceLanguage,
-    core.String safeSearch,
-    core.String topicId,
-    core.List<core.String> type,
-    core.String videoCaption,
-    core.String videoCategoryId,
-    core.String videoDefinition,
-    core.String videoDimension,
-    core.String videoDuration,
-    core.String videoEmbeddable,
-    core.String videoLicense,
-    core.String videoSyndicated,
-    core.String videoType,
-    core.String $fields,
+    core.String? channelId,
+    core.String? channelType,
+    core.String? eventType,
+    core.bool? forContentOwner,
+    core.bool? forDeveloper,
+    core.bool? forMine,
+    core.String? location,
+    core.String? locationRadius,
+    core.int? maxResults,
+    core.String? onBehalfOfContentOwner,
+    core.String? order,
+    core.String? pageToken,
+    core.String? publishedAfter,
+    core.String? publishedBefore,
+    core.String? q,
+    core.String? regionCode,
+    core.String? relatedToVideoId,
+    core.String? relevanceLanguage,
+    core.String? safeSearch,
+    core.String? topicId,
+    core.List<core.String>? type,
+    core.String? videoCaption,
+    core.String? videoCategoryId,
+    core.String? videoDefinition,
+    core.String? videoDimension,
+    core.String? videoDuration,
+    core.String? videoEmbeddable,
+    core.String? videoLicense,
+    core.String? videoSyndicated,
+    core.String? videoType,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -4115,11 +4039,8 @@ class SubscriptionsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -4158,12 +4079,11 @@ class SubscriptionsResource {
   async.Future<Subscription> insert(
     Subscription request,
     core.List<core.String> part, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -4262,21 +4182,21 @@ class SubscriptionsResource {
   /// this method will complete with the same error.
   async.Future<SubscriptionListResponse> list(
     core.List<core.String> part, {
-    core.String channelId,
-    core.String forChannelId,
-    core.List<core.String> id,
-    core.int maxResults,
-    core.bool mine,
-    core.bool myRecentSubscribers,
-    core.bool mySubscribers,
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.String order,
-    core.String pageToken,
-    core.String $fields,
+    core.String? channelId,
+    core.String? forChannelId,
+    core.List<core.String>? id,
+    core.int? maxResults,
+    core.bool? mine,
+    core.bool? myRecentSubscribers,
+    core.bool? mySubscribers,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.String? order,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -4343,13 +4263,13 @@ class SuperChatEventsResource {
   /// this method will complete with the same error.
   async.Future<SuperChatEventListResponse> list(
     core.List<core.String> part, {
-    core.String hl,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? hl,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -4397,12 +4317,11 @@ class TestsResource {
   async.Future<TestItem> insert(
     TestItem request,
     core.List<core.String> part, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -4452,15 +4371,9 @@ class ThirdPartyLinksResource {
   async.Future<void> delete(
     core.String linkingToken,
     core.String type, {
-    core.List<core.String> part,
-    core.String $fields,
+    core.List<core.String>? part,
+    core.String? $fields,
   }) async {
-    if (linkingToken == null) {
-      throw core.ArgumentError('Parameter linkingToken is required.');
-    }
-    if (type == null) {
-      throw core.ArgumentError('Parameter type is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'linkingToken': [linkingToken],
       'type': [type],
@@ -4501,12 +4414,11 @@ class ThirdPartyLinksResource {
   async.Future<ThirdPartyLink> insert(
     ThirdPartyLink request,
     core.List<core.String> part, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -4554,12 +4466,12 @@ class ThirdPartyLinksResource {
   /// this method will complete with the same error.
   async.Future<ThirdPartyLink> list(
     core.List<core.String> part, {
-    core.String linkingToken,
-    core.String type,
-    core.String $fields,
+    core.String? linkingToken,
+    core.String? type,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -4602,12 +4514,11 @@ class ThirdPartyLinksResource {
   async.Future<ThirdPartyLink> update(
     ThirdPartyLink request,
     core.List<core.String> part, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -4670,14 +4581,11 @@ class ThumbnailsResource {
   /// this method will complete with the same error.
   async.Future<ThumbnailSetResponse> set(
     core.String videoId, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    if (videoId == null) {
-      throw core.ArgumentError('Parameter videoId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'videoId': [videoId],
       if (onBehalfOfContentOwner != null)
@@ -4733,11 +4641,11 @@ class VideoAbuseReportReasonsResource {
   /// this method will complete with the same error.
   async.Future<VideoAbuseReportReasonListResponse> list(
     core.List<core.String> part, {
-    core.String hl,
-    core.String $fields,
+    core.String? hl,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -4789,13 +4697,13 @@ class VideoCategoriesResource {
   /// this method will complete with the same error.
   async.Future<VideoCategoryListResponse> list(
     core.List<core.String> part, {
-    core.String hl,
-    core.List<core.String> id,
-    core.String regionCode,
-    core.String $fields,
+    core.String? hl,
+    core.List<core.String>? id,
+    core.String? regionCode,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -4849,12 +4757,9 @@ class VideosResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String id, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if (onBehalfOfContentOwner != null)
@@ -4902,11 +4807,11 @@ class VideosResource {
   /// this method will complete with the same error.
   async.Future<VideoRatingListResponse> getRating(
     core.List<core.String> id, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    if (id == null || id.isEmpty) {
-      throw core.ArgumentError('Parameter id is required.');
+    if (id.isEmpty) {
+      throw core.ArgumentError('Parameter id cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': id,
@@ -4995,19 +4900,18 @@ class VideosResource {
   async.Future<Video> insert(
     Video request,
     core.List<core.String> part, {
-    core.bool autoLevels,
-    core.bool notifySubscribers,
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.bool stabilize,
-    core.String $fields,
+    core.bool? autoLevels,
+    core.bool? notifySubscribers,
+    core.String? onBehalfOfContentOwner,
+    core.String? onBehalfOfContentOwnerChannel,
+    core.bool? stabilize,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -5124,22 +5028,22 @@ class VideosResource {
   /// this method will complete with the same error.
   async.Future<VideoListResponse> list(
     core.List<core.String> part, {
-    core.String chart,
-    core.String hl,
-    core.List<core.String> id,
-    core.String locale,
-    core.int maxHeight,
-    core.int maxResults,
-    core.int maxWidth,
-    core.String myRating,
-    core.String onBehalfOfContentOwner,
-    core.String pageToken,
-    core.String regionCode,
-    core.String videoCategoryId,
-    core.String $fields,
+    core.String? chart,
+    core.String? hl,
+    core.List<core.String>? id,
+    core.String? locale,
+    core.int? maxHeight,
+    core.int? maxResults,
+    core.int? maxWidth,
+    core.String? myRating,
+    core.String? onBehalfOfContentOwner,
+    core.String? pageToken,
+    core.String? regionCode,
+    core.String? videoCategoryId,
+    core.String? $fields,
   }) async {
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -5193,14 +5097,8 @@ class VideosResource {
   async.Future<void> rate(
     core.String id,
     core.String rating, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
-    if (rating == null) {
-      throw core.ArgumentError('Parameter rating is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       'rating': [rating],
@@ -5244,11 +5142,10 @@ class VideosResource {
   /// this method will complete with the same error.
   async.Future<void> reportAbuse(
     VideoAbuseReport request, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
@@ -5314,13 +5211,12 @@ class VideosResource {
   async.Future<Video> update(
     Video request,
     core.List<core.String> part, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
+    final _body = convert.json.encode(request.toJson());
+    if (part.isEmpty) {
+      throw core.ArgumentError('Parameter part cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'part': part,
@@ -5382,16 +5278,12 @@ class WatermarksResource {
   async.Future<void> set(
     InvideoBranding request,
     core.String channelId, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (channelId == null) {
-      throw core.ArgumentError('Parameter channelId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'channelId': [channelId],
       if (onBehalfOfContentOwner != null)
@@ -5446,12 +5338,9 @@ class WatermarksResource {
   /// this method will complete with the same error.
   async.Future<void> unset(
     core.String channelId, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    if (channelId == null) {
-      throw core.ArgumentError('Parameter channelId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'channelId': [channelId],
       if (onBehalfOfContentOwner != null)
@@ -5471,10 +5360,10 @@ class WatermarksResource {
 }
 
 class AbuseReport {
-  core.List<AbuseType> abuseTypes;
-  core.String description;
-  core.List<RelatedEntity> relatedEntities;
-  Entity subject;
+  core.List<AbuseType>? abuseTypes;
+  core.String? description;
+  core.List<RelatedEntity>? relatedEntities;
+  Entity? subject;
 
   AbuseReport();
 
@@ -5500,19 +5389,19 @@ class AbuseReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (abuseTypes != null)
-          'abuseTypes': abuseTypes.map((value) => value.toJson()).toList(),
-        if (description != null) 'description': description,
+          'abuseTypes': abuseTypes!.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description!,
         if (relatedEntities != null)
           'relatedEntities':
-              relatedEntities.map((value) => value.toJson()).toList(),
-        if (subject != null) 'subject': subject.toJson(),
+              relatedEntities!.map((value) => value.toJson()).toList(),
+        if (subject != null) 'subject': subject!.toJson(),
       };
 }
 
 class AbuseType {
-  core.String id;
+  core.String? id;
 
   AbuseType();
 
@@ -5522,8 +5411,8 @@ class AbuseType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
       };
 }
 
@@ -5531,11 +5420,11 @@ class AbuseType {
 class AccessPolicy {
   /// The value of allowed indicates whether the access to the policy is allowed
   /// or denied by default.
-  core.bool allowed;
+  core.bool? allowed;
 
   /// A list of region codes that identify countries where the default policy do
   /// not apply.
-  core.List<core.String> exception;
+  core.List<core.String>? exception;
 
   AccessPolicy();
 
@@ -5550,9 +5439,9 @@ class AccessPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowed != null) 'allowed': allowed,
-        if (exception != null) 'exception': exception,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowed != null) 'allowed': allowed!,
+        if (exception != null) 'exception': exception!,
       };
 }
 
@@ -5570,22 +5459,22 @@ class Activity {
   ///
   /// For example, if the snippet.type value is videoRated, then the
   /// contentDetails object's content identifies the rated video.
-  ActivityContentDetails contentDetails;
+  ActivityContentDetails? contentDetails;
 
   /// Etag of this resource
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube uses to uniquely identify the activity.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#activity".
-  core.String kind;
+  core.String? kind;
 
   /// The snippet object contains basic details about the activity, including
   /// the activity's type and group ID.
-  ActivitySnippet snippet;
+  ActivitySnippet? snippet;
 
   Activity();
 
@@ -5609,12 +5498,12 @@ class Activity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
@@ -5624,64 +5513,64 @@ class ActivityContentDetails {
   /// The bulletin object contains details about a channel bulletin post.
   ///
   /// This object is only present if the snippet.type is bulletin.
-  ActivityContentDetailsBulletin bulletin;
+  ActivityContentDetailsBulletin? bulletin;
 
   /// The channelItem object contains details about a resource which was added
   /// to a channel.
   ///
   /// This property is only present if the snippet.type is channelItem.
-  ActivityContentDetailsChannelItem channelItem;
+  ActivityContentDetailsChannelItem? channelItem;
 
   /// The comment object contains information about a resource that received a
   /// comment.
   ///
   /// This property is only present if the snippet.type is comment.
-  ActivityContentDetailsComment comment;
+  ActivityContentDetailsComment? comment;
 
   /// The favorite object contains information about a video that was marked as
   /// a favorite video.
   ///
   /// This property is only present if the snippet.type is favorite.
-  ActivityContentDetailsFavorite favorite;
+  ActivityContentDetailsFavorite? favorite;
 
   /// The like object contains information about a resource that received a
   /// positive (like) rating.
   ///
   /// This property is only present if the snippet.type is like.
-  ActivityContentDetailsLike like;
+  ActivityContentDetailsLike? like;
 
   /// The playlistItem object contains information about a new playlist item.
   ///
   /// This property is only present if the snippet.type is playlistItem.
-  ActivityContentDetailsPlaylistItem playlistItem;
+  ActivityContentDetailsPlaylistItem? playlistItem;
 
   /// The promotedItem object contains details about a resource which is being
   /// promoted.
   ///
   /// This property is only present if the snippet.type is promotedItem.
-  ActivityContentDetailsPromotedItem promotedItem;
+  ActivityContentDetailsPromotedItem? promotedItem;
 
   /// The recommendation object contains information about a recommended
   /// resource.
   ///
   /// This property is only present if the snippet.type is recommendation.
-  ActivityContentDetailsRecommendation recommendation;
+  ActivityContentDetailsRecommendation? recommendation;
 
   /// The social object contains details about a social network post.
   ///
   /// This property is only present if the snippet.type is social.
-  ActivityContentDetailsSocial social;
+  ActivityContentDetailsSocial? social;
 
   /// The subscription object contains information about a channel that a user
   /// subscribed to.
   ///
   /// This property is only present if the snippet.type is subscription.
-  ActivityContentDetailsSubscription subscription;
+  ActivityContentDetailsSubscription? subscription;
 
   /// The upload object contains information about the uploaded video.
   ///
   /// This property is only present if the snippet.type is upload.
-  ActivityContentDetailsUpload upload;
+  ActivityContentDetailsUpload? upload;
 
   ActivityContentDetails();
 
@@ -5732,18 +5621,18 @@ class ActivityContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bulletin != null) 'bulletin': bulletin.toJson(),
-        if (channelItem != null) 'channelItem': channelItem.toJson(),
-        if (comment != null) 'comment': comment.toJson(),
-        if (favorite != null) 'favorite': favorite.toJson(),
-        if (like != null) 'like': like.toJson(),
-        if (playlistItem != null) 'playlistItem': playlistItem.toJson(),
-        if (promotedItem != null) 'promotedItem': promotedItem.toJson(),
-        if (recommendation != null) 'recommendation': recommendation.toJson(),
-        if (social != null) 'social': social.toJson(),
-        if (subscription != null) 'subscription': subscription.toJson(),
-        if (upload != null) 'upload': upload.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bulletin != null) 'bulletin': bulletin!.toJson(),
+        if (channelItem != null) 'channelItem': channelItem!.toJson(),
+        if (comment != null) 'comment': comment!.toJson(),
+        if (favorite != null) 'favorite': favorite!.toJson(),
+        if (like != null) 'like': like!.toJson(),
+        if (playlistItem != null) 'playlistItem': playlistItem!.toJson(),
+        if (promotedItem != null) 'promotedItem': promotedItem!.toJson(),
+        if (recommendation != null) 'recommendation': recommendation!.toJson(),
+        if (social != null) 'social': social!.toJson(),
+        if (subscription != null) 'subscription': subscription!.toJson(),
+        if (upload != null) 'upload': upload!.toJson(),
       };
 }
 
@@ -5753,7 +5642,7 @@ class ActivityContentDetailsBulletin {
   /// associated with a bulletin post.
   ///
   /// @mutable youtube.activities.insert
-  ResourceId resourceId;
+  ResourceId? resourceId;
 
   ActivityContentDetailsBulletin();
 
@@ -5764,8 +5653,8 @@ class ActivityContentDetailsBulletin {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceId != null) 'resourceId': resourceId.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId!.toJson(),
       };
 }
 
@@ -5773,7 +5662,7 @@ class ActivityContentDetailsBulletin {
 class ActivityContentDetailsChannelItem {
   /// The resourceId object contains information that identifies the resource
   /// that was added to the channel.
-  ResourceId resourceId;
+  ResourceId? resourceId;
 
   ActivityContentDetailsChannelItem();
 
@@ -5784,8 +5673,8 @@ class ActivityContentDetailsChannelItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceId != null) 'resourceId': resourceId.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId!.toJson(),
       };
 }
 
@@ -5793,7 +5682,7 @@ class ActivityContentDetailsChannelItem {
 class ActivityContentDetailsComment {
   /// The resourceId object contains information that identifies the resource
   /// associated with the comment.
-  ResourceId resourceId;
+  ResourceId? resourceId;
 
   ActivityContentDetailsComment();
 
@@ -5804,8 +5693,8 @@ class ActivityContentDetailsComment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceId != null) 'resourceId': resourceId.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId!.toJson(),
       };
 }
 
@@ -5813,7 +5702,7 @@ class ActivityContentDetailsComment {
 class ActivityContentDetailsFavorite {
   /// The resourceId object contains information that identifies the resource
   /// that was marked as a favorite.
-  ResourceId resourceId;
+  ResourceId? resourceId;
 
   ActivityContentDetailsFavorite();
 
@@ -5824,8 +5713,8 @@ class ActivityContentDetailsFavorite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceId != null) 'resourceId': resourceId.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId!.toJson(),
       };
 }
 
@@ -5833,7 +5722,7 @@ class ActivityContentDetailsFavorite {
 class ActivityContentDetailsLike {
   /// The resourceId object contains information that identifies the rated
   /// resource.
-  ResourceId resourceId;
+  ResourceId? resourceId;
 
   ActivityContentDetailsLike();
 
@@ -5844,22 +5733,22 @@ class ActivityContentDetailsLike {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceId != null) 'resourceId': resourceId.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId!.toJson(),
       };
 }
 
 /// Information about a new playlist item.
 class ActivityContentDetailsPlaylistItem {
   /// The value that YouTube uses to uniquely identify the playlist.
-  core.String playlistId;
+  core.String? playlistId;
 
   /// ID of the item within the playlist.
-  core.String playlistItemId;
+  core.String? playlistItemId;
 
   /// The resourceId object contains information about the resource that was
   /// added to the playlist.
-  ResourceId resourceId;
+  ResourceId? resourceId;
 
   ActivityContentDetailsPlaylistItem();
 
@@ -5876,59 +5765,59 @@ class ActivityContentDetailsPlaylistItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (playlistId != null) 'playlistId': playlistId,
-        if (playlistItemId != null) 'playlistItemId': playlistItemId,
-        if (resourceId != null) 'resourceId': resourceId.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (playlistId != null) 'playlistId': playlistId!,
+        if (playlistItemId != null) 'playlistItemId': playlistItemId!,
+        if (resourceId != null) 'resourceId': resourceId!.toJson(),
       };
 }
 
 /// Details about a resource which is being promoted.
 class ActivityContentDetailsPromotedItem {
   /// The URL the client should fetch to request a promoted item.
-  core.String adTag;
+  core.String? adTag;
 
   /// The URL the client should ping to indicate that the user clicked through
   /// on this promoted item.
-  core.String clickTrackingUrl;
+  core.String? clickTrackingUrl;
 
   /// The URL the client should ping to indicate that the user was shown this
   /// promoted item.
-  core.String creativeViewUrl;
+  core.String? creativeViewUrl;
 
   /// The type of call-to-action, a message to the user indicating action that
   /// can be taken.
   /// Possible string values are:
   /// - "ctaTypeUnspecified"
   /// - "visitAdvertiserSite"
-  core.String ctaType;
+  core.String? ctaType;
 
   /// The custom call-to-action button text.
   ///
   /// If specified, it will override the default button text for the cta_type.
-  core.String customCtaButtonText;
+  core.String? customCtaButtonText;
 
   /// The text description to accompany the promoted item.
-  core.String descriptionText;
+  core.String? descriptionText;
 
   /// The URL the client should direct the user to, if the user chooses to visit
   /// the advertiser's website.
-  core.String destinationUrl;
+  core.String? destinationUrl;
 
   /// The list of forecasting URLs.
   ///
   /// The client should ping all of these URLs when a promoted item is not
   /// available, to indicate that a promoted item could have been shown.
-  core.List<core.String> forecastingUrl;
+  core.List<core.String>? forecastingUrl;
 
   /// The list of impression URLs.
   ///
   /// The client should ping all of these URLs to indicate that the user was
   /// shown this promoted item.
-  core.List<core.String> impressionUrl;
+  core.List<core.String>? impressionUrl;
 
   /// The ID that YouTube uses to uniquely identify the promoted video.
-  core.String videoId;
+  core.String? videoId;
 
   ActivityContentDetailsPromotedItem();
 
@@ -5969,18 +5858,18 @@ class ActivityContentDetailsPromotedItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (adTag != null) 'adTag': adTag,
-        if (clickTrackingUrl != null) 'clickTrackingUrl': clickTrackingUrl,
-        if (creativeViewUrl != null) 'creativeViewUrl': creativeViewUrl,
-        if (ctaType != null) 'ctaType': ctaType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (adTag != null) 'adTag': adTag!,
+        if (clickTrackingUrl != null) 'clickTrackingUrl': clickTrackingUrl!,
+        if (creativeViewUrl != null) 'creativeViewUrl': creativeViewUrl!,
+        if (ctaType != null) 'ctaType': ctaType!,
         if (customCtaButtonText != null)
-          'customCtaButtonText': customCtaButtonText,
-        if (descriptionText != null) 'descriptionText': descriptionText,
-        if (destinationUrl != null) 'destinationUrl': destinationUrl,
-        if (forecastingUrl != null) 'forecastingUrl': forecastingUrl,
-        if (impressionUrl != null) 'impressionUrl': impressionUrl,
-        if (videoId != null) 'videoId': videoId,
+          'customCtaButtonText': customCtaButtonText!,
+        if (descriptionText != null) 'descriptionText': descriptionText!,
+        if (destinationUrl != null) 'destinationUrl': destinationUrl!,
+        if (forecastingUrl != null) 'forecastingUrl': forecastingUrl!,
+        if (impressionUrl != null) 'impressionUrl': impressionUrl!,
+        if (videoId != null) 'videoId': videoId!,
       };
 }
 
@@ -5992,15 +5881,15 @@ class ActivityContentDetailsRecommendation {
   /// - "videoFavorited"
   /// - "videoLiked"
   /// - "videoWatched"
-  core.String reason;
+  core.String? reason;
 
   /// The resourceId object contains information that identifies the recommended
   /// resource.
-  ResourceId resourceId;
+  ResourceId? resourceId;
 
   /// The seedResourceId object contains information about the resource that
   /// caused the recommendation.
-  ResourceId seedResourceId;
+  ResourceId? seedResourceId;
 
   ActivityContentDetailsRecommendation();
 
@@ -6018,27 +5907,27 @@ class ActivityContentDetailsRecommendation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (reason != null) 'reason': reason,
-        if (resourceId != null) 'resourceId': resourceId.toJson(),
-        if (seedResourceId != null) 'seedResourceId': seedResourceId.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (reason != null) 'reason': reason!,
+        if (resourceId != null) 'resourceId': resourceId!.toJson(),
+        if (seedResourceId != null) 'seedResourceId': seedResourceId!.toJson(),
       };
 }
 
 /// Details about a social network post.
 class ActivityContentDetailsSocial {
   /// The author of the social network post.
-  core.String author;
+  core.String? author;
 
   /// An image of the post's author.
-  core.String imageUrl;
+  core.String? imageUrl;
 
   /// The URL of the social network post.
-  core.String referenceUrl;
+  core.String? referenceUrl;
 
   /// The resourceId object encapsulates information that identifies the
   /// resource associated with a social network post.
-  ResourceId resourceId;
+  ResourceId? resourceId;
 
   /// The name of the social network.
   /// Possible string values are:
@@ -6046,7 +5935,7 @@ class ActivityContentDetailsSocial {
   /// - "googlePlus"
   /// - "facebook"
   /// - "twitter"
-  core.String type;
+  core.String? type;
 
   ActivityContentDetailsSocial();
 
@@ -6069,12 +5958,12 @@ class ActivityContentDetailsSocial {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (author != null) 'author': author,
-        if (imageUrl != null) 'imageUrl': imageUrl,
-        if (referenceUrl != null) 'referenceUrl': referenceUrl,
-        if (resourceId != null) 'resourceId': resourceId.toJson(),
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (author != null) 'author': author!,
+        if (imageUrl != null) 'imageUrl': imageUrl!,
+        if (referenceUrl != null) 'referenceUrl': referenceUrl!,
+        if (resourceId != null) 'resourceId': resourceId!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -6082,7 +5971,7 @@ class ActivityContentDetailsSocial {
 class ActivityContentDetailsSubscription {
   /// The resourceId object contains information that identifies the resource
   /// that the user subscribed to.
-  ResourceId resourceId;
+  ResourceId? resourceId;
 
   ActivityContentDetailsSubscription();
 
@@ -6093,15 +5982,15 @@ class ActivityContentDetailsSubscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceId != null) 'resourceId': resourceId.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId!.toJson(),
       };
 }
 
 /// Information about the uploaded video.
 class ActivityContentDetailsUpload {
   /// The ID that YouTube uses to uniquely identify the uploaded video.
-  core.String videoId;
+  core.String? videoId;
 
   ActivityContentDetailsUpload();
 
@@ -6111,38 +6000,38 @@ class ActivityContentDetailsUpload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (videoId != null) 'videoId': videoId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (videoId != null) 'videoId': videoId!,
       };
 }
 
 class ActivityListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
-  core.List<Activity> items;
+  core.String? eventId;
+  core.List<Activity>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#activityListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// General pagination information.
-  PageInfo pageInfo;
+  PageInfo? pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
-  core.String prevPageToken;
-  TokenPagination tokenPagination;
+  core.String? prevPageToken;
+  TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   ActivityListResponse();
 
@@ -6181,18 +6070,18 @@ class ActivityListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
-        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken!,
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'tokenPagination': tokenPagination!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
@@ -6203,15 +6092,15 @@ class ActivityListResponse {
 class ActivitySnippet {
   /// The ID that YouTube uses to uniquely identify the channel associated with
   /// the activity.
-  core.String channelId;
+  core.String? channelId;
 
   /// Channel title for the channel responsible for this activity
-  core.String channelTitle;
+  core.String? channelTitle;
 
   /// The description of the resource primarily associated with the activity.
   ///
   /// @mutable youtube.activities.insert
-  core.String description;
+  core.String? description;
 
   /// The group ID associated with the activity.
   ///
@@ -6220,10 +6109,10 @@ class ActivitySnippet {
   /// video as a favorite, the entries for those events would have the same
   /// group ID in the user's activity feed. In your user interface, you can
   /// avoid repetition by grouping events with the same groupId value.
-  core.String groupId;
+  core.String? groupId;
 
   /// The date and time that the video was uploaded.
-  core.DateTime publishedAt;
+  core.DateTime? publishedAt;
 
   /// A map of thumbnail images associated with the resource that is primarily
   /// associated with the activity.
@@ -6231,10 +6120,10 @@ class ActivitySnippet {
   /// For each object in the map, the key is the name of the thumbnail image,
   /// and the value is an object that contains other information about the
   /// thumbnail.
-  ThumbnailDetails thumbnails;
+  ThumbnailDetails? thumbnails;
 
   /// The title of the resource primarily associated with the activity.
-  core.String title;
+  core.String? title;
 
   /// The type of activity that the resource describes.
   /// Possible string values are:
@@ -6250,7 +6139,7 @@ class ActivitySnippet {
   /// - "social"
   /// - "channelItem"
   /// - "promotedItem"
-  core.String type;
+  core.String? type;
 
   ActivitySnippet();
 
@@ -6282,15 +6171,16 @@ class ActivitySnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channelId != null) 'channelId': channelId,
-        if (channelTitle != null) 'channelTitle': channelTitle,
-        if (description != null) 'description': description,
-        if (groupId != null) 'groupId': groupId,
-        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
-        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
-        if (title != null) 'title': title,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channelId != null) 'channelId': channelId!,
+        if (channelTitle != null) 'channelTitle': channelTitle!,
+        if (description != null) 'description': description!,
+        if (groupId != null) 'groupId': groupId!,
+        if (publishedAt != null)
+          'publishedAt': (publishedAt!).toIso8601String(),
+        if (thumbnails != null) 'thumbnails': thumbnails!.toJson(),
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -6299,18 +6189,18 @@ class ActivitySnippet {
 /// A caption track is associated with exactly one YouTube video.
 class Caption {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube uses to uniquely identify the caption track.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#caption".
-  core.String kind;
+  core.String? kind;
 
   /// The snippet object contains basic details about the caption.
-  CaptionSnippet snippet;
+  CaptionSnippet? snippet;
 
   Caption();
 
@@ -6330,31 +6220,31 @@ class Caption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
 class CaptionListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of captions that match the request criteria.
-  core.List<Caption> items;
+  core.List<Caption>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#captionListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   CaptionListResponse();
 
@@ -6379,13 +6269,13 @@ class CaptionListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (visitorId != null) 'visitorId': visitorId,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
@@ -6397,7 +6287,7 @@ class CaptionSnippet {
   /// - "primary"
   /// - "commentary"
   /// - "descriptive"
-  core.String audioTrackType;
+  core.String? audioTrackType;
 
   /// The reason that YouTube failed to process the caption track.
   ///
@@ -6406,7 +6296,7 @@ class CaptionSnippet {
   /// - "unknownFormat"
   /// - "unsupportedFormat"
   /// - "processingFailed"
-  core.String failureReason;
+  core.String? failureReason;
 
   /// Indicates whether YouTube synchronized the caption track to the audio
   /// track in the video.
@@ -6417,65 +6307,65 @@ class CaptionSnippet {
   /// instruct YouTube to sync the uploaded track to the video. If the value is
   /// false, YouTube uses the time codes in the uploaded caption track to
   /// determine when to display captions.
-  core.bool isAutoSynced;
+  core.bool? isAutoSynced;
 
   /// Indicates whether the track contains closed captions for the deaf and hard
   /// of hearing.
   ///
   /// The default value is false.
-  core.bool isCC;
+  core.bool? isCC;
 
   /// Indicates whether the caption track is a draft.
   ///
   /// If the value is true, then the track is not publicly visible. The default
   /// value is false. @mutable youtube.captions.insert youtube.captions.update
-  core.bool isDraft;
+  core.bool? isDraft;
 
   /// Indicates whether caption track is formatted for "easy reader," meaning it
   /// is at a third-grade level for language learners.
   ///
   /// The default value is false.
-  core.bool isEasyReader;
+  core.bool? isEasyReader;
 
   /// Indicates whether the caption track uses large text for the
   /// vision-impaired.
   ///
   /// The default value is false.
-  core.bool isLarge;
+  core.bool? isLarge;
 
   /// The language of the caption track.
   ///
   /// The property value is a BCP-47 language tag.
-  core.String language;
+  core.String? language;
 
   /// The date and time when the caption track was last updated.
-  core.DateTime lastUpdated;
+  core.DateTime? lastUpdated;
 
   /// The name of the caption track.
   ///
   /// The name is intended to be visible to the user as an option during
   /// playback.
-  core.String name;
+  core.String? name;
 
   /// The caption track's status.
   /// Possible string values are:
   /// - "serving"
   /// - "syncing"
   /// - "failed"
-  core.String status;
+  core.String? status;
 
   /// The caption track's type.
   /// Possible string values are:
   /// - "standard"
   /// - "ASR"
   /// - "forced"
-  core.String trackKind;
+  core.String? trackKind;
 
   /// The ID that YouTube uses to uniquely identify the video associated with
   /// the caption track.
   ///
   /// @mutable youtube.captions.insert
-  core.String videoId;
+  core.String? videoId;
 
   CaptionSnippet();
 
@@ -6521,38 +6411,39 @@ class CaptionSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audioTrackType != null) 'audioTrackType': audioTrackType,
-        if (failureReason != null) 'failureReason': failureReason,
-        if (isAutoSynced != null) 'isAutoSynced': isAutoSynced,
-        if (isCC != null) 'isCC': isCC,
-        if (isDraft != null) 'isDraft': isDraft,
-        if (isEasyReader != null) 'isEasyReader': isEasyReader,
-        if (isLarge != null) 'isLarge': isLarge,
-        if (language != null) 'language': language,
-        if (lastUpdated != null) 'lastUpdated': (lastUpdated).toIso8601String(),
-        if (name != null) 'name': name,
-        if (status != null) 'status': status,
-        if (trackKind != null) 'trackKind': trackKind,
-        if (videoId != null) 'videoId': videoId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audioTrackType != null) 'audioTrackType': audioTrackType!,
+        if (failureReason != null) 'failureReason': failureReason!,
+        if (isAutoSynced != null) 'isAutoSynced': isAutoSynced!,
+        if (isCC != null) 'isCC': isCC!,
+        if (isDraft != null) 'isDraft': isDraft!,
+        if (isEasyReader != null) 'isEasyReader': isEasyReader!,
+        if (isLarge != null) 'isLarge': isLarge!,
+        if (language != null) 'language': language!,
+        if (lastUpdated != null)
+          'lastUpdated': (lastUpdated!).toIso8601String(),
+        if (name != null) 'name': name!,
+        if (status != null) 'status': status!,
+        if (trackKind != null) 'trackKind': trackKind!,
+        if (videoId != null) 'videoId': videoId!,
       };
 }
 
 /// Brief description of the live stream cdn settings.
 class CdnSettings {
   /// The format of the video stream that you are sending to Youtube.
-  core.String format;
+  core.String? format;
 
   /// The frame rate of the inbound video data.
   /// Possible string values are:
   /// - "30fps"
   /// - "60fps"
   /// - "variable"
-  core.String frameRate;
+  core.String? frameRate;
 
   /// The ingestionInfo object contains information that YouTube provides that
   /// you need to transmit your RTMP or HTTP stream to YouTube.
-  IngestionInfo ingestionInfo;
+  IngestionInfo? ingestionInfo;
 
   ///  The method or protocol used to transmit the video stream.
   /// Possible string values are:
@@ -6560,7 +6451,7 @@ class CdnSettings {
   /// - "dash"
   /// - "webrtc"
   /// - "hls"
-  core.String ingestionType;
+  core.String? ingestionType;
 
   /// The resolution of the inbound video data.
   /// Possible string values are:
@@ -6572,7 +6463,7 @@ class CdnSettings {
   /// - "1440p"
   /// - "2160p"
   /// - "variable"
-  core.String resolution;
+  core.String? resolution;
 
   CdnSettings();
 
@@ -6595,12 +6486,12 @@ class CdnSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (format != null) 'format': format,
-        if (frameRate != null) 'frameRate': frameRate,
-        if (ingestionInfo != null) 'ingestionInfo': ingestionInfo.toJson(),
-        if (ingestionType != null) 'ingestionType': ingestionType,
-        if (resolution != null) 'resolution': resolution,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (format != null) 'format': format!,
+        if (frameRate != null) 'frameRate': frameRate!,
+        if (ingestionInfo != null) 'ingestionInfo': ingestionInfo!.toJson(),
+        if (ingestionType != null) 'ingestionType': ingestionType!,
+        if (resolution != null) 'resolution': resolution!,
       };
 }
 
@@ -6608,52 +6499,52 @@ class CdnSettings {
 class Channel {
   /// The auditionDetails object encapsulates channel data that is relevant for
   /// YouTube Partners during the audition process.
-  ChannelAuditDetails auditDetails;
+  ChannelAuditDetails? auditDetails;
 
   /// The brandingSettings object encapsulates information about the branding of
   /// the channel.
-  ChannelBrandingSettings brandingSettings;
+  ChannelBrandingSettings? brandingSettings;
 
   /// The contentDetails object encapsulates information about the channel's
   /// content.
-  ChannelContentDetails contentDetails;
+  ChannelContentDetails? contentDetails;
 
   /// The contentOwnerDetails object encapsulates channel data that is relevant
   /// for YouTube Partners linked with the channel.
-  ChannelContentOwnerDetails contentOwnerDetails;
+  ChannelContentOwnerDetails? contentOwnerDetails;
 
   /// The conversionPings object encapsulates information about conversion pings
   /// that need to be respected by the channel.
-  ChannelConversionPings conversionPings;
+  ChannelConversionPings? conversionPings;
 
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube uses to uniquely identify the channel.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#channel".
-  core.String kind;
+  core.String? kind;
 
   /// Localizations for different languages
-  core.Map<core.String, ChannelLocalization> localizations;
+  core.Map<core.String, ChannelLocalization>? localizations;
 
   /// The snippet object contains basic details about the channel, such as its
   /// title, description, and thumbnail images.
-  ChannelSnippet snippet;
+  ChannelSnippet? snippet;
 
   /// The statistics object encapsulates statistics for the channel.
-  ChannelStatistics statistics;
+  ChannelStatistics? statistics;
 
   /// The status object encapsulates information about the privacy status of the
   /// channel.
-  ChannelStatus status;
+  ChannelStatus? status;
 
   /// The topicDetails object encapsulates information about Freebase topics
   /// associated with the channel.
-  ChannelTopicDetails topicDetails;
+  ChannelTopicDetails? topicDetails;
 
   Channel();
 
@@ -6689,7 +6580,7 @@ class Channel {
     }
     if (_json.containsKey('localizations')) {
       localizations = (_json['localizations'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -6716,25 +6607,25 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (auditDetails != null) 'auditDetails': auditDetails.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (auditDetails != null) 'auditDetails': auditDetails!.toJson(),
         if (brandingSettings != null)
-          'brandingSettings': brandingSettings.toJson(),
-        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
+          'brandingSettings': brandingSettings!.toJson(),
+        if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
         if (contentOwnerDetails != null)
-          'contentOwnerDetails': contentOwnerDetails.toJson(),
+          'contentOwnerDetails': contentOwnerDetails!.toJson(),
         if (conversionPings != null)
-          'conversionPings': conversionPings.toJson(),
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+          'conversionPings': conversionPings!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (localizations != null)
-          'localizations': localizations
+          'localizations': localizations!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (snippet != null) 'snippet': snippet.toJson(),
-        if (statistics != null) 'statistics': statistics.toJson(),
-        if (status != null) 'status': status.toJson(),
-        if (topicDetails != null) 'topicDetails': topicDetails.toJson(),
+        if (snippet != null) 'snippet': snippet!.toJson(),
+        if (statistics != null) 'statistics': statistics!.toJson(),
+        if (status != null) 'status': status!.toJson(),
+        if (topicDetails != null) 'topicDetails': topicDetails!.toJson(),
       };
 }
 
@@ -6742,13 +6633,13 @@ class Channel {
 /// YouTube Partners during the audit process.
 class ChannelAuditDetails {
   /// Whether or not the channel respects the community guidelines.
-  core.bool communityGuidelinesGoodStanding;
+  core.bool? communityGuidelinesGoodStanding;
 
   /// Whether or not the channel has any unresolved claims.
-  core.bool contentIdClaimsGoodStanding;
+  core.bool? contentIdClaimsGoodStanding;
 
   /// Whether or not the channel has any copyright strikes.
-  core.bool copyrightStrikesGoodStanding;
+  core.bool? copyrightStrikesGoodStanding;
 
   ChannelAuditDetails();
 
@@ -6767,27 +6658,27 @@ class ChannelAuditDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (communityGuidelinesGoodStanding != null)
-          'communityGuidelinesGoodStanding': communityGuidelinesGoodStanding,
+          'communityGuidelinesGoodStanding': communityGuidelinesGoodStanding!,
         if (contentIdClaimsGoodStanding != null)
-          'contentIdClaimsGoodStanding': contentIdClaimsGoodStanding,
+          'contentIdClaimsGoodStanding': contentIdClaimsGoodStanding!,
         if (copyrightStrikesGoodStanding != null)
-          'copyrightStrikesGoodStanding': copyrightStrikesGoodStanding,
+          'copyrightStrikesGoodStanding': copyrightStrikesGoodStanding!,
       };
 }
 
 /// A channel banner returned as the response to a channel_banner.insert call.
 class ChannelBannerResource {
-  core.String etag;
+  core.String? etag;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#channelBannerResource".
-  core.String kind;
+  core.String? kind;
 
   /// The URL of this banner image.
-  core.String url;
+  core.String? url;
 
   ChannelBannerResource();
 
@@ -6803,26 +6694,26 @@ class ChannelBannerResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// Branding properties of a YouTube channel.
 class ChannelBrandingSettings {
   /// Branding properties for the channel view.
-  ChannelSettings channel;
+  ChannelSettings? channel;
 
   /// Additional experimental branding properties.
-  core.List<PropertyValue> hints;
+  core.List<PropertyValue>? hints;
 
   /// Branding properties for branding images.
-  ImageSettings image;
+  ImageSettings? image;
 
   /// Branding properties for the watch page.
-  WatchSettings watch;
+  WatchSettings? watch;
 
   ChannelBrandingSettings();
 
@@ -6847,12 +6738,12 @@ class ChannelBrandingSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channel != null) 'channel': channel.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channel != null) 'channel': channel!.toJson(),
         if (hints != null)
-          'hints': hints.map((value) => value.toJson()).toList(),
-        if (image != null) 'image': image.toJson(),
-        if (watch != null) 'watch': watch.toJson(),
+          'hints': hints!.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image!.toJson(),
+        if (watch != null) 'watch': watch!.toJson(),
       };
 }
 
@@ -6861,31 +6752,31 @@ class ChannelContentDetailsRelatedPlaylists {
   ///
   /// Use the playlistItems.insert and playlistItems.delete to add or remove
   /// items from that list.
-  core.String favorites;
+  core.String? favorites;
 
   /// The ID of the playlist that contains the channel"s liked videos.
   ///
   /// Use the playlistItems.insert and playlistItems.delete to add or remove
   /// items from that list.
-  core.String likes;
+  core.String? likes;
 
   /// The ID of the playlist that contains the channel"s uploaded videos.
   ///
   /// Use the videos.insert method to upload new videos and the videos.delete
   /// method to delete previously uploaded videos.
-  core.String uploads;
+  core.String? uploads;
 
   /// The ID of the playlist that contains the channel"s watch history.
   ///
   /// Use the playlistItems.insert and playlistItems.delete to add or remove
   /// items from that list.
-  core.String watchHistory;
+  core.String? watchHistory;
 
   /// The ID of the playlist that contains the channel"s watch later playlist.
   ///
   /// Use the playlistItems.insert and playlistItems.delete to add or remove
   /// items from that list.
-  core.String watchLater;
+  core.String? watchLater;
 
   ChannelContentDetailsRelatedPlaylists();
 
@@ -6907,18 +6798,18 @@ class ChannelContentDetailsRelatedPlaylists {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (favorites != null) 'favorites': favorites,
-        if (likes != null) 'likes': likes,
-        if (uploads != null) 'uploads': uploads,
-        if (watchHistory != null) 'watchHistory': watchHistory,
-        if (watchLater != null) 'watchLater': watchLater,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (favorites != null) 'favorites': favorites!,
+        if (likes != null) 'likes': likes!,
+        if (uploads != null) 'uploads': uploads!,
+        if (watchHistory != null) 'watchHistory': watchHistory!,
+        if (watchLater != null) 'watchLater': watchLater!,
       };
 }
 
 /// Details about the content of a channel.
 class ChannelContentDetails {
-  ChannelContentDetailsRelatedPlaylists relatedPlaylists;
+  ChannelContentDetailsRelatedPlaylists? relatedPlaylists;
 
   ChannelContentDetails();
 
@@ -6929,9 +6820,9 @@ class ChannelContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (relatedPlaylists != null)
-          'relatedPlaylists': relatedPlaylists.toJson(),
+          'relatedPlaylists': relatedPlaylists!.toJson(),
       };
 }
 
@@ -6939,10 +6830,10 @@ class ChannelContentDetails {
 /// for YouTube Partners linked with the channel.
 class ChannelContentOwnerDetails {
   /// The ID of the content owner linked to the channel.
-  core.String contentOwner;
+  core.String? contentOwner;
 
   /// The date and time when the channel was linked to the content owner.
-  core.DateTime timeLinked;
+  core.DateTime? timeLinked;
 
   ChannelContentOwnerDetails();
 
@@ -6955,9 +6846,9 @@ class ChannelContentOwnerDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentOwner != null) 'contentOwner': contentOwner,
-        if (timeLinked != null) 'timeLinked': (timeLinked).toIso8601String(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentOwner != null) 'contentOwner': contentOwner!,
+        if (timeLinked != null) 'timeLinked': (timeLinked!).toIso8601String(),
       };
 }
 
@@ -6971,7 +6862,7 @@ class ChannelConversionPing {
   /// - "subscribe"
   /// - "unsubscribe"
   /// - "cview"
-  core.String context;
+  core.String? context;
 
   /// The url (without the schema) that the player shall send the ping to.
   ///
@@ -6981,7 +6872,7 @@ class ChannelConversionPing {
   /// cview%3Butuid%3DGISQtTNGYqaYl4sKxoVvKA&labe=default The caller must append
   /// biscotti authentication (ms param in case of mobile, for example) to this
   /// ping.
-  core.String conversionUrl;
+  core.String? conversionUrl;
 
   ChannelConversionPing();
 
@@ -6994,9 +6885,9 @@ class ChannelConversionPing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (context != null) 'context': context,
-        if (conversionUrl != null) 'conversionUrl': conversionUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (context != null) 'context': context!,
+        if (conversionUrl != null) 'conversionUrl': conversionUrl!,
       };
 }
 
@@ -7007,7 +6898,7 @@ class ChannelConversionPings {
   ///
   /// Each ping has a context, in which the app must fire the ping, and a url
   /// identifying the ping.
-  core.List<ChannelConversionPing> pings;
+  core.List<ChannelConversionPing>? pings;
 
   ChannelConversionPings();
 
@@ -7020,39 +6911,39 @@ class ChannelConversionPings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (pings != null)
-          'pings': pings.map((value) => value.toJson()).toList(),
+          'pings': pings!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ChannelListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
-  core.List<Channel> items;
+  core.String? eventId;
+  core.List<Channel>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#channelListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// General pagination information.
-  PageInfo pageInfo;
+  PageInfo? pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
-  core.String prevPageToken;
-  TokenPagination tokenPagination;
+  core.String? prevPageToken;
+  TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   ChannelListResponse();
 
@@ -7091,28 +6982,28 @@ class ChannelListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
-        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken!,
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'tokenPagination': tokenPagination!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
 /// Channel localization setting
 class ChannelLocalization {
   /// The localized strings for channel's description.
-  core.String description;
+  core.String? description;
 
   /// The localized strings for channel's title.
-  core.String title;
+  core.String? title;
 
   ChannelLocalization();
 
@@ -7125,24 +7016,24 @@ class ChannelLocalization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (title != null) 'title': title!,
       };
 }
 
 class ChannelProfileDetails {
   /// The YouTube channel ID.
-  core.String channelId;
+  core.String? channelId;
 
   /// The channel's URL.
-  core.String channelUrl;
+  core.String? channelUrl;
 
   /// The channel's display name.
-  core.String displayName;
+  core.String? displayName;
 
   /// The channels's avatar URL.
-  core.String profileImageUrl;
+  core.String? profileImageUrl;
 
   ChannelProfileDetails();
 
@@ -7161,40 +7052,40 @@ class ChannelProfileDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channelId != null) 'channelId': channelId,
-        if (channelUrl != null) 'channelUrl': channelUrl,
-        if (displayName != null) 'displayName': displayName,
-        if (profileImageUrl != null) 'profileImageUrl': profileImageUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channelId != null) 'channelId': channelId!,
+        if (channelUrl != null) 'channelUrl': channelUrl!,
+        if (displayName != null) 'displayName': displayName!,
+        if (profileImageUrl != null) 'profileImageUrl': profileImageUrl!,
       };
 }
 
 class ChannelSection {
   /// The contentDetails object contains details about the channel section
   /// content, such as a list of playlists or channels featured in the section.
-  ChannelSectionContentDetails contentDetails;
+  ChannelSectionContentDetails? contentDetails;
 
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube uses to uniquely identify the channel section.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#channelSection".
-  core.String kind;
+  core.String? kind;
 
   /// Localizations for different languages
-  core.Map<core.String, ChannelSectionLocalization> localizations;
+  core.Map<core.String, ChannelSectionLocalization>? localizations;
 
   /// The snippet object contains basic details about the channel section, such
   /// as its type, style and title.
-  ChannelSectionSnippet snippet;
+  ChannelSectionSnippet? snippet;
 
   /// The targeting object contains basic targeting settings about the channel
   /// section.
-  ChannelSectionTargeting targeting;
+  ChannelSectionTargeting? targeting;
 
   ChannelSection();
 
@@ -7214,7 +7105,7 @@ class ChannelSection {
     }
     if (_json.containsKey('localizations')) {
       localizations = (_json['localizations'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -7233,28 +7124,28 @@ class ChannelSection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (localizations != null)
-          'localizations': localizations
+          'localizations': localizations!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (snippet != null) 'snippet': snippet.toJson(),
-        if (targeting != null) 'targeting': targeting.toJson(),
+        if (snippet != null) 'snippet': snippet!.toJson(),
+        if (targeting != null) 'targeting': targeting!.toJson(),
       };
 }
 
 /// Details about a channelsection, including playlists and channels.
 class ChannelSectionContentDetails {
   /// The channel ids for type multiple_channels.
-  core.List<core.String> channels;
+  core.List<core.String>? channels;
 
   /// The playlist ids for type single_playlist and multiple_playlists.
   ///
   /// For singlePlaylist, only one playlistId is allowed.
-  core.List<core.String> playlists;
+  core.List<core.String>? playlists;
 
   ChannelSectionContentDetails();
 
@@ -7271,29 +7162,29 @@ class ChannelSectionContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channels != null) 'channels': channels,
-        if (playlists != null) 'playlists': playlists,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channels != null) 'channels': channels!,
+        if (playlists != null) 'playlists': playlists!,
       };
 }
 
 class ChannelSectionListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of ChannelSections that match the request criteria.
-  core.List<ChannelSection> items;
+  core.List<ChannelSection>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#channelSectionListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   ChannelSectionListResponse();
 
@@ -7318,20 +7209,20 @@ class ChannelSectionListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (visitorId != null) 'visitorId': visitorId,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
 /// ChannelSection localization setting
 class ChannelSectionLocalization {
   /// The localized strings for channel section's title.
-  core.String title;
+  core.String? title;
 
   ChannelSectionLocalization();
 
@@ -7341,8 +7232,8 @@ class ChannelSectionLocalization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (title != null) 'title': title!,
       };
 }
 
@@ -7350,26 +7241,26 @@ class ChannelSectionLocalization {
 class ChannelSectionSnippet {
   /// The ID that YouTube uses to uniquely identify the channel that published
   /// the channel section.
-  core.String channelId;
+  core.String? channelId;
 
   /// The language of the channel section's default title and description.
-  core.String defaultLanguage;
+  core.String? defaultLanguage;
 
   /// Localized title, read-only.
-  ChannelSectionLocalization localized;
+  ChannelSectionLocalization? localized;
 
   /// The position of the channel section in the channel.
-  core.int position;
+  core.int? position;
 
   /// The style of the channel section.
   /// Possible string values are:
   /// - "channelsectionStyleUnspecified"
   /// - "horizontalRow"
   /// - "verticalList"
-  core.String style;
+  core.String? style;
 
   /// The channel section's title for multiple_playlists and multiple_channels.
-  core.String title;
+  core.String? title;
 
   /// The type of the channel section.
   /// Possible string values are:
@@ -7390,7 +7281,7 @@ class ChannelSectionSnippet {
   /// - "postedVideos"
   /// - "postedPlaylists"
   /// - "subscriptions"
-  core.String type;
+  core.String? type;
 
   ChannelSectionSnippet();
 
@@ -7419,27 +7310,27 @@ class ChannelSectionSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channelId != null) 'channelId': channelId,
-        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage,
-        if (localized != null) 'localized': localized.toJson(),
-        if (position != null) 'position': position,
-        if (style != null) 'style': style,
-        if (title != null) 'title': title,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channelId != null) 'channelId': channelId!,
+        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
+        if (localized != null) 'localized': localized!.toJson(),
+        if (position != null) 'position': position!,
+        if (style != null) 'style': style!,
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// ChannelSection targeting setting.
 class ChannelSectionTargeting {
   /// The country the channel section is targeting.
-  core.List<core.String> countries;
+  core.List<core.String>? countries;
 
   /// The language the channel section is targeting.
-  core.List<core.String> languages;
+  core.List<core.String>? languages;
 
   /// The region the channel section is targeting.
-  core.List<core.String> regions;
+  core.List<core.String>? regions;
 
   ChannelSectionTargeting();
 
@@ -7461,56 +7352,56 @@ class ChannelSectionTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (countries != null) 'countries': countries,
-        if (languages != null) 'languages': languages,
-        if (regions != null) 'regions': regions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (countries != null) 'countries': countries!,
+        if (languages != null) 'languages': languages!,
+        if (regions != null) 'regions': regions!,
       };
 }
 
 /// Branding properties for the channel view.
 class ChannelSettings {
   /// The country of the channel.
-  core.String country;
-  core.String defaultLanguage;
+  core.String? country;
+  core.String? defaultLanguage;
 
   /// Which content tab users should see when viewing the channel.
-  core.String defaultTab;
+  core.String? defaultTab;
 
   /// Specifies the channel description.
-  core.String description;
+  core.String? description;
 
   /// Title for the featured channels tab.
-  core.String featuredChannelsTitle;
+  core.String? featuredChannelsTitle;
 
   /// The list of featured channels.
-  core.List<core.String> featuredChannelsUrls;
+  core.List<core.String>? featuredChannelsUrls;
 
   /// Lists keywords associated with the channel, comma-separated.
-  core.String keywords;
+  core.String? keywords;
 
   /// Whether user-submitted comments left on the channel page need to be
   /// approved by the channel owner to be publicly visible.
-  core.bool moderateComments;
+  core.bool? moderateComments;
 
   /// A prominent color that can be rendered on this channel page.
-  core.String profileColor;
+  core.String? profileColor;
 
   /// Whether the tab to browse the videos should be displayed.
-  core.bool showBrowseView;
+  core.bool? showBrowseView;
 
   /// Whether related channels should be proposed.
-  core.bool showRelatedChannels;
+  core.bool? showRelatedChannels;
 
   /// Specifies the channel title.
-  core.String title;
+  core.String? title;
 
   /// The ID for a Google Analytics account to track and measure traffic to the
   /// channels.
-  core.String trackingAnalyticsAccountId;
+  core.String? trackingAnalyticsAccountId;
 
   /// The trailer of the channel, for users that are not subscribers.
-  core.String unsubscribedTrailer;
+  core.String? unsubscribedTrailer;
 
   ChannelSettings();
 
@@ -7562,48 +7453,48 @@ class ChannelSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage,
-        if (defaultTab != null) 'defaultTab': defaultTab,
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
+        if (defaultTab != null) 'defaultTab': defaultTab!,
+        if (description != null) 'description': description!,
         if (featuredChannelsTitle != null)
-          'featuredChannelsTitle': featuredChannelsTitle,
+          'featuredChannelsTitle': featuredChannelsTitle!,
         if (featuredChannelsUrls != null)
-          'featuredChannelsUrls': featuredChannelsUrls,
-        if (keywords != null) 'keywords': keywords,
-        if (moderateComments != null) 'moderateComments': moderateComments,
-        if (profileColor != null) 'profileColor': profileColor,
-        if (showBrowseView != null) 'showBrowseView': showBrowseView,
+          'featuredChannelsUrls': featuredChannelsUrls!,
+        if (keywords != null) 'keywords': keywords!,
+        if (moderateComments != null) 'moderateComments': moderateComments!,
+        if (profileColor != null) 'profileColor': profileColor!,
+        if (showBrowseView != null) 'showBrowseView': showBrowseView!,
         if (showRelatedChannels != null)
-          'showRelatedChannels': showRelatedChannels,
-        if (title != null) 'title': title,
+          'showRelatedChannels': showRelatedChannels!,
+        if (title != null) 'title': title!,
         if (trackingAnalyticsAccountId != null)
-          'trackingAnalyticsAccountId': trackingAnalyticsAccountId,
+          'trackingAnalyticsAccountId': trackingAnalyticsAccountId!,
         if (unsubscribedTrailer != null)
-          'unsubscribedTrailer': unsubscribedTrailer,
+          'unsubscribedTrailer': unsubscribedTrailer!,
       };
 }
 
 /// Basic details about a channel, including title, description and thumbnails.
 class ChannelSnippet {
   /// The country of the channel.
-  core.String country;
+  core.String? country;
 
   /// The custom url of the channel.
-  core.String customUrl;
+  core.String? customUrl;
 
   /// The language of the channel's default title and description.
-  core.String defaultLanguage;
+  core.String? defaultLanguage;
 
   /// The description of the channel.
-  core.String description;
+  core.String? description;
 
   /// Localized title and description, read-only.
-  ChannelLocalization localized;
+  ChannelLocalization? localized;
 
   /// The date and time that the channel was created.
-  core.DateTime publishedAt;
+  core.DateTime? publishedAt;
 
   /// A map of thumbnail images associated with the channel.
   ///
@@ -7618,10 +7509,10 @@ class ChannelSnippet {
   /// that time, you might see broken images in your application if it tries to
   /// load YouTube images from the http domain. Thumbnail images might be empty
   /// for newly created channels and might take up to one day to populate.
-  ThumbnailDetails thumbnails;
+  ThumbnailDetails? thumbnails;
 
   /// The channel's title.
-  core.String title;
+  core.String? title;
 
   ChannelSnippet();
 
@@ -7654,15 +7545,16 @@ class ChannelSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (customUrl != null) 'customUrl': customUrl,
-        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage,
-        if (description != null) 'description': description,
-        if (localized != null) 'localized': localized.toJson(),
-        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
-        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (customUrl != null) 'customUrl': customUrl!,
+        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
+        if (description != null) 'description': description!,
+        if (localized != null) 'localized': localized!.toJson(),
+        if (publishedAt != null)
+          'publishedAt': (publishedAt!).toIso8601String(),
+        if (thumbnails != null) 'thumbnails': thumbnails!.toJson(),
+        if (title != null) 'title': title!,
       };
 }
 
@@ -7670,19 +7562,19 @@ class ChannelSnippet {
 /// channel, etc.
 class ChannelStatistics {
   /// The number of comments for the channel.
-  core.String commentCount;
+  core.String? commentCount;
 
   /// Whether or not the number of subscribers is shown for this user.
-  core.bool hiddenSubscriberCount;
+  core.bool? hiddenSubscriberCount;
 
   /// The number of subscribers that the channel has.
-  core.String subscriberCount;
+  core.String? subscriberCount;
 
   /// The number of videos uploaded to the channel.
-  core.String videoCount;
+  core.String? videoCount;
 
   /// The number of times the channel has been viewed.
-  core.String viewCount;
+  core.String? viewCount;
 
   ChannelStatistics();
 
@@ -7704,13 +7596,13 @@ class ChannelStatistics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commentCount != null) 'commentCount': commentCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commentCount != null) 'commentCount': commentCount!,
         if (hiddenSubscriberCount != null)
-          'hiddenSubscriberCount': hiddenSubscriberCount,
-        if (subscriberCount != null) 'subscriberCount': subscriberCount,
-        if (videoCount != null) 'videoCount': videoCount,
-        if (viewCount != null) 'viewCount': viewCount,
+          'hiddenSubscriberCount': hiddenSubscriberCount!,
+        if (subscriberCount != null) 'subscriberCount': subscriberCount!,
+        if (videoCount != null) 'videoCount': videoCount!,
+        if (viewCount != null) 'viewCount': viewCount!,
       };
 }
 
@@ -7720,7 +7612,7 @@ class ChannelStatus {
   /// account.
   ///
   /// Otherwise, the user doesn't have a public YouTube identity.
-  core.bool isLinked;
+  core.bool? isLinked;
 
   /// The long uploads status of this channel.
   ///
@@ -7730,16 +7622,16 @@ class ChannelStatus {
   /// - "allowed"
   /// - "eligible"
   /// - "disallowed"
-  core.String longUploadsStatus;
-  core.bool madeForKids;
+  core.String? longUploadsStatus;
+  core.bool? madeForKids;
 
   /// Privacy status of the channel.
   /// Possible string values are:
   /// - "public"
   /// - "unlisted"
   /// - "private"
-  core.String privacyStatus;
-  core.bool selfDeclaredMadeForKids;
+  core.String? privacyStatus;
+  core.bool? selfDeclaredMadeForKids;
 
   ChannelStatus();
 
@@ -7761,13 +7653,13 @@ class ChannelStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (isLinked != null) 'isLinked': isLinked,
-        if (longUploadsStatus != null) 'longUploadsStatus': longUploadsStatus,
-        if (madeForKids != null) 'madeForKids': madeForKids,
-        if (privacyStatus != null) 'privacyStatus': privacyStatus,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (isLinked != null) 'isLinked': isLinked!,
+        if (longUploadsStatus != null) 'longUploadsStatus': longUploadsStatus!,
+        if (madeForKids != null) 'madeForKids': madeForKids!,
+        if (privacyStatus != null) 'privacyStatus': privacyStatus!,
         if (selfDeclaredMadeForKids != null)
-          'selfDeclaredMadeForKids': selfDeclaredMadeForKids,
+          'selfDeclaredMadeForKids': selfDeclaredMadeForKids!,
       };
 }
 
@@ -7775,10 +7667,10 @@ class ChannelStatus {
 /// YouTube channel.
 class ChannelToStoreLinkDetails {
   /// Name of the store.
-  core.String storeName;
+  core.String? storeName;
 
   /// Landing page of the store.
-  core.String storeUrl;
+  core.String? storeUrl;
 
   ChannelToStoreLinkDetails();
 
@@ -7791,22 +7683,22 @@ class ChannelToStoreLinkDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (storeName != null) 'storeName': storeName,
-        if (storeUrl != null) 'storeUrl': storeUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (storeName != null) 'storeName': storeName!,
+        if (storeUrl != null) 'storeUrl': storeUrl!,
       };
 }
 
 /// Freebase topic information related to the channel.
 class ChannelTopicDetails {
   /// A list of Wikipedia URLs that describe the channel's content.
-  core.List<core.String> topicCategories;
+  core.List<core.String>? topicCategories;
 
   /// A list of Freebase topic IDs associated with the channel.
   ///
   /// You can retrieve information about each topic using the Freebase Topic
   /// API.
-  core.List<core.String> topicIds;
+  core.List<core.String>? topicIds;
 
   ChannelTopicDetails();
 
@@ -7823,27 +7715,27 @@ class ChannelTopicDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (topicCategories != null) 'topicCategories': topicCategories,
-        if (topicIds != null) 'topicIds': topicIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (topicCategories != null) 'topicCategories': topicCategories!,
+        if (topicIds != null) 'topicIds': topicIds!,
       };
 }
 
 /// A *comment* represents a single YouTube comment.
 class Comment {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube uses to uniquely identify the comment.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#comment".
-  core.String kind;
+  core.String? kind;
 
   /// The snippet object contains basic details about the comment.
-  CommentSnippet snippet;
+  CommentSnippet? snippet;
 
   Comment();
 
@@ -7863,39 +7755,39 @@ class Comment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
 class CommentListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of comments that match the request criteria.
-  core.List<Comment> items;
+  core.List<Comment>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#commentListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// General pagination information.
-  PageInfo pageInfo;
-  TokenPagination tokenPagination;
+  PageInfo? pageInfo;
+  TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   CommentListResponse();
 
@@ -7931,44 +7823,44 @@ class CommentListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'tokenPagination': tokenPagination!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
 /// Basic details about a comment, such as its author and text.
 class CommentSnippet {
-  CommentSnippetAuthorChannelId authorChannelId;
+  CommentSnippetAuthorChannelId? authorChannelId;
 
   /// Link to the author's YouTube channel, if any.
-  core.String authorChannelUrl;
+  core.String? authorChannelUrl;
 
   /// The name of the user who posted the comment.
-  core.String authorDisplayName;
+  core.String? authorDisplayName;
 
   /// The URL for the avatar of the user who posted the comment.
-  core.String authorProfileImageUrl;
+  core.String? authorProfileImageUrl;
 
   /// Whether the current viewer can rate this comment.
-  core.bool canRate;
+  core.bool? canRate;
 
   /// The id of the corresponding YouTube channel.
   ///
   /// In case of a channel comment this is the channel the comment refers to. In
   /// case of a video comment it's the video's channel.
-  core.String channelId;
+  core.String? channelId;
 
   /// The total number of likes this comment has received.
-  core.int likeCount;
+  core.int? likeCount;
 
   /// The comment's moderation status.
   ///
@@ -7978,13 +7870,13 @@ class CommentSnippet {
   /// - "heldForReview" : The comment is awaiting review by a moderator.
   /// - "likelySpam"
   /// - "rejected" : The comment is unfit for display.
-  core.String moderationStatus;
+  core.String? moderationStatus;
 
   /// The unique id of the parent comment, only set for replies.
-  core.String parentId;
+  core.String? parentId;
 
   /// The date and time when the comment was originally published.
-  core.DateTime publishedAt;
+  core.DateTime? publishedAt;
 
   /// The comment's text.
   ///
@@ -7992,19 +7884,19 @@ class CommentSnippet {
   /// requested. Even the plain text representation may differ from the text
   /// originally posted in that it may replace video links with video titles
   /// etc.
-  core.String textDisplay;
+  core.String? textDisplay;
 
   /// The comment's original raw text as initially posted or last updated.
   ///
   /// The original text will only be returned if it is accessible to the viewer,
   /// which is only guaranteed if the viewer is the comment's author.
-  core.String textOriginal;
+  core.String? textOriginal;
 
   /// The date and time when the comment was last updated.
-  core.DateTime updatedAt;
+  core.DateTime? updatedAt;
 
   /// The ID of the video the comment refers to, if any.
-  core.String videoId;
+  core.String? videoId;
 
   /// The rating the viewer has given to this comment.
   ///
@@ -8014,7 +7906,7 @@ class CommentSnippet {
   /// - "none"
   /// - "like" : The entity is liked.
   /// - "dislike" : The entity is disliked.
-  core.String viewerRating;
+  core.String? viewerRating;
 
   CommentSnippet();
 
@@ -8067,30 +7959,31 @@ class CommentSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (authorChannelId != null)
-          'authorChannelId': authorChannelId.toJson(),
-        if (authorChannelUrl != null) 'authorChannelUrl': authorChannelUrl,
-        if (authorDisplayName != null) 'authorDisplayName': authorDisplayName,
+          'authorChannelId': authorChannelId!.toJson(),
+        if (authorChannelUrl != null) 'authorChannelUrl': authorChannelUrl!,
+        if (authorDisplayName != null) 'authorDisplayName': authorDisplayName!,
         if (authorProfileImageUrl != null)
-          'authorProfileImageUrl': authorProfileImageUrl,
-        if (canRate != null) 'canRate': canRate,
-        if (channelId != null) 'channelId': channelId,
-        if (likeCount != null) 'likeCount': likeCount,
-        if (moderationStatus != null) 'moderationStatus': moderationStatus,
-        if (parentId != null) 'parentId': parentId,
-        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
-        if (textDisplay != null) 'textDisplay': textDisplay,
-        if (textOriginal != null) 'textOriginal': textOriginal,
-        if (updatedAt != null) 'updatedAt': (updatedAt).toIso8601String(),
-        if (videoId != null) 'videoId': videoId,
-        if (viewerRating != null) 'viewerRating': viewerRating,
+          'authorProfileImageUrl': authorProfileImageUrl!,
+        if (canRate != null) 'canRate': canRate!,
+        if (channelId != null) 'channelId': channelId!,
+        if (likeCount != null) 'likeCount': likeCount!,
+        if (moderationStatus != null) 'moderationStatus': moderationStatus!,
+        if (parentId != null) 'parentId': parentId!,
+        if (publishedAt != null)
+          'publishedAt': (publishedAt!).toIso8601String(),
+        if (textDisplay != null) 'textDisplay': textDisplay!,
+        if (textOriginal != null) 'textOriginal': textOriginal!,
+        if (updatedAt != null) 'updatedAt': (updatedAt!).toIso8601String(),
+        if (videoId != null) 'videoId': videoId!,
+        if (viewerRating != null) 'viewerRating': viewerRating!,
       };
 }
 
 /// The id of the author's YouTube channel, if any.
 class CommentSnippetAuthorChannelId {
-  core.String value;
+  core.String? value;
 
   CommentSnippetAuthorChannelId();
 
@@ -8100,8 +7993,8 @@ class CommentSnippetAuthorChannelId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (value != null) 'value': value!,
       };
 }
 
@@ -8111,23 +8004,23 @@ class CommentSnippetAuthorChannelId {
 /// It can also include the top level comment itself and some of the replies.
 class CommentThread {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube uses to uniquely identify the comment thread.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#commentThread".
-  core.String kind;
+  core.String? kind;
 
   /// The replies object contains a limited number of replies (if any) to the
   /// top level comment found in the snippet.
-  CommentThreadReplies replies;
+  CommentThreadReplies? replies;
 
   /// The snippet object contains basic details about the comment thread and
   /// also the top level comment.
-  CommentThreadSnippet snippet;
+  CommentThreadSnippet? snippet;
 
   CommentThread();
 
@@ -8151,40 +8044,40 @@ class CommentThread {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (replies != null) 'replies': replies.toJson(),
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (replies != null) 'replies': replies!.toJson(),
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
 class CommentThreadListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of comment threads that match the request criteria.
-  core.List<CommentThread> items;
+  core.List<CommentThread>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#commentThreadListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// General pagination information.
-  PageInfo pageInfo;
-  TokenPagination tokenPagination;
+  PageInfo? pageInfo;
+  TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   CommentThreadListResponse();
 
@@ -8220,17 +8113,17 @@ class CommentThreadListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'tokenPagination': tokenPagination!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
@@ -8241,7 +8134,7 @@ class CommentThreadReplies {
   /// Unless the number of replies returned equals total_reply_count in the
   /// snippet the returned replies are only a subset of the total number of
   /// replies.
-  core.List<Comment> comments;
+  core.List<Comment>? comments;
 
   CommentThreadReplies();
 
@@ -8254,9 +8147,9 @@ class CommentThreadReplies {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (comments != null)
-          'comments': comments.map((value) => value.toJson()).toList(),
+          'comments': comments!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8266,28 +8159,28 @@ class CommentThreadSnippet {
   ///
   /// This is viewer specific - other viewers may see a different value for this
   /// field.
-  core.bool canReply;
+  core.bool? canReply;
 
   /// The YouTube channel the comments in the thread refer to or the channel
   /// with the video the comments refer to.
   ///
   /// If video_id isn't set the comments refer to the channel itself.
-  core.String channelId;
+  core.String? channelId;
 
   /// Whether the thread (and therefore all its comments) is visible to all
   /// YouTube users.
-  core.bool isPublic;
+  core.bool? isPublic;
 
   /// The top level comment of this thread.
-  Comment topLevelComment;
+  Comment? topLevelComment;
 
   /// The total number of replies (not including the top level comment).
-  core.int totalReplyCount;
+  core.int? totalReplyCount;
 
   /// The ID of the video the comments refer to, if any.
   ///
   /// No video_id implies a channel discussion comment.
-  core.String videoId;
+  core.String? videoId;
 
   CommentThreadSnippet();
 
@@ -8313,14 +8206,14 @@ class CommentThreadSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (canReply != null) 'canReply': canReply,
-        if (channelId != null) 'channelId': channelId,
-        if (isPublic != null) 'isPublic': isPublic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (canReply != null) 'canReply': canReply!,
+        if (channelId != null) 'channelId': channelId!,
+        if (isPublic != null) 'isPublic': isPublic!,
         if (topLevelComment != null)
-          'topLevelComment': topLevelComment.toJson(),
-        if (totalReplyCount != null) 'totalReplyCount': totalReplyCount,
-        if (videoId != null) 'videoId': videoId,
+          'topLevelComment': topLevelComment!.toJson(),
+        if (totalReplyCount != null) 'totalReplyCount': totalReplyCount!,
+        if (videoId != null) 'videoId': videoId!,
       };
 }
 
@@ -8348,7 +8241,7 @@ class ContentRating {
   /// - "acbMa15plus" : MA15+
   /// - "acbR18plus" : R18+
   /// - "acbUnrated"
-  core.String acbRating;
+  core.String? acbRating;
 
   /// The video's rating from Italy's Autorità per le Garanzie nelle
   /// Comunicazioni (AGCOM).
@@ -8358,7 +8251,7 @@ class ContentRating {
   /// - "agcomVm14" : VM14
   /// - "agcomVm18" : VM18
   /// - "agcomUnrated"
-  core.String agcomRating;
+  core.String? agcomRating;
 
   /// The video's Anatel (Asociación Nacional de Televisión) rating for Chilean
   /// television.
@@ -8372,7 +8265,7 @@ class ContentRating {
   /// - "anatelR" : R
   /// - "anatelA" : A
   /// - "anatelUnrated"
-  core.String anatelRating;
+  core.String? anatelRating;
 
   /// The video's British Board of Film Classification (BBFC) rating.
   /// Possible string values are:
@@ -8385,7 +8278,7 @@ class ContentRating {
   /// - "bbfc18" : 18
   /// - "bbfcR18" : R18
   /// - "bbfcUnrated"
-  core.String bbfcRating;
+  core.String? bbfcRating;
 
   /// The video's rating from Thailand's Board of Film and Video Censors.
   /// Possible string values are:
@@ -8398,7 +8291,7 @@ class ContentRating {
   /// - "bfvc20" : 20
   /// - "bfvcB" : B
   /// - "bfvcUnrated"
-  core.String bfvcRating;
+  core.String? bfvcRating;
 
   /// The video's rating from the Austrian Board of Media Classification
   /// (Bundesministerium für Unterricht, Kunst und Kultur).
@@ -8412,7 +8305,7 @@ class ContentRating {
   /// - "bmukk14" : 14+
   /// - "bmukk16" : 16+
   /// - "bmukkUnrated"
-  core.String bmukkRating;
+  core.String? bmukkRating;
 
   /// Rating system for Canadian TV - Canadian TV Classification System The
   /// video's rating from the Canadian Radio-Television and Telecommunications
@@ -8430,7 +8323,7 @@ class ContentRating {
   /// - "catv18plus" : 18+
   /// - "catvUnrated"
   /// - "catvE"
-  core.String catvRating;
+  core.String? catvRating;
 
   /// The video's rating from the Canadian Radio-Television and
   /// Telecommunications Commission (CRTC) for Canadian French-language
@@ -8447,7 +8340,7 @@ class ContentRating {
   /// - "catvfr18plus" : 18+
   /// - "catvfrUnrated"
   /// - "catvfrE"
-  core.String catvfrRating;
+  core.String? catvfrRating;
 
   /// The video's Central Board of Film Certification (CBFC - India) rating.
   /// Possible string values are:
@@ -8457,7 +8350,7 @@ class ContentRating {
   /// - "cbfcA" : A
   /// - "cbfcS" : S
   /// - "cbfcUnrated"
-  core.String cbfcRating;
+  core.String? cbfcRating;
 
   /// The video's Consejo de Calificación Cinematográfica (Chile) rating.
   /// Possible string values are:
@@ -8469,7 +8362,7 @@ class ContentRating {
   /// - "ccc18v" : 18+ - contenido excesivamente violento
   /// - "ccc18s" : 18+ - contenido pornográfico
   /// - "cccUnrated"
-  core.String cccRating;
+  core.String? cccRating;
 
   /// The video's rating from Portugal's Comissão de Classificação de
   /// Espect´culos.
@@ -8482,7 +8375,7 @@ class ContentRating {
   /// - "cceM18" : 18
   /// - "cceUnrated"
   /// - "cceM14" : 14
-  core.String cceRating;
+  core.String? cceRating;
 
   /// The video's rating in Switzerland.
   /// Possible string values are:
@@ -8493,7 +8386,7 @@ class ContentRating {
   /// - "chfilm16" : 16
   /// - "chfilm18" : 18
   /// - "chfilmUnrated"
-  core.String chfilmRating;
+  core.String? chfilmRating;
 
   /// The video's Canadian Home Video Rating System (CHVRS) rating.
   /// Possible string values are:
@@ -8505,7 +8398,7 @@ class ContentRating {
   /// - "chvrsR" : R
   /// - "chvrsE" : E
   /// - "chvrsUnrated"
-  core.String chvrsRating;
+  core.String? chvrsRating;
 
   /// The video's rating from the Commission de Contrôle des Films (Belgium).
   /// Possible string values are:
@@ -8514,7 +8407,7 @@ class ContentRating {
   /// - "cicfKtEa" : KT/EA
   /// - "cicfKntEna" : KNT/ENA
   /// - "cicfUnrated"
-  core.String cicfRating;
+  core.String? cicfRating;
 
   /// The video's rating from Romania's CONSILIUL NATIONAL AL AUDIOVIZUALULUI
   /// (CNA).
@@ -8526,7 +8419,7 @@ class ContentRating {
   /// - "cna18" : 18
   /// - "cna18plus" : 18+
   /// - "cnaUnrated"
-  core.String cnaRating;
+  core.String? cnaRating;
 
   /// Rating system in France - Commission de classification cinematographique
   /// Possible string values are:
@@ -8539,7 +8432,7 @@ class ContentRating {
   /// - "cncE" : E
   /// - "cncInterdiction" : interdiction
   /// - "cncUnrated"
-  core.String cncRating;
+  core.String? cncRating;
 
   /// The video's rating from France's Conseil supérieur de l’audiovisuel, which
   /// rates broadcast content.
@@ -8552,7 +8445,7 @@ class ContentRating {
   /// - "csa18" : 18
   /// - "csaInterdiction" : Interdiction
   /// - "csaUnrated"
-  core.String csaRating;
+  core.String? csaRating;
 
   /// The video's rating from Luxembourg's Commission de surveillance de la
   /// classification des films (CSCF).
@@ -8566,7 +8459,7 @@ class ContentRating {
   /// - "cscf16" : 16
   /// - "cscf18" : 18
   /// - "cscfUnrated"
-  core.String cscfRating;
+  core.String? cscfRating;
 
   /// The video's rating in the Czech Republic.
   /// Possible string values are:
@@ -8576,7 +8469,7 @@ class ContentRating {
   /// - "czfilm14" : 14
   /// - "czfilm18" : 18
   /// - "czfilmUnrated"
-  core.String czfilmRating;
+  core.String? czfilmRating;
 
   /// The video's Departamento de Justiça, Classificação, Qualificação e Títulos
   /// (DJCQT - Brazil) rating.
@@ -8605,10 +8498,10 @@ class ContentRating {
   /// - "djctq1418"
   /// - "djctq1618"
   /// - "djctqUnrated"
-  core.String djctqRating;
+  core.String? djctqRating;
 
   /// Reasons that explain why the video received its DJCQT (Brazil) rating.
-  core.List<core.String> djctqRatingReasons;
+  core.List<core.String>? djctqRatingReasons;
 
   /// Rating system in Turkey - Evaluation and Classification Board of the
   /// Ministry of Culture and Tourism
@@ -8623,7 +8516,7 @@ class ContentRating {
   /// - "ecbmct15plus" : 15+
   /// - "ecbmct18plus" : 18+
   /// - "ecbmctUnrated"
-  core.String ecbmctRating;
+  core.String? ecbmctRating;
 
   /// The video's rating in Estonia.
   /// Possible string values are:
@@ -8637,7 +8530,7 @@ class ContentRating {
   /// - "eefilmK14" : K-14
   /// - "eefilmK16" : K-16
   /// - "eefilmUnrated"
-  core.String eefilmRating;
+  core.String? eefilmRating;
 
   /// The video's rating in Egypt.
   /// Possible string values are:
@@ -8646,7 +8539,7 @@ class ContentRating {
   /// - "egfilm18" : 18
   /// - "egfilmBn" : BN
   /// - "egfilmUnrated"
-  core.String egfilmRating;
+  core.String? egfilmRating;
 
   /// The video's Eirin (映倫) rating.
   ///
@@ -8658,7 +8551,7 @@ class ContentRating {
   /// - "eirinR15plus" : R15+
   /// - "eirinR18plus" : R18+
   /// - "eirinUnrated"
-  core.String eirinRating;
+  core.String? eirinRating;
 
   /// The video's rating from Malaysia's Film Censorship Board.
   /// Possible string values are:
@@ -8672,7 +8565,7 @@ class ContentRating {
   /// - "fcbm18sg" : 18SG
   /// - "fcbm18pl" : 18PL
   /// - "fcbmUnrated"
-  core.String fcbmRating;
+  core.String? fcbmRating;
 
   /// The video's rating from Hong Kong's Office for Film, Newspaper and Article
   /// Administration.
@@ -8684,7 +8577,7 @@ class ContentRating {
   /// - "fcoIi" : II
   /// - "fcoIii" : III
   /// - "fcoUnrated"
-  core.String fcoRating;
+  core.String? fcoRating;
 
   /// This property has been deprecated.
   ///
@@ -8698,7 +8591,7 @@ class ContentRating {
   /// - "fmoc18" : 18
   /// - "fmocE" : E
   /// - "fmocUnrated"
-  core.String fmocRating;
+  core.String? fmocRating;
 
   /// The video's rating from South Africa's Film and Publication Board.
   /// Possible string values are:
@@ -8714,10 +8607,10 @@ class ContentRating {
   /// - "fpbXx" : XX
   /// - "fpbUnrated"
   /// - "fpb10" : 10
-  core.String fpbRating;
+  core.String? fpbRating;
 
   /// Reasons that explain why the video received its FPB (South Africa) rating.
-  core.List<core.String> fpbRatingReasons;
+  core.List<core.String>? fpbRatingReasons;
 
   /// The video's Freiwillige Selbstkontrolle der Filmwirtschaft (FSK - Germany)
   /// rating.
@@ -8729,7 +8622,7 @@ class ContentRating {
   /// - "fsk16" : FSK 16
   /// - "fsk18" : FSK 18
   /// - "fskUnrated"
-  core.String fskRating;
+  core.String? fskRating;
 
   /// The video's rating in Greece.
   /// Possible string values are:
@@ -8742,7 +8635,7 @@ class ContentRating {
   /// - "grfilmK17" : K-17
   /// - "grfilmK18" : K-18
   /// - "grfilmUnrated"
-  core.String grfilmRating;
+  core.String? grfilmRating;
 
   /// The video's Instituto de la Cinematografía y de las Artes Audiovisuales
   /// (ICAA - Spain) rating.
@@ -8756,7 +8649,7 @@ class ContentRating {
   /// - "icaa18" : 18
   /// - "icaaX" : X
   /// - "icaaUnrated"
-  core.String icaaRating;
+  core.String? icaaRating;
 
   /// The video's Irish Film Classification Office (IFCO - Ireland) rating.
   ///
@@ -8772,7 +8665,7 @@ class ContentRating {
   /// - "ifco16" : 16
   /// - "ifco18" : 18
   /// - "ifcoUnrated"
-  core.String ifcoRating;
+  core.String? ifcoRating;
 
   /// The video's rating in Israel.
   /// Possible string values are:
@@ -8783,7 +8676,7 @@ class ContentRating {
   /// - "ilfilm16" : 16
   /// - "ilfilm18" : 18
   /// - "ilfilmUnrated"
-  core.String ilfilmRating;
+  core.String? ilfilmRating;
 
   /// The video's INCAA (Instituto Nacional de Cine y Artes Audiovisuales -
   /// Argentina) rating.
@@ -8796,7 +8689,7 @@ class ContentRating {
   /// - "incaaC" : X (Solo apta para mayores de 18 años, de exhibición
   /// condicionada)
   /// - "incaaUnrated"
-  core.String incaaRating;
+  core.String? incaaRating;
 
   /// The video's rating from the Kenya Film Classification Board.
   /// Possible string values are:
@@ -8806,7 +8699,7 @@ class ContentRating {
   /// - "kfcb16plus" : 16
   /// - "kfcbR" : 18
   /// - "kfcbUnrated"
-  core.String kfcbRating;
+  core.String? kfcbRating;
 
   /// The video's NICAM/Kijkwijzer rating from the Nederlands Instituut voor de
   /// Classificatie van Audiovisuele Media (Netherlands).
@@ -8819,7 +8712,7 @@ class ContentRating {
   /// - "kijkwijzer16" : 16
   /// - "kijkwijzer18"
   /// - "kijkwijzerUnrated"
-  core.String kijkwijzerRating;
+  core.String? kijkwijzerRating;
 
   /// The video's Korea Media Rating Board (영상물등급위원회) rating.
   ///
@@ -8832,7 +8725,7 @@ class ContentRating {
   /// - "kmrbTeenr"
   /// - "kmrbR" : 청소년 관람불가
   /// - "kmrbUnrated"
-  core.String kmrbRating;
+  core.String? kmrbRating;
 
   /// The video's rating from Indonesia's Lembaga Sensor Film.
   /// Possible string values are:
@@ -8846,7 +8739,7 @@ class ContentRating {
   /// - "lsfD" : D
   /// - "lsf21" : 21
   /// - "lsfUnrated"
-  core.String lsfRating;
+  core.String? lsfRating;
 
   /// The video's rating from Malta's Film Age-Classification Board.
   /// Possible string values are:
@@ -8862,7 +8755,7 @@ class ContentRating {
   /// structure introduced in 2013.
   /// - "mccaa18" : 18
   /// - "mccaaUnrated"
-  core.String mccaaRating;
+  core.String? mccaaRating;
 
   /// The video's rating from the Danish Film Institute's (Det Danske
   /// Filminstitut) Media Council for Children and Young People.
@@ -8873,7 +8766,7 @@ class ContentRating {
   /// - "mccyp11" : 11
   /// - "mccyp15" : 15
   /// - "mccypUnrated"
-  core.String mccypRating;
+  core.String? mccypRating;
 
   /// The video's rating system for Vietnam - MCST
   /// Possible string values are:
@@ -8886,7 +8779,7 @@ class ContentRating {
   /// - "mcstC18" : C18
   /// - "mcstGPg" : MCST_G_PG
   /// - "mcstUnrated"
-  core.String mcstRating;
+  core.String? mcstRating;
 
   /// The video's rating from Singapore's Media Development Authority (MDA) and,
   /// specifically, it's Board of Film Censors (BFC).
@@ -8899,7 +8792,7 @@ class ContentRating {
   /// - "mdaM18" : M18
   /// - "mdaR21" : R21
   /// - "mdaUnrated"
-  core.String mdaRating;
+  core.String? mdaRating;
 
   /// The video's rating from Medietilsynet, the Norwegian Media Authority.
   /// Possible string values are:
@@ -8913,7 +8806,7 @@ class ContentRating {
   /// - "medietilsynet15" : 15
   /// - "medietilsynet18" : 18
   /// - "medietilsynetUnrated"
-  core.String medietilsynetRating;
+  core.String? medietilsynetRating;
 
   /// The video's rating from Finland's Kansallinen Audiovisuaalinen Instituutti
   /// (National Audiovisual Institute).
@@ -8925,7 +8818,7 @@ class ContentRating {
   /// - "meku16" : 16
   /// - "meku18" : 18
   /// - "mekuUnrated"
-  core.String mekuRating;
+  core.String? mekuRating;
 
   /// The rating system for MENA countries, a clone of MPAA.
   ///
@@ -8940,7 +8833,7 @@ class ContentRating {
   /// - "menaMpaaR" : R
   /// - "menaMpaaUnrated" : To keep the same enum values as MPAA's items have,
   /// skip NC_17.
-  core.String menaMpaaRating;
+  core.String? menaMpaaRating;
 
   /// The video's rating from the Ministero dei Beni e delle Attività Culturali
   /// e del Turismo (Italy).
@@ -8952,7 +8845,7 @@ class ContentRating {
   /// - "mibacVm14"
   /// - "mibacVm18"
   /// - "mibacUnrated"
-  core.String mibacRating;
+  core.String? mibacRating;
 
   /// The video's Ministerio de Cultura (Colombia) rating.
   /// Possible string values are:
@@ -8966,7 +8859,7 @@ class ContentRating {
   /// - "mocX" : X
   /// - "mocBanned" : Banned
   /// - "mocUnrated"
-  core.String mocRating;
+  core.String? mocRating;
 
   /// The video's rating from Taiwan's Ministry of Culture (文化部).
   /// Possible string values are:
@@ -8978,7 +8871,7 @@ class ContentRating {
   /// - "moctwUnrated"
   /// - "moctwR12" : R-12
   /// - "moctwR15" : R-15
-  core.String moctwRating;
+  core.String? moctwRating;
 
   /// The video's Motion Picture Association of America (MPAA) rating.
   /// Possible string values are:
@@ -8990,7 +8883,7 @@ class ContentRating {
   /// - "mpaaNc17" : NC-17
   /// - "mpaaX" : ! X
   /// - "mpaaUnrated"
-  core.String mpaaRating;
+  core.String? mpaaRating;
 
   /// The rating system for trailer, DVD, and Ad in the US.
   ///
@@ -8999,7 +8892,7 @@ class ContentRating {
   /// - "mpaatUnspecified"
   /// - "mpaatGb" : GB
   /// - "mpaatRb" : RB
-  core.String mpaatRating;
+  core.String? mpaatRating;
 
   /// The video's rating from the Movie and Television Review and Classification
   /// Board (Philippines).
@@ -9012,7 +8905,7 @@ class ContentRating {
   /// - "mtrcbR18" : R-18
   /// - "mtrcbX" : X
   /// - "mtrcbUnrated"
-  core.String mtrcbRating;
+  core.String? mtrcbRating;
 
   /// The video's rating from the Maldives National Bureau of Classification.
   /// Possible string values are:
@@ -9025,7 +8918,7 @@ class ContentRating {
   /// - "nbc18plusr" : 18+R
   /// - "nbcPu" : PU
   /// - "nbcUnrated"
-  core.String nbcRating;
+  core.String? nbcRating;
 
   /// The video's rating in Poland.
   /// Possible string values are:
@@ -9036,7 +8929,7 @@ class ContentRating {
   /// - "nbcplIv"
   /// - "nbcpl18plus"
   /// - "nbcplUnrated"
-  core.String nbcplRating;
+  core.String? nbcplRating;
 
   /// The video's rating from the Bulgarian National Film Center.
   /// Possible string values are:
@@ -9047,7 +8940,7 @@ class ContentRating {
   /// - "nfrcD" : D
   /// - "nfrcX" : X
   /// - "nfrcUnrated"
-  core.String nfrcRating;
+  core.String? nfrcRating;
 
   /// The video's rating from Nigeria's National Film and Video Censors Board.
   /// Possible string values are:
@@ -9060,7 +8953,7 @@ class ContentRating {
   /// - "nfvcb18" : 18
   /// - "nfvcbRe" : RE
   /// - "nfvcbUnrated"
-  core.String nfvcbRating;
+  core.String? nfvcbRating;
 
   /// The video's rating from the Nacionãlais Kino centrs (National Film Centre
   /// of Latvia).
@@ -9072,7 +8965,7 @@ class ContentRating {
   /// - "nkclv16plus" : ! 16+
   /// - "nkclv18plus" : 18+
   /// - "nkclvUnrated"
-  core.String nkclvRating;
+  core.String? nkclvRating;
 
   /// The National Media Council ratings system for United Arab Emirates.
   /// Possible string values are:
@@ -9085,7 +8978,7 @@ class ContentRating {
   /// - "nmc18plus" : 18+
   /// - "nmc18tc" : 18TC
   /// - "nmcUnrated"
-  core.String nmcRating;
+  core.String? nmcRating;
 
   /// The video's Office of Film and Literature Classification (OFLC - New
   /// Zealand) rating.
@@ -9102,7 +8995,7 @@ class ContentRating {
   /// - "oflcRp13" : RP13
   /// - "oflcRp16" : RP16
   /// - "oflcRp18" : RP18
-  core.String oflcRating;
+  core.String? oflcRating;
 
   /// The video's rating in Peru.
   /// Possible string values are:
@@ -9112,7 +9005,7 @@ class ContentRating {
   /// - "pefilm14" : 14
   /// - "pefilm18" : 18
   /// - "pefilmUnrated"
-  core.String pefilmRating;
+  core.String? pefilmRating;
 
   /// The video's rating from the Hungarian Nemzeti Filmiroda, the Rating
   /// Committee of the National Office of Film.
@@ -9125,7 +9018,7 @@ class ContentRating {
   /// - "rcnofV"
   /// - "rcnofVi"
   /// - "rcnofUnrated"
-  core.String rcnofRating;
+  core.String? rcnofRating;
 
   /// The video's rating in Venezuela.
   /// Possible string values are:
@@ -9136,7 +9029,7 @@ class ContentRating {
   /// - "resorteviolenciaD" : D
   /// - "resorteviolenciaE" : E
   /// - "resorteviolenciaUnrated"
-  core.String resorteviolenciaRating;
+  core.String? resorteviolenciaRating;
 
   /// The video's General Directorate of Radio, Television and Cinematography
   /// (Mexico) rating.
@@ -9149,7 +9042,7 @@ class ContentRating {
   /// - "rtcC" : C
   /// - "rtcD" : D
   /// - "rtcUnrated"
-  core.String rtcRating;
+  core.String? rtcRating;
 
   /// The video's rating from Ireland's Raidió Teilifís Éireann.
   /// Possible string values are:
@@ -9159,7 +9052,7 @@ class ContentRating {
   /// - "rtePs" : PS
   /// - "rteMa" : MA
   /// - "rteUnrated"
-  core.String rteRating;
+  core.String? rteRating;
 
   /// The video's National Film Registry of the Russian Federation (MKRF -
   /// Russia) rating.
@@ -9171,7 +9064,7 @@ class ContentRating {
   /// - "russia16" : 16+
   /// - "russia18" : 18+
   /// - "russiaUnrated"
-  core.String russiaRating;
+  core.String? russiaRating;
 
   /// The video's rating in Slovakia.
   /// Possible string values are:
@@ -9181,7 +9074,7 @@ class ContentRating {
   /// - "skfilmP5" : P5
   /// - "skfilmP8" : P8
   /// - "skfilmUnrated"
-  core.String skfilmRating;
+  core.String? skfilmRating;
 
   /// The video's rating in Iceland.
   /// Possible string values are:
@@ -9193,7 +9086,7 @@ class ContentRating {
   /// - "smais16" : 16
   /// - "smais18" : 18
   /// - "smaisUnrated"
-  core.String smaisRating;
+  core.String? smaisRating;
 
   /// The video's rating from Statens medieråd (Sweden's National Media
   /// Council).
@@ -9204,7 +9097,7 @@ class ContentRating {
   /// - "smsa11" : 11
   /// - "smsa15" : 15
   /// - "smsaUnrated"
-  core.String smsaRating;
+  core.String? smsaRating;
 
   /// The video's TV Parental Guidelines (TVPG) rating.
   /// Possible string values are:
@@ -9217,13 +9110,13 @@ class ContentRating {
   /// - "pg14" : TV-14
   /// - "tvpgMa" : TV-MA
   /// - "tvpgUnrated"
-  core.String tvpgRating;
+  core.String? tvpgRating;
 
   /// A rating that YouTube uses to identify age-restricted content.
   /// Possible string values are:
   /// - "ytUnspecified"
   /// - "ytAgeRestricted"
-  core.String ytRating;
+  core.String? ytRating;
 
   ContentRating();
 
@@ -9447,88 +9340,88 @@ class ContentRating {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (acbRating != null) 'acbRating': acbRating,
-        if (agcomRating != null) 'agcomRating': agcomRating,
-        if (anatelRating != null) 'anatelRating': anatelRating,
-        if (bbfcRating != null) 'bbfcRating': bbfcRating,
-        if (bfvcRating != null) 'bfvcRating': bfvcRating,
-        if (bmukkRating != null) 'bmukkRating': bmukkRating,
-        if (catvRating != null) 'catvRating': catvRating,
-        if (catvfrRating != null) 'catvfrRating': catvfrRating,
-        if (cbfcRating != null) 'cbfcRating': cbfcRating,
-        if (cccRating != null) 'cccRating': cccRating,
-        if (cceRating != null) 'cceRating': cceRating,
-        if (chfilmRating != null) 'chfilmRating': chfilmRating,
-        if (chvrsRating != null) 'chvrsRating': chvrsRating,
-        if (cicfRating != null) 'cicfRating': cicfRating,
-        if (cnaRating != null) 'cnaRating': cnaRating,
-        if (cncRating != null) 'cncRating': cncRating,
-        if (csaRating != null) 'csaRating': csaRating,
-        if (cscfRating != null) 'cscfRating': cscfRating,
-        if (czfilmRating != null) 'czfilmRating': czfilmRating,
-        if (djctqRating != null) 'djctqRating': djctqRating,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (acbRating != null) 'acbRating': acbRating!,
+        if (agcomRating != null) 'agcomRating': agcomRating!,
+        if (anatelRating != null) 'anatelRating': anatelRating!,
+        if (bbfcRating != null) 'bbfcRating': bbfcRating!,
+        if (bfvcRating != null) 'bfvcRating': bfvcRating!,
+        if (bmukkRating != null) 'bmukkRating': bmukkRating!,
+        if (catvRating != null) 'catvRating': catvRating!,
+        if (catvfrRating != null) 'catvfrRating': catvfrRating!,
+        if (cbfcRating != null) 'cbfcRating': cbfcRating!,
+        if (cccRating != null) 'cccRating': cccRating!,
+        if (cceRating != null) 'cceRating': cceRating!,
+        if (chfilmRating != null) 'chfilmRating': chfilmRating!,
+        if (chvrsRating != null) 'chvrsRating': chvrsRating!,
+        if (cicfRating != null) 'cicfRating': cicfRating!,
+        if (cnaRating != null) 'cnaRating': cnaRating!,
+        if (cncRating != null) 'cncRating': cncRating!,
+        if (csaRating != null) 'csaRating': csaRating!,
+        if (cscfRating != null) 'cscfRating': cscfRating!,
+        if (czfilmRating != null) 'czfilmRating': czfilmRating!,
+        if (djctqRating != null) 'djctqRating': djctqRating!,
         if (djctqRatingReasons != null)
-          'djctqRatingReasons': djctqRatingReasons,
-        if (ecbmctRating != null) 'ecbmctRating': ecbmctRating,
-        if (eefilmRating != null) 'eefilmRating': eefilmRating,
-        if (egfilmRating != null) 'egfilmRating': egfilmRating,
-        if (eirinRating != null) 'eirinRating': eirinRating,
-        if (fcbmRating != null) 'fcbmRating': fcbmRating,
-        if (fcoRating != null) 'fcoRating': fcoRating,
-        if (fmocRating != null) 'fmocRating': fmocRating,
-        if (fpbRating != null) 'fpbRating': fpbRating,
-        if (fpbRatingReasons != null) 'fpbRatingReasons': fpbRatingReasons,
-        if (fskRating != null) 'fskRating': fskRating,
-        if (grfilmRating != null) 'grfilmRating': grfilmRating,
-        if (icaaRating != null) 'icaaRating': icaaRating,
-        if (ifcoRating != null) 'ifcoRating': ifcoRating,
-        if (ilfilmRating != null) 'ilfilmRating': ilfilmRating,
-        if (incaaRating != null) 'incaaRating': incaaRating,
-        if (kfcbRating != null) 'kfcbRating': kfcbRating,
-        if (kijkwijzerRating != null) 'kijkwijzerRating': kijkwijzerRating,
-        if (kmrbRating != null) 'kmrbRating': kmrbRating,
-        if (lsfRating != null) 'lsfRating': lsfRating,
-        if (mccaaRating != null) 'mccaaRating': mccaaRating,
-        if (mccypRating != null) 'mccypRating': mccypRating,
-        if (mcstRating != null) 'mcstRating': mcstRating,
-        if (mdaRating != null) 'mdaRating': mdaRating,
+          'djctqRatingReasons': djctqRatingReasons!,
+        if (ecbmctRating != null) 'ecbmctRating': ecbmctRating!,
+        if (eefilmRating != null) 'eefilmRating': eefilmRating!,
+        if (egfilmRating != null) 'egfilmRating': egfilmRating!,
+        if (eirinRating != null) 'eirinRating': eirinRating!,
+        if (fcbmRating != null) 'fcbmRating': fcbmRating!,
+        if (fcoRating != null) 'fcoRating': fcoRating!,
+        if (fmocRating != null) 'fmocRating': fmocRating!,
+        if (fpbRating != null) 'fpbRating': fpbRating!,
+        if (fpbRatingReasons != null) 'fpbRatingReasons': fpbRatingReasons!,
+        if (fskRating != null) 'fskRating': fskRating!,
+        if (grfilmRating != null) 'grfilmRating': grfilmRating!,
+        if (icaaRating != null) 'icaaRating': icaaRating!,
+        if (ifcoRating != null) 'ifcoRating': ifcoRating!,
+        if (ilfilmRating != null) 'ilfilmRating': ilfilmRating!,
+        if (incaaRating != null) 'incaaRating': incaaRating!,
+        if (kfcbRating != null) 'kfcbRating': kfcbRating!,
+        if (kijkwijzerRating != null) 'kijkwijzerRating': kijkwijzerRating!,
+        if (kmrbRating != null) 'kmrbRating': kmrbRating!,
+        if (lsfRating != null) 'lsfRating': lsfRating!,
+        if (mccaaRating != null) 'mccaaRating': mccaaRating!,
+        if (mccypRating != null) 'mccypRating': mccypRating!,
+        if (mcstRating != null) 'mcstRating': mcstRating!,
+        if (mdaRating != null) 'mdaRating': mdaRating!,
         if (medietilsynetRating != null)
-          'medietilsynetRating': medietilsynetRating,
-        if (mekuRating != null) 'mekuRating': mekuRating,
-        if (menaMpaaRating != null) 'menaMpaaRating': menaMpaaRating,
-        if (mibacRating != null) 'mibacRating': mibacRating,
-        if (mocRating != null) 'mocRating': mocRating,
-        if (moctwRating != null) 'moctwRating': moctwRating,
-        if (mpaaRating != null) 'mpaaRating': mpaaRating,
-        if (mpaatRating != null) 'mpaatRating': mpaatRating,
-        if (mtrcbRating != null) 'mtrcbRating': mtrcbRating,
-        if (nbcRating != null) 'nbcRating': nbcRating,
-        if (nbcplRating != null) 'nbcplRating': nbcplRating,
-        if (nfrcRating != null) 'nfrcRating': nfrcRating,
-        if (nfvcbRating != null) 'nfvcbRating': nfvcbRating,
-        if (nkclvRating != null) 'nkclvRating': nkclvRating,
-        if (nmcRating != null) 'nmcRating': nmcRating,
-        if (oflcRating != null) 'oflcRating': oflcRating,
-        if (pefilmRating != null) 'pefilmRating': pefilmRating,
-        if (rcnofRating != null) 'rcnofRating': rcnofRating,
+          'medietilsynetRating': medietilsynetRating!,
+        if (mekuRating != null) 'mekuRating': mekuRating!,
+        if (menaMpaaRating != null) 'menaMpaaRating': menaMpaaRating!,
+        if (mibacRating != null) 'mibacRating': mibacRating!,
+        if (mocRating != null) 'mocRating': mocRating!,
+        if (moctwRating != null) 'moctwRating': moctwRating!,
+        if (mpaaRating != null) 'mpaaRating': mpaaRating!,
+        if (mpaatRating != null) 'mpaatRating': mpaatRating!,
+        if (mtrcbRating != null) 'mtrcbRating': mtrcbRating!,
+        if (nbcRating != null) 'nbcRating': nbcRating!,
+        if (nbcplRating != null) 'nbcplRating': nbcplRating!,
+        if (nfrcRating != null) 'nfrcRating': nfrcRating!,
+        if (nfvcbRating != null) 'nfvcbRating': nfvcbRating!,
+        if (nkclvRating != null) 'nkclvRating': nkclvRating!,
+        if (nmcRating != null) 'nmcRating': nmcRating!,
+        if (oflcRating != null) 'oflcRating': oflcRating!,
+        if (pefilmRating != null) 'pefilmRating': pefilmRating!,
+        if (rcnofRating != null) 'rcnofRating': rcnofRating!,
         if (resorteviolenciaRating != null)
-          'resorteviolenciaRating': resorteviolenciaRating,
-        if (rtcRating != null) 'rtcRating': rtcRating,
-        if (rteRating != null) 'rteRating': rteRating,
-        if (russiaRating != null) 'russiaRating': russiaRating,
-        if (skfilmRating != null) 'skfilmRating': skfilmRating,
-        if (smaisRating != null) 'smaisRating': smaisRating,
-        if (smsaRating != null) 'smsaRating': smsaRating,
-        if (tvpgRating != null) 'tvpgRating': tvpgRating,
-        if (ytRating != null) 'ytRating': ytRating,
+          'resorteviolenciaRating': resorteviolenciaRating!,
+        if (rtcRating != null) 'rtcRating': rtcRating!,
+        if (rteRating != null) 'rteRating': rteRating!,
+        if (russiaRating != null) 'russiaRating': russiaRating!,
+        if (skfilmRating != null) 'skfilmRating': skfilmRating!,
+        if (smaisRating != null) 'smaisRating': smaisRating!,
+        if (smsaRating != null) 'smsaRating': smsaRating!,
+        if (tvpgRating != null) 'tvpgRating': tvpgRating!,
+        if (ytRating != null) 'ytRating': ytRating!,
       };
 }
 
 class Entity {
-  core.String id;
-  core.String typeId;
-  core.String url;
+  core.String? id;
+  core.String? typeId;
+  core.String? url;
 
   Entity();
 
@@ -9544,23 +9437,23 @@ class Entity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (typeId != null) 'typeId': typeId,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (typeId != null) 'typeId': typeId!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// Geographical coordinates of a point, in WGS84.
 class GeoPoint {
   /// Altitude above the reference ellipsoid, in meters.
-  core.double altitude;
+  core.double? altitude;
 
   /// Latitude in degrees.
-  core.double latitude;
+  core.double? latitude;
 
   /// Longitude in degrees.
-  core.double longitude;
+  core.double? longitude;
 
   GeoPoint();
 
@@ -9576,10 +9469,10 @@ class GeoPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (altitude != null) 'altitude': altitude,
-        if (latitude != null) 'latitude': latitude,
-        if (longitude != null) 'longitude': longitude,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (altitude != null) 'altitude': altitude!,
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
       };
 }
 
@@ -9587,19 +9480,19 @@ class GeoPoint {
 /// YouTube.
 class I18nLanguage {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube uses to uniquely identify the i18n language.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#i18nLanguage".
-  core.String kind;
+  core.String? kind;
 
   /// The snippet object contains basic details about the i18n language, such as
   /// language code and human-readable name.
-  I18nLanguageSnippet snippet;
+  I18nLanguageSnippet? snippet;
 
   I18nLanguage();
 
@@ -9619,34 +9512,34 @@ class I18nLanguage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
 class I18nLanguageListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of supported i18n languages.
   ///
   /// In this map, the i18n language ID is the map key, and its value is the
   /// corresponding i18nLanguage resource.
-  core.List<I18nLanguage> items;
+  core.List<I18nLanguage>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#i18nLanguageListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   I18nLanguageListResponse();
 
@@ -9671,13 +9564,13 @@ class I18nLanguageListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (visitorId != null) 'visitorId': visitorId,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
@@ -9685,10 +9578,10 @@ class I18nLanguageListResponse {
 /// human-readable name.
 class I18nLanguageSnippet {
   /// A short BCP-47 code that uniquely identifies a language.
-  core.String hl;
+  core.String? hl;
 
   /// The human-readable name of the language in the language itself.
-  core.String name;
+  core.String? name;
 
   I18nLanguageSnippet();
 
@@ -9701,28 +9594,28 @@ class I18nLanguageSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hl != null) 'hl': hl,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hl != null) 'hl': hl!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// A *i18nRegion* resource identifies a region where YouTube is available.
 class I18nRegion {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube uses to uniquely identify the i18n region.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#i18nRegion".
-  core.String kind;
+  core.String? kind;
 
   /// The snippet object contains basic details about the i18n region, such as
   /// region code and human-readable name.
-  I18nRegionSnippet snippet;
+  I18nRegionSnippet? snippet;
 
   I18nRegion();
 
@@ -9742,34 +9635,34 @@ class I18nRegion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
 class I18nRegionListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of regions where YouTube is available.
   ///
   /// In this map, the i18n region ID is the map key, and its value is the
   /// corresponding i18nRegion resource.
-  core.List<I18nRegion> items;
+  core.List<I18nRegion>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#i18nRegionListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   I18nRegionListResponse();
 
@@ -9794,13 +9687,13 @@ class I18nRegionListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (visitorId != null) 'visitorId': visitorId,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
@@ -9808,10 +9701,10 @@ class I18nRegionListResponse {
 /// name.
 class I18nRegionSnippet {
   /// The region code as a 2-letter ISO country code.
-  core.String gl;
+  core.String? gl;
 
   /// The human-readable name of the region.
-  core.String name;
+  core.String? name;
 
   I18nRegionSnippet();
 
@@ -9824,9 +9717,9 @@ class I18nRegionSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gl != null) 'gl': gl,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gl != null) 'gl': gl!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -9835,91 +9728,91 @@ class ImageSettings {
   /// The URL for the background image shown on the video watch page.
   ///
   /// The image should be 1200px by 615px, with a maximum file size of 128k.
-  LocalizedProperty backgroundImageUrl;
+  LocalizedProperty? backgroundImageUrl;
 
   /// This is generated when a ChannelBanner.Insert request has succeeded for
   /// the given channel.
-  core.String bannerExternalUrl;
+  core.String? bannerExternalUrl;
 
   /// Banner image.
   ///
   /// Desktop size (1060x175).
-  core.String bannerImageUrl;
+  core.String? bannerImageUrl;
 
   /// Banner image.
   ///
   /// Mobile size high resolution (1440x395).
-  core.String bannerMobileExtraHdImageUrl;
+  core.String? bannerMobileExtraHdImageUrl;
 
   /// Banner image.
   ///
   /// Mobile size high resolution (1280x360).
-  core.String bannerMobileHdImageUrl;
+  core.String? bannerMobileHdImageUrl;
 
   /// Banner image.
   ///
   /// Mobile size (640x175).
-  core.String bannerMobileImageUrl;
+  core.String? bannerMobileImageUrl;
 
   /// Banner image.
   ///
   /// Mobile size low resolution (320x88).
-  core.String bannerMobileLowImageUrl;
+  core.String? bannerMobileLowImageUrl;
 
   /// Banner image.
   ///
   /// Mobile size medium/high resolution (960x263).
-  core.String bannerMobileMediumHdImageUrl;
+  core.String? bannerMobileMediumHdImageUrl;
 
   /// Banner image.
   ///
   /// Tablet size extra high resolution (2560x424).
-  core.String bannerTabletExtraHdImageUrl;
+  core.String? bannerTabletExtraHdImageUrl;
 
   /// Banner image.
   ///
   /// Tablet size high resolution (2276x377).
-  core.String bannerTabletHdImageUrl;
+  core.String? bannerTabletHdImageUrl;
 
   /// Banner image.
   ///
   /// Tablet size (1707x283).
-  core.String bannerTabletImageUrl;
+  core.String? bannerTabletImageUrl;
 
   /// Banner image.
   ///
   /// Tablet size low resolution (1138x188).
-  core.String bannerTabletLowImageUrl;
+  core.String? bannerTabletLowImageUrl;
 
   /// Banner image.
   ///
   /// TV size high resolution (1920x1080).
-  core.String bannerTvHighImageUrl;
+  core.String? bannerTvHighImageUrl;
 
   /// Banner image.
   ///
   /// TV size extra high resolution (2120x1192).
-  core.String bannerTvImageUrl;
+  core.String? bannerTvImageUrl;
 
   /// Banner image.
   ///
   /// TV size low resolution (854x480).
-  core.String bannerTvLowImageUrl;
+  core.String? bannerTvLowImageUrl;
 
   /// Banner image.
   ///
   /// TV size medium resolution (1280x720).
-  core.String bannerTvMediumImageUrl;
+  core.String? bannerTvMediumImageUrl;
 
   /// The image map script for the large banner image.
-  LocalizedProperty largeBrandedBannerImageImapScript;
+  LocalizedProperty? largeBrandedBannerImageImapScript;
 
   /// The URL for the 854px by 70px image that appears below the video player in
   /// the expanded video view of the video watch page.
-  LocalizedProperty largeBrandedBannerImageUrl;
+  LocalizedProperty? largeBrandedBannerImageUrl;
 
   /// The image map script for the small banner image.
-  LocalizedProperty smallBrandedBannerImageImapScript;
+  LocalizedProperty? smallBrandedBannerImageImapScript;
 
   /// The URL for the 640px by 70px banner image that appears below the video
   /// player in the default view of the video watch page.
@@ -9927,12 +9820,12 @@ class ImageSettings {
   /// The URL for the image that appears above the top-left corner of the video
   /// player. This is a 25-pixel-high image with a flexible width that cannot
   /// exceed 170 pixels.
-  LocalizedProperty smallBrandedBannerImageUrl;
+  LocalizedProperty? smallBrandedBannerImageUrl;
 
   /// The URL for a 1px by 1px tracking pixel that can be used to collect
   /// statistics for views of the channel or video pages.
-  core.String trackingImageUrl;
-  core.String watchIconImageUrl;
+  core.String? trackingImageUrl;
+  core.String? watchIconImageUrl;
 
   ImageSettings();
 
@@ -10017,48 +9910,48 @@ class ImageSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundImageUrl != null)
-          'backgroundImageUrl': backgroundImageUrl.toJson(),
-        if (bannerExternalUrl != null) 'bannerExternalUrl': bannerExternalUrl,
-        if (bannerImageUrl != null) 'bannerImageUrl': bannerImageUrl,
+          'backgroundImageUrl': backgroundImageUrl!.toJson(),
+        if (bannerExternalUrl != null) 'bannerExternalUrl': bannerExternalUrl!,
+        if (bannerImageUrl != null) 'bannerImageUrl': bannerImageUrl!,
         if (bannerMobileExtraHdImageUrl != null)
-          'bannerMobileExtraHdImageUrl': bannerMobileExtraHdImageUrl,
+          'bannerMobileExtraHdImageUrl': bannerMobileExtraHdImageUrl!,
         if (bannerMobileHdImageUrl != null)
-          'bannerMobileHdImageUrl': bannerMobileHdImageUrl,
+          'bannerMobileHdImageUrl': bannerMobileHdImageUrl!,
         if (bannerMobileImageUrl != null)
-          'bannerMobileImageUrl': bannerMobileImageUrl,
+          'bannerMobileImageUrl': bannerMobileImageUrl!,
         if (bannerMobileLowImageUrl != null)
-          'bannerMobileLowImageUrl': bannerMobileLowImageUrl,
+          'bannerMobileLowImageUrl': bannerMobileLowImageUrl!,
         if (bannerMobileMediumHdImageUrl != null)
-          'bannerMobileMediumHdImageUrl': bannerMobileMediumHdImageUrl,
+          'bannerMobileMediumHdImageUrl': bannerMobileMediumHdImageUrl!,
         if (bannerTabletExtraHdImageUrl != null)
-          'bannerTabletExtraHdImageUrl': bannerTabletExtraHdImageUrl,
+          'bannerTabletExtraHdImageUrl': bannerTabletExtraHdImageUrl!,
         if (bannerTabletHdImageUrl != null)
-          'bannerTabletHdImageUrl': bannerTabletHdImageUrl,
+          'bannerTabletHdImageUrl': bannerTabletHdImageUrl!,
         if (bannerTabletImageUrl != null)
-          'bannerTabletImageUrl': bannerTabletImageUrl,
+          'bannerTabletImageUrl': bannerTabletImageUrl!,
         if (bannerTabletLowImageUrl != null)
-          'bannerTabletLowImageUrl': bannerTabletLowImageUrl,
+          'bannerTabletLowImageUrl': bannerTabletLowImageUrl!,
         if (bannerTvHighImageUrl != null)
-          'bannerTvHighImageUrl': bannerTvHighImageUrl,
-        if (bannerTvImageUrl != null) 'bannerTvImageUrl': bannerTvImageUrl,
+          'bannerTvHighImageUrl': bannerTvHighImageUrl!,
+        if (bannerTvImageUrl != null) 'bannerTvImageUrl': bannerTvImageUrl!,
         if (bannerTvLowImageUrl != null)
-          'bannerTvLowImageUrl': bannerTvLowImageUrl,
+          'bannerTvLowImageUrl': bannerTvLowImageUrl!,
         if (bannerTvMediumImageUrl != null)
-          'bannerTvMediumImageUrl': bannerTvMediumImageUrl,
+          'bannerTvMediumImageUrl': bannerTvMediumImageUrl!,
         if (largeBrandedBannerImageImapScript != null)
           'largeBrandedBannerImageImapScript':
-              largeBrandedBannerImageImapScript.toJson(),
+              largeBrandedBannerImageImapScript!.toJson(),
         if (largeBrandedBannerImageUrl != null)
-          'largeBrandedBannerImageUrl': largeBrandedBannerImageUrl.toJson(),
+          'largeBrandedBannerImageUrl': largeBrandedBannerImageUrl!.toJson(),
         if (smallBrandedBannerImageImapScript != null)
           'smallBrandedBannerImageImapScript':
-              smallBrandedBannerImageImapScript.toJson(),
+              smallBrandedBannerImageImapScript!.toJson(),
         if (smallBrandedBannerImageUrl != null)
-          'smallBrandedBannerImageUrl': smallBrandedBannerImageUrl.toJson(),
-        if (trackingImageUrl != null) 'trackingImageUrl': trackingImageUrl,
-        if (watchIconImageUrl != null) 'watchIconImageUrl': watchIconImageUrl,
+          'smallBrandedBannerImageUrl': smallBrandedBannerImageUrl!.toJson(),
+        if (trackingImageUrl != null) 'trackingImageUrl': trackingImageUrl!,
+        if (watchIconImageUrl != null) 'watchIconImageUrl': watchIconImageUrl!,
       };
 }
 
@@ -10068,7 +9961,7 @@ class IngestionInfo {
   ///
   /// You have the option of simultaneously streaming the content that you are
   /// sending to the ingestionAddress to this URL.
-  core.String backupIngestionAddress;
+  core.String? backupIngestionAddress;
 
   /// The primary ingestion URL that you should use to stream video to YouTube.
   ///
@@ -10076,22 +9969,22 @@ class IngestionInfo {
   /// you use to encode your video stream, you may need to enter the stream URL
   /// and stream name separately or you may need to concatenate them in the
   /// following format: *STREAM_URL/STREAM_NAME*
-  core.String ingestionAddress;
+  core.String? ingestionAddress;
 
   /// This ingestion url may be used instead of backupIngestionAddress in order
   /// to stream via RTMPS.
   ///
   /// Not applicable to non-RTMP streams.
-  core.String rtmpsBackupIngestionAddress;
+  core.String? rtmpsBackupIngestionAddress;
 
   /// This ingestion url may be used instead of ingestionAddress in order to
   /// stream via RTMPS.
   ///
   /// Not applicable to non-RTMP streams.
-  core.String rtmpsIngestionAddress;
+  core.String? rtmpsIngestionAddress;
 
   /// The HTTP or RTMP stream name that YouTube assigns to the video stream.
-  core.String streamName;
+  core.String? streamName;
 
   IngestionInfo();
 
@@ -10114,15 +10007,15 @@ class IngestionInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backupIngestionAddress != null)
-          'backupIngestionAddress': backupIngestionAddress,
-        if (ingestionAddress != null) 'ingestionAddress': ingestionAddress,
+          'backupIngestionAddress': backupIngestionAddress!,
+        if (ingestionAddress != null) 'ingestionAddress': ingestionAddress!,
         if (rtmpsBackupIngestionAddress != null)
-          'rtmpsBackupIngestionAddress': rtmpsBackupIngestionAddress,
+          'rtmpsBackupIngestionAddress': rtmpsBackupIngestionAddress!,
         if (rtmpsIngestionAddress != null)
-          'rtmpsIngestionAddress': rtmpsIngestionAddress,
-        if (streamName != null) 'streamName': streamName,
+          'rtmpsIngestionAddress': rtmpsIngestionAddress!,
+        if (streamName != null) 'streamName': streamName!,
       };
 }
 
@@ -10131,9 +10024,9 @@ class InvideoBranding {
   /// The bytes the uploaded image.
   ///
   /// Only used in api to youtube communication.
-  core.String imageBytes;
+  core.String? imageBytes;
   core.List<core.int> get imageBytesAsBytes =>
-      convert.base64.decode(imageBytes);
+      convert.base64.decode(imageBytes!);
 
   set imageBytesAsBytes(core.List<core.int> _bytes) {
     imageBytes =
@@ -10143,19 +10036,19 @@ class InvideoBranding {
   /// The url of the uploaded image.
   ///
   /// Only used in apiary to api communication.
-  core.String imageUrl;
+  core.String? imageUrl;
 
   /// The spatial position within the video where the branding watermark will be
   /// displayed.
-  InvideoPosition position;
+  InvideoPosition? position;
 
   /// The channel to which this branding links.
   ///
   /// If not present it defaults to the current channel.
-  core.String targetChannelId;
+  core.String? targetChannelId;
 
   /// The temporal position within the video where watermark will be displayed.
-  InvideoTiming timing;
+  InvideoTiming? timing;
 
   InvideoBranding();
 
@@ -10179,12 +10072,12 @@ class InvideoBranding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageBytes != null) 'imageBytes': imageBytes,
-        if (imageUrl != null) 'imageUrl': imageUrl,
-        if (position != null) 'position': position.toJson(),
-        if (targetChannelId != null) 'targetChannelId': targetChannelId,
-        if (timing != null) 'timing': timing.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageBytes != null) 'imageBytes': imageBytes!,
+        if (imageUrl != null) 'imageUrl': imageUrl!,
+        if (position != null) 'position': position!.toJson(),
+        if (targetChannelId != null) 'targetChannelId': targetChannelId!,
+        if (timing != null) 'timing': timing!.toJson(),
       };
 }
 
@@ -10198,12 +10091,12 @@ class InvideoPosition {
   /// - "topRight"
   /// - "bottomLeft"
   /// - "bottomRight"
-  core.String cornerPosition;
+  core.String? cornerPosition;
 
   /// Defines the position type.
   /// Possible string values are:
   /// - "corner"
-  core.String type;
+  core.String? type;
 
   InvideoPosition();
 
@@ -10216,9 +10109,9 @@ class InvideoPosition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cornerPosition != null) 'cornerPosition': cornerPosition,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cornerPosition != null) 'cornerPosition': cornerPosition!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -10228,14 +10121,14 @@ class InvideoTiming {
   /// displayed.
   ///
   /// If missing, the client should use the default.
-  core.String durationMs;
+  core.String? durationMs;
 
   /// Defines the time at which the promotion will appear.
   ///
   /// Depending on the value of type the value of the offsetMs field will
   /// represent a time offset from the start or from the end of the video,
   /// expressed in milliseconds.
-  core.String offsetMs;
+  core.String? offsetMs;
 
   /// Describes a timing type.
   ///
@@ -10245,7 +10138,7 @@ class InvideoTiming {
   /// Possible string values are:
   /// - "offsetFromStart"
   /// - "offsetFromEnd"
-  core.String type;
+  core.String? type;
 
   InvideoTiming();
 
@@ -10261,15 +10154,15 @@ class InvideoTiming {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (durationMs != null) 'durationMs': durationMs,
-        if (offsetMs != null) 'offsetMs': offsetMs,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (durationMs != null) 'durationMs': durationMs!,
+        if (offsetMs != null) 'offsetMs': offsetMs!,
+        if (type != null) 'type': type!,
       };
 }
 
 class LanguageTag {
-  core.String value;
+  core.String? value;
 
   LanguageTag();
 
@@ -10279,14 +10172,14 @@ class LanguageTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (value != null) 'value': value!,
       };
 }
 
 class LevelDetails {
   /// The name that should be used when referring to this level.
-  core.String displayName;
+  core.String? displayName;
 
   LevelDetails();
 
@@ -10296,8 +10189,8 @@ class LevelDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
       };
 }
 
@@ -10308,32 +10201,32 @@ class LiveBroadcast {
   /// content, such as whether the content can be shown in an embedded video
   /// player or if it will be archived and therefore available for viewing after
   /// the event has concluded.
-  LiveBroadcastContentDetails contentDetails;
+  LiveBroadcastContentDetails? contentDetails;
 
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube assigns to uniquely identify the broadcast.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#liveBroadcast".
-  core.String kind;
+  core.String? kind;
 
   /// The snippet object contains basic details about the event, including its
   /// title, description, start time, and end time.
-  LiveBroadcastSnippet snippet;
+  LiveBroadcastSnippet? snippet;
 
   /// The statistics object contains info about the event's current stats.
   ///
   /// These include concurrent viewers and total chat count. Statistics can
   /// change (in either direction) during the lifetime of an event. Statistics
   /// are only returned while the event is live.
-  LiveBroadcastStatistics statistics;
+  LiveBroadcastStatistics? statistics;
 
   /// The status object contains information about the event's status.
-  LiveBroadcastStatus status;
+  LiveBroadcastStatus? status;
 
   LiveBroadcast();
 
@@ -10365,25 +10258,25 @@ class LiveBroadcast {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
-        if (statistics != null) 'statistics': statistics.toJson(),
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
+        if (statistics != null) 'statistics': statistics!.toJson(),
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
 /// Detailed settings of a broadcast.
 class LiveBroadcastContentDetails {
   /// This value uniquely identifies the live stream bound to the broadcast.
-  core.String boundStreamId;
+  core.String? boundStreamId;
 
   /// The date and time that the live stream referenced by boundStreamId was
   /// last updated.
-  core.DateTime boundStreamLastUpdateTimeMs;
+  core.DateTime? boundStreamLastUpdateTimeMs;
 
   ///
   /// Possible string values are:
@@ -10391,19 +10284,19 @@ class LiveBroadcastContentDetails {
   /// - "closedCaptionsDisabled"
   /// - "closedCaptionsHttpPost"
   /// - "closedCaptionsEmbedded"
-  core.String closedCaptionsType;
+  core.String? closedCaptionsType;
 
   /// This setting indicates whether auto start is enabled for this broadcast.
   ///
   /// The default value for this property is false. This setting can only be
   /// used by Events.
-  core.bool enableAutoStart;
+  core.bool? enableAutoStart;
 
   /// This setting indicates whether auto stop is enabled for this broadcast.
   ///
   /// The default value for this property is false. This setting can only be
   /// used by Events.
-  core.bool enableAutoStop;
+  core.bool? enableAutoStop;
 
   /// This setting indicates whether HTTP POST closed captioning is enabled for
   /// this broadcast.
@@ -10412,11 +10305,11 @@ class LiveBroadcastContentDetails {
   /// liveStreams API. This is mutually exclusive with using the
   /// closed_captions_type property, and is equivalent to setting
   /// closed_captions_type to CLOSED_CAPTIONS_HTTP_POST.
-  core.bool enableClosedCaptions;
+  core.bool? enableClosedCaptions;
 
   /// This setting indicates whether YouTube should enable content encryption
   /// for the broadcast.
-  core.bool enableContentEncryption;
+  core.bool? enableContentEncryption;
 
   /// This setting determines whether viewers can access DVR controls while
   /// watching the video.
@@ -10426,17 +10319,17 @@ class LiveBroadcastContentDetails {
   /// property is true. *Important:* You must set the value to true and also set
   /// the enableArchive property's value to true if you want to make playback
   /// available immediately after the broadcast ends.
-  core.bool enableDvr;
+  core.bool? enableDvr;
 
   /// This setting indicates whether the broadcast video can be played in an
   /// embedded player.
   ///
   /// If you choose to archive the video (using the enableArchive property),
   /// this setting will also apply to the archived video.
-  core.bool enableEmbed;
+  core.bool? enableEmbed;
 
   /// Indicates whether this broadcast has low latency enabled.
-  core.bool enableLowLatency;
+  core.bool? enableLowLatency;
 
   /// If both this and enable_low_latency are set, they must match.
   ///
@@ -10451,7 +10344,7 @@ class LiveBroadcastContentDetails {
   /// buffering.
   /// - "ultraLow" : Best for: real-time interaction Does not support: Closed
   /// captions, 1440p, and 4k resolutions
-  core.String latencyPreference;
+  core.String? latencyPreference;
 
   /// The mesh for projecting the video if projection is mesh.
   ///
@@ -10459,8 +10352,8 @@ class LiveBroadcastContentDetails {
   /// 3D mesh data that follows the Spherical Video V2 RFC specification for an
   /// mshp box, excluding the box size and type but including the following four
   /// reserved zero bytes for the version and flags.
-  core.String mesh;
-  core.List<core.int> get meshAsBytes => convert.base64.decode(mesh);
+  core.String? mesh;
+  core.List<core.int> get meshAsBytes => convert.base64.decode(mesh!);
 
   set meshAsBytes(core.List<core.int> _bytes) {
     mesh =
@@ -10470,7 +10363,7 @@ class LiveBroadcastContentDetails {
   /// The monitorStream object contains information about the monitor stream,
   /// which the broadcaster can use to review the event content before the
   /// broadcast stream is shown publicly.
-  MonitorStreamInfo monitorStream;
+  MonitorStreamInfo? monitorStream;
 
   /// The projection format of this broadcast.
   ///
@@ -10480,7 +10373,7 @@ class LiveBroadcastContentDetails {
   /// - "rectangular"
   /// - "360"
   /// - "mesh"
-  core.String projection;
+  core.String? projection;
 
   /// Automatically start recording after the event goes live.
   ///
@@ -10490,7 +10383,7 @@ class LiveBroadcastContentDetails {
   /// value to true but do not also set the enableDvr property to true, there
   /// may be a delay of around one day before the archived video will be
   /// available for playback.
-  core.bool recordFromStart;
+  core.bool? recordFromStart;
 
   /// This setting indicates whether the broadcast should automatically begin
   /// with an in-stream slate when you update the broadcast's status to live.
@@ -10498,7 +10391,7 @@ class LiveBroadcastContentDetails {
   /// After updating the status, you then need to send a liveCuepoints.insert
   /// request that sets the cuepoint's eventState to end to remove the in-stream
   /// slate and make your broadcast stream visible to viewers.
-  core.bool startWithSlate;
+  core.bool? startWithSlate;
 
   /// The 3D stereo layout of this broadcast.
   ///
@@ -10508,7 +10401,7 @@ class LiveBroadcastContentDetails {
   /// - "mono"
   /// - "leftRight"
   /// - "topBottom"
-  core.String stereoLayout;
+  core.String? stereoLayout;
 
   LiveBroadcastContentDetails();
 
@@ -10568,61 +10461,61 @@ class LiveBroadcastContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boundStreamId != null) 'boundStreamId': boundStreamId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boundStreamId != null) 'boundStreamId': boundStreamId!,
         if (boundStreamLastUpdateTimeMs != null)
           'boundStreamLastUpdateTimeMs':
-              (boundStreamLastUpdateTimeMs).toIso8601String(),
+              (boundStreamLastUpdateTimeMs!).toIso8601String(),
         if (closedCaptionsType != null)
-          'closedCaptionsType': closedCaptionsType,
-        if (enableAutoStart != null) 'enableAutoStart': enableAutoStart,
-        if (enableAutoStop != null) 'enableAutoStop': enableAutoStop,
+          'closedCaptionsType': closedCaptionsType!,
+        if (enableAutoStart != null) 'enableAutoStart': enableAutoStart!,
+        if (enableAutoStop != null) 'enableAutoStop': enableAutoStop!,
         if (enableClosedCaptions != null)
-          'enableClosedCaptions': enableClosedCaptions,
+          'enableClosedCaptions': enableClosedCaptions!,
         if (enableContentEncryption != null)
-          'enableContentEncryption': enableContentEncryption,
-        if (enableDvr != null) 'enableDvr': enableDvr,
-        if (enableEmbed != null) 'enableEmbed': enableEmbed,
-        if (enableLowLatency != null) 'enableLowLatency': enableLowLatency,
-        if (latencyPreference != null) 'latencyPreference': latencyPreference,
-        if (mesh != null) 'mesh': mesh,
-        if (monitorStream != null) 'monitorStream': monitorStream.toJson(),
-        if (projection != null) 'projection': projection,
-        if (recordFromStart != null) 'recordFromStart': recordFromStart,
-        if (startWithSlate != null) 'startWithSlate': startWithSlate,
-        if (stereoLayout != null) 'stereoLayout': stereoLayout,
+          'enableContentEncryption': enableContentEncryption!,
+        if (enableDvr != null) 'enableDvr': enableDvr!,
+        if (enableEmbed != null) 'enableEmbed': enableEmbed!,
+        if (enableLowLatency != null) 'enableLowLatency': enableLowLatency!,
+        if (latencyPreference != null) 'latencyPreference': latencyPreference!,
+        if (mesh != null) 'mesh': mesh!,
+        if (monitorStream != null) 'monitorStream': monitorStream!.toJson(),
+        if (projection != null) 'projection': projection!,
+        if (recordFromStart != null) 'recordFromStart': recordFromStart!,
+        if (startWithSlate != null) 'startWithSlate': startWithSlate!,
+        if (stereoLayout != null) 'stereoLayout': stereoLayout!,
       };
 }
 
 class LiveBroadcastListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of broadcasts that match the request criteria.
-  core.List<LiveBroadcast> items;
+  core.List<LiveBroadcast>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#liveBroadcastListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// General pagination information.
-  PageInfo pageInfo;
+  PageInfo? pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
-  core.String prevPageToken;
-  TokenPagination tokenPagination;
+  core.String? prevPageToken;
+  TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   LiveBroadcastListResponse();
 
@@ -10661,18 +10554,18 @@ class LiveBroadcastListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
-        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken!,
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'tokenPagination': tokenPagination!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
@@ -10681,55 +10574,55 @@ class LiveBroadcastSnippet {
   /// The date and time that the broadcast actually ended.
   ///
   /// This information is only available once the broadcast's state is complete.
-  core.DateTime actualEndTime;
+  core.DateTime? actualEndTime;
 
   /// The date and time that the broadcast actually started.
   ///
   /// This information is only available once the broadcast's state is live.
-  core.DateTime actualStartTime;
+  core.DateTime? actualStartTime;
 
   /// The ID that YouTube uses to uniquely identify the channel that is
   /// publishing the broadcast.
-  core.String channelId;
+  core.String? channelId;
 
   /// The broadcast's description.
   ///
   /// As with the title, you can set this field by modifying the broadcast
   /// resource or by setting the description field of the corresponding video
   /// resource.
-  core.String description;
+  core.String? description;
 
   /// Indicates whether this broadcast is the default broadcast.
   ///
   /// Internal only.
-  core.bool isDefaultBroadcast;
+  core.bool? isDefaultBroadcast;
 
   /// The id of the live chat for this broadcast.
-  core.String liveChatId;
+  core.String? liveChatId;
 
   /// The date and time that the broadcast was added to YouTube's live broadcast
   /// schedule.
-  core.DateTime publishedAt;
+  core.DateTime? publishedAt;
 
   /// The date and time that the broadcast is scheduled to start.
-  core.DateTime scheduledEndTime;
+  core.DateTime? scheduledEndTime;
 
   /// The date and time that the broadcast is scheduled to end.
-  core.DateTime scheduledStartTime;
+  core.DateTime? scheduledStartTime;
 
   /// A map of thumbnail images associated with the broadcast.
   ///
   /// For each nested object in this object, the key is the name of the
   /// thumbnail image, and the value is an object that contains other
   /// information about the thumbnail.
-  ThumbnailDetails thumbnails;
+  ThumbnailDetails? thumbnails;
 
   /// The broadcast's title.
   ///
   /// Note that the broadcast represents exactly one YouTube video. You can set
   /// this field by modifying the broadcast resource or by setting the title
   /// field of the corresponding video resource.
-  core.String title;
+  core.String? title;
 
   LiveBroadcastSnippet();
 
@@ -10774,23 +10667,24 @@ class LiveBroadcastSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (actualEndTime != null)
-          'actualEndTime': (actualEndTime).toIso8601String(),
+          'actualEndTime': (actualEndTime!).toIso8601String(),
         if (actualStartTime != null)
-          'actualStartTime': (actualStartTime).toIso8601String(),
-        if (channelId != null) 'channelId': channelId,
-        if (description != null) 'description': description,
+          'actualStartTime': (actualStartTime!).toIso8601String(),
+        if (channelId != null) 'channelId': channelId!,
+        if (description != null) 'description': description!,
         if (isDefaultBroadcast != null)
-          'isDefaultBroadcast': isDefaultBroadcast,
-        if (liveChatId != null) 'liveChatId': liveChatId,
-        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
+          'isDefaultBroadcast': isDefaultBroadcast!,
+        if (liveChatId != null) 'liveChatId': liveChatId!,
+        if (publishedAt != null)
+          'publishedAt': (publishedAt!).toIso8601String(),
         if (scheduledEndTime != null)
-          'scheduledEndTime': (scheduledEndTime).toIso8601String(),
+          'scheduledEndTime': (scheduledEndTime!).toIso8601String(),
         if (scheduledStartTime != null)
-          'scheduledStartTime': (scheduledStartTime).toIso8601String(),
-        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
-        if (title != null) 'title': title,
+          'scheduledStartTime': (scheduledStartTime!).toIso8601String(),
+        if (thumbnails != null) 'thumbnails': thumbnails!.toJson(),
+        if (title != null) 'title': title!,
       };
 }
 
@@ -10806,7 +10700,7 @@ class LiveBroadcastStatistics {
   /// this field will not be filled after the broadcast ends. So this property
   /// would not identify the number of chat messages for an archived video of a
   /// completed live broadcast.
-  core.String totalChatCount;
+  core.String? totalChatCount;
 
   LiveBroadcastStatistics();
 
@@ -10816,8 +10710,8 @@ class LiveBroadcastStatistics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (totalChatCount != null) 'totalChatCount': totalChatCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (totalChatCount != null) 'totalChatCount': totalChatCount!,
       };
 }
 
@@ -10837,7 +10731,7 @@ class LiveBroadcastStatus {
   /// - "revoked" : This broadcast was removed by admin action
   /// - "testStarting" : Transition into TESTING has been requested
   /// - "liveStarting" : Transition into LIVE has been requested
-  core.String lifeCycleStatus;
+  core.String? lifeCycleStatus;
 
   /// Priority of the live broadcast event (internal state).
   /// Possible string values are:
@@ -10847,13 +10741,13 @@ class LiveBroadcastStatus {
   /// - "normal" : Normal priority broadcast: for regular HoAs and broadcasts.
   /// - "high" : High priority broadcast: for high profile HoAs, like PixelCorp
   /// ones.
-  core.String liveBroadcastPriority;
+  core.String? liveBroadcastPriority;
 
   /// Whether the broadcast is made for kids or not, decided by YouTube instead
   /// of the creator.
   ///
   /// This field is read only.
-  core.bool madeForKids;
+  core.bool? madeForKids;
 
   /// The broadcast's privacy status.
   ///
@@ -10865,7 +10759,7 @@ class LiveBroadcastStatus {
   /// - "public"
   /// - "unlisted"
   /// - "private"
-  core.String privacyStatus;
+  core.String? privacyStatus;
 
   /// The broadcast's recording status.
   /// Possible string values are:
@@ -10874,11 +10768,11 @@ class LiveBroadcastStatus {
   /// - "notRecording" : The recording has not yet been started.
   /// - "recording" : The recording is currently on.
   /// - "recorded" : The recording is completed, and cannot be started again.
-  core.String recordingStatus;
+  core.String? recordingStatus;
 
   /// This field will be set to True if the creator declares the broadcast to be
   /// kids only: go/live-cw-work.
-  core.bool selfDeclaredMadeForKids;
+  core.bool? selfDeclaredMadeForKids;
 
   LiveBroadcastStatus();
 
@@ -10903,33 +10797,33 @@ class LiveBroadcastStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lifeCycleStatus != null) 'lifeCycleStatus': lifeCycleStatus,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lifeCycleStatus != null) 'lifeCycleStatus': lifeCycleStatus!,
         if (liveBroadcastPriority != null)
-          'liveBroadcastPriority': liveBroadcastPriority,
-        if (madeForKids != null) 'madeForKids': madeForKids,
-        if (privacyStatus != null) 'privacyStatus': privacyStatus,
-        if (recordingStatus != null) 'recordingStatus': recordingStatus,
+          'liveBroadcastPriority': liveBroadcastPriority!,
+        if (madeForKids != null) 'madeForKids': madeForKids!,
+        if (privacyStatus != null) 'privacyStatus': privacyStatus!,
+        if (recordingStatus != null) 'recordingStatus': recordingStatus!,
         if (selfDeclaredMadeForKids != null)
-          'selfDeclaredMadeForKids': selfDeclaredMadeForKids,
+          'selfDeclaredMadeForKids': selfDeclaredMadeForKids!,
       };
 }
 
 /// A `__liveChatBan__` resource represents a ban for a YouTube live chat.
 class LiveChatBan {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube assigns to uniquely identify the ban.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string `"youtube#liveChatBan"`.
-  core.String kind;
+  core.String? kind;
 
   /// The `snippet` object contains basic details about the ban.
-  LiveChatBanSnippet snippet;
+  LiveChatBanSnippet? snippet;
 
   LiveChatBan();
 
@@ -10949,28 +10843,28 @@ class LiveChatBan {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
 class LiveChatBanSnippet {
   /// The duration of a ban, only filled if the ban has type TEMPORARY.
-  core.String banDurationSeconds;
-  ChannelProfileDetails bannedUserDetails;
+  core.String? banDurationSeconds;
+  ChannelProfileDetails? bannedUserDetails;
 
   /// The chat this ban is pertinent to.
-  core.String liveChatId;
+  core.String? liveChatId;
 
   /// The type of ban.
   /// Possible string values are:
   /// - "liveChatBanTypeUnspecified" : An invalid ban type.
   /// - "permanent" : A permanent ban.
   /// - "temporary" : A temporary ban.
-  core.String type;
+  core.String? type;
 
   LiveChatBanSnippet();
 
@@ -10990,28 +10884,28 @@ class LiveChatBanSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (banDurationSeconds != null)
-          'banDurationSeconds': banDurationSeconds,
+          'banDurationSeconds': banDurationSeconds!,
         if (bannedUserDetails != null)
-          'bannedUserDetails': bannedUserDetails.toJson(),
-        if (liveChatId != null) 'liveChatId': liveChatId,
-        if (type != null) 'type': type,
+          'bannedUserDetails': bannedUserDetails!.toJson(),
+        if (liveChatId != null) 'liveChatId': liveChatId!,
+        if (type != null) 'type': type!,
       };
 }
 
 class LiveChatFanFundingEventDetails {
   /// A rendered string that displays the fund amount and currency to the user.
-  core.String amountDisplayString;
+  core.String? amountDisplayString;
 
   /// The amount of the fund.
-  core.String amountMicros;
+  core.String? amountMicros;
 
   /// The currency in which the fund was made.
-  core.String currency;
+  core.String? currency;
 
   /// The comment added by the user to this fan funding event.
-  core.String userComment;
+  core.String? userComment;
 
   LiveChatFanFundingEventDetails();
 
@@ -11030,12 +10924,12 @@ class LiveChatFanFundingEventDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (amountDisplayString != null)
-          'amountDisplayString': amountDisplayString,
-        if (amountMicros != null) 'amountMicros': amountMicros,
-        if (currency != null) 'currency': currency,
-        if (userComment != null) 'userComment': userComment,
+          'amountDisplayString': amountDisplayString!,
+        if (amountMicros != null) 'amountMicros': amountMicros!,
+        if (currency != null) 'currency': currency!,
+        if (userComment != null) 'userComment': userComment!,
       };
 }
 
@@ -11044,21 +10938,21 @@ class LiveChatFanFundingEventDetails {
 class LiveChatMessage {
   /// The authorDetails object contains basic details about the user that posted
   /// this message.
-  LiveChatMessageAuthorDetails authorDetails;
+  LiveChatMessageAuthorDetails? authorDetails;
 
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube assigns to uniquely identify the message.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#liveChatMessage".
-  core.String kind;
+  core.String? kind;
 
   /// The snippet object contains basic details about the message.
-  LiveChatMessageSnippet snippet;
+  LiveChatMessageSnippet? snippet;
 
   LiveChatMessage();
 
@@ -11082,39 +10976,39 @@ class LiveChatMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (authorDetails != null) 'authorDetails': authorDetails.toJson(),
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (authorDetails != null) 'authorDetails': authorDetails!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
 class LiveChatMessageAuthorDetails {
   /// The YouTube channel ID.
-  core.String channelId;
+  core.String? channelId;
 
   /// The channel's URL.
-  core.String channelUrl;
+  core.String? channelUrl;
 
   /// The channel's display name.
-  core.String displayName;
+  core.String? displayName;
 
   /// Whether the author is a moderator of the live chat.
-  core.bool isChatModerator;
+  core.bool? isChatModerator;
 
   /// Whether the author is the owner of the live chat.
-  core.bool isChatOwner;
+  core.bool? isChatOwner;
 
   /// Whether the author is a sponsor of the live chat.
-  core.bool isChatSponsor;
+  core.bool? isChatSponsor;
 
   /// Whether the author's identity has been verified by YouTube.
-  core.bool isVerified;
+  core.bool? isVerified;
 
   /// The channels's avatar URL.
-  core.String profileImageUrl;
+  core.String? profileImageUrl;
 
   LiveChatMessageAuthorDetails();
 
@@ -11145,20 +11039,20 @@ class LiveChatMessageAuthorDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channelId != null) 'channelId': channelId,
-        if (channelUrl != null) 'channelUrl': channelUrl,
-        if (displayName != null) 'displayName': displayName,
-        if (isChatModerator != null) 'isChatModerator': isChatModerator,
-        if (isChatOwner != null) 'isChatOwner': isChatOwner,
-        if (isChatSponsor != null) 'isChatSponsor': isChatSponsor,
-        if (isVerified != null) 'isVerified': isVerified,
-        if (profileImageUrl != null) 'profileImageUrl': profileImageUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channelId != null) 'channelId': channelId!,
+        if (channelUrl != null) 'channelUrl': channelUrl!,
+        if (displayName != null) 'displayName': displayName!,
+        if (isChatModerator != null) 'isChatModerator': isChatModerator!,
+        if (isChatOwner != null) 'isChatOwner': isChatOwner!,
+        if (isChatSponsor != null) 'isChatSponsor': isChatSponsor!,
+        if (isVerified != null) 'isVerified': isVerified!,
+        if (profileImageUrl != null) 'profileImageUrl': profileImageUrl!,
       };
 }
 
 class LiveChatMessageDeletedDetails {
-  core.String deletedMessageId;
+  core.String? deletedMessageId;
 
   LiveChatMessageDeletedDetails();
 
@@ -11168,37 +11062,37 @@ class LiveChatMessageDeletedDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deletedMessageId != null) 'deletedMessageId': deletedMessageId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deletedMessageId != null) 'deletedMessageId': deletedMessageId!,
       };
 }
 
 class LiveChatMessageListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
-  core.List<LiveChatMessage> items;
+  core.String? eventId;
+  core.List<LiveChatMessage>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#liveChatMessageListResponse".
-  core.String kind;
-  core.String nextPageToken;
+  core.String? kind;
+  core.String? nextPageToken;
 
   /// The date and time when the underlying stream went offline.
-  core.DateTime offlineAt;
+  core.DateTime? offlineAt;
 
   /// General pagination information.
-  PageInfo pageInfo;
+  PageInfo? pageInfo;
 
   /// The amount of time the client should wait before polling again.
-  core.int pollingIntervalMillis;
-  TokenPagination tokenPagination;
+  core.int? pollingIntervalMillis;
+  TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   LiveChatMessageListResponse();
 
@@ -11240,25 +11134,25 @@ class LiveChatMessageListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (offlineAt != null) 'offlineAt': (offlineAt).toIso8601String(),
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (offlineAt != null) 'offlineAt': (offlineAt!).toIso8601String(),
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
         if (pollingIntervalMillis != null)
-          'pollingIntervalMillis': pollingIntervalMillis,
+          'pollingIntervalMillis': pollingIntervalMillis!,
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'tokenPagination': tokenPagination!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
 class LiveChatMessageRetractedDetails {
-  core.String retractedMessageId;
+  core.String? retractedMessageId;
 
   LiveChatMessageRetractedDetails();
 
@@ -11268,9 +11162,9 @@ class LiveChatMessageRetractedDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (retractedMessageId != null)
-          'retractedMessageId': retractedMessageId,
+          'retractedMessageId': retractedMessageId!,
       };
 }
 
@@ -11284,38 +11178,38 @@ class LiveChatMessageSnippet {
   /// messageRetractedEvent - the author that retracted their message
   /// userBannedEvent - the moderator that took the action superChatEvent - the
   /// user that made the purchase
-  core.String authorChannelId;
+  core.String? authorChannelId;
 
   /// Contains a string that can be displayed to the user.
   ///
   /// If this field is not present the message is silent, at the moment only
   /// messages of type TOMBSTONE and CHAT_ENDED_EVENT are silent.
-  core.String displayMessage;
+  core.String? displayMessage;
 
   /// Details about the funding event, this is only set if the type is
   /// 'fanFundingEvent'.
-  LiveChatFanFundingEventDetails fanFundingEventDetails;
+  LiveChatFanFundingEventDetails? fanFundingEventDetails;
 
   /// Whether the message has display content that should be displayed to users.
-  core.bool hasDisplayContent;
-  core.String liveChatId;
-  LiveChatMessageDeletedDetails messageDeletedDetails;
-  LiveChatMessageRetractedDetails messageRetractedDetails;
+  core.bool? hasDisplayContent;
+  core.String? liveChatId;
+  LiveChatMessageDeletedDetails? messageDeletedDetails;
+  LiveChatMessageRetractedDetails? messageRetractedDetails;
 
   /// The date and time when the message was orignally published.
-  core.DateTime publishedAt;
+  core.DateTime? publishedAt;
 
   /// Details about the Super Chat event, this is only set if the type is
   /// 'superChatEvent'.
-  LiveChatSuperChatDetails superChatDetails;
+  LiveChatSuperChatDetails? superChatDetails;
 
   /// Details about the Super Sticker event, this is only set if the type is
   /// 'superStickerEvent'.
-  LiveChatSuperStickerDetails superStickerDetails;
+  LiveChatSuperStickerDetails? superStickerDetails;
 
   /// Details about the text message, this is only set if the type is
   /// 'textMessageEvent'.
-  LiveChatTextMessageDetails textMessageDetails;
+  LiveChatTextMessageDetails? textMessageDetails;
 
   /// The type of message, this will always be present, it determines the
   /// contents of the message as well as which fields will be present.
@@ -11333,8 +11227,8 @@ class LiveChatMessageSnippet {
   /// - "userBannedEvent"
   /// - "superChatEvent"
   /// - "superStickerEvent"
-  core.String type;
-  LiveChatUserBannedMessageDetails userBannedDetails;
+  core.String? type;
+  LiveChatUserBannedMessageDetails? userBannedDetails;
 
   LiveChatMessageSnippet();
 
@@ -11390,27 +11284,28 @@ class LiveChatMessageSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (authorChannelId != null) 'authorChannelId': authorChannelId,
-        if (displayMessage != null) 'displayMessage': displayMessage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (authorChannelId != null) 'authorChannelId': authorChannelId!,
+        if (displayMessage != null) 'displayMessage': displayMessage!,
         if (fanFundingEventDetails != null)
-          'fanFundingEventDetails': fanFundingEventDetails.toJson(),
-        if (hasDisplayContent != null) 'hasDisplayContent': hasDisplayContent,
-        if (liveChatId != null) 'liveChatId': liveChatId,
+          'fanFundingEventDetails': fanFundingEventDetails!.toJson(),
+        if (hasDisplayContent != null) 'hasDisplayContent': hasDisplayContent!,
+        if (liveChatId != null) 'liveChatId': liveChatId!,
         if (messageDeletedDetails != null)
-          'messageDeletedDetails': messageDeletedDetails.toJson(),
+          'messageDeletedDetails': messageDeletedDetails!.toJson(),
         if (messageRetractedDetails != null)
-          'messageRetractedDetails': messageRetractedDetails.toJson(),
-        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
+          'messageRetractedDetails': messageRetractedDetails!.toJson(),
+        if (publishedAt != null)
+          'publishedAt': (publishedAt!).toIso8601String(),
         if (superChatDetails != null)
-          'superChatDetails': superChatDetails.toJson(),
+          'superChatDetails': superChatDetails!.toJson(),
         if (superStickerDetails != null)
-          'superStickerDetails': superStickerDetails.toJson(),
+          'superStickerDetails': superStickerDetails!.toJson(),
         if (textMessageDetails != null)
-          'textMessageDetails': textMessageDetails.toJson(),
-        if (type != null) 'type': type,
+          'textMessageDetails': textMessageDetails!.toJson(),
+        if (type != null) 'type': type!,
         if (userBannedDetails != null)
-          'userBannedDetails': userBannedDetails.toJson(),
+          'userBannedDetails': userBannedDetails!.toJson(),
       };
 }
 
@@ -11421,18 +11316,18 @@ class LiveChatMessageSnippet {
 /// message, etc.
 class LiveChatModerator {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube assigns to uniquely identify the moderator.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#liveChatModerator".
-  core.String kind;
+  core.String? kind;
 
   /// The snippet object contains basic details about the moderator.
-  LiveChatModeratorSnippet snippet;
+  LiveChatModeratorSnippet? snippet;
 
   LiveChatModerator();
 
@@ -11452,43 +11347,43 @@ class LiveChatModerator {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
 class LiveChatModeratorListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of moderators that match the request criteria.
-  core.List<LiveChatModerator> items;
+  core.List<LiveChatModerator>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#liveChatModeratorListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// General pagination information.
-  PageInfo pageInfo;
+  PageInfo? pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
-  core.String prevPageToken;
-  TokenPagination tokenPagination;
+  core.String? prevPageToken;
+  TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   LiveChatModeratorListResponse();
 
@@ -11527,27 +11422,27 @@ class LiveChatModeratorListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
-        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken!,
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'tokenPagination': tokenPagination!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
 class LiveChatModeratorSnippet {
   /// The ID of the live chat this moderator can act on.
-  core.String liveChatId;
+  core.String? liveChatId;
 
   /// Details about the moderator.
-  ChannelProfileDetails moderatorDetails;
+  ChannelProfileDetails? moderatorDetails;
 
   LiveChatModeratorSnippet();
 
@@ -11561,30 +11456,30 @@ class LiveChatModeratorSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (liveChatId != null) 'liveChatId': liveChatId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (liveChatId != null) 'liveChatId': liveChatId!,
         if (moderatorDetails != null)
-          'moderatorDetails': moderatorDetails.toJson(),
+          'moderatorDetails': moderatorDetails!.toJson(),
       };
 }
 
 class LiveChatSuperChatDetails {
   /// A rendered string that displays the fund amount and currency to the user.
-  core.String amountDisplayString;
+  core.String? amountDisplayString;
 
   /// The amount purchased by the user, in micros (1,750,000 micros = 1.75).
-  core.String amountMicros;
+  core.String? amountMicros;
 
   /// The currency in which the purchase was made.
-  core.String currency;
+  core.String? currency;
 
   /// The tier in which the amount belongs.
   ///
   /// Lower amounts belong to lower tiers. The lowest tier is 1.
-  core.int tier;
+  core.int? tier;
 
   /// The comment added by the user to this Super Chat event.
-  core.String userComment;
+  core.String? userComment;
 
   LiveChatSuperChatDetails();
 
@@ -11606,33 +11501,33 @@ class LiveChatSuperChatDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (amountDisplayString != null)
-          'amountDisplayString': amountDisplayString,
-        if (amountMicros != null) 'amountMicros': amountMicros,
-        if (currency != null) 'currency': currency,
-        if (tier != null) 'tier': tier,
-        if (userComment != null) 'userComment': userComment,
+          'amountDisplayString': amountDisplayString!,
+        if (amountMicros != null) 'amountMicros': amountMicros!,
+        if (currency != null) 'currency': currency!,
+        if (tier != null) 'tier': tier!,
+        if (userComment != null) 'userComment': userComment!,
       };
 }
 
 class LiveChatSuperStickerDetails {
   /// A rendered string that displays the fund amount and currency to the user.
-  core.String amountDisplayString;
+  core.String? amountDisplayString;
 
   /// The amount purchased by the user, in micros (1,750,000 micros = 1.75).
-  core.String amountMicros;
+  core.String? amountMicros;
 
   /// The currency in which the purchase was made.
-  core.String currency;
+  core.String? currency;
 
   /// Information about the Super Sticker.
-  SuperStickerMetadata superStickerMetadata;
+  SuperStickerMetadata? superStickerMetadata;
 
   /// The tier in which the amount belongs.
   ///
   /// Lower amounts belong to lower tiers. The lowest tier is 1.
-  core.int tier;
+  core.int? tier;
 
   LiveChatSuperStickerDetails();
 
@@ -11655,20 +11550,20 @@ class LiveChatSuperStickerDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (amountDisplayString != null)
-          'amountDisplayString': amountDisplayString,
-        if (amountMicros != null) 'amountMicros': amountMicros,
-        if (currency != null) 'currency': currency,
+          'amountDisplayString': amountDisplayString!,
+        if (amountMicros != null) 'amountMicros': amountMicros!,
+        if (currency != null) 'currency': currency!,
         if (superStickerMetadata != null)
-          'superStickerMetadata': superStickerMetadata.toJson(),
-        if (tier != null) 'tier': tier,
+          'superStickerMetadata': superStickerMetadata!.toJson(),
+        if (tier != null) 'tier': tier!,
       };
 }
 
 class LiveChatTextMessageDetails {
   /// The user's message.
-  core.String messageText;
+  core.String? messageText;
 
   LiveChatTextMessageDetails();
 
@@ -11678,8 +11573,8 @@ class LiveChatTextMessageDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (messageText != null) 'messageText': messageText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (messageText != null) 'messageText': messageText!,
       };
 }
 
@@ -11687,16 +11582,16 @@ class LiveChatUserBannedMessageDetails {
   /// The duration of the ban.
   ///
   /// This property is only present if the banType is temporary.
-  core.String banDurationSeconds;
+  core.String? banDurationSeconds;
 
   /// The type of ban.
   /// Possible string values are:
   /// - "permanent"
   /// - "temporary"
-  core.String banType;
+  core.String? banType;
 
   /// The details of the user that was banned.
-  ChannelProfileDetails bannedUserDetails;
+  ChannelProfileDetails? bannedUserDetails;
 
   LiveChatUserBannedMessageDetails();
 
@@ -11713,12 +11608,12 @@ class LiveChatUserBannedMessageDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (banDurationSeconds != null)
-          'banDurationSeconds': banDurationSeconds,
-        if (banType != null) 'banType': banType,
+          'banDurationSeconds': banDurationSeconds!,
+        if (banType != null) 'banType': banType!,
         if (bannedUserDetails != null)
-          'bannedUserDetails': bannedUserDetails.toJson(),
+          'bannedUserDetails': bannedUserDetails!.toJson(),
       };
 }
 
@@ -11729,29 +11624,29 @@ class LiveStream {
   ///
   /// These settings provide details about the manner in which you stream your
   /// content to YouTube.
-  CdnSettings cdn;
+  CdnSettings? cdn;
 
   /// The content_details object contains information about the stream,
   /// including the closed captions ingestion URL.
-  LiveStreamContentDetails contentDetails;
+  LiveStreamContentDetails? contentDetails;
 
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube assigns to uniquely identify the stream.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#liveStream".
-  core.String kind;
+  core.String? kind;
 
   /// The snippet object contains basic details about the stream, including its
   /// channel, title, and description.
-  LiveStreamSnippet snippet;
+  LiveStreamSnippet? snippet;
 
   /// The status object contains information about live stream's status.
-  LiveStreamStatus status;
+  LiveStreamStatus? status;
 
   LiveStream();
 
@@ -11783,30 +11678,30 @@ class LiveStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cdn != null) 'cdn': cdn.toJson(),
-        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cdn != null) 'cdn': cdn!.toJson(),
+        if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
 class LiveStreamConfigurationIssue {
   /// The long-form description of the issue and how to resolve it.
-  core.String description;
+  core.String? description;
 
   /// The short-form reason for this issue.
-  core.String reason;
+  core.String? reason;
 
   /// How severe this issue is to the stream.
   /// Possible string values are:
   /// - "info"
   /// - "warning"
   /// - "error"
-  core.String severity;
+  core.String? severity;
 
   /// The kind of error happening.
   /// Possible string values are:
@@ -11844,7 +11739,7 @@ class LiveStreamConfigurationIssue {
   /// - "videoResolutionUnsupported"
   /// - "videoIngestionStarved"
   /// - "videoIngestionFasterThanRealtime"
-  core.String type;
+  core.String? type;
 
   LiveStreamConfigurationIssue();
 
@@ -11863,18 +11758,18 @@ class LiveStreamConfigurationIssue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (reason != null) 'reason': reason,
-        if (severity != null) 'severity': severity,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (reason != null) 'reason': reason!,
+        if (severity != null) 'severity': severity!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// Detailed settings of a stream.
 class LiveStreamContentDetails {
   /// The ingestion URL where the closed captions of this stream are sent.
-  core.String closedCaptionsIngestionUrl;
+  core.String? closedCaptionsIngestionUrl;
 
   /// Indicates whether the stream is reusable, which means that it can be bound
   /// to multiple broadcasts.
@@ -11890,7 +11785,7 @@ class LiveStreamContentDetails {
   /// parameter to true. The only way to use that method to retrieve the
   /// resource for a non-reusable stream is to use the id parameter to identify
   /// the stream.
-  core.bool isReusable;
+  core.bool? isReusable;
 
   LiveStreamContentDetails();
 
@@ -11904,19 +11799,19 @@ class LiveStreamContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (closedCaptionsIngestionUrl != null)
-          'closedCaptionsIngestionUrl': closedCaptionsIngestionUrl,
-        if (isReusable != null) 'isReusable': isReusable,
+          'closedCaptionsIngestionUrl': closedCaptionsIngestionUrl!,
+        if (isReusable != null) 'isReusable': isReusable!,
       };
 }
 
 class LiveStreamHealthStatus {
   /// The configurations issues on this stream
-  core.List<LiveStreamConfigurationIssue> configurationIssues;
+  core.List<LiveStreamConfigurationIssue>? configurationIssues;
 
   /// The last time this status was updated (in seconds)
-  core.String lastUpdateTimeSeconds;
+  core.String? lastUpdateTimeSeconds;
 
   /// The status code of this stream
   /// Possible string values are:
@@ -11925,7 +11820,7 @@ class LiveStreamHealthStatus {
   /// - "bad"
   /// - "noData"
   /// - "revoked"
-  core.String status;
+  core.String? status;
 
   LiveStreamHealthStatus();
 
@@ -11945,43 +11840,43 @@ class LiveStreamHealthStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (configurationIssues != null)
           'configurationIssues':
-              configurationIssues.map((value) => value.toJson()).toList(),
+              configurationIssues!.map((value) => value.toJson()).toList(),
         if (lastUpdateTimeSeconds != null)
-          'lastUpdateTimeSeconds': lastUpdateTimeSeconds,
-        if (status != null) 'status': status,
+          'lastUpdateTimeSeconds': lastUpdateTimeSeconds!,
+        if (status != null) 'status': status!,
       };
 }
 
 class LiveStreamListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of live streams that match the request criteria.
-  core.List<LiveStream> items;
+  core.List<LiveStream>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#liveStreamListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
-  core.String nextPageToken;
-  PageInfo pageInfo;
+  core.String? nextPageToken;
+  PageInfo? pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
-  core.String prevPageToken;
-  TokenPagination tokenPagination;
+  core.String? prevPageToken;
+  TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   LiveStreamListResponse();
 
@@ -12020,39 +11915,39 @@ class LiveStreamListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
-        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken!,
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'tokenPagination': tokenPagination!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
 class LiveStreamSnippet {
   /// The ID that YouTube uses to uniquely identify the channel that is
   /// transmitting the stream.
-  core.String channelId;
+  core.String? channelId;
 
   /// The stream's description.
   ///
   /// The value cannot be longer than 10000 characters.
-  core.String description;
-  core.bool isDefaultStream;
+  core.String? description;
+  core.bool? isDefaultStream;
 
   /// The date and time that the stream was created.
-  core.DateTime publishedAt;
+  core.DateTime? publishedAt;
 
   /// The stream's title.
   ///
   /// The value must be between 1 and 128 characters long.
-  core.String title;
+  core.String? title;
 
   LiveStreamSnippet();
 
@@ -12074,19 +11969,20 @@ class LiveStreamSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channelId != null) 'channelId': channelId,
-        if (description != null) 'description': description,
-        if (isDefaultStream != null) 'isDefaultStream': isDefaultStream,
-        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channelId != null) 'channelId': channelId!,
+        if (description != null) 'description': description!,
+        if (isDefaultStream != null) 'isDefaultStream': isDefaultStream!,
+        if (publishedAt != null)
+          'publishedAt': (publishedAt!).toIso8601String(),
+        if (title != null) 'title': title!,
       };
 }
 
 /// Brief description of the live stream status.
 class LiveStreamStatus {
   /// The health status of the stream.
-  LiveStreamHealthStatus healthStatus;
+  LiveStreamHealthStatus? healthStatus;
 
   ///
   /// Possible string values are:
@@ -12095,7 +11991,7 @@ class LiveStreamStatus {
   /// - "active"
   /// - "inactive"
   /// - "error"
-  core.String streamStatus;
+  core.String? streamStatus;
 
   LiveStreamStatus();
 
@@ -12109,18 +12005,18 @@ class LiveStreamStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (healthStatus != null) 'healthStatus': healthStatus.toJson(),
-        if (streamStatus != null) 'streamStatus': streamStatus,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (healthStatus != null) 'healthStatus': healthStatus!.toJson(),
+        if (streamStatus != null) 'streamStatus': streamStatus!,
       };
 }
 
 class LocalizedProperty {
-  core.String default_;
+  core.String? default_;
 
   /// The language of the default property.
-  LanguageTag defaultLanguage;
-  core.List<LocalizedString> localized;
+  LanguageTag? defaultLanguage;
+  core.List<LocalizedString>? localized;
 
   LocalizedProperty();
 
@@ -12140,18 +12036,18 @@ class LocalizedProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (default_ != null) 'default': default_,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (default_ != null) 'default': default_!,
         if (defaultLanguage != null)
-          'defaultLanguage': defaultLanguage.toJson(),
+          'defaultLanguage': defaultLanguage!.toJson(),
         if (localized != null)
-          'localized': localized.map((value) => value.toJson()).toList(),
+          'localized': localized!.map((value) => value.toJson()).toList(),
       };
 }
 
 class LocalizedString {
-  core.String language;
-  core.String value;
+  core.String? language;
+  core.String? value;
 
   LocalizedString();
 
@@ -12164,9 +12060,9 @@ class LocalizedString {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (language != null) 'language': language,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (language != null) 'language': language!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -12176,15 +12072,15 @@ class LocalizedString {
 /// special benefits.
 class Member {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#member".
-  core.String kind;
+  core.String? kind;
 
   /// The snippet object contains basic details about the member.
-  MemberSnippet snippet;
+  MemberSnippet? snippet;
 
   Member();
 
@@ -12201,36 +12097,36 @@ class Member {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
 class MemberListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of members that match the request criteria.
-  core.List<Member> items;
+  core.List<Member>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#memberListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
-  core.String nextPageToken;
-  PageInfo pageInfo;
-  TokenPagination tokenPagination;
+  core.String? nextPageToken;
+  PageInfo? pageInfo;
+  TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   MemberListResponse();
 
@@ -12266,29 +12162,29 @@ class MemberListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'tokenPagination': tokenPagination!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
 class MemberSnippet {
   /// The id of the channel that's offering memberships.
-  core.String creatorChannelId;
+  core.String? creatorChannelId;
 
   /// Details about the member.
-  ChannelProfileDetails memberDetails;
+  ChannelProfileDetails? memberDetails;
 
   /// Details about the user's membership.
-  MembershipsDetails membershipsDetails;
+  MembershipsDetails? membershipsDetails;
 
   MemberSnippet();
 
@@ -12306,11 +12202,11 @@ class MemberSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creatorChannelId != null) 'creatorChannelId': creatorChannelId,
-        if (memberDetails != null) 'memberDetails': memberDetails.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creatorChannelId != null) 'creatorChannelId': creatorChannelId!,
+        if (memberDetails != null) 'memberDetails': memberDetails!.toJson(),
         if (membershipsDetails != null)
-          'membershipsDetails': membershipsDetails.toJson(),
+          'membershipsDetails': membershipsDetails!.toJson(),
       };
 }
 
@@ -12319,21 +12215,21 @@ class MembershipsDetails {
   ///
   /// This includes the currently active level and all other levels that are
   /// included because of a higher purchase.
-  core.List<core.String> accessibleLevels;
+  core.List<core.String>? accessibleLevels;
 
   /// Id of the highest level that the user has access to at the moment.
-  core.String highestAccessibleLevel;
+  core.String? highestAccessibleLevel;
 
   /// Display name for the highest level that the user has access to at the
   /// moment.
-  core.String highestAccessibleLevelDisplayName;
+  core.String? highestAccessibleLevelDisplayName;
 
   /// Data about memberships duration without taking into consideration pricing
   /// levels.
-  MembershipsDuration membershipsDuration;
+  MembershipsDuration? membershipsDuration;
 
   /// Data about memberships duration on particular pricing levels.
-  core.List<MembershipsDurationAtLevel> membershipsDurationAtLevels;
+  core.List<MembershipsDurationAtLevel>? membershipsDurationAtLevels;
 
   MembershipsDetails();
 
@@ -12364,17 +12260,17 @@ class MembershipsDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessibleLevels != null) 'accessibleLevels': accessibleLevels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessibleLevels != null) 'accessibleLevels': accessibleLevels!,
         if (highestAccessibleLevel != null)
-          'highestAccessibleLevel': highestAccessibleLevel,
+          'highestAccessibleLevel': highestAccessibleLevel!,
         if (highestAccessibleLevelDisplayName != null)
           'highestAccessibleLevelDisplayName':
-              highestAccessibleLevelDisplayName,
+              highestAccessibleLevelDisplayName!,
         if (membershipsDuration != null)
-          'membershipsDuration': membershipsDuration.toJson(),
+          'membershipsDuration': membershipsDuration!.toJson(),
         if (membershipsDurationAtLevels != null)
-          'membershipsDurationAtLevels': membershipsDurationAtLevels
+          'membershipsDurationAtLevels': membershipsDurationAtLevels!
               .map((value) => value.toJson())
               .toList(),
       };
@@ -12383,11 +12279,11 @@ class MembershipsDetails {
 class MembershipsDuration {
   /// The date and time when the user became a continuous member across all
   /// levels.
-  core.String memberSince;
+  core.String? memberSince;
 
   /// The cumulative time the user has been a member across all levels in
   /// complete months (the time is rounded down to the nearest integer).
-  core.int memberTotalDurationMonths;
+  core.int? memberTotalDurationMonths;
 
   MembershipsDuration();
 
@@ -12401,24 +12297,24 @@ class MembershipsDuration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (memberSince != null) 'memberSince': memberSince,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (memberSince != null) 'memberSince': memberSince!,
         if (memberTotalDurationMonths != null)
-          'memberTotalDurationMonths': memberTotalDurationMonths,
+          'memberTotalDurationMonths': memberTotalDurationMonths!,
       };
 }
 
 class MembershipsDurationAtLevel {
   /// Pricing level ID.
-  core.String level;
+  core.String? level;
 
   /// The date and time when the user became a continuous member for the given
   /// level.
-  core.String memberSince;
+  core.String? memberSince;
 
   /// The cumulative time the user has been a member for the given level in
   /// complete months (the time is rounded down to the nearest integer).
-  core.int memberTotalDurationMonths;
+  core.int? memberTotalDurationMonths;
 
   MembershipsDurationAtLevel();
 
@@ -12435,11 +12331,11 @@ class MembershipsDurationAtLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (level != null) 'level': level,
-        if (memberSince != null) 'memberSince': memberSince,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (level != null) 'level': level!,
+        if (memberSince != null) 'memberSince': memberSince!,
         if (memberTotalDurationMonths != null)
-          'memberTotalDurationMonths': memberTotalDurationMonths,
+          'memberTotalDurationMonths': memberTotalDurationMonths!,
       };
 }
 
@@ -12451,18 +12347,18 @@ class MembershipsDurationAtLevel {
 /// benefits.
 class MembershipsLevel {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube assigns to uniquely identify the memberships level.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#membershipsLevelListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The snippet object contains basic details about the level.
-  MembershipsLevelSnippet snippet;
+  MembershipsLevelSnippet? snippet;
 
   MembershipsLevel();
 
@@ -12482,31 +12378,31 @@ class MembershipsLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
 class MembershipsLevelListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of pricing levels offered by a creator to the fans.
-  core.List<MembershipsLevel> items;
+  core.List<MembershipsLevel>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#membershipsLevelListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   MembershipsLevelListResponse();
 
@@ -12531,22 +12427,22 @@ class MembershipsLevelListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (visitorId != null) 'visitorId': visitorId,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
 class MembershipsLevelSnippet {
   /// The id of the channel that's offering channel memberships.
-  core.String creatorChannelId;
+  core.String? creatorChannelId;
 
   /// Details about the pricing level.
-  LevelDetails levelDetails;
+  LevelDetails? levelDetails;
 
   MembershipsLevelSnippet();
 
@@ -12560,9 +12456,9 @@ class MembershipsLevelSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creatorChannelId != null) 'creatorChannelId': creatorChannelId,
-        if (levelDetails != null) 'levelDetails': levelDetails.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creatorChannelId != null) 'creatorChannelId': creatorChannelId!,
+        if (levelDetails != null) 'levelDetails': levelDetails!.toJson(),
       };
 }
 
@@ -12570,10 +12466,10 @@ class MembershipsLevelSnippet {
 class MonitorStreamInfo {
   /// If you have set the enableMonitorStream property to true, then this
   /// property determines the length of the live broadcast delay.
-  core.int broadcastStreamDelayMs;
+  core.int? broadcastStreamDelayMs;
 
   /// HTML code that embeds a player that plays the monitor stream.
-  core.String embedHtml;
+  core.String? embedHtml;
 
   /// This value determines whether the monitor stream is enabled for the
   /// broadcast.
@@ -12585,7 +12481,7 @@ class MonitorStreamInfo {
   /// need to set this value to true if you intend to have a broadcast delay for
   /// your event. *Note:* This property cannot be updated once the broadcast is
   /// in the testing or live state.
-  core.bool enableMonitorStream;
+  core.bool? enableMonitorStream;
 
   MonitorStreamInfo();
 
@@ -12601,12 +12497,12 @@ class MonitorStreamInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (broadcastStreamDelayMs != null)
-          'broadcastStreamDelayMs': broadcastStreamDelayMs,
-        if (embedHtml != null) 'embedHtml': embedHtml,
+          'broadcastStreamDelayMs': broadcastStreamDelayMs!,
+        if (embedHtml != null) 'embedHtml': embedHtml!,
         if (enableMonitorStream != null)
-          'enableMonitorStream': enableMonitorStream,
+          'enableMonitorStream': enableMonitorStream!,
       };
 }
 
@@ -12614,10 +12510,10 @@ class MonitorStreamInfo {
 /// available and number of resources returned in a single page.
 class PageInfo {
   /// The number of results included in the API response.
-  core.int resultsPerPage;
+  core.int? resultsPerPage;
 
   /// The total number of results in the result set.
-  core.int totalResults;
+  core.int? totalResults;
 
   PageInfo();
 
@@ -12630,9 +12526,9 @@ class PageInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resultsPerPage != null) 'resultsPerPage': resultsPerPage,
-        if (totalResults != null) 'totalResults': totalResults,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resultsPerPage != null) 'resultsPerPage': resultsPerPage!,
+        if (totalResults != null) 'totalResults': totalResults!,
       };
 }
 
@@ -12654,32 +12550,32 @@ class PageInfo {
 /// playlistItems.delete methods.
 class Playlist {
   /// The contentDetails object contains information like video count.
-  PlaylistContentDetails contentDetails;
+  PlaylistContentDetails? contentDetails;
 
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube uses to uniquely identify the playlist.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#playlist".
-  core.String kind;
+  core.String? kind;
 
   /// Localizations for different languages
-  core.Map<core.String, PlaylistLocalization> localizations;
+  core.Map<core.String, PlaylistLocalization>? localizations;
 
   /// The player object contains information that you would use to play the
   /// playlist in an embedded player.
-  PlaylistPlayer player;
+  PlaylistPlayer? player;
 
   /// The snippet object contains basic details about the playlist, such as its
   /// title and description.
-  PlaylistSnippet snippet;
+  PlaylistSnippet? snippet;
 
   /// The status object contains status information for the playlist.
-  PlaylistStatus status;
+  PlaylistStatus? status;
 
   Playlist();
 
@@ -12699,7 +12595,7 @@ class Playlist {
     }
     if (_json.containsKey('localizations')) {
       localizations = (_json['localizations'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -12722,23 +12618,23 @@ class Playlist {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (localizations != null)
-          'localizations': localizations
+          'localizations': localizations!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (player != null) 'player': player.toJson(),
-        if (snippet != null) 'snippet': snippet.toJson(),
-        if (status != null) 'status': status.toJson(),
+        if (player != null) 'player': player!.toJson(),
+        if (snippet != null) 'snippet': snippet!.toJson(),
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
 class PlaylistContentDetails {
   /// The number of videos in the playlist.
-  core.int itemCount;
+  core.int? itemCount;
 
   PlaylistContentDetails();
 
@@ -12748,8 +12644,8 @@ class PlaylistContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (itemCount != null) 'itemCount': itemCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (itemCount != null) 'itemCount': itemCount!,
       };
 }
 
@@ -12775,26 +12671,26 @@ class PlaylistItem {
   /// is a YouTube video.
   ///
   /// The object contains additional information about the video.
-  PlaylistItemContentDetails contentDetails;
+  PlaylistItemContentDetails? contentDetails;
 
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube uses to uniquely identify the playlist item.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#playlistItem".
-  core.String kind;
+  core.String? kind;
 
   /// The snippet object contains basic details about the playlist item, such as
   /// its title and position in the playlist.
-  PlaylistItemSnippet snippet;
+  PlaylistItemSnippet? snippet;
 
   /// The status object contains information about the playlist item's privacy
   /// status.
-  PlaylistItemStatus status;
+  PlaylistItemStatus? status;
 
   PlaylistItem();
 
@@ -12822,13 +12718,13 @@ class PlaylistItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -12839,10 +12735,10 @@ class PlaylistItemContentDetails {
   /// (The playlist owner can specify the times when the video should start and
   /// stop playing when the video is played in the context of the playlist.) By
   /// default, assume that the video.endTime is the end of the video.
-  core.String endAt;
+  core.String? endAt;
 
   /// A user-generated note for this item.
-  core.String note;
+  core.String? note;
 
   /// The time, measured in seconds from the start of the video, when the video
   /// should start playing.
@@ -12850,16 +12746,16 @@ class PlaylistItemContentDetails {
   /// (The playlist owner can specify the times when the video should start and
   /// stop playing when the video is played in the context of the playlist.) The
   /// default value is 0.
-  core.String startAt;
+  core.String? startAt;
 
   /// The ID that YouTube uses to uniquely identify a video.
   ///
   /// To retrieve the video resource, set the id query parameter to this value
   /// in your API request.
-  core.String videoId;
+  core.String? videoId;
 
   /// The date and time that the video was published to YouTube.
-  core.DateTime videoPublishedAt;
+  core.DateTime? videoPublishedAt;
 
   PlaylistItemContentDetails();
 
@@ -12882,45 +12778,45 @@ class PlaylistItemContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endAt != null) 'endAt': endAt,
-        if (note != null) 'note': note,
-        if (startAt != null) 'startAt': startAt,
-        if (videoId != null) 'videoId': videoId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endAt != null) 'endAt': endAt!,
+        if (note != null) 'note': note!,
+        if (startAt != null) 'startAt': startAt!,
+        if (videoId != null) 'videoId': videoId!,
         if (videoPublishedAt != null)
-          'videoPublishedAt': (videoPublishedAt).toIso8601String(),
+          'videoPublishedAt': (videoPublishedAt!).toIso8601String(),
       };
 }
 
 class PlaylistItemListResponse {
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of playlist items that match the request criteria.
-  core.List<PlaylistItem> items;
+  core.List<PlaylistItem>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#playlistItemListResponse". Etag of this
   /// resource.
-  core.String kind;
+  core.String? kind;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// General pagination information.
-  PageInfo pageInfo;
+  PageInfo? pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
-  core.String prevPageToken;
-  TokenPagination tokenPagination;
+  core.String? prevPageToken;
+  TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   PlaylistItemListResponse();
 
@@ -12959,18 +12855,18 @@ class PlaylistItemListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
-        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken!,
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'tokenPagination': tokenPagination!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
@@ -12980,46 +12876,46 @@ class PlaylistItemListResponse {
 class PlaylistItemSnippet {
   /// The ID that YouTube uses to uniquely identify the user that added the item
   /// to the playlist.
-  core.String channelId;
+  core.String? channelId;
 
   /// Channel title for the channel that the playlist item belongs to.
-  core.String channelTitle;
+  core.String? channelTitle;
 
   /// The item's description.
-  core.String description;
+  core.String? description;
 
   /// The ID that YouTube uses to uniquely identify thGe playlist that the
   /// playlist item is in.
-  core.String playlistId;
+  core.String? playlistId;
 
   /// The order in which the item appears in the playlist.
   ///
   /// The value uses a zero-based index, so the first item has a position of 0,
   /// the second item has a position of 1, and so forth.
-  core.int position;
+  core.int? position;
 
   /// The date and time that the item was added to the playlist.
-  core.DateTime publishedAt;
+  core.DateTime? publishedAt;
 
   /// The id object contains information that can be used to uniquely identify
   /// the resource that is included in the playlist as the playlist item.
-  ResourceId resourceId;
+  ResourceId? resourceId;
 
   /// A map of thumbnail images associated with the playlist item.
   ///
   /// For each object in the map, the key is the name of the thumbnail image,
   /// and the value is an object that contains other information about the
   /// thumbnail.
-  ThumbnailDetails thumbnails;
+  ThumbnailDetails? thumbnails;
 
   /// The item's title.
-  core.String title;
+  core.String? title;
 
   /// Channel id for the channel this video belongs to.
-  core.String videoOwnerChannelId;
+  core.String? videoOwnerChannelId;
 
   /// Channel title for the channel this video belongs to.
-  core.String videoOwnerChannelTitle;
+  core.String? videoOwnerChannelTitle;
 
   PlaylistItemSnippet();
 
@@ -13061,20 +12957,21 @@ class PlaylistItemSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channelId != null) 'channelId': channelId,
-        if (channelTitle != null) 'channelTitle': channelTitle,
-        if (description != null) 'description': description,
-        if (playlistId != null) 'playlistId': playlistId,
-        if (position != null) 'position': position,
-        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
-        if (resourceId != null) 'resourceId': resourceId.toJson(),
-        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channelId != null) 'channelId': channelId!,
+        if (channelTitle != null) 'channelTitle': channelTitle!,
+        if (description != null) 'description': description!,
+        if (playlistId != null) 'playlistId': playlistId!,
+        if (position != null) 'position': position!,
+        if (publishedAt != null)
+          'publishedAt': (publishedAt!).toIso8601String(),
+        if (resourceId != null) 'resourceId': resourceId!.toJson(),
+        if (thumbnails != null) 'thumbnails': thumbnails!.toJson(),
+        if (title != null) 'title': title!,
         if (videoOwnerChannelId != null)
-          'videoOwnerChannelId': videoOwnerChannelId,
+          'videoOwnerChannelId': videoOwnerChannelId!,
         if (videoOwnerChannelTitle != null)
-          'videoOwnerChannelTitle': videoOwnerChannelTitle,
+          'videoOwnerChannelTitle': videoOwnerChannelTitle!,
       };
 }
 
@@ -13085,7 +12982,7 @@ class PlaylistItemStatus {
   /// - "public"
   /// - "unlisted"
   /// - "private"
-  core.String privacyStatus;
+  core.String? privacyStatus;
 
   PlaylistItemStatus();
 
@@ -13095,40 +12992,40 @@ class PlaylistItemStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (privacyStatus != null) 'privacyStatus': privacyStatus,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (privacyStatus != null) 'privacyStatus': privacyStatus!,
       };
 }
 
 class PlaylistListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of playlists that match the request criteria
-  core.List<Playlist> items;
+  core.List<Playlist>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#playlistListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// General pagination information.
-  PageInfo pageInfo;
+  PageInfo? pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
-  core.String prevPageToken;
-  TokenPagination tokenPagination;
+  core.String? prevPageToken;
+  TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   PlaylistListResponse();
 
@@ -13167,28 +13064,28 @@ class PlaylistListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
-        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken!,
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'tokenPagination': tokenPagination!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
 /// Playlist localization setting
 class PlaylistLocalization {
   /// The localized strings for playlist's description.
-  core.String description;
+  core.String? description;
 
   /// The localized strings for playlist's title.
-  core.String title;
+  core.String? title;
 
   PlaylistLocalization();
 
@@ -13201,15 +13098,15 @@ class PlaylistLocalization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (title != null) 'title': title!,
       };
 }
 
 class PlaylistPlayer {
   /// An <iframe> tag that embeds a player that will play the playlist.
-  core.String embedHtml;
+  core.String? embedHtml;
 
   PlaylistPlayer();
 
@@ -13219,8 +13116,8 @@ class PlaylistPlayer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (embedHtml != null) 'embedHtml': embedHtml,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (embedHtml != null) 'embedHtml': embedHtml!,
       };
 }
 
@@ -13228,25 +13125,25 @@ class PlaylistPlayer {
 class PlaylistSnippet {
   /// The ID that YouTube uses to uniquely identify the channel that published
   /// the playlist.
-  core.String channelId;
+  core.String? channelId;
 
   /// The channel title of the channel that the video belongs to.
-  core.String channelTitle;
+  core.String? channelTitle;
 
   /// The language of the playlist's default title and description.
-  core.String defaultLanguage;
+  core.String? defaultLanguage;
 
   /// The playlist's description.
-  core.String description;
+  core.String? description;
 
   /// Localized title and description, read-only.
-  PlaylistLocalization localized;
+  PlaylistLocalization? localized;
 
   /// The date and time that the playlist was created.
-  core.DateTime publishedAt;
+  core.DateTime? publishedAt;
 
   /// Keyword tags associated with the playlist.
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   /// Note: if the playlist has a custom thumbnail, this field will not be
   /// populated.
@@ -13258,17 +13155,17 @@ class PlaylistSnippet {
   /// thumbnail, and then removes that video from the playlist. 3. The user
   /// selects a non-owned video to be the thumbnail, but that video becomes
   /// private, or gets deleted.
-  core.String thumbnailVideoId;
+  core.String? thumbnailVideoId;
 
   /// A map of thumbnail images associated with the playlist.
   ///
   /// For each object in the map, the key is the name of the thumbnail image,
   /// and the value is an object that contains other information about the
   /// thumbnail.
-  ThumbnailDetails thumbnails;
+  ThumbnailDetails? thumbnails;
 
   /// The playlist's title.
-  core.String title;
+  core.String? title;
 
   PlaylistSnippet();
 
@@ -13309,17 +13206,18 @@ class PlaylistSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channelId != null) 'channelId': channelId,
-        if (channelTitle != null) 'channelTitle': channelTitle,
-        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage,
-        if (description != null) 'description': description,
-        if (localized != null) 'localized': localized.toJson(),
-        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
-        if (tags != null) 'tags': tags,
-        if (thumbnailVideoId != null) 'thumbnailVideoId': thumbnailVideoId,
-        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channelId != null) 'channelId': channelId!,
+        if (channelTitle != null) 'channelTitle': channelTitle!,
+        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
+        if (description != null) 'description': description!,
+        if (localized != null) 'localized': localized!.toJson(),
+        if (publishedAt != null)
+          'publishedAt': (publishedAt!).toIso8601String(),
+        if (tags != null) 'tags': tags!,
+        if (thumbnailVideoId != null) 'thumbnailVideoId': thumbnailVideoId!,
+        if (thumbnails != null) 'thumbnails': thumbnails!.toJson(),
+        if (title != null) 'title': title!,
       };
 }
 
@@ -13329,7 +13227,7 @@ class PlaylistStatus {
   /// - "public"
   /// - "unlisted"
   /// - "private"
-  core.String privacyStatus;
+  core.String? privacyStatus;
 
   PlaylistStatus();
 
@@ -13339,18 +13237,18 @@ class PlaylistStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (privacyStatus != null) 'privacyStatus': privacyStatus,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (privacyStatus != null) 'privacyStatus': privacyStatus!,
       };
 }
 
 /// A pair Property / Value.
 class PropertyValue {
   /// A property.
-  core.String property;
+  core.String? property;
 
   /// The property's value.
-  core.String value;
+  core.String? value;
 
   PropertyValue();
 
@@ -13363,14 +13261,14 @@ class PropertyValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (property != null) 'property': property,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (property != null) 'property': property!,
+        if (value != null) 'value': value!,
       };
 }
 
 class RelatedEntity {
-  Entity entity;
+  Entity? entity;
 
   RelatedEntity();
 
@@ -13381,8 +13279,8 @@ class RelatedEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (entity != null) 'entity': entity.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (entity != null) 'entity': entity!.toJson(),
       };
 }
 
@@ -13394,24 +13292,24 @@ class ResourceId {
   ///
   /// This property is only present if the resourceId.kind value is
   /// youtube#channel.
-  core.String channelId;
+  core.String? channelId;
 
   /// The type of the API resource.
-  core.String kind;
+  core.String? kind;
 
   /// The ID that YouTube uses to uniquely identify the referred resource, if
   /// that resource is a playlist.
   ///
   /// This property is only present if the resourceId.kind value is
   /// youtube#playlist.
-  core.String playlistId;
+  core.String? playlistId;
 
   /// The ID that YouTube uses to uniquely identify the referred resource, if
   /// that resource is a video.
   ///
   /// This property is only present if the resourceId.kind value is
   /// youtube#video.
-  core.String videoId;
+  core.String? videoId;
 
   ResourceId();
 
@@ -13430,44 +13328,44 @@ class ResourceId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channelId != null) 'channelId': channelId,
-        if (kind != null) 'kind': kind,
-        if (playlistId != null) 'playlistId': playlistId,
-        if (videoId != null) 'videoId': videoId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channelId != null) 'channelId': channelId!,
+        if (kind != null) 'kind': kind!,
+        if (playlistId != null) 'playlistId': playlistId!,
+        if (videoId != null) 'videoId': videoId!,
       };
 }
 
 class SearchListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// Pagination information for token pagination.
-  core.List<SearchResult> items;
+  core.List<SearchResult>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#searchListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// General pagination information.
-  PageInfo pageInfo;
+  PageInfo? pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
-  core.String prevPageToken;
-  core.String regionCode;
-  TokenPagination tokenPagination;
+  core.String? prevPageToken;
+  core.String? regionCode;
+  TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   SearchListResponse();
 
@@ -13509,19 +13407,19 @@ class SearchListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
-        if (prevPageToken != null) 'prevPageToken': prevPageToken,
-        if (regionCode != null) 'regionCode': regionCode,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken!,
+        if (regionCode != null) 'regionCode': regionCode!,
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'tokenPagination': tokenPagination!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
@@ -13532,23 +13430,23 @@ class SearchListResponse {
 /// video, it does not have its own persistent data.
 class SearchResult {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The id object contains information that can be used to uniquely identify
   /// the resource that matches the search request.
-  ResourceId id;
+  ResourceId? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#searchResult".
-  core.String kind;
+  core.String? kind;
 
   /// The snippet object contains basic details about a search result, such as
   /// its title or description.
   ///
   /// For example, if the search result is a video, then the title will be the
   /// video's title and the description will be the video's description.
-  SearchResultSnippet snippet;
+  SearchResultSnippet? snippet;
 
   SearchResult();
 
@@ -13569,11 +13467,11 @@ class SearchResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id.toJson(),
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
@@ -13582,14 +13480,14 @@ class SearchResult {
 class SearchResultSnippet {
   /// The value that YouTube uses to uniquely identify the channel that
   /// published the resource that the search result identifies.
-  core.String channelId;
+  core.String? channelId;
 
   /// The title of the channel that published the resource that the search
   /// result identifies.
-  core.String channelTitle;
+  core.String? channelTitle;
 
   /// A description of the search result.
-  core.String description;
+  core.String? description;
 
   /// It indicates if the resource (video or channel) has upcoming/active live
   /// broadcast content.
@@ -13600,21 +13498,21 @@ class SearchResultSnippet {
   /// - "upcoming" : The live broadcast is upcoming.
   /// - "live" : The live broadcast is active.
   /// - "completed" : The live broadcast has been completed.
-  core.String liveBroadcastContent;
+  core.String? liveBroadcastContent;
 
   /// The creation date and time of the resource that the search result
   /// identifies.
-  core.DateTime publishedAt;
+  core.DateTime? publishedAt;
 
   /// A map of thumbnail images associated with the search result.
   ///
   /// For each object in the map, the key is the name of the thumbnail image,
   /// and the value is an object that contains other information about the
   /// thumbnail.
-  ThumbnailDetails thumbnails;
+  ThumbnailDetails? thumbnails;
 
   /// The title of the search result.
-  core.String title;
+  core.String? title;
 
   SearchResultSnippet();
 
@@ -13643,15 +13541,16 @@ class SearchResultSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channelId != null) 'channelId': channelId,
-        if (channelTitle != null) 'channelTitle': channelTitle,
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channelId != null) 'channelId': channelId!,
+        if (channelTitle != null) 'channelTitle': channelTitle!,
+        if (description != null) 'description': description!,
         if (liveBroadcastContent != null)
-          'liveBroadcastContent': liveBroadcastContent,
-        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
-        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
-        if (title != null) 'title': title,
+          'liveBroadcastContent': liveBroadcastContent!,
+        if (publishedAt != null)
+          'publishedAt': (publishedAt!).toIso8601String(),
+        if (thumbnails != null) 'thumbnails': thumbnails!.toJson(),
+        if (title != null) 'title': title!,
       };
 }
 
@@ -13664,25 +13563,25 @@ class SearchResultSnippet {
 class Subscription {
   /// The contentDetails object contains basic statistics about the
   /// subscription.
-  SubscriptionContentDetails contentDetails;
+  SubscriptionContentDetails? contentDetails;
 
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube uses to uniquely identify the subscription.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#subscription".
-  core.String kind;
+  core.String? kind;
 
   /// The snippet object contains basic details about the subscription,
   /// including its title and the channel that the user subscribed to.
-  SubscriptionSnippet snippet;
+  SubscriptionSnippet? snippet;
 
   /// The subscriberSnippet object contains basic details about the subscriber.
-  SubscriptionSubscriberSnippet subscriberSnippet;
+  SubscriptionSubscriberSnippet? subscriberSnippet;
 
   Subscription();
 
@@ -13710,14 +13609,14 @@ class Subscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
         if (subscriberSnippet != null)
-          'subscriberSnippet': subscriberSnippet.toJson(),
+          'subscriberSnippet': subscriberSnippet!.toJson(),
       };
 }
 
@@ -13728,14 +13627,14 @@ class SubscriptionContentDetails {
   /// - "subscriptionActivityTypeUnspecified"
   /// - "all"
   /// - "uploads"
-  core.String activityType;
+  core.String? activityType;
 
   /// The number of new items in the subscription since its content was last
   /// read.
-  core.int newItemCount;
+  core.int? newItemCount;
 
   /// The approximate number of items that the subscription points to.
-  core.int totalItemCount;
+  core.int? totalItemCount;
 
   SubscriptionContentDetails();
 
@@ -13751,40 +13650,40 @@ class SubscriptionContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activityType != null) 'activityType': activityType,
-        if (newItemCount != null) 'newItemCount': newItemCount,
-        if (totalItemCount != null) 'totalItemCount': totalItemCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activityType != null) 'activityType': activityType!,
+        if (newItemCount != null) 'newItemCount': newItemCount!,
+        if (totalItemCount != null) 'totalItemCount': totalItemCount!,
       };
 }
 
 class SubscriptionListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of subscriptions that match the request criteria.
-  core.List<Subscription> items;
+  core.List<Subscription>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#subscriptionListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
-  core.String nextPageToken;
-  PageInfo pageInfo;
+  core.String? nextPageToken;
+  PageInfo? pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
-  core.String prevPageToken;
-  TokenPagination tokenPagination;
+  core.String? prevPageToken;
+  TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   SubscriptionListResponse();
 
@@ -13823,18 +13722,18 @@ class SubscriptionListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
-        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken!,
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'tokenPagination': tokenPagination!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
@@ -13842,30 +13741,30 @@ class SubscriptionListResponse {
 /// thumbnails of the subscribed item.
 class SubscriptionSnippet {
   /// The ID that YouTube uses to uniquely identify the subscriber's channel.
-  core.String channelId;
+  core.String? channelId;
 
   /// Channel title for the channel that the subscription belongs to.
-  core.String channelTitle;
+  core.String? channelTitle;
 
   /// The subscription's details.
-  core.String description;
+  core.String? description;
 
   /// The date and time that the subscription was created.
-  core.DateTime publishedAt;
+  core.DateTime? publishedAt;
 
   /// The id object contains information about the channel that the user
   /// subscribed to.
-  ResourceId resourceId;
+  ResourceId? resourceId;
 
   /// A map of thumbnail images associated with the video.
   ///
   /// For each object in the map, the key is the name of the thumbnail image,
   /// and the value is an object that contains other information about the
   /// thumbnail.
-  ThumbnailDetails thumbnails;
+  ThumbnailDetails? thumbnails;
 
   /// The subscription's title.
-  core.String title;
+  core.String? title;
 
   SubscriptionSnippet();
 
@@ -13895,14 +13794,15 @@ class SubscriptionSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channelId != null) 'channelId': channelId,
-        if (channelTitle != null) 'channelTitle': channelTitle,
-        if (description != null) 'description': description,
-        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
-        if (resourceId != null) 'resourceId': resourceId.toJson(),
-        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channelId != null) 'channelId': channelId!,
+        if (channelTitle != null) 'channelTitle': channelTitle!,
+        if (description != null) 'description': description!,
+        if (publishedAt != null)
+          'publishedAt': (publishedAt!).toIso8601String(),
+        if (resourceId != null) 'resourceId': resourceId!.toJson(),
+        if (thumbnails != null) 'thumbnails': thumbnails!.toJson(),
+        if (title != null) 'title': title!,
       };
 }
 
@@ -13910,16 +13810,16 @@ class SubscriptionSnippet {
 /// description, channel ID and thumbnails.
 class SubscriptionSubscriberSnippet {
   /// The channel ID of the subscriber.
-  core.String channelId;
+  core.String? channelId;
 
   /// The description of the subscriber.
-  core.String description;
+  core.String? description;
 
   /// Thumbnails for this subscriber.
-  ThumbnailDetails thumbnails;
+  ThumbnailDetails? thumbnails;
 
   /// The title of the subscriber.
-  core.String title;
+  core.String? title;
 
   SubscriptionSubscriberSnippet();
 
@@ -13939,11 +13839,11 @@ class SubscriptionSubscriberSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channelId != null) 'channelId': channelId,
-        if (description != null) 'description': description,
-        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channelId != null) 'channelId': channelId!,
+        if (description != null) 'description': description!,
+        if (thumbnails != null) 'thumbnails': thumbnails!.toJson(),
+        if (title != null) 'title': title!,
       };
 }
 
@@ -13951,18 +13851,18 @@ class SubscriptionSubscriberSnippet {
 /// YouTube channel.
 class SuperChatEvent {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube assigns to uniquely identify the Super Chat event.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string `"youtube#superChatEvent"`.
-  core.String kind;
+  core.String? kind;
 
   /// The `snippet` object contains basic details about the Super Chat event.
-  SuperChatEventSnippet snippet;
+  SuperChatEventSnippet? snippet;
 
   SuperChatEvent();
 
@@ -13982,37 +13882,37 @@ class SuperChatEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
 class SuperChatEventListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of Super Chat purchases that match the request criteria.
-  core.List<SuperChatEvent> items;
+  core.List<SuperChatEvent>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#superChatEventListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
-  core.String nextPageToken;
-  PageInfo pageInfo;
-  TokenPagination tokenPagination;
+  core.String? nextPageToken;
+  PageInfo? pageInfo;
+  TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   SuperChatEventListResponse();
 
@@ -14048,17 +13948,17 @@ class SuperChatEventListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'tokenPagination': tokenPagination!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
@@ -14066,41 +13966,41 @@ class SuperChatEventSnippet {
   /// The purchase amount, in micros of the purchase currency.
   ///
   /// e.g., 1 is represented as 1000000.
-  core.String amountMicros;
+  core.String? amountMicros;
 
   /// Channel id where the event occurred.
-  core.String channelId;
+  core.String? channelId;
 
   /// The text contents of the comment left by the user.
-  core.String commentText;
+  core.String? commentText;
 
   /// The date and time when the event occurred.
-  core.DateTime createdAt;
+  core.DateTime? createdAt;
 
   /// The currency in which the purchase was made.
   ///
   /// ISO 4217.
-  core.String currency;
+  core.String? currency;
 
   /// A rendered string that displays the purchase amount and currency (e.g.,
   /// "$1.00").
   ///
   /// The string is rendered for the given language.
-  core.String displayString;
+  core.String? displayString;
 
   /// True if this event is a Super Sticker event.
-  core.bool isSuperStickerEvent;
+  core.bool? isSuperStickerEvent;
 
   /// The tier for the paid message, which is based on the amount of money spent
   /// to purchase the message.
-  core.int messageType;
+  core.int? messageType;
 
   /// If this event is a Super Sticker event, this field will contain metadata
   /// about the Super Sticker.
-  SuperStickerMetadata superStickerMetadata;
+  SuperStickerMetadata? superStickerMetadata;
 
   /// Details about the supporter.
-  ChannelProfileDetails supporterDetails;
+  ChannelProfileDetails? supporterDetails;
 
   SuperChatEventSnippet();
 
@@ -14139,36 +14039,36 @@ class SuperChatEventSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amountMicros != null) 'amountMicros': amountMicros,
-        if (channelId != null) 'channelId': channelId,
-        if (commentText != null) 'commentText': commentText,
-        if (createdAt != null) 'createdAt': (createdAt).toIso8601String(),
-        if (currency != null) 'currency': currency,
-        if (displayString != null) 'displayString': displayString,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amountMicros != null) 'amountMicros': amountMicros!,
+        if (channelId != null) 'channelId': channelId!,
+        if (commentText != null) 'commentText': commentText!,
+        if (createdAt != null) 'createdAt': (createdAt!).toIso8601String(),
+        if (currency != null) 'currency': currency!,
+        if (displayString != null) 'displayString': displayString!,
         if (isSuperStickerEvent != null)
-          'isSuperStickerEvent': isSuperStickerEvent,
-        if (messageType != null) 'messageType': messageType,
+          'isSuperStickerEvent': isSuperStickerEvent!,
+        if (messageType != null) 'messageType': messageType!,
         if (superStickerMetadata != null)
-          'superStickerMetadata': superStickerMetadata.toJson(),
+          'superStickerMetadata': superStickerMetadata!.toJson(),
         if (supporterDetails != null)
-          'supporterDetails': supporterDetails.toJson(),
+          'supporterDetails': supporterDetails!.toJson(),
       };
 }
 
 class SuperStickerMetadata {
   /// Internationalized alt text that describes the sticker image and any
   /// animation associated with it.
-  core.String altText;
+  core.String? altText;
 
   /// Specifies the localization language in which the alt text is returned.
-  core.String altTextLanguage;
+  core.String? altTextLanguage;
 
   /// Unique identifier of the Super Sticker.
   ///
   /// This is a shorter form of the alt_text that includes pack name and a
   /// recognizable characteristic of the sticker.
-  core.String stickerId;
+  core.String? stickerId;
 
   SuperStickerMetadata();
 
@@ -14184,17 +14084,17 @@ class SuperStickerMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (altText != null) 'altText': altText,
-        if (altTextLanguage != null) 'altTextLanguage': altTextLanguage,
-        if (stickerId != null) 'stickerId': stickerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (altText != null) 'altText': altText!,
+        if (altTextLanguage != null) 'altTextLanguage': altTextLanguage!,
+        if (stickerId != null) 'stickerId': stickerId!,
       };
 }
 
 class TestItem {
-  core.String gaia;
-  core.String id;
-  TestItemTestItemSnippet snippet;
+  core.String? gaia;
+  core.String? id;
+  TestItemTestItemSnippet? snippet;
 
   TestItem();
 
@@ -14211,10 +14111,10 @@ class TestItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gaia != null) 'gaia': gaia,
-        if (id != null) 'id': id,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gaia != null) 'gaia': gaia!,
+        if (id != null) 'id': id!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
@@ -14225,30 +14125,30 @@ class TestItemTestItemSnippet {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A *third party account link* resource represents a link between a YouTube
 /// account or a channel and an account on a third-party service.
 class ThirdPartyLink {
   /// Etag of this resource
-  core.String etag;
+  core.String? etag;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#thirdPartyLink".
-  core.String kind;
+  core.String? kind;
 
   /// The linking_token identifies a YouTube account and channel with which the
   /// third party account is linked.
-  core.String linkingToken;
+  core.String? linkingToken;
 
   /// The snippet object contains basic details about the third- party account
   /// link.
-  ThirdPartyLinkSnippet snippet;
+  ThirdPartyLinkSnippet? snippet;
 
   /// The status object contains information about the status of the link.
-  ThirdPartyLinkStatus status;
+  ThirdPartyLinkStatus? status;
 
   ThirdPartyLink();
 
@@ -14272,12 +14172,12 @@ class ThirdPartyLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (linkingToken != null) 'linkingToken': linkingToken,
-        if (snippet != null) 'snippet': snippet.toJson(),
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (linkingToken != null) 'linkingToken': linkingToken!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -14286,7 +14186,7 @@ class ThirdPartyLink {
 class ThirdPartyLinkSnippet {
   /// Information specific to a link between a channel and a store on a
   /// merchandising platform.
-  ChannelToStoreLinkDetails channelToStoreLink;
+  ChannelToStoreLinkDetails? channelToStoreLink;
 
   /// Type of the link named after the entities that are being linked.
   /// Possible string values are:
@@ -14294,7 +14194,7 @@ class ThirdPartyLinkSnippet {
   /// - "channelToStoreLink" : A link that is connecting (or about to connect) a
   /// channel with a store on a merchandising platform in order to enable retail
   /// commerce capabilities for that channel on YouTube.
-  core.String type;
+  core.String? type;
 
   ThirdPartyLinkSnippet();
 
@@ -14308,10 +14208,10 @@ class ThirdPartyLinkSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (channelToStoreLink != null)
-          'channelToStoreLink': channelToStoreLink.toJson(),
-        if (type != null) 'type': type,
+          'channelToStoreLink': channelToStoreLink!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -14324,7 +14224,7 @@ class ThirdPartyLinkStatus {
   /// - "failed"
   /// - "pending"
   /// - "linked"
-  core.String linkStatus;
+  core.String? linkStatus;
 
   ThirdPartyLinkStatus();
 
@@ -14334,21 +14234,21 @@ class ThirdPartyLinkStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (linkStatus != null) 'linkStatus': linkStatus,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (linkStatus != null) 'linkStatus': linkStatus!,
       };
 }
 
 /// A thumbnail is an image representing a YouTube resource.
 class Thumbnail {
   /// (Optional) Height of the thumbnail image.
-  core.int height;
+  core.int? height;
 
   /// The thumbnail image's URL.
-  core.String url;
+  core.String? url;
 
   /// (Optional) Width of the thumbnail image.
-  core.int width;
+  core.int? width;
 
   Thumbnail();
 
@@ -14364,29 +14264,29 @@ class Thumbnail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (url != null) 'url': url,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (url != null) 'url': url!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// Internal representation of thumbnails for a YouTube resource.
 class ThumbnailDetails {
   /// The default image for this resource.
-  Thumbnail default_;
+  Thumbnail? default_;
 
   /// The high quality image for this resource.
-  Thumbnail high;
+  Thumbnail? high;
 
   /// The maximum resolution quality image for this resource.
-  Thumbnail maxres;
+  Thumbnail? maxres;
 
   /// The medium quality image for this resource.
-  Thumbnail medium;
+  Thumbnail? medium;
 
   /// The standard quality image for this resource.
-  Thumbnail standard;
+  Thumbnail? standard;
 
   ThumbnailDetails();
 
@@ -14413,32 +14313,32 @@ class ThumbnailDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (default_ != null) 'default': default_.toJson(),
-        if (high != null) 'high': high.toJson(),
-        if (maxres != null) 'maxres': maxres.toJson(),
-        if (medium != null) 'medium': medium.toJson(),
-        if (standard != null) 'standard': standard.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (default_ != null) 'default': default_!.toJson(),
+        if (high != null) 'high': high!.toJson(),
+        if (maxres != null) 'maxres': maxres!.toJson(),
+        if (medium != null) 'medium': medium!.toJson(),
+        if (standard != null) 'standard': standard!.toJson(),
       };
 }
 
 class ThumbnailSetResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of thumbnails.
-  core.List<ThumbnailDetails> items;
+  core.List<ThumbnailDetails>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#thumbnailSetResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   ThumbnailSetResponse();
 
@@ -14463,13 +14363,13 @@ class ThumbnailSetResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (visitorId != null) 'visitorId': visitorId,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
@@ -14481,7 +14381,7 @@ class TokenPagination {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A *video* resource represents a YouTube video.
@@ -14489,48 +14389,48 @@ class Video {
   /// Age restriction details related to a video.
   ///
   /// This data can only be retrieved by the video owner.
-  VideoAgeGating ageGating;
+  VideoAgeGating? ageGating;
 
   /// The contentDetails object contains information about the video content,
   /// including the length of the video and its aspect ratio.
-  VideoContentDetails contentDetails;
+  VideoContentDetails? contentDetails;
 
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The fileDetails object encapsulates information about the video file that
   /// was uploaded to YouTube, including the file's resolution, duration, audio
   /// and video codecs, stream bitrates, and more.
   ///
   /// This data can only be retrieved by the video owner.
-  VideoFileDetails fileDetails;
+  VideoFileDetails? fileDetails;
 
   /// The ID that YouTube uses to uniquely identify the video.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#video".
-  core.String kind;
+  core.String? kind;
 
   /// The liveStreamingDetails object contains metadata about a live video
   /// broadcast.
   ///
   /// The object will only be present in a video resource if the video is an
   /// upcoming, live, or completed live broadcast.
-  VideoLiveStreamingDetails liveStreamingDetails;
+  VideoLiveStreamingDetails? liveStreamingDetails;
 
   /// The localizations object contains localized versions of the basic details
   /// about the video, such as its title and description.
-  core.Map<core.String, VideoLocalization> localizations;
+  core.Map<core.String, VideoLocalization>? localizations;
 
   /// The monetizationDetails object encapsulates information about the
   /// monetization status of the video.
-  VideoMonetizationDetails monetizationDetails;
+  VideoMonetizationDetails? monetizationDetails;
 
   /// The player object contains information that you would use to play the
   /// video in an embedded player.
-  VideoPlayer player;
+  VideoPlayer? player;
 
   /// The processingDetails object encapsulates information about YouTube's
   /// progress in processing the uploaded video file.
@@ -14543,7 +14443,7 @@ class Video {
   /// video uploaded can track the progress that YouTube has made in processing
   /// the uploaded video file. This data can only be retrieved by the video
   /// owner.
-  VideoProcessingDetails processingDetails;
+  VideoProcessingDetails? processingDetails;
 
   /// The projectDetails object contains information about the project specific
   /// video metadata.
@@ -14556,33 +14456,33 @@ class Video {
   /// https://developers.google.com/resources/api-libraries/documentation/youtube/v3/csharp/latest/classGoogle_1_1Apis_1_1YouTube_1_1v3_1_1Data_1_1VideoProjectDetails.html
   /// \[2\]
   /// http://google3/video/youtube/src/python/servers/data_api/common.py?l=1565-1569&rcl=344141677
-  VideoProjectDetails projectDetails;
+  VideoProjectDetails? projectDetails;
 
   /// The recordingDetails object encapsulates information about the location,
   /// date and address where the video was recorded.
-  VideoRecordingDetails recordingDetails;
+  VideoRecordingDetails? recordingDetails;
 
   /// The snippet object contains basic details about the video, such as its
   /// title, description, and category.
-  VideoSnippet snippet;
+  VideoSnippet? snippet;
 
   /// The statistics object contains statistics about the video.
-  VideoStatistics statistics;
+  VideoStatistics? statistics;
 
   /// The status object contains information about the video's uploading,
   /// processing, and privacy statuses.
-  VideoStatus status;
+  VideoStatus? status;
 
   /// The suggestions object encapsulates suggestions that identify
   /// opportunities to improve the video quality or the metadata for the
   /// uploaded video.
   ///
   /// This data can only be retrieved by the video owner.
-  VideoSuggestions suggestions;
+  VideoSuggestions? suggestions;
 
   /// The topicDetails object encapsulates information about Freebase topics
   /// associated with the video.
-  VideoTopicDetails topicDetails;
+  VideoTopicDetails? topicDetails;
 
   Video();
 
@@ -14614,7 +14514,7 @@ class Video {
     }
     if (_json.containsKey('localizations')) {
       localizations = (_json['localizations'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -14665,55 +14565,55 @@ class Video {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ageGating != null) 'ageGating': ageGating.toJson(),
-        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
-        if (etag != null) 'etag': etag,
-        if (fileDetails != null) 'fileDetails': fileDetails.toJson(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ageGating != null) 'ageGating': ageGating!.toJson(),
+        if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (fileDetails != null) 'fileDetails': fileDetails!.toJson(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (liveStreamingDetails != null)
-          'liveStreamingDetails': liveStreamingDetails.toJson(),
+          'liveStreamingDetails': liveStreamingDetails!.toJson(),
         if (localizations != null)
-          'localizations': localizations
+          'localizations': localizations!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (monetizationDetails != null)
-          'monetizationDetails': monetizationDetails.toJson(),
-        if (player != null) 'player': player.toJson(),
+          'monetizationDetails': monetizationDetails!.toJson(),
+        if (player != null) 'player': player!.toJson(),
         if (processingDetails != null)
-          'processingDetails': processingDetails.toJson(),
-        if (projectDetails != null) 'projectDetails': projectDetails.toJson(),
+          'processingDetails': processingDetails!.toJson(),
+        if (projectDetails != null) 'projectDetails': projectDetails!.toJson(),
         if (recordingDetails != null)
-          'recordingDetails': recordingDetails.toJson(),
-        if (snippet != null) 'snippet': snippet.toJson(),
-        if (statistics != null) 'statistics': statistics.toJson(),
-        if (status != null) 'status': status.toJson(),
-        if (suggestions != null) 'suggestions': suggestions.toJson(),
-        if (topicDetails != null) 'topicDetails': topicDetails.toJson(),
+          'recordingDetails': recordingDetails!.toJson(),
+        if (snippet != null) 'snippet': snippet!.toJson(),
+        if (statistics != null) 'statistics': statistics!.toJson(),
+        if (status != null) 'status': status!.toJson(),
+        if (suggestions != null) 'suggestions': suggestions!.toJson(),
+        if (topicDetails != null) 'topicDetails': topicDetails!.toJson(),
       };
 }
 
 class VideoAbuseReport {
   /// Additional comments regarding the abuse report.
-  core.String comments;
+  core.String? comments;
 
   /// The language that the content was viewed in.
-  core.String language;
+  core.String? language;
 
   /// The high-level, or primary, reason that the content is abusive.
   ///
   /// The value is an abuse report reason ID.
-  core.String reasonId;
+  core.String? reasonId;
 
   /// The specific, or secondary, reason that this content is abusive (if
   /// available).
   ///
   /// The value is an abuse report reason ID that is a valid secondary reason
   /// for the primary reason.
-  core.String secondaryReasonId;
+  core.String? secondaryReasonId;
 
   /// The ID that YouTube uses to uniquely identify the video.
-  core.String videoId;
+  core.String? videoId;
 
   VideoAbuseReport();
 
@@ -14735,12 +14635,12 @@ class VideoAbuseReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (comments != null) 'comments': comments,
-        if (language != null) 'language': language,
-        if (reasonId != null) 'reasonId': reasonId,
-        if (secondaryReasonId != null) 'secondaryReasonId': secondaryReasonId,
-        if (videoId != null) 'videoId': videoId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (comments != null) 'comments': comments!,
+        if (language != null) 'language': language!,
+        if (reasonId != null) 'reasonId': reasonId!,
+        if (secondaryReasonId != null) 'secondaryReasonId': secondaryReasonId!,
+        if (videoId != null) 'videoId': videoId!,
       };
 }
 
@@ -14750,18 +14650,18 @@ class VideoAbuseReport {
 /// Video abuse report reasons are used with `video.ReportAbuse`.
 class VideoAbuseReportReason {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID of this abuse report reason.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string `"youtube#videoAbuseReportReason"`.
-  core.String kind;
+  core.String? kind;
 
   /// The `snippet` object contains basic details about the abuse report reason.
-  VideoAbuseReportReasonSnippet snippet;
+  VideoAbuseReportReasonSnippet? snippet;
 
   VideoAbuseReportReason();
 
@@ -14781,31 +14681,31 @@ class VideoAbuseReportReason {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
 class VideoAbuseReportReasonListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of valid abuse reasons that are used with `video.ReportAbuse`.
-  core.List<VideoAbuseReportReason> items;
+  core.List<VideoAbuseReportReason>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string `"youtube#videoAbuseReportReasonListResponse"`.
-  core.String kind;
+  core.String? kind;
 
   /// The `visitorId` identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   VideoAbuseReportReasonListResponse();
 
@@ -14831,25 +14731,25 @@ class VideoAbuseReportReasonListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (visitorId != null) 'visitorId': visitorId,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
 /// Basic details about a video category, such as its localized title.
 class VideoAbuseReportReasonSnippet {
   /// The localized label belonging to this abuse report reason.
-  core.String label;
+  core.String? label;
 
   /// The secondary reasons associated with this reason, if any are available.
   ///
   /// (There might be 0 or more.)
-  core.List<VideoAbuseReportSecondaryReason> secondaryReasons;
+  core.List<VideoAbuseReportSecondaryReason>? secondaryReasons;
 
   VideoAbuseReportReasonSnippet();
 
@@ -14866,20 +14766,20 @@ class VideoAbuseReportReasonSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (label != null) 'label': label,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (label != null) 'label': label!,
         if (secondaryReasons != null)
           'secondaryReasons':
-              secondaryReasons.map((value) => value.toJson()).toList(),
+              secondaryReasons!.map((value) => value.toJson()).toList(),
       };
 }
 
 class VideoAbuseReportSecondaryReason {
   /// The ID of this abuse report secondary reason.
-  core.String id;
+  core.String? id;
 
   /// The localized label for this abuse report secondary reason.
-  core.String label;
+  core.String? label;
 
   VideoAbuseReportSecondaryReason();
 
@@ -14892,9 +14792,9 @@ class VideoAbuseReportSecondaryReason {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (label != null) 'label': label,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (label != null) 'label': label!,
       };
 }
 
@@ -14903,14 +14803,14 @@ class VideoAgeGating {
   ///
   /// Only users of legal purchasing age in a particular country, as identified
   /// by ICAP, can view the content.
-  core.bool alcoholContent;
+  core.bool? alcoholContent;
 
   /// Age-restricted trailers.
   ///
   /// For redband trailers and adult-rated video-games. Only users aged 18+ can
   /// view the content. The the field is true the content is restricted to
   /// viewers aged 18+. Otherwise The field won't be present.
-  core.bool restricted;
+  core.bool? restricted;
 
   /// Video game rating, if any.
   /// Possible string values are:
@@ -14918,7 +14818,7 @@ class VideoAgeGating {
   /// - "m15Plus"
   /// - "m16Plus"
   /// - "m17Plus"
-  core.String videoGameRating;
+  core.String? videoGameRating;
 
   VideoAgeGating();
 
@@ -14934,10 +14834,10 @@ class VideoAgeGating {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alcoholContent != null) 'alcoholContent': alcoholContent,
-        if (restricted != null) 'restricted': restricted,
-        if (videoGameRating != null) 'videoGameRating': videoGameRating,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alcoholContent != null) 'alcoholContent': alcoholContent!,
+        if (restricted != null) 'restricted': restricted!,
+        if (videoGameRating != null) 'videoGameRating': videoGameRating!,
       };
 }
 
@@ -14945,19 +14845,19 @@ class VideoAgeGating {
 /// associated with uploaded videos.
 class VideoCategory {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube uses to uniquely identify the video category.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#videoCategory".
-  core.String kind;
+  core.String? kind;
 
   /// The snippet object contains basic details about the video category,
   /// including its title.
-  VideoCategorySnippet snippet;
+  VideoCategorySnippet? snippet;
 
   VideoCategory();
 
@@ -14977,46 +14877,46 @@ class VideoCategory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
 class VideoCategoryListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of video categories that can be associated with YouTube videos.
   ///
   /// In this map, the video category ID is the map key, and its value is the
   /// corresponding videoCategory resource.
-  core.List<VideoCategory> items;
+  core.List<VideoCategory>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#videoCategoryListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// General pagination information.
-  PageInfo pageInfo;
+  PageInfo? pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
-  core.String prevPageToken;
-  TokenPagination tokenPagination;
+  core.String? prevPageToken;
+  TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   VideoCategoryListResponse();
 
@@ -15055,30 +14955,30 @@ class VideoCategoryListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
-        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken!,
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'tokenPagination': tokenPagination!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
 /// Basic details about a video category, such as its localized title.
 class VideoCategorySnippet {
-  core.bool assignable;
+  core.bool? assignable;
 
   /// The YouTube channel that created the video category.
-  core.String channelId;
+  core.String? channelId;
 
   /// The video category's title.
-  core.String title;
+  core.String? title;
 
   VideoCategorySnippet();
 
@@ -15094,10 +14994,10 @@ class VideoCategorySnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (assignable != null) 'assignable': assignable,
-        if (channelId != null) 'channelId': channelId,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (assignable != null) 'assignable': assignable!,
+        if (channelId != null) 'channelId': channelId!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -15107,26 +15007,26 @@ class VideoContentDetails {
   /// Possible string values are:
   /// - "true"
   /// - "false"
-  core.String caption;
+  core.String? caption;
 
   /// Specifies the ratings that the video received under various rating
   /// schemes.
-  ContentRating contentRating;
+  ContentRating? contentRating;
 
   /// The countryRestriction object contains information about the countries
   /// where a video is (or is not) viewable.
-  AccessPolicy countryRestriction;
+  AccessPolicy? countryRestriction;
 
   /// The value of definition indicates whether the video is available in high
   /// definition or only in standard definition.
   /// Possible string values are:
   /// - "sd" : sd
   /// - "hd" : hd
-  core.String definition;
+  core.String? definition;
 
   /// The value of dimension indicates whether the video is available in 3D or
   /// in 2D.
-  core.String dimension;
+  core.String? dimension;
 
   /// The length of the video.
   ///
@@ -15136,23 +15036,23 @@ class VideoContentDetails {
   /// # characters preceding the M and S letters are both integers that specify
   /// the number of minutes (or seconds) of the video. For example, a value of
   /// PT15M51S indicates that the video is 15 minutes and 51 seconds long.
-  core.String duration;
+  core.String? duration;
 
   /// Indicates whether the video uploader has provided a custom thumbnail image
   /// for the video.
   ///
   /// This property is only visible to the video uploader.
-  core.bool hasCustomThumbnail;
+  core.bool? hasCustomThumbnail;
 
   /// The value of is_license_content indicates whether the video is licensed
   /// content.
-  core.bool licensedContent;
+  core.bool? licensedContent;
 
   /// Specifies the projection format of the video.
   /// Possible string values are:
   /// - "rectangular"
   /// - "360"
-  core.String projection;
+  core.String? projection;
 
   /// The regionRestriction object contains information about the countries
   /// where a video is (or is not) viewable.
@@ -15160,7 +15060,7 @@ class VideoContentDetails {
   /// The object will contain either the
   /// contentDetails.regionRestriction.allowed property or the
   /// contentDetails.regionRestriction.blocked property.
-  VideoContentDetailsRegionRestriction regionRestriction;
+  VideoContentDetailsRegionRestriction? regionRestriction;
 
   VideoContentDetails();
 
@@ -15200,20 +15100,20 @@ class VideoContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (caption != null) 'caption': caption,
-        if (contentRating != null) 'contentRating': contentRating.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (caption != null) 'caption': caption!,
+        if (contentRating != null) 'contentRating': contentRating!.toJson(),
         if (countryRestriction != null)
-          'countryRestriction': countryRestriction.toJson(),
-        if (definition != null) 'definition': definition,
-        if (dimension != null) 'dimension': dimension,
-        if (duration != null) 'duration': duration,
+          'countryRestriction': countryRestriction!.toJson(),
+        if (definition != null) 'definition': definition!,
+        if (dimension != null) 'dimension': dimension!,
+        if (duration != null) 'duration': duration!,
         if (hasCustomThumbnail != null)
-          'hasCustomThumbnail': hasCustomThumbnail,
-        if (licensedContent != null) 'licensedContent': licensedContent,
-        if (projection != null) 'projection': projection,
+          'hasCustomThumbnail': hasCustomThumbnail!,
+        if (licensedContent != null) 'licensedContent': licensedContent!,
+        if (projection != null) 'projection': projection!,
         if (regionRestriction != null)
-          'regionRestriction': regionRestriction.toJson(),
+          'regionRestriction': regionRestriction!.toJson(),
       };
 }
 
@@ -15225,14 +15125,14 @@ class VideoContentDetailsRegionRestriction {
   /// If this property is present and a country is not listed in its value, then
   /// the video is blocked from appearing in that country. If this property is
   /// present and contains an empty list, the video is blocked in all countries.
-  core.List<core.String> allowed;
+  core.List<core.String>? allowed;
 
   /// A list of region codes that identify countries where the video is blocked.
   ///
   /// If this property is present and a country is not listed in its value, then
   /// the video is viewable in that country. If this property is present and
   /// contains an empty list, the video is viewable in all countries.
-  core.List<core.String> blocked;
+  core.List<core.String>? blocked;
 
   VideoContentDetailsRegionRestriction();
 
@@ -15249,9 +15149,9 @@ class VideoContentDetailsRegionRestriction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowed != null) 'allowed': allowed,
-        if (blocked != null) 'blocked': blocked,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowed != null) 'allowed': allowed!,
+        if (blocked != null) 'blocked': blocked!,
       };
 }
 
@@ -15262,36 +15162,36 @@ class VideoFileDetails {
   /// A list of audio streams contained in the uploaded video file.
   ///
   /// Each item in the list contains detailed metadata about an audio stream.
-  core.List<VideoFileDetailsAudioStream> audioStreams;
+  core.List<VideoFileDetailsAudioStream>? audioStreams;
 
   /// The uploaded video file's combined (video and audio) bitrate in bits per
   /// second.
-  core.String bitrateBps;
+  core.String? bitrateBps;
 
   /// The uploaded video file's container format.
-  core.String container;
+  core.String? container;
 
   /// The date and time when the uploaded video file was created.
   ///
   /// The value is specified in ISO 8601 format. Currently, the following ISO
   /// 8601 formats are supported: - Date only: YYYY-MM-DD - Naive time:
   /// YYYY-MM-DDTHH:MM:SS - Time with timezone: YYYY-MM-DDTHH:MM:SS+HH:MM
-  core.String creationTime;
+  core.String? creationTime;
 
   /// The length of the uploaded video in milliseconds.
-  core.String durationMs;
+  core.String? durationMs;
 
   /// The uploaded file's name.
   ///
   /// This field is present whether a video file or another type of file was
   /// uploaded.
-  core.String fileName;
+  core.String? fileName;
 
   /// The uploaded file's size in bytes.
   ///
   /// This field is present whether a video file or another type of file was
   /// uploaded.
-  core.String fileSize;
+  core.String? fileSize;
 
   /// The uploaded file's type as detected by YouTube's video processing engine.
   ///
@@ -15306,12 +15206,12 @@ class VideoFileDetails {
   /// - "project" : Movie project file (e.g., Microsoft Windows Movie Maker
   /// project).
   /// - "other" : Other non-video file type.
-  core.String fileType;
+  core.String? fileType;
 
   /// A list of video streams contained in the uploaded video file.
   ///
   /// Each item in the list contains detailed metadata about a video stream.
-  core.List<VideoFileDetailsVideoStream> videoStreams;
+  core.List<VideoFileDetailsVideoStream>? videoStreams;
 
   VideoFileDetails();
 
@@ -15353,36 +15253,36 @@ class VideoFileDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (audioStreams != null)
-          'audioStreams': audioStreams.map((value) => value.toJson()).toList(),
-        if (bitrateBps != null) 'bitrateBps': bitrateBps,
-        if (container != null) 'container': container,
-        if (creationTime != null) 'creationTime': creationTime,
-        if (durationMs != null) 'durationMs': durationMs,
-        if (fileName != null) 'fileName': fileName,
-        if (fileSize != null) 'fileSize': fileSize,
-        if (fileType != null) 'fileType': fileType,
+          'audioStreams': audioStreams!.map((value) => value.toJson()).toList(),
+        if (bitrateBps != null) 'bitrateBps': bitrateBps!,
+        if (container != null) 'container': container!,
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (durationMs != null) 'durationMs': durationMs!,
+        if (fileName != null) 'fileName': fileName!,
+        if (fileSize != null) 'fileSize': fileSize!,
+        if (fileType != null) 'fileType': fileType!,
         if (videoStreams != null)
-          'videoStreams': videoStreams.map((value) => value.toJson()).toList(),
+          'videoStreams': videoStreams!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Information about an audio stream.
 class VideoFileDetailsAudioStream {
   /// The audio stream's bitrate, in bits per second.
-  core.String bitrateBps;
+  core.String? bitrateBps;
 
   /// The number of audio channels that the stream contains.
-  core.int channelCount;
+  core.int? channelCount;
 
   /// The audio codec that the stream uses.
-  core.String codec;
+  core.String? codec;
 
   /// A value that uniquely identifies a video vendor.
   ///
   /// Typically, the value is a four-letter vendor code.
-  core.String vendor;
+  core.String? vendor;
 
   VideoFileDetailsAudioStream();
 
@@ -15401,11 +15301,11 @@ class VideoFileDetailsAudioStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bitrateBps != null) 'bitrateBps': bitrateBps,
-        if (channelCount != null) 'channelCount': channelCount,
-        if (codec != null) 'codec': codec,
-        if (vendor != null) 'vendor': vendor,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bitrateBps != null) 'bitrateBps': bitrateBps!,
+        if (channelCount != null) 'channelCount': channelCount!,
+        if (codec != null) 'codec': codec!,
+        if (vendor != null) 'vendor': vendor!,
       };
 }
 
@@ -15413,19 +15313,19 @@ class VideoFileDetailsAudioStream {
 class VideoFileDetailsVideoStream {
   /// The video content's display aspect ratio, which specifies the aspect ratio
   /// in which the video should be displayed.
-  core.double aspectRatio;
+  core.double? aspectRatio;
 
   /// The video stream's bitrate, in bits per second.
-  core.String bitrateBps;
+  core.String? bitrateBps;
 
   /// The video codec that the stream uses.
-  core.String codec;
+  core.String? codec;
 
   /// The video stream's frame rate, in frames per second.
-  core.double frameRateFps;
+  core.double? frameRateFps;
 
   /// The encoded video content's height in pixels.
-  core.int heightPixels;
+  core.int? heightPixels;
 
   /// The amount that YouTube needs to rotate the original source content to
   /// properly display the video.
@@ -15435,18 +15335,18 @@ class VideoFileDetailsVideoStream {
   /// - "upsideDown"
   /// - "counterClockwise"
   /// - "other"
-  core.String rotation;
+  core.String? rotation;
 
   /// A value that uniquely identifies a video vendor.
   ///
   /// Typically, the value is a four-letter vendor code.
-  core.String vendor;
+  core.String? vendor;
 
   /// The encoded video content's width in pixels.
   ///
   /// You can calculate the video's encoding aspect ratio as width_pixels /
   /// height_pixels.
-  core.int widthPixels;
+  core.int? widthPixels;
 
   VideoFileDetailsVideoStream();
 
@@ -15477,45 +15377,45 @@ class VideoFileDetailsVideoStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aspectRatio != null) 'aspectRatio': aspectRatio,
-        if (bitrateBps != null) 'bitrateBps': bitrateBps,
-        if (codec != null) 'codec': codec,
-        if (frameRateFps != null) 'frameRateFps': frameRateFps,
-        if (heightPixels != null) 'heightPixels': heightPixels,
-        if (rotation != null) 'rotation': rotation,
-        if (vendor != null) 'vendor': vendor,
-        if (widthPixels != null) 'widthPixels': widthPixels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aspectRatio != null) 'aspectRatio': aspectRatio!,
+        if (bitrateBps != null) 'bitrateBps': bitrateBps!,
+        if (codec != null) 'codec': codec!,
+        if (frameRateFps != null) 'frameRateFps': frameRateFps!,
+        if (heightPixels != null) 'heightPixels': heightPixels!,
+        if (rotation != null) 'rotation': rotation!,
+        if (vendor != null) 'vendor': vendor!,
+        if (widthPixels != null) 'widthPixels': widthPixels!,
       };
 }
 
 class VideoListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
-  core.List<Video> items;
+  core.String? eventId;
+  core.List<Video>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#videoListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the next page in the result set.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// General pagination information.
-  PageInfo pageInfo;
+  PageInfo? pageInfo;
 
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
-  core.String prevPageToken;
-  TokenPagination tokenPagination;
+  core.String? prevPageToken;
+  TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   VideoListResponse();
 
@@ -15554,18 +15454,18 @@ class VideoListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
-        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
+        if (prevPageToken != null) 'prevPageToken': prevPageToken!,
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
-        if (visitorId != null) 'visitorId': visitorId,
+          'tokenPagination': tokenPagination!.toJson(),
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
@@ -15578,17 +15478,17 @@ class VideoLiveStreamingDetails {
   /// be removed and the live chat closed down. For persistent broadcasts that
   /// live chat id will no longer be tied to this video but rather to the new
   /// video being displayed at the persistent page.
-  core.String activeLiveChatId;
+  core.String? activeLiveChatId;
 
   /// The time that the broadcast actually ended.
   ///
   /// This value will not be available until the broadcast is over.
-  core.DateTime actualEndTime;
+  core.DateTime? actualEndTime;
 
   /// The time that the broadcast actually started.
   ///
   /// This value will not be available until the broadcast begins.
-  core.DateTime actualStartTime;
+  core.DateTime? actualStartTime;
 
   /// The number of viewers currently watching the broadcast.
   ///
@@ -15598,16 +15498,16 @@ class VideoLiveStreamingDetails {
   /// for a broadcast when the broadcast ends. So, this property would not
   /// identify the number of viewers watching an archived video of a live
   /// broadcast that already ended.
-  core.String concurrentViewers;
+  core.String? concurrentViewers;
 
   /// The time that the broadcast is scheduled to end.
   ///
   /// If the value is empty or the property is not present, then the broadcast
   /// is scheduled to contiue indefinitely.
-  core.DateTime scheduledEndTime;
+  core.DateTime? scheduledEndTime;
 
   /// The time that the broadcast is scheduled to begin.
-  core.DateTime scheduledStartTime;
+  core.DateTime? scheduledStartTime;
 
   VideoLiveStreamingDetails();
 
@@ -15636,27 +15536,27 @@ class VideoLiveStreamingDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activeLiveChatId != null) 'activeLiveChatId': activeLiveChatId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activeLiveChatId != null) 'activeLiveChatId': activeLiveChatId!,
         if (actualEndTime != null)
-          'actualEndTime': (actualEndTime).toIso8601String(),
+          'actualEndTime': (actualEndTime!).toIso8601String(),
         if (actualStartTime != null)
-          'actualStartTime': (actualStartTime).toIso8601String(),
-        if (concurrentViewers != null) 'concurrentViewers': concurrentViewers,
+          'actualStartTime': (actualStartTime!).toIso8601String(),
+        if (concurrentViewers != null) 'concurrentViewers': concurrentViewers!,
         if (scheduledEndTime != null)
-          'scheduledEndTime': (scheduledEndTime).toIso8601String(),
+          'scheduledEndTime': (scheduledEndTime!).toIso8601String(),
         if (scheduledStartTime != null)
-          'scheduledStartTime': (scheduledStartTime).toIso8601String(),
+          'scheduledStartTime': (scheduledStartTime!).toIso8601String(),
       };
 }
 
 /// Localized versions of certain video properties (e.g. title).
 class VideoLocalization {
   /// Localized version of the video's description.
-  core.String description;
+  core.String? description;
 
   /// Localized version of the video's title.
-  core.String title;
+  core.String? title;
 
   VideoLocalization();
 
@@ -15669,16 +15569,16 @@ class VideoLocalization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// Details about monetization of a YouTube Video.
 class VideoMonetizationDetails {
   /// The value of access indicates whether the video can be monetized or not.
-  AccessPolicy access;
+  AccessPolicy? access;
 
   VideoMonetizationDetails();
 
@@ -15689,20 +15589,20 @@ class VideoMonetizationDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (access != null) 'access': access.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (access != null) 'access': access!.toJson(),
       };
 }
 
 /// Player to be used for a video playback.
 class VideoPlayer {
-  core.String embedHeight;
+  core.String? embedHeight;
 
   /// An <iframe> tag that embeds a player that will play the video.
-  core.String embedHtml;
+  core.String? embedHtml;
 
   /// The embed width
-  core.String embedWidth;
+  core.String? embedWidth;
 
   VideoPlayer();
 
@@ -15718,10 +15618,10 @@ class VideoPlayer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (embedHeight != null) 'embedHeight': embedHeight,
-        if (embedHtml != null) 'embedHtml': embedHtml,
-        if (embedWidth != null) 'embedWidth': embedWidth,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (embedHeight != null) 'embedHeight': embedHeight!,
+        if (embedHtml != null) 'embedHtml': embedHtml!,
+        if (embedWidth != null) 'embedWidth': embedWidth!,
       };
 }
 
@@ -15734,14 +15634,14 @@ class VideoProcessingDetails {
   ///
   /// You can retrieve these suggestions by requesting the suggestions part in
   /// your videos.list() request.
-  core.String editorSuggestionsAvailability;
+  core.String? editorSuggestionsAvailability;
 
   /// This value indicates whether file details are available for the uploaded
   /// video.
   ///
   /// You can retrieve a video's file details by requesting the fileDetails part
   /// in your videos.list() request.
-  core.String fileDetailsAvailability;
+  core.String? fileDetailsAvailability;
 
   /// The reason that YouTube failed to process the video.
   ///
@@ -15752,7 +15652,7 @@ class VideoProcessingDetails {
   /// - "transcodeFailed"
   /// - "streamingFailed"
   /// - "other"
-  core.String processingFailureReason;
+  core.String? processingFailureReason;
 
   /// This value indicates whether the video processing engine has generated
   /// suggestions that might improve YouTube's ability to process the the video,
@@ -15761,14 +15661,14 @@ class VideoProcessingDetails {
   ///
   /// You can retrieve these suggestions by requesting the suggestions part in
   /// your videos.list() request.
-  core.String processingIssuesAvailability;
+  core.String? processingIssuesAvailability;
 
   /// The processingProgress object contains information about the progress
   /// YouTube has made in processing the video.
   ///
   /// The values are really only relevant if the video's processing status is
   /// processing.
-  VideoProcessingDetailsProcessingProgress processingProgress;
+  VideoProcessingDetailsProcessingProgress? processingProgress;
 
   /// The video's processing status.
   ///
@@ -15779,7 +15679,7 @@ class VideoProcessingDetails {
   /// - "succeeded"
   /// - "failed"
   /// - "terminated"
-  core.String processingStatus;
+  core.String? processingStatus;
 
   /// This value indicates whether keyword (tag) suggestions are available for
   /// the video.
@@ -15787,11 +15687,11 @@ class VideoProcessingDetails {
   /// Tags can be added to a video's metadata to make it easier for other users
   /// to find the video. You can retrieve these suggestions by requesting the
   /// suggestions part in your videos.list() request.
-  core.String tagSuggestionsAvailability;
+  core.String? tagSuggestionsAvailability;
 
   /// This value indicates whether thumbnail images have been generated for the
   /// video.
-  core.String thumbnailsAvailability;
+  core.String? thumbnailsAvailability;
 
   VideoProcessingDetails();
 
@@ -15826,22 +15726,22 @@ class VideoProcessingDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (editorSuggestionsAvailability != null)
-          'editorSuggestionsAvailability': editorSuggestionsAvailability,
+          'editorSuggestionsAvailability': editorSuggestionsAvailability!,
         if (fileDetailsAvailability != null)
-          'fileDetailsAvailability': fileDetailsAvailability,
+          'fileDetailsAvailability': fileDetailsAvailability!,
         if (processingFailureReason != null)
-          'processingFailureReason': processingFailureReason,
+          'processingFailureReason': processingFailureReason!,
         if (processingIssuesAvailability != null)
-          'processingIssuesAvailability': processingIssuesAvailability,
+          'processingIssuesAvailability': processingIssuesAvailability!,
         if (processingProgress != null)
-          'processingProgress': processingProgress.toJson(),
-        if (processingStatus != null) 'processingStatus': processingStatus,
+          'processingProgress': processingProgress!.toJson(),
+        if (processingStatus != null) 'processingStatus': processingStatus!,
         if (tagSuggestionsAvailability != null)
-          'tagSuggestionsAvailability': tagSuggestionsAvailability,
+          'tagSuggestionsAvailability': tagSuggestionsAvailability!,
         if (thumbnailsAvailability != null)
-          'thumbnailsAvailability': thumbnailsAvailability,
+          'thumbnailsAvailability': thumbnailsAvailability!,
       };
 }
 
@@ -15855,18 +15755,18 @@ class VideoProcessingDetailsProcessingProgress {
   /// increase in the number of parts that have already been processed, it is
   /// possible that the calculated progress could periodically decrease while
   /// YouTube processes a video.
-  core.String partsProcessed;
+  core.String? partsProcessed;
 
   /// An estimate of the total number of parts that need to be processed for the
   /// video.
   ///
   /// The number may be updated with more precise estimates while YouTube
   /// processes the video.
-  core.String partsTotal;
+  core.String? partsTotal;
 
   /// An estimate of the amount of time, in millseconds, that YouTube needs to
   /// finish processing the video.
-  core.String timeLeftMs;
+  core.String? timeLeftMs;
 
   VideoProcessingDetailsProcessingProgress();
 
@@ -15882,10 +15782,10 @@ class VideoProcessingDetailsProcessingProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (partsProcessed != null) 'partsProcessed': partsProcessed,
-        if (partsTotal != null) 'partsTotal': partsTotal,
-        if (timeLeftMs != null) 'timeLeftMs': timeLeftMs,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (partsProcessed != null) 'partsProcessed': partsProcessed!,
+        if (partsTotal != null) 'partsTotal': partsTotal!,
+        if (timeLeftMs != null) 'timeLeftMs': timeLeftMs!,
       };
 }
 
@@ -15907,7 +15807,7 @@ class VideoProjectDetails {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Basic details about rating of a video.
@@ -15917,10 +15817,10 @@ class VideoRating {
   /// - "none"
   /// - "like" : The entity is liked.
   /// - "dislike" : The entity is disliked.
-  core.String rating;
+  core.String? rating;
 
   /// The ID that YouTube uses to uniquely identify the video.
-  core.String videoId;
+  core.String? videoId;
 
   VideoRating();
 
@@ -15933,29 +15833,29 @@ class VideoRating {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (rating != null) 'rating': rating,
-        if (videoId != null) 'videoId': videoId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (rating != null) 'rating': rating!,
+        if (videoId != null) 'videoId': videoId!,
       };
 }
 
 class VideoRatingListResponse {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
-  core.String eventId;
+  core.String? eventId;
 
   /// A list of ratings that match the request criteria.
-  core.List<VideoRating> items;
+  core.List<VideoRating>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "youtube#videoGetRatingResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The visitorId identifies the visitor.
-  core.String visitorId;
+  core.String? visitorId;
 
   VideoRatingListResponse();
 
@@ -15980,26 +15880,26 @@ class VideoRatingListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (eventId != null) 'eventId': eventId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (eventId != null) 'eventId': eventId!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (visitorId != null) 'visitorId': visitorId,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (visitorId != null) 'visitorId': visitorId!,
       };
 }
 
 /// Recording information associated with the video.
 class VideoRecordingDetails {
   /// The geolocation information associated with the video.
-  GeoPoint location;
+  GeoPoint? location;
 
   /// The text description of the location where the video was recorded.
-  core.String locationDescription;
+  core.String? locationDescription;
 
   /// The date and time when the video was recorded.
-  core.DateTime recordingDate;
+  core.DateTime? recordingDate;
 
   VideoRecordingDetails();
 
@@ -16017,12 +15917,12 @@ class VideoRecordingDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (location != null) 'location': location.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (location != null) 'location': location!.toJson(),
         if (locationDescription != null)
-          'locationDescription': locationDescription,
+          'locationDescription': locationDescription!,
         if (recordingDate != null)
-          'recordingDate': (recordingDate).toIso8601String(),
+          'recordingDate': (recordingDate!).toIso8601String(),
       };
 }
 
@@ -16030,26 +15930,26 @@ class VideoRecordingDetails {
 /// thumbnails and category.
 class VideoSnippet {
   /// The YouTube video category associated with the video.
-  core.String categoryId;
+  core.String? categoryId;
 
   /// The ID that YouTube uses to uniquely identify the channel that the video
   /// was uploaded to.
-  core.String channelId;
+  core.String? channelId;
 
   /// Channel title for the channel that the video belongs to.
-  core.String channelTitle;
+  core.String? channelTitle;
 
   /// The default_audio_language property specifies the language spoken in the
   /// video's default audio track.
-  core.String defaultAudioLanguage;
+  core.String? defaultAudioLanguage;
 
   /// The language of the videos's default snippet.
-  core.String defaultLanguage;
+  core.String? defaultLanguage;
 
   /// The video's description.
   ///
   /// @mutable youtube.videos.insert youtube.videos.update
-  core.String description;
+  core.String? description;
 
   /// Indicates if the video is an upcoming/active live broadcast.
   ///
@@ -16059,33 +15959,33 @@ class VideoSnippet {
   /// - "upcoming" : The live broadcast is upcoming.
   /// - "live" : The live broadcast is active.
   /// - "completed" : The live broadcast has been completed.
-  core.String liveBroadcastContent;
+  core.String? liveBroadcastContent;
 
   /// Localized snippet selected with the hl parameter.
   ///
   /// If no such localization exists, this field is populated with the default
   /// snippet. (Read-only)
-  VideoLocalization localized;
+  VideoLocalization? localized;
 
   /// The date and time when the video was uploaded.
-  core.DateTime publishedAt;
+  core.DateTime? publishedAt;
 
   /// A list of keyword tags associated with the video.
   ///
   /// Tags may contain spaces.
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   /// A map of thumbnail images associated with the video.
   ///
   /// For each object in the map, the key is the name of the thumbnail image,
   /// and the value is an object that contains other information about the
   /// thumbnail.
-  ThumbnailDetails thumbnails;
+  ThumbnailDetails? thumbnails;
 
   /// The video's title.
   ///
   /// @mutable youtube.videos.insert youtube.videos.update
-  core.String title;
+  core.String? title;
 
   VideoSnippet();
 
@@ -16132,21 +16032,22 @@ class VideoSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (categoryId != null) 'categoryId': categoryId,
-        if (channelId != null) 'channelId': channelId,
-        if (channelTitle != null) 'channelTitle': channelTitle,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (categoryId != null) 'categoryId': categoryId!,
+        if (channelId != null) 'channelId': channelId!,
+        if (channelTitle != null) 'channelTitle': channelTitle!,
         if (defaultAudioLanguage != null)
-          'defaultAudioLanguage': defaultAudioLanguage,
-        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage,
-        if (description != null) 'description': description,
+          'defaultAudioLanguage': defaultAudioLanguage!,
+        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
+        if (description != null) 'description': description!,
         if (liveBroadcastContent != null)
-          'liveBroadcastContent': liveBroadcastContent,
-        if (localized != null) 'localized': localized.toJson(),
-        if (publishedAt != null) 'publishedAt': (publishedAt).toIso8601String(),
-        if (tags != null) 'tags': tags,
-        if (thumbnails != null) 'thumbnails': thumbnails.toJson(),
-        if (title != null) 'title': title,
+          'liveBroadcastContent': liveBroadcastContent!,
+        if (localized != null) 'localized': localized!.toJson(),
+        if (publishedAt != null)
+          'publishedAt': (publishedAt!).toIso8601String(),
+        if (tags != null) 'tags': tags!,
+        if (thumbnails != null) 'thumbnails': thumbnails!.toJson(),
+        if (title != null) 'title': title!,
       };
 }
 
@@ -16154,22 +16055,22 @@ class VideoSnippet {
 /// or liked.
 class VideoStatistics {
   /// The number of comments for the video.
-  core.String commentCount;
+  core.String? commentCount;
 
   /// The number of users who have indicated that they disliked the video by
   /// giving it a negative rating.
-  core.String dislikeCount;
+  core.String? dislikeCount;
 
   /// The number of users who currently have the video marked as a favorite
   /// video.
-  core.String favoriteCount;
+  core.String? favoriteCount;
 
   /// The number of users who have indicated that they liked the video by giving
   /// it a positive rating.
-  core.String likeCount;
+  core.String? likeCount;
 
   /// The number of times the video has been viewed.
-  core.String viewCount;
+  core.String? viewCount;
 
   VideoStatistics();
 
@@ -16191,12 +16092,12 @@ class VideoStatistics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commentCount != null) 'commentCount': commentCount,
-        if (dislikeCount != null) 'dislikeCount': dislikeCount,
-        if (favoriteCount != null) 'favoriteCount': favoriteCount,
-        if (likeCount != null) 'likeCount': likeCount,
-        if (viewCount != null) 'viewCount': viewCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commentCount != null) 'commentCount': commentCount!,
+        if (dislikeCount != null) 'dislikeCount': dislikeCount!,
+        if (favoriteCount != null) 'favoriteCount': favoriteCount!,
+        if (likeCount != null) 'likeCount': likeCount!,
+        if (viewCount != null) 'viewCount': viewCount!,
       };
 }
 
@@ -16207,7 +16108,7 @@ class VideoStatus {
   /// This value indicates if the video can be embedded on another website.
   ///
   /// @mutable youtube.videos.insert youtube.videos.update
-  core.bool embeddable;
+  core.bool? embeddable;
 
   /// This value explains why a video failed to upload.
   ///
@@ -16220,7 +16121,7 @@ class VideoStatus {
   /// - "tooSmall" : File was too small.
   /// - "codec" : Unsupported codec.
   /// - "uploadAborted" : Upload wasn't finished.
-  core.String failureReason;
+  core.String? failureReason;
 
   /// The video's license.
   ///
@@ -16228,27 +16129,27 @@ class VideoStatus {
   /// Possible string values are:
   /// - "youtube"
   /// - "creativeCommon"
-  core.String license;
-  core.bool madeForKids;
+  core.String? license;
+  core.bool? madeForKids;
 
   /// The video's privacy status.
   /// Possible string values are:
   /// - "public"
   /// - "unlisted"
   /// - "private"
-  core.String privacyStatus;
+  core.String? privacyStatus;
 
   /// This value indicates if the extended video statistics on the watch page
   /// can be viewed by everyone.
   ///
   /// Note that the view count, likes, etc will still be visible if this is
   /// disabled. @mutable youtube.videos.insert youtube.videos.update
-  core.bool publicStatsViewable;
+  core.bool? publicStatsViewable;
 
   /// The date and time when the video is scheduled to publish.
   ///
   /// It can be set only if the privacy status of the video is private..
-  core.DateTime publishAt;
+  core.DateTime? publishAt;
 
   /// This value explains why YouTube rejected an uploaded video.
   ///
@@ -16265,8 +16166,8 @@ class VideoStatus {
   /// - "uploaderAccountClosed" : Uploader closed his/her account.
   /// - "trademark" : Trademark infringement.
   /// - "legal" : An unspecified legal reason.
-  core.String rejectionReason;
-  core.bool selfDeclaredMadeForKids;
+  core.String? rejectionReason;
+  core.bool? selfDeclaredMadeForKids;
 
   /// The status of the uploaded video.
   /// Possible string values are:
@@ -16275,7 +16176,7 @@ class VideoStatus {
   /// - "failed" : Processing has failed. See FailureReason.
   /// - "rejected" : Video has been rejected. See RejectionReason.
   /// - "deleted" : Video has been deleted.
-  core.String uploadStatus;
+  core.String? uploadStatus;
 
   VideoStatus();
 
@@ -16312,19 +16213,19 @@ class VideoStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (embeddable != null) 'embeddable': embeddable,
-        if (failureReason != null) 'failureReason': failureReason,
-        if (license != null) 'license': license,
-        if (madeForKids != null) 'madeForKids': madeForKids,
-        if (privacyStatus != null) 'privacyStatus': privacyStatus,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (embeddable != null) 'embeddable': embeddable!,
+        if (failureReason != null) 'failureReason': failureReason!,
+        if (license != null) 'license': license!,
+        if (madeForKids != null) 'madeForKids': madeForKids!,
+        if (privacyStatus != null) 'privacyStatus': privacyStatus!,
         if (publicStatsViewable != null)
-          'publicStatsViewable': publicStatsViewable,
-        if (publishAt != null) 'publishAt': (publishAt).toIso8601String(),
-        if (rejectionReason != null) 'rejectionReason': rejectionReason,
+          'publicStatsViewable': publicStatsViewable!,
+        if (publishAt != null) 'publishAt': (publishAt!).toIso8601String(),
+        if (rejectionReason != null) 'rejectionReason': rejectionReason!,
         if (selfDeclaredMadeForKids != null)
-          'selfDeclaredMadeForKids': selfDeclaredMadeForKids,
-        if (uploadStatus != null) 'uploadStatus': uploadStatus,
+          'selfDeclaredMadeForKids': selfDeclaredMadeForKids!,
+        if (uploadStatus != null) 'uploadStatus': uploadStatus!,
       };
 }
 
@@ -16333,18 +16234,18 @@ class VideoStatus {
 class VideoSuggestions {
   /// A list of video editing operations that might improve the video quality or
   /// playback experience of the uploaded video.
-  core.List<core.String> editorSuggestions;
+  core.List<core.String>? editorSuggestions;
 
   /// A list of errors that will prevent YouTube from successfully processing
   /// the uploaded video video.
   ///
   /// These errors indicate that, regardless of the video's current processing
   /// status, eventually, that status will almost certainly be failed.
-  core.List<core.String> processingErrors;
+  core.List<core.String>? processingErrors;
 
   /// A list of suggestions that may improve YouTube's ability to process the
   /// video.
-  core.List<core.String> processingHints;
+  core.List<core.String>? processingHints;
 
   /// A list of reasons why YouTube may have difficulty transcoding the uploaded
   /// video or that might result in an erroneous transcoding.
@@ -16353,12 +16254,12 @@ class VideoSuggestions {
   /// uploaded video file. In addition, they identify issues that are unlikely
   /// to cause the video processing to fail but that might cause problems such
   /// as sync issues, video artifacts, or a missing audio track.
-  core.List<core.String> processingWarnings;
+  core.List<core.String>? processingWarnings;
 
   /// A list of keyword tags that could be added to the video's metadata to
   /// increase the likelihood that users will locate your video when searching
   /// or browsing on YouTube.
-  core.List<VideoSuggestionsTagSuggestion> tagSuggestions;
+  core.List<VideoSuggestionsTagSuggestion>? tagSuggestions;
 
   VideoSuggestions();
 
@@ -16392,15 +16293,15 @@ class VideoSuggestions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (editorSuggestions != null) 'editorSuggestions': editorSuggestions,
-        if (processingErrors != null) 'processingErrors': processingErrors,
-        if (processingHints != null) 'processingHints': processingHints,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (editorSuggestions != null) 'editorSuggestions': editorSuggestions!,
+        if (processingErrors != null) 'processingErrors': processingErrors!,
+        if (processingHints != null) 'processingHints': processingHints!,
         if (processingWarnings != null)
-          'processingWarnings': processingWarnings,
+          'processingWarnings': processingWarnings!,
         if (tagSuggestions != null)
           'tagSuggestions':
-              tagSuggestions.map((value) => value.toJson()).toList(),
+              tagSuggestions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -16412,10 +16313,10 @@ class VideoSuggestionsTagSuggestion {
   /// on the video category that the video uploader associates with the video.
   /// By default, tag suggestions are relevant for all categories if there are
   /// no restricts defined for the keyword.
-  core.List<core.String> categoryRestricts;
+  core.List<core.String>? categoryRestricts;
 
   /// The keyword tag suggested for the video.
-  core.String tag;
+  core.String? tag;
 
   VideoSuggestionsTagSuggestion();
 
@@ -16430,9 +16331,9 @@ class VideoSuggestionsTagSuggestion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (categoryRestricts != null) 'categoryRestricts': categoryRestricts,
-        if (tag != null) 'tag': tag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (categoryRestricts != null) 'categoryRestricts': categoryRestricts!,
+        if (tag != null) 'tag': tag!,
       };
 }
 
@@ -16443,11 +16344,11 @@ class VideoTopicDetails {
   ///
   /// These are topics that may be mentioned in, or appear in the video. You can
   /// retrieve information about each topic using Freebase Topic API.
-  core.List<core.String> relevantTopicIds;
+  core.List<core.String>? relevantTopicIds;
 
   /// A list of Wikipedia URLs that provide a high-level description of the
   /// video's content.
-  core.List<core.String> topicCategories;
+  core.List<core.String>? topicCategories;
 
   /// A list of Freebase topic IDs that are centrally associated with the video.
   ///
@@ -16455,7 +16356,7 @@ class VideoTopicDetails {
   /// said that the video is mainly about each of these. You can retrieve
   /// information about each topic using the < a
   /// href="http://wiki.freebase.com/wiki/Topic_API">Freebase Topic API.
-  core.List<core.String> topicIds;
+  core.List<core.String>? topicIds;
 
   VideoTopicDetails();
 
@@ -16477,10 +16378,10 @@ class VideoTopicDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (relevantTopicIds != null) 'relevantTopicIds': relevantTopicIds,
-        if (topicCategories != null) 'topicCategories': topicCategories,
-        if (topicIds != null) 'topicIds': topicIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (relevantTopicIds != null) 'relevantTopicIds': relevantTopicIds!,
+        if (topicCategories != null) 'topicCategories': topicCategories!,
+        if (topicIds != null) 'topicIds': topicIds!,
       };
 }
 
@@ -16489,14 +16390,14 @@ class VideoTopicDetails {
 /// All deprecated.
 class WatchSettings {
   /// The text color for the video watch page's branded area.
-  core.String backgroundColor;
+  core.String? backgroundColor;
 
   /// An ID that uniquely identifies a playlist that displays next to the video
   /// player.
-  core.String featuredPlaylistId;
+  core.String? featuredPlaylistId;
 
   /// The background color for the video watch page's branded area.
-  core.String textColor;
+  core.String? textColor;
 
   WatchSettings();
 
@@ -16512,10 +16413,10 @@ class WatchSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (backgroundColor != null) 'backgroundColor': backgroundColor,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
         if (featuredPlaylistId != null)
-          'featuredPlaylistId': featuredPlaylistId,
-        if (textColor != null) 'textColor': textColor,
+          'featuredPlaylistId': featuredPlaylistId!,
+        if (textColor != null) 'textColor': textColor!,
       };
 }

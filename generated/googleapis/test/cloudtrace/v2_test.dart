@@ -42,8 +42,8 @@ api.Annotation buildAnnotation() {
 void checkAnnotation(api.Annotation o) {
   buildCounterAnnotation++;
   if (buildCounterAnnotation < 3) {
-    checkAttributes(o.attributes as api.Attributes);
-    checkTruncatableString(o.description as api.TruncatableString);
+    checkAttributes(o.attributes! as api.Attributes);
+    checkTruncatableString(o.description! as api.TruncatableString);
   }
   buildCounterAnnotation--;
 }
@@ -64,9 +64,12 @@ api.AttributeValue buildAttributeValue() {
 void checkAttributeValue(api.AttributeValue o) {
   buildCounterAttributeValue++;
   if (buildCounterAttributeValue < 3) {
-    unittest.expect(o.boolValue, unittest.isTrue);
-    unittest.expect(o.intValue, unittest.equals('foo'));
-    checkTruncatableString(o.stringValue as api.TruncatableString);
+    unittest.expect(o.boolValue!, unittest.isTrue);
+    unittest.expect(
+      o.intValue!,
+      unittest.equals('foo'),
+    );
+    checkTruncatableString(o.stringValue! as api.TruncatableString);
   }
   buildCounterAttributeValue--;
 }
@@ -80,8 +83,8 @@ core.Map<core.String, api.AttributeValue> buildUnnamed1495() {
 
 void checkUnnamed1495(core.Map<core.String, api.AttributeValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAttributeValue(o['x'] as api.AttributeValue);
-  checkAttributeValue(o['y'] as api.AttributeValue);
+  checkAttributeValue(o['x']! as api.AttributeValue);
+  checkAttributeValue(o['y']! as api.AttributeValue);
 }
 
 core.int buildCounterAttributes = 0;
@@ -99,8 +102,11 @@ api.Attributes buildAttributes() {
 void checkAttributes(api.Attributes o) {
   buildCounterAttributes++;
   if (buildCounterAttributes < 3) {
-    checkUnnamed1495(o.attributeMap);
-    unittest.expect(o.droppedAttributesCount, unittest.equals(42));
+    checkUnnamed1495(o.attributeMap!);
+    unittest.expect(
+      o.droppedAttributesCount!,
+      unittest.equals(42),
+    );
   }
   buildCounterAttributes--;
 }
@@ -132,7 +138,7 @@ api.BatchWriteSpansRequest buildBatchWriteSpansRequest() {
 void checkBatchWriteSpansRequest(api.BatchWriteSpansRequest o) {
   buildCounterBatchWriteSpansRequest++;
   if (buildCounterBatchWriteSpansRequest < 3) {
-    checkUnnamed1496(o.spans);
+    checkUnnamed1496(o.spans!);
   }
   buildCounterBatchWriteSpansRequest--;
 }
@@ -169,10 +175,19 @@ api.Link buildLink() {
 void checkLink(api.Link o) {
   buildCounterLink++;
   if (buildCounterLink < 3) {
-    checkAttributes(o.attributes as api.Attributes);
-    unittest.expect(o.spanId, unittest.equals('foo'));
-    unittest.expect(o.traceId, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
+    checkAttributes(o.attributes! as api.Attributes);
+    unittest.expect(
+      o.spanId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.traceId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLink--;
 }
@@ -205,8 +220,11 @@ api.Links buildLinks() {
 void checkLinks(api.Links o) {
   buildCounterLinks++;
   if (buildCounterLinks < 3) {
-    unittest.expect(o.droppedLinksCount, unittest.equals(42));
-    checkUnnamed1497(o.link);
+    unittest.expect(
+      o.droppedLinksCount!,
+      unittest.equals(42),
+    );
+    checkUnnamed1497(o.link!);
   }
   buildCounterLinks--;
 }
@@ -228,10 +246,22 @@ api.MessageEvent buildMessageEvent() {
 void checkMessageEvent(api.MessageEvent o) {
   buildCounterMessageEvent++;
   if (buildCounterMessageEvent < 3) {
-    unittest.expect(o.compressedSizeBytes, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
-    unittest.expect(o.uncompressedSizeBytes, unittest.equals('foo'));
+    unittest.expect(
+      o.compressedSizeBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uncompressedSizeBytes!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterMessageEvent--;
 }
@@ -251,8 +281,8 @@ api.Module buildModule() {
 void checkModule(api.Module o) {
   buildCounterModule++;
   if (buildCounterModule < 3) {
-    checkTruncatableString(o.buildId as api.TruncatableString);
-    checkTruncatableString(o.module as api.TruncatableString);
+    checkTruncatableString(o.buildId! as api.TruncatableString);
+    checkTruncatableString(o.module! as api.TruncatableString);
   }
   buildCounterModule--;
 }
@@ -284,20 +314,41 @@ api.Span buildSpan() {
 void checkSpan(api.Span o) {
   buildCounterSpan++;
   if (buildCounterSpan < 3) {
-    checkAttributes(o.attributes as api.Attributes);
-    unittest.expect(o.childSpanCount, unittest.equals(42));
-    checkTruncatableString(o.displayName as api.TruncatableString);
-    unittest.expect(o.endTime, unittest.equals('foo'));
-    checkLinks(o.links as api.Links);
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.parentSpanId, unittest.equals('foo'));
-    unittest.expect(o.sameProcessAsParentSpan, unittest.isTrue);
-    unittest.expect(o.spanId, unittest.equals('foo'));
-    unittest.expect(o.spanKind, unittest.equals('foo'));
-    checkStackTrace(o.stackTrace as api.StackTrace);
-    unittest.expect(o.startTime, unittest.equals('foo'));
-    checkStatus(o.status as api.Status);
-    checkTimeEvents(o.timeEvents as api.TimeEvents);
+    checkAttributes(o.attributes! as api.Attributes);
+    unittest.expect(
+      o.childSpanCount!,
+      unittest.equals(42),
+    );
+    checkTruncatableString(o.displayName! as api.TruncatableString);
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    checkLinks(o.links! as api.Links);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.parentSpanId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.sameProcessAsParentSpan!, unittest.isTrue);
+    unittest.expect(
+      o.spanId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.spanKind!,
+      unittest.equals('foo'),
+    );
+    checkStackTrace(o.stackTrace! as api.StackTrace);
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+    checkStatus(o.status! as api.Status);
+    checkTimeEvents(o.timeEvents! as api.TimeEvents);
   }
   buildCounterSpan--;
 }
@@ -322,13 +373,19 @@ api.StackFrame buildStackFrame() {
 void checkStackFrame(api.StackFrame o) {
   buildCounterStackFrame++;
   if (buildCounterStackFrame < 3) {
-    unittest.expect(o.columnNumber, unittest.equals('foo'));
-    checkTruncatableString(o.fileName as api.TruncatableString);
-    checkTruncatableString(o.functionName as api.TruncatableString);
-    unittest.expect(o.lineNumber, unittest.equals('foo'));
-    checkModule(o.loadModule as api.Module);
-    checkTruncatableString(o.originalFunctionName as api.TruncatableString);
-    checkTruncatableString(o.sourceVersion as api.TruncatableString);
+    unittest.expect(
+      o.columnNumber!,
+      unittest.equals('foo'),
+    );
+    checkTruncatableString(o.fileName! as api.TruncatableString);
+    checkTruncatableString(o.functionName! as api.TruncatableString);
+    unittest.expect(
+      o.lineNumber!,
+      unittest.equals('foo'),
+    );
+    checkModule(o.loadModule! as api.Module);
+    checkTruncatableString(o.originalFunctionName! as api.TruncatableString);
+    checkTruncatableString(o.sourceVersion! as api.TruncatableString);
   }
   buildCounterStackFrame--;
 }
@@ -361,8 +418,11 @@ api.StackFrames buildStackFrames() {
 void checkStackFrames(api.StackFrames o) {
   buildCounterStackFrames++;
   if (buildCounterStackFrames < 3) {
-    unittest.expect(o.droppedFramesCount, unittest.equals(42));
-    checkUnnamed1498(o.frame);
+    unittest.expect(
+      o.droppedFramesCount!,
+      unittest.equals(42),
+    );
+    checkUnnamed1498(o.frame!);
   }
   buildCounterStackFrames--;
 }
@@ -382,8 +442,11 @@ api.StackTrace buildStackTrace() {
 void checkStackTrace(api.StackTrace o) {
   buildCounterStackTrace++;
   if (buildCounterStackTrace < 3) {
-    checkStackFrames(o.stackFrames as api.StackFrames);
-    unittest.expect(o.stackTraceHashId, unittest.equals('foo'));
+    checkStackFrames(o.stackFrames! as api.StackFrames);
+    unittest.expect(
+      o.stackTraceHashId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterStackTrace--;
 }
@@ -405,16 +468,34 @@ core.Map<core.String, core.Object> buildUnnamed1499() {
 
 void checkUnnamed1499(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o['x']) as core.Map;
+  var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
-  var casted2 = (o['y']) as core.Map;
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
+  var casted2 = (o['y']!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed1500() {
@@ -446,9 +527,15 @@ api.Status buildStatus() {
 void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
-    unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed1500(o.details);
-    unittest.expect(o.message, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals(42),
+    );
+    checkUnnamed1500(o.details!);
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterStatus--;
 }
@@ -469,9 +556,12 @@ api.TimeEvent buildTimeEvent() {
 void checkTimeEvent(api.TimeEvent o) {
   buildCounterTimeEvent++;
   if (buildCounterTimeEvent < 3) {
-    checkAnnotation(o.annotation as api.Annotation);
-    checkMessageEvent(o.messageEvent as api.MessageEvent);
-    unittest.expect(o.time, unittest.equals('foo'));
+    checkAnnotation(o.annotation! as api.Annotation);
+    checkMessageEvent(o.messageEvent! as api.MessageEvent);
+    unittest.expect(
+      o.time!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTimeEvent--;
 }
@@ -505,9 +595,15 @@ api.TimeEvents buildTimeEvents() {
 void checkTimeEvents(api.TimeEvents o) {
   buildCounterTimeEvents++;
   if (buildCounterTimeEvents < 3) {
-    unittest.expect(o.droppedAnnotationsCount, unittest.equals(42));
-    unittest.expect(o.droppedMessageEventsCount, unittest.equals(42));
-    checkUnnamed1501(o.timeEvent);
+    unittest.expect(
+      o.droppedAnnotationsCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.droppedMessageEventsCount!,
+      unittest.equals(42),
+    );
+    checkUnnamed1501(o.timeEvent!);
   }
   buildCounterTimeEvents--;
 }
@@ -527,8 +623,14 @@ api.TruncatableString buildTruncatableString() {
 void checkTruncatableString(api.TruncatableString o) {
   buildCounterTruncatableString++;
   if (buildCounterTruncatableString < 3) {
-    unittest.expect(o.truncatedByteCount, unittest.equals(42));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.truncatedByteCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTruncatableString--;
 }
@@ -687,10 +789,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -709,7 +815,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -742,10 +851,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -764,7 +877,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

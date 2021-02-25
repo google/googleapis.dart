@@ -79,10 +79,9 @@ class RecordsResource {
   /// this method will complete with the same error.
   async.Future<QueryResponse> queryRecord(
     QueryRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -112,7 +111,7 @@ class RecordsResource {
 class Bin {
   /// The proportion of users that experienced this bin's value for the given
   /// metric.
-  core.double density;
+  core.double? density;
 
   /// End is the end of the data bin.
   ///
@@ -121,13 +120,13 @@ class Bin {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object end;
+  core.Object? end;
 
   /// Start is the beginning of the data bin.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object start;
+  core.Object? start;
 
   Bin();
 
@@ -143,10 +142,10 @@ class Bin {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (density != null) 'density': density,
-        if (end != null) 'end': end,
-        if (start != null) 'start': start,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (density != null) 'density': density!,
+        if (end != null) 'end': end!,
+        if (start != null) 'start': start!,
       };
 }
 
@@ -159,7 +158,7 @@ class Key {
   /// specified in: https://wicg.github.io/netinfo/#effective-connection-types
   /// If the effective connection type is unspecified, then aggregated data over
   /// all effective connection types will be returned.
-  core.String effectiveConnectionType;
+  core.String? effectiveConnectionType;
 
   /// The form factor is the device class that all users used to access the site
   /// for this record.
@@ -172,19 +171,19 @@ class Key {
   /// - "DESKTOP" : The device class representing a "desktop"/"laptop" type full
   /// size client.
   /// - "TABLET" : The device class representing a "tablet" type client.
-  core.String formFactor;
+  core.String? formFactor;
 
   /// Origin specifies the origin that this record is for.
   ///
   /// Note: When specifying an origin, data for loads under this origin over all
   /// pages are aggregated into origin level user experience data.
-  core.String origin;
+  core.String? origin;
 
   /// Url specifies a specific url that this record is for.
   ///
   /// Note: When specifying a "url" only data for that specific url will be
   /// aggregated.
-  core.String url;
+  core.String? url;
 
   Key();
 
@@ -203,12 +202,12 @@ class Key {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (effectiveConnectionType != null)
-          'effectiveConnectionType': effectiveConnectionType,
-        if (formFactor != null) 'formFactor': formFactor,
-        if (origin != null) 'origin': origin,
-        if (url != null) 'url': url,
+          'effectiveConnectionType': effectiveConnectionType!,
+        if (formFactor != null) 'formFactor': formFactor!,
+        if (origin != null) 'origin': origin!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -222,13 +221,13 @@ class Metric {
   ///
   /// The histogram will have at least one bin and the densities of all bins
   /// will add up to ~1.
-  core.List<Bin> histogram;
+  core.List<Bin>? histogram;
 
   /// Common useful percentiles of the Metric.
   ///
   /// The value type for the percentiles will be the same as the value types
   /// given for the Histogram bins.
-  Percentiles percentiles;
+  Percentiles? percentiles;
 
   Metric();
 
@@ -245,10 +244,10 @@ class Metric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (histogram != null)
-          'histogram': histogram.map((value) => value.toJson()).toList(),
-        if (percentiles != null) 'percentiles': percentiles.toJson(),
+          'histogram': histogram!.map((value) => value.toJson()).toList(),
+        if (percentiles != null) 'percentiles': percentiles!.toJson(),
       };
 }
 
@@ -262,7 +261,7 @@ class Percentiles {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object p75;
+  core.Object? p75;
 
   Percentiles();
 
@@ -272,8 +271,8 @@ class Percentiles {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (p75 != null) 'p75': p75,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (p75 != null) 'p75': p75!,
       };
 }
 
@@ -289,7 +288,7 @@ class QueryRequest {
   /// specified in: https://wicg.github.io/netinfo/#effective-connection-types
   /// Note: If no effective connection type is specified, then a special record
   /// with aggregated data over all effective connection types will be returned.
-  core.String effectiveConnectionType;
+  core.String? effectiveConnectionType;
 
   /// The form factor is a query dimension that specifies the device class that
   /// the record's data should belong to.
@@ -302,26 +301,26 @@ class QueryRequest {
   /// - "DESKTOP" : The device class representing a "desktop"/"laptop" type full
   /// size client.
   /// - "TABLET" : The device class representing a "tablet" type client.
-  core.String formFactor;
+  core.String? formFactor;
 
   /// The metrics that should be included in the response.
   ///
   /// If none are specified then any metrics found will be returned. Allowed
   /// values: \["first_contentful_paint", "first_input_delay",
   /// "largest_contentful_paint", "cumulative_layout_shift"\]
-  core.List<core.String> metrics;
+  core.List<core.String>? metrics;
 
   /// The url pattern "origin" refers to a url pattern that is the origin of a
   /// website.
   ///
   /// Examples: "https://example.com", "https://cloud.google.com"
-  core.String origin;
+  core.String? origin;
 
   /// The url pattern "url" refers to a url pattern that is any arbitrary url.
   ///
   /// Examples: "https://example.com/",
   /// "https://cloud.google.com/why-google-cloud/"
-  core.String url;
+  core.String? url;
 
   QueryRequest();
 
@@ -345,13 +344,13 @@ class QueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (effectiveConnectionType != null)
-          'effectiveConnectionType': effectiveConnectionType,
-        if (formFactor != null) 'formFactor': formFactor,
-        if (metrics != null) 'metrics': metrics,
-        if (origin != null) 'origin': origin,
-        if (url != null) 'url': url,
+          'effectiveConnectionType': effectiveConnectionType!,
+        if (formFactor != null) 'formFactor': formFactor!,
+        if (metrics != null) 'metrics': metrics!,
+        if (origin != null) 'origin': origin!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -363,11 +362,11 @@ class QueryRequest {
 /// make the request successful.
 class QueryResponse {
   /// The record that was found.
-  Record record;
+  Record? record;
 
   /// These are details about automated normalization actions that were taken in
   /// order to make the requested `url_pattern` valid.
-  UrlNormalization urlNormalizationDetails;
+  UrlNormalization? urlNormalizationDetails;
 
   QueryResponse();
 
@@ -383,10 +382,10 @@ class QueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (record != null) 'record': record.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (record != null) 'record': record!.toJson(),
         if (urlNormalizationDetails != null)
-          'urlNormalizationDetails': urlNormalizationDetails.toJson(),
+          'urlNormalizationDetails': urlNormalizationDetails!.toJson(),
       };
 }
 
@@ -397,7 +396,7 @@ class QueryResponse {
 class Record {
   /// Key defines all of the unique querying parameters needed to look up a user
   /// experience record.
-  Key key;
+  Key? key;
 
   /// Metrics is the map of user experience data available for the record
   /// defined in the key field.
@@ -405,7 +404,7 @@ class Record {
   /// Metrics are keyed on the metric name. Allowed key values:
   /// \["first_contentful_paint", "first_input_delay",
   /// "largest_contentful_paint", "cumulative_layout_shift"\]
-  core.Map<core.String, Metric> metrics;
+  core.Map<core.String, Metric>? metrics;
 
   Record();
 
@@ -414,21 +413,22 @@ class Record {
       key = Key.fromJson(_json['key'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metrics')) {
-      metrics =
-          (_json['metrics'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  Metric.fromJson(item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      metrics = (_json['metrics'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              Metric.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!.toJson(),
         if (metrics != null)
           'metrics':
-              metrics.map((key, item) => core.MapEntry(key, item.toJson())),
+              metrics!.map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
 
@@ -442,10 +442,10 @@ class UrlNormalization {
   /// The URL after any normalization actions.
   ///
   /// This is a valid user experience URL that could reasonably be looked up.
-  core.String normalizedUrl;
+  core.String? normalizedUrl;
 
   /// The original requested URL prior to any normalization actions.
-  core.String originalUrl;
+  core.String? originalUrl;
 
   UrlNormalization();
 
@@ -458,8 +458,8 @@ class UrlNormalization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (normalizedUrl != null) 'normalizedUrl': normalizedUrl,
-        if (originalUrl != null) 'originalUrl': originalUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (normalizedUrl != null) 'normalizedUrl': normalizedUrl!,
+        if (originalUrl != null) 'originalUrl': originalUrl!,
       };
 }

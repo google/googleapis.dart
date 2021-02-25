@@ -43,9 +43,12 @@ api.AttributeValue buildAttributeValue() {
 void checkAttributeValue(api.AttributeValue o) {
   buildCounterAttributeValue++;
   if (buildCounterAttributeValue < 3) {
-    unittest.expect(o.boolValue, unittest.isTrue);
-    unittest.expect(o.intValue, unittest.equals('foo'));
-    checkTruncatableString(o.stringValue as api.TruncatableString);
+    unittest.expect(o.boolValue!, unittest.isTrue);
+    unittest.expect(
+      o.intValue!,
+      unittest.equals('foo'),
+    );
+    checkTruncatableString(o.stringValue! as api.TruncatableString);
   }
   buildCounterAttributeValue--;
 }
@@ -59,8 +62,8 @@ core.Map<core.String, api.AttributeValue> buildUnnamed7132() {
 
 void checkUnnamed7132(core.Map<core.String, api.AttributeValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAttributeValue(o['x'] as api.AttributeValue);
-  checkAttributeValue(o['y'] as api.AttributeValue);
+  checkAttributeValue(o['x']! as api.AttributeValue);
+  checkAttributeValue(o['y']! as api.AttributeValue);
 }
 
 core.int buildCounterAttributes = 0;
@@ -78,8 +81,11 @@ api.Attributes buildAttributes() {
 void checkAttributes(api.Attributes o) {
   buildCounterAttributes++;
   if (buildCounterAttributes < 3) {
-    checkUnnamed7132(o.attributeMap);
-    unittest.expect(o.droppedAttributesCount, unittest.equals(42));
+    checkUnnamed7132(o.attributeMap!);
+    unittest.expect(
+      o.droppedAttributesCount!,
+      unittest.equals(42),
+    );
   }
   buildCounterAttributes--;
 }
@@ -112,8 +118,11 @@ api.AuditConfig buildAuditConfig() {
 void checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    checkUnnamed7133(o.auditLogConfigs);
-    unittest.expect(o.service, unittest.equals('foo'));
+    checkUnnamed7133(o.auditLogConfigs!);
+    unittest.expect(
+      o.service!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAuditConfig--;
 }
@@ -127,8 +136,14 @@ core.List<core.String> buildUnnamed7134() {
 
 void checkUnnamed7134(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterAuditLogConfig = 0;
@@ -146,8 +161,11 @@ api.AuditLogConfig buildAuditLogConfig() {
 void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed7134(o.exemptedMembers);
-    unittest.expect(o.logType, unittest.equals('foo'));
+    checkUnnamed7134(o.exemptedMembers!);
+    unittest.expect(
+      o.logType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAuditLogConfig--;
 }
@@ -179,7 +197,7 @@ api.BillingView buildBillingView() {
 void checkBillingView(api.BillingView o) {
   buildCounterBillingView++;
   if (buildCounterBillingView < 3) {
-    checkUnnamed7135(o.reportRequests);
+    checkUnnamed7135(o.reportRequests!);
   }
   buildCounterBillingView--;
 }
@@ -193,8 +211,14 @@ core.List<core.String> buildUnnamed7136() {
 
 void checkUnnamed7136(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBinding = 0;
@@ -213,9 +237,12 @@ api.Binding buildBinding() {
 void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkExpr(o.condition as api.Expr);
-    checkUnnamed7136(o.members);
-    unittest.expect(o.role, unittest.equals('foo'));
+    checkExpr(o.condition! as api.Expr);
+    checkUnnamed7136(o.members!);
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBinding--;
 }
@@ -229,8 +256,14 @@ core.List<core.String> buildUnnamed7137() {
 
 void checkUnnamed7137(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.Exemplar> buildUnnamed7138() {
@@ -269,16 +302,31 @@ api.Distribution buildDistribution() {
 void checkDistribution(api.Distribution o) {
   buildCounterDistribution++;
   if (buildCounterDistribution < 3) {
-    checkUnnamed7137(o.bucketCounts);
-    unittest.expect(o.count, unittest.equals('foo'));
-    checkUnnamed7138(o.exemplars);
-    checkExplicitBuckets(o.explicitBuckets as api.ExplicitBuckets);
-    checkExponentialBuckets(o.exponentialBuckets as api.ExponentialBuckets);
-    checkLinearBuckets(o.linearBuckets as api.LinearBuckets);
-    unittest.expect(o.maximum, unittest.equals(42.0));
-    unittest.expect(o.mean, unittest.equals(42.0));
-    unittest.expect(o.minimum, unittest.equals(42.0));
-    unittest.expect(o.sumOfSquaredDeviation, unittest.equals(42.0));
+    checkUnnamed7137(o.bucketCounts!);
+    unittest.expect(
+      o.count!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7138(o.exemplars!);
+    checkExplicitBuckets(o.explicitBuckets! as api.ExplicitBuckets);
+    checkExponentialBuckets(o.exponentialBuckets! as api.ExponentialBuckets);
+    checkLinearBuckets(o.linearBuckets! as api.LinearBuckets);
+    unittest.expect(
+      o.maximum!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.mean!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.minimum!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.sumOfSquaredDeviation!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterDistribution--;
 }
@@ -315,16 +363,34 @@ core.Map<core.String, core.Object> buildUnnamed7139() {
 
 void checkUnnamed7139(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o['x']) as core.Map;
+  var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
-  var casted2 = (o['y']) as core.Map;
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
+  var casted2 = (o['y']!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed7140() {
@@ -356,9 +422,15 @@ api.Exemplar buildExemplar() {
 void checkExemplar(api.Exemplar o) {
   buildCounterExemplar++;
   if (buildCounterExemplar < 3) {
-    checkUnnamed7140(o.attachments);
-    unittest.expect(o.timestamp, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals(42.0));
+    checkUnnamed7140(o.attachments!);
+    unittest.expect(
+      o.timestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterExemplar--;
 }
@@ -372,8 +444,14 @@ core.List<core.double> buildUnnamed7141() {
 
 void checkUnnamed7141(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42.0));
-  unittest.expect(o[1], unittest.equals(42.0));
+  unittest.expect(
+    o[0],
+    unittest.equals(42.0),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42.0),
+  );
 }
 
 core.int buildCounterExplicitBuckets = 0;
@@ -390,7 +468,7 @@ api.ExplicitBuckets buildExplicitBuckets() {
 void checkExplicitBuckets(api.ExplicitBuckets o) {
   buildCounterExplicitBuckets++;
   if (buildCounterExplicitBuckets < 3) {
-    checkUnnamed7141(o.bounds);
+    checkUnnamed7141(o.bounds!);
   }
   buildCounterExplicitBuckets--;
 }
@@ -411,9 +489,18 @@ api.ExponentialBuckets buildExponentialBuckets() {
 void checkExponentialBuckets(api.ExponentialBuckets o) {
   buildCounterExponentialBuckets++;
   if (buildCounterExponentialBuckets < 3) {
-    unittest.expect(o.growthFactor, unittest.equals(42.0));
-    unittest.expect(o.numFiniteBuckets, unittest.equals(42));
-    unittest.expect(o.scale, unittest.equals(42.0));
+    unittest.expect(
+      o.growthFactor!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.numFiniteBuckets!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.scale!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterExponentialBuckets--;
 }
@@ -435,10 +522,22 @@ api.Expr buildExpr() {
 void checkExpr(api.Expr o) {
   buildCounterExpr++;
   if (buildCounterExpr < 3) {
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.expression, unittest.equals('foo'));
-    unittest.expect(o.location, unittest.equals('foo'));
-    unittest.expect(o.title, unittest.equals('foo'));
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expression!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterExpr--;
 }
@@ -490,8 +589,11 @@ void checkGoogleLongrunningListOperationsResponse(
     api.GoogleLongrunningListOperationsResponse o) {
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed7142(o.operations);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7142(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
@@ -513,16 +615,34 @@ core.Map<core.String, core.Object> buildUnnamed7143() {
 
 void checkUnnamed7143(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o['x']) as core.Map;
+  var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3['bool'], unittest.equals(true));
-  unittest.expect(casted3['string'], unittest.equals('foo'));
-  var casted4 = (o['y']) as core.Map;
+  unittest.expect(
+    casted3['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted3['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted3['string'],
+    unittest.equals('foo'),
+  );
+  var casted4 = (o['y']!) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4['bool'], unittest.equals(true));
-  unittest.expect(casted4['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted4['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted4['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted4['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.Map<core.String, core.Object> buildUnnamed7144() {
@@ -542,16 +662,34 @@ core.Map<core.String, core.Object> buildUnnamed7144() {
 
 void checkUnnamed7144(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o['x']) as core.Map;
+  var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5['bool'], unittest.equals(true));
-  unittest.expect(casted5['string'], unittest.equals('foo'));
-  var casted6 = (o['y']) as core.Map;
+  unittest.expect(
+    casted5['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted5['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted5['string'],
+    unittest.equals('foo'),
+  );
+  var casted6 = (o['y']!) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6['bool'], unittest.equals(true));
-  unittest.expect(casted6['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted6['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted6['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted6['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleLongrunningOperation = 0;
@@ -572,11 +710,14 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
 void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   buildCounterGoogleLongrunningOperation++;
   if (buildCounterGoogleLongrunningOperation < 3) {
-    unittest.expect(o.done, unittest.isTrue);
-    checkGoogleRpcStatus(o.error as api.GoogleRpcStatus);
-    checkUnnamed7143(o.metadata);
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed7144(o.response);
+    unittest.expect(o.done!, unittest.isTrue);
+    checkGoogleRpcStatus(o.error! as api.GoogleRpcStatus);
+    checkUnnamed7143(o.metadata!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7144(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -598,16 +739,34 @@ core.Map<core.String, core.Object> buildUnnamed7145() {
 
 void checkUnnamed7145(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted7 = (o['x']) as core.Map;
+  var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted7['bool'], unittest.equals(true));
-  unittest.expect(casted7['string'], unittest.equals('foo'));
-  var casted8 = (o['y']) as core.Map;
+  unittest.expect(
+    casted7['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted7['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted7['string'],
+    unittest.equals('foo'),
+  );
+  var casted8 = (o['y']!) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted8['bool'], unittest.equals(true));
-  unittest.expect(casted8['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted8['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted8['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted8['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed7146() {
@@ -639,9 +798,15 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
 void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
-    unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed7146(o.details);
-    unittest.expect(o.message, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals(42),
+    );
+    checkUnnamed7146(o.details!);
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleRpcStatus--;
 }
@@ -674,21 +839,57 @@ api.HttpRequest buildHttpRequest() {
 void checkHttpRequest(api.HttpRequest o) {
   buildCounterHttpRequest++;
   if (buildCounterHttpRequest < 3) {
-    unittest.expect(o.cacheFillBytes, unittest.equals('foo'));
-    unittest.expect(o.cacheHit, unittest.isTrue);
-    unittest.expect(o.cacheLookup, unittest.isTrue);
-    unittest.expect(o.cacheValidatedWithOriginServer, unittest.isTrue);
-    unittest.expect(o.latency, unittest.equals('foo'));
-    unittest.expect(o.protocol, unittest.equals('foo'));
-    unittest.expect(o.referer, unittest.equals('foo'));
-    unittest.expect(o.remoteIp, unittest.equals('foo'));
-    unittest.expect(o.requestMethod, unittest.equals('foo'));
-    unittest.expect(o.requestSize, unittest.equals('foo'));
-    unittest.expect(o.requestUrl, unittest.equals('foo'));
-    unittest.expect(o.responseSize, unittest.equals('foo'));
-    unittest.expect(o.serverIp, unittest.equals('foo'));
-    unittest.expect(o.status, unittest.equals(42));
-    unittest.expect(o.userAgent, unittest.equals('foo'));
+    unittest.expect(
+      o.cacheFillBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.cacheHit!, unittest.isTrue);
+    unittest.expect(o.cacheLookup!, unittest.isTrue);
+    unittest.expect(o.cacheValidatedWithOriginServer!, unittest.isTrue);
+    unittest.expect(
+      o.latency!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.protocol!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.referer!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.remoteIp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestMethod!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestSize!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.responseSize!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serverIp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.status!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.userAgent!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterHttpRequest--;
 }
@@ -702,8 +903,14 @@ core.Map<core.String, core.String> buildUnnamed7147() {
 
 void checkUnnamed7147(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed7148() {
@@ -715,8 +922,14 @@ core.List<core.String> buildUnnamed7148() {
 
 void checkUnnamed7148(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterHub = 0;
@@ -740,14 +953,32 @@ api.Hub buildHub() {
 void checkHub(api.Hub o) {
   buildCounterHub++;
   if (buildCounterHub < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed7147(o.labels);
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed7148(o.spokes);
-    unittest.expect(o.state, unittest.equals('foo'));
-    unittest.expect(o.uniqueId, unittest.equals('foo'));
-    unittest.expect(o.updateTime, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7147(o.labels!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7148(o.spokes!);
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uniqueId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterHub--;
 }
@@ -768,9 +999,18 @@ api.LinearBuckets buildLinearBuckets() {
 void checkLinearBuckets(api.LinearBuckets o) {
   buildCounterLinearBuckets++;
   if (buildCounterLinearBuckets < 3) {
-    unittest.expect(o.numFiniteBuckets, unittest.equals(42));
-    unittest.expect(o.offset, unittest.equals(42.0));
-    unittest.expect(o.width, unittest.equals(42.0));
+    unittest.expect(
+      o.numFiniteBuckets!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.offset!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.width!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterLinearBuckets--;
 }
@@ -797,8 +1037,14 @@ core.List<core.String> buildUnnamed7150() {
 
 void checkUnnamed7150(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterListHubsResponse = 0;
@@ -817,9 +1063,12 @@ api.ListHubsResponse buildListHubsResponse() {
 void checkListHubsResponse(api.ListHubsResponse o) {
   buildCounterListHubsResponse++;
   if (buildCounterListHubsResponse < 3) {
-    checkUnnamed7149(o.hubs);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed7150(o.unreachable);
+    checkUnnamed7149(o.hubs!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7150(o.unreachable!);
   }
   buildCounterListHubsResponse--;
 }
@@ -852,8 +1101,11 @@ api.ListLocationsResponse buildListLocationsResponse() {
 void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed7151(o.locations);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed7151(o.locations!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterListLocationsResponse--;
 }
@@ -880,8 +1132,14 @@ core.List<core.String> buildUnnamed7153() {
 
 void checkUnnamed7153(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterListSpokesResponse = 0;
@@ -900,9 +1158,12 @@ api.ListSpokesResponse buildListSpokesResponse() {
 void checkListSpokesResponse(api.ListSpokesResponse o) {
   buildCounterListSpokesResponse++;
   if (buildCounterListSpokesResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed7152(o.spokes);
-    checkUnnamed7153(o.unreachable);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7152(o.spokes!);
+    checkUnnamed7153(o.unreachable!);
   }
   buildCounterListSpokesResponse--;
 }
@@ -916,8 +1177,14 @@ core.Map<core.String, core.String> buildUnnamed7154() {
 
 void checkUnnamed7154(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.Map<core.String, core.Object> buildUnnamed7155() {
@@ -937,16 +1204,34 @@ core.Map<core.String, core.Object> buildUnnamed7155() {
 
 void checkUnnamed7155(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted9 = (o['x']) as core.Map;
+  var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
-  unittest.expect(casted9['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted9['bool'], unittest.equals(true));
-  unittest.expect(casted9['string'], unittest.equals('foo'));
-  var casted10 = (o['y']) as core.Map;
+  unittest.expect(
+    casted9['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted9['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted9['string'],
+    unittest.equals('foo'),
+  );
+  var casted10 = (o['y']!) as core.Map;
   unittest.expect(casted10, unittest.hasLength(3));
-  unittest.expect(casted10['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted10['bool'], unittest.equals(true));
-  unittest.expect(casted10['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted10['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted10['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted10['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterLocation = 0;
@@ -967,11 +1252,20 @@ api.Location buildLocation() {
 void checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed7154(o.labels);
-    unittest.expect(o.locationId, unittest.equals('foo'));
-    checkUnnamed7155(o.metadata);
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7154(o.labels!);
+    unittest.expect(
+      o.locationId!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7155(o.metadata!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLocation--;
 }
@@ -985,8 +1279,14 @@ core.Map<core.String, core.String> buildUnnamed7156() {
 
 void checkUnnamed7156(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.Map<core.String, core.Object> buildUnnamed7157() {
@@ -1006,16 +1306,34 @@ core.Map<core.String, core.Object> buildUnnamed7157() {
 
 void checkUnnamed7157(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted11 = (o['x']) as core.Map;
+  var casted11 = (o['x']!) as core.Map;
   unittest.expect(casted11, unittest.hasLength(3));
-  unittest.expect(casted11['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted11['bool'], unittest.equals(true));
-  unittest.expect(casted11['string'], unittest.equals('foo'));
-  var casted12 = (o['y']) as core.Map;
+  unittest.expect(
+    casted11['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted11['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted11['string'],
+    unittest.equals('foo'),
+  );
+  var casted12 = (o['y']!) as core.Map;
   unittest.expect(casted12, unittest.hasLength(3));
-  unittest.expect(casted12['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted12['bool'], unittest.equals(true));
-  unittest.expect(casted12['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted12['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted12['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted12['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.Map<core.String, core.Object> buildUnnamed7158() {
@@ -1035,16 +1353,34 @@ core.Map<core.String, core.Object> buildUnnamed7158() {
 
 void checkUnnamed7158(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted13 = (o['x']) as core.Map;
+  var casted13 = (o['x']!) as core.Map;
   unittest.expect(casted13, unittest.hasLength(3));
-  unittest.expect(casted13['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted13['bool'], unittest.equals(true));
-  unittest.expect(casted13['string'], unittest.equals('foo'));
-  var casted14 = (o['y']) as core.Map;
+  unittest.expect(
+    casted13['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted13['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted13['string'],
+    unittest.equals('foo'),
+  );
+  var casted14 = (o['y']!) as core.Map;
   unittest.expect(casted14, unittest.hasLength(3));
-  unittest.expect(casted14['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted14['bool'], unittest.equals(true));
-  unittest.expect(casted14['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted14['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted14['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted14['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterLogEntry = 0;
@@ -1072,18 +1408,37 @@ api.LogEntry buildLogEntry() {
 void checkLogEntry(api.LogEntry o) {
   buildCounterLogEntry++;
   if (buildCounterLogEntry < 3) {
-    checkHttpRequest(o.httpRequest as api.HttpRequest);
-    unittest.expect(o.insertId, unittest.equals('foo'));
-    checkUnnamed7156(o.labels);
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkLogEntryOperation(o.operation as api.LogEntryOperation);
-    checkUnnamed7157(o.protoPayload);
-    unittest.expect(o.severity, unittest.equals('foo'));
-    checkLogEntrySourceLocation(o.sourceLocation as api.LogEntrySourceLocation);
-    checkUnnamed7158(o.structPayload);
-    unittest.expect(o.textPayload, unittest.equals('foo'));
-    unittest.expect(o.timestamp, unittest.equals('foo'));
-    unittest.expect(o.trace, unittest.equals('foo'));
+    checkHttpRequest(o.httpRequest! as api.HttpRequest);
+    unittest.expect(
+      o.insertId!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7156(o.labels!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkLogEntryOperation(o.operation! as api.LogEntryOperation);
+    checkUnnamed7157(o.protoPayload!);
+    unittest.expect(
+      o.severity!,
+      unittest.equals('foo'),
+    );
+    checkLogEntrySourceLocation(
+        o.sourceLocation! as api.LogEntrySourceLocation);
+    checkUnnamed7158(o.structPayload!);
+    unittest.expect(
+      o.textPayload!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.trace!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLogEntry--;
 }
@@ -1105,10 +1460,16 @@ api.LogEntryOperation buildLogEntryOperation() {
 void checkLogEntryOperation(api.LogEntryOperation o) {
   buildCounterLogEntryOperation++;
   if (buildCounterLogEntryOperation < 3) {
-    unittest.expect(o.first, unittest.isTrue);
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.last, unittest.isTrue);
-    unittest.expect(o.producer, unittest.equals('foo'));
+    unittest.expect(o.first!, unittest.isTrue);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.last!, unittest.isTrue);
+    unittest.expect(
+      o.producer!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLogEntryOperation--;
 }
@@ -1129,9 +1490,18 @@ api.LogEntrySourceLocation buildLogEntrySourceLocation() {
 void checkLogEntrySourceLocation(api.LogEntrySourceLocation o) {
   buildCounterLogEntrySourceLocation++;
   if (buildCounterLogEntrySourceLocation < 3) {
-    unittest.expect(o.file, unittest.equals('foo'));
-    unittest.expect(o.function, unittest.equals('foo'));
-    unittest.expect(o.line, unittest.equals('foo'));
+    unittest.expect(
+      o.file!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.function!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.line!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLogEntrySourceLocation--;
 }
@@ -1145,8 +1515,14 @@ core.Map<core.String, core.String> buildUnnamed7159() {
 
 void checkUnnamed7159(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterMetricValue = 0;
@@ -1171,15 +1547,30 @@ api.MetricValue buildMetricValue() {
 void checkMetricValue(api.MetricValue o) {
   buildCounterMetricValue++;
   if (buildCounterMetricValue < 3) {
-    unittest.expect(o.boolValue, unittest.isTrue);
-    checkDistribution(o.distributionValue as api.Distribution);
-    unittest.expect(o.doubleValue, unittest.equals(42.0));
-    unittest.expect(o.endTime, unittest.equals('foo'));
-    unittest.expect(o.int64Value, unittest.equals('foo'));
-    checkUnnamed7159(o.labels);
-    checkMoney(o.moneyValue as api.Money);
-    unittest.expect(o.startTime, unittest.equals('foo'));
-    unittest.expect(o.stringValue, unittest.equals('foo'));
+    unittest.expect(o.boolValue!, unittest.isTrue);
+    checkDistribution(o.distributionValue! as api.Distribution);
+    unittest.expect(
+      o.doubleValue!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.int64Value!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7159(o.labels!);
+    checkMoney(o.moneyValue! as api.Money);
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.stringValue!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterMetricValue--;
 }
@@ -1212,8 +1603,11 @@ api.MetricValueSet buildMetricValueSet() {
 void checkMetricValueSet(api.MetricValueSet o) {
   buildCounterMetricValueSet++;
   if (buildCounterMetricValueSet < 3) {
-    unittest.expect(o.metricName, unittest.equals('foo'));
-    checkUnnamed7160(o.metricValues);
+    unittest.expect(
+      o.metricName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7160(o.metricValues!);
   }
   buildCounterMetricValueSet--;
 }
@@ -1234,9 +1628,18 @@ api.Money buildMoney() {
 void checkMoney(api.Money o) {
   buildCounterMoney++;
   if (buildCounterMoney < 3) {
-    unittest.expect(o.currencyCode, unittest.equals('foo'));
-    unittest.expect(o.nanos, unittest.equals(42));
-    unittest.expect(o.units, unittest.equals('foo'));
+    unittest.expect(
+      o.currencyCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nanos!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.units!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterMoney--;
 }
@@ -1258,16 +1661,34 @@ core.Map<core.String, core.Object> buildUnnamed7161() {
 
 void checkUnnamed7161(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted15 = (o['x']) as core.Map;
+  var casted15 = (o['x']!) as core.Map;
   unittest.expect(casted15, unittest.hasLength(3));
-  unittest.expect(casted15['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted15['bool'], unittest.equals(true));
-  unittest.expect(casted15['string'], unittest.equals('foo'));
-  var casted16 = (o['y']) as core.Map;
+  unittest.expect(
+    casted15['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted15['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted15['string'],
+    unittest.equals('foo'),
+  );
+  var casted16 = (o['y']!) as core.Map;
   unittest.expect(casted16, unittest.hasLength(3));
-  unittest.expect(casted16['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted16['bool'], unittest.equals(true));
-  unittest.expect(casted16['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted16['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted16['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted16['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed7162() {
@@ -1292,8 +1713,14 @@ core.Map<core.String, core.String> buildUnnamed7163() {
 
 void checkUnnamed7163(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.LogEntry> buildUnnamed7164() {
@@ -1357,8 +1784,14 @@ core.Map<core.String, core.String> buildUnnamed7168() {
 
 void checkUnnamed7168(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterOperation = 0;
@@ -1388,20 +1821,38 @@ api.Operation buildOperation() {
 void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
-    unittest.expect(o.consumerId, unittest.equals('foo'));
-    unittest.expect(o.endTime, unittest.equals('foo'));
-    checkUnnamed7162(o.extensions);
-    unittest.expect(o.importance, unittest.equals('foo'));
-    checkUnnamed7163(o.labels);
-    checkUnnamed7164(o.logEntries);
-    checkUnnamed7165(o.metricValueSets);
-    unittest.expect(o.operationId, unittest.equals('foo'));
-    unittest.expect(o.operationName, unittest.equals('foo'));
-    checkQuotaProperties(o.quotaProperties as api.QuotaProperties);
-    checkUnnamed7166(o.resources);
-    unittest.expect(o.startTime, unittest.equals('foo'));
-    checkUnnamed7167(o.traceSpans);
-    checkUnnamed7168(o.userLabels);
+    unittest.expect(
+      o.consumerId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7162(o.extensions!);
+    unittest.expect(
+      o.importance!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7163(o.labels!);
+    checkUnnamed7164(o.logEntries!);
+    checkUnnamed7165(o.metricValueSets!);
+    unittest.expect(
+      o.operationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.operationName!,
+      unittest.equals('foo'),
+    );
+    checkQuotaProperties(o.quotaProperties! as api.QuotaProperties);
+    checkUnnamed7166(o.resources!);
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7167(o.traceSpans!);
+    checkUnnamed7168(o.userLabels!);
   }
   buildCounterOperation--;
 }
@@ -1426,13 +1877,31 @@ api.OperationMetadata buildOperationMetadata() {
 void checkOperationMetadata(api.OperationMetadata o) {
   buildCounterOperationMetadata++;
   if (buildCounterOperationMetadata < 3) {
-    unittest.expect(o.apiVersion, unittest.equals('foo'));
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.endTime, unittest.equals('foo'));
-    unittest.expect(o.requestedCancellation, unittest.isTrue);
-    unittest.expect(o.statusMessage, unittest.equals('foo'));
-    unittest.expect(o.target, unittest.equals('foo'));
-    unittest.expect(o.verb, unittest.equals('foo'));
+    unittest.expect(
+      o.apiVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.requestedCancellation!, unittest.isTrue);
+    unittest.expect(
+      o.statusMessage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.target!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.verb!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterOperationMetadata--;
 }
@@ -1480,10 +1949,16 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed7169(o.auditConfigs);
-    checkUnnamed7170(o.bindings);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.version, unittest.equals(42));
+    checkUnnamed7169(o.auditConfigs!);
+    checkUnnamed7170(o.bindings!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals(42),
+    );
   }
   buildCounterPolicy--;
 }
@@ -1502,7 +1977,10 @@ api.QuotaProperties buildQuotaProperties() {
 void checkQuotaProperties(api.QuotaProperties o) {
   buildCounterQuotaProperties++;
   if (buildCounterQuotaProperties < 3) {
-    unittest.expect(o.quotaMode, unittest.equals('foo'));
+    unittest.expect(
+      o.quotaMode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterQuotaProperties--;
 }
@@ -1536,9 +2014,15 @@ api.ReportRequest buildReportRequest() {
 void checkReportRequest(api.ReportRequest o) {
   buildCounterReportRequest++;
   if (buildCounterReportRequest < 3) {
-    checkUnnamed7171(o.operations);
-    unittest.expect(o.serviceConfigId, unittest.equals('foo'));
-    unittest.expect(o.serviceName, unittest.equals('foo'));
+    checkUnnamed7171(o.operations!);
+    unittest.expect(
+      o.serviceConfigId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serviceName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterReportRequest--;
 }
@@ -1559,9 +2043,18 @@ api.ResourceInfo buildResourceInfo() {
 void checkResourceInfo(api.ResourceInfo o) {
   buildCounterResourceInfo++;
   if (buildCounterResourceInfo < 3) {
-    unittest.expect(o.resourceContainer, unittest.equals('foo'));
-    unittest.expect(o.resourceLocation, unittest.equals('foo'));
-    unittest.expect(o.resourceName, unittest.equals('foo'));
+    unittest.expect(
+      o.resourceContainer!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resourceLocation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resourceName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterResourceInfo--;
 }
@@ -1582,9 +2075,18 @@ api.RouterApplianceInstance buildRouterApplianceInstance() {
 void checkRouterApplianceInstance(api.RouterApplianceInstance o) {
   buildCounterRouterApplianceInstance++;
   if (buildCounterRouterApplianceInstance < 3) {
-    unittest.expect(o.ipAddress, unittest.equals('foo'));
-    unittest.expect(o.networkInterface, unittest.equals('foo'));
-    unittest.expect(o.virtualMachine, unittest.equals('foo'));
+    unittest.expect(
+      o.ipAddress!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.networkInterface!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.virtualMachine!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRouterApplianceInstance--;
 }
@@ -1604,8 +2106,11 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy as api.Policy);
-    unittest.expect(o.updateMask, unittest.equals('foo'));
+    checkPolicy(o.policy! as api.Policy);
+    unittest.expect(
+      o.updateMask!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSetIamPolicyRequest--;
 }
@@ -1619,8 +2124,14 @@ core.Map<core.String, core.String> buildUnnamed7172() {
 
 void checkUnnamed7172(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed7173() {
@@ -1632,8 +2143,14 @@ core.List<core.String> buildUnnamed7173() {
 
 void checkUnnamed7173(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.RouterApplianceInstance> buildUnnamed7174() {
@@ -1658,8 +2175,14 @@ core.List<core.String> buildUnnamed7175() {
 
 void checkUnnamed7175(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterSpoke = 0;
@@ -1686,17 +2209,38 @@ api.Spoke buildSpoke() {
 void checkSpoke(api.Spoke o) {
   buildCounterSpoke++;
   if (buildCounterSpoke < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.hub, unittest.equals('foo'));
-    checkUnnamed7172(o.labels);
-    checkUnnamed7173(o.linkedInterconnectAttachments);
-    checkUnnamed7174(o.linkedRouterApplianceInstances);
-    checkUnnamed7175(o.linkedVpnTunnels);
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.state, unittest.equals('foo'));
-    unittest.expect(o.uniqueId, unittest.equals('foo'));
-    unittest.expect(o.updateTime, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hub!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7172(o.labels!);
+    checkUnnamed7173(o.linkedInterconnectAttachments!);
+    checkUnnamed7174(o.linkedRouterApplianceInstances!);
+    checkUnnamed7175(o.linkedVpnTunnels!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uniqueId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSpoke--;
 }
@@ -1710,8 +2254,14 @@ core.List<core.String> buildUnnamed7176() {
 
 void checkUnnamed7176(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterTestIamPermissionsRequest = 0;
@@ -1728,7 +2278,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed7176(o.permissions);
+    checkUnnamed7176(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
@@ -1742,8 +2292,14 @@ core.List<core.String> buildUnnamed7177() {
 
 void checkUnnamed7177(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterTestIamPermissionsResponse = 0;
@@ -1760,7 +2316,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed7177(o.permissions);
+    checkUnnamed7177(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1789,17 +2345,38 @@ api.TraceSpan buildTraceSpan() {
 void checkTraceSpan(api.TraceSpan o) {
   buildCounterTraceSpan++;
   if (buildCounterTraceSpan < 3) {
-    checkAttributes(o.attributes as api.Attributes);
-    unittest.expect(o.childSpanCount, unittest.equals(42));
-    checkTruncatableString(o.displayName as api.TruncatableString);
-    unittest.expect(o.endTime, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.parentSpanId, unittest.equals('foo'));
-    unittest.expect(o.sameProcessAsParentSpan, unittest.isTrue);
-    unittest.expect(o.spanId, unittest.equals('foo'));
-    unittest.expect(o.spanKind, unittest.equals('foo'));
-    unittest.expect(o.startTime, unittest.equals('foo'));
-    checkGoogleRpcStatus(o.status as api.GoogleRpcStatus);
+    checkAttributes(o.attributes! as api.Attributes);
+    unittest.expect(
+      o.childSpanCount!,
+      unittest.equals(42),
+    );
+    checkTruncatableString(o.displayName! as api.TruncatableString);
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.parentSpanId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.sameProcessAsParentSpan!, unittest.isTrue);
+    unittest.expect(
+      o.spanId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.spanKind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+    checkGoogleRpcStatus(o.status! as api.GoogleRpcStatus);
   }
   buildCounterTraceSpan--;
 }
@@ -1819,8 +2396,14 @@ api.TruncatableString buildTruncatableString() {
 void checkTruncatableString(api.TruncatableString o) {
   buildCounterTruncatableString++;
   if (buildCounterTruncatableString < 3) {
-    unittest.expect(o.truncatedByteCount, unittest.equals(42));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.truncatedByteCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTruncatableString--;
 }
@@ -2176,10 +2759,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2198,7 +2785,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2227,10 +2817,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2249,12 +2843,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2292,10 +2896,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2314,10 +2922,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["hubId"].first, unittest.equals(arg_hubId));
         unittest.expect(
-            queryMap["requestId"].first, unittest.equals(arg_requestId));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["hubId"]!.first,
+          unittest.equals(arg_hubId),
+        );
+        unittest.expect(
+          queryMap["requestId"]!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2346,10 +2962,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2369,8 +2989,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["requestId"].first, unittest.equals(arg_requestId));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["requestId"]!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2397,10 +3022,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2419,7 +3048,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2446,10 +3078,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2469,9 +3105,13 @@ void main() {
           }
         }
         unittest.expect(
-            core.int.parse(queryMap["options.requestedPolicyVersion"].first),
-            unittest.equals(arg_options_requestedPolicyVersion));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["options.requestedPolicyVersion"]!.first),
+          unittest.equals(arg_options_requestedPolicyVersion),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2504,10 +3144,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2526,14 +3170,26 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["orderBy"]!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2570,10 +3226,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2593,10 +3253,17 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["requestId"].first, unittest.equals(arg_requestId));
+          queryMap["requestId"]!.first,
+          unittest.equals(arg_requestId),
+        );
         unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["updateMask"]!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2631,10 +3298,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2653,7 +3324,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2684,10 +3358,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2706,7 +3384,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2741,10 +3422,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2763,7 +3448,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2789,10 +3477,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2811,7 +3503,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2837,10 +3532,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2859,7 +3558,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2889,10 +3591,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2911,12 +3617,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2952,10 +3668,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2975,9 +3695,13 @@ void main() {
           }
         }
         unittest.expect(
-            core.int.parse(queryMap["options.requestedPolicyVersion"].first),
-            unittest.equals(arg_options_requestedPolicyVersion));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["options.requestedPolicyVersion"]!.first),
+          unittest.equals(arg_options_requestedPolicyVersion),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3012,10 +3736,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3034,7 +3762,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3066,10 +3797,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3088,7 +3823,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3119,10 +3857,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3142,9 +3884,13 @@ void main() {
           }
         }
         unittest.expect(
-            core.int.parse(queryMap["options.requestedPolicyVersion"].first),
-            unittest.equals(arg_options_requestedPolicyVersion));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["options.requestedPolicyVersion"]!.first),
+          unittest.equals(arg_options_requestedPolicyVersion),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3179,10 +3925,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3201,7 +3951,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3233,10 +3986,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3255,7 +4012,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3291,10 +4051,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3314,10 +4078,17 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["requestId"].first, unittest.equals(arg_requestId));
+          queryMap["requestId"]!.first,
+          unittest.equals(arg_requestId),
+        );
         unittest.expect(
-            queryMap["spokeId"].first, unittest.equals(arg_spokeId));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["spokeId"]!.first,
+          unittest.equals(arg_spokeId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3348,10 +4119,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3371,8 +4146,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["requestId"].first, unittest.equals(arg_requestId));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["requestId"]!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3399,10 +4179,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3421,7 +4205,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3448,10 +4235,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3471,9 +4262,13 @@ void main() {
           }
         }
         unittest.expect(
-            core.int.parse(queryMap["options.requestedPolicyVersion"].first),
-            unittest.equals(arg_options_requestedPolicyVersion));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["options.requestedPolicyVersion"]!.first),
+          unittest.equals(arg_options_requestedPolicyVersion),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3506,10 +4301,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3528,14 +4327,26 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["orderBy"]!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3573,10 +4384,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3596,10 +4411,17 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["requestId"].first, unittest.equals(arg_requestId));
+          queryMap["requestId"]!.first,
+          unittest.equals(arg_requestId),
+        );
         unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["updateMask"]!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3634,10 +4456,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3656,7 +4482,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3687,10 +4516,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1alpha1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1alpha1/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3709,7 +4542,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

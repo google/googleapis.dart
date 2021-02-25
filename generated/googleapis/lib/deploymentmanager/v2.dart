@@ -112,16 +112,9 @@ class DeploymentsResource {
     DeploymentsCancelPreviewRequest request,
     core.String project,
     core.String deployment, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (deployment == null) {
-      throw core.ArgumentError('Parameter deployment is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -169,15 +162,9 @@ class DeploymentsResource {
   async.Future<Operation> delete(
     core.String project,
     core.String deployment, {
-    core.String deletePolicy,
-    core.String $fields,
+    core.String? deletePolicy,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (deployment == null) {
-      throw core.ArgumentError('Parameter deployment is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (deletePolicy != null) 'deletePolicy': [deletePolicy],
       if ($fields != null) 'fields': [$fields],
@@ -220,14 +207,8 @@ class DeploymentsResource {
   async.Future<Deployment> get(
     core.String project,
     core.String deployment, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (deployment == null) {
-      throw core.ArgumentError('Parameter deployment is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -275,15 +256,9 @@ class DeploymentsResource {
   async.Future<Policy> getIamPolicy(
     core.String project,
     core.String resource, {
-    core.int optionsRequestedPolicyVersion,
-    core.String $fields,
+    core.int? optionsRequestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (optionsRequestedPolicyVersion != null)
         'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
@@ -342,15 +317,11 @@ class DeploymentsResource {
   async.Future<Operation> insert(
     Deployment request,
     core.String project, {
-    core.String createPolicy,
-    core.bool preview,
-    core.String $fields,
+    core.String? createPolicy,
+    core.bool? preview,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (createPolicy != null) 'createPolicy': [createPolicy],
       if (preview != null) 'preview': ['${preview}'],
@@ -427,15 +398,12 @@ class DeploymentsResource {
   /// this method will complete with the same error.
   async.Future<DeploymentsListResponse> list(
     core.String project, {
-    core.String filter,
-    core.int maxResults,
-    core.String orderBy,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -506,19 +474,12 @@ class DeploymentsResource {
     Deployment request,
     core.String project,
     core.String deployment, {
-    core.String createPolicy,
-    core.String deletePolicy,
-    core.bool preview,
-    core.String $fields,
+    core.String? createPolicy,
+    core.String? deletePolicy,
+    core.bool? preview,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (deployment == null) {
-      throw core.ArgumentError('Parameter deployment is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (createPolicy != null) 'createPolicy': [createPolicy],
       if (deletePolicy != null) 'deletePolicy': [deletePolicy],
@@ -570,16 +531,9 @@ class DeploymentsResource {
     GlobalSetPolicyRequest request,
     core.String project,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -629,16 +583,9 @@ class DeploymentsResource {
     DeploymentsStopRequest request,
     core.String project,
     core.String deployment, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (deployment == null) {
-      throw core.ArgumentError('Parameter deployment is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -686,16 +633,9 @@ class DeploymentsResource {
     TestPermissionsRequest request,
     core.String project,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -765,19 +705,12 @@ class DeploymentsResource {
     Deployment request,
     core.String project,
     core.String deployment, {
-    core.String createPolicy,
-    core.String deletePolicy,
-    core.bool preview,
-    core.String $fields,
+    core.String? createPolicy,
+    core.String? deletePolicy,
+    core.bool? preview,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (deployment == null) {
-      throw core.ArgumentError('Parameter deployment is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (createPolicy != null) 'createPolicy': [createPolicy],
       if (deletePolicy != null) 'deletePolicy': [deletePolicy],
@@ -833,17 +766,8 @@ class ManifestsResource {
     core.String project,
     core.String deployment,
     core.String manifest, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (deployment == null) {
-      throw core.ArgumentError('Parameter deployment is required.');
-    }
-    if (manifest == null) {
-      throw core.ArgumentError('Parameter manifest is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -924,18 +848,12 @@ class ManifestsResource {
   async.Future<ManifestsListResponse> list(
     core.String project,
     core.String deployment, {
-    core.String filter,
-    core.int maxResults,
-    core.String orderBy,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (deployment == null) {
-      throw core.ArgumentError('Parameter deployment is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -988,14 +906,8 @@ class OperationsResource {
   async.Future<Operation> get(
     core.String project,
     core.String operation, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (operation == null) {
-      throw core.ArgumentError('Parameter operation is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1070,15 +982,12 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<OperationsListResponse> list(
     core.String project, {
-    core.String filter,
-    core.int maxResults,
-    core.String orderBy,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -1133,17 +1042,8 @@ class ResourcesResource {
     core.String project,
     core.String deployment,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (deployment == null) {
-      throw core.ArgumentError('Parameter deployment is required.');
-    }
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1224,18 +1124,12 @@ class ResourcesResource {
   async.Future<ResourcesListResponse> list(
     core.String project,
     core.String deployment, {
-    core.String filter,
-    core.int maxResults,
-    core.String orderBy,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (deployment == null) {
-      throw core.ArgumentError('Parameter deployment is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -1322,15 +1216,12 @@ class TypesResource {
   /// this method will complete with the same error.
   async.Future<TypesListResponse> list(
     core.String project, {
-    core.String filter,
-    core.int maxResults,
-    core.String orderBy,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -1372,13 +1263,13 @@ class TypesResource {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -1394,11 +1285,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -1413,7 +1304,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -1421,7 +1312,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -1436,9 +1327,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -1452,7 +1343,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -1484,12 +1375,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -1508,16 +1399,16 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
 class ConfigFile {
   /// The contents of the file.
-  core.String content;
+  core.String? content;
 
   ConfigFile();
 
@@ -1527,14 +1418,14 @@ class ConfigFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
       };
 }
 
 class Deployment {
   /// An optional user-provided description of the deployment.
-  core.String description;
+  core.String? description;
 
   /// Provides a fingerprint to use in requests to modify a deployment, such as
   /// `update()`, `stop()`, and `cancelPreview()` requests.
@@ -1545,21 +1436,21 @@ class Deployment {
   /// happens at a time. The fingerprint is initially generated by Deployment
   /// Manager and changes after every request to modify data. To get the latest
   /// fingerprint value, perform a `get()` request to a deployment.
-  core.String fingerprint;
+  core.String? fingerprint;
   core.List<core.int> get fingerprintAsBytes =>
-      convert.base64.decode(fingerprint);
+      convert.base64.decode(fingerprint!);
 
   set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  core.String id;
+  core.String? id;
 
   /// Creation timestamp in RFC3339 text format.
   ///
   /// Output only.
-  core.String insertTime;
+  core.String? insertTime;
 
   /// Map of One Platform labels; provided by the client when the resource is
   /// created or updated.
@@ -1568,7 +1459,7 @@ class Deployment {
   /// conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`
   /// Label values must be between 0 and 63 characters long and must conform to
   /// the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-  core.List<DeploymentLabelEntry> labels;
+  core.List<DeploymentLabelEntry>? labels;
 
   /// URL of the manifest representing the last manifest that was successfully
   /// deployed.
@@ -1576,7 +1467,7 @@ class Deployment {
   /// If no manifest has been successfully deployed, this field will be absent.
   ///
   /// Output only.
-  core.String manifest;
+  core.String? manifest;
 
   /// Name of the resource; provided by the client when the resource is created.
   ///
@@ -1586,33 +1477,33 @@ class Deployment {
   /// must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
-  core.String name;
+  core.String? name;
 
   /// The Operation that most recently ran, or is currently running, on this
   /// deployment.
   ///
   /// Output only.
-  Operation operation;
+  Operation? operation;
 
   /// Server defined URL for the resource.
   ///
   /// Output only.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// \[Input Only\] The parameters that define your deployment, including the
   /// deployment configuration and relevant templates.
-  TargetConfiguration target;
+  TargetConfiguration? target;
 
   /// If Deployment Manager is currently updating or previewing an update to
   /// this deployment, the updated configuration appears here.
   ///
   /// Output only.
-  DeploymentUpdate update;
+  DeploymentUpdate? update;
 
   /// Update timestamp in RFC3339 text format.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Deployment();
 
@@ -1661,30 +1552,30 @@ class Deployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (fingerprint != null) 'fingerprint': fingerprint,
-        if (id != null) 'id': id,
-        if (insertTime != null) 'insertTime': insertTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (id != null) 'id': id!,
+        if (insertTime != null) 'insertTime': insertTime!,
         if (labels != null)
-          'labels': labels.map((value) => value.toJson()).toList(),
-        if (manifest != null) 'manifest': manifest,
-        if (name != null) 'name': name,
-        if (operation != null) 'operation': operation.toJson(),
-        if (selfLink != null) 'selfLink': selfLink,
-        if (target != null) 'target': target.toJson(),
-        if (update != null) 'update': update.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
+          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (manifest != null) 'manifest': manifest!,
+        if (name != null) 'name': name!,
+        if (operation != null) 'operation': operation!.toJson(),
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (target != null) 'target': target!.toJson(),
+        if (update != null) 'update': update!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// Label object for Deployments
 class DeploymentLabelEntry {
   /// Key of the label
-  core.String key;
+  core.String? key;
 
   /// Value of the label
-  core.String value;
+  core.String? value;
 
   DeploymentLabelEntry();
 
@@ -1697,9 +1588,9 @@ class DeploymentLabelEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1708,7 +1599,7 @@ class DeploymentUpdate {
   /// update has been applied.
   ///
   /// Output only.
-  core.String description;
+  core.String? description;
 
   /// Map of One Platform labels; provided by the client when the resource is
   /// created or updated.
@@ -1717,13 +1608,13 @@ class DeploymentUpdate {
   /// conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`
   /// Label values must be between 0 and 63 characters long and must conform to
   /// the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-  core.List<DeploymentUpdateLabelEntry> labels;
+  core.List<DeploymentUpdateLabelEntry>? labels;
 
   /// URL of the manifest representing the update configuration of this
   /// deployment.
   ///
   /// Output only.
-  core.String manifest;
+  core.String? manifest;
 
   DeploymentUpdate();
 
@@ -1743,21 +1634,21 @@ class DeploymentUpdate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
         if (labels != null)
-          'labels': labels.map((value) => value.toJson()).toList(),
-        if (manifest != null) 'manifest': manifest,
+          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (manifest != null) 'manifest': manifest!,
       };
 }
 
 /// Label object for DeploymentUpdate
 class DeploymentUpdateLabelEntry {
   /// Key of the label
-  core.String key;
+  core.String? key;
 
   /// Value of the label
-  core.String value;
+  core.String? value;
 
   DeploymentUpdateLabelEntry();
 
@@ -1770,9 +1661,9 @@ class DeploymentUpdateLabelEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1787,9 +1678,9 @@ class DeploymentsCancelPreviewRequest {
   /// requests). The fingerprint is initially generated by Deployment Manager
   /// and changes after every request to modify a deployment. To get the latest
   /// fingerprint value, perform a `get()` request on the deployment.
-  core.String fingerprint;
+  core.String? fingerprint;
   core.List<core.int> get fingerprintAsBytes =>
-      convert.base64.decode(fingerprint);
+      convert.base64.decode(fingerprint!);
 
   set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
@@ -1804,8 +1695,8 @@ class DeploymentsCancelPreviewRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fingerprint != null) 'fingerprint': fingerprint,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fingerprint != null) 'fingerprint': fingerprint!,
       };
 }
 
@@ -1815,12 +1706,12 @@ class DeploymentsListResponse {
   /// The deployments contained in this response.
   ///
   /// Output only.
-  core.List<Deployment> deployments;
+  core.List<Deployment>? deployments;
 
   /// A token used to continue a truncated list request.
   ///
   /// Output only.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   DeploymentsListResponse();
 
@@ -1836,10 +1727,10 @@ class DeploymentsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deployments != null)
-          'deployments': deployments.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'deployments': deployments!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1854,9 +1745,9 @@ class DeploymentsStopRequest {
   /// collision). The fingerprint is initially generated by Deployment Manager
   /// and changes after every request to modify a deployment. To get the latest
   /// fingerprint value, perform a `get()` request on the deployment.
-  core.String fingerprint;
+  core.String? fingerprint;
   core.List<core.int> get fingerprintAsBytes =>
-      convert.base64.decode(fingerprint);
+      convert.base64.decode(fingerprint!);
 
   set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
@@ -1871,8 +1762,8 @@ class DeploymentsStopRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fingerprint != null) 'fingerprint': fingerprint,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fingerprint != null) 'fingerprint': fingerprint!,
       };
 }
 
@@ -1901,24 +1792,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -1937,11 +1828,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1949,13 +1840,13 @@ class GlobalSetPolicyRequest {
   /// Flatten Policy to create a backward compatible wire-format.
   ///
   /// Deprecated. Use 'policy' to specify bindings.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// Flatten Policy to create a backward compatible wire-format.
   ///
   /// Deprecated. Use 'policy' to specify the etag.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -1967,7 +1858,7 @@ class GlobalSetPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is
   /// in general a valid policy but certain services (like Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   GlobalSetPolicyRequest();
 
@@ -1987,20 +1878,20 @@ class GlobalSetPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (policy != null) 'policy': policy.toJson(),
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (policy != null) 'policy': policy!.toJson(),
       };
 }
 
 class ImportFile {
   /// The contents of the file.
-  core.String content;
+  core.String? content;
 
   /// The name of the file.
-  core.String name;
+  core.String? name;
 
   ImportFile();
 
@@ -2013,9 +1904,9 @@ class ImportFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2023,49 +1914,49 @@ class Manifest {
   /// The YAML configuration for this manifest.
   ///
   /// Output only.
-  ConfigFile config;
+  ConfigFile? config;
 
   /// The fully-expanded configuration file, including any templates and
   /// references.
   ///
   /// Output only.
-  core.String expandedConfig;
-  core.String id;
+  core.String? expandedConfig;
+  core.String? id;
 
   /// The imported files for this manifest.
   ///
   /// Output only.
-  core.List<ImportFile> imports;
+  core.List<ImportFile>? imports;
 
   /// Creation timestamp in RFC3339 text format.
   ///
   /// Output only.
-  core.String insertTime;
+  core.String? insertTime;
 
   /// The YAML layout for this manifest.
   ///
   /// Output only.
-  core.String layout;
+  core.String? layout;
 
   /// The computed size of the fully expanded manifest.
   ///
   /// Output only.
-  core.String manifestSizeBytes;
+  core.String? manifestSizeBytes;
 
   /// The size limit for expanded manifests in the project.
   ///
   /// Output only.
-  core.String manifestSizeLimitBytes;
+  core.String? manifestSizeLimitBytes;
 
   /// The name of the manifest.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Self link for the manifest.
   ///
   /// Output only.
-  core.String selfLink;
+  core.String? selfLink;
 
   Manifest();
 
@@ -2106,19 +1997,19 @@ class Manifest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (config != null) 'config': config.toJson(),
-        if (expandedConfig != null) 'expandedConfig': expandedConfig,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (config != null) 'config': config!.toJson(),
+        if (expandedConfig != null) 'expandedConfig': expandedConfig!,
+        if (id != null) 'id': id!,
         if (imports != null)
-          'imports': imports.map((value) => value.toJson()).toList(),
-        if (insertTime != null) 'insertTime': insertTime,
-        if (layout != null) 'layout': layout,
-        if (manifestSizeBytes != null) 'manifestSizeBytes': manifestSizeBytes,
+          'imports': imports!.map((value) => value.toJson()).toList(),
+        if (insertTime != null) 'insertTime': insertTime!,
+        if (layout != null) 'layout': layout!,
+        if (manifestSizeBytes != null) 'manifestSizeBytes': manifestSizeBytes!,
         if (manifestSizeLimitBytes != null)
-          'manifestSizeLimitBytes': manifestSizeLimitBytes,
-        if (name != null) 'name': name,
-        if (selfLink != null) 'selfLink': selfLink,
+          'manifestSizeLimitBytes': manifestSizeLimitBytes!,
+        if (name != null) 'name': name!,
+        if (selfLink != null) 'selfLink': selfLink!,
       };
 }
 
@@ -2128,12 +2019,12 @@ class ManifestsListResponse {
   /// Manifests contained in this list response.
   ///
   /// Output only.
-  core.List<Manifest> manifests;
+  core.List<Manifest>? manifests;
 
   /// A token used to continue a truncated list request.
   ///
   /// Output only.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ManifestsListResponse();
 
@@ -2149,10 +2040,10 @@ class ManifestsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (manifests != null)
-          'manifests': manifests.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'manifests': manifests!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2160,19 +2051,19 @@ class OperationErrorErrors {
   /// The error type identifier for this error.
   ///
   /// Output only.
-  core.String code;
+  core.String? code;
 
   /// Indicates the field in the request that caused the error.
   ///
   /// This property is optional.
   ///
   /// Output only.
-  core.String location;
+  core.String? location;
 
   /// An optional, human-readable error message.
   ///
   /// Output only.
-  core.String message;
+  core.String? message;
 
   OperationErrorErrors();
 
@@ -2188,10 +2079,10 @@ class OperationErrorErrors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (location != null) 'location': location,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (location != null) 'location': location!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -2203,7 +2094,7 @@ class OperationError {
   /// The array of errors encountered while processing this operation.
   ///
   /// Output only.
-  core.List<OperationErrorErrors> errors;
+  core.List<OperationErrorErrors>? errors;
 
   OperationError();
 
@@ -2216,9 +2107,9 @@ class OperationError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
+          'errors': errors!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2233,12 +2124,12 @@ class OperationWarningsData {
   /// enabled for IP forwarding).
   ///
   /// Output only.
-  core.String key;
+  core.String? key;
 
   /// A warning data value corresponding to the key.
   ///
   /// Output only.
-  core.String value;
+  core.String? value;
 
   OperationWarningsData();
 
@@ -2251,9 +2142,9 @@ class OperationWarningsData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2312,19 +2203,19 @@ class OperationWarnings {
   /// due to errors
   /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
   /// exceedingly large number of resources
-  core.String code;
+  core.String? code;
 
   /// Metadata about this warning in key: value format.
   ///
   /// For example: "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
-  core.List<OperationWarningsData> data;
+  core.List<OperationWarningsData>? data;
 
   /// A human-readable description of the warning code.
   ///
   /// Output only.
-  core.String message;
+  core.String? message;
 
   OperationWarnings();
 
@@ -2343,10 +2234,10 @@ class OperationWarnings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
+        if (message != null) 'message': message!,
       };
 }
 
@@ -2368,37 +2259,37 @@ class Operation {
   /// Not present otherwise.
   ///
   /// Output only.
-  core.String clientOperationId;
+  core.String? clientOperationId;
 
   /// This field is deprecated.
   ///
   /// Deprecated.
-  core.String creationTimestamp;
+  core.String? creationTimestamp;
 
   /// A textual description of the operation, which is set when the operation is
   /// created.
   ///
   /// Output only.
-  core.String description;
+  core.String? description;
 
   /// The time that this operation was completed.
   ///
   /// This value is in RFC3339 text format.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// If errors are generated during processing of the operation, this field
   /// will be populated.
   ///
   /// Output only.
-  OperationError error;
+  OperationError? error;
 
   /// If the operation fails, this field contains the HTTP error message that
   /// was returned, such as `NOT FOUND`.
   ///
   /// Output only.
-  core.String httpErrorMessage;
+  core.String? httpErrorMessage;
 
   /// If the operation fails, this field contains the HTTP error status code
   /// that was returned.
@@ -2406,44 +2297,44 @@ class Operation {
   /// For example, a `404` means the resource was not found.
   ///
   /// Output only.
-  core.int httpErrorStatusCode;
+  core.int? httpErrorStatusCode;
 
   /// The unique identifier for the operation.
   ///
   /// This identifier is defined by the server.
   ///
   /// Output only.
-  core.String id;
+  core.String? id;
 
   /// The time that this operation was requested.
   ///
   /// This value is in RFC3339 text format.
   ///
   /// Output only.
-  core.String insertTime;
+  core.String? insertTime;
 
   /// Type of the resource.
   ///
   /// Always `compute#operation` for Operation resources.
   ///
   /// Output only.
-  core.String kind;
+  core.String? kind;
 
   /// Name of the operation.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// An ID that represents a group of operations, such as when a group of
   /// operations results from a `bulkInsert` API request.
   ///
   /// Output only.
-  core.String operationGroupId;
+  core.String? operationGroupId;
 
   /// The type of operation, such as `insert`, `update`, or `delete`, and so on.
   ///
   /// Output only.
-  core.String operationType;
+  core.String? operationType;
 
   /// An optional progress indicator that ranges from 0 to 100.
   ///
@@ -2453,26 +2344,26 @@ class Operation {
   /// progresses.
   ///
   /// Output only.
-  core.int progress;
+  core.int? progress;
 
   /// The URL of the region where the operation resides.
   ///
   /// Only applicable when performing regional operations.
   ///
   /// Output only.
-  core.String region;
+  core.String? region;
 
   /// Server-defined URL for the resource.
   ///
   /// Output only.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The time that this operation was started by the server.
   ///
   /// This value is in RFC3339 text format.
   ///
   /// Output only.
-  core.String startTime;
+  core.String? startTime;
 
   /// The status of the operation, which can be one of the following: `PENDING`,
   /// `RUNNING`, or `DONE`.
@@ -2482,18 +2373,18 @@ class Operation {
   /// - "PENDING"
   /// - "RUNNING"
   /// - "DONE"
-  core.String status;
+  core.String? status;
 
   /// An optional textual description of the current status of the operation.
   ///
   /// Output only.
-  core.String statusMessage;
+  core.String? statusMessage;
 
   /// The unique target ID, which identifies a specific incarnation of the
   /// target resource.
   ///
   /// Output only.
-  core.String targetId;
+  core.String? targetId;
 
   /// The URL of the resource that the operation modifies.
   ///
@@ -2501,25 +2392,25 @@ class Operation {
   /// persistent disk that the snapshot was created from.
   ///
   /// Output only.
-  core.String targetLink;
+  core.String? targetLink;
 
   /// User who requested the operation, for example: `user@example.com`.
   ///
   /// Output only.
-  core.String user;
+  core.String? user;
 
   /// If warning messages are generated during processing of the operation, this
   /// field will be populated.
   ///
   /// Output only.
-  core.List<OperationWarnings> warnings;
+  core.List<OperationWarnings>? warnings;
 
   /// The URL of the zone where the operation resides.
   ///
   /// Only applicable when performing per-zone operations.
   ///
   /// Output only.
-  core.String zone;
+  core.String? zone;
 
   Operation();
 
@@ -2602,33 +2493,33 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientOperationId != null) 'clientOperationId': clientOperationId,
-        if (creationTimestamp != null) 'creationTimestamp': creationTimestamp,
-        if (description != null) 'description': description,
-        if (endTime != null) 'endTime': endTime,
-        if (error != null) 'error': error.toJson(),
-        if (httpErrorMessage != null) 'httpErrorMessage': httpErrorMessage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientOperationId != null) 'clientOperationId': clientOperationId!,
+        if (creationTimestamp != null) 'creationTimestamp': creationTimestamp!,
+        if (description != null) 'description': description!,
+        if (endTime != null) 'endTime': endTime!,
+        if (error != null) 'error': error!.toJson(),
+        if (httpErrorMessage != null) 'httpErrorMessage': httpErrorMessage!,
         if (httpErrorStatusCode != null)
-          'httpErrorStatusCode': httpErrorStatusCode,
-        if (id != null) 'id': id,
-        if (insertTime != null) 'insertTime': insertTime,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (operationGroupId != null) 'operationGroupId': operationGroupId,
-        if (operationType != null) 'operationType': operationType,
-        if (progress != null) 'progress': progress,
-        if (region != null) 'region': region,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (startTime != null) 'startTime': startTime,
-        if (status != null) 'status': status,
-        if (statusMessage != null) 'statusMessage': statusMessage,
-        if (targetId != null) 'targetId': targetId,
-        if (targetLink != null) 'targetLink': targetLink,
-        if (user != null) 'user': user,
+          'httpErrorStatusCode': httpErrorStatusCode!,
+        if (id != null) 'id': id!,
+        if (insertTime != null) 'insertTime': insertTime!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (operationGroupId != null) 'operationGroupId': operationGroupId!,
+        if (operationType != null) 'operationType': operationType!,
+        if (progress != null) 'progress': progress!,
+        if (region != null) 'region': region!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (startTime != null) 'startTime': startTime!,
+        if (status != null) 'status': status!,
+        if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (targetId != null) 'targetId': targetId!,
+        if (targetLink != null) 'targetLink': targetLink!,
+        if (user != null) 'user': user!,
         if (warnings != null)
-          'warnings': warnings.map((value) => value.toJson()).toList(),
-        if (zone != null) 'zone': zone,
+          'warnings': warnings!.map((value) => value.toJson()).toList(),
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -2638,12 +2529,12 @@ class OperationsListResponse {
   /// A token used to continue a truncated list request.
   ///
   /// Output only.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Operations contained in this list response.
   ///
   /// Output only.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   OperationsListResponse();
 
@@ -2659,10 +2550,10 @@ class OperationsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2699,14 +2590,14 @@ class OperationsListResponse {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -2720,8 +2611,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -2745,7 +2636,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -2770,13 +2661,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -2791,12 +2682,12 @@ class ResourceWarningsData {
   /// enabled for IP forwarding).
   ///
   /// Output only.
-  core.String key;
+  core.String? key;
 
   /// A warning data value corresponding to the key.
   ///
   /// Output only.
-  core.String value;
+  core.String? value;
 
   ResourceWarningsData();
 
@@ -2809,9 +2700,9 @@ class ResourceWarningsData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2870,19 +2761,19 @@ class ResourceWarnings {
   /// due to errors
   /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
   /// exceedingly large number of resources
-  core.String code;
+  core.String? code;
 
   /// Metadata about this warning in key: value format.
   ///
   /// For example: "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
-  core.List<ResourceWarningsData> data;
+  core.List<ResourceWarningsData>? data;
 
   /// A human-readable description of the warning code.
   ///
   /// Output only.
-  core.String message;
+  core.String? message;
 
   ResourceWarnings();
 
@@ -2901,40 +2792,40 @@ class ResourceWarnings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
+        if (message != null) 'message': message!,
       };
 }
 
 class Resource {
   /// The Access Control Policy set on this resource.
-  ResourceAccessControl accessControl;
+  ResourceAccessControl? accessControl;
 
   /// The evaluated properties of the resource with references expanded.
   ///
   /// Returned as serialized YAML.
   ///
   /// Output only.
-  core.String finalProperties;
-  core.String id;
+  core.String? finalProperties;
+  core.String? id;
 
   /// Creation timestamp in RFC3339 text format.
   ///
   /// Output only.
-  core.String insertTime;
+  core.String? insertTime;
 
   /// URL of the manifest representing the current configuration of this
   /// resource.
   ///
   /// Output only.
-  core.String manifest;
+  core.String? manifest;
 
   /// The name of the resource as it appears in the YAML config.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The current properties of the resource before any references have been
   /// filled in.
@@ -2942,35 +2833,35 @@ class Resource {
   /// Returned as serialized YAML.
   ///
   /// Output only.
-  core.String properties;
+  core.String? properties;
 
   /// The type of the resource, for example `compute.v1.instance`, or
   /// `cloudfunctions.v1beta1.function`.
   ///
   /// Output only.
-  core.String type;
+  core.String? type;
 
   /// If Deployment Manager is currently updating or previewing an update to
   /// this resource, the updated configuration appears here.
   ///
   /// Output only.
-  ResourceUpdate update;
+  ResourceUpdate? update;
 
   /// Update timestamp in RFC3339 text format.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// The URL of the actual resource.
   ///
   /// Output only.
-  core.String url;
+  core.String? url;
 
   /// If warning messages are generated during processing of this resource, this
   /// field will be populated.
   ///
   /// Output only.
-  core.List<ResourceWarnings> warnings;
+  core.List<ResourceWarnings>? warnings;
 
   Resource();
 
@@ -3018,27 +2909,27 @@ class Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessControl != null) 'accessControl': accessControl.toJson(),
-        if (finalProperties != null) 'finalProperties': finalProperties,
-        if (id != null) 'id': id,
-        if (insertTime != null) 'insertTime': insertTime,
-        if (manifest != null) 'manifest': manifest,
-        if (name != null) 'name': name,
-        if (properties != null) 'properties': properties,
-        if (type != null) 'type': type,
-        if (update != null) 'update': update.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessControl != null) 'accessControl': accessControl!.toJson(),
+        if (finalProperties != null) 'finalProperties': finalProperties!,
+        if (id != null) 'id': id!,
+        if (insertTime != null) 'insertTime': insertTime!,
+        if (manifest != null) 'manifest': manifest!,
+        if (name != null) 'name': name!,
+        if (properties != null) 'properties': properties!,
+        if (type != null) 'type': type!,
+        if (update != null) 'update': update!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (url != null) 'url': url!,
         if (warnings != null)
-          'warnings': warnings.map((value) => value.toJson()).toList(),
+          'warnings': warnings!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The access controls set on the resource.
 class ResourceAccessControl {
   /// The GCP IAM Policy to set on the resource.
-  core.String gcpIamPolicy;
+  core.String? gcpIamPolicy;
 
   ResourceAccessControl();
 
@@ -3048,8 +2939,8 @@ class ResourceAccessControl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcpIamPolicy != null) 'gcpIamPolicy': gcpIamPolicy,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcpIamPolicy != null) 'gcpIamPolicy': gcpIamPolicy!,
       };
 }
 
@@ -3057,19 +2948,19 @@ class ResourceUpdateErrorErrors {
   /// The error type identifier for this error.
   ///
   /// Output only.
-  core.String code;
+  core.String? code;
 
   /// Indicates the field in the request that caused the error.
   ///
   /// This property is optional.
   ///
   /// Output only.
-  core.String location;
+  core.String? location;
 
   /// An optional, human-readable error message.
   ///
   /// Output only.
-  core.String message;
+  core.String? message;
 
   ResourceUpdateErrorErrors();
 
@@ -3085,10 +2976,10 @@ class ResourceUpdateErrorErrors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (location != null) 'location': location,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (location != null) 'location': location!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -3100,7 +2991,7 @@ class ResourceUpdateError {
   /// The array of errors encountered while processing this operation.
   ///
   /// Output only.
-  core.List<ResourceUpdateErrorErrors> errors;
+  core.List<ResourceUpdateErrorErrors>? errors;
 
   ResourceUpdateError();
 
@@ -3114,9 +3005,9 @@ class ResourceUpdateError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
+          'errors': errors!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3131,12 +3022,12 @@ class ResourceUpdateWarningsData {
   /// enabled for IP forwarding).
   ///
   /// Output only.
-  core.String key;
+  core.String? key;
 
   /// A warning data value corresponding to the key.
   ///
   /// Output only.
-  core.String value;
+  core.String? value;
 
   ResourceUpdateWarningsData();
 
@@ -3149,9 +3040,9 @@ class ResourceUpdateWarningsData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -3210,19 +3101,19 @@ class ResourceUpdateWarnings {
   /// due to errors
   /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
   /// exceedingly large number of resources
-  core.String code;
+  core.String? code;
 
   /// Metadata about this warning in key: value format.
   ///
   /// For example: "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
-  core.List<ResourceUpdateWarningsData> data;
+  core.List<ResourceUpdateWarningsData>? data;
 
   /// A human-readable description of the warning code.
   ///
   /// Output only.
-  core.String message;
+  core.String? message;
 
   ResourceUpdateWarnings();
 
@@ -3242,30 +3133,30 @@ class ResourceUpdateWarnings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
+        if (message != null) 'message': message!,
       };
 }
 
 class ResourceUpdate {
   /// The Access Control Policy to set on this resource after updating the
   /// resource itself.
-  ResourceAccessControl accessControl;
+  ResourceAccessControl? accessControl;
 
   /// If errors are generated during update of the resource, this field will be
   /// populated.
   ///
   /// Output only.
-  ResourceUpdateError error;
+  ResourceUpdateError? error;
 
   /// The expanded properties of the resource with reference values expanded.
   ///
   /// Returned as serialized YAML.
   ///
   /// Output only.
-  core.String finalProperties;
+  core.String? finalProperties;
 
   /// The intent of the resource: `PREVIEW`, `UPDATE`, or `CANCEL`.
   ///
@@ -3279,13 +3170,13 @@ class ResourceUpdate {
   /// method.
   /// - "ABANDON" : The resource is scheduled to be abandoned.
   /// - "CREATE" : The resource is scheduled to be created.
-  core.String intent;
+  core.String? intent;
 
   /// URL of the manifest representing the update configuration of this
   /// resource.
   ///
   /// Output only.
-  core.String manifest;
+  core.String? manifest;
 
   /// The set of updated properties for this resource, before references are
   /// expanded.
@@ -3293,7 +3184,7 @@ class ResourceUpdate {
   /// Returned as serialized YAML.
   ///
   /// Output only.
-  core.String properties;
+  core.String? properties;
 
   /// The state of the resource.
   ///
@@ -3304,13 +3195,13 @@ class ResourceUpdate {
   /// - "IN_PREVIEW" : The service is previewing changes on the resource.
   /// - "FAILED" : The service has failed to change the resource.
   /// - "ABORTED" : The service has aborted trying to change the resource.
-  core.String state;
+  core.String? state;
 
   /// If warning messages are generated during processing of this resource, this
   /// field will be populated.
   ///
   /// Output only.
-  core.List<ResourceUpdateWarnings> warnings;
+  core.List<ResourceUpdateWarnings>? warnings;
 
   ResourceUpdate();
 
@@ -3347,16 +3238,16 @@ class ResourceUpdate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessControl != null) 'accessControl': accessControl.toJson(),
-        if (error != null) 'error': error.toJson(),
-        if (finalProperties != null) 'finalProperties': finalProperties,
-        if (intent != null) 'intent': intent,
-        if (manifest != null) 'manifest': manifest,
-        if (properties != null) 'properties': properties,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessControl != null) 'accessControl': accessControl!.toJson(),
+        if (error != null) 'error': error!.toJson(),
+        if (finalProperties != null) 'finalProperties': finalProperties!,
+        if (intent != null) 'intent': intent!,
+        if (manifest != null) 'manifest': manifest!,
+        if (properties != null) 'properties': properties!,
+        if (state != null) 'state': state!,
         if (warnings != null)
-          'warnings': warnings.map((value) => value.toJson()).toList(),
+          'warnings': warnings!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3364,10 +3255,10 @@ class ResourceUpdate {
 /// build the next request if the request has been truncated.
 class ResourcesListResponse {
   /// A token used to continue a truncated list request.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Resources contained in this list response.
-  core.List<Resource> resources;
+  core.List<Resource>? resources;
 
   ResourcesListResponse();
 
@@ -3383,22 +3274,22 @@ class ResourcesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
 class TargetConfiguration {
   /// The configuration to use for this deployment.
-  ConfigFile config;
+  ConfigFile? config;
 
   /// Specifies any files to import for this configuration.
   ///
   /// This can be used to import templates or other files. For example, you
   /// might import a text file in order to use the file in a template.
-  core.List<ImportFile> imports;
+  core.List<ImportFile>? imports;
 
   TargetConfiguration();
 
@@ -3415,10 +3306,10 @@ class TargetConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (config != null) 'config': config.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (config != null) 'config': config!.toJson(),
         if (imports != null)
-          'imports': imports.map((value) => value.toJson()).toList(),
+          'imports': imports!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3426,7 +3317,7 @@ class TestPermissionsRequest {
   /// The set of permissions to check for the 'resource'.
   ///
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestPermissionsRequest();
 
@@ -3438,15 +3329,15 @@ class TestPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
 class TestPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestPermissionsResponse();
 
@@ -3458,33 +3349,33 @@ class TestPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
 /// A resource type supported by Deployment Manager.
 class Type {
-  core.String id;
+  core.String? id;
 
   /// Creation timestamp in RFC3339 text format.
   ///
   /// Output only.
-  core.String insertTime;
+  core.String? insertTime;
 
   /// Name of the type.
-  core.String name;
+  core.String? name;
 
   /// The Operation that most recently ran, or is currently running, on this
   /// type.
   ///
   /// Output only.
-  Operation operation;
+  Operation? operation;
 
   /// Server defined URL for the resource.
   ///
   /// Output only.
-  core.String selfLink;
+  core.String? selfLink;
 
   Type();
 
@@ -3507,24 +3398,24 @@ class Type {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (insertTime != null) 'insertTime': insertTime,
-        if (name != null) 'name': name,
-        if (operation != null) 'operation': operation.toJson(),
-        if (selfLink != null) 'selfLink': selfLink,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (insertTime != null) 'insertTime': insertTime!,
+        if (name != null) 'name': name!,
+        if (operation != null) 'operation': operation!.toJson(),
+        if (selfLink != null) 'selfLink': selfLink!,
       };
 }
 
 /// A response that returns all Types supported by Deployment Manager
 class TypesListResponse {
   /// A token used to continue a truncated list request.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of resource types supported by Deployment Manager.
   ///
   /// Output only.
-  core.List<Type> types;
+  core.List<Type>? types;
 
   TypesListResponse();
 
@@ -3540,9 +3431,9 @@ class TypesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (types != null)
-          'types': types.map((value) => value.toJson()).toList(),
+          'types': types!.map((value) => value.toJson()).toList(),
       };
 }

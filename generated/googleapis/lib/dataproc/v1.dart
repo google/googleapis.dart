@@ -118,13 +118,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   async.Future<AutoscalingPolicy> create(
     AutoscalingPolicy request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -173,11 +169,8 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -219,11 +212,8 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   /// this method will complete with the same error.
   async.Future<AutoscalingPolicy> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -267,13 +257,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -322,13 +308,10 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   /// this method will complete with the same error.
   async.Future<ListAutoscalingPoliciesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -376,13 +359,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -430,13 +409,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -486,13 +461,9 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   async.Future<AutoscalingPolicy> update(
     AutoscalingPolicy request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -544,13 +515,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
   async.Future<WorkflowTemplate> create(
     WorkflowTemplate request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -602,12 +569,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.int version,
-    core.String $fields,
+    core.int? version,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (version != null) 'version': ['${version}'],
       if ($fields != null) 'fields': [$fields],
@@ -655,12 +619,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// this method will complete with the same error.
   async.Future<WorkflowTemplate> get(
     core.String name, {
-    core.int version,
-    core.String $fields,
+    core.int? version,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (version != null) 'version': ['${version}'],
       if ($fields != null) 'fields': [$fields],
@@ -705,13 +666,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -769,13 +726,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
   async.Future<Operation> instantiate(
     InstantiateWorkflowTemplateRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -841,14 +794,10 @@ class ProjectsLocationsWorkflowTemplatesResource {
   async.Future<Operation> instantiateInline(
     WorkflowTemplate request,
     core.String parent, {
-    core.String requestId,
-    core.String $fields,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -898,13 +847,10 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// this method will complete with the same error.
   async.Future<ListWorkflowTemplatesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -952,13 +898,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1006,13 +948,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1064,13 +1002,9 @@ class ProjectsLocationsWorkflowTemplatesResource {
   async.Future<WorkflowTemplate> update(
     WorkflowTemplate request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1139,13 +1073,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   async.Future<AutoscalingPolicy> create(
     AutoscalingPolicy request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1194,11 +1124,8 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1240,11 +1167,8 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   /// this method will complete with the same error.
   async.Future<AutoscalingPolicy> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1288,13 +1212,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1343,13 +1263,10 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   /// this method will complete with the same error.
   async.Future<ListAutoscalingPoliciesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1397,13 +1314,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1451,13 +1364,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1507,13 +1416,9 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   async.Future<AutoscalingPolicy> update(
     AutoscalingPolicy request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1575,17 +1480,10 @@ class ProjectsRegionsClustersResource {
     Cluster request,
     core.String projectId,
     core.String region, {
-    core.String requestId,
-    core.String $fields,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (region == null) {
-      throw core.ArgumentError('Parameter region is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -1647,19 +1545,10 @@ class ProjectsRegionsClustersResource {
     core.String projectId,
     core.String region,
     core.String clusterName, {
-    core.String clusterUuid,
-    core.String requestId,
-    core.String $fields,
+    core.String? clusterUuid,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (region == null) {
-      throw core.ArgumentError('Parameter region is required.');
-    }
-    if (clusterName == null) {
-      throw core.ArgumentError('Parameter clusterName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (clusterUuid != null) 'clusterUuid': [clusterUuid],
       if (requestId != null) 'requestId': [requestId],
@@ -1715,19 +1604,9 @@ class ProjectsRegionsClustersResource {
     core.String projectId,
     core.String region,
     core.String clusterName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (region == null) {
-      throw core.ArgumentError('Parameter region is required.');
-    }
-    if (clusterName == null) {
-      throw core.ArgumentError('Parameter clusterName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1774,17 +1653,8 @@ class ProjectsRegionsClustersResource {
     core.String projectId,
     core.String region,
     core.String clusterName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (region == null) {
-      throw core.ArgumentError('Parameter region is required.');
-    }
-    if (clusterName == null) {
-      throw core.ArgumentError('Parameter clusterName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1832,13 +1702,9 @@ class ProjectsRegionsClustersResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1890,19 +1756,9 @@ class ProjectsRegionsClustersResource {
     core.String project,
     core.String region,
     core.String cluster, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (region == null) {
-      throw core.ArgumentError('Parameter region is required.');
-    }
-    if (cluster == null) {
-      throw core.ArgumentError('Parameter cluster is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1963,17 +1819,11 @@ class ProjectsRegionsClustersResource {
   async.Future<ListClustersResponse> list(
     core.String projectId,
     core.String region, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (region == null) {
-      throw core.ArgumentError('Parameter region is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2063,22 +1913,12 @@ class ProjectsRegionsClustersResource {
     core.String projectId,
     core.String region,
     core.String clusterName, {
-    core.String gracefulDecommissionTimeout,
-    core.String requestId,
-    core.String updateMask,
-    core.String $fields,
+    core.String? gracefulDecommissionTimeout,
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (region == null) {
-      throw core.ArgumentError('Parameter region is required.');
-    }
-    if (clusterName == null) {
-      throw core.ArgumentError('Parameter clusterName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (gracefulDecommissionTimeout != null)
         'gracefulDecommissionTimeout': [gracefulDecommissionTimeout],
@@ -2131,13 +1971,9 @@ class ProjectsRegionsClustersResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2183,19 +2019,9 @@ class ProjectsRegionsClustersResource {
     core.String projectId,
     core.String region,
     core.String clusterName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (region == null) {
-      throw core.ArgumentError('Parameter region is required.');
-    }
-    if (clusterName == null) {
-      throw core.ArgumentError('Parameter clusterName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2245,19 +2071,9 @@ class ProjectsRegionsClustersResource {
     core.String projectId,
     core.String region,
     core.String clusterName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (region == null) {
-      throw core.ArgumentError('Parameter region is required.');
-    }
-    if (clusterName == null) {
-      throw core.ArgumentError('Parameter clusterName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2309,13 +2125,9 @@ class ProjectsRegionsClustersResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2375,19 +2187,9 @@ class ProjectsRegionsJobsResource {
     core.String projectId,
     core.String region,
     core.String jobId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (region == null) {
-      throw core.ArgumentError('Parameter region is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2437,17 +2239,8 @@ class ProjectsRegionsJobsResource {
     core.String projectId,
     core.String region,
     core.String jobId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (region == null) {
-      throw core.ArgumentError('Parameter region is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2492,17 +2285,8 @@ class ProjectsRegionsJobsResource {
     core.String projectId,
     core.String region,
     core.String jobId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (region == null) {
-      throw core.ArgumentError('Parameter region is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2549,13 +2333,9 @@ class ProjectsRegionsJobsResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2622,19 +2402,13 @@ class ProjectsRegionsJobsResource {
   async.Future<ListJobsResponse> list(
     core.String projectId,
     core.String region, {
-    core.String clusterName,
-    core.String filter,
-    core.String jobStateMatcher,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? clusterName,
+    core.String? filter,
+    core.String? jobStateMatcher,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (region == null) {
-      throw core.ArgumentError('Parameter region is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (clusterName != null) 'clusterName': [clusterName],
       if (filter != null) 'filter': [filter],
@@ -2693,20 +2467,10 @@ class ProjectsRegionsJobsResource {
     core.String projectId,
     core.String region,
     core.String jobId, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (region == null) {
-      throw core.ArgumentError('Parameter region is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2755,13 +2519,9 @@ class ProjectsRegionsJobsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2804,16 +2564,9 @@ class ProjectsRegionsJobsResource {
     SubmitJobRequest request,
     core.String projectId,
     core.String region, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (region == null) {
-      throw core.ArgumentError('Parameter region is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2858,16 +2611,9 @@ class ProjectsRegionsJobsResource {
     SubmitJobRequest request,
     core.String projectId,
     core.String region, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (region == null) {
-      throw core.ArgumentError('Parameter region is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2916,13 +2662,9 @@ class ProjectsRegionsJobsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2977,11 +2719,8 @@ class ProjectsRegionsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3021,11 +2760,8 @@ class ProjectsRegionsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3063,11 +2799,8 @@ class ProjectsRegionsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3110,13 +2843,9 @@ class ProjectsRegionsOperationsResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3168,14 +2897,11 @@ class ProjectsRegionsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -3222,13 +2948,9 @@ class ProjectsRegionsOperationsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3276,13 +2998,9 @@ class ProjectsRegionsOperationsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3336,13 +3054,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
   async.Future<WorkflowTemplate> create(
     WorkflowTemplate request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3394,12 +3108,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.int version,
-    core.String $fields,
+    core.int? version,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (version != null) 'version': ['${version}'],
       if ($fields != null) 'fields': [$fields],
@@ -3447,12 +3158,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// this method will complete with the same error.
   async.Future<WorkflowTemplate> get(
     core.String name, {
-    core.int version,
-    core.String $fields,
+    core.int? version,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (version != null) 'version': ['${version}'],
       if ($fields != null) 'fields': [$fields],
@@ -3497,13 +3205,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3561,13 +3265,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
   async.Future<Operation> instantiate(
     InstantiateWorkflowTemplateRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3633,14 +3333,10 @@ class ProjectsRegionsWorkflowTemplatesResource {
   async.Future<Operation> instantiateInline(
     WorkflowTemplate request,
     core.String parent, {
-    core.String requestId,
-    core.String $fields,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -3690,13 +3386,10 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// this method will complete with the same error.
   async.Future<ListWorkflowTemplatesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3744,13 +3437,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3798,13 +3487,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3856,13 +3541,9 @@ class ProjectsRegionsWorkflowTemplatesResource {
   async.Future<WorkflowTemplate> update(
     WorkflowTemplate request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3886,7 +3567,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
 /// See GPUs on Compute Engine (https://cloud.google.com/compute/docs/gpus/).
 class AcceleratorConfig {
   /// The number of the accelerator cards of this type exposed to this instance.
-  core.int acceleratorCount;
+  core.int? acceleratorCount;
 
   /// Full URL, partial URI, or short name of the accelerator type resource to
   /// expose to this instance.
@@ -3900,7 +3581,7 @@ class AcceleratorConfig {
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
   /// feature, you must use the short name of the accelerator type resource, for
   /// example, nvidia-tesla-k80.
-  core.String acceleratorTypeUri;
+  core.String? acceleratorTypeUri;
 
   AcceleratorConfig();
 
@@ -3913,10 +3594,10 @@ class AcceleratorConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (acceleratorCount != null) 'acceleratorCount': acceleratorCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (acceleratorCount != null) 'acceleratorCount': acceleratorCount!,
         if (acceleratorTypeUri != null)
-          'acceleratorTypeUri': acceleratorTypeUri,
+          'acceleratorTypeUri': acceleratorTypeUri!,
       };
 }
 
@@ -3931,7 +3612,7 @@ class AutoscalingConfig {
   /// that the policy must be in the same project and Dataproc region.
   ///
   /// Optional.
-  core.String policyUri;
+  core.String? policyUri;
 
   AutoscalingConfig();
 
@@ -3941,14 +3622,14 @@ class AutoscalingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policyUri != null) 'policyUri': policyUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policyUri != null) 'policyUri': policyUri!,
       };
 }
 
 /// Describes an autoscaling policy for Dataproc cluster autoscaler.
 class AutoscalingPolicy {
-  BasicAutoscalingAlgorithm basicAlgorithm;
+  BasicAutoscalingAlgorithm? basicAlgorithm;
 
   /// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9),
   /// underscores (_), and hyphens (-).
@@ -3957,7 +3638,7 @@ class AutoscalingPolicy {
   /// and 50 characters.
   ///
   /// Required.
-  core.String id;
+  core.String? id;
 
   /// The "resource name" of the autoscaling policy, as described in
   /// https://cloud.google.com/apis/design/resource_names.
@@ -3970,17 +3651,17 @@ class AutoscalingPolicy {
   /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Describes how the autoscaler will operate for secondary workers.
   ///
   /// Optional.
-  InstanceGroupAutoscalingPolicyConfig secondaryWorkerConfig;
+  InstanceGroupAutoscalingPolicyConfig? secondaryWorkerConfig;
 
   /// Describes how the autoscaler will operate for primary workers.
   ///
   /// Required.
-  InstanceGroupAutoscalingPolicyConfig workerConfig;
+  InstanceGroupAutoscalingPolicyConfig? workerConfig;
 
   AutoscalingPolicy();
 
@@ -4006,13 +3687,13 @@ class AutoscalingPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (basicAlgorithm != null) 'basicAlgorithm': basicAlgorithm.toJson(),
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (basicAlgorithm != null) 'basicAlgorithm': basicAlgorithm!.toJson(),
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
         if (secondaryWorkerConfig != null)
-          'secondaryWorkerConfig': secondaryWorkerConfig.toJson(),
-        if (workerConfig != null) 'workerConfig': workerConfig.toJson(),
+          'secondaryWorkerConfig': secondaryWorkerConfig!.toJson(),
+        if (workerConfig != null) 'workerConfig': workerConfig!.toJson(),
       };
 }
 
@@ -4024,12 +3705,12 @@ class BasicAutoscalingAlgorithm {
   /// has completed.Bounds: 2m, 1d. Default: 2m.
   ///
   /// Optional.
-  core.String cooldownPeriod;
+  core.String? cooldownPeriod;
 
   /// YARN autoscaling configuration.
   ///
   /// Required.
-  BasicYarnAutoscalingConfig yarnConfig;
+  BasicYarnAutoscalingConfig? yarnConfig;
 
   BasicAutoscalingAlgorithm();
 
@@ -4043,9 +3724,9 @@ class BasicAutoscalingAlgorithm {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cooldownPeriod != null) 'cooldownPeriod': cooldownPeriod,
-        if (yarnConfig != null) 'yarnConfig': yarnConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cooldownPeriod != null) 'cooldownPeriod': cooldownPeriod!,
+        if (yarnConfig != null) 'yarnConfig': yarnConfig!.toJson(),
       };
 }
 
@@ -4058,7 +3739,7 @@ class BasicYarnAutoscalingConfig {
   /// downscaling operations.Bounds: 0s, 1d.
   ///
   /// Required.
-  core.String gracefulDecommissionTimeout;
+  core.String? gracefulDecommissionTimeout;
 
   /// Fraction of average YARN pending memory in the last cooldown period for
   /// which to remove workers.
@@ -4071,7 +3752,7 @@ class BasicYarnAutoscalingConfig {
   /// for more information.Bounds: 0.0, 1.0.
   ///
   /// Required.
-  core.double scaleDownFactor;
+  core.double? scaleDownFactor;
 
   /// Minimum scale-down threshold as a fraction of total cluster size before
   /// scaling occurs.
@@ -4082,7 +3763,7 @@ class BasicYarnAutoscalingConfig {
   /// recommended change.Bounds: 0.0, 1.0. Default: 0.0.
   ///
   /// Optional.
-  core.double scaleDownMinWorkerFraction;
+  core.double? scaleDownMinWorkerFraction;
 
   /// Fraction of average YARN pending memory in the last cooldown period for
   /// which to add workers.
@@ -4095,7 +3776,7 @@ class BasicYarnAutoscalingConfig {
   /// for more information.Bounds: 0.0, 1.0.
   ///
   /// Required.
-  core.double scaleUpFactor;
+  core.double? scaleUpFactor;
 
   /// Minimum scale-up threshold as a fraction of total cluster size before
   /// scaling occurs.
@@ -4106,7 +3787,7 @@ class BasicYarnAutoscalingConfig {
   /// recommended change.Bounds: 0.0, 1.0. Default: 0.0.
   ///
   /// Optional.
-  core.double scaleUpMinWorkerFraction;
+  core.double? scaleUpMinWorkerFraction;
 
   BasicYarnAutoscalingConfig();
 
@@ -4131,15 +3812,15 @@ class BasicYarnAutoscalingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (gracefulDecommissionTimeout != null)
-          'gracefulDecommissionTimeout': gracefulDecommissionTimeout,
-        if (scaleDownFactor != null) 'scaleDownFactor': scaleDownFactor,
+          'gracefulDecommissionTimeout': gracefulDecommissionTimeout!,
+        if (scaleDownFactor != null) 'scaleDownFactor': scaleDownFactor!,
         if (scaleDownMinWorkerFraction != null)
-          'scaleDownMinWorkerFraction': scaleDownMinWorkerFraction,
-        if (scaleUpFactor != null) 'scaleUpFactor': scaleUpFactor,
+          'scaleDownMinWorkerFraction': scaleDownMinWorkerFraction!,
+        if (scaleUpFactor != null) 'scaleUpFactor': scaleUpFactor!,
         if (scaleUpMinWorkerFraction != null)
-          'scaleUpMinWorkerFraction': scaleUpMinWorkerFraction,
+          'scaleUpMinWorkerFraction': scaleUpMinWorkerFraction!,
       };
 }
 
@@ -4154,7 +3835,7 @@ class Binding {
   /// of the members in this binding.To learn which resources support conditions
   /// in their IAM policies, see the IAM documentation
   /// (https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -4186,12 +3867,12 @@ class Binding {
   /// role in the binding. domain:{domain}: The G Suite domain (primary) that
   /// represents all the users of that domain. For example, google.com or
   /// example.com.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to members.
   ///
   /// For example, roles/viewer, roles/editor, or roles/owner.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -4210,10 +3891,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -4225,7 +3906,7 @@ class CancelJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Describes the identifying information, config, and status of a cluster of
@@ -4237,14 +3918,14 @@ class Cluster {
   /// can be reused.
   ///
   /// Required.
-  core.String clusterName;
+  core.String? clusterName;
 
   /// A cluster UUID (Unique Universal Identifier).
   ///
   /// Dataproc generates this value when it creates the cluster.
   ///
   /// Output only.
-  core.String clusterUuid;
+  core.String? clusterUuid;
 
   /// The cluster config.
   ///
@@ -4252,7 +3933,7 @@ class Cluster {
   /// clusters are updated.
   ///
   /// Required.
-  ClusterConfig config;
+  ClusterConfig? config;
 
   /// The labels to associate with this cluster.
   ///
@@ -4263,7 +3944,7 @@ class Cluster {
   /// associated with a cluster.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature:
   /// This report is available for testing purposes only.
@@ -4271,22 +3952,22 @@ class Cluster {
   /// It may be changed before final release.
   ///
   /// Output only.
-  ClusterMetrics metrics;
+  ClusterMetrics? metrics;
 
   /// The Google Cloud Platform project ID that the cluster belongs to.
   ///
   /// Required.
-  core.String projectId;
+  core.String? projectId;
 
   /// Cluster status.
   ///
   /// Output only.
-  ClusterStatus status;
+  ClusterStatus? status;
 
   /// The previous cluster status.
   ///
   /// Output only.
-  core.List<ClusterStatus> statusHistory;
+  core.List<ClusterStatus>? statusHistory;
 
   Cluster();
 
@@ -4329,17 +4010,17 @@ class Cluster {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clusterName != null) 'clusterName': clusterName,
-        if (clusterUuid != null) 'clusterUuid': clusterUuid,
-        if (config != null) 'config': config.toJson(),
-        if (labels != null) 'labels': labels,
-        if (metrics != null) 'metrics': metrics.toJson(),
-        if (projectId != null) 'projectId': projectId,
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clusterName != null) 'clusterName': clusterName!,
+        if (clusterUuid != null) 'clusterUuid': clusterUuid!,
+        if (config != null) 'config': config!.toJson(),
+        if (labels != null) 'labels': labels!,
+        if (metrics != null) 'metrics': metrics!.toJson(),
+        if (projectId != null) 'projectId': projectId!,
+        if (status != null) 'status': status!.toJson(),
         if (statusHistory != null)
           'statusHistory':
-              statusHistory.map((value) => value.toJson()).toList(),
+              statusHistory!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4350,7 +4031,7 @@ class ClusterConfig {
   /// Cluster does not autoscale if this field is unset.
   ///
   /// Optional.
-  AutoscalingConfig autoscalingConfig;
+  AutoscalingConfig? autoscalingConfig;
 
   /// A Cloud Storage bucket used to stage job dependencies, config files, and
   /// job driver console output.
@@ -4365,22 +4046,22 @@ class ClusterConfig {
   /// Storage bucket.
   ///
   /// Optional.
-  core.String configBucket;
+  core.String? configBucket;
 
   /// Encryption settings for the cluster.
   ///
   /// Optional.
-  EncryptionConfig encryptionConfig;
+  EncryptionConfig? encryptionConfig;
 
   /// Port/endpoint configuration for this cluster
   ///
   /// Optional.
-  EndpointConfig endpointConfig;
+  EndpointConfig? endpointConfig;
 
   /// The shared Compute Engine config settings for all instances in a cluster.
   ///
   /// Optional.
-  GceClusterConfig gceClusterConfig;
+  GceClusterConfig? gceClusterConfig;
 
   /// Commands to execute on each node after config is completed.
   ///
@@ -4393,38 +4074,38 @@ class ClusterConfig {
   /// ... worker specific actions ... fi
   ///
   /// Optional.
-  core.List<NodeInitializationAction> initializationActions;
+  core.List<NodeInitializationAction>? initializationActions;
 
   /// Lifecycle setting for the cluster.
   ///
   /// Optional.
-  LifecycleConfig lifecycleConfig;
+  LifecycleConfig? lifecycleConfig;
 
   /// The Compute Engine config settings for the master instance in a cluster.
   ///
   /// Optional.
-  InstanceGroupConfig masterConfig;
+  InstanceGroupConfig? masterConfig;
 
   /// Metastore configuration.
   ///
   /// Optional.
-  MetastoreConfig metastoreConfig;
+  MetastoreConfig? metastoreConfig;
 
   /// The Compute Engine config settings for additional worker instances in a
   /// cluster.
   ///
   /// Optional.
-  InstanceGroupConfig secondaryWorkerConfig;
+  InstanceGroupConfig? secondaryWorkerConfig;
 
   /// Security settings for the cluster.
   ///
   /// Optional.
-  SecurityConfig securityConfig;
+  SecurityConfig? securityConfig;
 
   /// The config settings for software inside the cluster.
   ///
   /// Optional.
-  SoftwareConfig softwareConfig;
+  SoftwareConfig? softwareConfig;
 
   /// A Cloud Storage bucket used to store ephemeral cluster and jobs data, such
   /// as Spark and MapReduce history files.
@@ -4438,12 +4119,12 @@ class ClusterConfig {
   /// a URI to a Cloud Storage bucket.
   ///
   /// Optional.
-  core.String tempBucket;
+  core.String? tempBucket;
 
   /// The Compute Engine config settings for worker instances in a cluster.
   ///
   /// Optional.
-  InstanceGroupConfig workerConfig;
+  InstanceGroupConfig? workerConfig;
 
   ClusterConfig();
 
@@ -4508,29 +4189,29 @@ class ClusterConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (autoscalingConfig != null)
-          'autoscalingConfig': autoscalingConfig.toJson(),
-        if (configBucket != null) 'configBucket': configBucket,
+          'autoscalingConfig': autoscalingConfig!.toJson(),
+        if (configBucket != null) 'configBucket': configBucket!,
         if (encryptionConfig != null)
-          'encryptionConfig': encryptionConfig.toJson(),
-        if (endpointConfig != null) 'endpointConfig': endpointConfig.toJson(),
+          'encryptionConfig': encryptionConfig!.toJson(),
+        if (endpointConfig != null) 'endpointConfig': endpointConfig!.toJson(),
         if (gceClusterConfig != null)
-          'gceClusterConfig': gceClusterConfig.toJson(),
+          'gceClusterConfig': gceClusterConfig!.toJson(),
         if (initializationActions != null)
           'initializationActions':
-              initializationActions.map((value) => value.toJson()).toList(),
+              initializationActions!.map((value) => value.toJson()).toList(),
         if (lifecycleConfig != null)
-          'lifecycleConfig': lifecycleConfig.toJson(),
-        if (masterConfig != null) 'masterConfig': masterConfig.toJson(),
+          'lifecycleConfig': lifecycleConfig!.toJson(),
+        if (masterConfig != null) 'masterConfig': masterConfig!.toJson(),
         if (metastoreConfig != null)
-          'metastoreConfig': metastoreConfig.toJson(),
+          'metastoreConfig': metastoreConfig!.toJson(),
         if (secondaryWorkerConfig != null)
-          'secondaryWorkerConfig': secondaryWorkerConfig.toJson(),
-        if (securityConfig != null) 'securityConfig': securityConfig.toJson(),
-        if (softwareConfig != null) 'softwareConfig': softwareConfig.toJson(),
-        if (tempBucket != null) 'tempBucket': tempBucket,
-        if (workerConfig != null) 'workerConfig': workerConfig.toJson(),
+          'secondaryWorkerConfig': secondaryWorkerConfig!.toJson(),
+        if (securityConfig != null) 'securityConfig': securityConfig!.toJson(),
+        if (softwareConfig != null) 'softwareConfig': softwareConfig!.toJson(),
+        if (tempBucket != null) 'tempBucket': tempBucket!,
+        if (workerConfig != null) 'workerConfig': workerConfig!.toJson(),
       };
 }
 
@@ -4540,10 +4221,10 @@ class ClusterConfig {
 /// It may be changed before final release.
 class ClusterMetrics {
   /// The HDFS metrics.
-  core.Map<core.String, core.String> hdfsMetrics;
+  core.Map<core.String, core.String>? hdfsMetrics;
 
   /// The YARN metrics.
-  core.Map<core.String, core.String> yarnMetrics;
+  core.Map<core.String, core.String>? yarnMetrics;
 
   ClusterMetrics();
 
@@ -4570,9 +4251,9 @@ class ClusterMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hdfsMetrics != null) 'hdfsMetrics': hdfsMetrics,
-        if (yarnMetrics != null) 'yarnMetrics': yarnMetrics,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hdfsMetrics != null) 'hdfsMetrics': hdfsMetrics!,
+        if (yarnMetrics != null) 'yarnMetrics': yarnMetrics!,
       };
 }
 
@@ -4581,17 +4262,17 @@ class ClusterOperation {
   /// Indicates the operation is done.
   ///
   /// Output only.
-  core.bool done;
+  core.bool? done;
 
   /// Error, if operation failed.
   ///
   /// Output only.
-  core.String error;
+  core.String? error;
 
   /// The id of the cluster operation.
   ///
   /// Output only.
-  core.String operationId;
+  core.String? operationId;
 
   ClusterOperation();
 
@@ -4607,10 +4288,10 @@ class ClusterOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error,
-        if (operationId != null) 'operationId': operationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!,
+        if (operationId != null) 'operationId': operationId!,
       };
 }
 
@@ -4619,42 +4300,42 @@ class ClusterOperationMetadata {
   /// Name of the cluster for the operation.
   ///
   /// Output only.
-  core.String clusterName;
+  core.String? clusterName;
 
   /// Cluster UUID for the operation.
   ///
   /// Output only.
-  core.String clusterUuid;
+  core.String? clusterUuid;
 
   /// Short description of operation.
   ///
   /// Output only.
-  core.String description;
+  core.String? description;
 
   /// Labels associated with the operation
   ///
   /// Output only.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The operation type.
   ///
   /// Output only.
-  core.String operationType;
+  core.String? operationType;
 
   /// Current operation status.
   ///
   /// Output only.
-  ClusterOperationStatus status;
+  ClusterOperationStatus? status;
 
   /// The previous operation status.
   ///
   /// Output only.
-  core.List<ClusterOperationStatus> statusHistory;
+  core.List<ClusterOperationStatus>? statusHistory;
 
   /// Errors encountered during operation execution.
   ///
   /// Output only.
-  core.List<core.String> warnings;
+  core.List<core.String>? warnings;
 
   ClusterOperationMetadata();
 
@@ -4698,17 +4379,17 @@ class ClusterOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clusterName != null) 'clusterName': clusterName,
-        if (clusterUuid != null) 'clusterUuid': clusterUuid,
-        if (description != null) 'description': description,
-        if (labels != null) 'labels': labels,
-        if (operationType != null) 'operationType': operationType,
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clusterName != null) 'clusterName': clusterName!,
+        if (clusterUuid != null) 'clusterUuid': clusterUuid!,
+        if (description != null) 'description': description!,
+        if (labels != null) 'labels': labels!,
+        if (operationType != null) 'operationType': operationType!,
+        if (status != null) 'status': status!.toJson(),
         if (statusHistory != null)
           'statusHistory':
-              statusHistory.map((value) => value.toJson()).toList(),
-        if (warnings != null) 'warnings': warnings,
+              statusHistory!.map((value) => value.toJson()).toList(),
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -4717,12 +4398,12 @@ class ClusterOperationStatus {
   /// A message containing any operation metadata details.
   ///
   /// Output only.
-  core.String details;
+  core.String? details;
 
   /// A message containing the detailed operation state.
   ///
   /// Output only.
-  core.String innerState;
+  core.String? innerState;
 
   /// A message containing the operation state.
   ///
@@ -4732,12 +4413,12 @@ class ClusterOperationStatus {
   /// - "PENDING" : The operation has been created.
   /// - "RUNNING" : The operation is running.
   /// - "DONE" : The operation is done; either cancelled or completed.
-  core.String state;
+  core.String? state;
 
   /// The time this state was entered.
   ///
   /// Output only.
-  core.String stateStartTime;
+  core.String? stateStartTime;
 
   ClusterOperationStatus();
 
@@ -4756,11 +4437,11 @@ class ClusterOperationStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (details != null) 'details': details,
-        if (innerState != null) 'innerState': innerState,
-        if (state != null) 'state': state,
-        if (stateStartTime != null) 'stateStartTime': stateStartTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (details != null) 'details': details!,
+        if (innerState != null) 'innerState': innerState!,
+        if (state != null) 'state': state!,
+        if (stateStartTime != null) 'stateStartTime': stateStartTime!,
       };
 }
 
@@ -4771,7 +4452,7 @@ class ClusterSelector {
   /// Cluster must have all labels to match.
   ///
   /// Required.
-  core.Map<core.String, core.String> clusterLabels;
+  core.Map<core.String, core.String>? clusterLabels;
 
   /// The zone where workflow process executes.
   ///
@@ -4779,7 +4460,7 @@ class ClusterSelector {
   /// unspecified, the zone of the first cluster matching the selector is used.
   ///
   /// Optional.
-  core.String zone;
+  core.String? zone;
 
   ClusterSelector();
 
@@ -4799,9 +4480,9 @@ class ClusterSelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clusterLabels != null) 'clusterLabels': clusterLabels,
-        if (zone != null) 'zone': zone,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clusterLabels != null) 'clusterLabels': clusterLabels!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -4810,7 +4491,7 @@ class ClusterStatus {
   /// Details of cluster's state.
   ///
   /// Optional. Output only.
-  core.String detail;
+  core.String? detail;
 
   /// The cluster's state.
   ///
@@ -4825,13 +4506,13 @@ class ClusterStatus {
   /// - "DELETING" : The cluster is being deleted. It cannot be used.
   /// - "UPDATING" : The cluster is being updated. It continues to accept and
   /// process jobs.
-  core.String state;
+  core.String? state;
 
   /// Time when this state was entered (see JSON representation of Timestamp
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
   ///
   /// Output only.
-  core.String stateStartTime;
+  core.String? stateStartTime;
 
   /// Additional state information that includes status reported by the agent.
   ///
@@ -4843,7 +4524,7 @@ class ClusterStatus {
   /// exhausted).Applies to RUNNING state.
   /// - "STALE_STATUS" : The agent-reported status is out of date (may occur if
   /// Dataproc loses communication with Agent).Applies to RUNNING state.
-  core.String substate;
+  core.String? substate;
 
   ClusterStatus();
 
@@ -4862,11 +4543,11 @@ class ClusterStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (detail != null) 'detail': detail,
-        if (state != null) 'state': state,
-        if (stateStartTime != null) 'stateStartTime': stateStartTime,
-        if (substate != null) 'substate': substate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (detail != null) 'detail': detail!,
+        if (state != null) 'state': state!,
+        if (stateStartTime != null) 'stateStartTime': stateStartTime!,
+        if (substate != null) 'substate': substate!,
       };
 }
 
@@ -4878,7 +4559,7 @@ class DiagnoseClusterRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The location of diagnostic output.
@@ -4889,7 +4570,7 @@ class DiagnoseClusterResults {
   /// diagnostics.
   ///
   /// Output only.
-  core.String outputUri;
+  core.String? outputUri;
 
   DiagnoseClusterResults();
 
@@ -4899,8 +4580,8 @@ class DiagnoseClusterResults {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (outputUri != null) 'outputUri': outputUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (outputUri != null) 'outputUri': outputUri!,
       };
 }
 
@@ -4909,7 +4590,7 @@ class DiskConfig {
   /// Size in GB of the boot disk (default is 500GB).
   ///
   /// Optional.
-  core.int bootDiskSizeGb;
+  core.int? bootDiskSizeGb;
 
   /// Type of the boot disk (default is "pd-standard").
   ///
@@ -4919,7 +4600,7 @@ class DiskConfig {
   /// (https://cloud.google.com/compute/docs/disks#disk-types).
   ///
   /// Optional.
-  core.String bootDiskType;
+  core.String? bootDiskType;
 
   /// Number of attached SSDs, from 0 to 4 (default is 0).
   ///
@@ -4929,7 +4610,7 @@ class DiskConfig {
   /// them, and the boot disk contains only basic config and installed binaries.
   ///
   /// Optional.
-  core.int numLocalSsds;
+  core.int? numLocalSsds;
 
   DiskConfig();
 
@@ -4945,10 +4626,10 @@ class DiskConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb,
-        if (bootDiskType != null) 'bootDiskType': bootDiskType,
-        if (numLocalSsds != null) 'numLocalSsds': numLocalSsds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
+        if (bootDiskType != null) 'bootDiskType': bootDiskType!,
+        if (numLocalSsds != null) 'numLocalSsds': numLocalSsds!,
       };
 }
 
@@ -4966,7 +4647,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Encryption settings for the cluster.
@@ -4975,7 +4656,7 @@ class EncryptionConfig {
   /// the cluster.
   ///
   /// Optional.
-  core.String gcePdKmsKeyName;
+  core.String? gcePdKmsKeyName;
 
   EncryptionConfig();
 
@@ -4985,8 +4666,8 @@ class EncryptionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcePdKmsKeyName != null) 'gcePdKmsKeyName': gcePdKmsKeyName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcePdKmsKeyName != null) 'gcePdKmsKeyName': gcePdKmsKeyName!,
       };
 }
 
@@ -4998,14 +4679,14 @@ class EndpointConfig {
   /// Defaults to false.
   ///
   /// Optional.
-  core.bool enableHttpPortAccess;
+  core.bool? enableHttpPortAccess;
 
   /// The map of port descriptions to URLs.
   ///
   /// Will only be populated if enable_http_port_access is true.
   ///
   /// Output only.
-  core.Map<core.String, core.String> httpPorts;
+  core.Map<core.String, core.String>? httpPorts;
 
   EndpointConfig();
 
@@ -5024,10 +4705,10 @@ class EndpointConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (enableHttpPortAccess != null)
-          'enableHttpPortAccess': enableHttpPortAccess,
-        if (httpPorts != null) 'httpPorts': httpPorts,
+          'enableHttpPortAccess': enableHttpPortAccess!,
+        if (httpPorts != null) 'httpPorts': httpPorts!,
       };
 }
 
@@ -5056,24 +4737,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -5092,11 +4773,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -5113,12 +4794,12 @@ class GceClusterConfig {
   /// accessible without external IP addresses.
   ///
   /// Optional.
-  core.bool internalIpOnly;
+  core.bool? internalIpOnly;
 
   /// The Compute Engine metadata entries to add to all instances (see Project
   /// and instance metadata
   /// (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
-  core.Map<core.String, core.String> metadata;
+  core.Map<core.String, core.String>? metadata;
 
   /// The Compute Engine network to be used for machine communications.
   ///
@@ -5131,12 +4812,12 @@ class GceClusterConfig {
   /// projects/\[project_id\]/regions/global/default default
   ///
   /// Optional.
-  core.String networkUri;
+  core.String? networkUri;
 
   /// Node Group Affinity for sole-tenant clusters.
   ///
   /// Optional.
-  NodeGroupAffinity nodeGroupAffinity;
+  NodeGroupAffinity? nodeGroupAffinity;
 
   /// The type of IPv6 access for a cluster.
   ///
@@ -5152,12 +4833,12 @@ class GceClusterConfig {
   /// from the Dataproc cluster.
   /// - "BIDIRECTIONAL" : Enables bidirectional private IPv6 access between
   /// Google Services and the Dataproc cluster.
-  core.String privateIpv6GoogleAccess;
+  core.String? privateIpv6GoogleAccess;
 
   /// Reservation Affinity for consuming Zonal reservation.
   ///
   /// Optional.
-  ReservationAffinity reservationAffinity;
+  ReservationAffinity? reservationAffinity;
 
   /// The Dataproc service account
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc)
@@ -5169,7 +4850,7 @@ class GceClusterConfig {
   /// is used.
   ///
   /// Optional.
-  core.String serviceAccount;
+  core.String? serviceAccount;
 
   /// The URIs of service account scopes to be included in Compute Engine
   /// instances.
@@ -5185,13 +4866,13 @@ class GceClusterConfig {
   /// https://www.googleapis.com/auth/devstorage.full_control
   ///
   /// Optional.
-  core.List<core.String> serviceAccountScopes;
+  core.List<core.String>? serviceAccountScopes;
 
   /// Shielded Instance Config for clusters using Compute Engine Shielded VMs
   /// (https://cloud.google.com/security/shielded-cloud/shielded-vm).
   ///
   /// Optional.
-  ShieldedInstanceConfig shieldedInstanceConfig;
+  ShieldedInstanceConfig? shieldedInstanceConfig;
 
   /// The Compute Engine subnetwork to be used for machine communications.
   ///
@@ -5201,11 +4882,11 @@ class GceClusterConfig {
   /// projects/\[project_id\]/regions/us-east1/subnetworks/sub0 sub0
   ///
   /// Optional.
-  core.String subnetworkUri;
+  core.String? subnetworkUri;
 
   /// The Compute Engine tags to add to all instances (see Tagging instances
   /// (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   /// The zone where the Compute Engine cluster will be located.
   ///
@@ -5217,7 +4898,7 @@ class GceClusterConfig {
   /// projects/\[project_id\]/zones/\[zone\] us-central1-f
   ///
   /// Optional.
-  core.String zoneUri;
+  core.String? zoneUri;
 
   GceClusterConfig();
 
@@ -5274,24 +4955,24 @@ class GceClusterConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (internalIpOnly != null) 'internalIpOnly': internalIpOnly,
-        if (metadata != null) 'metadata': metadata,
-        if (networkUri != null) 'networkUri': networkUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (internalIpOnly != null) 'internalIpOnly': internalIpOnly!,
+        if (metadata != null) 'metadata': metadata!,
+        if (networkUri != null) 'networkUri': networkUri!,
         if (nodeGroupAffinity != null)
-          'nodeGroupAffinity': nodeGroupAffinity.toJson(),
+          'nodeGroupAffinity': nodeGroupAffinity!.toJson(),
         if (privateIpv6GoogleAccess != null)
-          'privateIpv6GoogleAccess': privateIpv6GoogleAccess,
+          'privateIpv6GoogleAccess': privateIpv6GoogleAccess!,
         if (reservationAffinity != null)
-          'reservationAffinity': reservationAffinity.toJson(),
-        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+          'reservationAffinity': reservationAffinity!.toJson(),
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (serviceAccountScopes != null)
-          'serviceAccountScopes': serviceAccountScopes,
+          'serviceAccountScopes': serviceAccountScopes!,
         if (shieldedInstanceConfig != null)
-          'shieldedInstanceConfig': shieldedInstanceConfig.toJson(),
-        if (subnetworkUri != null) 'subnetworkUri': subnetworkUri,
-        if (tags != null) 'tags': tags,
-        if (zoneUri != null) 'zoneUri': zoneUri,
+          'shieldedInstanceConfig': shieldedInstanceConfig!.toJson(),
+        if (subnetworkUri != null) 'subnetworkUri': subnetworkUri!,
+        if (tags != null) 'tags': tags!,
+        if (zoneUri != null) 'zoneUri': zoneUri!,
       };
 }
 
@@ -5299,7 +4980,7 @@ class GceClusterConfig {
 class GetIamPolicyRequest {
   /// OPTIONAL: A GetPolicyOptions object for specifying options to
   /// GetIamPolicy.
-  GetPolicyOptions options;
+  GetPolicyOptions? options;
 
   GetIamPolicyRequest();
 
@@ -5310,8 +4991,8 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (options != null) 'options': options.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (options != null) 'options': options!.toJson(),
       };
 }
 
@@ -5327,7 +5008,7 @@ class GetPolicyOptions {
   /// (https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// Optional.
-  core.int requestedPolicyVersion;
+  core.int? requestedPolicyVersion;
 
   GetPolicyOptions();
 
@@ -5337,9 +5018,9 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion,
+          'requestedPolicyVersion': requestedPolicyVersion!,
       };
 }
 
@@ -5354,7 +5035,7 @@ class HadoopJob {
   /// Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
   ///
   /// Optional.
-  core.List<core.String> archiveUris;
+  core.List<core.String>? archiveUris;
 
   /// The arguments to pass to the driver.
   ///
@@ -5363,7 +5044,7 @@ class HadoopJob {
   /// job submission.
   ///
   /// Optional.
-  core.List<core.String> args;
+  core.List<core.String>? args;
 
   /// HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the
   /// working directory of Hadoop drivers and distributed tasks.
@@ -5371,23 +5052,23 @@ class HadoopJob {
   /// Useful for naively parallel tasks.
   ///
   /// Optional.
-  core.List<core.String> fileUris;
+  core.List<core.String>? fileUris;
 
   /// Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
   ///
   /// Optional.
-  core.List<core.String> jarFileUris;
+  core.List<core.String>? jarFileUris;
 
   /// The runtime log config for job execution.
   ///
   /// Optional.
-  LoggingConfig loggingConfig;
+  LoggingConfig? loggingConfig;
 
   /// The name of the driver's main class.
   ///
   /// The jar file containing the class must be in the default CLASSPATH or
   /// specified in jar_file_uris.
-  core.String mainClass;
+  core.String? mainClass;
 
   /// The HCFS URI of the jar file containing the main class.
   ///
@@ -5395,7 +5076,7 @@ class HadoopJob {
   /// 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar'
   /// 'hdfs:/tmp/test-samples/custom-wordcount.jar'
   /// 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
-  core.String mainJarFileUri;
+  core.String? mainJarFileUri;
 
   /// A mapping of property names to values, used to configure Hadoop.
   ///
@@ -5404,7 +5085,7 @@ class HadoopJob {
   /// classes in user code.
   ///
   /// Optional.
-  core.Map<core.String, core.String> properties;
+  core.Map<core.String, core.String>? properties;
 
   HadoopJob();
 
@@ -5451,15 +5132,15 @@ class HadoopJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (archiveUris != null) 'archiveUris': archiveUris,
-        if (args != null) 'args': args,
-        if (fileUris != null) 'fileUris': fileUris,
-        if (jarFileUris != null) 'jarFileUris': jarFileUris,
-        if (loggingConfig != null) 'loggingConfig': loggingConfig.toJson(),
-        if (mainClass != null) 'mainClass': mainClass,
-        if (mainJarFileUri != null) 'mainJarFileUri': mainJarFileUri,
-        if (properties != null) 'properties': properties,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (archiveUris != null) 'archiveUris': archiveUris!,
+        if (args != null) 'args': args!,
+        if (fileUris != null) 'fileUris': fileUris!,
+        if (jarFileUris != null) 'jarFileUris': jarFileUris!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (mainClass != null) 'mainClass': mainClass!,
+        if (mainJarFileUri != null) 'mainJarFileUri': mainJarFileUri!,
+        if (properties != null) 'properties': properties!,
       };
 }
 
@@ -5472,7 +5153,7 @@ class HiveJob {
   /// independent parallel queries.
   ///
   /// Optional.
-  core.bool continueOnFailure;
+  core.bool? continueOnFailure;
 
   /// HCFS URIs of jar files to add to the CLASSPATH of the Hive server and
   /// Hadoop MapReduce (MR) tasks.
@@ -5480,7 +5161,7 @@ class HiveJob {
   /// Can contain Hive SerDes and UDFs.
   ///
   /// Optional.
-  core.List<core.String> jarFileUris;
+  core.List<core.String>? jarFileUris;
 
   /// A mapping of property names and values, used to configure Hive.
   ///
@@ -5489,19 +5170,19 @@ class HiveJob {
   /// /etc/hive/conf/hive-site.xml, and classes in user code.
   ///
   /// Optional.
-  core.Map<core.String, core.String> properties;
+  core.Map<core.String, core.String>? properties;
 
   /// The HCFS URI of the script that contains Hive queries.
-  core.String queryFileUri;
+  core.String? queryFileUri;
 
   /// A list of queries.
-  QueryList queryList;
+  QueryList? queryList;
 
   /// Mapping of query variable names to values (equivalent to the Hive command:
   /// SET name="value";).
   ///
   /// Optional.
-  core.Map<core.String, core.String> scriptVariables;
+  core.Map<core.String, core.String>? scriptVariables;
 
   HiveJob();
 
@@ -5543,13 +5224,13 @@ class HiveJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (continueOnFailure != null) 'continueOnFailure': continueOnFailure,
-        if (jarFileUris != null) 'jarFileUris': jarFileUris,
-        if (properties != null) 'properties': properties,
-        if (queryFileUri != null) 'queryFileUri': queryFileUri,
-        if (queryList != null) 'queryList': queryList.toJson(),
-        if (scriptVariables != null) 'scriptVariables': scriptVariables,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (continueOnFailure != null) 'continueOnFailure': continueOnFailure!,
+        if (jarFileUris != null) 'jarFileUris': jarFileUris!,
+        if (properties != null) 'properties': properties!,
+        if (queryFileUri != null) 'queryFileUri': queryFileUri!,
+        if (queryList != null) 'queryList': queryList!.toJson(),
+        if (scriptVariables != null) 'scriptVariables': scriptVariables!,
       };
 }
 
@@ -5558,7 +5239,7 @@ class InjectCredentialsRequest {
   /// The cluster UUID.
   ///
   /// Required.
-  core.String clusterUuid;
+  core.String? clusterUuid;
 
   /// The encrypted credentials being injected in to the cluster.The client is
   /// responsible for encrypting the credentials in a way that is supported by
@@ -5566,7 +5247,7 @@ class InjectCredentialsRequest {
   /// the encrypted credentials are not written to audit logs.
   ///
   /// Required.
-  core.String credentialsCiphertext;
+  core.String? credentialsCiphertext;
 
   InjectCredentialsRequest();
 
@@ -5579,10 +5260,10 @@ class InjectCredentialsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clusterUuid != null) 'clusterUuid': clusterUuid,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clusterUuid != null) 'clusterUuid': clusterUuid!,
         if (credentialsCiphertext != null)
-          'credentialsCiphertext': credentialsCiphertext,
+          'credentialsCiphertext': credentialsCiphertext!,
       };
 }
 
@@ -5597,7 +5278,7 @@ class InstanceGroupAutoscalingPolicyConfig {
   /// workers - Bounds: \[min_instances, ). Default: 0.
   ///
   /// Required.
-  core.int maxInstances;
+  core.int? maxInstances;
 
   /// Minimum number of instances for this group.Primary workers - Bounds: 2,
   /// max_instances.
@@ -5605,7 +5286,7 @@ class InstanceGroupAutoscalingPolicyConfig {
   /// Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0.
   ///
   /// Optional.
-  core.int minInstances;
+  core.int? minInstances;
 
   /// Weight for the instance group, which is used to determine the fraction of
   /// total workers in the cluster from this instance group.
@@ -5625,7 +5306,7 @@ class InstanceGroupAutoscalingPolicyConfig {
   /// secondary workers.
   ///
   /// Optional.
-  core.int weight;
+  core.int? weight;
 
   InstanceGroupAutoscalingPolicyConfig();
 
@@ -5641,10 +5322,10 @@ class InstanceGroupAutoscalingPolicyConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxInstances != null) 'maxInstances': maxInstances,
-        if (minInstances != null) 'minInstances': minInstances,
-        if (weight != null) 'weight': weight,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxInstances != null) 'maxInstances': maxInstances!,
+        if (minInstances != null) 'minInstances': minInstances!,
+        if (weight != null) 'weight': weight!,
       };
 }
 
@@ -5654,12 +5335,12 @@ class InstanceGroupConfig {
   /// The Compute Engine accelerator configuration for these instances.
   ///
   /// Optional.
-  core.List<AcceleratorConfig> accelerators;
+  core.List<AcceleratorConfig>? accelerators;
 
   /// Disk option config settings.
   ///
   /// Optional.
-  DiskConfig diskConfig;
+  DiskConfig? diskConfig;
 
   /// The Compute Engine image resource used for cluster instances.The URI can
   /// represent an image or image family.Image examples:
@@ -5674,7 +5355,7 @@ class InstanceGroupConfig {
   /// SoftwareConfig.image_version or the system default.
   ///
   /// Optional.
-  core.String imageUri;
+  core.String? imageUri;
 
   /// The list of instance names.
   ///
@@ -5682,17 +5363,17 @@ class InstanceGroupConfig {
   /// instance group.
   ///
   /// Output only.
-  core.List<core.String> instanceNames;
+  core.List<core.String>? instanceNames;
 
   /// List of references to Compute Engine instances.
   ///
   /// Output only.
-  core.List<InstanceReference> instanceReferences;
+  core.List<InstanceReference>? instanceReferences;
 
   /// Specifies that this instance group contains preemptible instances.
   ///
   /// Output only.
-  core.bool isPreemptible;
+  core.bool? isPreemptible;
 
   /// The Compute Engine machine type used for cluster instances.A full URL,
   /// partial URI, or short name are valid.
@@ -5707,7 +5388,7 @@ class InstanceGroupConfig {
   /// example, n1-standard-2.
   ///
   /// Optional.
-  core.String machineTypeUri;
+  core.String? machineTypeUri;
 
   /// The config for Compute Engine Instance Group Manager that manages this
   /// group.
@@ -5715,7 +5396,7 @@ class InstanceGroupConfig {
   /// This is only used for preemptible instance groups.
   ///
   /// Output only.
-  ManagedGroupConfig managedGroupConfig;
+  ManagedGroupConfig? managedGroupConfig;
 
   /// Specifies the minimum cpu platform for the Instance Group.
   ///
@@ -5723,14 +5404,14 @@ class InstanceGroupConfig {
   /// (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
   ///
   /// Optional.
-  core.String minCpuPlatform;
+  core.String? minCpuPlatform;
 
   /// The number of VM instances in the instance group.
   ///
   /// For master instance groups, must be set to 1.
   ///
   /// Optional.
-  core.int numInstances;
+  core.int? numInstances;
 
   /// Specifies the preemptibility of the instance group.The default value for
   /// master and worker groups is NON_PREEMPTIBLE.
@@ -5747,7 +5428,7 @@ class InstanceGroupConfig {
   /// instance groups.
   /// - "PREEMPTIBLE" : Instances are preemptible.This option is allowed only
   /// for secondary worker groups.
-  core.String preemptibility;
+  core.String? preemptibility;
 
   InstanceGroupConfig();
 
@@ -5797,35 +5478,35 @@ class InstanceGroupConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accelerators != null)
-          'accelerators': accelerators.map((value) => value.toJson()).toList(),
-        if (diskConfig != null) 'diskConfig': diskConfig.toJson(),
-        if (imageUri != null) 'imageUri': imageUri,
-        if (instanceNames != null) 'instanceNames': instanceNames,
+          'accelerators': accelerators!.map((value) => value.toJson()).toList(),
+        if (diskConfig != null) 'diskConfig': diskConfig!.toJson(),
+        if (imageUri != null) 'imageUri': imageUri!,
+        if (instanceNames != null) 'instanceNames': instanceNames!,
         if (instanceReferences != null)
           'instanceReferences':
-              instanceReferences.map((value) => value.toJson()).toList(),
-        if (isPreemptible != null) 'isPreemptible': isPreemptible,
-        if (machineTypeUri != null) 'machineTypeUri': machineTypeUri,
+              instanceReferences!.map((value) => value.toJson()).toList(),
+        if (isPreemptible != null) 'isPreemptible': isPreemptible!,
+        if (machineTypeUri != null) 'machineTypeUri': machineTypeUri!,
         if (managedGroupConfig != null)
-          'managedGroupConfig': managedGroupConfig.toJson(),
-        if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform,
-        if (numInstances != null) 'numInstances': numInstances,
-        if (preemptibility != null) 'preemptibility': preemptibility,
+          'managedGroupConfig': managedGroupConfig!.toJson(),
+        if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
+        if (numInstances != null) 'numInstances': numInstances!,
+        if (preemptibility != null) 'preemptibility': preemptibility!,
       };
 }
 
 /// A reference to a Compute Engine instance.
 class InstanceReference {
   /// The unique identifier of the Compute Engine instance.
-  core.String instanceId;
+  core.String? instanceId;
 
   /// The user-friendly name of the Compute Engine instance.
-  core.String instanceName;
+  core.String? instanceName;
 
   /// The public key used for sharing data with this instance.
-  core.String publicKey;
+  core.String? publicKey;
 
   InstanceReference();
 
@@ -5841,10 +5522,10 @@ class InstanceReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (instanceId != null) 'instanceId': instanceId,
-        if (instanceName != null) 'instanceName': instanceName,
-        if (publicKey != null) 'publicKey': publicKey,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (instanceId != null) 'instanceId': instanceId!,
+        if (instanceName != null) 'instanceName': instanceName!,
+        if (publicKey != null) 'publicKey': publicKey!,
       };
 }
 
@@ -5856,7 +5537,7 @@ class InstantiateWorkflowTemplateRequest {
   /// Values may not exceed 1000 characters.
   ///
   /// Optional.
-  core.Map<core.String, core.String> parameters;
+  core.Map<core.String, core.String>? parameters;
 
   /// A tag that prevents multiple concurrent workflow instances with the same
   /// tag from running.
@@ -5868,7 +5549,7 @@ class InstantiateWorkflowTemplateRequest {
   /// hyphens (-). The maximum length is 40 characters.
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   /// The version of workflow template to instantiate.
   ///
@@ -5877,7 +5558,7 @@ class InstantiateWorkflowTemplateRequest {
   /// cannot be used to instantiate a previous version of workflow template.
   ///
   /// Optional.
-  core.int version;
+  core.int? version;
 
   InstantiateWorkflowTemplateRequest();
 
@@ -5900,10 +5581,10 @@ class InstantiateWorkflowTemplateRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (parameters != null) 'parameters': parameters,
-        if (requestId != null) 'requestId': requestId,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (parameters != null) 'parameters': parameters!,
+        if (requestId != null) 'requestId': requestId!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -5916,7 +5597,7 @@ class Job {
   /// failed, or cancelled.
   ///
   /// Output only.
-  core.bool done;
+  core.bool? done;
 
   /// If present, the location of miscellaneous control files which may be used
   /// as part of job setup and handling.
@@ -5925,22 +5606,22 @@ class Job {
   /// driver_output_uri.
   ///
   /// Output only.
-  core.String driverControlFilesUri;
+  core.String? driverControlFilesUri;
 
   /// A URI pointing to the location of the stdout of the job's driver program.
   ///
   /// Output only.
-  core.String driverOutputResourceUri;
+  core.String? driverOutputResourceUri;
 
   /// Job is a Hadoop job.
   ///
   /// Optional.
-  HadoopJob hadoopJob;
+  HadoopJob? hadoopJob;
 
   /// Job is a Hive job.
   ///
   /// Optional.
-  HiveJob hiveJob;
+  HiveJob? hiveJob;
 
   /// A UUID that uniquely identifies a job within the project over time.
   ///
@@ -5948,7 +5629,7 @@ class Job {
   /// over time.
   ///
   /// Output only.
-  core.String jobUuid;
+  core.String? jobUuid;
 
   /// The labels to associate with this job.
   ///
@@ -5959,27 +5640,27 @@ class Job {
   /// associated with a job.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Job is a Pig job.
   ///
   /// Optional.
-  PigJob pigJob;
+  PigJob? pigJob;
 
   /// Job information, including how, when, and where to run the job.
   ///
   /// Required.
-  JobPlacement placement;
+  JobPlacement? placement;
 
   /// Job is a Presto job.
   ///
   /// Optional.
-  PrestoJob prestoJob;
+  PrestoJob? prestoJob;
 
   /// Job is a PySpark job.
   ///
   /// Optional.
-  PySparkJob pysparkJob;
+  PySparkJob? pysparkJob;
 
   /// The fully qualified reference to the job, which can be used to obtain the
   /// equivalent REST path of the job resource.
@@ -5988,27 +5669,27 @@ class Job {
   /// generates a job_id.
   ///
   /// Optional.
-  JobReference reference;
+  JobReference? reference;
 
   /// Job scheduling configuration.
   ///
   /// Optional.
-  JobScheduling scheduling;
+  JobScheduling? scheduling;
 
   /// Job is a Spark job.
   ///
   /// Optional.
-  SparkJob sparkJob;
+  SparkJob? sparkJob;
 
   /// Job is a SparkR job.
   ///
   /// Optional.
-  SparkRJob sparkRJob;
+  SparkRJob? sparkRJob;
 
   /// Job is a SparkSql job.
   ///
   /// Optional.
-  SparkSqlJob sparkSqlJob;
+  SparkSqlJob? sparkSqlJob;
 
   /// The job status.
   ///
@@ -6016,12 +5697,12 @@ class Job {
   /// type_job and yarn_applications fields.
   ///
   /// Output only.
-  JobStatus status;
+  JobStatus? status;
 
   /// The previous job status.
   ///
   /// Output only.
-  core.List<JobStatus> statusHistory;
+  core.List<JobStatus>? statusHistory;
 
   /// The collection of YARN applications spun up by this job.Beta Feature: This
   /// report is available for testing purposes only.
@@ -6029,7 +5710,7 @@ class Job {
   /// It may be changed before final release.
   ///
   /// Output only.
-  core.List<YarnApplication> yarnApplications;
+  core.List<YarnApplication>? yarnApplications;
 
   Job();
 
@@ -6117,32 +5798,32 @@ class Job {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
         if (driverControlFilesUri != null)
-          'driverControlFilesUri': driverControlFilesUri,
+          'driverControlFilesUri': driverControlFilesUri!,
         if (driverOutputResourceUri != null)
-          'driverOutputResourceUri': driverOutputResourceUri,
-        if (hadoopJob != null) 'hadoopJob': hadoopJob.toJson(),
-        if (hiveJob != null) 'hiveJob': hiveJob.toJson(),
-        if (jobUuid != null) 'jobUuid': jobUuid,
-        if (labels != null) 'labels': labels,
-        if (pigJob != null) 'pigJob': pigJob.toJson(),
-        if (placement != null) 'placement': placement.toJson(),
-        if (prestoJob != null) 'prestoJob': prestoJob.toJson(),
-        if (pysparkJob != null) 'pysparkJob': pysparkJob.toJson(),
-        if (reference != null) 'reference': reference.toJson(),
-        if (scheduling != null) 'scheduling': scheduling.toJson(),
-        if (sparkJob != null) 'sparkJob': sparkJob.toJson(),
-        if (sparkRJob != null) 'sparkRJob': sparkRJob.toJson(),
-        if (sparkSqlJob != null) 'sparkSqlJob': sparkSqlJob.toJson(),
-        if (status != null) 'status': status.toJson(),
+          'driverOutputResourceUri': driverOutputResourceUri!,
+        if (hadoopJob != null) 'hadoopJob': hadoopJob!.toJson(),
+        if (hiveJob != null) 'hiveJob': hiveJob!.toJson(),
+        if (jobUuid != null) 'jobUuid': jobUuid!,
+        if (labels != null) 'labels': labels!,
+        if (pigJob != null) 'pigJob': pigJob!.toJson(),
+        if (placement != null) 'placement': placement!.toJson(),
+        if (prestoJob != null) 'prestoJob': prestoJob!.toJson(),
+        if (pysparkJob != null) 'pysparkJob': pysparkJob!.toJson(),
+        if (reference != null) 'reference': reference!.toJson(),
+        if (scheduling != null) 'scheduling': scheduling!.toJson(),
+        if (sparkJob != null) 'sparkJob': sparkJob!.toJson(),
+        if (sparkRJob != null) 'sparkRJob': sparkRJob!.toJson(),
+        if (sparkSqlJob != null) 'sparkSqlJob': sparkSqlJob!.toJson(),
+        if (status != null) 'status': status!.toJson(),
         if (statusHistory != null)
           'statusHistory':
-              statusHistory.map((value) => value.toJson()).toList(),
+              statusHistory!.map((value) => value.toJson()).toList(),
         if (yarnApplications != null)
           'yarnApplications':
-              yarnApplications.map((value) => value.toJson()).toList(),
+              yarnApplications!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6151,22 +5832,22 @@ class JobMetadata {
   /// The job id.
   ///
   /// Output only.
-  core.String jobId;
+  core.String? jobId;
 
   /// Operation type.
   ///
   /// Output only.
-  core.String operationType;
+  core.String? operationType;
 
   /// Job submission time.
   ///
   /// Output only.
-  core.String startTime;
+  core.String? startTime;
 
   /// Most recent job status.
   ///
   /// Output only.
-  JobStatus status;
+  JobStatus? status;
 
   JobMetadata();
 
@@ -6186,11 +5867,11 @@ class JobMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jobId != null) 'jobId': jobId,
-        if (operationType != null) 'operationType': operationType,
-        if (startTime != null) 'startTime': startTime,
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jobId != null) 'jobId': jobId!,
+        if (operationType != null) 'operationType': operationType!,
+        if (startTime != null) 'startTime': startTime!,
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -6199,18 +5880,18 @@ class JobPlacement {
   /// Cluster labels to identify a cluster where the job will be submitted.
   ///
   /// Optional.
-  core.Map<core.String, core.String> clusterLabels;
+  core.Map<core.String, core.String>? clusterLabels;
 
   /// The name of the cluster where the job will be submitted.
   ///
   /// Required.
-  core.String clusterName;
+  core.String? clusterName;
 
   /// A cluster UUID generated by the Dataproc service when the job is
   /// submitted.
   ///
   /// Output only.
-  core.String clusterUuid;
+  core.String? clusterUuid;
 
   JobPlacement();
 
@@ -6233,10 +5914,10 @@ class JobPlacement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clusterLabels != null) 'clusterLabels': clusterLabels,
-        if (clusterName != null) 'clusterName': clusterName,
-        if (clusterUuid != null) 'clusterUuid': clusterUuid,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clusterLabels != null) 'clusterLabels': clusterLabels!,
+        if (clusterName != null) 'clusterName': clusterName!,
+        if (clusterUuid != null) 'clusterUuid': clusterUuid!,
       };
 }
 
@@ -6249,14 +5930,14 @@ class JobReference {
   /// job ID will be provided by the server.
   ///
   /// Optional.
-  core.String jobId;
+  core.String? jobId;
 
   /// The ID of the Google Cloud Platform project that the job belongs to.
   ///
   /// If specified, must match the request project ID.
   ///
   /// Optional.
-  core.String projectId;
+  core.String? projectId;
 
   JobReference();
 
@@ -6269,9 +5950,9 @@ class JobReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jobId != null) 'jobId': jobId,
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jobId != null) 'jobId': jobId!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
@@ -6283,7 +5964,7 @@ class JobScheduling {
   /// 10 minute window.Maximum value is 10.
   ///
   /// Optional.
-  core.int maxFailuresPerHour;
+  core.int? maxFailuresPerHour;
 
   /// Maximum number of times in total a driver may be restarted as a result of
   /// driver exiting with non-zero code before job is reported failed.
@@ -6291,7 +5972,7 @@ class JobScheduling {
   /// Maximum value is 240.
   ///
   /// Optional.
-  core.int maxFailuresTotal;
+  core.int? maxFailuresTotal;
 
   JobScheduling();
 
@@ -6304,10 +5985,10 @@ class JobScheduling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (maxFailuresPerHour != null)
-          'maxFailuresPerHour': maxFailuresPerHour,
-        if (maxFailuresTotal != null) 'maxFailuresTotal': maxFailuresTotal,
+          'maxFailuresPerHour': maxFailuresPerHour!,
+        if (maxFailuresTotal != null) 'maxFailuresTotal': maxFailuresTotal!,
       };
 }
 
@@ -6316,7 +5997,7 @@ class JobStatus {
   /// Job state details, such as an error description if the state is ERROR.
   ///
   /// Optional. Output only.
-  core.String details;
+  core.String? details;
 
   /// A state message specifying the overall job state.
   ///
@@ -6337,12 +6018,12 @@ class JobStatus {
   /// - "ERROR" : The job has completed, but encountered an error.
   /// - "ATTEMPT_FAILURE" : Job attempt has failed. The detail field contains
   /// failure details for this attempt.Applies to restartable jobs only.
-  core.String state;
+  core.String? state;
 
   /// The time when this state was entered.
   ///
   /// Output only.
-  core.String stateStartTime;
+  core.String? stateStartTime;
 
   /// Additional state information, which includes status reported by the agent.
   ///
@@ -6358,7 +6039,7 @@ class JobStatus {
   /// caused by a loss of communication between the agent and Dataproc. If the
   /// agent does not send a timely update, the job will fail.Applies to RUNNING
   /// state.
-  core.String substate;
+  core.String? substate;
 
   JobStatus();
 
@@ -6377,11 +6058,11 @@ class JobStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (details != null) 'details': details,
-        if (state != null) 'state': state,
-        if (stateStartTime != null) 'stateStartTime': stateStartTime,
-        if (substate != null) 'substate': substate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (details != null) 'details': details!,
+        if (state != null) 'state': state!,
+        if (stateStartTime != null) 'stateStartTime': stateStartTime!,
+        if (substate != null) 'substate': substate!,
       };
 }
 
@@ -6391,39 +6072,39 @@ class KerberosConfig {
   /// realm trust relationship.
   ///
   /// Optional.
-  core.String crossRealmTrustAdminServer;
+  core.String? crossRealmTrustAdminServer;
 
   /// The KDC (IP or hostname) for the remote trusted realm in a cross realm
   /// trust relationship.
   ///
   /// Optional.
-  core.String crossRealmTrustKdc;
+  core.String? crossRealmTrustKdc;
 
   /// The remote realm the Dataproc on-cluster KDC will trust, should the user
   /// enable cross realm trust.
   ///
   /// Optional.
-  core.String crossRealmTrustRealm;
+  core.String? crossRealmTrustRealm;
 
   /// The Cloud Storage URI of a KMS encrypted file containing the shared
   /// password between the on-cluster Kerberos realm and the remote trusted
   /// realm, in a cross realm trust relationship.
   ///
   /// Optional.
-  core.String crossRealmTrustSharedPasswordUri;
+  core.String? crossRealmTrustSharedPasswordUri;
 
   /// Flag to indicate whether to Kerberize the cluster (default: false).
   ///
   /// Set this field to true to enable Kerberos on a cluster.
   ///
   /// Optional.
-  core.bool enableKerberos;
+  core.bool? enableKerberos;
 
   /// The Cloud Storage URI of a KMS encrypted file containing the master key of
   /// the KDC database.
   ///
   /// Optional.
-  core.String kdcDbKeyUri;
+  core.String? kdcDbKeyUri;
 
   /// The Cloud Storage URI of a KMS encrypted file containing the password to
   /// the user provided key.
@@ -6431,7 +6112,7 @@ class KerberosConfig {
   /// For the self-signed certificate, this password is generated by Dataproc.
   ///
   /// Optional.
-  core.String keyPasswordUri;
+  core.String? keyPasswordUri;
 
   /// The Cloud Storage URI of a KMS encrypted file containing the password to
   /// the user provided keystore.
@@ -6439,39 +6120,39 @@ class KerberosConfig {
   /// For the self-signed certificate, this password is generated by Dataproc.
   ///
   /// Optional.
-  core.String keystorePasswordUri;
+  core.String? keystorePasswordUri;
 
   /// The Cloud Storage URI of the keystore file used for SSL encryption.
   ///
   /// If not provided, Dataproc will provide a self-signed certificate.
   ///
   /// Optional.
-  core.String keystoreUri;
+  core.String? keystoreUri;
 
   /// The uri of the KMS key used to encrypt various sensitive files.
   ///
   /// Optional.
-  core.String kmsKeyUri;
+  core.String? kmsKeyUri;
 
   /// The name of the on-cluster Kerberos realm.
   ///
   /// If not specified, the uppercased domain of hostnames will be the realm.
   ///
   /// Optional.
-  core.String realm;
+  core.String? realm;
 
   /// The Cloud Storage URI of a KMS encrypted file containing the root
   /// principal password.
   ///
   /// Optional.
-  core.String rootPrincipalPasswordUri;
+  core.String? rootPrincipalPasswordUri;
 
   /// The lifetime of the ticket granting ticket, in hours.
   ///
   /// If not specified, or user specifies 0, then default value 10 will be used.
   ///
   /// Optional.
-  core.int tgtLifetimeHours;
+  core.int? tgtLifetimeHours;
 
   /// The Cloud Storage URI of a KMS encrypted file containing the password to
   /// the user provided truststore.
@@ -6479,14 +6160,14 @@ class KerberosConfig {
   /// For the self-signed certificate, this password is generated by Dataproc.
   ///
   /// Optional.
-  core.String truststorePasswordUri;
+  core.String? truststorePasswordUri;
 
   /// The Cloud Storage URI of the truststore file used for SSL encryption.
   ///
   /// If not provided, Dataproc will provide a self-signed certificate.
   ///
   /// Optional.
-  core.String truststoreUri;
+  core.String? truststoreUri;
 
   KerberosConfig();
 
@@ -6541,29 +6222,29 @@ class KerberosConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (crossRealmTrustAdminServer != null)
-          'crossRealmTrustAdminServer': crossRealmTrustAdminServer,
+          'crossRealmTrustAdminServer': crossRealmTrustAdminServer!,
         if (crossRealmTrustKdc != null)
-          'crossRealmTrustKdc': crossRealmTrustKdc,
+          'crossRealmTrustKdc': crossRealmTrustKdc!,
         if (crossRealmTrustRealm != null)
-          'crossRealmTrustRealm': crossRealmTrustRealm,
+          'crossRealmTrustRealm': crossRealmTrustRealm!,
         if (crossRealmTrustSharedPasswordUri != null)
-          'crossRealmTrustSharedPasswordUri': crossRealmTrustSharedPasswordUri,
-        if (enableKerberos != null) 'enableKerberos': enableKerberos,
-        if (kdcDbKeyUri != null) 'kdcDbKeyUri': kdcDbKeyUri,
-        if (keyPasswordUri != null) 'keyPasswordUri': keyPasswordUri,
+          'crossRealmTrustSharedPasswordUri': crossRealmTrustSharedPasswordUri!,
+        if (enableKerberos != null) 'enableKerberos': enableKerberos!,
+        if (kdcDbKeyUri != null) 'kdcDbKeyUri': kdcDbKeyUri!,
+        if (keyPasswordUri != null) 'keyPasswordUri': keyPasswordUri!,
         if (keystorePasswordUri != null)
-          'keystorePasswordUri': keystorePasswordUri,
-        if (keystoreUri != null) 'keystoreUri': keystoreUri,
-        if (kmsKeyUri != null) 'kmsKeyUri': kmsKeyUri,
-        if (realm != null) 'realm': realm,
+          'keystorePasswordUri': keystorePasswordUri!,
+        if (keystoreUri != null) 'keystoreUri': keystoreUri!,
+        if (kmsKeyUri != null) 'kmsKeyUri': kmsKeyUri!,
+        if (realm != null) 'realm': realm!,
         if (rootPrincipalPasswordUri != null)
-          'rootPrincipalPasswordUri': rootPrincipalPasswordUri,
-        if (tgtLifetimeHours != null) 'tgtLifetimeHours': tgtLifetimeHours,
+          'rootPrincipalPasswordUri': rootPrincipalPasswordUri!,
+        if (tgtLifetimeHours != null) 'tgtLifetimeHours': tgtLifetimeHours!,
         if (truststorePasswordUri != null)
-          'truststorePasswordUri': truststorePasswordUri,
-        if (truststoreUri != null) 'truststoreUri': truststoreUri,
+          'truststorePasswordUri': truststorePasswordUri!,
+        if (truststoreUri != null) 'truststoreUri': truststoreUri!,
       };
 }
 
@@ -6574,7 +6255,7 @@ class LifecycleConfig {
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
   ///
   /// Optional.
-  core.String autoDeleteTime;
+  core.String? autoDeleteTime;
 
   /// The lifetime duration of cluster.
   ///
@@ -6584,7 +6265,7 @@ class LifecycleConfig {
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
   ///
   /// Optional.
-  core.String autoDeleteTtl;
+  core.String? autoDeleteTtl;
 
   /// The duration to keep the cluster alive while idling (when no jobs are
   /// running).
@@ -6595,7 +6276,7 @@ class LifecycleConfig {
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
   ///
   /// Optional.
-  core.String idleDeleteTtl;
+  core.String? idleDeleteTtl;
 
   /// The time when cluster became idle (most recent job finished) and became
   /// eligible for deletion due to idleness (see JSON representation of
@@ -6603,7 +6284,7 @@ class LifecycleConfig {
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
   ///
   /// Output only.
-  core.String idleStartTime;
+  core.String? idleStartTime;
 
   LifecycleConfig();
 
@@ -6622,11 +6303,11 @@ class LifecycleConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (autoDeleteTime != null) 'autoDeleteTime': autoDeleteTime,
-        if (autoDeleteTtl != null) 'autoDeleteTtl': autoDeleteTtl,
-        if (idleDeleteTtl != null) 'idleDeleteTtl': idleDeleteTtl,
-        if (idleStartTime != null) 'idleStartTime': idleStartTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (autoDeleteTime != null) 'autoDeleteTime': autoDeleteTime!,
+        if (autoDeleteTtl != null) 'autoDeleteTtl': autoDeleteTtl!,
+        if (idleDeleteTtl != null) 'idleDeleteTtl': idleDeleteTtl!,
+        if (idleStartTime != null) 'idleStartTime': idleStartTime!,
       };
 }
 
@@ -6635,12 +6316,12 @@ class ListAutoscalingPoliciesResponse {
   /// This token is included in the response if there are more results to fetch.
   ///
   /// Output only.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Autoscaling policies list.
   ///
   /// Output only.
-  core.List<AutoscalingPolicy> policies;
+  core.List<AutoscalingPolicy>? policies;
 
   ListAutoscalingPoliciesResponse();
 
@@ -6656,10 +6337,10 @@ class ListAutoscalingPoliciesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (policies != null)
-          'policies': policies.map((value) => value.toJson()).toList(),
+          'policies': policies!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6668,7 +6349,7 @@ class ListClustersResponse {
   /// The clusters in the project.
   ///
   /// Output only.
-  core.List<Cluster> clusters;
+  core.List<Cluster>? clusters;
 
   /// This token is included in the response if there are more results to fetch.
   ///
@@ -6676,7 +6357,7 @@ class ListClustersResponse {
   /// subsequent ListClustersRequest.
   ///
   /// Output only.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListClustersResponse();
 
@@ -6692,10 +6373,10 @@ class ListClustersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clusters != null)
-          'clusters': clusters.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'clusters': clusters!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -6704,7 +6385,7 @@ class ListJobsResponse {
   /// Jobs list.
   ///
   /// Output only.
-  core.List<Job> jobs;
+  core.List<Job>? jobs;
 
   /// This token is included in the response if there are more results to fetch.
   ///
@@ -6712,7 +6393,7 @@ class ListJobsResponse {
   /// subsequent ListJobsRequest.
   ///
   /// Optional.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListJobsResponse();
 
@@ -6728,19 +6409,19 @@ class ListJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -6756,10 +6437,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6771,12 +6452,12 @@ class ListWorkflowTemplatesResponse {
   /// subsequent ListWorkflowTemplatesRequest.
   ///
   /// Output only.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// WorkflowTemplates list.
   ///
   /// Output only.
-  core.List<WorkflowTemplate> templates;
+  core.List<WorkflowTemplate>? templates;
 
   ListWorkflowTemplatesResponse();
 
@@ -6792,10 +6473,10 @@ class ListWorkflowTemplatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (templates != null)
-          'templates': templates.map((value) => value.toJson()).toList(),
+          'templates': templates!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6805,7 +6486,7 @@ class LoggingConfig {
   ///
   /// This may include "root" package name to configure rootLogger. Examples:
   /// 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-  core.Map<core.String, core.String> driverLogLevels;
+  core.Map<core.String, core.String>? driverLogLevels;
 
   LoggingConfig();
 
@@ -6822,8 +6503,8 @@ class LoggingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (driverLogLevels != null) 'driverLogLevels': driverLogLevels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (driverLogLevels != null) 'driverLogLevels': driverLogLevels!,
       };
 }
 
@@ -6837,12 +6518,12 @@ class ManagedCluster {
   /// consist of between 2 and 35 characters.
   ///
   /// Required.
-  core.String clusterName;
+  core.String? clusterName;
 
   /// The cluster configuration.
   ///
   /// Required.
-  ClusterConfig config;
+  ClusterConfig? config;
 
   /// The labels to associate with this cluster.Label keys must be between 1 and
   /// 63 characters long, and must conform to the following PCRE regular
@@ -6852,7 +6533,7 @@ class ManagedCluster {
   /// associated with a given cluster.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   ManagedCluster();
 
@@ -6875,10 +6556,10 @@ class ManagedCluster {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clusterName != null) 'clusterName': clusterName,
-        if (config != null) 'config': config.toJson(),
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clusterName != null) 'clusterName': clusterName!,
+        if (config != null) 'config': config!.toJson(),
+        if (labels != null) 'labels': labels!,
       };
 }
 
@@ -6887,12 +6568,12 @@ class ManagedGroupConfig {
   /// The name of the Instance Group Manager for this group.
   ///
   /// Output only.
-  core.String instanceGroupManagerName;
+  core.String? instanceGroupManagerName;
 
   /// The name of the Instance Template used for the Managed Instance Group.
   ///
   /// Output only.
-  core.String instanceTemplateName;
+  core.String? instanceTemplateName;
 
   ManagedGroupConfig();
 
@@ -6906,11 +6587,11 @@ class ManagedGroupConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (instanceGroupManagerName != null)
-          'instanceGroupManagerName': instanceGroupManagerName,
+          'instanceGroupManagerName': instanceGroupManagerName!,
         if (instanceTemplateName != null)
-          'instanceTemplateName': instanceTemplateName,
+          'instanceTemplateName': instanceTemplateName!,
       };
 }
 
@@ -6920,7 +6601,7 @@ class MetastoreConfig {
   /// projects/\[project_id\]/locations/\[dataproc_region\]/services/\[service-name\]
   ///
   /// Required.
-  core.String dataprocMetastoreService;
+  core.String? dataprocMetastoreService;
 
   MetastoreConfig();
 
@@ -6931,9 +6612,9 @@ class MetastoreConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataprocMetastoreService != null)
-          'dataprocMetastoreService': dataprocMetastoreService,
+          'dataprocMetastoreService': dataprocMetastoreService!,
       };
 }
 
@@ -6950,7 +6631,7 @@ class NodeGroupAffinity {
   /// node-group-1
   ///
   /// Required.
-  core.String nodeGroupUri;
+  core.String? nodeGroupUri;
 
   NodeGroupAffinity();
 
@@ -6960,8 +6641,8 @@ class NodeGroupAffinity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nodeGroupUri != null) 'nodeGroupUri': nodeGroupUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nodeGroupUri != null) 'nodeGroupUri': nodeGroupUri!,
       };
 }
 
@@ -6971,7 +6652,7 @@ class NodeInitializationAction {
   /// Cloud Storage URI of executable file.
   ///
   /// Required.
-  core.String executableFile;
+  core.String? executableFile;
 
   /// Amount of time executable has to complete.
   ///
@@ -6982,7 +6663,7 @@ class NodeInitializationAction {
   /// executable is not completed at end of the timeout period.
   ///
   /// Optional.
-  core.String executionTimeout;
+  core.String? executionTimeout;
 
   NodeInitializationAction();
 
@@ -6995,9 +6676,9 @@ class NodeInitializationAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executableFile != null) 'executableFile': executableFile,
-        if (executionTimeout != null) 'executionTimeout': executionTimeout,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executableFile != null) 'executableFile': executableFile!,
+        if (executionTimeout != null) 'executionTimeout': executionTimeout!,
       };
 }
 
@@ -7008,10 +6689,10 @@ class Operation {
   ///
   /// If true, the operation is completed, and either error or response is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -7022,14 +6703,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the name should be a resource name
   /// ending with operations/{unique_id}.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -7042,7 +6723,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -7077,12 +6758,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -7091,12 +6772,12 @@ class OrderedJob {
   /// Job is a Hadoop job.
   ///
   /// Optional.
-  HadoopJob hadoopJob;
+  HadoopJob? hadoopJob;
 
   /// Job is a Hive job.
   ///
   /// Optional.
-  HiveJob hiveJob;
+  HiveJob? hiveJob;
 
   /// The labels to associate with this job.Label keys must be between 1 and 63
   /// characters long, and must conform to the following regular expression:
@@ -7106,49 +6787,49 @@ class OrderedJob {
   /// given job.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Job is a Pig job.
   ///
   /// Optional.
-  PigJob pigJob;
+  PigJob? pigJob;
 
   /// The optional list of prerequisite job step_ids.
   ///
   /// If not specified, the job will start at the beginning of workflow.
   ///
   /// Optional.
-  core.List<core.String> prerequisiteStepIds;
+  core.List<core.String>? prerequisiteStepIds;
 
   /// Job is a Presto job.
   ///
   /// Optional.
-  PrestoJob prestoJob;
+  PrestoJob? prestoJob;
 
   /// Job is a PySpark job.
   ///
   /// Optional.
-  PySparkJob pysparkJob;
+  PySparkJob? pysparkJob;
 
   /// Job scheduling configuration.
   ///
   /// Optional.
-  JobScheduling scheduling;
+  JobScheduling? scheduling;
 
   /// Job is a Spark job.
   ///
   /// Optional.
-  SparkJob sparkJob;
+  SparkJob? sparkJob;
 
   /// Job is a SparkR job.
   ///
   /// Optional.
-  SparkRJob sparkRJob;
+  SparkRJob? sparkRJob;
 
   /// Job is a SparkSql job.
   ///
   /// Optional.
-  SparkSqlJob sparkSqlJob;
+  SparkSqlJob? sparkSqlJob;
 
   /// The step id.
   ///
@@ -7160,7 +6841,7 @@ class OrderedJob {
   /// and 50 characters.
   ///
   /// Required.
-  core.String stepId;
+  core.String? stepId;
 
   OrderedJob();
 
@@ -7220,30 +6901,30 @@ class OrderedJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hadoopJob != null) 'hadoopJob': hadoopJob.toJson(),
-        if (hiveJob != null) 'hiveJob': hiveJob.toJson(),
-        if (labels != null) 'labels': labels,
-        if (pigJob != null) 'pigJob': pigJob.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hadoopJob != null) 'hadoopJob': hadoopJob!.toJson(),
+        if (hiveJob != null) 'hiveJob': hiveJob!.toJson(),
+        if (labels != null) 'labels': labels!,
+        if (pigJob != null) 'pigJob': pigJob!.toJson(),
         if (prerequisiteStepIds != null)
-          'prerequisiteStepIds': prerequisiteStepIds,
-        if (prestoJob != null) 'prestoJob': prestoJob.toJson(),
-        if (pysparkJob != null) 'pysparkJob': pysparkJob.toJson(),
-        if (scheduling != null) 'scheduling': scheduling.toJson(),
-        if (sparkJob != null) 'sparkJob': sparkJob.toJson(),
-        if (sparkRJob != null) 'sparkRJob': sparkRJob.toJson(),
-        if (sparkSqlJob != null) 'sparkSqlJob': sparkSqlJob.toJson(),
-        if (stepId != null) 'stepId': stepId,
+          'prerequisiteStepIds': prerequisiteStepIds!,
+        if (prestoJob != null) 'prestoJob': prestoJob!.toJson(),
+        if (pysparkJob != null) 'pysparkJob': pysparkJob!.toJson(),
+        if (scheduling != null) 'scheduling': scheduling!.toJson(),
+        if (sparkJob != null) 'sparkJob': sparkJob!.toJson(),
+        if (sparkRJob != null) 'sparkRJob': sparkRJob!.toJson(),
+        if (sparkSqlJob != null) 'sparkSqlJob': sparkSqlJob!.toJson(),
+        if (stepId != null) 'stepId': stepId!,
       };
 }
 
 /// Configuration for parameter validation.
 class ParameterValidation {
   /// Validation based on regular expressions.
-  RegexValidation regex;
+  RegexValidation? regex;
 
   /// Validation based on a list of allowed values.
-  ValueValidation values;
+  ValueValidation? values;
 
   ParameterValidation();
 
@@ -7258,9 +6939,9 @@ class ParameterValidation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (regex != null) 'regex': regex.toJson(),
-        if (values != null) 'values': values.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (regex != null) 'regex': regex!.toJson(),
+        if (values != null) 'values': values!.toJson(),
       };
 }
 
@@ -7273,7 +6954,7 @@ class PigJob {
   /// independent parallel queries.
   ///
   /// Optional.
-  core.bool continueOnFailure;
+  core.bool? continueOnFailure;
 
   /// HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and
   /// Hadoop MapReduce (MR) tasks.
@@ -7281,12 +6962,12 @@ class PigJob {
   /// Can contain Pig UDFs.
   ///
   /// Optional.
-  core.List<core.String> jarFileUris;
+  core.List<core.String>? jarFileUris;
 
   /// The runtime log config for job execution.
   ///
   /// Optional.
-  LoggingConfig loggingConfig;
+  LoggingConfig? loggingConfig;
 
   /// A mapping of property names to values, used to configure Pig.
   ///
@@ -7295,19 +6976,19 @@ class PigJob {
   /// /etc/pig/conf/pig.properties, and classes in user code.
   ///
   /// Optional.
-  core.Map<core.String, core.String> properties;
+  core.Map<core.String, core.String>? properties;
 
   /// The HCFS URI of the script that contains the Pig queries.
-  core.String queryFileUri;
+  core.String? queryFileUri;
 
   /// A list of queries.
-  QueryList queryList;
+  QueryList? queryList;
 
   /// Mapping of query variable names to values (equivalent to the Pig command:
   /// name=\[value\]).
   ///
   /// Optional.
-  core.Map<core.String, core.String> scriptVariables;
+  core.Map<core.String, core.String>? scriptVariables;
 
   PigJob();
 
@@ -7353,14 +7034,14 @@ class PigJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (continueOnFailure != null) 'continueOnFailure': continueOnFailure,
-        if (jarFileUris != null) 'jarFileUris': jarFileUris,
-        if (loggingConfig != null) 'loggingConfig': loggingConfig.toJson(),
-        if (properties != null) 'properties': properties,
-        if (queryFileUri != null) 'queryFileUri': queryFileUri,
-        if (queryList != null) 'queryList': queryList.toJson(),
-        if (scriptVariables != null) 'scriptVariables': scriptVariables,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (continueOnFailure != null) 'continueOnFailure': continueOnFailure!,
+        if (jarFileUris != null) 'jarFileUris': jarFileUris!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (properties != null) 'properties': properties!,
+        if (queryFileUri != null) 'queryFileUri': queryFileUri!,
+        if (queryList != null) 'queryList': queryList!.toJson(),
+        if (scriptVariables != null) 'scriptVariables': scriptVariables!,
       };
 }
 
@@ -7400,7 +7081,7 @@ class Policy {
   /// Optionally, may specify a condition that determines how and when the
   /// bindings are applied. Each of the bindings must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// etag is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -7414,8 +7095,8 @@ class Policy {
   /// field whenever you call setIamPolicy. If you omit this field, then IAM
   /// allows you to overwrite a version 3 policy with a version 1 policy, and
   /// all of the conditions in the version 3 policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -7438,7 +7119,7 @@ class Policy {
   /// valid version or leave the field unset.To learn which resources support
   /// conditions in their IAM policies, see the IAM documentation
   /// (https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -7457,11 +7138,11 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -7474,7 +7155,7 @@ class PrestoJob {
   /// Presto client tags to attach to this query
   ///
   /// Optional.
-  core.List<core.String> clientTags;
+  core.List<core.String>? clientTags;
 
   /// Whether to continue executing queries if a query fails.
   ///
@@ -7482,19 +7163,19 @@ class PrestoJob {
   /// independent parallel queries.
   ///
   /// Optional.
-  core.bool continueOnFailure;
+  core.bool? continueOnFailure;
 
   /// The runtime log config for job execution.
   ///
   /// Optional.
-  LoggingConfig loggingConfig;
+  LoggingConfig? loggingConfig;
 
   /// The format in which query output will be displayed.
   ///
   /// See the Presto documentation for supported output formats
   ///
   /// Optional.
-  core.String outputFormat;
+  core.String? outputFormat;
 
   /// A mapping of property names to values.
   ///
@@ -7503,13 +7184,13 @@ class PrestoJob {
   /// using the --session flag in the Presto CLI
   ///
   /// Optional.
-  core.Map<core.String, core.String> properties;
+  core.Map<core.String, core.String>? properties;
 
   /// The HCFS URI of the script that contains SQL queries.
-  core.String queryFileUri;
+  core.String? queryFileUri;
 
   /// A list of queries.
-  QueryList queryList;
+  QueryList? queryList;
 
   PrestoJob();
 
@@ -7548,14 +7229,14 @@ class PrestoJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientTags != null) 'clientTags': clientTags,
-        if (continueOnFailure != null) 'continueOnFailure': continueOnFailure,
-        if (loggingConfig != null) 'loggingConfig': loggingConfig.toJson(),
-        if (outputFormat != null) 'outputFormat': outputFormat,
-        if (properties != null) 'properties': properties,
-        if (queryFileUri != null) 'queryFileUri': queryFileUri,
-        if (queryList != null) 'queryList': queryList.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientTags != null) 'clientTags': clientTags!,
+        if (continueOnFailure != null) 'continueOnFailure': continueOnFailure!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (outputFormat != null) 'outputFormat': outputFormat!,
+        if (properties != null) 'properties': properties!,
+        if (queryFileUri != null) 'queryFileUri': queryFileUri!,
+        if (queryList != null) 'queryList': queryList!.toJson(),
       };
 }
 
@@ -7569,7 +7250,7 @@ class PySparkJob {
   /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
   ///
   /// Optional.
-  core.List<core.String> archiveUris;
+  core.List<core.String>? archiveUris;
 
   /// The arguments to pass to the driver.
   ///
@@ -7578,32 +7259,32 @@ class PySparkJob {
   /// submission.
   ///
   /// Optional.
-  core.List<core.String> args;
+  core.List<core.String>? args;
 
   /// HCFS URIs of files to be placed in the working directory of each executor.
   ///
   /// Useful for naively parallel tasks.
   ///
   /// Optional.
-  core.List<core.String> fileUris;
+  core.List<core.String>? fileUris;
 
   /// HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and
   /// tasks.
   ///
   /// Optional.
-  core.List<core.String> jarFileUris;
+  core.List<core.String>? jarFileUris;
 
   /// The runtime log config for job execution.
   ///
   /// Optional.
-  LoggingConfig loggingConfig;
+  LoggingConfig? loggingConfig;
 
   /// The HCFS URI of the main Python file to use as the driver.
   ///
   /// Must be a .py file.
   ///
   /// Required.
-  core.String mainPythonFileUri;
+  core.String? mainPythonFileUri;
 
   /// A mapping of property names to values, used to configure PySpark.
   ///
@@ -7612,14 +7293,14 @@ class PySparkJob {
   /// /etc/spark/conf/spark-defaults.conf and classes in user code.
   ///
   /// Optional.
-  core.Map<core.String, core.String> properties;
+  core.Map<core.String, core.String>? properties;
 
   /// HCFS file URIs of Python files to pass to the PySpark framework.
   ///
   /// Supported file types: .py, .egg, and .zip.
   ///
   /// Optional.
-  core.List<core.String> pythonFileUris;
+  core.List<core.String>? pythonFileUris;
 
   PySparkJob();
 
@@ -7668,15 +7349,15 @@ class PySparkJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (archiveUris != null) 'archiveUris': archiveUris,
-        if (args != null) 'args': args,
-        if (fileUris != null) 'fileUris': fileUris,
-        if (jarFileUris != null) 'jarFileUris': jarFileUris,
-        if (loggingConfig != null) 'loggingConfig': loggingConfig.toJson(),
-        if (mainPythonFileUri != null) 'mainPythonFileUri': mainPythonFileUri,
-        if (properties != null) 'properties': properties,
-        if (pythonFileUris != null) 'pythonFileUris': pythonFileUris,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (archiveUris != null) 'archiveUris': archiveUris!,
+        if (args != null) 'args': args!,
+        if (fileUris != null) 'fileUris': fileUris!,
+        if (jarFileUris != null) 'jarFileUris': jarFileUris!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (mainPythonFileUri != null) 'mainPythonFileUri': mainPythonFileUri!,
+        if (properties != null) 'properties': properties!,
+        if (pythonFileUris != null) 'pythonFileUris': pythonFileUris!,
       };
 }
 
@@ -7691,7 +7372,7 @@ class QueryList {
   /// "query1", "query2", "query3;query4", \] } }
   ///
   /// Required.
-  core.List<core.String> queries;
+  core.List<core.String>? queries;
 
   QueryList();
 
@@ -7703,8 +7384,8 @@ class QueryList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (queries != null) 'queries': queries,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (queries != null) 'queries': queries!,
       };
 }
 
@@ -7716,7 +7397,7 @@ class RegexValidation {
   /// sufficient).
   ///
   /// Required.
-  core.List<core.String> regexes;
+  core.List<core.String>? regexes;
 
   RegexValidation();
 
@@ -7728,8 +7409,8 @@ class RegexValidation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (regexes != null) 'regexes': regexes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (regexes != null) 'regexes': regexes!,
       };
 }
 
@@ -7744,17 +7425,17 @@ class ReservationAffinity {
   /// - "ANY_RESERVATION" : Consume any reservation available.
   /// - "SPECIFIC_RESERVATION" : Must consume from a specific reservation. Must
   /// specify key value fields for specifying the reservations.
-  core.String consumeReservationType;
+  core.String? consumeReservationType;
 
   /// Corresponds to the label key of reservation resource.
   ///
   /// Optional.
-  core.String key;
+  core.String? key;
 
   /// Corresponds to the label values of reservation resource.
   ///
   /// Optional.
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   ReservationAffinity();
 
@@ -7772,11 +7453,11 @@ class ReservationAffinity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (consumeReservationType != null)
-          'consumeReservationType': consumeReservationType,
-        if (key != null) 'key': key,
-        if (values != null) 'values': values,
+          'consumeReservationType': consumeReservationType!,
+        if (key != null) 'key': key!,
+        if (values != null) 'values': values!,
       };
 }
 
@@ -7785,7 +7466,7 @@ class SecurityConfig {
   /// Kerberos related configuration.
   ///
   /// Optional.
-  KerberosConfig kerberosConfig;
+  KerberosConfig? kerberosConfig;
 
   SecurityConfig();
 
@@ -7796,8 +7477,8 @@ class SecurityConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kerberosConfig != null) 'kerberosConfig': kerberosConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kerberosConfig != null) 'kerberosConfig': kerberosConfig!.toJson(),
       };
 }
 
@@ -7808,7 +7489,7 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   SetIamPolicyRequest();
 
@@ -7819,8 +7500,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
       };
 }
 
@@ -7830,17 +7511,17 @@ class ShieldedInstanceConfig {
   /// Defines whether instances have integrity monitoring enabled.
   ///
   /// Optional.
-  core.bool enableIntegrityMonitoring;
+  core.bool? enableIntegrityMonitoring;
 
   /// Defines whether instances have Secure Boot enabled.
   ///
   /// Optional.
-  core.bool enableSecureBoot;
+  core.bool? enableSecureBoot;
 
   /// Defines whether instances have the vTPM enabled.
   ///
   /// Optional.
-  core.bool enableVtpm;
+  core.bool? enableVtpm;
 
   ShieldedInstanceConfig();
 
@@ -7857,11 +7538,11 @@ class ShieldedInstanceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (enableIntegrityMonitoring != null)
-          'enableIntegrityMonitoring': enableIntegrityMonitoring,
-        if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot,
-        if (enableVtpm != null) 'enableVtpm': enableVtpm,
+          'enableIntegrityMonitoring': enableIntegrityMonitoring!,
+        if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
+        if (enableVtpm != null) 'enableVtpm': enableVtpm!,
       };
 }
 
@@ -7877,12 +7558,12 @@ class SoftwareConfig {
   /// If unspecified, it defaults to the latest Debian version.
   ///
   /// Optional.
-  core.String imageVersion;
+  core.String? imageVersion;
 
   /// The set of components to activate on the cluster.
   ///
   /// Optional.
-  core.List<core.String> optionalComponents;
+  core.List<core.String>? optionalComponents;
 
   /// The properties to set on daemon config files.Property keys are specified
   /// in prefix:property format, for example core:hadoop.tmp.dir.
@@ -7895,7 +7576,7 @@ class SoftwareConfig {
   /// (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
   ///
   /// Optional.
-  core.Map<core.String, core.String> properties;
+  core.Map<core.String, core.String>? properties;
 
   SoftwareConfig();
 
@@ -7920,11 +7601,11 @@ class SoftwareConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageVersion != null) 'imageVersion': imageVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageVersion != null) 'imageVersion': imageVersion!,
         if (optionalComponents != null)
-          'optionalComponents': optionalComponents,
-        if (properties != null) 'properties': properties,
+          'optionalComponents': optionalComponents!,
+        if (properties != null) 'properties': properties!,
       };
 }
 
@@ -7937,7 +7618,7 @@ class SparkJob {
   /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
   ///
   /// Optional.
-  core.List<core.String> archiveUris;
+  core.List<core.String>? archiveUris;
 
   /// The arguments to pass to the driver.
   ///
@@ -7946,34 +7627,34 @@ class SparkJob {
   /// submission.
   ///
   /// Optional.
-  core.List<core.String> args;
+  core.List<core.String>? args;
 
   /// HCFS URIs of files to be placed in the working directory of each executor.
   ///
   /// Useful for naively parallel tasks.
   ///
   /// Optional.
-  core.List<core.String> fileUris;
+  core.List<core.String>? fileUris;
 
   /// HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and
   /// tasks.
   ///
   /// Optional.
-  core.List<core.String> jarFileUris;
+  core.List<core.String>? jarFileUris;
 
   /// The runtime log config for job execution.
   ///
   /// Optional.
-  LoggingConfig loggingConfig;
+  LoggingConfig? loggingConfig;
 
   /// The name of the driver's main class.
   ///
   /// The jar file that contains the class must be in the default CLASSPATH or
   /// specified in jar_file_uris.
-  core.String mainClass;
+  core.String? mainClass;
 
   /// The HCFS URI of the jar file that contains the main class.
-  core.String mainJarFileUri;
+  core.String? mainJarFileUri;
 
   /// A mapping of property names to values, used to configure Spark.
   ///
@@ -7982,7 +7663,7 @@ class SparkJob {
   /// /etc/spark/conf/spark-defaults.conf and classes in user code.
   ///
   /// Optional.
-  core.Map<core.String, core.String> properties;
+  core.Map<core.String, core.String>? properties;
 
   SparkJob();
 
@@ -8029,15 +7710,15 @@ class SparkJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (archiveUris != null) 'archiveUris': archiveUris,
-        if (args != null) 'args': args,
-        if (fileUris != null) 'fileUris': fileUris,
-        if (jarFileUris != null) 'jarFileUris': jarFileUris,
-        if (loggingConfig != null) 'loggingConfig': loggingConfig.toJson(),
-        if (mainClass != null) 'mainClass': mainClass,
-        if (mainJarFileUri != null) 'mainJarFileUri': mainJarFileUri,
-        if (properties != null) 'properties': properties,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (archiveUris != null) 'archiveUris': archiveUris!,
+        if (args != null) 'args': args!,
+        if (fileUris != null) 'fileUris': fileUris!,
+        if (jarFileUris != null) 'jarFileUris': jarFileUris!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (mainClass != null) 'mainClass': mainClass!,
+        if (mainJarFileUri != null) 'mainJarFileUri': mainJarFileUri!,
+        if (properties != null) 'properties': properties!,
       };
 }
 
@@ -8050,7 +7731,7 @@ class SparkRJob {
   /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
   ///
   /// Optional.
-  core.List<core.String> archiveUris;
+  core.List<core.String>? archiveUris;
 
   /// The arguments to pass to the driver.
   ///
@@ -8059,26 +7740,26 @@ class SparkRJob {
   /// submission.
   ///
   /// Optional.
-  core.List<core.String> args;
+  core.List<core.String>? args;
 
   /// HCFS URIs of files to be placed in the working directory of each executor.
   ///
   /// Useful for naively parallel tasks.
   ///
   /// Optional.
-  core.List<core.String> fileUris;
+  core.List<core.String>? fileUris;
 
   /// The runtime log config for job execution.
   ///
   /// Optional.
-  LoggingConfig loggingConfig;
+  LoggingConfig? loggingConfig;
 
   /// The HCFS URI of the main R file to use as the driver.
   ///
   /// Must be a .R file.
   ///
   /// Required.
-  core.String mainRFileUri;
+  core.String? mainRFileUri;
 
   /// A mapping of property names to values, used to configure SparkR.
   ///
@@ -8087,7 +7768,7 @@ class SparkRJob {
   /// /etc/spark/conf/spark-defaults.conf and classes in user code.
   ///
   /// Optional.
-  core.Map<core.String, core.String> properties;
+  core.Map<core.String, core.String>? properties;
 
   SparkRJob();
 
@@ -8126,13 +7807,13 @@ class SparkRJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (archiveUris != null) 'archiveUris': archiveUris,
-        if (args != null) 'args': args,
-        if (fileUris != null) 'fileUris': fileUris,
-        if (loggingConfig != null) 'loggingConfig': loggingConfig.toJson(),
-        if (mainRFileUri != null) 'mainRFileUri': mainRFileUri,
-        if (properties != null) 'properties': properties,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (archiveUris != null) 'archiveUris': archiveUris!,
+        if (args != null) 'args': args!,
+        if (fileUris != null) 'fileUris': fileUris!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (mainRFileUri != null) 'mainRFileUri': mainRFileUri!,
+        if (properties != null) 'properties': properties!,
       };
 }
 
@@ -8142,12 +7823,12 @@ class SparkSqlJob {
   /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
   ///
   /// Optional.
-  core.List<core.String> jarFileUris;
+  core.List<core.String>? jarFileUris;
 
   /// The runtime log config for job execution.
   ///
   /// Optional.
-  LoggingConfig loggingConfig;
+  LoggingConfig? loggingConfig;
 
   /// A mapping of property names to values, used to configure Spark SQL's
   /// SparkConf.
@@ -8156,19 +7837,19 @@ class SparkSqlJob {
   /// overwritten.
   ///
   /// Optional.
-  core.Map<core.String, core.String> properties;
+  core.Map<core.String, core.String>? properties;
 
   /// The HCFS URI of the script that contains SQL queries.
-  core.String queryFileUri;
+  core.String? queryFileUri;
 
   /// A list of queries.
-  QueryList queryList;
+  QueryList? queryList;
 
   /// Mapping of query variable names to values (equivalent to the Spark SQL
   /// command: SET name="value";).
   ///
   /// Optional.
-  core.Map<core.String, core.String> scriptVariables;
+  core.Map<core.String, core.String>? scriptVariables;
 
   SparkSqlJob();
 
@@ -8211,13 +7892,13 @@ class SparkSqlJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jarFileUris != null) 'jarFileUris': jarFileUris,
-        if (loggingConfig != null) 'loggingConfig': loggingConfig.toJson(),
-        if (properties != null) 'properties': properties,
-        if (queryFileUri != null) 'queryFileUri': queryFileUri,
-        if (queryList != null) 'queryList': queryList.toJson(),
-        if (scriptVariables != null) 'scriptVariables': scriptVariables,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jarFileUris != null) 'jarFileUris': jarFileUris!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
+        if (properties != null) 'properties': properties!,
+        if (queryFileUri != null) 'queryFileUri': queryFileUri!,
+        if (queryList != null) 'queryList': queryList!.toJson(),
+        if (scriptVariables != null) 'scriptVariables': scriptVariables!,
       };
 }
 
@@ -8227,7 +7908,7 @@ class StartClusterRequest {
   /// if a cluster with the specified UUID does not exist.
   ///
   /// Optional.
-  core.String clusterUuid;
+  core.String? clusterUuid;
 
   /// A unique id used to identify the request.
   ///
@@ -8241,7 +7922,7 @@ class StartClusterRequest {
   /// hyphens (-). The maximum length is 40 characters.
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   StartClusterRequest();
 
@@ -8254,9 +7935,9 @@ class StartClusterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clusterUuid != null) 'clusterUuid': clusterUuid,
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clusterUuid != null) 'clusterUuid': clusterUuid!,
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -8269,7 +7950,7 @@ class StartClusterRequest {
 /// Design Guide (https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -8277,13 +7958,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -8307,10 +7988,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -8320,7 +8001,7 @@ class StopClusterRequest {
   /// if a cluster with the specified UUID does not exist.
   ///
   /// Optional.
-  core.String clusterUuid;
+  core.String? clusterUuid;
 
   /// A unique id used to identify the request.
   ///
@@ -8334,7 +8015,7 @@ class StopClusterRequest {
   /// hyphens (-). The maximum length is 40 characters.
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   StopClusterRequest();
 
@@ -8347,9 +8028,9 @@ class StopClusterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clusterUuid != null) 'clusterUuid': clusterUuid,
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clusterUuid != null) 'clusterUuid': clusterUuid!,
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -8358,7 +8039,7 @@ class SubmitJobRequest {
   /// The job resource.
   ///
   /// Required.
-  Job job;
+  Job? job;
 
   /// A unique id used to identify the request.
   ///
@@ -8372,7 +8053,7 @@ class SubmitJobRequest {
   /// hyphens (-). The maximum length is 40 characters.
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   SubmitJobRequest();
 
@@ -8385,9 +8066,9 @@ class SubmitJobRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (job != null) 'job': job.toJson(),
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (job != null) 'job': job!.toJson(),
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -8402,7 +8083,7 @@ class TemplateParameter {
   /// Must not exceed 1024 characters.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Paths to all fields that the parameter replaces.
   ///
@@ -8432,7 +8113,7 @@ class TemplateParameter {
   /// jobs'step-id'.sparkJob.args
   ///
   /// Required.
-  core.List<core.String> fields;
+  core.List<core.String>? fields;
 
   /// Parameter name.
   ///
@@ -8443,12 +8124,12 @@ class TemplateParameter {
   /// 40 characters.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Validation rules to be applied to this parameter's value.
   ///
   /// Optional.
-  ParameterValidation validation;
+  ParameterValidation? validation;
 
   TemplateParameter();
 
@@ -8470,11 +8151,11 @@ class TemplateParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (fields != null) 'fields': fields,
-        if (name != null) 'name': name,
-        if (validation != null) 'validation': validation.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (fields != null) 'fields': fields!,
+        if (name != null) 'name': name!,
+        if (validation != null) 'validation': validation!.toJson(),
       };
 }
 
@@ -8485,7 +8166,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see IAM Overview
   /// (https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -8497,15 +8178,15 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
 /// Response message for TestIamPermissions method.
 class TestIamPermissionsResponse {
   /// A subset of TestPermissionsRequest.permissions that the caller is allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -8517,8 +8198,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -8527,7 +8208,7 @@ class ValueValidation {
   /// List of allowed values for the parameter.
   ///
   /// Required.
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   ValueValidation();
 
@@ -8539,8 +8220,8 @@ class ValueValidation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (values != null) 'values': values!,
       };
 }
 
@@ -8549,7 +8230,7 @@ class WorkflowGraph {
   /// The workflow nodes.
   ///
   /// Output only.
-  core.List<WorkflowNode> nodes;
+  core.List<WorkflowNode>? nodes;
 
   WorkflowGraph();
 
@@ -8562,9 +8243,9 @@ class WorkflowGraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (nodes != null)
-          'nodes': nodes.map((value) => value.toJson()).toList(),
+          'nodes': nodes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8573,57 +8254,57 @@ class WorkflowMetadata {
   /// The name of the target cluster.
   ///
   /// Output only.
-  core.String clusterName;
+  core.String? clusterName;
 
   /// The UUID of target cluster.
   ///
   /// Output only.
-  core.String clusterUuid;
+  core.String? clusterUuid;
 
   /// The create cluster operation metadata.
   ///
   /// Output only.
-  ClusterOperation createCluster;
+  ClusterOperation? createCluster;
 
   /// DAG end time, only set for workflows with dag_timeout when DAG ends.
   ///
   /// Output only.
-  core.String dagEndTime;
+  core.String? dagEndTime;
 
   /// DAG start time, only set for workflows with dag_timeout when DAG begins.
   ///
   /// Output only.
-  core.String dagStartTime;
+  core.String? dagStartTime;
 
   /// The timeout duration for the DAG of jobs, expressed in seconds (see JSON
   /// representation of duration
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
   ///
   /// Output only.
-  core.String dagTimeout;
+  core.String? dagTimeout;
 
   /// The delete cluster operation metadata.
   ///
   /// Output only.
-  ClusterOperation deleteCluster;
+  ClusterOperation? deleteCluster;
 
   /// Workflow end time.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// The workflow graph.
   ///
   /// Output only.
-  WorkflowGraph graph;
+  WorkflowGraph? graph;
 
   /// Map from parameter names to values that were used for those parameters.
-  core.Map<core.String, core.String> parameters;
+  core.Map<core.String, core.String>? parameters;
 
   /// Workflow start time.
   ///
   /// Output only.
-  core.String startTime;
+  core.String? startTime;
 
   /// The workflow state.
   ///
@@ -8633,7 +8314,7 @@ class WorkflowMetadata {
   /// - "PENDING" : The operation has been created.
   /// - "RUNNING" : The operation is running.
   /// - "DONE" : The operation is done; either cancelled or completed.
-  core.String state;
+  core.String? state;
 
   /// The resource name of the workflow template as described in
   /// https://cloud.google.com/apis/design/resource_names.
@@ -8646,12 +8327,12 @@ class WorkflowMetadata {
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   ///
   /// Output only.
-  core.String template;
+  core.String? template;
 
   /// The version of template at the time of workflow instantiation.
   ///
   /// Output only.
-  core.int version;
+  core.int? version;
 
   WorkflowMetadata();
 
@@ -8710,21 +8391,21 @@ class WorkflowMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clusterName != null) 'clusterName': clusterName,
-        if (clusterUuid != null) 'clusterUuid': clusterUuid,
-        if (createCluster != null) 'createCluster': createCluster.toJson(),
-        if (dagEndTime != null) 'dagEndTime': dagEndTime,
-        if (dagStartTime != null) 'dagStartTime': dagStartTime,
-        if (dagTimeout != null) 'dagTimeout': dagTimeout,
-        if (deleteCluster != null) 'deleteCluster': deleteCluster.toJson(),
-        if (endTime != null) 'endTime': endTime,
-        if (graph != null) 'graph': graph.toJson(),
-        if (parameters != null) 'parameters': parameters,
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
-        if (template != null) 'template': template,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clusterName != null) 'clusterName': clusterName!,
+        if (clusterUuid != null) 'clusterUuid': clusterUuid!,
+        if (createCluster != null) 'createCluster': createCluster!.toJson(),
+        if (dagEndTime != null) 'dagEndTime': dagEndTime!,
+        if (dagStartTime != null) 'dagStartTime': dagStartTime!,
+        if (dagTimeout != null) 'dagTimeout': dagTimeout!,
+        if (deleteCluster != null) 'deleteCluster': deleteCluster!.toJson(),
+        if (endTime != null) 'endTime': endTime!,
+        if (graph != null) 'graph': graph!.toJson(),
+        if (parameters != null) 'parameters': parameters!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+        if (template != null) 'template': template!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -8733,17 +8414,17 @@ class WorkflowNode {
   /// The error detail.
   ///
   /// Output only.
-  core.String error;
+  core.String? error;
 
   /// The job id; populated after the node enters RUNNING state.
   ///
   /// Output only.
-  core.String jobId;
+  core.String? jobId;
 
   /// Node's prerequisite nodes.
   ///
   /// Output only.
-  core.List<core.String> prerequisiteStepIds;
+  core.List<core.String>? prerequisiteStepIds;
 
   /// The node state.
   ///
@@ -8756,12 +8437,12 @@ class WorkflowNode {
   /// - "COMPLETED" : The node completed successfully.
   /// - "FAILED" : The node failed. A node can be marked FAILED because its
   /// ancestor or peer failed.
-  core.String state;
+  core.String? state;
 
   /// The name of the node.
   ///
   /// Output only.
-  core.String stepId;
+  core.String? stepId;
 
   WorkflowNode();
 
@@ -8785,13 +8466,13 @@ class WorkflowNode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (error != null) 'error': error,
-        if (jobId != null) 'jobId': jobId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (error != null) 'error': error!,
+        if (jobId != null) 'jobId': jobId!,
         if (prerequisiteStepIds != null)
-          'prerequisiteStepIds': prerequisiteStepIds,
-        if (state != null) 'state': state,
-        if (stepId != null) 'stepId': stepId,
+          'prerequisiteStepIds': prerequisiteStepIds!,
+        if (state != null) 'state': state!,
+        if (stepId != null) 'stepId': stepId!,
       };
 }
 
@@ -8800,7 +8481,7 @@ class WorkflowTemplate {
   /// The time template was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Timeout duration for the DAG of jobs, expressed in seconds (see JSON
   /// representation of duration
@@ -8813,13 +8494,13 @@ class WorkflowTemplate {
   /// managed cluster, the cluster is deleted.
   ///
   /// Optional.
-  core.String dagTimeout;
-  core.String id;
+  core.String? dagTimeout;
+  core.String? id;
 
   /// The Directed Acyclic Graph of Jobs to submit.
   ///
   /// Required.
-  core.List<OrderedJob> jobs;
+  core.List<OrderedJob>? jobs;
 
   /// The labels to associate with this template.
   ///
@@ -8831,7 +8512,7 @@ class WorkflowTemplate {
   /// labels can be associated with a template.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The resource name of the workflow template, as described in
   /// https://cloud.google.com/apis/design/resource_names.
@@ -8844,24 +8525,24 @@ class WorkflowTemplate {
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Template parameters whose values are substituted into the template.
   ///
   /// Values for parameters must be provided when the template is instantiated.
   ///
   /// Optional.
-  core.List<TemplateParameter> parameters;
+  core.List<TemplateParameter>? parameters;
 
   /// WorkflowTemplate scheduling information.
   ///
   /// Required.
-  WorkflowTemplatePlacement placement;
+  WorkflowTemplatePlacement? placement;
 
   /// The time template was last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// Used to perform a consistent read-modify-write.This field should be left
   /// blank for a CreateWorkflowTemplate request.
@@ -8874,7 +8555,7 @@ class WorkflowTemplate {
   /// part of the UpdateWorkflowTemplate request.
   ///
   /// Optional.
-  core.int version;
+  core.int? version;
 
   WorkflowTemplate();
 
@@ -8924,18 +8605,18 @@ class WorkflowTemplate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (dagTimeout != null) 'dagTimeout': dagTimeout,
-        if (id != null) 'id': id,
-        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (dagTimeout != null) 'dagTimeout': dagTimeout!,
+        if (id != null) 'id': id!,
+        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
         if (parameters != null)
-          'parameters': parameters.map((value) => value.toJson()).toList(),
-        if (placement != null) 'placement': placement.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
-        if (version != null) 'version': version,
+          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (placement != null) 'placement': placement!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -8946,10 +8627,10 @@ class WorkflowTemplatePlacement {
   /// selector is evaluated at the time each job is submitted.
   ///
   /// Optional.
-  ClusterSelector clusterSelector;
+  ClusterSelector? clusterSelector;
 
   /// A cluster that is managed by the workflow.
-  ManagedCluster managedCluster;
+  ManagedCluster? managedCluster;
 
   WorkflowTemplatePlacement();
 
@@ -8964,10 +8645,10 @@ class WorkflowTemplatePlacement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clusterSelector != null)
-          'clusterSelector': clusterSelector.toJson(),
-        if (managedCluster != null) 'managedCluster': managedCluster.toJson(),
+          'clusterSelector': clusterSelector!.toJson(),
+        if (managedCluster != null) 'managedCluster': managedCluster!.toJson(),
       };
 }
 
@@ -8981,12 +8662,12 @@ class YarnApplication {
   /// The application name.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The numerical progress of the application, from 1 to 100.
   ///
   /// Required.
-  core.double progress;
+  core.double? progress;
 
   /// The application state.
   ///
@@ -9001,7 +8682,7 @@ class YarnApplication {
   /// - "FINISHED" : Status is FINISHED.
   /// - "FAILED" : Status is FAILED.
   /// - "KILLED" : Status is KILLED.
-  core.String state;
+  core.String? state;
 
   /// The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer
   /// that provides application-specific information.
@@ -9010,7 +8691,7 @@ class YarnApplication {
   /// resolution and, possibly, access.
   ///
   /// Optional.
-  core.String trackingUrl;
+  core.String? trackingUrl;
 
   YarnApplication();
 
@@ -9029,10 +8710,10 @@ class YarnApplication {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (progress != null) 'progress': progress,
-        if (state != null) 'state': state,
-        if (trackingUrl != null) 'trackingUrl': trackingUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (progress != null) 'progress': progress!,
+        if (state != null) 'state': state!,
+        if (trackingUrl != null) 'trackingUrl': trackingUrl!,
       };
 }

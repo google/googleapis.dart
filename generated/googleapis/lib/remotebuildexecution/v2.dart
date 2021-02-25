@@ -114,20 +114,11 @@ class ActionResultsResource {
     core.String instanceName,
     core.String hash,
     core.String sizeBytes, {
-    core.List<core.String> inlineOutputFiles,
-    core.bool inlineStderr,
-    core.bool inlineStdout,
-    core.String $fields,
+    core.List<core.String>? inlineOutputFiles,
+    core.bool? inlineStderr,
+    core.bool? inlineStdout,
+    core.String? $fields,
   }) async {
-    if (instanceName == null) {
-      throw core.ArgumentError('Parameter instanceName is required.');
-    }
-    if (hash == null) {
-      throw core.ArgumentError('Parameter hash is required.');
-    }
-    if (sizeBytes == null) {
-      throw core.ArgumentError('Parameter sizeBytes is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (inlineOutputFiles != null) 'inlineOutputFiles': inlineOutputFiles,
       if (inlineStderr != null) 'inlineStderr': ['${inlineStderr}'],
@@ -201,20 +192,10 @@ class ActionResultsResource {
     core.String instanceName,
     core.String hash,
     core.String sizeBytes, {
-    core.int resultsCachePolicy_priority,
-    core.String $fields,
+    core.int? resultsCachePolicy_priority,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (instanceName == null) {
-      throw core.ArgumentError('Parameter instanceName is required.');
-    }
-    if (hash == null) {
-      throw core.ArgumentError('Parameter hash is required.');
-    }
-    if (sizeBytes == null) {
-      throw core.ArgumentError('Parameter sizeBytes is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (resultsCachePolicy_priority != null)
         'resultsCachePolicy.priority': ['${resultsCachePolicy_priority}'],
@@ -312,13 +293,9 @@ class ActionsResource {
   async.Future<GoogleLongrunningOperation> execute(
     BuildBazelRemoteExecutionV2ExecuteRequest request,
     core.String instanceName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (instanceName == null) {
-      throw core.ArgumentError('Parameter instanceName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -379,13 +356,9 @@ class BlobsResource {
   async.Future<BuildBazelRemoteExecutionV2BatchReadBlobsResponse> batchRead(
     BuildBazelRemoteExecutionV2BatchReadBlobsRequest request,
     core.String instanceName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (instanceName == null) {
-      throw core.ArgumentError('Parameter instanceName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -442,13 +415,9 @@ class BlobsResource {
   async.Future<BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse> batchUpdate(
     BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest request,
     core.String instanceName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (instanceName == null) {
-      throw core.ArgumentError('Parameter instanceName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -498,13 +467,9 @@ class BlobsResource {
   async.Future<BuildBazelRemoteExecutionV2FindMissingBlobsResponse> findMissing(
     BuildBazelRemoteExecutionV2FindMissingBlobsRequest request,
     core.String instanceName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (instanceName == null) {
-      throw core.ArgumentError('Parameter instanceName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -576,19 +541,10 @@ class BlobsResource {
     core.String instanceName,
     core.String hash,
     core.String sizeBytes, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (instanceName == null) {
-      throw core.ArgumentError('Parameter instanceName is required.');
-    }
-    if (hash == null) {
-      throw core.ArgumentError('Parameter hash is required.');
-    }
-    if (sizeBytes == null) {
-      throw core.ArgumentError('Parameter sizeBytes is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -647,13 +603,9 @@ class OperationsResource {
   async.Future<GoogleLongrunningOperation> waitExecution(
     BuildBazelRemoteExecutionV2WaitExecutionRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -708,11 +660,8 @@ class V2Resource {
   /// this method will complete with the same error.
   async.Future<BuildBazelRemoteExecutionV2ServerCapabilities> getCapabilities(
     core.String instanceName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (instanceName == null) {
-      throw core.ArgumentError('Parameter instanceName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -749,11 +698,11 @@ class V2Resource {
 class BuildBazelRemoteExecutionV2Action {
   /// The digest of the Command to run, which MUST be present in the
   /// ContentAddressableStorage.
-  BuildBazelRemoteExecutionV2Digest commandDigest;
+  BuildBazelRemoteExecutionV2Digest? commandDigest;
 
   /// If true, then the `Action`'s result cannot be cached, and in-flight
   /// requests for the same `Action` may not be merged.
-  core.bool doNotCache;
+  core.bool? doNotCache;
 
   /// The digest of the root Directory for the input files.
   ///
@@ -761,7 +710,7 @@ class BuildBazelRemoteExecutionV2Action {
   /// the build machine before the command is executed. The root directory, as
   /// well as every subdirectory and content blob referred to, MUST be in the
   /// ContentAddressableStorage.
-  BuildBazelRemoteExecutionV2Digest inputRootDigest;
+  BuildBazelRemoteExecutionV2Digest? inputRootDigest;
 
   /// List of required supported NodeProperty keys.
   ///
@@ -771,7 +720,7 @@ class BuildBazelRemoteExecutionV2Action {
   /// bytes. The interpretation of these properties is server-dependent. If a
   /// property is not recognized by the server, the server will return an
   /// `INVALID_ARGUMENT` error.
-  core.List<core.String> outputNodeProperties;
+  core.List<core.String>? outputNodeProperties;
 
   /// A timeout after which the execution should be killed.
   ///
@@ -788,7 +737,7 @@ class BuildBazelRemoteExecutionV2Action {
   /// `Action`, a lower timeout will result in a cache miss and the execution
   /// timeout will fail immediately, rather than whenever the cache entry gets
   /// evicted.
-  core.String timeout;
+  core.String? timeout;
 
   BuildBazelRemoteExecutionV2Action();
 
@@ -814,20 +763,20 @@ class BuildBazelRemoteExecutionV2Action {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commandDigest != null) 'commandDigest': commandDigest.toJson(),
-        if (doNotCache != null) 'doNotCache': doNotCache,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commandDigest != null) 'commandDigest': commandDigest!.toJson(),
+        if (doNotCache != null) 'doNotCache': doNotCache!,
         if (inputRootDigest != null)
-          'inputRootDigest': inputRootDigest.toJson(),
+          'inputRootDigest': inputRootDigest!.toJson(),
         if (outputNodeProperties != null)
-          'outputNodeProperties': outputNodeProperties,
-        if (timeout != null) 'timeout': timeout,
+          'outputNodeProperties': outputNodeProperties!,
+        if (timeout != null) 'timeout': timeout!,
       };
 }
 
 /// Describes the server/instance capabilities for updating the action cache.
 class BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities {
-  core.bool updateEnabled;
+  core.bool? updateEnabled;
 
   BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities();
 
@@ -838,18 +787,18 @@ class BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (updateEnabled != null) 'updateEnabled': updateEnabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (updateEnabled != null) 'updateEnabled': updateEnabled!,
       };
 }
 
 /// An ActionResult represents the result of an Action being run.
 class BuildBazelRemoteExecutionV2ActionResult {
   /// The details of the execution that originally produced this result.
-  BuildBazelRemoteExecutionV2ExecutedActionMetadata executionMetadata;
+  BuildBazelRemoteExecutionV2ExecutedActionMetadata? executionMetadata;
 
   /// The exit code of the command.
-  core.int exitCode;
+  core.int? exitCode;
 
   /// The output directories of the action.
   ///
@@ -872,7 +821,7 @@ class BuildBazelRemoteExecutionV2ActionResult {
   /// } ] } } ``` If an output of the same name as listed in `output_files` of
   /// the Command was found in `output_directories`, but was not a directory,
   /// the server will return a FAILED_PRECONDITION.
-  core.List<BuildBazelRemoteExecutionV2OutputDirectory> outputDirectories;
+  core.List<BuildBazelRemoteExecutionV2OutputDirectory>? outputDirectories;
 
   /// The output directories of the action that are symbolic links to other
   /// directories.
@@ -891,7 +840,7 @@ class BuildBazelRemoteExecutionV2ActionResult {
   /// assume that the output list is sorted. DEPRECATED as of v2.1. Servers that
   /// wish to be compatible with v2.0 API should still populate this field in
   /// addition to `output_symlinks`.
-  core.List<BuildBazelRemoteExecutionV2OutputSymlink> outputDirectorySymlinks;
+  core.List<BuildBazelRemoteExecutionV2OutputSymlink>? outputDirectorySymlinks;
 
   /// The output files of the action that are symbolic links to other files.
   ///
@@ -909,7 +858,7 @@ class BuildBazelRemoteExecutionV2ActionResult {
   /// clients MUST NOT assume that the output list is sorted. DEPRECATED as of
   /// v2.1. Servers that wish to be compatible with v2.0 API should still
   /// populate this field in addition to `output_symlinks`.
-  core.List<BuildBazelRemoteExecutionV2OutputSymlink> outputFileSymlinks;
+  core.List<BuildBazelRemoteExecutionV2OutputSymlink>? outputFileSymlinks;
 
   /// The output files of the action.
   ///
@@ -923,7 +872,7 @@ class BuildBazelRemoteExecutionV2ActionResult {
   /// produce the requested output, then that output will be omitted from the
   /// list. The server is free to arrange the output list as desired; clients
   /// MUST NOT assume that the output list is sorted.
-  core.List<BuildBazelRemoteExecutionV2OutputFile> outputFiles;
+  core.List<BuildBazelRemoteExecutionV2OutputFile>? outputFiles;
 
   /// New in v2.1: this field will only be populated if the command
   /// `output_paths` field was used, and not the pre v2.1 `output_files` or
@@ -938,11 +887,11 @@ class BuildBazelRemoteExecutionV2ActionResult {
   /// does not produce a requested output, then that output will be omitted from
   /// the list. The server is free to arrange the output list as desired;
   /// clients MUST NOT assume that the output list is sorted.
-  core.List<BuildBazelRemoteExecutionV2OutputSymlink> outputSymlinks;
+  core.List<BuildBazelRemoteExecutionV2OutputSymlink>? outputSymlinks;
 
   /// The digest for a blob containing the standard error of the action, which
   /// can be retrieved from the ContentAddressableStorage.
-  BuildBazelRemoteExecutionV2Digest stderrDigest;
+  BuildBazelRemoteExecutionV2Digest? stderrDigest;
 
   /// The standard error buffer of the action.
   ///
@@ -950,8 +899,8 @@ class BuildBazelRemoteExecutionV2ActionResult {
   /// GetActionResultRequest message. The server MAY omit inlining, even if
   /// requested, and MUST do so if inlining would cause the response to exceed
   /// message size limits.
-  core.String stderrRaw;
-  core.List<core.int> get stderrRawAsBytes => convert.base64.decode(stderrRaw);
+  core.String? stderrRaw;
+  core.List<core.int> get stderrRawAsBytes => convert.base64.decode(stderrRaw!);
 
   set stderrRawAsBytes(core.List<core.int> _bytes) {
     stderrRaw =
@@ -960,7 +909,7 @@ class BuildBazelRemoteExecutionV2ActionResult {
 
   /// The digest for a blob containing the standard output of the action, which
   /// can be retrieved from the ContentAddressableStorage.
-  BuildBazelRemoteExecutionV2Digest stdoutDigest;
+  BuildBazelRemoteExecutionV2Digest? stdoutDigest;
 
   /// The standard output buffer of the action.
   ///
@@ -968,8 +917,8 @@ class BuildBazelRemoteExecutionV2ActionResult {
   /// GetActionResultRequest message. The server MAY omit inlining, even if
   /// requested, and MUST do so if inlining would cause the response to exceed
   /// message size limits.
-  core.String stdoutRaw;
-  core.List<core.int> get stdoutRawAsBytes => convert.base64.decode(stdoutRaw);
+  core.String? stdoutRaw;
+  core.List<core.int> get stdoutRawAsBytes => convert.base64.decode(stdoutRaw!);
 
   set stdoutRawAsBytes(core.List<core.int> _bytes) {
     stdoutRaw =
@@ -1039,35 +988,35 @@ class BuildBazelRemoteExecutionV2ActionResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (executionMetadata != null)
-          'executionMetadata': executionMetadata.toJson(),
-        if (exitCode != null) 'exitCode': exitCode,
+          'executionMetadata': executionMetadata!.toJson(),
+        if (exitCode != null) 'exitCode': exitCode!,
         if (outputDirectories != null)
           'outputDirectories':
-              outputDirectories.map((value) => value.toJson()).toList(),
+              outputDirectories!.map((value) => value.toJson()).toList(),
         if (outputDirectorySymlinks != null)
           'outputDirectorySymlinks':
-              outputDirectorySymlinks.map((value) => value.toJson()).toList(),
+              outputDirectorySymlinks!.map((value) => value.toJson()).toList(),
         if (outputFileSymlinks != null)
           'outputFileSymlinks':
-              outputFileSymlinks.map((value) => value.toJson()).toList(),
+              outputFileSymlinks!.map((value) => value.toJson()).toList(),
         if (outputFiles != null)
-          'outputFiles': outputFiles.map((value) => value.toJson()).toList(),
+          'outputFiles': outputFiles!.map((value) => value.toJson()).toList(),
         if (outputSymlinks != null)
           'outputSymlinks':
-              outputSymlinks.map((value) => value.toJson()).toList(),
-        if (stderrDigest != null) 'stderrDigest': stderrDigest.toJson(),
-        if (stderrRaw != null) 'stderrRaw': stderrRaw,
-        if (stdoutDigest != null) 'stdoutDigest': stdoutDigest.toJson(),
-        if (stdoutRaw != null) 'stdoutRaw': stdoutRaw,
+              outputSymlinks!.map((value) => value.toJson()).toList(),
+        if (stderrDigest != null) 'stderrDigest': stderrDigest!.toJson(),
+        if (stderrRaw != null) 'stderrRaw': stderrRaw!,
+        if (stdoutDigest != null) 'stdoutDigest': stdoutDigest!.toJson(),
+        if (stdoutRaw != null) 'stdoutRaw': stdoutRaw!,
       };
 }
 
 /// A request message for ContentAddressableStorage.BatchReadBlobs.
 class BuildBazelRemoteExecutionV2BatchReadBlobsRequest {
   /// The individual blob digests.
-  core.List<BuildBazelRemoteExecutionV2Digest> digests;
+  core.List<BuildBazelRemoteExecutionV2Digest>? digests;
 
   BuildBazelRemoteExecutionV2BatchReadBlobsRequest();
 
@@ -1081,16 +1030,16 @@ class BuildBazelRemoteExecutionV2BatchReadBlobsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (digests != null)
-          'digests': digests.map((value) => value.toJson()).toList(),
+          'digests': digests!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A response message for ContentAddressableStorage.BatchReadBlobs.
 class BuildBazelRemoteExecutionV2BatchReadBlobsResponse {
   /// The responses to the requests.
-  core.List<BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse>
+  core.List<BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse>?
       responses;
 
   BuildBazelRemoteExecutionV2BatchReadBlobsResponse();
@@ -1106,17 +1055,17 @@ class BuildBazelRemoteExecutionV2BatchReadBlobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (responses != null)
-          'responses': responses.map((value) => value.toJson()).toList(),
+          'responses': responses!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A response corresponding to a single blob that the client tried to download.
 class BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse {
   /// The raw binary data.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -1124,10 +1073,10 @@ class BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse {
   }
 
   /// The digest to which this response corresponds.
-  BuildBazelRemoteExecutionV2Digest digest;
+  BuildBazelRemoteExecutionV2Digest? digest;
 
   /// The result of attempting to download that blob.
-  GoogleRpcStatus status;
+  GoogleRpcStatus? status;
 
   BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse();
 
@@ -1146,17 +1095,18 @@ class BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data,
-        if (digest != null) 'digest': digest.toJson(),
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!,
+        if (digest != null) 'digest': digest!.toJson(),
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
 /// A request message for ContentAddressableStorage.BatchUpdateBlobs.
 class BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest {
   /// The individual upload requests.
-  core.List<BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest> requests;
+  core.List<BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest>?
+      requests;
 
   BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest();
 
@@ -1171,17 +1121,17 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requests != null)
-          'requests': requests.map((value) => value.toJson()).toList(),
+          'requests': requests!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A request corresponding to a single blob that the client wants to upload.
 class BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest {
   /// The raw binary data.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -1191,7 +1141,7 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest {
   /// The digest of the blob.
   ///
   /// This MUST be the digest of `data`.
-  BuildBazelRemoteExecutionV2Digest digest;
+  BuildBazelRemoteExecutionV2Digest? digest;
 
   BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest();
 
@@ -1206,16 +1156,16 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data,
-        if (digest != null) 'digest': digest.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!,
+        if (digest != null) 'digest': digest!.toJson(),
       };
 }
 
 /// A response message for ContentAddressableStorage.BatchUpdateBlobs.
 class BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse {
   /// The responses to the requests.
-  core.List<BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse>
+  core.List<BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse>?
       responses;
 
   BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse();
@@ -1231,19 +1181,19 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (responses != null)
-          'responses': responses.map((value) => value.toJson()).toList(),
+          'responses': responses!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A response corresponding to a single blob that the client tried to upload.
 class BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse {
   /// The blob digest to which this response corresponds.
-  BuildBazelRemoteExecutionV2Digest digest;
+  BuildBazelRemoteExecutionV2Digest? digest;
 
   /// The result of attempting to upload that blob.
-  GoogleRpcStatus status;
+  GoogleRpcStatus? status;
 
   BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse();
 
@@ -1259,31 +1209,31 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (digest != null) 'digest': digest.toJson(),
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (digest != null) 'digest': digest!.toJson(),
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
 /// Capabilities of the remote cache system.
 class BuildBazelRemoteExecutionV2CacheCapabilities {
   /// Capabilities for updating the action cache.
-  BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities
+  BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities?
       actionCacheUpdateCapabilities;
 
   /// Supported cache priority range for both CAS and ActionCache.
-  BuildBazelRemoteExecutionV2PriorityCapabilities cachePriorityCapabilities;
+  BuildBazelRemoteExecutionV2PriorityCapabilities? cachePriorityCapabilities;
 
   /// All the digest functions supported by the remote cache.
   ///
   /// Remote cache may support multiple digest functions simultaneously.
-  core.List<core.String> digestFunction;
+  core.List<core.String>? digestFunction;
 
   /// Maximum total size of blobs to be uploaded/downloaded using batch methods.
   ///
   /// A value of 0 means no limit is set, although in practice there will always
   /// be a message size limitation of the protocol in use, e.g. GRPC.
-  core.String maxBatchTotalSizeBytes;
+  core.String? maxBatchTotalSizeBytes;
 
   /// Whether absolute symlink targets are supported.
   /// Possible string values are:
@@ -1293,7 +1243,7 @@ class BuildBazelRemoteExecutionV2CacheCapabilities {
   /// symlink with an absolute target, a `FAILED_PRECONDITION` will be returned.
   /// - "ALLOWED" : Server will allow symlink targets to escape the input root
   /// tree, possibly resulting in non-hermetic builds.
-  core.String symlinkAbsolutePathStrategy;
+  core.String? symlinkAbsolutePathStrategy;
 
   BuildBazelRemoteExecutionV2CacheCapabilities();
 
@@ -1324,17 +1274,17 @@ class BuildBazelRemoteExecutionV2CacheCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (actionCacheUpdateCapabilities != null)
           'actionCacheUpdateCapabilities':
-              actionCacheUpdateCapabilities.toJson(),
+              actionCacheUpdateCapabilities!.toJson(),
         if (cachePriorityCapabilities != null)
-          'cachePriorityCapabilities': cachePriorityCapabilities.toJson(),
-        if (digestFunction != null) 'digestFunction': digestFunction,
+          'cachePriorityCapabilities': cachePriorityCapabilities!.toJson(),
+        if (digestFunction != null) 'digestFunction': digestFunction!,
         if (maxBatchTotalSizeBytes != null)
-          'maxBatchTotalSizeBytes': maxBatchTotalSizeBytes,
+          'maxBatchTotalSizeBytes': maxBatchTotalSizeBytes!,
         if (symlinkAbsolutePathStrategy != null)
-          'symlinkAbsolutePathStrategy': symlinkAbsolutePathStrategy,
+          'symlinkAbsolutePathStrategy': symlinkAbsolutePathStrategy!,
       };
 }
 
@@ -1351,7 +1301,7 @@ class BuildBazelRemoteExecutionV2Command {
   /// The first argument must be the path to the executable, which must be
   /// either a relative path, in which case it is evaluated with respect to the
   /// input root, or an absolute path.
-  core.List<core.String> arguments;
+  core.List<core.String>? arguments;
 
   /// The environment variables to set when running the program.
   ///
@@ -1361,7 +1311,7 @@ class BuildBazelRemoteExecutionV2Command {
   /// the same value, the environment variables MUST be lexicographically sorted
   /// by name. Sorting of strings is done by code point, equivalently, by the
   /// UTF-8 bytes.
-  core.List<BuildBazelRemoteExecutionV2CommandEnvironmentVariable>
+  core.List<BuildBazelRemoteExecutionV2CommandEnvironmentVariable>?
       environmentVariables;
 
   /// A list of the output directories that the client expects to retrieve from
@@ -1386,7 +1336,7 @@ class BuildBazelRemoteExecutionV2Command {
   /// are created by the worker prior to execution, even if they are not
   /// explicitly part of the input root. DEPRECATED since 2.1: Use
   /// `output_paths` instead.
-  core.List<core.String> outputDirectories;
+  core.List<core.String>? outputDirectories;
 
   /// A list of the output files that the client expects to retrieve from the
   /// action.
@@ -1406,7 +1356,7 @@ class BuildBazelRemoteExecutionV2Command {
   /// files are created by the worker prior to execution, even if they are not
   /// explicitly part of the input root. DEPRECATED since v2.1: Use
   /// `output_paths` instead.
-  core.List<core.String> outputFiles;
+  core.List<core.String>? outputFiles;
 
   /// A list of the output paths that the client expects to retrieve from the
   /// action.
@@ -1430,7 +1380,7 @@ class BuildBazelRemoteExecutionV2Command {
   /// DEPRECATED `output_files` and `output_directories` fields. If
   /// `output_paths` is used, `output_files` and `output_directories` will be
   /// ignored!
-  core.List<core.String> outputPaths;
+  core.List<core.String>? outputPaths;
 
   /// The platform requirements for the execution environment.
   ///
@@ -1438,14 +1388,14 @@ class BuildBazelRemoteExecutionV2Command {
   /// requirements, so the client SHOULD ensure that running the action on any
   /// such worker will have the same result. A detailed lexicon for this can be
   /// found in the accompanying platform.md.
-  BuildBazelRemoteExecutionV2Platform platform;
+  BuildBazelRemoteExecutionV2Platform? platform;
 
   /// The working directory, relative to the input root, for the command to run
   /// in.
   ///
   /// It must be a directory which exists in the input tree. If it is left
   /// empty, then the action is run in the input root.
-  core.String workingDirectory;
+  core.String? workingDirectory;
 
   BuildBazelRemoteExecutionV2Command();
 
@@ -1486,16 +1436,16 @@ class BuildBazelRemoteExecutionV2Command {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (arguments != null) 'arguments': arguments,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (arguments != null) 'arguments': arguments!,
         if (environmentVariables != null)
           'environmentVariables':
-              environmentVariables.map((value) => value.toJson()).toList(),
-        if (outputDirectories != null) 'outputDirectories': outputDirectories,
-        if (outputFiles != null) 'outputFiles': outputFiles,
-        if (outputPaths != null) 'outputPaths': outputPaths,
-        if (platform != null) 'platform': platform.toJson(),
-        if (workingDirectory != null) 'workingDirectory': workingDirectory,
+              environmentVariables!.map((value) => value.toJson()).toList(),
+        if (outputDirectories != null) 'outputDirectories': outputDirectories!,
+        if (outputFiles != null) 'outputFiles': outputFiles!,
+        if (outputPaths != null) 'outputPaths': outputPaths!,
+        if (platform != null) 'platform': platform!.toJson(),
+        if (workingDirectory != null) 'workingDirectory': workingDirectory!,
       };
 }
 
@@ -1503,10 +1453,10 @@ class BuildBazelRemoteExecutionV2Command {
 /// environment.
 class BuildBazelRemoteExecutionV2CommandEnvironmentVariable {
   /// The variable name.
-  core.String name;
+  core.String? name;
 
   /// The variable value.
-  core.String value;
+  core.String? value;
 
   BuildBazelRemoteExecutionV2CommandEnvironmentVariable();
 
@@ -1520,9 +1470,9 @@ class BuildBazelRemoteExecutionV2CommandEnvironmentVariable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1557,10 +1507,10 @@ class BuildBazelRemoteExecutionV2Digest {
   ///
   /// In the case of SHA-256, it will always be a lowercase hex string exactly
   /// 64 characters long.
-  core.String hash;
+  core.String? hash;
 
   /// The size of the blob, in bytes.
-  core.String sizeBytes;
+  core.String? sizeBytes;
 
   BuildBazelRemoteExecutionV2Digest();
 
@@ -1573,9 +1523,9 @@ class BuildBazelRemoteExecutionV2Digest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hash != null) 'hash': hash,
-        if (sizeBytes != null) 'sizeBytes': sizeBytes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hash != null) 'hash': hash!,
+        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
       };
 }
 
@@ -1610,16 +1560,16 @@ class BuildBazelRemoteExecutionV2Digest {
 /// is_executable: true } ] } ```
 class BuildBazelRemoteExecutionV2Directory {
   /// The subdirectories in the directory.
-  core.List<BuildBazelRemoteExecutionV2DirectoryNode> directories;
+  core.List<BuildBazelRemoteExecutionV2DirectoryNode>? directories;
 
   /// The files in the directory.
-  core.List<BuildBazelRemoteExecutionV2FileNode> files;
+  core.List<BuildBazelRemoteExecutionV2FileNode>? files;
 
   /// The node properties of the Directory.
-  core.List<BuildBazelRemoteExecutionV2NodeProperty> nodeProperties;
+  core.List<BuildBazelRemoteExecutionV2NodeProperty>? nodeProperties;
 
   /// The symlinks in the directory.
-  core.List<BuildBazelRemoteExecutionV2SymlinkNode> symlinks;
+  core.List<BuildBazelRemoteExecutionV2SymlinkNode>? symlinks;
 
   BuildBazelRemoteExecutionV2Directory();
 
@@ -1654,16 +1604,16 @@ class BuildBazelRemoteExecutionV2Directory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (directories != null)
-          'directories': directories.map((value) => value.toJson()).toList(),
+          'directories': directories!.map((value) => value.toJson()).toList(),
         if (files != null)
-          'files': files.map((value) => value.toJson()).toList(),
+          'files': files!.map((value) => value.toJson()).toList(),
         if (nodeProperties != null)
           'nodeProperties':
-              nodeProperties.map((value) => value.toJson()).toList(),
+              nodeProperties!.map((value) => value.toJson()).toList(),
         if (symlinks != null)
-          'symlinks': symlinks.map((value) => value.toJson()).toList(),
+          'symlinks': symlinks!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1674,10 +1624,10 @@ class BuildBazelRemoteExecutionV2DirectoryNode {
   ///
   /// See Digest for information about how to take the digest of a proto
   /// message.
-  BuildBazelRemoteExecutionV2Digest digest;
+  BuildBazelRemoteExecutionV2Digest? digest;
 
   /// The name of the directory.
-  core.String name;
+  core.String? name;
 
   BuildBazelRemoteExecutionV2DirectoryNode();
 
@@ -1691,9 +1641,9 @@ class BuildBazelRemoteExecutionV2DirectoryNode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (digest != null) 'digest': digest.toJson(),
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (digest != null) 'digest': digest!.toJson(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1701,7 +1651,7 @@ class BuildBazelRemoteExecutionV2DirectoryNode {
 /// field of the Operation.
 class BuildBazelRemoteExecutionV2ExecuteOperationMetadata {
   /// The digest of the Action being executed.
-  BuildBazelRemoteExecutionV2Digest actionDigest;
+  BuildBazelRemoteExecutionV2Digest? actionDigest;
 
   /// The current stage of execution.
   /// Possible string values are:
@@ -1710,15 +1660,15 @@ class BuildBazelRemoteExecutionV2ExecuteOperationMetadata {
   /// - "QUEUED" : Currently idle, awaiting a free machine to execute.
   /// - "EXECUTING" : Currently being executed by a worker.
   /// - "COMPLETED" : Finished execution.
-  core.String stage;
+  core.String? stage;
 
   /// If set, the client can use this name with ByteStream.Read to stream the
   /// standard error.
-  core.String stderrStreamName;
+  core.String? stderrStreamName;
 
   /// If set, the client can use this name with ByteStream.Read to stream the
   /// standard output.
-  core.String stdoutStreamName;
+  core.String? stdoutStreamName;
 
   BuildBazelRemoteExecutionV2ExecuteOperationMetadata();
 
@@ -1738,29 +1688,29 @@ class BuildBazelRemoteExecutionV2ExecuteOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionDigest != null) 'actionDigest': actionDigest.toJson(),
-        if (stage != null) 'stage': stage,
-        if (stderrStreamName != null) 'stderrStreamName': stderrStreamName,
-        if (stdoutStreamName != null) 'stdoutStreamName': stdoutStreamName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionDigest != null) 'actionDigest': actionDigest!.toJson(),
+        if (stage != null) 'stage': stage!,
+        if (stderrStreamName != null) 'stderrStreamName': stderrStreamName!,
+        if (stdoutStreamName != null) 'stdoutStreamName': stdoutStreamName!,
       };
 }
 
 /// A request message for Execution.Execute.
 class BuildBazelRemoteExecutionV2ExecuteRequest {
   /// The digest of the Action to execute.
-  BuildBazelRemoteExecutionV2Digest actionDigest;
+  BuildBazelRemoteExecutionV2Digest? actionDigest;
 
   /// An optional policy for execution of the action.
   ///
   /// The server will have a default policy if this is not provided.
-  BuildBazelRemoteExecutionV2ExecutionPolicy executionPolicy;
+  BuildBazelRemoteExecutionV2ExecutionPolicy? executionPolicy;
 
   /// An optional policy for the results of this execution in the remote cache.
   ///
   /// The server will have a default policy if this is not provided. This may be
   /// applied to both the ActionResult and the associated blobs.
-  BuildBazelRemoteExecutionV2ResultsCachePolicy resultsCachePolicy;
+  BuildBazelRemoteExecutionV2ResultsCachePolicy? resultsCachePolicy;
 
   /// If true, the action will be executed even if its result is already present
   /// in the ActionCache.
@@ -1776,7 +1726,7 @@ class BuildBazelRemoteExecutionV2ExecuteRequest {
   /// cache entries that reference outputs no longer available or that are
   /// poisoned in any way. If false, the result may be served from the action
   /// cache.
-  core.bool skipCacheLookup;
+  core.bool? skipCacheLookup;
 
   BuildBazelRemoteExecutionV2ExecuteRequest();
 
@@ -1800,13 +1750,13 @@ class BuildBazelRemoteExecutionV2ExecuteRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionDigest != null) 'actionDigest': actionDigest.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionDigest != null) 'actionDigest': actionDigest!.toJson(),
         if (executionPolicy != null)
-          'executionPolicy': executionPolicy.toJson(),
+          'executionPolicy': executionPolicy!.toJson(),
         if (resultsCachePolicy != null)
-          'resultsCachePolicy': resultsCachePolicy.toJson(),
-        if (skipCacheLookup != null) 'skipCacheLookup': skipCacheLookup,
+          'resultsCachePolicy': resultsCachePolicy!.toJson(),
+        if (skipCacheLookup != null) 'skipCacheLookup': skipCacheLookup!,
       };
 }
 
@@ -1814,15 +1764,15 @@ class BuildBazelRemoteExecutionV2ExecuteRequest {
 /// response field of the Operation.
 class BuildBazelRemoteExecutionV2ExecuteResponse {
   /// True if the result was served from cache, false if it was executed.
-  core.bool cachedResult;
+  core.bool? cachedResult;
 
   /// Freeform informational message with details on the execution of the action
   /// that may be displayed to the user upon failure or when requested
   /// explicitly.
-  core.String message;
+  core.String? message;
 
   /// The result of the action.
-  BuildBazelRemoteExecutionV2ActionResult result;
+  BuildBazelRemoteExecutionV2ActionResult? result;
 
   /// An optional list of additional log outputs the server wishes to provide.
   ///
@@ -1832,7 +1782,7 @@ class BuildBazelRemoteExecutionV2ExecuteResponse {
   /// the worker executing the action or by providing logs from the worker's
   /// setup phase. The keys SHOULD be human readable so that a client can
   /// display them to a user.
-  core.Map<core.String, BuildBazelRemoteExecutionV2LogFile> serverLogs;
+  core.Map<core.String, BuildBazelRemoteExecutionV2LogFile>? serverLogs;
 
   /// If the status has a code other than `OK`, it indicates that the action did
   /// not finish execution.
@@ -1844,7 +1794,7 @@ class BuildBazelRemoteExecutionV2ExecuteResponse {
   /// error status, the `result` field is optional; the server may populate the
   /// output-, stdout-, and stderr-related fields if it has any information
   /// available, such as the stdout and stderr of a timed-out action.
-  GoogleRpcStatus status;
+  GoogleRpcStatus? status;
 
   BuildBazelRemoteExecutionV2ExecuteResponse();
 
@@ -1860,14 +1810,15 @@ class BuildBazelRemoteExecutionV2ExecuteResponse {
           _json['result'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('serverLogs')) {
-      serverLogs =
-          (_json['serverLogs'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  BuildBazelRemoteExecutionV2LogFile.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      serverLogs = (_json['serverLogs'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              BuildBazelRemoteExecutionV2LogFile.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('status')) {
       status = GoogleRpcStatus.fromJson(
@@ -1875,48 +1826,48 @@ class BuildBazelRemoteExecutionV2ExecuteResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cachedResult != null) 'cachedResult': cachedResult,
-        if (message != null) 'message': message,
-        if (result != null) 'result': result.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cachedResult != null) 'cachedResult': cachedResult!,
+        if (message != null) 'message': message!,
+        if (result != null) 'result': result!.toJson(),
         if (serverLogs != null)
           'serverLogs':
-              serverLogs.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (status != null) 'status': status.toJson(),
+              serverLogs!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
 /// ExecutedActionMetadata contains details about a completed execution.
 class BuildBazelRemoteExecutionV2ExecutedActionMetadata {
   /// When the worker completed executing the action command.
-  core.String executionCompletedTimestamp;
+  core.String? executionCompletedTimestamp;
 
   /// When the worker started executing the action command.
-  core.String executionStartTimestamp;
+  core.String? executionStartTimestamp;
 
   /// When the worker finished fetching action inputs.
-  core.String inputFetchCompletedTimestamp;
+  core.String? inputFetchCompletedTimestamp;
 
   /// When the worker started fetching action inputs.
-  core.String inputFetchStartTimestamp;
+  core.String? inputFetchStartTimestamp;
 
   /// When the worker finished uploading action outputs.
-  core.String outputUploadCompletedTimestamp;
+  core.String? outputUploadCompletedTimestamp;
 
   /// When the worker started uploading action outputs.
-  core.String outputUploadStartTimestamp;
+  core.String? outputUploadStartTimestamp;
 
   /// When was the action added to the queue.
-  core.String queuedTimestamp;
+  core.String? queuedTimestamp;
 
   /// The name of the worker which ran the execution.
-  core.String worker;
+  core.String? worker;
 
   /// When the worker completed the action, including all stages.
-  core.String workerCompletedTimestamp;
+  core.String? workerCompletedTimestamp;
 
   /// When the worker received the action.
-  core.String workerStartTimestamp;
+  core.String? workerStartTimestamp;
 
   BuildBazelRemoteExecutionV2ExecutedActionMetadata();
 
@@ -1959,25 +1910,25 @@ class BuildBazelRemoteExecutionV2ExecutedActionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (executionCompletedTimestamp != null)
-          'executionCompletedTimestamp': executionCompletedTimestamp,
+          'executionCompletedTimestamp': executionCompletedTimestamp!,
         if (executionStartTimestamp != null)
-          'executionStartTimestamp': executionStartTimestamp,
+          'executionStartTimestamp': executionStartTimestamp!,
         if (inputFetchCompletedTimestamp != null)
-          'inputFetchCompletedTimestamp': inputFetchCompletedTimestamp,
+          'inputFetchCompletedTimestamp': inputFetchCompletedTimestamp!,
         if (inputFetchStartTimestamp != null)
-          'inputFetchStartTimestamp': inputFetchStartTimestamp,
+          'inputFetchStartTimestamp': inputFetchStartTimestamp!,
         if (outputUploadCompletedTimestamp != null)
-          'outputUploadCompletedTimestamp': outputUploadCompletedTimestamp,
+          'outputUploadCompletedTimestamp': outputUploadCompletedTimestamp!,
         if (outputUploadStartTimestamp != null)
-          'outputUploadStartTimestamp': outputUploadStartTimestamp,
-        if (queuedTimestamp != null) 'queuedTimestamp': queuedTimestamp,
-        if (worker != null) 'worker': worker,
+          'outputUploadStartTimestamp': outputUploadStartTimestamp!,
+        if (queuedTimestamp != null) 'queuedTimestamp': queuedTimestamp!,
+        if (worker != null) 'worker': worker!,
         if (workerCompletedTimestamp != null)
-          'workerCompletedTimestamp': workerCompletedTimestamp,
+          'workerCompletedTimestamp': workerCompletedTimestamp!,
         if (workerStartTimestamp != null)
-          'workerStartTimestamp': workerStartTimestamp,
+          'workerStartTimestamp': workerStartTimestamp!,
       };
 }
 
@@ -1994,16 +1945,17 @@ class BuildBazelRemoteExecutionV2ExecutionCapabilities {
   /// .
   /// - "SHA384" : The SHA-384 digest function.
   /// - "SHA512" : The SHA-512 digest function.
-  core.String digestFunction;
+  core.String? digestFunction;
 
   /// Whether remote execution is enabled for the particular server/instance.
-  core.bool execEnabled;
+  core.bool? execEnabled;
 
   /// Supported execution priority range.
-  BuildBazelRemoteExecutionV2PriorityCapabilities executionPriorityCapabilities;
+  BuildBazelRemoteExecutionV2PriorityCapabilities?
+      executionPriorityCapabilities;
 
   /// Supported node properties.
-  core.List<core.String> supportedNodeProperties;
+  core.List<core.String>? supportedNodeProperties;
 
   BuildBazelRemoteExecutionV2ExecutionCapabilities();
 
@@ -2027,14 +1979,14 @@ class BuildBazelRemoteExecutionV2ExecutionCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (digestFunction != null) 'digestFunction': digestFunction,
-        if (execEnabled != null) 'execEnabled': execEnabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (digestFunction != null) 'digestFunction': digestFunction!,
+        if (execEnabled != null) 'execEnabled': execEnabled!,
         if (executionPriorityCapabilities != null)
           'executionPriorityCapabilities':
-              executionPriorityCapabilities.toJson(),
+              executionPriorityCapabilities!.toJson(),
         if (supportedNodeProperties != null)
-          'supportedNodeProperties': supportedNodeProperties,
+          'supportedNodeProperties': supportedNodeProperties!,
       };
 }
 
@@ -2050,7 +2002,7 @@ class BuildBazelRemoteExecutionV2ExecutionPolicy {
   /// particular semantics of this field is up to the server. In particular,
   /// every server will have their own supported range of priorities, and will
   /// decide how these map into scheduling policy.
-  core.int priority;
+  core.int? priority;
 
   BuildBazelRemoteExecutionV2ExecutionPolicy();
 
@@ -2060,24 +2012,24 @@ class BuildBazelRemoteExecutionV2ExecutionPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (priority != null) 'priority': priority,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (priority != null) 'priority': priority!,
       };
 }
 
 /// A `FileNode` represents a single file and associated metadata.
 class BuildBazelRemoteExecutionV2FileNode {
   /// The digest of the file's content.
-  BuildBazelRemoteExecutionV2Digest digest;
+  BuildBazelRemoteExecutionV2Digest? digest;
 
   /// True if file is executable, false otherwise.
-  core.bool isExecutable;
+  core.bool? isExecutable;
 
   /// The name of the file.
-  core.String name;
+  core.String? name;
 
   /// The node properties of the FileNode.
-  core.List<BuildBazelRemoteExecutionV2NodeProperty> nodeProperties;
+  core.List<BuildBazelRemoteExecutionV2NodeProperty>? nodeProperties;
 
   BuildBazelRemoteExecutionV2FileNode();
 
@@ -2101,20 +2053,20 @@ class BuildBazelRemoteExecutionV2FileNode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (digest != null) 'digest': digest.toJson(),
-        if (isExecutable != null) 'isExecutable': isExecutable,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (digest != null) 'digest': digest!.toJson(),
+        if (isExecutable != null) 'isExecutable': isExecutable!,
+        if (name != null) 'name': name!,
         if (nodeProperties != null)
           'nodeProperties':
-              nodeProperties.map((value) => value.toJson()).toList(),
+              nodeProperties!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A request message for ContentAddressableStorage.FindMissingBlobs.
 class BuildBazelRemoteExecutionV2FindMissingBlobsRequest {
   /// A list of the blobs to check.
-  core.List<BuildBazelRemoteExecutionV2Digest> blobDigests;
+  core.List<BuildBazelRemoteExecutionV2Digest>? blobDigests;
 
   BuildBazelRemoteExecutionV2FindMissingBlobsRequest();
 
@@ -2128,16 +2080,16 @@ class BuildBazelRemoteExecutionV2FindMissingBlobsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (blobDigests != null)
-          'blobDigests': blobDigests.map((value) => value.toJson()).toList(),
+          'blobDigests': blobDigests!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A response message for ContentAddressableStorage.FindMissingBlobs.
 class BuildBazelRemoteExecutionV2FindMissingBlobsResponse {
   /// A list of the blobs requested *not* present in the storage.
-  core.List<BuildBazelRemoteExecutionV2Digest> missingBlobDigests;
+  core.List<BuildBazelRemoteExecutionV2Digest>? missingBlobDigests;
 
   BuildBazelRemoteExecutionV2FindMissingBlobsResponse();
 
@@ -2151,23 +2103,23 @@ class BuildBazelRemoteExecutionV2FindMissingBlobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (missingBlobDigests != null)
           'missingBlobDigests':
-              missingBlobDigests.map((value) => value.toJson()).toList(),
+              missingBlobDigests!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A response message for ContentAddressableStorage.GetTree.
 class BuildBazelRemoteExecutionV2GetTreeResponse {
   /// The directories descended from the requested root.
-  core.List<BuildBazelRemoteExecutionV2Directory> directories;
+  core.List<BuildBazelRemoteExecutionV2Directory>? directories;
 
   /// If present, signifies that there are more results which the client can
   /// retrieve by passing this as the page_token in a subsequent request.
   ///
   /// If empty, signifies that this is the last page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   BuildBazelRemoteExecutionV2GetTreeResponse();
 
@@ -2184,17 +2136,17 @@ class BuildBazelRemoteExecutionV2GetTreeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (directories != null)
-          'directories': directories.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'directories': directories!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// A `LogFile` is a log stored in the CAS.
 class BuildBazelRemoteExecutionV2LogFile {
   /// The digest of the log contents.
-  BuildBazelRemoteExecutionV2Digest digest;
+  BuildBazelRemoteExecutionV2Digest? digest;
 
   /// This is a hint as to the purpose of the log, and is set to true if the log
   /// is human-readable text that can be usefully displayed to a user, and false
@@ -2203,7 +2155,7 @@ class BuildBazelRemoteExecutionV2LogFile {
   /// For instance, if a command-line client wishes to print the server logs to
   /// the terminal for a failed action, this allows it to avoid displaying a
   /// binary file.
-  core.bool humanReadable;
+  core.bool? humanReadable;
 
   BuildBazelRemoteExecutionV2LogFile();
 
@@ -2217,9 +2169,9 @@ class BuildBazelRemoteExecutionV2LogFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (digest != null) 'digest': digest.toJson(),
-        if (humanReadable != null) 'humanReadable': humanReadable,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (digest != null) 'digest': digest!.toJson(),
+        if (humanReadable != null) 'humanReadable': humanReadable!,
       };
 }
 
@@ -2230,10 +2182,10 @@ class BuildBazelRemoteExecutionV2LogFile {
 /// times.
 class BuildBazelRemoteExecutionV2NodeProperty {
   /// The property name.
-  core.String name;
+  core.String? name;
 
   /// The property value.
-  core.String value;
+  core.String? value;
 
   BuildBazelRemoteExecutionV2NodeProperty();
 
@@ -2246,9 +2198,9 @@ class BuildBazelRemoteExecutionV2NodeProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2260,10 +2212,10 @@ class BuildBazelRemoteExecutionV2OutputDirectory {
   /// The path separator is a forward slash `/`. Since this is a relative path,
   /// it MUST NOT begin with a leading forward slash. The empty string value is
   /// allowed, and it denotes the entire working directory.
-  core.String path;
+  core.String? path;
 
   /// The digest of the encoded Tree proto containing the directory's contents.
-  BuildBazelRemoteExecutionV2Digest treeDigest;
+  BuildBazelRemoteExecutionV2Digest? treeDigest;
 
   BuildBazelRemoteExecutionV2OutputDirectory();
 
@@ -2277,9 +2229,9 @@ class BuildBazelRemoteExecutionV2OutputDirectory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (path != null) 'path': path,
-        if (treeDigest != null) 'treeDigest': treeDigest.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (path != null) 'path': path!,
+        if (treeDigest != null) 'treeDigest': treeDigest!.toJson(),
       };
 }
 
@@ -2294,8 +2246,8 @@ class BuildBazelRemoteExecutionV2OutputFile {
   /// in the GetActionResultRequest message. The server MAY omit inlining, even
   /// if requested, and MUST do so if inlining would cause the response to
   /// exceed message size limits.
-  core.String contents;
-  core.List<core.int> get contentsAsBytes => convert.base64.decode(contents);
+  core.String? contents;
+  core.List<core.int> get contentsAsBytes => convert.base64.decode(contents!);
 
   set contentsAsBytes(core.List<core.int> _bytes) {
     contents =
@@ -2303,21 +2255,21 @@ class BuildBazelRemoteExecutionV2OutputFile {
   }
 
   /// The digest of the file's content.
-  BuildBazelRemoteExecutionV2Digest digest;
+  BuildBazelRemoteExecutionV2Digest? digest;
 
   /// True if file is executable, false otherwise.
-  core.bool isExecutable;
+  core.bool? isExecutable;
 
   /// The supported node properties of the OutputFile, if requested by the
   /// Action.
-  core.List<BuildBazelRemoteExecutionV2NodeProperty> nodeProperties;
+  core.List<BuildBazelRemoteExecutionV2NodeProperty>? nodeProperties;
 
   /// The full path of the file relative to the working directory, including the
   /// filename.
   ///
   /// The path separator is a forward slash `/`. Since this is a relative path,
   /// it MUST NOT begin with a leading forward slash.
-  core.String path;
+  core.String? path;
 
   BuildBazelRemoteExecutionV2OutputFile();
 
@@ -2344,14 +2296,14 @@ class BuildBazelRemoteExecutionV2OutputFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contents != null) 'contents': contents,
-        if (digest != null) 'digest': digest.toJson(),
-        if (isExecutable != null) 'isExecutable': isExecutable,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contents != null) 'contents': contents!,
+        if (digest != null) 'digest': digest!.toJson(),
+        if (isExecutable != null) 'isExecutable': isExecutable!,
         if (nodeProperties != null)
           'nodeProperties':
-              nodeProperties.map((value) => value.toJson()).toList(),
-        if (path != null) 'path': path,
+              nodeProperties!.map((value) => value.toJson()).toList(),
+        if (path != null) 'path': path!,
       };
 }
 
@@ -2362,14 +2314,14 @@ class BuildBazelRemoteExecutionV2OutputFile {
 class BuildBazelRemoteExecutionV2OutputSymlink {
   /// The supported node properties of the OutputSymlink, if requested by the
   /// Action.
-  core.List<BuildBazelRemoteExecutionV2NodeProperty> nodeProperties;
+  core.List<BuildBazelRemoteExecutionV2NodeProperty>? nodeProperties;
 
   /// The full path of the symlink relative to the working directory, including
   /// the filename.
   ///
   /// The path separator is a forward slash `/`. Since this is a relative path,
   /// it MUST NOT begin with a leading forward slash.
-  core.String path;
+  core.String? path;
 
   /// The target path of the symlink.
   ///
@@ -2379,7 +2331,7 @@ class BuildBazelRemoteExecutionV2OutputSymlink {
   /// Capabilities API. The canonical form forbids the substrings `/./` and `//`
   /// in the target path. `..` components are allowed anywhere in the target
   /// path.
-  core.String target;
+  core.String? target;
 
   BuildBazelRemoteExecutionV2OutputSymlink();
 
@@ -2399,12 +2351,12 @@ class BuildBazelRemoteExecutionV2OutputSymlink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (nodeProperties != null)
           'nodeProperties':
-              nodeProperties.map((value) => value.toJson()).toList(),
-        if (path != null) 'path': path,
-        if (target != null) 'target': target,
+              nodeProperties!.map((value) => value.toJson()).toList(),
+        if (path != null) 'path': path!,
+        if (target != null) 'target': target!,
       };
 }
 
@@ -2420,7 +2372,7 @@ class BuildBazelRemoteExecutionV2Platform {
   /// value, the properties MUST be lexicographically sorted by name, and then
   /// by value. Sorting of strings is done by code point, equivalently, by the
   /// UTF-8 bytes.
-  core.List<BuildBazelRemoteExecutionV2PlatformProperty> properties;
+  core.List<BuildBazelRemoteExecutionV2PlatformProperty>? properties;
 
   BuildBazelRemoteExecutionV2Platform();
 
@@ -2434,9 +2386,9 @@ class BuildBazelRemoteExecutionV2Platform {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (properties != null)
-          'properties': properties.map((value) => value.toJson()).toList(),
+          'properties': properties!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2455,10 +2407,10 @@ class BuildBazelRemoteExecutionV2Platform {
 /// as by making specific system files available to the worker.
 class BuildBazelRemoteExecutionV2PlatformProperty {
   /// The property name.
-  core.String name;
+  core.String? name;
 
   /// The property value.
-  core.String value;
+  core.String? value;
 
   BuildBazelRemoteExecutionV2PlatformProperty();
 
@@ -2471,16 +2423,16 @@ class BuildBazelRemoteExecutionV2PlatformProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// Allowed values for priority in ResultsCachePolicy Used for querying both
 /// cache and execution valid priority ranges.
 class BuildBazelRemoteExecutionV2PriorityCapabilities {
-  core.List<BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange>
+  core.List<BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange>?
       priorities;
 
   BuildBazelRemoteExecutionV2PriorityCapabilities();
@@ -2496,16 +2448,16 @@ class BuildBazelRemoteExecutionV2PriorityCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (priorities != null)
-          'priorities': priorities.map((value) => value.toJson()).toList(),
+          'priorities': priorities!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Supported range of priorities, including boundaries.
 class BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange {
-  core.int maxPriority;
-  core.int minPriority;
+  core.int? maxPriority;
+  core.int? minPriority;
 
   BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange();
 
@@ -2519,9 +2471,9 @@ class BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxPriority != null) 'maxPriority': maxPriority,
-        if (minPriority != null) 'minPriority': minPriority,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxPriority != null) 'maxPriority': maxPriority!,
+        if (minPriority != null) 'minPriority': minPriority!,
       };
 }
 
@@ -2542,21 +2494,21 @@ class BuildBazelRemoteExecutionV2RequestMetadata {
   ///
   /// For example, multiple requests to the CAS, Action Cache, and Execution API
   /// are used in order to compile foo.cc.
-  core.String actionId;
+  core.String? actionId;
 
   /// An identifier to tie multiple tool invocations together.
   ///
   /// For example, runs of foo_test, bar_test and baz_test on a post-submit of a
   /// given patch.
-  core.String correlatedInvocationsId;
+  core.String? correlatedInvocationsId;
 
   /// The details for the tool invoking the requests.
-  BuildBazelRemoteExecutionV2ToolDetails toolDetails;
+  BuildBazelRemoteExecutionV2ToolDetails? toolDetails;
 
   /// An identifier that ties multiple actions together to a final result.
   ///
   /// For example, multiple actions are required to build and run foo_test.
-  core.String toolInvocationId;
+  core.String? toolInvocationId;
 
   BuildBazelRemoteExecutionV2RequestMetadata();
 
@@ -2576,12 +2528,12 @@ class BuildBazelRemoteExecutionV2RequestMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionId != null) 'actionId': actionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionId != null) 'actionId': actionId!,
         if (correlatedInvocationsId != null)
-          'correlatedInvocationsId': correlatedInvocationsId,
-        if (toolDetails != null) 'toolDetails': toolDetails.toJson(),
-        if (toolInvocationId != null) 'toolInvocationId': toolInvocationId,
+          'correlatedInvocationsId': correlatedInvocationsId!,
+        if (toolDetails != null) 'toolDetails': toolDetails!.toJson(),
+        if (toolInvocationId != null) 'toolInvocationId': toolInvocationId!,
       };
 }
 
@@ -2596,7 +2548,7 @@ class BuildBazelRemoteExecutionV2ResultsCachePolicy {
   /// of this field is up to the server. In particular, every server will have
   /// their own supported range of priorities, and will decide how these map
   /// into retention/eviction policy.
-  core.int priority;
+  core.int? priority;
 
   BuildBazelRemoteExecutionV2ResultsCachePolicy();
 
@@ -2606,27 +2558,27 @@ class BuildBazelRemoteExecutionV2ResultsCachePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (priority != null) 'priority': priority,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (priority != null) 'priority': priority!,
       };
 }
 
 /// A response message for Capabilities.GetCapabilities.
 class BuildBazelRemoteExecutionV2ServerCapabilities {
   /// Capabilities of the remote cache system.
-  BuildBazelRemoteExecutionV2CacheCapabilities cacheCapabilities;
+  BuildBazelRemoteExecutionV2CacheCapabilities? cacheCapabilities;
 
   /// Earliest RE API version supported, including deprecated versions.
-  BuildBazelSemverSemVer deprecatedApiVersion;
+  BuildBazelSemverSemVer? deprecatedApiVersion;
 
   /// Capabilities of the remote execution system.
-  BuildBazelRemoteExecutionV2ExecutionCapabilities executionCapabilities;
+  BuildBazelRemoteExecutionV2ExecutionCapabilities? executionCapabilities;
 
   /// Latest RE API version supported.
-  BuildBazelSemverSemVer highApiVersion;
+  BuildBazelSemverSemVer? highApiVersion;
 
   /// Earliest non-deprecated RE API version supported.
-  BuildBazelSemverSemVer lowApiVersion;
+  BuildBazelSemverSemVer? lowApiVersion;
 
   BuildBazelRemoteExecutionV2ServerCapabilities();
 
@@ -2655,25 +2607,25 @@ class BuildBazelRemoteExecutionV2ServerCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cacheCapabilities != null)
-          'cacheCapabilities': cacheCapabilities.toJson(),
+          'cacheCapabilities': cacheCapabilities!.toJson(),
         if (deprecatedApiVersion != null)
-          'deprecatedApiVersion': deprecatedApiVersion.toJson(),
+          'deprecatedApiVersion': deprecatedApiVersion!.toJson(),
         if (executionCapabilities != null)
-          'executionCapabilities': executionCapabilities.toJson(),
-        if (highApiVersion != null) 'highApiVersion': highApiVersion.toJson(),
-        if (lowApiVersion != null) 'lowApiVersion': lowApiVersion.toJson(),
+          'executionCapabilities': executionCapabilities!.toJson(),
+        if (highApiVersion != null) 'highApiVersion': highApiVersion!.toJson(),
+        if (lowApiVersion != null) 'lowApiVersion': lowApiVersion!.toJson(),
       };
 }
 
 /// A `SymlinkNode` represents a symbolic link.
 class BuildBazelRemoteExecutionV2SymlinkNode {
   /// The name of the symlink.
-  core.String name;
+  core.String? name;
 
   /// The node properties of the SymlinkNode.
-  core.List<BuildBazelRemoteExecutionV2NodeProperty> nodeProperties;
+  core.List<BuildBazelRemoteExecutionV2NodeProperty>? nodeProperties;
 
   /// The target path of the symlink.
   ///
@@ -2683,7 +2635,7 @@ class BuildBazelRemoteExecutionV2SymlinkNode {
   /// Capabilities API. The canonical form forbids the substrings `/./` and `//`
   /// in the target path. `..` components are allowed anywhere in the target
   /// path.
-  core.String target;
+  core.String? target;
 
   BuildBazelRemoteExecutionV2SymlinkNode();
 
@@ -2703,22 +2655,22 @@ class BuildBazelRemoteExecutionV2SymlinkNode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
         if (nodeProperties != null)
           'nodeProperties':
-              nodeProperties.map((value) => value.toJson()).toList(),
-        if (target != null) 'target': target,
+              nodeProperties!.map((value) => value.toJson()).toList(),
+        if (target != null) 'target': target!,
       };
 }
 
 /// Details for the tool used to call the API.
 class BuildBazelRemoteExecutionV2ToolDetails {
   /// Name of the tool, e.g. bazel.
-  core.String toolName;
+  core.String? toolName;
 
   /// Version of the tool used for the request, e.g. 5.0.3.
-  core.String toolVersion;
+  core.String? toolVersion;
 
   BuildBazelRemoteExecutionV2ToolDetails();
 
@@ -2731,9 +2683,9 @@ class BuildBazelRemoteExecutionV2ToolDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (toolName != null) 'toolName': toolName,
-        if (toolVersion != null) 'toolVersion': toolVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (toolName != null) 'toolName': toolName!,
+        if (toolVersion != null) 'toolVersion': toolVersion!,
       };
 }
 
@@ -2746,10 +2698,10 @@ class BuildBazelRemoteExecutionV2Tree {
   /// In order to reconstruct the directory tree, the client must take the
   /// digests of each of the child directories and then build up a tree starting
   /// from the `root`.
-  core.List<BuildBazelRemoteExecutionV2Directory> children;
+  core.List<BuildBazelRemoteExecutionV2Directory>? children;
 
   /// The root directory in the tree.
-  BuildBazelRemoteExecutionV2Directory root;
+  BuildBazelRemoteExecutionV2Directory? root;
 
   BuildBazelRemoteExecutionV2Tree();
 
@@ -2767,10 +2719,10 @@ class BuildBazelRemoteExecutionV2Tree {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (children != null)
-          'children': children.map((value) => value.toJson()).toList(),
-        if (root != null) 'root': root.toJson(),
+          'children': children!.map((value) => value.toJson()).toList(),
+        if (root != null) 'root': root!.toJson(),
       };
 }
 
@@ -2782,26 +2734,26 @@ class BuildBazelRemoteExecutionV2WaitExecutionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The full version of a given tool.
 class BuildBazelSemverSemVer {
   /// The major version, e.g 10 for 10.2.3.
-  core.int major;
+  core.int? major;
 
   /// The minor version, e.g. 2 for 10.2.3.
-  core.int minor;
+  core.int? minor;
 
   /// The patch version, e.g 3 for 10.2.3.
-  core.int patch;
+  core.int? patch;
 
   /// The pre-release version.
   ///
   /// Either this field or major/minor/patch fields must be filled. They are
   /// mutually exclusive. Pre-release versions are assumed to be earlier than
   /// any released versions.
-  core.String prerelease;
+  core.String? prerelease;
 
   BuildBazelSemverSemVer();
 
@@ -2820,11 +2772,11 @@ class BuildBazelSemverSemVer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (major != null) 'major': major,
-        if (minor != null) 'minor': minor,
-        if (patch != null) 'patch': patch,
-        if (prerelease != null) 'prerelease': prerelease,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (major != null) 'major': major!,
+        if (minor != null) 'minor': minor!,
+        if (patch != null) 'patch': patch!,
+        if (prerelease != null) 'prerelease': prerelease!,
       };
 }
 
@@ -2833,42 +2785,42 @@ class BuildBazelSemverSemVer {
 class GoogleDevtoolsRemotebuildbotCommandDurations {
   /// The time spent waiting for Container Manager to assign an asynchronous
   /// container for execution.
-  core.String cmWaitForAssignment;
+  core.String? cmWaitForAssignment;
 
   /// The time spent preparing the command to be run in a Docker container
   /// (includes pulling the Docker image, if necessary).
-  core.String dockerPrep;
+  core.String? dockerPrep;
 
   /// The timestamp when docker preparation begins.
-  core.String dockerPrepStartTime;
+  core.String? dockerPrepStartTime;
 
   /// The time spent downloading the input files and constructing the working
   /// directory.
-  core.String download;
+  core.String? download;
 
   /// The timestamp when downloading the input files begins.
-  core.String downloadStartTime;
+  core.String? downloadStartTime;
 
   /// The timestamp when execution begins.
-  core.String execStartTime;
+  core.String? execStartTime;
 
   /// The time spent executing the command (i.e., doing useful work).
-  core.String execution;
+  core.String? execution;
 
   /// The timestamp when preparation is done and bot starts downloading files.
-  core.String isoPrepDone;
+  core.String? isoPrepDone;
 
   /// The time spent completing the command, in total.
-  core.String overall;
+  core.String? overall;
 
   /// The time spent uploading the stdout logs.
-  core.String stdout;
+  core.String? stdout;
 
   /// The time spent uploading the output files.
-  core.String upload;
+  core.String? upload;
 
   /// The timestamp when uploading the output files begins.
-  core.String uploadStartTime;
+  core.String? uploadStartTime;
 
   GoogleDevtoolsRemotebuildbotCommandDurations();
 
@@ -2911,21 +2863,21 @@ class GoogleDevtoolsRemotebuildbotCommandDurations {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cmWaitForAssignment != null)
-          'cmWaitForAssignment': cmWaitForAssignment,
-        if (dockerPrep != null) 'dockerPrep': dockerPrep,
+          'cmWaitForAssignment': cmWaitForAssignment!,
+        if (dockerPrep != null) 'dockerPrep': dockerPrep!,
         if (dockerPrepStartTime != null)
-          'dockerPrepStartTime': dockerPrepStartTime,
-        if (download != null) 'download': download,
-        if (downloadStartTime != null) 'downloadStartTime': downloadStartTime,
-        if (execStartTime != null) 'execStartTime': execStartTime,
-        if (execution != null) 'execution': execution,
-        if (isoPrepDone != null) 'isoPrepDone': isoPrepDone,
-        if (overall != null) 'overall': overall,
-        if (stdout != null) 'stdout': stdout,
-        if (upload != null) 'upload': upload,
-        if (uploadStartTime != null) 'uploadStartTime': uploadStartTime,
+          'dockerPrepStartTime': dockerPrepStartTime!,
+        if (download != null) 'download': download!,
+        if (downloadStartTime != null) 'downloadStartTime': downloadStartTime!,
+        if (execStartTime != null) 'execStartTime': execStartTime!,
+        if (execution != null) 'execution': execution!,
+        if (isoPrepDone != null) 'isoPrepDone': isoPrepDone!,
+        if (overall != null) 'overall': overall!,
+        if (stdout != null) 'stdout': stdout!,
+        if (upload != null) 'upload': upload!,
+        if (uploadStartTime != null) 'uploadStartTime': uploadStartTime!,
       };
 }
 
@@ -2940,26 +2892,26 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
   /// container available for use during execution.
   /// - "CONFIG_MISMATCH" : Container Manager is enabled, but there was no
   /// matching container available for execution.
-  core.String cmUsage;
+  core.String? cmUsage;
 
   /// Indicates whether we are using a cached Docker image (true) or had to pull
   /// the Docker image (false) for this command.
-  core.bool dockerCacheHit;
+  core.bool? dockerCacheHit;
 
   /// Docker Image name.
-  core.String dockerImageName;
+  core.String? dockerImageName;
 
   /// The input cache miss ratio.
-  core.double inputCacheMiss;
+  core.double? inputCacheMiss;
 
   /// The number of errors reported.
-  core.String numErrors;
+  core.String? numErrors;
 
   /// The number of warnings reported.
-  core.String numWarnings;
+  core.String? numWarnings;
 
   /// Indicates whether an asynchronous container was used for execution.
-  core.bool usedAsyncContainer;
+  core.bool? usedAsyncContainer;
 
   GoogleDevtoolsRemotebuildbotCommandEvents();
 
@@ -2987,15 +2939,15 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cmUsage != null) 'cmUsage': cmUsage,
-        if (dockerCacheHit != null) 'dockerCacheHit': dockerCacheHit,
-        if (dockerImageName != null) 'dockerImageName': dockerImageName,
-        if (inputCacheMiss != null) 'inputCacheMiss': inputCacheMiss,
-        if (numErrors != null) 'numErrors': numErrors,
-        if (numWarnings != null) 'numWarnings': numWarnings,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cmUsage != null) 'cmUsage': cmUsage!,
+        if (dockerCacheHit != null) 'dockerCacheHit': dockerCacheHit!,
+        if (dockerImageName != null) 'dockerImageName': dockerImageName!,
+        if (inputCacheMiss != null) 'inputCacheMiss': inputCacheMiss!,
+        if (numErrors != null) 'numErrors': numErrors!,
+        if (numWarnings != null) 'numWarnings': numWarnings!,
         if (usedAsyncContainer != null)
-          'usedAsyncContainer': usedAsyncContainer,
+          'usedAsyncContainer': usedAsyncContainer!,
       };
 }
 
@@ -3066,10 +3018,10 @@ class GoogleDevtoolsRemotebuildbotCommandStatus {
   /// overlay mount because of too many levels of symbolic links.
   /// - "LOCAL_CONTAINER_MANAGER_NOT_RUNNING" : The local Container Manager is
   /// not running.
-  core.String code;
+  core.String? code;
 
   /// The error message.
-  core.String message;
+  core.String? message;
 
   GoogleDevtoolsRemotebuildbotCommandStatus();
 
@@ -3082,17 +3034,17 @@ class GoogleDevtoolsRemotebuildbotCommandStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (message != null) 'message': message!,
       };
 }
 
 /// ResourceUsage is the system resource usage of the host machine.
 class GoogleDevtoolsRemotebuildbotResourceUsage {
-  core.double cpuUsedPercent;
-  GoogleDevtoolsRemotebuildbotResourceUsageStat diskUsage;
-  GoogleDevtoolsRemotebuildbotResourceUsageStat memoryUsage;
+  core.double? cpuUsedPercent;
+  GoogleDevtoolsRemotebuildbotResourceUsageStat? diskUsage;
+  GoogleDevtoolsRemotebuildbotResourceUsageStat? memoryUsage;
 
   GoogleDevtoolsRemotebuildbotResourceUsage();
 
@@ -3110,16 +3062,16 @@ class GoogleDevtoolsRemotebuildbotResourceUsage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cpuUsedPercent != null) 'cpuUsedPercent': cpuUsedPercent,
-        if (diskUsage != null) 'diskUsage': diskUsage.toJson(),
-        if (memoryUsage != null) 'memoryUsage': memoryUsage.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cpuUsedPercent != null) 'cpuUsedPercent': cpuUsedPercent!,
+        if (diskUsage != null) 'diskUsage': diskUsage!.toJson(),
+        if (memoryUsage != null) 'memoryUsage': memoryUsage!.toJson(),
       };
 }
 
 class GoogleDevtoolsRemotebuildbotResourceUsageStat {
-  core.String total;
-  core.String used;
+  core.String? total;
+  core.String? used;
 
   GoogleDevtoolsRemotebuildbotResourceUsageStat();
 
@@ -3132,20 +3084,20 @@ class GoogleDevtoolsRemotebuildbotResourceUsageStat {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (total != null) 'total': total,
-        if (used != null) 'used': used,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (total != null) 'total': total!,
+        if (used != null) 'used': used!,
       };
 }
 
 /// AcceleratorConfig defines the accelerator cards to attach to the VM.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig {
   /// The number of guest accelerator cards exposed to each VM.
-  core.String acceleratorCount;
+  core.String? acceleratorCount;
 
   /// The type of accelerator to attach to each VM, e.g. "nvidia-tesla-k80" for
   /// nVidia Tesla K80.
-  core.String acceleratorType;
+  core.String? acceleratorType;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig();
 
@@ -3159,9 +3111,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (acceleratorCount != null) 'acceleratorCount': acceleratorCount,
-        if (acceleratorType != null) 'acceleratorType': acceleratorType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (acceleratorCount != null) 'acceleratorCount': acceleratorCount!,
+        if (acceleratorType != null) 'acceleratorType': acceleratorType!,
       };
 }
 
@@ -3170,12 +3122,12 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale {
   /// The maximal number of workers.
   ///
   /// Must be equal to or greater than min_size.
-  core.String maxSize;
+  core.String? maxSize;
 
   /// The minimal number of workers.
   ///
   /// Must be greater than 0.
-  core.String minSize;
+  core.String? minSize;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale();
 
@@ -3189,9 +3141,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxSize != null) 'maxSize': maxSize,
-        if (minSize != null) 'minSize': minSize,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxSize != null) 'maxSize': maxSize!,
+        if (minSize != null) 'minSize': minSize!,
       };
 }
 
@@ -3200,19 +3152,19 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest {
   /// Specifies the instance to create.
   ///
   /// The name in the instance, if specified in the instance, is ignored.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance instance;
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance? instance;
 
   /// ID of the created instance.
   ///
   /// A valid `instance_id` must: be 6-50 characters long, contain only
   /// lowercase letters, digits, hyphens and underscores, start with a lowercase
   /// letter, and end with a lowercase letter or a digit.
-  core.String instanceId;
+  core.String? instanceId;
 
   /// Resource name of the project containing the instance.
   ///
   /// Format: `projects/[PROJECT_ID]`.
-  core.String parent;
+  core.String? parent;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest();
 
@@ -3231,10 +3183,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (instance != null) 'instance': instance.toJson(),
-        if (instanceId != null) 'instanceId': instanceId,
-        if (parent != null) 'parent': parent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (instance != null) 'instance': instance!.toJson(),
+        if (instanceId != null) 'instanceId': instanceId!,
+        if (parent != null) 'parent': parent!,
       };
 }
 
@@ -3243,19 +3195,19 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest {
   /// Resource name of the instance in which to create the new worker pool.
   ///
   /// Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
-  core.String parent;
+  core.String? parent;
 
   /// ID of the created worker pool.
   ///
   /// A valid pool ID must: be 6-50 characters long, contain only lowercase
   /// letters, digits, hyphens and underscores, start with a lowercase letter,
   /// and end with a lowercase letter or a digit.
-  core.String poolId;
+  core.String? poolId;
 
   /// Specifies the worker pool to create.
   ///
   /// The name in the worker pool, if specified, is ignored.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool workerPool;
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool? workerPool;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest();
 
@@ -3274,10 +3226,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (parent != null) 'parent': parent,
-        if (poolId != null) 'poolId': poolId,
-        if (workerPool != null) 'workerPool': workerPool.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (parent != null) 'parent': parent!,
+        if (poolId != null) 'poolId': poolId!,
+        if (workerPool != null) 'workerPool': workerPool!.toJson(),
       };
 }
 
@@ -3286,7 +3238,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest {
   /// Name of the instance to delete.
   ///
   /// Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
-  core.String name;
+  core.String? name;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest();
 
@@ -3297,8 +3249,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3308,7 +3260,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest {
   ///
   /// Format:
   /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.
-  core.String name;
+  core.String? name;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest();
 
@@ -3319,8 +3271,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3337,41 +3289,41 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
   /// repositories under "gcr.io/project-foo" plus the repository
   /// "gcr.io/project-bar/repo-baz". Default (UNSPECIFIED) is equivalent to any
   /// source is allowed.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature?
       containerImageSources;
 
   /// Whether dockerAddCapabilities can be used or what capabilities are
   /// allowed.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature?
       dockerAddCapabilities;
 
   /// Whether dockerChrootPath can be used.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature?
       dockerChrootPath;
 
   /// Whether dockerNetwork can be used or what network modes are allowed.
   ///
   /// E.g. one may allow `off` value only via `allowed_values`.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature?
       dockerNetwork;
 
   /// Whether dockerPrivileged can be used.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature?
       dockerPrivileged;
 
   /// Whether dockerRunAsRoot can be used.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature?
       dockerRunAsRoot;
 
   /// Whether dockerRuntime is allowed to be set or what runtimes are allowed.
   ///
   /// Note linux_isolation takes precedence, and if set, docker_runtime values
   /// may be rejected if they are incompatible with the selected isolation.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature?
       dockerRuntime;
 
   /// Whether dockerSiblingContainers can be used.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature?
       dockerSiblingContainers;
 
   /// linux_isolation allows overriding the docker runtime used for containers
@@ -3382,7 +3334,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
   /// - "GVISOR" : Use gVisor runsc runtime.
   /// - "OFF" : Use stardard Linux runtime. This has the same behaviour as
   /// unspecified, but it can be used to revert back from gVisor.
-  core.String linuxIsolation;
+  core.String? linuxIsolation;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy();
 
@@ -3441,22 +3393,22 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (containerImageSources != null)
-          'containerImageSources': containerImageSources.toJson(),
+          'containerImageSources': containerImageSources!.toJson(),
         if (dockerAddCapabilities != null)
-          'dockerAddCapabilities': dockerAddCapabilities.toJson(),
+          'dockerAddCapabilities': dockerAddCapabilities!.toJson(),
         if (dockerChrootPath != null)
-          'dockerChrootPath': dockerChrootPath.toJson(),
-        if (dockerNetwork != null) 'dockerNetwork': dockerNetwork.toJson(),
+          'dockerChrootPath': dockerChrootPath!.toJson(),
+        if (dockerNetwork != null) 'dockerNetwork': dockerNetwork!.toJson(),
         if (dockerPrivileged != null)
-          'dockerPrivileged': dockerPrivileged.toJson(),
+          'dockerPrivileged': dockerPrivileged!.toJson(),
         if (dockerRunAsRoot != null)
-          'dockerRunAsRoot': dockerRunAsRoot.toJson(),
-        if (dockerRuntime != null) 'dockerRuntime': dockerRuntime.toJson(),
+          'dockerRunAsRoot': dockerRunAsRoot!.toJson(),
+        if (dockerRuntime != null) 'dockerRuntime': dockerRuntime!.toJson(),
         if (dockerSiblingContainers != null)
-          'dockerSiblingContainers': dockerSiblingContainers.toJson(),
-        if (linuxIsolation != null) 'linuxIsolation': linuxIsolation,
+          'dockerSiblingContainers': dockerSiblingContainers!.toJson(),
+        if (linuxIsolation != null) 'linuxIsolation': linuxIsolation!,
       };
 }
 
@@ -3465,7 +3417,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
   /// A list of acceptable values.
   ///
   /// Only effective when the policy is `RESTRICTED`.
-  core.List<core.String> allowedValues;
+  core.List<core.String>? allowedValues;
 
   /// The policy of the feature.
   /// Possible string values are:
@@ -3477,7 +3429,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
   /// forbidden by FeaturePolicy: Feature on instance "
   /// - "RESTRICTED" : Only the values specified in the `allowed_values` are
   /// allowed.
-  core.String policy;
+  core.String? policy;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature();
 
@@ -3493,9 +3445,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowedValues != null) 'allowedValues': allowedValues,
-        if (policy != null) 'policy': policy,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowedValues != null) 'allowedValues': allowedValues!,
+        if (policy != null) 'policy': policy!,
       };
 }
 
@@ -3504,7 +3456,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest {
   /// Name of the instance to retrieve.
   ///
   /// Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
-  core.String name;
+  core.String? name;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest();
 
@@ -3515,8 +3467,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3526,7 +3478,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest {
   ///
   /// Format:
   /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.
-  core.String name;
+  core.String? name;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest();
 
@@ -3537,8 +3489,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3552,17 +3504,17 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest {
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance {
   /// The policy to define whether or not RBE features can be used or how they
   /// can be used.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy featurePolicy;
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy? featurePolicy;
 
   /// The location is a GCP region.
   ///
   /// Currently only `us-central1` is supported.
-  core.String location;
+  core.String? location;
 
   /// Whether stack driver logging is enabled for the instance.
   ///
   /// Output only.
-  core.bool loggingEnabled;
+  core.bool? loggingEnabled;
 
   /// Instance resource name formatted as:
   /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
@@ -3571,7 +3523,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance {
   /// provided in the `instance_id` field.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// State of the instance.
   ///
@@ -3586,7 +3538,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance {
   /// that needs to be fixed. Such instances cannot be used for execution and
   /// instances that remain in this state for a significant period of time will
   /// be removed permanently.
-  core.String state;
+  core.String? state;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance();
 
@@ -3611,12 +3563,12 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (featurePolicy != null) 'featurePolicy': featurePolicy.toJson(),
-        if (location != null) 'location': location,
-        if (loggingEnabled != null) 'loggingEnabled': loggingEnabled,
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (featurePolicy != null) 'featurePolicy': featurePolicy!.toJson(),
+        if (location != null) 'location': location!,
+        if (loggingEnabled != null) 'loggingEnabled': loggingEnabled!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -3624,7 +3576,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest {
   /// Resource name of the project.
   ///
   /// Format: `projects/[PROJECT_ID]`.
-  core.String parent;
+  core.String? parent;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest();
 
@@ -3635,14 +3587,14 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (parent != null) 'parent': parent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (parent != null) 'parent': parent!,
       };
 }
 
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse {
   /// The list of instances in a given project.
-  core.List<GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance> instances;
+  core.List<GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance>? instances;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse();
 
@@ -3657,9 +3609,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (instances != null)
-          'instances': instances.map((value) => value.toJson()).toList(),
+          'instances': instances!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3682,12 +3634,12 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest {
   /// `worker_config.labels.key1 : * OR worker_config.machine_type: e2-standard`
   ///
   /// Optional.
-  core.String filter;
+  core.String? filter;
 
   /// Resource name of the instance.
   ///
   /// Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
-  core.String parent;
+  core.String? parent;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest();
 
@@ -3701,15 +3653,15 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filter != null) 'filter': filter,
-        if (parent != null) 'parent': parent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (parent != null) 'parent': parent!,
       };
 }
 
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse {
   /// The list of worker pools in a given instance.
-  core.List<GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool>
+  core.List<GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool>?
       workerPools;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse();
@@ -3726,27 +3678,27 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (workerPools != null)
-          'workerPools': workerPools.map((value) => value.toJson()).toList(),
+          'workerPools': workerPools!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The request used for `UpdateInstance`.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest {
   /// Specifies the instance to update.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance instance;
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance? instance;
 
   /// Deprecated, use instance.logging_enabled instead.
   ///
   /// Whether to enable Stackdriver logging for this instance.
-  core.bool loggingEnabled;
+  core.bool? loggingEnabled;
 
   /// Deprecated, use instance.Name instead.
   ///
   /// Name of the instance to update. Format:
   /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
-  core.String name;
+  core.String? name;
 
   /// The update mask applies to instance.
   ///
@@ -3756,7 +3708,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest {
   /// the worker pool field will be updated. Note that in order to update a
   /// field to the default value (zero, false, empty string) an explicit
   /// update_mask must be provided.
-  core.String updateMask;
+  core.String? updateMask;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest();
 
@@ -3778,11 +3730,11 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (instance != null) 'instance': instance.toJson(),
-        if (loggingEnabled != null) 'loggingEnabled': loggingEnabled,
-        if (name != null) 'name': name,
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (instance != null) 'instance': instance!.toJson(),
+        if (loggingEnabled != null) 'loggingEnabled': loggingEnabled!,
+        if (name != null) 'name': name!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -3796,10 +3748,10 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest {
   /// the worker pool field will be updated. Note that in order to update a
   /// field to the default value (zero, false, empty string) an explicit
   /// update_mask must be provided.
-  core.String updateMask;
+  core.String? updateMask;
 
   /// Specifies the worker pool to update.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool workerPool;
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool? workerPool;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest();
 
@@ -3815,9 +3767,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (updateMask != null) 'updateMask': updateMask,
-        if (workerPool != null) 'workerPool': workerPool.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (updateMask != null) 'updateMask': updateMask!,
+        if (workerPool != null) 'workerPool': workerPool!.toJson(),
       };
 }
 
@@ -3825,14 +3777,14 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest {
 /// pool.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
   /// The accelerator card attached to each VM.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig accelerator;
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig? accelerator;
 
   /// Size of the disk attached to the worker, in GB.
   ///
   /// See https://cloud.google.com/compute/docs/disks/
   ///
   /// Required.
-  core.String diskSizeGb;
+  core.String? diskSizeGb;
 
   /// Disk Type to use for the worker.
   ///
@@ -3841,7 +3793,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
   /// Currently only `pd-standard` and `pd-ssd` are supported.
   ///
   /// Required.
-  core.String diskType;
+  core.String? diskType;
 
   /// Labels associated with the workers.
   ///
@@ -3850,7 +3802,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
   /// International letters are permitted. Label keys must start with a letter.
   /// Label values are optional. There can not be more than 64 labels per
   /// resource.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Machine type of the worker, such as `e2-standard-2`.
   ///
@@ -3859,15 +3811,15 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
   /// supported.
   ///
   /// Required.
-  core.String machineType;
+  core.String? machineType;
 
   /// The maximum number of actions a worker can execute concurrently.
-  core.String maxConcurrentActions;
+  core.String? maxConcurrentActions;
 
   /// Minimum CPU platform to use when creating the worker.
   ///
   /// See [CPU Platforms](https://cloud.google.com/compute/docs/cpu-platforms).
-  core.String minCpuPlatform;
+  core.String? minCpuPlatform;
 
   /// Determines the type of network access granted to workers.
   ///
@@ -3875,20 +3827,20 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
   /// "private": Workers can only connect to Google APIs and services. -
   /// "restricted-private": Workers can only connect to Google APIs that are
   /// reachable through `restricted.googleapis.com` (`199.36.153.4/30`).
-  core.String networkAccess;
+  core.String? networkAccess;
 
   /// Determines whether the worker is reserved (equivalent to a Compute Engine
   /// on-demand VM and therefore won't be preempted).
   ///
   /// See [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for more
   /// details.
-  core.bool reserved;
+  core.bool? reserved;
 
   /// The node type name to be used for sole-tenant nodes.
-  core.String soleTenantNodeType;
+  core.String? soleTenantNodeType;
 
   /// The name of the image used by each VM.
-  core.String vmImage;
+  core.String? vmImage;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig();
 
@@ -3938,37 +3890,37 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accelerator != null) 'accelerator': accelerator.toJson(),
-        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb,
-        if (diskType != null) 'diskType': diskType,
-        if (labels != null) 'labels': labels,
-        if (machineType != null) 'machineType': machineType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accelerator != null) 'accelerator': accelerator!.toJson(),
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
+        if (diskType != null) 'diskType': diskType!,
+        if (labels != null) 'labels': labels!,
+        if (machineType != null) 'machineType': machineType!,
         if (maxConcurrentActions != null)
-          'maxConcurrentActions': maxConcurrentActions,
-        if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform,
-        if (networkAccess != null) 'networkAccess': networkAccess,
-        if (reserved != null) 'reserved': reserved,
+          'maxConcurrentActions': maxConcurrentActions!,
+        if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
+        if (networkAccess != null) 'networkAccess': networkAccess!,
+        if (reserved != null) 'reserved': reserved!,
         if (soleTenantNodeType != null)
-          'soleTenantNodeType': soleTenantNodeType,
-        if (vmImage != null) 'vmImage': vmImage,
+          'soleTenantNodeType': soleTenantNodeType!,
+        if (vmImage != null) 'vmImage': vmImage!,
       };
 }
 
 /// A worker pool resource in the Remote Build Execution API.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
   /// The autoscale policy to apply on a pool.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale autoscale;
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale? autoscale;
 
   /// Channel specifies the release channel of the pool.
-  core.String channel;
+  core.String? channel;
 
   /// WorkerPool resource name formatted as:
   /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.
   ///
   /// name should not be populated when creating a worker pool since it is
   /// provided in the `poolId` field.
-  core.String name;
+  core.String? name;
 
   /// State of the worker pool.
   ///
@@ -3988,16 +3940,16 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
   /// method is called and before the deletion completes.
   /// - "INACTIVE" : The worker pool is in state `INACTIVE` when the instance
   /// hosting the worker pool in not running.
-  core.String state;
+  core.String? state;
 
   /// Specifies the properties, such as machine type and disk size, used for
   /// creating workers in a worker pool.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig workerConfig;
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig? workerConfig;
 
   /// The desired number of workers in the worker pool.
   ///
   /// Must be a value between 0 and 15000.
-  core.String workerCount;
+  core.String? workerCount;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool();
 
@@ -4027,13 +3979,13 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (autoscale != null) 'autoscale': autoscale.toJson(),
-        if (channel != null) 'channel': channel,
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
-        if (workerConfig != null) 'workerConfig': workerConfig.toJson(),
-        if (workerCount != null) 'workerCount': workerCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (autoscale != null) 'autoscale': autoscale!.toJson(),
+        if (channel != null) 'channel': channel!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (workerConfig != null) 'workerConfig': workerConfig!.toJson(),
+        if (workerCount != null) 'workerCount': workerCount!,
       };
 }
 
@@ -4049,7 +4001,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
 /// the LUCI project (http://github.com/luci/luci-py/appengine/swarming).
 class GoogleDevtoolsRemoteworkersV1test2AdminTemp {
   /// The argument to the admin action; see `Command` for semantics.
-  core.String arg;
+  core.String? arg;
 
   /// The admin action; see `Command` for legal values.
   /// Possible string values are:
@@ -4063,7 +4015,7 @@ class GoogleDevtoolsRemoteworkersV1test2AdminTemp {
   /// that it is terminating.
   /// - "HOST_RESTART" : Restart the host computer. `arg` will be a message to
   /// log.
-  core.String command;
+  core.String? command;
 
   GoogleDevtoolsRemoteworkersV1test2AdminTemp();
 
@@ -4076,17 +4028,17 @@ class GoogleDevtoolsRemoteworkersV1test2AdminTemp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (arg != null) 'arg': arg,
-        if (command != null) 'command': command,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (arg != null) 'arg': arg!,
+        if (command != null) 'command': command!,
       };
 }
 
 /// Describes a blob of binary content with its digest.
 class GoogleDevtoolsRemoteworkersV1test2Blob {
   /// The contents of the blob.
-  core.String contents;
-  core.List<core.int> get contentsAsBytes => convert.base64.decode(contents);
+  core.String? contents;
+  core.List<core.int> get contentsAsBytes => convert.base64.decode(contents!);
 
   set contentsAsBytes(core.List<core.int> _bytes) {
     contents =
@@ -4096,7 +4048,7 @@ class GoogleDevtoolsRemoteworkersV1test2Blob {
   /// The digest of the blob.
   ///
   /// This should be verified by the receiver.
-  GoogleDevtoolsRemoteworkersV1test2Digest digest;
+  GoogleDevtoolsRemoteworkersV1test2Digest? digest;
 
   GoogleDevtoolsRemoteworkersV1test2Blob();
 
@@ -4110,9 +4062,9 @@ class GoogleDevtoolsRemoteworkersV1test2Blob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contents != null) 'contents': contents,
-        if (digest != null) 'digest': digest.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contents != null) 'contents': contents!,
+        if (digest != null) 'digest': digest!.toJson(),
       };
 }
 
@@ -4125,14 +4077,14 @@ class GoogleDevtoolsRemoteworkersV1test2CommandOutputs {
   /// If the task exceeded its deadline or was cancelled, the process may still
   /// produce an exit code as it is cancelled, and this will be populated, but a
   /// successful (zero) is unlikely to be correct unless the status code is OK.
-  core.int exitCode;
+  core.int? exitCode;
 
   /// The output files.
   ///
   /// The blob referenced by the digest should contain one of the following
   /// (implementation-dependent): * A marshalled DirectoryMetadata of the
   /// returned filesystem * A LUCI-style .isolated file
-  GoogleDevtoolsRemoteworkersV1test2Digest outputs;
+  GoogleDevtoolsRemoteworkersV1test2Digest? outputs;
 
   GoogleDevtoolsRemoteworkersV1test2CommandOutputs();
 
@@ -4146,9 +4098,9 @@ class GoogleDevtoolsRemoteworkersV1test2CommandOutputs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exitCode != null) 'exitCode': exitCode,
-        if (outputs != null) 'outputs': outputs.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exitCode != null) 'exitCode': exitCode!,
+        if (outputs != null) 'outputs': outputs!.toJson(),
       };
 }
 
@@ -4161,11 +4113,11 @@ class GoogleDevtoolsRemoteworkersV1test2CommandOverhead {
   ///
   /// The server will also have its own idea of what this should be, but this
   /// excludes the overhead of the RPCs and the bot response time.
-  core.String duration;
+  core.String? duration;
 
   /// The amount of time *not* spent executing the command (ie
   /// uploading/downloading files).
-  core.String overhead;
+  core.String? overhead;
 
   GoogleDevtoolsRemoteworkersV1test2CommandOverhead();
 
@@ -4178,9 +4130,9 @@ class GoogleDevtoolsRemoteworkersV1test2CommandOverhead {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (duration != null) 'duration': duration,
-        if (overhead != null) 'overhead': overhead,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (overhead != null) 'overhead': overhead!,
       };
 }
 
@@ -4191,13 +4143,13 @@ class GoogleDevtoolsRemoteworkersV1test2CommandResult {
   ///
   /// The server will also have its own idea of what this should be, but this
   /// excludes the overhead of the RPCs and the bot response time.
-  core.String duration;
+  core.String? duration;
 
   /// The exit code of the process.
   ///
   /// An exit code of "0" should only be trusted if `status` has a code of OK
   /// (otherwise it may simply be unset).
-  core.int exitCode;
+  core.int? exitCode;
 
   /// Implementation-dependent metadata about the task.
   ///
@@ -4209,25 +4161,25 @@ class GoogleDevtoolsRemoteworkersV1test2CommandResult {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> metadata;
+  core.List<core.Map<core.String, core.Object>>? metadata;
 
   /// The output files.
   ///
   /// The blob referenced by the digest should contain one of the following
   /// (implementation-dependent): * A marshalled DirectoryMetadata of the
   /// returned filesystem * A LUCI-style .isolated file
-  GoogleDevtoolsRemoteworkersV1test2Digest outputs;
+  GoogleDevtoolsRemoteworkersV1test2Digest? outputs;
 
   /// The amount of time *not* spent executing the command (ie
   /// uploading/downloading files).
-  core.String overhead;
+  core.String? overhead;
 
   /// An overall status for the command.
   ///
   /// For example, if the command timed out, this might have a code of
   /// DEADLINE_EXCEEDED; if it was killed by the OS for memory exhaustion, it
   /// might have a code of RESOURCE_EXHAUSTED.
-  GoogleRpcStatus status;
+  GoogleRpcStatus? status;
 
   GoogleDevtoolsRemoteworkersV1test2CommandResult();
 
@@ -4262,13 +4214,13 @@ class GoogleDevtoolsRemoteworkersV1test2CommandResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (duration != null) 'duration': duration,
-        if (exitCode != null) 'exitCode': exitCode,
-        if (metadata != null) 'metadata': metadata,
-        if (outputs != null) 'outputs': outputs.toJson(),
-        if (overhead != null) 'overhead': overhead,
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (exitCode != null) 'exitCode': exitCode!,
+        if (metadata != null) 'metadata': metadata!,
+        if (outputs != null) 'outputs': outputs!.toJson(),
+        if (overhead != null) 'overhead': overhead!,
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -4276,13 +4228,13 @@ class GoogleDevtoolsRemoteworkersV1test2CommandResult {
 /// interface's `Lease.payload` field.
 class GoogleDevtoolsRemoteworkersV1test2CommandTask {
   /// The expected outputs from the task.
-  GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs expectedOutputs;
+  GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs? expectedOutputs;
 
   /// The inputs to the task.
-  GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs inputs;
+  GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs? inputs;
 
   /// The timeouts of this task.
-  GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts timeouts;
+  GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts? timeouts;
 
   GoogleDevtoolsRemoteworkersV1test2CommandTask();
 
@@ -4302,11 +4254,11 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTask {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (expectedOutputs != null)
-          'expectedOutputs': expectedOutputs.toJson(),
-        if (inputs != null) 'inputs': inputs.toJson(),
-        if (timeouts != null) 'timeouts': timeouts.toJson(),
+          'expectedOutputs': expectedOutputs!.toJson(),
+        if (inputs != null) 'inputs': inputs!.toJson(),
+        if (timeouts != null) 'timeouts': timeouts!.toJson(),
       };
 }
 
@@ -4321,11 +4273,11 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs {
   /// the other hand, would use forward slashes. All other fields in the RWAPI
   /// must consistently use forward slashes, since those fields may be
   /// interpretted by both the service and the bot.
-  core.List<core.String> arguments;
+  core.List<core.String>? arguments;
 
   /// All environment variables required by the task.
   core.List<
-          GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable>
+          GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable>?
       environmentVariables;
 
   /// The input filesystem to be set up prior to the task beginning.
@@ -4336,7 +4288,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs {
   /// might want to cache the metadata, in which case it may be useful to break
   /// up portions of the filesystem that change frequently (eg, specific input
   /// files) from those that don't (eg, standard header files).
-  core.List<GoogleDevtoolsRemoteworkersV1test2Digest> files;
+  core.List<GoogleDevtoolsRemoteworkersV1test2Digest>? files;
 
   /// Inline contents for blobs expected to be needed by the bot to execute the
   /// task.
@@ -4345,14 +4297,14 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs {
   /// referenced by an entry there. The bot should check against this list
   /// before downloading required task inputs to reduce the number of
   /// communications between itself and the remote CAS server.
-  core.List<GoogleDevtoolsRemoteworkersV1test2Blob> inlineBlobs;
+  core.List<GoogleDevtoolsRemoteworkersV1test2Blob>? inlineBlobs;
 
   /// Directory from which a command is executed.
   ///
   /// It is a relative directory with respect to the bot's working directory
   /// (i.e., "./"). If it is non-empty, then it must exist under "./".
   /// Otherwise, "./" will be used.
-  core.String workingDirectory;
+  core.String? workingDirectory;
 
   GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs();
 
@@ -4389,26 +4341,26 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (arguments != null) 'arguments': arguments,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (arguments != null) 'arguments': arguments!,
         if (environmentVariables != null)
           'environmentVariables':
-              environmentVariables.map((value) => value.toJson()).toList(),
+              environmentVariables!.map((value) => value.toJson()).toList(),
         if (files != null)
-          'files': files.map((value) => value.toJson()).toList(),
+          'files': files!.map((value) => value.toJson()).toList(),
         if (inlineBlobs != null)
-          'inlineBlobs': inlineBlobs.map((value) => value.toJson()).toList(),
-        if (workingDirectory != null) 'workingDirectory': workingDirectory,
+          'inlineBlobs': inlineBlobs!.map((value) => value.toJson()).toList(),
+        if (workingDirectory != null) 'workingDirectory': workingDirectory!,
       };
 }
 
 /// An environment variable required by this task.
 class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable {
   /// The envvar name.
-  core.String name;
+  core.String? name;
 
   /// The envvar value.
-  core.String value;
+  core.String? value;
 
   GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable();
 
@@ -4422,9 +4374,9 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -4433,12 +4385,12 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs {
   /// A list of expected directories, relative to the execution root.
   ///
   /// All paths MUST be delimited by forward slashes.
-  core.List<core.String> directories;
+  core.List<core.String>? directories;
 
   /// A list of expected files, relative to the execution root.
   ///
   /// All paths MUST be delimited by forward slashes.
-  core.List<core.String> files;
+  core.List<core.String>? files;
 
   /// The destination to which any stderr should be sent.
   ///
@@ -4446,7 +4398,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs {
   /// destination is not defined in this API. As examples, the destination could
   /// be a file referenced in the `files` field in this message, or it could be
   /// a URI that must be written via the ByteStream API.
-  core.String stderrDestination;
+  core.String? stderrDestination;
 
   /// The destination to which any stdout should be sent.
   ///
@@ -4454,7 +4406,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs {
   /// destination is not defined in this API. As examples, the destination could
   /// be a file referenced in the `files` field in this message, or it could be
   /// a URI that must be written via the ByteStream API.
-  core.String stdoutDestination;
+  core.String? stdoutDestination;
 
   GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs();
 
@@ -4478,11 +4430,11 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (directories != null) 'directories': directories,
-        if (files != null) 'files': files,
-        if (stderrDestination != null) 'stderrDestination': stderrDestination,
-        if (stdoutDestination != null) 'stdoutDestination': stdoutDestination,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (directories != null) 'directories': directories!,
+        if (files != null) 'files': files!,
+        if (stderrDestination != null) 'stderrDestination': stderrDestination!,
+        if (stdoutDestination != null) 'stdoutDestination': stdoutDestination!,
       };
 }
 
@@ -4492,14 +4444,14 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts {
   /// required to download inputs or upload outputs.
   ///
   /// That is, the worker will terminate the task if it runs longer than this.
-  core.String execution;
+  core.String? execution;
 
   /// This specifies the maximum amount of time the task can be idle - that is,
   /// go without generating some output in either stdout or stderr.
   ///
   /// If the process is silent for more than the specified time, the worker will
   /// terminate the task.
-  core.String idle;
+  core.String? idle;
 
   /// If the execution or IO timeouts are exceeded, the worker will try to
   /// gracefully terminate the task and return any existing logs.
@@ -4508,7 +4460,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts {
   /// This timeout specifies how long to wait for a terminated task to shut down
   /// gracefully (e.g. via SIGTERM) before we bring down the hammer (e.g.
   /// SIGKILL on *nix, CTRL_BREAK_EVENT on Windows).
-  core.String shutdown;
+  core.String? shutdown;
 
   GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts();
 
@@ -4525,10 +4477,10 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (execution != null) 'execution': execution,
-        if (idle != null) 'idle': idle,
-        if (shutdown != null) 'shutdown': shutdown,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (execution != null) 'execution': execution!,
+        if (idle != null) 'idle': idle!,
+        if (shutdown != null) 'shutdown': shutdown!,
       };
 }
 
@@ -4544,7 +4496,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts {
 class GoogleDevtoolsRemoteworkersV1test2Digest {
   /// A string-encoded hash (eg "1a2b3c", not the byte array \[0x1a, 0x2b,
   /// 0x3c\]) using an implementation-defined hash algorithm (eg SHA-256).
-  core.String hash;
+  core.String? hash;
 
   /// The size of the contents.
   ///
@@ -4552,7 +4504,7 @@ class GoogleDevtoolsRemoteworkersV1test2Digest {
   /// any given hash will have exactly one canonical size), it's useful in
   /// almost all cases when one might want to send or retrieve blobs of content
   /// and is included here for this reason.
-  core.String sizeBytes;
+  core.String? sizeBytes;
 
   GoogleDevtoolsRemoteworkersV1test2Digest();
 
@@ -4565,9 +4517,9 @@ class GoogleDevtoolsRemoteworkersV1test2Digest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hash != null) 'hash': hash,
-        if (sizeBytes != null) 'sizeBytes': sizeBytes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hash != null) 'hash': hash!,
+        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
       };
 }
 
@@ -4576,10 +4528,10 @@ class GoogleDevtoolsRemoteworkersV1test2Digest {
 /// Similar to the equivalent message in the Remote Execution API.
 class GoogleDevtoolsRemoteworkersV1test2Directory {
   /// Any subdirectories
-  core.List<GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata> directories;
+  core.List<GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata>? directories;
 
   /// The files in this directory
-  core.List<GoogleDevtoolsRemoteworkersV1test2FileMetadata> files;
+  core.List<GoogleDevtoolsRemoteworkersV1test2FileMetadata>? files;
 
   GoogleDevtoolsRemoteworkersV1test2Directory();
 
@@ -4600,11 +4552,11 @@ class GoogleDevtoolsRemoteworkersV1test2Directory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (directories != null)
-          'directories': directories.map((value) => value.toJson()).toList(),
+          'directories': directories!.map((value) => value.toJson()).toList(),
         if (files != null)
-          'files': files.map((value) => value.toJson()).toList(),
+          'files': files!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4614,10 +4566,10 @@ class GoogleDevtoolsRemoteworkersV1test2Directory {
 class GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata {
   /// A pointer to the contents of the directory, in the form of a marshalled
   /// Directory message.
-  GoogleDevtoolsRemoteworkersV1test2Digest digest;
+  GoogleDevtoolsRemoteworkersV1test2Digest? digest;
 
   /// The path of the directory, as in FileMetadata.path.
-  core.String path;
+  core.String? path;
 
   GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata();
 
@@ -4631,9 +4583,9 @@ class GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (digest != null) 'digest': digest.toJson(),
-        if (path != null) 'path': path,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (digest != null) 'digest': digest!.toJson(),
+        if (path != null) 'path': path!,
       };
 }
 
@@ -4643,8 +4595,8 @@ class GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata {
 class GoogleDevtoolsRemoteworkersV1test2FileMetadata {
   /// If the file is small enough, its contents may also or alternatively be
   /// listed here.
-  core.String contents;
-  core.List<core.int> get contentsAsBytes => convert.base64.decode(contents);
+  core.String? contents;
+  core.List<core.int> get contentsAsBytes => convert.base64.decode(contents!);
 
   set contentsAsBytes(core.List<core.int> _bytes) {
     contents =
@@ -4655,10 +4607,10 @@ class GoogleDevtoolsRemoteworkersV1test2FileMetadata {
   ///
   /// The method by which a client retrieves the contents from a CAS system is
   /// not defined here.
-  GoogleDevtoolsRemoteworkersV1test2Digest digest;
+  GoogleDevtoolsRemoteworkersV1test2Digest? digest;
 
   /// Properties of the file
-  core.bool isExecutable;
+  core.bool? isExecutable;
 
   /// The path of this file.
   ///
@@ -4667,7 +4619,7 @@ class GoogleDevtoolsRemoteworkersV1test2FileMetadata {
   /// CommandTask.outputs.files. If this message is part of a Directory message,
   /// then the path is relative to the root of that directory. All paths MUST be
   /// delimited by forward slashes.
-  core.String path;
+  core.String? path;
 
   GoogleDevtoolsRemoteworkersV1test2FileMetadata();
 
@@ -4687,11 +4639,11 @@ class GoogleDevtoolsRemoteworkersV1test2FileMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contents != null) 'contents': contents,
-        if (digest != null) 'digest': digest.toJson(),
-        if (isExecutable != null) 'isExecutable': isExecutable,
-        if (path != null) 'path': path,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contents != null) 'contents': contents!,
+        if (digest != null) 'digest': digest!.toJson(),
+        if (isExecutable != null) 'isExecutable': isExecutable!,
+        if (path != null) 'path': path!,
       };
 }
 
@@ -4702,10 +4654,10 @@ class GoogleLongrunningOperation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  GoogleRpcStatus error;
+  GoogleRpcStatus? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -4716,14 +4668,14 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -4736,7 +4688,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   GoogleLongrunningOperation();
 
@@ -4771,12 +4723,12 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -4789,7 +4741,7 @@ class GoogleLongrunningOperation {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -4797,13 +4749,13 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   GoogleRpcStatus();
 
@@ -4827,9 +4779,9 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }

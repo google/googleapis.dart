@@ -106,17 +106,14 @@ class PagespeedapiResource {
   /// this method will complete with the same error.
   async.Future<PagespeedApiPagespeedResponseV5> runpagespeed(
     core.String url, {
-    core.String captchaToken,
-    core.List<core.String> category,
-    core.String locale,
-    core.String strategy,
-    core.String utmCampaign,
-    core.String utmSource,
-    core.String $fields,
+    core.String? captchaToken,
+    core.List<core.String>? category,
+    core.String? locale,
+    core.String? strategy,
+    core.String? utmCampaign,
+    core.String? utmSource,
+    core.String? $fields,
   }) async {
-    if (url == null) {
-      throw core.ArgumentError('Parameter url is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'url': [url],
       if (captchaToken != null) 'captchaToken': [captchaToken],
@@ -144,13 +141,13 @@ class PagespeedapiResource {
 /// given category.
 class AuditRefs {
   /// The category group that the audit belongs to (optional).
-  core.String group;
+  core.String? group;
 
   /// The audit ref id.
-  core.String id;
+  core.String? id;
 
   /// The weight this audit's score has on the overall category score.
-  core.double weight;
+  core.double? weight;
 
   AuditRefs();
 
@@ -166,10 +163,10 @@ class AuditRefs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (group != null) 'group': group,
-        if (id != null) 'id': id,
-        if (weight != null) 'weight': weight,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (group != null) 'group': group!,
+        if (id != null) 'id': id!,
+        if (weight != null) 'weight': weight!,
       };
 }
 
@@ -179,13 +176,13 @@ class AuditRefs {
 /// Each bucket's range is bounded by min <= x < max, In millisecond.
 class Bucket {
   /// Upper bound for a bucket's range.
-  core.int max;
+  core.int? max;
 
   /// Lower bound for a bucket's range.
-  core.int min;
+  core.int? min;
 
   /// The proportion of data in this bucket.
-  core.double proportion;
+  core.double? proportion;
 
   Bucket();
 
@@ -201,30 +198,30 @@ class Bucket {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (max != null) 'max': max,
-        if (min != null) 'min': min,
-        if (proportion != null) 'proportion': proportion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (max != null) 'max': max!,
+        if (min != null) 'min': min!,
+        if (proportion != null) 'proportion': proportion!,
       };
 }
 
 /// The categories in a Lighthouse run.
 class Categories {
   /// The accessibility category, containing all accessibility related audits.
-  LighthouseCategoryV5 accessibility;
+  LighthouseCategoryV5? accessibility;
 
   /// The best practices category, containing all best practices related audits.
-  LighthouseCategoryV5 bestPractices;
+  LighthouseCategoryV5? bestPractices;
 
   /// The performance category, containing all performance related audits.
-  LighthouseCategoryV5 performance;
+  LighthouseCategoryV5? performance;
 
   /// The Progressive-Web-App (PWA) category, containing all pwa related audits.
-  LighthouseCategoryV5 pwa;
+  LighthouseCategoryV5? pwa;
 
   /// The Search-Engine-Optimization (SEO) category, containing all seo related
   /// audits.
-  LighthouseCategoryV5 seo;
+  LighthouseCategoryV5? seo;
 
   Categories();
 
@@ -251,22 +248,22 @@ class Categories {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessibility != null) 'accessibility': accessibility.toJson(),
-        if (bestPractices != null) 'best-practices': bestPractices.toJson(),
-        if (performance != null) 'performance': performance.toJson(),
-        if (pwa != null) 'pwa': pwa.toJson(),
-        if (seo != null) 'seo': seo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessibility != null) 'accessibility': accessibility!.toJson(),
+        if (bestPractices != null) 'best-practices': bestPractices!.toJson(),
+        if (performance != null) 'performance': performance!.toJson(),
+        if (pwa != null) 'pwa': pwa!.toJson(),
+        if (seo != null) 'seo': seo!.toJson(),
       };
 }
 
 /// Message containing a category
 class CategoryGroupV5 {
   /// The description of what the category is grouping
-  core.String description;
+  core.String? description;
 
   /// The human readable title of the group
-  core.String title;
+  core.String? title;
 
   CategoryGroupV5();
 
@@ -279,9 +276,9 @@ class CategoryGroupV5 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -289,25 +286,25 @@ class CategoryGroupV5 {
 class ConfigSettings {
   /// How Lighthouse was run, e.g. from the Chrome extension or from the npm
   /// module.
-  core.String channel;
+  core.String? channel;
 
   /// The form factor the emulation should use.
   ///
   /// This field is deprecated, form_factor should be used instead.
-  core.String emulatedFormFactor;
+  core.String? emulatedFormFactor;
 
   /// How Lighthouse should interpret this run in regards to scoring performance
   /// metrics and skipping mobile-only tests in desktop.
-  core.String formFactor;
+  core.String? formFactor;
 
   /// The locale setting.
-  core.String locale;
+  core.String? locale;
 
   /// List of categories of audits the run should conduct.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object onlyCategories;
+  core.Object? onlyCategories;
 
   ConfigSettings();
 
@@ -329,26 +326,26 @@ class ConfigSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channel != null) 'channel': channel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channel != null) 'channel': channel!,
         if (emulatedFormFactor != null)
-          'emulatedFormFactor': emulatedFormFactor,
-        if (formFactor != null) 'formFactor': formFactor,
-        if (locale != null) 'locale': locale,
-        if (onlyCategories != null) 'onlyCategories': onlyCategories,
+          'emulatedFormFactor': emulatedFormFactor!,
+        if (formFactor != null) 'formFactor': formFactor!,
+        if (locale != null) 'locale': locale!,
+        if (onlyCategories != null) 'onlyCategories': onlyCategories!,
       };
 }
 
 /// Message containing environment configuration for a Lighthouse run.
 class Environment {
   /// The benchmark index number that indicates rough device class.
-  core.double benchmarkIndex;
+  core.double? benchmarkIndex;
 
   /// The user agent string of the version of Chrome used.
-  core.String hostUserAgent;
+  core.String? hostUserAgent;
 
   /// The user agent string that was sent over the network.
-  core.String networkUserAgent;
+  core.String? networkUserAgent;
 
   Environment();
 
@@ -364,10 +361,10 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (benchmarkIndex != null) 'benchmarkIndex': benchmarkIndex,
-        if (hostUserAgent != null) 'hostUserAgent': hostUserAgent,
-        if (networkUserAgent != null) 'networkUserAgent': networkUserAgent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (benchmarkIndex != null) 'benchmarkIndex': benchmarkIndex!,
+        if (hostUserAgent != null) 'hostUserAgent': hostUserAgent!,
+        if (networkUserAgent != null) 'networkUserAgent': networkUserAgent!,
       };
 }
 
@@ -375,7 +372,7 @@ class Environment {
 class I18n {
   /// Internationalized strings that are formatted to the locale in
   /// configSettings.
-  RendererFormattedStrings rendererFormattedStrings;
+  RendererFormattedStrings? rendererFormattedStrings;
 
   I18n();
 
@@ -387,58 +384,58 @@ class I18n {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (rendererFormattedStrings != null)
-          'rendererFormattedStrings': rendererFormattedStrings.toJson(),
+          'rendererFormattedStrings': rendererFormattedStrings!.toJson(),
       };
 }
 
 /// An audit's result object in a Lighthouse result.
 class LighthouseAuditResultV5 {
   /// The description of the audit.
-  core.String description;
+  core.String? description;
 
   /// Freeform details section of the audit.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> details;
+  core.Map<core.String, core.Object>? details;
 
   /// The value that should be displayed on the UI for this audit.
-  core.String displayValue;
+  core.String? displayValue;
 
   /// An error message from a thrown error inside the audit.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   /// An explanation of the errors in the audit.
-  core.String explanation;
+  core.String? explanation;
 
   /// The audit's id.
-  core.String id;
+  core.String? id;
 
   /// A numeric value that has a meaning specific to the audit, e.g. the number
   /// of nodes in the DOM or the timestamp of a specific load event.
   ///
   /// More information can be found in the audit details, if present.
-  core.double numericValue;
+  core.double? numericValue;
 
   /// The score of the audit, can be null.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object score;
+  core.Object? score;
 
   /// The enumerated score display mode.
-  core.String scoreDisplayMode;
+  core.String? scoreDisplayMode;
 
   /// The human readable title.
-  core.String title;
+  core.String? title;
 
   /// Possible warnings that occurred in the audit, can be null.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object warnings;
+  core.Object? warnings;
 
   LighthouseAuditResultV5();
 
@@ -484,34 +481,34 @@ class LighthouseAuditResultV5 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (details != null) 'details': details,
-        if (displayValue != null) 'displayValue': displayValue,
-        if (errorMessage != null) 'errorMessage': errorMessage,
-        if (explanation != null) 'explanation': explanation,
-        if (id != null) 'id': id,
-        if (numericValue != null) 'numericValue': numericValue,
-        if (score != null) 'score': score,
-        if (scoreDisplayMode != null) 'scoreDisplayMode': scoreDisplayMode,
-        if (title != null) 'title': title,
-        if (warnings != null) 'warnings': warnings,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (details != null) 'details': details!,
+        if (displayValue != null) 'displayValue': displayValue!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (explanation != null) 'explanation': explanation!,
+        if (id != null) 'id': id!,
+        if (numericValue != null) 'numericValue': numericValue!,
+        if (score != null) 'score': score!,
+        if (scoreDisplayMode != null) 'scoreDisplayMode': scoreDisplayMode!,
+        if (title != null) 'title': title!,
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
 /// A Lighthouse category.
 class LighthouseCategoryV5 {
   /// An array of references to all the audit members of this category.
-  core.List<AuditRefs> auditRefs;
+  core.List<AuditRefs>? auditRefs;
 
   /// A more detailed description of the category and its importance.
-  core.String description;
+  core.String? description;
 
   /// The string identifier of the category.
-  core.String id;
+  core.String? id;
 
   /// A description for the manual audits in the category.
-  core.String manualDescription;
+  core.String? manualDescription;
 
   /// The overall score of the category, the weighted average of all its audits.
   ///
@@ -519,10 +516,10 @@ class LighthouseCategoryV5 {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object score;
+  core.Object? score;
 
   /// The human-friendly name of the category.
-  core.String title;
+  core.String? title;
 
   LighthouseCategoryV5();
 
@@ -550,48 +547,48 @@ class LighthouseCategoryV5 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditRefs != null)
-          'auditRefs': auditRefs.map((value) => value.toJson()).toList(),
-        if (description != null) 'description': description,
-        if (id != null) 'id': id,
-        if (manualDescription != null) 'manualDescription': manualDescription,
-        if (score != null) 'score': score,
-        if (title != null) 'title': title,
+          'auditRefs': auditRefs!.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
+        if (manualDescription != null) 'manualDescription': manualDescription!,
+        if (score != null) 'score': score!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// The Lighthouse result object.
 class LighthouseResultV5 {
   /// Map of audits in the LHR.
-  core.Map<core.String, LighthouseAuditResultV5> audits;
+  core.Map<core.String, LighthouseAuditResultV5>? audits;
 
   /// Map of categories in the LHR.
-  Categories categories;
+  Categories? categories;
 
   /// Map of category groups in the LHR.
-  core.Map<core.String, CategoryGroupV5> categoryGroups;
+  core.Map<core.String, CategoryGroupV5>? categoryGroups;
 
   /// The configuration settings for this LHR.
-  ConfigSettings configSettings;
+  ConfigSettings? configSettings;
 
   /// Environment settings that were used when making this LHR.
-  Environment environment;
+  Environment? environment;
 
   /// The time that this run was fetched.
-  core.String fetchTime;
+  core.String? fetchTime;
 
   /// The final resolved url that was audited.
-  core.String finalUrl;
+  core.String? finalUrl;
 
   /// The internationalization strings that are required to render the LHR.
-  I18n i18n;
+  I18n? i18n;
 
   /// The lighthouse version that was used to generate this LHR.
-  core.String lighthouseVersion;
+  core.String? lighthouseVersion;
 
   /// The original requested url.
-  core.String requestedUrl;
+  core.String? requestedUrl;
 
   /// List of all run warnings in the LHR.
   ///
@@ -599,26 +596,28 @@ class LighthouseResultV5 {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> runWarnings;
+  core.List<core.Object>? runWarnings;
 
   /// A top-level error message that, if present, indicates a serious enough
   /// problem that this Lighthouse result may need to be discarded.
-  RuntimeError runtimeError;
+  RuntimeError? runtimeError;
 
   /// The Stack Pack advice strings.
-  core.List<StackPack> stackPacks;
+  core.List<StackPack>? stackPacks;
 
   /// Timing information for this LHR.
-  Timing timing;
+  Timing? timing;
 
   /// The user agent that was used to run this LHR.
-  core.String userAgent;
+  core.String? userAgent;
 
   LighthouseResultV5();
 
   LighthouseResultV5.fromJson(core.Map _json) {
     if (_json.containsKey('audits')) {
-      audits = (_json['audits'] as core.Map).cast<core.String, core.Map>().map(
+      audits = (_json['audits'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               LighthouseAuditResultV5.fromJson(
@@ -632,7 +631,7 @@ class LighthouseResultV5 {
     }
     if (_json.containsKey('categoryGroups')) {
       categoryGroups = (_json['categoryGroups'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -689,46 +688,46 @@ class LighthouseResultV5 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (audits != null)
           'audits':
-              audits.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (categories != null) 'categories': categories.toJson(),
+              audits!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (categories != null) 'categories': categories!.toJson(),
         if (categoryGroups != null)
-          'categoryGroups': categoryGroups
+          'categoryGroups': categoryGroups!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (configSettings != null) 'configSettings': configSettings.toJson(),
-        if (environment != null) 'environment': environment.toJson(),
-        if (fetchTime != null) 'fetchTime': fetchTime,
-        if (finalUrl != null) 'finalUrl': finalUrl,
-        if (i18n != null) 'i18n': i18n.toJson(),
-        if (lighthouseVersion != null) 'lighthouseVersion': lighthouseVersion,
-        if (requestedUrl != null) 'requestedUrl': requestedUrl,
-        if (runWarnings != null) 'runWarnings': runWarnings,
-        if (runtimeError != null) 'runtimeError': runtimeError.toJson(),
+        if (configSettings != null) 'configSettings': configSettings!.toJson(),
+        if (environment != null) 'environment': environment!.toJson(),
+        if (fetchTime != null) 'fetchTime': fetchTime!,
+        if (finalUrl != null) 'finalUrl': finalUrl!,
+        if (i18n != null) 'i18n': i18n!.toJson(),
+        if (lighthouseVersion != null) 'lighthouseVersion': lighthouseVersion!,
+        if (requestedUrl != null) 'requestedUrl': requestedUrl!,
+        if (runWarnings != null) 'runWarnings': runWarnings!,
+        if (runtimeError != null) 'runtimeError': runtimeError!.toJson(),
         if (stackPacks != null)
-          'stackPacks': stackPacks.map((value) => value.toJson()).toList(),
-        if (timing != null) 'timing': timing.toJson(),
-        if (userAgent != null) 'userAgent': userAgent,
+          'stackPacks': stackPacks!.map((value) => value.toJson()).toList(),
+        if (timing != null) 'timing': timing!.toJson(),
+        if (userAgent != null) 'userAgent': userAgent!,
       };
 }
 
 /// The CrUX loading experience object that contains CrUX data breakdowns.
 class PagespeedApiLoadingExperienceV5 {
   /// The url, pattern or origin which the metrics are on.
-  core.String id;
+  core.String? id;
 
   /// The requested URL, which may differ from the resolved "id".
-  core.String initialUrl;
+  core.String? initialUrl;
 
   /// The map of .
-  core.Map<core.String, UserPageLoadMetricV5> metrics;
+  core.Map<core.String, UserPageLoadMetricV5>? metrics;
 
   /// True if the result is an origin fallback from a page, false otherwise.
-  core.bool originFallback;
+  core.bool? originFallback;
 
   /// The human readable speed "category" of the id.
-  core.String overallCategory;
+  core.String? overallCategory;
 
   PagespeedApiLoadingExperienceV5();
 
@@ -740,14 +739,15 @@ class PagespeedApiLoadingExperienceV5 {
       initialUrl = _json['initial_url'] as core.String;
     }
     if (_json.containsKey('metrics')) {
-      metrics =
-          (_json['metrics'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  UserPageLoadMetricV5.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      metrics = (_json['metrics'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              UserPageLoadMetricV5.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('origin_fallback')) {
       originFallback = _json['origin_fallback'] as core.bool;
@@ -757,43 +757,43 @@ class PagespeedApiLoadingExperienceV5 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (initialUrl != null) 'initial_url': initialUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (initialUrl != null) 'initial_url': initialUrl!,
         if (metrics != null)
           'metrics':
-              metrics.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (originFallback != null) 'origin_fallback': originFallback,
-        if (overallCategory != null) 'overall_category': overallCategory,
+              metrics!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (originFallback != null) 'origin_fallback': originFallback!,
+        if (overallCategory != null) 'overall_category': overallCategory!,
       };
 }
 
 /// The Pagespeed API response object.
 class PagespeedApiPagespeedResponseV5 {
   /// The UTC timestamp of this analysis.
-  core.String analysisUTCTimestamp;
+  core.String? analysisUTCTimestamp;
 
   /// The captcha verify result
-  core.String captchaResult;
+  core.String? captchaResult;
 
   /// Canonicalized and final URL for the document, after following page
   /// redirects (if any).
-  core.String id;
+  core.String? id;
 
   /// Kind of result.
-  core.String kind;
+  core.String? kind;
 
   /// Lighthouse response for the audit url as an object.
-  LighthouseResultV5 lighthouseResult;
+  LighthouseResultV5? lighthouseResult;
 
   /// Metrics of end users' page loading experience.
-  PagespeedApiLoadingExperienceV5 loadingExperience;
+  PagespeedApiLoadingExperienceV5? loadingExperience;
 
   /// Metrics of the aggregated page loading experience of the origin
-  PagespeedApiLoadingExperienceV5 originLoadingExperience;
+  PagespeedApiLoadingExperienceV5? originLoadingExperience;
 
   /// The version of PageSpeed used to generate these results.
-  PagespeedVersion version;
+  PagespeedVersion? version;
 
   PagespeedApiPagespeedResponseV5();
 
@@ -829,29 +829,29 @@ class PagespeedApiPagespeedResponseV5 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (analysisUTCTimestamp != null)
-          'analysisUTCTimestamp': analysisUTCTimestamp,
-        if (captchaResult != null) 'captchaResult': captchaResult,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+          'analysisUTCTimestamp': analysisUTCTimestamp!,
+        if (captchaResult != null) 'captchaResult': captchaResult!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (lighthouseResult != null)
-          'lighthouseResult': lighthouseResult.toJson(),
+          'lighthouseResult': lighthouseResult!.toJson(),
         if (loadingExperience != null)
-          'loadingExperience': loadingExperience.toJson(),
+          'loadingExperience': loadingExperience!.toJson(),
         if (originLoadingExperience != null)
-          'originLoadingExperience': originLoadingExperience.toJson(),
-        if (version != null) 'version': version.toJson(),
+          'originLoadingExperience': originLoadingExperience!.toJson(),
+        if (version != null) 'version': version!.toJson(),
       };
 }
 
 /// The Pagespeed Version object.
 class PagespeedVersion {
   /// The major version number of PageSpeed used to generate these results.
-  core.String major;
+  core.String? major;
 
   /// The minor version number of PageSpeed used to generate these results.
-  core.String minor;
+  core.String? minor;
 
   PagespeedVersion();
 
@@ -864,64 +864,64 @@ class PagespeedVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (major != null) 'major': major,
-        if (minor != null) 'minor': minor,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (major != null) 'major': major!,
+        if (minor != null) 'minor': minor!,
       };
 }
 
 /// Message holding the formatted strings used in the renderer.
 class RendererFormattedStrings {
   /// The tooltip text on an expandable chevron icon.
-  core.String auditGroupExpandTooltip;
+  core.String? auditGroupExpandTooltip;
 
   /// The label for the initial request in a critical request chain.
-  core.String crcInitialNavigation;
+  core.String? crcInitialNavigation;
 
   /// The label for values shown in the summary of critical request chains.
-  core.String crcLongestDurationLabel;
+  core.String? crcLongestDurationLabel;
 
   /// The label shown next to an audit or metric that has had an error.
-  core.String errorLabel;
+  core.String? errorLabel;
 
   /// The error string shown next to an erroring audit.
-  core.String errorMissingAuditInfo;
+  core.String? errorMissingAuditInfo;
 
   /// The title of the lab data performance category.
-  core.String labDataTitle;
+  core.String? labDataTitle;
 
   /// The disclaimer shown under performance explaning that the network can
   /// vary.
-  core.String lsPerformanceCategoryDescription;
+  core.String? lsPerformanceCategoryDescription;
 
   /// The heading shown above a list of audits that were not computerd in the
   /// run.
-  core.String manualAuditsGroupTitle;
+  core.String? manualAuditsGroupTitle;
 
   /// The heading shown above a list of audits that do not apply to a page.
-  core.String notApplicableAuditsGroupTitle;
+  core.String? notApplicableAuditsGroupTitle;
 
   /// The heading for the estimated page load savings opportunity of an audit.
-  core.String opportunityResourceColumnLabel;
+  core.String? opportunityResourceColumnLabel;
 
   /// The heading for the estimated page load savings of opportunity audits.
-  core.String opportunitySavingsColumnLabel;
+  core.String? opportunitySavingsColumnLabel;
 
   /// The heading that is shown above a list of audits that are passing.
-  core.String passedAuditsGroupTitle;
+  core.String? passedAuditsGroupTitle;
 
   /// The label that explains the score gauges scale (0-49, 50-89, 90-100).
-  core.String scorescaleLabel;
+  core.String? scorescaleLabel;
 
   /// The label shown preceding important warnings that may have invalidated an
   /// entire report.
-  core.String toplevelWarningsMessage;
+  core.String? toplevelWarningsMessage;
 
   /// The disclaimer shown below a performance metric value.
-  core.String varianceDisclaimer;
+  core.String? varianceDisclaimer;
 
   /// The label shown above a bulleted list of warnings.
-  core.String warningHeader;
+  core.String? warningHeader;
 
   RendererFormattedStrings();
 
@@ -980,45 +980,45 @@ class RendererFormattedStrings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditGroupExpandTooltip != null)
-          'auditGroupExpandTooltip': auditGroupExpandTooltip,
+          'auditGroupExpandTooltip': auditGroupExpandTooltip!,
         if (crcInitialNavigation != null)
-          'crcInitialNavigation': crcInitialNavigation,
+          'crcInitialNavigation': crcInitialNavigation!,
         if (crcLongestDurationLabel != null)
-          'crcLongestDurationLabel': crcLongestDurationLabel,
-        if (errorLabel != null) 'errorLabel': errorLabel,
+          'crcLongestDurationLabel': crcLongestDurationLabel!,
+        if (errorLabel != null) 'errorLabel': errorLabel!,
         if (errorMissingAuditInfo != null)
-          'errorMissingAuditInfo': errorMissingAuditInfo,
-        if (labDataTitle != null) 'labDataTitle': labDataTitle,
+          'errorMissingAuditInfo': errorMissingAuditInfo!,
+        if (labDataTitle != null) 'labDataTitle': labDataTitle!,
         if (lsPerformanceCategoryDescription != null)
-          'lsPerformanceCategoryDescription': lsPerformanceCategoryDescription,
+          'lsPerformanceCategoryDescription': lsPerformanceCategoryDescription!,
         if (manualAuditsGroupTitle != null)
-          'manualAuditsGroupTitle': manualAuditsGroupTitle,
+          'manualAuditsGroupTitle': manualAuditsGroupTitle!,
         if (notApplicableAuditsGroupTitle != null)
-          'notApplicableAuditsGroupTitle': notApplicableAuditsGroupTitle,
+          'notApplicableAuditsGroupTitle': notApplicableAuditsGroupTitle!,
         if (opportunityResourceColumnLabel != null)
-          'opportunityResourceColumnLabel': opportunityResourceColumnLabel,
+          'opportunityResourceColumnLabel': opportunityResourceColumnLabel!,
         if (opportunitySavingsColumnLabel != null)
-          'opportunitySavingsColumnLabel': opportunitySavingsColumnLabel,
+          'opportunitySavingsColumnLabel': opportunitySavingsColumnLabel!,
         if (passedAuditsGroupTitle != null)
-          'passedAuditsGroupTitle': passedAuditsGroupTitle,
-        if (scorescaleLabel != null) 'scorescaleLabel': scorescaleLabel,
+          'passedAuditsGroupTitle': passedAuditsGroupTitle!,
+        if (scorescaleLabel != null) 'scorescaleLabel': scorescaleLabel!,
         if (toplevelWarningsMessage != null)
-          'toplevelWarningsMessage': toplevelWarningsMessage,
+          'toplevelWarningsMessage': toplevelWarningsMessage!,
         if (varianceDisclaimer != null)
-          'varianceDisclaimer': varianceDisclaimer,
-        if (warningHeader != null) 'warningHeader': warningHeader,
+          'varianceDisclaimer': varianceDisclaimer!,
+        if (warningHeader != null) 'warningHeader': warningHeader!,
       };
 }
 
 /// Message containing a runtime error config.
 class RuntimeError {
   /// The enumerated Lighthouse Error code.
-  core.String code;
+  core.String? code;
 
   /// A human readable message explaining the error code.
-  core.String message;
+  core.String? message;
 
   RuntimeError();
 
@@ -1031,25 +1031,25 @@ class RuntimeError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (message != null) 'message': message!,
       };
 }
 
 /// Message containing Stack Pack information.
 class StackPack {
   /// The stack pack advice strings.
-  core.Map<core.String, core.String> descriptions;
+  core.Map<core.String, core.String>? descriptions;
 
   /// The stack pack icon data uri.
-  core.String iconDataURL;
+  core.String? iconDataURL;
 
   /// The stack pack id.
-  core.String id;
+  core.String? id;
 
   /// The stack pack title.
-  core.String title;
+  core.String? title;
 
   StackPack();
 
@@ -1075,18 +1075,18 @@ class StackPack {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (descriptions != null) 'descriptions': descriptions,
-        if (iconDataURL != null) 'iconDataURL': iconDataURL,
-        if (id != null) 'id': id,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (descriptions != null) 'descriptions': descriptions!,
+        if (iconDataURL != null) 'iconDataURL': iconDataURL!,
+        if (id != null) 'id': id!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// Message containing the performance timing data for the Lighthouse run.
 class Timing {
   /// The total duration of Lighthouse's run.
-  core.double total;
+  core.double? total;
 
   Timing();
 
@@ -1096,34 +1096,34 @@ class Timing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (total != null) 'total': total,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (total != null) 'total': total!,
       };
 }
 
 /// A CrUX metric object for a single metric and form factor.
 class UserPageLoadMetricV5 {
   /// The category of the specific time metric.
-  core.String category;
+  core.String? category;
 
   /// Metric distributions.
   ///
   /// Proportions should sum up to 1.
-  core.List<Bucket> distributions;
+  core.List<Bucket>? distributions;
 
   /// Identifies the form factor of the metric being collected.
-  core.String formFactor;
+  core.String? formFactor;
 
   /// The median number of the metric, in millisecond.
-  core.int median;
+  core.int? median;
 
   /// Identifies the type of the metric.
-  core.String metricId;
+  core.String? metricId;
 
   /// We use this field to store certain percentile value for this metric.
   ///
   /// For v4, this field contains pc50. For v5, this field contains pc90.
-  core.int percentile;
+  core.int? percentile;
 
   UserPageLoadMetricV5();
 
@@ -1151,14 +1151,14 @@ class UserPageLoadMetricV5 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (category != null) 'category': category,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (category != null) 'category': category!,
         if (distributions != null)
           'distributions':
-              distributions.map((value) => value.toJson()).toList(),
-        if (formFactor != null) 'formFactor': formFactor,
-        if (median != null) 'median': median,
-        if (metricId != null) 'metricId': metricId,
-        if (percentile != null) 'percentile': percentile,
+              distributions!.map((value) => value.toJson()).toList(),
+        if (formFactor != null) 'formFactor': formFactor!,
+        if (median != null) 'median': median!,
+        if (metricId != null) 'metricId': metricId!,
+        if (percentile != null) 'percentile': percentile!,
       };
 }

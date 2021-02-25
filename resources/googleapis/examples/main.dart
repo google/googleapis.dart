@@ -19,8 +19,9 @@ Future<void> main() async {
     final storage = StorageApi(httpClient);
 
     final buckets = await storage.buckets.list('dart-on-cloud');
-    print('Received ${buckets.items.length} bucket names:');
-    for (var file in buckets.items) {
+    final items = buckets.items!;
+    print('Received ${items.length} bucket names:');
+    for (var file in items) {
       print(file.name);
     }
   } finally {

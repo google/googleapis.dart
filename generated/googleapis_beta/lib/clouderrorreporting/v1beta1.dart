@@ -93,11 +93,8 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<DeleteEventsResponse> deleteEvents(
     core.String projectName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectName == null) {
-      throw core.ArgumentError('Parameter projectName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -174,18 +171,15 @@ class ProjectsEventsResource {
   /// this method will complete with the same error.
   async.Future<ListEventsResponse> list(
     core.String projectName, {
-    core.String groupId,
-    core.int pageSize,
-    core.String pageToken,
-    core.String serviceFilter_resourceType,
-    core.String serviceFilter_service,
-    core.String serviceFilter_version,
-    core.String timeRange_period,
-    core.String $fields,
+    core.String? groupId,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? serviceFilter_resourceType,
+    core.String? serviceFilter_service,
+    core.String? serviceFilter_version,
+    core.String? timeRange_period,
+    core.String? $fields,
   }) async {
-    if (projectName == null) {
-      throw core.ArgumentError('Parameter projectName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (groupId != null) 'groupId': [groupId],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -249,13 +243,9 @@ class ProjectsEventsResource {
   async.Future<ReportErrorEventResponse> report(
     ReportedErrorEvent request,
     core.String projectName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectName == null) {
-      throw core.ArgumentError('Parameter projectName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -370,22 +360,19 @@ class ProjectsGroupStatsResource {
   /// this method will complete with the same error.
   async.Future<ListGroupStatsResponse> list(
     core.String projectName, {
-    core.String alignment,
-    core.String alignmentTime,
-    core.List<core.String> groupId,
-    core.String order,
-    core.int pageSize,
-    core.String pageToken,
-    core.String serviceFilter_resourceType,
-    core.String serviceFilter_service,
-    core.String serviceFilter_version,
-    core.String timeRange_period,
-    core.String timedCountDuration,
-    core.String $fields,
+    core.String? alignment,
+    core.String? alignmentTime,
+    core.List<core.String>? groupId,
+    core.String? order,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? serviceFilter_resourceType,
+    core.String? serviceFilter_service,
+    core.String? serviceFilter_version,
+    core.String? timeRange_period,
+    core.String? timedCountDuration,
+    core.String? $fields,
   }) async {
-    if (projectName == null) {
-      throw core.ArgumentError('Parameter projectName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (alignment != null) 'alignment': [alignment],
       if (alignmentTime != null) 'alignmentTime': [alignmentTime],
@@ -447,11 +434,8 @@ class ProjectsGroupsResource {
   /// this method will complete with the same error.
   async.Future<ErrorGroup> get(
     core.String groupName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (groupName == null) {
-      throw core.ArgumentError('Parameter groupName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -493,13 +477,9 @@ class ProjectsGroupsResource {
   async.Future<ErrorGroup> update(
     ErrorGroup request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -525,7 +505,7 @@ class DeleteEventsResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A description of the context in which an error occurred.
@@ -535,18 +515,18 @@ class DeleteEventsResponse {
 /// Engine logs.
 class ErrorContext {
   /// The HTTP request which was processed when the error was triggered.
-  HttpRequestContext httpRequest;
+  HttpRequestContext? httpRequest;
 
   /// The location in the source code where the decision was made to report the
   /// error, usually the place where it was logged.
   ///
   /// For a logged exception this would be the source line where the exception
   /// is logged, usually close to the place where it was caught.
-  SourceLocation reportLocation;
+  SourceLocation? reportLocation;
 
   /// Source code that was used to build the executable which has caused the
   /// given error message.
-  core.List<SourceReference> sourceReferences;
+  core.List<SourceReference>? sourceReferences;
 
   /// The user who caused or was affected by the crash.
   ///
@@ -556,7 +536,7 @@ class ErrorContext {
   /// Reporting system will use other data, such as remote IP address, to
   /// distinguish affected users. See `affected_users_count` in
   /// `ErrorGroupStats`.
-  core.String user;
+  core.String? user;
 
   ErrorContext();
 
@@ -580,32 +560,32 @@ class ErrorContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (httpRequest != null) 'httpRequest': httpRequest.toJson(),
-        if (reportLocation != null) 'reportLocation': reportLocation.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (httpRequest != null) 'httpRequest': httpRequest!.toJson(),
+        if (reportLocation != null) 'reportLocation': reportLocation!.toJson(),
         if (sourceReferences != null)
           'sourceReferences':
-              sourceReferences.map((value) => value.toJson()).toList(),
-        if (user != null) 'user': user,
+              sourceReferences!.map((value) => value.toJson()).toList(),
+        if (user != null) 'user': user!,
       };
 }
 
 /// An error event which is returned by the Error Reporting system.
 class ErrorEvent {
   /// Data about the context in which the error occurred.
-  ErrorContext context;
+  ErrorContext? context;
 
   /// Time when the event occurred as provided in the error report.
   ///
   /// If the report did not contain a timestamp, the time the error was received
   /// by the Error Reporting system is used.
-  core.String eventTime;
+  core.String? eventTime;
 
   /// The stack trace that was reported or logged by the service.
-  core.String message;
+  core.String? message;
 
   /// The `ServiceContext` for which this error was reported.
-  ServiceContext serviceContext;
+  ServiceContext? serviceContext;
 
   ErrorEvent();
 
@@ -626,11 +606,11 @@ class ErrorEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (context != null) 'context': context.toJson(),
-        if (eventTime != null) 'eventTime': eventTime,
-        if (message != null) 'message': message,
-        if (serviceContext != null) 'serviceContext': serviceContext.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (context != null) 'context': context!.toJson(),
+        if (eventTime != null) 'eventTime': eventTime!,
+        if (message != null) 'message': message!,
+        if (serviceContext != null) 'serviceContext': serviceContext!.toJson(),
       };
 }
 
@@ -640,12 +620,12 @@ class ErrorGroup {
   ///
   /// If the same kind of error occurs in different service contexts, it will
   /// receive the same group ID.
-  core.String groupId;
+  core.String? groupId;
 
   /// The group resource name.
   ///
   /// Example: projects/my-project-123/groups/CNSgkpnppqKCUw
-  core.String name;
+  core.String? name;
 
   /// Error group's resolution status.
   ///
@@ -661,10 +641,10 @@ class ErrorGroup {
   /// are not expected to occur.
   /// - "MUTED" : The error group is muted and excluded by default on group
   /// stats requests.
-  core.String resolutionStatus;
+  core.String? resolutionStatus;
 
   /// Associated tracking issues.
-  core.List<TrackingIssue> trackingIssues;
+  core.List<TrackingIssue>? trackingIssues;
 
   ErrorGroup();
 
@@ -686,13 +666,13 @@ class ErrorGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (groupId != null) 'groupId': groupId,
-        if (name != null) 'name': name,
-        if (resolutionStatus != null) 'resolutionStatus': resolutionStatus,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (groupId != null) 'groupId': groupId!,
+        if (name != null) 'name': name!,
+        if (resolutionStatus != null) 'resolutionStatus': resolutionStatus!,
         if (trackingIssues != null)
           'trackingIssues':
-              trackingIssues.map((value) => value.toJson()).toList(),
+              trackingIssues!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -704,7 +684,7 @@ class ErrorGroupStats {
   ///
   /// This list can be truncated if multiple services are affected. Refer to
   /// `num_affected_services` for the total count.
-  core.List<ServiceContext> affectedServices;
+  core.List<ServiceContext>? affectedServices;
 
   /// Approximate number of affected users in the given group that match the
   /// filter criteria.
@@ -717,28 +697,28 @@ class ErrorGroupStats {
   /// request context that was provided in the error report. If more users are
   /// implicitly affected, such as due to a crash of the whole service, this is
   /// not reflected here.
-  core.String affectedUsersCount;
+  core.String? affectedUsersCount;
 
   /// Approximate total number of events in the given group that match the
   /// filter criteria.
-  core.String count;
+  core.String? count;
 
   /// Approximate first occurrence that was ever seen for this group and which
   /// matches the given filter criteria, ignoring the time_range that was
   /// specified in the request.
-  core.String firstSeenTime;
+  core.String? firstSeenTime;
 
   /// Group data that is independent of the filter criteria.
-  ErrorGroup group;
+  ErrorGroup? group;
 
   /// Approximate last occurrence that was ever seen for this group and which
   /// matches the given filter criteria, ignoring the time_range that was
   /// specified in the request.
-  core.String lastSeenTime;
+  core.String? lastSeenTime;
 
   /// The total number of services with a non-zero error count for the given
   /// filter criteria.
-  core.int numAffectedServices;
+  core.int? numAffectedServices;
 
   /// An arbitrary event that is chosen as representative for the whole group.
   ///
@@ -746,14 +726,14 @@ class ErrorGroupStats {
   /// whole group. Events in the group are usually sufficiently similar to each
   /// other such that showing an arbitrary representative provides insight into
   /// the characteristics of the group as a whole.
-  ErrorEvent representative;
+  ErrorEvent? representative;
 
   /// Approximate number of occurrences over time.
   ///
   /// Timed counts returned by ListGroups are guaranteed to be: - Inside the
   /// requested time interval - Non-overlapping, and - Ordered by ascending
   /// time.
-  core.List<TimedCount> timedCounts;
+  core.List<TimedCount>? timedCounts;
 
   ErrorGroupStats();
 
@@ -795,21 +775,21 @@ class ErrorGroupStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (affectedServices != null)
           'affectedServices':
-              affectedServices.map((value) => value.toJson()).toList(),
+              affectedServices!.map((value) => value.toJson()).toList(),
         if (affectedUsersCount != null)
-          'affectedUsersCount': affectedUsersCount,
-        if (count != null) 'count': count,
-        if (firstSeenTime != null) 'firstSeenTime': firstSeenTime,
-        if (group != null) 'group': group.toJson(),
-        if (lastSeenTime != null) 'lastSeenTime': lastSeenTime,
+          'affectedUsersCount': affectedUsersCount!,
+        if (count != null) 'count': count!,
+        if (firstSeenTime != null) 'firstSeenTime': firstSeenTime!,
+        if (group != null) 'group': group!.toJson(),
+        if (lastSeenTime != null) 'lastSeenTime': lastSeenTime!,
         if (numAffectedServices != null)
-          'numAffectedServices': numAffectedServices,
-        if (representative != null) 'representative': representative.toJson(),
+          'numAffectedServices': numAffectedServices!,
+        if (representative != null) 'representative': representative!.toJson(),
         if (timedCounts != null)
-          'timedCounts': timedCounts.map((value) => value.toJson()).toList(),
+          'timedCounts': timedCounts!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -820,25 +800,25 @@ class ErrorGroupStats {
 /// Engine logs.
 class HttpRequestContext {
   /// The type of HTTP request, such as `GET`, `POST`, etc.
-  core.String method;
+  core.String? method;
 
   /// The referrer information that is provided with the request.
-  core.String referrer;
+  core.String? referrer;
 
   /// The IP address from which the request originated.
   ///
   /// This can be IPv4, IPv6, or a token which is derived from the IP address,
   /// depending on the data that has been provided in the error report.
-  core.String remoteIp;
+  core.String? remoteIp;
 
   /// The HTTP response status code for the request.
-  core.int responseStatusCode;
+  core.int? responseStatusCode;
 
   /// The URL of the request.
-  core.String url;
+  core.String? url;
 
   /// The user agent information that is provided with the request.
-  core.String userAgent;
+  core.String? userAgent;
 
   HttpRequestContext();
 
@@ -863,31 +843,31 @@ class HttpRequestContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (method != null) 'method': method,
-        if (referrer != null) 'referrer': referrer,
-        if (remoteIp != null) 'remoteIp': remoteIp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (method != null) 'method': method!,
+        if (referrer != null) 'referrer': referrer!,
+        if (remoteIp != null) 'remoteIp': remoteIp!,
         if (responseStatusCode != null)
-          'responseStatusCode': responseStatusCode,
-        if (url != null) 'url': url,
-        if (userAgent != null) 'userAgent': userAgent,
+          'responseStatusCode': responseStatusCode!,
+        if (url != null) 'url': url!,
+        if (userAgent != null) 'userAgent': userAgent!,
       };
 }
 
 /// Contains a set of requested error events.
 class ListEventsResponse {
   /// The error events which match the given request.
-  core.List<ErrorEvent> errorEvents;
+  core.List<ErrorEvent>? errorEvents;
 
   /// If non-empty, more results are available.
   ///
   /// Pass this token, along with the same query parameters as the first
   /// request, to view the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The timestamp specifies the start time to which the request was
   /// restricted.
-  core.String timeRangeBegin;
+  core.String? timeRangeBegin;
 
   ListEventsResponse();
 
@@ -906,24 +886,24 @@ class ListEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorEvents != null)
-          'errorEvents': errorEvents.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (timeRangeBegin != null) 'timeRangeBegin': timeRangeBegin,
+          'errorEvents': errorEvents!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (timeRangeBegin != null) 'timeRangeBegin': timeRangeBegin!,
       };
 }
 
 /// Contains a set of requested error group stats.
 class ListGroupStatsResponse {
   /// The error group stats which match the given request.
-  core.List<ErrorGroupStats> errorGroupStats;
+  core.List<ErrorGroupStats>? errorGroupStats;
 
   /// If non-empty, more results are available.
   ///
   /// Pass this token, along with the same query parameters as the first
   /// request, to view the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The timestamp specifies the start time to which the request was
   /// restricted.
@@ -931,7 +911,7 @@ class ListGroupStatsResponse {
   /// The start time is set based on the requested time range. It may be
   /// adjusted to a later time if a project has exceeded the storage quota and
   /// older data has been deleted.
-  core.String timeRangeBegin;
+  core.String? timeRangeBegin;
 
   ListGroupStatsResponse();
 
@@ -950,12 +930,12 @@ class ListGroupStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errorGroupStats != null)
           'errorGroupStats':
-              errorGroupStats.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (timeRangeBegin != null) 'timeRangeBegin': timeRangeBegin,
+              errorGroupStats!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (timeRangeBegin != null) 'timeRangeBegin': timeRangeBegin!,
       };
 }
 
@@ -969,7 +949,7 @@ class ReportErrorEventResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// An error event which is reported to the Error Reporting system.
@@ -977,7 +957,7 @@ class ReportedErrorEvent {
   /// A description of the context in which the error occurred.
   ///
   /// Optional.
-  ErrorContext context;
+  ErrorContext? context;
 
   /// Time when the event occurred.
   ///
@@ -985,7 +965,7 @@ class ReportedErrorEvent {
   /// Reporting system will be used.
   ///
   /// Optional.
-  core.String eventTime;
+  core.String? eventTime;
 
   /// The error message.
   ///
@@ -1011,12 +991,12 @@ class ReportedErrorEvent {
   /// \[`runtime.Stack()`\](https://golang.org/pkg/runtime/debug/#Stack).
   ///
   /// Required.
-  core.String message;
+  core.String? message;
 
   /// The service context in which this error has occurred.
   ///
   /// Required.
-  ServiceContext serviceContext;
+  ServiceContext? serviceContext;
 
   ReportedErrorEvent();
 
@@ -1037,11 +1017,11 @@ class ReportedErrorEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (context != null) 'context': context.toJson(),
-        if (eventTime != null) 'eventTime': eventTime,
-        if (message != null) 'message': message,
-        if (serviceContext != null) 'serviceContext': serviceContext.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (context != null) 'context': context!.toJson(),
+        if (eventTime != null) 'eventTime': eventTime!,
+        if (message != null) 'message': message!,
+        if (serviceContext != null) 'serviceContext': serviceContext!.toJson(),
       };
 }
 
@@ -1054,7 +1034,7 @@ class ServiceContext {
   /// List of possible values: https://cloud.google.com/monitoring/api/resources
   /// Value is set automatically for incoming errors and must not be set when
   /// reporting errors.
-  core.String resourceType;
+  core.String? resourceType;
 
   /// An identifier of the service, such as the name of the executable, job, or
   /// Google App Engine service name.
@@ -1064,14 +1044,14 @@ class ServiceContext {
   /// new code is deployed. Contains the service name for error reports
   /// extracted from Google App Engine logs or `default` if the App Engine
   /// default service is used.
-  core.String service;
+  core.String? service;
 
   /// Represents the source code version that the developer provided, which
   /// could represent a version label or a Git SHA-1 hash, for example.
   ///
   /// For App Engine standard environment, the version is set to the version of
   /// the app.
-  core.String version;
+  core.String? version;
 
   ServiceContext();
 
@@ -1087,10 +1067,10 @@ class ServiceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceType != null) 'resourceType': resourceType,
-        if (service != null) 'service': service,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceType != null) 'resourceType': resourceType!,
+        if (service != null) 'service': service!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1103,18 +1083,18 @@ class ServiceContext {
 class SourceLocation {
   /// The source code filename, which can include a truncated relative path, or
   /// a full path from a production machine.
-  core.String filePath;
+  core.String? filePath;
 
   /// Human-readable name of a function or method.
   ///
   /// The value can include optional context like the class or package name. For
   /// example, `my.package.MyClass.method` in case of Java.
-  core.String functionName;
+  core.String? functionName;
 
   /// 1-based.
   ///
   /// 0 indicates that the line number is unknown.
-  core.int lineNumber;
+  core.int? lineNumber;
 
   SourceLocation();
 
@@ -1130,10 +1110,10 @@ class SourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filePath != null) 'filePath': filePath,
-        if (functionName != null) 'functionName': functionName,
-        if (lineNumber != null) 'lineNumber': lineNumber,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filePath != null) 'filePath': filePath!,
+        if (functionName != null) 'functionName': functionName!,
+        if (lineNumber != null) 'lineNumber': lineNumber!,
       };
 }
 
@@ -1145,12 +1125,12 @@ class SourceReference {
   /// Example: "https://github.com/GoogleCloudPlatform/kubernetes.git"
   ///
   /// Optional.
-  core.String repository;
+  core.String? repository;
 
   /// The canonical and persistent identifier of the deployed revision.
   ///
   /// Example (git): "0035781c50ec7aa23385dc841529ce8a4b70db1b"
-  core.String revisionId;
+  core.String? revisionId;
 
   SourceReference();
 
@@ -1163,9 +1143,9 @@ class SourceReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (repository != null) 'repository': repository,
-        if (revisionId != null) 'revisionId': revisionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (repository != null) 'repository': repository!,
+        if (revisionId != null) 'revisionId': revisionId!,
       };
 }
 
@@ -1175,13 +1155,13 @@ class SourceReference {
 /// counting them.
 class TimedCount {
   /// Approximate number of occurrences in the given time period.
-  core.String count;
+  core.String? count;
 
   /// End of the time period to which `count` refers (excluded).
-  core.String endTime;
+  core.String? endTime;
 
   /// Start of the time period to which `count` refers (included).
-  core.String startTime;
+  core.String? startTime;
 
   TimedCount();
 
@@ -1197,10 +1177,10 @@ class TimedCount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -1209,7 +1189,7 @@ class TrackingIssue {
   /// A URL pointing to a related entry in an issue tracking system.
   ///
   /// Example: `https://github.com/user/project/issues/4`
-  core.String url;
+  core.String? url;
 
   TrackingIssue();
 
@@ -1219,7 +1199,7 @@ class TrackingIssue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (url != null) 'url': url!,
       };
 }

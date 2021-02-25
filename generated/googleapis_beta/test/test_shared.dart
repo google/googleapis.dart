@@ -5,14 +5,14 @@ import 'dart:core' as core;
 import 'package:http/http.dart' as http;
 
 class HttpServerMock extends http.BaseClient {
-  core.Future<http.StreamedResponse> Function(http.BaseRequest, core.Object)
-      _callback;
-  core.bool _expectJson;
+  late core.Future<http.StreamedResponse> Function(
+      http.BaseRequest, core.Object?) _callback;
+  late core.bool _expectJson;
 
   void register(
     core.Future<http.StreamedResponse> Function(
-      http.BaseRequest bob,
-      core.Object foo,
+      http.BaseRequest,
+      core.Object?,
     )
         callback,
     core.bool expectJson,
@@ -25,7 +25,7 @@ class HttpServerMock extends http.BaseClient {
   async.Future<http.StreamedResponse> send(http.BaseRequest request) async {
     if (_expectJson) {
       final jsonString =
-          await request.finalize().transform(convert.utf8.decoder).join('');
+          await request.finalize().transform(convert.utf8.decoder).join();
       if (jsonString.isEmpty) {
         return _callback(request, null);
       } else {
@@ -33,12 +33,8 @@ class HttpServerMock extends http.BaseClient {
       }
     } else {
       final stream = request.finalize();
-      if (stream == null) {
-        return _callback(request, []);
-      } else {
-        final data = await stream.toBytes();
-        return _callback(request, data);
-      }
+      final data = await stream.toBytes();
+      return _callback(request, data);
     }
   }
 }

@@ -79,11 +79,8 @@ class WebResourceResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -116,11 +113,8 @@ class WebResourceResource {
   /// this method will complete with the same error.
   async.Future<SiteVerificationWebResourceResource> get(
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -154,10 +148,9 @@ class WebResourceResource {
   /// this method will complete with the same error.
   async.Future<SiteVerificationWebResourceGettokenResponse> getToken(
     SiteVerificationWebResourceGettokenRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -195,13 +188,9 @@ class WebResourceResource {
   async.Future<SiteVerificationWebResourceResource> insert(
     SiteVerificationWebResourceResource request,
     core.String verificationMethod, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (verificationMethod == null) {
-      throw core.ArgumentError('Parameter verificationMethod is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'verificationMethod': [verificationMethod],
       if ($fields != null) 'fields': [$fields],
@@ -234,7 +223,7 @@ class WebResourceResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SiteVerificationWebResourceListResponse> list({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -274,13 +263,9 @@ class WebResourceResource {
   async.Future<SiteVerificationWebResourceResource> patch(
     SiteVerificationWebResourceResource request,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -318,13 +303,9 @@ class WebResourceResource {
   async.Future<SiteVerificationWebResourceResource> update(
     SiteVerificationWebResourceResource request,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -348,12 +329,12 @@ class SiteVerificationWebResourceGettokenRequestSite {
   ///
   /// If the type is set to SITE, the identifier is a URL. If the type is set to
   /// INET_DOMAIN, the site identifier is a domain name.
-  core.String identifier;
+  core.String? identifier;
 
   /// The type of resource to be verified.
   ///
   /// Can be SITE or INET_DOMAIN (domain name).
-  core.String type;
+  core.String? type;
 
   SiteVerificationWebResourceGettokenRequestSite();
 
@@ -366,21 +347,21 @@ class SiteVerificationWebResourceGettokenRequestSite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (identifier != null) 'identifier': identifier,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (identifier != null) 'identifier': identifier!,
+        if (type != null) 'type': type!,
       };
 }
 
 class SiteVerificationWebResourceGettokenRequest {
   /// The site for which a verification token will be generated.
-  SiteVerificationWebResourceGettokenRequestSite site;
+  SiteVerificationWebResourceGettokenRequestSite? site;
 
   /// The verification method that will be used to verify this site.
   ///
   /// For sites, 'FILE' or 'META' methods may be used. For domains, only 'DNS'
   /// may be used.
-  core.String verificationMethod;
+  core.String? verificationMethod;
 
   SiteVerificationWebResourceGettokenRequest();
 
@@ -394,10 +375,10 @@ class SiteVerificationWebResourceGettokenRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (site != null) 'site': site.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (site != null) 'site': site!.toJson(),
         if (verificationMethod != null)
-          'verificationMethod': verificationMethod,
+          'verificationMethod': verificationMethod!,
       };
 }
 
@@ -408,13 +389,13 @@ class SiteVerificationWebResourceGettokenResponse {
   /// site, stored inside a file of the same name. For META, the token should be
   /// placed in the HEAD tag of the default page that is loaded for the site.
   /// For DNS, the token should be placed in a TXT record of the domain.
-  core.String method;
+  core.String? method;
 
   /// The verification token.
   ///
   /// The token must be placed appropriately in order for verification to
   /// succeed.
-  core.String token;
+  core.String? token;
 
   SiteVerificationWebResourceGettokenResponse();
 
@@ -427,15 +408,15 @@ class SiteVerificationWebResourceGettokenResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (method != null) 'method': method,
-        if (token != null) 'token': token,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (method != null) 'method': method!,
+        if (token != null) 'token': token!,
       };
 }
 
 class SiteVerificationWebResourceListResponse {
   /// The list of sites that are owned by the authenticated user.
-  core.List<SiteVerificationWebResourceResource> items;
+  core.List<SiteVerificationWebResourceResource>? items;
 
   SiteVerificationWebResourceListResponse();
 
@@ -449,9 +430,9 @@ class SiteVerificationWebResourceListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
+          'items': items!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -461,12 +442,12 @@ class SiteVerificationWebResourceResourceSite {
   ///
   /// If the type is set to SITE, the identifier is a URL. If the type is set to
   /// INET_DOMAIN, the site identifier is a domain name.
-  core.String identifier;
+  core.String? identifier;
 
   /// The site type.
   ///
   /// Can be SITE or INET_DOMAIN (domain name).
-  core.String type;
+  core.String? type;
 
   SiteVerificationWebResourceResourceSite();
 
@@ -479,9 +460,9 @@ class SiteVerificationWebResourceResourceSite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (identifier != null) 'identifier': identifier,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (identifier != null) 'identifier': identifier!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -490,13 +471,13 @@ class SiteVerificationWebResourceResource {
   ///
   /// This value should be used in the "id" portion of the REST URL for the Get,
   /// Update, and Delete operations.
-  core.String id;
+  core.String? id;
 
   /// The email addresses of all verified owners.
-  core.List<core.String> owners;
+  core.List<core.String>? owners;
 
   /// The address and type of a site that is verified or will be verified.
-  SiteVerificationWebResourceResourceSite site;
+  SiteVerificationWebResourceResourceSite? site;
 
   SiteVerificationWebResourceResource();
 
@@ -515,9 +496,9 @@ class SiteVerificationWebResourceResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (owners != null) 'owners': owners,
-        if (site != null) 'site': site.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (owners != null) 'owners': owners!,
+        if (site != null) 'site': site!.toJson(),
       };
 }

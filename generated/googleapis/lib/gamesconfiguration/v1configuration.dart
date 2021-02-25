@@ -93,11 +93,8 @@ class AchievementConfigurationsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String achievementId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (achievementId == null) {
-      throw core.ArgumentError('Parameter achievementId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -131,11 +128,8 @@ class AchievementConfigurationsResource {
   /// this method will complete with the same error.
   async.Future<AchievementConfiguration> get(
     core.String achievementId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (achievementId == null) {
-      throw core.ArgumentError('Parameter achievementId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -174,13 +168,9 @@ class AchievementConfigurationsResource {
   async.Future<AchievementConfiguration> insert(
     AchievementConfiguration request,
     core.String applicationId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (applicationId == null) {
-      throw core.ArgumentError('Parameter applicationId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -224,13 +214,10 @@ class AchievementConfigurationsResource {
   /// this method will complete with the same error.
   async.Future<AchievementConfigurationListResponse> list(
     core.String applicationId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (applicationId == null) {
-      throw core.ArgumentError('Parameter applicationId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -271,13 +258,9 @@ class AchievementConfigurationsResource {
   async.Future<AchievementConfiguration> update(
     AchievementConfiguration request,
     core.String achievementId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (achievementId == null) {
-      throw core.ArgumentError('Parameter achievementId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -329,15 +312,9 @@ class ImageConfigurationsResource {
   async.Future<ImageConfiguration> upload(
     core.String resourceId,
     core.String imageType, {
-    core.String $fields,
-    commons.Media uploadMedia,
+    core.String? $fields,
+    commons.Media? uploadMedia,
   }) async {
-    if (resourceId == null) {
-      throw core.ArgumentError('Parameter resourceId is required.');
-    }
-    if (imageType == null) {
-      throw core.ArgumentError('Parameter imageType is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -389,11 +366,8 @@ class LeaderboardConfigurationsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String leaderboardId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (leaderboardId == null) {
-      throw core.ArgumentError('Parameter leaderboardId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -427,11 +401,8 @@ class LeaderboardConfigurationsResource {
   /// this method will complete with the same error.
   async.Future<LeaderboardConfiguration> get(
     core.String leaderboardId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (leaderboardId == null) {
-      throw core.ArgumentError('Parameter leaderboardId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -470,13 +441,9 @@ class LeaderboardConfigurationsResource {
   async.Future<LeaderboardConfiguration> insert(
     LeaderboardConfiguration request,
     core.String applicationId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (applicationId == null) {
-      throw core.ArgumentError('Parameter applicationId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -520,13 +487,10 @@ class LeaderboardConfigurationsResource {
   /// this method will complete with the same error.
   async.Future<LeaderboardConfigurationListResponse> list(
     core.String applicationId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (applicationId == null) {
-      throw core.ArgumentError('Parameter applicationId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -567,13 +531,9 @@ class LeaderboardConfigurationsResource {
   async.Future<LeaderboardConfiguration> update(
     LeaderboardConfiguration request,
     core.String leaderboardId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (leaderboardId == null) {
-      throw core.ArgumentError('Parameter leaderboardId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -599,37 +559,37 @@ class AchievementConfiguration {
   /// - "ACHIEVEMENT_TYPE_UNSPECIFIED" : Default value. This value is unused.
   /// - "STANDARD" : Achievement is either locked or unlocked.
   /// - "INCREMENTAL" : Achievement is incremental.
-  core.String achievementType;
+  core.String? achievementType;
 
   /// The draft data of the achievement.
-  AchievementConfigurationDetail draft;
+  AchievementConfigurationDetail? draft;
 
   /// The ID of the achievement.
-  core.String id;
+  core.String? id;
 
   /// The initial state of the achievement.
   /// Possible string values are:
   /// - "INITIAL_STATE_UNSPECIFIED" : Default value. This value is unused.
   /// - "HIDDEN" : Achievement is hidden.
   /// - "REVEALED" : Achievement is revealed.
-  core.String initialState;
+  core.String? initialState;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string
   /// `gamesConfiguration#achievementConfiguration`.
-  core.String kind;
+  core.String? kind;
 
   /// The read-only published data of the achievement.
-  AchievementConfigurationDetail published;
+  AchievementConfigurationDetail? published;
 
   /// Steps to unlock.
   ///
   /// Only applicable to incremental achievements.
-  core.int stepsToUnlock;
+  core.int? stepsToUnlock;
 
   /// The token for this resource.
-  core.String token;
+  core.String? token;
 
   AchievementConfiguration();
 
@@ -662,44 +622,44 @@ class AchievementConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (achievementType != null) 'achievementType': achievementType,
-        if (draft != null) 'draft': draft.toJson(),
-        if (id != null) 'id': id,
-        if (initialState != null) 'initialState': initialState,
-        if (kind != null) 'kind': kind,
-        if (published != null) 'published': published.toJson(),
-        if (stepsToUnlock != null) 'stepsToUnlock': stepsToUnlock,
-        if (token != null) 'token': token,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (achievementType != null) 'achievementType': achievementType!,
+        if (draft != null) 'draft': draft!.toJson(),
+        if (id != null) 'id': id!,
+        if (initialState != null) 'initialState': initialState!,
+        if (kind != null) 'kind': kind!,
+        if (published != null) 'published': published!.toJson(),
+        if (stepsToUnlock != null) 'stepsToUnlock': stepsToUnlock!,
+        if (token != null) 'token': token!,
       };
 }
 
 /// An achievement configuration detail.
 class AchievementConfigurationDetail {
   /// Localized strings for the achievement description.
-  LocalizedStringBundle description;
+  LocalizedStringBundle? description;
 
   /// The icon url of this achievement.
   ///
   /// Writes to this field are ignored.
-  core.String iconUrl;
+  core.String? iconUrl;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string
   /// `gamesConfiguration#achievementConfigurationDetail`.
-  core.String kind;
+  core.String? kind;
 
   /// Localized strings for the achievement name.
-  LocalizedStringBundle name;
+  LocalizedStringBundle? name;
 
   /// Point value for the achievement.
-  core.int pointValue;
+  core.int? pointValue;
 
   /// The sort rank of this achievement.
   ///
   /// Writes to this field are ignored.
-  core.int sortRank;
+  core.int? sortRank;
 
   AchievementConfigurationDetail();
 
@@ -726,29 +686,29 @@ class AchievementConfigurationDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description.toJson(),
-        if (iconUrl != null) 'iconUrl': iconUrl,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name.toJson(),
-        if (pointValue != null) 'pointValue': pointValue,
-        if (sortRank != null) 'sortRank': sortRank,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!.toJson(),
+        if (iconUrl != null) 'iconUrl': iconUrl!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!.toJson(),
+        if (pointValue != null) 'pointValue': pointValue!,
+        if (sortRank != null) 'sortRank': sortRank!,
       };
 }
 
 /// A ListConfigurations response.
 class AchievementConfigurationListResponse {
   /// The achievement configurations.
-  core.List<AchievementConfiguration> items;
+  core.List<AchievementConfiguration>? items;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string
   /// `gamesConfiguration#achievementConfigurationListResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// The pagination token for the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   AchievementConfigurationListResponse();
 
@@ -768,11 +728,11 @@ class AchievementConfigurationListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -781,28 +741,28 @@ class GamesNumberAffixConfiguration {
   /// When the language requires special treatment of "small" numbers (as with
   /// 2, 3, and 4 in Czech; or numbers ending 2, 3, or 4 but not 12, 13, or 14
   /// in Polish).
-  LocalizedStringBundle few;
+  LocalizedStringBundle? few;
 
   /// When the language requires special treatment of "large" numbers (as with
   /// numbers ending 11-99 in Maltese).
-  LocalizedStringBundle many;
+  LocalizedStringBundle? many;
 
   /// When the language requires special treatment of numbers like one (as with
   /// the number 1 in English and most other languages; in Russian, any number
   /// ending in 1 but not ending in 11 is in this class).
-  LocalizedStringBundle one;
+  LocalizedStringBundle? one;
 
   /// When the language does not require special treatment of the given quantity
   /// (as with all numbers in Chinese, or 42 in English).
-  LocalizedStringBundle other;
+  LocalizedStringBundle? other;
 
   /// When the language requires special treatment of numbers like two (as with
   /// 2 in Welsh, or 102 in Slovenian).
-  LocalizedStringBundle two;
+  LocalizedStringBundle? two;
 
   /// When the language requires special treatment of the number 0 (as in
   /// Arabic).
-  LocalizedStringBundle zero;
+  LocalizedStringBundle? zero;
 
   GamesNumberAffixConfiguration();
 
@@ -833,13 +793,13 @@ class GamesNumberAffixConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (few != null) 'few': few.toJson(),
-        if (many != null) 'many': many.toJson(),
-        if (one != null) 'one': one.toJson(),
-        if (other != null) 'other': other.toJson(),
-        if (two != null) 'two': two.toJson(),
-        if (zero != null) 'zero': zero.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (few != null) 'few': few!.toJson(),
+        if (many != null) 'many': many!.toJson(),
+        if (one != null) 'one': one!.toJson(),
+        if (other != null) 'other': other!.toJson(),
+        if (two != null) 'two': two!.toJson(),
+        if (zero != null) 'zero': zero!.toJson(),
       };
 }
 
@@ -848,12 +808,12 @@ class GamesNumberFormatConfiguration {
   /// The curreny code string.
   ///
   /// Only used for CURRENCY format type.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// The number of decimal places for number.
   ///
   /// Only used for NUMERIC format type.
-  core.int numDecimalPlaces;
+  core.int? numDecimalPlaces;
 
   /// The formatting for the number.
   /// Possible string values are:
@@ -863,13 +823,13 @@ class GamesNumberFormatConfiguration {
   /// unit can be added.
   /// - "TIME_DURATION" : Numbers are formatted to hours, minutes and seconds.
   /// - "CURRENCY" : Numbers are formatted to currency according to locale.
-  core.String numberFormatType;
+  core.String? numberFormatType;
 
   /// An optional suffix for the NUMERIC format type.
   ///
   /// These strings follow the same plural rules as all Android string
   /// resources.
-  GamesNumberAffixConfiguration suffix;
+  GamesNumberAffixConfiguration? suffix;
 
   GamesNumberFormatConfiguration();
 
@@ -889,11 +849,11 @@ class GamesNumberFormatConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (numDecimalPlaces != null) 'numDecimalPlaces': numDecimalPlaces,
-        if (numberFormatType != null) 'numberFormatType': numberFormatType,
-        if (suffix != null) 'suffix': suffix.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (numDecimalPlaces != null) 'numDecimalPlaces': numDecimalPlaces!,
+        if (numberFormatType != null) 'numberFormatType': numberFormatType!,
+        if (suffix != null) 'suffix': suffix!.toJson(),
       };
 }
 
@@ -904,18 +864,18 @@ class ImageConfiguration {
   /// - "IMAGE_TYPE_UNSPECIFIED" : Default value. This value is unused.
   /// - "ACHIEVEMENT_ICON" : The icon image for an achievement resource.
   /// - "LEADERBOARD_ICON" : The icon image for a leaderboard resource.
-  core.String imageType;
+  core.String? imageType;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `gamesConfiguration#imageConfiguration`.
-  core.String kind;
+  core.String? kind;
 
   /// The resource ID of resource which the image belongs to.
-  core.String resourceId;
+  core.String? resourceId;
 
   /// The url for this image.
-  core.String url;
+  core.String? url;
 
   ImageConfiguration();
 
@@ -934,46 +894,46 @@ class ImageConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageType != null) 'imageType': imageType,
-        if (kind != null) 'kind': kind,
-        if (resourceId != null) 'resourceId': resourceId,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageType != null) 'imageType': imageType!,
+        if (kind != null) 'kind': kind!,
+        if (resourceId != null) 'resourceId': resourceId!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// An leaderboard configuration resource.
 class LeaderboardConfiguration {
   /// The draft data of the leaderboard.
-  LeaderboardConfigurationDetail draft;
+  LeaderboardConfigurationDetail? draft;
 
   /// The ID of the leaderboard.
-  core.String id;
+  core.String? id;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string
   /// `gamesConfiguration#leaderboardConfiguration`.
-  core.String kind;
+  core.String? kind;
 
   /// The read-only published data of the leaderboard.
-  LeaderboardConfigurationDetail published;
+  LeaderboardConfigurationDetail? published;
 
   /// Maximum score that can be posted to this leaderboard.
-  core.String scoreMax;
+  core.String? scoreMax;
 
   /// Minimum score that can be posted to this leaderboard.
-  core.String scoreMin;
+  core.String? scoreMin;
 
   ///
   /// Possible string values are:
   /// - "SCORE_ORDER_UNSPECIFIED" : Default value. This value is unused.
   /// - "LARGER_IS_BETTER" : Larger scores posted are ranked higher.
   /// - "SMALLER_IS_BETTER" : Smaller scores posted are ranked higher.
-  core.String scoreOrder;
+  core.String? scoreOrder;
 
   /// The token for this resource.
-  core.String token;
+  core.String? token;
 
   LeaderboardConfiguration();
 
@@ -1006,15 +966,15 @@ class LeaderboardConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (draft != null) 'draft': draft.toJson(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (published != null) 'published': published.toJson(),
-        if (scoreMax != null) 'scoreMax': scoreMax,
-        if (scoreMin != null) 'scoreMin': scoreMin,
-        if (scoreOrder != null) 'scoreOrder': scoreOrder,
-        if (token != null) 'token': token,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (draft != null) 'draft': draft!.toJson(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (published != null) 'published': published!.toJson(),
+        if (scoreMax != null) 'scoreMax': scoreMax!,
+        if (scoreMin != null) 'scoreMin': scoreMin!,
+        if (scoreOrder != null) 'scoreOrder': scoreOrder!,
+        if (token != null) 'token': token!,
       };
 }
 
@@ -1023,24 +983,24 @@ class LeaderboardConfigurationDetail {
   /// The icon url of this leaderboard.
   ///
   /// Writes to this field are ignored.
-  core.String iconUrl;
+  core.String? iconUrl;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string
   /// `gamesConfiguration#leaderboardConfigurationDetail`.
-  core.String kind;
+  core.String? kind;
 
   /// Localized strings for the leaderboard name.
-  LocalizedStringBundle name;
+  LocalizedStringBundle? name;
 
   /// The score formatting for the leaderboard.
-  GamesNumberFormatConfiguration scoreFormat;
+  GamesNumberFormatConfiguration? scoreFormat;
 
   /// The sort rank of this leaderboard.
   ///
   /// Writes to this field are ignored.
-  core.int sortRank;
+  core.int? sortRank;
 
   LeaderboardConfigurationDetail();
 
@@ -1064,28 +1024,28 @@ class LeaderboardConfigurationDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (iconUrl != null) 'iconUrl': iconUrl,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name.toJson(),
-        if (scoreFormat != null) 'scoreFormat': scoreFormat.toJson(),
-        if (sortRank != null) 'sortRank': sortRank,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (iconUrl != null) 'iconUrl': iconUrl!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!.toJson(),
+        if (scoreFormat != null) 'scoreFormat': scoreFormat!.toJson(),
+        if (sortRank != null) 'sortRank': sortRank!,
       };
 }
 
 /// A ListConfigurations response.
 class LeaderboardConfigurationListResponse {
   /// The leaderboard configurations.
-  core.List<LeaderboardConfiguration> items;
+  core.List<LeaderboardConfiguration>? items;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string
   /// `gamesConfiguration#leaderboardConfigurationListResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// The pagination token for the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   LeaderboardConfigurationListResponse();
 
@@ -1105,11 +1065,11 @@ class LeaderboardConfigurationListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1118,13 +1078,13 @@ class LocalizedString {
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `gamesConfiguration#localizedString`.
-  core.String kind;
+  core.String? kind;
 
   /// The locale string.
-  core.String locale;
+  core.String? locale;
 
   /// The string value.
-  core.String value;
+  core.String? value;
 
   LocalizedString();
 
@@ -1140,10 +1100,10 @@ class LocalizedString {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (locale != null) 'locale': locale,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (locale != null) 'locale': locale!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1153,10 +1113,10 @@ class LocalizedStringBundle {
   ///
   /// Value is always the fixed string
   /// `gamesConfiguration#localizedStringBundle`.
-  core.String kind;
+  core.String? kind;
 
   /// The locale strings.
-  core.List<LocalizedString> translations;
+  core.List<LocalizedString>? translations;
 
   LocalizedStringBundle();
 
@@ -1172,9 +1132,9 @@ class LocalizedStringBundle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (translations != null)
-          'translations': translations.map((value) => value.toJson()).toList(),
+          'translations': translations!.map((value) => value.toJson()).toList(),
       };
 }

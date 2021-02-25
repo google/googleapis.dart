@@ -42,9 +42,9 @@ api.AnalyticsInfo buildAnalyticsInfo() {
 void checkAnalyticsInfo(api.AnalyticsInfo o) {
   buildCounterAnalyticsInfo++;
   if (buildCounterAnalyticsInfo < 3) {
-    checkGooglePlayAnalytics(o.googlePlayAnalytics as api.GooglePlayAnalytics);
+    checkGooglePlayAnalytics(o.googlePlayAnalytics! as api.GooglePlayAnalytics);
     checkITunesConnectAnalytics(
-        o.itunesConnectAnalytics as api.ITunesConnectAnalytics);
+        o.itunesConnectAnalytics! as api.ITunesConnectAnalytics);
   }
   buildCounterAnalyticsInfo--;
 }
@@ -66,10 +66,22 @@ api.AndroidInfo buildAndroidInfo() {
 void checkAndroidInfo(api.AndroidInfo o) {
   buildCounterAndroidInfo++;
   if (buildCounterAndroidInfo < 3) {
-    unittest.expect(o.androidFallbackLink, unittest.equals('foo'));
-    unittest.expect(o.androidLink, unittest.equals('foo'));
-    unittest.expect(o.androidMinPackageVersionCode, unittest.equals('foo'));
-    unittest.expect(o.androidPackageName, unittest.equals('foo'));
+    unittest.expect(
+      o.androidFallbackLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.androidLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.androidMinPackageVersionCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.androidPackageName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAndroidInfo--;
 }
@@ -92,11 +104,20 @@ api.CreateManagedShortLinkRequest buildCreateManagedShortLinkRequest() {
 void checkCreateManagedShortLinkRequest(api.CreateManagedShortLinkRequest o) {
   buildCounterCreateManagedShortLinkRequest++;
   if (buildCounterCreateManagedShortLinkRequest < 3) {
-    checkDynamicLinkInfo(o.dynamicLinkInfo as api.DynamicLinkInfo);
-    unittest.expect(o.longDynamicLink, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.sdkVersion, unittest.equals('foo'));
-    checkSuffix(o.suffix as api.Suffix);
+    checkDynamicLinkInfo(o.dynamicLinkInfo! as api.DynamicLinkInfo);
+    unittest.expect(
+      o.longDynamicLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sdkVersion!,
+      unittest.equals('foo'),
+    );
+    checkSuffix(o.suffix! as api.Suffix);
   }
   buildCounterCreateManagedShortLinkRequest--;
 }
@@ -130,9 +151,12 @@ api.CreateManagedShortLinkResponse buildCreateManagedShortLinkResponse() {
 void checkCreateManagedShortLinkResponse(api.CreateManagedShortLinkResponse o) {
   buildCounterCreateManagedShortLinkResponse++;
   if (buildCounterCreateManagedShortLinkResponse < 3) {
-    checkManagedShortLink(o.managedShortLink as api.ManagedShortLink);
-    unittest.expect(o.previewLink, unittest.equals('foo'));
-    checkUnnamed3170(o.warning);
+    checkManagedShortLink(o.managedShortLink! as api.ManagedShortLink);
+    unittest.expect(
+      o.previewLink!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3170(o.warning!);
   }
   buildCounterCreateManagedShortLinkResponse--;
 }
@@ -154,10 +178,16 @@ api.CreateShortDynamicLinkRequest buildCreateShortDynamicLinkRequest() {
 void checkCreateShortDynamicLinkRequest(api.CreateShortDynamicLinkRequest o) {
   buildCounterCreateShortDynamicLinkRequest++;
   if (buildCounterCreateShortDynamicLinkRequest < 3) {
-    checkDynamicLinkInfo(o.dynamicLinkInfo as api.DynamicLinkInfo);
-    unittest.expect(o.longDynamicLink, unittest.equals('foo'));
-    unittest.expect(o.sdkVersion, unittest.equals('foo'));
-    checkSuffix(o.suffix as api.Suffix);
+    checkDynamicLinkInfo(o.dynamicLinkInfo! as api.DynamicLinkInfo);
+    unittest.expect(
+      o.longDynamicLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sdkVersion!,
+      unittest.equals('foo'),
+    );
+    checkSuffix(o.suffix! as api.Suffix);
   }
   buildCounterCreateShortDynamicLinkRequest--;
 }
@@ -191,9 +221,15 @@ api.CreateShortDynamicLinkResponse buildCreateShortDynamicLinkResponse() {
 void checkCreateShortDynamicLinkResponse(api.CreateShortDynamicLinkResponse o) {
   buildCounterCreateShortDynamicLinkResponse++;
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
-    unittest.expect(o.previewLink, unittest.equals('foo'));
-    unittest.expect(o.shortLink, unittest.equals('foo'));
-    checkUnnamed3171(o.warning);
+    unittest.expect(
+      o.previewLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.shortLink!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3171(o.warning!);
   }
   buildCounterCreateShortDynamicLinkResponse--;
 }
@@ -212,7 +248,10 @@ api.DesktopInfo buildDesktopInfo() {
 void checkDesktopInfo(api.DesktopInfo o) {
   buildCounterDesktopInfo++;
   if (buildCounterDesktopInfo < 3) {
-    unittest.expect(o.desktopFallbackLink, unittest.equals('foo'));
+    unittest.expect(
+      o.desktopFallbackLink!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDesktopInfo--;
 }
@@ -237,13 +276,34 @@ api.DeviceInfo buildDeviceInfo() {
 void checkDeviceInfo(api.DeviceInfo o) {
   buildCounterDeviceInfo++;
   if (buildCounterDeviceInfo < 3) {
-    unittest.expect(o.deviceModelName, unittest.equals('foo'));
-    unittest.expect(o.languageCode, unittest.equals('foo'));
-    unittest.expect(o.languageCodeFromWebview, unittest.equals('foo'));
-    unittest.expect(o.languageCodeRaw, unittest.equals('foo'));
-    unittest.expect(o.screenResolutionHeight, unittest.equals('foo'));
-    unittest.expect(o.screenResolutionWidth, unittest.equals('foo'));
-    unittest.expect(o.timezone, unittest.equals('foo'));
+    unittest.expect(
+      o.deviceModelName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCodeFromWebview!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCodeRaw!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.screenResolutionHeight!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.screenResolutionWidth!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timezone!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDeviceInfo--;
 }
@@ -264,9 +324,18 @@ api.DynamicLinkEventStat buildDynamicLinkEventStat() {
 void checkDynamicLinkEventStat(api.DynamicLinkEventStat o) {
   buildCounterDynamicLinkEventStat++;
   if (buildCounterDynamicLinkEventStat < 3) {
-    unittest.expect(o.count, unittest.equals('foo'));
-    unittest.expect(o.event, unittest.equals('foo'));
-    unittest.expect(o.platform, unittest.equals('foo'));
+    unittest.expect(
+      o.count!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.event!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.platform!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDynamicLinkEventStat--;
 }
@@ -293,15 +362,24 @@ api.DynamicLinkInfo buildDynamicLinkInfo() {
 void checkDynamicLinkInfo(api.DynamicLinkInfo o) {
   buildCounterDynamicLinkInfo++;
   if (buildCounterDynamicLinkInfo < 3) {
-    checkAnalyticsInfo(o.analyticsInfo as api.AnalyticsInfo);
-    checkAndroidInfo(o.androidInfo as api.AndroidInfo);
-    checkDesktopInfo(o.desktopInfo as api.DesktopInfo);
-    unittest.expect(o.domainUriPrefix, unittest.equals('foo'));
-    unittest.expect(o.dynamicLinkDomain, unittest.equals('foo'));
-    checkIosInfo(o.iosInfo as api.IosInfo);
-    unittest.expect(o.link, unittest.equals('foo'));
-    checkNavigationInfo(o.navigationInfo as api.NavigationInfo);
-    checkSocialMetaTagInfo(o.socialMetaTagInfo as api.SocialMetaTagInfo);
+    checkAnalyticsInfo(o.analyticsInfo! as api.AnalyticsInfo);
+    checkAndroidInfo(o.androidInfo! as api.AndroidInfo);
+    checkDesktopInfo(o.desktopInfo! as api.DesktopInfo);
+    unittest.expect(
+      o.domainUriPrefix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dynamicLinkDomain!,
+      unittest.equals('foo'),
+    );
+    checkIosInfo(o.iosInfo! as api.IosInfo);
+    unittest.expect(
+      o.link!,
+      unittest.equals('foo'),
+    );
+    checkNavigationInfo(o.navigationInfo! as api.NavigationInfo);
+    checkSocialMetaTagInfo(o.socialMetaTagInfo! as api.SocialMetaTagInfo);
   }
   buildCounterDynamicLinkInfo--;
 }
@@ -333,7 +411,7 @@ api.DynamicLinkStats buildDynamicLinkStats() {
 void checkDynamicLinkStats(api.DynamicLinkStats o) {
   buildCounterDynamicLinkStats++;
   if (buildCounterDynamicLinkStats < 3) {
-    checkUnnamed3172(o.linkEventStats);
+    checkUnnamed3172(o.linkEventStats!);
   }
   buildCounterDynamicLinkStats--;
 }
@@ -354,9 +432,18 @@ api.DynamicLinkWarning buildDynamicLinkWarning() {
 void checkDynamicLinkWarning(api.DynamicLinkWarning o) {
   buildCounterDynamicLinkWarning++;
   if (buildCounterDynamicLinkWarning < 3) {
-    unittest.expect(o.warningCode, unittest.equals('foo'));
-    unittest.expect(o.warningDocumentLink, unittest.equals('foo'));
-    unittest.expect(o.warningMessage, unittest.equals('foo'));
+    unittest.expect(
+      o.warningCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.warningDocumentLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.warningMessage!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDynamicLinkWarning--;
 }
@@ -384,14 +471,35 @@ void checkGetIosPostInstallAttributionRequest(
     api.GetIosPostInstallAttributionRequest o) {
   buildCounterGetIosPostInstallAttributionRequest++;
   if (buildCounterGetIosPostInstallAttributionRequest < 3) {
-    unittest.expect(o.appInstallationTime, unittest.equals('foo'));
-    unittest.expect(o.bundleId, unittest.equals('foo'));
-    checkDeviceInfo(o.device as api.DeviceInfo);
-    unittest.expect(o.iosVersion, unittest.equals('foo'));
-    unittest.expect(o.retrievalMethod, unittest.equals('foo'));
-    unittest.expect(o.sdkVersion, unittest.equals('foo'));
-    unittest.expect(o.uniqueMatchLinkToCheck, unittest.equals('foo'));
-    unittest.expect(o.visualStyle, unittest.equals('foo'));
+    unittest.expect(
+      o.appInstallationTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.bundleId!,
+      unittest.equals('foo'),
+    );
+    checkDeviceInfo(o.device! as api.DeviceInfo);
+    unittest.expect(
+      o.iosVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.retrievalMethod!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sdkVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uniqueMatchLinkToCheck!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.visualStyle!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGetIosPostInstallAttributionRequest--;
 }
@@ -427,22 +535,67 @@ void checkGetIosPostInstallAttributionResponse(
     api.GetIosPostInstallAttributionResponse o) {
   buildCounterGetIosPostInstallAttributionResponse++;
   if (buildCounterGetIosPostInstallAttributionResponse < 3) {
-    unittest.expect(o.appMinimumVersion, unittest.equals('foo'));
-    unittest.expect(o.attributionConfidence, unittest.equals('foo'));
-    unittest.expect(o.deepLink, unittest.equals('foo'));
-    unittest.expect(o.externalBrowserDestinationLink, unittest.equals('foo'));
-    unittest.expect(o.fallbackLink, unittest.equals('foo'));
-    unittest.expect(o.invitationId, unittest.equals('foo'));
-    unittest.expect(o.isStrongMatchExecutable, unittest.isTrue);
-    unittest.expect(o.matchMessage, unittest.equals('foo'));
-    unittest.expect(o.requestIpVersion, unittest.equals('foo'));
-    unittest.expect(o.requestedLink, unittest.equals('foo'));
-    unittest.expect(o.resolvedLink, unittest.equals('foo'));
-    unittest.expect(o.utmCampaign, unittest.equals('foo'));
-    unittest.expect(o.utmContent, unittest.equals('foo'));
-    unittest.expect(o.utmMedium, unittest.equals('foo'));
-    unittest.expect(o.utmSource, unittest.equals('foo'));
-    unittest.expect(o.utmTerm, unittest.equals('foo'));
+    unittest.expect(
+      o.appMinimumVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.attributionConfidence!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deepLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.externalBrowserDestinationLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fallbackLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.invitationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.isStrongMatchExecutable!, unittest.isTrue);
+    unittest.expect(
+      o.matchMessage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestIpVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestedLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resolvedLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmCampaign!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmContent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmMedium!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmSource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmTerm!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGetIosPostInstallAttributionResponse--;
 }
@@ -463,9 +616,18 @@ api.GetIosReopenAttributionRequest buildGetIosReopenAttributionRequest() {
 void checkGetIosReopenAttributionRequest(api.GetIosReopenAttributionRequest o) {
   buildCounterGetIosReopenAttributionRequest++;
   if (buildCounterGetIosReopenAttributionRequest < 3) {
-    unittest.expect(o.bundleId, unittest.equals('foo'));
-    unittest.expect(o.requestedLink, unittest.equals('foo'));
-    unittest.expect(o.sdkVersion, unittest.equals('foo'));
+    unittest.expect(
+      o.bundleId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestedLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sdkVersion!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGetIosReopenAttributionRequest--;
 }
@@ -493,15 +655,42 @@ void checkGetIosReopenAttributionResponse(
     api.GetIosReopenAttributionResponse o) {
   buildCounterGetIosReopenAttributionResponse++;
   if (buildCounterGetIosReopenAttributionResponse < 3) {
-    unittest.expect(o.deepLink, unittest.equals('foo'));
-    unittest.expect(o.invitationId, unittest.equals('foo'));
-    unittest.expect(o.iosMinAppVersion, unittest.equals('foo'));
-    unittest.expect(o.resolvedLink, unittest.equals('foo'));
-    unittest.expect(o.utmCampaign, unittest.equals('foo'));
-    unittest.expect(o.utmContent, unittest.equals('foo'));
-    unittest.expect(o.utmMedium, unittest.equals('foo'));
-    unittest.expect(o.utmSource, unittest.equals('foo'));
-    unittest.expect(o.utmTerm, unittest.equals('foo'));
+    unittest.expect(
+      o.deepLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.invitationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iosMinAppVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resolvedLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmCampaign!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmContent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmMedium!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmSource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmTerm!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGetIosReopenAttributionResponse--;
 }
@@ -525,12 +714,30 @@ api.GooglePlayAnalytics buildGooglePlayAnalytics() {
 void checkGooglePlayAnalytics(api.GooglePlayAnalytics o) {
   buildCounterGooglePlayAnalytics++;
   if (buildCounterGooglePlayAnalytics < 3) {
-    unittest.expect(o.gclid, unittest.equals('foo'));
-    unittest.expect(o.utmCampaign, unittest.equals('foo'));
-    unittest.expect(o.utmContent, unittest.equals('foo'));
-    unittest.expect(o.utmMedium, unittest.equals('foo'));
-    unittest.expect(o.utmSource, unittest.equals('foo'));
-    unittest.expect(o.utmTerm, unittest.equals('foo'));
+    unittest.expect(
+      o.gclid!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmCampaign!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmContent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmMedium!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmSource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.utmTerm!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGooglePlayAnalytics--;
 }
@@ -552,10 +759,22 @@ api.ITunesConnectAnalytics buildITunesConnectAnalytics() {
 void checkITunesConnectAnalytics(api.ITunesConnectAnalytics o) {
   buildCounterITunesConnectAnalytics++;
   if (buildCounterITunesConnectAnalytics < 3) {
-    unittest.expect(o.at, unittest.equals('foo'));
-    unittest.expect(o.ct, unittest.equals('foo'));
-    unittest.expect(o.mt, unittest.equals('foo'));
-    unittest.expect(o.pt, unittest.equals('foo'));
+    unittest.expect(
+      o.at!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ct!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mt!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pt!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterITunesConnectAnalytics--;
 }
@@ -580,13 +799,34 @@ api.IosInfo buildIosInfo() {
 void checkIosInfo(api.IosInfo o) {
   buildCounterIosInfo++;
   if (buildCounterIosInfo < 3) {
-    unittest.expect(o.iosAppStoreId, unittest.equals('foo'));
-    unittest.expect(o.iosBundleId, unittest.equals('foo'));
-    unittest.expect(o.iosCustomScheme, unittest.equals('foo'));
-    unittest.expect(o.iosFallbackLink, unittest.equals('foo'));
-    unittest.expect(o.iosIpadBundleId, unittest.equals('foo'));
-    unittest.expect(o.iosIpadFallbackLink, unittest.equals('foo'));
-    unittest.expect(o.iosMinimumVersion, unittest.equals('foo'));
+    unittest.expect(
+      o.iosAppStoreId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iosBundleId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iosCustomScheme!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iosFallbackLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iosIpadBundleId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iosIpadFallbackLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iosMinimumVersion!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterIosInfo--;
 }
@@ -600,8 +840,14 @@ core.List<core.String> buildUnnamed3173() {
 
 void checkUnnamed3173(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterManagedShortLink = 0;
@@ -623,12 +869,24 @@ api.ManagedShortLink buildManagedShortLink() {
 void checkManagedShortLink(api.ManagedShortLink o) {
   buildCounterManagedShortLink++;
   if (buildCounterManagedShortLink < 3) {
-    unittest.expect(o.creationTime, unittest.equals('foo'));
-    checkUnnamed3173(o.flaggedAttribute);
-    checkDynamicLinkInfo(o.info as api.DynamicLinkInfo);
-    unittest.expect(o.link, unittest.equals('foo'));
-    unittest.expect(o.linkName, unittest.equals('foo'));
-    unittest.expect(o.visibility, unittest.equals('foo'));
+    unittest.expect(
+      o.creationTime!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3173(o.flaggedAttribute!);
+    checkDynamicLinkInfo(o.info! as api.DynamicLinkInfo);
+    unittest.expect(
+      o.link!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.linkName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.visibility!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterManagedShortLink--;
 }
@@ -647,7 +905,7 @@ api.NavigationInfo buildNavigationInfo() {
 void checkNavigationInfo(api.NavigationInfo o) {
   buildCounterNavigationInfo++;
   if (buildCounterNavigationInfo < 3) {
-    unittest.expect(o.enableForcedRedirect, unittest.isTrue);
+    unittest.expect(o.enableForcedRedirect!, unittest.isTrue);
   }
   buildCounterNavigationInfo--;
 }
@@ -668,9 +926,18 @@ api.SocialMetaTagInfo buildSocialMetaTagInfo() {
 void checkSocialMetaTagInfo(api.SocialMetaTagInfo o) {
   buildCounterSocialMetaTagInfo++;
   if (buildCounterSocialMetaTagInfo < 3) {
-    unittest.expect(o.socialDescription, unittest.equals('foo'));
-    unittest.expect(o.socialImageLink, unittest.equals('foo'));
-    unittest.expect(o.socialTitle, unittest.equals('foo'));
+    unittest.expect(
+      o.socialDescription!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.socialImageLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.socialTitle!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSocialMetaTagInfo--;
 }
@@ -690,8 +957,14 @@ api.Suffix buildSuffix() {
 void checkSuffix(api.Suffix o) {
   buildCounterSuffix++;
   if (buildCounterSuffix < 3) {
-    unittest.expect(o.customSuffix, unittest.equals('foo'));
-    unittest.expect(o.option, unittest.equals('foo'));
+    unittest.expect(
+      o.customSuffix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.option!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSuffix--;
 }
@@ -906,10 +1179,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 27),
-            unittest.equals("v1/managedShortLinks:create"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 27),
+          unittest.equals("v1/managedShortLinks:create"),
+        );
         pathOffset += 27;
 
         var query = (req.url).query;
@@ -927,7 +1204,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -961,10 +1241,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("v1/shortLinks"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals("v1/shortLinks"),
+        );
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -982,7 +1266,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1013,19 +1300,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         index = path.indexOf('/linkStats', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_dynamicLink'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/linkStats"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_dynamicLink'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/linkStats"),
+        );
         pathOffset += 10;
 
         var query = (req.url).query;
@@ -1044,10 +1340,17 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["durationDays"].first, unittest.equals(arg_durationDays));
+          queryMap["durationDays"]!.first,
+          unittest.equals(arg_durationDays),
+        );
         unittest.expect(
-            queryMap["sdkVersion"].first, unittest.equals(arg_sdkVersion));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["sdkVersion"]!.first,
+          unittest.equals(arg_sdkVersion),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1081,10 +1384,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("v1/installAttribution"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals("v1/installAttribution"),
+        );
         pathOffset += 21;
 
         var query = (req.url).query;
@@ -1102,7 +1409,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1135,10 +1445,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("v1/reopenAttribution"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("v1/reopenAttribution"),
+        );
         pathOffset += 20;
 
         var query = (req.url).query;
@@ -1156,7 +1470,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

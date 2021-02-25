@@ -119,13 +119,9 @@ class ProjectsLocationsRegistriesResource {
   async.Future<BindDeviceToGatewayResponse> bindDeviceToGateway(
     BindDeviceToGatewayRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -168,13 +164,9 @@ class ProjectsLocationsRegistriesResource {
   async.Future<DeviceRegistry> create(
     DeviceRegistry request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -214,11 +206,8 @@ class ProjectsLocationsRegistriesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -254,11 +243,8 @@ class ProjectsLocationsRegistriesResource {
   /// this method will complete with the same error.
   async.Future<DeviceRegistry> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -302,13 +288,9 @@ class ProjectsLocationsRegistriesResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -356,13 +338,10 @@ class ProjectsLocationsRegistriesResource {
   /// this method will complete with the same error.
   async.Future<ListDeviceRegistriesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -412,14 +391,10 @@ class ProjectsLocationsRegistriesResource {
   async.Future<DeviceRegistry> patch(
     DeviceRegistry request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -464,13 +439,9 @@ class ProjectsLocationsRegistriesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -516,13 +487,9 @@ class ProjectsLocationsRegistriesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -565,13 +532,9 @@ class ProjectsLocationsRegistriesResource {
   async.Future<UnbindDeviceFromGatewayResponse> unbindDeviceFromGateway(
     UnbindDeviceFromGatewayRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -627,13 +590,9 @@ class ProjectsLocationsRegistriesDevicesResource {
   async.Future<Device> create(
     Device request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -673,11 +632,8 @@ class ProjectsLocationsRegistriesDevicesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -720,12 +676,9 @@ class ProjectsLocationsRegistriesDevicesResource {
   /// this method will complete with the same error.
   async.Future<Device> get(
     core.String name, {
-    core.String fieldMask,
-    core.String $fields,
+    core.String? fieldMask,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fieldMask != null) 'fieldMask': [fieldMask],
       if ($fields != null) 'fields': [$fields],
@@ -804,19 +757,16 @@ class ProjectsLocationsRegistriesDevicesResource {
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(
     core.String parent, {
-    core.List<core.String> deviceIds,
-    core.List<core.String> deviceNumIds,
-    core.String fieldMask,
-    core.String gatewayListOptions_associationsDeviceId,
-    core.String gatewayListOptions_associationsGatewayId,
-    core.String gatewayListOptions_gatewayType,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.List<core.String>? deviceIds,
+    core.List<core.String>? deviceNumIds,
+    core.String? fieldMask,
+    core.String? gatewayListOptions_associationsDeviceId,
+    core.String? gatewayListOptions_associationsGatewayId,
+    core.String? gatewayListOptions_gatewayType,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (deviceIds != null) 'deviceIds': deviceIds,
       if (deviceNumIds != null) 'deviceNumIds': deviceNumIds,
@@ -877,13 +827,9 @@ class ProjectsLocationsRegistriesDevicesResource {
   async.Future<DeviceConfig> modifyCloudToDeviceConfig(
     ModifyCloudToDeviceConfigRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -934,14 +880,10 @@ class ProjectsLocationsRegistriesDevicesResource {
   async.Future<Device> patch(
     Device request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -997,13 +939,9 @@ class ProjectsLocationsRegistriesDevicesResource {
   async.Future<SendCommandToDeviceResponse> sendCommandToDevice(
     SendCommandToDeviceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1059,12 +997,9 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResource {
   /// this method will complete with the same error.
   async.Future<ListDeviceConfigVersionsResponse> list(
     core.String name, {
-    core.int numVersions,
-    core.String $fields,
+    core.int? numVersions,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (numVersions != null) 'numVersions': ['${numVersions}'],
       if ($fields != null) 'fields': [$fields],
@@ -1118,12 +1053,9 @@ class ProjectsLocationsRegistriesDevicesStatesResource {
   /// this method will complete with the same error.
   async.Future<ListDeviceStatesResponse> list(
     core.String name, {
-    core.int numStates,
-    core.String $fields,
+    core.int? numStates,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (numStates != null) 'numStates': ['${numStates}'],
       if ($fields != null) 'fields': [$fields],
@@ -1179,13 +1111,9 @@ class ProjectsLocationsRegistriesGroupsResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1230,13 +1158,9 @@ class ProjectsLocationsRegistriesGroupsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1282,13 +1206,9 @@ class ProjectsLocationsRegistriesGroupsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1377,19 +1297,16 @@ class ProjectsLocationsRegistriesGroupsDevicesResource {
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(
     core.String parent, {
-    core.List<core.String> deviceIds,
-    core.List<core.String> deviceNumIds,
-    core.String fieldMask,
-    core.String gatewayListOptions_associationsDeviceId,
-    core.String gatewayListOptions_associationsGatewayId,
-    core.String gatewayListOptions_gatewayType,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.List<core.String>? deviceIds,
+    core.List<core.String>? deviceNumIds,
+    core.String? fieldMask,
+    core.String? gatewayListOptions_associationsDeviceId,
+    core.String? gatewayListOptions_associationsGatewayId,
+    core.String? gatewayListOptions_gatewayType,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (deviceIds != null) 'deviceIds': deviceIds,
       if (deviceNumIds != null) 'deviceNumIds': deviceNumIds,
@@ -1430,13 +1347,13 @@ class BindDeviceToGatewayRequest {
   /// user-defined device identifier.
   ///
   /// Required.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// The value of `gateway_id` can be either the device numeric ID or the
   /// user-defined device identifier.
   ///
   /// Required.
-  core.String gatewayId;
+  core.String? gatewayId;
 
   BindDeviceToGatewayRequest();
 
@@ -1449,9 +1366,9 @@ class BindDeviceToGatewayRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId,
-        if (gatewayId != null) 'gatewayId': gatewayId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (gatewayId != null) 'gatewayId': gatewayId!,
       };
 }
 
@@ -1463,7 +1380,7 @@ class BindDeviceToGatewayResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Associates `members` with a `role`.
@@ -1476,7 +1393,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -1508,12 +1425,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -1532,10 +1449,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1546,7 +1463,7 @@ class Device {
   ///
   /// Can be used to temporarily prevent the device from connecting if, for
   /// example, the sensor is generating bad data and needs maintenance.
-  core.bool blocked;
+  core.bool? blocked;
 
   /// The most recent device configuration, which is eventually sent from Cloud
   /// IoT Core to the device.
@@ -1554,7 +1471,7 @@ class Device {
   /// If not present on creation, the configuration will be initialized with an
   /// empty payload and version value of `1`. To update this field after
   /// creation, use the `DeviceManager.ModifyCloudToDeviceConfig` method.
-  DeviceConfig config;
+  DeviceConfig? config;
 
   /// The credentials used to authenticate this device.
   ///
@@ -1563,15 +1480,15 @@ class Device {
   /// bound to a single device at a time. When new credentials are added to a
   /// device, they are verified against the registry credentials. For details,
   /// see the description of the `DeviceRegistry.credentials` field.
-  core.List<DeviceCredential> credentials;
+  core.List<DeviceCredential>? credentials;
 
   /// Gateway-related configuration and state.
-  GatewayConfig gatewayConfig;
+  GatewayConfig? gatewayConfig;
 
   /// The user-defined device identifier.
   ///
   /// The device ID must be unique within a device registry.
-  core.String id;
+  core.String? id;
 
   /// The last time a cloud-to-device config version acknowledgment was received
   /// from the device.
@@ -1579,12 +1496,12 @@ class Device {
   /// This field is only for configurations sent through MQTT.
   ///
   /// Output only.
-  core.String lastConfigAckTime;
+  core.String? lastConfigAckTime;
 
   /// The last time a cloud-to-device config version was sent to the device.
   ///
   /// Output only.
-  core.String lastConfigSendTime;
+  core.String? lastConfigSendTime;
 
   /// The error message of the most recent error, such as a failure to publish
   /// to Cloud Pub/Sub.
@@ -1594,7 +1511,7 @@ class Device {
   /// Otherwise, this field is expected to have a status code other than OK.
   ///
   /// Output only.
-  Status lastErrorStatus;
+  Status? lastErrorStatus;
 
   /// The time the most recent error occurred, such as a failure to publish to
   /// Cloud Pub/Sub.
@@ -1602,7 +1519,7 @@ class Device {
   /// This field is the timestamp of 'last_error_status'.
   ///
   /// Output only.
-  core.String lastErrorTime;
+  core.String? lastErrorTime;
 
   /// The last time a telemetry event was received.
   ///
@@ -1610,7 +1527,7 @@ class Device {
   /// stale by a few minutes.
   ///
   /// Output only.
-  core.String lastEventTime;
+  core.String? lastEventTime;
 
   /// The last time an MQTT `PINGREQ` was received.
   ///
@@ -1620,7 +1537,7 @@ class Device {
   /// written to storage; they may be stale by a few minutes.
   ///
   /// Output only.
-  core.String lastHeartbeatTime;
+  core.String? lastHeartbeatTime;
 
   /// The last time a state event was received.
   ///
@@ -1628,7 +1545,7 @@ class Device {
   /// stale by a few minutes.
   ///
   /// Output only.
-  core.String lastStateTime;
+  core.String? lastStateTime;
 
   /// **Beta Feature** The logging verbosity for device activity.
   ///
@@ -1641,7 +1558,7 @@ class Device {
   /// - "INFO" : Informational events will be logged, such as connections and
   /// disconnections.
   /// - "DEBUG" : All events will be logged.
-  core.String logLevel;
+  core.String? logLevel;
 
   /// The metadata key-value pairs assigned to the device.
   ///
@@ -1651,7 +1568,7 @@ class Device {
   /// Values are free-form strings. Each value must be less than or equal to 32
   /// KB in size. The total size of all keys and values must be less than 256
   /// KB, and the maximum number of key-value pairs is 500.
-  core.Map<core.String, core.String> metadata;
+  core.Map<core.String, core.String>? metadata;
 
   /// The resource path name.
   ///
@@ -1660,21 +1577,21 @@ class Device {
   /// `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`.
   /// When `name` is populated as a response from the service, it always ends in
   /// the device numeric ID.
-  core.String name;
+  core.String? name;
 
   /// A server-defined unique numeric ID for the device.
   ///
   /// This is a more compact way to identify devices, and it is globally unique.
   ///
   /// Output only.
-  core.String numId;
+  core.String? numId;
 
   /// The state most recently received from the device.
   ///
   /// If no state has been reported, this field is not present.
   ///
   /// Output only.
-  DeviceState state;
+  DeviceState? state;
 
   Device();
 
@@ -1745,27 +1662,27 @@ class Device {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (blocked != null) 'blocked': blocked,
-        if (config != null) 'config': config.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (blocked != null) 'blocked': blocked!,
+        if (config != null) 'config': config!.toJson(),
         if (credentials != null)
-          'credentials': credentials.map((value) => value.toJson()).toList(),
-        if (gatewayConfig != null) 'gatewayConfig': gatewayConfig.toJson(),
-        if (id != null) 'id': id,
-        if (lastConfigAckTime != null) 'lastConfigAckTime': lastConfigAckTime,
+          'credentials': credentials!.map((value) => value.toJson()).toList(),
+        if (gatewayConfig != null) 'gatewayConfig': gatewayConfig!.toJson(),
+        if (id != null) 'id': id!,
+        if (lastConfigAckTime != null) 'lastConfigAckTime': lastConfigAckTime!,
         if (lastConfigSendTime != null)
-          'lastConfigSendTime': lastConfigSendTime,
+          'lastConfigSendTime': lastConfigSendTime!,
         if (lastErrorStatus != null)
-          'lastErrorStatus': lastErrorStatus.toJson(),
-        if (lastErrorTime != null) 'lastErrorTime': lastErrorTime,
-        if (lastEventTime != null) 'lastEventTime': lastEventTime,
-        if (lastHeartbeatTime != null) 'lastHeartbeatTime': lastHeartbeatTime,
-        if (lastStateTime != null) 'lastStateTime': lastStateTime,
-        if (logLevel != null) 'logLevel': logLevel,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (numId != null) 'numId': numId,
-        if (state != null) 'state': state.toJson(),
+          'lastErrorStatus': lastErrorStatus!.toJson(),
+        if (lastErrorTime != null) 'lastErrorTime': lastErrorTime!,
+        if (lastEventTime != null) 'lastEventTime': lastEventTime!,
+        if (lastHeartbeatTime != null) 'lastHeartbeatTime': lastHeartbeatTime!,
+        if (lastStateTime != null) 'lastStateTime': lastStateTime!,
+        if (logLevel != null) 'logLevel': logLevel!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (numId != null) 'numId': numId!,
+        if (state != null) 'state': state!.toJson(),
       };
 }
 
@@ -1774,9 +1691,9 @@ class Device {
 /// Eventually delivered to devices.
 class DeviceConfig {
   /// The device configuration data.
-  core.String binaryData;
+  core.String? binaryData;
   core.List<core.int> get binaryDataAsBytes =>
-      convert.base64.decode(binaryData);
+      convert.base64.decode(binaryData!);
 
   set binaryDataAsBytes(core.List<core.int> _bytes) {
     binaryData =
@@ -1789,7 +1706,7 @@ class DeviceConfig {
   /// This timestamp is set by the server.
   ///
   /// Output only.
-  core.String cloudUpdateTime;
+  core.String? cloudUpdateTime;
 
   /// The time at which Cloud IoT Core received the acknowledgment from the
   /// device, indicating that the device has received this configuration
@@ -1803,7 +1720,7 @@ class DeviceConfig {
   /// therefore are never acknowledged. This timestamp is set by Cloud IoT Core.
   ///
   /// Output only.
-  core.String deviceAckTime;
+  core.String? deviceAckTime;
 
   /// The version of this update.
   ///
@@ -1813,7 +1730,7 @@ class DeviceConfig {
   /// have a value of 1.
   ///
   /// Output only.
-  core.String version;
+  core.String? version;
 
   DeviceConfig();
 
@@ -1832,11 +1749,11 @@ class DeviceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (binaryData != null) 'binaryData': binaryData,
-        if (cloudUpdateTime != null) 'cloudUpdateTime': cloudUpdateTime,
-        if (deviceAckTime != null) 'deviceAckTime': deviceAckTime,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (binaryData != null) 'binaryData': binaryData!,
+        if (cloudUpdateTime != null) 'cloudUpdateTime': cloudUpdateTime!,
+        if (deviceAckTime != null) 'deviceAckTime': deviceAckTime!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1848,7 +1765,7 @@ class DeviceCredential {
   /// after this timestamp; however, it will not be automatically deleted.
   ///
   /// Optional.
-  core.String expirationTime;
+  core.String? expirationTime;
 
   /// A public key used to verify the signature of JSON Web Tokens (JWTs).
   ///
@@ -1861,7 +1778,7 @@ class DeviceCredential {
   /// credentials. However, if the registry does not contain a certificate,
   /// self-signed certificates and public keys will be accepted. New device
   /// credentials must be different from every registry-level certificate.
-  PublicKeyCredential publicKey;
+  PublicKeyCredential? publicKey;
 
   DeviceCredential();
 
@@ -1875,9 +1792,9 @@ class DeviceCredential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expirationTime != null) 'expirationTime': expirationTime,
-        if (publicKey != null) 'publicKey': publicKey.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expirationTime != null) 'expirationTime': expirationTime!,
+        if (publicKey != null) 'publicKey': publicKey!.toJson(),
       };
 }
 
@@ -1894,7 +1811,7 @@ class DeviceRegistry {
   /// this list of credentials: after a device has been successfully created in
   /// a registry, it should be able to connect even if its registry credentials
   /// are revoked, deleted, or modified.
-  core.List<RegistryCredential> credentials;
+  core.List<RegistryCredential>? credentials;
 
   /// The configuration for notification of telemetry events received from the
   /// device.
@@ -1907,15 +1824,15 @@ class DeviceRegistry {
   /// registry, the connection closes automatically. If you try to do so using
   /// an HTTP connection, an error is returned. Up to 10 configurations may be
   /// provided.
-  core.List<EventNotificationConfig> eventNotificationConfigs;
+  core.List<EventNotificationConfig>? eventNotificationConfigs;
 
   /// The DeviceService (HTTP) configuration for this device registry.
-  HttpConfig httpConfig;
+  HttpConfig? httpConfig;
 
   /// The identifier of this device registry.
   ///
   /// For example, `myRegistry`.
-  core.String id;
+  core.String? id;
 
   /// **Beta Feature** The default logging verbosity for activity from devices
   /// in this registry.
@@ -1929,16 +1846,16 @@ class DeviceRegistry {
   /// - "INFO" : Informational events will be logged, such as connections and
   /// disconnections.
   /// - "DEBUG" : All events will be logged.
-  core.String logLevel;
+  core.String? logLevel;
 
   /// The MQTT configuration for this device registry.
-  MqttConfig mqttConfig;
+  MqttConfig? mqttConfig;
 
   /// The resource path name.
   ///
   /// For example,
   /// `projects/example-project/locations/us-central1/registries/my-registry`.
-  core.String name;
+  core.String? name;
 
   /// The configuration for notification of new states received from the device.
   ///
@@ -1947,7 +1864,7 @@ class DeviceRegistry {
   /// permissions are misconfigured or the specified topic doesn't exist, no
   /// notification will be published but the state will still be stored in Cloud
   /// IoT Core.
-  StateNotificationConfig stateNotificationConfig;
+  StateNotificationConfig? stateNotificationConfig;
 
   DeviceRegistry();
 
@@ -1990,28 +1907,28 @@ class DeviceRegistry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (credentials != null)
-          'credentials': credentials.map((value) => value.toJson()).toList(),
+          'credentials': credentials!.map((value) => value.toJson()).toList(),
         if (eventNotificationConfigs != null)
           'eventNotificationConfigs':
-              eventNotificationConfigs.map((value) => value.toJson()).toList(),
-        if (httpConfig != null) 'httpConfig': httpConfig.toJson(),
-        if (id != null) 'id': id,
-        if (logLevel != null) 'logLevel': logLevel,
-        if (mqttConfig != null) 'mqttConfig': mqttConfig.toJson(),
-        if (name != null) 'name': name,
+              eventNotificationConfigs!.map((value) => value.toJson()).toList(),
+        if (httpConfig != null) 'httpConfig': httpConfig!.toJson(),
+        if (id != null) 'id': id!,
+        if (logLevel != null) 'logLevel': logLevel!,
+        if (mqttConfig != null) 'mqttConfig': mqttConfig!.toJson(),
+        if (name != null) 'name': name!,
         if (stateNotificationConfig != null)
-          'stateNotificationConfig': stateNotificationConfig.toJson(),
+          'stateNotificationConfig': stateNotificationConfig!.toJson(),
       };
 }
 
 /// The device state, as reported by the device.
 class DeviceState {
   /// The device state data.
-  core.String binaryData;
+  core.String? binaryData;
   core.List<core.int> get binaryDataAsBytes =>
-      convert.base64.decode(binaryData);
+      convert.base64.decode(binaryData!);
 
   set binaryDataAsBytes(core.List<core.int> _bytes) {
     binaryData =
@@ -2021,7 +1938,7 @@ class DeviceState {
   /// The time at which this state version was updated in Cloud IoT Core.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   DeviceState();
 
@@ -2034,9 +1951,9 @@ class DeviceState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (binaryData != null) 'binaryData': binaryData,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (binaryData != null) 'binaryData': binaryData!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2054,7 +1971,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The configuration for forwarding telemetry events.
@@ -2062,7 +1979,7 @@ class EventNotificationConfig {
   /// A Cloud Pub/Sub topic name.
   ///
   /// For example, `projects/myProject/topics/deviceEvents`.
-  core.String pubsubTopicName;
+  core.String? pubsubTopicName;
 
   /// If the subfolder name matches this string exactly, this configuration will
   /// be used.
@@ -2070,7 +1987,7 @@ class EventNotificationConfig {
   /// The string must not include the leading '/' character. If empty, all
   /// strings are matched. This field is used only for telemetry events;
   /// subfolders are not supported for state changes.
-  core.String subfolderMatches;
+  core.String? subfolderMatches;
 
   EventNotificationConfig();
 
@@ -2083,9 +2000,9 @@ class EventNotificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pubsubTopicName != null) 'pubsubTopicName': pubsubTopicName,
-        if (subfolderMatches != null) 'subfolderMatches': subfolderMatches,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pubsubTopicName != null) 'pubsubTopicName': pubsubTopicName!,
+        if (subfolderMatches != null) 'subfolderMatches': subfolderMatches!,
       };
 }
 
@@ -2114,24 +2031,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -2150,11 +2067,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -2172,7 +2089,7 @@ class GatewayConfig {
   /// - "ASSOCIATION_AND_DEVICE_AUTH_TOKEN" : The device is authenticated
   /// through both device credentials and gateway association. The device must
   /// be bound to the gateway and must provide its own credentials.
-  core.String gatewayAuthMethod;
+  core.String? gatewayAuthMethod;
 
   /// Indicates whether the device is a gateway.
   /// Possible string values are:
@@ -2180,18 +2097,18 @@ class GatewayConfig {
   /// non-gateway device.
   /// - "GATEWAY" : The device is a gateway.
   /// - "NON_GATEWAY" : The device is not a gateway.
-  core.String gatewayType;
+  core.String? gatewayType;
 
   /// The ID of the gateway the device accessed most recently.
   ///
   /// Output only.
-  core.String lastAccessedGatewayId;
+  core.String? lastAccessedGatewayId;
 
   /// The most recent time at which the device accessed the gateway specified in
   /// `last_accessed_gateway`.
   ///
   /// Output only.
-  core.String lastAccessedGatewayTime;
+  core.String? lastAccessedGatewayTime;
 
   GatewayConfig();
 
@@ -2210,13 +2127,13 @@ class GatewayConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gatewayAuthMethod != null) 'gatewayAuthMethod': gatewayAuthMethod,
-        if (gatewayType != null) 'gatewayType': gatewayType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gatewayAuthMethod != null) 'gatewayAuthMethod': gatewayAuthMethod!,
+        if (gatewayType != null) 'gatewayType': gatewayType!,
         if (lastAccessedGatewayId != null)
-          'lastAccessedGatewayId': lastAccessedGatewayId,
+          'lastAccessedGatewayId': lastAccessedGatewayId!,
         if (lastAccessedGatewayTime != null)
-          'lastAccessedGatewayTime': lastAccessedGatewayTime,
+          'lastAccessedGatewayTime': lastAccessedGatewayTime!,
       };
 }
 
@@ -2224,7 +2141,7 @@ class GatewayConfig {
 class GetIamPolicyRequest {
   /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
   /// `GetIamPolicy`.
-  GetPolicyOptions options;
+  GetPolicyOptions? options;
 
   GetIamPolicyRequest();
 
@@ -2235,8 +2152,8 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (options != null) 'options': options.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (options != null) 'options': options!.toJson(),
       };
 }
 
@@ -2252,7 +2169,7 @@ class GetPolicyOptions {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// Optional.
-  core.int requestedPolicyVersion;
+  core.int? requestedPolicyVersion;
 
   GetPolicyOptions();
 
@@ -2262,9 +2179,9 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion,
+          'requestedPolicyVersion': requestedPolicyVersion!,
       };
 }
 
@@ -2279,7 +2196,7 @@ class HttpConfig {
   /// - "HTTP_ENABLED" : Enables DeviceService (HTTP) service for the registry.
   /// - "HTTP_DISABLED" : Disables DeviceService (HTTP) service for the
   /// registry.
-  core.String httpEnabledState;
+  core.String? httpEnabledState;
 
   HttpConfig();
 
@@ -2289,8 +2206,8 @@ class HttpConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (httpEnabledState != null) 'httpEnabledState': httpEnabledState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (httpEnabledState != null) 'httpEnabledState': httpEnabledState!,
       };
 }
 
@@ -2300,7 +2217,7 @@ class ListDeviceConfigVersionsResponse {
   ///
   /// Versions are listed in decreasing order, starting from the most recent
   /// one.
-  core.List<DeviceConfig> deviceConfigs;
+  core.List<DeviceConfig>? deviceConfigs;
 
   ListDeviceConfigVersionsResponse();
 
@@ -2313,22 +2230,22 @@ class ListDeviceConfigVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deviceConfigs != null)
           'deviceConfigs':
-              deviceConfigs.map((value) => value.toJson()).toList(),
+              deviceConfigs!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response for `ListDeviceRegistries`.
 class ListDeviceRegistriesResponse {
   /// The registries that matched the query.
-  core.List<DeviceRegistry> deviceRegistries;
+  core.List<DeviceRegistry>? deviceRegistries;
 
   /// If not empty, indicates that there may be more registries that match the
   /// request; this value should be passed in a new
   /// `ListDeviceRegistriesRequest`.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListDeviceRegistriesResponse();
 
@@ -2344,11 +2261,11 @@ class ListDeviceRegistriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deviceRegistries != null)
           'deviceRegistries':
-              deviceRegistries.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              deviceRegistries!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2358,7 +2275,7 @@ class ListDeviceStatesResponse {
   ///
   /// States are listed in descending order of server update time, starting from
   /// the most recent one.
-  core.List<DeviceState> deviceStates;
+  core.List<DeviceState>? deviceStates;
 
   ListDeviceStatesResponse();
 
@@ -2371,20 +2288,20 @@ class ListDeviceStatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deviceStates != null)
-          'deviceStates': deviceStates.map((value) => value.toJson()).toList(),
+          'deviceStates': deviceStates!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response for `ListDevices`.
 class ListDevicesResponse {
   /// The devices that match the request.
-  core.List<Device> devices;
+  core.List<Device>? devices;
 
   /// If not empty, indicates that there may be more devices that match the
   /// request; this value should be passed in a new `ListDevicesRequest`.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListDevicesResponse();
 
@@ -2400,10 +2317,10 @@ class ListDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (devices != null)
-          'devices': devices.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'devices': devices!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2412,9 +2329,9 @@ class ModifyCloudToDeviceConfigRequest {
   /// The configuration data for the device.
   ///
   /// Required.
-  core.String binaryData;
+  core.String? binaryData;
   core.List<core.int> get binaryDataAsBytes =>
-      convert.base64.decode(binaryData);
+      convert.base64.decode(binaryData!);
 
   set binaryDataAsBytes(core.List<core.int> _bytes) {
     binaryData =
@@ -2428,7 +2345,7 @@ class ModifyCloudToDeviceConfigRequest {
   /// fail if the version number found on the server does not match this version
   /// number. This is used to support multiple simultaneous updates without
   /// losing data.
-  core.String versionToUpdate;
+  core.String? versionToUpdate;
 
   ModifyCloudToDeviceConfigRequest();
 
@@ -2441,9 +2358,9 @@ class ModifyCloudToDeviceConfigRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (binaryData != null) 'binaryData': binaryData,
-        if (versionToUpdate != null) 'versionToUpdate': versionToUpdate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (binaryData != null) 'binaryData': binaryData!,
+        if (versionToUpdate != null) 'versionToUpdate': versionToUpdate!,
       };
 }
 
@@ -2457,7 +2374,7 @@ class MqttConfig {
   /// MQTT will be enabled by default.
   /// - "MQTT_ENABLED" : Enables a MQTT connection.
   /// - "MQTT_DISABLED" : Disables a MQTT connection.
-  core.String mqttEnabledState;
+  core.String? mqttEnabledState;
 
   MqttConfig();
 
@@ -2467,8 +2384,8 @@ class MqttConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (mqttEnabledState != null) 'mqttEnabledState': mqttEnabledState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (mqttEnabledState != null) 'mqttEnabledState': mqttEnabledState!,
       };
 }
 
@@ -2509,7 +2426,7 @@ class Policy {
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -2523,8 +2440,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -2548,7 +2465,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -2567,18 +2484,18 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
 /// A public key certificate format and data.
 class PublicKeyCertificate {
   /// The certificate data.
-  core.String certificate;
+  core.String? certificate;
 
   /// The certificate format.
   /// Possible string values are:
@@ -2587,14 +2504,14 @@ class PublicKeyCertificate {
   /// - "X509_CERTIFICATE_PEM" : An X.509v3 certificate
   /// ([RFC5280](https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64, and
   /// wrapped by `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
-  core.String format;
+  core.String? format;
 
   /// The certificate details.
   ///
   /// Used only for X.509 certificates.
   ///
   /// Output only.
-  X509CertificateDetails x509Details;
+  X509CertificateDetails? x509Details;
 
   PublicKeyCertificate();
 
@@ -2611,10 +2528,10 @@ class PublicKeyCertificate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (certificate != null) 'certificate': certificate,
-        if (format != null) 'format': format,
-        if (x509Details != null) 'x509Details': x509Details.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (certificate != null) 'certificate': certificate!,
+        if (format != null) 'format': format!,
+        if (x509Details != null) 'x509Details': x509Details!.toJson(),
       };
 }
 
@@ -2642,10 +2559,10 @@ class PublicKeyCredential {
   /// (\[RFC5280\]( https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64,
   /// and wrapped by `-----BEGIN CERTIFICATE-----` and `-----END
   /// CERTIFICATE-----`.
-  core.String format;
+  core.String? format;
 
   /// The key data.
-  core.String key;
+  core.String? key;
 
   PublicKeyCredential();
 
@@ -2658,16 +2575,16 @@ class PublicKeyCredential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (format != null) 'format': format,
-        if (key != null) 'key': key,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (format != null) 'format': format!,
+        if (key != null) 'key': key!,
       };
 }
 
 /// A server-stored registry credential used to validate device credentials.
 class RegistryCredential {
   /// A public key certificate used to verify the device credentials.
-  PublicKeyCertificate publicKeyCertificate;
+  PublicKeyCertificate? publicKeyCertificate;
 
   RegistryCredential();
 
@@ -2678,9 +2595,9 @@ class RegistryCredential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (publicKeyCertificate != null)
-          'publicKeyCertificate': publicKeyCertificate.toJson(),
+          'publicKeyCertificate': publicKeyCertificate!.toJson(),
       };
 }
 
@@ -2689,9 +2606,9 @@ class SendCommandToDeviceRequest {
   /// The command data to send to the device.
   ///
   /// Required.
-  core.String binaryData;
+  core.String? binaryData;
   core.List<core.int> get binaryDataAsBytes =>
-      convert.base64.decode(binaryData);
+      convert.base64.decode(binaryData!);
 
   set binaryDataAsBytes(core.List<core.int> _bytes) {
     binaryData =
@@ -2705,7 +2622,7 @@ class SendCommandToDeviceRequest {
   /// /devices/{device-id}/commands/{subfolder} topic. Multi-level subfolders
   /// are allowed. This field must not have more than 256 characters, and must
   /// not contain any MQTT wildcards ("+" or "#") or null characters.
-  core.String subfolder;
+  core.String? subfolder;
 
   SendCommandToDeviceRequest();
 
@@ -2718,9 +2635,9 @@ class SendCommandToDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (binaryData != null) 'binaryData': binaryData,
-        if (subfolder != null) 'subfolder': subfolder,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (binaryData != null) 'binaryData': binaryData!,
+        if (subfolder != null) 'subfolder': subfolder!,
       };
 }
 
@@ -2732,7 +2649,7 @@ class SendCommandToDeviceResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -2742,7 +2659,7 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   SetIamPolicyRequest();
 
@@ -2753,8 +2670,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
       };
 }
 
@@ -2763,7 +2680,7 @@ class StateNotificationConfig {
   /// A Cloud Pub/Sub topic name.
   ///
   /// For example, `projects/myProject/topics/deviceEvents`.
-  core.String pubsubTopicName;
+  core.String? pubsubTopicName;
 
   StateNotificationConfig();
 
@@ -2773,8 +2690,8 @@ class StateNotificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pubsubTopicName != null) 'pubsubTopicName': pubsubTopicName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pubsubTopicName != null) 'pubsubTopicName': pubsubTopicName!,
       };
 }
 
@@ -2787,7 +2704,7 @@ class StateNotificationConfig {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -2795,13 +2712,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -2825,10 +2742,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -2839,7 +2756,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -2851,8 +2768,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -2860,7 +2777,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -2872,8 +2789,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -2885,13 +2802,13 @@ class UnbindDeviceFromGatewayRequest {
   /// user-defined device identifier.
   ///
   /// Required.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// The value of `gateway_id` can be either the device numeric ID or the
   /// user-defined device identifier.
   ///
   /// Required.
-  core.String gatewayId;
+  core.String? gatewayId;
 
   UnbindDeviceFromGatewayRequest();
 
@@ -2904,9 +2821,9 @@ class UnbindDeviceFromGatewayRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId,
-        if (gatewayId != null) 'gatewayId': gatewayId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (gatewayId != null) 'gatewayId': gatewayId!,
       };
 }
 
@@ -2918,7 +2835,7 @@ class UnbindDeviceFromGatewayResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Details of an X.509 certificate.
@@ -2926,22 +2843,22 @@ class UnbindDeviceFromGatewayResponse {
 /// For informational purposes only.
 class X509CertificateDetails {
   /// The time the certificate becomes invalid.
-  core.String expiryTime;
+  core.String? expiryTime;
 
   /// The entity that signed the certificate.
-  core.String issuer;
+  core.String? issuer;
 
   /// The type of public key in the certificate.
-  core.String publicKeyType;
+  core.String? publicKeyType;
 
   /// The algorithm used to sign the certificate.
-  core.String signatureAlgorithm;
+  core.String? signatureAlgorithm;
 
   /// The time the certificate becomes valid.
-  core.String startTime;
+  core.String? startTime;
 
   /// The entity the certificate and public key belong to.
-  core.String subject;
+  core.String? subject;
 
   X509CertificateDetails();
 
@@ -2966,13 +2883,13 @@ class X509CertificateDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expiryTime != null) 'expiryTime': expiryTime,
-        if (issuer != null) 'issuer': issuer,
-        if (publicKeyType != null) 'publicKeyType': publicKeyType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expiryTime != null) 'expiryTime': expiryTime!,
+        if (issuer != null) 'issuer': issuer!,
+        if (publicKeyType != null) 'publicKeyType': publicKeyType!,
         if (signatureAlgorithm != null)
-          'signatureAlgorithm': signatureAlgorithm,
-        if (startTime != null) 'startTime': startTime,
-        if (subject != null) 'subject': subject,
+          'signatureAlgorithm': signatureAlgorithm!,
+        if (startTime != null) 'startTime': startTime!,
+        if (subject != null) 'subject': subject!,
       };
 }

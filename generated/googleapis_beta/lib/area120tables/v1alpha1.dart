@@ -102,11 +102,8 @@ class TablesResource {
   /// this method will complete with the same error.
   async.Future<Table> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -145,9 +142,9 @@ class TablesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTablesResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -195,13 +192,9 @@ class TablesRowsResource {
   async.Future<BatchCreateRowsResponse> batchCreate(
     BatchCreateRowsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -243,13 +236,9 @@ class TablesRowsResource {
   async.Future<Empty> batchDelete(
     BatchDeleteRowsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -290,13 +279,9 @@ class TablesRowsResource {
   async.Future<BatchUpdateRowsResponse> batchUpdate(
     BatchUpdateRowsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -345,14 +330,10 @@ class TablesRowsResource {
   async.Future<Row> create(
     Row request,
     core.String parent, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -391,11 +372,8 @@ class TablesRowsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -439,12 +417,9 @@ class TablesRowsResource {
   /// this method will complete with the same error.
   async.Future<Row> get(
     core.String name, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -501,15 +476,12 @@ class TablesRowsResource {
   /// this method will complete with the same error.
   async.Future<ListRowsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -563,15 +535,11 @@ class TablesRowsResource {
   async.Future<Row> patch(
     Row request,
     core.String name, {
-    core.String updateMask,
-    core.String view,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if (view != null) 'view': [view],
@@ -617,11 +585,8 @@ class WorkspacesResource {
   /// this method will complete with the same error.
   async.Future<Workspace> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -660,9 +625,9 @@ class WorkspacesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListWorkspacesResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -689,7 +654,7 @@ class BatchCreateRowsRequest {
   /// A maximum of 500 rows can be created in a single batch.
   ///
   /// Required.
-  core.List<CreateRowRequest> requests;
+  core.List<CreateRowRequest>? requests;
 
   BatchCreateRowsRequest();
 
@@ -702,16 +667,16 @@ class BatchCreateRowsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requests != null)
-          'requests': requests.map((value) => value.toJson()).toList(),
+          'requests': requests!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for TablesService.BatchCreateRows.
 class BatchCreateRowsResponse {
   /// The created rows.
-  core.List<Row> rows;
+  core.List<Row>? rows;
 
   BatchCreateRowsResponse();
 
@@ -724,8 +689,8 @@ class BatchCreateRowsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -738,7 +703,7 @@ class BatchDeleteRowsRequest {
   /// tables/{table}/rows/{row}
   ///
   /// Required.
-  core.List<core.String> names;
+  core.List<core.String>? names;
 
   BatchDeleteRowsRequest();
 
@@ -750,8 +715,8 @@ class BatchDeleteRowsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (names != null) 'names': names,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (names != null) 'names': names!,
       };
 }
 
@@ -762,7 +727,7 @@ class BatchUpdateRowsRequest {
   /// A maximum of 500 rows can be modified in a single batch.
   ///
   /// Required.
-  core.List<UpdateRowRequest> requests;
+  core.List<UpdateRowRequest>? requests;
 
   BatchUpdateRowsRequest();
 
@@ -775,16 +740,16 @@ class BatchUpdateRowsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requests != null)
-          'requests': requests.map((value) => value.toJson()).toList(),
+          'requests': requests!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for TablesService.BatchUpdateRows.
 class BatchUpdateRowsResponse {
   /// The updated rows.
-  core.List<Row> rows;
+  core.List<Row>? rows;
 
   BatchUpdateRowsResponse();
 
@@ -797,8 +762,8 @@ class BatchUpdateRowsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -811,10 +776,10 @@ class ColumnDescription {
   /// file_attachment_list.
   ///
   /// These types directly map to the column types supported on Tables website.
-  core.String dataType;
+  core.String? dataType;
 
   /// Internal id for a column.
-  core.String id;
+  core.String? id;
 
   /// Range of labeled values for the column.
   ///
@@ -823,7 +788,7 @@ class ColumnDescription {
   /// clients implement better user data validation.
   ///
   /// Optional.
-  core.List<LabeledItem> labels;
+  core.List<LabeledItem>? labels;
 
   /// Indicates that this is a lookup column whose value is derived from the
   /// relationship column specified in the details.
@@ -832,17 +797,17 @@ class ColumnDescription {
   /// update the associated relationship column.
   ///
   /// Optional.
-  LookupDetails lookupDetails;
+  LookupDetails? lookupDetails;
 
   /// column name
-  core.String name;
+  core.String? name;
 
   /// Additional details about a relationship column.
   ///
   /// Specified when data_type is relationship.
   ///
   /// Optional.
-  RelationshipDetails relationshipDetails;
+  RelationshipDetails? relationshipDetails;
 
   ColumnDescription();
 
@@ -872,15 +837,15 @@ class ColumnDescription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataType != null) 'dataType': dataType,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataType != null) 'dataType': dataType!,
+        if (id != null) 'id': id!,
         if (labels != null)
-          'labels': labels.map((value) => value.toJson()).toList(),
-        if (lookupDetails != null) 'lookupDetails': lookupDetails.toJson(),
-        if (name != null) 'name': name,
+          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (lookupDetails != null) 'lookupDetails': lookupDetails!.toJson(),
+        if (name != null) 'name': name!,
         if (relationshipDetails != null)
-          'relationshipDetails': relationshipDetails.toJson(),
+          'relationshipDetails': relationshipDetails!.toJson(),
       };
 }
 
@@ -891,12 +856,12 @@ class CreateRowRequest {
   /// Format: tables/{table}
   ///
   /// Required.
-  core.String parent;
+  core.String? parent;
 
   /// The row to create.
   ///
   /// Required.
-  Row row;
+  Row? row;
 
   /// Column key to use for values in the row.
   ///
@@ -907,7 +872,7 @@ class CreateRowRequest {
   /// - "VIEW_UNSPECIFIED" : Defaults to user entered text.
   /// - "COLUMN_ID_VIEW" : Uses internally generated column id to identify
   /// values.
-  core.String view;
+  core.String? view;
 
   CreateRowRequest();
 
@@ -923,10 +888,10 @@ class CreateRowRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (parent != null) 'parent': parent,
-        if (row != null) 'row': row.toJson(),
-        if (view != null) 'view': view,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (parent != null) 'parent': parent!,
+        if (row != null) 'row': row!.toJson(),
+        if (view != null) 'view': view!,
       };
 }
 
@@ -944,16 +909,16 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A single item in a labeled column.
 class LabeledItem {
   /// Internal id associated with the item.
-  core.String id;
+  core.String? id;
 
   /// Display string as entered by user.
-  core.String name;
+  core.String? name;
 
   LabeledItem();
 
@@ -966,9 +931,9 @@ class LabeledItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -977,10 +942,10 @@ class ListRowsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is empty, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The rows from the specified table.
-  core.List<Row> rows;
+  core.List<Row>? rows;
 
   ListRowsResponse();
 
@@ -996,9 +961,9 @@ class ListRowsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1007,10 +972,10 @@ class ListTablesResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is empty, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of tables.
-  core.List<Table> tables;
+  core.List<Table>? tables;
 
   ListTablesResponse();
 
@@ -1026,10 +991,10 @@ class ListTablesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (tables != null)
-          'tables': tables.map((value) => value.toJson()).toList(),
+          'tables': tables!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1038,10 +1003,10 @@ class ListWorkspacesResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is empty, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of workspaces.
-  core.List<Workspace> workspaces;
+  core.List<Workspace>? workspaces;
 
   ListWorkspacesResponse();
 
@@ -1057,10 +1022,10 @@ class ListWorkspacesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (workspaces != null)
-          'workspaces': workspaces.map((value) => value.toJson()).toList(),
+          'workspaces': workspaces!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1068,10 +1033,10 @@ class ListWorkspacesResponse {
 /// relationship.
 class LookupDetails {
   /// The name of the relationship column associated with the lookup.
-  core.String relationshipColumn;
+  core.String? relationshipColumn;
 
   /// The id of the relationship column.
-  core.String relationshipColumnId;
+  core.String? relationshipColumnId;
 
   LookupDetails();
 
@@ -1084,18 +1049,18 @@ class LookupDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (relationshipColumn != null)
-          'relationshipColumn': relationshipColumn,
+          'relationshipColumn': relationshipColumn!,
         if (relationshipColumnId != null)
-          'relationshipColumnId': relationshipColumnId,
+          'relationshipColumnId': relationshipColumnId!,
       };
 }
 
 /// Details about a relationship column.
 class RelationshipDetails {
   /// The name of the table this relationship is linked to.
-  core.String linkedTable;
+  core.String? linkedTable;
 
   RelationshipDetails();
 
@@ -1105,24 +1070,24 @@ class RelationshipDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (linkedTable != null) 'linkedTable': linkedTable,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (linkedTable != null) 'linkedTable': linkedTable!,
       };
 }
 
 /// A single row in a table.
 class Row {
   /// Time when the row was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// The resource name of the row.
   ///
   /// Row names have the form `tables/{table}/rows/{row}`. The name is ignored
   /// when creating a row.
-  core.String name;
+  core.String? name;
 
   /// Time when the row was last updated.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// The values of the row.
   ///
@@ -1131,7 +1096,7 @@ class Row {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> values;
+  core.Map<core.String, core.Object>? values;
 
   Row();
 
@@ -1156,11 +1121,11 @@ class Row {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (name != null) 'name': name,
-        if (updateTime != null) 'updateTime': updateTime,
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (values != null) 'values': values!,
       };
 }
 
@@ -1169,21 +1134,21 @@ class Table {
   /// List of columns in this table.
   ///
   /// Order of columns matches the display order.
-  core.List<ColumnDescription> columns;
+  core.List<ColumnDescription>? columns;
 
   /// Time when the table was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// The human readable title of the table.
-  core.String displayName;
+  core.String? displayName;
 
   /// The resource name of the table.
   ///
   /// Table names have the form `tables/{table}`.
-  core.String name;
+  core.String? name;
 
   /// Time when the table was last updated excluding updates to individual rows
-  core.String updateTime;
+  core.String? updateTime;
 
   Table();
 
@@ -1208,13 +1173,13 @@ class Table {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (columns != null)
-          'columns': columns.map((value) => value.toJson()).toList(),
-        if (createTime != null) 'createTime': createTime,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (updateTime != null) 'updateTime': updateTime,
+          'columns': columns!.map((value) => value.toJson()).toList(),
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1223,10 +1188,10 @@ class UpdateRowRequest {
   /// The row to update.
   ///
   /// Required.
-  Row row;
+  Row? row;
 
   /// The list of fields to update.
-  core.String updateMask;
+  core.String? updateMask;
 
   /// Column key to use for values in the row.
   ///
@@ -1237,7 +1202,7 @@ class UpdateRowRequest {
   /// - "VIEW_UNSPECIFIED" : Defaults to user entered text.
   /// - "COLUMN_ID_VIEW" : Uses internally generated column id to identify
   /// values.
-  core.String view;
+  core.String? view;
 
   UpdateRowRequest();
 
@@ -1253,31 +1218,31 @@ class UpdateRowRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (row != null) 'row': row.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
-        if (view != null) 'view': view,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (row != null) 'row': row!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
+        if (view != null) 'view': view!,
       };
 }
 
 /// A single workspace.
 class Workspace {
   /// Time when the workspace was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// The human readable title of the workspace.
-  core.String displayName;
+  core.String? displayName;
 
   /// The resource name of the workspace.
   ///
   /// Workspace names have the form `workspaces/{workspace}`.
-  core.String name;
+  core.String? name;
 
   /// The list of tables in the workspace.
-  core.List<Table> tables;
+  core.List<Table>? tables;
 
   /// Time when the workspace was last updated.
-  core.String updateTime;
+  core.String? updateTime;
 
   Workspace();
 
@@ -1302,12 +1267,12 @@ class Workspace {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
         if (tables != null)
-          'tables': tables.map((value) => value.toJson()).toList(),
-        if (updateTime != null) 'updateTime': updateTime,
+          'tables': tables!.map((value) => value.toJson()).toList(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }

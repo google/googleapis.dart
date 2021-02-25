@@ -101,11 +101,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -145,14 +142,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -210,14 +204,10 @@ class ProjectsLocationsKeyRingsResource {
   async.Future<KeyRing> create(
     KeyRing request,
     core.String parent, {
-    core.String keyRingId,
-    core.String $fields,
+    core.String? keyRingId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (keyRingId != null) 'keyRingId': [keyRingId],
       if ($fields != null) 'fields': [$fields],
@@ -255,11 +245,8 @@ class ProjectsLocationsKeyRingsResource {
   /// this method will complete with the same error.
   async.Future<KeyRing> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -307,12 +294,9 @@ class ProjectsLocationsKeyRingsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -368,15 +352,12 @@ class ProjectsLocationsKeyRingsResource {
   /// this method will complete with the same error.
   async.Future<ListKeyRingsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -425,13 +406,9 @@ class ProjectsLocationsKeyRingsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -479,13 +456,9 @@ class ProjectsLocationsKeyRingsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -550,15 +523,11 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   async.Future<CryptoKey> create(
     CryptoKey request,
     core.String parent, {
-    core.String cryptoKeyId,
-    core.bool skipInitialVersionCreation,
-    core.String $fields,
+    core.String? cryptoKeyId,
+    core.bool? skipInitialVersionCreation,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (cryptoKeyId != null) 'cryptoKeyId': [cryptoKeyId],
       if (skipInitialVersionCreation != null)
@@ -605,13 +574,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   async.Future<DecryptResponse> decrypt(
     DecryptRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -656,13 +621,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   async.Future<EncryptResponse> encrypt(
     EncryptRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -701,11 +662,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   /// this method will complete with the same error.
   async.Future<CryptoKey> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -753,12 +711,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -823,16 +778,13 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   /// this method will complete with the same error.
   async.Future<ListCryptoKeysResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String versionView,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? versionView,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -881,14 +833,10 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   async.Future<CryptoKey> patch(
     CryptoKey request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -933,13 +881,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -987,13 +931,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1037,13 +977,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   async.Future<CryptoKey> updatePrimaryVersion(
     UpdateCryptoKeyPrimaryVersionRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1095,13 +1031,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   async.Future<AsymmetricDecryptResponse> asymmetricDecrypt(
     AsymmetricDecryptRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1146,13 +1078,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   async.Future<AsymmetricSignResponse> asymmetricSign(
     AsymmetricSignRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1198,13 +1126,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   async.Future<CryptoKeyVersion> create(
     CryptoKeyVersion request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1252,13 +1176,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   async.Future<CryptoKeyVersion> destroy(
     DestroyCryptoKeyVersionRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1296,11 +1216,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   /// this method will complete with the same error.
   async.Future<CryptoKeyVersion> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1338,11 +1255,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   /// this method will complete with the same error.
   async.Future<PublicKey> getPublicKey(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1385,13 +1299,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   async.Future<CryptoKeyVersion> import(
     ImportCryptoKeyVersionRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1456,16 +1366,13 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   /// this method will complete with the same error.
   async.Future<ListCryptoKeyVersionsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1519,14 +1426,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   async.Future<CryptoKeyVersion> patch(
     CryptoKeyVersion request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1570,13 +1473,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   async.Future<CryptoKeyVersion> restore(
     RestoreCryptoKeyVersionRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1630,14 +1529,10 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   async.Future<ImportJob> create(
     ImportJob request,
     core.String parent, {
-    core.String importJobId,
-    core.String $fields,
+    core.String? importJobId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (importJobId != null) 'importJobId': [importJobId],
       if ($fields != null) 'fields': [$fields],
@@ -1676,11 +1571,8 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   /// this method will complete with the same error.
   async.Future<ImportJob> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1728,12 +1620,9 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -1790,15 +1679,12 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   /// this method will complete with the same error.
   async.Future<ListImportJobsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1848,13 +1734,9 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1902,13 +1784,9 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1934,9 +1812,9 @@ class AsymmetricDecryptRequest {
   /// OAEP.
   ///
   /// Required.
-  core.String ciphertext;
+  core.String? ciphertext;
   core.List<core.int> get ciphertextAsBytes =>
-      convert.base64.decode(ciphertext);
+      convert.base64.decode(ciphertext!);
 
   set ciphertextAsBytes(core.List<core.int> _bytes) {
     ciphertext =
@@ -1959,7 +1837,7 @@ class AsymmetricDecryptRequest {
   /// field is in Beta.
   ///
   /// Optional.
-  core.String ciphertextCrc32c;
+  core.String? ciphertextCrc32c;
 
   AsymmetricDecryptRequest();
 
@@ -1972,17 +1850,17 @@ class AsymmetricDecryptRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ciphertext != null) 'ciphertext': ciphertext,
-        if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ciphertext != null) 'ciphertext': ciphertext!,
+        if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c!,
       };
 }
 
 /// Response message for KeyManagementService.AsymmetricDecrypt.
 class AsymmetricDecryptResponse {
   /// The decrypted data originally encrypted with the matching public key.
-  core.String plaintext;
-  core.List<core.int> get plaintextAsBytes => convert.base64.decode(plaintext);
+  core.String? plaintext;
+  core.List<core.int> get plaintextAsBytes => convert.base64.decode(plaintext!);
 
   set plaintextAsBytes(core.List<core.int> _bytes) {
     plaintext =
@@ -2002,7 +1880,7 @@ class AsymmetricDecryptResponse {
   /// integer, which will never exceed 2^32-1, and can be safely downconverted
   /// to uint32 in languages that support this type. NOTE: This field is in
   /// Beta.
-  core.String plaintextCrc32c;
+  core.String? plaintextCrc32c;
 
   /// The ProtectionLevel of the CryptoKeyVersion used in decryption.
   /// Possible string values are:
@@ -2010,7 +1888,7 @@ class AsymmetricDecryptResponse {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
-  core.String protectionLevel;
+  core.String? protectionLevel;
 
   /// Integrity verification field.
   ///
@@ -2022,7 +1900,7 @@ class AsymmetricDecryptResponse {
   /// AsymmetricDecryptRequest.ciphertext_crc32c but this field is still false,
   /// discard the response and perform a limited number of retries. NOTE: This
   /// field is in Beta.
-  core.bool verifiedCiphertextCrc32c;
+  core.bool? verifiedCiphertextCrc32c;
 
   AsymmetricDecryptResponse();
 
@@ -2041,12 +1919,12 @@ class AsymmetricDecryptResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (plaintext != null) 'plaintext': plaintext,
-        if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c,
-        if (protectionLevel != null) 'protectionLevel': protectionLevel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (plaintext != null) 'plaintext': plaintext!,
+        if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
         if (verifiedCiphertextCrc32c != null)
-          'verifiedCiphertextCrc32c': verifiedCiphertextCrc32c,
+          'verifiedCiphertextCrc32c': verifiedCiphertextCrc32c!,
       };
 }
 
@@ -2058,7 +1936,7 @@ class AsymmetricSignRequest {
   /// the key version's algorithm.
   ///
   /// Optional.
-  Digest digest;
+  Digest? digest;
 
   /// An optional CRC32C checksum of the AsymmetricSignRequest.digest.
   ///
@@ -2076,7 +1954,7 @@ class AsymmetricSignRequest {
   /// field is in Beta.
   ///
   /// Optional.
-  core.String digestCrc32c;
+  core.String? digestCrc32c;
 
   AsymmetricSignRequest();
 
@@ -2090,9 +1968,9 @@ class AsymmetricSignRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (digest != null) 'digest': digest.toJson(),
-        if (digestCrc32c != null) 'digestCrc32c': digestCrc32c,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (digest != null) 'digest': digest!.toJson(),
+        if (digestCrc32c != null) 'digestCrc32c': digestCrc32c!,
       };
 }
 
@@ -2102,7 +1980,7 @@ class AsymmetricSignResponse {
   ///
   /// Check this field to verify that the intended resource was used for
   /// signing. NOTE: This field is in Beta.
-  core.String name;
+  core.String? name;
 
   /// The ProtectionLevel of the CryptoKeyVersion used for signing.
   /// Possible string values are:
@@ -2110,11 +1988,11 @@ class AsymmetricSignResponse {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
-  core.String protectionLevel;
+  core.String? protectionLevel;
 
   /// The created signature.
-  core.String signature;
-  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature);
+  core.String? signature;
+  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
 
   set signatureAsBytes(core.List<core.int> _bytes) {
     signature =
@@ -2134,7 +2012,7 @@ class AsymmetricSignResponse {
   /// integer, which will never exceed 2^32-1, and can be safely downconverted
   /// to uint32 in languages that support this type. NOTE: This field is in
   /// Beta.
-  core.String signatureCrc32c;
+  core.String? signatureCrc32c;
 
   /// Integrity verification field.
   ///
@@ -2146,7 +2024,7 @@ class AsymmetricSignResponse {
   /// AsymmetricSignRequest.digest_crc32c but this field is still false, discard
   /// the response and perform a limited number of retries. NOTE: This field is
   /// in Beta.
-  core.bool verifiedDigestCrc32c;
+  core.bool? verifiedDigestCrc32c;
 
   AsymmetricSignResponse();
 
@@ -2168,13 +2046,13 @@ class AsymmetricSignResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (protectionLevel != null) 'protectionLevel': protectionLevel,
-        if (signature != null) 'signature': signature,
-        if (signatureCrc32c != null) 'signatureCrc32c': signatureCrc32c,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+        if (signature != null) 'signature': signature!,
+        if (signatureCrc32c != null) 'signatureCrc32c': signatureCrc32c!,
         if (verifiedDigestCrc32c != null)
-          'verifiedDigestCrc32c': verifiedDigestCrc32c,
+          'verifiedDigestCrc32c': verifiedDigestCrc32c!,
       };
 }
 
@@ -2197,13 +2075,13 @@ class AsymmetricSignResponse {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -2219,11 +2097,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -2238,7 +2116,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -2246,7 +2124,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -2261,9 +2139,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -2277,7 +2155,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -2309,12 +2187,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -2333,10 +2211,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -2346,13 +2224,13 @@ class Binding {
 /// https://tools.ietf.org/html/rfc5246#section-7.4.2.
 class CertificateChains {
   /// Cavium certificate chain corresponding to the attestation.
-  core.List<core.String> caviumCerts;
+  core.List<core.String>? caviumCerts;
 
   /// Google card certificate chain corresponding to the attestation.
-  core.List<core.String> googleCardCerts;
+  core.List<core.String>? googleCardCerts;
 
   /// Google partition certificate chain corresponding to the attestation.
-  core.List<core.String> googlePartitionCerts;
+  core.List<core.String>? googlePartitionCerts;
 
   CertificateChains();
 
@@ -2374,11 +2252,11 @@ class CertificateChains {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (caviumCerts != null) 'caviumCerts': caviumCerts,
-        if (googleCardCerts != null) 'googleCardCerts': googleCardCerts,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (caviumCerts != null) 'caviumCerts': caviumCerts!,
+        if (googleCardCerts != null) 'googleCardCerts': googleCardCerts!,
         if (googlePartitionCerts != null)
-          'googlePartitionCerts': googlePartitionCerts,
+          'googlePartitionCerts': googlePartitionCerts!,
       };
 }
 
@@ -2391,19 +2269,19 @@ class CryptoKey {
   /// The time at which this CryptoKey was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Labels with user-defined metadata.
   ///
   /// For more information, see
   /// [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The resource name for this CryptoKey in the format `projects / *
   /// /locations / * /keyRings / * /cryptoKeys / * `.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// At next_rotation_time, the Key Management Service will automatically: 1.
   ///
@@ -2412,7 +2290,7 @@ class CryptoKey {
   /// UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with
   /// purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this
   /// field must be omitted.
-  core.String nextRotationTime;
+  core.String? nextRotationTime;
 
   /// A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when
   /// this CryptoKey is given in EncryptRequest.name.
@@ -2422,7 +2300,7 @@ class CryptoKey {
   /// a primary. For other keys, this field will be omitted.
   ///
   /// Output only.
-  CryptoKeyVersion primary;
+  CryptoKeyVersion? primary;
 
   /// The immutable purpose of this CryptoKey.
   ///
@@ -2435,7 +2313,7 @@ class CryptoKey {
   /// AsymmetricSign and GetPublicKey.
   /// - "ASYMMETRIC_DECRYPT" : CryptoKeys with this purpose may be used with
   /// AsymmetricDecrypt and GetPublicKey.
-  core.String purpose;
+  core.String? purpose;
 
   /// next_rotation_time will be advanced by this period when the service
   /// automatically rotates a key.
@@ -2444,13 +2322,13 @@ class CryptoKey {
   /// set, next_rotation_time must also be set. Keys with purpose
   /// ENCRYPT_DECRYPT support automatic rotation. For other keys, this field
   /// must be omitted.
-  core.String rotationPeriod;
+  core.String? rotationPeriod;
 
   /// A template describing settings for new CryptoKeyVersion instances.
   ///
   /// The properties of new CryptoKeyVersion instances created by either
   /// CreateCryptoKeyVersion or auto-rotation are controlled by this template.
-  CryptoKeyVersionTemplate versionTemplate;
+  CryptoKeyVersionTemplate? versionTemplate;
 
   CryptoKey();
 
@@ -2489,16 +2367,16 @@ class CryptoKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (nextRotationTime != null) 'nextRotationTime': nextRotationTime,
-        if (primary != null) 'primary': primary.toJson(),
-        if (purpose != null) 'purpose': purpose,
-        if (rotationPeriod != null) 'rotationPeriod': rotationPeriod,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
+        if (primary != null) 'primary': primary!.toJson(),
+        if (purpose != null) 'purpose': purpose!,
+        if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
         if (versionTemplate != null)
-          'versionTemplate': versionTemplate.toJson(),
+          'versionTemplate': versionTemplate!.toJson(),
       };
 }
 
@@ -2547,7 +2425,7 @@ class CryptoKeyVersion {
   /// digest.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
-  core.String algorithm;
+  core.String? algorithm;
 
   /// Statement that was generated and signed by the HSM at key creation time.
   ///
@@ -2556,19 +2434,19 @@ class CryptoKeyVersion {
   /// protection_level HSM.
   ///
   /// Output only.
-  KeyOperationAttestation attestation;
+  KeyOperationAttestation? attestation;
 
   /// The time at which this CryptoKeyVersion was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time this CryptoKeyVersion's key material was destroyed.
   ///
   /// Only present if state is DESTROYED.
   ///
   /// Output only.
-  core.String destroyEventTime;
+  core.String? destroyEventTime;
 
   /// The time this CryptoKeyVersion's key material is scheduled for
   /// destruction.
@@ -2576,42 +2454,42 @@ class CryptoKeyVersion {
   /// Only present if state is DESTROY_SCHEDULED.
   ///
   /// Output only.
-  core.String destroyTime;
+  core.String? destroyTime;
 
   /// ExternalProtectionLevelOptions stores a group of additional fields for
   /// configuring a CryptoKeyVersion that are specific to the EXTERNAL
   /// protection level.
-  ExternalProtectionLevelOptions externalProtectionLevelOptions;
+  ExternalProtectionLevelOptions? externalProtectionLevelOptions;
 
   /// The time this CryptoKeyVersion's key material was generated.
   ///
   /// Output only.
-  core.String generateTime;
+  core.String? generateTime;
 
   /// The root cause of an import failure.
   ///
   /// Only present if state is IMPORT_FAILED.
   ///
   /// Output only.
-  core.String importFailureReason;
+  core.String? importFailureReason;
 
   /// The name of the ImportJob used to import this CryptoKeyVersion.
   ///
   /// Only present if the underlying key material was imported.
   ///
   /// Output only.
-  core.String importJob;
+  core.String? importJob;
 
   /// The time at which this CryptoKeyVersion's key material was imported.
   ///
   /// Output only.
-  core.String importTime;
+  core.String? importTime;
 
   /// The resource name for this CryptoKeyVersion in the format `projects / *
   /// /locations / * /keyRings / * /cryptoKeys / * /cryptoKeyVersions / * `.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The ProtectionLevel describing how crypto operations are performed with
   /// this CryptoKeyVersion.
@@ -2622,7 +2500,7 @@ class CryptoKeyVersion {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
-  core.String protectionLevel;
+  core.String? protectionLevel;
 
   /// The current state of the CryptoKeyVersion.
   /// Possible string values are:
@@ -2645,7 +2523,7 @@ class CryptoKeyVersion {
   /// be used, enabled, disabled, or destroyed. The submitted key material has
   /// been discarded. Additional details can be found in
   /// CryptoKeyVersion.import_failure_reason.
-  core.String state;
+  core.String? state;
 
   CryptoKeyVersion();
 
@@ -2694,23 +2572,23 @@ class CryptoKeyVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm,
-        if (attestation != null) 'attestation': attestation.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (destroyEventTime != null) 'destroyEventTime': destroyEventTime,
-        if (destroyTime != null) 'destroyTime': destroyTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
+        if (attestation != null) 'attestation': attestation!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (destroyEventTime != null) 'destroyEventTime': destroyEventTime!,
+        if (destroyTime != null) 'destroyTime': destroyTime!,
         if (externalProtectionLevelOptions != null)
           'externalProtectionLevelOptions':
-              externalProtectionLevelOptions.toJson(),
-        if (generateTime != null) 'generateTime': generateTime,
+              externalProtectionLevelOptions!.toJson(),
+        if (generateTime != null) 'generateTime': generateTime!,
         if (importFailureReason != null)
-          'importFailureReason': importFailureReason,
-        if (importJob != null) 'importJob': importJob,
-        if (importTime != null) 'importTime': importTime,
-        if (name != null) 'name': name,
-        if (protectionLevel != null) 'protectionLevel': protectionLevel,
-        if (state != null) 'state': state,
+          'importFailureReason': importFailureReason!,
+        if (importJob != null) 'importJob': importJob!,
+        if (importTime != null) 'importTime': importTime!,
+        if (name != null) 'name': name!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -2757,7 +2635,7 @@ class CryptoKeyVersionTemplate {
   /// digest.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
-  core.String algorithm;
+  core.String? algorithm;
 
   /// ProtectionLevel to use when creating a CryptoKeyVersion based on this
   /// template.
@@ -2768,7 +2646,7 @@ class CryptoKeyVersionTemplate {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
-  core.String protectionLevel;
+  core.String? protectionLevel;
 
   CryptoKeyVersionTemplate();
 
@@ -2781,9 +2659,9 @@ class CryptoKeyVersionTemplate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm,
-        if (protectionLevel != null) 'protectionLevel': protectionLevel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
       };
 }
 
@@ -2793,9 +2671,9 @@ class DecryptRequest {
   /// EncryptRequest.additional_authenticated_data.
   ///
   /// Optional.
-  core.String additionalAuthenticatedData;
+  core.String? additionalAuthenticatedData;
   core.List<core.int> get additionalAuthenticatedDataAsBytes =>
-      convert.base64.decode(additionalAuthenticatedData);
+      convert.base64.decode(additionalAuthenticatedData!);
 
   set additionalAuthenticatedDataAsBytes(core.List<core.int> _bytes) {
     additionalAuthenticatedData =
@@ -2819,14 +2697,14 @@ class DecryptRequest {
   /// This field is in Beta.
   ///
   /// Optional.
-  core.String additionalAuthenticatedDataCrc32c;
+  core.String? additionalAuthenticatedDataCrc32c;
 
   /// The encrypted data originally returned in EncryptResponse.ciphertext.
   ///
   /// Required.
-  core.String ciphertext;
+  core.String? ciphertext;
   core.List<core.int> get ciphertextAsBytes =>
-      convert.base64.decode(ciphertext);
+      convert.base64.decode(ciphertext!);
 
   set ciphertextAsBytes(core.List<core.int> _bytes) {
     ciphertext =
@@ -2849,7 +2727,7 @@ class DecryptRequest {
   /// Beta.
   ///
   /// Optional.
-  core.String ciphertextCrc32c;
+  core.String? ciphertextCrc32c;
 
   DecryptRequest();
 
@@ -2870,22 +2748,22 @@ class DecryptRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additionalAuthenticatedData != null)
-          'additionalAuthenticatedData': additionalAuthenticatedData,
+          'additionalAuthenticatedData': additionalAuthenticatedData!,
         if (additionalAuthenticatedDataCrc32c != null)
           'additionalAuthenticatedDataCrc32c':
-              additionalAuthenticatedDataCrc32c,
-        if (ciphertext != null) 'ciphertext': ciphertext,
-        if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c,
+              additionalAuthenticatedDataCrc32c!,
+        if (ciphertext != null) 'ciphertext': ciphertext!,
+        if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c!,
       };
 }
 
 /// Response message for KeyManagementService.Decrypt.
 class DecryptResponse {
   /// The decrypted data originally supplied in EncryptRequest.plaintext.
-  core.String plaintext;
-  core.List<core.int> get plaintextAsBytes => convert.base64.decode(plaintext);
+  core.String? plaintext;
+  core.List<core.int> get plaintextAsBytes => convert.base64.decode(plaintext!);
 
   set plaintextAsBytes(core.List<core.int> _bytes) {
     plaintext =
@@ -2906,7 +2784,7 @@ class DecryptResponse {
   /// it is a non-negative integer, which will never exceed 2^32-1, and can be
   /// safely downconverted to uint32 in languages that support this type. NOTE:
   /// This field is in Beta.
-  core.String plaintextCrc32c;
+  core.String? plaintextCrc32c;
 
   /// The ProtectionLevel of the CryptoKeyVersion used in decryption.
   /// Possible string values are:
@@ -2914,10 +2792,10 @@ class DecryptResponse {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
-  core.String protectionLevel;
+  core.String? protectionLevel;
 
   /// Whether the Decryption was performed using the primary key version.
-  core.bool usedPrimary;
+  core.bool? usedPrimary;
 
   DecryptResponse();
 
@@ -2936,11 +2814,11 @@ class DecryptResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (plaintext != null) 'plaintext': plaintext,
-        if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c,
-        if (protectionLevel != null) 'protectionLevel': protectionLevel,
-        if (usedPrimary != null) 'usedPrimary': usedPrimary,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (plaintext != null) 'plaintext': plaintext!,
+        if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+        if (usedPrimary != null) 'usedPrimary': usedPrimary!,
       };
 }
 
@@ -2952,14 +2830,14 @@ class DestroyCryptoKeyVersionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A Digest holds a cryptographic message digest.
 class Digest {
   /// A message digest produced with the SHA-256 algorithm.
-  core.String sha256;
-  core.List<core.int> get sha256AsBytes => convert.base64.decode(sha256);
+  core.String? sha256;
+  core.List<core.int> get sha256AsBytes => convert.base64.decode(sha256!);
 
   set sha256AsBytes(core.List<core.int> _bytes) {
     sha256 =
@@ -2967,8 +2845,8 @@ class Digest {
   }
 
   /// A message digest produced with the SHA-384 algorithm.
-  core.String sha384;
-  core.List<core.int> get sha384AsBytes => convert.base64.decode(sha384);
+  core.String? sha384;
+  core.List<core.int> get sha384AsBytes => convert.base64.decode(sha384!);
 
   set sha384AsBytes(core.List<core.int> _bytes) {
     sha384 =
@@ -2976,8 +2854,8 @@ class Digest {
   }
 
   /// A message digest produced with the SHA-512 algorithm.
-  core.String sha512;
-  core.List<core.int> get sha512AsBytes => convert.base64.decode(sha512);
+  core.String? sha512;
+  core.List<core.int> get sha512AsBytes => convert.base64.decode(sha512!);
 
   set sha512AsBytes(core.List<core.int> _bytes) {
     sha512 =
@@ -2998,10 +2876,10 @@ class Digest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sha256 != null) 'sha256': sha256,
-        if (sha384 != null) 'sha384': sha384,
-        if (sha512 != null) 'sha512': sha512,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sha256 != null) 'sha256': sha256!,
+        if (sha384 != null) 'sha384': sha384!,
+        if (sha512 != null) 'sha512': sha512!,
       };
 }
 
@@ -3016,9 +2894,9 @@ class EncryptRequest {
   /// must be no larger than 8KiB.
   ///
   /// Optional.
-  core.String additionalAuthenticatedData;
+  core.String? additionalAuthenticatedData;
   core.List<core.int> get additionalAuthenticatedDataAsBytes =>
-      convert.base64.decode(additionalAuthenticatedData);
+      convert.base64.decode(additionalAuthenticatedData!);
 
   set additionalAuthenticatedDataAsBytes(core.List<core.int> _bytes) {
     additionalAuthenticatedData =
@@ -3042,7 +2920,7 @@ class EncryptRequest {
   /// This field is in Beta.
   ///
   /// Optional.
-  core.String additionalAuthenticatedDataCrc32c;
+  core.String? additionalAuthenticatedDataCrc32c;
 
   /// The data to encrypt.
   ///
@@ -3052,8 +2930,8 @@ class EncryptRequest {
   /// additional_authenticated_data fields must be no larger than 8KiB.
   ///
   /// Required.
-  core.String plaintext;
-  core.List<core.int> get plaintextAsBytes => convert.base64.decode(plaintext);
+  core.String? plaintext;
+  core.List<core.int> get plaintextAsBytes => convert.base64.decode(plaintext!);
 
   set plaintextAsBytes(core.List<core.int> _bytes) {
     plaintext =
@@ -3076,7 +2954,7 @@ class EncryptRequest {
   /// Beta.
   ///
   /// Optional.
-  core.String plaintextCrc32c;
+  core.String? plaintextCrc32c;
 
   EncryptRequest();
 
@@ -3097,23 +2975,23 @@ class EncryptRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additionalAuthenticatedData != null)
-          'additionalAuthenticatedData': additionalAuthenticatedData,
+          'additionalAuthenticatedData': additionalAuthenticatedData!,
         if (additionalAuthenticatedDataCrc32c != null)
           'additionalAuthenticatedDataCrc32c':
-              additionalAuthenticatedDataCrc32c,
-        if (plaintext != null) 'plaintext': plaintext,
-        if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c,
+              additionalAuthenticatedDataCrc32c!,
+        if (plaintext != null) 'plaintext': plaintext!,
+        if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c!,
       };
 }
 
 /// Response message for KeyManagementService.Encrypt.
 class EncryptResponse {
   /// The encrypted data.
-  core.String ciphertext;
+  core.String? ciphertext;
   core.List<core.int> get ciphertextAsBytes =>
-      convert.base64.decode(ciphertext);
+      convert.base64.decode(ciphertext!);
 
   set ciphertextAsBytes(core.List<core.int> _bytes) {
     ciphertext =
@@ -3132,13 +3010,13 @@ class EncryptResponse {
   /// languages. However, it is a non-negative integer, which will never exceed
   /// 2^32-1, and can be safely downconverted to uint32 in languages that
   /// support this type. NOTE: This field is in Beta.
-  core.String ciphertextCrc32c;
+  core.String? ciphertextCrc32c;
 
   /// The resource name of the CryptoKeyVersion used in encryption.
   ///
   /// Check this field to verify that the intended resource was used for
   /// encryption.
-  core.String name;
+  core.String? name;
 
   /// The ProtectionLevel of the CryptoKeyVersion used in encryption.
   /// Possible string values are:
@@ -3146,7 +3024,7 @@ class EncryptResponse {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
-  core.String protectionLevel;
+  core.String? protectionLevel;
 
   /// Integrity verification field.
   ///
@@ -3159,7 +3037,7 @@ class EncryptResponse {
   /// EncryptRequest.additional_authenticated_data_crc32c but this field is
   /// still false, discard the response and perform a limited number of retries.
   /// NOTE: This field is in Beta.
-  core.bool verifiedAdditionalAuthenticatedDataCrc32c;
+  core.bool? verifiedAdditionalAuthenticatedDataCrc32c;
 
   /// Integrity verification field.
   ///
@@ -3171,7 +3049,7 @@ class EncryptResponse {
   /// EncryptRequest.plaintext_crc32c but this field is still false, discard the
   /// response and perform a limited number of retries. NOTE: This field is in
   /// Beta.
-  core.bool verifiedPlaintextCrc32c;
+  core.bool? verifiedPlaintextCrc32c;
 
   EncryptResponse();
 
@@ -3197,16 +3075,16 @@ class EncryptResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ciphertext != null) 'ciphertext': ciphertext,
-        if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c,
-        if (name != null) 'name': name,
-        if (protectionLevel != null) 'protectionLevel': protectionLevel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ciphertext != null) 'ciphertext': ciphertext!,
+        if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c!,
+        if (name != null) 'name': name!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
         if (verifiedAdditionalAuthenticatedDataCrc32c != null)
           'verifiedAdditionalAuthenticatedDataCrc32c':
-              verifiedAdditionalAuthenticatedDataCrc32c,
+              verifiedAdditionalAuthenticatedDataCrc32c!,
         if (verifiedPlaintextCrc32c != null)
-          'verifiedPlaintextCrc32c': verifiedPlaintextCrc32c,
+          'verifiedPlaintextCrc32c': verifiedPlaintextCrc32c!,
       };
 }
 
@@ -3235,24 +3113,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -3271,11 +3149,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -3284,7 +3162,7 @@ class Expr {
 /// level.
 class ExternalProtectionLevelOptions {
   /// The URI for an external resource that this CryptoKeyVersion represents.
-  core.String externalKeyUri;
+  core.String? externalKeyUri;
 
   ExternalProtectionLevelOptions();
 
@@ -3294,8 +3172,8 @@ class ExternalProtectionLevelOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (externalKeyUri != null) 'externalKeyUri': externalKeyUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (externalKeyUri != null) 'externalKeyUri': externalKeyUri!,
       };
 }
 
@@ -3340,12 +3218,12 @@ class ImportCryptoKeyVersionRequest {
   /// digest.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
-  core.String algorithm;
+  core.String? algorithm;
 
   /// The name of the ImportJob that was used to wrap this key material.
   ///
   /// Required.
-  core.String importJob;
+  core.String? importJob;
 
   /// Wrapped key material produced with RSA_OAEP_3072_SHA1_AES_256 or
   /// RSA_OAEP_4096_SHA1_AES_256.
@@ -3359,9 +3237,9 @@ class ImportCryptoKeyVersionRequest {
   /// that the unwrapped key is in PKCS#8-encoded DER format (the PrivateKeyInfo
   /// structure from RFC 5208). This format is the same as the format produced
   /// by PKCS#11 mechanism CKM_RSA_AES_KEY_WRAP.
-  core.String rsaAesWrappedKey;
+  core.String? rsaAesWrappedKey;
   core.List<core.int> get rsaAesWrappedKeyAsBytes =>
-      convert.base64.decode(rsaAesWrappedKey);
+      convert.base64.decode(rsaAesWrappedKey!);
 
   set rsaAesWrappedKeyAsBytes(core.List<core.int> _bytes) {
     rsaAesWrappedKey =
@@ -3382,10 +3260,10 @@ class ImportCryptoKeyVersionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm,
-        if (importJob != null) 'importJob': importJob,
-        if (rsaAesWrappedKey != null) 'rsaAesWrappedKey': rsaAesWrappedKey,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
+        if (importJob != null) 'importJob': importJob!,
+        if (rsaAesWrappedKey != null) 'rsaAesWrappedKey': rsaAesWrappedKey!,
       };
 }
 
@@ -3417,30 +3295,30 @@ class ImportJob {
   /// with a protection level of HSM.
   ///
   /// Output only.
-  KeyOperationAttestation attestation;
+  KeyOperationAttestation? attestation;
 
   /// The time at which this ImportJob was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time this ImportJob expired.
   ///
   /// Only present if state is EXPIRED.
   ///
   /// Output only.
-  core.String expireEventTime;
+  core.String? expireEventTime;
 
   /// The time at which this ImportJob is scheduled for expiration and can no
   /// longer be used to import key material.
   ///
   /// Output only.
-  core.String expireTime;
+  core.String? expireTime;
 
   /// The time this ImportJob's key material was generated.
   ///
   /// Output only.
-  core.String generateTime;
+  core.String? generateTime;
 
   /// The wrapping method to be used for incoming key material.
   ///
@@ -3459,13 +3337,13 @@ class ImportJob {
   /// and wrapping the ephemeral AES key with a 4096 bit RSA key. For more
   /// details, see
   /// [RSA AES key wrap mechanism](http://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226908).
-  core.String importMethod;
+  core.String? importMethod;
 
   /// The resource name for this ImportJob in the format `projects / *
   /// /locations / * /keyRings / * /importJobs / * `.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The protection level of the ImportJob.
   ///
@@ -3478,14 +3356,14 @@ class ImportJob {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
-  core.String protectionLevel;
+  core.String? protectionLevel;
 
   /// The public key with which to wrap key material prior to import.
   ///
   /// Only returned if state is ACTIVE.
   ///
   /// Output only.
-  WrappingPublicKey publicKey;
+  WrappingPublicKey? publicKey;
 
   /// The current state of the ImportJob, indicating if it can be used.
   ///
@@ -3499,7 +3377,7 @@ class ImportJob {
   /// CreateCryptoKeyVersion requests.
   /// - "EXPIRED" : This job can no longer be used and may not leave this state
   /// once entered.
-  core.String state;
+  core.String? state;
 
   ImportJob();
 
@@ -3538,17 +3416,17 @@ class ImportJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attestation != null) 'attestation': attestation.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (expireEventTime != null) 'expireEventTime': expireEventTime,
-        if (expireTime != null) 'expireTime': expireTime,
-        if (generateTime != null) 'generateTime': generateTime,
-        if (importMethod != null) 'importMethod': importMethod,
-        if (name != null) 'name': name,
-        if (protectionLevel != null) 'protectionLevel': protectionLevel,
-        if (publicKey != null) 'publicKey': publicKey.toJson(),
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attestation != null) 'attestation': attestation!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (expireEventTime != null) 'expireEventTime': expireEventTime!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (generateTime != null) 'generateTime': generateTime!,
+        if (importMethod != null) 'importMethod': importMethod!,
+        if (name != null) 'name': name!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+        if (publicKey != null) 'publicKey': publicKey!.toJson(),
+        if (state != null) 'state': state!,
       };
 }
 
@@ -3560,14 +3438,14 @@ class KeyOperationAttestation {
   /// The certificate chains needed to validate the attestation
   ///
   /// Output only.
-  CertificateChains certChains;
+  CertificateChains? certChains;
 
   /// The attestation data provided by the HSM when the key operation was
   /// performed.
   ///
   /// Output only.
-  core.String content;
-  core.List<core.int> get contentAsBytes => convert.base64.decode(content);
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
   set contentAsBytes(core.List<core.int> _bytes) {
     content =
@@ -3584,7 +3462,7 @@ class KeyOperationAttestation {
   /// time.
   /// - "CAVIUM_V2_COMPRESSED" : Cavium HSM attestation V2 compressed with gzip.
   /// This is a new format introduced in Cavium's version 3.2-08.
-  core.String format;
+  core.String? format;
 
   KeyOperationAttestation();
 
@@ -3601,10 +3479,10 @@ class KeyOperationAttestation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (certChains != null) 'certChains': certChains.toJson(),
-        if (content != null) 'content': content,
-        if (format != null) 'format': format,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (certChains != null) 'certChains': certChains!.toJson(),
+        if (content != null) 'content': content!,
+        if (format != null) 'format': format!,
       };
 }
 
@@ -3613,13 +3491,13 @@ class KeyRing {
   /// The time at which this KeyRing was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The resource name for the KeyRing in the format `projects / * /locations /
   /// * /keyRings / * `.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   KeyRing();
 
@@ -3632,25 +3510,25 @@ class KeyRing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Response message for KeyManagementService.ListCryptoKeyVersions.
 class ListCryptoKeyVersionsResponse {
   /// The list of CryptoKeyVersions.
-  core.List<CryptoKeyVersion> cryptoKeyVersions;
+  core.List<CryptoKeyVersion>? cryptoKeyVersions;
 
   /// A token to retrieve next page of results.
   ///
   /// Pass this value in ListCryptoKeyVersionsRequest.page_token to retrieve the
   /// next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total number of CryptoKeyVersions that matched the query.
-  core.int totalSize;
+  core.int? totalSize;
 
   ListCryptoKeyVersionsResponse();
 
@@ -3669,28 +3547,28 @@ class ListCryptoKeyVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cryptoKeyVersions != null)
           'cryptoKeyVersions':
-              cryptoKeyVersions.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+              cryptoKeyVersions!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
 /// Response message for KeyManagementService.ListCryptoKeys.
 class ListCryptoKeysResponse {
   /// The list of CryptoKeys.
-  core.List<CryptoKey> cryptoKeys;
+  core.List<CryptoKey>? cryptoKeys;
 
   /// A token to retrieve next page of results.
   ///
   /// Pass this value in ListCryptoKeysRequest.page_token to retrieve the next
   /// page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total number of CryptoKeys that matched the query.
-  core.int totalSize;
+  core.int? totalSize;
 
   ListCryptoKeysResponse();
 
@@ -3709,27 +3587,27 @@ class ListCryptoKeysResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cryptoKeys != null)
-          'cryptoKeys': cryptoKeys.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+          'cryptoKeys': cryptoKeys!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
 /// Response message for KeyManagementService.ListImportJobs.
 class ListImportJobsResponse {
   /// The list of ImportJobs.
-  core.List<ImportJob> importJobs;
+  core.List<ImportJob>? importJobs;
 
   /// A token to retrieve next page of results.
   ///
   /// Pass this value in ListImportJobsRequest.page_token to retrieve the next
   /// page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total number of ImportJobs that matched the query.
-  core.int totalSize;
+  core.int? totalSize;
 
   ListImportJobsResponse();
 
@@ -3748,27 +3626,27 @@ class ListImportJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (importJobs != null)
-          'importJobs': importJobs.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+          'importJobs': importJobs!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
 /// Response message for KeyManagementService.ListKeyRings.
 class ListKeyRingsResponse {
   /// The list of KeyRings.
-  core.List<KeyRing> keyRings;
+  core.List<KeyRing>? keyRings;
 
   /// A token to retrieve next page of results.
   ///
   /// Pass this value in ListKeyRingsRequest.page_token to retrieve the next
   /// page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total number of KeyRings that matched the query.
-  core.int totalSize;
+  core.int? totalSize;
 
   ListKeyRingsResponse();
 
@@ -3787,21 +3665,21 @@ class ListKeyRingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (keyRings != null)
-          'keyRings': keyRings.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+          'keyRings': keyRings!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -3817,10 +3695,10 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -3829,17 +3707,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -3847,12 +3725,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -3886,12 +3764,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3899,11 +3777,11 @@ class Location {
 class LocationMetadata {
   /// Indicates whether CryptoKeys with protection_level EXTERNAL can be created
   /// in this location.
-  core.bool ekmAvailable;
+  core.bool? ekmAvailable;
 
   /// Indicates whether CryptoKeys with protection_level HSM can be created in
   /// this location.
-  core.bool hsmAvailable;
+  core.bool? hsmAvailable;
 
   LocationMetadata();
 
@@ -3916,9 +3794,9 @@ class LocationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ekmAvailable != null) 'ekmAvailable': ekmAvailable,
-        if (hsmAvailable != null) 'hsmAvailable': hsmAvailable,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ekmAvailable != null) 'ekmAvailable': ekmAvailable!,
+        if (hsmAvailable != null) 'hsmAvailable': hsmAvailable!,
       };
 }
 
@@ -3955,14 +3833,14 @@ class LocationMetadata {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -3976,8 +3854,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -4001,7 +3879,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -4026,13 +3904,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -4074,12 +3952,12 @@ class PublicKey {
   /// digest.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
-  core.String algorithm;
+  core.String? algorithm;
 
   /// The name of the CryptoKeyVersion public key.
   ///
   /// Provided here for verification. NOTE: This field is in Beta.
-  core.String name;
+  core.String? name;
 
   /// The public key, encoded in PEM format.
   ///
@@ -4088,7 +3966,7 @@ class PublicKey {
   /// [General Considerations](https://tools.ietf.org/html/rfc7468#section-2)
   /// and
   /// [Textual Encoding of Subject Public Key Info](https://tools.ietf.org/html/rfc7468#section-13).
-  core.String pem;
+  core.String? pem;
 
   /// Integrity verification field.
   ///
@@ -4102,7 +3980,7 @@ class PublicKey {
   /// non-negative integer, which will never exceed 2^32-1, and can be safely
   /// downconverted to uint32 in languages that support this type. NOTE: This
   /// field is in Beta.
-  core.String pemCrc32c;
+  core.String? pemCrc32c;
 
   /// The ProtectionLevel of the CryptoKeyVersion public key.
   /// Possible string values are:
@@ -4110,7 +3988,7 @@ class PublicKey {
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
   /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
-  core.String protectionLevel;
+  core.String? protectionLevel;
 
   PublicKey();
 
@@ -4132,12 +4010,12 @@ class PublicKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm,
-        if (name != null) 'name': name,
-        if (pem != null) 'pem': pem,
-        if (pemCrc32c != null) 'pemCrc32c': pemCrc32c,
-        if (protectionLevel != null) 'protectionLevel': protectionLevel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
+        if (name != null) 'name': name!,
+        if (pem != null) 'pem': pem!,
+        if (pemCrc32c != null) 'pemCrc32c': pemCrc32c!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
       };
 }
 
@@ -4149,7 +4027,7 @@ class RestoreCryptoKeyVersionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -4159,13 +4037,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -4179,9 +4057,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -4192,7 +4070,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -4204,8 +4082,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -4213,7 +4091,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -4225,8 +4103,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -4235,7 +4113,7 @@ class UpdateCryptoKeyPrimaryVersionRequest {
   /// The id of the child CryptoKeyVersion to use as primary.
   ///
   /// Required.
-  core.String cryptoKeyVersionId;
+  core.String? cryptoKeyVersionId;
 
   UpdateCryptoKeyPrimaryVersionRequest();
 
@@ -4245,9 +4123,9 @@ class UpdateCryptoKeyPrimaryVersionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cryptoKeyVersionId != null)
-          'cryptoKeyVersionId': cryptoKeyVersionId,
+          'cryptoKeyVersionId': cryptoKeyVersionId!,
       };
 }
 
@@ -4263,7 +4141,7 @@ class WrappingPublicKey {
   /// [General Considerations](https://tools.ietf.org/html/rfc7468#section-2)
   /// and
   /// [Textual Encoding of Subject Public Key Info](https://tools.ietf.org/html/rfc7468#section-13).
-  core.String pem;
+  core.String? pem;
 
   WrappingPublicKey();
 
@@ -4273,7 +4151,7 @@ class WrappingPublicKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pem != null) 'pem': pem,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pem != null) 'pem': pem!,
       };
 }

@@ -83,10 +83,9 @@ class ReportsResource {
   /// this method will complete with the same error.
   async.Future<GetReportsResponse> batchGet(
     GetReportsRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -127,10 +126,9 @@ class UserActivityResource {
   /// this method will complete with the same error.
   async.Future<SearchUserActivityResponse> search(
     SearchUserActivityRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -165,7 +163,7 @@ class Activity {
   /// example, say session ID 113472 has activity within 2019-08-20, and session
   /// ID 243742 has activity within 2019-08-25 and 2019-08-26. Session ID 113472
   /// is one session, and session ID 243742 is two sessions.
-  core.String activityTime;
+  core.String? activityTime;
 
   /// Type of this activity.
   /// Possible string values are:
@@ -179,38 +177,38 @@ class Activity {
   /// - "ECOMMERCE" : An e-commerce transaction was performed by the visitor on
   /// the page.
   /// - "EVENT" : Used when the activity is an event.
-  core.String activityType;
+  core.String? activityType;
 
   /// This will be set if `activity_type` equals `SCREEN_VIEW`.
-  ScreenviewData appview;
+  ScreenviewData? appview;
 
   /// For manual campaign tracking, it is the value of the utm_campaign campaign
   /// tracking parameter.
   ///
   /// For AdWords autotagging, it is the name(s) of the online ad campaign(s)
   /// you use for the property. If you use neither, its value is (not set).
-  core.String campaign;
+  core.String? campaign;
 
   /// The Channel Group associated with an end user's session for this View
   /// (defined by the View's Channel Groupings).
-  core.String channelGrouping;
+  core.String? channelGrouping;
 
   /// A list of all custom dimensions associated with this activity.
-  core.List<CustomDimension> customDimension;
+  core.List<CustomDimension>? customDimension;
 
   /// This will be set if `activity_type` equals `ECOMMERCE`.
-  EcommerceData ecommerce;
+  EcommerceData? ecommerce;
 
   /// This field contains all the details pertaining to an event and will be set
   /// if `activity_type` equals `EVENT`.
-  EventData event;
+  EventData? event;
 
   /// This field contains a list of all the goals that were reached in this
   /// activity when `activity_type` equals `GOAL`.
-  GoalSetData goals;
+  GoalSetData? goals;
 
   /// The hostname from which the tracking request was made.
-  core.String hostname;
+  core.String? hostname;
 
   /// For manual campaign tracking, it is the value of the utm_term campaign
   /// tracking parameter.
@@ -221,10 +219,10 @@ class Activity {
   /// selected by Ads. This could be display_keyword, site placement,
   /// boomuserlist, user_interest, age, or gender. Otherwise its value is (not
   /// set).
-  core.String keyword;
+  core.String? keyword;
 
   /// The first page in users' sessions, or the landing page.
-  core.String landingPagePath;
+  core.String? landingPagePath;
 
   /// The type of referrals.
   ///
@@ -233,13 +231,13 @@ class Activity {
   /// a search engine detected by Google Analytics, it is organic. If the
   /// referrer is not a search engine, it is referral. If users came directly to
   /// the property and document.referrer is empty, its value is (none).
-  core.String medium;
+  core.String? medium;
 
   /// This will be set if `activity_type` equals `PAGEVIEW`.
   ///
   /// This field contains all the details about the visitor and the page that
   /// was visited.
-  PageviewData pageview;
+  PageviewData? pageview;
 
   /// The source of referrals.
   ///
@@ -248,7 +246,7 @@ class Activity {
   /// neither, it is the domain of the source (e.g., document.referrer)
   /// referring the users. It may also contain a port address. If users arrived
   /// without a referrer, its value is (direct).
-  core.String source;
+  core.String? source;
 
   Activity();
 
@@ -308,24 +306,24 @@ class Activity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activityTime != null) 'activityTime': activityTime,
-        if (activityType != null) 'activityType': activityType,
-        if (appview != null) 'appview': appview.toJson(),
-        if (campaign != null) 'campaign': campaign,
-        if (channelGrouping != null) 'channelGrouping': channelGrouping,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activityTime != null) 'activityTime': activityTime!,
+        if (activityType != null) 'activityType': activityType!,
+        if (appview != null) 'appview': appview!.toJson(),
+        if (campaign != null) 'campaign': campaign!,
+        if (channelGrouping != null) 'channelGrouping': channelGrouping!,
         if (customDimension != null)
           'customDimension':
-              customDimension.map((value) => value.toJson()).toList(),
-        if (ecommerce != null) 'ecommerce': ecommerce.toJson(),
-        if (event != null) 'event': event.toJson(),
-        if (goals != null) 'goals': goals.toJson(),
-        if (hostname != null) 'hostname': hostname,
-        if (keyword != null) 'keyword': keyword,
-        if (landingPagePath != null) 'landingPagePath': landingPagePath,
-        if (medium != null) 'medium': medium,
-        if (pageview != null) 'pageview': pageview.toJson(),
-        if (source != null) 'source': source,
+              customDimension!.map((value) => value.toJson()).toList(),
+        if (ecommerce != null) 'ecommerce': ecommerce!.toJson(),
+        if (event != null) 'event': event!.toJson(),
+        if (goals != null) 'goals': goals!.toJson(),
+        if (hostname != null) 'hostname': hostname!,
+        if (keyword != null) 'keyword': keyword!,
+        if (landingPagePath != null) 'landingPagePath': landingPagePath!,
+        if (medium != null) 'medium': medium!,
+        if (pageview != null) 'pageview': pageview!.toJson(),
+        if (source != null) 'source': source!,
       };
 }
 
@@ -346,12 +344,12 @@ class Cohort {
   /// last day of the month). For LTV requests there are no such restrictions.
   /// You do not need to supply a date range for the `reportsRequest.dateRanges`
   /// field.
-  DateRange dateRange;
+  DateRange? dateRange;
 
   /// A unique name for the cohort.
   ///
   /// If not defined name will be auto-generated with values cohort_\[1234...\].
-  core.String name;
+  core.String? name;
 
   /// Type of the cohort.
   ///
@@ -362,7 +360,7 @@ class Cohort {
   /// `FIRST_VISIT_DATE`.
   /// - "FIRST_VISIT_DATE" : Cohorts that are selected based on first visit
   /// date.
-  core.String type;
+  core.String? type;
 
   Cohort();
 
@@ -379,10 +377,10 @@ class Cohort {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dateRange != null) 'dateRange': dateRange.toJson(),
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dateRange != null) 'dateRange': dateRange!.toJson(),
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -394,7 +392,7 @@ class Cohort {
 /// "dateRange": { "startDate": "2015-07-01", "endDate": "2015-07-01" } }\] }
 class CohortGroup {
   /// The definition for the cohort.
-  core.List<Cohort> cohorts;
+  core.List<Cohort>? cohorts;
 
   /// Enable Life Time Value (LTV).
   ///
@@ -417,7 +415,7 @@ class CohortGroup {
   /// increment. - The cohort definition date ranges need not be aligned to the
   /// calendar week and month boundaries. - The `viewId` must be an
   /// [app view ID](https://support.google.com/analytics/answer/2649553#WebVersusAppViews)
-  core.bool lifetimeValue;
+  core.bool? lifetimeValue;
 
   CohortGroup();
 
@@ -433,20 +431,20 @@ class CohortGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cohorts != null)
-          'cohorts': cohorts.map((value) => value.toJson()).toList(),
-        if (lifetimeValue != null) 'lifetimeValue': lifetimeValue,
+          'cohorts': cohorts!.map((value) => value.toJson()).toList(),
+        if (lifetimeValue != null) 'lifetimeValue': lifetimeValue!,
       };
 }
 
 /// Column headers.
 class ColumnHeader {
   /// The dimension names in the response.
-  core.List<core.String> dimensions;
+  core.List<core.String>? dimensions;
 
   /// Metric headers for the metrics in the response.
-  MetricHeader metricHeader;
+  MetricHeader? metricHeader;
 
   ColumnHeader();
 
@@ -462,22 +460,22 @@ class ColumnHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimensions != null) 'dimensions': dimensions,
-        if (metricHeader != null) 'metricHeader': metricHeader.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (metricHeader != null) 'metricHeader': metricHeader!.toJson(),
       };
 }
 
 /// Custom dimension.
 class CustomDimension {
   /// Slot number of custom dimension.
-  core.int index;
+  core.int? index;
 
   /// Value of the custom dimension.
   ///
   /// Default value (i.e. empty string) indicates clearing sesion/visitor scope
   /// custom dimension value.
-  core.String value;
+  core.String? value;
 
   CustomDimension();
 
@@ -490,9 +488,9 @@ class CustomDimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (index != null) 'index': index,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (index != null) 'index': index!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -502,10 +500,10 @@ class CustomDimension {
 /// [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) date format `YYYY-MM-DD`.
 class DateRange {
   /// The end date for the query in the format `YYYY-MM-DD`.
-  core.String endDate;
+  core.String? endDate;
 
   /// The start date for the query in the format `YYYY-MM-DD`.
-  core.String startDate;
+  core.String? startDate;
 
   DateRange();
 
@@ -518,9 +516,9 @@ class DateRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endDate != null) 'endDate': endDate,
-        if (startDate != null) 'startDate': startDate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endDate != null) 'endDate': endDate!,
+        if (startDate != null) 'startDate': startDate!,
       };
 }
 
@@ -528,10 +526,10 @@ class DateRange {
 /// combination
 class DateRangeValues {
   /// The values of each pivot region.
-  core.List<PivotValueRegion> pivotValueRegions;
+  core.List<PivotValueRegion>? pivotValueRegions;
 
   /// Each value corresponds to each Metric in the request.
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   DateRangeValues();
 
@@ -549,11 +547,11 @@ class DateRangeValues {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (pivotValueRegions != null)
           'pivotValueRegions':
-              pivotValueRegions.map((value) => value.toJson()).toList(),
-        if (values != null) 'values': values,
+              pivotValueRegions!.map((value) => value.toJson()).toList(),
+        if (values != null) 'values': values!,
       };
 }
 
@@ -585,10 +583,10 @@ class Dimension {
   /// "50-120" And the ascending `HISTOGRAM_BUCKET` order is: "<50", "50-120",
   /// "121-1000", "1001+" The client has to explicitly request `"orderType":
   /// "HISTOGRAM_BUCKET"` for a histogram-mutated dimension.
-  core.List<core.String> histogramBuckets;
+  core.List<core.String>? histogramBuckets;
 
   /// Name of the dimension to fetch, for example `ga:browser`.
-  core.String name;
+  core.String? name;
 
   Dimension();
 
@@ -603,21 +601,21 @@ class Dimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (histogramBuckets != null) 'histogramBuckets': histogramBuckets,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (histogramBuckets != null) 'histogramBuckets': histogramBuckets!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Dimension filter specifies the filtering options on a dimension.
 class DimensionFilter {
   /// Should the match be case sensitive? Default is false.
-  core.bool caseSensitive;
+  core.bool? caseSensitive;
 
   /// The dimension to filter on.
   ///
   /// A DimensionFilter must contain a dimension.
-  core.String dimensionName;
+  core.String? dimensionName;
 
   /// Strings or regular expression to match against.
   ///
@@ -625,13 +623,13 @@ class DimensionFilter {
   /// operator is `IN_LIST`. If `IN_LIST` operator, then the entire list is used
   /// to filter the dimensions as explained in the description of the `IN_LIST`
   /// operator.
-  core.List<core.String> expressions;
+  core.List<core.String>? expressions;
 
   /// Logical `NOT` operator.
   ///
   /// If this boolean is set to true, then the matching dimension values will be
   /// excluded in the report. The default is false.
-  core.bool not;
+  core.bool? not;
 
   /// How to match the dimension to the expression.
   ///
@@ -664,7 +662,7 @@ class DimensionFilter {
   /// for every single response row. For example: expressions: \["A", "B", "C"\]
   /// Any response row whose dimension has it is value as A, B or C, matches
   /// this DimensionFilter.
-  core.String operator;
+  core.String? operator;
 
   DimensionFilter();
 
@@ -688,12 +686,12 @@ class DimensionFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive,
-        if (dimensionName != null) 'dimensionName': dimensionName,
-        if (expressions != null) 'expressions': expressions,
-        if (not != null) 'not': not,
-        if (operator != null) 'operator': operator,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+        if (dimensionName != null) 'dimensionName': dimensionName!,
+        if (expressions != null) 'expressions': expressions!,
+        if (not != null) 'not': not!,
+        if (operator != null) 'operator': operator!,
       };
 }
 
@@ -704,7 +702,7 @@ class DimensionFilterClause {
   /// The repeated set of filters.
   ///
   /// They are logically combined based on the operator specified.
-  core.List<DimensionFilter> filters;
+  core.List<DimensionFilter>? filters;
 
   /// The operator for combining multiple dimension filters.
   ///
@@ -713,7 +711,7 @@ class DimensionFilterClause {
   /// - "OPERATOR_UNSPECIFIED" : Unspecified operator. It is treated as an `OR`.
   /// - "OR" : The logical `OR` operator.
   /// - "AND" : The logical `AND` operator.
-  core.String operator;
+  core.String? operator;
 
   DimensionFilterClause();
 
@@ -729,10 +727,10 @@ class DimensionFilterClause {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (filters != null)
-          'filters': filters.map((value) => value.toJson()).toList(),
-        if (operator != null) 'operator': operator,
+          'filters': filters!.map((value) => value.toJson()).toList(),
+        if (operator != null) 'operator': operator!,
       };
 }
 
@@ -741,13 +739,13 @@ class DimensionFilterClause {
 /// A segment can select users, sessions or both.
 class DynamicSegment {
   /// The name of the dynamic segment.
-  core.String name;
+  core.String? name;
 
   /// Session Segment to select sessions to include in the segment.
-  SegmentDefinition sessionSegment;
+  SegmentDefinition? sessionSegment;
 
   /// User Segment to select users to include in the segment.
-  SegmentDefinition userSegment;
+  SegmentDefinition? userSegment;
 
   DynamicSegment();
 
@@ -765,10 +763,10 @@ class DynamicSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (sessionSegment != null) 'sessionSegment': sessionSegment.toJson(),
-        if (userSegment != null) 'userSegment': userSegment.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (sessionSegment != null) 'sessionSegment': sessionSegment!.toJson(),
+        if (userSegment != null) 'userSegment': userSegment!.toJson(),
       };
 }
 
@@ -785,7 +783,7 @@ class EcommerceData {
   /// - "PAYMENT" : Completed purchase.
   /// - "REFUND" : Refund of purchase.
   /// - "CHECKOUT_OPTION" : Checkout options.
-  core.String actionType;
+  core.String? actionType;
 
   /// The type of this e-commerce activity.
   /// Possible string values are:
@@ -794,13 +792,13 @@ class EcommerceData {
   /// - "CLASSIC" : Used when activity has classic (non-enhanced) e-commerce
   /// information.
   /// - "ENHANCED" : Used when activity has enhanced e-commerce information.
-  core.String ecommerceType;
+  core.String? ecommerceType;
 
   /// Details of the products in this transaction.
-  core.List<ProductData> products;
+  core.List<ProductData>? products;
 
   /// Transaction details of this e-commerce action.
-  TransactionData transaction;
+  TransactionData? transaction;
 
   EcommerceData();
 
@@ -823,12 +821,12 @@ class EcommerceData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionType != null) 'actionType': actionType,
-        if (ecommerceType != null) 'ecommerceType': ecommerceType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionType != null) 'actionType': actionType!,
+        if (ecommerceType != null) 'ecommerceType': ecommerceType!,
         if (products != null)
-          'products': products.map((value) => value.toJson()).toList(),
-        if (transaction != null) 'transaction': transaction.toJson(),
+          'products': products!.map((value) => value.toJson()).toList(),
+        if (transaction != null) 'transaction': transaction!.toJson(),
       };
 }
 
@@ -837,21 +835,21 @@ class EventData {
   /// Type of interaction with the object.
   ///
   /// Eg: 'play'.
-  core.String eventAction;
+  core.String? eventAction;
 
   /// The object on the page that was interacted with.
   ///
   /// Eg: 'Video'.
-  core.String eventCategory;
+  core.String? eventCategory;
 
   /// Number of such events in this activity.
-  core.String eventCount;
+  core.String? eventCount;
 
   /// Label attached with the event.
-  core.String eventLabel;
+  core.String? eventLabel;
 
   /// Numeric value associated with the event.
-  core.String eventValue;
+  core.String? eventValue;
 
   EventData();
 
@@ -873,12 +871,12 @@ class EventData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (eventAction != null) 'eventAction': eventAction,
-        if (eventCategory != null) 'eventCategory': eventCategory,
-        if (eventCount != null) 'eventCount': eventCount,
-        if (eventLabel != null) 'eventLabel': eventLabel,
-        if (eventValue != null) 'eventValue': eventValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (eventAction != null) 'eventAction': eventAction!,
+        if (eventCategory != null) 'eventCategory': eventCategory!,
+        if (eventCount != null) 'eventCount': eventCount!,
+        if (eventLabel != null) 'eventLabel': eventLabel!,
+        if (eventValue != null) 'eventValue': eventValue!,
       };
 }
 
@@ -888,7 +886,7 @@ class GetReportsRequest {
   ///
   /// There can be a maximum of 5 requests. All requests should have the same
   /// `dateRanges`, `viewId`, `segments`, `samplingLevel`, and `cohortGroup`.
-  core.List<ReportRequest> reportRequests;
+  core.List<ReportRequest>? reportRequests;
 
   /// Enables \[resource based
   /// quotas\](/analytics/devguides/reporting/core/v4/limits-quotas#analytics_reporting_api_v4),
@@ -900,7 +898,7 @@ class GetReportsRequest {
   /// for `LARGE`. See the \[limits and quotas
   /// documentation\](/analytics/devguides/reporting/core/v4/limits-quotas#analytics_reporting_api_v4)
   /// for details.
-  core.bool useResourceQuotas;
+  core.bool? useResourceQuotas;
 
   GetReportsRequest();
 
@@ -916,11 +914,11 @@ class GetReportsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (reportRequests != null)
           'reportRequests':
-              reportRequests.map((value) => value.toJson()).toList(),
-        if (useResourceQuotas != null) 'useResourceQuotas': useResourceQuotas,
+              reportRequests!.map((value) => value.toJson()).toList(),
+        if (useResourceQuotas != null) 'useResourceQuotas': useResourceQuotas!,
       };
 }
 
@@ -930,13 +928,13 @@ class GetReportsResponse {
   /// The amount of resource quota tokens deducted to execute the query.
   ///
   /// Includes all responses.
-  core.int queryCost;
+  core.int? queryCost;
 
   /// Responses corresponding to each of the request.
-  core.List<Report> reports;
+  core.List<Report>? reports;
 
   /// The amount of resource quota remaining for the property.
-  ResourceQuotasRemaining resourceQuotasRemaining;
+  ResourceQuotasRemaining? resourceQuotasRemaining;
 
   GetReportsResponse();
 
@@ -957,40 +955,40 @@ class GetReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (queryCost != null) 'queryCost': queryCost,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (queryCost != null) 'queryCost': queryCost!,
         if (reports != null)
-          'reports': reports.map((value) => value.toJson()).toList(),
+          'reports': reports!.map((value) => value.toJson()).toList(),
         if (resourceQuotasRemaining != null)
-          'resourceQuotasRemaining': resourceQuotasRemaining.toJson(),
+          'resourceQuotasRemaining': resourceQuotasRemaining!.toJson(),
       };
 }
 
 /// Represents all the details pertaining to a goal.
 class GoalData {
   /// URL of the page where this goal was completed.
-  core.String goalCompletionLocation;
+  core.String? goalCompletionLocation;
 
   /// Total number of goal completions in this activity.
-  core.String goalCompletions;
+  core.String? goalCompletions;
 
   /// This identifies the goal as configured for the profile.
-  core.int goalIndex;
+  core.int? goalIndex;
 
   /// Name of the goal.
-  core.String goalName;
+  core.String? goalName;
 
   /// URL of the page one step prior to the goal completion.
-  core.String goalPreviousStep1;
+  core.String? goalPreviousStep1;
 
   /// URL of the page two steps prior to the goal completion.
-  core.String goalPreviousStep2;
+  core.String? goalPreviousStep2;
 
   /// URL of the page three steps prior to the goal completion.
-  core.String goalPreviousStep3;
+  core.String? goalPreviousStep3;
 
   /// Value in this goal.
-  core.double goalValue;
+  core.double? goalValue;
 
   GoalData();
 
@@ -1021,23 +1019,23 @@ class GoalData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (goalCompletionLocation != null)
-          'goalCompletionLocation': goalCompletionLocation,
-        if (goalCompletions != null) 'goalCompletions': goalCompletions,
-        if (goalIndex != null) 'goalIndex': goalIndex,
-        if (goalName != null) 'goalName': goalName,
-        if (goalPreviousStep1 != null) 'goalPreviousStep1': goalPreviousStep1,
-        if (goalPreviousStep2 != null) 'goalPreviousStep2': goalPreviousStep2,
-        if (goalPreviousStep3 != null) 'goalPreviousStep3': goalPreviousStep3,
-        if (goalValue != null) 'goalValue': goalValue,
+          'goalCompletionLocation': goalCompletionLocation!,
+        if (goalCompletions != null) 'goalCompletions': goalCompletions!,
+        if (goalIndex != null) 'goalIndex': goalIndex!,
+        if (goalName != null) 'goalName': goalName!,
+        if (goalPreviousStep1 != null) 'goalPreviousStep1': goalPreviousStep1!,
+        if (goalPreviousStep2 != null) 'goalPreviousStep2': goalPreviousStep2!,
+        if (goalPreviousStep3 != null) 'goalPreviousStep3': goalPreviousStep3!,
+        if (goalValue != null) 'goalValue': goalValue!,
       };
 }
 
 /// Represents a set of goals that were reached in an activity.
 class GoalSetData {
   /// All the goals that were reached in the current activity.
-  core.List<GoalData> goals;
+  core.List<GoalData>? goals;
 
   GoalSetData();
 
@@ -1050,9 +1048,9 @@ class GoalSetData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (goals != null)
-          'goals': goals.map((value) => value.toJson()).toList(),
+          'goals': goals!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1069,7 +1067,7 @@ class Metric {
   /// and is useful if the expression is not a single metric but a complex
   /// expression which cannot be used in filtering and sorting. The alias is
   /// also used in the response column header.
-  core.String alias;
+  core.String? alias;
 
   /// A metric expression in the request.
   ///
@@ -1080,7 +1078,7 @@ class Metric {
   /// `ga:totalRefunds/ga:users`, in most cases the metric expression is just a
   /// single metric name like `ga:users`. Adding mixed `MetricType` (E.g.,
   /// `CURRENCY` + `PERCENTAGE`) metrics will result in unexpected results.
-  core.String expression;
+  core.String? expression;
 
   /// Specifies how the metric expression should be formatted, for example
   /// `INTEGER`.
@@ -1091,7 +1089,7 @@ class Metric {
   /// - "CURRENCY" : Currency metric.
   /// - "PERCENT" : Percentage metric.
   /// - "TIME" : Time metric in `HH:MM:SS` format.
-  core.String formattingType;
+  core.String? formattingType;
 
   Metric();
 
@@ -1107,29 +1105,29 @@ class Metric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alias != null) 'alias': alias,
-        if (expression != null) 'expression': expression,
-        if (formattingType != null) 'formattingType': formattingType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alias != null) 'alias': alias!,
+        if (expression != null) 'expression': expression!,
+        if (formattingType != null) 'formattingType': formattingType!,
       };
 }
 
 /// MetricFilter specifies the filter on a metric.
 class MetricFilter {
   /// The value to compare against.
-  core.String comparisonValue;
+  core.String? comparisonValue;
 
   /// The metric that will be filtered on.
   ///
   /// A metricFilter must contain a metric name. A metric name can be an alias
   /// earlier defined as a metric or it can also be a metric expression.
-  core.String metricName;
+  core.String? metricName;
 
   /// Logical `NOT` operator.
   ///
   /// If this boolean is set to true, then the matching metric values will be
   /// excluded in the report. The default is false.
-  core.bool not;
+  core.bool? not;
 
   /// Is the metric `EQUAL`, `LESS_THAN` or `GREATER_THAN` the comparisonValue,
   /// the default is `EQUAL`.
@@ -1147,7 +1145,7 @@ class MetricFilter {
   /// comparison value.
   /// - "IS_MISSING" : Validates if the metric is missing. Doesn't take
   /// comparisonValue into account.
-  core.String operator;
+  core.String? operator;
 
   MetricFilter();
 
@@ -1166,11 +1164,11 @@ class MetricFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (comparisonValue != null) 'comparisonValue': comparisonValue,
-        if (metricName != null) 'metricName': metricName,
-        if (not != null) 'not': not,
-        if (operator != null) 'operator': operator,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (comparisonValue != null) 'comparisonValue': comparisonValue!,
+        if (metricName != null) 'metricName': metricName!,
+        if (not != null) 'not': not!,
+        if (operator != null) 'operator': operator!,
       };
 }
 
@@ -1181,7 +1179,7 @@ class MetricFilterClause {
   /// The repeated set of filters.
   ///
   /// They are logically combined based on the operator specified.
-  core.List<MetricFilter> filters;
+  core.List<MetricFilter>? filters;
 
   /// The operator for combining multiple metric filters.
   ///
@@ -1190,7 +1188,7 @@ class MetricFilterClause {
   /// - "OPERATOR_UNSPECIFIED" : Unspecified operator. It is treated as an `OR`.
   /// - "OR" : The logical `OR` operator.
   /// - "AND" : The logical `AND` operator.
-  core.String operator;
+  core.String? operator;
 
   MetricFilterClause();
 
@@ -1206,20 +1204,20 @@ class MetricFilterClause {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (filters != null)
-          'filters': filters.map((value) => value.toJson()).toList(),
-        if (operator != null) 'operator': operator,
+          'filters': filters!.map((value) => value.toJson()).toList(),
+        if (operator != null) 'operator': operator!,
       };
 }
 
 /// The headers for the metrics.
 class MetricHeader {
   /// Headers for the metrics in the response.
-  core.List<MetricHeaderEntry> metricHeaderEntries;
+  core.List<MetricHeaderEntry>? metricHeaderEntries;
 
   /// Headers for the pivots in the response.
-  core.List<PivotHeader> pivotHeaders;
+  core.List<PivotHeader>? pivotHeaders;
 
   MetricHeader();
 
@@ -1238,19 +1236,19 @@ class MetricHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (metricHeaderEntries != null)
           'metricHeaderEntries':
-              metricHeaderEntries.map((value) => value.toJson()).toList(),
+              metricHeaderEntries!.map((value) => value.toJson()).toList(),
         if (pivotHeaders != null)
-          'pivotHeaders': pivotHeaders.map((value) => value.toJson()).toList(),
+          'pivotHeaders': pivotHeaders!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Header for the metrics.
 class MetricHeaderEntry {
   /// The name of the header.
-  core.String name;
+  core.String? name;
 
   /// The type of the metric, for example `INTEGER`.
   /// Possible string values are:
@@ -1260,7 +1258,7 @@ class MetricHeaderEntry {
   /// - "CURRENCY" : Currency metric.
   /// - "PERCENT" : Percentage metric.
   /// - "TIME" : Time metric in `HH:MM:SS` format.
-  core.String type;
+  core.String? type;
 
   MetricHeaderEntry();
 
@@ -1273,9 +1271,9 @@ class MetricHeaderEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1283,7 +1281,7 @@ class MetricHeaderEntry {
 /// operator.
 class OrFiltersForSegment {
   /// List of segment filters to be combined with a `OR` operator.
-  core.List<SegmentFilterClause> segmentFilterClauses;
+  core.List<SegmentFilterClause>? segmentFilterClauses;
 
   OrFiltersForSegment();
 
@@ -1296,10 +1294,10 @@ class OrFiltersForSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (segmentFilterClauses != null)
           'segmentFilterClauses':
-              segmentFilterClauses.map((value) => value.toJson()).toList(),
+              segmentFilterClauses!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1310,7 +1308,7 @@ class OrderBy {
   /// The default sort order is ascending. Example: `ga:browser`. Note, that you
   /// can only specify one field for sort here. For example, `ga:browser,
   /// ga:city` is not valid.
-  core.String fieldName;
+  core.String? fieldName;
 
   /// The order type.
   ///
@@ -1332,7 +1330,7 @@ class OrderBy {
   /// - "DIMENSION_AS_INTEGER" : If the dimensions are fixed length numbers,
   /// ordinary sort would just work fine. `DIMENSION_AS_INTEGER` can be used if
   /// the dimensions are variable length numbers.
-  core.String orderType;
+  core.String? orderType;
 
   /// The sorting order for the field.
   /// Possible string values are:
@@ -1342,7 +1340,7 @@ class OrderBy {
   /// manner.
   /// - "DESCENDING" : Descending sort. The field will be sorted in a descending
   /// manner.
-  core.String sortOrder;
+  core.String? sortOrder;
 
   OrderBy();
 
@@ -1358,20 +1356,20 @@ class OrderBy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fieldName != null) 'fieldName': fieldName,
-        if (orderType != null) 'orderType': orderType,
-        if (sortOrder != null) 'sortOrder': sortOrder,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fieldName != null) 'fieldName': fieldName!,
+        if (orderType != null) 'orderType': orderType!,
+        if (sortOrder != null) 'sortOrder': sortOrder!,
       };
 }
 
 /// Represents details collected when the visitor views a page.
 class PageviewData {
   /// The URL of the page that the visitor viewed.
-  core.String pagePath;
+  core.String? pagePath;
 
   /// The title of the page that the visitor viewed.
-  core.String pageTitle;
+  core.String? pageTitle;
 
   PageviewData();
 
@@ -1384,9 +1382,9 @@ class PageviewData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pagePath != null) 'pagePath': pagePath,
-        if (pageTitle != null) 'pageTitle': pageTitle,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pagePath != null) 'pagePath': pagePath!,
+        if (pageTitle != null) 'pageTitle': pageTitle!,
       };
 }
 
@@ -1404,24 +1402,24 @@ class Pivot {
   /// the pivot region, and you specify key filters to restrict `ga:browser` to
   /// only "IE" or "Firefox", then only those two browsers would show up as
   /// columns.
-  core.List<DimensionFilterClause> dimensionFilterClauses;
+  core.List<DimensionFilterClause>? dimensionFilterClauses;
 
   /// A list of dimensions to show as pivot columns.
   ///
   /// A Pivot can have a maximum of 4 dimensions. Pivot dimensions are part of
   /// the restriction on the total number of dimensions allowed in the request.
-  core.List<Dimension> dimensions;
+  core.List<Dimension>? dimensions;
 
   /// Specifies the maximum number of groups to return.
   ///
   /// The default value is 10, also the maximum value is 1,000.
-  core.int maxGroupCount;
+  core.int? maxGroupCount;
 
   /// The pivot metrics.
   ///
   /// Pivot metrics are part of the restriction on total number of metrics
   /// allowed in the request.
-  core.List<Metric> metrics;
+  core.List<Metric>? metrics;
 
   /// If k metrics were requested, then the response will contain some
   /// data-dependent multiple of k columns in the report.
@@ -1435,7 +1433,7 @@ class Pivot {
   /// for Firefox, IE, and Chrome were 8, 2, 8, respectively, the order of
   /// columns would be Chrome, Firefox, IE. The following let you choose which
   /// of the groups of k columns are included in the response.
-  core.int startGroup;
+  core.int? startGroup;
 
   Pivot();
 
@@ -1466,26 +1464,26 @@ class Pivot {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensionFilterClauses != null)
           'dimensionFilterClauses':
-              dimensionFilterClauses.map((value) => value.toJson()).toList(),
+              dimensionFilterClauses!.map((value) => value.toJson()).toList(),
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
-        if (maxGroupCount != null) 'maxGroupCount': maxGroupCount,
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
+        if (maxGroupCount != null) 'maxGroupCount': maxGroupCount!,
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
-        if (startGroup != null) 'startGroup': startGroup,
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (startGroup != null) 'startGroup': startGroup!,
       };
 }
 
 /// The headers for each of the pivot sections defined in the request.
 class PivotHeader {
   /// A single pivot section header.
-  core.List<PivotHeaderEntry> pivotHeaderEntries;
+  core.List<PivotHeaderEntry>? pivotHeaderEntries;
 
   /// The total number of groups for this pivot.
-  core.int totalPivotGroupsCount;
+  core.int? totalPivotGroupsCount;
 
   PivotHeader();
 
@@ -1501,12 +1499,12 @@ class PivotHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (pivotHeaderEntries != null)
           'pivotHeaderEntries':
-              pivotHeaderEntries.map((value) => value.toJson()).toList(),
+              pivotHeaderEntries!.map((value) => value.toJson()).toList(),
         if (totalPivotGroupsCount != null)
-          'totalPivotGroupsCount': totalPivotGroupsCount,
+          'totalPivotGroupsCount': totalPivotGroupsCount!,
       };
 }
 
@@ -1514,13 +1512,13 @@ class PivotHeader {
 /// requested in the pivots section of the response.
 class PivotHeaderEntry {
   /// The name of the dimensions in the pivot response.
-  core.List<core.String> dimensionNames;
+  core.List<core.String>? dimensionNames;
 
   /// The values for the dimensions in the pivot.
-  core.List<core.String> dimensionValues;
+  core.List<core.String>? dimensionValues;
 
   /// The metric header for the metric in the pivot.
-  MetricHeaderEntry metric;
+  MetricHeaderEntry? metric;
 
   PivotHeaderEntry();
 
@@ -1541,17 +1539,17 @@ class PivotHeaderEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimensionNames != null) 'dimensionNames': dimensionNames,
-        if (dimensionValues != null) 'dimensionValues': dimensionValues,
-        if (metric != null) 'metric': metric.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimensionNames != null) 'dimensionNames': dimensionNames!,
+        if (dimensionValues != null) 'dimensionValues': dimensionValues!,
+        if (metric != null) 'metric': metric!.toJson(),
       };
 }
 
 /// The metric values in the pivot region.
 class PivotValueRegion {
   /// The values of the metrics in each of the pivot regions.
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   PivotValueRegion();
 
@@ -1563,25 +1561,25 @@ class PivotValueRegion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (values != null) 'values': values!,
       };
 }
 
 /// Details of the products in an e-commerce transaction.
 class ProductData {
   /// The total revenue from purchased product items.
-  core.double itemRevenue;
+  core.double? itemRevenue;
 
   /// The product name, supplied by the e-commerce tracking application, for the
   /// purchased items.
-  core.String productName;
+  core.String? productName;
 
   /// Total number of this product units in the transaction.
-  core.String productQuantity;
+  core.String? productQuantity;
 
   /// Unique code that represents the product.
-  core.String productSku;
+  core.String? productSku;
 
   ProductData();
 
@@ -1600,24 +1598,24 @@ class ProductData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (itemRevenue != null) 'itemRevenue': itemRevenue,
-        if (productName != null) 'productName': productName,
-        if (productQuantity != null) 'productQuantity': productQuantity,
-        if (productSku != null) 'productSku': productSku,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (itemRevenue != null) 'itemRevenue': itemRevenue!,
+        if (productName != null) 'productName': productName!,
+        if (productQuantity != null) 'productQuantity': productQuantity!,
+        if (productSku != null) 'productSku': productSku!,
       };
 }
 
 /// The data response corresponding to the request.
 class Report {
   /// The column headers.
-  ColumnHeader columnHeader;
+  ColumnHeader? columnHeader;
 
   /// Response data.
-  ReportData data;
+  ReportData? data;
 
   /// Page token to retrieve the next page of results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   Report();
 
@@ -1635,10 +1633,10 @@ class Report {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnHeader != null) 'columnHeader': columnHeader.toJson(),
-        if (data != null) 'data': data.toJson(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnHeader != null) 'columnHeader': columnHeader!.toJson(),
+        if (data != null) 'data': data!.toJson(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1648,31 +1646,31 @@ class ReportData {
   ///
   /// All the hits received before this timestamp are included in the
   /// calculation of the report.
-  core.String dataLastRefreshed;
+  core.String? dataLastRefreshed;
 
   /// Indicates if response to this request is golden or not.
   ///
   /// Data is golden when the exact same request will not produce any new
   /// results if asked at a later point in time.
-  core.bool isDataGolden;
+  core.bool? isDataGolden;
 
   /// Minimum and maximum values seen over all matching rows.
   ///
   /// These are both empty when `hideValueRanges` in the request is false, or
   /// when rowCount is zero.
-  core.List<DateRangeValues> maximums;
+  core.List<DateRangeValues>? maximums;
 
   /// Minimum and maximum values seen over all matching rows.
   ///
   /// These are both empty when `hideValueRanges` in the request is false, or
   /// when rowCount is zero.
-  core.List<DateRangeValues> minimums;
+  core.List<DateRangeValues>? minimums;
 
   /// Total number of matching rows for this query.
-  core.int rowCount;
+  core.int? rowCount;
 
   /// There's one ReportRow for every unique combination of dimensions.
-  core.List<ReportRow> rows;
+  core.List<ReportRow>? rows;
 
   /// If the results are
   /// [sampled](https://support.google.com/analytics/answer/2637192), this
@@ -1682,7 +1680,7 @@ class ReportData {
   /// \[developer
   /// guide\](/analytics/devguides/reporting/core/v4/basics#sampling) for
   /// details.
-  core.List<core.String> samplesReadCounts;
+  core.List<core.String>? samplesReadCounts;
 
   /// If the results are
   /// [sampled](https://support.google.com/analytics/answer/2637192), this
@@ -1692,7 +1690,7 @@ class ReportData {
   /// \[developer
   /// guide\](/analytics/devguides/reporting/core/v4/basics#sampling) for
   /// details.
-  core.List<core.String> samplingSpaceSizes;
+  core.List<core.String>? samplingSpaceSizes;
 
   /// For each requested date range, for the set of all rows that match the
   /// query, every requested value format gets a total.
@@ -1702,7 +1700,7 @@ class ReportData {
   /// scalar expression. E.g., The "totals" for `3 / (ga:sessions + 2)` we
   /// compute `3 / ((sum of all relevant ga:sessions) + 2)`. Totals are computed
   /// before pagination.
-  core.List<DateRangeValues> totals;
+  core.List<DateRangeValues>? totals;
 
   ReportData();
 
@@ -1752,20 +1750,20 @@ class ReportData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataLastRefreshed != null) 'dataLastRefreshed': dataLastRefreshed,
-        if (isDataGolden != null) 'isDataGolden': isDataGolden,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataLastRefreshed != null) 'dataLastRefreshed': dataLastRefreshed!,
+        if (isDataGolden != null) 'isDataGolden': isDataGolden!,
         if (maximums != null)
-          'maximums': maximums.map((value) => value.toJson()).toList(),
+          'maximums': maximums!.map((value) => value.toJson()).toList(),
         if (minimums != null)
-          'minimums': minimums.map((value) => value.toJson()).toList(),
-        if (rowCount != null) 'rowCount': rowCount,
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
-        if (samplesReadCounts != null) 'samplesReadCounts': samplesReadCounts,
+          'minimums': minimums!.map((value) => value.toJson()).toList(),
+        if (rowCount != null) 'rowCount': rowCount!,
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (samplesReadCounts != null) 'samplesReadCounts': samplesReadCounts!,
         if (samplingSpaceSizes != null)
-          'samplingSpaceSizes': samplingSpaceSizes,
+          'samplingSpaceSizes': samplingSpaceSizes!,
         if (totals != null)
-          'totals': totals.map((value) => value.toJson()).toList(),
+          'totals': totals!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1776,7 +1774,7 @@ class ReportRequest {
   /// If there is a cohort group in the request the `ga:cohort` dimension must
   /// be present. Every \[ReportRequest\](#ReportRequest) within a `batchGet`
   /// method must contain the same `cohortGroup` definition.
-  CohortGroup cohortGroup;
+  CohortGroup? cohortGroup;
 
   /// Date ranges in the request.
   ///
@@ -1789,19 +1787,19 @@ class ReportRequest {
   /// provided, the default date range is (startDate: current date - 7 days,
   /// endDate: current date - 1 day). Every \[ReportRequest\](#ReportRequest)
   /// within a `batchGet` method must contain the same `dateRanges` definition.
-  core.List<DateRange> dateRanges;
+  core.List<DateRange>? dateRanges;
 
   /// The dimension filter clauses for filtering Dimension Values.
   ///
   /// They are logically combined with the `AND` operator. Note that filtering
   /// occurs before any dimensions are aggregated, so that the returned metrics
   /// represent the total for only the relevant dimensions.
-  core.List<DimensionFilterClause> dimensionFilterClauses;
+  core.List<DimensionFilterClause>? dimensionFilterClauses;
 
   /// The dimensions requested.
   ///
   /// Requests can have a total of 9 dimensions.
-  core.List<Dimension> dimensions;
+  core.List<Dimension>? dimensions;
 
   /// Dimension or metric filters that restrict the data returned for your
   /// request.
@@ -1812,44 +1810,44 @@ class ReportRequest {
   /// `ga:browser=~^Firefox`. For more information on dimensions and metric
   /// filters, see
   /// [Filters reference](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filters).
-  core.String filtersExpression;
+  core.String? filtersExpression;
 
   /// If set to true, hides the total of all metrics for all the matching rows,
   /// for every date range.
   ///
   /// The default false and will return the totals.
-  core.bool hideTotals;
+  core.bool? hideTotals;
 
   /// If set to true, hides the minimum and maximum across all matching rows.
   ///
   /// The default is false and the value ranges are returned.
-  core.bool hideValueRanges;
+  core.bool? hideValueRanges;
 
   /// If set to false, the response does not include rows if all the retrieved
   /// metrics are equal to zero.
   ///
   /// The default is false which will exclude these rows.
-  core.bool includeEmptyRows;
+  core.bool? includeEmptyRows;
 
   /// The metric filter clauses.
   ///
   /// They are logically combined with the `AND` operator. Metric filters look
   /// at only the first date range and not the comparing date range. Note that
   /// filtering on metrics occurs after the metrics are aggregated.
-  core.List<MetricFilterClause> metricFilterClauses;
+  core.List<MetricFilterClause>? metricFilterClauses;
 
   /// The metrics requested.
   ///
   /// Requests must specify at least one metric. Requests can have a total of 10
   /// metrics.
-  core.List<Metric> metrics;
+  core.List<Metric>? metrics;
 
   /// Sort order on output rows.
   ///
   /// To compare two rows, the elements of the following are applied in order
   /// until a difference is found. All date ranges in the output get the same
   /// row order.
-  core.List<OrderBy> orderBys;
+  core.List<OrderBy>? orderBys;
 
   /// Page size is for paging and specifies the maximum number of returned rows.
   ///
@@ -1860,19 +1858,19 @@ class ReportRequest {
   /// For instance, there are fewer than 300 possible values for `ga:country`,
   /// so when segmenting only by country, you can't get more than 300 rows, even
   /// if you set `pageSize` to a higher value.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// A continuation token to get the next page of the results.
   ///
   /// Adding this to the request will return the rows after the pageToken. The
   /// pageToken should be the value returned in the nextPageToken parameter in
   /// the response to the GetReports request.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// The pivot definitions.
   ///
   /// Requests can have a maximum of 2 pivots.
-  core.List<Pivot> pivots;
+  core.List<Pivot>? pivots;
 
   /// The desired report
   /// [sample](https://support.google.com/analytics/answer/2637192) size.
@@ -1890,7 +1888,7 @@ class ReportRequest {
   /// - "SMALL" : It returns a fast response with a smaller sampling size.
   /// - "LARGE" : Returns a more accurate response using a large sampling size.
   /// But this may result in response being slower.
-  core.String samplingLevel;
+  core.String? samplingLevel;
 
   /// Segment the data returned for the request.
   ///
@@ -1899,7 +1897,7 @@ class ReportRequest {
   /// \[ReportRequest\](#ReportRequest) within a `batchGet` method must contain
   /// the same `segments` definition. Requests with segments must have the
   /// `ga:segment` dimension.
-  core.List<Segment> segments;
+  core.List<Segment>? segments;
 
   /// The Analytics
   /// [view ID](https://support.google.com/analytics/answer/1009618) from which
@@ -1907,7 +1905,7 @@ class ReportRequest {
   ///
   /// Every \[ReportRequest\](#ReportRequest) within a `batchGet` method must
   /// contain the same `viewId`.
-  core.String viewId;
+  core.String? viewId;
 
   ReportRequest();
 
@@ -1990,44 +1988,44 @@ class ReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cohortGroup != null) 'cohortGroup': cohortGroup.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cohortGroup != null) 'cohortGroup': cohortGroup!.toJson(),
         if (dateRanges != null)
-          'dateRanges': dateRanges.map((value) => value.toJson()).toList(),
+          'dateRanges': dateRanges!.map((value) => value.toJson()).toList(),
         if (dimensionFilterClauses != null)
           'dimensionFilterClauses':
-              dimensionFilterClauses.map((value) => value.toJson()).toList(),
+              dimensionFilterClauses!.map((value) => value.toJson()).toList(),
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
-        if (filtersExpression != null) 'filtersExpression': filtersExpression,
-        if (hideTotals != null) 'hideTotals': hideTotals,
-        if (hideValueRanges != null) 'hideValueRanges': hideValueRanges,
-        if (includeEmptyRows != null) 'includeEmptyRows': includeEmptyRows,
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
+        if (filtersExpression != null) 'filtersExpression': filtersExpression!,
+        if (hideTotals != null) 'hideTotals': hideTotals!,
+        if (hideValueRanges != null) 'hideValueRanges': hideValueRanges!,
+        if (includeEmptyRows != null) 'includeEmptyRows': includeEmptyRows!,
         if (metricFilterClauses != null)
           'metricFilterClauses':
-              metricFilterClauses.map((value) => value.toJson()).toList(),
+              metricFilterClauses!.map((value) => value.toJson()).toList(),
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
         if (orderBys != null)
-          'orderBys': orderBys.map((value) => value.toJson()).toList(),
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
+          'orderBys': orderBys!.map((value) => value.toJson()).toList(),
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
         if (pivots != null)
-          'pivots': pivots.map((value) => value.toJson()).toList(),
-        if (samplingLevel != null) 'samplingLevel': samplingLevel,
+          'pivots': pivots!.map((value) => value.toJson()).toList(),
+        if (samplingLevel != null) 'samplingLevel': samplingLevel!,
         if (segments != null)
-          'segments': segments.map((value) => value.toJson()).toList(),
-        if (viewId != null) 'viewId': viewId,
+          'segments': segments!.map((value) => value.toJson()).toList(),
+        if (viewId != null) 'viewId': viewId!,
       };
 }
 
 /// A row in the report.
 class ReportRow {
   /// List of requested dimensions.
-  core.List<core.String> dimensions;
+  core.List<core.String>? dimensions;
 
   /// List of metrics for each requested DateRange.
-  core.List<DateRangeValues> metrics;
+  core.List<DateRangeValues>? metrics;
 
   ReportRow();
 
@@ -2045,10 +2043,10 @@ class ReportRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimensions != null) 'dimensions': dimensions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions!,
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2056,10 +2054,10 @@ class ReportRow {
 /// completed.
 class ResourceQuotasRemaining {
   /// Daily resource quota remaining remaining.
-  core.int dailyQuotaTokensRemaining;
+  core.int? dailyQuotaTokensRemaining;
 
   /// Hourly resource quota tokens remaining.
-  core.int hourlyQuotaTokensRemaining;
+  core.int? hourlyQuotaTokensRemaining;
 
   ResourceQuotasRemaining();
 
@@ -2074,30 +2072,30 @@ class ResourceQuotasRemaining {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dailyQuotaTokensRemaining != null)
-          'dailyQuotaTokensRemaining': dailyQuotaTokensRemaining,
+          'dailyQuotaTokensRemaining': dailyQuotaTokensRemaining!,
         if (hourlyQuotaTokensRemaining != null)
-          'hourlyQuotaTokensRemaining': hourlyQuotaTokensRemaining,
+          'hourlyQuotaTokensRemaining': hourlyQuotaTokensRemaining!,
       };
 }
 
 class ScreenviewData {
   /// The application name.
-  core.String appName;
+  core.String? appName;
 
   /// Mobile manufacturer or branded name.
   ///
   /// Eg: "Google", "Apple" etc.
-  core.String mobileDeviceBranding;
+  core.String? mobileDeviceBranding;
 
   /// Mobile device model.
   ///
   /// Eg: "Pixel", "iPhone" etc.
-  core.String mobileDeviceModel;
+  core.String? mobileDeviceModel;
 
   /// The name of the screen.
-  core.String screenName;
+  core.String? screenName;
 
   ScreenviewData();
 
@@ -2116,12 +2114,12 @@ class ScreenviewData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appName != null) 'appName': appName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appName != null) 'appName': appName!,
         if (mobileDeviceBranding != null)
-          'mobileDeviceBranding': mobileDeviceBranding,
-        if (mobileDeviceModel != null) 'mobileDeviceModel': mobileDeviceModel,
-        if (screenName != null) 'screenName': screenName,
+          'mobileDeviceBranding': mobileDeviceBranding!,
+        if (mobileDeviceModel != null) 'mobileDeviceModel': mobileDeviceModel!,
+        if (screenName != null) 'screenName': screenName!,
       };
 }
 
@@ -2131,19 +2129,19 @@ class SearchUserActivityRequest {
   ///
   /// Only acvities matching these types will be returned in the response. If
   /// empty, all activies will be returned.
-  core.List<core.String> activityTypes;
+  core.List<core.String>? activityTypes;
 
   /// Date range for which to retrieve the user activity.
   ///
   /// If a date range is not provided, the default date range is (startDate:
   /// current date - 7 days, endDate: current date - 1 day).
-  DateRange dateRange;
+  DateRange? dateRange;
 
   /// Page size is for paging and specifies the maximum number of returned rows.
   ///
   /// Page size should be > 0. If the value is 0 or if the field isn't
   /// specified, the request returns the default of 1000 rows per page.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// A continuation token to get the next page of the results.
   ///
@@ -2151,7 +2149,7 @@ class SearchUserActivityRequest {
   /// pageToken should be the value returned in the nextPageToken parameter in
   /// the response to the
   /// \[SearchUserActivityRequest\](#SearchUserActivityRequest) request.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// Unique user Id to query for.
   ///
@@ -2159,7 +2157,7 @@ class SearchUserActivityRequest {
   /// contain this field.
   ///
   /// Required.
-  User user;
+  User? user;
 
   /// The Analytics
   /// [view ID](https://support.google.com/analytics/answer/1009618) from which
@@ -2169,7 +2167,7 @@ class SearchUserActivityRequest {
   /// contain the `viewId`.
   ///
   /// Required.
-  core.String viewId;
+  core.String? viewId;
 
   SearchUserActivityRequest();
 
@@ -2198,13 +2196,13 @@ class SearchUserActivityRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activityTypes != null) 'activityTypes': activityTypes,
-        if (dateRange != null) 'dateRange': dateRange.toJson(),
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (user != null) 'user': user.toJson(),
-        if (viewId != null) 'viewId': viewId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activityTypes != null) 'activityTypes': activityTypes!,
+        if (dateRange != null) 'dateRange': dateRange!.toJson(),
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (user != null) 'user': user!.toJson(),
+        if (viewId != null) 'viewId': viewId!,
       };
 }
 
@@ -2213,7 +2211,7 @@ class SearchUserActivityResponse {
   /// This token should be passed to
   /// \[SearchUserActivityRequest\](#SearchUserActivityRequest) to retrieve the
   /// next page.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// This field represents the
   /// [sampling rate](https://support.google.com/analytics/answer/2637192) for
@@ -2222,13 +2220,13 @@ class SearchUserActivityResponse {
   /// See \[developer
   /// guide\](/analytics/devguides/reporting/core/v4/basics#sampling) for
   /// details.
-  core.double sampleRate;
+  core.double? sampleRate;
 
   /// Each record represents a session (device details, duration, etc).
-  core.List<UserActivitySession> sessions;
+  core.List<UserActivitySession>? sessions;
 
   /// Total rows returned by this query (across different pages).
-  core.int totalRows;
+  core.int? totalRows;
 
   SearchUserActivityResponse();
 
@@ -2250,12 +2248,12 @@ class SearchUserActivityResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (sampleRate != null) 'sampleRate': sampleRate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sampleRate != null) 'sampleRate': sampleRate!,
         if (sessions != null)
-          'sessions': sessions.map((value) => value.toJson()).toList(),
-        if (totalRows != null) 'totalRows': totalRows,
+          'sessions': sessions!.map((value) => value.toJson()).toList(),
+        if (totalRows != null) 'totalRows': totalRows!,
       };
 }
 
@@ -2265,10 +2263,10 @@ class SearchUserActivityResponse {
 /// of users, one Segment might be users from a particular country or city.
 class Segment {
   /// A dynamic segment definition in the request.
-  DynamicSegment dynamicSegment;
+  DynamicSegment? dynamicSegment;
 
   /// The segment ID of a built-in or custom segment, for example `gaid::-3`.
-  core.String segmentId;
+  core.String? segmentId;
 
   Segment();
 
@@ -2282,9 +2280,9 @@ class Segment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dynamicSegment != null) 'dynamicSegment': dynamicSegment.toJson(),
-        if (segmentId != null) 'segmentId': segmentId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dynamicSegment != null) 'dynamicSegment': dynamicSegment!.toJson(),
+        if (segmentId != null) 'segmentId': segmentId!,
       };
 }
 
@@ -2293,7 +2291,7 @@ class Segment {
 class SegmentDefinition {
   /// A segment is defined by a set of segment filters which are combined
   /// together with a logical `AND` operation.
-  core.List<SegmentFilter> segmentFilters;
+  core.List<SegmentFilter>? segmentFilters;
 
   SegmentDefinition();
 
@@ -2306,29 +2304,29 @@ class SegmentDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (segmentFilters != null)
           'segmentFilters':
-              segmentFilters.map((value) => value.toJson()).toList(),
+              segmentFilters!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Dimension filter specifies the filtering options on a dimension.
 class SegmentDimensionFilter {
   /// Should the match be case sensitive, ignored for `IN_LIST` operator.
-  core.bool caseSensitive;
+  core.bool? caseSensitive;
 
   /// Name of the dimension for which the filter is being applied.
-  core.String dimensionName;
+  core.String? dimensionName;
 
   /// The list of expressions, only the first element is used for all operators
-  core.List<core.String> expressions;
+  core.List<core.String>? expressions;
 
   /// Maximum comparison values for `BETWEEN` match type.
-  core.String maxComparisonValue;
+  core.String? maxComparisonValue;
 
   /// Minimum comparison values for `BETWEEN` match type.
-  core.String minComparisonValue;
+  core.String? minComparisonValue;
 
   /// The operator to use to match the dimension with the expressions.
   /// Possible string values are:
@@ -2358,7 +2356,7 @@ class SegmentDimensionFilter {
   /// than the match expression.
   /// - "NUMERIC_BETWEEN" : Checks if the dimension is numerically between the
   /// minimum and maximum of the match expression, boundaries excluded.
-  core.String operator;
+  core.String? operator;
 
   SegmentDimensionFilter();
 
@@ -2385,15 +2383,15 @@ class SegmentDimensionFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive,
-        if (dimensionName != null) 'dimensionName': dimensionName,
-        if (expressions != null) 'expressions': expressions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+        if (dimensionName != null) 'dimensionName': dimensionName!,
+        if (expressions != null) 'expressions': expressions!,
         if (maxComparisonValue != null)
-          'maxComparisonValue': maxComparisonValue,
+          'maxComparisonValue': maxComparisonValue!,
         if (minComparisonValue != null)
-          'minComparisonValue': minComparisonValue,
-        if (operator != null) 'operator': operator,
+          'minComparisonValue': minComparisonValue!,
+        if (operator != null) 'operator': operator!,
       };
 }
 
@@ -2411,17 +2409,17 @@ class SegmentFilter {
   /// "simpleSegment" :{ "orFiltersForSegment": \[{ "segmentFilterClauses":\[{
   /// "dimensionFilter": { "dimensionName": "ga:city", "expressions": \["New
   /// York"\] } }\] }\] }, "not": "True" }\] },
-  core.bool not;
+  core.bool? not;
 
   /// Sequence conditions consist of one or more steps, where each step is
   /// defined by one or more dimension/metric conditions.
   ///
   /// Multiple steps can be combined with special sequence operators.
-  SequenceSegment sequenceSegment;
+  SequenceSegment? sequenceSegment;
 
   /// A Simple segment conditions consist of one or more dimension/metric
   /// conditions that can be combined
-  SimpleSegment simpleSegment;
+  SimpleSegment? simpleSegment;
 
   SegmentFilter();
 
@@ -2439,11 +2437,11 @@ class SegmentFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (not != null) 'not': not,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (not != null) 'not': not!,
         if (sequenceSegment != null)
-          'sequenceSegment': sequenceSegment.toJson(),
-        if (simpleSegment != null) 'simpleSegment': simpleSegment.toJson(),
+          'sequenceSegment': sequenceSegment!.toJson(),
+        if (simpleSegment != null) 'simpleSegment': simpleSegment!.toJson(),
       };
 }
 
@@ -2451,13 +2449,13 @@ class SegmentFilter {
 /// a dimension filter.
 class SegmentFilterClause {
   /// Dimension Filter for the segment definition.
-  SegmentDimensionFilter dimensionFilter;
+  SegmentDimensionFilter? dimensionFilter;
 
   /// Metric Filter for the segment definition.
-  SegmentMetricFilter metricFilter;
+  SegmentMetricFilter? metricFilter;
 
   /// Matches the complement (`!`) of the filter.
-  core.bool not;
+  core.bool? not;
 
   SegmentFilterClause();
 
@@ -2475,11 +2473,11 @@ class SegmentFilterClause {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensionFilter != null)
-          'dimensionFilter': dimensionFilter.toJson(),
-        if (metricFilter != null) 'metricFilter': metricFilter.toJson(),
-        if (not != null) 'not': not,
+          'dimensionFilter': dimensionFilter!.toJson(),
+        if (metricFilter != null) 'metricFilter': metricFilter!.toJson(),
+        if (not != null) 'not': not!,
       };
 }
 
@@ -2489,15 +2487,15 @@ class SegmentMetricFilter {
   ///
   /// If the operator is `BETWEEN`, this value is treated as minimum comparison
   /// value.
-  core.String comparisonValue;
+  core.String? comparisonValue;
 
   /// Max comparison value is only used for `BETWEEN` operator.
-  core.String maxComparisonValue;
+  core.String? maxComparisonValue;
 
   /// The metric that will be filtered on.
   ///
   /// A `metricFilter` must contain a metric name.
-  core.String metricName;
+  core.String? metricName;
 
   /// Specifies is the operation to perform to compare the metric.
   ///
@@ -2511,7 +2509,7 @@ class SegmentMetricFilter {
   /// - "EQUAL" : Equals operator.
   /// - "BETWEEN" : For between operator, both the minimum and maximum are
   /// exclusive. We will use `LT` and `GT` for comparison.
-  core.String operator;
+  core.String? operator;
 
   /// Scope for a metric defines the level at which that metric is defined.
   ///
@@ -2526,7 +2524,7 @@ class SegmentMetricFilter {
   /// - "HIT" : Hit scope.
   /// - "SESSION" : Session scope.
   /// - "USER" : User scope.
-  core.String scope;
+  core.String? scope;
 
   SegmentMetricFilter();
 
@@ -2548,13 +2546,13 @@ class SegmentMetricFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (comparisonValue != null) 'comparisonValue': comparisonValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (comparisonValue != null) 'comparisonValue': comparisonValue!,
         if (maxComparisonValue != null)
-          'maxComparisonValue': maxComparisonValue,
-        if (metricName != null) 'metricName': metricName,
-        if (operator != null) 'operator': operator,
-        if (scope != null) 'scope': scope,
+          'maxComparisonValue': maxComparisonValue!,
+        if (metricName != null) 'metricName': metricName!,
+        if (operator != null) 'operator': operator!,
+        if (scope != null) 'scope': scope!,
       };
 }
 
@@ -2569,11 +2567,11 @@ class SegmentSequenceStep {
   /// step.
   /// - "IMMEDIATELY_PRECEDES" : Operator indicates that the previous step
   /// immediately precedes the next step.
-  core.String matchType;
+  core.String? matchType;
 
   /// A sequence is specified with a list of Or grouped filters which are
   /// combined with `AND` operator.
-  core.List<OrFiltersForSegment> orFiltersForSegment;
+  core.List<OrFiltersForSegment>? orFiltersForSegment;
 
   SegmentSequenceStep();
 
@@ -2589,11 +2587,11 @@ class SegmentSequenceStep {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (matchType != null) 'matchType': matchType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (matchType != null) 'matchType': matchType!,
         if (orFiltersForSegment != null)
           'orFiltersForSegment':
-              orFiltersForSegment.map((value) => value.toJson()).toList(),
+              orFiltersForSegment!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2604,10 +2602,10 @@ class SegmentSequenceStep {
 class SequenceSegment {
   /// If set, first step condition must match the first hit of the visitor (in
   /// the date range).
-  core.bool firstStepShouldMatchFirstHit;
+  core.bool? firstStepShouldMatchFirstHit;
 
   /// The list of steps in the sequence.
-  core.List<SegmentSequenceStep> segmentSequenceSteps;
+  core.List<SegmentSequenceStep>? segmentSequenceSteps;
 
   SequenceSegment();
 
@@ -2624,12 +2622,12 @@ class SequenceSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (firstStepShouldMatchFirstHit != null)
-          'firstStepShouldMatchFirstHit': firstStepShouldMatchFirstHit,
+          'firstStepShouldMatchFirstHit': firstStepShouldMatchFirstHit!,
         if (segmentSequenceSteps != null)
           'segmentSequenceSteps':
-              segmentSequenceSteps.map((value) => value.toJson()).toList(),
+              segmentSequenceSteps!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2638,7 +2636,7 @@ class SequenceSegment {
 class SimpleSegment {
   /// A list of segment filters groups which are combined with logical `AND`
   /// operator.
-  core.List<OrFiltersForSegment> orFiltersForSegment;
+  core.List<OrFiltersForSegment>? orFiltersForSegment;
 
   SimpleSegment();
 
@@ -2651,10 +2649,10 @@ class SimpleSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (orFiltersForSegment != null)
           'orFiltersForSegment':
-              orFiltersForSegment.map((value) => value.toJson()).toList(),
+              orFiltersForSegment!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2663,16 +2661,16 @@ class SimpleSegment {
 class TransactionData {
   /// The transaction ID, supplied by the e-commerce tracking method, for the
   /// purchase in the shopping cart.
-  core.String transactionId;
+  core.String? transactionId;
 
   /// The total sale revenue (excluding shipping and tax) of the transaction.
-  core.double transactionRevenue;
+  core.double? transactionRevenue;
 
   /// Total cost of shipping.
-  core.double transactionShipping;
+  core.double? transactionShipping;
 
   /// Total tax for the transaction.
-  core.double transactionTax;
+  core.double? transactionTax;
 
   TransactionData();
 
@@ -2692,13 +2690,13 @@ class TransactionData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (transactionId != null) 'transactionId': transactionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (transactionId != null) 'transactionId': transactionId!,
         if (transactionRevenue != null)
-          'transactionRevenue': transactionRevenue,
+          'transactionRevenue': transactionRevenue!,
         if (transactionShipping != null)
-          'transactionShipping': transactionShipping,
-        if (transactionTax != null) 'transactionTax': transactionTax,
+          'transactionShipping': transactionShipping!,
+        if (transactionTax != null) 'transactionTax': transactionTax!,
       };
 }
 
@@ -2714,10 +2712,10 @@ class User {
   /// interact with content across one or more devices and / or browser
   /// instances.
   /// - "CLIENT_ID" : Analytics assigned client_id.
-  core.String type;
+  core.String? type;
 
   /// Unique Id of the user for which the data is being requested.
-  core.String userId;
+  core.String? userId;
 
   User();
 
@@ -2730,9 +2728,9 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
-        if (userId != null) 'userId': userId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -2740,26 +2738,26 @@ class User {
 /// time over a period of time.
 class UserActivitySession {
   /// Represents a detailed view into each of the activity in this session.
-  core.List<Activity> activities;
+  core.List<Activity>? activities;
 
   /// The data source of a hit.
   ///
   /// By default, hits sent from analytics.js are reported as "web" and hits
   /// sent from the mobile SDKs are reported as "app". These values can be
   /// overridden in the Measurement Protocol.
-  core.String dataSource;
+  core.String? dataSource;
 
   /// The type of device used: "mobile", "tablet" etc.
-  core.String deviceCategory;
+  core.String? deviceCategory;
 
   /// Platform on which the activity happened: "android", "ios" etc.
-  core.String platform;
+  core.String? platform;
 
   /// Date of this session in ISO-8601 format.
-  core.String sessionDate;
+  core.String? sessionDate;
 
   /// Unique ID of the session.
-  core.String sessionId;
+  core.String? sessionId;
 
   UserActivitySession();
 
@@ -2787,13 +2785,13 @@ class UserActivitySession {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (activities != null)
-          'activities': activities.map((value) => value.toJson()).toList(),
-        if (dataSource != null) 'dataSource': dataSource,
-        if (deviceCategory != null) 'deviceCategory': deviceCategory,
-        if (platform != null) 'platform': platform,
-        if (sessionDate != null) 'sessionDate': sessionDate,
-        if (sessionId != null) 'sessionId': sessionId,
+          'activities': activities!.map((value) => value.toJson()).toList(),
+        if (dataSource != null) 'dataSource': dataSource!,
+        if (deviceCategory != null) 'deviceCategory': deviceCategory!,
+        if (platform != null) 'platform': platform!,
+        if (sessionDate != null) 'sessionDate': sessionDate!,
+        if (sessionId != null) 'sessionId': sessionId!,
       };
 }

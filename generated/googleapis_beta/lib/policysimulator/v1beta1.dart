@@ -135,13 +135,9 @@ class FoldersLocationsReplaysResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudPolicysimulatorV1beta1Replay request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -187,11 +183,8 @@ class FoldersLocationsReplaysResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudPolicysimulatorV1beta1Replay> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -249,13 +242,10 @@ class FoldersLocationsReplaysResultsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -303,11 +293,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -355,11 +342,11 @@ class OperationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list({
-    core.String filter,
-    core.String name,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? name,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
@@ -433,13 +420,9 @@ class OrganizationsLocationsReplaysResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudPolicysimulatorV1beta1Replay request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -485,11 +468,8 @@ class OrganizationsLocationsReplaysResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudPolicysimulatorV1beta1Replay> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -547,13 +527,10 @@ class OrganizationsLocationsReplaysResultsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -625,13 +602,9 @@ class ProjectsLocationsReplaysResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudPolicysimulatorV1beta1Replay request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -677,11 +650,8 @@ class ProjectsLocationsReplaysResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudPolicysimulatorV1beta1Replay> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -739,13 +709,10 @@ class ProjectsLocationsReplaysResultsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -795,19 +762,19 @@ class GoogleCloudPolicysimulatorV1beta1AccessStateDiff {
   /// (`NOT_GRANTED`), but their access after the proposed changes is `UNKNOWN`.
   /// * The member's access under the current policies is `UNKNOWN`, but they
   /// will have access after the proposed changes (`GRANTED`).
-  core.String accessChange;
+  core.String? accessChange;
 
   /// The results of evaluating the access tuple under the current (baseline)
   /// policies.
   ///
   /// If the AccessState couldn't be fully evaluated, this field explains why.
-  GoogleCloudPolicysimulatorV1beta1ExplainedAccess baseline;
+  GoogleCloudPolicysimulatorV1beta1ExplainedAccess? baseline;
 
   /// The results of evaluating the access tuple under the proposed (simulated)
   /// policies.
   ///
   /// If the AccessState couldn't be fully evaluated, this field explains why.
-  GoogleCloudPolicysimulatorV1beta1ExplainedAccess simulated;
+  GoogleCloudPolicysimulatorV1beta1ExplainedAccess? simulated;
 
   GoogleCloudPolicysimulatorV1beta1AccessStateDiff();
 
@@ -825,10 +792,10 @@ class GoogleCloudPolicysimulatorV1beta1AccessStateDiff {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessChange != null) 'accessChange': accessChange,
-        if (baseline != null) 'baseline': baseline.toJson(),
-        if (simulated != null) 'simulated': simulated.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessChange != null) 'accessChange': accessChange!,
+        if (baseline != null) 'baseline': baseline!.toJson(),
+        if (simulated != null) 'simulated': simulated!.toJson(),
       };
 }
 
@@ -842,7 +809,7 @@ class GoogleCloudPolicysimulatorV1beta1AccessTuple {
   /// https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
   ///
   /// Required.
-  core.String fullResourceName;
+  core.String? fullResourceName;
 
   /// The IAM permission to check for the specified member and resource.
   ///
@@ -852,7 +819,7 @@ class GoogleCloudPolicysimulatorV1beta1AccessTuple {
   /// https://cloud.google.com/iam/help/roles/reference.
   ///
   /// Required.
-  core.String permission;
+  core.String? permission;
 
   /// The member, or principal, whose access you want to check, in the form of
   /// the email address that represents that member.
@@ -863,7 +830,7 @@ class GoogleCloudPolicysimulatorV1beta1AccessTuple {
   /// supported.
   ///
   /// Required.
-  core.String principal;
+  core.String? principal;
 
   GoogleCloudPolicysimulatorV1beta1AccessTuple();
 
@@ -879,10 +846,10 @@ class GoogleCloudPolicysimulatorV1beta1AccessTuple {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fullResourceName != null) 'fullResourceName': fullResourceName,
-        if (permission != null) 'permission': permission,
-        if (principal != null) 'principal': principal,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+        if (permission != null) 'permission': permission!,
+        if (principal != null) 'principal': principal!,
       };
 }
 
@@ -906,14 +873,14 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanation {
   /// condition expression evaluates to `true`.
   /// - "UNKNOWN_INFO_DENIED" : The user who created the Replay does not have
   /// access to all of the policies that Policy Simulator needs to evaluate.
-  core.String access;
+  core.String? access;
 
   /// A condition expression that prevents this binding from granting access
   /// unless the expression evaluates to `true`.
   ///
   /// To learn about IAM Conditions, see
   /// https://cloud.google.com/iam/docs/conditions-overview.
-  GoogleTypeExpr condition;
+  GoogleTypeExpr? condition;
 
   /// Indicates whether each member in the binding includes the member specified
   /// in the request, either directly or indirectly.
@@ -929,7 +896,7 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanation {
   /// the binding, the key is `group:product-eng@example.com`, and the
   /// `membership` field in the value is set to `MEMBERSHIP_INCLUDED`.
   core.Map<core.String,
-          GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership>
+          GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership>?
       memberships;
 
   /// The relevance of this binding to the overall determination for the entire
@@ -940,14 +907,14 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanation {
   /// the data point is unlikely to affect the overall determination.
   /// - "HIGH" : The data point has a strong effect on the result. Changing the
   /// data point is likely to affect the overall determination.
-  core.String relevance;
+  core.String? relevance;
 
   /// The role that this binding grants.
   ///
   /// For example, `roles/compute.serviceAgent`. For a complete list of
   /// predefined IAM roles, as well as the permissions in each role, see
   /// https://cloud.google.com/iam/help/roles/reference.
-  core.String role;
+  core.String? role;
 
   /// Indicates whether the role granted by this binding contains the specified
   /// permission.
@@ -959,7 +926,7 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanation {
   /// role.
   /// - "ROLE_PERMISSION_UNKNOWN_INFO_DENIED" : The user who created the Replay
   /// is not allowed to access the binding.
-  core.String rolePermission;
+  core.String? rolePermission;
 
   /// The relevance of the permission's existence, or nonexistence, in the role
   /// to the overall determination for the entire policy.
@@ -969,7 +936,7 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanation {
   /// the data point is unlikely to affect the overall determination.
   /// - "HIGH" : The data point has a strong effect on the result. Changing the
   /// data point is likely to affect the overall determination.
-  core.String rolePermissionRelevance;
+  core.String? rolePermissionRelevance;
 
   GoogleCloudPolicysimulatorV1beta1BindingExplanation();
 
@@ -982,14 +949,15 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanation {
           _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('memberships')) {
-      memberships =
-          (_json['memberships'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership
-                      .fromJson(item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      memberships = (_json['memberships'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership
+                  .fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('relevance')) {
       relevance = _json['relevance'] as core.String;
@@ -1005,17 +973,17 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (access != null) 'access': access,
-        if (condition != null) 'condition': condition.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (access != null) 'access': access!,
+        if (condition != null) 'condition': condition!.toJson(),
         if (memberships != null)
-          'memberships':
-              memberships.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (relevance != null) 'relevance': relevance,
-        if (role != null) 'role': role,
-        if (rolePermission != null) 'rolePermission': rolePermission,
+          'memberships': memberships!
+              .map((key, item) => core.MapEntry(key, item.toJson())),
+        if (relevance != null) 'relevance': relevance!,
+        if (role != null) 'role': role!,
+        if (rolePermission != null) 'rolePermission': rolePermission!,
         if (rolePermissionRelevance != null)
-          'rolePermissionRelevance': rolePermissionRelevance,
+          'rolePermissionRelevance': rolePermissionRelevance!,
       };
 }
 
@@ -1034,7 +1002,7 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership {
   /// not allowed to access the binding.
   /// - "MEMBERSHIP_UNKNOWN_UNSUPPORTED" : The member is an unsupported type.
   /// Only Google Accounts and service accounts are supported.
-  core.String membership;
+  core.String? membership;
 
   /// The relevance of the member's status to the overall determination for the
   /// binding.
@@ -1044,7 +1012,7 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership {
   /// the data point is unlikely to affect the overall determination.
   /// - "HIGH" : The data point has a strong effect on the result. Changing the
   /// data point is likely to affect the overall determination.
-  core.String relevance;
+  core.String? relevance;
 
   GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership();
 
@@ -1058,9 +1026,9 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (membership != null) 'membership': membership,
-        if (relevance != null) 'relevance': relevance,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (membership != null) 'membership': membership!,
+        if (relevance != null) 'relevance': relevance!,
       };
 }
 
@@ -1077,19 +1045,19 @@ class GoogleCloudPolicysimulatorV1beta1ExplainedAccess {
   /// condition expression evaluates to `true`.
   /// - "UNKNOWN_INFO_DENIED" : The user who created the Replay does not have
   /// access to all of the policies that Policy Simulator needs to evaluate.
-  core.String accessState;
+  core.String? accessState;
 
   /// If the AccessState is `UNKNOWN`, this field contains a list of errors
   /// explaining why the result is `UNKNOWN`.
   ///
   /// If the `AccessState` is `GRANTED` or `NOT_GRANTED`, this field is omitted.
-  core.List<GoogleRpcStatus> errors;
+  core.List<GoogleRpcStatus>? errors;
 
   /// If the AccessState is `UNKNOWN`, this field contains the policies that led
   /// to that result.
   ///
   /// If the `AccessState` is `GRANTED` or `NOT_GRANTED`, this field is omitted.
-  core.List<GoogleCloudPolicysimulatorV1beta1ExplainedPolicy> policies;
+  core.List<GoogleCloudPolicysimulatorV1beta1ExplainedPolicy>? policies;
 
   GoogleCloudPolicysimulatorV1beta1ExplainedAccess();
 
@@ -1112,12 +1080,12 @@ class GoogleCloudPolicysimulatorV1beta1ExplainedAccess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessState != null) 'accessState': accessState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessState != null) 'accessState': accessState!,
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
+          'errors': errors!.map((value) => value.toJson()).toList(),
         if (policies != null)
-          'policies': policies.map((value) => value.toJson()).toList(),
+          'policies': policies!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1138,14 +1106,14 @@ class GoogleCloudPolicysimulatorV1beta1ExplainedPolicy {
   /// condition expression evaluates to `true`.
   /// - "UNKNOWN_INFO_DENIED" : The user who created the Replay does not have
   /// access to all of the policies that Policy Simulator needs to evaluate.
-  core.String access;
+  core.String? access;
 
   /// Details about how each binding in the policy affects the member's ability,
   /// or inability, to use the permission for the resource.
   ///
   /// If the user who created the Replay does not have access to the policy,
   /// this field is omitted.
-  core.List<GoogleCloudPolicysimulatorV1beta1BindingExplanation>
+  core.List<GoogleCloudPolicysimulatorV1beta1BindingExplanation>?
       bindingExplanations;
 
   /// The full resource name that identifies the resource.
@@ -1156,13 +1124,13 @@ class GoogleCloudPolicysimulatorV1beta1ExplainedPolicy {
   /// this field is omitted. For examples of full resource names for Google
   /// Cloud services, see
   /// https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
-  core.String fullResourceName;
+  core.String? fullResourceName;
 
   /// The IAM policy attached to the resource.
   ///
   /// If the user who created the Replay does not have access to the policy,
   /// this field is empty.
-  GoogleIamV1Policy policy;
+  GoogleIamV1Policy? policy;
 
   /// The relevance of this policy to the overall determination in the
   /// TroubleshootIamPolicyResponse.
@@ -1175,7 +1143,7 @@ class GoogleCloudPolicysimulatorV1beta1ExplainedPolicy {
   /// the data point is unlikely to affect the overall determination.
   /// - "HIGH" : The data point has a strong effect on the result. Changing the
   /// data point is likely to affect the overall determination.
-  core.String relevance;
+  core.String? relevance;
 
   GoogleCloudPolicysimulatorV1beta1ExplainedPolicy();
 
@@ -1202,14 +1170,14 @@ class GoogleCloudPolicysimulatorV1beta1ExplainedPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (access != null) 'access': access,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (access != null) 'access': access!,
         if (bindingExplanations != null)
           'bindingExplanations':
-              bindingExplanations.map((value) => value.toJson()).toList(),
-        if (fullResourceName != null) 'fullResourceName': fullResourceName,
-        if (policy != null) 'policy': policy.toJson(),
-        if (relevance != null) 'relevance': relevance,
+              bindingExplanations!.map((value) => value.toJson()).toList(),
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+        if (policy != null) 'policy': policy!.toJson(),
+        if (relevance != null) 'relevance': relevance!,
       };
 }
 
@@ -1219,10 +1187,10 @@ class GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse {
   /// objects.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The results of running a Replay.
-  core.List<GoogleCloudPolicysimulatorV1beta1ReplayResult> replayResults;
+  core.List<GoogleCloudPolicysimulatorV1beta1ReplayResult>? replayResults;
 
   GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse();
 
@@ -1240,11 +1208,11 @@ class GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (replayResults != null)
           'replayResults':
-              replayResults.map((value) => value.toJson()).toList(),
+              replayResults!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1253,7 +1221,7 @@ class GoogleCloudPolicysimulatorV1beta1Replay {
   /// The configuration used for the `Replay`.
   ///
   /// Required.
-  GoogleCloudPolicysimulatorV1beta1ReplayConfig config;
+  GoogleCloudPolicysimulatorV1beta1ReplayConfig? config;
 
   /// The resource name of the `Replay`, which has the following format:
   /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`,
@@ -1264,12 +1232,12 @@ class GoogleCloudPolicysimulatorV1beta1Replay {
   /// `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Summary statistics about the replayed log entries.
   ///
   /// Output only.
-  GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary resultsSummary;
+  GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary? resultsSummary;
 
   /// The current state of the `Replay`.
   ///
@@ -1280,7 +1248,7 @@ class GoogleCloudPolicysimulatorV1beta1Replay {
   /// - "RUNNING" : The `Replay` is currently running.
   /// - "SUCCEEDED" : The `Replay` has successfully completed.
   /// - "FAILED" : The `Replay` has finished with an error.
-  core.String state;
+  core.String? state;
 
   GoogleCloudPolicysimulatorV1beta1Replay();
 
@@ -1302,11 +1270,11 @@ class GoogleCloudPolicysimulatorV1beta1Replay {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (config != null) 'config': config.toJson(),
-        if (name != null) 'name': name,
-        if (resultsSummary != null) 'resultsSummary': resultsSummary.toJson(),
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (config != null) 'config': config!.toJson(),
+        if (name != null) 'name': name!,
+        if (resultsSummary != null) 'resultsSummary': resultsSummary!.toJson(),
+        if (state != null) 'state': state!,
       };
 }
 
@@ -1318,7 +1286,7 @@ class GoogleCloudPolicysimulatorV1beta1ReplayConfig {
   /// is unspecified, the Replay defaults to using `RECENT_ACCESSES`.
   /// - "RECENT_ACCESSES" : All access logs from the last 90 days. These logs
   /// may not include logs from the most recent 7 days.
-  core.String logSource;
+  core.String? logSource;
 
   /// A mapping of the resources that you want to simulate policies for and the
   /// policies that you want to simulate.
@@ -1332,7 +1300,7 @@ class GoogleCloudPolicysimulatorV1beta1ReplayConfig {
   /// inherited through the resource hierarchy, and any policies set on
   /// descendant resources. You do not need to include these policies in the
   /// policy overlay.
-  core.Map<core.String, GoogleIamV1Policy> policyOverlay;
+  core.Map<core.String, GoogleIamV1Policy>? policyOverlay;
 
   GoogleCloudPolicysimulatorV1beta1ReplayConfig();
 
@@ -1342,7 +1310,7 @@ class GoogleCloudPolicysimulatorV1beta1ReplayConfig {
     }
     if (_json.containsKey('policyOverlay')) {
       policyOverlay = (_json['policyOverlay'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -1353,10 +1321,10 @@ class GoogleCloudPolicysimulatorV1beta1ReplayConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (logSource != null) 'logSource': logSource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (logSource != null) 'logSource': logSource!,
         if (policyOverlay != null)
-          'policyOverlay': policyOverlay
+          'policyOverlay': policyOverlay!
               .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
@@ -1373,7 +1341,7 @@ class GoogleCloudPolicysimulatorV1beta1ReplayDiff {
   ///
   /// The evaluation of the member's access is reported in the AccessState
   /// field.
-  GoogleCloudPolicysimulatorV1beta1AccessStateDiff accessDiff;
+  GoogleCloudPolicysimulatorV1beta1AccessStateDiff? accessDiff;
 
   GoogleCloudPolicysimulatorV1beta1ReplayDiff();
 
@@ -1384,15 +1352,15 @@ class GoogleCloudPolicysimulatorV1beta1ReplayDiff {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessDiff != null) 'accessDiff': accessDiff.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessDiff != null) 'accessDiff': accessDiff!.toJson(),
       };
 }
 
 /// Metadata about a Replay operation.
 class GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata {
   /// Time when the request was received.
-  core.String startTime;
+  core.String? startTime;
 
   GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata();
 
@@ -1403,8 +1371,8 @@ class GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -1414,7 +1382,7 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResult {
   ///
   /// This field includes information about the member, resource, and permission
   /// that were involved in the access attempt.
-  GoogleCloudPolicysimulatorV1beta1AccessTuple accessTuple;
+  GoogleCloudPolicysimulatorV1beta1AccessTuple? accessTuple;
 
   /// The difference between the member's access under the current (baseline)
   /// policies and the member's access under the proposed (simulated) policies.
@@ -1422,16 +1390,16 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResult {
   /// This field is only included for access tuples that were successfully
   /// replayed and had different results under the current policies and the
   /// proposed policies.
-  GoogleCloudPolicysimulatorV1beta1ReplayDiff diff;
+  GoogleCloudPolicysimulatorV1beta1ReplayDiff? diff;
 
   /// The error that caused the access tuple replay to fail.
   ///
   /// This field is only included for access tuples that were not replayed
   /// successfully.
-  GoogleRpcStatus error;
+  GoogleRpcStatus? error;
 
   /// The latest date this access tuple was seen in the logs.
-  GoogleTypeDate lastSeenDate;
+  GoogleTypeDate? lastSeenDate;
 
   /// The resource name of the `ReplayResult`, in the following format:
   /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}/results/{replay-result-id}`,
@@ -1440,10 +1408,10 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResult {
   ///
   /// Example:
   /// `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36/results/1234`
-  core.String name;
+  core.String? name;
 
   /// The Replay that the access tuple was included in.
-  core.String parent;
+  core.String? parent;
 
   GoogleCloudPolicysimulatorV1beta1ReplayResult();
 
@@ -1472,13 +1440,13 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessTuple != null) 'accessTuple': accessTuple.toJson(),
-        if (diff != null) 'diff': diff.toJson(),
-        if (error != null) 'error': error.toJson(),
-        if (lastSeenDate != null) 'lastSeenDate': lastSeenDate.toJson(),
-        if (name != null) 'name': name,
-        if (parent != null) 'parent': parent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessTuple != null) 'accessTuple': accessTuple!.toJson(),
+        if (diff != null) 'diff': diff!.toJson(),
+        if (error != null) 'error': error!.toJson(),
+        if (lastSeenDate != null) 'lastSeenDate': lastSeenDate!.toJson(),
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
       };
 }
 
@@ -1486,23 +1454,23 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResult {
 class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary {
   /// The number of replayed log entries with a difference between baseline and
   /// simulated policies.
-  core.int differenceCount;
+  core.int? differenceCount;
 
   /// The number of log entries that could not be replayed.
-  core.int errorCount;
+  core.int? errorCount;
 
   /// The total number of log entries replayed.
-  core.int logCount;
+  core.int? logCount;
 
   /// The date of the newest log entry replayed.
-  GoogleTypeDate newestDate;
+  GoogleTypeDate? newestDate;
 
   /// The date of the oldest log entry replayed.
-  GoogleTypeDate oldestDate;
+  GoogleTypeDate? oldestDate;
 
   /// The number of replayed log entries with no difference between baseline and
   /// simulated policies.
-  core.int unchangedCount;
+  core.int? unchangedCount;
 
   GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary();
 
@@ -1530,13 +1498,13 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (differenceCount != null) 'differenceCount': differenceCount,
-        if (errorCount != null) 'errorCount': errorCount,
-        if (logCount != null) 'logCount': logCount,
-        if (newestDate != null) 'newestDate': newestDate.toJson(),
-        if (oldestDate != null) 'oldestDate': oldestDate.toJson(),
-        if (unchangedCount != null) 'unchangedCount': unchangedCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (differenceCount != null) 'differenceCount': differenceCount!,
+        if (errorCount != null) 'errorCount': errorCount!,
+        if (logCount != null) 'logCount': logCount!,
+        if (newestDate != null) 'newestDate': newestDate!.toJson(),
+        if (oldestDate != null) 'oldestDate': oldestDate!.toJson(),
+        if (unchangedCount != null) 'unchangedCount': unchangedCount!,
       };
 }
 
@@ -1559,13 +1527,13 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary {
 /// aliya@example.com from DATA_WRITE logging.
 class GoogleIamV1AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<GoogleIamV1AuditLogConfig> auditLogConfigs;
+  core.List<GoogleIamV1AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   GoogleIamV1AuditConfig();
 
@@ -1582,11 +1550,11 @@ class GoogleIamV1AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -1601,7 +1569,7 @@ class GoogleIamV1AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -1609,7 +1577,7 @@ class GoogleIamV1AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   GoogleIamV1AuditLogConfig();
 
@@ -1624,9 +1592,9 @@ class GoogleIamV1AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -1640,7 +1608,7 @@ class GoogleIamV1Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  GoogleTypeExpr condition;
+  GoogleTypeExpr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -1672,12 +1640,12 @@ class GoogleIamV1Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   GoogleIamV1Binding();
 
@@ -1696,10 +1664,10 @@ class GoogleIamV1Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1736,14 +1704,14 @@ class GoogleIamV1Binding {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class GoogleIamV1Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<GoogleIamV1AuditConfig> auditConfigs;
+  core.List<GoogleIamV1AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<GoogleIamV1Binding> bindings;
+  core.List<GoogleIamV1Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -1757,8 +1725,8 @@ class GoogleIamV1Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -1782,7 +1750,7 @@ class GoogleIamV1Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   GoogleIamV1Policy();
 
@@ -1808,23 +1776,23 @@ class GoogleIamV1Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<GoogleLongrunningOperation> operations;
+  core.List<GoogleLongrunningOperation>? operations;
 
   GoogleLongrunningListOperationsResponse();
 
@@ -1841,10 +1809,10 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1855,10 +1823,10 @@ class GoogleLongrunningOperation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  GoogleRpcStatus error;
+  GoogleRpcStatus? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -1869,14 +1837,14 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -1889,7 +1857,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   GoogleLongrunningOperation();
 
@@ -1924,12 +1892,12 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -1942,7 +1910,7 @@ class GoogleLongrunningOperation {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1950,13 +1918,13 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   GoogleRpcStatus();
 
@@ -1980,10 +1948,10 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -2001,17 +1969,17 @@ class GoogleTypeDate {
   ///
   /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
   /// year by itself or a year and month where the day isn't significant.
-  core.int day;
+  core.int? day;
 
   /// Month of a year.
   ///
   /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int month;
+  core.int? month;
 
   /// Year of the date.
   ///
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int year;
+  core.int? year;
 
   GoogleTypeDate();
 
@@ -2027,10 +1995,10 @@ class GoogleTypeDate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (month != null) 'month': month,
-        if (year != null) 'year': year,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (month != null) 'month': month!,
+        if (year != null) 'year': year!,
       };
 }
 
@@ -2059,24 +2027,24 @@ class GoogleTypeExpr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   GoogleTypeExpr();
 
@@ -2095,10 +2063,10 @@ class GoogleTypeExpr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }

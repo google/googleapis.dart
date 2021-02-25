@@ -55,8 +55,11 @@ api.AuditConfig buildAuditConfig() {
 void checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    checkUnnamed4479(o.auditLogConfigs);
-    unittest.expect(o.service, unittest.equals('foo'));
+    checkUnnamed4479(o.auditLogConfigs!);
+    unittest.expect(
+      o.service!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAuditConfig--;
 }
@@ -70,8 +73,14 @@ core.List<core.String> buildUnnamed4480() {
 
 void checkUnnamed4480(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterAuditLogConfig = 0;
@@ -89,8 +98,11 @@ api.AuditLogConfig buildAuditLogConfig() {
 void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed4480(o.exemptedMembers);
-    unittest.expect(o.logType, unittest.equals('foo'));
+    checkUnnamed4480(o.exemptedMembers!);
+    unittest.expect(
+      o.logType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAuditLogConfig--;
 }
@@ -104,8 +116,14 @@ core.List<core.String> buildUnnamed4481() {
 
 void checkUnnamed4481(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBinding = 0;
@@ -124,9 +142,12 @@ api.Binding buildBinding() {
 void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkExpr(o.condition as api.Expr);
-    checkUnnamed4481(o.members);
-    unittest.expect(o.role, unittest.equals('foo'));
+    checkExpr(o.condition! as api.Expr);
+    checkUnnamed4481(o.members!);
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBinding--;
 }
@@ -145,7 +166,10 @@ api.ConfigFile buildConfigFile() {
 void checkConfigFile(api.ConfigFile o) {
   buildCounterConfigFile++;
   if (buildCounterConfigFile < 3) {
-    unittest.expect(o.content, unittest.equals('foo'));
+    unittest.expect(
+      o.content!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterConfigFile--;
 }
@@ -188,18 +212,42 @@ api.Deployment buildDeployment() {
 void checkDeployment(api.Deployment o) {
   buildCounterDeployment++;
   if (buildCounterDeployment < 3) {
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.fingerprint, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.insertTime, unittest.equals('foo'));
-    checkUnnamed4482(o.labels);
-    unittest.expect(o.manifest, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkOperation(o.operation as api.Operation);
-    unittest.expect(o.selfLink, unittest.equals('foo'));
-    checkTargetConfiguration(o.target as api.TargetConfiguration);
-    checkDeploymentUpdate(o.update as api.DeploymentUpdate);
-    unittest.expect(o.updateTime, unittest.equals('foo'));
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fingerprint!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.insertTime!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4482(o.labels!);
+    unittest.expect(
+      o.manifest!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkOperation(o.operation! as api.Operation);
+    unittest.expect(
+      o.selfLink!,
+      unittest.equals('foo'),
+    );
+    checkTargetConfiguration(o.target! as api.TargetConfiguration);
+    checkDeploymentUpdate(o.update! as api.DeploymentUpdate);
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDeployment--;
 }
@@ -219,8 +267,14 @@ api.DeploymentLabelEntry buildDeploymentLabelEntry() {
 void checkDeploymentLabelEntry(api.DeploymentLabelEntry o) {
   buildCounterDeploymentLabelEntry++;
   if (buildCounterDeploymentLabelEntry < 3) {
-    unittest.expect(o.key, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDeploymentLabelEntry--;
 }
@@ -254,9 +308,15 @@ api.DeploymentUpdate buildDeploymentUpdate() {
 void checkDeploymentUpdate(api.DeploymentUpdate o) {
   buildCounterDeploymentUpdate++;
   if (buildCounterDeploymentUpdate < 3) {
-    unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed4483(o.labels);
-    unittest.expect(o.manifest, unittest.equals('foo'));
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4483(o.labels!);
+    unittest.expect(
+      o.manifest!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDeploymentUpdate--;
 }
@@ -276,8 +336,14 @@ api.DeploymentUpdateLabelEntry buildDeploymentUpdateLabelEntry() {
 void checkDeploymentUpdateLabelEntry(api.DeploymentUpdateLabelEntry o) {
   buildCounterDeploymentUpdateLabelEntry++;
   if (buildCounterDeploymentUpdateLabelEntry < 3) {
-    unittest.expect(o.key, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDeploymentUpdateLabelEntry--;
 }
@@ -297,7 +363,10 @@ void checkDeploymentsCancelPreviewRequest(
     api.DeploymentsCancelPreviewRequest o) {
   buildCounterDeploymentsCancelPreviewRequest++;
   if (buildCounterDeploymentsCancelPreviewRequest < 3) {
-    unittest.expect(o.fingerprint, unittest.equals('foo'));
+    unittest.expect(
+      o.fingerprint!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDeploymentsCancelPreviewRequest--;
 }
@@ -330,8 +399,11 @@ api.DeploymentsListResponse buildDeploymentsListResponse() {
 void checkDeploymentsListResponse(api.DeploymentsListResponse o) {
   buildCounterDeploymentsListResponse++;
   if (buildCounterDeploymentsListResponse < 3) {
-    checkUnnamed4484(o.deployments);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed4484(o.deployments!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDeploymentsListResponse--;
 }
@@ -350,7 +422,10 @@ api.DeploymentsStopRequest buildDeploymentsStopRequest() {
 void checkDeploymentsStopRequest(api.DeploymentsStopRequest o) {
   buildCounterDeploymentsStopRequest++;
   if (buildCounterDeploymentsStopRequest < 3) {
-    unittest.expect(o.fingerprint, unittest.equals('foo'));
+    unittest.expect(
+      o.fingerprint!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDeploymentsStopRequest--;
 }
@@ -372,10 +447,22 @@ api.Expr buildExpr() {
 void checkExpr(api.Expr o) {
   buildCounterExpr++;
   if (buildCounterExpr < 3) {
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.expression, unittest.equals('foo'));
-    unittest.expect(o.location, unittest.equals('foo'));
-    unittest.expect(o.title, unittest.equals('foo'));
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expression!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterExpr--;
 }
@@ -409,9 +496,12 @@ api.GlobalSetPolicyRequest buildGlobalSetPolicyRequest() {
 void checkGlobalSetPolicyRequest(api.GlobalSetPolicyRequest o) {
   buildCounterGlobalSetPolicyRequest++;
   if (buildCounterGlobalSetPolicyRequest < 3) {
-    checkUnnamed4485(o.bindings);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    checkPolicy(o.policy as api.Policy);
+    checkUnnamed4485(o.bindings!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkPolicy(o.policy! as api.Policy);
   }
   buildCounterGlobalSetPolicyRequest--;
 }
@@ -431,8 +521,14 @@ api.ImportFile buildImportFile() {
 void checkImportFile(api.ImportFile o) {
   buildCounterImportFile++;
   if (buildCounterImportFile < 3) {
-    unittest.expect(o.content, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.content!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterImportFile--;
 }
@@ -473,16 +569,40 @@ api.Manifest buildManifest() {
 void checkManifest(api.Manifest o) {
   buildCounterManifest++;
   if (buildCounterManifest < 3) {
-    checkConfigFile(o.config as api.ConfigFile);
-    unittest.expect(o.expandedConfig, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed4486(o.imports);
-    unittest.expect(o.insertTime, unittest.equals('foo'));
-    unittest.expect(o.layout, unittest.equals('foo'));
-    unittest.expect(o.manifestSizeBytes, unittest.equals('foo'));
-    unittest.expect(o.manifestSizeLimitBytes, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.selfLink, unittest.equals('foo'));
+    checkConfigFile(o.config! as api.ConfigFile);
+    unittest.expect(
+      o.expandedConfig!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4486(o.imports!);
+    unittest.expect(
+      o.insertTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.layout!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.manifestSizeBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.manifestSizeLimitBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.selfLink!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterManifest--;
 }
@@ -515,8 +635,11 @@ api.ManifestsListResponse buildManifestsListResponse() {
 void checkManifestsListResponse(api.ManifestsListResponse o) {
   buildCounterManifestsListResponse++;
   if (buildCounterManifestsListResponse < 3) {
-    checkUnnamed4487(o.manifests);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed4487(o.manifests!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterManifestsListResponse--;
 }
@@ -537,9 +660,18 @@ api.OperationErrorErrors buildOperationErrorErrors() {
 void checkOperationErrorErrors(api.OperationErrorErrors o) {
   buildCounterOperationErrorErrors++;
   if (buildCounterOperationErrorErrors < 3) {
-    unittest.expect(o.code, unittest.equals('foo'));
-    unittest.expect(o.location, unittest.equals('foo'));
-    unittest.expect(o.message, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterOperationErrorErrors--;
 }
@@ -571,7 +703,7 @@ api.OperationError buildOperationError() {
 void checkOperationError(api.OperationError o) {
   buildCounterOperationError++;
   if (buildCounterOperationError < 3) {
-    checkUnnamed4488(o.errors);
+    checkUnnamed4488(o.errors!);
   }
   buildCounterOperationError--;
 }
@@ -591,8 +723,14 @@ api.OperationWarningsData buildOperationWarningsData() {
 void checkOperationWarningsData(api.OperationWarningsData o) {
   buildCounterOperationWarningsData++;
   if (buildCounterOperationWarningsData < 3) {
-    unittest.expect(o.key, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterOperationWarningsData--;
 }
@@ -626,9 +764,15 @@ api.OperationWarnings buildOperationWarnings() {
 void checkOperationWarnings(api.OperationWarnings o) {
   buildCounterOperationWarnings++;
   if (buildCounterOperationWarnings < 3) {
-    unittest.expect(o.code, unittest.equals('foo'));
-    checkUnnamed4489(o.data);
-    unittest.expect(o.message, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4489(o.data!);
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterOperationWarnings--;
 }
@@ -683,30 +827,96 @@ api.Operation buildOperation() {
 void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
-    unittest.expect(o.clientOperationId, unittest.equals('foo'));
-    unittest.expect(o.creationTimestamp, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.endTime, unittest.equals('foo'));
-    checkOperationError(o.error as api.OperationError);
-    unittest.expect(o.httpErrorMessage, unittest.equals('foo'));
-    unittest.expect(o.httpErrorStatusCode, unittest.equals(42));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.insertTime, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.operationGroupId, unittest.equals('foo'));
-    unittest.expect(o.operationType, unittest.equals('foo'));
-    unittest.expect(o.progress, unittest.equals(42));
-    unittest.expect(o.region, unittest.equals('foo'));
-    unittest.expect(o.selfLink, unittest.equals('foo'));
-    unittest.expect(o.startTime, unittest.equals('foo'));
-    unittest.expect(o.status, unittest.equals('foo'));
-    unittest.expect(o.statusMessage, unittest.equals('foo'));
-    unittest.expect(o.targetId, unittest.equals('foo'));
-    unittest.expect(o.targetLink, unittest.equals('foo'));
-    unittest.expect(o.user, unittest.equals('foo'));
-    checkUnnamed4490(o.warnings);
-    unittest.expect(o.zone, unittest.equals('foo'));
+    unittest.expect(
+      o.clientOperationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.creationTimestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    checkOperationError(o.error! as api.OperationError);
+    unittest.expect(
+      o.httpErrorMessage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.httpErrorStatusCode!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.insertTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.operationGroupId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.operationType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.progress!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.region!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.selfLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.statusMessage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.targetLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.user!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4490(o.warnings!);
+    unittest.expect(
+      o.zone!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterOperation--;
 }
@@ -739,8 +949,11 @@ api.OperationsListResponse buildOperationsListResponse() {
 void checkOperationsListResponse(api.OperationsListResponse o) {
   buildCounterOperationsListResponse++;
   if (buildCounterOperationsListResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4491(o.operations);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4491(o.operations!);
   }
   buildCounterOperationsListResponse--;
 }
@@ -788,10 +1001,16 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed4492(o.auditConfigs);
-    checkUnnamed4493(o.bindings);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.version, unittest.equals(42));
+    checkUnnamed4492(o.auditConfigs!);
+    checkUnnamed4493(o.bindings!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals(42),
+    );
   }
   buildCounterPolicy--;
 }
@@ -811,8 +1030,14 @@ api.ResourceWarningsData buildResourceWarningsData() {
 void checkResourceWarningsData(api.ResourceWarningsData o) {
   buildCounterResourceWarningsData++;
   if (buildCounterResourceWarningsData < 3) {
-    unittest.expect(o.key, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterResourceWarningsData--;
 }
@@ -846,9 +1071,15 @@ api.ResourceWarnings buildResourceWarnings() {
 void checkResourceWarnings(api.ResourceWarnings o) {
   buildCounterResourceWarnings++;
   if (buildCounterResourceWarnings < 3) {
-    unittest.expect(o.code, unittest.equals('foo'));
-    checkUnnamed4494(o.data);
-    unittest.expect(o.message, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4494(o.data!);
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterResourceWarnings--;
 }
@@ -891,18 +1122,45 @@ api.Resource buildResource() {
 void checkResource(api.Resource o) {
   buildCounterResource++;
   if (buildCounterResource < 3) {
-    checkResourceAccessControl(o.accessControl as api.ResourceAccessControl);
-    unittest.expect(o.finalProperties, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.insertTime, unittest.equals('foo'));
-    unittest.expect(o.manifest, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.properties, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
-    checkResourceUpdate(o.update as api.ResourceUpdate);
-    unittest.expect(o.updateTime, unittest.equals('foo'));
-    unittest.expect(o.url, unittest.equals('foo'));
-    checkUnnamed4495(o.warnings);
+    checkResourceAccessControl(o.accessControl! as api.ResourceAccessControl);
+    unittest.expect(
+      o.finalProperties!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.insertTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.manifest!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.properties!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    checkResourceUpdate(o.update! as api.ResourceUpdate);
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4495(o.warnings!);
   }
   buildCounterResource--;
 }
@@ -921,7 +1179,10 @@ api.ResourceAccessControl buildResourceAccessControl() {
 void checkResourceAccessControl(api.ResourceAccessControl o) {
   buildCounterResourceAccessControl++;
   if (buildCounterResourceAccessControl < 3) {
-    unittest.expect(o.gcpIamPolicy, unittest.equals('foo'));
+    unittest.expect(
+      o.gcpIamPolicy!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterResourceAccessControl--;
 }
@@ -942,9 +1203,18 @@ api.ResourceUpdateErrorErrors buildResourceUpdateErrorErrors() {
 void checkResourceUpdateErrorErrors(api.ResourceUpdateErrorErrors o) {
   buildCounterResourceUpdateErrorErrors++;
   if (buildCounterResourceUpdateErrorErrors < 3) {
-    unittest.expect(o.code, unittest.equals('foo'));
-    unittest.expect(o.location, unittest.equals('foo'));
-    unittest.expect(o.message, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterResourceUpdateErrorErrors--;
 }
@@ -976,7 +1246,7 @@ api.ResourceUpdateError buildResourceUpdateError() {
 void checkResourceUpdateError(api.ResourceUpdateError o) {
   buildCounterResourceUpdateError++;
   if (buildCounterResourceUpdateError < 3) {
-    checkUnnamed4496(o.errors);
+    checkUnnamed4496(o.errors!);
   }
   buildCounterResourceUpdateError--;
 }
@@ -996,8 +1266,14 @@ api.ResourceUpdateWarningsData buildResourceUpdateWarningsData() {
 void checkResourceUpdateWarningsData(api.ResourceUpdateWarningsData o) {
   buildCounterResourceUpdateWarningsData++;
   if (buildCounterResourceUpdateWarningsData < 3) {
-    unittest.expect(o.key, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterResourceUpdateWarningsData--;
 }
@@ -1031,9 +1307,15 @@ api.ResourceUpdateWarnings buildResourceUpdateWarnings() {
 void checkResourceUpdateWarnings(api.ResourceUpdateWarnings o) {
   buildCounterResourceUpdateWarnings++;
   if (buildCounterResourceUpdateWarnings < 3) {
-    unittest.expect(o.code, unittest.equals('foo'));
-    checkUnnamed4497(o.data);
-    unittest.expect(o.message, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4497(o.data!);
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterResourceUpdateWarnings--;
 }
@@ -1072,14 +1354,29 @@ api.ResourceUpdate buildResourceUpdate() {
 void checkResourceUpdate(api.ResourceUpdate o) {
   buildCounterResourceUpdate++;
   if (buildCounterResourceUpdate < 3) {
-    checkResourceAccessControl(o.accessControl as api.ResourceAccessControl);
-    checkResourceUpdateError(o.error as api.ResourceUpdateError);
-    unittest.expect(o.finalProperties, unittest.equals('foo'));
-    unittest.expect(o.intent, unittest.equals('foo'));
-    unittest.expect(o.manifest, unittest.equals('foo'));
-    unittest.expect(o.properties, unittest.equals('foo'));
-    unittest.expect(o.state, unittest.equals('foo'));
-    checkUnnamed4498(o.warnings);
+    checkResourceAccessControl(o.accessControl! as api.ResourceAccessControl);
+    checkResourceUpdateError(o.error! as api.ResourceUpdateError);
+    unittest.expect(
+      o.finalProperties!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.intent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.manifest!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.properties!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4498(o.warnings!);
   }
   buildCounterResourceUpdate--;
 }
@@ -1112,8 +1409,11 @@ api.ResourcesListResponse buildResourcesListResponse() {
 void checkResourcesListResponse(api.ResourcesListResponse o) {
   buildCounterResourcesListResponse++;
   if (buildCounterResourcesListResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4499(o.resources);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4499(o.resources!);
   }
   buildCounterResourcesListResponse--;
 }
@@ -1146,8 +1446,8 @@ api.TargetConfiguration buildTargetConfiguration() {
 void checkTargetConfiguration(api.TargetConfiguration o) {
   buildCounterTargetConfiguration++;
   if (buildCounterTargetConfiguration < 3) {
-    checkConfigFile(o.config as api.ConfigFile);
-    checkUnnamed4500(o.imports);
+    checkConfigFile(o.config! as api.ConfigFile);
+    checkUnnamed4500(o.imports!);
   }
   buildCounterTargetConfiguration--;
 }
@@ -1161,8 +1461,14 @@ core.List<core.String> buildUnnamed4501() {
 
 void checkUnnamed4501(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterTestPermissionsRequest = 0;
@@ -1179,7 +1485,7 @@ api.TestPermissionsRequest buildTestPermissionsRequest() {
 void checkTestPermissionsRequest(api.TestPermissionsRequest o) {
   buildCounterTestPermissionsRequest++;
   if (buildCounterTestPermissionsRequest < 3) {
-    checkUnnamed4501(o.permissions);
+    checkUnnamed4501(o.permissions!);
   }
   buildCounterTestPermissionsRequest--;
 }
@@ -1193,8 +1499,14 @@ core.List<core.String> buildUnnamed4502() {
 
 void checkUnnamed4502(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterTestPermissionsResponse = 0;
@@ -1211,7 +1523,7 @@ api.TestPermissionsResponse buildTestPermissionsResponse() {
 void checkTestPermissionsResponse(api.TestPermissionsResponse o) {
   buildCounterTestPermissionsResponse++;
   if (buildCounterTestPermissionsResponse < 3) {
-    checkUnnamed4502(o.permissions);
+    checkUnnamed4502(o.permissions!);
   }
   buildCounterTestPermissionsResponse--;
 }
@@ -1234,11 +1546,23 @@ api.Type buildType() {
 void checkType(api.Type o) {
   buildCounterType++;
   if (buildCounterType < 3) {
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.insertTime, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkOperation(o.operation as api.Operation);
-    unittest.expect(o.selfLink, unittest.equals('foo'));
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.insertTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkOperation(o.operation! as api.Operation);
+    unittest.expect(
+      o.selfLink!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterType--;
 }
@@ -1271,8 +1595,11 @@ api.TypesListResponse buildTypesListResponse() {
 void checkTypesListResponse(api.TypesListResponse o) {
   buildCounterTypesListResponse++;
   if (buildCounterTypesListResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4503(o.types);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4503(o.types!);
   }
   buildCounterTypesListResponse--;
 }
@@ -1602,28 +1929,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/deployments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/global/deployments/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/global/deployments/"),
+        );
         pathOffset += 20;
         index = path.indexOf('/cancelPreview', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_deployment'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14),
-            unittest.equals("/cancelPreview"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_deployment'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 14),
+          unittest.equals("/cancelPreview"),
+        );
         pathOffset += 14;
 
         var query = (req.url).query;
@@ -1641,7 +1982,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1670,23 +2014,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/deployments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/global/deployments/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/global/deployments/"),
+        );
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_deployment'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_deployment'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1704,8 +2060,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["deletePolicy"].first, unittest.equals(arg_deletePolicy));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["deletePolicy"]!.first,
+          unittest.equals(arg_deletePolicy),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1733,23 +2094,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/deployments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/global/deployments/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/global/deployments/"),
+        );
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_deployment'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_deployment'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1766,7 +2139,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1794,28 +2170,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/deployments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/global/deployments/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/global/deployments/"),
+        );
         pathOffset += 20;
         index = path.indexOf('/getIamPolicy', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_resource'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("/getIamPolicy"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_resource'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals("/getIamPolicy"),
+        );
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -1834,9 +2224,13 @@ void main() {
           }
         }
         unittest.expect(
-            core.int.parse(queryMap["optionsRequestedPolicyVersion"].first),
-            unittest.equals(arg_optionsRequestedPolicyVersion));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["optionsRequestedPolicyVersion"]!.first),
+          unittest.equals(arg_optionsRequestedPolicyVersion),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1871,19 +2265,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/deployments', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("/global/deployments"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 19),
+          unittest.equals("/global/deployments"),
+        );
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -1902,10 +2305,17 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
+          queryMap["createPolicy"]!.first,
+          unittest.equals(arg_createPolicy),
+        );
         unittest.expect(
-            queryMap["preview"].first, unittest.equals("$arg_preview"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["preview"]!.first,
+          unittest.equals("$arg_preview"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1938,19 +2348,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/deployments', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("/global/deployments"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 19),
+          unittest.equals("/global/deployments"),
+        );
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -1968,14 +2387,26 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["orderBy"]!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2015,23 +2446,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/deployments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/global/deployments/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/global/deployments/"),
+        );
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_deployment'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_deployment'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2049,12 +2492,21 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
+          queryMap["createPolicy"]!.first,
+          unittest.equals(arg_createPolicy),
+        );
         unittest.expect(
-            queryMap["deletePolicy"].first, unittest.equals(arg_deletePolicy));
+          queryMap["deletePolicy"]!.first,
+          unittest.equals(arg_deletePolicy),
+        );
         unittest.expect(
-            queryMap["preview"].first, unittest.equals("$arg_preview"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["preview"]!.first,
+          unittest.equals("$arg_preview"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2090,28 +2542,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/deployments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/global/deployments/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/global/deployments/"),
+        );
         pathOffset += 20;
         index = path.indexOf('/setIamPolicy', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_resource'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("/setIamPolicy"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_resource'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals("/setIamPolicy"),
+        );
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -2129,7 +2595,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2162,28 +2631,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/deployments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/global/deployments/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/global/deployments/"),
+        );
         pathOffset += 20;
         index = path.indexOf('/stop', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_deployment'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/stop"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_deployment'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/stop"),
+        );
         pathOffset += 5;
 
         var query = (req.url).query;
@@ -2201,7 +2684,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2233,28 +2719,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/deployments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/global/deployments/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/global/deployments/"),
+        );
         pathOffset += 20;
         index = path.indexOf('/testIamPermissions', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_resource'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("/testIamPermissions"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_resource'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 19),
+          unittest.equals("/testIamPermissions"),
+        );
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -2272,7 +2772,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2308,23 +2811,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/deployments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/global/deployments/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/global/deployments/"),
+        );
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_deployment'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_deployment'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2342,12 +2857,21 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
+          queryMap["createPolicy"]!.first,
+          unittest.equals(arg_createPolicy),
+        );
         unittest.expect(
-            queryMap["deletePolicy"].first, unittest.equals(arg_deletePolicy));
+          queryMap["deletePolicy"]!.first,
+          unittest.equals(arg_deletePolicy),
+        );
         unittest.expect(
-            queryMap["preview"].first, unittest.equals("$arg_preview"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["preview"]!.first,
+          unittest.equals("$arg_preview"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2381,32 +2905,49 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/deployments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/global/deployments/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/global/deployments/"),
+        );
         pathOffset += 20;
         index = path.indexOf('/manifests/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_deployment'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("/manifests/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_deployment'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("/manifests/"),
+        );
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_manifest'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_manifest'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2423,7 +2964,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2454,28 +2998,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/deployments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/global/deployments/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/global/deployments/"),
+        );
         pathOffset += 20;
         index = path.indexOf('/manifests', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_deployment'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/manifests"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_deployment'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/manifests"),
+        );
         pathOffset += 10;
 
         var query = (req.url).query;
@@ -2493,14 +3051,26 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["orderBy"]!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2534,23 +3104,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/operations/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("/global/operations/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 19),
+          unittest.equals("/global/operations/"),
+        );
         pathOffset += 19;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_operation'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_operation'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2567,7 +3149,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2597,19 +3182,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/operations', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("/global/operations"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("/global/operations"),
+        );
         pathOffset += 18;
 
         var query = (req.url).query;
@@ -2627,14 +3221,26 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["orderBy"]!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2669,32 +3275,49 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/deployments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/global/deployments/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/global/deployments/"),
+        );
         pathOffset += 20;
         index = path.indexOf('/resources/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_deployment'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("/resources/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_deployment'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("/resources/"),
+        );
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_resource'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_resource'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2711,7 +3334,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2742,28 +3368,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/deployments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/global/deployments/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/global/deployments/"),
+        );
         pathOffset += 20;
         index = path.indexOf('/resources', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_deployment'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/resources"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_deployment'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/resources"),
+        );
         pathOffset += 10;
 
         var query = (req.url).query;
@@ -2781,14 +3421,26 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["orderBy"]!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2825,19 +3477,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("deploymentmanager/v2/projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("deploymentmanager/v2/projects/"),
+        );
         pathOffset += 30;
         index = path.indexOf('/global/types', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_project'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("/global/types"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals("/global/types"),
+        );
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -2855,14 +3516,26 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["orderBy"]!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

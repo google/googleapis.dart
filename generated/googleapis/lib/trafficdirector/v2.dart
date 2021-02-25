@@ -72,10 +72,9 @@ class DiscoveryResource {
   /// this method will complete with the same error.
   async.Future<ClientStatusResponse> clientStatus(
     ClientStatusRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -97,8 +96,8 @@ class DiscoveryResource {
 /// used to tell Envoy where to bind/listen, connect to upstream and find
 /// management servers.
 class Address {
-  Pipe pipe;
-  SocketAddress socketAddress;
+  Pipe? pipe;
+  SocketAddress? socketAddress;
 
   Address();
 
@@ -113,9 +112,9 @@ class Address {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pipe != null) 'pipe': pipe.toJson(),
-        if (socketAddress != null) 'socketAddress': socketAddress.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pipe != null) 'pipe': pipe!.toJson(),
+        if (socketAddress != null) 'socketAddress': socketAddress!.toJson(),
       };
 }
 
@@ -129,10 +128,10 @@ class BuildVersion {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// SemVer version of extension.
-  SemanticVersion version;
+  SemanticVersion? version;
 
   BuildVersion();
 
@@ -152,17 +151,17 @@ class BuildVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metadata != null) 'metadata': metadata,
-        if (version != null) 'version': version.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metadata != null) 'metadata': metadata!,
+        if (version != null) 'version': version!.toJson(),
       };
 }
 
 /// All xds configs for a particular client.
 class ClientConfig {
   /// Node for a particular client.
-  Node node;
-  core.List<PerXdsConfig> xdsConfig;
+  Node? node;
+  core.List<PerXdsConfig>? xdsConfig;
 
   ClientConfig();
 
@@ -179,10 +178,10 @@ class ClientConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (node != null) 'node': node.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (node != null) 'node': node!.toJson(),
         if (xdsConfig != null)
-          'xdsConfig': xdsConfig.map((value) => value.toJson()).toList(),
+          'xdsConfig': xdsConfig!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -191,7 +190,7 @@ class ClientStatusRequest {
   /// Management server can use these match criteria to identify clients.
   ///
   /// The match follows OR semantics.
-  core.List<NodeMatcher> nodeMatchers;
+  core.List<NodeMatcher>? nodeMatchers;
 
   ClientStatusRequest();
 
@@ -204,15 +203,15 @@ class ClientStatusRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (nodeMatchers != null)
-          'nodeMatchers': nodeMatchers.map((value) => value.toJson()).toList(),
+          'nodeMatchers': nodeMatchers!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ClientStatusResponse {
   /// Client configs for the clients specified in the ClientStatusRequest.
-  core.List<ClientConfig> config;
+  core.List<ClientConfig>? config;
 
   ClientStatusResponse();
 
@@ -225,9 +224,9 @@ class ClientStatusResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (config != null)
-          'config': config.map((value) => value.toJson()).toList(),
+          'config': config!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -241,7 +240,7 @@ class ClustersConfigDump {
   /// The dynamically loaded active clusters.
   ///
   /// These are clusters that are available to service data plane traffic.
-  core.List<DynamicCluster> dynamicActiveClusters;
+  core.List<DynamicCluster>? dynamicActiveClusters;
 
   /// The dynamically loaded warming clusters.
   ///
@@ -249,16 +248,16 @@ class ClustersConfigDump {
   /// service data plane traffic. Note that if attempting to recreate an Envoy
   /// configuration from a configuration dump, the warming clusters should
   /// generally be discarded.
-  core.List<DynamicCluster> dynamicWarmingClusters;
+  core.List<DynamicCluster>? dynamicWarmingClusters;
 
   /// The statically loaded cluster configs.
-  core.List<StaticCluster> staticClusters;
+  core.List<StaticCluster>? staticClusters;
 
   /// This is the :ref:`version_info ` in the last processed CDS discovery
   /// response.
   ///
   /// If there are only static bootstrap clusters, this field will be "".
-  core.String versionInfo;
+  core.String? versionInfo;
 
   ClustersConfigDump();
 
@@ -286,17 +285,17 @@ class ClustersConfigDump {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dynamicActiveClusters != null)
           'dynamicActiveClusters':
-              dynamicActiveClusters.map((value) => value.toJson()).toList(),
+              dynamicActiveClusters!.map((value) => value.toJson()).toList(),
         if (dynamicWarmingClusters != null)
           'dynamicWarmingClusters':
-              dynamicWarmingClusters.map((value) => value.toJson()).toList(),
+              dynamicWarmingClusters!.map((value) => value.toJson()).toList(),
         if (staticClusters != null)
           'staticClusters':
-              staticClusters.map((value) => value.toJson()).toList(),
-        if (versionInfo != null) 'versionInfo': versionInfo,
+              staticClusters!.map((value) => value.toJson()).toList(),
+        if (versionInfo != null) 'versionInfo': versionInfo!,
       };
 }
 
@@ -304,12 +303,12 @@ class ClustersConfigDump {
 class DoubleMatcher {
   /// If specified, the input double value must be equal to the value specified
   /// here.
-  core.double exact;
+  core.double? exact;
 
   /// If specified, the input double value must be in the range specified here.
   ///
   /// Note: The range is using half-open interval semantics \[start, end).
-  DoubleRange range;
+  DoubleRange? range;
 
   DoubleMatcher();
 
@@ -323,9 +322,9 @@ class DoubleMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exact != null) 'exact': exact,
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exact != null) 'exact': exact!,
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
@@ -333,10 +332,10 @@ class DoubleMatcher {
 /// semantics \[start, end).
 class DoubleRange {
   /// end of the range (exclusive)
-  core.double end;
+  core.double? end;
 
   /// start of the range (inclusive)
-  core.double start;
+  core.double? start;
 
   DoubleRange();
 
@@ -349,9 +348,9 @@ class DoubleRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (end != null) 'end': end,
-        if (start != null) 'start': start,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (end != null) 'end': end!,
+        if (start != null) 'start': start!,
       };
 }
 
@@ -361,17 +360,17 @@ class DynamicCluster {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> cluster;
+  core.Map<core.String, core.Object>? cluster;
 
   /// The timestamp when the Cluster was last updated.
-  core.String lastUpdated;
+  core.String? lastUpdated;
 
   /// This is the per-resource version information.
   ///
   /// This version is currently taken from the :ref:`version_info ` field at the
   /// time that the cluster was loaded. In the future, discrete per-cluster
   /// versions may be supported by the API.
-  core.String versionInfo;
+  core.String? versionInfo;
 
   DynamicCluster();
 
@@ -393,10 +392,10 @@ class DynamicCluster {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cluster != null) 'cluster': cluster,
-        if (lastUpdated != null) 'lastUpdated': lastUpdated,
-        if (versionInfo != null) 'versionInfo': versionInfo,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cluster != null) 'cluster': cluster!,
+        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
+        if (versionInfo != null) 'versionInfo': versionInfo!,
       };
 }
 
@@ -407,7 +406,7 @@ class DynamicListener {
   /// The listener state for any active listener by this name.
   ///
   /// These are listeners that are available to service data plane traffic.
-  DynamicListenerState activeState;
+  DynamicListenerState? activeState;
 
   /// The listener state for any draining listener by this name.
   ///
@@ -415,14 +414,14 @@ class DynamicListener {
   /// to stop servicing data plane traffic. Note that if attempting to recreate
   /// an Envoy configuration from a configuration dump, the draining listeners
   /// should generally be discarded.
-  DynamicListenerState drainingState;
+  DynamicListenerState? drainingState;
 
   /// Set if the last update failed, cleared after the next successful update.
-  UpdateFailureState errorState;
+  UpdateFailureState? errorState;
 
   /// The name or unique id of this listener, pulled from the
   /// DynamicListenerState config.
-  core.String name;
+  core.String? name;
 
   /// The listener state for any warming listener by this name.
   ///
@@ -430,7 +429,7 @@ class DynamicListener {
   /// to service data plane traffic. Note that if attempting to recreate an
   /// Envoy configuration from a configuration dump, the warming listeners
   /// should generally be discarded.
-  DynamicListenerState warmingState;
+  DynamicListenerState? warmingState;
 
   DynamicListener();
 
@@ -456,31 +455,31 @@ class DynamicListener {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activeState != null) 'activeState': activeState.toJson(),
-        if (drainingState != null) 'drainingState': drainingState.toJson(),
-        if (errorState != null) 'errorState': errorState.toJson(),
-        if (name != null) 'name': name,
-        if (warmingState != null) 'warmingState': warmingState.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activeState != null) 'activeState': activeState!.toJson(),
+        if (drainingState != null) 'drainingState': drainingState!.toJson(),
+        if (errorState != null) 'errorState': errorState!.toJson(),
+        if (name != null) 'name': name!,
+        if (warmingState != null) 'warmingState': warmingState!.toJson(),
       };
 }
 
 class DynamicListenerState {
   /// The timestamp when the Listener was last successfully updated.
-  core.String lastUpdated;
+  core.String? lastUpdated;
 
   /// The listener config.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> listener;
+  core.Map<core.String, core.Object>? listener;
 
   /// This is the per-resource version information.
   ///
   /// This version is currently taken from the :ref:`version_info ` field at the
   /// time that the listener was loaded. In the future, discrete per-listener
   /// versions may be supported by the API.
-  core.String versionInfo;
+  core.String? versionInfo;
 
   DynamicListenerState();
 
@@ -502,28 +501,28 @@ class DynamicListenerState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lastUpdated != null) 'lastUpdated': lastUpdated,
-        if (listener != null) 'listener': listener,
-        if (versionInfo != null) 'versionInfo': versionInfo,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
+        if (listener != null) 'listener': listener!,
+        if (versionInfo != null) 'versionInfo': versionInfo!,
       };
 }
 
 class DynamicRouteConfig {
   /// The timestamp when the Route was last updated.
-  core.String lastUpdated;
+  core.String? lastUpdated;
 
   /// The route config.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> routeConfig;
+  core.Map<core.String, core.Object>? routeConfig;
 
   /// This is the per-resource version information.
   ///
   /// This version is currently taken from the :ref:`version_info ` field at the
   /// time that the route configuration was loaded.
-  core.String versionInfo;
+  core.String? versionInfo;
 
   DynamicRouteConfig();
 
@@ -546,31 +545,31 @@ class DynamicRouteConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lastUpdated != null) 'lastUpdated': lastUpdated,
-        if (routeConfig != null) 'routeConfig': routeConfig,
-        if (versionInfo != null) 'versionInfo': versionInfo,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
+        if (routeConfig != null) 'routeConfig': routeConfig!,
+        if (versionInfo != null) 'versionInfo': versionInfo!,
       };
 }
 
 class DynamicScopedRouteConfigs {
   /// The timestamp when the scoped route config set was last updated.
-  core.String lastUpdated;
+  core.String? lastUpdated;
 
   /// The name assigned to the scoped route configurations.
-  core.String name;
+  core.String? name;
 
   /// The scoped route configurations.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> scopedRouteConfigs;
+  core.List<core.Map<core.String, core.Object>>? scopedRouteConfigs;
 
   /// This is the per-resource version information.
   ///
   /// This version is currently taken from the :ref:`version_info ` field at the
   /// time that the scoped routes configuration was loaded.
-  core.String versionInfo;
+  core.String? versionInfo;
 
   DynamicScopedRouteConfigs();
 
@@ -597,12 +596,12 @@ class DynamicScopedRouteConfigs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lastUpdated != null) 'lastUpdated': lastUpdated,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
+        if (name != null) 'name': name!,
         if (scopedRouteConfigs != null)
-          'scopedRouteConfigs': scopedRouteConfigs,
-        if (versionInfo != null) 'versionInfo': versionInfo,
+          'scopedRouteConfigs': scopedRouteConfigs!,
+        if (versionInfo != null) 'versionInfo': versionInfo!,
       };
 }
 
@@ -615,27 +614,27 @@ class Extension {
   /// Extension category names use reverse DNS notation. For instance
   /// "envoy.filters.listener" for Envoy's built-in listener filters or
   /// "com.acme.filters.http" for HTTP filters from acme.com vendor. \[#comment:
-  core.String category;
+  core.String? category;
 
   /// Indicates that the extension is present but was disabled via dynamic
   /// configuration.
-  core.bool disabled;
+  core.bool? disabled;
 
   /// This is the name of the Envoy filter as specified in the Envoy
   /// configuration, e.g. envoy.filters.http.router, com.acme.widget.
-  core.String name;
+  core.String? name;
 
   /// \[#not-implemented-hide:\] Type descriptor of extension configuration
   /// proto.
   ///
   /// \[#comment:
-  core.String typeDescriptor;
+  core.String? typeDescriptor;
 
   /// The version is a property of the extension and maintained independently of
   /// other extensions and the Envoy API.
   ///
   /// This field is not set when extension did not provide version information.
-  BuildVersion version;
+  BuildVersion? version;
 
   Extension();
 
@@ -658,12 +657,12 @@ class Extension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (category != null) 'category': category,
-        if (disabled != null) 'disabled': disabled,
-        if (name != null) 'name': name,
-        if (typeDescriptor != null) 'typeDescriptor': typeDescriptor,
-        if (version != null) 'version': version.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (category != null) 'category': category!,
+        if (disabled != null) 'disabled': disabled!,
+        if (name != null) 'name': name!,
+        if (typeDescriptor != null) 'typeDescriptor': typeDescriptor!,
+        if (version != null) 'version': version!.toJson(),
       };
 }
 
@@ -691,7 +690,7 @@ class GoogleRE2 {
   /// increased or the regex can be simplified. If not specified, the default is
   /// 100. This field is deprecated; regexp validation should be performed on
   /// the management server instead of being done by each individual client.
-  core.int maxProgramSize;
+  core.int? maxProgramSize;
 
   GoogleRE2();
 
@@ -701,23 +700,23 @@ class GoogleRE2 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxProgramSize != null) 'maxProgramSize': maxProgramSize,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxProgramSize != null) 'maxProgramSize': maxProgramSize!,
       };
 }
 
 class InlineScopedRouteConfigs {
   /// The timestamp when the scoped route config set was last updated.
-  core.String lastUpdated;
+  core.String? lastUpdated;
 
   /// The name assigned to the scoped route configurations.
-  core.String name;
+  core.String? name;
 
   /// The scoped route configurations.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> scopedRouteConfigs;
+  core.List<core.Map<core.String, core.Object>>? scopedRouteConfigs;
 
   InlineScopedRouteConfigs();
 
@@ -741,11 +740,11 @@ class InlineScopedRouteConfigs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lastUpdated != null) 'lastUpdated': lastUpdated,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
+        if (name != null) 'name': name!,
         if (scopedRouteConfigs != null)
-          'scopedRouteConfigs': scopedRouteConfigs,
+          'scopedRouteConfigs': scopedRouteConfigs!,
       };
 }
 
@@ -753,7 +752,7 @@ class InlineScopedRouteConfigs {
 class ListMatcher {
   /// If specified, at least one of the values in the list must match the value
   /// specified.
-  ValueMatcher oneOf;
+  ValueMatcher? oneOf;
 
   ListMatcher();
 
@@ -764,8 +763,8 @@ class ListMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (oneOf != null) 'oneOf': oneOf.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (oneOf != null) 'oneOf': oneOf!.toJson(),
       };
 }
 
@@ -777,16 +776,16 @@ class ListMatcher {
 /// returning them in a LDS response.
 class ListenersConfigDump {
   /// State for any warming, active, or draining listeners.
-  core.List<DynamicListener> dynamicListeners;
+  core.List<DynamicListener>? dynamicListeners;
 
   /// The statically loaded listener configs.
-  core.List<StaticListener> staticListeners;
+  core.List<StaticListener>? staticListeners;
 
   /// This is the :ref:`version_info ` in the last processed LDS discovery
   /// response.
   ///
   /// If there are only static bootstrap listeners, this field will be "".
-  core.String versionInfo;
+  core.String? versionInfo;
 
   ListenersConfigDump();
 
@@ -808,26 +807,26 @@ class ListenersConfigDump {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dynamicListeners != null)
           'dynamicListeners':
-              dynamicListeners.map((value) => value.toJson()).toList(),
+              dynamicListeners!.map((value) => value.toJson()).toList(),
         if (staticListeners != null)
           'staticListeners':
-              staticListeners.map((value) => value.toJson()).toList(),
-        if (versionInfo != null) 'versionInfo': versionInfo,
+              staticListeners!.map((value) => value.toJson()).toList(),
+        if (versionInfo != null) 'versionInfo': versionInfo!,
       };
 }
 
 /// Identifies location of where either Envoy runs or where upstream hosts run.
 class Locality {
   /// Region this :ref:`zone ` belongs to.
-  core.String region;
+  core.String? region;
 
   /// When used for locality of upstream hosts, this field further splits zone
   /// into smaller chunks of sub-zones so they can be load balanced
   /// independently.
-  core.String subZone;
+  core.String? subZone;
 
   /// Defines the local service zone where Envoy is running.
   ///
@@ -835,7 +834,7 @@ class Locality {
   /// the discovery service exposes :ref:`zone data `, either in this message or
   /// via :option:`--service-zone`. The meaning of zone is context dependent,
   /// e.g. `Availability Zone (AZ) `_ on AWS, `Zone `_ on GCP, etc.
-  core.String zone;
+  core.String? zone;
 
   Locality();
 
@@ -851,10 +850,10 @@ class Locality {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (region != null) 'region': region,
-        if (subZone != null) 'subZone': subZone,
-        if (zone != null) 'zone': zone,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (region != null) 'region': region!,
+        if (subZone != null) 'subZone': subZone!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -869,7 +868,7 @@ class Node {
   ///
   /// This will be set by Envoy in management server RPCs. This field is
   /// deprecated in favor of the user_agent_name and user_agent_version values.
-  core.String buildVersion;
+  core.String? buildVersion;
 
   /// Client feature support list.
   ///
@@ -877,7 +876,7 @@ class Node {
   /// given major version of an API. Client features use reverse DNS naming
   /// scheme, for example `com.acme.feature`. See :ref:`the list of features `
   /// that xDS client may support.
-  core.List<core.String> clientFeatures;
+  core.List<core.String>? clientFeatures;
 
   /// Defines the local service cluster name where Envoy is running.
   ///
@@ -886,10 +885,10 @@ class Node {
   /// :ref:`runtime override directory `, :ref:`user agent addition `,
   /// :ref:`HTTP global rate limiting `, :ref:`CDS `, and :ref:`HTTP tracing `,
   /// either in this message or via :option:`--service-cluster`.
-  core.String cluster;
+  core.String? cluster;
 
   /// List of extensions and their versions supported by the node.
-  core.List<Extension> extensions;
+  core.List<Extension>? extensions;
 
   /// An opaque node identifier for the Envoy node.
   ///
@@ -897,7 +896,7 @@ class Node {
   /// the following features are used: :ref:`statsd `, :ref:`CDS `, and
   /// :ref:`HTTP tracing `, either in this message or via
   /// :option:`--service-node`.
-  core.String id;
+  core.String? id;
 
   /// Known listening ports on the node as a generic hint to the management
   /// server for filtering :ref:`listeners ` to be returned.
@@ -905,10 +904,10 @@ class Node {
   /// For example, if there is a listener bound to port 80, the list can
   /// optionally contain the SocketAddress `(0.0.0.0,80)`. The field is optional
   /// and just a hint.
-  core.List<Address> listeningAddresses;
+  core.List<Address>? listeningAddresses;
 
   /// Locality specifying where the Envoy instance is running.
-  Locality locality;
+  Locality? locality;
 
   /// Opaque metadata extending the node identifier.
   ///
@@ -916,21 +915,21 @@ class Node {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Structured version of the entity requesting config.
-  BuildVersion userAgentBuildVersion;
+  BuildVersion? userAgentBuildVersion;
 
   /// Free-form string that identifies the entity requesting config.
   ///
   /// E.g. "envoy" or "grpc"
-  core.String userAgentName;
+  core.String? userAgentName;
 
   /// Free-form string that identifies the version of the entity requesting
   /// config.
   ///
   /// E.g. "1.12.2" or "abcd1234", or "SpecialEnvoyBuild"
-  core.String userAgentVersion;
+  core.String? userAgentVersion;
 
   Node();
 
@@ -987,22 +986,22 @@ class Node {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (buildVersion != null) 'buildVersion': buildVersion,
-        if (clientFeatures != null) 'clientFeatures': clientFeatures,
-        if (cluster != null) 'cluster': cluster,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (buildVersion != null) 'buildVersion': buildVersion!,
+        if (clientFeatures != null) 'clientFeatures': clientFeatures!,
+        if (cluster != null) 'cluster': cluster!,
         if (extensions != null)
-          'extensions': extensions.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id,
+          'extensions': extensions!.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id!,
         if (listeningAddresses != null)
           'listeningAddresses':
-              listeningAddresses.map((value) => value.toJson()).toList(),
-        if (locality != null) 'locality': locality.toJson(),
-        if (metadata != null) 'metadata': metadata,
+              listeningAddresses!.map((value) => value.toJson()).toList(),
+        if (locality != null) 'locality': locality!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
         if (userAgentBuildVersion != null)
-          'userAgentBuildVersion': userAgentBuildVersion.toJson(),
-        if (userAgentName != null) 'userAgentName': userAgentName,
-        if (userAgentVersion != null) 'userAgentVersion': userAgentVersion,
+          'userAgentBuildVersion': userAgentBuildVersion!.toJson(),
+        if (userAgentName != null) 'userAgentName': userAgentName!,
+        if (userAgentVersion != null) 'userAgentVersion': userAgentVersion!,
       };
 }
 
@@ -1011,10 +1010,10 @@ class Node {
 /// The match follows AND semantics.
 class NodeMatcher {
   /// Specifies match criteria on the node id.
-  StringMatcher nodeId;
+  StringMatcher? nodeId;
 
   /// Specifies match criteria on the node metadata.
-  core.List<StructMatcher> nodeMetadatas;
+  core.List<StructMatcher>? nodeMetadatas;
 
   NodeMatcher();
 
@@ -1031,11 +1030,11 @@ class NodeMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nodeId != null) 'nodeId': nodeId.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nodeId != null) 'nodeId': nodeId!.toJson(),
         if (nodeMetadatas != null)
           'nodeMetadatas':
-              nodeMetadatas.map((value) => value.toJson()).toList(),
+              nodeMetadatas!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1047,13 +1046,13 @@ class NullMatch {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Specifies the segment in a path to retrieve value from Struct.
 class PathSegment {
   /// If specified, use the key to retrieve the value in a Struct.
-  core.String key;
+  core.String? key;
 
   PathSegment();
 
@@ -1063,8 +1062,8 @@ class PathSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
       };
 }
 
@@ -1072,10 +1071,10 @@ class PathSegment {
 ///
 /// \[#next-free-field: 6\]
 class PerXdsConfig {
-  ClustersConfigDump clusterConfig;
-  ListenersConfigDump listenerConfig;
-  RoutesConfigDump routeConfig;
-  ScopedRoutesConfigDump scopedRouteConfig;
+  ClustersConfigDump? clusterConfig;
+  ListenersConfigDump? listenerConfig;
+  RoutesConfigDump? routeConfig;
+  ScopedRoutesConfigDump? scopedRouteConfig;
 
   ///
   /// Possible string values are:
@@ -1087,7 +1086,7 @@ class PerXdsConfig {
   /// received ACK/NACK.
   /// - "ERROR" : Management server has sent the config to client but received
   /// NACK.
-  core.String status;
+  core.String? status;
 
   PerXdsConfig();
 
@@ -1113,13 +1112,13 @@ class PerXdsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clusterConfig != null) 'clusterConfig': clusterConfig.toJson(),
-        if (listenerConfig != null) 'listenerConfig': listenerConfig.toJson(),
-        if (routeConfig != null) 'routeConfig': routeConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clusterConfig != null) 'clusterConfig': clusterConfig!.toJson(),
+        if (listenerConfig != null) 'listenerConfig': listenerConfig!.toJson(),
+        if (routeConfig != null) 'routeConfig': routeConfig!.toJson(),
         if (scopedRouteConfig != null)
-          'scopedRouteConfig': scopedRouteConfig.toJson(),
-        if (status != null) 'status': status,
+          'scopedRouteConfig': scopedRouteConfig!.toJson(),
+        if (status != null) 'status': status!,
       };
 }
 
@@ -1127,14 +1126,14 @@ class Pipe {
   /// The mode for the Pipe.
   ///
   /// Not applicable for abstract sockets.
-  core.int mode;
+  core.int? mode;
 
   /// Unix Domain Socket path.
   ///
   /// On Linux, paths starting with '@' will use the abstract namespace. The
   /// starting '@' is replaced by a null byte by Envoy. Paths starting with '@'
   /// will result in an error in environments other than Linux.
-  core.String path;
+  core.String? path;
 
   Pipe();
 
@@ -1147,21 +1146,21 @@ class Pipe {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (mode != null) 'mode': mode,
-        if (path != null) 'path': path,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (mode != null) 'mode': mode!,
+        if (path != null) 'path': path!,
       };
 }
 
 /// A regex matcher designed for safety when used with untrusted input.
 class RegexMatcher {
   /// Google's RE2 regex engine.
-  GoogleRE2 googleRe2;
+  GoogleRE2? googleRe2;
 
   /// The regex match string.
   ///
   /// The string must be supported by the configured engine.
-  core.String regex;
+  core.String? regex;
 
   RegexMatcher();
 
@@ -1175,9 +1174,9 @@ class RegexMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (googleRe2 != null) 'googleRe2': googleRe2.toJson(),
-        if (regex != null) 'regex': regex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (googleRe2 != null) 'googleRe2': googleRe2!.toJson(),
+        if (regex != null) 'regex': regex!,
       };
 }
 
@@ -1191,10 +1190,10 @@ class RegexMatcher {
 /// or by returning them in RDS responses.
 class RoutesConfigDump {
   /// The dynamically loaded route configs.
-  core.List<DynamicRouteConfig> dynamicRouteConfigs;
+  core.List<DynamicRouteConfig>? dynamicRouteConfigs;
 
   /// The statically loaded route configs.
-  core.List<StaticRouteConfig> staticRouteConfigs;
+  core.List<StaticRouteConfig>? staticRouteConfigs;
 
   RoutesConfigDump();
 
@@ -1213,13 +1212,13 @@ class RoutesConfigDump {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dynamicRouteConfigs != null)
           'dynamicRouteConfigs':
-              dynamicRouteConfigs.map((value) => value.toJson()).toList(),
+              dynamicRouteConfigs!.map((value) => value.toJson()).toList(),
         if (staticRouteConfigs != null)
           'staticRouteConfigs':
-              staticRouteConfigs.map((value) => value.toJson()).toList(),
+              staticRouteConfigs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1232,10 +1231,10 @@ class RoutesConfigDump {
 /// via the SRDS API.
 class ScopedRoutesConfigDump {
   /// The dynamically loaded scoped route configs.
-  core.List<DynamicScopedRouteConfigs> dynamicScopedRouteConfigs;
+  core.List<DynamicScopedRouteConfigs>? dynamicScopedRouteConfigs;
 
   /// The statically loaded scoped route configs.
-  core.List<InlineScopedRouteConfigs> inlineScopedRouteConfigs;
+  core.List<InlineScopedRouteConfigs>? inlineScopedRouteConfigs;
 
   ScopedRoutesConfigDump();
 
@@ -1258,13 +1257,14 @@ class ScopedRoutesConfigDump {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dynamicScopedRouteConfigs != null)
-          'dynamicScopedRouteConfigs':
-              dynamicScopedRouteConfigs.map((value) => value.toJson()).toList(),
+          'dynamicScopedRouteConfigs': dynamicScopedRouteConfigs!
+              .map((value) => value.toJson())
+              .toList(),
         if (inlineScopedRouteConfigs != null)
           'inlineScopedRouteConfigs':
-              inlineScopedRouteConfigs.map((value) => value.toJson()).toList(),
+              inlineScopedRouteConfigs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1273,9 +1273,9 @@ class ScopedRoutesConfigDump {
 /// Major/minor versions indicate expected behaviors and APIs, the patch version
 /// field is used only for security fixes and can be generally ignored.
 class SemanticVersion {
-  core.int majorNumber;
-  core.int minorNumber;
-  core.int patch;
+  core.int? majorNumber;
+  core.int? minorNumber;
+  core.int? patch;
 
   SemanticVersion();
 
@@ -1291,10 +1291,10 @@ class SemanticVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (majorNumber != null) 'majorNumber': majorNumber,
-        if (minorNumber != null) 'minorNumber': minorNumber,
-        if (patch != null) 'patch': patch,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (majorNumber != null) 'majorNumber': majorNumber!,
+        if (minorNumber != null) 'minorNumber': minorNumber!,
+        if (patch != null) 'patch': patch!,
       };
 }
 
@@ -1312,25 +1312,25 @@ class SocketAddress {
   /// an IP (*STATIC* or *EDS* clusters) or a hostname resolved by DNS
   /// (*STRICT_DNS* or *LOGICAL_DNS* clusters). Address resolution can be
   /// customized via :ref:`resolver_name `.
-  core.String address;
+  core.String? address;
 
   /// When binding to an IPv6 address above, this enables `IPv4 compatibility
   /// `_.
   ///
   /// Binding to ``::`` will allow both IPv4 and IPv6 connections, with peer
   /// IPv4 addresses mapped into IPv6 space as ``::FFFF:``.
-  core.bool ipv4Compat;
+  core.bool? ipv4Compat;
 
   /// This is only valid if :ref:`resolver_name ` is specified below and the
   /// named resolver is capable of named port resolution.
-  core.String namedPort;
-  core.int portValue;
+  core.String? namedPort;
+  core.int? portValue;
 
   ///
   /// Possible string values are:
   /// - "TCP"
   /// - "UDP"
-  core.String protocol;
+  core.String? protocol;
 
   /// The name of the custom resolver.
   ///
@@ -1339,7 +1339,7 @@ class SocketAddress {
   /// resolution will occur. If address is a hostname this should be set for
   /// resolution other than DNS. Specifying a custom resolver with *STRICT_DNS*
   /// or *LOGICAL_DNS* will generate an error at runtime.
-  core.String resolverName;
+  core.String? resolverName;
 
   SocketAddress();
 
@@ -1364,13 +1364,13 @@ class SocketAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address,
-        if (ipv4Compat != null) 'ipv4Compat': ipv4Compat,
-        if (namedPort != null) 'namedPort': namedPort,
-        if (portValue != null) 'portValue': portValue,
-        if (protocol != null) 'protocol': protocol,
-        if (resolverName != null) 'resolverName': resolverName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!,
+        if (ipv4Compat != null) 'ipv4Compat': ipv4Compat!,
+        if (namedPort != null) 'namedPort': namedPort!,
+        if (portValue != null) 'portValue': portValue!,
+        if (protocol != null) 'protocol': protocol!,
+        if (resolverName != null) 'resolverName': resolverName!,
       };
 }
 
@@ -1380,10 +1380,10 @@ class StaticCluster {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> cluster;
+  core.Map<core.String, core.Object>? cluster;
 
   /// The timestamp when the Cluster was last updated.
-  core.String lastUpdated;
+  core.String? lastUpdated;
 
   StaticCluster();
 
@@ -1402,22 +1402,22 @@ class StaticCluster {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cluster != null) 'cluster': cluster,
-        if (lastUpdated != null) 'lastUpdated': lastUpdated,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cluster != null) 'cluster': cluster!,
+        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
       };
 }
 
 /// Describes a statically loaded listener.
 class StaticListener {
   /// The timestamp when the Listener was last successfully updated.
-  core.String lastUpdated;
+  core.String? lastUpdated;
 
   /// The listener config.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> listener;
+  core.Map<core.String, core.Object>? listener;
 
   StaticListener();
 
@@ -1436,21 +1436,21 @@ class StaticListener {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lastUpdated != null) 'lastUpdated': lastUpdated,
-        if (listener != null) 'listener': listener,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
+        if (listener != null) 'listener': listener!,
       };
 }
 
 class StaticRouteConfig {
   /// The timestamp when the Route was last updated.
-  core.String lastUpdated;
+  core.String? lastUpdated;
 
   /// The route config.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> routeConfig;
+  core.Map<core.String, core.Object>? routeConfig;
 
   StaticRouteConfig();
 
@@ -1470,9 +1470,9 @@ class StaticRouteConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lastUpdated != null) 'lastUpdated': lastUpdated,
-        if (routeConfig != null) 'routeConfig': routeConfig,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lastUpdated != null) 'lastUpdated': lastUpdated!,
+        if (routeConfig != null) 'routeConfig': routeConfig!,
       };
 }
 
@@ -1483,20 +1483,20 @@ class StringMatcher {
   /// The input string must match exactly the string specified here.
   ///
   /// Examples: * *abc* only matches the value *abc*.
-  core.String exact;
+  core.String? exact;
 
   /// If true, indicates the exact/prefix/suffix matching should be case
   /// insensitive.
   ///
   /// This has no effect for the safe_regex match. For example, the matcher
   /// *data* will match both input string *Data* and *data* if set to true.
-  core.bool ignoreCase;
+  core.bool? ignoreCase;
 
   /// The input string must have the prefix specified here.
   ///
   /// Note: empty prefix is not allowed, please use regex instead. Examples: *
   /// *abc* matches the value *abc.xyz*
-  core.String prefix;
+  core.String? prefix;
 
   /// The input string must match the regular expression specified here.
   ///
@@ -1505,16 +1505,16 @@ class StringMatcher {
   /// *1234* * The regex ``\d{3}`` does not match the value *123.456* ..
   /// attention:: This field has been deprecated in favor of `safe_regex` as it
   /// is not safe for use with untrusted input in all cases.
-  core.String regex;
+  core.String? regex;
 
   /// The input string must match the regular expression specified here.
-  RegexMatcher safeRegex;
+  RegexMatcher? safeRegex;
 
   /// The input string must have the suffix specified here.
   ///
   /// Note: empty prefix is not allowed, please use regex instead. Examples: *
   /// *abc* matches the value *xyz.abc*
-  core.String suffix;
+  core.String? suffix;
 
   StringMatcher();
 
@@ -1540,13 +1540,13 @@ class StringMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exact != null) 'exact': exact,
-        if (ignoreCase != null) 'ignoreCase': ignoreCase,
-        if (prefix != null) 'prefix': prefix,
-        if (regex != null) 'regex': regex,
-        if (safeRegex != null) 'safeRegex': safeRegex.toJson(),
-        if (suffix != null) 'suffix': suffix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exact != null) 'exact': exact!,
+        if (ignoreCase != null) 'ignoreCase': ignoreCase!,
+        if (prefix != null) 'prefix': prefix!,
+        if (regex != null) 'regex': regex!,
+        if (safeRegex != null) 'safeRegex': safeRegex!.toJson(),
+        if (suffix != null) 'suffix': suffix!,
       };
 }
 
@@ -1567,11 +1567,11 @@ class StringMatcher {
 /// is to match metadata in envoy.v*.core.Node.
 class StructMatcher {
   /// The path to retrieve the Value from the Struct.
-  core.List<PathSegment> path;
+  core.List<PathSegment>? path;
 
   /// The StructMatcher is matched if the value retrieved by path is matched to
   /// this value.
-  ValueMatcher value;
+  ValueMatcher? value;
 
   StructMatcher();
 
@@ -1588,25 +1588,25 @@ class StructMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (path != null) 'path': path.map((value) => value.toJson()).toList(),
-        if (value != null) 'value': value.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (path != null) 'path': path!.map((value) => value.toJson()).toList(),
+        if (value != null) 'value': value!.toJson(),
       };
 }
 
 class UpdateFailureState {
   /// Details about the last failed update attempt.
-  core.String details;
+  core.String? details;
 
   /// What the component configuration would have been if the update had
   /// succeeded.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> failedConfiguration;
+  core.Map<core.String, core.Object>? failedConfiguration;
 
   /// Time of the latest failed update attempt.
-  core.String lastUpdateAttempt;
+  core.String? lastUpdateAttempt;
 
   UpdateFailureState();
 
@@ -1629,11 +1629,11 @@ class UpdateFailureState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (details != null) 'details': details,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (details != null) 'details': details!,
         if (failedConfiguration != null)
-          'failedConfiguration': failedConfiguration,
-        if (lastUpdateAttempt != null) 'lastUpdateAttempt': lastUpdateAttempt,
+          'failedConfiguration': failedConfiguration!,
+        if (lastUpdateAttempt != null) 'lastUpdateAttempt': lastUpdateAttempt!,
       };
 }
 
@@ -1644,30 +1644,30 @@ class UpdateFailureState {
 class ValueMatcher {
   /// If specified, a match occurs if and only if the target value is a bool
   /// value and is equal to this field.
-  core.bool boolMatch;
+  core.bool? boolMatch;
 
   /// If specified, a match occurs if and only if the target value is a double
   /// value and is matched to this field.
-  DoubleMatcher doubleMatch;
+  DoubleMatcher? doubleMatch;
 
   /// If specified, a match occurs if and only if the target value is a list
   /// value and is matched to this field.
-  ListMatcher listMatch;
+  ListMatcher? listMatch;
 
   /// If specified, a match occurs if and only if the target value is a
   /// NullValue.
-  NullMatch nullMatch;
+  NullMatch? nullMatch;
 
   /// If specified, value match will be performed based on whether the path is
   /// referring to a valid primitive value in the metadata.
   ///
   /// If the path is referring to a non-primitive value, the result is always
   /// not matched.
-  core.bool presentMatch;
+  core.bool? presentMatch;
 
   /// If specified, a match occurs if and only if the target value is a string
   /// value and is matched to this field.
-  StringMatcher stringMatch;
+  StringMatcher? stringMatch;
 
   ValueMatcher();
 
@@ -1696,12 +1696,12 @@ class ValueMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolMatch != null) 'boolMatch': boolMatch,
-        if (doubleMatch != null) 'doubleMatch': doubleMatch.toJson(),
-        if (listMatch != null) 'listMatch': listMatch.toJson(),
-        if (nullMatch != null) 'nullMatch': nullMatch.toJson(),
-        if (presentMatch != null) 'presentMatch': presentMatch,
-        if (stringMatch != null) 'stringMatch': stringMatch.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolMatch != null) 'boolMatch': boolMatch!,
+        if (doubleMatch != null) 'doubleMatch': doubleMatch!.toJson(),
+        if (listMatch != null) 'listMatch': listMatch!.toJson(),
+        if (nullMatch != null) 'nullMatch': nullMatch!.toJson(),
+        if (presentMatch != null) 'presentMatch': presentMatch!,
+        if (stringMatch != null) 'stringMatch': stringMatch!.toJson(),
       };
 }

@@ -99,11 +99,8 @@ class PropertiesResource {
   /// this method will complete with the same error.
   async.Future<Metadata> getMetadata(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -146,13 +143,9 @@ class PropertiesResource {
   async.Future<RunRealtimeReportResponse> runRealtimeReport(
     RunRealtimeReportRequest request,
     core.String property, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (property == null) {
-      throw core.ArgumentError('Parameter property is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -197,10 +190,9 @@ class V1alphaResource {
   /// this method will complete with the same error.
   async.Future<BatchRunPivotReportsResponse> batchRunPivotReports(
     BatchRunPivotReportsRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -237,10 +229,9 @@ class V1alphaResource {
   /// this method will complete with the same error.
   async.Future<BatchRunReportsResponse> batchRunReports(
     BatchRunReportsRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -280,10 +271,9 @@ class V1alphaResource {
   /// this method will complete with the same error.
   async.Future<RunPivotReportResponse> runPivotReport(
     RunPivotReportRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -325,10 +315,9 @@ class V1alphaResource {
   /// this method will complete with the same error.
   async.Future<RunReportResponse> runReport(
     RunReportRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -353,13 +342,13 @@ class BatchRunPivotReportsRequest {
   /// This entity must be specified for the batch. The entity within
   /// RunPivotReportRequest may either be unspecified or consistent with this
   /// entity.
-  Entity entity;
+  Entity? entity;
 
   /// Individual requests.
   ///
   /// Each request has a separate pivot report response. Each batch request is
   /// allowed up to 5 requests.
-  core.List<RunPivotReportRequest> requests;
+  core.List<RunPivotReportRequest>? requests;
 
   BatchRunPivotReportsRequest();
 
@@ -376,10 +365,10 @@ class BatchRunPivotReportsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (entity != null) 'entity': entity.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (entity != null) 'entity': entity!.toJson(),
         if (requests != null)
-          'requests': requests.map((value) => value.toJson()).toList(),
+          'requests': requests!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -388,7 +377,7 @@ class BatchRunPivotReportsResponse {
   /// Individual responses.
   ///
   /// Each response has a separate pivot report request.
-  core.List<RunPivotReportResponse> pivotReports;
+  core.List<RunPivotReportResponse>? pivotReports;
 
   BatchRunPivotReportsResponse();
 
@@ -402,9 +391,9 @@ class BatchRunPivotReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (pivotReports != null)
-          'pivotReports': pivotReports.map((value) => value.toJson()).toList(),
+          'pivotReports': pivotReports!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -414,13 +403,13 @@ class BatchRunReportsRequest {
   ///
   /// This entity must be specified for the batch. The entity within
   /// RunReportRequest may either be unspecified or consistent with this entity.
-  Entity entity;
+  Entity? entity;
 
   /// Individual requests.
   ///
   /// Each request has a separate report response. Each batch request is allowed
   /// up to 5 requests.
-  core.List<RunReportRequest> requests;
+  core.List<RunReportRequest>? requests;
 
   BatchRunReportsRequest();
 
@@ -437,10 +426,10 @@ class BatchRunReportsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (entity != null) 'entity': entity.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (entity != null) 'entity': entity!.toJson(),
         if (requests != null)
-          'requests': requests.map((value) => value.toJson()).toList(),
+          'requests': requests!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -449,7 +438,7 @@ class BatchRunReportsResponse {
   /// Individual responses.
   ///
   /// Each response has a separate report request.
-  core.List<RunReportResponse> reports;
+  core.List<RunReportResponse>? reports;
 
   BatchRunReportsResponse();
 
@@ -462,19 +451,19 @@ class BatchRunReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (reports != null)
-          'reports': reports.map((value) => value.toJson()).toList(),
+          'reports': reports!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// To express that the result needs to be between two numbers (inclusive).
 class BetweenFilter {
   /// Begins with this number.
-  NumericValue fromValue;
+  NumericValue? fromValue;
 
   /// Ends with this number.
-  NumericValue toValue;
+  NumericValue? toValue;
 
   BetweenFilter();
 
@@ -489,9 +478,9 @@ class BetweenFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fromValue != null) 'fromValue': fromValue.toJson(),
-        if (toValue != null) 'toValue': toValue.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fromValue != null) 'fromValue': fromValue!.toJson(),
+        if (toValue != null) 'toValue': toValue!.toJson(),
       };
 }
 
@@ -500,7 +489,7 @@ class CaseExpression {
   /// Name of a dimension.
   ///
   /// The name must refer back to a name in dimensions field of the request.
-  core.String dimensionName;
+  core.String? dimensionName;
 
   CaseExpression();
 
@@ -510,8 +499,8 @@ class CaseExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimensionName != null) 'dimensionName': dimensionName!,
       };
 }
 
@@ -536,19 +525,19 @@ class Cohort {
   /// at Sunday and ending Saturday. If `CohortsRange` uses monthly granularity,
   /// this `dateRange` can be aligned to a month, starting at the first and
   /// ending on the last day of the month.
-  DateRange dateRange;
+  DateRange? dateRange;
 
   /// Dimension used by the cohort.
   ///
   /// Required and only supports `firstSessionDate`.
-  core.String dimension;
+  core.String? dimension;
 
   /// Assigns a name to this cohort.
   ///
   /// The dimension `cohort` is valued to this name in a report response. If
   /// set, cannot begin with `cohort_` or `RESERVED_`. If not set, cohorts are
   /// named by their zero based index `cohort_0`, `cohort_1`, etc.
-  core.String name;
+  core.String? name;
 
   Cohort();
 
@@ -565,10 +554,10 @@ class Cohort {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dateRange != null) 'dateRange': dateRange.toJson(),
-        if (dimension != null) 'dimension': dimension,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dateRange != null) 'dateRange': dateRange!.toJson(),
+        if (dimension != null) 'dimension': dimension!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -577,7 +566,7 @@ class CohortReportSettings {
   /// If true, accumulates the result from first touch day to the end day.
   ///
   /// Not supported in `RunReportRequest`.
-  core.bool accumulate;
+  core.bool? accumulate;
 
   CohortReportSettings();
 
@@ -587,8 +576,8 @@ class CohortReportSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accumulate != null) 'accumulate': accumulate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accumulate != null) 'accumulate': accumulate!,
       };
 }
 
@@ -608,18 +597,18 @@ class CohortReportSettings {
 /// report.
 class CohortSpec {
   /// Optional settings for a cohort report.
-  CohortReportSettings cohortReportSettings;
+  CohortReportSettings? cohortReportSettings;
 
   /// Defines the selection criteria to group users into cohorts.
   ///
   /// Most cohort reports define only a single cohort. If multiple cohorts are
   /// specified, each cohort can be recognized in the report by their name.
-  core.List<Cohort> cohorts;
+  core.List<Cohort>? cohorts;
 
   /// Cohort reports follow cohorts over an extended reporting date range.
   ///
   /// This range specifies an offset duration to follow the cohorts over.
-  CohortsRange cohortsRange;
+  CohortsRange? cohortsRange;
 
   CohortSpec();
 
@@ -640,12 +629,12 @@ class CohortSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cohortReportSettings != null)
-          'cohortReportSettings': cohortReportSettings.toJson(),
+          'cohortReportSettings': cohortReportSettings!.toJson(),
         if (cohorts != null)
-          'cohorts': cohorts.map((value) => value.toJson()).toList(),
-        if (cohortsRange != null) 'cohortsRange': cohortsRange.toJson(),
+          'cohorts': cohorts!.map((value) => value.toJson()).toList(),
+        if (cohortsRange != null) 'cohortsRange': cohortsRange!.toJson(),
       };
 }
 
@@ -666,7 +655,7 @@ class CohortsRange {
   /// range is `endDate` of the cohort plus `endOffset * 30` days.
   ///
   /// Required.
-  core.int endOffset;
+  core.int? endOffset;
 
   /// The granularity used to interpret the `startOffset` and `endOffset` for
   /// the extended reporting date range for a cohort report.
@@ -682,7 +671,7 @@ class CohortsRange {
   /// - "MONTHLY" : Monthly granularity. Commonly used if the cohort's
   /// `dateRange` is a month in duration and the request contains
   /// `cohortNthMonth`.
-  core.String granularity;
+  core.String? granularity;
 
   /// `startOffset` specifies the start date of the extended reporting date
   /// range for a cohort report.
@@ -695,7 +684,7 @@ class CohortsRange {
   /// cohort plus `startOffset * 7` days. If `granularity` is `MONTHLY`, the
   /// `startDate` of the extended reporting date range is `startDate` of the
   /// cohort plus `startOffset * 30` days.
-  core.int startOffset;
+  core.int? startOffset;
 
   CohortsRange();
 
@@ -711,10 +700,10 @@ class CohortsRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endOffset != null) 'endOffset': endOffset,
-        if (granularity != null) 'granularity': granularity,
-        if (startOffset != null) 'startOffset': startOffset,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endOffset != null) 'endOffset': endOffset!,
+        if (granularity != null) 'granularity': granularity!,
+        if (startOffset != null) 'startOffset': startOffset!,
       };
 }
 
@@ -727,12 +716,12 @@ class ConcatenateExpression {
   /// present in response with no distinction. For example if dimension 1 value
   /// = "US,FR", dimension 2 value = "JP", and delimiter = ",", then the
   /// response will contain "US,FR,JP".
-  core.String delimiter;
+  core.String? delimiter;
 
   /// Names of dimensions.
   ///
   /// The names must refer back to names in the dimensions field of the request.
-  core.List<core.String> dimensionNames;
+  core.List<core.String>? dimensionNames;
 
   ConcatenateExpression();
 
@@ -747,9 +736,9 @@ class ConcatenateExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (delimiter != null) 'delimiter': delimiter,
-        if (dimensionNames != null) 'dimensionNames': dimensionNames,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (delimiter != null) 'delimiter': delimiter!,
+        if (dimensionNames != null) 'dimensionNames': dimensionNames!,
       };
 }
 
@@ -762,7 +751,7 @@ class DateRange {
   /// Cannot be before `start_date`. The format `NdaysAgo`, `yesterday`, or
   /// `today` is also accepted, and in that case, the date is inferred based on
   /// the property's reporting time zone.
-  core.String endDate;
+  core.String? endDate;
 
   /// Assigns a name to this date range.
   ///
@@ -770,14 +759,14 @@ class DateRange {
   /// set, cannot begin with `date_range_` or `RESERVED_`. If not set, date
   /// ranges are named by their zero based index in the request: `date_range_0`,
   /// `date_range_1`, etc.
-  core.String name;
+  core.String? name;
 
   /// The inclusive start date for the query in the format `YYYY-MM-DD`.
   ///
   /// Cannot be after `end_date`. The format `NdaysAgo`, `yesterday`, or `today`
   /// is also accepted, and in that case, the date is inferred based on the
   /// property's reporting time zone.
-  core.String startDate;
+  core.String? startDate;
 
   DateRange();
 
@@ -793,10 +782,10 @@ class DateRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endDate != null) 'endDate': endDate,
-        if (name != null) 'name': name,
-        if (startDate != null) 'startDate': startDate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endDate != null) 'endDate': endDate!,
+        if (name != null) 'name': name!,
+        if (startDate != null) 'startDate': startDate!,
       };
 }
 
@@ -810,7 +799,7 @@ class Dimension {
   /// One dimension can be the result of an expression of multiple dimensions.
   ///
   /// For example, dimension "country, city": concatenate(country, ", ", city).
-  DimensionExpression dimensionExpression;
+  DimensionExpression? dimensionExpression;
 
   /// The name of the dimension.
   ///
@@ -821,7 +810,7 @@ class Dimension {
   /// `dimensionExpression` concatenates `country` and `city`, you could call
   /// that dimension `countryAndCity`. Dimensions are referenced by `name` in
   /// `dimensionFilter`, `orderBys`, `dimensionExpression`, and `pivots`.
-  core.String name;
+  core.String? name;
 
   Dimension();
 
@@ -835,10 +824,10 @@ class Dimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensionExpression != null)
-          'dimensionExpression': dimensionExpression.toJson(),
-        if (name != null) 'name': name,
+          'dimensionExpression': dimensionExpression!.toJson(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -851,13 +840,13 @@ class DimensionExpression {
   /// Used to combine dimension values to a single dimension.
   ///
   /// For example, dimension "country, city": concatenate(country, ", ", city).
-  ConcatenateExpression concatenate;
+  ConcatenateExpression? concatenate;
 
   /// Used to convert a dimension value to lower case.
-  CaseExpression lowerCase;
+  CaseExpression? lowerCase;
 
   /// Used to convert a dimension value to upper case.
-  CaseExpression upperCase;
+  CaseExpression? upperCase;
 
   DimensionExpression();
 
@@ -876,10 +865,10 @@ class DimensionExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (concatenate != null) 'concatenate': concatenate.toJson(),
-        if (lowerCase != null) 'lowerCase': lowerCase.toJson(),
-        if (upperCase != null) 'upperCase': upperCase.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (concatenate != null) 'concatenate': concatenate!.toJson(),
+        if (lowerCase != null) 'lowerCase': lowerCase!.toJson(),
+        if (upperCase != null) 'upperCase': upperCase!.toJson(),
       };
 }
 
@@ -891,7 +880,7 @@ class DimensionExpression {
 /// dimensions do not produce headers.
 class DimensionHeader {
   /// The dimension's name.
-  core.String name;
+  core.String? name;
 
   DimensionHeader();
 
@@ -901,8 +890,8 @@ class DimensionHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -911,25 +900,25 @@ class DimensionMetadata {
   /// This dimension's name.
   ///
   /// Useable in \[Dimension\](#Dimension)'s `name`. For example, `eventName`.
-  core.String apiName;
+  core.String? apiName;
 
   /// True if the dimension is a custom dimension for this property.
-  core.bool customDefinition;
+  core.bool? customDefinition;
 
   /// Still usable but deprecated names for this dimension.
   ///
   /// If populated, this dimension is available by either `apiName` or one of
   /// `deprecatedApiNames` for a period of time. After the deprecation period,
   /// the dimension will be available only by `apiName`.
-  core.List<core.String> deprecatedApiNames;
+  core.List<core.String>? deprecatedApiNames;
 
   /// Description of how this dimension is used and calculated.
-  core.String description;
+  core.String? description;
 
   /// This dimension's name within the Google Analytics user interface.
   ///
   /// For example, `Event name`.
-  core.String uiName;
+  core.String? uiName;
 
   DimensionMetadata();
 
@@ -953,20 +942,20 @@ class DimensionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiName != null) 'apiName': apiName,
-        if (customDefinition != null) 'customDefinition': customDefinition,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiName != null) 'apiName': apiName!,
+        if (customDefinition != null) 'customDefinition': customDefinition!,
         if (deprecatedApiNames != null)
-          'deprecatedApiNames': deprecatedApiNames,
-        if (description != null) 'description': description,
-        if (uiName != null) 'uiName': uiName,
+          'deprecatedApiNames': deprecatedApiNames!,
+        if (description != null) 'description': description!,
+        if (uiName != null) 'uiName': uiName!,
       };
 }
 
 /// Sorts by dimension values.
 class DimensionOrderBy {
   /// A dimension name in the request to order by.
-  core.String dimensionName;
+  core.String? dimensionName;
 
   /// Controls the rule for dimension value ordering.
   /// Possible string values are:
@@ -979,7 +968,7 @@ class DimensionOrderBy {
   /// For example in NUMERIC sort, "25" < "100", and in `ALPHANUMERIC` sort,
   /// "100" < "25". Non-numeric dimension values all have equal ordering value
   /// below all numeric values.
-  core.String orderType;
+  core.String? orderType;
 
   DimensionOrderBy();
 
@@ -992,16 +981,16 @@ class DimensionOrderBy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName,
-        if (orderType != null) 'orderType': orderType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimensionName != null) 'dimensionName': dimensionName!,
+        if (orderType != null) 'orderType': orderType!,
       };
 }
 
 /// The value of a dimension.
 class DimensionValue {
   /// Value as a string if the dimension type is a string.
-  core.String value;
+  core.String? value;
 
   DimensionValue();
 
@@ -1011,8 +1000,8 @@ class DimensionValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1022,7 +1011,7 @@ class Entity {
   ///
   /// To learn more, see
   /// [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id).
-  core.String propertyId;
+  core.String? propertyId;
 
   Entity();
 
@@ -1032,29 +1021,29 @@ class Entity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (propertyId != null) 'propertyId': propertyId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (propertyId != null) 'propertyId': propertyId!,
       };
 }
 
 /// An expression to filter dimension or metric values.
 class Filter {
   /// A filter for two values.
-  BetweenFilter betweenFilter;
+  BetweenFilter? betweenFilter;
 
   /// The dimension name or metric name.
   ///
   /// Must be a name defined in dimensions or metrics.
-  core.String fieldName;
+  core.String? fieldName;
 
   /// A filter for in list values.
-  InListFilter inListFilter;
+  InListFilter? inListFilter;
 
   /// A filter for numeric or date values.
-  NumericFilter numericFilter;
+  NumericFilter? numericFilter;
 
   /// Strings related filter.
-  StringFilter stringFilter;
+  StringFilter? stringFilter;
 
   Filter();
 
@@ -1080,12 +1069,12 @@ class Filter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (betweenFilter != null) 'betweenFilter': betweenFilter.toJson(),
-        if (fieldName != null) 'fieldName': fieldName,
-        if (inListFilter != null) 'inListFilter': inListFilter.toJson(),
-        if (numericFilter != null) 'numericFilter': numericFilter.toJson(),
-        if (stringFilter != null) 'stringFilter': stringFilter.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (betweenFilter != null) 'betweenFilter': betweenFilter!.toJson(),
+        if (fieldName != null) 'fieldName': fieldName!,
+        if (inListFilter != null) 'inListFilter': inListFilter!.toJson(),
+        if (numericFilter != null) 'numericFilter': numericFilter!.toJson(),
+        if (stringFilter != null) 'stringFilter': stringFilter!.toJson(),
       };
 }
 
@@ -1095,19 +1084,19 @@ class Filter {
 /// all metrics.
 class FilterExpression {
   /// The FilterExpressions in and_group have an AND relationship.
-  FilterExpressionList andGroup;
+  FilterExpressionList? andGroup;
 
   /// A primitive filter.
   ///
   /// All fields in filter in same FilterExpression needs to be either all
   /// dimensions or metrics.
-  Filter filter;
+  Filter? filter;
 
   /// The FilterExpression is NOT of not_expression.
-  FilterExpression notExpression;
+  FilterExpression? notExpression;
 
   /// The FilterExpressions in or_group have an OR relationship.
-  FilterExpressionList orGroup;
+  FilterExpressionList? orGroup;
 
   FilterExpression();
 
@@ -1130,18 +1119,18 @@ class FilterExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (andGroup != null) 'andGroup': andGroup.toJson(),
-        if (filter != null) 'filter': filter.toJson(),
-        if (notExpression != null) 'notExpression': notExpression.toJson(),
-        if (orGroup != null) 'orGroup': orGroup.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (andGroup != null) 'andGroup': andGroup!.toJson(),
+        if (filter != null) 'filter': filter!.toJson(),
+        if (notExpression != null) 'notExpression': notExpression!.toJson(),
+        if (orGroup != null) 'orGroup': orGroup!.toJson(),
       };
 }
 
 /// A list of filter expressions.
 class FilterExpressionList {
   /// A list of filter expressions.
-  core.List<FilterExpression> expressions;
+  core.List<FilterExpression>? expressions;
 
   FilterExpressionList();
 
@@ -1154,21 +1143,21 @@ class FilterExpressionList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (expressions != null)
-          'expressions': expressions.map((value) => value.toJson()).toList(),
+          'expressions': expressions!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The result needs to be in a list of string values.
 class InListFilter {
   /// If true, the string value is case sensitive.
-  core.bool caseSensitive;
+  core.bool? caseSensitive;
 
   /// The list of string values.
   ///
   /// Must be non-empty.
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   InListFilter();
 
@@ -1183,22 +1172,22 @@ class InListFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive,
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+        if (values != null) 'values': values!,
       };
 }
 
 /// The dimensions and metrics currently accepted in reporting methods.
 class Metadata {
   /// The dimension descriptions.
-  core.List<DimensionMetadata> dimensions;
+  core.List<DimensionMetadata>? dimensions;
 
   /// The metric descriptions.
-  core.List<MetricMetadata> metrics;
+  core.List<MetricMetadata>? metrics;
 
   /// Resource name of this metadata.
-  core.String name;
+  core.String? name;
 
   Metadata();
 
@@ -1220,12 +1209,12 @@ class Metadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1237,14 +1226,14 @@ class Metric {
   /// A mathematical expression for derived metrics.
   ///
   /// For example, the metric Event count per user is `eventCount/totalUsers`.
-  core.String expression;
+  core.String? expression;
 
   /// Indicates if a metric is invisible in the report response.
   ///
   /// If a metric is invisible, the metric will not produce a column in the
   /// response, but can be used in `metricFilter`, `orderBys`, or a metric
   /// `expression`.
-  core.bool invisible;
+  core.bool? invisible;
 
   /// The name of the metric.
   ///
@@ -1255,7 +1244,7 @@ class Metric {
   /// `screenPageViews/sessions`, you could call that metric's name =
   /// `viewsPerSession`. Metrics are referenced by `name` in `metricFilter`,
   /// `orderBys`, and metric `expression`.
-  core.String name;
+  core.String? name;
 
   Metric();
 
@@ -1271,10 +1260,10 @@ class Metric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expression != null) 'expression': expression,
-        if (invisible != null) 'invisible': invisible,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expression != null) 'expression': expression!,
+        if (invisible != null) 'invisible': invisible!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1286,7 +1275,7 @@ class Metric {
 /// metrics do not produce headers.
 class MetricHeader {
   /// The metric's name.
-  core.String name;
+  core.String? name;
 
   /// The metric's data type.
   /// Possible string values are:
@@ -1306,7 +1295,7 @@ class MetricHeader {
   /// - "TYPE_METERS" : A length in meters; a special floating point type.
   /// - "TYPE_KILOMETERS" : A length in kilometers; a special floating point
   /// type.
-  core.String type;
+  core.String? type;
 
   MetricHeader();
 
@@ -1319,9 +1308,9 @@ class MetricHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1330,27 +1319,27 @@ class MetricMetadata {
   /// A metric name.
   ///
   /// Useable in \[Metric\](#Metric)'s `name`. For example, `eventCount`.
-  core.String apiName;
+  core.String? apiName;
 
   /// True if the metric is a custom metric for this property.
-  core.bool customDefinition;
+  core.bool? customDefinition;
 
   /// Still usable but deprecated names for this metric.
   ///
   /// If populated, this metric is available by either `apiName` or one of
   /// `deprecatedApiNames` for a period of time. After the deprecation period,
   /// the metric will be available only by `apiName`.
-  core.List<core.String> deprecatedApiNames;
+  core.List<core.String>? deprecatedApiNames;
 
   /// Description of how this metric is used and calculated.
-  core.String description;
+  core.String? description;
 
   /// The mathematical expression for this derived metric.
   ///
   /// Can be used in \[Metric\](#Metric)'s `expression` field for equivalent
   /// reports. Most metrics are not expressions, and for non-expressions, this
   /// field is empty.
-  core.String expression;
+  core.String? expression;
 
   /// The type of this metric.
   /// Possible string values are:
@@ -1370,12 +1359,12 @@ class MetricMetadata {
   /// - "TYPE_METERS" : A length in meters; a special floating point type.
   /// - "TYPE_KILOMETERS" : A length in kilometers; a special floating point
   /// type.
-  core.String type;
+  core.String? type;
 
   /// This metric's name within the Google Analytics user interface.
   ///
   /// For example, `Event count`.
-  core.String uiName;
+  core.String? uiName;
 
   MetricMetadata();
 
@@ -1405,22 +1394,22 @@ class MetricMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiName != null) 'apiName': apiName,
-        if (customDefinition != null) 'customDefinition': customDefinition,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiName != null) 'apiName': apiName!,
+        if (customDefinition != null) 'customDefinition': customDefinition!,
         if (deprecatedApiNames != null)
-          'deprecatedApiNames': deprecatedApiNames,
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (type != null) 'type': type,
-        if (uiName != null) 'uiName': uiName,
+          'deprecatedApiNames': deprecatedApiNames!,
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (type != null) 'type': type!,
+        if (uiName != null) 'uiName': uiName!,
       };
 }
 
 /// Sorts by metric values.
 class MetricOrderBy {
   /// A metric name in the request to order by.
-  core.String metricName;
+  core.String? metricName;
 
   MetricOrderBy();
 
@@ -1430,8 +1419,8 @@ class MetricOrderBy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metricName != null) 'metricName': metricName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metricName != null) 'metricName': metricName!,
       };
 }
 
@@ -1440,7 +1429,7 @@ class MetricValue {
   /// Measurement value.
   ///
   /// See MetricHeader for type.
-  core.String value;
+  core.String? value;
 
   MetricValue();
 
@@ -1450,8 +1439,8 @@ class MetricValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1465,10 +1454,10 @@ class NumericFilter {
   /// - "LESS_THAN_OR_EQUAL" : Less than or equal
   /// - "GREATER_THAN" : Greater than
   /// - "GREATER_THAN_OR_EQUAL" : Greater than or equal
-  core.String operation;
+  core.String? operation;
 
   /// A numeric value or a date value.
-  NumericValue value;
+  NumericValue? value;
 
   NumericFilter();
 
@@ -1482,19 +1471,19 @@ class NumericFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operation != null) 'operation': operation,
-        if (value != null) 'value': value.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operation != null) 'operation': operation!,
+        if (value != null) 'value': value!.toJson(),
       };
 }
 
 /// To represent a number.
 class NumericValue {
   /// Double value
-  core.double doubleValue;
+  core.double? doubleValue;
 
   /// Integer value
-  core.String int64Value;
+  core.String? int64Value;
 
   NumericValue();
 
@@ -1507,25 +1496,25 @@ class NumericValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (doubleValue != null) 'doubleValue': doubleValue,
-        if (int64Value != null) 'int64Value': int64Value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (int64Value != null) 'int64Value': int64Value!,
       };
 }
 
 /// The sort options.
 class OrderBy {
   /// If true, sorts by descending order.
-  core.bool desc;
+  core.bool? desc;
 
   /// Sorts results by a dimension's values.
-  DimensionOrderBy dimension;
+  DimensionOrderBy? dimension;
 
   /// Sorts results by a metric's values.
-  MetricOrderBy metric;
+  MetricOrderBy? metric;
 
   /// Sorts results by a metric's values within a pivot column group.
-  PivotOrderBy pivot;
+  PivotOrderBy? pivot;
 
   OrderBy();
 
@@ -1547,11 +1536,11 @@ class OrderBy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (desc != null) 'desc': desc,
-        if (dimension != null) 'dimension': dimension.toJson(),
-        if (metric != null) 'metric': metric.toJson(),
-        if (pivot != null) 'pivot': pivot.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (desc != null) 'desc': desc!,
+        if (dimension != null) 'dimension': dimension!.toJson(),
+        if (metric != null) 'metric': metric!.toJson(),
+        if (pivot != null) 'pivot': pivot!.toJson(),
       };
 }
 
@@ -1562,7 +1551,7 @@ class Pivot {
   /// Including "dateRange" produces a date range column; for each row in the
   /// response, dimension values in the date range column will indicate the
   /// corresponding date range from the request.
-  core.List<core.String> fieldNames;
+  core.List<core.String>? fieldNames;
 
   /// The number of rows to return in this pivot.
   ///
@@ -1570,16 +1559,16 @@ class Pivot {
   /// The product of the `limit` for each `pivot` in a `RunPivotReportRequest`
   /// must not exceed 100,000. For example, a two pivot request with `limit:
   /// 1000` in each pivot will fail because the product is `1,000,000`.
-  core.String limit;
+  core.String? limit;
 
   /// Aggregate the metrics by dimensions in this pivot using the specified
   /// metric_aggregations.
-  core.List<core.String> metricAggregations;
+  core.List<core.String>? metricAggregations;
 
   /// The row count of the start row.
   ///
   /// The first row is counted as row 0.
-  core.String offset;
+  core.String? offset;
 
   /// Specifies how dimensions are ordered in the pivot.
   ///
@@ -1587,7 +1576,7 @@ class Pivot {
   /// ordering; in subsequent Pivots, the OrderBys determine only
   /// PivotDimensionHeader ordering. Dimensions specified in these OrderBys must
   /// be a subset of Pivot.field_names.
-  core.List<OrderBy> orderBys;
+  core.List<OrderBy>? orderBys;
 
   Pivot();
 
@@ -1616,21 +1605,21 @@ class Pivot {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fieldNames != null) 'fieldNames': fieldNames,
-        if (limit != null) 'limit': limit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fieldNames != null) 'fieldNames': fieldNames!,
+        if (limit != null) 'limit': limit!,
         if (metricAggregations != null)
-          'metricAggregations': metricAggregations,
-        if (offset != null) 'offset': offset,
+          'metricAggregations': metricAggregations!,
+        if (offset != null) 'offset': offset!,
         if (orderBys != null)
-          'orderBys': orderBys.map((value) => value.toJson()).toList(),
+          'orderBys': orderBys!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Summarizes dimension values from a row for this pivot.
 class PivotDimensionHeader {
   /// Values of multiple dimensions in a pivot.
-  core.List<DimensionValue> dimensionValues;
+  core.List<DimensionValue>? dimensionValues;
 
   PivotDimensionHeader();
 
@@ -1643,10 +1632,10 @@ class PivotDimensionHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensionValues != null)
           'dimensionValues':
-              dimensionValues.map((value) => value.toJson()).toList(),
+              dimensionValues!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1654,13 +1643,13 @@ class PivotDimensionHeader {
 class PivotHeader {
   /// The size is the same as the cardinality of the corresponding dimension
   /// combinations.
-  core.List<PivotDimensionHeader> pivotDimensionHeaders;
+  core.List<PivotDimensionHeader>? pivotDimensionHeaders;
 
   /// The cardinality of the pivot.
   ///
   /// The total number of rows for this pivot's fields regardless of how the
   /// parameters `offset` and `limit` are specified in the request.
-  core.int rowCount;
+  core.int? rowCount;
 
   PivotHeader();
 
@@ -1676,11 +1665,11 @@ class PivotHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (pivotDimensionHeaders != null)
           'pivotDimensionHeaders':
-              pivotDimensionHeaders.map((value) => value.toJson()).toList(),
-        if (rowCount != null) 'rowCount': rowCount,
+              pivotDimensionHeaders!.map((value) => value.toJson()).toList(),
+        if (rowCount != null) 'rowCount': rowCount!,
       };
 }
 
@@ -1689,14 +1678,14 @@ class PivotOrderBy {
   /// In the response to order by, order rows by this column.
   ///
   /// Must be a metric name from the request.
-  core.String metricName;
+  core.String? metricName;
 
   /// Used to select a dimension name and value pivot.
   ///
   /// If multiple pivot selections are given, the sort occurs on rows where all
   /// pivot selection dimension name and value pairs match the row's dimension
   /// name and value pair.
-  core.List<PivotSelection> pivotSelections;
+  core.List<PivotSelection>? pivotSelections;
 
   PivotOrderBy();
 
@@ -1712,11 +1701,11 @@ class PivotOrderBy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metricName != null) 'metricName': metricName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metricName != null) 'metricName': metricName!,
         if (pivotSelections != null)
           'pivotSelections':
-              pivotSelections.map((value) => value.toJson()).toList(),
+              pivotSelections!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1735,10 +1724,10 @@ class PivotOrderBy {
 /// ---------|----------|----------------|----------|----------------
 class PivotSelection {
   /// Must be a dimension name from the request.
-  core.String dimensionName;
+  core.String? dimensionName;
 
   /// Order by only when the named dimension is this value.
-  core.String dimensionValue;
+  core.String? dimensionValue;
 
   PivotSelection();
 
@@ -1751,9 +1740,9 @@ class PivotSelection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName,
-        if (dimensionValue != null) 'dimensionValue': dimensionValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimensionName != null) 'dimensionName': dimensionName!,
+        if (dimensionValue != null) 'dimensionValue': dimensionValue!,
       };
 }
 
@@ -1764,25 +1753,25 @@ class PivotSelection {
 class PropertyQuota {
   /// Standard Analytics Properties can send up to 10 concurrent requests;
   /// Analytics 360 Properties can use up to 50 concurrent requests.
-  QuotaStatus concurrentRequests;
+  QuotaStatus? concurrentRequests;
 
   /// Standard Analytics Properties and cloud project pairs can have up to 10
   /// server errors per hour; Analytics 360 Properties and cloud project pairs
   /// can have up to 50 server errors per hour.
-  QuotaStatus serverErrorsPerProjectPerHour;
+  QuotaStatus? serverErrorsPerProjectPerHour;
 
   /// Standard Analytics Properties can use up to 25,000 tokens per day;
   /// Analytics 360 Properties can use 250,000 tokens per day.
   ///
   /// Most requests consume fewer than 10 tokens.
-  QuotaStatus tokensPerDay;
+  QuotaStatus? tokensPerDay;
 
   /// Standard Analytics Properties can use up to 5,000 tokens per hour;
   /// Analytics 360 Properties can use 50,000 tokens per hour.
   ///
   /// An API request consumes a single number of tokens, and that number is
   /// deducted from both the hourly and daily quotas.
-  QuotaStatus tokensPerHour;
+  QuotaStatus? tokensPerHour;
 
   PropertyQuota();
 
@@ -1806,24 +1795,24 @@ class PropertyQuota {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (concurrentRequests != null)
-          'concurrentRequests': concurrentRequests.toJson(),
+          'concurrentRequests': concurrentRequests!.toJson(),
         if (serverErrorsPerProjectPerHour != null)
           'serverErrorsPerProjectPerHour':
-              serverErrorsPerProjectPerHour.toJson(),
-        if (tokensPerDay != null) 'tokensPerDay': tokensPerDay.toJson(),
-        if (tokensPerHour != null) 'tokensPerHour': tokensPerHour.toJson(),
+              serverErrorsPerProjectPerHour!.toJson(),
+        if (tokensPerDay != null) 'tokensPerDay': tokensPerDay!.toJson(),
+        if (tokensPerHour != null) 'tokensPerHour': tokensPerHour!.toJson(),
       };
 }
 
 /// Current state for a particular quota group.
 class QuotaStatus {
   /// Quota consumed by this request.
-  core.int consumed;
+  core.int? consumed;
 
   /// Quota remaining after this request.
-  core.int remaining;
+  core.int? remaining;
 
   QuotaStatus();
 
@@ -1836,9 +1825,9 @@ class QuotaStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (consumed != null) 'consumed': consumed,
-        if (remaining != null) 'remaining': remaining,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (consumed != null) 'consumed': consumed!,
+        if (remaining != null) 'remaining': remaining!,
       };
 }
 
@@ -1849,7 +1838,7 @@ class ResponseMetaData {
   /// "(other)" row.
   ///
   /// This can happen for high cardinality reports.
-  core.bool dataLossFromOtherRow;
+  core.bool? dataLossFromOtherRow;
 
   ResponseMetaData();
 
@@ -1859,9 +1848,9 @@ class ResponseMetaData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataLossFromOtherRow != null)
-          'dataLossFromOtherRow': dataLossFromOtherRow,
+          'dataLossFromOtherRow': dataLossFromOtherRow!,
       };
 }
 
@@ -1878,10 +1867,10 @@ class Row {
   ///
   /// In a PivotReport, dimension_values are only listed for dimensions included
   /// in a pivot.
-  core.List<DimensionValue> dimensionValues;
+  core.List<DimensionValue>? dimensionValues;
 
   /// List of requested visible metric values.
-  core.List<MetricValue> metricValues;
+  core.List<MetricValue>? metricValues;
 
   Row();
 
@@ -1900,12 +1889,12 @@ class Row {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensionValues != null)
           'dimensionValues':
-              dimensionValues.map((value) => value.toJson()).toList(),
+              dimensionValues!.map((value) => value.toJson()).toList(),
         if (metricValues != null)
-          'metricValues': metricValues.map((value) => value.toJson()).toList(),
+          'metricValues': metricValues!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1915,12 +1904,12 @@ class RunPivotReportRequest {
   ///
   /// If there is a cohort group in the request the 'cohort' dimension must be
   /// present.
-  CohortSpec cohortSpec;
+  CohortSpec? cohortSpec;
 
   /// A currency code in ISO4217 format, such as "AED", "USD", "JPY".
   ///
   /// If the field is empty, the report uses the entity's default currency.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// The date range to retrieve event data for the report.
   ///
@@ -1929,58 +1918,58 @@ class RunPivotReportRequest {
   /// included in a Pivot's field names; if included, the report compares
   /// between date ranges. In a cohort request, this `dateRanges` must be
   /// unspecified.
-  core.List<DateRange> dateRanges;
+  core.List<DateRange>? dateRanges;
 
   /// The filter clause of dimensions.
   ///
   /// Dimensions must be requested to be used in this filter. Metrics cannot be
   /// used in this filter.
-  FilterExpression dimensionFilter;
+  FilterExpression? dimensionFilter;
 
   /// The dimensions requested.
   ///
   /// All defined dimensions must be used by one of the following:
   /// dimension_expression, dimension_filter, pivots, order_bys.
-  core.List<Dimension> dimensions;
+  core.List<Dimension>? dimensions;
 
   /// A property whose events are tracked.
   ///
   /// Within a batch request, this entity should either be unspecified or
   /// consistent with the batch-level entity.
-  Entity entity;
+  Entity? entity;
 
   /// If false or unspecified, each row with all metrics equal to 0 will not be
   /// returned.
   ///
   /// If true, these rows will be returned if they are not separately removed by
   /// a filter.
-  core.bool keepEmptyRows;
+  core.bool? keepEmptyRows;
 
   /// The filter clause of metrics.
   ///
   /// Applied at post aggregation phase, similar to SQL having-clause. Metrics
   /// must be requested to be used in this filter. Dimensions cannot be used in
   /// this filter.
-  FilterExpression metricFilter;
+  FilterExpression? metricFilter;
 
   /// The metrics requested, at least one metric needs to be specified.
   ///
   /// All defined metrics must be used by one of the following:
   /// metric_expression, metric_filter, order_bys.
-  core.List<Metric> metrics;
+  core.List<Metric>? metrics;
 
   /// Describes the visual format of the report's dimensions in columns or rows.
   ///
   /// The union of the fieldNames (dimension names) in all pivots must be a
   /// subset of dimension names defined in Dimensions. No two pivots can share a
   /// dimension. A dimension is only visible if it appears in a pivot.
-  core.List<Pivot> pivots;
+  core.List<Pivot>? pivots;
 
   /// Toggles whether to return the current state of this Analytics Property's
   /// quota.
   ///
   /// Quota is returned in \[PropertyQuota\](#PropertyQuota).
-  core.bool returnPropertyQuota;
+  core.bool? returnPropertyQuota;
 
   RunPivotReportRequest();
 
@@ -2036,24 +2025,24 @@ class RunPivotReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cohortSpec != null) 'cohortSpec': cohortSpec.toJson(),
-        if (currencyCode != null) 'currencyCode': currencyCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cohortSpec != null) 'cohortSpec': cohortSpec!.toJson(),
+        if (currencyCode != null) 'currencyCode': currencyCode!,
         if (dateRanges != null)
-          'dateRanges': dateRanges.map((value) => value.toJson()).toList(),
+          'dateRanges': dateRanges!.map((value) => value.toJson()).toList(),
         if (dimensionFilter != null)
-          'dimensionFilter': dimensionFilter.toJson(),
+          'dimensionFilter': dimensionFilter!.toJson(),
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
-        if (entity != null) 'entity': entity.toJson(),
-        if (keepEmptyRows != null) 'keepEmptyRows': keepEmptyRows,
-        if (metricFilter != null) 'metricFilter': metricFilter.toJson(),
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
+        if (entity != null) 'entity': entity!.toJson(),
+        if (keepEmptyRows != null) 'keepEmptyRows': keepEmptyRows!,
+        if (metricFilter != null) 'metricFilter': metricFilter!.toJson(),
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
         if (pivots != null)
-          'pivots': pivots.map((value) => value.toJson()).toList(),
+          'pivots': pivots!.map((value) => value.toJson()).toList(),
         if (returnPropertyQuota != null)
-          'returnPropertyQuota': returnPropertyQuota,
+          'returnPropertyQuota': returnPropertyQuota!,
       };
 }
 
@@ -2065,22 +2054,22 @@ class RunPivotReportResponse {
   /// controlled by the metric_aggregations in the pivot. The type of
   /// aggregation returned in each row is shown by the dimension_values which
   /// are set to "RESERVED_".
-  core.List<Row> aggregates;
+  core.List<Row>? aggregates;
 
   /// Describes dimension columns.
   ///
   /// The number of DimensionHeaders and ordering of DimensionHeaders matches
   /// the dimensions present in rows.
-  core.List<DimensionHeader> dimensionHeaders;
+  core.List<DimensionHeader>? dimensionHeaders;
 
   /// Metadata for the report.
-  ResponseMetaData metadata;
+  ResponseMetaData? metadata;
 
   /// Describes metric columns.
   ///
   /// The number of MetricHeaders and ordering of MetricHeaders matches the
   /// metrics present in rows.
-  core.List<MetricHeader> metricHeaders;
+  core.List<MetricHeader>? metricHeaders;
 
   /// Summarizes the columns and rows created by a pivot.
   ///
@@ -2093,13 +2082,13 @@ class RunPivotReportResponse {
   /// \] }\] }, { "dimensionHeaders": \[{ "dimensionValues": \[{ "value":
   /// "session_start" }\] }, { "dimensionValues": \[{ "value": "scroll" }\] }\]
   /// }\]
-  core.List<PivotHeader> pivotHeaders;
+  core.List<PivotHeader>? pivotHeaders;
 
   /// This Analytics Property's quota state including this request.
-  PropertyQuota propertyQuota;
+  PropertyQuota? propertyQuota;
 
   /// Rows of dimension value combinations and metric values in the report.
-  core.List<Row> rows;
+  core.List<Row>? rows;
 
   RunPivotReportResponse();
 
@@ -2144,20 +2133,20 @@ class RunPivotReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (aggregates != null)
-          'aggregates': aggregates.map((value) => value.toJson()).toList(),
+          'aggregates': aggregates!.map((value) => value.toJson()).toList(),
         if (dimensionHeaders != null)
           'dimensionHeaders':
-              dimensionHeaders.map((value) => value.toJson()).toList(),
-        if (metadata != null) 'metadata': metadata.toJson(),
+              dimensionHeaders!.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata!.toJson(),
         if (metricHeaders != null)
           'metricHeaders':
-              metricHeaders.map((value) => value.toJson()).toList(),
+              metricHeaders!.map((value) => value.toJson()).toList(),
         if (pivotHeaders != null)
-          'pivotHeaders': pivotHeaders.map((value) => value.toJson()).toList(),
-        if (propertyQuota != null) 'propertyQuota': propertyQuota.toJson(),
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+          'pivotHeaders': pivotHeaders!.map((value) => value.toJson()).toList(),
+        if (propertyQuota != null) 'propertyQuota': propertyQuota!.toJson(),
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2167,42 +2156,42 @@ class RunRealtimeReportRequest {
   ///
   /// Dimensions must be requested to be used in this filter. Metrics cannot be
   /// used in this filter.
-  FilterExpression dimensionFilter;
+  FilterExpression? dimensionFilter;
 
   /// The dimensions requested and displayed.
-  core.List<Dimension> dimensions;
+  core.List<Dimension>? dimensions;
 
   /// The number of rows to return.
   ///
   /// If the `limit` parameter is unspecified, 10,000 rows are returned. The API
   /// returns a maximum of 100,000 rows per request, no matter how many you ask
   /// for.
-  core.String limit;
+  core.String? limit;
 
   /// Aggregation of metrics.
   ///
   /// Aggregated metric values will be shown in rows where the dimension_values
   /// are set to "RESERVED_(MetricAggregation)".
-  core.List<core.String> metricAggregations;
+  core.List<core.String>? metricAggregations;
 
   /// The filter clause of metrics.
   ///
   /// Applied at post aggregation phase, similar to SQL having-clause. Metrics
   /// must be requested to be used in this filter. Dimensions cannot be used in
   /// this filter.
-  FilterExpression metricFilter;
+  FilterExpression? metricFilter;
 
   /// The metrics requested and displayed.
-  core.List<Metric> metrics;
+  core.List<Metric>? metrics;
 
   /// Specifies how rows are ordered in the response.
-  core.List<OrderBy> orderBys;
+  core.List<OrderBy>? orderBys;
 
   /// Toggles whether to return the current state of this Analytics Property's
   /// Realtime quota.
   ///
   /// Quota is returned in \[PropertyQuota\](#PropertyQuota).
-  core.bool returnPropertyQuota;
+  core.bool? returnPropertyQuota;
 
   RunRealtimeReportRequest();
 
@@ -2246,21 +2235,21 @@ class RunRealtimeReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensionFilter != null)
-          'dimensionFilter': dimensionFilter.toJson(),
+          'dimensionFilter': dimensionFilter!.toJson(),
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
-        if (limit != null) 'limit': limit,
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
+        if (limit != null) 'limit': limit!,
         if (metricAggregations != null)
-          'metricAggregations': metricAggregations,
-        if (metricFilter != null) 'metricFilter': metricFilter.toJson(),
+          'metricAggregations': metricAggregations!,
+        if (metricFilter != null) 'metricFilter': metricFilter!.toJson(),
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
         if (orderBys != null)
-          'orderBys': orderBys.map((value) => value.toJson()).toList(),
+          'orderBys': orderBys!.map((value) => value.toJson()).toList(),
         if (returnPropertyQuota != null)
-          'returnPropertyQuota': returnPropertyQuota,
+          'returnPropertyQuota': returnPropertyQuota!,
       };
 }
 
@@ -2270,35 +2259,35 @@ class RunRealtimeReportResponse {
   ///
   /// The number of DimensionHeaders and ordering of DimensionHeaders matches
   /// the dimensions present in rows.
-  core.List<DimensionHeader> dimensionHeaders;
+  core.List<DimensionHeader>? dimensionHeaders;
 
   /// If requested, the maximum values of metrics.
-  core.List<Row> maximums;
+  core.List<Row>? maximums;
 
   /// Describes metric columns.
   ///
   /// The number of MetricHeaders and ordering of MetricHeaders matches the
   /// metrics present in rows.
-  core.List<MetricHeader> metricHeaders;
+  core.List<MetricHeader>? metricHeaders;
 
   /// If requested, the minimum values of metrics.
-  core.List<Row> minimums;
+  core.List<Row>? minimums;
 
   /// This Analytics Property's Realtime quota state including this request.
-  PropertyQuota propertyQuota;
+  PropertyQuota? propertyQuota;
 
   /// The total number of rows in the query result, regardless of the number of
   /// rows returned in the response.
   ///
   /// For example if a query returns 175 rows and includes limit = 50 in the API
   /// request, the response will contain row_count = 175 but only 50 rows.
-  core.int rowCount;
+  core.int? rowCount;
 
   /// Rows of dimension value combinations and metric values in the report.
-  core.List<Row> rows;
+  core.List<Row>? rows;
 
   /// If requested, the totaled values of metrics.
-  core.List<Row> totals;
+  core.List<Row>? totals;
 
   RunRealtimeReportResponse();
 
@@ -2348,22 +2337,22 @@ class RunRealtimeReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensionHeaders != null)
           'dimensionHeaders':
-              dimensionHeaders.map((value) => value.toJson()).toList(),
+              dimensionHeaders!.map((value) => value.toJson()).toList(),
         if (maximums != null)
-          'maximums': maximums.map((value) => value.toJson()).toList(),
+          'maximums': maximums!.map((value) => value.toJson()).toList(),
         if (metricHeaders != null)
           'metricHeaders':
-              metricHeaders.map((value) => value.toJson()).toList(),
+              metricHeaders!.map((value) => value.toJson()).toList(),
         if (minimums != null)
-          'minimums': minimums.map((value) => value.toJson()).toList(),
-        if (propertyQuota != null) 'propertyQuota': propertyQuota.toJson(),
-        if (rowCount != null) 'rowCount': rowCount,
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+          'minimums': minimums!.map((value) => value.toJson()).toList(),
+        if (propertyQuota != null) 'propertyQuota': propertyQuota!.toJson(),
+        if (rowCount != null) 'rowCount': rowCount!,
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
         if (totals != null)
-          'totals': totals.map((value) => value.toJson()).toList(),
+          'totals': totals!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2373,12 +2362,12 @@ class RunReportRequest {
   ///
   /// If there is a cohort group in the request the 'cohort' dimension must be
   /// present.
-  CohortSpec cohortSpec;
+  CohortSpec? cohortSpec;
 
   /// A currency code in ISO4217 format, such as "AED", "USD", "JPY".
   ///
   /// If the field is empty, the report uses the entity's default currency.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Date ranges of data to read.
   ///
@@ -2386,66 +2375,66 @@ class RunReportRequest {
   /// zero based date range index. If two date ranges overlap, the event data
   /// for the overlapping days is included in the response rows for both date
   /// ranges. In a cohort request, this `dateRanges` must be unspecified.
-  core.List<DateRange> dateRanges;
+  core.List<DateRange>? dateRanges;
 
   /// The filter clause of dimensions.
   ///
   /// Dimensions must be requested to be used in this filter. Metrics cannot be
   /// used in this filter.
-  FilterExpression dimensionFilter;
+  FilterExpression? dimensionFilter;
 
   /// The dimensions requested and displayed.
-  core.List<Dimension> dimensions;
+  core.List<Dimension>? dimensions;
 
   /// A property whose events are tracked.
   ///
   /// Within a batch request, this entity should either be unspecified or
   /// consistent with the batch-level entity.
-  Entity entity;
+  Entity? entity;
 
   /// If false or unspecified, each row with all metrics equal to 0 will not be
   /// returned.
   ///
   /// If true, these rows will be returned if they are not separately removed by
   /// a filter.
-  core.bool keepEmptyRows;
+  core.bool? keepEmptyRows;
 
   /// The number of rows to return.
   ///
   /// If the `limit` parameter is unspecified, 10,000 rows are returned. The API
   /// returns a maximum of 100,000 rows per request, no matter how many you ask
   /// for.
-  core.String limit;
+  core.String? limit;
 
   /// Aggregation of metrics.
   ///
   /// Aggregated metric values will be shown in rows where the dimension_values
   /// are set to "RESERVED_(MetricAggregation)".
-  core.List<core.String> metricAggregations;
+  core.List<core.String>? metricAggregations;
 
   /// The filter clause of metrics.
   ///
   /// Applied at post aggregation phase, similar to SQL having-clause. Metrics
   /// must be requested to be used in this filter. Dimensions cannot be used in
   /// this filter.
-  FilterExpression metricFilter;
+  FilterExpression? metricFilter;
 
   /// The metrics requested and displayed.
-  core.List<Metric> metrics;
+  core.List<Metric>? metrics;
 
   /// The row count of the start row.
   ///
   /// The first row is counted as row 0.
-  core.String offset;
+  core.String? offset;
 
   /// Specifies how rows are ordered in the response.
-  core.List<OrderBy> orderBys;
+  core.List<OrderBy>? orderBys;
 
   /// Toggles whether to return the current state of this Analytics Property's
   /// quota.
   ///
   /// Quota is returned in \[PropertyQuota\](#PropertyQuota).
-  core.bool returnPropertyQuota;
+  core.bool? returnPropertyQuota;
 
   RunReportRequest();
 
@@ -2512,28 +2501,28 @@ class RunReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cohortSpec != null) 'cohortSpec': cohortSpec.toJson(),
-        if (currencyCode != null) 'currencyCode': currencyCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cohortSpec != null) 'cohortSpec': cohortSpec!.toJson(),
+        if (currencyCode != null) 'currencyCode': currencyCode!,
         if (dateRanges != null)
-          'dateRanges': dateRanges.map((value) => value.toJson()).toList(),
+          'dateRanges': dateRanges!.map((value) => value.toJson()).toList(),
         if (dimensionFilter != null)
-          'dimensionFilter': dimensionFilter.toJson(),
+          'dimensionFilter': dimensionFilter!.toJson(),
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
-        if (entity != null) 'entity': entity.toJson(),
-        if (keepEmptyRows != null) 'keepEmptyRows': keepEmptyRows,
-        if (limit != null) 'limit': limit,
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
+        if (entity != null) 'entity': entity!.toJson(),
+        if (keepEmptyRows != null) 'keepEmptyRows': keepEmptyRows!,
+        if (limit != null) 'limit': limit!,
         if (metricAggregations != null)
-          'metricAggregations': metricAggregations,
-        if (metricFilter != null) 'metricFilter': metricFilter.toJson(),
+          'metricAggregations': metricAggregations!,
+        if (metricFilter != null) 'metricFilter': metricFilter!.toJson(),
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
-        if (offset != null) 'offset': offset,
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (offset != null) 'offset': offset!,
         if (orderBys != null)
-          'orderBys': orderBys.map((value) => value.toJson()).toList(),
+          'orderBys': orderBys!.map((value) => value.toJson()).toList(),
         if (returnPropertyQuota != null)
-          'returnPropertyQuota': returnPropertyQuota,
+          'returnPropertyQuota': returnPropertyQuota!,
       };
 }
 
@@ -2543,25 +2532,25 @@ class RunReportResponse {
   ///
   /// The number of DimensionHeaders and ordering of DimensionHeaders matches
   /// the dimensions present in rows.
-  core.List<DimensionHeader> dimensionHeaders;
+  core.List<DimensionHeader>? dimensionHeaders;
 
   /// If requested, the maximum values of metrics.
-  core.List<Row> maximums;
+  core.List<Row>? maximums;
 
   /// Metadata for the report.
-  ResponseMetaData metadata;
+  ResponseMetaData? metadata;
 
   /// Describes metric columns.
   ///
   /// The number of MetricHeaders and ordering of MetricHeaders matches the
   /// metrics present in rows.
-  core.List<MetricHeader> metricHeaders;
+  core.List<MetricHeader>? metricHeaders;
 
   /// If requested, the minimum values of metrics.
-  core.List<Row> minimums;
+  core.List<Row>? minimums;
 
   /// This Analytics Property's quota state including this request.
-  PropertyQuota propertyQuota;
+  PropertyQuota? propertyQuota;
 
   /// The total number of rows in the query result, regardless of the number of
   /// rows returned in the response.
@@ -2570,13 +2559,13 @@ class RunReportResponse {
   /// request, the response will contain row_count = 175 but only 50 rows. To
   /// learn more about this pagination parameter, see
   /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
-  core.int rowCount;
+  core.int? rowCount;
 
   /// Rows of dimension value combinations and metric values in the report.
-  core.List<Row> rows;
+  core.List<Row>? rows;
 
   /// If requested, the totaled values of metrics.
-  core.List<Row> totals;
+  core.List<Row>? totals;
 
   RunReportResponse();
 
@@ -2630,30 +2619,30 @@ class RunReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensionHeaders != null)
           'dimensionHeaders':
-              dimensionHeaders.map((value) => value.toJson()).toList(),
+              dimensionHeaders!.map((value) => value.toJson()).toList(),
         if (maximums != null)
-          'maximums': maximums.map((value) => value.toJson()).toList(),
-        if (metadata != null) 'metadata': metadata.toJson(),
+          'maximums': maximums!.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata!.toJson(),
         if (metricHeaders != null)
           'metricHeaders':
-              metricHeaders.map((value) => value.toJson()).toList(),
+              metricHeaders!.map((value) => value.toJson()).toList(),
         if (minimums != null)
-          'minimums': minimums.map((value) => value.toJson()).toList(),
-        if (propertyQuota != null) 'propertyQuota': propertyQuota.toJson(),
-        if (rowCount != null) 'rowCount': rowCount,
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+          'minimums': minimums!.map((value) => value.toJson()).toList(),
+        if (propertyQuota != null) 'propertyQuota': propertyQuota!.toJson(),
+        if (rowCount != null) 'rowCount': rowCount!,
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
         if (totals != null)
-          'totals': totals.map((value) => value.toJson()).toList(),
+          'totals': totals!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The filter for string
 class StringFilter {
   /// If true, the string value is case sensitive.
-  core.bool caseSensitive;
+  core.bool? caseSensitive;
 
   /// The match type for this filter.
   /// Possible string values are:
@@ -2665,10 +2654,10 @@ class StringFilter {
   /// - "FULL_REGEXP" : Full regular expression match with the string value.
   /// - "PARTIAL_REGEXP" : Partial regular expression match with the string
   /// value.
-  core.String matchType;
+  core.String? matchType;
 
   /// The string value used for the matching.
-  core.String value;
+  core.String? value;
 
   StringFilter();
 
@@ -2684,9 +2673,9 @@ class StringFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive,
-        if (matchType != null) 'matchType': matchType,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+        if (matchType != null) 'matchType': matchType!,
+        if (value != null) 'value': value!,
       };
 }

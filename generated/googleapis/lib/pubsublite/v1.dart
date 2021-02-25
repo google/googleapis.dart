@@ -130,14 +130,10 @@ class AdminProjectsLocationsSubscriptionsResource {
   async.Future<Subscription> create(
     Subscription request,
     core.String parent, {
-    core.String subscriptionId,
-    core.String $fields,
+    core.String? subscriptionId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (subscriptionId != null) 'subscriptionId': [subscriptionId],
       if ($fields != null) 'fields': [$fields],
@@ -177,11 +173,8 @@ class AdminProjectsLocationsSubscriptionsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -217,11 +210,8 @@ class AdminProjectsLocationsSubscriptionsResource {
   /// this method will complete with the same error.
   async.Future<Subscription> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -266,13 +256,10 @@ class AdminProjectsLocationsSubscriptionsResource {
   /// this method will complete with the same error.
   async.Future<ListSubscriptionsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -319,14 +306,10 @@ class AdminProjectsLocationsSubscriptionsResource {
   async.Future<Subscription> patch(
     Subscription request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -381,14 +364,10 @@ class AdminProjectsLocationsTopicsResource {
   async.Future<Topic> create(
     Topic request,
     core.String parent, {
-    core.String topicId,
-    core.String $fields,
+    core.String? topicId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (topicId != null) 'topicId': [topicId],
       if ($fields != null) 'fields': [$fields],
@@ -427,11 +406,8 @@ class AdminProjectsLocationsTopicsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -466,11 +442,8 @@ class AdminProjectsLocationsTopicsResource {
   /// this method will complete with the same error.
   async.Future<Topic> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -505,11 +478,8 @@ class AdminProjectsLocationsTopicsResource {
   /// this method will complete with the same error.
   async.Future<TopicPartitions> getPartitions(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -556,13 +526,10 @@ class AdminProjectsLocationsTopicsResource {
   /// this method will complete with the same error.
   async.Future<ListTopicsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -608,14 +575,10 @@ class AdminProjectsLocationsTopicsResource {
   async.Future<Topic> patch(
     Topic request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -668,13 +631,10 @@ class AdminProjectsLocationsTopicsSubscriptionsResource {
   /// this method will complete with the same error.
   async.Future<ListTopicSubscriptionsResponse> list(
     core.String name, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -770,13 +730,10 @@ class CursorProjectsLocationsSubscriptionsCursorsResource {
   /// this method will complete with the same error.
   async.Future<ListPartitionCursorsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -859,13 +816,9 @@ class TopicStatsProjectsLocationsTopicsResource {
   async.Future<ComputeHeadCursorResponse> computeHeadCursor(
     ComputeHeadCursorRequest request,
     core.String topic, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (topic == null) {
-      throw core.ArgumentError('Parameter topic is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -908,13 +861,9 @@ class TopicStatsProjectsLocationsTopicsResource {
   async.Future<ComputeMessageStatsResponse> computeMessageStats(
     ComputeMessageStatsRequest request,
     core.String topic, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (topic == null) {
-      throw core.ArgumentError('Parameter topic is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -939,12 +888,12 @@ class Capacity {
   /// Publish throughput capacity per partition in MiB/s.
   ///
   /// Must be >= 4 and <= 16.
-  core.int publishMibPerSec;
+  core.int? publishMibPerSec;
 
   /// Subscribe throughput capacity per partition in MiB/s.
   ///
   /// Must be >= 4 and <= 32.
-  core.int subscribeMibPerSec;
+  core.int? subscribeMibPerSec;
 
   Capacity();
 
@@ -957,10 +906,10 @@ class Capacity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (publishMibPerSec != null) 'publishMibPerSec': publishMibPerSec,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (publishMibPerSec != null) 'publishMibPerSec': publishMibPerSec!,
         if (subscribeMibPerSec != null)
-          'subscribeMibPerSec': subscribeMibPerSec,
+          'subscribeMibPerSec': subscribeMibPerSec!,
       };
 }
 
@@ -969,7 +918,7 @@ class ComputeHeadCursorRequest {
   /// The partition for which we should compute the head cursor.
   ///
   /// Required.
-  core.String partition;
+  core.String? partition;
 
   ComputeHeadCursorRequest();
 
@@ -979,15 +928,15 @@ class ComputeHeadCursorRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (partition != null) 'partition': partition,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (partition != null) 'partition': partition!,
       };
 }
 
 /// Response containing the head cursor for the requested topic and partition.
 class ComputeHeadCursorResponse {
   /// The head cursor.
-  Cursor headCursor;
+  Cursor? headCursor;
 
   ComputeHeadCursorResponse();
 
@@ -998,8 +947,8 @@ class ComputeHeadCursorResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (headCursor != null) 'headCursor': headCursor.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (headCursor != null) 'headCursor': headCursor!.toJson(),
       };
 }
 
@@ -1010,15 +959,15 @@ class ComputeMessageStatsRequest {
   /// The range is empty if end_cursor <= start_cursor. Specifying a
   /// start_cursor before the first message and an end_cursor after the last
   /// message will retrieve all messages.
-  Cursor endCursor;
+  Cursor? endCursor;
 
   /// The partition for which we should compute message stats.
   ///
   /// Required.
-  core.String partition;
+  core.String? partition;
 
   /// The inclusive start of the range.
-  Cursor startCursor;
+  Cursor? startCursor;
 
   ComputeMessageStatsRequest();
 
@@ -1036,33 +985,33 @@ class ComputeMessageStatsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endCursor != null) 'endCursor': endCursor.toJson(),
-        if (partition != null) 'partition': partition,
-        if (startCursor != null) 'startCursor': startCursor.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endCursor != null) 'endCursor': endCursor!.toJson(),
+        if (partition != null) 'partition': partition!,
+        if (startCursor != null) 'startCursor': startCursor!.toJson(),
       };
 }
 
 /// Response containing stats for messages in the requested topic and partition.
 class ComputeMessageStatsResponse {
   /// The number of quota bytes accounted to these messages.
-  core.String messageBytes;
+  core.String? messageBytes;
 
   /// The count of messages.
-  core.String messageCount;
+  core.String? messageCount;
 
   /// The minimum event timestamp across these messages.
   ///
   /// For the purposes of this computation, if a message does not have an event
   /// time, we use the publish time. The timestamp will be unset if there are no
   /// messages.
-  core.String minimumEventTime;
+  core.String? minimumEventTime;
 
   /// The minimum publish timestamp across these messages.
   ///
   /// Note that publish timestamps within a partition are not guaranteed to be
   /// non-decreasing. The timestamp will be unset if there are no messages.
-  core.String minimumPublishTime;
+  core.String? minimumPublishTime;
 
   ComputeMessageStatsResponse();
 
@@ -1081,12 +1030,12 @@ class ComputeMessageStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (messageBytes != null) 'messageBytes': messageBytes,
-        if (messageCount != null) 'messageCount': messageCount,
-        if (minimumEventTime != null) 'minimumEventTime': minimumEventTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (messageBytes != null) 'messageBytes': messageBytes!,
+        if (messageCount != null) 'messageCount': messageCount!,
+        if (minimumEventTime != null) 'minimumEventTime': minimumEventTime!,
         if (minimumPublishTime != null)
-          'minimumPublishTime': minimumPublishTime,
+          'minimumPublishTime': minimumPublishTime!,
       };
 }
 
@@ -1095,7 +1044,7 @@ class Cursor {
   /// The offset of a message within a topic partition.
   ///
   /// Must be greater than or equal 0.
-  core.String offset;
+  core.String? offset;
 
   Cursor();
 
@@ -1105,8 +1054,8 @@ class Cursor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (offset != null) 'offset': offset,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (offset != null) 'offset': offset!,
       };
 }
 
@@ -1121,7 +1070,7 @@ class DeliveryConfig {
   /// - "DELIVER_AFTER_STORED" : The server will not deliver a published message
   /// to subscribers until the message has been successfully written to storage.
   /// This will result in higher end-to-end latency, but consistent delivery.
-  core.String deliveryRequirement;
+  core.String? deliveryRequirement;
 
   DeliveryConfig();
 
@@ -1131,9 +1080,9 @@ class DeliveryConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deliveryRequirement != null)
-          'deliveryRequirement': deliveryRequirement,
+          'deliveryRequirement': deliveryRequirement!,
       };
 }
 
@@ -1151,7 +1100,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response for ListPartitionCursors
@@ -1159,10 +1108,10 @@ class ListPartitionCursorsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The partition cursors from this request.
-  core.List<PartitionCursor> partitionCursors;
+  core.List<PartitionCursor>? partitionCursors;
 
   ListPartitionCursorsResponse();
 
@@ -1178,11 +1127,11 @@ class ListPartitionCursorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (partitionCursors != null)
           'partitionCursors':
-              partitionCursors.map((value) => value.toJson()).toList(),
+              partitionCursors!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1192,12 +1141,12 @@ class ListSubscriptionsResponse {
   /// results.
   ///
   /// If this field is omitted, there are no more results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of subscriptions in the requested parent.
   ///
   /// The order of the subscriptions is unspecified.
-  core.List<Subscription> subscriptions;
+  core.List<Subscription>? subscriptions;
 
   ListSubscriptionsResponse();
 
@@ -1213,11 +1162,11 @@ class ListSubscriptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (subscriptions != null)
           'subscriptions':
-              subscriptions.map((value) => value.toJson()).toList(),
+              subscriptions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1227,12 +1176,12 @@ class ListTopicSubscriptionsResponse {
   /// results.
   ///
   /// If this field is omitted, there are no more results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The names of subscriptions attached to the topic.
   ///
   /// The order of the subscriptions is unspecified.
-  core.List<core.String> subscriptions;
+  core.List<core.String>? subscriptions;
 
   ListTopicSubscriptionsResponse();
 
@@ -1247,9 +1196,9 @@ class ListTopicSubscriptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (subscriptions != null) 'subscriptions': subscriptions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (subscriptions != null) 'subscriptions': subscriptions!,
       };
 }
 
@@ -1259,12 +1208,12 @@ class ListTopicsResponse {
   /// results.
   ///
   /// If this field is omitted, there are no more results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of topic in the requested parent.
   ///
   /// The order of the topics is unspecified.
-  core.List<Topic> topics;
+  core.List<Topic>? topics;
 
   ListTopicsResponse();
 
@@ -1280,22 +1229,22 @@ class ListTopicsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (topics != null)
-          'topics': topics.map((value) => value.toJson()).toList(),
+          'topics': topics!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The settings for a topic's partitions.
 class PartitionConfig {
   /// The capacity configuration.
-  Capacity capacity;
+  Capacity? capacity;
 
   /// The number of partitions in the topic.
   ///
   /// Must be at least 1.
-  core.String count;
+  core.String? count;
 
   /// DEPRECATED: Use capacity instead which can express a superset of
   /// configurations.
@@ -1304,7 +1253,7 @@ class PartitionConfig {
   /// times the standard partition throughput (4 MiB/s). This is also reflected
   /// in the cost of this topic; a topic with `scale` of 2 and count of 10 is
   /// charged for 20 partitions. This value must be in the range \[1,4\].
-  core.int scale;
+  core.int? scale;
 
   PartitionConfig();
 
@@ -1321,20 +1270,20 @@ class PartitionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (capacity != null) 'capacity': capacity.toJson(),
-        if (count != null) 'count': count,
-        if (scale != null) 'scale': scale,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (capacity != null) 'capacity': capacity!.toJson(),
+        if (count != null) 'count': count!,
+        if (scale != null) 'scale': scale!,
       };
 }
 
 /// A pair of a Cursor and the partition it is for.
 class PartitionCursor {
   /// The value of the cursor.
-  Cursor cursor;
+  Cursor? cursor;
 
   /// The partition this is for.
-  core.String partition;
+  core.String? partition;
 
   PartitionCursor();
 
@@ -1348,9 +1297,9 @@ class PartitionCursor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cursor != null) 'cursor': cursor.toJson(),
-        if (partition != null) 'partition': partition,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cursor != null) 'cursor': cursor!.toJson(),
+        if (partition != null) 'partition': partition!,
       };
 }
 
@@ -1361,13 +1310,13 @@ class RetentionConfig {
   /// If the number of bytes stored in any of the topic's partitions grows
   /// beyond this value, older messages will be dropped to make room for newer
   /// ones, regardless of the value of `period`.
-  core.String perPartitionBytes;
+  core.String? perPartitionBytes;
 
   /// How long a published message is retained.
   ///
   /// If unset, messages will be retained as long as the bytes retained for each
   /// partition is below `per_partition_bytes`.
-  core.String period;
+  core.String? period;
 
   RetentionConfig();
 
@@ -1380,28 +1329,28 @@ class RetentionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (perPartitionBytes != null) 'perPartitionBytes': perPartitionBytes,
-        if (period != null) 'period': period,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (perPartitionBytes != null) 'perPartitionBytes': perPartitionBytes!,
+        if (period != null) 'period': period!,
       };
 }
 
 /// Metadata about a subscription resource.
 class Subscription {
   /// The settings for this subscription's message delivery.
-  DeliveryConfig deliveryConfig;
+  DeliveryConfig? deliveryConfig;
 
   /// The name of the subscription.
   ///
   /// Structured like:
   /// projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
-  core.String name;
+  core.String? name;
 
   /// The name of the topic this subscription is attached to.
   ///
   /// Structured like:
   /// projects/{project_number}/locations/{location}/topics/{topic_id}
-  core.String topic;
+  core.String? topic;
 
   Subscription();
 
@@ -1418,10 +1367,10 @@ class Subscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deliveryConfig != null) 'deliveryConfig': deliveryConfig.toJson(),
-        if (name != null) 'name': name,
-        if (topic != null) 'topic': topic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deliveryConfig != null) 'deliveryConfig': deliveryConfig!.toJson(),
+        if (name != null) 'name': name!,
+        if (topic != null) 'topic': topic!,
       };
 }
 
@@ -1431,13 +1380,13 @@ class Topic {
   ///
   /// Structured like:
   /// projects/{project_number}/locations/{location}/topics/{topic_id}
-  core.String name;
+  core.String? name;
 
   /// The settings for this topic's partitions.
-  PartitionConfig partitionConfig;
+  PartitionConfig? partitionConfig;
 
   /// The settings for this topic's message retention.
-  RetentionConfig retentionConfig;
+  RetentionConfig? retentionConfig;
 
   Topic();
 
@@ -1455,19 +1404,19 @@ class Topic {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
         if (partitionConfig != null)
-          'partitionConfig': partitionConfig.toJson(),
+          'partitionConfig': partitionConfig!.toJson(),
         if (retentionConfig != null)
-          'retentionConfig': retentionConfig.toJson(),
+          'retentionConfig': retentionConfig!.toJson(),
       };
 }
 
 /// Response for GetTopicPartitions.
 class TopicPartitions {
   /// The number of partitions in the topic.
-  core.String partitionCount;
+  core.String? partitionCount;
 
   TopicPartitions();
 
@@ -1477,7 +1426,7 @@ class TopicPartitions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (partitionCount != null) 'partitionCount': partitionCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (partitionCount != null) 'partitionCount': partitionCount!,
       };
 }

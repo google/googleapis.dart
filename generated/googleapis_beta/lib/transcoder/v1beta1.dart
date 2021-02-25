@@ -113,14 +113,10 @@ class ProjectsLocationsJobTemplatesResource {
   async.Future<JobTemplate> create(
     JobTemplate request,
     core.String parent, {
-    core.String jobTemplateId,
-    core.String $fields,
+    core.String? jobTemplateId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (jobTemplateId != null) 'jobTemplateId': [jobTemplateId],
       if ($fields != null) 'fields': [$fields],
@@ -161,11 +157,8 @@ class ProjectsLocationsJobTemplatesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -201,11 +194,8 @@ class ProjectsLocationsJobTemplatesResource {
   /// this method will complete with the same error.
   async.Future<JobTemplate> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -247,13 +237,10 @@ class ProjectsLocationsJobTemplatesResource {
   /// this method will complete with the same error.
   async.Future<ListJobTemplatesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -303,13 +290,9 @@ class ProjectsLocationsJobsResource {
   async.Future<Job> create(
     Job request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -347,11 +330,8 @@ class ProjectsLocationsJobsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -387,11 +367,8 @@ class ProjectsLocationsJobsResource {
   /// this method will complete with the same error.
   async.Future<Job> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -430,13 +407,10 @@ class ProjectsLocationsJobsResource {
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -462,7 +436,7 @@ class AdBreak {
   /// timeline.
   ///
   /// The default is `0s`.
-  core.String startTimeOffset;
+  core.String? startTimeOffset;
 
   AdBreak();
 
@@ -472,8 +446,8 @@ class AdBreak {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
       };
 }
 
@@ -484,7 +458,7 @@ class Aes128Encryption {
   /// This URI is inserted into the M3U8 header.
   ///
   /// Required.
-  core.String keyUri;
+  core.String? keyUri;
 
   Aes128Encryption();
 
@@ -494,21 +468,21 @@ class Aes128Encryption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (keyUri != null) 'keyUri': keyUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (keyUri != null) 'keyUri': keyUri!,
       };
 }
 
 /// Animation types.
 class Animation {
   /// End previous animation.
-  AnimationEnd animationEnd;
+  AnimationEnd? animationEnd;
 
   /// Display overlay object with fade animation.
-  AnimationFade animationFade;
+  AnimationFade? animationFade;
 
   /// Display static overlay object.
-  AnimationStatic animationStatic;
+  AnimationStatic? animationStatic;
 
   Animation();
 
@@ -527,11 +501,11 @@ class Animation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (animationEnd != null) 'animationEnd': animationEnd.toJson(),
-        if (animationFade != null) 'animationFade': animationFade.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (animationEnd != null) 'animationEnd': animationEnd!.toJson(),
+        if (animationFade != null) 'animationFade': animationFade!.toJson(),
         if (animationStatic != null)
-          'animationStatic': animationStatic.toJson(),
+          'animationStatic': animationStatic!.toJson(),
       };
 }
 
@@ -543,7 +517,7 @@ class AnimationEnd {
   /// The time to end overlay object, in seconds.
   ///
   /// Default: 0
-  core.String startTimeOffset;
+  core.String? startTimeOffset;
 
   AnimationEnd();
 
@@ -553,8 +527,8 @@ class AnimationEnd {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
       };
 }
 
@@ -563,7 +537,7 @@ class AnimationFade {
   /// The time to end the fade animation, in seconds.
   ///
   /// Default: `start_time_offset` + 1s
-  core.String endTimeOffset;
+  core.String? endTimeOffset;
 
   /// Type of fade animation: `FADE_IN` or `FADE_OUT`.
   ///
@@ -572,12 +546,12 @@ class AnimationFade {
   /// - "FADE_TYPE_UNSPECIFIED" : The fade type is not specified.
   /// - "FADE_IN" : Fade the overlay object into view.
   /// - "FADE_OUT" : Fade the overlay object out of view.
-  core.String fadeType;
+  core.String? fadeType;
 
   /// The time to start the fade animation, in seconds.
   ///
   /// Default: 0
-  core.String startTimeOffset;
+  core.String? startTimeOffset;
 
   /// Normalized coordinates based on output video resolution.
   ///
@@ -585,7 +559,7 @@ class AnimationFade {
   /// overlay object. For example, use the x and y coordinates {0,0} to position
   /// the top-left corner of the overlay animation in the top-left corner of the
   /// output video.
-  NormalizedCoordinate xy;
+  NormalizedCoordinate? xy;
 
   AnimationFade();
 
@@ -605,11 +579,11 @@ class AnimationFade {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset,
-        if (fadeType != null) 'fadeType': fadeType,
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
-        if (xy != null) 'xy': xy.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
+        if (fadeType != null) 'fadeType': fadeType!,
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
+        if (xy != null) 'xy': xy!.toJson(),
       };
 }
 
@@ -618,7 +592,7 @@ class AnimationStatic {
   /// The time to start displaying the overlay object, in seconds.
   ///
   /// Default: 0
-  core.String startTimeOffset;
+  core.String? startTimeOffset;
 
   /// Normalized coordinates based on output video resolution.
   ///
@@ -626,7 +600,7 @@ class AnimationStatic {
   /// overlay object. For example, use the x and y coordinates {0,0} to position
   /// the top-left corner of the overlay animation in the top-left corner of the
   /// output video.
-  NormalizedCoordinate xy;
+  NormalizedCoordinate? xy;
 
   AnimationStatic();
 
@@ -640,9 +614,9 @@ class AnimationStatic {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
-        if (xy != null) 'xy': xy.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
+        if (xy != null) 'xy': xy!.toJson(),
       };
 }
 
@@ -651,12 +625,12 @@ class Audio {
   /// Enable boosting high frequency components.
   ///
   /// The default is `false`.
-  core.bool highBoost;
+  core.bool? highBoost;
 
   /// Enable boosting low frequency components.
   ///
   /// The default is `false`.
-  core.bool lowBoost;
+  core.bool? lowBoost;
 
   /// Specify audio loudness normalization in loudness units relative to full
   /// scale (LUFS).
@@ -667,7 +641,7 @@ class Audio {
   /// * -18 is the ReplayGain standard * -16 is the prior standard for stereo
   /// audio * -14 is the new online audio standard recommended by Spotify, as
   /// well as Amazon Echo * 0 disables normalization
-  core.double lufs;
+  core.double? lufs;
 
   Audio();
 
@@ -683,10 +657,10 @@ class Audio {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (highBoost != null) 'highBoost': highBoost,
-        if (lowBoost != null) 'lowBoost': lowBoost,
-        if (lufs != null) 'lufs': lufs,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (highBoost != null) 'highBoost': highBoost!,
+        if (lowBoost != null) 'lowBoost': lowBoost!,
+        if (lufs != null) 'lufs': lufs!,
       };
 }
 
@@ -695,13 +669,13 @@ class AudioAtom {
   /// List of `Channel`s for this audio stream.
   ///
   /// for in-depth explanation.
-  core.List<AudioChannel> channels;
+  core.List<AudioChannel>? channels;
 
   /// The `EditAtom.key` that references the atom with audio inputs in the
   /// `Job.edit_list`.
   ///
   /// Required.
-  core.String key;
+  core.String? key;
 
   AudioAtom();
 
@@ -717,17 +691,17 @@ class AudioAtom {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (channels != null)
-          'channels': channels.map((value) => value.toJson()).toList(),
-        if (key != null) 'key': key,
+          'channels': channels!.map((value) => value.toJson()).toList(),
+        if (key != null) 'key': key!,
       };
 }
 
 /// The audio channel.
 class AudioChannel {
   /// List of `Job.inputs` for this audio channel.
-  core.List<AudioChannelInput> inputs;
+  core.List<AudioChannelInput>? inputs;
 
   AudioChannel();
 
@@ -740,9 +714,9 @@ class AudioChannel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (inputs != null)
-          'inputs': inputs.map((value) => value.toJson()).toList(),
+          'inputs': inputs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -751,23 +725,23 @@ class AudioChannelInput {
   /// The zero-based index of the channel in the input file.
   ///
   /// Required.
-  core.int channel;
+  core.int? channel;
 
   /// Audio volume control in dB.
   ///
   /// Negative values decrease volume, positive values increase. The default is
   /// 0.
-  core.double gainDb;
+  core.double? gainDb;
 
   /// The `Input.key` that identifies the input file.
   ///
   /// Required.
-  core.String key;
+  core.String? key;
 
   /// The zero-based index of the track in the input file.
   ///
   /// Required.
-  core.int track;
+  core.int? track;
 
   AudioChannelInput();
 
@@ -786,11 +760,11 @@ class AudioChannelInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channel != null) 'channel': channel,
-        if (gainDb != null) 'gainDb': gainDb,
-        if (key != null) 'key': key,
-        if (track != null) 'track': track,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channel != null) 'channel': channel!,
+        if (gainDb != null) 'gainDb': gainDb!,
+        if (key != null) 'key': key!,
+        if (track != null) 'track': track!,
       };
 }
 
@@ -801,12 +775,12 @@ class AudioStream {
   /// Must be between 1 and 10,000,000.
   ///
   /// Required.
-  core.int bitrateBps;
+  core.int? bitrateBps;
 
   /// Number of audio channels.
   ///
   /// Must be between 1 and 6. The default is 2.
-  core.int channelCount;
+  core.int? channelCount;
 
   /// A list of channel names specifying layout of the audio channels.
   ///
@@ -815,21 +789,21 @@ class AudioStream {
   /// Supported channel names: - 'fl' - Front left channel - 'fr' - Front right
   /// channel - 'sl' - Side left channel - 'sr' - Side right channel - 'fc' -
   /// Front center channel - 'lfe' - Low frequency
-  core.List<core.String> channelLayout;
+  core.List<core.String>? channelLayout;
 
   /// The codec for this audio stream.
   ///
   /// The default is `"aac"`. Supported audio codecs: - 'aac' - 'aac-he' -
   /// 'aac-he-v2' - 'mp3' - 'ac3' - 'eac3'
-  core.String codec;
+  core.String? codec;
 
   /// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
-  core.List<AudioAtom> mapping;
+  core.List<AudioAtom>? mapping;
 
   /// The audio sample rate in Hertz.
   ///
   /// The default is 48000 Hertz.
-  core.int sampleRateHertz;
+  core.int? sampleRateHertz;
 
   AudioStream();
 
@@ -859,14 +833,14 @@ class AudioStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bitrateBps != null) 'bitrateBps': bitrateBps,
-        if (channelCount != null) 'channelCount': channelCount,
-        if (channelLayout != null) 'channelLayout': channelLayout,
-        if (codec != null) 'codec': codec,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bitrateBps != null) 'bitrateBps': bitrateBps!,
+        if (channelCount != null) 'channelCount': channelCount!,
+        if (channelLayout != null) 'channelLayout': channelLayout!,
+        if (codec != null) 'codec': codec!,
         if (mapping != null)
-          'mapping': mapping.map((value) => value.toJson()).toList(),
-        if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz,
+          'mapping': mapping!.map((value) => value.toJson()).toList(),
+        if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
       };
 }
 
@@ -876,19 +850,19 @@ class Color {
   ///
   /// Enter a value between -1 and 1, where -1 is minimum brightness and 1 is
   /// maximum brightness. 0 is no change. The default is 0.
-  core.double brightness;
+  core.double? brightness;
 
   /// Control black and white contrast of the video.
   ///
   /// Enter a value between -1 and 1, where -1 is minimum contrast and 1 is
   /// maximum contrast. 0 is no change. The default is 0.
-  core.double contrast;
+  core.double? contrast;
 
   /// Control color saturation of the video.
   ///
   /// Enter a value between -1 and 1, where -1 is fully desaturated and 1 is
   /// maximum saturation. 0 is no change. The default is 0.
-  core.double saturation;
+  core.double? saturation;
 
   Color();
 
@@ -904,10 +878,10 @@ class Color {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (brightness != null) 'brightness': brightness,
-        if (contrast != null) 'contrast': contrast,
-        if (saturation != null) 'saturation': saturation,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (brightness != null) 'brightness': brightness!,
+        if (contrast != null) 'contrast': contrast!,
+        if (saturation != null) 'saturation': saturation!,
       };
 }
 
@@ -918,22 +892,22 @@ class Crop {
   /// The number of pixels to crop from the bottom.
   ///
   /// The default is 0.
-  core.int bottomPixels;
+  core.int? bottomPixels;
 
   /// The number of pixels to crop from the left.
   ///
   /// The default is 0.
-  core.int leftPixels;
+  core.int? leftPixels;
 
   /// The number of pixels to crop from the right.
   ///
   /// The default is 0.
-  core.int rightPixels;
+  core.int? rightPixels;
 
   /// The number of pixels to crop from the top.
   ///
   /// The default is 0.
-  core.int topPixels;
+  core.int? topPixels;
 
   Crop();
 
@@ -952,11 +926,11 @@ class Crop {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bottomPixels != null) 'bottomPixels': bottomPixels,
-        if (leftPixels != null) 'leftPixels': leftPixels,
-        if (rightPixels != null) 'rightPixels': rightPixels,
-        if (topPixels != null) 'topPixels': topPixels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bottomPixels != null) 'bottomPixels': bottomPixels!,
+        if (leftPixels != null) 'leftPixels': leftPixels!,
+        if (rightPixels != null) 'rightPixels': rightPixels!,
+        if (topPixels != null) 'topPixels': topPixels!,
       };
 }
 
@@ -965,13 +939,13 @@ class Deblock {
   /// Enable deblocker.
   ///
   /// The default is `false`.
-  core.bool enabled;
+  core.bool? enabled;
 
   /// Set strength of the deblocker.
   ///
   /// Enter a value between 0 and 1. The higher the value, the stronger the
   /// block removal. 0 is no deblocking. The default is 0.
-  core.double strength;
+  core.double? strength;
 
   Deblock();
 
@@ -984,9 +958,9 @@ class Deblock {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enabled != null) 'enabled': enabled,
-        if (strength != null) 'strength': strength,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (strength != null) 'strength': strength!,
       };
 }
 
@@ -996,13 +970,13 @@ class Denoise {
   ///
   /// Enter a value between 0 and 1. The higher the value, the smoother the
   /// image. 0 is no denoising. The default is 0.
-  core.double strength;
+  core.double? strength;
 
   /// Set the denoiser mode.
   ///
   /// The default is `"standard"`. Supported denoiser modes: - 'standard' -
   /// 'grain'
-  core.String tune;
+  core.String? tune;
 
   Denoise();
 
@@ -1015,9 +989,9 @@ class Denoise {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (strength != null) 'strength': strength,
-        if (tune != null) 'tune': tune,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (strength != null) 'strength': strength!,
+        if (tune != null) 'tune': tune!,
       };
 }
 
@@ -1027,22 +1001,22 @@ class EditAtom {
   ///
   /// When `end_time_offset` is not specified, the `inputs` are used until the
   /// end of the atom.
-  core.String endTimeOffset;
+  core.String? endTimeOffset;
 
   /// List of `Input.key`s identifying files that should be used in this atom.
   ///
   /// The listed `inputs` must have the same timeline.
-  core.List<core.String> inputs;
+  core.List<core.String>? inputs;
 
   /// A unique key for this atom.
   ///
   /// Must be specified when using advanced mapping.
-  core.String key;
+  core.String? key;
 
   /// Start time in seconds for the atom, relative to the input file timeline.
   ///
   /// The default is `0s`.
-  core.String startTimeOffset;
+  core.String? startTimeOffset;
 
   EditAtom();
 
@@ -1063,11 +1037,11 @@ class EditAtom {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset,
-        if (inputs != null) 'inputs': inputs,
-        if (key != null) 'key': key,
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
+        if (inputs != null) 'inputs': inputs!,
+        if (key != null) 'key': key!,
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
       };
 }
 
@@ -1077,18 +1051,18 @@ class EditAtom {
 /// different output formats.
 class ElementaryStream {
   /// Encoding of an audio stream.
-  AudioStream audioStream;
+  AudioStream? audioStream;
 
   /// A unique key for this elementary stream.
-  core.String key;
+  core.String? key;
 
   /// Encoding of a text stream.
   ///
   /// For example, closed captions or subtitles.
-  TextStream textStream;
+  TextStream? textStream;
 
   /// Encoding of a video stream.
-  VideoStream videoStream;
+  VideoStream? videoStream;
 
   ElementaryStream();
 
@@ -1110,11 +1084,11 @@ class ElementaryStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audioStream != null) 'audioStream': audioStream.toJson(),
-        if (key != null) 'key': key,
-        if (textStream != null) 'textStream': textStream.toJson(),
-        if (videoStream != null) 'videoStream': videoStream.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audioStream != null) 'audioStream': audioStream!.toJson(),
+        if (key != null) 'key': key!,
+        if (textStream != null) 'textStream': textStream!.toJson(),
+        if (videoStream != null) 'videoStream': videoStream!.toJson(),
       };
 }
 
@@ -1132,30 +1106,30 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Encryption settings.
 class Encryption {
   /// Configuration for AES-128 encryption.
-  Aes128Encryption aes128;
+  Aes128Encryption? aes128;
 
   /// 128 bit Initialization Vector (IV) represented as lowercase hexadecimal
   /// digits.
   ///
   /// Required.
-  core.String iv;
+  core.String? iv;
 
   /// 128 bit encryption key represented as lowercase hexadecimal digits.
   ///
   /// Required.
-  core.String key;
+  core.String? key;
 
   /// Configuration for MPEG Common Encryption (MPEG-CENC).
-  MpegCommonEncryption mpegCenc;
+  MpegCommonEncryption? mpegCenc;
 
   /// Configuration for SAMPLE-AES encryption.
-  SampleAesEncryption sampleAes;
+  SampleAesEncryption? sampleAes;
 
   Encryption();
 
@@ -1180,19 +1154,19 @@ class Encryption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aes128 != null) 'aes128': aes128.toJson(),
-        if (iv != null) 'iv': iv,
-        if (key != null) 'key': key,
-        if (mpegCenc != null) 'mpegCenc': mpegCenc.toJson(),
-        if (sampleAes != null) 'sampleAes': sampleAes.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aes128 != null) 'aes128': aes128!.toJson(),
+        if (iv != null) 'iv': iv!,
+        if (key != null) 'key': key!,
+        if (mpegCenc != null) 'mpegCenc': mpegCenc!.toJson(),
+        if (sampleAes != null) 'sampleAes': sampleAes!.toJson(),
       };
 }
 
 /// Additional information about the reasons for the failure.
 class FailureDetail {
   /// A description of the failure.
-  core.String description;
+  core.String? description;
 
   FailureDetail();
 
@@ -1202,8 +1176,8 @@ class FailureDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
       };
 }
 
@@ -1212,21 +1186,21 @@ class Image {
   /// Target image opacity.
   ///
   /// Valid values: `1.0` (solid, default) to `0.0` (transparent).
-  core.double alpha;
+  core.double? alpha;
 
   /// Normalized image resolution, based on output video resolution.
   ///
   /// Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set
   /// either `x` or `y` to `0.0`. To use the original image resolution, set both
   /// `x` and `y` to `0.0`.
-  NormalizedCoordinate resolution;
+  NormalizedCoordinate? resolution;
 
   /// URI of the image in Cloud Storage.
   ///
   /// For example, `gs://bucket/inputs/image.jpeg`.
   ///
   /// Required.
-  core.String uri;
+  core.String? uri;
 
   Image();
 
@@ -1243,10 +1217,10 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alpha != null) 'alpha': alpha,
-        if (resolution != null) 'resolution': resolution.toJson(),
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alpha != null) 'alpha': alpha!,
+        if (resolution != null) 'resolution': resolution!.toJson(),
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -1255,17 +1229,17 @@ class Input {
   /// A unique key for this input.
   ///
   /// Must be specified when using advanced mapping and edit lists.
-  core.String key;
+  core.String? key;
 
   /// Preprocessing configurations.
-  PreprocessingConfig preprocessingConfig;
+  PreprocessingConfig? preprocessingConfig;
 
   /// URI of the media.
   ///
   /// Input files must be at least 5 seconds in duration and stored in Cloud
   /// Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value
   /// will be populated from `Job.input_uri`.
-  core.String uri;
+  core.String? uri;
 
   Input();
 
@@ -1282,28 +1256,28 @@ class Input {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
         if (preprocessingConfig != null)
-          'preprocessingConfig': preprocessingConfig.toJson(),
-        if (uri != null) 'uri': uri,
+          'preprocessingConfig': preprocessingConfig!.toJson(),
+        if (uri != null) 'uri': uri!,
       };
 }
 
 /// Transcoding job resource.
 class Job {
   /// The configuration for this job.
-  JobConfig config;
+  JobConfig? config;
 
   /// The time the job was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time the transcoding finished.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// List of failure details.
   ///
@@ -1311,14 +1285,14 @@ class Job {
   /// `failure_reason` is present. *Note*: This feature is not yet available.
   ///
   /// Output only.
-  core.List<FailureDetail> failureDetails;
+  core.List<FailureDetail>? failureDetails;
 
   /// A description of the reason for the failure.
   ///
   /// This property is always present when `state` is `FAILED`.
   ///
   /// Output only.
-  core.String failureReason;
+  core.String? failureReason;
 
   /// Input only.
   ///
@@ -1326,44 +1300,44 @@ class Job {
   /// `Job.config.inputs` or `JobTemplate.config.inputs` when using template.
   /// URI of the media. Input files must be at least 5 seconds in duration and
   /// stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
-  core.String inputUri;
+  core.String? inputUri;
 
   /// The resource name of the job.
   ///
   /// Format: `projects/{project}/locations/{location}/jobs/{job}`
-  core.String name;
+  core.String? name;
 
   /// The origin URI.
   ///
   /// *Note*: This feature is not yet available.
   ///
   /// Output only.
-  OriginUri originUri;
+  OriginUri? originUri;
 
   /// Input only.
   ///
   /// Specify the `output_uri` to populate an empty `Job.config.output.uri` or
   /// `JobTemplate.config.output.uri` when using template. URI for the output
   /// file(s). For example, `gs://my-bucket/outputs/`.
-  core.String outputUri;
+  core.String? outputUri;
 
   /// Specify the priority of the job.
   ///
   /// Enter a value between 0 and 100, where 0 is the lowest priority and 100 is
   /// the highest priority. The default is 0.
-  core.int priority;
+  core.int? priority;
 
   /// Estimated fractional progress, from `0` to `1` for each step.
   ///
   /// *Note*: This feature is not yet available.
   ///
   /// Output only.
-  Progress progress;
+  Progress? progress;
 
   /// The time the transcoding started.
   ///
   /// Output only.
-  core.String startTime;
+  core.String? startTime;
 
   /// The current state of the job.
   ///
@@ -1376,21 +1350,21 @@ class Job {
   /// - "SUCCEEDED" : The job has been completed successfully.
   /// - "FAILED" : The job has failed. For additional information, see
   /// `failure_reason` and `failure_details`
-  core.String state;
+  core.String? state;
 
   /// Input only.
   ///
   /// Specify the `template_id` to use for populating `Job.config`. The default
   /// is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` -
   /// User defined JobTemplate: `{job_template_id}`
-  core.String templateId;
+  core.String? templateId;
 
   /// Job time to live value in days, which will be effective after job
   /// completion.
   ///
   /// Job should be deleted automatically after the given TTL. Enter a value
   /// between 1 and 90. The default is 30.
-  core.int ttlAfterCompletionDays;
+  core.int? ttlAfterCompletionDays;
 
   Job();
 
@@ -1448,25 +1422,25 @@ class Job {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (config != null) 'config': config.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (config != null) 'config': config!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
         if (failureDetails != null)
           'failureDetails':
-              failureDetails.map((value) => value.toJson()).toList(),
-        if (failureReason != null) 'failureReason': failureReason,
-        if (inputUri != null) 'inputUri': inputUri,
-        if (name != null) 'name': name,
-        if (originUri != null) 'originUri': originUri.toJson(),
-        if (outputUri != null) 'outputUri': outputUri,
-        if (priority != null) 'priority': priority,
-        if (progress != null) 'progress': progress.toJson(),
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
-        if (templateId != null) 'templateId': templateId,
+              failureDetails!.map((value) => value.toJson()).toList(),
+        if (failureReason != null) 'failureReason': failureReason!,
+        if (inputUri != null) 'inputUri': inputUri!,
+        if (name != null) 'name': name!,
+        if (originUri != null) 'originUri': originUri!.toJson(),
+        if (outputUri != null) 'outputUri': outputUri!,
+        if (priority != null) 'priority': priority!,
+        if (progress != null) 'progress': progress!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+        if (templateId != null) 'templateId': templateId!,
         if (ttlAfterCompletionDays != null)
-          'ttlAfterCompletionDays': ttlAfterCompletionDays,
+          'ttlAfterCompletionDays': ttlAfterCompletionDays!,
       };
 }
 
@@ -1475,36 +1449,36 @@ class JobConfig {
   /// List of ad breaks.
   ///
   /// Specifies where to insert ad break tags in the output manifests.
-  core.List<AdBreak> adBreaks;
+  core.List<AdBreak>? adBreaks;
 
   /// List of `Edit atom`s.
   ///
   /// Defines the ultimate timeline of the resulting file or manifest.
-  core.List<EditAtom> editList;
+  core.List<EditAtom>? editList;
 
   /// List of elementary streams.
-  core.List<ElementaryStream> elementaryStreams;
+  core.List<ElementaryStream>? elementaryStreams;
 
   /// List of input assets stored in Cloud Storage.
-  core.List<Input> inputs;
+  core.List<Input>? inputs;
 
   /// List of output manifests.
-  core.List<Manifest> manifests;
+  core.List<Manifest>? manifests;
 
   /// List of multiplexing settings for output streams.
-  core.List<MuxStream> muxStreams;
+  core.List<MuxStream>? muxStreams;
 
   /// Output configuration.
-  Output output;
+  Output? output;
 
   /// List of overlays on the output video, in descending Z-order.
-  core.List<Overlay> overlays;
+  core.List<Overlay>? overlays;
 
   /// Destination on Pub/Sub.
-  PubsubDestination pubsubDestination;
+  PubsubDestination? pubsubDestination;
 
   /// List of output sprite sheets.
-  core.List<SpriteSheet> spriteSheets;
+  core.List<SpriteSheet>? spriteSheets;
 
   JobConfig();
 
@@ -1567,40 +1541,40 @@ class JobConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (adBreaks != null)
-          'adBreaks': adBreaks.map((value) => value.toJson()).toList(),
+          'adBreaks': adBreaks!.map((value) => value.toJson()).toList(),
         if (editList != null)
-          'editList': editList.map((value) => value.toJson()).toList(),
+          'editList': editList!.map((value) => value.toJson()).toList(),
         if (elementaryStreams != null)
           'elementaryStreams':
-              elementaryStreams.map((value) => value.toJson()).toList(),
+              elementaryStreams!.map((value) => value.toJson()).toList(),
         if (inputs != null)
-          'inputs': inputs.map((value) => value.toJson()).toList(),
+          'inputs': inputs!.map((value) => value.toJson()).toList(),
         if (manifests != null)
-          'manifests': manifests.map((value) => value.toJson()).toList(),
+          'manifests': manifests!.map((value) => value.toJson()).toList(),
         if (muxStreams != null)
-          'muxStreams': muxStreams.map((value) => value.toJson()).toList(),
-        if (output != null) 'output': output.toJson(),
+          'muxStreams': muxStreams!.map((value) => value.toJson()).toList(),
+        if (output != null) 'output': output!.toJson(),
         if (overlays != null)
-          'overlays': overlays.map((value) => value.toJson()).toList(),
+          'overlays': overlays!.map((value) => value.toJson()).toList(),
         if (pubsubDestination != null)
-          'pubsubDestination': pubsubDestination.toJson(),
+          'pubsubDestination': pubsubDestination!.toJson(),
         if (spriteSheets != null)
-          'spriteSheets': spriteSheets.map((value) => value.toJson()).toList(),
+          'spriteSheets': spriteSheets!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Transcoding job template resource.
 class JobTemplate {
   /// The configuration for this template.
-  JobConfig config;
+  JobConfig? config;
 
   /// The resource name of the job template.
   ///
   /// Format:
   /// `projects/{project}/locations/{location}/jobTemplates/{job_template}`
-  core.String name;
+  core.String? name;
 
   JobTemplate();
 
@@ -1614,19 +1588,19 @@ class JobTemplate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (config != null) 'config': config.toJson(),
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (config != null) 'config': config!.toJson(),
+        if (name != null) 'name': name!,
       };
 }
 
 /// Response message for `TranscoderService.ListJobTemplates`.
 class ListJobTemplatesResponse {
   /// List of job templates in the specified region.
-  core.List<JobTemplate> jobTemplates;
+  core.List<JobTemplate>? jobTemplates;
 
   /// The pagination token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListJobTemplatesResponse();
 
@@ -1642,20 +1616,20 @@ class ListJobTemplatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (jobTemplates != null)
-          'jobTemplates': jobTemplates.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'jobTemplates': jobTemplates!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for `TranscoderService.ListJobs`.
 class ListJobsResponse {
   /// List of jobs in the specified region.
-  core.List<Job> jobs;
+  core.List<Job>? jobs;
 
   /// The pagination token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListJobsResponse();
 
@@ -1671,9 +1645,9 @@ class ListJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1683,7 +1657,7 @@ class Manifest {
   ///
   /// The default is `"manifest"` with the extension suffix corresponding to the
   /// `Manifest.type`.
-  core.String fileName;
+  core.String? fileName;
 
   /// List of user given `MuxStream.key`s that should appear in this manifest.
   ///
@@ -1692,7 +1666,7 @@ class Manifest {
   /// `Manifest.mux_streams`.
   ///
   /// Required.
-  core.List<core.String> muxStreams;
+  core.List<core.String>? muxStreams;
 
   /// Type of the manifest, can be "HLS" or "DASH".
   ///
@@ -1703,7 +1677,7 @@ class Manifest {
   /// `".m3u8"`.
   /// - "DASH" : Create `"DASH"` manifest. The corresponding file extension is
   /// `".mpd"`.
-  core.String type;
+  core.String? type;
 
   Manifest();
 
@@ -1721,10 +1695,10 @@ class Manifest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fileName != null) 'fileName': fileName,
-        if (muxStreams != null) 'muxStreams': muxStreams,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fileName != null) 'fileName': fileName!,
+        if (muxStreams != null) 'muxStreams': muxStreams!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1734,14 +1708,14 @@ class MpegCommonEncryption {
   /// common encryption.
   ///
   /// Required.
-  core.String keyId;
+  core.String? keyId;
 
   /// Specify the encryption scheme.
   ///
   /// Supported encryption schemes: - 'cenc' - 'cbcs'
   ///
   /// Required.
-  core.String scheme;
+  core.String? scheme;
 
   MpegCommonEncryption();
 
@@ -1754,9 +1728,9 @@ class MpegCommonEncryption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (keyId != null) 'keyId': keyId,
-        if (scheme != null) 'scheme': scheme,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (keyId != null) 'keyId': keyId!,
+        if (scheme != null) 'scheme': scheme!,
       };
 }
 
@@ -1766,13 +1740,13 @@ class MuxStream {
   ///
   /// The default is `"mp4"` Supported container formats: - 'ts' - 'fmp4'- the
   /// corresponding file extension is `".m4s"` - 'mp4' - 'vtt'
-  core.String container;
+  core.String? container;
 
   /// List of `ElementaryStream.key`s multiplexed in this stream.
-  core.List<core.String> elementaryStreams;
+  core.List<core.String>? elementaryStreams;
 
   /// Encryption settings.
-  Encryption encryption;
+  Encryption? encryption;
 
   /// The name of the generated file.
   ///
@@ -1780,16 +1754,16 @@ class MuxStream {
   /// the `MuxStream.container`. Individual segments also have an incremental
   /// 10-digit zero-padded suffix starting from 0 before the extension, such as
   /// `"mux_stream0000000123.ts"`.
-  core.String fileName;
+  core.String? fileName;
 
   /// A unique key for this multiplexed stream.
   ///
   /// HLS media manifests will be named `MuxStream.key` with the `".m3u8"`
   /// extension suffix.
-  core.String key;
+  core.String? key;
 
   /// Segment settings for `"ts"`, `"fmp4"` and `"vtt"`.
-  SegmentSettings segmentSettings;
+  SegmentSettings? segmentSettings;
 
   MuxStream();
 
@@ -1818,14 +1792,14 @@ class MuxStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (container != null) 'container': container,
-        if (elementaryStreams != null) 'elementaryStreams': elementaryStreams,
-        if (encryption != null) 'encryption': encryption.toJson(),
-        if (fileName != null) 'fileName': fileName,
-        if (key != null) 'key': key,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (container != null) 'container': container!,
+        if (elementaryStreams != null) 'elementaryStreams': elementaryStreams!,
+        if (encryption != null) 'encryption': encryption!.toJson(),
+        if (fileName != null) 'fileName': fileName!,
+        if (key != null) 'key': key!,
         if (segmentSettings != null)
-          'segmentSettings': segmentSettings.toJson(),
+          'segmentSettings': segmentSettings!.toJson(),
       };
 }
 
@@ -1834,10 +1808,10 @@ class MuxStream {
 /// Default: `{0.0, 0.0}`
 class NormalizedCoordinate {
   /// Normalized x coordinate.
-  core.double x;
+  core.double? x;
 
   /// Normalized y coordinate.
-  core.double y;
+  core.double? y;
 
   NormalizedCoordinate();
 
@@ -1850,9 +1824,9 @@ class NormalizedCoordinate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (x != null) 'x': x,
-        if (y != null) 'y': y,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
       };
 }
 
@@ -1861,7 +1835,7 @@ class OperationMetadata {
   /// API version used to start the operation.
   ///
   /// Output only.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
@@ -1870,32 +1844,32 @@ class OperationMetadata {
   /// `Code.CANCELLED`.
   ///
   /// Output only.
-  core.bool cancelRequested;
+  core.bool? cancelRequested;
 
   /// The time the operation was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time the operation finished running.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// Human-readable status of the operation, if any.
   ///
   /// Output only.
-  core.String statusDetail;
+  core.String? statusDetail;
 
   /// Server-defined resource path for the target of the operation.
   ///
   /// Output only.
-  core.String target;
+  core.String? target;
 
   /// Name of the verb executed by the operation.
   ///
   /// Output only.
-  core.String verb;
+  core.String? verb;
 
   OperationMetadata();
 
@@ -1923,14 +1897,14 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (cancelRequested != null) 'cancelRequested': cancelRequested,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
-        if (statusDetail != null) 'statusDetail': statusDetail,
-        if (target != null) 'target': target,
-        if (verb != null) 'verb': verb,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (cancelRequested != null) 'cancelRequested': cancelRequested!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (statusDetail != null) 'statusDetail': statusDetail!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
@@ -1939,12 +1913,12 @@ class OriginUri {
   /// Dash manifest URI.
   ///
   /// If multiple Dash manifests are created, only the first one is listed.
-  core.String dash;
+  core.String? dash;
 
   /// HLS manifest URI per https://tools.ietf.org/html/rfc8216#section-4.3.4.
   ///
   /// If multiple HLS manifests are created, only the first one is listed.
-  core.String hls;
+  core.String? hls;
 
   OriginUri();
 
@@ -1957,9 +1931,9 @@ class OriginUri {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dash != null) 'dash': dash,
-        if (hls != null) 'hls': hls,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dash != null) 'dash': dash!,
+        if (hls != null) 'hls': hls!,
       };
 }
 
@@ -1969,7 +1943,7 @@ class Output {
   ///
   /// For example, `gs://my-bucket/outputs/`. If empty the value is populated
   /// from `Job.output_uri`.
-  core.String uri;
+  core.String? uri;
 
   Output();
 
@@ -1979,8 +1953,8 @@ class Output {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -1989,10 +1963,10 @@ class Overlay {
   /// List of Animations.
   ///
   /// The list should be chronological, without any time overlap.
-  core.List<Animation> animations;
+  core.List<Animation>? animations;
 
   /// Image overlay.
-  Image image;
+  Image? image;
 
   Overlay();
 
@@ -2009,10 +1983,10 @@ class Overlay {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (animations != null)
-          'animations': animations.map((value) => value.toJson()).toList(),
-        if (image != null) 'image': image.toJson(),
+          'animations': animations!.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image!.toJson(),
       };
 }
 
@@ -2024,22 +1998,22 @@ class Pad {
   /// The number of pixels to add to the bottom.
   ///
   /// The default is 0.
-  core.int bottomPixels;
+  core.int? bottomPixels;
 
   /// The number of pixels to add to the left.
   ///
   /// The default is 0.
-  core.int leftPixels;
+  core.int? leftPixels;
 
   /// The number of pixels to add to the right.
   ///
   /// The default is 0.
-  core.int rightPixels;
+  core.int? rightPixels;
 
   /// The number of pixels to add to the top.
   ///
   /// The default is 0.
-  core.int topPixels;
+  core.int? topPixels;
 
   Pad();
 
@@ -2058,33 +2032,33 @@ class Pad {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bottomPixels != null) 'bottomPixels': bottomPixels,
-        if (leftPixels != null) 'leftPixels': leftPixels,
-        if (rightPixels != null) 'rightPixels': rightPixels,
-        if (topPixels != null) 'topPixels': topPixels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bottomPixels != null) 'bottomPixels': bottomPixels!,
+        if (leftPixels != null) 'leftPixels': leftPixels!,
+        if (rightPixels != null) 'rightPixels': rightPixels!,
+        if (topPixels != null) 'topPixels': topPixels!,
       };
 }
 
 /// Preprocessing configurations.
 class PreprocessingConfig {
   /// Audio preprocessing configuration.
-  Audio audio;
+  Audio? audio;
 
   /// Color preprocessing configuration.
-  Color color;
+  Color? color;
 
   /// Specify the video cropping configuration.
-  Crop crop;
+  Crop? crop;
 
   /// Deblock preprocessing configuration.
-  Deblock deblock;
+  Deblock? deblock;
 
   /// Denoise preprocessing configuration.
-  Denoise denoise;
+  Denoise? denoise;
 
   /// Specify the video pad filter configuration.
-  Pad pad;
+  Pad? pad;
 
   PreprocessingConfig();
 
@@ -2114,29 +2088,29 @@ class PreprocessingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audio != null) 'audio': audio.toJson(),
-        if (color != null) 'color': color.toJson(),
-        if (crop != null) 'crop': crop.toJson(),
-        if (deblock != null) 'deblock': deblock.toJson(),
-        if (denoise != null) 'denoise': denoise.toJson(),
-        if (pad != null) 'pad': pad.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audio != null) 'audio': audio!.toJson(),
+        if (color != null) 'color': color!.toJson(),
+        if (crop != null) 'crop': crop!.toJson(),
+        if (deblock != null) 'deblock': deblock!.toJson(),
+        if (denoise != null) 'denoise': denoise!.toJson(),
+        if (pad != null) 'pad': pad!.toJson(),
       };
 }
 
 /// Estimated fractional progress for each step, from `0` to `1`.
 class Progress {
   /// Estimated fractional progress for `analyzing` step.
-  core.double analyzed;
+  core.double? analyzed;
 
   /// Estimated fractional progress for `encoding` step.
-  core.double encoded;
+  core.double? encoded;
 
   /// Estimated fractional progress for `notifying` step.
-  core.double notified;
+  core.double? notified;
 
   /// Estimated fractional progress for `uploading` step.
-  core.double uploaded;
+  core.double? uploaded;
 
   Progress();
 
@@ -2155,11 +2129,11 @@ class Progress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (analyzed != null) 'analyzed': analyzed,
-        if (encoded != null) 'encoded': encoded,
-        if (notified != null) 'notified': notified,
-        if (uploaded != null) 'uploaded': uploaded,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (analyzed != null) 'analyzed': analyzed!,
+        if (encoded != null) 'encoded': encoded!,
+        if (notified != null) 'notified': notified!,
+        if (uploaded != null) 'uploaded': uploaded!,
       };
 }
 
@@ -2168,7 +2142,7 @@ class PubsubDestination {
   /// The name of the Pub/Sub topic to publish job completion notification to.
   ///
   /// For example: `projects/{project}/topics/{topic}`.
-  core.String topic;
+  core.String? topic;
 
   PubsubDestination();
 
@@ -2178,8 +2152,8 @@ class PubsubDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (topic != null) 'topic': topic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (topic != null) 'topic': topic!,
       };
 }
 
@@ -2190,7 +2164,7 @@ class SampleAesEncryption {
   /// This URI is inserted into the M3U8 header.
   ///
   /// Required.
-  core.String keyUri;
+  core.String? keyUri;
 
   SampleAesEncryption();
 
@@ -2200,8 +2174,8 @@ class SampleAesEncryption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (keyUri != null) 'keyUri': keyUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (keyUri != null) 'keyUri': keyUri!,
       };
 }
 
@@ -2212,14 +2186,14 @@ class SegmentSettings {
   /// The default is `false`.
   ///
   /// Required.
-  core.bool individualSegments;
+  core.bool? individualSegments;
 
   /// Duration of the segments in seconds.
   ///
   /// The default is `"6.0s"`. Note that `segmentDuration` must be greater than
   /// or equal to \[`gopDuration`\](#videostream), and `segmentDuration` must be
   /// divisible by \[`gopDuration`\](#videostream).
-  core.String segmentDuration;
+  core.String? segmentDuration;
 
   SegmentSettings();
 
@@ -2232,10 +2206,10 @@ class SegmentSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (individualSegments != null)
-          'individualSegments': individualSegments,
-        if (segmentDuration != null) 'segmentDuration': segmentDuration,
+          'individualSegments': individualSegments!,
+        if (segmentDuration != null) 'segmentDuration': segmentDuration!,
       };
 }
 
@@ -2244,13 +2218,13 @@ class SpriteSheet {
   /// The maximum number of sprites per row in a sprite sheet.
   ///
   /// The default is 0, which indicates no maximum limit.
-  core.int columnCount;
+  core.int? columnCount;
 
   /// End time in seconds, relative to the output file timeline.
   ///
   /// When `end_time_offset` is not specified, the sprites are generated until
   /// the end of the output file.
-  core.String endTimeOffset;
+  core.String? endTimeOffset;
 
   /// File name prefix for the generated sprite sheets.
   ///
@@ -2258,55 +2232,55 @@ class SpriteSheet {
   /// from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
   ///
   /// Required.
-  core.String filePrefix;
+  core.String? filePrefix;
 
   /// Format type.
   ///
   /// The default is `"jpeg"`. Supported formats: - 'jpeg'
-  core.String format;
+  core.String? format;
 
   /// Starting from `0s`, create sprites at regular intervals.
   ///
   /// Specify the interval value in seconds.
-  core.String interval;
+  core.String? interval;
 
   /// The quality of the generated sprite sheet.
   ///
   /// Enter a value between 1 and 100, where 1 is the lowest quality and 100 is
   /// the highest quality. The default is 100. A high quality value corresponds
   /// to a low image data compression ratio.
-  core.int quality;
+  core.int? quality;
 
   /// The maximum number of rows per sprite sheet.
   ///
   /// When the sprite sheet is full, a new sprite sheet is created. The default
   /// is 0, which indicates no maximum limit.
-  core.int rowCount;
+  core.int? rowCount;
 
   /// The height of sprite in pixels.
   ///
   /// Must be an even integer.
   ///
   /// Required.
-  core.int spriteHeightPixels;
+  core.int? spriteHeightPixels;
 
   /// The width of sprite in pixels.
   ///
   /// Must be an even integer.
   ///
   /// Required.
-  core.int spriteWidthPixels;
+  core.int? spriteWidthPixels;
 
   /// Start time in seconds, relative to the output file timeline.
   ///
   /// Determines the first sprite to pick. The default is `0s`.
-  core.String startTimeOffset;
+  core.String? startTimeOffset;
 
   /// Total number of sprites.
   ///
   /// Create the specified number of sprites distributed evenly across the
   /// timeline of the output media. The default is 100.
-  core.int totalCount;
+  core.int? totalCount;
 
   SpriteSheet();
 
@@ -2346,19 +2320,19 @@ class SpriteSheet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnCount != null) 'columnCount': columnCount,
-        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset,
-        if (filePrefix != null) 'filePrefix': filePrefix,
-        if (format != null) 'format': format,
-        if (interval != null) 'interval': interval,
-        if (quality != null) 'quality': quality,
-        if (rowCount != null) 'rowCount': rowCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnCount != null) 'columnCount': columnCount!,
+        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
+        if (filePrefix != null) 'filePrefix': filePrefix!,
+        if (format != null) 'format': format!,
+        if (interval != null) 'interval': interval!,
+        if (quality != null) 'quality': quality!,
+        if (rowCount != null) 'rowCount': rowCount!,
         if (spriteHeightPixels != null)
-          'spriteHeightPixels': spriteHeightPixels,
-        if (spriteWidthPixels != null) 'spriteWidthPixels': spriteWidthPixels,
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset,
-        if (totalCount != null) 'totalCount': totalCount,
+          'spriteHeightPixels': spriteHeightPixels!,
+        if (spriteWidthPixels != null) 'spriteWidthPixels': spriteWidthPixels!,
+        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
+        if (totalCount != null) 'totalCount': totalCount!,
       };
 }
 
@@ -2367,13 +2341,13 @@ class TextAtom {
   /// List of `Job.inputs` that should be embedded in this atom.
   ///
   /// Only one input is supported.
-  core.List<TextInput> inputs;
+  core.List<TextInput>? inputs;
 
   /// The `EditAtom.key` that references atom with text inputs in the
   /// `Job.edit_list`.
   ///
   /// Required.
-  core.String key;
+  core.String? key;
 
   TextAtom();
 
@@ -2389,10 +2363,10 @@ class TextAtom {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (inputs != null)
-          'inputs': inputs.map((value) => value.toJson()).toList(),
-        if (key != null) 'key': key,
+          'inputs': inputs!.map((value) => value.toJson()).toList(),
+        if (key != null) 'key': key!,
       };
 }
 
@@ -2401,12 +2375,12 @@ class TextInput {
   /// The `Input.key` that identifies the input file.
   ///
   /// Required.
-  core.String key;
+  core.String? key;
 
   /// The zero-based index of the track in the input file.
   ///
   /// Required.
-  core.int track;
+  core.int? track;
 
   TextInput();
 
@@ -2419,9 +2393,9 @@ class TextInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (track != null) 'track': track,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (track != null) 'track': track!,
       };
 }
 
@@ -2433,7 +2407,7 @@ class TextStream {
   ///
   /// The default is `"webvtt"`. Supported text codecs: - 'srt' - 'ttml' -
   /// 'cea608' - 'cea708' - 'webvtt'
-  core.String codec;
+  core.String? codec;
 
   /// The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`.
   ///
@@ -2441,10 +2415,10 @@ class TextStream {
   /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
   ///
   /// Required.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
-  core.List<TextAtom> mapping;
+  core.List<TextAtom>? mapping;
 
   TextStream();
 
@@ -2463,11 +2437,11 @@ class TextStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (codec != null) 'codec': codec,
-        if (languageCode != null) 'languageCode': languageCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (codec != null) 'codec': codec!,
+        if (languageCode != null) 'languageCode': languageCode!,
         if (mapping != null)
-          'mapping': mapping.map((value) => value.toJson()).toList(),
+          'mapping': mapping!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2477,53 +2451,53 @@ class VideoStream {
   /// allowed or not.
   ///
   /// The default is `false`.
-  core.bool allowOpenGop;
+  core.bool? allowOpenGop;
 
   /// Specify the intensity of the adaptive quantizer (AQ).
   ///
   /// Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes
   /// the quantizer. A higher value equals a lower bitrate but smoother image.
   /// The default is 0.
-  core.double aqStrength;
+  core.double? aqStrength;
 
   /// The number of consecutive B-frames.
   ///
   /// Must be greater than or equal to zero. Must be less than
   /// `VideoStream.gop_frame_count` if set. The default is 0.
-  core.int bFrameCount;
+  core.int? bFrameCount;
 
   /// Allow B-pyramid for reference frame selection.
   ///
   /// This may not be supported on all decoders. The default is `false`.
-  core.bool bPyramid;
+  core.bool? bPyramid;
 
   /// The video bitrate in bits per second.
   ///
   /// Must be between 1 and 1,000,000,000.
   ///
   /// Required.
-  core.int bitrateBps;
+  core.int? bitrateBps;
 
   /// Codec type.
   ///
   /// The following codecs are supported: * `h264` (default) * `h265` * `vp9`
-  core.String codec;
+  core.String? codec;
 
   /// Target CRF level.
   ///
   /// Must be between 10 and 36, where 10 is the highest quality and 36 is the
   /// most efficient compression. The default is 21.
-  core.int crfLevel;
+  core.int? crfLevel;
 
   /// Use two-pass encoding strategy to achieve better video quality.
   ///
   /// `VideoStream.rate_control_mode` must be `"vbr"`. The default is `false`.
-  core.bool enableTwoPass;
+  core.bool? enableTwoPass;
 
   /// The entropy coder to use.
   ///
   /// The default is `"cabac"`. Supported entropy coders: - 'cavlc' - 'cabac'
-  core.String entropyCoder;
+  core.String? entropyCoder;
 
   /// The target video frame rate in frames per second (FPS).
   ///
@@ -2541,7 +2515,7 @@ class VideoStream {
   /// 10 | 10 | 10 | 20 | 30 | ```
   ///
   /// Required.
-  core.double frameRate;
+  core.double? frameRate;
 
   /// Select the GOP size based on the specified duration.
   ///
@@ -2549,19 +2523,19 @@ class VideoStream {
   /// to \[`segmentDuration`\](#SegmentSettings), and
   /// \[`segmentDuration`\](#SegmentSettings) must be divisible by
   /// `gopDuration`.
-  core.String gopDuration;
+  core.String? gopDuration;
 
   /// Select the GOP size based on the specified frame count.
   ///
   /// Must be greater than zero.
-  core.int gopFrameCount;
+  core.int? gopFrameCount;
 
   /// The height of the video in pixels.
   ///
   /// Must be an even integer. When not specified, the height is adjusted to
   /// match the specified width and input aspect ratio. If both are omitted, the
   /// input height is used.
-  core.int heightPixels;
+  core.int? heightPixels;
 
   /// Pixel format to use.
   ///
@@ -2571,14 +2545,14 @@ class VideoStream {
   /// 'yuv444p10' 10-bit HDR pixel format. - 'yuv420p12' 12-bit HDR pixel
   /// format. - 'yuv422p12' 12-bit HDR pixel format. - 'yuv444p12' 12-bit HDR
   /// pixel format.
-  core.String pixelFormat;
+  core.String? pixelFormat;
 
   /// Enforces the specified codec preset.
   ///
   /// The default is `veryfast`. The available options are FFmpeg-compatible.
   /// Note that certain values for this field may cause the transcoder to
   /// override other fields you set in the `VideoStream` message.
-  core.String preset;
+  core.String? preset;
 
   /// Enforces the specified codec profile.
   ///
@@ -2586,39 +2560,39 @@ class VideoStream {
   /// (default) The available options are FFmpeg-compatible. Note that certain
   /// values for this field may cause the transcoder to override other fields
   /// you set in the `VideoStream` message.
-  core.String profile;
+  core.String? profile;
 
   /// Specify the `rate_control_mode`.
   ///
   /// The default is `"vbr"`. Supported rate control modes: - 'vbr' - variable
   /// bitrate - 'crf' - constant rate factor
-  core.String rateControlMode;
+  core.String? rateControlMode;
 
   /// Enforces the specified codec tune.
   ///
   /// The available options are FFmpeg-compatible. Note that certain values for
   /// this field may cause the transcoder to override other fields you set in
   /// the `VideoStream` message.
-  core.String tune;
+  core.String? tune;
 
   /// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
   ///
   /// Must be greater than zero. The default is equal to 90% of
   /// `VideoStream.vbv_size_bits`.
-  core.int vbvFullnessBits;
+  core.int? vbvFullnessBits;
 
   /// Size of the Video Buffering Verifier (VBV) buffer in bits.
   ///
   /// Must be greater than zero. The default is equal to
   /// `VideoStream.bitrate_bps`.
-  core.int vbvSizeBits;
+  core.int? vbvSizeBits;
 
   /// The width of the video in pixels.
   ///
   /// Must be an even integer. When not specified, the width is adjusted to
   /// match the specified height and input aspect ratio. If both are omitted,
   /// the input width is used.
-  core.int widthPixels;
+  core.int? widthPixels;
 
   VideoStream();
 
@@ -2688,27 +2662,27 @@ class VideoStream {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowOpenGop != null) 'allowOpenGop': allowOpenGop,
-        if (aqStrength != null) 'aqStrength': aqStrength,
-        if (bFrameCount != null) 'bFrameCount': bFrameCount,
-        if (bPyramid != null) 'bPyramid': bPyramid,
-        if (bitrateBps != null) 'bitrateBps': bitrateBps,
-        if (codec != null) 'codec': codec,
-        if (crfLevel != null) 'crfLevel': crfLevel,
-        if (enableTwoPass != null) 'enableTwoPass': enableTwoPass,
-        if (entropyCoder != null) 'entropyCoder': entropyCoder,
-        if (frameRate != null) 'frameRate': frameRate,
-        if (gopDuration != null) 'gopDuration': gopDuration,
-        if (gopFrameCount != null) 'gopFrameCount': gopFrameCount,
-        if (heightPixels != null) 'heightPixels': heightPixels,
-        if (pixelFormat != null) 'pixelFormat': pixelFormat,
-        if (preset != null) 'preset': preset,
-        if (profile != null) 'profile': profile,
-        if (rateControlMode != null) 'rateControlMode': rateControlMode,
-        if (tune != null) 'tune': tune,
-        if (vbvFullnessBits != null) 'vbvFullnessBits': vbvFullnessBits,
-        if (vbvSizeBits != null) 'vbvSizeBits': vbvSizeBits,
-        if (widthPixels != null) 'widthPixels': widthPixels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowOpenGop != null) 'allowOpenGop': allowOpenGop!,
+        if (aqStrength != null) 'aqStrength': aqStrength!,
+        if (bFrameCount != null) 'bFrameCount': bFrameCount!,
+        if (bPyramid != null) 'bPyramid': bPyramid!,
+        if (bitrateBps != null) 'bitrateBps': bitrateBps!,
+        if (codec != null) 'codec': codec!,
+        if (crfLevel != null) 'crfLevel': crfLevel!,
+        if (enableTwoPass != null) 'enableTwoPass': enableTwoPass!,
+        if (entropyCoder != null) 'entropyCoder': entropyCoder!,
+        if (frameRate != null) 'frameRate': frameRate!,
+        if (gopDuration != null) 'gopDuration': gopDuration!,
+        if (gopFrameCount != null) 'gopFrameCount': gopFrameCount!,
+        if (heightPixels != null) 'heightPixels': heightPixels!,
+        if (pixelFormat != null) 'pixelFormat': pixelFormat!,
+        if (preset != null) 'preset': preset!,
+        if (profile != null) 'profile': profile!,
+        if (rateControlMode != null) 'rateControlMode': rateControlMode!,
+        if (tune != null) 'tune': tune!,
+        if (vbvFullnessBits != null) 'vbvFullnessBits': vbvFullnessBits!,
+        if (vbvSizeBits != null) 'vbvSizeBits': vbvSizeBits!,
+        if (widthPixels != null) 'widthPixels': widthPixels!,
       };
 }

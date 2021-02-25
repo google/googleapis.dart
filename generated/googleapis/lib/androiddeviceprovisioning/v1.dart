@@ -95,9 +95,9 @@ class CustomersResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomerListCustomersResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -148,13 +148,9 @@ class CustomersConfigurationsResource {
   async.Future<Configuration> create(
     Configuration request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -197,11 +193,8 @@ class CustomersConfigurationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -236,11 +229,8 @@ class CustomersConfigurationsResource {
   /// this method will complete with the same error.
   async.Future<Configuration> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -276,11 +266,8 @@ class CustomersConfigurationsResource {
   /// this method will complete with the same error.
   async.Future<CustomerListConfigurationsResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -328,14 +315,10 @@ class CustomersConfigurationsResource {
   async.Future<Configuration> patch(
     Configuration request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -386,13 +369,9 @@ class CustomersDevicesResource {
   async.Future<Empty> applyConfiguration(
     CustomerApplyConfigurationRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -430,11 +409,8 @@ class CustomersDevicesResource {
   /// this method will complete with the same error.
   async.Future<Device> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -474,13 +450,10 @@ class CustomersDevicesResource {
   /// this method will complete with the same error.
   async.Future<CustomerListDevicesResponse> list(
     core.String parent, {
-    core.String pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': [pageSize],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -522,13 +495,9 @@ class CustomersDevicesResource {
   async.Future<Empty> removeConfiguration(
     CustomerRemoveConfigurationRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -573,13 +542,9 @@ class CustomersDevicesResource {
   async.Future<Empty> unclaim(
     CustomerUnclaimDeviceRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -624,11 +589,8 @@ class CustomersDpcsResource {
   /// this method will complete with the same error.
   async.Future<CustomerListDpcsResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -673,11 +635,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -737,13 +696,9 @@ class PartnersCustomersResource {
   async.Future<Company> create(
     CreateCustomerRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -789,13 +744,10 @@ class PartnersCustomersResource {
   /// this method will complete with the same error.
   async.Future<ListCustomersResponse> list(
     core.String partnerId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (partnerId == null) {
-      throw core.ArgumentError('Parameter partnerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -846,13 +798,9 @@ class PartnersDevicesResource {
   async.Future<ClaimDeviceResponse> claim(
     ClaimDeviceRequest request,
     core.String partnerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (partnerId == null) {
-      throw core.ArgumentError('Parameter partnerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -897,13 +845,9 @@ class PartnersDevicesResource {
   async.Future<Operation> claimAsync(
     ClaimDevicesRequest request,
     core.String partnerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (partnerId == null) {
-      throw core.ArgumentError('Parameter partnerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -943,13 +887,9 @@ class PartnersDevicesResource {
   async.Future<FindDevicesByDeviceIdentifierResponse> findByIdentifier(
     FindDevicesByDeviceIdentifierRequest request,
     core.String partnerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (partnerId == null) {
-      throw core.ArgumentError('Parameter partnerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -994,13 +934,9 @@ class PartnersDevicesResource {
   async.Future<FindDevicesByOwnerResponse> findByOwner(
     FindDevicesByOwnerRequest request,
     core.String partnerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (partnerId == null) {
-      throw core.ArgumentError('Parameter partnerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1039,11 +975,8 @@ class PartnersDevicesResource {
   /// this method will complete with the same error.
   async.Future<Device> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1085,16 +1018,9 @@ class PartnersDevicesResource {
     UpdateDeviceMetadataRequest request,
     core.String metadataOwnerId,
     core.String deviceId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (metadataOwnerId == null) {
-      throw core.ArgumentError('Parameter metadataOwnerId is required.');
-    }
-    if (deviceId == null) {
-      throw core.ArgumentError('Parameter deviceId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1138,13 +1064,9 @@ class PartnersDevicesResource {
   async.Future<Empty> unclaim(
     UnclaimDeviceRequest request,
     core.String partnerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (partnerId == null) {
-      throw core.ArgumentError('Parameter partnerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1188,13 +1110,9 @@ class PartnersDevicesResource {
   async.Future<Operation> unclaimAsync(
     UnclaimDevicesRequest request,
     core.String partnerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (partnerId == null) {
-      throw core.ArgumentError('Parameter partnerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1238,13 +1156,9 @@ class PartnersDevicesResource {
   async.Future<Operation> updateMetadataAsync(
     UpdateDeviceMetadataInBatchRequest request,
     core.String partnerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (partnerId == null) {
-      throw core.ArgumentError('Parameter partnerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1296,13 +1210,10 @@ class PartnersVendorsResource {
   /// this method will complete with the same error.
   async.Future<ListVendorsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1353,13 +1264,10 @@ class PartnersVendorsCustomersResource {
   /// this method will complete with the same error.
   async.Future<ListVendorCustomersResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1384,17 +1292,17 @@ class ClaimDeviceRequest {
   /// The ID of the customer for whom the device is being claimed.
   ///
   /// Required.
-  core.String customerId;
+  core.String? customerId;
 
   /// The device identifier of the device to claim.
   ///
   /// Required.
-  DeviceIdentifier deviceIdentifier;
+  DeviceIdentifier? deviceIdentifier;
 
   /// The metadata to attach to the device.
   ///
   /// Optional.
-  DeviceMetadata deviceMetadata;
+  DeviceMetadata? deviceMetadata;
 
   /// The section type of the device's provisioning record.
   ///
@@ -1403,7 +1311,7 @@ class ClaimDeviceRequest {
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
   /// - "SECTION_TYPE_SIM_LOCK" : SIM-lock section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
-  core.String sectionType;
+  core.String? sectionType;
 
   ClaimDeviceRequest();
 
@@ -1424,23 +1332,23 @@ class ClaimDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customerId != null) 'customerId': customerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customerId != null) 'customerId': customerId!,
         if (deviceIdentifier != null)
-          'deviceIdentifier': deviceIdentifier.toJson(),
-        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata.toJson(),
-        if (sectionType != null) 'sectionType': sectionType,
+          'deviceIdentifier': deviceIdentifier!.toJson(),
+        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!.toJson(),
+        if (sectionType != null) 'sectionType': sectionType!,
       };
 }
 
 /// Response message containing device id of the claim.
 class ClaimDeviceResponse {
   /// The device ID of the claimed device.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// The resource name of the device in the format
   /// `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
-  core.String deviceName;
+  core.String? deviceName;
 
   ClaimDeviceResponse();
 
@@ -1453,9 +1361,9 @@ class ClaimDeviceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId,
-        if (deviceName != null) 'deviceName': deviceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (deviceName != null) 'deviceName': deviceName!,
       };
 }
 
@@ -1467,7 +1375,7 @@ class ClaimDevicesRequest {
   /// A list of device claims.
   ///
   /// Required.
-  core.List<PartnerClaim> claims;
+  core.List<PartnerClaim>? claims;
 
   ClaimDevicesRequest();
 
@@ -1480,9 +1388,9 @@ class ClaimDevicesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (claims != null)
-          'claims': claims.map((value) => value.toJson()).toList(),
+          'claims': claims!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1494,14 +1402,14 @@ class Company {
   /// Each email address must be associated with a Google Account.
   ///
   /// Optional.
-  core.List<core.String> adminEmails;
+  core.List<core.String>? adminEmails;
 
   /// The ID of the company.
   ///
   /// Assigned by the server.
   ///
   /// Output only.
-  core.String companyId;
+  core.String? companyId;
 
   /// The name of the company.
   ///
@@ -1509,7 +1417,7 @@ class Company {
   /// zero-touch enrollment portal.
   ///
   /// Required.
-  core.String companyName;
+  core.String? companyName;
 
   /// The API resource name of the company.
   ///
@@ -1520,7 +1428,7 @@ class Company {
   /// Assigned by the server.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Input only.
   ///
@@ -1530,7 +1438,7 @@ class Company {
   /// delete, and edit your organization's portal users.
   ///
   /// Required.
-  core.List<core.String> ownerEmails;
+  core.List<core.String>? ownerEmails;
 
   /// Whether any user from the company has accepted the latest Terms of Service
   /// (ToS).
@@ -1547,7 +1455,7 @@ class Company {
   /// accepted the ToS.
   /// - "TERMS_STATUS_STALE" : None of the company's users has accepted the
   /// current ToS but at least one user accepted a previous ToS.
-  core.String termsStatus;
+  core.String? termsStatus;
 
   Company();
 
@@ -1576,13 +1484,13 @@ class Company {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (adminEmails != null) 'adminEmails': adminEmails,
-        if (companyId != null) 'companyId': companyId,
-        if (companyName != null) 'companyName': companyName,
-        if (name != null) 'name': name,
-        if (ownerEmails != null) 'ownerEmails': ownerEmails,
-        if (termsStatus != null) 'termsStatus': termsStatus,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (adminEmails != null) 'adminEmails': adminEmails!,
+        if (companyId != null) 'companyId': companyId!,
+        if (companyName != null) 'companyName': companyName!,
+        if (name != null) 'name': name!,
+        if (ownerEmails != null) 'ownerEmails': ownerEmails!,
+        if (termsStatus != null) 'termsStatus': termsStatus!,
       };
 }
 
@@ -1601,14 +1509,14 @@ class Configuration {
   /// device provisioning.
   ///
   /// Required.
-  core.String companyName;
+  core.String? companyName;
 
   /// The ID of the configuration.
   ///
   /// Assigned by the server.
   ///
   /// Output only.
-  core.String configurationId;
+  core.String? configurationId;
 
   /// A short name that describes the configuration's purpose.
   ///
@@ -1616,7 +1524,7 @@ class Configuration {
   /// enrollment portal displays this name to IT admins.
   ///
   /// Required.
-  core.String configurationName;
+  core.String? configurationName;
 
   /// The email address that device users can contact to get help.
   ///
@@ -1624,7 +1532,7 @@ class Configuration {
   /// device provisioning. The value is validated on input.
   ///
   /// Required.
-  core.String contactEmail;
+  core.String? contactEmail;
 
   /// The telephone number that device users can call, using another device, to
   /// get help.
@@ -1634,16 +1542,16 @@ class Configuration {
   /// parentheses.
   ///
   /// Required.
-  core.String contactPhone;
+  core.String? contactPhone;
 
   /// A message, containing one or two sentences, to help device users get help
   /// or give them more details about what’s happening to their device.
   ///
   /// Zero-touch enrollment shows this message before the device is provisioned.
-  core.String customMessage;
+  core.String? customMessage;
 
   /// The JSON-formatted EMM provisioning extras that are passed to the DPC.
-  core.String dpcExtras;
+  core.String? dpcExtras;
 
   /// The resource name of the selected DPC (device policy controller) in the
   /// format `customers/[CUSTOMER_ID]/dpcs / * `.
@@ -1651,7 +1559,7 @@ class Configuration {
   /// To list the supported DPCs, call `customers.dpcs.list`.
   ///
   /// Required.
-  core.String dpcResourcePath;
+  core.String? dpcResourcePath;
 
   /// Whether this is the default configuration that zero-touch enrollment
   /// applies to any new devices the organization purchases in the future.
@@ -1661,7 +1569,7 @@ class Configuration {
   /// `false`.
   ///
   /// Required.
-  core.bool isDefault;
+  core.bool? isDefault;
 
   /// The API resource name in the format
   /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.
@@ -1669,7 +1577,7 @@ class Configuration {
   /// Assigned by the server.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   Configuration();
 
@@ -1706,17 +1614,17 @@ class Configuration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (companyName != null) 'companyName': companyName,
-        if (configurationId != null) 'configurationId': configurationId,
-        if (configurationName != null) 'configurationName': configurationName,
-        if (contactEmail != null) 'contactEmail': contactEmail,
-        if (contactPhone != null) 'contactPhone': contactPhone,
-        if (customMessage != null) 'customMessage': customMessage,
-        if (dpcExtras != null) 'dpcExtras': dpcExtras,
-        if (dpcResourcePath != null) 'dpcResourcePath': dpcResourcePath,
-        if (isDefault != null) 'isDefault': isDefault,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (companyName != null) 'companyName': companyName!,
+        if (configurationId != null) 'configurationId': configurationId!,
+        if (configurationName != null) 'configurationName': configurationName!,
+        if (contactEmail != null) 'contactEmail': contactEmail!,
+        if (contactPhone != null) 'contactPhone': contactPhone!,
+        if (customMessage != null) 'customMessage': customMessage!,
+        if (dpcExtras != null) 'dpcExtras': dpcExtras!,
+        if (dpcResourcePath != null) 'dpcResourcePath': dpcResourcePath!,
+        if (isDefault != null) 'isDefault': isDefault!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1729,7 +1637,7 @@ class CreateCustomerRequest {
   /// `name` must be empty.
   ///
   /// Required.
-  Company customer;
+  Company? customer;
 
   CreateCustomerRequest();
 
@@ -1740,8 +1648,8 @@ class CreateCustomerRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customer != null) 'customer': customer.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customer != null) 'customer': customer!.toJson(),
       };
 }
 
@@ -1751,12 +1659,12 @@ class CustomerApplyConfigurationRequest {
   /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.
   ///
   /// Required.
-  core.String configuration;
+  core.String? configuration;
 
   /// The device the configuration is applied to.
   ///
   /// Required.
-  DeviceReference device;
+  DeviceReference? device;
 
   CustomerApplyConfigurationRequest();
 
@@ -1770,16 +1678,16 @@ class CustomerApplyConfigurationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (configuration != null) 'configuration': configuration,
-        if (device != null) 'device': device.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (configuration != null) 'configuration': configuration!,
+        if (device != null) 'device': device!.toJson(),
       };
 }
 
 /// Response message of customer's listing configuration.
 class CustomerListConfigurationsResponse {
   /// The configurations.
-  core.List<Configuration> configurations;
+  core.List<Configuration>? configurations;
 
   CustomerListConfigurationsResponse();
 
@@ -1792,22 +1700,22 @@ class CustomerListConfigurationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (configurations != null)
           'configurations':
-              configurations.map((value) => value.toJson()).toList(),
+              configurations!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for listing my customers.
 class CustomerListCustomersResponse {
   /// The customer accounts the calling user is a member of.
-  core.List<Company> customers;
+  core.List<Company>? customers;
 
   /// A token used to access the next page of results.
   ///
   /// Omitted if no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   CustomerListCustomersResponse();
 
@@ -1823,22 +1731,22 @@ class CustomerListCustomersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customers != null)
-          'customers': customers.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'customers': customers!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message of customer's liting devices.
 class CustomerListDevicesResponse {
   /// The customer's devices.
-  core.List<Device> devices;
+  core.List<Device>? devices;
 
   /// A token used to access the next page of results.
   ///
   /// Omitted if no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   CustomerListDevicesResponse();
 
@@ -1854,10 +1762,10 @@ class CustomerListDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (devices != null)
-          'devices': devices.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'devices': devices!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1865,7 +1773,7 @@ class CustomerListDevicesResponse {
 class CustomerListDpcsResponse {
   /// The list of DPCs available to the customer that support zero-touch
   /// enrollment.
-  core.List<Dpc> dpcs;
+  core.List<Dpc>? dpcs;
 
   CustomerListDpcsResponse();
 
@@ -1878,8 +1786,8 @@ class CustomerListDpcsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dpcs != null) 'dpcs': dpcs.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dpcs != null) 'dpcs': dpcs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1888,7 +1796,7 @@ class CustomerRemoveConfigurationRequest {
   /// The device to remove the configuration from.
   ///
   /// Required.
-  DeviceReference device;
+  DeviceReference? device;
 
   CustomerRemoveConfigurationRequest();
 
@@ -1899,8 +1807,8 @@ class CustomerRemoveConfigurationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (device != null) 'device': device.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (device != null) 'device': device!.toJson(),
       };
 }
 
@@ -1909,7 +1817,7 @@ class CustomerUnclaimDeviceRequest {
   /// The device to unclaim.
   ///
   /// Required.
-  DeviceReference device;
+  DeviceReference? device;
 
   CustomerUnclaimDeviceRequest();
 
@@ -1920,8 +1828,8 @@ class CustomerUnclaimDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (device != null) 'device': device.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (device != null) 'device': device!.toJson(),
       };
 }
 
@@ -1935,29 +1843,29 @@ class Device {
   /// enrollment.
   ///
   /// Output only.
-  core.List<DeviceClaim> claims;
+  core.List<DeviceClaim>? claims;
 
   /// Not available to resellers.
-  core.String configuration;
+  core.String? configuration;
 
   /// The ID of the device.
   ///
   /// Assigned by the server.
   ///
   /// Output only.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// The hardware IDs that identify a manufactured device.
   ///
   /// To learn more, read
   /// [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
-  DeviceIdentifier deviceIdentifier;
+  DeviceIdentifier? deviceIdentifier;
 
   /// The metadata attached to the device.
   ///
   /// Structured as key-value pairs. To learn more, read
   /// [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
-  DeviceMetadata deviceMetadata;
+  DeviceMetadata? deviceMetadata;
 
   /// The API resource name in the format
   /// `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
@@ -1965,7 +1873,7 @@ class Device {
   /// Assigned by the server.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   Device();
 
@@ -1995,15 +1903,15 @@ class Device {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (claims != null)
-          'claims': claims.map((value) => value.toJson()).toList(),
-        if (configuration != null) 'configuration': configuration,
-        if (deviceId != null) 'deviceId': deviceId,
+          'claims': claims!.map((value) => value.toJson()).toList(),
+        if (configuration != null) 'configuration': configuration!,
+        if (deviceId != null) 'deviceId': deviceId!,
         if (deviceIdentifier != null)
-          'deviceIdentifier': deviceIdentifier.toJson(),
-        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata.toJson(),
-        if (name != null) 'name': name,
+          'deviceIdentifier': deviceIdentifier!.toJson(),
+        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!.toJson(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2014,10 +1922,10 @@ class Device {
 /// customers\](/zero-touch/guides/how-it-works#claim).
 class DeviceClaim {
   /// The ID of the Customer that purchased the device.
-  core.String ownerCompanyId;
+  core.String? ownerCompanyId;
 
   /// The ID of the reseller that claimed the device.
-  core.String resellerId;
+  core.String? resellerId;
 
   /// The type of claim made on the device.
   ///
@@ -2026,17 +1934,17 @@ class DeviceClaim {
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
   /// - "SECTION_TYPE_SIM_LOCK" : SIM-lock section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
-  core.String sectionType;
+  core.String? sectionType;
 
   /// The timestamp when the device will exit ‘vacation mode’.
   ///
   /// This value is present iff the device is in 'vacation mode'.
-  core.String vacationModeExpireTime;
+  core.String? vacationModeExpireTime;
 
   /// The timestamp when the device was put into ‘vacation mode’.
   ///
   /// This value is present iff the device is in 'vacation mode'.
-  core.String vacationModeStartTime;
+  core.String? vacationModeStartTime;
 
   DeviceClaim();
 
@@ -2058,14 +1966,14 @@ class DeviceClaim {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ownerCompanyId != null) 'ownerCompanyId': ownerCompanyId,
-        if (resellerId != null) 'resellerId': resellerId,
-        if (sectionType != null) 'sectionType': sectionType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ownerCompanyId != null) 'ownerCompanyId': ownerCompanyId!,
+        if (resellerId != null) 'resellerId': resellerId!,
+        if (sectionType != null) 'sectionType': sectionType!,
         if (vacationModeExpireTime != null)
-          'vacationModeExpireTime': vacationModeExpireTime,
+          'vacationModeExpireTime': vacationModeExpireTime!,
         if (vacationModeStartTime != null)
-          'vacationModeStartTime': vacationModeStartTime,
+          'vacationModeStartTime': vacationModeStartTime!,
       };
 }
 
@@ -2077,29 +1985,29 @@ class DeviceIdentifier {
   /// The device’s IMEI number.
   ///
   /// Validated on input.
-  core.String imei;
+  core.String? imei;
 
   /// The device manufacturer’s name.
   ///
   /// Matches the device's built-in value returned from
   /// `android.os.Build.MANUFACTURER`. Allowed values are listed in
   /// \[manufacturers\](/zero-touch/resources/manufacturer-names#manufacturers-names).
-  core.String manufacturer;
+  core.String? manufacturer;
 
   /// The device’s MEID number.
-  core.String meid;
+  core.String? meid;
 
   /// The device model's name.
   ///
   /// Matches the device's built-in value returned from
   /// `android.os.Build.MODEL`. Allowed values are listed in
   /// \[models\](/zero-touch/resources/manufacturer-names#model-names).
-  core.String model;
+  core.String? model;
 
   /// The manufacturer's serial number for the device.
   ///
   /// This value might not be unique across different device models.
-  core.String serialNumber;
+  core.String? serialNumber;
 
   DeviceIdentifier();
 
@@ -2121,12 +2029,12 @@ class DeviceIdentifier {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imei != null) 'imei': imei,
-        if (manufacturer != null) 'manufacturer': manufacturer,
-        if (meid != null) 'meid': meid,
-        if (model != null) 'model': model,
-        if (serialNumber != null) 'serialNumber': serialNumber,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imei != null) 'imei': imei!,
+        if (manufacturer != null) 'manufacturer': manufacturer!,
+        if (meid != null) 'meid': meid!,
+        if (model != null) 'model': model!,
+        if (serialNumber != null) 'serialNumber': serialNumber!,
       };
 }
 
@@ -2136,7 +2044,7 @@ class DeviceIdentifier {
 /// [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
 class DeviceMetadata {
   /// Metadata entries recorded as key-value pairs.
-  core.Map<core.String, core.String> entries;
+  core.Map<core.String, core.String>? entries;
 
   DeviceMetadata();
 
@@ -2152,8 +2060,8 @@ class DeviceMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (entries != null) 'entries': entries,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -2168,10 +2076,10 @@ class DeviceMetadata {
 /// [Identifiers](https://developers.google.com/zero-touch/guides/identifiers).
 class DeviceReference {
   /// The ID of the device.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// The hardware IDs of the device.
-  DeviceIdentifier deviceIdentifier;
+  DeviceIdentifier? deviceIdentifier;
 
   DeviceReference();
 
@@ -2185,10 +2093,10 @@ class DeviceReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
         if (deviceIdentifier != null)
-          'deviceIdentifier': deviceIdentifier.toJson(),
+          'deviceIdentifier': deviceIdentifier!.toJson(),
       };
 }
 
@@ -2202,7 +2110,7 @@ class DevicesLongRunningOperationMetadata {
   ///
   /// This might be different from the number of updates in the request if the
   /// API can't parse some of the updates.
-  core.int devicesCount;
+  core.int? devicesCount;
 
   /// The processing status of the operation.
   /// Possible string values are:
@@ -2212,13 +2120,13 @@ class DevicesLongRunningOperationMetadata {
   /// - "BATCH_PROCESS_PROCESSED" : Processed. This doesn't mean all items were
   /// processed successfully, you should check the `response` field for the
   /// result of every item.
-  core.String processingStatus;
+  core.String? processingStatus;
 
   /// The processing progress of the operation.
   ///
   /// Measured as a number from 0 to 100. A value of 10O doesnt always mean the
   /// operation completed—check for the inclusion of a `done` field.
-  core.int progress;
+  core.int? progress;
 
   DevicesLongRunningOperationMetadata();
 
@@ -2234,10 +2142,10 @@ class DevicesLongRunningOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (devicesCount != null) 'devicesCount': devicesCount,
-        if (processingStatus != null) 'processingStatus': processingStatus,
-        if (progress != null) 'progress': progress,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (devicesCount != null) 'devicesCount': devicesCount!,
+        if (processingStatus != null) 'processingStatus': processingStatus!,
+        if (progress != null) 'progress': progress!,
       };
 }
 
@@ -2251,13 +2159,13 @@ class DevicesLongRunningOperationResponse {
   ///
   /// One `PerDeviceStatus` per device. The list order matches the items in the
   /// original request.
-  core.List<OperationPerDevice> perDeviceStatus;
+  core.List<OperationPerDevice>? perDeviceStatus;
 
   /// A summary of how many items in the operation the server processed
   /// successfully.
   ///
   /// Updated as the operation progresses.
-  core.int successCount;
+  core.int? successCount;
 
   DevicesLongRunningOperationResponse();
 
@@ -2273,11 +2181,11 @@ class DevicesLongRunningOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (perDeviceStatus != null)
           'perDeviceStatus':
-              perDeviceStatus.map((value) => value.toJson()).toList(),
-        if (successCount != null) 'successCount': successCount,
+              perDeviceStatus!.map((value) => value.toJson()).toList(),
+        if (successCount != null) 'successCount': successCount!,
       };
 }
 
@@ -2294,7 +2202,7 @@ class Dpc {
   /// interface.
   ///
   /// Output only.
-  core.String dpcName;
+  core.String? dpcName;
 
   /// The API resource name in the format
   /// `customers/[CUSTOMER_ID]/dpcs/[DPC_ID]`.
@@ -2303,7 +2211,7 @@ class Dpc {
   /// accounts, persist and match the last path component (`DPC_ID`).
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The DPC's Android application ID that looks like a Java package name.
   ///
@@ -2311,7 +2219,7 @@ class Dpc {
   /// identifier.
   ///
   /// Output only.
-  core.String packageName;
+  core.String? packageName;
 
   Dpc();
 
@@ -2327,10 +2235,10 @@ class Dpc {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dpcName != null) 'dpcName': dpcName,
-        if (name != null) 'name': name,
-        if (packageName != null) 'packageName': packageName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dpcName != null) 'dpcName': dpcName!,
+        if (name != null) 'name': name!,
+        if (packageName != null) 'packageName': packageName!,
       };
 }
 
@@ -2348,7 +2256,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request to find devices.
@@ -2356,17 +2264,17 @@ class FindDevicesByDeviceIdentifierRequest {
   /// The device identifier to search for.
   ///
   /// Required.
-  DeviceIdentifier deviceIdentifier;
+  DeviceIdentifier? deviceIdentifier;
 
   /// The maximum number of devices to show in a page of results.
   ///
   /// Must be between 1 and 100 inclusive.
   ///
   /// Required.
-  core.String limit;
+  core.String? limit;
 
   /// A token specifying which result page to return.
-  core.String pageToken;
+  core.String? pageToken;
 
   FindDevicesByDeviceIdentifierRequest();
 
@@ -2383,26 +2291,26 @@ class FindDevicesByDeviceIdentifierRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deviceIdentifier != null)
-          'deviceIdentifier': deviceIdentifier.toJson(),
-        if (limit != null) 'limit': limit,
-        if (pageToken != null) 'pageToken': pageToken,
+          'deviceIdentifier': deviceIdentifier!.toJson(),
+        if (limit != null) 'limit': limit!,
+        if (pageToken != null) 'pageToken': pageToken!,
       };
 }
 
 /// Response containing found devices.
 class FindDevicesByDeviceIdentifierResponse {
   /// Found devices.
-  core.List<Device> devices;
+  core.List<Device>? devices;
 
   /// A token used to access the next page of results.
   ///
   /// Omitted if no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total count of items in the list irrespective of pagination.
-  core.int totalSize;
+  core.int? totalSize;
 
   FindDevicesByDeviceIdentifierResponse();
 
@@ -2421,11 +2329,11 @@ class FindDevicesByDeviceIdentifierResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (devices != null)
-          'devices': devices.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+          'devices': devices!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
@@ -2434,17 +2342,17 @@ class FindDevicesByOwnerRequest {
   /// The list of customer IDs to search for.
   ///
   /// Required.
-  core.List<core.String> customerId;
+  core.List<core.String>? customerId;
 
   /// The maximum number of devices to show in a page of results.
   ///
   /// Must be between 1 and 100 inclusive.
   ///
   /// Required.
-  core.String limit;
+  core.String? limit;
 
   /// A token specifying which result page to return.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// The section type of the device's provisioning record.
   ///
@@ -2453,7 +2361,7 @@ class FindDevicesByOwnerRequest {
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
   /// - "SECTION_TYPE_SIM_LOCK" : SIM-lock section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
-  core.String sectionType;
+  core.String? sectionType;
 
   FindDevicesByOwnerRequest();
 
@@ -2474,26 +2382,26 @@ class FindDevicesByOwnerRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customerId != null) 'customerId': customerId,
-        if (limit != null) 'limit': limit,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (sectionType != null) 'sectionType': sectionType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customerId != null) 'customerId': customerId!,
+        if (limit != null) 'limit': limit!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (sectionType != null) 'sectionType': sectionType!,
       };
 }
 
 /// Response containing found devices.
 class FindDevicesByOwnerResponse {
   /// The customer's devices.
-  core.List<Device> devices;
+  core.List<Device>? devices;
 
   /// A token used to access the next page of results.
   ///
   /// Omitted if no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total count of items in the list irrespective of pagination.
-  core.int totalSize;
+  core.int? totalSize;
 
   FindDevicesByOwnerResponse();
 
@@ -2512,26 +2420,26 @@ class FindDevicesByOwnerResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (devices != null)
-          'devices': devices.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+          'devices': devices!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
 /// Response message of all customers related to this partner.
 class ListCustomersResponse {
   /// List of customers related to this reseller partner.
-  core.List<Company> customers;
+  core.List<Company>? customers;
 
   /// A token to retrieve the next page of results.
   ///
   /// Omitted if no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total count of items in the list irrespective of pagination.
-  core.int totalSize;
+  core.int? totalSize;
 
   ListCustomersResponse();
 
@@ -2550,26 +2458,26 @@ class ListCustomersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customers != null)
-          'customers': customers.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+          'customers': customers!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
 /// Response message to list customers of the vendor.
 class ListVendorCustomersResponse {
   /// List of customers of the vendor.
-  core.List<Company> customers;
+  core.List<Company>? customers;
 
   /// A token to retrieve the next page of results.
   ///
   /// Omitted if no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total count of items in the list irrespective of pagination.
-  core.int totalSize;
+  core.int? totalSize;
 
   ListVendorCustomersResponse();
 
@@ -2588,11 +2496,11 @@ class ListVendorCustomersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customers != null)
-          'customers': customers.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+          'customers': customers!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
@@ -2601,16 +2509,16 @@ class ListVendorsResponse {
   /// A token to retrieve the next page of results.
   ///
   /// Omitted if no further results are available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total count of items in the list irrespective of pagination.
-  core.int totalSize;
+  core.int? totalSize;
 
   /// List of vendors of the reseller partner.
   ///
   /// Fields `name`, `companyId` and `companyName` are populated to the Company
   /// object.
-  core.List<Company> vendors;
+  core.List<Company>? vendors;
 
   ListVendorsResponse();
 
@@ -2629,11 +2537,11 @@ class ListVendorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
         if (vendors != null)
-          'vendors': vendors.map((value) => value.toJson()).toList(),
+          'vendors': vendors!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2644,14 +2552,14 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// This field will always be not set if the operation is created by
   /// `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`.
   ///
   /// In this case, error information for each device is set in
   /// `response.perDeviceStatus.result.status`.
-  Status error;
+  Status? error;
 
   /// This field will contain a `DevicesLongRunningOperationMetadata` object if
   /// the operation is created by `claimAsync`, `unclaimAsync`, or
@@ -2659,14 +2567,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// This field will contain a `DevicesLongRunningOperationResponse` object if
   /// the operation is created by `claimAsync`, `unclaimAsync`, or
@@ -2674,7 +2582,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -2709,12 +2617,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -2723,16 +2631,16 @@ class Operation {
 /// Corresponds to each device change in the request.
 class OperationPerDevice {
   /// A copy of the original device-claim request received by the server.
-  PartnerClaim claim;
+  PartnerClaim? claim;
 
   /// The processing result for each device.
-  PerDeviceStatusInBatch result;
+  PerDeviceStatusInBatch? result;
 
   /// A copy of the original device-unclaim request received by the server.
-  PartnerUnclaim unclaim;
+  PartnerUnclaim? unclaim;
 
   /// A copy of the original metadata-update request received by the server.
-  UpdateMetadataArguments updateMetadata;
+  UpdateMetadataArguments? updateMetadata;
 
   OperationPerDevice();
 
@@ -2755,11 +2663,11 @@ class OperationPerDevice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (claim != null) 'claim': claim.toJson(),
-        if (result != null) 'result': result.toJson(),
-        if (unclaim != null) 'unclaim': unclaim.toJson(),
-        if (updateMetadata != null) 'updateMetadata': updateMetadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (claim != null) 'claim': claim!.toJson(),
+        if (result != null) 'result': result!.toJson(),
+        if (unclaim != null) 'unclaim': unclaim!.toJson(),
+        if (updateMetadata != null) 'updateMetadata': updateMetadata!.toJson(),
       };
 }
 
@@ -2768,17 +2676,17 @@ class PartnerClaim {
   /// The ID of the customer for whom the device is being claimed.
   ///
   /// Required.
-  core.String customerId;
+  core.String? customerId;
 
   /// Device identifier of the device.
   ///
   /// Required.
-  DeviceIdentifier deviceIdentifier;
+  DeviceIdentifier? deviceIdentifier;
 
   /// The metadata to attach to the device at claim.
   ///
   /// Required.
-  DeviceMetadata deviceMetadata;
+  DeviceMetadata? deviceMetadata;
 
   /// The section type of the device's provisioning record.
   ///
@@ -2787,7 +2695,7 @@ class PartnerClaim {
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
   /// - "SECTION_TYPE_SIM_LOCK" : SIM-lock section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
-  core.String sectionType;
+  core.String? sectionType;
 
   PartnerClaim();
 
@@ -2808,12 +2716,12 @@ class PartnerClaim {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customerId != null) 'customerId': customerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customerId != null) 'customerId': customerId!,
         if (deviceIdentifier != null)
-          'deviceIdentifier': deviceIdentifier.toJson(),
-        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata.toJson(),
-        if (sectionType != null) 'sectionType': sectionType,
+          'deviceIdentifier': deviceIdentifier!.toJson(),
+        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!.toJson(),
+        if (sectionType != null) 'sectionType': sectionType!,
       };
 }
 
@@ -2822,12 +2730,12 @@ class PartnerUnclaim {
   /// Device ID of the device.
   ///
   /// Required.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// Device identifier of the device.
   ///
   /// Required.
-  DeviceIdentifier deviceIdentifier;
+  DeviceIdentifier? deviceIdentifier;
 
   /// The section type of the device's provisioning record.
   ///
@@ -2836,7 +2744,7 @@ class PartnerUnclaim {
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
   /// - "SECTION_TYPE_SIM_LOCK" : SIM-lock section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
-  core.String sectionType;
+  core.String? sectionType;
 
   /// The duration of the vacation unlock starting from when the request is
   /// processed.
@@ -2844,12 +2752,12 @@ class PartnerUnclaim {
   /// (1 day is treated as 24 hours)
   ///
   /// Optional.
-  core.int vacationModeDays;
+  core.int? vacationModeDays;
 
   /// The expiration time of the vacation unlock.
   ///
   /// Optional.
-  core.String vacationModeExpireTime;
+  core.String? vacationModeExpireTime;
 
   PartnerUnclaim();
 
@@ -2872,27 +2780,27 @@ class PartnerUnclaim {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
         if (deviceIdentifier != null)
-          'deviceIdentifier': deviceIdentifier.toJson(),
-        if (sectionType != null) 'sectionType': sectionType,
-        if (vacationModeDays != null) 'vacationModeDays': vacationModeDays,
+          'deviceIdentifier': deviceIdentifier!.toJson(),
+        if (sectionType != null) 'sectionType': sectionType!,
+        if (vacationModeDays != null) 'vacationModeDays': vacationModeDays!,
         if (vacationModeExpireTime != null)
-          'vacationModeExpireTime': vacationModeExpireTime,
+          'vacationModeExpireTime': vacationModeExpireTime!,
       };
 }
 
 /// Captures the processing status for each device in the operation.
 class PerDeviceStatusInBatch {
   /// If processing succeeds, the device ID of the device.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// If processing fails, the error type.
-  core.String errorIdentifier;
+  core.String? errorIdentifier;
 
   /// If processing fails, a developer message explaining what went wrong.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   /// The result status of the device after processing.
   /// Possible string values are:
@@ -2908,7 +2816,7 @@ class PerDeviceStatusInBatch {
   /// - "SINGLE_DEVICE_STATUS_INVALID_SECTION_TYPE" : Invalid section type.
   /// - "SINGLE_DEVICE_STATUS_SECTION_NOT_YOURS" : This section is claimed by
   /// another company.
-  core.String status;
+  core.String? status;
 
   PerDeviceStatusInBatch();
 
@@ -2927,11 +2835,11 @@ class PerDeviceStatusInBatch {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId,
-        if (errorIdentifier != null) 'errorIdentifier': errorIdentifier,
-        if (errorMessage != null) 'errorMessage': errorMessage,
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (errorIdentifier != null) 'errorIdentifier': errorIdentifier!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -2944,7 +2852,7 @@ class PerDeviceStatusInBatch {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -2952,13 +2860,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -2982,10 +2890,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -2994,12 +2902,12 @@ class UnclaimDeviceRequest {
   /// The device ID returned by `ClaimDevice`.
   ///
   /// Required.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// The device identifier you used when you claimed this device.
   ///
   /// Required.
-  DeviceIdentifier deviceIdentifier;
+  DeviceIdentifier? deviceIdentifier;
 
   /// The section type of the device's provisioning record.
   ///
@@ -3008,16 +2916,16 @@ class UnclaimDeviceRequest {
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
   /// - "SECTION_TYPE_SIM_LOCK" : SIM-lock section type.
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
-  core.String sectionType;
+  core.String? sectionType;
 
   /// The duration of the vacation unlock starting from when the request is
   /// processed.
   ///
   /// (1 day is treated as 24 hours)
-  core.int vacationModeDays;
+  core.int? vacationModeDays;
 
   /// The expiration time of the vacation unlock.
-  core.String vacationModeExpireTime;
+  core.String? vacationModeExpireTime;
 
   UnclaimDeviceRequest();
 
@@ -3040,14 +2948,14 @@ class UnclaimDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
         if (deviceIdentifier != null)
-          'deviceIdentifier': deviceIdentifier.toJson(),
-        if (sectionType != null) 'sectionType': sectionType,
-        if (vacationModeDays != null) 'vacationModeDays': vacationModeDays,
+          'deviceIdentifier': deviceIdentifier!.toJson(),
+        if (sectionType != null) 'sectionType': sectionType!,
+        if (vacationModeDays != null) 'vacationModeDays': vacationModeDays!,
         if (vacationModeExpireTime != null)
-          'vacationModeExpireTime': vacationModeExpireTime,
+          'vacationModeExpireTime': vacationModeExpireTime!,
       };
 }
 
@@ -3056,7 +2964,7 @@ class UnclaimDevicesRequest {
   /// The list of devices to unclaim.
   ///
   /// Required.
-  core.List<PartnerUnclaim> unclaims;
+  core.List<PartnerUnclaim>? unclaims;
 
   UnclaimDevicesRequest();
 
@@ -3069,9 +2977,9 @@ class UnclaimDevicesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (unclaims != null)
-          'unclaims': unclaims.map((value) => value.toJson()).toList(),
+          'unclaims': unclaims!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3080,7 +2988,7 @@ class UpdateDeviceMetadataInBatchRequest {
   /// The list of metadata updates.
   ///
   /// Required.
-  core.List<UpdateMetadataArguments> updates;
+  core.List<UpdateMetadataArguments>? updates;
 
   UpdateDeviceMetadataInBatchRequest();
 
@@ -3094,9 +3002,9 @@ class UpdateDeviceMetadataInBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (updates != null)
-          'updates': updates.map((value) => value.toJson()).toList(),
+          'updates': updates!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3105,7 +3013,7 @@ class UpdateDeviceMetadataRequest {
   /// The metadata to attach to the device.
   ///
   /// Required.
-  DeviceMetadata deviceMetadata;
+  DeviceMetadata? deviceMetadata;
 
   UpdateDeviceMetadataRequest();
 
@@ -3116,8 +3024,8 @@ class UpdateDeviceMetadataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!.toJson(),
       };
 }
 
@@ -3126,17 +3034,17 @@ class UpdateMetadataArguments {
   /// Device ID of the device.
   ///
   /// Required.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// Device identifier.
   ///
   /// Required.
-  DeviceIdentifier deviceIdentifier;
+  DeviceIdentifier? deviceIdentifier;
 
   /// The metadata to update.
   ///
   /// Required.
-  DeviceMetadata deviceMetadata;
+  DeviceMetadata? deviceMetadata;
 
   UpdateMetadataArguments();
 
@@ -3154,10 +3062,10 @@ class UpdateMetadataArguments {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
         if (deviceIdentifier != null)
-          'deviceIdentifier': deviceIdentifier.toJson(),
-        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata.toJson(),
+          'deviceIdentifier': deviceIdentifier!.toJson(),
+        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!.toJson(),
       };
 }

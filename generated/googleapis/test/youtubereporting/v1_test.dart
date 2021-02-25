@@ -60,11 +60,26 @@ api.GdataBlobstore2Info buildGdataBlobstore2Info() {
 void checkGdataBlobstore2Info(api.GdataBlobstore2Info o) {
   buildCounterGdataBlobstore2Info++;
   if (buildCounterGdataBlobstore2Info < 3) {
-    unittest.expect(o.blobGeneration, unittest.equals('foo'));
-    unittest.expect(o.blobId, unittest.equals('foo'));
-    unittest.expect(o.downloadReadHandle, unittest.equals('foo'));
-    unittest.expect(o.readToken, unittest.equals('foo'));
-    unittest.expect(o.uploadMetadataContainer, unittest.equals('foo'));
+    unittest.expect(
+      o.blobGeneration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.blobId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.downloadReadHandle!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.readToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uploadMetadataContainer!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGdataBlobstore2Info--;
 }
@@ -93,17 +108,44 @@ api.GdataCompositeMedia buildGdataCompositeMedia() {
 void checkGdataCompositeMedia(api.GdataCompositeMedia o) {
   buildCounterGdataCompositeMedia++;
   if (buildCounterGdataCompositeMedia < 3) {
-    unittest.expect(o.blobRef, unittest.equals('foo'));
-    checkGdataBlobstore2Info(o.blobstore2Info as api.GdataBlobstore2Info);
-    unittest.expect(o.cosmoBinaryReference, unittest.equals('foo'));
-    unittest.expect(o.crc32cHash, unittest.equals(42));
-    unittest.expect(o.inline, unittest.equals('foo'));
-    unittest.expect(o.length, unittest.equals('foo'));
-    unittest.expect(o.md5Hash, unittest.equals('foo'));
-    checkGdataObjectId(o.objectId as api.GdataObjectId);
-    unittest.expect(o.path, unittest.equals('foo'));
-    unittest.expect(o.referenceType, unittest.equals('foo'));
-    unittest.expect(o.sha1Hash, unittest.equals('foo'));
+    unittest.expect(
+      o.blobRef!,
+      unittest.equals('foo'),
+    );
+    checkGdataBlobstore2Info(o.blobstore2Info! as api.GdataBlobstore2Info);
+    unittest.expect(
+      o.cosmoBinaryReference!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.crc32cHash!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.inline!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.length!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.md5Hash!,
+      unittest.equals('foo'),
+    );
+    checkGdataObjectId(o.objectId! as api.GdataObjectId);
+    unittest.expect(
+      o.path!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.referenceType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sha1Hash!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGdataCompositeMedia--;
 }
@@ -126,11 +168,26 @@ api.GdataContentTypeInfo buildGdataContentTypeInfo() {
 void checkGdataContentTypeInfo(api.GdataContentTypeInfo o) {
   buildCounterGdataContentTypeInfo++;
   if (buildCounterGdataContentTypeInfo < 3) {
-    unittest.expect(o.bestGuess, unittest.equals('foo'));
-    unittest.expect(o.fromBytes, unittest.equals('foo'));
-    unittest.expect(o.fromFileName, unittest.equals('foo'));
-    unittest.expect(o.fromHeader, unittest.equals('foo'));
-    unittest.expect(o.fromUrlPath, unittest.equals('foo'));
+    unittest.expect(
+      o.bestGuess!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fromBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fromFileName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fromHeader!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fromUrlPath!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGdataContentTypeInfo--;
 }
@@ -153,11 +210,20 @@ api.GdataDiffChecksumsResponse buildGdataDiffChecksumsResponse() {
 void checkGdataDiffChecksumsResponse(api.GdataDiffChecksumsResponse o) {
   buildCounterGdataDiffChecksumsResponse++;
   if (buildCounterGdataDiffChecksumsResponse < 3) {
-    checkGdataCompositeMedia(o.checksumsLocation as api.GdataCompositeMedia);
-    unittest.expect(o.chunkSizeBytes, unittest.equals('foo'));
-    checkGdataCompositeMedia(o.objectLocation as api.GdataCompositeMedia);
-    unittest.expect(o.objectSizeBytes, unittest.equals('foo'));
-    unittest.expect(o.objectVersion, unittest.equals('foo'));
+    checkGdataCompositeMedia(o.checksumsLocation! as api.GdataCompositeMedia);
+    unittest.expect(
+      o.chunkSizeBytes!,
+      unittest.equals('foo'),
+    );
+    checkGdataCompositeMedia(o.objectLocation! as api.GdataCompositeMedia);
+    unittest.expect(
+      o.objectSizeBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.objectVersion!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGdataDiffChecksumsResponse--;
 }
@@ -176,7 +242,7 @@ api.GdataDiffDownloadResponse buildGdataDiffDownloadResponse() {
 void checkGdataDiffDownloadResponse(api.GdataDiffDownloadResponse o) {
   buildCounterGdataDiffDownloadResponse++;
   if (buildCounterGdataDiffDownloadResponse < 3) {
-    checkGdataCompositeMedia(o.objectLocation as api.GdataCompositeMedia);
+    checkGdataCompositeMedia(o.objectLocation! as api.GdataCompositeMedia);
   }
   buildCounterGdataDiffDownloadResponse--;
 }
@@ -197,9 +263,12 @@ api.GdataDiffUploadRequest buildGdataDiffUploadRequest() {
 void checkGdataDiffUploadRequest(api.GdataDiffUploadRequest o) {
   buildCounterGdataDiffUploadRequest++;
   if (buildCounterGdataDiffUploadRequest < 3) {
-    checkGdataCompositeMedia(o.checksumsInfo as api.GdataCompositeMedia);
-    checkGdataCompositeMedia(o.objectInfo as api.GdataCompositeMedia);
-    unittest.expect(o.objectVersion, unittest.equals('foo'));
+    checkGdataCompositeMedia(o.checksumsInfo! as api.GdataCompositeMedia);
+    checkGdataCompositeMedia(o.objectInfo! as api.GdataCompositeMedia);
+    unittest.expect(
+      o.objectVersion!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGdataDiffUploadRequest--;
 }
@@ -219,8 +288,11 @@ api.GdataDiffUploadResponse buildGdataDiffUploadResponse() {
 void checkGdataDiffUploadResponse(api.GdataDiffUploadResponse o) {
   buildCounterGdataDiffUploadResponse++;
   if (buildCounterGdataDiffUploadResponse < 3) {
-    unittest.expect(o.objectVersion, unittest.equals('foo'));
-    checkGdataCompositeMedia(o.originalObject as api.GdataCompositeMedia);
+    unittest.expect(
+      o.objectVersion!,
+      unittest.equals('foo'),
+    );
+    checkGdataCompositeMedia(o.originalObject! as api.GdataCompositeMedia);
   }
   buildCounterGdataDiffUploadResponse--;
 }
@@ -240,8 +312,14 @@ api.GdataDiffVersionResponse buildGdataDiffVersionResponse() {
 void checkGdataDiffVersionResponse(api.GdataDiffVersionResponse o) {
   buildCounterGdataDiffVersionResponse++;
   if (buildCounterGdataDiffVersionResponse < 3) {
-    unittest.expect(o.objectSizeBytes, unittest.equals('foo'));
-    unittest.expect(o.objectVersion, unittest.equals('foo'));
+    unittest.expect(
+      o.objectSizeBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.objectVersion!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGdataDiffVersionResponse--;
 }
@@ -261,8 +339,8 @@ api.GdataDownloadParameters buildGdataDownloadParameters() {
 void checkGdataDownloadParameters(api.GdataDownloadParameters o) {
   buildCounterGdataDownloadParameters++;
   if (buildCounterGdataDownloadParameters < 3) {
-    unittest.expect(o.allowGzipCompression, unittest.isTrue);
-    unittest.expect(o.ignoreRange, unittest.isTrue);
+    unittest.expect(o.allowGzipCompression!, unittest.isTrue);
+    unittest.expect(o.ignoreRange!, unittest.isTrue);
   }
   buildCounterGdataDownloadParameters--;
 }
@@ -323,42 +401,96 @@ api.GdataMedia buildGdataMedia() {
 void checkGdataMedia(api.GdataMedia o) {
   buildCounterGdataMedia++;
   if (buildCounterGdataMedia < 3) {
-    unittest.expect(o.algorithm, unittest.equals('foo'));
-    unittest.expect(o.bigstoreObjectRef, unittest.equals('foo'));
-    unittest.expect(o.blobRef, unittest.equals('foo'));
-    checkGdataBlobstore2Info(o.blobstore2Info as api.GdataBlobstore2Info);
-    checkUnnamed3678(o.compositeMedia);
-    unittest.expect(o.contentType, unittest.equals('foo'));
-    checkGdataContentTypeInfo(o.contentTypeInfo as api.GdataContentTypeInfo);
-    unittest.expect(o.cosmoBinaryReference, unittest.equals('foo'));
-    unittest.expect(o.crc32cHash, unittest.equals(42));
+    unittest.expect(
+      o.algorithm!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.bigstoreObjectRef!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.blobRef!,
+      unittest.equals('foo'),
+    );
+    checkGdataBlobstore2Info(o.blobstore2Info! as api.GdataBlobstore2Info);
+    checkUnnamed3678(o.compositeMedia!);
+    unittest.expect(
+      o.contentType!,
+      unittest.equals('foo'),
+    );
+    checkGdataContentTypeInfo(o.contentTypeInfo! as api.GdataContentTypeInfo);
+    unittest.expect(
+      o.cosmoBinaryReference!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.crc32cHash!,
+      unittest.equals(42),
+    );
     checkGdataDiffChecksumsResponse(
-        o.diffChecksumsResponse as api.GdataDiffChecksumsResponse);
+        o.diffChecksumsResponse! as api.GdataDiffChecksumsResponse);
     checkGdataDiffDownloadResponse(
-        o.diffDownloadResponse as api.GdataDiffDownloadResponse);
+        o.diffDownloadResponse! as api.GdataDiffDownloadResponse);
     checkGdataDiffUploadRequest(
-        o.diffUploadRequest as api.GdataDiffUploadRequest);
+        o.diffUploadRequest! as api.GdataDiffUploadRequest);
     checkGdataDiffUploadResponse(
-        o.diffUploadResponse as api.GdataDiffUploadResponse);
+        o.diffUploadResponse! as api.GdataDiffUploadResponse);
     checkGdataDiffVersionResponse(
-        o.diffVersionResponse as api.GdataDiffVersionResponse);
+        o.diffVersionResponse! as api.GdataDiffVersionResponse);
     checkGdataDownloadParameters(
-        o.downloadParameters as api.GdataDownloadParameters);
-    unittest.expect(o.filename, unittest.equals('foo'));
-    unittest.expect(o.hash, unittest.equals('foo'));
-    unittest.expect(o.hashVerified, unittest.isTrue);
-    unittest.expect(o.inline, unittest.equals('foo'));
-    unittest.expect(o.isPotentialRetry, unittest.isTrue);
-    unittest.expect(o.length, unittest.equals('foo'));
-    unittest.expect(o.md5Hash, unittest.equals('foo'));
-    unittest.expect(o.mediaId, unittest.equals('foo'));
-    checkGdataObjectId(o.objectId as api.GdataObjectId);
-    unittest.expect(o.path, unittest.equals('foo'));
-    unittest.expect(o.referenceType, unittest.equals('foo'));
-    unittest.expect(o.sha1Hash, unittest.equals('foo'));
-    unittest.expect(o.sha256Hash, unittest.equals('foo'));
-    unittest.expect(o.timestamp, unittest.equals('foo'));
-    unittest.expect(o.token, unittest.equals('foo'));
+        o.downloadParameters! as api.GdataDownloadParameters);
+    unittest.expect(
+      o.filename!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hash!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.hashVerified!, unittest.isTrue);
+    unittest.expect(
+      o.inline!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.isPotentialRetry!, unittest.isTrue);
+    unittest.expect(
+      o.length!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.md5Hash!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mediaId!,
+      unittest.equals('foo'),
+    );
+    checkGdataObjectId(o.objectId! as api.GdataObjectId);
+    unittest.expect(
+      o.path!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.referenceType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sha1Hash!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sha256Hash!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timestamp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.token!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGdataMedia--;
 }
@@ -379,9 +511,18 @@ api.GdataObjectId buildGdataObjectId() {
 void checkGdataObjectId(api.GdataObjectId o) {
   buildCounterGdataObjectId++;
   if (buildCounterGdataObjectId < 3) {
-    unittest.expect(o.bucketName, unittest.equals('foo'));
-    unittest.expect(o.generation, unittest.equals('foo'));
-    unittest.expect(o.objectName, unittest.equals('foo'));
+    unittest.expect(
+      o.bucketName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.generation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.objectName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGdataObjectId--;
 }
@@ -405,12 +546,27 @@ api.Job buildJob() {
 void checkJob(api.Job o) {
   buildCounterJob++;
   if (buildCounterJob < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.expireTime, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.reportTypeId, unittest.equals('foo'));
-    unittest.expect(o.systemManaged, unittest.isTrue);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expireTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reportTypeId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.systemManaged!, unittest.isTrue);
   }
   buildCounterJob--;
 }
@@ -443,8 +599,11 @@ api.ListJobsResponse buildListJobsResponse() {
 void checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    checkUnnamed3679(o.jobs);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed3679(o.jobs!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterListJobsResponse--;
 }
@@ -477,8 +636,11 @@ api.ListReportTypesResponse buildListReportTypesResponse() {
 void checkListReportTypesResponse(api.ListReportTypesResponse o) {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3680(o.reportTypes);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3680(o.reportTypes!);
   }
   buildCounterListReportTypesResponse--;
 }
@@ -511,8 +673,11 @@ api.ListReportsResponse buildListReportsResponse() {
 void checkListReportsResponse(api.ListReportsResponse o) {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3681(o.reports);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3681(o.reports!);
   }
   buildCounterListReportsResponse--;
 }
@@ -537,13 +702,34 @@ api.Report buildReport() {
 void checkReport(api.Report o) {
   buildCounterReport++;
   if (buildCounterReport < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.downloadUrl, unittest.equals('foo'));
-    unittest.expect(o.endTime, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.jobExpireTime, unittest.equals('foo'));
-    unittest.expect(o.jobId, unittest.equals('foo'));
-    unittest.expect(o.startTime, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.downloadUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.jobExpireTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.jobId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterReport--;
 }
@@ -565,10 +751,19 @@ api.ReportType buildReportType() {
 void checkReportType(api.ReportType o) {
   buildCounterReportType++;
   if (buildCounterReportType < 3) {
-    unittest.expect(o.deprecateTime, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.systemManaged, unittest.isTrue);
+    unittest.expect(
+      o.deprecateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.systemManaged!, unittest.isTrue);
   }
   buildCounterReportType--;
 }
@@ -734,10 +929,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("v1/jobs"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals("v1/jobs"),
+        );
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -755,9 +954,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["onBehalfOfContentOwner"]!.first,
+          unittest.equals(arg_onBehalfOfContentOwner),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -786,14 +990,21 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1/jobs/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1/jobs/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_jobId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_jobId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -810,9 +1021,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["onBehalfOfContentOwner"]!.first,
+          unittest.equals(arg_onBehalfOfContentOwner),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -841,14 +1057,21 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1/jobs/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1/jobs/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_jobId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_jobId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -865,9 +1088,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["onBehalfOfContentOwner"]!.first,
+          unittest.equals(arg_onBehalfOfContentOwner),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -898,10 +1126,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("v1/jobs"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals("v1/jobs"),
+        );
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -919,15 +1151,26 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["includeSystemManaged"].first,
-            unittest.equals("$arg_includeSystemManaged"));
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["includeSystemManaged"]!.first,
+          unittest.equals("$arg_includeSystemManaged"),
+        );
+        unittest.expect(
+          queryMap["onBehalfOfContentOwner"]!.first,
+          unittest.equals(arg_onBehalfOfContentOwner),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -962,23 +1205,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1/jobs/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1/jobs/"),
+        );
         pathOffset += 8;
         index = path.indexOf('/reports/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_jobId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("/reports/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_jobId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("/reports/"),
+        );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_reportId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_reportId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -995,9 +1250,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["onBehalfOfContentOwner"]!.first,
+          unittest.equals(arg_onBehalfOfContentOwner),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1031,19 +1291,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1/jobs/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1/jobs/"),
+        );
         pathOffset += 8;
         index = path.indexOf('/reports', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_jobId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/reports"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_jobId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/reports"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -1062,18 +1331,33 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["createdAfter"].first, unittest.equals(arg_createdAfter));
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
+          queryMap["createdAfter"]!.first,
+          unittest.equals(arg_createdAfter),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["startTimeAtOrAfter"].first,
-            unittest.equals(arg_startTimeAtOrAfter));
-        unittest.expect(queryMap["startTimeBefore"].first,
-            unittest.equals(arg_startTimeBefore));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["onBehalfOfContentOwner"]!.first,
+          unittest.equals(arg_onBehalfOfContentOwner),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["startTimeAtOrAfter"]!.first,
+          unittest.equals(arg_startTimeAtOrAfter),
+        );
+        unittest.expect(
+          queryMap["startTimeBefore"]!.first,
+          unittest.equals(arg_startTimeBefore),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1111,10 +1395,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1/media/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1/media/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -1133,7 +1421,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1164,10 +1455,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14),
-            unittest.equals("v1/reportTypes"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 14),
+          unittest.equals("v1/reportTypes"),
+        );
         pathOffset += 14;
 
         var query = (req.url).query;
@@ -1185,15 +1480,26 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["includeSystemManaged"].first,
-            unittest.equals("$arg_includeSystemManaged"));
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["includeSystemManaged"]!.first,
+          unittest.equals("$arg_includeSystemManaged"),
+        );
+        unittest.expect(
+          queryMap["onBehalfOfContentOwner"]!.first,
+          unittest.equals(arg_onBehalfOfContentOwner),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

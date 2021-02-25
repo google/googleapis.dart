@@ -91,14 +91,14 @@ class EntitiesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchResponse> search({
-    core.List<core.String> ids,
-    core.bool indent,
-    core.List<core.String> languages,
-    core.int limit,
-    core.bool prefix,
-    core.String query,
-    core.List<core.String> types,
-    core.String $fields,
+    core.List<core.String>? ids,
+    core.bool? indent,
+    core.List<core.String>? languages,
+    core.int? limit,
+    core.bool? prefix,
+    core.String? query,
+    core.List<core.String>? types,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (ids != null) 'ids': ids,
@@ -132,19 +132,19 @@ class SearchResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object P_context;
+  core.Object? P_context;
 
   /// The schema type of top-level JSON-LD object, e.g. ItemList.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object P_type;
+  core.Object? P_type;
 
   /// The item list of search results.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> itemListElement;
+  core.List<core.Object>? itemListElement;
 
   SearchResponse();
 
@@ -162,9 +162,9 @@ class SearchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (P_context != null) '@context': P_context,
-        if (P_type != null) '@type': P_type,
-        if (itemListElement != null) 'itemListElement': itemListElement,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (P_context != null) '@context': P_context!,
+        if (P_type != null) '@type': P_type!,
+        if (itemListElement != null) 'itemListElement': itemListElement!,
       };
 }

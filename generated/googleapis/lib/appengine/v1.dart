@@ -114,10 +114,9 @@ class AppsResource {
   /// this method will complete with the same error.
   async.Future<Operation> create(
     Application request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -152,11 +151,8 @@ class AppsResource {
   /// this method will complete with the same error.
   async.Future<Application> get(
     core.String appsId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -200,14 +196,10 @@ class AppsResource {
   async.Future<Operation> patch(
     Application request,
     core.String appsId, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -256,13 +248,9 @@ class AppsResource {
   async.Future<Operation> repair(
     RepairApplicationRequest request,
     core.String appsId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -308,13 +296,9 @@ class AppsAuthorizedCertificatesResource {
   async.Future<AuthorizedCertificate> create(
     AuthorizedCertificate request,
     core.String appsId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -356,15 +340,8 @@ class AppsAuthorizedCertificatesResource {
   async.Future<Empty> delete(
     core.String appsId,
     core.String authorizedCertificatesId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (authorizedCertificatesId == null) {
-      throw core.ArgumentError(
-          'Parameter authorizedCertificatesId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -413,16 +390,9 @@ class AppsAuthorizedCertificatesResource {
   async.Future<AuthorizedCertificate> get(
     core.String appsId,
     core.String authorizedCertificatesId, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (authorizedCertificatesId == null) {
-      throw core.ArgumentError(
-          'Parameter authorizedCertificatesId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -473,14 +443,11 @@ class AppsAuthorizedCertificatesResource {
   /// this method will complete with the same error.
   async.Future<ListAuthorizedCertificatesResponse> list(
     core.String appsId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -536,18 +503,10 @@ class AppsAuthorizedCertificatesResource {
     AuthorizedCertificate request,
     core.String appsId,
     core.String authorizedCertificatesId, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (authorizedCertificatesId == null) {
-      throw core.ArgumentError(
-          'Parameter authorizedCertificatesId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -598,13 +557,10 @@ class AppsAuthorizedDomainsResource {
   /// this method will complete with the same error.
   async.Future<ListAuthorizedDomainsResponse> list(
     core.String appsId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -669,14 +625,10 @@ class AppsDomainMappingsResource {
   async.Future<Operation> create(
     DomainMapping request,
     core.String appsId, {
-    core.String overrideStrategy,
-    core.String $fields,
+    core.String? overrideStrategy,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (overrideStrategy != null) 'overrideStrategy': [overrideStrategy],
       if ($fields != null) 'fields': [$fields],
@@ -720,14 +672,8 @@ class AppsDomainMappingsResource {
   async.Future<Operation> delete(
     core.String appsId,
     core.String domainMappingsId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (domainMappingsId == null) {
-      throw core.ArgumentError('Parameter domainMappingsId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -767,14 +713,8 @@ class AppsDomainMappingsResource {
   async.Future<DomainMapping> get(
     core.String appsId,
     core.String domainMappingsId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (domainMappingsId == null) {
-      throw core.ArgumentError('Parameter domainMappingsId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -816,13 +756,10 @@ class AppsDomainMappingsResource {
   /// this method will complete with the same error.
   async.Future<ListDomainMappingsResponse> list(
     core.String appsId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -874,17 +811,10 @@ class AppsDomainMappingsResource {
     DomainMapping request,
     core.String appsId,
     core.String domainMappingsId, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (domainMappingsId == null) {
-      throw core.ArgumentError('Parameter domainMappingsId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -947,13 +877,9 @@ class AppsFirewallIngressRulesResource {
   async.Future<BatchUpdateIngressRulesResponse> batchUpdate(
     BatchUpdateIngressRulesRequest request,
     core.String appsId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -994,13 +920,9 @@ class AppsFirewallIngressRulesResource {
   async.Future<FirewallRule> create(
     FirewallRule request,
     core.String appsId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1041,14 +963,8 @@ class AppsFirewallIngressRulesResource {
   async.Future<Empty> delete(
     core.String appsId,
     core.String ingressRulesId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (ingressRulesId == null) {
-      throw core.ArgumentError('Parameter ingressRulesId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1088,14 +1004,8 @@ class AppsFirewallIngressRulesResource {
   async.Future<FirewallRule> get(
     core.String appsId,
     core.String ingressRulesId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (ingressRulesId == null) {
-      throw core.ArgumentError('Parameter ingressRulesId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1141,14 +1051,11 @@ class AppsFirewallIngressRulesResource {
   /// this method will complete with the same error.
   async.Future<ListIngressRulesResponse> list(
     core.String appsId, {
-    core.String matchingAddress,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? matchingAddress,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (matchingAddress != null) 'matchingAddress': [matchingAddress],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1196,17 +1103,10 @@ class AppsFirewallIngressRulesResource {
     FirewallRule request,
     core.String appsId,
     core.String ingressRulesId, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (ingressRulesId == null) {
-      throw core.ArgumentError('Parameter ingressRulesId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1254,14 +1154,8 @@ class AppsLocationsResource {
   async.Future<Location> get(
     core.String appsId,
     core.String locationsId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (locationsId == null) {
-      throw core.ArgumentError('Parameter locationsId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1304,14 +1198,11 @@ class AppsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String appsId, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1361,14 +1252,8 @@ class AppsOperationsResource {
   async.Future<Operation> get(
     core.String appsId,
     core.String operationsId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (operationsId == null) {
-      throw core.ArgumentError('Parameter operationsId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1419,14 +1304,11 @@ class AppsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String appsId, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1477,14 +1359,8 @@ class AppsServicesResource {
   async.Future<Operation> delete(
     core.String appsId,
     core.String servicesId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (servicesId == null) {
-      throw core.ArgumentError('Parameter servicesId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1524,14 +1400,8 @@ class AppsServicesResource {
   async.Future<Service> get(
     core.String appsId,
     core.String servicesId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (servicesId == null) {
-      throw core.ArgumentError('Parameter servicesId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1572,13 +1442,10 @@ class AppsServicesResource {
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(
     core.String appsId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1638,18 +1505,11 @@ class AppsServicesResource {
     Service request,
     core.String appsId,
     core.String servicesId, {
-    core.bool migrateTraffic,
-    core.String updateMask,
-    core.String $fields,
+    core.bool? migrateTraffic,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (servicesId == null) {
-      throw core.ArgumentError('Parameter servicesId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (migrateTraffic != null) 'migrateTraffic': ['${migrateTraffic}'],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1705,16 +1565,9 @@ class AppsServicesVersionsResource {
     Version request,
     core.String appsId,
     core.String servicesId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (servicesId == null) {
-      throw core.ArgumentError('Parameter servicesId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1759,17 +1612,8 @@ class AppsServicesVersionsResource {
     core.String appsId,
     core.String servicesId,
     core.String versionsId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (servicesId == null) {
-      throw core.ArgumentError('Parameter servicesId is required.');
-    }
-    if (versionsId == null) {
-      throw core.ArgumentError('Parameter versionsId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1825,18 +1669,9 @@ class AppsServicesVersionsResource {
     core.String appsId,
     core.String servicesId,
     core.String versionsId, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (servicesId == null) {
-      throw core.ArgumentError('Parameter servicesId is required.');
-    }
-    if (versionsId == null) {
-      throw core.ArgumentError('Parameter versionsId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -1891,17 +1726,11 @@ class AppsServicesVersionsResource {
   async.Future<ListVersionsResponse> list(
     core.String appsId,
     core.String servicesId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (servicesId == null) {
-      throw core.ArgumentError('Parameter servicesId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1987,20 +1816,10 @@ class AppsServicesVersionsResource {
     core.String appsId,
     core.String servicesId,
     core.String versionsId, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (servicesId == null) {
-      throw core.ArgumentError('Parameter servicesId is required.');
-    }
-    if (versionsId == null) {
-      throw core.ArgumentError('Parameter versionsId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2067,22 +1886,9 @@ class AppsServicesVersionsInstancesResource {
     core.String servicesId,
     core.String versionsId,
     core.String instancesId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (servicesId == null) {
-      throw core.ArgumentError('Parameter servicesId is required.');
-    }
-    if (versionsId == null) {
-      throw core.ArgumentError('Parameter versionsId is required.');
-    }
-    if (instancesId == null) {
-      throw core.ArgumentError('Parameter instancesId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2146,20 +1952,8 @@ class AppsServicesVersionsInstancesResource {
     core.String servicesId,
     core.String versionsId,
     core.String instancesId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (servicesId == null) {
-      throw core.ArgumentError('Parameter servicesId is required.');
-    }
-    if (versionsId == null) {
-      throw core.ArgumentError('Parameter versionsId is required.');
-    }
-    if (instancesId == null) {
-      throw core.ArgumentError('Parameter instancesId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2209,20 +2003,8 @@ class AppsServicesVersionsInstancesResource {
     core.String servicesId,
     core.String versionsId,
     core.String instancesId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (servicesId == null) {
-      throw core.ArgumentError('Parameter servicesId is required.');
-    }
-    if (versionsId == null) {
-      throw core.ArgumentError('Parameter versionsId is required.');
-    }
-    if (instancesId == null) {
-      throw core.ArgumentError('Parameter instancesId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2275,19 +2057,10 @@ class AppsServicesVersionsInstancesResource {
     core.String appsId,
     core.String servicesId,
     core.String versionsId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (appsId == null) {
-      throw core.ArgumentError('Parameter appsId is required.');
-    }
-    if (servicesId == null) {
-      throw core.ArgumentError('Parameter servicesId is required.');
-    }
-    if (versionsId == null) {
-      throw core.ArgumentError('Parameter versionsId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2327,7 +2100,7 @@ class ApiConfigHandler {
   /// creating an account.
   /// - "AUTH_FAIL_ACTION_UNAUTHORIZED" : Rejects request with a 401 HTTP status
   /// code and an error message.
-  core.String authFailAction;
+  core.String? authFailAction;
 
   /// Level of login required to access this resource.
   ///
@@ -2341,10 +2114,10 @@ class ApiConfigHandler {
   /// auth_fail_action. If the user is an administrator, the handler proceeds.
   /// - "LOGIN_REQUIRED" : If the user has signed in, the handler proceeds
   /// normally. Otherwise, the auth_fail_action is taken.
-  core.String login;
+  core.String? login;
 
   /// Path to the script from the application root directory.
-  core.String script;
+  core.String? script;
 
   /// Security (HTTPS) enforcement for this URL.
   /// Possible string values are:
@@ -2360,10 +2133,10 @@ class ApiConfigHandler {
   /// - "SECURE_ALWAYS" : Requests for a URL that match this handler that do not
   /// use HTTPS are automatically redirected to the HTTPS URL with the same
   /// path. Query parameters are reserved for the redirect.
-  core.String securityLevel;
+  core.String? securityLevel;
 
   /// URL to serve the endpoint at.
-  core.String url;
+  core.String? url;
 
   ApiConfigHandler();
 
@@ -2385,19 +2158,19 @@ class ApiConfigHandler {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (authFailAction != null) 'authFailAction': authFailAction,
-        if (login != null) 'login': login,
-        if (script != null) 'script': script,
-        if (securityLevel != null) 'securityLevel': securityLevel,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (authFailAction != null) 'authFailAction': authFailAction!,
+        if (login != null) 'login': login!,
+        if (script != null) 'script': script!,
+        if (securityLevel != null) 'securityLevel': securityLevel!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// Uses Google Cloud Endpoints to handle requests.
 class ApiEndpointHandler {
   /// Path to the script from the application root directory.
-  core.String scriptPath;
+  core.String? scriptPath;
 
   ApiEndpointHandler();
 
@@ -2407,8 +2180,8 @@ class ApiEndpointHandler {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (scriptPath != null) 'scriptPath': scriptPath,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (scriptPath != null) 'scriptPath': scriptPath!,
       };
 }
 
@@ -2417,14 +2190,14 @@ class ApiEndpointHandler {
 class Application {
   /// Google Apps authentication domain that controls which users can access
   /// this application.Defaults to open access for any Google Account.
-  core.String authDomain;
+  core.String? authDomain;
 
   /// Google Cloud Storage bucket that can be used for storing files associated
   /// with this application.
   ///
   /// This bucket is associated with the application and can be used by the
   /// gcloud deployment commands.@OutputOnly
-  core.String codeBucket;
+  core.String? codeBucket;
 
   /// The type of the Cloud Firestore or Cloud Datastore database associated
   /// with this application.
@@ -2433,39 +2206,39 @@ class Application {
   /// - "CLOUD_DATASTORE" : Cloud Datastore
   /// - "CLOUD_FIRESTORE" : Cloud Firestore Native
   /// - "CLOUD_DATASTORE_COMPATIBILITY" : Cloud Firestore in Datastore Mode
-  core.String databaseType;
+  core.String? databaseType;
 
   /// Google Cloud Storage bucket that can be used by this application to store
   /// content.@OutputOnly
-  core.String defaultBucket;
+  core.String? defaultBucket;
 
   /// Cookie expiration policy for this application.
-  core.String defaultCookieExpiration;
+  core.String? defaultCookieExpiration;
 
   /// Hostname used to reach this application, as resolved by App
   /// Engine.@OutputOnly
-  core.String defaultHostname;
+  core.String? defaultHostname;
 
   /// HTTP path dispatch rules for requests to the application that do not
   /// explicitly target a service or version.
   ///
   /// Rules are order-dependent. Up to 20 dispatch rules can be supported.
-  core.List<UrlDispatchRule> dispatchRules;
+  core.List<UrlDispatchRule>? dispatchRules;
 
   /// The feature specific settings to be used in the application.
-  FeatureSettings featureSettings;
+  FeatureSettings? featureSettings;
 
   /// The Google Container Registry domain used for storing managed build docker
   /// images for this application.
-  core.String gcrDomain;
-  IdentityAwareProxy iap;
+  core.String? gcrDomain;
+  IdentityAwareProxy? iap;
 
   /// Identifier of the Application resource.
   ///
   /// This identifier is equivalent to the project ID of the Google Cloud
   /// Platform project where you want to deploy your application. Example:
   /// myapp.
-  core.String id;
+  core.String? id;
 
   /// Location from which this application runs.
   ///
@@ -2473,12 +2246,12 @@ class Application {
   /// location, which is also where all of the application's end user content is
   /// stored.Defaults to us-central.View the list of supported locations
   /// (https://cloud.google.com/appengine/docs/locations).
-  core.String locationId;
+  core.String? locationId;
 
   /// Full path to the Application resource in the API.
   ///
   /// Example: apps/myapp.@OutputOnly
-  core.String name;
+  core.String? name;
 
   /// Serving status of this application.
   /// Possible string values are:
@@ -2486,7 +2259,7 @@ class Application {
   /// - "SERVING" : Application is serving.
   /// - "USER_DISABLED" : Application has been disabled by the user.
   /// - "SYSTEM_DISABLED" : Application has been disabled by the system.
-  core.String servingStatus;
+  core.String? servingStatus;
 
   Application();
 
@@ -2540,25 +2313,25 @@ class Application {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (authDomain != null) 'authDomain': authDomain,
-        if (codeBucket != null) 'codeBucket': codeBucket,
-        if (databaseType != null) 'databaseType': databaseType,
-        if (defaultBucket != null) 'defaultBucket': defaultBucket,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (authDomain != null) 'authDomain': authDomain!,
+        if (codeBucket != null) 'codeBucket': codeBucket!,
+        if (databaseType != null) 'databaseType': databaseType!,
+        if (defaultBucket != null) 'defaultBucket': defaultBucket!,
         if (defaultCookieExpiration != null)
-          'defaultCookieExpiration': defaultCookieExpiration,
-        if (defaultHostname != null) 'defaultHostname': defaultHostname,
+          'defaultCookieExpiration': defaultCookieExpiration!,
+        if (defaultHostname != null) 'defaultHostname': defaultHostname!,
         if (dispatchRules != null)
           'dispatchRules':
-              dispatchRules.map((value) => value.toJson()).toList(),
+              dispatchRules!.map((value) => value.toJson()).toList(),
         if (featureSettings != null)
-          'featureSettings': featureSettings.toJson(),
-        if (gcrDomain != null) 'gcrDomain': gcrDomain,
-        if (iap != null) 'iap': iap.toJson(),
-        if (id != null) 'id': id,
-        if (locationId != null) 'locationId': locationId,
-        if (name != null) 'name': name,
-        if (servingStatus != null) 'servingStatus': servingStatus,
+          'featureSettings': featureSettings!.toJson(),
+        if (gcrDomain != null) 'gcrDomain': gcrDomain!,
+        if (iap != null) 'iap': iap!.toJson(),
+        if (id != null) 'id': id!,
+        if (locationId != null) 'locationId': locationId!,
+        if (name != null) 'name': name!,
+        if (servingStatus != null) 'servingStatus': servingStatus!,
       };
 }
 
@@ -2570,12 +2343,12 @@ class AuthorizedCertificate {
   /// The SSL certificate serving the AuthorizedCertificate resource.
   ///
   /// This must be obtained independently from a certificate authority.
-  CertificateRawData certificateRawData;
+  CertificateRawData? certificateRawData;
 
   /// The user-specified display name of the certificate.
   ///
   /// This is not guaranteed to be unique. Example: My Certificate.
-  core.String displayName;
+  core.String? displayName;
 
   /// Aggregate count of the domain mappings with this certificate mapped.
   ///
@@ -2583,26 +2356,26 @@ class AuthorizedCertificate {
   /// does not have VIEWER permissions.Only returned by GET or LIST requests
   /// when specifically requested by the view=FULL_CERTIFICATE
   /// option.@OutputOnly
-  core.int domainMappingsCount;
+  core.int? domainMappingsCount;
 
   /// Topmost applicable domains of this certificate.
   ///
   /// This certificate applies to these domains and their subdomains. Example:
   /// example.com.@OutputOnly
-  core.List<core.String> domainNames;
+  core.List<core.String>? domainNames;
 
   /// The time when this certificate expires.
   ///
   /// To update the renewal time on this certificate, upload an SSL certificate
   /// with a different expiration time using
   /// AuthorizedCertificates.UpdateAuthorizedCertificate.@OutputOnly
-  core.String expireTime;
+  core.String? expireTime;
 
   /// Relative name of the certificate.
   ///
   /// This is a unique value autogenerated on AuthorizedCertificate resource
   /// creation. Example: 12345.@OutputOnly
-  core.String id;
+  core.String? id;
 
   /// Only applicable if this certificate is managed by App Engine.
   ///
@@ -2610,12 +2383,12 @@ class AuthorizedCertificate {
   /// cannot be updated or deleted via the AuthorizedCertificates API. If this
   /// certificate is manually administered by the user, this field will be
   /// empty.@OutputOnly
-  ManagedCertificate managedCertificate;
+  ManagedCertificate? managedCertificate;
 
   /// Full path to the AuthorizedCertificate resource in the API.
   ///
   /// Example: apps/myapp/authorizedCertificates/12345.@OutputOnly
-  core.String name;
+  core.String? name;
 
   /// The full paths to user visible Domain Mapping resources that have this
   /// certificate mapped.
@@ -2626,7 +2399,7 @@ class AuthorizedCertificate {
   /// See domain_mappings_count for a complete count.Only returned by GET or
   /// LIST requests when specifically requested by the view=FULL_CERTIFICATE
   /// option.@OutputOnly
-  core.List<core.String> visibleDomainMappings;
+  core.List<core.String>? visibleDomainMappings;
 
   AuthorizedCertificate();
 
@@ -2666,20 +2439,20 @@ class AuthorizedCertificate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (certificateRawData != null)
-          'certificateRawData': certificateRawData.toJson(),
-        if (displayName != null) 'displayName': displayName,
+          'certificateRawData': certificateRawData!.toJson(),
+        if (displayName != null) 'displayName': displayName!,
         if (domainMappingsCount != null)
-          'domainMappingsCount': domainMappingsCount,
-        if (domainNames != null) 'domainNames': domainNames,
-        if (expireTime != null) 'expireTime': expireTime,
-        if (id != null) 'id': id,
+          'domainMappingsCount': domainMappingsCount!,
+        if (domainNames != null) 'domainNames': domainNames!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (id != null) 'id': id!,
         if (managedCertificate != null)
-          'managedCertificate': managedCertificate.toJson(),
-        if (name != null) 'name': name,
+          'managedCertificate': managedCertificate!.toJson(),
+        if (name != null) 'name': name!,
         if (visibleDomainMappings != null)
-          'visibleDomainMappings': visibleDomainMappings,
+          'visibleDomainMappings': visibleDomainMappings!,
       };
 }
 
@@ -2691,12 +2464,12 @@ class AuthorizedDomain {
   /// Fully qualified domain name of the domain authorized for use.
   ///
   /// Example: example.com.
-  core.String id;
+  core.String? id;
 
   /// Full path to the AuthorizedDomain resource in the API.
   ///
   /// Example: apps/myapp/authorizedDomains/example.com.@OutputOnly
-  core.String name;
+  core.String? name;
 
   AuthorizedDomain();
 
@@ -2709,9 +2482,9 @@ class AuthorizedDomain {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2725,53 +2498,53 @@ class AutomaticScaling {
   /// This prevents the autoscaler from collecting information when the instance
   /// is initializing, during which the collected usage would not be reliable.
   /// Only applicable in the App Engine flexible environment.
-  core.String coolDownPeriod;
+  core.String? coolDownPeriod;
 
   /// Target scaling by CPU usage.
-  CpuUtilization cpuUtilization;
+  CpuUtilization? cpuUtilization;
 
   /// Target scaling by disk usage.
-  DiskUtilization diskUtilization;
+  DiskUtilization? diskUtilization;
 
   /// Number of concurrent requests an automatic scaling instance can accept
   /// before the scheduler spawns a new instance.Defaults to a runtime-specific
   /// value.
-  core.int maxConcurrentRequests;
+  core.int? maxConcurrentRequests;
 
   /// Maximum number of idle instances that should be maintained for this
   /// version.
-  core.int maxIdleInstances;
+  core.int? maxIdleInstances;
 
   /// Maximum amount of time that a request should wait in the pending queue
   /// before starting a new instance to handle it.
-  core.String maxPendingLatency;
+  core.String? maxPendingLatency;
 
   /// Maximum number of instances that should be started to handle requests for
   /// this version.
-  core.int maxTotalInstances;
+  core.int? maxTotalInstances;
 
   /// Minimum number of idle instances that should be maintained for this
   /// version.
   ///
   /// Only applicable for the default version of a service.
-  core.int minIdleInstances;
+  core.int? minIdleInstances;
 
   /// Minimum amount of time a request should wait in the pending queue before
   /// starting a new instance to handle it.
-  core.String minPendingLatency;
+  core.String? minPendingLatency;
 
   /// Minimum number of running instances that should be maintained for this
   /// version.
-  core.int minTotalInstances;
+  core.int? minTotalInstances;
 
   /// Target scaling by network usage.
-  NetworkUtilization networkUtilization;
+  NetworkUtilization? networkUtilization;
 
   /// Target scaling by request utilization.
-  RequestUtilization requestUtilization;
+  RequestUtilization? requestUtilization;
 
   /// Scheduler settings for standard environment.
-  StandardSchedulerSettings standardSchedulerSettings;
+  StandardSchedulerSettings? standardSchedulerSettings;
 
   AutomaticScaling();
 
@@ -2823,25 +2596,25 @@ class AutomaticScaling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (coolDownPeriod != null) 'coolDownPeriod': coolDownPeriod,
-        if (cpuUtilization != null) 'cpuUtilization': cpuUtilization.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (coolDownPeriod != null) 'coolDownPeriod': coolDownPeriod!,
+        if (cpuUtilization != null) 'cpuUtilization': cpuUtilization!.toJson(),
         if (diskUtilization != null)
-          'diskUtilization': diskUtilization.toJson(),
+          'diskUtilization': diskUtilization!.toJson(),
         if (maxConcurrentRequests != null)
-          'maxConcurrentRequests': maxConcurrentRequests,
-        if (maxIdleInstances != null) 'maxIdleInstances': maxIdleInstances,
-        if (maxPendingLatency != null) 'maxPendingLatency': maxPendingLatency,
-        if (maxTotalInstances != null) 'maxTotalInstances': maxTotalInstances,
-        if (minIdleInstances != null) 'minIdleInstances': minIdleInstances,
-        if (minPendingLatency != null) 'minPendingLatency': minPendingLatency,
-        if (minTotalInstances != null) 'minTotalInstances': minTotalInstances,
+          'maxConcurrentRequests': maxConcurrentRequests!,
+        if (maxIdleInstances != null) 'maxIdleInstances': maxIdleInstances!,
+        if (maxPendingLatency != null) 'maxPendingLatency': maxPendingLatency!,
+        if (maxTotalInstances != null) 'maxTotalInstances': maxTotalInstances!,
+        if (minIdleInstances != null) 'minIdleInstances': minIdleInstances!,
+        if (minPendingLatency != null) 'minPendingLatency': minPendingLatency!,
+        if (minTotalInstances != null) 'minTotalInstances': minTotalInstances!,
         if (networkUtilization != null)
-          'networkUtilization': networkUtilization.toJson(),
+          'networkUtilization': networkUtilization!.toJson(),
         if (requestUtilization != null)
-          'requestUtilization': requestUtilization.toJson(),
+          'requestUtilization': requestUtilization!.toJson(),
         if (standardSchedulerSettings != null)
-          'standardSchedulerSettings': standardSchedulerSettings.toJson(),
+          'standardSchedulerSettings': standardSchedulerSettings!.toJson(),
       };
 }
 
@@ -2853,10 +2626,10 @@ class AutomaticScaling {
 class BasicScaling {
   /// Duration of time after the last request that an instance must wait before
   /// the instance is shut down.
-  core.String idleTimeout;
+  core.String? idleTimeout;
 
   /// Maximum number of instances to create for this version.
-  core.int maxInstances;
+  core.int? maxInstances;
 
   BasicScaling();
 
@@ -2869,16 +2642,16 @@ class BasicScaling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (idleTimeout != null) 'idleTimeout': idleTimeout,
-        if (maxInstances != null) 'maxInstances': maxInstances,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (idleTimeout != null) 'idleTimeout': idleTimeout!,
+        if (maxInstances != null) 'maxInstances': maxInstances!,
       };
 }
 
 /// Request message for Firewall.BatchUpdateIngressRules.
 class BatchUpdateIngressRulesRequest {
   /// A list of FirewallRules to replace the existing set.
-  core.List<FirewallRule> ingressRules;
+  core.List<FirewallRule>? ingressRules;
 
   BatchUpdateIngressRulesRequest();
 
@@ -2891,16 +2664,16 @@ class BatchUpdateIngressRulesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (ingressRules != null)
-          'ingressRules': ingressRules.map((value) => value.toJson()).toList(),
+          'ingressRules': ingressRules!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for Firewall.UpdateAllIngressRules.
 class BatchUpdateIngressRulesResponse {
   /// The full list of ingress FirewallRules for this application.
-  core.List<FirewallRule> ingressRules;
+  core.List<FirewallRule>? ingressRules;
 
   BatchUpdateIngressRulesResponse();
 
@@ -2913,9 +2686,9 @@ class BatchUpdateIngressRulesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (ingressRules != null)
-          'ingressRules': ingressRules.map((value) => value.toJson()).toList(),
+          'ingressRules': ingressRules!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2927,13 +2700,13 @@ class CertificateRawData {
   /// size must be 2048 bits or fewer. Must include the header and footer.
   /// Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY-----
   /// @InputOnly
-  core.String privateKey;
+  core.String? privateKey;
 
   /// PEM encoded x.509 public key certificate.
   ///
   /// This field is set once on certificate creation. Must include the header
   /// and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
-  core.String publicCertificate;
+  core.String? publicCertificate;
 
   CertificateRawData();
 
@@ -2946,9 +2719,9 @@ class CertificateRawData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (privateKey != null) 'privateKey': privateKey,
-        if (publicCertificate != null) 'publicCertificate': publicCertificate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (privateKey != null) 'privateKey': privateKey!,
+        if (publicCertificate != null) 'publicCertificate': publicCertificate!,
       };
 }
 
@@ -2962,13 +2735,13 @@ class CloudBuildOptions {
   /// configuration details.Required for flexible environment builds.See
   /// https://cloud.google.com/appengine/docs/standard/python/config/appref for
   /// more details.
-  core.String appYamlPath;
+  core.String? appYamlPath;
 
   /// The Cloud Build timeout used as part of any dependent builds performed by
   /// version creation.
   ///
   /// Defaults to 10 minutes.
-  core.String cloudBuildTimeout;
+  core.String? cloudBuildTimeout;
 
   CloudBuildOptions();
 
@@ -2981,9 +2754,9 @@ class CloudBuildOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appYamlPath != null) 'appYamlPath': appYamlPath,
-        if (cloudBuildTimeout != null) 'cloudBuildTimeout': cloudBuildTimeout,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appYamlPath != null) 'appYamlPath': appYamlPath!,
+        if (cloudBuildTimeout != null) 'cloudBuildTimeout': cloudBuildTimeout!,
       };
 }
 
@@ -2997,7 +2770,7 @@ class ContainerInfo {
   ///
   /// The URI must be fully qualified and include a tag or digest. Examples:
   /// "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
-  core.String image;
+  core.String? image;
 
   ContainerInfo();
 
@@ -3007,20 +2780,20 @@ class ContainerInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (image != null) 'image': image,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (image != null) 'image': image!,
       };
 }
 
 /// Target scaling by CPU usage.
 class CpuUtilization {
   /// Period of time over which CPU utilization is calculated.
-  core.String aggregationWindowLength;
+  core.String? aggregationWindowLength;
 
   /// Target CPU utilization ratio to maintain when scaling.
   ///
   /// Must be between 0 and 1.
-  core.double targetUtilization;
+  core.double? targetUtilization;
 
   CpuUtilization();
 
@@ -3033,10 +2806,10 @@ class CpuUtilization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (aggregationWindowLength != null)
-          'aggregationWindowLength': aggregationWindowLength,
-        if (targetUtilization != null) 'targetUtilization': targetUtilization,
+          'aggregationWindowLength': aggregationWindowLength!,
+        if (targetUtilization != null) 'targetUtilization': targetUtilization!,
       };
 }
 
@@ -3046,7 +2819,7 @@ class CreateVersionMetadataV1 {
   /// The Cloud Build ID if one was created as part of the version create.
   ///
   /// @OutputOnly
-  core.String cloudBuildId;
+  core.String? cloudBuildId;
 
   CreateVersionMetadataV1();
 
@@ -3056,8 +2829,8 @@ class CreateVersionMetadataV1 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cloudBuildId != null) 'cloudBuildId': cloudBuildId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cloudBuildId != null) 'cloudBuildId': cloudBuildId!,
       };
 }
 
@@ -3067,7 +2840,7 @@ class CreateVersionMetadataV1Alpha {
   /// The Cloud Build ID if one was created as part of the version create.
   ///
   /// @OutputOnly
-  core.String cloudBuildId;
+  core.String? cloudBuildId;
 
   CreateVersionMetadataV1Alpha();
 
@@ -3077,8 +2850,8 @@ class CreateVersionMetadataV1Alpha {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cloudBuildId != null) 'cloudBuildId': cloudBuildId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cloudBuildId != null) 'cloudBuildId': cloudBuildId!,
       };
 }
 
@@ -3088,7 +2861,7 @@ class CreateVersionMetadataV1Beta {
   /// The Cloud Build ID if one was created as part of the version create.
   ///
   /// @OutputOnly
-  core.String cloudBuildId;
+  core.String? cloudBuildId;
 
   CreateVersionMetadataV1Beta();
 
@@ -3098,8 +2871,8 @@ class CreateVersionMetadataV1Beta {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cloudBuildId != null) 'cloudBuildId': cloudBuildId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cloudBuildId != null) 'cloudBuildId': cloudBuildId!,
       };
 }
 
@@ -3112,7 +2885,7 @@ class DebugInstanceRequest {
   /// {"userName":"\[USERNAME\]","expireOn":"\[EXPIRE_TIME\]"}For more
   /// information, see Adding and Removing SSH Keys
   /// (https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys).
-  core.String sshKey;
+  core.String? sshKey;
 
   DebugInstanceRequest();
 
@@ -3122,8 +2895,8 @@ class DebugInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sshKey != null) 'sshKey': sshKey,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sshKey != null) 'sshKey': sshKey!,
       };
 }
 
@@ -3133,22 +2906,22 @@ class Deployment {
   /// deployment.These options will only be used if a new build is created, such
   /// as when deploying to the App Engine flexible environment using files or
   /// zip.
-  CloudBuildOptions cloudBuildOptions;
+  CloudBuildOptions? cloudBuildOptions;
 
   /// The Docker image for the container that runs the version.
   ///
   /// Only applicable for instances running in the App Engine flexible
   /// environment.
-  ContainerInfo container;
+  ContainerInfo? container;
 
   /// Manifest of the files stored in Google Cloud Storage that are included as
   /// part of this version.
   ///
   /// All files must be readable using the credentials supplied with this call.
-  core.Map<core.String, FileInfo> files;
+  core.Map<core.String, FileInfo>? files;
 
   /// The zip file for this deployment, if this is a zip deployment.
-  ZipInfo zip;
+  ZipInfo? zip;
 
   Deployment();
 
@@ -3162,7 +2935,9 @@ class Deployment {
           _json['container'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('files')) {
-      files = (_json['files'] as core.Map).cast<core.String, core.Map>().map(
+      files = (_json['files'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               FileInfo.fromJson(item as core.Map<core.String, core.dynamic>),
@@ -3175,13 +2950,13 @@ class Deployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cloudBuildOptions != null)
-          'cloudBuildOptions': cloudBuildOptions.toJson(),
-        if (container != null) 'container': container.toJson(),
+          'cloudBuildOptions': cloudBuildOptions!.toJson(),
+        if (container != null) 'container': container!.toJson(),
         if (files != null)
-          'files': files.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (zip != null) 'zip': zip.toJson(),
+          'files': files!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (zip != null) 'zip': zip!.toJson(),
       };
 }
 
@@ -3190,16 +2965,16 @@ class Deployment {
 /// Only applicable in the App Engine flexible environment.
 class DiskUtilization {
   /// Target bytes read per second.
-  core.int targetReadBytesPerSecond;
+  core.int? targetReadBytesPerSecond;
 
   /// Target ops read per seconds.
-  core.int targetReadOpsPerSecond;
+  core.int? targetReadOpsPerSecond;
 
   /// Target bytes written per second.
-  core.int targetWriteBytesPerSecond;
+  core.int? targetWriteBytesPerSecond;
 
   /// Target ops written per second.
-  core.int targetWriteOpsPerSecond;
+  core.int? targetWriteOpsPerSecond;
 
   DiskUtilization();
 
@@ -3219,15 +2994,15 @@ class DiskUtilization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (targetReadBytesPerSecond != null)
-          'targetReadBytesPerSecond': targetReadBytesPerSecond,
+          'targetReadBytesPerSecond': targetReadBytesPerSecond!,
         if (targetReadOpsPerSecond != null)
-          'targetReadOpsPerSecond': targetReadOpsPerSecond,
+          'targetReadOpsPerSecond': targetReadOpsPerSecond!,
         if (targetWriteBytesPerSecond != null)
-          'targetWriteBytesPerSecond': targetWriteBytesPerSecond,
+          'targetWriteBytesPerSecond': targetWriteBytesPerSecond!,
         if (targetWriteOpsPerSecond != null)
-          'targetWriteOpsPerSecond': targetWriteOpsPerSecond,
+          'targetWriteOpsPerSecond': targetWriteOpsPerSecond!,
       };
 }
 
@@ -3236,23 +3011,23 @@ class DomainMapping {
   /// Relative name of the domain serving the application.
   ///
   /// Example: example.com.
-  core.String id;
+  core.String? id;
 
   /// Full path to the DomainMapping resource in the API.
   ///
   /// Example: apps/myapp/domainMapping/example.com.@OutputOnly
-  core.String name;
+  core.String? name;
 
   /// The resource records required to configure this domain mapping.
   ///
   /// These records must be added to the domain's DNS configuration in order to
   /// serve the application via this domain mapping.@OutputOnly
-  core.List<ResourceRecord> resourceRecords;
+  core.List<ResourceRecord>? resourceRecords;
 
   /// SSL configuration for this domain.
   ///
   /// If unconfigured, this domain will not serve with SSL.
-  SslSettings sslSettings;
+  SslSettings? sslSettings;
 
   DomainMapping();
 
@@ -3275,13 +3050,13 @@ class DomainMapping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
         if (resourceRecords != null)
           'resourceRecords':
-              resourceRecords.map((value) => value.toJson()).toList(),
-        if (sslSettings != null) 'sslSettings': sslSettings.toJson(),
+              resourceRecords!.map((value) => value.toJson()).toList(),
+        if (sslSettings != null) 'sslSettings': sslSettings!.toJson(),
       };
 }
 
@@ -3299,7 +3074,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Cloud Endpoints (https://cloud.google.com/endpoints) configuration.
@@ -3321,18 +3096,18 @@ class EndpointsApiService {
   /// also has a rollout strategy called RolloutStrategy.MANAGED. When using
   /// this, Endpoints fetches the latest configuration and does not need the
   /// configuration ID. In this case, config_id must be omitted.
-  core.String configId;
+  core.String? configId;
 
   /// Enable or disable trace sampling.
   ///
   /// By default, this is set to false for enabled.
-  core.bool disableTraceSampling;
+  core.bool? disableTraceSampling;
 
   /// Endpoints service name which is the name of the "service" resource in the
   /// Service Management API.
   ///
   /// For example "myapi.endpoints.myproject.cloud.goog"
-  core.String name;
+  core.String? name;
 
   /// Endpoints rollout strategy.
   ///
@@ -3344,7 +3119,7 @@ class EndpointsApiService {
   /// configuration ID specified by config_id.
   /// - "MANAGED" : Endpoints service configuration ID will be updated with each
   /// rollout.
-  core.String rolloutStrategy;
+  core.String? rolloutStrategy;
 
   EndpointsApiService();
 
@@ -3363,19 +3138,19 @@ class EndpointsApiService {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (configId != null) 'configId': configId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (configId != null) 'configId': configId!,
         if (disableTraceSampling != null)
-          'disableTraceSampling': disableTraceSampling,
-        if (name != null) 'name': name,
-        if (rolloutStrategy != null) 'rolloutStrategy': rolloutStrategy,
+          'disableTraceSampling': disableTraceSampling!,
+        if (name != null) 'name': name!,
+        if (rolloutStrategy != null) 'rolloutStrategy': rolloutStrategy!,
       };
 }
 
 /// The entrypoint for the application.
 class Entrypoint {
   /// The format should be a shell command that can be fed to bash -c.
-  core.String shell;
+  core.String? shell;
 
   Entrypoint();
 
@@ -3385,8 +3160,8 @@ class Entrypoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (shell != null) 'shell': shell,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (shell != null) 'shell': shell!,
       };
 }
 
@@ -3400,15 +3175,15 @@ class ErrorHandler {
   /// - "ERROR_CODE_DOS_API_DENIAL" : Client blocked by the application's Denial
   /// of Service protection configuration.
   /// - "ERROR_CODE_TIMEOUT" : Deadline reached before the application responds.
-  core.String errorCode;
+  core.String? errorCode;
 
   /// MIME type of file.
   ///
   /// Defaults to text/html.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// Static file content to be served for this error.
-  core.String staticFile;
+  core.String? staticFile;
 
   ErrorHandler();
 
@@ -3424,10 +3199,10 @@ class ErrorHandler {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode,
-        if (mimeType != null) 'mimeType': mimeType,
-        if (staticFile != null) 'staticFile': staticFile,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (staticFile != null) 'staticFile': staticFile!,
       };
 }
 
@@ -3442,12 +3217,12 @@ class FeatureSettings {
   /// 'liveness_check' values instead of 'health_check' ones. Once the legacy
   /// 'health_check' behavior is deprecated, and this value is always true, this
   /// setting can be removed.
-  core.bool splitHealthChecks;
+  core.bool? splitHealthChecks;
 
   /// If true, use Container-Optimized OS
   /// (https://cloud.google.com/container-optimized-os/) base image for VMs,
   /// rather than a base Debian image.
-  core.bool useContainerOptimizedOs;
+  core.bool? useContainerOptimizedOs;
 
   FeatureSettings();
 
@@ -3460,10 +3235,10 @@ class FeatureSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (splitHealthChecks != null) 'splitHealthChecks': splitHealthChecks,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (splitHealthChecks != null) 'splitHealthChecks': splitHealthChecks!,
         if (useContainerOptimizedOs != null)
-          'useContainerOptimizedOs': useContainerOptimizedOs,
+          'useContainerOptimizedOs': useContainerOptimizedOs!,
       };
 }
 
@@ -3472,16 +3247,16 @@ class FeatureSettings {
 /// Each source file that is deployed must be specified separately.
 class FileInfo {
   /// The MIME type of the file.Defaults to the value from Google Cloud Storage.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// The SHA1 hash of the file, in hex.
-  core.String sha1Sum;
+  core.String? sha1Sum;
 
   /// URL source to use to fetch this file.
   ///
   /// Must be a URL to a resource in Google Cloud Storage in the form
   /// 'http(s)://storage.googleapis.com//'.
-  core.String sourceUrl;
+  core.String? sourceUrl;
 
   FileInfo();
 
@@ -3497,10 +3272,10 @@ class FileInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (mimeType != null) 'mimeType': mimeType,
-        if (sha1Sum != null) 'sha1Sum': sha1Sum,
-        if (sourceUrl != null) 'sourceUrl': sourceUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (sha1Sum != null) 'sha1Sum': sha1Sum!,
+        if (sourceUrl != null) 'sourceUrl': sourceUrl!,
       };
 }
 
@@ -3512,12 +3287,12 @@ class FirewallRule {
   /// - "UNSPECIFIED_ACTION"
   /// - "ALLOW" : Matching requests are allowed.
   /// - "DENY" : Matching requests are denied.
-  core.String action;
+  core.String? action;
 
   /// An optional string description of this rule.
   ///
   /// This field has a maximum length of 100 characters.
-  core.String description;
+  core.String? description;
 
   /// A positive integer between 1, Int32.MaxValue-1 that defines the order of
   /// rule evaluation.
@@ -3525,7 +3300,7 @@ class FirewallRule {
   /// Rules with the lowest priority are evaluated first.A default rule at
   /// priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous
   /// rule matches. Only the action of this rule can be modified by the user.
-  core.int priority;
+  core.int? priority;
 
   /// IP address or range, defined using CIDR notation, of requests that this
   /// rule applies to.
@@ -3537,7 +3312,7 @@ class FirewallRule {
   /// example, 1.2.3.4/24 is accepted as the same address as 1.2.3.0/24.
   /// Similarly, for IPv6, 2001:db8::1/32 is accepted as the same address as
   /// 2001:db8::/32.
-  core.String sourceRange;
+  core.String? sourceRange;
 
   FirewallRule();
 
@@ -3556,11 +3331,11 @@ class FirewallRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action,
-        if (description != null) 'description': description,
-        if (priority != null) 'priority': priority,
-        if (sourceRange != null) 'sourceRange': sourceRange,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!,
+        if (description != null) 'description': description!,
+        if (priority != null) 'priority': priority!,
+        if (sourceRange != null) 'sourceRange': sourceRange!,
       };
 }
 
@@ -3570,30 +3345,30 @@ class FirewallRule {
 /// applicable for instances in App Engine flexible environment.
 class HealthCheck {
   /// Interval between health checks.
-  core.String checkInterval;
+  core.String? checkInterval;
 
   /// Whether to explicitly disable health checks for this instance.
-  core.bool disableHealthCheck;
+  core.bool? disableHealthCheck;
 
   /// Number of consecutive successful health checks required before receiving
   /// traffic.
-  core.int healthyThreshold;
+  core.int? healthyThreshold;
 
   /// Host header to send when performing an HTTP health check.
   ///
   /// Example: "myapp.appspot.com"
-  core.String host;
+  core.String? host;
 
   /// Number of consecutive failed health checks required before an instance is
   /// restarted.
-  core.int restartThreshold;
+  core.int? restartThreshold;
 
   /// Time before the health check is considered failed.
-  core.String timeout;
+  core.String? timeout;
 
   /// Number of consecutive failed health checks required before removing
   /// traffic.
-  core.int unhealthyThreshold;
+  core.int? unhealthyThreshold;
 
   HealthCheck();
 
@@ -3621,16 +3396,16 @@ class HealthCheck {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (checkInterval != null) 'checkInterval': checkInterval,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (checkInterval != null) 'checkInterval': checkInterval!,
         if (disableHealthCheck != null)
-          'disableHealthCheck': disableHealthCheck,
-        if (healthyThreshold != null) 'healthyThreshold': healthyThreshold,
-        if (host != null) 'host': host,
-        if (restartThreshold != null) 'restartThreshold': restartThreshold,
-        if (timeout != null) 'timeout': timeout,
+          'disableHealthCheck': disableHealthCheck!,
+        if (healthyThreshold != null) 'healthyThreshold': healthyThreshold!,
+        if (host != null) 'host': host!,
+        if (restartThreshold != null) 'restartThreshold': restartThreshold!,
+        if (timeout != null) 'timeout': timeout!,
         if (unhealthyThreshold != null)
-          'unhealthyThreshold': unhealthyThreshold,
+          'unhealthyThreshold': unhealthyThreshold!,
       };
 }
 
@@ -3639,20 +3414,20 @@ class IdentityAwareProxy {
   /// Whether the serving infrastructure will authenticate and authorize all
   /// incoming requests.If true, the oauth2_client_id and oauth2_client_secret
   /// fields must be non-empty.
-  core.bool enabled;
+  core.bool? enabled;
 
   /// OAuth2 client ID to use for the authentication flow.
-  core.String oauth2ClientId;
+  core.String? oauth2ClientId;
 
   /// OAuth2 client secret to use for the authentication flow.For security
   /// reasons, this value cannot be retrieved via the API.
   ///
   /// Instead, the SHA-256 hash of the value is returned in the
   /// oauth2_client_secret_sha256 field.@InputOnly
-  core.String oauth2ClientSecret;
+  core.String? oauth2ClientSecret;
 
   /// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
-  core.String oauth2ClientSecretSha256;
+  core.String? oauth2ClientSecretSha256;
 
   IdentityAwareProxy();
 
@@ -3672,13 +3447,13 @@ class IdentityAwareProxy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enabled != null) 'enabled': enabled,
-        if (oauth2ClientId != null) 'oauth2ClientId': oauth2ClientId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (oauth2ClientId != null) 'oauth2ClientId': oauth2ClientId!,
         if (oauth2ClientSecret != null)
-          'oauth2ClientSecret': oauth2ClientSecret,
+          'oauth2ClientSecret': oauth2ClientSecret!,
         if (oauth2ClientSecretSha256 != null)
-          'oauth2ClientSecretSha256': oauth2ClientSecretSha256,
+          'oauth2ClientSecretSha256': oauth2ClientSecretSha256!,
       };
 }
 
@@ -3688,7 +3463,7 @@ class Instance {
   /// App Engine release this instance is running on.
   ///
   /// Output only.
-  core.String appEngineRelease;
+  core.String? appEngineRelease;
 
   /// Availability of the instance.
   ///
@@ -3697,72 +3472,72 @@ class Instance {
   /// - "UNSPECIFIED"
   /// - "RESIDENT"
   /// - "DYNAMIC"
-  core.String availability;
+  core.String? availability;
 
   /// Average latency (ms) over the last minute.
   ///
   /// Output only.
-  core.int averageLatency;
+  core.int? averageLatency;
 
   /// Number of errors since this instance was started.
   ///
   /// Output only.
-  core.int errors;
+  core.int? errors;
 
   /// Relative name of the instance within the version.
   ///
   /// Example: instance-1.
   ///
   /// Output only.
-  core.String id;
+  core.String? id;
 
   /// Total memory in use (bytes).
   ///
   /// Output only.
-  core.String memoryUsage;
+  core.String? memoryUsage;
 
   /// Full path to the Instance resource in the API.
   ///
   /// Example: apps/myapp/services/default/versions/v1/instances/instance-1.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Average queries per second (QPS) over the last minute.
   ///
   /// Output only.
-  core.double qps;
+  core.double? qps;
 
   /// Number of requests since this instance was started.
   ///
   /// Output only.
-  core.int requests;
+  core.int? requests;
 
   /// Time that this instance was started.@OutputOnly
   ///
   /// Output only.
-  core.String startTime;
+  core.String? startTime;
 
   /// Whether this instance is in debug mode.
   ///
   /// Only applicable for instances in App Engine flexible environment.
   ///
   /// Output only.
-  core.bool vmDebugEnabled;
+  core.bool? vmDebugEnabled;
 
   /// Virtual machine ID of this instance.
   ///
   /// Only applicable for instances in App Engine flexible environment.
   ///
   /// Output only.
-  core.String vmId;
+  core.String? vmId;
 
   /// The IP address of this instance.
   ///
   /// Only applicable for instances in App Engine flexible environment.
   ///
   /// Output only.
-  core.String vmIp;
+  core.String? vmIp;
 
   /// The liveness health check of this instance.
   ///
@@ -3785,28 +3560,28 @@ class Instance {
   /// - "TIMEOUT" : The instance is unreachable i.e. a connection to the
   /// application health checking endpoint cannot be established, or the server
   /// does not respond within the specified timeout.
-  core.String vmLiveness;
+  core.String? vmLiveness;
 
   /// Name of the virtual machine where this instance lives.
   ///
   /// Only applicable for instances in App Engine flexible environment.
   ///
   /// Output only.
-  core.String vmName;
+  core.String? vmName;
 
   /// Status of the virtual machine where this instance lives.
   ///
   /// Only applicable for instances in App Engine flexible environment.
   ///
   /// Output only.
-  core.String vmStatus;
+  core.String? vmStatus;
 
   /// Zone where the virtual machine is located.
   ///
   /// Only applicable for instances in App Engine flexible environment.
   ///
   /// Output only.
-  core.String vmZoneName;
+  core.String? vmZoneName;
 
   Instance();
 
@@ -3864,24 +3639,24 @@ class Instance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appEngineRelease != null) 'appEngineRelease': appEngineRelease,
-        if (availability != null) 'availability': availability,
-        if (averageLatency != null) 'averageLatency': averageLatency,
-        if (errors != null) 'errors': errors,
-        if (id != null) 'id': id,
-        if (memoryUsage != null) 'memoryUsage': memoryUsage,
-        if (name != null) 'name': name,
-        if (qps != null) 'qps': qps,
-        if (requests != null) 'requests': requests,
-        if (startTime != null) 'startTime': startTime,
-        if (vmDebugEnabled != null) 'vmDebugEnabled': vmDebugEnabled,
-        if (vmId != null) 'vmId': vmId,
-        if (vmIp != null) 'vmIp': vmIp,
-        if (vmLiveness != null) 'vmLiveness': vmLiveness,
-        if (vmName != null) 'vmName': vmName,
-        if (vmStatus != null) 'vmStatus': vmStatus,
-        if (vmZoneName != null) 'vmZoneName': vmZoneName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appEngineRelease != null) 'appEngineRelease': appEngineRelease!,
+        if (availability != null) 'availability': availability!,
+        if (averageLatency != null) 'averageLatency': averageLatency!,
+        if (errors != null) 'errors': errors!,
+        if (id != null) 'id': id!,
+        if (memoryUsage != null) 'memoryUsage': memoryUsage!,
+        if (name != null) 'name': name!,
+        if (qps != null) 'qps': qps!,
+        if (requests != null) 'requests': requests!,
+        if (startTime != null) 'startTime': startTime!,
+        if (vmDebugEnabled != null) 'vmDebugEnabled': vmDebugEnabled!,
+        if (vmId != null) 'vmId': vmId!,
+        if (vmIp != null) 'vmIp': vmIp!,
+        if (vmLiveness != null) 'vmLiveness': vmLiveness!,
+        if (vmName != null) 'vmName': vmName!,
+        if (vmStatus != null) 'vmStatus': vmStatus!,
+        if (vmZoneName != null) 'vmZoneName': vmZoneName!,
       };
 }
 
@@ -3890,10 +3665,10 @@ class Library {
   /// Name of the library.
   ///
   /// Example: "django".
-  core.String name;
+  core.String? name;
 
   /// Version of the library to select, or "latest".
-  core.String version;
+  core.String? version;
 
   Library();
 
@@ -3906,19 +3681,19 @@ class Library {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (version != null) 'version': version!,
       };
 }
 
 /// Response message for AuthorizedCertificates.ListAuthorizedCertificates.
 class ListAuthorizedCertificatesResponse {
   /// The SSL certificates the user is authorized to administer.
-  core.List<AuthorizedCertificate> certificates;
+  core.List<AuthorizedCertificate>? certificates;
 
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListAuthorizedCertificatesResponse();
 
@@ -3934,20 +3709,20 @@ class ListAuthorizedCertificatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (certificates != null)
-          'certificates': certificates.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'certificates': certificates!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for AuthorizedDomains.ListAuthorizedDomains.
 class ListAuthorizedDomainsResponse {
   /// The authorized domains belonging to the user.
-  core.List<AuthorizedDomain> domains;
+  core.List<AuthorizedDomain>? domains;
 
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListAuthorizedDomainsResponse();
 
@@ -3963,20 +3738,20 @@ class ListAuthorizedDomainsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (domains != null)
-          'domains': domains.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'domains': domains!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for DomainMappings.ListDomainMappings.
 class ListDomainMappingsResponse {
   /// The domain mappings for the application.
-  core.List<DomainMapping> domainMappings;
+  core.List<DomainMapping>? domainMappings;
 
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListDomainMappingsResponse();
 
@@ -3992,21 +3767,21 @@ class ListDomainMappingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (domainMappings != null)
           'domainMappings':
-              domainMappings.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              domainMappings!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for Firewall.ListIngressRules.
 class ListIngressRulesResponse {
   /// The ingress FirewallRules for this application.
-  core.List<FirewallRule> ingressRules;
+  core.List<FirewallRule>? ingressRules;
 
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListIngressRulesResponse();
 
@@ -4022,20 +3797,20 @@ class ListIngressRulesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (ingressRules != null)
-          'ingressRules': ingressRules.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'ingressRules': ingressRules!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for Instances.ListInstances.
 class ListInstancesResponse {
   /// The instances belonging to the requested version.
-  core.List<Instance> instances;
+  core.List<Instance>? instances;
 
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListInstancesResponse();
 
@@ -4051,20 +3826,20 @@ class ListInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (instances != null)
-          'instances': instances.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'instances': instances!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -4080,20 +3855,20 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -4109,20 +3884,20 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for Services.ListServices.
 class ListServicesResponse {
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The services belonging to the requested application.
-  core.List<Service> services;
+  core.List<Service>? services;
 
   ListServicesResponse();
 
@@ -4138,20 +3913,20 @@ class ListServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (services != null)
-          'services': services.map((value) => value.toJson()).toList(),
+          'services': services!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for Versions.ListVersions.
 class ListVersionsResponse {
   /// Continuation token for fetching the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The versions belonging to the requested service.
-  core.List<Version> versions;
+  core.List<Version>? versions;
 
   ListVersionsResponse();
 
@@ -4167,10 +3942,10 @@ class ListVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (versions != null)
-          'versions': versions.map((value) => value.toJson()).toList(),
+          'versions': versions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4179,29 +3954,29 @@ class ListVersionsResponse {
 /// Unhealthy instances are killed and replaced with new instances.
 class LivenessCheck {
   /// Interval between health checks.
-  core.String checkInterval;
+  core.String? checkInterval;
 
   /// Number of consecutive failed checks required before considering the VM
   /// unhealthy.
-  core.int failureThreshold;
+  core.int? failureThreshold;
 
   /// Host header to send when performing a HTTP Liveness check.
   ///
   /// Example: "myapp.appspot.com"
-  core.String host;
+  core.String? host;
 
   /// The initial delay before starting to execute the checks.
-  core.String initialDelay;
+  core.String? initialDelay;
 
   /// The request path.
-  core.String path;
+  core.String? path;
 
   /// Number of consecutive successful checks required before considering the VM
   /// healthy.
-  core.int successThreshold;
+  core.int? successThreshold;
 
   /// Time before the check is considered failed.
-  core.String timeout;
+  core.String? timeout;
 
   LivenessCheck();
 
@@ -4229,14 +4004,14 @@ class LivenessCheck {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (checkInterval != null) 'checkInterval': checkInterval,
-        if (failureThreshold != null) 'failureThreshold': failureThreshold,
-        if (host != null) 'host': host,
-        if (initialDelay != null) 'initialDelay': initialDelay,
-        if (path != null) 'path': path,
-        if (successThreshold != null) 'successThreshold': successThreshold,
-        if (timeout != null) 'timeout': timeout,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (checkInterval != null) 'checkInterval': checkInterval!,
+        if (failureThreshold != null) 'failureThreshold': failureThreshold!,
+        if (host != null) 'host': host!,
+        if (initialDelay != null) 'initialDelay': initialDelay!,
+        if (path != null) 'path': path!,
+        if (successThreshold != null) 'successThreshold': successThreshold!,
+        if (timeout != null) 'timeout': timeout!,
       };
 }
 
@@ -4245,17 +4020,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: "us-east1".
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -4263,12 +4038,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: "projects/example-project/locations/us-east1"
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -4302,12 +4077,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -4315,18 +4090,18 @@ class Location {
 class LocationMetadata {
   /// App Engine flexible environment is available in the given
   /// location.@OutputOnly
-  core.bool flexibleEnvironmentAvailable;
+  core.bool? flexibleEnvironmentAvailable;
 
   /// Search API
   /// (https://cloud.google.com/appengine/docs/standard/python/search) is
   /// available in the given location.
   ///
   /// Output only.
-  core.bool searchApiAvailable;
+  core.bool? searchApiAvailable;
 
   /// App Engine standard environment is available in the given
   /// location.@OutputOnly
-  core.bool standardEnvironmentAvailable;
+  core.bool? standardEnvironmentAvailable;
 
   LocationMetadata();
 
@@ -4344,13 +4119,13 @@ class LocationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (flexibleEnvironmentAvailable != null)
-          'flexibleEnvironmentAvailable': flexibleEnvironmentAvailable,
+          'flexibleEnvironmentAvailable': flexibleEnvironmentAvailable!,
         if (searchApiAvailable != null)
-          'searchApiAvailable': searchApiAvailable,
+          'searchApiAvailable': searchApiAvailable!,
         if (standardEnvironmentAvailable != null)
-          'standardEnvironmentAvailable': standardEnvironmentAvailable,
+          'standardEnvironmentAvailable': standardEnvironmentAvailable!,
       };
 }
 
@@ -4361,7 +4136,7 @@ class ManagedCertificate {
   /// The renewal process is fully managed. Certificate renewal will
   /// automatically occur before the certificate expires. Renewal errors can be
   /// tracked via ManagementStatus.@OutputOnly
-  core.String lastRenewalTime;
+  core.String? lastRenewalTime;
 
   /// Status of certificate management.
   ///
@@ -4389,7 +4164,7 @@ class ManagedCertificate {
   /// records are defined. Renewals will continue to fail until the DNS provider
   /// is changed or a CAA record is added for the given domain. The last
   /// successfully provisioned certificate may still be serving.
-  core.String status;
+  core.String? status;
 
   ManagedCertificate();
 
@@ -4402,9 +4177,9 @@ class ManagedCertificate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lastRenewalTime != null) 'lastRenewalTime': lastRenewalTime,
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lastRenewalTime != null) 'lastRenewalTime': lastRenewalTime!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -4416,7 +4191,7 @@ class ManualScaling {
   /// This number can later be altered by using the Modules API
   /// (https://cloud.google.com/appengine/docs/python/modules/functions)
   /// set_num_instances() function.
-  core.int instances;
+  core.int? instances;
 
   ManualScaling();
 
@@ -4426,8 +4201,8 @@ class ManualScaling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (instances != null) 'instances': instances,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (instances != null) 'instances': instances!,
       };
 }
 
@@ -4439,22 +4214,22 @@ class Network {
   /// application container.
   ///
   /// Only applicable in the App Engine flexible environment.
-  core.List<core.String> forwardedPorts;
+  core.List<core.String>? forwardedPorts;
 
   /// Tag to apply to the instance during creation.
   ///
   /// Only applicable in the App Engine flexible environment.
-  core.String instanceTag;
+  core.String? instanceTag;
 
   /// Google Compute Engine network where the virtual machines are created.
   ///
   /// Specify the short name, not the resource path.Defaults to default.
-  core.String name;
+  core.String? name;
 
   /// Enable session affinity.
   ///
   /// Only applicable in the App Engine flexible environment.
-  core.bool sessionAffinity;
+  core.bool? sessionAffinity;
 
   /// Google Cloud Platform sub-network where the virtual machines are created.
   ///
@@ -4470,7 +4245,7 @@ class Network {
   /// subnetwork_name must be specified and the IP address is created from the
   /// IPCidrRange of the subnetwork.If specified, the subnetwork must exist in
   /// the same region as the App Engine flexible environment application.
-  core.String subnetworkName;
+  core.String? subnetworkName;
 
   Network();
 
@@ -4494,12 +4269,12 @@ class Network {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (forwardedPorts != null) 'forwardedPorts': forwardedPorts,
-        if (instanceTag != null) 'instanceTag': instanceTag,
-        if (name != null) 'name': name,
-        if (sessionAffinity != null) 'sessionAffinity': sessionAffinity,
-        if (subnetworkName != null) 'subnetworkName': subnetworkName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (forwardedPorts != null) 'forwardedPorts': forwardedPorts!,
+        if (instanceTag != null) 'instanceTag': instanceTag!,
+        if (name != null) 'name': name!,
+        if (sessionAffinity != null) 'sessionAffinity': sessionAffinity!,
+        if (subnetworkName != null) 'subnetworkName': subnetworkName!,
       };
 }
 
@@ -4515,7 +4290,7 @@ class NetworkSettings {
   /// private VPC sources.
   /// - "INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB" : Allow HTTP traffic from
   /// private VPC sources and through load balancers.
-  core.String ingressTrafficAllowed;
+  core.String? ingressTrafficAllowed;
 
   NetworkSettings();
 
@@ -4525,9 +4300,9 @@ class NetworkSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (ingressTrafficAllowed != null)
-          'ingressTrafficAllowed': ingressTrafficAllowed,
+          'ingressTrafficAllowed': ingressTrafficAllowed!,
       };
 }
 
@@ -4536,16 +4311,16 @@ class NetworkSettings {
 /// Only applicable in the App Engine flexible environment.
 class NetworkUtilization {
   /// Target bytes received per second.
-  core.int targetReceivedBytesPerSecond;
+  core.int? targetReceivedBytesPerSecond;
 
   /// Target packets received per second.
-  core.int targetReceivedPacketsPerSecond;
+  core.int? targetReceivedPacketsPerSecond;
 
   /// Target bytes sent per second.
-  core.int targetSentBytesPerSecond;
+  core.int? targetSentBytesPerSecond;
 
   /// Target packets sent per second.
-  core.int targetSentPacketsPerSecond;
+  core.int? targetSentPacketsPerSecond;
 
   NetworkUtilization();
 
@@ -4567,15 +4342,15 @@ class NetworkUtilization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (targetReceivedBytesPerSecond != null)
-          'targetReceivedBytesPerSecond': targetReceivedBytesPerSecond,
+          'targetReceivedBytesPerSecond': targetReceivedBytesPerSecond!,
         if (targetReceivedPacketsPerSecond != null)
-          'targetReceivedPacketsPerSecond': targetReceivedPacketsPerSecond,
+          'targetReceivedPacketsPerSecond': targetReceivedPacketsPerSecond!,
         if (targetSentBytesPerSecond != null)
-          'targetSentBytesPerSecond': targetSentBytesPerSecond,
+          'targetSentBytesPerSecond': targetSentBytesPerSecond!,
         if (targetSentPacketsPerSecond != null)
-          'targetSentPacketsPerSecond': targetSentPacketsPerSecond,
+          'targetSentPacketsPerSecond': targetSentPacketsPerSecond!,
       };
 }
 
@@ -4586,10 +4361,10 @@ class Operation {
   ///
   /// If true, the operation is completed, and either error or response is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -4600,14 +4375,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the name should be a resource name
   /// ending with operations/{unique_id}.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -4620,7 +4395,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -4655,47 +4430,47 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
 /// Metadata for the given google.longrunning.Operation.
 class OperationMetadataV1 {
-  CreateVersionMetadataV1 createVersionMetadata;
+  CreateVersionMetadataV1? createVersionMetadata;
 
   /// Time that this operation completed.@OutputOnly
-  core.String endTime;
+  core.String? endTime;
 
   /// Ephemeral message that may change every time the operation is polled.
   ///
   /// @OutputOnly
-  core.String ephemeralMessage;
+  core.String? ephemeralMessage;
 
   /// Time that this operation was created.@OutputOnly
-  core.String insertTime;
+  core.String? insertTime;
 
   /// API method that initiated this operation.
   ///
   /// Example: google.appengine.v1.Versions.CreateVersion.@OutputOnly
-  core.String method;
+  core.String? method;
 
   /// Name of the resource that this operation is acting on.
   ///
   /// Example: apps/myapp/services/default.@OutputOnly
-  core.String target;
+  core.String? target;
 
   /// User who requested this operation.@OutputOnly
-  core.String user;
+  core.String? user;
 
   /// Durable messages that persist on every operation poll.
   ///
   /// @OutputOnly
-  core.List<core.String> warning;
+  core.List<core.String>? warning;
 
   OperationMetadataV1();
 
@@ -4730,51 +4505,51 @@ class OperationMetadataV1 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (createVersionMetadata != null)
-          'createVersionMetadata': createVersionMetadata.toJson(),
-        if (endTime != null) 'endTime': endTime,
-        if (ephemeralMessage != null) 'ephemeralMessage': ephemeralMessage,
-        if (insertTime != null) 'insertTime': insertTime,
-        if (method != null) 'method': method,
-        if (target != null) 'target': target,
-        if (user != null) 'user': user,
-        if (warning != null) 'warning': warning,
+          'createVersionMetadata': createVersionMetadata!.toJson(),
+        if (endTime != null) 'endTime': endTime!,
+        if (ephemeralMessage != null) 'ephemeralMessage': ephemeralMessage!,
+        if (insertTime != null) 'insertTime': insertTime!,
+        if (method != null) 'method': method!,
+        if (target != null) 'target': target!,
+        if (user != null) 'user': user!,
+        if (warning != null) 'warning': warning!,
       };
 }
 
 /// Metadata for the given google.longrunning.Operation.
 class OperationMetadataV1Alpha {
-  CreateVersionMetadataV1Alpha createVersionMetadata;
+  CreateVersionMetadataV1Alpha? createVersionMetadata;
 
   /// Time that this operation completed.@OutputOnly
-  core.String endTime;
+  core.String? endTime;
 
   /// Ephemeral message that may change every time the operation is polled.
   ///
   /// @OutputOnly
-  core.String ephemeralMessage;
+  core.String? ephemeralMessage;
 
   /// Time that this operation was created.@OutputOnly
-  core.String insertTime;
+  core.String? insertTime;
 
   /// API method that initiated this operation.
   ///
   /// Example: google.appengine.v1alpha.Versions.CreateVersion.@OutputOnly
-  core.String method;
+  core.String? method;
 
   /// Name of the resource that this operation is acting on.
   ///
   /// Example: apps/myapp/services/default.@OutputOnly
-  core.String target;
+  core.String? target;
 
   /// User who requested this operation.@OutputOnly
-  core.String user;
+  core.String? user;
 
   /// Durable messages that persist on every operation poll.
   ///
   /// @OutputOnly
-  core.List<core.String> warning;
+  core.List<core.String>? warning;
 
   OperationMetadataV1Alpha();
 
@@ -4809,51 +4584,51 @@ class OperationMetadataV1Alpha {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (createVersionMetadata != null)
-          'createVersionMetadata': createVersionMetadata.toJson(),
-        if (endTime != null) 'endTime': endTime,
-        if (ephemeralMessage != null) 'ephemeralMessage': ephemeralMessage,
-        if (insertTime != null) 'insertTime': insertTime,
-        if (method != null) 'method': method,
-        if (target != null) 'target': target,
-        if (user != null) 'user': user,
-        if (warning != null) 'warning': warning,
+          'createVersionMetadata': createVersionMetadata!.toJson(),
+        if (endTime != null) 'endTime': endTime!,
+        if (ephemeralMessage != null) 'ephemeralMessage': ephemeralMessage!,
+        if (insertTime != null) 'insertTime': insertTime!,
+        if (method != null) 'method': method!,
+        if (target != null) 'target': target!,
+        if (user != null) 'user': user!,
+        if (warning != null) 'warning': warning!,
       };
 }
 
 /// Metadata for the given google.longrunning.Operation.
 class OperationMetadataV1Beta {
-  CreateVersionMetadataV1Beta createVersionMetadata;
+  CreateVersionMetadataV1Beta? createVersionMetadata;
 
   /// Time that this operation completed.@OutputOnly
-  core.String endTime;
+  core.String? endTime;
 
   /// Ephemeral message that may change every time the operation is polled.
   ///
   /// @OutputOnly
-  core.String ephemeralMessage;
+  core.String? ephemeralMessage;
 
   /// Time that this operation was created.@OutputOnly
-  core.String insertTime;
+  core.String? insertTime;
 
   /// API method that initiated this operation.
   ///
   /// Example: google.appengine.v1beta.Versions.CreateVersion.@OutputOnly
-  core.String method;
+  core.String? method;
 
   /// Name of the resource that this operation is acting on.
   ///
   /// Example: apps/myapp/services/default.@OutputOnly
-  core.String target;
+  core.String? target;
 
   /// User who requested this operation.@OutputOnly
-  core.String user;
+  core.String? user;
 
   /// Durable messages that persist on every operation poll.
   ///
   /// @OutputOnly
-  core.List<core.String> warning;
+  core.List<core.String>? warning;
 
   OperationMetadataV1Beta();
 
@@ -4888,16 +4663,16 @@ class OperationMetadataV1Beta {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (createVersionMetadata != null)
-          'createVersionMetadata': createVersionMetadata.toJson(),
-        if (endTime != null) 'endTime': endTime,
-        if (ephemeralMessage != null) 'ephemeralMessage': ephemeralMessage,
-        if (insertTime != null) 'insertTime': insertTime,
-        if (method != null) 'method': method,
-        if (target != null) 'target': target,
-        if (user != null) 'user': user,
-        if (warning != null) 'warning': warning,
+          'createVersionMetadata': createVersionMetadata!.toJson(),
+        if (endTime != null) 'endTime': endTime!,
+        if (ephemeralMessage != null) 'ephemeralMessage': ephemeralMessage!,
+        if (insertTime != null) 'insertTime': insertTime!,
+        if (method != null) 'method': method!,
+        if (target != null) 'target': target!,
+        if (user != null) 'user': user!,
+        if (warning != null) 'warning': warning!,
       };
 }
 
@@ -4908,27 +4683,27 @@ class ReadinessCheck {
   /// A maximum time limit on application initialization, measured from moment
   /// the application successfully replies to a healthcheck until it is ready to
   /// serve traffic.
-  core.String appStartTimeout;
+  core.String? appStartTimeout;
 
   /// Interval between health checks.
-  core.String checkInterval;
+  core.String? checkInterval;
 
   /// Number of consecutive failed checks required before removing traffic.
-  core.int failureThreshold;
+  core.int? failureThreshold;
 
   /// Host header to send when performing a HTTP Readiness check.
   ///
   /// Example: "myapp.appspot.com"
-  core.String host;
+  core.String? host;
 
   /// The request path.
-  core.String path;
+  core.String? path;
 
   /// Number of consecutive successful checks required before receiving traffic.
-  core.int successThreshold;
+  core.int? successThreshold;
 
   /// Time before the check is considered failed.
-  core.String timeout;
+  core.String? timeout;
 
   ReadinessCheck();
 
@@ -4956,14 +4731,14 @@ class ReadinessCheck {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appStartTimeout != null) 'appStartTimeout': appStartTimeout,
-        if (checkInterval != null) 'checkInterval': checkInterval,
-        if (failureThreshold != null) 'failureThreshold': failureThreshold,
-        if (host != null) 'host': host,
-        if (path != null) 'path': path,
-        if (successThreshold != null) 'successThreshold': successThreshold,
-        if (timeout != null) 'timeout': timeout,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appStartTimeout != null) 'appStartTimeout': appStartTimeout!,
+        if (checkInterval != null) 'checkInterval': checkInterval!,
+        if (failureThreshold != null) 'failureThreshold': failureThreshold!,
+        if (host != null) 'host': host!,
+        if (path != null) 'path': path!,
+        if (successThreshold != null) 'successThreshold': successThreshold!,
+        if (timeout != null) 'timeout': timeout!,
       };
 }
 
@@ -4975,7 +4750,7 @@ class RepairApplicationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Target scaling by request utilization.
@@ -4983,10 +4758,10 @@ class RepairApplicationRequest {
 /// Only applicable in the App Engine flexible environment.
 class RequestUtilization {
   /// Target number of concurrent requests.
-  core.int targetConcurrentRequests;
+  core.int? targetConcurrentRequests;
 
   /// Target requests per second.
-  core.int targetRequestCountPerSecond;
+  core.int? targetRequestCountPerSecond;
 
   RequestUtilization();
 
@@ -5000,11 +4775,11 @@ class RequestUtilization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (targetConcurrentRequests != null)
-          'targetConcurrentRequests': targetConcurrentRequests,
+          'targetConcurrentRequests': targetConcurrentRequests!,
         if (targetRequestCountPerSecond != null)
-          'targetRequestCountPerSecond': targetRequestCountPerSecond,
+          'targetRequestCountPerSecond': targetRequestCountPerSecond!,
       };
 }
 
@@ -5013,13 +4788,13 @@ class ResourceRecord {
   /// Relative name of the object affected by this record.
   ///
   /// Only applicable for CNAME records. Example: 'www'.
-  core.String name;
+  core.String? name;
 
   /// Data for this record.
   ///
   /// Values vary by record type, as defined in RFC 1035 (section 5) and RFC
   /// 1034 (section 3.6.1).
-  core.String rrdata;
+  core.String? rrdata;
 
   /// Resource record type.
   ///
@@ -5029,7 +4804,7 @@ class ResourceRecord {
   /// - "A" : An A resource record. Data is an IPv4 address.
   /// - "AAAA" : An AAAA resource record. Data is an IPv6 address.
   /// - "CNAME" : A CNAME resource record. Data is a domain name to be aliased.
-  core.String type;
+  core.String? type;
 
   ResourceRecord();
 
@@ -5045,31 +4820,31 @@ class ResourceRecord {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (rrdata != null) 'rrdata': rrdata,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (rrdata != null) 'rrdata': rrdata!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// Machine resources for a version.
 class Resources {
   /// Number of CPU cores needed.
-  core.double cpu;
+  core.double? cpu;
 
   /// Disk size (GB) needed.
-  core.double diskGb;
+  core.double? diskGb;
 
   /// The name of the encryption key that is stored in Google Cloud KMS.
   ///
   /// Only should be used by Cloud Composer to encrypt the vm disk
-  core.String kmsKeyReference;
+  core.String? kmsKeyReference;
 
   /// Memory (GB) needed.
-  core.double memoryGb;
+  core.double? memoryGb;
 
   /// User specified volumes.
-  core.List<Volume> volumes;
+  core.List<Volume>? volumes;
 
   Resources();
 
@@ -5094,20 +4869,20 @@ class Resources {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cpu != null) 'cpu': cpu,
-        if (diskGb != null) 'diskGb': diskGb,
-        if (kmsKeyReference != null) 'kmsKeyReference': kmsKeyReference,
-        if (memoryGb != null) 'memoryGb': memoryGb,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cpu != null) 'cpu': cpu!,
+        if (diskGb != null) 'diskGb': diskGb!,
+        if (kmsKeyReference != null) 'kmsKeyReference': kmsKeyReference!,
+        if (memoryGb != null) 'memoryGb': memoryGb!,
         if (volumes != null)
-          'volumes': volumes.map((value) => value.toJson()).toList(),
+          'volumes': volumes!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Executes a script to handle the request that matches the URL pattern.
 class ScriptHandler {
   /// Path to the script from the application root directory.
-  core.String scriptPath;
+  core.String? scriptPath;
 
   ScriptHandler();
 
@@ -5117,8 +4892,8 @@ class ScriptHandler {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (scriptPath != null) 'scriptPath': scriptPath,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (scriptPath != null) 'scriptPath': scriptPath!,
       };
 }
 
@@ -5134,21 +4909,21 @@ class Service {
   /// Relative name of the service within the application.
   ///
   /// Example: default.@OutputOnly
-  core.String id;
+  core.String? id;
 
   /// Full path to the Service resource in the API.
   ///
   /// Example: apps/myapp/services/default.@OutputOnly
-  core.String name;
+  core.String? name;
 
   /// Ingress settings for this service.
   ///
   /// Will apply to all versions.
-  NetworkSettings networkSettings;
+  NetworkSettings? networkSettings;
 
   /// Mapping that defines fractional HTTP traffic diversion to different
   /// versions within the service.
-  TrafficSplit split;
+  TrafficSplit? split;
 
   Service();
 
@@ -5169,12 +4944,12 @@ class Service {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
         if (networkSettings != null)
-          'networkSettings': networkSettings.toJson(),
-        if (split != null) 'split': split.toJson(),
+          'networkSettings': networkSettings!.toJson(),
+        if (split != null) 'split': split!.toJson(),
       };
 }
 
@@ -5189,7 +4964,7 @@ class SslSettings {
   /// a CREATE or UPDATE request. You must be authorized to administer the
   /// AuthorizedCertificate resource to manually map it to a DomainMapping
   /// resource. Example: 12345.
-  core.String certificateId;
+  core.String? certificateId;
 
   /// ID of the managed AuthorizedCertificate resource currently being
   /// provisioned, if applicable.
@@ -5200,7 +4975,7 @@ class SslSettings {
   /// certificate and this field will be left empty. To remove SSL support while
   /// there is still a pending managed certificate, clear the certificate_id
   /// field with an UpdateDomainMappingRequest.@OutputOnly
-  core.String pendingManagedCertificateId;
+  core.String? pendingManagedCertificateId;
 
   /// SSL management type for this domain.
   ///
@@ -5214,7 +4989,7 @@ class SslSettings {
   /// - "MANUAL" : SSL support for this domain is configured manually by the
   /// user. Either the domain has no SSL support or a user-obtained SSL
   /// certificate has been explictly mapped to this domain.
-  core.String sslManagementType;
+  core.String? sslManagementType;
 
   SslSettings();
 
@@ -5231,11 +5006,11 @@ class SslSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (certificateId != null) 'certificateId': certificateId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (certificateId != null) 'certificateId': certificateId!,
         if (pendingManagedCertificateId != null)
-          'pendingManagedCertificateId': pendingManagedCertificateId,
-        if (sslManagementType != null) 'sslManagementType': sslManagementType,
+          'pendingManagedCertificateId': pendingManagedCertificateId!,
+        if (sslManagementType != null) 'sslManagementType': sslManagementType!,
       };
 }
 
@@ -5244,18 +5019,18 @@ class StandardSchedulerSettings {
   /// Maximum number of instances to run for this version.
   ///
   /// Set to zero to disable max_instances configuration.
-  core.int maxInstances;
+  core.int? maxInstances;
 
   /// Minimum number of instances to run for this version.
   ///
   /// Set to zero to disable min_instances configuration.
-  core.int minInstances;
+  core.int? minInstances;
 
   /// Target CPU utilization ratio to maintain when scaling.
-  core.double targetCpuUtilization;
+  core.double? targetCpuUtilization;
 
   /// Target throughput utilization ratio to maintain when scaling
-  core.double targetThroughputUtilization;
+  core.double? targetThroughputUtilization;
 
   StandardSchedulerSettings();
 
@@ -5276,13 +5051,13 @@ class StandardSchedulerSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxInstances != null) 'maxInstances': maxInstances,
-        if (minInstances != null) 'minInstances': minInstances,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxInstances != null) 'maxInstances': maxInstances!,
+        if (minInstances != null) 'minInstances': minInstances!,
         if (targetCpuUtilization != null)
-          'targetCpuUtilization': targetCpuUtilization,
+          'targetCpuUtilization': targetCpuUtilization!,
         if (targetThroughputUtilization != null)
-          'targetThroughputUtilization': targetThroughputUtilization,
+          'targetThroughputUtilization': targetThroughputUtilization!,
       };
 }
 
@@ -5298,33 +5073,33 @@ class StaticFilesHandler {
   /// data and are only served to end users; they cannot be read by the
   /// application. If enabled, uploads are charged against both your code and
   /// static data storage resource quotas.
-  core.bool applicationReadable;
+  core.bool? applicationReadable;
 
   /// Time a static file served by this handler should be cached by web proxies
   /// and browsers.
-  core.String expiration;
+  core.String? expiration;
 
   /// HTTP headers to use for all responses from these URLs.
-  core.Map<core.String, core.String> httpHeaders;
+  core.Map<core.String, core.String>? httpHeaders;
 
   /// MIME type used to serve all files served by this handler.Defaults to
   /// file-specific MIME types, which are derived from each file's filename
   /// extension.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// Path to the static files matched by the URL pattern, from the application
   /// root directory.
   ///
   /// The path can refer to text matched in groupings in the URL pattern.
-  core.String path;
+  core.String? path;
 
   /// Whether this handler should match the request if the file referenced by
   /// the handler does not exist.
-  core.bool requireMatchingFile;
+  core.bool? requireMatchingFile;
 
   /// Regular expression that matches the file paths for all files that should
   /// be referenced by this handler.
-  core.String uploadPathRegex;
+  core.String? uploadPathRegex;
 
   StaticFilesHandler();
 
@@ -5359,16 +5134,16 @@ class StaticFilesHandler {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (applicationReadable != null)
-          'applicationReadable': applicationReadable,
-        if (expiration != null) 'expiration': expiration,
-        if (httpHeaders != null) 'httpHeaders': httpHeaders,
-        if (mimeType != null) 'mimeType': mimeType,
-        if (path != null) 'path': path,
+          'applicationReadable': applicationReadable!,
+        if (expiration != null) 'expiration': expiration!,
+        if (httpHeaders != null) 'httpHeaders': httpHeaders!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (path != null) 'path': path!,
         if (requireMatchingFile != null)
-          'requireMatchingFile': requireMatchingFile,
-        if (uploadPathRegex != null) 'uploadPathRegex': uploadPathRegex,
+          'requireMatchingFile': requireMatchingFile!,
+        if (uploadPathRegex != null) 'uploadPathRegex': uploadPathRegex!,
       };
 }
 
@@ -5381,7 +5156,7 @@ class StaticFilesHandler {
 /// Design Guide (https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -5389,13 +5164,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -5419,10 +5194,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -5440,7 +5215,7 @@ class TrafficSplit {
   /// allocation is removed. Allocations must sum to 1. Up to two decimal place
   /// precision is supported for IP-based splits and up to three decimal places
   /// is supported for cookie-based splits.
-  core.Map<core.String, core.double> allocations;
+  core.Map<core.String, core.double>? allocations;
 
   /// Mechanism used to determine which version a request is sent to.
   ///
@@ -5456,28 +5231,29 @@ class TrafficSplit {
   /// - "RANDOM" : Diversion based on weighted random assignment. An incoming
   /// request is randomly routed to a version in the traffic split, with
   /// probability proportional to the version's traffic share.
-  core.String shardBy;
+  core.String? shardBy;
 
   TrafficSplit();
 
   TrafficSplit.fromJson(core.Map _json) {
     if (_json.containsKey('allocations')) {
-      allocations =
-          (_json['allocations'] as core.Map).cast<core.String, core.num>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  (item as core.num).toDouble(),
-                ),
-              );
+      allocations = (_json['allocations'] as core.Map)
+          .cast<core.String, core.double>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              (item as core.num).toDouble(),
+            ),
+          );
     }
     if (_json.containsKey('shardBy')) {
       shardBy = _json['shardBy'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allocations != null) 'allocations': allocations,
-        if (shardBy != null) 'shardBy': shardBy,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allocations != null) 'allocations': allocations!,
+        if (shardBy != null) 'shardBy': shardBy!,
       };
 }
 
@@ -5487,20 +5263,20 @@ class UrlDispatchRule {
   ///
   /// The wildcard "*" is supported if specified before a period: "*.".Defaults
   /// to matching all domains: "*".
-  core.String domain;
+  core.String? domain;
 
   /// Pathname within the host.
   ///
   /// Must start with a "/". A single "*" can be included at the end of the
   /// path.The sum of the lengths of the domain and path may not exceed 100
   /// characters.
-  core.String path;
+  core.String? path;
 
   /// Resource ID of a service in this application that should serve the matched
   /// request.
   ///
   /// The service must already exist. Example: default.
-  core.String service;
+  core.String? service;
 
   UrlDispatchRule();
 
@@ -5516,10 +5292,10 @@ class UrlDispatchRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (domain != null) 'domain': domain,
-        if (path != null) 'path': path,
-        if (service != null) 'service': service,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (domain != null) 'domain': domain!,
+        if (path != null) 'path': path!,
+        if (service != null) 'service': service!,
       };
 }
 
@@ -5529,7 +5305,7 @@ class UrlDispatchRule {
 /// static files uploaded with the version, such as images, CSS, or JavaScript.
 class UrlMap {
   /// Uses API Endpoints to handle requests.
-  ApiEndpointHandler apiEndpoint;
+  ApiEndpointHandler? apiEndpoint;
 
   /// Action to take when users access resources that require authentication.
   ///
@@ -5542,7 +5318,7 @@ class UrlMap {
   /// creating an account.
   /// - "AUTH_FAIL_ACTION_UNAUTHORIZED" : Rejects request with a 401 HTTP status
   /// code and an error message.
-  core.String authFailAction;
+  core.String? authFailAction;
 
   /// Level of login required to access this resource.
   ///
@@ -5556,7 +5332,7 @@ class UrlMap {
   /// auth_fail_action. If the user is an administrator, the handler proceeds.
   /// - "LOGIN_REQUIRED" : If the user has signed in, the handler proceeds
   /// normally. Otherwise, the auth_fail_action is taken.
-  core.String login;
+  core.String? login;
 
   /// 30x code to use when performing redirects for the secure field.
   ///
@@ -5568,13 +5344,13 @@ class UrlMap {
   /// - "REDIRECT_HTTP_RESPONSE_CODE_302" : 302 Moved Temporarily code.
   /// - "REDIRECT_HTTP_RESPONSE_CODE_303" : 303 See Other code.
   /// - "REDIRECT_HTTP_RESPONSE_CODE_307" : 307 Temporary Redirect code.
-  core.String redirectHttpResponseCode;
+  core.String? redirectHttpResponseCode;
 
   /// Executes a script to handle the requests that match this URL pattern.
   ///
   /// Only the auto value is supported for Node.js in the App Engine standard
   /// environment, for example "script": "auto".
-  ScriptHandler script;
+  ScriptHandler? script;
 
   /// Security (HTTPS) enforcement for this URL.
   /// Possible string values are:
@@ -5590,10 +5366,10 @@ class UrlMap {
   /// - "SECURE_ALWAYS" : Requests for a URL that match this handler that do not
   /// use HTTPS are automatically redirected to the HTTPS URL with the same
   /// path. Query parameters are reserved for the redirect.
-  core.String securityLevel;
+  core.String? securityLevel;
 
   /// Returns the contents of a file, such as an image, as the response.
-  StaticFilesHandler staticFiles;
+  StaticFilesHandler? staticFiles;
 
   /// URL prefix.
   ///
@@ -5601,7 +5377,7 @@ class UrlMap {
   /// be escaped, but should not contain groupings. All URLs that begin with
   /// this prefix are handled by this handler, using the portion of the URL
   /// after the prefix as part of the file path.
-  core.String urlRegex;
+  core.String? urlRegex;
 
   UrlMap();
 
@@ -5636,16 +5412,16 @@ class UrlMap {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiEndpoint != null) 'apiEndpoint': apiEndpoint.toJson(),
-        if (authFailAction != null) 'authFailAction': authFailAction,
-        if (login != null) 'login': login,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiEndpoint != null) 'apiEndpoint': apiEndpoint!.toJson(),
+        if (authFailAction != null) 'authFailAction': authFailAction!,
+        if (login != null) 'login': login!,
         if (redirectHttpResponseCode != null)
-          'redirectHttpResponseCode': redirectHttpResponseCode,
-        if (script != null) 'script': script.toJson(),
-        if (securityLevel != null) 'securityLevel': securityLevel,
-        if (staticFiles != null) 'staticFiles': staticFiles.toJson(),
-        if (urlRegex != null) 'urlRegex': urlRegex,
+          'redirectHttpResponseCode': redirectHttpResponseCode!,
+        if (script != null) 'script': script!.toJson(),
+        if (securityLevel != null) 'securityLevel': securityLevel!,
+        if (staticFiles != null) 'staticFiles': staticFiles!.toJson(),
+        if (urlRegex != null) 'urlRegex': urlRegex!,
       };
 }
 
@@ -5655,35 +5431,35 @@ class Version {
   /// Serving configuration for Google Cloud Endpoints
   /// (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned
   /// in GET requests if view=FULL is set.
-  ApiConfigHandler apiConfig;
+  ApiConfigHandler? apiConfig;
 
   /// Automatic scaling is based on request rate, response latencies, and other
   /// application metrics.
   ///
   /// Instances are dynamically created and destroyed as needed in order to
   /// handle traffic.
-  AutomaticScaling automaticScaling;
+  AutomaticScaling? automaticScaling;
 
   /// A service with basic scaling will create an instance when the application
   /// receives a request.
   ///
   /// The instance will be turned down when the app becomes idle. Basic scaling
   /// is ideal for work that is intermittent or driven by user activity.
-  BasicScaling basicScaling;
+  BasicScaling? basicScaling;
 
   /// Metadata settings that are supplied to this version to enable beta runtime
   /// features.
-  core.Map<core.String, core.String> betaSettings;
+  core.Map<core.String, core.String>? betaSettings;
 
   /// Environment variables available to the build environment.Only returned in
   /// GET requests if view=FULL is set.
-  core.Map<core.String, core.String> buildEnvVariables;
+  core.Map<core.String, core.String>? buildEnvVariables;
 
   /// Time that this version was created.@OutputOnly
-  core.String createTime;
+  core.String? createTime;
 
   /// Email address of the user who created this version.@OutputOnly
-  core.String createdBy;
+  core.String? createdBy;
 
   /// Duration that static files should be cached by web proxies and browsers.
   ///
@@ -5691,130 +5467,130 @@ class Version {
   /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StaticFilesHandler)
   /// does not specify its own expiration time.Only returned in GET requests if
   /// view=FULL is set.
-  core.String defaultExpiration;
+  core.String? defaultExpiration;
 
   /// Code and application artifacts that make up this version.Only returned in
   /// GET requests if view=FULL is set.
-  Deployment deployment;
+  Deployment? deployment;
 
   /// Total size in bytes of all the files that are included in this version and
   /// currently hosted on the App Engine disk.@OutputOnly
-  core.String diskUsageBytes;
+  core.String? diskUsageBytes;
 
   /// Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud
   /// Endpoints Extensible Service Proxy will be provided to serve the API
   /// implemented by the app.
-  EndpointsApiService endpointsApiService;
+  EndpointsApiService? endpointsApiService;
 
   /// The entrypoint for the application.
-  Entrypoint entrypoint;
+  Entrypoint? entrypoint;
 
   /// App Engine execution environment for this version.Defaults to standard.
-  core.String env;
+  core.String? env;
 
   /// Environment variables available to the application.Only returned in GET
   /// requests if view=FULL is set.
-  core.Map<core.String, core.String> envVariables;
+  core.Map<core.String, core.String>? envVariables;
 
   /// Custom static error pages.
   ///
   /// Limited to 10KB per page.Only returned in GET requests if view=FULL is
   /// set.
-  core.List<ErrorHandler> errorHandlers;
+  core.List<ErrorHandler>? errorHandlers;
 
   /// An ordered list of URL-matching patterns that should be applied to
   /// incoming requests.
   ///
   /// The first matching URL handles the request and other request handlers are
   /// not attempted.Only returned in GET requests if view=FULL is set.
-  core.List<UrlMap> handlers;
+  core.List<UrlMap>? handlers;
 
   /// Configures health checking for instances.
   ///
   /// Unhealthy instances are stopped and replaced with new instances. Only
   /// applicable in the App Engine flexible environment.Only returned in GET
   /// requests if view=FULL is set.
-  HealthCheck healthCheck;
+  HealthCheck? healthCheck;
 
   /// Relative name of the version within the service.
   ///
   /// Example: v1. Version names can contain only lowercase letters, numbers, or
   /// hyphens. Reserved names: "default", "latest", and any name with the prefix
   /// "ah-".
-  core.String id;
+  core.String? id;
 
   /// Before an application can receive email or XMPP messages, the application
   /// must be configured to enable the service.
-  core.List<core.String> inboundServices;
+  core.List<core.String>? inboundServices;
 
   /// Instance class that is used to run this version.
   ///
   /// Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or
   /// BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and
   /// B1 for ManualScaling or BasicScaling.
-  core.String instanceClass;
+  core.String? instanceClass;
 
   /// Configuration for third-party Python runtime libraries that are required
   /// by the application.Only returned in GET requests if view=FULL is set.
-  core.List<Library> libraries;
+  core.List<Library>? libraries;
 
   /// Configures liveness health checking for instances.
   ///
   /// Unhealthy instances are stopped and replaced with new instancesOnly
   /// returned in GET requests if view=FULL is set.
-  LivenessCheck livenessCheck;
+  LivenessCheck? livenessCheck;
 
   /// A service with manual scaling runs continuously, allowing you to perform
   /// complex initialization and rely on the state of its memory over time.
   ///
   /// Manually scaled versions are sometimes referred to as "backends".
-  ManualScaling manualScaling;
+  ManualScaling? manualScaling;
 
   /// Full path to the Version resource in the API.
   ///
   /// Example: apps/myapp/services/default/versions/v1.@OutputOnly
-  core.String name;
+  core.String? name;
 
   /// Extra network settings.
   ///
   /// Only applicable in the App Engine flexible environment.
-  Network network;
+  Network? network;
 
   /// Files that match this pattern will not be built into this version.
   ///
   /// Only applicable for Go runtimes.Only returned in GET requests if view=FULL
   /// is set.
-  core.String nobuildFilesRegex;
+  core.String? nobuildFilesRegex;
 
   /// Configures readiness health checking for instances.
   ///
   /// Unhealthy instances are not put into the backend traffic rotation.Only
   /// returned in GET requests if view=FULL is set.
-  ReadinessCheck readinessCheck;
+  ReadinessCheck? readinessCheck;
 
   /// Machine resources for this version.
   ///
   /// Only applicable in the App Engine flexible environment.
-  Resources resources;
+  Resources? resources;
 
   /// Desired runtime.
   ///
   /// Example: python27.
-  core.String runtime;
+  core.String? runtime;
 
   /// The version of the API in the given runtime environment.
   ///
   /// Please see the app.yaml reference for valid values at
   /// https://cloud.google.com/appengine/docs/standard//config/appref
-  core.String runtimeApiVersion;
+  core.String? runtimeApiVersion;
 
   /// The channel of the runtime to use.
   ///
   /// Only available for some runtimes. Defaults to the default channel.
-  core.String runtimeChannel;
+  core.String? runtimeChannel;
 
   /// The path or name of the app's main executable.
-  core.String runtimeMainExecutablePath;
+  core.String? runtimeMainExecutablePath;
 
   /// Current serving status of this version.
   ///
@@ -5827,28 +5603,28 @@ class Version {
   /// scaling settings of the version.
   /// - "STOPPED" : Disabled. No instances will be created and the scaling
   /// settings are ignored until the state of the version changes to SERVING.
-  core.String servingStatus;
+  core.String? servingStatus;
 
   /// Whether multiple requests can be dispatched to this version at once.
-  core.bool threadsafe;
+  core.bool? threadsafe;
 
   /// Serving URL for this version.
   ///
   /// Example:
   /// "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
-  core.String versionUrl;
+  core.String? versionUrl;
 
   /// Whether to deploy this version in a container on a virtual machine.
-  core.bool vm;
+  core.bool? vm;
 
   /// Enables VPC connectivity for standard apps.
-  VpcAccessConnector vpcAccessConnector;
+  VpcAccessConnector? vpcAccessConnector;
 
   /// The Google Compute Engine zones that are supported by this version in the
   /// App Engine flexible environment.
   ///
   /// Deprecated.
-  core.List<core.String> zones;
+  core.List<core.String>? zones;
 
   Version();
 
@@ -6017,53 +5793,53 @@ class Version {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiConfig != null) 'apiConfig': apiConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiConfig != null) 'apiConfig': apiConfig!.toJson(),
         if (automaticScaling != null)
-          'automaticScaling': automaticScaling.toJson(),
-        if (basicScaling != null) 'basicScaling': basicScaling.toJson(),
-        if (betaSettings != null) 'betaSettings': betaSettings,
-        if (buildEnvVariables != null) 'buildEnvVariables': buildEnvVariables,
-        if (createTime != null) 'createTime': createTime,
-        if (createdBy != null) 'createdBy': createdBy,
-        if (defaultExpiration != null) 'defaultExpiration': defaultExpiration,
-        if (deployment != null) 'deployment': deployment.toJson(),
-        if (diskUsageBytes != null) 'diskUsageBytes': diskUsageBytes,
+          'automaticScaling': automaticScaling!.toJson(),
+        if (basicScaling != null) 'basicScaling': basicScaling!.toJson(),
+        if (betaSettings != null) 'betaSettings': betaSettings!,
+        if (buildEnvVariables != null) 'buildEnvVariables': buildEnvVariables!,
+        if (createTime != null) 'createTime': createTime!,
+        if (createdBy != null) 'createdBy': createdBy!,
+        if (defaultExpiration != null) 'defaultExpiration': defaultExpiration!,
+        if (deployment != null) 'deployment': deployment!.toJson(),
+        if (diskUsageBytes != null) 'diskUsageBytes': diskUsageBytes!,
         if (endpointsApiService != null)
-          'endpointsApiService': endpointsApiService.toJson(),
-        if (entrypoint != null) 'entrypoint': entrypoint.toJson(),
-        if (env != null) 'env': env,
-        if (envVariables != null) 'envVariables': envVariables,
+          'endpointsApiService': endpointsApiService!.toJson(),
+        if (entrypoint != null) 'entrypoint': entrypoint!.toJson(),
+        if (env != null) 'env': env!,
+        if (envVariables != null) 'envVariables': envVariables!,
         if (errorHandlers != null)
           'errorHandlers':
-              errorHandlers.map((value) => value.toJson()).toList(),
+              errorHandlers!.map((value) => value.toJson()).toList(),
         if (handlers != null)
-          'handlers': handlers.map((value) => value.toJson()).toList(),
-        if (healthCheck != null) 'healthCheck': healthCheck.toJson(),
-        if (id != null) 'id': id,
-        if (inboundServices != null) 'inboundServices': inboundServices,
-        if (instanceClass != null) 'instanceClass': instanceClass,
+          'handlers': handlers!.map((value) => value.toJson()).toList(),
+        if (healthCheck != null) 'healthCheck': healthCheck!.toJson(),
+        if (id != null) 'id': id!,
+        if (inboundServices != null) 'inboundServices': inboundServices!,
+        if (instanceClass != null) 'instanceClass': instanceClass!,
         if (libraries != null)
-          'libraries': libraries.map((value) => value.toJson()).toList(),
-        if (livenessCheck != null) 'livenessCheck': livenessCheck.toJson(),
-        if (manualScaling != null) 'manualScaling': manualScaling.toJson(),
-        if (name != null) 'name': name,
-        if (network != null) 'network': network.toJson(),
-        if (nobuildFilesRegex != null) 'nobuildFilesRegex': nobuildFilesRegex,
-        if (readinessCheck != null) 'readinessCheck': readinessCheck.toJson(),
-        if (resources != null) 'resources': resources.toJson(),
-        if (runtime != null) 'runtime': runtime,
-        if (runtimeApiVersion != null) 'runtimeApiVersion': runtimeApiVersion,
-        if (runtimeChannel != null) 'runtimeChannel': runtimeChannel,
+          'libraries': libraries!.map((value) => value.toJson()).toList(),
+        if (livenessCheck != null) 'livenessCheck': livenessCheck!.toJson(),
+        if (manualScaling != null) 'manualScaling': manualScaling!.toJson(),
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!.toJson(),
+        if (nobuildFilesRegex != null) 'nobuildFilesRegex': nobuildFilesRegex!,
+        if (readinessCheck != null) 'readinessCheck': readinessCheck!.toJson(),
+        if (resources != null) 'resources': resources!.toJson(),
+        if (runtime != null) 'runtime': runtime!,
+        if (runtimeApiVersion != null) 'runtimeApiVersion': runtimeApiVersion!,
+        if (runtimeChannel != null) 'runtimeChannel': runtimeChannel!,
         if (runtimeMainExecutablePath != null)
-          'runtimeMainExecutablePath': runtimeMainExecutablePath,
-        if (servingStatus != null) 'servingStatus': servingStatus,
-        if (threadsafe != null) 'threadsafe': threadsafe,
-        if (versionUrl != null) 'versionUrl': versionUrl,
-        if (vm != null) 'vm': vm,
+          'runtimeMainExecutablePath': runtimeMainExecutablePath!,
+        if (servingStatus != null) 'servingStatus': servingStatus!,
+        if (threadsafe != null) 'threadsafe': threadsafe!,
+        if (versionUrl != null) 'versionUrl': versionUrl!,
+        if (vm != null) 'vm': vm!,
         if (vpcAccessConnector != null)
-          'vpcAccessConnector': vpcAccessConnector.toJson(),
-        if (zones != null) 'zones': zones,
+          'vpcAccessConnector': vpcAccessConnector!.toJson(),
+        if (zones != null) 'zones': zones!,
       };
 }
 
@@ -6072,13 +5848,13 @@ class Version {
 /// Only applicable in the App Engine flexible environment.
 class Volume {
   /// Unique name for the volume.
-  core.String name;
+  core.String? name;
 
   /// Volume size in gigabytes.
-  core.double sizeGb;
+  core.double? sizeGb;
 
   /// Underlying volume type, e.g. 'tmpfs'.
-  core.String volumeType;
+  core.String? volumeType;
 
   Volume();
 
@@ -6094,10 +5870,10 @@ class Volume {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (sizeGb != null) 'sizeGb': sizeGb,
-        if (volumeType != null) 'volumeType': volumeType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (sizeGb != null) 'sizeGb': sizeGb!,
+        if (volumeType != null) 'volumeType': volumeType!,
       };
 }
 
@@ -6105,7 +5881,7 @@ class Volume {
 class VpcAccessConnector {
   /// Full Serverless VPC Access Connector name e.g.
   /// /projects/my-project/locations/us-central1/connectors/c1.
-  core.String name;
+  core.String? name;
 
   VpcAccessConnector();
 
@@ -6115,8 +5891,8 @@ class VpcAccessConnector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -6126,13 +5902,13 @@ class ZipInfo {
   ///
   /// If set, must be greater than or equal to the actual number of files. Used
   /// for optimizing performance; if not provided, deployment may be slow.
-  core.int filesCount;
+  core.int? filesCount;
 
   /// URL of the zip file to deploy from.
   ///
   /// Must be a URL to a resource in Google Cloud Storage in the form
   /// 'http(s)://storage.googleapis.com//'.
-  core.String sourceUrl;
+  core.String? sourceUrl;
 
   ZipInfo();
 
@@ -6145,8 +5921,8 @@ class ZipInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filesCount != null) 'filesCount': filesCount,
-        if (sourceUrl != null) 'sourceUrl': sourceUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filesCount != null) 'filesCount': filesCount!,
+        if (sourceUrl != null) 'sourceUrl': sourceUrl!,
       };
 }

@@ -95,13 +95,9 @@ class FoldersResource {
   async.Future<Empty> clearOrgPolicy(
     ClearOrgPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -147,13 +143,9 @@ class FoldersResource {
   async.Future<OrgPolicy> getEffectiveOrgPolicy(
     GetEffectiveOrgPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -198,13 +190,9 @@ class FoldersResource {
   async.Future<OrgPolicy> getOrgPolicy(
     GetOrgPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -245,13 +233,9 @@ class FoldersResource {
       listAvailableOrgPolicyConstraints(
     ListAvailableOrgPolicyConstraintsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -292,13 +276,9 @@ class FoldersResource {
   async.Future<ListOrgPoliciesResponse> listOrgPolicies(
     ListOrgPoliciesRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -343,13 +323,9 @@ class FoldersResource {
   async.Future<OrgPolicy> setOrgPolicy(
     SetOrgPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -396,10 +372,9 @@ class LiensResource {
   /// this method will complete with the same error.
   async.Future<Lien> create(
     Lien request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -438,11 +413,8 @@ class LiensResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -480,11 +452,8 @@ class LiensResource {
   /// this method will complete with the same error.
   async.Future<Lien> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -530,10 +499,10 @@ class LiensResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLiensResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String parent,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -581,11 +550,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -628,13 +594,9 @@ class OrganizationsResource {
   async.Future<Empty> clearOrgPolicy(
     ClearOrgPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -674,11 +636,8 @@ class OrganizationsResource {
   /// this method will complete with the same error.
   async.Future<Organization> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -722,13 +681,9 @@ class OrganizationsResource {
   async.Future<OrgPolicy> getEffectiveOrgPolicy(
     GetEffectiveOrgPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -775,13 +730,9 @@ class OrganizationsResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -826,13 +777,9 @@ class OrganizationsResource {
   async.Future<OrgPolicy> getOrgPolicy(
     GetOrgPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -873,13 +820,9 @@ class OrganizationsResource {
       listAvailableOrgPolicyConstraints(
     ListAvailableOrgPolicyConstraintsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -920,13 +863,9 @@ class OrganizationsResource {
   async.Future<ListOrgPoliciesResponse> listOrgPolicies(
     ListOrgPoliciesRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -969,10 +908,9 @@ class OrganizationsResource {
   /// this method will complete with the same error.
   async.Future<SearchOrganizationsResponse> search(
     SearchOrganizationsRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1018,13 +956,9 @@ class OrganizationsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1068,13 +1002,9 @@ class OrganizationsResource {
   async.Future<OrgPolicy> setOrgPolicy(
     SetOrgPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1120,13 +1050,9 @@ class OrganizationsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1173,13 +1099,9 @@ class ProjectsResource {
   async.Future<Empty> clearOrgPolicy(
     ClearOrgPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1227,10 +1149,9 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<Operation> create(
     Project request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1275,11 +1196,8 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1315,11 +1233,8 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<Project> get(
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1358,13 +1273,9 @@ class ProjectsResource {
   async.Future<GetAncestryResponse> getAncestry(
     GetAncestryRequest request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1411,13 +1322,9 @@ class ProjectsResource {
   async.Future<OrgPolicy> getEffectiveOrgPolicy(
     GetEffectiveOrgPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1465,13 +1372,9 @@ class ProjectsResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1516,13 +1419,9 @@ class ProjectsResource {
   async.Future<OrgPolicy> getOrgPolicy(
     GetOrgPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1598,10 +1497,10 @@ class ProjectsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProjectsResponse> list({
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
@@ -1644,13 +1543,9 @@ class ProjectsResource {
       listAvailableOrgPolicyConstraints(
     ListAvailableOrgPolicyConstraintsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1691,13 +1586,9 @@ class ProjectsResource {
   async.Future<ListOrgPoliciesResponse> listOrgPolicies(
     ListOrgPoliciesRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1773,13 +1664,9 @@ class ProjectsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1823,13 +1710,9 @@ class ProjectsResource {
   async.Future<OrgPolicy> setOrgPolicy(
     SetOrgPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1875,13 +1758,9 @@ class ProjectsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1926,13 +1805,9 @@ class ProjectsResource {
   async.Future<Empty> undelete(
     UndeleteProjectRequest request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1974,13 +1849,9 @@ class ProjectsResource {
   async.Future<Project> update(
     Project request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2000,7 +1871,7 @@ class ProjectsResource {
 /// Identifying information for a single ancestor of a project.
 class Ancestor {
   /// Resource id of the ancestor.
-  ResourceId resourceId;
+  ResourceId? resourceId;
 
   Ancestor();
 
@@ -2011,8 +1882,8 @@ class Ancestor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceId != null) 'resourceId': resourceId.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceId != null) 'resourceId': resourceId!.toJson(),
       };
 }
 
@@ -2035,13 +1906,13 @@ class Ancestor {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -2057,11 +1928,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -2076,7 +1947,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -2084,7 +1955,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -2099,9 +1970,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -2115,7 +1986,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -2147,12 +2018,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -2171,10 +2042,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -2190,7 +2061,7 @@ class BooleanConstraint {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Used in `policy_type` to specify how `boolean_policy` will behave at this
@@ -2222,7 +2093,7 @@ class BooleanPolicy {
   /// has a `Policy` with: {RestoreDefault: {}} The constraint at
   /// `organizations/foo` is enforced. The constraint at `projects/bar` is not
   /// enforced, because `constraint_default` for the `Constraint` is `ALLOW`.
-  core.bool enforced;
+  core.bool? enforced;
 
   BooleanPolicy();
 
@@ -2232,21 +2103,21 @@ class BooleanPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enforced != null) 'enforced': enforced,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enforced != null) 'enforced': enforced!,
       };
 }
 
 /// The request sent to the ClearOrgPolicy method.
 class ClearOrgPolicyRequest {
   /// Name of the `Constraint` of the `Policy` to clear.
-  core.String constraint;
+  core.String? constraint;
 
   /// The current version, for concurrency control.
   ///
   /// Not sending an `etag` will cause the `Policy` to be cleared blindly.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -2264,9 +2135,9 @@ class ClearOrgPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (constraint != null) 'constraint': constraint,
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (constraint != null) 'constraint': constraint!,
+        if (etag != null) 'etag': etag!,
       };
 }
 
@@ -2274,22 +2145,22 @@ class ClearOrgPolicyRequest {
 class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
   /// The resource name of the folder or organization we are either creating the
   /// folder under or moving the folder to.
-  core.String destinationParent;
+  core.String? destinationParent;
 
   /// The display name of the folder.
-  core.String displayName;
+  core.String? displayName;
 
   /// The type of this operation.
   /// Possible string values are:
   /// - "OPERATION_TYPE_UNSPECIFIED" : Operation type not specified.
   /// - "CREATE" : A create folder operation.
   /// - "MOVE" : A move folder operation.
-  core.String operationType;
+  core.String? operationType;
 
   /// The resource name of the folder's parent.
   ///
   /// Only applicable when the operation_type is MOVE.
-  core.String sourceParent;
+  core.String? sourceParent;
 
   CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation();
 
@@ -2309,11 +2180,11 @@ class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destinationParent != null) 'destinationParent': destinationParent,
-        if (displayName != null) 'displayName': displayName,
-        if (operationType != null) 'operationType': operationType,
-        if (sourceParent != null) 'sourceParent': sourceParent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destinationParent != null) 'destinationParent': destinationParent!,
+        if (displayName != null) 'displayName': displayName!,
+        if (operationType != null) 'operationType': operationType!,
+        if (sourceParent != null) 'sourceParent': sourceParent!,
       };
 }
 
@@ -2321,22 +2192,22 @@ class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
 class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
   /// The resource name of the folder or organization we are either creating the
   /// folder under or moving the folder to.
-  core.String destinationParent;
+  core.String? destinationParent;
 
   /// The display name of the folder.
-  core.String displayName;
+  core.String? displayName;
 
   /// The type of this operation.
   /// Possible string values are:
   /// - "OPERATION_TYPE_UNSPECIFIED" : Operation type not specified.
   /// - "CREATE" : A create folder operation.
   /// - "MOVE" : A move folder operation.
-  core.String operationType;
+  core.String? operationType;
 
   /// The resource name of the folder's parent.
   ///
   /// Only applicable when the operation_type is MOVE.
-  core.String sourceParent;
+  core.String? sourceParent;
 
   CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation();
 
@@ -2356,11 +2227,11 @@ class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destinationParent != null) 'destinationParent': destinationParent,
-        if (displayName != null) 'displayName': displayName,
-        if (operationType != null) 'operationType': operationType,
-        if (sourceParent != null) 'sourceParent': sourceParent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destinationParent != null) 'destinationParent': destinationParent!,
+        if (displayName != null) 'displayName': displayName!,
+        if (operationType != null) 'operationType': operationType!,
+        if (sourceParent != null) 'sourceParent': sourceParent!,
       };
 }
 
@@ -2381,7 +2252,7 @@ class CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
 /// defined or inherited for the resource in question.
 class Constraint {
   /// Defines this constraint as being a BooleanConstraint.
-  BooleanConstraint booleanConstraint;
+  BooleanConstraint? booleanConstraint;
 
   /// The evaluation behavior of this constraint in the absence of 'Policy'.
   /// Possible string values are:
@@ -2391,31 +2262,31 @@ class Constraint {
   /// Indicate that enforcement is off for boolean constraints.
   /// - "DENY" : Indicate that all values are denied for list constraints.
   /// Indicate that enforcement is on for boolean constraints.
-  core.String constraintDefault;
+  core.String? constraintDefault;
 
   /// Detailed description of what this `Constraint` controls as well as how and
   /// where it is enforced.
   ///
   /// Mutable.
-  core.String description;
+  core.String? description;
 
   /// The human readable name.
   ///
   /// Mutable.
-  core.String displayName;
+  core.String? displayName;
 
   /// Defines this constraint as being a ListConstraint.
-  ListConstraint listConstraint;
+  ListConstraint? listConstraint;
 
   /// Immutable value, required to globally be unique.
   ///
   /// For example, `constraints/serviceuser.services`
-  core.String name;
+  core.String? name;
 
   /// Version of the `Constraint`.
   ///
   /// Default version is 0;
-  core.int version;
+  core.int? version;
 
   Constraint();
 
@@ -2445,15 +2316,15 @@ class Constraint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (booleanConstraint != null)
-          'booleanConstraint': booleanConstraint.toJson(),
-        if (constraintDefault != null) 'constraintDefault': constraintDefault,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (listConstraint != null) 'listConstraint': listConstraint.toJson(),
-        if (name != null) 'name': name,
-        if (version != null) 'version': version,
+          'booleanConstraint': booleanConstraint!.toJson(),
+        if (constraintDefault != null) 'constraintDefault': constraintDefault!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (listConstraint != null) 'listConstraint': listConstraint!.toJson(),
+        if (name != null) 'name': name!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -2465,7 +2336,7 @@ class CreateTagKeyMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Runtime operation information for creating a TagValue.
@@ -2476,7 +2347,7 @@ class CreateTagValueMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Runtime operation information for deleting a TagKey.
@@ -2487,7 +2358,7 @@ class DeleteTagKeyMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Runtime operation information for deleting a TagValue.
@@ -2498,7 +2369,7 @@ class DeleteTagValueMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2515,7 +2386,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2543,24 +2414,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -2579,11 +2450,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -2591,22 +2462,22 @@ class Expr {
 class FolderOperation {
   /// The resource name of the folder or organization we are either creating the
   /// folder under or moving the folder to.
-  core.String destinationParent;
+  core.String? destinationParent;
 
   /// The display name of the folder.
-  core.String displayName;
+  core.String? displayName;
 
   /// The type of this operation.
   /// Possible string values are:
   /// - "OPERATION_TYPE_UNSPECIFIED" : Operation type not specified.
   /// - "CREATE" : A create folder operation.
   /// - "MOVE" : A move folder operation.
-  core.String operationType;
+  core.String? operationType;
 
   /// The resource name of the folder's parent.
   ///
   /// Only applicable when the operation_type is MOVE.
-  core.String sourceParent;
+  core.String? sourceParent;
 
   FolderOperation();
 
@@ -2625,11 +2496,11 @@ class FolderOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destinationParent != null) 'destinationParent': destinationParent,
-        if (displayName != null) 'displayName': displayName,
-        if (operationType != null) 'operationType': operationType,
-        if (sourceParent != null) 'sourceParent': sourceParent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destinationParent != null) 'destinationParent': destinationParent!,
+        if (displayName != null) 'displayName': displayName!,
+        if (operationType != null) 'operationType': operationType!,
+        if (sourceParent != null) 'sourceParent': sourceParent!,
       };
 }
 
@@ -2657,7 +2528,7 @@ class FolderOperationError {
   /// to delete contains active resources.
   /// - "DELETED_FOLDER_HEIGHT_VIOLATION" : The attempted action would violate
   /// the max deleted folder depth constraint.
-  core.String errorMessageId;
+  core.String? errorMessageId;
 
   FolderOperationError();
 
@@ -2667,8 +2538,8 @@ class FolderOperationError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorMessageId != null) 'errorMessageId': errorMessageId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorMessageId != null) 'errorMessageId': errorMessageId!,
       };
 }
 
@@ -2680,7 +2551,7 @@ class GetAncestryRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response from the projects.getAncestry method.
@@ -2689,7 +2560,7 @@ class GetAncestryResponse {
   ///
   /// The first ancestor is the project itself, followed by the project's
   /// parent, etc..
-  core.List<Ancestor> ancestor;
+  core.List<Ancestor>? ancestor;
 
   GetAncestryResponse();
 
@@ -2702,16 +2573,16 @@ class GetAncestryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (ancestor != null)
-          'ancestor': ancestor.map((value) => value.toJson()).toList(),
+          'ancestor': ancestor!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The request sent to the GetEffectiveOrgPolicy method.
 class GetEffectiveOrgPolicyRequest {
   /// The name of the `Constraint` to compute the effective `Policy`.
-  core.String constraint;
+  core.String? constraint;
 
   GetEffectiveOrgPolicyRequest();
 
@@ -2721,8 +2592,8 @@ class GetEffectiveOrgPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (constraint != null) 'constraint': constraint,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (constraint != null) 'constraint': constraint!,
       };
 }
 
@@ -2730,7 +2601,7 @@ class GetEffectiveOrgPolicyRequest {
 class GetIamPolicyRequest {
   /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
   /// `GetIamPolicy`.
-  GetPolicyOptions options;
+  GetPolicyOptions? options;
 
   GetIamPolicyRequest();
 
@@ -2741,15 +2612,15 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (options != null) 'options': options.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (options != null) 'options': options!.toJson(),
       };
 }
 
 /// The request sent to the GetOrgPolicy method.
 class GetOrgPolicyRequest {
   /// Name of the `Constraint` to get the `Policy`.
-  core.String constraint;
+  core.String? constraint;
 
   GetOrgPolicyRequest();
 
@@ -2759,8 +2630,8 @@ class GetOrgPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (constraint != null) 'constraint': constraint,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (constraint != null) 'constraint': constraint!,
       };
 }
 
@@ -2776,7 +2647,7 @@ class GetPolicyOptions {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// Optional.
-  core.int requestedPolicyVersion;
+  core.int? requestedPolicyVersion;
 
   GetPolicyOptions();
 
@@ -2786,9 +2657,9 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion,
+          'requestedPolicyVersion': requestedPolicyVersion!,
       };
 }
 
@@ -2796,30 +2667,30 @@ class GetPolicyOptions {
 /// resource.
 class Lien {
   /// The creation time of this Lien.
-  core.String createTime;
+  core.String? createTime;
 
   /// A system-generated unique identifier for this Lien.
   ///
   /// Example: `liens/1234abcd`
-  core.String name;
+  core.String? name;
 
   /// A stable, user-visible/meaningful string identifying the origin of the
   /// Lien, intended to be inspected programmatically.
   ///
   /// Maximum length of 200 characters. Example: 'compute.googleapis.com'
-  core.String origin;
+  core.String? origin;
 
   /// A reference to the resource this Lien is attached to.
   ///
   /// The server will validate the parent against those for which Liens are
   /// supported. Example: `projects/1234`
-  core.String parent;
+  core.String? parent;
 
   /// Concise user-visible strings indicating why an action cannot be performed
   /// on a resource.
   ///
   /// Maximum length of 200 characters. Example: 'Holds production API key'
-  core.String reason;
+  core.String? reason;
 
   /// The types of operations which should be blocked as a result of this Lien.
   ///
@@ -2827,7 +2698,7 @@ class Lien {
   /// validate the permissions against those for which Liens are supported. An
   /// empty list is meaningless and will be rejected. Example:
   /// \['resourcemanager.projects.delete'\]
-  core.List<core.String> restrictions;
+  core.List<core.String>? restrictions;
 
   Lien();
 
@@ -2854,13 +2725,13 @@ class Lien {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (name != null) 'name': name,
-        if (origin != null) 'origin': origin,
-        if (parent != null) 'parent': parent,
-        if (reason != null) 'reason': reason,
-        if (restrictions != null) 'restrictions': restrictions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+        if (origin != null) 'origin': origin!,
+        if (parent != null) 'parent': parent!,
+        if (reason != null) 'reason': reason!,
+        if (restrictions != null) 'restrictions': restrictions!,
       };
 }
 
@@ -2871,13 +2742,13 @@ class ListAvailableOrgPolicyConstraintsRequest {
   ///
   /// This is currently unsupported and will be ignored. The server may at any
   /// point start using this field to limit page size.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// Page token used to retrieve the next page.
   ///
   /// This is currently unsupported and will be ignored. The server may at any
   /// point start using this field.
-  core.String pageToken;
+  core.String? pageToken;
 
   ListAvailableOrgPolicyConstraintsRequest();
 
@@ -2890,9 +2761,9 @@ class ListAvailableOrgPolicyConstraintsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
       };
 }
 
@@ -2903,12 +2774,12 @@ class ListAvailableOrgPolicyConstraintsRequest {
 /// which are set).
 class ListAvailableOrgPolicyConstraintsResponse {
   /// The collection of constraints that are settable on the request resource.
-  core.List<Constraint> constraints;
+  core.List<Constraint>? constraints;
 
   /// Page token used to retrieve the next page.
   ///
   /// This is currently not used.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListAvailableOrgPolicyConstraintsResponse();
 
@@ -2924,10 +2795,10 @@ class ListAvailableOrgPolicyConstraintsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (constraints != null)
-          'constraints': constraints.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'constraints': constraints!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2938,14 +2809,14 @@ class ListConstraint {
   /// matches the value specified in this `Constraint`.
   ///
   /// Optional.
-  core.String suggestedValue;
+  core.String? suggestedValue;
 
   /// Indicates whether subtrees of Cloud Resource Manager resource hierarchy
   /// can be used in `Policy.allowed_values` and `Policy.denied_values`.
   ///
   /// For example, `"under:folders/123"` would match any resource under the
   /// 'folders/123' folder.
-  core.bool supportsUnder;
+  core.bool? supportsUnder;
 
   ListConstraint();
 
@@ -2958,20 +2829,20 @@ class ListConstraint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (suggestedValue != null) 'suggestedValue': suggestedValue,
-        if (supportsUnder != null) 'supportsUnder': supportsUnder,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (suggestedValue != null) 'suggestedValue': suggestedValue!,
+        if (supportsUnder != null) 'supportsUnder': supportsUnder!,
       };
 }
 
 /// The response message for Liens.ListLiens.
 class ListLiensResponse {
   /// A list of Liens.
-  core.List<Lien> liens;
+  core.List<Lien>? liens;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLiensResponse();
 
@@ -2987,10 +2858,10 @@ class ListLiensResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (liens != null)
-          'liens': liens.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'liens': liens!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -3000,13 +2871,13 @@ class ListOrgPoliciesRequest {
   ///
   /// This is currently unsupported and will be ignored. The server may at any
   /// point start using this field to limit page size.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// Page token used to retrieve the next page.
   ///
   /// This is currently unsupported and will be ignored. The server may at any
   /// point start using this field.
-  core.String pageToken;
+  core.String? pageToken;
 
   ListOrgPoliciesRequest();
 
@@ -3019,9 +2890,9 @@ class ListOrgPoliciesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
       };
 }
 
@@ -3033,12 +2904,12 @@ class ListOrgPoliciesResponse {
   ///
   /// This is currently not used, but the server may at any point start
   /// supplying a valid token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The `Policies` that are set on the resource.
   ///
   /// It will be empty if no `Policies` are set.
-  core.List<OrgPolicy> policies;
+  core.List<OrgPolicy>? policies;
 
   ListOrgPoliciesResponse();
 
@@ -3054,10 +2925,10 @@ class ListOrgPoliciesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (policies != null)
-          'policies': policies.map((value) => value.toJson()).toList(),
+          'policies': policies!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3086,17 +2957,17 @@ class ListPolicy {
   /// denied_values must be set.
   /// - "ALLOW" : A policy with this set allows all values.
   /// - "DENY" : A policy with this set denies all values.
-  core.String allValues;
+  core.String? allValues;
 
   /// List of values allowed at this resource.
   ///
   /// Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`.
-  core.List<core.String> allowedValues;
+  core.List<core.String>? allowedValues;
 
   /// List of values denied at this resource.
   ///
   /// Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`.
-  core.List<core.String> deniedValues;
+  core.List<core.String>? deniedValues;
 
   /// Determines the inheritance behavior for this `Policy`.
   ///
@@ -3159,7 +3030,7 @@ class ListPolicy {
   /// `organizations/O1`, `folders/F1`, `folders/F2`, `projects/P1`,
   /// `projects/P2`, `projects/P3`. The accepted values at `projects/bar` are
   /// `organizations/O1`, `folders/F1`, `projects/P1`.
-  core.bool inheritFromParent;
+  core.bool? inheritFromParent;
 
   /// The Google Cloud Console will try to default to a configuration that
   /// matches the value specified in this `Policy`.
@@ -3168,7 +3039,7 @@ class ListPolicy {
   /// higher in the hierarchy, unless `inherit_from_parent` is `false`.
   ///
   /// Optional.
-  core.String suggestedValue;
+  core.String? suggestedValue;
 
   ListPolicy();
 
@@ -3194,12 +3065,12 @@ class ListPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allValues != null) 'allValues': allValues,
-        if (allowedValues != null) 'allowedValues': allowedValues,
-        if (deniedValues != null) 'deniedValues': deniedValues,
-        if (inheritFromParent != null) 'inheritFromParent': inheritFromParent,
-        if (suggestedValue != null) 'suggestedValue': suggestedValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allValues != null) 'allValues': allValues!,
+        if (allowedValues != null) 'allowedValues': allowedValues!,
+        if (deniedValues != null) 'deniedValues': deniedValues!,
+        if (inheritFromParent != null) 'inheritFromParent': inheritFromParent!,
+        if (suggestedValue != null) 'suggestedValue': suggestedValue!,
       };
 }
 
@@ -3217,12 +3088,12 @@ class ListProjectsResponse {
   /// the next page of the results. When `next_page_token` is not filled in,
   /// there is no next page and the list returned is the last page in the result
   /// set. Pagination tokens have a limited lifetime.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of Projects that matched the list filter.
   ///
   /// This list can be paginated.
-  core.List<Project> projects;
+  core.List<Project>? projects;
 
   ListProjectsResponse();
 
@@ -3238,10 +3109,10 @@ class ListProjectsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (projects != null)
-          'projects': projects.map((value) => value.toJson()).toList(),
+          'projects': projects!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3252,10 +3123,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -3266,14 +3137,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -3286,7 +3157,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -3321,12 +3192,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -3334,7 +3205,7 @@ class Operation {
 /// for configurations of Cloud Platform resources.
 class OrgPolicy {
   /// For boolean `Constraints`, whether to enforce the `Constraint` or not.
-  BooleanPolicy booleanPolicy;
+  BooleanPolicy? booleanPolicy;
 
   /// The name of the `Constraint` the `Policy` is configuring, for example,
   /// `constraints/serviceuser.services`.
@@ -3342,7 +3213,7 @@ class OrgPolicy {
   /// A \[list of available
   /// constraints\](/resource-manager/docs/organization-policy/org-policy-constraints)
   /// is available. Immutable after creation.
-  core.String constraint;
+  core.String? constraint;
 
   /// An opaque tag indicating the current version of the `Policy`, used for
   /// concurrency control.
@@ -3356,8 +3227,8 @@ class OrgPolicy {
   /// read-modify-write loop for concurrency control. Not setting the `etag`in a
   /// `SetOrgPolicy` request will result in an unconditional write of the
   /// `Policy`.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -3365,23 +3236,23 @@ class OrgPolicy {
   }
 
   /// List of values either allowed or disallowed.
-  ListPolicy listPolicy;
+  ListPolicy? listPolicy;
 
   /// Restores the default behavior of the constraint; independent of
   /// `Constraint` type.
-  RestoreDefault restoreDefault;
+  RestoreDefault? restoreDefault;
 
   /// The time stamp the `Policy` was previously updated.
   ///
   /// This is set by the server, not specified by the caller, and represents the
   /// last time a call to `SetOrgPolicy` was made for that `Policy`. Any value
   /// set by the client will be ignored.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// Version of the `Policy`.
   ///
   /// Default version is 0;
-  core.int version;
+  core.int? version;
 
   OrgPolicy();
 
@@ -3412,14 +3283,14 @@ class OrgPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (booleanPolicy != null) 'booleanPolicy': booleanPolicy.toJson(),
-        if (constraint != null) 'constraint': constraint,
-        if (etag != null) 'etag': etag,
-        if (listPolicy != null) 'listPolicy': listPolicy.toJson(),
-        if (restoreDefault != null) 'restoreDefault': restoreDefault.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (booleanPolicy != null) 'booleanPolicy': booleanPolicy!.toJson(),
+        if (constraint != null) 'constraint': constraint!,
+        if (etag != null) 'etag': etag!,
+        if (listPolicy != null) 'listPolicy': listPolicy!.toJson(),
+        if (restoreDefault != null) 'restoreDefault': restoreDefault!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -3429,7 +3300,7 @@ class Organization {
   /// Timestamp when the Organization was created.
   ///
   /// Assigned by the server.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// A human-readable string that refers to the Organization in the GCP Console
   /// UI.
@@ -3437,7 +3308,7 @@ class Organization {
   /// This string is set by the server and cannot be changed. The string will be
   /// set to the primary domain (for example, "google.com") of the G Suite
   /// customer that owns the organization.
-  core.String displayName;
+  core.String? displayName;
 
   /// The organization's current lifecycle state.
   ///
@@ -3448,7 +3319,7 @@ class Organization {
   /// - "ACTIVE" : The normal and active state.
   /// - "DELETE_REQUESTED" : The organization has been marked for deletion by
   /// the user.
-  core.String lifecycleState;
+  core.String? lifecycleState;
 
   /// The resource name of the organization.
   ///
@@ -3456,13 +3327,13 @@ class Organization {
   /// "organizations/\[organization_id\]". For example, "organizations/1234".
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The owner of this Organization.
   ///
   /// The owner should be specified on creation. Once set, it cannot be changed.
   /// This field is required.
-  OrganizationOwner owner;
+  OrganizationOwner? owner;
 
   Organization();
 
@@ -3485,12 +3356,12 @@ class Organization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationTime != null) 'creationTime': creationTime,
-        if (displayName != null) 'displayName': displayName,
-        if (lifecycleState != null) 'lifecycleState': lifecycleState,
-        if (name != null) 'name': name,
-        if (owner != null) 'owner': owner.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (lifecycleState != null) 'lifecycleState': lifecycleState!,
+        if (name != null) 'name': name!,
+        if (owner != null) 'owner': owner!.toJson(),
       };
 }
 
@@ -3501,7 +3372,7 @@ class Organization {
 /// and all its descendants will be deleted.
 class OrganizationOwner {
   /// The G Suite customer id used in the Directory API.
-  core.String directoryCustomerId;
+  core.String? directoryCustomerId;
 
   OrganizationOwner();
 
@@ -3511,9 +3382,9 @@ class OrganizationOwner {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (directoryCustomerId != null)
-          'directoryCustomerId': directoryCustomerId,
+          'directoryCustomerId': directoryCustomerId!,
       };
 }
 
@@ -3550,14 +3421,14 @@ class OrganizationOwner {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -3571,8 +3442,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -3596,7 +3467,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -3621,13 +3492,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -3639,7 +3510,7 @@ class Project {
   /// Creation time.
   ///
   /// Read-only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The labels associated with this Project.
   ///
@@ -3650,7 +3521,7 @@ class Project {
   /// can be associated with a given resource. Clients should store labels in a
   /// representation such as JSON that does not depend on specific characters
   /// being disallowed. Example: "environment" : "dev" Read-write.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The Project lifecycle state.
   ///
@@ -3664,7 +3535,7 @@ class Project {
   /// This can generally be reversed by invoking UndeleteProject.
   /// - "DELETE_IN_PROGRESS" : This lifecycle state is no longer used and not
   /// returned by the API.
-  core.String lifecycleState;
+  core.String? lifecycleState;
 
   /// The optional user-assigned display name of the Project.
   ///
@@ -3672,7 +3543,7 @@ class Project {
   /// are: lowercase and uppercase letters, numbers, hyphen, single-quote,
   /// double-quote, space, and exclamation point. Example: `My Project`
   /// Read-write.
-  core.String name;
+  core.String? name;
 
   /// An optional reference to a parent Resource.
   ///
@@ -3680,19 +3551,19 @@ class Project {
   /// parent cannot be cleared. The `parent` can be set on creation or using the
   /// `UpdateProject` method; the end user must have the
   /// `resourcemanager.projects.create` permission on the parent.
-  ResourceId parent;
+  ResourceId? parent;
 
   /// The unique, user-assigned ID of the Project.
   ///
   /// It must be 6 to 30 lowercase letters, digits, or hyphens. It must start
   /// with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
   /// Read-only after creation.
-  core.String projectId;
+  core.String? projectId;
 
   /// The number uniquely identifying the project.
   ///
   /// Example: `415104041262` Read-only.
-  core.String projectNumber;
+  core.String? projectNumber;
 
   Project();
 
@@ -3727,14 +3598,14 @@ class Project {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (labels != null) 'labels': labels,
-        if (lifecycleState != null) 'lifecycleState': lifecycleState,
-        if (name != null) 'name': name,
-        if (parent != null) 'parent': parent.toJson(),
-        if (projectId != null) 'projectId': projectId,
-        if (projectNumber != null) 'projectNumber': projectNumber,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (labels != null) 'labels': labels!,
+        if (lifecycleState != null) 'lifecycleState': lifecycleState!,
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!.toJson(),
+        if (projectId != null) 'projectId': projectId!,
+        if (projectNumber != null) 'projectNumber': projectNumber!,
       };
 }
 
@@ -3745,16 +3616,16 @@ class Project {
 /// completed.
 class ProjectCreationStatus {
   /// Creation time of the project creation workflow.
-  core.String createTime;
+  core.String? createTime;
 
   /// True if the project can be retrieved using GetProject.
   ///
   /// No other operations on the project are guaranteed to work until the
   /// project creation is complete.
-  core.bool gettable;
+  core.bool? gettable;
 
   /// True if the project creation process is complete.
-  core.bool ready;
+  core.bool? ready;
 
   ProjectCreationStatus();
 
@@ -3770,10 +3641,10 @@ class ProjectCreationStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (gettable != null) 'gettable': gettable,
-        if (ready != null) 'ready': ready,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (gettable != null) 'gettable': gettable!,
+        if (ready != null) 'ready': ready!,
       };
 }
 
@@ -3787,12 +3658,12 @@ class ResourceId {
   /// The type-specific id.
   ///
   /// This should correspond to the id used in the type-specific API's.
-  core.String id;
+  core.String? id;
 
   /// The resource type this id is for.
   ///
   /// At present, the valid types are: "organization", "folder", and "project".
-  core.String type;
+  core.String? type;
 
   ResourceId();
 
@@ -3805,9 +3676,9 @@ class ResourceId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3830,7 +3701,7 @@ class RestoreDefault {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The request sent to the `SearchOrganizations` method.
@@ -3844,18 +3715,18 @@ class SearchOrganizationsRequest {
   /// returns Organization resources with `owner.directory_customer_id` equal to
   /// `123456789`. * Filter `domain:google.com` returns Organization resources
   /// corresponding to the domain `google.com`. This field is optional.
-  core.String filter;
+  core.String? filter;
 
   /// The maximum number of Organizations to return in the response.
   ///
   /// This field is optional.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// A pagination token returned from a previous call to `SearchOrganizations`
   /// that indicates from where listing should continue.
   ///
   /// This field is optional.
-  core.String pageToken;
+  core.String? pageToken;
 
   SearchOrganizationsRequest();
 
@@ -3871,10 +3742,10 @@ class SearchOrganizationsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filter != null) 'filter': filter,
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
       };
 }
 
@@ -3886,11 +3757,11 @@ class SearchOrganizationsResponse {
   /// request, this field will be set with a token that can be used to fetch the
   /// next page of results. If this field is empty, it indicates that this
   /// response contains the last page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of Organizations that matched the search query, possibly
   /// paginated.
-  core.List<Organization> organizations;
+  core.List<Organization>? organizations;
 
   SearchOrganizationsResponse();
 
@@ -3906,11 +3777,11 @@ class SearchOrganizationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (organizations != null)
           'organizations':
-              organizations.map((value) => value.toJson()).toList(),
+              organizations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3921,13 +3792,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -3941,16 +3812,16 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
 /// The request sent to the SetOrgPolicyRequest method.
 class SetOrgPolicyRequest {
   /// `Policy` to set on the resource.
-  OrgPolicy policy;
+  OrgPolicy? policy;
 
   SetOrgPolicyRequest();
 
@@ -3961,8 +3832,8 @@ class SetOrgPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
       };
 }
 
@@ -3975,7 +3846,7 @@ class SetOrgPolicyRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -3983,13 +3854,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -4013,10 +3884,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -4027,7 +3898,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -4039,8 +3910,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -4048,7 +3919,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -4060,8 +3931,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -4073,7 +3944,7 @@ class UndeleteProjectRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Runtime operation information for updating a TagKey.
@@ -4084,7 +3955,7 @@ class UpdateTagKeyMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Runtime operation information for updating a TagValue.
@@ -4095,5 +3966,5 @@ class UpdateTagValueMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }

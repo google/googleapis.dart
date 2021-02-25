@@ -110,13 +110,9 @@ class ProjectsTracesResource {
   async.Future<Empty> batchWrite(
     BatchWriteSpansRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -168,13 +164,9 @@ class ProjectsTracesSpansResource {
   async.Future<Span> createSpan(
     Span request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -196,12 +188,12 @@ class Annotation {
   /// A set of attributes on the annotation.
   ///
   /// You can have up to 4 attributes per Annotation.
-  Attributes attributes;
+  Attributes? attributes;
 
   /// A user-supplied message describing the event.
   ///
   /// The maximum length for the description is 256 bytes.
-  TruncatableString description;
+  TruncatableString? description;
 
   Annotation();
 
@@ -216,22 +208,22 @@ class Annotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributes != null) 'attributes': attributes.toJson(),
-        if (description != null) 'description': description.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributes != null) 'attributes': attributes!.toJson(),
+        if (description != null) 'description': description!.toJson(),
       };
 }
 
 /// The allowed types for \[VALUE\] in a `[KEY]:[VALUE]` attribute.
 class AttributeValue {
   /// A Boolean value represented by `true` or `false`.
-  core.bool boolValue;
+  core.bool? boolValue;
 
   /// A 64-bit signed integer.
-  core.String intValue;
+  core.String? intValue;
 
   /// A string up to 256 bytes long.
-  TruncatableString stringValue;
+  TruncatableString? stringValue;
 
   AttributeValue();
 
@@ -248,10 +240,10 @@ class AttributeValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue,
-        if (intValue != null) 'intValue': intValue,
-        if (stringValue != null) 'stringValue': stringValue.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (intValue != null) 'intValue': intValue!,
+        if (stringValue != null) 'stringValue': stringValue!.toJson(),
       };
 }
 
@@ -264,39 +256,40 @@ class Attributes {
   /// `true` and `false`. For example: "/instance_id": { "string_value": {
   /// "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 }
   /// "abc.com/myattribute": { "bool_value": false }
-  core.Map<core.String, AttributeValue> attributeMap;
+  core.Map<core.String, AttributeValue>? attributeMap;
 
   /// The number of attributes that were discarded.
   ///
   /// Attributes can be discarded because their keys are too long or because
   /// there are too many attributes. If this value is 0 then all attributes are
   /// valid.
-  core.int droppedAttributesCount;
+  core.int? droppedAttributesCount;
 
   Attributes();
 
   Attributes.fromJson(core.Map _json) {
     if (_json.containsKey('attributeMap')) {
-      attributeMap =
-          (_json['attributeMap'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  AttributeValue.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      attributeMap = (_json['attributeMap'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              AttributeValue.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('droppedAttributesCount')) {
       droppedAttributesCount = _json['droppedAttributesCount'] as core.int;
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (attributeMap != null)
-          'attributeMap': attributeMap
+          'attributeMap': attributeMap!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (droppedAttributesCount != null)
-          'droppedAttributesCount': droppedAttributesCount,
+          'droppedAttributesCount': droppedAttributesCount!,
       };
 }
 
@@ -308,7 +301,7 @@ class BatchWriteSpansRequest {
   /// undefined.
   ///
   /// Required.
-  core.List<Span> spans;
+  core.List<Span>? spans;
 
   BatchWriteSpansRequest();
 
@@ -321,9 +314,9 @@ class BatchWriteSpansRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (spans != null)
-          'spans': spans.map((value) => value.toJson()).toList(),
+          'spans': spans!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -341,7 +334,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A pointer from the current span to another span in the same trace or in a
@@ -354,20 +347,20 @@ class Link {
   /// A set of attributes on the link.
   ///
   /// You have have up to 32 attributes per link.
-  Attributes attributes;
+  Attributes? attributes;
 
   /// The \[SPAN_ID\] for a span within a trace.
-  core.String spanId;
+  core.String? spanId;
 
   /// The \[TRACE_ID\] for a trace within a project.
-  core.String traceId;
+  core.String? traceId;
 
   /// The relationship of the current span relative to the linked span.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : The relationship of the two spans is unknown.
   /// - "CHILD_LINKED_SPAN" : The linked span is a child of the current span.
   /// - "PARENT_LINKED_SPAN" : The linked span is a parent of the current span.
-  core.String type;
+  core.String? type;
 
   Link();
 
@@ -387,11 +380,11 @@ class Link {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributes != null) 'attributes': attributes.toJson(),
-        if (spanId != null) 'spanId': spanId,
-        if (traceId != null) 'traceId': traceId,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributes != null) 'attributes': attributes!.toJson(),
+        if (spanId != null) 'spanId': spanId!,
+        if (traceId != null) 'traceId': traceId!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -401,10 +394,10 @@ class Links {
   /// The number of dropped links after the maximum size was enforced.
   ///
   /// If this value is 0, then no links were dropped.
-  core.int droppedLinksCount;
+  core.int? droppedLinksCount;
 
   /// A collection of links.
-  core.List<Link> link;
+  core.List<Link>? link;
 
   Links();
 
@@ -420,9 +413,9 @@ class Links {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (droppedLinksCount != null) 'droppedLinksCount': droppedLinksCount,
-        if (link != null) 'link': link.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (droppedLinksCount != null) 'droppedLinksCount': droppedLinksCount!,
+        if (link != null) 'link': link!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -431,13 +424,13 @@ class MessageEvent {
   /// The number of compressed bytes sent or received.
   ///
   /// If missing assumed to be the same size as uncompressed.
-  core.String compressedSizeBytes;
+  core.String? compressedSizeBytes;
 
   /// An identifier for the MessageEvent's message that can be used to match
   /// SENT and RECEIVED MessageEvents.
   ///
   /// It is recommended to be unique within a Span.
-  core.String id;
+  core.String? id;
 
   /// Type of MessageEvent.
   ///
@@ -446,10 +439,10 @@ class MessageEvent {
   /// - "TYPE_UNSPECIFIED" : Unknown event type.
   /// - "SENT" : Indicates a sent message.
   /// - "RECEIVED" : Indicates a received message.
-  core.String type;
+  core.String? type;
 
   /// The number of uncompressed bytes sent or received.
-  core.String uncompressedSizeBytes;
+  core.String? uncompressedSizeBytes;
 
   MessageEvent();
 
@@ -468,13 +461,13 @@ class MessageEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (compressedSizeBytes != null)
-          'compressedSizeBytes': compressedSizeBytes,
-        if (id != null) 'id': id,
-        if (type != null) 'type': type,
+          'compressedSizeBytes': compressedSizeBytes!,
+        if (id != null) 'id': id!,
+        if (type != null) 'type': type!,
         if (uncompressedSizeBytes != null)
-          'uncompressedSizeBytes': uncompressedSizeBytes,
+          'uncompressedSizeBytes': uncompressedSizeBytes!,
       };
 }
 
@@ -482,11 +475,11 @@ class MessageEvent {
 class Module {
   /// A unique identifier for the module, usually a hash of its contents (up to
   /// 128 bytes).
-  TruncatableString buildId;
+  TruncatableString? buildId;
 
   /// For example: main binary, kernel modules, and dynamic libraries such as
   /// libc.so, sharedlib.so (up to 256 bytes).
-  TruncatableString module;
+  TruncatableString? module;
 
   Module();
 
@@ -501,9 +494,9 @@ class Module {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (buildId != null) 'buildId': buildId.toJson(),
-        if (module != null) 'module': module.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (buildId != null) 'buildId': buildId!.toJson(),
+        if (module != null) 'module': module!.toJson(),
       };
 }
 
@@ -518,14 +511,14 @@ class Span {
   /// A set of attributes on the span.
   ///
   /// You can have up to 32 attributes per span.
-  Attributes attributes;
+  Attributes? attributes;
 
   /// The number of child spans that were generated while this span was active.
   ///
   /// If set, allows implementation to detect missing child spans.
   ///
   /// Optional.
-  core.int childSpanCount;
+  core.int? childSpanCount;
 
   /// A description of the span's operation (up to 128 bytes).
   ///
@@ -536,7 +529,7 @@ class Span {
   /// This makes it easier to correlate spans in different traces.
   ///
   /// Required.
-  TruncatableString displayName;
+  TruncatableString? displayName;
 
   /// The end time of the span.
   ///
@@ -545,12 +538,12 @@ class Span {
   /// application handler stops running.
   ///
   /// Required.
-  core.String endTime;
+  core.String? endTime;
 
   /// Links associated with the span.
   ///
   /// You can have up to 128 links per Span.
-  Links links;
+  Links? links;
 
   /// The resource name of the span in the following format:
   /// projects/\[PROJECT_ID\]/traces/\[TRACE_ID\]/spans/SPAN_ID is a unique
@@ -562,12 +555,12 @@ class Span {
   /// zero.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The \[SPAN_ID\] of this span's parent span.
   ///
   /// If this is a root span, then this field must be empty.
-  core.String parentSpanId;
+  core.String? parentSpanId;
 
   /// Set this parameter to indicate whether this span is in the same process as
   /// its parent.
@@ -576,12 +569,12 @@ class Span {
   /// this helpful information.
   ///
   /// Optional.
-  core.bool sameProcessAsParentSpan;
+  core.bool? sameProcessAsParentSpan;
 
   /// The \[SPAN_ID\] portion of the span's resource name.
   ///
   /// Required.
-  core.String spanId;
+  core.String? spanId;
 
   /// Distinguishes between spans generated in a particular context.
   ///
@@ -605,10 +598,10 @@ class Span {
   /// message from a broker. Unlike client and server, there is no direct
   /// critical path latency relationship between producer and consumer spans
   /// (e.g. receiving a message from a pubsub service subscription).
-  core.String spanKind;
+  core.String? spanKind;
 
   /// Stack trace captured at the start of the span.
-  StackTrace stackTrace;
+  StackTrace? stackTrace;
 
   /// The start time of the span.
   ///
@@ -617,17 +610,17 @@ class Span {
   /// server's application handler starts running.
   ///
   /// Required.
-  core.String startTime;
+  core.String? startTime;
 
   /// The final status for this span.
   ///
   /// Optional.
-  Status status;
+  Status? status;
 
   /// A set of time events.
   ///
   /// You can have up to 32 annotations and 128 message events per span.
-  TimeEvents timeEvents;
+  TimeEvents? timeEvents;
 
   Span();
 
@@ -682,22 +675,22 @@ class Span {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributes != null) 'attributes': attributes.toJson(),
-        if (childSpanCount != null) 'childSpanCount': childSpanCount,
-        if (displayName != null) 'displayName': displayName.toJson(),
-        if (endTime != null) 'endTime': endTime,
-        if (links != null) 'links': links.toJson(),
-        if (name != null) 'name': name,
-        if (parentSpanId != null) 'parentSpanId': parentSpanId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributes != null) 'attributes': attributes!.toJson(),
+        if (childSpanCount != null) 'childSpanCount': childSpanCount!,
+        if (displayName != null) 'displayName': displayName!.toJson(),
+        if (endTime != null) 'endTime': endTime!,
+        if (links != null) 'links': links!.toJson(),
+        if (name != null) 'name': name!,
+        if (parentSpanId != null) 'parentSpanId': parentSpanId!,
         if (sameProcessAsParentSpan != null)
-          'sameProcessAsParentSpan': sameProcessAsParentSpan,
-        if (spanId != null) 'spanId': spanId,
-        if (spanKind != null) 'spanKind': spanKind,
-        if (stackTrace != null) 'stackTrace': stackTrace.toJson(),
-        if (startTime != null) 'startTime': startTime,
-        if (status != null) 'status': status.toJson(),
-        if (timeEvents != null) 'timeEvents': timeEvents.toJson(),
+          'sameProcessAsParentSpan': sameProcessAsParentSpan!,
+        if (spanId != null) 'spanId': spanId!,
+        if (spanKind != null) 'spanKind': spanKind!,
+        if (stackTrace != null) 'stackTrace': stackTrace!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
+        if (status != null) 'status': status!.toJson(),
+        if (timeEvents != null) 'timeEvents': timeEvents!.toJson(),
       };
 }
 
@@ -706,30 +699,30 @@ class StackFrame {
   /// The column number where the function call appears, if available.
   ///
   /// This is important in JavaScript because of its anonymous functions.
-  core.String columnNumber;
+  core.String? columnNumber;
 
   /// The name of the source file where the function call appears (up to 256
   /// bytes).
-  TruncatableString fileName;
+  TruncatableString? fileName;
 
   /// The fully-qualified name that uniquely identifies the function or method
   /// that is active in this frame (up to 1024 bytes).
-  TruncatableString functionName;
+  TruncatableString? functionName;
 
   /// The line number in `file_name` where the function call appears.
-  core.String lineNumber;
+  core.String? lineNumber;
 
   /// The binary module from where the code was loaded.
-  Module loadModule;
+  Module? loadModule;
 
   /// An un-mangled function name, if `function_name` is
   /// [mangled](http://www.avabodh.com/cxxin/namemangling.html).
   ///
   /// The name can be fully-qualified (up to 1024 bytes).
-  TruncatableString originalFunctionName;
+  TruncatableString? originalFunctionName;
 
   /// The version of the deployed source code (up to 128 bytes).
-  TruncatableString sourceVersion;
+  TruncatableString? sourceVersion;
 
   StackFrame();
 
@@ -762,15 +755,15 @@ class StackFrame {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnNumber != null) 'columnNumber': columnNumber,
-        if (fileName != null) 'fileName': fileName.toJson(),
-        if (functionName != null) 'functionName': functionName.toJson(),
-        if (lineNumber != null) 'lineNumber': lineNumber,
-        if (loadModule != null) 'loadModule': loadModule.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnNumber != null) 'columnNumber': columnNumber!,
+        if (fileName != null) 'fileName': fileName!.toJson(),
+        if (functionName != null) 'functionName': functionName!.toJson(),
+        if (lineNumber != null) 'lineNumber': lineNumber!,
+        if (loadModule != null) 'loadModule': loadModule!.toJson(),
         if (originalFunctionName != null)
-          'originalFunctionName': originalFunctionName.toJson(),
-        if (sourceVersion != null) 'sourceVersion': sourceVersion.toJson(),
+          'originalFunctionName': originalFunctionName!.toJson(),
+        if (sourceVersion != null) 'sourceVersion': sourceVersion!.toJson(),
       };
 }
 
@@ -780,10 +773,10 @@ class StackFrames {
   /// stack frames.
   ///
   /// If this value is 0, then no stack frames were dropped.
-  core.int droppedFramesCount;
+  core.int? droppedFramesCount;
 
   /// Stack frames in this call stack.
-  core.List<StackFrame> frame;
+  core.List<StackFrame>? frame;
 
   StackFrames();
 
@@ -799,11 +792,11 @@ class StackFrames {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (droppedFramesCount != null)
-          'droppedFramesCount': droppedFramesCount,
+          'droppedFramesCount': droppedFramesCount!,
         if (frame != null)
-          'frame': frame.map((value) => value.toJson()).toList(),
+          'frame': frame!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -812,7 +805,7 @@ class StackTrace {
   /// Stack frames in this stack trace.
   ///
   /// A maximum of 128 frames are allowed.
-  StackFrames stackFrames;
+  StackFrames? stackFrames;
 
   /// The hash ID is used to conserve network bandwidth for duplicate stack
   /// traces within a single trace.
@@ -821,7 +814,7 @@ class StackTrace {
   /// occurrence of a stack trace should contain both the `stackFrame` content
   /// and a value in `stackTraceHashId`. Subsequent spans within the same
   /// request can refer to that stack trace by only setting `stackTraceHashId`.
-  core.String stackTraceHashId;
+  core.String? stackTraceHashId;
 
   StackTrace();
 
@@ -835,9 +828,9 @@ class StackTrace {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (stackFrames != null) 'stackFrames': stackFrames.toJson(),
-        if (stackTraceHashId != null) 'stackTraceHashId': stackTraceHashId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (stackFrames != null) 'stackFrames': stackFrames!.toJson(),
+        if (stackTraceHashId != null) 'stackTraceHashId': stackTraceHashId!,
       };
 }
 
@@ -850,7 +843,7 @@ class StackTrace {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -858,13 +851,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -888,23 +881,23 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
 /// A time-stamped annotation or message event in the Span.
 class TimeEvent {
   /// Text annotation with a set of attributes.
-  Annotation annotation;
+  Annotation? annotation;
 
   /// An event describing a message sent/received between Spans.
-  MessageEvent messageEvent;
+  MessageEvent? messageEvent;
 
   /// The timestamp indicating the time the event occurred.
-  core.String time;
+  core.String? time;
 
   TimeEvent();
 
@@ -922,10 +915,10 @@ class TimeEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (annotation != null) 'annotation': annotation.toJson(),
-        if (messageEvent != null) 'messageEvent': messageEvent.toJson(),
-        if (time != null) 'time': time,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (annotation != null) 'annotation': annotation!.toJson(),
+        if (messageEvent != null) 'messageEvent': messageEvent!.toJson(),
+        if (time != null) 'time': time!,
       };
 }
 
@@ -938,15 +931,15 @@ class TimeEvents {
   /// The number of dropped annotations in all the included time events.
   ///
   /// If the value is 0, then no annotations were dropped.
-  core.int droppedAnnotationsCount;
+  core.int? droppedAnnotationsCount;
 
   /// The number of dropped message events in all the included time events.
   ///
   /// If the value is 0, then no message events were dropped.
-  core.int droppedMessageEventsCount;
+  core.int? droppedMessageEventsCount;
 
   /// A collection of `TimeEvent`s.
-  core.List<TimeEvent> timeEvent;
+  core.List<TimeEvent>? timeEvent;
 
   TimeEvents();
 
@@ -966,13 +959,13 @@ class TimeEvents {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (droppedAnnotationsCount != null)
-          'droppedAnnotationsCount': droppedAnnotationsCount,
+          'droppedAnnotationsCount': droppedAnnotationsCount!,
         if (droppedMessageEventsCount != null)
-          'droppedMessageEventsCount': droppedMessageEventsCount,
+          'droppedMessageEventsCount': droppedMessageEventsCount!,
         if (timeEvent != null)
-          'timeEvent': timeEvent.map((value) => value.toJson()).toList(),
+          'timeEvent': timeEvent!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -981,7 +974,7 @@ class TruncatableString {
   /// The number of bytes removed from the original string.
   ///
   /// If this value is 0, then the string was not shortened.
-  core.int truncatedByteCount;
+  core.int? truncatedByteCount;
 
   /// The shortened string.
   ///
@@ -990,7 +983,7 @@ class TruncatableString {
   /// 500-byte string. Truncation always happens on a UTF8 character boundary.
   /// If there are multi-byte characters in the string, then the length of the
   /// shortened string might be less than the size limit.
-  core.String value;
+  core.String? value;
 
   TruncatableString();
 
@@ -1003,9 +996,9 @@ class TruncatableString {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (truncatedByteCount != null)
-          'truncatedByteCount': truncatedByteCount,
-        if (value != null) 'value': value,
+          'truncatedByteCount': truncatedByteCount!,
+        if (value != null) 'value': value!,
       };
 }

@@ -42,8 +42,8 @@ api.Challenge buildChallenge() {
 void checkChallenge(api.Challenge o) {
   buildCounterChallenge++;
   if (buildCounterChallenge < 3) {
-    checkSignedData(o.alternativeChallenge as api.SignedData);
-    checkSignedData(o.challenge as api.SignedData);
+    checkSignedData(o.alternativeChallenge! as api.SignedData);
+    checkSignedData(o.challenge! as api.SignedData);
   }
   buildCounterChallenge--;
 }
@@ -78,8 +78,14 @@ api.SignedData buildSignedData() {
 void checkSignedData(api.SignedData o) {
   buildCounterSignedData++;
   if (buildCounterSignedData < 3) {
-    unittest.expect(o.data, unittest.equals('foo'));
-    unittest.expect(o.signature, unittest.equals('foo'));
+    unittest.expect(
+      o.data!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.signature!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSignedData--;
 }
@@ -99,8 +105,11 @@ api.VerifyChallengeResponseRequest buildVerifyChallengeResponseRequest() {
 void checkVerifyChallengeResponseRequest(api.VerifyChallengeResponseRequest o) {
   buildCounterVerifyChallengeResponseRequest++;
   if (buildCounterVerifyChallengeResponseRequest < 3) {
-    checkSignedData(o.challengeResponse as api.SignedData);
-    unittest.expect(o.expectedIdentity, unittest.equals('foo'));
+    checkSignedData(o.challengeResponse! as api.SignedData);
+    unittest.expect(
+      o.expectedIdentity!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterVerifyChallengeResponseRequest--;
 }
@@ -122,10 +131,22 @@ api.VerifyChallengeResponseResult buildVerifyChallengeResponseResult() {
 void checkVerifyChallengeResponseResult(api.VerifyChallengeResponseResult o) {
   buildCounterVerifyChallengeResponseResult++;
   if (buildCounterVerifyChallengeResponseResult < 3) {
-    unittest.expect(o.deviceEnrollmentId, unittest.equals('foo'));
-    unittest.expect(o.devicePermanentId, unittest.equals('foo'));
-    unittest.expect(o.signedPublicKeyAndChallenge, unittest.equals('foo'));
-    unittest.expect(o.verificationOutput, unittest.equals('foo'));
+    unittest.expect(
+      o.deviceEnrollmentId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.devicePermanentId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.signedPublicKeyAndChallenge!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.verificationOutput!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterVerifyChallengeResponseResult--;
 }
@@ -189,10 +210,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("v1/challenge"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("v1/challenge"),
+        );
         pathOffset += 12;
 
         var query = (req.url).query;
@@ -210,7 +235,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -241,10 +269,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("v1/challenge:verify"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 19),
+          unittest.equals("v1/challenge:verify"),
+        );
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -262,7 +294,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

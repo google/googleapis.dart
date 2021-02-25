@@ -82,10 +82,9 @@ class AlertsResource {
   /// this method will complete with the same error.
   async.Future<BatchDeleteAlertsResponse> batchDelete(
     BatchDeleteAlertsRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -120,10 +119,9 @@ class AlertsResource {
   /// this method will complete with the same error.
   async.Future<BatchUndeleteAlertsResponse> batchUndelete(
     BatchUndeleteAlertsRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -167,12 +165,9 @@ class AlertsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String alertId, {
-    core.String customerId,
-    core.String $fields,
+    core.String? customerId,
+    core.String? $fields,
   }) async {
-    if (alertId == null) {
-      throw core.ArgumentError('Parameter alertId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if ($fields != null) 'fields': [$fields],
@@ -212,12 +207,9 @@ class AlertsResource {
   /// this method will complete with the same error.
   async.Future<Alert> get(
     core.String alertId, {
-    core.String customerId,
-    core.String $fields,
+    core.String? customerId,
+    core.String? $fields,
   }) async {
-    if (alertId == null) {
-      throw core.ArgumentError('Parameter alertId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if ($fields != null) 'fields': [$fields],
@@ -259,12 +251,9 @@ class AlertsResource {
   /// this method will complete with the same error.
   async.Future<AlertMetadata> getMetadata(
     core.String alertId, {
-    core.String customerId,
-    core.String $fields,
+    core.String? customerId,
+    core.String? $fields,
   }) async {
-    if (alertId == null) {
-      throw core.ArgumentError('Parameter alertId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if ($fields != null) 'fields': [$fields],
@@ -322,12 +311,12 @@ class AlertsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAlertsResponse> list({
-    core.String customerId,
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? customerId,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
@@ -376,13 +365,9 @@ class AlertsResource {
   async.Future<Alert> undelete(
     UndeleteAlertRequest request,
     core.String alertId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (alertId == null) {
-      throw core.ArgumentError('Parameter alertId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -436,14 +421,10 @@ class AlertsFeedbackResource {
   async.Future<AlertFeedback> create(
     AlertFeedback request,
     core.String alertId, {
-    core.String customerId,
-    core.String $fields,
+    core.String? customerId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (alertId == null) {
-      throw core.ArgumentError('Parameter alertId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if ($fields != null) 'fields': [$fields],
@@ -495,13 +476,10 @@ class AlertsFeedbackResource {
   /// this method will complete with the same error.
   async.Future<ListAlertFeedbackResponse> list(
     core.String alertId, {
-    core.String customerId,
-    core.String filter,
-    core.String $fields,
+    core.String? customerId,
+    core.String? filter,
+    core.String? $fields,
   }) async {
-    if (alertId == null) {
-      throw core.ArgumentError('Parameter alertId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if (filter != null) 'filter': [filter],
@@ -546,8 +524,8 @@ class V1beta1Resource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Settings> getSettings({
-    core.String customerId,
-    core.String $fields,
+    core.String? customerId,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
@@ -586,11 +564,10 @@ class V1beta1Resource {
   /// this method will complete with the same error.
   async.Future<Settings> updateSettings(
     Settings request, {
-    core.String customerId,
-    core.String $fields,
+    core.String? customerId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (customerId != null) 'customerId': [customerId],
       if ($fields != null) 'fields': [$fields],
@@ -613,7 +590,7 @@ class AccountWarning {
   /// The email of the user that this event belongs to.
   ///
   /// Required.
-  core.String email;
+  core.String? email;
 
   /// Details of the login action associated with the warning event.
   ///
@@ -622,7 +599,7 @@ class AccountWarning {
   /// activity)
   ///
   /// Optional.
-  LoginDetails loginDetails;
+  LoginDetails? loginDetails;
 
   AccountWarning();
 
@@ -636,60 +613,60 @@ class AccountWarning {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
-        if (loginDetails != null) 'loginDetails': loginDetails.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
+        if (loginDetails != null) 'loginDetails': loginDetails!.toJson(),
       };
 }
 
 /// Alerts from G Suite Security Center rules service configured by admin.
 class ActivityRule {
   /// List of action names associated with the rule threshold.
-  core.List<core.String> actionNames;
+  core.List<core.String>? actionNames;
 
   /// Rule create timestamp.
-  core.String createTime;
+  core.String? createTime;
 
   /// Description of the rule.
-  core.String description;
+  core.String? description;
 
   /// Alert display name.
-  core.String displayName;
+  core.String? displayName;
 
   /// Rule name.
-  core.String name;
+  core.String? name;
 
   /// Query that is used to get the data from the associated source.
-  core.String query;
+  core.String? query;
 
   /// List of alert IDs superseded by this alert.
   ///
   /// It is used to indicate that this alert is essentially extension of
   /// superseded alerts and we found the relationship after creating these
   /// alerts.
-  core.List<core.String> supersededAlerts;
+  core.List<core.String>? supersededAlerts;
 
   /// Alert ID superseding this alert.
   ///
   /// It is used to indicate that superseding alert is essentially extension of
   /// this alert and we found the relationship after creating both alerts.
-  core.String supersedingAlert;
+  core.String? supersedingAlert;
 
   /// Alert threshold is for example “COUNT > 5”.
-  core.String threshold;
+  core.String? threshold;
 
   /// The trigger sources for this rule.
   ///
   /// * GMAIL_EVENTS * DEVICE_EVENTS * USER_EVENTS
-  core.String triggerSource;
+  core.String? triggerSource;
 
   /// The timestamp of the last update to the rule.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// Rule window size.
   ///
   /// Possible values are 1 hour or 24 hours.
-  core.String windowSize;
+  core.String? windowSize;
 
   ActivityRule();
 
@@ -736,19 +713,19 @@ class ActivityRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionNames != null) 'actionNames': actionNames,
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (query != null) 'query': query,
-        if (supersededAlerts != null) 'supersededAlerts': supersededAlerts,
-        if (supersedingAlert != null) 'supersedingAlert': supersedingAlert,
-        if (threshold != null) 'threshold': threshold,
-        if (triggerSource != null) 'triggerSource': triggerSource,
-        if (updateTime != null) 'updateTime': updateTime,
-        if (windowSize != null) 'windowSize': windowSize,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionNames != null) 'actionNames': actionNames!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (query != null) 'query': query!,
+        if (supersededAlerts != null) 'supersededAlerts': supersededAlerts!,
+        if (supersedingAlert != null) 'supersedingAlert': supersedingAlert!,
+        if (threshold != null) 'threshold': threshold!,
+        if (triggerSource != null) 'triggerSource': triggerSource!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (windowSize != null) 'windowSize': windowSize!,
       };
 }
 
@@ -757,17 +734,17 @@ class Alert {
   /// The unique identifier for the alert.
   ///
   /// Output only.
-  core.String alertId;
+  core.String? alertId;
 
   /// The time this alert was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The unique identifier of the Google account of the customer.
   ///
   /// Output only.
-  core.String customerId;
+  core.String? customerId;
 
   /// The data associated with this alert, for example
   /// google.apps.alertcenter.type.DeviceCompromised.
@@ -776,12 +753,12 @@ class Alert {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> data;
+  core.Map<core.String, core.Object>? data;
 
   /// `True` if this alert is marked for deletion.
   ///
   /// Output only.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// The time the event that caused this alert ceased being active.
   ///
@@ -789,7 +766,7 @@ class Alert {
   /// provided, it indicates an ongoing alert.
   ///
   /// Optional.
-  core.String endTime;
+  core.String? endTime;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of an alert from overwriting each other.
@@ -803,19 +780,19 @@ class Alert {
   /// existing alert is overwritten blindly.
   ///
   /// Optional.
-  core.String etag;
+  core.String? etag;
 
   /// The metadata associated with this alert.
   ///
   /// Output only.
-  AlertMetadata metadata;
+  AlertMetadata? metadata;
 
   /// An optional
   /// [Security Investigation Tool](https://support.google.com/a/answer/7575955)
   /// query for this alert.
   ///
   /// Output only.
-  core.String securityInvestigationToolLink;
+  core.String? securityInvestigationToolLink;
 
   /// A unique identifier for the system that reported the alert.
   ///
@@ -824,12 +801,12 @@ class Alert {
   /// phishing * Domain wide takeout * State sponsored attack * Google identity
   ///
   /// Required.
-  core.String source;
+  core.String? source;
 
   /// The time the event that caused this alert was started or detected.
   ///
   /// Required.
-  core.String startTime;
+  core.String? startTime;
 
   /// The type of the alert.
   ///
@@ -838,12 +815,12 @@ class Alert {
   /// types\](/admin-sdk/alertcenter/reference/alert-types).
   ///
   /// Required.
-  core.String type;
+  core.String? type;
 
   /// The time this alert was last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Alert();
 
@@ -896,21 +873,21 @@ class Alert {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alertId != null) 'alertId': alertId,
-        if (createTime != null) 'createTime': createTime,
-        if (customerId != null) 'customerId': customerId,
-        if (data != null) 'data': data,
-        if (deleted != null) 'deleted': deleted,
-        if (endTime != null) 'endTime': endTime,
-        if (etag != null) 'etag': etag,
-        if (metadata != null) 'metadata': metadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alertId != null) 'alertId': alertId!,
+        if (createTime != null) 'createTime': createTime!,
+        if (customerId != null) 'customerId': customerId!,
+        if (data != null) 'data': data!,
+        if (deleted != null) 'deleted': deleted!,
+        if (endTime != null) 'endTime': endTime!,
+        if (etag != null) 'etag': etag!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
         if (securityInvestigationToolLink != null)
-          'securityInvestigationToolLink': securityInvestigationToolLink,
-        if (source != null) 'source': source,
-        if (startTime != null) 'startTime': startTime,
-        if (type != null) 'type': type,
-        if (updateTime != null) 'updateTime': updateTime,
+          'securityInvestigationToolLink': securityInvestigationToolLink!,
+        if (source != null) 'source': source!,
+        if (startTime != null) 'startTime': startTime!,
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -919,27 +896,27 @@ class AlertFeedback {
   /// The alert identifier.
   ///
   /// Output only.
-  core.String alertId;
+  core.String? alertId;
 
   /// The time this feedback was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The unique identifier of the Google account of the customer.
   ///
   /// Output only.
-  core.String customerId;
+  core.String? customerId;
 
   /// The email of the user that provided the feedback.
   ///
   /// Output only.
-  core.String email;
+  core.String? email;
 
   /// The unique identifier for the feedback.
   ///
   /// Output only.
-  core.String feedbackId;
+  core.String? feedbackId;
 
   /// The type of the feedback.
   ///
@@ -949,7 +926,7 @@ class AlertFeedback {
   /// - "NOT_USEFUL" : The alert report is not useful.
   /// - "SOMEWHAT_USEFUL" : The alert report is somewhat useful.
   /// - "VERY_USEFUL" : The alert report is very useful.
-  core.String type;
+  core.String? type;
 
   AlertFeedback();
 
@@ -974,13 +951,13 @@ class AlertFeedback {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alertId != null) 'alertId': alertId,
-        if (createTime != null) 'createTime': createTime,
-        if (customerId != null) 'customerId': customerId,
-        if (email != null) 'email': email,
-        if (feedbackId != null) 'feedbackId': feedbackId,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alertId != null) 'alertId': alertId!,
+        if (createTime != null) 'createTime': createTime!,
+        if (customerId != null) 'customerId': customerId!,
+        if (email != null) 'email': email!,
+        if (feedbackId != null) 'feedbackId': feedbackId!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -989,15 +966,15 @@ class AlertMetadata {
   /// The alert identifier.
   ///
   /// Output only.
-  core.String alertId;
+  core.String? alertId;
 
   /// The email address of the user assigned to the alert.
-  core.String assignee;
+  core.String? assignee;
 
   /// The unique identifier of the Google account of the customer.
   ///
   /// Output only.
-  core.String customerId;
+  core.String? customerId;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of an alert metadata from overwriting each other.
@@ -1012,25 +989,25 @@ class AlertMetadata {
   /// overwritten blindly.
   ///
   /// Optional.
-  core.String etag;
+  core.String? etag;
 
   /// The severity value of the alert.
   ///
   /// Alert Center will set this field at alert creation time, default's to an
   /// empty string when it could not be determined. The supported values for
   /// update actions on this field are the following: * HIGH * MEDIUM * LOW
-  core.String severity;
+  core.String? severity;
 
   /// The current status of the alert.
   ///
   /// The supported values are the following: * NOT_STARTED * IN_PROGRESS *
   /// CLOSED
-  core.String status;
+  core.String? status;
 
   /// The time this metadata was last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   AlertMetadata();
 
@@ -1058,21 +1035,21 @@ class AlertMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alertId != null) 'alertId': alertId,
-        if (assignee != null) 'assignee': assignee,
-        if (customerId != null) 'customerId': customerId,
-        if (etag != null) 'etag': etag,
-        if (severity != null) 'severity': severity,
-        if (status != null) 'status': status,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alertId != null) 'alertId': alertId!,
+        if (assignee != null) 'assignee': assignee!,
+        if (customerId != null) 'customerId': customerId!,
+        if (etag != null) 'etag': etag!,
+        if (severity != null) 'severity': severity!,
+        if (status != null) 'status': status!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// Alerts from App Maker to notify admins to set up default SQL instance.
 class AppMakerSqlSetupNotification {
   /// List of applications with requests for default SQL set up.
-  core.List<RequestInfo> requestInfo;
+  core.List<RequestInfo>? requestInfo;
 
   AppMakerSqlSetupNotification();
 
@@ -1085,16 +1062,16 @@ class AppMakerSqlSetupNotification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requestInfo != null)
-          'requestInfo': requestInfo.map((value) => value.toJson()).toList(),
+          'requestInfo': requestInfo!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Attachment with application-specific information about an alert.
 class Attachment {
   /// A CSV file attachment.
-  Csv csv;
+  Csv? csv;
 
   Attachment();
 
@@ -1104,8 +1081,8 @@ class Attachment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (csv != null) 'csv': csv.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (csv != null) 'csv': csv!.toJson(),
       };
 }
 
@@ -1113,16 +1090,16 @@ class Attachment {
 /// whitelisted domain or IP in Gmail advanced settings.
 class BadWhitelist {
   /// The domain ID.
-  DomainId domainId;
+  DomainId? domainId;
 
   /// The entity whose actions triggered a Gmail phishing alert.
-  MaliciousEntity maliciousEntity;
+  MaliciousEntity? maliciousEntity;
 
   /// The list of messages contained by this alert.
-  core.List<GmailMessageInfo> messages;
+  core.List<GmailMessageInfo>? messages;
 
   /// The source IP address of the malicious email, for example, `127.0.0.1`.
-  core.String sourceIp;
+  core.String? sourceIp;
 
   BadWhitelist();
 
@@ -1146,13 +1123,13 @@ class BadWhitelist {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (domainId != null) 'domainId': domainId.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (domainId != null) 'domainId': domainId!.toJson(),
         if (maliciousEntity != null)
-          'maliciousEntity': maliciousEntity.toJson(),
+          'maliciousEntity': maliciousEntity!.toJson(),
         if (messages != null)
-          'messages': messages.map((value) => value.toJson()).toList(),
-        if (sourceIp != null) 'sourceIp': sourceIp,
+          'messages': messages!.map((value) => value.toJson()).toList(),
+        if (sourceIp != null) 'sourceIp': sourceIp!,
       };
 }
 
@@ -1161,13 +1138,13 @@ class BatchDeleteAlertsRequest {
   /// list of alert IDs.
   ///
   /// Required.
-  core.List<core.String> alertId;
+  core.List<core.String>? alertId;
 
   /// The unique identifier of the Google Workspace organization account of the
   /// customer the alerts are associated with.
   ///
   /// Optional.
-  core.String customerId;
+  core.String? customerId;
 
   BatchDeleteAlertsRequest();
 
@@ -1182,26 +1159,26 @@ class BatchDeleteAlertsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alertId != null) 'alertId': alertId,
-        if (customerId != null) 'customerId': customerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alertId != null) 'alertId': alertId!,
+        if (customerId != null) 'customerId': customerId!,
       };
 }
 
 /// Response to batch delete operation on alerts.
 class BatchDeleteAlertsResponse {
   /// The status details for each failed alert_id.
-  core.Map<core.String, Status> failedAlertStatus;
+  core.Map<core.String, Status>? failedAlertStatus;
 
   /// The successful list of alert IDs.
-  core.List<core.String> successAlertIds;
+  core.List<core.String>? successAlertIds;
 
   BatchDeleteAlertsResponse();
 
   BatchDeleteAlertsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('failedAlertStatus')) {
       failedAlertStatus = (_json['failedAlertStatus'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -1216,11 +1193,11 @@ class BatchDeleteAlertsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (failedAlertStatus != null)
-          'failedAlertStatus': failedAlertStatus
+          'failedAlertStatus': failedAlertStatus!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (successAlertIds != null) 'successAlertIds': successAlertIds,
+        if (successAlertIds != null) 'successAlertIds': successAlertIds!,
       };
 }
 
@@ -1229,13 +1206,13 @@ class BatchUndeleteAlertsRequest {
   /// list of alert IDs.
   ///
   /// Required.
-  core.List<core.String> alertId;
+  core.List<core.String>? alertId;
 
   /// The unique identifier of the Google Workspace organization account of the
   /// customer the alerts are associated with.
   ///
   /// Optional.
-  core.String customerId;
+  core.String? customerId;
 
   BatchUndeleteAlertsRequest();
 
@@ -1250,26 +1227,26 @@ class BatchUndeleteAlertsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alertId != null) 'alertId': alertId,
-        if (customerId != null) 'customerId': customerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alertId != null) 'alertId': alertId!,
+        if (customerId != null) 'customerId': customerId!,
       };
 }
 
 /// Response to batch undelete operation on alerts.
 class BatchUndeleteAlertsResponse {
   /// The status details for each failed alert_id.
-  core.Map<core.String, Status> failedAlertStatus;
+  core.Map<core.String, Status>? failedAlertStatus;
 
   /// The successful list of alert IDs.
-  core.List<core.String> successAlertIds;
+  core.List<core.String>? successAlertIds;
 
   BatchUndeleteAlertsResponse();
 
   BatchUndeleteAlertsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('failedAlertStatus')) {
       failedAlertStatus = (_json['failedAlertStatus'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -1284,11 +1261,11 @@ class BatchUndeleteAlertsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (failedAlertStatus != null)
-          'failedAlertStatus': failedAlertStatus
+          'failedAlertStatus': failedAlertStatus!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (successAlertIds != null) 'successAlertIds': successAlertIds,
+        if (successAlertIds != null) 'successAlertIds': successAlertIds!,
       };
 }
 
@@ -1307,11 +1284,11 @@ class CloudPubsubTopic {
   /// - "PAYLOAD_FORMAT_UNSPECIFIED" : Payload format is not specified (will use
   /// JSON as default).
   /// - "JSON" : Use JSON.
-  core.String payloadFormat;
+  core.String? payloadFormat;
 
   /// The `name` field of a Cloud Pubsub
   /// [Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).
-  core.String topicName;
+  core.String? topicName;
 
   CloudPubsubTopic();
 
@@ -1324,9 +1301,9 @@ class CloudPubsubTopic {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (payloadFormat != null) 'payloadFormat': payloadFormat,
-        if (topicName != null) 'topicName': topicName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (payloadFormat != null) 'payloadFormat': payloadFormat!,
+        if (topicName != null) 'topicName': topicName!,
       };
 }
 
@@ -1335,10 +1312,10 @@ class CloudPubsubTopic {
 class Csv {
   /// The list of data rows in a CSV file, as string arrays rather than as a
   /// single comma-separated string.
-  core.List<CsvRow> dataRows;
+  core.List<CsvRow>? dataRows;
 
   /// The list of headers for data columns in a CSV file.
-  core.List<core.String> headers;
+  core.List<core.String>? headers;
 
   Csv();
 
@@ -1356,10 +1333,10 @@ class Csv {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataRows != null)
-          'dataRows': dataRows.map((value) => value.toJson()).toList(),
-        if (headers != null) 'headers': headers,
+          'dataRows': dataRows!.map((value) => value.toJson()).toList(),
+        if (headers != null) 'headers': headers!,
       };
 }
 
@@ -1367,7 +1344,7 @@ class Csv {
 class CsvRow {
   /// The data entries in a CSV file row, as a string array rather than a single
   /// comma-separated string.
-  core.List<core.String> entries;
+  core.List<core.String>? entries;
 
   CsvRow();
 
@@ -1379,8 +1356,8 @@ class CsvRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (entries != null) 'entries': entries,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (entries != null) 'entries': entries!,
       };
 }
 
@@ -1389,12 +1366,12 @@ class CsvRow {
 /// Derived from audit logs.
 class DeviceCompromised {
   /// The email of the user this alert was created for.
-  core.String email;
+  core.String? email;
 
   /// The list of security events.
   ///
   /// Required.
-  core.List<DeviceCompromisedSecurityDetail> events;
+  core.List<DeviceCompromisedSecurityDetail>? events;
 
   DeviceCompromised();
 
@@ -1411,10 +1388,10 @@ class DeviceCompromised {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
         if (events != null)
-          'events': events.map((value) => value.toJson()).toList(),
+          'events': events!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1423,27 +1400,27 @@ class DeviceCompromisedSecurityDetail {
   /// The device compromised state.
   ///
   /// Possible values are "`Compromised`" or "`Not Compromised`".
-  core.String deviceCompromisedState;
+  core.String? deviceCompromisedState;
 
   /// The device ID.
   ///
   /// Required.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// The model of the device.
-  core.String deviceModel;
+  core.String? deviceModel;
 
   /// The type of the device.
-  core.String deviceType;
+  core.String? deviceType;
 
   /// Required for iOS, empty for others.
-  core.String iosVendorId;
+  core.String? iosVendorId;
 
   /// The device resource ID.
-  core.String resourceId;
+  core.String? resourceId;
 
   /// The serial number of the device.
-  core.String serialNumber;
+  core.String? serialNumber;
 
   DeviceCompromisedSecurityDetail();
 
@@ -1471,15 +1448,15 @@ class DeviceCompromisedSecurityDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deviceCompromisedState != null)
-          'deviceCompromisedState': deviceCompromisedState,
-        if (deviceId != null) 'deviceId': deviceId,
-        if (deviceModel != null) 'deviceModel': deviceModel,
-        if (deviceType != null) 'deviceType': deviceType,
-        if (iosVendorId != null) 'iosVendorId': iosVendorId,
-        if (resourceId != null) 'resourceId': resourceId,
-        if (serialNumber != null) 'serialNumber': serialNumber,
+          'deviceCompromisedState': deviceCompromisedState!,
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (deviceModel != null) 'deviceModel': deviceModel!,
+        if (deviceType != null) 'deviceType': deviceType!,
+        if (iosVendorId != null) 'iosVendorId': iosVendorId!,
+        if (resourceId != null) 'resourceId': resourceId!,
+        if (serialNumber != null) 'serialNumber': serialNumber!,
       };
 }
 
@@ -1491,7 +1468,7 @@ class DlpRuleViolation {
   /// https://cloud.google.com/dlp/ when setting up a DLP rule. Matched Cloud
   /// DLP detectors in this violation if any will be captured in the
   /// MatchInfo.predefined_detector.
-  RuleViolationInfo ruleViolationInfo;
+  RuleViolationInfo? ruleViolationInfo;
 
   DlpRuleViolation();
 
@@ -1502,16 +1479,16 @@ class DlpRuleViolation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (ruleViolationInfo != null)
-          'ruleViolationInfo': ruleViolationInfo.toJson(),
+          'ruleViolationInfo': ruleViolationInfo!.toJson(),
       };
 }
 
 /// Domain ID of Gmail phishing alerts.
 class DomainId {
   /// The primary domain for the customer.
-  core.String customerPrimaryDomain;
+  core.String? customerPrimaryDomain;
 
   DomainId();
 
@@ -1521,9 +1498,9 @@ class DomainId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customerPrimaryDomain != null)
-          'customerPrimaryDomain': customerPrimaryDomain,
+          'customerPrimaryDomain': customerPrimaryDomain!,
       };
 }
 
@@ -1532,10 +1509,10 @@ class DomainId {
 /// Derived from audit logs.
 class DomainWideTakeoutInitiated {
   /// The email of the admin who initiated the takeout.
-  core.String email;
+  core.String? email;
 
   /// The takeout request ID.
-  core.String takeoutRequestId;
+  core.String? takeoutRequestId;
 
   DomainWideTakeoutInitiated();
 
@@ -1548,9 +1525,9 @@ class DomainWideTakeoutInitiated {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
-        if (takeoutRequestId != null) 'takeoutRequestId': takeoutRequestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
+        if (takeoutRequestId != null) 'takeoutRequestId': takeoutRequestId!,
       };
 }
 
@@ -1568,34 +1545,34 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Details of a message in phishing spike alert.
 class GmailMessageInfo {
   /// The `SHA256` hash of email's attachment and all MIME parts.
-  core.List<core.String> attachmentsSha256Hash;
+  core.List<core.String>? attachmentsSha256Hash;
 
   /// The date the malicious email was sent.
-  core.String date;
+  core.String? date;
 
   /// The hash of the message body text.
-  core.String md5HashMessageBody;
+  core.String? md5HashMessageBody;
 
   /// The MD5 Hash of email's subject (only available for reported emails).
-  core.String md5HashSubject;
+  core.String? md5HashSubject;
 
   /// The snippet of the message body text (only available for reported emails).
-  core.String messageBodySnippet;
+  core.String? messageBodySnippet;
 
   /// The message ID.
-  core.String messageId;
+  core.String? messageId;
 
   /// The recipient of this email.
-  core.String recipient;
+  core.String? recipient;
 
   /// The email subject text (only available for reported emails).
-  core.String subjectText;
+  core.String? subjectText;
 
   GmailMessageInfo();
 
@@ -1628,18 +1605,18 @@ class GmailMessageInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (attachmentsSha256Hash != null)
-          'attachmentsSha256Hash': attachmentsSha256Hash,
-        if (date != null) 'date': date,
+          'attachmentsSha256Hash': attachmentsSha256Hash!,
+        if (date != null) 'date': date!,
         if (md5HashMessageBody != null)
-          'md5HashMessageBody': md5HashMessageBody,
-        if (md5HashSubject != null) 'md5HashSubject': md5HashSubject,
+          'md5HashMessageBody': md5HashMessageBody!,
+        if (md5HashSubject != null) 'md5HashSubject': md5HashSubject!,
         if (messageBodySnippet != null)
-          'messageBodySnippet': messageBodySnippet,
-        if (messageId != null) 'messageId': messageId,
-        if (recipient != null) 'recipient': recipient,
-        if (subjectText != null) 'subjectText': subjectText,
+          'messageBodySnippet': messageBodySnippet!,
+        if (messageId != null) 'messageId': messageId!,
+        if (recipient != null) 'recipient': recipient!,
+        if (subjectText != null) 'subjectText': subjectText!,
       };
 }
 
@@ -1647,26 +1624,26 @@ class GmailMessageInfo {
 class GoogleOperations {
   /// The list of emails which correspond to the users directly affected by the
   /// incident.
-  core.List<core.String> affectedUserEmails;
+  core.List<core.String>? affectedUserEmails;
 
   /// Application-specific data for an incident, provided when the G Suite
   /// application which reported the incident cannot be completely restored to a
   /// valid state.
   ///
   /// Optional.
-  Attachment attachmentData;
+  Attachment? attachmentData;
 
   /// A detailed, freeform incident description.
-  core.String description;
+  core.String? description;
 
   /// A header to display above the incident message.
   ///
   /// Typcially used to attach a localized notice on the timeline for followup
   /// comms translations.
-  core.String header;
+  core.String? header;
 
   /// A one-line incident description.
-  core.String title;
+  core.String? title;
 
   GoogleOperations();
 
@@ -1691,13 +1668,13 @@ class GoogleOperations {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (affectedUserEmails != null)
-          'affectedUserEmails': affectedUserEmails,
-        if (attachmentData != null) 'attachmentData': attachmentData.toJson(),
-        if (description != null) 'description': description,
-        if (header != null) 'header': header,
-        if (title != null) 'title': title,
+          'affectedUserEmails': affectedUserEmails!,
+        if (attachmentData != null) 'attachmentData': attachmentData!.toJson(),
+        if (description != null) 'description': description!,
+        if (header != null) 'header': header!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1706,7 +1683,7 @@ class ListAlertFeedbackResponse {
   /// The list of alert feedback.
   ///
   /// Feedback entries for each alert are ordered by creation time descending.
-  core.List<AlertFeedback> feedback;
+  core.List<AlertFeedback>? feedback;
 
   ListAlertFeedbackResponse();
 
@@ -1719,23 +1696,23 @@ class ListAlertFeedbackResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (feedback != null)
-          'feedback': feedback.map((value) => value.toJson()).toList(),
+          'feedback': feedback!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for an alert listing request.
 class ListAlertsResponse {
   /// The list of alerts.
-  core.List<Alert> alerts;
+  core.List<Alert>? alerts;
 
   /// The token for the next page.
   ///
   /// If not empty, indicates that there may be more alerts that match the
   /// listing request; this value can be used in a subsequent ListAlertsRequest
   /// to get alerts continuing from last result of the current list call.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListAlertsResponse();
 
@@ -1751,10 +1728,10 @@ class ListAlertsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (alerts != null)
-          'alerts': alerts.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'alerts': alerts!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1764,14 +1741,14 @@ class LoginDetails {
   /// associated with the warning event.
   ///
   /// Optional.
-  core.String ipAddress;
+  core.String? ipAddress;
 
   /// The successful login time that is associated with the warning event.
   ///
   /// This isn't present for blocked login attempts.
   ///
   /// Optional.
-  core.String loginTime;
+  core.String? loginTime;
 
   LoginDetails();
 
@@ -1784,9 +1761,9 @@ class LoginDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ipAddress != null) 'ipAddress': ipAddress,
-        if (loginTime != null) 'loginTime': loginTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (loginTime != null) 'loginTime': loginTime!,
       };
 }
 
@@ -1798,23 +1775,23 @@ class LoginDetails {
 /// spoofing
 class MailPhishing {
   /// The domain ID.
-  DomainId domainId;
+  DomainId? domainId;
 
   /// If `true`, the email originated from within the organization.
-  core.bool isInternal;
+  core.bool? isInternal;
 
   /// The entity whose actions triggered a Gmail phishing alert.
-  MaliciousEntity maliciousEntity;
+  MaliciousEntity? maliciousEntity;
 
   /// The list of messages contained by this alert.
-  core.List<GmailMessageInfo> messages;
+  core.List<GmailMessageInfo>? messages;
 
   /// System actions on the messages.
   /// Possible string values are:
   /// - "SYSTEM_ACTION_TYPE_UNSPECIFIED" : System action is unspecified.
   /// - "NO_OPERATION" : No operation.
   /// - "REMOVED_FROM_INBOX" : Messages were removed from the inbox.
-  core.String systemActionType;
+  core.String? systemActionType;
 
   MailPhishing();
 
@@ -1841,27 +1818,27 @@ class MailPhishing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (domainId != null) 'domainId': domainId.toJson(),
-        if (isInternal != null) 'isInternal': isInternal,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (domainId != null) 'domainId': domainId!.toJson(),
+        if (isInternal != null) 'isInternal': isInternal!,
         if (maliciousEntity != null)
-          'maliciousEntity': maliciousEntity.toJson(),
+          'maliciousEntity': maliciousEntity!.toJson(),
         if (messages != null)
-          'messages': messages.map((value) => value.toJson()).toList(),
-        if (systemActionType != null) 'systemActionType': systemActionType,
+          'messages': messages!.map((value) => value.toJson()).toList(),
+        if (systemActionType != null) 'systemActionType': systemActionType!,
       };
 }
 
 /// Entity whose actions triggered a Gmail phishing alert.
 class MaliciousEntity {
   /// The header from display name.
-  core.String displayName;
+  core.String? displayName;
 
   /// The actor who triggered a gmail phishing alert.
-  User entity;
+  User? entity;
 
   /// The sender email address.
-  core.String fromHeader;
+  core.String? fromHeader;
 
   MaliciousEntity();
 
@@ -1878,20 +1855,20 @@ class MaliciousEntity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (entity != null) 'entity': entity.toJson(),
-        if (fromHeader != null) 'fromHeader': fromHeader,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (entity != null) 'entity': entity!.toJson(),
+        if (fromHeader != null) 'fromHeader': fromHeader!,
       };
 }
 
 /// Proto that contains match information from the condition part of the rule.
 class MatchInfo {
   /// For matched detector predefined by Google.
-  PredefinedDetectorInfo predefinedDetector;
+  PredefinedDetectorInfo? predefinedDetector;
 
   /// For matched detector defined by administrators.
-  UserDefinedDetectorInfo userDefinedDetector;
+  UserDefinedDetectorInfo? userDefinedDetector;
 
   MatchInfo();
 
@@ -1906,11 +1883,11 @@ class MatchInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (predefinedDetector != null)
-          'predefinedDetector': predefinedDetector.toJson(),
+          'predefinedDetector': predefinedDetector!.toJson(),
         if (userDefinedDetector != null)
-          'userDefinedDetector': userDefinedDetector.toJson(),
+          'userDefinedDetector': userDefinedDetector!.toJson(),
       };
 }
 
@@ -1920,7 +1897,7 @@ class MatchInfo {
 /// Notification\](/admin-sdk/alertcenter/guides/notifications).
 class Notification {
   /// A Google Cloud Pub/sub topic destination.
-  CloudPubsubTopic cloudPubsubTopic;
+  CloudPubsubTopic? cloudPubsubTopic;
 
   Notification();
 
@@ -1931,9 +1908,9 @@ class Notification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cloudPubsubTopic != null)
-          'cloudPubsubTopic': cloudPubsubTopic.toJson(),
+          'cloudPubsubTopic': cloudPubsubTopic!.toJson(),
       };
 }
 
@@ -1944,16 +1921,16 @@ class Notification {
 /// instead.
 class PhishingSpike {
   /// The domain ID.
-  DomainId domainId;
+  DomainId? domainId;
 
   /// If `true`, the email originated from within the organization.
-  core.bool isInternal;
+  core.bool? isInternal;
 
   /// The entity whose actions triggered a Gmail phishing alert.
-  MaliciousEntity maliciousEntity;
+  MaliciousEntity? maliciousEntity;
 
   /// The list of messages contained by this alert.
-  core.List<GmailMessageInfo> messages;
+  core.List<GmailMessageInfo>? messages;
 
   PhishingSpike();
 
@@ -1977,20 +1954,20 @@ class PhishingSpike {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (domainId != null) 'domainId': domainId.toJson(),
-        if (isInternal != null) 'isInternal': isInternal,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (domainId != null) 'domainId': domainId!.toJson(),
+        if (isInternal != null) 'isInternal': isInternal!,
         if (maliciousEntity != null)
-          'maliciousEntity': maliciousEntity.toJson(),
+          'maliciousEntity': maliciousEntity!.toJson(),
         if (messages != null)
-          'messages': messages.map((value) => value.toJson()).toList(),
+          'messages': messages!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Detector provided by Google.
 class PredefinedDetectorInfo {
   /// Name that uniquely identifies the detector.
-  core.String detectorName;
+  core.String? detectorName;
 
   PredefinedDetectorInfo();
 
@@ -2000,26 +1977,26 @@ class PredefinedDetectorInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (detectorName != null) 'detectorName': detectorName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (detectorName != null) 'detectorName': detectorName!,
       };
 }
 
 /// Requests for one application that needs default SQL setup.
 class RequestInfo {
   /// List of app developers who triggered notifications for above application.
-  core.List<core.String> appDeveloperEmail;
+  core.List<core.String>? appDeveloperEmail;
 
   /// The application that requires the SQL setup.
   ///
   /// Required.
-  core.String appKey;
+  core.String? appKey;
 
   /// Number of requests sent for this application to set up default SQL
   /// instance.
   ///
   /// Required.
-  core.String numberOfRequests;
+  core.String? numberOfRequests;
 
   RequestInfo();
 
@@ -2037,20 +2014,20 @@ class RequestInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appDeveloperEmail != null) 'appDeveloperEmail': appDeveloperEmail,
-        if (appKey != null) 'appKey': appKey,
-        if (numberOfRequests != null) 'numberOfRequests': numberOfRequests,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appDeveloperEmail != null) 'appDeveloperEmail': appDeveloperEmail!,
+        if (appKey != null) 'appKey': appKey!,
+        if (numberOfRequests != null) 'numberOfRequests': numberOfRequests!,
       };
 }
 
 /// Proto that contains resource information.
 class ResourceInfo {
   /// Drive file ID.
-  core.String documentId;
+  core.String? documentId;
 
   /// Title of the resource, for example email subject, or document title.
-  core.String resourceTitle;
+  core.String? resourceTitle;
 
   ResourceInfo();
 
@@ -2063,19 +2040,19 @@ class ResourceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (documentId != null) 'documentId': documentId,
-        if (resourceTitle != null) 'resourceTitle': resourceTitle,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (documentId != null) 'documentId': documentId!,
+        if (resourceTitle != null) 'resourceTitle': resourceTitle!,
       };
 }
 
 /// Proto that contains rule information.
 class RuleInfo {
   /// User provided name of the rule.
-  core.String displayName;
+  core.String? displayName;
 
   /// Resource name that uniquely identifies the rule.
-  core.String resourceName;
+  core.String? resourceName;
 
   RuleInfo();
 
@@ -2088,9 +2065,9 @@ class RuleInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (resourceName != null) 'resourceName': resourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (resourceName != null) 'resourceName': resourceName!,
       };
 }
 
@@ -2101,10 +2078,10 @@ class RuleViolationInfo {
   /// Possible string values are:
   /// - "DATA_SOURCE_UNSPECIFIED" : Data source is unspecified.
   /// - "DRIVE" : Drive data source.
-  core.String dataSource;
+  core.String? dataSource;
 
   /// List of matches that were found in the resource content.
-  core.List<MatchInfo> matchInfo;
+  core.List<MatchInfo>? matchInfo;
 
   /// Resource recipients.
   ///
@@ -2113,31 +2090,31 @@ class RuleViolationInfo {
   /// domains, or 'anyone' if the file was publicly accessible. If the file was
   /// private the recipients list will be empty. For Gmail, they are emails of
   /// the users or groups that the Gmail message was sent to.
-  core.List<core.String> recipients;
+  core.List<core.String>? recipients;
 
   /// Details of the resource which violated the rule.
-  ResourceInfo resourceInfo;
+  ResourceInfo? resourceInfo;
 
   /// Details of the violated rule.
-  RuleInfo ruleInfo;
+  RuleInfo? ruleInfo;
 
   /// Actions suppressed due to other actions with higher priority.
-  core.List<core.String> suppressedActionTypes;
+  core.List<core.String>? suppressedActionTypes;
 
   /// Trigger of the rule.
   /// Possible string values are:
   /// - "TRIGGER_UNSPECIFIED" : Trigger is unspecified.
   /// - "DRIVE_SHARE" : A Drive file is shared.
-  core.String trigger;
+  core.String? trigger;
 
   /// Actions applied as a consequence of the rule being triggered.
-  core.List<core.String> triggeredActionTypes;
+  core.List<core.String>? triggeredActionTypes;
 
   /// Email of the user who caused the violation.
   ///
   /// Value could be empty if not applicable, for example, a violation found by
   /// drive continuous scan.
-  core.String triggeringUserEmail;
+  core.String? triggeringUserEmail;
 
   RuleViolationInfo();
 
@@ -2182,27 +2159,27 @@ class RuleViolationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataSource != null) 'dataSource': dataSource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataSource != null) 'dataSource': dataSource!,
         if (matchInfo != null)
-          'matchInfo': matchInfo.map((value) => value.toJson()).toList(),
-        if (recipients != null) 'recipients': recipients,
-        if (resourceInfo != null) 'resourceInfo': resourceInfo.toJson(),
-        if (ruleInfo != null) 'ruleInfo': ruleInfo.toJson(),
+          'matchInfo': matchInfo!.map((value) => value.toJson()).toList(),
+        if (recipients != null) 'recipients': recipients!,
+        if (resourceInfo != null) 'resourceInfo': resourceInfo!.toJson(),
+        if (ruleInfo != null) 'ruleInfo': ruleInfo!.toJson(),
         if (suppressedActionTypes != null)
-          'suppressedActionTypes': suppressedActionTypes,
-        if (trigger != null) 'trigger': trigger,
+          'suppressedActionTypes': suppressedActionTypes!,
+        if (trigger != null) 'trigger': trigger!,
         if (triggeredActionTypes != null)
-          'triggeredActionTypes': triggeredActionTypes,
+          'triggeredActionTypes': triggeredActionTypes!,
         if (triggeringUserEmail != null)
-          'triggeringUserEmail': triggeringUserEmail,
+          'triggeringUserEmail': triggeringUserEmail!,
       };
 }
 
 /// Customer-level settings.
 class Settings {
   /// The list of notifications.
-  core.List<Notification> notifications;
+  core.List<Notification>? notifications;
 
   Settings();
 
@@ -2215,10 +2192,10 @@ class Settings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (notifications != null)
           'notifications':
-              notifications.map((value) => value.toJson()).toList(),
+              notifications!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2227,7 +2204,7 @@ class Settings {
 /// Derived from audit logs.
 class StateSponsoredAttack {
   /// The email of the user this incident was created for.
-  core.String email;
+  core.String? email;
 
   StateSponsoredAttack();
 
@@ -2237,8 +2214,8 @@ class StateSponsoredAttack {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
       };
 }
 
@@ -2251,7 +2228,7 @@ class StateSponsoredAttack {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -2259,13 +2236,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -2289,10 +2266,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -2301,12 +2278,12 @@ class Status {
 /// Derived from audit logs.
 class SuspiciousActivity {
   /// The email of the user this alert was created for.
-  core.String email;
+  core.String? email;
 
   /// The list of security events.
   ///
   /// Required.
-  core.List<SuspiciousActivitySecurityDetail> events;
+  core.List<SuspiciousActivitySecurityDetail>? events;
 
   SuspiciousActivity();
 
@@ -2323,10 +2300,10 @@ class SuspiciousActivity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
         if (events != null)
-          'events': events.map((value) => value.toJson()).toList(),
+          'events': events!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2335,31 +2312,31 @@ class SuspiciousActivitySecurityDetail {
   /// The device ID.
   ///
   /// Required.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// The model of the device.
-  core.String deviceModel;
+  core.String? deviceModel;
 
   /// The device property which was changed.
-  core.String deviceProperty;
+  core.String? deviceProperty;
 
   /// The type of the device.
-  core.String deviceType;
+  core.String? deviceType;
 
   /// Required for iOS, empty for others.
-  core.String iosVendorId;
+  core.String? iosVendorId;
 
   /// The new value of the device property after the change.
-  core.String newValue;
+  core.String? newValue;
 
   /// The old value of the device property before the change.
-  core.String oldValue;
+  core.String? oldValue;
 
   /// The device resource ID.
-  core.String resourceId;
+  core.String? resourceId;
 
   /// The serial number of the device.
-  core.String serialNumber;
+  core.String? serialNumber;
 
   SuspiciousActivitySecurityDetail();
 
@@ -2393,16 +2370,16 @@ class SuspiciousActivitySecurityDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId,
-        if (deviceModel != null) 'deviceModel': deviceModel,
-        if (deviceProperty != null) 'deviceProperty': deviceProperty,
-        if (deviceType != null) 'deviceType': deviceType,
-        if (iosVendorId != null) 'iosVendorId': iosVendorId,
-        if (newValue != null) 'newValue': newValue,
-        if (oldValue != null) 'oldValue': oldValue,
-        if (resourceId != null) 'resourceId': resourceId,
-        if (serialNumber != null) 'serialNumber': serialNumber,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (deviceModel != null) 'deviceModel': deviceModel!,
+        if (deviceProperty != null) 'deviceProperty': deviceProperty!,
+        if (deviceType != null) 'deviceType': deviceType!,
+        if (iosVendorId != null) 'iosVendorId': iosVendorId!,
+        if (newValue != null) 'newValue': newValue!,
+        if (oldValue != null) 'oldValue': oldValue!,
+        if (resourceId != null) 'resourceId': resourceId!,
+        if (serialNumber != null) 'serialNumber': serialNumber!,
       };
 }
 
@@ -2414,7 +2391,7 @@ class UndeleteAlertRequest {
   /// Inferred from the caller identity if not provided.
   ///
   /// Optional.
-  core.String customerId;
+  core.String? customerId;
 
   UndeleteAlertRequest();
 
@@ -2424,18 +2401,18 @@ class UndeleteAlertRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customerId != null) 'customerId': customerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customerId != null) 'customerId': customerId!,
       };
 }
 
 /// A user.
 class User {
   /// Display name of the user.
-  core.String displayName;
+  core.String? displayName;
 
   /// Email address of the user.
-  core.String emailAddress;
+  core.String? emailAddress;
 
   User();
 
@@ -2448,19 +2425,19 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (emailAddress != null) 'emailAddress': emailAddress,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (emailAddress != null) 'emailAddress': emailAddress!,
       };
 }
 
 /// Detector defined by administrators.
 class UserDefinedDetectorInfo {
   /// Display name of the detector.
-  core.String displayName;
+  core.String? displayName;
 
   /// Resource name that uniquely identifies the detector.
-  core.String resourceName;
+  core.String? resourceName;
 
   UserDefinedDetectorInfo();
 
@@ -2473,8 +2450,8 @@ class UserDefinedDetectorInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (resourceName != null) 'resourceName': resourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (resourceName != null) 'resourceName': resourceName!,
       };
 }

@@ -54,7 +54,7 @@ api.BucketBilling buildBucketBilling() {
 void checkBucketBilling(api.BucketBilling o) {
   buildCounterBucketBilling++;
   if (buildCounterBucketBilling < 3) {
-    unittest.expect(o.requesterPays, unittest.isTrue);
+    unittest.expect(o.requesterPays!, unittest.isTrue);
   }
   buildCounterBucketBilling--;
 }
@@ -68,8 +68,14 @@ core.List<core.String> buildUnnamed4514() {
 
 void checkUnnamed4514(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4515() {
@@ -81,8 +87,14 @@ core.List<core.String> buildUnnamed4515() {
 
 void checkUnnamed4515(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4516() {
@@ -94,8 +106,14 @@ core.List<core.String> buildUnnamed4516() {
 
 void checkUnnamed4516(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBucketCors = 0;
@@ -115,10 +133,13 @@ api.BucketCors buildBucketCors() {
 void checkBucketCors(api.BucketCors o) {
   buildCounterBucketCors++;
   if (buildCounterBucketCors < 3) {
-    unittest.expect(o.maxAgeSeconds, unittest.equals(42));
-    checkUnnamed4514(o.method);
-    checkUnnamed4515(o.origin);
-    checkUnnamed4516(o.responseHeader);
+    unittest.expect(
+      o.maxAgeSeconds!,
+      unittest.equals(42),
+    );
+    checkUnnamed4514(o.method!);
+    checkUnnamed4515(o.origin!);
+    checkUnnamed4516(o.responseHeader!);
   }
   buildCounterBucketCors--;
 }
@@ -163,7 +184,10 @@ api.BucketEncryption buildBucketEncryption() {
 void checkBucketEncryption(api.BucketEncryption o) {
   buildCounterBucketEncryption++;
   if (buildCounterBucketEncryption < 3) {
-    unittest.expect(o.defaultKmsKeyName, unittest.equals('foo'));
+    unittest.expect(
+      o.defaultKmsKeyName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBucketEncryption--;
 }
@@ -185,9 +209,11 @@ void checkBucketIamConfigurationBucketPolicyOnly(
     api.BucketIamConfigurationBucketPolicyOnly o) {
   buildCounterBucketIamConfigurationBucketPolicyOnly++;
   if (buildCounterBucketIamConfigurationBucketPolicyOnly < 3) {
-    unittest.expect(o.enabled, unittest.isTrue);
-    unittest.expect(o.lockedTime,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(
+      o.lockedTime!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
   }
   buildCounterBucketIamConfigurationBucketPolicyOnly--;
 }
@@ -209,9 +235,11 @@ void checkBucketIamConfigurationUniformBucketLevelAccess(
     api.BucketIamConfigurationUniformBucketLevelAccess o) {
   buildCounterBucketIamConfigurationUniformBucketLevelAccess++;
   if (buildCounterBucketIamConfigurationUniformBucketLevelAccess < 3) {
-    unittest.expect(o.enabled, unittest.isTrue);
-    unittest.expect(o.lockedTime,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(
+      o.lockedTime!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
   }
   buildCounterBucketIamConfigurationUniformBucketLevelAccess--;
 }
@@ -234,10 +262,13 @@ void checkBucketIamConfiguration(api.BucketIamConfiguration o) {
   buildCounterBucketIamConfiguration++;
   if (buildCounterBucketIamConfiguration < 3) {
     checkBucketIamConfigurationBucketPolicyOnly(
-        o.bucketPolicyOnly as api.BucketIamConfigurationBucketPolicyOnly);
-    unittest.expect(o.publicAccessPrevention, unittest.equals('foo'));
+        o.bucketPolicyOnly! as api.BucketIamConfigurationBucketPolicyOnly);
+    unittest.expect(
+      o.publicAccessPrevention!,
+      unittest.equals('foo'),
+    );
     checkBucketIamConfigurationUniformBucketLevelAccess(
-        o.uniformBucketLevelAccess
+        o.uniformBucketLevelAccess!
             as api.BucketIamConfigurationUniformBucketLevelAccess);
   }
   buildCounterBucketIamConfiguration--;
@@ -252,8 +283,14 @@ core.Map<core.String, core.String> buildUnnamed4519() {
 
 void checkUnnamed4519(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBucketLifecycleRuleAction = 0;
@@ -271,8 +308,14 @@ api.BucketLifecycleRuleAction buildBucketLifecycleRuleAction() {
 void checkBucketLifecycleRuleAction(api.BucketLifecycleRuleAction o) {
   buildCounterBucketLifecycleRuleAction++;
   if (buildCounterBucketLifecycleRuleAction < 3) {
-    unittest.expect(o.storageClass, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.storageClass!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBucketLifecycleRuleAction--;
 }
@@ -286,8 +329,14 @@ core.List<core.String> buildUnnamed4520() {
 
 void checkUnnamed4520(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBucketLifecycleRuleCondition = 0;
@@ -313,19 +362,40 @@ api.BucketLifecycleRuleCondition buildBucketLifecycleRuleCondition() {
 void checkBucketLifecycleRuleCondition(api.BucketLifecycleRuleCondition o) {
   buildCounterBucketLifecycleRuleCondition++;
   if (buildCounterBucketLifecycleRuleCondition < 3) {
-    unittest.expect(o.age, unittest.equals(42));
-    unittest.expect(o.createdBefore,
-        unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")));
-    unittest.expect(o.customTimeBefore,
-        unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")));
-    unittest.expect(o.daysSinceCustomTime, unittest.equals(42));
-    unittest.expect(o.daysSinceNoncurrentTime, unittest.equals(42));
-    unittest.expect(o.isLive, unittest.isTrue);
-    unittest.expect(o.matchesPattern, unittest.equals('foo'));
-    checkUnnamed4520(o.matchesStorageClass);
-    unittest.expect(o.noncurrentTimeBefore,
-        unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")));
-    unittest.expect(o.numNewerVersions, unittest.equals(42));
+    unittest.expect(
+      o.age!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.createdBefore!,
+      unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")),
+    );
+    unittest.expect(
+      o.customTimeBefore!,
+      unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")),
+    );
+    unittest.expect(
+      o.daysSinceCustomTime!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.daysSinceNoncurrentTime!,
+      unittest.equals(42),
+    );
+    unittest.expect(o.isLive!, unittest.isTrue);
+    unittest.expect(
+      o.matchesPattern!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4520(o.matchesStorageClass!);
+    unittest.expect(
+      o.noncurrentTimeBefore!,
+      unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")),
+    );
+    unittest.expect(
+      o.numNewerVersions!,
+      unittest.equals(42),
+    );
   }
   buildCounterBucketLifecycleRuleCondition--;
 }
@@ -345,9 +415,9 @@ api.BucketLifecycleRule buildBucketLifecycleRule() {
 void checkBucketLifecycleRule(api.BucketLifecycleRule o) {
   buildCounterBucketLifecycleRule++;
   if (buildCounterBucketLifecycleRule < 3) {
-    checkBucketLifecycleRuleAction(o.action as api.BucketLifecycleRuleAction);
+    checkBucketLifecycleRuleAction(o.action! as api.BucketLifecycleRuleAction);
     checkBucketLifecycleRuleCondition(
-        o.condition as api.BucketLifecycleRuleCondition);
+        o.condition! as api.BucketLifecycleRuleCondition);
   }
   buildCounterBucketLifecycleRule--;
 }
@@ -379,7 +449,7 @@ api.BucketLifecycle buildBucketLifecycle() {
 void checkBucketLifecycle(api.BucketLifecycle o) {
   buildCounterBucketLifecycle++;
   if (buildCounterBucketLifecycle < 3) {
-    checkUnnamed4521(o.rule);
+    checkUnnamed4521(o.rule!);
   }
   buildCounterBucketLifecycle--;
 }
@@ -399,8 +469,14 @@ api.BucketLogging buildBucketLogging() {
 void checkBucketLogging(api.BucketLogging o) {
   buildCounterBucketLogging++;
   if (buildCounterBucketLogging < 3) {
-    unittest.expect(o.logBucket, unittest.equals('foo'));
-    unittest.expect(o.logObjectPrefix, unittest.equals('foo'));
+    unittest.expect(
+      o.logBucket!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.logObjectPrefix!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBucketLogging--;
 }
@@ -420,8 +496,14 @@ api.BucketOwner buildBucketOwner() {
 void checkBucketOwner(api.BucketOwner o) {
   buildCounterBucketOwner++;
   if (buildCounterBucketOwner < 3) {
-    unittest.expect(o.entity, unittest.equals('foo'));
-    unittest.expect(o.entityId, unittest.equals('foo'));
+    unittest.expect(
+      o.entity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.entityId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBucketOwner--;
 }
@@ -442,10 +524,15 @@ api.BucketRetentionPolicy buildBucketRetentionPolicy() {
 void checkBucketRetentionPolicy(api.BucketRetentionPolicy o) {
   buildCounterBucketRetentionPolicy++;
   if (buildCounterBucketRetentionPolicy < 3) {
-    unittest.expect(o.effectiveTime,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    unittest.expect(o.isLocked, unittest.isTrue);
-    unittest.expect(o.retentionPeriod, unittest.equals('foo'));
+    unittest.expect(
+      o.effectiveTime!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
+    unittest.expect(o.isLocked!, unittest.isTrue);
+    unittest.expect(
+      o.retentionPeriod!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBucketRetentionPolicy--;
 }
@@ -464,7 +551,7 @@ api.BucketVersioning buildBucketVersioning() {
 void checkBucketVersioning(api.BucketVersioning o) {
   buildCounterBucketVersioning++;
   if (buildCounterBucketVersioning < 3) {
-    unittest.expect(o.enabled, unittest.isTrue);
+    unittest.expect(o.enabled!, unittest.isTrue);
   }
   buildCounterBucketVersioning--;
 }
@@ -484,8 +571,14 @@ api.BucketWebsite buildBucketWebsite() {
 void checkBucketWebsite(api.BucketWebsite o) {
   buildCounterBucketWebsite++;
   if (buildCounterBucketWebsite < 3) {
-    unittest.expect(o.mainPageSuffix, unittest.equals('foo'));
-    unittest.expect(o.notFoundPage, unittest.equals('foo'));
+    unittest.expect(
+      o.mainPageSuffix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.notFoundPage!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBucketWebsite--;
 }
@@ -499,8 +592,14 @@ core.List<core.String> buildUnnamed4522() {
 
 void checkUnnamed4522(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBucket = 0;
@@ -544,37 +643,71 @@ api.Bucket buildBucket() {
 void checkBucket(api.Bucket o) {
   buildCounterBucket++;
   if (buildCounterBucket < 3) {
-    checkUnnamed4513(o.acl);
-    checkBucketBilling(o.billing as api.BucketBilling);
-    checkUnnamed4517(o.cors);
-    unittest.expect(o.defaultEventBasedHold, unittest.isTrue);
-    checkUnnamed4518(o.defaultObjectAcl);
-    checkBucketEncryption(o.encryption as api.BucketEncryption);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    checkBucketIamConfiguration(
-        o.iamConfiguration as api.BucketIamConfiguration);
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed4519(o.labels);
-    checkBucketLifecycle(o.lifecycle as api.BucketLifecycle);
-    unittest.expect(o.location, unittest.equals('foo'));
-    unittest.expect(o.locationType, unittest.equals('foo'));
-    checkBucketLogging(o.logging as api.BucketLogging);
-    unittest.expect(o.metageneration, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkBucketOwner(o.owner as api.BucketOwner);
-    unittest.expect(o.projectNumber, unittest.equals('foo'));
-    checkBucketRetentionPolicy(o.retentionPolicy as api.BucketRetentionPolicy);
-    unittest.expect(o.satisfiesPZS, unittest.isTrue);
-    unittest.expect(o.selfLink, unittest.equals('foo'));
-    unittest.expect(o.storageClass, unittest.equals('foo'));
-    unittest.expect(o.timeCreated,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    checkUnnamed4513(o.acl!);
+    checkBucketBilling(o.billing! as api.BucketBilling);
+    checkUnnamed4517(o.cors!);
+    unittest.expect(o.defaultEventBasedHold!, unittest.isTrue);
+    checkUnnamed4518(o.defaultObjectAcl!);
+    checkBucketEncryption(o.encryption! as api.BucketEncryption);
     unittest.expect(
-        o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkBucketVersioning(o.versioning as api.BucketVersioning);
-    checkBucketWebsite(o.website as api.BucketWebsite);
-    checkUnnamed4522(o.zoneAffinity);
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkBucketIamConfiguration(
+        o.iamConfiguration! as api.BucketIamConfiguration);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4519(o.labels!);
+    checkBucketLifecycle(o.lifecycle! as api.BucketLifecycle);
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.locationType!,
+      unittest.equals('foo'),
+    );
+    checkBucketLogging(o.logging! as api.BucketLogging);
+    unittest.expect(
+      o.metageneration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkBucketOwner(o.owner! as api.BucketOwner);
+    unittest.expect(
+      o.projectNumber!,
+      unittest.equals('foo'),
+    );
+    checkBucketRetentionPolicy(o.retentionPolicy! as api.BucketRetentionPolicy);
+    unittest.expect(o.satisfiesPZS!, unittest.isTrue);
+    unittest.expect(
+      o.selfLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.storageClass!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timeCreated!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
+    unittest.expect(
+      o.updated!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
+    checkBucketVersioning(o.versioning! as api.BucketVersioning);
+    checkBucketWebsite(o.website! as api.BucketWebsite);
+    checkUnnamed4522(o.zoneAffinity!);
   }
   buildCounterBucket--;
 }
@@ -594,8 +727,14 @@ api.BucketAccessControlProjectTeam buildBucketAccessControlProjectTeam() {
 void checkBucketAccessControlProjectTeam(api.BucketAccessControlProjectTeam o) {
   buildCounterBucketAccessControlProjectTeam++;
   if (buildCounterBucketAccessControlProjectTeam < 3) {
-    unittest.expect(o.projectNumber, unittest.equals('foo'));
-    unittest.expect(o.team, unittest.equals('foo'));
+    unittest.expect(
+      o.projectNumber!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.team!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBucketAccessControlProjectTeam--;
 }
@@ -624,18 +763,48 @@ api.BucketAccessControl buildBucketAccessControl() {
 void checkBucketAccessControl(api.BucketAccessControl o) {
   buildCounterBucketAccessControl++;
   if (buildCounterBucketAccessControl < 3) {
-    unittest.expect(o.bucket, unittest.equals('foo'));
-    unittest.expect(o.domain, unittest.equals('foo'));
-    unittest.expect(o.email, unittest.equals('foo'));
-    unittest.expect(o.entity, unittest.equals('foo'));
-    unittest.expect(o.entityId, unittest.equals('foo'));
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(
+      o.bucket!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.domain!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.email!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.entity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.entityId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
     checkBucketAccessControlProjectTeam(
-        o.projectTeam as api.BucketAccessControlProjectTeam);
-    unittest.expect(o.role, unittest.equals('foo'));
-    unittest.expect(o.selfLink, unittest.equals('foo'));
+        o.projectTeam! as api.BucketAccessControlProjectTeam);
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.selfLink!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBucketAccessControl--;
 }
@@ -668,8 +837,11 @@ api.BucketAccessControls buildBucketAccessControls() {
 void checkBucketAccessControls(api.BucketAccessControls o) {
   buildCounterBucketAccessControls++;
   if (buildCounterBucketAccessControls < 3) {
-    checkUnnamed4523(o.items);
-    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed4523(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBucketAccessControls--;
 }
@@ -703,9 +875,15 @@ api.Buckets buildBuckets() {
 void checkBuckets(api.Buckets o) {
   buildCounterBuckets++;
   if (buildCounterBuckets < 3) {
-    checkUnnamed4524(o.items);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed4524(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBuckets--;
 }
@@ -719,8 +897,14 @@ core.Map<core.String, core.String> buildUnnamed4525() {
 
 void checkUnnamed4525(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterChannel = 0;
@@ -746,16 +930,40 @@ api.Channel buildChannel() {
 void checkChannel(api.Channel o) {
   buildCounterChannel++;
   if (buildCounterChannel < 3) {
-    unittest.expect(o.address, unittest.equals('foo'));
-    unittest.expect(o.expiration, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed4525(o.params);
-    unittest.expect(o.payload, unittest.isTrue);
-    unittest.expect(o.resourceId, unittest.equals('foo'));
-    unittest.expect(o.resourceUri, unittest.equals('foo'));
-    unittest.expect(o.token, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.address!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expiration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4525(o.params!);
+    unittest.expect(o.payload!, unittest.isTrue);
+    unittest.expect(
+      o.resourceId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resourceUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.token!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterChannel--;
 }
@@ -776,7 +984,10 @@ void checkComposeRequestSourceObjectsObjectPreconditions(
     api.ComposeRequestSourceObjectsObjectPreconditions o) {
   buildCounterComposeRequestSourceObjectsObjectPreconditions++;
   if (buildCounterComposeRequestSourceObjectsObjectPreconditions < 3) {
-    unittest.expect(o.ifGenerationMatch, unittest.equals('foo'));
+    unittest.expect(
+      o.ifGenerationMatch!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterComposeRequestSourceObjectsObjectPreconditions--;
 }
@@ -798,9 +1009,15 @@ api.ComposeRequestSourceObjects buildComposeRequestSourceObjects() {
 void checkComposeRequestSourceObjects(api.ComposeRequestSourceObjects o) {
   buildCounterComposeRequestSourceObjects++;
   if (buildCounterComposeRequestSourceObjects < 3) {
-    unittest.expect(o.generation, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkComposeRequestSourceObjectsObjectPreconditions(o.objectPreconditions
+    unittest.expect(
+      o.generation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkComposeRequestSourceObjectsObjectPreconditions(o.objectPreconditions!
         as api.ComposeRequestSourceObjectsObjectPreconditions);
   }
   buildCounterComposeRequestSourceObjects--;
@@ -835,9 +1052,12 @@ api.ComposeRequest buildComposeRequest() {
 void checkComposeRequest(api.ComposeRequest o) {
   buildCounterComposeRequest++;
   if (buildCounterComposeRequest < 3) {
-    checkObject(o.destination as api.Object);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed4526(o.sourceObjects);
+    checkObject(o.destination! as api.Object);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4526(o.sourceObjects!);
   }
   buildCounterComposeRequest--;
 }
@@ -859,10 +1079,22 @@ api.Expr buildExpr() {
 void checkExpr(api.Expr o) {
   buildCounterExpr++;
   if (buildCounterExpr < 3) {
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.expression, unittest.equals('foo'));
-    unittest.expect(o.location, unittest.equals('foo'));
-    unittest.expect(o.title, unittest.equals('foo'));
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expression!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterExpr--;
 }
@@ -883,9 +1115,15 @@ api.HmacKey buildHmacKey() {
 void checkHmacKey(api.HmacKey o) {
   buildCounterHmacKey++;
   if (buildCounterHmacKey < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkHmacKeyMetadata(o.metadata as api.HmacKeyMetadata);
-    unittest.expect(o.secret, unittest.equals('foo'));
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkHmacKeyMetadata(o.metadata! as api.HmacKeyMetadata);
+    unittest.expect(
+      o.secret!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterHmacKey--;
 }
@@ -913,18 +1151,46 @@ api.HmacKeyMetadata buildHmacKeyMetadata() {
 void checkHmacKeyMetadata(api.HmacKeyMetadata o) {
   buildCounterHmacKeyMetadata++;
   if (buildCounterHmacKeyMetadata < 3) {
-    unittest.expect(o.accessId, unittest.equals('foo'));
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.projectId, unittest.equals('foo'));
-    unittest.expect(o.selfLink, unittest.equals('foo'));
-    unittest.expect(o.serviceAccountEmail, unittest.equals('foo'));
-    unittest.expect(o.state, unittest.equals('foo'));
-    unittest.expect(o.timeCreated,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(
-        o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+      o.accessId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.selfLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serviceAccountEmail!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timeCreated!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
+    unittest.expect(
+      o.updated!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
   }
   buildCounterHmacKeyMetadata--;
 }
@@ -958,9 +1224,15 @@ api.HmacKeysMetadata buildHmacKeysMetadata() {
 void checkHmacKeysMetadata(api.HmacKeysMetadata o) {
   buildCounterHmacKeysMetadata++;
   if (buildCounterHmacKeysMetadata < 3) {
-    checkUnnamed4527(o.items);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed4527(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterHmacKeysMetadata--;
 }
@@ -974,8 +1246,14 @@ core.Map<core.String, core.String> buildUnnamed4528() {
 
 void checkUnnamed4528(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4529() {
@@ -987,8 +1265,14 @@ core.List<core.String> buildUnnamed4529() {
 
 void checkUnnamed4529(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterNotification = 0;
@@ -1013,15 +1297,36 @@ api.Notification buildNotification() {
 void checkNotification(api.Notification o) {
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
-    checkUnnamed4528(o.customAttributes);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed4529(o.eventTypes);
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.objectNamePrefix, unittest.equals('foo'));
-    unittest.expect(o.payloadFormat, unittest.equals('foo'));
-    unittest.expect(o.selfLink, unittest.equals('foo'));
-    unittest.expect(o.topic, unittest.equals('foo'));
+    checkUnnamed4528(o.customAttributes!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4529(o.eventTypes!);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.objectNamePrefix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.payloadFormat!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.selfLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.topic!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterNotification--;
 }
@@ -1054,8 +1359,11 @@ api.Notifications buildNotifications() {
 void checkNotifications(api.Notifications o) {
   buildCounterNotifications++;
   if (buildCounterNotifications < 3) {
-    checkUnnamed4530(o.items);
-    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed4530(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterNotifications--;
 }
@@ -1088,8 +1396,14 @@ api.ObjectCustomerEncryption buildObjectCustomerEncryption() {
 void checkObjectCustomerEncryption(api.ObjectCustomerEncryption o) {
   buildCounterObjectCustomerEncryption++;
   if (buildCounterObjectCustomerEncryption < 3) {
-    unittest.expect(o.encryptionAlgorithm, unittest.equals('foo'));
-    unittest.expect(o.keySha256, unittest.equals('foo'));
+    unittest.expect(
+      o.encryptionAlgorithm!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.keySha256!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterObjectCustomerEncryption--;
 }
@@ -1103,8 +1417,14 @@ core.Map<core.String, core.String> buildUnnamed4532() {
 
 void checkUnnamed4532(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterObjectOwner = 0;
@@ -1122,8 +1442,14 @@ api.ObjectOwner buildObjectOwner() {
 void checkObjectOwner(api.ObjectOwner o) {
   buildCounterObjectOwner++;
   if (buildCounterObjectOwner < 3) {
-    unittest.expect(o.entity, unittest.equals('foo'));
-    unittest.expect(o.entityId, unittest.equals('foo'));
+    unittest.expect(
+      o.entity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.entityId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterObjectOwner--;
 }
@@ -1173,45 +1499,117 @@ api.Object buildObject() {
 void checkObject(api.Object o) {
   buildCounterObject++;
   if (buildCounterObject < 3) {
-    checkUnnamed4531(o.acl);
-    unittest.expect(o.bucket, unittest.equals('foo'));
-    unittest.expect(o.cacheControl, unittest.equals('foo'));
-    unittest.expect(o.componentCount, unittest.equals(42));
-    unittest.expect(o.contentDisposition, unittest.equals('foo'));
-    unittest.expect(o.contentEncoding, unittest.equals('foo'));
-    unittest.expect(o.contentLanguage, unittest.equals('foo'));
-    unittest.expect(o.contentType, unittest.equals('foo'));
-    unittest.expect(o.crc32c, unittest.equals('foo'));
-    unittest.expect(o.customTime,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkObjectCustomerEncryption(
-        o.customerEncryption as api.ObjectCustomerEncryption);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.eventBasedHold, unittest.isTrue);
-    unittest.expect(o.generation, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.kmsKeyName, unittest.equals('foo'));
-    unittest.expect(o.md5Hash, unittest.equals('foo'));
-    unittest.expect(o.mediaLink, unittest.equals('foo'));
-    checkUnnamed4532(o.metadata);
-    unittest.expect(o.metageneration, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkObjectOwner(o.owner as api.ObjectOwner);
-    unittest.expect(o.retentionExpirationTime,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    unittest.expect(o.selfLink, unittest.equals('foo'));
-    unittest.expect(o.size, unittest.equals('foo'));
-    unittest.expect(o.storageClass, unittest.equals('foo'));
-    unittest.expect(o.temporaryHold, unittest.isTrue);
-    unittest.expect(o.timeCreated,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    unittest.expect(o.timeDeleted,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    unittest.expect(o.timeStorageClassUpdated,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    checkUnnamed4531(o.acl!);
     unittest.expect(
-        o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+      o.bucket!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.cacheControl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.componentCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.contentDisposition!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.contentEncoding!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.contentLanguage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.contentType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.crc32c!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.customTime!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
+    checkObjectCustomerEncryption(
+        o.customerEncryption! as api.ObjectCustomerEncryption);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.eventBasedHold!, unittest.isTrue);
+    unittest.expect(
+      o.generation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kmsKeyName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.md5Hash!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mediaLink!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4532(o.metadata!);
+    unittest.expect(
+      o.metageneration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkObjectOwner(o.owner! as api.ObjectOwner);
+    unittest.expect(
+      o.retentionExpirationTime!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
+    unittest.expect(
+      o.selfLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.size!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.storageClass!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.temporaryHold!, unittest.isTrue);
+    unittest.expect(
+      o.timeCreated!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
+    unittest.expect(
+      o.timeDeleted!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
+    unittest.expect(
+      o.timeStorageClassUpdated!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
+    unittest.expect(
+      o.updated!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
   }
   buildCounterObject--;
 }
@@ -1231,8 +1629,14 @@ api.ObjectAccessControlProjectTeam buildObjectAccessControlProjectTeam() {
 void checkObjectAccessControlProjectTeam(api.ObjectAccessControlProjectTeam o) {
   buildCounterObjectAccessControlProjectTeam++;
   if (buildCounterObjectAccessControlProjectTeam < 3) {
-    unittest.expect(o.projectNumber, unittest.equals('foo'));
-    unittest.expect(o.team, unittest.equals('foo'));
+    unittest.expect(
+      o.projectNumber!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.team!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterObjectAccessControlProjectTeam--;
 }
@@ -1263,20 +1667,56 @@ api.ObjectAccessControl buildObjectAccessControl() {
 void checkObjectAccessControl(api.ObjectAccessControl o) {
   buildCounterObjectAccessControl++;
   if (buildCounterObjectAccessControl < 3) {
-    unittest.expect(o.bucket, unittest.equals('foo'));
-    unittest.expect(o.domain, unittest.equals('foo'));
-    unittest.expect(o.email, unittest.equals('foo'));
-    unittest.expect(o.entity, unittest.equals('foo'));
-    unittest.expect(o.entityId, unittest.equals('foo'));
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.generation, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.object, unittest.equals('foo'));
+    unittest.expect(
+      o.bucket!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.domain!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.email!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.entity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.entityId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.generation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.object!,
+      unittest.equals('foo'),
+    );
     checkObjectAccessControlProjectTeam(
-        o.projectTeam as api.ObjectAccessControlProjectTeam);
-    unittest.expect(o.role, unittest.equals('foo'));
-    unittest.expect(o.selfLink, unittest.equals('foo'));
+        o.projectTeam! as api.ObjectAccessControlProjectTeam);
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.selfLink!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterObjectAccessControl--;
 }
@@ -1309,8 +1749,11 @@ api.ObjectAccessControls buildObjectAccessControls() {
 void checkObjectAccessControls(api.ObjectAccessControls o) {
   buildCounterObjectAccessControls++;
   if (buildCounterObjectAccessControls < 3) {
-    checkUnnamed4533(o.items);
-    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed4533(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterObjectAccessControls--;
 }
@@ -1337,8 +1780,14 @@ core.List<core.String> buildUnnamed4535() {
 
 void checkUnnamed4535(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterObjects = 0;
@@ -1358,10 +1807,16 @@ api.Objects buildObjects() {
 void checkObjects(api.Objects o) {
   buildCounterObjects++;
   if (buildCounterObjects < 3) {
-    checkUnnamed4534(o.items);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4535(o.prefixes);
+    checkUnnamed4534(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4535(o.prefixes!);
   }
   buildCounterObjects--;
 }
@@ -1375,8 +1830,14 @@ core.List<core.String> buildUnnamed4536() {
 
 void checkUnnamed4536(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterPolicyBindings = 0;
@@ -1395,9 +1856,12 @@ api.PolicyBindings buildPolicyBindings() {
 void checkPolicyBindings(api.PolicyBindings o) {
   buildCounterPolicyBindings++;
   if (buildCounterPolicyBindings < 3) {
-    checkExpr(o.condition as api.Expr);
-    checkUnnamed4536(o.members);
-    unittest.expect(o.role, unittest.equals('foo'));
+    checkExpr(o.condition! as api.Expr);
+    checkUnnamed4536(o.members!);
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPolicyBindings--;
 }
@@ -1433,11 +1897,23 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed4537(o.bindings);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.resourceId, unittest.equals('foo'));
-    unittest.expect(o.version, unittest.equals(42));
+    checkUnnamed4537(o.bindings!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resourceId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals(42),
+    );
   }
   buildCounterPolicy--;
 }
@@ -1461,12 +1937,24 @@ api.RewriteResponse buildRewriteResponse() {
 void checkRewriteResponse(api.RewriteResponse o) {
   buildCounterRewriteResponse++;
   if (buildCounterRewriteResponse < 3) {
-    unittest.expect(o.done, unittest.isTrue);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.objectSize, unittest.equals('foo'));
-    checkObject(o.resource as api.Object);
-    unittest.expect(o.rewriteToken, unittest.equals('foo'));
-    unittest.expect(o.totalBytesRewritten, unittest.equals('foo'));
+    unittest.expect(o.done!, unittest.isTrue);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.objectSize!,
+      unittest.equals('foo'),
+    );
+    checkObject(o.resource! as api.Object);
+    unittest.expect(
+      o.rewriteToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalBytesRewritten!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRewriteResponse--;
 }
@@ -1486,8 +1974,14 @@ api.ServiceAccount buildServiceAccount() {
 void checkServiceAccount(api.ServiceAccount o) {
   buildCounterServiceAccount++;
   if (buildCounterServiceAccount < 3) {
-    unittest.expect(o.emailAddress, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(
+      o.emailAddress!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterServiceAccount--;
 }
@@ -1501,8 +1995,14 @@ core.List<core.String> buildUnnamed4538() {
 
 void checkUnnamed4538(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterTestIamPermissionsResponse = 0;
@@ -1520,8 +2020,11 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed4538(o.permissions);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4538(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1535,8 +2038,14 @@ core.List<core.String> buildUnnamed4539() {
 
 void checkUnnamed4539(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4540() {
@@ -1548,8 +2057,14 @@ core.List<core.String> buildUnnamed4540() {
 
 void checkUnnamed4540(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -1913,26 +2428,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/acl/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/acl/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/acl/"),
+        );
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_entity'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_entity'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1949,11 +2478,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1983,26 +2519,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/acl/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/acl/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/acl/"),
+        );
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_entity'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_entity'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2019,11 +2569,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2059,22 +2616,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/acl', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 4),
-            unittest.equals("/acl"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 4),
+          unittest.equals("/acl"),
+        );
         pathOffset += 4;
 
         var query = (req.url).query;
@@ -2092,11 +2660,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2127,22 +2702,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/acl', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 4),
-            unittest.equals("/acl"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 4),
+          unittest.equals("/acl"),
+        );
         pathOffset += 4;
 
         var query = (req.url).query;
@@ -2160,11 +2746,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2201,26 +2794,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/acl/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/acl/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/acl/"),
+        );
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_entity'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_entity'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2237,11 +2844,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2278,26 +2892,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/acl/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/acl/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/acl/"),
+        );
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_entity'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_entity'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2314,11 +2942,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2353,17 +2988,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2380,15 +3024,26 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["ifMetagenerationMatch"].first,
-            unittest.equals(arg_ifMetagenerationMatch));
-        unittest.expect(queryMap["ifMetagenerationNotMatch"].first,
-            unittest.equals(arg_ifMetagenerationNotMatch));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["ifMetagenerationMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationNotMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2422,17 +3077,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2449,17 +3113,30 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["ifMetagenerationMatch"].first,
-            unittest.equals(arg_ifMetagenerationMatch));
-        unittest.expect(queryMap["ifMetagenerationNotMatch"].first,
-            unittest.equals(arg_ifMetagenerationNotMatch));
         unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["ifMetagenerationMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationMatch),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["ifMetagenerationNotMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["projection"]!.first,
+          unittest.equals(arg_projection),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2494,22 +3171,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/iam', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 4),
-            unittest.equals("/iam"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 4),
+          unittest.equals("/iam"),
+        );
         pathOffset += 4;
 
         var query = (req.url).query;
@@ -2528,13 +3216,21 @@ void main() {
           }
         }
         unittest.expect(
-            core.int.parse(queryMap["optionsRequestedPolicyVersion"].first),
-            unittest.equals(arg_optionsRequestedPolicyVersion));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          core.int.parse(queryMap["optionsRequestedPolicyVersion"]!.first),
+          unittest.equals(arg_optionsRequestedPolicyVersion),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2574,13 +3270,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("b"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("b"),
+        );
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2599,18 +3301,33 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["project"].first, unittest.equals(arg_project));
-        unittest.expect(queryMap["predefinedAcl"].first,
-            unittest.equals(arg_predefinedAcl));
-        unittest.expect(queryMap["predefinedDefaultObjectAcl"].first,
-            unittest.equals(arg_predefinedDefaultObjectAcl));
+          queryMap["project"]!.first,
+          unittest.equals(arg_project),
+        );
         unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["predefinedAcl"]!.first,
+          unittest.equals(arg_predefinedAcl),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["predefinedDefaultObjectAcl"]!.first,
+          unittest.equals(arg_predefinedDefaultObjectAcl),
+        );
+        unittest.expect(
+          queryMap["projection"]!.first,
+          unittest.equals(arg_projection),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2648,13 +3365,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("b"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("b"),
+        );
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2673,19 +3396,37 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["project"].first, unittest.equals(arg_project));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+          queryMap["project"]!.first,
+          unittest.equals(arg_project),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["prefix"].first, unittest.equals(arg_prefix));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
         unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["prefix"]!.first,
+          unittest.equals(arg_prefix),
+        );
+        unittest.expect(
+          queryMap["projection"]!.first,
+          unittest.equals(arg_projection),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2721,22 +3462,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/lockRetentionPolicy', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/lockRetentionPolicy"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/lockRetentionPolicy"),
+        );
         pathOffset += 20;
 
         var query = (req.url).query;
@@ -2754,13 +3506,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["ifMetagenerationMatch"].first,
-            unittest.equals(arg_ifMetagenerationMatch));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["ifMetagenerationMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationMatch),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2801,17 +3562,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2828,21 +3598,38 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["ifMetagenerationMatch"].first,
-            unittest.equals(arg_ifMetagenerationMatch));
-        unittest.expect(queryMap["ifMetagenerationNotMatch"].first,
-            unittest.equals(arg_ifMetagenerationNotMatch));
-        unittest.expect(queryMap["predefinedAcl"].first,
-            unittest.equals(arg_predefinedAcl));
-        unittest.expect(queryMap["predefinedDefaultObjectAcl"].first,
-            unittest.equals(arg_predefinedDefaultObjectAcl));
         unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["ifMetagenerationMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationMatch),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["ifMetagenerationNotMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["predefinedAcl"]!.first,
+          unittest.equals(arg_predefinedAcl),
+        );
+        unittest.expect(
+          queryMap["predefinedDefaultObjectAcl"]!.first,
+          unittest.equals(arg_predefinedDefaultObjectAcl),
+        );
+        unittest.expect(
+          queryMap["projection"]!.first,
+          unittest.equals(arg_projection),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2883,22 +3670,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/iam', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 4),
-            unittest.equals("/iam"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 4),
+          unittest.equals("/iam"),
+        );
         pathOffset += 4;
 
         var query = (req.url).query;
@@ -2916,11 +3714,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2952,22 +3757,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/iam/testPermissions', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/iam/testPermissions"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/iam/testPermissions"),
+        );
         pathOffset += 20;
 
         var query = (req.url).query;
@@ -2986,12 +3802,21 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["permissions"], unittest.equals(arg_permissions));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["permissions"]!,
+          unittest.equals(arg_permissions),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3033,17 +3858,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3060,21 +3894,38 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["ifMetagenerationMatch"].first,
-            unittest.equals(arg_ifMetagenerationMatch));
-        unittest.expect(queryMap["ifMetagenerationNotMatch"].first,
-            unittest.equals(arg_ifMetagenerationNotMatch));
-        unittest.expect(queryMap["predefinedAcl"].first,
-            unittest.equals(arg_predefinedAcl));
-        unittest.expect(queryMap["predefinedDefaultObjectAcl"].first,
-            unittest.equals(arg_predefinedDefaultObjectAcl));
         unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["ifMetagenerationMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationMatch),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["ifMetagenerationNotMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["predefinedAcl"]!.first,
+          unittest.equals(arg_predefinedAcl),
+        );
+        unittest.expect(
+          queryMap["predefinedDefaultObjectAcl"]!.first,
+          unittest.equals(arg_predefinedDefaultObjectAcl),
+        );
+        unittest.expect(
+          queryMap["projection"]!.first,
+          unittest.equals(arg_projection),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3114,13 +3965,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("channels/stop"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals("channels/stop"),
+        );
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -3138,7 +3995,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3167,26 +4027,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/defaultObjectAcl/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("/defaultObjectAcl/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("/defaultObjectAcl/"),
+        );
         pathOffset += 18;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_entity'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_entity'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3203,11 +4077,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3237,26 +4118,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/defaultObjectAcl/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("/defaultObjectAcl/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("/defaultObjectAcl/"),
+        );
         pathOffset += 18;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_entity'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_entity'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3273,11 +4168,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3313,22 +4215,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/defaultObjectAcl', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("/defaultObjectAcl"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("/defaultObjectAcl"),
+        );
         pathOffset += 17;
 
         var query = (req.url).query;
@@ -3346,11 +4259,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3383,22 +4303,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/defaultObjectAcl', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("/defaultObjectAcl"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("/defaultObjectAcl"),
+        );
         pathOffset += 17;
 
         var query = (req.url).query;
@@ -3416,15 +4347,26 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["ifMetagenerationMatch"].first,
-            unittest.equals(arg_ifMetagenerationMatch));
-        unittest.expect(queryMap["ifMetagenerationNotMatch"].first,
-            unittest.equals(arg_ifMetagenerationNotMatch));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["ifMetagenerationMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationNotMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3463,26 +4405,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/defaultObjectAcl/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("/defaultObjectAcl/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("/defaultObjectAcl/"),
+        );
         pathOffset += 18;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_entity'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_entity'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3499,11 +4455,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3540,26 +4503,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/defaultObjectAcl/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("/defaultObjectAcl/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("/defaultObjectAcl/"),
+        );
         pathOffset += 18;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_entity'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_entity'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3576,11 +4553,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3614,26 +4598,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/notificationConfigs/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("/notificationConfigs/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals("/notificationConfigs/"),
+        );
         pathOffset += 21;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_notification'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_notification'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3650,11 +4648,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3684,26 +4689,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/notificationConfigs/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("/notificationConfigs/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals("/notificationConfigs/"),
+        );
         pathOffset += 21;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_notification'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_notification'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3720,11 +4739,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3760,22 +4786,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/notificationConfigs', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/notificationConfigs"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/notificationConfigs"),
+        );
         pathOffset += 20;
 
         var query = (req.url).query;
@@ -3793,11 +4830,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3828,22 +4872,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/notificationConfigs', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/notificationConfigs"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/notificationConfigs"),
+        );
         pathOffset += 20;
 
         var query = (req.url).query;
@@ -3861,11 +4916,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3901,35 +4963,54 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         index = path.indexOf('/acl/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_object'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/acl/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_object'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/acl/"),
+        );
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_entity'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_entity'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3947,12 +5028,21 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["generation"].first, unittest.equals(arg_generation));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["generation"]!.first,
+          unittest.equals(arg_generation),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3985,35 +5075,54 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         index = path.indexOf('/acl/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_object'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/acl/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_object'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/acl/"),
+        );
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_entity'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_entity'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4031,12 +5140,21 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["generation"].first, unittest.equals(arg_generation));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["generation"]!.first,
+          unittest.equals(arg_generation),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4075,31 +5193,47 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         index = path.indexOf('/acl', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_object'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 4),
-            unittest.equals("/acl"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_object'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 4),
+          unittest.equals("/acl"),
+        );
         pathOffset += 4;
 
         var query = (req.url).query;
@@ -4118,12 +5252,21 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["generation"].first, unittest.equals(arg_generation));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["generation"]!.first,
+          unittest.equals(arg_generation),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4157,31 +5300,47 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         index = path.indexOf('/acl', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_object'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 4),
-            unittest.equals("/acl"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_object'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 4),
+          unittest.equals("/acl"),
+        );
         pathOffset += 4;
 
         var query = (req.url).query;
@@ -4200,12 +5359,21 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["generation"].first, unittest.equals(arg_generation));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["generation"]!.first,
+          unittest.equals(arg_generation),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4245,35 +5413,54 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         index = path.indexOf('/acl/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_object'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/acl/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_object'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/acl/"),
+        );
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_entity'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_entity'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4291,12 +5478,21 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["generation"].first, unittest.equals(arg_generation));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["generation"]!.first,
+          unittest.equals(arg_generation),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4336,35 +5532,54 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         index = path.indexOf('/acl/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_object'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/acl/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_object'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/acl/"),
+        );
         pathOffset += 5;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_entity'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_entity'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4382,12 +5597,21 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["generation"].first, unittest.equals(arg_generation));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["generation"]!.first,
+          unittest.equals(arg_generation),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4431,31 +5655,47 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_destinationBucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_destinationBucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         index = path.indexOf('/compose', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_destinationObject'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/compose"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_destinationObject'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/compose"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -4473,19 +5713,34 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["destinationPredefinedAcl"].first,
-            unittest.equals(arg_destinationPredefinedAcl));
-        unittest.expect(queryMap["ifGenerationMatch"].first,
-            unittest.equals(arg_ifGenerationMatch));
-        unittest.expect(queryMap["ifMetagenerationMatch"].first,
-            unittest.equals(arg_ifMetagenerationMatch));
         unittest.expect(
-            queryMap["kmsKeyName"].first, unittest.equals(arg_kmsKeyName));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["destinationPredefinedAcl"]!.first,
+          unittest.equals(arg_destinationPredefinedAcl),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["ifGenerationMatch"]!.first,
+          unittest.equals(arg_ifGenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationMatch),
+        );
+        unittest.expect(
+          queryMap["kmsKeyName"]!.first,
+          unittest.equals(arg_kmsKeyName),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4540,44 +5795,68 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_sourceBucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_sourceBucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         index = path.indexOf('/copyTo/b/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_sourceObject'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/copyTo/b/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sourceObject'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/copyTo/b/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_destinationBucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_destinationBucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_destinationObject'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_destinationObject'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4594,35 +5873,66 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["destinationKmsKeyName"].first,
-            unittest.equals(arg_destinationKmsKeyName));
-        unittest.expect(queryMap["destinationPredefinedAcl"].first,
-            unittest.equals(arg_destinationPredefinedAcl));
-        unittest.expect(queryMap["ifGenerationMatch"].first,
-            unittest.equals(arg_ifGenerationMatch));
-        unittest.expect(queryMap["ifGenerationNotMatch"].first,
-            unittest.equals(arg_ifGenerationNotMatch));
-        unittest.expect(queryMap["ifMetagenerationMatch"].first,
-            unittest.equals(arg_ifMetagenerationMatch));
-        unittest.expect(queryMap["ifMetagenerationNotMatch"].first,
-            unittest.equals(arg_ifMetagenerationNotMatch));
-        unittest.expect(queryMap["ifSourceGenerationMatch"].first,
-            unittest.equals(arg_ifSourceGenerationMatch));
-        unittest.expect(queryMap["ifSourceGenerationNotMatch"].first,
-            unittest.equals(arg_ifSourceGenerationNotMatch));
-        unittest.expect(queryMap["ifSourceMetagenerationMatch"].first,
-            unittest.equals(arg_ifSourceMetagenerationMatch));
-        unittest.expect(queryMap["ifSourceMetagenerationNotMatch"].first,
-            unittest.equals(arg_ifSourceMetagenerationNotMatch));
         unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
-        unittest.expect(queryMap["sourceGeneration"].first,
-            unittest.equals(arg_sourceGeneration));
+          queryMap["destinationKmsKeyName"]!.first,
+          unittest.equals(arg_destinationKmsKeyName),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["destinationPredefinedAcl"]!.first,
+          unittest.equals(arg_destinationPredefinedAcl),
+        );
+        unittest.expect(
+          queryMap["ifGenerationMatch"]!.first,
+          unittest.equals(arg_ifGenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifGenerationNotMatch"]!.first,
+          unittest.equals(arg_ifGenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationNotMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["ifSourceGenerationMatch"]!.first,
+          unittest.equals(arg_ifSourceGenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifSourceGenerationNotMatch"]!.first,
+          unittest.equals(arg_ifSourceGenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["ifSourceMetagenerationMatch"]!.first,
+          unittest.equals(arg_ifSourceMetagenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifSourceMetagenerationNotMatch"]!.first,
+          unittest.equals(arg_ifSourceMetagenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["projection"]!.first,
+          unittest.equals(arg_projection),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["sourceGeneration"]!.first,
+          unittest.equals(arg_sourceGeneration),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4673,26 +5983,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_object'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_object'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4710,20 +6034,37 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["generation"].first, unittest.equals(arg_generation));
-        unittest.expect(queryMap["ifGenerationMatch"].first,
-            unittest.equals(arg_ifGenerationMatch));
-        unittest.expect(queryMap["ifGenerationNotMatch"].first,
-            unittest.equals(arg_ifGenerationNotMatch));
-        unittest.expect(queryMap["ifMetagenerationMatch"].first,
-            unittest.equals(arg_ifMetagenerationMatch));
-        unittest.expect(queryMap["ifMetagenerationNotMatch"].first,
-            unittest.equals(arg_ifMetagenerationNotMatch));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["generation"]!.first,
+          unittest.equals(arg_generation),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["ifGenerationMatch"]!.first,
+          unittest.equals(arg_ifGenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifGenerationNotMatch"]!.first,
+          unittest.equals(arg_ifGenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationNotMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4767,26 +6108,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_object'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_object'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4804,22 +6159,41 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["generation"].first, unittest.equals(arg_generation));
-        unittest.expect(queryMap["ifGenerationMatch"].first,
-            unittest.equals(arg_ifGenerationMatch));
-        unittest.expect(queryMap["ifGenerationNotMatch"].first,
-            unittest.equals(arg_ifGenerationNotMatch));
-        unittest.expect(queryMap["ifMetagenerationMatch"].first,
-            unittest.equals(arg_ifMetagenerationMatch));
-        unittest.expect(queryMap["ifMetagenerationNotMatch"].first,
-            unittest.equals(arg_ifMetagenerationNotMatch));
+          queryMap["generation"]!.first,
+          unittest.equals(arg_generation),
+        );
         unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["ifGenerationMatch"]!.first,
+          unittest.equals(arg_ifGenerationMatch),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["ifGenerationNotMatch"]!.first,
+          unittest.equals(arg_ifGenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationNotMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["projection"]!.first,
+          unittest.equals(arg_projection),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4858,31 +6232,47 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         index = path.indexOf('/iam', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_object'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 4),
-            unittest.equals("/iam"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_object'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 4),
+          unittest.equals("/iam"),
+        );
         pathOffset += 4;
 
         var query = (req.url).query;
@@ -4901,12 +6291,21 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["generation"].first, unittest.equals(arg_generation));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["generation"]!.first,
+          unittest.equals(arg_generation),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4955,22 +6354,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("/o"));
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("/o"),
+        );
         pathOffset += 2;
 
         var query = (req.url).query;
@@ -4988,28 +6398,54 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["contentEncoding"].first,
-            unittest.equals(arg_contentEncoding));
-        unittest.expect(queryMap["ifGenerationMatch"].first,
-            unittest.equals(arg_ifGenerationMatch));
-        unittest.expect(queryMap["ifGenerationNotMatch"].first,
-            unittest.equals(arg_ifGenerationNotMatch));
-        unittest.expect(queryMap["ifMetagenerationMatch"].first,
-            unittest.equals(arg_ifMetagenerationMatch));
-        unittest.expect(queryMap["ifMetagenerationNotMatch"].first,
-            unittest.equals(arg_ifMetagenerationNotMatch));
         unittest.expect(
-            queryMap["kmsKeyName"].first, unittest.equals(arg_kmsKeyName));
-        unittest.expect(queryMap["name"].first, unittest.equals(arg_name));
-        unittest.expect(queryMap["predefinedAcl"].first,
-            unittest.equals(arg_predefinedAcl));
+          queryMap["contentEncoding"]!.first,
+          unittest.equals(arg_contentEncoding),
+        );
         unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["ifGenerationMatch"]!.first,
+          unittest.equals(arg_ifGenerationMatch),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["ifGenerationNotMatch"]!.first,
+          unittest.equals(arg_ifGenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationNotMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["kmsKeyName"]!.first,
+          unittest.equals(arg_kmsKeyName),
+        );
+        unittest.expect(
+          queryMap["name"]!.first,
+          unittest.equals(arg_name),
+        );
+        unittest.expect(
+          queryMap["predefinedAcl"]!.first,
+          unittest.equals(arg_predefinedAcl),
+        );
+        unittest.expect(
+          queryMap["projection"]!.first,
+          unittest.equals(arg_projection),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5058,22 +6494,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("/o"));
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("/o"),
+        );
         pathOffset += 2;
 
         var query = (req.url).query;
@@ -5092,27 +6539,53 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["delimiter"].first, unittest.equals(arg_delimiter));
+          queryMap["delimiter"]!.first,
+          unittest.equals(arg_delimiter),
+        );
         unittest.expect(
-            queryMap["endOffset"].first, unittest.equals(arg_endOffset));
-        unittest.expect(queryMap["includeTrailingDelimiter"].first,
-            unittest.equals("$arg_includeTrailingDelimiter"));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+          queryMap["endOffset"]!.first,
+          unittest.equals(arg_endOffset),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["prefix"].first, unittest.equals(arg_prefix));
+          queryMap["includeTrailingDelimiter"]!.first,
+          unittest.equals("$arg_includeTrailingDelimiter"),
+        );
         unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
         unittest.expect(
-            queryMap["startOffset"].first, unittest.equals(arg_startOffset));
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
+          queryMap["prefix"]!.first,
+          unittest.equals(arg_prefix),
+        );
         unittest.expect(
-            queryMap["versions"].first, unittest.equals("$arg_versions"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["projection"]!.first,
+          unittest.equals(arg_projection),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["startOffset"]!.first,
+          unittest.equals(arg_startOffset),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["versions"]!.first,
+          unittest.equals("$arg_versions"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5165,26 +6638,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_object'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_object'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5202,24 +6689,45 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["generation"].first, unittest.equals(arg_generation));
-        unittest.expect(queryMap["ifGenerationMatch"].first,
-            unittest.equals(arg_ifGenerationMatch));
-        unittest.expect(queryMap["ifGenerationNotMatch"].first,
-            unittest.equals(arg_ifGenerationNotMatch));
-        unittest.expect(queryMap["ifMetagenerationMatch"].first,
-            unittest.equals(arg_ifMetagenerationMatch));
-        unittest.expect(queryMap["ifMetagenerationNotMatch"].first,
-            unittest.equals(arg_ifMetagenerationNotMatch));
-        unittest.expect(queryMap["predefinedAcl"].first,
-            unittest.equals(arg_predefinedAcl));
+          queryMap["generation"]!.first,
+          unittest.equals(arg_generation),
+        );
         unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["ifGenerationMatch"]!.first,
+          unittest.equals(arg_ifGenerationMatch),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["ifGenerationNotMatch"]!.first,
+          unittest.equals(arg_ifGenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationNotMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["predefinedAcl"]!.first,
+          unittest.equals(arg_predefinedAcl),
+        );
+        unittest.expect(
+          queryMap["projection"]!.first,
+          unittest.equals(arg_projection),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5279,44 +6787,68 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_sourceBucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_sourceBucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         index = path.indexOf('/rewriteTo/b/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_sourceObject'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("/rewriteTo/b/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sourceObject'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals("/rewriteTo/b/"),
+        );
         pathOffset += 13;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_destinationBucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_destinationBucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_destinationObject'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_destinationObject'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5333,39 +6865,74 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["destinationKmsKeyName"].first,
-            unittest.equals(arg_destinationKmsKeyName));
-        unittest.expect(queryMap["destinationPredefinedAcl"].first,
-            unittest.equals(arg_destinationPredefinedAcl));
-        unittest.expect(queryMap["ifGenerationMatch"].first,
-            unittest.equals(arg_ifGenerationMatch));
-        unittest.expect(queryMap["ifGenerationNotMatch"].first,
-            unittest.equals(arg_ifGenerationNotMatch));
-        unittest.expect(queryMap["ifMetagenerationMatch"].first,
-            unittest.equals(arg_ifMetagenerationMatch));
-        unittest.expect(queryMap["ifMetagenerationNotMatch"].first,
-            unittest.equals(arg_ifMetagenerationNotMatch));
-        unittest.expect(queryMap["ifSourceGenerationMatch"].first,
-            unittest.equals(arg_ifSourceGenerationMatch));
-        unittest.expect(queryMap["ifSourceGenerationNotMatch"].first,
-            unittest.equals(arg_ifSourceGenerationNotMatch));
-        unittest.expect(queryMap["ifSourceMetagenerationMatch"].first,
-            unittest.equals(arg_ifSourceMetagenerationMatch));
-        unittest.expect(queryMap["ifSourceMetagenerationNotMatch"].first,
-            unittest.equals(arg_ifSourceMetagenerationNotMatch));
-        unittest.expect(queryMap["maxBytesRewrittenPerCall"].first,
-            unittest.equals(arg_maxBytesRewrittenPerCall));
         unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["destinationKmsKeyName"]!.first,
+          unittest.equals(arg_destinationKmsKeyName),
+        );
         unittest.expect(
-            queryMap["rewriteToken"].first, unittest.equals(arg_rewriteToken));
-        unittest.expect(queryMap["sourceGeneration"].first,
-            unittest.equals(arg_sourceGeneration));
+          queryMap["destinationPredefinedAcl"]!.first,
+          unittest.equals(arg_destinationPredefinedAcl),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["ifGenerationMatch"]!.first,
+          unittest.equals(arg_ifGenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifGenerationNotMatch"]!.first,
+          unittest.equals(arg_ifGenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationNotMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["ifSourceGenerationMatch"]!.first,
+          unittest.equals(arg_ifSourceGenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifSourceGenerationNotMatch"]!.first,
+          unittest.equals(arg_ifSourceGenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["ifSourceMetagenerationMatch"]!.first,
+          unittest.equals(arg_ifSourceMetagenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifSourceMetagenerationNotMatch"]!.first,
+          unittest.equals(arg_ifSourceMetagenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["maxBytesRewrittenPerCall"]!.first,
+          unittest.equals(arg_maxBytesRewrittenPerCall),
+        );
+        unittest.expect(
+          queryMap["projection"]!.first,
+          unittest.equals(arg_projection),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["rewriteToken"]!.first,
+          unittest.equals(arg_rewriteToken),
+        );
+        unittest.expect(
+          queryMap["sourceGeneration"]!.first,
+          unittest.equals(arg_sourceGeneration),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5419,31 +6986,47 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         index = path.indexOf('/iam', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_object'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 4),
-            unittest.equals("/iam"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_object'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 4),
+          unittest.equals("/iam"),
+        );
         pathOffset += 4;
 
         var query = (req.url).query;
@@ -5462,12 +7045,21 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["generation"].first, unittest.equals(arg_generation));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["generation"]!.first,
+          unittest.equals(arg_generation),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5502,31 +7094,47 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         index = path.indexOf('/iam/testPermissions', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_object'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/iam/testPermissions"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_object'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/iam/testPermissions"),
+        );
         pathOffset += 20;
 
         var query = (req.url).query;
@@ -5545,14 +7153,25 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["permissions"], unittest.equals(arg_permissions));
+          queryMap["permissions"]!,
+          unittest.equals(arg_permissions),
+        );
         unittest.expect(
-            queryMap["generation"].first, unittest.equals(arg_generation));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["generation"]!.first,
+          unittest.equals(arg_generation),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5598,26 +7217,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("/o/"));
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("/o/"),
+        );
         pathOffset += 3;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_object'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_object'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5635,24 +7268,45 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["generation"].first, unittest.equals(arg_generation));
-        unittest.expect(queryMap["ifGenerationMatch"].first,
-            unittest.equals(arg_ifGenerationMatch));
-        unittest.expect(queryMap["ifGenerationNotMatch"].first,
-            unittest.equals(arg_ifGenerationNotMatch));
-        unittest.expect(queryMap["ifMetagenerationMatch"].first,
-            unittest.equals(arg_ifMetagenerationMatch));
-        unittest.expect(queryMap["ifMetagenerationNotMatch"].first,
-            unittest.equals(arg_ifMetagenerationNotMatch));
-        unittest.expect(queryMap["predefinedAcl"].first,
-            unittest.equals(arg_predefinedAcl));
+          queryMap["generation"]!.first,
+          unittest.equals(arg_generation),
+        );
         unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          queryMap["ifGenerationMatch"]!.first,
+          unittest.equals(arg_ifGenerationMatch),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["ifGenerationNotMatch"]!.first,
+          unittest.equals(arg_ifGenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationMatch),
+        );
+        unittest.expect(
+          queryMap["ifMetagenerationNotMatch"]!.first,
+          unittest.equals(arg_ifMetagenerationNotMatch),
+        );
+        unittest.expect(
+          queryMap["predefinedAcl"]!.first,
+          unittest.equals(arg_predefinedAcl),
+        );
+        unittest.expect(
+          queryMap["projection"]!.first,
+          unittest.equals(arg_projection),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5704,22 +7358,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 2), unittest.equals("b/"));
+          path.substring(pathOffset, pathOffset + 2),
+          unittest.equals("b/"),
+        );
         pathOffset += 2;
         index = path.indexOf('/o/watch', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_bucket'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/o/watch"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_bucket'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/o/watch"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -5738,27 +7403,53 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["delimiter"].first, unittest.equals(arg_delimiter));
+          queryMap["delimiter"]!.first,
+          unittest.equals(arg_delimiter),
+        );
         unittest.expect(
-            queryMap["endOffset"].first, unittest.equals(arg_endOffset));
-        unittest.expect(queryMap["includeTrailingDelimiter"].first,
-            unittest.equals("$arg_includeTrailingDelimiter"));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+          queryMap["endOffset"]!.first,
+          unittest.equals(arg_endOffset),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["prefix"].first, unittest.equals(arg_prefix));
+          queryMap["includeTrailingDelimiter"]!.first,
+          unittest.equals("$arg_includeTrailingDelimiter"),
+        );
         unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
         unittest.expect(
-            queryMap["startOffset"].first, unittest.equals(arg_startOffset));
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
+          queryMap["prefix"]!.first,
+          unittest.equals(arg_prefix),
+        );
         unittest.expect(
-            queryMap["versions"].first, unittest.equals("$arg_versions"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["projection"]!.first,
+          unittest.equals(arg_projection),
+        );
+        unittest.expect(
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["startOffset"]!.first,
+          unittest.equals(arg_startOffset),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["versions"]!.first,
+          unittest.equals("$arg_versions"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5800,22 +7491,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/hmacKeys', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("/hmacKeys"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("/hmacKeys"),
+        );
         pathOffset += 9;
 
         var query = (req.url).query;
@@ -5833,11 +7535,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["serviceAccountEmail"].first,
-            unittest.equals(arg_serviceAccountEmail));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["serviceAccountEmail"]!.first,
+          unittest.equals(arg_serviceAccountEmail),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5866,26 +7575,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/hmacKeys/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/hmacKeys/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/hmacKeys/"),
+        );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_accessId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_accessId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5903,8 +7626,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5931,26 +7659,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/hmacKeys/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/hmacKeys/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/hmacKeys/"),
+        );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_accessId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_accessId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5968,8 +7710,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -6001,22 +7748,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/hmacKeys', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("/hmacKeys"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("/hmacKeys"),
+        );
         pathOffset += 9;
 
         var query = (req.url).query;
@@ -6034,17 +7792,30 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["serviceAccountEmail"].first,
-            unittest.equals(arg_serviceAccountEmail));
-        unittest.expect(queryMap["showDeletedKeys"].first,
-            unittest.equals("$arg_showDeletedKeys"));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["serviceAccountEmail"]!.first,
+          unittest.equals(arg_serviceAccountEmail),
+        );
+        unittest.expect(
+          queryMap["showDeletedKeys"]!.first,
+          unittest.equals("$arg_showDeletedKeys"),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -6083,26 +7854,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/hmacKeys/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/hmacKeys/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/hmacKeys/"),
+        );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_accessId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_accessId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6120,8 +7905,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -6152,22 +7942,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("storage/v1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("storage/v1/"),
+        );
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/serviceAccount', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("/serviceAccount"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("/serviceAccount"),
+        );
         pathOffset += 15;
 
         var query = (req.url).query;
@@ -6185,11 +7986,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["provisionalUserProject"].first,
-            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
-            queryMap["userProject"].first, unittest.equals(arg_userProject));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["provisionalUserProject"]!.first,
+          unittest.equals(arg_provisionalUserProject),
+        );
+        unittest.expect(
+          queryMap["userProject"]!.first,
+          unittest.equals(arg_userProject),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

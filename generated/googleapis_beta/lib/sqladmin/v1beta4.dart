@@ -105,17 +105,8 @@ class BackupRunsResource {
     core.String project,
     core.String instance,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -159,17 +150,8 @@ class BackupRunsResource {
     core.String project,
     core.String instance,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -215,16 +197,9 @@ class BackupRunsResource {
     BackupRun request,
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -271,16 +246,10 @@ class BackupRunsResource {
   async.Future<BackupRunsListResponse> list(
     core.String project,
     core.String instance, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -332,17 +301,8 @@ class DatabasesResource {
     core.String project,
     core.String instance,
     core.String database, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -387,17 +347,8 @@ class DatabasesResource {
     core.String project,
     core.String instance,
     core.String database, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -442,16 +393,9 @@ class DatabasesResource {
     Database request,
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -492,14 +436,8 @@ class DatabasesResource {
   async.Future<DatabasesListResponse> list(
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -549,19 +487,9 @@ class DatabasesResource {
     core.String project,
     core.String instance,
     core.String database, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -610,19 +538,9 @@ class DatabasesResource {
     core.String project,
     core.String instance,
     core.String database, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -668,8 +586,8 @@ class FlagsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FlagsListResponse> list({
-    core.String databaseVersion,
-    core.String $fields,
+    core.String? databaseVersion,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (databaseVersion != null) 'databaseVersion': [databaseVersion],
@@ -720,14 +638,8 @@ class InstancesResource {
   async.Future<Operation> addServerCa(
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -774,16 +686,9 @@ class InstancesResource {
     InstancesCloneRequest request,
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -825,14 +730,8 @@ class InstancesResource {
   async.Future<Operation> delete(
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -875,16 +774,9 @@ class InstancesResource {
     InstancesDemoteMasterRequest request,
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -930,16 +822,9 @@ class InstancesResource {
     InstancesExportRequest request,
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -985,16 +870,9 @@ class InstancesResource {
     InstancesFailoverRequest request,
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1035,14 +913,8 @@ class InstancesResource {
   async.Future<DatabaseInstance> get(
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1086,16 +958,9 @@ class InstancesResource {
     InstancesImportRequest request,
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1137,13 +1002,9 @@ class InstancesResource {
   async.Future<Operation> insert(
     DatabaseInstance request,
     core.String project, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1193,14 +1054,11 @@ class InstancesResource {
   /// this method will complete with the same error.
   async.Future<InstancesListResponse> list(
     core.String project, {
-    core.String filter,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -1248,14 +1106,8 @@ class InstancesResource {
   async.Future<InstancesListServerCasResponse> listServerCas(
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1301,16 +1153,9 @@ class InstancesResource {
     DatabaseInstance request,
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1352,14 +1197,8 @@ class InstancesResource {
   async.Future<Operation> promoteReplica(
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1400,14 +1239,8 @@ class InstancesResource {
   async.Future<Operation> resetSslConfig(
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1448,14 +1281,8 @@ class InstancesResource {
   async.Future<Operation> restart(
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1500,16 +1327,9 @@ class InstancesResource {
     InstancesRestoreBackupRequest request,
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1554,16 +1374,9 @@ class InstancesResource {
     InstancesRotateServerCaRequest request,
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1604,14 +1417,8 @@ class InstancesResource {
   async.Future<Operation> startReplica(
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1651,14 +1458,8 @@ class InstancesResource {
   async.Future<Operation> stopReplica(
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1701,16 +1502,9 @@ class InstancesResource {
     InstancesTruncateLogRequest request,
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1756,16 +1550,9 @@ class InstancesResource {
     DatabaseInstance request,
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1811,14 +1598,8 @@ class OperationsResource {
   async.Future<Operation> get(
     core.String project,
     core.String operation, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (operation == null) {
-      throw core.ArgumentError('Parameter operation is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1862,14 +1643,11 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<OperationsListResponse> list(
     core.String project, {
-    core.String instance,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? instance,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (instance != null) 'instance': [instance],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -1929,16 +1707,9 @@ class ProjectsInstancesResource {
     SqlInstancesRescheduleMaintenanceRequestBody request,
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1990,16 +1761,10 @@ class ProjectsInstancesResource {
   async.Future<Operation> startExternalSync(
     core.String project,
     core.String instance, {
-    core.bool skipVerification,
-    core.String syncMode,
-    core.String $fields,
+    core.bool? skipVerification,
+    core.String? syncMode,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (skipVerification != null) 'skipVerification': ['${skipVerification}'],
       if (syncMode != null) 'syncMode': [syncMode],
@@ -2053,16 +1818,10 @@ class ProjectsInstancesResource {
       verifyExternalSyncSettings(
     core.String project,
     core.String instance, {
-    core.String syncMode,
-    core.bool verifyConnectionOnly,
-    core.String $fields,
+    core.String? syncMode,
+    core.bool? verifyConnectionOnly,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (syncMode != null) 'syncMode': [syncMode],
       if (verifyConnectionOnly != null)
@@ -2119,16 +1878,9 @@ class SslCertsResource {
     SslCertsCreateEphemeralRequest request,
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2175,17 +1927,8 @@ class SslCertsResource {
     core.String project,
     core.String instance,
     core.String sha1Fingerprint, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
-    if (sha1Fingerprint == null) {
-      throw core.ArgumentError('Parameter sha1Fingerprint is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2232,17 +1975,8 @@ class SslCertsResource {
     core.String project,
     core.String instance,
     core.String sha1Fingerprint, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
-    if (sha1Fingerprint == null) {
-      throw core.ArgumentError('Parameter sha1Fingerprint is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2289,16 +2023,9 @@ class SslCertsResource {
     SslCertsInsertRequest request,
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2340,14 +2067,8 @@ class SslCertsResource {
   async.Future<SslCertsListResponse> list(
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2394,11 +2115,8 @@ class TiersResource {
   /// this method will complete with the same error.
   async.Future<TiersListResponse> list(
     core.String project, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2447,16 +2165,10 @@ class UsersResource {
   async.Future<Operation> delete(
     core.String project,
     core.String instance, {
-    core.String host,
-    core.String name,
-    core.String $fields,
+    core.String? host,
+    core.String? name,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (host != null) 'host': [host],
       if (name != null) 'name': [name],
@@ -2501,16 +2213,9 @@ class UsersResource {
     User request,
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2551,14 +2256,8 @@ class UsersResource {
   async.Future<UsersListResponse> list(
     core.String project,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2606,18 +2305,11 @@ class UsersResource {
     User request,
     core.String project,
     core.String instance, {
-    core.String host,
-    core.String name,
-    core.String $fields,
+    core.String? host,
+    core.String? name,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (host != null) 'host': [host],
       if (name != null) 'name': [name],
@@ -2644,18 +2336,18 @@ class UsersResource {
 class AclEntry {
   /// The time when this access control entry expires in RFC 3339 format, for
   /// example *2012-11-15T16:19:00.094Z*.
-  core.String expirationTime;
+  core.String? expirationTime;
 
   /// This is always *sql#aclEntry*.
-  core.String kind;
+  core.String? kind;
 
   /// A label to identify this entry.
   ///
   /// Optional.
-  core.String name;
+  core.String? name;
 
   /// The allowlisted value for the access control list.
-  core.String value;
+  core.String? value;
 
   AclEntry();
 
@@ -2674,11 +2366,11 @@ class AclEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expirationTime != null) 'expirationTime': expirationTime,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expirationTime != null) 'expirationTime': expirationTime!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2690,13 +2382,13 @@ class ApiWarning {
   /// from Cloud SQL API.
   /// - "REGION_UNREACHABLE" : Warning when one or more regions are not
   /// reachable. The returned result set may be incomplete.
-  core.String code;
+  core.String? code;
 
   /// The warning message.
-  core.String message;
+  core.String? message;
 
   /// The region name for REGION_UNREACHABLE warning.
-  core.String region;
+  core.String? region;
 
   ApiWarning();
 
@@ -2712,45 +2404,45 @@ class ApiWarning {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (message != null) 'message': message,
-        if (region != null) 'region': region,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (message != null) 'message': message!,
+        if (region != null) 'region': region!,
       };
 }
 
 /// Database instance backup configuration.
 class BackupConfiguration {
   /// Backup retention settings.
-  BackupRetentionSettings backupRetentionSettings;
+  BackupRetentionSettings? backupRetentionSettings;
 
   /// (MySQL only) Whether binary log is enabled.
   ///
   /// If backup configuration is disabled, binarylog must be disabled as well.
-  core.bool binaryLogEnabled;
+  core.bool? binaryLogEnabled;
 
   /// Whether this configuration is enabled.
-  core.bool enabled;
+  core.bool? enabled;
 
   /// This is always *sql#backupConfiguration*.
-  core.String kind;
+  core.String? kind;
 
   /// Location of the backup
-  core.String location;
+  core.String? location;
 
   /// Reserved for future use.
-  core.bool pointInTimeRecoveryEnabled;
+  core.bool? pointInTimeRecoveryEnabled;
 
   /// Reserved for future use.
-  core.bool replicationLogArchivingEnabled;
+  core.bool? replicationLogArchivingEnabled;
 
   /// Start time for the daily backup configuration in UTC timezone in the 24
   /// hour format - *HH:MM*.
-  core.String startTime;
+  core.String? startTime;
 
   /// The number of days of transaction logs we retain for point in time
   /// restore, from 1-7.
-  core.int transactionLogRetentionDays;
+  core.int? transactionLogRetentionDays;
 
   BackupConfiguration();
 
@@ -2789,30 +2481,30 @@ class BackupConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backupRetentionSettings != null)
-          'backupRetentionSettings': backupRetentionSettings.toJson(),
-        if (binaryLogEnabled != null) 'binaryLogEnabled': binaryLogEnabled,
-        if (enabled != null) 'enabled': enabled,
-        if (kind != null) 'kind': kind,
-        if (location != null) 'location': location,
+          'backupRetentionSettings': backupRetentionSettings!.toJson(),
+        if (binaryLogEnabled != null) 'binaryLogEnabled': binaryLogEnabled!,
+        if (enabled != null) 'enabled': enabled!,
+        if (kind != null) 'kind': kind!,
+        if (location != null) 'location': location!,
         if (pointInTimeRecoveryEnabled != null)
-          'pointInTimeRecoveryEnabled': pointInTimeRecoveryEnabled,
+          'pointInTimeRecoveryEnabled': pointInTimeRecoveryEnabled!,
         if (replicationLogArchivingEnabled != null)
-          'replicationLogArchivingEnabled': replicationLogArchivingEnabled,
-        if (startTime != null) 'startTime': startTime,
+          'replicationLogArchivingEnabled': replicationLogArchivingEnabled!,
+        if (startTime != null) 'startTime': startTime!,
         if (transactionLogRetentionDays != null)
-          'transactionLogRetentionDays': transactionLogRetentionDays,
+          'transactionLogRetentionDays': transactionLogRetentionDays!,
       };
 }
 
 /// Backup context.
 class BackupContext {
   /// The identifier of the backup.
-  core.String backupId;
+  core.String? backupId;
 
   /// This is always *sql#backupContext*.
-  core.String kind;
+  core.String? kind;
 
   BackupContext();
 
@@ -2825,9 +2517,9 @@ class BackupContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (backupId != null) 'backupId': backupId,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (backupId != null) 'backupId': backupId!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -2838,7 +2530,7 @@ class BackupRetentionSettings {
   /// backup needs to be deleted.
   ///
   /// If retention_unit is 'COUNT', we will retain this many backups.
-  core.int retainedBackups;
+  core.int? retainedBackups;
 
   /// The unit that 'retained_backups' represents.
   /// Possible string values are:
@@ -2846,7 +2538,7 @@ class BackupRetentionSettings {
   /// will be treated as COUNT.
   /// - "COUNT" : Retention will be by count, eg. "retain the most recent 7
   /// backups".
-  core.String retentionUnit;
+  core.String? retentionUnit;
 
   BackupRetentionSettings();
 
@@ -2859,9 +2551,9 @@ class BackupRetentionSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (retainedBackups != null) 'retainedBackups': retainedBackups,
-        if (retentionUnit != null) 'retentionUnit': retentionUnit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (retainedBackups != null) 'retainedBackups': retainedBackups!,
+        if (retentionUnit != null) 'retentionUnit': retentionUnit!,
       };
 }
 
@@ -2872,54 +2564,54 @@ class BackupRun {
   /// - "SQL_BACKUP_KIND_UNSPECIFIED" : This is an unknown BackupKind.
   /// - "SNAPSHOT" : The snapshot based backups
   /// - "PHYSICAL" : Physical backups
-  core.String backupKind;
+  core.String? backupKind;
 
   /// The description of this run, only applicable to on-demand backups.
-  core.String description;
+  core.String? description;
 
   /// Encryption configuration specific to a backup.
   ///
   /// Applies only to Second Generation instances.
-  DiskEncryptionConfiguration diskEncryptionConfiguration;
+  DiskEncryptionConfiguration? diskEncryptionConfiguration;
 
   /// Encryption status specific to a backup.
   ///
   /// Applies only to Second Generation instances.
-  DiskEncryptionStatus diskEncryptionStatus;
+  DiskEncryptionStatus? diskEncryptionStatus;
 
   /// The time the backup operation completed in UTC timezone in RFC 3339
   /// format, for example *2012-11-15T16:19:00.094Z*.
-  core.String endTime;
+  core.String? endTime;
 
   /// The time the run was enqueued in UTC timezone in RFC 3339 format, for
   /// example *2012-11-15T16:19:00.094Z*.
-  core.String enqueuedTime;
+  core.String? enqueuedTime;
 
   /// Information about why the backup operation failed.
   ///
   /// This is only present if the run has the FAILED status.
-  OperationError error;
+  OperationError? error;
 
   /// The identifier for this backup run.
   ///
   /// Unique only for a specific Cloud SQL instance.
-  core.String id;
+  core.String? id;
 
   /// Name of the database instance.
-  core.String instance;
+  core.String? instance;
 
   /// This is always *sql#backupRun*.
-  core.String kind;
+  core.String? kind;
 
   /// Location of the backups.
-  core.String location;
+  core.String? location;
 
   /// The URI of this resource.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The time the backup operation actually started in UTC timezone in RFC 3339
   /// format, for example *2012-11-15T16:19:00.094Z*.
-  core.String startTime;
+  core.String? startTime;
 
   /// The status of this run.
   /// Possible string values are:
@@ -2936,7 +2628,7 @@ class BackupRun {
   /// - "DELETION_PENDING" : The backup is about to be deleted.
   /// - "DELETION_FAILED" : The backup deletion failed.
   /// - "DELETED" : The backup has been deleted.
-  core.String status;
+  core.String? status;
 
   /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND".
   ///
@@ -2946,11 +2638,11 @@ class BackupRun {
   /// - "SQL_BACKUP_RUN_TYPE_UNSPECIFIED" : This is an unknown BackupRun type.
   /// - "AUTOMATED" : The backup schedule automatically triggers a backup.
   /// - "ON_DEMAND" : The user manually triggers a backup.
-  core.String type;
+  core.String? type;
 
   /// The start time of the backup window during which this the backup was
   /// attempted in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
-  core.String windowStartTime;
+  core.String? windowStartTime;
 
   BackupRun();
 
@@ -3009,41 +2701,41 @@ class BackupRun {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (backupKind != null) 'backupKind': backupKind,
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (backupKind != null) 'backupKind': backupKind!,
+        if (description != null) 'description': description!,
         if (diskEncryptionConfiguration != null)
-          'diskEncryptionConfiguration': diskEncryptionConfiguration.toJson(),
+          'diskEncryptionConfiguration': diskEncryptionConfiguration!.toJson(),
         if (diskEncryptionStatus != null)
-          'diskEncryptionStatus': diskEncryptionStatus.toJson(),
-        if (endTime != null) 'endTime': endTime,
-        if (enqueuedTime != null) 'enqueuedTime': enqueuedTime,
-        if (error != null) 'error': error.toJson(),
-        if (id != null) 'id': id,
-        if (instance != null) 'instance': instance,
-        if (kind != null) 'kind': kind,
-        if (location != null) 'location': location,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (startTime != null) 'startTime': startTime,
-        if (status != null) 'status': status,
-        if (type != null) 'type': type,
-        if (windowStartTime != null) 'windowStartTime': windowStartTime,
+          'diskEncryptionStatus': diskEncryptionStatus!.toJson(),
+        if (endTime != null) 'endTime': endTime!,
+        if (enqueuedTime != null) 'enqueuedTime': enqueuedTime!,
+        if (error != null) 'error': error!.toJson(),
+        if (id != null) 'id': id!,
+        if (instance != null) 'instance': instance!,
+        if (kind != null) 'kind': kind!,
+        if (location != null) 'location': location!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (startTime != null) 'startTime': startTime!,
+        if (status != null) 'status': status!,
+        if (type != null) 'type': type!,
+        if (windowStartTime != null) 'windowStartTime': windowStartTime!,
       };
 }
 
 /// Backup run list results.
 class BackupRunsListResponse {
   /// A list of backup runs in reverse chronological order of the enqueued time.
-  core.List<BackupRun> items;
+  core.List<BackupRun>? items;
 
   /// This is always *sql#backupRunsList*.
-  core.String kind;
+  core.String? kind;
 
   /// The continuation token, used to page through large result sets.
   ///
   /// Provide this value in a subsequent request to return the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   BackupRunsListResponse();
 
@@ -3062,24 +2754,24 @@ class BackupRunsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Binary log coordinates.
 class BinLogCoordinates {
   /// Name of the binary log file for a Cloud SQL instance.
-  core.String binLogFileName;
+  core.String? binLogFileName;
 
   /// Position (offset) within the binary log file.
-  core.String binLogPosition;
+  core.String? binLogPosition;
 
   /// This is always *sql#binLogCoordinates*.
-  core.String kind;
+  core.String? kind;
 
   BinLogCoordinates();
 
@@ -3095,10 +2787,10 @@ class BinLogCoordinates {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (binLogFileName != null) 'binLogFileName': binLogFileName,
-        if (binLogPosition != null) 'binLogPosition': binLogPosition,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (binLogFileName != null) 'binLogFileName': binLogFileName!,
+        if (binLogPosition != null) 'binLogPosition': binLogPosition!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -3109,19 +2801,19 @@ class CloneContext {
   ///
   /// If not specified, the source instance is cloned up to the most recent
   /// binary log coordinates.
-  BinLogCoordinates binLogCoordinates;
+  BinLogCoordinates? binLogCoordinates;
 
   /// Name of the Cloud SQL instance to be created as a clone.
-  core.String destinationInstanceName;
+  core.String? destinationInstanceName;
 
   /// This is always *sql#cloneContext*.
-  core.String kind;
+  core.String? kind;
 
   /// Reserved for future use.
-  core.String pitrTimestampMs;
+  core.String? pitrTimestampMs;
 
   /// Reserved for future use.
-  core.String pointInTime;
+  core.String? pointInTime;
 
   CloneContext();
 
@@ -3144,50 +2836,50 @@ class CloneContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (binLogCoordinates != null)
-          'binLogCoordinates': binLogCoordinates.toJson(),
+          'binLogCoordinates': binLogCoordinates!.toJson(),
         if (destinationInstanceName != null)
-          'destinationInstanceName': destinationInstanceName,
-        if (kind != null) 'kind': kind,
-        if (pitrTimestampMs != null) 'pitrTimestampMs': pitrTimestampMs,
-        if (pointInTime != null) 'pointInTime': pointInTime,
+          'destinationInstanceName': destinationInstanceName!,
+        if (kind != null) 'kind': kind!,
+        if (pitrTimestampMs != null) 'pitrTimestampMs': pitrTimestampMs!,
+        if (pointInTime != null) 'pointInTime': pointInTime!,
       };
 }
 
 /// Represents a SQL database on the Cloud SQL instance.
 class Database {
   /// The Cloud SQL charset value.
-  core.String charset;
+  core.String? charset;
 
   /// The Cloud SQL collation value.
-  core.String collation;
+  core.String? collation;
 
   /// This field is deprecated and will be removed from a future version of the
   /// API.
-  core.String etag;
+  core.String? etag;
 
   /// The name of the Cloud SQL instance.
   ///
   /// This does not include the project ID.
-  core.String instance;
+  core.String? instance;
 
   /// This is always *sql#database*.
-  core.String kind;
+  core.String? kind;
 
   /// The name of the database in the Cloud SQL instance.
   ///
   /// This does not include the project ID or instance name.
-  core.String name;
+  core.String? name;
 
   /// The project ID of the project containing the Cloud SQL database.
   ///
   /// The Google apps domain is prefixed if applicable.
-  core.String project;
+  core.String? project;
 
   /// The URI of this resource.
-  core.String selfLink;
-  SqlServerDatabaseDetails sqlserverDatabaseDetails;
+  core.String? selfLink;
+  SqlServerDatabaseDetails? sqlserverDatabaseDetails;
 
   Database();
 
@@ -3223,17 +2915,17 @@ class Database {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (charset != null) 'charset': charset,
-        if (collation != null) 'collation': collation,
-        if (etag != null) 'etag': etag,
-        if (instance != null) 'instance': instance,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (project != null) 'project': project,
-        if (selfLink != null) 'selfLink': selfLink,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (charset != null) 'charset': charset!,
+        if (collation != null) 'collation': collation!,
+        if (etag != null) 'etag': etag!,
+        if (instance != null) 'instance': instance!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (project != null) 'project': project!,
+        if (selfLink != null) 'selfLink': selfLink!,
         if (sqlserverDatabaseDetails != null)
-          'sqlserverDatabaseDetails': sqlserverDatabaseDetails.toJson(),
+          'sqlserverDatabaseDetails': sqlserverDatabaseDetails!.toJson(),
       };
 }
 
@@ -3245,13 +2937,13 @@ class DatabaseFlags {
   /// and system variables for MySQL. Flags are specified with underscores, not
   /// hyphens. For more information, see Configuring Database Flags in the Cloud
   /// SQL documentation.
-  core.String name;
+  core.String? name;
 
   /// The value of the flag.
   ///
   /// Booleans are set to *on* for true and *off* for false. This field must be
   /// omitted if the flag doesn't take a value.
-  core.String value;
+  core.String? value;
 
   DatabaseFlags();
 
@@ -3264,9 +2956,9 @@ class DatabaseFlags {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -3279,14 +2971,14 @@ class DatabaseInstanceFailoverReplica {
   /// A false status indicates that the failover replica is out of sync. The
   /// primary instance can only failover to the failover replica when the status
   /// is true.
-  core.bool available;
+  core.bool? available;
 
   /// The name of the failover replica.
   ///
   /// If specified at instance creation, a failover replica is created for the
   /// instance. The name doesn't include the project ID. This property is
   /// applicable only to Second Generation instances.
-  core.String name;
+  core.String? name;
 
   DatabaseInstanceFailoverReplica();
 
@@ -3299,9 +2991,9 @@ class DatabaseInstanceFailoverReplica {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (available != null) 'available': available,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (available != null) 'available': available!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3320,17 +3012,17 @@ class DatabaseInstance {
   /// - "FIRST_GEN" : V1 speckle instance.
   /// - "SECOND_GEN" : V2 speckle instance.
   /// - "EXTERNAL" : On premises instance.
-  core.String backendType;
+  core.String? backendType;
 
   /// Connection name of the Cloud SQL instance used in connection strings.
-  core.String connectionName;
+  core.String? connectionName;
 
   /// The current disk usage of the instance in bytes.
   ///
   /// This property has been deprecated. Use the
   /// "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud
   /// Monitoring API instead. Please see this announcement for details.
-  core.String currentDiskSize;
+  core.String? currentDiskSize;
 
   /// The database engine type and version.
   ///
@@ -3360,35 +3052,35 @@ class DatabaseInstance {
   /// - "POSTGRES_12" : The database version is PostgreSQL 12.
   /// - "MYSQL_8_0" : The database version is MySQL 8.
   /// - "POSTGRES_13" : The database version is PostgreSQL 13.
-  core.String databaseVersion;
+  core.String? databaseVersion;
 
   /// Disk encryption configuration specific to an instance.
   ///
   /// Applies only to Second Generation instances.
-  DiskEncryptionConfiguration diskEncryptionConfiguration;
+  DiskEncryptionConfiguration? diskEncryptionConfiguration;
 
   /// Disk encryption status specific to an instance.
   ///
   /// Applies only to Second Generation instances.
-  DiskEncryptionStatus diskEncryptionStatus;
+  DiskEncryptionStatus? diskEncryptionStatus;
 
   /// This field is deprecated and will be removed from a future version of the
   /// API.
   ///
   /// Use the *settings.settingsVersion* field instead.
-  core.String etag;
+  core.String? etag;
 
   /// The name and status of the failover replica.
   ///
   /// This property is applicable only to Second Generation instances.
-  DatabaseInstanceFailoverReplica failoverReplica;
+  DatabaseInstanceFailoverReplica? failoverReplica;
 
   /// The Compute Engine zone that the instance is currently serving from.
   ///
   /// This value could be different from the zone that was specified when the
   /// instance was created if the instance has failed over to its secondary
   /// zone.
-  core.String gceZone;
+  core.String? gceZone;
 
   /// The instance type.
   ///
@@ -3404,39 +3096,39 @@ class DatabaseInstance {
   /// - "ON_PREMISES_INSTANCE" : An instance running on the customer's premises
   /// that is not managed by Cloud SQL.
   /// - "READ_REPLICA_INSTANCE" : A Cloud SQL instance acting as a read-replica.
-  core.String instanceType;
+  core.String? instanceType;
 
   /// The assigned IP addresses for the instance.
-  core.List<IpMapping> ipAddresses;
+  core.List<IpMapping>? ipAddresses;
 
   /// The IPv6 address assigned to the instance.
   ///
   /// (Deprecated) This property was applicable only to First Generation
   /// instances.
-  core.String ipv6Address;
+  core.String? ipv6Address;
 
   /// This is always *sql#instance*.
-  core.String kind;
+  core.String? kind;
 
   /// The name of the instance which will act as primary in the replication
   /// setup.
-  core.String masterInstanceName;
+  core.String? masterInstanceName;
 
   /// The maximum disk size of the instance in bytes.
-  core.String maxDiskSize;
+  core.String? maxDiskSize;
 
   /// Name of the Cloud SQL instance.
   ///
   /// This does not include the project ID.
-  core.String name;
+  core.String? name;
 
   /// Configuration specific to on-premises instances.
-  OnPremisesConfiguration onPremisesConfiguration;
+  OnPremisesConfiguration? onPremisesConfiguration;
 
   /// The project ID of the project containing the Cloud SQL instance.
   ///
   /// The Google apps domain is prefixed if applicable.
-  core.String project;
+  core.String? project;
 
   /// The geographical region.
   ///
@@ -3444,26 +3136,26 @@ class DatabaseInstance {
   /// (*SECOND_GEN* instances only) *asia-east1* or *europe-west1*. Defaults to
   /// *us-central* or *us-central1* depending on the instance type. The region
   /// cannot be changed after instance creation.
-  core.String region;
+  core.String? region;
 
   /// Configuration specific to failover replicas and read replicas.
-  ReplicaConfiguration replicaConfiguration;
+  ReplicaConfiguration? replicaConfiguration;
 
   /// The replicas of the instance.
-  core.List<core.String> replicaNames;
+  core.List<core.String>? replicaNames;
 
   /// Initial root password.
   ///
   /// Use only on creation.
-  core.String rootPassword;
+  core.String? rootPassword;
 
   /// The status indicating if instance satisfies physical zone separation.
   ///
   /// Reserved for future use.
-  core.bool satisfiesPzs;
+  core.bool? satisfiesPzs;
 
   /// The start time of any upcoming scheduled maintenance for this instance.
-  SqlScheduledMaintenance scheduledMaintenance;
+  SqlScheduledMaintenance? scheduledMaintenance;
 
   /// The Compute Engine zone that the failover instance is currently serving
   /// from for a regional instance.
@@ -3471,21 +3163,21 @@ class DatabaseInstance {
   /// This value could be different from the zone that was specified when the
   /// instance was created if the instance has failed over to its
   /// secondary/failover zone. Reserved for future use.
-  core.String secondaryGceZone;
+  core.String? secondaryGceZone;
 
   /// The URI of this resource.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// SSL configuration.
-  SslCert serverCaCert;
+  SslCert? serverCaCert;
 
   /// The service account email address assigned to the instance.
   ///
   /// This property is applicable only to Second Generation instances.
-  core.String serviceAccountEmailAddress;
+  core.String? serviceAccountEmailAddress;
 
   /// The user settings.
-  Settings settings;
+  Settings? settings;
 
   /// The current serving state of the Cloud SQL instance.
   ///
@@ -3506,10 +3198,10 @@ class DatabaseInstance {
   /// - "MAINTENANCE" : The instance is down for maintenance.
   /// - "FAILED" : The creation of the instance failed or a fatal error occurred
   /// during maintenance.
-  core.String state;
+  core.String? state;
 
   /// If the instance state is SUSPENDED, the reason for the suspension.
-  core.List<core.String> suspensionReason;
+  core.List<core.String>? suspensionReason;
 
   DatabaseInstance();
 
@@ -3627,57 +3319,57 @@ class DatabaseInstance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (backendType != null) 'backendType': backendType,
-        if (connectionName != null) 'connectionName': connectionName,
-        if (currentDiskSize != null) 'currentDiskSize': currentDiskSize,
-        if (databaseVersion != null) 'databaseVersion': databaseVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (backendType != null) 'backendType': backendType!,
+        if (connectionName != null) 'connectionName': connectionName!,
+        if (currentDiskSize != null) 'currentDiskSize': currentDiskSize!,
+        if (databaseVersion != null) 'databaseVersion': databaseVersion!,
         if (diskEncryptionConfiguration != null)
-          'diskEncryptionConfiguration': diskEncryptionConfiguration.toJson(),
+          'diskEncryptionConfiguration': diskEncryptionConfiguration!.toJson(),
         if (diskEncryptionStatus != null)
-          'diskEncryptionStatus': diskEncryptionStatus.toJson(),
-        if (etag != null) 'etag': etag,
+          'diskEncryptionStatus': diskEncryptionStatus!.toJson(),
+        if (etag != null) 'etag': etag!,
         if (failoverReplica != null)
-          'failoverReplica': failoverReplica.toJson(),
-        if (gceZone != null) 'gceZone': gceZone,
-        if (instanceType != null) 'instanceType': instanceType,
+          'failoverReplica': failoverReplica!.toJson(),
+        if (gceZone != null) 'gceZone': gceZone!,
+        if (instanceType != null) 'instanceType': instanceType!,
         if (ipAddresses != null)
-          'ipAddresses': ipAddresses.map((value) => value.toJson()).toList(),
-        if (ipv6Address != null) 'ipv6Address': ipv6Address,
-        if (kind != null) 'kind': kind,
+          'ipAddresses': ipAddresses!.map((value) => value.toJson()).toList(),
+        if (ipv6Address != null) 'ipv6Address': ipv6Address!,
+        if (kind != null) 'kind': kind!,
         if (masterInstanceName != null)
-          'masterInstanceName': masterInstanceName,
-        if (maxDiskSize != null) 'maxDiskSize': maxDiskSize,
-        if (name != null) 'name': name,
+          'masterInstanceName': masterInstanceName!,
+        if (maxDiskSize != null) 'maxDiskSize': maxDiskSize!,
+        if (name != null) 'name': name!,
         if (onPremisesConfiguration != null)
-          'onPremisesConfiguration': onPremisesConfiguration.toJson(),
-        if (project != null) 'project': project,
-        if (region != null) 'region': region,
+          'onPremisesConfiguration': onPremisesConfiguration!.toJson(),
+        if (project != null) 'project': project!,
+        if (region != null) 'region': region!,
         if (replicaConfiguration != null)
-          'replicaConfiguration': replicaConfiguration.toJson(),
-        if (replicaNames != null) 'replicaNames': replicaNames,
-        if (rootPassword != null) 'rootPassword': rootPassword,
-        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs,
+          'replicaConfiguration': replicaConfiguration!.toJson(),
+        if (replicaNames != null) 'replicaNames': replicaNames!,
+        if (rootPassword != null) 'rootPassword': rootPassword!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (scheduledMaintenance != null)
-          'scheduledMaintenance': scheduledMaintenance.toJson(),
-        if (secondaryGceZone != null) 'secondaryGceZone': secondaryGceZone,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (serverCaCert != null) 'serverCaCert': serverCaCert.toJson(),
+          'scheduledMaintenance': scheduledMaintenance!.toJson(),
+        if (secondaryGceZone != null) 'secondaryGceZone': secondaryGceZone!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (serverCaCert != null) 'serverCaCert': serverCaCert!.toJson(),
         if (serviceAccountEmailAddress != null)
-          'serviceAccountEmailAddress': serviceAccountEmailAddress,
-        if (settings != null) 'settings': settings.toJson(),
-        if (state != null) 'state': state,
-        if (suspensionReason != null) 'suspensionReason': suspensionReason,
+          'serviceAccountEmailAddress': serviceAccountEmailAddress!,
+        if (settings != null) 'settings': settings!.toJson(),
+        if (state != null) 'state': state!,
+        if (suspensionReason != null) 'suspensionReason': suspensionReason!,
       };
 }
 
 /// Database list response.
 class DatabasesListResponse {
   /// List of database resources in the instance.
-  core.List<Database> items;
+  core.List<Database>? items;
 
   /// This is always *sql#databasesList*.
-  core.String kind;
+  core.String? kind;
 
   DatabasesListResponse();
 
@@ -3693,10 +3385,10 @@ class DatabasesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -3704,7 +3396,7 @@ class DatabasesListResponse {
 /// instance.
 class DemoteMasterConfiguration {
   /// This is always *sql#demoteMasterConfiguration*.
-  core.String kind;
+  core.String? kind;
 
   /// MySQL specific configuration when replicating from a MySQL on-premises
   /// primary instance.
@@ -3714,7 +3406,7 @@ class DemoteMasterConfiguration {
   /// configuration information is used only to set up the replication
   /// connection and is stored by MySQL in a file named *master.info* in the
   /// data directory.
-  DemoteMasterMySqlReplicaConfiguration mysqlReplicaConfiguration;
+  DemoteMasterMySqlReplicaConfiguration? mysqlReplicaConfiguration;
 
   DemoteMasterConfiguration();
 
@@ -3730,25 +3422,25 @@ class DemoteMasterConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (mysqlReplicaConfiguration != null)
-          'mysqlReplicaConfiguration': mysqlReplicaConfiguration.toJson(),
+          'mysqlReplicaConfiguration': mysqlReplicaConfiguration!.toJson(),
       };
 }
 
 /// Database instance demote primary instance context.
 class DemoteMasterContext {
   /// This is always *sql#demoteMasterContext*.
-  core.String kind;
+  core.String? kind;
 
   /// The name of the instance which will act as on-premises primary instance in
   /// the replication setup.
-  core.String masterInstanceName;
+  core.String? masterInstanceName;
 
   /// Configuration specific to read-replicas replicating from the on-premises
   /// primary instance.
-  DemoteMasterConfiguration replicaConfiguration;
+  DemoteMasterConfiguration? replicaConfiguration;
 
   /// Verify GTID consistency for demote operation.
   ///
@@ -3758,7 +3450,7 @@ class DemoteMasterContext {
   /// also exposes you to the risk of future replication failures. Change the
   /// value only if you know the reason for the GTID divergence and are
   /// confident that doing so will not cause any replication issues.
-  core.bool verifyGtidConsistency;
+  core.bool? verifyGtidConsistency;
 
   DemoteMasterContext();
 
@@ -3778,39 +3470,39 @@ class DemoteMasterContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (masterInstanceName != null)
-          'masterInstanceName': masterInstanceName,
+          'masterInstanceName': masterInstanceName!,
         if (replicaConfiguration != null)
-          'replicaConfiguration': replicaConfiguration.toJson(),
+          'replicaConfiguration': replicaConfiguration!.toJson(),
         if (verifyGtidConsistency != null)
-          'verifyGtidConsistency': verifyGtidConsistency,
+          'verifyGtidConsistency': verifyGtidConsistency!,
       };
 }
 
 /// Read-replica configuration specific to MySQL databases.
 class DemoteMasterMySqlReplicaConfiguration {
   /// PEM representation of the trusted CA's x509 certificate.
-  core.String caCertificate;
+  core.String? caCertificate;
 
   /// PEM representation of the replica's x509 certificate.
-  core.String clientCertificate;
+  core.String? clientCertificate;
 
   /// PEM representation of the replica's private key.
   ///
   /// The corresponsing public key is encoded in the client's certificate. The
   /// format of the replica's private key can be either PKCS #1 or PKCS #8.
-  core.String clientKey;
+  core.String? clientKey;
 
   /// This is always *sql#demoteMasterMysqlReplicaConfiguration*.
-  core.String kind;
+  core.String? kind;
 
   /// The password for the replication connection.
-  core.String password;
+  core.String? password;
 
   /// The username for the replication connection.
-  core.String username;
+  core.String? username;
 
   DemoteMasterMySqlReplicaConfiguration();
 
@@ -3835,13 +3527,13 @@ class DemoteMasterMySqlReplicaConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (caCertificate != null) 'caCertificate': caCertificate,
-        if (clientCertificate != null) 'clientCertificate': clientCertificate,
-        if (clientKey != null) 'clientKey': clientKey,
-        if (kind != null) 'kind': kind,
-        if (password != null) 'password': password,
-        if (username != null) 'username': username,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (caCertificate != null) 'caCertificate': caCertificate!,
+        if (clientCertificate != null) 'clientCertificate': clientCertificate!,
+        if (clientKey != null) 'clientKey': clientKey!,
+        if (kind != null) 'kind': kind!,
+        if (password != null) 'password': password!,
+        if (username != null) 'username': username!,
       };
 }
 
@@ -3855,7 +3547,7 @@ class DenyMaintenancePeriod {
   /// be empty. In this case, it means the deny maintenance period recurs every
   /// year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e.,
   /// 11-01
-  core.String endDate;
+  core.String? endDate;
 
   /// "deny maintenance period" start date.
   ///
@@ -3863,13 +3555,13 @@ class DenyMaintenancePeriod {
   /// be empty. In this case, it means the deny maintenance period recurs every
   /// year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e.,
   /// 11-01
-  core.String startDate;
+  core.String? startDate;
 
   /// Time in UTC when the "deny maintenance period" starts on start_date and
   /// ends on end_date.
   ///
   /// The time is in format: HH:mm:SS, i.e., 00:00:00
-  core.String time;
+  core.String? time;
 
   DenyMaintenancePeriod();
 
@@ -3885,20 +3577,20 @@ class DenyMaintenancePeriod {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endDate != null) 'endDate': endDate,
-        if (startDate != null) 'startDate': startDate,
-        if (time != null) 'time': time,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endDate != null) 'endDate': endDate!,
+        if (startDate != null) 'startDate': startDate!,
+        if (time != null) 'time': time!,
       };
 }
 
 /// Disk encryption configuration for an instance.
 class DiskEncryptionConfiguration {
   /// This is always *sql#diskEncryptionConfiguration*.
-  core.String kind;
+  core.String? kind;
 
   /// Resource name of KMS key for disk encryption
-  core.String kmsKeyName;
+  core.String? kmsKeyName;
 
   DiskEncryptionConfiguration();
 
@@ -3911,19 +3603,19 @@ class DiskEncryptionConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
       };
 }
 
 /// Disk encryption status for an instance.
 class DiskEncryptionStatus {
   /// This is always *sql#diskEncryptionStatus*.
-  core.String kind;
+  core.String? kind;
 
   /// KMS key version used to encrypt the Cloud SQL instance resource
-  core.String kmsKeyVersionName;
+  core.String? kmsKeyVersionName;
 
   DiskEncryptionStatus();
 
@@ -3936,9 +3628,9 @@ class DiskEncryptionStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
       };
 }
 
@@ -3947,7 +3639,7 @@ class DiskEncryptionStatus {
 /// *MySQL* and *PostgreSQL* instances only.
 class ExportContextCsvExportOptions {
   /// The select query used to extract the data.
-  core.String selectQuery;
+  core.String? selectQuery;
 
   ExportContextCsvExportOptions();
 
@@ -3957,8 +3649,8 @@ class ExportContextCsvExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (selectQuery != null) 'selectQuery': selectQuery,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (selectQuery != null) 'selectQuery': selectQuery!,
       };
 }
 
@@ -3971,7 +3663,7 @@ class ExportContextSqlExportOptionsMysqlExportOptions {
   /// *2*, the CHANGE MASTER TO statement is written as a SQL comment and has no
   /// effect. If set to any value other than *1*, --set-gtid-purged is set to
   /// OFF.
-  core.int masterData;
+  core.int? masterData;
 
   ExportContextSqlExportOptionsMysqlExportOptions();
 
@@ -3981,24 +3673,24 @@ class ExportContextSqlExportOptionsMysqlExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (masterData != null) 'masterData': masterData,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (masterData != null) 'masterData': masterData!,
       };
 }
 
 /// Options for exporting data as SQL statements.
 class ExportContextSqlExportOptions {
   /// Options for exporting from MySQL.
-  ExportContextSqlExportOptionsMysqlExportOptions mysqlExportOptions;
+  ExportContextSqlExportOptionsMysqlExportOptions? mysqlExportOptions;
 
   /// Export only schemas.
-  core.bool schemaOnly;
+  core.bool? schemaOnly;
 
   /// Tables to export, or that were exported, from the specified database.
   ///
   /// If you specify tables, specify one and only one database. For PostgreSQL
   /// instances, you can specify only one table.
-  core.List<core.String> tables;
+  core.List<core.String>? tables;
 
   ExportContextSqlExportOptions();
 
@@ -4019,11 +3711,11 @@ class ExportContextSqlExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (mysqlExportOptions != null)
-          'mysqlExportOptions': mysqlExportOptions.toJson(),
-        if (schemaOnly != null) 'schemaOnly': schemaOnly,
-        if (tables != null) 'tables': tables,
+          'mysqlExportOptions': mysqlExportOptions!.toJson(),
+        if (schemaOnly != null) 'schemaOnly': schemaOnly!,
+        if (tables != null) 'tables': tables!,
       };
 }
 
@@ -4032,7 +3724,7 @@ class ExportContext {
   /// Options for exporting data as CSV.
   ///
   /// *MySQL* and *PostgreSQL* instances only.
-  ExportContextCsvExportOptions csvExportOptions;
+  ExportContextCsvExportOptions? csvExportOptions;
 
   /// Databases to be exported.
   ///
@@ -4044,7 +3736,7 @@ class ExportContext {
   /// specify one database to be exported. If *fileType* is *CSV*, this database
   /// must match the one specified in the *csvExportOptions.selectQuery*
   /// property.
-  core.List<core.String> databases;
+  core.List<core.String>? databases;
 
   /// The file type for the specified uri.
   ///
@@ -4055,16 +3747,16 @@ class ExportContext {
   /// - "SQL" : File containing SQL statements.
   /// - "CSV" : File in CSV format.
   /// - "BAK"
-  core.String fileType;
+  core.String? fileType;
 
   /// This is always *sql#exportContext*.
-  core.String kind;
+  core.String? kind;
 
   /// Option for export offload.
-  core.bool offload;
+  core.bool? offload;
 
   /// Options for exporting data as SQL statements.
-  ExportContextSqlExportOptions sqlExportOptions;
+  ExportContextSqlExportOptions? sqlExportOptions;
 
   /// The path to the file in Google Cloud Storage where the export will be
   /// stored.
@@ -4072,7 +3764,7 @@ class ExportContext {
   /// The URI is in the form *gs://bucketName/fileName*. If the file already
   /// exists, the request succeeds, but the operation fails. If *fileType* is
   /// *SQL* and the filename ends with .gz, the contents are compressed.
-  core.String uri;
+  core.String? uri;
 
   ExportContext();
 
@@ -4104,29 +3796,29 @@ class ExportContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (csvExportOptions != null)
-          'csvExportOptions': csvExportOptions.toJson(),
-        if (databases != null) 'databases': databases,
-        if (fileType != null) 'fileType': fileType,
-        if (kind != null) 'kind': kind,
-        if (offload != null) 'offload': offload,
+          'csvExportOptions': csvExportOptions!.toJson(),
+        if (databases != null) 'databases': databases!,
+        if (fileType != null) 'fileType': fileType!,
+        if (kind != null) 'kind': kind!,
+        if (offload != null) 'offload': offload!,
         if (sqlExportOptions != null)
-          'sqlExportOptions': sqlExportOptions.toJson(),
-        if (uri != null) 'uri': uri,
+          'sqlExportOptions': sqlExportOptions!.toJson(),
+        if (uri != null) 'uri': uri!,
       };
 }
 
 /// Database instance failover context.
 class FailoverContext {
   /// This is always *sql#failoverContext*.
-  core.String kind;
+  core.String? kind;
 
   /// The current settings version of this instance.
   ///
   /// Request will be rejected if this version doesn't match the current
   /// settings version.
-  core.String settingsVersion;
+  core.String? settingsVersion;
 
   FailoverContext();
 
@@ -4139,9 +3831,9 @@ class FailoverContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (settingsVersion != null) 'settingsVersion': settingsVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (settingsVersion != null) 'settingsVersion': settingsVersion!,
       };
 }
 
@@ -4150,38 +3842,38 @@ class Flag {
   /// Use this field if only certain integers are accepted.
   ///
   /// Can be combined with min_value and max_value to add additional values.
-  core.List<core.String> allowedIntValues;
+  core.List<core.String>? allowedIntValues;
 
   /// For *STRING* flags, a list of strings that the value can be set to.
-  core.List<core.String> allowedStringValues;
+  core.List<core.String>? allowedStringValues;
 
   /// The database version this flag applies to.
   ///
   /// Can be *MYSQL_8_0*, *MYSQL_5_6*, or *MYSQL_5_7*.
-  core.List<core.String> appliesTo;
+  core.List<core.String>? appliesTo;
 
   /// Whether or not the flag is considered in beta.
-  core.bool inBeta;
+  core.bool? inBeta;
 
   /// This is always *sql#flag*.
-  core.String kind;
+  core.String? kind;
 
   /// For *INTEGER* flags, the maximum allowed value.
-  core.String maxValue;
+  core.String? maxValue;
 
   /// For *INTEGER* flags, the minimum allowed value.
-  core.String minValue;
+  core.String? minValue;
 
   /// This is the name of the flag.
   ///
   /// Flag names always use underscores, not hyphens, for example:
   /// *max_allowed_packet*
-  core.String name;
+  core.String? name;
 
   /// Indicates whether changing this flag will trigger a database restart.
   ///
   /// Only applicable to Second Generation instances.
-  core.bool requiresRestart;
+  core.bool? requiresRestart;
 
   /// The type of the flag.
   ///
@@ -4198,7 +3890,7 @@ class Flag {
   /// - "FLOAT" : Float type flag.
   /// - "REPEATED_STRING" : Comma-separated list of the strings in a SqlFlagType
   /// enum.
-  core.String type;
+  core.String? type;
 
   Flag();
 
@@ -4241,28 +3933,28 @@ class Flag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowedIntValues != null) 'allowedIntValues': allowedIntValues,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowedIntValues != null) 'allowedIntValues': allowedIntValues!,
         if (allowedStringValues != null)
-          'allowedStringValues': allowedStringValues,
-        if (appliesTo != null) 'appliesTo': appliesTo,
-        if (inBeta != null) 'inBeta': inBeta,
-        if (kind != null) 'kind': kind,
-        if (maxValue != null) 'maxValue': maxValue,
-        if (minValue != null) 'minValue': minValue,
-        if (name != null) 'name': name,
-        if (requiresRestart != null) 'requiresRestart': requiresRestart,
-        if (type != null) 'type': type,
+          'allowedStringValues': allowedStringValues!,
+        if (appliesTo != null) 'appliesTo': appliesTo!,
+        if (inBeta != null) 'inBeta': inBeta!,
+        if (kind != null) 'kind': kind!,
+        if (maxValue != null) 'maxValue': maxValue!,
+        if (minValue != null) 'minValue': minValue!,
+        if (name != null) 'name': name!,
+        if (requiresRestart != null) 'requiresRestart': requiresRestart!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// Flags list response.
 class FlagsListResponse {
   /// List of flags.
-  core.List<Flag> items;
+  core.List<Flag>? items;
 
   /// This is always *sql#flagsList*.
-  core.String kind;
+  core.String? kind;
 
   FlagsListResponse();
 
@@ -4278,10 +3970,10 @@ class FlagsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -4291,17 +3983,17 @@ class ImportContextBakImportOptionsEncryptionOptions {
   ///
   /// The instance must have write permissions to the bucket and read access to
   /// the file.
-  core.String certPath;
+  core.String? certPath;
 
   /// Password that encrypts the private key
-  core.String pvkPassword;
+  core.String? pvkPassword;
 
   /// Path to the Certificate Private Key (.pvk) in Cloud Storage, in the form
   /// *gs://bucketName/fileName*.
   ///
   /// The instance must have write permissions to the bucket and read access to
   /// the file.
-  core.String pvkPath;
+  core.String? pvkPath;
 
   ImportContextBakImportOptionsEncryptionOptions();
 
@@ -4317,16 +4009,16 @@ class ImportContextBakImportOptionsEncryptionOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (certPath != null) 'certPath': certPath,
-        if (pvkPassword != null) 'pvkPassword': pvkPassword,
-        if (pvkPath != null) 'pvkPath': pvkPath,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (certPath != null) 'certPath': certPath!,
+        if (pvkPassword != null) 'pvkPassword': pvkPassword!,
+        if (pvkPath != null) 'pvkPath': pvkPath!,
       };
 }
 
 /// Import parameters specific to SQL Server .BAK files
 class ImportContextBakImportOptions {
-  ImportContextBakImportOptionsEncryptionOptions encryptionOptions;
+  ImportContextBakImportOptionsEncryptionOptions? encryptionOptions;
 
   ImportContextBakImportOptions();
 
@@ -4339,9 +4031,9 @@ class ImportContextBakImportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (encryptionOptions != null)
-          'encryptionOptions': encryptionOptions.toJson(),
+          'encryptionOptions': encryptionOptions!.toJson(),
       };
 }
 
@@ -4351,10 +4043,10 @@ class ImportContextCsvImportOptions {
   ///
   /// If not specified, all columns of the database table are loaded with CSV
   /// data.
-  core.List<core.String> columns;
+  core.List<core.String>? columns;
 
   /// The table to which CSV data is imported.
-  core.String table;
+  core.String? table;
 
   ImportContextCsvImportOptions();
 
@@ -4369,19 +4061,19 @@ class ImportContextCsvImportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columns != null) 'columns': columns,
-        if (table != null) 'table': table,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columns != null) 'columns': columns!,
+        if (table != null) 'table': table!,
       };
 }
 
 /// Database instance import context.
 class ImportContext {
   /// Import parameters specific to SQL Server .BAK files
-  ImportContextBakImportOptions bakImportOptions;
+  ImportContextBakImportOptions? bakImportOptions;
 
   /// Options for importing data as CSV.
-  ImportContextCsvImportOptions csvImportOptions;
+  ImportContextCsvImportOptions? csvImportOptions;
 
   /// The target database for the import.
   ///
@@ -4389,7 +4081,7 @@ class ImportContext {
   /// does not specify a database, and is overridden by any database
   /// specification in the import file. If *fileType* is *CSV*, one database
   /// must be specified.
-  core.String database;
+  core.String? database;
 
   /// The file type for the specified uri.
   ///
@@ -4400,15 +4092,15 @@ class ImportContext {
   /// - "SQL" : File containing SQL statements.
   /// - "CSV" : File in CSV format.
   /// - "BAK"
-  core.String fileType;
+  core.String? fileType;
 
   /// The PostgreSQL user for this import operation.
   ///
   /// PostgreSQL instances only.
-  core.String importUser;
+  core.String? importUser;
 
   /// This is always *sql#importContext*.
-  core.String kind;
+  core.String? kind;
 
   /// Path to the import file in Cloud Storage, in the form
   /// *gs://bucketName/fileName*.
@@ -4416,7 +4108,7 @@ class ImportContext {
   /// Compressed gzip files (.gz) are supported when *fileType* is *SQL*. The
   /// instance must have write permissions to the bucket and read access to the
   /// file.
-  core.String uri;
+  core.String? uri;
 
   ImportContext();
 
@@ -4446,16 +4138,16 @@ class ImportContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bakImportOptions != null)
-          'bakImportOptions': bakImportOptions.toJson(),
+          'bakImportOptions': bakImportOptions!.toJson(),
         if (csvImportOptions != null)
-          'csvImportOptions': csvImportOptions.toJson(),
-        if (database != null) 'database': database,
-        if (fileType != null) 'fileType': fileType,
-        if (importUser != null) 'importUser': importUser,
-        if (kind != null) 'kind': kind,
-        if (uri != null) 'uri': uri,
+          'csvImportOptions': csvImportOptions!.toJson(),
+        if (database != null) 'database': database!,
+        if (fileType != null) 'fileType': fileType!,
+        if (importUser != null) 'importUser': importUser!,
+        if (kind != null) 'kind': kind!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -4465,21 +4157,21 @@ class ImportContext {
 /// configuration.
 class InsightsConfig {
   /// Whether Query Insights feature is enabled.
-  core.bool queryInsightsEnabled;
+  core.bool? queryInsightsEnabled;
 
   /// Maximum query length stored in bytes.
   ///
   /// Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than
   /// this field value will be truncated to this value. When unset, query length
   /// will be the default value.
-  core.int queryStringLength;
+  core.int? queryStringLength;
 
   /// Whether Query Insights will record application tags from query when
   /// enabled.
-  core.bool recordApplicationTags;
+  core.bool? recordApplicationTags;
 
   /// Whether Query Insights will record client address when enabled.
-  core.bool recordClientAddress;
+  core.bool? recordClientAddress;
 
   InsightsConfig();
 
@@ -4498,21 +4190,21 @@ class InsightsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (queryInsightsEnabled != null)
-          'queryInsightsEnabled': queryInsightsEnabled,
-        if (queryStringLength != null) 'queryStringLength': queryStringLength,
+          'queryInsightsEnabled': queryInsightsEnabled!,
+        if (queryStringLength != null) 'queryStringLength': queryStringLength!,
         if (recordApplicationTags != null)
-          'recordApplicationTags': recordApplicationTags,
+          'recordApplicationTags': recordApplicationTags!,
         if (recordClientAddress != null)
-          'recordClientAddress': recordClientAddress,
+          'recordClientAddress': recordClientAddress!,
       };
 }
 
 /// Database instance clone request.
 class InstancesCloneRequest {
   /// Contains details about the clone operation.
-  CloneContext cloneContext;
+  CloneContext? cloneContext;
 
   InstancesCloneRequest();
 
@@ -4523,15 +4215,15 @@ class InstancesCloneRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cloneContext != null) 'cloneContext': cloneContext.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cloneContext != null) 'cloneContext': cloneContext!.toJson(),
       };
 }
 
 /// Database demote primary instance request.
 class InstancesDemoteMasterRequest {
   /// Contains details about the demoteMaster operation.
-  DemoteMasterContext demoteMasterContext;
+  DemoteMasterContext? demoteMasterContext;
 
   InstancesDemoteMasterRequest();
 
@@ -4542,16 +4234,16 @@ class InstancesDemoteMasterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (demoteMasterContext != null)
-          'demoteMasterContext': demoteMasterContext.toJson(),
+          'demoteMasterContext': demoteMasterContext!.toJson(),
       };
 }
 
 /// Database instance export request.
 class InstancesExportRequest {
   /// Contains details about the export operation.
-  ExportContext exportContext;
+  ExportContext? exportContext;
 
   InstancesExportRequest();
 
@@ -4562,15 +4254,15 @@ class InstancesExportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exportContext != null) 'exportContext': exportContext.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exportContext != null) 'exportContext': exportContext!.toJson(),
       };
 }
 
 /// Instance failover request.
 class InstancesFailoverRequest {
   /// Failover Context.
-  FailoverContext failoverContext;
+  FailoverContext? failoverContext;
 
   InstancesFailoverRequest();
 
@@ -4581,16 +4273,16 @@ class InstancesFailoverRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (failoverContext != null)
-          'failoverContext': failoverContext.toJson(),
+          'failoverContext': failoverContext!.toJson(),
       };
 }
 
 /// Database instance import request.
 class InstancesImportRequest {
   /// Contains details about the import operation.
-  ImportContext importContext;
+  ImportContext? importContext;
 
   InstancesImportRequest();
 
@@ -4601,27 +4293,27 @@ class InstancesImportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (importContext != null) 'importContext': importContext.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (importContext != null) 'importContext': importContext!.toJson(),
       };
 }
 
 /// Database instances list response.
 class InstancesListResponse {
   /// List of database instance resources.
-  core.List<DatabaseInstance> items;
+  core.List<DatabaseInstance>? items;
 
   /// This is always *sql#instancesList*.
-  core.String kind;
+  core.String? kind;
 
   /// The continuation token, used to page through large result sets.
   ///
   /// Provide this value in a subsequent request to return the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of warnings that occurred while handling the request.
-  core.List<ApiWarning> warnings;
+  core.List<ApiWarning>? warnings;
 
   InstancesListResponse();
 
@@ -4646,25 +4338,25 @@ class InstancesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (warnings != null)
-          'warnings': warnings.map((value) => value.toJson()).toList(),
+          'warnings': warnings!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Instances ListServerCas response.
 class InstancesListServerCasResponse {
-  core.String activeVersion;
+  core.String? activeVersion;
 
   /// List of server CA certificates for the instance.
-  core.List<SslCert> certs;
+  core.List<SslCert>? certs;
 
   /// This is always *sql#instancesListServerCas*.
-  core.String kind;
+  core.String? kind;
 
   InstancesListServerCasResponse();
 
@@ -4683,18 +4375,18 @@ class InstancesListServerCasResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activeVersion != null) 'activeVersion': activeVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activeVersion != null) 'activeVersion': activeVersion!,
         if (certs != null)
-          'certs': certs.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'certs': certs!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Database instance restore backup request.
 class InstancesRestoreBackupRequest {
   /// Parameters required to perform the restore backup operation.
-  RestoreBackupContext restoreBackupContext;
+  RestoreBackupContext? restoreBackupContext;
 
   InstancesRestoreBackupRequest();
 
@@ -4705,16 +4397,16 @@ class InstancesRestoreBackupRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (restoreBackupContext != null)
-          'restoreBackupContext': restoreBackupContext.toJson(),
+          'restoreBackupContext': restoreBackupContext!.toJson(),
       };
 }
 
 /// Rotate Server CA request.
 class InstancesRotateServerCaRequest {
   /// Contains details about the rotate server CA operation.
-  RotateServerCaContext rotateServerCaContext;
+  RotateServerCaContext? rotateServerCaContext;
 
   InstancesRotateServerCaRequest();
 
@@ -4726,16 +4418,16 @@ class InstancesRotateServerCaRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (rotateServerCaContext != null)
-          'rotateServerCaContext': rotateServerCaContext.toJson(),
+          'rotateServerCaContext': rotateServerCaContext!.toJson(),
       };
 }
 
 /// Instance truncate log request.
 class InstancesTruncateLogRequest {
   /// Contains details about the truncate log operation.
-  TruncateLogContext truncateLogContext;
+  TruncateLogContext? truncateLogContext;
 
   InstancesTruncateLogRequest();
 
@@ -4746,9 +4438,9 @@ class InstancesTruncateLogRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (truncateLogContext != null)
-          'truncateLogContext': truncateLogContext.toJson(),
+          'truncateLogContext': truncateLogContext!.toJson(),
       };
 }
 
@@ -4759,20 +4451,20 @@ class IpConfiguration {
   ///
   /// In 'CIDR' notation, also known as 'slash' notation (for example:
   /// *192.168.100.0/24*).
-  core.List<AclEntry> authorizedNetworks;
+  core.List<AclEntry>? authorizedNetworks;
 
   /// Whether the instance is assigned a public IP address or not.
-  core.bool ipv4Enabled;
+  core.bool? ipv4Enabled;
 
   /// The resource link for the VPC network from which the Cloud SQL instance is
   /// accessible for private IP.
   ///
   /// For example, * / projects/myProject/global/networks/default*. This setting
   /// can be updated, but it cannot be removed after it is set.
-  core.String privateNetwork;
+  core.String? privateNetwork;
 
   /// Whether SSL connections over IP are enforced or not.
-  core.bool requireSsl;
+  core.bool? requireSsl;
 
   IpConfiguration();
 
@@ -4794,26 +4486,26 @@ class IpConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (authorizedNetworks != null)
           'authorizedNetworks':
-              authorizedNetworks.map((value) => value.toJson()).toList(),
-        if (ipv4Enabled != null) 'ipv4Enabled': ipv4Enabled,
-        if (privateNetwork != null) 'privateNetwork': privateNetwork,
-        if (requireSsl != null) 'requireSsl': requireSsl,
+              authorizedNetworks!.map((value) => value.toJson()).toList(),
+        if (ipv4Enabled != null) 'ipv4Enabled': ipv4Enabled!,
+        if (privateNetwork != null) 'privateNetwork': privateNetwork!,
+        if (requireSsl != null) 'requireSsl': requireSsl!,
       };
 }
 
 /// Database instance IP Mapping.
 class IpMapping {
   /// The IP address assigned.
-  core.String ipAddress;
+  core.String? ipAddress;
 
   /// The due time for this IP to be retired in RFC 3339 format, for example
   /// *2012-11-15T16:19:00.094Z*.
   ///
   /// This field is only available when the IP is scheduled to be retired.
-  core.String timeToRetire;
+  core.String? timeToRetire;
 
   /// The type of this IP address.
   ///
@@ -4833,7 +4525,7 @@ class IpMapping {
   /// - "MIGRATED_1ST_GEN" : V1 IP of a migrated instance. We want the user to
   /// decommission this IP as soon as the migration is complete. Note: V1
   /// instances with V1 ip addresses will be counted as PRIMARY.
-  core.String type;
+  core.String? type;
 
   IpMapping();
 
@@ -4849,10 +4541,10 @@ class IpMapping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ipAddress != null) 'ipAddress': ipAddress,
-        if (timeToRetire != null) 'timeToRetire': timeToRetire,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (timeToRetire != null) 'timeToRetire': timeToRetire!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4865,20 +4557,20 @@ class IpMapping {
 class LocationPreference {
   /// The App Engine application to follow, it must be in the same region as the
   /// Cloud SQL instance.
-  core.String followGaeApplication;
+  core.String? followGaeApplication;
 
   /// This is always *sql#locationPreference*.
-  core.String kind;
+  core.String? kind;
 
   /// The preferred Compute Engine zone for the secondary/failover (for example:
   /// us-central1-a, us-central1-b, etc.).
   ///
   /// Reserved for future use.
-  core.String secondaryZone;
+  core.String? secondaryZone;
 
   /// The preferred Compute Engine zone (for example: us-central1-a,
   /// us-central1-b, etc.).
-  core.String zone;
+  core.String? zone;
 
   LocationPreference();
 
@@ -4897,12 +4589,12 @@ class LocationPreference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (followGaeApplication != null)
-          'followGaeApplication': followGaeApplication,
-        if (kind != null) 'kind': kind,
-        if (secondaryZone != null) 'secondaryZone': secondaryZone,
-        if (zone != null) 'zone': zone,
+          'followGaeApplication': followGaeApplication!,
+        if (kind != null) 'kind': kind!,
+        if (secondaryZone != null) 'secondaryZone': secondaryZone!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -4912,13 +4604,13 @@ class LocationPreference {
 /// purposes.
 class MaintenanceWindow {
   /// day of week (1-7), starting on Monday.
-  core.int day;
+  core.int? day;
 
   /// hour of day - 0 to 23.
-  core.int hour;
+  core.int? hour;
 
   /// This is always *sql#maintenanceWindow*.
-  core.String kind;
+  core.String? kind;
 
   /// Maintenance timing setting: *canary* (Earlier) or *stable* (Later).
   ///
@@ -4932,7 +4624,7 @@ class MaintenanceWindow {
   /// - "stable" : For instance update that requires a restart, this update
   /// track indicates your instance prefer to let Cloud SQL choose the timing of
   /// restart (within its Maintenance window, if applicable).
-  core.String updateTrack;
+  core.String? updateTrack;
 
   MaintenanceWindow();
 
@@ -4951,31 +4643,31 @@ class MaintenanceWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (hour != null) 'hour': hour,
-        if (kind != null) 'kind': kind,
-        if (updateTrack != null) 'updateTrack': updateTrack,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (hour != null) 'hour': hour!,
+        if (kind != null) 'kind': kind!,
+        if (updateTrack != null) 'updateTrack': updateTrack!,
       };
 }
 
 /// Read-replica configuration specific to MySQL databases.
 class MySqlReplicaConfiguration {
   /// PEM representation of the trusted CA's x509 certificate.
-  core.String caCertificate;
+  core.String? caCertificate;
 
   /// PEM representation of the replica's x509 certificate.
-  core.String clientCertificate;
+  core.String? clientCertificate;
 
   /// PEM representation of the replica's private key.
   ///
   /// The corresponsing public key is encoded in the client's certificate.
-  core.String clientKey;
+  core.String? clientKey;
 
   /// Seconds to wait between connect retries.
   ///
   /// MySQL's default is 60 seconds.
-  core.int connectRetryInterval;
+  core.int? connectRetryInterval;
 
   /// Path to a SQL dump file in Google Cloud Storage from which the replica
   /// instance is to be created.
@@ -4984,26 +4676,26 @@ class MySqlReplicaConfiguration {
   /// (.gz) are also supported. Dumps have the binlog co-ordinates from which
   /// replication begins. This can be accomplished by setting --master-data to 1
   /// when using mysqldump.
-  core.String dumpFilePath;
+  core.String? dumpFilePath;
 
   /// This is always *sql#mysqlReplicaConfiguration*.
-  core.String kind;
+  core.String? kind;
 
   /// Interval in milliseconds between replication heartbeats.
-  core.String masterHeartbeatPeriod;
+  core.String? masterHeartbeatPeriod;
 
   /// The password for the replication connection.
-  core.String password;
+  core.String? password;
 
   /// A list of permissible ciphers to use for SSL encryption.
-  core.String sslCipher;
+  core.String? sslCipher;
 
   /// The username for the replication connection.
-  core.String username;
+  core.String? username;
 
   /// Whether or not to check the primary instance's Common Name value in the
   /// certificate that it sends during the SSL handshake.
-  core.bool verifyServerCertificate;
+  core.bool? verifyServerCertificate;
 
   MySqlReplicaConfiguration();
 
@@ -5043,51 +4735,51 @@ class MySqlReplicaConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (caCertificate != null) 'caCertificate': caCertificate,
-        if (clientCertificate != null) 'clientCertificate': clientCertificate,
-        if (clientKey != null) 'clientKey': clientKey,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (caCertificate != null) 'caCertificate': caCertificate!,
+        if (clientCertificate != null) 'clientCertificate': clientCertificate!,
+        if (clientKey != null) 'clientKey': clientKey!,
         if (connectRetryInterval != null)
-          'connectRetryInterval': connectRetryInterval,
-        if (dumpFilePath != null) 'dumpFilePath': dumpFilePath,
-        if (kind != null) 'kind': kind,
+          'connectRetryInterval': connectRetryInterval!,
+        if (dumpFilePath != null) 'dumpFilePath': dumpFilePath!,
+        if (kind != null) 'kind': kind!,
         if (masterHeartbeatPeriod != null)
-          'masterHeartbeatPeriod': masterHeartbeatPeriod,
-        if (password != null) 'password': password,
-        if (sslCipher != null) 'sslCipher': sslCipher,
-        if (username != null) 'username': username,
+          'masterHeartbeatPeriod': masterHeartbeatPeriod!,
+        if (password != null) 'password': password!,
+        if (sslCipher != null) 'sslCipher': sslCipher!,
+        if (username != null) 'username': username!,
         if (verifyServerCertificate != null)
-          'verifyServerCertificate': verifyServerCertificate,
+          'verifyServerCertificate': verifyServerCertificate!,
       };
 }
 
 /// On-premises instance configuration.
 class OnPremisesConfiguration {
   /// PEM representation of the trusted CA's x509 certificate.
-  core.String caCertificate;
+  core.String? caCertificate;
 
   /// PEM representation of the replica's x509 certificate.
-  core.String clientCertificate;
+  core.String? clientCertificate;
 
   /// PEM representation of the replica's private key.
   ///
   /// The corresponsing public key is encoded in the client's certificate.
-  core.String clientKey;
+  core.String? clientKey;
 
   /// The dump file to create the Cloud SQL replica.
-  core.String dumpFilePath;
+  core.String? dumpFilePath;
 
   /// The host and port of the on-premises instance in host:port format
-  core.String hostPort;
+  core.String? hostPort;
 
   /// This is always *sql#onPremisesConfiguration*.
-  core.String kind;
+  core.String? kind;
 
   /// The password for connecting to on-premises instance.
-  core.String password;
+  core.String? password;
 
   /// The username for connecting to on-premises instance.
-  core.String username;
+  core.String? username;
 
   OnPremisesConfiguration();
 
@@ -5118,15 +4810,15 @@ class OnPremisesConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (caCertificate != null) 'caCertificate': caCertificate,
-        if (clientCertificate != null) 'clientCertificate': clientCertificate,
-        if (clientKey != null) 'clientKey': clientKey,
-        if (dumpFilePath != null) 'dumpFilePath': dumpFilePath,
-        if (hostPort != null) 'hostPort': hostPort,
-        if (kind != null) 'kind': kind,
-        if (password != null) 'password': password,
-        if (username != null) 'username': username,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (caCertificate != null) 'caCertificate': caCertificate!,
+        if (clientCertificate != null) 'clientCertificate': clientCertificate!,
+        if (clientKey != null) 'clientKey': clientKey!,
+        if (dumpFilePath != null) 'dumpFilePath': dumpFilePath!,
+        if (hostPort != null) 'hostPort': hostPort!,
+        if (kind != null) 'kind': kind!,
+        if (password != null) 'password': password!,
+        if (username != null) 'username': username!,
       };
 }
 
@@ -5136,34 +4828,34 @@ class OnPremisesConfiguration {
 /// relevant to the operation are populated in the resource. Next field: 18
 class Operation {
   /// The context for backup operation, if applicable.
-  BackupContext backupContext;
+  BackupContext? backupContext;
 
   /// The time this operation finished in UTC timezone in RFC 3339 format, for
   /// example *2012-11-15T16:19:00.094Z*.
-  core.String endTime;
+  core.String? endTime;
 
   /// If errors occurred during processing of this operation, this field will be
   /// populated.
-  OperationErrors error;
+  OperationErrors? error;
 
   /// The context for export operation, if applicable.
-  ExportContext exportContext;
+  ExportContext? exportContext;
 
   /// The context for import operation, if applicable.
-  ImportContext importContext;
+  ImportContext? importContext;
 
   /// The time this operation was enqueued in UTC timezone in RFC 3339 format,
   /// for example *2012-11-15T16:19:00.094Z*.
-  core.String insertTime;
+  core.String? insertTime;
 
   /// This is always *sql#operation*.
-  core.String kind;
+  core.String? kind;
 
   /// An identifier that uniquely identifies the operation.
   ///
   /// You can use this identifier to retrieve the Operations resource that has
   /// information about the operation.
-  core.String name;
+  core.String? name;
 
   /// The type of the operation.
   ///
@@ -5214,14 +4906,14 @@ class Operation {
   /// - "RESCHEDULE_MAINTENANCE" : Reschedule maintenance to another time.
   /// - "START_EXTERNAL_SYNC" : Starts external sync of a Cloud SQL EM replica
   /// to an external primary instance.
-  core.String operationType;
+  core.String? operationType;
 
   /// The URI of this resource.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The time this operation actually started in UTC timezone in RFC 3339
   /// format, for example *2012-11-15T16:19:00.094Z*.
-  core.String startTime;
+  core.String? startTime;
 
   /// The status of an operation.
   ///
@@ -5233,17 +4925,17 @@ class Operation {
   /// - "PENDING" : The operation has been queued, but has not started yet.
   /// - "RUNNING" : The operation is running.
   /// - "DONE" : The operation completed.
-  core.String status;
+  core.String? status;
 
   /// Name of the database instance related to this operation.
-  core.String targetId;
-  core.String targetLink;
+  core.String? targetId;
+  core.String? targetLink;
 
   /// The project ID of the target instance related to this operation.
-  core.String targetProject;
+  core.String? targetProject;
 
   /// The email address of the user who initiated this operation.
-  core.String user;
+  core.String? user;
 
   Operation();
 
@@ -5302,36 +4994,36 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (backupContext != null) 'backupContext': backupContext.toJson(),
-        if (endTime != null) 'endTime': endTime,
-        if (error != null) 'error': error.toJson(),
-        if (exportContext != null) 'exportContext': exportContext.toJson(),
-        if (importContext != null) 'importContext': importContext.toJson(),
-        if (insertTime != null) 'insertTime': insertTime,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (operationType != null) 'operationType': operationType,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (startTime != null) 'startTime': startTime,
-        if (status != null) 'status': status,
-        if (targetId != null) 'targetId': targetId,
-        if (targetLink != null) 'targetLink': targetLink,
-        if (targetProject != null) 'targetProject': targetProject,
-        if (user != null) 'user': user,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (backupContext != null) 'backupContext': backupContext!.toJson(),
+        if (endTime != null) 'endTime': endTime!,
+        if (error != null) 'error': error!.toJson(),
+        if (exportContext != null) 'exportContext': exportContext!.toJson(),
+        if (importContext != null) 'importContext': importContext!.toJson(),
+        if (insertTime != null) 'insertTime': insertTime!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (operationType != null) 'operationType': operationType!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (startTime != null) 'startTime': startTime!,
+        if (status != null) 'status': status!,
+        if (targetId != null) 'targetId': targetId!,
+        if (targetLink != null) 'targetLink': targetLink!,
+        if (targetProject != null) 'targetProject': targetProject!,
+        if (user != null) 'user': user!,
       };
 }
 
 /// Database instance operation error.
 class OperationError {
   /// Identifies the specific error that occurred.
-  core.String code;
+  core.String? code;
 
   /// This is always *sql#operationError*.
-  core.String kind;
+  core.String? kind;
 
   /// Additional information about the error encountered.
-  core.String message;
+  core.String? message;
 
   OperationError();
 
@@ -5347,20 +5039,20 @@ class OperationError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (kind != null) 'kind': kind,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (kind != null) 'kind': kind!,
+        if (message != null) 'message': message!,
       };
 }
 
 /// Database instance operation errors list wrapper.
 class OperationErrors {
   /// The list of errors encountered while processing this operation.
-  core.List<OperationError> errors;
+  core.List<OperationError>? errors;
 
   /// This is always *sql#operationErrors*.
-  core.String kind;
+  core.String? kind;
 
   OperationErrors();
 
@@ -5376,26 +5068,26 @@ class OperationErrors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Database instance list operations response.
 class OperationsListResponse {
   /// List of operation resources.
-  core.List<Operation> items;
+  core.List<Operation>? items;
 
   /// This is always *sql#operationsList*.
-  core.String kind;
+  core.String? kind;
 
   /// The continuation token, used to page through large result sets.
   ///
   /// Provide this value in a subsequent request to return the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   OperationsListResponse();
 
@@ -5414,11 +5106,11 @@ class OperationsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -5431,10 +5123,10 @@ class ReplicaConfiguration {
   /// promoted as the new primary instance. Only one replica can be specified as
   /// failover target, and the replica has to be in different zone with the
   /// primary instance.
-  core.bool failoverTarget;
+  core.bool? failoverTarget;
 
   /// This is always *sql#replicaConfiguration*.
-  core.String kind;
+  core.String? kind;
 
   /// MySQL specific configuration when replicating from a MySQL on-premises
   /// primary instance.
@@ -5444,7 +5136,7 @@ class ReplicaConfiguration {
   /// configuration information is used only to set up the replication
   /// connection and is stored by MySQL in a file named *master.info* in the
   /// data directory.
-  MySqlReplicaConfiguration mysqlReplicaConfiguration;
+  MySqlReplicaConfiguration? mysqlReplicaConfiguration;
 
   ReplicaConfiguration();
 
@@ -5462,11 +5154,11 @@ class ReplicaConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (failoverTarget != null) 'failoverTarget': failoverTarget,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (failoverTarget != null) 'failoverTarget': failoverTarget!,
+        if (kind != null) 'kind': kind!,
         if (mysqlReplicaConfiguration != null)
-          'mysqlReplicaConfiguration': mysqlReplicaConfiguration.toJson(),
+          'mysqlReplicaConfiguration': mysqlReplicaConfiguration!.toJson(),
       };
 }
 
@@ -5482,14 +5174,14 @@ class Reschedule {
   /// maintenance policy to find the next available window.
   /// - "SPECIFIC_TIME" : If the user wants to reschedule the maintenance to a
   /// specific time.
-  core.String rescheduleType;
+  core.String? rescheduleType;
 
   /// Timestamp when the maintenance shall be rescheduled to if
   /// reschedule_type=SPECIFIC_TIME, in RFC 3339 format, for example
   /// *2012-11-15T16:19:00.094Z*.
   ///
   /// Optional.
-  core.String scheduleTime;
+  core.String? scheduleTime;
 
   Reschedule();
 
@@ -5502,9 +5194,9 @@ class Reschedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (rescheduleType != null) 'rescheduleType': rescheduleType,
-        if (scheduleTime != null) 'scheduleTime': scheduleTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (rescheduleType != null) 'rescheduleType': rescheduleType!,
+        if (scheduleTime != null) 'scheduleTime': scheduleTime!,
       };
 }
 
@@ -5513,16 +5205,16 @@ class Reschedule {
 /// Backup context contains source instance id and project id.
 class RestoreBackupContext {
   /// The ID of the backup run to restore from.
-  core.String backupRunId;
+  core.String? backupRunId;
 
   /// The ID of the instance that the backup was taken from.
-  core.String instanceId;
+  core.String? instanceId;
 
   /// This is always *sql#restoreBackupContext*.
-  core.String kind;
+  core.String? kind;
 
   /// The full project ID of the source instance.
-  core.String project;
+  core.String? project;
 
   RestoreBackupContext();
 
@@ -5541,24 +5233,24 @@ class RestoreBackupContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (backupRunId != null) 'backupRunId': backupRunId,
-        if (instanceId != null) 'instanceId': instanceId,
-        if (kind != null) 'kind': kind,
-        if (project != null) 'project': project,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (backupRunId != null) 'backupRunId': backupRunId!,
+        if (instanceId != null) 'instanceId': instanceId!,
+        if (kind != null) 'kind': kind!,
+        if (project != null) 'project': project!,
       };
 }
 
 /// Instance rotate server CA context.
 class RotateServerCaContext {
   /// This is always *sql#rotateServerCaContext*.
-  core.String kind;
+  core.String? kind;
 
   /// The fingerprint of the next version to be rotated to.
   ///
   /// If left unspecified, will be rotated to the most recently added server CA
   /// version.
-  core.String nextVersion;
+  core.String? nextVersion;
 
   RotateServerCaContext();
 
@@ -5571,9 +5263,9 @@ class RotateServerCaContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextVersion != null) 'nextVersion': nextVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextVersion != null) 'nextVersion': nextVersion!,
       };
 }
 
@@ -5590,16 +5282,16 @@ class Settings {
   /// - "ALWAYS" : The instance is always up and running.
   /// - "NEVER" : The instance never starts.
   /// - "ON_DEMAND" : The instance starts upon receiving requests.
-  core.String activationPolicy;
+  core.String? activationPolicy;
 
   /// Active Directory configuration, relevant only for Cloud SQL for SQL
   /// Server.
-  SqlActiveDirectoryConfig activeDirectoryConfig;
+  SqlActiveDirectoryConfig? activeDirectoryConfig;
 
   /// The App Engine app IDs that can access this instance.
   ///
   /// (Deprecated) Applied to First Generation instances only.
-  core.List<core.String> authorizedGaeApplications;
+  core.List<core.String>? authorizedGaeApplications;
 
   /// Availability type.
   ///
@@ -5613,24 +5305,24 @@ class Settings {
   /// type.
   /// - "ZONAL" : Zonal available instance.
   /// - "REGIONAL" : Regional available instance.
-  core.String availabilityType;
+  core.String? availabilityType;
 
   /// The daily backup configuration for the instance.
-  BackupConfiguration backupConfiguration;
+  BackupConfiguration? backupConfiguration;
 
   /// The name of server Instance collation.
-  core.String collation;
+  core.String? collation;
 
   /// Configuration specific to read replica instances.
   ///
   /// Indicates whether database flags for crash-safe replication are enabled.
   /// This property was only applicable to First Generation instances.
-  core.bool crashSafeReplicationEnabled;
+  core.bool? crashSafeReplicationEnabled;
 
   /// The size of data disk, in GB.
   ///
   /// The data disk size minimum is 10GB.
-  core.String dataDiskSizeGb;
+  core.String? dataDiskSizeGb;
 
   /// The type of data disk: PD_SSD (default) or PD_HDD.
   ///
@@ -5641,44 +5333,44 @@ class Settings {
   /// - "PD_HDD" : An HDD data disk.
   /// - "OBSOLETE_LOCAL_SSD" : This field is deprecated and will be removed from
   /// a future version of the API.
-  core.String dataDiskType;
+  core.String? dataDiskType;
 
   /// The database flags passed to the instance at startup.
-  core.List<DatabaseFlags> databaseFlags;
+  core.List<DatabaseFlags>? databaseFlags;
 
   /// Configuration specific to read replica instances.
   ///
   /// Indicates whether replication is enabled or not.
-  core.bool databaseReplicationEnabled;
+  core.bool? databaseReplicationEnabled;
 
   /// Deny maintenance periods
-  core.List<DenyMaintenancePeriod> denyMaintenancePeriods;
+  core.List<DenyMaintenancePeriod>? denyMaintenancePeriods;
 
   /// Insights configuration, for now relevant only for Postgres.
-  InsightsConfig insightsConfig;
+  InsightsConfig? insightsConfig;
 
   /// The settings for IP Management.
   ///
   /// This allows to enable or disable the instance IP and manage which external
   /// networks can connect to the instance. The IPv4 address cannot be disabled
   /// for Second Generation instances.
-  IpConfiguration ipConfiguration;
+  IpConfiguration? ipConfiguration;
 
   /// This is always *sql#settings*.
-  core.String kind;
+  core.String? kind;
 
   /// The location preference settings.
   ///
   /// This allows the instance to be located as near as possible to either an
   /// App Engine app or Compute Engine zone for better performance. App Engine
   /// co-location was only applicable to First Generation instances.
-  LocationPreference locationPreference;
+  LocationPreference? locationPreference;
 
   /// The maintenance window for this instance.
   ///
   /// This specifies when the instance can be restarted for maintenance
   /// purposes.
-  MaintenanceWindow maintenanceWindow;
+  MaintenanceWindow? maintenanceWindow;
 
   /// The pricing plan for this instance.
   ///
@@ -5689,7 +5381,7 @@ class Settings {
   /// this instance.
   /// - "PACKAGE" : The instance is billed at a monthly flat rate.
   /// - "PER_USE" : The instance is billed per usage.
-  core.String pricingPlan;
+  core.String? pricingPlan;
 
   /// The type of replication this instance uses.
   ///
@@ -5704,33 +5396,33 @@ class Settings {
   /// instances. It provides a slight performance gain, but if an outage occurs
   /// while this option is set to asynchronous, you can lose up to a few seconds
   /// of updates to your data.
-  core.String replicationType;
+  core.String? replicationType;
 
   /// The version of instance settings.
   ///
   /// This is a required field for update method to make sure concurrent updates
   /// are handled properly. During update, use the most recent settingsVersion
   /// value for this instance and do not try to update this value.
-  core.String settingsVersion;
+  core.String? settingsVersion;
 
   /// Configuration to increase storage size automatically.
   ///
   /// The default value is true.
-  core.bool storageAutoResize;
+  core.bool? storageAutoResize;
 
   /// The maximum size to which storage capacity can be automatically increased.
   ///
   /// The default value is 0, which specifies that there is no limit.
-  core.String storageAutoResizeLimit;
+  core.String? storageAutoResizeLimit;
 
   /// The tier (or machine type) for this instance, for example
   /// *db-n1-standard-1* (MySQL instances) or *db-custom-1-3840* (PostgreSQL
   /// instances).
-  core.String tier;
+  core.String? tier;
 
   /// User-provided labels, represented as a dictionary where each label is a
   /// single key value pair.
-  core.Map<core.String, core.String> userLabels;
+  core.Map<core.String, core.String>? userLabels;
 
   Settings();
 
@@ -5834,54 +5526,54 @@ class Settings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activationPolicy != null) 'activationPolicy': activationPolicy,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activationPolicy != null) 'activationPolicy': activationPolicy!,
         if (activeDirectoryConfig != null)
-          'activeDirectoryConfig': activeDirectoryConfig.toJson(),
+          'activeDirectoryConfig': activeDirectoryConfig!.toJson(),
         if (authorizedGaeApplications != null)
-          'authorizedGaeApplications': authorizedGaeApplications,
-        if (availabilityType != null) 'availabilityType': availabilityType,
+          'authorizedGaeApplications': authorizedGaeApplications!,
+        if (availabilityType != null) 'availabilityType': availabilityType!,
         if (backupConfiguration != null)
-          'backupConfiguration': backupConfiguration.toJson(),
-        if (collation != null) 'collation': collation,
+          'backupConfiguration': backupConfiguration!.toJson(),
+        if (collation != null) 'collation': collation!,
         if (crashSafeReplicationEnabled != null)
-          'crashSafeReplicationEnabled': crashSafeReplicationEnabled,
-        if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb,
-        if (dataDiskType != null) 'dataDiskType': dataDiskType,
+          'crashSafeReplicationEnabled': crashSafeReplicationEnabled!,
+        if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb!,
+        if (dataDiskType != null) 'dataDiskType': dataDiskType!,
         if (databaseFlags != null)
           'databaseFlags':
-              databaseFlags.map((value) => value.toJson()).toList(),
+              databaseFlags!.map((value) => value.toJson()).toList(),
         if (databaseReplicationEnabled != null)
-          'databaseReplicationEnabled': databaseReplicationEnabled,
+          'databaseReplicationEnabled': databaseReplicationEnabled!,
         if (denyMaintenancePeriods != null)
           'denyMaintenancePeriods':
-              denyMaintenancePeriods.map((value) => value.toJson()).toList(),
-        if (insightsConfig != null) 'insightsConfig': insightsConfig.toJson(),
+              denyMaintenancePeriods!.map((value) => value.toJson()).toList(),
+        if (insightsConfig != null) 'insightsConfig': insightsConfig!.toJson(),
         if (ipConfiguration != null)
-          'ipConfiguration': ipConfiguration.toJson(),
-        if (kind != null) 'kind': kind,
+          'ipConfiguration': ipConfiguration!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (locationPreference != null)
-          'locationPreference': locationPreference.toJson(),
+          'locationPreference': locationPreference!.toJson(),
         if (maintenanceWindow != null)
-          'maintenanceWindow': maintenanceWindow.toJson(),
-        if (pricingPlan != null) 'pricingPlan': pricingPlan,
-        if (replicationType != null) 'replicationType': replicationType,
-        if (settingsVersion != null) 'settingsVersion': settingsVersion,
-        if (storageAutoResize != null) 'storageAutoResize': storageAutoResize,
+          'maintenanceWindow': maintenanceWindow!.toJson(),
+        if (pricingPlan != null) 'pricingPlan': pricingPlan!,
+        if (replicationType != null) 'replicationType': replicationType!,
+        if (settingsVersion != null) 'settingsVersion': settingsVersion!,
+        if (storageAutoResize != null) 'storageAutoResize': storageAutoResize!,
         if (storageAutoResizeLimit != null)
-          'storageAutoResizeLimit': storageAutoResizeLimit,
-        if (tier != null) 'tier': tier,
-        if (userLabels != null) 'userLabels': userLabels,
+          'storageAutoResizeLimit': storageAutoResizeLimit!,
+        if (tier != null) 'tier': tier!,
+        if (userLabels != null) 'userLabels': userLabels!,
       };
 }
 
 /// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 class SqlActiveDirectoryConfig {
   /// The name of the domain (e.g., mydomain.com).
-  core.String domain;
+  core.String? domain;
 
   /// This is always sql#activeDirectoryConfig.
-  core.String kind;
+  core.String? kind;
 
   SqlActiveDirectoryConfig();
 
@@ -5894,19 +5586,19 @@ class SqlActiveDirectoryConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (domain != null) 'domain': domain,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (domain != null) 'domain': domain!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// External primary instance migration setting error.
 class SqlExternalSyncSettingError {
   /// Additional information about the error encountered.
-  core.String detail;
+  core.String? detail;
 
   /// This is always *sql#migrationSettingError*.
-  core.String kind;
+  core.String? kind;
 
   /// Identifies the specific error that occurred.
   /// Possible string values are:
@@ -5946,7 +5638,7 @@ class SqlExternalSyncSettingError {
   /// to missing primary key or replica identity, applicable for postgres.
   /// - "UNSUPPORTED_DEFINER" : The customer has a definer that will break EM
   /// setup.
-  core.String type;
+  core.String? type;
 
   SqlExternalSyncSettingError();
 
@@ -5962,10 +5654,10 @@ class SqlExternalSyncSettingError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (detail != null) 'detail': detail,
-        if (kind != null) 'kind': kind,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (detail != null) 'detail': detail!,
+        if (kind != null) 'kind': kind!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -5974,7 +5666,7 @@ class SqlInstancesRescheduleMaintenanceRequestBody {
   /// The type of the reschedule the user wants.
   ///
   /// Required.
-  Reschedule reschedule;
+  Reschedule? reschedule;
 
   SqlInstancesRescheduleMaintenanceRequestBody();
 
@@ -5985,18 +5677,18 @@ class SqlInstancesRescheduleMaintenanceRequestBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (reschedule != null) 'reschedule': reschedule.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (reschedule != null) 'reschedule': reschedule!.toJson(),
       };
 }
 
 /// Instance verify external sync settings response.
 class SqlInstancesVerifyExternalSyncSettingsResponse {
   /// List of migration violations.
-  core.List<SqlExternalSyncSettingError> errors;
+  core.List<SqlExternalSyncSettingError>? errors;
 
   /// This is always *sql#migrationSettingErrorList*.
-  core.String kind;
+  core.String? kind;
 
   SqlInstancesVerifyExternalSyncSettingsResponse();
 
@@ -6013,22 +5705,22 @@ class SqlInstancesVerifyExternalSyncSettingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Any scheduled maintenancce for this instance.
 class SqlScheduledMaintenance {
-  core.bool canDefer;
+  core.bool? canDefer;
 
   /// If the scheduled maintenance can be rescheduled.
-  core.bool canReschedule;
+  core.bool? canReschedule;
 
   /// The start time of any upcoming scheduled maintenance for this instance.
-  core.String startTime;
+  core.String? startTime;
 
   SqlScheduledMaintenance();
 
@@ -6044,20 +5736,20 @@ class SqlScheduledMaintenance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (canDefer != null) 'canDefer': canDefer,
-        if (canReschedule != null) 'canReschedule': canReschedule,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (canDefer != null) 'canDefer': canDefer!,
+        if (canReschedule != null) 'canReschedule': canReschedule!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
 /// Represents a Sql Server database on the Cloud SQL instance.
 class SqlServerDatabaseDetails {
   /// The version of SQL Server with which the database is to be made compatible
-  core.int compatibilityLevel;
+  core.int? compatibilityLevel;
 
   /// The recovery model of a SQL Server database
-  core.String recoveryModel;
+  core.String? recoveryModel;
 
   SqlServerDatabaseDetails();
 
@@ -6070,20 +5762,20 @@ class SqlServerDatabaseDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (compatibilityLevel != null)
-          'compatibilityLevel': compatibilityLevel,
-        if (recoveryModel != null) 'recoveryModel': recoveryModel,
+          'compatibilityLevel': compatibilityLevel!,
+        if (recoveryModel != null) 'recoveryModel': recoveryModel!,
       };
 }
 
 /// Represents a Sql Server user on the Cloud SQL instance.
 class SqlServerUserDetails {
   /// If the user has been disabled
-  core.bool disabled;
+  core.bool? disabled;
 
   /// The server roles for this user
-  core.List<core.String> serverRoles;
+  core.List<core.String>? serverRoles;
 
   SqlServerUserDetails();
 
@@ -6098,44 +5790,44 @@ class SqlServerUserDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (disabled != null) 'disabled': disabled,
-        if (serverRoles != null) 'serverRoles': serverRoles,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (disabled != null) 'disabled': disabled!,
+        if (serverRoles != null) 'serverRoles': serverRoles!,
       };
 }
 
 /// SslCerts Resource
 class SslCert {
   /// PEM representation.
-  core.String cert;
+  core.String? cert;
 
   /// Serial number, as extracted from the certificate.
-  core.String certSerialNumber;
+  core.String? certSerialNumber;
 
   /// User supplied name.
   ///
   /// Constrained to \[a-zA-Z.-_ \]+.
-  core.String commonName;
+  core.String? commonName;
 
   /// The time when the certificate was created in RFC 3339 format, for example
   /// *2012-11-15T16:19:00.094Z*
-  core.String createTime;
+  core.String? createTime;
 
   /// The time when the certificate expires in RFC 3339 format, for example
   /// *2012-11-15T16:19:00.094Z*.
-  core.String expirationTime;
+  core.String? expirationTime;
 
   /// Name of the database instance.
-  core.String instance;
+  core.String? instance;
 
   /// This is always *sql#sslCert*.
-  core.String kind;
+  core.String? kind;
 
   /// The URI of this resource.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Sha1 Fingerprint.
-  core.String sha1Fingerprint;
+  core.String? sha1Fingerprint;
 
   SslCert();
 
@@ -6169,28 +5861,28 @@ class SslCert {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cert != null) 'cert': cert,
-        if (certSerialNumber != null) 'certSerialNumber': certSerialNumber,
-        if (commonName != null) 'commonName': commonName,
-        if (createTime != null) 'createTime': createTime,
-        if (expirationTime != null) 'expirationTime': expirationTime,
-        if (instance != null) 'instance': instance,
-        if (kind != null) 'kind': kind,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (sha1Fingerprint != null) 'sha1Fingerprint': sha1Fingerprint,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cert != null) 'cert': cert!,
+        if (certSerialNumber != null) 'certSerialNumber': certSerialNumber!,
+        if (commonName != null) 'commonName': commonName!,
+        if (createTime != null) 'createTime': createTime!,
+        if (expirationTime != null) 'expirationTime': expirationTime!,
+        if (instance != null) 'instance': instance!,
+        if (kind != null) 'kind': kind!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (sha1Fingerprint != null) 'sha1Fingerprint': sha1Fingerprint!,
       };
 }
 
 /// SslCertDetail.
 class SslCertDetail {
   /// The public information about the cert.
-  SslCert certInfo;
+  SslCert? certInfo;
 
   /// The private key for the client cert, in pem format.
   ///
   /// Keep private in order to protect your security.
-  core.String certPrivateKey;
+  core.String? certPrivateKey;
 
   SslCertDetail();
 
@@ -6204,19 +5896,19 @@ class SslCertDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (certInfo != null) 'certInfo': certInfo.toJson(),
-        if (certPrivateKey != null) 'certPrivateKey': certPrivateKey,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (certInfo != null) 'certInfo': certInfo!.toJson(),
+        if (certPrivateKey != null) 'certPrivateKey': certPrivateKey!,
       };
 }
 
 /// SslCerts create ephemeral certificate request.
 class SslCertsCreateEphemeralRequest {
   /// Access token to include in the signed certificate.
-  core.String accessToken;
+  core.String? accessToken;
 
   /// PEM encoded public key to include in the signed certificate.
-  core.String publicKey;
+  core.String? publicKey;
 
   SslCertsCreateEphemeralRequest();
 
@@ -6229,9 +5921,9 @@ class SslCertsCreateEphemeralRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessToken != null) 'access_token': accessToken,
-        if (publicKey != null) 'public_key': publicKey,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessToken != null) 'access_token': accessToken!,
+        if (publicKey != null) 'public_key': publicKey!,
       };
 }
 
@@ -6240,7 +5932,7 @@ class SslCertsInsertRequest {
   /// User supplied name.
   ///
   /// Must be a distinct name from the other certificates for this instance.
-  core.String commonName;
+  core.String? commonName;
 
   SslCertsInsertRequest();
 
@@ -6250,27 +5942,27 @@ class SslCertsInsertRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commonName != null) 'commonName': commonName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commonName != null) 'commonName': commonName!,
       };
 }
 
 /// SslCert insert response.
 class SslCertsInsertResponse {
   /// The new client certificate and private key.
-  SslCertDetail clientCert;
+  SslCertDetail? clientCert;
 
   /// This is always *sql#sslCertsInsert*.
-  core.String kind;
+  core.String? kind;
 
   /// The operation to track the ssl certs insert request.
-  Operation operation;
+  Operation? operation;
 
   /// The server Certificate Authority's certificate.
   ///
   /// If this is missing you can force a new one to be generated by calling
   /// resetSslConfig method on instances resource.
-  SslCert serverCaCert;
+  SslCert? serverCaCert;
 
   SslCertsInsertResponse();
 
@@ -6292,21 +5984,21 @@ class SslCertsInsertResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientCert != null) 'clientCert': clientCert.toJson(),
-        if (kind != null) 'kind': kind,
-        if (operation != null) 'operation': operation.toJson(),
-        if (serverCaCert != null) 'serverCaCert': serverCaCert.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientCert != null) 'clientCert': clientCert!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (operation != null) 'operation': operation!.toJson(),
+        if (serverCaCert != null) 'serverCaCert': serverCaCert!.toJson(),
       };
 }
 
 /// SslCerts list response.
 class SslCertsListResponse {
   /// List of client certificates for the instance.
-  core.List<SslCert> items;
+  core.List<SslCert>? items;
 
   /// This is always *sql#sslCertsList*.
-  core.String kind;
+  core.String? kind;
 
   SslCertsListResponse();
 
@@ -6322,31 +6014,31 @@ class SslCertsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// A Google Cloud SQL service tier resource.
 class Tier {
   /// The maximum disk size of this tier in bytes.
-  core.String DiskQuota;
+  core.String? DiskQuota;
 
   /// The maximum RAM usage of this tier in bytes.
-  core.String RAM;
+  core.String? RAM;
 
   /// This is always *sql#tier*.
-  core.String kind;
+  core.String? kind;
 
   /// The applicable regions for this tier.
-  core.List<core.String> region;
+  core.List<core.String>? region;
 
   /// An identifier for the machine type, for example, db-n1-standard-1.
   ///
   /// For related information, see Pricing.
-  core.String tier;
+  core.String? tier;
 
   Tier();
 
@@ -6370,22 +6062,22 @@ class Tier {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (DiskQuota != null) 'DiskQuota': DiskQuota,
-        if (RAM != null) 'RAM': RAM,
-        if (kind != null) 'kind': kind,
-        if (region != null) 'region': region,
-        if (tier != null) 'tier': tier,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (DiskQuota != null) 'DiskQuota': DiskQuota!,
+        if (RAM != null) 'RAM': RAM!,
+        if (kind != null) 'kind': kind!,
+        if (region != null) 'region': region!,
+        if (tier != null) 'tier': tier!,
       };
 }
 
 /// Tiers list response.
 class TiersListResponse {
   /// List of tiers.
-  core.List<Tier> items;
+  core.List<Tier>? items;
 
   /// This is always *sql#tiersList*.
-  core.String kind;
+  core.String? kind;
 
   TiersListResponse();
 
@@ -6401,22 +6093,22 @@ class TiersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Database Instance truncate log context.
 class TruncateLogContext {
   /// This is always *sql#truncateLogContext*.
-  core.String kind;
+  core.String? kind;
 
   /// The type of log to truncate.
   ///
   /// Valid values are *MYSQL_GENERAL_TABLE* and *MYSQL_SLOW_TABLE*.
-  core.String logType;
+  core.String? logType;
 
   TruncateLogContext();
 
@@ -6429,9 +6121,9 @@ class TruncateLogContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -6439,38 +6131,38 @@ class TruncateLogContext {
 class User {
   /// This field is deprecated and will be removed from a future version of the
   /// API.
-  core.String etag;
+  core.String? etag;
 
   /// The host name from which the user can connect.
   ///
   /// For *insert* operations, host defaults to an empty string. For *update*
   /// operations, host is specified as part of the request URL. The host name
   /// cannot be updated after insertion.
-  core.String host;
+  core.String? host;
 
   /// The name of the Cloud SQL instance.
   ///
   /// This does not include the project ID. Can be omitted for *update* since it
   /// is already specified on the URL.
-  core.String instance;
+  core.String? instance;
 
   /// This is always *sql#user*.
-  core.String kind;
+  core.String? kind;
 
   /// The name of the user in the Cloud SQL instance.
   ///
   /// Can be omitted for *update* since it is already specified in the URL.
-  core.String name;
+  core.String? name;
 
   /// The password for the user.
-  core.String password;
+  core.String? password;
 
   /// The project ID of the project containing the Cloud SQL database.
   ///
   /// The Google apps domain is prefixed if applicable. Can be omitted for
   /// *update* since it is already specified on the URL.
-  core.String project;
-  SqlServerUserDetails sqlserverUserDetails;
+  core.String? project;
+  SqlServerUserDetails? sqlserverUserDetails;
 
   /// The user type.
   ///
@@ -6480,7 +6172,7 @@ class User {
   /// - "BUILT_IN" : The database's built-in user type.
   /// - "CLOUD_IAM_USER" : Cloud IAM user.
   /// - "CLOUD_IAM_SERVICE_ACCOUNT" : Cloud IAM service account.
-  core.String type;
+  core.String? type;
 
   User();
 
@@ -6515,33 +6207,33 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (host != null) 'host': host,
-        if (instance != null) 'instance': instance,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (password != null) 'password': password,
-        if (project != null) 'project': project,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (host != null) 'host': host!,
+        if (instance != null) 'instance': instance!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (password != null) 'password': password!,
+        if (project != null) 'project': project!,
         if (sqlserverUserDetails != null)
-          'sqlserverUserDetails': sqlserverUserDetails.toJson(),
-        if (type != null) 'type': type,
+          'sqlserverUserDetails': sqlserverUserDetails!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
 /// User list response.
 class UsersListResponse {
   /// List of user resources in the instance.
-  core.List<User> items;
+  core.List<User>? items;
 
   /// This is always *sql#usersList*.
-  core.String kind;
+  core.String? kind;
 
   /// An identifier that uniquely identifies the operation.
   ///
   /// You can use this identifier to retrieve the Operations resource that has
   /// information about the operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   UsersListResponse();
 
@@ -6560,10 +6252,10 @@ class UsersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

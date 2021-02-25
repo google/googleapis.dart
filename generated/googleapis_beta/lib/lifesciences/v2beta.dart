@@ -97,11 +97,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -141,14 +138,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -206,13 +200,9 @@ class ProjectsLocationsOperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -254,11 +244,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -311,14 +298,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -382,13 +366,9 @@ class ProjectsLocationsPipelinesResource {
   async.Future<Operation> run(
     RunPipelineRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -410,7 +390,7 @@ class ProjectsLocationsPipelinesResource {
 /// Carries information about an accelerator that can be attached to a VM.
 class Accelerator {
   /// How many accelerators of this type to attach.
-  core.String count;
+  core.String? count;
 
   /// The accelerator type string (for example, "nvidia-tesla-k80").
   ///
@@ -420,7 +400,7 @@ class Accelerator {
   /// be specified using the NVIDIA driver version parameter on the virtual
   /// machine specification. Note that attaching a GPU increases the worker VM
   /// startup time by a few minutes.
-  core.String type;
+  core.String? type;
 
   Accelerator();
 
@@ -433,9 +413,9 @@ class Accelerator {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -447,17 +427,17 @@ class Action {
   /// already failed. This is useful for actions that copy output files off of
   /// the VM or for debugging. Note that no actions will be run if image
   /// prefetching fails.
-  core.bool alwaysRun;
+  core.bool? alwaysRun;
 
   /// Prevents the container from accessing the external network.
-  core.bool blockExternalNetwork;
+  core.bool? blockExternalNetwork;
 
   /// If specified, overrides the `CMD` specified in the container.
   ///
   /// If the container also has an `ENTRYPOINT` the values are used as
   /// entrypoint arguments. Otherwise, they are used as a command and arguments
   /// to run inside the container.
-  core.List<core.String> commands;
+  core.List<core.String>? commands;
 
   /// An optional name for the container.
   ///
@@ -465,7 +445,7 @@ class Action {
   /// inter-container communication. The name must contain only upper and
   /// lowercase alphanumeric characters and hyphens and cannot start with a
   /// hyphen.
-  core.String containerName;
+  core.String? containerName;
 
   /// If the specified image is hosted on a private registry other than Google
   /// Container Registry, the credentials required to pull the image must be
@@ -473,7 +453,7 @@ class Action {
   ///
   /// The secret must decrypt to a JSON-encoded dictionary containing both
   /// `username` and `password` keys.
-  Secret credentials;
+  Secret? credentials;
 
   /// All container images are typically downloaded before any actions are
   /// executed.
@@ -482,13 +462,13 @@ class Action {
   /// wasting large amounts of compute resources. If set, this flag prevents the
   /// worker from downloading the image until just before the action is
   /// executed.
-  core.bool disableImagePrefetch;
+  core.bool? disableImagePrefetch;
 
   /// A small portion of the container's standard error stream is typically
   /// captured and returned inside the `ContainerStoppedEvent`.
   ///
   /// Setting this flag disables this functionality.
-  core.bool disableStandardErrorCapture;
+  core.bool? disableStandardErrorCapture;
 
   /// Enable access to the FUSE device for this action.
   ///
@@ -497,10 +477,10 @@ class Action {
   /// filesystem. This has the effect of causing the container to be executed
   /// with `CAP_SYS_ADMIN` and exposes `/dev/fuse` to the container, so use it
   /// only for containers you trust.
-  core.bool enableFuse;
+  core.bool? enableFuse;
 
   /// If specified, overrides the `ENTRYPOINT` specified in the container.
-  core.String entrypoint;
+  core.String? entrypoint;
 
   /// The environment to pass into the container.
   ///
@@ -515,12 +495,12 @@ class Action {
   /// `GOOGLE_LAST_EXIT_STATUS` will be set to the exit status of the last
   /// non-background action that executed. This can be used by workflow engine
   /// authors to determine whether an individual action has succeeded or failed.
-  core.Map<core.String, core.String> environment;
+  core.Map<core.String, core.String>? environment;
 
   /// Normally, a non-zero exit status causes the pipeline to fail.
   ///
   /// This flag allows execution of other actions to continue instead.
-  core.bool ignoreExitStatus;
+  core.bool? ignoreExitStatus;
 
   /// The URI to pull the container image from.
   ///
@@ -537,7 +517,7 @@ class Action {
   /// google.cloud.lifesciences.v2beta.Action.credentials field.
   ///
   /// Required.
-  core.String imageUri;
+  core.String? imageUri;
 
   /// Labels to associate with the action.
   ///
@@ -545,7 +525,7 @@ class Action {
   /// actions (for example, to indicate what sort of action they perform, such
   /// as localization or debugging). They are returned in the operation
   /// metadata, but are otherwise ignored.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// A list of mounts to make available to the action.
   ///
@@ -557,13 +537,13 @@ class Action {
   /// /google/logs/action / * /stdout The complete contents of each individual
   /// action's standard output. - /google/logs/action / * /stderr The complete
   /// contents of each individual action's standard error output.
-  core.List<Mount> mounts;
+  core.List<Mount>? mounts;
 
   /// An optional identifier for a PID namespace to run the action inside.
   ///
   /// Multiple actions should use the same string to share a namespace. If
   /// unspecified, a separate isolated namespace is used.
-  core.String pidNamespace;
+  core.String? pidNamespace;
 
   /// A map of containers to host port mappings for this container.
   ///
@@ -572,20 +552,20 @@ class Action {
   /// than 65536. If it is zero, an unused random port is assigned. To determine
   /// the resulting port number, consult the `ContainerStartedEvent` in the
   /// operation metadata.
-  core.Map<core.String, core.int> portMappings;
+  core.Map<core.String, core.int>? portMappings;
 
   /// Exposes all ports specified by `EXPOSE` statements in the container.
   ///
   /// To discover the host side port numbers, consult the `ACTION_STARTED` event
   /// in the operation metadata.
-  core.bool publishExposedPorts;
+  core.bool? publishExposedPorts;
 
   /// This flag allows an action to continue running in the background while
   /// executing subsequent actions.
   ///
   /// This is useful to provide services to other actions (or to provide
   /// debugging support tools like SSH servers).
-  core.bool runInBackground;
+  core.bool? runInBackground;
 
   /// The maximum amount of time to give the action to complete.
   ///
@@ -593,7 +573,7 @@ class Action {
   /// and the exit status will be non-zero. The pipeline will continue or
   /// terminate based on the rules defined by the `ALWAYS_RUN` and
   /// `IGNORE_EXIT_STATUS` flags.
-  core.String timeout;
+  core.String? timeout;
 
   Action();
 
@@ -683,31 +663,31 @@ class Action {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alwaysRun != null) 'alwaysRun': alwaysRun,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alwaysRun != null) 'alwaysRun': alwaysRun!,
         if (blockExternalNetwork != null)
-          'blockExternalNetwork': blockExternalNetwork,
-        if (commands != null) 'commands': commands,
-        if (containerName != null) 'containerName': containerName,
-        if (credentials != null) 'credentials': credentials.toJson(),
+          'blockExternalNetwork': blockExternalNetwork!,
+        if (commands != null) 'commands': commands!,
+        if (containerName != null) 'containerName': containerName!,
+        if (credentials != null) 'credentials': credentials!.toJson(),
         if (disableImagePrefetch != null)
-          'disableImagePrefetch': disableImagePrefetch,
+          'disableImagePrefetch': disableImagePrefetch!,
         if (disableStandardErrorCapture != null)
-          'disableStandardErrorCapture': disableStandardErrorCapture,
-        if (enableFuse != null) 'enableFuse': enableFuse,
-        if (entrypoint != null) 'entrypoint': entrypoint,
-        if (environment != null) 'environment': environment,
-        if (ignoreExitStatus != null) 'ignoreExitStatus': ignoreExitStatus,
-        if (imageUri != null) 'imageUri': imageUri,
-        if (labels != null) 'labels': labels,
+          'disableStandardErrorCapture': disableStandardErrorCapture!,
+        if (enableFuse != null) 'enableFuse': enableFuse!,
+        if (entrypoint != null) 'entrypoint': entrypoint!,
+        if (environment != null) 'environment': environment!,
+        if (ignoreExitStatus != null) 'ignoreExitStatus': ignoreExitStatus!,
+        if (imageUri != null) 'imageUri': imageUri!,
+        if (labels != null) 'labels': labels!,
         if (mounts != null)
-          'mounts': mounts.map((value) => value.toJson()).toList(),
-        if (pidNamespace != null) 'pidNamespace': pidNamespace,
-        if (portMappings != null) 'portMappings': portMappings,
+          'mounts': mounts!.map((value) => value.toJson()).toList(),
+        if (pidNamespace != null) 'pidNamespace': pidNamespace!,
+        if (portMappings != null) 'portMappings': portMappings!,
         if (publishExposedPorts != null)
-          'publishExposedPorts': publishExposedPorts,
-        if (runInBackground != null) 'runInBackground': runInBackground,
-        if (timeout != null) 'timeout': timeout,
+          'publishExposedPorts': publishExposedPorts!,
+        if (runInBackground != null) 'runInBackground': runInBackground!,
+        if (timeout != null) 'timeout': timeout!,
       };
 }
 
@@ -719,7 +699,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// An event generated when a container is forcibly terminated by the worker.
@@ -728,7 +708,7 @@ class CancelOperationRequest {
 /// specified by the user.
 class ContainerKilledEvent {
   /// The numeric ID of the action that started the container.
-  core.int actionId;
+  core.int? actionId;
 
   ContainerKilledEvent();
 
@@ -738,28 +718,28 @@ class ContainerKilledEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionId != null) 'actionId': actionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionId != null) 'actionId': actionId!,
       };
 }
 
 /// An event generated when a container starts.
 class ContainerStartedEvent {
   /// The numeric ID of the action that started this container.
-  core.int actionId;
+  core.int? actionId;
 
   /// The public IP address that can be used to connect to the container.
   ///
   /// This field is only populated when at least one port mapping is present. If
   /// the instance was created with a private address, this field will be empty
   /// even if port mappings exist.
-  core.String ipAddress;
+  core.String? ipAddress;
 
   /// The container-to-host port mappings installed for this container.
   ///
   /// This set will contain any ports exposed using the `PUBLISH_EXPOSED_PORTS`
   /// flag as well as any specified in the `Action` definition.
-  core.Map<core.String, core.int> portMappings;
+  core.Map<core.String, core.int>? portMappings;
 
   ContainerStartedEvent();
 
@@ -781,20 +761,20 @@ class ContainerStartedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionId != null) 'actionId': actionId,
-        if (ipAddress != null) 'ipAddress': ipAddress,
-        if (portMappings != null) 'portMappings': portMappings,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionId != null) 'actionId': actionId!,
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (portMappings != null) 'portMappings': portMappings!,
       };
 }
 
 /// An event generated when a container exits.
 class ContainerStoppedEvent {
   /// The numeric ID of the action that started this container.
-  core.int actionId;
+  core.int? actionId;
 
   /// The exit status of the container.
-  core.int exitStatus;
+  core.int? exitStatus;
 
   /// The tail end of any content written to standard error by the container.
   ///
@@ -804,7 +784,7 @@ class ContainerStoppedEvent {
   /// amount of the end of the stream is captured here. The entire stream is
   /// stored in the `/google/logs` directory mounted into each action, and can
   /// be copied off the machine as described elsewhere.
-  core.String stderr;
+  core.String? stderr;
 
   ContainerStoppedEvent();
 
@@ -820,10 +800,10 @@ class ContainerStoppedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionId != null) 'actionId': actionId,
-        if (exitStatus != null) 'exitStatus': exitStatus,
-        if (stderr != null) 'stderr': stderr,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionId != null) 'actionId': actionId!,
+        if (exitStatus != null) 'exitStatus': exitStatus!,
+        if (stderr != null) 'stderr': stderr!,
       };
 }
 
@@ -834,7 +814,7 @@ class DelayedEvent {
   ///
   /// The string can change without notice because it is often generated by
   /// another service (such as Compute Engine).
-  core.String cause;
+  core.String? cause;
 
   /// If the delay was caused by a resource shortage, this field lists the
   /// Compute Engine metrics that are preventing this operation from running
@@ -842,7 +822,7 @@ class DelayedEvent {
   ///
   /// If the particular metric is not known, a single `UNKNOWN` metric will be
   /// present.
-  core.List<core.String> metrics;
+  core.List<core.String>? metrics;
 
   DelayedEvent();
 
@@ -857,9 +837,9 @@ class DelayedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cause != null) 'cause': cause,
-        if (metrics != null) 'metrics': metrics,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cause != null) 'cause': cause!,
+        if (metrics != null) 'metrics': metrics!,
       };
 }
 
@@ -874,7 +854,7 @@ class Disk {
   /// Used when mounting the disk into actions. The name must contain only upper
   /// and lowercase alphanumeric characters and hyphens and cannot start with a
   /// hyphen.
-  core.String name;
+  core.String? name;
 
   /// The size, in GB, of the disk to attach.
   ///
@@ -883,15 +863,15 @@ class Disk {
   /// drives are automatically combined to provide the requested size. Note,
   /// however, that each physical SSD is 375GB in size, and no more than 8
   /// drives can be attached to a single instance.
-  core.int sizeGb;
+  core.int? sizeGb;
 
   /// An optional image to put on the disk before attaching it to the VM.
-  core.String sourceImage;
+  core.String? sourceImage;
 
   /// The Compute Engine disk type.
   ///
   /// If unspecified, `pd-standard` is used.
-  core.String type;
+  core.String? type;
 
   Disk();
 
@@ -910,11 +890,11 @@ class Disk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (sizeGb != null) 'sizeGb': sizeGb,
-        if (sourceImage != null) 'sourceImage': sourceImage,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (sizeGb != null) 'sizeGb': sizeGb!,
+        if (sourceImage != null) 'sourceImage': sourceImage!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -932,49 +912,49 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Carries information about events that occur during pipeline execution.
 class Event {
   /// See google.cloud.lifesciences.v2beta.ContainerKilledEvent.
-  ContainerKilledEvent containerKilled;
+  ContainerKilledEvent? containerKilled;
 
   /// See google.cloud.lifesciences.v2beta.ContainerStartedEvent.
-  ContainerStartedEvent containerStarted;
+  ContainerStartedEvent? containerStarted;
 
   /// See google.cloud.lifesciences.v2beta.ContainerStoppedEvent.
-  ContainerStoppedEvent containerStopped;
+  ContainerStoppedEvent? containerStopped;
 
   /// See google.cloud.lifesciences.v2beta.DelayedEvent.
-  DelayedEvent delayed;
+  DelayedEvent? delayed;
 
   /// A human-readable description of the event.
   ///
   /// Note that these strings can change at any time without notice. Any
   /// application logic must use the information in the `details` field.
-  core.String description;
+  core.String? description;
 
   /// See google.cloud.lifesciences.v2beta.FailedEvent.
-  FailedEvent failed;
+  FailedEvent? failed;
 
   /// See google.cloud.lifesciences.v2beta.PullStartedEvent.
-  PullStartedEvent pullStarted;
+  PullStartedEvent? pullStarted;
 
   /// See google.cloud.lifesciences.v2beta.PullStoppedEvent.
-  PullStoppedEvent pullStopped;
+  PullStoppedEvent? pullStopped;
 
   /// The time at which the event occurred.
-  core.String timestamp;
+  core.String? timestamp;
 
   /// See google.cloud.lifesciences.v2beta.UnexpectedExitStatusEvent.
-  UnexpectedExitStatusEvent unexpectedExitStatus;
+  UnexpectedExitStatusEvent? unexpectedExitStatus;
 
   /// See google.cloud.lifesciences.v2beta.WorkerAssignedEvent.
-  WorkerAssignedEvent workerAssigned;
+  WorkerAssignedEvent? workerAssigned;
 
   /// See google.cloud.lifesciences.v2beta.WorkerReleasedEvent.
-  WorkerReleasedEvent workerReleased;
+  WorkerReleasedEvent? workerReleased;
 
   Event();
 
@@ -1027,23 +1007,23 @@ class Event {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (containerKilled != null)
-          'containerKilled': containerKilled.toJson(),
+          'containerKilled': containerKilled!.toJson(),
         if (containerStarted != null)
-          'containerStarted': containerStarted.toJson(),
+          'containerStarted': containerStarted!.toJson(),
         if (containerStopped != null)
-          'containerStopped': containerStopped.toJson(),
-        if (delayed != null) 'delayed': delayed.toJson(),
-        if (description != null) 'description': description,
-        if (failed != null) 'failed': failed.toJson(),
-        if (pullStarted != null) 'pullStarted': pullStarted.toJson(),
-        if (pullStopped != null) 'pullStopped': pullStopped.toJson(),
-        if (timestamp != null) 'timestamp': timestamp,
+          'containerStopped': containerStopped!.toJson(),
+        if (delayed != null) 'delayed': delayed!.toJson(),
+        if (description != null) 'description': description!,
+        if (failed != null) 'failed': failed!.toJson(),
+        if (pullStarted != null) 'pullStarted': pullStarted!.toJson(),
+        if (pullStopped != null) 'pullStopped': pullStopped!.toJson(),
+        if (timestamp != null) 'timestamp': timestamp!,
         if (unexpectedExitStatus != null)
-          'unexpectedExitStatus': unexpectedExitStatus.toJson(),
-        if (workerAssigned != null) 'workerAssigned': workerAssigned.toJson(),
-        if (workerReleased != null) 'workerReleased': workerReleased.toJson(),
+          'unexpectedExitStatus': unexpectedExitStatus!.toJson(),
+        if (workerAssigned != null) 'workerAssigned': workerAssigned!.toJson(),
+        if (workerReleased != null) 'workerReleased': workerReleased!.toJson(),
       };
 }
 
@@ -1059,7 +1039,7 @@ class ExistingDisk {
   /// have the `read_only` flag set to true, the disk will be attached in
   /// `read-only` mode and can be shared with other instances. Otherwise, the
   /// disk will be available for writing but cannot be shared.
-  core.String disk;
+  core.String? disk;
 
   ExistingDisk();
 
@@ -1069,8 +1049,8 @@ class ExistingDisk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (disk != null) 'disk': disk,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (disk != null) 'disk': disk!,
       };
 }
 
@@ -1079,7 +1059,7 @@ class ExistingDisk {
 /// Note that other events can continue to occur after this event.
 class FailedEvent {
   /// The human-readable description of the cause of the failure.
-  core.String cause;
+  core.String? cause;
 
   /// The Google standard error code that best describes this failure.
   /// Possible string values are:
@@ -1162,7 +1142,7 @@ class FailedEvent {
   /// Service Unavailable
   /// - "DATA_LOSS" : Unrecoverable data loss or corruption. HTTP Mapping: 500
   /// Internal Server Error
-  core.String code;
+  core.String? code;
 
   FailedEvent();
 
@@ -1175,19 +1155,19 @@ class FailedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cause != null) 'cause': cause,
-        if (code != null) 'code': code,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cause != null) 'cause': cause!,
+        if (code != null) 'code': code!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -1203,20 +1183,20 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -1232,10 +1212,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1244,17 +1224,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -1262,12 +1242,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -1301,12 +1281,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1314,27 +1294,27 @@ class Location {
 /// long running operation's metadata field.
 class Metadata {
   /// The time at which the operation was created by the API.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time at which execution was completed and resources were cleaned up.
-  core.String endTime;
+  core.String? endTime;
 
   /// The list of events that have happened so far during the execution of this
   /// operation.
-  core.List<Event> events;
+  core.List<Event>? events;
 
   /// The user-defined labels associated with this operation.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The pipeline this operation represents.
-  Pipeline pipeline;
+  Pipeline? pipeline;
 
   /// The name of the Cloud Pub/Sub topic where notifications of operation
   /// status changes are sent.
-  core.String pubSubTopic;
+  core.String? pubSubTopic;
 
   /// The first time at which resources were allocated to execute the pipeline.
-  core.String startTime;
+  core.String? startTime;
 
   Metadata();
 
@@ -1372,28 +1352,28 @@ class Metadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
         if (events != null)
-          'events': events.map((value) => value.toJson()).toList(),
-        if (labels != null) 'labels': labels,
-        if (pipeline != null) 'pipeline': pipeline.toJson(),
-        if (pubSubTopic != null) 'pubSubTopic': pubSubTopic,
-        if (startTime != null) 'startTime': startTime,
+          'events': events!.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels!,
+        if (pipeline != null) 'pipeline': pipeline!.toJson(),
+        if (pubSubTopic != null) 'pubSubTopic': pubSubTopic!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
 /// Carries information about a particular disk mount inside a container.
 class Mount {
   /// The name of the disk to mount, as specified in the resources section.
-  core.String disk;
+  core.String? disk;
 
   /// The path to mount the disk inside the container.
-  core.String path;
+  core.String? path;
 
   /// If true, the disk is mounted read-only inside the container.
-  core.bool readOnly;
+  core.bool? readOnly;
 
   Mount();
 
@@ -1409,10 +1389,10 @@ class Mount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (disk != null) 'disk': disk,
-        if (path != null) 'path': path,
-        if (readOnly != null) 'readOnly': readOnly,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (disk != null) 'disk': disk!,
+        if (path != null) 'path': path!,
+        if (readOnly != null) 'readOnly': readOnly!,
       };
 }
 
@@ -1421,7 +1401,7 @@ class NFSMount {
   /// A target NFS mount.
   ///
   /// The target must be specified as \`address:/mount".
-  core.String target;
+  core.String? target;
 
   NFSMount();
 
@@ -1431,8 +1411,8 @@ class NFSMount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (target != null) 'target': target,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (target != null) 'target': target!,
       };
 }
 
@@ -1443,7 +1423,7 @@ class Network {
   /// The value will be prefixed with `global/networks/` unless it contains a
   /// `/`, in which case it is assumed to be a fully specified network resource
   /// URL. If unspecified, the global default network is used.
-  core.String network;
+  core.String? network;
 
   /// If the specified network is configured for custom subnet creation, the
   /// name of the subnetwork to attach the instance to must be specified here.
@@ -1452,7 +1432,7 @@ class Network {
   /// a `/`, in which case it is assumed to be a fully specified subnetwork
   /// resource URL. If the `*` character appears in the value, it is replaced
   /// with the region that the virtual machine has been allocated in.
-  core.String subnetwork;
+  core.String? subnetwork;
 
   /// If set to true, do not attach a public IP address to the VM.
   ///
@@ -1460,7 +1440,7 @@ class Network {
   /// required to allow the VM to access Google services. See
   /// https://cloud.google.com/vpc/docs/configure-private-google-access for more
   /// information.
-  core.bool usePrivateAddress;
+  core.bool? usePrivateAddress;
 
   Network();
 
@@ -1476,10 +1456,10 @@ class Network {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (network != null) 'network': network,
-        if (subnetwork != null) 'subnetwork': subnetwork,
-        if (usePrivateAddress != null) 'usePrivateAddress': usePrivateAddress,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (network != null) 'network': network!,
+        if (subnetwork != null) 'subnetwork': subnetwork!,
+        if (usePrivateAddress != null) 'usePrivateAddress': usePrivateAddress!,
       };
 }
 
@@ -1490,10 +1470,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// An Metadata object.
   ///
@@ -1501,19 +1481,19 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name for the operation.
   ///
   /// This may be passed to the other operation methods to retrieve information
   /// about the operation's status.
-  core.String name;
+  core.String? name;
 
   /// An Empty object.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -1548,12 +1528,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -1569,15 +1549,15 @@ class PersistentDisk {
   /// drives are automatically combined to provide the requested size. Note,
   /// however, that each physical SSD is 375GB in size, and no more than 8
   /// drives can be attached to a single instance.
-  core.int sizeGb;
+  core.int? sizeGb;
 
   /// An image to put on the disk before attaching it to the VM.
-  core.String sourceImage;
+  core.String? sourceImage;
 
   /// The Compute Engine disk type.
   ///
   /// If unspecified, `pd-standard` is used.
-  core.String type;
+  core.String? type;
 
   PersistentDisk();
 
@@ -1593,27 +1573,27 @@ class PersistentDisk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sizeGb != null) 'sizeGb': sizeGb,
-        if (sourceImage != null) 'sourceImage': sourceImage,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sizeGb != null) 'sizeGb': sizeGb!,
+        if (sourceImage != null) 'sourceImage': sourceImage!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// Specifies a series of actions to execute, expressed as Docker containers.
 class Pipeline {
   /// The list of actions to execute, in the order they are specified.
-  core.List<Action> actions;
+  core.List<Action>? actions;
 
   /// The environment to pass into every action.
   ///
   /// Each action can also specify additional environment variables but cannot
   /// delete an entry from this map (though they can overwrite it with a
   /// different value).
-  core.Map<core.String, core.String> environment;
+  core.Map<core.String, core.String>? environment;
 
   /// The resources required for execution.
-  Resources resources;
+  Resources? resources;
 
   /// The maximum amount of time to give the pipeline to complete.
   ///
@@ -1621,7 +1601,7 @@ class Pipeline {
   /// pipeline fails to complete before the timeout, it will be cancelled and
   /// the error code will be set to DEADLINE_EXCEEDED. If unspecified, it will
   /// default to 7 days.
-  core.String timeout;
+  core.String? timeout;
 
   Pipeline();
 
@@ -1651,19 +1631,19 @@ class Pipeline {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (actions != null)
-          'actions': actions.map((value) => value.toJson()).toList(),
-        if (environment != null) 'environment': environment,
-        if (resources != null) 'resources': resources.toJson(),
-        if (timeout != null) 'timeout': timeout,
+          'actions': actions!.map((value) => value.toJson()).toList(),
+        if (environment != null) 'environment': environment!,
+        if (resources != null) 'resources': resources!.toJson(),
+        if (timeout != null) 'timeout': timeout!,
       };
 }
 
 /// An event generated when the worker starts pulling an image.
 class PullStartedEvent {
   /// The URI of the image that was pulled.
-  core.String imageUri;
+  core.String? imageUri;
 
   PullStartedEvent();
 
@@ -1673,15 +1653,15 @@ class PullStartedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageUri != null) 'imageUri': imageUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageUri != null) 'imageUri': imageUri!,
       };
 }
 
 /// An event generated when the worker stops pulling an image.
 class PullStoppedEvent {
   /// The URI of the image that was pulled.
-  core.String imageUri;
+  core.String? imageUri;
 
   PullStoppedEvent();
 
@@ -1691,8 +1671,8 @@ class PullStoppedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageUri != null) 'imageUri': imageUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageUri != null) 'imageUri': imageUri!,
       };
 }
 
@@ -1703,15 +1683,15 @@ class Resources {
   /// The list of regions allowed for VM allocation.
   ///
   /// If set, the `zones` field must not be set.
-  core.List<core.String> regions;
+  core.List<core.String>? regions;
 
   /// The virtual machine specification.
-  VirtualMachine virtualMachine;
+  VirtualMachine? virtualMachine;
 
   /// The list of zones allowed for VM allocation.
   ///
   /// If set, the `regions` field must not be set.
-  core.List<core.String> zones;
+  core.List<core.String>? zones;
 
   Resources();
 
@@ -1732,10 +1712,10 @@ class Resources {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (regions != null) 'regions': regions,
-        if (virtualMachine != null) 'virtualMachine': virtualMachine.toJson(),
-        if (zones != null) 'zones': zones,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (regions != null) 'regions': regions!,
+        if (virtualMachine != null) 'virtualMachine': virtualMachine!.toJson(),
+        if (zones != null) 'zones': zones!,
       };
 }
 
@@ -1750,12 +1730,12 @@ class RunPipelineRequest {
   /// used by the operation, and can be modified at any time. To associate
   /// labels with resources created while executing the operation, see the
   /// appropriate resource message (for example, `VirtualMachine`).
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The description of the pipeline to run.
   ///
   /// Required.
-  Pipeline pipeline;
+  Pipeline? pipeline;
 
   /// The name of an existing Pub/Sub topic.
   ///
@@ -1763,7 +1743,7 @@ class RunPipelineRequest {
   /// operation changes. The Life Sciences Service Agent account must have
   /// publisher permissions to the specified topic or notifications will not be
   /// sent.
-  core.String pubSubTopic;
+  core.String? pubSubTopic;
 
   RunPipelineRequest();
 
@@ -1786,10 +1766,10 @@ class RunPipelineRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
-        if (pipeline != null) 'pipeline': pipeline.toJson(),
-        if (pubSubTopic != null) 'pubSubTopic': pubSubTopic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
+        if (pipeline != null) 'pipeline': pipeline!.toJson(),
+        if (pubSubTopic != null) 'pubSubTopic': pubSubTopic!,
       };
 }
 
@@ -1802,7 +1782,7 @@ class RunPipelineResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Holds encrypted information that is only decrypted and stored in RAM by the
@@ -1811,14 +1791,14 @@ class Secret {
   /// The value of the cipherText response from the `encrypt` method.
   ///
   /// This field is intentionally unaudited.
-  core.String cipherText;
+  core.String? cipherText;
 
   /// The name of the Cloud KMS key that will be used to decrypt the secret
   /// value.
   ///
   /// The VM service account must have the required permissions and
   /// authentication scopes to invoke the `decrypt` method on the specified key.
-  core.String keyName;
+  core.String? keyName;
 
   Secret();
 
@@ -1831,9 +1811,9 @@ class Secret {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cipherText != null) 'cipherText': cipherText,
-        if (keyName != null) 'keyName': keyName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cipherText != null) 'cipherText': cipherText!,
+        if (keyName != null) 'keyName': keyName!,
       };
 }
 
@@ -1843,11 +1823,11 @@ class ServiceAccount {
   ///
   /// If not specified, the default Compute Engine service account for the
   /// project will be used.
-  core.String email;
+  core.String? email;
 
   /// List of scopes to be enabled for this service account on the VM, in
   /// addition to the cloud-platform API scope that will be added by default.
-  core.List<core.String> scopes;
+  core.List<core.String>? scopes;
 
   ServiceAccount();
 
@@ -1862,9 +1842,9 @@ class ServiceAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
-        if (scopes != null) 'scopes': scopes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
+        if (scopes != null) 'scopes': scopes!,
       };
 }
 
@@ -1877,7 +1857,7 @@ class ServiceAccount {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1885,13 +1865,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -1915,10 +1895,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -1929,10 +1909,10 @@ class Status {
 /// will be executed. Other actions will be skipped.
 class UnexpectedExitStatusEvent {
   /// The numeric ID of the action that started the container.
-  core.int actionId;
+  core.int? actionId;
 
   /// The exit status of the container.
-  core.int exitStatus;
+  core.int? exitStatus;
 
   UnexpectedExitStatusEvent();
 
@@ -1945,23 +1925,23 @@ class UnexpectedExitStatusEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionId != null) 'actionId': actionId,
-        if (exitStatus != null) 'exitStatus': exitStatus,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionId != null) 'actionId': actionId!,
+        if (exitStatus != null) 'exitStatus': exitStatus!,
       };
 }
 
 /// Carries information about a Compute Engine VM resource.
 class VirtualMachine {
   /// The list of accelerators to attach to the VM.
-  core.List<Accelerator> accelerators;
+  core.List<Accelerator>? accelerators;
 
   /// The size of the boot disk, in GB.
   ///
   /// The boot disk must be large enough to accommodate all of the Docker images
   /// from each action in the pipeline at the same time. If not specified, a
   /// small but reasonable default value is used.
-  core.int bootDiskSizeGb;
+  core.int? bootDiskSizeGb;
 
   /// The host operating system image to use.
   ///
@@ -1973,7 +1953,7 @@ class VirtualMachine {
   /// production pipelines. To test a pipeline against the beta release of
   /// Container-Optimized OS, use the value
   /// `projects/cos-cloud/global/images/family/cos-beta`.
-  core.String bootImage;
+  core.String? bootImage;
 
   /// The CPU platform to request.
   ///
@@ -1984,12 +1964,12 @@ class VirtualMachine {
   /// significant impact. For more information about the effect of this
   /// parameter, see
   /// https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.
-  core.String cpuPlatform;
+  core.String? cpuPlatform;
 
   /// The list of disks to create and attach to the VM.
   ///
   /// Specify either the `volumes[]` field or the `disks[]` field, but not both.
-  core.List<Disk> disks;
+  core.List<Disk>? disks;
 
   /// The Compute Engine Disk Images to use as a Docker cache.
   ///
@@ -2001,10 +1981,10 @@ class VirtualMachine {
   /// desired Docker images have already been pulled. Any images pulled that are
   /// not cached will be stored on the first cache disk instead of the boot
   /// disk. Only a single image is supported.
-  core.List<core.String> dockerCacheImages;
+  core.List<core.String>? dockerCacheImages;
 
   /// Whether Stackdriver monitoring should be enabled on the VM.
-  core.bool enableStackdriverMonitoring;
+  core.bool? enableStackdriverMonitoring;
 
   /// Optional set of labels to apply to the VM and any attached disk resources.
   ///
@@ -2014,7 +1994,7 @@ class VirtualMachine {
   /// 'google-' are reserved for use by Google. Labels applied at creation time
   /// to the VM. Applied on a best-effort basis to attached disk resources
   /// shortly after VM creation.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The machine type of the virtual machine to create.
   ///
@@ -2026,31 +2006,31 @@ class VirtualMachine {
   /// for more specifications on creating a custom machine type.
   ///
   /// Required.
-  core.String machineType;
+  core.String? machineType;
 
   /// The VM network configuration.
-  Network network;
+  Network? network;
 
   /// The NVIDIA driver version to use when attaching an NVIDIA GPU accelerator.
   ///
   /// The version specified here must be compatible with the GPU libraries
   /// contained in the container being executed, and must be one of the drivers
   /// hosted in the `nvidia-drivers-us-public` bucket on Google Cloud Storage.
-  core.String nvidiaDriverVersion;
+  core.String? nvidiaDriverVersion;
 
   /// If true, allocate a preemptible VM.
-  core.bool preemptible;
+  core.bool? preemptible;
 
   /// The service account to install on the VM.
   ///
   /// This account does not need any permissions other than those required by
   /// the pipeline.
-  ServiceAccount serviceAccount;
+  ServiceAccount? serviceAccount;
 
   /// The list of disks and other storage to create or attach to the VM.
   ///
   /// Specify either the `volumes[]` field or the `disks[]` field, but not both.
-  core.List<Volume> volumes;
+  core.List<Volume>? volumes;
 
   VirtualMachine();
 
@@ -2119,26 +2099,26 @@ class VirtualMachine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accelerators != null)
-          'accelerators': accelerators.map((value) => value.toJson()).toList(),
-        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb,
-        if (bootImage != null) 'bootImage': bootImage,
-        if (cpuPlatform != null) 'cpuPlatform': cpuPlatform,
+          'accelerators': accelerators!.map((value) => value.toJson()).toList(),
+        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
+        if (bootImage != null) 'bootImage': bootImage!,
+        if (cpuPlatform != null) 'cpuPlatform': cpuPlatform!,
         if (disks != null)
-          'disks': disks.map((value) => value.toJson()).toList(),
-        if (dockerCacheImages != null) 'dockerCacheImages': dockerCacheImages,
+          'disks': disks!.map((value) => value.toJson()).toList(),
+        if (dockerCacheImages != null) 'dockerCacheImages': dockerCacheImages!,
         if (enableStackdriverMonitoring != null)
-          'enableStackdriverMonitoring': enableStackdriverMonitoring,
-        if (labels != null) 'labels': labels,
-        if (machineType != null) 'machineType': machineType,
-        if (network != null) 'network': network.toJson(),
+          'enableStackdriverMonitoring': enableStackdriverMonitoring!,
+        if (labels != null) 'labels': labels!,
+        if (machineType != null) 'machineType': machineType!,
+        if (network != null) 'network': network!.toJson(),
         if (nvidiaDriverVersion != null)
-          'nvidiaDriverVersion': nvidiaDriverVersion,
-        if (preemptible != null) 'preemptible': preemptible,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount.toJson(),
+          'nvidiaDriverVersion': nvidiaDriverVersion!,
+        if (preemptible != null) 'preemptible': preemptible!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!.toJson(),
         if (volumes != null)
-          'volumes': volumes.map((value) => value.toJson()).toList(),
+          'volumes': volumes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2147,20 +2127,20 @@ class VirtualMachine {
 /// Specify either `Volume` or `Disk`, but not both.
 class Volume {
   /// Configuration for a existing disk.
-  ExistingDisk existingDisk;
+  ExistingDisk? existingDisk;
 
   /// Configuration for an NFS mount.
-  NFSMount nfsMount;
+  NFSMount? nfsMount;
 
   /// Configuration for a persistent disk.
-  PersistentDisk persistentDisk;
+  PersistentDisk? persistentDisk;
 
   /// A user-supplied name for the volume.
   ///
   /// Used when mounting the volume into `Actions`. The name must contain only
   /// upper and lowercase alphanumeric characters and hyphens and cannot start
   /// with a hyphen.
-  core.String volume;
+  core.String? volume;
 
   Volume();
 
@@ -2182,24 +2162,24 @@ class Volume {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (existingDisk != null) 'existingDisk': existingDisk.toJson(),
-        if (nfsMount != null) 'nfsMount': nfsMount.toJson(),
-        if (persistentDisk != null) 'persistentDisk': persistentDisk.toJson(),
-        if (volume != null) 'volume': volume,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (existingDisk != null) 'existingDisk': existingDisk!.toJson(),
+        if (nfsMount != null) 'nfsMount': nfsMount!.toJson(),
+        if (persistentDisk != null) 'persistentDisk': persistentDisk!.toJson(),
+        if (volume != null) 'volume': volume!,
       };
 }
 
 /// An event generated after a worker VM has been assigned to run the pipeline.
 class WorkerAssignedEvent {
   /// The worker's instance name.
-  core.String instance;
+  core.String? instance;
 
   /// The machine type that was assigned for the worker.
-  core.String machineType;
+  core.String? machineType;
 
   /// The zone the worker is running in.
-  core.String zone;
+  core.String? zone;
 
   WorkerAssignedEvent();
 
@@ -2215,10 +2195,10 @@ class WorkerAssignedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (instance != null) 'instance': instance,
-        if (machineType != null) 'machineType': machineType,
-        if (zone != null) 'zone': zone,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (instance != null) 'instance': instance!,
+        if (machineType != null) 'machineType': machineType!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -2226,10 +2206,10 @@ class WorkerAssignedEvent {
 /// been released (deleted).
 class WorkerReleasedEvent {
   /// The worker's instance name.
-  core.String instance;
+  core.String? instance;
 
   /// The zone the worker was running in.
-  core.String zone;
+  core.String? zone;
 
   WorkerReleasedEvent();
 
@@ -2242,8 +2222,8 @@ class WorkerReleasedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (instance != null) 'instance': instance,
-        if (zone != null) 'zone': zone,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (instance != null) 'instance': instance!,
+        if (zone != null) 'zone': zone!,
       };
 }

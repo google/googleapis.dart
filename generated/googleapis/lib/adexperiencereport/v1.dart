@@ -80,11 +80,8 @@ class SitesResource {
   /// this method will complete with the same error.
   async.Future<SiteSummaryResponse> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -122,7 +119,7 @@ class ViolatingSitesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ViolatingSitesResponse> list({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -148,14 +145,14 @@ class PlatformSummary {
   /// - "PASSING" : Passing.
   /// - "WARNING" : Warning. No longer a possible status.
   /// - "FAILING" : Failing.
-  core.String betterAdsStatus;
+  core.String? betterAdsStatus;
 
   /// The time at which
   /// [enforcement](https://support.google.com/webtools/answer/7308033) against
   /// the site began or will begin on this platform.
   ///
   /// Not set when the filter_status is OFF.
-  core.String enforcementTime;
+  core.String? enforcementTime;
 
   /// The site's
   /// [enforcement status](https://support.google.com/webtools/answer/7308033)
@@ -166,26 +163,26 @@ class PlatformSummary {
   /// - "OFF" : Ad filtering is off.
   /// - "PAUSED" : Ad filtering is paused.
   /// - "PENDING" : Ad filtering is pending.
-  core.String filterStatus;
+  core.String? filterStatus;
 
   /// The time at which the site's status last changed on this platform.
-  core.String lastChangeTime;
+  core.String? lastChangeTime;
 
   /// The site's regions on this platform.
   ///
   /// No longer populated, because there is no longer any semantic difference
   /// between sites in different regions.
-  core.List<core.String> region;
+  core.List<core.String>? region;
 
   /// A link to the full Ad Experience Report for the site on this platform..
   ///
   /// Not set in ViolatingSitesResponse. Note that you must complete the
   /// [Search Console verification process](https://support.google.com/webmasters/answer/9008080)
   /// for the site before you can access the full report.
-  core.String reportUrl;
+  core.String? reportUrl;
 
   /// Whether the site is currently under review on this platform.
-  core.bool underReview;
+  core.bool? underReview;
 
   PlatformSummary();
 
@@ -215,27 +212,27 @@ class PlatformSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (betterAdsStatus != null) 'betterAdsStatus': betterAdsStatus,
-        if (enforcementTime != null) 'enforcementTime': enforcementTime,
-        if (filterStatus != null) 'filterStatus': filterStatus,
-        if (lastChangeTime != null) 'lastChangeTime': lastChangeTime,
-        if (region != null) 'region': region,
-        if (reportUrl != null) 'reportUrl': reportUrl,
-        if (underReview != null) 'underReview': underReview,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (betterAdsStatus != null) 'betterAdsStatus': betterAdsStatus!,
+        if (enforcementTime != null) 'enforcementTime': enforcementTime!,
+        if (filterStatus != null) 'filterStatus': filterStatus!,
+        if (lastChangeTime != null) 'lastChangeTime': lastChangeTime!,
+        if (region != null) 'region': region!,
+        if (reportUrl != null) 'reportUrl': reportUrl!,
+        if (underReview != null) 'underReview': underReview!,
       };
 }
 
 /// Response message for GetSiteSummary.
 class SiteSummaryResponse {
   /// The site's Ad Experience Report summary on desktop.
-  PlatformSummary desktopSummary;
+  PlatformSummary? desktopSummary;
 
   /// The site's Ad Experience Report summary on mobile.
-  PlatformSummary mobileSummary;
+  PlatformSummary? mobileSummary;
 
   /// The name of the reviewed site, e.g. `google.com`.
-  core.String reviewedSite;
+  core.String? reviewedSite;
 
   SiteSummaryResponse();
 
@@ -253,17 +250,17 @@ class SiteSummaryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (desktopSummary != null) 'desktopSummary': desktopSummary.toJson(),
-        if (mobileSummary != null) 'mobileSummary': mobileSummary.toJson(),
-        if (reviewedSite != null) 'reviewedSite': reviewedSite,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (desktopSummary != null) 'desktopSummary': desktopSummary!.toJson(),
+        if (mobileSummary != null) 'mobileSummary': mobileSummary!.toJson(),
+        if (reviewedSite != null) 'reviewedSite': reviewedSite!,
       };
 }
 
 /// Response message for ListViolatingSites.
 class ViolatingSitesResponse {
   /// The list of violating sites.
-  core.List<SiteSummaryResponse> violatingSites;
+  core.List<SiteSummaryResponse>? violatingSites;
 
   ViolatingSitesResponse();
 
@@ -276,9 +273,9 @@ class ViolatingSitesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (violatingSites != null)
           'violatingSites':
-              violatingSites.map((value) => value.toJson()).toList(),
+              violatingSites!.map((value) => value.toJson()).toList(),
       };
 }

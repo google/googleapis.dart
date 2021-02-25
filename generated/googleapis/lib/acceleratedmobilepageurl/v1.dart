@@ -77,10 +77,9 @@ class AmpUrlsResource {
   /// this method will complete with the same error.
   async.Future<BatchGetAmpUrlsResponse> batchGet(
     BatchGetAmpUrlsRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -101,14 +100,14 @@ class AmpUrlsResource {
 /// AMP URL response for a requested URL.
 class AmpUrl {
   /// The AMP URL pointing to the publisher's web server.
-  core.String ampUrl;
+  core.String? ampUrl;
 
   /// The \[AMP Cache URL\](/amp/cache/overview#amp-cache-url-format) pointing
   /// to the cached document in the Google AMP Cache.
-  core.String cdnAmpUrl;
+  core.String? cdnAmpUrl;
 
   /// The original non-AMP URL.
-  core.String originalUrl;
+  core.String? originalUrl;
 
   AmpUrl();
 
@@ -124,10 +123,10 @@ class AmpUrl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ampUrl != null) 'ampUrl': ampUrl,
-        if (cdnAmpUrl != null) 'cdnAmpUrl': cdnAmpUrl,
-        if (originalUrl != null) 'originalUrl': originalUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ampUrl != null) 'ampUrl': ampUrl!,
+        if (cdnAmpUrl != null) 'cdnAmpUrl': cdnAmpUrl!,
+        if (originalUrl != null) 'originalUrl': originalUrl!,
       };
 }
 
@@ -148,13 +147,13 @@ class AmpUrlError {
   /// success or failure. It will be removed in future versions of the API.
   /// - "URL_IS_INVALID_AMP" : Indicates that an AMP URL has been found that
   /// corresponds to the request URL, but it is not valid AMP HTML.
-  core.String errorCode;
+  core.String? errorCode;
 
   /// An optional descriptive error message.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   /// The original non-AMP URL.
-  core.String originalUrl;
+  core.String? originalUrl;
 
   AmpUrlError();
 
@@ -170,10 +169,10 @@ class AmpUrlError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode,
-        if (errorMessage != null) 'errorMessage': errorMessage,
-        if (originalUrl != null) 'originalUrl': originalUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (originalUrl != null) 'originalUrl': originalUrl!,
       };
 }
 
@@ -190,13 +189,13 @@ class BatchGetAmpUrlsRequest {
   /// - "IN_INDEX_DOC" : IN_INDEX_DOC strategy skips fetching live documents of
   /// URL(s) not found in index. For applications which need low latency use of
   /// IN_INDEX_DOC strategy is recommended.
-  core.String lookupStrategy;
+  core.String? lookupStrategy;
 
   /// List of URLs to look up for the paired AMP URLs.
   ///
   /// The URLs are case-sensitive. Up to 50 URLs per lookup (see \[Usage
   /// Limits\](/amp/cache/reference/limits)).
-  core.List<core.String> urls;
+  core.List<core.String>? urls;
 
   BatchGetAmpUrlsRequest();
 
@@ -211,9 +210,9 @@ class BatchGetAmpUrlsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lookupStrategy != null) 'lookupStrategy': lookupStrategy,
-        if (urls != null) 'urls': urls,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lookupStrategy != null) 'lookupStrategy': lookupStrategy!,
+        if (urls != null) 'urls': urls!,
       };
 }
 
@@ -224,10 +223,10 @@ class BatchGetAmpUrlsResponse {
   /// The response might not be in the same order as URLs in the batch request.
   /// If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated only
   /// once.
-  core.List<AmpUrl> ampUrls;
+  core.List<AmpUrl>? ampUrls;
 
   /// The errors for requested URLs that have no AMP URL.
-  core.List<AmpUrlError> urlErrors;
+  core.List<AmpUrlError>? urlErrors;
 
   BatchGetAmpUrlsResponse();
 
@@ -246,10 +245,10 @@ class BatchGetAmpUrlsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (ampUrls != null)
-          'ampUrls': ampUrls.map((value) => value.toJson()).toList(),
+          'ampUrls': ampUrls!.map((value) => value.toJson()).toList(),
         if (urlErrors != null)
-          'urlErrors': urlErrors.map((value) => value.toJson()).toList(),
+          'urlErrors': urlErrors!.map((value) => value.toJson()).toList(),
       };
 }

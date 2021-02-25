@@ -47,11 +47,26 @@ void checkGoogleChromeManagementV1BrowserVersion(
     api.GoogleChromeManagementV1BrowserVersion o) {
   buildCounterGoogleChromeManagementV1BrowserVersion++;
   if (buildCounterGoogleChromeManagementV1BrowserVersion < 3) {
-    unittest.expect(o.channel, unittest.equals('foo'));
-    unittest.expect(o.count, unittest.equals('foo'));
-    unittest.expect(o.deviceOsVersion, unittest.equals('foo'));
-    unittest.expect(o.system, unittest.equals('foo'));
-    unittest.expect(o.version, unittest.equals('foo'));
+    unittest.expect(
+      o.channel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.count!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deviceOsVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.system!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleChromeManagementV1BrowserVersion--;
 }
@@ -89,9 +104,15 @@ void checkGoogleChromeManagementV1CountChromeVersionsResponse(
     api.GoogleChromeManagementV1CountChromeVersionsResponse o) {
   buildCounterGoogleChromeManagementV1CountChromeVersionsResponse++;
   if (buildCounterGoogleChromeManagementV1CountChromeVersionsResponse < 3) {
-    checkUnnamed1356(o.browserVersions);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    unittest.expect(o.totalSize, unittest.equals(42));
+    checkUnnamed1356(o.browserVersions!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalSize!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleChromeManagementV1CountChromeVersionsResponse--;
 }
@@ -129,9 +150,15 @@ void checkGoogleChromeManagementV1CountInstalledAppsResponse(
     api.GoogleChromeManagementV1CountInstalledAppsResponse o) {
   buildCounterGoogleChromeManagementV1CountInstalledAppsResponse++;
   if (buildCounterGoogleChromeManagementV1CountInstalledAppsResponse < 3) {
-    checkUnnamed1357(o.installedApps);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    unittest.expect(o.totalSize, unittest.equals(42));
+    checkUnnamed1357(o.installedApps!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalSize!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleChromeManagementV1CountInstalledAppsResponse--;
 }
@@ -151,8 +178,14 @@ api.GoogleChromeManagementV1Device buildGoogleChromeManagementV1Device() {
 void checkGoogleChromeManagementV1Device(api.GoogleChromeManagementV1Device o) {
   buildCounterGoogleChromeManagementV1Device++;
   if (buildCounterGoogleChromeManagementV1Device < 3) {
-    unittest.expect(o.deviceId, unittest.equals('foo'));
-    unittest.expect(o.machine, unittest.equals('foo'));
+    unittest.expect(
+      o.deviceId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.machine!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleChromeManagementV1Device--;
 }
@@ -191,9 +224,15 @@ void checkGoogleChromeManagementV1FindInstalledAppDevicesResponse(
     api.GoogleChromeManagementV1FindInstalledAppDevicesResponse o) {
   buildCounterGoogleChromeManagementV1FindInstalledAppDevicesResponse++;
   if (buildCounterGoogleChromeManagementV1FindInstalledAppDevicesResponse < 3) {
-    checkUnnamed1358(o.devices);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    unittest.expect(o.totalSize, unittest.equals(42));
+    checkUnnamed1358(o.devices!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalSize!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleChromeManagementV1FindInstalledAppDevicesResponse--;
 }
@@ -207,8 +246,14 @@ core.List<core.String> buildUnnamed1359() {
 
 void checkUnnamed1359(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleChromeManagementV1InstalledApp = 0;
@@ -237,17 +282,44 @@ void checkGoogleChromeManagementV1InstalledApp(
     api.GoogleChromeManagementV1InstalledApp o) {
   buildCounterGoogleChromeManagementV1InstalledApp++;
   if (buildCounterGoogleChromeManagementV1InstalledApp < 3) {
-    unittest.expect(o.appId, unittest.equals('foo'));
-    unittest.expect(o.appInstallType, unittest.equals('foo'));
-    unittest.expect(o.appSource, unittest.equals('foo'));
-    unittest.expect(o.appType, unittest.equals('foo'));
-    unittest.expect(o.browserDeviceCount, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.disabled, unittest.isTrue);
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    unittest.expect(o.homepageUri, unittest.equals('foo'));
-    unittest.expect(o.osUserCount, unittest.equals('foo'));
-    checkUnnamed1359(o.permissions);
+    unittest.expect(
+      o.appId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.appInstallType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.appSource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.appType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.browserDeviceCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.disabled!, unittest.isTrue);
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.homepageUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.osUserCount!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1359(o.permissions!);
   }
   buildCounterGoogleChromeManagementV1InstalledApp--;
 }
@@ -330,10 +402,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -352,14 +428,26 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["orgUnitId"].first, unittest.equals(arg_orgUnitId));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["orgUnitId"]!.first,
+          unittest.equals(arg_orgUnitId),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -397,10 +485,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -419,16 +511,30 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
         unittest.expect(
-            queryMap["orgUnitId"].first, unittest.equals(arg_orgUnitId));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
+          queryMap["orderBy"]!.first,
+          unittest.equals(arg_orderBy),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["orgUnitId"]!.first,
+          unittest.equals(arg_orgUnitId),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -469,10 +575,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -491,19 +601,38 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["appId"].first, unittest.equals(arg_appId));
         unittest.expect(
-            queryMap["appType"].first, unittest.equals(arg_appType));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+          queryMap["appId"]!.first,
+          unittest.equals(arg_appId),
+        );
         unittest.expect(
-            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+          queryMap["appType"]!.first,
+          unittest.equals(arg_appType),
+        );
         unittest.expect(
-            queryMap["orgUnitId"].first, unittest.equals(arg_orgUnitId));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["orderBy"]!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
+          queryMap["orgUnitId"]!.first,
+          unittest.equals(arg_orgUnitId),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

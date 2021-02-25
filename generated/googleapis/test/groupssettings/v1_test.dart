@@ -101,72 +101,250 @@ api.Groups buildGroups() {
 void checkGroups(api.Groups o) {
   buildCounterGroups++;
   if (buildCounterGroups < 3) {
-    unittest.expect(o.allowExternalMembers, unittest.equals('foo'));
-    unittest.expect(o.allowGoogleCommunication, unittest.equals('foo'));
-    unittest.expect(o.allowWebPosting, unittest.equals('foo'));
-    unittest.expect(o.archiveOnly, unittest.equals('foo'));
-    unittest.expect(o.customFooterText, unittest.equals('foo'));
-    unittest.expect(o.customReplyTo, unittest.equals('foo'));
     unittest.expect(
-        o.customRolesEnabledForSettingsToBeMerged, unittest.equals('foo'));
+      o.allowExternalMembers!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
-        o.defaultMessageDenyNotificationText, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.email, unittest.equals('foo'));
-    unittest.expect(o.enableCollaborativeInbox, unittest.equals('foo'));
-    unittest.expect(o.favoriteRepliesOnTop, unittest.equals('foo'));
-    unittest.expect(o.includeCustomFooter, unittest.equals('foo'));
-    unittest.expect(o.includeInGlobalAddressList, unittest.equals('foo'));
-    unittest.expect(o.isArchived, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.maxMessageBytes, unittest.equals(42));
-    unittest.expect(o.membersCanPostAsTheGroup, unittest.equals('foo'));
-    unittest.expect(o.messageDisplayFont, unittest.equals('foo'));
-    unittest.expect(o.messageModerationLevel, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.primaryLanguage, unittest.equals('foo'));
-    unittest.expect(o.replyTo, unittest.equals('foo'));
-    unittest.expect(o.sendMessageDenyNotification, unittest.equals('foo'));
-    unittest.expect(o.showInGroupDirectory, unittest.equals('foo'));
-    unittest.expect(o.spamModerationLevel, unittest.equals('foo'));
-    unittest.expect(o.whoCanAdd, unittest.equals('foo'));
-    unittest.expect(o.whoCanAddReferences, unittest.equals('foo'));
-    unittest.expect(o.whoCanApproveMembers, unittest.equals('foo'));
-    unittest.expect(o.whoCanApproveMessages, unittest.equals('foo'));
-    unittest.expect(o.whoCanAssignTopics, unittest.equals('foo'));
-    unittest.expect(o.whoCanAssistContent, unittest.equals('foo'));
-    unittest.expect(o.whoCanBanUsers, unittest.equals('foo'));
-    unittest.expect(o.whoCanContactOwner, unittest.equals('foo'));
-    unittest.expect(o.whoCanDeleteAnyPost, unittest.equals('foo'));
-    unittest.expect(o.whoCanDeleteTopics, unittest.equals('foo'));
-    unittest.expect(o.whoCanDiscoverGroup, unittest.equals('foo'));
-    unittest.expect(o.whoCanEnterFreeFormTags, unittest.equals('foo'));
-    unittest.expect(o.whoCanHideAbuse, unittest.equals('foo'));
-    unittest.expect(o.whoCanInvite, unittest.equals('foo'));
-    unittest.expect(o.whoCanJoin, unittest.equals('foo'));
-    unittest.expect(o.whoCanLeaveGroup, unittest.equals('foo'));
-    unittest.expect(o.whoCanLockTopics, unittest.equals('foo'));
-    unittest.expect(o.whoCanMakeTopicsSticky, unittest.equals('foo'));
-    unittest.expect(o.whoCanMarkDuplicate, unittest.equals('foo'));
+      o.allowGoogleCommunication!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
-        o.whoCanMarkFavoriteReplyOnAnyTopic, unittest.equals('foo'));
+      o.allowWebPosting!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
-        o.whoCanMarkFavoriteReplyOnOwnTopic, unittest.equals('foo'));
-    unittest.expect(o.whoCanMarkNoResponseNeeded, unittest.equals('foo'));
-    unittest.expect(o.whoCanModerateContent, unittest.equals('foo'));
-    unittest.expect(o.whoCanModerateMembers, unittest.equals('foo'));
-    unittest.expect(o.whoCanModifyMembers, unittest.equals('foo'));
-    unittest.expect(o.whoCanModifyTagsAndCategories, unittest.equals('foo'));
-    unittest.expect(o.whoCanMoveTopicsIn, unittest.equals('foo'));
-    unittest.expect(o.whoCanMoveTopicsOut, unittest.equals('foo'));
-    unittest.expect(o.whoCanPostAnnouncements, unittest.equals('foo'));
-    unittest.expect(o.whoCanPostMessage, unittest.equals('foo'));
-    unittest.expect(o.whoCanTakeTopics, unittest.equals('foo'));
-    unittest.expect(o.whoCanUnassignTopic, unittest.equals('foo'));
+      o.archiveOnly!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
-        o.whoCanUnmarkFavoriteReplyOnAnyTopic, unittest.equals('foo'));
-    unittest.expect(o.whoCanViewGroup, unittest.equals('foo'));
-    unittest.expect(o.whoCanViewMembership, unittest.equals('foo'));
+      o.customFooterText!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.customReplyTo!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.customRolesEnabledForSettingsToBeMerged!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.defaultMessageDenyNotificationText!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.email!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.enableCollaborativeInbox!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.favoriteRepliesOnTop!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.includeCustomFooter!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.includeInGlobalAddressList!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.isArchived!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxMessageBytes!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.membersCanPostAsTheGroup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.messageDisplayFont!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.messageModerationLevel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.primaryLanguage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.replyTo!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sendMessageDenyNotification!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.showInGroupDirectory!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.spamModerationLevel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanAdd!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanAddReferences!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanApproveMembers!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanApproveMessages!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanAssignTopics!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanAssistContent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanBanUsers!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanContactOwner!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanDeleteAnyPost!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanDeleteTopics!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanDiscoverGroup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanEnterFreeFormTags!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanHideAbuse!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanInvite!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanJoin!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanLeaveGroup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanLockTopics!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanMakeTopicsSticky!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanMarkDuplicate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanMarkFavoriteReplyOnAnyTopic!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanMarkFavoriteReplyOnOwnTopic!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanMarkNoResponseNeeded!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanModerateContent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanModerateMembers!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanModifyMembers!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanModifyTagsAndCategories!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanMoveTopicsIn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanMoveTopicsOut!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanPostAnnouncements!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanPostMessage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanTakeTopics!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanUnassignTopic!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanUnmarkFavoriteReplyOnAnyTopic!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanViewGroup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.whoCanViewMembership!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGroups--;
 }
@@ -192,7 +370,9 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -210,7 +390,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -241,7 +424,9 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -259,7 +444,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -290,7 +478,9 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -308,7 +498,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

@@ -118,13 +118,9 @@ class SpreadsheetsResource {
   async.Future<BatchUpdateSpreadsheetResponse> batchUpdate(
     BatchUpdateSpreadsheetRequest request,
     core.String spreadsheetId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (spreadsheetId == null) {
-      throw core.ArgumentError('Parameter spreadsheetId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -161,10 +157,9 @@ class SpreadsheetsResource {
   /// this method will complete with the same error.
   async.Future<Spreadsheet> create(
     Spreadsheet request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -215,13 +210,10 @@ class SpreadsheetsResource {
   /// this method will complete with the same error.
   async.Future<Spreadsheet> get(
     core.String spreadsheetId, {
-    core.bool includeGridData,
-    core.List<core.String> ranges,
-    core.String $fields,
+    core.bool? includeGridData,
+    core.List<core.String>? ranges,
+    core.String? $fields,
   }) async {
-    if (spreadsheetId == null) {
-      throw core.ArgumentError('Parameter spreadsheetId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeGridData != null) 'includeGridData': ['${includeGridData}'],
       if (ranges != null) 'ranges': ranges,
@@ -274,13 +266,9 @@ class SpreadsheetsResource {
   async.Future<Spreadsheet> getByDataFilter(
     GetSpreadsheetByDataFilterRequest request,
     core.String spreadsheetId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (spreadsheetId == null) {
-      throw core.ArgumentError('Parameter spreadsheetId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -330,14 +318,8 @@ class SpreadsheetsDeveloperMetadataResource {
   async.Future<DeveloperMetadata> get(
     core.String spreadsheetId,
     core.int metadataId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (spreadsheetId == null) {
-      throw core.ArgumentError('Parameter spreadsheetId is required.');
-    }
-    if (metadataId == null) {
-      throw core.ArgumentError('Parameter metadataId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -382,13 +364,9 @@ class SpreadsheetsDeveloperMetadataResource {
   async.Future<SearchDeveloperMetadataResponse> search(
     SearchDeveloperMetadataRequest request,
     core.String spreadsheetId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (spreadsheetId == null) {
-      throw core.ArgumentError('Parameter spreadsheetId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -439,16 +417,9 @@ class SpreadsheetsSheetsResource {
     CopySheetToAnotherSpreadsheetRequest request,
     core.String spreadsheetId,
     core.int sheetId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (spreadsheetId == null) {
-      throw core.ArgumentError('Parameter spreadsheetId is required.');
-    }
-    if (sheetId == null) {
-      throw core.ArgumentError('Parameter sheetId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -566,21 +537,14 @@ class SpreadsheetsValuesResource {
     ValueRange request,
     core.String spreadsheetId,
     core.String range, {
-    core.bool includeValuesInResponse,
-    core.String insertDataOption,
-    core.String responseDateTimeRenderOption,
-    core.String responseValueRenderOption,
-    core.String valueInputOption,
-    core.String $fields,
+    core.bool? includeValuesInResponse,
+    core.String? insertDataOption,
+    core.String? responseDateTimeRenderOption,
+    core.String? responseValueRenderOption,
+    core.String? valueInputOption,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (spreadsheetId == null) {
-      throw core.ArgumentError('Parameter spreadsheetId is required.');
-    }
-    if (range == null) {
-      throw core.ArgumentError('Parameter range is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeValuesInResponse != null)
         'includeValuesInResponse': ['${includeValuesInResponse}'],
@@ -634,13 +598,9 @@ class SpreadsheetsValuesResource {
   async.Future<BatchClearValuesResponse> batchClear(
     BatchClearValuesRequest request,
     core.String spreadsheetId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (spreadsheetId == null) {
-      throw core.ArgumentError('Parameter spreadsheetId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -685,13 +645,9 @@ class SpreadsheetsValuesResource {
   async.Future<BatchClearValuesByDataFilterResponse> batchClearByDataFilter(
     BatchClearValuesByDataFilterRequest request,
     core.String spreadsheetId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (spreadsheetId == null) {
-      throw core.ArgumentError('Parameter spreadsheetId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -774,15 +730,12 @@ class SpreadsheetsValuesResource {
   /// this method will complete with the same error.
   async.Future<BatchGetValuesResponse> batchGet(
     core.String spreadsheetId, {
-    core.String dateTimeRenderOption,
-    core.String majorDimension,
-    core.List<core.String> ranges,
-    core.String valueRenderOption,
-    core.String $fields,
+    core.String? dateTimeRenderOption,
+    core.String? majorDimension,
+    core.List<core.String>? ranges,
+    core.String? valueRenderOption,
+    core.String? $fields,
   }) async {
-    if (spreadsheetId == null) {
-      throw core.ArgumentError('Parameter spreadsheetId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (dateTimeRenderOption != null)
         'dateTimeRenderOption': [dateTimeRenderOption],
@@ -830,13 +783,9 @@ class SpreadsheetsValuesResource {
   async.Future<BatchGetValuesByDataFilterResponse> batchGetByDataFilter(
     BatchGetValuesByDataFilterRequest request,
     core.String spreadsheetId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (spreadsheetId == null) {
-      throw core.ArgumentError('Parameter spreadsheetId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -879,13 +828,9 @@ class SpreadsheetsValuesResource {
   async.Future<BatchUpdateValuesResponse> batchUpdate(
     BatchUpdateValuesRequest request,
     core.String spreadsheetId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (spreadsheetId == null) {
-      throw core.ArgumentError('Parameter spreadsheetId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -928,13 +873,9 @@ class SpreadsheetsValuesResource {
   async.Future<BatchUpdateValuesByDataFilterResponse> batchUpdateByDataFilter(
     BatchUpdateValuesByDataFilterRequest request,
     core.String spreadsheetId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (spreadsheetId == null) {
-      throw core.ArgumentError('Parameter spreadsheetId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -981,16 +922,9 @@ class SpreadsheetsValuesResource {
     ClearValuesRequest request,
     core.String spreadsheetId,
     core.String range, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (spreadsheetId == null) {
-      throw core.ArgumentError('Parameter spreadsheetId is required.');
-    }
-    if (range == null) {
-      throw core.ArgumentError('Parameter range is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1076,17 +1010,11 @@ class SpreadsheetsValuesResource {
   async.Future<ValueRange> get(
     core.String spreadsheetId,
     core.String range, {
-    core.String dateTimeRenderOption,
-    core.String majorDimension,
-    core.String valueRenderOption,
-    core.String $fields,
+    core.String? dateTimeRenderOption,
+    core.String? majorDimension,
+    core.String? valueRenderOption,
+    core.String? $fields,
   }) async {
-    if (spreadsheetId == null) {
-      throw core.ArgumentError('Parameter spreadsheetId is required.');
-    }
-    if (range == null) {
-      throw core.ArgumentError('Parameter range is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (dateTimeRenderOption != null)
         'dateTimeRenderOption': [dateTimeRenderOption],
@@ -1185,20 +1113,13 @@ class SpreadsheetsValuesResource {
     ValueRange request,
     core.String spreadsheetId,
     core.String range, {
-    core.bool includeValuesInResponse,
-    core.String responseDateTimeRenderOption,
-    core.String responseValueRenderOption,
-    core.String valueInputOption,
-    core.String $fields,
+    core.bool? includeValuesInResponse,
+    core.String? responseDateTimeRenderOption,
+    core.String? responseValueRenderOption,
+    core.String? valueInputOption,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (spreadsheetId == null) {
-      throw core.ArgumentError('Parameter spreadsheetId is required.');
-    }
-    if (range == null) {
-      throw core.ArgumentError('Parameter range is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeValuesInResponse != null)
         'includeValuesInResponse': ['${includeValuesInResponse}'],
@@ -1233,7 +1154,7 @@ class AddBandingRequest {
   /// The bandedRangeId field is optional; if one is not set, an id will be
   /// randomly generated. (It is an error to specify the ID of a range that
   /// already exists.)
-  BandedRange bandedRange;
+  BandedRange? bandedRange;
 
   AddBandingRequest();
 
@@ -1244,15 +1165,15 @@ class AddBandingRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bandedRange != null) 'bandedRange': bandedRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bandedRange != null) 'bandedRange': bandedRange!.toJson(),
       };
 }
 
 /// The result of adding a banded range.
 class AddBandingResponse {
   /// The banded range that was added.
-  BandedRange bandedRange;
+  BandedRange? bandedRange;
 
   AddBandingResponse();
 
@@ -1263,8 +1184,8 @@ class AddBandingResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bandedRange != null) 'bandedRange': bandedRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bandedRange != null) 'bandedRange': bandedRange!.toJson(),
       };
 }
 
@@ -1276,7 +1197,7 @@ class AddChartRequest {
   /// The chartId field is optional; if one is not set, an id will be randomly
   /// generated. (It is an error to specify the ID of an embedded object that
   /// already exists.)
-  EmbeddedChart chart;
+  EmbeddedChart? chart;
 
   AddChartRequest();
 
@@ -1287,15 +1208,15 @@ class AddChartRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (chart != null) 'chart': chart.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (chart != null) 'chart': chart!.toJson(),
       };
 }
 
 /// The result of adding a chart to a spreadsheet.
 class AddChartResponse {
   /// The newly added chart.
-  EmbeddedChart chart;
+  EmbeddedChart? chart;
 
   AddChartResponse();
 
@@ -1306,8 +1227,8 @@ class AddChartResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (chart != null) 'chart': chart.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (chart != null) 'chart': chart!.toJson(),
       };
 }
 
@@ -1316,10 +1237,10 @@ class AddChartResponse {
 /// All subsequent rules' indexes are incremented.
 class AddConditionalFormatRuleRequest {
   /// The zero-based index where the rule should be inserted.
-  core.int index;
+  core.int? index;
 
   /// The rule to add.
-  ConditionalFormatRule rule;
+  ConditionalFormatRule? rule;
 
   AddConditionalFormatRuleRequest();
 
@@ -1333,9 +1254,9 @@ class AddConditionalFormatRuleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (index != null) 'index': index,
-        if (rule != null) 'rule': rule.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (index != null) 'index': index!,
+        if (rule != null) 'rule': rule!.toJson(),
       };
 }
 
@@ -1347,7 +1268,7 @@ class AddConditionalFormatRuleRequest {
 /// OAuth scope.
 class AddDataSourceRequest {
   /// The data source to add.
-  DataSource dataSource;
+  DataSource? dataSource;
 
   AddDataSourceRequest();
 
@@ -1358,18 +1279,18 @@ class AddDataSourceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataSource != null) 'dataSource': dataSource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataSource != null) 'dataSource': dataSource!.toJson(),
       };
 }
 
 /// The result of adding a data source.
 class AddDataSourceResponse {
   /// The data execution status.
-  DataExecutionStatus dataExecutionStatus;
+  DataExecutionStatus? dataExecutionStatus;
 
   /// The data source that was created.
-  DataSource dataSource;
+  DataSource? dataSource;
 
   AddDataSourceResponse();
 
@@ -1384,10 +1305,10 @@ class AddDataSourceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataExecutionStatus != null)
-          'dataExecutionStatus': dataExecutionStatus.toJson(),
-        if (dataSource != null) 'dataSource': dataSource.toJson(),
+          'dataExecutionStatus': dataExecutionStatus!.toJson(),
+        if (dataSource != null) 'dataSource': dataSource!.toJson(),
       };
 }
 
@@ -1408,7 +1329,7 @@ class AddDataSourceResponse {
 /// 1\] and \[C:D, depth 2\].
 class AddDimensionGroupRequest {
   /// The range over which to create a group.
-  DimensionRange range;
+  DimensionRange? range;
 
   AddDimensionGroupRequest();
 
@@ -1419,15 +1340,15 @@ class AddDimensionGroupRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
 /// The result of adding a group.
 class AddDimensionGroupResponse {
   /// All groups of a dimension after adding a group to that dimension.
-  core.List<DimensionGroup> dimensionGroups;
+  core.List<DimensionGroup>? dimensionGroups;
 
   AddDimensionGroupResponse();
 
@@ -1440,10 +1361,10 @@ class AddDimensionGroupResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensionGroups != null)
           'dimensionGroups':
-              dimensionGroups.map((value) => value.toJson()).toList(),
+              dimensionGroups!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1454,7 +1375,7 @@ class AddFilterViewRequest {
   /// The filterViewId field is optional; if one is not set, an id will be
   /// randomly generated. (It is an error to specify the ID of a filter that
   /// already exists.)
-  FilterView filter;
+  FilterView? filter;
 
   AddFilterViewRequest();
 
@@ -1465,15 +1386,15 @@ class AddFilterViewRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filter != null) 'filter': filter.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filter != null) 'filter': filter!.toJson(),
       };
 }
 
 /// The result of adding a filter view.
 class AddFilterViewResponse {
   /// The newly added filter view.
-  FilterView filter;
+  FilterView? filter;
 
   AddFilterViewResponse();
 
@@ -1484,8 +1405,8 @@ class AddFilterViewResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filter != null) 'filter': filter.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filter != null) 'filter': filter!.toJson(),
       };
 }
 
@@ -1496,7 +1417,7 @@ class AddNamedRangeRequest {
   /// The namedRangeId field is optional; if one is not set, an id will be
   /// randomly generated. (It is an error to specify the ID of a range that
   /// already exists.)
-  NamedRange namedRange;
+  NamedRange? namedRange;
 
   AddNamedRangeRequest();
 
@@ -1507,15 +1428,15 @@ class AddNamedRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (namedRange != null) 'namedRange': namedRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (namedRange != null) 'namedRange': namedRange!.toJson(),
       };
 }
 
 /// The result of adding a named range.
 class AddNamedRangeResponse {
   /// The named range to add.
-  NamedRange namedRange;
+  NamedRange? namedRange;
 
   AddNamedRangeResponse();
 
@@ -1526,8 +1447,8 @@ class AddNamedRangeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (namedRange != null) 'namedRange': namedRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (namedRange != null) 'namedRange': namedRange!.toJson(),
       };
 }
 
@@ -1538,7 +1459,7 @@ class AddProtectedRangeRequest {
   /// The protectedRangeId field is optional; if one is not set, an id will be
   /// randomly generated. (It is an error to specify the ID of a range that
   /// already exists.)
-  ProtectedRange protectedRange;
+  ProtectedRange? protectedRange;
 
   AddProtectedRangeRequest();
 
@@ -1549,15 +1470,15 @@ class AddProtectedRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (protectedRange != null) 'protectedRange': protectedRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (protectedRange != null) 'protectedRange': protectedRange!.toJson(),
       };
 }
 
 /// The result of adding a new protected range.
 class AddProtectedRangeResponse {
   /// The newly added protected range.
-  ProtectedRange protectedRange;
+  ProtectedRange? protectedRange;
 
   AddProtectedRangeResponse();
 
@@ -1568,8 +1489,8 @@ class AddProtectedRangeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (protectedRange != null) 'protectedRange': protectedRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (protectedRange != null) 'protectedRange': protectedRange!.toJson(),
       };
 }
 
@@ -1584,7 +1505,7 @@ class AddSheetRequest {
   /// All properties are optional. The sheetId field is optional; if one is not
   /// set, an id will be randomly generated. (It is an error to specify the ID
   /// of a sheet that already exists.)
-  SheetProperties properties;
+  SheetProperties? properties;
 
   AddSheetRequest();
 
@@ -1595,15 +1516,15 @@ class AddSheetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (properties != null) 'properties': properties.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (properties != null) 'properties': properties!.toJson(),
       };
 }
 
 /// The result of adding a sheet.
 class AddSheetResponse {
   /// The properties of the newly added sheet.
-  SheetProperties properties;
+  SheetProperties? properties;
 
   AddSheetResponse();
 
@@ -1614,8 +1535,8 @@ class AddSheetResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (properties != null) 'properties': properties.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (properties != null) 'properties': properties!.toJson(),
       };
 }
 
@@ -1627,7 +1548,7 @@ class AddSlicerRequest {
   /// The slicerId field is optional; if one is not set, an id will be randomly
   /// generated. (It is an error to specify the ID of a slicer that already
   /// exists.)
-  Slicer slicer;
+  Slicer? slicer;
 
   AddSlicerRequest();
 
@@ -1638,15 +1559,15 @@ class AddSlicerRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (slicer != null) 'slicer': slicer.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (slicer != null) 'slicer': slicer!.toJson(),
       };
 }
 
 /// The result of adding a slicer to a spreadsheet.
 class AddSlicerResponse {
   /// The newly added slicer.
-  Slicer slicer;
+  Slicer? slicer;
 
   AddSlicerResponse();
 
@@ -1657,8 +1578,8 @@ class AddSlicerResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (slicer != null) 'slicer': slicer.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (slicer != null) 'slicer': slicer!.toJson(),
       };
 }
 
@@ -1670,13 +1591,13 @@ class AppendCellsRequest {
   /// At least one field must be specified. The root is the CellData;
   /// 'row.values.' should not be specified. A single `"*"` can be used as
   /// short-hand for listing every field.
-  core.String fields;
+  core.String? fields;
 
   /// The data to append.
-  core.List<RowData> rows;
+  core.List<RowData>? rows;
 
   /// The sheet ID to append the data to.
-  core.int sheetId;
+  core.int? sheetId;
 
   AppendCellsRequest();
 
@@ -1695,10 +1616,10 @@ class AppendCellsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
-        if (sheetId != null) 'sheetId': sheetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (sheetId != null) 'sheetId': sheetId!,
       };
 }
 
@@ -1709,13 +1630,13 @@ class AppendDimensionRequest {
   /// - "DIMENSION_UNSPECIFIED" : The default value, do not use.
   /// - "ROWS" : Operates on the rows of a sheet.
   /// - "COLUMNS" : Operates on the columns of a sheet.
-  core.String dimension;
+  core.String? dimension;
 
   /// The number of rows or columns to append.
-  core.int length;
+  core.int? length;
 
   /// The sheet to append rows or columns to.
-  core.int sheetId;
+  core.int? sheetId;
 
   AppendDimensionRequest();
 
@@ -1731,26 +1652,26 @@ class AppendDimensionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimension != null) 'dimension': dimension,
-        if (length != null) 'length': length,
-        if (sheetId != null) 'sheetId': sheetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimension != null) 'dimension': dimension!,
+        if (length != null) 'length': length!,
+        if (sheetId != null) 'sheetId': sheetId!,
       };
 }
 
 /// The response when updating a range of values in a spreadsheet.
 class AppendValuesResponse {
   /// The spreadsheet the updates were applied to.
-  core.String spreadsheetId;
+  core.String? spreadsheetId;
 
   /// The range (in A1 notation) of the table that values are being appended to
   /// (before the values were appended).
   ///
   /// Empty if no table was found.
-  core.String tableRange;
+  core.String? tableRange;
 
   /// Information about the updates that were applied.
-  UpdateValuesResponse updates;
+  UpdateValuesResponse? updates;
 
   AppendValuesResponse();
 
@@ -1767,10 +1688,10 @@ class AppendValuesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
-        if (tableRange != null) 'tableRange': tableRange,
-        if (updates != null) 'updates': updates.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+        if (tableRange != null) 'tableRange': tableRange!,
+        if (updates != null) 'updates': updates!.toJson(),
       };
 }
 
@@ -1780,18 +1701,18 @@ class AutoFillRequest {
   ///
   /// This will examine the range and detect the location that has data and
   /// automatically fill that data in to the rest of the range.
-  GridRange range;
+  GridRange? range;
 
   /// The source and destination areas to autofill.
   ///
   /// This explicitly lists the source of the autofill and where to extend that
   /// data.
-  SourceAndDestination sourceAndDestination;
+  SourceAndDestination? sourceAndDestination;
 
   /// True if we should generate data with the "alternate" series.
   ///
   /// This differs based on the type and amount of source data.
-  core.bool useAlternateSeries;
+  core.bool? useAlternateSeries;
 
   AutoFillRequest();
 
@@ -1809,12 +1730,12 @@ class AutoFillRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (range != null) 'range': range!.toJson(),
         if (sourceAndDestination != null)
-          'sourceAndDestination': sourceAndDestination.toJson(),
+          'sourceAndDestination': sourceAndDestination!.toJson(),
         if (useAlternateSeries != null)
-          'useAlternateSeries': useAlternateSeries,
+          'useAlternateSeries': useAlternateSeries!,
       };
 }
 
@@ -1822,10 +1743,10 @@ class AutoFillRequest {
 /// cells in that dimension.
 class AutoResizeDimensionsRequest {
   /// The dimensions on a data source sheet to automatically resize.
-  DataSourceSheetDimensionRange dataSourceSheetDimensions;
+  DataSourceSheetDimensionRange? dataSourceSheetDimensions;
 
   /// The dimensions to automatically resize.
-  DimensionRange dimensions;
+  DimensionRange? dimensions;
 
   AutoResizeDimensionsRequest();
 
@@ -1841,34 +1762,34 @@ class AutoResizeDimensionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataSourceSheetDimensions != null)
-          'dataSourceSheetDimensions': dataSourceSheetDimensions.toJson(),
-        if (dimensions != null) 'dimensions': dimensions.toJson(),
+          'dataSourceSheetDimensions': dataSourceSheetDimensions!.toJson(),
+        if (dimensions != null) 'dimensions': dimensions!.toJson(),
       };
 }
 
 /// A banded (alternating colors) range in a sheet.
 class BandedRange {
   /// The id of the banded range.
-  core.int bandedRangeId;
+  core.int? bandedRangeId;
 
   /// Properties for column bands.
   ///
   /// These properties are applied on a column- by-column basis throughout all
   /// the columns in the range. At least one of row_properties or
   /// column_properties must be specified.
-  BandingProperties columnProperties;
+  BandingProperties? columnProperties;
 
   /// The range over which these properties are applied.
-  GridRange range;
+  GridRange? range;
 
   /// Properties for row bands.
   ///
   /// These properties are applied on a row-by-row basis throughout all the rows
   /// in the range. At least one of row_properties or column_properties must be
   /// specified.
-  BandingProperties rowProperties;
+  BandingProperties? rowProperties;
 
   BandedRange();
 
@@ -1890,12 +1811,12 @@ class BandedRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bandedRangeId != null) 'bandedRangeId': bandedRangeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bandedRangeId != null) 'bandedRangeId': bandedRangeId!,
         if (columnProperties != null)
-          'columnProperties': columnProperties.toJson(),
-        if (range != null) 'range': range.toJson(),
-        if (rowProperties != null) 'rowProperties': rowProperties.toJson(),
+          'columnProperties': columnProperties!.toJson(),
+        if (range != null) 'range': range!.toJson(),
+        if (rowProperties != null) 'rowProperties': rowProperties!.toJson(),
       };
 }
 
@@ -1914,19 +1835,19 @@ class BandingProperties {
   /// The first color that is alternating.
   ///
   /// (Required)
-  Color firstBandColor;
+  Color? firstBandColor;
 
   /// The first color that is alternating.
   ///
   /// (Required) If first_band_color is also set, this field takes precedence.
-  ColorStyle firstBandColorStyle;
+  ColorStyle? firstBandColorStyle;
 
   /// The color of the last row or column.
   ///
   /// If this field is not set, the last row or column is filled with either
   /// first_band_color or second_band_color, depending on the color of the
   /// previous row or column.
-  Color footerColor;
+  Color? footerColor;
 
   /// The color of the last row or column.
   ///
@@ -1934,7 +1855,7 @@ class BandingProperties {
   /// first_band_color or second_band_color, depending on the color of the
   /// previous row or column. If footer_color is also set, this field takes
   /// precedence.
-  ColorStyle footerColorStyle;
+  ColorStyle? footerColorStyle;
 
   /// The color of the first row or column.
   ///
@@ -1943,7 +1864,7 @@ class BandingProperties {
   /// starting from the second row or column. Otherwise, the first row or column
   /// is filled with first_band_color and the colors proceed to alternate as
   /// they normally would.
-  Color headerColor;
+  Color? headerColor;
 
   /// The color of the first row or column.
   ///
@@ -1953,17 +1874,17 @@ class BandingProperties {
   /// is filled with first_band_color and the colors proceed to alternate as
   /// they normally would. If header_color is also set, this field takes
   /// precedence.
-  ColorStyle headerColorStyle;
+  ColorStyle? headerColorStyle;
 
   /// The second color that is alternating.
   ///
   /// (Required)
-  Color secondBandColor;
+  Color? secondBandColor;
 
   /// The second color that is alternating.
   ///
   /// (Required) If second_band_color is also set, this field takes precedence.
-  ColorStyle secondBandColorStyle;
+  ColorStyle? secondBandColorStyle;
 
   BandingProperties();
 
@@ -2002,20 +1923,20 @@ class BandingProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (firstBandColor != null) 'firstBandColor': firstBandColor.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (firstBandColor != null) 'firstBandColor': firstBandColor!.toJson(),
         if (firstBandColorStyle != null)
-          'firstBandColorStyle': firstBandColorStyle.toJson(),
-        if (footerColor != null) 'footerColor': footerColor.toJson(),
+          'firstBandColorStyle': firstBandColorStyle!.toJson(),
+        if (footerColor != null) 'footerColor': footerColor!.toJson(),
         if (footerColorStyle != null)
-          'footerColorStyle': footerColorStyle.toJson(),
-        if (headerColor != null) 'headerColor': headerColor.toJson(),
+          'footerColorStyle': footerColorStyle!.toJson(),
+        if (headerColor != null) 'headerColor': headerColor!.toJson(),
         if (headerColorStyle != null)
-          'headerColorStyle': headerColorStyle.toJson(),
+          'headerColorStyle': headerColorStyle!.toJson(),
         if (secondBandColor != null)
-          'secondBandColor': secondBandColor.toJson(),
+          'secondBandColor': secondBandColor!.toJson(),
         if (secondBandColorStyle != null)
-          'secondBandColorStyle': secondBandColorStyle.toJson(),
+          'secondBandColorStyle': secondBandColorStyle!.toJson(),
       };
 }
 
@@ -2028,46 +1949,46 @@ class BaselineValueFormat {
   /// value.
   /// - "PERCENTAGE_DIFFERENCE" : Use percentage difference between key and
   /// baseline value.
-  core.String comparisonType;
+  core.String? comparisonType;
 
   /// Description which is appended after the baseline value.
   ///
   /// This field is optional.
-  core.String description;
+  core.String? description;
 
   /// Color to be used, in case baseline value represents a negative change for
   /// key value.
   ///
   /// This field is optional.
-  Color negativeColor;
+  Color? negativeColor;
 
   /// Color to be used, in case baseline value represents a negative change for
   /// key value.
   ///
   /// This field is optional. If negative_color is also set, this field takes
   /// precedence.
-  ColorStyle negativeColorStyle;
+  ColorStyle? negativeColorStyle;
 
   /// Specifies the horizontal text positioning of baseline value.
   ///
   /// This field is optional. If not specified, default positioning is used.
-  TextPosition position;
+  TextPosition? position;
 
   /// Color to be used, in case baseline value represents a positive change for
   /// key value.
   ///
   /// This field is optional.
-  Color positiveColor;
+  Color? positiveColor;
 
   /// Color to be used, in case baseline value represents a positive change for
   /// key value.
   ///
   /// This field is optional. If positive_color is also set, this field takes
   /// precedence.
-  ColorStyle positiveColorStyle;
+  ColorStyle? positiveColorStyle;
 
   /// Text formatting options for baseline value.
-  TextFormat textFormat;
+  TextFormat? textFormat;
 
   BaselineValueFormat();
 
@@ -2104,17 +2025,17 @@ class BaselineValueFormat {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (comparisonType != null) 'comparisonType': comparisonType,
-        if (description != null) 'description': description,
-        if (negativeColor != null) 'negativeColor': negativeColor.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (comparisonType != null) 'comparisonType': comparisonType!,
+        if (description != null) 'description': description!,
+        if (negativeColor != null) 'negativeColor': negativeColor!.toJson(),
         if (negativeColorStyle != null)
-          'negativeColorStyle': negativeColorStyle.toJson(),
-        if (position != null) 'position': position.toJson(),
-        if (positiveColor != null) 'positiveColor': positiveColor.toJson(),
+          'negativeColorStyle': negativeColorStyle!.toJson(),
+        if (position != null) 'position': position!.toJson(),
+        if (positiveColor != null) 'positiveColor': positiveColor!.toJson(),
         if (positiveColorStyle != null)
-          'positiveColorStyle': positiveColorStyle.toJson(),
-        if (textFormat != null) 'textFormat': textFormat.toJson(),
+          'positiveColorStyle': positiveColorStyle!.toJson(),
+        if (textFormat != null) 'textFormat': textFormat!.toJson(),
       };
 }
 
@@ -2125,7 +2046,7 @@ class BasicChartAxis {
   /// The format of the title.
   ///
   /// Only valid if the axis is not associated with the domain.
-  TextFormat format;
+  TextFormat? format;
 
   /// The position of this axis.
   /// Possible string values are:
@@ -2138,18 +2059,18 @@ class BasicChartAxis {
   /// - "RIGHT_AXIS" : The axis rendered at the right of a chart. For most
   /// charts, this is a minor axis. For bar charts, this is an unusual major
   /// axis.
-  core.String position;
+  core.String? position;
 
   /// The title of this axis.
   ///
   /// If set, this overrides any title inferred from headers of the data.
-  core.String title;
+  core.String? title;
 
   /// The axis title text position.
-  TextPosition titleTextPosition;
+  TextPosition? titleTextPosition;
 
   /// The view window options for this axis.
-  ChartAxisViewWindowOptions viewWindowOptions;
+  ChartAxisViewWindowOptions? viewWindowOptions;
 
   BasicChartAxis();
 
@@ -2174,14 +2095,14 @@ class BasicChartAxis {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (format != null) 'format': format.toJson(),
-        if (position != null) 'position': position,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (format != null) 'format': format!.toJson(),
+        if (position != null) 'position': position!,
+        if (title != null) 'title': title!,
         if (titleTextPosition != null)
-          'titleTextPosition': titleTextPosition.toJson(),
+          'titleTextPosition': titleTextPosition!.toJson(),
         if (viewWindowOptions != null)
-          'viewWindowOptions': viewWindowOptions.toJson(),
+          'viewWindowOptions': viewWindowOptions!.toJson(),
       };
 }
 
@@ -2193,10 +2114,10 @@ class BasicChartDomain {
   ///
   /// For example, if charting stock prices over time, this is the data
   /// representing the dates.
-  ChartData domain;
+  ChartData? domain;
 
   /// True to reverse the order of the domain values (horizontal axis).
-  core.bool reversed;
+  core.bool? reversed;
 
   BasicChartDomain();
 
@@ -2210,9 +2131,9 @@ class BasicChartDomain {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (domain != null) 'domain': domain.toJson(),
-        if (reversed != null) 'reversed': reversed,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (domain != null) 'domain': domain!.toJson(),
+        if (reversed != null) 'reversed': reversed!,
       };
 }
 
@@ -2225,36 +2146,36 @@ class BasicChartSeries {
   /// this series.
   ///
   /// If empty, a default color is used.
-  Color color;
+  Color? color;
 
   /// The color for elements (such as bars, lines, and points) associated with
   /// this series.
   ///
   /// If empty, a default color is used. If color is also set, this field takes
   /// precedence.
-  ColorStyle colorStyle;
+  ColorStyle? colorStyle;
 
   /// Information about the data labels for this series.
-  DataLabel dataLabel;
+  DataLabel? dataLabel;
 
   /// The line style of this series.
   ///
   /// Valid only if the chartType is AREA, LINE, or SCATTER. COMBO charts are
   /// also supported if the series chart type is AREA or LINE.
-  LineStyle lineStyle;
+  LineStyle? lineStyle;
 
   /// The style for points associated with this series.
   ///
   /// Valid only if the chartType is AREA, LINE, or SCATTER. COMBO charts are
   /// also supported if the series chart type is AREA, LINE, or SCATTER. If
   /// empty, a default point style is used.
-  PointStyle pointStyle;
+  PointStyle? pointStyle;
 
   /// The data being visualized in this chart series.
-  ChartData series;
+  ChartData? series;
 
   /// Style override settings for series data points.
-  core.List<BasicSeriesDataPointStyleOverride> styleOverrides;
+  core.List<BasicSeriesDataPointStyleOverride>? styleOverrides;
 
   /// The minor axis that will specify the range of values for this series.
   ///
@@ -2273,7 +2194,7 @@ class BasicChartSeries {
   /// - "RIGHT_AXIS" : The axis rendered at the right of a chart. For most
   /// charts, this is a minor axis. For bar charts, this is an unusual major
   /// axis.
-  core.String targetAxis;
+  core.String? targetAxis;
 
   /// The type of this series.
   ///
@@ -2288,7 +2209,7 @@ class BasicChartSeries {
   /// - "SCATTER" : A scatter chart.
   /// - "COMBO" : A combo chart.
   /// - "STEPPED_AREA" : A stepped area chart.
-  core.String type;
+  core.String? type;
 
   BasicChartSeries();
 
@@ -2332,18 +2253,18 @@ class BasicChartSeries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (color != null) 'color': color.toJson(),
-        if (colorStyle != null) 'colorStyle': colorStyle.toJson(),
-        if (dataLabel != null) 'dataLabel': dataLabel.toJson(),
-        if (lineStyle != null) 'lineStyle': lineStyle.toJson(),
-        if (pointStyle != null) 'pointStyle': pointStyle.toJson(),
-        if (series != null) 'series': series.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (color != null) 'color': color!.toJson(),
+        if (colorStyle != null) 'colorStyle': colorStyle!.toJson(),
+        if (dataLabel != null) 'dataLabel': dataLabel!.toJson(),
+        if (lineStyle != null) 'lineStyle': lineStyle!.toJson(),
+        if (pointStyle != null) 'pointStyle': pointStyle!.toJson(),
+        if (series != null) 'series': series!.toJson(),
         if (styleOverrides != null)
           'styleOverrides':
-              styleOverrides.map((value) => value.toJson()).toList(),
-        if (targetAxis != null) 'targetAxis': targetAxis,
-        if (type != null) 'type': type,
+              styleOverrides!.map((value) => value.toJson()).toList(),
+        if (targetAxis != null) 'targetAxis': targetAxis!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2352,7 +2273,7 @@ class BasicChartSeries {
 /// See BasicChartType for the list of charts this supports.
 class BasicChartSpec {
   /// The axis on the chart.
-  core.List<BasicChartAxis> axis;
+  core.List<BasicChartAxis>? axis;
 
   /// The type of the chart.
   /// Possible string values are:
@@ -2364,7 +2285,7 @@ class BasicChartSpec {
   /// - "SCATTER" : A scatter chart.
   /// - "COMBO" : A combo chart.
   /// - "STEPPED_AREA" : A stepped area chart.
-  core.String chartType;
+  core.String? chartType;
 
   /// The behavior of tooltips and data highlighting when hovering on data and
   /// chart area.
@@ -2374,26 +2295,26 @@ class BasicChartSpec {
   /// tooltip.
   /// - "CATEGORY" : All data elements with the same category (e.g., domain
   /// value) are highlighted and shown in the tooltip.
-  core.String compareMode;
+  core.String? compareMode;
 
   /// The domain of data this is charting.
   ///
   /// Only a single domain is supported.
-  core.List<BasicChartDomain> domains;
+  core.List<BasicChartDomain>? domains;
 
   /// The number of rows or columns in the data that are "headers".
   ///
   /// If not set, Google Sheets will guess how many rows are headers based on
   /// the data. (Note that BasicChartAxis.title may override the axis title
   /// inferred from the header values.)
-  core.int headerCount;
+  core.int? headerCount;
 
   /// If some values in a series are missing, gaps may appear in the chart (e.g,
   /// segments of lines in a line chart will be missing).
   ///
   /// To eliminate these gaps set this to true. Applies to Line, Area, and Combo
   /// charts.
-  core.bool interpolateNulls;
+  core.bool? interpolateNulls;
 
   /// The position of the chart legend.
   /// Possible string values are:
@@ -2403,15 +2324,15 @@ class BasicChartSpec {
   /// - "RIGHT_LEGEND" : The legend is rendered on the right of the chart.
   /// - "TOP_LEGEND" : The legend is rendered on the top of the chart.
   /// - "NO_LEGEND" : No legend is rendered.
-  core.String legendPosition;
+  core.String? legendPosition;
 
   /// Gets whether all lines should be rendered smooth or straight by default.
   ///
   /// Applies to Line charts.
-  core.bool lineSmoothing;
+  core.bool? lineSmoothing;
 
   /// The data this chart is visualizing.
-  core.List<BasicChartSeries> series;
+  core.List<BasicChartSeries>? series;
 
   /// The stacked type for charts that support vertical stacking.
   ///
@@ -2423,12 +2344,12 @@ class BasicChartSpec {
   /// beginning from the top of the value below it.
   /// - "PERCENT_STACKED" : Vertical stacks are stretched to reach the top of
   /// the chart, with values laid out as percentages of each other.
-  core.String stackedType;
+  core.String? stackedType;
 
   /// True to make the chart 3D.
   ///
   /// Applies to Bar and Column charts.
-  core.bool threeDimensional;
+  core.bool? threeDimensional;
 
   /// Controls whether to display additional data labels on stacked charts which
   /// sum the total value of all stacked values at each value along the domain
@@ -2443,7 +2364,7 @@ class BasicChartSpec {
   /// series, the total data labels will be supported. If it has three bar
   /// series and two area series, total data labels are not allowed. Neither
   /// CUSTOM nor placement can be set on the total_data_label.
-  DataLabel totalDataLabel;
+  DataLabel? totalDataLabel;
 
   BasicChartSpec();
 
@@ -2496,21 +2417,21 @@ class BasicChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (axis != null) 'axis': axis.map((value) => value.toJson()).toList(),
-        if (chartType != null) 'chartType': chartType,
-        if (compareMode != null) 'compareMode': compareMode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (axis != null) 'axis': axis!.map((value) => value.toJson()).toList(),
+        if (chartType != null) 'chartType': chartType!,
+        if (compareMode != null) 'compareMode': compareMode!,
         if (domains != null)
-          'domains': domains.map((value) => value.toJson()).toList(),
-        if (headerCount != null) 'headerCount': headerCount,
-        if (interpolateNulls != null) 'interpolateNulls': interpolateNulls,
-        if (legendPosition != null) 'legendPosition': legendPosition,
-        if (lineSmoothing != null) 'lineSmoothing': lineSmoothing,
+          'domains': domains!.map((value) => value.toJson()).toList(),
+        if (headerCount != null) 'headerCount': headerCount!,
+        if (interpolateNulls != null) 'interpolateNulls': interpolateNulls!,
+        if (legendPosition != null) 'legendPosition': legendPosition!,
+        if (lineSmoothing != null) 'lineSmoothing': lineSmoothing!,
         if (series != null)
-          'series': series.map((value) => value.toJson()).toList(),
-        if (stackedType != null) 'stackedType': stackedType,
-        if (threeDimensional != null) 'threeDimensional': threeDimensional,
-        if (totalDataLabel != null) 'totalDataLabel': totalDataLabel.toJson(),
+          'series': series!.map((value) => value.toJson()).toList(),
+        if (stackedType != null) 'stackedType': stackedType!,
+        if (threeDimensional != null) 'threeDimensional': threeDimensional!,
+        if (totalDataLabel != null) 'totalDataLabel': totalDataLabel!.toJson(),
       };
 }
 
@@ -2520,35 +2441,36 @@ class BasicFilter {
   ///
   /// The map's key is the column index, and the value is the criteria for that
   /// column. This field is deprecated in favor of filter_specs.
-  core.Map<core.String, FilterCriteria> criteria;
+  core.Map<core.String, FilterCriteria>? criteria;
 
   /// The filter criteria per column.
   ///
   /// Both criteria and filter_specs are populated in responses. If both fields
   /// are specified in an update request, this field takes precedence.
-  core.List<FilterSpec> filterSpecs;
+  core.List<FilterSpec>? filterSpecs;
 
   /// The range the filter covers.
-  GridRange range;
+  GridRange? range;
 
   /// The sort order per column.
   ///
   /// Later specifications are used when values are equal in the earlier
   /// specifications.
-  core.List<SortSpec> sortSpecs;
+  core.List<SortSpec>? sortSpecs;
 
   BasicFilter();
 
   BasicFilter.fromJson(core.Map _json) {
     if (_json.containsKey('criteria')) {
-      criteria =
-          (_json['criteria'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  FilterCriteria.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      criteria = (_json['criteria'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              FilterCriteria.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('filterSpecs')) {
       filterSpecs = (_json['filterSpecs'] as core.List)
@@ -2568,15 +2490,15 @@ class BasicFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (criteria != null)
           'criteria':
-              criteria.map((key, item) => core.MapEntry(key, item.toJson())),
+              criteria!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (filterSpecs != null)
-          'filterSpecs': filterSpecs.map((value) => value.toJson()).toList(),
-        if (range != null) 'range': range.toJson(),
+          'filterSpecs': filterSpecs!.map((value) => value.toJson()).toList(),
+        if (range != null) 'range': range!.toJson(),
         if (sortSpecs != null)
-          'sortSpecs': sortSpecs.map((value) => value.toJson()).toList(),
+          'sortSpecs': sortSpecs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2585,23 +2507,23 @@ class BasicSeriesDataPointStyleOverride {
   /// Color of the series data point.
   ///
   /// If empty, the series default is used.
-  Color color;
+  Color? color;
 
   /// Color of the series data point.
   ///
   /// If empty, the series default is used. If color is also set, this field
   /// takes precedence.
-  ColorStyle colorStyle;
+  ColorStyle? colorStyle;
 
   /// Zero based index of the series data point.
-  core.int index;
+  core.int? index;
 
   /// Point style of the series data point.
   ///
   /// Valid only if the chartType is AREA, LINE, or SCATTER. COMBO charts are
   /// also supported if the series chart type is AREA, LINE, or SCATTER. If
   /// empty, the series default is used.
-  PointStyle pointStyle;
+  PointStyle? pointStyle;
 
   BasicSeriesDataPointStyleOverride();
 
@@ -2623,11 +2545,11 @@ class BasicSeriesDataPointStyleOverride {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (color != null) 'color': color.toJson(),
-        if (colorStyle != null) 'colorStyle': colorStyle.toJson(),
-        if (index != null) 'index': index,
-        if (pointStyle != null) 'pointStyle': pointStyle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (color != null) 'color': color!.toJson(),
+        if (colorStyle != null) 'colorStyle': colorStyle!.toJson(),
+        if (index != null) 'index': index!,
+        if (pointStyle != null) 'pointStyle': pointStyle!.toJson(),
       };
 }
 
@@ -2635,7 +2557,7 @@ class BasicSeriesDataPointStyleOverride {
 /// spreadsheet.
 class BatchClearValuesByDataFilterRequest {
   /// The DataFilters used to determine which ranges to clear.
-  core.List<DataFilter> dataFilters;
+  core.List<DataFilter>? dataFilters;
 
   BatchClearValuesByDataFilterRequest();
 
@@ -2648,9 +2570,9 @@ class BatchClearValuesByDataFilterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataFilters != null)
-          'dataFilters': dataFilters.map((value) => value.toJson()).toList(),
+          'dataFilters': dataFilters!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2662,10 +2584,10 @@ class BatchClearValuesByDataFilterResponse {
   /// If the requests are for an unbounded range or a ranger larger than the
   /// bounds of the sheet, this is the actual ranges that were cleared, bounded
   /// to the sheet's limits.
-  core.List<core.String> clearedRanges;
+  core.List<core.String>? clearedRanges;
 
   /// The spreadsheet the updates were applied to.
-  core.String spreadsheetId;
+  core.String? spreadsheetId;
 
   BatchClearValuesByDataFilterResponse();
 
@@ -2680,16 +2602,16 @@ class BatchClearValuesByDataFilterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clearedRanges != null) 'clearedRanges': clearedRanges,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clearedRanges != null) 'clearedRanges': clearedRanges!,
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
       };
 }
 
 /// The request for clearing more than one range of values in a spreadsheet.
 class BatchClearValuesRequest {
   /// The ranges to clear, in A1 notation.
-  core.List<core.String> ranges;
+  core.List<core.String>? ranges;
 
   BatchClearValuesRequest();
 
@@ -2701,8 +2623,8 @@ class BatchClearValuesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ranges != null) 'ranges': ranges,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ranges != null) 'ranges': ranges!,
       };
 }
 
@@ -2713,10 +2635,10 @@ class BatchClearValuesResponse {
   /// If the requests are for an unbounded range or a ranger larger than the
   /// bounds of the sheet, this is the actual ranges that were cleared, bounded
   /// to the sheet's limits.
-  core.List<core.String> clearedRanges;
+  core.List<core.String>? clearedRanges;
 
   /// The spreadsheet the updates were applied to.
-  core.String spreadsheetId;
+  core.String? spreadsheetId;
 
   BatchClearValuesResponse();
 
@@ -2731,9 +2653,9 @@ class BatchClearValuesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clearedRanges != null) 'clearedRanges': clearedRanges,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clearedRanges != null) 'clearedRanges': clearedRanges!,
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
       };
 }
 
@@ -2744,7 +2666,7 @@ class BatchGetValuesByDataFilterRequest {
   ///
   /// Ranges that match any of the specified data filters are included in the
   /// response.
-  core.List<DataFilter> dataFilters;
+  core.List<DataFilter>? dataFilters;
 
   /// How dates, times, and durations should be represented in the output.
   ///
@@ -2762,7 +2684,7 @@ class BatchGetValuesByDataFilterRequest {
   /// - "FORMATTED_STRING" : Instructs date, time, datetime, and duration fields
   /// to be output as strings in their given number format (which is dependent
   /// on the spreadsheet locale).
-  core.String dateTimeRenderOption;
+  core.String? dateTimeRenderOption;
 
   /// The major dimension that results should use.
   ///
@@ -2774,7 +2696,7 @@ class BatchGetValuesByDataFilterRequest {
   /// - "DIMENSION_UNSPECIFIED" : The default value, do not use.
   /// - "ROWS" : Operates on the rows of a sheet.
   /// - "COLUMNS" : Operates on the columns of a sheet.
-  core.String majorDimension;
+  core.String? majorDimension;
 
   /// How values should be represented in the output.
   ///
@@ -2791,7 +2713,7 @@ class BatchGetValuesByDataFilterRequest {
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
   /// as currency, then A2 would return `"=A1"`.
-  core.String valueRenderOption;
+  core.String? valueRenderOption;
 
   BatchGetValuesByDataFilterRequest();
 
@@ -2813,13 +2735,13 @@ class BatchGetValuesByDataFilterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataFilters != null)
-          'dataFilters': dataFilters.map((value) => value.toJson()).toList(),
+          'dataFilters': dataFilters!.map((value) => value.toJson()).toList(),
         if (dateTimeRenderOption != null)
-          'dateTimeRenderOption': dateTimeRenderOption,
-        if (majorDimension != null) 'majorDimension': majorDimension,
-        if (valueRenderOption != null) 'valueRenderOption': valueRenderOption,
+          'dateTimeRenderOption': dateTimeRenderOption!,
+        if (majorDimension != null) 'majorDimension': majorDimension!,
+        if (valueRenderOption != null) 'valueRenderOption': valueRenderOption!,
       };
 }
 
@@ -2827,10 +2749,10 @@ class BatchGetValuesByDataFilterRequest {
 /// selected by DataFilters.
 class BatchGetValuesByDataFilterResponse {
   /// The ID of the spreadsheet the data was retrieved from.
-  core.String spreadsheetId;
+  core.String? spreadsheetId;
 
   /// The requested values with the list of data filters that matched them.
-  core.List<MatchedValueRange> valueRanges;
+  core.List<MatchedValueRange>? valueRanges;
 
   BatchGetValuesByDataFilterResponse();
 
@@ -2846,23 +2768,23 @@ class BatchGetValuesByDataFilterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
         if (valueRanges != null)
-          'valueRanges': valueRanges.map((value) => value.toJson()).toList(),
+          'valueRanges': valueRanges!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The response when retrieving more than one range of values in a spreadsheet.
 class BatchGetValuesResponse {
   /// The ID of the spreadsheet the data was retrieved from.
-  core.String spreadsheetId;
+  core.String? spreadsheetId;
 
   /// The requested values.
   ///
   /// The order of the ValueRanges is the same as the order of the requested
   /// ranges.
-  core.List<ValueRange> valueRanges;
+  core.List<ValueRange>? valueRanges;
 
   BatchGetValuesResponse();
 
@@ -2878,34 +2800,34 @@ class BatchGetValuesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
         if (valueRanges != null)
-          'valueRanges': valueRanges.map((value) => value.toJson()).toList(),
+          'valueRanges': valueRanges!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The request for updating any aspect of a spreadsheet.
 class BatchUpdateSpreadsheetRequest {
   /// Determines if the update response should include the spreadsheet resource.
-  core.bool includeSpreadsheetInResponse;
+  core.bool? includeSpreadsheetInResponse;
 
   /// A list of updates to apply to the spreadsheet.
   ///
   /// Requests will be applied in the order they are specified. If any request
   /// is not valid, no requests will be applied.
-  core.List<Request> requests;
+  core.List<Request>? requests;
 
   /// True if grid data should be returned.
   ///
   /// Meaningful only if include_spreadsheet_in_response is 'true'. This
   /// parameter is ignored if a field mask was set in the request.
-  core.bool responseIncludeGridData;
+  core.bool? responseIncludeGridData;
 
   /// Limits the ranges included in the response spreadsheet.
   ///
   /// Meaningful only if include_spreadsheet_in_response is 'true'.
-  core.List<core.String> responseRanges;
+  core.List<core.String>? responseRanges;
 
   BatchUpdateSpreadsheetRequest();
 
@@ -2930,14 +2852,14 @@ class BatchUpdateSpreadsheetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (includeSpreadsheetInResponse != null)
-          'includeSpreadsheetInResponse': includeSpreadsheetInResponse,
+          'includeSpreadsheetInResponse': includeSpreadsheetInResponse!,
         if (requests != null)
-          'requests': requests.map((value) => value.toJson()).toList(),
+          'requests': requests!.map((value) => value.toJson()).toList(),
         if (responseIncludeGridData != null)
-          'responseIncludeGridData': responseIncludeGridData,
-        if (responseRanges != null) 'responseRanges': responseRanges,
+          'responseIncludeGridData': responseIncludeGridData!,
+        if (responseRanges != null) 'responseRanges': responseRanges!,
       };
 }
 
@@ -2947,17 +2869,17 @@ class BatchUpdateSpreadsheetResponse {
   ///
   /// This maps 1:1 with the updates, although replies to some requests may be
   /// empty.
-  core.List<Response> replies;
+  core.List<Response>? replies;
 
   /// The spreadsheet the updates were applied to.
-  core.String spreadsheetId;
+  core.String? spreadsheetId;
 
   /// The spreadsheet after updates were applied.
   ///
   /// This is only set if
   /// \[BatchUpdateSpreadsheetRequest.include_spreadsheet_in_response\] is
   /// `true`.
-  Spreadsheet updatedSpreadsheet;
+  Spreadsheet? updatedSpreadsheet;
 
   BatchUpdateSpreadsheetResponse();
 
@@ -2977,12 +2899,12 @@ class BatchUpdateSpreadsheetResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (replies != null)
-          'replies': replies.map((value) => value.toJson()).toList(),
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+          'replies': replies!.map((value) => value.toJson()).toList(),
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
         if (updatedSpreadsheet != null)
-          'updatedSpreadsheet': updatedSpreadsheet.toJson(),
+          'updatedSpreadsheet': updatedSpreadsheet!.toJson(),
       };
 }
 
@@ -2992,7 +2914,7 @@ class BatchUpdateValuesByDataFilterRequest {
   ///
   /// If more than one range is matched by the specified DataFilter the
   /// specified values are applied to all of those ranges.
-  core.List<DataFilterValueRange> data;
+  core.List<DataFilterValueRange>? data;
 
   /// Determines if the update response should include the values of the cells
   /// that were updated.
@@ -3002,7 +2924,7 @@ class BatchUpdateValuesByDataFilterRequest {
   /// updated values. If the range to write was larger than the range actually
   /// written, the response includes all values in the requested range
   /// (excluding trailing empty rows and columns).
-  core.bool includeValuesInResponse;
+  core.bool? includeValuesInResponse;
 
   /// Determines how dates, times, and durations in the response should be
   /// rendered.
@@ -3021,7 +2943,7 @@ class BatchUpdateValuesByDataFilterRequest {
   /// - "FORMATTED_STRING" : Instructs date, time, datetime, and duration fields
   /// to be output as strings in their given number format (which is dependent
   /// on the spreadsheet locale).
-  core.String responseDateTimeRenderOption;
+  core.String? responseDateTimeRenderOption;
 
   /// Determines how values in the response should be rendered.
   ///
@@ -3038,7 +2960,7 @@ class BatchUpdateValuesByDataFilterRequest {
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
   /// as currency, then A2 would return `"=A1"`.
-  core.String responseValueRenderOption;
+  core.String? responseValueRenderOption;
 
   /// How the input data should be interpreted.
   /// Possible string values are:
@@ -3050,7 +2972,7 @@ class BatchUpdateValuesByDataFilterRequest {
   /// into the UI. Numbers will stay as numbers, but strings may be converted to
   /// numbers, dates, etc. following the same rules that are applied when
   /// entering text into a cell via the Google Sheets UI.
-  core.String valueInputOption;
+  core.String? valueInputOption;
 
   BatchUpdateValuesByDataFilterRequest();
 
@@ -3077,39 +2999,39 @@ class BatchUpdateValuesByDataFilterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
         if (includeValuesInResponse != null)
-          'includeValuesInResponse': includeValuesInResponse,
+          'includeValuesInResponse': includeValuesInResponse!,
         if (responseDateTimeRenderOption != null)
-          'responseDateTimeRenderOption': responseDateTimeRenderOption,
+          'responseDateTimeRenderOption': responseDateTimeRenderOption!,
         if (responseValueRenderOption != null)
-          'responseValueRenderOption': responseValueRenderOption,
-        if (valueInputOption != null) 'valueInputOption': valueInputOption,
+          'responseValueRenderOption': responseValueRenderOption!,
+        if (valueInputOption != null) 'valueInputOption': valueInputOption!,
       };
 }
 
 /// The response when updating a range of values in a spreadsheet.
 class BatchUpdateValuesByDataFilterResponse {
   /// The response for each range updated.
-  core.List<UpdateValuesByDataFilterResponse> responses;
+  core.List<UpdateValuesByDataFilterResponse>? responses;
 
   /// The spreadsheet the updates were applied to.
-  core.String spreadsheetId;
+  core.String? spreadsheetId;
 
   /// The total number of cells updated.
-  core.int totalUpdatedCells;
+  core.int? totalUpdatedCells;
 
   /// The total number of columns where at least one cell in the column was
   /// updated.
-  core.int totalUpdatedColumns;
+  core.int? totalUpdatedColumns;
 
   /// The total number of rows where at least one cell in the row was updated.
-  core.int totalUpdatedRows;
+  core.int? totalUpdatedRows;
 
   /// The total number of sheets where at least one cell in the sheet was
   /// updated.
-  core.int totalUpdatedSheets;
+  core.int? totalUpdatedSheets;
 
   BatchUpdateValuesByDataFilterResponse();
 
@@ -3138,23 +3060,23 @@ class BatchUpdateValuesByDataFilterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (responses != null)
-          'responses': responses.map((value) => value.toJson()).toList(),
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
-        if (totalUpdatedCells != null) 'totalUpdatedCells': totalUpdatedCells,
+          'responses': responses!.map((value) => value.toJson()).toList(),
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+        if (totalUpdatedCells != null) 'totalUpdatedCells': totalUpdatedCells!,
         if (totalUpdatedColumns != null)
-          'totalUpdatedColumns': totalUpdatedColumns,
-        if (totalUpdatedRows != null) 'totalUpdatedRows': totalUpdatedRows,
+          'totalUpdatedColumns': totalUpdatedColumns!,
+        if (totalUpdatedRows != null) 'totalUpdatedRows': totalUpdatedRows!,
         if (totalUpdatedSheets != null)
-          'totalUpdatedSheets': totalUpdatedSheets,
+          'totalUpdatedSheets': totalUpdatedSheets!,
       };
 }
 
 /// The request for updating more than one range of values in a spreadsheet.
 class BatchUpdateValuesRequest {
   /// The new values to apply to the spreadsheet.
-  core.List<ValueRange> data;
+  core.List<ValueRange>? data;
 
   /// Determines if the update response should include the values of the cells
   /// that were updated.
@@ -3164,7 +3086,7 @@ class BatchUpdateValuesRequest {
   /// updated values. If the range to write was larger than the range actually
   /// written, the response includes all values in the requested range
   /// (excluding trailing empty rows and columns).
-  core.bool includeValuesInResponse;
+  core.bool? includeValuesInResponse;
 
   /// Determines how dates, times, and durations in the response should be
   /// rendered.
@@ -3183,7 +3105,7 @@ class BatchUpdateValuesRequest {
   /// - "FORMATTED_STRING" : Instructs date, time, datetime, and duration fields
   /// to be output as strings in their given number format (which is dependent
   /// on the spreadsheet locale).
-  core.String responseDateTimeRenderOption;
+  core.String? responseDateTimeRenderOption;
 
   /// Determines how values in the response should be rendered.
   ///
@@ -3200,7 +3122,7 @@ class BatchUpdateValuesRequest {
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
   /// as currency, then A2 would return `"=A1"`.
-  core.String responseValueRenderOption;
+  core.String? responseValueRenderOption;
 
   /// How the input data should be interpreted.
   /// Possible string values are:
@@ -3212,7 +3134,7 @@ class BatchUpdateValuesRequest {
   /// into the UI. Numbers will stay as numbers, but strings may be converted to
   /// numbers, dates, etc. following the same rules that are applied when
   /// entering text into a cell via the Google Sheets UI.
-  core.String valueInputOption;
+  core.String? valueInputOption;
 
   BatchUpdateValuesRequest();
 
@@ -3239,15 +3161,15 @@ class BatchUpdateValuesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
         if (includeValuesInResponse != null)
-          'includeValuesInResponse': includeValuesInResponse,
+          'includeValuesInResponse': includeValuesInResponse!,
         if (responseDateTimeRenderOption != null)
-          'responseDateTimeRenderOption': responseDateTimeRenderOption,
+          'responseDateTimeRenderOption': responseDateTimeRenderOption!,
         if (responseValueRenderOption != null)
-          'responseValueRenderOption': responseValueRenderOption,
-        if (valueInputOption != null) 'valueInputOption': valueInputOption,
+          'responseValueRenderOption': responseValueRenderOption!,
+        if (valueInputOption != null) 'valueInputOption': valueInputOption!,
       };
 }
 
@@ -3255,24 +3177,24 @@ class BatchUpdateValuesRequest {
 class BatchUpdateValuesResponse {
   /// One UpdateValuesResponse per requested range, in the same order as the
   /// requests appeared.
-  core.List<UpdateValuesResponse> responses;
+  core.List<UpdateValuesResponse>? responses;
 
   /// The spreadsheet the updates were applied to.
-  core.String spreadsheetId;
+  core.String? spreadsheetId;
 
   /// The total number of cells updated.
-  core.int totalUpdatedCells;
+  core.int? totalUpdatedCells;
 
   /// The total number of columns where at least one cell in the column was
   /// updated.
-  core.int totalUpdatedColumns;
+  core.int? totalUpdatedColumns;
 
   /// The total number of rows where at least one cell in the row was updated.
-  core.int totalUpdatedRows;
+  core.int? totalUpdatedRows;
 
   /// The total number of sheets where at least one cell in the sheet was
   /// updated.
-  core.int totalUpdatedSheets;
+  core.int? totalUpdatedSheets;
 
   BatchUpdateValuesResponse();
 
@@ -3300,16 +3222,16 @@ class BatchUpdateValuesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (responses != null)
-          'responses': responses.map((value) => value.toJson()).toList(),
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
-        if (totalUpdatedCells != null) 'totalUpdatedCells': totalUpdatedCells,
+          'responses': responses!.map((value) => value.toJson()).toList(),
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+        if (totalUpdatedCells != null) 'totalUpdatedCells': totalUpdatedCells!,
         if (totalUpdatedColumns != null)
-          'totalUpdatedColumns': totalUpdatedColumns,
-        if (totalUpdatedRows != null) 'totalUpdatedRows': totalUpdatedRows,
+          'totalUpdatedColumns': totalUpdatedColumns!,
+        if (totalUpdatedRows != null) 'totalUpdatedRows': totalUpdatedRows!,
         if (totalUpdatedSheets != null)
-          'totalUpdatedSheets': totalUpdatedSheets,
+          'totalUpdatedSheets': totalUpdatedSheets!,
       };
 }
 
@@ -3318,13 +3240,13 @@ class BigQueryDataSourceSpec {
   /// The ID of a BigQuery enabled GCP project with a billing account attached.
   ///
   /// For any queries executed against the data source, the project is charged.
-  core.String projectId;
+  core.String? projectId;
 
   /// A BigQueryQuerySpec.
-  BigQueryQuerySpec querySpec;
+  BigQueryQuerySpec? querySpec;
 
   /// A BigQueryTableSpec.
-  BigQueryTableSpec tableSpec;
+  BigQueryTableSpec? tableSpec;
 
   BigQueryDataSourceSpec();
 
@@ -3342,17 +3264,17 @@ class BigQueryDataSourceSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (projectId != null) 'projectId': projectId,
-        if (querySpec != null) 'querySpec': querySpec.toJson(),
-        if (tableSpec != null) 'tableSpec': tableSpec.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (projectId != null) 'projectId': projectId!,
+        if (querySpec != null) 'querySpec': querySpec!.toJson(),
+        if (tableSpec != null) 'tableSpec': tableSpec!.toJson(),
       };
 }
 
 /// Specifies a custom BigQuery query.
 class BigQueryQuerySpec {
   /// The raw query string.
-  core.String rawQuery;
+  core.String? rawQuery;
 
   BigQueryQuerySpec();
 
@@ -3362,8 +3284,8 @@ class BigQueryQuerySpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (rawQuery != null) 'rawQuery': rawQuery,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (rawQuery != null) 'rawQuery': rawQuery!,
       };
 }
 
@@ -3373,15 +3295,15 @@ class BigQueryQuerySpec {
 /// allowed.
 class BigQueryTableSpec {
   /// The BigQuery dataset id.
-  core.String datasetId;
+  core.String? datasetId;
 
   /// The BigQuery table id.
-  core.String tableId;
+  core.String? tableId;
 
   /// The ID of a BigQuery project the table belongs to.
   ///
   /// If not specified, the project_id is assumed.
-  core.String tableProjectId;
+  core.String? tableProjectId;
 
   BigQueryTableSpec();
 
@@ -3397,10 +3319,10 @@ class BigQueryTableSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (datasetId != null) 'datasetId': datasetId,
-        if (tableId != null) 'tableId': tableId,
-        if (tableProjectId != null) 'tableProjectId': tableProjectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId!,
+        if (tableId != null) 'tableId': tableId!,
+        if (tableProjectId != null) 'tableProjectId': tableProjectId!,
       };
 }
 
@@ -3516,14 +3438,14 @@ class BooleanCondition {
   /// - "DATE_NOT_EQ" : The cell's value must be exactly not the condition's
   /// value. Supported by filters on data source objects. Requires at least one
   /// ConditionValue.
-  core.String type;
+  core.String? type;
 
   /// The values of the condition.
   ///
   /// The number of supported values depends on the condition type. Some support
   /// zero values, others one or two values, and ConditionType.ONE_OF_LIST
   /// supports an arbitrary number of values.
-  core.List<ConditionValue> values;
+  core.List<ConditionValue>? values;
 
   BooleanCondition();
 
@@ -3539,10 +3461,10 @@ class BooleanCondition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
         if (values != null)
-          'values': values.map((value) => value.toJson()).toList(),
+          'values': values!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3551,13 +3473,13 @@ class BooleanRule {
   /// The condition of the rule.
   ///
   /// If the condition evaluates to true, the format is applied.
-  BooleanCondition condition;
+  BooleanCondition? condition;
 
   /// The format to apply.
   ///
   /// Conditional formatting can only apply a subset of formatting: bold,
   /// italic, strikethrough, foreground color & background color.
-  CellFormat format;
+  CellFormat? format;
 
   BooleanRule();
 
@@ -3572,21 +3494,21 @@ class BooleanRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (format != null) 'format': format.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (format != null) 'format': format!.toJson(),
       };
 }
 
 /// A border along a cell.
 class Border {
   /// The color of the border.
-  Color color;
+  Color? color;
 
   /// The color of the border.
   ///
   /// If color is also set, this field takes precedence.
-  ColorStyle colorStyle;
+  ColorStyle? colorStyle;
 
   /// The style of the border.
   /// Possible string values are:
@@ -3599,12 +3521,12 @@ class Border {
   /// - "NONE" : No border. Used only when updating a border in order to erase
   /// it.
   /// - "DOUBLE" : The border is two solid lines.
-  core.String style;
+  core.String? style;
 
   /// The width of the border, in pixels.
   ///
   /// Deprecated; the width is determined by the "style" field.
-  core.int width;
+  core.int? width;
 
   Border();
 
@@ -3625,27 +3547,27 @@ class Border {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (color != null) 'color': color.toJson(),
-        if (colorStyle != null) 'colorStyle': colorStyle.toJson(),
-        if (style != null) 'style': style,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (color != null) 'color': color!.toJson(),
+        if (colorStyle != null) 'colorStyle': colorStyle!.toJson(),
+        if (style != null) 'style': style!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// The borders of the cell.
 class Borders {
   /// The bottom border of the cell.
-  Border bottom;
+  Border? bottom;
 
   /// The left border of the cell.
-  Border left;
+  Border? left;
 
   /// The right border of the cell.
-  Border right;
+  Border? right;
 
   /// The top border of the cell.
-  Border top;
+  Border? top;
 
   Borders();
 
@@ -3668,67 +3590,67 @@ class Borders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bottom != null) 'bottom': bottom.toJson(),
-        if (left != null) 'left': left.toJson(),
-        if (right != null) 'right': right.toJson(),
-        if (top != null) 'top': top.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bottom != null) 'bottom': bottom!.toJson(),
+        if (left != null) 'left': left!.toJson(),
+        if (right != null) 'right': right!.toJson(),
+        if (top != null) 'top': top!.toJson(),
       };
 }
 
 /// A bubble chart.
 class BubbleChartSpec {
   /// The bubble border color.
-  Color bubbleBorderColor;
+  Color? bubbleBorderColor;
 
   /// The bubble border color.
   ///
   /// If bubble_border_color is also set, this field takes precedence.
-  ColorStyle bubbleBorderColorStyle;
+  ColorStyle? bubbleBorderColorStyle;
 
   /// The data containing the bubble labels.
   ///
   /// These do not need to be unique.
-  ChartData bubbleLabels;
+  ChartData? bubbleLabels;
 
   /// The max radius size of the bubbles, in pixels.
   ///
   /// If specified, the field must be a positive value.
-  core.int bubbleMaxRadiusSize;
+  core.int? bubbleMaxRadiusSize;
 
   /// The minimum radius size of the bubbles, in pixels.
   ///
   /// If specific, the field must be a positive value.
-  core.int bubbleMinRadiusSize;
+  core.int? bubbleMinRadiusSize;
 
   /// The opacity of the bubbles between 0 and 1.0.
   ///
   /// 0 is fully transparent and 1 is fully opaque.
-  core.double bubbleOpacity;
+  core.double? bubbleOpacity;
 
   /// The data contianing the bubble sizes.
   ///
   /// Bubble sizes are used to draw the bubbles at different sizes relative to
   /// each other. If specified, group_ids must also be specified. This field is
   /// optional.
-  ChartData bubbleSizes;
+  ChartData? bubbleSizes;
 
   /// The format of the text inside the bubbles.
   ///
   /// Strikethrough and underline are not supported.
-  TextFormat bubbleTextStyle;
+  TextFormat? bubbleTextStyle;
 
   /// The data containing the bubble x-values.
   ///
   /// These values locate the bubbles in the chart horizontally.
-  ChartData domain;
+  ChartData? domain;
 
   /// The data containing the bubble group IDs.
   ///
   /// All bubbles with the same group ID are drawn in the same color. If
   /// bubble_sizes is specified then this field must also be specified but may
   /// contain blank values. This field is optional.
-  ChartData groupIds;
+  ChartData? groupIds;
 
   /// Where the legend of the chart should be drawn.
   /// Possible string values are:
@@ -3739,12 +3661,12 @@ class BubbleChartSpec {
   /// - "TOP_LEGEND" : The legend is rendered on the top of the chart.
   /// - "NO_LEGEND" : No legend is rendered.
   /// - "INSIDE_LEGEND" : The legend is rendered inside the chart area.
-  core.String legendPosition;
+  core.String? legendPosition;
 
   /// The data contianing the bubble y-values.
   ///
   /// These values locate the bubbles in the chart vertically.
-  ChartData series;
+  ChartData? series;
 
   BubbleChartSpec();
 
@@ -3796,24 +3718,24 @@ class BubbleChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bubbleBorderColor != null)
-          'bubbleBorderColor': bubbleBorderColor.toJson(),
+          'bubbleBorderColor': bubbleBorderColor!.toJson(),
         if (bubbleBorderColorStyle != null)
-          'bubbleBorderColorStyle': bubbleBorderColorStyle.toJson(),
-        if (bubbleLabels != null) 'bubbleLabels': bubbleLabels.toJson(),
+          'bubbleBorderColorStyle': bubbleBorderColorStyle!.toJson(),
+        if (bubbleLabels != null) 'bubbleLabels': bubbleLabels!.toJson(),
         if (bubbleMaxRadiusSize != null)
-          'bubbleMaxRadiusSize': bubbleMaxRadiusSize,
+          'bubbleMaxRadiusSize': bubbleMaxRadiusSize!,
         if (bubbleMinRadiusSize != null)
-          'bubbleMinRadiusSize': bubbleMinRadiusSize,
-        if (bubbleOpacity != null) 'bubbleOpacity': bubbleOpacity,
-        if (bubbleSizes != null) 'bubbleSizes': bubbleSizes.toJson(),
+          'bubbleMinRadiusSize': bubbleMinRadiusSize!,
+        if (bubbleOpacity != null) 'bubbleOpacity': bubbleOpacity!,
+        if (bubbleSizes != null) 'bubbleSizes': bubbleSizes!.toJson(),
         if (bubbleTextStyle != null)
-          'bubbleTextStyle': bubbleTextStyle.toJson(),
-        if (domain != null) 'domain': domain.toJson(),
-        if (groupIds != null) 'groupIds': groupIds.toJson(),
-        if (legendPosition != null) 'legendPosition': legendPosition,
-        if (series != null) 'series': series.toJson(),
+          'bubbleTextStyle': bubbleTextStyle!.toJson(),
+        if (domain != null) 'domain': domain!.toJson(),
+        if (groupIds != null) 'groupIds': groupIds!.toJson(),
+        if (legendPosition != null) 'legendPosition': legendPosition!,
+        if (series != null) 'series': series!.toJson(),
       };
 }
 
@@ -3822,13 +3744,13 @@ class CandlestickChartSpec {
   /// The Candlestick chart data.
   ///
   /// Only one CandlestickData is supported.
-  core.List<CandlestickData> data;
+  core.List<CandlestickData>? data;
 
   /// The domain data (horizontal axis) for the candlestick chart.
   ///
   /// String data will be treated as discrete labels, other data will be treated
   /// as continuous values.
-  CandlestickDomain domain;
+  CandlestickDomain? domain;
 
   CandlestickChartSpec();
 
@@ -3845,9 +3767,9 @@ class CandlestickChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
-        if (domain != null) 'domain': domain.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
+        if (domain != null) 'domain': domain!.toJson(),
       };
 }
 
@@ -3858,23 +3780,23 @@ class CandlestickData {
   ///
   /// This is the top of the candle body. If greater than the open value the
   /// candle will be filled. Otherwise the candle will be hollow.
-  CandlestickSeries closeSeries;
+  CandlestickSeries? closeSeries;
 
   /// The range data (vertical axis) for the high/maximum value for each candle.
   ///
   /// This is the top of the candle's center line.
-  CandlestickSeries highSeries;
+  CandlestickSeries? highSeries;
 
   /// The range data (vertical axis) for the low/minimum value for each candle.
   ///
   /// This is the bottom of the candle's center line.
-  CandlestickSeries lowSeries;
+  CandlestickSeries? lowSeries;
 
   /// The range data (vertical axis) for the open/initial value for each candle.
   ///
   /// This is the bottom of the candle body. If less than the close value the
   /// candle will be filled. Otherwise the candle will be hollow.
-  CandlestickSeries openSeries;
+  CandlestickSeries? openSeries;
 
   CandlestickData();
 
@@ -3897,21 +3819,21 @@ class CandlestickData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (closeSeries != null) 'closeSeries': closeSeries.toJson(),
-        if (highSeries != null) 'highSeries': highSeries.toJson(),
-        if (lowSeries != null) 'lowSeries': lowSeries.toJson(),
-        if (openSeries != null) 'openSeries': openSeries.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (closeSeries != null) 'closeSeries': closeSeries!.toJson(),
+        if (highSeries != null) 'highSeries': highSeries!.toJson(),
+        if (lowSeries != null) 'lowSeries': lowSeries!.toJson(),
+        if (openSeries != null) 'openSeries': openSeries!.toJson(),
       };
 }
 
 /// The domain of a CandlestickChart.
 class CandlestickDomain {
   /// The data of the CandlestickDomain.
-  ChartData data;
+  ChartData? data;
 
   /// True to reverse the order of the domain values (horizontal axis).
-  core.bool reversed;
+  core.bool? reversed;
 
   CandlestickDomain();
 
@@ -3925,16 +3847,16 @@ class CandlestickDomain {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data.toJson(),
-        if (reversed != null) 'reversed': reversed,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!.toJson(),
+        if (reversed != null) 'reversed': reversed!,
       };
 }
 
 /// The series of a CandlestickData.
 class CandlestickSeries {
   /// The data of the CandlestickSeries.
-  ChartData data;
+  ChartData? data;
 
   CandlestickSeries();
 
@@ -3945,8 +3867,8 @@ class CandlestickSeries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!.toJson(),
       };
 }
 
@@ -3958,7 +3880,7 @@ class CellData {
   /// DATA_SOURCE sheet, e.g `=SUM(DataSheet!Column)`.
   ///
   /// Output only.
-  DataSourceFormula dataSourceFormula;
+  DataSourceFormula? dataSourceFormula;
 
   /// A data source table anchored at this cell.
   ///
@@ -3966,12 +3888,12 @@ class CellData {
   /// configuration. Only the first cell of the data source table contains the
   /// data source table definition. The other cells will contain the display
   /// values of the data source table result in their effective_value fields.
-  DataSourceTable dataSourceTable;
+  DataSourceTable? dataSourceTable;
 
   /// A data validation rule on the cell, if any.
   ///
   /// When writing, the new data validation rule will overwrite any prior rule.
-  DataValidationRule dataValidation;
+  DataValidationRule? dataValidation;
 
   /// The effective format being used by the cell.
   ///
@@ -3979,29 +3901,29 @@ class CellData {
   /// the cell contains a formula, the computed number format. If the effective
   /// format is the default format, effective format will not be written. This
   /// field is read-only.
-  CellFormat effectiveFormat;
+  CellFormat? effectiveFormat;
 
   /// The effective value of the cell.
   ///
   /// For cells with formulas, this is the calculated value. For cells with
   /// literals, this is the same as the user_entered_value. This field is
   /// read-only.
-  ExtendedValue effectiveValue;
+  ExtendedValue? effectiveValue;
 
   /// The formatted value of the cell.
   ///
   /// This is the value as it's shown to the user. This field is read-only.
-  core.String formattedValue;
+  core.String? formattedValue;
 
   /// A hyperlink this cell points to, if any.
   ///
   /// If the cell contains multiple hyperlinks, this field will be empty. This
   /// field is read-only. To set it, use a `=HYPERLINK` formula in the
   /// userEnteredValue.formulaValue field.
-  core.String hyperlink;
+  core.String? hyperlink;
 
   /// Any note on the cell.
-  core.String note;
+  core.String? note;
 
   /// A pivot table anchored at this cell.
   ///
@@ -4010,7 +3932,7 @@ class CellData {
   /// contains the pivot table definition. The other cells will contain the
   /// calculated values of the results of the pivot in their effective_value
   /// fields.
-  PivotTable pivotTable;
+  PivotTable? pivotTable;
 
   /// Runs of rich text applied to subsections of the cell.
   ///
@@ -4020,18 +3942,18 @@ class CellData {
   /// unless explicitly changed. When writing, the new runs will overwrite any
   /// prior runs. When writing a new user_entered_value, previous runs are
   /// erased.
-  core.List<TextFormatRun> textFormatRuns;
+  core.List<TextFormatRun>? textFormatRuns;
 
   /// The format the user entered for the cell.
   ///
   /// When writing, the new format will be merged with the existing format.
-  CellFormat userEnteredFormat;
+  CellFormat? userEnteredFormat;
 
   /// The value the user entered in the cell.
   ///
   /// e.g, `1234`, `'Hello'`, or `=NOW()` Note: Dates, Times and DateTimes are
   /// represented as doubles in serial number format.
-  ExtendedValue userEnteredValue;
+  ExtendedValue? userEnteredValue;
 
   CellData();
 
@@ -4085,41 +4007,41 @@ class CellData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataSourceFormula != null)
-          'dataSourceFormula': dataSourceFormula.toJson(),
+          'dataSourceFormula': dataSourceFormula!.toJson(),
         if (dataSourceTable != null)
-          'dataSourceTable': dataSourceTable.toJson(),
-        if (dataValidation != null) 'dataValidation': dataValidation.toJson(),
+          'dataSourceTable': dataSourceTable!.toJson(),
+        if (dataValidation != null) 'dataValidation': dataValidation!.toJson(),
         if (effectiveFormat != null)
-          'effectiveFormat': effectiveFormat.toJson(),
-        if (effectiveValue != null) 'effectiveValue': effectiveValue.toJson(),
-        if (formattedValue != null) 'formattedValue': formattedValue,
-        if (hyperlink != null) 'hyperlink': hyperlink,
-        if (note != null) 'note': note,
-        if (pivotTable != null) 'pivotTable': pivotTable.toJson(),
+          'effectiveFormat': effectiveFormat!.toJson(),
+        if (effectiveValue != null) 'effectiveValue': effectiveValue!.toJson(),
+        if (formattedValue != null) 'formattedValue': formattedValue!,
+        if (hyperlink != null) 'hyperlink': hyperlink!,
+        if (note != null) 'note': note!,
+        if (pivotTable != null) 'pivotTable': pivotTable!.toJson(),
         if (textFormatRuns != null)
           'textFormatRuns':
-              textFormatRuns.map((value) => value.toJson()).toList(),
+              textFormatRuns!.map((value) => value.toJson()).toList(),
         if (userEnteredFormat != null)
-          'userEnteredFormat': userEnteredFormat.toJson(),
+          'userEnteredFormat': userEnteredFormat!.toJson(),
         if (userEnteredValue != null)
-          'userEnteredValue': userEnteredValue.toJson(),
+          'userEnteredValue': userEnteredValue!.toJson(),
       };
 }
 
 /// The format of a cell.
 class CellFormat {
   /// The background color of the cell.
-  Color backgroundColor;
+  Color? backgroundColor;
 
   /// The background color of the cell.
   ///
   /// If background_color is also set, this field takes precedence.
-  ColorStyle backgroundColorStyle;
+  ColorStyle? backgroundColorStyle;
 
   /// The borders of the cell.
-  Borders borders;
+  Borders? borders;
 
   /// The horizontal alignment of the value in the cell.
   /// Possible string values are:
@@ -4128,7 +4050,7 @@ class CellFormat {
   /// - "LEFT" : The text is explicitly aligned to the left of the cell.
   /// - "CENTER" : The text is explicitly aligned to the center of the cell.
   /// - "RIGHT" : The text is explicitly aligned to the right of the cell.
-  core.String horizontalAlignment;
+  core.String? horizontalAlignment;
 
   /// How a hyperlink, if it exists, should be displayed in the cell.
   /// Possible string values are:
@@ -4136,13 +4058,13 @@ class CellFormat {
   /// is rendered. Do not use this.
   /// - "LINKED" : A hyperlink should be explicitly rendered.
   /// - "PLAIN_TEXT" : A hyperlink should not be rendered.
-  core.String hyperlinkDisplayType;
+  core.String? hyperlinkDisplayType;
 
   /// A format describing how number values should be represented to the user.
-  NumberFormat numberFormat;
+  NumberFormat? numberFormat;
 
   /// The padding of the cell.
-  Padding padding;
+  Padding? padding;
 
   /// The direction of the text in the cell.
   /// Possible string values are:
@@ -4152,13 +4074,13 @@ class CellFormat {
   /// user.
   /// - "RIGHT_TO_LEFT" : The text direction of right-to-left was set by the
   /// user.
-  core.String textDirection;
+  core.String? textDirection;
 
   /// The format of the text in the cell (unless overridden by a format run).
-  TextFormat textFormat;
+  TextFormat? textFormat;
 
   /// The rotation applied to text in a cell
-  TextRotation textRotation;
+  TextRotation? textRotation;
 
   /// The vertical alignment of the value in the cell.
   /// Possible string values are:
@@ -4167,7 +4089,7 @@ class CellFormat {
   /// - "TOP" : The text is explicitly aligned to the top of the cell.
   /// - "MIDDLE" : The text is explicitly aligned to the middle of the cell.
   /// - "BOTTOM" : The text is explicitly aligned to the bottom of the cell.
-  core.String verticalAlignment;
+  core.String? verticalAlignment;
 
   /// The wrap strategy for the value in the cell.
   /// Possible string values are:
@@ -4190,7 +4112,7 @@ class CellFormat {
   /// - "WRAP" : Words that are longer than a line are wrapped at the character
   /// level rather than clipped. Example: | Cell has a | | loooooooooo| <- Word
   /// is broken. | ong word. |
-  core.String wrapStrategy;
+  core.String? wrapStrategy;
 
   CellFormat();
 
@@ -4240,23 +4162,23 @@ class CellFormat {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundColor != null)
-          'backgroundColor': backgroundColor.toJson(),
+          'backgroundColor': backgroundColor!.toJson(),
         if (backgroundColorStyle != null)
-          'backgroundColorStyle': backgroundColorStyle.toJson(),
-        if (borders != null) 'borders': borders.toJson(),
+          'backgroundColorStyle': backgroundColorStyle!.toJson(),
+        if (borders != null) 'borders': borders!.toJson(),
         if (horizontalAlignment != null)
-          'horizontalAlignment': horizontalAlignment,
+          'horizontalAlignment': horizontalAlignment!,
         if (hyperlinkDisplayType != null)
-          'hyperlinkDisplayType': hyperlinkDisplayType,
-        if (numberFormat != null) 'numberFormat': numberFormat.toJson(),
-        if (padding != null) 'padding': padding.toJson(),
-        if (textDirection != null) 'textDirection': textDirection,
-        if (textFormat != null) 'textFormat': textFormat.toJson(),
-        if (textRotation != null) 'textRotation': textRotation.toJson(),
-        if (verticalAlignment != null) 'verticalAlignment': verticalAlignment,
-        if (wrapStrategy != null) 'wrapStrategy': wrapStrategy,
+          'hyperlinkDisplayType': hyperlinkDisplayType!,
+        if (numberFormat != null) 'numberFormat': numberFormat!.toJson(),
+        if (padding != null) 'padding': padding!.toJson(),
+        if (textDirection != null) 'textDirection': textDirection!,
+        if (textFormat != null) 'textFormat': textFormat!.toJson(),
+        if (textRotation != null) 'textRotation': textRotation!.toJson(),
+        if (verticalAlignment != null) 'verticalAlignment': verticalAlignment!,
+        if (wrapStrategy != null) 'wrapStrategy': wrapStrategy!,
       };
 }
 
@@ -4267,13 +4189,13 @@ class ChartAxisViewWindowOptions {
   ///
   /// If unset, will automatically determine a maximum value that looks good for
   /// the data.
-  core.double viewWindowMax;
+  core.double? viewWindowMax;
 
   /// The minimum numeric value to be shown in this view window.
   ///
   /// If unset, will automatically determine a minimum value that looks good for
   /// the data.
-  core.double viewWindowMin;
+  core.double? viewWindowMin;
 
   /// The view window's mode.
   /// Possible string values are:
@@ -4286,7 +4208,7 @@ class ChartAxisViewWindowOptions {
   /// unspecified, it will fall back to the `PRETTY` value.
   /// - "PRETTY" : Chooses a min and max that make the chart look good. Both min
   /// and max are ignored in this mode.
-  core.String viewWindowMode;
+  core.String? viewWindowMode;
 
   ChartAxisViewWindowOptions();
 
@@ -4302,10 +4224,10 @@ class ChartAxisViewWindowOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (viewWindowMax != null) 'viewWindowMax': viewWindowMax,
-        if (viewWindowMin != null) 'viewWindowMin': viewWindowMin,
-        if (viewWindowMode != null) 'viewWindowMode': viewWindowMode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (viewWindowMax != null) 'viewWindowMax': viewWindowMax!,
+        if (viewWindowMin != null) 'viewWindowMin': viewWindowMin!,
+        if (viewWindowMode != null) 'viewWindowMode': viewWindowMode!,
       };
 }
 
@@ -4314,12 +4236,12 @@ class ChartCustomNumberFormatOptions {
   /// Custom prefix to be prepended to the chart attribute.
   ///
   /// This field is optional.
-  core.String prefix;
+  core.String? prefix;
 
   /// Custom suffix to be appended to the chart attribute.
   ///
   /// This field is optional.
-  core.String suffix;
+  core.String? suffix;
 
   ChartCustomNumberFormatOptions();
 
@@ -4332,9 +4254,9 @@ class ChartCustomNumberFormatOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (prefix != null) 'prefix': prefix,
-        if (suffix != null) 'suffix': suffix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (prefix != null) 'prefix': prefix!,
+        if (suffix != null) 'suffix': suffix!,
       };
 }
 
@@ -4351,19 +4273,19 @@ class ChartData {
   /// - "MEDIAN" : Median aggregate function.
   /// - "MIN" : Minimum aggregate function.
   /// - "SUM" : Sum aggregate function.
-  core.String aggregateType;
+  core.String? aggregateType;
 
   /// The reference to the data source column that the data reads from.
-  DataSourceColumnReference columnReference;
+  DataSourceColumnReference? columnReference;
 
   /// The rule to group the data by if the ChartData backs the domain of a data
   /// source chart.
   ///
   /// Not supported for regular charts.
-  ChartGroupRule groupRule;
+  ChartGroupRule? groupRule;
 
   /// The source ranges of the data.
-  ChartSourceRange sourceRange;
+  ChartSourceRange? sourceRange;
 
   ChartData();
 
@@ -4385,12 +4307,12 @@ class ChartData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aggregateType != null) 'aggregateType': aggregateType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aggregateType != null) 'aggregateType': aggregateType!,
         if (columnReference != null)
-          'columnReference': columnReference.toJson(),
-        if (groupRule != null) 'groupRule': groupRule.toJson(),
-        if (sourceRange != null) 'sourceRange': sourceRange.toJson(),
+          'columnReference': columnReference!.toJson(),
+        if (groupRule != null) 'groupRule': groupRule!.toJson(),
+        if (sourceRange != null) 'sourceRange': sourceRange!.toJson(),
       };
 }
 
@@ -4426,7 +4348,7 @@ class ChartDateTimeRule {
   /// - "YEAR_QUARTER" : Group dates by year and quarter, for example 2008 Q4.
   /// - "YEAR_MONTH_DAY" : Group dates by year, month, and day, for example
   /// 2008-11-22.
-  core.String type;
+  core.String? type;
 
   ChartDateTimeRule();
 
@@ -4436,8 +4358,8 @@ class ChartDateTimeRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4451,10 +4373,10 @@ class ChartDateTimeRule {
 /// bucket are aggregated based on the aggregate_type.
 class ChartGroupRule {
   /// A ChartDateTimeRule.
-  ChartDateTimeRule dateTimeRule;
+  ChartDateTimeRule? dateTimeRule;
 
   /// A ChartHistogramRule
-  ChartHistogramRule histogramRule;
+  ChartHistogramRule? histogramRule;
 
   ChartGroupRule();
 
@@ -4469,9 +4391,9 @@ class ChartGroupRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dateTimeRule != null) 'dateTimeRule': dateTimeRule.toJson(),
-        if (histogramRule != null) 'histogramRule': histogramRule.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dateTimeRule != null) 'dateTimeRule': dateTimeRule!.toJson(),
+        if (histogramRule != null) 'histogramRule': histogramRule!.toJson(),
       };
 }
 
@@ -4481,19 +4403,19 @@ class ChartHistogramRule {
   /// The size of the buckets that are created.
   ///
   /// Must be positive.
-  core.double intervalSize;
+  core.double? intervalSize;
 
   /// The maximum value at which items are placed into buckets.
   ///
   /// Values greater than the maximum are grouped into a single bucket. If
   /// omitted, it is determined by the maximum item value.
-  core.double maxValue;
+  core.double? maxValue;
 
   /// The minimum value at which items are placed into buckets.
   ///
   /// Values that are less than the minimum are grouped into a single bucket. If
   /// omitted, it is determined by the minimum item value.
-  core.double minValue;
+  core.double? minValue;
 
   ChartHistogramRule();
 
@@ -4509,10 +4431,10 @@ class ChartHistogramRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (intervalSize != null) 'intervalSize': intervalSize,
-        if (maxValue != null) 'maxValue': maxValue,
-        if (minValue != null) 'minValue': minValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (intervalSize != null) 'intervalSize': intervalSize!,
+        if (maxValue != null) 'maxValue': maxValue!,
+        if (minValue != null) 'minValue': minValue!,
       };
 }
 
@@ -4528,7 +4450,7 @@ class ChartSourceRange {
   /// configurations: domain sources: A1:A5 series1 sources: B1:B5 series2
   /// sources: D6:D10 domain sources: A1:A5, C10:C12 series1 sources: B1:B5,
   /// D10:D12 series2 sources: C1:C5, E10:E12
-  core.List<GridRange> sources;
+  core.List<GridRange>? sources;
 
   ChartSourceRange();
 
@@ -4541,9 +4463,9 @@ class ChartSourceRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (sources != null)
-          'sources': sources.map((value) => value.toJson()).toList(),
+          'sources': sources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4552,44 +4474,44 @@ class ChartSpec {
   /// The alternative text that describes the chart.
   ///
   /// This is often used for accessibility.
-  core.String altText;
+  core.String? altText;
 
   /// The background color of the entire chart.
   ///
   /// Not applicable to Org charts.
-  Color backgroundColor;
+  Color? backgroundColor;
 
   /// The background color of the entire chart.
   ///
   /// Not applicable to Org charts. If background_color is also set, this field
   /// takes precedence.
-  ColorStyle backgroundColorStyle;
+  ColorStyle? backgroundColorStyle;
 
   /// A basic chart specification, can be one of many kinds of charts.
   ///
   /// See BasicChartType for the list of all charts this supports.
-  BasicChartSpec basicChart;
+  BasicChartSpec? basicChart;
 
   /// A bubble chart specification.
-  BubbleChartSpec bubbleChart;
+  BubbleChartSpec? bubbleChart;
 
   /// A candlestick chart specification.
-  CandlestickChartSpec candlestickChart;
+  CandlestickChartSpec? candlestickChart;
 
   /// If present, the field contains data source chart specific properties.
-  DataSourceChartProperties dataSourceChartProperties;
+  DataSourceChartProperties? dataSourceChartProperties;
 
   /// The filters applied to the source data of the chart.
   ///
   /// Only supported for data source charts.
-  core.List<FilterSpec> filterSpecs;
+  core.List<FilterSpec>? filterSpecs;
 
   /// The name of the font to use by default for all chart text (e.g. title,
   /// axis labels, legend).
   ///
   /// If a font is specified for a specific part of the chart it will override
   /// this font name.
-  core.String fontName;
+  core.String? fontName;
 
   /// Determines how the charts will use hidden rows or columns.
   /// Possible string values are:
@@ -4600,63 +4522,63 @@ class ChartSpec {
   /// - "SKIP_HIDDEN_ROWS" : Charts will skip hidden rows only.
   /// - "SKIP_HIDDEN_COLUMNS" : Charts will skip hidden columns only.
   /// - "SHOW_ALL" : Charts will not skip any hidden rows or columns.
-  core.String hiddenDimensionStrategy;
+  core.String? hiddenDimensionStrategy;
 
   /// A histogram chart specification.
-  HistogramChartSpec histogramChart;
+  HistogramChartSpec? histogramChart;
 
   /// True to make a chart fill the entire space in which it's rendered with
   /// minimum padding.
   ///
   /// False to use the default padding. (Not applicable to Geo and Org charts.)
-  core.bool maximized;
+  core.bool? maximized;
 
   /// An org chart specification.
-  OrgChartSpec orgChart;
+  OrgChartSpec? orgChart;
 
   /// A pie chart specification.
-  PieChartSpec pieChart;
+  PieChartSpec? pieChart;
 
   /// A scorecard chart specification.
-  ScorecardChartSpec scorecardChart;
+  ScorecardChartSpec? scorecardChart;
 
   /// The order to sort the chart data by.
   ///
   /// Only a single sort spec is supported. Only supported for data source
   /// charts.
-  core.List<SortSpec> sortSpecs;
+  core.List<SortSpec>? sortSpecs;
 
   /// The subtitle of the chart.
-  core.String subtitle;
+  core.String? subtitle;
 
   /// The subtitle text format.
   ///
   /// Strikethrough and underline are not supported.
-  TextFormat subtitleTextFormat;
+  TextFormat? subtitleTextFormat;
 
   /// The subtitle text position.
   ///
   /// This field is optional.
-  TextPosition subtitleTextPosition;
+  TextPosition? subtitleTextPosition;
 
   /// The title of the chart.
-  core.String title;
+  core.String? title;
 
   /// The title text format.
   ///
   /// Strikethrough and underline are not supported.
-  TextFormat titleTextFormat;
+  TextFormat? titleTextFormat;
 
   /// The title text position.
   ///
   /// This field is optional.
-  TextPosition titleTextPosition;
+  TextPosition? titleTextPosition;
 
   /// A treemap chart specification.
-  TreemapChartSpec treemapChart;
+  TreemapChartSpec? treemapChart;
 
   /// A waterfall chart specification.
-  WaterfallChartSpec waterfallChart;
+  WaterfallChartSpec? waterfallChart;
 
   ChartSpec();
 
@@ -4758,49 +4680,49 @@ class ChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (altText != null) 'altText': altText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (altText != null) 'altText': altText!,
         if (backgroundColor != null)
-          'backgroundColor': backgroundColor.toJson(),
+          'backgroundColor': backgroundColor!.toJson(),
         if (backgroundColorStyle != null)
-          'backgroundColorStyle': backgroundColorStyle.toJson(),
-        if (basicChart != null) 'basicChart': basicChart.toJson(),
-        if (bubbleChart != null) 'bubbleChart': bubbleChart.toJson(),
+          'backgroundColorStyle': backgroundColorStyle!.toJson(),
+        if (basicChart != null) 'basicChart': basicChart!.toJson(),
+        if (bubbleChart != null) 'bubbleChart': bubbleChart!.toJson(),
         if (candlestickChart != null)
-          'candlestickChart': candlestickChart.toJson(),
+          'candlestickChart': candlestickChart!.toJson(),
         if (dataSourceChartProperties != null)
-          'dataSourceChartProperties': dataSourceChartProperties.toJson(),
+          'dataSourceChartProperties': dataSourceChartProperties!.toJson(),
         if (filterSpecs != null)
-          'filterSpecs': filterSpecs.map((value) => value.toJson()).toList(),
-        if (fontName != null) 'fontName': fontName,
+          'filterSpecs': filterSpecs!.map((value) => value.toJson()).toList(),
+        if (fontName != null) 'fontName': fontName!,
         if (hiddenDimensionStrategy != null)
-          'hiddenDimensionStrategy': hiddenDimensionStrategy,
-        if (histogramChart != null) 'histogramChart': histogramChart.toJson(),
-        if (maximized != null) 'maximized': maximized,
-        if (orgChart != null) 'orgChart': orgChart.toJson(),
-        if (pieChart != null) 'pieChart': pieChart.toJson(),
-        if (scorecardChart != null) 'scorecardChart': scorecardChart.toJson(),
+          'hiddenDimensionStrategy': hiddenDimensionStrategy!,
+        if (histogramChart != null) 'histogramChart': histogramChart!.toJson(),
+        if (maximized != null) 'maximized': maximized!,
+        if (orgChart != null) 'orgChart': orgChart!.toJson(),
+        if (pieChart != null) 'pieChart': pieChart!.toJson(),
+        if (scorecardChart != null) 'scorecardChart': scorecardChart!.toJson(),
         if (sortSpecs != null)
-          'sortSpecs': sortSpecs.map((value) => value.toJson()).toList(),
-        if (subtitle != null) 'subtitle': subtitle,
+          'sortSpecs': sortSpecs!.map((value) => value.toJson()).toList(),
+        if (subtitle != null) 'subtitle': subtitle!,
         if (subtitleTextFormat != null)
-          'subtitleTextFormat': subtitleTextFormat.toJson(),
+          'subtitleTextFormat': subtitleTextFormat!.toJson(),
         if (subtitleTextPosition != null)
-          'subtitleTextPosition': subtitleTextPosition.toJson(),
-        if (title != null) 'title': title,
+          'subtitleTextPosition': subtitleTextPosition!.toJson(),
+        if (title != null) 'title': title!,
         if (titleTextFormat != null)
-          'titleTextFormat': titleTextFormat.toJson(),
+          'titleTextFormat': titleTextFormat!.toJson(),
         if (titleTextPosition != null)
-          'titleTextPosition': titleTextPosition.toJson(),
-        if (treemapChart != null) 'treemapChart': treemapChart.toJson(),
-        if (waterfallChart != null) 'waterfallChart': waterfallChart.toJson(),
+          'titleTextPosition': titleTextPosition!.toJson(),
+        if (treemapChart != null) 'treemapChart': treemapChart!.toJson(),
+        if (waterfallChart != null) 'waterfallChart': waterfallChart!.toJson(),
       };
 }
 
 /// Clears the basic filter, if any exists on the sheet.
 class ClearBasicFilterRequest {
   /// The sheet ID on which the basic filter should be cleared.
-  core.int sheetId;
+  core.int? sheetId;
 
   ClearBasicFilterRequest();
 
@@ -4810,8 +4732,8 @@ class ClearBasicFilterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sheetId != null) 'sheetId': sheetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sheetId != null) 'sheetId': sheetId!,
       };
 }
 
@@ -4823,7 +4745,7 @@ class ClearValuesRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The response when clearing a range of values in a spreadsheet.
@@ -4833,10 +4755,10 @@ class ClearValuesResponse {
   /// (If the request was for an unbounded range or a ranger larger than the
   /// bounds of the sheet, this will be the actual range that was cleared,
   /// bounded to the sheet's limits.)
-  core.String clearedRange;
+  core.String? clearedRange;
 
   /// The spreadsheet the updates were applied to.
-  core.String spreadsheetId;
+  core.String? spreadsheetId;
 
   ClearValuesResponse();
 
@@ -4849,9 +4771,9 @@ class ClearValuesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clearedRange != null) 'clearedRange': clearedRange,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clearedRange != null) 'clearedRange': clearedRange!,
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
       };
 }
 
@@ -4915,16 +4837,16 @@ class Color {
   /// between a default value and the value being unset. If omitted, this color
   /// object is to be rendered as a solid color (as if the alpha value had been
   /// explicitly given with a value of 1.0).
-  core.double alpha;
+  core.double? alpha;
 
   /// The amount of blue in the color as a value in the interval \[0, 1\].
-  core.double blue;
+  core.double? blue;
 
   /// The amount of green in the color as a value in the interval \[0, 1\].
-  core.double green;
+  core.double? green;
 
   /// The amount of red in the color as a value in the interval \[0, 1\].
-  core.double red;
+  core.double? red;
 
   Color();
 
@@ -4943,18 +4865,18 @@ class Color {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alpha != null) 'alpha': alpha,
-        if (blue != null) 'blue': blue,
-        if (green != null) 'green': green,
-        if (red != null) 'red': red,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alpha != null) 'alpha': alpha!,
+        if (blue != null) 'blue': blue!,
+        if (green != null) 'green': green!,
+        if (red != null) 'red': red!,
       };
 }
 
 /// A color value.
 class ColorStyle {
   /// RGB color.
-  Color rgbColor;
+  Color? rgbColor;
 
   /// Theme color.
   /// Possible string values are:
@@ -4968,7 +4890,7 @@ class ColorStyle {
   /// - "ACCENT5" : Represents the fifth accent color
   /// - "ACCENT6" : Represents the sixth accent color
   /// - "LINK" : Represents the color to use for hyperlinks
-  core.String themeColor;
+  core.String? themeColor;
 
   ColorStyle();
 
@@ -4982,9 +4904,9 @@ class ColorStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (rgbColor != null) 'rgbColor': rgbColor.toJson(),
-        if (themeColor != null) 'themeColor': themeColor,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (rgbColor != null) 'rgbColor': rgbColor!.toJson(),
+        if (themeColor != null) 'themeColor': themeColor!,
       };
 }
 
@@ -5003,13 +4925,13 @@ class ConditionValue {
   /// - "YESTERDAY" : The value is yesterday.
   /// - "TODAY" : The value is today.
   /// - "TOMORROW" : The value is tomorrow.
-  core.String relativeDate;
+  core.String? relativeDate;
 
   /// A value the condition is based on.
   ///
   /// The value is parsed as if the user typed into a cell. Formulas are
   /// supported (and must begin with an `=` or a '+').
-  core.String userEnteredValue;
+  core.String? userEnteredValue;
 
   ConditionValue();
 
@@ -5022,24 +4944,24 @@ class ConditionValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (relativeDate != null) 'relativeDate': relativeDate,
-        if (userEnteredValue != null) 'userEnteredValue': userEnteredValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (relativeDate != null) 'relativeDate': relativeDate!,
+        if (userEnteredValue != null) 'userEnteredValue': userEnteredValue!,
       };
 }
 
 /// A rule describing a conditional format.
 class ConditionalFormatRule {
   /// The formatting is either "on" or "off" according to the rule.
-  BooleanRule booleanRule;
+  BooleanRule? booleanRule;
 
   /// The formatting will vary based on the gradients in the rule.
-  GradientRule gradientRule;
+  GradientRule? gradientRule;
 
   /// The ranges that are formatted if the condition is true.
   ///
   /// All the ranges must be on the same grid.
-  core.List<GridRange> ranges;
+  core.List<GridRange>? ranges;
 
   ConditionalFormatRule();
 
@@ -5060,11 +4982,11 @@ class ConditionalFormatRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (booleanRule != null) 'booleanRule': booleanRule.toJson(),
-        if (gradientRule != null) 'gradientRule': gradientRule.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (booleanRule != null) 'booleanRule': booleanRule!.toJson(),
+        if (gradientRule != null) 'gradientRule': gradientRule!.toJson(),
         if (ranges != null)
-          'ranges': ranges.map((value) => value.toJson()).toList(),
+          'ranges': ranges!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5076,14 +4998,14 @@ class CopyPasteRequest {
   /// width, then the data will be repeated to fill in the destination range. If
   /// the range is smaller than the source range, the entire source data will
   /// still be copied (beyond the end of the destination range).
-  GridRange destination;
+  GridRange? destination;
 
   /// How that data should be oriented when pasting.
   /// Possible string values are:
   /// - "NORMAL" : Paste normally.
   /// - "TRANSPOSE" : Paste transposed, where all rows become columns and vice
   /// versa.
-  core.String pasteOrientation;
+  core.String? pasteOrientation;
 
   /// What kind of data to paste.
   /// Possible string values are:
@@ -5096,10 +5018,10 @@ class CopyPasteRequest {
   /// - "PASTE_DATA_VALIDATION" : Paste the data validation only.
   /// - "PASTE_CONDITIONAL_FORMATTING" : Paste the conditional formatting rules
   /// only.
-  core.String pasteType;
+  core.String? pasteType;
 
   /// The source range to copy.
-  GridRange source;
+  GridRange? source;
 
   CopyPasteRequest();
 
@@ -5120,18 +5042,18 @@ class CopyPasteRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destination != null) 'destination': destination.toJson(),
-        if (pasteOrientation != null) 'pasteOrientation': pasteOrientation,
-        if (pasteType != null) 'pasteType': pasteType,
-        if (source != null) 'source': source.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destination != null) 'destination': destination!.toJson(),
+        if (pasteOrientation != null) 'pasteOrientation': pasteOrientation!,
+        if (pasteType != null) 'pasteType': pasteType!,
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
 /// The request to copy a sheet across spreadsheets.
 class CopySheetToAnotherSpreadsheetRequest {
   /// The ID of the spreadsheet to copy the sheet to.
-  core.String destinationSpreadsheetId;
+  core.String? destinationSpreadsheetId;
 
   CopySheetToAnotherSpreadsheetRequest();
 
@@ -5142,16 +5064,16 @@ class CopySheetToAnotherSpreadsheetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (destinationSpreadsheetId != null)
-          'destinationSpreadsheetId': destinationSpreadsheetId,
+          'destinationSpreadsheetId': destinationSpreadsheetId!,
       };
 }
 
 /// A request to create developer metadata.
 class CreateDeveloperMetadataRequest {
   /// The developer metadata to create.
-  DeveloperMetadata developerMetadata;
+  DeveloperMetadata? developerMetadata;
 
   CreateDeveloperMetadataRequest();
 
@@ -5162,16 +5084,16 @@ class CreateDeveloperMetadataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (developerMetadata != null)
-          'developerMetadata': developerMetadata.toJson(),
+          'developerMetadata': developerMetadata!.toJson(),
       };
 }
 
 /// The response from creating developer metadata.
 class CreateDeveloperMetadataResponse {
   /// The developer metadata that was created.
-  DeveloperMetadata developerMetadata;
+  DeveloperMetadata? developerMetadata;
 
   CreateDeveloperMetadataResponse();
 
@@ -5182,16 +5104,16 @@ class CreateDeveloperMetadataResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (developerMetadata != null)
-          'developerMetadata': developerMetadata.toJson(),
+          'developerMetadata': developerMetadata!.toJson(),
       };
 }
 
 /// Moves data from the source to the destination.
 class CutPasteRequest {
   /// The top-left coordinate where the data should be pasted.
-  GridCoordinate destination;
+  GridCoordinate? destination;
 
   /// What kind of data to paste.
   ///
@@ -5206,10 +5128,10 @@ class CutPasteRequest {
   /// - "PASTE_DATA_VALIDATION" : Paste the data validation only.
   /// - "PASTE_CONDITIONAL_FORMATTING" : Paste the conditional formatting rules
   /// only.
-  core.String pasteType;
+  core.String? pasteType;
 
   /// The source data to cut.
-  GridRange source;
+  GridRange? source;
 
   CutPasteRequest();
 
@@ -5227,10 +5149,10 @@ class CutPasteRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destination != null) 'destination': destination.toJson(),
-        if (pasteType != null) 'pasteType': pasteType,
-        if (source != null) 'source': source.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destination != null) 'destination': destination!.toJson(),
+        if (pasteType != null) 'pasteType': pasteType!,
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
@@ -5276,13 +5198,13 @@ class DataExecutionStatus {
   /// - "OBJECT_IN_ERROR_STATE" : The data source object is currently in error
   /// state. To force refresh, set force in RefreshDataSourceRequest.
   /// - "OBJECT_SPEC_INVALID" : The data source object specification is invalid.
-  core.String errorCode;
+  core.String? errorCode;
 
   /// The error message, which may be empty.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   /// Gets the time the data last successfully refreshed.
-  core.String lastRefreshTime;
+  core.String? lastRefreshTime;
 
   /// The state of the data execution.
   /// Possible string values are:
@@ -5291,7 +5213,7 @@ class DataExecutionStatus {
   /// - "RUNNING" : The data execution has started and is running.
   /// - "SUCCEEDED" : The data execution has completed successfully.
   /// - "FAILED" : The data execution has completed with errors.
-  core.String state;
+  core.String? state;
 
   DataExecutionStatus();
 
@@ -5310,11 +5232,11 @@ class DataExecutionStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode,
-        if (errorMessage != null) 'errorMessage': errorMessage,
-        if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -5322,14 +5244,14 @@ class DataExecutionStatus {
 /// request.
 class DataFilter {
   /// Selects data that matches the specified A1 range.
-  core.String a1Range;
+  core.String? a1Range;
 
   /// Selects data associated with the developer metadata matching the criteria
   /// described by this DeveloperMetadataLookup.
-  DeveloperMetadataLookup developerMetadataLookup;
+  DeveloperMetadataLookup? developerMetadataLookup;
 
   /// Selects data that matches the range described by the GridRange.
-  GridRange gridRange;
+  GridRange? gridRange;
 
   DataFilter();
 
@@ -5348,25 +5270,25 @@ class DataFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (a1Range != null) 'a1Range': a1Range,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (a1Range != null) 'a1Range': a1Range!,
         if (developerMetadataLookup != null)
-          'developerMetadataLookup': developerMetadataLookup.toJson(),
-        if (gridRange != null) 'gridRange': gridRange.toJson(),
+          'developerMetadataLookup': developerMetadataLookup!.toJson(),
+        if (gridRange != null) 'gridRange': gridRange!.toJson(),
       };
 }
 
 /// A range of values whose location is specified by a DataFilter.
 class DataFilterValueRange {
   /// The data filter describing the location of the values in the spreadsheet.
-  DataFilter dataFilter;
+  DataFilter? dataFilter;
 
   /// The major dimension of the values.
   /// Possible string values are:
   /// - "DIMENSION_UNSPECIFIED" : The default value, do not use.
   /// - "ROWS" : Operates on the rows of a sheet.
   /// - "COLUMNS" : Operates on the columns of a sheet.
-  core.String majorDimension;
+  core.String? majorDimension;
 
   /// The data to be written.
   ///
@@ -5377,7 +5299,7 @@ class DataFilterValueRange {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.List<core.Object>> values;
+  core.List<core.List<core.Object>>? values;
 
   DataFilterValueRange();
 
@@ -5398,10 +5320,10 @@ class DataFilterValueRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataFilter != null) 'dataFilter': dataFilter.toJson(),
-        if (majorDimension != null) 'majorDimension': majorDimension,
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataFilter != null) 'dataFilter': dataFilter!.toJson(),
+        if (majorDimension != null) 'majorDimension': majorDimension!,
+        if (values != null) 'values': values!,
       };
 }
 
@@ -5419,7 +5341,7 @@ class DataLabel {
   /// the series is split into multiple source ranges, this source data must
   /// come from the next column in the source data. For example, if the series
   /// is B2:B4,E6:E8 then this data must come from C2:C4,F6:F8.
-  ChartData customLabelData;
+  ChartData? customLabelData;
 
   /// The placement of the data label relative to the labeled data.
   /// Possible string values are:
@@ -5435,10 +5357,10 @@ class DataLabel {
   /// bottom if negative).
   /// - "INSIDE_BASE" : Inside a bar or column at the base.
   /// - "OUTSIDE_END" : Outside a bar or column at the end.
-  core.String placement;
+  core.String? placement;
 
   /// The text format used for the data label.
-  TextFormat textFormat;
+  TextFormat? textFormat;
 
   /// The type of the data label.
   /// Possible string values are:
@@ -5449,7 +5371,7 @@ class DataLabel {
   /// - "DATA" : The data label is displayed using values from the series data.
   /// - "CUSTOM" : The data label is displayed using values from a custom data
   /// source indicated by customLabelData.
-  core.String type;
+  core.String? type;
 
   DataLabel();
 
@@ -5470,34 +5392,34 @@ class DataLabel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customLabelData != null)
-          'customLabelData': customLabelData.toJson(),
-        if (placement != null) 'placement': placement,
-        if (textFormat != null) 'textFormat': textFormat.toJson(),
-        if (type != null) 'type': type,
+          'customLabelData': customLabelData!.toJson(),
+        if (placement != null) 'placement': placement!,
+        if (textFormat != null) 'textFormat': textFormat!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
 /// Information about an external data source in the spreadsheet.
 class DataSource {
   /// All calculated columns in the data source.
-  core.List<DataSourceColumn> calculatedColumns;
+  core.List<DataSourceColumn>? calculatedColumns;
 
   /// The spreadsheet-scoped unique ID that identifies the data source.
   ///
   /// Example: 1080547365.
-  core.String dataSourceId;
+  core.String? dataSourceId;
 
   /// The ID of the Sheet connected with the data source.
   ///
   /// The field cannot be changed once set. When creating a data source, an
   /// associated DATA_SOURCE sheet is also created, if the field is not
   /// specified, the ID of the created sheet will be randomly generated.
-  core.int sheetId;
+  core.int? sheetId;
 
   /// The DataSourceSpec for the data source connected with this spreadsheet.
-  DataSourceSpec spec;
+  DataSourceSpec? spec;
 
   DataSource();
 
@@ -5520,13 +5442,13 @@ class DataSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (calculatedColumns != null)
           'calculatedColumns':
-              calculatedColumns.map((value) => value.toJson()).toList(),
-        if (dataSourceId != null) 'dataSourceId': dataSourceId,
-        if (sheetId != null) 'sheetId': sheetId,
-        if (spec != null) 'spec': spec.toJson(),
+              calculatedColumns!.map((value) => value.toJson()).toList(),
+        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+        if (sheetId != null) 'sheetId': sheetId!,
+        if (spec != null) 'spec': spec!.toJson(),
       };
 }
 
@@ -5535,10 +5457,10 @@ class DataSourceChartProperties {
   /// The data execution status.
   ///
   /// Output only.
-  DataExecutionStatus dataExecutionStatus;
+  DataExecutionStatus? dataExecutionStatus;
 
   /// ID of the data source that the chart is associated with.
-  core.String dataSourceId;
+  core.String? dataSourceId;
 
   DataSourceChartProperties();
 
@@ -5552,20 +5474,20 @@ class DataSourceChartProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataExecutionStatus != null)
-          'dataExecutionStatus': dataExecutionStatus.toJson(),
-        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+          'dataExecutionStatus': dataExecutionStatus!.toJson(),
+        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
       };
 }
 
 /// A column in a data source.
 class DataSourceColumn {
   /// The formula of the calculated column.
-  core.String formula;
+  core.String? formula;
 
   /// The column reference.
-  DataSourceColumnReference reference;
+  DataSourceColumnReference? reference;
 
   DataSourceColumn();
 
@@ -5579,9 +5501,9 @@ class DataSourceColumn {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (formula != null) 'formula': formula,
-        if (reference != null) 'reference': reference.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (formula != null) 'formula': formula!,
+        if (reference != null) 'reference': reference!.toJson(),
       };
 }
 
@@ -5590,7 +5512,7 @@ class DataSourceColumnReference {
   /// The display name of the column.
   ///
   /// It should be unique within a data source.
-  core.String name;
+  core.String? name;
 
   DataSourceColumnReference();
 
@@ -5600,8 +5522,8 @@ class DataSourceColumnReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -5610,10 +5532,10 @@ class DataSourceFormula {
   /// The data execution status.
   ///
   /// Output only.
-  DataExecutionStatus dataExecutionStatus;
+  DataExecutionStatus? dataExecutionStatus;
 
   /// The ID of the data source the formula is associated with.
-  core.String dataSourceId;
+  core.String? dataSourceId;
 
   DataSourceFormula();
 
@@ -5627,29 +5549,29 @@ class DataSourceFormula {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataExecutionStatus != null)
-          'dataExecutionStatus': dataExecutionStatus.toJson(),
-        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+          'dataExecutionStatus': dataExecutionStatus!.toJson(),
+        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
       };
 }
 
 /// Reference to a data source object.
 class DataSourceObjectReference {
   /// References to a data source chart.
-  core.int chartId;
+  core.int? chartId;
 
   /// References to a cell containing DataSourceFormula.
-  GridCoordinate dataSourceFormulaCell;
+  GridCoordinate? dataSourceFormulaCell;
 
   /// References to a data source PivotTable anchored at the cell.
-  GridCoordinate dataSourcePivotTableAnchorCell;
+  GridCoordinate? dataSourcePivotTableAnchorCell;
 
   /// References to a DataSourceTable anchored at the cell.
-  GridCoordinate dataSourceTableAnchorCell;
+  GridCoordinate? dataSourceTableAnchorCell;
 
   /// References to a DATA_SOURCE sheet.
-  core.String sheetId;
+  core.String? sheetId;
 
   DataSourceObjectReference();
 
@@ -5677,23 +5599,23 @@ class DataSourceObjectReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (chartId != null) 'chartId': chartId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (chartId != null) 'chartId': chartId!,
         if (dataSourceFormulaCell != null)
-          'dataSourceFormulaCell': dataSourceFormulaCell.toJson(),
+          'dataSourceFormulaCell': dataSourceFormulaCell!.toJson(),
         if (dataSourcePivotTableAnchorCell != null)
           'dataSourcePivotTableAnchorCell':
-              dataSourcePivotTableAnchorCell.toJson(),
+              dataSourcePivotTableAnchorCell!.toJson(),
         if (dataSourceTableAnchorCell != null)
-          'dataSourceTableAnchorCell': dataSourceTableAnchorCell.toJson(),
-        if (sheetId != null) 'sheetId': sheetId,
+          'dataSourceTableAnchorCell': dataSourceTableAnchorCell!.toJson(),
+        if (sheetId != null) 'sheetId': sheetId!,
       };
 }
 
 /// A list of references to data source objects.
 class DataSourceObjectReferences {
   /// The references.
-  core.List<DataSourceObjectReference> references;
+  core.List<DataSourceObjectReference>? references;
 
   DataSourceObjectReferences();
 
@@ -5707,9 +5629,9 @@ class DataSourceObjectReferences {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (references != null)
-          'references': references.map((value) => value.toJson()).toList(),
+          'references': references!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5723,17 +5645,17 @@ class DataSourceParameter {
   /// Must be a legitimate identifier for the DataSource that supports it. For
   /// example,
   /// [BigQuery identifier](https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#identifiers).
-  core.String name;
+  core.String? name;
 
   /// ID of a NamedRange.
   ///
   /// Its size must be 1x1.
-  core.String namedRangeId;
+  core.String? namedRangeId;
 
   /// A range that contains the value of the parameter.
   ///
   /// Its size must be 1x1.
-  GridRange range;
+  GridRange? range;
 
   DataSourceParameter();
 
@@ -5750,10 +5672,10 @@ class DataSourceParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (namedRangeId != null) 'namedRangeId': namedRangeId,
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
@@ -5764,7 +5686,7 @@ class DataSourceRefreshDailySchedule {
   ///
   /// Only `hours` part is used. The time interval size defaults to that in the
   /// Sheets editor.
-  TimeOfDay startTime;
+  TimeOfDay? startTime;
 
   DataSourceRefreshDailySchedule();
 
@@ -5775,8 +5697,8 @@ class DataSourceRefreshDailySchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (startTime != null) 'startTime': startTime.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (startTime != null) 'startTime': startTime!.toJson(),
       };
 }
 
@@ -5787,14 +5709,14 @@ class DataSourceRefreshMonthlySchedule {
   ///
   /// Only 1-28 are supported, mapping to the 1st to the 28th day. At lesat one
   /// day must be specified.
-  core.List<core.int> daysOfMonth;
+  core.List<core.int>? daysOfMonth;
 
   /// The start time of a time interval in which a data source refresh is
   /// scheduled.
   ///
   /// Only `hours` part is used. The time interval size defaults to that in the
   /// Sheets editor.
-  TimeOfDay startTime;
+  TimeOfDay? startTime;
 
   DataSourceRefreshMonthlySchedule();
 
@@ -5810,9 +5732,9 @@ class DataSourceRefreshMonthlySchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (daysOfMonth != null) 'daysOfMonth': daysOfMonth,
-        if (startTime != null) 'startTime': startTime.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (daysOfMonth != null) 'daysOfMonth': daysOfMonth!,
+        if (startTime != null) 'startTime': startTime!.toJson(),
       };
 }
 
@@ -5825,18 +5747,18 @@ class DataSourceRefreshMonthlySchedule {
 /// 12pm every day.
 class DataSourceRefreshSchedule {
   /// Daily refresh schedule.
-  DataSourceRefreshDailySchedule dailySchedule;
+  DataSourceRefreshDailySchedule? dailySchedule;
 
   /// True if the refresh schedule is enabled, or false otherwise.
-  core.bool enabled;
+  core.bool? enabled;
 
   /// Monthly refresh schedule.
-  DataSourceRefreshMonthlySchedule monthlySchedule;
+  DataSourceRefreshMonthlySchedule? monthlySchedule;
 
   /// The time interval of the next run.
   ///
   /// Output only.
-  Interval nextRun;
+  Interval? nextRun;
 
   /// The scope of the refresh.
   ///
@@ -5845,10 +5767,10 @@ class DataSourceRefreshSchedule {
   /// - "DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED" : Default value, do not use.
   /// - "ALL_DATA_SOURCES" : Refreshes all data sources and their associated
   /// data source objects in the spreadsheet.
-  core.String refreshScope;
+  core.String? refreshScope;
 
   /// Weekly refresh schedule.
-  DataSourceRefreshWeeklySchedule weeklySchedule;
+  DataSourceRefreshWeeklySchedule? weeklySchedule;
 
   DataSourceRefreshSchedule();
 
@@ -5877,14 +5799,14 @@ class DataSourceRefreshSchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dailySchedule != null) 'dailySchedule': dailySchedule.toJson(),
-        if (enabled != null) 'enabled': enabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dailySchedule != null) 'dailySchedule': dailySchedule!.toJson(),
+        if (enabled != null) 'enabled': enabled!,
         if (monthlySchedule != null)
-          'monthlySchedule': monthlySchedule.toJson(),
-        if (nextRun != null) 'nextRun': nextRun.toJson(),
-        if (refreshScope != null) 'refreshScope': refreshScope,
-        if (weeklySchedule != null) 'weeklySchedule': weeklySchedule.toJson(),
+          'monthlySchedule': monthlySchedule!.toJson(),
+        if (nextRun != null) 'nextRun': nextRun!.toJson(),
+        if (refreshScope != null) 'refreshScope': refreshScope!,
+        if (weeklySchedule != null) 'weeklySchedule': weeklySchedule!.toJson(),
       };
 }
 
@@ -5894,14 +5816,14 @@ class DataSourceRefreshWeeklySchedule {
   /// Days of the week to refresh.
   ///
   /// At least one day must be specified.
-  core.List<core.String> daysOfWeek;
+  core.List<core.String>? daysOfWeek;
 
   /// The start time of a time interval in which a data source refresh is
   /// scheduled.
   ///
   /// Only `hours` part is used. The time interval size defaults to that in the
   /// Sheets editor.
-  TimeOfDay startTime;
+  TimeOfDay? startTime;
 
   DataSourceRefreshWeeklySchedule();
 
@@ -5917,19 +5839,19 @@ class DataSourceRefreshWeeklySchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (daysOfWeek != null) 'daysOfWeek': daysOfWeek,
-        if (startTime != null) 'startTime': startTime.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (daysOfWeek != null) 'daysOfWeek': daysOfWeek!,
+        if (startTime != null) 'startTime': startTime!.toJson(),
       };
 }
 
 /// A range along a single dimension on a DATA_SOURCE sheet.
 class DataSourceSheetDimensionRange {
   /// The columns on the data source sheet.
-  core.List<DataSourceColumnReference> columnReferences;
+  core.List<DataSourceColumnReference>? columnReferences;
 
   /// The ID of the data source sheet the range is on.
-  core.int sheetId;
+  core.int? sheetId;
 
   DataSourceSheetDimensionRange();
 
@@ -5946,11 +5868,11 @@ class DataSourceSheetDimensionRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (columnReferences != null)
           'columnReferences':
-              columnReferences.map((value) => value.toJson()).toList(),
-        if (sheetId != null) 'sheetId': sheetId,
+              columnReferences!.map((value) => value.toJson()).toList(),
+        if (sheetId != null) 'sheetId': sheetId!,
       };
 }
 
@@ -5958,13 +5880,13 @@ class DataSourceSheetDimensionRange {
 class DataSourceSheetProperties {
   /// The columns displayed on the sheet, corresponding to the values in
   /// RowData.
-  core.List<DataSourceColumn> columns;
+  core.List<DataSourceColumn>? columns;
 
   /// The data execution status.
-  DataExecutionStatus dataExecutionStatus;
+  DataExecutionStatus? dataExecutionStatus;
 
   /// ID of the DataSource the sheet is connected to.
-  core.String dataSourceId;
+  core.String? dataSourceId;
 
   DataSourceSheetProperties();
 
@@ -5984,12 +5906,12 @@ class DataSourceSheetProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (columns != null)
-          'columns': columns.map((value) => value.toJson()).toList(),
+          'columns': columns!.map((value) => value.toJson()).toList(),
         if (dataExecutionStatus != null)
-          'dataExecutionStatus': dataExecutionStatus.toJson(),
-        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+          'dataExecutionStatus': dataExecutionStatus!.toJson(),
+        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
       };
 }
 
@@ -5999,10 +5921,10 @@ class DataSourceSheetProperties {
 /// source.
 class DataSourceSpec {
   /// A BigQueryDataSourceSpec.
-  BigQueryDataSourceSpec bigQuery;
+  BigQueryDataSourceSpec? bigQuery;
 
   /// The parameters of the data source, used when querying the data source.
-  core.List<DataSourceParameter> parameters;
+  core.List<DataSourceParameter>? parameters;
 
   DataSourceSpec();
 
@@ -6019,10 +5941,10 @@ class DataSourceSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bigQuery != null) 'bigQuery': bigQuery.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bigQuery != null) 'bigQuery': bigQuery!.toJson(),
         if (parameters != null)
-          'parameters': parameters.map((value) => value.toJson()).toList(),
+          'parameters': parameters!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6041,35 +5963,35 @@ class DataSourceTable {
   /// - "SYNC_ALL" : Sync all current and future columns in the data source. If
   /// set, the data source table fetches all the columns in the data source at
   /// the time of refresh.
-  core.String columnSelectionType;
+  core.String? columnSelectionType;
 
   /// Columns selected for the data source table.
   ///
   /// The column_selection_type must be SELECTED.
-  core.List<DataSourceColumnReference> columns;
+  core.List<DataSourceColumnReference>? columns;
 
   /// The data execution status.
   ///
   /// Output only.
-  DataExecutionStatus dataExecutionStatus;
+  DataExecutionStatus? dataExecutionStatus;
 
   /// The ID of the data source the data source table is associated with.
-  core.String dataSourceId;
+  core.String? dataSourceId;
 
   /// Filter specifications in the data source table.
-  core.List<FilterSpec> filterSpecs;
+  core.List<FilterSpec>? filterSpecs;
 
   /// The limit of rows to return.
   ///
   /// If not set, a default limit is applied. Please refer to the Sheets editor
   /// for the default and max limit.
-  core.int rowLimit;
+  core.int? rowLimit;
 
   /// Sort specifications in the data source table.
   ///
   /// The result of the data source table is sorted based on the sort
   /// specifications in order.
-  core.List<SortSpec> sortSpecs;
+  core.List<SortSpec>? sortSpecs;
 
   DataSourceTable();
 
@@ -6108,37 +6030,37 @@ class DataSourceTable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (columnSelectionType != null)
-          'columnSelectionType': columnSelectionType,
+          'columnSelectionType': columnSelectionType!,
         if (columns != null)
-          'columns': columns.map((value) => value.toJson()).toList(),
+          'columns': columns!.map((value) => value.toJson()).toList(),
         if (dataExecutionStatus != null)
-          'dataExecutionStatus': dataExecutionStatus.toJson(),
-        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+          'dataExecutionStatus': dataExecutionStatus!.toJson(),
+        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
         if (filterSpecs != null)
-          'filterSpecs': filterSpecs.map((value) => value.toJson()).toList(),
-        if (rowLimit != null) 'rowLimit': rowLimit,
+          'filterSpecs': filterSpecs!.map((value) => value.toJson()).toList(),
+        if (rowLimit != null) 'rowLimit': rowLimit!,
         if (sortSpecs != null)
-          'sortSpecs': sortSpecs.map((value) => value.toJson()).toList(),
+          'sortSpecs': sortSpecs!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A data validation rule.
 class DataValidationRule {
   /// The condition that data in the cell must match.
-  BooleanCondition condition;
+  BooleanCondition? condition;
 
   /// A message to show the user when adding data to the cell.
-  core.String inputMessage;
+  core.String? inputMessage;
 
   /// True if the UI should be customized based on the kind of condition.
   ///
   /// If true, "List" conditions will show a dropdown.
-  core.bool showCustomUi;
+  core.bool? showCustomUi;
 
   /// True if invalid data should be rejected.
-  core.bool strict;
+  core.bool? strict;
 
   DataValidationRule();
 
@@ -6158,11 +6080,11 @@ class DataValidationRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (inputMessage != null) 'inputMessage': inputMessage,
-        if (showCustomUi != null) 'showCustomUi': showCustomUi,
-        if (strict != null) 'strict': strict,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (inputMessage != null) 'inputMessage': inputMessage!,
+        if (showCustomUi != null) 'showCustomUi': showCustomUi!,
+        if (strict != null) 'strict': strict!,
       };
 }
 
@@ -6207,7 +6129,7 @@ class DateTimeRule {
   /// - "YEAR_QUARTER" : Group dates by year and quarter, for example 2008 Q4.
   /// - "YEAR_MONTH_DAY" : Group dates by year, month, and day, for example
   /// 2008-11-22.
-  core.String type;
+  core.String? type;
 
   DateTimeRule();
 
@@ -6217,15 +6139,15 @@ class DateTimeRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
 /// Removes the banded range with the given ID from the spreadsheet.
 class DeleteBandingRequest {
   /// The ID of the banded range to delete.
-  core.int bandedRangeId;
+  core.int? bandedRangeId;
 
   DeleteBandingRequest();
 
@@ -6235,8 +6157,8 @@ class DeleteBandingRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bandedRangeId != null) 'bandedRangeId': bandedRangeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bandedRangeId != null) 'bandedRangeId': bandedRangeId!,
       };
 }
 
@@ -6245,10 +6167,10 @@ class DeleteBandingRequest {
 /// All subsequent rules' indexes are decremented.
 class DeleteConditionalFormatRuleRequest {
   /// The zero-based index of the rule to be deleted.
-  core.int index;
+  core.int? index;
 
   /// The sheet the rule is being deleted from.
-  core.int sheetId;
+  core.int? sheetId;
 
   DeleteConditionalFormatRuleRequest();
 
@@ -6261,16 +6183,16 @@ class DeleteConditionalFormatRuleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (index != null) 'index': index,
-        if (sheetId != null) 'sheetId': sheetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (index != null) 'index': index!,
+        if (sheetId != null) 'sheetId': sheetId!,
       };
 }
 
 /// The result of deleting a conditional format rule.
 class DeleteConditionalFormatRuleResponse {
   /// The rule that was deleted.
-  ConditionalFormatRule rule;
+  ConditionalFormatRule? rule;
 
   DeleteConditionalFormatRuleResponse();
 
@@ -6281,8 +6203,8 @@ class DeleteConditionalFormatRuleResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (rule != null) 'rule': rule.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (rule != null) 'rule': rule!.toJson(),
       };
 }
 
@@ -6292,7 +6214,7 @@ class DeleteConditionalFormatRuleResponse {
 /// associated data source objects.
 class DeleteDataSourceRequest {
   /// The ID of the data source to delete.
-  core.String dataSourceId;
+  core.String? dataSourceId;
 
   DeleteDataSourceRequest();
 
@@ -6302,8 +6224,8 @@ class DeleteDataSourceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
       };
 }
 
@@ -6311,7 +6233,7 @@ class DeleteDataSourceRequest {
 class DeleteDeveloperMetadataRequest {
   /// The data filter describing the criteria used to select which developer
   /// metadata entry to delete.
-  DataFilter dataFilter;
+  DataFilter? dataFilter;
 
   DeleteDeveloperMetadataRequest();
 
@@ -6322,15 +6244,15 @@ class DeleteDeveloperMetadataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataFilter != null) 'dataFilter': dataFilter.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataFilter != null) 'dataFilter': dataFilter!.toJson(),
       };
 }
 
 /// The response from deleting developer metadata.
 class DeleteDeveloperMetadataResponse {
   /// The metadata that was deleted.
-  core.List<DeveloperMetadata> deletedDeveloperMetadata;
+  core.List<DeveloperMetadata>? deletedDeveloperMetadata;
 
   DeleteDeveloperMetadataResponse();
 
@@ -6344,10 +6266,10 @@ class DeleteDeveloperMetadataResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deletedDeveloperMetadata != null)
           'deletedDeveloperMetadata':
-              deletedDeveloperMetadata.map((value) => value.toJson()).toList(),
+              deletedDeveloperMetadata!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6359,7 +6281,7 @@ class DeleteDeveloperMetadataResponse {
 /// group over B:D and a depth-2 group over C:C.
 class DeleteDimensionGroupRequest {
   /// The range of the group to be deleted.
-  DimensionRange range;
+  DimensionRange? range;
 
   DeleteDimensionGroupRequest();
 
@@ -6370,15 +6292,15 @@ class DeleteDimensionGroupRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
 /// The result of deleting a group.
 class DeleteDimensionGroupResponse {
   /// All groups of a dimension after deleting a group from that dimension.
-  core.List<DimensionGroup> dimensionGroups;
+  core.List<DimensionGroup>? dimensionGroups;
 
   DeleteDimensionGroupResponse();
 
@@ -6391,17 +6313,17 @@ class DeleteDimensionGroupResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensionGroups != null)
           'dimensionGroups':
-              dimensionGroups.map((value) => value.toJson()).toList(),
+              dimensionGroups!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Deletes the dimensions from the sheet.
 class DeleteDimensionRequest {
   /// The dimensions to delete from the sheet.
-  DimensionRange range;
+  DimensionRange? range;
 
   DeleteDimensionRequest();
 
@@ -6412,8 +6334,8 @@ class DeleteDimensionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
@@ -6431,10 +6353,10 @@ class DeleteDuplicatesRequest {
   /// The columns in the range to analyze for duplicate values.
   ///
   /// If no columns are selected then all columns are analyzed for duplicates.
-  core.List<DimensionRange> comparisonColumns;
+  core.List<DimensionRange>? comparisonColumns;
 
   /// The range to remove duplicates rows from.
-  GridRange range;
+  GridRange? range;
 
   DeleteDuplicatesRequest();
 
@@ -6451,18 +6373,18 @@ class DeleteDuplicatesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (comparisonColumns != null)
           'comparisonColumns':
-              comparisonColumns.map((value) => value.toJson()).toList(),
-        if (range != null) 'range': range.toJson(),
+              comparisonColumns!.map((value) => value.toJson()).toList(),
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
 /// The result of removing duplicates in a range.
 class DeleteDuplicatesResponse {
   /// The number of duplicate rows removed.
-  core.int duplicatesRemovedCount;
+  core.int? duplicatesRemovedCount;
 
   DeleteDuplicatesResponse();
 
@@ -6472,16 +6394,16 @@ class DeleteDuplicatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (duplicatesRemovedCount != null)
-          'duplicatesRemovedCount': duplicatesRemovedCount,
+          'duplicatesRemovedCount': duplicatesRemovedCount!,
       };
 }
 
 /// Deletes the embedded object with the given ID.
 class DeleteEmbeddedObjectRequest {
   /// The ID of the embedded object to delete.
-  core.int objectId;
+  core.int? objectId;
 
   DeleteEmbeddedObjectRequest();
 
@@ -6491,15 +6413,15 @@ class DeleteEmbeddedObjectRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
 /// Deletes a particular filter view.
 class DeleteFilterViewRequest {
   /// The ID of the filter to delete.
-  core.int filterId;
+  core.int? filterId;
 
   DeleteFilterViewRequest();
 
@@ -6509,15 +6431,15 @@ class DeleteFilterViewRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filterId != null) 'filterId': filterId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filterId != null) 'filterId': filterId!,
       };
 }
 
 /// Removes the named range with the given ID from the spreadsheet.
 class DeleteNamedRangeRequest {
   /// The ID of the named range to delete.
-  core.String namedRangeId;
+  core.String? namedRangeId;
 
   DeleteNamedRangeRequest();
 
@@ -6527,15 +6449,15 @@ class DeleteNamedRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (namedRangeId != null) 'namedRangeId': namedRangeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
       };
 }
 
 /// Deletes the protected range with the given ID.
 class DeleteProtectedRangeRequest {
   /// The ID of the protected range to delete.
-  core.int protectedRangeId;
+  core.int? protectedRangeId;
 
   DeleteProtectedRangeRequest();
 
@@ -6545,15 +6467,15 @@ class DeleteProtectedRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (protectedRangeId != null) 'protectedRangeId': protectedRangeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (protectedRangeId != null) 'protectedRangeId': protectedRangeId!,
       };
 }
 
 /// Deletes a range of cells, shifting other cells into the deleted area.
 class DeleteRangeRequest {
   /// The range of cells to delete.
-  GridRange range;
+  GridRange? range;
 
   /// The dimension from which deleted cells will be replaced with.
   ///
@@ -6564,7 +6486,7 @@ class DeleteRangeRequest {
   /// - "DIMENSION_UNSPECIFIED" : The default value, do not use.
   /// - "ROWS" : Operates on the rows of a sheet.
   /// - "COLUMNS" : Operates on the columns of a sheet.
-  core.String shiftDimension;
+  core.String? shiftDimension;
 
   DeleteRangeRequest();
 
@@ -6578,9 +6500,9 @@ class DeleteRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (range != null) 'range': range.toJson(),
-        if (shiftDimension != null) 'shiftDimension': shiftDimension,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (range != null) 'range': range!.toJson(),
+        if (shiftDimension != null) 'shiftDimension': shiftDimension!,
       };
 }
 
@@ -6590,7 +6512,7 @@ class DeleteSheetRequest {
   ///
   /// If the sheet is of SheetType.DATA_SOURCE type, the associated DataSource
   /// is also deleted.
-  core.int sheetId;
+  core.int? sheetId;
 
   DeleteSheetRequest();
 
@@ -6600,8 +6522,8 @@ class DeleteSheetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sheetId != null) 'sheetId': sheetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sheetId != null) 'sheetId': sheetId!,
       };
 }
 
@@ -6616,22 +6538,22 @@ class DeleteSheetRequest {
 /// object is deleted its metadata is deleted too.
 class DeveloperMetadata {
   /// The location where the metadata is associated.
-  DeveloperMetadataLocation location;
+  DeveloperMetadataLocation? location;
 
   /// The spreadsheet-scoped unique ID that identifies the metadata.
   ///
   /// IDs may be specified when metadata is created, otherwise one will be
   /// randomly generated and assigned. Must be positive.
-  core.int metadataId;
+  core.int? metadataId;
 
   /// The metadata key.
   ///
   /// There may be multiple metadata in a spreadsheet with the same key.
   /// Developer metadata must always have a key specified.
-  core.String metadataKey;
+  core.String? metadataKey;
 
   /// Data associated with the metadata's key.
-  core.String metadataValue;
+  core.String? metadataValue;
 
   /// The metadata visibility.
   ///
@@ -6642,7 +6564,7 @@ class DeveloperMetadata {
   /// project with access to the document.
   /// - "PROJECT" : Project-visible metadata is only visible to and accessible
   /// by the developer project that created the metadata.
-  core.String visibility;
+  core.String? visibility;
 
   DeveloperMetadata();
 
@@ -6665,12 +6587,12 @@ class DeveloperMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (location != null) 'location': location.toJson(),
-        if (metadataId != null) 'metadataId': metadataId,
-        if (metadataKey != null) 'metadataKey': metadataKey,
-        if (metadataValue != null) 'metadataValue': metadataValue,
-        if (visibility != null) 'visibility': visibility,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (location != null) 'location': location!.toJson(),
+        if (metadataId != null) 'metadataId': metadataId!,
+        if (metadataKey != null) 'metadataKey': metadataKey!,
+        if (metadataValue != null) 'metadataValue': metadataValue!,
+        if (visibility != null) 'visibility': visibility!,
       };
 }
 
@@ -6680,7 +6602,7 @@ class DeveloperMetadataLocation {
   ///
   /// The specified DimensionRange must represent a single row or column; it
   /// cannot be unbounded or span multiple rows or columns.
-  DimensionRange dimensionRange;
+  DimensionRange? dimensionRange;
 
   /// The type of location this object represents.
   ///
@@ -6691,13 +6613,13 @@ class DeveloperMetadataLocation {
   /// - "COLUMN" : Developer metadata associated on an entire column dimension.
   /// - "SHEET" : Developer metadata associated on an entire sheet.
   /// - "SPREADSHEET" : Developer metadata associated on the entire spreadsheet.
-  core.String locationType;
+  core.String? locationType;
 
   /// The ID of the sheet when metadata is associated with an entire sheet.
-  core.int sheetId;
+  core.int? sheetId;
 
   /// True when metadata is associated with an entire spreadsheet.
-  core.bool spreadsheet;
+  core.bool? spreadsheet;
 
   DeveloperMetadataLocation();
 
@@ -6717,11 +6639,11 @@ class DeveloperMetadataLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimensionRange != null) 'dimensionRange': dimensionRange.toJson(),
-        if (locationType != null) 'locationType': locationType,
-        if (sheetId != null) 'sheetId': sheetId,
-        if (spreadsheet != null) 'spreadsheet': spreadsheet,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimensionRange != null) 'dimensionRange': dimensionRange!.toJson(),
+        if (locationType != null) 'locationType': locationType!,
+        if (sheetId != null) 'sheetId': sheetId!,
+        if (spreadsheet != null) 'spreadsheet': spreadsheet!,
       };
 }
 
@@ -6758,7 +6680,7 @@ class DeveloperMetadataLookup {
   /// associated on locations that intersect row three. If, for instance, there
   /// was developer metadata associated on column B, this matching strategy
   /// would also match that location because column B intersects row three.
-  core.String locationMatchingStrategy;
+  core.String? locationMatchingStrategy;
 
   /// Limits the selected developer metadata to those entries which are
   /// associated with locations of the specified type.
@@ -6777,26 +6699,26 @@ class DeveloperMetadataLookup {
   /// - "COLUMN" : Developer metadata associated on an entire column dimension.
   /// - "SHEET" : Developer metadata associated on an entire sheet.
   /// - "SPREADSHEET" : Developer metadata associated on the entire spreadsheet.
-  core.String locationType;
+  core.String? locationType;
 
   /// Limits the selected developer metadata to that which has a matching
   /// DeveloperMetadata.metadata_id.
-  core.int metadataId;
+  core.int? metadataId;
 
   /// Limits the selected developer metadata to that which has a matching
   /// DeveloperMetadata.metadata_key.
-  core.String metadataKey;
+  core.String? metadataKey;
 
   /// Limits the selected developer metadata to those entries associated with
   /// the specified location.
   ///
   /// This field either matches exact locations or all intersecting locations
   /// according the specified locationMatchingStrategy.
-  DeveloperMetadataLocation metadataLocation;
+  DeveloperMetadataLocation? metadataLocation;
 
   /// Limits the selected developer metadata to that which has a matching
   /// DeveloperMetadata.metadata_value.
-  core.String metadataValue;
+  core.String? metadataValue;
 
   /// Limits the selected developer metadata to that which has a matching
   /// DeveloperMetadata.visibility.
@@ -6809,7 +6731,7 @@ class DeveloperMetadataLookup {
   /// project with access to the document.
   /// - "PROJECT" : Project-visible metadata is only visible to and accessible
   /// by the developer project that created the metadata.
-  core.String visibility;
+  core.String? visibility;
 
   DeveloperMetadataLookup();
 
@@ -6839,16 +6761,16 @@ class DeveloperMetadataLookup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locationMatchingStrategy != null)
-          'locationMatchingStrategy': locationMatchingStrategy,
-        if (locationType != null) 'locationType': locationType,
-        if (metadataId != null) 'metadataId': metadataId,
-        if (metadataKey != null) 'metadataKey': metadataKey,
+          'locationMatchingStrategy': locationMatchingStrategy!,
+        if (locationType != null) 'locationType': locationType!,
+        if (metadataId != null) 'metadataId': metadataId!,
+        if (metadataKey != null) 'metadataKey': metadataKey!,
         if (metadataLocation != null)
-          'metadataLocation': metadataLocation.toJson(),
-        if (metadataValue != null) 'metadataValue': metadataValue,
-        if (visibility != null) 'visibility': visibility,
+          'metadataLocation': metadataLocation!.toJson(),
+        if (metadataValue != null) 'metadataValue': metadataValue!,
+        if (visibility != null) 'visibility': visibility!,
       };
 }
 
@@ -6865,14 +6787,14 @@ class DimensionGroup {
   /// independently from this group property. However, when this property is
   /// updated, all dimensions within it are set to hidden if this field is true,
   /// or set to visible if this field is false.
-  core.bool collapsed;
+  core.bool? collapsed;
 
   /// The depth of the group, representing how many groups have a range that
   /// wholly contains the range of this group.
-  core.int depth;
+  core.int? depth;
 
   /// The range over which this group exists.
-  DimensionRange range;
+  DimensionRange? range;
 
   DimensionGroup();
 
@@ -6889,10 +6811,10 @@ class DimensionGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (collapsed != null) 'collapsed': collapsed,
-        if (depth != null) 'depth': depth,
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (collapsed != null) 'collapsed': collapsed!,
+        if (depth != null) 'depth': depth!,
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
@@ -6901,21 +6823,21 @@ class DimensionProperties {
   /// If set, this is a column in a data source sheet.
   ///
   /// Output only.
-  DataSourceColumnReference dataSourceColumnReference;
+  DataSourceColumnReference? dataSourceColumnReference;
 
   /// The developer metadata associated with a single row or column.
-  core.List<DeveloperMetadata> developerMetadata;
+  core.List<DeveloperMetadata>? developerMetadata;
 
   /// True if this dimension is being filtered.
   ///
   /// This field is read-only.
-  core.bool hiddenByFilter;
+  core.bool? hiddenByFilter;
 
   /// True if this dimension is explicitly hidden.
-  core.bool hiddenByUser;
+  core.bool? hiddenByUser;
 
   /// The height (if a row) or width (if a column) of the dimension in pixels.
-  core.int pixelSize;
+  core.int? pixelSize;
 
   DimensionProperties();
 
@@ -6942,15 +6864,15 @@ class DimensionProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataSourceColumnReference != null)
-          'dataSourceColumnReference': dataSourceColumnReference.toJson(),
+          'dataSourceColumnReference': dataSourceColumnReference!.toJson(),
         if (developerMetadata != null)
           'developerMetadata':
-              developerMetadata.map((value) => value.toJson()).toList(),
-        if (hiddenByFilter != null) 'hiddenByFilter': hiddenByFilter,
-        if (hiddenByUser != null) 'hiddenByUser': hiddenByUser,
-        if (pixelSize != null) 'pixelSize': pixelSize,
+              developerMetadata!.map((value) => value.toJson()).toList(),
+        if (hiddenByFilter != null) 'hiddenByFilter': hiddenByFilter!,
+        if (hiddenByUser != null) 'hiddenByUser': hiddenByUser!,
+        if (pixelSize != null) 'pixelSize': pixelSize!,
       };
 }
 
@@ -6965,16 +6887,16 @@ class DimensionRange {
   /// - "DIMENSION_UNSPECIFIED" : The default value, do not use.
   /// - "ROWS" : Operates on the rows of a sheet.
   /// - "COLUMNS" : Operates on the columns of a sheet.
-  core.String dimension;
+  core.String? dimension;
 
   /// The end (exclusive) of the span, or not set if unbounded.
-  core.int endIndex;
+  core.int? endIndex;
 
   /// The sheet this span is on.
-  core.int sheetId;
+  core.int? sheetId;
 
   /// The start (inclusive) of the span, or not set if unbounded.
-  core.int startIndex;
+  core.int? startIndex;
 
   DimensionRange();
 
@@ -6993,18 +6915,18 @@ class DimensionRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimension != null) 'dimension': dimension,
-        if (endIndex != null) 'endIndex': endIndex,
-        if (sheetId != null) 'sheetId': sheetId,
-        if (startIndex != null) 'startIndex': startIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimension != null) 'dimension': dimension!,
+        if (endIndex != null) 'endIndex': endIndex!,
+        if (sheetId != null) 'sheetId': sheetId!,
+        if (startIndex != null) 'startIndex': startIndex!,
       };
 }
 
 /// Duplicates a particular filter view.
 class DuplicateFilterViewRequest {
   /// The ID of the filter being duplicated.
-  core.int filterId;
+  core.int? filterId;
 
   DuplicateFilterViewRequest();
 
@@ -7014,15 +6936,15 @@ class DuplicateFilterViewRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filterId != null) 'filterId': filterId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filterId != null) 'filterId': filterId!,
       };
 }
 
 /// The result of a filter view being duplicated.
 class DuplicateFilterViewResponse {
   /// The newly created filter.
-  FilterView filter;
+  FilterView? filter;
 
   DuplicateFilterViewResponse();
 
@@ -7033,8 +6955,8 @@ class DuplicateFilterViewResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filter != null) 'filter': filter.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filter != null) 'filter': filter!.toJson(),
       };
 }
 
@@ -7043,18 +6965,18 @@ class DuplicateSheetRequest {
   /// The zero-based index where the new sheet should be inserted.
   ///
   /// The index of all sheets after this are incremented.
-  core.int insertSheetIndex;
+  core.int? insertSheetIndex;
 
   /// If set, the ID of the new sheet.
   ///
   /// If not set, an ID is chosen. If set, the ID must not conflict with any
   /// existing sheet ID. If set, it must be non-negative.
-  core.int newSheetId;
+  core.int? newSheetId;
 
   /// The name of the new sheet.
   ///
   /// If empty, a new name is chosen for you.
-  core.String newSheetName;
+  core.String? newSheetName;
 
   /// The sheet to duplicate.
   ///
@@ -7062,7 +6984,7 @@ class DuplicateSheetRequest {
   /// duplicated and associated with the new copy of the sheet. No data
   /// execution is triggered, the grid data of this sheet is also copied over
   /// but only available after the batch request completes.
-  core.int sourceSheetId;
+  core.int? sourceSheetId;
 
   DuplicateSheetRequest();
 
@@ -7081,18 +7003,18 @@ class DuplicateSheetRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (insertSheetIndex != null) 'insertSheetIndex': insertSheetIndex,
-        if (newSheetId != null) 'newSheetId': newSheetId,
-        if (newSheetName != null) 'newSheetName': newSheetName,
-        if (sourceSheetId != null) 'sourceSheetId': sourceSheetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (insertSheetIndex != null) 'insertSheetIndex': insertSheetIndex!,
+        if (newSheetId != null) 'newSheetId': newSheetId!,
+        if (newSheetName != null) 'newSheetName': newSheetName!,
+        if (sourceSheetId != null) 'sourceSheetId': sourceSheetId!,
       };
 }
 
 /// The result of duplicating a sheet.
 class DuplicateSheetResponse {
   /// The properties of the duplicate sheet.
-  SheetProperties properties;
+  SheetProperties? properties;
 
   DuplicateSheetResponse();
 
@@ -7103,8 +7025,8 @@ class DuplicateSheetResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (properties != null) 'properties': properties.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (properties != null) 'properties': properties!.toJson(),
       };
 }
 
@@ -7114,13 +7036,13 @@ class Editors {
   /// range.
   ///
   /// Domain protection is only supported on documents within a domain.
-  core.bool domainUsersCanEdit;
+  core.bool? domainUsersCanEdit;
 
   /// The email addresses of groups with edit access to the protected range.
-  core.List<core.String> groups;
+  core.List<core.String>? groups;
 
   /// The email addresses of users with edit access to the protected range.
-  core.List<core.String> users;
+  core.List<core.String>? users;
 
   Editors();
 
@@ -7140,27 +7062,27 @@ class Editors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (domainUsersCanEdit != null)
-          'domainUsersCanEdit': domainUsersCanEdit,
-        if (groups != null) 'groups': groups,
-        if (users != null) 'users': users,
+          'domainUsersCanEdit': domainUsersCanEdit!,
+        if (groups != null) 'groups': groups!,
+        if (users != null) 'users': users!,
       };
 }
 
 /// A chart embedded in a sheet.
 class EmbeddedChart {
   /// The border of the chart.
-  EmbeddedObjectBorder border;
+  EmbeddedObjectBorder? border;
 
   /// The ID of the chart.
-  core.int chartId;
+  core.int? chartId;
 
   /// The position of the chart.
-  EmbeddedObjectPosition position;
+  EmbeddedObjectPosition? position;
 
   /// The specification of the chart.
-  ChartSpec spec;
+  ChartSpec? spec;
 
   EmbeddedChart();
 
@@ -7182,23 +7104,23 @@ class EmbeddedChart {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (border != null) 'border': border.toJson(),
-        if (chartId != null) 'chartId': chartId,
-        if (position != null) 'position': position.toJson(),
-        if (spec != null) 'spec': spec.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (border != null) 'border': border!.toJson(),
+        if (chartId != null) 'chartId': chartId!,
+        if (position != null) 'position': position!.toJson(),
+        if (spec != null) 'spec': spec!.toJson(),
       };
 }
 
 /// A border along an embedded object.
 class EmbeddedObjectBorder {
   /// The color of the border.
-  Color color;
+  Color? color;
 
   /// The color of the border.
   ///
   /// If color is also set, this field takes precedence.
-  ColorStyle colorStyle;
+  ColorStyle? colorStyle;
 
   EmbeddedObjectBorder();
 
@@ -7213,9 +7135,9 @@ class EmbeddedObjectBorder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (color != null) 'color': color.toJson(),
-        if (colorStyle != null) 'colorStyle': colorStyle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (color != null) 'color': color!.toJson(),
+        if (colorStyle != null) 'colorStyle': colorStyle!.toJson(),
       };
 }
 
@@ -7225,15 +7147,15 @@ class EmbeddedObjectPosition {
   /// you.
   ///
   /// Used only when writing.
-  core.bool newSheet;
+  core.bool? newSheet;
 
   /// The position at which the object is overlaid on top of a grid.
-  OverlayPosition overlayPosition;
+  OverlayPosition? overlayPosition;
 
   /// The sheet this is on.
   ///
   /// Set only if the embedded object is on its own sheet. Must be non-negative.
-  core.int sheetId;
+  core.int? sheetId;
 
   EmbeddedObjectPosition();
 
@@ -7250,11 +7172,11 @@ class EmbeddedObjectPosition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (newSheet != null) 'newSheet': newSheet,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (newSheet != null) 'newSheet': newSheet!,
         if (overlayPosition != null)
-          'overlayPosition': overlayPosition.toJson(),
-        if (sheetId != null) 'sheetId': sheetId,
+          'overlayPosition': overlayPosition!.toJson(),
+        if (sheetId != null) 'sheetId': sheetId!,
       };
 }
 
@@ -7262,7 +7184,7 @@ class EmbeddedObjectPosition {
 class ErrorValue {
   /// A message with more information about the error (in the spreadsheet's
   /// locale).
-  core.String message;
+  core.String? message;
 
   /// The type of error.
   /// Possible string values are:
@@ -7276,7 +7198,7 @@ class ErrorValue {
   /// - "NUM" : Corresponds to the `#NUM!` error.
   /// - "N_A" : Corresponds to the `#N/A` error.
   /// - "LOADING" : Corresponds to the `Loading...` state.
-  core.String type;
+  core.String? type;
 
   ErrorValue();
 
@@ -7289,37 +7211,37 @@ class ErrorValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (message != null) 'message': message,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (message != null) 'message': message!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// The kinds of value that a cell in a spreadsheet can have.
 class ExtendedValue {
   /// Represents a boolean value.
-  core.bool boolValue;
+  core.bool? boolValue;
 
   /// Represents an error.
   ///
   /// This field is read-only.
-  ErrorValue errorValue;
+  ErrorValue? errorValue;
 
   /// Represents a formula.
-  core.String formulaValue;
+  core.String? formulaValue;
 
   /// Represents a double value.
   ///
   /// Note: Dates, Times and DateTimes are represented as doubles in "serial
   /// number" format.
-  core.double numberValue;
+  core.double? numberValue;
 
   /// Represents a string value.
   ///
   /// Leading single quotes are not included. For example, if the user typed
   /// `'123` into the UI, this would be represented as a `stringValue` of
   /// `"123"`.
-  core.String stringValue;
+  core.String? stringValue;
 
   ExtendedValue();
 
@@ -7342,12 +7264,12 @@ class ExtendedValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue,
-        if (errorValue != null) 'errorValue': errorValue.toJson(),
-        if (formulaValue != null) 'formulaValue': formulaValue,
-        if (numberValue != null) 'numberValue': numberValue,
-        if (stringValue != null) 'stringValue': stringValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (errorValue != null) 'errorValue': errorValue!.toJson(),
+        if (formulaValue != null) 'formulaValue': formulaValue!,
+        if (numberValue != null) 'numberValue': numberValue!,
+        if (stringValue != null) 'stringValue': stringValue!,
       };
 }
 
@@ -7357,16 +7279,16 @@ class FilterCriteria {
   ///
   /// (This does not override hidden_values -- if a value is listed there, it
   /// will still be hidden.)
-  BooleanCondition condition;
+  BooleanCondition? condition;
 
   /// Values that should be hidden.
-  core.List<core.String> hiddenValues;
+  core.List<core.String>? hiddenValues;
 
   /// The background fill color to filter by; only cells with this fill color
   /// are shown.
   ///
   /// Mutually exclusive with visible_foreground_color.
-  Color visibleBackgroundColor;
+  Color? visibleBackgroundColor;
 
   /// The background fill color to filter by; only cells with this fill color
   /// are shown.
@@ -7374,13 +7296,13 @@ class FilterCriteria {
   /// This field is mutually exclusive with visible_foreground_color, and must
   /// be set to an RGB-type color. If visible_background_color is also set, this
   /// field takes precedence.
-  ColorStyle visibleBackgroundColorStyle;
+  ColorStyle? visibleBackgroundColorStyle;
 
   /// The foreground color to filter by; only cells with this foreground color
   /// are shown.
   ///
   /// Mutually exclusive with visible_background_color.
-  Color visibleForegroundColor;
+  Color? visibleForegroundColor;
 
   /// The foreground color to filter by; only cells with this foreground color
   /// are shown.
@@ -7388,7 +7310,7 @@ class FilterCriteria {
   /// This field is mutually exclusive with visible_background_color, and must
   /// be set to an RGB-type color. If visible_foreground_color is also set, this
   /// field takes precedence.
-  ColorStyle visibleForegroundColorStyle;
+  ColorStyle? visibleForegroundColorStyle;
 
   FilterCriteria();
 
@@ -7422,30 +7344,30 @@ class FilterCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (hiddenValues != null) 'hiddenValues': hiddenValues,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (hiddenValues != null) 'hiddenValues': hiddenValues!,
         if (visibleBackgroundColor != null)
-          'visibleBackgroundColor': visibleBackgroundColor.toJson(),
+          'visibleBackgroundColor': visibleBackgroundColor!.toJson(),
         if (visibleBackgroundColorStyle != null)
-          'visibleBackgroundColorStyle': visibleBackgroundColorStyle.toJson(),
+          'visibleBackgroundColorStyle': visibleBackgroundColorStyle!.toJson(),
         if (visibleForegroundColor != null)
-          'visibleForegroundColor': visibleForegroundColor.toJson(),
+          'visibleForegroundColor': visibleForegroundColor!.toJson(),
         if (visibleForegroundColorStyle != null)
-          'visibleForegroundColorStyle': visibleForegroundColorStyle.toJson(),
+          'visibleForegroundColorStyle': visibleForegroundColorStyle!.toJson(),
       };
 }
 
 /// The filter criteria associated with a specific column.
 class FilterSpec {
   /// The column index.
-  core.int columnIndex;
+  core.int? columnIndex;
 
   /// Reference to a data source column.
-  DataSourceColumnReference dataSourceColumnReference;
+  DataSourceColumnReference? dataSourceColumnReference;
 
   /// The criteria for the column.
-  FilterCriteria filterCriteria;
+  FilterCriteria? filterCriteria;
 
   FilterSpec();
 
@@ -7464,11 +7386,11 @@ class FilterSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnIndex != null) 'columnIndex': columnIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnIndex != null) 'columnIndex': columnIndex!,
         if (dataSourceColumnReference != null)
-          'dataSourceColumnReference': dataSourceColumnReference.toJson(),
-        if (filterCriteria != null) 'filterCriteria': filterCriteria.toJson(),
+          'dataSourceColumnReference': dataSourceColumnReference!.toJson(),
+        if (filterCriteria != null) 'filterCriteria': filterCriteria!.toJson(),
       };
 }
 
@@ -7478,48 +7400,49 @@ class FilterView {
   ///
   /// The map's key is the column index, and the value is the criteria for that
   /// column. This field is deprecated in favor of filter_specs.
-  core.Map<core.String, FilterCriteria> criteria;
+  core.Map<core.String, FilterCriteria>? criteria;
 
   /// The filter criteria for showing/hiding values per column.
   ///
   /// Both criteria and filter_specs are populated in responses. If both fields
   /// are specified in an update request, this field takes precedence.
-  core.List<FilterSpec> filterSpecs;
+  core.List<FilterSpec>? filterSpecs;
 
   /// The ID of the filter view.
-  core.int filterViewId;
+  core.int? filterViewId;
 
   /// The named range this filter view is backed by, if any.
   ///
   /// When writing, only one of range or named_range_id may be set.
-  core.String namedRangeId;
+  core.String? namedRangeId;
 
   /// The range this filter view covers.
   ///
   /// When writing, only one of range or named_range_id may be set.
-  GridRange range;
+  GridRange? range;
 
   /// The sort order per column.
   ///
   /// Later specifications are used when values are equal in the earlier
   /// specifications.
-  core.List<SortSpec> sortSpecs;
+  core.List<SortSpec>? sortSpecs;
 
   /// The name of the filter view.
-  core.String title;
+  core.String? title;
 
   FilterView();
 
   FilterView.fromJson(core.Map _json) {
     if (_json.containsKey('criteria')) {
-      criteria =
-          (_json['criteria'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  FilterCriteria.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      criteria = (_json['criteria'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              FilterCriteria.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('filterSpecs')) {
       filterSpecs = (_json['filterSpecs'] as core.List)
@@ -7548,45 +7471,45 @@ class FilterView {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (criteria != null)
           'criteria':
-              criteria.map((key, item) => core.MapEntry(key, item.toJson())),
+              criteria!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (filterSpecs != null)
-          'filterSpecs': filterSpecs.map((value) => value.toJson()).toList(),
-        if (filterViewId != null) 'filterViewId': filterViewId,
-        if (namedRangeId != null) 'namedRangeId': namedRangeId,
-        if (range != null) 'range': range.toJson(),
+          'filterSpecs': filterSpecs!.map((value) => value.toJson()).toList(),
+        if (filterViewId != null) 'filterViewId': filterViewId!,
+        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
+        if (range != null) 'range': range!.toJson(),
         if (sortSpecs != null)
-          'sortSpecs': sortSpecs.map((value) => value.toJson()).toList(),
-        if (title != null) 'title': title,
+          'sortSpecs': sortSpecs!.map((value) => value.toJson()).toList(),
+        if (title != null) 'title': title!,
       };
 }
 
 /// Finds and replaces data in cells over a range, sheet, or all sheets.
 class FindReplaceRequest {
   /// True to find/replace over all sheets.
-  core.bool allSheets;
+  core.bool? allSheets;
 
   /// The value to search.
-  core.String find;
+  core.String? find;
 
   /// True if the search should include cells with formulas.
   ///
   /// False to skip cells with formulas.
-  core.bool includeFormulas;
+  core.bool? includeFormulas;
 
   /// True if the search is case sensitive.
-  core.bool matchCase;
+  core.bool? matchCase;
 
   /// True if the find value should match the entire cell.
-  core.bool matchEntireCell;
+  core.bool? matchEntireCell;
 
   /// The range to find/replace over.
-  GridRange range;
+  GridRange? range;
 
   /// The value to use as the replacement.
-  core.String replacement;
+  core.String? replacement;
 
   /// True if the find value is a regex.
   ///
@@ -7597,10 +7520,10 @@ class FindReplaceRequest {
   /// `"Google Docs"`, then searching for `"o.* (.*)"` with a replacement of
   /// `"$1 Rocks"` would change the contents of the cells to `"GSheets Rocks"`
   /// and `"GDocs Rocks"` respectively.
-  core.bool searchByRegex;
+  core.bool? searchByRegex;
 
   /// The sheet to find/replace over.
-  core.int sheetId;
+  core.int? sheetId;
 
   FindReplaceRequest();
 
@@ -7635,38 +7558,38 @@ class FindReplaceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allSheets != null) 'allSheets': allSheets,
-        if (find != null) 'find': find,
-        if (includeFormulas != null) 'includeFormulas': includeFormulas,
-        if (matchCase != null) 'matchCase': matchCase,
-        if (matchEntireCell != null) 'matchEntireCell': matchEntireCell,
-        if (range != null) 'range': range.toJson(),
-        if (replacement != null) 'replacement': replacement,
-        if (searchByRegex != null) 'searchByRegex': searchByRegex,
-        if (sheetId != null) 'sheetId': sheetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allSheets != null) 'allSheets': allSheets!,
+        if (find != null) 'find': find!,
+        if (includeFormulas != null) 'includeFormulas': includeFormulas!,
+        if (matchCase != null) 'matchCase': matchCase!,
+        if (matchEntireCell != null) 'matchEntireCell': matchEntireCell!,
+        if (range != null) 'range': range!.toJson(),
+        if (replacement != null) 'replacement': replacement!,
+        if (searchByRegex != null) 'searchByRegex': searchByRegex!,
+        if (sheetId != null) 'sheetId': sheetId!,
       };
 }
 
 /// The result of the find/replace.
 class FindReplaceResponse {
   /// The number of formula cells changed.
-  core.int formulasChanged;
+  core.int? formulasChanged;
 
   /// The number of occurrences (possibly multiple within a cell) changed.
   ///
   /// For example, if replacing `"e"` with `"o"` in `"Google Sheets"`, this
   /// would be `"3"` because `"Google Sheets"` -> `"Googlo Shoots"`.
-  core.int occurrencesChanged;
+  core.int? occurrencesChanged;
 
   /// The number of rows changed.
-  core.int rowsChanged;
+  core.int? rowsChanged;
 
   /// The number of sheets changed.
-  core.int sheetsChanged;
+  core.int? sheetsChanged;
 
   /// The number of non-formula cells changed.
-  core.int valuesChanged;
+  core.int? valuesChanged;
 
   FindReplaceResponse();
 
@@ -7688,13 +7611,13 @@ class FindReplaceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (formulasChanged != null) 'formulasChanged': formulasChanged,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (formulasChanged != null) 'formulasChanged': formulasChanged!,
         if (occurrencesChanged != null)
-          'occurrencesChanged': occurrencesChanged,
-        if (rowsChanged != null) 'rowsChanged': rowsChanged,
-        if (sheetsChanged != null) 'sheetsChanged': sheetsChanged,
-        if (valuesChanged != null) 'valuesChanged': valuesChanged,
+          'occurrencesChanged': occurrencesChanged!,
+        if (rowsChanged != null) 'rowsChanged': rowsChanged!,
+        if (sheetsChanged != null) 'sheetsChanged': sheetsChanged!,
+        if (valuesChanged != null) 'valuesChanged': valuesChanged!,
       };
 }
 
@@ -7702,12 +7625,12 @@ class FindReplaceResponse {
 class GetSpreadsheetByDataFilterRequest {
   /// The DataFilters used to select which ranges to retrieve from the
   /// spreadsheet.
-  core.List<DataFilter> dataFilters;
+  core.List<DataFilter>? dataFilters;
 
   /// True if grid data should be returned.
   ///
   /// This parameter is ignored if a field mask was set in the request.
-  core.bool includeGridData;
+  core.bool? includeGridData;
 
   GetSpreadsheetByDataFilterRequest();
 
@@ -7723,10 +7646,10 @@ class GetSpreadsheetByDataFilterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataFilters != null)
-          'dataFilters': dataFilters.map((value) => value.toJson()).toList(),
-        if (includeGridData != null) 'includeGridData': includeGridData,
+          'dataFilters': dataFilters!.map((value) => value.toJson()).toList(),
+        if (includeGridData != null) 'includeGridData': includeGridData!,
       };
 }
 
@@ -7737,13 +7660,13 @@ class GetSpreadsheetByDataFilterRequest {
 /// values of the interpolation points.
 class GradientRule {
   /// The final interpolation point.
-  InterpolationPoint maxpoint;
+  InterpolationPoint? maxpoint;
 
   /// An optional midway interpolation point.
-  InterpolationPoint midpoint;
+  InterpolationPoint? midpoint;
 
   /// The starting interpolation point.
-  InterpolationPoint minpoint;
+  InterpolationPoint? minpoint;
 
   GradientRule();
 
@@ -7762,10 +7685,10 @@ class GradientRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxpoint != null) 'maxpoint': maxpoint.toJson(),
-        if (midpoint != null) 'midpoint': midpoint.toJson(),
-        if (minpoint != null) 'minpoint': minpoint.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxpoint != null) 'maxpoint': maxpoint!.toJson(),
+        if (midpoint != null) 'midpoint': midpoint!.toJson(),
+        if (minpoint != null) 'minpoint': minpoint!.toJson(),
       };
 }
 
@@ -7774,13 +7697,13 @@ class GradientRule {
 /// All indexes are zero-based.
 class GridCoordinate {
   /// The column index of the coordinate.
-  core.int columnIndex;
+  core.int? columnIndex;
 
   /// The row index of the coordinate.
-  core.int rowIndex;
+  core.int? rowIndex;
 
   /// The sheet this coordinate is on.
-  core.int sheetId;
+  core.int? sheetId;
 
   GridCoordinate();
 
@@ -7796,10 +7719,10 @@ class GridCoordinate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnIndex != null) 'columnIndex': columnIndex,
-        if (rowIndex != null) 'rowIndex': rowIndex,
-        if (sheetId != null) 'sheetId': sheetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnIndex != null) 'columnIndex': columnIndex!,
+        if (rowIndex != null) 'rowIndex': rowIndex!,
+        if (sheetId != null) 'sheetId': sheetId!,
       };
 }
 
@@ -7807,23 +7730,23 @@ class GridCoordinate {
 class GridData {
   /// Metadata about the requested columns in the grid, starting with the column
   /// in start_column.
-  core.List<DimensionProperties> columnMetadata;
+  core.List<DimensionProperties>? columnMetadata;
 
   /// The data in the grid, one entry per row, starting with the row in
   /// startRow.
   ///
   /// The values in RowData will correspond to columns starting at start_column.
-  core.List<RowData> rowData;
+  core.List<RowData>? rowData;
 
   /// Metadata about the requested rows in the grid, starting with the row in
   /// start_row.
-  core.List<DimensionProperties> rowMetadata;
+  core.List<DimensionProperties>? rowMetadata;
 
   /// The first column this GridData refers to, zero-based.
-  core.int startColumn;
+  core.int? startColumn;
 
   /// The first row this GridData refers to, zero-based.
-  core.int startRow;
+  core.int? startRow;
 
   GridData();
 
@@ -7854,41 +7777,41 @@ class GridData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (columnMetadata != null)
           'columnMetadata':
-              columnMetadata.map((value) => value.toJson()).toList(),
+              columnMetadata!.map((value) => value.toJson()).toList(),
         if (rowData != null)
-          'rowData': rowData.map((value) => value.toJson()).toList(),
+          'rowData': rowData!.map((value) => value.toJson()).toList(),
         if (rowMetadata != null)
-          'rowMetadata': rowMetadata.map((value) => value.toJson()).toList(),
-        if (startColumn != null) 'startColumn': startColumn,
-        if (startRow != null) 'startRow': startRow,
+          'rowMetadata': rowMetadata!.map((value) => value.toJson()).toList(),
+        if (startColumn != null) 'startColumn': startColumn!,
+        if (startRow != null) 'startRow': startRow!,
       };
 }
 
 /// Properties of a grid.
 class GridProperties {
   /// The number of columns in the grid.
-  core.int columnCount;
+  core.int? columnCount;
 
   /// True if the column grouping control toggle is shown after the group.
-  core.bool columnGroupControlAfter;
+  core.bool? columnGroupControlAfter;
 
   /// The number of columns that are frozen in the grid.
-  core.int frozenColumnCount;
+  core.int? frozenColumnCount;
 
   /// The number of rows that are frozen in the grid.
-  core.int frozenRowCount;
+  core.int? frozenRowCount;
 
   /// True if the grid isn't showing gridlines in the UI.
-  core.bool hideGridlines;
+  core.bool? hideGridlines;
 
   /// The number of rows in the grid.
-  core.int rowCount;
+  core.int? rowCount;
 
   /// True if the row grouping control toggle is shown after the group.
-  core.bool rowGroupControlAfter;
+  core.bool? rowGroupControlAfter;
 
   GridProperties();
 
@@ -7916,16 +7839,16 @@ class GridProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnCount != null) 'columnCount': columnCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnCount != null) 'columnCount': columnCount!,
         if (columnGroupControlAfter != null)
-          'columnGroupControlAfter': columnGroupControlAfter,
-        if (frozenColumnCount != null) 'frozenColumnCount': frozenColumnCount,
-        if (frozenRowCount != null) 'frozenRowCount': frozenRowCount,
-        if (hideGridlines != null) 'hideGridlines': hideGridlines,
-        if (rowCount != null) 'rowCount': rowCount,
+          'columnGroupControlAfter': columnGroupControlAfter!,
+        if (frozenColumnCount != null) 'frozenColumnCount': frozenColumnCount!,
+        if (frozenRowCount != null) 'frozenRowCount': frozenRowCount!,
+        if (hideGridlines != null) 'hideGridlines': hideGridlines!,
+        if (rowCount != null) 'rowCount': rowCount!,
         if (rowGroupControlAfter != null)
-          'rowGroupControlAfter': rowGroupControlAfter,
+          'rowGroupControlAfter': rowGroupControlAfter!,
       };
 }
 
@@ -7946,19 +7869,19 @@ class GridProperties {
 /// the UI as `#REF!`.
 class GridRange {
   /// The end column (exclusive) of the range, or not set if unbounded.
-  core.int endColumnIndex;
+  core.int? endColumnIndex;
 
   /// The end row (exclusive) of the range, or not set if unbounded.
-  core.int endRowIndex;
+  core.int? endRowIndex;
 
   /// The sheet this range is on.
-  core.int sheetId;
+  core.int? sheetId;
 
   /// The start column (inclusive) of the range, or not set if unbounded.
-  core.int startColumnIndex;
+  core.int? startColumnIndex;
 
   /// The start row (inclusive) of the range, or not set if unbounded.
-  core.int startRowIndex;
+  core.int? startRowIndex;
 
   GridRange();
 
@@ -7980,12 +7903,12 @@ class GridRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endColumnIndex != null) 'endColumnIndex': endColumnIndex,
-        if (endRowIndex != null) 'endRowIndex': endRowIndex,
-        if (sheetId != null) 'sheetId': sheetId,
-        if (startColumnIndex != null) 'startColumnIndex': startColumnIndex,
-        if (startRowIndex != null) 'startRowIndex': startRowIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endColumnIndex != null) 'endColumnIndex': endColumnIndex!,
+        if (endRowIndex != null) 'endRowIndex': endRowIndex!,
+        if (sheetId != null) 'sheetId': sheetId!,
+        if (startColumnIndex != null) 'startColumnIndex': startColumnIndex!,
+        if (startRowIndex != null) 'startRowIndex': startRowIndex!,
       };
 }
 
@@ -8002,7 +7925,7 @@ class HistogramChartSpec {
   ///
   /// E.g., A bucket size of 1.5 results in buckets from 0 - 1.5, 1.5 - 3.0,
   /// etc. Cannot be negative. This field is optional.
-  core.double bucketSize;
+  core.double? bucketSize;
 
   /// The position of the chart legend.
   /// Possible string values are:
@@ -8014,7 +7937,7 @@ class HistogramChartSpec {
   /// - "TOP_LEGEND" : The legend is rendered on the top of the chart.
   /// - "NO_LEGEND" : No legend is rendered.
   /// - "INSIDE_LEGEND" : The legend is rendered inside the chart area.
-  core.String legendPosition;
+  core.String? legendPosition;
 
   /// The outlier percentile is used to ensure that outliers do not adversely
   /// affect the calculation of bucket sizes.
@@ -8023,16 +7946,16 @@ class HistogramChartSpec {
   /// and bottom 5% of values when calculating buckets. The values are still
   /// included in the chart, they will be added to the first or last buckets
   /// instead of their own buckets. Must be between 0.0 and 0.5.
-  core.double outlierPercentile;
+  core.double? outlierPercentile;
 
   /// The series for a histogram may be either a single series of values to be
   /// bucketed or multiple series, each of the same length, containing the name
   /// of the series followed by the values to be bucketed for that series.
-  core.List<HistogramSeries> series;
+  core.List<HistogramSeries>? series;
 
   /// Whether horizontal divider lines should be displayed between items in each
   /// column.
-  core.bool showItemDividers;
+  core.bool? showItemDividers;
 
   HistogramChartSpec();
 
@@ -8057,13 +7980,13 @@ class HistogramChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bucketSize != null) 'bucketSize': bucketSize,
-        if (legendPosition != null) 'legendPosition': legendPosition,
-        if (outlierPercentile != null) 'outlierPercentile': outlierPercentile,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bucketSize != null) 'bucketSize': bucketSize!,
+        if (legendPosition != null) 'legendPosition': legendPosition!,
+        if (outlierPercentile != null) 'outlierPercentile': outlierPercentile!,
         if (series != null)
-          'series': series.map((value) => value.toJson()).toList(),
-        if (showItemDividers != null) 'showItemDividers': showItemDividers,
+          'series': series!.map((value) => value.toJson()).toList(),
+        if (showItemDividers != null) 'showItemDividers': showItemDividers!,
       };
 }
 
@@ -8091,18 +8014,18 @@ class HistogramRule {
   /// The maximum value at which items are placed into buckets of constant size.
   ///
   /// Values above end are lumped into a single bucket. This field is optional.
-  core.double end;
+  core.double? end;
 
   /// The size of the buckets that are created.
   ///
   /// Must be positive.
-  core.double interval;
+  core.double? interval;
 
   /// The minimum value at which items are placed into buckets of constant size.
   ///
   /// Values below start are lumped into a single bucket. This field is
   /// optional.
-  core.double start;
+  core.double? start;
 
   HistogramRule();
 
@@ -8118,10 +8041,10 @@ class HistogramRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (end != null) 'end': end,
-        if (interval != null) 'interval': interval,
-        if (start != null) 'start': start,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (end != null) 'end': end!,
+        if (interval != null) 'interval': interval!,
+        if (start != null) 'start': start!,
       };
 }
 
@@ -8130,16 +8053,16 @@ class HistogramSeries {
   /// The color of the column representing this series in each bucket.
   ///
   /// This field is optional.
-  Color barColor;
+  Color? barColor;
 
   /// The color of the column representing this series in each bucket.
   ///
   /// This field is optional. If bar_color is also set, this field takes
   /// precedence.
-  ColorStyle barColorStyle;
+  ColorStyle? barColorStyle;
 
   /// The data for this histogram series.
-  ChartData data;
+  ChartData? data;
 
   HistogramSeries();
 
@@ -8158,10 +8081,10 @@ class HistogramSeries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (barColor != null) 'barColor': barColor.toJson(),
-        if (barColorStyle != null) 'barColorStyle': barColorStyle.toJson(),
-        if (data != null) 'data': data.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (barColor != null) 'barColor': barColor!.toJson(),
+        if (barColorStyle != null) 'barColorStyle': barColorStyle!.toJson(),
+        if (data != null) 'data': data!.toJson(),
       };
 }
 
@@ -8178,12 +8101,12 @@ class InsertDimensionRequest {
   /// be red (because the row before the insertion point was red), whereas if
   /// `inheritFromBefore` is false, the two new rows will be green (because the
   /// row after the insertion point was green).
-  core.bool inheritFromBefore;
+  core.bool? inheritFromBefore;
 
   /// The dimensions to insert.
   ///
   /// Both the start and end indexes must be bounded.
-  DimensionRange range;
+  DimensionRange? range;
 
   InsertDimensionRequest();
 
@@ -8197,16 +8120,16 @@ class InsertDimensionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (inheritFromBefore != null) 'inheritFromBefore': inheritFromBefore,
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (inheritFromBefore != null) 'inheritFromBefore': inheritFromBefore!,
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
 /// Inserts cells into a range, shifting the existing cells over or down.
 class InsertRangeRequest {
   /// The range to insert new cells into.
-  GridRange range;
+  GridRange? range;
 
   /// The dimension which will be shifted when inserting cells.
   ///
@@ -8216,7 +8139,7 @@ class InsertRangeRequest {
   /// - "DIMENSION_UNSPECIFIED" : The default value, do not use.
   /// - "ROWS" : Operates on the rows of a sheet.
   /// - "COLUMNS" : Operates on the columns of a sheet.
-  core.String shiftDimension;
+  core.String? shiftDimension;
 
   InsertRangeRequest();
 
@@ -8230,9 +8153,9 @@ class InsertRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (range != null) 'range': range.toJson(),
-        if (shiftDimension != null) 'shiftDimension': shiftDimension,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (range != null) 'range': range!.toJson(),
+        if (shiftDimension != null) 'shiftDimension': shiftDimension!,
       };
 }
 
@@ -8242,12 +8165,12 @@ class InsertRangeRequest {
 /// chosen.
 class InterpolationPoint {
   /// The color this interpolation point should use.
-  Color color;
+  Color? color;
 
   /// The color this interpolation point should use.
   ///
   /// If color is also set, this field takes precedence.
-  ColorStyle colorStyle;
+  ColorStyle? colorStyle;
 
   /// How the value should be interpreted.
   /// Possible string values are:
@@ -8267,12 +8190,12 @@ class InterpolationPoint {
   /// the cells in the range of the conditional format. This is equivalent to
   /// NUMBER if the value was: `=PERCENTILE(FLATTEN(range), value / 100)` (where
   /// errors in the range are ignored when flattening).
-  core.String type;
+  core.String? type;
 
   /// The value this interpolation point uses.
   ///
   /// May be a formula. Unused if type is MIN or MAX.
-  core.String value;
+  core.String? value;
 
   InterpolationPoint();
 
@@ -8293,11 +8216,11 @@ class InterpolationPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (color != null) 'color': color.toJson(),
-        if (colorStyle != null) 'colorStyle': colorStyle.toJson(),
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (color != null) 'color': color!.toJson(),
+        if (colorStyle != null) 'colorStyle': colorStyle!.toJson(),
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -8314,7 +8237,7 @@ class Interval {
   /// the end.
   ///
   /// Optional.
-  core.String endTime;
+  core.String? endTime;
 
   /// Inclusive start of the interval.
   ///
@@ -8322,7 +8245,7 @@ class Interval {
   /// or after the start.
   ///
   /// Optional.
-  core.String startTime;
+  core.String? startTime;
 
   Interval();
 
@@ -8335,9 +8258,9 @@ class Interval {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -8346,11 +8269,11 @@ class Interval {
 class IterativeCalculationSettings {
   /// When iterative calculation is enabled and successive results differ by
   /// less than this threshold value, the calculation rounds stop.
-  core.double convergenceThreshold;
+  core.double? convergenceThreshold;
 
   /// When iterative calculation is enabled, the maximum number of calculation
   /// rounds to perform.
-  core.int maxIterations;
+  core.int? maxIterations;
 
   IterativeCalculationSettings();
 
@@ -8364,10 +8287,10 @@ class IterativeCalculationSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (convergenceThreshold != null)
-          'convergenceThreshold': convergenceThreshold,
-        if (maxIterations != null) 'maxIterations': maxIterations,
+          'convergenceThreshold': convergenceThreshold!,
+        if (maxIterations != null) 'maxIterations': maxIterations!,
       };
 }
 
@@ -8376,10 +8299,10 @@ class KeyValueFormat {
   /// Specifies the horizontal text positioning of key value.
   ///
   /// This field is optional. If not specified, default positioning is used.
-  TextPosition position;
+  TextPosition? position;
 
   /// Text formatting options for key value.
-  TextFormat textFormat;
+  TextFormat? textFormat;
 
   KeyValueFormat();
 
@@ -8394,9 +8317,9 @@ class KeyValueFormat {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (position != null) 'position': position.toJson(),
-        if (textFormat != null) 'textFormat': textFormat.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (position != null) 'position': position!.toJson(),
+        if (textFormat != null) 'textFormat': textFormat!.toJson(),
       };
 }
 
@@ -8416,10 +8339,10 @@ class LineStyle {
   /// - "LONG_DASHED" : A dashed line where the dashes have "long" length.
   /// - "LONG_DASHED_DOTTED" : A line that alternates between a "long" dash and
   /// a dot.
-  core.String type;
+  core.String? type;
 
   /// The thickness of the line, in px.
-  core.int width;
+  core.int? width;
 
   LineStyle();
 
@@ -8432,9 +8355,9 @@ class LineStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -8455,7 +8378,7 @@ class LineStyle {
 class ManualRule {
   /// The list of group names and the corresponding items from the source data
   /// that map to each group name.
-  core.List<ManualRuleGroup> groups;
+  core.List<ManualRuleGroup>? groups;
 
   ManualRule();
 
@@ -8468,9 +8391,9 @@ class ManualRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (groups != null)
-          'groups': groups.map((value) => value.toJson()).toList(),
+          'groups': groups!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8480,14 +8403,14 @@ class ManualRuleGroup {
   /// The group name, which must be a string.
   ///
   /// Each group in a given ManualRule must have a unique group name.
-  ExtendedValue groupName;
+  ExtendedValue? groupName;
 
   /// The items in the source data that should be placed into this group.
   ///
   /// Each item may be a string, number, or boolean. Items may appear in at most
   /// one group within a given ManualRule. Items that do not appear in any group
   /// will appear on their own.
-  core.List<ExtendedValue> items;
+  core.List<ExtendedValue>? items;
 
   ManualRuleGroup();
 
@@ -8504,10 +8427,10 @@ class ManualRuleGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (groupName != null) 'groupName': groupName.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (groupName != null) 'groupName': groupName!.toJson(),
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
+          'items': items!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8515,10 +8438,10 @@ class ManualRuleGroup {
 /// request that matched it.
 class MatchedDeveloperMetadata {
   /// All filters matching the returned developer metadata.
-  core.List<DataFilter> dataFilters;
+  core.List<DataFilter>? dataFilters;
 
   /// The developer metadata matching the specified filters.
-  DeveloperMetadata developerMetadata;
+  DeveloperMetadata? developerMetadata;
 
   MatchedDeveloperMetadata();
 
@@ -8535,21 +8458,21 @@ class MatchedDeveloperMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataFilters != null)
-          'dataFilters': dataFilters.map((value) => value.toJson()).toList(),
+          'dataFilters': dataFilters!.map((value) => value.toJson()).toList(),
         if (developerMetadata != null)
-          'developerMetadata': developerMetadata.toJson(),
+          'developerMetadata': developerMetadata!.toJson(),
       };
 }
 
 /// A value range that was matched by one or more data filers.
 class MatchedValueRange {
   /// The DataFilters from the request that matched the range of values.
-  core.List<DataFilter> dataFilters;
+  core.List<DataFilter>? dataFilters;
 
   /// The values matched by the DataFilter.
-  ValueRange valueRange;
+  ValueRange? valueRange;
 
   MatchedValueRange();
 
@@ -8566,10 +8489,10 @@ class MatchedValueRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataFilters != null)
-          'dataFilters': dataFilters.map((value) => value.toJson()).toList(),
-        if (valueRange != null) 'valueRange': valueRange.toJson(),
+          'dataFilters': dataFilters!.map((value) => value.toJson()).toList(),
+        if (valueRange != null) 'valueRange': valueRange!.toJson(),
       };
 }
 
@@ -8580,10 +8503,10 @@ class MergeCellsRequest {
   /// - "MERGE_ALL" : Create a single merge from the range
   /// - "MERGE_COLUMNS" : Create a merge for each column in the range
   /// - "MERGE_ROWS" : Create a merge for each row in the range
-  core.String mergeType;
+  core.String? mergeType;
 
   /// The range of cells to merge.
-  GridRange range;
+  GridRange? range;
 
   MergeCellsRequest();
 
@@ -8597,9 +8520,9 @@ class MergeCellsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (mergeType != null) 'mergeType': mergeType,
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (mergeType != null) 'mergeType': mergeType!,
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
@@ -8615,10 +8538,10 @@ class MoveDimensionRequest {
   /// move `"1"` and `"2"` to between `"3"` and `"4"`, the source would be `ROWS
   /// [1..3)`,and the destination index would be `"4"` (the zero-based index of
   /// row 5). The end result would be `A1..A5` of `0, 3, 1, 2, 4`.
-  core.int destinationIndex;
+  core.int? destinationIndex;
 
   /// The source dimensions to move.
-  DimensionRange source;
+  DimensionRange? source;
 
   MoveDimensionRequest();
 
@@ -8632,22 +8555,22 @@ class MoveDimensionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destinationIndex != null) 'destinationIndex': destinationIndex,
-        if (source != null) 'source': source.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destinationIndex != null) 'destinationIndex': destinationIndex!,
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
 /// A named range.
 class NamedRange {
   /// The name of the named range.
-  core.String name;
+  core.String? name;
 
   /// The ID of the named range.
-  core.String namedRangeId;
+  core.String? namedRangeId;
 
   /// The range this represents.
-  GridRange range;
+  GridRange? range;
 
   NamedRange();
 
@@ -8664,10 +8587,10 @@ class NamedRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (namedRangeId != null) 'namedRangeId': namedRangeId,
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
@@ -8679,7 +8602,7 @@ class NumberFormat {
   /// necessary for the given type. See the \[Date and Number Formats
   /// guide\](/sheets/api/guides/formats) for more information about the
   /// supported patterns.
-  core.String pattern;
+  core.String? pattern;
 
   /// The type of the number format.
   ///
@@ -8695,7 +8618,7 @@ class NumberFormat {
   /// - "TIME" : Time formatting, e.g `3:59:00 PM`
   /// - "DATE_TIME" : Date+Time formatting, e.g `9/26/08 15:59:00`
   /// - "SCIENTIFIC" : Scientific number formatting, e.g `1.01E+03`
-  core.String type;
+  core.String? type;
 
   NumberFormat();
 
@@ -8708,9 +8631,9 @@ class NumberFormat {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pattern != null) 'pattern': pattern,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pattern != null) 'pattern': pattern!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -8728,15 +8651,15 @@ class OrgChartSpec {
   /// The data containing the labels for all the nodes in the chart.
   ///
   /// Labels must be unique.
-  ChartData labels;
+  ChartData? labels;
 
   /// The color of the org chart nodes.
-  Color nodeColor;
+  Color? nodeColor;
 
   /// The color of the org chart nodes.
   ///
   /// If node_color is also set, this field takes precedence.
-  ColorStyle nodeColorStyle;
+  ColorStyle? nodeColorStyle;
 
   /// The size of the org chart nodes.
   /// Possible string values are:
@@ -8744,27 +8667,27 @@ class OrgChartSpec {
   /// - "SMALL" : The small org chart node size.
   /// - "MEDIUM" : The medium org chart node size.
   /// - "LARGE" : The large org chart node size.
-  core.String nodeSize;
+  core.String? nodeSize;
 
   /// The data containing the label of the parent for the corresponding node.
   ///
   /// A blank value indicates that the node has no parent and is a top-level
   /// node. This field is optional.
-  ChartData parentLabels;
+  ChartData? parentLabels;
 
   /// The color of the selected org chart nodes.
-  Color selectedNodeColor;
+  Color? selectedNodeColor;
 
   /// The color of the selected org chart nodes.
   ///
   /// If selected_node_color is also set, this field takes precedence.
-  ColorStyle selectedNodeColorStyle;
+  ColorStyle? selectedNodeColorStyle;
 
   /// The data containing the tooltip for the corresponding node.
   ///
   /// A blank value results in no tooltip being displayed for the node. This
   /// field is optional.
-  ChartData tooltips;
+  ChartData? tooltips;
 
   OrgChartSpec();
 
@@ -8803,42 +8726,42 @@ class OrgChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels.toJson(),
-        if (nodeColor != null) 'nodeColor': nodeColor.toJson(),
-        if (nodeColorStyle != null) 'nodeColorStyle': nodeColorStyle.toJson(),
-        if (nodeSize != null) 'nodeSize': nodeSize,
-        if (parentLabels != null) 'parentLabels': parentLabels.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!.toJson(),
+        if (nodeColor != null) 'nodeColor': nodeColor!.toJson(),
+        if (nodeColorStyle != null) 'nodeColorStyle': nodeColorStyle!.toJson(),
+        if (nodeSize != null) 'nodeSize': nodeSize!,
+        if (parentLabels != null) 'parentLabels': parentLabels!.toJson(),
         if (selectedNodeColor != null)
-          'selectedNodeColor': selectedNodeColor.toJson(),
+          'selectedNodeColor': selectedNodeColor!.toJson(),
         if (selectedNodeColorStyle != null)
-          'selectedNodeColorStyle': selectedNodeColorStyle.toJson(),
-        if (tooltips != null) 'tooltips': tooltips.toJson(),
+          'selectedNodeColorStyle': selectedNodeColorStyle!.toJson(),
+        if (tooltips != null) 'tooltips': tooltips!.toJson(),
       };
 }
 
 /// The location an object is overlaid on top of a grid.
 class OverlayPosition {
   /// The cell the object is anchored to.
-  GridCoordinate anchorCell;
+  GridCoordinate? anchorCell;
 
   /// The height of the object, in pixels.
   ///
   /// Defaults to 371.
-  core.int heightPixels;
+  core.int? heightPixels;
 
   /// The horizontal offset, in pixels, that the object is offset from the
   /// anchor cell.
-  core.int offsetXPixels;
+  core.int? offsetXPixels;
 
   /// The vertical offset, in pixels, that the object is offset from the anchor
   /// cell.
-  core.int offsetYPixels;
+  core.int? offsetYPixels;
 
   /// The width of the object, in pixels.
   ///
   /// Defaults to 600.
-  core.int widthPixels;
+  core.int? widthPixels;
 
   OverlayPosition();
 
@@ -8861,12 +8784,12 @@ class OverlayPosition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (anchorCell != null) 'anchorCell': anchorCell.toJson(),
-        if (heightPixels != null) 'heightPixels': heightPixels,
-        if (offsetXPixels != null) 'offsetXPixels': offsetXPixels,
-        if (offsetYPixels != null) 'offsetYPixels': offsetYPixels,
-        if (widthPixels != null) 'widthPixels': widthPixels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (anchorCell != null) 'anchorCell': anchorCell!.toJson(),
+        if (heightPixels != null) 'heightPixels': heightPixels!,
+        if (offsetXPixels != null) 'offsetXPixels': offsetXPixels!,
+        if (offsetYPixels != null) 'offsetYPixels': offsetYPixels!,
+        if (widthPixels != null) 'widthPixels': widthPixels!,
       };
 }
 
@@ -8875,16 +8798,16 @@ class OverlayPosition {
 /// When updating padding, every field must be specified.
 class Padding {
   /// The bottom padding of the cell.
-  core.int bottom;
+  core.int? bottom;
 
   /// The left padding of the cell.
-  core.int left;
+  core.int? left;
 
   /// The right padding of the cell.
-  core.int right;
+  core.int? right;
 
   /// The top padding of the cell.
-  core.int top;
+  core.int? top;
 
   Padding();
 
@@ -8903,27 +8826,27 @@ class Padding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bottom != null) 'bottom': bottom,
-        if (left != null) 'left': left,
-        if (right != null) 'right': right,
-        if (top != null) 'top': top,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bottom != null) 'bottom': bottom!,
+        if (left != null) 'left': left!,
+        if (right != null) 'right': right!,
+        if (top != null) 'top': top!,
       };
 }
 
 /// Inserts data into the spreadsheet starting at the specified coordinate.
 class PasteDataRequest {
   /// The coordinate at which the data should start being inserted.
-  GridCoordinate coordinate;
+  GridCoordinate? coordinate;
 
   /// The data to insert.
-  core.String data;
+  core.String? data;
 
   /// The delimiter in the data.
-  core.String delimiter;
+  core.String? delimiter;
 
   /// True if the data is HTML.
-  core.bool html;
+  core.bool? html;
 
   /// How the data should be pasted.
   /// Possible string values are:
@@ -8936,7 +8859,7 @@ class PasteDataRequest {
   /// - "PASTE_DATA_VALIDATION" : Paste the data validation only.
   /// - "PASTE_CONDITIONAL_FORMATTING" : Paste the conditional formatting rules
   /// only.
-  core.String type;
+  core.String? type;
 
   PasteDataRequest();
 
@@ -8959,19 +8882,19 @@ class PasteDataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (coordinate != null) 'coordinate': coordinate.toJson(),
-        if (data != null) 'data': data,
-        if (delimiter != null) 'delimiter': delimiter,
-        if (html != null) 'html': html,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (coordinate != null) 'coordinate': coordinate!.toJson(),
+        if (data != null) 'data': data!,
+        if (delimiter != null) 'delimiter': delimiter!,
+        if (html != null) 'html': html!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// A pie chart.
 class PieChartSpec {
   /// The data that covers the domain of the pie chart.
-  ChartData domain;
+  ChartData? domain;
 
   /// Where the legend of the pie chart should be drawn.
   /// Possible string values are:
@@ -8982,16 +8905,16 @@ class PieChartSpec {
   /// - "TOP_LEGEND" : The legend is rendered on the top of the chart.
   /// - "NO_LEGEND" : No legend is rendered.
   /// - "LABELED_LEGEND" : Each pie slice has a label attached to it.
-  core.String legendPosition;
+  core.String? legendPosition;
 
   /// The size of the hole in the pie chart.
-  core.double pieHole;
+  core.double? pieHole;
 
   /// The data that covers the one and only series of the pie chart.
-  ChartData series;
+  ChartData? series;
 
   /// True if the pie is three dimensional.
-  core.bool threeDimensional;
+  core.bool? threeDimensional;
 
   PieChartSpec();
 
@@ -9015,12 +8938,12 @@ class PieChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (domain != null) 'domain': domain.toJson(),
-        if (legendPosition != null) 'legendPosition': legendPosition,
-        if (pieHole != null) 'pieHole': pieHole,
-        if (series != null) 'series': series.toJson(),
-        if (threeDimensional != null) 'threeDimensional': threeDimensional,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (domain != null) 'domain': domain!.toJson(),
+        if (legendPosition != null) 'legendPosition': legendPosition!,
+        if (pieHole != null) 'pieHole': pieHole!,
+        if (series != null) 'series': series!.toJson(),
+        if (threeDimensional != null) 'threeDimensional': threeDimensional!,
       };
 }
 
@@ -9038,19 +8961,19 @@ class PivotFilterCriteria {
   /// source data has columns named "Revenue" and "Cost" and a condition is
   /// applied to the "Revenue" column with type `NUMBER_GREATER` and value
   /// `=Cost`, then only columns where "Revenue" > "Cost" are included.
-  BooleanCondition condition;
+  BooleanCondition? condition;
 
   /// Whether values are visible by default.
   ///
   /// If true, the visible_values are ignored, all values that meet condition
   /// (if specified) are shown. If false, values that are both in visible_values
   /// and meet condition are shown.
-  core.bool visibleByDefault;
+  core.bool? visibleByDefault;
 
   /// Values that should be included.
   ///
   /// Values not listed here are excluded.
-  core.List<core.String> visibleValues;
+  core.List<core.String>? visibleValues;
 
   PivotFilterCriteria();
 
@@ -9069,10 +8992,10 @@ class PivotFilterCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (visibleByDefault != null) 'visibleByDefault': visibleByDefault,
-        if (visibleValues != null) 'visibleValues': visibleValues,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (visibleByDefault != null) 'visibleByDefault': visibleByDefault!,
+        if (visibleValues != null) 'visibleValues': visibleValues!,
       };
 }
 
@@ -9080,13 +9003,13 @@ class PivotFilterCriteria {
 /// offset.
 class PivotFilterSpec {
   /// The column offset of the source range.
-  core.int columnOffsetIndex;
+  core.int? columnOffsetIndex;
 
   /// The reference to the data source column.
-  DataSourceColumnReference dataSourceColumnReference;
+  DataSourceColumnReference? dataSourceColumnReference;
 
   /// The criteria for the column.
-  PivotFilterCriteria filterCriteria;
+  PivotFilterCriteria? filterCriteria;
 
   PivotFilterSpec();
 
@@ -9105,24 +9028,24 @@ class PivotFilterSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnOffsetIndex != null) 'columnOffsetIndex': columnOffsetIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnOffsetIndex != null) 'columnOffsetIndex': columnOffsetIndex!,
         if (dataSourceColumnReference != null)
-          'dataSourceColumnReference': dataSourceColumnReference.toJson(),
-        if (filterCriteria != null) 'filterCriteria': filterCriteria.toJson(),
+          'dataSourceColumnReference': dataSourceColumnReference!.toJson(),
+        if (filterCriteria != null) 'filterCriteria': filterCriteria!.toJson(),
       };
 }
 
 /// A single grouping (either row or column) in a pivot table.
 class PivotGroup {
   /// The reference to the data source column this grouping is based on.
-  DataSourceColumnReference dataSourceColumnReference;
+  DataSourceColumnReference? dataSourceColumnReference;
 
   /// The count limit on rows or columns to apply to this pivot group.
-  PivotGroupLimit groupLimit;
+  PivotGroupLimit? groupLimit;
 
   /// The group rule to apply to this row/column group.
-  PivotGroupRule groupRule;
+  PivotGroupRule? groupRule;
 
   /// The labels to use for the row/column groups which can be customized.
   ///
@@ -9137,7 +9060,7 @@ class PivotGroup {
   /// Oregon | 234 | 123 | | Tennessee | 531 | 415 |
   /// +--------------+---------+-------+ | Grand Total | 1110 | 636 |
   /// +--------------+---------+-------+
-  core.String label;
+  core.String? label;
 
   /// True if the headings in this pivot group should be repeated.
   ///
@@ -9148,32 +9071,32 @@ class PivotGroup {
   /// with previous rows. Setting repeat_headings to true would cause "Q1" to be
   /// repeated for "Feb" and "Mar". +--------------+ | Q1 | Jan | | | Feb | | |
   /// Mar | +--------+-----+ | Q1 Total | +--------------+
-  core.bool repeatHeadings;
+  core.bool? repeatHeadings;
 
   /// True if the pivot table should include the totals for this grouping.
-  core.bool showTotals;
+  core.bool? showTotals;
 
   /// The order the values in this group should be sorted.
   /// Possible string values are:
   /// - "SORT_ORDER_UNSPECIFIED" : Default value, do not use this.
   /// - "ASCENDING" : Sort ascending.
   /// - "DESCENDING" : Sort descending.
-  core.String sortOrder;
+  core.String? sortOrder;
 
   /// The column offset of the source range that this grouping is based on.
   ///
   /// For example, if the source was `C10:E15`, a `sourceColumnOffset` of `0`
   /// means this group refers to column `C`, whereas the offset `1` would refer
   /// to column `D`.
-  core.int sourceColumnOffset;
+  core.int? sourceColumnOffset;
 
   /// The bucket of the opposite pivot group to sort by.
   ///
   /// If not specified, sorting is alphabetical by this group's values.
-  PivotGroupSortValueBucket valueBucket;
+  PivotGroupSortValueBucket? valueBucket;
 
   /// Metadata about values in the grouping.
-  core.List<PivotGroupValueMetadata> valueMetadata;
+  core.List<PivotGroupValueMetadata>? valueMetadata;
 
   PivotGroup();
 
@@ -9219,21 +9142,21 @@ class PivotGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataSourceColumnReference != null)
-          'dataSourceColumnReference': dataSourceColumnReference.toJson(),
-        if (groupLimit != null) 'groupLimit': groupLimit.toJson(),
-        if (groupRule != null) 'groupRule': groupRule.toJson(),
-        if (label != null) 'label': label,
-        if (repeatHeadings != null) 'repeatHeadings': repeatHeadings,
-        if (showTotals != null) 'showTotals': showTotals,
-        if (sortOrder != null) 'sortOrder': sortOrder,
+          'dataSourceColumnReference': dataSourceColumnReference!.toJson(),
+        if (groupLimit != null) 'groupLimit': groupLimit!.toJson(),
+        if (groupRule != null) 'groupRule': groupRule!.toJson(),
+        if (label != null) 'label': label!,
+        if (repeatHeadings != null) 'repeatHeadings': repeatHeadings!,
+        if (showTotals != null) 'showTotals': showTotals!,
+        if (sortOrder != null) 'sortOrder': sortOrder!,
         if (sourceColumnOffset != null)
-          'sourceColumnOffset': sourceColumnOffset,
-        if (valueBucket != null) 'valueBucket': valueBucket.toJson(),
+          'sourceColumnOffset': sourceColumnOffset!,
+        if (valueBucket != null) 'valueBucket': valueBucket!.toJson(),
         if (valueMetadata != null)
           'valueMetadata':
-              valueMetadata.map((value) => value.toJson()).toList(),
+              valueMetadata!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -9247,10 +9170,10 @@ class PivotGroupLimit {
   /// this field set with an unique number. Otherwise, the order is determined
   /// by the index in the PivotTable.rows list and then the PivotTable.columns
   /// list.
-  core.int applyOrder;
+  core.int? applyOrder;
 
   /// The count limit.
-  core.int countLimit;
+  core.int? countLimit;
 
   PivotGroupLimit();
 
@@ -9263,9 +9186,9 @@ class PivotGroupLimit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (applyOrder != null) 'applyOrder': applyOrder,
-        if (countLimit != null) 'countLimit': countLimit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (applyOrder != null) 'applyOrder': applyOrder!,
+        if (countLimit != null) 'countLimit': countLimit!,
       };
 }
 
@@ -9277,13 +9200,13 @@ class PivotGroupLimit {
 /// has a rule and a PivotGroup that does not.
 class PivotGroupRule {
   /// A DateTimeRule.
-  DateTimeRule dateTimeRule;
+  DateTimeRule? dateTimeRule;
 
   /// A HistogramRule.
-  HistogramRule histogramRule;
+  HistogramRule? histogramRule;
 
   /// A ManualRule.
-  ManualRule manualRule;
+  ManualRule? manualRule;
 
   PivotGroupRule();
 
@@ -9302,10 +9225,10 @@ class PivotGroupRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dateTimeRule != null) 'dateTimeRule': dateTimeRule.toJson(),
-        if (histogramRule != null) 'histogramRule': histogramRule.toJson(),
-        if (manualRule != null) 'manualRule': manualRule.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dateTimeRule != null) 'dateTimeRule': dateTimeRule!.toJson(),
+        if (histogramRule != null) 'histogramRule': histogramRule!.toJson(),
+        if (manualRule != null) 'manualRule': manualRule!.toJson(),
       };
 }
 
@@ -9320,11 +9243,11 @@ class PivotGroupSortValueBucket {
   /// indicate that the row should be sorted according to the "Grand Total" over
   /// the column groups. If a single value is listed, this would correspond to
   /// using the "Total" of that bucket.
-  core.List<ExtendedValue> buckets;
+  core.List<ExtendedValue>? buckets;
 
   /// The offset in the PivotTable.values list which the values in this grouping
   /// should be sorted by.
-  core.int valuesIndex;
+  core.int? valuesIndex;
 
   PivotGroupSortValueBucket();
 
@@ -9340,23 +9263,23 @@ class PivotGroupSortValueBucket {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (buckets != null)
-          'buckets': buckets.map((value) => value.toJson()).toList(),
-        if (valuesIndex != null) 'valuesIndex': valuesIndex,
+          'buckets': buckets!.map((value) => value.toJson()).toList(),
+        if (valuesIndex != null) 'valuesIndex': valuesIndex!,
       };
 }
 
 /// Metadata about a value in a pivot grouping.
 class PivotGroupValueMetadata {
   /// True if the data corresponding to the value is collapsed.
-  core.bool collapsed;
+  core.bool? collapsed;
 
   /// The calculated value the metadata corresponds to.
   ///
   /// (Note that formulaValue is not valid, because the values will be
   /// calculated.)
-  ExtendedValue value;
+  ExtendedValue? value;
 
   PivotGroupValueMetadata();
 
@@ -9370,16 +9293,16 @@ class PivotGroupValueMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (collapsed != null) 'collapsed': collapsed,
-        if (value != null) 'value': value.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (collapsed != null) 'collapsed': collapsed!,
+        if (value != null) 'value': value!.toJson(),
       };
 }
 
 /// A pivot table.
 class PivotTable {
   /// Each column grouping in the pivot table.
-  core.List<PivotGroup> columns;
+  core.List<PivotGroup>? columns;
 
   /// An optional mapping of filters per source column offset.
   ///
@@ -9389,38 +9312,38 @@ class PivotTable {
   /// source was `C10:E15`, a key of `0` will have the filter for column `C`,
   /// whereas the key `1` is for column `D`. This field is deprecated in favor
   /// of filter_specs.
-  core.Map<core.String, PivotFilterCriteria> criteria;
+  core.Map<core.String, PivotFilterCriteria>? criteria;
 
   /// The data execution status for data source pivot tables.
   ///
   /// Output only.
-  DataExecutionStatus dataExecutionStatus;
+  DataExecutionStatus? dataExecutionStatus;
 
   /// The ID of the data source the pivot table is reading data from.
-  core.String dataSourceId;
+  core.String? dataSourceId;
 
   /// The filters applied to the source columns before aggregating data for the
   /// pivot table.
   ///
   /// Both criteria and filter_specs are populated in responses. If both fields
   /// are specified in an update request, this field takes precedence.
-  core.List<PivotFilterSpec> filterSpecs;
+  core.List<PivotFilterSpec>? filterSpecs;
 
   /// Each row grouping in the pivot table.
-  core.List<PivotGroup> rows;
+  core.List<PivotGroup>? rows;
 
   /// The range the pivot table is reading data from.
-  GridRange source;
+  GridRange? source;
 
   /// Whether values should be listed horizontally (as columns) or vertically
   /// (as rows).
   /// Possible string values are:
   /// - "HORIZONTAL" : Values are laid out horizontally (as columns).
   /// - "VERTICAL" : Values are laid out vertically (as rows).
-  core.String valueLayout;
+  core.String? valueLayout;
 
   /// A list of values to include in the pivot table.
-  core.List<PivotValue> values;
+  core.List<PivotValue>? values;
 
   PivotTable();
 
@@ -9432,14 +9355,15 @@ class PivotTable {
           .toList();
     }
     if (_json.containsKey('criteria')) {
-      criteria =
-          (_json['criteria'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  PivotFilterCriteria.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      criteria = (_json['criteria'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              PivotFilterCriteria.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('dataExecutionStatus')) {
       dataExecutionStatus = DataExecutionStatus.fromJson(
@@ -9475,22 +9399,22 @@ class PivotTable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (columns != null)
-          'columns': columns.map((value) => value.toJson()).toList(),
+          'columns': columns!.map((value) => value.toJson()).toList(),
         if (criteria != null)
           'criteria':
-              criteria.map((key, item) => core.MapEntry(key, item.toJson())),
+              criteria!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (dataExecutionStatus != null)
-          'dataExecutionStatus': dataExecutionStatus.toJson(),
-        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+          'dataExecutionStatus': dataExecutionStatus!.toJson(),
+        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
         if (filterSpecs != null)
-          'filterSpecs': filterSpecs.map((value) => value.toJson()).toList(),
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
-        if (source != null) 'source': source.toJson(),
-        if (valueLayout != null) 'valueLayout': valueLayout,
+          'filterSpecs': filterSpecs!.map((value) => value.toJson()).toList(),
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (source != null) 'source': source!.toJson(),
+        if (valueLayout != null) 'valueLayout': valueLayout!,
         if (values != null)
-          'values': values.map((value) => value.toJson()).toList(),
+          'values': values!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -9512,25 +9436,25 @@ class PivotValue {
   /// column total values.
   /// - "PERCENT_OF_GRAND_TOTAL" : Shows the pivot values as percentage of the
   /// grand total values.
-  core.String calculatedDisplayType;
+  core.String? calculatedDisplayType;
 
   /// The reference to the data source column that this value reads from.
-  DataSourceColumnReference dataSourceColumnReference;
+  DataSourceColumnReference? dataSourceColumnReference;
 
   /// A custom formula to calculate the value.
   ///
   /// The formula must start with an `=` character.
-  core.String formula;
+  core.String? formula;
 
   /// A name to use for the value.
-  core.String name;
+  core.String? name;
 
   /// The column offset of the source range that this value reads from.
   ///
   /// For example, if the source was `C10:E15`, a `sourceColumnOffset` of `0`
   /// means this value refers to column `C`, whereas the offset `1` would refer
   /// to column `D`.
-  core.int sourceColumnOffset;
+  core.int? sourceColumnOffset;
 
   /// A function to summarize the value.
   ///
@@ -9553,7 +9477,7 @@ class PivotValue {
   /// - "VARP" : Corresponds to the `VARP` function.
   /// - "CUSTOM" : Indicates the formula should be used as-is. Only valid if
   /// PivotValue.formula was set.
-  core.String summarizeFunction;
+  core.String? summarizeFunction;
 
   PivotValue();
 
@@ -9580,16 +9504,16 @@ class PivotValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (calculatedDisplayType != null)
-          'calculatedDisplayType': calculatedDisplayType,
+          'calculatedDisplayType': calculatedDisplayType!,
         if (dataSourceColumnReference != null)
-          'dataSourceColumnReference': dataSourceColumnReference.toJson(),
-        if (formula != null) 'formula': formula,
-        if (name != null) 'name': name,
+          'dataSourceColumnReference': dataSourceColumnReference!.toJson(),
+        if (formula != null) 'formula': formula!,
+        if (name != null) 'name': name!,
         if (sourceColumnOffset != null)
-          'sourceColumnOffset': sourceColumnOffset,
-        if (summarizeFunction != null) 'summarizeFunction': summarizeFunction,
+          'sourceColumnOffset': sourceColumnOffset!,
+        if (summarizeFunction != null) 'summarizeFunction': summarizeFunction!,
       };
 }
 
@@ -9608,12 +9532,12 @@ class PointStyle {
   /// - "STAR" : A star shape.
   /// - "TRIANGLE" : A triangle shape.
   /// - "X_MARK" : An x-mark shape.
-  core.String shape;
+  core.String? shape;
 
   /// The point size.
   ///
   /// If empty, a default size is used.
-  core.double size;
+  core.double? size;
 
   PointStyle();
 
@@ -9626,51 +9550,51 @@ class PointStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (shape != null) 'shape': shape,
-        if (size != null) 'size': size,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (shape != null) 'shape': shape!,
+        if (size != null) 'size': size!,
       };
 }
 
 /// A protected range.
 class ProtectedRange {
   /// The description of this protected range.
-  core.String description;
+  core.String? description;
 
   /// The users and groups with edit access to the protected range.
   ///
   /// This field is only visible to users with edit access to the protected
   /// range and the document. Editors are not supported with warning_only
   /// protection.
-  Editors editors;
+  Editors? editors;
 
   /// The named range this protected range is backed by, if any.
   ///
   /// When writing, only one of range or named_range_id may be set.
-  core.String namedRangeId;
+  core.String? namedRangeId;
 
   /// The ID of the protected range.
   ///
   /// This field is read-only.
-  core.int protectedRangeId;
+  core.int? protectedRangeId;
 
   /// The range that is being protected.
   ///
   /// The range may be fully unbounded, in which case this is considered a
   /// protected sheet. When writing, only one of range or named_range_id may be
   /// set.
-  GridRange range;
+  GridRange? range;
 
   /// True if the user who requested this protected range can edit the protected
   /// area.
   ///
   /// This field is read-only.
-  core.bool requestingUserCanEdit;
+  core.bool? requestingUserCanEdit;
 
   /// The list of unprotected ranges within a protected sheet.
   ///
   /// Unprotected ranges are only supported on protected sheets.
-  core.List<GridRange> unprotectedRanges;
+  core.List<GridRange>? unprotectedRanges;
 
   /// True if this protected range will show a warning when editing.
   ///
@@ -9680,7 +9604,7 @@ class ProtectedRange {
   /// ignored. Additionally, if this field is changed from true to false and the
   /// `editors` field is not set (nor included in the field mask), then the
   /// editors will be set to all the editors in the document.
-  core.bool warningOnly;
+  core.bool? warningOnly;
 
   ProtectedRange();
 
@@ -9716,25 +9640,25 @@ class ProtectedRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (editors != null) 'editors': editors.toJson(),
-        if (namedRangeId != null) 'namedRangeId': namedRangeId,
-        if (protectedRangeId != null) 'protectedRangeId': protectedRangeId,
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (editors != null) 'editors': editors!.toJson(),
+        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
+        if (protectedRangeId != null) 'protectedRangeId': protectedRangeId!,
+        if (range != null) 'range': range!.toJson(),
         if (requestingUserCanEdit != null)
-          'requestingUserCanEdit': requestingUserCanEdit,
+          'requestingUserCanEdit': requestingUserCanEdit!,
         if (unprotectedRanges != null)
           'unprotectedRanges':
-              unprotectedRanges.map((value) => value.toJson()).toList(),
-        if (warningOnly != null) 'warningOnly': warningOnly,
+              unprotectedRanges!.map((value) => value.toJson()).toList(),
+        if (warningOnly != null) 'warningOnly': warningOnly!,
       };
 }
 
 /// Randomizes the order of the rows in a range.
 class RandomizeRangeRequest {
   /// The range to randomize.
-  GridRange range;
+  GridRange? range;
 
   RandomizeRangeRequest();
 
@@ -9745,18 +9669,18 @@ class RandomizeRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
 /// The execution status of refreshing one data source object.
 class RefreshDataSourceObjectExecutionStatus {
   /// The data execution status.
-  DataExecutionStatus dataExecutionStatus;
+  DataExecutionStatus? dataExecutionStatus;
 
   /// Reference to a data source object being refreshed.
-  DataSourceObjectReference reference;
+  DataSourceObjectReference? reference;
 
   RefreshDataSourceObjectExecutionStatus();
 
@@ -9771,10 +9695,10 @@ class RefreshDataSourceObjectExecutionStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataExecutionStatus != null)
-          'dataExecutionStatus': dataExecutionStatus.toJson(),
-        if (reference != null) 'reference': reference.toJson(),
+          'dataExecutionStatus': dataExecutionStatus!.toJson(),
+        if (reference != null) 'reference': reference!.toJson(),
       };
 }
 
@@ -9790,19 +9714,19 @@ class RefreshDataSourceRequest {
   ///
   /// If specified, refreshes all associated data source objects for the data
   /// source.
-  core.String dataSourceId;
+  core.String? dataSourceId;
 
   /// Refreshes the data source objects regardless of the current state.
   ///
   /// If not set and a referenced data source object was in error state, the
   /// refresh will fail immediately.
-  core.bool force;
+  core.bool? force;
 
   /// Refreshes all existing data source objects in the spreadsheet.
-  core.bool isAll;
+  core.bool? isAll;
 
   /// References to data source objects to refresh.
-  DataSourceObjectReferences references;
+  DataSourceObjectReferences? references;
 
   RefreshDataSourceRequest();
 
@@ -9822,11 +9746,11 @@ class RefreshDataSourceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataSourceId != null) 'dataSourceId': dataSourceId,
-        if (force != null) 'force': force,
-        if (isAll != null) 'isAll': isAll,
-        if (references != null) 'references': references.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+        if (force != null) 'force': force!,
+        if (isAll != null) 'isAll': isAll!,
+        if (references != null) 'references': references!.toJson(),
       };
 }
 
@@ -9836,7 +9760,7 @@ class RefreshDataSourceResponse {
   /// the request.
   ///
   /// If is_all is specified, the field contains only those in failure status.
-  core.List<RefreshDataSourceObjectExecutionStatus> statuses;
+  core.List<RefreshDataSourceObjectExecutionStatus>? statuses;
 
   RefreshDataSourceResponse();
 
@@ -9850,9 +9774,9 @@ class RefreshDataSourceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (statuses != null)
-          'statuses': statuses.map((value) => value.toJson()).toList(),
+          'statuses': statuses!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -9868,17 +9792,17 @@ class RefreshDataSourceResponse {
 /// incrementing.
 class RepeatCellRequest {
   /// The data to write.
-  CellData cell;
+  CellData? cell;
 
   /// The fields that should be updated.
   ///
   /// At least one field must be specified. The root `cell` is implied and
   /// should not be specified. A single `"*"` can be used as short-hand for
   /// listing every field.
-  core.String fields;
+  core.String? fields;
 
   /// The range to repeat the cell in.
-  GridRange range;
+  GridRange? range;
 
   RepeatCellRequest();
 
@@ -9896,211 +9820,211 @@ class RepeatCellRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cell != null) 'cell': cell.toJson(),
-        if (fields != null) 'fields': fields,
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cell != null) 'cell': cell!.toJson(),
+        if (fields != null) 'fields': fields!,
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
 /// A single kind of update to apply to a spreadsheet.
 class Request {
   /// Adds a new banded range
-  AddBandingRequest addBanding;
+  AddBandingRequest? addBanding;
 
   /// Adds a chart.
-  AddChartRequest addChart;
+  AddChartRequest? addChart;
 
   /// Adds a new conditional format rule.
-  AddConditionalFormatRuleRequest addConditionalFormatRule;
+  AddConditionalFormatRuleRequest? addConditionalFormatRule;
 
   /// Adds a data source.
-  AddDataSourceRequest addDataSource;
+  AddDataSourceRequest? addDataSource;
 
   /// Creates a group over the specified range.
-  AddDimensionGroupRequest addDimensionGroup;
+  AddDimensionGroupRequest? addDimensionGroup;
 
   /// Adds a filter view.
-  AddFilterViewRequest addFilterView;
+  AddFilterViewRequest? addFilterView;
 
   /// Adds a named range.
-  AddNamedRangeRequest addNamedRange;
+  AddNamedRangeRequest? addNamedRange;
 
   /// Adds a protected range.
-  AddProtectedRangeRequest addProtectedRange;
+  AddProtectedRangeRequest? addProtectedRange;
 
   /// Adds a sheet.
-  AddSheetRequest addSheet;
+  AddSheetRequest? addSheet;
 
   /// Adds a slicer.
-  AddSlicerRequest addSlicer;
+  AddSlicerRequest? addSlicer;
 
   /// Appends cells after the last row with data in a sheet.
-  AppendCellsRequest appendCells;
+  AppendCellsRequest? appendCells;
 
   /// Appends dimensions to the end of a sheet.
-  AppendDimensionRequest appendDimension;
+  AppendDimensionRequest? appendDimension;
 
   /// Automatically fills in more data based on existing data.
-  AutoFillRequest autoFill;
+  AutoFillRequest? autoFill;
 
   /// Automatically resizes one or more dimensions based on the contents of the
   /// cells in that dimension.
-  AutoResizeDimensionsRequest autoResizeDimensions;
+  AutoResizeDimensionsRequest? autoResizeDimensions;
 
   /// Clears the basic filter on a sheet.
-  ClearBasicFilterRequest clearBasicFilter;
+  ClearBasicFilterRequest? clearBasicFilter;
 
   /// Copies data from one area and pastes it to another.
-  CopyPasteRequest copyPaste;
+  CopyPasteRequest? copyPaste;
 
   /// Creates new developer metadata
-  CreateDeveloperMetadataRequest createDeveloperMetadata;
+  CreateDeveloperMetadataRequest? createDeveloperMetadata;
 
   /// Cuts data from one area and pastes it to another.
-  CutPasteRequest cutPaste;
+  CutPasteRequest? cutPaste;
 
   /// Removes a banded range
-  DeleteBandingRequest deleteBanding;
+  DeleteBandingRequest? deleteBanding;
 
   /// Deletes an existing conditional format rule.
-  DeleteConditionalFormatRuleRequest deleteConditionalFormatRule;
+  DeleteConditionalFormatRuleRequest? deleteConditionalFormatRule;
 
   /// Deletes a data source.
-  DeleteDataSourceRequest deleteDataSource;
+  DeleteDataSourceRequest? deleteDataSource;
 
   /// Deletes developer metadata
-  DeleteDeveloperMetadataRequest deleteDeveloperMetadata;
+  DeleteDeveloperMetadataRequest? deleteDeveloperMetadata;
 
   /// Deletes rows or columns in a sheet.
-  DeleteDimensionRequest deleteDimension;
+  DeleteDimensionRequest? deleteDimension;
 
   /// Deletes a group over the specified range.
-  DeleteDimensionGroupRequest deleteDimensionGroup;
+  DeleteDimensionGroupRequest? deleteDimensionGroup;
 
   /// Removes rows containing duplicate values in specified columns of a cell
   /// range.
-  DeleteDuplicatesRequest deleteDuplicates;
+  DeleteDuplicatesRequest? deleteDuplicates;
 
   /// Deletes an embedded object (e.g, chart, image) in a sheet.
-  DeleteEmbeddedObjectRequest deleteEmbeddedObject;
+  DeleteEmbeddedObjectRequest? deleteEmbeddedObject;
 
   /// Deletes a filter view from a sheet.
-  DeleteFilterViewRequest deleteFilterView;
+  DeleteFilterViewRequest? deleteFilterView;
 
   /// Deletes a named range.
-  DeleteNamedRangeRequest deleteNamedRange;
+  DeleteNamedRangeRequest? deleteNamedRange;
 
   /// Deletes a protected range.
-  DeleteProtectedRangeRequest deleteProtectedRange;
+  DeleteProtectedRangeRequest? deleteProtectedRange;
 
   /// Deletes a range of cells from a sheet, shifting the remaining cells.
-  DeleteRangeRequest deleteRange;
+  DeleteRangeRequest? deleteRange;
 
   /// Deletes a sheet.
-  DeleteSheetRequest deleteSheet;
+  DeleteSheetRequest? deleteSheet;
 
   /// Duplicates a filter view.
-  DuplicateFilterViewRequest duplicateFilterView;
+  DuplicateFilterViewRequest? duplicateFilterView;
 
   /// Duplicates a sheet.
-  DuplicateSheetRequest duplicateSheet;
+  DuplicateSheetRequest? duplicateSheet;
 
   /// Finds and replaces occurrences of some text with other text.
-  FindReplaceRequest findReplace;
+  FindReplaceRequest? findReplace;
 
   /// Inserts new rows or columns in a sheet.
-  InsertDimensionRequest insertDimension;
+  InsertDimensionRequest? insertDimension;
 
   /// Inserts new cells in a sheet, shifting the existing cells.
-  InsertRangeRequest insertRange;
+  InsertRangeRequest? insertRange;
 
   /// Merges cells together.
-  MergeCellsRequest mergeCells;
+  MergeCellsRequest? mergeCells;
 
   /// Moves rows or columns to another location in a sheet.
-  MoveDimensionRequest moveDimension;
+  MoveDimensionRequest? moveDimension;
 
   /// Pastes data (HTML or delimited) into a sheet.
-  PasteDataRequest pasteData;
+  PasteDataRequest? pasteData;
 
   /// Randomizes the order of the rows in a range.
-  RandomizeRangeRequest randomizeRange;
+  RandomizeRangeRequest? randomizeRange;
 
   /// Refreshs one or multiple data sources and associated dbobjects.
-  RefreshDataSourceRequest refreshDataSource;
+  RefreshDataSourceRequest? refreshDataSource;
 
   /// Repeats a single cell across a range.
-  RepeatCellRequest repeatCell;
+  RepeatCellRequest? repeatCell;
 
   /// Sets the basic filter on a sheet.
-  SetBasicFilterRequest setBasicFilter;
+  SetBasicFilterRequest? setBasicFilter;
 
   /// Sets data validation for one or more cells.
-  SetDataValidationRequest setDataValidation;
+  SetDataValidationRequest? setDataValidation;
 
   /// Sorts data in a range.
-  SortRangeRequest sortRange;
+  SortRangeRequest? sortRange;
 
   /// Converts a column of text into many columns of text.
-  TextToColumnsRequest textToColumns;
+  TextToColumnsRequest? textToColumns;
 
   /// Trims cells of whitespace (such as spaces, tabs, or new lines).
-  TrimWhitespaceRequest trimWhitespace;
+  TrimWhitespaceRequest? trimWhitespace;
 
   /// Unmerges merged cells.
-  UnmergeCellsRequest unmergeCells;
+  UnmergeCellsRequest? unmergeCells;
 
   /// Updates a banded range
-  UpdateBandingRequest updateBanding;
+  UpdateBandingRequest? updateBanding;
 
   /// Updates the borders in a range of cells.
-  UpdateBordersRequest updateBorders;
+  UpdateBordersRequest? updateBorders;
 
   /// Updates many cells at once.
-  UpdateCellsRequest updateCells;
+  UpdateCellsRequest? updateCells;
 
   /// Updates a chart's specifications.
-  UpdateChartSpecRequest updateChartSpec;
+  UpdateChartSpecRequest? updateChartSpec;
 
   /// Updates an existing conditional format rule.
-  UpdateConditionalFormatRuleRequest updateConditionalFormatRule;
+  UpdateConditionalFormatRuleRequest? updateConditionalFormatRule;
 
   /// Updates a data source.
-  UpdateDataSourceRequest updateDataSource;
+  UpdateDataSourceRequest? updateDataSource;
 
   /// Updates an existing developer metadata entry
-  UpdateDeveloperMetadataRequest updateDeveloperMetadata;
+  UpdateDeveloperMetadataRequest? updateDeveloperMetadata;
 
   /// Updates the state of the specified group.
-  UpdateDimensionGroupRequest updateDimensionGroup;
+  UpdateDimensionGroupRequest? updateDimensionGroup;
 
   /// Updates dimensions' properties.
-  UpdateDimensionPropertiesRequest updateDimensionProperties;
+  UpdateDimensionPropertiesRequest? updateDimensionProperties;
 
   /// Updates an embedded object's border.
-  UpdateEmbeddedObjectBorderRequest updateEmbeddedObjectBorder;
+  UpdateEmbeddedObjectBorderRequest? updateEmbeddedObjectBorder;
 
   /// Updates an embedded object's (e.g. chart, image) position.
-  UpdateEmbeddedObjectPositionRequest updateEmbeddedObjectPosition;
+  UpdateEmbeddedObjectPositionRequest? updateEmbeddedObjectPosition;
 
   /// Updates the properties of a filter view.
-  UpdateFilterViewRequest updateFilterView;
+  UpdateFilterViewRequest? updateFilterView;
 
   /// Updates a named range.
-  UpdateNamedRangeRequest updateNamedRange;
+  UpdateNamedRangeRequest? updateNamedRange;
 
   /// Updates a protected range.
-  UpdateProtectedRangeRequest updateProtectedRange;
+  UpdateProtectedRangeRequest? updateProtectedRange;
 
   /// Updates a sheet's properties.
-  UpdateSheetPropertiesRequest updateSheetProperties;
+  UpdateSheetPropertiesRequest? updateSheetProperties;
 
   /// Updates a slicer's specifications.
-  UpdateSlicerSpecRequest updateSlicerSpec;
+  UpdateSlicerSpecRequest? updateSlicerSpec;
 
   /// Updates the spreadsheet's properties.
-  UpdateSpreadsheetPropertiesRequest updateSpreadsheetProperties;
+  UpdateSpreadsheetPropertiesRequest? updateSpreadsheetProperties;
 
   Request();
 
@@ -10379,180 +10303,181 @@ class Request {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addBanding != null) 'addBanding': addBanding.toJson(),
-        if (addChart != null) 'addChart': addChart.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addBanding != null) 'addBanding': addBanding!.toJson(),
+        if (addChart != null) 'addChart': addChart!.toJson(),
         if (addConditionalFormatRule != null)
-          'addConditionalFormatRule': addConditionalFormatRule.toJson(),
-        if (addDataSource != null) 'addDataSource': addDataSource.toJson(),
+          'addConditionalFormatRule': addConditionalFormatRule!.toJson(),
+        if (addDataSource != null) 'addDataSource': addDataSource!.toJson(),
         if (addDimensionGroup != null)
-          'addDimensionGroup': addDimensionGroup.toJson(),
-        if (addFilterView != null) 'addFilterView': addFilterView.toJson(),
-        if (addNamedRange != null) 'addNamedRange': addNamedRange.toJson(),
+          'addDimensionGroup': addDimensionGroup!.toJson(),
+        if (addFilterView != null) 'addFilterView': addFilterView!.toJson(),
+        if (addNamedRange != null) 'addNamedRange': addNamedRange!.toJson(),
         if (addProtectedRange != null)
-          'addProtectedRange': addProtectedRange.toJson(),
-        if (addSheet != null) 'addSheet': addSheet.toJson(),
-        if (addSlicer != null) 'addSlicer': addSlicer.toJson(),
-        if (appendCells != null) 'appendCells': appendCells.toJson(),
+          'addProtectedRange': addProtectedRange!.toJson(),
+        if (addSheet != null) 'addSheet': addSheet!.toJson(),
+        if (addSlicer != null) 'addSlicer': addSlicer!.toJson(),
+        if (appendCells != null) 'appendCells': appendCells!.toJson(),
         if (appendDimension != null)
-          'appendDimension': appendDimension.toJson(),
-        if (autoFill != null) 'autoFill': autoFill.toJson(),
+          'appendDimension': appendDimension!.toJson(),
+        if (autoFill != null) 'autoFill': autoFill!.toJson(),
         if (autoResizeDimensions != null)
-          'autoResizeDimensions': autoResizeDimensions.toJson(),
+          'autoResizeDimensions': autoResizeDimensions!.toJson(),
         if (clearBasicFilter != null)
-          'clearBasicFilter': clearBasicFilter.toJson(),
-        if (copyPaste != null) 'copyPaste': copyPaste.toJson(),
+          'clearBasicFilter': clearBasicFilter!.toJson(),
+        if (copyPaste != null) 'copyPaste': copyPaste!.toJson(),
         if (createDeveloperMetadata != null)
-          'createDeveloperMetadata': createDeveloperMetadata.toJson(),
-        if (cutPaste != null) 'cutPaste': cutPaste.toJson(),
-        if (deleteBanding != null) 'deleteBanding': deleteBanding.toJson(),
+          'createDeveloperMetadata': createDeveloperMetadata!.toJson(),
+        if (cutPaste != null) 'cutPaste': cutPaste!.toJson(),
+        if (deleteBanding != null) 'deleteBanding': deleteBanding!.toJson(),
         if (deleteConditionalFormatRule != null)
-          'deleteConditionalFormatRule': deleteConditionalFormatRule.toJson(),
+          'deleteConditionalFormatRule': deleteConditionalFormatRule!.toJson(),
         if (deleteDataSource != null)
-          'deleteDataSource': deleteDataSource.toJson(),
+          'deleteDataSource': deleteDataSource!.toJson(),
         if (deleteDeveloperMetadata != null)
-          'deleteDeveloperMetadata': deleteDeveloperMetadata.toJson(),
+          'deleteDeveloperMetadata': deleteDeveloperMetadata!.toJson(),
         if (deleteDimension != null)
-          'deleteDimension': deleteDimension.toJson(),
+          'deleteDimension': deleteDimension!.toJson(),
         if (deleteDimensionGroup != null)
-          'deleteDimensionGroup': deleteDimensionGroup.toJson(),
+          'deleteDimensionGroup': deleteDimensionGroup!.toJson(),
         if (deleteDuplicates != null)
-          'deleteDuplicates': deleteDuplicates.toJson(),
+          'deleteDuplicates': deleteDuplicates!.toJson(),
         if (deleteEmbeddedObject != null)
-          'deleteEmbeddedObject': deleteEmbeddedObject.toJson(),
+          'deleteEmbeddedObject': deleteEmbeddedObject!.toJson(),
         if (deleteFilterView != null)
-          'deleteFilterView': deleteFilterView.toJson(),
+          'deleteFilterView': deleteFilterView!.toJson(),
         if (deleteNamedRange != null)
-          'deleteNamedRange': deleteNamedRange.toJson(),
+          'deleteNamedRange': deleteNamedRange!.toJson(),
         if (deleteProtectedRange != null)
-          'deleteProtectedRange': deleteProtectedRange.toJson(),
-        if (deleteRange != null) 'deleteRange': deleteRange.toJson(),
-        if (deleteSheet != null) 'deleteSheet': deleteSheet.toJson(),
+          'deleteProtectedRange': deleteProtectedRange!.toJson(),
+        if (deleteRange != null) 'deleteRange': deleteRange!.toJson(),
+        if (deleteSheet != null) 'deleteSheet': deleteSheet!.toJson(),
         if (duplicateFilterView != null)
-          'duplicateFilterView': duplicateFilterView.toJson(),
-        if (duplicateSheet != null) 'duplicateSheet': duplicateSheet.toJson(),
-        if (findReplace != null) 'findReplace': findReplace.toJson(),
+          'duplicateFilterView': duplicateFilterView!.toJson(),
+        if (duplicateSheet != null) 'duplicateSheet': duplicateSheet!.toJson(),
+        if (findReplace != null) 'findReplace': findReplace!.toJson(),
         if (insertDimension != null)
-          'insertDimension': insertDimension.toJson(),
-        if (insertRange != null) 'insertRange': insertRange.toJson(),
-        if (mergeCells != null) 'mergeCells': mergeCells.toJson(),
-        if (moveDimension != null) 'moveDimension': moveDimension.toJson(),
-        if (pasteData != null) 'pasteData': pasteData.toJson(),
-        if (randomizeRange != null) 'randomizeRange': randomizeRange.toJson(),
+          'insertDimension': insertDimension!.toJson(),
+        if (insertRange != null) 'insertRange': insertRange!.toJson(),
+        if (mergeCells != null) 'mergeCells': mergeCells!.toJson(),
+        if (moveDimension != null) 'moveDimension': moveDimension!.toJson(),
+        if (pasteData != null) 'pasteData': pasteData!.toJson(),
+        if (randomizeRange != null) 'randomizeRange': randomizeRange!.toJson(),
         if (refreshDataSource != null)
-          'refreshDataSource': refreshDataSource.toJson(),
-        if (repeatCell != null) 'repeatCell': repeatCell.toJson(),
-        if (setBasicFilter != null) 'setBasicFilter': setBasicFilter.toJson(),
+          'refreshDataSource': refreshDataSource!.toJson(),
+        if (repeatCell != null) 'repeatCell': repeatCell!.toJson(),
+        if (setBasicFilter != null) 'setBasicFilter': setBasicFilter!.toJson(),
         if (setDataValidation != null)
-          'setDataValidation': setDataValidation.toJson(),
-        if (sortRange != null) 'sortRange': sortRange.toJson(),
-        if (textToColumns != null) 'textToColumns': textToColumns.toJson(),
-        if (trimWhitespace != null) 'trimWhitespace': trimWhitespace.toJson(),
-        if (unmergeCells != null) 'unmergeCells': unmergeCells.toJson(),
-        if (updateBanding != null) 'updateBanding': updateBanding.toJson(),
-        if (updateBorders != null) 'updateBorders': updateBorders.toJson(),
-        if (updateCells != null) 'updateCells': updateCells.toJson(),
+          'setDataValidation': setDataValidation!.toJson(),
+        if (sortRange != null) 'sortRange': sortRange!.toJson(),
+        if (textToColumns != null) 'textToColumns': textToColumns!.toJson(),
+        if (trimWhitespace != null) 'trimWhitespace': trimWhitespace!.toJson(),
+        if (unmergeCells != null) 'unmergeCells': unmergeCells!.toJson(),
+        if (updateBanding != null) 'updateBanding': updateBanding!.toJson(),
+        if (updateBorders != null) 'updateBorders': updateBorders!.toJson(),
+        if (updateCells != null) 'updateCells': updateCells!.toJson(),
         if (updateChartSpec != null)
-          'updateChartSpec': updateChartSpec.toJson(),
+          'updateChartSpec': updateChartSpec!.toJson(),
         if (updateConditionalFormatRule != null)
-          'updateConditionalFormatRule': updateConditionalFormatRule.toJson(),
+          'updateConditionalFormatRule': updateConditionalFormatRule!.toJson(),
         if (updateDataSource != null)
-          'updateDataSource': updateDataSource.toJson(),
+          'updateDataSource': updateDataSource!.toJson(),
         if (updateDeveloperMetadata != null)
-          'updateDeveloperMetadata': updateDeveloperMetadata.toJson(),
+          'updateDeveloperMetadata': updateDeveloperMetadata!.toJson(),
         if (updateDimensionGroup != null)
-          'updateDimensionGroup': updateDimensionGroup.toJson(),
+          'updateDimensionGroup': updateDimensionGroup!.toJson(),
         if (updateDimensionProperties != null)
-          'updateDimensionProperties': updateDimensionProperties.toJson(),
+          'updateDimensionProperties': updateDimensionProperties!.toJson(),
         if (updateEmbeddedObjectBorder != null)
-          'updateEmbeddedObjectBorder': updateEmbeddedObjectBorder.toJson(),
+          'updateEmbeddedObjectBorder': updateEmbeddedObjectBorder!.toJson(),
         if (updateEmbeddedObjectPosition != null)
-          'updateEmbeddedObjectPosition': updateEmbeddedObjectPosition.toJson(),
+          'updateEmbeddedObjectPosition':
+              updateEmbeddedObjectPosition!.toJson(),
         if (updateFilterView != null)
-          'updateFilterView': updateFilterView.toJson(),
+          'updateFilterView': updateFilterView!.toJson(),
         if (updateNamedRange != null)
-          'updateNamedRange': updateNamedRange.toJson(),
+          'updateNamedRange': updateNamedRange!.toJson(),
         if (updateProtectedRange != null)
-          'updateProtectedRange': updateProtectedRange.toJson(),
+          'updateProtectedRange': updateProtectedRange!.toJson(),
         if (updateSheetProperties != null)
-          'updateSheetProperties': updateSheetProperties.toJson(),
+          'updateSheetProperties': updateSheetProperties!.toJson(),
         if (updateSlicerSpec != null)
-          'updateSlicerSpec': updateSlicerSpec.toJson(),
+          'updateSlicerSpec': updateSlicerSpec!.toJson(),
         if (updateSpreadsheetProperties != null)
-          'updateSpreadsheetProperties': updateSpreadsheetProperties.toJson(),
+          'updateSpreadsheetProperties': updateSpreadsheetProperties!.toJson(),
       };
 }
 
 /// A single response from an update.
 class Response {
   /// A reply from adding a banded range.
-  AddBandingResponse addBanding;
+  AddBandingResponse? addBanding;
 
   /// A reply from adding a chart.
-  AddChartResponse addChart;
+  AddChartResponse? addChart;
 
   /// A reply from adding a data source.
-  AddDataSourceResponse addDataSource;
+  AddDataSourceResponse? addDataSource;
 
   /// A reply from adding a dimension group.
-  AddDimensionGroupResponse addDimensionGroup;
+  AddDimensionGroupResponse? addDimensionGroup;
 
   /// A reply from adding a filter view.
-  AddFilterViewResponse addFilterView;
+  AddFilterViewResponse? addFilterView;
 
   /// A reply from adding a named range.
-  AddNamedRangeResponse addNamedRange;
+  AddNamedRangeResponse? addNamedRange;
 
   /// A reply from adding a protected range.
-  AddProtectedRangeResponse addProtectedRange;
+  AddProtectedRangeResponse? addProtectedRange;
 
   /// A reply from adding a sheet.
-  AddSheetResponse addSheet;
+  AddSheetResponse? addSheet;
 
   /// A reply from adding a slicer.
-  AddSlicerResponse addSlicer;
+  AddSlicerResponse? addSlicer;
 
   /// A reply from creating a developer metadata entry.
-  CreateDeveloperMetadataResponse createDeveloperMetadata;
+  CreateDeveloperMetadataResponse? createDeveloperMetadata;
 
   /// A reply from deleting a conditional format rule.
-  DeleteConditionalFormatRuleResponse deleteConditionalFormatRule;
+  DeleteConditionalFormatRuleResponse? deleteConditionalFormatRule;
 
   /// A reply from deleting a developer metadata entry.
-  DeleteDeveloperMetadataResponse deleteDeveloperMetadata;
+  DeleteDeveloperMetadataResponse? deleteDeveloperMetadata;
 
   /// A reply from deleting a dimension group.
-  DeleteDimensionGroupResponse deleteDimensionGroup;
+  DeleteDimensionGroupResponse? deleteDimensionGroup;
 
   /// A reply from removing rows containing duplicate values.
-  DeleteDuplicatesResponse deleteDuplicates;
+  DeleteDuplicatesResponse? deleteDuplicates;
 
   /// A reply from duplicating a filter view.
-  DuplicateFilterViewResponse duplicateFilterView;
+  DuplicateFilterViewResponse? duplicateFilterView;
 
   /// A reply from duplicating a sheet.
-  DuplicateSheetResponse duplicateSheet;
+  DuplicateSheetResponse? duplicateSheet;
 
   /// A reply from doing a find/replace.
-  FindReplaceResponse findReplace;
+  FindReplaceResponse? findReplace;
 
   /// A reply from refreshing data source objects.
-  RefreshDataSourceResponse refreshDataSource;
+  RefreshDataSourceResponse? refreshDataSource;
 
   /// A reply from trimming whitespace.
-  TrimWhitespaceResponse trimWhitespace;
+  TrimWhitespaceResponse? trimWhitespace;
 
   /// A reply from updating a conditional format rule.
-  UpdateConditionalFormatRuleResponse updateConditionalFormatRule;
+  UpdateConditionalFormatRuleResponse? updateConditionalFormatRule;
 
   /// A reply from updating a data source.
-  UpdateDataSourceResponse updateDataSource;
+  UpdateDataSourceResponse? updateDataSource;
 
   /// A reply from updating a developer metadata entry.
-  UpdateDeveloperMetadataResponse updateDeveloperMetadata;
+  UpdateDeveloperMetadataResponse? updateDeveloperMetadata;
 
   /// A reply from updating an embedded object's position.
-  UpdateEmbeddedObjectPositionResponse updateEmbeddedObjectPosition;
+  UpdateEmbeddedObjectPositionResponse? updateEmbeddedObjectPosition;
 
   Response();
 
@@ -10660,50 +10585,51 @@ class Response {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addBanding != null) 'addBanding': addBanding.toJson(),
-        if (addChart != null) 'addChart': addChart.toJson(),
-        if (addDataSource != null) 'addDataSource': addDataSource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addBanding != null) 'addBanding': addBanding!.toJson(),
+        if (addChart != null) 'addChart': addChart!.toJson(),
+        if (addDataSource != null) 'addDataSource': addDataSource!.toJson(),
         if (addDimensionGroup != null)
-          'addDimensionGroup': addDimensionGroup.toJson(),
-        if (addFilterView != null) 'addFilterView': addFilterView.toJson(),
-        if (addNamedRange != null) 'addNamedRange': addNamedRange.toJson(),
+          'addDimensionGroup': addDimensionGroup!.toJson(),
+        if (addFilterView != null) 'addFilterView': addFilterView!.toJson(),
+        if (addNamedRange != null) 'addNamedRange': addNamedRange!.toJson(),
         if (addProtectedRange != null)
-          'addProtectedRange': addProtectedRange.toJson(),
-        if (addSheet != null) 'addSheet': addSheet.toJson(),
-        if (addSlicer != null) 'addSlicer': addSlicer.toJson(),
+          'addProtectedRange': addProtectedRange!.toJson(),
+        if (addSheet != null) 'addSheet': addSheet!.toJson(),
+        if (addSlicer != null) 'addSlicer': addSlicer!.toJson(),
         if (createDeveloperMetadata != null)
-          'createDeveloperMetadata': createDeveloperMetadata.toJson(),
+          'createDeveloperMetadata': createDeveloperMetadata!.toJson(),
         if (deleteConditionalFormatRule != null)
-          'deleteConditionalFormatRule': deleteConditionalFormatRule.toJson(),
+          'deleteConditionalFormatRule': deleteConditionalFormatRule!.toJson(),
         if (deleteDeveloperMetadata != null)
-          'deleteDeveloperMetadata': deleteDeveloperMetadata.toJson(),
+          'deleteDeveloperMetadata': deleteDeveloperMetadata!.toJson(),
         if (deleteDimensionGroup != null)
-          'deleteDimensionGroup': deleteDimensionGroup.toJson(),
+          'deleteDimensionGroup': deleteDimensionGroup!.toJson(),
         if (deleteDuplicates != null)
-          'deleteDuplicates': deleteDuplicates.toJson(),
+          'deleteDuplicates': deleteDuplicates!.toJson(),
         if (duplicateFilterView != null)
-          'duplicateFilterView': duplicateFilterView.toJson(),
-        if (duplicateSheet != null) 'duplicateSheet': duplicateSheet.toJson(),
-        if (findReplace != null) 'findReplace': findReplace.toJson(),
+          'duplicateFilterView': duplicateFilterView!.toJson(),
+        if (duplicateSheet != null) 'duplicateSheet': duplicateSheet!.toJson(),
+        if (findReplace != null) 'findReplace': findReplace!.toJson(),
         if (refreshDataSource != null)
-          'refreshDataSource': refreshDataSource.toJson(),
-        if (trimWhitespace != null) 'trimWhitespace': trimWhitespace.toJson(),
+          'refreshDataSource': refreshDataSource!.toJson(),
+        if (trimWhitespace != null) 'trimWhitespace': trimWhitespace!.toJson(),
         if (updateConditionalFormatRule != null)
-          'updateConditionalFormatRule': updateConditionalFormatRule.toJson(),
+          'updateConditionalFormatRule': updateConditionalFormatRule!.toJson(),
         if (updateDataSource != null)
-          'updateDataSource': updateDataSource.toJson(),
+          'updateDataSource': updateDataSource!.toJson(),
         if (updateDeveloperMetadata != null)
-          'updateDeveloperMetadata': updateDeveloperMetadata.toJson(),
+          'updateDeveloperMetadata': updateDeveloperMetadata!.toJson(),
         if (updateEmbeddedObjectPosition != null)
-          'updateEmbeddedObjectPosition': updateEmbeddedObjectPosition.toJson(),
+          'updateEmbeddedObjectPosition':
+              updateEmbeddedObjectPosition!.toJson(),
       };
 }
 
 /// Data about each cell in a row.
 class RowData {
   /// The values in the row, one per column.
-  core.List<CellData> values;
+  core.List<CellData>? values;
 
   RowData();
 
@@ -10716,9 +10642,9 @@ class RowData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (values != null)
-          'values': values.map((value) => value.toJson()).toList(),
+          'values': values!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -10743,30 +10669,30 @@ class ScorecardChartSpec {
   /// - "MEDIAN" : Median aggregate function.
   /// - "MIN" : Minimum aggregate function.
   /// - "SUM" : Sum aggregate function.
-  core.String aggregateType;
+  core.String? aggregateType;
 
   /// The data for scorecard baseline value.
   ///
   /// This field is optional.
-  ChartData baselineValueData;
+  ChartData? baselineValueData;
 
   /// Formatting options for baseline value.
   ///
   /// This field is needed only if baseline_value_data is specified.
-  BaselineValueFormat baselineValueFormat;
+  BaselineValueFormat? baselineValueFormat;
 
   /// Custom formatting options for numeric key/baseline values in scorecard
   /// chart.
   ///
   /// This field is used only when number_format_source is set to CUSTOM. This
   /// field is optional.
-  ChartCustomNumberFormatOptions customFormatOptions;
+  ChartCustomNumberFormatOptions? customFormatOptions;
 
   /// The data for scorecard key value.
-  ChartData keyValueData;
+  ChartData? keyValueData;
 
   /// Formatting options for key value.
-  KeyValueFormat keyValueFormat;
+  KeyValueFormat? keyValueFormat;
 
   /// The number format source used in the scorecard chart.
   ///
@@ -10776,13 +10702,13 @@ class ScorecardChartSpec {
   /// - "FROM_DATA" : Inherit number formatting from data.
   /// - "CUSTOM" : Apply custom formatting as specified by
   /// ChartCustomNumberFormatOptions.
-  core.String numberFormatSource;
+  core.String? numberFormatSource;
 
   /// Value to scale scorecard key and baseline value.
   ///
   /// For example, a factor of 10 can be used to divide all values in the chart
   /// by 10. This field is optional.
-  core.double scaleFactor;
+  core.double? scaleFactor;
 
   ScorecardChartSpec();
 
@@ -10818,19 +10744,19 @@ class ScorecardChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aggregateType != null) 'aggregateType': aggregateType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aggregateType != null) 'aggregateType': aggregateType!,
         if (baselineValueData != null)
-          'baselineValueData': baselineValueData.toJson(),
+          'baselineValueData': baselineValueData!.toJson(),
         if (baselineValueFormat != null)
-          'baselineValueFormat': baselineValueFormat.toJson(),
+          'baselineValueFormat': baselineValueFormat!.toJson(),
         if (customFormatOptions != null)
-          'customFormatOptions': customFormatOptions.toJson(),
-        if (keyValueData != null) 'keyValueData': keyValueData.toJson(),
-        if (keyValueFormat != null) 'keyValueFormat': keyValueFormat.toJson(),
+          'customFormatOptions': customFormatOptions!.toJson(),
+        if (keyValueData != null) 'keyValueData': keyValueData!.toJson(),
+        if (keyValueFormat != null) 'keyValueFormat': keyValueFormat!.toJson(),
         if (numberFormatSource != null)
-          'numberFormatSource': numberFormatSource,
-        if (scaleFactor != null) 'scaleFactor': scaleFactor,
+          'numberFormatSource': numberFormatSource!,
+        if (scaleFactor != null) 'scaleFactor': scaleFactor!,
       };
 }
 
@@ -10842,7 +10768,7 @@ class SearchDeveloperMetadataRequest {
   ///
   /// DeveloperMetadata matching any of the specified filters are included in
   /// the response.
-  core.List<DataFilter> dataFilters;
+  core.List<DataFilter>? dataFilters;
 
   SearchDeveloperMetadataRequest();
 
@@ -10855,16 +10781,16 @@ class SearchDeveloperMetadataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataFilters != null)
-          'dataFilters': dataFilters.map((value) => value.toJson()).toList(),
+          'dataFilters': dataFilters!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A reply to a developer metadata search request.
 class SearchDeveloperMetadataResponse {
   /// The metadata matching the criteria of the search request.
-  core.List<MatchedDeveloperMetadata> matchedDeveloperMetadata;
+  core.List<MatchedDeveloperMetadata>? matchedDeveloperMetadata;
 
   SearchDeveloperMetadataResponse();
 
@@ -10879,17 +10805,17 @@ class SearchDeveloperMetadataResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (matchedDeveloperMetadata != null)
           'matchedDeveloperMetadata':
-              matchedDeveloperMetadata.map((value) => value.toJson()).toList(),
+              matchedDeveloperMetadata!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Sets the basic filter associated with a sheet.
 class SetBasicFilterRequest {
   /// The filter to set.
-  BasicFilter filter;
+  BasicFilter? filter;
 
   SetBasicFilterRequest();
 
@@ -10900,8 +10826,8 @@ class SetBasicFilterRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filter != null) 'filter': filter.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filter != null) 'filter': filter!.toJson(),
       };
 }
 
@@ -10910,11 +10836,11 @@ class SetBasicFilterRequest {
 /// To clear validation in a range, call this with no rule specified.
 class SetDataValidationRequest {
   /// The range the data validation rule should apply to.
-  GridRange range;
+  GridRange? range;
 
   /// The data validation rule to set on each cell in the range, or empty to
   /// clear the data validation in the range.
-  DataValidationRule rule;
+  DataValidationRule? rule;
 
   SetDataValidationRequest();
 
@@ -10929,29 +10855,29 @@ class SetDataValidationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (range != null) 'range': range.toJson(),
-        if (rule != null) 'rule': rule.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (range != null) 'range': range!.toJson(),
+        if (rule != null) 'rule': rule!.toJson(),
       };
 }
 
 /// A sheet in a spreadsheet.
 class Sheet {
   /// The banded (alternating colors) ranges on this sheet.
-  core.List<BandedRange> bandedRanges;
+  core.List<BandedRange>? bandedRanges;
 
   /// The filter on this sheet, if any.
-  BasicFilter basicFilter;
+  BasicFilter? basicFilter;
 
   /// The specifications of every chart on this sheet.
-  core.List<EmbeddedChart> charts;
+  core.List<EmbeddedChart>? charts;
 
   /// All column groups on this sheet, ordered by increasing range start index,
   /// then by group depth.
-  core.List<DimensionGroup> columnGroups;
+  core.List<DimensionGroup>? columnGroups;
 
   /// The conditional format rules in this sheet.
-  core.List<ConditionalFormatRule> conditionalFormats;
+  core.List<ConditionalFormatRule>? conditionalFormats;
 
   /// Data in the grid, if this is a grid sheet.
   ///
@@ -10963,29 +10889,29 @@ class Sheet {
   /// (zero-based row 15), and `startColumn 3` (zero-based column D). For a
   /// DATA_SOURCE sheet, you can not request a specific range, the GridData
   /// contains all the values.
-  core.List<GridData> data;
+  core.List<GridData>? data;
 
   /// The developer metadata associated with a sheet.
-  core.List<DeveloperMetadata> developerMetadata;
+  core.List<DeveloperMetadata>? developerMetadata;
 
   /// The filter views in this sheet.
-  core.List<FilterView> filterViews;
+  core.List<FilterView>? filterViews;
 
   /// The ranges that are merged together.
-  core.List<GridRange> merges;
+  core.List<GridRange>? merges;
 
   /// The properties of the sheet.
-  SheetProperties properties;
+  SheetProperties? properties;
 
   /// The protected ranges in this sheet.
-  core.List<ProtectedRange> protectedRanges;
+  core.List<ProtectedRange>? protectedRanges;
 
   /// All row groups on this sheet, ordered by increasing range start index,
   /// then by group depth.
-  core.List<DimensionGroup> rowGroups;
+  core.List<DimensionGroup>? rowGroups;
 
   /// The slicers on this sheet.
-  core.List<Slicer> slicers;
+  core.List<Slicer>? slicers;
 
   Sheet();
 
@@ -11066,33 +10992,33 @@ class Sheet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bandedRanges != null)
-          'bandedRanges': bandedRanges.map((value) => value.toJson()).toList(),
-        if (basicFilter != null) 'basicFilter': basicFilter.toJson(),
+          'bandedRanges': bandedRanges!.map((value) => value.toJson()).toList(),
+        if (basicFilter != null) 'basicFilter': basicFilter!.toJson(),
         if (charts != null)
-          'charts': charts.map((value) => value.toJson()).toList(),
+          'charts': charts!.map((value) => value.toJson()).toList(),
         if (columnGroups != null)
-          'columnGroups': columnGroups.map((value) => value.toJson()).toList(),
+          'columnGroups': columnGroups!.map((value) => value.toJson()).toList(),
         if (conditionalFormats != null)
           'conditionalFormats':
-              conditionalFormats.map((value) => value.toJson()).toList(),
-        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
+              conditionalFormats!.map((value) => value.toJson()).toList(),
+        if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
         if (developerMetadata != null)
           'developerMetadata':
-              developerMetadata.map((value) => value.toJson()).toList(),
+              developerMetadata!.map((value) => value.toJson()).toList(),
         if (filterViews != null)
-          'filterViews': filterViews.map((value) => value.toJson()).toList(),
+          'filterViews': filterViews!.map((value) => value.toJson()).toList(),
         if (merges != null)
-          'merges': merges.map((value) => value.toJson()).toList(),
-        if (properties != null) 'properties': properties.toJson(),
+          'merges': merges!.map((value) => value.toJson()).toList(),
+        if (properties != null) 'properties': properties!.toJson(),
         if (protectedRanges != null)
           'protectedRanges':
-              protectedRanges.map((value) => value.toJson()).toList(),
+              protectedRanges!.map((value) => value.toJson()).toList(),
         if (rowGroups != null)
-          'rowGroups': rowGroups.map((value) => value.toJson()).toList(),
+          'rowGroups': rowGroups!.map((value) => value.toJson()).toList(),
         if (slicers != null)
-          'slicers': slicers.map((value) => value.toJson()).toList(),
+          'slicers': slicers!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -11101,7 +11027,7 @@ class SheetProperties {
   /// If present, the field contains DATA_SOURCE sheet specific properties.
   ///
   /// Output only.
-  DataSourceSheetProperties dataSourceSheetProperties;
+  DataSourceSheetProperties? dataSourceSheetProperties;
 
   /// Additional properties of the sheet if this sheet is a grid.
   ///
@@ -11110,10 +11036,10 @@ class SheetProperties {
   /// properties on non-grid sheets. If this sheet is a DATA_SOURCE sheet, this
   /// field is output only but contains the properties that reflect how a data
   /// source sheet is rendered in the UI, e.g. row_count.
-  GridProperties gridProperties;
+  GridProperties? gridProperties;
 
   /// True if the sheet is hidden in the UI, false if it's visible.
-  core.bool hidden;
+  core.bool? hidden;
 
   /// The index of the sheet within the spreadsheet.
   ///
@@ -11125,15 +11051,15 @@ class SheetProperties {
   /// update request is ignored if the requested index is identical to the
   /// sheets current index or if the requested new index is equal to the current
   /// sheet index + 1.
-  core.int index;
+  core.int? index;
 
   /// True if the sheet is an RTL sheet instead of an LTR sheet.
-  core.bool rightToLeft;
+  core.bool? rightToLeft;
 
   /// The ID of the sheet.
   ///
   /// Must be non-negative. This field cannot be changed once set.
-  core.int sheetId;
+  core.int? sheetId;
 
   /// The type of sheet.
   ///
@@ -11145,18 +11071,18 @@ class SheetProperties {
   /// or image.
   /// - "DATA_SOURCE" : The sheet connects with an external DataSource and shows
   /// the preview of data.
-  core.String sheetType;
+  core.String? sheetType;
 
   /// The color of the tab in the UI.
-  Color tabColor;
+  Color? tabColor;
 
   /// The color of the tab in the UI.
   ///
   /// If tab_color is also set, this field takes precedence.
-  ColorStyle tabColorStyle;
+  ColorStyle? tabColorStyle;
 
   /// The name of the sheet.
-  core.String title;
+  core.String? title;
 
   SheetProperties();
 
@@ -11198,18 +11124,18 @@ class SheetProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataSourceSheetProperties != null)
-          'dataSourceSheetProperties': dataSourceSheetProperties.toJson(),
-        if (gridProperties != null) 'gridProperties': gridProperties.toJson(),
-        if (hidden != null) 'hidden': hidden,
-        if (index != null) 'index': index,
-        if (rightToLeft != null) 'rightToLeft': rightToLeft,
-        if (sheetId != null) 'sheetId': sheetId,
-        if (sheetType != null) 'sheetType': sheetType,
-        if (tabColor != null) 'tabColor': tabColor.toJson(),
-        if (tabColorStyle != null) 'tabColorStyle': tabColorStyle.toJson(),
-        if (title != null) 'title': title,
+          'dataSourceSheetProperties': dataSourceSheetProperties!.toJson(),
+        if (gridProperties != null) 'gridProperties': gridProperties!.toJson(),
+        if (hidden != null) 'hidden': hidden!,
+        if (index != null) 'index': index!,
+        if (rightToLeft != null) 'rightToLeft': rightToLeft!,
+        if (sheetId != null) 'sheetId': sheetId!,
+        if (sheetType != null) 'sheetType': sheetType!,
+        if (tabColor != null) 'tabColor': tabColor!.toJson(),
+        if (tabColorStyle != null) 'tabColorStyle': tabColorStyle!.toJson(),
+        if (title != null) 'title': title!,
       };
 }
 
@@ -11220,13 +11146,13 @@ class Slicer {
   /// Note that slicer can be positioned only on existing sheet. Also, width and
   /// height of slicer can be automatically adjusted to keep it within permitted
   /// limits.
-  EmbeddedObjectPosition position;
+  EmbeddedObjectPosition? position;
 
   /// The ID of the slicer.
-  core.int slicerId;
+  core.int? slicerId;
 
   /// The specification of the slicer.
-  SlicerSpec spec;
+  SlicerSpec? spec;
 
   Slicer();
 
@@ -11244,10 +11170,10 @@ class Slicer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (position != null) 'position': position.toJson(),
-        if (slicerId != null) 'slicerId': slicerId,
-        if (spec != null) 'spec': spec.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (position != null) 'position': position!.toJson(),
+        if (slicerId != null) 'slicerId': slicerId!,
+        if (spec != null) 'spec': spec!.toJson(),
       };
 }
 
@@ -11256,24 +11182,24 @@ class SlicerSpec {
   /// True if the filter should apply to pivot tables.
   ///
   /// If not set, default to `True`.
-  core.bool applyToPivotTables;
+  core.bool? applyToPivotTables;
 
   /// The background color of the slicer.
-  Color backgroundColor;
+  Color? backgroundColor;
 
   /// The background color of the slicer.
   ///
   /// If background_color is also set, this field takes precedence.
-  ColorStyle backgroundColorStyle;
+  ColorStyle? backgroundColorStyle;
 
   /// The column index in the data table on which the filter is applied to.
-  core.int columnIndex;
+  core.int? columnIndex;
 
   /// The data range of the slicer.
-  GridRange dataRange;
+  GridRange? dataRange;
 
   /// The filtering criteria of the slicer.
-  FilterCriteria filterCriteria;
+  FilterCriteria? filterCriteria;
 
   /// The horizontal alignment of title in the slicer.
   ///
@@ -11284,13 +11210,13 @@ class SlicerSpec {
   /// - "LEFT" : The text is explicitly aligned to the left of the cell.
   /// - "CENTER" : The text is explicitly aligned to the center of the cell.
   /// - "RIGHT" : The text is explicitly aligned to the right of the cell.
-  core.String horizontalAlignment;
+  core.String? horizontalAlignment;
 
   /// The text format of title in the slicer.
-  TextFormat textFormat;
+  TextFormat? textFormat;
 
   /// The title of the slicer.
-  core.String title;
+  core.String? title;
 
   SlicerSpec();
 
@@ -11329,33 +11255,33 @@ class SlicerSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (applyToPivotTables != null)
-          'applyToPivotTables': applyToPivotTables,
+          'applyToPivotTables': applyToPivotTables!,
         if (backgroundColor != null)
-          'backgroundColor': backgroundColor.toJson(),
+          'backgroundColor': backgroundColor!.toJson(),
         if (backgroundColorStyle != null)
-          'backgroundColorStyle': backgroundColorStyle.toJson(),
-        if (columnIndex != null) 'columnIndex': columnIndex,
-        if (dataRange != null) 'dataRange': dataRange.toJson(),
-        if (filterCriteria != null) 'filterCriteria': filterCriteria.toJson(),
+          'backgroundColorStyle': backgroundColorStyle!.toJson(),
+        if (columnIndex != null) 'columnIndex': columnIndex!,
+        if (dataRange != null) 'dataRange': dataRange!.toJson(),
+        if (filterCriteria != null) 'filterCriteria': filterCriteria!.toJson(),
         if (horizontalAlignment != null)
-          'horizontalAlignment': horizontalAlignment,
-        if (textFormat != null) 'textFormat': textFormat.toJson(),
-        if (title != null) 'title': title,
+          'horizontalAlignment': horizontalAlignment!,
+        if (textFormat != null) 'textFormat': textFormat!.toJson(),
+        if (title != null) 'title': title!,
       };
 }
 
 /// Sorts data in rows based on a sort order per column.
 class SortRangeRequest {
   /// The range to sort.
-  GridRange range;
+  GridRange? range;
 
   /// The sort order per column.
   ///
   /// Later specifications are used when values are equal in the earlier
   /// specifications.
-  core.List<SortSpec> sortSpecs;
+  core.List<SortSpec>? sortSpecs;
 
   SortRangeRequest();
 
@@ -11372,10 +11298,10 @@ class SortRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (range != null) 'range': range!.toJson(),
         if (sortSpecs != null)
-          'sortSpecs': sortSpecs.map((value) => value.toJson()).toList(),
+          'sortSpecs': sortSpecs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -11385,40 +11311,40 @@ class SortSpec {
   /// sorted to the top.
   ///
   /// Mutually exclusive with foreground_color.
-  Color backgroundColor;
+  Color? backgroundColor;
 
   /// The background fill color to sort by; cells with this fill color are
   /// sorted to the top.
   ///
   /// Mutually exclusive with foreground_color, and must be an RGB-type color.
   /// If background_color is also set, this field takes precedence.
-  ColorStyle backgroundColorStyle;
+  ColorStyle? backgroundColorStyle;
 
   /// Reference to a data source column.
-  DataSourceColumnReference dataSourceColumnReference;
+  DataSourceColumnReference? dataSourceColumnReference;
 
   /// The dimension the sort should be applied to.
-  core.int dimensionIndex;
+  core.int? dimensionIndex;
 
   /// The foreground color to sort by; cells with this foreground color are
   /// sorted to the top.
   ///
   /// Mutually exclusive with background_color.
-  Color foregroundColor;
+  Color? foregroundColor;
 
   /// The foreground color to sort by; cells with this foreground color are
   /// sorted to the top.
   ///
   /// Mutually exclusive with background_color, and must be an RGB-type color.
   /// If foreground_color is also set, this field takes precedence.
-  ColorStyle foregroundColorStyle;
+  ColorStyle? foregroundColorStyle;
 
   /// The order data should be sorted.
   /// Possible string values are:
   /// - "SORT_ORDER_UNSPECIFIED" : Default value, do not use this.
   /// - "ASCENDING" : Sort ascending.
   /// - "DESCENDING" : Sort descending.
-  core.String sortOrder;
+  core.String? sortOrder;
 
   SortSpec();
 
@@ -11452,19 +11378,19 @@ class SortSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundColor != null)
-          'backgroundColor': backgroundColor.toJson(),
+          'backgroundColor': backgroundColor!.toJson(),
         if (backgroundColorStyle != null)
-          'backgroundColorStyle': backgroundColorStyle.toJson(),
+          'backgroundColorStyle': backgroundColorStyle!.toJson(),
         if (dataSourceColumnReference != null)
-          'dataSourceColumnReference': dataSourceColumnReference.toJson(),
-        if (dimensionIndex != null) 'dimensionIndex': dimensionIndex,
+          'dataSourceColumnReference': dataSourceColumnReference!.toJson(),
+        if (dimensionIndex != null) 'dimensionIndex': dimensionIndex!,
         if (foregroundColor != null)
-          'foregroundColor': foregroundColor.toJson(),
+          'foregroundColor': foregroundColor!.toJson(),
         if (foregroundColorStyle != null)
-          'foregroundColorStyle': foregroundColorStyle.toJson(),
-        if (sortOrder != null) 'sortOrder': sortOrder,
+          'foregroundColorStyle': foregroundColorStyle!.toJson(),
+        if (sortOrder != null) 'sortOrder': sortOrder!,
       };
 }
 
@@ -11475,17 +11401,17 @@ class SourceAndDestination {
   /// - "DIMENSION_UNSPECIFIED" : The default value, do not use.
   /// - "ROWS" : Operates on the rows of a sheet.
   /// - "COLUMNS" : Operates on the columns of a sheet.
-  core.String dimension;
+  core.String? dimension;
 
   /// The number of rows or columns that data should be filled into.
   ///
   /// Positive numbers expand beyond the last row or last column of the source.
   /// Negative numbers expand before the first row or first column of the
   /// source.
-  core.int fillLength;
+  core.int? fillLength;
 
   /// The location of the data to use as the source of the autofill.
-  GridRange source;
+  GridRange? source;
 
   SourceAndDestination();
 
@@ -11502,10 +11428,10 @@ class SourceAndDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimension != null) 'dimension': dimension,
-        if (fillLength != null) 'fillLength': fillLength,
-        if (source != null) 'source': source.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimension != null) 'dimension': dimension!,
+        if (fillLength != null) 'fillLength': fillLength!,
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
@@ -11514,32 +11440,32 @@ class Spreadsheet {
   /// A list of data source refresh schedules.
   ///
   /// Output only.
-  core.List<DataSourceRefreshSchedule> dataSourceSchedules;
+  core.List<DataSourceRefreshSchedule>? dataSourceSchedules;
 
   /// A list of external data sources connected with the spreadsheet.
-  core.List<DataSource> dataSources;
+  core.List<DataSource>? dataSources;
 
   /// The developer metadata associated with a spreadsheet.
-  core.List<DeveloperMetadata> developerMetadata;
+  core.List<DeveloperMetadata>? developerMetadata;
 
   /// The named ranges defined in a spreadsheet.
-  core.List<NamedRange> namedRanges;
+  core.List<NamedRange>? namedRanges;
 
   /// Overall properties of a spreadsheet.
-  SpreadsheetProperties properties;
+  SpreadsheetProperties? properties;
 
   /// The sheets that are part of a spreadsheet.
-  core.List<Sheet> sheets;
+  core.List<Sheet>? sheets;
 
   /// The ID of the spreadsheet.
   ///
   /// This field is read-only.
-  core.String spreadsheetId;
+  core.String? spreadsheetId;
 
   /// The url of the spreadsheet.
   ///
   /// This field is read-only.
-  core.String spreadsheetUrl;
+  core.String? spreadsheetUrl;
 
   Spreadsheet();
 
@@ -11587,22 +11513,22 @@ class Spreadsheet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataSourceSchedules != null)
           'dataSourceSchedules':
-              dataSourceSchedules.map((value) => value.toJson()).toList(),
+              dataSourceSchedules!.map((value) => value.toJson()).toList(),
         if (dataSources != null)
-          'dataSources': dataSources.map((value) => value.toJson()).toList(),
+          'dataSources': dataSources!.map((value) => value.toJson()).toList(),
         if (developerMetadata != null)
           'developerMetadata':
-              developerMetadata.map((value) => value.toJson()).toList(),
+              developerMetadata!.map((value) => value.toJson()).toList(),
         if (namedRanges != null)
-          'namedRanges': namedRanges.map((value) => value.toJson()).toList(),
-        if (properties != null) 'properties': properties.toJson(),
+          'namedRanges': namedRanges!.map((value) => value.toJson()).toList(),
+        if (properties != null) 'properties': properties!.toJson(),
         if (sheets != null)
-          'sheets': sheets.map((value) => value.toJson()).toList(),
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
-        if (spreadsheetUrl != null) 'spreadsheetUrl': spreadsheetUrl,
+          'sheets': sheets!.map((value) => value.toJson()).toList(),
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+        if (spreadsheetUrl != null) 'spreadsheetUrl': spreadsheetUrl!,
       };
 }
 
@@ -11616,40 +11542,40 @@ class SpreadsheetProperties {
   /// - "MINUTE" : Volatile functions are updated on every change and every
   /// minute.
   /// - "HOUR" : Volatile functions are updated on every change and hourly.
-  core.String autoRecalc;
+  core.String? autoRecalc;
 
   /// The default format of all cells in the spreadsheet.
   ///
   /// CellData.effectiveFormat will not be set if the cell's format is equal to
   /// this default format. This field is read-only.
-  CellFormat defaultFormat;
+  CellFormat? defaultFormat;
 
   /// Determines whether and how circular references are resolved with iterative
   /// calculation.
   ///
   /// Absence of this field means that circular references result in calculation
   /// errors.
-  IterativeCalculationSettings iterativeCalculationSettings;
+  IterativeCalculationSettings? iterativeCalculationSettings;
 
   /// The locale of the spreadsheet in one of the following formats: * an ISO
   /// 639-1 language code such as `en` * an ISO 639-2 language code such as
   /// `fil`, if no 639-1 code exists * a combination of the ISO language code
   /// and country code, such as `en_US` Note: when updating this field, not all
   /// locales/languages are supported.
-  core.String locale;
+  core.String? locale;
 
   /// Theme applied to the spreadsheet.
-  SpreadsheetTheme spreadsheetTheme;
+  SpreadsheetTheme? spreadsheetTheme;
 
   /// The time zone of the spreadsheet, in CLDR format such as
   /// `America/New_York`.
   ///
   /// If the time zone isn't recognized, this may be a custom time zone such as
   /// `GMT-07:00`.
-  core.String timeZone;
+  core.String? timeZone;
 
   /// The title of the spreadsheet.
-  core.String title;
+  core.String? title;
 
   SpreadsheetProperties();
 
@@ -11681,28 +11607,29 @@ class SpreadsheetProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (autoRecalc != null) 'autoRecalc': autoRecalc,
-        if (defaultFormat != null) 'defaultFormat': defaultFormat.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (autoRecalc != null) 'autoRecalc': autoRecalc!,
+        if (defaultFormat != null) 'defaultFormat': defaultFormat!.toJson(),
         if (iterativeCalculationSettings != null)
-          'iterativeCalculationSettings': iterativeCalculationSettings.toJson(),
-        if (locale != null) 'locale': locale,
+          'iterativeCalculationSettings':
+              iterativeCalculationSettings!.toJson(),
+        if (locale != null) 'locale': locale!,
         if (spreadsheetTheme != null)
-          'spreadsheetTheme': spreadsheetTheme.toJson(),
-        if (timeZone != null) 'timeZone': timeZone,
-        if (title != null) 'title': title,
+          'spreadsheetTheme': spreadsheetTheme!.toJson(),
+        if (timeZone != null) 'timeZone': timeZone!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// Represents spreadsheet theme
 class SpreadsheetTheme {
   /// Name of the primary font family.
-  core.String primaryFontFamily;
+  core.String? primaryFontFamily;
 
   /// The spreadsheet theme color pairs.
   ///
   /// To update you must provide all theme color pairs.
-  core.List<ThemeColorPair> themeColors;
+  core.List<ThemeColorPair>? themeColors;
 
   SpreadsheetTheme();
 
@@ -11718,10 +11645,10 @@ class SpreadsheetTheme {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (primaryFontFamily != null) 'primaryFontFamily': primaryFontFamily,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (primaryFontFamily != null) 'primaryFontFamily': primaryFontFamily!,
         if (themeColors != null)
-          'themeColors': themeColors.map((value) => value.toJson()).toList(),
+          'themeColors': themeColors!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -11730,30 +11657,30 @@ class SpreadsheetTheme {
 /// Absent values indicate that the field isn't specified.
 class TextFormat {
   /// True if the text is bold.
-  core.bool bold;
+  core.bool? bold;
 
   /// The font family.
-  core.String fontFamily;
+  core.String? fontFamily;
 
   /// The size of the font.
-  core.int fontSize;
+  core.int? fontSize;
 
   /// The foreground color of the text.
-  Color foregroundColor;
+  Color? foregroundColor;
 
   /// The foreground color of the text.
   ///
   /// If foreground_color is also set, this field takes precedence.
-  ColorStyle foregroundColorStyle;
+  ColorStyle? foregroundColorStyle;
 
   /// True if the text is italicized.
-  core.bool italic;
+  core.bool? italic;
 
   /// True if the text has a strikethrough.
-  core.bool strikethrough;
+  core.bool? strikethrough;
 
   /// True if the text is underlined.
-  core.bool underline;
+  core.bool? underline;
 
   TextFormat();
 
@@ -11786,17 +11713,17 @@ class TextFormat {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bold != null) 'bold': bold,
-        if (fontFamily != null) 'fontFamily': fontFamily,
-        if (fontSize != null) 'fontSize': fontSize,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bold != null) 'bold': bold!,
+        if (fontFamily != null) 'fontFamily': fontFamily!,
+        if (fontSize != null) 'fontSize': fontSize!,
         if (foregroundColor != null)
-          'foregroundColor': foregroundColor.toJson(),
+          'foregroundColor': foregroundColor!.toJson(),
         if (foregroundColorStyle != null)
-          'foregroundColorStyle': foregroundColorStyle.toJson(),
-        if (italic != null) 'italic': italic,
-        if (strikethrough != null) 'strikethrough': strikethrough,
-        if (underline != null) 'underline': underline,
+          'foregroundColorStyle': foregroundColorStyle!.toJson(),
+        if (italic != null) 'italic': italic!,
+        if (strikethrough != null) 'strikethrough': strikethrough!,
+        if (underline != null) 'underline': underline!,
       };
 }
 
@@ -11808,10 +11735,10 @@ class TextFormatRun {
   /// The format of this run.
   ///
   /// Absent values inherit the cell's format.
-  TextFormat format;
+  TextFormat? format;
 
   /// The character index where this run starts.
-  core.int startIndex;
+  core.int? startIndex;
 
   TextFormatRun();
 
@@ -11825,9 +11752,9 @@ class TextFormatRun {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (format != null) 'format': format.toJson(),
-        if (startIndex != null) 'startIndex': startIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (format != null) 'format': format!.toJson(),
+        if (startIndex != null) 'startIndex': startIndex!,
       };
 }
 
@@ -11840,7 +11767,7 @@ class TextPosition {
   /// - "LEFT" : The text is explicitly aligned to the left of the cell.
   /// - "CENTER" : The text is explicitly aligned to the center of the cell.
   /// - "RIGHT" : The text is explicitly aligned to the right of the cell.
-  core.String horizontalAlignment;
+  core.String? horizontalAlignment;
 
   TextPosition();
 
@@ -11850,9 +11777,9 @@ class TextPosition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (horizontalAlignment != null)
-          'horizontalAlignment': horizontalAlignment,
+          'horizontalAlignment': horizontalAlignment!,
       };
 }
 
@@ -11864,13 +11791,13 @@ class TextRotation {
   /// are angled upwards, negative are angled downwards. Note: For LTR text
   /// direction positive angles are in the counterclockwise direction, whereas
   /// for RTL they are in the clockwise direction
-  core.int angle;
+  core.int? angle;
 
   /// If true, text reads top to bottom, but the orientation of individual
   /// characters is unchanged.
   ///
   /// For example: | V | | e | | r | | t | | i | | c | | a | | l |
-  core.bool vertical;
+  core.bool? vertical;
 
   TextRotation();
 
@@ -11883,9 +11810,9 @@ class TextRotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (angle != null) 'angle': angle,
-        if (vertical != null) 'vertical': vertical,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (angle != null) 'angle': angle!,
+        if (vertical != null) 'vertical': vertical!,
       };
 }
 
@@ -11895,7 +11822,7 @@ class TextToColumnsRequest {
   /// The delimiter to use.
   ///
   /// Used only if delimiterType is CUSTOM.
-  core.String delimiter;
+  core.String? delimiter;
 
   /// The delimiter type to use.
   /// Possible string values are:
@@ -11907,12 +11834,12 @@ class TextToColumnsRequest {
   /// - "SPACE" : " "
   /// - "CUSTOM" : A custom value as defined in delimiter.
   /// - "AUTODETECT" : Automatically detect columns.
-  core.String delimiterType;
+  core.String? delimiterType;
 
   /// The source data range.
   ///
   /// This must span exactly one column.
-  GridRange source;
+  GridRange? source;
 
   TextToColumnsRequest();
 
@@ -11929,10 +11856,10 @@ class TextToColumnsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (delimiter != null) 'delimiter': delimiter,
-        if (delimiterType != null) 'delimiterType': delimiterType,
-        if (source != null) 'source': source.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (delimiter != null) 'delimiter': delimiter!,
+        if (delimiterType != null) 'delimiterType': delimiterType!,
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
@@ -11940,7 +11867,7 @@ class TextToColumnsRequest {
 /// represents.
 class ThemeColorPair {
   /// The concrete color corresponding to the theme color type.
-  ColorStyle color;
+  ColorStyle? color;
 
   /// The type of the spreadsheet theme color.
   /// Possible string values are:
@@ -11954,7 +11881,7 @@ class ThemeColorPair {
   /// - "ACCENT5" : Represents the fifth accent color
   /// - "ACCENT6" : Represents the sixth accent color
   /// - "LINK" : Represents the color to use for hyperlinks
-  core.String colorType;
+  core.String? colorType;
 
   ThemeColorPair();
 
@@ -11968,9 +11895,9 @@ class ThemeColorPair {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (color != null) 'color': color.toJson(),
-        if (colorType != null) 'colorType': colorType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (color != null) 'color': color!.toJson(),
+        if (colorType != null) 'colorType': colorType!,
       };
 }
 
@@ -11984,23 +11911,23 @@ class TimeOfDay {
   ///
   /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
   /// for scenarios like business closing time.
-  core.int hours;
+  core.int? hours;
 
   /// Minutes of hour of day.
   ///
   /// Must be from 0 to 59.
-  core.int minutes;
+  core.int? minutes;
 
   /// Fractions of seconds in nanoseconds.
   ///
   /// Must be from 0 to 999,999,999.
-  core.int nanos;
+  core.int? nanos;
 
   /// Seconds of minutes of the time.
   ///
   /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
   /// leap-seconds.
-  core.int seconds;
+  core.int? seconds;
 
   TimeOfDay();
 
@@ -12019,11 +11946,11 @@ class TimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hours != null) 'hours': hours,
-        if (minutes != null) 'minutes': minutes,
-        if (nanos != null) 'nanos': nanos,
-        if (seconds != null) 'seconds': seconds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hours != null) 'hours': hours!,
+        if (minutes != null) 'minutes': minutes!,
+        if (nanos != null) 'nanos': nanos!,
+        if (seconds != null) 'seconds': seconds!,
       };
 }
 
@@ -12033,53 +11960,53 @@ class TreemapChartColorScale {
   /// maxValue.
   ///
   /// Defaults to #109618 if not specified.
-  Color maxValueColor;
+  Color? maxValueColor;
 
   /// The background color for cells with a color value greater than or equal to
   /// maxValue.
   ///
   /// Defaults to #109618 if not specified. If max_value_color is also set, this
   /// field takes precedence.
-  ColorStyle maxValueColorStyle;
+  ColorStyle? maxValueColorStyle;
 
   /// The background color for cells with a color value at the midpoint between
   /// minValue and maxValue.
   ///
   /// Defaults to #efe6dc if not specified.
-  Color midValueColor;
+  Color? midValueColor;
 
   /// The background color for cells with a color value at the midpoint between
   /// minValue and maxValue.
   ///
   /// Defaults to #efe6dc if not specified. If mid_value_color is also set, this
   /// field takes precedence.
-  ColorStyle midValueColorStyle;
+  ColorStyle? midValueColorStyle;
 
   /// The background color for cells with a color value less than or equal to
   /// minValue.
   ///
   /// Defaults to #dc3912 if not specified.
-  Color minValueColor;
+  Color? minValueColor;
 
   /// The background color for cells with a color value less than or equal to
   /// minValue.
   ///
   /// Defaults to #dc3912 if not specified. If min_value_color is also set, this
   /// field takes precedence.
-  ColorStyle minValueColorStyle;
+  ColorStyle? minValueColorStyle;
 
   /// The background color for cells that have no color data associated with
   /// them.
   ///
   /// Defaults to #000000 if not specified.
-  Color noDataColor;
+  Color? noDataColor;
 
   /// The background color for cells that have no color data associated with
   /// them.
   ///
   /// Defaults to #000000 if not specified. If no_data_color is also set, this
   /// field takes precedence.
-  ColorStyle noDataColorStyle;
+  ColorStyle? noDataColorStyle;
 
   TreemapChartColorScale();
 
@@ -12118,19 +12045,19 @@ class TreemapChartColorScale {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxValueColor != null) 'maxValueColor': maxValueColor.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxValueColor != null) 'maxValueColor': maxValueColor!.toJson(),
         if (maxValueColorStyle != null)
-          'maxValueColorStyle': maxValueColorStyle.toJson(),
-        if (midValueColor != null) 'midValueColor': midValueColor.toJson(),
+          'maxValueColorStyle': maxValueColorStyle!.toJson(),
+        if (midValueColor != null) 'midValueColor': midValueColor!.toJson(),
         if (midValueColorStyle != null)
-          'midValueColorStyle': midValueColorStyle.toJson(),
-        if (minValueColor != null) 'minValueColor': minValueColor.toJson(),
+          'midValueColorStyle': midValueColorStyle!.toJson(),
+        if (minValueColor != null) 'minValueColor': minValueColor!.toJson(),
         if (minValueColorStyle != null)
-          'minValueColorStyle': minValueColorStyle.toJson(),
-        if (noDataColor != null) 'noDataColor': noDataColor.toJson(),
+          'minValueColorStyle': minValueColorStyle!.toJson(),
+        if (noDataColor != null) 'noDataColor': noDataColor!.toJson(),
         if (noDataColorStyle != null)
-          'noDataColorStyle': noDataColorStyle.toJson(),
+          'noDataColorStyle': noDataColorStyle!.toJson(),
       };
 }
 
@@ -12142,7 +12069,7 @@ class TreemapChartSpec {
   /// background colors. If specified, the data is expected to be numeric.
   /// color_scale will determine how the values in this data map to data cell
   /// background colors.
-  ChartData colorData;
+  ChartData? colorData;
 
   /// The color scale for data cells in the treemap chart.
   ///
@@ -12156,34 +12083,34 @@ class TreemapChartSpec {
   /// maxValueColor, the midpoint of the gradient being midValueColor. Cells
   /// with missing or non-numeric color values will have noDataColor as their
   /// background color.
-  TreemapChartColorScale colorScale;
+  TreemapChartColorScale? colorScale;
 
   /// The background color for header cells.
-  Color headerColor;
+  Color? headerColor;
 
   /// The background color for header cells.
   ///
   /// If header_color is also set, this field takes precedence.
-  ColorStyle headerColorStyle;
+  ColorStyle? headerColorStyle;
 
   /// True to hide tooltips.
-  core.bool hideTooltips;
+  core.bool? hideTooltips;
 
   /// The number of additional data levels beyond the labeled levels to be shown
   /// on the treemap chart.
   ///
   /// These levels are not interactive and are shown without their labels.
   /// Defaults to 0 if not specified.
-  core.int hintedLevels;
+  core.int? hintedLevels;
 
   /// The data that contains the treemap cell labels.
-  ChartData labels;
+  ChartData? labels;
 
   /// The number of data levels to show on the treemap chart.
   ///
   /// These levels are interactive and are shown with their labels. Defaults to
   /// 2 if not specified.
-  core.int levels;
+  core.int? levels;
 
   /// The maximum possible data value.
   ///
@@ -12191,7 +12118,7 @@ class TreemapChartSpec {
   /// this value. If not specified, defaults to the actual maximum value from
   /// color_data, or the maximum value from size_data if color_data is not
   /// specified.
-  core.double maxValue;
+  core.double? maxValue;
 
   /// The minimum possible data value.
   ///
@@ -12199,10 +12126,10 @@ class TreemapChartSpec {
   /// this value. If not specified, defaults to the actual minimum value from
   /// color_data, or the minimum value from size_data if color_data is not
   /// specified.
-  core.double minValue;
+  core.double? minValue;
 
   /// The data the contains the treemap cells' parent labels.
-  ChartData parentLabels;
+  ChartData? parentLabels;
 
   /// The data that determines the size of each treemap data cell.
   ///
@@ -12210,10 +12137,10 @@ class TreemapChartSpec {
   /// non-numeric or missing data will not be rendered. If color_data is not
   /// specified, this data is used to determine data cell background colors as
   /// well.
-  ChartData sizeData;
+  ChartData? sizeData;
 
   /// The text format for all labels on the chart.
-  TextFormat textFormat;
+  TextFormat? textFormat;
 
   TreemapChartSpec();
 
@@ -12267,21 +12194,21 @@ class TreemapChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (colorData != null) 'colorData': colorData.toJson(),
-        if (colorScale != null) 'colorScale': colorScale.toJson(),
-        if (headerColor != null) 'headerColor': headerColor.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (colorData != null) 'colorData': colorData!.toJson(),
+        if (colorScale != null) 'colorScale': colorScale!.toJson(),
+        if (headerColor != null) 'headerColor': headerColor!.toJson(),
         if (headerColorStyle != null)
-          'headerColorStyle': headerColorStyle.toJson(),
-        if (hideTooltips != null) 'hideTooltips': hideTooltips,
-        if (hintedLevels != null) 'hintedLevels': hintedLevels,
-        if (labels != null) 'labels': labels.toJson(),
-        if (levels != null) 'levels': levels,
-        if (maxValue != null) 'maxValue': maxValue,
-        if (minValue != null) 'minValue': minValue,
-        if (parentLabels != null) 'parentLabels': parentLabels.toJson(),
-        if (sizeData != null) 'sizeData': sizeData.toJson(),
-        if (textFormat != null) 'textFormat': textFormat.toJson(),
+          'headerColorStyle': headerColorStyle!.toJson(),
+        if (hideTooltips != null) 'hideTooltips': hideTooltips!,
+        if (hintedLevels != null) 'hintedLevels': hintedLevels!,
+        if (labels != null) 'labels': labels!.toJson(),
+        if (levels != null) 'levels': levels!,
+        if (maxValue != null) 'maxValue': maxValue!,
+        if (minValue != null) 'minValue': minValue!,
+        if (parentLabels != null) 'parentLabels': parentLabels!.toJson(),
+        if (sizeData != null) 'sizeData': sizeData!.toJson(),
+        if (textFormat != null) 'textFormat': textFormat!.toJson(),
       };
 }
 
@@ -12295,7 +12222,7 @@ class TreemapChartSpec {
 /// formula.
 class TrimWhitespaceRequest {
   /// The range whose cells to trim.
-  GridRange range;
+  GridRange? range;
 
   TrimWhitespaceRequest();
 
@@ -12306,15 +12233,15 @@ class TrimWhitespaceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
 /// The result of trimming whitespace in cells.
 class TrimWhitespaceResponse {
   /// The number of cells that were trimmed of whitespace.
-  core.int cellsChangedCount;
+  core.int? cellsChangedCount;
 
   TrimWhitespaceResponse();
 
@@ -12324,8 +12251,8 @@ class TrimWhitespaceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cellsChangedCount != null) 'cellsChangedCount': cellsChangedCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cellsChangedCount != null) 'cellsChangedCount': cellsChangedCount!,
       };
 }
 
@@ -12335,7 +12262,7 @@ class UnmergeCellsRequest {
   ///
   /// If the range spans multiple merges, all will be unmerged. The range must
   /// not partially span any merge.
-  GridRange range;
+  GridRange? range;
 
   UnmergeCellsRequest();
 
@@ -12346,22 +12273,22 @@ class UnmergeCellsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (range != null) 'range': range.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
 /// Updates properties of the supplied banded range.
 class UpdateBandingRequest {
   /// The banded range to update with the new properties.
-  BandedRange bandedRange;
+  BandedRange? bandedRange;
 
   /// The fields that should be updated.
   ///
   /// At least one field must be specified. The root `bandedRange` is implied
   /// and should not be specified. A single `"*"` can be used as short-hand for
   /// listing every field.
-  core.String fields;
+  core.String? fields;
 
   UpdateBandingRequest();
 
@@ -12375,9 +12302,9 @@ class UpdateBandingRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bandedRange != null) 'bandedRange': bandedRange.toJson(),
-        if (fields != null) 'fields': fields,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bandedRange != null) 'bandedRange': bandedRange!.toJson(),
+        if (fields != null) 'fields': fields!,
       };
 }
 
@@ -12390,25 +12317,25 @@ class UpdateBandingRequest {
 /// }`. If you want to clear a border, explicitly set the style to NONE.
 class UpdateBordersRequest {
   /// The border to put at the bottom of the range.
-  Border bottom;
+  Border? bottom;
 
   /// The horizontal border to put within the range.
-  Border innerHorizontal;
+  Border? innerHorizontal;
 
   /// The vertical border to put within the range.
-  Border innerVertical;
+  Border? innerVertical;
 
   /// The border to put at the left of the range.
-  Border left;
+  Border? left;
 
   /// The range whose borders should be updated.
-  GridRange range;
+  GridRange? range;
 
   /// The border to put at the right of the range.
-  Border right;
+  Border? right;
 
   /// The border to put at the top of the range.
-  Border top;
+  Border? top;
 
   UpdateBordersRequest();
 
@@ -12443,15 +12370,15 @@ class UpdateBordersRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bottom != null) 'bottom': bottom.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bottom != null) 'bottom': bottom!.toJson(),
         if (innerHorizontal != null)
-          'innerHorizontal': innerHorizontal.toJson(),
-        if (innerVertical != null) 'innerVertical': innerVertical.toJson(),
-        if (left != null) 'left': left.toJson(),
-        if (range != null) 'range': range.toJson(),
-        if (right != null) 'right': right.toJson(),
-        if (top != null) 'top': top.toJson(),
+          'innerHorizontal': innerHorizontal!.toJson(),
+        if (innerVertical != null) 'innerVertical': innerVertical!.toJson(),
+        if (left != null) 'left': left!.toJson(),
+        if (range != null) 'range': range!.toJson(),
+        if (right != null) 'right': right!.toJson(),
+        if (top != null) 'top': top!.toJson(),
       };
 }
 
@@ -12462,22 +12389,22 @@ class UpdateCellsRequest {
   /// At least one field must be specified. The root is the CellData;
   /// 'row.values.' should not be specified. A single `"*"` can be used as
   /// short-hand for listing every field.
-  core.String fields;
+  core.String? fields;
 
   /// The range to write data to.
   ///
   /// If the data in rows does not cover the entire requested range, the fields
   /// matching those set in fields will be cleared.
-  GridRange range;
+  GridRange? range;
 
   /// The data to write.
-  core.List<RowData> rows;
+  core.List<RowData>? rows;
 
   /// The coordinate to start writing data at.
   ///
   /// Any number of rows and columns (including a different number of columns
   /// per row) may be written.
-  GridCoordinate start;
+  GridCoordinate? start;
 
   UpdateCellsRequest();
 
@@ -12501,11 +12428,11 @@ class UpdateCellsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (range != null) 'range': range.toJson(),
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
-        if (start != null) 'start': start.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (range != null) 'range': range!.toJson(),
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
+        if (start != null) 'start': start!.toJson(),
       };
 }
 
@@ -12515,10 +12442,10 @@ class UpdateCellsRequest {
 /// UpdateEmbeddedObjectPositionRequest.)
 class UpdateChartSpecRequest {
   /// The ID of the chart to update.
-  core.int chartId;
+  core.int? chartId;
 
   /// The specification to apply to the chart.
-  ChartSpec spec;
+  ChartSpec? spec;
 
   UpdateChartSpecRequest();
 
@@ -12532,9 +12459,9 @@ class UpdateChartSpecRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (chartId != null) 'chartId': chartId,
-        if (spec != null) 'spec': spec.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (chartId != null) 'chartId': chartId!,
+        if (spec != null) 'spec': spec!.toJson(),
       };
 }
 
@@ -12542,18 +12469,18 @@ class UpdateChartSpecRequest {
 /// format rule to another index.
 class UpdateConditionalFormatRuleRequest {
   /// The zero-based index of the rule that should be replaced or moved.
-  core.int index;
+  core.int? index;
 
   /// The zero-based new index the rule should end up at.
-  core.int newIndex;
+  core.int? newIndex;
 
   /// The rule that should replace the rule at the given index.
-  ConditionalFormatRule rule;
+  ConditionalFormatRule? rule;
 
   /// The sheet of the rule to move.
   ///
   /// Required if new_index is set, unused otherwise.
-  core.int sheetId;
+  core.int? sheetId;
 
   UpdateConditionalFormatRuleRequest();
 
@@ -12573,32 +12500,32 @@ class UpdateConditionalFormatRuleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (index != null) 'index': index,
-        if (newIndex != null) 'newIndex': newIndex,
-        if (rule != null) 'rule': rule.toJson(),
-        if (sheetId != null) 'sheetId': sheetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (index != null) 'index': index!,
+        if (newIndex != null) 'newIndex': newIndex!,
+        if (rule != null) 'rule': rule!.toJson(),
+        if (sheetId != null) 'sheetId': sheetId!,
       };
 }
 
 /// The result of updating a conditional format rule.
 class UpdateConditionalFormatRuleResponse {
   /// The index of the new rule.
-  core.int newIndex;
+  core.int? newIndex;
 
   /// The new rule that replaced the old rule (if replacing), or the rule that
   /// was moved (if moved)
-  ConditionalFormatRule newRule;
+  ConditionalFormatRule? newRule;
 
   /// The old index of the rule.
   ///
   /// Not set if a rule was replaced (because it is the same as new_index).
-  core.int oldIndex;
+  core.int? oldIndex;
 
   /// The old (deleted) rule.
   ///
   /// Not set if a rule was moved (because it is the same as new_rule).
-  ConditionalFormatRule oldRule;
+  ConditionalFormatRule? oldRule;
 
   UpdateConditionalFormatRuleResponse();
 
@@ -12619,11 +12546,11 @@ class UpdateConditionalFormatRuleResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (newIndex != null) 'newIndex': newIndex,
-        if (newRule != null) 'newRule': newRule.toJson(),
-        if (oldIndex != null) 'oldIndex': oldIndex,
-        if (oldRule != null) 'oldRule': oldRule.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (newIndex != null) 'newIndex': newIndex!,
+        if (newRule != null) 'newRule': newRule!.toJson(),
+        if (oldIndex != null) 'oldIndex': oldIndex!,
+        if (oldRule != null) 'oldRule': oldRule!.toJson(),
       };
 }
 
@@ -12634,14 +12561,14 @@ class UpdateConditionalFormatRuleResponse {
 /// source. The request requires an additional `bigquery.readonly` OAuth scope.
 class UpdateDataSourceRequest {
   /// The data source to update.
-  DataSource dataSource;
+  DataSource? dataSource;
 
   /// The fields that should be updated.
   ///
   /// At least one field must be specified. The root `dataSource` is implied and
   /// should not be specified. A single `"*"` can be used as short-hand for
   /// listing every field.
-  core.String fields;
+  core.String? fields;
 
   UpdateDataSourceRequest();
 
@@ -12655,19 +12582,19 @@ class UpdateDataSourceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataSource != null) 'dataSource': dataSource.toJson(),
-        if (fields != null) 'fields': fields,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataSource != null) 'dataSource': dataSource!.toJson(),
+        if (fields != null) 'fields': fields!,
       };
 }
 
 /// The response from updating data source.
 class UpdateDataSourceResponse {
   /// The data execution status.
-  DataExecutionStatus dataExecutionStatus;
+  DataExecutionStatus? dataExecutionStatus;
 
   /// The updated data source.
-  DataSource dataSource;
+  DataSource? dataSource;
 
   UpdateDataSourceResponse();
 
@@ -12682,10 +12609,10 @@ class UpdateDataSourceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataExecutionStatus != null)
-          'dataExecutionStatus': dataExecutionStatus.toJson(),
-        if (dataSource != null) 'dataSource': dataSource.toJson(),
+          'dataExecutionStatus': dataExecutionStatus!.toJson(),
+        if (dataSource != null) 'dataSource': dataSource!.toJson(),
       };
 }
 
@@ -12697,18 +12624,18 @@ class UpdateDataSourceResponse {
 /// specify at least one DataFilter matching the metadata they wish to update.
 class UpdateDeveloperMetadataRequest {
   /// The filters matching the developer metadata entries to update.
-  core.List<DataFilter> dataFilters;
+  core.List<DataFilter>? dataFilters;
 
   /// The value that all metadata matched by the data filters will be updated
   /// to.
-  DeveloperMetadata developerMetadata;
+  DeveloperMetadata? developerMetadata;
 
   /// The fields that should be updated.
   ///
   /// At least one field must be specified. The root `developerMetadata` is
   /// implied and should not be specified. A single `"*"` can be used as
   /// short-hand for listing every field.
-  core.String fields;
+  core.String? fields;
 
   UpdateDeveloperMetadataRequest();
 
@@ -12728,19 +12655,19 @@ class UpdateDeveloperMetadataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataFilters != null)
-          'dataFilters': dataFilters.map((value) => value.toJson()).toList(),
+          'dataFilters': dataFilters!.map((value) => value.toJson()).toList(),
         if (developerMetadata != null)
-          'developerMetadata': developerMetadata.toJson(),
-        if (fields != null) 'fields': fields,
+          'developerMetadata': developerMetadata!.toJson(),
+        if (fields != null) 'fields': fields!,
       };
 }
 
 /// The response from updating developer metadata.
 class UpdateDeveloperMetadataResponse {
   /// The updated developer metadata.
-  core.List<DeveloperMetadata> developerMetadata;
+  core.List<DeveloperMetadata>? developerMetadata;
 
   UpdateDeveloperMetadataResponse();
 
@@ -12753,10 +12680,10 @@ class UpdateDeveloperMetadataResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (developerMetadata != null)
           'developerMetadata':
-              developerMetadata.map((value) => value.toJson()).toList(),
+              developerMetadata!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -12766,14 +12693,14 @@ class UpdateDimensionGroupRequest {
   ///
   /// The range and depth of the group should specify a valid group on the
   /// sheet, and all other fields updated.
-  DimensionGroup dimensionGroup;
+  DimensionGroup? dimensionGroup;
 
   /// The fields that should be updated.
   ///
   /// At least one field must be specified. The root `dimensionGroup` is implied
   /// and should not be specified. A single `"*"` can be used as short-hand for
   /// listing every field.
-  core.String fields;
+  core.String? fields;
 
   UpdateDimensionGroupRequest();
 
@@ -12787,29 +12714,29 @@ class UpdateDimensionGroupRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimensionGroup != null) 'dimensionGroup': dimensionGroup.toJson(),
-        if (fields != null) 'fields': fields,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimensionGroup != null) 'dimensionGroup': dimensionGroup!.toJson(),
+        if (fields != null) 'fields': fields!,
       };
 }
 
 /// Updates properties of dimensions within the specified range.
 class UpdateDimensionPropertiesRequest {
   /// The columns on a data source sheet to update.
-  DataSourceSheetDimensionRange dataSourceSheetRange;
+  DataSourceSheetDimensionRange? dataSourceSheetRange;
 
   /// The fields that should be updated.
   ///
   /// At least one field must be specified. The root `properties` is implied and
   /// should not be specified. A single `"*"` can be used as short-hand for
   /// listing every field.
-  core.String fields;
+  core.String? fields;
 
   /// Properties to update.
-  DimensionProperties properties;
+  DimensionProperties? properties;
 
   /// The rows or columns to update.
-  DimensionRange range;
+  DimensionRange? range;
 
   UpdateDimensionPropertiesRequest();
 
@@ -12831,29 +12758,29 @@ class UpdateDimensionPropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataSourceSheetRange != null)
-          'dataSourceSheetRange': dataSourceSheetRange.toJson(),
-        if (fields != null) 'fields': fields,
-        if (properties != null) 'properties': properties.toJson(),
-        if (range != null) 'range': range.toJson(),
+          'dataSourceSheetRange': dataSourceSheetRange!.toJson(),
+        if (fields != null) 'fields': fields!,
+        if (properties != null) 'properties': properties!.toJson(),
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
 /// Updates an embedded object's border property.
 class UpdateEmbeddedObjectBorderRequest {
   /// The border that applies to the embedded object.
-  EmbeddedObjectBorder border;
+  EmbeddedObjectBorder? border;
 
   /// The fields that should be updated.
   ///
   /// At least one field must be specified. The root `border` is implied and
   /// should not be specified. A single `"*"` can be used as short-hand for
   /// listing every field.
-  core.String fields;
+  core.String? fields;
 
   /// The ID of the embedded object to update.
-  core.int objectId;
+  core.int? objectId;
 
   UpdateEmbeddedObjectBorderRequest();
 
@@ -12870,10 +12797,10 @@ class UpdateEmbeddedObjectBorderRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (border != null) 'border': border.toJson(),
-        if (fields != null) 'fields': fields,
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (border != null) 'border': border!.toJson(),
+        if (fields != null) 'fields': fields!,
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
@@ -12887,17 +12814,17 @@ class UpdateEmbeddedObjectPositionRequest {
   /// one field must be specified. The root `newPosition.overlayPosition` is
   /// implied and should not be specified. A single `"*"` can be used as
   /// short-hand for listing every field.
-  core.String fields;
+  core.String? fields;
 
   /// An explicit position to move the embedded object to.
   ///
   /// If newPosition.sheetId is set, a new sheet with that ID will be created.
   /// If newPosition.newSheet is set to true, a new sheet will be created with
   /// an ID that will be chosen for you.
-  EmbeddedObjectPosition newPosition;
+  EmbeddedObjectPosition? newPosition;
 
   /// The ID of the object to moved.
-  core.int objectId;
+  core.int? objectId;
 
   UpdateEmbeddedObjectPositionRequest();
 
@@ -12914,17 +12841,17 @@ class UpdateEmbeddedObjectPositionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (newPosition != null) 'newPosition': newPosition.toJson(),
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (newPosition != null) 'newPosition': newPosition!.toJson(),
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
 /// The result of updating an embedded object's position.
 class UpdateEmbeddedObjectPositionResponse {
   /// The new position of the embedded object.
-  EmbeddedObjectPosition position;
+  EmbeddedObjectPosition? position;
 
   UpdateEmbeddedObjectPositionResponse();
 
@@ -12935,8 +12862,8 @@ class UpdateEmbeddedObjectPositionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (position != null) 'position': position.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (position != null) 'position': position!.toJson(),
       };
 }
 
@@ -12947,10 +12874,10 @@ class UpdateFilterViewRequest {
   /// At least one field must be specified. The root `filter` is implied and
   /// should not be specified. A single `"*"` can be used as short-hand for
   /// listing every field.
-  core.String fields;
+  core.String? fields;
 
   /// The new properties of the filter view.
-  FilterView filter;
+  FilterView? filter;
 
   UpdateFilterViewRequest();
 
@@ -12964,9 +12891,9 @@ class UpdateFilterViewRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (filter != null) 'filter': filter.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (filter != null) 'filter': filter!.toJson(),
       };
 }
 
@@ -12977,10 +12904,10 @@ class UpdateNamedRangeRequest {
   /// At least one field must be specified. The root `namedRange` is implied and
   /// should not be specified. A single `"*"` can be used as short-hand for
   /// listing every field.
-  core.String fields;
+  core.String? fields;
 
   /// The named range to update with the new properties.
-  NamedRange namedRange;
+  NamedRange? namedRange;
 
   UpdateNamedRangeRequest();
 
@@ -12994,9 +12921,9 @@ class UpdateNamedRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (namedRange != null) 'namedRange': namedRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (namedRange != null) 'namedRange': namedRange!.toJson(),
       };
 }
 
@@ -13007,10 +12934,10 @@ class UpdateProtectedRangeRequest {
   /// At least one field must be specified. The root `protectedRange` is implied
   /// and should not be specified. A single `"*"` can be used as short-hand for
   /// listing every field.
-  core.String fields;
+  core.String? fields;
 
   /// The protected range to update with the new properties.
-  ProtectedRange protectedRange;
+  ProtectedRange? protectedRange;
 
   UpdateProtectedRangeRequest();
 
@@ -13024,9 +12951,9 @@ class UpdateProtectedRangeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (protectedRange != null) 'protectedRange': protectedRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (protectedRange != null) 'protectedRange': protectedRange!.toJson(),
       };
 }
 
@@ -13037,10 +12964,10 @@ class UpdateSheetPropertiesRequest {
   /// At least one field must be specified. The root `properties` is implied and
   /// should not be specified. A single `"*"` can be used as short-hand for
   /// listing every field.
-  core.String fields;
+  core.String? fields;
 
   /// The properties to update.
-  SheetProperties properties;
+  SheetProperties? properties;
 
   UpdateSheetPropertiesRequest();
 
@@ -13054,9 +12981,9 @@ class UpdateSheetPropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (properties != null) 'properties': properties.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (properties != null) 'properties': properties!.toJson(),
       };
 }
 
@@ -13070,13 +12997,13 @@ class UpdateSlicerSpecRequest {
   /// At least one field must be specified. The root \`SlicerSpec\` is implied
   /// and should not be specified. A single "*"\` can be used as short-hand for
   /// listing every field.
-  core.String fields;
+  core.String? fields;
 
   /// The id of the slicer to update.
-  core.int slicerId;
+  core.int? slicerId;
 
   /// The specification to apply to the slicer.
-  SlicerSpec spec;
+  SlicerSpec? spec;
 
   UpdateSlicerSpecRequest();
 
@@ -13093,10 +13020,10 @@ class UpdateSlicerSpecRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (slicerId != null) 'slicerId': slicerId,
-        if (spec != null) 'spec': spec.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (slicerId != null) 'slicerId': slicerId!,
+        if (spec != null) 'spec': spec!.toJson(),
       };
 }
 
@@ -13107,10 +13034,10 @@ class UpdateSpreadsheetPropertiesRequest {
   /// At least one field must be specified. The root 'properties' is implied and
   /// should not be specified. A single `"*"` can be used as short-hand for
   /// listing every field.
-  core.String fields;
+  core.String? fields;
 
   /// The properties to update.
-  SpreadsheetProperties properties;
+  SpreadsheetProperties? properties;
 
   UpdateSpreadsheetPropertiesRequest();
 
@@ -13124,9 +13051,9 @@ class UpdateSpreadsheetPropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (properties != null) 'properties': properties.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (properties != null) 'properties': properties!.toJson(),
       };
 }
 
@@ -13134,26 +13061,26 @@ class UpdateSpreadsheetPropertiesRequest {
 /// spreadsheet.
 class UpdateValuesByDataFilterResponse {
   /// The data filter that selected the range that was updated.
-  DataFilter dataFilter;
+  DataFilter? dataFilter;
 
   /// The number of cells updated.
-  core.int updatedCells;
+  core.int? updatedCells;
 
   /// The number of columns where at least one cell in the column was updated.
-  core.int updatedColumns;
+  core.int? updatedColumns;
 
   /// The values of the cells in the range matched by the dataFilter after all
   /// updates were applied.
   ///
   /// This is only included if the request's `includeValuesInResponse` field was
   /// `true`.
-  ValueRange updatedData;
+  ValueRange? updatedData;
 
   /// The range (in A1 notation) that updates were applied to.
-  core.String updatedRange;
+  core.String? updatedRange;
 
   /// The number of rows where at least one cell in the row was updated.
-  core.int updatedRows;
+  core.int? updatedRows;
 
   UpdateValuesByDataFilterResponse();
 
@@ -13180,38 +13107,38 @@ class UpdateValuesByDataFilterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataFilter != null) 'dataFilter': dataFilter.toJson(),
-        if (updatedCells != null) 'updatedCells': updatedCells,
-        if (updatedColumns != null) 'updatedColumns': updatedColumns,
-        if (updatedData != null) 'updatedData': updatedData.toJson(),
-        if (updatedRange != null) 'updatedRange': updatedRange,
-        if (updatedRows != null) 'updatedRows': updatedRows,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataFilter != null) 'dataFilter': dataFilter!.toJson(),
+        if (updatedCells != null) 'updatedCells': updatedCells!,
+        if (updatedColumns != null) 'updatedColumns': updatedColumns!,
+        if (updatedData != null) 'updatedData': updatedData!.toJson(),
+        if (updatedRange != null) 'updatedRange': updatedRange!,
+        if (updatedRows != null) 'updatedRows': updatedRows!,
       };
 }
 
 /// The response when updating a range of values in a spreadsheet.
 class UpdateValuesResponse {
   /// The spreadsheet the updates were applied to.
-  core.String spreadsheetId;
+  core.String? spreadsheetId;
 
   /// The number of cells updated.
-  core.int updatedCells;
+  core.int? updatedCells;
 
   /// The number of columns where at least one cell in the column was updated.
-  core.int updatedColumns;
+  core.int? updatedColumns;
 
   /// The values of the cells after updates were applied.
   ///
   /// This is only included if the request's `includeValuesInResponse` field was
   /// `true`.
-  ValueRange updatedData;
+  ValueRange? updatedData;
 
   /// The range (in A1 notation) that updates were applied to.
-  core.String updatedRange;
+  core.String? updatedRange;
 
   /// The number of rows where at least one cell in the row was updated.
-  core.int updatedRows;
+  core.int? updatedRows;
 
   UpdateValuesResponse();
 
@@ -13237,13 +13164,13 @@ class UpdateValuesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
-        if (updatedCells != null) 'updatedCells': updatedCells,
-        if (updatedColumns != null) 'updatedColumns': updatedColumns,
-        if (updatedData != null) 'updatedData': updatedData.toJson(),
-        if (updatedRange != null) 'updatedRange': updatedRange,
-        if (updatedRows != null) 'updatedRows': updatedRows,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+        if (updatedCells != null) 'updatedCells': updatedCells!,
+        if (updatedColumns != null) 'updatedColumns': updatedColumns!,
+        if (updatedData != null) 'updatedData': updatedData!.toJson(),
+        if (updatedRange != null) 'updatedRange': updatedRange!,
+        if (updatedRows != null) 'updatedRows': updatedRows!,
       };
 }
 
@@ -13263,7 +13190,7 @@ class ValueRange {
   /// - "DIMENSION_UNSPECIFIED" : The default value, do not use.
   /// - "ROWS" : Operates on the rows of a sheet.
   /// - "COLUMNS" : Operates on the columns of a sheet.
-  core.String majorDimension;
+  core.String? majorDimension;
 
   /// The range the values cover, in A1 notation.
   ///
@@ -13271,7 +13198,7 @@ class ValueRange {
   /// the values will exclude trailing rows and columns. When appending values,
   /// this field represents the range to search for a table, after which values
   /// will be appended.
-  core.String range;
+  core.String? range;
 
   /// The data that was read or to be written.
   ///
@@ -13284,7 +13211,7 @@ class ValueRange {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.List<core.Object>> values;
+  core.List<core.List<core.Object>>? values;
 
   ValueRange();
 
@@ -13304,25 +13231,25 @@ class ValueRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (majorDimension != null) 'majorDimension': majorDimension,
-        if (range != null) 'range': range,
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (majorDimension != null) 'majorDimension': majorDimension!,
+        if (range != null) 'range': range!,
+        if (values != null) 'values': values!,
       };
 }
 
 /// Styles for a waterfall chart column.
 class WaterfallChartColumnStyle {
   /// The color of the column.
-  Color color;
+  Color? color;
 
   /// The color of the column.
   ///
   /// If color is also set, this field takes precedence.
-  ColorStyle colorStyle;
+  ColorStyle? colorStyle;
 
   /// The label of the column's legend.
-  core.String label;
+  core.String? label;
 
   WaterfallChartColumnStyle();
 
@@ -13340,10 +13267,10 @@ class WaterfallChartColumnStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (color != null) 'color': color.toJson(),
-        if (colorStyle != null) 'colorStyle': colorStyle.toJson(),
-        if (label != null) 'label': label,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (color != null) 'color': color!.toJson(),
+        if (colorStyle != null) 'colorStyle': colorStyle!.toJson(),
+        if (label != null) 'label': label!,
       };
 }
 
@@ -13352,10 +13279,10 @@ class WaterfallChartCustomSubtotal {
   /// True if the data point at subtotal_index is the subtotal.
   ///
   /// If false, the subtotal will be computed and appear after the data point.
-  core.bool dataIsSubtotal;
+  core.bool? dataIsSubtotal;
 
   /// A label for the subtotal column.
-  core.String label;
+  core.String? label;
 
   /// The 0-based index of a data point within the series.
   ///
@@ -13366,7 +13293,7 @@ class WaterfallChartCustomSubtotal {
   /// three data points, their indices will always be 0, 1, and 2, regardless of
   /// how many subtotals exist on the series or what data points they are
   /// associated with.
-  core.int subtotalIndex;
+  core.int? subtotalIndex;
 
   WaterfallChartCustomSubtotal();
 
@@ -13382,20 +13309,20 @@ class WaterfallChartCustomSubtotal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataIsSubtotal != null) 'dataIsSubtotal': dataIsSubtotal,
-        if (label != null) 'label': label,
-        if (subtotalIndex != null) 'subtotalIndex': subtotalIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataIsSubtotal != null) 'dataIsSubtotal': dataIsSubtotal!,
+        if (label != null) 'label': label!,
+        if (subtotalIndex != null) 'subtotalIndex': subtotalIndex!,
       };
 }
 
 /// The domain of a waterfall chart.
 class WaterfallChartDomain {
   /// The data of the WaterfallChartDomain.
-  ChartData data;
+  ChartData? data;
 
   /// True to reverse the order of the domain values (horizontal axis).
-  core.bool reversed;
+  core.bool? reversed;
 
   WaterfallChartDomain();
 
@@ -13409,9 +13336,9 @@ class WaterfallChartDomain {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data.toJson(),
-        if (reversed != null) 'reversed': reversed,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!.toJson(),
+        if (reversed != null) 'reversed': reversed!,
       };
 }
 
@@ -13421,28 +13348,28 @@ class WaterfallChartSeries {
   ///
   /// The order in which subtotals are defined is not significant. Only one
   /// subtotal may be defined for each data point.
-  core.List<WaterfallChartCustomSubtotal> customSubtotals;
+  core.List<WaterfallChartCustomSubtotal>? customSubtotals;
 
   /// The data being visualized in this series.
-  ChartData data;
+  ChartData? data;
 
   /// Information about the data labels for this series.
-  DataLabel dataLabel;
+  DataLabel? dataLabel;
 
   /// True to hide the subtotal column from the end of the series.
   ///
   /// By default, a subtotal column will appear at the end of each series.
   /// Setting this field to true will hide that subtotal column for this series.
-  core.bool hideTrailingSubtotal;
+  core.bool? hideTrailingSubtotal;
 
   /// Styles for all columns in this series with negative values.
-  WaterfallChartColumnStyle negativeColumnsStyle;
+  WaterfallChartColumnStyle? negativeColumnsStyle;
 
   /// Styles for all columns in this series with positive values.
-  WaterfallChartColumnStyle positiveColumnsStyle;
+  WaterfallChartColumnStyle? positiveColumnsStyle;
 
   /// Styles for all subtotal columns in this series.
-  WaterfallChartColumnStyle subtotalColumnsStyle;
+  WaterfallChartColumnStyle? subtotalColumnsStyle;
 
   WaterfallChartSeries();
 
@@ -13479,39 +13406,39 @@ class WaterfallChartSeries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customSubtotals != null)
           'customSubtotals':
-              customSubtotals.map((value) => value.toJson()).toList(),
-        if (data != null) 'data': data.toJson(),
-        if (dataLabel != null) 'dataLabel': dataLabel.toJson(),
+              customSubtotals!.map((value) => value.toJson()).toList(),
+        if (data != null) 'data': data!.toJson(),
+        if (dataLabel != null) 'dataLabel': dataLabel!.toJson(),
         if (hideTrailingSubtotal != null)
-          'hideTrailingSubtotal': hideTrailingSubtotal,
+          'hideTrailingSubtotal': hideTrailingSubtotal!,
         if (negativeColumnsStyle != null)
-          'negativeColumnsStyle': negativeColumnsStyle.toJson(),
+          'negativeColumnsStyle': negativeColumnsStyle!.toJson(),
         if (positiveColumnsStyle != null)
-          'positiveColumnsStyle': positiveColumnsStyle.toJson(),
+          'positiveColumnsStyle': positiveColumnsStyle!.toJson(),
         if (subtotalColumnsStyle != null)
-          'subtotalColumnsStyle': subtotalColumnsStyle.toJson(),
+          'subtotalColumnsStyle': subtotalColumnsStyle!.toJson(),
       };
 }
 
 /// A waterfall chart.
 class WaterfallChartSpec {
   /// The line style for the connector lines.
-  LineStyle connectorLineStyle;
+  LineStyle? connectorLineStyle;
 
   /// The domain data (horizontal axis) for the waterfall chart.
-  WaterfallChartDomain domain;
+  WaterfallChartDomain? domain;
 
   /// True to interpret the first value as a total.
-  core.bool firstValueIsTotal;
+  core.bool? firstValueIsTotal;
 
   /// True to hide connector lines between columns.
-  core.bool hideConnectorLines;
+  core.bool? hideConnectorLines;
 
   /// The data this waterfall chart is visualizing.
-  core.List<WaterfallChartSeries> series;
+  core.List<WaterfallChartSeries>? series;
 
   /// The stacked type.
   /// Possible string values are:
@@ -13519,7 +13446,7 @@ class WaterfallChartSpec {
   /// - "STACKED" : Values corresponding to the same domain (horizontal axis)
   /// value will be stacked vertically.
   /// - "SEQUENTIAL" : Series will spread out along the horizontal axis.
-  core.String stackedType;
+  core.String? stackedType;
 
   /// Controls whether to display additional data labels on stacked charts which
   /// sum the total value of all stacked values at each value along the domain
@@ -13527,7 +13454,7 @@ class WaterfallChartSpec {
   ///
   /// stacked_type must be STACKED and neither CUSTOM nor placement can be set
   /// on the total_data_label.
-  DataLabel totalDataLabel;
+  DataLabel? totalDataLabel;
 
   WaterfallChartSpec();
 
@@ -13561,16 +13488,16 @@ class WaterfallChartSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (connectorLineStyle != null)
-          'connectorLineStyle': connectorLineStyle.toJson(),
-        if (domain != null) 'domain': domain.toJson(),
-        if (firstValueIsTotal != null) 'firstValueIsTotal': firstValueIsTotal,
+          'connectorLineStyle': connectorLineStyle!.toJson(),
+        if (domain != null) 'domain': domain!.toJson(),
+        if (firstValueIsTotal != null) 'firstValueIsTotal': firstValueIsTotal!,
         if (hideConnectorLines != null)
-          'hideConnectorLines': hideConnectorLines,
+          'hideConnectorLines': hideConnectorLines!,
         if (series != null)
-          'series': series.map((value) => value.toJson()).toList(),
-        if (stackedType != null) 'stackedType': stackedType,
-        if (totalDataLabel != null) 'totalDataLabel': totalDataLabel.toJson(),
+          'series': series!.map((value) => value.toJson()).toList(),
+        if (stackedType != null) 'stackedType': stackedType!,
+        if (totalDataLabel != null) 'totalDataLabel': totalDataLabel!.toJson(),
       };
 }

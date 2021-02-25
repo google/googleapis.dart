@@ -101,11 +101,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -145,14 +142,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -199,11 +193,8 @@ class ProjectsLocationsAcceleratorTypesResource {
   /// this method will complete with the same error.
   async.Future<AcceleratorType> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -247,15 +238,12 @@ class ProjectsLocationsAcceleratorTypesResource {
   /// this method will complete with the same error.
   async.Future<ListAcceleratorTypesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -308,14 +296,10 @@ class ProjectsLocationsNodesResource {
   async.Future<Operation> create(
     Node request,
     core.String parent, {
-    core.String nodeId,
-    core.String $fields,
+    core.String? nodeId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (nodeId != null) 'nodeId': [nodeId],
       if ($fields != null) 'fields': [$fields],
@@ -353,11 +337,8 @@ class ProjectsLocationsNodesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -392,11 +373,8 @@ class ProjectsLocationsNodesResource {
   /// this method will complete with the same error.
   async.Future<Node> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -435,13 +413,10 @@ class ProjectsLocationsNodesResource {
   /// this method will complete with the same error.
   async.Future<ListNodesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -483,13 +458,9 @@ class ProjectsLocationsNodesResource {
   async.Future<Operation> reimage(
     ReimageNodeRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -529,13 +500,9 @@ class ProjectsLocationsNodesResource {
   async.Future<Operation> start(
     StartNodeRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -575,13 +542,9 @@ class ProjectsLocationsNodesResource {
   async.Future<Operation> stop(
     StopNodeRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -634,11 +597,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -678,11 +638,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -720,11 +677,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -773,14 +727,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -827,11 +778,8 @@ class ProjectsLocationsTensorflowVersionsResource {
   /// this method will complete with the same error.
   async.Future<TensorFlowVersion> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -875,15 +823,12 @@ class ProjectsLocationsTensorflowVersionsResource {
   /// this method will complete with the same error.
   async.Future<ListTensorFlowVersionsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -909,10 +854,10 @@ class ProjectsLocationsTensorflowVersionsResource {
 /// A accelerator type that a Node can be configured with.
 class AcceleratorType {
   /// The resource name.
-  core.String name;
+  core.String? name;
 
   /// the accelerator type.
-  core.String type;
+  core.String? type;
 
   AcceleratorType();
 
@@ -925,9 +870,9 @@ class AcceleratorType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -945,19 +890,19 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response for ListAcceleratorTypes.
 class ListAcceleratorTypesResponse {
   /// The listed nodes.
-  core.List<AcceleratorType> acceleratorTypes;
+  core.List<AcceleratorType>? acceleratorTypes;
 
   /// The next page token or empty if none.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListAcceleratorTypesResponse();
 
@@ -978,22 +923,22 @@ class ListAcceleratorTypesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (acceleratorTypes != null)
           'acceleratorTypes':
-              acceleratorTypes.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+              acceleratorTypes!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -1009,23 +954,23 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response for ListNodes.
 class ListNodesResponse {
   /// The next page token or empty if none.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The listed nodes.
-  core.List<Node> nodes;
+  core.List<Node>? nodes;
 
   /// Locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListNodesResponse();
 
@@ -1046,21 +991,21 @@ class ListNodesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (nodes != null)
-          'nodes': nodes.map((value) => value.toJson()).toList(),
-        if (unreachable != null) 'unreachable': unreachable,
+          'nodes': nodes!.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -1076,23 +1021,23 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response for ListTensorFlowVersions.
 class ListTensorFlowVersionsResponse {
   /// The next page token or empty if none.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The listed nodes.
-  core.List<TensorFlowVersion> tensorflowVersions;
+  core.List<TensorFlowVersion>? tensorflowVersions;
 
   /// Locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListTensorFlowVersionsResponse();
 
@@ -1113,12 +1058,12 @@ class ListTensorFlowVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (tensorflowVersions != null)
           'tensorflowVersions':
-              tensorflowVersions.map((value) => value.toJson()).toList(),
-        if (unreachable != null) 'unreachable': unreachable,
+              tensorflowVersions!.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -1127,17 +1072,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -1145,12 +1090,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -1184,22 +1129,22 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// A network endpoint over which a TPU worker can be reached.
 class NetworkEndpoint {
   /// The IP address of this network endpoint.
-  core.String ipAddress;
+  core.String? ipAddress;
 
   /// The port of this network endpoint.
-  core.int port;
+  core.int? port;
 
   NetworkEndpoint();
 
@@ -1212,9 +1157,9 @@ class NetworkEndpoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ipAddress != null) 'ipAddress': ipAddress,
-        if (port != null) 'port': port,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (port != null) 'port': port!,
       };
 }
 
@@ -1223,7 +1168,7 @@ class Node {
   /// The type of hardware accelerators associated with this node.
   ///
   /// Required.
-  core.String acceleratorType;
+  core.String? acceleratorType;
 
   /// The CIDR block that the TPU node will use when selecting an IP address.
   ///
@@ -1234,17 +1179,17 @@ class Node {
   /// conflicts with any subnetworks in the user's provided network, or the
   /// provided network is peered with another network that is using that CIDR
   /// block.
-  core.String cidrBlock;
+  core.String? cidrBlock;
 
   /// The time when the node was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The user-supplied description of the TPU.
   ///
   /// Maximum of 512 characters.
-  core.String description;
+  core.String? description;
 
   /// The health status of the TPU node.
   /// Possible string values are:
@@ -1256,13 +1201,13 @@ class Node {
   /// - "UNHEALTHY_TENSORFLOW" : The in-guest ML stack is unhealthy.
   /// - "UNHEALTHY_MAINTENANCE" : The node is under maintenance/priority boost
   /// caused rescheduling and will resume running once rescheduled.
-  core.String health;
+  core.String? health;
 
   /// If this field is populated, it contains a description of why the TPU Node
   /// is unhealthy.
   ///
   /// Output only.
-  core.String healthDescription;
+  core.String? healthDescription;
 
   /// DEPRECATED! Use network_endpoints instead.
   ///
@@ -1270,22 +1215,22 @@ class Node {
   /// instances.
   ///
   /// Output only.
-  core.String ipAddress;
+  core.String? ipAddress;
 
   /// Resource labels to represent user-provided metadata.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The name of the TPU
   ///
   /// Output only. Immutable.
-  core.String name;
+  core.String? name;
 
   /// The name of a network they wish to peer the TPU node to.
   ///
   /// It must be a preexisting Compute Engine network inside of the project on
   /// which this API has been activated. If none is provided, "default" will be
   /// used.
-  core.String network;
+  core.String? network;
 
   /// The network endpoints where TPU workers can be accessed and sent work.
   ///
@@ -1293,17 +1238,17 @@ class Node {
   /// entry in this map first.
   ///
   /// Output only.
-  core.List<NetworkEndpoint> networkEndpoints;
+  core.List<NetworkEndpoint>? networkEndpoints;
 
   /// DEPRECATED! Use network_endpoints instead.
   ///
   /// The network port for the TPU Node as visible to Compute Engine instances.
   ///
   /// Output only.
-  core.String port;
+  core.String? port;
 
   /// The scheduling options for this node.
-  SchedulingConfig schedulingConfig;
+  SchedulingConfig? schedulingConfig;
 
   /// The service account used to run the tensor flow services within the node.
   ///
@@ -1312,7 +1257,7 @@ class Node {
   /// that data.
   ///
   /// Output only.
-  core.String serviceAccount;
+  core.String? serviceAccount;
 
   /// The current state for the TPU Node.
   ///
@@ -1336,17 +1281,17 @@ class Node {
   /// - "HIDING" : TPU node is currently hiding.
   /// - "HIDDEN" : TPU node has been hidden.
   /// - "UNHIDING" : TPU node is currently unhiding.
-  core.String state;
+  core.String? state;
 
   /// The Symptoms that have occurred to the TPU Node.
   ///
   /// Output only.
-  core.List<Symptom> symptoms;
+  core.List<Symptom>? symptoms;
 
   /// The version of Tensorflow running in the Node.
   ///
   /// Required.
-  core.String tensorflowVersion;
+  core.String? tensorflowVersion;
 
   /// Whether the VPC peering for the node is set up through Service Networking
   /// API.
@@ -1355,7 +1300,7 @@ class Node {
   /// field is set, cidr_block field should not be specified. If the network,
   /// that you want to peer the TPU Node to, is Shared VPC networks, the node
   /// must be created with this this field enabled.
-  core.bool useServiceNetworking;
+  core.bool? useServiceNetworking;
 
   Node();
 
@@ -1429,30 +1374,30 @@ class Node {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (acceleratorType != null) 'acceleratorType': acceleratorType,
-        if (cidrBlock != null) 'cidrBlock': cidrBlock,
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (health != null) 'health': health,
-        if (healthDescription != null) 'healthDescription': healthDescription,
-        if (ipAddress != null) 'ipAddress': ipAddress,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (network != null) 'network': network,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (acceleratorType != null) 'acceleratorType': acceleratorType!,
+        if (cidrBlock != null) 'cidrBlock': cidrBlock!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (health != null) 'health': health!,
+        if (healthDescription != null) 'healthDescription': healthDescription!,
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
         if (networkEndpoints != null)
           'networkEndpoints':
-              networkEndpoints.map((value) => value.toJson()).toList(),
-        if (port != null) 'port': port,
+              networkEndpoints!.map((value) => value.toJson()).toList(),
+        if (port != null) 'port': port!,
         if (schedulingConfig != null)
-          'schedulingConfig': schedulingConfig.toJson(),
-        if (serviceAccount != null) 'serviceAccount': serviceAccount,
-        if (state != null) 'state': state,
+          'schedulingConfig': schedulingConfig!.toJson(),
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (state != null) 'state': state!,
         if (symptoms != null)
-          'symptoms': symptoms.map((value) => value.toJson()).toList(),
-        if (tensorflowVersion != null) 'tensorflowVersion': tensorflowVersion,
+          'symptoms': symptoms!.map((value) => value.toJson()).toList(),
+        if (tensorflowVersion != null) 'tensorflowVersion': tensorflowVersion!,
         if (useServiceNetworking != null)
-          'useServiceNetworking': useServiceNetworking,
+          'useServiceNetworking': useServiceNetworking!,
       };
 }
 
@@ -1463,10 +1408,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -1477,14 +1422,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -1497,7 +1442,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -1532,12 +1477,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -1546,7 +1491,7 @@ class OperationMetadata {
   /// API version used to start the operation.
   ///
   /// Output only.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
@@ -1555,32 +1500,32 @@ class OperationMetadata {
   /// `Code.CANCELLED`.
   ///
   /// Output only.
-  core.bool cancelRequested;
+  core.bool? cancelRequested;
 
   /// The time the operation was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time the operation finished running.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// Human-readable status of the operation, if any.
   ///
   /// Output only.
-  core.String statusDetail;
+  core.String? statusDetail;
 
   /// Server-defined resource path for the target of the operation.
   ///
   /// Output only.
-  core.String target;
+  core.String? target;
 
   /// Name of the verb executed by the operation.
   ///
   /// Output only.
-  core.String verb;
+  core.String? verb;
 
   OperationMetadata();
 
@@ -1608,21 +1553,21 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (cancelRequested != null) 'cancelRequested': cancelRequested,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
-        if (statusDetail != null) 'statusDetail': statusDetail,
-        if (target != null) 'target': target,
-        if (verb != null) 'verb': verb,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (cancelRequested != null) 'cancelRequested': cancelRequested!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (statusDetail != null) 'statusDetail': statusDetail!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
 /// Request for ReimageNode.
 class ReimageNodeRequest {
   /// The version for reimage to create.
-  core.String tensorflowVersion;
+  core.String? tensorflowVersion;
 
   ReimageNodeRequest();
 
@@ -1632,18 +1577,18 @@ class ReimageNodeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (tensorflowVersion != null) 'tensorflowVersion': tensorflowVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (tensorflowVersion != null) 'tensorflowVersion': tensorflowVersion!,
       };
 }
 
 /// Sets the scheduling options for this node.
 class SchedulingConfig {
   /// Defines whether the node is preemptible.
-  core.bool preemptible;
+  core.bool? preemptible;
 
   /// Whether the node is created under a reservation.
-  core.bool reserved;
+  core.bool? reserved;
 
   SchedulingConfig();
 
@@ -1656,9 +1601,9 @@ class SchedulingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (preemptible != null) 'preemptible': preemptible,
-        if (reserved != null) 'reserved': reserved,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (preemptible != null) 'preemptible': preemptible!,
+        if (reserved != null) 'reserved': reserved!,
       };
 }
 
@@ -1670,7 +1615,7 @@ class StartNodeRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1682,7 +1627,7 @@ class StartNodeRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1690,13 +1635,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -1720,10 +1665,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -1735,16 +1680,16 @@ class StopNodeRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A Symptom instance.
 class Symptom {
   /// Timestamp when the Symptom is created.
-  core.String createTime;
+  core.String? createTime;
 
   /// Detailed information of the current Symptom.
-  core.String details;
+  core.String? details;
 
   /// Type of the Symptom.
   /// Possible string values are:
@@ -1755,10 +1700,10 @@ class Symptom {
   /// - "MESH_BUILD_FAIL" : TPU runtime fails to construct a mesh that
   /// recognizes each TPU device's neighbors.
   /// - "HBM_OUT_OF_MEMORY" : TPU HBM is out of memory.
-  core.String symptomType;
+  core.String? symptomType;
 
   /// A string used to uniquely distinguish a worker within a TPU node.
-  core.String workerId;
+  core.String? workerId;
 
   Symptom();
 
@@ -1777,21 +1722,21 @@ class Symptom {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (details != null) 'details': details,
-        if (symptomType != null) 'symptomType': symptomType,
-        if (workerId != null) 'workerId': workerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (details != null) 'details': details!,
+        if (symptomType != null) 'symptomType': symptomType!,
+        if (workerId != null) 'workerId': workerId!,
       };
 }
 
 /// A tensorflow version that a Node can be configured with.
 class TensorFlowVersion {
   /// The resource name.
-  core.String name;
+  core.String? name;
 
   /// the tensorflow version.
-  core.String version;
+  core.String? version;
 
   TensorFlowVersion();
 
@@ -1804,8 +1749,8 @@ class TensorFlowVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (version != null) 'version': version!,
       };
 }

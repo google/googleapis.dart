@@ -94,9 +94,9 @@ class HashesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudWebriskV1SearchHashesResponse> search({
-    core.String hashPrefix,
-    core.List<core.String> threatTypes,
-    core.String $fields,
+    core.String? hashPrefix,
+    core.List<core.String>? threatTypes,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (hashPrefix != null) 'hashPrefix': [hashPrefix],
@@ -152,13 +152,9 @@ class OperationsResource {
   async.Future<GoogleProtobufEmpty> cancel(
     GoogleLongrunningCancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -199,11 +195,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -241,11 +234,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -295,14 +285,11 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -369,13 +356,9 @@ class ProjectsSubmissionsResource {
   async.Future<GoogleCloudWebriskV1Submission> create(
     GoogleCloudWebriskV1Submission request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -433,13 +416,9 @@ class ProjectsUrisResource {
   async.Future<GoogleLongrunningOperation> submit(
     GoogleCloudWebriskV1SubmitUriRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -513,12 +492,12 @@ class ThreatListsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudWebriskV1ComputeThreatListDiffResponse> computeDiff({
-    core.int constraints_maxDatabaseEntries,
-    core.int constraints_maxDiffEntries,
-    core.List<core.String> constraints_supportedCompressions,
-    core.String threatType,
-    core.String versionToken,
-    core.String $fields,
+    core.int? constraints_maxDatabaseEntries,
+    core.int? constraints_maxDiffEntries,
+    core.List<core.String>? constraints_supportedCompressions,
+    core.String? threatType,
+    core.String? versionToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (constraints_maxDatabaseEntries != null)
@@ -574,9 +553,9 @@ class UrisResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudWebriskV1SearchUrisResponse> search({
-    core.List<core.String> threatTypes,
-    core.String uri,
-    core.String $fields,
+    core.List<core.String>? threatTypes,
+    core.String? uri,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (threatTypes != null) 'threatTypes': threatTypes,
@@ -598,23 +577,23 @@ class UrisResource {
 
 class GoogleCloudWebriskV1ComputeThreatListDiffResponse {
   /// A set of entries to add to a local threat type's list.
-  GoogleCloudWebriskV1ThreatEntryAdditions additions;
+  GoogleCloudWebriskV1ThreatEntryAdditions? additions;
 
   /// The expected SHA256 hash of the client state; that is, of the sorted list
   /// of all hashes present in the database after applying the provided diff.
   ///
   /// If the client state doesn't match the expected state, the client must
   /// discard this diff and retry later.
-  GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum checksum;
+  GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum? checksum;
 
   /// The new opaque client version token.
   ///
   /// This should be retained by the client and passed into the next call of
   /// ComputeThreatListDiff as 'version_token'. A separate version token should
   /// be stored and used for each threatList.
-  core.String newVersionToken;
+  core.String? newVersionToken;
   core.List<core.int> get newVersionTokenAsBytes =>
-      convert.base64.decode(newVersionToken);
+      convert.base64.decode(newVersionToken!);
 
   set newVersionTokenAsBytes(core.List<core.int> _bytes) {
     newVersionToken =
@@ -626,12 +605,12 @@ class GoogleCloudWebriskV1ComputeThreatListDiffResponse {
   /// Querying sooner is unlikely to produce a meaningful diff. Waiting longer
   /// is acceptable considering the use case. If this field is not set clients
   /// may update as soon as they want.
-  core.String recommendedNextDiff;
+  core.String? recommendedNextDiff;
 
   /// A set of entries to remove from a local threat type's list.
   ///
   /// This field may be empty.
-  GoogleCloudWebriskV1ThreatEntryRemovals removals;
+  GoogleCloudWebriskV1ThreatEntryRemovals? removals;
 
   /// The type of response.
   ///
@@ -644,7 +623,7 @@ class GoogleCloudWebriskV1ComputeThreatListDiffResponse {
   /// - "RESET" : Full updates resets the client's entire local database. This
   /// means that either the client had no state, was seriously out-of-date, or
   /// the client is believed to be corrupt.
-  core.String responseType;
+  core.String? responseType;
 
   GoogleCloudWebriskV1ComputeThreatListDiffResponse();
 
@@ -673,14 +652,14 @@ class GoogleCloudWebriskV1ComputeThreatListDiffResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (additions != null) 'additions': additions.toJson(),
-        if (checksum != null) 'checksum': checksum.toJson(),
-        if (newVersionToken != null) 'newVersionToken': newVersionToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (additions != null) 'additions': additions!.toJson(),
+        if (checksum != null) 'checksum': checksum!.toJson(),
+        if (newVersionToken != null) 'newVersionToken': newVersionToken!,
         if (recommendedNextDiff != null)
-          'recommendedNextDiff': recommendedNextDiff,
-        if (removals != null) 'removals': removals.toJson(),
-        if (responseType != null) 'responseType': responseType,
+          'recommendedNextDiff': recommendedNextDiff!,
+        if (removals != null) 'removals': removals!.toJson(),
+        if (responseType != null) 'responseType': responseType!,
       };
 }
 
@@ -688,8 +667,8 @@ class GoogleCloudWebriskV1ComputeThreatListDiffResponse {
 class GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum {
   /// The SHA256 hash of the client state; that is, of the sorted list of all
   /// hashes present in the database.
-  core.String sha256;
-  core.List<core.int> get sha256AsBytes => convert.base64.decode(sha256);
+  core.String? sha256;
+  core.List<core.int> get sha256AsBytes => convert.base64.decode(sha256!);
 
   set sha256AsBytes(core.List<core.int> _bytes) {
     sha256 =
@@ -705,8 +684,8 @@ class GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sha256 != null) 'sha256': sha256,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sha256 != null) 'sha256': sha256!,
       };
 }
 
@@ -723,14 +702,14 @@ class GoogleCloudWebriskV1RawHashes {
   /// This field can be anywhere from 4 (shortest prefix) to 32 (full SHA256
   /// hash). In practice this is almost always 4, except in exceptional
   /// circumstances.
-  core.int prefixSize;
+  core.int? prefixSize;
 
   /// The hashes, in binary format, concatenated into one long string.
   ///
   /// Hashes are sorted in lexicographic order. For JSON API users, hashes are
   /// base64-encoded.
-  core.String rawHashes;
-  core.List<core.int> get rawHashesAsBytes => convert.base64.decode(rawHashes);
+  core.String? rawHashes;
+  core.List<core.int> get rawHashesAsBytes => convert.base64.decode(rawHashes!);
 
   set rawHashesAsBytes(core.List<core.int> _bytes) {
     rawHashes =
@@ -748,16 +727,16 @@ class GoogleCloudWebriskV1RawHashes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (prefixSize != null) 'prefixSize': prefixSize,
-        if (rawHashes != null) 'rawHashes': rawHashes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (prefixSize != null) 'prefixSize': prefixSize!,
+        if (rawHashes != null) 'rawHashes': rawHashes!,
       };
 }
 
 /// A set of raw indices to remove from a local list.
 class GoogleCloudWebriskV1RawIndices {
   /// The indices to remove from a lexicographically-sorted local list.
-  core.List<core.int> indices;
+  core.List<core.int>? indices;
 
   GoogleCloudWebriskV1RawIndices();
 
@@ -769,8 +748,8 @@ class GoogleCloudWebriskV1RawIndices {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (indices != null) 'indices': indices,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (indices != null) 'indices': indices!,
       };
 }
 
@@ -779,9 +758,9 @@ class GoogleCloudWebriskV1RawIndices {
 /// Used for sending compressed 4-byte hashes or compressed removal indices.
 class GoogleCloudWebriskV1RiceDeltaEncoding {
   /// The encoded deltas that are encoded using the Golomb-Rice coder.
-  core.String encodedData;
+  core.String? encodedData;
   core.List<core.int> get encodedDataAsBytes =>
-      convert.base64.decode(encodedData);
+      convert.base64.decode(encodedData!);
 
   set encodedDataAsBytes(core.List<core.int> _bytes) {
     encodedData =
@@ -792,18 +771,18 @@ class GoogleCloudWebriskV1RiceDeltaEncoding {
   ///
   /// If only a single integer was encoded, this will be zero and the single
   /// value will be stored in `first_value`.
-  core.int entryCount;
+  core.int? entryCount;
 
   /// The offset of the first entry in the encoded data, or, if only a single
   /// integer was encoded, that single integer's value.
   ///
   /// If the field is empty or missing, assume zero.
-  core.String firstValue;
+  core.String? firstValue;
 
   /// The Golomb-Rice parameter, which is a number between 2 and 28.
   ///
   /// This field is missing (that is, zero) if `num_entries` is zero.
-  core.int riceParameter;
+  core.int? riceParameter;
 
   GoogleCloudWebriskV1RiceDeltaEncoding();
 
@@ -822,23 +801,23 @@ class GoogleCloudWebriskV1RiceDeltaEncoding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (encodedData != null) 'encodedData': encodedData,
-        if (entryCount != null) 'entryCount': entryCount,
-        if (firstValue != null) 'firstValue': firstValue,
-        if (riceParameter != null) 'riceParameter': riceParameter,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (encodedData != null) 'encodedData': encodedData!,
+        if (entryCount != null) 'entryCount': entryCount!,
+        if (firstValue != null) 'firstValue': firstValue!,
+        if (riceParameter != null) 'riceParameter': riceParameter!,
       };
 }
 
 class GoogleCloudWebriskV1SearchHashesResponse {
   /// For requested entities that did not match the threat list, how long to
   /// cache the response until.
-  core.String negativeExpireTime;
+  core.String? negativeExpireTime;
 
   /// The full hashes that matched the requested prefixes.
   ///
   /// The hash will be populated in the key.
-  core.List<GoogleCloudWebriskV1SearchHashesResponseThreatHash> threats;
+  core.List<GoogleCloudWebriskV1SearchHashesResponseThreatHash>? threats;
 
   GoogleCloudWebriskV1SearchHashesResponse();
 
@@ -855,11 +834,11 @@ class GoogleCloudWebriskV1SearchHashesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (negativeExpireTime != null)
-          'negativeExpireTime': negativeExpireTime,
+          'negativeExpireTime': negativeExpireTime!,
         if (threats != null)
-          'threats': threats.map((value) => value.toJson()).toList(),
+          'threats': threats!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -869,14 +848,14 @@ class GoogleCloudWebriskV1SearchHashesResponseThreatHash {
   ///
   /// Clients must not cache this response past this timestamp to avoid false
   /// positives.
-  core.String expireTime;
+  core.String? expireTime;
 
   /// A 32 byte SHA256 hash.
   ///
   /// This field is in binary format. For JSON requests, hashes are
   /// base64-encoded.
-  core.String hash;
-  core.List<core.int> get hashAsBytes => convert.base64.decode(hash);
+  core.String? hash;
+  core.List<core.int> get hashAsBytes => convert.base64.decode(hash!);
 
   set hashAsBytes(core.List<core.int> _bytes) {
     hash =
@@ -886,7 +865,7 @@ class GoogleCloudWebriskV1SearchHashesResponseThreatHash {
   /// The ThreatList this threat belongs to.
   ///
   /// This must contain at least one entry.
-  core.List<core.String> threatTypes;
+  core.List<core.String>? threatTypes;
 
   GoogleCloudWebriskV1SearchHashesResponseThreatHash();
 
@@ -904,10 +883,10 @@ class GoogleCloudWebriskV1SearchHashesResponseThreatHash {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expireTime != null) 'expireTime': expireTime,
-        if (hash != null) 'hash': hash,
-        if (threatTypes != null) 'threatTypes': threatTypes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (hash != null) 'hash': hash!,
+        if (threatTypes != null) 'threatTypes': threatTypes!,
       };
 }
 
@@ -915,7 +894,7 @@ class GoogleCloudWebriskV1SearchUrisResponse {
   /// The threat list matches.
   ///
   /// This may be empty if the URI is on no list.
-  GoogleCloudWebriskV1SearchUrisResponseThreatUri threat;
+  GoogleCloudWebriskV1SearchUrisResponseThreatUri? threat;
 
   GoogleCloudWebriskV1SearchUrisResponse();
 
@@ -926,8 +905,8 @@ class GoogleCloudWebriskV1SearchUrisResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (threat != null) 'threat': threat.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (threat != null) 'threat': threat!.toJson(),
       };
 }
 
@@ -937,10 +916,10 @@ class GoogleCloudWebriskV1SearchUrisResponseThreatUri {
   ///
   /// Clients must not cache this response past this timestamp to avoid false
   /// positives.
-  core.String expireTime;
+  core.String? expireTime;
 
   /// The ThreatList this threat belongs to.
-  core.List<core.String> threatTypes;
+  core.List<core.String>? threatTypes;
 
   GoogleCloudWebriskV1SearchUrisResponseThreatUri();
 
@@ -955,9 +934,9 @@ class GoogleCloudWebriskV1SearchUrisResponseThreatUri {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expireTime != null) 'expireTime': expireTime,
-        if (threatTypes != null) 'threatTypes': threatTypes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (threatTypes != null) 'threatTypes': threatTypes!,
       };
 }
 
@@ -967,12 +946,12 @@ class GoogleCloudWebriskV1Submission {
   /// it.
   ///
   /// This may be empty if the URI was not added to any list.
-  core.List<core.String> threatTypes;
+  core.List<core.String>? threatTypes;
 
   /// The URI that is being reported for malicious content to be analyzed.
   ///
   /// Required.
-  core.String uri;
+  core.String? uri;
 
   GoogleCloudWebriskV1Submission();
 
@@ -987,9 +966,9 @@ class GoogleCloudWebriskV1Submission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (threatTypes != null) 'threatTypes': threatTypes,
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (threatTypes != null) 'threatTypes': threatTypes!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -998,7 +977,7 @@ class GoogleCloudWebriskV1SubmitUriRequest {
   /// The submission that contains the URI to be scanned.
   ///
   /// Required.
-  GoogleCloudWebriskV1Submission submission;
+  GoogleCloudWebriskV1Submission? submission;
 
   GoogleCloudWebriskV1SubmitUriRequest();
 
@@ -1009,8 +988,8 @@ class GoogleCloudWebriskV1SubmitUriRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (submission != null) 'submission': submission.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (submission != null) 'submission': submission!.toJson(),
       };
 }
 
@@ -1021,14 +1000,14 @@ class GoogleCloudWebriskV1ThreatEntryAdditions {
   /// The raw SHA256-formatted entries.
   ///
   /// Repeated to allow returning sets of hashes with different prefix sizes.
-  core.List<GoogleCloudWebriskV1RawHashes> rawHashes;
+  core.List<GoogleCloudWebriskV1RawHashes>? rawHashes;
 
   /// The encoded 4-byte prefixes of SHA256-formatted entries, using a
   /// Golomb-Rice encoding.
   ///
   /// The hashes are converted to uint32, sorted in ascending order, then delta
   /// encoded and stored as encoded_data.
-  GoogleCloudWebriskV1RiceDeltaEncoding riceHashes;
+  GoogleCloudWebriskV1RiceDeltaEncoding? riceHashes;
 
   GoogleCloudWebriskV1ThreatEntryAdditions();
 
@@ -1046,17 +1025,17 @@ class GoogleCloudWebriskV1ThreatEntryAdditions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (rawHashes != null)
-          'rawHashes': rawHashes.map((value) => value.toJson()).toList(),
-        if (riceHashes != null) 'riceHashes': riceHashes.toJson(),
+          'rawHashes': rawHashes!.map((value) => value.toJson()).toList(),
+        if (riceHashes != null) 'riceHashes': riceHashes!.toJson(),
       };
 }
 
 /// Contains the set of entries to remove from a local database.
 class GoogleCloudWebriskV1ThreatEntryRemovals {
   /// The raw removal indices for a local list.
-  GoogleCloudWebriskV1RawIndices rawIndices;
+  GoogleCloudWebriskV1RawIndices? rawIndices;
 
   /// The encoded local, lexicographically-sorted list indices, using a
   /// Golomb-Rice encoding.
@@ -1064,7 +1043,7 @@ class GoogleCloudWebriskV1ThreatEntryRemovals {
   /// Used for sending compressed removal indices. The removal indices (uint32)
   /// are sorted in ascending order, then delta encoded and stored as
   /// encoded_data.
-  GoogleCloudWebriskV1RiceDeltaEncoding riceIndices;
+  GoogleCloudWebriskV1RiceDeltaEncoding? riceIndices;
 
   GoogleCloudWebriskV1ThreatEntryRemovals();
 
@@ -1079,9 +1058,9 @@ class GoogleCloudWebriskV1ThreatEntryRemovals {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (rawIndices != null) 'rawIndices': rawIndices.toJson(),
-        if (riceIndices != null) 'riceIndices': riceIndices.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (rawIndices != null) 'rawIndices': rawIndices!.toJson(),
+        if (riceIndices != null) 'riceIndices': riceIndices!.toJson(),
       };
 }
 
@@ -1093,16 +1072,16 @@ class GoogleLongrunningCancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<GoogleLongrunningOperation> operations;
+  core.List<GoogleLongrunningOperation>? operations;
 
   GoogleLongrunningListOperationsResponse();
 
@@ -1119,10 +1098,10 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1133,10 +1112,10 @@ class GoogleLongrunningOperation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  GoogleRpcStatus error;
+  GoogleRpcStatus? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -1147,14 +1126,14 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -1167,7 +1146,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   GoogleLongrunningOperation();
 
@@ -1202,12 +1181,12 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -1225,7 +1204,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1237,7 +1216,7 @@ class GoogleProtobufEmpty {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1245,13 +1224,13 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   GoogleRpcStatus();
 
@@ -1275,9 +1254,9 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }

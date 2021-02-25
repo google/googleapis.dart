@@ -113,13 +113,9 @@ class DevicesResource {
   async.Future<Operation> cancelWipe(
     GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -166,11 +162,10 @@ class DevicesResource {
   /// this method will complete with the same error.
   async.Future<Operation> create(
     GoogleAppsCloudidentityDevicesV1Device request, {
-    core.String customer,
-    core.String $fields,
+    core.String? customer,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (customer != null) 'customer': [customer],
       if ($fields != null) 'fields': [$fields],
@@ -216,12 +211,9 @@ class DevicesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String customer,
-    core.String $fields,
+    core.String? customer,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (customer != null) 'customer': [customer],
       if ($fields != null) 'fields': [$fields],
@@ -267,12 +259,9 @@ class DevicesResource {
   /// this method will complete with the same error.
   async.Future<GoogleAppsCloudidentityDevicesV1Device> get(
     core.String name, {
-    core.String customer,
-    core.String $fields,
+    core.String? customer,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (customer != null) 'customer': [customer],
       if ($fields != null) 'fields': [$fields],
@@ -343,13 +332,13 @@ class DevicesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAppsCloudidentityDevicesV1ListDevicesResponse> list({
-    core.String customer,
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.String? customer,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (customer != null) 'customer': [customer],
@@ -398,13 +387,9 @@ class DevicesResource {
   async.Future<Operation> wipe(
     GoogleAppsCloudidentityDevicesV1WipeDeviceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -456,13 +441,9 @@ class DevicesDeviceUsersResource {
   async.Future<Operation> approve(
     GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -505,13 +486,9 @@ class DevicesDeviceUsersResource {
   async.Future<Operation> block(
     GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -557,13 +534,9 @@ class DevicesDeviceUsersResource {
   async.Future<Operation> cancelWipe(
     GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -612,12 +585,9 @@ class DevicesDeviceUsersResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String customer,
-    core.String $fields,
+    core.String? customer,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (customer != null) 'customer': [customer],
       if ($fields != null) 'fields': [$fields],
@@ -663,12 +633,9 @@ class DevicesDeviceUsersResource {
   /// this method will complete with the same error.
   async.Future<GoogleAppsCloudidentityDevicesV1DeviceUser> get(
     core.String name, {
-    core.String customer,
-    core.String $fields,
+    core.String? customer,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (customer != null) 'customer': [customer],
       if ($fields != null) 'fields': [$fields],
@@ -730,16 +697,13 @@ class DevicesDeviceUsersResource {
   /// this method will complete with the same error.
   async.Future<GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse> list(
     core.String parent, {
-    core.String customer,
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? customer,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (customer != null) 'customer': [customer],
       if (filter != null) 'filter': [filter],
@@ -818,16 +782,13 @@ class DevicesDeviceUsersResource {
   async.Future<GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse>
       lookup(
     core.String parent, {
-    core.String androidId,
-    core.int pageSize,
-    core.String pageToken,
-    core.String rawResourceId,
-    core.String userId,
-    core.String $fields,
+    core.String? androidId,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? rawResourceId,
+    core.String? userId,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (androidId != null) 'androidId': [androidId],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -882,13 +843,9 @@ class DevicesDeviceUsersResource {
   async.Future<Operation> wipe(
     GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -950,12 +907,9 @@ class DevicesDeviceUsersClientStatesResource {
   /// this method will complete with the same error.
   async.Future<GoogleAppsCloudidentityDevicesV1ClientState> get(
     core.String name, {
-    core.String customer,
-    core.String $fields,
+    core.String? customer,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (customer != null) 'customer': [customer],
       if ($fields != null) 'fields': [$fields],
@@ -1013,15 +967,12 @@ class DevicesDeviceUsersClientStatesResource {
   /// this method will complete with the same error.
   async.Future<GoogleAppsCloudidentityDevicesV1ListClientStatesResponse> list(
     core.String parent, {
-    core.String customer,
-    core.String filter,
-    core.String orderBy,
-    core.String pageToken,
-    core.String $fields,
+    core.String? customer,
+    core.String? filter,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (customer != null) 'customer': [customer],
       if (filter != null) 'filter': [filter],
@@ -1095,15 +1046,11 @@ class DevicesDeviceUsersClientStatesResource {
   async.Future<Operation> patch(
     GoogleAppsCloudidentityDevicesV1ClientState request,
     core.String name, {
-    core.String customer,
-    core.String updateMask,
-    core.String $fields,
+    core.String? customer,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (customer != null) 'customer': [customer],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1157,11 +1104,10 @@ class GroupsResource {
   /// this method will complete with the same error.
   async.Future<Operation> create(
     Group request, {
-    core.String initialGroupConfig,
-    core.String $fields,
+    core.String? initialGroupConfig,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (initialGroupConfig != null)
         'initialGroupConfig': [initialGroupConfig],
@@ -1200,11 +1146,8 @@ class GroupsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1240,11 +1183,8 @@ class GroupsResource {
   /// this method will complete with the same error.
   async.Future<Group> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1296,11 +1236,11 @@ class GroupsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String parent,
-    core.String view,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.String? view,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1350,9 +1290,9 @@ class GroupsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LookupGroupNameResponse> lookup({
-    core.String groupKey_id,
-    core.String groupKey_namespace,
-    core.String $fields,
+    core.String? groupKey_id,
+    core.String? groupKey_namespace,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (groupKey_id != null) 'groupKey.id': [groupKey_id],
@@ -1399,14 +1339,10 @@ class GroupsResource {
   async.Future<Operation> patch(
     Group request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1462,11 +1398,11 @@ class GroupsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchGroupsResponse> search({
-    core.int pageSize,
-    core.String pageToken,
-    core.String query,
-    core.String view,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? query,
+    core.String? view,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1531,12 +1467,9 @@ class GroupsMembershipsResource {
   /// this method will complete with the same error.
   async.Future<CheckTransitiveMembershipResponse> checkTransitiveMembership(
     core.String parent, {
-    core.String query,
-    core.String $fields,
+    core.String? query,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (query != null) 'query': [query],
       if ($fields != null) 'fields': [$fields],
@@ -1578,13 +1511,9 @@ class GroupsMembershipsResource {
   async.Future<Operation> create(
     Membership request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1624,11 +1553,8 @@ class GroupsMembershipsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1665,11 +1591,8 @@ class GroupsMembershipsResource {
   /// this method will complete with the same error.
   async.Future<Membership> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1726,12 +1649,9 @@ class GroupsMembershipsResource {
   /// this method will complete with the same error.
   async.Future<Operation> getMembershipGraph(
     core.String parent, {
-    core.String query,
-    core.String $fields,
+    core.String? query,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (query != null) 'query': [query],
       if ($fields != null) 'fields': [$fields],
@@ -1787,14 +1707,11 @@ class GroupsMembershipsResource {
   /// this method will complete with the same error.
   async.Future<ListMembershipsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1849,13 +1766,10 @@ class GroupsMembershipsResource {
   /// this method will complete with the same error.
   async.Future<LookupMembershipNameResponse> lookup(
     core.String parent, {
-    core.String memberKey_id,
-    core.String memberKey_namespace,
-    core.String $fields,
+    core.String? memberKey_id,
+    core.String? memberKey_namespace,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (memberKey_id != null) 'memberKey.id': [memberKey_id],
       if (memberKey_namespace != null)
@@ -1901,13 +1815,9 @@ class GroupsMembershipsResource {
   async.Future<ModifyMembershipRolesResponse> modifyMembershipRoles(
     ModifyMembershipRolesRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1969,14 +1879,11 @@ class GroupsMembershipsResource {
   /// this method will complete with the same error.
   async.Future<SearchTransitiveGroupsResponse> searchTransitiveGroups(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String query,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? query,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2032,13 +1939,10 @@ class GroupsMembershipsResource {
   /// this method will complete with the same error.
   async.Future<SearchTransitiveMembershipsResponse> searchTransitiveMemberships(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2066,7 +1970,7 @@ class CheckTransitiveMembershipResponse {
   ///
   /// So, it may not be possible to list all the roles definitively, due to
   /// possible lack of authorization in some of the paths.
-  core.bool hasMembership;
+  core.bool? hasMembership;
 
   CheckTransitiveMembershipResponse();
 
@@ -2076,8 +1980,8 @@ class CheckTransitiveMembershipResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hasMembership != null) 'hasMembership': hasMembership,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hasMembership != null) 'hasMembership': hasMembership!,
       };
 }
 
@@ -2087,12 +1991,12 @@ class DynamicGroupMetadata {
   ///
   /// Only one entry with USER resource is currently supported. Customers can
   /// create up to 100 dynamic groups.
-  core.List<DynamicGroupQuery> queries;
+  core.List<DynamicGroupQuery>? queries;
 
   /// Status of the dynamic group.
   ///
   /// Output only.
-  DynamicGroupStatus status;
+  DynamicGroupStatus? status;
 
   DynamicGroupMetadata();
 
@@ -2109,10 +2013,10 @@ class DynamicGroupMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (queries != null)
-          'queries': queries.map((value) => value.toJson()).toList(),
-        if (status != null) 'status': status.toJson(),
+          'queries': queries!.map((value) => value.toJson()).toList(),
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -2125,13 +2029,13 @@ class DynamicGroupQuery {
   /// org.department=='engineering')` All users with at least one location that
   /// has `area` of `foo` and `building_id` of `bar`.
   /// `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
-  core.String query;
+  core.String? query;
 
   /// Resource type for the Dynamic Group Query
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Default value (not valid)
   /// - "USER" : For queries on User
-  core.String resourceType;
+  core.String? resourceType;
 
   DynamicGroupQuery();
 
@@ -2144,9 +2048,9 @@ class DynamicGroupQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (query != null) 'query': query,
-        if (resourceType != null) 'resourceType': resourceType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (query != null) 'query': query!,
+        if (resourceType != null) 'resourceType': resourceType!,
       };
 }
 
@@ -2158,7 +2062,7 @@ class DynamicGroupStatus {
   /// - "UP_TO_DATE" : The dynamic group is up-to-date.
   /// - "UPDATING_MEMBERSHIPS" : The dynamic group has just been created and
   /// memberships are being updated.
-  core.String status;
+  core.String? status;
 
   /// The latest time at which the dynamic group is guaranteed to be in the
   /// given status.
@@ -2166,7 +2070,7 @@ class DynamicGroupStatus {
   /// If status is `UP_TO_DATE`, the latest time at which the dynamic group was
   /// confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time
   /// at which dynamic group was created.
-  core.String statusTime;
+  core.String? statusTime;
 
   DynamicGroupStatus();
 
@@ -2179,9 +2083,9 @@ class DynamicGroupStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (status != null) 'status': status,
-        if (statusTime != null) 'statusTime': statusTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (status != null) 'status': status!,
+        if (statusTime != null) 'statusTime': statusTime!,
       };
 }
 
@@ -2197,7 +2101,7 @@ class EntityKey {
   /// existing group or user. For external-identity-mapped entities, the `id`
   /// must be a string conforming to the Identity Source's requirements. Must be
   /// unique within a `namespace`.
-  core.String id;
+  core.String? id;
 
   /// The namespace in which the entity exists.
   ///
@@ -2206,7 +2110,7 @@ class EntityKey {
   /// represents an external-identity-mapped group. The namespace must
   /// correspond to an identity source created in Admin Console and must be in
   /// the form of \`identitysources/{identity_source_id}.
-  core.String namespace;
+  core.String? namespace;
 
   EntityKey();
 
@@ -2219,16 +2123,16 @@ class EntityKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (namespace != null) 'namespace': namespace,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (namespace != null) 'namespace': namespace!,
       };
 }
 
 /// The `MembershipRole` expiry details.
 class ExpiryDetail {
   /// The time at which the `MembershipRole` will expire.
-  core.String expireTime;
+  core.String? expireTime;
 
   ExpiryDetail();
 
@@ -2238,21 +2142,21 @@ class ExpiryDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expireTime != null) 'expireTime': expireTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime!,
       };
 }
 
 /// The response message for MembershipsService.GetMembershipGraph.
 class GetMembershipGraphResponse {
   /// The membership graph's path information represented as an adjacency list.
-  core.List<MembershipAdjacencyList> adjacencyList;
+  core.List<MembershipAdjacencyList>? adjacencyList;
 
   /// The resources representing each group in the adjacency list.
   ///
   /// Each group in this list can be correlated to a 'group' of the
   /// MembershipAdjacencyList using the 'name' of the Group resource.
-  core.List<Group> groups;
+  core.List<Group>? groups;
 
   GetMembershipGraphResponse();
 
@@ -2272,25 +2176,25 @@ class GetMembershipGraphResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (adjacencyList != null)
           'adjacencyList':
-              adjacencyList.map((value) => value.toJson()).toList(),
+              adjacencyList!.map((value) => value.toJson()).toList(),
         if (groups != null)
-          'groups': groups.map((value) => value.toJson()).toList(),
+          'groups': groups!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Resource representing the Android specific attributes of a Device.
 class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
   /// Whether applications from unknown sources can be installed on device.
-  core.bool enabledUnknownSources;
+  core.bool? enabledUnknownSources;
 
   /// Whether this account is on an owner/primary profile.
   ///
   /// For phones, only true for owner profiles. Android 4+ devices can have
   /// secondary or restricted user profiles.
-  core.bool ownerProfileAccount;
+  core.bool? ownerProfileAccount;
 
   /// Ownership privileges on device.
   /// Possible string values are:
@@ -2300,13 +2204,13 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
   /// - "PROFILE_OWNER" : Profile Owner privileges. The account is in a managed
   /// corporate profile.
   /// - "DEVICE_OWNER" : Device Owner privileges on the device.
-  core.String ownershipPrivilege;
+  core.String? ownershipPrivilege;
 
   /// Whether device supports Android work profiles.
   ///
   /// If false, this service will not block access to corp data even if an
   /// administrator turns on the "Enforce Work Profile" policy.
-  core.bool supportsWorkProfile;
+  core.bool? supportsWorkProfile;
 
   GoogleAppsCloudidentityDevicesV1AndroidAttributes();
 
@@ -2325,15 +2229,15 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (enabledUnknownSources != null)
-          'enabledUnknownSources': enabledUnknownSources,
+          'enabledUnknownSources': enabledUnknownSources!,
         if (ownerProfileAccount != null)
-          'ownerProfileAccount': ownerProfileAccount,
+          'ownerProfileAccount': ownerProfileAccount!,
         if (ownershipPrivilege != null)
-          'ownershipPrivilege': ownershipPrivilege,
+          'ownershipPrivilege': ownershipPrivilege!,
         if (supportsWorkProfile != null)
-          'supportsWorkProfile': supportsWorkProfile,
+          'supportsWorkProfile': supportsWorkProfile!,
       };
 }
 
@@ -2348,7 +2252,7 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest {
   /// customer to whom the device belongs.
   ///
   /// Required.
-  core.String customer;
+  core.String? customer;
 
   GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest();
 
@@ -2359,15 +2263,15 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customer != null) 'customer': customer,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customer != null) 'customer': customer!,
       };
 }
 
 /// Response message for approving the device to access user data.
 class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
   /// Resultant DeviceUser object for the action.
-  GoogleAppsCloudidentityDevicesV1DeviceUser deviceUser;
+  GoogleAppsCloudidentityDevicesV1DeviceUser? deviceUser;
 
   GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse();
 
@@ -2379,8 +2283,8 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceUser != null) 'deviceUser': deviceUser.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceUser != null) 'deviceUser': deviceUser!.toJson(),
       };
 }
 
@@ -2395,7 +2299,7 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest {
   /// customer to whom the device belongs.
   ///
   /// Required.
-  core.String customer;
+  core.String? customer;
 
   GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest();
 
@@ -2406,15 +2310,15 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customer != null) 'customer': customer,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customer != null) 'customer': customer!,
       };
 }
 
 /// Response message for blocking the device from accessing user data.
 class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
   /// Resultant DeviceUser object for the action.
-  GoogleAppsCloudidentityDevicesV1DeviceUser deviceUser;
+  GoogleAppsCloudidentityDevicesV1DeviceUser? deviceUser;
 
   GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse();
 
@@ -2426,8 +2330,8 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceUser != null) 'deviceUser': deviceUser.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceUser != null) 'deviceUser': deviceUser!.toJson(),
       };
 }
 
@@ -2442,7 +2346,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest {
   /// customer to whom the device belongs.
   ///
   /// Required.
-  core.String customer;
+  core.String? customer;
 
   GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest();
 
@@ -2453,8 +2357,8 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customer != null) 'customer': customer,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customer != null) 'customer': customer!,
       };
 }
 
@@ -2463,7 +2367,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
   /// Resultant Device object for the action.
   ///
   /// Note that asset tags will not be returned in the device object.
-  GoogleAppsCloudidentityDevicesV1Device device;
+  GoogleAppsCloudidentityDevicesV1Device? device;
 
   GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse();
 
@@ -2475,8 +2379,8 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (device != null) 'device': device.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (device != null) 'device': device!.toJson(),
       };
 }
 
@@ -2491,7 +2395,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest {
   /// customer to whom the device belongs.
   ///
   /// Required.
-  core.String customer;
+  core.String? customer;
 
   GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest();
 
@@ -2502,15 +2406,15 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customer != null) 'customer': customer,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customer != null) 'customer': customer!,
       };
 }
 
 /// Response message for cancelling an unfinished user account wipe.
 class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse {
   /// Resultant DeviceUser object for the action.
-  GoogleAppsCloudidentityDevicesV1DeviceUser deviceUser;
+  GoogleAppsCloudidentityDevicesV1DeviceUser? deviceUser;
 
   GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse();
 
@@ -2522,8 +2426,8 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceUser != null) 'deviceUser': deviceUser.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceUser != null) 'deviceUser': deviceUser!.toJson(),
       };
 }
 
@@ -2532,7 +2436,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse {
 /// Resource representing ClientState and supports updates from API users
 class GoogleAppsCloudidentityDevicesV1ClientState {
   /// The caller can specify asset tags for this resource
-  core.List<core.String> assetTags;
+  core.List<core.String>? assetTags;
 
   /// The compliance state of the resource as specified by the API client.
   /// Possible string values are:
@@ -2540,21 +2444,21 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
   /// unknown or unspecified.
   /// - "COMPLIANT" : Device is compliant with third party policies
   /// - "NON_COMPLIANT" : Device is not compliant with third party policies
-  core.String complianceState;
+  core.String? complianceState;
 
   /// The time the client state data was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// This field may be used to store a unique identifier for the API resource
   /// within which these CustomAttributes are a field.
-  core.String customId;
+  core.String? customId;
 
   /// The token that needs to be passed back for concurrency control in updates.
   ///
   /// Token needs to be passed back in UpdateRequest
-  core.String etag;
+  core.String? etag;
 
   /// The Health score of the resource.
   ///
@@ -2572,19 +2476,19 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
   /// - "GOOD" : The object is in good health as defined by the caller.
   /// - "VERY_GOOD" : The object is in very good health as defined by the
   /// caller.
-  core.String healthScore;
+  core.String? healthScore;
 
   /// The map of key-value attributes stored by callers specific to a device.
   ///
   /// The total serialized length of this map may not exceed 10KB. No limit is
   /// placed on the number of attributes in a map.
-  core.Map<core.String, GoogleAppsCloudidentityDevicesV1CustomAttributeValue>
+  core.Map<core.String, GoogleAppsCloudidentityDevicesV1CustomAttributeValue>?
       keyValuePairs;
 
   /// The time the client state data was last updated.
   ///
   /// Output only.
-  core.String lastUpdateTime;
+  core.String? lastUpdateTime;
 
   /// The management state of the resource as specified by the API client.
   /// Possible string values are:
@@ -2592,7 +2496,7 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
   /// unknown or unspecified.
   /// - "MANAGED" : The resource is managed.
   /// - "UNMANAGED" : The resource is not managed.
-  core.String managed;
+  core.String? managed;
 
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the ClientState in format:
@@ -2612,7 +2516,7 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
   /// letter 'C' (not including 'C')
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The owner of the ClientState
   ///
@@ -2621,10 +2525,10 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
   /// - "OWNER_TYPE_UNSPECIFIED" : Unknown owner type
   /// - "OWNER_TYPE_CUSTOMER" : Customer is the owner
   /// - "OWNER_TYPE_PARTNER" : Partner is the owner
-  core.String ownerType;
+  core.String? ownerType;
 
   /// A descriptive cause of the health score.
-  core.String scoreReason;
+  core.String? scoreReason;
 
   GoogleAppsCloudidentityDevicesV1ClientState();
 
@@ -2651,7 +2555,7 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
     }
     if (_json.containsKey('keyValuePairs')) {
       keyValuePairs = (_json['keyValuePairs'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -2677,34 +2581,34 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (assetTags != null) 'assetTags': assetTags,
-        if (complianceState != null) 'complianceState': complianceState,
-        if (createTime != null) 'createTime': createTime,
-        if (customId != null) 'customId': customId,
-        if (etag != null) 'etag': etag,
-        if (healthScore != null) 'healthScore': healthScore,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (assetTags != null) 'assetTags': assetTags!,
+        if (complianceState != null) 'complianceState': complianceState!,
+        if (createTime != null) 'createTime': createTime!,
+        if (customId != null) 'customId': customId!,
+        if (etag != null) 'etag': etag!,
+        if (healthScore != null) 'healthScore': healthScore!,
         if (keyValuePairs != null)
-          'keyValuePairs': keyValuePairs
+          'keyValuePairs': keyValuePairs!
               .map((key, item) => core.MapEntry(key, item.toJson())),
-        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime,
-        if (managed != null) 'managed': managed,
-        if (name != null) 'name': name,
-        if (ownerType != null) 'ownerType': ownerType,
-        if (scoreReason != null) 'scoreReason': scoreReason,
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+        if (managed != null) 'managed': managed!,
+        if (name != null) 'name': name!,
+        if (ownerType != null) 'ownerType': ownerType!,
+        if (scoreReason != null) 'scoreReason': scoreReason!,
       };
 }
 
 /// Additional custom attribute values may be one of these types
 class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
   /// Represents a boolean value.
-  core.bool boolValue;
+  core.bool? boolValue;
 
   /// Represents a double value.
-  core.double numberValue;
+  core.double? numberValue;
 
   /// Represents a string value.
-  core.String stringValue;
+  core.String? stringValue;
 
   GoogleAppsCloudidentityDevicesV1CustomAttributeValue();
 
@@ -2721,10 +2625,10 @@ class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue,
-        if (numberValue != null) 'numberValue': numberValue,
-        if (stringValue != null) 'stringValue': stringValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (numberValue != null) 'numberValue': numberValue!,
+        if (stringValue != null) 'stringValue': stringValue!,
       };
 }
 
@@ -2736,34 +2640,34 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// Attributes specific to Android devices.
   ///
   /// Output only.
-  GoogleAppsCloudidentityDevicesV1AndroidAttributes androidSpecificAttributes;
+  GoogleAppsCloudidentityDevicesV1AndroidAttributes? androidSpecificAttributes;
 
   /// Asset tag of the device.
-  core.String assetTag;
+  core.String? assetTag;
 
   /// Baseband version of the device.
   ///
   /// Output only.
-  core.String basebandVersion;
+  core.String? basebandVersion;
 
   /// Device bootloader version.
   ///
   /// Example: 0.6.7.
   ///
   /// Output only.
-  core.String bootloaderVersion;
+  core.String? bootloaderVersion;
 
   /// Device brand.
   ///
   /// Example: Samsung.
   ///
   /// Output only.
-  core.String brand;
+  core.String? brand;
 
   /// Build number of the device.
   ///
   /// Output only.
-  core.String buildNumber;
+  core.String? buildNumber;
 
   /// Represents whether the Device is compromised.
   ///
@@ -2774,14 +2678,14 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// device is rooted).
   /// - "UNCOMPROMISED" : The device is safe (currently, this means Android
   /// device is unrooted).
-  core.String compromisedState;
+  core.String? compromisedState;
 
   /// When the Company-Owned device was imported.
   ///
   /// This field is empty for BYOD devices.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Type of device.
   ///
@@ -2795,17 +2699,17 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// - "MAC_OS" : Device is a MacOS device.
   /// - "LINUX" : Device is a Linux device.
   /// - "CHROME_OS" : Device is a ChromeOS device.
-  core.String deviceType;
+  core.String? deviceType;
 
   /// Whether developer options is enabled on device.
   ///
   /// Output only.
-  core.bool enabledDeveloperOptions;
+  core.bool? enabledDeveloperOptions;
 
   /// Whether USB debugging is enabled on device.
   ///
   /// Output only.
-  core.bool enabledUsbDebugging;
+  core.bool? enabledUsbDebugging;
 
   /// Device encryption state.
   ///
@@ -2815,20 +2719,20 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// - "UNSUPPORTED_BY_DEVICE" : Device doesn't support encryption.
   /// - "ENCRYPTED" : Device is encrypted.
   /// - "NOT_ENCRYPTED" : Device is not encrypted.
-  core.String encryptionState;
+  core.String? encryptionState;
 
   /// IMEI number of device if GSM device; empty otherwise.
   ///
   /// Output only.
-  core.String imei;
+  core.String? imei;
 
   /// Kernel version of the device.
   ///
   /// Output only.
-  core.String kernelVersion;
+  core.String? kernelVersion;
 
   /// Most recent time when device synced with this service.
-  core.String lastSyncTime;
+  core.String? lastSyncTime;
 
   /// Management state of the device
   ///
@@ -2843,45 +2747,45 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// device).
   /// - "WIPING" : Data and settings on the device are being removed.
   /// - "WIPED" : All data and settings on the device are removed.
-  core.String managementState;
+  core.String? managementState;
 
   /// Device manufacturer.
   ///
   /// Example: Motorola.
   ///
   /// Output only.
-  core.String manufacturer;
+  core.String? manufacturer;
 
   /// MEID number of device if CDMA device; empty otherwise.
   ///
   /// Output only.
-  core.String meid;
+  core.String? meid;
 
   /// Model name of device.
   ///
   /// Example: Pixel 3.
   ///
   /// Output only.
-  core.String model;
+  core.String? model;
 
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the Device in format: `devices/{device_id}`, where device_id is the unique
   /// id assigned to the Device.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Mobile or network operator of device, if available.
   ///
   /// Output only.
-  core.String networkOperator;
+  core.String? networkOperator;
 
   /// OS version of the device.
   ///
   /// Example: Android 8.1.0.
   ///
   /// Output only.
-  core.String osVersion;
+  core.String? osVersion;
 
   /// Domain name for Google accounts on device.
   ///
@@ -2891,7 +2795,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// domain has only one account. Examples: "com.example", "xyz.com".
   ///
   /// Output only.
-  core.List<core.String> otherAccounts;
+  core.List<core.String>? otherAccounts;
 
   /// Whether the device is owned by the company or an individual
   ///
@@ -2900,27 +2804,27 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// - "DEVICE_OWNERSHIP_UNSPECIFIED" : Default value. The value is unused.
   /// - "COMPANY" : Company owns the device.
   /// - "BYOD" : Bring Your Own Device (i.e. individual owns the device)
-  core.String ownerType;
+  core.String? ownerType;
 
   /// OS release version.
   ///
   /// Example: 6.0.
   ///
   /// Output only.
-  core.String releaseVersion;
+  core.String? releaseVersion;
 
   /// OS security patch update time on device.
   ///
   /// Output only.
-  core.String securityPatchTime;
+  core.String? securityPatchTime;
 
   /// Serial Number of device.
   ///
   /// Example: HT82V1A01076.
-  core.String serialNumber;
+  core.String? serialNumber;
 
   /// WiFi MAC addresses of device.
-  core.List<core.String> wifiMacAddresses;
+  core.List<core.String>? wifiMacAddresses;
 
   GoogleAppsCloudidentityDevicesV1Device();
 
@@ -3018,38 +2922,38 @@ class GoogleAppsCloudidentityDevicesV1Device {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (androidSpecificAttributes != null)
-          'androidSpecificAttributes': androidSpecificAttributes.toJson(),
-        if (assetTag != null) 'assetTag': assetTag,
-        if (basebandVersion != null) 'basebandVersion': basebandVersion,
-        if (bootloaderVersion != null) 'bootloaderVersion': bootloaderVersion,
-        if (brand != null) 'brand': brand,
-        if (buildNumber != null) 'buildNumber': buildNumber,
-        if (compromisedState != null) 'compromisedState': compromisedState,
-        if (createTime != null) 'createTime': createTime,
-        if (deviceType != null) 'deviceType': deviceType,
+          'androidSpecificAttributes': androidSpecificAttributes!.toJson(),
+        if (assetTag != null) 'assetTag': assetTag!,
+        if (basebandVersion != null) 'basebandVersion': basebandVersion!,
+        if (bootloaderVersion != null) 'bootloaderVersion': bootloaderVersion!,
+        if (brand != null) 'brand': brand!,
+        if (buildNumber != null) 'buildNumber': buildNumber!,
+        if (compromisedState != null) 'compromisedState': compromisedState!,
+        if (createTime != null) 'createTime': createTime!,
+        if (deviceType != null) 'deviceType': deviceType!,
         if (enabledDeveloperOptions != null)
-          'enabledDeveloperOptions': enabledDeveloperOptions,
+          'enabledDeveloperOptions': enabledDeveloperOptions!,
         if (enabledUsbDebugging != null)
-          'enabledUsbDebugging': enabledUsbDebugging,
-        if (encryptionState != null) 'encryptionState': encryptionState,
-        if (imei != null) 'imei': imei,
-        if (kernelVersion != null) 'kernelVersion': kernelVersion,
-        if (lastSyncTime != null) 'lastSyncTime': lastSyncTime,
-        if (managementState != null) 'managementState': managementState,
-        if (manufacturer != null) 'manufacturer': manufacturer,
-        if (meid != null) 'meid': meid,
-        if (model != null) 'model': model,
-        if (name != null) 'name': name,
-        if (networkOperator != null) 'networkOperator': networkOperator,
-        if (osVersion != null) 'osVersion': osVersion,
-        if (otherAccounts != null) 'otherAccounts': otherAccounts,
-        if (ownerType != null) 'ownerType': ownerType,
-        if (releaseVersion != null) 'releaseVersion': releaseVersion,
-        if (securityPatchTime != null) 'securityPatchTime': securityPatchTime,
-        if (serialNumber != null) 'serialNumber': serialNumber,
-        if (wifiMacAddresses != null) 'wifiMacAddresses': wifiMacAddresses,
+          'enabledUsbDebugging': enabledUsbDebugging!,
+        if (encryptionState != null) 'encryptionState': encryptionState!,
+        if (imei != null) 'imei': imei!,
+        if (kernelVersion != null) 'kernelVersion': kernelVersion!,
+        if (lastSyncTime != null) 'lastSyncTime': lastSyncTime!,
+        if (managementState != null) 'managementState': managementState!,
+        if (manufacturer != null) 'manufacturer': manufacturer!,
+        if (meid != null) 'meid': meid!,
+        if (model != null) 'model': model!,
+        if (name != null) 'name': name!,
+        if (networkOperator != null) 'networkOperator': networkOperator!,
+        if (osVersion != null) 'osVersion': osVersion!,
+        if (otherAccounts != null) 'otherAccounts': otherAccounts!,
+        if (ownerType != null) 'ownerType': ownerType!,
+        if (releaseVersion != null) 'releaseVersion': releaseVersion!,
+        if (securityPatchTime != null) 'securityPatchTime': securityPatchTime!,
+        if (serialNumber != null) 'serialNumber': serialNumber!,
+        if (wifiMacAddresses != null) 'wifiMacAddresses': wifiMacAddresses!,
       };
 }
 
@@ -3063,25 +2967,25 @@ class GoogleAppsCloudidentityDevicesV1DeviceUser {
   /// account is unknown or unspecified.
   /// - "COMPROMISED" : Device User Account is compromised.
   /// - "NOT_COMPROMISED" : Device User Account is not compromised.
-  core.String compromisedState;
+  core.String? compromisedState;
 
   /// When the user first signed in to the device
-  core.String createTime;
+  core.String? createTime;
 
   /// Most recent time when user registered with this service.
   ///
   /// Output only.
-  core.String firstSyncTime;
+  core.String? firstSyncTime;
 
   /// Default locale used on device, in IETF BCP-47 format.
   ///
   /// Output only.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Last time when user synced with policies.
   ///
   /// Output only.
-  core.String lastSyncTime;
+  core.String? lastSyncTime;
 
   /// Management state of the user on the device.
   ///
@@ -3096,29 +3000,29 @@ class GoogleAppsCloudidentityDevicesV1DeviceUser {
   /// - "PENDING_APPROVAL" : User is awaiting approval.
   /// - "UNENROLLED" : User is unenrolled from Advanced Windows Management, but
   /// the Windows account is still intact.
-  core.String managementState;
+  core.String? managementState;
 
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the DeviceUser in format: `devices/{device_id}/deviceUsers/{user_id}`,
   /// where user_id is the ID of the user associated with the user session.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Password state of the DeviceUser object
   /// Possible string values are:
   /// - "PASSWORD_STATE_UNSPECIFIED" : Password state not set.
   /// - "PASSWORD_SET" : Password set in object.
   /// - "PASSWORD_NOT_SET" : Password not set in object.
-  core.String passwordState;
+  core.String? passwordState;
 
   /// User agent on the device for this specific user
   ///
   /// Output only.
-  core.String userAgent;
+  core.String? userAgent;
 
   /// Email address of the user registered on the device.
-  core.String userEmail;
+  core.String? userEmail;
 
   GoogleAppsCloudidentityDevicesV1DeviceUser();
 
@@ -3155,29 +3059,29 @@ class GoogleAppsCloudidentityDevicesV1DeviceUser {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (compromisedState != null) 'compromisedState': compromisedState,
-        if (createTime != null) 'createTime': createTime,
-        if (firstSyncTime != null) 'firstSyncTime': firstSyncTime,
-        if (languageCode != null) 'languageCode': languageCode,
-        if (lastSyncTime != null) 'lastSyncTime': lastSyncTime,
-        if (managementState != null) 'managementState': managementState,
-        if (name != null) 'name': name,
-        if (passwordState != null) 'passwordState': passwordState,
-        if (userAgent != null) 'userAgent': userAgent,
-        if (userEmail != null) 'userEmail': userEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (compromisedState != null) 'compromisedState': compromisedState!,
+        if (createTime != null) 'createTime': createTime!,
+        if (firstSyncTime != null) 'firstSyncTime': firstSyncTime!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (lastSyncTime != null) 'lastSyncTime': lastSyncTime!,
+        if (managementState != null) 'managementState': managementState!,
+        if (name != null) 'name': name!,
+        if (passwordState != null) 'passwordState': passwordState!,
+        if (userAgent != null) 'userAgent': userAgent!,
+        if (userEmail != null) 'userEmail': userEmail!,
       };
 }
 
 /// Response message that is returned in ListClientStates.
 class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
   /// Client states meeting the list restrictions.
-  core.List<GoogleAppsCloudidentityDevicesV1ClientState> clientStates;
+  core.List<GoogleAppsCloudidentityDevicesV1ClientState>? clientStates;
 
   /// Token to retrieve the next page of results.
   ///
   /// Empty if there are no more results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleAppsCloudidentityDevicesV1ListClientStatesResponse();
 
@@ -3195,22 +3099,22 @@ class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clientStates != null)
-          'clientStates': clientStates.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'clientStates': clientStates!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message that is returned from the ListDeviceUsers method.
 class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
   /// Devices meeting the list restrictions.
-  core.List<GoogleAppsCloudidentityDevicesV1DeviceUser> deviceUsers;
+  core.List<GoogleAppsCloudidentityDevicesV1DeviceUser>? deviceUsers;
 
   /// Token to retrieve the next page of results.
   ///
   /// Empty if there are no more results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse();
 
@@ -3228,22 +3132,22 @@ class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deviceUsers != null)
-          'deviceUsers': deviceUsers.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'deviceUsers': deviceUsers!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message that is returned from the ListDevices method.
 class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
   /// Devices meeting the list restrictions.
-  core.List<GoogleAppsCloudidentityDevicesV1Device> devices;
+  core.List<GoogleAppsCloudidentityDevicesV1Device>? devices;
 
   /// Token to retrieve the next page of results.
   ///
   /// Empty if there are no more results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleAppsCloudidentityDevicesV1ListDevicesResponse();
 
@@ -3260,10 +3164,10 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (devices != null)
-          'devices': devices.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'devices': devices!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -3272,19 +3176,19 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
 class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
   /// The obfuscated customer Id that may be passed back to other Devices API
   /// methods such as List, Get, etc.
-  core.String customer;
+  core.String? customer;
 
   /// [Resource names](https://cloud.google.com/apis/design/resource_names) of
   /// the DeviceUsers in the format:
   /// `devices/{device_id}/deviceUsers/{user_resource_id}`, where device_id is
   /// the unique ID assigned to a Device and user_resource_id is the unique user
   /// ID
-  core.List<core.String> names;
+  core.List<core.String>? names;
 
   /// Token to retrieve the next page of results.
   ///
   /// Empty if there are no more results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse();
 
@@ -3303,10 +3207,10 @@ class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customer != null) 'customer': customer,
-        if (names != null) 'names': names,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customer != null) 'customer': customer!,
+        if (names != null) 'names': names!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -3321,7 +3225,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
   /// customer to whom the device belongs.
   ///
   /// Required.
-  core.String customer;
+  core.String? customer;
 
   GoogleAppsCloudidentityDevicesV1WipeDeviceRequest();
 
@@ -3331,8 +3235,8 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customer != null) 'customer': customer,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customer != null) 'customer': customer!,
       };
 }
 
@@ -3341,7 +3245,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
   /// Resultant Device object for the action.
   ///
   /// Note that asset tags will not be returned in the device object.
-  GoogleAppsCloudidentityDevicesV1Device device;
+  GoogleAppsCloudidentityDevicesV1Device? device;
 
   GoogleAppsCloudidentityDevicesV1WipeDeviceResponse();
 
@@ -3352,8 +3256,8 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (device != null) 'device': device.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (device != null) 'device': device!.toJson(),
       };
 }
 
@@ -3368,7 +3272,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest {
   /// customer to whom the device belongs.
   ///
   /// Required.
-  core.String customer;
+  core.String? customer;
 
   GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest();
 
@@ -3379,15 +3283,15 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customer != null) 'customer': customer,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customer != null) 'customer': customer!,
       };
 }
 
 /// Response message for wiping the user's account from the device.
 class GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse {
   /// Resultant DeviceUser object for the action.
-  GoogleAppsCloudidentityDevicesV1DeviceUser deviceUser;
+  GoogleAppsCloudidentityDevicesV1DeviceUser? deviceUser;
 
   GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse();
 
@@ -3399,8 +3303,8 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceUser != null) 'deviceUser': deviceUser.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceUser != null) 'deviceUser': deviceUser!.toJson(),
       };
 }
 
@@ -3412,25 +3316,25 @@ class Group {
   /// The time when the `Group` was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// An extended description to help users determine the purpose of a `Group`.
   ///
   /// Must not be longer than 4,096 characters.
-  core.String description;
+  core.String? description;
 
   /// The display name of the `Group`.
-  core.String displayName;
+  core.String? displayName;
 
   /// Dynamic group metadata like queries and status.
   ///
   /// Optional.
-  DynamicGroupMetadata dynamicGroupMetadata;
+  DynamicGroupMetadata? dynamicGroupMetadata;
 
   /// The `EntityKey` of the `Group`.
   ///
   /// Required. Immutable.
-  EntityKey groupKey;
+  EntityKey? groupKey;
 
   /// One or more label entries that apply to the Group.
   ///
@@ -3448,7 +3352,7 @@ class Group {
   /// {"system/groups/external": ""}.
   ///
   /// Required.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The [resource name](https://cloud.google.com/apis/design/resource_names)
   /// of the `Group`.
@@ -3456,7 +3360,7 @@ class Group {
   /// Shall be of the form `groups/{group_id}`.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The resource name of the entity under which this `Group` resides in the
   /// Cloud Identity resource hierarchy.
@@ -3465,12 +3369,12 @@ class Group {
   /// identity-mapped groups or `customers/{customer_id}` for Google Groups.
   ///
   /// Required. Immutable.
-  core.String parent;
+  core.String? parent;
 
   /// The time when the `Group` was last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Group();
 
@@ -3512,36 +3416,36 @@ class Group {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (dynamicGroupMetadata != null)
-          'dynamicGroupMetadata': dynamicGroupMetadata.toJson(),
-        if (groupKey != null) 'groupKey': groupKey.toJson(),
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (parent != null) 'parent': parent,
-        if (updateTime != null) 'updateTime': updateTime,
+          'dynamicGroupMetadata': dynamicGroupMetadata!.toJson(),
+        if (groupKey != null) 'groupKey': groupKey!.toJson(),
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// Message representing a transitive group of a user or a group.
 class GroupRelation {
   /// Display name for this group.
-  core.String displayName;
+  core.String? displayName;
 
   /// Resource name for this group.
-  core.String group;
+  core.String? group;
 
   /// Entity key has an id and a namespace.
   ///
   /// In case of discussion forums, the id will be an email address without a
   /// namespace.
-  EntityKey groupKey;
+  EntityKey? groupKey;
 
   /// Labels for Group resource.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The relation between the member and the transitive group.
   /// Possible string values are:
@@ -3553,10 +3457,10 @@ class GroupRelation {
   /// other.
   /// - "DIRECT_AND_INDIRECT" : The two entities have both a direct and an
   /// indirect membership with each other.
-  core.String relationType;
+  core.String? relationType;
 
   /// Membership roles of the member for the group.
-  core.List<TransitiveMembershipRole> roles;
+  core.List<TransitiveMembershipRole>? roles;
 
   GroupRelation();
 
@@ -3592,14 +3496,14 @@ class GroupRelation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (group != null) 'group': group,
-        if (groupKey != null) 'groupKey': groupKey.toJson(),
-        if (labels != null) 'labels': labels,
-        if (relationType != null) 'relationType': relationType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (group != null) 'group': group!,
+        if (groupKey != null) 'groupKey': groupKey!.toJson(),
+        if (labels != null) 'labels': labels!,
+        if (relationType != null) 'relationType': relationType!,
         if (roles != null)
-          'roles': roles.map((value) => value.toJson()).toList(),
+          'roles': roles!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3608,11 +3512,11 @@ class ListGroupsResponse {
   /// Groups returned in response to list request.
   ///
   /// The results are not sorted.
-  core.List<Group> groups;
+  core.List<Group>? groups;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results available for listing.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListGroupsResponse();
 
@@ -3628,21 +3532,21 @@ class ListGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (groups != null)
-          'groups': groups.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'groups': groups!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for MembershipsService.ListMemberships.
 class ListMembershipsResponse {
   /// The `Membership`s under the specified `parent`.
-  core.List<Membership> memberships;
+  core.List<Membership>? memberships;
 
   /// A continuation token to retrieve the next page of results, or empty if
   /// there are no more results available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListMembershipsResponse();
 
@@ -3658,10 +3562,10 @@ class ListMembershipsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (memberships != null)
-          'memberships': memberships.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'memberships': memberships!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -3669,7 +3573,7 @@ class ListMembershipsResponse {
 class LookupGroupNameResponse {
   /// The [resource name](https://cloud.google.com/apis/design/resource_names)
   /// of the looked-up `Group`.
-  core.String name;
+  core.String? name;
 
   LookupGroupNameResponse();
 
@@ -3679,8 +3583,8 @@ class LookupGroupNameResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3690,7 +3594,7 @@ class LookupMembershipNameResponse {
   /// of the looked-up `Membership`.
   ///
   /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.
-  core.String name;
+  core.String? name;
 
   LookupMembershipNameResponse();
 
@@ -3700,21 +3604,21 @@ class LookupMembershipNameResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
 /// Message representing a transitive membership of a group.
 class MemberRelation {
   /// Resource name for this member if member is a GROUP, otherwise it is empty.
-  core.String member;
+  core.String? member;
 
   /// Entity key has an id and a namespace.
   ///
   /// In case of discussion forums, the id will be an email address without a
   /// namespace.
-  core.List<EntityKey> preferredMemberKey;
+  core.List<EntityKey>? preferredMemberKey;
 
   /// The relation between the group and the transitive member.
   /// Possible string values are:
@@ -3726,10 +3630,10 @@ class MemberRelation {
   /// other.
   /// - "DIRECT_AND_INDIRECT" : The two entities have both a direct and an
   /// indirect membership with each other.
-  core.String relationType;
+  core.String? relationType;
 
   /// The membership role details (i.e name of role and expiry time).
-  core.List<TransitiveMembershipRole> roles;
+  core.List<TransitiveMembershipRole>? roles;
 
   MemberRelation();
 
@@ -3755,14 +3659,14 @@ class MemberRelation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (member != null) 'member': member,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (member != null) 'member': member!,
         if (preferredMemberKey != null)
           'preferredMemberKey':
-              preferredMemberKey.map((value) => value.toJson()).toList(),
-        if (relationType != null) 'relationType': relationType,
+              preferredMemberKey!.map((value) => value.toJson()).toList(),
+        if (relationType != null) 'relationType': relationType!,
         if (roles != null)
-          'roles': roles.map((value) => value.toJson()).toList(),
+          'roles': roles!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3774,7 +3678,7 @@ class Membership {
   /// The time when the `Membership` was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The [resource name](https://cloud.google.com/apis/design/resource_names)
   /// of the `Membership`.
@@ -3782,19 +3686,19 @@ class Membership {
   /// Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The `EntityKey` of the member.
   ///
   /// Required. Immutable.
-  EntityKey preferredMemberKey;
+  EntityKey? preferredMemberKey;
 
   /// The `MembershipRole`s that apply to the `Membership`.
   ///
   /// If unspecified, defaults to a single `MembershipRole` with `name`
   /// `MEMBER`. Must not contain duplicate `MembershipRole`s with the same
   /// `name`.
-  core.List<MembershipRole> roles;
+  core.List<MembershipRole>? roles;
 
   /// The type of the membership.
   ///
@@ -3805,12 +3709,12 @@ class Membership {
   /// - "SERVICE_ACCOUNT" : Represents service account type.
   /// - "GROUP" : Represents group type.
   /// - "OTHER" : Represents other type.
-  core.String type;
+  core.String? type;
 
   /// The time when the `Membership` was last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Membership();
 
@@ -3839,15 +3743,15 @@ class Membership {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
         if (preferredMemberKey != null)
-          'preferredMemberKey': preferredMemberKey.toJson(),
+          'preferredMemberKey': preferredMemberKey!.toJson(),
         if (roles != null)
-          'roles': roles.map((value) => value.toJson()).toList(),
-        if (type != null) 'type': type,
-        if (updateTime != null) 'updateTime': updateTime,
+          'roles': roles!.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3859,10 +3763,10 @@ class MembershipAdjacencyList {
   /// Note: Fields returned here will help identify the specific Membership
   /// resource (e.g name, preferred_member_key and role), but may not be a
   /// comprehensive list of all fields.
-  core.List<Membership> edges;
+  core.List<Membership>? edges;
 
   /// Resource name of the group that the members belong to.
-  core.String group;
+  core.String? group;
 
   MembershipAdjacencyList();
 
@@ -3878,10 +3782,10 @@ class MembershipAdjacencyList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (edges != null)
-          'edges': edges.map((value) => value.toJson()).toList(),
-        if (group != null) 'group': group,
+          'edges': edges!.map((value) => value.toJson()).toList(),
+        if (group != null) 'group': group!,
       };
 }
 
@@ -3893,12 +3797,12 @@ class MembershipRole {
   ///
   /// Expiry details are only supported for `MEMBER` `MembershipRoles`. May be
   /// set if `name` is `MEMBER`. Must not be set if `name` is any other value.
-  ExpiryDetail expiryDetail;
+  ExpiryDetail? expiryDetail;
 
   /// The name of the `MembershipRole`.
   ///
   /// Must be one of `OWNER`, `MANAGER`, `MEMBER`.
-  core.String name;
+  core.String? name;
 
   MembershipRole();
 
@@ -3912,9 +3816,9 @@ class MembershipRole {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expiryDetail != null) 'expiryDetail': expiryDetail.toJson(),
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expiryDetail != null) 'expiryDetail': expiryDetail!.toJson(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3924,7 +3828,7 @@ class ModifyMembershipRolesRequest {
   ///
   /// Adding or removing roles in the same request as updating roles is not
   /// supported. Must not be set if `update_roles_params` is set.
-  core.List<MembershipRole> addRoles;
+  core.List<MembershipRole>? addRoles;
 
   /// The `name`s of the `MembershipRole`s to be removed.
   ///
@@ -3933,13 +3837,13 @@ class ModifyMembershipRolesRequest {
   /// you wish to delete a `Membership`, call
   /// MembershipsService.DeleteMembership instead. Must not contain `MEMBER`.
   /// Must not be set if `update_roles_params` is set.
-  core.List<core.String> removeRoles;
+  core.List<core.String>? removeRoles;
 
   /// The `MembershipRole`s to be updated.
   ///
   /// Updating roles in the same request as adding or removing roles is not
   /// supported. Must not be set if either `add_roles` or `remove_roles` is set.
-  core.List<UpdateMembershipRolesParams> updateRolesParams;
+  core.List<UpdateMembershipRolesParams>? updateRolesParams;
 
   ModifyMembershipRolesRequest();
 
@@ -3964,20 +3868,20 @@ class ModifyMembershipRolesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (addRoles != null)
-          'addRoles': addRoles.map((value) => value.toJson()).toList(),
-        if (removeRoles != null) 'removeRoles': removeRoles,
+          'addRoles': addRoles!.map((value) => value.toJson()).toList(),
+        if (removeRoles != null) 'removeRoles': removeRoles!,
         if (updateRolesParams != null)
           'updateRolesParams':
-              updateRolesParams.map((value) => value.toJson()).toList(),
+              updateRolesParams!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The response message for MembershipsService.ModifyMembershipRoles.
 class ModifyMembershipRolesResponse {
   /// The `Membership` resource after modifying its `MembershipRole`s.
-  Membership membership;
+  Membership? membership;
 
   ModifyMembershipRolesResponse();
 
@@ -3988,8 +3892,8 @@ class ModifyMembershipRolesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (membership != null) 'membership': membership.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (membership != null) 'membership': membership!.toJson(),
       };
 }
 
@@ -4000,10 +3904,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -4014,14 +3918,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -4034,7 +3938,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -4069,23 +3973,23 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
 /// The response message for GroupsService.SearchGroups.
 class SearchGroupsResponse {
   /// The `Group`s that match the search query.
-  core.List<Group> groups;
+  core.List<Group>? groups;
 
   /// A continuation token to retrieve the next page of results, or empty if
   /// there are no more results available.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   SearchGroupsResponse();
 
@@ -4101,21 +4005,21 @@ class SearchGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (groups != null)
-          'groups': groups.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'groups': groups!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for MembershipsService.SearchTransitiveGroups.
 class SearchTransitiveGroupsResponse {
   /// List of transitive groups satisfying the query.
-  core.List<GroupRelation> memberships;
+  core.List<GroupRelation>? memberships;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results available for listing.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   SearchTransitiveGroupsResponse();
 
@@ -4131,21 +4035,21 @@ class SearchTransitiveGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (memberships != null)
-          'memberships': memberships.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'memberships': memberships!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for MembershipsService.SearchTransitiveMemberships.
 class SearchTransitiveMembershipsResponse {
   /// List of transitive members satisfying the query.
-  core.List<MemberRelation> memberships;
+  core.List<MemberRelation>? memberships;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   SearchTransitiveMembershipsResponse();
 
@@ -4161,10 +4065,10 @@ class SearchTransitiveMembershipsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (memberships != null)
-          'memberships': memberships.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'memberships': memberships!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -4177,7 +4081,7 @@ class SearchTransitiveMembershipsResponse {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -4185,13 +4089,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -4215,10 +4119,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -4228,7 +4132,7 @@ class TransitiveMembershipRole {
   ///
   /// Currently supported TransitiveMembershipRoles: `"MEMBER"`, `"OWNER"`, and
   /// `"MANAGER"`.
-  core.String role;
+  core.String? role;
 
   TransitiveMembershipRole();
 
@@ -4238,8 +4142,8 @@ class TransitiveMembershipRole {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (role != null) 'role': role!,
       };
 }
 
@@ -4248,12 +4152,12 @@ class UpdateMembershipRolesParams {
   /// The fully-qualified names of fields to update.
   ///
   /// May only contain the field `expiry_detail`.
-  core.String fieldMask;
+  core.String? fieldMask;
 
   /// The `MembershipRole`s to be updated.
   ///
   /// Only `MEMBER` `MembershipRole` can currently be updated.
-  MembershipRole membershipRole;
+  MembershipRole? membershipRole;
 
   UpdateMembershipRolesParams();
 
@@ -4267,9 +4171,9 @@ class UpdateMembershipRolesParams {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fieldMask != null) 'fieldMask': fieldMask,
-        if (membershipRole != null) 'membershipRole': membershipRole.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fieldMask != null) 'fieldMask': fieldMask!,
+        if (membershipRole != null) 'membershipRole': membershipRole!.toJson(),
       };
 }
 
@@ -4282,11 +4186,11 @@ class UpdateMembershipRolesParams {
 /// account.
 class UserInvitation {
   /// Number of invitation emails sent to the user.
-  core.String mailsSentCount;
+  core.String? mailsSentCount;
 
   /// Shall be of the form
   /// `customers/{customer}/userinvitations/{user_email_address}`.
-  core.String name;
+  core.String? name;
 
   /// State of the `UserInvitation`.
   /// Possible string values are:
@@ -4298,10 +4202,10 @@ class UserInvitation {
   /// - "ACCEPTED" : The user has accepted the invitation and is part of the
   /// organization.
   /// - "DECLINED" : The user declined the invitation.
-  core.String state;
+  core.String? state;
 
   /// Time when the `UserInvitation` was last updated.
-  core.String updateTime;
+  core.String? updateTime;
 
   UserInvitation();
 
@@ -4320,10 +4224,10 @@ class UserInvitation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (mailsSentCount != null) 'mailsSentCount': mailsSentCount,
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (mailsSentCount != null) 'mailsSentCount': mailsSentCount!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }

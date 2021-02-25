@@ -95,11 +95,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -139,14 +136,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -212,14 +206,10 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> create(
     Instance request,
     core.String parent, {
-    core.String instanceId,
-    core.String $fields,
+    core.String? instanceId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (instanceId != null) 'instanceId': [instanceId],
       if ($fields != null) 'fields': [$fields],
@@ -261,11 +251,8 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -309,13 +296,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> export(
     ExportInstanceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -358,13 +341,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> failover(
     FailoverInstanceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -403,11 +382,8 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<Instance> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -447,11 +423,8 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<InstanceAuthString> getAuthString(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -498,13 +471,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> import(
     ImportInstanceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -557,13 +526,10 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -621,14 +587,10 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> patch(
     Instance request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -671,13 +633,9 @@ class ProjectsLocationsInstancesResource {
   async.Future<Operation> upgrade(
     UpgradeInstanceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -730,11 +688,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -774,11 +729,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -816,11 +768,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -869,14 +818,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -911,7 +857,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request for Export.
@@ -919,7 +865,7 @@ class ExportInstanceRequest {
   /// Specify data to be exported.
   ///
   /// Required.
-  OutputConfig outputConfig;
+  OutputConfig? outputConfig;
 
   ExportInstanceRequest();
 
@@ -930,8 +876,8 @@ class ExportInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (outputConfig != null) 'outputConfig': outputConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
       };
 }
 
@@ -952,7 +898,7 @@ class FailoverInstanceRequest {
   /// certain threshold.
   /// - "FORCE_DATA_LOSS" : Instance failover will be performed without data
   /// loss control.
-  core.String dataProtectionMode;
+  core.String? dataProtectionMode;
 
   FailoverInstanceRequest();
 
@@ -962,9 +908,9 @@ class FailoverInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataProtectionMode != null)
-          'dataProtectionMode': dataProtectionMode,
+          'dataProtectionMode': dataProtectionMode!,
       };
 }
 
@@ -975,7 +921,7 @@ class GcsDestination {
   /// Existing files will be overwritten.
   ///
   /// Required.
-  core.String uri;
+  core.String? uri;
 
   GcsDestination();
 
@@ -985,8 +931,8 @@ class GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -997,7 +943,7 @@ class GcsSource {
   /// (e.g. 'gs://my_bucket/my_object').
   ///
   /// Required.
-  core.String uri;
+  core.String? uri;
 
   GcsSource();
 
@@ -1007,8 +953,8 @@ class GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -1025,14 +971,14 @@ class GoogleCloudRedisV1LocationMetadata {
   /// fields when creating a Redis instance.
   ///
   /// Output only.
-  core.Map<core.String, GoogleCloudRedisV1ZoneMetadata> availableZones;
+  core.Map<core.String, GoogleCloudRedisV1ZoneMetadata>? availableZones;
 
   GoogleCloudRedisV1LocationMetadata();
 
   GoogleCloudRedisV1LocationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('availableZones')) {
       availableZones = (_json['availableZones'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -1043,9 +989,9 @@ class GoogleCloudRedisV1LocationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (availableZones != null)
-          'availableZones': availableZones
+          'availableZones': availableZones!
               .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
@@ -1053,25 +999,25 @@ class GoogleCloudRedisV1LocationMetadata {
 /// Represents the v1 metadata of the long-running operation.
 class GoogleCloudRedisV1OperationMetadata {
   /// API version.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// Specifies if cancellation was requested for the operation.
-  core.bool cancelRequested;
+  core.bool? cancelRequested;
 
   /// Creation timestamp.
-  core.String createTime;
+  core.String? createTime;
 
   /// End timestamp.
-  core.String endTime;
+  core.String? endTime;
 
   /// Operation status details.
-  core.String statusDetail;
+  core.String? statusDetail;
 
   /// Operation target.
-  core.String target;
+  core.String? target;
 
   /// Operation verb.
-  core.String verb;
+  core.String? verb;
 
   GoogleCloudRedisV1OperationMetadata();
 
@@ -1099,14 +1045,14 @@ class GoogleCloudRedisV1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (cancelRequested != null) 'cancelRequested': cancelRequested,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
-        if (statusDetail != null) 'statusDetail': statusDetail,
-        if (target != null) 'target': target,
-        if (verb != null) 'verb': verb,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (cancelRequested != null) 'cancelRequested': cancelRequested!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (statusDetail != null) 'statusDetail': statusDetail!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
@@ -1120,7 +1066,7 @@ class GoogleCloudRedisV1ZoneMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request for Import.
@@ -1128,7 +1074,7 @@ class ImportInstanceRequest {
   /// Specify data to be imported.
   ///
   /// Required.
-  InputConfig inputConfig;
+  InputConfig? inputConfig;
 
   ImportInstanceRequest();
 
@@ -1139,15 +1085,15 @@ class ImportInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (inputConfig != null) 'inputConfig': inputConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
       };
 }
 
 /// The input content
 class InputConfig {
   /// Google Cloud Storage location where input content is located.
-  GcsSource gcsSource;
+  GcsSource? gcsSource;
 
   InputConfig();
 
@@ -1158,8 +1104,8 @@ class InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
       };
 }
 
@@ -1172,7 +1118,7 @@ class Instance {
   /// location_id.
   ///
   /// Optional.
-  core.String alternativeLocationId;
+  core.String? alternativeLocationId;
 
   /// Indicates whether OSS Redis AUTH is enabled for the instance.
   ///
@@ -1180,7 +1126,7 @@ class Instance {
   /// meaning AUTH is disabled.
   ///
   /// Optional.
-  core.bool authEnabled;
+  core.bool? authEnabled;
 
   /// The full name of the Google Compute Engine
   /// [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is
@@ -1189,7 +1135,7 @@ class Instance {
   /// If left unspecified, the `default` network will be used.
   ///
   /// Optional.
-  core.String authorizedNetwork;
+  core.String? authorizedNetwork;
 
   /// The network connect mode of the Redis instance.
   ///
@@ -1203,12 +1149,12 @@ class Instance {
   /// - "PRIVATE_SERVICE_ACCESS" : Connect your Memorystore for Redis instance
   /// using Private Service Access. Private services access provides an IP
   /// address range for multiple Google Cloud services, including Memorystore.
-  core.String connectMode;
+  core.String? connectMode;
 
   /// The time the instance was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The current zone where the Redis endpoint is placed.
   ///
@@ -1218,19 +1164,19 @@ class Instance {
   /// a failover event.
   ///
   /// Output only.
-  core.String currentLocationId;
+  core.String? currentLocationId;
 
   /// An arbitrary and optional user-provided name for the instance.
-  core.String displayName;
+  core.String? displayName;
 
   /// Hostname or IP address of the exposed Redis endpoint used by clients to
   /// connect to the service.
   ///
   /// Output only.
-  core.String host;
+  core.String? host;
 
   /// Resource labels to represent user provided metadata
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The zone where the instance will be provisioned.
   ///
@@ -1240,12 +1186,12 @@ class Instance {
   /// provided, it must be different from location_id.
   ///
   /// Optional.
-  core.String locationId;
+  core.String? locationId;
 
   /// Redis memory size in GiB.
   ///
   /// Required.
-  core.int memorySizeGb;
+  core.int? memorySizeGb;
 
   /// Unique name of the resource in this scope including project and location
   /// using the form:
@@ -1258,7 +1204,7 @@ class Instance {
   /// Refer to location_id and alternative_location_id fields for more details.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Cloud IAM identity used by import / export operations to transfer data
   /// to/from Cloud Storage.
@@ -1267,12 +1213,12 @@ class Instance {
   /// instance so should be checked before each import/export operation.
   ///
   /// Output only.
-  core.String persistenceIamIdentity;
+  core.String? persistenceIamIdentity;
 
   /// The port number of the exposed Redis endpoint.
   ///
   /// Output only.
-  core.int port;
+  core.int? port;
 
   /// Redis configuration parameters, according to
   /// http://redis.io/topics/config.
@@ -1283,7 +1229,7 @@ class Instance {
   /// version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
   ///
   /// Optional.
-  core.Map<core.String, core.String> redisConfigs;
+  core.Map<core.String, core.String>? redisConfigs;
 
   /// The version of Redis software.
   ///
@@ -1293,7 +1239,7 @@ class Instance {
   /// 5.0 compatibility
   ///
   /// Optional.
-  core.String redisVersion;
+  core.String? redisVersion;
 
   /// The CIDR range of internal addresses that are reserved for this instance.
   ///
@@ -1302,12 +1248,12 @@ class Instance {
   /// with existing subnets in an authorized network.
   ///
   /// Optional.
-  core.String reservedIpRange;
+  core.String? reservedIpRange;
 
   /// List of server CA certificates for the instance.
   ///
   /// Output only.
-  core.List<TlsCertificate> serverCaCerts;
+  core.List<TlsCertificate>? serverCaCerts;
 
   /// The current state of this instance.
   ///
@@ -1326,13 +1272,13 @@ class Instance {
   /// affected).
   /// - "FAILING_OVER" : Redis instance is failing over (availability may be
   /// affected).
-  core.String state;
+  core.String? state;
 
   /// Additional information about the current status of this instance, if
   /// available.
   ///
   /// Output only.
-  core.String statusMessage;
+  core.String? statusMessage;
 
   /// The service tier of the instance.
   ///
@@ -1342,7 +1288,7 @@ class Instance {
   /// - "BASIC" : BASIC tier: standalone instance
   /// - "STANDARD_HA" : STANDARD_HA tier: highly available primary/replica
   /// instances
-  core.String tier;
+  core.String? tier;
 
   /// The TLS mode of the Redis instance.
   ///
@@ -1354,7 +1300,7 @@ class Instance {
   /// - "SERVER_AUTHENTICATION" : Client to Server traffic encryption enabled
   /// with server authentication.
   /// - "DISABLED" : TLS is disabled for the instance.
-  core.String transitEncryptionMode;
+  core.String? transitEncryptionMode;
 
   Instance();
 
@@ -1443,41 +1389,41 @@ class Instance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (alternativeLocationId != null)
-          'alternativeLocationId': alternativeLocationId,
-        if (authEnabled != null) 'authEnabled': authEnabled,
-        if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork,
-        if (connectMode != null) 'connectMode': connectMode,
-        if (createTime != null) 'createTime': createTime,
-        if (currentLocationId != null) 'currentLocationId': currentLocationId,
-        if (displayName != null) 'displayName': displayName,
-        if (host != null) 'host': host,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (memorySizeGb != null) 'memorySizeGb': memorySizeGb,
-        if (name != null) 'name': name,
+          'alternativeLocationId': alternativeLocationId!,
+        if (authEnabled != null) 'authEnabled': authEnabled!,
+        if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork!,
+        if (connectMode != null) 'connectMode': connectMode!,
+        if (createTime != null) 'createTime': createTime!,
+        if (currentLocationId != null) 'currentLocationId': currentLocationId!,
+        if (displayName != null) 'displayName': displayName!,
+        if (host != null) 'host': host!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (memorySizeGb != null) 'memorySizeGb': memorySizeGb!,
+        if (name != null) 'name': name!,
         if (persistenceIamIdentity != null)
-          'persistenceIamIdentity': persistenceIamIdentity,
-        if (port != null) 'port': port,
-        if (redisConfigs != null) 'redisConfigs': redisConfigs,
-        if (redisVersion != null) 'redisVersion': redisVersion,
-        if (reservedIpRange != null) 'reservedIpRange': reservedIpRange,
+          'persistenceIamIdentity': persistenceIamIdentity!,
+        if (port != null) 'port': port!,
+        if (redisConfigs != null) 'redisConfigs': redisConfigs!,
+        if (redisVersion != null) 'redisVersion': redisVersion!,
+        if (reservedIpRange != null) 'reservedIpRange': reservedIpRange!,
         if (serverCaCerts != null)
           'serverCaCerts':
-              serverCaCerts.map((value) => value.toJson()).toList(),
-        if (state != null) 'state': state,
-        if (statusMessage != null) 'statusMessage': statusMessage,
-        if (tier != null) 'tier': tier,
+              serverCaCerts!.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state!,
+        if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (tier != null) 'tier': tier!,
         if (transitEncryptionMode != null)
-          'transitEncryptionMode': transitEncryptionMode,
+          'transitEncryptionMode': transitEncryptionMode!,
       };
 }
 
 /// Instance AUTH string details.
 class InstanceAuthString {
   /// AUTH string set on the instance.
-  core.String authString;
+  core.String? authString;
 
   InstanceAuthString();
 
@@ -1487,8 +1433,8 @@ class InstanceAuthString {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (authString != null) 'authString': authString,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (authString != null) 'authString': authString!,
       };
 }
 
@@ -1505,14 +1451,14 @@ class ListInstancesResponse {
   /// `projects/{project_id}/locations/{location_id}/instances/`- and the
   /// `status` field set to ERROR and `status_message` field set to "location
   /// not available for ListInstances".
-  core.List<Instance> instances;
+  core.List<Instance>? instances;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListInstancesResponse();
 
@@ -1533,21 +1479,21 @@ class ListInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (instances != null)
-          'instances': instances.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+          'instances': instances!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -1563,20 +1509,20 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -1592,10 +1538,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1604,17 +1550,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Resource ID for the region.
   ///
   /// For example: "us-east1".
-  core.String locationId;
+  core.String? locationId;
 
   /// The set of available zones in the location.
   ///
@@ -1626,12 +1572,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Full resource name for the region.
   ///
   /// For example: "projects/example-project/locations/us-east1".
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -1665,12 +1611,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1681,10 +1627,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// { `createTime`: The time the operation was created.
   ///
@@ -1699,14 +1645,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -1719,7 +1665,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -1754,19 +1700,19 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
 /// The output content
 class OutputConfig {
   /// Google Cloud Storage destination for output content.
-  GcsDestination gcsDestination;
+  GcsDestination? gcsDestination;
 
   OutputConfig();
 
@@ -1777,8 +1723,8 @@ class OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
       };
 }
 
@@ -1791,7 +1737,7 @@ class OutputConfig {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1799,13 +1745,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -1829,37 +1775,37 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
 /// TlsCertificate Resource
 class TlsCertificate {
   /// PEM representation.
-  core.String cert;
+  core.String? cert;
 
   /// The time when the certificate was created in
   /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
   /// `2020-05-18T00:00:00.094Z`.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time when the certificate expires in
   /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
   /// `2020-05-18T00:00:00.094Z`.
   ///
   /// Output only.
-  core.String expireTime;
+  core.String? expireTime;
 
   /// Serial number, as extracted from the certificate.
-  core.String serialNumber;
+  core.String? serialNumber;
 
   /// Sha1 Fingerprint of the certificate.
-  core.String sha1Fingerprint;
+  core.String? sha1Fingerprint;
 
   TlsCertificate();
 
@@ -1881,12 +1827,12 @@ class TlsCertificate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cert != null) 'cert': cert,
-        if (createTime != null) 'createTime': createTime,
-        if (expireTime != null) 'expireTime': expireTime,
-        if (serialNumber != null) 'serialNumber': serialNumber,
-        if (sha1Fingerprint != null) 'sha1Fingerprint': sha1Fingerprint,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cert != null) 'cert': cert!,
+        if (createTime != null) 'createTime': createTime!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (serialNumber != null) 'serialNumber': serialNumber!,
+        if (sha1Fingerprint != null) 'sha1Fingerprint': sha1Fingerprint!,
       };
 }
 
@@ -1895,7 +1841,7 @@ class UpgradeInstanceRequest {
   /// Specifies the target version of Redis software to upgrade to.
   ///
   /// Required.
-  core.String redisVersion;
+  core.String? redisVersion;
 
   UpgradeInstanceRequest();
 
@@ -1905,7 +1851,7 @@ class UpgradeInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (redisVersion != null) 'redisVersion': redisVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (redisVersion != null) 'redisVersion': redisVersion!,
       };
 }

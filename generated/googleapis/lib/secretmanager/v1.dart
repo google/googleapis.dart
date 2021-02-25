@@ -94,11 +94,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -138,14 +135,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -198,13 +192,9 @@ class ProjectsSecretsResource {
   async.Future<SecretVersion> addVersion(
     AddSecretVersionRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -251,14 +241,10 @@ class ProjectsSecretsResource {
   async.Future<Secret> create(
     Secret request,
     core.String parent, {
-    core.String secretId,
-    core.String $fields,
+    core.String? secretId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (secretId != null) 'secretId': [secretId],
       if ($fields != null) 'fields': [$fields],
@@ -296,11 +282,8 @@ class ProjectsSecretsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -335,11 +318,8 @@ class ProjectsSecretsResource {
   /// this method will complete with the same error.
   async.Future<Secret> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -385,12 +365,9 @@ class ProjectsSecretsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -436,13 +413,10 @@ class ProjectsSecretsResource {
   /// this method will complete with the same error.
   async.Future<ListSecretsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -486,14 +460,10 @@ class ProjectsSecretsResource {
   async.Future<Secret> patch(
     Secret request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -537,13 +507,9 @@ class ProjectsSecretsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -590,13 +556,9 @@ class ProjectsSecretsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -646,11 +608,8 @@ class ProjectsSecretsVersionsResource {
   /// this method will complete with the same error.
   async.Future<AccessSecretVersionResponse> access(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -694,13 +653,9 @@ class ProjectsSecretsVersionsResource {
   async.Future<SecretVersion> destroy(
     DestroySecretVersionRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -744,13 +699,9 @@ class ProjectsSecretsVersionsResource {
   async.Future<SecretVersion> disable(
     DisableSecretVersionRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -794,13 +745,9 @@ class ProjectsSecretsVersionsResource {
   async.Future<SecretVersion> enable(
     EnableSecretVersionRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -843,11 +790,8 @@ class ProjectsSecretsVersionsResource {
   /// this method will complete with the same error.
   async.Future<SecretVersion> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -892,13 +836,10 @@ class ProjectsSecretsVersionsResource {
   /// this method will complete with the same error.
   async.Future<ListSecretVersionsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -922,10 +863,10 @@ class ProjectsSecretsVersionsResource {
 class AccessSecretVersionResponse {
   /// The resource name of the SecretVersion in the format `projects / *
   /// /secrets / * /versions / * `.
-  core.String name;
+  core.String? name;
 
   /// Secret payload
-  SecretPayload payload;
+  SecretPayload? payload;
 
   AccessSecretVersionResponse();
 
@@ -939,9 +880,9 @@ class AccessSecretVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (payload != null) 'payload': payload.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (payload != null) 'payload': payload!.toJson(),
       };
 }
 
@@ -950,7 +891,7 @@ class AddSecretVersionRequest {
   /// The secret payload of the SecretVersion.
   ///
   /// Required.
-  SecretPayload payload;
+  SecretPayload? payload;
 
   AddSecretVersionRequest();
 
@@ -961,8 +902,8 @@ class AddSecretVersionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (payload != null) 'payload': payload.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (payload != null) 'payload': payload!.toJson(),
       };
 }
 
@@ -985,13 +926,13 @@ class AddSecretVersionRequest {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -1007,11 +948,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -1026,7 +967,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -1034,7 +975,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -1049,9 +990,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -1066,7 +1007,7 @@ class Automatic {
   /// existing SecretVersions.
   ///
   /// Optional.
-  CustomerManagedEncryption customerManagedEncryption;
+  CustomerManagedEncryption? customerManagedEncryption;
 
   Automatic();
 
@@ -1078,9 +1019,9 @@ class Automatic {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customerManagedEncryption != null)
-          'customerManagedEncryption': customerManagedEncryption.toJson(),
+          'customerManagedEncryption': customerManagedEncryption!.toJson(),
       };
 }
 
@@ -1093,7 +1034,7 @@ class AutomaticStatus {
   /// Only populated if customer-managed encryption is used.
   ///
   /// Output only.
-  CustomerManagedEncryptionStatus customerManagedEncryption;
+  CustomerManagedEncryptionStatus? customerManagedEncryption;
 
   AutomaticStatus();
 
@@ -1105,9 +1046,9 @@ class AutomaticStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customerManagedEncryption != null)
-          'customerManagedEncryption': customerManagedEncryption.toJson(),
+          'customerManagedEncryption': customerManagedEncryption!.toJson(),
       };
 }
 
@@ -1121,7 +1062,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -1153,12 +1094,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -1177,10 +1118,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1197,7 +1138,7 @@ class CustomerManagedEncryption {
   /// * /keyRings / * /cryptoKeys / * `.
   ///
   /// Required.
-  core.String kmsKeyName;
+  core.String? kmsKeyName;
 
   CustomerManagedEncryption();
 
@@ -1207,8 +1148,8 @@ class CustomerManagedEncryption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
       };
 }
 
@@ -1219,7 +1160,7 @@ class CustomerManagedEncryptionStatus {
   /// /keyRings / * /cryptoKeys / * /versions / * `.
   ///
   /// Required.
-  core.String kmsKeyVersionName;
+  core.String? kmsKeyVersionName;
 
   CustomerManagedEncryptionStatus();
 
@@ -1229,8 +1170,8 @@ class CustomerManagedEncryptionStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
       };
 }
 
@@ -1242,7 +1183,7 @@ class DestroySecretVersionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for SecretManagerService.DisableSecretVersion.
@@ -1253,7 +1194,7 @@ class DisableSecretVersionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1270,7 +1211,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for SecretManagerService.EnableSecretVersion.
@@ -1281,7 +1222,7 @@ class EnableSecretVersionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1309,24 +1250,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -1345,21 +1286,21 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -1375,10 +1316,10 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1388,14 +1329,14 @@ class ListSecretVersionsResponse {
   ///
   /// Pass this value in ListSecretVersionsRequest.page_token to retrieve the
   /// next page.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total number of SecretVersions.
-  core.int totalSize;
+  core.int? totalSize;
 
   /// The list of SecretVersions sorted in reverse by create_time (newest
   /// first).
-  core.List<SecretVersion> versions;
+  core.List<SecretVersion>? versions;
 
   ListSecretVersionsResponse();
 
@@ -1414,11 +1355,11 @@ class ListSecretVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
         if (versions != null)
-          'versions': versions.map((value) => value.toJson()).toList(),
+          'versions': versions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1428,13 +1369,13 @@ class ListSecretsResponse {
   ///
   /// Pass this value in ListSecretsRequest.page_token to retrieve the next
   /// page.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of Secrets sorted in reverse by create_time (newest first).
-  core.List<Secret> secrets;
+  core.List<Secret>? secrets;
 
   /// The total number of Secrets.
-  core.int totalSize;
+  core.int? totalSize;
 
   ListSecretsResponse();
 
@@ -1453,11 +1394,11 @@ class ListSecretsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (secrets != null)
-          'secrets': secrets.map((value) => value.toJson()).toList(),
-        if (totalSize != null) 'totalSize': totalSize,
+          'secrets': secrets!.map((value) => value.toJson()).toList(),
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
@@ -1466,17 +1407,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -1484,12 +1425,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -1523,12 +1464,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1565,14 +1506,14 @@ class Location {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -1586,8 +1527,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -1611,7 +1552,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -1636,13 +1577,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1656,12 +1597,12 @@ class Replica {
   /// existing SecretVersions.
   ///
   /// Optional.
-  CustomerManagedEncryption customerManagedEncryption;
+  CustomerManagedEncryption? customerManagedEncryption;
 
   /// The canonical IDs of the location to replicate data.
   ///
   /// For example: `"us-east1"`.
-  core.String location;
+  core.String? location;
 
   Replica();
 
@@ -1676,10 +1617,10 @@ class Replica {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customerManagedEncryption != null)
-          'customerManagedEncryption': customerManagedEncryption.toJson(),
-        if (location != null) 'location': location,
+          'customerManagedEncryption': customerManagedEncryption!.toJson(),
+        if (location != null) 'location': location!,
       };
 }
 
@@ -1690,14 +1631,14 @@ class ReplicaStatus {
   /// Only populated if customer-managed encryption is used.
   ///
   /// Output only.
-  CustomerManagedEncryptionStatus customerManagedEncryption;
+  CustomerManagedEncryptionStatus? customerManagedEncryption;
 
   /// The canonical ID of the replica location.
   ///
   /// For example: `"us-east1"`.
   ///
   /// Output only.
-  core.String location;
+  core.String? location;
 
   ReplicaStatus();
 
@@ -1712,20 +1653,20 @@ class ReplicaStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customerManagedEncryption != null)
-          'customerManagedEncryption': customerManagedEncryption.toJson(),
-        if (location != null) 'location': location,
+          'customerManagedEncryption': customerManagedEncryption!.toJson(),
+        if (location != null) 'location': location!,
       };
 }
 
 /// A policy that defines the replication and encryption configuration of data.
 class Replication {
   /// The Secret will automatically be replicated without any restrictions.
-  Automatic automatic;
+  Automatic? automatic;
 
   /// The Secret will only be replicated into the locations specified.
-  UserManaged userManaged;
+  UserManaged? userManaged;
 
   Replication();
 
@@ -1740,9 +1681,9 @@ class Replication {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (automatic != null) 'automatic': automatic.toJson(),
-        if (userManaged != null) 'userManaged': userManaged.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (automatic != null) 'automatic': automatic!.toJson(),
+        if (userManaged != null) 'userManaged': userManaged!.toJson(),
       };
 }
 
@@ -1752,13 +1693,13 @@ class ReplicationStatus {
   /// replication.
   ///
   /// Only populated if the parent Secret has an automatic replication policy.
-  AutomaticStatus automatic;
+  AutomaticStatus? automatic;
 
   /// Describes the replication status of a SecretVersion with user-managed
   /// replication.
   ///
   /// Only populated if the parent Secret has a user-managed replication policy.
-  UserManagedStatus userManaged;
+  UserManagedStatus? userManaged;
 
   ReplicationStatus();
 
@@ -1773,9 +1714,9 @@ class ReplicationStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (automatic != null) 'automatic': automatic.toJson(),
-        if (userManaged != null) 'userManaged': userManaged.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (automatic != null) 'automatic': automatic!.toJson(),
+        if (userManaged != null) 'userManaged': userManaged!.toJson(),
       };
 }
 
@@ -1787,14 +1728,14 @@ class Secret {
   /// The time at which the Secret was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Timestamp in UTC when the Secret is scheduled to expire.
   ///
   /// This is always provided on output, regardless of what was sent on input.
   ///
   /// Optional.
-  core.String expireTime;
+  core.String? expireTime;
 
   /// The labels assigned to this Secret.
   ///
@@ -1805,13 +1746,13 @@ class Secret {
   /// conform to the following PCRE regular expression:
   /// `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a
   /// given resource.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The resource name of the Secret in the format `projects / * /secrets / *
   /// `.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The replication policy of the secret data attached to the Secret.
   ///
@@ -1819,18 +1760,18 @@ class Secret {
   /// created.
   ///
   /// Required. Immutable.
-  Replication replication;
+  Replication? replication;
 
   /// A list of up to 10 Pub/Sub topics to which messages are published when
   /// control plane operations are called on the secret or its versions.
   ///
   /// Optional.
-  core.List<Topic> topics;
+  core.List<Topic>? topics;
 
   /// Input only.
   ///
   /// The TTL for the Secret.
-  core.String ttl;
+  core.String? ttl;
 
   Secret();
 
@@ -1868,15 +1809,15 @@ class Secret {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (expireTime != null) 'expireTime': expireTime,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (replication != null) 'replication': replication.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (replication != null) 'replication': replication!.toJson(),
         if (topics != null)
-          'topics': topics.map((value) => value.toJson()).toList(),
-        if (ttl != null) 'ttl': ttl,
+          'topics': topics!.map((value) => value.toJson()).toList(),
+        if (ttl != null) 'ttl': ttl!,
       };
 }
 
@@ -1888,8 +1829,8 @@ class SecretPayload {
   /// The secret data.
   ///
   /// Must be no larger than 64KiB.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -1904,8 +1845,8 @@ class SecretPayload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!,
       };
 }
 
@@ -1914,14 +1855,14 @@ class SecretVersion {
   /// The time at which the SecretVersion was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time this SecretVersion was destroyed.
   ///
   /// Only present if state is DESTROYED.
   ///
   /// Output only.
-  core.String destroyTime;
+  core.String? destroyTime;
 
   /// The resource name of the SecretVersion in the format `projects / *
   /// /secrets / * /versions / * `.
@@ -1930,10 +1871,10 @@ class SecretVersion {
   /// subsequent version of the secret.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The replication status of the SecretVersion.
-  ReplicationStatus replicationStatus;
+  ReplicationStatus? replicationStatus;
 
   /// The current state of the SecretVersion.
   ///
@@ -1945,7 +1886,7 @@ class SecretVersion {
   /// is still available and can be placed back into the ENABLED state.
   /// - "DESTROYED" : The SecretVersion is destroyed and the secret data is no
   /// longer stored. A version may not leave this state once entered.
-  core.String state;
+  core.String? state;
 
   SecretVersion();
 
@@ -1968,13 +1909,13 @@ class SecretVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (destroyTime != null) 'destroyTime': destroyTime,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (destroyTime != null) 'destroyTime': destroyTime!,
+        if (name != null) 'name': name!,
         if (replicationStatus != null)
-          'replicationStatus': replicationStatus.toJson(),
-        if (state != null) 'state': state,
+          'replicationStatus': replicationStatus!.toJson(),
+        if (state != null) 'state': state!,
       };
 }
 
@@ -1985,13 +1926,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -2005,9 +1946,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -2018,7 +1959,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -2030,8 +1971,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -2039,7 +1980,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -2051,8 +1992,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -2066,7 +2007,7 @@ class Topic {
   /// `pubsub.publisher` permissions on the topic.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   Topic();
 
@@ -2076,8 +2017,8 @@ class Topic {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2089,7 +2030,7 @@ class UserManaged {
   /// Cannot be empty.
   ///
   /// Required.
-  core.List<Replica> replicas;
+  core.List<Replica>? replicas;
 
   UserManaged();
 
@@ -2102,9 +2043,9 @@ class UserManaged {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (replicas != null)
-          'replicas': replicas.map((value) => value.toJson()).toList(),
+          'replicas': replicas!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2115,7 +2056,7 @@ class UserManagedStatus {
   /// The list of replica statuses for the SecretVersion.
   ///
   /// Output only.
-  core.List<ReplicaStatus> replicas;
+  core.List<ReplicaStatus>? replicas;
 
   UserManagedStatus();
 
@@ -2128,8 +2069,8 @@ class UserManagedStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (replicas != null)
-          'replicas': replicas.map((value) => value.toJson()).toList(),
+          'replicas': replicas!.map((value) => value.toJson()).toList(),
       };
 }

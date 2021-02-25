@@ -104,11 +104,10 @@ class JobsResource {
   /// this method will complete with the same error.
   async.Future<Job> create(
     Job request, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
@@ -148,12 +147,9 @@ class JobsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String jobId, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
@@ -192,12 +188,9 @@ class JobsResource {
   /// this method will complete with the same error.
   async.Future<Job> get(
     core.String jobId, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
@@ -245,11 +238,11 @@ class JobsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list({
-    core.bool includeSystemManaged,
-    core.String onBehalfOfContentOwner,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.bool? includeSystemManaged,
+    core.String? onBehalfOfContentOwner,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeSystemManaged != null)
@@ -303,15 +296,9 @@ class JobsReportsResource {
   async.Future<Report> get(
     core.String jobId,
     core.String reportId, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
-    if (reportId == null) {
-      throw core.ArgumentError('Parameter reportId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
@@ -372,17 +359,14 @@ class JobsReportsResource {
   /// this method will complete with the same error.
   async.Future<ListReportsResponse> list(
     core.String jobId, {
-    core.String createdAfter,
-    core.String onBehalfOfContentOwner,
-    core.int pageSize,
-    core.String pageToken,
-    core.String startTimeAtOrAfter,
-    core.String startTimeBefore,
-    core.String $fields,
+    core.String? createdAfter,
+    core.String? onBehalfOfContentOwner,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? startTimeAtOrAfter,
+    core.String? startTimeBefore,
+    core.String? $fields,
   }) async {
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (createdAfter != null) 'createdAfter': [createdAfter],
       if (onBehalfOfContentOwner != null)
@@ -442,12 +426,9 @@ class MediaResource {
   /// this method will complete with the same error.
   async.Future<core.Object> download(
     core.String resourceName, {
-    core.String $fields,
+    core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    if (resourceName == null) {
-      throw core.ArgumentError('Parameter resourceName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -465,7 +446,7 @@ class MediaResource {
       return GdataMedia.fromJson(
           _response as core.Map<core.String, core.dynamic>);
     } else {
-      return _response;
+      return _response as commons.Media;
     }
   }
 }
@@ -506,11 +487,11 @@ class ReportTypesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListReportTypesResponse> list({
-    core.bool includeSystemManaged,
-    core.String onBehalfOfContentOwner,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.bool? includeSystemManaged,
+    core.String? onBehalfOfContentOwner,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeSystemManaged != null)
@@ -548,21 +529,21 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// gdata
 class GdataBlobstore2Info {
   /// gdata
-  core.String blobGeneration;
+  core.String? blobGeneration;
 
   /// gdata
-  core.String blobId;
+  core.String? blobId;
 
   /// gdata
-  core.String downloadReadHandle;
+  core.String? downloadReadHandle;
   core.List<core.int> get downloadReadHandleAsBytes =>
-      convert.base64.decode(downloadReadHandle);
+      convert.base64.decode(downloadReadHandle!);
 
   set downloadReadHandleAsBytes(core.List<core.int> _bytes) {
     downloadReadHandle =
@@ -570,12 +551,12 @@ class GdataBlobstore2Info {
   }
 
   /// gdata
-  core.String readToken;
+  core.String? readToken;
 
   /// gdata
-  core.String uploadMetadataContainer;
+  core.String? uploadMetadataContainer;
   core.List<core.int> get uploadMetadataContainerAsBytes =>
-      convert.base64.decode(uploadMetadataContainer);
+      convert.base64.decode(uploadMetadataContainer!);
 
   set uploadMetadataContainerAsBytes(core.List<core.int> _bytes) {
     uploadMetadataContainer =
@@ -602,22 +583,22 @@ class GdataBlobstore2Info {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (blobGeneration != null) 'blobGeneration': blobGeneration,
-        if (blobId != null) 'blobId': blobId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (blobGeneration != null) 'blobGeneration': blobGeneration!,
+        if (blobId != null) 'blobId': blobId!,
         if (downloadReadHandle != null)
-          'downloadReadHandle': downloadReadHandle,
-        if (readToken != null) 'readToken': readToken,
+          'downloadReadHandle': downloadReadHandle!,
+        if (readToken != null) 'readToken': readToken!,
         if (uploadMetadataContainer != null)
-          'uploadMetadataContainer': uploadMetadataContainer,
+          'uploadMetadataContainer': uploadMetadataContainer!,
       };
 }
 
 /// gdata
 class GdataCompositeMedia {
   /// gdata
-  core.String blobRef;
-  core.List<core.int> get blobRefAsBytes => convert.base64.decode(blobRef);
+  core.String? blobRef;
+  core.List<core.int> get blobRefAsBytes => convert.base64.decode(blobRef!);
 
   set blobRefAsBytes(core.List<core.int> _bytes) {
     blobRef =
@@ -625,12 +606,12 @@ class GdataCompositeMedia {
   }
 
   /// gdata
-  GdataBlobstore2Info blobstore2Info;
+  GdataBlobstore2Info? blobstore2Info;
 
   /// gdata
-  core.String cosmoBinaryReference;
+  core.String? cosmoBinaryReference;
   core.List<core.int> get cosmoBinaryReferenceAsBytes =>
-      convert.base64.decode(cosmoBinaryReference);
+      convert.base64.decode(cosmoBinaryReference!);
 
   set cosmoBinaryReferenceAsBytes(core.List<core.int> _bytes) {
     cosmoBinaryReference =
@@ -638,11 +619,11 @@ class GdataCompositeMedia {
   }
 
   /// gdata
-  core.int crc32cHash;
+  core.int? crc32cHash;
 
   /// gdata
-  core.String inline;
-  core.List<core.int> get inlineAsBytes => convert.base64.decode(inline);
+  core.String? inline;
+  core.List<core.int> get inlineAsBytes => convert.base64.decode(inline!);
 
   set inlineAsBytes(core.List<core.int> _bytes) {
     inline =
@@ -650,11 +631,11 @@ class GdataCompositeMedia {
   }
 
   /// gdata
-  core.String length;
+  core.String? length;
 
   /// gdata
-  core.String md5Hash;
-  core.List<core.int> get md5HashAsBytes => convert.base64.decode(md5Hash);
+  core.String? md5Hash;
+  core.List<core.int> get md5HashAsBytes => convert.base64.decode(md5Hash!);
 
   set md5HashAsBytes(core.List<core.int> _bytes) {
     md5Hash =
@@ -662,10 +643,10 @@ class GdataCompositeMedia {
   }
 
   /// gdata
-  GdataObjectId objectId;
+  GdataObjectId? objectId;
 
   /// gdata
-  core.String path;
+  core.String? path;
 
   /// gdata
   /// Possible string values are:
@@ -674,11 +655,11 @@ class GdataCompositeMedia {
   /// - "INLINE" : gdata
   /// - "BIGSTORE_REF" : gdata
   /// - "COSMO_BINARY_REFERENCE" : gdata
-  core.String referenceType;
+  core.String? referenceType;
 
   /// gdata
-  core.String sha1Hash;
-  core.List<core.int> get sha1HashAsBytes => convert.base64.decode(sha1Hash);
+  core.String? sha1Hash;
+  core.List<core.int> get sha1HashAsBytes => convert.base64.decode(sha1Hash!);
 
   set sha1HashAsBytes(core.List<core.int> _bytes) {
     sha1Hash =
@@ -725,38 +706,38 @@ class GdataCompositeMedia {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (blobRef != null) 'blobRef': blobRef,
-        if (blobstore2Info != null) 'blobstore2Info': blobstore2Info.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (blobRef != null) 'blobRef': blobRef!,
+        if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!.toJson(),
         if (cosmoBinaryReference != null)
-          'cosmoBinaryReference': cosmoBinaryReference,
-        if (crc32cHash != null) 'crc32cHash': crc32cHash,
-        if (inline != null) 'inline': inline,
-        if (length != null) 'length': length,
-        if (md5Hash != null) 'md5Hash': md5Hash,
-        if (objectId != null) 'objectId': objectId.toJson(),
-        if (path != null) 'path': path,
-        if (referenceType != null) 'referenceType': referenceType,
-        if (sha1Hash != null) 'sha1Hash': sha1Hash,
+          'cosmoBinaryReference': cosmoBinaryReference!,
+        if (crc32cHash != null) 'crc32cHash': crc32cHash!,
+        if (inline != null) 'inline': inline!,
+        if (length != null) 'length': length!,
+        if (md5Hash != null) 'md5Hash': md5Hash!,
+        if (objectId != null) 'objectId': objectId!.toJson(),
+        if (path != null) 'path': path!,
+        if (referenceType != null) 'referenceType': referenceType!,
+        if (sha1Hash != null) 'sha1Hash': sha1Hash!,
       };
 }
 
 /// gdata
 class GdataContentTypeInfo {
   /// gdata
-  core.String bestGuess;
+  core.String? bestGuess;
 
   /// gdata
-  core.String fromBytes;
+  core.String? fromBytes;
 
   /// gdata
-  core.String fromFileName;
+  core.String? fromFileName;
 
   /// gdata
-  core.String fromHeader;
+  core.String? fromHeader;
 
   /// gdata
-  core.String fromUrlPath;
+  core.String? fromUrlPath;
 
   GdataContentTypeInfo();
 
@@ -778,31 +759,31 @@ class GdataContentTypeInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bestGuess != null) 'bestGuess': bestGuess,
-        if (fromBytes != null) 'fromBytes': fromBytes,
-        if (fromFileName != null) 'fromFileName': fromFileName,
-        if (fromHeader != null) 'fromHeader': fromHeader,
-        if (fromUrlPath != null) 'fromUrlPath': fromUrlPath,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bestGuess != null) 'bestGuess': bestGuess!,
+        if (fromBytes != null) 'fromBytes': fromBytes!,
+        if (fromFileName != null) 'fromFileName': fromFileName!,
+        if (fromHeader != null) 'fromHeader': fromHeader!,
+        if (fromUrlPath != null) 'fromUrlPath': fromUrlPath!,
       };
 }
 
 /// gdata
 class GdataDiffChecksumsResponse {
   /// gdata
-  GdataCompositeMedia checksumsLocation;
+  GdataCompositeMedia? checksumsLocation;
 
   /// gdata
-  core.String chunkSizeBytes;
+  core.String? chunkSizeBytes;
 
   /// gdata
-  GdataCompositeMedia objectLocation;
+  GdataCompositeMedia? objectLocation;
 
   /// gdata
-  core.String objectSizeBytes;
+  core.String? objectSizeBytes;
 
   /// gdata
-  core.String objectVersion;
+  core.String? objectVersion;
 
   GdataDiffChecksumsResponse();
 
@@ -826,20 +807,20 @@ class GdataDiffChecksumsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (checksumsLocation != null)
-          'checksumsLocation': checksumsLocation.toJson(),
-        if (chunkSizeBytes != null) 'chunkSizeBytes': chunkSizeBytes,
-        if (objectLocation != null) 'objectLocation': objectLocation.toJson(),
-        if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes,
-        if (objectVersion != null) 'objectVersion': objectVersion,
+          'checksumsLocation': checksumsLocation!.toJson(),
+        if (chunkSizeBytes != null) 'chunkSizeBytes': chunkSizeBytes!,
+        if (objectLocation != null) 'objectLocation': objectLocation!.toJson(),
+        if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
+        if (objectVersion != null) 'objectVersion': objectVersion!,
       };
 }
 
 /// gdata
 class GdataDiffDownloadResponse {
   /// gdata
-  GdataCompositeMedia objectLocation;
+  GdataCompositeMedia? objectLocation;
 
   GdataDiffDownloadResponse();
 
@@ -850,21 +831,21 @@ class GdataDiffDownloadResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectLocation != null) 'objectLocation': objectLocation.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectLocation != null) 'objectLocation': objectLocation!.toJson(),
       };
 }
 
 /// gdata
 class GdataDiffUploadRequest {
   /// gdata
-  GdataCompositeMedia checksumsInfo;
+  GdataCompositeMedia? checksumsInfo;
 
   /// gdata
-  GdataCompositeMedia objectInfo;
+  GdataCompositeMedia? objectInfo;
 
   /// gdata
-  core.String objectVersion;
+  core.String? objectVersion;
 
   GdataDiffUploadRequest();
 
@@ -882,20 +863,20 @@ class GdataDiffUploadRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (checksumsInfo != null) 'checksumsInfo': checksumsInfo.toJson(),
-        if (objectInfo != null) 'objectInfo': objectInfo.toJson(),
-        if (objectVersion != null) 'objectVersion': objectVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (checksumsInfo != null) 'checksumsInfo': checksumsInfo!.toJson(),
+        if (objectInfo != null) 'objectInfo': objectInfo!.toJson(),
+        if (objectVersion != null) 'objectVersion': objectVersion!,
       };
 }
 
 /// gdata
 class GdataDiffUploadResponse {
   /// gdata
-  core.String objectVersion;
+  core.String? objectVersion;
 
   /// gdata
-  GdataCompositeMedia originalObject;
+  GdataCompositeMedia? originalObject;
 
   GdataDiffUploadResponse();
 
@@ -909,19 +890,19 @@ class GdataDiffUploadResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectVersion != null) 'objectVersion': objectVersion,
-        if (originalObject != null) 'originalObject': originalObject.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectVersion != null) 'objectVersion': objectVersion!,
+        if (originalObject != null) 'originalObject': originalObject!.toJson(),
       };
 }
 
 /// gdata
 class GdataDiffVersionResponse {
   /// gdata
-  core.String objectSizeBytes;
+  core.String? objectSizeBytes;
 
   /// gdata
-  core.String objectVersion;
+  core.String? objectVersion;
 
   GdataDiffVersionResponse();
 
@@ -934,19 +915,19 @@ class GdataDiffVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes,
-        if (objectVersion != null) 'objectVersion': objectVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
+        if (objectVersion != null) 'objectVersion': objectVersion!,
       };
 }
 
 /// gdata
 class GdataDownloadParameters {
   /// gdata
-  core.bool allowGzipCompression;
+  core.bool? allowGzipCompression;
 
   /// gdata
-  core.bool ignoreRange;
+  core.bool? ignoreRange;
 
   GdataDownloadParameters();
 
@@ -959,22 +940,22 @@ class GdataDownloadParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowGzipCompression != null)
-          'allowGzipCompression': allowGzipCompression,
-        if (ignoreRange != null) 'ignoreRange': ignoreRange,
+          'allowGzipCompression': allowGzipCompression!,
+        if (ignoreRange != null) 'ignoreRange': ignoreRange!,
       };
 }
 
 /// gdata
 class GdataMedia {
   /// gdata
-  core.String algorithm;
+  core.String? algorithm;
 
   /// gdata
-  core.String bigstoreObjectRef;
+  core.String? bigstoreObjectRef;
   core.List<core.int> get bigstoreObjectRefAsBytes =>
-      convert.base64.decode(bigstoreObjectRef);
+      convert.base64.decode(bigstoreObjectRef!);
 
   set bigstoreObjectRefAsBytes(core.List<core.int> _bytes) {
     bigstoreObjectRef =
@@ -982,8 +963,8 @@ class GdataMedia {
   }
 
   /// gdata
-  core.String blobRef;
-  core.List<core.int> get blobRefAsBytes => convert.base64.decode(blobRef);
+  core.String? blobRef;
+  core.List<core.int> get blobRefAsBytes => convert.base64.decode(blobRef!);
 
   set blobRefAsBytes(core.List<core.int> _bytes) {
     blobRef =
@@ -991,21 +972,21 @@ class GdataMedia {
   }
 
   /// gdata
-  GdataBlobstore2Info blobstore2Info;
+  GdataBlobstore2Info? blobstore2Info;
 
   /// gdata
-  core.List<GdataCompositeMedia> compositeMedia;
+  core.List<GdataCompositeMedia>? compositeMedia;
 
   /// gdata
-  core.String contentType;
+  core.String? contentType;
 
   /// gdata
-  GdataContentTypeInfo contentTypeInfo;
+  GdataContentTypeInfo? contentTypeInfo;
 
   /// gdata
-  core.String cosmoBinaryReference;
+  core.String? cosmoBinaryReference;
   core.List<core.int> get cosmoBinaryReferenceAsBytes =>
-      convert.base64.decode(cosmoBinaryReference);
+      convert.base64.decode(cosmoBinaryReference!);
 
   set cosmoBinaryReferenceAsBytes(core.List<core.int> _bytes) {
     cosmoBinaryReference =
@@ -1013,38 +994,38 @@ class GdataMedia {
   }
 
   /// gdata
-  core.int crc32cHash;
+  core.int? crc32cHash;
 
   /// gdata
-  GdataDiffChecksumsResponse diffChecksumsResponse;
+  GdataDiffChecksumsResponse? diffChecksumsResponse;
 
   /// gdata
-  GdataDiffDownloadResponse diffDownloadResponse;
+  GdataDiffDownloadResponse? diffDownloadResponse;
 
   /// gdata
-  GdataDiffUploadRequest diffUploadRequest;
+  GdataDiffUploadRequest? diffUploadRequest;
 
   /// gdata
-  GdataDiffUploadResponse diffUploadResponse;
+  GdataDiffUploadResponse? diffUploadResponse;
 
   /// gdata
-  GdataDiffVersionResponse diffVersionResponse;
+  GdataDiffVersionResponse? diffVersionResponse;
 
   /// gdata
-  GdataDownloadParameters downloadParameters;
+  GdataDownloadParameters? downloadParameters;
 
   /// gdata
-  core.String filename;
+  core.String? filename;
 
   /// gdata
-  core.String hash;
+  core.String? hash;
 
   /// gdata
-  core.bool hashVerified;
+  core.bool? hashVerified;
 
   /// gdata
-  core.String inline;
-  core.List<core.int> get inlineAsBytes => convert.base64.decode(inline);
+  core.String? inline;
+  core.List<core.int> get inlineAsBytes => convert.base64.decode(inline!);
 
   set inlineAsBytes(core.List<core.int> _bytes) {
     inline =
@@ -1052,14 +1033,14 @@ class GdataMedia {
   }
 
   /// gdata
-  core.bool isPotentialRetry;
+  core.bool? isPotentialRetry;
 
   /// gdata
-  core.String length;
+  core.String? length;
 
   /// gdata
-  core.String md5Hash;
-  core.List<core.int> get md5HashAsBytes => convert.base64.decode(md5Hash);
+  core.String? md5Hash;
+  core.List<core.int> get md5HashAsBytes => convert.base64.decode(md5Hash!);
 
   set md5HashAsBytes(core.List<core.int> _bytes) {
     md5Hash =
@@ -1067,8 +1048,8 @@ class GdataMedia {
   }
 
   /// gdata
-  core.String mediaId;
-  core.List<core.int> get mediaIdAsBytes => convert.base64.decode(mediaId);
+  core.String? mediaId;
+  core.List<core.int> get mediaIdAsBytes => convert.base64.decode(mediaId!);
 
   set mediaIdAsBytes(core.List<core.int> _bytes) {
     mediaId =
@@ -1076,10 +1057,10 @@ class GdataMedia {
   }
 
   /// gdata
-  GdataObjectId objectId;
+  GdataObjectId? objectId;
 
   /// gdata
-  core.String path;
+  core.String? path;
 
   /// gdata
   /// Possible string values are:
@@ -1096,11 +1077,11 @@ class GdataMedia {
   /// - "DIFF_UPLOAD_RESPONSE" : gdata
   /// - "COSMO_BINARY_REFERENCE" : gdata
   /// - "ARBITRARY_BYTES" : gdata
-  core.String referenceType;
+  core.String? referenceType;
 
   /// gdata
-  core.String sha1Hash;
-  core.List<core.int> get sha1HashAsBytes => convert.base64.decode(sha1Hash);
+  core.String? sha1Hash;
+  core.List<core.int> get sha1HashAsBytes => convert.base64.decode(sha1Hash!);
 
   set sha1HashAsBytes(core.List<core.int> _bytes) {
     sha1Hash =
@@ -1108,9 +1089,9 @@ class GdataMedia {
   }
 
   /// gdata
-  core.String sha256Hash;
+  core.String? sha256Hash;
   core.List<core.int> get sha256HashAsBytes =>
-      convert.base64.decode(sha256Hash);
+      convert.base64.decode(sha256Hash!);
 
   set sha256HashAsBytes(core.List<core.int> _bytes) {
     sha256Hash =
@@ -1118,10 +1099,10 @@ class GdataMedia {
   }
 
   /// gdata
-  core.String timestamp;
+  core.String? timestamp;
 
   /// gdata
-  core.String token;
+  core.String? token;
 
   GdataMedia();
 
@@ -1231,60 +1212,60 @@ class GdataMedia {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm,
-        if (bigstoreObjectRef != null) 'bigstoreObjectRef': bigstoreObjectRef,
-        if (blobRef != null) 'blobRef': blobRef,
-        if (blobstore2Info != null) 'blobstore2Info': blobstore2Info.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
+        if (bigstoreObjectRef != null) 'bigstoreObjectRef': bigstoreObjectRef!,
+        if (blobRef != null) 'blobRef': blobRef!,
+        if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!.toJson(),
         if (compositeMedia != null)
           'compositeMedia':
-              compositeMedia.map((value) => value.toJson()).toList(),
-        if (contentType != null) 'contentType': contentType,
+              compositeMedia!.map((value) => value.toJson()).toList(),
+        if (contentType != null) 'contentType': contentType!,
         if (contentTypeInfo != null)
-          'contentTypeInfo': contentTypeInfo.toJson(),
+          'contentTypeInfo': contentTypeInfo!.toJson(),
         if (cosmoBinaryReference != null)
-          'cosmoBinaryReference': cosmoBinaryReference,
-        if (crc32cHash != null) 'crc32cHash': crc32cHash,
+          'cosmoBinaryReference': cosmoBinaryReference!,
+        if (crc32cHash != null) 'crc32cHash': crc32cHash!,
         if (diffChecksumsResponse != null)
-          'diffChecksumsResponse': diffChecksumsResponse.toJson(),
+          'diffChecksumsResponse': diffChecksumsResponse!.toJson(),
         if (diffDownloadResponse != null)
-          'diffDownloadResponse': diffDownloadResponse.toJson(),
+          'diffDownloadResponse': diffDownloadResponse!.toJson(),
         if (diffUploadRequest != null)
-          'diffUploadRequest': diffUploadRequest.toJson(),
+          'diffUploadRequest': diffUploadRequest!.toJson(),
         if (diffUploadResponse != null)
-          'diffUploadResponse': diffUploadResponse.toJson(),
+          'diffUploadResponse': diffUploadResponse!.toJson(),
         if (diffVersionResponse != null)
-          'diffVersionResponse': diffVersionResponse.toJson(),
+          'diffVersionResponse': diffVersionResponse!.toJson(),
         if (downloadParameters != null)
-          'downloadParameters': downloadParameters.toJson(),
-        if (filename != null) 'filename': filename,
-        if (hash != null) 'hash': hash,
-        if (hashVerified != null) 'hashVerified': hashVerified,
-        if (inline != null) 'inline': inline,
-        if (isPotentialRetry != null) 'isPotentialRetry': isPotentialRetry,
-        if (length != null) 'length': length,
-        if (md5Hash != null) 'md5Hash': md5Hash,
-        if (mediaId != null) 'mediaId': mediaId,
-        if (objectId != null) 'objectId': objectId.toJson(),
-        if (path != null) 'path': path,
-        if (referenceType != null) 'referenceType': referenceType,
-        if (sha1Hash != null) 'sha1Hash': sha1Hash,
-        if (sha256Hash != null) 'sha256Hash': sha256Hash,
-        if (timestamp != null) 'timestamp': timestamp,
-        if (token != null) 'token': token,
+          'downloadParameters': downloadParameters!.toJson(),
+        if (filename != null) 'filename': filename!,
+        if (hash != null) 'hash': hash!,
+        if (hashVerified != null) 'hashVerified': hashVerified!,
+        if (inline != null) 'inline': inline!,
+        if (isPotentialRetry != null) 'isPotentialRetry': isPotentialRetry!,
+        if (length != null) 'length': length!,
+        if (md5Hash != null) 'md5Hash': md5Hash!,
+        if (mediaId != null) 'mediaId': mediaId!,
+        if (objectId != null) 'objectId': objectId!.toJson(),
+        if (path != null) 'path': path!,
+        if (referenceType != null) 'referenceType': referenceType!,
+        if (sha1Hash != null) 'sha1Hash': sha1Hash!,
+        if (sha256Hash != null) 'sha256Hash': sha256Hash!,
+        if (timestamp != null) 'timestamp': timestamp!,
+        if (token != null) 'token': token!,
       };
 }
 
 /// gdata
 class GdataObjectId {
   /// gdata
-  core.String bucketName;
+  core.String? bucketName;
 
   /// gdata
-  core.String generation;
+  core.String? generation;
 
   /// gdata
-  core.String objectName;
+  core.String? objectName;
 
   GdataObjectId();
 
@@ -1300,41 +1281,41 @@ class GdataObjectId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bucketName != null) 'bucketName': bucketName,
-        if (generation != null) 'generation': generation,
-        if (objectName != null) 'objectName': objectName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bucketName != null) 'bucketName': bucketName!,
+        if (generation != null) 'generation': generation!,
+        if (objectName != null) 'objectName': objectName!,
       };
 }
 
 /// A job creating reports of a specific type.
 class Job {
   /// The creation date/time of the job.
-  core.String createTime;
+  core.String? createTime;
 
   /// The date/time when this job will expire/expired.
   ///
   /// After a job expired, no new reports are generated.
-  core.String expireTime;
+  core.String? expireTime;
 
   /// The server-generated ID of the job (max.
   ///
   /// 40 characters).
-  core.String id;
+  core.String? id;
 
   /// The name of the job (max.
   ///
   /// 100 characters).
-  core.String name;
+  core.String? name;
 
   /// The type of reports this job creates.
   ///
   /// Corresponds to the ID of a ReportType.
-  core.String reportTypeId;
+  core.String? reportTypeId;
 
   /// True if this a system-managed job that cannot be modified by the user;
   /// otherwise false.
-  core.bool systemManaged;
+  core.bool? systemManaged;
 
   Job();
 
@@ -1359,26 +1340,26 @@ class Job {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (expireTime != null) 'expireTime': expireTime,
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
-        if (reportTypeId != null) 'reportTypeId': reportTypeId,
-        if (systemManaged != null) 'systemManaged': systemManaged,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (reportTypeId != null) 'reportTypeId': reportTypeId!,
+        if (systemManaged != null) 'systemManaged': systemManaged!,
       };
 }
 
 /// Response message for ReportingService.ListJobs.
 class ListJobsResponse {
   /// The list of jobs.
-  core.List<Job> jobs;
+  core.List<Job>? jobs;
 
   /// A token to retrieve next page of results.
   ///
   /// Pass this value in the ListJobsRequest.page_token field in the subsequent
   /// call to `ListJobs` method to retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListJobsResponse();
 
@@ -1394,9 +1375,9 @@ class ListJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1407,10 +1388,10 @@ class ListReportTypesResponse {
   /// Pass this value in the ListReportTypesRequest.page_token field in the
   /// subsequent call to `ListReportTypes` method to retrieve the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of report types.
-  core.List<ReportType> reportTypes;
+  core.List<ReportType>? reportTypes;
 
   ListReportTypesResponse();
 
@@ -1426,10 +1407,10 @@ class ListReportTypesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (reportTypes != null)
-          'reportTypes': reportTypes.map((value) => value.toJson()).toList(),
+          'reportTypes': reportTypes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1440,10 +1421,10 @@ class ListReportsResponse {
   /// Pass this value in the ListReportsRequest.page_token field in the
   /// subsequent call to `ListReports` method to retrieve the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of report types.
-  core.List<Report> reports;
+  core.List<Report>? reports;
 
   ListReportsResponse();
 
@@ -1459,10 +1440,10 @@ class ListReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (reports != null)
-          'reports': reports.map((value) => value.toJson()).toList(),
+          'reports': reports!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1470,31 +1451,31 @@ class ListReportsResponse {
 /// downloaded.
 class Report {
   /// The date/time when this report was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// The URL from which the report can be downloaded (max.
   ///
   /// 1000 characters).
-  core.String downloadUrl;
+  core.String? downloadUrl;
 
   /// The end of the time period that the report instance covers.
   ///
   /// The value is exclusive.
-  core.String endTime;
+  core.String? endTime;
 
   /// The server-generated ID of the report.
-  core.String id;
+  core.String? id;
 
   /// The date/time when the job this report belongs to will expire/expired.
-  core.String jobExpireTime;
+  core.String? jobExpireTime;
 
   /// The ID of the job that created this report.
-  core.String jobId;
+  core.String? jobId;
 
   /// The start of the time period that the report instance covers.
   ///
   /// The value is inclusive.
-  core.String startTime;
+  core.String? startTime;
 
   Report();
 
@@ -1522,37 +1503,37 @@ class Report {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (downloadUrl != null) 'downloadUrl': downloadUrl,
-        if (endTime != null) 'endTime': endTime,
-        if (id != null) 'id': id,
-        if (jobExpireTime != null) 'jobExpireTime': jobExpireTime,
-        if (jobId != null) 'jobId': jobId,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (downloadUrl != null) 'downloadUrl': downloadUrl!,
+        if (endTime != null) 'endTime': endTime!,
+        if (id != null) 'id': id!,
+        if (jobExpireTime != null) 'jobExpireTime': jobExpireTime!,
+        if (jobId != null) 'jobId': jobId!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
 /// A report type.
 class ReportType {
   /// The date/time when this report type was/will be deprecated.
-  core.String deprecateTime;
+  core.String? deprecateTime;
 
   /// The ID of the report type (max.
   ///
   /// 100 characters).
-  core.String id;
+  core.String? id;
 
   /// The name of the report type (max.
   ///
   /// 100 characters).
-  core.String name;
+  core.String? name;
 
   /// True if this a system-managed report type; otherwise false.
   ///
   /// Reporting jobs for system-managed report types are created automatically
   /// and can thus not be used in the `CreateJob` method.
-  core.bool systemManaged;
+  core.bool? systemManaged;
 
   ReportType();
 
@@ -1571,10 +1552,10 @@ class ReportType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deprecateTime != null) 'deprecateTime': deprecateTime,
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
-        if (systemManaged != null) 'systemManaged': systemManaged,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deprecateTime != null) 'deprecateTime': deprecateTime!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (systemManaged != null) 'systemManaged': systemManaged!,
       };
 }

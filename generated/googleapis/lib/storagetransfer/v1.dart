@@ -95,11 +95,8 @@ class GoogleServiceAccountsResource {
   /// this method will complete with the same error.
   async.Future<GoogleServiceAccount> get(
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -140,10 +137,9 @@ class TransferJobsResource {
   /// this method will complete with the same error.
   async.Future<TransferJob> create(
     TransferJob request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -183,14 +179,8 @@ class TransferJobsResource {
   async.Future<TransferJob> get(
     core.String jobName,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (jobName == null) {
-      throw core.ArgumentError('Parameter jobName is required.');
-    }
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
@@ -236,13 +226,10 @@ class TransferJobsResource {
   /// this method will complete with the same error.
   async.Future<ListTransferJobsResponse> list(
     core.String filter, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (filter == null) {
-      throw core.ArgumentError('Parameter filter is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -288,13 +275,9 @@ class TransferJobsResource {
   async.Future<TransferJob> patch(
     UpdateTransferJobRequest request,
     core.String jobName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (jobName == null) {
-      throw core.ArgumentError('Parameter jobName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -337,13 +320,9 @@ class TransferJobsResource {
   async.Future<Operation> run(
     RunTransferJobRequest request,
     core.String jobName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (jobName == null) {
-      throw core.ArgumentError('Parameter jobName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -406,13 +385,9 @@ class TransferOperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -451,11 +426,8 @@ class TransferOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -508,16 +480,10 @@ class TransferOperationsResource {
   async.Future<ListOperationsResponse> list(
     core.String name,
     core.String filter, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
-    if (filter == null) {
-      throw core.ArgumentError('Parameter filter is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -558,13 +524,9 @@ class TransferOperationsResource {
   async.Future<Empty> pause(
     PauseTransferOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -603,13 +565,9 @@ class TransferOperationsResource {
   async.Future<Empty> resume(
     ResumeTransferOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -637,14 +595,14 @@ class AwsAccessKey {
   /// AWS access key ID.
   ///
   /// Required.
-  core.String accessKeyId;
+  core.String? accessKeyId;
 
   /// AWS secret access key.
   ///
   /// This field is not returned in RPC responses.
   ///
   /// Required.
-  core.String secretAccessKey;
+  core.String? secretAccessKey;
 
   AwsAccessKey();
 
@@ -657,9 +615,9 @@ class AwsAccessKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessKeyId != null) 'accessKeyId': accessKeyId,
-        if (secretAccessKey != null) 'secretAccessKey': secretAccessKey,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessKeyId != null) 'accessKeyId': accessKeyId!,
+        if (secretAccessKey != null) 'secretAccessKey': secretAccessKey!,
       };
 }
 
@@ -676,20 +634,20 @@ class AwsS3Data {
   /// credentials\](/storage-transfer/docs/data-retention#user-credentials).
   ///
   /// Required.
-  AwsAccessKey awsAccessKey;
+  AwsAccessKey? awsAccessKey;
 
   /// S3 Bucket name (see
   /// [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
   ///
   /// Required.
-  core.String bucketName;
+  core.String? bucketName;
 
   /// Root path to transfer objects.
   ///
   /// Must be an empty string or full path name that ends with a '/'. This field
   /// is treated as an object prefix. As such, it should generally not begin
   /// with a '/'.
-  core.String path;
+  core.String? path;
 
   AwsS3Data();
 
@@ -706,10 +664,10 @@ class AwsS3Data {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (awsAccessKey != null) 'awsAccessKey': awsAccessKey.toJson(),
-        if (bucketName != null) 'bucketName': bucketName,
-        if (path != null) 'path': path,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (awsAccessKey != null) 'awsAccessKey': awsAccessKey!.toJson(),
+        if (bucketName != null) 'bucketName': bucketName!,
+        if (path != null) 'path': path!,
       };
 }
 
@@ -728,24 +686,24 @@ class AzureBlobStorageData {
   /// credentials\](/storage-transfer/docs/data-retention#user-credentials).
   ///
   /// Required.
-  AzureCredentials azureCredentials;
+  AzureCredentials? azureCredentials;
 
   /// The container to transfer from the Azure Storage account.
   ///
   /// Required.
-  core.String container;
+  core.String? container;
 
   /// Root path to transfer objects.
   ///
   /// Must be an empty string or full path name that ends with a '/'. This field
   /// is treated as an object prefix. As such, it should generally not begin
   /// with a '/'.
-  core.String path;
+  core.String? path;
 
   /// The name of the Azure Storage account.
   ///
   /// Required.
-  core.String storageAccount;
+  core.String? storageAccount;
 
   AzureBlobStorageData();
 
@@ -765,12 +723,12 @@ class AzureBlobStorageData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (azureCredentials != null)
-          'azureCredentials': azureCredentials.toJson(),
-        if (container != null) 'container': container,
-        if (path != null) 'path': path,
-        if (storageAccount != null) 'storageAccount': storageAccount,
+          'azureCredentials': azureCredentials!.toJson(),
+        if (container != null) 'container': container!,
+        if (path != null) 'path': path!,
+        if (storageAccount != null) 'storageAccount': storageAccount!,
       };
 }
 
@@ -785,7 +743,7 @@ class AzureCredentials {
   /// (SAS)\](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
   ///
   /// Required.
-  core.String sasToken;
+  core.String? sasToken;
 
   AzureCredentials();
 
@@ -795,8 +753,8 @@ class AzureCredentials {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sasToken != null) 'sasToken': sasToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sasToken != null) 'sasToken': sasToken!,
       };
 }
 
@@ -808,7 +766,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -825,17 +783,17 @@ class Date {
   ///
   /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
   /// year by itself or a year and month where the day isn't significant.
-  core.int day;
+  core.int? day;
 
   /// Month of a year.
   ///
   /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int month;
+  core.int? month;
 
   /// Year of the date.
   ///
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int year;
+  core.int? year;
 
   Date();
 
@@ -851,10 +809,10 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (month != null) 'month': month,
-        if (year != null) 'year': year,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (month != null) 'month': month!,
+        if (year != null) 'year': year!,
       };
 }
 
@@ -872,19 +830,19 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// An entry describing an error that has occurred.
 class ErrorLogEntry {
   /// A list of messages that carry the error details.
-  core.List<core.String> errorDetails;
+  core.List<core.String>? errorDetails;
 
   /// A URL that refers to the target (a data source, a data sink, or an object)
   /// with which the error is associated.
   ///
   /// Required.
-  core.String url;
+  core.String? url;
 
   ErrorLogEntry();
 
@@ -899,9 +857,9 @@ class ErrorLogEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorDetails != null) 'errorDetails': errorDetails,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorDetails != null) 'errorDetails': errorDetails!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -989,18 +947,18 @@ class ErrorSummary {
   /// Service Unavailable
   /// - "DATA_LOSS" : Unrecoverable data loss or corruption. HTTP Mapping: 500
   /// Internal Server Error
-  core.String errorCode;
+  core.String? errorCode;
 
   /// Count of this type of error.
   ///
   /// Required.
-  core.String errorCount;
+  core.String? errorCount;
 
   /// Error samples.
   ///
   /// At most 5 error log entries will be recorded for a given error code for a
   /// single transfer operation.
-  core.List<ErrorLogEntry> errorLogEntries;
+  core.List<ErrorLogEntry>? errorLogEntries;
 
   ErrorSummary();
 
@@ -1019,12 +977,12 @@ class ErrorSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode,
-        if (errorCount != null) 'errorCount': errorCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (errorCount != null) 'errorCount': errorCount!,
         if (errorLogEntries != null)
           'errorLogEntries':
-              errorLogEntries.map((value) => value.toJson()).toList(),
+              errorLogEntries!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1037,7 +995,7 @@ class GcsData {
   /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
   ///
   /// Required.
-  core.String bucketName;
+  core.String? bucketName;
 
   /// Root path to transfer objects.
   ///
@@ -1045,7 +1003,7 @@ class GcsData {
   /// is treated as an object prefix. As such, it should generally not begin
   /// with a '/'. (must meet Object Name
   /// Requirements\](https://cloud.google.com/storage/docs/naming#objectnames)).
-  core.String path;
+  core.String? path;
 
   GcsData();
 
@@ -1058,16 +1016,16 @@ class GcsData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bucketName != null) 'bucketName': bucketName,
-        if (path != null) 'path': path,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bucketName != null) 'bucketName': bucketName!,
+        if (path != null) 'path': path!,
       };
 }
 
 /// Google service account
 class GoogleServiceAccount {
   /// Email address of the service account.
-  core.String accountEmail;
+  core.String? accountEmail;
 
   GoogleServiceAccount();
 
@@ -1077,8 +1035,8 @@ class GoogleServiceAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountEmail != null) 'accountEmail': accountEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountEmail != null) 'accountEmail': accountEmail!,
       };
 }
 
@@ -1114,7 +1072,7 @@ class HttpData {
   /// HTTPS schemes are supported.
   ///
   /// Required.
-  core.String listUrl;
+  core.String? listUrl;
 
   HttpData();
 
@@ -1124,18 +1082,18 @@ class HttpData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (listUrl != null) 'listUrl': listUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (listUrl != null) 'listUrl': listUrl!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -1151,20 +1109,20 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response from ListTransferJobs.
 class ListTransferJobsResponse {
   /// The list next page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of transfer jobs.
-  core.List<TransferJob> transferJobs;
+  core.List<TransferJob>? transferJobs;
 
   ListTransferJobsResponse();
 
@@ -1180,10 +1138,10 @@ class ListTransferJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (transferJobs != null)
-          'transferJobs': transferJobs.map((value) => value.toJson()).toList(),
+          'transferJobs': transferJobs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1201,7 +1159,7 @@ class NotificationConfig {
   /// Event types for which a notification is desired.
   ///
   /// If empty, send notifications for all event types.
-  core.List<core.String> eventTypes;
+  core.List<core.String>? eventTypes;
 
   /// The desired format of the notification message payloads.
   ///
@@ -1213,7 +1171,7 @@ class NotificationConfig {
   /// - "JSON" : `TransferOperation` is
   /// [formatted as a JSON response](https://developers.google.com/protocol-buffers/docs/proto3#json),
   /// in application/json.
-  core.String payloadFormat;
+  core.String? payloadFormat;
 
   /// The `Topic.name` of the Cloud Pub/Sub topic to which to publish
   /// notifications.
@@ -1222,7 +1180,7 @@ class NotificationConfig {
   /// this format will result in an INVALID_ARGUMENT error.
   ///
   /// Required.
-  core.String pubsubTopic;
+  core.String? pubsubTopic;
 
   NotificationConfig();
 
@@ -1240,10 +1198,10 @@ class NotificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (eventTypes != null) 'eventTypes': eventTypes,
-        if (payloadFormat != null) 'payloadFormat': payloadFormat,
-        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (eventTypes != null) 'eventTypes': eventTypes!,
+        if (payloadFormat != null) 'payloadFormat': payloadFormat!,
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
       };
 }
 
@@ -1275,7 +1233,7 @@ class ObjectConditions {
   /// included by `include_prefixes`. The max size of `exclude_prefixes` is
   /// 1000. For more information, see \[Filtering objects from
   /// transfers\](/storage-transfer/docs/filtering-objects-from-transfers).
-  core.List<core.String> excludePrefixes;
+  core.List<core.String>? excludePrefixes;
 
   /// If you specify `include_prefixes`, Storage Transfer Service uses the items
   /// in the `include_prefixes` array to determine which objects to include in a
@@ -1297,12 +1255,12 @@ class ObjectConditions {
   /// include-prefix. The max size of `include_prefixes` is 1000. For more
   /// information, see \[Filtering objects from
   /// transfers\](/storage-transfer/docs/filtering-objects-from-transfers).
-  core.List<core.String> includePrefixes;
+  core.List<core.String>? includePrefixes;
 
   /// If specified, only objects with a "last modification time" before this
   /// timestamp and objects that don't have a "last modification time" will be
   /// transferred.
-  core.String lastModifiedBefore;
+  core.String? lastModifiedBefore;
 
   /// If specified, only objects with a "last modification time" on or after
   /// this timestamp and objects that don't have a "last modification time" are
@@ -1313,7 +1271,7 @@ class ObjectConditions {
   /// processes each day's worth of data at a time. For that you'd set each of
   /// the fields as follows: * `last_modified_since` to the start of the day *
   /// `last_modified_before` to the end of the day
-  core.String lastModifiedSince;
+  core.String? lastModifiedSince;
 
   /// If specified, only objects with a "last modification time" on or after
   /// `NOW` - `max_time_elapsed_since_last_modification` and objects that don't
@@ -1321,7 +1279,7 @@ class ObjectConditions {
   ///
   /// For each TransferOperation started by this TransferJob, `NOW` refers to
   /// the start_time of the `TransferOperation`.
-  core.String maxTimeElapsedSinceLastModification;
+  core.String? maxTimeElapsedSinceLastModification;
 
   /// If specified, only objects with a "last modification time" before `NOW` -
   /// `min_time_elapsed_since_last_modification` and objects that don't have a
@@ -1329,7 +1287,7 @@ class ObjectConditions {
   ///
   /// For each TransferOperation started by this TransferJob, `NOW` refers to
   /// the start_time of the `TransferOperation`.
-  core.String minTimeElapsedSinceLastModification;
+  core.String? minTimeElapsedSinceLastModification;
 
   ObjectConditions();
 
@@ -1360,18 +1318,18 @@ class ObjectConditions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (excludePrefixes != null) 'excludePrefixes': excludePrefixes,
-        if (includePrefixes != null) 'includePrefixes': includePrefixes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (excludePrefixes != null) 'excludePrefixes': excludePrefixes!,
+        if (includePrefixes != null) 'includePrefixes': includePrefixes!,
         if (lastModifiedBefore != null)
-          'lastModifiedBefore': lastModifiedBefore,
-        if (lastModifiedSince != null) 'lastModifiedSince': lastModifiedSince,
+          'lastModifiedBefore': lastModifiedBefore!,
+        if (lastModifiedSince != null) 'lastModifiedSince': lastModifiedSince!,
         if (maxTimeElapsedSinceLastModification != null)
           'maxTimeElapsedSinceLastModification':
-              maxTimeElapsedSinceLastModification,
+              maxTimeElapsedSinceLastModification!,
         if (minTimeElapsedSinceLastModification != null)
           'minTimeElapsedSinceLastModification':
-              minTimeElapsedSinceLastModification,
+              minTimeElapsedSinceLastModification!,
       };
 }
 
@@ -1382,10 +1340,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Represents the transfer operation object.
   ///
@@ -1393,12 +1351,12 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned unique name.
   ///
   /// The format of `name` is `transferOperations/some/unique/name`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -1411,7 +1369,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -1446,12 +1404,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -1463,7 +1421,7 @@ class PauseTransferOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request passed to ResumeTransferOperation.
@@ -1474,7 +1432,7 @@ class ResumeTransferOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request passed to RunTransferJob.
@@ -1483,7 +1441,7 @@ class RunTransferJobRequest {
   /// job.
   ///
   /// Required.
-  core.String projectId;
+  core.String? projectId;
 
   RunTransferJobRequest();
 
@@ -1493,8 +1451,8 @@ class RunTransferJobRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
@@ -1510,13 +1468,13 @@ class Schedule {
   /// set, then a default value of `23:59:59` is used for `end_time_of_day`. *
   /// If `end_time_of_day` is set and `schedule_end_date` is not set, then
   /// INVALID_ARGUMENT is returned.
-  TimeOfDay endTimeOfDay;
+  TimeOfDay? endTimeOfDay;
 
   /// Interval between the start of each scheduled TransferOperation.
   ///
   /// If unspecified, the default value is 24 hours. This value may not be less
   /// than 1 hour.
-  core.String repeatInterval;
+  core.String? repeatInterval;
 
   /// The last day a transfer runs.
   ///
@@ -1527,7 +1485,7 @@ class Schedule {
   /// `schedule_start_date` and `schedule_end_date` is in the future relative to
   /// UTC, the job will run each day at start_time_of_day through
   /// `schedule_end_date`.
-  Date scheduleEndDate;
+  Date? scheduleEndDate;
 
   /// The start date of a transfer.
   ///
@@ -1543,7 +1501,7 @@ class Schedule {
   /// TransferOperation will take place on June 3 at midnight UTC.
   ///
   /// Required.
-  Date scheduleStartDate;
+  Date? scheduleStartDate;
 
   /// The time in UTC that a transfer job is scheduled to run.
   ///
@@ -1553,7 +1511,7 @@ class Schedule {
   /// `start_time_of_day` is specified: * One-time transfers run at the
   /// specified time. * Recurring transfers run at the specified time each day,
   /// through `schedule_end_date`.
-  TimeOfDay startTimeOfDay;
+  TimeOfDay? startTimeOfDay;
 
   Schedule();
 
@@ -1579,14 +1537,14 @@ class Schedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTimeOfDay != null) 'endTimeOfDay': endTimeOfDay.toJson(),
-        if (repeatInterval != null) 'repeatInterval': repeatInterval,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTimeOfDay != null) 'endTimeOfDay': endTimeOfDay!.toJson(),
+        if (repeatInterval != null) 'repeatInterval': repeatInterval!,
         if (scheduleEndDate != null)
-          'scheduleEndDate': scheduleEndDate.toJson(),
+          'scheduleEndDate': scheduleEndDate!.toJson(),
         if (scheduleStartDate != null)
-          'scheduleStartDate': scheduleStartDate.toJson(),
-        if (startTimeOfDay != null) 'startTimeOfDay': startTimeOfDay.toJson(),
+          'scheduleStartDate': scheduleStartDate!.toJson(),
+        if (startTimeOfDay != null) 'startTimeOfDay': startTimeOfDay!.toJson(),
       };
 }
 
@@ -1599,7 +1557,7 @@ class Schedule {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1607,13 +1565,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -1637,10 +1595,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -1654,23 +1612,23 @@ class TimeOfDay {
   ///
   /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
   /// for scenarios like business closing time.
-  core.int hours;
+  core.int? hours;
 
   /// Minutes of hour of day.
   ///
   /// Must be from 0 to 59.
-  core.int minutes;
+  core.int? minutes;
 
   /// Fractions of seconds in nanoseconds.
   ///
   /// Must be from 0 to 999,999,999.
-  core.int nanos;
+  core.int? nanos;
 
   /// Seconds of minutes of the time.
   ///
   /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
   /// leap-seconds.
-  core.int seconds;
+  core.int? seconds;
 
   TimeOfDay();
 
@@ -1689,71 +1647,71 @@ class TimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hours != null) 'hours': hours,
-        if (minutes != null) 'minutes': minutes,
-        if (nanos != null) 'nanos': nanos,
-        if (seconds != null) 'seconds': seconds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hours != null) 'hours': hours!,
+        if (minutes != null) 'minutes': minutes!,
+        if (nanos != null) 'nanos': nanos!,
+        if (seconds != null) 'seconds': seconds!,
       };
 }
 
 /// A collection of counters that report the progress of a transfer operation.
 class TransferCounters {
   /// Bytes that are copied to the data sink.
-  core.String bytesCopiedToSink;
+  core.String? bytesCopiedToSink;
 
   /// Bytes that are deleted from the data sink.
-  core.String bytesDeletedFromSink;
+  core.String? bytesDeletedFromSink;
 
   /// Bytes that are deleted from the data source.
-  core.String bytesDeletedFromSource;
+  core.String? bytesDeletedFromSource;
 
   /// Bytes that failed to be deleted from the data sink.
-  core.String bytesFailedToDeleteFromSink;
+  core.String? bytesFailedToDeleteFromSink;
 
   /// Bytes found in the data source that are scheduled to be transferred,
   /// excluding any that are filtered based on object conditions or skipped due
   /// to sync.
-  core.String bytesFoundFromSource;
+  core.String? bytesFoundFromSource;
 
   /// Bytes found only in the data sink that are scheduled to be deleted.
-  core.String bytesFoundOnlyFromSink;
+  core.String? bytesFoundOnlyFromSink;
 
   /// Bytes in the data source that failed to be transferred or that failed to
   /// be deleted after being transferred.
-  core.String bytesFromSourceFailed;
+  core.String? bytesFromSourceFailed;
 
   /// Bytes in the data source that are not transferred because they already
   /// exist in the data sink.
-  core.String bytesFromSourceSkippedBySync;
+  core.String? bytesFromSourceSkippedBySync;
 
   /// Objects that are copied to the data sink.
-  core.String objectsCopiedToSink;
+  core.String? objectsCopiedToSink;
 
   /// Objects that are deleted from the data sink.
-  core.String objectsDeletedFromSink;
+  core.String? objectsDeletedFromSink;
 
   /// Objects that are deleted from the data source.
-  core.String objectsDeletedFromSource;
+  core.String? objectsDeletedFromSource;
 
   /// Objects that failed to be deleted from the data sink.
-  core.String objectsFailedToDeleteFromSink;
+  core.String? objectsFailedToDeleteFromSink;
 
   /// Objects found in the data source that are scheduled to be transferred,
   /// excluding any that are filtered based on object conditions or skipped due
   /// to sync.
-  core.String objectsFoundFromSource;
+  core.String? objectsFoundFromSource;
 
   /// Objects found only in the data sink that are scheduled to be deleted.
-  core.String objectsFoundOnlyFromSink;
+  core.String? objectsFoundOnlyFromSink;
 
   /// Objects in the data source that failed to be transferred or that failed to
   /// be deleted after being transferred.
-  core.String objectsFromSourceFailed;
+  core.String? objectsFromSourceFailed;
 
   /// Objects in the data source that are not transferred because they already
   /// exist in the data sink.
-  core.String objectsFromSourceSkippedBySync;
+  core.String? objectsFromSourceSkippedBySync;
 
   TransferCounters();
 
@@ -1814,38 +1772,38 @@ class TransferCounters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bytesCopiedToSink != null) 'bytesCopiedToSink': bytesCopiedToSink,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bytesCopiedToSink != null) 'bytesCopiedToSink': bytesCopiedToSink!,
         if (bytesDeletedFromSink != null)
-          'bytesDeletedFromSink': bytesDeletedFromSink,
+          'bytesDeletedFromSink': bytesDeletedFromSink!,
         if (bytesDeletedFromSource != null)
-          'bytesDeletedFromSource': bytesDeletedFromSource,
+          'bytesDeletedFromSource': bytesDeletedFromSource!,
         if (bytesFailedToDeleteFromSink != null)
-          'bytesFailedToDeleteFromSink': bytesFailedToDeleteFromSink,
+          'bytesFailedToDeleteFromSink': bytesFailedToDeleteFromSink!,
         if (bytesFoundFromSource != null)
-          'bytesFoundFromSource': bytesFoundFromSource,
+          'bytesFoundFromSource': bytesFoundFromSource!,
         if (bytesFoundOnlyFromSink != null)
-          'bytesFoundOnlyFromSink': bytesFoundOnlyFromSink,
+          'bytesFoundOnlyFromSink': bytesFoundOnlyFromSink!,
         if (bytesFromSourceFailed != null)
-          'bytesFromSourceFailed': bytesFromSourceFailed,
+          'bytesFromSourceFailed': bytesFromSourceFailed!,
         if (bytesFromSourceSkippedBySync != null)
-          'bytesFromSourceSkippedBySync': bytesFromSourceSkippedBySync,
+          'bytesFromSourceSkippedBySync': bytesFromSourceSkippedBySync!,
         if (objectsCopiedToSink != null)
-          'objectsCopiedToSink': objectsCopiedToSink,
+          'objectsCopiedToSink': objectsCopiedToSink!,
         if (objectsDeletedFromSink != null)
-          'objectsDeletedFromSink': objectsDeletedFromSink,
+          'objectsDeletedFromSink': objectsDeletedFromSink!,
         if (objectsDeletedFromSource != null)
-          'objectsDeletedFromSource': objectsDeletedFromSource,
+          'objectsDeletedFromSource': objectsDeletedFromSource!,
         if (objectsFailedToDeleteFromSink != null)
-          'objectsFailedToDeleteFromSink': objectsFailedToDeleteFromSink,
+          'objectsFailedToDeleteFromSink': objectsFailedToDeleteFromSink!,
         if (objectsFoundFromSource != null)
-          'objectsFoundFromSource': objectsFoundFromSource,
+          'objectsFoundFromSource': objectsFoundFromSource!,
         if (objectsFoundOnlyFromSink != null)
-          'objectsFoundOnlyFromSink': objectsFoundOnlyFromSink,
+          'objectsFoundOnlyFromSink': objectsFoundOnlyFromSink!,
         if (objectsFromSourceFailed != null)
-          'objectsFromSourceFailed': objectsFromSourceFailed,
+          'objectsFromSourceFailed': objectsFromSourceFailed!,
         if (objectsFromSourceSkippedBySync != null)
-          'objectsFromSourceSkippedBySync': objectsFromSourceSkippedBySync,
+          'objectsFromSourceSkippedBySync': objectsFromSourceSkippedBySync!,
       };
 }
 
@@ -1855,28 +1813,28 @@ class TransferJob {
   /// The time that the transfer job was created.
   ///
   /// Output only.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// The time that the transfer job was deleted.
   ///
   /// Output only.
-  core.String deletionTime;
+  core.String? deletionTime;
 
   /// A description provided by the user for the job.
   ///
   /// Its max length is 1024 bytes when Unicode-encoded.
-  core.String description;
+  core.String? description;
 
   /// The time that the transfer job was last modified.
   ///
   /// Output only.
-  core.String lastModificationTime;
+  core.String? lastModificationTime;
 
   /// The name of the most recently started TransferOperation of this JobConfig.
   ///
   /// Present if and only if at least one TransferOperation has been created for
   /// this JobConfig.
-  core.String latestOperationName;
+  core.String? latestOperationName;
 
   /// A unique name (within the transfer project) assigned when the job is
   /// created.
@@ -1889,16 +1847,16 @@ class TransferJob {
   /// should be no more than 128 characters. Example:
   /// `"transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Invalid job names will fail
   /// with an INVALID_ARGUMENT error.
-  core.String name;
+  core.String? name;
 
   /// Notification configuration.
-  NotificationConfig notificationConfig;
+  NotificationConfig? notificationConfig;
 
   /// The ID of the Google Cloud Platform Project that owns the job.
-  core.String projectId;
+  core.String? projectId;
 
   /// Schedule specification.
-  Schedule schedule;
+  Schedule? schedule;
 
   /// Status of the job.
   ///
@@ -1915,10 +1873,10 @@ class TransferJob {
   /// this state, the job and all the transfer executions are subject to garbage
   /// collection. Transfer jobs become eligible for garbage collection 30 days
   /// after their status is set to `DELETED`.
-  core.String status;
+  core.String? status;
 
   /// Transfer specification.
-  TransferSpec transferSpec;
+  TransferSpec? transferSpec;
 
   TransferJob();
 
@@ -1961,46 +1919,46 @@ class TransferJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationTime != null) 'creationTime': creationTime,
-        if (deletionTime != null) 'deletionTime': deletionTime,
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (deletionTime != null) 'deletionTime': deletionTime!,
+        if (description != null) 'description': description!,
         if (lastModificationTime != null)
-          'lastModificationTime': lastModificationTime,
+          'lastModificationTime': lastModificationTime!,
         if (latestOperationName != null)
-          'latestOperationName': latestOperationName,
-        if (name != null) 'name': name,
+          'latestOperationName': latestOperationName!,
+        if (name != null) 'name': name!,
         if (notificationConfig != null)
-          'notificationConfig': notificationConfig.toJson(),
-        if (projectId != null) 'projectId': projectId,
-        if (schedule != null) 'schedule': schedule.toJson(),
-        if (status != null) 'status': status,
-        if (transferSpec != null) 'transferSpec': transferSpec.toJson(),
+          'notificationConfig': notificationConfig!.toJson(),
+        if (projectId != null) 'projectId': projectId!,
+        if (schedule != null) 'schedule': schedule!.toJson(),
+        if (status != null) 'status': status!,
+        if (transferSpec != null) 'transferSpec': transferSpec!.toJson(),
       };
 }
 
 /// A description of the execution of a transfer.
 class TransferOperation {
   /// Information about the progress of the transfer operation.
-  TransferCounters counters;
+  TransferCounters? counters;
 
   /// End time of this transfer execution.
-  core.String endTime;
+  core.String? endTime;
 
   /// Summarizes errors encountered with sample error log entries.
-  core.List<ErrorSummary> errorBreakdowns;
+  core.List<ErrorSummary>? errorBreakdowns;
 
   /// A globally unique ID assigned by the system.
-  core.String name;
+  core.String? name;
 
   /// Notification configuration.
-  NotificationConfig notificationConfig;
+  NotificationConfig? notificationConfig;
 
   /// The ID of the Google Cloud Platform Project that owns the operation.
-  core.String projectId;
+  core.String? projectId;
 
   /// Start time of this transfer execution.
-  core.String startTime;
+  core.String? startTime;
 
   /// Status of the transfer operation.
   /// Possible string values are:
@@ -2012,13 +1970,13 @@ class TransferOperation {
   /// - "ABORTED" : Aborted by the user.
   /// - "QUEUED" : Temporarily delayed by the system. No user action is
   /// required.
-  core.String status;
+  core.String? status;
 
   /// The name of the transfer job that triggers this transfer operation.
-  core.String transferJobName;
+  core.String? transferJobName;
 
   /// Transfer specification.
-  TransferSpec transferSpec;
+  TransferSpec? transferSpec;
 
   TransferOperation();
 
@@ -2061,20 +2019,20 @@ class TransferOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (counters != null) 'counters': counters.toJson(),
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (counters != null) 'counters': counters!.toJson(),
+        if (endTime != null) 'endTime': endTime!,
         if (errorBreakdowns != null)
           'errorBreakdowns':
-              errorBreakdowns.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+              errorBreakdowns!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
         if (notificationConfig != null)
-          'notificationConfig': notificationConfig.toJson(),
-        if (projectId != null) 'projectId': projectId,
-        if (startTime != null) 'startTime': startTime,
-        if (status != null) 'status': status,
-        if (transferJobName != null) 'transferJobName': transferJobName,
-        if (transferSpec != null) 'transferSpec': transferSpec.toJson(),
+          'notificationConfig': notificationConfig!.toJson(),
+        if (projectId != null) 'projectId': projectId!,
+        if (startTime != null) 'startTime': startTime!,
+        if (status != null) 'status': status!,
+        if (transferJobName != null) 'transferJobName': transferJobName!,
+        if (transferSpec != null) 'transferSpec': transferSpec!.toJson(),
       };
 }
 
@@ -2085,20 +2043,20 @@ class TransferOptions {
   ///
   /// **Note:** This option and delete_objects_unique_in_sink are mutually
   /// exclusive.
-  core.bool deleteObjectsFromSourceAfterTransfer;
+  core.bool? deleteObjectsFromSourceAfterTransfer;
 
   /// Whether objects that exist only in the sink should be deleted.
   ///
   /// **Note:** This option and delete_objects_from_source_after_transfer are
   /// mutually exclusive.
-  core.bool deleteObjectsUniqueInSink;
+  core.bool? deleteObjectsUniqueInSink;
 
   /// When to overwrite objects that already exist in the sink.
   ///
   /// The default is that only objects that are different from the source are
   /// ovewritten. If true, all objects in the sink whose name matches an object
   /// in the source will be overwritten with the source object.
-  core.bool overwriteObjectsAlreadyExistingInSink;
+  core.bool? overwriteObjectsAlreadyExistingInSink;
 
   TransferOptions();
 
@@ -2117,46 +2075,46 @@ class TransferOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deleteObjectsFromSourceAfterTransfer != null)
           'deleteObjectsFromSourceAfterTransfer':
-              deleteObjectsFromSourceAfterTransfer,
+              deleteObjectsFromSourceAfterTransfer!,
         if (deleteObjectsUniqueInSink != null)
-          'deleteObjectsUniqueInSink': deleteObjectsUniqueInSink,
+          'deleteObjectsUniqueInSink': deleteObjectsUniqueInSink!,
         if (overwriteObjectsAlreadyExistingInSink != null)
           'overwriteObjectsAlreadyExistingInSink':
-              overwriteObjectsAlreadyExistingInSink,
+              overwriteObjectsAlreadyExistingInSink!,
       };
 }
 
 /// Configuration for running a transfer.
 class TransferSpec {
   /// An AWS S3 data source.
-  AwsS3Data awsS3DataSource;
+  AwsS3Data? awsS3DataSource;
 
   /// An Azure Blob Storage data source.
-  AzureBlobStorageData azureBlobStorageDataSource;
+  AzureBlobStorageData? azureBlobStorageDataSource;
 
   /// A Cloud Storage data sink.
-  GcsData gcsDataSink;
+  GcsData? gcsDataSink;
 
   /// A Cloud Storage data source.
-  GcsData gcsDataSource;
+  GcsData? gcsDataSource;
 
   /// An HTTP URL data source.
-  HttpData httpDataSource;
+  HttpData? httpDataSource;
 
   /// Only objects that satisfy these object conditions are included in the set
   /// of data source and data sink objects.
   ///
   /// Object conditions based on objects' "last modification time" do not
   /// exclude objects in a data sink.
-  ObjectConditions objectConditions;
+  ObjectConditions? objectConditions;
 
   /// If the option delete_objects_unique_in_sink is `true` and time-based
   /// object conditions such as 'last modification time' are specified, the
   /// request fails with an INVALID_ARGUMENT error.
-  TransferOptions transferOptions;
+  TransferOptions? transferOptions;
 
   TransferSpec();
 
@@ -2192,18 +2150,18 @@ class TransferSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (awsS3DataSource != null)
-          'awsS3DataSource': awsS3DataSource.toJson(),
+          'awsS3DataSource': awsS3DataSource!.toJson(),
         if (azureBlobStorageDataSource != null)
-          'azureBlobStorageDataSource': azureBlobStorageDataSource.toJson(),
-        if (gcsDataSink != null) 'gcsDataSink': gcsDataSink.toJson(),
-        if (gcsDataSource != null) 'gcsDataSource': gcsDataSource.toJson(),
-        if (httpDataSource != null) 'httpDataSource': httpDataSource.toJson(),
+          'azureBlobStorageDataSource': azureBlobStorageDataSource!.toJson(),
+        if (gcsDataSink != null) 'gcsDataSink': gcsDataSink!.toJson(),
+        if (gcsDataSource != null) 'gcsDataSource': gcsDataSource!.toJson(),
+        if (httpDataSource != null) 'httpDataSource': httpDataSource!.toJson(),
         if (objectConditions != null)
-          'objectConditions': objectConditions.toJson(),
+          'objectConditions': objectConditions!.toJson(),
         if (transferOptions != null)
-          'transferOptions': transferOptions.toJson(),
+          'transferOptions': transferOptions!.toJson(),
       };
 }
 
@@ -2212,7 +2170,7 @@ class UpdateTransferJobRequest {
   /// The ID of the Google Cloud Platform Console project that owns the job.
   ///
   /// Required.
-  core.String projectId;
+  core.String? projectId;
 
   /// The job to update.
   ///
@@ -2223,7 +2181,7 @@ class UpdateTransferJobRequest {
   /// `storagetransfer.jobs.delete` permissions.
   ///
   /// Required.
-  TransferJob transferJob;
+  TransferJob? transferJob;
 
   /// The field mask of the fields in `transferJob` that are to be updated in
   /// this request.
@@ -2233,7 +2191,7 @@ class UpdateTransferJobRequest {
   /// `transfer_spec` of the job, a complete transfer specification must be
   /// provided. An incomplete specification missing any required fields will be
   /// rejected with the error INVALID_ARGUMENT.
-  core.String updateTransferJobFieldMask;
+  core.String? updateTransferJobFieldMask;
 
   UpdateTransferJobRequest();
 
@@ -2251,10 +2209,10 @@ class UpdateTransferJobRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (projectId != null) 'projectId': projectId,
-        if (transferJob != null) 'transferJob': transferJob.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (projectId != null) 'projectId': projectId!,
+        if (transferJob != null) 'transferJob': transferJob!.toJson(),
         if (updateTransferJobFieldMask != null)
-          'updateTransferJobFieldMask': updateTransferJobFieldMask,
+          'updateTransferJobFieldMask': updateTransferJobFieldMask!,
       };
 }

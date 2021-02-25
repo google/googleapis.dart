@@ -80,9 +80,9 @@ class Oauth2Api {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Tokeninfo> tokeninfo({
-    core.String accessToken,
-    core.String idToken,
-    core.String $fields,
+    core.String? accessToken,
+    core.String? idToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (accessToken != null) 'access_token': [accessToken],
@@ -121,7 +121,7 @@ class UserinfoResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Userinfo> get({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -164,7 +164,7 @@ class UserinfoV2MeResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Userinfo> get({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -185,31 +185,31 @@ class Tokeninfo {
   /// Who is the intended audience for this token.
   ///
   /// In general the same as issued_to.
-  core.String audience;
+  core.String? audience;
 
   /// The email address of the user.
   ///
   /// Present only if the email scope is present in the request.
-  core.String email;
+  core.String? email;
 
   /// The expiry time of the token, as number of seconds left until expiry.
-  core.int expiresIn;
+  core.int? expiresIn;
 
   /// To whom was the token issued to.
   ///
   /// In general the same as audience.
-  core.String issuedTo;
+  core.String? issuedTo;
 
   /// The space separated list of scopes granted to this token.
-  core.String scope;
+  core.String? scope;
 
   /// The obfuscated user id.
-  core.String userId;
+  core.String? userId;
 
   /// Boolean flag which is true if the email address is verified.
   ///
   /// Present only if the email scope is present in the request.
-  core.bool verifiedEmail;
+  core.bool? verifiedEmail;
 
   Tokeninfo();
 
@@ -237,52 +237,52 @@ class Tokeninfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audience != null) 'audience': audience,
-        if (email != null) 'email': email,
-        if (expiresIn != null) 'expires_in': expiresIn,
-        if (issuedTo != null) 'issued_to': issuedTo,
-        if (scope != null) 'scope': scope,
-        if (userId != null) 'user_id': userId,
-        if (verifiedEmail != null) 'verified_email': verifiedEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audience != null) 'audience': audience!,
+        if (email != null) 'email': email!,
+        if (expiresIn != null) 'expires_in': expiresIn!,
+        if (issuedTo != null) 'issued_to': issuedTo!,
+        if (scope != null) 'scope': scope!,
+        if (userId != null) 'user_id': userId!,
+        if (verifiedEmail != null) 'verified_email': verifiedEmail!,
       };
 }
 
 class Userinfo {
   /// The user's email address.
-  core.String email;
+  core.String? email;
 
   /// The user's last name.
-  core.String familyName;
+  core.String? familyName;
 
   /// The user's gender.
-  core.String gender;
+  core.String? gender;
 
   /// The user's first name.
-  core.String givenName;
+  core.String? givenName;
 
   /// The hosted domain e.g. example.com if the user is Google apps user.
-  core.String hd;
+  core.String? hd;
 
   /// The obfuscated ID of the user.
-  core.String id;
+  core.String? id;
 
   /// URL of the profile page.
-  core.String link;
+  core.String? link;
 
   /// The user's preferred locale.
-  core.String locale;
+  core.String? locale;
 
   /// The user's full name.
-  core.String name;
+  core.String? name;
 
   /// URL of the user's picture image.
-  core.String picture;
+  core.String? picture;
 
   /// Boolean flag which is true if the email address is verified.
   ///
   /// Always verified because we only return the user's primary email address.
-  core.bool verifiedEmail;
+  core.bool? verifiedEmail;
 
   Userinfo();
 
@@ -322,17 +322,17 @@ class Userinfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
-        if (familyName != null) 'family_name': familyName,
-        if (gender != null) 'gender': gender,
-        if (givenName != null) 'given_name': givenName,
-        if (hd != null) 'hd': hd,
-        if (id != null) 'id': id,
-        if (link != null) 'link': link,
-        if (locale != null) 'locale': locale,
-        if (name != null) 'name': name,
-        if (picture != null) 'picture': picture,
-        if (verifiedEmail != null) 'verified_email': verifiedEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
+        if (familyName != null) 'family_name': familyName!,
+        if (gender != null) 'gender': gender!,
+        if (givenName != null) 'given_name': givenName!,
+        if (hd != null) 'hd': hd!,
+        if (id != null) 'id': id!,
+        if (link != null) 'link': link!,
+        if (locale != null) 'locale': locale!,
+        if (name != null) 'name': name!,
+        if (picture != null) 'picture': picture!,
+        if (verifiedEmail != null) 'verified_email': verifiedEmail!,
       };
 }

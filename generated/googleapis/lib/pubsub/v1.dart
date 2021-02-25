@@ -111,14 +111,10 @@ class ProjectsSchemasResource {
   async.Future<Schema> create(
     Schema request,
     core.String parent, {
-    core.String schemaId,
-    core.String $fields,
+    core.String? schemaId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (schemaId != null) 'schemaId': [schemaId],
       if ($fields != null) 'fields': [$fields],
@@ -156,11 +152,8 @@ class ProjectsSchemasResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -205,12 +198,9 @@ class ProjectsSchemasResource {
   /// this method will complete with the same error.
   async.Future<Schema> get(
     core.String name, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -262,14 +252,11 @@ class ProjectsSchemasResource {
   /// this method will complete with the same error.
   async.Future<ListSchemasResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -312,13 +299,9 @@ class ProjectsSchemasResource {
   async.Future<ValidateSchemaResponse> validate(
     ValidateSchemaRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -360,13 +343,9 @@ class ProjectsSchemasResource {
   async.Future<ValidateMessageResponse> validateMessage(
     ValidateMessageRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -433,13 +412,9 @@ class ProjectsSnapshotsResource {
   async.Future<Snapshot> create(
     CreateSnapshotRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -485,11 +460,8 @@ class ProjectsSnapshotsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String snapshot, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (snapshot == null) {
-      throw core.ArgumentError('Parameter snapshot is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -528,11 +500,8 @@ class ProjectsSnapshotsResource {
   /// this method will complete with the same error.
   async.Future<Snapshot> get(
     core.String snapshot, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (snapshot == null) {
-      throw core.ArgumentError('Parameter snapshot is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -579,12 +548,9 @@ class ProjectsSnapshotsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -635,13 +601,10 @@ class ProjectsSnapshotsResource {
   /// this method will complete with the same error.
   async.Future<ListSnapshotsResponse> list(
     core.String project, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -687,13 +650,9 @@ class ProjectsSnapshotsResource {
   async.Future<Snapshot> patch(
     UpdateSnapshotRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -736,13 +695,9 @@ class ProjectsSnapshotsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -789,13 +744,9 @@ class ProjectsSnapshotsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -850,13 +801,9 @@ class ProjectsSubscriptionsResource {
   async.Future<Empty> acknowledge(
     AcknowledgeRequest request,
     core.String subscription, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (subscription == null) {
-      throw core.ArgumentError('Parameter subscription is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -911,13 +858,9 @@ class ProjectsSubscriptionsResource {
   async.Future<Subscription> create(
     Subscription request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -960,11 +903,8 @@ class ProjectsSubscriptionsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String subscription, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (subscription == null) {
-      throw core.ArgumentError('Parameter subscription is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1003,11 +943,8 @@ class ProjectsSubscriptionsResource {
   /// this method will complete with the same error.
   async.Future<DetachSubscriptionResponse> detach(
     core.String subscription, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (subscription == null) {
-      throw core.ArgumentError('Parameter subscription is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1045,11 +982,8 @@ class ProjectsSubscriptionsResource {
   /// this method will complete with the same error.
   async.Future<Subscription> get(
     core.String subscription, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (subscription == null) {
-      throw core.ArgumentError('Parameter subscription is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1097,12 +1031,9 @@ class ProjectsSubscriptionsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -1147,13 +1078,10 @@ class ProjectsSubscriptionsResource {
   /// this method will complete with the same error.
   async.Future<ListSubscriptionsResponse> list(
     core.String project, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1201,13 +1129,9 @@ class ProjectsSubscriptionsResource {
   async.Future<Empty> modifyAckDeadline(
     ModifyAckDeadlineRequest request,
     core.String subscription, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (subscription == null) {
-      throw core.ArgumentError('Parameter subscription is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1253,13 +1177,9 @@ class ProjectsSubscriptionsResource {
   async.Future<Empty> modifyPushConfig(
     ModifyPushConfigRequest request,
     core.String subscription, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (subscription == null) {
-      throw core.ArgumentError('Parameter subscription is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1307,13 +1227,9 @@ class ProjectsSubscriptionsResource {
   async.Future<Subscription> patch(
     UpdateSubscriptionRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1356,13 +1272,9 @@ class ProjectsSubscriptionsResource {
   async.Future<PullResponse> pull(
     PullRequest request,
     core.String subscription, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (subscription == null) {
-      throw core.ArgumentError('Parameter subscription is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1411,13 +1323,9 @@ class ProjectsSubscriptionsResource {
   async.Future<SeekResponse> seek(
     SeekRequest request,
     core.String subscription, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (subscription == null) {
-      throw core.ArgumentError('Parameter subscription is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1463,13 +1371,9 @@ class ProjectsSubscriptionsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1516,13 +1420,9 @@ class ProjectsSubscriptionsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1582,13 +1482,9 @@ class ProjectsTopicsResource {
   async.Future<Topic> create(
     Topic request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1630,11 +1526,8 @@ class ProjectsTopicsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String topic, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (topic == null) {
-      throw core.ArgumentError('Parameter topic is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1669,11 +1562,8 @@ class ProjectsTopicsResource {
   /// this method will complete with the same error.
   async.Future<Topic> get(
     core.String topic, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (topic == null) {
-      throw core.ArgumentError('Parameter topic is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1720,12 +1610,9 @@ class ProjectsTopicsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -1770,13 +1657,10 @@ class ProjectsTopicsResource {
   /// this method will complete with the same error.
   async.Future<ListTopicsResponse> list(
     core.String project, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1824,13 +1708,9 @@ class ProjectsTopicsResource {
   async.Future<Topic> patch(
     UpdateTopicRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1871,13 +1751,9 @@ class ProjectsTopicsResource {
   async.Future<PublishResponse> publish(
     PublishRequest request,
     core.String topic, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (topic == null) {
-      throw core.ArgumentError('Parameter topic is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1922,13 +1798,9 @@ class ProjectsTopicsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1975,13 +1847,9 @@ class ProjectsTopicsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2039,13 +1907,10 @@ class ProjectsTopicsSnapshotsResource {
   /// this method will complete with the same error.
   async.Future<ListTopicSnapshotsResponse> list(
     core.String topic, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (topic == null) {
-      throw core.ArgumentError('Parameter topic is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2098,13 +1963,10 @@ class ProjectsTopicsSubscriptionsResource {
   /// this method will complete with the same error.
   async.Future<ListTopicSubscriptionsResponse> list(
     core.String topic, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (topic == null) {
-      throw core.ArgumentError('Parameter topic is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2133,7 +1995,7 @@ class AcknowledgeRequest {
   /// Must not be empty.
   ///
   /// Required.
-  core.List<core.String> ackIds;
+  core.List<core.String>? ackIds;
 
   AcknowledgeRequest();
 
@@ -2145,8 +2007,8 @@ class AcknowledgeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ackIds != null) 'ackIds': ackIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ackIds != null) 'ackIds': ackIds!,
       };
 }
 
@@ -2160,7 +2022,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -2192,12 +2054,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -2216,17 +2078,17 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
 /// Request for the `CreateSnapshot` method.
 class CreateSnapshotRequest {
   /// See Creating and managing labels.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The subscription whose backlog the snapshot retains.
   ///
@@ -2239,7 +2101,7 @@ class CreateSnapshotRequest {
   /// `projects/{project}/subscriptions/{sub}`.
   ///
   /// Required.
-  core.String subscription;
+  core.String? subscription;
 
   CreateSnapshotRequest();
 
@@ -2258,9 +2120,9 @@ class CreateSnapshotRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
-        if (subscription != null) 'subscription': subscription,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
+        if (subscription != null) 'subscription': subscription!,
       };
 }
 
@@ -2279,7 +2141,7 @@ class DeadLetterPolicy {
   /// topic does not exist. Users should ensure that there is a subscription
   /// attached to this topic since messages published to a topic with no
   /// subscriptions are lost.
-  core.String deadLetterTopic;
+  core.String? deadLetterTopic;
 
   /// The maximum number of delivery attempts for any message.
   ///
@@ -2289,7 +2151,7 @@ class DeadLetterPolicy {
   /// call to ModifyAckDeadline with a 0 deadline. Note that client libraries
   /// may automatically extend ack_deadlines. This field will be honored on a
   /// best effort basis. If this parameter is 0, a default value of 5 is used.
-  core.int maxDeliveryAttempts;
+  core.int? maxDeliveryAttempts;
 
   DeadLetterPolicy();
 
@@ -2302,10 +2164,10 @@ class DeadLetterPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deadLetterTopic != null) 'deadLetterTopic': deadLetterTopic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deadLetterTopic != null) 'deadLetterTopic': deadLetterTopic!,
         if (maxDeliveryAttempts != null)
-          'maxDeliveryAttempts': maxDeliveryAttempts,
+          'maxDeliveryAttempts': maxDeliveryAttempts!,
       };
 }
 
@@ -2319,7 +2181,7 @@ class DetachSubscriptionResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2336,7 +2198,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A policy that specifies the conditions for resource expiration (i.e.,
@@ -2349,7 +2211,7 @@ class ExpirationPolicy {
   /// The minimum and maximum allowed values for `ttl` depend on the type of the
   /// associated resource, as well. If `ttl` is not set, the associated resource
   /// never expires.
-  core.String ttl;
+  core.String? ttl;
 
   ExpirationPolicy();
 
@@ -2359,8 +2221,8 @@ class ExpirationPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ttl != null) 'ttl': ttl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ttl != null) 'ttl': ttl!,
       };
 }
 
@@ -2389,24 +2251,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -2425,11 +2287,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -2437,10 +2299,10 @@ class Expr {
 class ListSchemasResponse {
   /// If not empty, indicates that there may be more schemas that match the
   /// request; this value should be passed in a new `ListSchemasRequest`.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The resulting schemas.
-  core.List<Schema> schemas;
+  core.List<Schema>? schemas;
 
   ListSchemasResponse();
 
@@ -2456,10 +2318,10 @@ class ListSchemasResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (schemas != null)
-          'schemas': schemas.map((value) => value.toJson()).toList(),
+          'schemas': schemas!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2467,10 +2329,10 @@ class ListSchemasResponse {
 class ListSnapshotsResponse {
   /// If not empty, indicates that there may be more snapshot that match the
   /// request; this value should be passed in a new `ListSnapshotsRequest`.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The resulting snapshots.
-  core.List<Snapshot> snapshots;
+  core.List<Snapshot>? snapshots;
 
   ListSnapshotsResponse();
 
@@ -2486,10 +2348,10 @@ class ListSnapshotsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (snapshots != null)
-          'snapshots': snapshots.map((value) => value.toJson()).toList(),
+          'snapshots': snapshots!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2498,10 +2360,10 @@ class ListSubscriptionsResponse {
   /// If not empty, indicates that there may be more subscriptions that match
   /// the request; this value should be passed in a new
   /// `ListSubscriptionsRequest` to get more subscriptions.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The subscriptions that match the request.
-  core.List<Subscription> subscriptions;
+  core.List<Subscription>? subscriptions;
 
   ListSubscriptionsResponse();
 
@@ -2517,11 +2379,11 @@ class ListSubscriptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (subscriptions != null)
           'subscriptions':
-              subscriptions.map((value) => value.toJson()).toList(),
+              subscriptions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2530,10 +2392,10 @@ class ListTopicSnapshotsResponse {
   /// If not empty, indicates that there may be more snapshots that match the
   /// request; this value should be passed in a new `ListTopicSnapshotsRequest`
   /// to get more snapshots.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The names of the snapshots that match the request.
-  core.List<core.String> snapshots;
+  core.List<core.String>? snapshots;
 
   ListTopicSnapshotsResponse();
 
@@ -2548,9 +2410,9 @@ class ListTopicSnapshotsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (snapshots != null) 'snapshots': snapshots,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (snapshots != null) 'snapshots': snapshots!,
       };
 }
 
@@ -2559,10 +2421,10 @@ class ListTopicSubscriptionsResponse {
   /// If not empty, indicates that there may be more subscriptions that match
   /// the request; this value should be passed in a new
   /// `ListTopicSubscriptionsRequest` to get more subscriptions.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The names of subscriptions attached to the topic specified in the request.
-  core.List<core.String> subscriptions;
+  core.List<core.String>? subscriptions;
 
   ListTopicSubscriptionsResponse();
 
@@ -2577,9 +2439,9 @@ class ListTopicSubscriptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (subscriptions != null) 'subscriptions': subscriptions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (subscriptions != null) 'subscriptions': subscriptions!,
       };
 }
 
@@ -2587,10 +2449,10 @@ class ListTopicSubscriptionsResponse {
 class ListTopicsResponse {
   /// If not empty, indicates that there may be more topics that match the
   /// request; this value should be passed in a new `ListTopicsRequest`.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The resulting topics.
-  core.List<Topic> topics;
+  core.List<Topic>? topics;
 
   ListTopicsResponse();
 
@@ -2606,10 +2468,10 @@ class ListTopicsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (topics != null)
-          'topics': topics.map((value) => value.toJson()).toList(),
+          'topics': topics!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2622,7 +2484,7 @@ class MessageStoragePolicy {
   /// running outside of GCP altogether) will be routed for storage in one of
   /// the allowed regions. An empty list means that no regions are allowed, and
   /// is not a valid configuration.
-  core.List<core.String> allowedPersistenceRegions;
+  core.List<core.String>? allowedPersistenceRegions;
 
   MessageStoragePolicy();
 
@@ -2635,9 +2497,9 @@ class MessageStoragePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedPersistenceRegions != null)
-          'allowedPersistenceRegions': allowedPersistenceRegions,
+          'allowedPersistenceRegions': allowedPersistenceRegions!,
       };
 }
 
@@ -2655,12 +2517,12 @@ class ModifyAckDeadlineRequest {
   /// minutes).
   ///
   /// Required.
-  core.int ackDeadlineSeconds;
+  core.int? ackDeadlineSeconds;
 
   /// List of acknowledgment IDs.
   ///
   /// Required.
-  core.List<core.String> ackIds;
+  core.List<core.String>? ackIds;
 
   ModifyAckDeadlineRequest();
 
@@ -2675,10 +2537,10 @@ class ModifyAckDeadlineRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (ackDeadlineSeconds != null)
-          'ackDeadlineSeconds': ackDeadlineSeconds,
-        if (ackIds != null) 'ackIds': ackIds,
+          'ackDeadlineSeconds': ackDeadlineSeconds!,
+        if (ackIds != null) 'ackIds': ackIds!,
       };
 }
 
@@ -2692,7 +2554,7 @@ class ModifyPushConfigRequest {
   /// or `StreamingPull` is not called.
   ///
   /// Required.
-  PushConfig pushConfig;
+  PushConfig? pushConfig;
 
   ModifyPushConfigRequest();
 
@@ -2703,8 +2565,8 @@ class ModifyPushConfigRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pushConfig != null) 'pushConfig': pushConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pushConfig != null) 'pushConfig': pushConfig!.toJson(),
       };
 }
 
@@ -2719,7 +2581,7 @@ class OidcToken {
   /// the OIDC JWT token audience here:
   /// https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
   /// the Push endpoint URL will be used.
-  core.String audience;
+  core.String? audience;
 
   /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
   /// to be used for generating the OIDC token.
@@ -2727,7 +2589,7 @@ class OidcToken {
   /// The caller (for CreateSubscription, UpdateSubscription, and
   /// ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission
   /// for the service account.
-  core.String serviceAccountEmail;
+  core.String? serviceAccountEmail;
 
   OidcToken();
 
@@ -2740,10 +2602,10 @@ class OidcToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audience != null) 'audience': audience,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audience != null) 'audience': audience!,
         if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail,
+          'serviceAccountEmail': serviceAccountEmail!,
       };
 }
 
@@ -2784,7 +2646,7 @@ class Policy {
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -2798,8 +2660,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -2823,7 +2685,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -2842,11 +2704,11 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -2855,7 +2717,7 @@ class PublishRequest {
   /// The messages to publish.
   ///
   /// Required.
-  core.List<PubsubMessage> messages;
+  core.List<PubsubMessage>? messages;
 
   PublishRequest();
 
@@ -2868,9 +2730,9 @@ class PublishRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (messages != null)
-          'messages': messages.map((value) => value.toJson()).toList(),
+          'messages': messages!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2880,7 +2742,7 @@ class PublishResponse {
   /// messages in the request.
   ///
   /// IDs are guaranteed to be unique within the topic.
-  core.List<core.String> messageIds;
+  core.List<core.String>? messageIds;
 
   PublishResponse();
 
@@ -2892,8 +2754,8 @@ class PublishResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (messageIds != null) 'messageIds': messageIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (messageIds != null) 'messageIds': messageIds!,
       };
 }
 
@@ -2911,13 +2773,13 @@ class PubsubMessage {
   ///
   /// If this field is empty, the message must contain non-empty data. This can
   /// be used to filter messages on the subscription.
-  core.Map<core.String, core.String> attributes;
+  core.Map<core.String, core.String>? attributes;
 
   /// The message data field.
   ///
   /// If this field is empty, the message must contain at least one attribute.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -2929,7 +2791,7 @@ class PubsubMessage {
   /// Guaranteed to be unique within the topic. This value may be read by a
   /// subscriber that receives a `PubsubMessage` via a `Pull` call or a push
   /// delivery. It must not be populated by the publisher in a `Publish` call.
-  core.String messageId;
+  core.String? messageId;
 
   /// If non-empty, identifies related messages for which publish order should
   /// be respected.
@@ -2939,13 +2801,13 @@ class PubsubMessage {
   /// to subscribers in the order in which they are received by the Pub/Sub
   /// system. All `PubsubMessage`s published in a given `PublishRequest` must
   /// specify the same `ordering_key` value.
-  core.String orderingKey;
+  core.String? orderingKey;
 
   /// The time at which the message was published, populated by the server when
   /// it receives the `Publish` call.
   ///
   /// It must not be populated by the publisher in a `Publish` call.
-  core.String publishTime;
+  core.String? publishTime;
 
   PubsubMessage();
 
@@ -2974,12 +2836,12 @@ class PubsubMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributes != null) 'attributes': attributes,
-        if (data != null) 'data': data,
-        if (messageId != null) 'messageId': messageId,
-        if (orderingKey != null) 'orderingKey': orderingKey,
-        if (publishTime != null) 'publishTime': publishTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+        if (data != null) 'data': data!,
+        if (messageId != null) 'messageId': messageId!,
+        if (orderingKey != null) 'orderingKey': orderingKey!,
+        if (publishTime != null) 'publishTime': publishTime!,
       };
 }
 
@@ -2991,7 +2853,7 @@ class PullRequest {
   /// number specified.
   ///
   /// Required.
-  core.int maxMessages;
+  core.int? maxMessages;
 
   /// If this field set to true, the system will respond immediately even if it
   /// there are no messages available to return in the `Pull` response.
@@ -3003,7 +2865,7 @@ class PullRequest {
   /// not set this field.
   ///
   /// Optional.
-  core.bool returnImmediately;
+  core.bool? returnImmediately;
 
   PullRequest();
 
@@ -3016,9 +2878,9 @@ class PullRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxMessages != null) 'maxMessages': maxMessages,
-        if (returnImmediately != null) 'returnImmediately': returnImmediately,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxMessages != null) 'maxMessages': maxMessages!,
+        if (returnImmediately != null) 'returnImmediately': returnImmediately!,
       };
 }
 
@@ -3030,7 +2892,7 @@ class PullResponse {
   /// backlog. For JSON, the response can be entirely empty. The Pub/Sub system
   /// may return fewer than the `maxMessages` requested even if there are more
   /// messages available in the backlog.
-  core.List<ReceivedMessage> receivedMessages;
+  core.List<ReceivedMessage>? receivedMessages;
 
   PullResponse();
 
@@ -3043,10 +2905,10 @@ class PullResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (receivedMessages != null)
           'receivedMessages':
-              receivedMessages.map((value) => value.toJson()).toList(),
+              receivedMessages!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3068,16 +2930,16 @@ class PushConfig {
   /// in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format
   /// defined in the v1 Pub/Sub API. For example: attributes { "x-goog-version":
   /// "v1" }
-  core.Map<core.String, core.String> attributes;
+  core.Map<core.String, core.String>? attributes;
 
   /// If specified, Pub/Sub will generate and attach an OIDC JWT token as an
   /// `Authorization` header in the HTTP request for every pushed message.
-  OidcToken oidcToken;
+  OidcToken? oidcToken;
 
   /// A URL locating the endpoint to which messages should be pushed.
   ///
   /// For example, a Webhook endpoint might use `https://example.com/push`.
-  core.String pushEndpoint;
+  core.String? pushEndpoint;
 
   PushConfig();
 
@@ -3101,17 +2963,17 @@ class PushConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributes != null) 'attributes': attributes,
-        if (oidcToken != null) 'oidcToken': oidcToken.toJson(),
-        if (pushEndpoint != null) 'pushEndpoint': pushEndpoint,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+        if (oidcToken != null) 'oidcToken': oidcToken!.toJson(),
+        if (pushEndpoint != null) 'pushEndpoint': pushEndpoint!,
       };
 }
 
 /// A message and its corresponding acknowledgment ID.
 class ReceivedMessage {
   /// This ID can be used to acknowledge the received message.
-  core.String ackId;
+  core.String? ackId;
 
   /// The approximate number of times that Cloud Pub/Sub has attempted to
   /// deliver the associated message to a subscriber.
@@ -3125,10 +2987,10 @@ class ReceivedMessage {
   /// `delivery_attempt` will have a value of 1. The value is calculated at best
   /// effort and is approximate. If a DeadLetterPolicy is not set on the
   /// subscription, this will be 0.
-  core.int deliveryAttempt;
+  core.int? deliveryAttempt;
 
   /// The message.
-  PubsubMessage message;
+  PubsubMessage? message;
 
   ReceivedMessage();
 
@@ -3145,10 +3007,10 @@ class ReceivedMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ackId != null) 'ackId': ackId,
-        if (deliveryAttempt != null) 'deliveryAttempt': deliveryAttempt,
-        if (message != null) 'message': message.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ackId != null) 'ackId': ackId!,
+        if (deliveryAttempt != null) 'deliveryAttempt': deliveryAttempt!,
+        if (message != null) 'message': message!.toJson(),
       };
 }
 
@@ -3164,12 +3026,12 @@ class RetryPolicy {
   /// The maximum delay between consecutive deliveries of a given message.
   ///
   /// Value should be between 0 and 600 seconds. Defaults to 600 seconds.
-  core.String maximumBackoff;
+  core.String? maximumBackoff;
 
   /// The minimum delay between consecutive deliveries of a given message.
   ///
   /// Value should be between 0 and 600 seconds. Defaults to 10 seconds.
-  core.String minimumBackoff;
+  core.String? minimumBackoff;
 
   RetryPolicy();
 
@@ -3182,9 +3044,9 @@ class RetryPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maximumBackoff != null) 'maximumBackoff': maximumBackoff,
-        if (minimumBackoff != null) 'minimumBackoff': minimumBackoff,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maximumBackoff != null) 'maximumBackoff': maximumBackoff!,
+        if (minimumBackoff != null) 'minimumBackoff': minimumBackoff!,
       };
 }
 
@@ -3194,21 +3056,21 @@ class Schema {
   ///
   /// This should contain a string representing the full definition of the
   /// schema that is a valid schema definition of the type specified in `type`.
-  core.String definition;
+  core.String? definition;
 
   /// Name of the schema.
   ///
   /// Format is `projects/{project}/schemas/{schema}`.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The type of the schema definition.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default value. This value is unused.
   /// - "PROTOCOL_BUFFER" : A Protocol Buffer schema definition.
   /// - "AVRO" : An Avro schema definition.
-  core.String type;
+  core.String? type;
 
   Schema();
 
@@ -3224,10 +3086,10 @@ class Schema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (definition != null) 'definition': definition,
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (definition != null) 'definition': definition!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3239,7 +3101,7 @@ class SchemaSettings {
   /// - "JSON" : JSON encoding
   /// - "BINARY" : Binary encoding, as defined by the schema type. For some
   /// schema types, binary encoding may not be available.
-  core.String encoding;
+  core.String? encoding;
 
   /// The name of the schema that messages published should be validated
   /// against.
@@ -3248,7 +3110,7 @@ class SchemaSettings {
   /// will be `_deleted-schema_` if the schema has been deleted.
   ///
   /// Required.
-  core.String schema;
+  core.String? schema;
 
   SchemaSettings();
 
@@ -3261,9 +3123,9 @@ class SchemaSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (encoding != null) 'encoding': encoding,
-        if (schema != null) 'schema': schema,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (encoding != null) 'encoding': encoding!,
+        if (schema != null) 'schema': schema!,
       };
 }
 
@@ -3273,7 +3135,7 @@ class SeekRequest {
   ///
   /// The snapshot's topic must be the same as that of the provided
   /// subscription. Format is `projects/{project}/snapshots/{snap}`.
-  core.String snapshot;
+  core.String? snapshot;
 
   /// The time to seek to.
   ///
@@ -3287,7 +3149,7 @@ class SeekRequest {
   /// notion of the subscription creation time), only retained messages will be
   /// marked as unacknowledged, and already-expunged messages will not be
   /// restored.
-  core.String time;
+  core.String? time;
 
   SeekRequest();
 
@@ -3300,9 +3162,9 @@ class SeekRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (snapshot != null) 'snapshot': snapshot,
-        if (time != null) 'time': time,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (snapshot != null) 'snapshot': snapshot!,
+        if (time != null) 'time': time!,
       };
 }
 
@@ -3314,7 +3176,7 @@ class SeekResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -3324,7 +3186,7 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   SetIamPolicyRequest();
 
@@ -3335,8 +3197,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
       };
 }
 
@@ -3359,17 +3221,17 @@ class Snapshot {
   /// the snapshot -- which will always capture this 3-day-old backlog as long
   /// as the snapshot exists -- will expire in 4 days. The service will refuse
   /// to create a snapshot that would expire in less than 1 hour after creation.
-  core.String expireTime;
+  core.String? expireTime;
 
   /// See
   /// [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The name of the snapshot.
-  core.String name;
+  core.String? name;
 
   /// The name of the topic from which this snapshot is retaining messages.
-  core.String topic;
+  core.String? topic;
 
   Snapshot();
 
@@ -3394,11 +3256,11 @@ class Snapshot {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expireTime != null) 'expireTime': expireTime,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (topic != null) 'topic': topic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (topic != null) 'topic': topic!,
       };
 }
 
@@ -3420,7 +3282,7 @@ class Subscription {
   /// For push delivery, this value is also used to set the request timeout for
   /// the call to the push endpoint. If the subscriber never acknowledges the
   /// message, the Pub/Sub system will eventually redeliver the message.
-  core.int ackDeadlineSeconds;
+  core.int? ackDeadlineSeconds;
 
   /// A policy that specifies the conditions for dead lettering messages in this
   /// subscription.
@@ -3430,7 +3292,7 @@ class Subscription {
   /// project (i.e.,
   /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
   /// permission to Acknowledge() messages on this subscription.
-  DeadLetterPolicy deadLetterPolicy;
+  DeadLetterPolicy? deadLetterPolicy;
 
   /// Indicates whether the subscription is detached from its topic.
   ///
@@ -3438,14 +3300,14 @@ class Subscription {
   /// retain any backlog. `Pull` and `StreamingPull` requests will return
   /// FAILED_PRECONDITION. If the subscription is a push subscription, pushes to
   /// the endpoint will not be made.
-  core.bool detached;
+  core.bool? detached;
 
   /// If true, messages published with the same `ordering_key` in
   /// `PubsubMessage` will be delivered to the subscribers in the order in which
   /// they are received by the Pub/Sub system.
   ///
   /// Otherwise, they may be delivered in any order.
-  core.bool enableMessageOrdering;
+  core.bool? enableMessageOrdering;
 
   /// A policy that specifies the conditions for this subscription's expiration.
   ///
@@ -3454,7 +3316,7 @@ class Subscription {
   /// operations on the subscription. If `expiration_policy` is not set, a
   /// *default policy* with `ttl` of 31 days will be used. The minimum allowed
   /// value for `expiration_policy.ttl` is 1 day.
-  ExpirationPolicy expirationPolicy;
+  ExpirationPolicy? expirationPolicy;
 
   /// An expression written in the Pub/Sub
   /// [filter language](https://cloud.google.com/pubsub/docs/filtering).
@@ -3462,10 +3324,10 @@ class Subscription {
   /// If non-empty, then only `PubsubMessage`s whose `attributes` field matches
   /// the filter are delivered on this subscription. If empty, then no messages
   /// are filtered out.
-  core.String filter;
+  core.String? filter;
 
   /// See Creating and managing labels.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// How long to retain unacknowledged messages in the subscription's backlog,
   /// from the moment a message is published.
@@ -3474,7 +3336,7 @@ class Subscription {
   /// retention of acknowledged messages, and thus configures how far back in
   /// time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days
   /// or less than 10 minutes.
-  core.String messageRetentionDuration;
+  core.String? messageRetentionDuration;
 
   /// The name of the subscription.
   ///
@@ -3486,14 +3348,14 @@ class Subscription {
   /// in length, and it must not start with `"goog"`.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// If push delivery is used with this subscription, this field is used to
   /// configure it.
   ///
   /// An empty `pushConfig` signifies that the subscriber will pull and ack
   /// messages using API methods.
-  PushConfig pushConfig;
+  PushConfig? pushConfig;
 
   /// Indicates whether to retain acknowledged messages.
   ///
@@ -3502,7 +3364,7 @@ class Subscription {
   /// `message_retention_duration` window. This must be true if you would like
   /// to
   /// [Seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time).
-  core.bool retainAckedMessages;
+  core.bool? retainAckedMessages;
 
   /// A policy that specifies how Pub/Sub retries message delivery for this
   /// subscription.
@@ -3511,7 +3373,7 @@ class Subscription {
   /// that messages will be retried as soon as possible for healthy subscribers.
   /// RetryPolicy will be triggered on NACKs or acknowledgement deadline
   /// exceeded events for a given message.
-  RetryPolicy retryPolicy;
+  RetryPolicy? retryPolicy;
 
   /// The name of the topic from which this subscription is receiving messages.
   ///
@@ -3519,7 +3381,7 @@ class Subscription {
   /// will be `_deleted-topic_` if the topic has been deleted.
   ///
   /// Required.
-  core.String topic;
+  core.String? topic;
 
   Subscription();
 
@@ -3576,26 +3438,26 @@ class Subscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (ackDeadlineSeconds != null)
-          'ackDeadlineSeconds': ackDeadlineSeconds,
+          'ackDeadlineSeconds': ackDeadlineSeconds!,
         if (deadLetterPolicy != null)
-          'deadLetterPolicy': deadLetterPolicy.toJson(),
-        if (detached != null) 'detached': detached,
+          'deadLetterPolicy': deadLetterPolicy!.toJson(),
+        if (detached != null) 'detached': detached!,
         if (enableMessageOrdering != null)
-          'enableMessageOrdering': enableMessageOrdering,
+          'enableMessageOrdering': enableMessageOrdering!,
         if (expirationPolicy != null)
-          'expirationPolicy': expirationPolicy.toJson(),
-        if (filter != null) 'filter': filter,
-        if (labels != null) 'labels': labels,
+          'expirationPolicy': expirationPolicy!.toJson(),
+        if (filter != null) 'filter': filter!,
+        if (labels != null) 'labels': labels!,
         if (messageRetentionDuration != null)
-          'messageRetentionDuration': messageRetentionDuration,
-        if (name != null) 'name': name,
-        if (pushConfig != null) 'pushConfig': pushConfig.toJson(),
+          'messageRetentionDuration': messageRetentionDuration!,
+        if (name != null) 'name': name!,
+        if (pushConfig != null) 'pushConfig': pushConfig!.toJson(),
         if (retainAckedMessages != null)
-          'retainAckedMessages': retainAckedMessages,
-        if (retryPolicy != null) 'retryPolicy': retryPolicy.toJson(),
-        if (topic != null) 'topic': topic,
+          'retainAckedMessages': retainAckedMessages!,
+        if (retryPolicy != null) 'retryPolicy': retryPolicy!.toJson(),
+        if (topic != null) 'topic': topic!,
       };
 }
 
@@ -3606,7 +3468,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -3618,8 +3480,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -3627,7 +3489,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -3639,8 +3501,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -3651,17 +3513,17 @@ class Topic {
   ///
   /// The expected format is `projects / * /locations / * /keyRings / *
   /// /cryptoKeys / * `.
-  core.String kmsKeyName;
+  core.String? kmsKeyName;
 
   /// See
   /// [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Policy constraining the set of Google Cloud Platform regions where
   /// messages published to the topic may be stored.
   ///
   /// If not present, then no constraints are in effect.
-  MessageStoragePolicy messageStoragePolicy;
+  MessageStoragePolicy? messageStoragePolicy;
 
   /// The name of the topic.
   ///
@@ -3672,16 +3534,16 @@ class Topic {
   /// in length, and it must not start with `"goog"`.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Reserved for future use.
   ///
   /// This field is set only in responses from the server; it is ignored if it
   /// is set in any requests.
-  core.bool satisfiesPzs;
+  core.bool? satisfiesPzs;
 
   /// Settings for validating messages published against a schema.
-  SchemaSettings schemaSettings;
+  SchemaSettings? schemaSettings;
 
   Topic();
 
@@ -3714,14 +3576,14 @@ class Topic {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (labels != null) 'labels': labels!,
         if (messageStoragePolicy != null)
-          'messageStoragePolicy': messageStoragePolicy.toJson(),
-        if (name != null) 'name': name,
-        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs,
-        if (schemaSettings != null) 'schemaSettings': schemaSettings.toJson(),
+          'messageStoragePolicy': messageStoragePolicy!.toJson(),
+        if (name != null) 'name': name!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+        if (schemaSettings != null) 'schemaSettings': schemaSettings!.toJson(),
       };
 }
 
@@ -3730,14 +3592,14 @@ class UpdateSnapshotRequest {
   /// The updated snapshot object.
   ///
   /// Required.
-  Snapshot snapshot;
+  Snapshot? snapshot;
 
   /// Indicates which fields in the provided snapshot to update.
   ///
   /// Must be specified and non-empty.
   ///
   /// Required.
-  core.String updateMask;
+  core.String? updateMask;
 
   UpdateSnapshotRequest();
 
@@ -3751,9 +3613,9 @@ class UpdateSnapshotRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (snapshot != null) 'snapshot': snapshot.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (snapshot != null) 'snapshot': snapshot!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -3762,14 +3624,14 @@ class UpdateSubscriptionRequest {
   /// The updated subscription object.
   ///
   /// Required.
-  Subscription subscription;
+  Subscription? subscription;
 
   /// Indicates which fields in the provided subscription to update.
   ///
   /// Must be specified and non-empty.
   ///
   /// Required.
-  core.String updateMask;
+  core.String? updateMask;
 
   UpdateSubscriptionRequest();
 
@@ -3783,9 +3645,9 @@ class UpdateSubscriptionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (subscription != null) 'subscription': subscription.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (subscription != null) 'subscription': subscription!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -3794,7 +3656,7 @@ class UpdateTopicRequest {
   /// The updated topic object.
   ///
   /// Required.
-  Topic topic;
+  Topic? topic;
 
   /// Indicates which fields in the provided topic to update.
   ///
@@ -3804,7 +3666,7 @@ class UpdateTopicRequest {
   /// policy configured at the project or organization level.
   ///
   /// Required.
-  core.String updateMask;
+  core.String? updateMask;
 
   UpdateTopicRequest();
 
@@ -3818,9 +3680,9 @@ class UpdateTopicRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (topic != null) 'topic': topic.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (topic != null) 'topic': topic!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -3832,11 +3694,11 @@ class ValidateMessageRequest {
   /// - "JSON" : JSON encoding
   /// - "BINARY" : Binary encoding, as defined by the schema type. For some
   /// schema types, binary encoding may not be available.
-  core.String encoding;
+  core.String? encoding;
 
   /// Message to validate against the provided `schema_spec`.
-  core.String message;
-  core.List<core.int> get messageAsBytes => convert.base64.decode(message);
+  core.String? message;
+  core.List<core.int> get messageAsBytes => convert.base64.decode(message!);
 
   set messageAsBytes(core.List<core.int> _bytes) {
     message =
@@ -3846,10 +3708,10 @@ class ValidateMessageRequest {
   /// Name of the schema against which to validate.
   ///
   /// Format is `projects/{project}/schemas/{schema}`.
-  core.String name;
+  core.String? name;
 
   /// Ad-hoc schema against which to validate
-  Schema schema;
+  Schema? schema;
 
   ValidateMessageRequest();
 
@@ -3869,11 +3731,11 @@ class ValidateMessageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (encoding != null) 'encoding': encoding,
-        if (message != null) 'message': message,
-        if (name != null) 'name': name,
-        if (schema != null) 'schema': schema.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (encoding != null) 'encoding': encoding!,
+        if (message != null) 'message': message!,
+        if (name != null) 'name': name!,
+        if (schema != null) 'schema': schema!.toJson(),
       };
 }
 
@@ -3887,7 +3749,7 @@ class ValidateMessageResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request for the `ValidateSchema` method.
@@ -3895,7 +3757,7 @@ class ValidateSchemaRequest {
   /// The schema object to validate.
   ///
   /// Required.
-  Schema schema;
+  Schema? schema;
 
   ValidateSchemaRequest();
 
@@ -3906,8 +3768,8 @@ class ValidateSchemaRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (schema != null) 'schema': schema.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (schema != null) 'schema': schema!.toJson(),
       };
 }
 
@@ -3921,5 +3783,5 @@ class ValidateSchemaResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }

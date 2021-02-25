@@ -108,11 +108,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -152,14 +149,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -233,15 +227,11 @@ class ProjectsLocationsGlobalHubsResource {
   async.Future<GoogleLongrunningOperation> create(
     Hub request,
     core.String parent, {
-    core.String hubId,
-    core.String requestId,
-    core.String $fields,
+    core.String? hubId,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (hubId != null) 'hubId': [hubId],
       if (requestId != null) 'requestId': [requestId],
@@ -294,12 +284,9 @@ class ProjectsLocationsGlobalHubsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
-    core.String requestId,
-    core.String $fields,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -336,11 +323,8 @@ class ProjectsLocationsGlobalHubsResource {
   /// this method will complete with the same error.
   async.Future<Hub> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -388,12 +372,9 @@ class ProjectsLocationsGlobalHubsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -441,15 +422,12 @@ class ProjectsLocationsGlobalHubsResource {
   /// this method will complete with the same error.
   async.Future<ListHubsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -512,15 +490,11 @@ class ProjectsLocationsGlobalHubsResource {
   async.Future<GoogleLongrunningOperation> patch(
     Hub request,
     core.String name, {
-    core.String requestId,
-    core.String updateMask,
-    core.String $fields,
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -567,13 +541,9 @@ class ProjectsLocationsGlobalHubsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -621,13 +591,9 @@ class ProjectsLocationsGlobalHubsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -685,13 +651,9 @@ class ProjectsLocationsOperationsResource {
   async.Future<Empty> cancel(
     GoogleLongrunningCancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -733,11 +695,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -775,11 +734,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -829,14 +785,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -897,12 +850,9 @@ class ProjectsLocationsPolicyBasedRoutesResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -949,13 +899,9 @@ class ProjectsLocationsPolicyBasedRoutesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1003,13 +949,9 @@ class ProjectsLocationsPolicyBasedRoutesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1068,12 +1010,9 @@ class ProjectsLocationsPrivateRangesResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -1120,13 +1059,9 @@ class ProjectsLocationsPrivateRangesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1174,13 +1109,9 @@ class ProjectsLocationsPrivateRangesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1242,15 +1173,11 @@ class ProjectsLocationsSpokesResource {
   async.Future<GoogleLongrunningOperation> create(
     Spoke request,
     core.String parent, {
-    core.String requestId,
-    core.String spokeId,
-    core.String $fields,
+    core.String? requestId,
+    core.String? spokeId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (spokeId != null) 'spokeId': [spokeId],
@@ -1303,12 +1230,9 @@ class ProjectsLocationsSpokesResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
-    core.String requestId,
-    core.String $fields,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -1345,11 +1269,8 @@ class ProjectsLocationsSpokesResource {
   /// this method will complete with the same error.
   async.Future<Spoke> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1397,12 +1318,9 @@ class ProjectsLocationsSpokesResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -1450,15 +1368,12 @@ class ProjectsLocationsSpokesResource {
   /// this method will complete with the same error.
   async.Future<ListSpokesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1521,15 +1436,11 @@ class ProjectsLocationsSpokesResource {
   async.Future<GoogleLongrunningOperation> patch(
     Spoke request,
     core.String name, {
-    core.String requestId,
-    core.String updateMask,
-    core.String $fields,
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1576,13 +1487,9 @@ class ProjectsLocationsSpokesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1630,13 +1537,9 @@ class ProjectsLocationsSpokesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1659,13 +1562,13 @@ class ProjectsLocationsSpokesResource {
 /// The allowed types for \[VALUE\] in a `[KEY]:[VALUE]` attribute.
 class AttributeValue {
   /// A Boolean value represented by `true` or `false`.
-  core.bool boolValue;
+  core.bool? boolValue;
 
   /// A 64-bit signed integer.
-  core.String intValue;
+  core.String? intValue;
 
   /// A string up to 256 bytes long.
-  TruncatableString stringValue;
+  TruncatableString? stringValue;
 
   AttributeValue();
 
@@ -1682,10 +1585,10 @@ class AttributeValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue,
-        if (intValue != null) 'intValue': intValue,
-        if (stringValue != null) 'stringValue': stringValue.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (intValue != null) 'intValue': intValue!,
+        if (stringValue != null) 'stringValue': stringValue!.toJson(),
       };
 }
 
@@ -1698,39 +1601,40 @@ class Attributes {
   /// `true` and `false`. For example: "/instance_id": "my-instance"
   /// "/http/user_agent": "" "/http/request_bytes": 300 "abc.com/myattribute":
   /// true
-  core.Map<core.String, AttributeValue> attributeMap;
+  core.Map<core.String, AttributeValue>? attributeMap;
 
   /// The number of attributes that were discarded.
   ///
   /// Attributes can be discarded because their keys are too long or because
   /// there are too many attributes. If this value is 0 then all attributes are
   /// valid.
-  core.int droppedAttributesCount;
+  core.int? droppedAttributesCount;
 
   Attributes();
 
   Attributes.fromJson(core.Map _json) {
     if (_json.containsKey('attributeMap')) {
-      attributeMap =
-          (_json['attributeMap'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  AttributeValue.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      attributeMap = (_json['attributeMap'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              AttributeValue.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('droppedAttributesCount')) {
       droppedAttributesCount = _json['droppedAttributesCount'] as core.int;
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (attributeMap != null)
-          'attributeMap': attributeMap
+          'attributeMap': attributeMap!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (droppedAttributesCount != null)
-          'droppedAttributesCount': droppedAttributesCount,
+          'droppedAttributesCount': droppedAttributesCount!,
       };
 }
 
@@ -1753,13 +1657,13 @@ class Attributes {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -1775,11 +1679,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -1794,7 +1698,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -1802,7 +1706,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -1817,9 +1721,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -1831,7 +1735,7 @@ class BillingView {
   ///
   /// See go/billing-view-construction for documentation on constructing billing
   /// view report requests.
-  core.List<ReportRequest> reportRequests;
+  core.List<ReportRequest>? reportRequests;
 
   BillingView();
 
@@ -1844,10 +1748,10 @@ class BillingView {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (reportRequests != null)
           'reportRequests':
-              reportRequests.map((value) => value.toJson()).toList(),
+              reportRequests!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1861,7 +1765,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -1893,12 +1797,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -1917,10 +1821,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1942,48 +1846,48 @@ class Distribution {
   /// number of samples in the overflow bucket. See the comments of
   /// \`bucket_option\` below for more details. Any suffix of trailing zeros may
   /// be omitted.
-  core.List<core.String> bucketCounts;
+  core.List<core.String>? bucketCounts;
 
   /// The total number of samples in the distribution.
   ///
   /// Must be >= 0.
-  core.String count;
+  core.String? count;
 
   /// Example points.
   ///
   /// Must be in increasing order of `value` field.
-  core.List<Exemplar> exemplars;
+  core.List<Exemplar>? exemplars;
 
   /// Buckets with arbitrary user-provided width.
-  ExplicitBuckets explicitBuckets;
+  ExplicitBuckets? explicitBuckets;
 
   /// Buckets with exponentially growing width.
-  ExponentialBuckets exponentialBuckets;
+  ExponentialBuckets? exponentialBuckets;
 
   /// Buckets with constant width.
-  LinearBuckets linearBuckets;
+  LinearBuckets? linearBuckets;
 
   /// The maximum of the population of values.
   ///
   /// Ignored if `count` is zero.
-  core.double maximum;
+  core.double? maximum;
 
   /// The arithmetic mean of the samples in the distribution.
   ///
   /// If `count` is zero then this field must be zero.
-  core.double mean;
+  core.double? mean;
 
   /// The minimum of the population of values.
   ///
   /// Ignored if `count` is zero.
-  core.double minimum;
+  core.double? minimum;
 
   /// The sum of squared deviations from the mean: Sum\[i=1..count\]((x_i -
   /// mean)^2) where each x_i is a sample values.
   ///
   /// If `count` is zero then this field must be zero, otherwise validation of
   /// the request fails.
-  core.double sumOfSquaredDeviation;
+  core.double? sumOfSquaredDeviation;
 
   Distribution();
 
@@ -2029,21 +1933,21 @@ class Distribution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bucketCounts != null) 'bucketCounts': bucketCounts,
-        if (count != null) 'count': count,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bucketCounts != null) 'bucketCounts': bucketCounts!,
+        if (count != null) 'count': count!,
         if (exemplars != null)
-          'exemplars': exemplars.map((value) => value.toJson()).toList(),
+          'exemplars': exemplars!.map((value) => value.toJson()).toList(),
         if (explicitBuckets != null)
-          'explicitBuckets': explicitBuckets.toJson(),
+          'explicitBuckets': explicitBuckets!.toJson(),
         if (exponentialBuckets != null)
-          'exponentialBuckets': exponentialBuckets.toJson(),
-        if (linearBuckets != null) 'linearBuckets': linearBuckets.toJson(),
-        if (maximum != null) 'maximum': maximum,
-        if (mean != null) 'mean': mean,
-        if (minimum != null) 'minimum': minimum,
+          'exponentialBuckets': exponentialBuckets!.toJson(),
+        if (linearBuckets != null) 'linearBuckets': linearBuckets!.toJson(),
+        if (maximum != null) 'maximum': maximum!,
+        if (mean != null) 'mean': mean!,
+        if (minimum != null) 'minimum': minimum!,
         if (sumOfSquaredDeviation != null)
-          'sumOfSquaredDeviation': sumOfSquaredDeviation,
+          'sumOfSquaredDeviation': sumOfSquaredDeviation!,
       };
 }
 
@@ -2061,7 +1965,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Exemplars are example points that may be used to annotate aggregated
@@ -2083,15 +1987,15 @@ class Exemplar {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> attachments;
+  core.List<core.Map<core.String, core.Object>>? attachments;
 
   /// The observation (sampling) time of the above value.
-  core.String timestamp;
+  core.String? timestamp;
 
   /// Value of the exemplar point.
   ///
   /// This value determines to which bucket the exemplar belongs.
-  core.double value;
+  core.double? value;
 
   Exemplar();
 
@@ -2115,10 +2019,10 @@ class Exemplar {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attachments != null) 'attachments': attachments,
-        if (timestamp != null) 'timestamp': timestamp,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attachments != null) 'attachments': attachments!,
+        if (timestamp != null) 'timestamp': timestamp!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2135,7 +2039,7 @@ class ExplicitBuckets {
   /// number lower bound upper bound i == 0 (underflow) -inf bound\[i\] 0 < i <
   /// bound_size() bound\[i-1\] bound\[i\] i == bound_size() (overflow)
   /// bound\[i-1\] +inf
-  core.List<core.double> bounds;
+  core.List<core.double>? bounds;
 
   ExplicitBuckets();
 
@@ -2147,8 +2051,8 @@ class ExplicitBuckets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bounds != null) 'bounds': bounds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bounds != null) 'bounds': bounds!,
       };
 }
 
@@ -2159,20 +2063,20 @@ class ExponentialBuckets {
   /// num_finite_buckets inclusive.
   ///
   /// Must be larger than 1.0.
-  core.double growthFactor;
+  core.double? growthFactor;
 
   /// The number of finite buckets.
   ///
   /// With the underflow and overflow buckets, the total number of buckets is
   /// `num_finite_buckets` + 2. See comments on `bucket_options` for details.
-  core.int numFiniteBuckets;
+  core.int? numFiniteBuckets;
 
   /// The i'th exponential bucket covers the interval \[scale *
   /// growth_factor^(i-1), scale * growth_factor^i) where i ranges from 1 to
   /// num_finite_buckets inclusive.
   ///
   /// Must be > 0.
-  core.double scale;
+  core.double? scale;
 
   ExponentialBuckets();
 
@@ -2188,10 +2092,10 @@ class ExponentialBuckets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (growthFactor != null) 'growthFactor': growthFactor,
-        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets,
-        if (scale != null) 'scale': scale,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (growthFactor != null) 'growthFactor': growthFactor!,
+        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
+        if (scale != null) 'scale': scale!,
       };
 }
 
@@ -2220,24 +2124,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -2256,11 +2160,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -2272,16 +2176,16 @@ class GoogleLongrunningCancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<GoogleLongrunningOperation> operations;
+  core.List<GoogleLongrunningOperation>? operations;
 
   GoogleLongrunningListOperationsResponse();
 
@@ -2298,10 +2202,10 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2312,10 +2216,10 @@ class GoogleLongrunningOperation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  GoogleRpcStatus error;
+  GoogleRpcStatus? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -2326,14 +2230,14 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -2346,7 +2250,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   GoogleLongrunningOperation();
 
@@ -2381,12 +2285,12 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -2399,7 +2303,7 @@ class GoogleLongrunningOperation {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -2407,13 +2311,13 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   GoogleRpcStatus();
 
@@ -2437,10 +2341,10 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -2452,72 +2356,72 @@ class HttpRequest {
   /// The number of HTTP response bytes inserted into cache.
   ///
   /// Set only when a cache fill was attempted.
-  core.String cacheFillBytes;
+  core.String? cacheFillBytes;
 
   /// Whether or not an entity was served from cache (with or without
   /// validation).
-  core.bool cacheHit;
+  core.bool? cacheHit;
 
   /// Whether or not a cache lookup was attempted.
-  core.bool cacheLookup;
+  core.bool? cacheLookup;
 
   /// Whether or not the response was validated with the origin server before
   /// being served from cache.
   ///
   /// This field is only meaningful if `cache_hit` is True.
-  core.bool cacheValidatedWithOriginServer;
+  core.bool? cacheValidatedWithOriginServer;
 
   /// The request processing latency on the server, from the time the request
   /// was received until the response was sent.
-  core.String latency;
+  core.String? latency;
 
   /// Protocol used for the request.
   ///
   /// Examples: "HTTP/1.1", "HTTP/2", "websocket"
-  core.String protocol;
+  core.String? protocol;
 
   /// The referer URL of the request, as defined in
   /// [HTTP/1.1 Header Field Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
-  core.String referer;
+  core.String? referer;
 
   /// The IP address (IPv4 or IPv6) of the client that issued the HTTP request.
   ///
   /// Examples: `"192.168.1.1"`, `"FE80::0202:B3FF:FE1E:8329"`.
-  core.String remoteIp;
+  core.String? remoteIp;
 
   /// The request method.
   ///
   /// Examples: `"GET"`, `"HEAD"`, `"PUT"`, `"POST"`.
-  core.String requestMethod;
+  core.String? requestMethod;
 
   /// The size of the HTTP request message in bytes, including the request
   /// headers and the request body.
-  core.String requestSize;
+  core.String? requestSize;
 
   /// The scheme (http, https), the host name, the path, and the query portion
   /// of the URL that was requested.
   ///
   /// Example: `"http://example.com/some/info?color=red"`.
-  core.String requestUrl;
+  core.String? requestUrl;
 
   /// The size of the HTTP response message sent back to the client, in bytes,
   /// including the response headers and the response body.
-  core.String responseSize;
+  core.String? responseSize;
 
   /// The IP address (IPv4 or IPv6) of the origin server that the request was
   /// sent to.
-  core.String serverIp;
+  core.String? serverIp;
 
   /// The response code indicating the status of the response.
   ///
   /// Examples: 200, 404.
-  core.int status;
+  core.int? status;
 
   /// The user agent sent by the client.
   ///
   /// Example: `"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Q312461; .NET
   /// CLR 1.0.3705)"`.
-  core.String userAgent;
+  core.String? userAgent;
 
   HttpRequest();
 
@@ -2570,23 +2474,23 @@ class HttpRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cacheFillBytes != null) 'cacheFillBytes': cacheFillBytes,
-        if (cacheHit != null) 'cacheHit': cacheHit,
-        if (cacheLookup != null) 'cacheLookup': cacheLookup,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cacheFillBytes != null) 'cacheFillBytes': cacheFillBytes!,
+        if (cacheHit != null) 'cacheHit': cacheHit!,
+        if (cacheLookup != null) 'cacheLookup': cacheLookup!,
         if (cacheValidatedWithOriginServer != null)
-          'cacheValidatedWithOriginServer': cacheValidatedWithOriginServer,
-        if (latency != null) 'latency': latency,
-        if (protocol != null) 'protocol': protocol,
-        if (referer != null) 'referer': referer,
-        if (remoteIp != null) 'remoteIp': remoteIp,
-        if (requestMethod != null) 'requestMethod': requestMethod,
-        if (requestSize != null) 'requestSize': requestSize,
-        if (requestUrl != null) 'requestUrl': requestUrl,
-        if (responseSize != null) 'responseSize': responseSize,
-        if (serverIp != null) 'serverIp': serverIp,
-        if (status != null) 'status': status,
-        if (userAgent != null) 'userAgent': userAgent,
+          'cacheValidatedWithOriginServer': cacheValidatedWithOriginServer!,
+        if (latency != null) 'latency': latency!,
+        if (protocol != null) 'protocol': protocol!,
+        if (referer != null) 'referer': referer!,
+        if (remoteIp != null) 'remoteIp': remoteIp!,
+        if (requestMethod != null) 'requestMethod': requestMethod!,
+        if (requestSize != null) 'requestSize': requestSize!,
+        if (requestUrl != null) 'requestUrl': requestUrl!,
+        if (responseSize != null) 'responseSize': responseSize!,
+        if (serverIp != null) 'serverIp': serverIp!,
+        if (status != null) 'status': status!,
+        if (userAgent != null) 'userAgent': userAgent!,
       };
 }
 
@@ -2597,23 +2501,23 @@ class HttpRequest {
 /// management model. Following is the resource message of a hub.
 class Hub {
   /// Time when the Hub was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// Short description of the hub resource.
-  core.String description;
+  core.String? description;
 
   /// User-defined labels.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The name of a Hub resource.
   ///
   /// Immutable.
-  core.String name;
+  core.String? name;
 
   /// A list of the URIs of all attached spokes
   ///
   /// Output only.
-  core.List<core.String> spokes;
+  core.List<core.String>? spokes;
 
   /// The current lifecycle state of this Hub.
   ///
@@ -2623,7 +2527,7 @@ class Hub {
   /// - "CREATING" : The resource's create operation is in progress
   /// - "ACTIVE" : The resource is active
   /// - "DELETING" : The resource's Delete operation is in progress
-  core.String state;
+  core.String? state;
 
   /// Google-generated UUID for this resource.
   ///
@@ -2631,10 +2535,10 @@ class Hub {
   /// another with the same name is created, it gets a different unique_id.
   ///
   /// Output only.
-  core.String uniqueId;
+  core.String? uniqueId;
 
   /// Time when the Hub was updated.
-  core.String updateTime;
+  core.String? updateTime;
 
   Hub();
 
@@ -2673,15 +2577,15 @@ class Hub {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (spokes != null) 'spokes': spokes,
-        if (state != null) 'state': state,
-        if (uniqueId != null) 'uniqueId': uniqueId,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (spokes != null) 'spokes': spokes!,
+        if (state != null) 'state': state!,
+        if (uniqueId != null) 'uniqueId': uniqueId!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2691,19 +2595,19 @@ class LinearBuckets {
   ///
   /// With the underflow and overflow buckets, the total number of buckets is
   /// `num_finite_buckets` + 2. See comments on `bucket_options` for details.
-  core.int numFiniteBuckets;
+  core.int? numFiniteBuckets;
 
   /// The i'th linear bucket covers the interval \[offset + (i-1) * width,
   /// offset + i * width) where i ranges from 1 to num_finite_buckets,
   /// inclusive.
-  core.double offset;
+  core.double? offset;
 
   /// The i'th linear bucket covers the interval \[offset + (i-1) * width,
   /// offset + i * width) where i ranges from 1 to num_finite_buckets,
   /// inclusive.
   ///
   /// Must be strictly positive.
-  core.double width;
+  core.double? width;
 
   LinearBuckets();
 
@@ -2719,26 +2623,26 @@ class LinearBuckets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets,
-        if (offset != null) 'offset': offset,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
+        if (offset != null) 'offset': offset!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// Response for HubService.ListHubs method.
 class ListHubsResponse {
   /// Hubs to be returned.
-  core.List<Hub> hubs;
+  core.List<Hub>? hubs;
 
   /// The next pagination token in the List response.
   ///
   /// It should be used as page_token for the following request. An empty value
   /// means no more result.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListHubsResponse();
 
@@ -2759,20 +2663,20 @@ class ListHubsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hubs != null) 'hubs': hubs.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hubs != null) 'hubs': hubs!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -2788,10 +2692,10 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2801,13 +2705,13 @@ class ListSpokesResponse {
   ///
   /// It should be used as page_token for the following request. An empty value
   /// means no more result.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Spokes to be returned.
-  core.List<Spoke> spokes;
+  core.List<Spoke>? spokes;
 
   /// Locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListSpokesResponse();
 
@@ -2828,11 +2732,11 @@ class ListSpokesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (spokes != null)
-          'spokes': spokes.map((value) => value.toJson()).toList(),
-        if (unreachable != null) 'unreachable': unreachable,
+          'spokes': spokes!.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -2841,17 +2745,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -2859,12 +2763,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -2898,12 +2802,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2913,29 +2817,29 @@ class LogEntry {
   /// applicable.
   ///
   /// Optional.
-  HttpRequest httpRequest;
+  HttpRequest? httpRequest;
 
   /// A unique ID for the log entry used for deduplication.
   ///
   /// If omitted, the implementation will generate one based on operation_id.
-  core.String insertId;
+  core.String? insertId;
 
   /// A set of user-defined (key, value) data that provides additional
   /// information about the log entry.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The log to which this log entry belongs.
   ///
   /// Examples: `"syslog"`, `"book_log"`.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Information about an operation associated with the log entry, if
   /// applicable.
   ///
   /// Optional.
-  LogEntryOperation operation;
+  LogEntryOperation? operation;
 
   /// The log entry payload, represented as a protocol buffer that is expressed
   /// as a JSON object.
@@ -2944,7 +2848,7 @@ class LogEntry {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> protoPayload;
+  core.Map<core.String, core.Object>? protoPayload;
 
   /// The severity of the log entry.
   ///
@@ -2962,27 +2866,27 @@ class LogEntry {
   /// outages.
   /// - "ALERT" : (700) A person must take an action immediately.
   /// - "EMERGENCY" : (800) One or more systems are unusable.
-  core.String severity;
+  core.String? severity;
 
   /// Source code location information associated with the log entry, if any.
   ///
   /// Optional.
-  LogEntrySourceLocation sourceLocation;
+  LogEntrySourceLocation? sourceLocation;
 
   /// The log entry payload, represented as a structure that is expressed as a
   /// JSON object.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> structPayload;
+  core.Map<core.String, core.Object>? structPayload;
 
   /// The log entry payload, represented as a Unicode string (UTF-8).
-  core.String textPayload;
+  core.String? textPayload;
 
   /// The time the event described by the log entry occurred.
   ///
   /// If omitted, defaults to operation start time.
-  core.String timestamp;
+  core.String? timestamp;
 
   /// Resource name of the trace associated with the log entry, if any.
   ///
@@ -2991,7 +2895,7 @@ class LogEntry {
   /// `projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824`
   ///
   /// Optional.
-  core.String trace;
+  core.String? trace;
 
   LogEntry();
 
@@ -3057,19 +2961,19 @@ class LogEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (httpRequest != null) 'httpRequest': httpRequest.toJson(),
-        if (insertId != null) 'insertId': insertId,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (operation != null) 'operation': operation.toJson(),
-        if (protoPayload != null) 'protoPayload': protoPayload,
-        if (severity != null) 'severity': severity,
-        if (sourceLocation != null) 'sourceLocation': sourceLocation.toJson(),
-        if (structPayload != null) 'structPayload': structPayload,
-        if (textPayload != null) 'textPayload': textPayload,
-        if (timestamp != null) 'timestamp': timestamp,
-        if (trace != null) 'trace': trace,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (httpRequest != null) 'httpRequest': httpRequest!.toJson(),
+        if (insertId != null) 'insertId': insertId!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (operation != null) 'operation': operation!.toJson(),
+        if (protoPayload != null) 'protoPayload': protoPayload!,
+        if (severity != null) 'severity': severity!,
+        if (sourceLocation != null) 'sourceLocation': sourceLocation!.toJson(),
+        if (structPayload != null) 'structPayload': structPayload!,
+        if (textPayload != null) 'textPayload': textPayload!,
+        if (timestamp != null) 'timestamp': timestamp!,
+        if (trace != null) 'trace': trace!,
       };
 }
 
@@ -3079,7 +2983,7 @@ class LogEntryOperation {
   /// Set this to True if this is the first log entry in the operation.
   ///
   /// Optional.
-  core.bool first;
+  core.bool? first;
 
   /// An arbitrary operation identifier.
   ///
@@ -3087,12 +2991,12 @@ class LogEntryOperation {
   /// operation.
   ///
   /// Optional.
-  core.String id;
+  core.String? id;
 
   /// Set this to True if this is the last log entry in the operation.
   ///
   /// Optional.
-  core.bool last;
+  core.bool? last;
 
   /// An arbitrary producer identifier.
   ///
@@ -3101,7 +3005,7 @@ class LogEntryOperation {
   /// `"github.com/MyProject/MyApplication"`.
   ///
   /// Optional.
-  core.String producer;
+  core.String? producer;
 
   LogEntryOperation();
 
@@ -3120,11 +3024,11 @@ class LogEntryOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (first != null) 'first': first,
-        if (id != null) 'id': id,
-        if (last != null) 'last': last,
-        if (producer != null) 'producer': producer,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (first != null) 'first': first!,
+        if (id != null) 'id': id!,
+        if (last != null) 'last': last!,
+        if (producer != null) 'producer': producer!,
       };
 }
 
@@ -3137,7 +3041,7 @@ class LogEntrySourceLocation {
   /// fully-qualified name.
   ///
   /// Optional.
-  core.String file;
+  core.String? file;
 
   /// Human-readable name of the function or method being invoked, with optional
   /// context such as the class or package name.
@@ -3148,14 +3052,14 @@ class LogEntrySourceLocation {
   /// `function` (Python).
   ///
   /// Optional.
-  core.String function;
+  core.String? function;
 
   /// Line within the source file.
   ///
   /// 1-based; 0 indicates no line number available.
   ///
   /// Optional.
-  core.String line;
+  core.String? line;
 
   LogEntrySourceLocation();
 
@@ -3171,43 +3075,43 @@ class LogEntrySourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (file != null) 'file': file,
-        if (function != null) 'function': function,
-        if (line != null) 'line': line,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (file != null) 'file': file!,
+        if (function != null) 'function': function!,
+        if (line != null) 'line': line!,
       };
 }
 
 /// Represents a single metric value.
 class MetricValue {
   /// A boolean value.
-  core.bool boolValue;
+  core.bool? boolValue;
 
   /// A distribution value.
-  Distribution distributionValue;
+  Distribution? distributionValue;
 
   /// A double precision floating point value.
-  core.double doubleValue;
+  core.double? doubleValue;
 
   /// The end of the time period over which this metric value's measurement
   /// applies.
   ///
   /// If not specified, google.api.servicecontrol.v1.Operation.end_time will be
   /// used.
-  core.String endTime;
+  core.String? endTime;
 
   /// A signed 64-bit integer value.
-  core.String int64Value;
+  core.String? int64Value;
 
   /// The labels describing the metric value.
   ///
   /// See comments on google.api.servicecontrol.v1.Operation.labels for the
   /// overriding relationship. Note that this map must not contain monitored
   /// resource labels.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// A money value.
-  Money moneyValue;
+  Money? moneyValue;
 
   /// The start of the time period over which this metric value's measurement
   /// applies.
@@ -3216,10 +3120,10 @@ class MetricValue {
   /// (cumulative, delta, and gauge). See the metric definition documentation in
   /// the service configuration for details. If not specified,
   /// google.api.servicecontrol.v1.Operation.start_time will be used.
-  core.String startTime;
+  core.String? startTime;
 
   /// A text string value.
-  core.String stringValue;
+  core.String? stringValue;
 
   MetricValue();
 
@@ -3261,17 +3165,17 @@ class MetricValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
         if (distributionValue != null)
-          'distributionValue': distributionValue.toJson(),
-        if (doubleValue != null) 'doubleValue': doubleValue,
-        if (endTime != null) 'endTime': endTime,
-        if (int64Value != null) 'int64Value': int64Value,
-        if (labels != null) 'labels': labels,
-        if (moneyValue != null) 'moneyValue': moneyValue.toJson(),
-        if (startTime != null) 'startTime': startTime,
-        if (stringValue != null) 'stringValue': stringValue,
+          'distributionValue': distributionValue!.toJson(),
+        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (endTime != null) 'endTime': endTime!,
+        if (int64Value != null) 'int64Value': int64Value!,
+        if (labels != null) 'labels': labels!,
+        if (moneyValue != null) 'moneyValue': moneyValue!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
+        if (stringValue != null) 'stringValue': stringValue!,
       };
 }
 
@@ -3281,10 +3185,10 @@ class MetricValue {
 /// end time, and label values.
 class MetricValueSet {
   /// The metric name defined in the service configuration.
-  core.String metricName;
+  core.String? metricName;
 
   /// The values in this metric.
-  core.List<MetricValue> metricValues;
+  core.List<MetricValue>? metricValues;
 
   MetricValueSet();
 
@@ -3300,17 +3204,17 @@ class MetricValueSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metricName != null) 'metricName': metricName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metricName != null) 'metricName': metricName!,
         if (metricValues != null)
-          'metricValues': metricValues.map((value) => value.toJson()).toList(),
+          'metricValues': metricValues!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Represents an amount of money with its currency type.
 class Money {
   /// The three-letter currency code defined in ISO 4217.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Number of nano (10^-9) units of the amount.
   ///
@@ -3319,12 +3223,12 @@ class Money {
   /// `nanos` can be positive, zero, or negative. If `units` is negative,
   /// `nanos` must be negative or zero. For example $-1.75 is represented as
   /// `units`=-1 and `nanos`=-750,000,000.
-  core.int nanos;
+  core.int? nanos;
 
   /// The whole units of the amount.
   ///
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-  core.String units;
+  core.String? units;
 
   Money();
 
@@ -3340,10 +3244,10 @@ class Money {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (nanos != null) 'nanos': nanos,
-        if (units != null) 'units': units,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (nanos != null) 'nanos': nanos!,
+        if (units != null) 'units': units!,
       };
 }
 
@@ -3357,19 +3261,19 @@ class Operation {
   /// project:PROJECT_ID, - project`_`number:PROJECT_NUMBER, -
   /// projects/PROJECT_ID or PROJECT_NUMBER, - folders/FOLDER_NUMBER, -
   /// organizations/ORGANIZATION_NUMBER, - api`_`key:API_KEY.
-  core.String consumerId;
+  core.String? consumerId;
 
   /// End time of the operation.
   ///
   /// Required when the operation is used in ServiceController.Report, but
   /// optional when the operation is used in ServiceController.Check.
-  core.String endTime;
+  core.String? endTime;
 
   /// Unimplemented.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> extensions;
+  core.List<core.Map<core.String, core.Object>>? extensions;
 
   /// DO NOT USE.
   ///
@@ -3384,7 +3288,7 @@ class Operation {
   /// additional validation logic. It should only be used during the onboarding
   /// process. It is only available to Google internal services, and the service
   /// must be approved by chemist-dev@google.com in order to use this level.
-  core.String importance;
+  core.String? importance;
 
   /// Labels describing the operation.
   ///
@@ -3399,10 +3303,10 @@ class Operation {
   /// to handle the API request (e.g. ESP), -
   /// `servicecontrol.googleapis.com/platform` describing the platform where the
   /// API is served, such as App Engine, Compute Engine, or Kubernetes Engine.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Represents information to be logged.
-  core.List<LogEntry> logEntries;
+  core.List<LogEntry>? logEntries;
 
   /// Represents information about this operation.
   ///
@@ -3413,7 +3317,7 @@ class Operation {
   /// that have the same metric names and identical label value combinations. If
   /// a request has such duplicated MetricValue instances, the entire request is
   /// rejected with an invalid argument error.
-  core.List<MetricValueSet> metricValueSets;
+  core.List<MetricValueSet>? metricValueSets;
 
   /// Identity of the operation.
   ///
@@ -3424,28 +3328,28 @@ class Operation {
   /// computed from existing information and an idempotent id is desirable for
   /// deduplication purpose, UUID version 5 is recommended. See RFC 4122 for
   /// details.
-  core.String operationId;
+  core.String? operationId;
 
   /// Fully qualified name of the operation.
   ///
   /// Reserved for future use.
-  core.String operationName;
+  core.String? operationName;
 
   /// Represents the properties needed for quota check.
   ///
   /// Applicable only if this operation is for a quota check request. If this is
   /// not specified, no quota check will be performed.
-  QuotaProperties quotaProperties;
+  QuotaProperties? quotaProperties;
 
   /// The resources that are involved in the operation.
   ///
   /// The maximum supported number of entries in this field is 100.
-  core.List<ResourceInfo> resources;
+  core.List<ResourceInfo>? resources;
 
   /// Start time of the operation.
   ///
   /// Required.
-  core.String startTime;
+  core.String? startTime;
 
   /// A list of Cloud Trace spans.
   ///
@@ -3453,14 +3357,14 @@ class Operation {
   /// be either the produce or the consumer project.
   ///
   /// Unimplemented.
-  core.List<TraceSpan> traceSpans;
+  core.List<TraceSpan>? traceSpans;
 
   /// Private Preview.
   ///
   /// This feature is only available for approved services. User defined labels
   /// for the resource that this operation is associated with. Only a
   /// combination of 1000 user labels per consumer project are allowed.
-  core.Map<core.String, core.String> userLabels;
+  core.Map<core.String, core.String>? userLabels;
 
   Operation();
 
@@ -3543,27 +3447,27 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (consumerId != null) 'consumerId': consumerId,
-        if (endTime != null) 'endTime': endTime,
-        if (extensions != null) 'extensions': extensions,
-        if (importance != null) 'importance': importance,
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (consumerId != null) 'consumerId': consumerId!,
+        if (endTime != null) 'endTime': endTime!,
+        if (extensions != null) 'extensions': extensions!,
+        if (importance != null) 'importance': importance!,
+        if (labels != null) 'labels': labels!,
         if (logEntries != null)
-          'logEntries': logEntries.map((value) => value.toJson()).toList(),
+          'logEntries': logEntries!.map((value) => value.toJson()).toList(),
         if (metricValueSets != null)
           'metricValueSets':
-              metricValueSets.map((value) => value.toJson()).toList(),
-        if (operationId != null) 'operationId': operationId,
-        if (operationName != null) 'operationName': operationName,
+              metricValueSets!.map((value) => value.toJson()).toList(),
+        if (operationId != null) 'operationId': operationId!,
+        if (operationName != null) 'operationName': operationName!,
         if (quotaProperties != null)
-          'quotaProperties': quotaProperties.toJson(),
+          'quotaProperties': quotaProperties!.toJson(),
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
-        if (startTime != null) 'startTime': startTime,
+          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (startTime != null) 'startTime': startTime!,
         if (traceSpans != null)
-          'traceSpans': traceSpans.map((value) => value.toJson()).toList(),
-        if (userLabels != null) 'userLabels': userLabels,
+          'traceSpans': traceSpans!.map((value) => value.toJson()).toList(),
+        if (userLabels != null) 'userLabels': userLabels!,
       };
 }
 
@@ -3572,17 +3476,17 @@ class OperationMetadata {
   /// API version used to start the operation.
   ///
   /// Output only.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// The time the operation was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time the operation finished running.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
@@ -3591,22 +3495,22 @@ class OperationMetadata {
   /// `Code.CANCELLED`.
   ///
   /// Output only.
-  core.bool requestedCancellation;
+  core.bool? requestedCancellation;
 
   /// Human-readable status of the operation, if any.
   ///
   /// Output only.
-  core.String statusMessage;
+  core.String? statusMessage;
 
   /// Server-defined resource path for the target of the operation.
   ///
   /// Output only.
-  core.String target;
+  core.String? target;
 
   /// Name of the verb executed by the operation.
   ///
   /// Output only.
-  core.String verb;
+  core.String? verb;
 
   OperationMetadata();
 
@@ -3634,15 +3538,15 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
         if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation,
-        if (statusMessage != null) 'statusMessage': statusMessage,
-        if (target != null) 'target': target,
-        if (verb != null) 'verb': verb,
+          'requestedCancellation': requestedCancellation!,
+        if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
@@ -3679,14 +3583,14 @@ class OperationMetadata {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -3700,8 +3604,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -3725,7 +3629,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -3750,13 +3654,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -3774,7 +3678,7 @@ class QuotaProperties {
   /// enough quota. No lock is placed on the checked tokens neither.
   /// - "RELEASE" : Increases available quota by the operation cost specified
   /// for the operation.
-  core.String quotaMode;
+  core.String? quotaMode;
 
   QuotaProperties();
 
@@ -3784,8 +3688,8 @@ class QuotaProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (quotaMode != null) 'quotaMode': quotaMode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (quotaMode != null) 'quotaMode': quotaMode!,
       };
 }
 
@@ -3799,21 +3703,21 @@ class ReportRequest {
   /// report. There is no limit on the number of operations in the same
   /// ReportRequest, however the ReportRequest size should be no larger than
   /// 1MB. See ReportResponse.report_errors for partial failure behavior.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   /// Specifies which version of service config should be used to process the
   /// request.
   ///
   /// If unspecified or no matching version can be found, the latest one will be
   /// used.
-  core.String serviceConfigId;
+  core.String? serviceConfigId;
 
   /// The service name as specified in its service configuration.
   ///
   /// For example, `"pubsub.googleapis.com"`. See
   /// [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service)
   /// for the definition of a service name.
-  core.String serviceName;
+  core.String? serviceName;
 
   ReportRequest();
 
@@ -3832,11 +3736,11 @@ class ReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
-        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId,
-        if (serviceName != null) 'serviceName': serviceName,
+          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
+        if (serviceName != null) 'serviceName': serviceName!,
       };
 }
 
@@ -3846,19 +3750,19 @@ class ResourceInfo {
   ///
   /// Must be in one of the following formats: - `projects/` - `folders/` -
   /// `organizations/`
-  core.String resourceContainer;
+  core.String? resourceContainer;
 
   /// The location of the resource.
   ///
   /// If not empty, the resource will be checked against location policy. The
   /// value must be a valid zone, region or multiregion. For example:
   /// "europe-west4" or "northamerica-northeast1-a"
-  core.String resourceLocation;
+  core.String? resourceLocation;
 
   /// Name of the resource.
   ///
   /// This is used for auditing purposes.
-  core.String resourceName;
+  core.String? resourceName;
 
   ResourceInfo();
 
@@ -3874,10 +3778,10 @@ class ResourceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceContainer != null) 'resourceContainer': resourceContainer,
-        if (resourceLocation != null) 'resourceLocation': resourceLocation,
-        if (resourceName != null) 'resourceName': resourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceContainer != null) 'resourceContainer': resourceContainer!,
+        if (resourceLocation != null) 'resourceLocation': resourceLocation!,
+        if (resourceName != null) 'resourceName': resourceName!,
       };
 }
 
@@ -3885,11 +3789,11 @@ class ResourceInfo {
 /// and a NIC address.
 class RouterApplianceInstance {
   /// The IP address of the network interface to use for peering.
-  core.String ipAddress;
-  core.String networkInterface;
+  core.String? ipAddress;
+  core.String? networkInterface;
 
   /// The URI of the virtual machine resource
-  core.String virtualMachine;
+  core.String? virtualMachine;
 
   RouterApplianceInstance();
 
@@ -3905,10 +3809,10 @@ class RouterApplianceInstance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ipAddress != null) 'ipAddress': ipAddress,
-        if (networkInterface != null) 'networkInterface': networkInterface,
-        if (virtualMachine != null) 'virtualMachine': virtualMachine,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (networkInterface != null) 'networkInterface': networkInterface!,
+        if (virtualMachine != null) 'virtualMachine': virtualMachine!,
       };
 }
 
@@ -3919,13 +3823,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -3939,9 +3843,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -3951,30 +3855,30 @@ class SetIamPolicyRequest {
 /// Router appliance, etc.
 class Spoke {
   /// The time when the Spoke was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// Short description of the spoke resource
-  core.String description;
+  core.String? description;
 
   /// The resource URL of the hub resource that the spoke is attached to
-  core.String hub;
+  core.String? hub;
 
   /// User-defined labels.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The URIs of linked interconnect attachment resources
-  core.List<core.String> linkedInterconnectAttachments;
+  core.List<core.String>? linkedInterconnectAttachments;
 
   /// The URIs of linked Router appliance resources
-  core.List<RouterApplianceInstance> linkedRouterApplianceInstances;
+  core.List<RouterApplianceInstance>? linkedRouterApplianceInstances;
 
   /// The URIs of linked VPN tunnel resources
-  core.List<core.String> linkedVpnTunnels;
+  core.List<core.String>? linkedVpnTunnels;
 
   /// The name of a Spoke resource.
   ///
   /// Immutable.
-  core.String name;
+  core.String? name;
 
   /// The current lifecycle state of this Hub.
   ///
@@ -3984,7 +3888,7 @@ class Spoke {
   /// - "CREATING" : The resource's create operation is in progress
   /// - "ACTIVE" : The resource is active
   /// - "DELETING" : The resource's Delete operation is in progress
-  core.String state;
+  core.String? state;
 
   /// Google-generated UUID for this resource.
   ///
@@ -3992,10 +3896,10 @@ class Spoke {
   /// and another with the same name is created, it gets a different unique_id.
   ///
   /// Output only.
-  core.String uniqueId;
+  core.String? uniqueId;
 
   /// The time when the Spoke was updated.
-  core.String updateTime;
+  core.String? updateTime;
 
   Spoke();
 
@@ -4051,22 +3955,22 @@ class Spoke {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (hub != null) 'hub': hub,
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (hub != null) 'hub': hub!,
+        if (labels != null) 'labels': labels!,
         if (linkedInterconnectAttachments != null)
-          'linkedInterconnectAttachments': linkedInterconnectAttachments,
+          'linkedInterconnectAttachments': linkedInterconnectAttachments!,
         if (linkedRouterApplianceInstances != null)
-          'linkedRouterApplianceInstances': linkedRouterApplianceInstances
+          'linkedRouterApplianceInstances': linkedRouterApplianceInstances!
               .map((value) => value.toJson())
               .toList(),
-        if (linkedVpnTunnels != null) 'linkedVpnTunnels': linkedVpnTunnels,
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
-        if (uniqueId != null) 'uniqueId': uniqueId,
-        if (updateTime != null) 'updateTime': updateTime,
+        if (linkedVpnTunnels != null) 'linkedVpnTunnels': linkedVpnTunnels!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (uniqueId != null) 'uniqueId': uniqueId!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -4077,7 +3981,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -4089,8 +3993,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -4098,7 +4002,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -4110,8 +4014,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -4126,13 +4030,13 @@ class TraceSpan {
   /// A set of attributes on the span.
   ///
   /// You can have up to 32 attributes per span.
-  Attributes attributes;
+  Attributes? attributes;
 
   /// An optional number of child spans that were generated while this span was
   /// active.
   ///
   /// If set, allows implementation to detect missing child spans.
-  core.int childSpanCount;
+  core.int? childSpanCount;
 
   /// A description of the span's operation (up to 128 bytes).
   ///
@@ -4141,14 +4045,14 @@ class TraceSpan {
   /// file name and a line number where the operation is called. A best practice
   /// is to use the same display name within an application and at the same call
   /// point. This makes it easier to correlate spans in different traces.
-  TruncatableString displayName;
+  TruncatableString? displayName;
 
   /// The end time of the span.
   ///
   /// On the client side, this is the time kept by the local machine where the
   /// span execution ends. On the server side, this is the time when the server
   /// application handler stops running.
-  core.String endTime;
+  core.String? endTime;
 
   /// The resource name of the span in the following format:
   /// projects/\[PROJECT_ID\]/traces/\[TRACE_ID\]/spans/SPAN_ID is a unique
@@ -4157,22 +4061,22 @@ class TraceSpan {
   ///
   /// \[SPAN_ID\] is a unique identifier for a span within a trace; it is a
   /// 16-character hexadecimal encoding of an 8-byte array.
-  core.String name;
+  core.String? name;
 
   /// The \[SPAN_ID\] of this span's parent span.
   ///
   /// If this is a root span, then this field must be empty.
-  core.String parentSpanId;
+  core.String? parentSpanId;
 
   /// (Optional) Set this parameter to indicate whether this span is in the same
   /// process as its parent.
   ///
   /// If you do not set this parameter, Stackdriver Trace is unable to take
   /// advantage of this helpful information.
-  core.bool sameProcessAsParentSpan;
+  core.bool? sameProcessAsParentSpan;
 
   /// The \[SPAN_ID\] portion of the span's resource name.
-  core.String spanId;
+  core.String? spanId;
 
   /// Distinguishes between spans generated in a particular context.
   ///
@@ -4194,17 +4098,17 @@ class TraceSpan {
   /// message from a broker. Unlike client and server, there is no direct
   /// critical path latency relationship between producer and consumer spans
   /// (e.g. receiving a message from a pubsub service subscription).
-  core.String spanKind;
+  core.String? spanKind;
 
   /// The start time of the span.
   ///
   /// On the client side, this is the time kept by the local machine where the
   /// span execution starts. On the server side, this is the time when the
   /// server's application handler starts running.
-  core.String startTime;
+  core.String? startTime;
 
   /// An optional final status for this span.
-  GoogleRpcStatus status;
+  GoogleRpcStatus? status;
 
   TraceSpan();
 
@@ -4247,19 +4151,19 @@ class TraceSpan {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributes != null) 'attributes': attributes.toJson(),
-        if (childSpanCount != null) 'childSpanCount': childSpanCount,
-        if (displayName != null) 'displayName': displayName.toJson(),
-        if (endTime != null) 'endTime': endTime,
-        if (name != null) 'name': name,
-        if (parentSpanId != null) 'parentSpanId': parentSpanId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributes != null) 'attributes': attributes!.toJson(),
+        if (childSpanCount != null) 'childSpanCount': childSpanCount!,
+        if (displayName != null) 'displayName': displayName!.toJson(),
+        if (endTime != null) 'endTime': endTime!,
+        if (name != null) 'name': name!,
+        if (parentSpanId != null) 'parentSpanId': parentSpanId!,
         if (sameProcessAsParentSpan != null)
-          'sameProcessAsParentSpan': sameProcessAsParentSpan,
-        if (spanId != null) 'spanId': spanId,
-        if (spanKind != null) 'spanKind': spanKind,
-        if (startTime != null) 'startTime': startTime,
-        if (status != null) 'status': status.toJson(),
+          'sameProcessAsParentSpan': sameProcessAsParentSpan!,
+        if (spanId != null) 'spanId': spanId!,
+        if (spanKind != null) 'spanKind': spanKind!,
+        if (startTime != null) 'startTime': startTime!,
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -4268,7 +4172,7 @@ class TruncatableString {
   /// The number of bytes removed from the original string.
   ///
   /// If this value is 0, then the string was not shortened.
-  core.int truncatedByteCount;
+  core.int? truncatedByteCount;
 
   /// The shortened string.
   ///
@@ -4277,7 +4181,7 @@ class TruncatableString {
   /// 500-byte string. Truncation always happens on a UTF8 character boundary.
   /// If there are multi-byte characters in the string, then the length of the
   /// shortened string might be less than the size limit.
-  core.String value;
+  core.String? value;
 
   TruncatableString();
 
@@ -4290,9 +4194,9 @@ class TruncatableString {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (truncatedByteCount != null)
-          'truncatedByteCount': truncatedByteCount,
-        if (value != null) 'value': value,
+          'truncatedByteCount': truncatedByteCount!,
+        if (value != null) 'value': value!,
       };
 }

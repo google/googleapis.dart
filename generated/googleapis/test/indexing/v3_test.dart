@@ -42,7 +42,7 @@ void checkPublishUrlNotificationResponse(api.PublishUrlNotificationResponse o) {
   buildCounterPublishUrlNotificationResponse++;
   if (buildCounterPublishUrlNotificationResponse < 3) {
     checkUrlNotificationMetadata(
-        o.urlNotificationMetadata as api.UrlNotificationMetadata);
+        o.urlNotificationMetadata! as api.UrlNotificationMetadata);
   }
   buildCounterPublishUrlNotificationResponse--;
 }
@@ -63,9 +63,18 @@ api.UrlNotification buildUrlNotification() {
 void checkUrlNotification(api.UrlNotification o) {
   buildCounterUrlNotification++;
   if (buildCounterUrlNotification < 3) {
-    unittest.expect(o.notifyTime, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
-    unittest.expect(o.url, unittest.equals('foo'));
+    unittest.expect(
+      o.notifyTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterUrlNotification--;
 }
@@ -86,9 +95,12 @@ api.UrlNotificationMetadata buildUrlNotificationMetadata() {
 void checkUrlNotificationMetadata(api.UrlNotificationMetadata o) {
   buildCounterUrlNotificationMetadata++;
   if (buildCounterUrlNotificationMetadata < 3) {
-    checkUrlNotification(o.latestRemove as api.UrlNotification);
-    checkUrlNotification(o.latestUpdate as api.UrlNotification);
-    unittest.expect(o.url, unittest.equals('foo'));
+    checkUrlNotification(o.latestRemove! as api.UrlNotification);
+    checkUrlNotification(o.latestUpdate! as api.UrlNotification);
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterUrlNotificationMetadata--;
 }
@@ -131,10 +143,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 28),
-            unittest.equals("v3/urlNotifications/metadata"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 28),
+          unittest.equals("v3/urlNotifications/metadata"),
+        );
         pathOffset += 28;
 
         var query = (req.url).query;
@@ -152,8 +168,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["url"].first, unittest.equals(arg_url));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["url"]!.first,
+          unittest.equals(arg_url),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -183,10 +205,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 27),
-            unittest.equals("v3/urlNotifications:publish"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 27),
+          unittest.equals("v3/urlNotifications:publish"),
+        );
         pathOffset += 27;
 
         var query = (req.url).query;
@@ -204,7 +230,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

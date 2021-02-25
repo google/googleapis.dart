@@ -88,11 +88,8 @@ class AutnumResource {
   /// this method will complete with the same error.
   async.Future<RdapResponse> get(
     core.String autnumId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (autnumId == null) {
-      throw core.ArgumentError('Parameter autnumId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -133,11 +130,8 @@ class DomainResource {
   /// this method will complete with the same error.
   async.Future<HttpBody> get(
     core.String domainName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (domainName == null) {
-      throw core.ArgumentError('Parameter domainName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -180,11 +174,8 @@ class EntityResource {
   /// this method will complete with the same error.
   async.Future<RdapResponse> get(
     core.String entityId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (entityId == null) {
-      throw core.ArgumentError('Parameter entityId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -230,14 +221,8 @@ class IpResource {
   async.Future<RdapResponse> get(
     core.String ipId,
     core.String ipId1, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (ipId == null) {
-      throw core.ArgumentError('Parameter ipId is required.');
-    }
-    if (ipId1 == null) {
-      throw core.ArgumentError('Parameter ipId1 is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -283,11 +268,8 @@ class NameserverResource {
   /// this method will complete with the same error.
   async.Future<RdapResponse> get(
     core.String nameserverId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (nameserverId == null) {
-      throw core.ArgumentError('Parameter nameserverId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -328,7 +310,7 @@ class V1Resource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RdapResponse> getDomains({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -363,7 +345,7 @@ class V1Resource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RdapResponse> getEntities({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -395,7 +377,7 @@ class V1Resource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> getHelp({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -429,7 +411,7 @@ class V1Resource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpBody> getIp({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -463,7 +445,7 @@ class V1Resource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RdapResponse> getNameservers({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -502,11 +484,11 @@ class V1Resource {
 class HttpBody {
   /// The HTTP Content-Type header value specifying the content type of the
   /// body.
-  core.String contentType;
+  core.String? contentType;
 
   /// The HTTP request/response body as raw binary.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -519,7 +501,7 @@ class HttpBody {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> extensions;
+  core.List<core.Map<core.String, core.Object>>? extensions;
 
   HttpBody();
 
@@ -543,10 +525,10 @@ class HttpBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentType != null) 'contentType': contentType,
-        if (data != null) 'data': data,
-        if (extensions != null) 'extensions': extensions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentType != null) 'contentType': contentType!,
+        if (data != null) 'data': data!,
+        if (extensions != null) 'extensions': extensions!,
       };
 }
 
@@ -556,37 +538,37 @@ class Link {
   /// Target URL of a link.
   ///
   /// Example: "http://example.com/previous".
-  core.String href;
+  core.String? href;
 
   /// Language code of a link.
   ///
   /// Example: "en".
-  core.String hreflang;
+  core.String? hreflang;
 
   /// Media type of the link destination.
   ///
   /// Example: "screen".
-  core.String media;
+  core.String? media;
 
   /// Relation type of a link.
   ///
   /// Example: "previous".
-  core.String rel;
+  core.String? rel;
 
   /// Title of this link.
   ///
   /// Example: "title".
-  core.String title;
+  core.String? title;
 
   /// Content type of the link.
   ///
   /// Example: "application/json".
-  core.String type;
+  core.String? type;
 
   /// URL giving context for the link.
   ///
   /// Example: "http://example.com/current".
-  core.String value;
+  core.String? value;
 
   Link();
 
@@ -614,14 +596,14 @@ class Link {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (href != null) 'href': href,
-        if (hreflang != null) 'hreflang': hreflang,
-        if (media != null) 'media': media,
-        if (rel != null) 'rel': rel,
-        if (title != null) 'title': title,
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (href != null) 'href': href!,
+        if (hreflang != null) 'hreflang': hreflang!,
+        if (media != null) 'media': media!,
+        if (rel != null) 'rel': rel!,
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -629,22 +611,22 @@ class Link {
 /// [section 4.3 of RFC 7483](https://tools.ietf.org/html/rfc7483#section-4.3).
 class Notice {
   /// Description of the notice.
-  core.List<core.String> description;
+  core.List<core.String>? description;
 
   /// Link to a document containing more information.
-  core.List<Link> links;
+  core.List<Link>? links;
 
   /// Title of a notice.
   ///
   /// Example: "Terms of Service".
-  core.String title;
+  core.String? title;
 
   /// Type values defined in
   /// [section 10.2.1 of RFC 7483](https://tools.ietf.org/html/rfc7483#section-10.2.1)
   /// specific to a whole response: "result set truncated due to authorization",
   /// "result set truncated due to excessive load", "result set truncated due to
   /// unexplainable reasons".
-  core.String type;
+  core.String? type;
 
   Notice();
 
@@ -668,42 +650,42 @@ class Notice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
         if (links != null)
-          'links': links.map((value) => value.toJson()).toList(),
-        if (title != null) 'title': title,
-        if (type != null) 'type': type,
+          'links': links!.map((value) => value.toJson()).toList(),
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// Response to a general RDAP query.
 class RdapResponse {
   /// Error description.
-  core.List<core.String> description;
+  core.List<core.String>? description;
 
   /// Error HTTP code.
   ///
   /// Example: "501".
-  core.int errorCode;
+  core.int? errorCode;
 
   /// HTTP response with content type set to "application/json+rdap".
-  HttpBody jsonResponse;
+  HttpBody? jsonResponse;
 
   /// Error language code.
   ///
   /// Error response info fields are defined in
   /// [section 6 of RFC 7483](https://tools.ietf.org/html/rfc7483#section-6).
-  core.String lang;
+  core.String? lang;
 
   /// Notices applying to this response.
-  core.List<Notice> notices;
+  core.List<Notice>? notices;
 
   /// RDAP conformance level.
-  core.List<core.String> rdapConformance;
+  core.List<core.String>? rdapConformance;
 
   /// Error title.
-  core.String title;
+  core.String? title;
 
   RdapResponse();
 
@@ -739,14 +721,14 @@ class RdapResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (errorCode != null) 'errorCode': errorCode,
-        if (jsonResponse != null) 'jsonResponse': jsonResponse.toJson(),
-        if (lang != null) 'lang': lang,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (jsonResponse != null) 'jsonResponse': jsonResponse!.toJson(),
+        if (lang != null) 'lang': lang!,
         if (notices != null)
-          'notices': notices.map((value) => value.toJson()).toList(),
-        if (rdapConformance != null) 'rdapConformance': rdapConformance,
-        if (title != null) 'title': title,
+          'notices': notices!.map((value) => value.toJson()).toList(),
+        if (rdapConformance != null) 'rdapConformance': rdapConformance!,
+        if (title != null) 'title': title!,
       };
 }

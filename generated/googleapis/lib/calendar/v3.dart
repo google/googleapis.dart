@@ -111,14 +111,8 @@ class AclResource {
   async.Future<void> delete(
     core.String calendarId,
     core.String ruleId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
-    if (ruleId == null) {
-      throw core.ArgumentError('Parameter ruleId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -159,14 +153,8 @@ class AclResource {
   async.Future<AclRule> get(
     core.String calendarId,
     core.String ruleId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
-    if (ruleId == null) {
-      throw core.ArgumentError('Parameter ruleId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -210,14 +198,10 @@ class AclResource {
   async.Future<AclRule> insert(
     AclRule request,
     core.String calendarId, {
-    core.bool sendNotifications,
-    core.String $fields,
+    core.bool? sendNotifications,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (sendNotifications != null)
         'sendNotifications': ['${sendNotifications}'],
@@ -277,15 +261,12 @@ class AclResource {
   /// this method will complete with the same error.
   async.Future<Acl> list(
     core.String calendarId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.bool showDeleted,
-    core.String syncToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? syncToken,
+    core.String? $fields,
   }) async {
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -337,17 +318,10 @@ class AclResource {
     AclRule request,
     core.String calendarId,
     core.String ruleId, {
-    core.bool sendNotifications,
-    core.String $fields,
+    core.bool? sendNotifications,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
-    if (ruleId == null) {
-      throw core.ArgumentError('Parameter ruleId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (sendNotifications != null)
         'sendNotifications': ['${sendNotifications}'],
@@ -398,17 +372,10 @@ class AclResource {
     AclRule request,
     core.String calendarId,
     core.String ruleId, {
-    core.bool sendNotifications,
-    core.String $fields,
+    core.bool? sendNotifications,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
-    if (ruleId == null) {
-      throw core.ArgumentError('Parameter ruleId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (sendNotifications != null)
         'sendNotifications': ['${sendNotifications}'],
@@ -473,17 +440,13 @@ class AclResource {
   async.Future<Channel> watch(
     Channel request,
     core.String calendarId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.bool showDeleted,
-    core.String syncToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? syncToken,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -529,11 +492,8 @@ class CalendarListResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String calendarId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -569,11 +529,8 @@ class CalendarListResource {
   /// this method will complete with the same error.
   async.Future<CalendarListEntry> get(
     core.String calendarId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -613,11 +570,10 @@ class CalendarListResource {
   /// this method will complete with the same error.
   async.Future<CalendarListEntry> insert(
     CalendarListEntry request, {
-    core.bool colorRgbFormat,
-    core.String $fields,
+    core.bool? colorRgbFormat,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (colorRgbFormat != null) 'colorRgbFormat': ['${colorRgbFormat}'],
       if ($fields != null) 'fields': [$fields],
@@ -685,13 +641,13 @@ class CalendarListResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CalendarList> list({
-    core.int maxResults,
-    core.String minAccessRole,
-    core.String pageToken,
-    core.bool showDeleted,
-    core.bool showHidden,
-    core.String syncToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? minAccessRole,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.bool? showHidden,
+    core.String? syncToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -744,14 +700,10 @@ class CalendarListResource {
   async.Future<CalendarListEntry> patch(
     CalendarListEntry request,
     core.String calendarId, {
-    core.bool colorRgbFormat,
-    core.String $fields,
+    core.bool? colorRgbFormat,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (colorRgbFormat != null) 'colorRgbFormat': ['${colorRgbFormat}'],
       if ($fields != null) 'fields': [$fields],
@@ -798,14 +750,10 @@ class CalendarListResource {
   async.Future<CalendarListEntry> update(
     CalendarListEntry request,
     core.String calendarId, {
-    core.bool colorRgbFormat,
-    core.String $fields,
+    core.bool? colorRgbFormat,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (colorRgbFormat != null) 'colorRgbFormat': ['${colorRgbFormat}'],
       if ($fields != null) 'fields': [$fields],
@@ -877,16 +825,15 @@ class CalendarListResource {
   /// this method will complete with the same error.
   async.Future<Channel> watch(
     Channel request, {
-    core.int maxResults,
-    core.String minAccessRole,
-    core.String pageToken,
-    core.bool showDeleted,
-    core.bool showHidden,
-    core.String syncToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? minAccessRole,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.bool? showHidden,
+    core.String? syncToken,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (minAccessRole != null) 'minAccessRole': [minAccessRole],
@@ -935,11 +882,8 @@ class CalendarsResource {
   /// this method will complete with the same error.
   async.Future<void> clear(
     core.String calendarId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -975,11 +919,8 @@ class CalendarsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String calendarId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1014,11 +955,8 @@ class CalendarsResource {
   /// this method will complete with the same error.
   async.Future<Calendar> get(
     core.String calendarId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1051,10 +989,9 @@ class CalendarsResource {
   /// this method will complete with the same error.
   async.Future<Calendar> insert(
     Calendar request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1095,13 +1032,9 @@ class CalendarsResource {
   async.Future<Calendar> patch(
     Calendar request,
     core.String calendarId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1140,13 +1073,9 @@ class CalendarsResource {
   async.Future<Calendar> update(
     Calendar request,
     core.String calendarId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1184,10 +1113,9 @@ class ChannelsResource {
   /// this method will complete with the same error.
   async.Future<void> stop(
     Channel request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1224,7 +1152,7 @@ class ColorsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Colors> get({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -1283,16 +1211,10 @@ class EventsResource {
   async.Future<void> delete(
     core.String calendarId,
     core.String eventId, {
-    core.bool sendNotifications,
-    core.String sendUpdates,
-    core.String $fields,
+    core.bool? sendNotifications,
+    core.String? sendUpdates,
+    core.String? $fields,
   }) async {
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
-    if (eventId == null) {
-      throw core.ArgumentError('Parameter eventId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (sendNotifications != null)
         'sendNotifications': ['${sendNotifications}'],
@@ -1348,17 +1270,11 @@ class EventsResource {
   async.Future<Event> get(
     core.String calendarId,
     core.String eventId, {
-    core.bool alwaysIncludeEmail,
-    core.int maxAttendees,
-    core.String timeZone,
-    core.String $fields,
+    core.bool? alwaysIncludeEmail,
+    core.int? maxAttendees,
+    core.String? timeZone,
+    core.String? $fields,
   }) async {
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
-    if (eventId == null) {
-      throw core.ArgumentError('Parameter eventId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (alwaysIncludeEmail != null)
         'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
@@ -1416,15 +1332,11 @@ class EventsResource {
   async.Future<Event> import(
     Event request,
     core.String calendarId, {
-    core.int conferenceDataVersion,
-    core.bool supportsAttachments,
-    core.String $fields,
+    core.int? conferenceDataVersion,
+    core.bool? supportsAttachments,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (conferenceDataVersion != null)
         'conferenceDataVersion': ['${conferenceDataVersion}'],
@@ -1500,18 +1412,14 @@ class EventsResource {
   async.Future<Event> insert(
     Event request,
     core.String calendarId, {
-    core.int conferenceDataVersion,
-    core.int maxAttendees,
-    core.bool sendNotifications,
-    core.String sendUpdates,
-    core.bool supportsAttachments,
-    core.String $fields,
+    core.int? conferenceDataVersion,
+    core.int? maxAttendees,
+    core.bool? sendNotifications,
+    core.String? sendUpdates,
+    core.bool? supportsAttachments,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (conferenceDataVersion != null)
         'conferenceDataVersion': ['${conferenceDataVersion}'],
@@ -1593,23 +1501,17 @@ class EventsResource {
   async.Future<Events> instances(
     core.String calendarId,
     core.String eventId, {
-    core.bool alwaysIncludeEmail,
-    core.int maxAttendees,
-    core.int maxResults,
-    core.String originalStart,
-    core.String pageToken,
-    core.bool showDeleted,
-    core.DateTime timeMax,
-    core.DateTime timeMin,
-    core.String timeZone,
-    core.String $fields,
+    core.bool? alwaysIncludeEmail,
+    core.int? maxAttendees,
+    core.int? maxResults,
+    core.String? originalStart,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.DateTime? timeMax,
+    core.DateTime? timeMin,
+    core.String? timeZone,
+    core.String? $fields,
   }) async {
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
-    if (eventId == null) {
-      throw core.ArgumentError('Parameter eventId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (alwaysIncludeEmail != null)
         'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
@@ -1759,28 +1661,25 @@ class EventsResource {
   /// this method will complete with the same error.
   async.Future<Events> list(
     core.String calendarId, {
-    core.bool alwaysIncludeEmail,
-    core.String iCalUID,
-    core.int maxAttendees,
-    core.int maxResults,
-    core.String orderBy,
-    core.String pageToken,
-    core.List<core.String> privateExtendedProperty,
-    core.String q,
-    core.List<core.String> sharedExtendedProperty,
-    core.bool showDeleted,
-    core.bool showHiddenInvitations,
-    core.bool singleEvents,
-    core.String syncToken,
-    core.DateTime timeMax,
-    core.DateTime timeMin,
-    core.String timeZone,
-    core.DateTime updatedMin,
-    core.String $fields,
+    core.bool? alwaysIncludeEmail,
+    core.String? iCalUID,
+    core.int? maxAttendees,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.List<core.String>? privateExtendedProperty,
+    core.String? q,
+    core.List<core.String>? sharedExtendedProperty,
+    core.bool? showDeleted,
+    core.bool? showHiddenInvitations,
+    core.bool? singleEvents,
+    core.String? syncToken,
+    core.DateTime? timeMax,
+    core.DateTime? timeMin,
+    core.String? timeZone,
+    core.DateTime? updatedMin,
+    core.String? $fields,
   }) async {
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (alwaysIncludeEmail != null)
         'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
@@ -1859,19 +1758,10 @@ class EventsResource {
     core.String calendarId,
     core.String eventId,
     core.String destination, {
-    core.bool sendNotifications,
-    core.String sendUpdates,
-    core.String $fields,
+    core.bool? sendNotifications,
+    core.String? sendUpdates,
+    core.String? $fields,
   }) async {
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
-    if (eventId == null) {
-      throw core.ArgumentError('Parameter eventId is required.');
-    }
-    if (destination == null) {
-      throw core.ArgumentError('Parameter destination is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'destination': [destination],
       if (sendNotifications != null)
@@ -1957,22 +1847,15 @@ class EventsResource {
     Event request,
     core.String calendarId,
     core.String eventId, {
-    core.bool alwaysIncludeEmail,
-    core.int conferenceDataVersion,
-    core.int maxAttendees,
-    core.bool sendNotifications,
-    core.String sendUpdates,
-    core.bool supportsAttachments,
-    core.String $fields,
+    core.bool? alwaysIncludeEmail,
+    core.int? conferenceDataVersion,
+    core.int? maxAttendees,
+    core.bool? sendNotifications,
+    core.String? sendUpdates,
+    core.bool? supportsAttachments,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
-    if (eventId == null) {
-      throw core.ArgumentError('Parameter eventId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (alwaysIncludeEmail != null)
         'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
@@ -2040,16 +1923,10 @@ class EventsResource {
   async.Future<Event> quickAdd(
     core.String calendarId,
     core.String text, {
-    core.bool sendNotifications,
-    core.String sendUpdates,
-    core.String $fields,
+    core.bool? sendNotifications,
+    core.String? sendUpdates,
+    core.String? $fields,
   }) async {
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
-    if (text == null) {
-      throw core.ArgumentError('Parameter text is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'text': [text],
       if (sendNotifications != null)
@@ -2131,22 +2008,15 @@ class EventsResource {
     Event request,
     core.String calendarId,
     core.String eventId, {
-    core.bool alwaysIncludeEmail,
-    core.int conferenceDataVersion,
-    core.int maxAttendees,
-    core.bool sendNotifications,
-    core.String sendUpdates,
-    core.bool supportsAttachments,
-    core.String $fields,
+    core.bool? alwaysIncludeEmail,
+    core.int? conferenceDataVersion,
+    core.int? maxAttendees,
+    core.bool? sendNotifications,
+    core.String? sendUpdates,
+    core.bool? supportsAttachments,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
-    if (eventId == null) {
-      throw core.ArgumentError('Parameter eventId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (alwaysIncludeEmail != null)
         'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
@@ -2299,30 +2169,26 @@ class EventsResource {
   async.Future<Channel> watch(
     Channel request,
     core.String calendarId, {
-    core.bool alwaysIncludeEmail,
-    core.String iCalUID,
-    core.int maxAttendees,
-    core.int maxResults,
-    core.String orderBy,
-    core.String pageToken,
-    core.List<core.String> privateExtendedProperty,
-    core.String q,
-    core.List<core.String> sharedExtendedProperty,
-    core.bool showDeleted,
-    core.bool showHiddenInvitations,
-    core.bool singleEvents,
-    core.String syncToken,
-    core.DateTime timeMax,
-    core.DateTime timeMin,
-    core.String timeZone,
-    core.DateTime updatedMin,
-    core.String $fields,
+    core.bool? alwaysIncludeEmail,
+    core.String? iCalUID,
+    core.int? maxAttendees,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.List<core.String>? privateExtendedProperty,
+    core.String? q,
+    core.List<core.String>? sharedExtendedProperty,
+    core.bool? showDeleted,
+    core.bool? showHiddenInvitations,
+    core.bool? singleEvents,
+    core.String? syncToken,
+    core.DateTime? timeMax,
+    core.DateTime? timeMin,
+    core.String? timeZone,
+    core.DateTime? updatedMin,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (calendarId == null) {
-      throw core.ArgumentError('Parameter calendarId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (alwaysIncludeEmail != null)
         'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
@@ -2385,10 +2251,9 @@ class FreebusyResource {
   /// this method will complete with the same error.
   async.Future<FreeBusyResponse> query(
     FreeBusyRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2429,11 +2294,8 @@ class SettingsResource {
   /// this method will complete with the same error.
   async.Future<Setting> get(
     core.String setting, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (setting == null) {
-      throw core.ArgumentError('Parameter setting is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2479,10 +2341,10 @@ class SettingsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Settings> list({
-    core.int maxResults,
-    core.String pageToken,
-    core.String syncToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? syncToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -2534,13 +2396,12 @@ class SettingsResource {
   /// this method will complete with the same error.
   async.Future<Channel> watch(
     Channel request, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String syncToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? syncToken,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2562,26 +2423,26 @@ class SettingsResource {
 
 class Acl {
   /// ETag of the collection.
-  core.String etag;
+  core.String? etag;
 
   /// List of rules on the access control list.
-  core.List<AclRule> items;
+  core.List<AclRule>? items;
 
   /// Type of the collection ("calendar#acl").
-  core.String kind;
+  core.String? kind;
 
   /// Token used to access the next page of this result.
   ///
   /// Omitted if no further results are available, in which case nextSyncToken
   /// is provided.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Token used at a later point in time to retrieve only the entries that have
   /// changed since this result was returned.
   ///
   /// Omitted if further results are available, in which case nextPageToken is
   /// provided.
-  core.String nextSyncToken;
+  core.String? nextSyncToken;
 
   Acl();
 
@@ -2606,13 +2467,13 @@ class Acl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken!,
       };
 }
 
@@ -2627,13 +2488,13 @@ class AclRuleScope {
   /// - "domain" - Limits the scope to a domain. Note: The permissions granted
   /// to the "default", or public, scope apply to any user, authenticated or
   /// not.
-  core.String type;
+  core.String? type;
 
   /// The email address of a user or group, or the name of a domain, depending
   /// on the scope type.
   ///
   /// Omitted for type "default".
-  core.String value;
+  core.String? value;
 
   AclRuleScope();
 
@@ -2646,21 +2507,21 @@ class AclRuleScope {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
 class AclRule {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Identifier of the ACL rule.
-  core.String id;
+  core.String? id;
 
   /// Type of the resource ("calendar#aclRule").
-  core.String kind;
+  core.String? kind;
 
   /// The role assigned to the scope.
   ///
@@ -2675,10 +2536,10 @@ class AclRule {
   /// - "owner" - Provides ownership of the calendar. This role has all of the
   /// permissions of the writer role with the additional ability to see and
   /// manipulate ACLs.
-  core.String role;
+  core.String? role;
 
   /// The scope of the rule.
-  AclRuleScope scope;
+  AclRuleScope? scope;
 
   AclRule();
 
@@ -2701,49 +2562,49 @@ class AclRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (role != null) 'role': role,
-        if (scope != null) 'scope': scope.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (role != null) 'role': role!,
+        if (scope != null) 'scope': scope!.toJson(),
       };
 }
 
 class Calendar {
   /// Conferencing properties for this calendar, for example what types of
   /// conferences are allowed.
-  ConferenceProperties conferenceProperties;
+  ConferenceProperties? conferenceProperties;
 
   /// Description of the calendar.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Identifier of the calendar.
   ///
   /// To retrieve IDs call the calendarList.list() method.
-  core.String id;
+  core.String? id;
 
   /// Type of the resource ("calendar#calendar").
-  core.String kind;
+  core.String? kind;
 
   /// Geographic location of the calendar as free-form text.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title of the calendar.
-  core.String summary;
+  core.String? summary;
 
   /// The time zone of the calendar.
   ///
   /// (Formatted as an IANA Time Zone Database name, e.g. "Europe/Zurich".)
   /// Optional.
-  core.String timeZone;
+  core.String? timeZone;
 
   Calendar();
 
@@ -2775,41 +2636,41 @@ class Calendar {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (conferenceProperties != null)
-          'conferenceProperties': conferenceProperties.toJson(),
-        if (description != null) 'description': description,
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (location != null) 'location': location,
-        if (summary != null) 'summary': summary,
-        if (timeZone != null) 'timeZone': timeZone,
+          'conferenceProperties': conferenceProperties!.toJson(),
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (location != null) 'location': location!,
+        if (summary != null) 'summary': summary!,
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 
 class CalendarList {
   /// ETag of the collection.
-  core.String etag;
+  core.String? etag;
 
   /// Calendars that are present on the user's calendar list.
-  core.List<CalendarListEntry> items;
+  core.List<CalendarListEntry>? items;
 
   /// Type of the collection ("calendar#calendarList").
-  core.String kind;
+  core.String? kind;
 
   /// Token used to access the next page of this result.
   ///
   /// Omitted if no further results are available, in which case nextSyncToken
   /// is provided.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Token used at a later point in time to retrieve only the entries that have
   /// changed since this result was returned.
   ///
   /// Omitted if further results are available, in which case nextPageToken is
   /// provided.
-  core.String nextSyncToken;
+  core.String? nextSyncToken;
 
   CalendarList();
 
@@ -2834,13 +2695,13 @@ class CalendarList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken!,
       };
 }
 
@@ -2848,7 +2709,7 @@ class CalendarList {
 /// calendar.
 class CalendarListEntryNotificationSettings {
   /// The list of notifications set for this calendar.
-  core.List<CalendarNotification> notifications;
+  core.List<CalendarNotification>? notifications;
 
   CalendarListEntryNotificationSettings();
 
@@ -2861,10 +2722,10 @@ class CalendarListEntryNotificationSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (notifications != null)
           'notifications':
-              notifications.map((value) => value.toJson()).toList(),
+              notifications!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2881,14 +2742,14 @@ class CalendarListEntry {
   /// - "owner" - Provides ownership of the calendar. This role has all of the
   /// permissions of the writer role with the additional ability to see and
   /// manipulate ACLs.
-  core.String accessRole;
+  core.String? accessRole;
 
   /// The main color of the calendar in the hexadecimal format "#0088aa".
   ///
   /// This property supersedes the index-based colorId property. To set or
   /// change this property, you need to specify colorRgbFormat=true in the
   /// parameters of the insert, update and patch methods. Optional.
-  core.String backgroundColor;
+  core.String? backgroundColor;
 
   /// The color of the calendar.
   ///
@@ -2896,80 +2757,80 @@ class CalendarListEntry {
   /// definition (see the colors endpoint). This property is superseded by the
   /// backgroundColor and foregroundColor properties and can be ignored when
   /// using these properties. Optional.
-  core.String colorId;
+  core.String? colorId;
 
   /// Conferencing properties for this calendar, for example what types of
   /// conferences are allowed.
-  ConferenceProperties conferenceProperties;
+  ConferenceProperties? conferenceProperties;
 
   /// The default reminders that the authenticated user has for this calendar.
-  core.List<EventReminder> defaultReminders;
+  core.List<EventReminder>? defaultReminders;
 
   /// Whether this calendar list entry has been deleted from the calendar list.
   ///
   /// Read-only. Optional. The default is False.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// Description of the calendar.
   ///
   /// Optional. Read-only.
-  core.String description;
+  core.String? description;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The foreground color of the calendar in the hexadecimal format "#ffffff".
   ///
   /// This property supersedes the index-based colorId property. To set or
   /// change this property, you need to specify colorRgbFormat=true in the
   /// parameters of the insert, update and patch methods. Optional.
-  core.String foregroundColor;
+  core.String? foregroundColor;
 
   /// Whether the calendar has been hidden from the list.
   ///
   /// Optional. The attribute is only returned when the calendar is hidden, in
   /// which case the value is true.
-  core.bool hidden;
+  core.bool? hidden;
 
   /// Identifier of the calendar.
-  core.String id;
+  core.String? id;
 
   /// Type of the resource ("calendar#calendarListEntry").
-  core.String kind;
+  core.String? kind;
 
   /// Geographic location of the calendar as free-form text.
   ///
   /// Optional. Read-only.
-  core.String location;
+  core.String? location;
 
   /// The notifications that the authenticated user is receiving for this
   /// calendar.
-  CalendarListEntryNotificationSettings notificationSettings;
+  CalendarListEntryNotificationSettings? notificationSettings;
 
   /// Whether the calendar is the primary calendar of the authenticated user.
   ///
   /// Read-only. Optional. The default is False.
-  core.bool primary;
+  core.bool? primary;
 
   /// Whether the calendar content shows up in the calendar UI.
   ///
   /// Optional. The default is False.
-  core.bool selected;
+  core.bool? selected;
 
   /// Title of the calendar.
   ///
   /// Read-only.
-  core.String summary;
+  core.String? summary;
 
   /// The summary that the authenticated user has set for this calendar.
   ///
   /// Optional.
-  core.String summaryOverride;
+  core.String? summaryOverride;
 
   /// The time zone of the calendar.
   ///
   /// Optional. Read-only.
-  core.String timeZone;
+  core.String? timeZone;
 
   CalendarListEntry();
 
@@ -3038,30 +2899,30 @@ class CalendarListEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessRole != null) 'accessRole': accessRole,
-        if (backgroundColor != null) 'backgroundColor': backgroundColor,
-        if (colorId != null) 'colorId': colorId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessRole != null) 'accessRole': accessRole!,
+        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
+        if (colorId != null) 'colorId': colorId!,
         if (conferenceProperties != null)
-          'conferenceProperties': conferenceProperties.toJson(),
+          'conferenceProperties': conferenceProperties!.toJson(),
         if (defaultReminders != null)
           'defaultReminders':
-              defaultReminders.map((value) => value.toJson()).toList(),
-        if (deleted != null) 'deleted': deleted,
-        if (description != null) 'description': description,
-        if (etag != null) 'etag': etag,
-        if (foregroundColor != null) 'foregroundColor': foregroundColor,
-        if (hidden != null) 'hidden': hidden,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (location != null) 'location': location,
+              defaultReminders!.map((value) => value.toJson()).toList(),
+        if (deleted != null) 'deleted': deleted!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (foregroundColor != null) 'foregroundColor': foregroundColor!,
+        if (hidden != null) 'hidden': hidden!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (location != null) 'location': location!,
         if (notificationSettings != null)
-          'notificationSettings': notificationSettings.toJson(),
-        if (primary != null) 'primary': primary,
-        if (selected != null) 'selected': selected,
-        if (summary != null) 'summary': summary,
-        if (summaryOverride != null) 'summaryOverride': summaryOverride,
-        if (timeZone != null) 'timeZone': timeZone,
+          'notificationSettings': notificationSettings!.toJson(),
+        if (primary != null) 'primary': primary!,
+        if (selected != null) 'selected': selected!,
+        if (summary != null) 'summary': summary!,
+        if (summaryOverride != null) 'summaryOverride': summaryOverride!,
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 
@@ -3071,7 +2932,7 @@ class CalendarNotification {
   /// The possible value is:
   /// - "email" - Notifications are sent via email.
   /// Required when adding a notification.
-  core.String method;
+  core.String? method;
 
   /// The type of notification.
   ///
@@ -3085,7 +2946,7 @@ class CalendarNotification {
   /// - "agenda" - An agenda with the events of the day (sent out in the
   /// morning).
   /// Required when adding a notification.
-  core.String type;
+  core.String? type;
 
   CalendarNotification();
 
@@ -3098,58 +2959,58 @@ class CalendarNotification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (method != null) 'method': method,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (method != null) 'method': method!,
+        if (type != null) 'type': type!,
       };
 }
 
 class Channel {
   /// The address where notifications are delivered for this channel.
-  core.String address;
+  core.String? address;
 
   /// Date and time of notification channel expiration, expressed as a Unix
   /// timestamp, in milliseconds.
   ///
   /// Optional.
-  core.String expiration;
+  core.String? expiration;
 
   /// A UUID or similar unique string that identifies this channel.
-  core.String id;
+  core.String? id;
 
   /// Identifies this as a notification channel used to watch for changes to a
   /// resource, which is "api#channel".
-  core.String kind;
+  core.String? kind;
 
   /// Additional parameters controlling delivery channel behavior.
   ///
   /// Optional.
-  core.Map<core.String, core.String> params;
+  core.Map<core.String, core.String>? params;
 
   /// A Boolean value to indicate whether payload is wanted.
   ///
   /// Optional.
-  core.bool payload;
+  core.bool? payload;
 
   /// An opaque ID that identifies the resource being watched on this channel.
   ///
   /// Stable across different API versions.
-  core.String resourceId;
+  core.String? resourceId;
 
   /// A version-specific identifier for the watched resource.
-  core.String resourceUri;
+  core.String? resourceUri;
 
   /// An arbitrary string delivered to the target address with each notification
   /// delivered over this channel.
   ///
   /// Optional.
-  core.String token;
+  core.String? token;
 
   /// The type of delivery mechanism used for this channel.
   ///
   /// Valid values are "web_hook" (or "webhook"). Both values refer to a channel
   /// where Http requests are used to deliver messages.
-  core.String type;
+  core.String? type;
 
   Channel();
 
@@ -3192,27 +3053,27 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address,
-        if (expiration != null) 'expiration': expiration,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (params != null) 'params': params,
-        if (payload != null) 'payload': payload,
-        if (resourceId != null) 'resourceId': resourceId,
-        if (resourceUri != null) 'resourceUri': resourceUri,
-        if (token != null) 'token': token,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!,
+        if (expiration != null) 'expiration': expiration!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (params != null) 'params': params!,
+        if (payload != null) 'payload': payload!,
+        if (resourceId != null) 'resourceId': resourceId!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (token != null) 'token': token!,
+        if (type != null) 'type': type!,
       };
 }
 
 class ColorDefinition {
   /// The background color associated with this color definition.
-  core.String background;
+  core.String? background;
 
   /// The foreground color that can be used to write on top of a background with
   /// 'background' color.
-  core.String foreground;
+  core.String? foreground;
 
   ColorDefinition();
 
@@ -3225,9 +3086,9 @@ class ColorDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (background != null) 'background': background,
-        if (foreground != null) 'foreground': foreground,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (background != null) 'background': background!,
+        if (foreground != null) 'foreground': foreground!,
       };
 }
 
@@ -3237,38 +3098,41 @@ class Colors {
   ///
   /// A calendarListEntry resource refers to one of these color IDs in its color
   /// field. Read-only.
-  core.Map<core.String, ColorDefinition> calendar;
+  core.Map<core.String, ColorDefinition>? calendar;
 
   /// A global palette of event colors, mapping from the color ID to its
   /// definition.
   ///
   /// An event resource may refer to one of these color IDs in its color field.
   /// Read-only.
-  core.Map<core.String, ColorDefinition> event;
+  core.Map<core.String, ColorDefinition>? event;
 
   /// Type of the resource ("calendar#colors").
-  core.String kind;
+  core.String? kind;
 
   /// Last modification time of the color palette (as a RFC3339 timestamp).
   ///
   /// Read-only.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   Colors();
 
   Colors.fromJson(core.Map _json) {
     if (_json.containsKey('calendar')) {
-      calendar =
-          (_json['calendar'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  ColorDefinition.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      calendar = (_json['calendar'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              ColorDefinition.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('event')) {
-      event = (_json['event'] as core.Map).cast<core.String, core.Map>().map(
+      event = (_json['event'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               ColorDefinition.fromJson(
@@ -3284,14 +3148,14 @@ class Colors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (calendar != null)
           'calendar':
-              calendar.map((key, item) => core.MapEntry(key, item.toJson())),
+              calendar!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (event != null)
-          'event': event.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (kind != null) 'kind': kind,
-        if (updated != null) 'updated': (updated).toIso8601String(),
+          'event': event!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (kind != null) 'kind': kind!,
+        if (updated != null) 'updated': (updated!).toIso8601String(),
       };
 }
 
@@ -3306,13 +3170,13 @@ class ConferenceData {
   /// - "addOn": defined by 3P conference provider.
   ///
   ///  Optional.
-  core.String conferenceId;
+  core.String? conferenceId;
 
   /// The conference solution, such as Hangouts or Google Meet.
   /// Unset for a conference with a failed create request.
   /// Either conferenceSolution and at least one entryPoint, or createRequest is
   /// required.
-  ConferenceSolution conferenceSolution;
+  ConferenceSolution? conferenceSolution;
 
   /// A request to generate a new conference and attach it to the event.
   ///
@@ -3320,26 +3184,26 @@ class ConferenceData {
   /// check the status field.
   /// Either conferenceSolution and at least one entryPoint, or createRequest is
   /// required.
-  CreateConferenceRequest createRequest;
+  CreateConferenceRequest? createRequest;
 
   /// Information about individual conference entry points, such as URLs or
   /// phone numbers.
   /// All of them must belong to the same conference.
   /// Either conferenceSolution and at least one entryPoint, or createRequest is
   /// required.
-  core.List<EntryPoint> entryPoints;
+  core.List<EntryPoint>? entryPoints;
 
   /// Additional notes (such as instructions from the domain administrator,
   /// legal notices) to display to the user.
   ///
   /// Can contain HTML. The maximum length is 2048 characters. Optional.
-  core.String notes;
+  core.String? notes;
 
   /// Additional properties related to a conference.
   ///
   /// An example would be a solution-specific setting for enabling video
   /// streaming.
-  ConferenceParameters parameters;
+  ConferenceParameters? parameters;
 
   /// The signature of the conference data.
   /// Generated on server side.
@@ -3348,7 +3212,7 @@ class ConferenceData {
   /// otherwise the conference data will not be copied.
   /// Unset for a conference with a failed create request.
   /// Optional for a conference with a pending create request.
-  core.String signature;
+  core.String? signature;
 
   ConferenceData();
 
@@ -3382,22 +3246,22 @@ class ConferenceData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (conferenceId != null) 'conferenceId': conferenceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (conferenceId != null) 'conferenceId': conferenceId!,
         if (conferenceSolution != null)
-          'conferenceSolution': conferenceSolution.toJson(),
-        if (createRequest != null) 'createRequest': createRequest.toJson(),
+          'conferenceSolution': conferenceSolution!.toJson(),
+        if (createRequest != null) 'createRequest': createRequest!.toJson(),
         if (entryPoints != null)
-          'entryPoints': entryPoints.map((value) => value.toJson()).toList(),
-        if (notes != null) 'notes': notes,
-        if (parameters != null) 'parameters': parameters.toJson(),
-        if (signature != null) 'signature': signature,
+          'entryPoints': entryPoints!.map((value) => value.toJson()).toList(),
+        if (notes != null) 'notes': notes!,
+        if (parameters != null) 'parameters': parameters!.toJson(),
+        if (signature != null) 'signature': signature!,
       };
 }
 
 class ConferenceParameters {
   /// Additional add-on specific data.
-  ConferenceParametersAddOnParameters addOnParameters;
+  ConferenceParametersAddOnParameters? addOnParameters;
 
   ConferenceParameters();
 
@@ -3408,14 +3272,14 @@ class ConferenceParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (addOnParameters != null)
-          'addOnParameters': addOnParameters.toJson(),
+          'addOnParameters': addOnParameters!.toJson(),
       };
 }
 
 class ConferenceParametersAddOnParameters {
-  core.Map<core.String, core.String> parameters;
+  core.Map<core.String, core.String>? parameters;
 
   ConferenceParametersAddOnParameters();
 
@@ -3432,8 +3296,8 @@ class ConferenceParametersAddOnParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (parameters != null) 'parameters': parameters,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (parameters != null) 'parameters': parameters!,
       };
 }
 
@@ -3443,7 +3307,7 @@ class ConferenceProperties {
   /// - "eventHangout"
   /// - "eventNamedHangout"
   /// - "hangoutsMeet"  Optional.
-  core.List<core.String> allowedConferenceSolutionTypes;
+  core.List<core.String>? allowedConferenceSolutionTypes;
 
   ConferenceProperties();
 
@@ -3456,9 +3320,9 @@ class ConferenceProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedConferenceSolutionTypes != null)
-          'allowedConferenceSolutionTypes': allowedConferenceSolutionTypes,
+          'allowedConferenceSolutionTypes': allowedConferenceSolutionTypes!,
       };
 }
 
@@ -3472,7 +3336,7 @@ class ConferenceRequestStatus {
   /// populated.
   /// - "failure": the conference create request failed, there are no entry
   /// points.
-  core.String statusCode;
+  core.String? statusCode;
 
   ConferenceRequestStatus();
 
@@ -3482,23 +3346,23 @@ class ConferenceRequestStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (statusCode != null) 'statusCode': statusCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (statusCode != null) 'statusCode': statusCode!,
       };
 }
 
 class ConferenceSolution {
   /// The user-visible icon for this solution.
-  core.String iconUri;
+  core.String? iconUri;
 
   /// The key which can uniquely identify the conference solution for this
   /// event.
-  ConferenceSolutionKey key;
+  ConferenceSolutionKey? key;
 
   /// The user-visible name of this solution.
   ///
   /// Not localized.
-  core.String name;
+  core.String? name;
 
   ConferenceSolution();
 
@@ -3515,10 +3379,10 @@ class ConferenceSolution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (iconUri != null) 'iconUri': iconUri,
-        if (key != null) 'key': key.toJson(),
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (iconUri != null) 'iconUri': iconUri!,
+        if (key != null) 'key': key!.toJson(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3534,7 +3398,7 @@ class ConferenceSolutionKey {
   /// (http://hangouts.google.com)
   /// - "hangoutsMeet" for Google Meet (http://meet.google.com)
   /// - "addOn" for 3P conference providers
-  core.String type;
+  core.String? type;
 
   ConferenceSolutionKey();
 
@@ -3544,24 +3408,24 @@ class ConferenceSolutionKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 
 class CreateConferenceRequest {
   /// The conference solution, such as Hangouts or Google Meet.
-  ConferenceSolutionKey conferenceSolutionKey;
+  ConferenceSolutionKey? conferenceSolutionKey;
 
   /// The client-generated unique ID for this request.
   /// Clients should regenerate this ID for every new request.
   ///
   /// If an ID provided is the same as for the previous request, the request is
   /// ignored.
-  core.String requestId;
+  core.String? requestId;
 
   /// The status of the conference create request.
-  ConferenceRequestStatus status;
+  ConferenceRequestStatus? status;
 
   CreateConferenceRequest();
 
@@ -3580,11 +3444,11 @@ class CreateConferenceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (conferenceSolutionKey != null)
-          'conferenceSolutionKey': conferenceSolutionKey.toJson(),
-        if (requestId != null) 'requestId': requestId,
-        if (status != null) 'status': status.toJson(),
+          'conferenceSolutionKey': conferenceSolutionKey!.toJson(),
+        if (requestId != null) 'requestId': requestId!,
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -3597,13 +3461,13 @@ class EntryPoint {
   /// terminology that the conference provider uses. Only the populated fields
   /// should be displayed.
   /// Optional.
-  core.String accessCode;
+  core.String? accessCode;
 
   /// Features of the entry point, such as being toll or toll-free.
   ///
   /// One entry point can have multiple features. However, toll and toll-free
   /// cannot be both set on the same entry point.
-  core.List<core.String> entryPointFeatures;
+  core.List<core.String>? entryPointFeatures;
 
   /// The type of the conference entry point.
   /// Possible values are:
@@ -3617,7 +3481,7 @@ class EntryPoint {
   /// - "more" - further conference joining instructions, for example additional
   /// phone numbers. A conference can have zero or one more entry point. A
   /// conference with only a more entry point is not a valid conference.
-  core.String entryPointType;
+  core.String? entryPointType;
 
   /// The label for the URI.
   ///
@@ -3628,7 +3492,7 @@ class EntryPoint {
   /// - for sip: 12345678@altostrat.com
   /// - for more: should not be filled
   /// Optional.
-  core.String label;
+  core.String? label;
 
   /// The meeting code to access the conference.
   ///
@@ -3638,7 +3502,7 @@ class EntryPoint {
   /// terminology that the conference provider uses. Only the populated fields
   /// should be displayed.
   /// Optional.
-  core.String meetingCode;
+  core.String? meetingCode;
 
   /// The passcode to access the conference.
   ///
@@ -3647,7 +3511,7 @@ class EntryPoint {
   /// {meetingCode, accessCode, passcode, password, pin} fields that match the
   /// terminology that the conference provider uses. Only the populated fields
   /// should be displayed.
-  core.String passcode;
+  core.String? passcode;
 
   /// The password to access the conference.
   ///
@@ -3657,7 +3521,7 @@ class EntryPoint {
   /// terminology that the conference provider uses. Only the populated fields
   /// should be displayed.
   /// Optional.
-  core.String password;
+  core.String? password;
 
   /// The PIN to access the conference.
   ///
@@ -3667,14 +3531,14 @@ class EntryPoint {
   /// terminology that the conference provider uses. Only the populated fields
   /// should be displayed.
   /// Optional.
-  core.String pin;
+  core.String? pin;
 
   /// The CLDR/ISO 3166 region code for the country associated with this phone
   /// access.
   ///
   /// Example: "SE" for Sweden.
   /// Calendar backend will populate this field only for EntryPointType.PHONE.
-  core.String regionCode;
+  core.String? regionCode;
 
   /// The URI of the entry point.
   ///
@@ -3685,7 +3549,7 @@ class EntryPoint {
   /// dial sequence (e.g., tel:+12345678900,,,123456789;1234).
   /// - for sip, sip: schema is required, e.g., sip:12345678@myprovider.com.
   /// - for more, http: or https: schema is required.
-  core.String uri;
+  core.String? uri;
 
   EntryPoint();
 
@@ -3724,24 +3588,24 @@ class EntryPoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessCode != null) 'accessCode': accessCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessCode != null) 'accessCode': accessCode!,
         if (entryPointFeatures != null)
-          'entryPointFeatures': entryPointFeatures,
-        if (entryPointType != null) 'entryPointType': entryPointType,
-        if (label != null) 'label': label,
-        if (meetingCode != null) 'meetingCode': meetingCode,
-        if (passcode != null) 'passcode': passcode,
-        if (password != null) 'password': password,
-        if (pin != null) 'pin': pin,
-        if (regionCode != null) 'regionCode': regionCode,
-        if (uri != null) 'uri': uri,
+          'entryPointFeatures': entryPointFeatures!,
+        if (entryPointType != null) 'entryPointType': entryPointType!,
+        if (label != null) 'label': label!,
+        if (meetingCode != null) 'meetingCode': meetingCode!,
+        if (passcode != null) 'passcode': passcode!,
+        if (password != null) 'password': password!,
+        if (pin != null) 'pin': pin!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
 class Error {
   /// Domain, or broad category, of the error.
-  core.String domain;
+  core.String? domain;
 
   /// Specific reason for the error.
   ///
@@ -3754,7 +3618,7 @@ class Error {
   /// - "internalError" - The API service has encountered an internal error.
   /// Additional error types may be added in the future, so clients should
   /// gracefully handle additional error statuses not included in this list.
-  core.String reason;
+  core.String? reason;
 
   Error();
 
@@ -3767,9 +3631,9 @@ class Error {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (domain != null) 'domain': domain,
-        if (reason != null) 'reason': reason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (domain != null) 'domain': domain!,
+        if (reason != null) 'reason': reason!,
       };
 }
 
@@ -3778,21 +3642,21 @@ class Error {
 /// Read-only.
 class EventCreator {
   /// The creator's name, if available.
-  core.String displayName;
+  core.String? displayName;
 
   /// The creator's email address, if available.
-  core.String email;
+  core.String? email;
 
   /// The creator's Profile ID, if available.
   ///
   /// It corresponds to the id field in the People collection of the Google+ API
-  core.String id;
+  core.String? id;
 
   /// Whether the creator corresponds to the calendar on which this copy of the
   /// event appears.
   ///
   /// Read-only. The default is False.
-  core.bool self;
+  core.bool? self;
 
   EventCreator();
 
@@ -3811,11 +3675,11 @@ class EventCreator {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (email != null) 'email': email,
-        if (id != null) 'id': id,
-        if (self != null) 'self': self,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (email != null) 'email': email!,
+        if (id != null) 'id': id!,
+        if (self != null) 'self': self!,
       };
 }
 
@@ -3823,11 +3687,11 @@ class EventCreator {
 class EventExtendedProperties {
   /// Properties that are private to the copy of the event that appears on this
   /// calendar.
-  core.Map<core.String, core.String> private;
+  core.Map<core.String, core.String>? private;
 
   /// Properties that are shared between copies of the event on other attendees'
   /// calendars.
-  core.Map<core.String, core.String> shared;
+  core.Map<core.String, core.String>? shared;
 
   EventExtendedProperties();
 
@@ -3852,9 +3716,9 @@ class EventExtendedProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (private != null) 'private': private,
-        if (shared != null) 'shared': shared,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (private != null) 'private': private!,
+        if (shared != null) 'shared': shared!,
       };
 }
 
@@ -3869,40 +3733,40 @@ class EventGadget {
   /// - "icon" - The gadget displays next to the event's title in the calendar
   /// view.
   /// - "chip" - The gadget displays when the event is clicked.
-  core.String display;
+  core.String? display;
 
   /// The gadget's height in pixels.
   ///
   /// The height must be an integer greater than 0. Optional. Deprecated.
-  core.int height;
+  core.int? height;
 
   /// The gadget's icon URL.
   ///
   /// The URL scheme must be HTTPS. Deprecated.
-  core.String iconLink;
+  core.String? iconLink;
 
   /// The gadget's URL.
   ///
   /// The URL scheme must be HTTPS. Deprecated.
-  core.String link;
+  core.String? link;
 
   /// Preferences.
-  core.Map<core.String, core.String> preferences;
+  core.Map<core.String, core.String>? preferences;
 
   /// The gadget's title.
   ///
   /// Deprecated.
-  core.String title;
+  core.String? title;
 
   /// The gadget's type.
   ///
   /// Deprecated.
-  core.String type;
+  core.String? type;
 
   /// The gadget's width in pixels.
   ///
   /// The width must be an integer greater than 0. Optional. Deprecated.
-  core.int width;
+  core.int? width;
 
   EventGadget();
 
@@ -3940,15 +3804,15 @@ class EventGadget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (display != null) 'display': display,
-        if (height != null) 'height': height,
-        if (iconLink != null) 'iconLink': iconLink,
-        if (link != null) 'link': link,
-        if (preferences != null) 'preferences': preferences,
-        if (title != null) 'title': title,
-        if (type != null) 'type': type,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (display != null) 'display': display!,
+        if (height != null) 'height': height!,
+        if (iconLink != null) 'iconLink': iconLink!,
+        if (link != null) 'link': link!,
+        if (preferences != null) 'preferences': preferences!,
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -3960,23 +3824,23 @@ class EventGadget {
 /// event.
 class EventOrganizer {
   /// The organizer's name, if available.
-  core.String displayName;
+  core.String? displayName;
 
   /// The organizer's email address, if available.
   ///
   /// It must be a valid email address as per RFC5322.
-  core.String email;
+  core.String? email;
 
   /// The organizer's Profile ID, if available.
   ///
   /// It corresponds to the id field in the People collection of the Google+ API
-  core.String id;
+  core.String? id;
 
   /// Whether the organizer corresponds to the calendar on which this copy of
   /// the event appears.
   ///
   /// Read-only. The default is False.
-  core.bool self;
+  core.bool? self;
 
   EventOrganizer();
 
@@ -3995,11 +3859,11 @@ class EventOrganizer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (email != null) 'email': email,
-        if (id != null) 'id': id,
-        if (self != null) 'self': self,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (email != null) 'email': email!,
+        if (id != null) 'id': id!,
+        if (self != null) 'self': self!,
       };
 }
 
@@ -4010,10 +3874,10 @@ class EventReminders {
   /// for this event.
   ///
   /// The maximum number of override reminders is 5.
-  core.List<EventReminder> overrides;
+  core.List<EventReminder>? overrides;
 
   /// Whether the default reminders of the calendar apply to the event.
-  core.bool useDefault;
+  core.bool? useDefault;
 
   EventReminders();
 
@@ -4029,10 +3893,10 @@ class EventReminders {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (overrides != null)
-          'overrides': overrides.map((value) => value.toJson()).toList(),
-        if (useDefault != null) 'useDefault': useDefault,
+          'overrides': overrides!.map((value) => value.toJson()).toList(),
+        if (useDefault != null) 'useDefault': useDefault!,
       };
 }
 
@@ -4044,12 +3908,12 @@ class EventReminders {
 class EventSource {
   /// Title of the source; for example a title of a web page or an email
   /// subject.
-  core.String title;
+  core.String? title;
 
   /// URL of the source pointing to a resource.
   ///
   /// The URL scheme must be HTTP or HTTPS.
-  core.String url;
+  core.String? url;
 
   EventSource();
 
@@ -4062,9 +3926,9 @@ class EventSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (title != null) 'title': title,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (title != null) 'title': title!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -4073,7 +3937,7 @@ class Event {
   /// Google+ events only).
   ///
   /// Optional. The default is False.
-  core.bool anyoneCanAddSelf;
+  core.bool? anyoneCanAddSelf;
 
   /// File attachments for the event.
   ///
@@ -4081,27 +3945,27 @@ class Event {
   /// In order to modify attachments the supportsAttachments request parameter
   /// should be set to true.
   /// There can be at most 25 attachments per event,
-  core.List<EventAttachment> attachments;
+  core.List<EventAttachment>? attachments;
 
   /// The attendees of the event.
   ///
   /// See the Events with attendees guide for more information on scheduling
   /// events with other calendar users. Service accounts need to use domain-wide
   /// delegation of authority to populate the attendee list.
-  core.List<EventAttendee> attendees;
+  core.List<EventAttendee>? attendees;
 
   /// Whether attendees may have been omitted from the event's representation.
   ///
   /// When retrieving an event, this may be due to a restriction specified by
   /// the maxAttendee query parameter. When updating an event, this can be used
   /// to only update the participant's response. Optional. The default is False.
-  core.bool attendeesOmitted;
+  core.bool? attendeesOmitted;
 
   /// The color of the event.
   ///
   /// This is an ID referring to an entry in the event section of the colors
   /// definition (see the colors endpoint). Optional.
-  core.String colorId;
+  core.String? colorId;
 
   /// The conference-related information, such as details of a Google Meet
   /// conference.
@@ -4109,78 +3973,78 @@ class Event {
   /// To create new conference details use the createRequest field. To persist
   /// your changes, remember to set the conferenceDataVersion request parameter
   /// to 1 for all event modification requests.
-  ConferenceData conferenceData;
+  ConferenceData? conferenceData;
 
   /// Creation time of the event (as a RFC3339 timestamp).
   ///
   /// Read-only.
-  core.DateTime created;
+  core.DateTime? created;
 
   /// The creator of the event.
   ///
   /// Read-only.
-  EventCreator creator;
+  EventCreator? creator;
 
   /// Description of the event.
   ///
   /// Can contain HTML. Optional.
-  core.String description;
+  core.String? description;
 
   /// The (exclusive) end time of the event.
   ///
   /// For a recurring event, this is the end time of the first instance.
-  EventDateTime end;
+  EventDateTime? end;
 
   /// Whether the end time is actually unspecified.
   ///
   /// An end time is still provided for compatibility reasons, even if this
   /// attribute is set to True. The default is False.
-  core.bool endTimeUnspecified;
+  core.bool? endTimeUnspecified;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Specific type of the event.
   ///
   /// Read-only. Possible values are:
   /// - "default" - A regular event or not further specified.
   /// - "outOfOffice" - An out-of-office event.
-  core.String eventType;
+  core.String? eventType;
 
   /// Extended properties of the event.
-  EventExtendedProperties extendedProperties;
+  EventExtendedProperties? extendedProperties;
 
   /// A gadget that extends this event.
   ///
   /// Gadgets are deprecated; this structure is instead only used for returning
   /// birthday calendar metadata.
-  EventGadget gadget;
+  EventGadget? gadget;
 
   /// Whether attendees other than the organizer can invite others to the event.
   ///
   /// Optional. The default is True.
-  core.bool guestsCanInviteOthers;
+  core.bool? guestsCanInviteOthers;
 
   /// Whether attendees other than the organizer can modify the event.
   ///
   /// Optional. The default is False.
-  core.bool guestsCanModify;
+  core.bool? guestsCanModify;
 
   /// Whether attendees other than the organizer can see who the event's
   /// attendees are.
   ///
   /// Optional. The default is True.
-  core.bool guestsCanSeeOtherGuests;
+  core.bool? guestsCanSeeOtherGuests;
 
   /// An absolute link to the Google+ hangout associated with this event.
   ///
   /// Read-only.
-  core.String hangoutLink;
+  core.String? hangoutLink;
 
   /// An absolute link to this event in the Google Calendar Web UI.
   ///
   /// Read-only.
-  core.String htmlLink;
+  core.String? htmlLink;
 
   /// Event unique identifier as defined in RFC5545.
   ///
@@ -4190,7 +4054,7 @@ class Event {
   /// should be supplied at event creation time. One difference in their
   /// semantics is that in recurring events, all occurrences of one event have
   /// different ids while they all share the same icalUIDs.
-  core.String iCalUID;
+  core.String? iCalUID;
 
   /// Opaque identifier of the event.
   ///
@@ -4210,22 +4074,22 @@ class Event {
   /// should be supplied at event creation time. One difference in their
   /// semantics is that in recurring events, all occurrences of one event have
   /// different ids while they all share the same icalUIDs.
-  core.String id;
+  core.String? id;
 
   /// Type of the resource ("calendar#event").
-  core.String kind;
+  core.String? kind;
 
   /// Geographic location of the event as free-form text.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Whether this is a locked event copy where no changes can be made to the
   /// main event fields "summary", "description", "location", "start", "end" or
   /// "recurrence".
   ///
   /// The default is False. Read-Only.
-  core.bool locked;
+  core.bool? locked;
 
   /// The organizer of the event.
   ///
@@ -4233,7 +4097,7 @@ class Event {
   /// entry in attendees with the organizer field set to True. To change the
   /// organizer, use the move operation. Read-only, except when importing an
   /// event.
-  EventOrganizer organizer;
+  EventOrganizer? organizer;
 
   /// For an instance of a recurring event, this is the time at which this event
   /// would start according to the recurrence data in the recurring event
@@ -4241,13 +4105,13 @@ class Event {
   ///
   /// It uniquely identifies the instance within the recurring event series even
   /// if the instance was moved to a different time. Immutable.
-  EventDateTime originalStartTime;
+  EventDateTime? originalStartTime;
 
   /// If set to True, Event propagation is disabled.
   ///
   /// Note that it is not the same thing as Private event properties. Optional.
   /// Immutable. The default is False.
-  core.bool privateCopy;
+  core.bool? privateCopy;
 
   /// List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as
   /// specified in RFC5545.
@@ -4255,31 +4119,31 @@ class Event {
   /// Note that DTSTART and DTEND lines are not allowed in this field; event
   /// start and end times are specified in the start and end fields. This field
   /// is omitted for single events or instances of recurring events.
-  core.List<core.String> recurrence;
+  core.List<core.String>? recurrence;
 
   /// For an instance of a recurring event, this is the id of the recurring
   /// event to which this instance belongs.
   ///
   /// Immutable.
-  core.String recurringEventId;
+  core.String? recurringEventId;
 
   /// Information about the event's reminders for the authenticated user.
-  EventReminders reminders;
+  EventReminders? reminders;
 
   /// Sequence number as per iCalendar.
-  core.int sequence;
+  core.int? sequence;
 
   /// Source from which the event was created.
   ///
   /// For example, a web page, an email message or any document identifiable by
   /// an URL with HTTP or HTTPS scheme. Can only be seen or modified by the
   /// creator of the event.
-  EventSource source;
+  EventSource? source;
 
   /// The (inclusive) start time of the event.
   ///
   /// For a recurring event, this is the start time of the first instance.
-  EventDateTime start;
+  EventDateTime? start;
 
   /// Status of the event.
   ///
@@ -4310,10 +4174,10 @@ class Event {
   /// If an event changes its organizer (for example via the move operation) and
   /// the original organizer is not on the attendee list, it will leave behind a
   /// cancelled event where only the id field is guaranteed to be populated.
-  core.String status;
+  core.String? status;
 
   /// Title of the event.
-  core.String summary;
+  core.String? summary;
 
   /// Whether the event blocks time on the calendar.
   ///
@@ -4322,12 +4186,12 @@ class Event {
   /// This is equivalent to setting Show me as to Busy in the Calendar UI.
   /// - "transparent" - The event does not block time on the calendar. This is
   /// equivalent to setting Show me as to Available in the Calendar UI.
-  core.String transparency;
+  core.String? transparency;
 
   /// Last modification time of the event (as a RFC3339 timestamp).
   ///
   /// Read-only.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   /// Visibility of the event.
   ///
@@ -4340,7 +4204,7 @@ class Event {
   /// details.
   /// - "confidential" - The event is private. This value is provided for
   /// compatibility reasons.
-  core.String visibility;
+  core.String? visibility;
 
   Event();
 
@@ -4482,53 +4346,53 @@ class Event {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (anyoneCanAddSelf != null) 'anyoneCanAddSelf': anyoneCanAddSelf,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (anyoneCanAddSelf != null) 'anyoneCanAddSelf': anyoneCanAddSelf!,
         if (attachments != null)
-          'attachments': attachments.map((value) => value.toJson()).toList(),
+          'attachments': attachments!.map((value) => value.toJson()).toList(),
         if (attendees != null)
-          'attendees': attendees.map((value) => value.toJson()).toList(),
-        if (attendeesOmitted != null) 'attendeesOmitted': attendeesOmitted,
-        if (colorId != null) 'colorId': colorId,
-        if (conferenceData != null) 'conferenceData': conferenceData.toJson(),
-        if (created != null) 'created': (created).toIso8601String(),
-        if (creator != null) 'creator': creator.toJson(),
-        if (description != null) 'description': description,
-        if (end != null) 'end': end.toJson(),
+          'attendees': attendees!.map((value) => value.toJson()).toList(),
+        if (attendeesOmitted != null) 'attendeesOmitted': attendeesOmitted!,
+        if (colorId != null) 'colorId': colorId!,
+        if (conferenceData != null) 'conferenceData': conferenceData!.toJson(),
+        if (created != null) 'created': (created!).toIso8601String(),
+        if (creator != null) 'creator': creator!.toJson(),
+        if (description != null) 'description': description!,
+        if (end != null) 'end': end!.toJson(),
         if (endTimeUnspecified != null)
-          'endTimeUnspecified': endTimeUnspecified,
-        if (etag != null) 'etag': etag,
-        if (eventType != null) 'eventType': eventType,
+          'endTimeUnspecified': endTimeUnspecified!,
+        if (etag != null) 'etag': etag!,
+        if (eventType != null) 'eventType': eventType!,
         if (extendedProperties != null)
-          'extendedProperties': extendedProperties.toJson(),
-        if (gadget != null) 'gadget': gadget.toJson(),
+          'extendedProperties': extendedProperties!.toJson(),
+        if (gadget != null) 'gadget': gadget!.toJson(),
         if (guestsCanInviteOthers != null)
-          'guestsCanInviteOthers': guestsCanInviteOthers,
-        if (guestsCanModify != null) 'guestsCanModify': guestsCanModify,
+          'guestsCanInviteOthers': guestsCanInviteOthers!,
+        if (guestsCanModify != null) 'guestsCanModify': guestsCanModify!,
         if (guestsCanSeeOtherGuests != null)
-          'guestsCanSeeOtherGuests': guestsCanSeeOtherGuests,
-        if (hangoutLink != null) 'hangoutLink': hangoutLink,
-        if (htmlLink != null) 'htmlLink': htmlLink,
-        if (iCalUID != null) 'iCalUID': iCalUID,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (location != null) 'location': location,
-        if (locked != null) 'locked': locked,
-        if (organizer != null) 'organizer': organizer.toJson(),
+          'guestsCanSeeOtherGuests': guestsCanSeeOtherGuests!,
+        if (hangoutLink != null) 'hangoutLink': hangoutLink!,
+        if (htmlLink != null) 'htmlLink': htmlLink!,
+        if (iCalUID != null) 'iCalUID': iCalUID!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (location != null) 'location': location!,
+        if (locked != null) 'locked': locked!,
+        if (organizer != null) 'organizer': organizer!.toJson(),
         if (originalStartTime != null)
-          'originalStartTime': originalStartTime.toJson(),
-        if (privateCopy != null) 'privateCopy': privateCopy,
-        if (recurrence != null) 'recurrence': recurrence,
-        if (recurringEventId != null) 'recurringEventId': recurringEventId,
-        if (reminders != null) 'reminders': reminders.toJson(),
-        if (sequence != null) 'sequence': sequence,
-        if (source != null) 'source': source.toJson(),
-        if (start != null) 'start': start.toJson(),
-        if (status != null) 'status': status,
-        if (summary != null) 'summary': summary,
-        if (transparency != null) 'transparency': transparency,
-        if (updated != null) 'updated': (updated).toIso8601String(),
-        if (visibility != null) 'visibility': visibility,
+          'originalStartTime': originalStartTime!.toJson(),
+        if (privateCopy != null) 'privateCopy': privateCopy!,
+        if (recurrence != null) 'recurrence': recurrence!,
+        if (recurringEventId != null) 'recurringEventId': recurringEventId!,
+        if (reminders != null) 'reminders': reminders!.toJson(),
+        if (sequence != null) 'sequence': sequence!,
+        if (source != null) 'source': source!.toJson(),
+        if (start != null) 'start': start!.toJson(),
+        if (status != null) 'status': status!,
+        if (summary != null) 'summary': summary!,
+        if (transparency != null) 'transparency': transparency!,
+        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (visibility != null) 'visibility': visibility!,
       };
 }
 
@@ -4538,24 +4402,24 @@ class EventAttachment {
   /// Read-only.
   /// For Google Drive files, this is the ID of the corresponding Files resource
   /// entry in the Drive API.
-  core.String fileId;
+  core.String? fileId;
 
   /// URL link to the attachment.
   /// For adding Google Drive file attachments use the same format as in
   /// alternateLink property of the Files resource in the Drive API.
   /// Required when adding an attachment.
-  core.String fileUrl;
+  core.String? fileUrl;
 
   /// URL link to the attachment's icon.
   ///
   /// Read-only.
-  core.String iconLink;
+  core.String? iconLink;
 
   /// Internet media type (MIME type) of the attachment.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// Attachment title.
-  core.String title;
+  core.String? title;
 
   EventAttachment();
 
@@ -4577,12 +4441,12 @@ class EventAttachment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fileId != null) 'fileId': fileId,
-        if (fileUrl != null) 'fileUrl': fileUrl,
-        if (iconLink != null) 'iconLink': iconLink,
-        if (mimeType != null) 'mimeType': mimeType,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fileId != null) 'fileId': fileId!,
+        if (fileUrl != null) 'fileUrl': fileUrl!,
+        if (iconLink != null) 'iconLink': iconLink!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -4590,46 +4454,46 @@ class EventAttendee {
   /// Number of additional guests.
   ///
   /// Optional. The default is 0.
-  core.int additionalGuests;
+  core.int? additionalGuests;
 
   /// The attendee's response comment.
   ///
   /// Optional.
-  core.String comment;
+  core.String? comment;
 
   /// The attendee's name, if available.
   ///
   /// Optional.
-  core.String displayName;
+  core.String? displayName;
 
   /// The attendee's email address, if available.
   ///
   /// This field must be present when adding an attendee. It must be a valid
   /// email address as per RFC5322.
   /// Required when adding an attendee.
-  core.String email;
+  core.String? email;
 
   /// The attendee's Profile ID, if available.
   ///
   /// It corresponds to the id field in the People collection of the Google+ API
-  core.String id;
+  core.String? id;
 
   /// Whether this is an optional attendee.
   ///
   /// Optional. The default is False.
-  core.bool optional;
+  core.bool? optional;
 
   /// Whether the attendee is the organizer of the event.
   ///
   /// Read-only. The default is False.
-  core.bool organizer;
+  core.bool? organizer;
 
   /// Whether the attendee is a resource.
   ///
   /// Can only be set when the attendee is added to the event for the first
   /// time. Subsequent modifications are ignored. Optional. The default is
   /// False.
-  core.bool resource;
+  core.bool? resource;
 
   /// The attendee's response status.
   ///
@@ -4638,13 +4502,13 @@ class EventAttendee {
   /// - "declined" - The attendee has declined the invitation.
   /// - "tentative" - The attendee has tentatively accepted the invitation.
   /// - "accepted" - The attendee has accepted the invitation.
-  core.String responseStatus;
+  core.String? responseStatus;
 
   /// Whether this entry represents the calendar on which this copy of the event
   /// appears.
   ///
   /// Read-only. The default is False.
-  core.bool self;
+  core.bool? self;
 
   EventAttendee();
 
@@ -4681,29 +4545,29 @@ class EventAttendee {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (additionalGuests != null) 'additionalGuests': additionalGuests,
-        if (comment != null) 'comment': comment,
-        if (displayName != null) 'displayName': displayName,
-        if (email != null) 'email': email,
-        if (id != null) 'id': id,
-        if (optional != null) 'optional': optional,
-        if (organizer != null) 'organizer': organizer,
-        if (resource != null) 'resource': resource,
-        if (responseStatus != null) 'responseStatus': responseStatus,
-        if (self != null) 'self': self,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (additionalGuests != null) 'additionalGuests': additionalGuests!,
+        if (comment != null) 'comment': comment!,
+        if (displayName != null) 'displayName': displayName!,
+        if (email != null) 'email': email!,
+        if (id != null) 'id': id!,
+        if (optional != null) 'optional': optional!,
+        if (organizer != null) 'organizer': organizer!,
+        if (resource != null) 'resource': resource!,
+        if (responseStatus != null) 'responseStatus': responseStatus!,
+        if (self != null) 'self': self!,
       };
 }
 
 class EventDateTime {
   /// The date, in the format "yyyy-mm-dd", if this is an all-day event.
-  core.DateTime date;
+  core.DateTime? date;
 
   /// The time, as a combined date-time value (formatted according to RFC3339).
   ///
   /// A time zone offset is required unless a time zone is explicitly specified
   /// in timeZone.
-  core.DateTime dateTime;
+  core.DateTime? dateTime;
 
   /// The time zone in which the time is specified.
   ///
@@ -4711,7 +4575,7 @@ class EventDateTime {
   /// recurring events this field is required and specifies the time zone in
   /// which the recurrence is expanded. For single events this field is optional
   /// and indicates a custom time zone for the event start/end.
-  core.String timeZone;
+  core.String? timeZone;
 
   EventDateTime();
 
@@ -4727,12 +4591,12 @@ class EventDateTime {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (date != null)
           'date':
-              "${(date).year.toString().padLeft(4, '0')}-${(date).month.toString().padLeft(2, '0')}-${(date).day.toString().padLeft(2, '0')}",
-        if (dateTime != null) 'dateTime': (dateTime).toIso8601String(),
-        if (timeZone != null) 'timeZone': timeZone,
+              "${(date!).year.toString().padLeft(4, '0')}-${(date!).month.toString().padLeft(2, '0')}-${(date!).day.toString().padLeft(2, '0')}",
+        if (dateTime != null) 'dateTime': (dateTime!).toIso8601String(),
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 
@@ -4743,14 +4607,14 @@ class EventReminder {
   /// - "email" - Reminders are sent via email.
   /// - "popup" - Reminders are sent via a UI popup.
   /// Required when adding a reminder.
-  core.String method;
+  core.String? method;
 
   /// Number of minutes before the start of the event when the reminder should
   /// trigger.
   ///
   /// Valid values are between 0 and 40320 (4 weeks in minutes).
   /// Required when adding a reminder.
-  core.int minutes;
+  core.int? minutes;
 
   EventReminder();
 
@@ -4763,9 +4627,9 @@ class EventReminder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (method != null) 'method': method,
-        if (minutes != null) 'minutes': minutes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (method != null) 'method': method!,
+        if (minutes != null) 'minutes': minutes!,
       };
 }
 
@@ -4783,56 +4647,56 @@ class Events {
   /// - "owner" - The user has ownership of the calendar. This role has all of
   /// the permissions of the writer role with the additional ability to see and
   /// manipulate ACLs.
-  core.String accessRole;
+  core.String? accessRole;
 
   /// The default reminders on the calendar for the authenticated user.
   ///
   /// These reminders apply to all events on this calendar that do not
   /// explicitly override them (i.e. do not have reminders.useDefault set to
   /// True).
-  core.List<EventReminder> defaultReminders;
+  core.List<EventReminder>? defaultReminders;
 
   /// Description of the calendar.
   ///
   /// Read-only.
-  core.String description;
+  core.String? description;
 
   /// ETag of the collection.
-  core.String etag;
+  core.String? etag;
 
   /// List of events on the calendar.
-  core.List<Event> items;
+  core.List<Event>? items;
 
   /// Type of the collection ("calendar#events").
-  core.String kind;
+  core.String? kind;
 
   /// Token used to access the next page of this result.
   ///
   /// Omitted if no further results are available, in which case nextSyncToken
   /// is provided.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Token used at a later point in time to retrieve only the entries that have
   /// changed since this result was returned.
   ///
   /// Omitted if further results are available, in which case nextPageToken is
   /// provided.
-  core.String nextSyncToken;
+  core.String? nextSyncToken;
 
   /// Title of the calendar.
   ///
   /// Read-only.
-  core.String summary;
+  core.String? summary;
 
   /// The time zone of the calendar.
   ///
   /// Read-only.
-  core.String timeZone;
+  core.String? timeZone;
 
   /// Last modification time of the calendar (as a RFC3339 timestamp).
   ///
   /// Read-only.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   Events();
 
@@ -4878,30 +4742,30 @@ class Events {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessRole != null) 'accessRole': accessRole,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessRole != null) 'accessRole': accessRole!,
         if (defaultReminders != null)
           'defaultReminders':
-              defaultReminders.map((value) => value.toJson()).toList(),
-        if (description != null) 'description': description,
-        if (etag != null) 'etag': etag,
+              defaultReminders!.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken,
-        if (summary != null) 'summary': summary,
-        if (timeZone != null) 'timeZone': timeZone,
-        if (updated != null) 'updated': (updated).toIso8601String(),
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken!,
+        if (summary != null) 'summary': summary!,
+        if (timeZone != null) 'timeZone': timeZone!,
+        if (updated != null) 'updated': (updated!).toIso8601String(),
       };
 }
 
 class FreeBusyCalendar {
   /// List of time ranges during which this calendar should be regarded as busy.
-  core.List<TimePeriod> busy;
+  core.List<TimePeriod>? busy;
 
   /// Optional error(s) (if computation for the calendar failed).
-  core.List<Error> errors;
+  core.List<Error>? errors;
 
   FreeBusyCalendar();
 
@@ -4920,19 +4784,19 @@ class FreeBusyCalendar {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (busy != null) 'busy': busy.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (busy != null) 'busy': busy!.map((value) => value.toJson()).toList(),
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
+          'errors': errors!.map((value) => value.toJson()).toList(),
       };
 }
 
 class FreeBusyGroup {
   /// List of calendars' identifiers within a group.
-  core.List<core.String> calendars;
+  core.List<core.String>? calendars;
 
   /// Optional error(s) (if computation for the group failed).
-  core.List<Error> errors;
+  core.List<Error>? errors;
 
   FreeBusyGroup();
 
@@ -4950,10 +4814,10 @@ class FreeBusyGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (calendars != null) 'calendars': calendars,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (calendars != null) 'calendars': calendars!,
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
+          'errors': errors!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4962,27 +4826,27 @@ class FreeBusyRequest {
   /// provided.
   ///
   /// Optional. Maximum value is 50.
-  core.int calendarExpansionMax;
+  core.int? calendarExpansionMax;
 
   /// Maximal number of calendar identifiers to be provided for a single group.
   ///
   /// Optional. An error is returned for a group with more members than this
   /// value. Maximum value is 100.
-  core.int groupExpansionMax;
+  core.int? groupExpansionMax;
 
   /// List of calendars and/or groups to query.
-  core.List<FreeBusyRequestItem> items;
+  core.List<FreeBusyRequestItem>? items;
 
   /// The end of the interval for the query formatted as per RFC3339.
-  core.DateTime timeMax;
+  core.DateTime? timeMax;
 
   /// The start of the interval for the query formatted as per RFC3339.
-  core.DateTime timeMin;
+  core.DateTime? timeMin;
 
   /// Time zone used in the response.
   ///
   /// Optional. The default is UTC.
-  core.String timeZone;
+  core.String? timeZone;
 
   FreeBusyRequest();
 
@@ -5010,21 +4874,21 @@ class FreeBusyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (calendarExpansionMax != null)
-          'calendarExpansionMax': calendarExpansionMax,
-        if (groupExpansionMax != null) 'groupExpansionMax': groupExpansionMax,
+          'calendarExpansionMax': calendarExpansionMax!,
+        if (groupExpansionMax != null) 'groupExpansionMax': groupExpansionMax!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (timeMax != null) 'timeMax': (timeMax).toIso8601String(),
-        if (timeMin != null) 'timeMin': (timeMin).toIso8601String(),
-        if (timeZone != null) 'timeZone': timeZone,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (timeMax != null) 'timeMax': (timeMax!).toIso8601String(),
+        if (timeMin != null) 'timeMin': (timeMin!).toIso8601String(),
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 
 class FreeBusyRequestItem {
   /// The identifier of a calendar or a group.
-  core.String id;
+  core.String? id;
 
   FreeBusyRequestItem();
 
@@ -5034,42 +4898,45 @@ class FreeBusyRequestItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
       };
 }
 
 class FreeBusyResponse {
   /// List of free/busy information for calendars.
-  core.Map<core.String, FreeBusyCalendar> calendars;
+  core.Map<core.String, FreeBusyCalendar>? calendars;
 
   /// Expansion of groups.
-  core.Map<core.String, FreeBusyGroup> groups;
+  core.Map<core.String, FreeBusyGroup>? groups;
 
   /// Type of the resource ("calendar#freeBusy").
-  core.String kind;
+  core.String? kind;
 
   /// The end of the interval.
-  core.DateTime timeMax;
+  core.DateTime? timeMax;
 
   /// The start of the interval.
-  core.DateTime timeMin;
+  core.DateTime? timeMin;
 
   FreeBusyResponse();
 
   FreeBusyResponse.fromJson(core.Map _json) {
     if (_json.containsKey('calendars')) {
-      calendars =
-          (_json['calendars'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  FreeBusyCalendar.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      calendars = (_json['calendars'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              FreeBusyCalendar.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('groups')) {
-      groups = (_json['groups'] as core.Map).cast<core.String, core.Map>().map(
+      groups = (_json['groups'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               FreeBusyGroup.fromJson(
@@ -5088,34 +4955,34 @@ class FreeBusyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (calendars != null)
           'calendars':
-              calendars.map((key, item) => core.MapEntry(key, item.toJson())),
+              calendars!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (groups != null)
           'groups':
-              groups.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (kind != null) 'kind': kind,
-        if (timeMax != null) 'timeMax': (timeMax).toIso8601String(),
-        if (timeMin != null) 'timeMin': (timeMin).toIso8601String(),
+              groups!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (kind != null) 'kind': kind!,
+        if (timeMax != null) 'timeMax': (timeMax!).toIso8601String(),
+        if (timeMin != null) 'timeMin': (timeMin!).toIso8601String(),
       };
 }
 
 class Setting {
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The id of the user setting.
-  core.String id;
+  core.String? id;
 
   /// Type of the resource ("calendar#setting").
-  core.String kind;
+  core.String? kind;
 
   /// Value of the user setting.
   ///
   /// The format of the value depends on the ID of the setting. It must always
   /// be a UTF-8 string of length up to 1024 characters.
-  core.String value;
+  core.String? value;
 
   Setting();
 
@@ -5134,36 +5001,36 @@ class Setting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (value != null) 'value': value!,
       };
 }
 
 class Settings {
   /// Etag of the collection.
-  core.String etag;
+  core.String? etag;
 
   /// List of user settings.
-  core.List<Setting> items;
+  core.List<Setting>? items;
 
   /// Type of the collection ("calendar#settings").
-  core.String kind;
+  core.String? kind;
 
   /// Token used to access the next page of this result.
   ///
   /// Omitted if no further results are available, in which case nextSyncToken
   /// is provided.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Token used at a later point in time to retrieve only the entries that have
   /// changed since this result was returned.
   ///
   /// Omitted if further results are available, in which case nextPageToken is
   /// provided.
-  core.String nextSyncToken;
+  core.String? nextSyncToken;
 
   Settings();
 
@@ -5188,22 +5055,22 @@ class Settings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken!,
       };
 }
 
 class TimePeriod {
   /// The (exclusive) end of the time period.
-  core.DateTime end;
+  core.DateTime? end;
 
   /// The (inclusive) start of the time period.
-  core.DateTime start;
+  core.DateTime? start;
 
   TimePeriod();
 
@@ -5216,8 +5083,8 @@ class TimePeriod {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (end != null) 'end': (end).toIso8601String(),
-        if (start != null) 'start': (start).toIso8601String(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (end != null) 'end': (end!).toIso8601String(),
+        if (start != null) 'start': (start!).toIso8601String(),
       };
 }

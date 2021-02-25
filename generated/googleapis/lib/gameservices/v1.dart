@@ -100,11 +100,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -147,15 +144,12 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.bool includeUnrevealedLocations,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.bool? includeUnrevealedLocations,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (includeUnrevealedLocations != null)
@@ -213,14 +207,10 @@ class ProjectsLocationsGameServerDeploymentsResource {
   async.Future<Operation> create(
     GameServerDeployment request,
     core.String parent, {
-    core.String deploymentId,
-    core.String $fields,
+    core.String? deploymentId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (deploymentId != null) 'deploymentId': [deploymentId],
       if ($fields != null) 'fields': [$fields],
@@ -261,11 +251,8 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -309,13 +296,9 @@ class ProjectsLocationsGameServerDeploymentsResource {
   async.Future<FetchDeploymentStateResponse> fetchDeploymentState(
     FetchDeploymentStateRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -356,11 +339,8 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<GameServerDeployment> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -409,12 +389,9 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -455,11 +432,8 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<GameServerDeploymentRollout> getRollout(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -510,15 +484,12 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<ListGameServerDeploymentsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -571,14 +542,10 @@ class ProjectsLocationsGameServerDeploymentsResource {
   async.Future<Operation> patch(
     GameServerDeployment request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -631,15 +598,11 @@ class ProjectsLocationsGameServerDeploymentsResource {
   async.Future<PreviewGameServerDeploymentRolloutResponse> previewRollout(
     GameServerDeploymentRollout request,
     core.String name, {
-    core.String previewTime,
-    core.String updateMask,
-    core.String $fields,
+    core.String? previewTime,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (previewTime != null) 'previewTime': [previewTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -688,13 +651,9 @@ class ProjectsLocationsGameServerDeploymentsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -742,13 +701,9 @@ class ProjectsLocationsGameServerDeploymentsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -804,14 +759,10 @@ class ProjectsLocationsGameServerDeploymentsResource {
   async.Future<Operation> updateRollout(
     GameServerDeploymentRollout request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -868,14 +819,10 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
   async.Future<Operation> create(
     GameServerConfig request,
     core.String parent, {
-    core.String configId,
-    core.String $fields,
+    core.String? configId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (configId != null) 'configId': [configId],
       if ($fields != null) 'fields': [$fields],
@@ -918,11 +865,8 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -959,11 +903,8 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
   /// this method will complete with the same error.
   async.Future<GameServerConfig> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1016,15 +957,12 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
   /// this method will complete with the same error.
   async.Future<ListGameServerConfigsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1084,13 +1022,9 @@ class ProjectsLocationsOperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1131,11 +1065,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1173,11 +1104,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1226,14 +1154,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1288,14 +1213,10 @@ class ProjectsLocationsRealmsResource {
   async.Future<Operation> create(
     Realm request,
     core.String parent, {
-    core.String realmId,
-    core.String $fields,
+    core.String? realmId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (realmId != null) 'realmId': [realmId],
       if ($fields != null) 'fields': [$fields],
@@ -1334,11 +1255,8 @@ class ProjectsLocationsRealmsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1374,11 +1292,8 @@ class ProjectsLocationsRealmsResource {
   /// this method will complete with the same error.
   async.Future<Realm> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1426,15 +1341,12 @@ class ProjectsLocationsRealmsResource {
   /// this method will complete with the same error.
   async.Future<ListRealmsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1484,14 +1396,10 @@ class ProjectsLocationsRealmsResource {
   async.Future<Operation> patch(
     Realm request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1539,15 +1447,11 @@ class ProjectsLocationsRealmsResource {
   async.Future<PreviewRealmUpdateResponse> previewUpdate(
     Realm request,
     core.String name, {
-    core.String previewTime,
-    core.String updateMask,
-    core.String $fields,
+    core.String? previewTime,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (previewTime != null) 'previewTime': [previewTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1602,14 +1506,10 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   async.Future<Operation> create(
     GameServerCluster request,
     core.String parent, {
-    core.String gameServerClusterId,
-    core.String $fields,
+    core.String? gameServerClusterId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (gameServerClusterId != null)
         'gameServerClusterId': [gameServerClusterId],
@@ -1651,11 +1551,8 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1692,11 +1589,8 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   /// this method will complete with the same error.
   async.Future<GameServerCluster> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1747,15 +1641,12 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   /// this method will complete with the same error.
   async.Future<ListGameServerClustersResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1808,14 +1699,10 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   async.Future<Operation> patch(
     GameServerCluster request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1862,15 +1749,11 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   async.Future<PreviewCreateGameServerClusterResponse> previewCreate(
     GameServerCluster request,
     core.String parent, {
-    core.String gameServerClusterId,
-    core.String previewTime,
-    core.String $fields,
+    core.String? gameServerClusterId,
+    core.String? previewTime,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (gameServerClusterId != null)
         'gameServerClusterId': [gameServerClusterId],
@@ -1916,12 +1799,9 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   /// this method will complete with the same error.
   async.Future<PreviewDeleteGameServerClusterResponse> previewDelete(
     core.String name, {
-    core.String previewTime,
-    core.String $fields,
+    core.String? previewTime,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (previewTime != null) 'previewTime': [previewTime],
       if ($fields != null) 'fields': [$fields],
@@ -1973,15 +1853,11 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   async.Future<PreviewUpdateGameServerClusterResponse> previewUpdate(
     GameServerCluster request,
     core.String name, {
-    core.String previewTime,
-    core.String updateMask,
-    core.String $fields,
+    core.String? previewTime,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (previewTime != null) 'previewTime': [previewTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -2022,14 +1898,14 @@ class ProjectsLocationsRealmsGameServerClustersResource {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
-  core.List<core.String> exemptedMembers;
+  core.List<AuditLogConfig>? auditLogConfigs;
+  core.List<core.String>? exemptedMembers;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -2050,12 +1926,12 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (service != null) 'service': service!,
       };
 }
 
@@ -2070,8 +1946,8 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
-  core.bool ignoreChildExemptions;
+  core.List<core.String>? exemptedMembers;
+  core.bool? ignoreChildExemptions;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -2079,7 +1955,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -2097,11 +1973,11 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
         if (ignoreChildExemptions != null)
-          'ignoreChildExemptions': ignoreChildExemptions,
-        if (logType != null) 'logType': logType,
+          'ignoreChildExemptions': ignoreChildExemptions!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -2114,7 +1990,7 @@ class AuthorizationLoggingOptions {
   /// - "ADMIN_WRITE" : A write of admin (meta) data.
   /// - "DATA_READ" : A read of standard data.
   /// - "DATA_WRITE" : A write of standard data.
-  core.String permissionType;
+  core.String? permissionType;
 
   AuthorizationLoggingOptions();
 
@@ -2124,14 +2000,14 @@ class AuthorizationLoggingOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissionType != null) 'permissionType': permissionType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissionType != null) 'permissionType': permissionType!,
       };
 }
 
 /// Associates `members` with a `role`.
 class Binding {
-  core.String bindingId;
+  core.String? bindingId;
 
   /// The condition that is associated with this binding.
   ///
@@ -2141,7 +2017,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -2173,12 +2049,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -2200,11 +2076,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bindingId != null) 'bindingId': bindingId,
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bindingId != null) 'bindingId': bindingId!,
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -2216,20 +2092,20 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Write a Cloud Audit log
 class CloudAuditOptions {
   /// Information used by the Cloud Audit Logging pipeline.
-  AuthorizationLoggingOptions authorizationLoggingOptions;
+  AuthorizationLoggingOptions? authorizationLoggingOptions;
 
   /// The log_name to populate in the Cloud Audit Record.
   /// Possible string values are:
   /// - "UNSPECIFIED_LOG_NAME" : Default. Should not be used.
   /// - "ADMIN_ACTIVITY" : Corresponds to "cloudaudit.googleapis.com/activity"
   /// - "DATA_ACCESS" : Corresponds to "cloudaudit.googleapis.com/data_access"
-  core.String logName;
+  core.String? logName;
 
   CloudAuditOptions();
 
@@ -2244,10 +2120,10 @@ class CloudAuditOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (authorizationLoggingOptions != null)
-          'authorizationLoggingOptions': authorizationLoggingOptions.toJson(),
-        if (logName != null) 'logName': logName,
+          'authorizationLoggingOptions': authorizationLoggingOptions!.toJson(),
+        if (logName != null) 'logName': logName!,
       };
 }
 
@@ -2295,7 +2171,7 @@ class Condition {
   /// context (e.g., ALLOW/IN or DENY/NOT_IN).
   /// - "CREDS_ASSERTION" : EXPERIMENTAL -- DO NOT USE. The conditions can only
   /// be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
-  core.String iam;
+  core.String? iam;
 
   /// An operator to apply the subject with.
   /// Possible string values are:
@@ -2307,10 +2183,10 @@ class Condition {
   /// - "NOT_IN" : The condition is true if the subject (or every element of it
   /// if it is a set) matches none of the supplied values.
   /// - "DISCHARGED" : Subject is discharged
-  core.String op;
+  core.String? op;
 
   /// Trusted attributes discharged by the service.
-  core.String svc;
+  core.String? svc;
 
   /// Trusted attributes supplied by any service that owns resources and uses
   /// the IAM system for access control.
@@ -2320,10 +2196,10 @@ class Condition {
   /// - "SERVICE" : Service name
   /// - "NAME" : Resource name
   /// - "IP" : IP address of the caller
-  core.String sys;
+  core.String? sys;
 
   /// The objects of the condition.
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   Condition();
 
@@ -2347,12 +2223,12 @@ class Condition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (iam != null) 'iam': iam,
-        if (op != null) 'op': op,
-        if (svc != null) 'svc': svc,
-        if (sys != null) 'sys': sys,
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (iam != null) 'iam': iam!,
+        if (op != null) 'op': op!,
+        if (svc != null) 'svc': svc!,
+        if (sys != null) 'sys': sys!,
+        if (values != null) 'values': values!,
       };
 }
 
@@ -2373,13 +2249,13 @@ class Condition {
 /// IAMContext.principal\]}
 class CounterOptions {
   /// Custom fields.
-  core.List<CustomField> customFields;
+  core.List<CustomField>? customFields;
 
   /// The field value to attribute.
-  core.String field;
+  core.String? field;
 
   /// The metric to update.
-  core.String metric;
+  core.String? metric;
 
   CounterOptions();
 
@@ -2398,11 +2274,11 @@ class CounterOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customFields != null)
-          'customFields': customFields.map((value) => value.toJson()).toList(),
-        if (field != null) 'field': field,
-        if (metric != null) 'metric': metric,
+          'customFields': customFields!.map((value) => value.toJson()).toList(),
+        if (field != null) 'field': field!,
+        if (metric != null) 'metric': metric!,
       };
 }
 
@@ -2412,13 +2288,13 @@ class CounterOptions {
 /// go/rpcsp-custom-fields.
 class CustomField {
   /// Name is the field name.
-  core.String name;
+  core.String? name;
 
   /// Value is the field value.
   ///
   /// It is important that in contrast to the CounterOptions.field, the value
   /// here is a constant that is not derived from the IAMContext.
-  core.String value;
+  core.String? value;
 
   CustomField();
 
@@ -2431,9 +2307,9 @@ class CustomField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2453,7 +2329,7 @@ class DataAccessOptions {
   /// a matching Rule has this directive, but the client has not indicated that
   /// it will honor such requirements, then the IAM check will result in
   /// authorization failure by setting CheckPolicyResponse.success=false.
-  core.String logMode;
+  core.String? logMode;
 
   DataAccessOptions();
 
@@ -2463,19 +2339,19 @@ class DataAccessOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (logMode != null) 'logMode': logMode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (logMode != null) 'logMode': logMode!,
       };
 }
 
 /// The game server cluster changes made by the game server deployment.
 class DeployedClusterState {
   /// The name of the cluster.
-  core.String cluster;
+  core.String? cluster;
 
   /// The details about the Agones fleets and autoscalers created in the game
   /// server cluster.
-  core.List<DeployedFleetDetails> fleetDetails;
+  core.List<DeployedFleetDetails>? fleetDetails;
 
   DeployedClusterState();
 
@@ -2491,30 +2367,30 @@ class DeployedClusterState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cluster != null) 'cluster': cluster,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cluster != null) 'cluster': cluster!,
         if (fleetDetails != null)
-          'fleetDetails': fleetDetails.map((value) => value.toJson()).toList(),
+          'fleetDetails': fleetDetails!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Agones fleet specification and details.
 class DeployedFleet {
   /// The name of the Agones fleet.
-  core.String fleet;
+  core.String? fleet;
 
   /// The fleet spec retrieved from the Agones fleet.
-  core.String fleetSpec;
+  core.String? fleetSpec;
 
   /// The source spec that is used to create the Agones fleet.
   ///
   /// The GameServerConfig resource may no longer exist in the system.
-  SpecSource specSource;
+  SpecSource? specSource;
 
   /// The current status of the Agones fleet.
   ///
   /// Includes count of game servers in various states.
-  DeployedFleetStatus status;
+  DeployedFleetStatus? status;
 
   DeployedFleet();
 
@@ -2535,26 +2411,26 @@ class DeployedFleet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fleet != null) 'fleet': fleet,
-        if (fleetSpec != null) 'fleetSpec': fleetSpec,
-        if (specSource != null) 'specSource': specSource.toJson(),
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fleet != null) 'fleet': fleet!,
+        if (fleetSpec != null) 'fleetSpec': fleetSpec!,
+        if (specSource != null) 'specSource': specSource!.toJson(),
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
 /// Details about the Agones autoscaler.
 class DeployedFleetAutoscaler {
   /// The name of the Agones autoscaler.
-  core.String autoscaler;
+  core.String? autoscaler;
 
   /// The autoscaler spec retrieved from Agones.
-  core.String fleetAutoscalerSpec;
+  core.String? fleetAutoscalerSpec;
 
   /// The source spec that is used to create the autoscaler.
   ///
   /// The GameServerConfig resource may no longer exist in the system.
-  SpecSource specSource;
+  SpecSource? specSource;
 
   DeployedFleetAutoscaler();
 
@@ -2571,21 +2447,21 @@ class DeployedFleetAutoscaler {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (autoscaler != null) 'autoscaler': autoscaler,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (autoscaler != null) 'autoscaler': autoscaler!,
         if (fleetAutoscalerSpec != null)
-          'fleetAutoscalerSpec': fleetAutoscalerSpec,
-        if (specSource != null) 'specSource': specSource.toJson(),
+          'fleetAutoscalerSpec': fleetAutoscalerSpec!,
+        if (specSource != null) 'specSource': specSource!.toJson(),
       };
 }
 
 /// Details of the deployed Agones fleet.
 class DeployedFleetDetails {
   /// Information about the Agones autoscaler for that fleet.
-  DeployedFleetAutoscaler deployedAutoscaler;
+  DeployedFleetAutoscaler? deployedAutoscaler;
 
   /// Information about the Agones fleet.
-  DeployedFleet deployedFleet;
+  DeployedFleet? deployedFleet;
 
   DeployedFleetDetails();
 
@@ -2600,10 +2476,10 @@ class DeployedFleetDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deployedAutoscaler != null)
-          'deployedAutoscaler': deployedAutoscaler.toJson(),
-        if (deployedFleet != null) 'deployedFleet': deployedFleet.toJson(),
+          'deployedAutoscaler': deployedAutoscaler!.toJson(),
+        if (deployedFleet != null) 'deployedFleet': deployedFleet!.toJson(),
       };
 }
 
@@ -2611,19 +2487,19 @@ class DeployedFleetDetails {
 /// running, how many allocated, and so on.
 class DeployedFleetStatus {
   /// The number of GameServer replicas in the ALLOCATED state in this fleet.
-  core.String allocatedReplicas;
+  core.String? allocatedReplicas;
 
   /// The number of GameServer replicas in the READY state in this fleet.
-  core.String readyReplicas;
+  core.String? readyReplicas;
 
   /// The total number of current GameServer replicas in this fleet.
-  core.String replicas;
+  core.String? replicas;
 
   /// The number of GameServer replicas in the RESERVED state in this fleet.
   ///
   /// Reserved instances won't be deleted on scale down, but won't cause an
   /// autoscaler to scale up.
-  core.String reservedReplicas;
+  core.String? reservedReplicas;
 
   DeployedFleetStatus();
 
@@ -2642,11 +2518,11 @@ class DeployedFleetStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allocatedReplicas != null) 'allocatedReplicas': allocatedReplicas,
-        if (readyReplicas != null) 'readyReplicas': readyReplicas,
-        if (replicas != null) 'replicas': replicas,
-        if (reservedReplicas != null) 'reservedReplicas': reservedReplicas,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allocatedReplicas != null) 'allocatedReplicas': allocatedReplicas!,
+        if (readyReplicas != null) 'readyReplicas': readyReplicas!,
+        if (replicas != null) 'replicas': replicas!,
+        if (reservedReplicas != null) 'reservedReplicas': reservedReplicas!,
       };
 }
 
@@ -2664,7 +2540,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2692,24 +2568,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -2728,11 +2604,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -2744,16 +2620,16 @@ class FetchDeploymentStateRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response message for GameServerDeploymentsService.FetchDeploymentState.
 class FetchDeploymentStateResponse {
   /// The state of the game server deployment in each game server cluster.
-  core.List<DeployedClusterState> clusterState;
+  core.List<DeployedClusterState>? clusterState;
 
   /// List of locations that could not be reached.
-  core.List<core.String> unavailable;
+  core.List<core.String>? unavailable;
 
   FetchDeploymentStateResponse();
 
@@ -2771,10 +2647,10 @@ class FetchDeploymentStateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clusterState != null)
-          'clusterState': clusterState.map((value) => value.toJson()).toList(),
-        if (unavailable != null) 'unavailable': unavailable,
+          'clusterState': clusterState!.map((value) => value.toJson()).toList(),
+        if (unavailable != null) 'unavailable': unavailable!,
       };
 }
 
@@ -2783,10 +2659,10 @@ class FleetConfig {
   /// Agones fleet spec.
   ///
   /// Example spec: `https://agones.dev/site/docs/reference/fleet/`.
-  core.String fleetSpec;
+  core.String? fleetSpec;
 
   /// The name of the FleetConfig.
-  core.String name;
+  core.String? name;
 
   FleetConfig();
 
@@ -2799,9 +2675,9 @@ class FleetConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fleetSpec != null) 'fleetSpec': fleetSpec,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fleetSpec != null) 'fleetSpec': fleetSpec!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2810,23 +2686,23 @@ class GameServerCluster {
   /// The game server cluster connection information.
   ///
   /// This information is used to manage game server clusters.
-  GameServerClusterConnectionInfo connectionInfo;
+  GameServerClusterConnectionInfo? connectionInfo;
 
   /// The creation time.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Human readable description of the cluster.
-  core.String description;
+  core.String? description;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The labels associated with this game server cluster.
   ///
   /// Each label is a key-value pair.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The resource name of the game server cluster, in the following form:
   /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
@@ -2835,12 +2711,12 @@ class GameServerCluster {
   /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The last-modified time.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   GameServerCluster();
 
@@ -2875,27 +2751,27 @@ class GameServerCluster {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (connectionInfo != null) 'connectionInfo': connectionInfo.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (etag != null) 'etag': etag,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (connectionInfo != null) 'connectionInfo': connectionInfo!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// The game server cluster connection information.
 class GameServerClusterConnectionInfo {
   /// Reference to the GKE cluster where the game servers are installed.
-  GkeClusterReference gkeClusterReference;
+  GkeClusterReference? gkeClusterReference;
 
   /// Namespace designated on the game server cluster where the Agones game
   /// server instances will be created.
   ///
   /// Existence of the namespace will be validated during creation.
-  core.String namespace;
+  core.String? namespace;
 
   GameServerClusterConnectionInfo();
 
@@ -2909,10 +2785,10 @@ class GameServerClusterConnectionInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (gkeClusterReference != null)
-          'gkeClusterReference': gkeClusterReference.toJson(),
-        if (namespace != null) 'namespace': namespace,
+          'gkeClusterReference': gkeClusterReference!.toJson(),
+        if (namespace != null) 'namespace': namespace!,
       };
 }
 
@@ -2921,35 +2797,35 @@ class GameServerConfig {
   /// The creation time.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The description of the game server config.
-  core.String description;
+  core.String? description;
 
   /// FleetConfig contains a list of Agones fleet specs.
   ///
   /// Only one FleetConfig is allowed.
-  core.List<FleetConfig> fleetConfigs;
+  core.List<FleetConfig>? fleetConfigs;
 
   /// The labels associated with this game server config.
   ///
   /// Each label is a key-value pair.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The resource name of the game server config, in the following form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
   ///
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
-  core.String name;
+  core.String? name;
 
   /// The autoscaling settings.
-  core.List<ScalingConfig> scalingConfigs;
+  core.List<ScalingConfig>? scalingConfigs;
 
   /// The last-modified time.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   GameServerConfig();
 
@@ -2989,27 +2865,27 @@ class GameServerConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
         if (fleetConfigs != null)
-          'fleetConfigs': fleetConfigs.map((value) => value.toJson()).toList(),
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
+          'fleetConfigs': fleetConfigs!.map((value) => value.toJson()).toList(),
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
         if (scalingConfigs != null)
           'scalingConfigs':
-              scalingConfigs.map((value) => value.toJson()).toList(),
-        if (updateTime != null) 'updateTime': updateTime,
+              scalingConfigs!.map((value) => value.toJson()).toList(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// A game server config override.
 class GameServerConfigOverride {
   /// The game server config for this override.
-  core.String configVersion;
+  core.String? configVersion;
 
   /// Selector for choosing applicable realms.
-  RealmSelector realmsSelector;
+  RealmSelector? realmsSelector;
 
   GameServerConfigOverride();
 
@@ -3023,9 +2899,9 @@ class GameServerConfigOverride {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (configVersion != null) 'configVersion': configVersion,
-        if (realmsSelector != null) 'realmsSelector': realmsSelector.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (configVersion != null) 'configVersion': configVersion!,
+        if (realmsSelector != null) 'realmsSelector': realmsSelector!.toJson(),
       };
 }
 
@@ -3034,30 +2910,30 @@ class GameServerDeployment {
   /// The creation time.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Human readable description of the game server delpoyment.
-  core.String description;
+  core.String? description;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The labels associated with this game server deployment.
   ///
   /// Each label is a key-value pair.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The resource name of the game server deployment, in the following form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
   ///
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
-  core.String name;
+  core.String? name;
 
   /// The last-modified time.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   GameServerDeployment();
 
@@ -3088,13 +2964,13 @@ class GameServerDeployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (etag != null) 'etag': etag,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3104,23 +2980,23 @@ class GameServerDeploymentRollout {
   /// The creation time.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The default game server config is applied to all realms unless overridden
   /// in the rollout.
   ///
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
-  core.String defaultGameServerConfig;
+  core.String? defaultGameServerConfig;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// Contains the game server config rollout overrides.
   ///
   /// Overrides are processed in the order they are listed. Once a match is
   /// found for a realm, the rest of the list is not processed.
-  core.List<GameServerConfigOverride> gameServerConfigOverrides;
+  core.List<GameServerConfigOverride>? gameServerConfigOverrides;
 
   /// The resource name of the game server deployment rollout, in the following
   /// form:
@@ -3128,12 +3004,12 @@ class GameServerDeploymentRollout {
   ///
   /// For example,
   /// `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
-  core.String name;
+  core.String? name;
 
   /// The last-modified time.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   GameServerDeploymentRollout();
 
@@ -3163,16 +3039,17 @@ class GameServerDeploymentRollout {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
         if (defaultGameServerConfig != null)
-          'defaultGameServerConfig': defaultGameServerConfig,
-        if (etag != null) 'etag': etag,
+          'defaultGameServerConfig': defaultGameServerConfig!,
+        if (etag != null) 'etag': etag!,
         if (gameServerConfigOverrides != null)
-          'gameServerConfigOverrides':
-              gameServerConfigOverrides.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (updateTime != null) 'updateTime': updateTime,
+          'gameServerConfigOverrides': gameServerConfigOverrides!
+              .map((value) => value.toJson())
+              .toList(),
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3184,7 +3061,7 @@ class GkeClusterReference {
   /// location are not specified, the project and location of the
   /// GameServerCluster resource are used to generate the full name of the GKE
   /// cluster.
-  core.String cluster;
+  core.String? cluster;
 
   GkeClusterReference();
 
@@ -3194,15 +3071,15 @@ class GkeClusterReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cluster != null) 'cluster': cluster,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cluster != null) 'cluster': cluster!,
       };
 }
 
 /// The label selector, used to group labels on the resources.
 class LabelSelector {
   /// Resource labels for this selector.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   LabelSelector();
 
@@ -3218,22 +3095,22 @@ class LabelSelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
       };
 }
 
 /// Response message for GameServerClustersService.ListGameServerClusters.
 class ListGameServerClustersResponse {
   /// The list of game server clusters.
-  core.List<GameServerCluster> gameServerClusters;
+  core.List<GameServerCluster>? gameServerClusters;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListGameServerClustersResponse();
 
@@ -3254,26 +3131,26 @@ class ListGameServerClustersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (gameServerClusters != null)
           'gameServerClusters':
-              gameServerClusters.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+              gameServerClusters!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// Response message for GameServerConfigsService.ListGameServerConfigs.
 class ListGameServerConfigsResponse {
   /// The list of game server configs.
-  core.List<GameServerConfig> gameServerConfigs;
+  core.List<GameServerConfig>? gameServerConfigs;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListGameServerConfigsResponse();
 
@@ -3294,26 +3171,26 @@ class ListGameServerConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (gameServerConfigs != null)
           'gameServerConfigs':
-              gameServerConfigs.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+              gameServerConfigs!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// Response message for GameServerDeploymentsService.ListGameServerDeployments.
 class ListGameServerDeploymentsResponse {
   /// The list of game server deployments.
-  core.List<GameServerDeployment> gameServerDeployments;
+  core.List<GameServerDeployment>? gameServerDeployments;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListGameServerDeploymentsResponse();
 
@@ -3334,22 +3211,22 @@ class ListGameServerDeploymentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (gameServerDeployments != null)
           'gameServerDeployments':
-              gameServerDeployments.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+              gameServerDeployments!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -3365,20 +3242,20 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -3394,10 +3271,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3405,13 +3282,13 @@ class ListOperationsResponse {
 class ListRealmsResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of realms.
-  core.List<Realm> realms;
+  core.List<Realm>? realms;
 
   /// List of locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListRealmsResponse();
 
@@ -3432,11 +3309,11 @@ class ListRealmsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (realms != null)
-          'realms': realms.map((value) => value.toJson()).toList(),
-        if (unreachable != null) 'unreachable': unreachable,
+          'realms': realms!.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -3445,17 +3322,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -3463,12 +3340,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -3502,25 +3379,25 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Specifies what kind of log the caller must write
 class LogConfig {
   /// Cloud audit options.
-  CloudAuditOptions cloudAudit;
+  CloudAuditOptions? cloudAudit;
 
   /// Counter options.
-  CounterOptions counter;
+  CounterOptions? counter;
 
   /// Data access options.
-  DataAccessOptions dataAccess;
+  DataAccessOptions? dataAccess;
 
   LogConfig();
 
@@ -3539,10 +3416,10 @@ class LogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cloudAudit != null) 'cloudAudit': cloudAudit.toJson(),
-        if (counter != null) 'counter': counter.toJson(),
-        if (dataAccess != null) 'dataAccess': dataAccess.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cloudAudit != null) 'cloudAudit': cloudAudit!.toJson(),
+        if (counter != null) 'counter': counter!.toJson(),
+        if (dataAccess != null) 'dataAccess': dataAccess!.toJson(),
       };
 }
 
@@ -3553,10 +3430,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -3567,14 +3444,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -3587,7 +3464,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -3622,12 +3499,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -3636,17 +3513,17 @@ class OperationMetadata {
   /// API version used to start the operation.
   ///
   /// Output only.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// The time the operation was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time the operation finished running.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// Operation status for Game Services API operations.
   ///
@@ -3655,7 +3532,7 @@ class OperationMetadata {
   /// the value includes an error code and error message.
   ///
   /// Output only.
-  core.Map<core.String, OperationStatus> operationStatus;
+  core.Map<core.String, OperationStatus>? operationStatus;
 
   /// Identifies whether the user has requested cancellation of the operation.
   ///
@@ -3664,27 +3541,27 @@ class OperationMetadata {
   /// `Code.CANCELLED`.
   ///
   /// Output only.
-  core.bool requestedCancellation;
+  core.bool? requestedCancellation;
 
   /// Human-readable status of the operation, if any.
   ///
   /// Output only.
-  core.String statusMessage;
+  core.String? statusMessage;
 
   /// Server-defined resource path for the target of the operation.
   ///
   /// Output only.
-  core.String target;
+  core.String? target;
 
   /// List of Locations that could not be reached.
   ///
   /// Output only.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   /// Name of the verb executed by the operation.
   ///
   /// Output only.
-  core.String verb;
+  core.String? verb;
 
   OperationMetadata();
 
@@ -3700,7 +3577,7 @@ class OperationMetadata {
     }
     if (_json.containsKey('operationStatus')) {
       operationStatus = (_json['operationStatus'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -3728,19 +3605,19 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
         if (operationStatus != null)
-          'operationStatus': operationStatus
+          'operationStatus': operationStatus!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (requestedCancellation != null)
-          'requestedCancellation': requestedCancellation,
-        if (statusMessage != null) 'statusMessage': statusMessage,
-        if (target != null) 'target': target,
-        if (unreachable != null) 'unreachable': unreachable,
-        if (verb != null) 'verb': verb,
+          'requestedCancellation': requestedCancellation!,
+        if (statusMessage != null) 'statusMessage': statusMessage!,
+        if (target != null) 'target': target!,
+        if (unreachable != null) 'unreachable': unreachable!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
@@ -3748,7 +3625,7 @@ class OperationStatus {
   /// Whether the operation is done or still in progress.
   ///
   /// Output only.
-  core.bool done;
+  core.bool? done;
 
   /// The error code in case of failures.
   /// Possible string values are:
@@ -3756,10 +3633,10 @@ class OperationStatus {
   /// - "INTERNAL_ERROR"
   /// - "PERMISSION_DENIED"
   /// - "CLUSTER_CONNECTION"
-  core.String errorCode;
+  core.String? errorCode;
 
   /// The human-readable error message.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   OperationStatus();
 
@@ -3775,10 +3652,10 @@ class OperationStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (errorCode != null) 'errorCode': errorCode,
-        if (errorMessage != null) 'errorMessage': errorMessage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
       };
 }
 
@@ -3815,14 +3692,14 @@ class OperationStatus {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -3836,15 +3713,15 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  core.bool iamOwned;
+  core.bool? iamOwned;
 
   /// If more than one rule is specified, the rules are applied in the following
   /// manner: - All matching LOG rules are always applied.
@@ -3854,7 +3731,7 @@ class Policy {
   /// Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
   /// granted. Logging will be applied if one or more matching rule requires
   /// logging. - Otherwise, if no rule applies, permission is denied.
-  core.List<Rule> rules;
+  core.List<Rule>? rules;
 
   /// Specifies the format of the policy.
   ///
@@ -3873,7 +3750,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -3907,16 +3784,16 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (iamOwned != null) 'iamOwned': iamOwned,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (iamOwned != null) 'iamOwned': iamOwned!,
         if (rules != null)
-          'rules': rules.map((value) => value.toJson()).toList(),
-        if (version != null) 'version': version,
+          'rules': rules!.map((value) => value.toJson()).toList(),
+        if (version != null) 'version': version!,
       };
 }
 
@@ -3924,10 +3801,10 @@ class Policy {
 /// GameServerClustersService.PreviewCreateGameServerCluster.
 class PreviewCreateGameServerClusterResponse {
   /// The ETag of the game server cluster.
-  core.String etag;
+  core.String? etag;
 
   /// The target state.
-  TargetState targetState;
+  TargetState? targetState;
 
   PreviewCreateGameServerClusterResponse();
 
@@ -3941,9 +3818,9 @@ class PreviewCreateGameServerClusterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (targetState != null) 'targetState': targetState.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (targetState != null) 'targetState': targetState!.toJson(),
       };
 }
 
@@ -3951,10 +3828,10 @@ class PreviewCreateGameServerClusterResponse {
 /// GameServerClustersService.PreviewDeleteGameServerCluster.
 class PreviewDeleteGameServerClusterResponse {
   /// The ETag of the game server cluster.
-  core.String etag;
+  core.String? etag;
 
   /// The target state.
-  TargetState targetState;
+  TargetState? targetState;
 
   PreviewDeleteGameServerClusterResponse();
 
@@ -3968,9 +3845,9 @@ class PreviewDeleteGameServerClusterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (targetState != null) 'targetState': targetState.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (targetState != null) 'targetState': targetState!.toJson(),
       };
 }
 
@@ -3979,13 +3856,13 @@ class PreviewDeleteGameServerClusterResponse {
 /// This has details about the Agones fleet and autoscaler to be actuated.
 class PreviewGameServerDeploymentRolloutResponse {
   /// ETag of the game server deployment.
-  core.String etag;
+  core.String? etag;
 
   /// The target state.
-  TargetState targetState;
+  TargetState? targetState;
 
   /// Locations that could not be reached on this request.
-  core.List<core.String> unavailable;
+  core.List<core.String>? unavailable;
 
   PreviewGameServerDeploymentRolloutResponse();
 
@@ -4004,20 +3881,20 @@ class PreviewGameServerDeploymentRolloutResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (targetState != null) 'targetState': targetState.toJson(),
-        if (unavailable != null) 'unavailable': unavailable,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (targetState != null) 'targetState': targetState!.toJson(),
+        if (unavailable != null) 'unavailable': unavailable!,
       };
 }
 
 /// Response message for RealmsService.PreviewRealmUpdate.
 class PreviewRealmUpdateResponse {
   /// ETag of the realm.
-  core.String etag;
+  core.String? etag;
 
   /// The target state.
-  TargetState targetState;
+  TargetState? targetState;
 
   PreviewRealmUpdateResponse();
 
@@ -4031,9 +3908,9 @@ class PreviewRealmUpdateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (targetState != null) 'targetState': targetState.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (targetState != null) 'targetState': targetState!.toJson(),
       };
 }
 
@@ -4041,10 +3918,10 @@ class PreviewRealmUpdateResponse {
 /// GameServerClustersService.PreviewUpdateGameServerCluster
 class PreviewUpdateGameServerClusterResponse {
   /// The ETag of the game server cluster.
-  core.String etag;
+  core.String? etag;
 
   /// The target state.
-  TargetState targetState;
+  TargetState? targetState;
 
   PreviewUpdateGameServerClusterResponse();
 
@@ -4058,9 +3935,9 @@ class PreviewUpdateGameServerClusterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (targetState != null) 'targetState': targetState.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (targetState != null) 'targetState': targetState!.toJson(),
       };
 }
 
@@ -4069,24 +3946,24 @@ class Realm {
   /// The creation time.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Human readable description of the realm.
-  core.String description;
+  core.String? description;
 
   /// ETag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The labels associated with this realm.
   ///
   /// Each label is a key-value pair.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The resource name of the realm, in the following form:
   /// `projects/{project}/locations/{location}/realms/{realm}`.
   ///
   /// For example, `projects/my-project/locations/{location}/realms/my-realm`.
-  core.String name;
+  core.String? name;
 
   /// Time zone where all policies targeting this realm are evaluated.
   ///
@@ -4094,12 +3971,12 @@ class Realm {
   /// https://www.iana.org/time-zones.
   ///
   /// Required.
-  core.String timeZone;
+  core.String? timeZone;
 
   /// The last-modified time.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Realm();
 
@@ -4133,21 +4010,21 @@ class Realm {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (etag != null) 'etag': etag,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (timeZone != null) 'timeZone': timeZone,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (timeZone != null) 'timeZone': timeZone!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// The realm selector, used to match realm resources.
 class RealmSelector {
   /// List of realms to match.
-  core.List<core.String> realms;
+  core.List<core.String>? realms;
 
   RealmSelector();
 
@@ -4159,8 +4036,8 @@ class RealmSelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (realms != null) 'realms': realms,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (realms != null) 'realms': realms!,
       };
 }
 
@@ -4176,36 +4053,36 @@ class Rule {
   /// - "DENY_WITH_LOG" : Matching 'Entries' deny access and the caller promises
   /// to log the request per the returned log_configs.
   /// - "LOG" : Matching 'Entries' tell IAM.Check callers to generate logs.
-  core.String action;
+  core.String? action;
 
   /// Additional restrictions that must be met.
   ///
   /// All conditions must pass for the rule to match.
-  core.List<Condition> conditions;
+  core.List<Condition>? conditions;
 
   /// Human-readable description of the rule.
-  core.String description;
+  core.String? description;
 
   /// If one or more 'in' clauses are specified, the rule matches if the
   /// PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
-  core.List<core.String> in_;
+  core.List<core.String>? in_;
 
   /// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
   /// that match the LOG action.
-  core.List<LogConfig> logConfig;
+  core.List<LogConfig>? logConfig;
 
   /// If one or more 'not_in' clauses are specified, the rule matches if the
   /// PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
   ///
   /// The format for in and not_in entries can be found at in the Local IAM
   /// documentation (see go/local-iam#features).
-  core.List<core.String> notIn;
+  core.List<core.String>? notIn;
 
   /// A permission is a string of form '..' (e.g., 'storage.buckets.list').
   ///
   /// A value of '*' matches all permissions, and a verb part of '*' (e.g.,
   /// 'storage.buckets.*') matches all verbs.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   Rule();
 
@@ -4245,16 +4122,16 @@ class Rule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!,
         if (conditions != null)
-          'conditions': conditions.map((value) => value.toJson()).toList(),
-        if (description != null) 'description': description,
-        if (in_ != null) 'in': in_,
+          'conditions': conditions!.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description!,
+        if (in_ != null) 'in': in_!,
         if (logConfig != null)
-          'logConfig': logConfig.map((value) => value.toJson()).toList(),
-        if (notIn != null) 'notIn': notIn,
-        if (permissions != null) 'permissions': permissions,
+          'logConfig': logConfig!.map((value) => value.toJson()).toList(),
+        if (notIn != null) 'notIn': notIn!,
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -4265,22 +4142,22 @@ class ScalingConfig {
   /// Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
   ///
   /// Required.
-  core.String fleetAutoscalerSpec;
+  core.String? fleetAutoscalerSpec;
 
   /// The name of the Scaling Config
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The schedules to which this Scaling Config applies.
-  core.List<Schedule> schedules;
+  core.List<Schedule>? schedules;
 
   /// Labels used to identify the game server clusters to which this Agones
   /// scaling config applies.
   ///
   /// A game server cluster is subject to this Agones scaling config if its
   /// labels match any of the selector entries.
-  core.List<LabelSelector> selectors;
+  core.List<LabelSelector>? selectors;
 
   ScalingConfig();
 
@@ -4305,14 +4182,14 @@ class ScalingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fleetAutoscalerSpec != null)
-          'fleetAutoscalerSpec': fleetAutoscalerSpec,
-        if (name != null) 'name': name,
+          'fleetAutoscalerSpec': fleetAutoscalerSpec!,
+        if (name != null) 'name': name!,
         if (schedules != null)
-          'schedules': schedules.map((value) => value.toJson()).toList(),
+          'schedules': schedules!.map((value) => value.toJson()).toList(),
         if (selectors != null)
-          'selectors': selectors.map((value) => value.toJson()).toList(),
+          'selectors': selectors!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4329,19 +4206,19 @@ class Schedule {
   /// The duration for the cron job event.
   ///
   /// The duration of the event is effective after the cron job's start time.
-  core.String cronJobDuration;
+  core.String? cronJobDuration;
 
   /// The cron definition of the scheduled event.
   ///
   /// See https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time
   /// as defined by the realm.
-  core.String cronSpec;
+  core.String? cronSpec;
 
   /// The end time of the event.
-  core.String endTime;
+  core.String? endTime;
 
   /// The start time of the event.
-  core.String startTime;
+  core.String? startTime;
 
   Schedule();
 
@@ -4360,11 +4237,11 @@ class Schedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cronJobDuration != null) 'cronJobDuration': cronJobDuration,
-        if (cronSpec != null) 'cronSpec': cronSpec,
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cronJobDuration != null) 'cronJobDuration': cronJobDuration!,
+        if (cronSpec != null) 'cronSpec': cronSpec!,
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -4375,13 +4252,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -4395,9 +4272,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -4407,11 +4284,11 @@ class SpecSource {
   ///
   /// Uses the form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment_id}/configs/{config_id}`.
-  core.String gameServerConfigName;
+  core.String? gameServerConfigName;
 
   /// The name of the Agones leet config or Agones scaling config used to derive
   /// the Agones fleet or Agones autoscaler spec.
-  core.String name;
+  core.String? name;
 
   SpecSource();
 
@@ -4424,10 +4301,10 @@ class SpecSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (gameServerConfigName != null)
-          'gameServerConfigName': gameServerConfigName,
-        if (name != null) 'name': name,
+          'gameServerConfigName': gameServerConfigName!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -4440,7 +4317,7 @@ class SpecSource {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -4448,13 +4325,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -4478,29 +4355,29 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
 /// Details about the Agones resources.
 class TargetDetails {
   /// Agones fleet details for game server clusters and game server deployments.
-  core.List<TargetFleetDetails> fleetDetails;
+  core.List<TargetFleetDetails>? fleetDetails;
 
   /// The game server cluster name.
   ///
   /// Uses the form:
   /// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
-  core.String gameServerClusterName;
+  core.String? gameServerClusterName;
 
   /// The game server deployment name.
   ///
   /// Uses the form:
   /// `projects/{project}/locations/{location}/gameServerDeployments/{deployment_id}`.
-  core.String gameServerDeploymentName;
+  core.String? gameServerDeploymentName;
 
   TargetDetails();
 
@@ -4520,25 +4397,25 @@ class TargetDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fleetDetails != null)
-          'fleetDetails': fleetDetails.map((value) => value.toJson()).toList(),
+          'fleetDetails': fleetDetails!.map((value) => value.toJson()).toList(),
         if (gameServerClusterName != null)
-          'gameServerClusterName': gameServerClusterName,
+          'gameServerClusterName': gameServerClusterName!,
         if (gameServerDeploymentName != null)
-          'gameServerDeploymentName': gameServerDeploymentName,
+          'gameServerDeploymentName': gameServerDeploymentName!,
       };
 }
 
 /// Target Agones fleet specification.
 class TargetFleet {
   /// The name of the Agones fleet.
-  core.String name;
+  core.String? name;
 
   /// Encapsulates the source of the Agones fleet spec.
   ///
   /// The Agones fleet spec source.
-  SpecSource specSource;
+  SpecSource? specSource;
 
   TargetFleet();
 
@@ -4552,21 +4429,21 @@ class TargetFleet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (specSource != null) 'specSource': specSource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (specSource != null) 'specSource': specSource!.toJson(),
       };
 }
 
 /// Target Agones autoscaler policy reference.
 class TargetFleetAutoscaler {
   /// The name of the Agones autoscaler.
-  core.String name;
+  core.String? name;
 
   /// Encapsulates the source of the Agones fleet spec.
   ///
   /// Details about the Agones autoscaler spec.
-  SpecSource specSource;
+  SpecSource? specSource;
 
   TargetFleetAutoscaler();
 
@@ -4580,19 +4457,19 @@ class TargetFleetAutoscaler {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (specSource != null) 'specSource': specSource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (specSource != null) 'specSource': specSource!.toJson(),
       };
 }
 
 /// Details of the target Agones fleet.
 class TargetFleetDetails {
   /// Reference to target Agones fleet autoscaling policy.
-  TargetFleetAutoscaler autoscaler;
+  TargetFleetAutoscaler? autoscaler;
 
   /// Reference to target Agones fleet.
-  TargetFleet fleet;
+  TargetFleet? fleet;
 
   TargetFleetDetails();
 
@@ -4607,16 +4484,16 @@ class TargetFleetDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (autoscaler != null) 'autoscaler': autoscaler.toJson(),
-        if (fleet != null) 'fleet': fleet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (autoscaler != null) 'autoscaler': autoscaler!.toJson(),
+        if (fleet != null) 'fleet': fleet!.toJson(),
       };
 }
 
 /// Encapsulates the Target state.
 class TargetState {
   /// Details about Agones fleets.
-  core.List<TargetDetails> details;
+  core.List<TargetDetails>? details;
 
   TargetState();
 
@@ -4629,9 +4506,9 @@ class TargetState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (details != null)
-          'details': details.map((value) => value.toJson()).toList(),
+          'details': details!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4642,7 +4519,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -4654,8 +4531,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -4663,7 +4540,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -4675,7 +4552,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }

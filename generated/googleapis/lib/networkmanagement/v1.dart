@@ -96,11 +96,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -140,14 +137,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -225,14 +219,10 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   async.Future<Operation> create(
     ConnectivityTest request,
     core.String parent, {
-    core.String testId,
-    core.String $fields,
+    core.String? testId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (testId != null) 'testId': [testId],
       if ($fields != null) 'fields': [$fields],
@@ -272,11 +262,8 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -312,11 +299,8 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// this method will complete with the same error.
   async.Future<ConnectivityTest> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -365,12 +349,9 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -427,15 +408,12 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// this method will complete with the same error.
   async.Future<ListConnectivityTestsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -495,14 +473,10 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   async.Future<Operation> patch(
     ConnectivityTest request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -552,13 +526,9 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   async.Future<Operation> rerun(
     RerunConnectivityTestRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -603,13 +573,9 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -657,13 +623,9 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -721,13 +683,9 @@ class ProjectsLocationsGlobalOperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -768,11 +726,8 @@ class ProjectsLocationsGlobalOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -810,11 +765,8 @@ class ProjectsLocationsGlobalOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -863,14 +815,11 @@ class ProjectsLocationsGlobalOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -920,10 +869,10 @@ class AbortInfo {
   /// - "TRACE_TOO_LONG" : Aborted because the number of steps in the trace
   /// exceeding a certain limit which may be caused by routing loop.
   /// - "INTERNAL_ERROR" : Aborted due to internal server error.
-  core.String cause;
+  core.String? cause;
 
   /// URI of the resource that caused the abort.
-  core.String resourceUri;
+  core.String? resourceUri;
 
   AbortInfo();
 
@@ -936,9 +885,9 @@ class AbortInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cause != null) 'cause': cause,
-        if (resourceUri != null) 'resourceUri': resourceUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cause != null) 'cause': cause!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
       };
 }
 
@@ -961,13 +910,13 @@ class AbortInfo {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -983,11 +932,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -1002,7 +951,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -1010,7 +959,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -1025,15 +974,15 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
 /// Associates `members` with a `role`.
 class Binding {
-  core.String bindingId;
+  core.String? bindingId;
 
   /// The condition that is associated with this binding.
   ///
@@ -1043,7 +992,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -1075,12 +1024,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -1102,11 +1051,11 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bindingId != null) 'bindingId': bindingId,
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bindingId != null) 'bindingId': bindingId!,
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1118,7 +1067,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A Connectivity Test for a network reachability analysis.
@@ -1126,12 +1075,12 @@ class ConnectivityTest {
   /// The time the test was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The user-supplied description of the Connectivity Test.
   ///
   /// Maximum of 512 characters.
-  core.String description;
+  core.String? description;
 
   /// Destination specification of the Connectivity Test.
   ///
@@ -1147,26 +1096,26 @@ class ConnectivityTest {
   /// don't intend to test.
   ///
   /// Required.
-  Endpoint destination;
+  Endpoint? destination;
 
   /// The display name of a Connectivity Test.
   ///
   /// Output only.
-  core.String displayName;
+  core.String? displayName;
 
   /// Resource labels to represent user-provided metadata.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Unique name of the resource using the form:
   /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// IP Protocol of the test.
   ///
   /// When not provided, "TCP" is assumed.
-  core.String protocol;
+  core.String? protocol;
 
   /// The reachability details of this test from the latest run.
   ///
@@ -1174,12 +1123,12 @@ class ConnectivityTest {
   /// test, or triggering a one-time rerun of an existing test.
   ///
   /// Output only.
-  ReachabilityDetails reachabilityDetails;
+  ReachabilityDetails? reachabilityDetails;
 
   /// Other projects that may be relevant for reachability analysis.
   ///
   /// This is applicable to scenarios where a test can cross project boundaries.
-  core.List<core.String> relatedProjects;
+  core.List<core.String>? relatedProjects;
 
   /// Source specification of the Connectivity Test.
   ///
@@ -1198,12 +1147,12 @@ class ConnectivityTest {
   /// endpoints that you don't intend to test.
   ///
   /// Required.
-  Endpoint source;
+  Endpoint? source;
 
   /// The time the test's configuration was updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   ConnectivityTest();
 
@@ -1254,26 +1203,26 @@ class ConnectivityTest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (destination != null) 'destination': destination.toJson(),
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (protocol != null) 'protocol': protocol,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (destination != null) 'destination': destination!.toJson(),
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (protocol != null) 'protocol': protocol!,
         if (reachabilityDetails != null)
-          'reachabilityDetails': reachabilityDetails.toJson(),
-        if (relatedProjects != null) 'relatedProjects': relatedProjects,
-        if (source != null) 'source': source.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
+          'reachabilityDetails': reachabilityDetails!.toJson(),
+        if (relatedProjects != null) 'relatedProjects': relatedProjects!,
+        if (source != null) 'source': source!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// Details of the final state "deliver" and associated resource.
 class DeliverInfo {
   /// URI of the resource that the packet is delivered to.
-  core.String resourceUri;
+  core.String? resourceUri;
 
   /// Target type where the packet is delivered to.
   /// Possible string values are:
@@ -1281,7 +1230,7 @@ class DeliverInfo {
   /// - "INSTANCE" : Target is a Compute Engine instance.
   /// - "INTERNET" : Target is the Internet.
   /// - "GOOGLE_API" : Target is a Google API.
-  core.String target;
+  core.String? target;
 
   DeliverInfo();
 
@@ -1294,9 +1243,9 @@ class DeliverInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceUri != null) 'resourceUri': resourceUri,
-        if (target != null) 'target': target,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (target != null) 'target': target!,
       };
 }
 
@@ -1348,10 +1297,10 @@ class DropInfo {
   /// not authorized. See \[Access to the cluster
   /// endpoints\](/kubernetes-engine/docs/how-to/
   /// private-clusters#access_to_the_cluster_endpoints) for more details.
-  core.String cause;
+  core.String? cause;
 
   /// URI of the resource that caused the drop.
-  core.String resourceUri;
+  core.String? resourceUri;
 
   DropInfo();
 
@@ -1364,9 +1313,9 @@ class DropInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cause != null) 'cause': cause,
-        if (resourceUri != null) 'resourceUri': resourceUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cause != null) 'cause': cause!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
       };
 }
 
@@ -1384,22 +1333,22 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Source or destination of the Connectivity Test.
 class Endpoint {
   /// A Compute Engine instance URI.
-  core.String instance;
+  core.String? instance;
 
   /// The IP address of the endpoint, which can be an external or internal IP.
   ///
   /// An IPv6 address is only allowed when the test's destination is a \[global
   /// load balancer VIP\](/load-balancing/docs/load-balancing-overview).
-  core.String ipAddress;
+  core.String? ipAddress;
 
   /// A Compute Engine network URI.
-  core.String network;
+  core.String? network;
 
   /// Type of the network where the endpoint is located.
   ///
@@ -1413,12 +1362,12 @@ class Endpoint {
   /// - "NON_GCP_NETWORK" : A network hosted outside of Google Cloud Platform.
   /// This can be an on-premises network, or a network hosted by another cloud
   /// provider.
-  core.String networkType;
+  core.String? networkType;
 
   /// The IP protocol port of the endpoint.
   ///
   /// Only applicable when protocol is TCP or UDP.
-  core.int port;
+  core.int? port;
 
   /// Project ID where the endpoint is located.
   ///
@@ -1428,7 +1377,7 @@ class Endpoint {
   /// within a GCP project. 2. When you are using Shared VPC and the IP address
   /// that you provide is from the service project. In this case, the network
   /// that the IP address resides in is defined in the host project.
-  core.String projectId;
+  core.String? projectId;
 
   Endpoint();
 
@@ -1453,13 +1402,13 @@ class Endpoint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (instance != null) 'instance': instance,
-        if (ipAddress != null) 'ipAddress': ipAddress,
-        if (network != null) 'network': network,
-        if (networkType != null) 'networkType': networkType,
-        if (port != null) 'port': port,
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (instance != null) 'instance': instance!,
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (network != null) 'network': network!,
+        if (networkType != null) 'networkType': networkType!,
+        if (port != null) 'port': port!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
@@ -1470,29 +1419,29 @@ class Endpoint {
 /// model.
 class EndpointInfo {
   /// Destination IP address.
-  core.String destinationIp;
+  core.String? destinationIp;
 
   /// URI of the network where this packet is sent to.
-  core.String destinationNetworkUri;
+  core.String? destinationNetworkUri;
 
   /// Destination port.
   ///
   /// Only valid when protocol is TCP or UDP.
-  core.int destinationPort;
+  core.int? destinationPort;
 
   /// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
-  core.String protocol;
+  core.String? protocol;
 
   /// Source IP address.
-  core.String sourceIp;
+  core.String? sourceIp;
 
   /// URI of the network where this packet originates from.
-  core.String sourceNetworkUri;
+  core.String? sourceNetworkUri;
 
   /// Source port.
   ///
   /// Only valid when protocol is TCP or UDP.
-  core.int sourcePort;
+  core.int? sourcePort;
 
   EndpointInfo();
 
@@ -1520,15 +1469,15 @@ class EndpointInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destinationIp != null) 'destinationIp': destinationIp,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destinationIp != null) 'destinationIp': destinationIp!,
         if (destinationNetworkUri != null)
-          'destinationNetworkUri': destinationNetworkUri,
-        if (destinationPort != null) 'destinationPort': destinationPort,
-        if (protocol != null) 'protocol': protocol,
-        if (sourceIp != null) 'sourceIp': sourceIp,
-        if (sourceNetworkUri != null) 'sourceNetworkUri': sourceNetworkUri,
-        if (sourcePort != null) 'sourcePort': sourcePort,
+          'destinationNetworkUri': destinationNetworkUri!,
+        if (destinationPort != null) 'destinationPort': destinationPort!,
+        if (protocol != null) 'protocol': protocol!,
+        if (sourceIp != null) 'sourceIp': sourceIp!,
+        if (sourceNetworkUri != null) 'sourceNetworkUri': sourceNetworkUri!,
+        if (sourcePort != null) 'sourcePort': sourcePort!,
       };
 }
 
@@ -1557,24 +1506,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -1593,11 +1542,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1606,30 +1555,30 @@ class Expr {
 /// Metadata associated with a Compute Engine firewall rule.
 class FirewallInfo {
   /// Possible values: ALLOW, DENY
-  core.String action;
+  core.String? action;
 
   /// Possible values: INGRESS, EGRESS
-  core.String direction;
+  core.String? direction;
 
   /// Name of a Compute Engine firewall rule.
-  core.String displayName;
+  core.String? displayName;
 
   /// URI of a Compute Engine network.
-  core.String networkUri;
+  core.String? networkUri;
 
   /// Priority of the firewall rule.
-  core.int priority;
+  core.int? priority;
 
   /// Target service accounts of the firewall rule.
-  core.List<core.String> targetServiceAccounts;
+  core.List<core.String>? targetServiceAccounts;
 
   /// Target tags of the firewall rule.
-  core.List<core.String> targetTags;
+  core.List<core.String>? targetTags;
 
   /// URI of a Compute Engine firewall rule.
   ///
   /// Implied default rule does not have URI.
-  core.String uri;
+  core.String? uri;
 
   FirewallInfo();
 
@@ -1664,23 +1613,23 @@ class FirewallInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action,
-        if (direction != null) 'direction': direction,
-        if (displayName != null) 'displayName': displayName,
-        if (networkUri != null) 'networkUri': networkUri,
-        if (priority != null) 'priority': priority,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!,
+        if (direction != null) 'direction': direction!,
+        if (displayName != null) 'displayName': displayName!,
+        if (networkUri != null) 'networkUri': networkUri!,
+        if (priority != null) 'priority': priority!,
         if (targetServiceAccounts != null)
-          'targetServiceAccounts': targetServiceAccounts,
-        if (targetTags != null) 'targetTags': targetTags,
-        if (uri != null) 'uri': uri,
+          'targetServiceAccounts': targetServiceAccounts!,
+        if (targetTags != null) 'targetTags': targetTags!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
 /// Details of the final state "forward" and associated resource.
 class ForwardInfo {
   /// URI of the resource that the packet is forwarded to.
-  core.String resourceUri;
+  core.String? resourceUri;
 
   /// Target type where this packet is forwarded to.
   /// Possible string values are:
@@ -1692,7 +1641,7 @@ class ForwardInfo {
   /// master.
   /// - "IMPORTED_CUSTOM_ROUTE_NEXT_HOP" : Forwarded to the next hop of a custom
   /// route imported from a peering VPC.
-  core.String target;
+  core.String? target;
 
   ForwardInfo();
 
@@ -1705,9 +1654,9 @@ class ForwardInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceUri != null) 'resourceUri': resourceUri,
-        if (target != null) 'target': target,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (target != null) 'target': target!,
       };
 }
 
@@ -1716,27 +1665,27 @@ class ForwardInfo {
 /// Metadata associated with a Compute Engine forwarding rule.
 class ForwardingRuleInfo {
   /// Name of a Compute Engine forwarding rule.
-  core.String displayName;
+  core.String? displayName;
 
   /// Port range defined in the forwarding rule that matches the test.
-  core.String matchedPortRange;
+  core.String? matchedPortRange;
 
   /// Protocol defined in the forwarding rule that matches the test.
-  core.String matchedProtocol;
+  core.String? matchedProtocol;
 
   /// Network URI.
   ///
   /// Only valid for Internal Load Balancer.
-  core.String networkUri;
+  core.String? networkUri;
 
   /// Target type of the forwarding rule.
-  core.String target;
+  core.String? target;
 
   /// URI of a Compute Engine forwarding rule.
-  core.String uri;
+  core.String? uri;
 
   /// VIP of the forwarding rule.
-  core.String vip;
+  core.String? vip;
 
   ForwardingRuleInfo();
 
@@ -1764,14 +1713,14 @@ class ForwardingRuleInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (matchedPortRange != null) 'matchedPortRange': matchedPortRange,
-        if (matchedProtocol != null) 'matchedProtocol': matchedProtocol,
-        if (networkUri != null) 'networkUri': networkUri,
-        if (target != null) 'target': target,
-        if (uri != null) 'uri': uri,
-        if (vip != null) 'vip': vip,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (matchedPortRange != null) 'matchedPortRange': matchedPortRange!,
+        if (matchedProtocol != null) 'matchedProtocol': matchedProtocol!,
+        if (networkUri != null) 'networkUri': networkUri!,
+        if (target != null) 'target': target!,
+        if (uri != null) 'uri': uri!,
+        if (vip != null) 'vip': vip!,
       };
 }
 
@@ -1780,28 +1729,28 @@ class ForwardingRuleInfo {
 /// Metadata associated with a Compute Engine instance.
 class InstanceInfo {
   /// Name of a Compute Engine instance.
-  core.String displayName;
+  core.String? displayName;
 
   /// External IP address of the network interface.
-  core.String externalIp;
+  core.String? externalIp;
 
   /// Name of the network interface of a Compute Engine instance.
-  core.String interface;
+  core.String? interface;
 
   /// Internal IP address of the network interface.
-  core.String internalIp;
+  core.String? internalIp;
 
   /// Network tags configured on the instance.
-  core.List<core.String> networkTags;
+  core.List<core.String>? networkTags;
 
   /// URI of a Compute Engine network.
-  core.String networkUri;
+  core.String? networkUri;
 
   /// Service account authorized for the instance.
-  core.String serviceAccount;
+  core.String? serviceAccount;
 
   /// URI of a Compute Engine instance.
-  core.String uri;
+  core.String? uri;
 
   InstanceInfo();
 
@@ -1834,29 +1783,29 @@ class InstanceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (externalIp != null) 'externalIp': externalIp,
-        if (interface != null) 'interface': interface,
-        if (internalIp != null) 'internalIp': internalIp,
-        if (networkTags != null) 'networkTags': networkTags,
-        if (networkUri != null) 'networkUri': networkUri,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount,
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (externalIp != null) 'externalIp': externalIp!,
+        if (interface != null) 'interface': interface!,
+        if (internalIp != null) 'internalIp': internalIp!,
+        if (networkTags != null) 'networkTags': networkTags!,
+        if (networkUri != null) 'networkUri': networkUri!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
 /// Response for the `ListConnectivityTests` method.
 class ListConnectivityTestsResponse {
   /// Page token to fetch the next set of Connectivity Tests.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of Connectivity Tests.
-  core.List<ConnectivityTest> resources;
+  core.List<ConnectivityTest>? resources;
 
   /// Locations that could not be reached (when querying all locations with
   /// `-`).
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListConnectivityTestsResponse();
 
@@ -1877,21 +1826,21 @@ class ListConnectivityTestsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
-        if (unreachable != null) 'unreachable': unreachable,
+          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -1907,20 +1856,20 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -1936,10 +1885,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1948,13 +1897,13 @@ class ListOperationsResponse {
 /// Metadata associated with a specific load balancer backend.
 class LoadBalancerBackend {
   /// Name of a Compute Engine instance or network endpoint.
-  core.String displayName;
+  core.String? displayName;
 
   /// A list of firewall rule URIs allowing probes from health check IP ranges.
-  core.List<core.String> healthCheckAllowingFirewallRules;
+  core.List<core.String>? healthCheckAllowingFirewallRules;
 
   /// A list of firewall rule URIs blocking probes from health check IP ranges.
-  core.List<core.String> healthCheckBlockingFirewallRules;
+  core.List<core.String>? healthCheckBlockingFirewallRules;
 
   /// State of the health check firewall configuration.
   /// Possible string values are:
@@ -1967,10 +1916,10 @@ class LoadBalancerBackend {
   /// probe is sent from denied IP ranges, the health check to the backend will
   /// fail. Then, the backend will be marked unhealthy and will not receive
   /// traffic sent to the load balancer.
-  core.String healthCheckFirewallState;
+  core.String? healthCheckFirewallState;
 
   /// URI of a Compute Engine instance or network endpoint.
-  core.String uri;
+  core.String? uri;
 
   LoadBalancerBackend();
 
@@ -1999,15 +1948,15 @@ class LoadBalancerBackend {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
         if (healthCheckAllowingFirewallRules != null)
-          'healthCheckAllowingFirewallRules': healthCheckAllowingFirewallRules,
+          'healthCheckAllowingFirewallRules': healthCheckAllowingFirewallRules!,
         if (healthCheckBlockingFirewallRules != null)
-          'healthCheckBlockingFirewallRules': healthCheckBlockingFirewallRules,
+          'healthCheckBlockingFirewallRules': healthCheckBlockingFirewallRules!,
         if (healthCheckFirewallState != null)
-          'healthCheckFirewallState': healthCheckFirewallState,
-        if (uri != null) 'uri': uri,
+          'healthCheckFirewallState': healthCheckFirewallState!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -2020,16 +1969,16 @@ class LoadBalancerInfo {
   /// - "BACKEND_TYPE_UNSPECIFIED" : Type is unspecified.
   /// - "BACKEND_SERVICE" : Backend Service as the load balancer's backend.
   /// - "TARGET_POOL" : Target Pool as the load balancer's backend.
-  core.String backendType;
+  core.String? backendType;
 
   /// Backend configuration URI.
-  core.String backendUri;
+  core.String? backendUri;
 
   /// Information for the loadbalancer backends.
-  core.List<LoadBalancerBackend> backends;
+  core.List<LoadBalancerBackend>? backends;
 
   /// URI of the health check for the load balancer.
-  core.String healthCheckUri;
+  core.String? healthCheckUri;
 
   /// Type of the load balancer.
   /// Possible string values are:
@@ -2039,7 +1988,7 @@ class LoadBalancerInfo {
   /// - "HTTP_PROXY" : HTTP(S) proxy load balancer.
   /// - "TCP_PROXY" : TCP proxy load balancer.
   /// - "SSL_PROXY" : SSL proxy load balancer.
-  core.String loadBalancerType;
+  core.String? loadBalancerType;
 
   LoadBalancerInfo();
 
@@ -2064,13 +2013,13 @@ class LoadBalancerInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (backendType != null) 'backendType': backendType,
-        if (backendUri != null) 'backendUri': backendUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (backendType != null) 'backendType': backendType!,
+        if (backendUri != null) 'backendUri': backendUri!,
         if (backends != null)
-          'backends': backends.map((value) => value.toJson()).toList(),
-        if (healthCheckUri != null) 'healthCheckUri': healthCheckUri,
-        if (loadBalancerType != null) 'loadBalancerType': loadBalancerType,
+          'backends': backends!.map((value) => value.toJson()).toList(),
+        if (healthCheckUri != null) 'healthCheckUri': healthCheckUri!,
+        if (loadBalancerType != null) 'loadBalancerType': loadBalancerType!,
       };
 }
 
@@ -2079,17 +2028,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -2097,12 +2046,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -2136,12 +2085,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2150,13 +2099,13 @@ class Location {
 /// Metadata associated with a Compute Engine network.
 class NetworkInfo {
   /// Name of a Compute Engine network.
-  core.String displayName;
+  core.String? displayName;
 
   /// The IP range that matches the test.
-  core.String matchedIpRange;
+  core.String? matchedIpRange;
 
   /// URI of a Compute Engine network.
-  core.String uri;
+  core.String? uri;
 
   NetworkInfo();
 
@@ -2172,10 +2121,10 @@ class NetworkInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (matchedIpRange != null) 'matchedIpRange': matchedIpRange,
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (matchedIpRange != null) 'matchedIpRange': matchedIpRange!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -2186,10 +2135,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -2200,14 +2149,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -2220,7 +2169,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -2255,38 +2204,38 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
 /// Metadata describing an Operation
 class OperationMetadata {
   /// API version.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// Specifies if cancellation was requested for the operation.
-  core.bool cancelRequested;
+  core.bool? cancelRequested;
 
   /// The time the operation was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time the operation finished running.
-  core.String endTime;
+  core.String? endTime;
 
   /// Human-readable status of the operation, if any.
-  core.String statusDetail;
+  core.String? statusDetail;
 
   /// Target of the operation - for example
   /// projects/project-1/locations/global/connectivityTests/test-1
-  core.String target;
+  core.String? target;
 
   /// Name of the verb executed by the operation.
-  core.String verb;
+  core.String? verb;
 
   OperationMetadata();
 
@@ -2314,14 +2263,14 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (cancelRequested != null) 'cancelRequested': cancelRequested,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
-        if (statusDetail != null) 'statusDetail': statusDetail,
-        if (target != null) 'target': target,
-        if (verb != null) 'verb': verb,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (cancelRequested != null) 'cancelRequested': cancelRequested!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (statusDetail != null) 'statusDetail': statusDetail!,
+        if (target != null) 'target': target!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
@@ -2358,14 +2307,14 @@ class OperationMetadata {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -2379,8 +2328,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -2404,7 +2353,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -2429,20 +2378,20 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
 /// The details of reachability state from the latest run.
 class ReachabilityDetails {
   /// The details of a failure or a cancellation of reachability analysis.
-  Status error;
+  Status? error;
 
   /// The overall reachability result of the test.
   /// Possible string values are:
@@ -2462,15 +2411,15 @@ class ReachabilityDetails {
   /// configurations where the user has permission. The Final state indicates
   /// that the packet is forwarded to another network where the user has no
   /// permission to access the configurations.
-  core.String result;
+  core.String? result;
 
   /// Result may contain a list of traces if a test has multiple possible paths
   /// in the network, such as when destination endpoint is a load balancer with
   /// multiple backends.
-  core.List<Trace> traces;
+  core.List<Trace>? traces;
 
   /// The time the reachability state was verified.
-  core.String verifyTime;
+  core.String? verifyTime;
 
   ReachabilityDetails();
 
@@ -2493,12 +2442,12 @@ class ReachabilityDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (error != null) 'error': error.toJson(),
-        if (result != null) 'result': result,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (error != null) 'error': error!.toJson(),
+        if (result != null) 'result': result!,
         if (traces != null)
-          'traces': traces.map((value) => value.toJson()).toList(),
-        if (verifyTime != null) 'verifyTime': verifyTime,
+          'traces': traces!.map((value) => value.toJson()).toList(),
+        if (verifyTime != null) 'verifyTime': verifyTime!,
       };
 }
 
@@ -2510,7 +2459,7 @@ class RerunConnectivityTestRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// For display only.
@@ -2518,19 +2467,19 @@ class RerunConnectivityTestRequest {
 /// Metadata associated with a Compute Engine route.
 class RouteInfo {
   /// Destination IP range of the route.
-  core.String destIpRange;
+  core.String? destIpRange;
 
   /// Name of a Compute Engine route.
-  core.String displayName;
+  core.String? displayName;
 
   /// Instance tags of the route.
-  core.List<core.String> instanceTags;
+  core.List<core.String>? instanceTags;
 
   /// URI of a Compute Engine network.
-  core.String networkUri;
+  core.String? networkUri;
 
   /// Next hop of the route.
-  core.String nextHop;
+  core.String? nextHop;
 
   /// Type of next hop.
   /// Possible string values are:
@@ -2551,10 +2500,10 @@ class RouteInfo {
   /// either does not exist or is not running.
   /// - "NEXT_HOP_ILB" : Next hop is the forwarding rule of an Internal Load
   /// Balancer.
-  core.String nextHopType;
+  core.String? nextHopType;
 
   /// Priority of the route.
-  core.int priority;
+  core.int? priority;
 
   /// Type of route.
   /// Possible string values are:
@@ -2566,13 +2515,13 @@ class RouteInfo {
   /// - "PEERING_SUBNET" : A subnet route received from peering network.
   /// - "PEERING_STATIC" : A static route received from peering network.
   /// - "PEERING_DYNAMIC" : A dynamic route received from peering network.
-  core.String routeType;
+  core.String? routeType;
 
   /// URI of a Compute Engine route.
   ///
   /// Dynamic route from cloud router does not have a URI. Advertised route from
   /// Google Cloud VPC to on-premises network also does not have a URI.
-  core.String uri;
+  core.String? uri;
 
   RouteInfo();
 
@@ -2608,16 +2557,16 @@ class RouteInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destIpRange != null) 'destIpRange': destIpRange,
-        if (displayName != null) 'displayName': displayName,
-        if (instanceTags != null) 'instanceTags': instanceTags,
-        if (networkUri != null) 'networkUri': networkUri,
-        if (nextHop != null) 'nextHop': nextHop,
-        if (nextHopType != null) 'nextHopType': nextHopType,
-        if (priority != null) 'priority': priority,
-        if (routeType != null) 'routeType': routeType,
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destIpRange != null) 'destIpRange': destIpRange!,
+        if (displayName != null) 'displayName': displayName!,
+        if (instanceTags != null) 'instanceTags': instanceTags!,
+        if (networkUri != null) 'networkUri': networkUri!,
+        if (nextHop != null) 'nextHop': nextHop!,
+        if (nextHopType != null) 'nextHopType': nextHopType!,
+        if (priority != null) 'priority': priority!,
+        if (routeType != null) 'routeType': routeType!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -2628,13 +2577,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -2648,9 +2597,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -2663,7 +2612,7 @@ class SetIamPolicyRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -2671,13 +2620,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -2701,10 +2650,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -2713,51 +2662,51 @@ class Status {
 /// Each step has a well-defined state and an associated configuration.
 class Step {
   /// Display info of the final state "abort" and reason.
-  AbortInfo abort;
+  AbortInfo? abort;
 
   /// This is a step that leads to the final state Drop.
-  core.bool causesDrop;
+  core.bool? causesDrop;
 
   /// Display info of the final state "deliver" and reason.
-  DeliverInfo deliver;
+  DeliverInfo? deliver;
 
   /// A description of the step.
   ///
   /// Usually this is a summary of the state.
-  core.String description;
+  core.String? description;
 
   /// Display info of the final state "drop" and reason.
-  DropInfo drop;
+  DropInfo? drop;
 
   /// Display info of the source and destination under analysis.
   ///
   /// The endpiont info in an intermediate state may differ with the initial
   /// input, as it might be modified by state like NAT, or Connection Proxy.
-  EndpointInfo endpoint;
+  EndpointInfo? endpoint;
 
   /// Display info of a Compute Engine firewall rule.
-  FirewallInfo firewall;
+  FirewallInfo? firewall;
 
   /// Display info of the final state "forward" and reason.
-  ForwardInfo forward;
+  ForwardInfo? forward;
 
   /// Display info of a Compute Engine forwarding rule.
-  ForwardingRuleInfo forwardingRule;
+  ForwardingRuleInfo? forwardingRule;
 
   /// Display info of a Compute Engine instance.
-  InstanceInfo instance;
+  InstanceInfo? instance;
 
   /// Display info of the load balancers.
-  LoadBalancerInfo loadBalancer;
+  LoadBalancerInfo? loadBalancer;
 
   /// Display info of a GCP network.
-  NetworkInfo network;
+  NetworkInfo? network;
 
   /// Project ID that contains the configuration this step is validating.
-  core.String projectId;
+  core.String? projectId;
 
   /// Display info of a Compute Engine route.
-  RouteInfo route;
+  RouteInfo? route;
 
   /// Each step is in one of the pre-defined states.
   /// Possible string values are:
@@ -2799,13 +2748,13 @@ class Step {
   /// - "ABORT" : Final state: analysis is aborted.
   /// - "VIEWER_PERMISSION_MISSING" : Special state: viewer of the test result
   /// does not have permission to see the configuration in this step.
-  core.String state;
+  core.String? state;
 
   /// Display info of a Compute Engine VPN gateway.
-  VpnGatewayInfo vpnGateway;
+  VpnGatewayInfo? vpnGateway;
 
   /// Display info of a Compute Engine VPN tunnel.
-  VpnTunnelInfo vpnTunnel;
+  VpnTunnelInfo? vpnTunnel;
 
   Step();
 
@@ -2876,24 +2825,24 @@ class Step {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (abort != null) 'abort': abort.toJson(),
-        if (causesDrop != null) 'causesDrop': causesDrop,
-        if (deliver != null) 'deliver': deliver.toJson(),
-        if (description != null) 'description': description,
-        if (drop != null) 'drop': drop.toJson(),
-        if (endpoint != null) 'endpoint': endpoint.toJson(),
-        if (firewall != null) 'firewall': firewall.toJson(),
-        if (forward != null) 'forward': forward.toJson(),
-        if (forwardingRule != null) 'forwardingRule': forwardingRule.toJson(),
-        if (instance != null) 'instance': instance.toJson(),
-        if (loadBalancer != null) 'loadBalancer': loadBalancer.toJson(),
-        if (network != null) 'network': network.toJson(),
-        if (projectId != null) 'projectId': projectId,
-        if (route != null) 'route': route.toJson(),
-        if (state != null) 'state': state,
-        if (vpnGateway != null) 'vpnGateway': vpnGateway.toJson(),
-        if (vpnTunnel != null) 'vpnTunnel': vpnTunnel.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (abort != null) 'abort': abort!.toJson(),
+        if (causesDrop != null) 'causesDrop': causesDrop!,
+        if (deliver != null) 'deliver': deliver!.toJson(),
+        if (description != null) 'description': description!,
+        if (drop != null) 'drop': drop!.toJson(),
+        if (endpoint != null) 'endpoint': endpoint!.toJson(),
+        if (firewall != null) 'firewall': firewall!.toJson(),
+        if (forward != null) 'forward': forward!.toJson(),
+        if (forwardingRule != null) 'forwardingRule': forwardingRule!.toJson(),
+        if (instance != null) 'instance': instance!.toJson(),
+        if (loadBalancer != null) 'loadBalancer': loadBalancer!.toJson(),
+        if (network != null) 'network': network!.toJson(),
+        if (projectId != null) 'projectId': projectId!,
+        if (route != null) 'route': route!.toJson(),
+        if (state != null) 'state': state!,
+        if (vpnGateway != null) 'vpnGateway': vpnGateway!.toJson(),
+        if (vpnTunnel != null) 'vpnTunnel': vpnTunnel!.toJson(),
       };
 }
 
@@ -2904,7 +2853,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -2916,8 +2865,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -2925,7 +2874,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -2937,8 +2886,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -2956,7 +2905,7 @@ class Trace {
   ///
   /// If there are multiple traces starting from different source locations,
   /// then the endpoint_info may be different between traces.
-  EndpointInfo endpointInfo;
+  EndpointInfo? endpointInfo;
 
   /// A trace of a test contains multiple steps from the initial state to the
   /// final state (delivered, dropped, forwarded, or aborted).
@@ -2964,7 +2913,7 @@ class Trace {
   /// The steps are ordered by the processing sequence within the simulated
   /// network state machine. It is critical to preserve the order of the steps
   /// and avoid reordering or sorting them.
-  core.List<Step> steps;
+  core.List<Step>? steps;
 
   Trace();
 
@@ -2981,10 +2930,10 @@ class Trace {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endpointInfo != null) 'endpointInfo': endpointInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endpointInfo != null) 'endpointInfo': endpointInfo!.toJson(),
         if (steps != null)
-          'steps': steps.map((value) => value.toJson()).toList(),
+          'steps': steps!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2993,25 +2942,25 @@ class Trace {
 /// Metadata associated with a Compute Engine VPN gateway.
 class VpnGatewayInfo {
   /// Name of a VPN gateway.
-  core.String displayName;
+  core.String? displayName;
 
   /// IP address of the VPN gateway.
-  core.String ipAddress;
+  core.String? ipAddress;
 
   /// URI of a Compute Engine network where the VPN gateway is configured.
-  core.String networkUri;
+  core.String? networkUri;
 
   /// Name of a GCP region where this VPN gateway is configured.
-  core.String region;
+  core.String? region;
 
   /// URI of a VPN gateway.
-  core.String uri;
+  core.String? uri;
 
   /// A VPN tunnel that is associated with this VPN gateway.
   ///
   /// There may be multiple VPN tunnels configured on a VPN gateway, and only
   /// the one relevant to the test is displayed.
-  core.String vpnTunnelUri;
+  core.String? vpnTunnelUri;
 
   VpnGatewayInfo();
 
@@ -3036,13 +2985,13 @@ class VpnGatewayInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (ipAddress != null) 'ipAddress': ipAddress,
-        if (networkUri != null) 'networkUri': networkUri,
-        if (region != null) 'region': region,
-        if (uri != null) 'uri': uri,
-        if (vpnTunnelUri != null) 'vpnTunnelUri': vpnTunnelUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (networkUri != null) 'networkUri': networkUri!,
+        if (region != null) 'region': region!,
+        if (uri != null) 'uri': uri!,
+        if (vpnTunnelUri != null) 'vpnTunnelUri': vpnTunnelUri!,
       };
 }
 
@@ -3051,19 +3000,19 @@ class VpnGatewayInfo {
 /// Metadata associated with a Compute Engine VPN tunnel.
 class VpnTunnelInfo {
   /// Name of a VPN tunnel.
-  core.String displayName;
+  core.String? displayName;
 
   /// URI of a Compute Engine network where the VPN tunnel is configured.
-  core.String networkUri;
+  core.String? networkUri;
 
   /// Name of a GCP region where this VPN tunnel is configured.
-  core.String region;
+  core.String? region;
 
   /// URI of a VPN gateway at remote end of the tunnel.
-  core.String remoteGateway;
+  core.String? remoteGateway;
 
   /// Remote VPN gateway's IP address.
-  core.String remoteGatewayIp;
+  core.String? remoteGatewayIp;
 
   /// Type of the routing policy.
   /// Possible string values are:
@@ -3071,16 +3020,16 @@ class VpnTunnelInfo {
   /// - "ROUTE_BASED" : Route based VPN.
   /// - "POLICY_BASED" : Policy based routing.
   /// - "DYNAMIC" : Dynamic (BGP) routing.
-  core.String routingType;
+  core.String? routingType;
 
   /// URI of the VPN gateway at local end of the tunnel.
-  core.String sourceGateway;
+  core.String? sourceGateway;
 
   /// Local VPN gateway's IP address.
-  core.String sourceGatewayIp;
+  core.String? sourceGatewayIp;
 
   /// URI of a VPN tunnel.
-  core.String uri;
+  core.String? uri;
 
   VpnTunnelInfo();
 
@@ -3114,15 +3063,15 @@ class VpnTunnelInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (networkUri != null) 'networkUri': networkUri,
-        if (region != null) 'region': region,
-        if (remoteGateway != null) 'remoteGateway': remoteGateway,
-        if (remoteGatewayIp != null) 'remoteGatewayIp': remoteGatewayIp,
-        if (routingType != null) 'routingType': routingType,
-        if (sourceGateway != null) 'sourceGateway': sourceGateway,
-        if (sourceGatewayIp != null) 'sourceGatewayIp': sourceGatewayIp,
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (networkUri != null) 'networkUri': networkUri!,
+        if (region != null) 'region': region!,
+        if (remoteGateway != null) 'remoteGateway': remoteGateway!,
+        if (remoteGatewayIp != null) 'remoteGatewayIp': remoteGatewayIp!,
+        if (routingType != null) 'routingType': routingType!,
+        if (sourceGateway != null) 'sourceGateway': sourceGateway!,
+        if (sourceGatewayIp != null) 'sourceGatewayIp': sourceGatewayIp!,
+        if (uri != null) 'uri': uri!,
       };
 }

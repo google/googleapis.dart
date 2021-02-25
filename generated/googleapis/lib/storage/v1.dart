@@ -132,16 +132,10 @@ class BucketAccessControlsResource {
   async.Future<void> delete(
     core.String bucket,
     core.String entity, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (entity == null) {
-      throw core.ArgumentError('Parameter entity is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -191,16 +185,10 @@ class BucketAccessControlsResource {
   async.Future<BucketAccessControl> get(
     core.String bucket,
     core.String entity, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (entity == null) {
-      throw core.ArgumentError('Parameter entity is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -249,15 +237,11 @@ class BucketAccessControlsResource {
   async.Future<BucketAccessControl> insert(
     BucketAccessControl request,
     core.String bucket, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -301,13 +285,10 @@ class BucketAccessControlsResource {
   /// this method will complete with the same error.
   async.Future<BucketAccessControls> list(
     core.String bucket, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -358,18 +339,11 @@ class BucketAccessControlsResource {
     BucketAccessControl request,
     core.String bucket,
     core.String entity, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (entity == null) {
-      throw core.ArgumentError('Parameter entity is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -424,18 +398,11 @@ class BucketAccessControlsResource {
     BucketAccessControl request,
     core.String bucket,
     core.String entity, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (entity == null) {
-      throw core.ArgumentError('Parameter entity is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -492,15 +459,12 @@ class BucketsResource {
   /// this method will complete with the same error.
   async.Future<void> delete(
     core.String bucket, {
-    core.String ifMetagenerationMatch,
-    core.String ifMetagenerationNotMatch,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (ifMetagenerationMatch != null)
         'ifMetagenerationMatch': [ifMetagenerationMatch],
@@ -559,16 +523,13 @@ class BucketsResource {
   /// this method will complete with the same error.
   async.Future<Bucket> get(
     core.String bucket, {
-    core.String ifMetagenerationMatch,
-    core.String ifMetagenerationNotMatch,
-    core.String projection,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? projection,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (ifMetagenerationMatch != null)
         'ifMetagenerationMatch': [ifMetagenerationMatch],
@@ -619,14 +580,11 @@ class BucketsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String bucket, {
-    core.int optionsRequestedPolicyVersion,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.int? optionsRequestedPolicyVersion,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (optionsRequestedPolicyVersion != null)
         'optionsRequestedPolicyVersion': ['${optionsRequestedPolicyVersion}'],
@@ -707,18 +665,14 @@ class BucketsResource {
   async.Future<Bucket> insert(
     Bucket request,
     core.String project, {
-    core.String predefinedAcl,
-    core.String predefinedDefaultObjectAcl,
-    core.String projection,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? predefinedAcl,
+    core.String? predefinedDefaultObjectAcl,
+    core.String? projection,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'project': [project],
       if (predefinedAcl != null) 'predefinedAcl': [predefinedAcl],
@@ -778,17 +732,14 @@ class BucketsResource {
   /// this method will complete with the same error.
   async.Future<Buckets> list(
     core.String project, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String prefix,
-    core.String projection,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? prefix,
+    core.String? projection,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'project': [project],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -839,16 +790,10 @@ class BucketsResource {
   async.Future<Bucket> lockRetentionPolicy(
     core.String bucket,
     core.String ifMetagenerationMatch, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (ifMetagenerationMatch == null) {
-      throw core.ArgumentError('Parameter ifMetagenerationMatch is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'ifMetagenerationMatch': [ifMetagenerationMatch],
       if (provisionalUserProject != null)
@@ -940,20 +885,16 @@ class BucketsResource {
   async.Future<Bucket> patch(
     Bucket request,
     core.String bucket, {
-    core.String ifMetagenerationMatch,
-    core.String ifMetagenerationNotMatch,
-    core.String predefinedAcl,
-    core.String predefinedDefaultObjectAcl,
-    core.String projection,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? predefinedAcl,
+    core.String? predefinedDefaultObjectAcl,
+    core.String? projection,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (ifMetagenerationMatch != null)
         'ifMetagenerationMatch': [ifMetagenerationMatch],
@@ -1007,15 +948,11 @@ class BucketsResource {
   async.Future<Policy> setIamPolicy(
     Policy request,
     core.String bucket, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -1062,15 +999,12 @@ class BucketsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     core.String bucket,
     core.List<core.String> permissions, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (permissions == null || permissions.isEmpty) {
-      throw core.ArgumentError('Parameter permissions is required.');
+    if (permissions.isEmpty) {
+      throw core.ArgumentError('Parameter permissions cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'permissions': permissions,
@@ -1164,20 +1098,16 @@ class BucketsResource {
   async.Future<Bucket> update(
     Bucket request,
     core.String bucket, {
-    core.String ifMetagenerationMatch,
-    core.String ifMetagenerationNotMatch,
-    core.String predefinedAcl,
-    core.String predefinedDefaultObjectAcl,
-    core.String projection,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? predefinedAcl,
+    core.String? predefinedDefaultObjectAcl,
+    core.String? projection,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (ifMetagenerationMatch != null)
         'ifMetagenerationMatch': [ifMetagenerationMatch],
@@ -1226,10 +1156,9 @@ class ChannelsResource {
   /// this method will complete with the same error.
   async.Future<void> stop(
     Channel request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1280,16 +1209,10 @@ class DefaultObjectAccessControlsResource {
   async.Future<void> delete(
     core.String bucket,
     core.String entity, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (entity == null) {
-      throw core.ArgumentError('Parameter entity is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -1340,16 +1263,10 @@ class DefaultObjectAccessControlsResource {
   async.Future<ObjectAccessControl> get(
     core.String bucket,
     core.String entity, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (entity == null) {
-      throw core.ArgumentError('Parameter entity is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -1398,15 +1315,11 @@ class DefaultObjectAccessControlsResource {
   async.Future<ObjectAccessControl> insert(
     ObjectAccessControl request,
     core.String bucket, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -1457,15 +1370,12 @@ class DefaultObjectAccessControlsResource {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControls> list(
     core.String bucket, {
-    core.String ifMetagenerationMatch,
-    core.String ifMetagenerationNotMatch,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (ifMetagenerationMatch != null)
         'ifMetagenerationMatch': [ifMetagenerationMatch],
@@ -1521,18 +1431,11 @@ class DefaultObjectAccessControlsResource {
     ObjectAccessControl request,
     core.String bucket,
     core.String entity, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (entity == null) {
-      throw core.ArgumentError('Parameter entity is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -1587,18 +1490,11 @@ class DefaultObjectAccessControlsResource {
     ObjectAccessControl request,
     core.String bucket,
     core.String entity, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (entity == null) {
-      throw core.ArgumentError('Parameter entity is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -1652,16 +1548,10 @@ class NotificationsResource {
   async.Future<void> delete(
     core.String bucket,
     core.String notification, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (notification == null) {
-      throw core.ArgumentError('Parameter notification is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -1709,16 +1599,10 @@ class NotificationsResource {
   async.Future<Notification> get(
     core.String bucket,
     core.String notification, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (notification == null) {
-      throw core.ArgumentError('Parameter notification is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -1767,15 +1651,11 @@ class NotificationsResource {
   async.Future<Notification> insert(
     Notification request,
     core.String bucket, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -1821,13 +1701,10 @@ class NotificationsResource {
   /// this method will complete with the same error.
   async.Future<Notifications> list(
     core.String bucket, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -1890,20 +1767,11 @@ class ObjectAccessControlsResource {
     core.String bucket,
     core.String object,
     core.String entity, {
-    core.String generation,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? generation,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (object == null) {
-      throw core.ArgumentError('Parameter object is required.');
-    }
-    if (entity == null) {
-      throw core.ArgumentError('Parameter entity is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (provisionalUserProject != null)
@@ -1963,20 +1831,11 @@ class ObjectAccessControlsResource {
     core.String bucket,
     core.String object,
     core.String entity, {
-    core.String generation,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? generation,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (object == null) {
-      throw core.ArgumentError('Parameter object is required.');
-    }
-    if (entity == null) {
-      throw core.ArgumentError('Parameter entity is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (provisionalUserProject != null)
@@ -2035,19 +1894,12 @@ class ObjectAccessControlsResource {
     ObjectAccessControl request,
     core.String bucket,
     core.String object, {
-    core.String generation,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? generation,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (object == null) {
-      throw core.ArgumentError('Parameter object is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (provisionalUserProject != null)
@@ -2103,17 +1955,11 @@ class ObjectAccessControlsResource {
   async.Future<ObjectAccessControls> list(
     core.String bucket,
     core.String object, {
-    core.String generation,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? generation,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (object == null) {
-      throw core.ArgumentError('Parameter object is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (provisionalUserProject != null)
@@ -2176,22 +2022,12 @@ class ObjectAccessControlsResource {
     core.String bucket,
     core.String object,
     core.String entity, {
-    core.String generation,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? generation,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (object == null) {
-      throw core.ArgumentError('Parameter object is required.');
-    }
-    if (entity == null) {
-      throw core.ArgumentError('Parameter entity is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (provisionalUserProject != null)
@@ -2256,22 +2092,12 @@ class ObjectAccessControlsResource {
     core.String bucket,
     core.String object,
     core.String entity, {
-    core.String generation,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? generation,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (object == null) {
-      throw core.ArgumentError('Parameter object is required.');
-    }
-    if (entity == null) {
-      throw core.ArgumentError('Parameter entity is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (provisionalUserProject != null)
@@ -2363,22 +2189,15 @@ class ObjectsResource {
     ComposeRequest request,
     core.String destinationBucket,
     core.String destinationObject, {
-    core.String destinationPredefinedAcl,
-    core.String ifGenerationMatch,
-    core.String ifMetagenerationMatch,
-    core.String kmsKeyName,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? destinationPredefinedAcl,
+    core.String? ifGenerationMatch,
+    core.String? ifMetagenerationMatch,
+    core.String? kmsKeyName,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (destinationBucket == null) {
-      throw core.ArgumentError('Parameter destinationBucket is required.');
-    }
-    if (destinationObject == null) {
-      throw core.ArgumentError('Parameter destinationObject is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (destinationPredefinedAcl != null)
         'destinationPredefinedAcl': [destinationPredefinedAcl],
@@ -2510,36 +2329,23 @@ class ObjectsResource {
     core.String sourceObject,
     core.String destinationBucket,
     core.String destinationObject, {
-    core.String destinationKmsKeyName,
-    core.String destinationPredefinedAcl,
-    core.String ifGenerationMatch,
-    core.String ifGenerationNotMatch,
-    core.String ifMetagenerationMatch,
-    core.String ifMetagenerationNotMatch,
-    core.String ifSourceGenerationMatch,
-    core.String ifSourceGenerationNotMatch,
-    core.String ifSourceMetagenerationMatch,
-    core.String ifSourceMetagenerationNotMatch,
-    core.String projection,
-    core.String provisionalUserProject,
-    core.String sourceGeneration,
-    core.String userProject,
-    core.String $fields,
+    core.String? destinationKmsKeyName,
+    core.String? destinationPredefinedAcl,
+    core.String? ifGenerationMatch,
+    core.String? ifGenerationNotMatch,
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? ifSourceGenerationMatch,
+    core.String? ifSourceGenerationNotMatch,
+    core.String? ifSourceMetagenerationMatch,
+    core.String? ifSourceMetagenerationNotMatch,
+    core.String? projection,
+    core.String? provisionalUserProject,
+    core.String? sourceGeneration,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (sourceBucket == null) {
-      throw core.ArgumentError('Parameter sourceBucket is required.');
-    }
-    if (sourceObject == null) {
-      throw core.ArgumentError('Parameter sourceObject is required.');
-    }
-    if (destinationBucket == null) {
-      throw core.ArgumentError('Parameter destinationBucket is required.');
-    }
-    if (destinationObject == null) {
-      throw core.ArgumentError('Parameter destinationObject is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (destinationKmsKeyName != null)
         'destinationKmsKeyName': [destinationKmsKeyName],
@@ -2633,21 +2439,15 @@ class ObjectsResource {
   async.Future<void> delete(
     core.String bucket,
     core.String object, {
-    core.String generation,
-    core.String ifGenerationMatch,
-    core.String ifGenerationNotMatch,
-    core.String ifMetagenerationMatch,
-    core.String ifMetagenerationNotMatch,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? generation,
+    core.String? ifGenerationMatch,
+    core.String? ifGenerationNotMatch,
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (object == null) {
-      throw core.ArgumentError('Parameter object is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
@@ -2735,23 +2535,17 @@ class ObjectsResource {
   async.Future<core.Object> get(
     core.String bucket,
     core.String object, {
-    core.String generation,
-    core.String ifGenerationMatch,
-    core.String ifGenerationNotMatch,
-    core.String ifMetagenerationMatch,
-    core.String ifMetagenerationNotMatch,
-    core.String projection,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? generation,
+    core.String? ifGenerationMatch,
+    core.String? ifGenerationNotMatch,
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? projection,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (object == null) {
-      throw core.ArgumentError('Parameter object is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
@@ -2782,7 +2576,7 @@ class ObjectsResource {
     if (downloadOptions.isMetadataDownload) {
       return Object.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
-      return _response;
+      return _response as commons.Media;
     }
   }
 
@@ -2817,17 +2611,11 @@ class ObjectsResource {
   async.Future<Policy> getIamPolicy(
     core.String bucket,
     core.String object, {
-    core.String generation,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? generation,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (object == null) {
-      throw core.ArgumentError('Parameter object is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (provisionalUserProject != null)
@@ -2936,26 +2724,22 @@ class ObjectsResource {
   async.Future<Object> insert(
     Object request,
     core.String bucket, {
-    core.String contentEncoding,
-    core.String ifGenerationMatch,
-    core.String ifGenerationNotMatch,
-    core.String ifMetagenerationMatch,
-    core.String ifMetagenerationNotMatch,
-    core.String kmsKeyName,
-    core.String name,
-    core.String predefinedAcl,
-    core.String projection,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? contentEncoding,
+    core.String? ifGenerationMatch,
+    core.String? ifGenerationNotMatch,
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? kmsKeyName,
+    core.String? name,
+    core.String? predefinedAcl,
+    core.String? projection,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (contentEncoding != null) 'contentEncoding': [contentEncoding],
       if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
@@ -3060,22 +2844,19 @@ class ObjectsResource {
   /// this method will complete with the same error.
   async.Future<Objects> list(
     core.String bucket, {
-    core.String delimiter,
-    core.String endOffset,
-    core.bool includeTrailingDelimiter,
-    core.int maxResults,
-    core.String pageToken,
-    core.String prefix,
-    core.String projection,
-    core.String provisionalUserProject,
-    core.String startOffset,
-    core.String userProject,
-    core.bool versions,
-    core.String $fields,
+    core.String? delimiter,
+    core.String? endOffset,
+    core.bool? includeTrailingDelimiter,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? prefix,
+    core.String? projection,
+    core.String? provisionalUserProject,
+    core.String? startOffset,
+    core.String? userProject,
+    core.bool? versions,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (delimiter != null) 'delimiter': [delimiter],
       if (endOffset != null) 'endOffset': [endOffset],
@@ -3172,25 +2953,18 @@ class ObjectsResource {
     Object request,
     core.String bucket,
     core.String object, {
-    core.String generation,
-    core.String ifGenerationMatch,
-    core.String ifGenerationNotMatch,
-    core.String ifMetagenerationMatch,
-    core.String ifMetagenerationNotMatch,
-    core.String predefinedAcl,
-    core.String projection,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? generation,
+    core.String? ifGenerationMatch,
+    core.String? ifGenerationNotMatch,
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? predefinedAcl,
+    core.String? projection,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (object == null) {
-      throw core.ArgumentError('Parameter object is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
@@ -3337,38 +3111,25 @@ class ObjectsResource {
     core.String sourceObject,
     core.String destinationBucket,
     core.String destinationObject, {
-    core.String destinationKmsKeyName,
-    core.String destinationPredefinedAcl,
-    core.String ifGenerationMatch,
-    core.String ifGenerationNotMatch,
-    core.String ifMetagenerationMatch,
-    core.String ifMetagenerationNotMatch,
-    core.String ifSourceGenerationMatch,
-    core.String ifSourceGenerationNotMatch,
-    core.String ifSourceMetagenerationMatch,
-    core.String ifSourceMetagenerationNotMatch,
-    core.String maxBytesRewrittenPerCall,
-    core.String projection,
-    core.String provisionalUserProject,
-    core.String rewriteToken,
-    core.String sourceGeneration,
-    core.String userProject,
-    core.String $fields,
+    core.String? destinationKmsKeyName,
+    core.String? destinationPredefinedAcl,
+    core.String? ifGenerationMatch,
+    core.String? ifGenerationNotMatch,
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? ifSourceGenerationMatch,
+    core.String? ifSourceGenerationNotMatch,
+    core.String? ifSourceMetagenerationMatch,
+    core.String? ifSourceMetagenerationNotMatch,
+    core.String? maxBytesRewrittenPerCall,
+    core.String? projection,
+    core.String? provisionalUserProject,
+    core.String? rewriteToken,
+    core.String? sourceGeneration,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (sourceBucket == null) {
-      throw core.ArgumentError('Parameter sourceBucket is required.');
-    }
-    if (sourceObject == null) {
-      throw core.ArgumentError('Parameter sourceObject is required.');
-    }
-    if (destinationBucket == null) {
-      throw core.ArgumentError('Parameter destinationBucket is required.');
-    }
-    if (destinationObject == null) {
-      throw core.ArgumentError('Parameter destinationObject is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (destinationKmsKeyName != null)
         'destinationKmsKeyName': [destinationKmsKeyName],
@@ -3453,19 +3214,12 @@ class ObjectsResource {
     Policy request,
     core.String bucket,
     core.String object, {
-    core.String generation,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? generation,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (object == null) {
-      throw core.ArgumentError('Parameter object is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (provisionalUserProject != null)
@@ -3524,19 +3278,13 @@ class ObjectsResource {
     core.String bucket,
     core.String object,
     core.List<core.String> permissions, {
-    core.String generation,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? generation,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (object == null) {
-      throw core.ArgumentError('Parameter object is required.');
-    }
-    if (permissions == null || permissions.isEmpty) {
-      throw core.ArgumentError('Parameter permissions is required.');
+    if (permissions.isEmpty) {
+      throw core.ArgumentError('Parameter permissions cannot be empty.');
     }
     final _queryParams = <core.String, core.List<core.String>>{
       'permissions': permissions,
@@ -3631,25 +3379,18 @@ class ObjectsResource {
     Object request,
     core.String bucket,
     core.String object, {
-    core.String generation,
-    core.String ifGenerationMatch,
-    core.String ifGenerationNotMatch,
-    core.String ifMetagenerationMatch,
-    core.String ifMetagenerationNotMatch,
-    core.String predefinedAcl,
-    core.String projection,
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? generation,
+    core.String? ifGenerationMatch,
+    core.String? ifGenerationNotMatch,
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? predefinedAcl,
+    core.String? projection,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
-    if (object == null) {
-      throw core.ArgumentError('Parameter object is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (generation != null) 'generation': [generation],
       if (ifGenerationMatch != null) 'ifGenerationMatch': [ifGenerationMatch],
@@ -3745,24 +3486,20 @@ class ObjectsResource {
   async.Future<Channel> watchAll(
     Channel request,
     core.String bucket, {
-    core.String delimiter,
-    core.String endOffset,
-    core.bool includeTrailingDelimiter,
-    core.int maxResults,
-    core.String pageToken,
-    core.String prefix,
-    core.String projection,
-    core.String provisionalUserProject,
-    core.String startOffset,
-    core.String userProject,
-    core.bool versions,
-    core.String $fields,
+    core.String? delimiter,
+    core.String? endOffset,
+    core.bool? includeTrailingDelimiter,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? prefix,
+    core.String? projection,
+    core.String? provisionalUserProject,
+    core.String? startOffset,
+    core.String? userProject,
+    core.bool? versions,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (bucket == null) {
-      throw core.ArgumentError('Parameter bucket is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (delimiter != null) 'delimiter': [delimiter],
       if (endOffset != null) 'endOffset': [endOffset],
@@ -3830,15 +3567,9 @@ class ProjectsHmacKeysResource {
   async.Future<HmacKey> create(
     core.String projectId,
     core.String serviceAccountEmail, {
-    core.String userProject,
-    core.String $fields,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (serviceAccountEmail == null) {
-      throw core.ArgumentError('Parameter serviceAccountEmail is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'serviceAccountEmail': [serviceAccountEmail],
       if (userProject != null) 'userProject': [userProject],
@@ -3877,15 +3608,9 @@ class ProjectsHmacKeysResource {
   async.Future<void> delete(
     core.String projectId,
     core.String accessId, {
-    core.String userProject,
-    core.String $fields,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (accessId == null) {
-      throw core.ArgumentError('Parameter accessId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
@@ -3927,15 +3652,9 @@ class ProjectsHmacKeysResource {
   async.Future<HmacKeyMetadata> get(
     core.String projectId,
     core.String accessId, {
-    core.String userProject,
-    core.String $fields,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (accessId == null) {
-      throw core.ArgumentError('Parameter accessId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
@@ -3990,16 +3709,13 @@ class ProjectsHmacKeysResource {
   /// this method will complete with the same error.
   async.Future<HmacKeysMetadata> list(
     core.String projectId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String serviceAccountEmail,
-    core.bool showDeletedKeys,
-    core.String userProject,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? serviceAccountEmail,
+    core.bool? showDeletedKeys,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -4050,17 +3766,10 @@ class ProjectsHmacKeysResource {
     HmacKeyMetadata request,
     core.String projectId,
     core.String accessId, {
-    core.String userProject,
-    core.String $fields,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (accessId == null) {
-      throw core.ArgumentError('Parameter accessId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
@@ -4112,13 +3821,10 @@ class ProjectsServiceAccountResource {
   /// this method will complete with the same error.
   async.Future<ServiceAccount> get(
     core.String projectId, {
-    core.String provisionalUserProject,
-    core.String userProject,
-    core.String $fields,
+    core.String? provisionalUserProject,
+    core.String? userProject,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (provisionalUserProject != null)
         'provisionalUserProject': [provisionalUserProject],
@@ -4143,7 +3849,7 @@ class ProjectsServiceAccountResource {
 /// The bucket's billing configuration.
 class BucketBilling {
   /// When set to true, Requester Pays is enabled for this bucket.
-  core.bool requesterPays;
+  core.bool? requesterPays;
 
   BucketBilling();
 
@@ -4153,29 +3859,29 @@ class BucketBilling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (requesterPays != null) 'requesterPays': requesterPays,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (requesterPays != null) 'requesterPays': requesterPays!,
       };
 }
 
 class BucketCors {
   /// The value, in seconds, to return in the Access-Control-Max-Age header used
   /// in preflight responses.
-  core.int maxAgeSeconds;
+  core.int? maxAgeSeconds;
 
   /// The list of HTTP methods on which to include CORS response headers, (GET,
   /// OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and
   /// means "any method".
-  core.List<core.String> method;
+  core.List<core.String>? method;
 
   /// The list of Origins eligible to receive CORS response headers.
   ///
   /// Note: "*" is permitted in the list of origins, and means "any Origin".
-  core.List<core.String> origin;
+  core.List<core.String>? origin;
 
   /// The list of HTTP headers other than the simple response headers to give
   /// permission for the user-agent to share across domains.
-  core.List<core.String> responseHeader;
+  core.List<core.String>? responseHeader;
 
   BucketCors();
 
@@ -4200,11 +3906,11 @@ class BucketCors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxAgeSeconds != null) 'maxAgeSeconds': maxAgeSeconds,
-        if (method != null) 'method': method,
-        if (origin != null) 'origin': origin,
-        if (responseHeader != null) 'responseHeader': responseHeader,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxAgeSeconds != null) 'maxAgeSeconds': maxAgeSeconds!,
+        if (method != null) 'method': method!,
+        if (origin != null) 'origin': origin!,
+        if (responseHeader != null) 'responseHeader': responseHeader!,
       };
 }
 
@@ -4212,7 +3918,7 @@ class BucketCors {
 class BucketEncryption {
   /// A Cloud KMS key that will be used to encrypt objects inserted into this
   /// bucket, if no encryption method is specified.
-  core.String defaultKmsKeyName;
+  core.String? defaultKmsKeyName;
 
   BucketEncryption();
 
@@ -4222,8 +3928,8 @@ class BucketEncryption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (defaultKmsKeyName != null) 'defaultKmsKeyName': defaultKmsKeyName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (defaultKmsKeyName != null) 'defaultKmsKeyName': defaultKmsKeyName!,
       };
 }
 
@@ -4235,14 +3941,14 @@ class BucketEncryption {
 /// uniformBucketLevelAccess field to enable and disable the feature.
 class BucketIamConfigurationBucketPolicyOnly {
   /// If set, access is controlled only by bucket-level or above IAM policies.
-  core.bool enabled;
+  core.bool? enabled;
 
   /// The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from
   /// true to false in RFC 3339 format.
   ///
   /// iamConfiguration.bucketPolicyOnly.enabled may be changed from true to
   /// false until the locked time, after which the field is immutable.
-  core.DateTime lockedTime;
+  core.DateTime? lockedTime;
 
   BucketIamConfigurationBucketPolicyOnly();
 
@@ -4255,16 +3961,16 @@ class BucketIamConfigurationBucketPolicyOnly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enabled != null) 'enabled': enabled,
-        if (lockedTime != null) 'lockedTime': (lockedTime).toIso8601String(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (lockedTime != null) 'lockedTime': (lockedTime!).toIso8601String(),
       };
 }
 
 /// The bucket's uniform bucket-level access configuration.
 class BucketIamConfigurationUniformBucketLevelAccess {
   /// If set, access is controlled only by bucket-level or above IAM policies.
-  core.bool enabled;
+  core.bool? enabled;
 
   /// The deadline for changing
   /// iamConfiguration.uniformBucketLevelAccess.enabled from true to false in
@@ -4272,7 +3978,7 @@ class BucketIamConfigurationUniformBucketLevelAccess {
   ///
   /// iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true
   /// to false until the locked time, after which the field is immutable.
-  core.DateTime lockedTime;
+  core.DateTime? lockedTime;
 
   BucketIamConfigurationUniformBucketLevelAccess();
 
@@ -4285,9 +3991,9 @@ class BucketIamConfigurationUniformBucketLevelAccess {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enabled != null) 'enabled': enabled,
-        if (lockedTime != null) 'lockedTime': (lockedTime).toIso8601String(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (lockedTime != null) 'lockedTime': (lockedTime!).toIso8601String(),
       };
 }
 
@@ -4299,15 +4005,15 @@ class BucketIamConfiguration {
   /// compatibility, this field will be populated with identical information as
   /// the uniformBucketLevelAccess field. We recommend using the
   /// uniformBucketLevelAccess field to enable and disable the feature.
-  BucketIamConfigurationBucketPolicyOnly bucketPolicyOnly;
+  BucketIamConfigurationBucketPolicyOnly? bucketPolicyOnly;
 
   /// The bucket's Public Access Prevention configuration.
   ///
   /// Currently, 'unspecified' and 'enforced' are supported.
-  core.String publicAccessPrevention;
+  core.String? publicAccessPrevention;
 
   /// The bucket's uniform bucket-level access configuration.
-  BucketIamConfigurationUniformBucketLevelAccess uniformBucketLevelAccess;
+  BucketIamConfigurationUniformBucketLevelAccess? uniformBucketLevelAccess;
 
   BucketIamConfiguration();
 
@@ -4327,13 +4033,13 @@ class BucketIamConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bucketPolicyOnly != null)
-          'bucketPolicyOnly': bucketPolicyOnly.toJson(),
+          'bucketPolicyOnly': bucketPolicyOnly!.toJson(),
         if (publicAccessPrevention != null)
-          'publicAccessPrevention': publicAccessPrevention,
+          'publicAccessPrevention': publicAccessPrevention!,
         if (uniformBucketLevelAccess != null)
-          'uniformBucketLevelAccess': uniformBucketLevelAccess.toJson(),
+          'uniformBucketLevelAccess': uniformBucketLevelAccess!.toJson(),
       };
 }
 
@@ -4342,12 +4048,12 @@ class BucketLifecycleRuleAction {
   /// Target storage class.
   ///
   /// Required iff the type of the action is SetStorageClass.
-  core.String storageClass;
+  core.String? storageClass;
 
   /// Type of the action.
   ///
   /// Currently, only Delete and SetStorageClass are supported.
-  core.String type;
+  core.String? type;
 
   BucketLifecycleRuleAction();
 
@@ -4360,9 +4066,9 @@ class BucketLifecycleRuleAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (storageClass != null) 'storageClass': storageClass,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (storageClass != null) 'storageClass': storageClass!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4371,21 +4077,21 @@ class BucketLifecycleRuleCondition {
   /// Age of an object (in days).
   ///
   /// This condition is satisfied when an object reaches the specified age.
-  core.int age;
+  core.int? age;
 
   /// A date in RFC 3339 format with only the date part (for instance,
   /// "2013-01-15").
   ///
   /// This condition is satisfied when an object is created before midnight of
   /// the specified date in UTC.
-  core.DateTime createdBefore;
+  core.DateTime? createdBefore;
 
   /// A date in RFC 3339 format with only the date part (for instance,
   /// "2013-01-15").
   ///
   /// This condition is satisfied when the custom time on an object is before
   /// this date in UTC.
-  core.DateTime customTimeBefore;
+  core.DateTime? customTimeBefore;
 
   /// Number of days elapsed since the user-specified timestamp set on an
   /// object.
@@ -4393,7 +4099,7 @@ class BucketLifecycleRuleCondition {
   /// The condition is satisfied if the days elapsed is at least this number. If
   /// no custom timestamp is specified on an object, the condition does not
   /// apply.
-  core.int daysSinceCustomTime;
+  core.int? daysSinceCustomTime;
 
   /// Number of days elapsed since the noncurrent timestamp of an object.
   ///
@@ -4401,13 +4107,13 @@ class BucketLifecycleRuleCondition {
   /// This condition is relevant only for versioned objects. The value of the
   /// field must be a nonnegative integer. If it's zero, the object version will
   /// become eligible for Lifecycle action as soon as it becomes noncurrent.
-  core.int daysSinceNoncurrentTime;
+  core.int? daysSinceNoncurrentTime;
 
   /// Relevant only for versioned objects.
   ///
   /// If the value is true, this condition matches live objects; if the value is
   /// false, it matches archived objects.
-  core.bool isLive;
+  core.bool? isLive;
 
   /// A regular expression that satisfies the RE2 syntax.
   ///
@@ -4416,14 +4122,14 @@ class BucketLifecycleRuleCondition {
   /// stage and is only available to a whitelisted set of users; that means that
   /// this feature may be changed in backward-incompatible ways and that it is
   /// not guaranteed to be released.
-  core.String matchesPattern;
+  core.String? matchesPattern;
 
   /// Objects having any of the storage classes specified by this condition will
   /// be matched.
   ///
   /// Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE,
   /// STANDARD, and DURABLE_REDUCED_AVAILABILITY.
-  core.List<core.String> matchesStorageClass;
+  core.List<core.String>? matchesStorageClass;
 
   /// A date in RFC 3339 format with only the date part (for instance,
   /// "2013-01-15").
@@ -4431,14 +4137,14 @@ class BucketLifecycleRuleCondition {
   /// This condition is satisfied when the noncurrent time on an object is
   /// before this date in UTC. This condition is relevant only for versioned
   /// objects.
-  core.DateTime noncurrentTimeBefore;
+  core.DateTime? noncurrentTimeBefore;
 
   /// Relevant only for versioned objects.
   ///
   /// If the value is N, this condition is satisfied when there are at least N
   /// versions (including the live version) newer than this version of the
   /// object.
-  core.int numNewerVersions;
+  core.int? numNewerVersions;
 
   BucketLifecycleRuleCondition();
 
@@ -4480,35 +4186,35 @@ class BucketLifecycleRuleCondition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (age != null) 'age': age,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (age != null) 'age': age!,
         if (createdBefore != null)
           'createdBefore':
-              "${(createdBefore).year.toString().padLeft(4, '0')}-${(createdBefore).month.toString().padLeft(2, '0')}-${(createdBefore).day.toString().padLeft(2, '0')}",
+              "${(createdBefore!).year.toString().padLeft(4, '0')}-${(createdBefore!).month.toString().padLeft(2, '0')}-${(createdBefore!).day.toString().padLeft(2, '0')}",
         if (customTimeBefore != null)
           'customTimeBefore':
-              "${(customTimeBefore).year.toString().padLeft(4, '0')}-${(customTimeBefore).month.toString().padLeft(2, '0')}-${(customTimeBefore).day.toString().padLeft(2, '0')}",
+              "${(customTimeBefore!).year.toString().padLeft(4, '0')}-${(customTimeBefore!).month.toString().padLeft(2, '0')}-${(customTimeBefore!).day.toString().padLeft(2, '0')}",
         if (daysSinceCustomTime != null)
-          'daysSinceCustomTime': daysSinceCustomTime,
+          'daysSinceCustomTime': daysSinceCustomTime!,
         if (daysSinceNoncurrentTime != null)
-          'daysSinceNoncurrentTime': daysSinceNoncurrentTime,
-        if (isLive != null) 'isLive': isLive,
-        if (matchesPattern != null) 'matchesPattern': matchesPattern,
+          'daysSinceNoncurrentTime': daysSinceNoncurrentTime!,
+        if (isLive != null) 'isLive': isLive!,
+        if (matchesPattern != null) 'matchesPattern': matchesPattern!,
         if (matchesStorageClass != null)
-          'matchesStorageClass': matchesStorageClass,
+          'matchesStorageClass': matchesStorageClass!,
         if (noncurrentTimeBefore != null)
           'noncurrentTimeBefore':
-              "${(noncurrentTimeBefore).year.toString().padLeft(4, '0')}-${(noncurrentTimeBefore).month.toString().padLeft(2, '0')}-${(noncurrentTimeBefore).day.toString().padLeft(2, '0')}",
-        if (numNewerVersions != null) 'numNewerVersions': numNewerVersions,
+              "${(noncurrentTimeBefore!).year.toString().padLeft(4, '0')}-${(noncurrentTimeBefore!).month.toString().padLeft(2, '0')}-${(noncurrentTimeBefore!).day.toString().padLeft(2, '0')}",
+        if (numNewerVersions != null) 'numNewerVersions': numNewerVersions!,
       };
 }
 
 class BucketLifecycleRule {
   /// The action to take.
-  BucketLifecycleRuleAction action;
+  BucketLifecycleRuleAction? action;
 
   /// The condition(s) under which the action will be taken.
-  BucketLifecycleRuleCondition condition;
+  BucketLifecycleRuleCondition? condition;
 
   BucketLifecycleRule();
 
@@ -4523,9 +4229,9 @@ class BucketLifecycleRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action.toJson(),
-        if (condition != null) 'condition': condition.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!.toJson(),
+        if (condition != null) 'condition': condition!.toJson(),
       };
 }
 
@@ -4535,7 +4241,7 @@ class BucketLifecycleRule {
 class BucketLifecycle {
   /// A lifecycle management rule, which is made of an action to take and the
   /// condition(s) under which the action will be taken.
-  core.List<BucketLifecycleRule> rule;
+  core.List<BucketLifecycleRule>? rule;
 
   BucketLifecycle();
 
@@ -4548,8 +4254,8 @@ class BucketLifecycle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (rule != null) 'rule': rule.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (rule != null) 'rule': rule!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4557,10 +4263,10 @@ class BucketLifecycle {
 /// optional name prefix for the current bucket's logs.
 class BucketLogging {
   /// The destination bucket where the current bucket's logs should be placed.
-  core.String logBucket;
+  core.String? logBucket;
 
   /// A prefix for log object names.
-  core.String logObjectPrefix;
+  core.String? logObjectPrefix;
 
   BucketLogging();
 
@@ -4573,9 +4279,9 @@ class BucketLogging {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (logBucket != null) 'logBucket': logBucket,
-        if (logObjectPrefix != null) 'logObjectPrefix': logObjectPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (logBucket != null) 'logBucket': logBucket!,
+        if (logObjectPrefix != null) 'logObjectPrefix': logObjectPrefix!,
       };
 }
 
@@ -4584,10 +4290,10 @@ class BucketLogging {
 /// This is always the project team's owner group.
 class BucketOwner {
   /// The entity, in the form project-owner-projectId.
-  core.String entity;
+  core.String? entity;
 
   /// The ID for the entity.
-  core.String entityId;
+  core.String? entityId;
 
   BucketOwner();
 
@@ -4600,9 +4306,9 @@ class BucketOwner {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (entity != null) 'entity': entity,
-        if (entityId != null) 'entityId': entityId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (entity != null) 'entity': entity!,
+        if (entityId != null) 'entityId': entityId!,
       };
 }
 
@@ -4621,17 +4327,17 @@ class BucketRetentionPolicy {
   /// enforced and effective.
   ///
   /// This value is in RFC 3339 format.
-  core.DateTime effectiveTime;
+  core.DateTime? effectiveTime;
 
   /// Once locked, an object retention policy cannot be modified.
-  core.bool isLocked;
+  core.bool? isLocked;
 
   /// The duration in seconds that objects need to be retained.
   ///
   /// Retention duration must be greater than zero and less than 100 years. Note
   /// that enforcement of retention periods less than a day is not guaranteed.
   /// Such periods should only be used for testing purposes.
-  core.String retentionPeriod;
+  core.String? retentionPeriod;
 
   BucketRetentionPolicy();
 
@@ -4648,18 +4354,18 @@ class BucketRetentionPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (effectiveTime != null)
-          'effectiveTime': (effectiveTime).toIso8601String(),
-        if (isLocked != null) 'isLocked': isLocked,
-        if (retentionPeriod != null) 'retentionPeriod': retentionPeriod,
+          'effectiveTime': (effectiveTime!).toIso8601String(),
+        if (isLocked != null) 'isLocked': isLocked!,
+        if (retentionPeriod != null) 'retentionPeriod': retentionPeriod!,
       };
 }
 
 /// The bucket's versioning configuration.
 class BucketVersioning {
   /// While set to true, versioning is fully enabled for this bucket.
-  core.bool enabled;
+  core.bool? enabled;
 
   BucketVersioning();
 
@@ -4669,8 +4375,8 @@ class BucketVersioning {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enabled != null) 'enabled': enabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -4685,12 +4391,12 @@ class BucketWebsite {
   ///
   /// This allows the creation of index.html objects to represent directory
   /// pages.
-  core.String mainPageSuffix;
+  core.String? mainPageSuffix;
 
   /// If the requested object path is missing, and any mainPageSuffix object is
   /// missing, if applicable, the service will return the named object from this
   /// bucket as the content for a 404 Not Found result.
-  core.String notFoundPage;
+  core.String? notFoundPage;
 
   BucketWebsite();
 
@@ -4703,22 +4409,22 @@ class BucketWebsite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (mainPageSuffix != null) 'mainPageSuffix': mainPageSuffix,
-        if (notFoundPage != null) 'notFoundPage': notFoundPage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (mainPageSuffix != null) 'mainPageSuffix': mainPageSuffix!,
+        if (notFoundPage != null) 'notFoundPage': notFoundPage!,
       };
 }
 
 /// A bucket.
 class Bucket {
   /// Access controls on the bucket.
-  core.List<BucketAccessControl> acl;
+  core.List<BucketAccessControl>? acl;
 
   /// The bucket's billing configuration.
-  BucketBilling billing;
+  BucketBilling? billing;
 
   /// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
-  core.List<BucketCors> cors;
+  core.List<BucketCors>? cors;
 
   /// The default value for event-based hold on newly created objects in this
   /// bucket.
@@ -4735,65 +4441,65 @@ class Bucket {
   /// event-based hold transitioned from true to false. Objects under
   /// event-based hold cannot be deleted, overwritten or archived until the hold
   /// is removed.
-  core.bool defaultEventBasedHold;
+  core.bool? defaultEventBasedHold;
 
   /// Default access controls to apply to new objects when no ACL is provided.
-  core.List<ObjectAccessControl> defaultObjectAcl;
+  core.List<ObjectAccessControl>? defaultObjectAcl;
 
   /// Encryption configuration for a bucket.
-  BucketEncryption encryption;
+  BucketEncryption? encryption;
 
   /// HTTP 1.1 Entity tag for the bucket.
-  core.String etag;
+  core.String? etag;
 
   /// The bucket's IAM configuration.
-  BucketIamConfiguration iamConfiguration;
+  BucketIamConfiguration? iamConfiguration;
 
   /// The ID of the bucket.
   ///
   /// For buckets, the id and name properties are the same.
-  core.String id;
+  core.String? id;
 
   /// The kind of item this is.
   ///
   /// For buckets, this is always storage#bucket.
-  core.String kind;
+  core.String? kind;
 
   /// User-provided labels, in key/value pairs.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The bucket's lifecycle configuration.
   ///
   /// See lifecycle management for more information.
-  BucketLifecycle lifecycle;
+  BucketLifecycle? lifecycle;
 
   /// The location of the bucket.
   ///
   /// Object data for objects in the bucket resides in physical storage within
   /// this region. Defaults to US. See the developer's guide for the
   /// authoritative list.
-  core.String location;
+  core.String? location;
 
   /// The type of the bucket location.
-  core.String locationType;
+  core.String? locationType;
 
   /// The bucket's logging configuration, which defines the destination bucket
   /// and optional name prefix for the current bucket's logs.
-  BucketLogging logging;
+  BucketLogging? logging;
 
   /// The metadata generation of this bucket.
-  core.String metageneration;
+  core.String? metageneration;
 
   /// The name of the bucket.
-  core.String name;
+  core.String? name;
 
   /// The owner of the bucket.
   ///
   /// This is always the project team's owner group.
-  BucketOwner owner;
+  BucketOwner? owner;
 
   /// The project number of the project the bucket belongs to.
-  core.String projectNumber;
+  core.String? projectNumber;
 
   /// The bucket's retention policy.
   ///
@@ -4805,13 +4511,13 @@ class Bucket {
   /// locked retention policy cannot be removed or shortened in duration for the
   /// lifetime of the bucket. Attempting to remove or decrease period of a
   /// locked retention policy will result in a PERMISSION_DENIED error.
-  BucketRetentionPolicy retentionPolicy;
+  BucketRetentionPolicy? retentionPolicy;
 
   /// Reserved for future use.
-  core.bool satisfiesPZS;
+  core.bool? satisfiesPZS;
 
   /// The URI of this bucket.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The bucket's default storage class, used whenever no storageClass is
   /// specified for a newly-created object.
@@ -4821,22 +4527,22 @@ class Bucket {
   /// STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY.
   /// If this value is not specified when the bucket is created, it will default
   /// to STANDARD. For more information, see storage classes.
-  core.String storageClass;
+  core.String? storageClass;
 
   /// The creation time of the bucket in RFC 3339 format.
-  core.DateTime timeCreated;
+  core.DateTime? timeCreated;
 
   /// The modification time of the bucket in RFC 3339 format.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   /// The bucket's versioning configuration.
-  BucketVersioning versioning;
+  BucketVersioning? versioning;
 
   /// The bucket's website configuration, controlling how the service behaves
   /// when accessing bucket contents as a web site.
   ///
   /// See the Static Website Examples for more information.
-  BucketWebsite website;
+  BucketWebsite? website;
 
   /// The zone or zones from which the bucket is intended to use zonal quota.
   ///
@@ -4844,7 +4550,7 @@ class Bucket {
   /// but won't be able to use zonal quota. The zone or zones need to be within
   /// the bucket location otherwise the requests will fail with a 400 Bad
   /// Request response.
-  core.List<core.String> zoneAffinity;
+  core.List<core.String>? zoneAffinity;
 
   Bucket();
 
@@ -4961,50 +4667,51 @@ class Bucket {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (acl != null) 'acl': acl.map((value) => value.toJson()).toList(),
-        if (billing != null) 'billing': billing.toJson(),
-        if (cors != null) 'cors': cors.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (acl != null) 'acl': acl!.map((value) => value.toJson()).toList(),
+        if (billing != null) 'billing': billing!.toJson(),
+        if (cors != null) 'cors': cors!.map((value) => value.toJson()).toList(),
         if (defaultEventBasedHold != null)
-          'defaultEventBasedHold': defaultEventBasedHold,
+          'defaultEventBasedHold': defaultEventBasedHold!,
         if (defaultObjectAcl != null)
           'defaultObjectAcl':
-              defaultObjectAcl.map((value) => value.toJson()).toList(),
-        if (encryption != null) 'encryption': encryption.toJson(),
-        if (etag != null) 'etag': etag,
+              defaultObjectAcl!.map((value) => value.toJson()).toList(),
+        if (encryption != null) 'encryption': encryption!.toJson(),
+        if (etag != null) 'etag': etag!,
         if (iamConfiguration != null)
-          'iamConfiguration': iamConfiguration.toJson(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (labels != null) 'labels': labels,
-        if (lifecycle != null) 'lifecycle': lifecycle.toJson(),
-        if (location != null) 'location': location,
-        if (locationType != null) 'locationType': locationType,
-        if (logging != null) 'logging': logging.toJson(),
-        if (metageneration != null) 'metageneration': metageneration,
-        if (name != null) 'name': name,
-        if (owner != null) 'owner': owner.toJson(),
-        if (projectNumber != null) 'projectNumber': projectNumber,
+          'iamConfiguration': iamConfiguration!.toJson(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (labels != null) 'labels': labels!,
+        if (lifecycle != null) 'lifecycle': lifecycle!.toJson(),
+        if (location != null) 'location': location!,
+        if (locationType != null) 'locationType': locationType!,
+        if (logging != null) 'logging': logging!.toJson(),
+        if (metageneration != null) 'metageneration': metageneration!,
+        if (name != null) 'name': name!,
+        if (owner != null) 'owner': owner!.toJson(),
+        if (projectNumber != null) 'projectNumber': projectNumber!,
         if (retentionPolicy != null)
-          'retentionPolicy': retentionPolicy.toJson(),
-        if (satisfiesPZS != null) 'satisfiesPZS': satisfiesPZS,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (storageClass != null) 'storageClass': storageClass,
-        if (timeCreated != null) 'timeCreated': (timeCreated).toIso8601String(),
-        if (updated != null) 'updated': (updated).toIso8601String(),
-        if (versioning != null) 'versioning': versioning.toJson(),
-        if (website != null) 'website': website.toJson(),
-        if (zoneAffinity != null) 'zoneAffinity': zoneAffinity,
+          'retentionPolicy': retentionPolicy!.toJson(),
+        if (satisfiesPZS != null) 'satisfiesPZS': satisfiesPZS!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (storageClass != null) 'storageClass': storageClass!,
+        if (timeCreated != null)
+          'timeCreated': (timeCreated!).toIso8601String(),
+        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (versioning != null) 'versioning': versioning!.toJson(),
+        if (website != null) 'website': website!.toJson(),
+        if (zoneAffinity != null) 'zoneAffinity': zoneAffinity!,
       };
 }
 
 /// The project team associated with the entity, if any.
 class BucketAccessControlProjectTeam {
   /// The project number.
-  core.String projectNumber;
+  core.String? projectNumber;
 
   /// The team.
-  core.String team;
+  core.String? team;
 
   BucketAccessControlProjectTeam();
 
@@ -5017,22 +4724,22 @@ class BucketAccessControlProjectTeam {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (projectNumber != null) 'projectNumber': projectNumber,
-        if (team != null) 'team': team,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (projectNumber != null) 'projectNumber': projectNumber!,
+        if (team != null) 'team': team!,
       };
 }
 
 /// An access-control entry.
 class BucketAccessControl {
   /// The name of the bucket.
-  core.String bucket;
+  core.String? bucket;
 
   /// The domain associated with the entity, if any.
-  core.String domain;
+  core.String? domain;
 
   /// The email address associated with the entity, if any.
-  core.String email;
+  core.String? email;
 
   /// The entity holding the permission, in one of the following forms:
   /// - user-userId
@@ -5050,31 +4757,31 @@ class BucketAccessControl {
   /// group-example@googlegroups.com.
   /// - To refer to all members of the Google Apps for Business domain
   /// example.com, the entity would be domain-example.com.
-  core.String entity;
+  core.String? entity;
 
   /// The ID for the entity, if any.
-  core.String entityId;
+  core.String? entityId;
 
   /// HTTP 1.1 Entity tag for the access-control entry.
-  core.String etag;
+  core.String? etag;
 
   /// The ID of the access-control entry.
-  core.String id;
+  core.String? id;
 
   /// The kind of item this is.
   ///
   /// For bucket access control entries, this is always
   /// storage#bucketAccessControl.
-  core.String kind;
+  core.String? kind;
 
   /// The project team associated with the entity, if any.
-  BucketAccessControlProjectTeam projectTeam;
+  BucketAccessControlProjectTeam? projectTeam;
 
   /// The access permission for the entity.
-  core.String role;
+  core.String? role;
 
   /// The link to this access-control entry.
-  core.String selfLink;
+  core.String? selfLink;
 
   BucketAccessControl();
 
@@ -5115,31 +4822,31 @@ class BucketAccessControl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bucket != null) 'bucket': bucket,
-        if (domain != null) 'domain': domain,
-        if (email != null) 'email': email,
-        if (entity != null) 'entity': entity,
-        if (entityId != null) 'entityId': entityId,
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (projectTeam != null) 'projectTeam': projectTeam.toJson(),
-        if (role != null) 'role': role,
-        if (selfLink != null) 'selfLink': selfLink,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (domain != null) 'domain': domain!,
+        if (email != null) 'email': email!,
+        if (entity != null) 'entity': entity!,
+        if (entityId != null) 'entityId': entityId!,
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (projectTeam != null) 'projectTeam': projectTeam!.toJson(),
+        if (role != null) 'role': role!,
+        if (selfLink != null) 'selfLink': selfLink!,
       };
 }
 
 /// An access-control list.
 class BucketAccessControls {
   /// The list of items.
-  core.List<BucketAccessControl> items;
+  core.List<BucketAccessControl>? items;
 
   /// The kind of item this is.
   ///
   /// For lists of bucket access control entries, this is always
   /// storage#bucketAccessControls.
-  core.String kind;
+  core.String? kind;
 
   BucketAccessControls();
 
@@ -5155,28 +4862,28 @@ class BucketAccessControls {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// A list of buckets.
 class Buckets {
   /// The list of items.
-  core.List<Bucket> items;
+  core.List<Bucket>? items;
 
   /// The kind of item this is.
   ///
   /// For lists of buckets, this is always storage#buckets.
-  core.String kind;
+  core.String? kind;
 
   /// The continuation token, used to page through large result sets.
   ///
   /// Provide this value in a subsequent request to return the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   Buckets();
 
@@ -5195,58 +4902,58 @@ class Buckets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// An notification channel used to watch for resource changes.
 class Channel {
   /// The address where notifications are delivered for this channel.
-  core.String address;
+  core.String? address;
 
   /// Date and time of notification channel expiration, expressed as a Unix
   /// timestamp, in milliseconds.
   ///
   /// Optional.
-  core.String expiration;
+  core.String? expiration;
 
   /// A UUID or similar unique string that identifies this channel.
-  core.String id;
+  core.String? id;
 
   /// Identifies this as a notification channel used to watch for changes to a
   /// resource, which is "api#channel".
-  core.String kind;
+  core.String? kind;
 
   /// Additional parameters controlling delivery channel behavior.
   ///
   /// Optional.
-  core.Map<core.String, core.String> params;
+  core.Map<core.String, core.String>? params;
 
   /// A Boolean value to indicate whether payload is wanted.
   ///
   /// Optional.
-  core.bool payload;
+  core.bool? payload;
 
   /// An opaque ID that identifies the resource being watched on this channel.
   ///
   /// Stable across different API versions.
-  core.String resourceId;
+  core.String? resourceId;
 
   /// A version-specific identifier for the watched resource.
-  core.String resourceUri;
+  core.String? resourceUri;
 
   /// An arbitrary string delivered to the target address with each notification
   /// delivered over this channel.
   ///
   /// Optional.
-  core.String token;
+  core.String? token;
 
   /// The type of delivery mechanism used for this channel.
-  core.String type;
+  core.String? type;
 
   Channel();
 
@@ -5289,17 +4996,17 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address,
-        if (expiration != null) 'expiration': expiration,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (params != null) 'params': params,
-        if (payload != null) 'payload': payload,
-        if (resourceId != null) 'resourceId': resourceId,
-        if (resourceUri != null) 'resourceUri': resourceUri,
-        if (token != null) 'token': token,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!,
+        if (expiration != null) 'expiration': expiration!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (params != null) 'params': params!,
+        if (payload != null) 'payload': payload!,
+        if (resourceId != null) 'resourceId': resourceId!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (token != null) 'token': token!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -5310,7 +5017,7 @@ class ComposeRequestSourceObjectsObjectPreconditions {
   ///
   /// If this value and a generation are both specified, they must be the same
   /// value or the call will fail.
-  core.String ifGenerationMatch;
+  core.String? ifGenerationMatch;
 
   ComposeRequestSourceObjectsObjectPreconditions();
 
@@ -5320,22 +5027,22 @@ class ComposeRequestSourceObjectsObjectPreconditions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ifGenerationMatch != null) 'ifGenerationMatch': ifGenerationMatch,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ifGenerationMatch != null) 'ifGenerationMatch': ifGenerationMatch!,
       };
 }
 
 class ComposeRequestSourceObjects {
   /// The generation of this object to use as the source.
-  core.String generation;
+  core.String? generation;
 
   /// The source object's name.
   ///
   /// All source objects must reside in the same bucket.
-  core.String name;
+  core.String? name;
 
   /// Conditions that must be met for this operation to execute.
-  ComposeRequestSourceObjectsObjectPreconditions objectPreconditions;
+  ComposeRequestSourceObjectsObjectPreconditions? objectPreconditions;
 
   ComposeRequestSourceObjects();
 
@@ -5354,24 +5061,24 @@ class ComposeRequestSourceObjects {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (generation != null) 'generation': generation,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (generation != null) 'generation': generation!,
+        if (name != null) 'name': name!,
         if (objectPreconditions != null)
-          'objectPreconditions': objectPreconditions.toJson(),
+          'objectPreconditions': objectPreconditions!.toJson(),
       };
 }
 
 /// A Compose request.
 class ComposeRequest {
   /// Properties of the resulting object.
-  Object destination;
+  Object? destination;
 
   /// The kind of item this is.
-  core.String kind;
+  core.String? kind;
 
   /// The list of source objects that will be concatenated into a single object.
-  core.List<ComposeRequestSourceObjects> sourceObjects;
+  core.List<ComposeRequestSourceObjects>? sourceObjects;
 
   ComposeRequest();
 
@@ -5392,12 +5099,12 @@ class ComposeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destination != null) 'destination': destination.toJson(),
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destination != null) 'destination': destination!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (sourceObjects != null)
           'sourceObjects':
-              sourceObjects.map((value) => value.toJson()).toList(),
+              sourceObjects!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5410,24 +5117,24 @@ class Expr {
   ///
   /// This is a longer text which describes the expression, e.g. when hovered
   /// over it in a UI.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
   ///
   /// The application context of the containing message determines which
   /// well-known feature set of CEL is supported.
-  core.String expression;
+  core.String? expression;
 
   /// An optional string indicating the location of the expression for error
   /// reporting, e.g. a file name and a position in the file.
-  core.String location;
+  core.String? location;
 
   /// An optional title for the expression, i.e. a short string describing its
   /// purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -5446,11 +5153,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -5460,13 +5167,13 @@ class HmacKey {
   /// The kind of item this is.
   ///
   /// For HMAC keys, this is always storage#hmacKey.
-  core.String kind;
+  core.String? kind;
 
   /// Key metadata.
-  HmacKeyMetadata metadata;
+  HmacKeyMetadata? metadata;
 
   /// HMAC secret key material.
-  core.String secret;
+  core.String? secret;
 
   HmacKey();
 
@@ -5483,48 +5190,48 @@ class HmacKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (secret != null) 'secret': secret,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (secret != null) 'secret': secret!,
       };
 }
 
 /// JSON template to produce a JSON-style HMAC Key metadata resource.
 class HmacKeyMetadata {
   /// The ID of the HMAC Key.
-  core.String accessId;
+  core.String? accessId;
 
   /// HTTP 1.1 Entity tag for the HMAC key.
-  core.String etag;
+  core.String? etag;
 
   /// The ID of the HMAC key, including the Project ID and the Access ID.
-  core.String id;
+  core.String? id;
 
   /// The kind of item this is.
   ///
   /// For HMAC Key metadata, this is always storage#hmacKeyMetadata.
-  core.String kind;
+  core.String? kind;
 
   /// Project ID owning the service account to which the key authenticates.
-  core.String projectId;
+  core.String? projectId;
 
   /// The link to this resource.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The email address of the key's associated service account.
-  core.String serviceAccountEmail;
+  core.String? serviceAccountEmail;
 
   /// The state of the key.
   ///
   /// Can be one of ACTIVE, INACTIVE, or DELETED.
-  core.String state;
+  core.String? state;
 
   /// The creation time of the HMAC key in RFC 3339 format.
-  core.DateTime timeCreated;
+  core.DateTime? timeCreated;
 
   /// The last modification time of the HMAC key metadata in RFC 3339 format.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   HmacKeyMetadata();
 
@@ -5561,36 +5268,37 @@ class HmacKeyMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessId != null) 'accessId': accessId,
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (projectId != null) 'projectId': projectId,
-        if (selfLink != null) 'selfLink': selfLink,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessId != null) 'accessId': accessId!,
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (projectId != null) 'projectId': projectId!,
+        if (selfLink != null) 'selfLink': selfLink!,
         if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail,
-        if (state != null) 'state': state,
-        if (timeCreated != null) 'timeCreated': (timeCreated).toIso8601String(),
-        if (updated != null) 'updated': (updated).toIso8601String(),
+          'serviceAccountEmail': serviceAccountEmail!,
+        if (state != null) 'state': state!,
+        if (timeCreated != null)
+          'timeCreated': (timeCreated!).toIso8601String(),
+        if (updated != null) 'updated': (updated!).toIso8601String(),
       };
 }
 
 /// A list of hmacKeys.
 class HmacKeysMetadata {
   /// The list of items.
-  core.List<HmacKeyMetadata> items;
+  core.List<HmacKeyMetadata>? items;
 
   /// The kind of item this is.
   ///
   /// For lists of hmacKeys, this is always storage#hmacKeysMetadata.
-  core.String kind;
+  core.String? kind;
 
   /// The continuation token, used to page through large result sets.
   ///
   /// Provide this value in a subsequent request to return the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   HmacKeysMetadata();
 
@@ -5609,11 +5317,11 @@ class HmacKeysMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -5621,39 +5329,39 @@ class HmacKeysMetadata {
 class Notification {
   /// An optional list of additional attributes to attach to each Cloud PubSub
   /// message published for this notification subscription.
-  core.Map<core.String, core.String> customAttributes;
+  core.Map<core.String, core.String>? customAttributes;
 
   /// HTTP 1.1 Entity tag for this subscription notification.
-  core.String etag;
+  core.String? etag;
 
   /// If present, only send notifications about listed event types.
   ///
   /// If empty, sent notifications for all event types.
-  core.List<core.String> eventTypes;
+  core.List<core.String>? eventTypes;
 
   /// The ID of the notification.
-  core.String id;
+  core.String? id;
 
   /// The kind of item this is.
   ///
   /// For notifications, this is always storage#notification.
-  core.String kind;
+  core.String? kind;
 
   /// If present, only apply this notification configuration to object names
   /// that begin with this prefix.
-  core.String objectNamePrefix;
+  core.String? objectNamePrefix;
 
   /// The desired content of the Payload.
-  core.String payloadFormat;
+  core.String? payloadFormat;
 
   /// The canonical URL of this notification.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The Cloud PubSub topic to which this subscription publishes.
   ///
   /// Formatted as:
   /// '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
-  core.String topic;
+  core.String? topic;
 
   Notification();
 
@@ -5696,28 +5404,28 @@ class Notification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customAttributes != null) 'custom_attributes': customAttributes,
-        if (etag != null) 'etag': etag,
-        if (eventTypes != null) 'event_types': eventTypes,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (objectNamePrefix != null) 'object_name_prefix': objectNamePrefix,
-        if (payloadFormat != null) 'payload_format': payloadFormat,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (topic != null) 'topic': topic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customAttributes != null) 'custom_attributes': customAttributes!,
+        if (etag != null) 'etag': etag!,
+        if (eventTypes != null) 'event_types': eventTypes!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (objectNamePrefix != null) 'object_name_prefix': objectNamePrefix!,
+        if (payloadFormat != null) 'payload_format': payloadFormat!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (topic != null) 'topic': topic!,
       };
 }
 
 /// A list of notification subscriptions.
 class Notifications {
   /// The list of items.
-  core.List<Notification> items;
+  core.List<Notification>? items;
 
   /// The kind of item this is.
   ///
   /// For lists of notifications, this is always storage#notifications.
-  core.String kind;
+  core.String? kind;
 
   Notifications();
 
@@ -5733,10 +5441,10 @@ class Notifications {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -5744,10 +5452,10 @@ class Notifications {
 /// such a key.
 class ObjectCustomerEncryption {
   /// The encryption algorithm.
-  core.String encryptionAlgorithm;
+  core.String? encryptionAlgorithm;
 
   /// SHA256 hash value of the encryption key.
-  core.String keySha256;
+  core.String? keySha256;
 
   ObjectCustomerEncryption();
 
@@ -5760,10 +5468,10 @@ class ObjectCustomerEncryption {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (encryptionAlgorithm != null)
-          'encryptionAlgorithm': encryptionAlgorithm,
-        if (keySha256 != null) 'keySha256': keySha256,
+          'encryptionAlgorithm': encryptionAlgorithm!,
+        if (keySha256 != null) 'keySha256': keySha256!,
       };
 }
 
@@ -5772,10 +5480,10 @@ class ObjectCustomerEncryption {
 /// This will always be the uploader of the object.
 class ObjectOwner {
   /// The entity, in the form user-userId.
-  core.String entity;
+  core.String? entity;
 
   /// The ID for the entity.
-  core.String entityId;
+  core.String? entityId;
 
   ObjectOwner();
 
@@ -5788,62 +5496,62 @@ class ObjectOwner {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (entity != null) 'entity': entity,
-        if (entityId != null) 'entityId': entityId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (entity != null) 'entity': entity!,
+        if (entityId != null) 'entityId': entityId!,
       };
 }
 
 /// An object.
 class Object {
   /// Access controls on the object.
-  core.List<ObjectAccessControl> acl;
+  core.List<ObjectAccessControl>? acl;
 
   /// The name of the bucket containing this object.
-  core.String bucket;
+  core.String? bucket;
 
   /// Cache-Control directive for the object data.
   ///
   /// If omitted, and the object is accessible to all anonymous users, the
   /// default will be public, max-age=3600.
-  core.String cacheControl;
+  core.String? cacheControl;
 
   /// Number of underlying components that make up this object.
   ///
   /// Components are accumulated by compose operations.
-  core.int componentCount;
+  core.int? componentCount;
 
   /// Content-Disposition of the object data.
-  core.String contentDisposition;
+  core.String? contentDisposition;
 
   /// Content-Encoding of the object data.
-  core.String contentEncoding;
+  core.String? contentEncoding;
 
   /// Content-Language of the object data.
-  core.String contentLanguage;
+  core.String? contentLanguage;
 
   /// Content-Type of the object data.
   ///
   /// If an object is stored without a Content-Type, it is served as
   /// application/octet-stream.
-  core.String contentType;
+  core.String? contentType;
 
   /// CRC32c checksum, as described in RFC 4960, Appendix B; encoded using
   /// base64 in big-endian byte order.
   ///
   /// For more information about using the CRC32c checksum, see Hashes and
   /// ETags: Best Practices.
-  core.String crc32c;
+  core.String? crc32c;
 
   /// A timestamp in RFC 3339 format specified by the user for an object.
-  core.DateTime customTime;
+  core.DateTime? customTime;
 
   /// Metadata of customer-supplied encryption key, if the object is encrypted
   /// by such a key.
-  ObjectCustomerEncryption customerEncryption;
+  ObjectCustomerEncryption? customerEncryption;
 
   /// HTTP 1.1 Entity tag for the object.
-  core.String etag;
+  core.String? etag;
 
   /// Whether an object is under event-based hold.
   ///
@@ -5858,56 +5566,56 @@ class Object {
   /// object is released) and then 3 more years after that. That means retention
   /// duration of the objects begins from the moment event-based hold
   /// transitioned from true to false.
-  core.bool eventBasedHold;
+  core.bool? eventBasedHold;
 
   /// The content generation of this object.
   ///
   /// Used for object versioning.
-  core.String generation;
+  core.String? generation;
 
   /// The ID of the object, including the bucket name, object name, and
   /// generation number.
-  core.String id;
+  core.String? id;
 
   /// The kind of item this is.
   ///
   /// For objects, this is always storage#object.
-  core.String kind;
+  core.String? kind;
 
   /// Not currently supported.
   ///
   /// Specifying the parameter causes the request to fail with status code 400 -
   /// Bad Request.
-  core.String kmsKeyName;
+  core.String? kmsKeyName;
 
   /// MD5 hash of the data; encoded using base64.
   ///
   /// For more information about using the MD5 hash, see Hashes and ETags: Best
   /// Practices.
-  core.String md5Hash;
+  core.String? md5Hash;
 
   /// Media download link.
-  core.String mediaLink;
+  core.String? mediaLink;
 
   /// User-provided metadata, in key/value pairs.
-  core.Map<core.String, core.String> metadata;
+  core.Map<core.String, core.String>? metadata;
 
   /// The version of the metadata for this object at this generation.
   ///
   /// Used for preconditions and for detecting changes in metadata. A
   /// metageneration number is only meaningful in the context of a particular
   /// generation of a particular object.
-  core.String metageneration;
+  core.String? metageneration;
 
   /// The name of the object.
   ///
   /// Required if not specified by URL parameter.
-  core.String name;
+  core.String? name;
 
   /// The owner of the object.
   ///
   /// This will always be the uploader of the object.
-  ObjectOwner owner;
+  ObjectOwner? owner;
 
   /// A server-determined value that specifies the earliest time that the
   /// object's retention period expires.
@@ -5917,16 +5625,16 @@ class Object {
   /// unknown until the hold is removed. Note 2: This value can be provided even
   /// when temporary hold is set (so that the user can reason about policy
   /// without having to first unset the temporary hold).
-  core.DateTime retentionExpirationTime;
+  core.DateTime? retentionExpirationTime;
 
   /// The link to this object.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Content-Length of the data in bytes.
-  core.String size;
+  core.String? size;
 
   /// Storage class of the object.
-  core.String storageClass;
+  core.String? storageClass;
 
   /// Whether an object is under temporary hold.
   ///
@@ -5935,24 +5643,24 @@ class Object {
   /// investigations where objects need to be retained while the investigation
   /// is ongoing. Note that unlike event-based hold, temporary hold does not
   /// impact retention expiration time of an object.
-  core.bool temporaryHold;
+  core.bool? temporaryHold;
 
   /// The creation time of the object in RFC 3339 format.
-  core.DateTime timeCreated;
+  core.DateTime? timeCreated;
 
   /// The deletion time of the object in RFC 3339 format.
   ///
   /// Will be returned if and only if this version of the object has been
   /// deleted.
-  core.DateTime timeDeleted;
+  core.DateTime? timeDeleted;
 
   /// The time at which the object's storage class was last changed.
   ///
   /// When the object is initially created, it will be set to timeCreated.
-  core.DateTime timeStorageClassUpdated;
+  core.DateTime? timeStorageClassUpdated;
 
   /// The modification time of the object metadata in RFC 3339 format.
-  core.DateTime updated;
+  core.DateTime? updated;
 
   Object();
 
@@ -6068,55 +5776,57 @@ class Object {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (acl != null) 'acl': acl.map((value) => value.toJson()).toList(),
-        if (bucket != null) 'bucket': bucket,
-        if (cacheControl != null) 'cacheControl': cacheControl,
-        if (componentCount != null) 'componentCount': componentCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (acl != null) 'acl': acl!.map((value) => value.toJson()).toList(),
+        if (bucket != null) 'bucket': bucket!,
+        if (cacheControl != null) 'cacheControl': cacheControl!,
+        if (componentCount != null) 'componentCount': componentCount!,
         if (contentDisposition != null)
-          'contentDisposition': contentDisposition,
-        if (contentEncoding != null) 'contentEncoding': contentEncoding,
-        if (contentLanguage != null) 'contentLanguage': contentLanguage,
-        if (contentType != null) 'contentType': contentType,
-        if (crc32c != null) 'crc32c': crc32c,
-        if (customTime != null) 'customTime': (customTime).toIso8601String(),
+          'contentDisposition': contentDisposition!,
+        if (contentEncoding != null) 'contentEncoding': contentEncoding!,
+        if (contentLanguage != null) 'contentLanguage': contentLanguage!,
+        if (contentType != null) 'contentType': contentType!,
+        if (crc32c != null) 'crc32c': crc32c!,
+        if (customTime != null) 'customTime': (customTime!).toIso8601String(),
         if (customerEncryption != null)
-          'customerEncryption': customerEncryption.toJson(),
-        if (etag != null) 'etag': etag,
-        if (eventBasedHold != null) 'eventBasedHold': eventBasedHold,
-        if (generation != null) 'generation': generation,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
-        if (md5Hash != null) 'md5Hash': md5Hash,
-        if (mediaLink != null) 'mediaLink': mediaLink,
-        if (metadata != null) 'metadata': metadata,
-        if (metageneration != null) 'metageneration': metageneration,
-        if (name != null) 'name': name,
-        if (owner != null) 'owner': owner.toJson(),
+          'customerEncryption': customerEncryption!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (eventBasedHold != null) 'eventBasedHold': eventBasedHold!,
+        if (generation != null) 'generation': generation!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (md5Hash != null) 'md5Hash': md5Hash!,
+        if (mediaLink != null) 'mediaLink': mediaLink!,
+        if (metadata != null) 'metadata': metadata!,
+        if (metageneration != null) 'metageneration': metageneration!,
+        if (name != null) 'name': name!,
+        if (owner != null) 'owner': owner!.toJson(),
         if (retentionExpirationTime != null)
           'retentionExpirationTime':
-              (retentionExpirationTime).toIso8601String(),
-        if (selfLink != null) 'selfLink': selfLink,
-        if (size != null) 'size': size,
-        if (storageClass != null) 'storageClass': storageClass,
-        if (temporaryHold != null) 'temporaryHold': temporaryHold,
-        if (timeCreated != null) 'timeCreated': (timeCreated).toIso8601String(),
-        if (timeDeleted != null) 'timeDeleted': (timeDeleted).toIso8601String(),
+              (retentionExpirationTime!).toIso8601String(),
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (size != null) 'size': size!,
+        if (storageClass != null) 'storageClass': storageClass!,
+        if (temporaryHold != null) 'temporaryHold': temporaryHold!,
+        if (timeCreated != null)
+          'timeCreated': (timeCreated!).toIso8601String(),
+        if (timeDeleted != null)
+          'timeDeleted': (timeDeleted!).toIso8601String(),
         if (timeStorageClassUpdated != null)
           'timeStorageClassUpdated':
-              (timeStorageClassUpdated).toIso8601String(),
-        if (updated != null) 'updated': (updated).toIso8601String(),
+              (timeStorageClassUpdated!).toIso8601String(),
+        if (updated != null) 'updated': (updated!).toIso8601String(),
       };
 }
 
 /// The project team associated with the entity, if any.
 class ObjectAccessControlProjectTeam {
   /// The project number.
-  core.String projectNumber;
+  core.String? projectNumber;
 
   /// The team.
-  core.String team;
+  core.String? team;
 
   ObjectAccessControlProjectTeam();
 
@@ -6129,22 +5839,22 @@ class ObjectAccessControlProjectTeam {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (projectNumber != null) 'projectNumber': projectNumber,
-        if (team != null) 'team': team,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (projectNumber != null) 'projectNumber': projectNumber!,
+        if (team != null) 'team': team!,
       };
 }
 
 /// An access-control entry.
 class ObjectAccessControl {
   /// The name of the bucket.
-  core.String bucket;
+  core.String? bucket;
 
   /// The domain associated with the entity, if any.
-  core.String domain;
+  core.String? domain;
 
   /// The email address associated with the entity, if any.
-  core.String email;
+  core.String? email;
 
   /// The entity holding the permission, in one of the following forms:
   /// - user-userId
@@ -6162,37 +5872,37 @@ class ObjectAccessControl {
   /// group-example@googlegroups.com.
   /// - To refer to all members of the Google Apps for Business domain
   /// example.com, the entity would be domain-example.com.
-  core.String entity;
+  core.String? entity;
 
   /// The ID for the entity, if any.
-  core.String entityId;
+  core.String? entityId;
 
   /// HTTP 1.1 Entity tag for the access-control entry.
-  core.String etag;
+  core.String? etag;
 
   /// The content generation of the object, if applied to an object.
-  core.String generation;
+  core.String? generation;
 
   /// The ID of the access-control entry.
-  core.String id;
+  core.String? id;
 
   /// The kind of item this is.
   ///
   /// For object access control entries, this is always
   /// storage#objectAccessControl.
-  core.String kind;
+  core.String? kind;
 
   /// The name of the object, if applied to an object.
-  core.String object;
+  core.String? object;
 
   /// The project team associated with the entity, if any.
-  ObjectAccessControlProjectTeam projectTeam;
+  ObjectAccessControlProjectTeam? projectTeam;
 
   /// The access permission for the entity.
-  core.String role;
+  core.String? role;
 
   /// The link to this access-control entry.
-  core.String selfLink;
+  core.String? selfLink;
 
   ObjectAccessControl();
 
@@ -6239,33 +5949,33 @@ class ObjectAccessControl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bucket != null) 'bucket': bucket,
-        if (domain != null) 'domain': domain,
-        if (email != null) 'email': email,
-        if (entity != null) 'entity': entity,
-        if (entityId != null) 'entityId': entityId,
-        if (etag != null) 'etag': etag,
-        if (generation != null) 'generation': generation,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (object != null) 'object': object,
-        if (projectTeam != null) 'projectTeam': projectTeam.toJson(),
-        if (role != null) 'role': role,
-        if (selfLink != null) 'selfLink': selfLink,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (domain != null) 'domain': domain!,
+        if (email != null) 'email': email!,
+        if (entity != null) 'entity': entity!,
+        if (entityId != null) 'entityId': entityId!,
+        if (etag != null) 'etag': etag!,
+        if (generation != null) 'generation': generation!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (object != null) 'object': object!,
+        if (projectTeam != null) 'projectTeam': projectTeam!.toJson(),
+        if (role != null) 'role': role!,
+        if (selfLink != null) 'selfLink': selfLink!,
       };
 }
 
 /// An access-control list.
 class ObjectAccessControls {
   /// The list of items.
-  core.List<ObjectAccessControl> items;
+  core.List<ObjectAccessControl>? items;
 
   /// The kind of item this is.
   ///
   /// For lists of object access control entries, this is always
   /// storage#objectAccessControls.
-  core.String kind;
+  core.String? kind;
 
   ObjectAccessControls();
 
@@ -6281,32 +5991,32 @@ class ObjectAccessControls {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// A list of objects.
 class Objects {
   /// The list of items.
-  core.List<Object> items;
+  core.List<Object>? items;
 
   /// The kind of item this is.
   ///
   /// For lists of objects, this is always storage#objects.
-  core.String kind;
+  core.String? kind;
 
   /// The continuation token, used to page through large result sets.
   ///
   /// Provide this value in a subsequent request to return the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of prefixes of objects matching-but-not-listed up to and
   /// including the requested delimiter.
-  core.List<core.String> prefixes;
+  core.List<core.String>? prefixes;
 
   Objects();
 
@@ -6330,12 +6040,12 @@ class Objects {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (prefixes != null) 'prefixes': prefixes,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (prefixes != null) 'prefixes': prefixes!,
       };
 }
 
@@ -6345,7 +6055,7 @@ class PolicyBindings {
   /// NOTE: an unsatisfied condition will not allow user access via current
   /// binding. Different bindings, including their conditions, are examined
   /// independently.
-  Expr condition;
+  Expr? condition;
 
   /// A collection of identifiers for members who may assume the provided role.
   ///
@@ -6369,7 +6079,7 @@ class PolicyBindings {
   /// projectEditor:my-example-project
   /// - projectViewer:projectid — Viewers of the given project. For example,
   /// projectViewer:my-example-project
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// The role to which members belong.
   ///
@@ -6398,7 +6108,7 @@ class PolicyBindings {
   /// - roles/storage.legacyBucketOwner — Read and write access to existing
   /// buckets with object listing/creation/deletion. Equivalent to an ACL entry
   /// on a bucket with the OWNER role.
-  core.String role;
+  core.String? role;
 
   PolicyBindings();
 
@@ -6417,10 +6127,10 @@ class PolicyBindings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -6428,11 +6138,11 @@ class PolicyBindings {
 class Policy {
   /// An association between a role, which comes with a set of permissions, and
   /// members who may assume that role.
-  core.List<PolicyBindings> bindings;
+  core.List<PolicyBindings>? bindings;
 
   /// HTTP 1.1  Entity tag for the policy.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -6443,7 +6153,7 @@ class Policy {
   ///
   /// For policies, this is always storage#policy. This field is ignored on
   /// input.
-  core.String kind;
+  core.String? kind;
 
   /// The ID of the resource to which this policy belongs.
   ///
@@ -6453,10 +6163,10 @@ class Policy {
   /// the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17.
   /// The current generation can be denoted with #0. This field is ignored on
   /// input.
-  core.String resourceId;
+  core.String? resourceId;
 
   /// The IAM policy format version.
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -6481,13 +6191,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (resourceId != null) 'resourceId': resourceId,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (resourceId != null) 'resourceId': resourceId!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -6496,32 +6206,32 @@ class RewriteResponse {
   /// true if the copy is finished; otherwise, false if the copy is in progress.
   ///
   /// This property is always present in the response.
-  core.bool done;
+  core.bool? done;
 
   /// The kind of item this is.
-  core.String kind;
+  core.String? kind;
 
   /// The total size of the object being copied in bytes.
   ///
   /// This property is always present in the response.
-  core.String objectSize;
+  core.String? objectSize;
 
   /// A resource containing the metadata for the copied-to object.
   ///
   /// This property is present in the response only when copying completes.
-  Object resource;
+  Object? resource;
 
   /// A token to use in subsequent requests to continue copying data.
   ///
   /// This token is present in the response only when there is more data to
   /// copy.
-  core.String rewriteToken;
+  core.String? rewriteToken;
 
   /// The total bytes written so far, which can be used to provide a waiting
   /// user with a progress indicator.
   ///
   /// This property is always present in the response.
-  core.String totalBytesRewritten;
+  core.String? totalBytesRewritten;
 
   RewriteResponse();
 
@@ -6547,26 +6257,26 @@ class RewriteResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (kind != null) 'kind': kind,
-        if (objectSize != null) 'objectSize': objectSize,
-        if (resource != null) 'resource': resource.toJson(),
-        if (rewriteToken != null) 'rewriteToken': rewriteToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (kind != null) 'kind': kind!,
+        if (objectSize != null) 'objectSize': objectSize!,
+        if (resource != null) 'resource': resource!.toJson(),
+        if (rewriteToken != null) 'rewriteToken': rewriteToken!,
         if (totalBytesRewritten != null)
-          'totalBytesRewritten': totalBytesRewritten,
+          'totalBytesRewritten': totalBytesRewritten!,
       };
 }
 
 /// A subscription to receive Google PubSub notifications.
 class ServiceAccount {
   /// The ID of the notification.
-  core.String emailAddress;
+  core.String? emailAddress;
 
   /// The kind of item this is.
   ///
   /// For notifications, this is always storage#notification.
-  core.String kind;
+  core.String? kind;
 
   ServiceAccount();
 
@@ -6579,16 +6289,16 @@ class ServiceAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (emailAddress != null) 'email_address': emailAddress,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (emailAddress != null) 'email_address': emailAddress!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// A storage.(buckets|objects).testIamPermissions response.
 class TestIamPermissionsResponse {
   /// The kind of item this is.
-  core.String kind;
+  core.String? kind;
 
   /// The permissions held by the caller.
   ///
@@ -6609,7 +6319,7 @@ class TestIamPermissionsResponse {
   /// - storage.objects.list — List objects.
   /// - storage.objects.setIamPolicy — Update object IAM policy.
   /// - storage.objects.update — Update object metadata.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -6624,8 +6334,8 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (permissions != null) 'permissions': permissions!,
       };
 }

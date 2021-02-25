@@ -97,13 +97,9 @@ class OperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -142,11 +138,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -202,16 +195,9 @@ class ProjectsBuildsResource {
     CancelBuildRequest request,
     core.String projectId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -259,14 +245,10 @@ class ProjectsBuildsResource {
   async.Future<Operation> create(
     Build request,
     core.String projectId, {
-    core.String parent,
-    core.String $fields,
+    core.String? parent,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (parent != null) 'parent': [parent],
       if ($fields != null) 'fields': [$fields],
@@ -312,15 +294,9 @@ class ProjectsBuildsResource {
   async.Future<Build> get(
     core.String projectId,
     core.String id, {
-    core.String name,
-    core.String $fields,
+    core.String? name,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (name != null) 'name': [name],
       if ($fields != null) 'fields': [$fields],
@@ -373,15 +349,12 @@ class ProjectsBuildsResource {
   /// this method will complete with the same error.
   async.Future<ListBuildsResponse> list(
     core.String projectId, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String parent,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -444,16 +417,9 @@ class ProjectsBuildsResource {
     RetryBuildRequest request,
     core.String projectId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -515,13 +481,9 @@ class ProjectsLocationsBuildsResource {
   async.Future<Build> cancel(
     CancelBuildRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -567,14 +529,10 @@ class ProjectsLocationsBuildsResource {
   async.Future<Operation> create(
     Build request,
     core.String parent, {
-    core.String projectId,
-    core.String $fields,
+    core.String? projectId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if ($fields != null) 'fields': [$fields],
@@ -620,13 +578,10 @@ class ProjectsLocationsBuildsResource {
   /// this method will complete with the same error.
   async.Future<Build> get(
     core.String name, {
-    core.String id,
-    core.String projectId,
-    core.String $fields,
+    core.String? id,
+    core.String? projectId,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (id != null) 'id': [id],
       if (projectId != null) 'projectId': [projectId],
@@ -678,15 +633,12 @@ class ProjectsLocationsBuildsResource {
   /// this method will complete with the same error.
   async.Future<ListBuildsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String projectId,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? projectId,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -748,13 +700,9 @@ class ProjectsLocationsBuildsResource {
   async.Future<Operation> retry(
     RetryBuildRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -810,13 +758,9 @@ class ProjectsLocationsOperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -856,11 +800,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -905,13 +846,9 @@ class ProjectsTriggersResource {
   async.Future<BuildTrigger> create(
     BuildTrigger request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -953,14 +890,8 @@ class ProjectsTriggersResource {
   async.Future<Empty> delete(
     core.String projectId,
     core.String triggerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (triggerId == null) {
-      throw core.ArgumentError('Parameter triggerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1002,14 +933,8 @@ class ProjectsTriggersResource {
   async.Future<BuildTrigger> get(
     core.String projectId,
     core.String triggerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (triggerId == null) {
-      throw core.ArgumentError('Parameter triggerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1052,13 +977,10 @@ class ProjectsTriggersResource {
   /// this method will complete with the same error.
   async.Future<ListBuildTriggersResponse> list(
     core.String projectId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1104,16 +1026,9 @@ class ProjectsTriggersResource {
     BuildTrigger request,
     core.String projectId,
     core.String triggerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (triggerId == null) {
-      throw core.ArgumentError('Parameter triggerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1157,16 +1072,9 @@ class ProjectsTriggersResource {
     RepoSource request,
     core.String projectId,
     core.String triggerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (triggerId == null) {
-      throw core.ArgumentError('Parameter triggerId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1214,17 +1122,10 @@ class ProjectsTriggersResource {
     HttpBody request,
     core.String projectId,
     core.String trigger, {
-    core.String secret,
-    core.String $fields,
+    core.String? secret,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (trigger == null) {
-      throw core.ArgumentError('Parameter trigger is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (secret != null) 'secret': [secret],
       if ($fields != null) 'fields': [$fields],
@@ -1257,15 +1158,15 @@ class ArtifactObjects {
   /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   /// Files in the workspace matching any path pattern will be uploaded to Cloud
   /// Storage with this location as a prefix.
-  core.String location;
+  core.String? location;
 
   /// Path globs used to match files in the build's workspace.
-  core.List<core.String> paths;
+  core.List<core.String>? paths;
 
   /// Stores timing information for pushing all artifact objects.
   ///
   /// Output only.
-  TimeSpan timing;
+  TimeSpan? timing;
 
   ArtifactObjects();
 
@@ -1284,10 +1185,10 @@ class ArtifactObjects {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (location != null) 'location': location,
-        if (paths != null) 'paths': paths,
-        if (timing != null) 'timing': timing.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (location != null) 'location': location!,
+        if (paths != null) 'paths': paths!,
+        if (timing != null) 'timing': timing!.toJson(),
       };
 }
 
@@ -1296,13 +1197,13 @@ class ArtifactObjects {
 /// This is a single record in the artifact manifest JSON file.
 class ArtifactResult {
   /// The file hash of the artifact.
-  core.List<FileHashes> fileHash;
+  core.List<FileHashes>? fileHash;
 
   /// The path of an artifact in a Google Cloud Storage bucket, with the
   /// generation number.
   ///
   /// For example, `gs://mybucket/path/to/output.jar#generation`.
-  core.String location;
+  core.String? location;
 
   ArtifactResult();
 
@@ -1318,10 +1219,10 @@ class ArtifactResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fileHash != null)
-          'fileHash': fileHash.map((value) => value.toJson()).toList(),
-        if (location != null) 'location': location,
+          'fileHash': fileHash!.map((value) => value.toJson()).toList(),
+        if (location != null) 'location': location!,
       };
 }
 
@@ -1335,7 +1236,7 @@ class Artifacts {
   /// The digests of the pushed images will be stored in the Build resource's
   /// results field. If any of the images fail to be pushed, the build is marked
   /// FAILURE.
-  core.List<core.String> images;
+  core.List<core.String>? images;
 
   /// A list of objects to be uploaded to Cloud Storage upon successful
   /// completion of all build steps.
@@ -1345,7 +1246,7 @@ class Artifacts {
   /// credentials. The location and generation of the uploaded objects will be
   /// stored in the Build resource's results field. If any objects fail to be
   /// pushed, the build is marked FAILURE.
-  ArtifactObjects objects;
+  ArtifactObjects? objects;
 
   Artifacts();
 
@@ -1361,9 +1262,9 @@ class Artifacts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (images != null) 'images': images,
-        if (objects != null) 'objects': objects.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (images != null) 'images': images!,
+        if (objects != null) 'objects': objects!.toJson(),
       };
 }
 
@@ -1383,21 +1284,21 @@ class Artifacts {
 class Build {
   /// Artifacts produced by the build that should be uploaded upon successful
   /// completion of all build steps.
-  Artifacts artifacts;
+  Artifacts? artifacts;
 
   /// Secrets and secret environment variables.
-  Secrets availableSecrets;
+  Secrets? availableSecrets;
 
   /// The ID of the `BuildTrigger` that triggered this build, if it was
   /// triggered automatically.
   ///
   /// Output only.
-  core.String buildTriggerId;
+  core.String? buildTriggerId;
 
   /// Time at which the request to create the build was received.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Time at which execution of the build was finished.
   ///
@@ -1405,12 +1306,12 @@ class Build {
   /// build's execution.
   ///
   /// Output only.
-  core.String finishTime;
+  core.String? finishTime;
 
   /// Unique identifier of the build.
   ///
   /// Output only.
-  core.String id;
+  core.String? id;
 
   /// A list of images to be pushed upon the successful completion of all build
   /// steps.
@@ -1419,46 +1320,46 @@ class Build {
   /// digests of the pushed images will be stored in the `Build` resource's
   /// results field. If any of the images fail to be pushed, the build status is
   /// marked `FAILURE`.
-  core.List<core.String> images;
+  core.List<core.String>? images;
 
   /// URL to logs for this build in Google Cloud Console.
   ///
   /// Output only.
-  core.String logUrl;
+  core.String? logUrl;
 
   /// Google Cloud Storage bucket where logs should be written (see
   /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   ///
   /// Logs file names will be of the format
   /// `${logs_bucket}/log-${build_id}.txt`.
-  core.String logsBucket;
+  core.String? logsBucket;
 
   /// The 'Build' name with format:
   /// `projects/{project}/locations/{location}/builds/{build}`, where {build} is
   /// a unique identifier generated by the service.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Special options for this build.
-  BuildOptions options;
+  BuildOptions? options;
 
   /// ID of the project.
   ///
   /// Output only.
-  core.String projectId;
+  core.String? projectId;
 
   /// TTL in queue for this build.
   ///
   /// If provided and the build is enqueued longer than this value, the build
   /// will expire and the build status will be `EXPIRED`. The TTL starts ticking
   /// from create_time.
-  core.String queueTtl;
+  core.String? queueTtl;
 
   /// Results of the build.
   ///
   /// Output only.
-  Results results;
+  Results? results;
 
   /// Secrets to decrypt using Cloud Key Management Service.
   ///
@@ -1466,27 +1367,27 @@ class Build {
   /// data with Cloud Build. Use `available_secrets` to configure builds to
   /// access secrets from Secret Manager. For instructions, see:
   /// https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
-  core.List<Secret> secrets;
+  core.List<Secret>? secrets;
 
   /// IAM service account whose credentials will be used at build runtime.
   ///
   /// Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
   /// ACCOUNT can be email address or uniqueId of the service account. This
   /// field is in beta.
-  core.String serviceAccount;
+  core.String? serviceAccount;
 
   /// The location of the source files to build.
-  Source source;
+  Source? source;
 
   /// A permanent fixed identifier for source.
   ///
   /// Output only.
-  SourceProvenance sourceProvenance;
+  SourceProvenance? sourceProvenance;
 
   /// Time at which execution of the build was started.
   ///
   /// Output only.
-  core.String startTime;
+  core.String? startTime;
 
   /// Status of the build.
   ///
@@ -1501,25 +1402,25 @@ class Build {
   /// - "TIMEOUT" : Build or step took longer than was allowed.
   /// - "CANCELLED" : Build or step was canceled by a user.
   /// - "EXPIRED" : Build was enqueued for longer than the value of `queue_ttl`.
-  core.String status;
+  core.String? status;
 
   /// Customer-readable message about the current status.
   ///
   /// Output only.
-  core.String statusDetail;
+  core.String? statusDetail;
 
   /// The operations to be performed on the workspace.
   ///
   /// Required.
-  core.List<BuildStep> steps;
+  core.List<BuildStep>? steps;
 
   /// Substitutions data for `Build` resource.
-  core.Map<core.String, core.String> substitutions;
+  core.Map<core.String, core.String>? substitutions;
 
   /// Tags for annotation of a `Build`.
   ///
   /// These are not docker tags.
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   /// Amount of time that this build should be allowed to run, to second
   /// granularity.
@@ -1527,7 +1428,7 @@ class Build {
   /// If this amount of time elapses, work on the build will cease and the build
   /// status will be `TIMEOUT`. `timeout` starts ticking from `startTime`.
   /// Default time is ten minutes.
-  core.String timeout;
+  core.String? timeout;
 
   /// Stores timing information for phases of the build.
   ///
@@ -1536,7 +1437,7 @@ class Build {
   /// build does not specify source or images, these keys will not be included.
   ///
   /// Output only.
-  core.Map<core.String, TimeSpan> timing;
+  core.Map<core.String, TimeSpan>? timing;
 
   Build();
 
@@ -1640,7 +1541,9 @@ class Build {
       timeout = _json['timeout'] as core.String;
     }
     if (_json.containsKey('timing')) {
-      timing = (_json['timing'] as core.Map).cast<core.String, core.Map>().map(
+      timing = (_json['timing'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               TimeSpan.fromJson(item as core.Map<core.String, core.dynamic>),
@@ -1649,46 +1552,46 @@ class Build {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (artifacts != null) 'artifacts': artifacts.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (artifacts != null) 'artifacts': artifacts!.toJson(),
         if (availableSecrets != null)
-          'availableSecrets': availableSecrets.toJson(),
-        if (buildTriggerId != null) 'buildTriggerId': buildTriggerId,
-        if (createTime != null) 'createTime': createTime,
-        if (finishTime != null) 'finishTime': finishTime,
-        if (id != null) 'id': id,
-        if (images != null) 'images': images,
-        if (logUrl != null) 'logUrl': logUrl,
-        if (logsBucket != null) 'logsBucket': logsBucket,
-        if (name != null) 'name': name,
-        if (options != null) 'options': options.toJson(),
-        if (projectId != null) 'projectId': projectId,
-        if (queueTtl != null) 'queueTtl': queueTtl,
-        if (results != null) 'results': results.toJson(),
+          'availableSecrets': availableSecrets!.toJson(),
+        if (buildTriggerId != null) 'buildTriggerId': buildTriggerId!,
+        if (createTime != null) 'createTime': createTime!,
+        if (finishTime != null) 'finishTime': finishTime!,
+        if (id != null) 'id': id!,
+        if (images != null) 'images': images!,
+        if (logUrl != null) 'logUrl': logUrl!,
+        if (logsBucket != null) 'logsBucket': logsBucket!,
+        if (name != null) 'name': name!,
+        if (options != null) 'options': options!.toJson(),
+        if (projectId != null) 'projectId': projectId!,
+        if (queueTtl != null) 'queueTtl': queueTtl!,
+        if (results != null) 'results': results!.toJson(),
         if (secrets != null)
-          'secrets': secrets.map((value) => value.toJson()).toList(),
-        if (serviceAccount != null) 'serviceAccount': serviceAccount,
-        if (source != null) 'source': source.toJson(),
+          'secrets': secrets!.map((value) => value.toJson()).toList(),
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (source != null) 'source': source!.toJson(),
         if (sourceProvenance != null)
-          'sourceProvenance': sourceProvenance.toJson(),
-        if (startTime != null) 'startTime': startTime,
-        if (status != null) 'status': status,
-        if (statusDetail != null) 'statusDetail': statusDetail,
+          'sourceProvenance': sourceProvenance!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
+        if (status != null) 'status': status!,
+        if (statusDetail != null) 'statusDetail': statusDetail!,
         if (steps != null)
-          'steps': steps.map((value) => value.toJson()).toList(),
-        if (substitutions != null) 'substitutions': substitutions,
-        if (tags != null) 'tags': tags,
-        if (timeout != null) 'timeout': timeout,
+          'steps': steps!.map((value) => value.toJson()).toList(),
+        if (substitutions != null) 'substitutions': substitutions!,
+        if (tags != null) 'tags': tags!,
+        if (timeout != null) 'timeout': timeout!,
         if (timing != null)
           'timing':
-              timing.map((key, item) => core.MapEntry(key, item.toJson())),
+              timing!.map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
 
 /// Metadata for build operations.
 class BuildOperationMetadata {
   /// The build that the operation is tracking.
-  Build build;
+  Build? build;
 
   BuildOperationMetadata();
 
@@ -1699,8 +1602,8 @@ class BuildOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (build != null) 'build': build.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (build != null) 'build': build!.toJson(),
       };
 }
 
@@ -1713,14 +1616,14 @@ class BuildOptions {
   /// disk size that will be allocated for the build -- the build may run with a
   /// larger disk than requested. At present, the maximum disk size is 1000GB;
   /// builds that request more than the maximum are rejected with an error.
-  core.String diskSizeGb;
+  core.String? diskSizeGb;
 
   /// Option to specify whether or not to apply bash style string operations to
   /// the substitutions.
   ///
   /// NOTE: this is always enabled for triggered builds and cannot be overridden
   /// in the build configuration file.
-  core.bool dynamicSubstitutions;
+  core.bool? dynamicSubstitutions;
 
   /// A list of global environment variable definitions that will exist for all
   /// build steps in this build.
@@ -1729,7 +1632,7 @@ class BuildOptions {
   /// variable will use the build step value. The elements are of the form
   /// "KEY=VALUE" for the environment variable "KEY" being given the value
   /// "VALUE".
-  core.List<core.String> env;
+  core.List<core.String>? env;
 
   /// Option to define build log streaming behavior to Google Cloud Storage.
   /// Possible string values are:
@@ -1738,7 +1641,7 @@ class BuildOptions {
   /// - "STREAM_ON" : Build logs should be streamed to Google Cloud Storage.
   /// - "STREAM_OFF" : Build logs should not be streamed to Google Cloud
   /// Storage; they will be written when the build is completed.
-  core.String logStreamingOption;
+  core.String? logStreamingOption;
 
   /// Option to specify the logging mode, which determines if and where build
   /// logs are stored.
@@ -1753,7 +1656,7 @@ class BuildOptions {
   /// both the Cloud Console UI and Cloud SDK are based on Cloud Storage logs,
   /// so neither will provide logs if this option is chosen.
   /// - "NONE" : Turn off all logging. No build logs will be captured.
-  core.String logging;
+  core.String? logging;
 
   /// Compute Engine machine type on which to run the build.
   /// Possible string values are:
@@ -1762,23 +1665,23 @@ class BuildOptions {
   /// - "N1_HIGHCPU_32" : Highcpu machine with 32 CPUs.
   /// - "E2_HIGHCPU_8" : Highcpu e2 machine with 8 CPUs.
   /// - "E2_HIGHCPU_32" : Highcpu e2 machine with 32 CPUs.
-  core.String machineType;
+  core.String? machineType;
 
   /// Requested verifiability options.
   /// Possible string values are:
   /// - "NOT_VERIFIED" : Not a verifiable build. (default)
   /// - "VERIFIED" : Verified build.
-  core.String requestedVerifyOption;
+  core.String? requestedVerifyOption;
 
   /// A list of global environment variables, which are encrypted using a Cloud
   /// Key Management Service crypto key.
   ///
   /// These values must be specified in the build's `Secret`. These variables
   /// will be available to all build steps in this build.
-  core.List<core.String> secretEnv;
+  core.List<core.String>? secretEnv;
 
   /// Requested hash for SourceProvenance.
-  core.List<core.String> sourceProvenanceHash;
+  core.List<core.String>? sourceProvenanceHash;
 
   /// Option to specify behavior when there is an error in the substitution
   /// checks.
@@ -1789,7 +1692,7 @@ class BuildOptions {
   /// - "MUST_MATCH" : Fails the build if error in substitutions checks, like
   /// missing a substitution in the template or in the map.
   /// - "ALLOW_LOOSE" : Do not fail the build if error in substitutions checks.
-  core.String substitutionOption;
+  core.String? substitutionOption;
 
   /// Global list of volumes to mount for ALL build steps Each volume is created
   /// as an empty volume prior to starting the build process.
@@ -1799,13 +1702,13 @@ class BuildOptions {
   /// build step. Using a global volume in a build with only one step is not
   /// valid as it is indicative of a build request with an incorrect
   /// configuration.
-  core.List<Volume> volumes;
+  core.List<Volume>? volumes;
 
   /// Option to specify a `WorkerPool` for the build.
   ///
   /// Format: projects/{project}/locations/{location}/workerPools/{workerPool}
   /// This field is in beta and is available only to restricted users.
-  core.String workerPool;
+  core.String? workerPool;
 
   BuildOptions();
 
@@ -1857,25 +1760,25 @@ class BuildOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (dynamicSubstitutions != null)
-          'dynamicSubstitutions': dynamicSubstitutions,
-        if (env != null) 'env': env,
+          'dynamicSubstitutions': dynamicSubstitutions!,
+        if (env != null) 'env': env!,
         if (logStreamingOption != null)
-          'logStreamingOption': logStreamingOption,
-        if (logging != null) 'logging': logging,
-        if (machineType != null) 'machineType': machineType,
+          'logStreamingOption': logStreamingOption!,
+        if (logging != null) 'logging': logging!,
+        if (machineType != null) 'machineType': machineType!,
         if (requestedVerifyOption != null)
-          'requestedVerifyOption': requestedVerifyOption,
-        if (secretEnv != null) 'secretEnv': secretEnv,
+          'requestedVerifyOption': requestedVerifyOption!,
+        if (secretEnv != null) 'secretEnv': secretEnv!,
         if (sourceProvenanceHash != null)
-          'sourceProvenanceHash': sourceProvenanceHash,
+          'sourceProvenanceHash': sourceProvenanceHash!,
         if (substitutionOption != null)
-          'substitutionOption': substitutionOption,
+          'substitutionOption': substitutionOption!,
         if (volumes != null)
-          'volumes': volumes.map((value) => value.toJson()).toList(),
-        if (workerPool != null) 'workerPool': workerPool,
+          'volumes': volumes!.map((value) => value.toJson()).toList(),
+        if (workerPool != null) 'workerPool': workerPool!,
       };
 }
 
@@ -1887,7 +1790,7 @@ class BuildStep {
   /// `args` are used as arguments to that entrypoint. If the image does not
   /// define an entrypoint, the first element in args is used as the entrypoint,
   /// and the remainder will be used as arguments.
-  core.List<core.String> args;
+  core.List<core.String>? args;
 
   /// Working directory to use when running this step's container.
   ///
@@ -1898,23 +1801,23 @@ class BuildStep {
   /// specified. If the build specifies a `RepoSource` with `dir` and a step
   /// with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is
   /// ignored for the step's execution.
-  core.String dir;
+  core.String? dir;
 
   /// Entrypoint to be used instead of the build step image's default
   /// entrypoint.
   ///
   /// If unset, the image's default entrypoint is used.
-  core.String entrypoint;
+  core.String? entrypoint;
 
   /// A list of environment variable definitions to be used when running a step.
   ///
   /// The elements are of the form "KEY=VALUE" for the environment variable
   /// "KEY" being given the value "VALUE".
-  core.List<core.String> env;
+  core.List<core.String>? env;
 
   /// Unique identifier for this build step, used in `wait_for` to reference
   /// this build step as a dependency.
-  core.String id;
+  core.String? id;
 
   /// The name of the container image that will run this particular build step.
   ///
@@ -1931,19 +1834,19 @@ class BuildStep {
   /// available to use as the name for a later build step.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Stores timing information for pulling this build step's builder image
   /// only.
   ///
   /// Output only.
-  TimeSpan pullTiming;
+  TimeSpan? pullTiming;
 
   /// A list of environment variables which are encrypted using a Cloud Key
   /// Management Service crypto key.
   ///
   /// These values must be specified in the build's `Secret`.
-  core.List<core.String> secretEnv;
+  core.List<core.String>? secretEnv;
 
   /// Status of the build step.
   ///
@@ -1961,18 +1864,18 @@ class BuildStep {
   /// - "TIMEOUT" : Build or step took longer than was allowed.
   /// - "CANCELLED" : Build or step was canceled by a user.
   /// - "EXPIRED" : Build was enqueued for longer than the value of `queue_ttl`.
-  core.String status;
+  core.String? status;
 
   /// Time limit for executing this build step.
   ///
   /// If not defined, the step has no time limit and will be allowed to continue
   /// to run until either it completes or the build itself times out.
-  core.String timeout;
+  core.String? timeout;
 
   /// Stores timing information for executing this build step.
   ///
   /// Output only.
-  TimeSpan timing;
+  TimeSpan? timing;
 
   /// List of volumes to mount into the build step.
   ///
@@ -1980,7 +1883,7 @@ class BuildStep {
   /// step. Upon completion of the build, volumes and their contents are
   /// discarded. Using a named volume in only one step is not valid as it is
   /// indicative of a build request with an incorrect configuration.
-  core.List<Volume> volumes;
+  core.List<Volume>? volumes;
 
   /// The ID(s) of the step(s) that this build step depends on.
   ///
@@ -1988,7 +1891,7 @@ class BuildStep {
   /// have completed successfully. If `wait_for` is empty, this build step will
   /// start when all previous build steps in the `Build.Steps` list have
   /// completed successfully.
-  core.List<core.String> waitFor;
+  core.List<core.String>? waitFor;
 
   BuildStep();
 
@@ -2047,21 +1950,21 @@ class BuildStep {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (args != null) 'args': args,
-        if (dir != null) 'dir': dir,
-        if (entrypoint != null) 'entrypoint': entrypoint,
-        if (env != null) 'env': env,
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
-        if (pullTiming != null) 'pullTiming': pullTiming.toJson(),
-        if (secretEnv != null) 'secretEnv': secretEnv,
-        if (status != null) 'status': status,
-        if (timeout != null) 'timeout': timeout,
-        if (timing != null) 'timing': timing.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (args != null) 'args': args!,
+        if (dir != null) 'dir': dir!,
+        if (entrypoint != null) 'entrypoint': entrypoint!,
+        if (env != null) 'env': env!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (pullTiming != null) 'pullTiming': pullTiming!.toJson(),
+        if (secretEnv != null) 'secretEnv': secretEnv!,
+        if (status != null) 'status': status!,
+        if (timeout != null) 'timeout': timeout!,
+        if (timing != null) 'timing': timing!.toJson(),
         if (volumes != null)
-          'volumes': volumes.map((value) => value.toJson()).toList(),
-        if (waitFor != null) 'waitFor': waitFor,
+          'volumes': volumes!.map((value) => value.toJson()).toList(),
+        if (waitFor != null) 'waitFor': waitFor!,
       };
 }
 
@@ -2069,33 +1972,33 @@ class BuildStep {
 /// changes.
 class BuildTrigger {
   /// Contents of the build template.
-  Build build;
+  Build? build;
 
   /// Time when the trigger was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Human-readable description of this trigger.
-  core.String description;
+  core.String? description;
 
   /// If true, the trigger will never automatically execute a build.
-  core.bool disabled;
+  core.bool? disabled;
 
   /// Path, from the source root, to the build configuration file (i.e.
   /// cloudbuild.yaml).
-  core.String filename;
+  core.String? filename;
 
   /// GitHubEventsConfig describes the configuration of a trigger that creates a
   /// build whenever a GitHub event is received.
   ///
   /// Mutually exclusive with `trigger_template`.
-  GitHubEventsConfig github;
+  GitHubEventsConfig? github;
 
   /// Unique identifier of the trigger.
   ///
   /// Output only.
-  core.String id;
+  core.String? id;
 
   /// ignored_files and included_files are file glob matches using
   /// https://golang.org/pkg/path/filepath/#Match extended with support for
@@ -2106,7 +2009,7 @@ class BuildTrigger {
   /// empty, then we ignore any files that match any of the ignored_file globs.
   /// If the change has no files that are outside of the ignored_files globs,
   /// then we do not trigger a build.
-  core.List<core.String> ignoredFiles;
+  core.List<core.String>? ignoredFiles;
 
   /// If any of the files altered in the commit pass the ignored_files filter
   /// and included_files is empty, then as far as this filter is concerned, we
@@ -2116,7 +2019,7 @@ class BuildTrigger {
   /// and included_files is not empty, then we make sure that at least one of
   /// those files matches a included_files glob. If not, then we do not trigger
   /// a build.
-  core.List<core.String> includedFiles;
+  core.List<core.String>? includedFiles;
 
   /// User-assigned name of the trigger.
   ///
@@ -2124,22 +2027,22 @@ class BuildTrigger {
   /// requirements: + They must contain only alphanumeric characters and dashes.
   /// + They can be 1-64 characters long. + They must begin and end with an
   /// alphanumeric character.
-  core.String name;
+  core.String? name;
 
   /// Substitutions for Build resource.
   ///
   /// The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
-  core.Map<core.String, core.String> substitutions;
+  core.Map<core.String, core.String>? substitutions;
 
   /// Tags for annotation of a `BuildTrigger`
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   /// Template describing the types of source changes to trigger a build.
   ///
   /// Branch and tag names in trigger templates are interpreted as regular
   /// expressions. Any branch or tag change that matches that regular expression
   /// will trigger a build. Mutually exclusive with `github`.
-  RepoSource triggerTemplate;
+  RepoSource? triggerTemplate;
 
   BuildTrigger();
 
@@ -2201,37 +2104,37 @@ class BuildTrigger {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (build != null) 'build': build.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (disabled != null) 'disabled': disabled,
-        if (filename != null) 'filename': filename,
-        if (github != null) 'github': github.toJson(),
-        if (id != null) 'id': id,
-        if (ignoredFiles != null) 'ignoredFiles': ignoredFiles,
-        if (includedFiles != null) 'includedFiles': includedFiles,
-        if (name != null) 'name': name,
-        if (substitutions != null) 'substitutions': substitutions,
-        if (tags != null) 'tags': tags,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (build != null) 'build': build!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (disabled != null) 'disabled': disabled!,
+        if (filename != null) 'filename': filename!,
+        if (github != null) 'github': github!.toJson(),
+        if (id != null) 'id': id!,
+        if (ignoredFiles != null) 'ignoredFiles': ignoredFiles!,
+        if (includedFiles != null) 'includedFiles': includedFiles!,
+        if (name != null) 'name': name!,
+        if (substitutions != null) 'substitutions': substitutions!,
+        if (tags != null) 'tags': tags!,
         if (triggerTemplate != null)
-          'triggerTemplate': triggerTemplate.toJson(),
+          'triggerTemplate': triggerTemplate!.toJson(),
       };
 }
 
 /// An image built by the pipeline.
 class BuiltImage {
   /// Docker Registry 2.0 digest.
-  core.String digest;
+  core.String? digest;
 
   /// Name used to push the container image to Google Container Registry, as
   /// presented to `docker push`.
-  core.String name;
+  core.String? name;
 
   /// Stores timing information for pushing the specified image.
   ///
   /// Output only.
-  TimeSpan pushTiming;
+  TimeSpan? pushTiming;
 
   BuiltImage();
 
@@ -2248,10 +2151,10 @@ class BuiltImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (digest != null) 'digest': digest,
-        if (name != null) 'name': name,
-        if (pushTiming != null) 'pushTiming': pushTiming.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (digest != null) 'digest': digest!,
+        if (name != null) 'name': name!,
+        if (pushTiming != null) 'pushTiming': pushTiming!.toJson(),
       };
 }
 
@@ -2260,17 +2163,17 @@ class CancelBuildRequest {
   /// ID of the build.
   ///
   /// Required.
-  core.String id;
+  core.String? id;
 
   /// The name of the `Build` to cancel.
   ///
   /// Format: `projects/{project}/locations/{location}/builds/{build}`
-  core.String name;
+  core.String? name;
 
   /// ID of the project.
   ///
   /// Required.
-  core.String projectId;
+  core.String? projectId;
 
   CancelBuildRequest();
 
@@ -2286,10 +2189,10 @@ class CancelBuildRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
@@ -2301,7 +2204,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2318,14 +2221,14 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Container message for hashes of byte content of files, used in
 /// SourceProvenance messages to verify integrity of source input to the build.
 class FileHashes {
   /// Collection of file hashes.
-  core.List<Hash> fileHash;
+  core.List<Hash>? fileHash;
 
   FileHashes();
 
@@ -2338,9 +2241,9 @@ class FileHashes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fileHash != null)
-          'fileHash': fileHash.map((value) => value.toJson()).toList(),
+          'fileHash': fileHash!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2350,26 +2253,26 @@ class FileHashes {
 /// This message is experimental.
 class GitHubEventsConfig {
   /// The installationID that emits the GitHub event.
-  core.String installationId;
+  core.String? installationId;
 
   /// Name of the repository.
   ///
   /// For example: The name for
   /// https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
-  core.String name;
+  core.String? name;
 
   /// Owner of the repository.
   ///
   /// For example: The owner for
   /// https://github.com/googlecloudplatform/cloud-builders is
   /// "googlecloudplatform".
-  core.String owner;
+  core.String? owner;
 
   /// filter to match changes in pull requests.
-  PullRequestFilter pullRequest;
+  PullRequestFilter? pullRequest;
 
   /// filter to match changes in refs like branches, tags.
-  PushFilter push;
+  PushFilter? push;
 
   GitHubEventsConfig();
 
@@ -2393,19 +2296,19 @@ class GitHubEventsConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (installationId != null) 'installationId': installationId,
-        if (name != null) 'name': name,
-        if (owner != null) 'owner': owner,
-        if (pullRequest != null) 'pullRequest': pullRequest.toJson(),
-        if (push != null) 'push': push.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (installationId != null) 'installationId': installationId!,
+        if (name != null) 'name': name!,
+        if (owner != null) 'owner': owner!,
+        if (pullRequest != null) 'pullRequest': pullRequest!.toJson(),
+        if (push != null) 'push': push!.toJson(),
       };
 }
 
 /// HTTPDelivery is the delivery configuration for an HTTP notification.
 class HTTPDelivery {
   /// The URI to which JSON-containing HTTP POST requests should be sent.
-  core.String uri;
+  core.String? uri;
 
   HTTPDelivery();
 
@@ -2415,8 +2318,8 @@ class HTTPDelivery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -2427,11 +2330,11 @@ class Hash {
   /// - "NONE" : No hash requested.
   /// - "SHA256" : Use a sha256 hash.
   /// - "MD5" : Use a md5 hash.
-  core.String type;
+  core.String? type;
 
   /// The hash value.
-  core.String value;
-  core.List<core.int> get valueAsBytes => convert.base64.decode(value);
+  core.String? value;
+  core.List<core.int> get valueAsBytes => convert.base64.decode(value!);
 
   set valueAsBytes(core.List<core.int> _bytes) {
     value =
@@ -2449,9 +2352,9 @@ class Hash {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2476,11 +2379,11 @@ class Hash {
 class HttpBody {
   /// The HTTP Content-Type header value specifying the content type of the
   /// body.
-  core.String contentType;
+  core.String? contentType;
 
   /// The HTTP request/response body as raw binary.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -2493,7 +2396,7 @@ class HttpBody {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> extensions;
+  core.List<core.Map<core.String, core.Object>>? extensions;
 
   HttpBody();
 
@@ -2517,10 +2420,10 @@ class HttpBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentType != null) 'contentType': contentType,
-        if (data != null) 'data': data,
-        if (extensions != null) 'extensions': extensions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentType != null) 'contentType': contentType!,
+        if (data != null) 'data': data!,
+        if (extensions != null) 'extensions': extensions!,
       };
 }
 
@@ -2533,12 +2436,12 @@ class InlineSecret {
   /// secrets, and must be used by at least one build step. Values can be at
   /// most 64 KB in size. There can be at most 100 secret values across all of a
   /// build's secrets.
-  core.Map<core.String, core.String> envMap;
+  core.Map<core.String, core.String>? envMap;
 
   /// Resource name of Cloud KMS crypto key to decrypt the encrypted value.
   ///
   /// In format: projects / * /locations / * /keyRings / * /cryptoKeys / *
-  core.String kmsKeyName;
+  core.String? kmsKeyName;
 
   InlineSecret();
 
@@ -2557,19 +2460,19 @@ class InlineSecret {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (envMap != null) 'envMap': envMap,
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (envMap != null) 'envMap': envMap!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
       };
 }
 
 /// Response containing existing `BuildTriggers`.
 class ListBuildTriggersResponse {
   /// Token to receive the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// `BuildTriggers` for the project, sorted by `create_time` descending.
-  core.List<BuildTrigger> triggers;
+  core.List<BuildTrigger>? triggers;
 
   ListBuildTriggersResponse();
 
@@ -2585,22 +2488,22 @@ class ListBuildTriggersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (triggers != null)
-          'triggers': triggers.map((value) => value.toJson()).toList(),
+          'triggers': triggers!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response including listed builds.
 class ListBuildsResponse {
   /// Builds will be sorted by `create_time`, descending.
-  core.List<Build> builds;
+  core.List<Build>? builds;
 
   /// Token to receive the next page of results.
   ///
   /// This will be absent if the end of the response list has been reached.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListBuildsResponse();
 
@@ -2616,10 +2519,10 @@ class ListBuildsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (builds != null)
-          'builds': builds.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'builds': builds!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2630,22 +2533,22 @@ class Notification {
   ///
   /// Currently, this is assumed to be a CEL program. See
   /// https://opensource.google/projects/cel for more.
-  core.String filter;
+  core.String? filter;
 
   /// Configuration for HTTP delivery.
-  HTTPDelivery httpDelivery;
+  HTTPDelivery? httpDelivery;
 
   /// Configuration for Slack delivery.
-  SlackDelivery slackDelivery;
+  SlackDelivery? slackDelivery;
 
   /// Configuration for SMTP (email) delivery.
-  SMTPDelivery smtpDelivery;
+  SMTPDelivery? smtpDelivery;
 
   /// Escape hatch for users to supply custom delivery configs.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> structDelivery;
+  core.Map<core.String, core.Object>? structDelivery;
 
   Notification();
 
@@ -2677,28 +2580,28 @@ class Notification {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filter != null) 'filter': filter,
-        if (httpDelivery != null) 'httpDelivery': httpDelivery.toJson(),
-        if (slackDelivery != null) 'slackDelivery': slackDelivery.toJson(),
-        if (smtpDelivery != null) 'smtpDelivery': smtpDelivery.toJson(),
-        if (structDelivery != null) 'structDelivery': structDelivery,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (httpDelivery != null) 'httpDelivery': httpDelivery!.toJson(),
+        if (slackDelivery != null) 'slackDelivery': slackDelivery!.toJson(),
+        if (smtpDelivery != null) 'smtpDelivery': smtpDelivery!.toJson(),
+        if (structDelivery != null) 'structDelivery': structDelivery!,
       };
 }
 
 /// NotifierConfig is the top-level configuration message.
 class NotifierConfig {
   /// The API version of this configuration format.
-  core.String apiVersion;
+  core.String? apiVersion;
 
   /// The type of notifier to use (e.g. SMTPNotifier).
-  core.String kind;
+  core.String? kind;
 
   /// Metadata for referring to/handling/deploying this notifier.
-  NotifierMetadata metadata;
+  NotifierMetadata? metadata;
 
   /// The actual configuration for this notifier.
-  NotifierSpec spec;
+  NotifierSpec? spec;
 
   NotifierConfig();
 
@@ -2719,11 +2622,11 @@ class NotifierConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiVersion != null) 'apiVersion': apiVersion,
-        if (kind != null) 'kind': kind,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (spec != null) 'spec': spec.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiVersion != null) 'apiVersion': apiVersion!,
+        if (kind != null) 'kind': kind!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (spec != null) 'spec': spec!.toJson(),
       };
 }
 
@@ -2733,13 +2636,13 @@ class NotifierMetadata {
   /// The human-readable and user-given name for the notifier.
   ///
   /// For example: "repo-merge-email-notifier".
-  core.String name;
+  core.String? name;
 
   /// The string representing the name and version of notifier to deploy.
   ///
   /// Expected to be of the form of "/:". For example:
   /// "gcr.io/my-project/notifiers/smtp:1.2.34".
-  core.String notifier;
+  core.String? notifier;
 
   NotifierMetadata();
 
@@ -2752,9 +2655,9 @@ class NotifierMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (notifier != null) 'notifier': notifier,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (notifier != null) 'notifier': notifier!,
       };
 }
 
@@ -2763,7 +2666,7 @@ class NotifierMetadata {
 class NotifierSecret {
   /// Name is the local name of the secret, such as the verbatim string
   /// "my-smtp-password".
-  core.String name;
+  core.String? name;
 
   /// Value is interpreted to be a resource path for fetching the actual
   /// (versioned) secret data for this secret.
@@ -2771,7 +2674,7 @@ class NotifierSecret {
   /// For example, this would be a Google Cloud Secret Manager secret version
   /// resource path like:
   /// "projects/my-project/secrets/my-secret/versions/latest".
-  core.String value;
+  core.String? value;
 
   NotifierSecret();
 
@@ -2784,9 +2687,9 @@ class NotifierSecret {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2795,7 +2698,7 @@ class NotifierSecret {
 class NotifierSecretRef {
   /// The value of `secret_ref` should be a `name` that is registered in a
   /// `Secret` in the `secrets` list of the `Spec`.
-  core.String secretRef;
+  core.String? secretRef;
 
   NotifierSecretRef();
 
@@ -2805,18 +2708,18 @@ class NotifierSecretRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (secretRef != null) 'secretRef': secretRef,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (secretRef != null) 'secretRef': secretRef!,
       };
 }
 
 /// NotifierSpec is the configuration container for notifications.
 class NotifierSpec {
   /// The configuration of this particular notifier.
-  Notification notification;
+  Notification? notification;
 
   /// Configurations for secret resources used by this particular notifier.
-  core.List<NotifierSecret> secrets;
+  core.List<NotifierSecret>? secrets;
 
   NotifierSpec();
 
@@ -2833,10 +2736,10 @@ class NotifierSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (notification != null) 'notification': notification.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (notification != null) 'notification': notification!.toJson(),
         if (secrets != null)
-          'secrets': secrets.map((value) => value.toJson()).toList(),
+          'secrets': secrets!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2847,10 +2750,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -2861,14 +2764,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -2881,7 +2784,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -2916,12 +2819,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -2932,7 +2835,7 @@ class PullRequestFilter {
   ///
   /// The syntax of the regular expressions accepted is the syntax accepted by
   /// RE2 and described at https://github.com/google/re2/wiki/Syntax
-  core.String branch;
+  core.String? branch;
 
   /// Configure builds to run whether a repository owner or collaborator need to
   /// comment `/gcbrun`.
@@ -2944,10 +2847,10 @@ class PullRequestFilter {
   /// - "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY" : Enforce that
   /// repository owners or collaborators must comment on external contributors'
   /// Pull Requests before builds are triggered.
-  core.String commentControl;
+  core.String? commentControl;
 
   /// If true, branches that do NOT match the git_ref will trigger a build.
-  core.bool invertRegex;
+  core.bool? invertRegex;
 
   PullRequestFilter();
 
@@ -2963,10 +2866,10 @@ class PullRequestFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (branch != null) 'branch': branch,
-        if (commentControl != null) 'commentControl': commentControl,
-        if (invertRegex != null) 'invertRegex': invertRegex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (branch != null) 'branch': branch!,
+        if (commentControl != null) 'commentControl': commentControl!,
+        if (invertRegex != null) 'invertRegex': invertRegex!,
       };
 }
 
@@ -2976,17 +2879,17 @@ class PushFilter {
   ///
   /// The syntax of the regular expressions accepted is the syntax accepted by
   /// RE2 and described at https://github.com/google/re2/wiki/Syntax
-  core.String branch;
+  core.String? branch;
 
   /// When true, only trigger a build if the revision regex does NOT match the
   /// git_ref regex.
-  core.bool invertRegex;
+  core.bool? invertRegex;
 
   /// Regexes matching tags to build.
   ///
   /// The syntax of the regular expressions accepted is the syntax accepted by
   /// RE2 and described at https://github.com/google/re2/wiki/Syntax
-  core.String tag;
+  core.String? tag;
 
   PushFilter();
 
@@ -3002,10 +2905,10 @@ class PushFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (branch != null) 'branch': branch,
-        if (invertRegex != null) 'invertRegex': invertRegex,
-        if (tag != null) 'tag': tag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (branch != null) 'branch': branch!,
+        if (invertRegex != null) 'invertRegex': invertRegex!,
+        if (tag != null) 'tag': tag!,
       };
 }
 
@@ -3018,7 +2921,7 @@ class ReceiveTriggerWebhookResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Location of the source in a Google Cloud Source Repository.
@@ -3027,39 +2930,39 @@ class RepoSource {
   ///
   /// The syntax of the regular expressions accepted is the syntax accepted by
   /// RE2 and described at https://github.com/google/re2/wiki/Syntax
-  core.String branchName;
+  core.String? branchName;
 
   /// Explicit commit SHA to build.
-  core.String commitSha;
+  core.String? commitSha;
 
   /// Directory, relative to the source root, in which to run the build.
   ///
   /// This must be a relative path. If a step's `dir` is specified and is an
   /// absolute path, this value is ignored for that step's execution.
-  core.String dir;
+  core.String? dir;
 
   /// Only trigger a build if the revision regex does NOT match the revision
   /// regex.
-  core.bool invertRegex;
+  core.bool? invertRegex;
 
   /// ID of the project that owns the Cloud Source Repository.
   ///
   /// If omitted, the project ID requesting the build is assumed.
-  core.String projectId;
+  core.String? projectId;
 
   /// Name of the Cloud Source Repository.
-  core.String repoName;
+  core.String? repoName;
 
   /// Substitutions to use in a triggered build.
   ///
   /// Should only be used with RunBuildTrigger
-  core.Map<core.String, core.String> substitutions;
+  core.Map<core.String, core.String>? substitutions;
 
   /// Regex matching tags to build.
   ///
   /// The syntax of the regular expressions accepted is the syntax accepted by
   /// RE2 and described at https://github.com/google/re2/wiki/Syntax
-  core.String tagName;
+  core.String? tagName;
 
   RepoSource();
 
@@ -3097,15 +3000,15 @@ class RepoSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (branchName != null) 'branchName': branchName,
-        if (commitSha != null) 'commitSha': commitSha,
-        if (dir != null) 'dir': dir,
-        if (invertRegex != null) 'invertRegex': invertRegex,
-        if (projectId != null) 'projectId': projectId,
-        if (repoName != null) 'repoName': repoName,
-        if (substitutions != null) 'substitutions': substitutions,
-        if (tagName != null) 'tagName': tagName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (branchName != null) 'branchName': branchName!,
+        if (commitSha != null) 'commitSha': commitSha!,
+        if (dir != null) 'dir': dir!,
+        if (invertRegex != null) 'invertRegex': invertRegex!,
+        if (projectId != null) 'projectId': projectId!,
+        if (repoName != null) 'repoName': repoName!,
+        if (substitutions != null) 'substitutions': substitutions!,
+        if (tagName != null) 'tagName': tagName!,
       };
 }
 
@@ -3114,14 +3017,14 @@ class Results {
   /// Path to the artifact manifest.
   ///
   /// Only populated when artifacts are uploaded.
-  core.String artifactManifest;
+  core.String? artifactManifest;
 
   /// Time to push all non-container artifacts.
-  TimeSpan artifactTiming;
+  TimeSpan? artifactTiming;
 
   /// List of build step digests, in the order corresponding to build step
   /// indices.
-  core.List<core.String> buildStepImages;
+  core.List<core.String>? buildStepImages;
 
   /// List of build step outputs, produced by builder images, in the order
   /// corresponding to build step indices.
@@ -3129,15 +3032,15 @@ class Results {
   /// [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders)
   /// can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the
   /// first 4KB of data is stored.
-  core.List<core.String> buildStepOutputs;
+  core.List<core.String>? buildStepOutputs;
 
   /// Container images that were built as a part of the build.
-  core.List<BuiltImage> images;
+  core.List<BuiltImage>? images;
 
   /// Number of artifacts uploaded.
   ///
   /// Only populated when artifacts are uploaded.
-  core.String numArtifacts;
+  core.String? numArtifacts;
 
   Results();
 
@@ -3170,14 +3073,14 @@ class Results {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (artifactManifest != null) 'artifactManifest': artifactManifest,
-        if (artifactTiming != null) 'artifactTiming': artifactTiming.toJson(),
-        if (buildStepImages != null) 'buildStepImages': buildStepImages,
-        if (buildStepOutputs != null) 'buildStepOutputs': buildStepOutputs,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (artifactManifest != null) 'artifactManifest': artifactManifest!,
+        if (artifactTiming != null) 'artifactTiming': artifactTiming!.toJson(),
+        if (buildStepImages != null) 'buildStepImages': buildStepImages!,
+        if (buildStepOutputs != null) 'buildStepOutputs': buildStepOutputs!,
         if (images != null)
-          'images': images.map((value) => value.toJson()).toList(),
-        if (numArtifacts != null) 'numArtifacts': numArtifacts,
+          'images': images!.map((value) => value.toJson()).toList(),
+        if (numArtifacts != null) 'numArtifacts': numArtifacts!,
       };
 }
 
@@ -3186,17 +3089,17 @@ class RetryBuildRequest {
   /// Build ID of the original build.
   ///
   /// Required.
-  core.String id;
+  core.String? id;
 
   /// The name of the `Build` to retry.
   ///
   /// Format: `projects/{project}/locations/{location}/builds/{build}`
-  core.String name;
+  core.String? name;
 
   /// ID of the project.
   ///
   /// Required.
-  core.String projectId;
+  core.String? projectId;
 
   RetryBuildRequest();
 
@@ -3212,10 +3115,10 @@ class RetryBuildRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
@@ -3224,23 +3127,23 @@ class SMTPDelivery {
   /// This is the SMTP account/email that appears in the `From:` of the email.
   ///
   /// If empty, it is assumed to be sender.
-  core.String fromAddress;
+  core.String? fromAddress;
 
   /// The SMTP sender's password.
-  NotifierSecretRef password;
+  NotifierSecretRef? password;
 
   /// The SMTP port of the server.
-  core.String port;
+  core.String? port;
 
   /// This is the list of addresses to which we send the email (i.e. in the
   /// `To:` of the email).
-  core.List<core.String> recipientAddresses;
+  core.List<core.String>? recipientAddresses;
 
   /// This is the SMTP account/email that is used to send the message.
-  core.String senderAddress;
+  core.String? senderAddress;
 
   /// The address of the SMTP server.
-  core.String server;
+  core.String? server;
 
   SMTPDelivery();
 
@@ -3268,14 +3171,14 @@ class SMTPDelivery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fromAddress != null) 'fromAddress': fromAddress,
-        if (password != null) 'password': password.toJson(),
-        if (port != null) 'port': port,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fromAddress != null) 'fromAddress': fromAddress!,
+        if (password != null) 'password': password!.toJson(),
+        if (port != null) 'port': port!,
         if (recipientAddresses != null)
-          'recipientAddresses': recipientAddresses,
-        if (senderAddress != null) 'senderAddress': senderAddress,
-        if (server != null) 'server': server,
+          'recipientAddresses': recipientAddresses!,
+        if (senderAddress != null) 'senderAddress': senderAddress!,
+        if (server != null) 'server': server!,
       };
 }
 
@@ -3287,7 +3190,7 @@ class SMTPDelivery {
 /// https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials.
 class Secret {
   /// Cloud KMS key name to use to decrypt these envs.
-  core.String kmsKeyName;
+  core.String? kmsKeyName;
 
   /// Map of environment variable name to its encrypted value.
   ///
@@ -3295,7 +3198,7 @@ class Secret {
   /// secrets, and must be used by at least one build step. Values can be at
   /// most 64 KB in size. There can be at most 100 secret values across all of a
   /// build's secrets.
-  core.Map<core.String, core.String> secretEnv;
+  core.Map<core.String, core.String>? secretEnv;
 
   Secret();
 
@@ -3314,9 +3217,9 @@ class Secret {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
-        if (secretEnv != null) 'secretEnv': secretEnv,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (secretEnv != null) 'secretEnv': secretEnv!,
       };
 }
 
@@ -3326,12 +3229,12 @@ class SecretManagerSecret {
   ///
   /// Secret environment variables must be unique across all of a build's
   /// secrets, and must be used by at least one build step.
-  core.String env;
+  core.String? env;
 
   /// Resource name of the SecretVersion.
   ///
   /// In format: projects / * /secrets / * /versions / *
-  core.String versionName;
+  core.String? versionName;
 
   SecretManagerSecret();
 
@@ -3344,9 +3247,9 @@ class SecretManagerSecret {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (env != null) 'env': env,
-        if (versionName != null) 'versionName': versionName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (env != null) 'env': env!,
+        if (versionName != null) 'versionName': versionName!,
       };
 }
 
@@ -3354,10 +3257,10 @@ class SecretManagerSecret {
 class Secrets {
   /// Secrets encrypted with KMS key and the associated secret environment
   /// variable.
-  core.List<InlineSecret> inline;
+  core.List<InlineSecret>? inline;
 
   /// Secrets in Secret Manager and associated secret environment variable.
-  core.List<SecretManagerSecret> secretManager;
+  core.List<SecretManagerSecret>? secretManager;
 
   Secrets();
 
@@ -3376,12 +3279,12 @@ class Secrets {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (inline != null)
-          'inline': inline.map((value) => value.toJson()).toList(),
+          'inline': inline!.map((value) => value.toJson()).toList(),
         if (secretManager != null)
           'secretManager':
-              secretManager.map((value) => value.toJson()).toList(),
+              secretManager!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3393,7 +3296,7 @@ class Secrets {
 class SlackDelivery {
   /// The secret reference for the Slack webhook URI for sending messages to a
   /// channel.
-  NotifierSecretRef webhookUri;
+  NotifierSecretRef? webhookUri;
 
   SlackDelivery();
 
@@ -3404,8 +3307,8 @@ class SlackDelivery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (webhookUri != null) 'webhookUri': webhookUri.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (webhookUri != null) 'webhookUri': webhookUri!.toJson(),
       };
 }
 
@@ -3413,10 +3316,10 @@ class SlackDelivery {
 class Source {
   /// If provided, get the source from this location in a Cloud Source
   /// Repository.
-  RepoSource repoSource;
+  RepoSource? repoSource;
 
   /// If provided, get the source from this location in Google Cloud Storage.
-  StorageSource storageSource;
+  StorageSource? storageSource;
 
   Source();
 
@@ -3431,9 +3334,9 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (repoSource != null) 'repoSource': repoSource.toJson(),
-        if (storageSource != null) 'storageSource': storageSource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (repoSource != null) 'repoSource': repoSource!.toJson(),
+        if (storageSource != null) 'storageSource': storageSource!.toJson(),
       };
 }
 
@@ -3453,22 +3356,22 @@ class SourceProvenance {
   /// file.
   ///
   /// Output only.
-  core.Map<core.String, FileHashes> fileHashes;
+  core.Map<core.String, FileHashes>? fileHashes;
 
   /// A copy of the build's `source.repo_source`, if exists, with any revisions
   /// resolved.
-  RepoSource resolvedRepoSource;
+  RepoSource? resolvedRepoSource;
 
   /// A copy of the build's `source.storage_source`, if exists, with any
   /// generations resolved.
-  StorageSource resolvedStorageSource;
+  StorageSource? resolvedStorageSource;
 
   SourceProvenance();
 
   SourceProvenance.fromJson(core.Map _json) {
     if (_json.containsKey('fileHashes')) {
       fileHashes = (_json['fileHashes'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -3487,14 +3390,14 @@ class SourceProvenance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fileHashes != null)
           'fileHashes':
-              fileHashes.map((key, item) => core.MapEntry(key, item.toJson())),
+              fileHashes!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (resolvedRepoSource != null)
-          'resolvedRepoSource': resolvedRepoSource.toJson(),
+          'resolvedRepoSource': resolvedRepoSource!.toJson(),
         if (resolvedStorageSource != null)
-          'resolvedStorageSource': resolvedStorageSource.toJson(),
+          'resolvedStorageSource': resolvedStorageSource!.toJson(),
       };
 }
 
@@ -3507,7 +3410,7 @@ class SourceProvenance {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -3515,13 +3418,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -3545,10 +3448,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -3556,18 +3459,18 @@ class Status {
 class StorageSource {
   /// Google Cloud Storage bucket containing the source (see
   /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-  core.String bucket;
+  core.String? bucket;
 
   /// Google Cloud Storage generation for the object.
   ///
   /// If the generation is omitted, the latest generation will be used.
-  core.String generation;
+  core.String? generation;
 
   /// Google Cloud Storage object containing the source.
   ///
   /// This object must be a gzipped archive file (`.tar.gz`) containing source
   /// to build.
-  core.String object;
+  core.String? object;
 
   StorageSource();
 
@@ -3583,20 +3486,20 @@ class StorageSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bucket != null) 'bucket': bucket,
-        if (generation != null) 'generation': generation,
-        if (object != null) 'object': object,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (generation != null) 'generation': generation!,
+        if (object != null) 'object': object!,
       };
 }
 
 /// Start and end times for a build execution phase.
 class TimeSpan {
   /// End of time span.
-  core.String endTime;
+  core.String? endTime;
 
   /// Start of time span.
-  core.String startTime;
+  core.String? startTime;
 
   TimeSpan();
 
@@ -3609,9 +3512,9 @@ class TimeSpan {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -3623,13 +3526,13 @@ class Volume {
   /// Volume names must be unique per build step and must be valid names for
   /// Docker volumes. Each named volume must be used by at least two build
   /// steps.
-  core.String name;
+  core.String? name;
 
   /// Path at which to mount the volume.
   ///
   /// Paths must be absolute and cannot conflict with other volume paths on the
   /// same build step or with certain reserved volume paths.
-  core.String path;
+  core.String? path;
 
   Volume();
 
@@ -3642,8 +3545,8 @@ class Volume {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (path != null) 'path': path,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (path != null) 'path': path!,
       };
 }

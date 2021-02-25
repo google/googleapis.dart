@@ -41,7 +41,10 @@ api.AdBreak buildAdBreak() {
 void checkAdBreak(api.AdBreak o) {
   buildCounterAdBreak++;
   if (buildCounterAdBreak < 3) {
-    unittest.expect(o.startTimeOffset, unittest.equals('foo'));
+    unittest.expect(
+      o.startTimeOffset!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAdBreak--;
 }
@@ -60,7 +63,10 @@ api.Aes128Encryption buildAes128Encryption() {
 void checkAes128Encryption(api.Aes128Encryption o) {
   buildCounterAes128Encryption++;
   if (buildCounterAes128Encryption < 3) {
-    unittest.expect(o.keyUri, unittest.equals('foo'));
+    unittest.expect(
+      o.keyUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAes128Encryption--;
 }
@@ -81,9 +87,9 @@ api.Animation buildAnimation() {
 void checkAnimation(api.Animation o) {
   buildCounterAnimation++;
   if (buildCounterAnimation < 3) {
-    checkAnimationEnd(o.animationEnd as api.AnimationEnd);
-    checkAnimationFade(o.animationFade as api.AnimationFade);
-    checkAnimationStatic(o.animationStatic as api.AnimationStatic);
+    checkAnimationEnd(o.animationEnd! as api.AnimationEnd);
+    checkAnimationFade(o.animationFade! as api.AnimationFade);
+    checkAnimationStatic(o.animationStatic! as api.AnimationStatic);
   }
   buildCounterAnimation--;
 }
@@ -102,7 +108,10 @@ api.AnimationEnd buildAnimationEnd() {
 void checkAnimationEnd(api.AnimationEnd o) {
   buildCounterAnimationEnd++;
   if (buildCounterAnimationEnd < 3) {
-    unittest.expect(o.startTimeOffset, unittest.equals('foo'));
+    unittest.expect(
+      o.startTimeOffset!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAnimationEnd--;
 }
@@ -124,10 +133,19 @@ api.AnimationFade buildAnimationFade() {
 void checkAnimationFade(api.AnimationFade o) {
   buildCounterAnimationFade++;
   if (buildCounterAnimationFade < 3) {
-    unittest.expect(o.endTimeOffset, unittest.equals('foo'));
-    unittest.expect(o.fadeType, unittest.equals('foo'));
-    unittest.expect(o.startTimeOffset, unittest.equals('foo'));
-    checkNormalizedCoordinate(o.xy as api.NormalizedCoordinate);
+    unittest.expect(
+      o.endTimeOffset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fadeType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTimeOffset!,
+      unittest.equals('foo'),
+    );
+    checkNormalizedCoordinate(o.xy! as api.NormalizedCoordinate);
   }
   buildCounterAnimationFade--;
 }
@@ -147,8 +165,11 @@ api.AnimationStatic buildAnimationStatic() {
 void checkAnimationStatic(api.AnimationStatic o) {
   buildCounterAnimationStatic++;
   if (buildCounterAnimationStatic < 3) {
-    unittest.expect(o.startTimeOffset, unittest.equals('foo'));
-    checkNormalizedCoordinate(o.xy as api.NormalizedCoordinate);
+    unittest.expect(
+      o.startTimeOffset!,
+      unittest.equals('foo'),
+    );
+    checkNormalizedCoordinate(o.xy! as api.NormalizedCoordinate);
   }
   buildCounterAnimationStatic--;
 }
@@ -169,9 +190,12 @@ api.Audio buildAudio() {
 void checkAudio(api.Audio o) {
   buildCounterAudio++;
   if (buildCounterAudio < 3) {
-    unittest.expect(o.highBoost, unittest.isTrue);
-    unittest.expect(o.lowBoost, unittest.isTrue);
-    unittest.expect(o.lufs, unittest.equals(42.0));
+    unittest.expect(o.highBoost!, unittest.isTrue);
+    unittest.expect(o.lowBoost!, unittest.isTrue);
+    unittest.expect(
+      o.lufs!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterAudio--;
 }
@@ -204,8 +228,11 @@ api.AudioAtom buildAudioAtom() {
 void checkAudioAtom(api.AudioAtom o) {
   buildCounterAudioAtom++;
   if (buildCounterAudioAtom < 3) {
-    checkUnnamed7626(o.channels);
-    unittest.expect(o.key, unittest.equals('foo'));
+    checkUnnamed7626(o.channels!);
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAudioAtom--;
 }
@@ -237,7 +264,7 @@ api.AudioChannel buildAudioChannel() {
 void checkAudioChannel(api.AudioChannel o) {
   buildCounterAudioChannel++;
   if (buildCounterAudioChannel < 3) {
-    checkUnnamed7627(o.inputs);
+    checkUnnamed7627(o.inputs!);
   }
   buildCounterAudioChannel--;
 }
@@ -259,10 +286,22 @@ api.AudioChannelInput buildAudioChannelInput() {
 void checkAudioChannelInput(api.AudioChannelInput o) {
   buildCounterAudioChannelInput++;
   if (buildCounterAudioChannelInput < 3) {
-    unittest.expect(o.channel, unittest.equals(42));
-    unittest.expect(o.gainDb, unittest.equals(42.0));
-    unittest.expect(o.key, unittest.equals('foo'));
-    unittest.expect(o.track, unittest.equals(42));
+    unittest.expect(
+      o.channel!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.gainDb!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.track!,
+      unittest.equals(42),
+    );
   }
   buildCounterAudioChannelInput--;
 }
@@ -276,8 +315,14 @@ core.List<core.String> buildUnnamed7628() {
 
 void checkUnnamed7628(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.AudioAtom> buildUnnamed7629() {
@@ -312,12 +357,24 @@ api.AudioStream buildAudioStream() {
 void checkAudioStream(api.AudioStream o) {
   buildCounterAudioStream++;
   if (buildCounterAudioStream < 3) {
-    unittest.expect(o.bitrateBps, unittest.equals(42));
-    unittest.expect(o.channelCount, unittest.equals(42));
-    checkUnnamed7628(o.channelLayout);
-    unittest.expect(o.codec, unittest.equals('foo'));
-    checkUnnamed7629(o.mapping);
-    unittest.expect(o.sampleRateHertz, unittest.equals(42));
+    unittest.expect(
+      o.bitrateBps!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.channelCount!,
+      unittest.equals(42),
+    );
+    checkUnnamed7628(o.channelLayout!);
+    unittest.expect(
+      o.codec!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7629(o.mapping!);
+    unittest.expect(
+      o.sampleRateHertz!,
+      unittest.equals(42),
+    );
   }
   buildCounterAudioStream--;
 }
@@ -338,9 +395,18 @@ api.Color buildColor() {
 void checkColor(api.Color o) {
   buildCounterColor++;
   if (buildCounterColor < 3) {
-    unittest.expect(o.brightness, unittest.equals(42.0));
-    unittest.expect(o.contrast, unittest.equals(42.0));
-    unittest.expect(o.saturation, unittest.equals(42.0));
+    unittest.expect(
+      o.brightness!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.contrast!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.saturation!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterColor--;
 }
@@ -362,10 +428,22 @@ api.Crop buildCrop() {
 void checkCrop(api.Crop o) {
   buildCounterCrop++;
   if (buildCounterCrop < 3) {
-    unittest.expect(o.bottomPixels, unittest.equals(42));
-    unittest.expect(o.leftPixels, unittest.equals(42));
-    unittest.expect(o.rightPixels, unittest.equals(42));
-    unittest.expect(o.topPixels, unittest.equals(42));
+    unittest.expect(
+      o.bottomPixels!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.leftPixels!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.rightPixels!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.topPixels!,
+      unittest.equals(42),
+    );
   }
   buildCounterCrop--;
 }
@@ -385,8 +463,11 @@ api.Deblock buildDeblock() {
 void checkDeblock(api.Deblock o) {
   buildCounterDeblock++;
   if (buildCounterDeblock < 3) {
-    unittest.expect(o.enabled, unittest.isTrue);
-    unittest.expect(o.strength, unittest.equals(42.0));
+    unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(
+      o.strength!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterDeblock--;
 }
@@ -406,8 +487,14 @@ api.Denoise buildDenoise() {
 void checkDenoise(api.Denoise o) {
   buildCounterDenoise++;
   if (buildCounterDenoise < 3) {
-    unittest.expect(o.strength, unittest.equals(42.0));
-    unittest.expect(o.tune, unittest.equals('foo'));
+    unittest.expect(
+      o.strength!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.tune!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDenoise--;
 }
@@ -421,8 +508,14 @@ core.List<core.String> buildUnnamed7630() {
 
 void checkUnnamed7630(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterEditAtom = 0;
@@ -442,10 +535,19 @@ api.EditAtom buildEditAtom() {
 void checkEditAtom(api.EditAtom o) {
   buildCounterEditAtom++;
   if (buildCounterEditAtom < 3) {
-    unittest.expect(o.endTimeOffset, unittest.equals('foo'));
-    checkUnnamed7630(o.inputs);
-    unittest.expect(o.key, unittest.equals('foo'));
-    unittest.expect(o.startTimeOffset, unittest.equals('foo'));
+    unittest.expect(
+      o.endTimeOffset!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7630(o.inputs!);
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTimeOffset!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterEditAtom--;
 }
@@ -467,10 +569,13 @@ api.ElementaryStream buildElementaryStream() {
 void checkElementaryStream(api.ElementaryStream o) {
   buildCounterElementaryStream++;
   if (buildCounterElementaryStream < 3) {
-    checkAudioStream(o.audioStream as api.AudioStream);
-    unittest.expect(o.key, unittest.equals('foo'));
-    checkTextStream(o.textStream as api.TextStream);
-    checkVideoStream(o.videoStream as api.VideoStream);
+    checkAudioStream(o.audioStream! as api.AudioStream);
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    checkTextStream(o.textStream! as api.TextStream);
+    checkVideoStream(o.videoStream! as api.VideoStream);
   }
   buildCounterElementaryStream--;
 }
@@ -508,11 +613,17 @@ api.Encryption buildEncryption() {
 void checkEncryption(api.Encryption o) {
   buildCounterEncryption++;
   if (buildCounterEncryption < 3) {
-    checkAes128Encryption(o.aes128 as api.Aes128Encryption);
-    unittest.expect(o.iv, unittest.equals('foo'));
-    unittest.expect(o.key, unittest.equals('foo'));
-    checkMpegCommonEncryption(o.mpegCenc as api.MpegCommonEncryption);
-    checkSampleAesEncryption(o.sampleAes as api.SampleAesEncryption);
+    checkAes128Encryption(o.aes128! as api.Aes128Encryption);
+    unittest.expect(
+      o.iv!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    checkMpegCommonEncryption(o.mpegCenc! as api.MpegCommonEncryption);
+    checkSampleAesEncryption(o.sampleAes! as api.SampleAesEncryption);
   }
   buildCounterEncryption--;
 }
@@ -531,7 +642,10 @@ api.FailureDetail buildFailureDetail() {
 void checkFailureDetail(api.FailureDetail o) {
   buildCounterFailureDetail++;
   if (buildCounterFailureDetail < 3) {
-    unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterFailureDetail--;
 }
@@ -552,9 +666,15 @@ api.Image buildImage() {
 void checkImage(api.Image o) {
   buildCounterImage++;
   if (buildCounterImage < 3) {
-    unittest.expect(o.alpha, unittest.equals(42.0));
-    checkNormalizedCoordinate(o.resolution as api.NormalizedCoordinate);
-    unittest.expect(o.uri, unittest.equals('foo'));
+    unittest.expect(
+      o.alpha!,
+      unittest.equals(42.0),
+    );
+    checkNormalizedCoordinate(o.resolution! as api.NormalizedCoordinate);
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterImage--;
 }
@@ -575,9 +695,15 @@ api.Input buildInput() {
 void checkInput(api.Input o) {
   buildCounterInput++;
   if (buildCounterInput < 3) {
-    unittest.expect(o.key, unittest.equals('foo'));
-    checkPreprocessingConfig(o.preprocessingConfig as api.PreprocessingConfig);
-    unittest.expect(o.uri, unittest.equals('foo'));
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    checkPreprocessingConfig(o.preprocessingConfig! as api.PreprocessingConfig);
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterInput--;
 }
@@ -623,21 +749,54 @@ api.Job buildJob() {
 void checkJob(api.Job o) {
   buildCounterJob++;
   if (buildCounterJob < 3) {
-    checkJobConfig(o.config as api.JobConfig);
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.endTime, unittest.equals('foo'));
-    checkUnnamed7631(o.failureDetails);
-    unittest.expect(o.failureReason, unittest.equals('foo'));
-    unittest.expect(o.inputUri, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkOriginUri(o.originUri as api.OriginUri);
-    unittest.expect(o.outputUri, unittest.equals('foo'));
-    unittest.expect(o.priority, unittest.equals(42));
-    checkProgress(o.progress as api.Progress);
-    unittest.expect(o.startTime, unittest.equals('foo'));
-    unittest.expect(o.state, unittest.equals('foo'));
-    unittest.expect(o.templateId, unittest.equals('foo'));
-    unittest.expect(o.ttlAfterCompletionDays, unittest.equals(42));
+    checkJobConfig(o.config! as api.JobConfig);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7631(o.failureDetails!);
+    unittest.expect(
+      o.failureReason!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.inputUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkOriginUri(o.originUri! as api.OriginUri);
+    unittest.expect(
+      o.outputUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.priority!,
+      unittest.equals(42),
+    );
+    checkProgress(o.progress! as api.Progress);
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.templateId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ttlAfterCompletionDays!,
+      unittest.equals(42),
+    );
   }
   buildCounterJob--;
 }
@@ -769,16 +928,16 @@ api.JobConfig buildJobConfig() {
 void checkJobConfig(api.JobConfig o) {
   buildCounterJobConfig++;
   if (buildCounterJobConfig < 3) {
-    checkUnnamed7632(o.adBreaks);
-    checkUnnamed7633(o.editList);
-    checkUnnamed7634(o.elementaryStreams);
-    checkUnnamed7635(o.inputs);
-    checkUnnamed7636(o.manifests);
-    checkUnnamed7637(o.muxStreams);
-    checkOutput(o.output as api.Output);
-    checkUnnamed7638(o.overlays);
-    checkPubsubDestination(o.pubsubDestination as api.PubsubDestination);
-    checkUnnamed7639(o.spriteSheets);
+    checkUnnamed7632(o.adBreaks!);
+    checkUnnamed7633(o.editList!);
+    checkUnnamed7634(o.elementaryStreams!);
+    checkUnnamed7635(o.inputs!);
+    checkUnnamed7636(o.manifests!);
+    checkUnnamed7637(o.muxStreams!);
+    checkOutput(o.output! as api.Output);
+    checkUnnamed7638(o.overlays!);
+    checkPubsubDestination(o.pubsubDestination! as api.PubsubDestination);
+    checkUnnamed7639(o.spriteSheets!);
   }
   buildCounterJobConfig--;
 }
@@ -798,8 +957,11 @@ api.JobTemplate buildJobTemplate() {
 void checkJobTemplate(api.JobTemplate o) {
   buildCounterJobTemplate++;
   if (buildCounterJobTemplate < 3) {
-    checkJobConfig(o.config as api.JobConfig);
-    unittest.expect(o.name, unittest.equals('foo'));
+    checkJobConfig(o.config! as api.JobConfig);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterJobTemplate--;
 }
@@ -832,8 +994,11 @@ api.ListJobTemplatesResponse buildListJobTemplatesResponse() {
 void checkListJobTemplatesResponse(api.ListJobTemplatesResponse o) {
   buildCounterListJobTemplatesResponse++;
   if (buildCounterListJobTemplatesResponse < 3) {
-    checkUnnamed7640(o.jobTemplates);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed7640(o.jobTemplates!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterListJobTemplatesResponse--;
 }
@@ -866,8 +1031,11 @@ api.ListJobsResponse buildListJobsResponse() {
 void checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    checkUnnamed7641(o.jobs);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed7641(o.jobs!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterListJobsResponse--;
 }
@@ -881,8 +1049,14 @@ core.List<core.String> buildUnnamed7642() {
 
 void checkUnnamed7642(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterManifest = 0;
@@ -901,9 +1075,15 @@ api.Manifest buildManifest() {
 void checkManifest(api.Manifest o) {
   buildCounterManifest++;
   if (buildCounterManifest < 3) {
-    unittest.expect(o.fileName, unittest.equals('foo'));
-    checkUnnamed7642(o.muxStreams);
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.fileName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7642(o.muxStreams!);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterManifest--;
 }
@@ -923,8 +1103,14 @@ api.MpegCommonEncryption buildMpegCommonEncryption() {
 void checkMpegCommonEncryption(api.MpegCommonEncryption o) {
   buildCounterMpegCommonEncryption++;
   if (buildCounterMpegCommonEncryption < 3) {
-    unittest.expect(o.keyId, unittest.equals('foo'));
-    unittest.expect(o.scheme, unittest.equals('foo'));
+    unittest.expect(
+      o.keyId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.scheme!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterMpegCommonEncryption--;
 }
@@ -938,8 +1124,14 @@ core.List<core.String> buildUnnamed7643() {
 
 void checkUnnamed7643(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterMuxStream = 0;
@@ -961,12 +1153,21 @@ api.MuxStream buildMuxStream() {
 void checkMuxStream(api.MuxStream o) {
   buildCounterMuxStream++;
   if (buildCounterMuxStream < 3) {
-    unittest.expect(o.container, unittest.equals('foo'));
-    checkUnnamed7643(o.elementaryStreams);
-    checkEncryption(o.encryption as api.Encryption);
-    unittest.expect(o.fileName, unittest.equals('foo'));
-    unittest.expect(o.key, unittest.equals('foo'));
-    checkSegmentSettings(o.segmentSettings as api.SegmentSettings);
+    unittest.expect(
+      o.container!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7643(o.elementaryStreams!);
+    checkEncryption(o.encryption! as api.Encryption);
+    unittest.expect(
+      o.fileName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    checkSegmentSettings(o.segmentSettings! as api.SegmentSettings);
   }
   buildCounterMuxStream--;
 }
@@ -986,8 +1187,14 @@ api.NormalizedCoordinate buildNormalizedCoordinate() {
 void checkNormalizedCoordinate(api.NormalizedCoordinate o) {
   buildCounterNormalizedCoordinate++;
   if (buildCounterNormalizedCoordinate < 3) {
-    unittest.expect(o.x, unittest.equals(42.0));
-    unittest.expect(o.y, unittest.equals(42.0));
+    unittest.expect(
+      o.x!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.y!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterNormalizedCoordinate--;
 }
@@ -1012,13 +1219,31 @@ api.OperationMetadata buildOperationMetadata() {
 void checkOperationMetadata(api.OperationMetadata o) {
   buildCounterOperationMetadata++;
   if (buildCounterOperationMetadata < 3) {
-    unittest.expect(o.apiVersion, unittest.equals('foo'));
-    unittest.expect(o.cancelRequested, unittest.isTrue);
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.endTime, unittest.equals('foo'));
-    unittest.expect(o.statusDetail, unittest.equals('foo'));
-    unittest.expect(o.target, unittest.equals('foo'));
-    unittest.expect(o.verb, unittest.equals('foo'));
+    unittest.expect(
+      o.apiVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.cancelRequested!, unittest.isTrue);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.statusDetail!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.target!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.verb!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterOperationMetadata--;
 }
@@ -1038,8 +1263,14 @@ api.OriginUri buildOriginUri() {
 void checkOriginUri(api.OriginUri o) {
   buildCounterOriginUri++;
   if (buildCounterOriginUri < 3) {
-    unittest.expect(o.dash, unittest.equals('foo'));
-    unittest.expect(o.hls, unittest.equals('foo'));
+    unittest.expect(
+      o.dash!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hls!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterOriginUri--;
 }
@@ -1058,7 +1289,10 @@ api.Output buildOutput() {
 void checkOutput(api.Output o) {
   buildCounterOutput++;
   if (buildCounterOutput < 3) {
-    unittest.expect(o.uri, unittest.equals('foo'));
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterOutput--;
 }
@@ -1091,8 +1325,8 @@ api.Overlay buildOverlay() {
 void checkOverlay(api.Overlay o) {
   buildCounterOverlay++;
   if (buildCounterOverlay < 3) {
-    checkUnnamed7644(o.animations);
-    checkImage(o.image as api.Image);
+    checkUnnamed7644(o.animations!);
+    checkImage(o.image! as api.Image);
   }
   buildCounterOverlay--;
 }
@@ -1114,10 +1348,22 @@ api.Pad buildPad() {
 void checkPad(api.Pad o) {
   buildCounterPad++;
   if (buildCounterPad < 3) {
-    unittest.expect(o.bottomPixels, unittest.equals(42));
-    unittest.expect(o.leftPixels, unittest.equals(42));
-    unittest.expect(o.rightPixels, unittest.equals(42));
-    unittest.expect(o.topPixels, unittest.equals(42));
+    unittest.expect(
+      o.bottomPixels!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.leftPixels!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.rightPixels!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.topPixels!,
+      unittest.equals(42),
+    );
   }
   buildCounterPad--;
 }
@@ -1141,12 +1387,12 @@ api.PreprocessingConfig buildPreprocessingConfig() {
 void checkPreprocessingConfig(api.PreprocessingConfig o) {
   buildCounterPreprocessingConfig++;
   if (buildCounterPreprocessingConfig < 3) {
-    checkAudio(o.audio as api.Audio);
-    checkColor(o.color as api.Color);
-    checkCrop(o.crop as api.Crop);
-    checkDeblock(o.deblock as api.Deblock);
-    checkDenoise(o.denoise as api.Denoise);
-    checkPad(o.pad as api.Pad);
+    checkAudio(o.audio! as api.Audio);
+    checkColor(o.color! as api.Color);
+    checkCrop(o.crop! as api.Crop);
+    checkDeblock(o.deblock! as api.Deblock);
+    checkDenoise(o.denoise! as api.Denoise);
+    checkPad(o.pad! as api.Pad);
   }
   buildCounterPreprocessingConfig--;
 }
@@ -1168,10 +1414,22 @@ api.Progress buildProgress() {
 void checkProgress(api.Progress o) {
   buildCounterProgress++;
   if (buildCounterProgress < 3) {
-    unittest.expect(o.analyzed, unittest.equals(42.0));
-    unittest.expect(o.encoded, unittest.equals(42.0));
-    unittest.expect(o.notified, unittest.equals(42.0));
-    unittest.expect(o.uploaded, unittest.equals(42.0));
+    unittest.expect(
+      o.analyzed!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.encoded!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.notified!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.uploaded!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterProgress--;
 }
@@ -1190,7 +1448,10 @@ api.PubsubDestination buildPubsubDestination() {
 void checkPubsubDestination(api.PubsubDestination o) {
   buildCounterPubsubDestination++;
   if (buildCounterPubsubDestination < 3) {
-    unittest.expect(o.topic, unittest.equals('foo'));
+    unittest.expect(
+      o.topic!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPubsubDestination--;
 }
@@ -1209,7 +1470,10 @@ api.SampleAesEncryption buildSampleAesEncryption() {
 void checkSampleAesEncryption(api.SampleAesEncryption o) {
   buildCounterSampleAesEncryption++;
   if (buildCounterSampleAesEncryption < 3) {
-    unittest.expect(o.keyUri, unittest.equals('foo'));
+    unittest.expect(
+      o.keyUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSampleAesEncryption--;
 }
@@ -1229,8 +1493,11 @@ api.SegmentSettings buildSegmentSettings() {
 void checkSegmentSettings(api.SegmentSettings o) {
   buildCounterSegmentSettings++;
   if (buildCounterSegmentSettings < 3) {
-    unittest.expect(o.individualSegments, unittest.isTrue);
-    unittest.expect(o.segmentDuration, unittest.equals('foo'));
+    unittest.expect(o.individualSegments!, unittest.isTrue);
+    unittest.expect(
+      o.segmentDuration!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSegmentSettings--;
 }
@@ -1259,17 +1526,50 @@ api.SpriteSheet buildSpriteSheet() {
 void checkSpriteSheet(api.SpriteSheet o) {
   buildCounterSpriteSheet++;
   if (buildCounterSpriteSheet < 3) {
-    unittest.expect(o.columnCount, unittest.equals(42));
-    unittest.expect(o.endTimeOffset, unittest.equals('foo'));
-    unittest.expect(o.filePrefix, unittest.equals('foo'));
-    unittest.expect(o.format, unittest.equals('foo'));
-    unittest.expect(o.interval, unittest.equals('foo'));
-    unittest.expect(o.quality, unittest.equals(42));
-    unittest.expect(o.rowCount, unittest.equals(42));
-    unittest.expect(o.spriteHeightPixels, unittest.equals(42));
-    unittest.expect(o.spriteWidthPixels, unittest.equals(42));
-    unittest.expect(o.startTimeOffset, unittest.equals('foo'));
-    unittest.expect(o.totalCount, unittest.equals(42));
+    unittest.expect(
+      o.columnCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.endTimeOffset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.filePrefix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.format!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.interval!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.quality!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.rowCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.spriteHeightPixels!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.spriteWidthPixels!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.startTimeOffset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalCount!,
+      unittest.equals(42),
+    );
   }
   buildCounterSpriteSheet--;
 }
@@ -1302,8 +1602,11 @@ api.TextAtom buildTextAtom() {
 void checkTextAtom(api.TextAtom o) {
   buildCounterTextAtom++;
   if (buildCounterTextAtom < 3) {
-    checkUnnamed7645(o.inputs);
-    unittest.expect(o.key, unittest.equals('foo'));
+    checkUnnamed7645(o.inputs!);
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTextAtom--;
 }
@@ -1323,8 +1626,14 @@ api.TextInput buildTextInput() {
 void checkTextInput(api.TextInput o) {
   buildCounterTextInput++;
   if (buildCounterTextInput < 3) {
-    unittest.expect(o.key, unittest.equals('foo'));
-    unittest.expect(o.track, unittest.equals(42));
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.track!,
+      unittest.equals(42),
+    );
   }
   buildCounterTextInput--;
 }
@@ -1358,9 +1667,15 @@ api.TextStream buildTextStream() {
 void checkTextStream(api.TextStream o) {
   buildCounterTextStream++;
   if (buildCounterTextStream < 3) {
-    unittest.expect(o.codec, unittest.equals('foo'));
-    unittest.expect(o.languageCode, unittest.equals('foo'));
-    checkUnnamed7646(o.mapping);
+    unittest.expect(
+      o.codec!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7646(o.mapping!);
   }
   buildCounterTextStream--;
 }
@@ -1399,27 +1714,81 @@ api.VideoStream buildVideoStream() {
 void checkVideoStream(api.VideoStream o) {
   buildCounterVideoStream++;
   if (buildCounterVideoStream < 3) {
-    unittest.expect(o.allowOpenGop, unittest.isTrue);
-    unittest.expect(o.aqStrength, unittest.equals(42.0));
-    unittest.expect(o.bFrameCount, unittest.equals(42));
-    unittest.expect(o.bPyramid, unittest.isTrue);
-    unittest.expect(o.bitrateBps, unittest.equals(42));
-    unittest.expect(o.codec, unittest.equals('foo'));
-    unittest.expect(o.crfLevel, unittest.equals(42));
-    unittest.expect(o.enableTwoPass, unittest.isTrue);
-    unittest.expect(o.entropyCoder, unittest.equals('foo'));
-    unittest.expect(o.frameRate, unittest.equals(42.0));
-    unittest.expect(o.gopDuration, unittest.equals('foo'));
-    unittest.expect(o.gopFrameCount, unittest.equals(42));
-    unittest.expect(o.heightPixels, unittest.equals(42));
-    unittest.expect(o.pixelFormat, unittest.equals('foo'));
-    unittest.expect(o.preset, unittest.equals('foo'));
-    unittest.expect(o.profile, unittest.equals('foo'));
-    unittest.expect(o.rateControlMode, unittest.equals('foo'));
-    unittest.expect(o.tune, unittest.equals('foo'));
-    unittest.expect(o.vbvFullnessBits, unittest.equals(42));
-    unittest.expect(o.vbvSizeBits, unittest.equals(42));
-    unittest.expect(o.widthPixels, unittest.equals(42));
+    unittest.expect(o.allowOpenGop!, unittest.isTrue);
+    unittest.expect(
+      o.aqStrength!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.bFrameCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(o.bPyramid!, unittest.isTrue);
+    unittest.expect(
+      o.bitrateBps!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.codec!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.crfLevel!,
+      unittest.equals(42),
+    );
+    unittest.expect(o.enableTwoPass!, unittest.isTrue);
+    unittest.expect(
+      o.entropyCoder!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.frameRate!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.gopDuration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gopFrameCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.heightPixels!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.pixelFormat!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.preset!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.profile!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rateControlMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tune!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.vbvFullnessBits!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.vbvSizeBits!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.widthPixels!,
+      unittest.equals(42),
+    );
   }
   buildCounterVideoStream--;
 }
@@ -1811,10 +2180,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -1833,9 +2206,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["jobTemplateId"].first,
-            unittest.equals(arg_jobTemplateId));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["jobTemplateId"]!.first,
+          unittest.equals(arg_jobTemplateId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1862,10 +2240,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -1884,7 +2266,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1910,10 +2295,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -1932,7 +2321,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1960,10 +2352,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -1982,11 +2378,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2021,10 +2424,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2043,7 +2450,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2069,10 +2479,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2091,7 +2505,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2117,10 +2534,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2139,7 +2560,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2167,10 +2591,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1beta1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1beta1/"),
+        );
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2189,11 +2617,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

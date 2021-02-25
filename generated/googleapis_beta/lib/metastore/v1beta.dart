@@ -98,11 +98,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -142,14 +139,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -201,11 +195,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -243,11 +234,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -296,14 +284,11 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -374,15 +359,11 @@ class ProjectsLocationsServicesResource {
   async.Future<Operation> create(
     Service request,
     core.String parent, {
-    core.String requestId,
-    core.String serviceId,
-    core.String $fields,
+    core.String? requestId,
+    core.String? serviceId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (serviceId != null) 'serviceId': [serviceId],
@@ -434,12 +415,9 @@ class ProjectsLocationsServicesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String requestId,
-    core.String $fields,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
@@ -480,13 +458,9 @@ class ProjectsLocationsServicesResource {
   async.Future<Operation> exportMetadata(
     ExportMetadataRequest request,
     core.String service, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (service == null) {
-      throw core.ArgumentError('Parameter service is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -526,11 +500,8 @@ class ProjectsLocationsServicesResource {
   /// this method will complete with the same error.
   async.Future<Service> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -578,12 +549,9 @@ class ProjectsLocationsServicesResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -641,15 +609,12 @@ class ProjectsLocationsServicesResource {
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -711,15 +676,11 @@ class ProjectsLocationsServicesResource {
   async.Future<Operation> patch(
     Service request,
     core.String name, {
-    core.String requestId,
-    core.String updateMask,
-    core.String $fields,
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -765,13 +726,9 @@ class ProjectsLocationsServicesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -819,13 +776,9 @@ class ProjectsLocationsServicesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -892,15 +845,11 @@ class ProjectsLocationsServicesMetadataImportsResource {
   async.Future<Operation> create(
     MetadataImport request,
     core.String parent, {
-    core.String metadataImportId,
-    core.String requestId,
-    core.String $fields,
+    core.String? metadataImportId,
+    core.String? requestId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (metadataImportId != null) 'metadataImportId': [metadataImportId],
       if (requestId != null) 'requestId': [requestId],
@@ -942,11 +891,8 @@ class ProjectsLocationsServicesMetadataImportsResource {
   /// this method will complete with the same error.
   async.Future<MetadataImport> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1002,15 +948,12 @@ class ProjectsLocationsServicesMetadataImportsResource {
   /// this method will complete with the same error.
   async.Future<ListMetadataImportsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1074,15 +1017,11 @@ class ProjectsLocationsServicesMetadataImportsResource {
   async.Future<Operation> patch(
     MetadataImport request,
     core.String name, {
-    core.String requestId,
-    core.String updateMask,
-    core.String $fields,
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1120,13 +1059,13 @@ class ProjectsLocationsServicesMetadataImportsResource {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, storage.googleapis.com, cloudsql.googleapis.com. allServices
   /// is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -1142,11 +1081,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -1161,7 +1100,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -1169,7 +1108,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -1184,9 +1123,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -1201,7 +1140,7 @@ class Binding {
   /// of the members in this binding.To learn which resources support conditions
   /// in their IAM policies, see the IAM documentation
   /// (https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -1233,12 +1172,12 @@ class Binding {
   /// role in the binding. domain:{domain}: The G Suite domain (primary) that
   /// represents all the users of that domain. For example, google.com or
   /// example.com.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to members.
   ///
   /// For example, roles/viewer, roles/editor, or roles/owner.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -1257,10 +1196,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1272,16 +1211,16 @@ class DatabaseDump {
   /// - "DATABASE_TYPE_UNSPECIFIED" : The type of the source database is
   /// unknown.
   /// - "MYSQL" : The type of the source database is MySQL.
-  core.String databaseType;
+  core.String? databaseType;
 
   /// A Cloud Storage object URI that specifies the source from which to import
   /// metadata.
   ///
   /// It must begin with gs://.
-  core.String gcsUri;
+  core.String? gcsUri;
 
   /// The name of the source database.
-  core.String sourceDatabase;
+  core.String? sourceDatabase;
 
   DatabaseDump();
 
@@ -1297,10 +1236,10 @@ class DatabaseDump {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (databaseType != null) 'databaseType': databaseType,
-        if (gcsUri != null) 'gcsUri': gcsUri,
-        if (sourceDatabase != null) 'sourceDatabase': sourceDatabase,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (databaseType != null) 'databaseType': databaseType!,
+        if (gcsUri != null) 'gcsUri': gcsUri!,
+        if (sourceDatabase != null) 'sourceDatabase': sourceDatabase!,
       };
 }
 
@@ -1318,7 +1257,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for DataprocMetastore.ExportMetadata.
@@ -1329,7 +1268,7 @@ class ExportMetadataRequest {
   /// A sub-folder containing exported files will be created below it.
   ///
   /// Required.
-  core.String destinationGcsFolder;
+  core.String? destinationGcsFolder;
 
   /// A request ID.
   ///
@@ -1343,7 +1282,7 @@ class ExportMetadataRequest {
   /// zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   ExportMetadataRequest();
 
@@ -1356,10 +1295,10 @@ class ExportMetadataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (destinationGcsFolder != null)
-          'destinationGcsFolder': destinationGcsFolder,
-        if (requestId != null) 'requestId': requestId,
+          'destinationGcsFolder': destinationGcsFolder!,
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -1388,24 +1327,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -1424,11 +1363,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1439,7 +1378,7 @@ class HiveMetastoreConfig {
   /// Hive metastore (configured in hive-site.xml).
   ///
   /// The mappings override system defaults (some keys cannot be overridden).
-  core.Map<core.String, core.String> configOverrides;
+  core.Map<core.String, core.String>? configOverrides;
 
   /// Information used to configure the Hive metastore service as a service
   /// principal in a Kerberos realm.
@@ -1447,12 +1386,12 @@ class HiveMetastoreConfig {
   /// To disable Kerberos, use the UpdateService method and specify this field's
   /// path ("hive_metastore_config.kerberos_config") in the request's
   /// update_mask while omitting this field from the request's service.
-  KerberosConfig kerberosConfig;
+  KerberosConfig? kerberosConfig;
 
   /// The Hive metastore schema version.
   ///
   /// Immutable.
-  core.String version;
+  core.String? version;
 
   HiveMetastoreConfig();
 
@@ -1476,10 +1415,10 @@ class HiveMetastoreConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (configOverrides != null) 'configOverrides': configOverrides,
-        if (kerberosConfig != null) 'kerberosConfig': kerberosConfig.toJson(),
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (configOverrides != null) 'configOverrides': configOverrides!,
+        if (kerberosConfig != null) 'kerberosConfig': kerberosConfig!.toJson(),
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1487,10 +1426,10 @@ class HiveMetastoreConfig {
 class HiveMetastoreVersion {
   /// Whether version will be chosen by the server if a metastore service is
   /// created with a HiveMetastoreConfig that omits the version.
-  core.bool isDefault;
+  core.bool? isDefault;
 
   /// The semantic version of the Hive Metastore software.
-  core.String version;
+  core.String? version;
 
   HiveMetastoreVersion();
 
@@ -1503,9 +1442,9 @@ class HiveMetastoreVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (isDefault != null) 'isDefault': isDefault,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (isDefault != null) 'isDefault': isDefault!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1513,20 +1452,20 @@ class HiveMetastoreVersion {
 class KerberosConfig {
   /// A Kerberos keytab file that can be used to authenticate a service
   /// principal with a Kerberos Key Distribution Center (KDC).
-  Secret keytab;
+  Secret? keytab;
 
   /// A Cloud Storage URI that specifies the path to a krb5.conf file.
   ///
   /// It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file
   /// does not need to be named krb5.conf explicitly.
-  core.String krb5ConfigGcsUri;
+  core.String? krb5ConfigGcsUri;
 
   /// A Kerberos principal that exists in the both the keytab the KDC to
   /// authenticate as.
   ///
   /// A typical principal is of the form "primary/instance@REALM", but there is
   /// no exact format.
-  core.String principal;
+  core.String? principal;
 
   KerberosConfig();
 
@@ -1543,20 +1482,20 @@ class KerberosConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (keytab != null) 'keytab': keytab.toJson(),
-        if (krb5ConfigGcsUri != null) 'krb5ConfigGcsUri': krb5ConfigGcsUri,
-        if (principal != null) 'principal': principal,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (keytab != null) 'keytab': keytab!.toJson(),
+        if (krb5ConfigGcsUri != null) 'krb5ConfigGcsUri': krb5ConfigGcsUri!,
+        if (principal != null) 'principal': principal!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -1572,25 +1511,25 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for DataprocMetastore.ListMetadataImports.
 class ListMetadataImportsResponse {
   /// The imports in the specified service.
-  core.List<MetadataImport> metadataImports;
+  core.List<MetadataImport>? metadataImports;
 
   /// A token that can be sent as page_token to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListMetadataImportsResponse();
 
@@ -1611,22 +1550,22 @@ class ListMetadataImportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (metadataImports != null)
           'metadataImports':
-              metadataImports.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+              metadataImports!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -1642,10 +1581,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1654,13 +1593,13 @@ class ListServicesResponse {
   /// A token that can be sent as page_token to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The services in the specified location.
-  core.List<Service> services;
+  core.List<Service>? services;
 
   /// Locations that could not be reached.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListServicesResponse();
 
@@ -1681,11 +1620,11 @@ class ListServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (services != null)
-          'services': services.map((value) => value.toJson()).toList(),
-        if (unreachable != null) 'unreachable': unreachable,
+          'services': services!.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -1694,17 +1633,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: "us-east1".
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -1712,12 +1651,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: "projects/example-project/locations/us-east1"
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -1751,12 +1690,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1767,7 +1706,7 @@ class LocationMetadata {
   ///
   /// The server guarantees that exactly one HiveMetastoreVersion in the list
   /// will set is_default.
-  core.List<HiveMetastoreVersion> supportedHiveMetastoreVersions;
+  core.List<HiveMetastoreVersion>? supportedHiveMetastoreVersions;
 
   LocationMetadata();
 
@@ -1781,9 +1720,9 @@ class LocationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (supportedHiveMetastoreVersions != null)
-          'supportedHiveMetastoreVersions': supportedHiveMetastoreVersions
+          'supportedHiveMetastoreVersions': supportedHiveMetastoreVersions!
               .map((value) => value.toJson())
               .toList(),
       };
@@ -1804,10 +1743,10 @@ class MaintenanceWindow {
   /// - "FRIDAY" : Friday
   /// - "SATURDAY" : Saturday
   /// - "SUNDAY" : Sunday
-  core.String dayOfWeek;
+  core.String? dayOfWeek;
 
   /// The hour of day (0-23) when the window starts.
-  core.int hourOfDay;
+  core.int? hourOfDay;
 
   MaintenanceWindow();
 
@@ -1820,9 +1759,9 @@ class MaintenanceWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek,
-        if (hourOfDay != null) 'hourOfDay': hourOfDay,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
+        if (hourOfDay != null) 'hourOfDay': hourOfDay!,
       };
 }
 
@@ -1832,17 +1771,17 @@ class MetadataExport {
   /// of gs:////, where \` is automatically generated.
   ///
   /// Output only.
-  core.String destinationGcsUri;
+  core.String? destinationGcsUri;
 
   /// The time when the export ended.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// The time when the export started.
   ///
   /// Output only.
-  core.String startTime;
+  core.String? startTime;
 
   /// The current state of the export.
   ///
@@ -1853,7 +1792,7 @@ class MetadataExport {
   /// - "SUCCEEDED" : The metadata export completed successfully.
   /// - "FAILED" : The metadata export failed.
   /// - "CANCELLED" : The metadata export is cancelled.
-  core.String state;
+  core.String? state;
 
   MetadataExport();
 
@@ -1872,11 +1811,11 @@ class MetadataExport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destinationGcsUri != null) 'destinationGcsUri': destinationGcsUri,
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destinationGcsUri != null) 'destinationGcsUri': destinationGcsUri!,
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -1885,21 +1824,21 @@ class MetadataImport {
   /// The time when the metadata import was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// A database dump from a pre-existing metastore's database.
   ///
   /// Immutable.
-  DatabaseDump databaseDump;
+  DatabaseDump? databaseDump;
 
   /// The description of the metadata import.
-  core.String description;
+  core.String? description;
 
   /// The relative resource name of the metadata import, of the
   /// form:"projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}".
   ///
   /// Immutable.
-  core.String name;
+  core.String? name;
 
   /// The current state of the metadata import.
   ///
@@ -1911,12 +1850,12 @@ class MetadataImport {
   /// - "UPDATING" : The metadata import is being updated.
   /// - "FAILED" : The metadata import failed, and attempted metadata changes
   /// were rolled back.
-  core.String state;
+  core.String? state;
 
   /// The time when the metadata import was last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   MetadataImport();
 
@@ -1942,13 +1881,13 @@ class MetadataImport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (databaseDump != null) 'databaseDump': databaseDump.toJson(),
-        if (description != null) 'description': description,
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (databaseDump != null) 'databaseDump': databaseDump!.toJson(),
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1961,7 +1900,7 @@ class MetadataIntegration {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The metadata management activities of the metastore service.
@@ -1969,12 +1908,12 @@ class MetadataManagementActivity {
   /// The latest metadata exports of the metastore service.
   ///
   /// Output only.
-  core.List<MetadataExport> metadataExports;
+  core.List<MetadataExport>? metadataExports;
 
   /// The latest restores of the metastore service.
   ///
   /// Output only.
-  core.List<Restore> restores;
+  core.List<Restore>? restores;
 
   MetadataManagementActivity();
 
@@ -1993,12 +1932,12 @@ class MetadataManagementActivity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (metadataExports != null)
           'metadataExports':
-              metadataExports.map((value) => value.toJson()).toList(),
+              metadataExports!.map((value) => value.toJson()).toList(),
         if (restores != null)
-          'restores': restores.map((value) => value.toJson()).toList(),
+          'restores': restores!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2009,10 +1948,10 @@ class Operation {
   ///
   /// If true, the operation is completed, and either error or response is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -2023,14 +1962,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the name should be a resource name
   /// ending with operations/{unique_id}.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -2043,7 +1982,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -2078,12 +2017,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -2119,14 +2058,14 @@ class Operation {
 /// documentation (https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of members to a role.
   ///
   /// Optionally, may specify a condition that determines how and when the
   /// bindings are applied. Each of the bindings must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// etag is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -2140,8 +2079,8 @@ class Policy {
   /// field whenever you call setIamPolicy. If you omit this field, then IAM
   /// allows you to overwrite a version 3 policy with a version 1 policy, and
   /// all of the conditions in the version 3 policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -2164,7 +2103,7 @@ class Policy {
   /// valid version or leave the field unset.To learn which resources support
   /// conditions in their IAM policies, see the IAM documentation
   /// (https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -2189,13 +2128,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -2206,17 +2145,17 @@ class Restore {
   /// form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}
   ///
   /// Output only.
-  core.String backup;
+  core.String? backup;
 
   /// The time when the restore ended.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// The time when the restore started.
   ///
   /// Output only.
-  core.String startTime;
+  core.String? startTime;
 
   /// The current state of the restore.
   ///
@@ -2227,7 +2166,7 @@ class Restore {
   /// - "SUCCEEDED" : The metadata restore completed successfully.
   /// - "FAILED" : The metadata restore failed.
   /// - "CANCELLED" : The metadata restore is cancelled.
-  core.String state;
+  core.String? state;
 
   /// The type of restore.
   ///
@@ -2236,7 +2175,7 @@ class Restore {
   /// - "RESTORE_TYPE_UNSPECIFIED" : The restore type is unknown.
   /// - "FULL" : The service's metadata and configuration are restored.
   /// - "METADATA_ONLY" : Only the service's metadata is restored.
-  core.String type;
+  core.String? type;
 
   Restore();
 
@@ -2258,12 +2197,12 @@ class Restore {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (backup != null) 'backup': backup,
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (backup != null) 'backup': backup!,
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2272,7 +2211,7 @@ class Secret {
   /// The relative resource name of a Secret Manager secret version, in the
   /// following
   /// form:"projects/{project_number}/secrets/{secret_id}/versions/{version_id}".
-  core.String cloudSecret;
+  core.String? cloudSecret;
 
   Secret();
 
@@ -2282,8 +2221,8 @@ class Secret {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cloudSecret != null) 'cloudSecret': cloudSecret,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cloudSecret != null) 'cloudSecret': cloudSecret!,
       };
 }
 
@@ -2293,45 +2232,45 @@ class Service {
   /// related to the metastore service are stored.
   ///
   /// Output only.
-  core.String artifactGcsUri;
+  core.String? artifactGcsUri;
 
   /// The time when the metastore service was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The URI of the endpoint used to access the metastore service.
   ///
   /// Output only.
-  core.String endpointUri;
+  core.String? endpointUri;
 
   /// Configuration information specific to running Hive metastore software as
   /// the metastore service.
-  HiveMetastoreConfig hiveMetastoreConfig;
+  HiveMetastoreConfig? hiveMetastoreConfig;
 
   /// User-defined labels for the metastore service.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The one hour maintenance window of the metastore service.
   ///
   /// This specifies when the service can be restarted for maintenance purposes
   /// in UTC time.
-  MaintenanceWindow maintenanceWindow;
+  MaintenanceWindow? maintenanceWindow;
 
   /// The setting that defines how metastore metadata should be integrated with
   /// external services and systems.
-  MetadataIntegration metadataIntegration;
+  MetadataIntegration? metadataIntegration;
 
   /// The metadata management activities of the metastore service.
   ///
   /// Output only.
-  MetadataManagementActivity metadataManagementActivity;
+  MetadataManagementActivity? metadataManagementActivity;
 
   /// The relative resource name of the metastore service, of the
   /// form:"projects/{project_number}/locations/{location_id}/services/{service_id}".
   ///
   /// Immutable.
-  core.String name;
+  core.String? name;
 
   /// The relative resource name of the VPC network on which the instance can be
   /// accessed.
@@ -2340,12 +2279,12 @@ class Service {
   /// form:"projects/{project_number}/global/networks/{network_id}".
   ///
   /// Immutable.
-  core.String network;
+  core.String? network;
 
   /// The TCP port at which the metastore service is reached.
   ///
   /// Default: 9083.
-  core.int port;
+  core.int? port;
 
   /// The current state of the metastore service.
   ///
@@ -2364,13 +2303,13 @@ class Service {
   /// used.
   /// - "ERROR" : The metastore service has encountered an error and cannot be
   /// used. The metastore service should be deleted.
-  core.String state;
+  core.String? state;
 
   /// Additional information about the current state of the metastore service,
   /// if available.
   ///
   /// Output only.
-  core.String stateMessage;
+  core.String? stateMessage;
 
   /// The tier of the service.
   /// Possible string values are:
@@ -2380,17 +2319,17 @@ class Service {
   /// - "ENTERPRISE" : The enterprise tier provides multi-zone high
   /// availability, and sufficient scalability for enterprise-level Dataproc
   /// Metastore workloads.
-  core.String tier;
+  core.String? tier;
 
   /// The globally unique resource identifier of the metastore service.
   ///
   /// Output only.
-  core.String uid;
+  core.String? uid;
 
   /// The time when the metastore service was last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Service();
 
@@ -2456,27 +2395,27 @@ class Service {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (artifactGcsUri != null) 'artifactGcsUri': artifactGcsUri,
-        if (createTime != null) 'createTime': createTime,
-        if (endpointUri != null) 'endpointUri': endpointUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (artifactGcsUri != null) 'artifactGcsUri': artifactGcsUri!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endpointUri != null) 'endpointUri': endpointUri!,
         if (hiveMetastoreConfig != null)
-          'hiveMetastoreConfig': hiveMetastoreConfig.toJson(),
-        if (labels != null) 'labels': labels,
+          'hiveMetastoreConfig': hiveMetastoreConfig!.toJson(),
+        if (labels != null) 'labels': labels!,
         if (maintenanceWindow != null)
-          'maintenanceWindow': maintenanceWindow.toJson(),
+          'maintenanceWindow': maintenanceWindow!.toJson(),
         if (metadataIntegration != null)
-          'metadataIntegration': metadataIntegration.toJson(),
+          'metadataIntegration': metadataIntegration!.toJson(),
         if (metadataManagementActivity != null)
-          'metadataManagementActivity': metadataManagementActivity.toJson(),
-        if (name != null) 'name': name,
-        if (network != null) 'network': network,
-        if (port != null) 'port': port,
-        if (state != null) 'state': state,
-        if (stateMessage != null) 'stateMessage': stateMessage,
-        if (tier != null) 'tier': tier,
-        if (uid != null) 'uid': uid,
-        if (updateTime != null) 'updateTime': updateTime,
+          'metadataManagementActivity': metadataManagementActivity!.toJson(),
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
+        if (port != null) 'port': port!,
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (tier != null) 'tier': tier!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2487,13 +2426,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used:paths: "bindings, etag"
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -2507,9 +2446,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -2522,7 +2461,7 @@ class SetIamPolicyRequest {
 /// Design Guide (https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -2530,13 +2469,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -2560,10 +2499,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -2574,7 +2513,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see IAM Overview
   /// (https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -2586,15 +2525,15 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
 /// Response message for TestIamPermissions method.
 class TestIamPermissionsResponse {
   /// A subset of TestPermissionsRequest.permissions that the caller is allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -2606,7 +2545,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }

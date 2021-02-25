@@ -105,14 +105,10 @@ class ProjectsPatchDeploymentsResource {
   async.Future<PatchDeployment> create(
     PatchDeployment request,
     core.String parent, {
-    core.String patchDeploymentId,
-    core.String $fields,
+    core.String? patchDeploymentId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (patchDeploymentId != null) 'patchDeploymentId': [patchDeploymentId],
       if ($fields != null) 'fields': [$fields],
@@ -152,11 +148,8 @@ class ProjectsPatchDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -191,11 +184,8 @@ class ProjectsPatchDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<PatchDeployment> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -238,13 +228,10 @@ class ProjectsPatchDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<ListPatchDeploymentsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -298,13 +285,9 @@ class ProjectsPatchJobsResource {
   async.Future<PatchJob> cancel(
     CancelPatchJobRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -344,13 +327,9 @@ class ProjectsPatchJobsResource {
   async.Future<PatchJob> execute(
     ExecutePatchJobRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -391,11 +370,8 @@ class ProjectsPatchJobsResource {
   /// this method will complete with the same error.
   async.Future<PatchJob> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -438,14 +414,11 @@ class ProjectsPatchJobsResource {
   /// this method will complete with the same error.
   async.Future<ListPatchJobsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -502,14 +475,11 @@ class ProjectsPatchJobsInstanceDetailsResource {
   /// this method will complete with the same error.
   async.Future<ListPatchJobInstanceDetailsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -538,14 +508,14 @@ class AptSettings {
   /// List of packages to exclude from update.
   ///
   /// These packages will be excluded
-  core.List<core.String> excludes;
+  core.List<core.String>? excludes;
 
   /// An exclusive list of packages to be updated.
   ///
   /// These are the only packages that will be updated. If these packages are
   /// not installed, they will be ignored. This field cannot be specified with
   /// any other patch configuration fields.
-  core.List<core.String> exclusivePackages;
+  core.List<core.String>? exclusivePackages;
 
   /// By changing the type to DIST, the patching is performed using `apt-get
   /// dist-upgrade` instead.
@@ -553,7 +523,7 @@ class AptSettings {
   /// - "TYPE_UNSPECIFIED" : By default, upgrade will be performed.
   /// - "DIST" : Runs `apt-get dist-upgrade`.
   /// - "UPGRADE" : Runs `apt-get upgrade`.
-  core.String type;
+  core.String? type;
 
   AptSettings();
 
@@ -573,10 +543,10 @@ class AptSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (excludes != null) 'excludes': excludes,
-        if (exclusivePackages != null) 'exclusivePackages': exclusivePackages,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (excludes != null) 'excludes': excludes!,
+        if (exclusivePackages != null) 'exclusivePackages': exclusivePackages!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -588,7 +558,7 @@ class CancelPatchJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -605,16 +575,16 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A step that runs an executable for a PatchJob.
 class ExecStep {
   /// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-  ExecStepConfig linuxExecStepConfig;
+  ExecStepConfig? linuxExecStepConfig;
 
   /// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-  ExecStepConfig windowsExecStepConfig;
+  ExecStepConfig? windowsExecStepConfig;
 
   ExecStep();
 
@@ -630,11 +600,11 @@ class ExecStep {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (linuxExecStepConfig != null)
-          'linuxExecStepConfig': linuxExecStepConfig.toJson(),
+          'linuxExecStepConfig': linuxExecStepConfig!.toJson(),
         if (windowsExecStepConfig != null)
-          'windowsExecStepConfig': windowsExecStepConfig.toJson(),
+          'windowsExecStepConfig': windowsExecStepConfig!.toJson(),
       };
 }
 
@@ -644,10 +614,10 @@ class ExecStepConfig {
   ///
   /// A list of possible return values that the execution can return to indicate
   /// a success.
-  core.List<core.int> allowedSuccessCodes;
+  core.List<core.int>? allowedSuccessCodes;
 
   /// A Cloud Storage object containing the executable.
-  GcsObject gcsObject;
+  GcsObject? gcsObject;
 
   /// The script interpreter to use to run the script.
   ///
@@ -662,10 +632,10 @@ class ExecStepConfig {
   /// `cmd` on Windows.
   /// - "POWERSHELL" : Indicates that the file is run with PowerShell flags
   /// `-NonInteractive`, `-NoProfile`, and `-ExecutionPolicy Bypass`.
-  core.String interpreter;
+  core.String? interpreter;
 
   /// An absolute path to the executable on the VM.
-  core.String localPath;
+  core.String? localPath;
 
   ExecStepConfig();
 
@@ -687,12 +657,12 @@ class ExecStepConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedSuccessCodes != null)
-          'allowedSuccessCodes': allowedSuccessCodes,
-        if (gcsObject != null) 'gcsObject': gcsObject.toJson(),
-        if (interpreter != null) 'interpreter': interpreter,
-        if (localPath != null) 'localPath': localPath,
+          'allowedSuccessCodes': allowedSuccessCodes!,
+        if (gcsObject != null) 'gcsObject': gcsObject!.toJson(),
+        if (interpreter != null) 'interpreter': interpreter!,
+        if (localPath != null) 'localPath': localPath!,
       };
 }
 
@@ -701,35 +671,35 @@ class ExecutePatchJobRequest {
   /// Description of the patch job.
   ///
   /// Length of the description is limited to 1024 characters.
-  core.String description;
+  core.String? description;
 
   /// Display name for this patch job.
   ///
   /// This does not have to be unique.
-  core.String displayName;
+  core.String? displayName;
 
   /// If this patch is a dry-run only, instances are contacted but will do
   /// nothing.
-  core.bool dryRun;
+  core.bool? dryRun;
 
   /// Duration of the patch job.
   ///
   /// After the duration ends, the patch job times out.
-  core.String duration;
+  core.String? duration;
 
   /// Instances to patch, either explicitly or filtered by some criteria such as
   /// zone or labels.
   ///
   /// Required.
-  PatchInstanceFilter instanceFilter;
+  PatchInstanceFilter? instanceFilter;
 
   /// Patch configuration being applied.
   ///
   /// If omitted, instances are patched using the default configurations.
-  PatchConfig patchConfig;
+  PatchConfig? patchConfig;
 
   /// Rollout strategy of the patch job.
-  PatchRollout rollout;
+  PatchRollout? rollout;
 
   ExecutePatchJobRequest();
 
@@ -760,14 +730,14 @@ class ExecutePatchJobRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (dryRun != null) 'dryRun': dryRun,
-        if (duration != null) 'duration': duration,
-        if (instanceFilter != null) 'instanceFilter': instanceFilter.toJson(),
-        if (patchConfig != null) 'patchConfig': patchConfig.toJson(),
-        if (rollout != null) 'rollout': rollout.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (dryRun != null) 'dryRun': dryRun!,
+        if (duration != null) 'duration': duration!,
+        if (instanceFilter != null) 'instanceFilter': instanceFilter!.toJson(),
+        if (patchConfig != null) 'patchConfig': patchConfig!.toJson(),
+        if (rollout != null) 'rollout': rollout!.toJson(),
       };
 }
 
@@ -775,11 +745,11 @@ class ExecutePatchJobRequest {
 /// relative ("percent") to a value.
 class FixedOrPercent {
   /// Specifies a fixed value.
-  core.int fixed;
+  core.int? fixed;
 
   /// Specifies the relative value defined as a percentage, which will be
   /// multiplied by a reference value.
-  core.int percent;
+  core.int? percent;
 
   FixedOrPercent();
 
@@ -792,9 +762,9 @@ class FixedOrPercent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fixed != null) 'fixed': fixed,
-        if (percent != null) 'percent': percent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fixed != null) 'fixed': fixed!,
+        if (percent != null) 'percent': percent!,
       };
 }
 
@@ -803,7 +773,7 @@ class GcsObject {
   /// Bucket of the Cloud Storage object.
   ///
   /// Required.
-  core.String bucket;
+  core.String? bucket;
 
   /// Generation number of the Cloud Storage object.
   ///
@@ -811,12 +781,12 @@ class GcsObject {
   /// not change.
   ///
   /// Required.
-  core.String generationNumber;
+  core.String? generationNumber;
 
   /// Name of the Cloud Storage object.
   ///
   /// Required.
-  core.String object;
+  core.String? object;
 
   GcsObject();
 
@@ -832,10 +802,10 @@ class GcsObject {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bucket != null) 'bucket': bucket,
-        if (generationNumber != null) 'generationNumber': generationNumber,
-        if (object != null) 'object': object,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (generationNumber != null) 'generationNumber': generationNumber!,
+        if (object != null) 'object': object!,
       };
 }
 
@@ -847,7 +817,7 @@ class GooSettings {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The inventory details of a VM.
@@ -857,16 +827,18 @@ class Inventory {
   ///
   /// The identifier is unique to each distinct and addressable inventory item
   /// and will change, when there is a new package version.
-  core.Map<core.String, InventoryItem> items;
+  core.Map<core.String, InventoryItem>? items;
 
   /// Base level operating system information for the VM.
-  InventoryOsInfo osInfo;
+  InventoryOsInfo? osInfo;
 
   Inventory();
 
   Inventory.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
-      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+      items = (_json['items'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               InventoryItem.fromJson(
@@ -880,33 +852,33 @@ class Inventory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (osInfo != null) 'osInfo': osInfo.toJson(),
+          'items': items!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (osInfo != null) 'osInfo': osInfo!.toJson(),
       };
 }
 
 /// A single piece of inventory on a VM.
 class InventoryItem {
   /// Software package available to be installed on the VM instance.
-  InventorySoftwarePackage availablePackage;
+  InventorySoftwarePackage? availablePackage;
 
   /// When this inventory item was first detected.
-  core.String createTime;
+  core.String? createTime;
 
   /// Identifier for this item, unique across items for this VM.
-  core.String id;
+  core.String? id;
 
   /// Software package present on the VM instance.
-  InventorySoftwarePackage installedPackage;
+  InventorySoftwarePackage? installedPackage;
 
   /// The origin of this inventory item.
   /// Possible string values are:
   /// - "ORIGIN_TYPE_UNSPECIFIED" : Invalid. An origin type must be specified.
   /// - "INVENTORY_REPORT" : This inventory item was discovered as the result of
   /// the agent reporting inventory via the reporting API.
-  core.String originType;
+  core.String? originType;
 
   /// The specific type of inventory, correlating to its specific details.
   /// Possible string values are:
@@ -915,10 +887,10 @@ class InventoryItem {
   /// VM.
   /// - "AVAILABLE_PACKAGE" : This represents an update that is available for a
   /// package.
-  core.String type;
+  core.String? type;
 
   /// When this inventory item was last modified.
-  core.String updateTime;
+  core.String? updateTime;
 
   InventoryItem();
 
@@ -948,49 +920,49 @@ class InventoryItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (availablePackage != null)
-          'availablePackage': availablePackage.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (id != null) 'id': id,
+          'availablePackage': availablePackage!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (id != null) 'id': id!,
         if (installedPackage != null)
-          'installedPackage': installedPackage.toJson(),
-        if (originType != null) 'originType': originType,
-        if (type != null) 'type': type,
-        if (updateTime != null) 'updateTime': updateTime,
+          'installedPackage': installedPackage!.toJson(),
+        if (originType != null) 'originType': originType!,
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// Operating system information for the VM.
 class InventoryOsInfo {
   /// The system architecture of the operating system.
-  core.String architecture;
+  core.String? architecture;
 
   /// The VM hostname.
-  core.String hostname;
+  core.String? hostname;
 
   /// The kernel release of the operating system.
-  core.String kernelRelease;
+  core.String? kernelRelease;
 
   /// The kernel version of the operating system.
-  core.String kernelVersion;
+  core.String? kernelVersion;
 
   /// The operating system long name.
   ///
   /// For example 'Debian GNU/Linux 9' or 'Microsoft Window Server 2019
   /// Datacenter'.
-  core.String longName;
+  core.String? longName;
 
   /// The current version of the OS Config agent running on the VM.
-  core.String osconfigAgentVersion;
+  core.String? osconfigAgentVersion;
 
   /// The operating system short name.
   ///
   /// For example, 'windows' or 'debian'.
-  core.String shortName;
+  core.String? shortName;
 
   /// The version of the operating system.
-  core.String version;
+  core.String? version;
 
   InventoryOsInfo();
 
@@ -1021,16 +993,16 @@ class InventoryOsInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (architecture != null) 'architecture': architecture,
-        if (hostname != null) 'hostname': hostname,
-        if (kernelRelease != null) 'kernelRelease': kernelRelease,
-        if (kernelVersion != null) 'kernelVersion': kernelVersion,
-        if (longName != null) 'longName': longName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (hostname != null) 'hostname': hostname!,
+        if (kernelRelease != null) 'kernelRelease': kernelRelease!,
+        if (kernelVersion != null) 'kernelVersion': kernelVersion!,
+        if (longName != null) 'longName': longName!,
         if (osconfigAgentVersion != null)
-          'osconfigAgentVersion': osconfigAgentVersion,
-        if (shortName != null) 'shortName': shortName,
-        if (version != null) 'version': version,
+          'osconfigAgentVersion': osconfigAgentVersion!,
+        if (shortName != null) 'shortName': shortName!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1040,47 +1012,47 @@ class InventorySoftwarePackage {
   ///
   /// For details about the apt package manager, see
   /// https://wiki.debian.org/Apt.
-  InventoryVersionedPackage aptPackage;
+  InventoryVersionedPackage? aptPackage;
 
   /// Details of a COS package.
-  InventoryVersionedPackage cosPackage;
+  InventoryVersionedPackage? cosPackage;
 
   /// Details of a Googet package.
   ///
   /// For details about the googet package manager, see
   /// https://github.com/google/googet.
-  InventoryVersionedPackage googetPackage;
+  InventoryVersionedPackage? googetPackage;
 
   /// Details of a Windows Quick Fix engineering package.
   ///
   /// See
   /// https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering
   /// for info in Windows Quick Fix Engineering.
-  InventoryWindowsQuickFixEngineeringPackage qfePackage;
+  InventoryWindowsQuickFixEngineeringPackage? qfePackage;
 
   /// Details of a Windows Update package.
   ///
   /// See https://docs.microsoft.com/en-us/windows/win32/api/_wua/ for
   /// information about Windows Update.
-  InventoryWindowsUpdatePackage wuaPackage;
+  InventoryWindowsUpdatePackage? wuaPackage;
 
   /// Yum package info.
   ///
   /// For details about the yum package manager, see
   /// https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/ch-yum.
-  InventoryVersionedPackage yumPackage;
+  InventoryVersionedPackage? yumPackage;
 
   /// Details of a Zypper package.
   ///
   /// For details about the Zypper package manager, see
   /// https://en.opensuse.org/SDB:Zypper_manual.
-  InventoryVersionedPackage zypperPackage;
+  InventoryVersionedPackage? zypperPackage;
 
   /// Details of a Zypper patch.
   ///
   /// For details about the Zypper package manager, see
   /// https://en.opensuse.org/SDB:Zypper_manual.
-  InventoryZypperPatch zypperPatch;
+  InventoryZypperPatch? zypperPatch;
 
   InventorySoftwarePackage();
 
@@ -1119,15 +1091,15 @@ class InventorySoftwarePackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aptPackage != null) 'aptPackage': aptPackage.toJson(),
-        if (cosPackage != null) 'cosPackage': cosPackage.toJson(),
-        if (googetPackage != null) 'googetPackage': googetPackage.toJson(),
-        if (qfePackage != null) 'qfePackage': qfePackage.toJson(),
-        if (wuaPackage != null) 'wuaPackage': wuaPackage.toJson(),
-        if (yumPackage != null) 'yumPackage': yumPackage.toJson(),
-        if (zypperPackage != null) 'zypperPackage': zypperPackage.toJson(),
-        if (zypperPatch != null) 'zypperPatch': zypperPatch.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aptPackage != null) 'aptPackage': aptPackage!.toJson(),
+        if (cosPackage != null) 'cosPackage': cosPackage!.toJson(),
+        if (googetPackage != null) 'googetPackage': googetPackage!.toJson(),
+        if (qfePackage != null) 'qfePackage': qfePackage!.toJson(),
+        if (wuaPackage != null) 'wuaPackage': wuaPackage!.toJson(),
+        if (yumPackage != null) 'yumPackage': yumPackage!.toJson(),
+        if (zypperPackage != null) 'zypperPackage': zypperPackage!.toJson(),
+        if (zypperPatch != null) 'zypperPatch': zypperPatch!.toJson(),
       };
 }
 
@@ -1137,13 +1109,13 @@ class InventorySoftwarePackage {
 /// managers.
 class InventoryVersionedPackage {
   /// The system architecture this package is intended for.
-  core.String architecture;
+  core.String? architecture;
 
   /// The name of the package.
-  core.String packageName;
+  core.String? packageName;
 
   /// The version of the package.
-  core.String version;
+  core.String? version;
 
   InventoryVersionedPackage();
 
@@ -1159,10 +1131,10 @@ class InventoryVersionedPackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (architecture != null) 'architecture': architecture,
-        if (packageName != null) 'packageName': packageName,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (packageName != null) 'packageName': packageName!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -1173,18 +1145,18 @@ class InventoryVersionedPackage {
 /// https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering
 class InventoryWindowsQuickFixEngineeringPackage {
   /// A short textual description of the QFE update.
-  core.String caption;
+  core.String? caption;
 
   /// A textual description of the QFE update.
-  core.String description;
+  core.String? description;
 
   /// Unique identifier associated with a particular QFE update.
-  core.String hotFixId;
+  core.String? hotFixId;
 
   /// Date that the QFE update was installed.
   ///
   /// Mapped from installed_on field.
-  core.String installTime;
+  core.String? installTime;
 
   InventoryWindowsQuickFixEngineeringPackage();
 
@@ -1203,11 +1175,11 @@ class InventoryWindowsQuickFixEngineeringPackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (caption != null) 'caption': caption,
-        if (description != null) 'description': description,
-        if (hotFixId != null) 'hotFixId': hotFixId,
-        if (installTime != null) 'installTime': installTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (caption != null) 'caption': caption!,
+        if (description != null) 'description': description!,
+        if (hotFixId != null) 'hotFixId': hotFixId!,
+        if (installTime != null) 'installTime': installTime!,
       };
 }
 
@@ -1219,35 +1191,35 @@ class InventoryWindowsQuickFixEngineeringPackage {
 /// being updated.
 class InventoryWindowsUpdatePackage {
   /// The categories that are associated with this update package.
-  core.List<InventoryWindowsUpdatePackageWindowsUpdateCategory> categories;
+  core.List<InventoryWindowsUpdatePackageWindowsUpdateCategory>? categories;
 
   /// The localized description of the update package.
-  core.String description;
+  core.String? description;
 
   /// A collection of Microsoft Knowledge Base article IDs that are associated
   /// with the update package.
-  core.List<core.String> kbArticleIds;
+  core.List<core.String>? kbArticleIds;
 
   /// The last published date of the update, in (UTC) date and time.
-  core.String lastDeploymentChangeTime;
+  core.String? lastDeploymentChangeTime;
 
   /// A collection of URLs that provide more information about the update
   /// package.
-  core.List<core.String> moreInfoUrls;
+  core.List<core.String>? moreInfoUrls;
 
   /// The revision number of this update package.
-  core.int revisionNumber;
+  core.int? revisionNumber;
 
   /// A hyperlink to the language-specific support information for the update.
-  core.String supportUrl;
+  core.String? supportUrl;
 
   /// The localized title of the update package.
-  core.String title;
+  core.String? title;
 
   /// Gets the identifier of an update package.
   ///
   /// Stays the same across revisions.
-  core.String updateId;
+  core.String? updateId;
 
   InventoryWindowsUpdatePackage();
 
@@ -1290,28 +1262,28 @@ class InventoryWindowsUpdatePackage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (categories != null)
-          'categories': categories.map((value) => value.toJson()).toList(),
-        if (description != null) 'description': description,
-        if (kbArticleIds != null) 'kbArticleIds': kbArticleIds,
+          'categories': categories!.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description!,
+        if (kbArticleIds != null) 'kbArticleIds': kbArticleIds!,
         if (lastDeploymentChangeTime != null)
-          'lastDeploymentChangeTime': lastDeploymentChangeTime,
-        if (moreInfoUrls != null) 'moreInfoUrls': moreInfoUrls,
-        if (revisionNumber != null) 'revisionNumber': revisionNumber,
-        if (supportUrl != null) 'supportUrl': supportUrl,
-        if (title != null) 'title': title,
-        if (updateId != null) 'updateId': updateId,
+          'lastDeploymentChangeTime': lastDeploymentChangeTime!,
+        if (moreInfoUrls != null) 'moreInfoUrls': moreInfoUrls!,
+        if (revisionNumber != null) 'revisionNumber': revisionNumber!,
+        if (supportUrl != null) 'supportUrl': supportUrl!,
+        if (title != null) 'title': title!,
+        if (updateId != null) 'updateId': updateId!,
       };
 }
 
 /// Categories specified by the Windows Update.
 class InventoryWindowsUpdatePackageWindowsUpdateCategory {
   /// The identifier of the windows update category.
-  core.String id;
+  core.String? id;
 
   /// The name of the windows update category.
-  core.String name;
+  core.String? name;
 
   InventoryWindowsUpdatePackageWindowsUpdateCategory();
 
@@ -1324,25 +1296,25 @@ class InventoryWindowsUpdatePackageWindowsUpdateCategory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Details related to a Zypper Patch.
 class InventoryZypperPatch {
   /// The category of the patch.
-  core.String category;
+  core.String? category;
 
   /// The name of the patch.
-  core.String patchName;
+  core.String? patchName;
 
   /// The severity specified for this patch
-  core.String severity;
+  core.String? severity;
 
   /// Any summary information provided about this patch.
-  core.String summary;
+  core.String? summary;
 
   InventoryZypperPatch();
 
@@ -1361,11 +1333,11 @@ class InventoryZypperPatch {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (category != null) 'category': category,
-        if (patchName != null) 'patchName': patchName,
-        if (severity != null) 'severity': severity,
-        if (summary != null) 'summary': summary,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (category != null) 'category': category!,
+        if (patchName != null) 'patchName': patchName!,
+        if (severity != null) 'severity': severity!,
+        if (summary != null) 'summary': summary!,
       };
 }
 
@@ -1373,10 +1345,10 @@ class InventoryZypperPatch {
 class ListPatchDeploymentsResponse {
   /// A pagination token that can be used to get the next page of patch
   /// deployments.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of patch deployments.
-  core.List<PatchDeployment> patchDeployments;
+  core.List<PatchDeployment>? patchDeployments;
 
   ListPatchDeploymentsResponse();
 
@@ -1392,21 +1364,21 @@ class ListPatchDeploymentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (patchDeployments != null)
           'patchDeployments':
-              patchDeployments.map((value) => value.toJson()).toList(),
+              patchDeployments!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A response message for listing the instances details for a patch job.
 class ListPatchJobInstanceDetailsResponse {
   /// A pagination token that can be used to get the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of instance status.
-  core.List<PatchJobInstanceDetails> patchJobInstanceDetails;
+  core.List<PatchJobInstanceDetails>? patchJobInstanceDetails;
 
   ListPatchJobInstanceDetailsResponse();
 
@@ -1423,21 +1395,21 @@ class ListPatchJobInstanceDetailsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (patchJobInstanceDetails != null)
           'patchJobInstanceDetails':
-              patchJobInstanceDetails.map((value) => value.toJson()).toList(),
+              patchJobInstanceDetails!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A response message for listing patch jobs.
 class ListPatchJobsResponse {
   /// A pagination token that can be used to get the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of patch jobs.
-  core.List<PatchJob> patchJobs;
+  core.List<PatchJob>? patchJobs;
 
   ListPatchJobsResponse();
 
@@ -1453,10 +1425,10 @@ class ListPatchJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (patchJobs != null)
-          'patchJobs': patchJobs.map((value) => value.toJson()).toList(),
+          'patchJobs': patchJobs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1473,12 +1445,12 @@ class MonthlySchedule {
   /// June, etc.
   ///
   /// Required.
-  core.int monthDay;
+  core.int? monthDay;
 
   /// Week day in a month.
   ///
   /// Required.
-  WeekDayOfMonth weekDayOfMonth;
+  WeekDayOfMonth? weekDayOfMonth;
 
   MonthlySchedule();
 
@@ -1492,9 +1464,9 @@ class MonthlySchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (monthDay != null) 'monthDay': monthDay,
-        if (weekDayOfMonth != null) 'weekDayOfMonth': weekDayOfMonth.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (monthDay != null) 'monthDay': monthDay!,
+        if (weekDayOfMonth != null) 'weekDayOfMonth': weekDayOfMonth!.toJson(),
       };
 }
 
@@ -1505,7 +1477,7 @@ class OneTimeSchedule {
   /// The desired patch job execution time.
   ///
   /// Required.
-  core.String executeTime;
+  core.String? executeTime;
 
   OneTimeSchedule();
 
@@ -1515,8 +1487,8 @@ class OneTimeSchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (executeTime != null) 'executeTime': executeTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (executeTime != null) 'executeTime': executeTime!,
       };
 }
 
@@ -1527,18 +1499,18 @@ class PatchConfig {
   /// Apt update settings.
   ///
   /// Use this setting to override the default `apt` patch rules.
-  AptSettings apt;
+  AptSettings? apt;
 
   /// Goo update settings.
   ///
   /// Use this setting to override the default `goo` patch rules.
-  GooSettings goo;
+  GooSettings? goo;
 
   /// The `ExecStep` to run after the patch update.
-  ExecStep postStep;
+  ExecStep? postStep;
 
   /// The `ExecStep` to run before the patch update.
-  ExecStep preStep;
+  ExecStep? preStep;
 
   /// Post-patch reboot settings.
   /// Possible string values are:
@@ -1549,22 +1521,22 @@ class PatchConfig {
   /// install times are compared with system boot time.
   /// - "ALWAYS" : Always reboot the machine after the update completes.
   /// - "NEVER" : Never reboot the machine after the update completes.
-  core.String rebootConfig;
+  core.String? rebootConfig;
 
   /// Windows update settings.
   ///
   /// Use this override the default windows patch rules.
-  WindowsUpdateSettings windowsUpdate;
+  WindowsUpdateSettings? windowsUpdate;
 
   /// Yum update settings.
   ///
   /// Use this setting to override the default `yum` patch rules.
-  YumSettings yum;
+  YumSettings? yum;
 
   /// Zypper update settings.
   ///
   /// Use this setting to override the default `zypper` patch rules.
-  ZypperSettings zypper;
+  ZypperSettings? zypper;
 
   PatchConfig();
 
@@ -1602,15 +1574,15 @@ class PatchConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apt != null) 'apt': apt.toJson(),
-        if (goo != null) 'goo': goo.toJson(),
-        if (postStep != null) 'postStep': postStep.toJson(),
-        if (preStep != null) 'preStep': preStep.toJson(),
-        if (rebootConfig != null) 'rebootConfig': rebootConfig,
-        if (windowsUpdate != null) 'windowsUpdate': windowsUpdate.toJson(),
-        if (yum != null) 'yum': yum.toJson(),
-        if (zypper != null) 'zypper': zypper.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apt != null) 'apt': apt!.toJson(),
+        if (goo != null) 'goo': goo!.toJson(),
+        if (postStep != null) 'postStep': postStep!.toJson(),
+        if (preStep != null) 'preStep': preStep!.toJson(),
+        if (rebootConfig != null) 'rebootConfig': rebootConfig!,
+        if (windowsUpdate != null) 'windowsUpdate': windowsUpdate!.toJson(),
+        if (yum != null) 'yum': yum!.toJson(),
+        if (zypper != null) 'zypper': zypper!.toJson(),
       };
 }
 
@@ -1628,26 +1600,26 @@ class PatchDeployment {
   /// format.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Description of the patch deployment.
   ///
   /// Length of the description is limited to 1024 characters.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Duration of the patch.
   ///
   /// After the duration ends, the patch times out.
   ///
   /// Optional.
-  core.String duration;
+  core.String? duration;
 
   /// VM instances to patch.
   ///
   /// Required.
-  PatchInstanceFilter instanceFilter;
+  PatchInstanceFilter? instanceFilter;
 
   /// The last time a patch job was started by this deployment.
   ///
@@ -1655,34 +1627,34 @@ class PatchDeployment {
   /// format.
   ///
   /// Output only.
-  core.String lastExecuteTime;
+  core.String? lastExecuteTime;
 
   /// Unique name for the patch deployment resource in a project.
   ///
   /// The patch deployment name is in the form:
   /// `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field
   /// is ignored when you create a new patch deployment.
-  core.String name;
+  core.String? name;
 
   /// Schedule a one-time execution.
   ///
   /// Required.
-  OneTimeSchedule oneTimeSchedule;
+  OneTimeSchedule? oneTimeSchedule;
 
   /// Patch configuration that is applied.
   ///
   /// Optional.
-  PatchConfig patchConfig;
+  PatchConfig? patchConfig;
 
   /// Schedule recurring executions.
   ///
   /// Required.
-  RecurringSchedule recurringSchedule;
+  RecurringSchedule? recurringSchedule;
 
   /// Rollout strategy of the patch job.
   ///
   /// Optional.
-  PatchRollout rollout;
+  PatchRollout? rollout;
 
   /// Time the patch deployment was last updated.
   ///
@@ -1690,7 +1662,7 @@ class PatchDeployment {
   /// format.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   PatchDeployment();
 
@@ -1735,20 +1707,20 @@ class PatchDeployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (duration != null) 'duration': duration,
-        if (instanceFilter != null) 'instanceFilter': instanceFilter.toJson(),
-        if (lastExecuteTime != null) 'lastExecuteTime': lastExecuteTime,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (duration != null) 'duration': duration!,
+        if (instanceFilter != null) 'instanceFilter': instanceFilter!.toJson(),
+        if (lastExecuteTime != null) 'lastExecuteTime': lastExecuteTime!,
+        if (name != null) 'name': name!,
         if (oneTimeSchedule != null)
-          'oneTimeSchedule': oneTimeSchedule.toJson(),
-        if (patchConfig != null) 'patchConfig': patchConfig.toJson(),
+          'oneTimeSchedule': oneTimeSchedule!.toJson(),
+        if (patchConfig != null) 'patchConfig': patchConfig!.toJson(),
         if (recurringSchedule != null)
-          'recurringSchedule': recurringSchedule.toJson(),
-        if (rollout != null) 'rollout': rollout.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
+          'recurringSchedule': recurringSchedule!.toJson(),
+        if (rollout != null) 'rollout': rollout!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1761,18 +1733,18 @@ class PatchInstanceFilter {
   /// Target all VM instances in the project.
   ///
   /// If true, no other criteria is permitted.
-  core.bool all;
+  core.bool? all;
 
   /// Targets VM instances matching ANY of these GroupLabels.
   ///
   /// This allows targeting of disparate groups of VM instances.
-  core.List<PatchInstanceFilterGroupLabel> groupLabels;
+  core.List<PatchInstanceFilterGroupLabel>? groupLabels;
 
   /// Targets VMs whose name starts with one of these prefixes.
   ///
   /// Similar to labels, this is another way to group VMs when targeting
   /// configs, for example prefix="prod-".
-  core.List<core.String> instanceNamePrefixes;
+  core.List<core.String>? instanceNamePrefixes;
 
   /// Targets any of the VM instances specified.
   ///
@@ -1780,12 +1752,12 @@ class PatchInstanceFilter {
   /// `zones/[ZONE]/instances/[INSTANCE_NAME]`,
   /// `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or
   /// `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`
-  core.List<core.String> instances;
+  core.List<core.String>? instances;
 
   /// Targets VM instances in ANY of these zones.
   ///
   /// Leave empty to target VM instances in any zone.
-  core.List<core.String> zones;
+  core.List<core.String>? zones;
 
   PatchInstanceFilter();
 
@@ -1817,14 +1789,14 @@ class PatchInstanceFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (all != null) 'all': all,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (all != null) 'all': all!,
         if (groupLabels != null)
-          'groupLabels': groupLabels.map((value) => value.toJson()).toList(),
+          'groupLabels': groupLabels!.map((value) => value.toJson()).toList(),
         if (instanceNamePrefixes != null)
-          'instanceNamePrefixes': instanceNamePrefixes,
-        if (instances != null) 'instances': instances,
-        if (zones != null) 'zones': zones,
+          'instanceNamePrefixes': instanceNamePrefixes!,
+        if (instances != null) 'instances': instances!,
+        if (zones != null) 'zones': zones!,
       };
 }
 
@@ -1839,7 +1811,7 @@ class PatchInstanceFilter {
 class PatchInstanceFilterGroupLabel {
   /// Compute Engine instance labels that must be present for a VM instance to
   /// be targeted by this filter.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   PatchInstanceFilterGroupLabel();
 
@@ -1855,8 +1827,8 @@ class PatchInstanceFilterGroupLabel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
       };
 }
 
@@ -1869,55 +1841,55 @@ class PatchInstanceFilterGroupLabel {
 /// [Creating patch jobs](https://cloud.google.com/compute/docs/os-patch-management/create-patch-job).
 class PatchJob {
   /// Time this patch job was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// Description of the patch job.
   ///
   /// Length of the description is limited to 1024 characters.
-  core.String description;
+  core.String? description;
 
   /// Display name for this patch job.
   ///
   /// This is not a unique identifier.
-  core.String displayName;
+  core.String? displayName;
 
   /// If this patch job is a dry run, the agent reports that it has finished
   /// without running any updates on the VM instance.
-  core.bool dryRun;
+  core.bool? dryRun;
 
   /// Duration of the patch job.
   ///
   /// After the duration ends, the patch job times out.
-  core.String duration;
+  core.String? duration;
 
   /// If this patch job failed, this message provides information about the
   /// failure.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   /// Summary of instance details.
-  PatchJobInstanceDetailsSummary instanceDetailsSummary;
+  PatchJobInstanceDetailsSummary? instanceDetailsSummary;
 
   /// Instances to patch.
-  PatchInstanceFilter instanceFilter;
+  PatchInstanceFilter? instanceFilter;
 
   /// Unique identifier for this patch job in the form `projects / * /patchJobs
   /// / * `
-  core.String name;
+  core.String? name;
 
   /// Patch configuration being applied.
-  PatchConfig patchConfig;
+  PatchConfig? patchConfig;
 
   /// Name of the patch deployment that created this patch job.
   ///
   /// Output only.
-  core.String patchDeployment;
+  core.String? patchDeployment;
 
   /// Reflects the overall progress of the patch job in the range of 0.0 being
   /// no progress to 100.0 being complete.
-  core.double percentComplete;
+  core.double? percentComplete;
 
   /// Rollout strategy being applied.
-  PatchRollout rollout;
+  PatchRollout? rollout;
 
   /// The current state of the PatchJob.
   /// Possible string values are:
@@ -1930,10 +1902,10 @@ class PatchJob {
   /// - "COMPLETED_WITH_ERRORS" : Patch job completed but there were errors.
   /// - "CANCELED" : The patch job was canceled.
   /// - "TIMED_OUT" : The patch job timed out.
-  core.String state;
+  core.String? state;
 
   /// Last time this patch job was updated.
-  core.String updateTime;
+  core.String? updateTime;
 
   PatchJob();
 
@@ -1990,23 +1962,23 @@ class PatchJob {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (dryRun != null) 'dryRun': dryRun,
-        if (duration != null) 'duration': duration,
-        if (errorMessage != null) 'errorMessage': errorMessage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (dryRun != null) 'dryRun': dryRun!,
+        if (duration != null) 'duration': duration!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
         if (instanceDetailsSummary != null)
-          'instanceDetailsSummary': instanceDetailsSummary.toJson(),
-        if (instanceFilter != null) 'instanceFilter': instanceFilter.toJson(),
-        if (name != null) 'name': name,
-        if (patchConfig != null) 'patchConfig': patchConfig.toJson(),
-        if (patchDeployment != null) 'patchDeployment': patchDeployment,
-        if (percentComplete != null) 'percentComplete': percentComplete,
-        if (rollout != null) 'rollout': rollout.toJson(),
-        if (state != null) 'state': state,
-        if (updateTime != null) 'updateTime': updateTime,
+          'instanceDetailsSummary': instanceDetailsSummary!.toJson(),
+        if (instanceFilter != null) 'instanceFilter': instanceFilter!.toJson(),
+        if (name != null) 'name': name!,
+        if (patchConfig != null) 'patchConfig': patchConfig!.toJson(),
+        if (patchDeployment != null) 'patchDeployment': patchDeployment!,
+        if (percentComplete != null) 'percentComplete': percentComplete!,
+        if (rollout != null) 'rollout': rollout!.toJson(),
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2016,18 +1988,18 @@ class PatchJob {
 /// [Listing all VM instance details for a specific patch job](https://cloud.google.com/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details).
 class PatchJobInstanceDetails {
   /// The number of times the agent that the agent attempts to apply the patch.
-  core.String attemptCount;
+  core.String? attemptCount;
 
   /// If the patch fails, this field provides the reason.
-  core.String failureReason;
+  core.String? failureReason;
 
   /// The unique identifier for the instance.
   ///
   /// This identifier is defined by the server.
-  core.String instanceSystemId;
+  core.String? instanceSystemId;
 
   /// The instance name in the form `projects / * /zones / * /instances / * `
-  core.String name;
+  core.String? name;
 
   /// Current state of instance patch.
   /// Possible string values are:
@@ -2051,7 +2023,7 @@ class PatchJobInstanceDetails {
   /// - "NO_AGENT_DETECTED" : The service could not detect the presence of the
   /// agent. Check to ensure that the agent is installed, running, and able to
   /// communicate with the service.
-  core.String state;
+  core.String? state;
 
   PatchJobInstanceDetails();
 
@@ -2073,12 +2045,12 @@ class PatchJobInstanceDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attemptCount != null) 'attemptCount': attemptCount,
-        if (failureReason != null) 'failureReason': failureReason,
-        if (instanceSystemId != null) 'instanceSystemId': instanceSystemId,
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attemptCount != null) 'attemptCount': attemptCount!,
+        if (failureReason != null) 'failureReason': failureReason!,
+        if (instanceSystemId != null) 'instanceSystemId': instanceSystemId!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -2090,52 +2062,52 @@ class PatchJobInstanceDetails {
 /// states of each instance.
 class PatchJobInstanceDetailsSummary {
   /// Number of instances that have acked and will start shortly.
-  core.String ackedInstanceCount;
+  core.String? ackedInstanceCount;
 
   /// Number of instances that are applying patches.
-  core.String applyingPatchesInstanceCount;
+  core.String? applyingPatchesInstanceCount;
 
   /// Number of instances that are downloading patches.
-  core.String downloadingPatchesInstanceCount;
+  core.String? downloadingPatchesInstanceCount;
 
   /// Number of instances that failed.
-  core.String failedInstanceCount;
+  core.String? failedInstanceCount;
 
   /// Number of instances that are inactive.
-  core.String inactiveInstanceCount;
+  core.String? inactiveInstanceCount;
 
   /// Number of instances that do not appear to be running the agent.
   ///
   /// Check to ensure that the agent is installed, running, and able to
   /// communicate with the service.
-  core.String noAgentDetectedInstanceCount;
+  core.String? noAgentDetectedInstanceCount;
 
   /// Number of instances notified about patch job.
-  core.String notifiedInstanceCount;
+  core.String? notifiedInstanceCount;
 
   /// Number of instances pending patch job.
-  core.String pendingInstanceCount;
+  core.String? pendingInstanceCount;
 
   /// Number of instances that are running the post-patch step.
-  core.String postPatchStepInstanceCount;
+  core.String? postPatchStepInstanceCount;
 
   /// Number of instances that are running the pre-patch step.
-  core.String prePatchStepInstanceCount;
+  core.String? prePatchStepInstanceCount;
 
   /// Number of instances rebooting.
-  core.String rebootingInstanceCount;
+  core.String? rebootingInstanceCount;
 
   /// Number of instances that have started.
-  core.String startedInstanceCount;
+  core.String? startedInstanceCount;
 
   /// Number of instances that have completed successfully.
-  core.String succeededInstanceCount;
+  core.String? succeededInstanceCount;
 
   /// Number of instances that require reboot.
-  core.String succeededRebootRequiredInstanceCount;
+  core.String? succeededRebootRequiredInstanceCount;
 
   /// Number of instances that exceeded the time out while applying the patch.
-  core.String timedOutInstanceCount;
+  core.String? timedOutInstanceCount;
 
   PatchJobInstanceDetailsSummary();
 
@@ -2193,38 +2165,38 @@ class PatchJobInstanceDetailsSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (ackedInstanceCount != null)
-          'ackedInstanceCount': ackedInstanceCount,
+          'ackedInstanceCount': ackedInstanceCount!,
         if (applyingPatchesInstanceCount != null)
-          'applyingPatchesInstanceCount': applyingPatchesInstanceCount,
+          'applyingPatchesInstanceCount': applyingPatchesInstanceCount!,
         if (downloadingPatchesInstanceCount != null)
-          'downloadingPatchesInstanceCount': downloadingPatchesInstanceCount,
+          'downloadingPatchesInstanceCount': downloadingPatchesInstanceCount!,
         if (failedInstanceCount != null)
-          'failedInstanceCount': failedInstanceCount,
+          'failedInstanceCount': failedInstanceCount!,
         if (inactiveInstanceCount != null)
-          'inactiveInstanceCount': inactiveInstanceCount,
+          'inactiveInstanceCount': inactiveInstanceCount!,
         if (noAgentDetectedInstanceCount != null)
-          'noAgentDetectedInstanceCount': noAgentDetectedInstanceCount,
+          'noAgentDetectedInstanceCount': noAgentDetectedInstanceCount!,
         if (notifiedInstanceCount != null)
-          'notifiedInstanceCount': notifiedInstanceCount,
+          'notifiedInstanceCount': notifiedInstanceCount!,
         if (pendingInstanceCount != null)
-          'pendingInstanceCount': pendingInstanceCount,
+          'pendingInstanceCount': pendingInstanceCount!,
         if (postPatchStepInstanceCount != null)
-          'postPatchStepInstanceCount': postPatchStepInstanceCount,
+          'postPatchStepInstanceCount': postPatchStepInstanceCount!,
         if (prePatchStepInstanceCount != null)
-          'prePatchStepInstanceCount': prePatchStepInstanceCount,
+          'prePatchStepInstanceCount': prePatchStepInstanceCount!,
         if (rebootingInstanceCount != null)
-          'rebootingInstanceCount': rebootingInstanceCount,
+          'rebootingInstanceCount': rebootingInstanceCount!,
         if (startedInstanceCount != null)
-          'startedInstanceCount': startedInstanceCount,
+          'startedInstanceCount': startedInstanceCount!,
         if (succeededInstanceCount != null)
-          'succeededInstanceCount': succeededInstanceCount,
+          'succeededInstanceCount': succeededInstanceCount!,
         if (succeededRebootRequiredInstanceCount != null)
           'succeededRebootRequiredInstanceCount':
-              succeededRebootRequiredInstanceCount,
+              succeededRebootRequiredInstanceCount!,
         if (timedOutInstanceCount != null)
-          'timedOutInstanceCount': timedOutInstanceCount,
+          'timedOutInstanceCount': timedOutInstanceCount!,
       };
 }
 
@@ -2253,7 +2225,7 @@ class PatchRollout {
   /// zone is completed successfully, patching begins with 10 VMs at a time in
   /// the next zone. If 10 VMs in the next zone fail to patch, the patch job
   /// stops.
-  FixedOrPercent disruptionBudget;
+  FixedOrPercent? disruptionBudget;
 
   /// Mode of the patch rollout.
   /// Possible string values are:
@@ -2266,7 +2238,7 @@ class PatchRollout {
   /// in alphabetical order.
   /// - "CONCURRENT_ZONES" : Patches are applied to VMs in all zones at the same
   /// time.
-  core.String mode;
+  core.String? mode;
 
   PatchRollout();
 
@@ -2280,10 +2252,10 @@ class PatchRollout {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (disruptionBudget != null)
-          'disruptionBudget': disruptionBudget.toJson(),
-        if (mode != null) 'mode': mode,
+          'disruptionBudget': disruptionBudget!.toJson(),
+        if (mode != null) 'mode': mode!,
       };
 }
 
@@ -2293,7 +2265,7 @@ class RecurringSchedule {
   /// active.
   ///
   /// Optional.
-  core.String endTime;
+  core.String? endTime;
 
   /// The frequency unit of this recurring schedule.
   ///
@@ -2304,46 +2276,46 @@ class RecurringSchedule {
   /// weeks.
   /// - "MONTHLY" : Indicates that the frequency should be expressed in terms of
   /// months.
-  core.String frequency;
+  core.String? frequency;
 
   /// The time the last patch job ran successfully.
   ///
   /// Output only.
-  core.String lastExecuteTime;
+  core.String? lastExecuteTime;
 
   /// Schedule with monthly executions.
   ///
   /// Required.
-  MonthlySchedule monthly;
+  MonthlySchedule? monthly;
 
   /// The time the next patch job is scheduled to run.
   ///
   /// Output only.
-  core.String nextExecuteTime;
+  core.String? nextExecuteTime;
 
   /// The time that the recurring schedule becomes effective.
   ///
   /// Defaults to `create_time` of the patch deployment.
   ///
   /// Optional.
-  core.String startTime;
+  core.String? startTime;
 
   /// Time of the day to run a recurring deployment.
   ///
   /// Required.
-  TimeOfDay timeOfDay;
+  TimeOfDay? timeOfDay;
 
   /// Defines the time zone that `time_of_day` is relative to.
   ///
   /// The rules for daylight saving time are determined by the chosen time zone.
   ///
   /// Required.
-  TimeZone timeZone;
+  TimeZone? timeZone;
 
   /// Schedule with weekly executions.
   ///
   /// Required.
-  WeeklySchedule weekly;
+  WeeklySchedule? weekly;
 
   RecurringSchedule();
 
@@ -2381,16 +2353,16 @@ class RecurringSchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (frequency != null) 'frequency': frequency,
-        if (lastExecuteTime != null) 'lastExecuteTime': lastExecuteTime,
-        if (monthly != null) 'monthly': monthly.toJson(),
-        if (nextExecuteTime != null) 'nextExecuteTime': nextExecuteTime,
-        if (startTime != null) 'startTime': startTime,
-        if (timeOfDay != null) 'timeOfDay': timeOfDay.toJson(),
-        if (timeZone != null) 'timeZone': timeZone.toJson(),
-        if (weekly != null) 'weekly': weekly.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (frequency != null) 'frequency': frequency!,
+        if (lastExecuteTime != null) 'lastExecuteTime': lastExecuteTime!,
+        if (monthly != null) 'monthly': monthly!.toJson(),
+        if (nextExecuteTime != null) 'nextExecuteTime': nextExecuteTime!,
+        if (startTime != null) 'startTime': startTime!,
+        if (timeOfDay != null) 'timeOfDay': timeOfDay!.toJson(),
+        if (timeZone != null) 'timeZone': timeZone!.toJson(),
+        if (weekly != null) 'weekly': weekly!.toJson(),
       };
 }
 
@@ -2404,23 +2376,23 @@ class TimeOfDay {
   ///
   /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
   /// for scenarios like business closing time.
-  core.int hours;
+  core.int? hours;
 
   /// Minutes of hour of day.
   ///
   /// Must be from 0 to 59.
-  core.int minutes;
+  core.int? minutes;
 
   /// Fractions of seconds in nanoseconds.
   ///
   /// Must be from 0 to 999,999,999.
-  core.int nanos;
+  core.int? nanos;
 
   /// Seconds of minutes of the time.
   ///
   /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
   /// leap-seconds.
-  core.int seconds;
+  core.int? seconds;
 
   TimeOfDay();
 
@@ -2439,11 +2411,11 @@ class TimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hours != null) 'hours': hours,
-        if (minutes != null) 'minutes': minutes,
-        if (nanos != null) 'nanos': nanos,
-        if (seconds != null) 'seconds': seconds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hours != null) 'hours': hours!,
+        if (minutes != null) 'minutes': minutes!,
+        if (nanos != null) 'nanos': nanos!,
+        if (seconds != null) 'seconds': seconds!,
       };
 }
 
@@ -2451,12 +2423,12 @@ class TimeOfDay {
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).
 class TimeZone {
   /// IANA Time Zone Database time zone, e.g. "America/New_York".
-  core.String id;
+  core.String? id;
 
   /// IANA Time Zone Database version number, e.g. "2019a".
   ///
   /// Optional.
-  core.String version;
+  core.String? version;
 
   TimeZone();
 
@@ -2469,9 +2441,9 @@ class TimeZone {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -2491,7 +2463,7 @@ class WeekDayOfMonth {
   /// - "FRIDAY" : Friday
   /// - "SATURDAY" : Saturday
   /// - "SUNDAY" : Sunday
-  core.String dayOfWeek;
+  core.String? dayOfWeek;
 
   /// Week number in a month.
   ///
@@ -2499,7 +2471,7 @@ class WeekDayOfMonth {
   /// of the month.
   ///
   /// Required.
-  core.int weekOrdinal;
+  core.int? weekOrdinal;
 
   WeekDayOfMonth();
 
@@ -2512,9 +2484,9 @@ class WeekDayOfMonth {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek,
-        if (weekOrdinal != null) 'weekOrdinal': weekOrdinal,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
+        if (weekOrdinal != null) 'weekOrdinal': weekOrdinal!,
       };
 }
 
@@ -2532,7 +2504,7 @@ class WeeklySchedule {
   /// - "FRIDAY" : Friday
   /// - "SATURDAY" : Saturday
   /// - "SUNDAY" : Sunday
-  core.String dayOfWeek;
+  core.String? dayOfWeek;
 
   WeeklySchedule();
 
@@ -2542,8 +2514,8 @@ class WeeklySchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
       };
 }
 
@@ -2552,16 +2524,16 @@ class WindowsUpdateSettings {
   /// Only apply updates of these windows update classifications.
   ///
   /// If empty, all updates are applied.
-  core.List<core.String> classifications;
+  core.List<core.String>? classifications;
 
   /// List of KBs to exclude from update.
-  core.List<core.String> excludes;
+  core.List<core.String>? excludes;
 
   /// An exclusive list of kbs to be updated.
   ///
   /// These are the only patches that will be updated. This field must not be
   /// used with other patch configurations.
-  core.List<core.String> exclusivePatches;
+  core.List<core.String>? exclusivePatches;
 
   WindowsUpdateSettings();
 
@@ -2583,10 +2555,10 @@ class WindowsUpdateSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (classifications != null) 'classifications': classifications,
-        if (excludes != null) 'excludes': excludes,
-        if (exclusivePatches != null) 'exclusivePatches': exclusivePatches,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (classifications != null) 'classifications': classifications!,
+        if (excludes != null) 'excludes': excludes!,
+        if (exclusivePatches != null) 'exclusivePatches': exclusivePatches!,
       };
 }
 
@@ -2598,22 +2570,22 @@ class YumSettings {
   /// List of packages to exclude from update.
   ///
   /// These packages are excluded by using the yum `--exclude` flag.
-  core.List<core.String> excludes;
+  core.List<core.String>? excludes;
 
   /// An exclusive list of packages to be updated.
   ///
   /// These are the only packages that will be updated. If these packages are
   /// not installed, they will be ignored. This field must not be specified with
   /// any other patch configuration fields.
-  core.List<core.String> exclusivePackages;
+  core.List<core.String>? exclusivePackages;
 
   /// Will cause patch to run `yum update-minimal` instead.
-  core.bool minimal;
+  core.bool? minimal;
 
   /// Adds the `--security` flag to `yum update`.
   ///
   /// Not supported on all platforms.
-  core.bool security;
+  core.bool? security;
 
   YumSettings();
 
@@ -2636,11 +2608,11 @@ class YumSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (excludes != null) 'excludes': excludes,
-        if (exclusivePackages != null) 'exclusivePackages': exclusivePackages,
-        if (minimal != null) 'minimal': minimal,
-        if (security != null) 'security': security,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (excludes != null) 'excludes': excludes!,
+        if (exclusivePackages != null) 'exclusivePackages': exclusivePackages!,
+        if (minimal != null) 'minimal': minimal!,
+        if (security != null) 'security': security!,
       };
 }
 
@@ -2651,28 +2623,28 @@ class ZypperSettings {
   /// Install only patches with these categories.
   ///
   /// Common categories include security, recommended, and feature.
-  core.List<core.String> categories;
+  core.List<core.String>? categories;
 
   /// List of patches to exclude from update.
-  core.List<core.String> excludes;
+  core.List<core.String>? excludes;
 
   /// An exclusive list of patches to be updated.
   ///
   /// These are the only patches that will be installed using 'zypper patch
   /// patch:' command. This field must not be used with any other patch
   /// configuration fields.
-  core.List<core.String> exclusivePatches;
+  core.List<core.String>? exclusivePatches;
 
   /// Install only patches with these severities.
   ///
   /// Common severities include critical, important, moderate, and low.
-  core.List<core.String> severities;
+  core.List<core.String>? severities;
 
   /// Adds the `--with-optional` flag to `zypper patch`.
-  core.bool withOptional;
+  core.bool? withOptional;
 
   /// Adds the `--with-update` flag, to `zypper patch`.
-  core.bool withUpdate;
+  core.bool? withUpdate;
 
   ZypperSettings();
 
@@ -2705,12 +2677,12 @@ class ZypperSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (categories != null) 'categories': categories,
-        if (excludes != null) 'excludes': excludes,
-        if (exclusivePatches != null) 'exclusivePatches': exclusivePatches,
-        if (severities != null) 'severities': severities,
-        if (withOptional != null) 'withOptional': withOptional,
-        if (withUpdate != null) 'withUpdate': withUpdate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (categories != null) 'categories': categories!,
+        if (excludes != null) 'excludes': excludes!,
+        if (exclusivePatches != null) 'exclusivePatches': exclusivePatches!,
+        if (severities != null) 'severities': severities!,
+        if (withOptional != null) 'withOptional': withOptional!,
+        if (withUpdate != null) 'withUpdate': withUpdate!,
       };
 }

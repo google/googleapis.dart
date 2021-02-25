@@ -44,16 +44,34 @@ core.Map<core.String, core.Object> buildUnnamed3128() {
 
 void checkUnnamed3128(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o['x']) as core.Map;
+  var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
-  var casted2 = (o['y']) as core.Map;
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
+  var casted2 = (o['y']!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed3129() {
@@ -85,9 +103,15 @@ api.GoogleApiHttpBody buildGoogleApiHttpBody() {
 void checkGoogleApiHttpBody(api.GoogleApiHttpBody o) {
   buildCounterGoogleApiHttpBody++;
   if (buildCounterGoogleApiHttpBody < 3) {
-    unittest.expect(o.contentType, unittest.equals('foo'));
-    unittest.expect(o.data, unittest.equals('foo'));
-    checkUnnamed3129(o.extensions);
+    unittest.expect(
+      o.contentType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.data!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3129(o.extensions!);
   }
   buildCounterGoogleApiHttpBody--;
 }
@@ -110,9 +134,9 @@ void checkGoogleCloudRetailLoggingErrorContext(
   buildCounterGoogleCloudRetailLoggingErrorContext++;
   if (buildCounterGoogleCloudRetailLoggingErrorContext < 3) {
     checkGoogleCloudRetailLoggingHttpRequestContext(
-        o.httpRequest as api.GoogleCloudRetailLoggingHttpRequestContext);
+        o.httpRequest! as api.GoogleCloudRetailLoggingHttpRequestContext);
     checkGoogleCloudRetailLoggingSourceLocation(
-        o.reportLocation as api.GoogleCloudRetailLoggingSourceLocation);
+        o.reportLocation! as api.GoogleCloudRetailLoggingSourceLocation);
   }
   buildCounterGoogleCloudRetailLoggingErrorContext--;
 }
@@ -134,16 +158,34 @@ core.Map<core.String, core.Object> buildUnnamed3130() {
 
 void checkUnnamed3130(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o['x']) as core.Map;
+  var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3['bool'], unittest.equals(true));
-  unittest.expect(casted3['string'], unittest.equals('foo'));
-  var casted4 = (o['y']) as core.Map;
+  unittest.expect(
+    casted3['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted3['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted3['string'],
+    unittest.equals('foo'),
+  );
+  var casted4 = (o['y']!) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4['bool'], unittest.equals(true));
-  unittest.expect(casted4['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted4['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted4['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted4['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.Map<core.String, core.Object> buildUnnamed3131() {
@@ -163,16 +205,34 @@ core.Map<core.String, core.Object> buildUnnamed3131() {
 
 void checkUnnamed3131(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o['x']) as core.Map;
+  var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5['bool'], unittest.equals(true));
-  unittest.expect(casted5['string'], unittest.equals('foo'));
-  var casted6 = (o['y']) as core.Map;
+  unittest.expect(
+    casted5['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted5['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted5['string'],
+    unittest.equals('foo'),
+  );
+  var casted6 = (o['y']!) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6['bool'], unittest.equals(true));
-  unittest.expect(casted6['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted6['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted6['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted6['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudRetailLoggingErrorLog = 0;
@@ -197,15 +257,18 @@ void checkGoogleCloudRetailLoggingErrorLog(
   buildCounterGoogleCloudRetailLoggingErrorLog++;
   if (buildCounterGoogleCloudRetailLoggingErrorLog < 3) {
     checkGoogleCloudRetailLoggingErrorContext(
-        o.context as api.GoogleCloudRetailLoggingErrorContext);
+        o.context! as api.GoogleCloudRetailLoggingErrorContext);
     checkGoogleCloudRetailLoggingImportErrorContext(
-        o.importPayload as api.GoogleCloudRetailLoggingImportErrorContext);
-    unittest.expect(o.message, unittest.equals('foo'));
-    checkUnnamed3130(o.requestPayload);
-    checkUnnamed3131(o.responsePayload);
+        o.importPayload! as api.GoogleCloudRetailLoggingImportErrorContext);
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3130(o.requestPayload!);
+    checkUnnamed3131(o.responsePayload!);
     checkGoogleCloudRetailLoggingServiceContext(
-        o.serviceContext as api.GoogleCloudRetailLoggingServiceContext);
-    checkGoogleRpcStatus(o.status as api.GoogleRpcStatus);
+        o.serviceContext! as api.GoogleCloudRetailLoggingServiceContext);
+    checkGoogleRpcStatus(o.status! as api.GoogleRpcStatus);
   }
   buildCounterGoogleCloudRetailLoggingErrorLog--;
 }
@@ -226,7 +289,10 @@ void checkGoogleCloudRetailLoggingHttpRequestContext(
     api.GoogleCloudRetailLoggingHttpRequestContext o) {
   buildCounterGoogleCloudRetailLoggingHttpRequestContext++;
   if (buildCounterGoogleCloudRetailLoggingHttpRequestContext < 3) {
-    unittest.expect(o.responseStatusCode, unittest.equals(42));
+    unittest.expect(
+      o.responseStatusCode!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudRetailLoggingHttpRequestContext--;
 }
@@ -252,12 +318,30 @@ void checkGoogleCloudRetailLoggingImportErrorContext(
     api.GoogleCloudRetailLoggingImportErrorContext o) {
   buildCounterGoogleCloudRetailLoggingImportErrorContext++;
   if (buildCounterGoogleCloudRetailLoggingImportErrorContext < 3) {
-    unittest.expect(o.catalogItem, unittest.equals('foo'));
-    unittest.expect(o.gcsPath, unittest.equals('foo'));
-    unittest.expect(o.lineNumber, unittest.equals('foo'));
-    unittest.expect(o.operationName, unittest.equals('foo'));
-    unittest.expect(o.product, unittest.equals('foo'));
-    unittest.expect(o.userEvent, unittest.equals('foo'));
+    unittest.expect(
+      o.catalogItem!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gcsPath!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lineNumber!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.operationName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.product!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.userEvent!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailLoggingImportErrorContext--;
 }
@@ -278,7 +362,10 @@ void checkGoogleCloudRetailLoggingServiceContext(
     api.GoogleCloudRetailLoggingServiceContext o) {
   buildCounterGoogleCloudRetailLoggingServiceContext++;
   if (buildCounterGoogleCloudRetailLoggingServiceContext < 3) {
-    unittest.expect(o.service, unittest.equals('foo'));
+    unittest.expect(
+      o.service!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailLoggingServiceContext--;
 }
@@ -299,7 +386,10 @@ void checkGoogleCloudRetailLoggingSourceLocation(
     api.GoogleCloudRetailLoggingSourceLocation o) {
   buildCounterGoogleCloudRetailLoggingSourceLocation++;
   if (buildCounterGoogleCloudRetailLoggingSourceLocation < 3) {
-    unittest.expect(o.functionName, unittest.equals('foo'));
+    unittest.expect(
+      o.functionName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailLoggingSourceLocation--;
 }
@@ -323,11 +413,26 @@ void checkGoogleCloudRetailV2BigQuerySource(
     api.GoogleCloudRetailV2BigQuerySource o) {
   buildCounterGoogleCloudRetailV2BigQuerySource++;
   if (buildCounterGoogleCloudRetailV2BigQuerySource < 3) {
-    unittest.expect(o.dataSchema, unittest.equals('foo'));
-    unittest.expect(o.datasetId, unittest.equals('foo'));
-    unittest.expect(o.gcsStagingDir, unittest.equals('foo'));
-    unittest.expect(o.projectId, unittest.equals('foo'));
-    unittest.expect(o.tableId, unittest.equals('foo'));
+    unittest.expect(
+      o.dataSchema!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.datasetId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gcsStagingDir!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tableId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2BigQuerySource--;
 }
@@ -348,10 +453,16 @@ api.GoogleCloudRetailV2Catalog buildGoogleCloudRetailV2Catalog() {
 void checkGoogleCloudRetailV2Catalog(api.GoogleCloudRetailV2Catalog o) {
   buildCounterGoogleCloudRetailV2Catalog++;
   if (buildCounterGoogleCloudRetailV2Catalog < 3) {
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudRetailV2ProductLevelConfig(
-        o.productLevelConfig as api.GoogleCloudRetailV2ProductLevelConfig);
+        o.productLevelConfig! as api.GoogleCloudRetailV2ProductLevelConfig);
   }
   buildCounterGoogleCloudRetailV2Catalog--;
 }
@@ -365,8 +476,14 @@ core.List<core.double> buildUnnamed3132() {
 
 void checkUnnamed3132(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42.0));
-  unittest.expect(o[1], unittest.equals(42.0));
+  unittest.expect(
+    o[0],
+    unittest.equals(42.0),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42.0),
+  );
 }
 
 core.List<core.String> buildUnnamed3133() {
@@ -378,8 +495,14 @@ core.List<core.String> buildUnnamed3133() {
 
 void checkUnnamed3133(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudRetailV2CustomAttribute = 0;
@@ -399,8 +522,8 @@ void checkGoogleCloudRetailV2CustomAttribute(
     api.GoogleCloudRetailV2CustomAttribute o) {
   buildCounterGoogleCloudRetailV2CustomAttribute++;
   if (buildCounterGoogleCloudRetailV2CustomAttribute < 3) {
-    checkUnnamed3132(o.numbers);
-    checkUnnamed3133(o.text);
+    checkUnnamed3132(o.numbers!);
+    checkUnnamed3133(o.text!);
   }
   buildCounterGoogleCloudRetailV2CustomAttribute--;
 }
@@ -414,8 +537,14 @@ core.List<core.String> buildUnnamed3134() {
 
 void checkUnnamed3134(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudRetailV2GcsSource = 0;
@@ -433,8 +562,11 @@ api.GoogleCloudRetailV2GcsSource buildGoogleCloudRetailV2GcsSource() {
 void checkGoogleCloudRetailV2GcsSource(api.GoogleCloudRetailV2GcsSource o) {
   buildCounterGoogleCloudRetailV2GcsSource++;
   if (buildCounterGoogleCloudRetailV2GcsSource < 3) {
-    unittest.expect(o.dataSchema, unittest.equals('foo'));
-    checkUnnamed3134(o.inputUris);
+    unittest.expect(
+      o.dataSchema!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3134(o.inputUris!);
   }
   buildCounterGoogleCloudRetailV2GcsSource--;
 }
@@ -455,9 +587,18 @@ api.GoogleCloudRetailV2Image buildGoogleCloudRetailV2Image() {
 void checkGoogleCloudRetailV2Image(api.GoogleCloudRetailV2Image o) {
   buildCounterGoogleCloudRetailV2Image++;
   if (buildCounterGoogleCloudRetailV2Image < 3) {
-    unittest.expect(o.height, unittest.equals(42));
-    unittest.expect(o.uri, unittest.equals('foo'));
-    unittest.expect(o.width, unittest.equals(42));
+    unittest.expect(
+      o.height!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.width!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudRetailV2Image--;
 }
@@ -478,7 +619,10 @@ void checkGoogleCloudRetailV2ImportErrorsConfig(
     api.GoogleCloudRetailV2ImportErrorsConfig o) {
   buildCounterGoogleCloudRetailV2ImportErrorsConfig++;
   if (buildCounterGoogleCloudRetailV2ImportErrorsConfig < 3) {
-    unittest.expect(o.gcsPrefix, unittest.equals('foo'));
+    unittest.expect(
+      o.gcsPrefix!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2ImportErrorsConfig--;
 }
@@ -501,10 +645,22 @@ void checkGoogleCloudRetailV2ImportMetadata(
     api.GoogleCloudRetailV2ImportMetadata o) {
   buildCounterGoogleCloudRetailV2ImportMetadata++;
   if (buildCounterGoogleCloudRetailV2ImportMetadata < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.failureCount, unittest.equals('foo'));
-    unittest.expect(o.successCount, unittest.equals('foo'));
-    unittest.expect(o.updateTime, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.failureCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.successCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2ImportMetadata--;
 }
@@ -528,10 +684,13 @@ void checkGoogleCloudRetailV2ImportProductsRequest(
   buildCounterGoogleCloudRetailV2ImportProductsRequest++;
   if (buildCounterGoogleCloudRetailV2ImportProductsRequest < 3) {
     checkGoogleCloudRetailV2ImportErrorsConfig(
-        o.errorsConfig as api.GoogleCloudRetailV2ImportErrorsConfig);
+        o.errorsConfig! as api.GoogleCloudRetailV2ImportErrorsConfig);
     checkGoogleCloudRetailV2ProductInputConfig(
-        o.inputConfig as api.GoogleCloudRetailV2ProductInputConfig);
-    unittest.expect(o.updateMask, unittest.equals('foo'));
+        o.inputConfig! as api.GoogleCloudRetailV2ProductInputConfig);
+    unittest.expect(
+      o.updateMask!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2ImportProductsRequest--;
 }
@@ -566,9 +725,9 @@ void checkGoogleCloudRetailV2ImportProductsResponse(
     api.GoogleCloudRetailV2ImportProductsResponse o) {
   buildCounterGoogleCloudRetailV2ImportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2ImportProductsResponse < 3) {
-    checkUnnamed3135(o.errorSamples);
+    checkUnnamed3135(o.errorSamples!);
     checkGoogleCloudRetailV2ImportErrorsConfig(
-        o.errorsConfig as api.GoogleCloudRetailV2ImportErrorsConfig);
+        o.errorsConfig! as api.GoogleCloudRetailV2ImportErrorsConfig);
   }
   buildCounterGoogleCloudRetailV2ImportProductsResponse--;
 }
@@ -591,9 +750,9 @@ void checkGoogleCloudRetailV2ImportUserEventsRequest(
   buildCounterGoogleCloudRetailV2ImportUserEventsRequest++;
   if (buildCounterGoogleCloudRetailV2ImportUserEventsRequest < 3) {
     checkGoogleCloudRetailV2ImportErrorsConfig(
-        o.errorsConfig as api.GoogleCloudRetailV2ImportErrorsConfig);
+        o.errorsConfig! as api.GoogleCloudRetailV2ImportErrorsConfig);
     checkGoogleCloudRetailV2UserEventInputConfig(
-        o.inputConfig as api.GoogleCloudRetailV2UserEventInputConfig);
+        o.inputConfig! as api.GoogleCloudRetailV2UserEventInputConfig);
   }
   buildCounterGoogleCloudRetailV2ImportUserEventsRequest--;
 }
@@ -629,11 +788,11 @@ void checkGoogleCloudRetailV2ImportUserEventsResponse(
     api.GoogleCloudRetailV2ImportUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2ImportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2ImportUserEventsResponse < 3) {
-    checkUnnamed3136(o.errorSamples);
+    checkUnnamed3136(o.errorSamples!);
     checkGoogleCloudRetailV2ImportErrorsConfig(
-        o.errorsConfig as api.GoogleCloudRetailV2ImportErrorsConfig);
+        o.errorsConfig! as api.GoogleCloudRetailV2ImportErrorsConfig);
     checkGoogleCloudRetailV2UserEventImportSummary(
-        o.importSummary as api.GoogleCloudRetailV2UserEventImportSummary);
+        o.importSummary! as api.GoogleCloudRetailV2UserEventImportSummary);
   }
   buildCounterGoogleCloudRetailV2ImportUserEventsResponse--;
 }
@@ -668,8 +827,11 @@ void checkGoogleCloudRetailV2ListCatalogsResponse(
     api.GoogleCloudRetailV2ListCatalogsResponse o) {
   buildCounterGoogleCloudRetailV2ListCatalogsResponse++;
   if (buildCounterGoogleCloudRetailV2ListCatalogsResponse < 3) {
-    checkUnnamed3137(o.catalogs);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed3137(o.catalogs!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2ListCatalogsResponse--;
 }
@@ -683,8 +845,14 @@ core.Map<core.String, core.String> buildUnnamed3138() {
 
 void checkUnnamed3138(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.Map<core.String, core.Object> buildUnnamed3139() {
@@ -704,16 +872,34 @@ core.Map<core.String, core.Object> buildUnnamed3139() {
 
 void checkUnnamed3139(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted7 = (o['x']) as core.Map;
+  var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(casted7['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted7['bool'], unittest.equals(true));
-  unittest.expect(casted7['string'], unittest.equals('foo'));
-  var casted8 = (o['y']) as core.Map;
+  unittest.expect(
+    casted7['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted7['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted7['string'],
+    unittest.equals('foo'),
+  );
+  var casted8 = (o['y']!) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(casted8['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted8['bool'], unittest.equals(true));
-  unittest.expect(casted8['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted8['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted8['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted8['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudRetailV2PredictRequest = 0;
@@ -737,14 +923,23 @@ void checkGoogleCloudRetailV2PredictRequest(
     api.GoogleCloudRetailV2PredictRequest o) {
   buildCounterGoogleCloudRetailV2PredictRequest++;
   if (buildCounterGoogleCloudRetailV2PredictRequest < 3) {
-    unittest.expect(o.filter, unittest.equals('foo'));
-    checkUnnamed3138(o.labels);
-    unittest.expect(o.pageSize, unittest.equals(42));
-    unittest.expect(o.pageToken, unittest.equals('foo'));
-    checkUnnamed3139(o.params);
+    unittest.expect(
+      o.filter!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3138(o.labels!);
+    unittest.expect(
+      o.pageSize!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.pageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3139(o.params!);
     checkGoogleCloudRetailV2UserEvent(
-        o.userEvent as api.GoogleCloudRetailV2UserEvent);
-    unittest.expect(o.validateOnly, unittest.isTrue);
+        o.userEvent! as api.GoogleCloudRetailV2UserEvent);
+    unittest.expect(o.validateOnly!, unittest.isTrue);
   }
   buildCounterGoogleCloudRetailV2PredictRequest--;
 }
@@ -758,8 +953,14 @@ core.List<core.String> buildUnnamed3140() {
 
 void checkUnnamed3140(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.GoogleCloudRetailV2PredictResponsePredictionResult>
@@ -798,10 +999,13 @@ void checkGoogleCloudRetailV2PredictResponse(
     api.GoogleCloudRetailV2PredictResponse o) {
   buildCounterGoogleCloudRetailV2PredictResponse++;
   if (buildCounterGoogleCloudRetailV2PredictResponse < 3) {
-    unittest.expect(o.attributionToken, unittest.equals('foo'));
-    checkUnnamed3140(o.missingIds);
-    checkUnnamed3141(o.results);
-    unittest.expect(o.validateOnly, unittest.isTrue);
+    unittest.expect(
+      o.attributionToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3140(o.missingIds!);
+    checkUnnamed3141(o.results!);
+    unittest.expect(o.validateOnly!, unittest.isTrue);
   }
   buildCounterGoogleCloudRetailV2PredictResponse--;
 }
@@ -823,16 +1027,34 @@ core.Map<core.String, core.Object> buildUnnamed3142() {
 
 void checkUnnamed3142(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted9 = (o['x']) as core.Map;
+  var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
-  unittest.expect(casted9['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted9['bool'], unittest.equals(true));
-  unittest.expect(casted9['string'], unittest.equals('foo'));
-  var casted10 = (o['y']) as core.Map;
+  unittest.expect(
+    casted9['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted9['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted9['string'],
+    unittest.equals('foo'),
+  );
+  var casted10 = (o['y']!) as core.Map;
   unittest.expect(casted10, unittest.hasLength(3));
-  unittest.expect(casted10['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted10['bool'], unittest.equals(true));
-  unittest.expect(casted10['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted10['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted10['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted10['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudRetailV2PredictResponsePredictionResult = 0;
@@ -852,8 +1074,11 @@ void checkGoogleCloudRetailV2PredictResponsePredictionResult(
     api.GoogleCloudRetailV2PredictResponsePredictionResult o) {
   buildCounterGoogleCloudRetailV2PredictResponsePredictionResult++;
   if (buildCounterGoogleCloudRetailV2PredictResponsePredictionResult < 3) {
-    unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed3142(o.metadata);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3142(o.metadata!);
   }
   buildCounterGoogleCloudRetailV2PredictResponsePredictionResult--;
 }
@@ -875,10 +1100,22 @@ api.GoogleCloudRetailV2PriceInfo buildGoogleCloudRetailV2PriceInfo() {
 void checkGoogleCloudRetailV2PriceInfo(api.GoogleCloudRetailV2PriceInfo o) {
   buildCounterGoogleCloudRetailV2PriceInfo++;
   if (buildCounterGoogleCloudRetailV2PriceInfo < 3) {
-    unittest.expect(o.cost, unittest.equals(42.0));
-    unittest.expect(o.currencyCode, unittest.equals('foo'));
-    unittest.expect(o.originalPrice, unittest.equals(42.0));
-    unittest.expect(o.price, unittest.equals(42.0));
+    unittest.expect(
+      o.cost!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.currencyCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.originalPrice!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.price!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterGoogleCloudRetailV2PriceInfo--;
 }
@@ -895,9 +1132,9 @@ void checkUnnamed3143(
     core.Map<core.String, api.GoogleCloudRetailV2CustomAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRetailV2CustomAttribute(
-      o['x'] as api.GoogleCloudRetailV2CustomAttribute);
+      o['x']! as api.GoogleCloudRetailV2CustomAttribute);
   checkGoogleCloudRetailV2CustomAttribute(
-      o['y'] as api.GoogleCloudRetailV2CustomAttribute);
+      o['y']! as api.GoogleCloudRetailV2CustomAttribute);
 }
 
 core.List<core.String> buildUnnamed3144() {
@@ -909,8 +1146,14 @@ core.List<core.String> buildUnnamed3144() {
 
 void checkUnnamed3144(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.GoogleCloudRetailV2Image> buildUnnamed3145() {
@@ -935,8 +1178,14 @@ core.List<core.String> buildUnnamed3146() {
 
 void checkUnnamed3146(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleCloudRetailV2Product = 0;
@@ -967,22 +1216,52 @@ api.GoogleCloudRetailV2Product buildGoogleCloudRetailV2Product() {
 void checkGoogleCloudRetailV2Product(api.GoogleCloudRetailV2Product o) {
   buildCounterGoogleCloudRetailV2Product++;
   if (buildCounterGoogleCloudRetailV2Product < 3) {
-    checkUnnamed3143(o.attributes);
-    unittest.expect(o.availability, unittest.equals('foo'));
-    unittest.expect(o.availableQuantity, unittest.equals(42));
-    unittest.expect(o.availableTime, unittest.equals('foo'));
-    checkUnnamed3144(o.categories);
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed3145(o.images);
-    unittest.expect(o.name, unittest.equals('foo'));
+    checkUnnamed3143(o.attributes!);
+    unittest.expect(
+      o.availability!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.availableQuantity!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.availableTime!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3144(o.categories!);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3145(o.images!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudRetailV2PriceInfo(
-        o.priceInfo as api.GoogleCloudRetailV2PriceInfo);
-    unittest.expect(o.primaryProductId, unittest.equals('foo'));
-    checkUnnamed3146(o.tags);
-    unittest.expect(o.title, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
-    unittest.expect(o.uri, unittest.equals('foo'));
+        o.priceInfo! as api.GoogleCloudRetailV2PriceInfo);
+    unittest.expect(
+      o.primaryProductId!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3146(o.tags!);
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2Product--;
 }
@@ -1004,8 +1283,11 @@ void checkGoogleCloudRetailV2ProductDetail(
   buildCounterGoogleCloudRetailV2ProductDetail++;
   if (buildCounterGoogleCloudRetailV2ProductDetail < 3) {
     checkGoogleCloudRetailV2Product(
-        o.product as api.GoogleCloudRetailV2Product);
-    unittest.expect(o.quantity, unittest.equals(42));
+        o.product! as api.GoogleCloudRetailV2Product);
+    unittest.expect(
+      o.quantity!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleCloudRetailV2ProductDetail--;
 }
@@ -1039,7 +1321,7 @@ void checkGoogleCloudRetailV2ProductInlineSource(
     api.GoogleCloudRetailV2ProductInlineSource o) {
   buildCounterGoogleCloudRetailV2ProductInlineSource++;
   if (buildCounterGoogleCloudRetailV2ProductInlineSource < 3) {
-    checkUnnamed3147(o.products);
+    checkUnnamed3147(o.products!);
   }
   buildCounterGoogleCloudRetailV2ProductInlineSource--;
 }
@@ -1063,11 +1345,11 @@ void checkGoogleCloudRetailV2ProductInputConfig(
   buildCounterGoogleCloudRetailV2ProductInputConfig++;
   if (buildCounterGoogleCloudRetailV2ProductInputConfig < 3) {
     checkGoogleCloudRetailV2BigQuerySource(
-        o.bigQuerySource as api.GoogleCloudRetailV2BigQuerySource);
+        o.bigQuerySource! as api.GoogleCloudRetailV2BigQuerySource);
     checkGoogleCloudRetailV2GcsSource(
-        o.gcsSource as api.GoogleCloudRetailV2GcsSource);
+        o.gcsSource! as api.GoogleCloudRetailV2GcsSource);
     checkGoogleCloudRetailV2ProductInlineSource(
-        o.productInlineSource as api.GoogleCloudRetailV2ProductInlineSource);
+        o.productInlineSource! as api.GoogleCloudRetailV2ProductInlineSource);
   }
   buildCounterGoogleCloudRetailV2ProductInputConfig--;
 }
@@ -1089,8 +1371,14 @@ void checkGoogleCloudRetailV2ProductLevelConfig(
     api.GoogleCloudRetailV2ProductLevelConfig o) {
   buildCounterGoogleCloudRetailV2ProductLevelConfig++;
   if (buildCounterGoogleCloudRetailV2ProductLevelConfig < 3) {
-    unittest.expect(o.ingestionProductType, unittest.equals('foo'));
-    unittest.expect(o.merchantCenterProductIdField, unittest.equals('foo'));
+    unittest.expect(
+      o.ingestionProductType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.merchantCenterProductIdField!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2ProductLevelConfig--;
 }
@@ -1115,11 +1403,26 @@ void checkGoogleCloudRetailV2PurchaseTransaction(
     api.GoogleCloudRetailV2PurchaseTransaction o) {
   buildCounterGoogleCloudRetailV2PurchaseTransaction++;
   if (buildCounterGoogleCloudRetailV2PurchaseTransaction < 3) {
-    unittest.expect(o.cost, unittest.equals(42.0));
-    unittest.expect(o.currencyCode, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.revenue, unittest.equals(42.0));
-    unittest.expect(o.tax, unittest.equals(42.0));
+    unittest.expect(
+      o.cost!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.currencyCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.revenue!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.tax!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterGoogleCloudRetailV2PurchaseTransaction--;
 }
@@ -1157,8 +1460,11 @@ void checkGoogleCloudRetailV2PurgeUserEventsRequest(
     api.GoogleCloudRetailV2PurgeUserEventsRequest o) {
   buildCounterGoogleCloudRetailV2PurgeUserEventsRequest++;
   if (buildCounterGoogleCloudRetailV2PurgeUserEventsRequest < 3) {
-    unittest.expect(o.filter, unittest.equals('foo'));
-    unittest.expect(o.force, unittest.isTrue);
+    unittest.expect(
+      o.filter!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.force!, unittest.isTrue);
   }
   buildCounterGoogleCloudRetailV2PurgeUserEventsRequest--;
 }
@@ -1179,7 +1485,10 @@ void checkGoogleCloudRetailV2PurgeUserEventsResponse(
     api.GoogleCloudRetailV2PurgeUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2PurgeUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2PurgeUserEventsResponse < 3) {
-    unittest.expect(o.purgedEventsCount, unittest.equals('foo'));
+    unittest.expect(
+      o.purgedEventsCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2PurgeUserEventsResponse--;
 }
@@ -1217,7 +1526,10 @@ void checkGoogleCloudRetailV2RejoinUserEventsRequest(
     api.GoogleCloudRetailV2RejoinUserEventsRequest o) {
   buildCounterGoogleCloudRetailV2RejoinUserEventsRequest++;
   if (buildCounterGoogleCloudRetailV2RejoinUserEventsRequest < 3) {
-    unittest.expect(o.userEventRejoinScope, unittest.equals('foo'));
+    unittest.expect(
+      o.userEventRejoinScope!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2RejoinUserEventsRequest--;
 }
@@ -1238,7 +1550,10 @@ void checkGoogleCloudRetailV2RejoinUserEventsResponse(
     api.GoogleCloudRetailV2RejoinUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2RejoinUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2RejoinUserEventsResponse < 3) {
-    unittest.expect(o.rejoinedUserEventsCount, unittest.equals('foo'));
+    unittest.expect(
+      o.rejoinedUserEventsCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2RejoinUserEventsResponse--;
 }
@@ -1255,9 +1570,9 @@ void checkUnnamed3148(
     core.Map<core.String, api.GoogleCloudRetailV2CustomAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudRetailV2CustomAttribute(
-      o['x'] as api.GoogleCloudRetailV2CustomAttribute);
+      o['x']! as api.GoogleCloudRetailV2CustomAttribute);
   checkGoogleCloudRetailV2CustomAttribute(
-      o['y'] as api.GoogleCloudRetailV2CustomAttribute);
+      o['y']! as api.GoogleCloudRetailV2CustomAttribute);
 }
 
 core.List<core.String> buildUnnamed3149() {
@@ -1269,8 +1584,14 @@ core.List<core.String> buildUnnamed3149() {
 
 void checkUnnamed3149(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed3150() {
@@ -1282,8 +1603,14 @@ core.List<core.String> buildUnnamed3150() {
 
 void checkUnnamed3150(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.GoogleCloudRetailV2ProductDetail> buildUnnamed3151() {
@@ -1329,23 +1656,50 @@ api.GoogleCloudRetailV2UserEvent buildGoogleCloudRetailV2UserEvent() {
 void checkGoogleCloudRetailV2UserEvent(api.GoogleCloudRetailV2UserEvent o) {
   buildCounterGoogleCloudRetailV2UserEvent++;
   if (buildCounterGoogleCloudRetailV2UserEvent < 3) {
-    checkUnnamed3148(o.attributes);
-    unittest.expect(o.attributionToken, unittest.equals('foo'));
-    unittest.expect(o.cartId, unittest.equals('foo'));
-    unittest.expect(o.eventTime, unittest.equals('foo'));
-    unittest.expect(o.eventType, unittest.equals('foo'));
-    checkUnnamed3149(o.experimentIds);
-    checkUnnamed3150(o.pageCategories);
-    unittest.expect(o.pageViewId, unittest.equals('foo'));
-    checkUnnamed3151(o.productDetails);
+    checkUnnamed3148(o.attributes!);
+    unittest.expect(
+      o.attributionToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.cartId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.eventTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.eventType!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3149(o.experimentIds!);
+    checkUnnamed3150(o.pageCategories!);
+    unittest.expect(
+      o.pageViewId!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3151(o.productDetails!);
     checkGoogleCloudRetailV2PurchaseTransaction(
-        o.purchaseTransaction as api.GoogleCloudRetailV2PurchaseTransaction);
-    unittest.expect(o.referrerUri, unittest.equals('foo'));
-    unittest.expect(o.searchQuery, unittest.equals('foo'));
-    unittest.expect(o.uri, unittest.equals('foo'));
+        o.purchaseTransaction! as api.GoogleCloudRetailV2PurchaseTransaction);
+    unittest.expect(
+      o.referrerUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.searchQuery!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudRetailV2UserInfo(
-        o.userInfo as api.GoogleCloudRetailV2UserInfo);
-    unittest.expect(o.visitorId, unittest.equals('foo'));
+        o.userInfo! as api.GoogleCloudRetailV2UserInfo);
+    unittest.expect(
+      o.visitorId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2UserEvent--;
 }
@@ -1367,8 +1721,14 @@ void checkGoogleCloudRetailV2UserEventImportSummary(
     api.GoogleCloudRetailV2UserEventImportSummary o) {
   buildCounterGoogleCloudRetailV2UserEventImportSummary++;
   if (buildCounterGoogleCloudRetailV2UserEventImportSummary < 3) {
-    unittest.expect(o.joinedEventsCount, unittest.equals('foo'));
-    unittest.expect(o.unjoinedEventsCount, unittest.equals('foo'));
+    unittest.expect(
+      o.joinedEventsCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.unjoinedEventsCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2UserEventImportSummary--;
 }
@@ -1402,7 +1762,7 @@ void checkGoogleCloudRetailV2UserEventInlineSource(
     api.GoogleCloudRetailV2UserEventInlineSource o) {
   buildCounterGoogleCloudRetailV2UserEventInlineSource++;
   if (buildCounterGoogleCloudRetailV2UserEventInlineSource < 3) {
-    checkUnnamed3152(o.userEvents);
+    checkUnnamed3152(o.userEvents!);
   }
   buildCounterGoogleCloudRetailV2UserEventInlineSource--;
 }
@@ -1426,10 +1786,10 @@ void checkGoogleCloudRetailV2UserEventInputConfig(
   buildCounterGoogleCloudRetailV2UserEventInputConfig++;
   if (buildCounterGoogleCloudRetailV2UserEventInputConfig < 3) {
     checkGoogleCloudRetailV2BigQuerySource(
-        o.bigQuerySource as api.GoogleCloudRetailV2BigQuerySource);
+        o.bigQuerySource! as api.GoogleCloudRetailV2BigQuerySource);
     checkGoogleCloudRetailV2GcsSource(
-        o.gcsSource as api.GoogleCloudRetailV2GcsSource);
-    checkGoogleCloudRetailV2UserEventInlineSource(o.userEventInlineSource
+        o.gcsSource! as api.GoogleCloudRetailV2GcsSource);
+    checkGoogleCloudRetailV2UserEventInlineSource(o.userEventInlineSource!
         as api.GoogleCloudRetailV2UserEventInlineSource);
   }
   buildCounterGoogleCloudRetailV2UserEventInputConfig--;
@@ -1452,10 +1812,19 @@ api.GoogleCloudRetailV2UserInfo buildGoogleCloudRetailV2UserInfo() {
 void checkGoogleCloudRetailV2UserInfo(api.GoogleCloudRetailV2UserInfo o) {
   buildCounterGoogleCloudRetailV2UserInfo++;
   if (buildCounterGoogleCloudRetailV2UserInfo < 3) {
-    unittest.expect(o.directUserRequest, unittest.isTrue);
-    unittest.expect(o.ipAddress, unittest.equals('foo'));
-    unittest.expect(o.userAgent, unittest.equals('foo'));
-    unittest.expect(o.userId, unittest.equals('foo'));
+    unittest.expect(o.directUserRequest!, unittest.isTrue);
+    unittest.expect(
+      o.ipAddress!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.userAgent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.userId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2UserInfo--;
 }
@@ -1476,7 +1845,10 @@ void checkGoogleCloudRetailV2alphaExportErrorsConfig(
     api.GoogleCloudRetailV2alphaExportErrorsConfig o) {
   buildCounterGoogleCloudRetailV2alphaExportErrorsConfig++;
   if (buildCounterGoogleCloudRetailV2alphaExportErrorsConfig < 3) {
-    unittest.expect(o.gcsPrefix, unittest.equals('foo'));
+    unittest.expect(
+      o.gcsPrefix!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2alphaExportErrorsConfig--;
 }
@@ -1498,8 +1870,14 @@ void checkGoogleCloudRetailV2alphaExportMetadata(
     api.GoogleCloudRetailV2alphaExportMetadata o) {
   buildCounterGoogleCloudRetailV2alphaExportMetadata++;
   if (buildCounterGoogleCloudRetailV2alphaExportMetadata < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.updateTime, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2alphaExportMetadata--;
 }
@@ -1534,9 +1912,9 @@ void checkGoogleCloudRetailV2alphaExportProductsResponse(
     api.GoogleCloudRetailV2alphaExportProductsResponse o) {
   buildCounterGoogleCloudRetailV2alphaExportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2alphaExportProductsResponse < 3) {
-    checkUnnamed3153(o.errorSamples);
+    checkUnnamed3153(o.errorSamples!);
     checkGoogleCloudRetailV2alphaExportErrorsConfig(
-        o.errorsConfig as api.GoogleCloudRetailV2alphaExportErrorsConfig);
+        o.errorsConfig! as api.GoogleCloudRetailV2alphaExportErrorsConfig);
   }
   buildCounterGoogleCloudRetailV2alphaExportProductsResponse--;
 }
@@ -1571,9 +1949,9 @@ void checkGoogleCloudRetailV2alphaExportUserEventsResponse(
     api.GoogleCloudRetailV2alphaExportUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2alphaExportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2alphaExportUserEventsResponse < 3) {
-    checkUnnamed3154(o.errorSamples);
+    checkUnnamed3154(o.errorSamples!);
     checkGoogleCloudRetailV2alphaExportErrorsConfig(
-        o.errorsConfig as api.GoogleCloudRetailV2alphaExportErrorsConfig);
+        o.errorsConfig! as api.GoogleCloudRetailV2alphaExportErrorsConfig);
   }
   buildCounterGoogleCloudRetailV2alphaExportUserEventsResponse--;
 }
@@ -1594,7 +1972,10 @@ void checkGoogleCloudRetailV2alphaImportErrorsConfig(
     api.GoogleCloudRetailV2alphaImportErrorsConfig o) {
   buildCounterGoogleCloudRetailV2alphaImportErrorsConfig++;
   if (buildCounterGoogleCloudRetailV2alphaImportErrorsConfig < 3) {
-    unittest.expect(o.gcsPrefix, unittest.equals('foo'));
+    unittest.expect(
+      o.gcsPrefix!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2alphaImportErrorsConfig--;
 }
@@ -1618,10 +1999,22 @@ void checkGoogleCloudRetailV2alphaImportMetadata(
     api.GoogleCloudRetailV2alphaImportMetadata o) {
   buildCounterGoogleCloudRetailV2alphaImportMetadata++;
   if (buildCounterGoogleCloudRetailV2alphaImportMetadata < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.failureCount, unittest.equals('foo'));
-    unittest.expect(o.successCount, unittest.equals('foo'));
-    unittest.expect(o.updateTime, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.failureCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.successCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2alphaImportMetadata--;
 }
@@ -1656,9 +2049,9 @@ void checkGoogleCloudRetailV2alphaImportProductsResponse(
     api.GoogleCloudRetailV2alphaImportProductsResponse o) {
   buildCounterGoogleCloudRetailV2alphaImportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2alphaImportProductsResponse < 3) {
-    checkUnnamed3155(o.errorSamples);
+    checkUnnamed3155(o.errorSamples!);
     checkGoogleCloudRetailV2alphaImportErrorsConfig(
-        o.errorsConfig as api.GoogleCloudRetailV2alphaImportErrorsConfig);
+        o.errorsConfig! as api.GoogleCloudRetailV2alphaImportErrorsConfig);
   }
   buildCounterGoogleCloudRetailV2alphaImportProductsResponse--;
 }
@@ -1694,11 +2087,11 @@ void checkGoogleCloudRetailV2alphaImportUserEventsResponse(
     api.GoogleCloudRetailV2alphaImportUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2alphaImportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2alphaImportUserEventsResponse < 3) {
-    checkUnnamed3156(o.errorSamples);
+    checkUnnamed3156(o.errorSamples!);
     checkGoogleCloudRetailV2alphaImportErrorsConfig(
-        o.errorsConfig as api.GoogleCloudRetailV2alphaImportErrorsConfig);
+        o.errorsConfig! as api.GoogleCloudRetailV2alphaImportErrorsConfig);
     checkGoogleCloudRetailV2alphaUserEventImportSummary(
-        o.importSummary as api.GoogleCloudRetailV2alphaUserEventImportSummary);
+        o.importSummary! as api.GoogleCloudRetailV2alphaUserEventImportSummary);
   }
   buildCounterGoogleCloudRetailV2alphaImportUserEventsResponse--;
 }
@@ -1736,7 +2129,10 @@ void checkGoogleCloudRetailV2alphaPurgeUserEventsResponse(
     api.GoogleCloudRetailV2alphaPurgeUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2alphaPurgeUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2alphaPurgeUserEventsResponse < 3) {
-    unittest.expect(o.purgedEventsCount, unittest.equals('foo'));
+    unittest.expect(
+      o.purgedEventsCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2alphaPurgeUserEventsResponse--;
 }
@@ -1774,7 +2170,10 @@ void checkGoogleCloudRetailV2alphaRejoinUserEventsResponse(
     api.GoogleCloudRetailV2alphaRejoinUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2alphaRejoinUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2alphaRejoinUserEventsResponse < 3) {
-    unittest.expect(o.rejoinedUserEventsCount, unittest.equals('foo'));
+    unittest.expect(
+      o.rejoinedUserEventsCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2alphaRejoinUserEventsResponse--;
 }
@@ -1796,8 +2195,14 @@ void checkGoogleCloudRetailV2alphaUserEventImportSummary(
     api.GoogleCloudRetailV2alphaUserEventImportSummary o) {
   buildCounterGoogleCloudRetailV2alphaUserEventImportSummary++;
   if (buildCounterGoogleCloudRetailV2alphaUserEventImportSummary < 3) {
-    unittest.expect(o.joinedEventsCount, unittest.equals('foo'));
-    unittest.expect(o.unjoinedEventsCount, unittest.equals('foo'));
+    unittest.expect(
+      o.joinedEventsCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.unjoinedEventsCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2alphaUserEventImportSummary--;
 }
@@ -1818,7 +2223,10 @@ void checkGoogleCloudRetailV2betaExportErrorsConfig(
     api.GoogleCloudRetailV2betaExportErrorsConfig o) {
   buildCounterGoogleCloudRetailV2betaExportErrorsConfig++;
   if (buildCounterGoogleCloudRetailV2betaExportErrorsConfig < 3) {
-    unittest.expect(o.gcsPrefix, unittest.equals('foo'));
+    unittest.expect(
+      o.gcsPrefix!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2betaExportErrorsConfig--;
 }
@@ -1840,8 +2248,14 @@ void checkGoogleCloudRetailV2betaExportMetadata(
     api.GoogleCloudRetailV2betaExportMetadata o) {
   buildCounterGoogleCloudRetailV2betaExportMetadata++;
   if (buildCounterGoogleCloudRetailV2betaExportMetadata < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.updateTime, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2betaExportMetadata--;
 }
@@ -1876,9 +2290,9 @@ void checkGoogleCloudRetailV2betaExportProductsResponse(
     api.GoogleCloudRetailV2betaExportProductsResponse o) {
   buildCounterGoogleCloudRetailV2betaExportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2betaExportProductsResponse < 3) {
-    checkUnnamed3157(o.errorSamples);
+    checkUnnamed3157(o.errorSamples!);
     checkGoogleCloudRetailV2betaExportErrorsConfig(
-        o.errorsConfig as api.GoogleCloudRetailV2betaExportErrorsConfig);
+        o.errorsConfig! as api.GoogleCloudRetailV2betaExportErrorsConfig);
   }
   buildCounterGoogleCloudRetailV2betaExportProductsResponse--;
 }
@@ -1913,9 +2327,9 @@ void checkGoogleCloudRetailV2betaExportUserEventsResponse(
     api.GoogleCloudRetailV2betaExportUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2betaExportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2betaExportUserEventsResponse < 3) {
-    checkUnnamed3158(o.errorSamples);
+    checkUnnamed3158(o.errorSamples!);
     checkGoogleCloudRetailV2betaExportErrorsConfig(
-        o.errorsConfig as api.GoogleCloudRetailV2betaExportErrorsConfig);
+        o.errorsConfig! as api.GoogleCloudRetailV2betaExportErrorsConfig);
   }
   buildCounterGoogleCloudRetailV2betaExportUserEventsResponse--;
 }
@@ -1936,7 +2350,10 @@ void checkGoogleCloudRetailV2betaImportErrorsConfig(
     api.GoogleCloudRetailV2betaImportErrorsConfig o) {
   buildCounterGoogleCloudRetailV2betaImportErrorsConfig++;
   if (buildCounterGoogleCloudRetailV2betaImportErrorsConfig < 3) {
-    unittest.expect(o.gcsPrefix, unittest.equals('foo'));
+    unittest.expect(
+      o.gcsPrefix!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2betaImportErrorsConfig--;
 }
@@ -1960,10 +2377,22 @@ void checkGoogleCloudRetailV2betaImportMetadata(
     api.GoogleCloudRetailV2betaImportMetadata o) {
   buildCounterGoogleCloudRetailV2betaImportMetadata++;
   if (buildCounterGoogleCloudRetailV2betaImportMetadata < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.failureCount, unittest.equals('foo'));
-    unittest.expect(o.successCount, unittest.equals('foo'));
-    unittest.expect(o.updateTime, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.failureCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.successCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2betaImportMetadata--;
 }
@@ -1998,9 +2427,9 @@ void checkGoogleCloudRetailV2betaImportProductsResponse(
     api.GoogleCloudRetailV2betaImportProductsResponse o) {
   buildCounterGoogleCloudRetailV2betaImportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2betaImportProductsResponse < 3) {
-    checkUnnamed3159(o.errorSamples);
+    checkUnnamed3159(o.errorSamples!);
     checkGoogleCloudRetailV2betaImportErrorsConfig(
-        o.errorsConfig as api.GoogleCloudRetailV2betaImportErrorsConfig);
+        o.errorsConfig! as api.GoogleCloudRetailV2betaImportErrorsConfig);
   }
   buildCounterGoogleCloudRetailV2betaImportProductsResponse--;
 }
@@ -2036,11 +2465,11 @@ void checkGoogleCloudRetailV2betaImportUserEventsResponse(
     api.GoogleCloudRetailV2betaImportUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2betaImportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2betaImportUserEventsResponse < 3) {
-    checkUnnamed3160(o.errorSamples);
+    checkUnnamed3160(o.errorSamples!);
     checkGoogleCloudRetailV2betaImportErrorsConfig(
-        o.errorsConfig as api.GoogleCloudRetailV2betaImportErrorsConfig);
+        o.errorsConfig! as api.GoogleCloudRetailV2betaImportErrorsConfig);
     checkGoogleCloudRetailV2betaUserEventImportSummary(
-        o.importSummary as api.GoogleCloudRetailV2betaUserEventImportSummary);
+        o.importSummary! as api.GoogleCloudRetailV2betaUserEventImportSummary);
   }
   buildCounterGoogleCloudRetailV2betaImportUserEventsResponse--;
 }
@@ -2078,7 +2507,10 @@ void checkGoogleCloudRetailV2betaPurgeUserEventsResponse(
     api.GoogleCloudRetailV2betaPurgeUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2betaPurgeUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2betaPurgeUserEventsResponse < 3) {
-    unittest.expect(o.purgedEventsCount, unittest.equals('foo'));
+    unittest.expect(
+      o.purgedEventsCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2betaPurgeUserEventsResponse--;
 }
@@ -2116,7 +2548,10 @@ void checkGoogleCloudRetailV2betaRejoinUserEventsResponse(
     api.GoogleCloudRetailV2betaRejoinUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2betaRejoinUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2betaRejoinUserEventsResponse < 3) {
-    unittest.expect(o.rejoinedUserEventsCount, unittest.equals('foo'));
+    unittest.expect(
+      o.rejoinedUserEventsCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2betaRejoinUserEventsResponse--;
 }
@@ -2138,8 +2573,14 @@ void checkGoogleCloudRetailV2betaUserEventImportSummary(
     api.GoogleCloudRetailV2betaUserEventImportSummary o) {
   buildCounterGoogleCloudRetailV2betaUserEventImportSummary++;
   if (buildCounterGoogleCloudRetailV2betaUserEventImportSummary < 3) {
-    unittest.expect(o.joinedEventsCount, unittest.equals('foo'));
-    unittest.expect(o.unjoinedEventsCount, unittest.equals('foo'));
+    unittest.expect(
+      o.joinedEventsCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.unjoinedEventsCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2betaUserEventImportSummary--;
 }
@@ -2160,7 +2601,10 @@ void checkGoogleCloudRetailV2mainExportErrorsConfig(
     api.GoogleCloudRetailV2mainExportErrorsConfig o) {
   buildCounterGoogleCloudRetailV2mainExportErrorsConfig++;
   if (buildCounterGoogleCloudRetailV2mainExportErrorsConfig < 3) {
-    unittest.expect(o.gcsPrefix, unittest.equals('foo'));
+    unittest.expect(
+      o.gcsPrefix!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2mainExportErrorsConfig--;
 }
@@ -2182,8 +2626,14 @@ void checkGoogleCloudRetailV2mainExportMetadata(
     api.GoogleCloudRetailV2mainExportMetadata o) {
   buildCounterGoogleCloudRetailV2mainExportMetadata++;
   if (buildCounterGoogleCloudRetailV2mainExportMetadata < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.updateTime, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2mainExportMetadata--;
 }
@@ -2218,9 +2668,9 @@ void checkGoogleCloudRetailV2mainExportProductsResponse(
     api.GoogleCloudRetailV2mainExportProductsResponse o) {
   buildCounterGoogleCloudRetailV2mainExportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2mainExportProductsResponse < 3) {
-    checkUnnamed3161(o.errorSamples);
+    checkUnnamed3161(o.errorSamples!);
     checkGoogleCloudRetailV2mainExportErrorsConfig(
-        o.errorsConfig as api.GoogleCloudRetailV2mainExportErrorsConfig);
+        o.errorsConfig! as api.GoogleCloudRetailV2mainExportErrorsConfig);
   }
   buildCounterGoogleCloudRetailV2mainExportProductsResponse--;
 }
@@ -2255,9 +2705,9 @@ void checkGoogleCloudRetailV2mainExportUserEventsResponse(
     api.GoogleCloudRetailV2mainExportUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2mainExportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2mainExportUserEventsResponse < 3) {
-    checkUnnamed3162(o.errorSamples);
+    checkUnnamed3162(o.errorSamples!);
     checkGoogleCloudRetailV2mainExportErrorsConfig(
-        o.errorsConfig as api.GoogleCloudRetailV2mainExportErrorsConfig);
+        o.errorsConfig! as api.GoogleCloudRetailV2mainExportErrorsConfig);
   }
   buildCounterGoogleCloudRetailV2mainExportUserEventsResponse--;
 }
@@ -2278,7 +2728,10 @@ void checkGoogleCloudRetailV2mainImportErrorsConfig(
     api.GoogleCloudRetailV2mainImportErrorsConfig o) {
   buildCounterGoogleCloudRetailV2mainImportErrorsConfig++;
   if (buildCounterGoogleCloudRetailV2mainImportErrorsConfig < 3) {
-    unittest.expect(o.gcsPrefix, unittest.equals('foo'));
+    unittest.expect(
+      o.gcsPrefix!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2mainImportErrorsConfig--;
 }
@@ -2302,10 +2755,22 @@ void checkGoogleCloudRetailV2mainImportMetadata(
     api.GoogleCloudRetailV2mainImportMetadata o) {
   buildCounterGoogleCloudRetailV2mainImportMetadata++;
   if (buildCounterGoogleCloudRetailV2mainImportMetadata < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.failureCount, unittest.equals('foo'));
-    unittest.expect(o.successCount, unittest.equals('foo'));
-    unittest.expect(o.updateTime, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.failureCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.successCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2mainImportMetadata--;
 }
@@ -2340,9 +2805,9 @@ void checkGoogleCloudRetailV2mainImportProductsResponse(
     api.GoogleCloudRetailV2mainImportProductsResponse o) {
   buildCounterGoogleCloudRetailV2mainImportProductsResponse++;
   if (buildCounterGoogleCloudRetailV2mainImportProductsResponse < 3) {
-    checkUnnamed3163(o.errorSamples);
+    checkUnnamed3163(o.errorSamples!);
     checkGoogleCloudRetailV2mainImportErrorsConfig(
-        o.errorsConfig as api.GoogleCloudRetailV2mainImportErrorsConfig);
+        o.errorsConfig! as api.GoogleCloudRetailV2mainImportErrorsConfig);
   }
   buildCounterGoogleCloudRetailV2mainImportProductsResponse--;
 }
@@ -2378,11 +2843,11 @@ void checkGoogleCloudRetailV2mainImportUserEventsResponse(
     api.GoogleCloudRetailV2mainImportUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2mainImportUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2mainImportUserEventsResponse < 3) {
-    checkUnnamed3164(o.errorSamples);
+    checkUnnamed3164(o.errorSamples!);
     checkGoogleCloudRetailV2mainImportErrorsConfig(
-        o.errorsConfig as api.GoogleCloudRetailV2mainImportErrorsConfig);
+        o.errorsConfig! as api.GoogleCloudRetailV2mainImportErrorsConfig);
     checkGoogleCloudRetailV2mainUserEventImportSummary(
-        o.importSummary as api.GoogleCloudRetailV2mainUserEventImportSummary);
+        o.importSummary! as api.GoogleCloudRetailV2mainUserEventImportSummary);
   }
   buildCounterGoogleCloudRetailV2mainImportUserEventsResponse--;
 }
@@ -2420,7 +2885,10 @@ void checkGoogleCloudRetailV2mainPurgeUserEventsResponse(
     api.GoogleCloudRetailV2mainPurgeUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2mainPurgeUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2mainPurgeUserEventsResponse < 3) {
-    unittest.expect(o.purgedEventsCount, unittest.equals('foo'));
+    unittest.expect(
+      o.purgedEventsCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2mainPurgeUserEventsResponse--;
 }
@@ -2458,7 +2926,10 @@ void checkGoogleCloudRetailV2mainRejoinUserEventsResponse(
     api.GoogleCloudRetailV2mainRejoinUserEventsResponse o) {
   buildCounterGoogleCloudRetailV2mainRejoinUserEventsResponse++;
   if (buildCounterGoogleCloudRetailV2mainRejoinUserEventsResponse < 3) {
-    unittest.expect(o.rejoinedUserEventsCount, unittest.equals('foo'));
+    unittest.expect(
+      o.rejoinedUserEventsCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2mainRejoinUserEventsResponse--;
 }
@@ -2480,8 +2951,14 @@ void checkGoogleCloudRetailV2mainUserEventImportSummary(
     api.GoogleCloudRetailV2mainUserEventImportSummary o) {
   buildCounterGoogleCloudRetailV2mainUserEventImportSummary++;
   if (buildCounterGoogleCloudRetailV2mainUserEventImportSummary < 3) {
-    unittest.expect(o.joinedEventsCount, unittest.equals('foo'));
-    unittest.expect(o.unjoinedEventsCount, unittest.equals('foo'));
+    unittest.expect(
+      o.joinedEventsCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.unjoinedEventsCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudRetailV2mainUserEventImportSummary--;
 }
@@ -2516,8 +2993,11 @@ void checkGoogleLongrunningListOperationsResponse(
     api.GoogleLongrunningListOperationsResponse o) {
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3165(o.operations);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3165(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
@@ -2539,16 +3019,34 @@ core.Map<core.String, core.Object> buildUnnamed3166() {
 
 void checkUnnamed3166(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted11 = (o['x']) as core.Map;
+  var casted11 = (o['x']!) as core.Map;
   unittest.expect(casted11, unittest.hasLength(3));
-  unittest.expect(casted11['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted11['bool'], unittest.equals(true));
-  unittest.expect(casted11['string'], unittest.equals('foo'));
-  var casted12 = (o['y']) as core.Map;
+  unittest.expect(
+    casted11['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted11['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted11['string'],
+    unittest.equals('foo'),
+  );
+  var casted12 = (o['y']!) as core.Map;
   unittest.expect(casted12, unittest.hasLength(3));
-  unittest.expect(casted12['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted12['bool'], unittest.equals(true));
-  unittest.expect(casted12['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted12['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted12['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted12['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.Map<core.String, core.Object> buildUnnamed3167() {
@@ -2568,16 +3066,34 @@ core.Map<core.String, core.Object> buildUnnamed3167() {
 
 void checkUnnamed3167(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted13 = (o['x']) as core.Map;
+  var casted13 = (o['x']!) as core.Map;
   unittest.expect(casted13, unittest.hasLength(3));
-  unittest.expect(casted13['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted13['bool'], unittest.equals(true));
-  unittest.expect(casted13['string'], unittest.equals('foo'));
-  var casted14 = (o['y']) as core.Map;
+  unittest.expect(
+    casted13['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted13['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted13['string'],
+    unittest.equals('foo'),
+  );
+  var casted14 = (o['y']!) as core.Map;
   unittest.expect(casted14, unittest.hasLength(3));
-  unittest.expect(casted14['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted14['bool'], unittest.equals(true));
-  unittest.expect(casted14['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted14['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted14['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted14['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleLongrunningOperation = 0;
@@ -2598,11 +3114,14 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
 void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   buildCounterGoogleLongrunningOperation++;
   if (buildCounterGoogleLongrunningOperation < 3) {
-    unittest.expect(o.done, unittest.isTrue);
-    checkGoogleRpcStatus(o.error as api.GoogleRpcStatus);
-    checkUnnamed3166(o.metadata);
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3167(o.response);
+    unittest.expect(o.done!, unittest.isTrue);
+    checkGoogleRpcStatus(o.error! as api.GoogleRpcStatus);
+    checkUnnamed3166(o.metadata!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3167(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -2639,16 +3158,34 @@ core.Map<core.String, core.Object> buildUnnamed3168() {
 
 void checkUnnamed3168(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted15 = (o['x']) as core.Map;
+  var casted15 = (o['x']!) as core.Map;
   unittest.expect(casted15, unittest.hasLength(3));
-  unittest.expect(casted15['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted15['bool'], unittest.equals(true));
-  unittest.expect(casted15['string'], unittest.equals('foo'));
-  var casted16 = (o['y']) as core.Map;
+  unittest.expect(
+    casted15['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted15['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted15['string'],
+    unittest.equals('foo'),
+  );
+  var casted16 = (o['y']!) as core.Map;
   unittest.expect(casted16, unittest.hasLength(3));
-  unittest.expect(casted16['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted16['bool'], unittest.equals(true));
-  unittest.expect(casted16['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted16['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted16['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted16['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed3169() {
@@ -2680,9 +3217,15 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
 void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
-    unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed3169(o.details);
-    unittest.expect(o.message, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals(42),
+    );
+    checkUnnamed3169(o.details!);
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleRpcStatus--;
 }
@@ -3507,10 +4050,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3529,11 +4076,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3570,10 +4124,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3593,8 +4151,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["updateMask"]!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3630,10 +4193,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3652,7 +4219,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3693,10 +4263,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3716,8 +4290,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["productId"].first, unittest.equals(arg_productId));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["productId"]!.first,
+          unittest.equals(arg_productId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3750,10 +4329,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3772,7 +4355,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3803,10 +4389,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3825,7 +4415,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3863,10 +4456,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3885,7 +4482,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3924,10 +4524,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3946,11 +4550,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["allowMissing"].first,
-            unittest.equals("$arg_allowMissing"));
         unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["allowMissing"]!.first,
+          unittest.equals("$arg_allowMissing"),
+        );
+        unittest.expect(
+          queryMap["updateMask"]!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3982,10 +4593,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4004,7 +4619,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4034,10 +4652,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4056,12 +4678,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4101,10 +4733,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4123,7 +4759,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4156,10 +4795,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4178,11 +4821,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["ets"].first, unittest.equals(arg_ets));
-        unittest.expect(queryMap["uri"].first, unittest.equals(arg_uri));
         unittest.expect(
-            queryMap["userEvent"].first, unittest.equals(arg_userEvent));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["ets"]!.first,
+          unittest.equals(arg_ets),
+        );
+        unittest.expect(
+          queryMap["uri"]!.first,
+          unittest.equals(arg_uri),
+        );
+        unittest.expect(
+          queryMap["userEvent"]!.first,
+          unittest.equals(arg_userEvent),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4218,10 +4872,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4240,7 +4898,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4273,10 +4934,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4295,7 +4960,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4328,10 +4996,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4350,7 +5022,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4383,10 +5058,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4405,7 +5084,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4434,10 +5116,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4456,7 +5142,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4486,10 +5175,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v2/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v2/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -4508,12 +5201,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

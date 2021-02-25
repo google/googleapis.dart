@@ -91,11 +91,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -144,14 +141,11 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -211,11 +205,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<BiReservation> getBiReservation(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -272,14 +263,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<SearchAllAssignmentsResponse> searchAllAssignments(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String query,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? query,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -342,14 +330,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<SearchAssignmentsResponse> searchAssignments(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String query,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? query,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -402,14 +387,10 @@ class ProjectsLocationsResource {
   async.Future<BiReservation> updateBiReservation(
     BiReservation request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -460,14 +441,10 @@ class ProjectsLocationsCapacityCommitmentsResource {
   async.Future<CapacityCommitment> create(
     CapacityCommitment request,
     core.String parent, {
-    core.bool enforceSingleAdminProjectPerOrg,
-    core.String $fields,
+    core.bool? enforceSingleAdminProjectPerOrg,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (enforceSingleAdminProjectPerOrg != null)
         'enforceSingleAdminProjectPerOrg': [
@@ -514,11 +491,8 @@ class ProjectsLocationsCapacityCommitmentsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -554,11 +528,8 @@ class ProjectsLocationsCapacityCommitmentsResource {
   /// this method will complete with the same error.
   async.Future<CapacityCommitment> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -599,13 +570,10 @@ class ProjectsLocationsCapacityCommitmentsResource {
   /// this method will complete with the same error.
   async.Future<ListCapacityCommitmentsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -653,13 +621,9 @@ class ProjectsLocationsCapacityCommitmentsResource {
   async.Future<CapacityCommitment> merge(
     MergeCapacityCommitmentsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -709,14 +673,10 @@ class ProjectsLocationsCapacityCommitmentsResource {
   async.Future<CapacityCommitment> patch(
     CapacityCommitment request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -764,13 +724,9 @@ class ProjectsLocationsCapacityCommitmentsResource {
   async.Future<SplitCapacityCommitmentResponse> split(
     SplitCapacityCommitmentRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -824,14 +780,10 @@ class ProjectsLocationsReservationsResource {
   async.Future<Reservation> create(
     Reservation request,
     core.String parent, {
-    core.String reservationId,
-    core.String $fields,
+    core.String? reservationId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (reservationId != null) 'reservationId': [reservationId],
       if ($fields != null) 'fields': [$fields],
@@ -875,11 +827,8 @@ class ProjectsLocationsReservationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -915,11 +864,8 @@ class ProjectsLocationsReservationsResource {
   /// this method will complete with the same error.
   async.Future<Reservation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -960,13 +906,10 @@ class ProjectsLocationsReservationsResource {
   /// this method will complete with the same error.
   async.Future<ListReservationsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1012,14 +955,10 @@ class ProjectsLocationsReservationsResource {
   async.Future<Reservation> patch(
     Reservation request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1089,13 +1028,9 @@ class ProjectsLocationsReservationsAssignmentsResource {
   async.Future<Assignment> create(
     Assignment request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1143,11 +1078,8 @@ class ProjectsLocationsReservationsAssignmentsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1200,13 +1132,10 @@ class ProjectsLocationsReservationsAssignmentsResource {
   /// this method will complete with the same error.
   async.Future<ListAssignmentsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1254,13 +1183,9 @@ class ProjectsLocationsReservationsAssignmentsResource {
   async.Future<Assignment> move(
     MoveAssignmentRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1285,7 +1210,7 @@ class Assignment {
   /// The resource which will use the reservation.
   ///
   /// E.g. `projects/myproject`, `folders/123`, or `organizations/456`.
-  core.String assignee;
+  core.String? assignee;
 
   /// Which type of jobs will use the reservation.
   /// Possible string values are:
@@ -1297,7 +1222,7 @@ class Assignment {
   /// - "ML_EXTERNAL" : BigQuery ML jobs that use services external to BigQuery
   /// for model training. These jobs will not utilize idle slots from other
   /// reservations.
-  core.String jobType;
+  core.String? jobType;
 
   /// Name of the resource.
   ///
@@ -1305,7 +1230,7 @@ class Assignment {
   /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// State of the assignment.
   ///
@@ -1315,7 +1240,7 @@ class Assignment {
   /// - "PENDING" : Queries from assignee will be executed as on-demand, if
   /// related assignment is pending.
   /// - "ACTIVE" : Assignment is ready.
-  core.String state;
+  core.String? state;
 
   Assignment();
 
@@ -1334,11 +1259,11 @@ class Assignment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (assignee != null) 'assignee': assignee,
-        if (jobType != null) 'jobType': jobType,
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (assignee != null) 'assignee': assignee!,
+        if (jobType != null) 'jobType': jobType!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -1348,15 +1273,15 @@ class BiReservation {
   ///
   /// Reservation names have the form
   /// `projects/{project_id}/locations/{location_id}/biReservation`.
-  core.String name;
+  core.String? name;
 
   /// Size of a reservation, in bytes.
-  core.String size;
+  core.String? size;
 
   /// The last update timestamp of a reservation.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   BiReservation();
 
@@ -1372,10 +1297,10 @@ class BiReservation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (size != null) 'size': size,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (size != null) 'size': size!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1392,25 +1317,25 @@ class CapacityCommitment {
   /// It is applicable only for ACTIVE capacity commitments.
   ///
   /// Output only.
-  core.String commitmentEndTime;
+  core.String? commitmentEndTime;
 
   /// The start of the current commitment period.
   ///
   /// It is applicable only for ACTIVE capacity commitments.
   ///
   /// Output only.
-  core.String commitmentStartTime;
+  core.String? commitmentStartTime;
 
   /// For FAILED commitment plan, provides the reason of failure.
   ///
   /// Output only.
-  Status failureStatus;
+  Status? failureStatus;
 
   /// The resource name of the capacity commitment, e.g.,
   /// `projects/myproject/locations/US/capacityCommitments/123`
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Capacity commitment commitment plan.
   /// Possible string values are:
@@ -1429,7 +1354,7 @@ class CapacityCommitment {
   /// - "ANNUAL" : Annual commitments have a committed period of 365 days after
   /// becoming ACTIVE. After that they are converted to a new commitment based
   /// on the renewal_plan.
-  core.String plan;
+  core.String? plan;
 
   /// The plan this capacity commitment is converted to after
   /// commitment_end_time passes.
@@ -1452,10 +1377,10 @@ class CapacityCommitment {
   /// - "ANNUAL" : Annual commitments have a committed period of 365 days after
   /// becoming ACTIVE. After that they are converted to a new commitment based
   /// on the renewal_plan.
-  core.String renewalPlan;
+  core.String? renewalPlan;
 
   /// Number of slots in this commitment.
-  core.String slotCount;
+  core.String? slotCount;
 
   /// State of the commitment.
   ///
@@ -1467,7 +1392,7 @@ class CapacityCommitment {
   /// - "ACTIVE" : Once slots are provisioned, capacity commitment becomes
   /// active. slot_count is added to the parent's slot_capacity.
   /// - "FAILED" : Capacity commitment is failed to be activated by the backend.
-  core.String state;
+  core.String? state;
 
   CapacityCommitment();
 
@@ -1499,16 +1424,16 @@ class CapacityCommitment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commitmentEndTime != null) 'commitmentEndTime': commitmentEndTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commitmentEndTime != null) 'commitmentEndTime': commitmentEndTime!,
         if (commitmentStartTime != null)
-          'commitmentStartTime': commitmentStartTime,
-        if (failureStatus != null) 'failureStatus': failureStatus.toJson(),
-        if (name != null) 'name': name,
-        if (plan != null) 'plan': plan,
-        if (renewalPlan != null) 'renewalPlan': renewalPlan,
-        if (slotCount != null) 'slotCount': slotCount,
-        if (state != null) 'state': state,
+          'commitmentStartTime': commitmentStartTime!,
+        if (failureStatus != null) 'failureStatus': failureStatus!.toJson(),
+        if (name != null) 'name': name!,
+        if (plan != null) 'plan': plan!,
+        if (renewalPlan != null) 'renewalPlan': renewalPlan!,
+        if (slotCount != null) 'slotCount': slotCount!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -1518,7 +1443,7 @@ class CreateSlotPoolMetadata {
   ///
   /// E.g.,
   /// projects/myproject/locations/us-central1/reservations/foo/slotPools/123
-  core.String slotPool;
+  core.String? slotPool;
 
   CreateSlotPoolMetadata();
 
@@ -1528,8 +1453,8 @@ class CreateSlotPoolMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (slotPool != null) 'slotPool': slotPool,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (slotPool != null) 'slotPool': slotPool!,
       };
 }
 
@@ -1547,17 +1472,17 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The response for ReservationService.ListAssignments.
 class ListAssignmentsResponse {
   /// List of assignments visible to the user.
-  core.List<Assignment> assignments;
+  core.List<Assignment>? assignments;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListAssignmentsResponse();
 
@@ -1573,21 +1498,21 @@ class ListAssignmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (assignments != null)
-          'assignments': assignments.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'assignments': assignments!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response for ReservationService.ListCapacityCommitments.
 class ListCapacityCommitmentsResponse {
   /// List of capacity commitments visible to the user.
-  core.List<CapacityCommitment> capacityCommitments;
+  core.List<CapacityCommitment>? capacityCommitments;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListCapacityCommitmentsResponse();
 
@@ -1603,21 +1528,21 @@ class ListCapacityCommitmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (capacityCommitments != null)
           'capacityCommitments':
-              capacityCommitments.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              capacityCommitments!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -1633,10 +1558,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1644,10 +1569,10 @@ class ListOperationsResponse {
 class ListReservationsResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of reservations visible to the user.
-  core.List<Reservation> reservations;
+  core.List<Reservation>? reservations;
 
   ListReservationsResponse();
 
@@ -1663,10 +1588,10 @@ class ListReservationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (reservations != null)
-          'reservations': reservations.map((value) => value.toJson()).toList(),
+          'reservations': reservations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1678,7 +1603,7 @@ class MergeCapacityCommitmentsRequest {
   /// specified in the parent. ID is the last portion of capacity commitment
   /// name e.g., 'abc' for
   /// projects/myproject/locations/US/capacityCommitments/abc
-  core.List<core.String> capacityCommitmentIds;
+  core.List<core.String>? capacityCommitmentIds;
 
   MergeCapacityCommitmentsRequest();
 
@@ -1690,9 +1615,9 @@ class MergeCapacityCommitmentsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (capacityCommitmentIds != null)
-          'capacityCommitmentIds': capacityCommitmentIds,
+          'capacityCommitmentIds': capacityCommitmentIds!,
       };
 }
 
@@ -1705,7 +1630,7 @@ class MergeCapacityCommitmentsRequest {
 class MoveAssignmentRequest {
   /// The new reservation ID, e.g.:
   /// `projects/myotherproject/locations/US/reservations/team2-prod`
-  core.String destinationId;
+  core.String? destinationId;
 
   MoveAssignmentRequest();
 
@@ -1715,8 +1640,8 @@ class MoveAssignmentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destinationId != null) 'destinationId': destinationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destinationId != null) 'destinationId': destinationId!,
       };
 }
 
@@ -1727,10 +1652,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -1741,14 +1666,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -1761,7 +1686,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -1796,12 +1721,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -1810,18 +1735,18 @@ class Reservation {
   /// Creation time of the reservation.
   ///
   /// Output only.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// If false, any query using this reservation will use idle slots from other
   /// reservations within the same admin project.
   ///
   /// If true, a query using this reservation will execute with the slot
   /// capacity specified above at most.
-  core.bool ignoreIdleSlots;
+  core.bool? ignoreIdleSlots;
 
   /// The resource name of the reservation, e.g., `projects / * /locations / *
   /// /reservations/team1-prod`.
-  core.String name;
+  core.String? name;
 
   /// Minimum slots available to this reservation.
   ///
@@ -1832,12 +1757,12 @@ class Reservation {
   /// slot capacity of the new reservation and its siblings exceeds the parent's
   /// slot capacity, the request will fail with
   /// `google.rpc.Code.RESOURCE_EXHAUSTED`.
-  core.String slotCapacity;
+  core.String? slotCapacity;
 
   /// Last update time of the reservation.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Reservation();
 
@@ -1859,23 +1784,23 @@ class Reservation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationTime != null) 'creationTime': creationTime,
-        if (ignoreIdleSlots != null) 'ignoreIdleSlots': ignoreIdleSlots,
-        if (name != null) 'name': name,
-        if (slotCapacity != null) 'slotCapacity': slotCapacity,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (ignoreIdleSlots != null) 'ignoreIdleSlots': ignoreIdleSlots!,
+        if (name != null) 'name': name!,
+        if (slotCapacity != null) 'slotCapacity': slotCapacity!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// The response for ReservationService.SearchAllAssignments.
 class SearchAllAssignmentsResponse {
   /// List of assignments visible to the user.
-  core.List<Assignment> assignments;
+  core.List<Assignment>? assignments;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   SearchAllAssignmentsResponse();
 
@@ -1891,21 +1816,21 @@ class SearchAllAssignmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (assignments != null)
-          'assignments': assignments.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'assignments': assignments!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response for ReservationService.SearchAssignments.
 class SearchAssignmentsResponse {
   /// List of assignments visible to the user.
-  core.List<Assignment> assignments;
+  core.List<Assignment>? assignments;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   SearchAssignmentsResponse();
 
@@ -1921,17 +1846,17 @@ class SearchAssignmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (assignments != null)
-          'assignments': assignments.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'assignments': assignments!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The request for ReservationService.SplitCapacityCommitment.
 class SplitCapacityCommitmentRequest {
   /// Number of slots in the capacity commitment after the split.
-  core.String slotCount;
+  core.String? slotCount;
 
   SplitCapacityCommitmentRequest();
 
@@ -1941,18 +1866,18 @@ class SplitCapacityCommitmentRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (slotCount != null) 'slotCount': slotCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (slotCount != null) 'slotCount': slotCount!,
       };
 }
 
 /// The response for ReservationService.SplitCapacityCommitment.
 class SplitCapacityCommitmentResponse {
   /// First capacity commitment, result of a split.
-  CapacityCommitment first;
+  CapacityCommitment? first;
 
   /// Second capacity commitment, result of a split.
-  CapacityCommitment second;
+  CapacityCommitment? second;
 
   SplitCapacityCommitmentResponse();
 
@@ -1967,9 +1892,9 @@ class SplitCapacityCommitmentResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (first != null) 'first': first.toJson(),
-        if (second != null) 'second': second.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (first != null) 'first': first!.toJson(),
+        if (second != null) 'second': second!.toJson(),
       };
 }
 
@@ -1982,7 +1907,7 @@ class SplitCapacityCommitmentResponse {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1990,13 +1915,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -2020,9 +1945,9 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }

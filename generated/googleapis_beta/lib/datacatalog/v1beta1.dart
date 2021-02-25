@@ -105,10 +105,9 @@ class CatalogResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1SearchCatalogResponse> search(
     GoogleCloudDatacatalogV1beta1SearchCatalogRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -165,9 +164,9 @@ class EntriesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1Entry> lookup({
-    core.String linkedResource,
-    core.String sqlResource,
-    core.String $fields,
+    core.String? linkedResource,
+    core.String? sqlResource,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (linkedResource != null) 'linkedResource': [linkedResource],
@@ -255,14 +254,10 @@ class ProjectsLocationsEntryGroupsResource {
   async.Future<GoogleCloudDatacatalogV1beta1EntryGroup> create(
     GoogleCloudDatacatalogV1beta1EntryGroup request,
     core.String parent, {
-    core.String entryGroupId,
-    core.String $fields,
+    core.String? entryGroupId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (entryGroupId != null) 'entryGroupId': [entryGroupId],
       if ($fields != null) 'fields': [$fields],
@@ -311,12 +306,9 @@ class ProjectsLocationsEntryGroupsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.bool force,
-    core.String $fields,
+    core.bool? force,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
@@ -356,12 +348,9 @@ class ProjectsLocationsEntryGroupsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1EntryGroup> get(
     core.String name, {
-    core.String readMask,
-    core.String $fields,
+    core.String? readMask,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (readMask != null) 'readMask': [readMask],
       if ($fields != null) 'fields': [$fields],
@@ -413,13 +402,9 @@ class ProjectsLocationsEntryGroupsResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -464,13 +449,10 @@ class ProjectsLocationsEntryGroupsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -524,14 +506,10 @@ class ProjectsLocationsEntryGroupsResource {
   async.Future<GoogleCloudDatacatalogV1beta1EntryGroup> patch(
     GoogleCloudDatacatalogV1beta1EntryGroup request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -583,13 +561,9 @@ class ProjectsLocationsEntryGroupsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -639,13 +613,9 @@ class ProjectsLocationsEntryGroupsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -710,14 +680,10 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   async.Future<GoogleCloudDatacatalogV1beta1Entry> create(
     GoogleCloudDatacatalogV1beta1Entry request,
     core.String parent, {
-    core.String entryId,
-    core.String $fields,
+    core.String? entryId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (entryId != null) 'entryId': [entryId],
       if ($fields != null) 'fields': [$fields],
@@ -764,11 +730,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -804,11 +767,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1Entry> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -859,13 +819,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -916,14 +872,11 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ListEntriesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String readMask,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readMask,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -985,14 +938,10 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   async.Future<GoogleCloudDatacatalogV1beta1Entry> patch(
     GoogleCloudDatacatalogV1beta1Entry request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1042,13 +991,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1107,13 +1052,9 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   async.Future<GoogleCloudDatacatalogV1beta1Tag> create(
     GoogleCloudDatacatalogV1beta1Tag request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1152,11 +1093,8 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1200,13 +1138,10 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ListTagsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1255,14 +1190,10 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   async.Future<GoogleCloudDatacatalogV1beta1Tag> patch(
     GoogleCloudDatacatalogV1beta1Tag request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1320,13 +1251,9 @@ class ProjectsLocationsEntryGroupsTagsResource {
   async.Future<GoogleCloudDatacatalogV1beta1Tag> create(
     GoogleCloudDatacatalogV1beta1Tag request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1365,11 +1292,8 @@ class ProjectsLocationsEntryGroupsTagsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1413,13 +1337,10 @@ class ProjectsLocationsEntryGroupsTagsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ListTagsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1468,14 +1389,10 @@ class ProjectsLocationsEntryGroupsTagsResource {
   async.Future<GoogleCloudDatacatalogV1beta1Tag> patch(
     GoogleCloudDatacatalogV1beta1Tag request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1534,14 +1451,10 @@ class ProjectsLocationsTagTemplatesResource {
   async.Future<GoogleCloudDatacatalogV1beta1TagTemplate> create(
     GoogleCloudDatacatalogV1beta1TagTemplate request,
     core.String parent, {
-    core.String tagTemplateId,
-    core.String $fields,
+    core.String? tagTemplateId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (tagTemplateId != null) 'tagTemplateId': [tagTemplateId],
       if ($fields != null) 'fields': [$fields],
@@ -1591,12 +1504,9 @@ class ProjectsLocationsTagTemplatesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.bool force,
-    core.String $fields,
+    core.bool? force,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
@@ -1633,11 +1543,8 @@ class ProjectsLocationsTagTemplatesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1TagTemplate> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1688,13 +1595,9 @@ class ProjectsLocationsTagTemplatesResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1750,14 +1653,10 @@ class ProjectsLocationsTagTemplatesResource {
   async.Future<GoogleCloudDatacatalogV1beta1TagTemplate> patch(
     GoogleCloudDatacatalogV1beta1TagTemplate request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1809,13 +1708,9 @@ class ProjectsLocationsTagTemplatesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1865,13 +1760,9 @@ class ProjectsLocationsTagTemplatesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1937,14 +1828,10 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   async.Future<GoogleCloudDatacatalogV1beta1TagTemplateField> create(
     GoogleCloudDatacatalogV1beta1TagTemplateField request,
     core.String parent, {
-    core.String tagTemplateFieldId,
-    core.String $fields,
+    core.String? tagTemplateFieldId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (tagTemplateFieldId != null)
         'tagTemplateFieldId': [tagTemplateFieldId],
@@ -1996,12 +1883,9 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.bool force,
-    core.String $fields,
+    core.bool? force,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
@@ -2056,14 +1940,10 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   async.Future<GoogleCloudDatacatalogV1beta1TagTemplateField> patch(
     GoogleCloudDatacatalogV1beta1TagTemplateField request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2110,13 +1990,9 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   async.Future<GoogleCloudDatacatalogV1beta1TagTemplateField> rename(
     GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2170,13 +2046,9 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResource {
   async.Future<GoogleCloudDatacatalogV1beta1TagTemplateField> rename(
     GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2227,13 +2099,9 @@ class ProjectsLocationsTaxonomiesResource {
   async.Future<GoogleCloudDatacatalogV1beta1Taxonomy> create(
     GoogleCloudDatacatalogV1beta1Taxonomy request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2276,11 +2144,8 @@ class ProjectsLocationsTaxonomiesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2322,13 +2187,10 @@ class ProjectsLocationsTaxonomiesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse> export(
     core.String parent, {
-    core.bool serializedTaxonomies,
-    core.List<core.String> taxonomies,
-    core.String $fields,
+    core.bool? serializedTaxonomies,
+    core.List<core.String>? taxonomies,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (serializedTaxonomies != null)
         'serializedTaxonomies': ['${serializedTaxonomies}'],
@@ -2369,11 +2231,8 @@ class ProjectsLocationsTaxonomiesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1Taxonomy> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2414,13 +2273,9 @@ class ProjectsLocationsTaxonomiesResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2465,13 +2320,9 @@ class ProjectsLocationsTaxonomiesResource {
   async.Future<GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse> import(
     GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2517,13 +2368,10 @@ class ProjectsLocationsTaxonomiesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2572,14 +2420,10 @@ class ProjectsLocationsTaxonomiesResource {
   async.Future<GoogleCloudDatacatalogV1beta1Taxonomy> patch(
     GoogleCloudDatacatalogV1beta1Taxonomy request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2622,13 +2466,9 @@ class ProjectsLocationsTaxonomiesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2672,13 +2512,9 @@ class ProjectsLocationsTaxonomiesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2728,13 +2564,9 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   async.Future<GoogleCloudDatacatalogV1beta1PolicyTag> create(
     GoogleCloudDatacatalogV1beta1PolicyTag request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2776,11 +2608,8 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2815,11 +2644,8 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1PolicyTag> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2860,13 +2686,9 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2911,13 +2733,10 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2969,14 +2788,10 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   async.Future<GoogleCloudDatacatalogV1beta1PolicyTag> patch(
     GoogleCloudDatacatalogV1beta1PolicyTag request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3019,13 +2834,9 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3069,13 +2880,9 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3105,7 +2912,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -3137,12 +2944,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -3161,10 +2968,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -3182,7 +2989,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -3210,24 +3017,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -3246,11 +3053,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -3258,7 +3065,7 @@ class Expr {
 class GetIamPolicyRequest {
   /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
   /// `GetIamPolicy`.
-  GetPolicyOptions options;
+  GetPolicyOptions? options;
 
   GetIamPolicyRequest();
 
@@ -3269,8 +3076,8 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (options != null) 'options': options.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (options != null) 'options': options!.toJson(),
       };
 }
 
@@ -3286,7 +3093,7 @@ class GetPolicyOptions {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// Optional.
-  core.int requestedPolicyVersion;
+  core.int? requestedPolicyVersion;
 
   GetPolicyOptions();
 
@@ -3296,9 +3103,9 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion,
+          'requestedPolicyVersion': requestedPolicyVersion!,
       };
 }
 
@@ -3312,12 +3119,12 @@ class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
   /// `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`.
   ///
   /// Output only.
-  core.String dataset;
+  core.String? dataset;
 
   /// Total number of shards.
   ///
   /// Output only.
-  core.String shardCount;
+  core.String? shardCount;
 
   /// The table name prefix of the shards.
   ///
@@ -3325,7 +3132,7 @@ class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
   /// shard `MyTable20180101`, the `table_prefix` is `MyTable`.
   ///
   /// Output only.
-  core.String tablePrefix;
+  core.String? tablePrefix;
 
   GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec();
 
@@ -3342,10 +3149,10 @@ class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataset != null) 'dataset': dataset,
-        if (shardCount != null) 'shardCount': shardCount,
-        if (tablePrefix != null) 'tablePrefix': tablePrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataset != null) 'dataset': dataset!,
+        if (shardCount != null) 'shardCount': shardCount!,
+        if (tablePrefix != null) 'tablePrefix': tablePrefix!,
       };
 }
 
@@ -3359,19 +3166,19 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
   /// - "BIGQUERY_VIEW" : Table view.
   /// - "BIGQUERY_TABLE" : BigQuery native table.
   /// - "BIGQUERY_MATERIALIZED_VIEW" : BigQuery materialized view.
-  core.String tableSourceType;
+  core.String? tableSourceType;
 
   /// Spec of a BigQuery table.
   ///
   /// This field should only be populated if `table_source_type` is
   /// `BIGQUERY_TABLE`.
-  GoogleCloudDatacatalogV1beta1TableSpec tableSpec;
+  GoogleCloudDatacatalogV1beta1TableSpec? tableSpec;
 
   /// Table view specification.
   ///
   /// This field should only be populated if `table_source_type` is
   /// `BIGQUERY_VIEW`.
-  GoogleCloudDatacatalogV1beta1ViewSpec viewSpec;
+  GoogleCloudDatacatalogV1beta1ViewSpec? viewSpec;
 
   GoogleCloudDatacatalogV1beta1BigQueryTableSpec();
 
@@ -3389,10 +3196,10 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (tableSourceType != null) 'tableSourceType': tableSourceType,
-        if (tableSpec != null) 'tableSpec': tableSpec.toJson(),
-        if (viewSpec != null) 'viewSpec': viewSpec.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (tableSourceType != null) 'tableSourceType': tableSourceType!,
+        if (tableSpec != null) 'tableSpec': tableSpec!.toJson(),
+        if (viewSpec != null) 'viewSpec': viewSpec!.toJson(),
       };
 }
 
@@ -3403,14 +3210,14 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
   /// Name of the column.
   ///
   /// Required.
-  core.String column;
+  core.String? column;
 
   /// Description of the column.
   ///
   /// Default value is an empty string.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// A column's mode indicates whether the values in this column are required,
   /// nullable, etc.
@@ -3419,19 +3226,19 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
   /// `NULLABLE`.
   ///
   /// Optional.
-  core.String mode;
+  core.String? mode;
 
   /// Schema of sub-columns.
   ///
   /// A column can have zero or more sub-columns.
   ///
   /// Optional.
-  core.List<GoogleCloudDatacatalogV1beta1ColumnSchema> subcolumns;
+  core.List<GoogleCloudDatacatalogV1beta1ColumnSchema>? subcolumns;
 
   /// Type of the column.
   ///
   /// Required.
-  core.String type;
+  core.String? type;
 
   GoogleCloudDatacatalogV1beta1ColumnSchema();
 
@@ -3457,13 +3264,13 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (column != null) 'column': column,
-        if (description != null) 'description': description,
-        if (mode != null) 'mode': mode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (column != null) 'column': column!,
+        if (description != null) 'description': description!,
+        if (mode != null) 'mode': mode!,
         if (subcolumns != null)
-          'subcolumns': subcolumns.map((value) => value.toJson()).toList(),
-        if (type != null) 'type': type,
+          'subcolumns': subcolumns!.map((value) => value.toJson()).toList(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3481,29 +3288,29 @@ class GoogleCloudDatacatalogV1beta1Entry {
   ///
   /// Context:
   /// https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
-  GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec bigqueryDateShardedSpec;
+  GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec? bigqueryDateShardedSpec;
 
   /// Specification that applies to a BigQuery table.
   ///
   /// This is only valid on entries of type `TABLE`.
-  GoogleCloudDatacatalogV1beta1BigQueryTableSpec bigqueryTableSpec;
+  GoogleCloudDatacatalogV1beta1BigQueryTableSpec? bigqueryTableSpec;
 
   /// Entry description, which can consist of several sentences or paragraphs
   /// that describe entry contents.
   ///
   /// Default value is an empty string.
-  core.String description;
+  core.String? description;
 
   /// Display information such as title and description.
   ///
   /// A short name to identify the entry, for example, "Analytics Data - Jan
   /// 2011". Default value is an empty string.
-  core.String displayName;
+  core.String? displayName;
 
   /// Specification that applies to a Cloud Storage fileset.
   ///
   /// This is only valid on entries of type FILESET.
-  GoogleCloudDatacatalogV1beta1GcsFilesetSpec gcsFilesetSpec;
+  GoogleCloudDatacatalogV1beta1GcsFilesetSpec? gcsFilesetSpec;
 
   /// This field indicates the entry's source system that Data Catalog
   /// integrates with, such as BigQuery or Pub/Sub.
@@ -3513,7 +3320,7 @@ class GoogleCloudDatacatalogV1beta1Entry {
   /// - "INTEGRATED_SYSTEM_UNSPECIFIED" : Default unknown system.
   /// - "BIGQUERY" : BigQuery.
   /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
-  core.String integratedSystem;
+  core.String? integratedSystem;
 
   /// The resource this metadata entry refers to.
   ///
@@ -3525,7 +3332,7 @@ class GoogleCloudDatacatalogV1beta1Entry {
   /// Output only when Entry is of type in the EntryType enum. For entries with
   /// user_specified_type, this field is optional and defaults to an empty
   /// string.
-  core.String linkedResource;
+  core.String? linkedResource;
 
   /// The Data Catalog resource name of the entry in URL format.
   ///
@@ -3535,12 +3342,12 @@ class GoogleCloudDatacatalogV1beta1Entry {
   /// the location in this name.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Schema of the entry.
   ///
   /// An entry might not have any schema attached to it.
-  GoogleCloudDatacatalogV1beta1Schema schema;
+  GoogleCloudDatacatalogV1beta1Schema? schema;
 
   /// Timestamps about the underlying resource, not about this Data Catalog
   /// entry.
@@ -3550,7 +3357,7 @@ class GoogleCloudDatacatalogV1beta1Entry {
   /// timestamp.
   ///
   /// Output only.
-  GoogleCloudDatacatalogV1beta1SystemTimestamps sourceSystemTimestamps;
+  GoogleCloudDatacatalogV1beta1SystemTimestamps? sourceSystemTimestamps;
 
   /// The type of the entry.
   ///
@@ -3565,7 +3372,7 @@ class GoogleCloudDatacatalogV1beta1Entry {
   /// entries. Example: Pub/Sub topic.
   /// - "FILESET" : An entry type which is a set of files or objects. Example:
   /// Cloud Storage fileset.
-  core.String type;
+  core.String? type;
 
   /// This field indicates the entry's source system that Data Catalog does not
   /// integrate with.
@@ -3573,7 +3380,7 @@ class GoogleCloudDatacatalogV1beta1Entry {
   /// `user_specified_system` strings must begin with a letter or underscore and
   /// can only contain letters, numbers, and underscores; are case insensitive;
   /// must be at least 1 character and at most 64 characters long.
-  core.String userSpecifiedSystem;
+  core.String? userSpecifiedSystem;
 
   /// Entry type if it does not fit any of the input-allowed values listed in
   /// `EntryType` enum above.
@@ -3586,7 +3393,7 @@ class GoogleCloudDatacatalogV1beta1Entry {
   /// most 64 characters long. Currently, only FILESET enum value is allowed.
   /// All other entries created through Data Catalog must use
   /// `user_specified_type`.
-  core.String userSpecifiedType;
+  core.String? userSpecifiedType;
 
   GoogleCloudDatacatalogV1beta1Entry();
 
@@ -3643,24 +3450,24 @@ class GoogleCloudDatacatalogV1beta1Entry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bigqueryDateShardedSpec != null)
-          'bigqueryDateShardedSpec': bigqueryDateShardedSpec.toJson(),
+          'bigqueryDateShardedSpec': bigqueryDateShardedSpec!.toJson(),
         if (bigqueryTableSpec != null)
-          'bigqueryTableSpec': bigqueryTableSpec.toJson(),
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (gcsFilesetSpec != null) 'gcsFilesetSpec': gcsFilesetSpec.toJson(),
-        if (integratedSystem != null) 'integratedSystem': integratedSystem,
-        if (linkedResource != null) 'linkedResource': linkedResource,
-        if (name != null) 'name': name,
-        if (schema != null) 'schema': schema.toJson(),
+          'bigqueryTableSpec': bigqueryTableSpec!.toJson(),
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (gcsFilesetSpec != null) 'gcsFilesetSpec': gcsFilesetSpec!.toJson(),
+        if (integratedSystem != null) 'integratedSystem': integratedSystem!,
+        if (linkedResource != null) 'linkedResource': linkedResource!,
+        if (name != null) 'name': name!,
+        if (schema != null) 'schema': schema!.toJson(),
         if (sourceSystemTimestamps != null)
-          'sourceSystemTimestamps': sourceSystemTimestamps.toJson(),
-        if (type != null) 'type': type,
+          'sourceSystemTimestamps': sourceSystemTimestamps!.toJson(),
+        if (type != null) 'type': type!,
         if (userSpecifiedSystem != null)
-          'userSpecifiedSystem': userSpecifiedSystem,
-        if (userSpecifiedType != null) 'userSpecifiedType': userSpecifiedType,
+          'userSpecifiedSystem': userSpecifiedSystem!,
+        if (userSpecifiedType != null) 'userSpecifiedType': userSpecifiedType!,
       };
 }
 
@@ -3674,19 +3481,19 @@ class GoogleCloudDatacatalogV1beta1EntryGroup {
   /// Default value is empty timestamps.
   ///
   /// Output only.
-  GoogleCloudDatacatalogV1beta1SystemTimestamps dataCatalogTimestamps;
+  GoogleCloudDatacatalogV1beta1SystemTimestamps? dataCatalogTimestamps;
 
   /// Entry group description, which can consist of several sentences or
   /// paragraphs that describe entry group contents.
   ///
   /// Default value is an empty string.
-  core.String description;
+  core.String? description;
 
   /// A short name to identify the entry group, for example, "analytics data -
   /// jan 2011".
   ///
   /// Default value is an empty string.
-  core.String displayName;
+  core.String? displayName;
 
   /// The resource name of the entry group in URL format.
   ///
@@ -3694,7 +3501,7 @@ class GoogleCloudDatacatalogV1beta1EntryGroup {
   /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
   /// Note that this EntryGroup and its child resources may not actually be
   /// stored in the location in this name.
-  core.String name;
+  core.String? name;
 
   GoogleCloudDatacatalogV1beta1EntryGroup();
 
@@ -3716,19 +3523,19 @@ class GoogleCloudDatacatalogV1beta1EntryGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataCatalogTimestamps != null)
-          'dataCatalogTimestamps': dataCatalogTimestamps.toJson(),
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
+          'dataCatalogTimestamps': dataCatalogTimestamps!.toJson(),
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Response message for ExportTaxonomies.
 class GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse {
   /// List of taxonomies and policy tags in a tree structure.
-  core.List<GoogleCloudDatacatalogV1beta1SerializedTaxonomy> taxonomies;
+  core.List<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>? taxonomies;
 
   GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse();
 
@@ -3743,15 +3550,15 @@ class GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (taxonomies != null)
-          'taxonomies': taxonomies.map((value) => value.toJson()).toList(),
+          'taxonomies': taxonomies!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GoogleCloudDatacatalogV1beta1FieldType {
   /// Represents an enum type.
-  GoogleCloudDatacatalogV1beta1FieldTypeEnumType enumType;
+  GoogleCloudDatacatalogV1beta1FieldTypeEnumType? enumType;
 
   /// Represents primitive types - string, bool etc.
   /// Possible string values are:
@@ -3761,7 +3568,7 @@ class GoogleCloudDatacatalogV1beta1FieldType {
   /// - "STRING" : An UTF-8 string.
   /// - "BOOL" : A boolean value.
   /// - "TIMESTAMP" : A timestamp.
-  core.String primitiveType;
+  core.String? primitiveType;
 
   GoogleCloudDatacatalogV1beta1FieldType();
 
@@ -3775,14 +3582,14 @@ class GoogleCloudDatacatalogV1beta1FieldType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enumType != null) 'enumType': enumType.toJson(),
-        if (primitiveType != null) 'primitiveType': primitiveType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enumType != null) 'enumType': enumType!.toJson(),
+        if (primitiveType != null) 'primitiveType': primitiveType!,
       };
 }
 
 class GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
-  core.List<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>
+  core.List<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>?
       allowedValues;
 
   GoogleCloudDatacatalogV1beta1FieldTypeEnumType();
@@ -3797,10 +3604,10 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedValues != null)
           'allowedValues':
-              allowedValues.map((value) => value.toJson()).toList(),
+              allowedValues!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3810,7 +3617,7 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
   /// Must not be an empty string.
   ///
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue();
 
@@ -3821,8 +3628,8 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
       };
 }
 
@@ -3833,17 +3640,17 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpec {
   /// Example: `gs://bucket_name/a/b.txt`.
   ///
   /// Required.
-  core.String filePath;
+  core.String? filePath;
 
   /// Timestamps about the Cloud Storage file.
   ///
   /// Output only.
-  GoogleCloudDatacatalogV1beta1SystemTimestamps gcsTimestamps;
+  GoogleCloudDatacatalogV1beta1SystemTimestamps? gcsTimestamps;
 
   /// The size of the file, in bytes.
   ///
   /// Output only.
-  core.String sizeBytes;
+  core.String? sizeBytes;
 
   GoogleCloudDatacatalogV1beta1GcsFileSpec();
 
@@ -3860,10 +3667,10 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filePath != null) 'filePath': filePath,
-        if (gcsTimestamps != null) 'gcsTimestamps': gcsTimestamps.toJson(),
-        if (sizeBytes != null) 'sizeBytes': sizeBytes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filePath != null) 'filePath': filePath!,
+        if (gcsTimestamps != null) 'gcsTimestamps': gcsTimestamps!.toJson(),
+        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
       };
 }
 
@@ -3890,13 +3697,13 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
   /// powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
   ///
   /// Required.
-  core.List<core.String> filePatterns;
+  core.List<core.String>? filePatterns;
 
   /// Sample files contained in this fileset, not all files contained in this
   /// fileset are represented here.
   ///
   /// Output only.
-  core.List<GoogleCloudDatacatalogV1beta1GcsFileSpec> sampleGcsFileSpecs;
+  core.List<GoogleCloudDatacatalogV1beta1GcsFileSpec>? sampleGcsFileSpecs;
 
   GoogleCloudDatacatalogV1beta1GcsFilesetSpec();
 
@@ -3915,18 +3722,18 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filePatterns != null) 'filePatterns': filePatterns,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filePatterns != null) 'filePatterns': filePatterns!,
         if (sampleGcsFileSpecs != null)
           'sampleGcsFileSpecs':
-              sampleGcsFileSpecs.map((value) => value.toJson()).toList(),
+              sampleGcsFileSpecs!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Request message for ImportTaxonomies.
 class GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest {
   /// Inline source used for taxonomies to be imported.
-  GoogleCloudDatacatalogV1beta1InlineSource inlineSource;
+  GoogleCloudDatacatalogV1beta1InlineSource? inlineSource;
 
   GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest();
 
@@ -3938,15 +3745,15 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (inlineSource != null) 'inlineSource': inlineSource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (inlineSource != null) 'inlineSource': inlineSource!.toJson(),
       };
 }
 
 /// Response message for ImportTaxonomies.
 class GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse {
   /// Taxonomies that were imported.
-  core.List<GoogleCloudDatacatalogV1beta1Taxonomy> taxonomies;
+  core.List<GoogleCloudDatacatalogV1beta1Taxonomy>? taxonomies;
 
   GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse();
 
@@ -3961,9 +3768,9 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (taxonomies != null)
-          'taxonomies': taxonomies.map((value) => value.toJson()).toList(),
+          'taxonomies': taxonomies!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3972,7 +3779,7 @@ class GoogleCloudDatacatalogV1beta1InlineSource {
   /// Taxonomies to be imported.
   ///
   /// Required.
-  core.List<GoogleCloudDatacatalogV1beta1SerializedTaxonomy> taxonomies;
+  core.List<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>? taxonomies;
 
   GoogleCloudDatacatalogV1beta1InlineSource();
 
@@ -3986,21 +3793,21 @@ class GoogleCloudDatacatalogV1beta1InlineSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (taxonomies != null)
-          'taxonomies': taxonomies.map((value) => value.toJson()).toList(),
+          'taxonomies': taxonomies!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for ListEntries.
 class GoogleCloudDatacatalogV1beta1ListEntriesResponse {
   /// Entry details.
-  core.List<GoogleCloudDatacatalogV1beta1Entry> entries;
+  core.List<GoogleCloudDatacatalogV1beta1Entry>? entries;
 
   /// Token to retrieve the next page of results.
   ///
   /// It is set to empty if no items remain in results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudDatacatalogV1beta1ListEntriesResponse();
 
@@ -4017,22 +3824,22 @@ class GoogleCloudDatacatalogV1beta1ListEntriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entries != null)
-          'entries': entries.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'entries': entries!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for ListEntryGroups.
 class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
   /// EntryGroup details.
-  core.List<GoogleCloudDatacatalogV1beta1EntryGroup> entryGroups;
+  core.List<GoogleCloudDatacatalogV1beta1EntryGroup>? entryGroups;
 
   /// Token to retrieve the next page of results.
   ///
   /// It is set to empty if no items remain in results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse();
 
@@ -4050,10 +3857,10 @@ class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entryGroups != null)
-          'entryGroups': entryGroups.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'entryGroups': entryGroups!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -4061,10 +3868,10 @@ class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
 class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
   /// Token used to retrieve the next page of results, or empty if there are no
   /// more results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The policy tags that are in the requested taxonomy.
-  core.List<GoogleCloudDatacatalogV1beta1PolicyTag> policyTags;
+  core.List<GoogleCloudDatacatalogV1beta1PolicyTag>? policyTags;
 
   GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse();
 
@@ -4081,10 +3888,10 @@ class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (policyTags != null)
-          'policyTags': policyTags.map((value) => value.toJson()).toList(),
+          'policyTags': policyTags!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4093,10 +3900,10 @@ class GoogleCloudDatacatalogV1beta1ListTagsResponse {
   /// Token to retrieve the next page of results.
   ///
   /// It is set to empty if no items remain in results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Tag details.
-  core.List<GoogleCloudDatacatalogV1beta1Tag> tags;
+  core.List<GoogleCloudDatacatalogV1beta1Tag>? tags;
 
   GoogleCloudDatacatalogV1beta1ListTagsResponse();
 
@@ -4113,9 +3920,9 @@ class GoogleCloudDatacatalogV1beta1ListTagsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (tags != null) 'tags': tags.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (tags != null) 'tags': tags!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4123,10 +3930,10 @@ class GoogleCloudDatacatalogV1beta1ListTagsResponse {
 class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
   /// Token used to retrieve the next page of results, or empty if there are no
   /// more results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Taxonomies that the project contains.
-  core.List<GoogleCloudDatacatalogV1beta1Taxonomy> taxonomies;
+  core.List<GoogleCloudDatacatalogV1beta1Taxonomy>? taxonomies;
 
   GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse();
 
@@ -4143,10 +3950,10 @@ class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (taxonomies != null)
-          'taxonomies': taxonomies.map((value) => value.toJson()).toList(),
+          'taxonomies': taxonomies!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4160,7 +3967,7 @@ class GoogleCloudDatacatalogV1beta1PolicyTag {
   /// Resource names of child policy tags of this policy tag.
   ///
   /// Output only.
-  core.List<core.String> childPolicyTags;
+  core.List<core.String>? childPolicyTags;
 
   /// Description of this policy tag.
   ///
@@ -4168,7 +3975,7 @@ class GoogleCloudDatacatalogV1beta1PolicyTag {
   /// and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If
   /// not set, defaults to an empty description. If not set, defaults to an
   /// empty description.
-  core.String description;
+  core.String? description;
 
   /// User defined name of this policy tag.
   ///
@@ -4177,13 +3984,13 @@ class GoogleCloudDatacatalogV1beta1PolicyTag {
   /// spaces; and be at most 200 bytes long when encoded in UTF-8.
   ///
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   /// Resource name of this policy tag, whose format is:
   /// "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Resource name of this policy tag's parent policy tag (e.g. for the
   /// "LatLong" policy tag in the example above, this field contains the
@@ -4192,7 +3999,7 @@ class GoogleCloudDatacatalogV1beta1PolicyTag {
   /// If empty, it means this policy tag is a top level policy tag (e.g. this
   /// field is empty for the "Geolocation" policy tag in the example above). If
   /// not set, defaults to an empty string.
-  core.String parentPolicyTag;
+  core.String? parentPolicyTag;
 
   GoogleCloudDatacatalogV1beta1PolicyTag();
 
@@ -4216,12 +4023,12 @@ class GoogleCloudDatacatalogV1beta1PolicyTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (childPolicyTags != null) 'childPolicyTags': childPolicyTags,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (parentPolicyTag != null) 'parentPolicyTag': parentPolicyTag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (childPolicyTags != null) 'childPolicyTags': childPolicyTags!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (parentPolicyTag != null) 'parentPolicyTag': parentPolicyTag!,
       };
 }
 
@@ -4232,7 +4039,7 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest {
   /// For example, `my_new_enum_value`.
   ///
   /// Required.
-  core.String newEnumValueDisplayName;
+  core.String? newEnumValueDisplayName;
 
   GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest();
 
@@ -4243,9 +4050,9 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (newEnumValueDisplayName != null)
-          'newEnumValueDisplayName': newEnumValueDisplayName,
+          'newEnumValueDisplayName': newEnumValueDisplayName!,
       };
 }
 
@@ -4256,7 +4063,7 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest {
   /// For example, `my_new_field`.
   ///
   /// Required.
-  core.String newTagTemplateFieldId;
+  core.String? newTagTemplateFieldId;
 
   GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest();
 
@@ -4267,9 +4074,9 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (newTagTemplateFieldId != null)
-          'newTagTemplateFieldId': newTagTemplateFieldId,
+          'newTagTemplateFieldId': newTagTemplateFieldId!,
       };
 }
 
@@ -4280,7 +4087,7 @@ class GoogleCloudDatacatalogV1beta1Schema {
   /// A maximum of 10,000 columns and sub-columns can be specified.
   ///
   /// Required.
-  core.List<GoogleCloudDatacatalogV1beta1ColumnSchema> columns;
+  core.List<GoogleCloudDatacatalogV1beta1ColumnSchema>? columns;
 
   GoogleCloudDatacatalogV1beta1Schema();
 
@@ -4294,9 +4101,9 @@ class GoogleCloudDatacatalogV1beta1Schema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (columns != null)
-          'columns': columns.map((value) => value.toJson()).toList(),
+          'columns': columns!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4306,13 +4113,13 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
   /// choices are: * `relevance`, only supports descending *
   /// `last_modified_timestamp [asc|desc]`, defaults to descending if not
   /// specified If not specified, defaults to `relevance` descending.
-  core.String orderBy;
+  core.String? orderBy;
 
   /// Number of results in the search page.
   ///
   /// If <=0 then defaults to 10. Max limit for page_size is 1000. Throws an
   /// invalid argument for page_size > 1000.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// Pagination token returned in an earlier
   /// SearchCatalogResponse.next_page_token, which indicates that this is a
@@ -4322,7 +4129,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
   /// If empty, the first page is returned.
   ///
   /// Optional.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// The query string in search query syntax.
   ///
@@ -4335,7 +4142,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
   /// for more information.
   ///
   /// Optional.
-  core.String query;
+  core.String? query;
 
   /// The scope of this search request.
   ///
@@ -4344,7 +4151,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
   /// will return an error in such a case.
   ///
   /// Required.
-  GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope scope;
+  GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope? scope;
 
   GoogleCloudDatacatalogV1beta1SearchCatalogRequest();
 
@@ -4367,12 +4174,12 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (orderBy != null) 'orderBy': orderBy,
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (query != null) 'query': query,
-        if (scope != null) 'scope': scope.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (orderBy != null) 'orderBy': orderBy!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (query != null) 'query': query!,
+        if (scope != null) 'scope': scope!.toJson(),
       };
 }
 
@@ -4384,19 +4191,19 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
   /// Info on GCP public datasets is available at
   /// https://cloud.google.com/public-datasets/. By default, GCP public datasets
   /// are excluded.
-  core.bool includeGcpPublicDatasets;
+  core.bool? includeGcpPublicDatasets;
 
   /// The list of organization IDs to search within.
   ///
   /// To find your organization ID, follow instructions in
   /// https://cloud.google.com/resource-manager/docs/creating-managing-organization.
-  core.List<core.String> includeOrgIds;
+  core.List<core.String>? includeOrgIds;
 
   /// The list of project IDs to search within.
   ///
   /// To learn more about the distinction between project names/IDs/numbers, go
   /// to https://cloud.google.com/docs/overview/#projects.
-  core.List<core.String> includeProjectIds;
+  core.List<core.String>? includeProjectIds;
 
   /// The list of locations to search within.
   ///
@@ -4414,7 +4221,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
   /// * us-east4 * us-west1 * us-west2
   ///
   /// Optional.
-  core.List<core.String> restrictedLocations;
+  core.List<core.String>? restrictedLocations;
 
   GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope();
 
@@ -4440,23 +4247,23 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (includeGcpPublicDatasets != null)
-          'includeGcpPublicDatasets': includeGcpPublicDatasets,
-        if (includeOrgIds != null) 'includeOrgIds': includeOrgIds,
-        if (includeProjectIds != null) 'includeProjectIds': includeProjectIds,
+          'includeGcpPublicDatasets': includeGcpPublicDatasets!,
+        if (includeOrgIds != null) 'includeOrgIds': includeOrgIds!,
+        if (includeProjectIds != null) 'includeProjectIds': includeProjectIds!,
         if (restrictedLocations != null)
-          'restrictedLocations': restrictedLocations,
+          'restrictedLocations': restrictedLocations!,
       };
 }
 
 /// Response message for SearchCatalog.
 class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
   /// The token that can be used to retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Search results.
-  core.List<GoogleCloudDatacatalogV1beta1SearchCatalogResult> results;
+  core.List<GoogleCloudDatacatalogV1beta1SearchCatalogResult>? results;
 
   /// Unreachable locations.
   ///
@@ -4464,7 +4271,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
   /// additional information on the error by repeating the search request with a
   /// more restrictive parameter -- setting the value for
   /// `SearchDataCatalogRequest.scope.restricted_locations`.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   GoogleCloudDatacatalogV1beta1SearchCatalogResponse();
 
@@ -4486,11 +4293,11 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
-        if (unreachable != null) 'unreachable': unreachable,
+          'results': results!.map((value) => value.toJson()).toList(),
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -4504,24 +4311,24 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResult {
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name.
   /// Example: *
   /// `//bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId`
-  core.String linkedResource;
+  core.String? linkedResource;
 
   /// Last-modified timestamp of the entry from the managing system.
-  core.String modifyTime;
+  core.String? modifyTime;
 
   /// The relative resource name of the resource in URL format.
   ///
   /// Examples: *
   /// `projects/{project_id}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}`
   /// * `projects/{project_id}/tagTemplates/{tag_template_id}`
-  core.String relativeResourceName;
+  core.String? relativeResourceName;
 
   /// Sub-type of the search result.
   ///
   /// This is a dot-delimited description of the resource's full type, and is
   /// the same as the value callers would provide in the "type" search facet.
   /// Examples: `entry.table`, `entry.dataStream`, `tagTemplate`.
-  core.String searchResultSubtype;
+  core.String? searchResultSubtype;
 
   /// Type of the search result.
   ///
@@ -4532,7 +4339,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResult {
   /// - "ENTRY" : An Entry.
   /// - "TAG_TEMPLATE" : A TagTemplate.
   /// - "ENTRY_GROUP" : An EntryGroup.
-  core.String searchResultType;
+  core.String? searchResultType;
 
   GoogleCloudDatacatalogV1beta1SearchCatalogResult();
 
@@ -4554,39 +4361,39 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (linkedResource != null) 'linkedResource': linkedResource,
-        if (modifyTime != null) 'modifyTime': modifyTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (linkedResource != null) 'linkedResource': linkedResource!,
+        if (modifyTime != null) 'modifyTime': modifyTime!,
         if (relativeResourceName != null)
-          'relativeResourceName': relativeResourceName,
+          'relativeResourceName': relativeResourceName!,
         if (searchResultSubtype != null)
-          'searchResultSubtype': searchResultSubtype,
-        if (searchResultType != null) 'searchResultType': searchResultType,
+          'searchResultSubtype': searchResultSubtype!,
+        if (searchResultType != null) 'searchResultType': searchResultType!,
       };
 }
 
 /// Message representing one policy tag when exported as a nested proto.
 class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
   /// Children of the policy tag if any.
-  core.List<GoogleCloudDatacatalogV1beta1SerializedPolicyTag> childPolicyTags;
+  core.List<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>? childPolicyTags;
 
   /// Description of the serialized policy tag.
   ///
   /// The length of the description is limited to 2000 bytes when encoded in
   /// UTF-8. If not set, defaults to an empty description.
-  core.String description;
+  core.String? description;
 
   /// Display name of the policy tag.
   ///
   /// Max 200 bytes when encoded in UTF-8.
   ///
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   /// Resource name of the policy tag.
   ///
   /// This field will be ignored when calling ImportTaxonomies.
-  core.String policyTag;
+  core.String? policyTag;
 
   GoogleCloudDatacatalogV1beta1SerializedPolicyTag();
 
@@ -4609,13 +4416,13 @@ class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (childPolicyTags != null)
           'childPolicyTags':
-              childPolicyTags.map((value) => value.toJson()).toList(),
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (policyTag != null) 'policyTag': policyTag,
+              childPolicyTags!.map((value) => value.toJson()).toList(),
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (policyTag != null) 'policyTag': policyTag!,
       };
 }
 
@@ -4624,23 +4431,23 @@ class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
 /// Used for taxonomy import/export and mutation.
 class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
   /// A list of policy types that are activated for a taxonomy.
-  core.List<core.String> activatedPolicyTypes;
+  core.List<core.String>? activatedPolicyTypes;
 
   /// Description of the serialized taxonomy.
   ///
   /// The length of the description is limited to 2000 bytes when encoded in
   /// UTF-8. If not set, defaults to an empty description.
-  core.String description;
+  core.String? description;
 
   /// Display name of the taxonomy.
   ///
   /// Max 200 bytes when encoded in UTF-8.
   ///
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   /// Top level policy tags associated with the taxonomy if any.
-  core.List<GoogleCloudDatacatalogV1beta1SerializedPolicyTag> policyTags;
+  core.List<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>? policyTags;
 
   GoogleCloudDatacatalogV1beta1SerializedTaxonomy();
 
@@ -4665,30 +4472,30 @@ class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (activatedPolicyTypes != null)
-          'activatedPolicyTypes': activatedPolicyTypes,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+          'activatedPolicyTypes': activatedPolicyTypes!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (policyTags != null)
-          'policyTags': policyTags.map((value) => value.toJson()).toList(),
+          'policyTags': policyTags!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Timestamps about this resource according to a particular system.
 class GoogleCloudDatacatalogV1beta1SystemTimestamps {
   /// The creation time of the resource within the given system.
-  core.String createTime;
+  core.String? createTime;
 
   /// The expiration time of the resource within the given system.
   ///
   /// Currently only apllicable to BigQuery resources.
   ///
   /// Output only.
-  core.String expireTime;
+  core.String? expireTime;
 
   /// The last-modified time of the resource within the given system.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudDatacatalogV1beta1SystemTimestamps();
 
@@ -4704,10 +4511,10 @@ class GoogleCloudDatacatalogV1beta1SystemTimestamps {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (expireTime != null) 'expireTime': expireTime,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -4721,7 +4528,7 @@ class GoogleCloudDatacatalogV1beta1TableSpec {
   /// Otherwise, `grouped_entry` is empty.
   ///
   /// Output only.
-  core.String groupedEntry;
+  core.String? groupedEntry;
 
   GoogleCloudDatacatalogV1beta1TableSpec();
 
@@ -4731,8 +4538,8 @@ class GoogleCloudDatacatalogV1beta1TableSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (groupedEntry != null) 'groupedEntry': groupedEntry,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (groupedEntry != null) 'groupedEntry': groupedEntry!,
       };
 }
 
@@ -4747,7 +4554,7 @@ class GoogleCloudDatacatalogV1beta1Tag {
   /// This scope allows users to attach tags to an individual column based on
   /// that schema. For attaching a tag to a nested column, use `.` to separate
   /// the column names. Example: * `outer_column.inner_column`
-  core.String column;
+  core.String? column;
 
   /// This maps the ID of a tag field to the value of and additional information
   /// about that field.
@@ -4756,7 +4563,7 @@ class GoogleCloudDatacatalogV1beta1Tag {
   /// least 1 field and at most 500 fields.
   ///
   /// Required.
-  core.Map<core.String, GoogleCloudDatacatalogV1beta1TagField> fields;
+  core.Map<core.String, GoogleCloudDatacatalogV1beta1TagField>? fields;
 
   /// The resource name of the tag in URL format.
   ///
@@ -4764,7 +4571,7 @@ class GoogleCloudDatacatalogV1beta1Tag {
   /// projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}
   /// where `tag_id` is a system-generated identifier. Note that this Tag may
   /// not actually be stored in the location in this name.
-  core.String name;
+  core.String? name;
 
   /// The resource name of the tag template that this tag uses.
   ///
@@ -4773,12 +4580,12 @@ class GoogleCloudDatacatalogV1beta1Tag {
   /// This field cannot be modified after creation.
   ///
   /// Required.
-  core.String template;
+  core.String? template;
 
   /// The display name of the tag template.
   ///
   /// Output only.
-  core.String templateDisplayName;
+  core.String? templateDisplayName;
 
   GoogleCloudDatacatalogV1beta1Tag();
 
@@ -4787,7 +4594,9 @@ class GoogleCloudDatacatalogV1beta1Tag {
       column = _json['column'] as core.String;
     }
     if (_json.containsKey('fields')) {
-      fields = (_json['fields'] as core.Map).cast<core.String, core.Map>().map(
+      fields = (_json['fields'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               GoogleCloudDatacatalogV1beta1TagField.fromJson(
@@ -4806,36 +4615,36 @@ class GoogleCloudDatacatalogV1beta1Tag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (column != null) 'column': column,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (column != null) 'column': column!,
         if (fields != null)
           'fields':
-              fields.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (name != null) 'name': name,
-        if (template != null) 'template': template,
+              fields!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (name != null) 'name': name!,
+        if (template != null) 'template': template!,
         if (templateDisplayName != null)
-          'templateDisplayName': templateDisplayName,
+          'templateDisplayName': templateDisplayName!,
       };
 }
 
 /// Contains the value and supporting information for a field within a Tag.
 class GoogleCloudDatacatalogV1beta1TagField {
   /// Holds the value for a tag field with boolean type.
-  core.bool boolValue;
+  core.bool? boolValue;
 
   /// The display name of this field.
   ///
   /// Output only.
-  core.String displayName;
+  core.String? displayName;
 
   /// Holds the value for a tag field with double type.
-  core.double doubleValue;
+  core.double? doubleValue;
 
   /// Holds the value for a tag field with enum type.
   ///
   /// This value must be one of the allowed values in the definition of this
   /// enum.
-  GoogleCloudDatacatalogV1beta1TagFieldEnumValue enumValue;
+  GoogleCloudDatacatalogV1beta1TagFieldEnumValue? enumValue;
 
   /// The order of this field with respect to other fields in this tag.
   ///
@@ -4844,13 +4653,13 @@ class GoogleCloudDatacatalogV1beta1TagField {
   /// same order, and field orders within a tag do not have to be sequential.
   ///
   /// Output only.
-  core.int order;
+  core.int? order;
 
   /// Holds the value for a tag field with string type.
-  core.String stringValue;
+  core.String? stringValue;
 
   /// Holds the value for a tag field with timestamp type.
-  core.String timestampValue;
+  core.String? timestampValue;
 
   GoogleCloudDatacatalogV1beta1TagField();
 
@@ -4879,21 +4688,21 @@ class GoogleCloudDatacatalogV1beta1TagField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue,
-        if (displayName != null) 'displayName': displayName,
-        if (doubleValue != null) 'doubleValue': doubleValue,
-        if (enumValue != null) 'enumValue': enumValue.toJson(),
-        if (order != null) 'order': order,
-        if (stringValue != null) 'stringValue': stringValue,
-        if (timestampValue != null) 'timestampValue': timestampValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (displayName != null) 'displayName': displayName!,
+        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (enumValue != null) 'enumValue': enumValue!.toJson(),
+        if (order != null) 'order': order!,
+        if (stringValue != null) 'stringValue': stringValue!,
+        if (timestampValue != null) 'timestampValue': timestampValue!,
       };
 }
 
 /// Holds an enum value.
 class GoogleCloudDatacatalogV1beta1TagFieldEnumValue {
   /// The display name of the enum value.
-  core.String displayName;
+  core.String? displayName;
 
   GoogleCloudDatacatalogV1beta1TagFieldEnumValue();
 
@@ -4903,8 +4712,8 @@ class GoogleCloudDatacatalogV1beta1TagFieldEnumValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
       };
 }
 
@@ -4920,7 +4729,7 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
   /// The display name for this template.
   ///
   /// Defaults to an empty string.
-  core.String displayName;
+  core.String? displayName;
 
   /// Map of tag template field IDs to the settings for the field.
   ///
@@ -4932,7 +4741,7 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
   /// start with a letter or underscore.
   ///
   /// Required.
-  core.Map<core.String, GoogleCloudDatacatalogV1beta1TagTemplateField> fields;
+  core.Map<core.String, GoogleCloudDatacatalogV1beta1TagTemplateField>? fields;
 
   /// The resource name of the tag template in URL format.
   ///
@@ -4940,7 +4749,7 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
   /// projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}
   /// Note that this TagTemplate and its child resources may not actually be
   /// stored in the location in this name.
-  core.String name;
+  core.String? name;
 
   GoogleCloudDatacatalogV1beta1TagTemplate();
 
@@ -4949,7 +4758,9 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('fields')) {
-      fields = (_json['fields'] as core.Map).cast<core.String, core.Map>().map(
+      fields = (_json['fields'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
@@ -4962,12 +4773,12 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
         if (fields != null)
           'fields':
-              fields.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (name != null) 'name': name,
+              fields!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -4976,17 +4787,17 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
   /// The description for this field.
   ///
   /// Defaults to an empty string.
-  core.String description;
+  core.String? description;
 
   /// The display name for this field.
   ///
   /// Defaults to an empty string.
-  core.String displayName;
+  core.String? displayName;
 
   /// Whether this is a required field.
   ///
   /// Defaults to false.
-  core.bool isRequired;
+  core.bool? isRequired;
 
   /// The resource name of the tag template field in URL format.
   ///
@@ -4996,19 +4807,19 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
   /// in this name.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The order of this field with respect to other fields in this tag template.
   ///
   /// A higher value indicates a more important field. The value can be
   /// negative. Multiple fields can have the same order, and field orders within
   /// a tag do not have to be sequential.
-  core.int order;
+  core.int? order;
 
   /// The type of value this tag field can contain.
   ///
   /// Required.
-  GoogleCloudDatacatalogV1beta1FieldType type;
+  GoogleCloudDatacatalogV1beta1FieldType? type;
 
   GoogleCloudDatacatalogV1beta1TagTemplateField();
 
@@ -5034,13 +4845,13 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (isRequired != null) 'isRequired': isRequired,
-        if (name != null) 'name': name,
-        if (order != null) 'order': order,
-        if (type != null) 'type': type.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (isRequired != null) 'isRequired': isRequired!,
+        if (name != null) 'name': name!,
+        if (order != null) 'order': order!,
+        if (type != null) 'type': type!.toJson(),
       };
 }
 
@@ -5057,7 +4868,7 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
   /// If not set, defaults to an empty list.
   ///
   /// Optional.
-  core.List<core.String> activatedPolicyTypes;
+  core.List<core.String>? activatedPolicyTypes;
 
   /// Description of this taxonomy.
   ///
@@ -5066,7 +4877,7 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
   /// not set, defaults to an empty description.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// User defined name of this taxonomy.
   ///
@@ -5075,25 +4886,25 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
   /// encoded in UTF-8.
   ///
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   /// Resource name of this taxonomy, whose format is:
   /// "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Number of policy tags contained in this taxonomy.
   ///
   /// Output only.
-  core.int policyTagCount;
+  core.int? policyTagCount;
 
   /// Timestamps about this taxonomy.
   ///
   /// Only create_time and update_time are used.
   ///
   /// Output only.
-  GoogleCloudDatacatalogV1beta1SystemTimestamps taxonomyTimestamps;
+  GoogleCloudDatacatalogV1beta1SystemTimestamps? taxonomyTimestamps;
 
   GoogleCloudDatacatalogV1beta1Taxonomy();
 
@@ -5123,15 +4934,15 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (activatedPolicyTypes != null)
-          'activatedPolicyTypes': activatedPolicyTypes,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (policyTagCount != null) 'policyTagCount': policyTagCount,
+          'activatedPolicyTypes': activatedPolicyTypes!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (policyTagCount != null) 'policyTagCount': policyTagCount!,
         if (taxonomyTimestamps != null)
-          'taxonomyTimestamps': taxonomyTimestamps.toJson(),
+          'taxonomyTimestamps': taxonomyTimestamps!.toJson(),
       };
 }
 
@@ -5140,7 +4951,7 @@ class GoogleCloudDatacatalogV1beta1ViewSpec {
   /// The query that defines the table view.
   ///
   /// Output only.
-  core.String viewQuery;
+  core.String? viewQuery;
 
   GoogleCloudDatacatalogV1beta1ViewSpec();
 
@@ -5150,8 +4961,8 @@ class GoogleCloudDatacatalogV1beta1ViewSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (viewQuery != null) 'viewQuery': viewQuery,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (viewQuery != null) 'viewQuery': viewQuery!,
       };
 }
 
@@ -5192,7 +5003,7 @@ class Policy {
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -5206,8 +5017,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -5231,7 +5042,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -5250,11 +5061,11 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -5265,7 +5076,7 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   SetIamPolicyRequest();
 
@@ -5276,8 +5087,8 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
       };
 }
 
@@ -5288,7 +5099,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -5300,8 +5111,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -5309,7 +5120,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -5321,7 +5132,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }

@@ -103,10 +103,9 @@ class IamPoliciesResource {
   /// this method will complete with the same error.
   async.Future<LintPolicyResponse> lintPolicy(
     LintPolicyRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -145,10 +144,9 @@ class IamPoliciesResource {
   /// this method will complete with the same error.
   async.Future<QueryAuditableServicesResponse> queryAuditableServices(
     QueryAuditableServicesRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -216,13 +214,9 @@ class OrganizationsRolesResource {
   async.Future<Role> create(
     CreateRoleRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -285,12 +279,9 @@ class OrganizationsRolesResource {
   /// this method will complete with the same error.
   async.Future<Role> delete(
     core.String name, {
-    core.String etag,
-    core.String $fields,
+    core.String? etag,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (etag != null) 'etag': [etag],
       if ($fields != null) 'fields': [$fields],
@@ -346,11 +337,8 @@ class OrganizationsRolesResource {
   /// this method will complete with the same error.
   async.Future<Role> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -421,15 +409,12 @@ class OrganizationsRolesResource {
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.bool showDeleted,
-    core.String view,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -490,14 +475,10 @@ class OrganizationsRolesResource {
   async.Future<Role> patch(
     Role request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -552,13 +533,9 @@ class OrganizationsRolesResource {
   async.Future<Role> undelete(
     UndeleteRoleRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -602,10 +579,9 @@ class PermissionsResource {
   /// this method will complete with the same error.
   async.Future<QueryTestablePermissionsResponse> queryTestablePermissions(
     QueryTestablePermissionsRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -685,14 +661,10 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
   async.Future<Operation> create(
     WorkloadIdentityPool request,
     core.String parent, {
-    core.String workloadIdentityPoolId,
-    core.String $fields,
+    core.String? workloadIdentityPoolId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (workloadIdentityPoolId != null)
         'workloadIdentityPoolId': [workloadIdentityPoolId],
@@ -740,11 +712,8 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -779,11 +748,8 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
   /// this method will complete with the same error.
   async.Future<WorkloadIdentityPool> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -830,14 +796,11 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
   /// this method will complete with the same error.
   async.Future<ListWorkloadIdentityPoolsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.bool showDeleted,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -883,14 +846,10 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
   async.Future<Operation> patch(
     WorkloadIdentityPool request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -931,13 +890,9 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
   async.Future<Operation> undelete(
     UndeleteWorkloadIdentityPoolRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -985,11 +940,8 @@ class ProjectsLocationsWorkloadIdentityPoolsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1048,14 +1000,10 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
   async.Future<Operation> create(
     WorkloadIdentityPoolProvider request,
     core.String parent, {
-    core.String workloadIdentityPoolProviderId,
-    core.String $fields,
+    core.String? workloadIdentityPoolProviderId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (workloadIdentityPoolProviderId != null)
         'workloadIdentityPoolProviderId': [workloadIdentityPoolProviderId],
@@ -1099,11 +1047,8 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1138,11 +1083,8 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
   /// this method will complete with the same error.
   async.Future<WorkloadIdentityPoolProvider> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1192,14 +1134,11 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
   /// this method will complete with the same error.
   async.Future<ListWorkloadIdentityPoolProvidersResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.bool showDeleted,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1244,14 +1183,10 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
   async.Future<Operation> patch(
     WorkloadIdentityPoolProvider request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1292,13 +1227,9 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
   async.Future<Operation> undelete(
     UndeleteWorkloadIdentityPoolProviderRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1346,11 +1277,8 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1407,13 +1335,9 @@ class ProjectsRolesResource {
   async.Future<Role> create(
     CreateRoleRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1476,12 +1400,9 @@ class ProjectsRolesResource {
   /// this method will complete with the same error.
   async.Future<Role> delete(
     core.String name, {
-    core.String etag,
-    core.String $fields,
+    core.String? etag,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (etag != null) 'etag': [etag],
       if ($fields != null) 'fields': [$fields],
@@ -1537,11 +1458,8 @@ class ProjectsRolesResource {
   /// this method will complete with the same error.
   async.Future<Role> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1612,15 +1530,12 @@ class ProjectsRolesResource {
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.bool showDeleted,
-    core.String view,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? showDeleted,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1681,14 +1596,10 @@ class ProjectsRolesResource {
   async.Future<Role> patch(
     Role request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1743,13 +1654,9 @@ class ProjectsRolesResource {
   async.Future<Role> undelete(
     UndeleteRoleRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1799,13 +1706,9 @@ class ProjectsServiceAccountsResource {
   async.Future<ServiceAccount> create(
     CreateServiceAccountRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1858,11 +1761,8 @@ class ProjectsServiceAccountsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1915,13 +1815,9 @@ class ProjectsServiceAccountsResource {
   async.Future<Empty> disable(
     DisableServiceAccountRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1969,13 +1865,9 @@ class ProjectsServiceAccountsResource {
   async.Future<Empty> enable(
     EnableServiceAccountRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2015,11 +1907,8 @@ class ProjectsServiceAccountsResource {
   /// this method will complete with the same error.
   async.Future<ServiceAccount> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2073,12 +1962,9 @@ class ProjectsServiceAccountsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -2125,13 +2011,10 @@ class ProjectsServiceAccountsResource {
   /// this method will complete with the same error.
   async.Future<ListServiceAccountsResponse> list(
     core.String name, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2184,13 +2067,9 @@ class ProjectsServiceAccountsResource {
   async.Future<ServiceAccount> patch(
     PatchServiceAccountRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2241,13 +2120,9 @@ class ProjectsServiceAccountsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2301,13 +2176,9 @@ class ProjectsServiceAccountsResource {
   async.Future<SignBlobResponse> signBlob(
     SignBlobRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2361,13 +2232,9 @@ class ProjectsServiceAccountsResource {
   async.Future<SignJwtResponse> signJwt(
     SignJwtRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2410,13 +2277,9 @@ class ProjectsServiceAccountsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2465,13 +2328,9 @@ class ProjectsServiceAccountsResource {
   async.Future<UndeleteServiceAccountResponse> undelete(
     UndeleteServiceAccountRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2525,13 +2384,9 @@ class ProjectsServiceAccountsResource {
   async.Future<ServiceAccount> update(
     ServiceAccount request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2581,13 +2436,9 @@ class ProjectsServiceAccountsKeysResource {
   async.Future<ServiceAccountKey> create(
     CreateServiceAccountKeyRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2633,11 +2484,8 @@ class ProjectsServiceAccountsKeysResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2684,12 +2532,9 @@ class ProjectsServiceAccountsKeysResource {
   /// this method will complete with the same error.
   async.Future<ServiceAccountKey> get(
     core.String name, {
-    core.String publicKeyType,
-    core.String $fields,
+    core.String? publicKeyType,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (publicKeyType != null) 'publicKeyType': [publicKeyType],
       if ($fields != null) 'fields': [$fields],
@@ -2733,12 +2578,9 @@ class ProjectsServiceAccountsKeysResource {
   /// this method will complete with the same error.
   async.Future<ListServiceAccountKeysResponse> list(
     core.String name, {
-    core.List<core.String> keyTypes,
-    core.String $fields,
+    core.List<core.String>? keyTypes,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (keyTypes != null) 'keyTypes': keyTypes,
       if ($fields != null) 'fields': [$fields],
@@ -2782,13 +2624,9 @@ class ProjectsServiceAccountsKeysResource {
   async.Future<ServiceAccountKey> upload(
     UploadServiceAccountKeyRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2852,11 +2690,8 @@ class RolesResource {
   /// this method will complete with the same error.
   async.Future<Role> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2925,12 +2760,12 @@ class RolesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String parent,
-    core.bool showDeleted,
-    core.String view,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.bool? showDeleted,
+    core.String? view,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2973,10 +2808,9 @@ class RolesResource {
   /// this method will complete with the same error.
   async.Future<QueryGrantableRolesResponse> queryGrantableRoles(
     QueryGrantableRolesRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3000,7 +2834,7 @@ class RolesResource {
 /// an `AuditLog` message.
 class AdminAuditData {
   /// The permission_delta when when creating or updating a Role.
-  PermissionDelta permissionDelta;
+  PermissionDelta? permissionDelta;
 
   AdminAuditData();
 
@@ -3011,9 +2845,9 @@ class AdminAuditData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (permissionDelta != null)
-          'permissionDelta': permissionDelta.toJson(),
+          'permissionDelta': permissionDelta!.toJson(),
       };
 }
 
@@ -3036,13 +2870,13 @@ class AdminAuditData {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -3058,11 +2892,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -3072,7 +2906,7 @@ class AuditConfig {
 /// an `AuditLog` message.
 class AuditData {
   /// Policy delta between the original policy and the newly set policy.
-  PolicyDelta policyDelta;
+  PolicyDelta? policyDelta;
 
   AuditData();
 
@@ -3083,8 +2917,8 @@ class AuditData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policyDelta != null) 'policyDelta': policyDelta.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policyDelta != null) 'policyDelta': policyDelta!.toJson(),
       };
 }
 
@@ -3099,7 +2933,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -3107,7 +2941,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -3122,9 +2956,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -3133,7 +2967,7 @@ class AuditableService {
   /// Public name of the service.
   ///
   /// For example, the service name for Cloud IAM is 'iam.googleapis.com'.
-  core.String name;
+  core.String? name;
 
   AuditableService();
 
@@ -3143,8 +2977,8 @@ class AuditableService {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3153,7 +2987,7 @@ class Aws {
   /// The AWS account ID.
   ///
   /// Required.
-  core.String accountId;
+  core.String? accountId;
 
   Aws();
 
@@ -3163,8 +2997,8 @@ class Aws {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
       };
 }
 
@@ -3178,7 +3012,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -3210,12 +3044,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -3234,10 +3068,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -3253,20 +3087,20 @@ class BindingDelta {
   /// - "ACTION_UNSPECIFIED" : Unspecified.
   /// - "ADD" : Addition of a Binding.
   /// - "REMOVE" : Removal of a Binding.
-  core.String action;
+  core.String? action;
 
   /// The condition that is associated with this binding.
-  Expr condition;
+  Expr? condition;
 
   /// A single identity requesting access for a Cloud Platform resource.
   ///
   /// Follows the same format of Binding.members. Required
-  core.String member;
+  core.String? member;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. Required
-  core.String role;
+  core.String? role;
 
   BindingDelta();
 
@@ -3286,25 +3120,25 @@ class BindingDelta {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action,
-        if (condition != null) 'condition': condition.toJson(),
-        if (member != null) 'member': member,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!,
+        if (condition != null) 'condition': condition!.toJson(),
+        if (member != null) 'member': member!,
+        if (role != null) 'role': role!,
       };
 }
 
 /// The request to create a new role.
 class CreateRoleRequest {
   /// The Role resource to create.
-  Role role;
+  Role? role;
 
   /// The role ID to use for this role.
   ///
   /// A role ID may contain alphanumeric characters, underscores (`_`), and
   /// periods (`.`). It must contain a minimum of 3 characters and a maximum of
   /// 64 characters.
-  core.String roleId;
+  core.String? roleId;
 
   CreateRoleRequest();
 
@@ -3318,9 +3152,9 @@ class CreateRoleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (role != null) 'role': role.toJson(),
-        if (roleId != null) 'roleId': roleId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (role != null) 'role': role!.toJson(),
+        if (roleId != null) 'roleId': roleId!,
       };
 }
 
@@ -3334,7 +3168,7 @@ class CreateServiceAccountKeyRequest {
   /// - "KEY_ALG_UNSPECIFIED" : An unspecified key algorithm.
   /// - "KEY_ALG_RSA_1024" : 1k RSA Key.
   /// - "KEY_ALG_RSA_2048" : 2k RSA Key.
-  core.String keyAlgorithm;
+  core.String? keyAlgorithm;
 
   /// The output format of the private key.
   ///
@@ -3347,7 +3181,7 @@ class CreateServiceAccountKeyRequest {
   /// `notasecret`. For more information, see
   /// https://tools.ietf.org/html/rfc7292.
   /// - "TYPE_GOOGLE_CREDENTIALS_FILE" : Google Credentials File format.
-  core.String privateKeyType;
+  core.String? privateKeyType;
 
   CreateServiceAccountKeyRequest();
 
@@ -3360,9 +3194,9 @@ class CreateServiceAccountKeyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (keyAlgorithm != null) 'keyAlgorithm': keyAlgorithm,
-        if (privateKeyType != null) 'privateKeyType': privateKeyType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (keyAlgorithm != null) 'keyAlgorithm': keyAlgorithm!,
+        if (privateKeyType != null) 'privateKeyType': privateKeyType!,
       };
 }
 
@@ -3375,13 +3209,13 @@ class CreateServiceAccountRequest {
   /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
   ///
   /// Required.
-  core.String accountId;
+  core.String? accountId;
 
   /// The ServiceAccount resource to create.
   ///
   /// Currently, only the following values are user assignable: `display_name`
   /// and `description`.
-  ServiceAccount serviceAccount;
+  ServiceAccount? serviceAccount;
 
   CreateServiceAccountRequest();
 
@@ -3395,9 +3229,9 @@ class CreateServiceAccountRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!.toJson(),
       };
 }
 
@@ -3409,7 +3243,7 @@ class DisableServiceAccountRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -3426,7 +3260,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The service account enable request.
@@ -3437,7 +3271,7 @@ class EnableServiceAccountRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -3465,24 +3299,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -3501,18 +3335,18 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// The request to lint a Cloud IAM policy object.
 class LintPolicyRequest {
   /// google.iam.v1.Binding.condition object to be linted.
-  Expr condition;
+  Expr? condition;
 
   /// The full resource name of the policy this lint request is about.
   ///
@@ -3522,7 +3356,7 @@ class LintPolicyRequest {
   /// name is not used to read the policy instance from the Cloud IAM database.
   /// The candidate policy for lint has to be provided in the same request
   /// object.
-  core.String fullResourceName;
+  core.String? fullResourceName;
 
   LintPolicyRequest();
 
@@ -3536,9 +3370,9 @@ class LintPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (fullResourceName != null) 'fullResourceName': fullResourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
       };
 }
 
@@ -3548,7 +3382,7 @@ class LintPolicyRequest {
 /// lint issue was found.
 class LintPolicyResponse {
   /// List of lint results sorted by `severity` in descending order.
-  core.List<LintResult> lintResults;
+  core.List<LintResult>? lintResults;
 
   LintPolicyResponse();
 
@@ -3561,16 +3395,16 @@ class LintPolicyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (lintResults != null)
-          'lintResults': lintResults.map((value) => value.toJson()).toList(),
+          'lintResults': lintResults!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Structured response of a single validation unit.
 class LintResult {
   /// Human readable debug message associated with the issue.
-  core.String debugMessage;
+  core.String? debugMessage;
 
   /// The name of the field for which this lint result is about.
   ///
@@ -3579,20 +3413,20 @@ class LintResult {
   /// to lint in the request. For example, the `field_name` value
   /// `condition.expression` identifies a lint result for the `expression` field
   /// of the provided condition.
-  core.String fieldName;
+  core.String? fieldName;
 
   /// The validation unit level.
   /// Possible string values are:
   /// - "LEVEL_UNSPECIFIED" : Level is unspecified.
   /// - "CONDITION" : A validation unit which operates on an individual
   /// condition within a binding.
-  core.String level;
+  core.String? level;
 
   /// 0-based character position of problematic construct within the object
   /// identified by `field_name`.
   ///
   /// Currently, this is populated only for condition expression.
-  core.int locationOffset;
+  core.int? locationOffset;
 
   /// The validation unit severity.
   /// Possible string values are:
@@ -3616,11 +3450,11 @@ class LintResult {
   /// input content. Note that current version of the linter does not utilize
   /// `INFO`.
   /// - "DEPRECATED" : Deprecated severity level.
-  core.String severity;
+  core.String? severity;
 
   /// The validation unit name, for instance
   /// "lintValidationUnits/ConditionComplexityCheck".
-  core.String validationUnitName;
+  core.String? validationUnitName;
 
   LintResult();
 
@@ -3645,14 +3479,14 @@ class LintResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (debugMessage != null) 'debugMessage': debugMessage,
-        if (fieldName != null) 'fieldName': fieldName,
-        if (level != null) 'level': level,
-        if (locationOffset != null) 'locationOffset': locationOffset,
-        if (severity != null) 'severity': severity,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (debugMessage != null) 'debugMessage': debugMessage!,
+        if (fieldName != null) 'fieldName': fieldName!,
+        if (level != null) 'level': level!,
+        if (locationOffset != null) 'locationOffset': locationOffset!,
+        if (severity != null) 'severity': severity!,
         if (validationUnitName != null)
-          'validationUnitName': validationUnitName,
+          'validationUnitName': validationUnitName!,
       };
 }
 
@@ -3660,10 +3494,10 @@ class LintResult {
 class ListRolesResponse {
   /// To retrieve the next page of results, set `ListRolesRequest.page_token` to
   /// this value.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The Roles defined on this resource.
-  core.List<Role> roles;
+  core.List<Role>? roles;
 
   ListRolesResponse();
 
@@ -3679,17 +3513,17 @@ class ListRolesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (roles != null)
-          'roles': roles.map((value) => value.toJson()).toList(),
+          'roles': roles!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The service account keys list response.
 class ListServiceAccountKeysResponse {
   /// The public keys for the service account.
-  core.List<ServiceAccountKey> keys;
+  core.List<ServiceAccountKey>? keys;
 
   ListServiceAccountKeysResponse();
 
@@ -3702,19 +3536,19 @@ class ListServiceAccountKeysResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (keys != null) 'keys': keys.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (keys != null) 'keys': keys!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The service account list response.
 class ListServiceAccountsResponse {
   /// The list of matching service accounts.
-  core.List<ServiceAccount> accounts;
+  core.List<ServiceAccount>? accounts;
 
   /// To retrieve the next page of results, set
   /// ListServiceAccountsRequest.page_token to this value.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListServiceAccountsResponse();
 
@@ -3730,10 +3564,10 @@ class ListServiceAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accounts != null)
-          'accounts': accounts.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'accounts': accounts!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -3742,10 +3576,10 @@ class ListWorkloadIdentityPoolProvidersResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of providers.
-  core.List<WorkloadIdentityPoolProvider> workloadIdentityPoolProviders;
+  core.List<WorkloadIdentityPoolProvider>? workloadIdentityPoolProviders;
 
   ListWorkloadIdentityPoolProvidersResponse();
 
@@ -3763,10 +3597,10 @@ class ListWorkloadIdentityPoolProvidersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (workloadIdentityPoolProviders != null)
-          'workloadIdentityPoolProviders': workloadIdentityPoolProviders
+          'workloadIdentityPoolProviders': workloadIdentityPoolProviders!
               .map((value) => value.toJson())
               .toList(),
       };
@@ -3777,10 +3611,10 @@ class ListWorkloadIdentityPoolsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of pools.
-  core.List<WorkloadIdentityPool> workloadIdentityPools;
+  core.List<WorkloadIdentityPool>? workloadIdentityPools;
 
   ListWorkloadIdentityPoolsResponse();
 
@@ -3796,11 +3630,11 @@ class ListWorkloadIdentityPoolsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (workloadIdentityPools != null)
           'workloadIdentityPools':
-              workloadIdentityPools.map((value) => value.toJson()).toList(),
+              workloadIdentityPools!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3817,12 +3651,12 @@ class Oidc {
   /// //iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
   /// https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
   /// ```
-  core.List<core.String> allowedAudiences;
+  core.List<core.String>? allowedAudiences;
 
   /// The OIDC issuer URL.
   ///
   /// Required.
-  core.String issuerUri;
+  core.String? issuerUri;
 
   Oidc();
 
@@ -3837,9 +3671,9 @@ class Oidc {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowedAudiences != null) 'allowedAudiences': allowedAudiences,
-        if (issuerUri != null) 'issuerUri': issuerUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowedAudiences != null) 'allowedAudiences': allowedAudiences!,
+        if (issuerUri != null) 'issuerUri': issuerUri!,
       };
 }
 
@@ -3850,10 +3684,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -3864,14 +3698,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -3884,7 +3718,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -3919,12 +3753,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -3935,8 +3769,8 @@ class Operation {
 /// Only the fields specified in the request are guaranteed to be returned in
 /// the response. Other fields may be empty in the response.
 class PatchServiceAccountRequest {
-  ServiceAccount serviceAccount;
-  core.String updateMask;
+  ServiceAccount? serviceAccount;
+  core.String? updateMask;
 
   PatchServiceAccountRequest();
 
@@ -3950,16 +3784,16 @@ class PatchServiceAccountRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (serviceAccount != null) 'serviceAccount': serviceAccount.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
 /// A permission which can be included by a role.
 class Permission {
   /// The service API associated with the permission is not enabled.
-  core.bool apiDisabled;
+  core.bool? apiDisabled;
 
   /// The current custom role support level.
   /// Possible string values are:
@@ -3967,22 +3801,22 @@ class Permission {
   /// - "TESTING" : Permission is being tested to check custom role
   /// compatibility.
   /// - "NOT_SUPPORTED" : Permission is not supported for custom role use.
-  core.String customRolesSupportLevel;
+  core.String? customRolesSupportLevel;
 
   /// A brief description of what this Permission is used for.
   ///
   /// This permission can ONLY be used in predefined roles.
-  core.String description;
+  core.String? description;
 
   /// The name of this Permission.
-  core.String name;
-  core.bool onlyInPredefinedRoles;
+  core.String? name;
+  core.bool? onlyInPredefinedRoles;
 
   /// The preferred name for this permission.
   ///
   /// If present, then this permission is an alias of, and equivalent to, the
   /// listed primary_permission.
-  core.String primaryPermission;
+  core.String? primaryPermission;
 
   /// The current launch stage of the permission.
   /// Possible string values are:
@@ -3990,10 +3824,10 @@ class Permission {
   /// - "BETA" : The permission is currently in a beta phase.
   /// - "GA" : The permission is generally available.
   /// - "DEPRECATED" : The permission is being deprecated.
-  core.String stage;
+  core.String? stage;
 
   /// The title of this Permission.
-  core.String title;
+  core.String? title;
 
   Permission();
 
@@ -4024,17 +3858,17 @@ class Permission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiDisabled != null) 'apiDisabled': apiDisabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiDisabled != null) 'apiDisabled': apiDisabled!,
         if (customRolesSupportLevel != null)
-          'customRolesSupportLevel': customRolesSupportLevel,
-        if (description != null) 'description': description,
-        if (name != null) 'name': name,
+          'customRolesSupportLevel': customRolesSupportLevel!,
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
         if (onlyInPredefinedRoles != null)
-          'onlyInPredefinedRoles': onlyInPredefinedRoles,
-        if (primaryPermission != null) 'primaryPermission': primaryPermission,
-        if (stage != null) 'stage': stage,
-        if (title != null) 'title': title,
+          'onlyInPredefinedRoles': onlyInPredefinedRoles!,
+        if (primaryPermission != null) 'primaryPermission': primaryPermission!,
+        if (stage != null) 'stage': stage!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -4042,10 +3876,10 @@ class Permission {
 /// removed_permissions inside a role.
 class PermissionDelta {
   /// Added permissions.
-  core.List<core.String> addedPermissions;
+  core.List<core.String>? addedPermissions;
 
   /// Removed permissions.
-  core.List<core.String> removedPermissions;
+  core.List<core.String>? removedPermissions;
 
   PermissionDelta();
 
@@ -4062,10 +3896,10 @@ class PermissionDelta {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addedPermissions != null) 'addedPermissions': addedPermissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addedPermissions != null) 'addedPermissions': addedPermissions!,
         if (removedPermissions != null)
-          'removedPermissions': removedPermissions,
+          'removedPermissions': removedPermissions!,
       };
 }
 
@@ -4102,14 +3936,14 @@ class PermissionDelta {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -4123,8 +3957,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -4148,7 +3982,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -4173,20 +4007,20 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
 /// The difference delta between two policies.
 class PolicyDelta {
   /// The delta for Bindings between two policies.
-  core.List<BindingDelta> bindingDeltas;
+  core.List<BindingDelta>? bindingDeltas;
 
   PolicyDelta();
 
@@ -4199,10 +4033,10 @@ class PolicyDelta {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bindingDeltas != null)
           'bindingDeltas':
-              bindingDeltas.map((value) => value.toJson()).toList(),
+              bindingDeltas!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4215,7 +4049,7 @@ class QueryAuditableServicesRequest {
   /// `//cloudresourcemanager.googleapis.com/projects/my-project`.
   ///
   /// Required.
-  core.String fullResourceName;
+  core.String? fullResourceName;
 
   QueryAuditableServicesRequest();
 
@@ -4225,15 +4059,15 @@ class QueryAuditableServicesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fullResourceName != null) 'fullResourceName': fullResourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
       };
 }
 
 /// A response containing a list of auditable services for a resource.
 class QueryAuditableServicesResponse {
   /// The auditable services for a resource.
-  core.List<AuditableService> services;
+  core.List<AuditableService>? services;
 
   QueryAuditableServicesResponse();
 
@@ -4246,9 +4080,9 @@ class QueryAuditableServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (services != null)
-          'services': services.map((value) => value.toJson()).toList(),
+          'services': services!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4261,23 +4095,23 @@ class QueryGrantableRolesRequest {
   /// `//cloudresourcemanager.googleapis.com/projects/my-project`.
   ///
   /// Required.
-  core.String fullResourceName;
+  core.String? fullResourceName;
 
   /// Optional limit on the number of roles to include in the response.
   ///
   /// The default is 300, and the maximum is 1,000.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// Optional pagination token returned in an earlier
   /// QueryGrantableRolesResponse.
-  core.String pageToken;
+  core.String? pageToken;
 
   ///
   /// Possible string values are:
   /// - "BASIC" : Omits the `included_permissions` field. This is the default
   /// value.
   /// - "FULL" : Returns all fields.
-  core.String view;
+  core.String? view;
 
   QueryGrantableRolesRequest();
 
@@ -4296,11 +4130,11 @@ class QueryGrantableRolesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fullResourceName != null) 'fullResourceName': fullResourceName,
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (view != null) 'view': view,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (view != null) 'view': view!,
       };
 }
 
@@ -4308,10 +4142,10 @@ class QueryGrantableRolesRequest {
 class QueryGrantableRolesResponse {
   /// To retrieve the next page of results, set
   /// `QueryGrantableRolesRequest.page_token` to this value.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of matching roles.
-  core.List<Role> roles;
+  core.List<Role>? roles;
 
   QueryGrantableRolesResponse();
 
@@ -4327,10 +4161,10 @@ class QueryGrantableRolesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (roles != null)
-          'roles': roles.map((value) => value.toJson()).toList(),
+          'roles': roles!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4343,16 +4177,16 @@ class QueryTestablePermissionsRequest {
   /// `//cloudresourcemanager.googleapis.com/projects/my-project`.
   ///
   /// Required.
-  core.String fullResourceName;
+  core.String? fullResourceName;
 
   /// Optional limit on the number of permissions to include in the response.
   ///
   /// The default is 100, and the maximum is 1,000.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// Optional pagination token returned in an earlier
   /// QueryTestablePermissionsRequest.
-  core.String pageToken;
+  core.String? pageToken;
 
   QueryTestablePermissionsRequest();
 
@@ -4368,10 +4202,10 @@ class QueryTestablePermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fullResourceName != null) 'fullResourceName': fullResourceName,
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
       };
 }
 
@@ -4379,10 +4213,10 @@ class QueryTestablePermissionsRequest {
 class QueryTestablePermissionsResponse {
   /// To retrieve the next page of results, set
   /// `QueryTestableRolesRequest.page_token` to this value.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The Permissions testable on the requested resource.
-  core.List<Permission> permissions;
+  core.List<Permission>? permissions;
 
   QueryTestablePermissionsResponse();
 
@@ -4398,10 +4232,10 @@ class QueryTestablePermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (permissions != null)
-          'permissions': permissions.map((value) => value.toJson()).toList(),
+          'permissions': permissions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4411,16 +4245,16 @@ class Role {
   ///
   /// This field is read only. It will be ignored in calls to CreateRole and
   /// UpdateRole.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// A human-readable description for the role.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Used to perform a consistent read-modify-write.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -4428,7 +4262,7 @@ class Role {
   }
 
   /// The names of the permissions this role grants when bound in an IAM policy.
-  core.List<core.String> includedPermissions;
+  core.List<core.String>? includedPermissions;
 
   /// The name of the role.
   ///
@@ -4436,7 +4270,7 @@ class Role {
   /// is used in output and other input such as UpdateRole, the role name is the
   /// complete path, e.g., roles/logging.viewer for predefined roles and
   /// organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
-  core.String name;
+  core.String? name;
 
   /// The current launch stage of the role.
   ///
@@ -4452,14 +4286,14 @@ class Role {
   /// - "DISABLED" : This role is disabled and will not contribute permissions
   /// to any members it is granted to in policies.
   /// - "EAP" : The user has indicated this role is currently in an EAP phase.
-  core.String stage;
+  core.String? stage;
 
   /// A human-readable title for the role.
   ///
   /// Typically this is limited to 100 UTF-8 bytes.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Role();
 
@@ -4489,15 +4323,15 @@ class Role {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deleted != null) 'deleted': deleted,
-        if (description != null) 'description': description,
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deleted != null) 'deleted': deleted!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
         if (includedPermissions != null)
-          'includedPermissions': includedPermissions,
-        if (name != null) 'name': name,
-        if (stage != null) 'stage': stage,
-        if (title != null) 'title': title,
+          'includedPermissions': includedPermissions!,
+        if (name != null) 'name': name!,
+        if (stage != null) 'stage': stage!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -4517,30 +4351,30 @@ class ServiceAccount {
   /// The maximum length is 256 UTF-8 bytes.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Whether the service account is disabled.
   ///
   /// Output only.
-  core.bool disabled;
+  core.bool? disabled;
 
   /// A user-specified, human-readable name for the service account.
   ///
   /// The maximum length is 100 UTF-8 bytes.
   ///
   /// Optional.
-  core.String displayName;
+  core.String? displayName;
 
   /// The email address of the service account.
   ///
   /// Output only.
-  core.String email;
+  core.String? email;
 
   /// Do not use.
   ///
   /// Deprecated.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -4560,17 +4394,17 @@ class ServiceAccount {
   /// `projects/-/serviceAccounts/fake@example.com`, which does not exist, the
   /// response contains an HTTP `403 Forbidden` error instead of a `404 Not
   /// Found` error.
-  core.String name;
+  core.String? name;
 
   /// The OAuth 2.0 client ID for the service account.
   ///
   /// Output only.
-  core.String oauth2ClientId;
+  core.String? oauth2ClientId;
 
   /// The ID of the project that owns the service account.
   ///
   /// Output only.
-  core.String projectId;
+  core.String? projectId;
 
   /// The unique, stable numeric ID for the service account.
   ///
@@ -4580,7 +4414,7 @@ class ServiceAccount {
   /// different unique ID than the deleted service account.
   ///
   /// Output only.
-  core.String uniqueId;
+  core.String? uniqueId;
 
   ServiceAccount();
 
@@ -4614,16 +4448,16 @@ class ServiceAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (disabled != null) 'disabled': disabled,
-        if (displayName != null) 'displayName': displayName,
-        if (email != null) 'email': email,
-        if (etag != null) 'etag': etag,
-        if (name != null) 'name': name,
-        if (oauth2ClientId != null) 'oauth2ClientId': oauth2ClientId,
-        if (projectId != null) 'projectId': projectId,
-        if (uniqueId != null) 'uniqueId': uniqueId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (disabled != null) 'disabled': disabled!,
+        if (displayName != null) 'displayName': displayName!,
+        if (email != null) 'email': email!,
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (oauth2ClientId != null) 'oauth2ClientId': oauth2ClientId!,
+        if (projectId != null) 'projectId': projectId!,
+        if (uniqueId != null) 'uniqueId': uniqueId!,
       };
 }
 
@@ -4650,14 +4484,14 @@ class ServiceAccountKey {
   /// - "KEY_ALG_UNSPECIFIED" : An unspecified key algorithm.
   /// - "KEY_ALG_RSA_1024" : 1k RSA Key.
   /// - "KEY_ALG_RSA_2048" : 2k RSA Key.
-  core.String keyAlgorithm;
+  core.String? keyAlgorithm;
 
   /// The key origin.
   /// Possible string values are:
   /// - "ORIGIN_UNSPECIFIED" : Unspecified key origin.
   /// - "USER_PROVIDED" : Key is provided by user.
   /// - "GOOGLE_PROVIDED" : Key is provided by Google.
-  core.String keyOrigin;
+  core.String? keyOrigin;
 
   /// The key type.
   /// Possible string values are:
@@ -4665,11 +4499,11 @@ class ServiceAccountKey {
   /// the message will immediately result in an error.
   /// - "USER_MANAGED" : User-managed keys (managed and rotated by the user).
   /// - "SYSTEM_MANAGED" : System-managed keys (managed and rotated by Google).
-  core.String keyType;
+  core.String? keyType;
 
   /// The resource name of the service account key in the following format
   /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.
-  core.String name;
+  core.String? name;
 
   /// The private key data.
   ///
@@ -4678,9 +4512,9 @@ class ServiceAccountKey {
   /// service account identity. When base64 decoded, the private key data can be
   /// used to authenticate with Google API client libraries and with gcloud auth
   /// activate-service-account.
-  core.String privateKeyData;
+  core.String? privateKeyData;
   core.List<core.int> get privateKeyDataAsBytes =>
-      convert.base64.decode(privateKeyData);
+      convert.base64.decode(privateKeyData!);
 
   set privateKeyDataAsBytes(core.List<core.int> _bytes) {
     privateKeyData =
@@ -4700,14 +4534,14 @@ class ServiceAccountKey {
   /// `notasecret`. For more information, see
   /// https://tools.ietf.org/html/rfc7292.
   /// - "TYPE_GOOGLE_CREDENTIALS_FILE" : Google Credentials File format.
-  core.String privateKeyType;
+  core.String? privateKeyType;
 
   /// The public key data.
   ///
   /// Only provided in `GetServiceAccountKey` responses.
-  core.String publicKeyData;
+  core.String? publicKeyData;
   core.List<core.int> get publicKeyDataAsBytes =>
-      convert.base64.decode(publicKeyData);
+      convert.base64.decode(publicKeyData!);
 
   set publicKeyDataAsBytes(core.List<core.int> _bytes) {
     publicKeyData =
@@ -4715,14 +4549,14 @@ class ServiceAccountKey {
   }
 
   /// The key can be used after this timestamp.
-  core.String validAfterTime;
+  core.String? validAfterTime;
 
   /// The key can be used before this timestamp.
   ///
   /// For system-managed key pairs, this timestamp is the end time for the
   /// private key signing operation. The public key could still be used for
   /// verification for a few hours after this time.
-  core.String validBeforeTime;
+  core.String? validBeforeTime;
 
   ServiceAccountKey();
 
@@ -4756,16 +4590,16 @@ class ServiceAccountKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (keyAlgorithm != null) 'keyAlgorithm': keyAlgorithm,
-        if (keyOrigin != null) 'keyOrigin': keyOrigin,
-        if (keyType != null) 'keyType': keyType,
-        if (name != null) 'name': name,
-        if (privateKeyData != null) 'privateKeyData': privateKeyData,
-        if (privateKeyType != null) 'privateKeyType': privateKeyType,
-        if (publicKeyData != null) 'publicKeyData': publicKeyData,
-        if (validAfterTime != null) 'validAfterTime': validAfterTime,
-        if (validBeforeTime != null) 'validBeforeTime': validBeforeTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (keyAlgorithm != null) 'keyAlgorithm': keyAlgorithm!,
+        if (keyOrigin != null) 'keyOrigin': keyOrigin!,
+        if (keyType != null) 'keyType': keyType!,
+        if (name != null) 'name': name!,
+        if (privateKeyData != null) 'privateKeyData': privateKeyData!,
+        if (privateKeyType != null) 'privateKeyType': privateKeyType!,
+        if (publicKeyData != null) 'publicKeyData': publicKeyData!,
+        if (validAfterTime != null) 'validAfterTime': validAfterTime!,
+        if (validBeforeTime != null) 'validBeforeTime': validBeforeTime!,
       };
 }
 
@@ -4776,13 +4610,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -4796,9 +4630,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -4813,9 +4647,9 @@ class SignBlobRequest {
   /// The bytes to sign.
   ///
   /// Required. Deprecated.
-  core.String bytesToSign;
+  core.String? bytesToSign;
   core.List<core.int> get bytesToSignAsBytes =>
-      convert.base64.decode(bytesToSign);
+      convert.base64.decode(bytesToSign!);
 
   set bytesToSignAsBytes(core.List<core.int> _bytes) {
     bytesToSign =
@@ -4830,8 +4664,8 @@ class SignBlobRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bytesToSign != null) 'bytesToSign': bytesToSign,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bytesToSign != null) 'bytesToSign': bytesToSign!,
       };
 }
 
@@ -4846,15 +4680,15 @@ class SignBlobResponse {
   /// The id of the key used to sign the blob.
   ///
   /// Deprecated.
-  core.String keyId;
+  core.String? keyId;
 
   /// [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api).
   ///
   /// The signed blob.
   ///
   /// Deprecated.
-  core.String signature;
-  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature);
+  core.String? signature;
+  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
 
   set signatureAsBytes(core.List<core.int> _bytes) {
     signature =
@@ -4872,9 +4706,9 @@ class SignBlobResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (keyId != null) 'keyId': keyId,
-        if (signature != null) 'signature': signature,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (keyId != null) 'keyId': keyId!,
+        if (signature != null) 'signature': signature!,
       };
 }
 
@@ -4895,7 +4729,7 @@ class SignJwtRequest {
   /// 1 hour in the future.
   ///
   /// Required. Deprecated.
-  core.String payload;
+  core.String? payload;
 
   SignJwtRequest();
 
@@ -4905,8 +4739,8 @@ class SignJwtRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (payload != null) 'payload': payload,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (payload != null) 'payload': payload!,
       };
 }
 
@@ -4921,14 +4755,14 @@ class SignJwtResponse {
   /// The id of the key used to sign the JWT.
   ///
   /// Deprecated.
-  core.String keyId;
+  core.String? keyId;
 
   /// [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api).
   ///
   /// The signed JWT.
   ///
   /// Deprecated.
-  core.String signedJwt;
+  core.String? signedJwt;
 
   SignJwtResponse();
 
@@ -4941,9 +4775,9 @@ class SignJwtResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (keyId != null) 'keyId': keyId,
-        if (signedJwt != null) 'signedJwt': signedJwt,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (keyId != null) 'keyId': keyId!,
+        if (signedJwt != null) 'signedJwt': signedJwt!,
       };
 }
 
@@ -4956,7 +4790,7 @@ class SignJwtResponse {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -4964,13 +4798,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -4994,10 +4828,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -5008,7 +4842,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -5020,8 +4854,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -5029,7 +4863,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -5041,16 +4875,16 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
 /// The request to undelete an existing role.
 class UndeleteRoleRequest {
   /// Used to perform a consistent read-modify-write.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -5065,8 +4899,8 @@ class UndeleteRoleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
       };
 }
 
@@ -5078,12 +4912,12 @@ class UndeleteServiceAccountRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 class UndeleteServiceAccountResponse {
   /// Metadata for the restored service account.
-  ServiceAccount restoredAccount;
+  ServiceAccount? restoredAccount;
 
   UndeleteServiceAccountResponse();
 
@@ -5094,9 +4928,9 @@ class UndeleteServiceAccountResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (restoredAccount != null)
-          'restoredAccount': restoredAccount.toJson(),
+          'restoredAccount': restoredAccount!.toJson(),
       };
 }
 
@@ -5108,7 +4942,7 @@ class UndeleteWorkloadIdentityPoolProviderRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for UndeleteWorkloadIdentityPool.
@@ -5119,7 +4953,7 @@ class UndeleteWorkloadIdentityPoolRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The service account key upload request.
@@ -5129,9 +4963,9 @@ class UploadServiceAccountKeyRequest {
   /// If set, use this public key data to create a service account key for given
   /// service account. Please note, the expected format for this field is
   /// X509_PEM.
-  core.String publicKeyData;
+  core.String? publicKeyData;
   core.List<core.int> get publicKeyDataAsBytes =>
-      convert.base64.decode(publicKeyData);
+      convert.base64.decode(publicKeyData!);
 
   set publicKeyDataAsBytes(core.List<core.int> _bytes) {
     publicKeyData =
@@ -5146,8 +4980,8 @@ class UploadServiceAccountKeyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (publicKeyData != null) 'publicKeyData': publicKeyData,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (publicKeyData != null) 'publicKeyData': publicKeyData!,
       };
 }
 
@@ -5159,24 +4993,24 @@ class WorkloadIdentityPool {
   /// A description of the pool.
   ///
   /// Cannot exceed 256 characters.
-  core.String description;
+  core.String? description;
 
   /// Whether the pool is disabled.
   ///
   /// You cannot use a disabled pool to exchange tokens, or use existing tokens
   /// to access resources. If the pool is re-enabled, existing tokens grant
   /// access again.
-  core.bool disabled;
+  core.bool? disabled;
 
   /// A display name for the pool.
   ///
   /// Cannot exceed 32 characters.
-  core.String displayName;
+  core.String? displayName;
 
   /// The resource name of the pool.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The state of the pool.
   ///
@@ -5191,7 +5025,7 @@ class WorkloadIdentityPool {
   /// deleted, you cannot use it to exchange tokens, or use existing tokens to
   /// access resources. If the pool is undeleted, existing tokens grant access
   /// again.
-  core.String state;
+  core.String? state;
 
   WorkloadIdentityPool();
 
@@ -5213,12 +5047,12 @@ class WorkloadIdentityPool {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (disabled != null) 'disabled': disabled,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (disabled != null) 'disabled': disabled!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -5238,7 +5072,7 @@ class WorkloadIdentityPoolProvider {
   /// valid authentication credential are accepted. The following example shows
   /// how to only allow credentials with a mapped `google.groups` value of
   /// `admins`: ``` "'admins' in google.groups" ```
-  core.String attributeCondition;
+  core.String? attributeCondition;
 
   /// Maps attributes from authentication credentials issued by an external
   /// identity provider to Google Cloud attributes, such as `subject` and
@@ -5282,34 +5116,34 @@ class WorkloadIdentityPoolProvider {
   /// `google.subject` attribute. For example, the following maps the `sub`
   /// claim of the incoming credential to the `subject` attribute on a Google
   /// token: ``` {"google.subject": "assertion.sub"} ```
-  core.Map<core.String, core.String> attributeMapping;
+  core.Map<core.String, core.String>? attributeMapping;
 
   /// An Amazon Web Services identity provider.
-  Aws aws;
+  Aws? aws;
 
   /// A description for the provider.
   ///
   /// Cannot exceed 256 characters.
-  core.String description;
+  core.String? description;
 
   /// Whether the provider is disabled.
   ///
   /// You cannot use a disabled provider to exchange tokens. However, existing
   /// tokens still grant access.
-  core.bool disabled;
+  core.bool? disabled;
 
   /// A display name for the provider.
   ///
   /// Cannot exceed 32 characters.
-  core.String displayName;
+  core.String? displayName;
 
   /// The resource name of the provider.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// An OpenId Connect 1.0 identity provider.
-  Oidc oidc;
+  Oidc? oidc;
 
   /// The state of the provider.
   ///
@@ -5323,7 +5157,7 @@ class WorkloadIdentityPoolProvider {
   /// soft-deleted provider using UndeleteWorkloadIdentityPoolProvider. You
   /// cannot reuse the ID of a soft-deleted provider until it is permanently
   /// deleted.
-  core.String state;
+  core.String? state;
 
   WorkloadIdentityPoolProvider();
 
@@ -5365,16 +5199,16 @@ class WorkloadIdentityPoolProvider {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (attributeCondition != null)
-          'attributeCondition': attributeCondition,
-        if (attributeMapping != null) 'attributeMapping': attributeMapping,
-        if (aws != null) 'aws': aws.toJson(),
-        if (description != null) 'description': description,
-        if (disabled != null) 'disabled': disabled,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (oidc != null) 'oidc': oidc.toJson(),
-        if (state != null) 'state': state,
+          'attributeCondition': attributeCondition!,
+        if (attributeMapping != null) 'attributeMapping': attributeMapping!,
+        if (aws != null) 'aws': aws!.toJson(),
+        if (description != null) 'description': description!,
+        if (disabled != null) 'disabled': disabled!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (oidc != null) 'oidc': oidc!.toJson(),
+        if (state != null) 'state': state!,
       };
 }

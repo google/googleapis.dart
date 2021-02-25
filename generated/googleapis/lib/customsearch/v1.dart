@@ -279,38 +279,38 @@ class CseResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Search> list({
-    core.String c2coff,
-    core.String cr,
-    core.String cx,
-    core.String dateRestrict,
-    core.String exactTerms,
-    core.String excludeTerms,
-    core.String fileType,
-    core.String filter,
-    core.String gl,
-    core.String googlehost,
-    core.String highRange,
-    core.String hl,
-    core.String hq,
-    core.String imgColorType,
-    core.String imgDominantColor,
-    core.String imgSize,
-    core.String imgType,
-    core.String linkSite,
-    core.String lowRange,
-    core.String lr,
-    core.int num,
-    core.String orTerms,
-    core.String q,
-    core.String relatedSite,
-    core.String rights,
-    core.String safe,
-    core.String searchType,
-    core.String siteSearch,
-    core.String siteSearchFilter,
-    core.String sort,
-    core.int start,
-    core.String $fields,
+    core.String? c2coff,
+    core.String? cr,
+    core.String? cx,
+    core.String? dateRestrict,
+    core.String? exactTerms,
+    core.String? excludeTerms,
+    core.String? fileType,
+    core.String? filter,
+    core.String? gl,
+    core.String? googlehost,
+    core.String? highRange,
+    core.String? hl,
+    core.String? hq,
+    core.String? imgColorType,
+    core.String? imgDominantColor,
+    core.String? imgSize,
+    core.String? imgType,
+    core.String? linkSite,
+    core.String? lowRange,
+    core.String? lr,
+    core.int? num,
+    core.String? orTerms,
+    core.String? q,
+    core.String? relatedSite,
+    core.String? rights,
+    core.String? safe,
+    core.String? searchType,
+    core.String? siteSearch,
+    core.String? siteSearchFilter,
+    core.String? sort,
+    core.int? start,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (c2coff != null) 'c2coff': [c2coff],
@@ -585,38 +585,38 @@ class CseSiterestrictResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Search> list({
-    core.String c2coff,
-    core.String cr,
-    core.String cx,
-    core.String dateRestrict,
-    core.String exactTerms,
-    core.String excludeTerms,
-    core.String fileType,
-    core.String filter,
-    core.String gl,
-    core.String googlehost,
-    core.String highRange,
-    core.String hl,
-    core.String hq,
-    core.String imgColorType,
-    core.String imgDominantColor,
-    core.String imgSize,
-    core.String imgType,
-    core.String linkSite,
-    core.String lowRange,
-    core.String lr,
-    core.int num,
-    core.String orTerms,
-    core.String q,
-    core.String relatedSite,
-    core.String rights,
-    core.String safe,
-    core.String searchType,
-    core.String siteSearch,
-    core.String siteSearchFilter,
-    core.String sort,
-    core.int start,
-    core.String $fields,
+    core.String? c2coff,
+    core.String? cr,
+    core.String? cx,
+    core.String? dateRestrict,
+    core.String? exactTerms,
+    core.String? excludeTerms,
+    core.String? fileType,
+    core.String? filter,
+    core.String? gl,
+    core.String? googlehost,
+    core.String? highRange,
+    core.String? hl,
+    core.String? hq,
+    core.String? imgColorType,
+    core.String? imgDominantColor,
+    core.String? imgSize,
+    core.String? imgType,
+    core.String? linkSite,
+    core.String? lowRange,
+    core.String? lr,
+    core.int? num,
+    core.String? orTerms,
+    core.String? q,
+    core.String? relatedSite,
+    core.String? rights,
+    core.String? safe,
+    core.String? searchType,
+    core.String? siteSearch,
+    core.String? siteSearchFilter,
+    core.String? sort,
+    core.int? start,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (c2coff != null) 'c2coff': [c2coff],
@@ -667,16 +667,16 @@ class CseSiterestrictResource {
 /// Block object belonging to a promotion.
 class PromotionBodyLines {
   /// The block object's text in HTML, if it has text.
-  core.String htmlTitle;
+  core.String? htmlTitle;
 
   /// The anchor text of the block object's link, if it has a link.
-  core.String link;
+  core.String? link;
 
   /// The block object's text, if it has text.
-  core.String title;
+  core.String? title;
 
   /// The URL of the block object's link, if it has one.
-  core.String url;
+  core.String? url;
 
   PromotionBodyLines();
 
@@ -695,24 +695,24 @@ class PromotionBodyLines {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (htmlTitle != null) 'htmlTitle': htmlTitle,
-        if (link != null) 'link': link,
-        if (title != null) 'title': title,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (htmlTitle != null) 'htmlTitle': htmlTitle!,
+        if (link != null) 'link': link!,
+        if (title != null) 'title': title!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// Image belonging to a promotion.
 class PromotionImage {
   /// Image height in pixels.
-  core.int height;
+  core.int? height;
 
   /// URL of the image for this promotion link.
-  core.String source;
+  core.String? source;
 
   /// Image width in pixels.
-  core.int width;
+  core.int? width;
 
   PromotionImage();
 
@@ -728,10 +728,10 @@ class PromotionImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (source != null) 'source': source,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (source != null) 'source': source!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -742,22 +742,22 @@ class Promotion {
   /// See
   /// [Google WebSearch Protocol reference](https://developers.google.com/custom-search/docs/xml_results)
   /// for more information.
-  core.List<PromotionBodyLines> bodyLines;
+  core.List<PromotionBodyLines>? bodyLines;
 
   /// An abridged version of this search's result URL, e.g. www.example.com.
-  core.String displayLink;
+  core.String? displayLink;
 
   /// The title of the promotion, in HTML.
-  core.String htmlTitle;
+  core.String? htmlTitle;
 
   /// Image belonging to a promotion.
-  PromotionImage image;
+  PromotionImage? image;
 
   /// The URL of the promotion.
-  core.String link;
+  core.String? link;
 
   /// The title of the promotion.
-  core.String title;
+  core.String? title;
 
   Promotion();
 
@@ -786,39 +786,39 @@ class Promotion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bodyLines != null)
-          'bodyLines': bodyLines.map((value) => value.toJson()).toList(),
-        if (displayLink != null) 'displayLink': displayLink,
-        if (htmlTitle != null) 'htmlTitle': htmlTitle,
-        if (image != null) 'image': image.toJson(),
-        if (link != null) 'link': link,
-        if (title != null) 'title': title,
+          'bodyLines': bodyLines!.map((value) => value.toJson()).toList(),
+        if (displayLink != null) 'displayLink': displayLink!,
+        if (htmlTitle != null) 'htmlTitle': htmlTitle!,
+        if (image != null) 'image': image!.toJson(),
+        if (link != null) 'link': link!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// Image belonging to a custom search result.
 class ResultImage {
   /// The size of the image, in pixels.
-  core.int byteSize;
+  core.int? byteSize;
 
   /// A URL pointing to the webpage hosting the image.
-  core.String contextLink;
+  core.String? contextLink;
 
   /// The height of the image, in pixels.
-  core.int height;
+  core.int? height;
 
   /// The height of the thumbnail image, in pixels.
-  core.int thumbnailHeight;
+  core.int? thumbnailHeight;
 
   /// A URL to the thumbnail image.
-  core.String thumbnailLink;
+  core.String? thumbnailLink;
 
   /// The width of the thumbnail image, in pixels.
-  core.int thumbnailWidth;
+  core.int? thumbnailWidth;
 
   /// The width of the image, in pixels.
-  core.int width;
+  core.int? width;
 
   ResultImage();
 
@@ -846,14 +846,14 @@ class ResultImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (byteSize != null) 'byteSize': byteSize,
-        if (contextLink != null) 'contextLink': contextLink,
-        if (height != null) 'height': height,
-        if (thumbnailHeight != null) 'thumbnailHeight': thumbnailHeight,
-        if (thumbnailLink != null) 'thumbnailLink': thumbnailLink,
-        if (thumbnailWidth != null) 'thumbnailWidth': thumbnailWidth,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (byteSize != null) 'byteSize': byteSize!,
+        if (contextLink != null) 'contextLink': contextLink!,
+        if (height != null) 'height': height!,
+        if (thumbnailHeight != null) 'thumbnailHeight': thumbnailHeight!,
+        if (thumbnailLink != null) 'thumbnailLink': thumbnailLink!,
+        if (thumbnailWidth != null) 'thumbnailWidth': thumbnailWidth!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -862,15 +862,15 @@ class ResultLabels {
   /// The display name of a refinement label.
   ///
   /// This is the name you should display in your user interface.
-  core.String displayName;
+  core.String? displayName;
 
   /// Refinement label and the associated refinement operation.
-  core.String labelWithOp;
+  core.String? labelWithOp;
 
   /// The name of a refinement label, which you can use to refine searches.
   ///
   /// Don't display this in your user interface; instead, use displayName.
-  core.String name;
+  core.String? name;
 
   ResultLabels();
 
@@ -886,54 +886,54 @@ class ResultLabels {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labelWithOp != null) 'label_with_op': labelWithOp,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labelWithOp != null) 'label_with_op': labelWithOp!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// A custom search result.
 class Result {
   /// Indicates the ID of Google's cached version of the search result.
-  core.String cacheId;
+  core.String? cacheId;
 
   /// An abridged version of this search result’s URL, e.g. www.example.com.
-  core.String displayLink;
+  core.String? displayLink;
 
   /// The file format of the search result.
-  core.String fileFormat;
+  core.String? fileFormat;
 
   /// The URL displayed after the snippet for each search result.
-  core.String formattedUrl;
+  core.String? formattedUrl;
 
   /// The HTML-formatted URL displayed after the snippet for each search result.
-  core.String htmlFormattedUrl;
+  core.String? htmlFormattedUrl;
 
   /// The snippet of the search result, in HTML.
-  core.String htmlSnippet;
+  core.String? htmlSnippet;
 
   /// The title of the search result, in HTML.
-  core.String htmlTitle;
+  core.String? htmlTitle;
 
   /// Image belonging to a custom search result.
-  ResultImage image;
+  ResultImage? image;
 
   /// A unique identifier for the type of current object.
   ///
   /// For this API, it is `customsearch#result.`
-  core.String kind;
+  core.String? kind;
 
   /// Encapsulates all information about
   /// [refinement labels](https://developers.google.com/custom-search/docs/xml_results).
-  core.List<ResultLabels> labels;
+  core.List<ResultLabels>? labels;
 
   /// The full URL to which the search result is pointing, e.g.
   /// http://www.example.com/foo/bar.
-  core.String link;
+  core.String? link;
 
   /// The MIME type of the search result.
-  core.String mime;
+  core.String? mime;
 
   /// Contains
   /// [PageMap](https://developers.google.com/custom-search/docs/structured_data#pagemaps)
@@ -941,13 +941,13 @@ class Result {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> pagemap;
+  core.Map<core.String, core.Object>? pagemap;
 
   /// The snippet of the search result, in plain text.
-  core.String snippet;
+  core.String? snippet;
 
   /// The title of the search result, in plain text.
-  core.String title;
+  core.String? title;
 
   Result();
 
@@ -1009,30 +1009,30 @@ class Result {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cacheId != null) 'cacheId': cacheId,
-        if (displayLink != null) 'displayLink': displayLink,
-        if (fileFormat != null) 'fileFormat': fileFormat,
-        if (formattedUrl != null) 'formattedUrl': formattedUrl,
-        if (htmlFormattedUrl != null) 'htmlFormattedUrl': htmlFormattedUrl,
-        if (htmlSnippet != null) 'htmlSnippet': htmlSnippet,
-        if (htmlTitle != null) 'htmlTitle': htmlTitle,
-        if (image != null) 'image': image.toJson(),
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cacheId != null) 'cacheId': cacheId!,
+        if (displayLink != null) 'displayLink': displayLink!,
+        if (fileFormat != null) 'fileFormat': fileFormat!,
+        if (formattedUrl != null) 'formattedUrl': formattedUrl!,
+        if (htmlFormattedUrl != null) 'htmlFormattedUrl': htmlFormattedUrl!,
+        if (htmlSnippet != null) 'htmlSnippet': htmlSnippet!,
+        if (htmlTitle != null) 'htmlTitle': htmlTitle!,
+        if (image != null) 'image': image!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (labels != null)
-          'labels': labels.map((value) => value.toJson()).toList(),
-        if (link != null) 'link': link,
-        if (mime != null) 'mime': mime,
-        if (pagemap != null) 'pagemap': pagemap,
-        if (snippet != null) 'snippet': snippet,
-        if (title != null) 'title': title,
+          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (link != null) 'link': link!,
+        if (mime != null) 'mime': mime!,
+        if (pagemap != null) 'pagemap': pagemap!,
+        if (snippet != null) 'snippet': snippet!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// Custom search request metadata.
 class SearchQueriesNextPage {
   /// Number of search results returned in this set.
-  core.int count;
+  core.int? count;
 
   /// Restricts search results to documents originating in a particular country.
   ///
@@ -1044,14 +1044,14 @@ class SearchQueriesNextPage {
   /// See \[Country (cr) Parameter
   /// Values\](https://developers.google.com/custom-search/docs/xml_results#countryCollections)
   /// for a list of valid values for this parameter.
-  core.String cr;
+  core.String? cr;
 
   /// The identifier of an engine created using the Programmable Search Engine
   /// [Control Panel](https://programmablesearchengine.google.com/).
   ///
   /// This is a custom property not defined in the OpenSearch spec. This
   /// parameter is **required**.
-  core.String cx;
+  core.String? cx;
 
   /// Restricts results to URLs based on date.
   ///
@@ -1060,21 +1060,21 @@ class SearchQueriesNextPage {
   /// specified number of past weeks. * `m[number]`: requests results from the
   /// specified number of past months. * `y[number]`: requests results from the
   /// specified number of past years.
-  core.String dateRestrict;
+  core.String? dateRestrict;
 
   /// Enables or disables the
   /// [Simplified and Traditional Chinese Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch)
   /// feature.
   ///
   /// Supported values are: * `0`: enabled (default) * `1`: disabled
-  core.String disableCnTwTranslation;
+  core.String? disableCnTwTranslation;
 
   /// Identifies a phrase that all documents in the search results must contain.
-  core.String exactTerms;
+  core.String? exactTerms;
 
   /// Identifies a word or phrase that should not appear in any documents in the
   /// search results.
-  core.String excludeTerms;
+  core.String? excludeTerms;
 
   /// Restricts results to files of a specified extension.
   ///
@@ -1087,7 +1087,7 @@ class SearchQueriesNextPage {
   /// (`ans`, `txt`). Additional filetypes may be added in the future. An
   /// up-to-date list can always be found in Google's
   /// [file type FAQ](https://support.google.com/webmasters/answer/35287).
-  core.String fileType;
+  core.String? fileType;
 
   /// Activates or deactivates the automatic filtering of Google search results.
   ///
@@ -1097,7 +1097,7 @@ class SearchQueriesNextPage {
   /// for this parameter are: * `0`: Disabled * `1`: Enabled (default) **Note**:
   /// By default, Google applies filtering to all search results to improve the
   /// quality of those results.
-  core.String filter;
+  core.String? filter;
 
   /// Boosts search results whose country of origin matches the parameter value.
   ///
@@ -1107,17 +1107,17 @@ class SearchQueriesNextPage {
   /// requests should improve the relevance of results. This is particularly
   /// true for international customers and, even more specifically, for
   /// customers in English-speaking countries other than the United States.
-  core.String gl;
+  core.String? gl;
 
   /// Specifies the Google domain (for example, google.com, google.de, or
   /// google.fr) to which the search should be limited.
-  core.String googleHost;
+  core.String? googleHost;
 
   /// Specifies the ending value for a search range.
   ///
   /// Use `cse:lowRange` and `cse:highrange` to append an inclusive search range
   /// of `lowRange...highRange` to the query.
-  core.String highRange;
+  core.String? highRange;
 
   /// Specifies the interface language (host language) of your user interface.
   ///
@@ -1129,50 +1129,50 @@ class SearchQueriesNextPage {
   /// for more information, and
   /// [Supported Interface Languages](https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages)
   /// for a list of supported languages.
-  core.String hl;
+  core.String? hl;
 
   /// Appends the specified query terms to the query, as if they were combined
   /// with a logical `AND` operator.
-  core.String hq;
+  core.String? hq;
 
   /// Restricts results to images of a specified color type.
   ///
   /// Supported values are: * `mono` (black and white) * `gray` (grayscale) *
   /// `color` (color)
-  core.String imgColorType;
+  core.String? imgColorType;
 
   /// Restricts results to images with a specific dominant color.
   ///
   /// Supported values are: * `red` * `orange` * `yellow` * `green` * `teal` *
   /// `blue` * `purple` * `pink` * `white` * `gray` * `black` * `brown`
-  core.String imgDominantColor;
+  core.String? imgDominantColor;
 
   /// Restricts results to images of a specified size.
   ///
   /// Supported values are: * `icon` (small) * `small | medium | large | xlarge`
   /// (medium) * `xxlarge` (large) * `huge` (extra-large)
-  core.String imgSize;
+  core.String? imgSize;
 
   /// Restricts results to images of a specified type.
   ///
   /// Supported values are: * `clipart` (Clip art) * `face` (Face) * `lineart`
   /// (Line drawing) * `photo` (Photo) * `animated` (Animated) * `stock` (Stock)
-  core.String imgType;
+  core.String? imgType;
 
   /// The character encoding supported for search requests.
-  core.String inputEncoding;
+  core.String? inputEncoding;
 
   /// The language of the search results.
-  core.String language;
+  core.String? language;
 
   /// Specifies that all results should contain a link to a specific URL.
-  core.String linkSite;
+  core.String? linkSite;
 
   /// Specifies the starting value for a search range.
   ///
   /// Use `cse:lowRange` and `cse:highrange` to append an inclusive search range
   /// of `lowRange...highRange` to the query.
-  core.String lowRange;
+  core.String? lowRange;
 
   /// Provides additional search terms to check for in a document, where each
   /// document in the search results must contain at least one of the additional
@@ -1181,22 +1181,22 @@ class SearchQueriesNextPage {
   /// You can also use the
   /// [Boolean OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt)
   /// query term for this type of query.
-  core.String orTerms;
+  core.String? orTerms;
 
   /// The character encoding supported for search results.
-  core.String outputEncoding;
+  core.String? outputEncoding;
 
   /// Specifies that all search results should be pages that are related to the
   /// specified URL.
   ///
   /// The parameter value should be a URL.
-  core.String relatedSite;
+  core.String? relatedSite;
 
   /// Filters based on licensing.
   ///
   /// Supported values include: * `cc_publicdomain` * `cc_attribute` *
   /// `cc_sharealike` * `cc_noncommercial` * `cc_nonderived`
-  core.String rights;
+  core.String? rights;
 
   /// Specifies the
   /// [SafeSearch level](https://developers.google.com/custom-search/docs/xml_results#safeSearchLevels)
@@ -1205,47 +1205,47 @@ class SearchQueriesNextPage {
   /// This is a custom property not defined in the OpenSearch spec. Valid
   /// parameter values are: * `"off"`: Disable SafeSearch * `"active"`: Enable
   /// SafeSearch
-  core.String safe;
+  core.String? safe;
 
   /// The search terms entered by the user.
-  core.String searchTerms;
+  core.String? searchTerms;
 
   /// Allowed values are `web` or `image`.
   ///
   /// If unspecified, results are limited to webpages.
-  core.String searchType;
+  core.String? searchType;
 
   /// Restricts results to URLs from a specified site.
-  core.String siteSearch;
+  core.String? siteSearch;
 
   /// Specifies whether to include or exclude results from the site named in the
   /// `sitesearch` parameter.
   ///
   /// Supported values are: * `i`: include content from site * `e`: exclude
   /// content from site
-  core.String siteSearchFilter;
+  core.String? siteSearchFilter;
 
   /// Specifies that results should be sorted according to the specified
   /// expression.
   ///
   /// For example, sort by date.
-  core.String sort;
+  core.String? sort;
 
   /// The index of the current set of search results into the total set of
   /// results, where the index of the first result is 1.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The page number of this set of results, where the page length is set by
   /// the `count` property.
-  core.int startPage;
+  core.int? startPage;
 
   /// A description of the query.
-  core.String title;
+  core.String? title;
 
   /// Estimated number of total search results.
   ///
   /// May not be accurate.
-  core.String totalResults;
+  core.String? totalResults;
 
   SearchQueriesNextPage();
 
@@ -1360,51 +1360,51 @@ class SearchQueriesNextPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (cr != null) 'cr': cr,
-        if (cx != null) 'cx': cx,
-        if (dateRestrict != null) 'dateRestrict': dateRestrict,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (cr != null) 'cr': cr!,
+        if (cx != null) 'cx': cx!,
+        if (dateRestrict != null) 'dateRestrict': dateRestrict!,
         if (disableCnTwTranslation != null)
-          'disableCnTwTranslation': disableCnTwTranslation,
-        if (exactTerms != null) 'exactTerms': exactTerms,
-        if (excludeTerms != null) 'excludeTerms': excludeTerms,
-        if (fileType != null) 'fileType': fileType,
-        if (filter != null) 'filter': filter,
-        if (gl != null) 'gl': gl,
-        if (googleHost != null) 'googleHost': googleHost,
-        if (highRange != null) 'highRange': highRange,
-        if (hl != null) 'hl': hl,
-        if (hq != null) 'hq': hq,
-        if (imgColorType != null) 'imgColorType': imgColorType,
-        if (imgDominantColor != null) 'imgDominantColor': imgDominantColor,
-        if (imgSize != null) 'imgSize': imgSize,
-        if (imgType != null) 'imgType': imgType,
-        if (inputEncoding != null) 'inputEncoding': inputEncoding,
-        if (language != null) 'language': language,
-        if (linkSite != null) 'linkSite': linkSite,
-        if (lowRange != null) 'lowRange': lowRange,
-        if (orTerms != null) 'orTerms': orTerms,
-        if (outputEncoding != null) 'outputEncoding': outputEncoding,
-        if (relatedSite != null) 'relatedSite': relatedSite,
-        if (rights != null) 'rights': rights,
-        if (safe != null) 'safe': safe,
-        if (searchTerms != null) 'searchTerms': searchTerms,
-        if (searchType != null) 'searchType': searchType,
-        if (siteSearch != null) 'siteSearch': siteSearch,
-        if (siteSearchFilter != null) 'siteSearchFilter': siteSearchFilter,
-        if (sort != null) 'sort': sort,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (startPage != null) 'startPage': startPage,
-        if (title != null) 'title': title,
-        if (totalResults != null) 'totalResults': totalResults,
+          'disableCnTwTranslation': disableCnTwTranslation!,
+        if (exactTerms != null) 'exactTerms': exactTerms!,
+        if (excludeTerms != null) 'excludeTerms': excludeTerms!,
+        if (fileType != null) 'fileType': fileType!,
+        if (filter != null) 'filter': filter!,
+        if (gl != null) 'gl': gl!,
+        if (googleHost != null) 'googleHost': googleHost!,
+        if (highRange != null) 'highRange': highRange!,
+        if (hl != null) 'hl': hl!,
+        if (hq != null) 'hq': hq!,
+        if (imgColorType != null) 'imgColorType': imgColorType!,
+        if (imgDominantColor != null) 'imgDominantColor': imgDominantColor!,
+        if (imgSize != null) 'imgSize': imgSize!,
+        if (imgType != null) 'imgType': imgType!,
+        if (inputEncoding != null) 'inputEncoding': inputEncoding!,
+        if (language != null) 'language': language!,
+        if (linkSite != null) 'linkSite': linkSite!,
+        if (lowRange != null) 'lowRange': lowRange!,
+        if (orTerms != null) 'orTerms': orTerms!,
+        if (outputEncoding != null) 'outputEncoding': outputEncoding!,
+        if (relatedSite != null) 'relatedSite': relatedSite!,
+        if (rights != null) 'rights': rights!,
+        if (safe != null) 'safe': safe!,
+        if (searchTerms != null) 'searchTerms': searchTerms!,
+        if (searchType != null) 'searchType': searchType!,
+        if (siteSearch != null) 'siteSearch': siteSearch!,
+        if (siteSearchFilter != null) 'siteSearchFilter': siteSearchFilter!,
+        if (sort != null) 'sort': sort!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (startPage != null) 'startPage': startPage!,
+        if (title != null) 'title': title!,
+        if (totalResults != null) 'totalResults': totalResults!,
       };
 }
 
 /// Custom search request metadata.
 class SearchQueriesPreviousPage {
   /// Number of search results returned in this set.
-  core.int count;
+  core.int? count;
 
   /// Restricts search results to documents originating in a particular country.
   ///
@@ -1416,14 +1416,14 @@ class SearchQueriesPreviousPage {
   /// See \[Country (cr) Parameter
   /// Values\](https://developers.google.com/custom-search/docs/xml_results#countryCollections)
   /// for a list of valid values for this parameter.
-  core.String cr;
+  core.String? cr;
 
   /// The identifier of an engine created using the Programmable Search Engine
   /// [Control Panel](https://programmablesearchengine.google.com/).
   ///
   /// This is a custom property not defined in the OpenSearch spec. This
   /// parameter is **required**.
-  core.String cx;
+  core.String? cx;
 
   /// Restricts results to URLs based on date.
   ///
@@ -1432,21 +1432,21 @@ class SearchQueriesPreviousPage {
   /// specified number of past weeks. * `m[number]`: requests results from the
   /// specified number of past months. * `y[number]`: requests results from the
   /// specified number of past years.
-  core.String dateRestrict;
+  core.String? dateRestrict;
 
   /// Enables or disables the
   /// [Simplified and Traditional Chinese Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch)
   /// feature.
   ///
   /// Supported values are: * `0`: enabled (default) * `1`: disabled
-  core.String disableCnTwTranslation;
+  core.String? disableCnTwTranslation;
 
   /// Identifies a phrase that all documents in the search results must contain.
-  core.String exactTerms;
+  core.String? exactTerms;
 
   /// Identifies a word or phrase that should not appear in any documents in the
   /// search results.
-  core.String excludeTerms;
+  core.String? excludeTerms;
 
   /// Restricts results to files of a specified extension.
   ///
@@ -1459,7 +1459,7 @@ class SearchQueriesPreviousPage {
   /// (`ans`, `txt`). Additional filetypes may be added in the future. An
   /// up-to-date list can always be found in Google's
   /// [file type FAQ](https://support.google.com/webmasters/answer/35287).
-  core.String fileType;
+  core.String? fileType;
 
   /// Activates or deactivates the automatic filtering of Google search results.
   ///
@@ -1469,7 +1469,7 @@ class SearchQueriesPreviousPage {
   /// for this parameter are: * `0`: Disabled * `1`: Enabled (default) **Note**:
   /// By default, Google applies filtering to all search results to improve the
   /// quality of those results.
-  core.String filter;
+  core.String? filter;
 
   /// Boosts search results whose country of origin matches the parameter value.
   ///
@@ -1479,17 +1479,17 @@ class SearchQueriesPreviousPage {
   /// requests should improve the relevance of results. This is particularly
   /// true for international customers and, even more specifically, for
   /// customers in English-speaking countries other than the United States.
-  core.String gl;
+  core.String? gl;
 
   /// Specifies the Google domain (for example, google.com, google.de, or
   /// google.fr) to which the search should be limited.
-  core.String googleHost;
+  core.String? googleHost;
 
   /// Specifies the ending value for a search range.
   ///
   /// Use `cse:lowRange` and `cse:highrange` to append an inclusive search range
   /// of `lowRange...highRange` to the query.
-  core.String highRange;
+  core.String? highRange;
 
   /// Specifies the interface language (host language) of your user interface.
   ///
@@ -1501,50 +1501,50 @@ class SearchQueriesPreviousPage {
   /// for more information, and
   /// [Supported Interface Languages](https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages)
   /// for a list of supported languages.
-  core.String hl;
+  core.String? hl;
 
   /// Appends the specified query terms to the query, as if they were combined
   /// with a logical `AND` operator.
-  core.String hq;
+  core.String? hq;
 
   /// Restricts results to images of a specified color type.
   ///
   /// Supported values are: * `mono` (black and white) * `gray` (grayscale) *
   /// `color` (color)
-  core.String imgColorType;
+  core.String? imgColorType;
 
   /// Restricts results to images with a specific dominant color.
   ///
   /// Supported values are: * `red` * `orange` * `yellow` * `green` * `teal` *
   /// `blue` * `purple` * `pink` * `white` * `gray` * `black` * `brown`
-  core.String imgDominantColor;
+  core.String? imgDominantColor;
 
   /// Restricts results to images of a specified size.
   ///
   /// Supported values are: * `icon` (small) * `small | medium | large | xlarge`
   /// (medium) * `xxlarge` (large) * `huge` (extra-large)
-  core.String imgSize;
+  core.String? imgSize;
 
   /// Restricts results to images of a specified type.
   ///
   /// Supported values are: * `clipart` (Clip art) * `face` (Face) * `lineart`
   /// (Line drawing) * `photo` (Photo) * `animated` (Animated) * `stock` (Stock)
-  core.String imgType;
+  core.String? imgType;
 
   /// The character encoding supported for search requests.
-  core.String inputEncoding;
+  core.String? inputEncoding;
 
   /// The language of the search results.
-  core.String language;
+  core.String? language;
 
   /// Specifies that all results should contain a link to a specific URL.
-  core.String linkSite;
+  core.String? linkSite;
 
   /// Specifies the starting value for a search range.
   ///
   /// Use `cse:lowRange` and `cse:highrange` to append an inclusive search range
   /// of `lowRange...highRange` to the query.
-  core.String lowRange;
+  core.String? lowRange;
 
   /// Provides additional search terms to check for in a document, where each
   /// document in the search results must contain at least one of the additional
@@ -1553,22 +1553,22 @@ class SearchQueriesPreviousPage {
   /// You can also use the
   /// [Boolean OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt)
   /// query term for this type of query.
-  core.String orTerms;
+  core.String? orTerms;
 
   /// The character encoding supported for search results.
-  core.String outputEncoding;
+  core.String? outputEncoding;
 
   /// Specifies that all search results should be pages that are related to the
   /// specified URL.
   ///
   /// The parameter value should be a URL.
-  core.String relatedSite;
+  core.String? relatedSite;
 
   /// Filters based on licensing.
   ///
   /// Supported values include: * `cc_publicdomain` * `cc_attribute` *
   /// `cc_sharealike` * `cc_noncommercial` * `cc_nonderived`
-  core.String rights;
+  core.String? rights;
 
   /// Specifies the
   /// [SafeSearch level](https://developers.google.com/custom-search/docs/xml_results#safeSearchLevels)
@@ -1577,47 +1577,47 @@ class SearchQueriesPreviousPage {
   /// This is a custom property not defined in the OpenSearch spec. Valid
   /// parameter values are: * `"off"`: Disable SafeSearch * `"active"`: Enable
   /// SafeSearch
-  core.String safe;
+  core.String? safe;
 
   /// The search terms entered by the user.
-  core.String searchTerms;
+  core.String? searchTerms;
 
   /// Allowed values are `web` or `image`.
   ///
   /// If unspecified, results are limited to webpages.
-  core.String searchType;
+  core.String? searchType;
 
   /// Restricts results to URLs from a specified site.
-  core.String siteSearch;
+  core.String? siteSearch;
 
   /// Specifies whether to include or exclude results from the site named in the
   /// `sitesearch` parameter.
   ///
   /// Supported values are: * `i`: include content from site * `e`: exclude
   /// content from site
-  core.String siteSearchFilter;
+  core.String? siteSearchFilter;
 
   /// Specifies that results should be sorted according to the specified
   /// expression.
   ///
   /// For example, sort by date.
-  core.String sort;
+  core.String? sort;
 
   /// The index of the current set of search results into the total set of
   /// results, where the index of the first result is 1.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The page number of this set of results, where the page length is set by
   /// the `count` property.
-  core.int startPage;
+  core.int? startPage;
 
   /// A description of the query.
-  core.String title;
+  core.String? title;
 
   /// Estimated number of total search results.
   ///
   /// May not be accurate.
-  core.String totalResults;
+  core.String? totalResults;
 
   SearchQueriesPreviousPage();
 
@@ -1732,51 +1732,51 @@ class SearchQueriesPreviousPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (cr != null) 'cr': cr,
-        if (cx != null) 'cx': cx,
-        if (dateRestrict != null) 'dateRestrict': dateRestrict,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (cr != null) 'cr': cr!,
+        if (cx != null) 'cx': cx!,
+        if (dateRestrict != null) 'dateRestrict': dateRestrict!,
         if (disableCnTwTranslation != null)
-          'disableCnTwTranslation': disableCnTwTranslation,
-        if (exactTerms != null) 'exactTerms': exactTerms,
-        if (excludeTerms != null) 'excludeTerms': excludeTerms,
-        if (fileType != null) 'fileType': fileType,
-        if (filter != null) 'filter': filter,
-        if (gl != null) 'gl': gl,
-        if (googleHost != null) 'googleHost': googleHost,
-        if (highRange != null) 'highRange': highRange,
-        if (hl != null) 'hl': hl,
-        if (hq != null) 'hq': hq,
-        if (imgColorType != null) 'imgColorType': imgColorType,
-        if (imgDominantColor != null) 'imgDominantColor': imgDominantColor,
-        if (imgSize != null) 'imgSize': imgSize,
-        if (imgType != null) 'imgType': imgType,
-        if (inputEncoding != null) 'inputEncoding': inputEncoding,
-        if (language != null) 'language': language,
-        if (linkSite != null) 'linkSite': linkSite,
-        if (lowRange != null) 'lowRange': lowRange,
-        if (orTerms != null) 'orTerms': orTerms,
-        if (outputEncoding != null) 'outputEncoding': outputEncoding,
-        if (relatedSite != null) 'relatedSite': relatedSite,
-        if (rights != null) 'rights': rights,
-        if (safe != null) 'safe': safe,
-        if (searchTerms != null) 'searchTerms': searchTerms,
-        if (searchType != null) 'searchType': searchType,
-        if (siteSearch != null) 'siteSearch': siteSearch,
-        if (siteSearchFilter != null) 'siteSearchFilter': siteSearchFilter,
-        if (sort != null) 'sort': sort,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (startPage != null) 'startPage': startPage,
-        if (title != null) 'title': title,
-        if (totalResults != null) 'totalResults': totalResults,
+          'disableCnTwTranslation': disableCnTwTranslation!,
+        if (exactTerms != null) 'exactTerms': exactTerms!,
+        if (excludeTerms != null) 'excludeTerms': excludeTerms!,
+        if (fileType != null) 'fileType': fileType!,
+        if (filter != null) 'filter': filter!,
+        if (gl != null) 'gl': gl!,
+        if (googleHost != null) 'googleHost': googleHost!,
+        if (highRange != null) 'highRange': highRange!,
+        if (hl != null) 'hl': hl!,
+        if (hq != null) 'hq': hq!,
+        if (imgColorType != null) 'imgColorType': imgColorType!,
+        if (imgDominantColor != null) 'imgDominantColor': imgDominantColor!,
+        if (imgSize != null) 'imgSize': imgSize!,
+        if (imgType != null) 'imgType': imgType!,
+        if (inputEncoding != null) 'inputEncoding': inputEncoding!,
+        if (language != null) 'language': language!,
+        if (linkSite != null) 'linkSite': linkSite!,
+        if (lowRange != null) 'lowRange': lowRange!,
+        if (orTerms != null) 'orTerms': orTerms!,
+        if (outputEncoding != null) 'outputEncoding': outputEncoding!,
+        if (relatedSite != null) 'relatedSite': relatedSite!,
+        if (rights != null) 'rights': rights!,
+        if (safe != null) 'safe': safe!,
+        if (searchTerms != null) 'searchTerms': searchTerms!,
+        if (searchType != null) 'searchType': searchType!,
+        if (siteSearch != null) 'siteSearch': siteSearch!,
+        if (siteSearchFilter != null) 'siteSearchFilter': siteSearchFilter!,
+        if (sort != null) 'sort': sort!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (startPage != null) 'startPage': startPage!,
+        if (title != null) 'title': title!,
+        if (totalResults != null) 'totalResults': totalResults!,
       };
 }
 
 /// Custom search request metadata.
 class SearchQueriesRequest {
   /// Number of search results returned in this set.
-  core.int count;
+  core.int? count;
 
   /// Restricts search results to documents originating in a particular country.
   ///
@@ -1788,14 +1788,14 @@ class SearchQueriesRequest {
   /// See \[Country (cr) Parameter
   /// Values\](https://developers.google.com/custom-search/docs/xml_results#countryCollections)
   /// for a list of valid values for this parameter.
-  core.String cr;
+  core.String? cr;
 
   /// The identifier of an engine created using the Programmable Search Engine
   /// [Control Panel](https://programmablesearchengine.google.com/).
   ///
   /// This is a custom property not defined in the OpenSearch spec. This
   /// parameter is **required**.
-  core.String cx;
+  core.String? cx;
 
   /// Restricts results to URLs based on date.
   ///
@@ -1804,21 +1804,21 @@ class SearchQueriesRequest {
   /// specified number of past weeks. * `m[number]`: requests results from the
   /// specified number of past months. * `y[number]`: requests results from the
   /// specified number of past years.
-  core.String dateRestrict;
+  core.String? dateRestrict;
 
   /// Enables or disables the
   /// [Simplified and Traditional Chinese Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch)
   /// feature.
   ///
   /// Supported values are: * `0`: enabled (default) * `1`: disabled
-  core.String disableCnTwTranslation;
+  core.String? disableCnTwTranslation;
 
   /// Identifies a phrase that all documents in the search results must contain.
-  core.String exactTerms;
+  core.String? exactTerms;
 
   /// Identifies a word or phrase that should not appear in any documents in the
   /// search results.
-  core.String excludeTerms;
+  core.String? excludeTerms;
 
   /// Restricts results to files of a specified extension.
   ///
@@ -1831,7 +1831,7 @@ class SearchQueriesRequest {
   /// (`ans`, `txt`). Additional filetypes may be added in the future. An
   /// up-to-date list can always be found in Google's
   /// [file type FAQ](https://support.google.com/webmasters/answer/35287).
-  core.String fileType;
+  core.String? fileType;
 
   /// Activates or deactivates the automatic filtering of Google search results.
   ///
@@ -1841,7 +1841,7 @@ class SearchQueriesRequest {
   /// for this parameter are: * `0`: Disabled * `1`: Enabled (default) **Note**:
   /// By default, Google applies filtering to all search results to improve the
   /// quality of those results.
-  core.String filter;
+  core.String? filter;
 
   /// Boosts search results whose country of origin matches the parameter value.
   ///
@@ -1851,17 +1851,17 @@ class SearchQueriesRequest {
   /// requests should improve the relevance of results. This is particularly
   /// true for international customers and, even more specifically, for
   /// customers in English-speaking countries other than the United States.
-  core.String gl;
+  core.String? gl;
 
   /// Specifies the Google domain (for example, google.com, google.de, or
   /// google.fr) to which the search should be limited.
-  core.String googleHost;
+  core.String? googleHost;
 
   /// Specifies the ending value for a search range.
   ///
   /// Use `cse:lowRange` and `cse:highrange` to append an inclusive search range
   /// of `lowRange...highRange` to the query.
-  core.String highRange;
+  core.String? highRange;
 
   /// Specifies the interface language (host language) of your user interface.
   ///
@@ -1873,50 +1873,50 @@ class SearchQueriesRequest {
   /// for more information, and
   /// [Supported Interface Languages](https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages)
   /// for a list of supported languages.
-  core.String hl;
+  core.String? hl;
 
   /// Appends the specified query terms to the query, as if they were combined
   /// with a logical `AND` operator.
-  core.String hq;
+  core.String? hq;
 
   /// Restricts results to images of a specified color type.
   ///
   /// Supported values are: * `mono` (black and white) * `gray` (grayscale) *
   /// `color` (color)
-  core.String imgColorType;
+  core.String? imgColorType;
 
   /// Restricts results to images with a specific dominant color.
   ///
   /// Supported values are: * `red` * `orange` * `yellow` * `green` * `teal` *
   /// `blue` * `purple` * `pink` * `white` * `gray` * `black` * `brown`
-  core.String imgDominantColor;
+  core.String? imgDominantColor;
 
   /// Restricts results to images of a specified size.
   ///
   /// Supported values are: * `icon` (small) * `small | medium | large | xlarge`
   /// (medium) * `xxlarge` (large) * `huge` (extra-large)
-  core.String imgSize;
+  core.String? imgSize;
 
   /// Restricts results to images of a specified type.
   ///
   /// Supported values are: * `clipart` (Clip art) * `face` (Face) * `lineart`
   /// (Line drawing) * `photo` (Photo) * `animated` (Animated) * `stock` (Stock)
-  core.String imgType;
+  core.String? imgType;
 
   /// The character encoding supported for search requests.
-  core.String inputEncoding;
+  core.String? inputEncoding;
 
   /// The language of the search results.
-  core.String language;
+  core.String? language;
 
   /// Specifies that all results should contain a link to a specific URL.
-  core.String linkSite;
+  core.String? linkSite;
 
   /// Specifies the starting value for a search range.
   ///
   /// Use `cse:lowRange` and `cse:highrange` to append an inclusive search range
   /// of `lowRange...highRange` to the query.
-  core.String lowRange;
+  core.String? lowRange;
 
   /// Provides additional search terms to check for in a document, where each
   /// document in the search results must contain at least one of the additional
@@ -1925,22 +1925,22 @@ class SearchQueriesRequest {
   /// You can also use the
   /// [Boolean OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt)
   /// query term for this type of query.
-  core.String orTerms;
+  core.String? orTerms;
 
   /// The character encoding supported for search results.
-  core.String outputEncoding;
+  core.String? outputEncoding;
 
   /// Specifies that all search results should be pages that are related to the
   /// specified URL.
   ///
   /// The parameter value should be a URL.
-  core.String relatedSite;
+  core.String? relatedSite;
 
   /// Filters based on licensing.
   ///
   /// Supported values include: * `cc_publicdomain` * `cc_attribute` *
   /// `cc_sharealike` * `cc_noncommercial` * `cc_nonderived`
-  core.String rights;
+  core.String? rights;
 
   /// Specifies the
   /// [SafeSearch level](https://developers.google.com/custom-search/docs/xml_results#safeSearchLevels)
@@ -1949,47 +1949,47 @@ class SearchQueriesRequest {
   /// This is a custom property not defined in the OpenSearch spec. Valid
   /// parameter values are: * `"off"`: Disable SafeSearch * `"active"`: Enable
   /// SafeSearch
-  core.String safe;
+  core.String? safe;
 
   /// The search terms entered by the user.
-  core.String searchTerms;
+  core.String? searchTerms;
 
   /// Allowed values are `web` or `image`.
   ///
   /// If unspecified, results are limited to webpages.
-  core.String searchType;
+  core.String? searchType;
 
   /// Restricts results to URLs from a specified site.
-  core.String siteSearch;
+  core.String? siteSearch;
 
   /// Specifies whether to include or exclude results from the site named in the
   /// `sitesearch` parameter.
   ///
   /// Supported values are: * `i`: include content from site * `e`: exclude
   /// content from site
-  core.String siteSearchFilter;
+  core.String? siteSearchFilter;
 
   /// Specifies that results should be sorted according to the specified
   /// expression.
   ///
   /// For example, sort by date.
-  core.String sort;
+  core.String? sort;
 
   /// The index of the current set of search results into the total set of
   /// results, where the index of the first result is 1.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The page number of this set of results, where the page length is set by
   /// the `count` property.
-  core.int startPage;
+  core.int? startPage;
 
   /// A description of the query.
-  core.String title;
+  core.String? title;
 
   /// Estimated number of total search results.
   ///
   /// May not be accurate.
-  core.String totalResults;
+  core.String? totalResults;
 
   SearchQueriesRequest();
 
@@ -2104,57 +2104,57 @@ class SearchQueriesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (cr != null) 'cr': cr,
-        if (cx != null) 'cx': cx,
-        if (dateRestrict != null) 'dateRestrict': dateRestrict,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (cr != null) 'cr': cr!,
+        if (cx != null) 'cx': cx!,
+        if (dateRestrict != null) 'dateRestrict': dateRestrict!,
         if (disableCnTwTranslation != null)
-          'disableCnTwTranslation': disableCnTwTranslation,
-        if (exactTerms != null) 'exactTerms': exactTerms,
-        if (excludeTerms != null) 'excludeTerms': excludeTerms,
-        if (fileType != null) 'fileType': fileType,
-        if (filter != null) 'filter': filter,
-        if (gl != null) 'gl': gl,
-        if (googleHost != null) 'googleHost': googleHost,
-        if (highRange != null) 'highRange': highRange,
-        if (hl != null) 'hl': hl,
-        if (hq != null) 'hq': hq,
-        if (imgColorType != null) 'imgColorType': imgColorType,
-        if (imgDominantColor != null) 'imgDominantColor': imgDominantColor,
-        if (imgSize != null) 'imgSize': imgSize,
-        if (imgType != null) 'imgType': imgType,
-        if (inputEncoding != null) 'inputEncoding': inputEncoding,
-        if (language != null) 'language': language,
-        if (linkSite != null) 'linkSite': linkSite,
-        if (lowRange != null) 'lowRange': lowRange,
-        if (orTerms != null) 'orTerms': orTerms,
-        if (outputEncoding != null) 'outputEncoding': outputEncoding,
-        if (relatedSite != null) 'relatedSite': relatedSite,
-        if (rights != null) 'rights': rights,
-        if (safe != null) 'safe': safe,
-        if (searchTerms != null) 'searchTerms': searchTerms,
-        if (searchType != null) 'searchType': searchType,
-        if (siteSearch != null) 'siteSearch': siteSearch,
-        if (siteSearchFilter != null) 'siteSearchFilter': siteSearchFilter,
-        if (sort != null) 'sort': sort,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (startPage != null) 'startPage': startPage,
-        if (title != null) 'title': title,
-        if (totalResults != null) 'totalResults': totalResults,
+          'disableCnTwTranslation': disableCnTwTranslation!,
+        if (exactTerms != null) 'exactTerms': exactTerms!,
+        if (excludeTerms != null) 'excludeTerms': excludeTerms!,
+        if (fileType != null) 'fileType': fileType!,
+        if (filter != null) 'filter': filter!,
+        if (gl != null) 'gl': gl!,
+        if (googleHost != null) 'googleHost': googleHost!,
+        if (highRange != null) 'highRange': highRange!,
+        if (hl != null) 'hl': hl!,
+        if (hq != null) 'hq': hq!,
+        if (imgColorType != null) 'imgColorType': imgColorType!,
+        if (imgDominantColor != null) 'imgDominantColor': imgDominantColor!,
+        if (imgSize != null) 'imgSize': imgSize!,
+        if (imgType != null) 'imgType': imgType!,
+        if (inputEncoding != null) 'inputEncoding': inputEncoding!,
+        if (language != null) 'language': language!,
+        if (linkSite != null) 'linkSite': linkSite!,
+        if (lowRange != null) 'lowRange': lowRange!,
+        if (orTerms != null) 'orTerms': orTerms!,
+        if (outputEncoding != null) 'outputEncoding': outputEncoding!,
+        if (relatedSite != null) 'relatedSite': relatedSite!,
+        if (rights != null) 'rights': rights!,
+        if (safe != null) 'safe': safe!,
+        if (searchTerms != null) 'searchTerms': searchTerms!,
+        if (searchType != null) 'searchType': searchType!,
+        if (siteSearch != null) 'siteSearch': siteSearch!,
+        if (siteSearchFilter != null) 'siteSearchFilter': siteSearchFilter!,
+        if (sort != null) 'sort': sort!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (startPage != null) 'startPage': startPage!,
+        if (title != null) 'title': title!,
+        if (totalResults != null) 'totalResults': totalResults!,
       };
 }
 
 /// Query metadata for the previous, current, and next pages of results.
 class SearchQueries {
   /// Metadata representing the next page of results, if applicable.
-  core.List<SearchQueriesNextPage> nextPage;
+  core.List<SearchQueriesNextPage>? nextPage;
 
   /// Metadata representing the previous page of results, if applicable.
-  core.List<SearchQueriesPreviousPage> previousPage;
+  core.List<SearchQueriesPreviousPage>? previousPage;
 
   /// Metadata representing the current request.
-  core.List<SearchQueriesRequest> request;
+  core.List<SearchQueriesRequest>? request;
 
   SearchQueries();
 
@@ -2180,13 +2180,13 @@ class SearchQueries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (nextPage != null)
-          'nextPage': nextPage.map((value) => value.toJson()).toList(),
+          'nextPage': nextPage!.map((value) => value.toJson()).toList(),
         if (previousPage != null)
-          'previousPage': previousPage.map((value) => value.toJson()).toList(),
+          'previousPage': previousPage!.map((value) => value.toJson()).toList(),
         if (request != null)
-          'request': request.map((value) => value.toJson()).toList(),
+          'request': request!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2194,16 +2194,16 @@ class SearchQueries {
 class SearchSearchInformation {
   /// The time taken for the server to return search results, formatted
   /// according to locale style.
-  core.String formattedSearchTime;
+  core.String? formattedSearchTime;
 
   /// The total number of search results, formatted according to locale style.
-  core.String formattedTotalResults;
+  core.String? formattedTotalResults;
 
   /// The time taken for the server to return search results.
-  core.double searchTime;
+  core.double? searchTime;
 
   /// The total number of search results returned by the query.
-  core.String totalResults;
+  core.String? totalResults;
 
   SearchSearchInformation();
 
@@ -2222,23 +2222,23 @@ class SearchSearchInformation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (formattedSearchTime != null)
-          'formattedSearchTime': formattedSearchTime,
+          'formattedSearchTime': formattedSearchTime!,
         if (formattedTotalResults != null)
-          'formattedTotalResults': formattedTotalResults,
-        if (searchTime != null) 'searchTime': searchTime,
-        if (totalResults != null) 'totalResults': totalResults,
+          'formattedTotalResults': formattedTotalResults!,
+        if (searchTime != null) 'searchTime': searchTime!,
+        if (totalResults != null) 'totalResults': totalResults!,
       };
 }
 
 /// Spell correction information for a query.
 class SearchSpelling {
   /// The corrected query.
-  core.String correctedQuery;
+  core.String? correctedQuery;
 
   /// The corrected query, formatted in HTML.
-  core.String htmlCorrectedQuery;
+  core.String? htmlCorrectedQuery;
 
   SearchSpelling();
 
@@ -2251,10 +2251,10 @@ class SearchSpelling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (correctedQuery != null) 'correctedQuery': correctedQuery,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (correctedQuery != null) 'correctedQuery': correctedQuery!,
         if (htmlCorrectedQuery != null)
-          'htmlCorrectedQuery': htmlCorrectedQuery,
+          'htmlCorrectedQuery': htmlCorrectedQuery!,
       };
 }
 
@@ -2263,11 +2263,11 @@ class SearchUrl {
   /// The actual
   /// [OpenSearch template](http://www.opensearch.org/specifications/opensearch/1.1#opensearch_url_template_syntax)
   /// for this API.
-  core.String template;
+  core.String? template;
 
   /// The MIME type of the OpenSearch URL template for the Custom Search JSON
   /// API.
-  core.String type;
+  core.String? type;
 
   SearchUrl();
 
@@ -2280,9 +2280,9 @@ class SearchUrl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (template != null) 'template': template,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (template != null) 'template': template!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2297,34 +2297,34 @@ class Search {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> context;
+  core.Map<core.String, core.Object>? context;
 
   /// The current set of custom search results.
-  core.List<Result> items;
+  core.List<Result>? items;
 
   /// Unique identifier for the type of current object.
   ///
   /// For this API, it is customsearch#search.
-  core.String kind;
+  core.String? kind;
 
   /// The set of
   /// [promotions](https://developers.google.com/custom-search/docs/promotions).
   ///
   /// Present only if the custom search engine's configuration files define any
   /// promotions for the given query.
-  core.List<Promotion> promotions;
+  core.List<Promotion>? promotions;
 
   /// Query metadata for the previous, current, and next pages of results.
-  SearchQueries queries;
+  SearchQueries? queries;
 
   /// Metadata about a search operation.
-  SearchSearchInformation searchInformation;
+  SearchSearchInformation? searchInformation;
 
   /// Spell correction information for a query.
-  SearchSpelling spelling;
+  SearchSpelling? spelling;
 
   /// OpenSearch template and URL.
-  SearchUrl url;
+  SearchUrl? url;
 
   Search();
 
@@ -2371,17 +2371,17 @@ class Search {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (context != null) 'context': context,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (context != null) 'context': context!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
         if (promotions != null)
-          'promotions': promotions.map((value) => value.toJson()).toList(),
-        if (queries != null) 'queries': queries.toJson(),
+          'promotions': promotions!.map((value) => value.toJson()).toList(),
+        if (queries != null) 'queries': queries!.toJson(),
         if (searchInformation != null)
-          'searchInformation': searchInformation.toJson(),
-        if (spelling != null) 'spelling': spelling.toJson(),
-        if (url != null) 'url': url.toJson(),
+          'searchInformation': searchInformation!.toJson(),
+        if (spelling != null) 'spelling': spelling!.toJson(),
+        if (url != null) 'url': url!.toJson(),
       };
 }

@@ -82,8 +82,8 @@ class DivisionsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DivisionSearchResponse> search({
-    core.String query,
-    core.String $fields,
+    core.String? query,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (query != null) 'query': [query],
@@ -122,7 +122,7 @@ class ElectionsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ElectionsQueryResponse> electionQuery({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -173,14 +173,11 @@ class ElectionsResource {
   /// this method will complete with the same error.
   async.Future<VoterInfoResponse> voterInfoQuery(
     core.String address, {
-    core.String electionId,
-    core.bool officialOnly,
-    core.bool returnAllAvailableData,
-    core.String $fields,
+    core.String? electionId,
+    core.bool? officialOnly,
+    core.bool? returnAllAvailableData,
+    core.String? $fields,
   }) async {
-    if (address == null) {
-      throw core.ArgumentError('Parameter address is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'address': [address],
       if (electionId != null) 'electionId': [electionId],
@@ -238,11 +235,11 @@ class RepresentativesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RepresentativeInfoResponse> representativeInfoByAddress({
-    core.String address,
-    core.bool includeOffices,
-    core.List<core.String> levels,
-    core.List<core.String> roles,
-    core.String $fields,
+    core.String? address,
+    core.bool? includeOffices,
+    core.List<core.String>? levels,
+    core.List<core.String>? roles,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (address != null) 'address': [address],
@@ -295,14 +292,11 @@ class RepresentativesResource {
   /// this method will complete with the same error.
   async.Future<RepresentativeInfoData> representativeInfoByDivision(
     core.String ocdId, {
-    core.List<core.String> levels,
-    core.bool recursive,
-    core.List<core.String> roles,
-    core.String $fields,
+    core.List<core.String>? levels,
+    core.bool? recursive,
+    core.List<core.String>? roles,
+    core.String? $fields,
   }) async {
-    if (ocdId == null) {
-      throw core.ArgumentError('Parameter ocdId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (levels != null) 'levels': levels,
       if (recursive != null) 'recursive': ['${recursive}'],
@@ -326,21 +320,21 @@ class RepresentativesResource {
 /// Describes information about a regional election administrative area.
 class AdministrationRegion {
   /// The election administration body for this area.
-  AdministrativeBody electionAdministrationBody;
+  AdministrativeBody? electionAdministrationBody;
 
   /// The city or county that provides election information for this voter.
   ///
   /// This object can have the same elements as state.
-  AdministrationRegion localJurisdiction;
+  AdministrationRegion? localJurisdiction;
 
   /// The name of the jurisdiction.
-  core.String name;
+  core.String? name;
 
   /// A list of sources for this area.
   ///
   /// If multiple sources are listed the data has been aggregated from those
   /// sources.
-  core.List<Source> sources;
+  core.List<Source>? sources;
 
   AdministrationRegion();
 
@@ -365,14 +359,14 @@ class AdministrationRegion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (electionAdministrationBody != null)
-          'electionAdministrationBody': electionAdministrationBody.toJson(),
+          'electionAdministrationBody': electionAdministrationBody!.toJson(),
         if (localJurisdiction != null)
-          'local_jurisdiction': localJurisdiction.toJson(),
-        if (name != null) 'name': name,
+          'local_jurisdiction': localJurisdiction!.toJson(),
+        if (name != null) 'name': name!,
         if (sources != null)
-          'sources': sources.map((value) => value.toJson()).toList(),
+          'sources': sources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -381,56 +375,56 @@ class AdministrationRegion {
 class AdministrativeBody {
   /// A URL provided by this administrative body for information on absentee
   /// voting.
-  core.String absenteeVotingInfoUrl;
+  core.String? absenteeVotingInfoUrl;
 
   /// A URL provided by this administrative body to give contest information to
   /// the voter.
-  core.String ballotInfoUrl;
+  core.String? ballotInfoUrl;
 
   /// The mailing address of this administrative body.
-  SimpleAddressType correspondenceAddress;
+  SimpleAddressType? correspondenceAddress;
 
   /// A URL provided by this administrative body for looking up general election
   /// information.
-  core.String electionInfoUrl;
+  core.String? electionInfoUrl;
 
   /// A last minute or emergency notification text provided by this
   /// administrative body.
-  core.String electionNoticeText;
+  core.String? electionNoticeText;
 
   /// A URL provided by this administrative body for additional information
   /// related to the last minute or emergency notification.
-  core.String electionNoticeUrl;
+  core.String? electionNoticeUrl;
 
   /// The election officials for this election administrative body.
-  core.List<ElectionOfficial> electionOfficials;
+  core.List<ElectionOfficial>? electionOfficials;
 
   /// A URL provided by this administrative body for confirming that the voter
   /// is registered to vote.
-  core.String electionRegistrationConfirmationUrl;
+  core.String? electionRegistrationConfirmationUrl;
 
   /// A URL provided by this administrative body for looking up how to register
   /// to vote.
-  core.String electionRegistrationUrl;
+  core.String? electionRegistrationUrl;
 
   /// A URL provided by this administrative body describing election rules to
   /// the voter.
-  core.String electionRulesUrl;
+  core.String? electionRulesUrl;
 
   /// A description of the hours of operation for this administrative body.
-  core.String hoursOfOperation;
+  core.String? hoursOfOperation;
 
   /// The name of this election administrative body.
-  core.String name;
+  core.String? name;
 
   /// The physical address of this administrative body.
-  SimpleAddressType physicalAddress;
+  SimpleAddressType? physicalAddress;
 
   /// A description of the services this administrative body may provide.
-  core.List<core.String> voterServices;
+  core.List<core.String>? voterServices;
 
   /// A URL provided by this administrative body for looking up where to vote.
-  core.String votingLocationFinderUrl;
+  core.String? votingLocationFinderUrl;
 
   AdministrativeBody();
 
@@ -491,64 +485,64 @@ class AdministrativeBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (absenteeVotingInfoUrl != null)
-          'absenteeVotingInfoUrl': absenteeVotingInfoUrl,
-        if (ballotInfoUrl != null) 'ballotInfoUrl': ballotInfoUrl,
+          'absenteeVotingInfoUrl': absenteeVotingInfoUrl!,
+        if (ballotInfoUrl != null) 'ballotInfoUrl': ballotInfoUrl!,
         if (correspondenceAddress != null)
-          'correspondenceAddress': correspondenceAddress.toJson(),
-        if (electionInfoUrl != null) 'electionInfoUrl': electionInfoUrl,
+          'correspondenceAddress': correspondenceAddress!.toJson(),
+        if (electionInfoUrl != null) 'electionInfoUrl': electionInfoUrl!,
         if (electionNoticeText != null)
-          'electionNoticeText': electionNoticeText,
-        if (electionNoticeUrl != null) 'electionNoticeUrl': electionNoticeUrl,
+          'electionNoticeText': electionNoticeText!,
+        if (electionNoticeUrl != null) 'electionNoticeUrl': electionNoticeUrl!,
         if (electionOfficials != null)
           'electionOfficials':
-              electionOfficials.map((value) => value.toJson()).toList(),
+              electionOfficials!.map((value) => value.toJson()).toList(),
         if (electionRegistrationConfirmationUrl != null)
           'electionRegistrationConfirmationUrl':
-              electionRegistrationConfirmationUrl,
+              electionRegistrationConfirmationUrl!,
         if (electionRegistrationUrl != null)
-          'electionRegistrationUrl': electionRegistrationUrl,
-        if (electionRulesUrl != null) 'electionRulesUrl': electionRulesUrl,
-        if (hoursOfOperation != null) 'hoursOfOperation': hoursOfOperation,
-        if (name != null) 'name': name,
+          'electionRegistrationUrl': electionRegistrationUrl!,
+        if (electionRulesUrl != null) 'electionRulesUrl': electionRulesUrl!,
+        if (hoursOfOperation != null) 'hoursOfOperation': hoursOfOperation!,
+        if (name != null) 'name': name!,
         if (physicalAddress != null)
-          'physicalAddress': physicalAddress.toJson(),
-        if (voterServices != null) 'voter_services': voterServices,
+          'physicalAddress': physicalAddress!.toJson(),
+        if (voterServices != null) 'voter_services': voterServices!,
         if (votingLocationFinderUrl != null)
-          'votingLocationFinderUrl': votingLocationFinderUrl,
+          'votingLocationFinderUrl': votingLocationFinderUrl!,
       };
 }
 
 /// Information about a candidate running for elected office.
 class Candidate {
   /// The URL for the candidate's campaign web site.
-  core.String candidateUrl;
+  core.String? candidateUrl;
 
   /// A list of known (social) media channels for this candidate.
-  core.List<Channel> channels;
+  core.List<Channel>? channels;
 
   /// The email address for the candidate's campaign.
-  core.String email;
+  core.String? email;
 
   /// The candidate's name.
   ///
   /// If this is a joint ticket it will indicate the name of the candidate at
   /// the top of a ticket followed by a / and that name of candidate at the
   /// bottom of the ticket. e.g. "Mitt Romney / Paul Ryan"
-  core.String name;
+  core.String? name;
 
   /// The order the candidate appears on the ballot for this contest.
-  core.String orderOnBallot;
+  core.String? orderOnBallot;
 
   /// The full name of the party the candidate is a member of.
-  core.String party;
+  core.String? party;
 
   /// The voice phone number for the candidate's campaign office.
-  core.String phone;
+  core.String? phone;
 
   /// A URL for a photo of the candidate.
-  core.String photoUrl;
+  core.String? photoUrl;
 
   Candidate();
 
@@ -582,30 +576,30 @@ class Candidate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (candidateUrl != null) 'candidateUrl': candidateUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (candidateUrl != null) 'candidateUrl': candidateUrl!,
         if (channels != null)
-          'channels': channels.map((value) => value.toJson()).toList(),
-        if (email != null) 'email': email,
-        if (name != null) 'name': name,
-        if (orderOnBallot != null) 'orderOnBallot': orderOnBallot,
-        if (party != null) 'party': party,
-        if (phone != null) 'phone': phone,
-        if (photoUrl != null) 'photoUrl': photoUrl,
+          'channels': channels!.map((value) => value.toJson()).toList(),
+        if (email != null) 'email': email!,
+        if (name != null) 'name': name!,
+        if (orderOnBallot != null) 'orderOnBallot': orderOnBallot!,
+        if (party != null) 'party': party!,
+        if (phone != null) 'phone': phone!,
+        if (photoUrl != null) 'photoUrl': photoUrl!,
       };
 }
 
 /// A social media or web channel for a candidate.
 class Channel {
   /// The unique public identifier for the candidate's channel.
-  core.String id;
+  core.String? id;
 
   /// The type of channel.
   ///
   /// The following is a list of types of channels, but is not exhaustive. More
   /// channel types may be added at a later time. One of: GooglePlus, YouTube,
   /// Facebook, Twitter
-  core.String type;
+  core.String? type;
 
   Channel();
 
@@ -618,29 +612,29 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// Information about a contest that appears on a voter's ballot.
 class Contest {
   /// A number specifying the position of this contest on the voter's ballot.
-  core.String ballotPlacement;
+  core.String? ballotPlacement;
 
   /// The official title on the ballot for this contest, only where available.
-  core.String ballotTitle;
+  core.String? ballotTitle;
 
   /// The candidate choices for this contest.
-  core.List<Candidate> candidates;
+  core.List<Candidate>? candidates;
 
   /// Information about the electoral district that this contest is in.
-  ElectoralDistrict district;
+  ElectoralDistrict? district;
 
   /// A description of any additional eligibility requirements for voting in
   /// this contest.
-  core.String electorateSpecifications;
+  core.String? electorateSpecifications;
 
   /// The levels of government of the office for this contest.
   ///
@@ -648,19 +642,19 @@ class Contest {
   /// at two different levels of government; for example, the mayor of the
   /// District of Columbia acts at "locality" level, but also effectively at
   /// both "administrative-area-2" and "administrative-area-1".
-  core.List<core.String> level;
+  core.List<core.String>? level;
 
   /// The number of candidates that will be elected to office in this contest.
-  core.String numberElected;
+  core.String? numberElected;
 
   /// The number of candidates that a voter may vote for in this contest.
-  core.String numberVotingFor;
+  core.String? numberVotingFor;
 
   /// The name of the office for this contest.
-  core.String office;
+  core.String? office;
 
   /// If this is a partisan election, the name of the party/parties it is for.
-  core.List<core.String> primaryParties;
+  core.List<core.String>? primaryParties;
 
   /// If this is a partisan election, the name of the party it is for.
   ///
@@ -668,84 +662,84 @@ class Contest {
   /// contests may contain more than one party.
   ///
   /// Deprecated.
-  core.String primaryParty;
+  core.String? primaryParty;
 
   /// The set of ballot responses for the referendum.
   ///
   /// A ballot response represents a line on the ballot. Common examples might
   /// include "yes" or "no" for referenda. This field is only populated for
   /// contests of type 'Referendum'.
-  core.List<core.String> referendumBallotResponses;
+  core.List<core.String>? referendumBallotResponses;
 
   /// Specifies a short summary of the referendum that is typically on the
   /// ballot below the title but above the text.
   ///
   /// This field is only populated for contests of type 'Referendum'.
-  core.String referendumBrief;
+  core.String? referendumBrief;
 
   /// A statement in opposition to the referendum.
   ///
   /// It does not necessarily appear on the ballot. This field is only populated
   /// for contests of type 'Referendum'.
-  core.String referendumConStatement;
+  core.String? referendumConStatement;
 
   /// Specifies what effect abstaining (not voting) on the proposition will have
   /// (i.e. whether abstaining is considered a vote against it).
   ///
   /// This field is only populated for contests of type 'Referendum'.
-  core.String referendumEffectOfAbstain;
+  core.String? referendumEffectOfAbstain;
 
   /// The threshold of votes that the referendum needs in order to pass, e.g.
   /// "two-thirds".
   ///
   /// This field is only populated for contests of type 'Referendum'.
-  core.String referendumPassageThreshold;
+  core.String? referendumPassageThreshold;
 
   /// A statement in favor of the referendum.
   ///
   /// It does not necessarily appear on the ballot. This field is only populated
   /// for contests of type 'Referendum'.
-  core.String referendumProStatement;
+  core.String? referendumProStatement;
 
   /// A brief description of the referendum.
   ///
   /// This field is only populated for contests of type 'Referendum'.
-  core.String referendumSubtitle;
+  core.String? referendumSubtitle;
 
   /// The full text of the referendum.
   ///
   /// This field is only populated for contests of type 'Referendum'.
-  core.String referendumText;
+  core.String? referendumText;
 
   /// The title of the referendum (e.g. 'Proposition 42').
   ///
   /// This field is only populated for contests of type 'Referendum'.
-  core.String referendumTitle;
+  core.String? referendumTitle;
 
   /// A link to the referendum.
   ///
   /// This field is only populated for contests of type 'Referendum'.
-  core.String referendumUrl;
+  core.String? referendumUrl;
 
   /// The roles which this office fulfills.
-  core.List<core.String> roles;
+  core.List<core.String>? roles;
 
   /// A list of sources for this contest.
   ///
   /// If multiple sources are listed, the data has been aggregated from those
   /// sources.
-  core.List<Source> sources;
+  core.List<Source>? sources;
 
   /// "Yes" or "No" depending on whether this a contest being held outside the
   /// normal election cycle.
-  core.String special;
+  core.String? special;
 
   /// The type of contest.
   ///
   /// Usually this will be 'General', 'Primary', or 'Run-off' for contests with
   /// candidates. For referenda this will be 'Referendum'. For Retention
   /// contests this will typically be 'Retention'.
-  core.String type;
+  core.String? type;
 
   Contest();
 
@@ -846,41 +840,41 @@ class Contest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ballotPlacement != null) 'ballotPlacement': ballotPlacement,
-        if (ballotTitle != null) 'ballotTitle': ballotTitle,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ballotPlacement != null) 'ballotPlacement': ballotPlacement!,
+        if (ballotTitle != null) 'ballotTitle': ballotTitle!,
         if (candidates != null)
-          'candidates': candidates.map((value) => value.toJson()).toList(),
-        if (district != null) 'district': district.toJson(),
+          'candidates': candidates!.map((value) => value.toJson()).toList(),
+        if (district != null) 'district': district!.toJson(),
         if (electorateSpecifications != null)
-          'electorateSpecifications': electorateSpecifications,
-        if (level != null) 'level': level,
-        if (numberElected != null) 'numberElected': numberElected,
-        if (numberVotingFor != null) 'numberVotingFor': numberVotingFor,
-        if (office != null) 'office': office,
-        if (primaryParties != null) 'primaryParties': primaryParties,
-        if (primaryParty != null) 'primaryParty': primaryParty,
+          'electorateSpecifications': electorateSpecifications!,
+        if (level != null) 'level': level!,
+        if (numberElected != null) 'numberElected': numberElected!,
+        if (numberVotingFor != null) 'numberVotingFor': numberVotingFor!,
+        if (office != null) 'office': office!,
+        if (primaryParties != null) 'primaryParties': primaryParties!,
+        if (primaryParty != null) 'primaryParty': primaryParty!,
         if (referendumBallotResponses != null)
-          'referendumBallotResponses': referendumBallotResponses,
-        if (referendumBrief != null) 'referendumBrief': referendumBrief,
+          'referendumBallotResponses': referendumBallotResponses!,
+        if (referendumBrief != null) 'referendumBrief': referendumBrief!,
         if (referendumConStatement != null)
-          'referendumConStatement': referendumConStatement,
+          'referendumConStatement': referendumConStatement!,
         if (referendumEffectOfAbstain != null)
-          'referendumEffectOfAbstain': referendumEffectOfAbstain,
+          'referendumEffectOfAbstain': referendumEffectOfAbstain!,
         if (referendumPassageThreshold != null)
-          'referendumPassageThreshold': referendumPassageThreshold,
+          'referendumPassageThreshold': referendumPassageThreshold!,
         if (referendumProStatement != null)
-          'referendumProStatement': referendumProStatement,
+          'referendumProStatement': referendumProStatement!,
         if (referendumSubtitle != null)
-          'referendumSubtitle': referendumSubtitle,
-        if (referendumText != null) 'referendumText': referendumText,
-        if (referendumTitle != null) 'referendumTitle': referendumTitle,
-        if (referendumUrl != null) 'referendumUrl': referendumUrl,
-        if (roles != null) 'roles': roles,
+          'referendumSubtitle': referendumSubtitle!,
+        if (referendumText != null) 'referendumText': referendumText!,
+        if (referendumTitle != null) 'referendumTitle': referendumTitle!,
+        if (referendumUrl != null) 'referendumUrl': referendumUrl!,
+        if (roles != null) 'roles': roles!,
         if (sources != null)
-          'sources': sources.map((value) => value.toJson()).toList(),
-        if (special != null) 'special': special,
-        if (type != null) 'type': type,
+          'sources': sources!.map((value) => value.toJson()).toList(),
+        if (special != null) 'special': special!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -889,8 +883,8 @@ class DivisionSearchResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "civicinfo#divisionSearchResponse".
-  core.String kind;
-  core.List<DivisionSearchResult> results;
+  core.String? kind;
+  core.List<DivisionSearchResult>? results;
 
   DivisionSearchResponse();
 
@@ -906,10 +900,10 @@ class DivisionSearchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
+          'results': results!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -922,13 +916,13 @@ class DivisionSearchResult {
   /// For example, ocd-division/country:us/state:wy will include an alias of
   /// ocd-division/country:us/state:wy/cd:1, since Wyoming has only one
   /// Congressional district.
-  core.List<core.String> aliases;
+  core.List<core.String>? aliases;
 
   /// The name of the division.
-  core.String name;
+  core.String? name;
 
   /// The unique Open Civic Data identifier for this division
-  core.String ocdId;
+  core.String? ocdId;
 
   DivisionSearchResult();
 
@@ -946,23 +940,23 @@ class DivisionSearchResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aliases != null) 'aliases': aliases,
-        if (name != null) 'name': name,
-        if (ocdId != null) 'ocdId': ocdId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aliases != null) 'aliases': aliases!,
+        if (name != null) 'name': name!,
+        if (ocdId != null) 'ocdId': ocdId!,
       };
 }
 
 /// Information about the election that was queried.
 class Election {
   /// Day of the election in YYYY-MM-DD format.
-  core.String electionDay;
+  core.String? electionDay;
 
   /// The unique ID of this election.
-  core.String id;
+  core.String? id;
 
   /// A displayable name for the election.
-  core.String name;
+  core.String? name;
 
   /// The political division of the election.
   ///
@@ -970,7 +964,7 @@ class Election {
   /// jurisdictions are covered by this election. This is typically a state such
   /// as ocd-division/country:us/state:ca or for the midterms or general
   /// election the entire US (i.e. ocd-division/country:us).
-  core.String ocdDivisionId;
+  core.String? ocdDivisionId;
 
   Election();
 
@@ -989,30 +983,30 @@ class Election {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (electionDay != null) 'electionDay': electionDay,
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
-        if (ocdDivisionId != null) 'ocdDivisionId': ocdDivisionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (electionDay != null) 'electionDay': electionDay!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (ocdDivisionId != null) 'ocdDivisionId': ocdDivisionId!,
       };
 }
 
 /// Information about individual election officials.
 class ElectionOfficial {
   /// The email address of the election official.
-  core.String emailAddress;
+  core.String? emailAddress;
 
   /// The fax number of the election official.
-  core.String faxNumber;
+  core.String? faxNumber;
 
   /// The full name of the election official.
-  core.String name;
+  core.String? name;
 
   /// The office phone number of the election official.
-  core.String officePhoneNumber;
+  core.String? officePhoneNumber;
 
   /// The title of the election official.
-  core.String title;
+  core.String? title;
 
   ElectionOfficial();
 
@@ -1034,24 +1028,24 @@ class ElectionOfficial {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (emailAddress != null) 'emailAddress': emailAddress,
-        if (faxNumber != null) 'faxNumber': faxNumber,
-        if (name != null) 'name': name,
-        if (officePhoneNumber != null) 'officePhoneNumber': officePhoneNumber,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (faxNumber != null) 'faxNumber': faxNumber!,
+        if (name != null) 'name': name!,
+        if (officePhoneNumber != null) 'officePhoneNumber': officePhoneNumber!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// The list of elections available for this version of the API.
 class ElectionsQueryResponse {
   /// A list of available elections
-  core.List<Election> elections;
+  core.List<Election>? elections;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "civicinfo#electionsQueryResponse".
-  core.String kind;
+  core.String? kind;
 
   ElectionsQueryResponse();
 
@@ -1067,10 +1061,10 @@ class ElectionsQueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (elections != null)
-          'elections': elections.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'elections': elections!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -1080,10 +1074,10 @@ class ElectoralDistrict {
   ///
   /// For example, the 34th State Senate district would have id "34" and a scope
   /// of stateUpper.
-  core.String id;
+  core.String? id;
 
   /// The name of the district.
-  core.String name;
+  core.String? name;
 
   /// The geographic scope of this district.
   ///
@@ -1105,7 +1099,7 @@ class ElectoralDistrict {
   /// - "ward"
   /// - "cityCouncil"
   /// - "national"
-  core.String scope;
+  core.String? scope;
 
   ElectoralDistrict();
 
@@ -1121,10 +1115,10 @@ class ElectoralDistrict {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
-        if (scope != null) 'scope': scope,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (scope != null) 'scope': scope!,
       };
 }
 
@@ -1140,17 +1134,17 @@ class GeographicDivision {
   /// be returned in this list.\n\nFor example, if this division's OCD ID is
   /// ocd-division/country:us/district:dc, this will contain
   /// ocd-division/country:us/state:dc.
-  core.List<core.String> alsoKnownAs;
+  core.List<core.String>? alsoKnownAs;
 
   /// The name of the division.
-  core.String name;
+  core.String? name;
 
   /// List of indices in the offices array, one for each office elected from
   /// this division.
   ///
   /// Will only be present if includeOffices was true (or absent) in the
   /// request.
-  core.List<core.int> officeIndices;
+  core.List<core.int>? officeIndices;
 
   GeographicDivision();
 
@@ -1170,17 +1164,17 @@ class GeographicDivision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alsoKnownAs != null) 'alsoKnownAs': alsoKnownAs,
-        if (name != null) 'name': name,
-        if (officeIndices != null) 'officeIndices': officeIndices,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alsoKnownAs != null) 'alsoKnownAs': alsoKnownAs!,
+        if (name != null) 'name': name!,
+        if (officeIndices != null) 'officeIndices': officeIndices!,
       };
 }
 
 /// Information about an Office held by one or more Officials.
 class Office {
   /// The OCD ID of the division with which this office is associated.
-  core.String divisionId;
+  core.String? divisionId;
 
   /// The levels of government of which this office is part.
   ///
@@ -1188,14 +1182,14 @@ class Office {
   /// at two different levels of government; for example, the mayor of the
   /// District of Columbia acts at "locality" level, but also effectively at
   /// both "administrative-area-2" and "administrative-area-1".
-  core.List<core.String> levels;
+  core.List<core.String>? levels;
 
   /// The human-readable name of the office.
-  core.String name;
+  core.String? name;
 
   /// List of indices in the officials array of people who presently hold this
   /// office.
-  core.List<core.int> officialIndices;
+  core.List<core.int>? officialIndices;
 
   /// The roles which this office fulfills.
   ///
@@ -1203,13 +1197,13 @@ class Office {
   /// of responsibilities of a given office, but are meant to be rough
   /// categories that are useful for general selection from or sorting of a list
   /// of offices.
-  core.List<core.String> roles;
+  core.List<core.String>? roles;
 
   /// A list of sources for this office.
   ///
   /// If multiple sources are listed, the data has been aggregated from those
   /// sources.
-  core.List<Source> sources;
+  core.List<Source>? sources;
 
   Office();
 
@@ -1243,42 +1237,42 @@ class Office {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (divisionId != null) 'divisionId': divisionId,
-        if (levels != null) 'levels': levels,
-        if (name != null) 'name': name,
-        if (officialIndices != null) 'officialIndices': officialIndices,
-        if (roles != null) 'roles': roles,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (divisionId != null) 'divisionId': divisionId!,
+        if (levels != null) 'levels': levels!,
+        if (name != null) 'name': name!,
+        if (officialIndices != null) 'officialIndices': officialIndices!,
+        if (roles != null) 'roles': roles!,
         if (sources != null)
-          'sources': sources.map((value) => value.toJson()).toList(),
+          'sources': sources!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Information about a person holding an elected office.
 class Official {
   /// Addresses at which to contact the official.
-  core.List<SimpleAddressType> address;
+  core.List<SimpleAddressType>? address;
 
   /// A list of known (social) media channels for this official.
-  core.List<Channel> channels;
+  core.List<Channel>? channels;
 
   /// The direct email addresses for the official.
-  core.List<core.String> emails;
+  core.List<core.String>? emails;
 
   /// The official's name.
-  core.String name;
+  core.String? name;
 
   /// The full name of the party the official belongs to.
-  core.String party;
+  core.String? party;
 
   /// The official's public contact phone numbers.
-  core.List<core.String> phones;
+  core.List<core.String>? phones;
 
   /// A URL for a photo of the official.
-  core.String photoUrl;
+  core.String? photoUrl;
 
   /// The official's public website URLs.
-  core.List<core.String> urls;
+  core.List<core.String>? urls;
 
   Official();
 
@@ -1321,17 +1315,17 @@ class Official {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (address != null)
-          'address': address.map((value) => value.toJson()).toList(),
+          'address': address!.map((value) => value.toJson()).toList(),
         if (channels != null)
-          'channels': channels.map((value) => value.toJson()).toList(),
-        if (emails != null) 'emails': emails,
-        if (name != null) 'name': name,
-        if (party != null) 'party': party,
-        if (phones != null) 'phones': phones,
-        if (photoUrl != null) 'photoUrl': photoUrl,
-        if (urls != null) 'urls': urls,
+          'channels': channels!.map((value) => value.toJson()).toList(),
+        if (emails != null) 'emails': emails!,
+        if (name != null) 'name': name!,
+        if (party != null) 'party': party!,
+        if (phones != null) 'phones': phones!,
+        if (photoUrl != null) 'photoUrl': photoUrl!,
+        if (urls != null) 'urls': urls!,
       };
 }
 
@@ -1341,49 +1335,49 @@ class Official {
 /// off location for a completed ballot.
 class PollingLocation {
   /// The address of the location.
-  SimpleAddressType address;
+  SimpleAddressType? address;
 
   /// The last date that this early vote site or drop off location may be used.
   ///
   /// This field is not populated for polling locations.
-  core.String endDate;
+  core.String? endDate;
 
   /// Latitude of the location, in degrees north of the equator.
   ///
   /// Note this field may not be available for some locations.
-  core.double latitude;
+  core.double? latitude;
 
   /// Longitude of the location, in degrees east of the Prime Meridian.
   ///
   /// Note this field may not be available for some locations.
-  core.double longitude;
+  core.double? longitude;
 
   /// The name of the early vote site or drop off location.
   ///
   /// This field is not populated for polling locations.
-  core.String name;
+  core.String? name;
 
   /// Notes about this location (e.g. accessibility ramp or entrance to use).
-  core.String notes;
+  core.String? notes;
 
   /// A description of when this location is open.
-  core.String pollingHours;
+  core.String? pollingHours;
 
   /// A list of sources for this location.
   ///
   /// If multiple sources are listed the data has been aggregated from those
   /// sources.
-  core.List<Source> sources;
+  core.List<Source>? sources;
 
   /// The first date that this early vote site or drop off location may be used.
   ///
   /// This field is not populated for polling locations.
-  core.String startDate;
+  core.String? startDate;
 
   /// The services provided by this early vote site or drop off location.
   ///
   /// This field is not populated for polling locations.
-  core.String voterServices;
+  core.String? voterServices;
 
   PollingLocation();
 
@@ -1424,48 +1418,49 @@ class PollingLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address.toJson(),
-        if (endDate != null) 'endDate': endDate,
-        if (latitude != null) 'latitude': latitude,
-        if (longitude != null) 'longitude': longitude,
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
-        if (pollingHours != null) 'pollingHours': pollingHours,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!.toJson(),
+        if (endDate != null) 'endDate': endDate!,
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
+        if (pollingHours != null) 'pollingHours': pollingHours!,
         if (sources != null)
-          'sources': sources.map((value) => value.toJson()).toList(),
-        if (startDate != null) 'startDate': startDate,
-        if (voterServices != null) 'voterServices': voterServices,
+          'sources': sources!.map((value) => value.toJson()).toList(),
+        if (startDate != null) 'startDate': startDate!,
+        if (voterServices != null) 'voterServices': voterServices!,
       };
 }
 
 class RepresentativeInfoData {
   /// A map of political geographic divisions that contain the requested
   /// address, keyed by the unique Open Civic Data identifier for this division.
-  core.Map<core.String, GeographicDivision> divisions;
+  core.Map<core.String, GeographicDivision>? divisions;
 
   /// Elected offices referenced by the divisions listed above.
   ///
   /// Will only be present if includeOffices was true in the request.
-  core.List<Office> offices;
+  core.List<Office>? offices;
 
   /// Officials holding the offices listed above.
   ///
   /// Will only be present if includeOffices was true in the request.
-  core.List<Official> officials;
+  core.List<Official>? officials;
 
   RepresentativeInfoData();
 
   RepresentativeInfoData.fromJson(core.Map _json) {
     if (_json.containsKey('divisions')) {
-      divisions =
-          (_json['divisions'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  GeographicDivision.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      divisions = (_json['divisions'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              GeographicDivision.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('offices')) {
       offices = (_json['offices'] as core.List)
@@ -1481,14 +1476,14 @@ class RepresentativeInfoData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (divisions != null)
           'divisions':
-              divisions.map((key, item) => core.MapEntry(key, item.toJson())),
+              divisions!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (offices != null)
-          'offices': offices.map((value) => value.toJson()).toList(),
+          'offices': offices!.map((value) => value.toJson()).toList(),
         if (officials != null)
-          'officials': officials.map((value) => value.toJson()).toList(),
+          'officials': officials!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1496,38 +1491,39 @@ class RepresentativeInfoData {
 class RepresentativeInfoResponse {
   /// A map of political geographic divisions that contain the requested
   /// address, keyed by the unique Open Civic Data identifier for this division.
-  core.Map<core.String, GeographicDivision> divisions;
+  core.Map<core.String, GeographicDivision>? divisions;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "civicinfo#representativeInfoResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The normalized version of the requested address
-  SimpleAddressType normalizedInput;
+  SimpleAddressType? normalizedInput;
 
   /// Elected offices referenced by the divisions listed above.
   ///
   /// Will only be present if includeOffices was true in the request.
-  core.List<Office> offices;
+  core.List<Office>? offices;
 
   /// Officials holding the offices listed above.
   ///
   /// Will only be present if includeOffices was true in the request.
-  core.List<Official> officials;
+  core.List<Official>? officials;
 
   RepresentativeInfoResponse();
 
   RepresentativeInfoResponse.fromJson(core.Map _json) {
     if (_json.containsKey('divisions')) {
-      divisions =
-          (_json['divisions'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  GeographicDivision.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      divisions = (_json['divisions'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              GeographicDivision.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -1550,42 +1546,42 @@ class RepresentativeInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (divisions != null)
           'divisions':
-              divisions.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (kind != null) 'kind': kind,
+              divisions!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (kind != null) 'kind': kind!,
         if (normalizedInput != null)
-          'normalizedInput': normalizedInput.toJson(),
+          'normalizedInput': normalizedInput!.toJson(),
         if (offices != null)
-          'offices': offices.map((value) => value.toJson()).toList(),
+          'offices': offices!.map((value) => value.toJson()).toList(),
         if (officials != null)
-          'officials': officials.map((value) => value.toJson()).toList(),
+          'officials': officials!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A simple representation of an address.
 class SimpleAddressType {
   /// The city or town for the address.
-  core.String city;
+  core.String? city;
 
   /// The street name and number of this address.
-  core.String line1;
+  core.String? line1;
 
   /// The second line the address, if needed.
-  core.String line2;
+  core.String? line2;
 
   /// The third line of the address, if needed.
-  core.String line3;
+  core.String? line3;
 
   /// The name of the location.
-  core.String locationName;
+  core.String? locationName;
 
   /// The US two letter state abbreviation of the address.
-  core.String state;
+  core.String? state;
 
   /// The US Postal Zip Code of the address.
-  core.String zip;
+  core.String? zip;
 
   SimpleAddressType();
 
@@ -1613,24 +1609,24 @@ class SimpleAddressType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (city != null) 'city': city,
-        if (line1 != null) 'line1': line1,
-        if (line2 != null) 'line2': line2,
-        if (line3 != null) 'line3': line3,
-        if (locationName != null) 'locationName': locationName,
-        if (state != null) 'state': state,
-        if (zip != null) 'zip': zip,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (city != null) 'city': city!,
+        if (line1 != null) 'line1': line1!,
+        if (line2 != null) 'line2': line2!,
+        if (line3 != null) 'line3': line3!,
+        if (locationName != null) 'locationName': locationName!,
+        if (state != null) 'state': state!,
+        if (zip != null) 'zip': zip!,
       };
 }
 
 /// Contains information about the data source for the element containing it.
 class Source {
   /// The name of the data source.
-  core.String name;
+  core.String? name;
 
   /// Whether this data comes from an official government source.
-  core.bool official;
+  core.bool? official;
 
   Source();
 
@@ -1643,16 +1639,16 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (official != null) 'official': official,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (official != null) 'official': official!,
       };
 }
 
 /// The result of a voter info lookup query.
 class VoterInfoResponse {
   /// Contests that will appear on the voter's ballot.
-  core.List<Contest> contests;
+  core.List<Contest>? contests;
 
   /// Locations where a voter is eligible to drop off a completed ballot.
   ///
@@ -1660,26 +1656,26 @@ class VoterInfoResponse {
   /// the location. The location may not have ballots available on the premises.
   /// These locations could be open on or before election day as indicated in
   /// the pollingHours field.
-  core.List<PollingLocation> dropOffLocations;
+  core.List<PollingLocation>? dropOffLocations;
 
   /// Locations where the voter is eligible to vote early, prior to election
   /// day.
-  core.List<PollingLocation> earlyVoteSites;
+  core.List<PollingLocation>? earlyVoteSites;
 
   /// The election that was queried.
-  Election election;
+  Election? election;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "civicinfo#voterInfoResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Specifies whether voters in the precinct vote only by mailing their
   /// ballots (with the possible option of dropping off their ballots as well).
-  core.bool mailOnly;
+  core.bool? mailOnly;
 
   /// The normalized version of the requested address
-  SimpleAddressType normalizedInput;
+  SimpleAddressType? normalizedInput;
 
   /// When there are multiple elections for a voter address, the otherElections
   /// field is populated in the API response and there are two possibilities: 1.
@@ -1692,16 +1688,16 @@ class VoterInfoResponse {
   /// applications, we recommend displaying these elections to the user to
   /// disambiguate. A second API request using the electionId field should be
   /// made for the election that is relevant to the user.
-  core.List<Election> otherElections;
+  core.List<Election>? otherElections;
 
   /// Locations where the voter is eligible to vote on election day.
-  core.List<PollingLocation> pollingLocations;
-  core.String precinctId;
+  core.List<PollingLocation>? pollingLocations;
+  core.String? precinctId;
 
   /// Local Election Information for the state that the voter votes in.
   ///
   /// For the US, there will only be one element in this array.
-  core.List<AdministrationRegion> state;
+  core.List<AdministrationRegion>? state;
 
   VoterInfoResponse();
 
@@ -1761,28 +1757,28 @@ class VoterInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (contests != null)
-          'contests': contests.map((value) => value.toJson()).toList(),
+          'contests': contests!.map((value) => value.toJson()).toList(),
         if (dropOffLocations != null)
           'dropOffLocations':
-              dropOffLocations.map((value) => value.toJson()).toList(),
+              dropOffLocations!.map((value) => value.toJson()).toList(),
         if (earlyVoteSites != null)
           'earlyVoteSites':
-              earlyVoteSites.map((value) => value.toJson()).toList(),
-        if (election != null) 'election': election.toJson(),
-        if (kind != null) 'kind': kind,
-        if (mailOnly != null) 'mailOnly': mailOnly,
+              earlyVoteSites!.map((value) => value.toJson()).toList(),
+        if (election != null) 'election': election!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (mailOnly != null) 'mailOnly': mailOnly!,
         if (normalizedInput != null)
-          'normalizedInput': normalizedInput.toJson(),
+          'normalizedInput': normalizedInput!.toJson(),
         if (otherElections != null)
           'otherElections':
-              otherElections.map((value) => value.toJson()).toList(),
+              otherElections!.map((value) => value.toJson()).toList(),
         if (pollingLocations != null)
           'pollingLocations':
-              pollingLocations.map((value) => value.toJson()).toList(),
-        if (precinctId != null) 'precinctId': precinctId,
+              pollingLocations!.map((value) => value.toJson()).toList(),
+        if (precinctId != null) 'precinctId': precinctId!,
         if (state != null)
-          'state': state.map((value) => value.toJson()).toList(),
+          'state': state!.map((value) => value.toJson()).toList(),
       };
 }

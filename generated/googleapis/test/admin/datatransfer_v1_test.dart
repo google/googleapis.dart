@@ -58,11 +58,23 @@ api.Application buildApplication() {
 void checkApplication(api.Application o) {
   buildCounterApplication++;
   if (buildCounterApplication < 3) {
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed5356(o.transferParams);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed5356(o.transferParams!);
   }
   buildCounterApplication--;
 }
@@ -96,9 +108,15 @@ api.ApplicationDataTransfer buildApplicationDataTransfer() {
 void checkApplicationDataTransfer(api.ApplicationDataTransfer o) {
   buildCounterApplicationDataTransfer++;
   if (buildCounterApplicationDataTransfer < 3) {
-    unittest.expect(o.applicationId, unittest.equals('foo'));
-    checkUnnamed5357(o.applicationTransferParams);
-    unittest.expect(o.applicationTransferStatus, unittest.equals('foo'));
+    unittest.expect(
+      o.applicationId!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed5357(o.applicationTransferParams!);
+    unittest.expect(
+      o.applicationTransferStatus!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterApplicationDataTransfer--;
 }
@@ -112,8 +130,14 @@ core.List<core.String> buildUnnamed5358() {
 
 void checkUnnamed5358(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterApplicationTransferParam = 0;
@@ -131,8 +155,11 @@ api.ApplicationTransferParam buildApplicationTransferParam() {
 void checkApplicationTransferParam(api.ApplicationTransferParam o) {
   buildCounterApplicationTransferParam++;
   if (buildCounterApplicationTransferParam < 3) {
-    unittest.expect(o.key, unittest.equals('foo'));
-    checkUnnamed5358(o.value);
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed5358(o.value!);
   }
   buildCounterApplicationTransferParam--;
 }
@@ -167,10 +194,19 @@ api.ApplicationsListResponse buildApplicationsListResponse() {
 void checkApplicationsListResponse(api.ApplicationsListResponse o) {
   buildCounterApplicationsListResponse++;
   if (buildCounterApplicationsListResponse < 3) {
-    checkUnnamed5359(o.applications);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed5359(o.applications!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterApplicationsListResponse--;
 }
@@ -209,15 +245,35 @@ api.DataTransfer buildDataTransfer() {
 void checkDataTransfer(api.DataTransfer o) {
   buildCounterDataTransfer++;
   if (buildCounterDataTransfer < 3) {
-    checkUnnamed5360(o.applicationDataTransfers);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.newOwnerUserId, unittest.equals('foo'));
-    unittest.expect(o.oldOwnerUserId, unittest.equals('foo'));
-    unittest.expect(o.overallTransferStatusCode, unittest.equals('foo'));
-    unittest.expect(o.requestTime,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    checkUnnamed5360(o.applicationDataTransfers!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.newOwnerUserId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.oldOwnerUserId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.overallTransferStatusCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestTime!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
   }
   buildCounterDataTransfer--;
 }
@@ -252,10 +308,19 @@ api.DataTransfersListResponse buildDataTransfersListResponse() {
 void checkDataTransfersListResponse(api.DataTransfersListResponse o) {
   buildCounterDataTransfersListResponse++;
   if (buildCounterDataTransfersListResponse < 3) {
-    checkUnnamed5361(o.dataTransfers);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed5361(o.dataTransfers!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDataTransfersListResponse--;
 }
@@ -321,14 +386,21 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 35),
-            unittest.equals("admin/datatransfer/v1/applications/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 35),
+          unittest.equals("admin/datatransfer/v1/applications/"),
+        );
         pathOffset += 35;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_applicationId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_applicationId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -345,7 +417,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -373,10 +448,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 34),
-            unittest.equals("admin/datatransfer/v1/applications"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 34),
+          unittest.equals("admin/datatransfer/v1/applications"),
+        );
         pathOffset += 34;
 
         var query = (req.url).query;
@@ -395,12 +474,21 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["customerId"].first, unittest.equals(arg_customerId));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+          queryMap["customerId"]!.first,
+          unittest.equals(arg_customerId),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -432,14 +520,21 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 32),
-            unittest.equals("admin/datatransfer/v1/transfers/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 32),
+          unittest.equals("admin/datatransfer/v1/transfers/"),
+        );
         pathOffset += 32;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_dataTransferId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_dataTransferId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -456,7 +551,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -486,10 +584,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 31),
-            unittest.equals("admin/datatransfer/v1/transfers"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 31),
+          unittest.equals("admin/datatransfer/v1/transfers"),
+        );
         pathOffset += 31;
 
         var query = (req.url).query;
@@ -507,7 +609,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -538,10 +643,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 31),
-            unittest.equals("admin/datatransfer/v1/transfers"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 31),
+          unittest.equals("admin/datatransfer/v1/transfers"),
+        );
         pathOffset += 31;
 
         var query = (req.url).query;
@@ -560,17 +669,33 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["customerId"].first, unittest.equals(arg_customerId));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["newOwnerUserId"].first,
-            unittest.equals(arg_newOwnerUserId));
-        unittest.expect(queryMap["oldOwnerUserId"].first,
-            unittest.equals(arg_oldOwnerUserId));
+          queryMap["customerId"]!.first,
+          unittest.equals(arg_customerId),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["status"].first, unittest.equals(arg_status));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["newOwnerUserId"]!.first,
+          unittest.equals(arg_newOwnerUserId),
+        );
+        unittest.expect(
+          queryMap["oldOwnerUserId"]!.first,
+          unittest.equals(arg_oldOwnerUserId),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["status"]!.first,
+          unittest.equals(arg_status),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

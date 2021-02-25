@@ -98,10 +98,9 @@ class AccessPoliciesResource {
   /// this method will complete with the same error.
   async.Future<Operation> create(
     AccessPolicy request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -140,11 +139,8 @@ class AccessPoliciesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -179,11 +175,8 @@ class AccessPoliciesResource {
   /// this method will complete with the same error.
   async.Future<AccessPolicy> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -223,10 +216,10 @@ class AccessPoliciesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAccessPoliciesResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String parent,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? parent,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -277,14 +270,10 @@ class AccessPoliciesResource {
   async.Future<Operation> patch(
     AccessPolicy request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -336,13 +325,9 @@ class AccessPoliciesAccessLevelsResource {
   async.Future<Operation> create(
     AccessLevel request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -383,11 +368,8 @@ class AccessPoliciesAccessLevelsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -435,12 +417,9 @@ class AccessPoliciesAccessLevelsResource {
   /// this method will complete with the same error.
   async.Future<AccessLevel> get(
     core.String name, {
-    core.String accessLevelFormat,
-    core.String $fields,
+    core.String? accessLevelFormat,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (accessLevelFormat != null) 'accessLevelFormat': [accessLevelFormat],
       if ($fields != null) 'fields': [$fields],
@@ -492,14 +471,11 @@ class AccessPoliciesAccessLevelsResource {
   /// this method will complete with the same error.
   async.Future<ListAccessLevelsResponse> list(
     core.String parent, {
-    core.String accessLevelFormat,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? accessLevelFormat,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (accessLevelFormat != null) 'accessLevelFormat': [accessLevelFormat],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -553,14 +529,10 @@ class AccessPoliciesAccessLevelsResource {
   async.Future<Operation> patch(
     AccessLevel request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -609,13 +581,9 @@ class AccessPoliciesAccessLevelsResource {
   async.Future<Operation> replaceAll(
     ReplaceAccessLevelsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -676,13 +644,9 @@ class AccessPoliciesServicePerimetersResource {
   async.Future<Operation> commit(
     CommitServicePerimetersRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -728,13 +692,9 @@ class AccessPoliciesServicePerimetersResource {
   async.Future<Operation> create(
     ServicePerimeter request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -776,11 +736,8 @@ class AccessPoliciesServicePerimetersResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -816,11 +773,8 @@ class AccessPoliciesServicePerimetersResource {
   /// this method will complete with the same error.
   async.Future<ServicePerimeter> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -862,13 +816,10 @@ class AccessPoliciesServicePerimetersResource {
   /// this method will complete with the same error.
   async.Future<ListServicePerimetersResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -922,14 +873,10 @@ class AccessPoliciesServicePerimetersResource {
   async.Future<Operation> patch(
     ServicePerimeter request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -977,13 +924,9 @@ class AccessPoliciesServicePerimetersResource {
   async.Future<Operation> replaceAll(
     ReplaceServicePerimetersRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1038,13 +981,9 @@ class OperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1084,11 +1023,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1125,11 +1061,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1178,14 +1111,11 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1247,13 +1177,9 @@ class OrganizationsGcpUserAccessBindingsResource {
   async.Future<Operation> create(
     GcpUserAccessBinding request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1296,11 +1222,8 @@ class OrganizationsGcpUserAccessBindingsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1336,11 +1259,8 @@ class OrganizationsGcpUserAccessBindingsResource {
   /// this method will complete with the same error.
   async.Future<GcpUserAccessBinding> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1383,13 +1303,10 @@ class OrganizationsGcpUserAccessBindingsResource {
   /// this method will complete with the same error.
   async.Future<ListGcpUserAccessBindingsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1445,14 +1362,10 @@ class OrganizationsGcpUserAccessBindingsResource {
   async.Future<Operation> patch(
     GcpUserAccessBinding request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1475,15 +1388,15 @@ class OrganizationsGcpUserAccessBindingsResource {
 /// applied.
 class AccessLevel {
   /// A `BasicLevel` composed of `Conditions`.
-  BasicLevel basic;
+  BasicLevel? basic;
 
   /// A `CustomLevel` written in the Common Expression Language.
-  CustomLevel custom;
+  CustomLevel? custom;
 
   /// Description of the `AccessLevel` and its use.
   ///
   /// Does not affect behavior.
-  core.String description;
+  core.String? description;
 
   /// Resource name for the Access Level.
   ///
@@ -1493,12 +1406,12 @@ class AccessLevel {
   /// of the `short_name` component is 50 characters.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Human readable title.
   ///
   /// Must be unique within the Policy.
-  core.String title;
+  core.String? title;
 
   AccessLevel();
 
@@ -1522,12 +1435,12 @@ class AccessLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (basic != null) 'basic': basic.toJson(),
-        if (custom != null) 'custom': custom.toJson(),
-        if (description != null) 'description': description,
-        if (name != null) 'name': name,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (basic != null) 'basic': basic!.toJson(),
+        if (custom != null) 'custom': custom!.toJson(),
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1545,14 +1458,14 @@ class AccessPolicy {
   /// Clients should not expect this to be in any specific format.
   ///
   /// Output only.
-  core.String etag;
+  core.String? etag;
 
   /// Resource name of the `AccessPolicy`.
   ///
   /// Format: `accessPolicies/{policy_id}`
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy.
   ///
@@ -1560,14 +1473,14 @@ class AccessPolicy {
   /// `organizations/{organization_id}`
   ///
   /// Required.
-  core.String parent;
+  core.String? parent;
 
   /// Human readable title.
   ///
   /// Does not affect behavior.
   ///
   /// Required.
-  core.String title;
+  core.String? title;
 
   AccessPolicy();
 
@@ -1586,11 +1499,11 @@ class AccessPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (name != null) 'name': name,
-        if (parent != null) 'parent': parent,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1602,14 +1515,14 @@ class ApiOperation {
   /// `service_name` field. A single MethodSelector entry with `*` specified for
   /// the `method` field will allow all methods AND permissions for the service
   /// specified in `service_name`.
-  core.List<MethodSelector> methodSelectors;
+  core.List<MethodSelector>? methodSelectors;
 
   /// The name of the API whose methods or permissions the IngressPolicy or
   /// EgressPolicy want to allow.
   ///
   /// A single ApiOperation with `service_name` field set to `*` will allow all
   /// methods AND permissions for all services.
-  core.String serviceName;
+  core.String? serviceName;
 
   ApiOperation();
 
@@ -1625,11 +1538,11 @@ class ApiOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (methodSelectors != null)
           'methodSelectors':
-              methodSelectors.map((value) => value.toJson()).toList(),
-        if (serviceName != null) 'serviceName': serviceName,
+              methodSelectors!.map((value) => value.toJson()).toList(),
+        if (serviceName != null) 'serviceName': serviceName!,
       };
 }
 
@@ -1646,12 +1559,12 @@ class BasicLevel {
   /// - "AND" : All `Conditions` must be true for the `BasicLevel` to be true.
   /// - "OR" : If at least one `Condition` is true, then the `BasicLevel` is
   /// true.
-  core.String combiningFunction;
+  core.String? combiningFunction;
 
   /// A list of requirements for the `AccessLevel` to be granted.
   ///
   /// Required.
-  core.List<Condition> conditions;
+  core.List<Condition>? conditions;
 
   BasicLevel();
 
@@ -1667,10 +1580,10 @@ class BasicLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (combiningFunction != null) 'combiningFunction': combiningFunction,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (combiningFunction != null) 'combiningFunction': combiningFunction!,
         if (conditions != null)
-          'conditions': conditions.map((value) => value.toJson()).toList(),
+          'conditions': conditions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1682,7 +1595,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A request to commit dry-run specs in all Service Perimeters belonging to an
@@ -1698,7 +1611,7 @@ class CommitServicePerimetersRequest {
   /// valid etag is provided.
   ///
   /// Optional.
-  core.String etag;
+  core.String? etag;
 
   CommitServicePerimetersRequest();
 
@@ -1708,8 +1621,8 @@ class CommitServicePerimetersRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
       };
 }
 
@@ -1718,7 +1631,7 @@ class CommitServicePerimetersRequest {
 /// This will be put inside of Operation.response field.
 class CommitServicePerimetersResponse {
   /// List of all the Service Perimeter instances in the Access Policy.
-  core.List<ServicePerimeter> servicePerimeters;
+  core.List<ServicePerimeter>? servicePerimeters;
 
   CommitServicePerimetersResponse();
 
@@ -1731,10 +1644,10 @@ class CommitServicePerimetersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (servicePerimeters != null)
           'servicePerimeters':
-              servicePerimeters.map((value) => value.toJson()).toList(),
+              servicePerimeters!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1750,7 +1663,7 @@ class Condition {
   /// to be true.
   ///
   /// If not specified, all devices are allowed.
-  DevicePolicy devicePolicy;
+  DevicePolicy? devicePolicy;
 
   /// CIDR block IP subnetwork specification.
   ///
@@ -1761,26 +1674,26 @@ class Condition {
   /// "2001:db8::/32" is accepted whereas "2001:db8::1/32" is not. The
   /// originating IP of a request must be in one of the listed subnets in order
   /// for this Condition to be true. If empty, all IP addresses are allowed.
-  core.List<core.String> ipSubnetworks;
+  core.List<core.String>? ipSubnetworks;
 
   /// The request must be made by one of the provided user or service accounts.
   ///
   /// Groups are not supported. Syntax: `user:{emailid}`
   /// `serviceAccount:{emailid}` If not specified, a request may come from any
   /// user.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Whether to negate the Condition.
   ///
   /// If true, the Condition becomes a NAND over its non-empty fields, each
   /// field must be false for the Condition overall to be satisfied. Defaults to
   /// false.
-  core.bool negate;
+  core.bool? negate;
 
   /// The request must originate from one of the provided countries/regions.
   ///
   /// Must be valid ISO 3166-1 alpha-2 codes.
-  core.List<core.String> regions;
+  core.List<core.String>? regions;
 
   /// A list of other access levels defined in the same `Policy`, referenced by
   /// resource name.
@@ -1788,7 +1701,7 @@ class Condition {
   /// Referencing an `AccessLevel` which does not exist is an error. All access
   /// levels listed must be granted for the Condition to be true. Example:
   /// "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
-  core.List<core.String> requiredAccessLevels;
+  core.List<core.String>? requiredAccessLevels;
 
   Condition();
 
@@ -1822,14 +1735,14 @@ class Condition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (devicePolicy != null) 'devicePolicy': devicePolicy.toJson(),
-        if (ipSubnetworks != null) 'ipSubnetworks': ipSubnetworks,
-        if (members != null) 'members': members,
-        if (negate != null) 'negate': negate,
-        if (regions != null) 'regions': regions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (devicePolicy != null) 'devicePolicy': devicePolicy!.toJson(),
+        if (ipSubnetworks != null) 'ipSubnetworks': ipSubnetworks!,
+        if (members != null) 'members': members!,
+        if (negate != null) 'negate': negate!,
+        if (regions != null) 'regions': regions!,
         if (requiredAccessLevels != null)
-          'requiredAccessLevels': requiredAccessLevels,
+          'requiredAccessLevels': requiredAccessLevels!,
       };
 }
 
@@ -1841,7 +1754,7 @@ class CustomLevel {
   /// A Cloud CEL expression evaluating to a boolean.
   ///
   /// Required.
-  Expr expr;
+  Expr? expr;
 
   CustomLevel();
 
@@ -1852,8 +1765,8 @@ class CustomLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expr != null) 'expr': expr.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expr != null) 'expr': expr!.toJson(),
       };
 }
 
@@ -1871,24 +1784,24 @@ class CustomLevel {
 class DevicePolicy {
   /// Allowed device management levels, an empty list allows all management
   /// levels.
-  core.List<core.String> allowedDeviceManagementLevels;
+  core.List<core.String>? allowedDeviceManagementLevels;
 
   /// Allowed encryptions statuses, an empty list allows all statuses.
-  core.List<core.String> allowedEncryptionStatuses;
+  core.List<core.String>? allowedEncryptionStatuses;
 
   /// Allowed OS versions, an empty list allows all types and all versions.
-  core.List<OsConstraint> osConstraints;
+  core.List<OsConstraint>? osConstraints;
 
   /// Whether the device needs to be approved by the customer admin.
-  core.bool requireAdminApproval;
+  core.bool? requireAdminApproval;
 
   /// Whether the device needs to be corp owned.
-  core.bool requireCorpOwned;
+  core.bool? requireCorpOwned;
 
   /// Whether or not screenlock is required for the DevicePolicy to be true.
   ///
   /// Defaults to `false`.
-  core.bool requireScreenlock;
+  core.bool? requireScreenlock;
 
   DevicePolicy();
 
@@ -1922,18 +1835,18 @@ class DevicePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedDeviceManagementLevels != null)
-          'allowedDeviceManagementLevels': allowedDeviceManagementLevels,
+          'allowedDeviceManagementLevels': allowedDeviceManagementLevels!,
         if (allowedEncryptionStatuses != null)
-          'allowedEncryptionStatuses': allowedEncryptionStatuses,
+          'allowedEncryptionStatuses': allowedEncryptionStatuses!,
         if (osConstraints != null)
           'osConstraints':
-              osConstraints.map((value) => value.toJson()).toList(),
+              osConstraints!.map((value) => value.toJson()).toList(),
         if (requireAdminApproval != null)
-          'requireAdminApproval': requireAdminApproval,
-        if (requireCorpOwned != null) 'requireCorpOwned': requireCorpOwned,
-        if (requireScreenlock != null) 'requireScreenlock': requireScreenlock,
+          'requireAdminApproval': requireAdminApproval!,
+        if (requireCorpOwned != null) 'requireCorpOwned': requireCorpOwned!,
+        if (requireScreenlock != null) 'requireScreenlock': requireScreenlock!,
       };
 }
 
@@ -1949,7 +1862,7 @@ class EgressFrom {
   ///
   /// Should be in the format of email address. The email address should
   /// represent individual user or service account only.
-  core.List<core.String> identities;
+  core.List<core.String>? identities;
 
   /// Specifies the type of identities that are allowed access to outside the
   /// perimeter.
@@ -1964,7 +1877,7 @@ class EgressFrom {
   /// perimeter.
   /// - "ANY_SERVICE_ACCOUNT" : Authorize access from all service accounts
   /// outside the perimeter.
-  core.String identityType;
+  core.String? identityType;
 
   EgressFrom();
 
@@ -1979,9 +1892,9 @@ class EgressFrom {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (identities != null) 'identities': identities,
-        if (identityType != null) 'identityType': identityType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (identities != null) 'identities': identities!,
+        if (identityType != null) 'identityType': identityType!,
       };
 }
 
@@ -2002,11 +1915,11 @@ class EgressFrom {
 class EgressPolicy {
   /// Defines conditions on the source of a request causing this EgressPolicy to
   /// apply.
-  EgressFrom egressFrom;
+  EgressFrom? egressFrom;
 
   /// Defines the conditions on the ApiOperation and destination resources that
   /// cause this EgressPolicy to apply.
-  EgressTo egressTo;
+  EgressTo? egressTo;
 
   EgressPolicy();
 
@@ -2021,9 +1934,9 @@ class EgressPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (egressFrom != null) 'egressFrom': egressFrom.toJson(),
-        if (egressTo != null) 'egressTo': egressTo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (egressFrom != null) 'egressFrom': egressFrom!.toJson(),
+        if (egressTo != null) 'egressTo': egressTo!.toJson(),
       };
 }
 
@@ -2038,7 +1951,7 @@ class EgressTo {
   /// A list of ApiOperations that this egress rule applies to.
   ///
   /// A request matches if it contains an operation/service in this list.
-  core.List<ApiOperation> operations;
+  core.List<ApiOperation>? operations;
 
   /// A list of resources, currently only projects in the form `projects/`, that
   /// match this to stanza.
@@ -2046,7 +1959,7 @@ class EgressTo {
   /// A request matches if it contains a resource in this list. If `*` is
   /// specified for resources, then this EgressTo rule will authorize access to
   /// all resources outside the perimeter.
-  core.List<core.String> resources;
+  core.List<core.String>? resources;
 
   EgressTo();
 
@@ -2064,10 +1977,10 @@ class EgressTo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
-        if (resources != null) 'resources': resources,
+          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
@@ -2085,7 +1998,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2113,24 +2026,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -2149,11 +2062,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -2167,7 +2080,7 @@ class GcpUserAccessBinding {
   /// "accessPolicies/9522/accessLevels/device_trusted"
   ///
   /// Required.
-  core.List<core.String> accessLevels;
+  core.List<core.String>? accessLevels;
 
   /// Google Group id whose members are subject to this binding's restrictions.
   ///
@@ -2178,7 +2091,7 @@ class GcpUserAccessBinding {
   /// addresses or aliases. Example: "01d520gv4vjcrht"
   ///
   /// Required. Immutable.
-  core.String groupKey;
+  core.String? groupKey;
 
   /// Assigned by the server during creation.
   ///
@@ -2189,7 +2102,7 @@ class GcpUserAccessBinding {
   /// "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
   ///
   /// Immutable.
-  core.String name;
+  core.String? name;
 
   GcpUserAccessBinding();
 
@@ -2207,10 +2120,10 @@ class GcpUserAccessBinding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessLevels != null) 'accessLevels': accessLevels,
-        if (groupKey != null) 'groupKey': groupKey,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessLevels != null) 'accessLevels': accessLevels!,
+        if (groupKey != null) 'groupKey': groupKey!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2222,7 +2135,7 @@ class IngressFrom {
   ///
   /// Should be in the format of email address. The email address should
   /// represent individual user or service account only.
-  core.List<core.String> identities;
+  core.List<core.String>? identities;
 
   /// Specifies the type of identities that are allowed access from outside the
   /// perimeter.
@@ -2237,10 +2150,10 @@ class IngressFrom {
   /// perimeter.
   /// - "ANY_SERVICE_ACCOUNT" : Authorize access from all service accounts
   /// outside the perimeter.
-  core.String identityType;
+  core.String? identityType;
 
   /// Sources that this IngressPolicy authorizes access from.
-  core.List<IngressSource> sources;
+  core.List<IngressSource>? sources;
 
   IngressFrom();
 
@@ -2261,11 +2174,11 @@ class IngressFrom {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (identities != null) 'identities': identities,
-        if (identityType != null) 'identityType': identityType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (identities != null) 'identities': identities!,
+        if (identityType != null) 'identityType': identityType!,
         if (sources != null)
-          'sources': sources.map((value) => value.toJson()).toList(),
+          'sources': sources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2284,11 +2197,11 @@ class IngressFrom {
 class IngressPolicy {
   /// Defines the conditions on the source of a request causing this
   /// IngressPolicy to apply.
-  IngressFrom ingressFrom;
+  IngressFrom? ingressFrom;
 
   /// Defines the conditions on the ApiOperation and request destination that
   /// cause this IngressPolicy to apply.
-  IngressTo ingressTo;
+  IngressTo? ingressTo;
 
   IngressPolicy();
 
@@ -2303,9 +2216,9 @@ class IngressPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ingressFrom != null) 'ingressFrom': ingressFrom.toJson(),
-        if (ingressTo != null) 'ingressTo': ingressTo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ingressFrom != null) 'ingressFrom': ingressFrom!.toJson(),
+        if (ingressTo != null) 'ingressTo': ingressTo!.toJson(),
       };
 }
 
@@ -2320,7 +2233,7 @@ class IngressSource {
   /// accessed via Google Cloud calls with request origins within the perimeter.
   /// Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If `*` is
   /// specified, then all IngressSources will be allowed.
-  core.String accessLevel;
+  core.String? accessLevel;
 
   /// A Google Cloud resource that is allowed to ingress the perimeter.
   ///
@@ -2329,7 +2242,7 @@ class IngressSource {
   /// The project may be in any Google Cloud organization, not just the
   /// organization that the perimeter is defined in. `*` is not allowed, the
   /// case of allowing all Google Cloud resources only is not supported.
-  core.String resource;
+  core.String? resource;
 
   IngressSource();
 
@@ -2342,9 +2255,9 @@ class IngressSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessLevel != null) 'accessLevel': accessLevel,
-        if (resource != null) 'resource': resource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessLevel != null) 'accessLevel': accessLevel!,
+        if (resource != null) 'resource': resource!,
       };
 }
 
@@ -2355,7 +2268,7 @@ class IngressSource {
 class IngressTo {
   /// A list of ApiOperations the sources specified in corresponding IngressFrom
   /// are allowed to perform in this ServicePerimeter.
-  core.List<ApiOperation> operations;
+  core.List<ApiOperation>? operations;
 
   /// A list of resources, currently only projects in the form `projects/`,
   /// protected by this ServicePerimeter that are allowed to be accessed by
@@ -2365,7 +2278,7 @@ class IngressTo {
   /// specified for resources, then this IngressTo rule will authorize access to
   /// all resources inside the perimeter, provided that the request also matches
   /// the `operations` field.
-  core.List<core.String> resources;
+  core.List<core.String>? resources;
 
   IngressTo();
 
@@ -2383,22 +2296,22 @@ class IngressTo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
-        if (resources != null) 'resources': resources,
+          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
       };
 }
 
 /// A response to `ListAccessLevelsRequest`.
 class ListAccessLevelsResponse {
   /// List of the Access Level instances.
-  core.List<AccessLevel> accessLevels;
+  core.List<AccessLevel>? accessLevels;
 
   /// The pagination token to retrieve the next page of results.
   ///
   /// If the value is empty, no further results remain.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListAccessLevelsResponse();
 
@@ -2414,22 +2327,22 @@ class ListAccessLevelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accessLevels != null)
-          'accessLevels': accessLevels.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'accessLevels': accessLevels!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// A response to `ListAccessPoliciesRequest`.
 class ListAccessPoliciesResponse {
   /// List of the AccessPolicy instances.
-  core.List<AccessPolicy> accessPolicies;
+  core.List<AccessPolicy>? accessPolicies;
 
   /// The pagination token to retrieve the next page of results.
   ///
   /// If the value is empty, no further results remain.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListAccessPoliciesResponse();
 
@@ -2445,23 +2358,23 @@ class ListAccessPoliciesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accessPolicies != null)
           'accessPolicies':
-              accessPolicies.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              accessPolicies!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response of ListGcpUserAccessBindings.
 class ListGcpUserAccessBindingsResponse {
   /// GcpUserAccessBinding
-  core.List<GcpUserAccessBinding> gcpUserAccessBindings;
+  core.List<GcpUserAccessBinding>? gcpUserAccessBindings;
 
   /// Token to get the next page of items.
   ///
   /// If blank, there are no more items.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListGcpUserAccessBindingsResponse();
 
@@ -2477,21 +2390,21 @@ class ListGcpUserAccessBindingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (gcpUserAccessBindings != null)
           'gcpUserAccessBindings':
-              gcpUserAccessBindings.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              gcpUserAccessBindings!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -2507,10 +2420,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2519,10 +2432,10 @@ class ListServicePerimetersResponse {
   /// The pagination token to retrieve the next page of results.
   ///
   /// If the value is empty, no further results remain.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of the Service Perimeter instances.
-  core.List<ServicePerimeter> servicePerimeters;
+  core.List<ServicePerimeter>? servicePerimeters;
 
   ListServicePerimetersResponse();
 
@@ -2538,11 +2451,11 @@ class ListServicePerimetersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (servicePerimeters != null)
           'servicePerimeters':
-              servicePerimeters.map((value) => value.toJson()).toList(),
+              servicePerimeters!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2553,11 +2466,11 @@ class MethodSelector {
   ///
   /// If `*` used as value for `method`, then ALL methods and permissions are
   /// allowed.
-  core.String method;
+  core.String? method;
 
   /// Value for `permission` should be a valid Cloud IAM permission for the
   /// corresponding `service_name` in ApiOperation.
-  core.String permission;
+  core.String? permission;
 
   MethodSelector();
 
@@ -2570,9 +2483,9 @@ class MethodSelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (method != null) 'method': method,
-        if (permission != null) 'permission': permission,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (method != null) 'method': method!,
+        if (permission != null) 'permission': permission!,
       };
 }
 
@@ -2583,10 +2496,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -2597,14 +2510,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -2617,7 +2530,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -2652,12 +2565,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -2667,7 +2580,7 @@ class OsConstraint {
   ///
   /// If not set, any version of this OS satisfies the constraint. Format:
   /// `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
-  core.String minimumVersion;
+  core.String? minimumVersion;
 
   /// The allowed OS type.
   ///
@@ -2681,14 +2594,14 @@ class OsConstraint {
   /// - "DESKTOP_CHROME_OS" : A desktop ChromeOS operating system.
   /// - "ANDROID" : An Android operating system.
   /// - "IOS" : An iOS operating system.
-  core.String osType;
+  core.String? osType;
 
   /// Only allows requests from devices with a verified Chrome OS.
   ///
   /// Verifications includes requirements that the device is enterprise-managed,
   /// conformant to domain policies, and the caller has permission to call the
   /// API targeted by the request.
-  core.bool requireVerifiedChromeOs;
+  core.bool? requireVerifiedChromeOs;
 
   OsConstraint();
 
@@ -2704,11 +2617,11 @@ class OsConstraint {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (minimumVersion != null) 'minimumVersion': minimumVersion,
-        if (osType != null) 'osType': osType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (minimumVersion != null) 'minimumVersion': minimumVersion!,
+        if (osType != null) 'osType': osType!,
         if (requireVerifiedChromeOs != null)
-          'requireVerifiedChromeOs': requireVerifiedChromeOs,
+          'requireVerifiedChromeOs': requireVerifiedChromeOs!,
       };
 }
 
@@ -2721,7 +2634,7 @@ class ReplaceAccessLevelsRequest {
   /// in the Access Policy.
   ///
   /// Required.
-  core.List<AccessLevel> accessLevels;
+  core.List<AccessLevel>? accessLevels;
 
   /// The etag for the version of the Access Policy that this replace operation
   /// is to be performed on.
@@ -2733,7 +2646,7 @@ class ReplaceAccessLevelsRequest {
   /// as if a valid etag is provided.
   ///
   /// Optional.
-  core.String etag;
+  core.String? etag;
 
   ReplaceAccessLevelsRequest();
 
@@ -2749,10 +2662,10 @@ class ReplaceAccessLevelsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accessLevels != null)
-          'accessLevels': accessLevels.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
+          'accessLevels': accessLevels!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
       };
 }
 
@@ -2761,7 +2674,7 @@ class ReplaceAccessLevelsRequest {
 /// This will be put inside of Operation.response field.
 class ReplaceAccessLevelsResponse {
   /// List of the Access Level instances.
-  core.List<AccessLevel> accessLevels;
+  core.List<AccessLevel>? accessLevels;
 
   ReplaceAccessLevelsResponse();
 
@@ -2774,9 +2687,9 @@ class ReplaceAccessLevelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accessLevels != null)
-          'accessLevels': accessLevels.map((value) => value.toJson()).toList(),
+          'accessLevels': accessLevels!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2795,13 +2708,13 @@ class ReplaceServicePerimetersRequest {
   /// as if a valid etag is provided.
   ///
   /// Optional.
-  core.String etag;
+  core.String? etag;
 
   /// The desired Service Perimeters that should replace all existing Service
   /// Perimeters in the Access Policy.
   ///
   /// Required.
-  core.List<ServicePerimeter> servicePerimeters;
+  core.List<ServicePerimeter>? servicePerimeters;
 
   ReplaceServicePerimetersRequest();
 
@@ -2817,11 +2730,11 @@ class ReplaceServicePerimetersRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (servicePerimeters != null)
           'servicePerimeters':
-              servicePerimeters.map((value) => value.toJson()).toList(),
+              servicePerimeters!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2830,7 +2743,7 @@ class ReplaceServicePerimetersRequest {
 /// This will be put inside of Operation.response field.
 class ReplaceServicePerimetersResponse {
   /// List of the Service Perimeter instances.
-  core.List<ServicePerimeter> servicePerimeters;
+  core.List<ServicePerimeter>? servicePerimeters;
 
   ReplaceServicePerimetersResponse();
 
@@ -2843,10 +2756,10 @@ class ReplaceServicePerimetersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (servicePerimeters != null)
           'servicePerimeters':
-              servicePerimeters.map((value) => value.toJson()).toList(),
+              servicePerimeters!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2866,7 +2779,7 @@ class ServicePerimeter {
   /// Description of the `ServicePerimeter` and its use.
   ///
   /// Does not affect behavior.
-  core.String description;
+  core.String? description;
 
   /// Resource name for the ServicePerimeter.
   ///
@@ -2875,7 +2788,7 @@ class ServicePerimeter {
   /// `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Perimeter type indicator.
   ///
@@ -2887,25 +2800,25 @@ class ServicePerimeter {
   /// Possible string values are:
   /// - "PERIMETER_TYPE_REGULAR" : Regular Perimeter.
   /// - "PERIMETER_TYPE_BRIDGE" : Perimeter Bridge.
-  core.String perimeterType;
+  core.String? perimeterType;
 
   /// Proposed (or dry run) ServicePerimeter configuration.
   ///
   /// This configuration allows to specify and test ServicePerimeter
   /// configuration without enforcing actual access restrictions. Only allowed
   /// to be set when the "use_explicit_dry_run_spec" flag is set.
-  ServicePerimeterConfig spec;
+  ServicePerimeterConfig? spec;
 
   /// Current ServicePerimeter configuration.
   ///
   /// Specifies sets of resources, restricted services and access levels that
   /// determine perimeter content and boundaries.
-  ServicePerimeterConfig status;
+  ServicePerimeterConfig? status;
 
   /// Human readable title.
   ///
   /// Must be unique within the Policy.
-  core.String title;
+  core.String? title;
 
   /// Use explicit dry run spec flag.
   ///
@@ -2919,7 +2832,7 @@ class ServicePerimeter {
   /// between currently enforced and suggested restrictions.
   /// use_explicit_dry_run_spec must bet set to True if any of the fields in the
   /// spec are set to non-default values.
-  core.bool useExplicitDryRunSpec;
+  core.bool? useExplicitDryRunSpec;
 
   ServicePerimeter();
 
@@ -2949,15 +2862,15 @@ class ServicePerimeter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (name != null) 'name': name,
-        if (perimeterType != null) 'perimeterType': perimeterType,
-        if (spec != null) 'spec': spec.toJson(),
-        if (status != null) 'status': status.toJson(),
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (perimeterType != null) 'perimeterType': perimeterType!,
+        if (spec != null) 'spec': spec!.toJson(),
+        if (status != null) 'status': status!.toJson(),
+        if (title != null) 'title': title!,
         if (useExplicitDryRunSpec != null)
-          'useExplicitDryRunSpec': useExplicitDryRunSpec,
+          'useExplicitDryRunSpec': useExplicitDryRunSpec!,
       };
 }
 
@@ -2974,26 +2887,26 @@ class ServicePerimeterConfig {
   /// within the perimeter. Example:
   /// `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter
   /// Bridge, must be empty.
-  core.List<core.String> accessLevels;
+  core.List<core.String>? accessLevels;
 
   /// List of EgressPolicies to apply to the perimeter.
   ///
   /// A perimeter may have multiple EgressPolicies, each of which is evaluated
   /// separately. Access is granted if any EgressPolicy grants it. Must be empty
   /// for a perimeter bridge.
-  core.List<EgressPolicy> egressPolicies;
+  core.List<EgressPolicy>? egressPolicies;
 
   /// List of IngressPolicies to apply to the perimeter.
   ///
   /// A perimeter may have multiple IngressPolicies, each of which is evaluated
   /// separately. Access is granted if any Ingress Policy grants it. Must be
   /// empty for a perimeter bridge.
-  core.List<IngressPolicy> ingressPolicies;
+  core.List<IngressPolicy>? ingressPolicies;
 
   /// A list of Google Cloud resources that are inside of the service perimeter.
   ///
   /// Currently only projects are allowed. Format: `projects/{project_number}`
-  core.List<core.String> resources;
+  core.List<core.String>? resources;
 
   /// Google Cloud services that are subject to the Service Perimeter
   /// restrictions.
@@ -3001,10 +2914,10 @@ class ServicePerimeterConfig {
   /// For example, if `storage.googleapis.com` is specified, access to the
   /// storage buckets inside the perimeter must meet the perimeter's access
   /// restrictions.
-  core.List<core.String> restrictedServices;
+  core.List<core.String>? restrictedServices;
 
   /// Configuration for APIs allowed within Perimeter.
-  VpcAccessibleServices vpcAccessibleServices;
+  VpcAccessibleServices? vpcAccessibleServices;
 
   ServicePerimeterConfig();
 
@@ -3043,19 +2956,19 @@ class ServicePerimeterConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessLevels != null) 'accessLevels': accessLevels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessLevels != null) 'accessLevels': accessLevels!,
         if (egressPolicies != null)
           'egressPolicies':
-              egressPolicies.map((value) => value.toJson()).toList(),
+              egressPolicies!.map((value) => value.toJson()).toList(),
         if (ingressPolicies != null)
           'ingressPolicies':
-              ingressPolicies.map((value) => value.toJson()).toList(),
-        if (resources != null) 'resources': resources,
+              ingressPolicies!.map((value) => value.toJson()).toList(),
+        if (resources != null) 'resources': resources!,
         if (restrictedServices != null)
-          'restrictedServices': restrictedServices,
+          'restrictedServices': restrictedServices!,
         if (vpcAccessibleServices != null)
-          'vpcAccessibleServices': vpcAccessibleServices.toJson(),
+          'vpcAccessibleServices': vpcAccessibleServices!.toJson(),
       };
 }
 
@@ -3068,7 +2981,7 @@ class ServicePerimeterConfig {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -3076,13 +2989,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -3106,10 +3019,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -3121,11 +3034,11 @@ class VpcAccessibleServices {
   /// of individual services, as well as include the 'RESTRICTED-SERVICES'
   /// value, which automatically includes all of the services protected by the
   /// perimeter.
-  core.List<core.String> allowedServices;
+  core.List<core.String>? allowedServices;
 
   /// Whether to restrict API calls within the Service Perimeter to the list of
   /// APIs specified in 'allowed_services'.
-  core.bool enableRestriction;
+  core.bool? enableRestriction;
 
   VpcAccessibleServices();
 
@@ -3140,8 +3053,8 @@ class VpcAccessibleServices {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowedServices != null) 'allowedServices': allowedServices,
-        if (enableRestriction != null) 'enableRestriction': enableRestriction,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowedServices != null) 'allowedServices': allowedServices!,
+        if (enableRestriction != null) 'enableRestriction': enableRestriction!,
       };
 }

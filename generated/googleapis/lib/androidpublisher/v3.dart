@@ -126,14 +126,8 @@ class EditsResource {
   async.Future<AppEdit> commit(
     core.String packageName,
     core.String editId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -171,14 +165,8 @@ class EditsResource {
   async.Future<void> delete(
     core.String packageName,
     core.String editId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -217,14 +205,8 @@ class EditsResource {
   async.Future<AppEdit> get(
     core.String packageName,
     core.String editId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -263,13 +245,9 @@ class EditsResource {
   async.Future<AppEdit> insert(
     AppEdit request,
     core.String packageName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -308,14 +286,8 @@ class EditsResource {
   async.Future<AppEdit> validate(
     core.String packageName,
     core.String editId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -368,16 +340,9 @@ class EditsApksResource {
     ApksAddExternallyHostedRequest request,
     core.String packageName,
     core.String editId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -419,14 +384,8 @@ class EditsApksResource {
   async.Future<ApksListResponse> list(
     core.String packageName,
     core.String editId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -473,16 +432,10 @@ class EditsApksResource {
   async.Future<Apk> upload(
     core.String packageName,
     core.String editId, {
-    core.String $fields,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -545,14 +498,8 @@ class EditsBundlesResource {
   async.Future<BundlesListResponse> list(
     core.String packageName,
     core.String editId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -609,17 +556,11 @@ class EditsBundlesResource {
   async.Future<Bundle> upload(
     core.String packageName,
     core.String editId, {
-    core.bool ackBundleInstallationWarning,
-    core.String $fields,
+    core.bool? ackBundleInstallationWarning,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (ackBundleInstallationWarning != null)
         'ackBundleInstallationWarning': ['${ackBundleInstallationWarning}'],
@@ -703,22 +644,10 @@ class EditsDeobfuscationfilesResource {
     core.String editId,
     core.int apkVersionCode,
     core.String deobfuscationFileType, {
-    core.String $fields,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (apkVersionCode == null) {
-      throw core.ArgumentError('Parameter apkVersionCode is required.');
-    }
-    if (deobfuscationFileType == null) {
-      throw core.ArgumentError('Parameter deobfuscationFileType is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -791,14 +720,8 @@ class EditsDetailsResource {
   async.Future<AppDetails> get(
     core.String packageName,
     core.String editId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -842,16 +765,9 @@ class EditsDetailsResource {
     AppDetails request,
     core.String packageName,
     core.String editId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -896,16 +812,9 @@ class EditsDetailsResource {
     AppDetails request,
     core.String packageName,
     core.String editId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -966,20 +875,8 @@ class EditsExpansionfilesResource {
     core.String editId,
     core.int apkVersionCode,
     core.String expansionFileType, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (apkVersionCode == null) {
-      throw core.ArgumentError('Parameter apkVersionCode is required.');
-    }
-    if (expansionFileType == null) {
-      throw core.ArgumentError('Parameter expansionFileType is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1041,22 +938,9 @@ class EditsExpansionfilesResource {
     core.String editId,
     core.int apkVersionCode,
     core.String expansionFileType, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (apkVersionCode == null) {
-      throw core.ArgumentError('Parameter apkVersionCode is required.');
-    }
-    if (expansionFileType == null) {
-      throw core.ArgumentError('Parameter expansionFileType is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1119,22 +1003,9 @@ class EditsExpansionfilesResource {
     core.String editId,
     core.int apkVersionCode,
     core.String expansionFileType, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (apkVersionCode == null) {
-      throw core.ArgumentError('Parameter apkVersionCode is required.');
-    }
-    if (expansionFileType == null) {
-      throw core.ArgumentError('Parameter expansionFileType is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1197,22 +1068,10 @@ class EditsExpansionfilesResource {
     core.String editId,
     core.int apkVersionCode,
     core.String expansionFileType, {
-    core.String $fields,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (apkVersionCode == null) {
-      throw core.ArgumentError('Parameter apkVersionCode is required.');
-    }
-    if (expansionFileType == null) {
-      throw core.ArgumentError('Parameter expansionFileType is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1304,23 +1163,8 @@ class EditsImagesResource {
     core.String language,
     core.String imageType,
     core.String imageId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (language == null) {
-      throw core.ArgumentError('Parameter language is required.');
-    }
-    if (imageType == null) {
-      throw core.ArgumentError('Parameter imageType is required.');
-    }
-    if (imageId == null) {
-      throw core.ArgumentError('Parameter imageId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1386,20 +1230,8 @@ class EditsImagesResource {
     core.String editId,
     core.String language,
     core.String imageType, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (language == null) {
-      throw core.ArgumentError('Parameter language is required.');
-    }
-    if (imageType == null) {
-      throw core.ArgumentError('Parameter imageType is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1464,20 +1296,8 @@ class EditsImagesResource {
     core.String editId,
     core.String language,
     core.String imageType, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (language == null) {
-      throw core.ArgumentError('Parameter language is required.');
-    }
-    if (imageType == null) {
-      throw core.ArgumentError('Parameter imageType is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1546,22 +1366,10 @@ class EditsImagesResource {
     core.String editId,
     core.String language,
     core.String imageType, {
-    core.String $fields,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (language == null) {
-      throw core.ArgumentError('Parameter language is required.');
-    }
-    if (imageType == null) {
-      throw core.ArgumentError('Parameter imageType is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1636,17 +1444,8 @@ class EditsListingsResource {
     core.String packageName,
     core.String editId,
     core.String language, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (language == null) {
-      throw core.ArgumentError('Parameter language is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1685,14 +1484,8 @@ class EditsListingsResource {
   async.Future<void> deleteall(
     core.String packageName,
     core.String editId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1736,17 +1529,8 @@ class EditsListingsResource {
     core.String packageName,
     core.String editId,
     core.String language, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (language == null) {
-      throw core.ArgumentError('Parameter language is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1787,14 +1571,8 @@ class EditsListingsResource {
   async.Future<ListingsListResponse> list(
     core.String packageName,
     core.String editId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1842,19 +1620,9 @@ class EditsListingsResource {
     core.String packageName,
     core.String editId,
     core.String language, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (language == null) {
-      throw core.ArgumentError('Parameter language is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1903,19 +1671,9 @@ class EditsListingsResource {
     core.String packageName,
     core.String editId,
     core.String language, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (language == null) {
-      throw core.ArgumentError('Parameter language is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1966,17 +1724,8 @@ class EditsTestersResource {
     core.String packageName,
     core.String editId,
     core.String track, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (track == null) {
-      throw core.ArgumentError('Parameter track is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2023,19 +1772,9 @@ class EditsTestersResource {
     core.String packageName,
     core.String editId,
     core.String track, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (track == null) {
-      throw core.ArgumentError('Parameter track is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2083,19 +1822,9 @@ class EditsTestersResource {
     core.String packageName,
     core.String editId,
     core.String track, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (track == null) {
-      throw core.ArgumentError('Parameter track is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2146,17 +1875,8 @@ class EditsTracksResource {
     core.String packageName,
     core.String editId,
     core.String track, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (track == null) {
-      throw core.ArgumentError('Parameter track is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2197,14 +1917,8 @@ class EditsTracksResource {
   async.Future<TracksListResponse> list(
     core.String packageName,
     core.String editId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2251,19 +1965,9 @@ class EditsTracksResource {
     core.String packageName,
     core.String editId,
     core.String track, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (track == null) {
-      throw core.ArgumentError('Parameter track is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2311,19 +2015,9 @@ class EditsTracksResource {
     core.String packageName,
     core.String editId,
     core.String track, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (editId == null) {
-      throw core.ArgumentError('Parameter editId is required.');
-    }
-    if (track == null) {
-      throw core.ArgumentError('Parameter track is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2369,14 +2063,8 @@ class InappproductsResource {
   async.Future<void> delete(
     core.String packageName,
     core.String sku, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (sku == null) {
-      throw core.ArgumentError('Parameter sku is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2415,14 +2103,8 @@ class InappproductsResource {
   async.Future<InAppProduct> get(
     core.String packageName,
     core.String sku, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (sku == null) {
-      throw core.ArgumentError('Parameter sku is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2467,14 +2149,10 @@ class InappproductsResource {
   async.Future<InAppProduct> insert(
     InAppProduct request,
     core.String packageName, {
-    core.bool autoConvertMissingPrices,
-    core.String $fields,
+    core.bool? autoConvertMissingPrices,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (autoConvertMissingPrices != null)
         'autoConvertMissingPrices': ['${autoConvertMissingPrices}'],
@@ -2519,14 +2197,11 @@ class InappproductsResource {
   /// this method will complete with the same error.
   async.Future<InappproductsListResponse> list(
     core.String packageName, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String token,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? token,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (startIndex != null) 'startIndex': ['${startIndex}'],
@@ -2576,17 +2251,10 @@ class InappproductsResource {
     InAppProduct request,
     core.String packageName,
     core.String sku, {
-    core.bool autoConvertMissingPrices,
-    core.String $fields,
+    core.bool? autoConvertMissingPrices,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (sku == null) {
-      throw core.ArgumentError('Parameter sku is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (autoConvertMissingPrices != null)
         'autoConvertMissingPrices': ['${autoConvertMissingPrices}'],
@@ -2637,17 +2305,10 @@ class InappproductsResource {
     InAppProduct request,
     core.String packageName,
     core.String sku, {
-    core.bool autoConvertMissingPrices,
-    core.String $fields,
+    core.bool? autoConvertMissingPrices,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (sku == null) {
-      throw core.ArgumentError('Parameter sku is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (autoConvertMissingPrices != null)
         'autoConvertMissingPrices': ['${autoConvertMissingPrices}'],
@@ -2706,13 +2367,10 @@ class InternalappsharingartifactsResource {
   /// this method will complete with the same error.
   async.Future<InternalAppSharingArtifact> uploadapk(
     core.String packageName, {
-    core.String $fields,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2774,13 +2432,10 @@ class InternalappsharingartifactsResource {
   /// this method will complete with the same error.
   async.Future<InternalAppSharingArtifact> uploadbundle(
     core.String packageName, {
-    core.String $fields,
+    core.String? $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
-    commons.Media uploadMedia,
+    commons.Media? uploadMedia,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2845,15 +2500,9 @@ class OrdersResource {
   async.Future<void> refund(
     core.String packageName,
     core.String orderId, {
-    core.bool revoke,
-    core.String $fields,
+    core.bool? revoke,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (orderId == null) {
-      throw core.ArgumentError('Parameter orderId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (revoke != null) 'revoke': ['${revoke}'],
       if ($fields != null) 'fields': [$fields],
@@ -2920,19 +2569,9 @@ class PurchasesProductsResource {
     core.String packageName,
     core.String productId,
     core.String token, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
-    if (token == null) {
-      throw core.ArgumentError('Parameter token is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2981,17 +2620,8 @@ class PurchasesProductsResource {
     core.String packageName,
     core.String productId,
     core.String token, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (productId == null) {
-      throw core.ArgumentError('Parameter productId is required.');
-    }
-    if (token == null) {
-      throw core.ArgumentError('Parameter token is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3047,19 +2677,9 @@ class PurchasesSubscriptionsResource {
     core.String packageName,
     core.String subscriptionId,
     core.String token, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (subscriptionId == null) {
-      throw core.ArgumentError('Parameter subscriptionId is required.');
-    }
-    if (token == null) {
-      throw core.ArgumentError('Parameter token is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3108,17 +2728,8 @@ class PurchasesSubscriptionsResource {
     core.String packageName,
     core.String subscriptionId,
     core.String token, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (subscriptionId == null) {
-      throw core.ArgumentError('Parameter subscriptionId is required.');
-    }
-    if (token == null) {
-      throw core.ArgumentError('Parameter token is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3170,19 +2781,9 @@ class PurchasesSubscriptionsResource {
     core.String packageName,
     core.String subscriptionId,
     core.String token, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (subscriptionId == null) {
-      throw core.ArgumentError('Parameter subscriptionId is required.');
-    }
-    if (token == null) {
-      throw core.ArgumentError('Parameter token is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3233,17 +2834,8 @@ class PurchasesSubscriptionsResource {
     core.String packageName,
     core.String subscriptionId,
     core.String token, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (subscriptionId == null) {
-      throw core.ArgumentError('Parameter subscriptionId is required.');
-    }
-    if (token == null) {
-      throw core.ArgumentError('Parameter token is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3290,17 +2882,8 @@ class PurchasesSubscriptionsResource {
     core.String packageName,
     core.String subscriptionId,
     core.String token, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (subscriptionId == null) {
-      throw core.ArgumentError('Parameter subscriptionId is required.');
-    }
-    if (token == null) {
-      throw core.ArgumentError('Parameter token is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3349,17 +2932,8 @@ class PurchasesSubscriptionsResource {
     core.String packageName,
     core.String subscriptionId,
     core.String token, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (subscriptionId == null) {
-      throw core.ArgumentError('Parameter subscriptionId is required.');
-    }
-    if (token == null) {
-      throw core.ArgumentError('Parameter token is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3439,17 +3013,14 @@ class PurchasesVoidedpurchasesResource {
   /// this method will complete with the same error.
   async.Future<VoidedPurchasesListResponse> list(
     core.String packageName, {
-    core.String endTime,
-    core.int maxResults,
-    core.int startIndex,
-    core.String startTime,
-    core.String token,
-    core.int type,
-    core.String $fields,
+    core.String? endTime,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? startTime,
+    core.String? token,
+    core.int? type,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (endTime != null) 'endTime': [endTime],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -3502,15 +3073,9 @@ class ReviewsResource {
   async.Future<Review> get(
     core.String packageName,
     core.String reviewId, {
-    core.String translationLanguage,
-    core.String $fields,
+    core.String? translationLanguage,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (reviewId == null) {
-      throw core.ArgumentError('Parameter reviewId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (translationLanguage != null)
         'translationLanguage': [translationLanguage],
@@ -3556,15 +3121,12 @@ class ReviewsResource {
   /// this method will complete with the same error.
   async.Future<ReviewsListResponse> list(
     core.String packageName, {
-    core.int maxResults,
-    core.int startIndex,
-    core.String token,
-    core.String translationLanguage,
-    core.String $fields,
+    core.int? maxResults,
+    core.int? startIndex,
+    core.String? token,
+    core.String? translationLanguage,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (startIndex != null) 'startIndex': ['${startIndex}'],
@@ -3611,16 +3173,9 @@ class ReviewsResource {
     ReviewsReplyRequest request,
     core.String packageName,
     core.String reviewId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (reviewId == null) {
-      throw core.ArgumentError('Parameter reviewId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3681,16 +3236,9 @@ class SystemapksVariantsResource {
     Variant request,
     core.String packageName,
     core.String versionCode, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (versionCode == null) {
-      throw core.ArgumentError('Parameter versionCode is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3733,22 +3281,13 @@ class SystemapksVariantsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<core.Object> download(
+  async.Future<commons.Media?> download(
     core.String packageName,
     core.String versionCode,
     core.int variantId, {
-    core.String $fields,
+    core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (versionCode == null) {
-      throw core.ArgumentError('Parameter versionCode is required.');
-    }
-    if (variantId == null) {
-      throw core.ArgumentError('Parameter variantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3770,7 +3309,7 @@ class SystemapksVariantsResource {
     if (downloadOptions.isMetadataDownload) {
       return null;
     } else {
-      return _response;
+      return _response as commons.Media;
     }
   }
 
@@ -3798,17 +3337,8 @@ class SystemapksVariantsResource {
     core.String packageName,
     core.String versionCode,
     core.int variantId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (versionCode == null) {
-      throw core.ArgumentError('Parameter versionCode is required.');
-    }
-    if (variantId == null) {
-      throw core.ArgumentError('Parameter variantId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3849,14 +3379,8 @@ class SystemapksVariantsResource {
   async.Future<SystemApksListResponse> list(
     core.String packageName,
     core.String versionCode, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (packageName == null) {
-      throw core.ArgumentError('Parameter packageName is required.');
-    }
-    if (versionCode == null) {
-      throw core.ArgumentError('Parameter versionCode is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3882,10 +3406,10 @@ class SystemapksVariantsResource {
 /// The resource for ApksService.
 class Apk {
   /// Information about the binary payload of this APK.
-  ApkBinary binary;
+  ApkBinary? binary;
 
   /// The version code of the APK, as specified in the manifest file.
-  core.int versionCode;
+  core.int? versionCode;
 
   Apk();
 
@@ -3899,9 +3423,9 @@ class Apk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (binary != null) 'binary': binary.toJson(),
-        if (versionCode != null) 'versionCode': versionCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (binary != null) 'binary': binary!.toJson(),
+        if (versionCode != null) 'versionCode': versionCode!,
       };
 }
 
@@ -3909,11 +3433,11 @@ class Apk {
 class ApkBinary {
   /// A sha1 hash of the APK payload, encoded as a hex string and matching the
   /// output of the sha1sum command.
-  core.String sha1;
+  core.String? sha1;
 
   /// A sha256 hash of the APK payload, encoded as a hex string and matching the
   /// output of the sha256sum command.
-  core.String sha256;
+  core.String? sha256;
 
   ApkBinary();
 
@@ -3926,16 +3450,16 @@ class ApkBinary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sha1 != null) 'sha1': sha1,
-        if (sha256 != null) 'sha256': sha256,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sha1 != null) 'sha1': sha1!,
+        if (sha256 != null) 'sha256': sha256!,
       };
 }
 
 /// Request to create a new externally hosted APK.
 class ApksAddExternallyHostedRequest {
   /// The definition of the externally-hosted APK and where it is located.
-  ExternallyHostedApk externallyHostedApk;
+  ExternallyHostedApk? externallyHostedApk;
 
   ApksAddExternallyHostedRequest();
 
@@ -3946,16 +3470,16 @@ class ApksAddExternallyHostedRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (externallyHostedApk != null)
-          'externallyHostedApk': externallyHostedApk.toJson(),
+          'externallyHostedApk': externallyHostedApk!.toJson(),
       };
 }
 
 /// Response for creating a new externally hosted APK.
 class ApksAddExternallyHostedResponse {
   /// The definition of the externally-hosted APK and where it is located.
-  ExternallyHostedApk externallyHostedApk;
+  ExternallyHostedApk? externallyHostedApk;
 
   ApksAddExternallyHostedResponse();
 
@@ -3966,19 +3490,19 @@ class ApksAddExternallyHostedResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (externallyHostedApk != null)
-          'externallyHostedApk': externallyHostedApk.toJson(),
+          'externallyHostedApk': externallyHostedApk!.toJson(),
       };
 }
 
 /// Response listing all APKs.
 class ApksListResponse {
   /// All APKs.
-  core.List<Apk> apks;
+  core.List<Apk>? apks;
 
   /// The kind of this response ("androidpublisher#apksListResponse").
-  core.String kind;
+  core.String? kind;
 
   ApksListResponse();
 
@@ -3994,9 +3518,9 @@ class ApksListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apks != null) 'apks': apks.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apks != null) 'apks': apks!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -4005,16 +3529,16 @@ class ApksListResponse {
 /// The resource for DetailsService.
 class AppDetails {
   /// The user-visible support email for this app.
-  core.String contactEmail;
+  core.String? contactEmail;
 
   /// The user-visible support telephone number for this app.
-  core.String contactPhone;
+  core.String? contactPhone;
 
   /// The user-visible website for this app.
-  core.String contactWebsite;
+  core.String? contactWebsite;
 
   /// Default language code, in BCP 47 format (eg "en-US").
-  core.String defaultLanguage;
+  core.String? defaultLanguage;
 
   AppDetails();
 
@@ -4033,11 +3557,11 @@ class AppDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contactEmail != null) 'contactEmail': contactEmail,
-        if (contactPhone != null) 'contactPhone': contactPhone,
-        if (contactWebsite != null) 'contactWebsite': contactWebsite,
-        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contactEmail != null) 'contactEmail': contactEmail!,
+        if (contactPhone != null) 'contactPhone': contactPhone!,
+        if (contactWebsite != null) 'contactWebsite': contactWebsite!,
+        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
       };
 }
 
@@ -4049,14 +3573,14 @@ class AppEdit {
   /// be no longer valid for use.
   ///
   /// Output only.
-  core.String expiryTimeSeconds;
+  core.String? expiryTimeSeconds;
 
   /// Identifier of the edit.
   ///
   /// Can be used in subsequent API calls.
   ///
   /// Output only.
-  core.String id;
+  core.String? id;
 
   AppEdit();
 
@@ -4069,9 +3593,9 @@ class AppEdit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expiryTimeSeconds != null) 'expiryTimeSeconds': expiryTimeSeconds,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expiryTimeSeconds != null) 'expiryTimeSeconds': expiryTimeSeconds!,
+        if (id != null) 'id': id!,
       };
 }
 
@@ -4081,15 +3605,15 @@ class AppEdit {
 class Bundle {
   /// A sha1 hash of the upload payload, encoded as a hex string and matching
   /// the output of the sha1sum command.
-  core.String sha1;
+  core.String? sha1;
 
   /// A sha256 hash of the upload payload, encoded as a hex string and matching
   /// the output of the sha256sum command.
-  core.String sha256;
+  core.String? sha256;
 
   /// The version code of the Android App Bundle, as specified in the Android
   /// App Bundle's base module APK manifest file.
-  core.int versionCode;
+  core.int? versionCode;
 
   Bundle();
 
@@ -4105,20 +3629,20 @@ class Bundle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sha1 != null) 'sha1': sha1,
-        if (sha256 != null) 'sha256': sha256,
-        if (versionCode != null) 'versionCode': versionCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sha1 != null) 'sha1': sha1!,
+        if (sha256 != null) 'sha256': sha256!,
+        if (versionCode != null) 'versionCode': versionCode!,
       };
 }
 
 /// Response listing all bundles.
 class BundlesListResponse {
   /// All bundles.
-  core.List<Bundle> bundles;
+  core.List<Bundle>? bundles;
 
   /// The kind of this response ("androidpublisher#bundlesListResponse").
-  core.String kind;
+  core.String? kind;
 
   BundlesListResponse();
 
@@ -4134,20 +3658,20 @@ class BundlesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bundles != null)
-          'bundles': bundles.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'bundles': bundles!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// An entry of conversation between user and developer.
 class Comment {
   /// A comment from a developer.
-  DeveloperComment developerComment;
+  DeveloperComment? developerComment;
 
   /// A comment from a user.
-  UserComment userComment;
+  UserComment? userComment;
 
   Comment();
 
@@ -4162,10 +3686,10 @@ class Comment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (developerComment != null)
-          'developerComment': developerComment.toJson(),
-        if (userComment != null) 'userComment': userComment.toJson(),
+          'developerComment': developerComment!.toJson(),
+        if (userComment != null) 'userComment': userComment!.toJson(),
       };
 }
 
@@ -4173,10 +3697,10 @@ class Comment {
 class CountryTargeting {
   /// Countries to target, specified as two letter
   /// [CLDR codes](https://unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html).
-  core.List<core.String> countries;
+  core.List<core.String>? countries;
 
   /// Include "rest of world" as well as explicitly targeted countries.
-  core.bool includeRestOfWorld;
+  core.bool? includeRestOfWorld;
 
   CountryTargeting();
 
@@ -4191,10 +3715,10 @@ class CountryTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (countries != null) 'countries': countries,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (countries != null) 'countries': countries!,
         if (includeRestOfWorld != null)
-          'includeRestOfWorld': includeRestOfWorld,
+          'includeRestOfWorld': includeRestOfWorld!,
       };
 }
 
@@ -4206,7 +3730,7 @@ class DeobfuscationFile {
   /// type.
   /// - "proguard" : Proguard deobfuscation file type.
   /// - "nativeCode" : Native debugging symbols file type.
-  core.String symbolType;
+  core.String? symbolType;
 
   DeobfuscationFile();
 
@@ -4216,15 +3740,15 @@ class DeobfuscationFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (symbolType != null) 'symbolType': symbolType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (symbolType != null) 'symbolType': symbolType!,
       };
 }
 
 /// Responses for the upload.
 class DeobfuscationFilesUploadResponse {
   /// The uploaded Deobfuscation File configuration.
-  DeobfuscationFile deobfuscationFile;
+  DeobfuscationFile? deobfuscationFile;
 
   DeobfuscationFilesUploadResponse();
 
@@ -4235,19 +3759,19 @@ class DeobfuscationFilesUploadResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deobfuscationFile != null)
-          'deobfuscationFile': deobfuscationFile.toJson(),
+          'deobfuscationFile': deobfuscationFile!.toJson(),
       };
 }
 
 /// Developer entry from conversation between user and developer.
 class DeveloperComment {
   /// The last time at which this comment was updated.
-  Timestamp lastModified;
+  Timestamp? lastModified;
 
   /// The content of the comment, i.e. reply body.
-  core.String text;
+  core.String? text;
 
   DeveloperComment();
 
@@ -4261,46 +3785,46 @@ class DeveloperComment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lastModified != null) 'lastModified': lastModified.toJson(),
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lastModified != null) 'lastModified': lastModified!.toJson(),
+        if (text != null) 'text': text!,
       };
 }
 
 /// Characteristics of the user's device.
 class DeviceMetadata {
   /// Device CPU make, e.g. "Qualcomm"
-  core.String cpuMake;
+  core.String? cpuMake;
 
   /// Device CPU model, e.g. "MSM8974"
-  core.String cpuModel;
+  core.String? cpuModel;
 
   /// Device class (e.g. tablet)
-  core.String deviceClass;
+  core.String? deviceClass;
 
   /// OpenGL version
-  core.int glEsVersion;
+  core.int? glEsVersion;
 
   /// Device manufacturer (e.g. Motorola)
-  core.String manufacturer;
+  core.String? manufacturer;
 
   /// Comma separated list of native platforms (e.g. "arm", "arm7")
-  core.String nativePlatform;
+  core.String? nativePlatform;
 
   /// Device model name (e.g. Droid)
-  core.String productName;
+  core.String? productName;
 
   /// Device RAM in Megabytes, e.g. "2048"
-  core.int ramMb;
+  core.int? ramMb;
 
   /// Screen density in DPI
-  core.int screenDensityDpi;
+  core.int? screenDensityDpi;
 
   /// Screen height in pixels
-  core.int screenHeightPx;
+  core.int? screenHeightPx;
 
   /// Screen width in pixels
-  core.int screenWidthPx;
+  core.int? screenWidthPx;
 
   DeviceMetadata();
 
@@ -4340,34 +3864,34 @@ class DeviceMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cpuMake != null) 'cpuMake': cpuMake,
-        if (cpuModel != null) 'cpuModel': cpuModel,
-        if (deviceClass != null) 'deviceClass': deviceClass,
-        if (glEsVersion != null) 'glEsVersion': glEsVersion,
-        if (manufacturer != null) 'manufacturer': manufacturer,
-        if (nativePlatform != null) 'nativePlatform': nativePlatform,
-        if (productName != null) 'productName': productName,
-        if (ramMb != null) 'ramMb': ramMb,
-        if (screenDensityDpi != null) 'screenDensityDpi': screenDensityDpi,
-        if (screenHeightPx != null) 'screenHeightPx': screenHeightPx,
-        if (screenWidthPx != null) 'screenWidthPx': screenWidthPx,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cpuMake != null) 'cpuMake': cpuMake!,
+        if (cpuModel != null) 'cpuModel': cpuModel!,
+        if (deviceClass != null) 'deviceClass': deviceClass!,
+        if (glEsVersion != null) 'glEsVersion': glEsVersion!,
+        if (manufacturer != null) 'manufacturer': manufacturer!,
+        if (nativePlatform != null) 'nativePlatform': nativePlatform!,
+        if (productName != null) 'productName': productName!,
+        if (ramMb != null) 'ramMb': ramMb!,
+        if (screenDensityDpi != null) 'screenDensityDpi': screenDensityDpi!,
+        if (screenHeightPx != null) 'screenHeightPx': screenHeightPx!,
+        if (screenWidthPx != null) 'screenWidthPx': screenWidthPx!,
       };
 }
 
 /// The device spec used to generate a system APK.
 class DeviceSpec {
   /// Screen dpi.
-  core.int screenDensity;
+  core.int? screenDensity;
 
   /// Supported ABI architectures in the order of preference.
   ///
   /// The values should be the string as reported by the platform, e.g.
   /// "armeabi-v7a", "x86_64".
-  core.List<core.String> supportedAbis;
+  core.List<core.String>? supportedAbis;
 
   /// All installed locales represented as BCP-47 strings, e.g. "en-US".
-  core.List<core.String> supportedLocales;
+  core.List<core.String>? supportedLocales;
 
   DeviceSpec();
 
@@ -4387,10 +3911,10 @@ class DeviceSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (screenDensity != null) 'screenDensity': screenDensity,
-        if (supportedAbis != null) 'supportedAbis': supportedAbis,
-        if (supportedLocales != null) 'supportedLocales': supportedLocales,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (screenDensity != null) 'screenDensity': screenDensity!,
+        if (supportedAbis != null) 'supportedAbis': supportedAbis!,
+        if (supportedLocales != null) 'supportedLocales': supportedLocales!,
       };
 }
 
@@ -4402,12 +3926,12 @@ class ExpansionFile {
   /// to it: this APK does not reference another APK's expansion file.
   ///
   /// The field's value is the size of the uploaded expansion file in bytes.
-  core.String fileSize;
+  core.String? fileSize;
 
   /// If set, this APK's expansion file references another APK's expansion file.
   ///
   /// The file_size field will not be set.
-  core.int referencesVersion;
+  core.int? referencesVersion;
 
   ExpansionFile();
 
@@ -4420,16 +3944,16 @@ class ExpansionFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fileSize != null) 'fileSize': fileSize,
-        if (referencesVersion != null) 'referencesVersion': referencesVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fileSize != null) 'fileSize': fileSize!,
+        if (referencesVersion != null) 'referencesVersion': referencesVersion!,
       };
 }
 
 /// Response for uploading an expansion file.
 class ExpansionFilesUploadResponse {
   /// The uploaded expansion file configuration.
-  ExpansionFile expansionFile;
+  ExpansionFile? expansionFile;
 
   ExpansionFilesUploadResponse();
 
@@ -4440,8 +3964,8 @@ class ExpansionFilesUploadResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expansionFile != null) 'expansionFile': expansionFile.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expansionFile != null) 'expansionFile': expansionFile!.toJson(),
       };
 }
 
@@ -4452,53 +3976,53 @@ class ExpansionFilesUploadResponse {
 /// application is configured to restrict distribution to the organizations.
 class ExternallyHostedApk {
   /// The application label.
-  core.String applicationLabel;
+  core.String? applicationLabel;
 
   /// A certificate (or array of certificates if a certificate-chain is used)
   /// used to sign this APK, represented as a base64 encoded byte array.
-  core.List<core.String> certificateBase64s;
+  core.List<core.String>? certificateBase64s;
 
   /// The URL at which the APK is hosted.
   ///
   /// This must be an https URL.
-  core.String externallyHostedUrl;
+  core.String? externallyHostedUrl;
 
   /// The sha1 checksum of this APK, represented as a base64 encoded byte array.
-  core.String fileSha1Base64;
+  core.String? fileSha1Base64;
 
   /// The sha256 checksum of this APK, represented as a base64 encoded byte
   /// array.
-  core.String fileSha256Base64;
+  core.String? fileSha256Base64;
 
   /// The file size in bytes of this APK.
-  core.String fileSize;
+  core.String? fileSize;
 
   /// The icon image from the APK, as a base64 encoded byte array.
-  core.String iconBase64;
+  core.String? iconBase64;
 
   /// The maximum SDK supported by this APK (optional).
-  core.int maximumSdk;
+  core.int? maximumSdk;
 
   /// The minimum SDK targeted by this APK.
-  core.int minimumSdk;
+  core.int? minimumSdk;
 
   /// The native code environments supported by this APK (optional).
-  core.List<core.String> nativeCodes;
+  core.List<core.String>? nativeCodes;
 
   /// The package name.
-  core.String packageName;
+  core.String? packageName;
 
   /// The features required by this APK (optional).
-  core.List<core.String> usesFeatures;
+  core.List<core.String>? usesFeatures;
 
   /// The permissions requested by this APK.
-  core.List<UsesPermission> usesPermissions;
+  core.List<UsesPermission>? usesPermissions;
 
   /// The version code of this APK.
-  core.int versionCode;
+  core.int? versionCode;
 
   /// The version name of this APK.
-  core.String versionName;
+  core.String? versionName;
 
   ExternallyHostedApk();
 
@@ -4559,26 +4083,26 @@ class ExternallyHostedApk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (applicationLabel != null) 'applicationLabel': applicationLabel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (applicationLabel != null) 'applicationLabel': applicationLabel!,
         if (certificateBase64s != null)
-          'certificateBase64s': certificateBase64s,
+          'certificateBase64s': certificateBase64s!,
         if (externallyHostedUrl != null)
-          'externallyHostedUrl': externallyHostedUrl,
-        if (fileSha1Base64 != null) 'fileSha1Base64': fileSha1Base64,
-        if (fileSha256Base64 != null) 'fileSha256Base64': fileSha256Base64,
-        if (fileSize != null) 'fileSize': fileSize,
-        if (iconBase64 != null) 'iconBase64': iconBase64,
-        if (maximumSdk != null) 'maximumSdk': maximumSdk,
-        if (minimumSdk != null) 'minimumSdk': minimumSdk,
-        if (nativeCodes != null) 'nativeCodes': nativeCodes,
-        if (packageName != null) 'packageName': packageName,
-        if (usesFeatures != null) 'usesFeatures': usesFeatures,
+          'externallyHostedUrl': externallyHostedUrl!,
+        if (fileSha1Base64 != null) 'fileSha1Base64': fileSha1Base64!,
+        if (fileSha256Base64 != null) 'fileSha256Base64': fileSha256Base64!,
+        if (fileSize != null) 'fileSize': fileSize!,
+        if (iconBase64 != null) 'iconBase64': iconBase64!,
+        if (maximumSdk != null) 'maximumSdk': maximumSdk!,
+        if (minimumSdk != null) 'minimumSdk': minimumSdk!,
+        if (nativeCodes != null) 'nativeCodes': nativeCodes!,
+        if (packageName != null) 'packageName': packageName!,
+        if (usesFeatures != null) 'usesFeatures': usesFeatures!,
         if (usesPermissions != null)
           'usesPermissions':
-              usesPermissions.map((value) => value.toJson()).toList(),
-        if (versionCode != null) 'versionCode': versionCode,
-        if (versionName != null) 'versionName': versionName,
+              usesPermissions!.map((value) => value.toJson()).toList(),
+        if (versionCode != null) 'versionCode': versionCode!,
+        if (versionName != null) 'versionName': versionName!,
       };
 }
 
@@ -4587,16 +4111,16 @@ class ExternallyHostedApk {
 /// The resource for ImagesService.
 class Image {
   /// A unique id representing this image.
-  core.String id;
+  core.String? id;
 
   /// A sha1 hash of the image.
-  core.String sha1;
+  core.String? sha1;
 
   /// A sha256 hash of the image.
-  core.String sha256;
+  core.String? sha256;
 
   /// A URL that will serve a preview of the image.
-  core.String url;
+  core.String? url;
 
   Image();
 
@@ -4615,18 +4139,18 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (sha1 != null) 'sha1': sha1,
-        if (sha256 != null) 'sha256': sha256,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (sha1 != null) 'sha1': sha1!,
+        if (sha256 != null) 'sha256': sha256!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// Response for deleting all images.
 class ImagesDeleteAllResponse {
   /// The deleted images.
-  core.List<Image> deleted;
+  core.List<Image>? deleted;
 
   ImagesDeleteAllResponse();
 
@@ -4639,16 +4163,16 @@ class ImagesDeleteAllResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deleted != null)
-          'deleted': deleted.map((value) => value.toJson()).toList(),
+          'deleted': deleted!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response listing all images.
 class ImagesListResponse {
   /// All listed Images.
-  core.List<Image> images;
+  core.List<Image>? images;
 
   ImagesListResponse();
 
@@ -4661,16 +4185,16 @@ class ImagesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (images != null)
-          'images': images.map((value) => value.toJson()).toList(),
+          'images': images!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response for uploading an image.
 class ImagesUploadResponse {
   /// The uploaded image.
-  Image image;
+  Image? image;
 
   ImagesUploadResponse();
 
@@ -4681,8 +4205,8 @@ class ImagesUploadResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (image != null) 'image': image.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (image != null) 'image': image!.toJson(),
       };
 }
 
@@ -4693,13 +4217,13 @@ class InAppProduct {
   /// Default language of the localized data, as defined by BCP-47.
   ///
   /// e.g. "en-US".
-  core.String defaultLanguage;
+  core.String? defaultLanguage;
 
   /// Default price.
   ///
   /// Cannot be zero, as in-app products are never free. Always in the
   /// developer's Checkout merchant currency.
-  Price defaultPrice;
+  Price? defaultPrice;
 
   /// Grace period of the subscription, specified in ISO 8601 format.
   ///
@@ -4707,32 +4231,32 @@ class InAppProduct {
   /// payment for the new recurrence period is declined. Acceptable values are
   /// P0D (zero days), P3D (three days), P7D (seven days), P14D (14 days), and
   /// P30D (30 days).
-  core.String gracePeriod;
+  core.String? gracePeriod;
 
   /// List of localized title and description data.
   ///
   /// Map key is the language of the localized data, as defined by BCP-47, e.g.
   /// "en-US".
-  core.Map<core.String, InAppProductListing> listings;
+  core.Map<core.String, InAppProductListing>? listings;
 
   /// Package name of the parent app.
-  core.String packageName;
+  core.String? packageName;
 
   /// Prices per buyer region.
   ///
   /// None of these can be zero, as in-app products are never free. Map key is
   /// region code, as defined by ISO 3166-2.
-  core.Map<core.String, Price> prices;
+  core.Map<core.String, Price>? prices;
 
   /// The type of the product, e.g. a recurring subscription.
   /// Possible string values are:
   /// - "purchaseTypeUnspecified" : Unspecified purchase type.
   /// - "managedUser" : The default product type - one time purchase.
   /// - "subscription" : In-app product with a recurring period.
-  core.String purchaseType;
+  core.String? purchaseType;
 
   /// Stock-keeping-unit (SKU) of the product, unique within an app.
-  core.String sku;
+  core.String? sku;
 
   /// The status of the product, e.g. whether it's active.
   /// Possible string values are:
@@ -4740,19 +4264,19 @@ class InAppProduct {
   /// - "active" : The product is published and active in the store.
   /// - "inactive" : The product is not published and therefore inactive in the
   /// store.
-  core.String status;
+  core.String? status;
 
   /// Subscription period, specified in ISO 8601 format.
   ///
   /// Acceptable values are P1W (one week), P1M (one month), P3M (three months),
   /// P6M (six months), and P1Y (one year).
-  core.String subscriptionPeriod;
+  core.String? subscriptionPeriod;
 
   /// Trial period, specified in ISO 8601 format.
   ///
   /// Acceptable values are anything between P7D (seven days) and P999D (999
   /// days).
-  core.String trialPeriod;
+  core.String? trialPeriod;
 
   InAppProduct();
 
@@ -4768,20 +4292,23 @@ class InAppProduct {
       gracePeriod = _json['gracePeriod'] as core.String;
     }
     if (_json.containsKey('listings')) {
-      listings =
-          (_json['listings'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  InAppProductListing.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      listings = (_json['listings'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              InAppProductListing.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('packageName')) {
       packageName = _json['packageName'] as core.String;
     }
     if (_json.containsKey('prices')) {
-      prices = (_json['prices'] as core.Map).cast<core.String, core.Map>().map(
+      prices = (_json['prices'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               Price.fromJson(item as core.Map<core.String, core.dynamic>),
@@ -4805,36 +4332,36 @@ class InAppProduct {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage,
-        if (defaultPrice != null) 'defaultPrice': defaultPrice.toJson(),
-        if (gracePeriod != null) 'gracePeriod': gracePeriod,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
+        if (defaultPrice != null) 'defaultPrice': defaultPrice!.toJson(),
+        if (gracePeriod != null) 'gracePeriod': gracePeriod!,
         if (listings != null)
           'listings':
-              listings.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (packageName != null) 'packageName': packageName,
+              listings!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (packageName != null) 'packageName': packageName!,
         if (prices != null)
           'prices':
-              prices.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (purchaseType != null) 'purchaseType': purchaseType,
-        if (sku != null) 'sku': sku,
-        if (status != null) 'status': status,
+              prices!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (purchaseType != null) 'purchaseType': purchaseType!,
+        if (sku != null) 'sku': sku!,
+        if (status != null) 'status': status!,
         if (subscriptionPeriod != null)
-          'subscriptionPeriod': subscriptionPeriod,
-        if (trialPeriod != null) 'trialPeriod': trialPeriod,
+          'subscriptionPeriod': subscriptionPeriod!,
+        if (trialPeriod != null) 'trialPeriod': trialPeriod!,
       };
 }
 
 /// Store listing of a single in-app product.
 class InAppProductListing {
   /// Localized entitlement benefits for a subscription.
-  core.List<core.String> benefits;
+  core.List<core.String>? benefits;
 
   /// Description for the store listing.
-  core.String description;
+  core.String? description;
 
   /// Title for the store listing.
-  core.String title;
+  core.String? title;
 
   InAppProductListing();
 
@@ -4852,26 +4379,26 @@ class InAppProductListing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (benefits != null) 'benefits': benefits,
-        if (description != null) 'description': description,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (benefits != null) 'benefits': benefits!,
+        if (description != null) 'description': description!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// Response listing all in-app products.
 class InappproductsListResponse {
   /// All in-app products.
-  core.List<InAppProduct> inappproduct;
+  core.List<InAppProduct>? inappproduct;
 
   /// The kind of this response ("androidpublisher#inappproductsListResponse").
-  core.String kind;
+  core.String? kind;
 
   /// Information about the current page.
-  PageInfo pageInfo;
+  PageInfo? pageInfo;
 
   /// Pagination token, to handle a number of products that is over one page.
-  TokenPagination tokenPagination;
+  TokenPagination? tokenPagination;
 
   InappproductsListResponse();
 
@@ -4895,13 +4422,13 @@ class InappproductsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (inappproduct != null)
-          'inappproduct': inappproduct.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+          'inappproduct': inappproduct!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
+          'tokenPagination': tokenPagination!.toJson(),
       };
 }
 
@@ -4910,17 +4437,17 @@ class InappproductsListResponse {
 class InternalAppSharingArtifact {
   /// The sha256 fingerprint of the certificate used to sign the generated
   /// artifact.
-  core.String certificateFingerprint;
+  core.String? certificateFingerprint;
 
   /// The download URL generated for the uploaded artifact.
   ///
   /// Users that are authorized to download can follow the link to the Play
   /// Store app to install it.
-  core.String downloadUrl;
+  core.String? downloadUrl;
 
   /// The sha256 hash of the artifact represented as a lowercase hexadecimal
   /// number, matching the output of the sha256sum command.
-  core.String sha256;
+  core.String? sha256;
 
   InternalAppSharingArtifact();
 
@@ -4936,11 +4463,11 @@ class InternalAppSharingArtifact {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (certificateFingerprint != null)
-          'certificateFingerprint': certificateFingerprint,
-        if (downloadUrl != null) 'downloadUrl': downloadUrl,
-        if (sha256 != null) 'sha256': sha256,
+          'certificateFingerprint': certificateFingerprint!,
+        if (downloadUrl != null) 'downloadUrl': downloadUrl!,
+        if (sha256 != null) 'sha256': sha256!,
       };
 }
 
@@ -4952,22 +4479,22 @@ class IntroductoryPriceInfo {
   /// micro-units, where 1,000,000 micro-units represents one unit of the
   /// currency. For example, if the subscription price is €1.99,
   /// price_amount_micros is 1990000.
-  core.String introductoryPriceAmountMicros;
+  core.String? introductoryPriceAmountMicros;
 
   /// ISO 4217 currency code for the introductory subscription price.
   ///
   /// For example, if the price is specified in British pounds sterling,
   /// price_currency_code is "GBP".
-  core.String introductoryPriceCurrencyCode;
+  core.String? introductoryPriceCurrencyCode;
 
   /// The number of billing period to offer introductory pricing.
-  core.int introductoryPriceCycles;
+  core.int? introductoryPriceCycles;
 
   /// Introductory price period, specified in ISO 8601 format.
   ///
   /// Common values are (but not limited to) "P1W" (one week), "P1M" (one
   /// month), "P3M" (three months), "P6M" (six months), and "P1Y" (one year).
-  core.String introductoryPricePeriod;
+  core.String? introductoryPricePeriod;
 
   IntroductoryPriceInfo();
 
@@ -4988,15 +4515,15 @@ class IntroductoryPriceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (introductoryPriceAmountMicros != null)
-          'introductoryPriceAmountMicros': introductoryPriceAmountMicros,
+          'introductoryPriceAmountMicros': introductoryPriceAmountMicros!,
         if (introductoryPriceCurrencyCode != null)
-          'introductoryPriceCurrencyCode': introductoryPriceCurrencyCode,
+          'introductoryPriceCurrencyCode': introductoryPriceCurrencyCode!,
         if (introductoryPriceCycles != null)
-          'introductoryPriceCycles': introductoryPriceCycles,
+          'introductoryPriceCycles': introductoryPriceCycles!,
         if (introductoryPricePeriod != null)
-          'introductoryPricePeriod': introductoryPricePeriod,
+          'introductoryPricePeriod': introductoryPricePeriod!,
       };
 }
 
@@ -5005,20 +4532,20 @@ class IntroductoryPriceInfo {
 /// The resource for ListingsService.
 class Listing {
   /// Full description of the app.
-  core.String fullDescription;
+  core.String? fullDescription;
 
   /// Language localization code (a BCP-47 language tag; for example, "de-AT"
   /// for Austrian German).
-  core.String language;
+  core.String? language;
 
   /// Short description of the app.
-  core.String shortDescription;
+  core.String? shortDescription;
 
   /// Localized title of the app.
-  core.String title;
+  core.String? title;
 
   /// URL of a promotional YouTube video for the app.
-  core.String video;
+  core.String? video;
 
   Listing();
 
@@ -5040,22 +4567,22 @@ class Listing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fullDescription != null) 'fullDescription': fullDescription,
-        if (language != null) 'language': language,
-        if (shortDescription != null) 'shortDescription': shortDescription,
-        if (title != null) 'title': title,
-        if (video != null) 'video': video,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fullDescription != null) 'fullDescription': fullDescription!,
+        if (language != null) 'language': language!,
+        if (shortDescription != null) 'shortDescription': shortDescription!,
+        if (title != null) 'title': title!,
+        if (video != null) 'video': video!,
       };
 }
 
 /// Response listing all localized listings.
 class ListingsListResponse {
   /// The kind of this response ("androidpublisher#listingsListResponse").
-  core.String kind;
+  core.String? kind;
 
   /// All localized listings.
-  core.List<Listing> listings;
+  core.List<Listing>? listings;
 
   ListingsListResponse();
 
@@ -5071,10 +4598,10 @@ class ListingsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (listings != null)
-          'listings': listings.map((value) => value.toJson()).toList(),
+          'listings': listings!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5082,10 +4609,10 @@ class ListingsListResponse {
 class LocalizedText {
   /// Language localization code (a BCP-47 language tag; for example, "de-AT"
   /// for Austrian German).
-  core.String language;
+  core.String? language;
 
   /// The text in the given language.
-  core.String text;
+  core.String? text;
 
   LocalizedText();
 
@@ -5098,9 +4625,9 @@ class LocalizedText {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (language != null) 'language': language,
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (language != null) 'language': language!,
+        if (text != null) 'text': text!,
       };
 }
 
@@ -5112,14 +4639,14 @@ class PageInfo {
   /// Maximum number of results returned in one page.
   ///
   /// ! The number of results included in the API response.
-  core.int resultPerPage;
+  core.int? resultPerPage;
 
   /// Index of the first result returned in the current page.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// Total number of results available on the backend ! The total number of
   /// results in the result set.
-  core.int totalResults;
+  core.int? totalResults;
 
   PageInfo();
 
@@ -5135,10 +4662,10 @@ class PageInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resultPerPage != null) 'resultPerPage': resultPerPage,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (totalResults != null) 'totalResults': totalResults,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resultPerPage != null) 'resultPerPage': resultPerPage!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (totalResults != null) 'totalResults': totalResults!,
       };
 }
 
@@ -5147,10 +4674,10 @@ class Price {
   /// 3 letter Currency code, as defined by ISO 4217.
   ///
   /// See java/com/google/common/money/CurrencyCode.java
-  core.String currency;
+  core.String? currency;
 
   /// Price in 1/million of the currency base unit, represented as a string.
-  core.String priceMicros;
+  core.String? priceMicros;
 
   Price();
 
@@ -5163,9 +4690,9 @@ class Price {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currency != null) 'currency': currency,
-        if (priceMicros != null) 'priceMicros': priceMicros,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currency != null) 'currency': currency!,
+        if (priceMicros != null) 'priceMicros': priceMicros!,
       };
 }
 
@@ -5175,20 +4702,20 @@ class ProductPurchase {
   /// The acknowledgement state of the inapp product.
   ///
   /// Possible values are: 0. Yet to be acknowledged 1. Acknowledged
-  core.int acknowledgementState;
+  core.int? acknowledgementState;
 
   /// The consumption state of the inapp product.
   ///
   /// Possible values are: 0. Yet to be consumed 1. Consumed
-  core.int consumptionState;
+  core.int? consumptionState;
 
   /// A developer-specified string that contains supplemental information about
   /// an order.
-  core.String developerPayload;
+  core.String? developerPayload;
 
   /// This kind represents an inappPurchase object in the androidpublisher
   /// service.
-  core.String kind;
+  core.String? kind;
 
   /// An obfuscated version of the id that is uniquely associated with the
   /// user's account in your app.
@@ -5196,7 +4723,7 @@ class ProductPurchase {
   /// Only present if specified using
   /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid
   /// when the purchase was made.
-  core.String obfuscatedExternalAccountId;
+  core.String? obfuscatedExternalAccountId;
 
   /// An obfuscated version of the id that is uniquely associated with the
   /// user's profile in your app.
@@ -5204,25 +4731,25 @@ class ProductPurchase {
   /// Only present if specified using
   /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid
   /// when the purchase was made.
-  core.String obfuscatedExternalProfileId;
+  core.String? obfuscatedExternalProfileId;
 
   /// The order id associated with the purchase of the inapp product.
-  core.String orderId;
+  core.String? orderId;
 
   /// The inapp product SKU.
-  core.String productId;
+  core.String? productId;
 
   /// The purchase state of the order.
   ///
   /// Possible values are: 0. Purchased 1. Canceled 2. Pending
-  core.int purchaseState;
+  core.int? purchaseState;
 
   /// The time the product was purchased, in milliseconds since the epoch (Jan
   /// 1, 1970).
-  core.String purchaseTimeMillis;
+  core.String? purchaseTimeMillis;
 
   /// The purchase token generated to identify this purchase.
-  core.String purchaseToken;
+  core.String? purchaseToken;
 
   /// The type of purchase of the inapp product.
   ///
@@ -5230,14 +4757,14 @@ class ProductPurchase {
   /// in-app billing flow. Possible values are: 0. Test (i.e. purchased from a
   /// license testing account) 1. Promo (i.e. purchased using a promo code) 2.
   /// Rewarded (i.e. from watching a video ad instead of paying)
-  core.int purchaseType;
+  core.int? purchaseType;
 
   /// The quantity associated with the purchase of the inapp product.
-  core.int quantity;
+  core.int? quantity;
 
   /// ISO 3166-1 alpha-2 billing region code of the user at the time the product
   /// was granted.
-  core.String regionCode;
+  core.String? regionCode;
 
   ProductPurchase();
 
@@ -5288,32 +4815,32 @@ class ProductPurchase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (acknowledgementState != null)
-          'acknowledgementState': acknowledgementState,
-        if (consumptionState != null) 'consumptionState': consumptionState,
-        if (developerPayload != null) 'developerPayload': developerPayload,
-        if (kind != null) 'kind': kind,
+          'acknowledgementState': acknowledgementState!,
+        if (consumptionState != null) 'consumptionState': consumptionState!,
+        if (developerPayload != null) 'developerPayload': developerPayload!,
+        if (kind != null) 'kind': kind!,
         if (obfuscatedExternalAccountId != null)
-          'obfuscatedExternalAccountId': obfuscatedExternalAccountId,
+          'obfuscatedExternalAccountId': obfuscatedExternalAccountId!,
         if (obfuscatedExternalProfileId != null)
-          'obfuscatedExternalProfileId': obfuscatedExternalProfileId,
-        if (orderId != null) 'orderId': orderId,
-        if (productId != null) 'productId': productId,
-        if (purchaseState != null) 'purchaseState': purchaseState,
+          'obfuscatedExternalProfileId': obfuscatedExternalProfileId!,
+        if (orderId != null) 'orderId': orderId!,
+        if (productId != null) 'productId': productId!,
+        if (purchaseState != null) 'purchaseState': purchaseState!,
         if (purchaseTimeMillis != null)
-          'purchaseTimeMillis': purchaseTimeMillis,
-        if (purchaseToken != null) 'purchaseToken': purchaseToken,
-        if (purchaseType != null) 'purchaseType': purchaseType,
-        if (quantity != null) 'quantity': quantity,
-        if (regionCode != null) 'regionCode': regionCode,
+          'purchaseTimeMillis': purchaseTimeMillis!,
+        if (purchaseToken != null) 'purchaseToken': purchaseToken!,
+        if (purchaseType != null) 'purchaseType': purchaseType!,
+        if (quantity != null) 'quantity': quantity!,
+        if (regionCode != null) 'regionCode': regionCode!,
       };
 }
 
 /// Request for the product.purchases.acknowledge API.
 class ProductPurchasesAcknowledgeRequest {
   /// Payload to attach to the purchase.
-  core.String developerPayload;
+  core.String? developerPayload;
 
   ProductPurchasesAcknowledgeRequest();
 
@@ -5323,21 +4850,21 @@ class ProductPurchasesAcknowledgeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (developerPayload != null) 'developerPayload': developerPayload,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (developerPayload != null) 'developerPayload': developerPayload!,
       };
 }
 
 /// An Android app review.
 class Review {
   /// The name of the user who wrote the review.
-  core.String authorName;
+  core.String? authorName;
 
   /// A repeated field containing comments for the review.
-  core.List<Comment> comments;
+  core.List<Comment>? comments;
 
   /// Unique identifier for this review.
-  core.String reviewId;
+  core.String? reviewId;
 
   Review();
 
@@ -5356,21 +4883,21 @@ class Review {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (authorName != null) 'authorName': authorName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (authorName != null) 'authorName': authorName!,
         if (comments != null)
-          'comments': comments.map((value) => value.toJson()).toList(),
-        if (reviewId != null) 'reviewId': reviewId,
+          'comments': comments!.map((value) => value.toJson()).toList(),
+        if (reviewId != null) 'reviewId': reviewId!,
       };
 }
 
 /// The result of replying/updating a reply to review.
 class ReviewReplyResult {
   /// The time at which the reply took effect.
-  Timestamp lastEdited;
+  Timestamp? lastEdited;
 
   /// The reply text that was applied.
-  core.String replyText;
+  core.String? replyText;
 
   ReviewReplyResult();
 
@@ -5384,22 +4911,22 @@ class ReviewReplyResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lastEdited != null) 'lastEdited': lastEdited.toJson(),
-        if (replyText != null) 'replyText': replyText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lastEdited != null) 'lastEdited': lastEdited!.toJson(),
+        if (replyText != null) 'replyText': replyText!,
       };
 }
 
 /// Response listing reviews.
 class ReviewsListResponse {
   /// Information about the current page.
-  PageInfo pageInfo;
+  PageInfo? pageInfo;
 
   /// List of reviews.
-  core.List<Review> reviews;
+  core.List<Review>? reviews;
 
   /// Pagination token, to handle a number of products that is over one page.
-  TokenPagination tokenPagination;
+  TokenPagination? tokenPagination;
 
   ReviewsListResponse();
 
@@ -5420,12 +4947,12 @@ class ReviewsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
         if (reviews != null)
-          'reviews': reviews.map((value) => value.toJson()).toList(),
+          'reviews': reviews!.map((value) => value.toJson()).toList(),
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
+          'tokenPagination': tokenPagination!.toJson(),
       };
 }
 
@@ -5435,7 +4962,7 @@ class ReviewsReplyRequest {
   ///
   /// Replies of more than approximately 350 characters will be rejected. HTML
   /// tags will be stripped.
-  core.String replyText;
+  core.String? replyText;
 
   ReviewsReplyRequest();
 
@@ -5445,15 +4972,15 @@ class ReviewsReplyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (replyText != null) 'replyText': replyText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (replyText != null) 'replyText': replyText!,
       };
 }
 
 /// Response on status of replying to a review.
 class ReviewsReplyResponse {
   /// The result of replying/updating a reply to review.
-  ReviewReplyResult result;
+  ReviewReplyResult? result;
 
   ReviewsReplyResponse();
 
@@ -5464,8 +4991,8 @@ class ReviewsReplyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (result != null) 'result': result.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (result != null) 'result': result!.toJson(),
       };
 }
 
@@ -5476,12 +5003,12 @@ class SubscriptionCancelSurveyResult {
   ///
   /// Possible values are: 0. Other 1. I don't use this service enough 2.
   /// Technical issues 3. Cost-related reasons 4. I found a better app
-  core.int cancelSurveyReason;
+  core.int? cancelSurveyReason;
 
   /// The customized input cancel reason from the user.
   ///
   /// Only present when cancelReason is 0.
-  core.String userInputCancelReason;
+  core.String? userInputCancelReason;
 
   SubscriptionCancelSurveyResult();
 
@@ -5494,11 +5021,11 @@ class SubscriptionCancelSurveyResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cancelSurveyReason != null)
-          'cancelSurveyReason': cancelSurveyReason,
+          'cancelSurveyReason': cancelSurveyReason!,
         if (userInputCancelReason != null)
-          'userInputCancelReason': userInputCancelReason,
+          'userInputCancelReason': userInputCancelReason!,
       };
 }
 
@@ -5510,13 +5037,13 @@ class SubscriptionDeferralInfo {
   ///
   /// The given time must be later/greater than the current expiry time for the
   /// subscription.
-  core.String desiredExpiryTimeMillis;
+  core.String? desiredExpiryTimeMillis;
 
   /// The expected expiry time for the subscription.
   ///
   /// If the current expiry time for the subscription is not the value specified
   /// here, the deferral will not occur.
-  core.String expectedExpiryTimeMillis;
+  core.String? expectedExpiryTimeMillis;
 
   SubscriptionDeferralInfo();
 
@@ -5530,11 +5057,11 @@ class SubscriptionDeferralInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (desiredExpiryTimeMillis != null)
-          'desiredExpiryTimeMillis': desiredExpiryTimeMillis,
+          'desiredExpiryTimeMillis': desiredExpiryTimeMillis!,
         if (expectedExpiryTimeMillis != null)
-          'expectedExpiryTimeMillis': expectedExpiryTimeMillis,
+          'expectedExpiryTimeMillis': expectedExpiryTimeMillis!,
       };
 }
 
@@ -5546,7 +5073,7 @@ class SubscriptionDeferralInfo {
 class SubscriptionPriceChange {
   /// The new price the subscription will renew with if the price change is
   /// accepted by the user.
-  Price newPrice;
+  Price? newPrice;
 
   /// The current state of the price change.
   ///
@@ -5557,7 +5084,7 @@ class SubscriptionPriceChange {
   /// canceled. The price change takes effect on a future date when the
   /// subscription renews. Note that the change might not occur when the
   /// subscription is renewed next.
-  core.int state;
+  core.int? state;
 
   SubscriptionPriceChange();
 
@@ -5571,9 +5098,9 @@ class SubscriptionPriceChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (newPrice != null) 'newPrice': newPrice.toJson(),
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (newPrice != null) 'newPrice': newPrice!.toJson(),
+        if (state != null) 'state': state!,
       };
 }
 
@@ -5583,17 +5110,17 @@ class SubscriptionPurchase {
   /// The acknowledgement state of the subscription product.
   ///
   /// Possible values are: 0. Yet to be acknowledged 1. Acknowledged
-  core.int acknowledgementState;
+  core.int? acknowledgementState;
 
   /// Whether the subscription will automatically be renewed when it reaches its
   /// current expiry time.
-  core.bool autoRenewing;
+  core.bool? autoRenewing;
 
   /// Time at which the subscription will be automatically resumed, in
   /// milliseconds since the Epoch.
   ///
   /// Only present if the user has requested to pause the subscription.
-  core.String autoResumeTimeMillis;
+  core.String? autoResumeTimeMillis;
 
   /// The reason why a subscription was canceled or is not auto-renewing.
   ///
@@ -5601,55 +5128,55 @@ class SubscriptionPurchase {
   /// canceled by the system, for example because of a billing problem 2.
   /// Subscription was replaced with a new subscription 3. Subscription was
   /// canceled by the developer
-  core.int cancelReason;
+  core.int? cancelReason;
 
   /// Information provided by the user when they complete the subscription
   /// cancellation flow (cancellation reason survey).
-  SubscriptionCancelSurveyResult cancelSurveyResult;
+  SubscriptionCancelSurveyResult? cancelSurveyResult;
 
   /// ISO 3166-1 alpha-2 billing country/region code of the user at the time the
   /// subscription was granted.
-  core.String countryCode;
+  core.String? countryCode;
 
   /// A developer-specified string that contains supplemental information about
   /// an order.
-  core.String developerPayload;
+  core.String? developerPayload;
 
   /// The email address of the user when the subscription was purchased.
   ///
   /// Only present for purchases made with 'Subscribe with Google'.
-  core.String emailAddress;
+  core.String? emailAddress;
 
   /// Time at which the subscription will expire, in milliseconds since the
   /// Epoch.
-  core.String expiryTimeMillis;
+  core.String? expiryTimeMillis;
 
   /// User account identifier in the third-party service.
   ///
   /// Only present if account linking happened as part of the subscription
   /// purchase flow.
-  core.String externalAccountId;
+  core.String? externalAccountId;
 
   /// The family name of the user when the subscription was purchased.
   ///
   /// Only present for purchases made with 'Subscribe with Google'.
-  core.String familyName;
+  core.String? familyName;
 
   /// The given name of the user when the subscription was purchased.
   ///
   /// Only present for purchases made with 'Subscribe with Google'.
-  core.String givenName;
+  core.String? givenName;
 
   /// Introductory price information of the subscription.
   ///
   /// This is only present when the subscription was purchased with an
   /// introductory price. This field does not indicate the subscription is
   /// currently in introductory price period.
-  IntroductoryPriceInfo introductoryPriceInfo;
+  IntroductoryPriceInfo? introductoryPriceInfo;
 
   /// This kind represents a subscriptionPurchase object in the androidpublisher
   /// service.
-  core.String kind;
+  core.String? kind;
 
   /// The purchase token of the originating purchase if this subscription is one
   /// of the following: 0.
@@ -5663,7 +5190,7 @@ class SubscriptionPurchase {
   /// Z, this field will be set to Y. If you call this API with purchase token
   /// Y, this field will be set to X. If you call this API with purchase token
   /// X, this field will not be set.
-  core.String linkedPurchaseToken;
+  core.String? linkedPurchaseToken;
 
   /// An obfuscated version of the id that is uniquely associated with the
   /// user's account in your app.
@@ -5672,7 +5199,7 @@ class SubscriptionPurchase {
   /// of the subscription purchase flow. * It was specified using
   /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid
   /// when the purchase was made.
-  core.String obfuscatedExternalAccountId;
+  core.String? obfuscatedExternalAccountId;
 
   /// An obfuscated version of the id that is uniquely associated with the
   /// user's profile in your app.
@@ -5680,25 +5207,25 @@ class SubscriptionPurchase {
   /// Only present if specified using
   /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid
   /// when the purchase was made.
-  core.String obfuscatedExternalProfileId;
+  core.String? obfuscatedExternalProfileId;
 
   /// The order id of the latest recurring order associated with the purchase of
   /// the subscription.
-  core.String orderId;
+  core.String? orderId;
 
   /// The payment state of the subscription.
   ///
   /// Possible values are: 0. Payment pending 1. Payment received 2. Free trial
   /// 3. Pending deferred upgrade/downgrade Not present for canceled, expired
   /// subscriptions.
-  core.int paymentState;
+  core.int? paymentState;
 
   /// Price of the subscription, not including tax.
   ///
   /// Price is expressed in micro-units, where 1,000,000 micro-units represents
   /// one unit of the currency. For example, if the subscription price is €1.99,
   /// price_amount_micros is 1990000.
-  core.String priceAmountMicros;
+  core.String? priceAmountMicros;
 
   /// The latest price change information available.
   ///
@@ -5706,52 +5233,52 @@ class SubscriptionPurchase {
   /// subscription yet to be applied. Once the subscription renews with the new
   /// price or the subscription is canceled, no price change information will be
   /// returned.
-  SubscriptionPriceChange priceChange;
+  SubscriptionPriceChange? priceChange;
 
   /// ISO 4217 currency code for the subscription price.
   ///
   /// For example, if the price is specified in British pounds sterling,
   /// price_currency_code is "GBP".
-  core.String priceCurrencyCode;
+  core.String? priceCurrencyCode;
 
   /// The Google profile id of the user when the subscription was purchased.
   ///
   /// Only present for purchases made with 'Subscribe with Google'.
-  core.String profileId;
+  core.String? profileId;
 
   /// The profile name of the user when the subscription was purchased.
   ///
   /// Only present for purchases made with 'Subscribe with Google'.
-  core.String profileName;
+  core.String? profileName;
 
   /// The promotion code applied on this purchase.
   ///
   /// This field is only set if a vanity code promotion is applied when the
   /// subscription was purchased.
-  core.String promotionCode;
+  core.String? promotionCode;
 
   /// The type of promotion applied on this purchase.
   ///
   /// This field is only set if a promotion is applied when the subscription was
   /// purchased. Possible values are: 0. One time code 1. Vanity code
-  core.int promotionType;
+  core.int? promotionType;
 
   /// The type of purchase of the subscription.
   ///
   /// This field is only set if this purchase was not made using the standard
   /// in-app billing flow. Possible values are: 0. Test (i.e. purchased from a
   /// license testing account) 1. Promo (i.e. purchased using a promo code)
-  core.int purchaseType;
+  core.int? purchaseType;
 
   /// Time at which the subscription was granted, in milliseconds since the
   /// Epoch.
-  core.String startTimeMillis;
+  core.String? startTimeMillis;
 
   /// The time at which the subscription was canceled by the user, in
   /// milliseconds since the epoch.
   ///
   /// Only present if cancelReason is 0.
-  core.String userCancellationTimeMillis;
+  core.String? userCancellationTimeMillis;
 
   SubscriptionPurchase();
 
@@ -5852,51 +5379,51 @@ class SubscriptionPurchase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (acknowledgementState != null)
-          'acknowledgementState': acknowledgementState,
-        if (autoRenewing != null) 'autoRenewing': autoRenewing,
+          'acknowledgementState': acknowledgementState!,
+        if (autoRenewing != null) 'autoRenewing': autoRenewing!,
         if (autoResumeTimeMillis != null)
-          'autoResumeTimeMillis': autoResumeTimeMillis,
-        if (cancelReason != null) 'cancelReason': cancelReason,
+          'autoResumeTimeMillis': autoResumeTimeMillis!,
+        if (cancelReason != null) 'cancelReason': cancelReason!,
         if (cancelSurveyResult != null)
-          'cancelSurveyResult': cancelSurveyResult.toJson(),
-        if (countryCode != null) 'countryCode': countryCode,
-        if (developerPayload != null) 'developerPayload': developerPayload,
-        if (emailAddress != null) 'emailAddress': emailAddress,
-        if (expiryTimeMillis != null) 'expiryTimeMillis': expiryTimeMillis,
-        if (externalAccountId != null) 'externalAccountId': externalAccountId,
-        if (familyName != null) 'familyName': familyName,
-        if (givenName != null) 'givenName': givenName,
+          'cancelSurveyResult': cancelSurveyResult!.toJson(),
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (developerPayload != null) 'developerPayload': developerPayload!,
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (expiryTimeMillis != null) 'expiryTimeMillis': expiryTimeMillis!,
+        if (externalAccountId != null) 'externalAccountId': externalAccountId!,
+        if (familyName != null) 'familyName': familyName!,
+        if (givenName != null) 'givenName': givenName!,
         if (introductoryPriceInfo != null)
-          'introductoryPriceInfo': introductoryPriceInfo.toJson(),
-        if (kind != null) 'kind': kind,
+          'introductoryPriceInfo': introductoryPriceInfo!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (linkedPurchaseToken != null)
-          'linkedPurchaseToken': linkedPurchaseToken,
+          'linkedPurchaseToken': linkedPurchaseToken!,
         if (obfuscatedExternalAccountId != null)
-          'obfuscatedExternalAccountId': obfuscatedExternalAccountId,
+          'obfuscatedExternalAccountId': obfuscatedExternalAccountId!,
         if (obfuscatedExternalProfileId != null)
-          'obfuscatedExternalProfileId': obfuscatedExternalProfileId,
-        if (orderId != null) 'orderId': orderId,
-        if (paymentState != null) 'paymentState': paymentState,
-        if (priceAmountMicros != null) 'priceAmountMicros': priceAmountMicros,
-        if (priceChange != null) 'priceChange': priceChange.toJson(),
-        if (priceCurrencyCode != null) 'priceCurrencyCode': priceCurrencyCode,
-        if (profileId != null) 'profileId': profileId,
-        if (profileName != null) 'profileName': profileName,
-        if (promotionCode != null) 'promotionCode': promotionCode,
-        if (promotionType != null) 'promotionType': promotionType,
-        if (purchaseType != null) 'purchaseType': purchaseType,
-        if (startTimeMillis != null) 'startTimeMillis': startTimeMillis,
+          'obfuscatedExternalProfileId': obfuscatedExternalProfileId!,
+        if (orderId != null) 'orderId': orderId!,
+        if (paymentState != null) 'paymentState': paymentState!,
+        if (priceAmountMicros != null) 'priceAmountMicros': priceAmountMicros!,
+        if (priceChange != null) 'priceChange': priceChange!.toJson(),
+        if (priceCurrencyCode != null) 'priceCurrencyCode': priceCurrencyCode!,
+        if (profileId != null) 'profileId': profileId!,
+        if (profileName != null) 'profileName': profileName!,
+        if (promotionCode != null) 'promotionCode': promotionCode!,
+        if (promotionType != null) 'promotionType': promotionType!,
+        if (purchaseType != null) 'purchaseType': purchaseType!,
+        if (startTimeMillis != null) 'startTimeMillis': startTimeMillis!,
         if (userCancellationTimeMillis != null)
-          'userCancellationTimeMillis': userCancellationTimeMillis,
+          'userCancellationTimeMillis': userCancellationTimeMillis!,
       };
 }
 
 /// Request for the purchases.subscriptions.acknowledge API.
 class SubscriptionPurchasesAcknowledgeRequest {
   /// Payload to attach to the purchase.
-  core.String developerPayload;
+  core.String? developerPayload;
 
   SubscriptionPurchasesAcknowledgeRequest();
 
@@ -5906,15 +5433,15 @@ class SubscriptionPurchasesAcknowledgeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (developerPayload != null) 'developerPayload': developerPayload,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (developerPayload != null) 'developerPayload': developerPayload!,
       };
 }
 
 /// Request for the purchases.subscriptions.defer API.
 class SubscriptionPurchasesDeferRequest {
   /// The information about the new desired expiry time for the subscription.
-  SubscriptionDeferralInfo deferralInfo;
+  SubscriptionDeferralInfo? deferralInfo;
 
   SubscriptionPurchasesDeferRequest();
 
@@ -5925,15 +5452,15 @@ class SubscriptionPurchasesDeferRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deferralInfo != null) 'deferralInfo': deferralInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deferralInfo != null) 'deferralInfo': deferralInfo!.toJson(),
       };
 }
 
 /// Response for the purchases.subscriptions.defer API.
 class SubscriptionPurchasesDeferResponse {
   /// The new expiry time for the subscription in milliseconds since the Epoch.
-  core.String newExpiryTimeMillis;
+  core.String? newExpiryTimeMillis;
 
   SubscriptionPurchasesDeferResponse();
 
@@ -5943,16 +5470,16 @@ class SubscriptionPurchasesDeferResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (newExpiryTimeMillis != null)
-          'newExpiryTimeMillis': newExpiryTimeMillis,
+          'newExpiryTimeMillis': newExpiryTimeMillis!,
       };
 }
 
 /// Response to list previously created system APK variants.
 class SystemApksListResponse {
   /// All system APK variants created.
-  core.List<Variant> variants;
+  core.List<Variant>? variants;
 
   SystemApksListResponse();
 
@@ -5965,9 +5492,9 @@ class SystemApksListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (variants != null)
-          'variants': variants.map((value) => value.toJson()).toList(),
+          'variants': variants!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5976,7 +5503,7 @@ class SystemApksListResponse {
 /// The resource for TestersService.
 class Testers {
   /// All testing Google Groups, as email addresses.
-  core.List<core.String> googleGroups;
+  core.List<core.String>? googleGroups;
 
   Testers();
 
@@ -5988,8 +5515,8 @@ class Testers {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (googleGroups != null) 'googleGroups': googleGroups,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (googleGroups != null) 'googleGroups': googleGroups!,
       };
 }
 
@@ -6002,10 +5529,10 @@ class Timestamp {
   /// Non-negative fractions of a second at nanosecond resolution.
   ///
   /// Must be from 0 to 999,999,999 inclusive.
-  core.int nanos;
+  core.int? nanos;
 
   /// Represents seconds of UTC time since Unix epoch.
-  core.String seconds;
+  core.String? seconds;
 
   Timestamp();
 
@@ -6018,9 +5545,9 @@ class Timestamp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nanos != null) 'nanos': nanos,
-        if (seconds != null) 'seconds': seconds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nanos != null) 'nanos': nanos!,
+        if (seconds != null) 'seconds': seconds!,
       };
 }
 
@@ -6038,8 +5565,8 @@ class TokenPagination {
   /// Tokens to pass to the standard list field 'page_token'.
   ///
   /// Whenever available, tokens are preferred over manipulating start_index.
-  core.String nextPageToken;
-  core.String previousPageToken;
+  core.String? nextPageToken;
+  core.String? previousPageToken;
 
   TokenPagination();
 
@@ -6052,9 +5579,9 @@ class TokenPagination {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (previousPageToken != null) 'previousPageToken': previousPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (previousPageToken != null) 'previousPageToken': previousPageToken!,
       };
 }
 
@@ -6065,10 +5592,10 @@ class Track {
   /// In a read request, represents all active releases in the track.
   ///
   /// In an update request, represents desired changes.
-  core.List<TrackRelease> releases;
+  core.List<TrackRelease>? releases;
 
   /// Identifier of the track.
-  core.String track;
+  core.String? track;
 
   Track();
 
@@ -6084,17 +5611,17 @@ class Track {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (releases != null)
-          'releases': releases.map((value) => value.toJson()).toList(),
-        if (track != null) 'track': track,
+          'releases': releases!.map((value) => value.toJson()).toList(),
+        if (track != null) 'track': track!,
       };
 }
 
 /// A release within a track.
 class TrackRelease {
   /// Restricts a release to a specific set of countries.
-  CountryTargeting countryTargeting;
+  CountryTargeting? countryTargeting;
 
   /// In-app update priority of the release.
   ///
@@ -6103,17 +5630,17 @@ class TrackRelease {
   /// Defaults to 0. in_app_update_priority can not be updated once the release
   /// is rolled out. See
   /// https://developer.android.com/guide/playcore/in-app-updates.
-  core.int inAppUpdatePriority;
+  core.int? inAppUpdatePriority;
 
   /// The release name.
   ///
   /// Not required to be unique. If not set, the name is generated from the
   /// APK's version_name. If the release contains multiple APKs, the name is
   /// generated from the date.
-  core.String name;
+  core.String? name;
 
   /// A description of what is new in this release.
-  core.List<LocalizedText> releaseNotes;
+  core.List<LocalizedText>? releaseNotes;
 
   /// The status of the release.
   /// Possible string values are:
@@ -6126,17 +5653,17 @@ class TrackRelease {
   /// - "completed" : The release will have no further changes. Its APKs are
   /// being served to all users, unless they are eligible to APKs of a more
   /// recent release.
-  core.String status;
+  core.String? status;
 
   /// Fraction of users who are eligible for a staged release.
   ///
   /// 0 < fraction < 1. Can only be set when status is "inProgress" or "halted".
-  core.double userFraction;
+  core.double? userFraction;
 
   /// Version codes of all APKs in the release.
   ///
   /// Must include version codes to retain from previous releases.
-  core.List<core.String> versionCodes;
+  core.List<core.String>? versionCodes;
 
   TrackRelease();
 
@@ -6170,27 +5697,27 @@ class TrackRelease {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (countryTargeting != null)
-          'countryTargeting': countryTargeting.toJson(),
+          'countryTargeting': countryTargeting!.toJson(),
         if (inAppUpdatePriority != null)
-          'inAppUpdatePriority': inAppUpdatePriority,
-        if (name != null) 'name': name,
+          'inAppUpdatePriority': inAppUpdatePriority!,
+        if (name != null) 'name': name!,
         if (releaseNotes != null)
-          'releaseNotes': releaseNotes.map((value) => value.toJson()).toList(),
-        if (status != null) 'status': status,
-        if (userFraction != null) 'userFraction': userFraction,
-        if (versionCodes != null) 'versionCodes': versionCodes,
+          'releaseNotes': releaseNotes!.map((value) => value.toJson()).toList(),
+        if (status != null) 'status': status!,
+        if (userFraction != null) 'userFraction': userFraction!,
+        if (versionCodes != null) 'versionCodes': versionCodes!,
       };
 }
 
 /// Response listing all tracks.
 class TracksListResponse {
   /// The kind of this response ("androidpublisher#tracksListResponse").
-  core.String kind;
+  core.String? kind;
 
   /// All tracks.
-  core.List<Track> tracks;
+  core.List<Track>? tracks;
 
   TracksListResponse();
 
@@ -6206,10 +5733,10 @@ class TracksListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (tracks != null)
-          'tracks': tracks.map((value) => value.toJson()).toList(),
+          'tracks': tracks!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6219,57 +5746,57 @@ class UserComment {
   /// was written, e.g. 23 is Marshmallow.
   ///
   /// May be absent.
-  core.int androidOsVersion;
+  core.int? androidOsVersion;
 
   /// Integer version code of the app as installed at the time the review was
   /// written.
   ///
   /// May be absent.
-  core.int appVersionCode;
+  core.int? appVersionCode;
 
   /// String version name of the app as installed at the time the review was
   /// written.
   ///
   /// May be absent.
-  core.String appVersionName;
+  core.String? appVersionName;
 
   /// Codename for the reviewer's device, e.g. klte, flounder.
   ///
   /// May be absent.
-  core.String device;
+  core.String? device;
 
   /// Information about the characteristics of the user's device.
-  DeviceMetadata deviceMetadata;
+  DeviceMetadata? deviceMetadata;
 
   /// The last time at which this comment was updated.
-  Timestamp lastModified;
+  Timestamp? lastModified;
 
   /// Untranslated text of the review, where the review was translated.
   ///
   /// If the review was not translated this is left blank.
-  core.String originalText;
+  core.String? originalText;
 
   /// Language code for the reviewer.
   ///
   /// This is taken from the device settings so is not guaranteed to match the
   /// language the review is written in. May be absent.
-  core.String reviewerLanguage;
+  core.String? reviewerLanguage;
 
   /// The star rating associated with the review, from 1 to 5.
-  core.int starRating;
+  core.int? starRating;
 
   /// The content of the comment, i.e. review body.
   ///
   /// In some cases users have been able to write a review with separate title
   /// and body; in those cases the title and body are concatenated and separated
   /// by a tab character.
-  core.String text;
+  core.String? text;
 
   /// Number of users who have given this review a thumbs down.
-  core.int thumbsDownCount;
+  core.int? thumbsDownCount;
 
   /// Number of users who have given this review a thumbs up.
-  core.int thumbsUpCount;
+  core.int? thumbsUpCount;
 
   UserComment();
 
@@ -6314,29 +5841,29 @@ class UserComment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (androidOsVersion != null) 'androidOsVersion': androidOsVersion,
-        if (appVersionCode != null) 'appVersionCode': appVersionCode,
-        if (appVersionName != null) 'appVersionName': appVersionName,
-        if (device != null) 'device': device,
-        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata.toJson(),
-        if (lastModified != null) 'lastModified': lastModified.toJson(),
-        if (originalText != null) 'originalText': originalText,
-        if (reviewerLanguage != null) 'reviewerLanguage': reviewerLanguage,
-        if (starRating != null) 'starRating': starRating,
-        if (text != null) 'text': text,
-        if (thumbsDownCount != null) 'thumbsDownCount': thumbsDownCount,
-        if (thumbsUpCount != null) 'thumbsUpCount': thumbsUpCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (androidOsVersion != null) 'androidOsVersion': androidOsVersion!,
+        if (appVersionCode != null) 'appVersionCode': appVersionCode!,
+        if (appVersionName != null) 'appVersionName': appVersionName!,
+        if (device != null) 'device': device!,
+        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!.toJson(),
+        if (lastModified != null) 'lastModified': lastModified!.toJson(),
+        if (originalText != null) 'originalText': originalText!,
+        if (reviewerLanguage != null) 'reviewerLanguage': reviewerLanguage!,
+        if (starRating != null) 'starRating': starRating!,
+        if (text != null) 'text': text!,
+        if (thumbsDownCount != null) 'thumbsDownCount': thumbsDownCount!,
+        if (thumbsUpCount != null) 'thumbsUpCount': thumbsUpCount!,
       };
 }
 
 /// A permission used by this APK.
 class UsesPermission {
   /// Optionally, the maximum SDK version for which the permission is required.
-  core.int maxSdkVersion;
+  core.int? maxSdkVersion;
 
   /// The name of the permission requested.
-  core.String name;
+  core.String? name;
 
   UsesPermission();
 
@@ -6349,9 +5876,9 @@ class UsesPermission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxSdkVersion != null) 'maxSdkVersion': maxSdkVersion,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxSdkVersion != null) 'maxSdkVersion': maxSdkVersion!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -6360,12 +5887,12 @@ class UsesPermission {
 /// The resource of SystemApksService.
 class Variant {
   /// The device spec used to generate the APK.
-  DeviceSpec deviceSpec;
+  DeviceSpec? deviceSpec;
 
   /// The ID of a previously created system APK variant.
   ///
   /// Output only.
-  core.int variantId;
+  core.int? variantId;
 
   Variant();
 
@@ -6379,9 +5906,9 @@ class Variant {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceSpec != null) 'deviceSpec': deviceSpec.toJson(),
-        if (variantId != null) 'variantId': variantId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceSpec != null) 'deviceSpec': deviceSpec!.toJson(),
+        if (variantId != null) 'variantId': variantId!,
       };
 }
 
@@ -6390,36 +5917,36 @@ class Variant {
 class VoidedPurchase {
   /// This kind represents a voided purchase object in the androidpublisher
   /// service.
-  core.String kind;
+  core.String? kind;
 
   /// The order id which uniquely identifies a one-time purchase, subscription
   /// purchase, or subscription renewal.
-  core.String orderId;
+  core.String? orderId;
 
   /// The time at which the purchase was made, in milliseconds since the epoch
   /// (Jan 1, 1970).
-  core.String purchaseTimeMillis;
+  core.String? purchaseTimeMillis;
 
   /// The token which uniquely identifies a one-time purchase or subscription.
   ///
   /// To uniquely identify subscription renewals use order_id (available
   /// starting from version 3 of the API).
-  core.String purchaseToken;
+  core.String? purchaseToken;
 
   /// The reason why the purchase was voided, possible values are: 0.
   ///
   /// Other 1. Remorse 2. Not_received 3. Defective 4. Accidental_purchase 5.
   /// Fraud 6. Friendly_fraud 7. Chargeback
-  core.int voidedReason;
+  core.int? voidedReason;
 
   /// The initiator of voided purchase, possible values are: 0.
   ///
   /// User 1. Developer 2. Google
-  core.int voidedSource;
+  core.int? voidedSource;
 
   /// The time at which the purchase was canceled/refunded/charged-back, in
   /// milliseconds since the epoch (Jan 1, 1970).
-  core.String voidedTimeMillis;
+  core.String? voidedTimeMillis;
 
   VoidedPurchase();
 
@@ -6447,26 +5974,26 @@ class VoidedPurchase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (orderId != null) 'orderId': orderId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (orderId != null) 'orderId': orderId!,
         if (purchaseTimeMillis != null)
-          'purchaseTimeMillis': purchaseTimeMillis,
-        if (purchaseToken != null) 'purchaseToken': purchaseToken,
-        if (voidedReason != null) 'voidedReason': voidedReason,
-        if (voidedSource != null) 'voidedSource': voidedSource,
-        if (voidedTimeMillis != null) 'voidedTimeMillis': voidedTimeMillis,
+          'purchaseTimeMillis': purchaseTimeMillis!,
+        if (purchaseToken != null) 'purchaseToken': purchaseToken!,
+        if (voidedReason != null) 'voidedReason': voidedReason!,
+        if (voidedSource != null) 'voidedSource': voidedSource!,
+        if (voidedTimeMillis != null) 'voidedTimeMillis': voidedTimeMillis!,
       };
 }
 
 /// Response for the voidedpurchases.list API.
 class VoidedPurchasesListResponse {
   /// General pagination information.
-  PageInfo pageInfo;
+  PageInfo? pageInfo;
 
   /// Pagination information for token pagination.
-  TokenPagination tokenPagination;
-  core.List<VoidedPurchase> voidedPurchases;
+  TokenPagination? tokenPagination;
+  core.List<VoidedPurchase>? voidedPurchases;
 
   VoidedPurchasesListResponse();
 
@@ -6487,12 +6014,12 @@ class VoidedPurchasesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pageInfo != null) 'pageInfo': pageInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
         if (tokenPagination != null)
-          'tokenPagination': tokenPagination.toJson(),
+          'tokenPagination': tokenPagination!.toJson(),
         if (voidedPurchases != null)
           'voidedPurchases':
-              voidedPurchases.map((value) => value.toJson()).toList(),
+              voidedPurchases!.map((value) => value.toJson()).toList(),
       };
 }

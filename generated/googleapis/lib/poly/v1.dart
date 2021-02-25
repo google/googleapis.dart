@@ -82,11 +82,8 @@ class AssetsResource {
   /// this method will complete with the same error.
   async.Future<Asset> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -153,15 +150,15 @@ class AssetsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAssetsResponse> list({
-    core.String category,
-    core.bool curated,
-    core.String format,
-    core.String keywords,
-    core.String maxComplexity,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? category,
+    core.bool? curated,
+    core.String? format,
+    core.String? keywords,
+    core.String? maxComplexity,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (category != null) 'category': [category],
@@ -249,16 +246,13 @@ class UsersAssetsResource {
   /// this method will complete with the same error.
   async.Future<ListUserAssetsResponse> list(
     core.String name, {
-    core.String format,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String visibility,
-    core.String $fields,
+    core.String? format,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? visibility,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (format != null) 'format': [format],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -324,15 +318,12 @@ class UsersLikedassetsResource {
   /// this method will complete with the same error.
   async.Future<ListLikedAssetsResponse> list(
     core.String name, {
-    core.String format,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? format,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (format != null) 'format': [format],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -364,25 +355,25 @@ class Asset {
   ///
   /// Use this name when giving credit to the author. For more information, see
   /// \[Licensing\](/poly/discover/licensing).
-  core.String authorName;
+  core.String? authorName;
 
   /// For published assets, the time when the asset was published.
   ///
   /// For unpublished assets, the time when the asset was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// The human-readable description, set by the asset's author.
-  core.String description;
+  core.String? description;
 
   /// The human-readable name, set by the asset's author.
-  core.String displayName;
+  core.String? displayName;
 
   /// A list of Formats where each format describes one representation of the
   /// asset.
-  core.List<Format> formats;
+  core.List<Format>? formats;
 
   /// Whether this asset has been curated by the Poly team.
-  core.bool isCurated;
+  core.bool? isCurated;
 
   /// The license under which the author has made the asset available for use,
   /// if any.
@@ -392,7 +383,7 @@ class Asset {
   /// https://creativecommons.org/licenses/by/3.0/
   /// - "ALL_RIGHTS_RESERVED" : Unlicensed: All Rights Reserved by the author.
   /// Unlicensed assets are **not** returned by List Assets.
-  core.String license;
+  core.String? license;
 
   /// Application-defined opaque metadata for this asset.
   ///
@@ -400,28 +391,28 @@ class Asset {
   /// assets, not for public assets. This string is limited to 1K chars. It is
   /// up to the creator of the asset to define the format for this string (for
   /// example, JSON).
-  core.String metadata;
+  core.String? metadata;
 
   /// The unique identifier for the asset in the form: `assets/{ASSET_ID}`.
-  core.String name;
+  core.String? name;
 
   /// Hints for displaying the asset.
   ///
   /// Note that these parameters are not immutable; the author of an asset may
   /// change them post-publication.
-  PresentationParams presentationParams;
+  PresentationParams? presentationParams;
 
   /// The remix info for the asset.
-  RemixInfo remixInfo;
+  RemixInfo? remixInfo;
 
   /// The thumbnail image for the asset.
-  File thumbnail;
+  File? thumbnail;
 
   /// The time when the asset was last modified.
   ///
   /// For published assets, whose contents are immutable, the update time
   /// changes only when metadata properties, such as visibility, are updated.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// The visibility of the asset and who can access it.
   /// Possible string values are:
@@ -434,7 +425,7 @@ class Asset {
   /// returned by List Assets.
   /// - "PUBLIC" : Access to the asset and its underlying files and resources is
   /// available to anyone.
-  core.String visibility;
+  core.String? visibility;
 
   Asset();
 
@@ -489,23 +480,23 @@ class Asset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (authorName != null) 'authorName': authorName,
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (authorName != null) 'authorName': authorName!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (formats != null)
-          'formats': formats.map((value) => value.toJson()).toList(),
-        if (isCurated != null) 'isCurated': isCurated,
-        if (license != null) 'license': license,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+          'formats': formats!.map((value) => value.toJson()).toList(),
+        if (isCurated != null) 'isCurated': isCurated!,
+        if (license != null) 'license': license!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
         if (presentationParams != null)
-          'presentationParams': presentationParams.toJson(),
-        if (remixInfo != null) 'remixInfo': remixInfo.toJson(),
-        if (thumbnail != null) 'thumbnail': thumbnail.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
-        if (visibility != null) 'visibility': visibility,
+          'presentationParams': presentationParams!.toJson(),
+        if (remixInfo != null) 'remixInfo': remixInfo!.toJson(),
+        if (thumbnail != null) 'thumbnail': thumbnail!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (visibility != null) 'visibility': visibility!,
       };
 }
 
@@ -537,22 +528,22 @@ class AssetImportMessage {
   /// import the model.
   /// - "INVALID_ELEMENT_TYPE" : The import includes a file of an unsupported
   /// element type. The file path is specified.
-  core.String code;
+  core.String? code;
 
   /// An optional file path.
   ///
   /// Only present for those error codes that specify it.
-  core.String filePath;
+  core.String? filePath;
 
   /// An optional image error.
   ///
   /// Only present for INVALID_IMAGE_FILE.
-  ImageError imageError;
+  ImageError? imageError;
 
   /// An optional OBJ parse error.
   ///
   /// Only present for OBJ_PARSE_ERROR.
-  ObjParseError objParseError;
+  ObjParseError? objParseError;
 
   AssetImportMessage();
 
@@ -573,11 +564,11 @@ class AssetImportMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (filePath != null) 'filePath': filePath,
-        if (imageError != null) 'imageError': imageError.toJson(),
-        if (objParseError != null) 'objParseError': objParseError.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (filePath != null) 'filePath': filePath!,
+        if (imageError != null) 'imageError': imageError!.toJson(),
+        if (objParseError != null) 'objParseError': objParseError!.toJson(),
       };
 }
 
@@ -587,15 +578,15 @@ class File {
   ///
   /// For more information, see \[MIME
   /// types\](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).
-  core.String contentType;
+  core.String? contentType;
 
   /// The path of the resource file relative to the root file.
   ///
   /// For root or thumbnail files, this is just the filename.
-  core.String relativePath;
+  core.String? relativePath;
 
   /// The URL where the file data can be retrieved.
-  core.String url;
+  core.String? url;
 
   File();
 
@@ -611,10 +602,10 @@ class File {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentType != null) 'contentType': contentType,
-        if (relativePath != null) 'relativePath': relativePath,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentType != null) 'contentType': contentType!,
+        if (relativePath != null) 'relativePath': relativePath!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -627,18 +618,18 @@ class File {
 /// information needed to retrieve and describe this representation.
 class Format {
   /// Complexity stats about this representation of the asset.
-  FormatComplexity formatComplexity;
+  FormatComplexity? formatComplexity;
 
   /// A short string that identifies the format type of this representation.
   ///
   /// Possible values are: `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.
-  core.String formatType;
+  core.String? formatType;
 
   /// A list of dependencies of the root element.
   ///
   /// May include, but is not limited to, materials, textures, and shader
   /// programs.
-  core.List<File> resources;
+  core.List<File>? resources;
 
   /// The root of the file hierarchy.
   ///
@@ -646,7 +637,7 @@ class Format {
   /// which are self-contained - this is all of the data. Other types - such as
   /// `OBJ` - often reference other data elements. These are contained in the
   /// resources field.
-  File root;
+  File? root;
 
   Format();
 
@@ -670,13 +661,13 @@ class Format {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (formatComplexity != null)
-          'formatComplexity': formatComplexity.toJson(),
-        if (formatType != null) 'formatType': formatType,
+          'formatComplexity': formatComplexity!.toJson(),
+        if (formatType != null) 'formatType': formatType!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
-        if (root != null) 'root': root.toJson(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (root != null) 'root': root!.toJson(),
       };
 }
 
@@ -688,10 +679,10 @@ class FormatComplexity {
   ///
   /// This hint allows you to sort formats from the most-detailed (0) to
   /// least-detailed (integers greater than 0).
-  core.int lodHint;
+  core.int? lodHint;
 
   /// The estimated number of triangles.
-  core.String triangleCount;
+  core.String? triangleCount;
 
   FormatComplexity();
 
@@ -704,9 +695,9 @@ class FormatComplexity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lodHint != null) 'lodHint': lodHint,
-        if (triangleCount != null) 'triangleCount': triangleCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lodHint != null) 'lodHint': lodHint!,
+        if (triangleCount != null) 'triangleCount': triangleCount!,
       };
 }
 
@@ -721,10 +712,10 @@ class ImageError {
   /// - "IMAGE_TOO_BIG" : The image size is too large.
   /// - "WRONG_IMAGE_TYPE" : The image data does not match the expected MIME
   /// type of the image.
-  core.String code;
+  core.String? code;
 
   /// The file path in the import of the image that was rejected.
-  core.String filePath;
+  core.String? filePath;
 
   ImageError();
 
@@ -737,25 +728,25 @@ class ImageError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (filePath != null) 'filePath': filePath,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (filePath != null) 'filePath': filePath!,
       };
 }
 
 /// A response message from a request to list.
 class ListAssetsResponse {
   /// A list of assets that match the criteria specified in the request.
-  core.List<Asset> assets;
+  core.List<Asset>? assets;
 
   /// The continuation token for retrieving the next page.
   ///
   /// If empty, indicates that there are no more pages. To get the next page,
   /// submit the same request specifying this value as the page_token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total number of assets in the list, without pagination.
-  core.int totalSize;
+  core.int? totalSize;
 
   ListAssetsResponse();
 
@@ -774,27 +765,27 @@ class ListAssetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (assets != null)
-          'assets': assets.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+          'assets': assets!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
 /// A response message from a request to list.
 class ListLikedAssetsResponse {
   /// A list of assets that match the criteria specified in the request.
-  core.List<Asset> assets;
+  core.List<Asset>? assets;
 
   /// The continuation token for retrieving the next page.
   ///
   /// If empty, indicates that there are no more pages. To get the next page,
   /// submit the same request specifying this value as the page_token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total number of assets in the list, without pagination.
-  core.int totalSize;
+  core.int? totalSize;
 
   ListLikedAssetsResponse();
 
@@ -813,11 +804,11 @@ class ListLikedAssetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (assets != null)
-          'assets': assets.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+          'assets': assets!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
@@ -827,13 +818,13 @@ class ListUserAssetsResponse {
   ///
   /// If empty, indicates that there are no more pages. To get the next page,
   /// submit the same request specifying this value as the page_token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total number of assets in the list, without pagination.
-  core.int totalSize;
+  core.int? totalSize;
 
   /// A list of UserAssets matching the request.
-  core.List<UserAsset> userAssets;
+  core.List<UserAsset>? userAssets;
 
   ListUserAssetsResponse();
 
@@ -852,11 +843,11 @@ class ListUserAssetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
         if (userAssets != null)
-          'userAssets': userAssets.map((value) => value.toJson()).toList(),
+          'userAssets': userAssets!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -904,25 +895,25 @@ class ObjParseError {
   /// length.
   /// - "INVALID_FILE_PATH" : The file path was invalid. Only relative paths are
   /// supported.
-  core.String code;
+  core.String? code;
 
   /// The ending character index at which the problem was found.
-  core.int endIndex;
+  core.int? endIndex;
 
   /// The file path in which the problem was found.
-  core.String filePath;
+  core.String? filePath;
 
   /// The text of the line.
   ///
   /// Note that this may be truncated if the line was very long. This may not
   /// include the error if it occurs after line truncation.
-  core.String line;
+  core.String? line;
 
   /// Line number at which the problem was found.
-  core.int lineNumber;
+  core.int? lineNumber;
 
   /// The starting character index at which the problem was found.
-  core.int startIndex;
+  core.int? startIndex;
 
   ObjParseError();
 
@@ -947,13 +938,13 @@ class ObjParseError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (endIndex != null) 'endIndex': endIndex,
-        if (filePath != null) 'filePath': filePath,
-        if (line != null) 'line': line,
-        if (lineNumber != null) 'lineNumber': lineNumber,
-        if (startIndex != null) 'startIndex': startIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (endIndex != null) 'endIndex': endIndex!,
+        if (filePath != null) 'filePath': filePath!,
+        if (line != null) 'line': line!,
+        if (lineNumber != null) 'lineNumber': lineNumber!,
+        if (startIndex != null) 'startIndex': startIndex!,
       };
 }
 
@@ -967,7 +958,7 @@ class PresentationParams {
   /// editing their asset. This is represented as a six-digit hexademical
   /// triplet specifying the RGB components of the background color, e.g.
   /// #FF0000 for Red.
-  core.String backgroundColor;
+  core.String? backgroundColor;
 
   /// The materials' diffuse/albedo color.
   ///
@@ -976,7 +967,7 @@ class PresentationParams {
   /// - "UNKNOWN" : Invalid color value.
   /// - "LINEAR" : Linear color values. Default.
   /// - "GAMMA" : Colors should be converted to linear by assuming gamma = 2.0.
-  core.String colorSpace;
+  core.String? colorSpace;
 
   /// A rotation that should be applied to the object root to make it upright.
   ///
@@ -992,7 +983,7 @@ class PresentationParams {
   /// object's pose in the web preview, which is just a camera position setting
   /// and is *not* reflected in this rotation. Please note: this is applicable
   /// only to the gLTF.
-  Quaternion orientingRotation;
+  Quaternion? orientingRotation;
 
   PresentationParams();
 
@@ -1009,11 +1000,11 @@ class PresentationParams {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (backgroundColor != null) 'backgroundColor': backgroundColor,
-        if (colorSpace != null) 'colorSpace': colorSpace,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
+        if (colorSpace != null) 'colorSpace': colorSpace!,
         if (orientingRotation != null)
-          'orientingRotation': orientingRotation.toJson(),
+          'orientingRotation': orientingRotation!.toJson(),
       };
 }
 
@@ -1023,16 +1014,16 @@ class PresentationParams {
 /// default value of \[0, 0, 0, 1\] where x,y, and z are 0.
 class Quaternion {
   /// The scalar component.
-  core.double w;
+  core.double? w;
 
   /// The x component.
-  core.double x;
+  core.double? x;
 
   /// The y component.
-  core.double y;
+  core.double? y;
 
   /// The z component.
-  core.double z;
+  core.double? z;
 
   Quaternion();
 
@@ -1051,11 +1042,11 @@ class Quaternion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (w != null) 'w': w,
-        if (x != null) 'x': x,
-        if (y != null) 'y': y,
-        if (z != null) 'z': z,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (w != null) 'w': w!,
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
+        if (z != null) 'z': z!,
       };
 }
 
@@ -1064,7 +1055,7 @@ class Quaternion {
 class RemixInfo {
   /// Resource ids for the sources of this remix, of the form:
   /// `assets/{ASSET_ID}`
-  core.List<core.String> sourceAsset;
+  core.List<core.String>? sourceAsset;
 
   RemixInfo();
 
@@ -1076,8 +1067,8 @@ class RemixInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sourceAsset != null) 'sourceAsset': sourceAsset,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sourceAsset != null) 'sourceAsset': sourceAsset!,
       };
 }
 
@@ -1090,19 +1081,19 @@ class StartAssetImportResponse {
   /// If this is empty when the operation is complete it means the import
   /// failed. Please refer to the assetImportMessages field to understand what
   /// went wrong.
-  core.String assetId;
+  core.String? assetId;
 
   /// The id of the asset import.
-  core.String assetImportId;
+  core.String? assetImportId;
 
   /// The message from the asset import.
   ///
   /// This will contain any warnings (or - in the case of failure - errors) that
   /// occurred during import.
-  core.List<AssetImportMessage> assetImportMessages;
+  core.List<AssetImportMessage>? assetImportMessages;
 
   /// The publish URL for the asset.
-  core.String publishUrl;
+  core.String? publishUrl;
 
   StartAssetImportResponse();
 
@@ -1124,20 +1115,20 @@ class StartAssetImportResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (assetId != null) 'assetId': assetId,
-        if (assetImportId != null) 'assetImportId': assetImportId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (assetId != null) 'assetId': assetId!,
+        if (assetImportId != null) 'assetImportId': assetImportId!,
         if (assetImportMessages != null)
           'assetImportMessages':
-              assetImportMessages.map((value) => value.toJson()).toList(),
-        if (publishUrl != null) 'publishUrl': publishUrl,
+              assetImportMessages!.map((value) => value.toJson()).toList(),
+        if (publishUrl != null) 'publishUrl': publishUrl!,
       };
 }
 
 /// Data about the user's asset.
 class UserAsset {
   /// An Asset.
-  Asset asset;
+  Asset? asset;
 
   UserAsset();
 
@@ -1148,7 +1139,7 @@ class UserAsset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (asset != null) 'asset': asset.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (asset != null) 'asset': asset!.toJson(),
       };
 }

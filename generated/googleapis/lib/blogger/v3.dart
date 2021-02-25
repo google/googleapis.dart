@@ -102,15 +102,9 @@ class BlogUserInfosResource {
   async.Future<BlogUserInfo> get(
     core.String userId,
     core.String blogId, {
-    core.int maxPosts,
-    core.String $fields,
+    core.int? maxPosts,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxPosts != null) 'maxPosts': ['${maxPosts}'],
       if ($fields != null) 'fields': [$fields],
@@ -163,13 +157,10 @@ class BlogsResource {
   /// this method will complete with the same error.
   async.Future<Blog> get(
     core.String blogId, {
-    core.int maxPosts,
-    core.String view,
-    core.String $fields,
+    core.int? maxPosts,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxPosts != null) 'maxPosts': ['${maxPosts}'],
       if (view != null) 'view': [view],
@@ -211,12 +202,9 @@ class BlogsResource {
   /// this method will complete with the same error.
   async.Future<Blog> getByUrl(
     core.String url, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (url == null) {
-      throw core.ArgumentError('Parameter url is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'url': [url],
       if (view != null) 'view': [view],
@@ -264,15 +252,12 @@ class BlogsResource {
   /// this method will complete with the same error.
   async.Future<BlogList> listByUser(
     core.String userId, {
-    core.bool fetchUserInfo,
-    core.List<core.String> role,
-    core.List<core.String> status,
-    core.String view,
-    core.String $fields,
+    core.bool? fetchUserInfo,
+    core.List<core.String>? role,
+    core.List<core.String>? status,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fetchUserInfo != null) 'fetchUserInfo': ['${fetchUserInfo}'],
       if (role != null) 'role': role,
@@ -322,17 +307,8 @@ class CommentsResource {
     core.String blogId,
     core.String postId,
     core.String commentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (postId == null) {
-      throw core.ArgumentError('Parameter postId is required.');
-    }
-    if (commentId == null) {
-      throw core.ArgumentError('Parameter commentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -375,17 +351,8 @@ class CommentsResource {
     core.String blogId,
     core.String postId,
     core.String commentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (postId == null) {
-      throw core.ArgumentError('Parameter postId is required.');
-    }
-    if (commentId == null) {
-      throw core.ArgumentError('Parameter commentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -436,18 +403,9 @@ class CommentsResource {
     core.String blogId,
     core.String postId,
     core.String commentId, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (postId == null) {
-      throw core.ArgumentError('Parameter postId is required.');
-    }
-    if (commentId == null) {
-      throw core.ArgumentError('Parameter commentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -513,21 +471,15 @@ class CommentsResource {
   async.Future<CommentList> list(
     core.String blogId,
     core.String postId, {
-    core.String endDate,
-    core.bool fetchBodies,
-    core.int maxResults,
-    core.String pageToken,
-    core.String startDate,
-    core.String status,
-    core.String view,
-    core.String $fields,
+    core.String? endDate,
+    core.bool? fetchBodies,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? startDate,
+    core.String? status,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (postId == null) {
-      throw core.ArgumentError('Parameter postId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (endDate != null) 'endDate': [endDate],
       if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
@@ -584,17 +536,14 @@ class CommentsResource {
   /// this method will complete with the same error.
   async.Future<CommentList> listByBlog(
     core.String blogId, {
-    core.String endDate,
-    core.bool fetchBodies,
-    core.int maxResults,
-    core.String pageToken,
-    core.String startDate,
-    core.List<core.String> status,
-    core.String $fields,
+    core.String? endDate,
+    core.bool? fetchBodies,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? startDate,
+    core.List<core.String>? status,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (endDate != null) 'endDate': [endDate],
       if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
@@ -641,17 +590,8 @@ class CommentsResource {
     core.String blogId,
     core.String postId,
     core.String commentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (postId == null) {
-      throw core.ArgumentError('Parameter postId is required.');
-    }
-    if (commentId == null) {
-      throw core.ArgumentError('Parameter commentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -696,17 +636,8 @@ class CommentsResource {
     core.String blogId,
     core.String postId,
     core.String commentId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (postId == null) {
-      throw core.ArgumentError('Parameter postId is required.');
-    }
-    if (commentId == null) {
-      throw core.ArgumentError('Parameter commentId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -753,12 +684,9 @@ class PageViewsResource {
   /// this method will complete with the same error.
   async.Future<Pageviews> get(
     core.String blogId, {
-    core.List<core.String> range,
-    core.String $fields,
+    core.List<core.String>? range,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (range != null) 'range': range,
       if ($fields != null) 'fields': [$fields],
@@ -800,14 +728,8 @@ class PagesResource {
   async.Future<void> delete(
     core.String blogId,
     core.String pageId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (pageId == null) {
-      throw core.ArgumentError('Parameter pageId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -853,15 +775,9 @@ class PagesResource {
   async.Future<Page> get(
     core.String blogId,
     core.String pageId, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (pageId == null) {
-      throw core.ArgumentError('Parameter pageId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -903,14 +819,10 @@ class PagesResource {
   async.Future<Page> insert(
     Page request,
     core.String blogId, {
-    core.bool isDraft,
-    core.String $fields,
+    core.bool? isDraft,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (isDraft != null) 'isDraft': ['${isDraft}'],
       if ($fields != null) 'fields': [$fields],
@@ -961,16 +873,13 @@ class PagesResource {
   /// this method will complete with the same error.
   async.Future<PageList> list(
     core.String blogId, {
-    core.bool fetchBodies,
-    core.int maxResults,
-    core.String pageToken,
-    core.List<core.String> status,
-    core.String view,
-    core.String $fields,
+    core.bool? fetchBodies,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.List<core.String>? status,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -1019,18 +928,11 @@ class PagesResource {
     Page request,
     core.String blogId,
     core.String pageId, {
-    core.bool publish_1,
-    core.bool revert_1,
-    core.String $fields,
+    core.bool? publish_1,
+    core.bool? revert_1,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (pageId == null) {
-      throw core.ArgumentError('Parameter pageId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (publish_1 != null) 'publish': ['${publish_1}'],
       if (revert_1 != null) 'revert': ['${revert_1}'],
@@ -1072,14 +974,8 @@ class PagesResource {
   async.Future<Page> publish(
     core.String blogId,
     core.String pageId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (pageId == null) {
-      throw core.ArgumentError('Parameter pageId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1119,14 +1015,8 @@ class PagesResource {
   async.Future<Page> revert(
     core.String blogId,
     core.String pageId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (pageId == null) {
-      throw core.ArgumentError('Parameter pageId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1173,18 +1063,11 @@ class PagesResource {
     Page request,
     core.String blogId,
     core.String pageId, {
-    core.bool publish_1,
-    core.bool revert_1,
-    core.String $fields,
+    core.bool? publish_1,
+    core.bool? revert_1,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (pageId == null) {
-      throw core.ArgumentError('Parameter pageId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (publish_1 != null) 'publish': ['${publish_1}'],
       if (revert_1 != null) 'revert': ['${revert_1}'],
@@ -1237,18 +1120,9 @@ class PostUserInfosResource {
     core.String userId,
     core.String blogId,
     core.String postId, {
-    core.int maxComments,
-    core.String $fields,
+    core.int? maxComments,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (postId == null) {
-      throw core.ArgumentError('Parameter postId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxComments != null) 'maxComments': ['${maxComments}'],
       if ($fields != null) 'fields': [$fields],
@@ -1318,23 +1192,17 @@ class PostUserInfosResource {
   async.Future<PostUserInfosList> list(
     core.String userId,
     core.String blogId, {
-    core.String endDate,
-    core.bool fetchBodies,
-    core.String labels,
-    core.int maxResults,
-    core.String orderBy,
-    core.String pageToken,
-    core.String startDate,
-    core.List<core.String> status,
-    core.String view,
-    core.String $fields,
+    core.String? endDate,
+    core.bool? fetchBodies,
+    core.String? labels,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.String? startDate,
+    core.List<core.String>? status,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (endDate != null) 'endDate': [endDate],
       if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
@@ -1388,14 +1256,8 @@ class PostsResource {
   async.Future<void> delete(
     core.String blogId,
     core.String postId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (postId == null) {
-      throw core.ArgumentError('Parameter postId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1447,18 +1309,12 @@ class PostsResource {
   async.Future<Post> get(
     core.String blogId,
     core.String postId, {
-    core.bool fetchBody,
-    core.bool fetchImages,
-    core.int maxComments,
-    core.String view,
-    core.String $fields,
+    core.bool? fetchBody,
+    core.bool? fetchImages,
+    core.int? maxComments,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (postId == null) {
-      throw core.ArgumentError('Parameter postId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (fetchBody != null) 'fetchBody': ['${fetchBody}'],
       if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
@@ -1510,16 +1366,10 @@ class PostsResource {
   async.Future<Post> getByPath(
     core.String blogId,
     core.String path, {
-    core.int maxComments,
-    core.String view,
-    core.String $fields,
+    core.int? maxComments,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (path == null) {
-      throw core.ArgumentError('Parameter path is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'path': [path],
       if (maxComments != null) 'maxComments': ['${maxComments}'],
@@ -1566,16 +1416,12 @@ class PostsResource {
   async.Future<Post> insert(
     Post request,
     core.String blogId, {
-    core.bool fetchBody,
-    core.bool fetchImages,
-    core.bool isDraft,
-    core.String $fields,
+    core.bool? fetchBody,
+    core.bool? fetchImages,
+    core.bool? isDraft,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fetchBody != null) 'fetchBody': ['${fetchBody}'],
       if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
@@ -1642,21 +1488,18 @@ class PostsResource {
   /// this method will complete with the same error.
   async.Future<PostList> list(
     core.String blogId, {
-    core.String endDate,
-    core.bool fetchBodies,
-    core.bool fetchImages,
-    core.String labels,
-    core.int maxResults,
-    core.String orderBy,
-    core.String pageToken,
-    core.String startDate,
-    core.List<core.String> status,
-    core.String view,
-    core.String $fields,
+    core.String? endDate,
+    core.bool? fetchBodies,
+    core.bool? fetchImages,
+    core.String? labels,
+    core.int? maxResults,
+    core.String? orderBy,
+    core.String? pageToken,
+    core.String? startDate,
+    core.List<core.String>? status,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (endDate != null) 'endDate': [endDate],
       if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
@@ -1716,21 +1559,14 @@ class PostsResource {
     Post request,
     core.String blogId,
     core.String postId, {
-    core.bool fetchBody,
-    core.bool fetchImages,
-    core.int maxComments,
-    core.bool publish_1,
-    core.bool revert_1,
-    core.String $fields,
+    core.bool? fetchBody,
+    core.bool? fetchImages,
+    core.int? maxComments,
+    core.bool? publish_1,
+    core.bool? revert_1,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (postId == null) {
-      throw core.ArgumentError('Parameter postId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fetchBody != null) 'fetchBody': ['${fetchBody}'],
       if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
@@ -1777,15 +1613,9 @@ class PostsResource {
   async.Future<Post> publish(
     core.String blogId,
     core.String postId, {
-    core.String publishDate,
-    core.String $fields,
+    core.String? publishDate,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (postId == null) {
-      throw core.ArgumentError('Parameter postId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (publishDate != null) 'publishDate': [publishDate],
       if ($fields != null) 'fields': [$fields],
@@ -1826,14 +1656,8 @@ class PostsResource {
   async.Future<Post> revert(
     core.String blogId,
     core.String postId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (postId == null) {
-      throw core.ArgumentError('Parameter postId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1881,16 +1705,10 @@ class PostsResource {
   async.Future<PostList> search(
     core.String blogId,
     core.String q, {
-    core.bool fetchBodies,
-    core.String orderBy,
-    core.String $fields,
+    core.bool? fetchBodies,
+    core.String? orderBy,
+    core.String? $fields,
   }) async {
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (q == null) {
-      throw core.ArgumentError('Parameter q is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'q': [q],
       if (fetchBodies != null) 'fetchBodies': ['${fetchBodies}'],
@@ -1944,21 +1762,14 @@ class PostsResource {
     Post request,
     core.String blogId,
     core.String postId, {
-    core.bool fetchBody,
-    core.bool fetchImages,
-    core.int maxComments,
-    core.bool publish_1,
-    core.bool revert_1,
-    core.String $fields,
+    core.bool? fetchBody,
+    core.bool? fetchImages,
+    core.int? maxComments,
+    core.bool? publish_1,
+    core.bool? revert_1,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (blogId == null) {
-      throw core.ArgumentError('Parameter blogId is required.');
-    }
-    if (postId == null) {
-      throw core.ArgumentError('Parameter postId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (fetchBody != null) 'fetchBody': ['${fetchBody}'],
       if (fetchImages != null) 'fetchImages': ['${fetchImages}'],
@@ -2006,11 +1817,8 @@ class UsersResource {
   /// this method will complete with the same error.
   async.Future<User> get(
     core.String userId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (userId == null) {
-      throw core.ArgumentError('Parameter userId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2029,13 +1837,13 @@ class UsersResource {
 /// The locale this Blog is set to.
 class BlogLocale {
   /// The country this blog's locale is set to.
-  core.String country;
+  core.String? country;
 
   /// The language this blog is authored in.
-  core.String language;
+  core.String? language;
 
   /// The language variant this blog is authored in.
-  core.String variant;
+  core.String? variant;
 
   BlogLocale();
 
@@ -2051,20 +1859,20 @@ class BlogLocale {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (language != null) 'language': language,
-        if (variant != null) 'variant': variant,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (language != null) 'language': language!,
+        if (variant != null) 'variant': variant!,
       };
 }
 
 /// The container of pages in this blog.
 class BlogPages {
   /// The URL of the container for pages in this blog.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The count of pages in this blog.
-  core.int totalItems;
+  core.int? totalItems;
 
   BlogPages();
 
@@ -2077,22 +1885,22 @@ class BlogPages {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (selfLink != null) 'selfLink': selfLink,
-        if (totalItems != null) 'totalItems': totalItems,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (totalItems != null) 'totalItems': totalItems!,
       };
 }
 
 /// The container of posts in this blog.
 class BlogPosts {
   /// The List of Posts for this Blog.
-  core.List<Post> items;
+  core.List<Post>? items;
 
   /// The URL of the container for posts in this blog.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The count of posts in this blog.
-  core.int totalItems;
+  core.int? totalItems;
 
   BlogPosts();
 
@@ -2111,62 +1919,62 @@ class BlogPosts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (selfLink != null) 'selfLink': selfLink,
-        if (totalItems != null) 'totalItems': totalItems,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (totalItems != null) 'totalItems': totalItems!,
       };
 }
 
 class Blog {
   /// The JSON custom meta-data for the Blog.
-  core.String customMetaData;
+  core.String? customMetaData;
 
   /// The description of this blog.
   ///
   /// This is displayed underneath the title.
-  core.String description;
+  core.String? description;
 
   /// The identifier for this resource.
-  core.String id;
+  core.String? id;
 
   /// The kind of this entry.
   ///
   /// Always blogger#blog.
-  core.String kind;
+  core.String? kind;
 
   /// The locale this Blog is set to.
-  BlogLocale locale;
+  BlogLocale? locale;
 
   /// The name of this blog.
   ///
   /// This is displayed as the title.
-  core.String name;
+  core.String? name;
 
   /// The container of pages in this blog.
-  BlogPages pages;
+  BlogPages? pages;
 
   /// The container of posts in this blog.
-  BlogPosts posts;
+  BlogPosts? posts;
 
   /// RFC 3339 date-time when this blog was published.
-  core.String published;
+  core.String? published;
 
   /// The API REST URL to fetch this resource from.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The status of the blog.
   /// Possible string values are:
   /// - "LIVE"
   /// - "DELETED"
-  core.String status;
+  core.String? status;
 
   /// RFC 3339 date-time when this blog was last updated.
-  core.String updated;
+  core.String? updated;
 
   /// The URL where this blog is published.
-  core.String url;
+  core.String? url;
 
   Blog();
 
@@ -2215,34 +2023,34 @@ class Blog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customMetaData != null) 'customMetaData': customMetaData,
-        if (description != null) 'description': description,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (locale != null) 'locale': locale.toJson(),
-        if (name != null) 'name': name,
-        if (pages != null) 'pages': pages.toJson(),
-        if (posts != null) 'posts': posts.toJson(),
-        if (published != null) 'published': published,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (status != null) 'status': status,
-        if (updated != null) 'updated': updated,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customMetaData != null) 'customMetaData': customMetaData!,
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (locale != null) 'locale': locale!.toJson(),
+        if (name != null) 'name': name!,
+        if (pages != null) 'pages': pages!.toJson(),
+        if (posts != null) 'posts': posts!.toJson(),
+        if (published != null) 'published': published!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (status != null) 'status': status!,
+        if (updated != null) 'updated': updated!,
+        if (url != null) 'url': url!,
       };
 }
 
 class BlogList {
   /// Admin level list of blog per-user information.
-  core.List<BlogUserInfo> blogUserInfos;
+  core.List<BlogUserInfo>? blogUserInfos;
 
   /// The list of Blogs this user has Authorship or Admin rights over.
-  core.List<Blog> items;
+  core.List<Blog>? items;
 
   /// The kind of this entity.
   ///
   /// Always blogger#blogList.
-  core.String kind;
+  core.String? kind;
 
   BlogList();
 
@@ -2264,30 +2072,30 @@ class BlogList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (blogUserInfos != null)
           'blogUserInfos':
-              blogUserInfos.map((value) => value.toJson()).toList(),
+              blogUserInfos!.map((value) => value.toJson()).toList(),
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class BlogPerUserInfo {
   /// ID of the Blog resource.
-  core.String blogId;
+  core.String? blogId;
 
   /// True if the user has Admin level access to the blog.
-  core.bool hasAdminAccess;
+  core.bool? hasAdminAccess;
 
   /// The kind of this entity.
   ///
   /// Always blogger#blogPerUserInfo.
-  core.String kind;
+  core.String? kind;
 
   /// The Photo Album Key for the user when adding photos to the blog.
-  core.String photosAlbumKey;
+  core.String? photosAlbumKey;
 
   /// Access permissions that the user has for the blog (ADMIN, AUTHOR, or
   /// READER).
@@ -2296,10 +2104,10 @@ class BlogPerUserInfo {
   /// - "READER"
   /// - "AUTHOR"
   /// - "ADMIN"
-  core.String role;
+  core.String? role;
 
   /// ID of the User.
-  core.String userId;
+  core.String? userId;
 
   BlogPerUserInfo();
 
@@ -2324,27 +2132,27 @@ class BlogPerUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (blogId != null) 'blogId': blogId,
-        if (hasAdminAccess != null) 'hasAdminAccess': hasAdminAccess,
-        if (kind != null) 'kind': kind,
-        if (photosAlbumKey != null) 'photosAlbumKey': photosAlbumKey,
-        if (role != null) 'role': role,
-        if (userId != null) 'userId': userId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (blogId != null) 'blogId': blogId!,
+        if (hasAdminAccess != null) 'hasAdminAccess': hasAdminAccess!,
+        if (kind != null) 'kind': kind!,
+        if (photosAlbumKey != null) 'photosAlbumKey': photosAlbumKey!,
+        if (role != null) 'role': role!,
+        if (userId != null) 'userId': userId!,
       };
 }
 
 class BlogUserInfo {
   /// The Blog resource.
-  Blog blog;
+  Blog? blog;
 
   /// Information about a User for the Blog.
-  BlogPerUserInfo blogUserInfo;
+  BlogPerUserInfo? blogUserInfo;
 
   /// The kind of this entity.
   ///
   /// Always blogger#blogUserInfo.
-  core.String kind;
+  core.String? kind;
 
   BlogUserInfo();
 
@@ -2362,17 +2170,17 @@ class BlogUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (blog != null) 'blog': blog.toJson(),
-        if (blogUserInfo != null) 'blog_user_info': blogUserInfo.toJson(),
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (blog != null) 'blog': blog!.toJson(),
+        if (blogUserInfo != null) 'blog_user_info': blogUserInfo!.toJson(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// The creator's avatar.
 class CommentAuthorImage {
   /// The creator's avatar URL.
-  core.String url;
+  core.String? url;
 
   CommentAuthorImage();
 
@@ -2382,24 +2190,24 @@ class CommentAuthorImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (url != null) 'url': url!,
       };
 }
 
 /// The author of this Comment.
 class CommentAuthor {
   /// The display name.
-  core.String displayName;
+  core.String? displayName;
 
   /// The identifier of the creator.
-  core.String id;
+  core.String? id;
 
   /// The creator's avatar.
-  CommentAuthorImage image;
+  CommentAuthorImage? image;
 
   /// The URL of the creator's Profile page.
-  core.String url;
+  core.String? url;
 
   CommentAuthor();
 
@@ -2419,18 +2227,18 @@ class CommentAuthor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (id != null) 'id': id,
-        if (image != null) 'image': image.toJson(),
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
+        if (image != null) 'image': image!.toJson(),
+        if (url != null) 'url': url!,
       };
 }
 
 /// Data about the blog containing this comment.
 class CommentBlog {
   /// The identifier of the blog containing this comment.
-  core.String id;
+  core.String? id;
 
   CommentBlog();
 
@@ -2440,15 +2248,15 @@ class CommentBlog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
       };
 }
 
 /// Data about the comment this is in reply to.
 class CommentInReplyTo {
   /// The identified of the parent of this comment.
-  core.String id;
+  core.String? id;
 
   CommentInReplyTo();
 
@@ -2458,15 +2266,15 @@ class CommentInReplyTo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
       };
 }
 
 /// Data about the post containing this comment.
 class CommentPost {
   /// The identifier of the post containing this comment.
-  core.String id;
+  core.String? id;
 
   CommentPost();
 
@@ -2476,42 +2284,42 @@ class CommentPost {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
       };
 }
 
 class Comment {
   /// The author of this Comment.
-  CommentAuthor author;
+  CommentAuthor? author;
 
   /// Data about the blog containing this comment.
-  CommentBlog blog;
+  CommentBlog? blog;
 
   /// The actual content of the comment.
   ///
   /// May include HTML markup.
-  core.String content;
+  core.String? content;
 
   /// The identifier for this resource.
-  core.String id;
+  core.String? id;
 
   /// Data about the comment this is in reply to.
-  CommentInReplyTo inReplyTo;
+  CommentInReplyTo? inReplyTo;
 
   /// The kind of this entry.
   ///
   /// Always blogger#comment.
-  core.String kind;
+  core.String? kind;
 
   /// Data about the post containing this comment.
-  CommentPost post;
+  CommentPost? post;
 
   /// RFC 3339 date-time when this comment was published.
-  core.String published;
+  core.String? published;
 
   /// The API REST URL to fetch this resource from.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The status of the comment (only populated for admin users).
   /// Possible string values are:
@@ -2519,10 +2327,10 @@ class Comment {
   /// - "EMPTIED"
   /// - "PENDING"
   /// - "SPAM"
-  core.String status;
+  core.String? status;
 
   /// RFC 3339 date-time when this comment was last updated.
-  core.String updated;
+  core.String? updated;
 
   Comment();
 
@@ -2566,38 +2374,38 @@ class Comment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (author != null) 'author': author.toJson(),
-        if (blog != null) 'blog': blog.toJson(),
-        if (content != null) 'content': content,
-        if (id != null) 'id': id,
-        if (inReplyTo != null) 'inReplyTo': inReplyTo.toJson(),
-        if (kind != null) 'kind': kind,
-        if (post != null) 'post': post.toJson(),
-        if (published != null) 'published': published,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (status != null) 'status': status,
-        if (updated != null) 'updated': updated,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (author != null) 'author': author!.toJson(),
+        if (blog != null) 'blog': blog!.toJson(),
+        if (content != null) 'content': content!,
+        if (id != null) 'id': id!,
+        if (inReplyTo != null) 'inReplyTo': inReplyTo!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (post != null) 'post': post!.toJson(),
+        if (published != null) 'published': published!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (status != null) 'status': status!,
+        if (updated != null) 'updated': updated!,
       };
 }
 
 class CommentList {
   /// Etag of the response.
-  core.String etag;
+  core.String? etag;
 
   /// The List of Comments for a Post.
-  core.List<Comment> items;
+  core.List<Comment>? items;
 
   /// The kind of this entry.
   ///
   /// Always blogger#commentList.
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to fetch the next page, if one exists.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Pagination token to fetch the previous page, if one exists.
-  core.String prevPageToken;
+  core.String? prevPageToken;
 
   CommentList();
 
@@ -2622,20 +2430,20 @@ class CommentList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (prevPageToken != null) 'prevPageToken': prevPageToken!,
       };
 }
 
 /// The creator's avatar.
 class PageAuthorImage {
   /// The creator's avatar URL.
-  core.String url;
+  core.String? url;
 
   PageAuthorImage();
 
@@ -2645,24 +2453,24 @@ class PageAuthorImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (url != null) 'url': url!,
       };
 }
 
 /// The author of this Page.
 class PageAuthor {
   /// The display name.
-  core.String displayName;
+  core.String? displayName;
 
   /// The identifier of the creator.
-  core.String id;
+  core.String? id;
 
   /// The creator's avatar.
-  PageAuthorImage image;
+  PageAuthorImage? image;
 
   /// The URL of the creator's Profile page.
-  core.String url;
+  core.String? url;
 
   PageAuthor();
 
@@ -2682,18 +2490,18 @@ class PageAuthor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (id != null) 'id': id,
-        if (image != null) 'image': image.toJson(),
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
+        if (image != null) 'image': image!.toJson(),
+        if (url != null) 'url': url!,
       };
 }
 
 /// Data about the blog containing this Page.
 class PageBlog {
   /// The identifier of the blog containing this page.
-  core.String id;
+  core.String? id;
 
   PageBlog();
 
@@ -2703,54 +2511,54 @@ class PageBlog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
       };
 }
 
 class Page {
   /// The author of this Page.
-  PageAuthor author;
+  PageAuthor? author;
 
   /// Data about the blog containing this Page.
-  PageBlog blog;
+  PageBlog? blog;
 
   /// The body content of this Page, in HTML.
-  core.String content;
+  core.String? content;
 
   /// Etag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The identifier for this resource.
-  core.String id;
+  core.String? id;
 
   /// The kind of this entity.
   ///
   /// Always blogger#page.
-  core.String kind;
+  core.String? kind;
 
   /// RFC 3339 date-time when this Page was published.
-  core.String published;
+  core.String? published;
 
   /// The API REST URL to fetch this resource from.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The status of the page for admin resources (either LIVE or DRAFT).
   /// Possible string values are:
   /// - "LIVE"
   /// - "DRAFT"
-  core.String status;
+  core.String? status;
 
   /// The title of this entity.
   ///
   /// This is the name displayed in the Admin user interface.
-  core.String title;
+  core.String? title;
 
   /// RFC 3339 date-time when this Page was last updated.
-  core.String updated;
+  core.String? updated;
 
   /// The URL that this Page is displayed at.
-  core.String url;
+  core.String? url;
 
   Page();
 
@@ -2795,36 +2603,36 @@ class Page {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (author != null) 'author': author.toJson(),
-        if (blog != null) 'blog': blog.toJson(),
-        if (content != null) 'content': content,
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (published != null) 'published': published,
-        if (selfLink != null) 'selfLink': selfLink,
-        if (status != null) 'status': status,
-        if (title != null) 'title': title,
-        if (updated != null) 'updated': updated,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (author != null) 'author': author!.toJson(),
+        if (blog != null) 'blog': blog!.toJson(),
+        if (content != null) 'content': content!,
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (published != null) 'published': published!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (status != null) 'status': status!,
+        if (title != null) 'title': title!,
+        if (updated != null) 'updated': updated!,
+        if (url != null) 'url': url!,
       };
 }
 
 class PageList {
   /// Etag of the response.
-  core.String etag;
+  core.String? etag;
 
   /// The list of Pages for a Blog.
-  core.List<Page> items;
+  core.List<Page>? items;
 
   /// The kind of this entity.
   ///
   /// Always blogger#pageList.
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to fetch the next page, if one exists.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   PageList();
 
@@ -2846,25 +2654,25 @@ class PageList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 class PageviewsCounts {
   /// Count of page views for the given time range.
-  core.String count;
+  core.String? count;
 
   /// Time range the given count applies to.
   /// Possible string values are:
   /// - "ALL_TIME"
   /// - "THIRTY_DAYS"
   /// - "SEVEN_DAYS"
-  core.String timeRange;
+  core.String? timeRange;
 
   PageviewsCounts();
 
@@ -2877,23 +2685,23 @@ class PageviewsCounts {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (timeRange != null) 'timeRange': timeRange,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (timeRange != null) 'timeRange': timeRange!,
       };
 }
 
 class Pageviews {
   /// Blog Id.
-  core.String blogId;
+  core.String? blogId;
 
   /// The container of posts in this blog.
-  core.List<PageviewsCounts> counts;
+  core.List<PageviewsCounts>? counts;
 
   /// The kind of this entry.
   ///
   /// Always blogger#page_views.
-  core.String kind;
+  core.String? kind;
 
   Pageviews();
 
@@ -2912,18 +2720,18 @@ class Pageviews {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (blogId != null) 'blogId': blogId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (blogId != null) 'blogId': blogId!,
         if (counts != null)
-          'counts': counts.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'counts': counts!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// The creator's avatar.
 class PostAuthorImage {
   /// The creator's avatar URL.
-  core.String url;
+  core.String? url;
 
   PostAuthorImage();
 
@@ -2933,24 +2741,24 @@ class PostAuthorImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (url != null) 'url': url!,
       };
 }
 
 /// The author of this Post.
 class PostAuthor {
   /// The display name.
-  core.String displayName;
+  core.String? displayName;
 
   /// The identifier of the creator.
-  core.String id;
+  core.String? id;
 
   /// The creator's avatar.
-  PostAuthorImage image;
+  PostAuthorImage? image;
 
   /// The URL of the creator's Profile page.
-  core.String url;
+  core.String? url;
 
   PostAuthor();
 
@@ -2970,18 +2778,18 @@ class PostAuthor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (id != null) 'id': id,
-        if (image != null) 'image': image.toJson(),
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
+        if (image != null) 'image': image!.toJson(),
+        if (url != null) 'url': url!,
       };
 }
 
 /// Data about the blog containing this Post.
 class PostBlog {
   /// The identifier of the Blog that contains this Post.
-  core.String id;
+  core.String? id;
 
   PostBlog();
 
@@ -2991,13 +2799,13 @@ class PostBlog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
       };
 }
 
 class PostImages {
-  core.String url;
+  core.String? url;
 
   PostImages();
 
@@ -3007,26 +2815,26 @@ class PostImages {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (url != null) 'url': url!,
       };
 }
 
 /// The location for geotagged posts.
 class PostLocation {
   /// Location's latitude.
-  core.double lat;
+  core.double? lat;
 
   /// Location's longitude.
-  core.double lng;
+  core.double? lng;
 
   /// Location name.
-  core.String name;
+  core.String? name;
 
   /// Location's viewport span.
   ///
   /// Can be used when rendering a map preview.
-  core.String span;
+  core.String? span;
 
   PostLocation();
 
@@ -3045,24 +2853,24 @@ class PostLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lat != null) 'lat': lat,
-        if (lng != null) 'lng': lng,
-        if (name != null) 'name': name,
-        if (span != null) 'span': span,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lat != null) 'lat': lat!,
+        if (lng != null) 'lng': lng!,
+        if (name != null) 'name': name!,
+        if (span != null) 'span': span!,
       };
 }
 
 /// The container of comments on this Post.
 class PostReplies {
   /// The List of Comments for this Post.
-  core.List<Comment> items;
+  core.List<Comment>? items;
 
   /// The URL of the comments on this post.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The count of comments on this post.
-  core.String totalItems;
+  core.String? totalItems;
 
   PostReplies();
 
@@ -3081,64 +2889,64 @@ class PostReplies {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (selfLink != null) 'selfLink': selfLink,
-        if (totalItems != null) 'totalItems': totalItems,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (totalItems != null) 'totalItems': totalItems!,
       };
 }
 
 class Post {
   /// The author of this Post.
-  PostAuthor author;
+  PostAuthor? author;
 
   /// Data about the blog containing this Post.
-  PostBlog blog;
+  PostBlog? blog;
 
   /// The content of the Post.
   ///
   /// May contain HTML markup.
-  core.String content;
+  core.String? content;
 
   /// The JSON meta-data for the Post.
-  core.String customMetaData;
+  core.String? customMetaData;
 
   /// Etag of the resource.
-  core.String etag;
+  core.String? etag;
 
   /// The identifier of this Post.
-  core.String id;
+  core.String? id;
 
   /// Display image for the Post.
-  core.List<PostImages> images;
+  core.List<PostImages>? images;
 
   /// The kind of this entity.
   ///
   /// Always blogger#post.
-  core.String kind;
+  core.String? kind;
 
   /// The list of labels this Post was tagged with.
-  core.List<core.String> labels;
+  core.List<core.String>? labels;
 
   /// The location for geotagged posts.
-  PostLocation location;
+  PostLocation? location;
 
   /// RFC 3339 date-time when this Post was published.
-  core.String published;
+  core.String? published;
 
   /// Comment control and display setting for readers of this post.
   /// Possible string values are:
   /// - "ALLOW"
   /// - "DONT_ALLOW_SHOW_EXISTING"
   /// - "DONT_ALLOW_HIDE_EXISTING"
-  core.String readerComments;
+  core.String? readerComments;
 
   /// The container of comments on this Post.
-  PostReplies replies;
+  PostReplies? replies;
 
   /// The API REST URL to fetch this resource from.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// Status of the post.
   ///
@@ -3147,19 +2955,19 @@ class Post {
   /// - "LIVE"
   /// - "DRAFT"
   /// - "SCHEDULED"
-  core.String status;
+  core.String? status;
 
   /// The title of the Post.
-  core.String title;
+  core.String? title;
 
   /// The title link URL, similar to atom's related link.
-  core.String titleLink;
+  core.String? titleLink;
 
   /// RFC 3339 date-time when this Post was last updated.
-  core.String updated;
+  core.String? updated;
 
   /// The URL where this Post is displayed.
-  core.String url;
+  core.String? url;
 
   Post();
 
@@ -3232,47 +3040,47 @@ class Post {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (author != null) 'author': author.toJson(),
-        if (blog != null) 'blog': blog.toJson(),
-        if (content != null) 'content': content,
-        if (customMetaData != null) 'customMetaData': customMetaData,
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (author != null) 'author': author!.toJson(),
+        if (blog != null) 'blog': blog!.toJson(),
+        if (content != null) 'content': content!,
+        if (customMetaData != null) 'customMetaData': customMetaData!,
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
         if (images != null)
-          'images': images.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (labels != null) 'labels': labels,
-        if (location != null) 'location': location.toJson(),
-        if (published != null) 'published': published,
-        if (readerComments != null) 'readerComments': readerComments,
-        if (replies != null) 'replies': replies.toJson(),
-        if (selfLink != null) 'selfLink': selfLink,
-        if (status != null) 'status': status,
-        if (title != null) 'title': title,
-        if (titleLink != null) 'titleLink': titleLink,
-        if (updated != null) 'updated': updated,
-        if (url != null) 'url': url,
+          'images': images!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (labels != null) 'labels': labels!,
+        if (location != null) 'location': location!.toJson(),
+        if (published != null) 'published': published!,
+        if (readerComments != null) 'readerComments': readerComments!,
+        if (replies != null) 'replies': replies!.toJson(),
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (status != null) 'status': status!,
+        if (title != null) 'title': title!,
+        if (titleLink != null) 'titleLink': titleLink!,
+        if (updated != null) 'updated': updated!,
+        if (url != null) 'url': url!,
       };
 }
 
 class PostList {
   /// Etag of the response.
-  core.String etag;
+  core.String? etag;
 
   /// The list of Posts for this Blog.
-  core.List<Post> items;
+  core.List<Post>? items;
 
   /// The kind of this entity.
   ///
   /// Always blogger#postList.
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to fetch the next page, if one exists.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Pagination token to fetch the previous page, if one exists.
-  core.String prevPageToken;
+  core.String? prevPageToken;
 
   PostList();
 
@@ -3297,33 +3105,33 @@ class PostList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (prevPageToken != null) 'prevPageToken': prevPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (prevPageToken != null) 'prevPageToken': prevPageToken!,
       };
 }
 
 class PostPerUserInfo {
   /// ID of the Blog that the post resource belongs to.
-  core.String blogId;
+  core.String? blogId;
 
   /// True if the user has Author level access to the post.
-  core.bool hasEditAccess;
+  core.bool? hasEditAccess;
 
   /// The kind of this entity.
   ///
   /// Always blogger#postPerUserInfo.
-  core.String kind;
+  core.String? kind;
 
   /// ID of the Post resource.
-  core.String postId;
+  core.String? postId;
 
   /// ID of the User.
-  core.String userId;
+  core.String? userId;
 
   PostPerUserInfo();
 
@@ -3345,12 +3153,12 @@ class PostPerUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (blogId != null) 'blogId': blogId,
-        if (hasEditAccess != null) 'hasEditAccess': hasEditAccess,
-        if (kind != null) 'kind': kind,
-        if (postId != null) 'postId': postId,
-        if (userId != null) 'userId': userId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (blogId != null) 'blogId': blogId!,
+        if (hasEditAccess != null) 'hasEditAccess': hasEditAccess!,
+        if (kind != null) 'kind': kind!,
+        if (postId != null) 'postId': postId!,
+        if (userId != null) 'userId': userId!,
       };
 }
 
@@ -3358,13 +3166,13 @@ class PostUserInfo {
   /// The kind of this entity.
   ///
   /// Always blogger#postUserInfo.
-  core.String kind;
+  core.String? kind;
 
   /// The Post resource.
-  Post post;
+  Post? post;
 
   /// Information about a User for the Post.
-  PostPerUserInfo postUserInfo;
+  PostPerUserInfo? postUserInfo;
 
   PostUserInfo();
 
@@ -3382,24 +3190,24 @@ class PostUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (post != null) 'post': post.toJson(),
-        if (postUserInfo != null) 'post_user_info': postUserInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (post != null) 'post': post!.toJson(),
+        if (postUserInfo != null) 'post_user_info': postUserInfo!.toJson(),
       };
 }
 
 class PostUserInfosList {
   /// The list of Posts with User information for the post, for this Blog.
-  core.List<PostUserInfo> items;
+  core.List<PostUserInfo>? items;
 
   /// The kind of this entity.
   ///
   /// Always blogger#postList.
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to fetch the next page, if one exists.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   PostUserInfosList();
 
@@ -3418,18 +3226,18 @@ class PostUserInfosList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The container of blogs for this user.
 class UserBlogs {
   /// The URL of the Blogs for this user.
-  core.String selfLink;
+  core.String? selfLink;
 
   UserBlogs();
 
@@ -3439,21 +3247,21 @@ class UserBlogs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (selfLink != null) 'selfLink': selfLink,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (selfLink != null) 'selfLink': selfLink!,
       };
 }
 
 /// This user's locale
 class UserLocale {
   /// The country this blog's locale is set to.
-  core.String country;
+  core.String? country;
 
   /// The language this blog is authored in.
-  core.String language;
+  core.String? language;
 
   /// The language variant this blog is authored in.
-  core.String variant;
+  core.String? variant;
 
   UserLocale();
 
@@ -3469,42 +3277,42 @@ class UserLocale {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (country != null) 'country': country,
-        if (language != null) 'language': language,
-        if (variant != null) 'variant': variant,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (country != null) 'country': country!,
+        if (language != null) 'language': language!,
+        if (variant != null) 'variant': variant!,
       };
 }
 
 class User {
   /// Profile summary information.
-  core.String about;
+  core.String? about;
 
   /// The container of blogs for this user.
-  UserBlogs blogs;
+  UserBlogs? blogs;
 
   /// The timestamp of when this profile was created, in seconds since epoch.
-  core.String created;
+  core.String? created;
 
   /// The display name.
-  core.String displayName;
+  core.String? displayName;
 
   /// The identifier for this User.
-  core.String id;
+  core.String? id;
 
   /// The kind of this entity.
   ///
   /// Always blogger#user.
-  core.String kind;
+  core.String? kind;
 
   /// This user's locale
-  UserLocale locale;
+  UserLocale? locale;
 
   /// The API REST URL to fetch this resource from.
-  core.String selfLink;
+  core.String? selfLink;
 
   /// The user's profile page.
-  core.String url;
+  core.String? url;
 
   User();
 
@@ -3540,15 +3348,15 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (about != null) 'about': about,
-        if (blogs != null) 'blogs': blogs.toJson(),
-        if (created != null) 'created': created,
-        if (displayName != null) 'displayName': displayName,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (locale != null) 'locale': locale.toJson(),
-        if (selfLink != null) 'selfLink': selfLink,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (about != null) 'about': about!,
+        if (blogs != null) 'blogs': blogs!.toJson(),
+        if (created != null) 'created': created!,
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (locale != null) 'locale': locale!.toJson(),
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (url != null) 'url': url!,
       };
 }

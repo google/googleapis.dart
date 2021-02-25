@@ -167,11 +167,8 @@ class HybridIssuersResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListHybridIssuersResponse> list(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -253,11 +250,10 @@ class OrganizationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudApigeeV1Organization request, {
-    core.String parent,
-    core.String $fields,
+    core.String? parent,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (parent != null) 'parent': [parent],
       if ($fields != null) 'fields': [$fields],
@@ -297,11 +293,8 @@ class OrganizationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -340,11 +333,8 @@ class OrganizationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Organization> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -393,12 +383,9 @@ class OrganizationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1IngressConfig> getDeployedIngressConfig(
     core.String name, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -447,13 +434,9 @@ class OrganizationsResource {
   async.Future<GoogleCloudApigeeV1SyncAuthorization> getSyncAuthorization(
     GoogleCloudApigeeV1GetSyncAuthorizationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -496,11 +479,8 @@ class OrganizationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListOrganizationsResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -549,13 +529,9 @@ class OrganizationsResource {
   async.Future<GoogleCloudApigeeV1SyncAuthorization> setSyncAuthorization(
     GoogleCloudApigeeV1SyncAuthorization request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -599,13 +575,9 @@ class OrganizationsResource {
   async.Future<GoogleCloudApigeeV1Organization> update(
     GoogleCloudApigeeV1Organization request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -662,13 +634,9 @@ class OrganizationsAnalyticsDatastoresResource {
   async.Future<GoogleCloudApigeeV1Datastore> create(
     GoogleCloudApigeeV1Datastore request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -708,11 +676,8 @@ class OrganizationsAnalyticsDatastoresResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -749,11 +714,8 @@ class OrganizationsAnalyticsDatastoresResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Datastore> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -792,12 +754,9 @@ class OrganizationsAnalyticsDatastoresResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDatastoresResponse> list(
     core.String parent, {
-    core.String targetType,
-    core.String $fields,
+    core.String? targetType,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (targetType != null) 'targetType': [targetType],
       if ($fields != null) 'fields': [$fields],
@@ -842,13 +801,9 @@ class OrganizationsAnalyticsDatastoresResource {
   async.Future<GoogleCloudApigeeV1TestDatastoreResponse> test(
     GoogleCloudApigeeV1Datastore request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -891,13 +846,9 @@ class OrganizationsAnalyticsDatastoresResource {
   async.Future<GoogleCloudApigeeV1Datastore> update(
     GoogleCloudApigeeV1Datastore request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -958,13 +909,9 @@ class OrganizationsApiproductsResource {
   async.Future<GoogleCloudApigeeV1Attributes> attributes(
     GoogleCloudApigeeV1Attributes request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1024,13 +971,9 @@ class OrganizationsApiproductsResource {
   async.Future<GoogleCloudApigeeV1ApiProduct> create(
     GoogleCloudApigeeV1ApiProduct request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1078,11 +1021,8 @@ class OrganizationsApiproductsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ApiProduct> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1123,11 +1063,8 @@ class OrganizationsApiproductsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ApiProduct> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1184,16 +1121,13 @@ class OrganizationsApiproductsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListApiProductsResponse> list(
     core.String parent, {
-    core.String attributename,
-    core.String attributevalue,
-    core.String count,
-    core.bool expand,
-    core.String startKey,
-    core.String $fields,
+    core.String? attributename,
+    core.String? attributevalue,
+    core.String? count,
+    core.bool? expand,
+    core.String? startKey,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (attributename != null) 'attributename': [attributename],
       if (attributevalue != null) 'attributevalue': [attributevalue],
@@ -1246,13 +1180,9 @@ class OrganizationsApiproductsResource {
   async.Future<GoogleCloudApigeeV1ApiProduct> update(
     GoogleCloudApigeeV1ApiProduct request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1298,11 +1228,8 @@ class OrganizationsApiproductsAttributesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Attribute> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1340,11 +1267,8 @@ class OrganizationsApiproductsAttributesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Attribute> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1380,11 +1304,8 @@ class OrganizationsApiproductsAttributesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Attributes> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1433,13 +1354,9 @@ class OrganizationsApiproductsAttributesResource {
   async.Future<GoogleCloudApigeeV1Attribute> updateApiProductAttribute(
     GoogleCloudApigeeV1Attribute request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1519,16 +1436,12 @@ class OrganizationsApisResource {
   async.Future<GoogleCloudApigeeV1ApiProxyRevision> create(
     GoogleApiHttpBody request,
     core.String parent, {
-    core.String action,
-    core.String name,
-    core.bool validate,
-    core.String $fields,
+    core.String? action,
+    core.String? name,
+    core.bool? validate,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (action != null) 'action': [action],
       if (name != null) 'name': [name],
@@ -1572,11 +1485,8 @@ class OrganizationsApisResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ApiProxy> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1612,11 +1522,8 @@ class OrganizationsApisResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ApiProxy> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1661,13 +1568,10 @@ class OrganizationsApisResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListApiProxiesResponse> list(
     core.String parent, {
-    core.bool includeMetaData,
-    core.bool includeRevisions,
-    core.String $fields,
+    core.bool? includeMetaData,
+    core.bool? includeRevisions,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeMetaData != null) 'includeMetaData': ['${includeMetaData}'],
       if (includeRevisions != null) 'includeRevisions': ['${includeRevisions}'],
@@ -1713,11 +1617,8 @@ class OrganizationsApisDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1766,13 +1667,9 @@ class OrganizationsApisKeyvaluemapsResource {
   async.Future<GoogleCloudApigeeV1KeyValueMap> create(
     GoogleCloudApigeeV1KeyValueMap request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1812,11 +1709,8 @@ class OrganizationsApisKeyvaluemapsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1KeyValueMap> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1866,11 +1760,8 @@ class OrganizationsApisRevisionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ApiProxyRevision> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1919,12 +1810,9 @@ class OrganizationsApisRevisionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleApiHttpBody> get(
     core.String name, {
-    core.String format,
-    core.String $fields,
+    core.String? format,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (format != null) 'format': [format],
       if ($fields != null) 'fields': [$fields],
@@ -1974,14 +1862,10 @@ class OrganizationsApisRevisionsResource {
   async.Future<GoogleCloudApigeeV1ApiProxyRevision> updateApiProxyRevision(
     GoogleApiHttpBody request,
     core.String name, {
-    core.bool validate,
-    core.String $fields,
+    core.bool? validate,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (validate != null) 'validate': ['${validate}'],
       if ($fields != null) 'fields': [$fields],
@@ -2028,11 +1912,8 @@ class OrganizationsApisRevisionsDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2076,11 +1957,8 @@ class OrganizationsAppsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1App> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2141,20 +2019,17 @@ class OrganizationsAppsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListAppsResponse> list(
     core.String parent, {
-    core.String apiProduct,
-    core.String apptype,
-    core.bool expand,
-    core.String ids,
-    core.bool includeCred,
-    core.String keyStatus,
-    core.String rows,
-    core.String startKey,
-    core.String status,
-    core.String $fields,
+    core.String? apiProduct,
+    core.String? apptype,
+    core.bool? expand,
+    core.String? ids,
+    core.bool? includeCred,
+    core.String? keyStatus,
+    core.String? rows,
+    core.String? startKey,
+    core.String? status,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (apiProduct != null) 'apiProduct': [apiProduct],
       if (apptype != null) 'apptype': [apptype],
@@ -2213,14 +2088,10 @@ class OrganizationsDatacollectorsResource {
   async.Future<GoogleCloudApigeeV1DataCollector> create(
     GoogleCloudApigeeV1DataCollector request,
     core.String parent, {
-    core.String dataCollectorId,
-    core.String $fields,
+    core.String? dataCollectorId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (dataCollectorId != null) 'dataCollectorId': [dataCollectorId],
       if ($fields != null) 'fields': [$fields],
@@ -2260,11 +2131,8 @@ class OrganizationsDatacollectorsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2300,11 +2168,8 @@ class OrganizationsDatacollectorsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DataCollector> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2346,13 +2211,10 @@ class OrganizationsDatacollectorsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDataCollectorsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2397,14 +2259,10 @@ class OrganizationsDatacollectorsResource {
   async.Future<GoogleCloudApigeeV1DataCollector> patch(
     GoogleCloudApigeeV1DataCollector request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2454,12 +2312,9 @@ class OrganizationsDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
     core.String parent, {
-    core.bool sharedFlows,
-    core.String $fields,
+    core.bool? sharedFlows,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (sharedFlows != null) 'sharedFlows': ['${sharedFlows}'],
       if ($fields != null) 'fields': [$fields],
@@ -2524,13 +2379,9 @@ class OrganizationsDevelopersResource {
   async.Future<GoogleCloudApigeeV1Attributes> attributes(
     GoogleCloudApigeeV1Attributes request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2577,13 +2428,9 @@ class OrganizationsDevelopersResource {
   async.Future<GoogleCloudApigeeV1Developer> create(
     GoogleCloudApigeeV1Developer request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2631,11 +2478,8 @@ class OrganizationsDevelopersResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Developer> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2678,12 +2522,9 @@ class OrganizationsDevelopersResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Developer> get(
     core.String name, {
-    core.String action,
-    core.String $fields,
+    core.String? action,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (action != null) 'action': [action],
       if ($fields != null) 'fields': [$fields],
@@ -2749,17 +2590,14 @@ class OrganizationsDevelopersResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListOfDevelopersResponse> list(
     core.String parent, {
-    core.String app,
-    core.String count,
-    core.bool expand,
-    core.String ids,
-    core.bool includeCompany,
-    core.String startKey,
-    core.String $fields,
+    core.String? app,
+    core.String? count,
+    core.bool? expand,
+    core.String? ids,
+    core.bool? includeCompany,
+    core.String? startKey,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (app != null) 'app': [app],
       if (count != null) 'count': [count],
@@ -2815,12 +2653,9 @@ class OrganizationsDevelopersResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> setDeveloperStatus(
     core.String name, {
-    core.String action,
-    core.String $fields,
+    core.String? action,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (action != null) 'action': [action],
       if ($fields != null) 'fields': [$fields],
@@ -2871,13 +2706,9 @@ class OrganizationsDevelopersResource {
   async.Future<GoogleCloudApigeeV1Developer> update(
     GoogleCloudApigeeV1Developer request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2934,13 +2765,9 @@ class OrganizationsDevelopersAppsResource {
   async.Future<GoogleCloudApigeeV1Attributes> attributes(
     GoogleCloudApigeeV1Attributes request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2988,13 +2815,9 @@ class OrganizationsDevelopersAppsResource {
   async.Future<GoogleCloudApigeeV1DeveloperApp> create(
     GoogleCloudApigeeV1DeveloperApp request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3039,11 +2862,8 @@ class OrganizationsDevelopersAppsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeveloperApp> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3111,14 +2931,10 @@ class OrganizationsDevelopersAppsResource {
       generateKeyPairOrUpdateDeveloperAppStatus(
     GoogleCloudApigeeV1DeveloperApp request,
     core.String name, {
-    core.String action,
-    core.String $fields,
+    core.String? action,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (action != null) 'action': [action],
       if ($fields != null) 'fields': [$fields],
@@ -3168,13 +2984,10 @@ class OrganizationsDevelopersAppsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeveloperApp> get(
     core.String name, {
-    core.String entity,
-    core.String query,
-    core.String $fields,
+    core.String? entity,
+    core.String? query,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (entity != null) 'entity': [entity],
       if (query != null) 'query': [query],
@@ -3235,15 +3048,12 @@ class OrganizationsDevelopersAppsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeveloperAppsResponse> list(
     core.String parent, {
-    core.String count,
-    core.bool expand,
-    core.bool shallowExpand,
-    core.String startKey,
-    core.String $fields,
+    core.String? count,
+    core.bool? expand,
+    core.bool? shallowExpand,
+    core.String? startKey,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (count != null) 'count': [count],
       if (expand != null) 'expand': ['${expand}'],
@@ -3300,13 +3110,9 @@ class OrganizationsDevelopersAppsResource {
   async.Future<GoogleCloudApigeeV1DeveloperApp> update(
     GoogleCloudApigeeV1DeveloperApp request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3352,11 +3158,8 @@ class OrganizationsDevelopersAppsAttributesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Attribute> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3394,11 +3197,8 @@ class OrganizationsDevelopersAppsAttributesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Attribute> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3436,11 +3236,8 @@ class OrganizationsDevelopersAppsAttributesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Attributes> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3490,13 +3287,9 @@ class OrganizationsDevelopersAppsAttributesResource {
   async.Future<GoogleCloudApigeeV1Attribute> updateDeveloperAppAttribute(
     GoogleCloudApigeeV1Attribute request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3561,13 +3354,9 @@ class OrganizationsDevelopersAppsKeysResource {
   async.Future<GoogleCloudApigeeV1DeveloperAppKey> create(
     GoogleCloudApigeeV1DeveloperAppKey request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3615,11 +3404,8 @@ class OrganizationsDevelopersAppsKeysResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeveloperAppKey> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3658,11 +3444,8 @@ class OrganizationsDevelopersAppsKeysResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeveloperAppKey> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3709,13 +3492,9 @@ class OrganizationsDevelopersAppsKeysResource {
   async.Future<GoogleCloudApigeeV1DeveloperAppKey> replaceDeveloperAppKey(
     GoogleCloudApigeeV1DeveloperAppKey request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3767,14 +3546,10 @@ class OrganizationsDevelopersAppsKeysResource {
   async.Future<GoogleCloudApigeeV1DeveloperAppKey> updateDeveloperAppKey(
     GoogleCloudApigeeV1DeveloperAppKey request,
     core.String name, {
-    core.String action,
-    core.String $fields,
+    core.String? action,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (action != null) 'action': [action],
       if ($fields != null) 'fields': [$fields],
@@ -3826,11 +3601,8 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeveloperAppKey> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3877,12 +3649,9 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> updateDeveloperAppKeyApiProduct(
     core.String name, {
-    core.String action,
-    core.String $fields,
+    core.String? action,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (action != null) 'action': [action],
       if ($fields != null) 'fields': [$fields],
@@ -3942,13 +3711,9 @@ class OrganizationsDevelopersAppsKeysCreateResource {
   async.Future<GoogleCloudApigeeV1DeveloperAppKey> create(
     GoogleCloudApigeeV1DeveloperAppKey request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3996,11 +3761,8 @@ class OrganizationsDevelopersAttributesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Attribute> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4038,11 +3800,8 @@ class OrganizationsDevelopersAttributesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Attribute> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4079,11 +3838,8 @@ class OrganizationsDevelopersAttributesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Attributes> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4133,13 +3889,9 @@ class OrganizationsDevelopersAttributesResource {
   async.Future<GoogleCloudApigeeV1Attribute> updateDeveloperAttribute(
     GoogleCloudApigeeV1Attribute request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4192,14 +3944,10 @@ class OrganizationsEnvgroupsResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudApigeeV1EnvironmentGroup request,
     core.String parent, {
-    core.String name,
-    core.String $fields,
+    core.String? name,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (name != null) 'name': [name],
       if ($fields != null) 'fields': [$fields],
@@ -4238,11 +3986,8 @@ class OrganizationsEnvgroupsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4278,11 +4023,8 @@ class OrganizationsEnvgroupsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1EnvironmentGroup> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4324,13 +4066,10 @@ class OrganizationsEnvgroupsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListEnvironmentGroupsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -4374,14 +4113,10 @@ class OrganizationsEnvgroupsResource {
   async.Future<GoogleLongrunningOperation> patch(
     GoogleCloudApigeeV1EnvironmentGroup request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -4429,13 +4164,9 @@ class OrganizationsEnvgroupsAttachmentsResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudApigeeV1EnvironmentGroupAttachment request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4476,11 +4207,8 @@ class OrganizationsEnvgroupsAttachmentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4518,11 +4246,8 @@ class OrganizationsEnvgroupsAttachmentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1EnvironmentGroupAttachment> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4566,13 +4291,10 @@ class OrganizationsEnvgroupsAttachmentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -4655,14 +4377,10 @@ class OrganizationsEnvironmentsResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudApigeeV1Environment request,
     core.String parent, {
-    core.String name,
-    core.String $fields,
+    core.String? name,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (name != null) 'name': [name],
       if ($fields != null) 'fields': [$fields],
@@ -4702,11 +4420,8 @@ class OrganizationsEnvironmentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4742,11 +4457,8 @@ class OrganizationsEnvironmentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Environment> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4783,11 +4495,8 @@ class OrganizationsEnvironmentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DebugMask> getDebugmask(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4825,11 +4534,8 @@ class OrganizationsEnvironmentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1EnvironmentConfig> getDeployedConfig(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4879,12 +4585,9 @@ class OrganizationsEnvironmentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleIamV1Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -4934,13 +4637,9 @@ class OrganizationsEnvironmentsResource {
   async.Future<GoogleIamV1Policy> setIamPolicy(
     GoogleIamV1SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4982,11 +4681,8 @@ class OrganizationsEnvironmentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Subscription> subscribe(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5031,13 +4727,9 @@ class OrganizationsEnvironmentsResource {
   async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
     GoogleIamV1TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5079,13 +4771,9 @@ class OrganizationsEnvironmentsResource {
   async.Future<GoogleProtobufEmpty> unsubscribe(
     GoogleCloudApigeeV1Subscription request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5132,13 +4820,9 @@ class OrganizationsEnvironmentsResource {
   async.Future<GoogleCloudApigeeV1Environment> update(
     GoogleCloudApigeeV1Environment request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5185,15 +4869,11 @@ class OrganizationsEnvironmentsResource {
   async.Future<GoogleCloudApigeeV1DebugMask> updateDebugmask(
     GoogleCloudApigeeV1DebugMask request,
     core.String name, {
-    core.bool replaceRepeatedFields,
-    core.String updateMask,
-    core.String $fields,
+    core.bool? replaceRepeatedFields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (replaceRepeatedFields != null)
         'replaceRepeatedFields': ['${replaceRepeatedFields}'],
@@ -5241,13 +4921,9 @@ class OrganizationsEnvironmentsResource {
   async.Future<GoogleCloudApigeeV1Environment> updateEnvironment(
     GoogleCloudApigeeV1Environment request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5312,12 +4988,9 @@ class OrganizationsEnvironmentsAnalyticsAdminResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Schema> getSchemav2(
     core.String name, {
-    core.String type,
-    core.String $fields,
+    core.String? type,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (type != null) 'type': [type],
       if ($fields != null) 'fields': [$fields],
@@ -5368,13 +5041,9 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
   async.Future<GoogleCloudApigeeV1Export> create(
     GoogleCloudApigeeV1ExportRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5417,11 +5086,8 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Export> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5458,11 +5124,8 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListExportsResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5520,11 +5183,8 @@ class OrganizationsEnvironmentsApisDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5608,13 +5268,10 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Deployment> deploy(
     core.String name, {
-    core.bool override,
-    core.bool sequencedRollout,
-    core.String $fields,
+    core.bool? override,
+    core.bool? sequencedRollout,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (override != null) 'override': ['${override}'],
       if (sequencedRollout != null) 'sequencedRollout': ['${sequencedRollout}'],
@@ -5656,11 +5313,8 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Deployment> getDeployments(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5716,12 +5370,9 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> undeploy(
     core.String name, {
-    core.bool sequencedRollout,
-    core.String $fields,
+    core.bool? sequencedRollout,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (sequencedRollout != null) 'sequencedRollout': ['${sequencedRollout}'],
       if ($fields != null) 'fields': [$fields],
@@ -5779,14 +5430,10 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   async.Future<GoogleCloudApigeeV1DebugSession> create(
     GoogleCloudApigeeV1DebugSession request,
     core.String parent, {
-    core.String timeout,
-    core.String $fields,
+    core.String? timeout,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (timeout != null) 'timeout': [timeout],
       if ($fields != null) 'fields': [$fields],
@@ -5831,11 +5478,8 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> deleteData(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5874,11 +5518,8 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DebugSession> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5923,13 +5564,10 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDebugSessionsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -5979,11 +5617,8 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DebugSessionTransaction> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6047,12 +5682,9 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
   async.Future<GoogleCloudApigeeV1DeploymentChangeReport>
       generateDeployChangeReport(
     core.String name, {
-    core.bool override,
-    core.String $fields,
+    core.bool? override,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (override != null) 'override': ['${override}'],
       if ($fields != null) 'fields': [$fields],
@@ -6107,11 +5739,8 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
   async.Future<GoogleCloudApigeeV1DeploymentChangeReport>
       generateUndeployChangeReport(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6157,11 +5786,8 @@ class OrganizationsEnvironmentsCachesResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6210,12 +5836,9 @@ class OrganizationsEnvironmentsDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
     core.String parent, {
-    core.bool sharedFlows,
-    core.String $fields,
+    core.bool? sharedFlows,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (sharedFlows != null) 'sharedFlows': ['${sharedFlows}'],
       if ($fields != null) 'fields': [$fields],
@@ -6266,13 +5889,9 @@ class OrganizationsEnvironmentsFlowhooksResource {
   async.Future<GoogleCloudApigeeV1FlowHook> attachSharedFlowToFlowHook(
     GoogleCloudApigeeV1FlowHook request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6310,11 +5929,8 @@ class OrganizationsEnvironmentsFlowhooksResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1FlowHook> detachSharedFlowFromFlowHook(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6354,11 +5970,8 @@ class OrganizationsEnvironmentsFlowhooksResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1FlowHook> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6415,14 +6028,10 @@ class OrganizationsEnvironmentsKeystoresResource {
   async.Future<GoogleCloudApigeeV1Keystore> create(
     GoogleCloudApigeeV1Keystore request,
     core.String parent, {
-    core.String name,
-    core.String $fields,
+    core.String? name,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (name != null) 'name': [name],
       if ($fields != null) 'fields': [$fields],
@@ -6462,11 +6071,8 @@ class OrganizationsEnvironmentsKeystoresResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Keystore> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6503,11 +6109,8 @@ class OrganizationsEnvironmentsKeystoresResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Keystore> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6588,18 +6191,14 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   async.Future<GoogleCloudApigeeV1Alias> create(
     GoogleApiHttpBody request,
     core.String parent, {
-    core.String P_password,
-    core.String alias,
-    core.String format,
-    core.bool ignoreExpiryValidation,
-    core.bool ignoreNewlineValidation,
-    core.String $fields,
+    core.String? P_password,
+    core.String? alias,
+    core.String? format,
+    core.bool? ignoreExpiryValidation,
+    core.bool? ignoreNewlineValidation,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (P_password != null) '_password': [P_password],
       if (alias != null) 'alias': [alias],
@@ -6647,11 +6246,8 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   /// this method will complete with the same error.
   async.Future<GoogleApiHttpBody> csr(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6690,11 +6286,8 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Alias> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6732,11 +6325,8 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Alias> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6774,11 +6364,8 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   /// this method will complete with the same error.
   async.Future<GoogleApiHttpBody> getCertificate(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6829,15 +6416,11 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   async.Future<GoogleCloudApigeeV1Alias> update(
     GoogleApiHttpBody request,
     core.String name, {
-    core.bool ignoreExpiryValidation,
-    core.bool ignoreNewlineValidation,
-    core.String $fields,
+    core.bool? ignoreExpiryValidation,
+    core.bool? ignoreNewlineValidation,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (ignoreExpiryValidation != null)
         'ignoreExpiryValidation': ['${ignoreExpiryValidation}'],
@@ -6889,13 +6472,9 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
   async.Future<GoogleCloudApigeeV1KeyValueMap> create(
     GoogleCloudApigeeV1KeyValueMap request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6935,11 +6514,8 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1KeyValueMap> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7036,26 +6612,23 @@ class OrganizationsEnvironmentsOptimizedStatsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1OptimizedStats> get(
     core.String name, {
-    core.String accuracy,
-    core.String aggTable,
-    core.String filter,
-    core.String limit,
-    core.String offset,
-    core.bool realtime,
-    core.String select,
-    core.bool sonar,
-    core.String sort,
-    core.String sortby,
-    core.String timeRange,
-    core.String timeUnit,
-    core.String topk,
-    core.bool tsAscending,
-    core.String tzo,
-    core.String $fields,
+    core.String? accuracy,
+    core.String? aggTable,
+    core.String? filter,
+    core.String? limit,
+    core.String? offset,
+    core.bool? realtime,
+    core.String? select,
+    core.bool? sonar,
+    core.String? sort,
+    core.String? sortby,
+    core.String? timeRange,
+    core.String? timeUnit,
+    core.String? topk,
+    core.bool? tsAscending,
+    core.String? tzo,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (accuracy != null) 'accuracy': [accuracy],
       if (aggTable != null) 'aggTable': [aggTable],
@@ -7120,13 +6693,9 @@ class OrganizationsEnvironmentsQueriesResource {
   async.Future<GoogleCloudApigeeV1AsyncQuery> create(
     GoogleCloudApigeeV1Query request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7167,11 +6736,8 @@ class OrganizationsEnvironmentsQueriesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1AsyncQuery> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7214,11 +6780,8 @@ class OrganizationsEnvironmentsQueriesResource {
   /// this method will complete with the same error.
   async.Future<GoogleApiHttpBody> getResult(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7271,17 +6834,14 @@ class OrganizationsEnvironmentsQueriesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListAsyncQueriesResponse> list(
     core.String parent, {
-    core.String dataset,
-    core.String from,
-    core.String inclQueriesWithoutReport,
-    core.String status,
-    core.String submittedBy,
-    core.String to,
-    core.String $fields,
+    core.String? dataset,
+    core.String? from,
+    core.String? inclQueriesWithoutReport,
+    core.String? status,
+    core.String? submittedBy,
+    core.String? to,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (dataset != null) 'dataset': [dataset],
       if (from != null) 'from': [from],
@@ -7336,13 +6896,9 @@ class OrganizationsEnvironmentsReferencesResource {
   async.Future<GoogleCloudApigeeV1Reference> create(
     GoogleCloudApigeeV1Reference request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7384,11 +6940,8 @@ class OrganizationsEnvironmentsReferencesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Reference> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7425,11 +6978,8 @@ class OrganizationsEnvironmentsReferencesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Reference> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7472,13 +7022,9 @@ class OrganizationsEnvironmentsReferencesResource {
   async.Future<GoogleCloudApigeeV1Reference> update(
     GoogleCloudApigeeV1Reference request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7535,15 +7081,11 @@ class OrganizationsEnvironmentsResourcefilesResource {
   async.Future<GoogleCloudApigeeV1ResourceFile> create(
     GoogleApiHttpBody request,
     core.String parent, {
-    core.String name,
-    core.String type,
-    core.String $fields,
+    core.String? name,
+    core.String? type,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (name != null) 'name': [name],
       if (type != null) 'type': [type],
@@ -7594,17 +7136,8 @@ class OrganizationsEnvironmentsResourcefilesResource {
     core.String parent,
     core.String type,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (type == null) {
-      throw core.ArgumentError('Parameter type is required.');
-    }
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7655,17 +7188,8 @@ class OrganizationsEnvironmentsResourcefilesResource {
     core.String parent,
     core.String type,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (type == null) {
-      throw core.ArgumentError('Parameter type is required.');
-    }
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7712,12 +7236,9 @@ class OrganizationsEnvironmentsResourcefilesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListEnvironmentResourcesResponse> list(
     core.String parent, {
-    core.String type,
-    core.String $fields,
+    core.String? type,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (type != null) 'type': [type],
       if ($fields != null) 'fields': [$fields],
@@ -7764,14 +7285,8 @@ class OrganizationsEnvironmentsResourcefilesResource {
       listEnvironmentResources(
     core.String parent,
     core.String type, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (type == null) {
-      throw core.ArgumentError('Parameter type is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7824,19 +7339,9 @@ class OrganizationsEnvironmentsResourcefilesResource {
     core.String parent,
     core.String type,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (type == null) {
-      throw core.ArgumentError('Parameter type is required.');
-    }
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7900,11 +7405,8 @@ class OrganizationsEnvironmentsSharedflowsDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7970,12 +7472,9 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Deployment> deploy(
     core.String name, {
-    core.bool override,
-    core.String $fields,
+    core.bool? override,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (override != null) 'override': ['${override}'],
       if ($fields != null) 'fields': [$fields],
@@ -8016,11 +7515,8 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Deployment> getDeployments(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8066,11 +7562,8 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> undeploy(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8170,26 +7663,23 @@ class OrganizationsEnvironmentsStatsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Stats> get(
     core.String name, {
-    core.String accuracy,
-    core.String aggTable,
-    core.String filter,
-    core.String limit,
-    core.String offset,
-    core.bool realtime,
-    core.String select,
-    core.bool sonar,
-    core.String sort,
-    core.String sortby,
-    core.String timeRange,
-    core.String timeUnit,
-    core.String topk,
-    core.bool tsAscending,
-    core.String tzo,
-    core.String $fields,
+    core.String? accuracy,
+    core.String? aggTable,
+    core.String? filter,
+    core.String? limit,
+    core.String? offset,
+    core.bool? realtime,
+    core.String? select,
+    core.bool? sonar,
+    core.String? sort,
+    core.String? sortby,
+    core.String? timeRange,
+    core.String? timeUnit,
+    core.String? topk,
+    core.bool? tsAscending,
+    core.String? tzo,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (accuracy != null) 'accuracy': [accuracy],
       if (aggTable != null) 'aggTable': [aggTable],
@@ -8254,14 +7744,10 @@ class OrganizationsEnvironmentsTargetserversResource {
   async.Future<GoogleCloudApigeeV1TargetServer> create(
     GoogleCloudApigeeV1TargetServer request,
     core.String parent, {
-    core.String name,
-    core.String $fields,
+    core.String? name,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (name != null) 'name': [name],
       if ($fields != null) 'fields': [$fields],
@@ -8305,11 +7791,8 @@ class OrganizationsEnvironmentsTargetserversResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1TargetServer> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8347,11 +7830,8 @@ class OrganizationsEnvironmentsTargetserversResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1TargetServer> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8395,13 +7875,9 @@ class OrganizationsEnvironmentsTargetserversResource {
   async.Future<GoogleCloudApigeeV1TargetServer> update(
     GoogleCloudApigeeV1TargetServer request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8452,13 +7928,9 @@ class OrganizationsHostQueriesResource {
   async.Future<GoogleCloudApigeeV1AsyncQuery> create(
     GoogleCloudApigeeV1Query request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8500,11 +7972,8 @@ class OrganizationsHostQueriesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1AsyncQuery> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8546,11 +8015,8 @@ class OrganizationsHostQueriesResource {
   /// this method will complete with the same error.
   async.Future<GoogleApiHttpBody> getResult(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8585,11 +8051,8 @@ class OrganizationsHostQueriesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1AsyncQueryResultView> getResultView(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8644,18 +8107,15 @@ class OrganizationsHostQueriesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListAsyncQueriesResponse> list(
     core.String parent, {
-    core.String dataset,
-    core.String envgroupHostname,
-    core.String from,
-    core.String inclQueriesWithoutReport,
-    core.String status,
-    core.String submittedBy,
-    core.String to,
-    core.String $fields,
+    core.String? dataset,
+    core.String? envgroupHostname,
+    core.String? from,
+    core.String? inclQueriesWithoutReport,
+    core.String? status,
+    core.String? submittedBy,
+    core.String? to,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (dataset != null) 'dataset': [dataset],
       if (envgroupHostname != null) 'envgroupHostname': [envgroupHostname],
@@ -8756,25 +8216,22 @@ class OrganizationsHostStatsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Stats> get(
     core.String name, {
-    core.String accuracy,
-    core.String envgroupHostname,
-    core.String filter,
-    core.String limit,
-    core.String offset,
-    core.bool realtime,
-    core.String select,
-    core.String sort,
-    core.String sortby,
-    core.String timeRange,
-    core.String timeUnit,
-    core.String topk,
-    core.bool tsAscending,
-    core.String tzo,
-    core.String $fields,
+    core.String? accuracy,
+    core.String? envgroupHostname,
+    core.String? filter,
+    core.String? limit,
+    core.String? offset,
+    core.bool? realtime,
+    core.String? select,
+    core.String? sort,
+    core.String? sortby,
+    core.String? timeRange,
+    core.String? timeUnit,
+    core.String? topk,
+    core.bool? tsAscending,
+    core.String? tzo,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (accuracy != null) 'accuracy': [accuracy],
       if (envgroupHostname != null) 'envgroupHostname': [envgroupHostname],
@@ -8844,13 +8301,9 @@ class OrganizationsInstancesResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudApigeeV1Instance request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8891,11 +8344,8 @@ class OrganizationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8933,11 +8383,8 @@ class OrganizationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1Instance> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8980,13 +8427,10 @@ class OrganizationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListInstancesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -9029,13 +8473,9 @@ class OrganizationsInstancesResource {
   async.Future<GoogleCloudApigeeV1ReportInstanceStatusResponse> reportStatus(
     GoogleCloudApigeeV1ReportInstanceStatusRequest request,
     core.String instance, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (instance == null) {
-      throw core.ArgumentError('Parameter instance is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9086,13 +8526,9 @@ class OrganizationsInstancesAttachmentsResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudApigeeV1InstanceAttachment request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9135,11 +8571,8 @@ class OrganizationsInstancesAttachmentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9179,11 +8612,8 @@ class OrganizationsInstancesAttachmentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1InstanceAttachment> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9227,13 +8657,10 @@ class OrganizationsInstancesAttachmentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListInstanceAttachmentsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -9283,13 +8710,9 @@ class OrganizationsInstancesCanaryevaluationsResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudApigeeV1CanaryEvaluation request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9330,11 +8753,8 @@ class OrganizationsInstancesCanaryevaluationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1CanaryEvaluation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9385,13 +8805,9 @@ class OrganizationsInstancesNatAddressesResource {
   async.Future<GoogleLongrunningOperation> activate(
     GoogleCloudApigeeV1ActivateNatAddressRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9438,13 +8854,9 @@ class OrganizationsInstancesNatAddressesResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudApigeeV1NatAddress request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9488,11 +8900,8 @@ class OrganizationsInstancesNatAddressesResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9532,11 +8941,8 @@ class OrganizationsInstancesNatAddressesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1NatAddress> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9579,13 +8985,10 @@ class OrganizationsInstancesNatAddressesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListNatAddressesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -9635,13 +9038,9 @@ class OrganizationsKeyvaluemapsResource {
   async.Future<GoogleCloudApigeeV1KeyValueMap> create(
     GoogleCloudApigeeV1KeyValueMap request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9680,11 +9079,8 @@ class OrganizationsKeyvaluemapsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1KeyValueMap> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9729,11 +9125,8 @@ class OrganizationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9783,14 +9176,11 @@ class OrganizationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -9880,25 +9270,22 @@ class OrganizationsOptimizedHostStatsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1OptimizedStats> get(
     core.String name, {
-    core.String accuracy,
-    core.String envgroupHostname,
-    core.String filter,
-    core.String limit,
-    core.String offset,
-    core.bool realtime,
-    core.String select,
-    core.String sort,
-    core.String sortby,
-    core.String timeRange,
-    core.String timeUnit,
-    core.String topk,
-    core.bool tsAscending,
-    core.String tzo,
-    core.String $fields,
+    core.String? accuracy,
+    core.String? envgroupHostname,
+    core.String? filter,
+    core.String? limit,
+    core.String? offset,
+    core.bool? realtime,
+    core.String? select,
+    core.String? sort,
+    core.String? sortby,
+    core.String? timeRange,
+    core.String? timeUnit,
+    core.String? topk,
+    core.bool? tsAscending,
+    core.String? tzo,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (accuracy != null) 'accuracy': [accuracy],
       if (envgroupHostname != null) 'envgroupHostname': [envgroupHostname],
@@ -9966,13 +9353,9 @@ class OrganizationsReportsResource {
   async.Future<GoogleCloudApigeeV1CustomReport> create(
     GoogleCloudApigeeV1CustomReport request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10010,11 +9393,8 @@ class OrganizationsReportsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1DeleteCustomReportResponse> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10050,11 +9430,8 @@ class OrganizationsReportsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1CustomReport> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10092,12 +9469,9 @@ class OrganizationsReportsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListCustomReportsResponse> list(
     core.String parent, {
-    core.bool expand,
-    core.String $fields,
+    core.bool? expand,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (expand != null) 'expand': ['${expand}'],
       if ($fields != null) 'fields': [$fields],
@@ -10138,13 +9512,9 @@ class OrganizationsReportsResource {
   async.Future<GoogleCloudApigeeV1CustomReport> update(
     GoogleCloudApigeeV1CustomReport request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10207,15 +9577,11 @@ class OrganizationsSharedflowsResource {
   async.Future<GoogleCloudApigeeV1SharedFlowRevision> create(
     GoogleApiHttpBody request,
     core.String parent, {
-    core.String action,
-    core.String name,
-    core.String $fields,
+    core.String? action,
+    core.String? name,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (action != null) 'action': [action],
       if (name != null) 'name': [name],
@@ -10258,11 +9624,8 @@ class OrganizationsSharedflowsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1SharedFlow> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10298,11 +9661,8 @@ class OrganizationsSharedflowsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1SharedFlow> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10344,13 +9704,10 @@ class OrganizationsSharedflowsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListSharedFlowsResponse> list(
     core.String parent, {
-    core.bool includeMetaData,
-    core.bool includeRevisions,
-    core.String $fields,
+    core.bool? includeMetaData,
+    core.bool? includeRevisions,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (includeMetaData != null) 'includeMetaData': ['${includeMetaData}'],
       if (includeRevisions != null) 'includeRevisions': ['${includeRevisions}'],
@@ -10398,11 +9755,8 @@ class OrganizationsSharedflowsDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10455,11 +9809,8 @@ class OrganizationsSharedflowsRevisionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1SharedFlowRevision> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10503,12 +9854,9 @@ class OrganizationsSharedflowsRevisionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleApiHttpBody> get(
     core.String name, {
-    core.String format,
-    core.String $fields,
+    core.String? format,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (format != null) 'format': [format],
       if ($fields != null) 'fields': [$fields],
@@ -10559,14 +9907,10 @@ class OrganizationsSharedflowsRevisionsResource {
   async.Future<GoogleCloudApigeeV1SharedFlowRevision> updateSharedFlowRevision(
     GoogleApiHttpBody request,
     core.String name, {
-    core.bool validate,
-    core.String $fields,
+    core.bool? validate,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (validate != null) 'validate': ['${validate}'],
       if ($fields != null) 'fields': [$fields],
@@ -10614,11 +9958,8 @@ class OrganizationsSharedflowsRevisionsDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10675,13 +10016,9 @@ class OrganizationsSitesApicategoriesResource {
   async.Future<GoogleCloudApigeeV1ApiCategory> create(
     GoogleCloudApigeeV1ApiCategoryData request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10722,11 +10059,8 @@ class OrganizationsSitesApicategoriesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ApiResponseWrapper> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10764,11 +10098,8 @@ class OrganizationsSitesApicategoriesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ApiCategory> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10804,11 +10135,8 @@ class OrganizationsSitesApicategoriesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudApigeeV1ListApiCategoriesResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10851,13 +10179,9 @@ class OrganizationsSitesApicategoriesResource {
   async.Future<GoogleCloudApigeeV1ApiCategory> patch(
     GoogleCloudApigeeV1ApiCategoryData request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10906,13 +10230,9 @@ class ProjectsResource {
   async.Future<GoogleLongrunningOperation> provisionOrganization(
     GoogleCloudApigeeV1ProvisionOrganizationRequest request,
     core.String project, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10953,11 +10273,11 @@ class ProjectsResource {
 class GoogleApiHttpBody {
   /// The HTTP Content-Type header value specifying the content type of the
   /// body.
-  core.String contentType;
+  core.String? contentType;
 
   /// The HTTP request/response body as raw binary.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -10970,7 +10290,7 @@ class GoogleApiHttpBody {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> extensions;
+  core.List<core.Map<core.String, core.Object>>? extensions;
 
   GoogleApiHttpBody();
 
@@ -10994,17 +10314,17 @@ class GoogleApiHttpBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentType != null) 'contentType': contentType,
-        if (data != null) 'data': data,
-        if (extensions != null) 'extensions': extensions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentType != null) 'contentType': contentType!,
+        if (data != null) 'data': data!,
+        if (extensions != null) 'extensions': extensions!,
       };
 }
 
 class GoogleCloudApigeeV1Access {
-  GoogleCloudApigeeV1AccessGet Get;
-  GoogleCloudApigeeV1AccessRemove Remove;
-  GoogleCloudApigeeV1AccessSet Set;
+  GoogleCloudApigeeV1AccessGet? Get;
+  GoogleCloudApigeeV1AccessRemove? Remove;
+  GoogleCloudApigeeV1AccessSet? Set;
 
   GoogleCloudApigeeV1Access();
 
@@ -11023,10 +10343,10 @@ class GoogleCloudApigeeV1Access {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (Get != null) 'Get': Get.toJson(),
-        if (Remove != null) 'Remove': Remove.toJson(),
-        if (Set != null) 'Set': Set.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (Get != null) 'Get': Get!.toJson(),
+        if (Remove != null) 'Remove': Remove!.toJson(),
+        if (Set != null) 'Set': Set!.toJson(),
       };
 }
 
@@ -11034,8 +10354,8 @@ class GoogleCloudApigeeV1Access {
 ///
 /// For example, "Get" : { "name" : "target.name", "value" : "default" }
 class GoogleCloudApigeeV1AccessGet {
-  core.String name;
-  core.String value;
+  core.String? name;
+  core.String? value;
 
   GoogleCloudApigeeV1AccessGet();
 
@@ -11048,9 +10368,9 @@ class GoogleCloudApigeeV1AccessGet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -11058,8 +10378,8 @@ class GoogleCloudApigeeV1AccessGet {
 ///
 /// For example, "Remove" : { "name" : "target.name", "success" : true }
 class GoogleCloudApigeeV1AccessRemove {
-  core.String name;
-  core.bool success;
+  core.String? name;
+  core.bool? success;
 
   GoogleCloudApigeeV1AccessRemove();
 
@@ -11072,9 +10392,9 @@ class GoogleCloudApigeeV1AccessRemove {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (success != null) 'success': success,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (success != null) 'success': success!,
       };
 }
 
@@ -11083,9 +10403,9 @@ class GoogleCloudApigeeV1AccessRemove {
 /// For example, "Set" : { "name" : "target.name", "success" : true, "value" :
 /// "default" }
 class GoogleCloudApigeeV1AccessSet {
-  core.String name;
-  core.bool success;
-  core.String value;
+  core.String? name;
+  core.bool? success;
+  core.String? value;
 
   GoogleCloudApigeeV1AccessSet();
 
@@ -11101,10 +10421,10 @@ class GoogleCloudApigeeV1AccessSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (success != null) 'success': success,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (success != null) 'success': success!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -11118,7 +10438,7 @@ class GoogleCloudApigeeV1ActivateNatAddressRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Reference to a certificate or key/certificate pair.
@@ -11126,17 +10446,17 @@ class GoogleCloudApigeeV1Alias {
   /// Resource ID for this alias.
   ///
   /// Values must match the regular expression `[^/]{1,255}`.
-  core.String alias;
+  core.String? alias;
 
   /// Chain of certificates under this alias.
-  GoogleCloudApigeeV1Certificate certsInfo;
+  GoogleCloudApigeeV1Certificate? certsInfo;
 
   /// Type of alias.
   /// Possible string values are:
   /// - "ALIAS_TYPE_UNSPECIFIED" : Alias type is not specified.
   /// - "CERT" : Certificate.
   /// - "KEY_CERT" : Key/certificate pair.
-  core.String type;
+  core.String? type;
 
   GoogleCloudApigeeV1Alias();
 
@@ -11153,10 +10473,10 @@ class GoogleCloudApigeeV1Alias {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alias != null) 'alias': alias,
-        if (certsInfo != null) 'certsInfo': certsInfo.toJson(),
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alias != null) 'alias': alias!,
+        if (certsInfo != null) 'certsInfo': certsInfo!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -11164,19 +10484,19 @@ class GoogleCloudApigeeV1AliasRevisionConfig {
   /// Location of the alias file.
   ///
   /// For example, a Google Cloud Storage URI.
-  core.String location;
+  core.String? location;
 
   /// Name of the alias revision included in the keystore in the following
   /// format:
   /// `organizations/{org}/environments/{env}/keystores/{keystore}/aliases/{alias}/revisions/{rev}`
-  core.String name;
+  core.String? name;
 
   ///
   /// Possible string values are:
   /// - "ALIAS_TYPE_UNSPECIFIED" : Alias type is not specified.
   /// - "CERT" : Certificate.
   /// - "KEY_CERT" : Key/certificate pair.
-  core.String type;
+  core.String? type;
 
   GoogleCloudApigeeV1AliasRevisionConfig();
 
@@ -11192,29 +10512,29 @@ class GoogleCloudApigeeV1AliasRevisionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (location != null) 'location': location,
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// the Api category resource wrapped with response status, error_code etc.
 class GoogleCloudApigeeV1ApiCategory {
   /// Details of category.
-  GoogleCloudApigeeV1ApiCategoryData data;
+  GoogleCloudApigeeV1ApiCategoryData? data;
 
   /// ID that can be used to find errors in the log files.
-  core.String errorCode;
+  core.String? errorCode;
 
   /// Description of the operation.
-  core.String message;
+  core.String? message;
 
   /// ID that can be used to find request details in the log files.
-  core.String requestId;
+  core.String? requestId;
 
   /// Status of the operation.
-  core.String status;
+  core.String? status;
 
   GoogleCloudApigeeV1ApiCategory();
 
@@ -11237,28 +10557,28 @@ class GoogleCloudApigeeV1ApiCategory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data.toJson(),
-        if (errorCode != null) 'errorCode': errorCode,
-        if (message != null) 'message': message,
-        if (requestId != null) 'requestId': requestId,
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!.toJson(),
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (message != null) 'message': message!,
+        if (requestId != null) 'requestId': requestId!,
+        if (status != null) 'status': status!,
       };
 }
 
 /// the Api category resource.
 class GoogleCloudApigeeV1ApiCategoryData {
   /// ID of the category (a UUID).
-  core.String id;
+  core.String? id;
 
   /// Name of the category.
-  core.String name;
+  core.String? name;
 
   /// Name of the portal.
-  core.String siteId;
+  core.String? siteId;
 
   /// Time the category was last modified in milliseconds since epoch.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudApigeeV1ApiCategoryData();
 
@@ -11277,16 +10597,16 @@ class GoogleCloudApigeeV1ApiCategoryData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
-        if (siteId != null) 'siteId': siteId,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (siteId != null) 'siteId': siteId!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 class GoogleCloudApigeeV1ApiProduct {
-  core.List<core.String> apiResources;
+  core.List<core.String>? apiResources;
 
   /// Flag that specifies how API keys are approved to access the APIs defined
   /// by the API product.
@@ -11297,7 +10617,7 @@ class GoogleCloudApigeeV1ApiProduct {
   /// and returned in "approved" state and can be used immediately. **Note:**
   /// Typically, `auto` is used to provide access to free or trial API products
   /// that provide limited quota or capabilities.
-  core.String approvalType;
+  core.String? approvalType;
 
   /// Array of attributes that may be used to extend the default API product
   /// profile with customer-specific metadata.
@@ -11310,12 +10630,12 @@ class GoogleCloudApigeeV1ApiProduct {
   /// when it is ready to release on the portal. API products marked as
   /// `private` do not appear on the portal, but can be accessed by external
   /// developers.
-  core.List<GoogleCloudApigeeV1Attribute> attributes;
+  core.List<GoogleCloudApigeeV1Attribute>? attributes;
 
   /// Response only.
   ///
   /// Creation time of this environment as milliseconds since epoch.
-  core.String createdAt;
+  core.String? createdAt;
 
   /// Description of the API product.
   ///
@@ -11336,11 +10656,11 @@ class GoogleCloudApigeeV1ApiProduct {
   /// `/v1/weatherapikey` and to any sub-URIs, such as
   /// `/v1/weatherapikey/forecastrss`, `/v1/weatherapikey/region/CA`, and so on.
   /// For more information, see Managing API products.
-  core.String description;
+  core.String? description;
 
   /// Name displayed in the UI or developer portal to developers registering for
   /// API access.
-  core.String displayName;
+  core.String? displayName;
 
   /// Comma-separated list of environment names to which the API product is
   /// bound.
@@ -11351,19 +10671,19 @@ class GoogleCloudApigeeV1ApiProduct {
   /// those resources through API proxies deployed in another environment. This
   /// setting is used, for example, to prevent resources associated with API
   /// proxies in `prod` from being accessed by API proxies deployed in `test`.
-  core.List<core.String> environments;
+  core.List<core.String>? environments;
 
   /// Response only.
   ///
   /// Modified time of this environment as milliseconds since epoch.
-  core.String lastModifiedAt;
+  core.String? lastModifiedAt;
 
   /// Internal name of the API product.
   ///
   /// Characters you can use in the name are restricted to: `A-Z0-9._\-$ %`.
   /// **Note:** The internal name cannot be edited when updating the API
   /// product.
-  core.String name;
+  core.String? name;
 
   /// Configuration used to group Apigee proxies or remote services with
   /// resources, method types, and quotas.
@@ -11374,7 +10694,7 @@ class GoogleCloudApigeeV1ApiProduct {
   /// and how many calls can be made (using the `quota` setting). **Note:** The
   /// `api_resources` setting cannot be specified for both the API product and
   /// operation group; otherwise the call will fail.
-  GoogleCloudApigeeV1OperationGroup operationGroup;
+  GoogleCloudApigeeV1OperationGroup? operationGroup;
 
   /// Comma-separated list of API proxy names to which this API product is
   /// bound.
@@ -11385,28 +10705,28 @@ class GoogleCloudApigeeV1ApiProduct {
   /// proxies that are not listed. **Note:** The API proxy names must already
   /// exist in the specified environment as they will be validated upon
   /// creation.
-  core.List<core.String> proxies;
+  core.List<core.String>? proxies;
 
   /// Number of request messages permitted per app by this API product for the
   /// specified `quotaInterval` and `quotaTimeUnit`.
   ///
   /// For example, a `quota` of 50, for a `quotaInterval` of 12 and a
   /// `quotaTimeUnit` of hours means 50 requests are allowed every 12 hours.
-  core.String quota;
+  core.String? quota;
 
   /// Time interval over which the number of request messages is calculated.
-  core.String quotaInterval;
+  core.String? quotaInterval;
 
   /// Time unit defined for the `quotaInterval`.
   ///
   /// Valid values include `minute`, `hour`, `day`, or `month`.
-  core.String quotaTimeUnit;
+  core.String? quotaTimeUnit;
 
   /// Comma-separated list of OAuth scopes that are validated at runtime.
   ///
   /// Apigee validates that the scopes in any access token presented match the
   /// scopes defined in the OAuth policy associated with the API product.
-  core.List<core.String> scopes;
+  core.List<core.String>? scopes;
 
   GoogleCloudApigeeV1ApiProduct();
 
@@ -11471,32 +10791,32 @@ class GoogleCloudApigeeV1ApiProduct {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiResources != null) 'apiResources': apiResources,
-        if (approvalType != null) 'approvalType': approvalType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiResources != null) 'apiResources': apiResources!,
+        if (approvalType != null) 'approvalType': approvalType!,
         if (attributes != null)
-          'attributes': attributes.map((value) => value.toJson()).toList(),
-        if (createdAt != null) 'createdAt': createdAt,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (environments != null) 'environments': environments,
-        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
-        if (name != null) 'name': name,
-        if (operationGroup != null) 'operationGroup': operationGroup.toJson(),
-        if (proxies != null) 'proxies': proxies,
-        if (quota != null) 'quota': quota,
-        if (quotaInterval != null) 'quotaInterval': quotaInterval,
-        if (quotaTimeUnit != null) 'quotaTimeUnit': quotaTimeUnit,
-        if (scopes != null) 'scopes': scopes,
+          'attributes': attributes!.map((value) => value.toJson()).toList(),
+        if (createdAt != null) 'createdAt': createdAt!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (environments != null) 'environments': environments!,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+        if (name != null) 'name': name!,
+        if (operationGroup != null) 'operationGroup': operationGroup!.toJson(),
+        if (proxies != null) 'proxies': proxies!,
+        if (quota != null) 'quota': quota!,
+        if (quotaInterval != null) 'quotaInterval': quotaInterval!,
+        if (quotaTimeUnit != null) 'quotaTimeUnit': quotaTimeUnit!,
+        if (scopes != null) 'scopes': scopes!,
       };
 }
 
 class GoogleCloudApigeeV1ApiProductRef {
   /// Name of the API product.
-  core.String apiproduct;
+  core.String? apiproduct;
 
   /// Status of the API product.
-  core.String status;
+  core.String? status;
 
   GoogleCloudApigeeV1ApiProductRef();
 
@@ -11509,25 +10829,25 @@ class GoogleCloudApigeeV1ApiProductRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiproduct != null) 'apiproduct': apiproduct,
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiproduct != null) 'apiproduct': apiproduct!,
+        if (status != null) 'status': status!,
       };
 }
 
 /// Metadata describing the API proxy
 class GoogleCloudApigeeV1ApiProxy {
   /// The id of the most recently created revision for this api proxy.
-  core.String latestRevisionId;
+  core.String? latestRevisionId;
 
   /// Metadata describing the API proxy.
-  GoogleCloudApigeeV1EntityMetadata metaData;
+  GoogleCloudApigeeV1EntityMetadata? metaData;
 
   /// Name of the API proxy.
-  core.String name;
+  core.String? name;
 
   /// List of revisons defined for the API proxy.
-  core.List<core.String> revision;
+  core.List<core.String>? revision;
 
   GoogleCloudApigeeV1ApiProxy();
 
@@ -11549,18 +10869,18 @@ class GoogleCloudApigeeV1ApiProxy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (latestRevisionId != null) 'latestRevisionId': latestRevisionId,
-        if (metaData != null) 'metaData': metaData.toJson(),
-        if (name != null) 'name': name,
-        if (revision != null) 'revision': revision,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (latestRevisionId != null) 'latestRevisionId': latestRevisionId!,
+        if (metaData != null) 'metaData': metaData!.toJson(),
+        if (name != null) 'name': name!,
+        if (revision != null) 'revision': revision!,
       };
 }
 
 /// API proxy revision.
 class GoogleCloudApigeeV1ApiProxyRevision {
   /// Base URL of the API proxy.
-  core.List<core.String> basepaths;
+  core.List<core.String>? basepaths;
 
   /// Version of the API proxy configuration schema to which the API proxy
   /// conforms.
@@ -11568,86 +10888,86 @@ class GoogleCloudApigeeV1ApiProxyRevision {
   /// Currently, the only supported value is 4.0 (`majorVersion.minorVersion`).
   /// This setting may be used in the future to track the evolution of the API
   /// proxy format.
-  GoogleCloudApigeeV1ConfigVersion configurationVersion;
+  GoogleCloudApigeeV1ConfigVersion? configurationVersion;
 
   /// Revision number, app name, and organization for the API proxy.
-  core.String contextInfo;
+  core.String? contextInfo;
 
   /// Time that the API proxy revision was created in milliseconds since epoch.
-  core.String createdAt;
+  core.String? createdAt;
 
   /// Description of the API proxy revision.
-  core.String description;
+  core.String? description;
 
   /// Human-readable name of the API proxy.
-  core.String displayName;
+  core.String? displayName;
 
   /// Metadata describing the API proxy revision as a key-value map.
-  core.Map<core.String, core.String> entityMetaDataAsProperties;
+  core.Map<core.String, core.String>? entityMetaDataAsProperties;
 
   /// Time that the API proxy revision was last modified in milliseconds since
   /// epoch.
-  core.String lastModifiedAt;
+  core.String? lastModifiedAt;
 
   /// Name of the API proxy.
-  core.String name;
+  core.String? name;
 
   /// List of policy names included in the API proxy revision..
-  core.List<core.String> policies;
+  core.List<core.String>? policies;
 
   /// List of proxy names included in the API proxy revision.
-  core.List<core.String> proxies;
+  core.List<core.String>? proxies;
 
   /// List of ProxyEndpoints in the `/proxies` directory of the API proxy.
   ///
   /// Typically, this element is included only when the API proxy was created
   /// using the Edge UI. This is a 'manifest' setting designed to provide
   /// visibility into the contents of the API proxy.
-  core.List<core.String> proxyEndpoints;
+  core.List<core.String>? proxyEndpoints;
 
   /// List of resource files included in the API proxy revision.
-  GoogleCloudApigeeV1ResourceFiles resourceFiles;
+  GoogleCloudApigeeV1ResourceFiles? resourceFiles;
 
   /// List of the resources included in the API proxy revision formatted as
   /// "{type}://{name}".
-  core.List<core.String> resources;
+  core.List<core.String>? resources;
 
   /// API proxy revision.
-  core.String revision;
+  core.String? revision;
 
   /// List of the shared flows included in the API proxy revision.
-  core.List<core.String> sharedFlows;
+  core.List<core.String>? sharedFlows;
 
   /// OpenAPI Specification that is associated with the API proxy.
   ///
   /// The value is set to a URL or to a path in the specification store.
-  core.String spec;
+  core.String? spec;
 
   /// List of TargetEndpoints in the `/targets` directory of the API proxy.
   ///
   /// Typically, this element is included only when the API proxy was created
   /// using the Edge UI. This is a 'manifest' setting designed to provide
   /// visibility into the contents of the API proxy.
-  core.List<core.String> targetEndpoints;
+  core.List<core.String>? targetEndpoints;
 
   /// List of TargetServers referenced in any TargetEndpoint in the API proxy.
   ///
   /// Typically, you will see this element only when the API proxy was created
   /// using the Edge UI. This is a 'manifest' setting designed to provide
   /// visibility into the contents of the API proxy.
-  core.List<core.String> targetServers;
+  core.List<core.String>? targetServers;
 
   /// List of the targets included in the API proxy revision.
-  core.List<core.String> targets;
+  core.List<core.String>? targets;
 
   /// List of the teams included in the API proxy revision.
-  core.List<core.String> teams;
+  core.List<core.String>? teams;
 
   /// Type.
   ///
   /// Set to `Application`. Maintained for compatibility with the Apigee Edge
   /// API.
-  core.String type;
+  core.String? type;
 
   GoogleCloudApigeeV1ApiProxyRevision();
 
@@ -11750,46 +11070,46 @@ class GoogleCloudApigeeV1ApiProxyRevision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (basepaths != null) 'basepaths': basepaths,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (basepaths != null) 'basepaths': basepaths!,
         if (configurationVersion != null)
-          'configurationVersion': configurationVersion.toJson(),
-        if (contextInfo != null) 'contextInfo': contextInfo,
-        if (createdAt != null) 'createdAt': createdAt,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+          'configurationVersion': configurationVersion!.toJson(),
+        if (contextInfo != null) 'contextInfo': contextInfo!,
+        if (createdAt != null) 'createdAt': createdAt!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (entityMetaDataAsProperties != null)
-          'entityMetaDataAsProperties': entityMetaDataAsProperties,
-        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
-        if (name != null) 'name': name,
-        if (policies != null) 'policies': policies,
-        if (proxies != null) 'proxies': proxies,
-        if (proxyEndpoints != null) 'proxyEndpoints': proxyEndpoints,
-        if (resourceFiles != null) 'resourceFiles': resourceFiles.toJson(),
-        if (resources != null) 'resources': resources,
-        if (revision != null) 'revision': revision,
-        if (sharedFlows != null) 'sharedFlows': sharedFlows,
-        if (spec != null) 'spec': spec,
-        if (targetEndpoints != null) 'targetEndpoints': targetEndpoints,
-        if (targetServers != null) 'targetServers': targetServers,
-        if (targets != null) 'targets': targets,
-        if (teams != null) 'teams': teams,
-        if (type != null) 'type': type,
+          'entityMetaDataAsProperties': entityMetaDataAsProperties!,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+        if (name != null) 'name': name!,
+        if (policies != null) 'policies': policies!,
+        if (proxies != null) 'proxies': proxies!,
+        if (proxyEndpoints != null) 'proxyEndpoints': proxyEndpoints!,
+        if (resourceFiles != null) 'resourceFiles': resourceFiles!.toJson(),
+        if (resources != null) 'resources': resources!,
+        if (revision != null) 'revision': revision!,
+        if (sharedFlows != null) 'sharedFlows': sharedFlows!,
+        if (spec != null) 'spec': spec!,
+        if (targetEndpoints != null) 'targetEndpoints': targetEndpoints!,
+        if (targetServers != null) 'targetServers': targetServers!,
+        if (targets != null) 'targets': targets!,
+        if (teams != null) 'teams': teams!,
+        if (type != null) 'type': type!,
       };
 }
 
 class GoogleCloudApigeeV1ApiResponseWrapper {
   /// ID that can be used to find errors in the log files.
-  core.String errorCode;
+  core.String? errorCode;
 
   /// Description of the operation.
-  core.String message;
+  core.String? message;
 
   /// ID that can be used to find request details in the log files.
-  core.String requestId;
+  core.String? requestId;
 
   /// Status of the operation.
-  core.String status;
+  core.String? status;
 
   GoogleCloudApigeeV1ApiResponseWrapper();
 
@@ -11808,69 +11128,69 @@ class GoogleCloudApigeeV1ApiResponseWrapper {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode,
-        if (message != null) 'message': message,
-        if (requestId != null) 'requestId': requestId,
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (message != null) 'message': message!,
+        if (requestId != null) 'requestId': requestId!,
+        if (status != null) 'status': status!,
       };
 }
 
 class GoogleCloudApigeeV1App {
   /// List of API products associated with the app.
-  core.List<GoogleCloudApigeeV1ApiProductRef> apiProducts;
+  core.List<GoogleCloudApigeeV1ApiProductRef>? apiProducts;
 
   /// ID of the app.
-  core.String appId;
+  core.String? appId;
 
   /// List of attributes.
-  core.List<GoogleCloudApigeeV1Attribute> attributes;
+  core.List<GoogleCloudApigeeV1Attribute>? attributes;
 
   /// Callback URL used by OAuth 2.0 authorization servers to communicate
   /// authorization codes back to apps.
-  core.String callbackUrl;
+  core.String? callbackUrl;
 
   /// Name of the company that owns the app.
-  core.String companyName;
+  core.String? companyName;
 
   /// Unix time when the app was created.
   ///
   /// Output only.
-  core.String createdAt;
+  core.String? createdAt;
 
   /// Set of credentials for the app.
   ///
   /// Credentials are API key/secret pairs associated with API products.
   ///
   /// Output only.
-  core.List<GoogleCloudApigeeV1Credential> credentials;
+  core.List<GoogleCloudApigeeV1Credential>? credentials;
 
   /// ID of the developer.
-  core.String developerId;
+  core.String? developerId;
 
   /// Duration, in milliseconds, of the consumer key that will be generated for
   /// the app.
   ///
   /// The default value, -1, indicates an infinite validity period. Once set,
   /// the expiration can't be updated. json key: keyExpiresIn
-  core.String keyExpiresIn;
+  core.String? keyExpiresIn;
 
   /// Last modified time as milliseconds since epoch.
   ///
   /// Output only.
-  core.String lastModifiedAt;
+  core.String? lastModifiedAt;
 
   /// Name of the app.
-  core.String name;
+  core.String? name;
 
   /// Scopes to apply to the app.
   ///
   /// The specified scope names must already exist on the API product that you
   /// associate with the app.
-  core.List<core.String> scopes;
+  core.List<core.String>? scopes;
 
   /// Status of the credential.
-  core.String status;
+  core.String? status;
 
   GoogleCloudApigeeV1App();
 
@@ -11930,56 +11250,56 @@ class GoogleCloudApigeeV1App {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (apiProducts != null)
-          'apiProducts': apiProducts.map((value) => value.toJson()).toList(),
-        if (appId != null) 'appId': appId,
+          'apiProducts': apiProducts!.map((value) => value.toJson()).toList(),
+        if (appId != null) 'appId': appId!,
         if (attributes != null)
-          'attributes': attributes.map((value) => value.toJson()).toList(),
-        if (callbackUrl != null) 'callbackUrl': callbackUrl,
-        if (companyName != null) 'companyName': companyName,
-        if (createdAt != null) 'createdAt': createdAt,
+          'attributes': attributes!.map((value) => value.toJson()).toList(),
+        if (callbackUrl != null) 'callbackUrl': callbackUrl!,
+        if (companyName != null) 'companyName': companyName!,
+        if (createdAt != null) 'createdAt': createdAt!,
         if (credentials != null)
-          'credentials': credentials.map((value) => value.toJson()).toList(),
-        if (developerId != null) 'developerId': developerId,
-        if (keyExpiresIn != null) 'keyExpiresIn': keyExpiresIn,
-        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
-        if (name != null) 'name': name,
-        if (scopes != null) 'scopes': scopes,
-        if (status != null) 'status': status,
+          'credentials': credentials!.map((value) => value.toJson()).toList(),
+        if (developerId != null) 'developerId': developerId!,
+        if (keyExpiresIn != null) 'keyExpiresIn': keyExpiresIn!,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+        if (name != null) 'name': name!,
+        if (scopes != null) 'scopes': scopes!,
+        if (status != null) 'status': status!,
       };
 }
 
 class GoogleCloudApigeeV1AsyncQuery {
   /// Creation time of the query.
-  core.String created;
+  core.String? created;
 
   /// Hostname is available only when query is executed at host level.
-  core.String envgroupHostname;
+  core.String? envgroupHostname;
 
   /// Error is set when query fails.
-  core.String error;
+  core.String? error;
 
   /// ExecutionTime is available only after the query is completed.
-  core.String executionTime;
+  core.String? executionTime;
 
   /// Asynchronous Query Name.
-  core.String name;
+  core.String? name;
 
   /// Contains information like metrics, dimenstions etc of the AsyncQuery.
-  GoogleCloudApigeeV1QueryMetadata queryParams;
+  GoogleCloudApigeeV1QueryMetadata? queryParams;
 
   /// Asynchronous Report ID.
-  core.String reportDefinitionId;
+  core.String? reportDefinitionId;
 
   /// Result is available only after the query is completed.
-  GoogleCloudApigeeV1AsyncQueryResult result;
+  GoogleCloudApigeeV1AsyncQueryResult? result;
 
   /// ResultFileSize is available only after the query is completed.
-  core.String resultFileSize;
+  core.String? resultFileSize;
 
   /// ResultRows is available only after the query is completed.
-  core.String resultRows;
+  core.String? resultRows;
 
   /// Self link of the query.
   ///
@@ -11987,13 +11307,13 @@ class GoogleCloudApigeeV1AsyncQuery {
   /// `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
   /// or following format if query is running at host level:
   /// `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
-  core.String self;
+  core.String? self;
 
   /// Query state could be "enqueued", "running", "completed", "failed".
-  core.String state;
+  core.String? state;
 
   /// Last updated timestamp for the query.
-  core.String updated;
+  core.String? updated;
 
   GoogleCloudApigeeV1AsyncQuery();
 
@@ -12041,27 +11361,27 @@ class GoogleCloudApigeeV1AsyncQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (created != null) 'created': created,
-        if (envgroupHostname != null) 'envgroupHostname': envgroupHostname,
-        if (error != null) 'error': error,
-        if (executionTime != null) 'executionTime': executionTime,
-        if (name != null) 'name': name,
-        if (queryParams != null) 'queryParams': queryParams.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (created != null) 'created': created!,
+        if (envgroupHostname != null) 'envgroupHostname': envgroupHostname!,
+        if (error != null) 'error': error!,
+        if (executionTime != null) 'executionTime': executionTime!,
+        if (name != null) 'name': name!,
+        if (queryParams != null) 'queryParams': queryParams!.toJson(),
         if (reportDefinitionId != null)
-          'reportDefinitionId': reportDefinitionId,
-        if (result != null) 'result': result.toJson(),
-        if (resultFileSize != null) 'resultFileSize': resultFileSize,
-        if (resultRows != null) 'resultRows': resultRows,
-        if (self != null) 'self': self,
-        if (state != null) 'state': state,
-        if (updated != null) 'updated': updated,
+          'reportDefinitionId': reportDefinitionId!,
+        if (result != null) 'result': result!.toJson(),
+        if (resultFileSize != null) 'resultFileSize': resultFileSize!,
+        if (resultRows != null) 'resultRows': resultRows!,
+        if (self != null) 'self': self!,
+        if (state != null) 'state': state!,
+        if (updated != null) 'updated': updated!,
       };
 }
 
 class GoogleCloudApigeeV1AsyncQueryResult {
   /// Query result will be unaccessable after this time.
-  core.String expires;
+  core.String? expires;
 
   /// Self link of the query results.
   ///
@@ -12069,7 +11389,7 @@ class GoogleCloudApigeeV1AsyncQueryResult {
   /// `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
   /// or following format if query is running at host level:
   /// `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
-  core.String self;
+  core.String? self;
 
   GoogleCloudApigeeV1AsyncQueryResult();
 
@@ -12082,22 +11402,22 @@ class GoogleCloudApigeeV1AsyncQueryResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expires != null) 'expires': expires,
-        if (self != null) 'self': self,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expires != null) 'expires': expires!,
+        if (self != null) 'self': self!,
       };
 }
 
 class GoogleCloudApigeeV1AsyncQueryResultView {
   /// Error code when there is a failure.
-  core.int code;
+  core.int? code;
 
   /// Error message when there is a failure.
-  core.String error;
+  core.String? error;
 
   /// Metadata contains information like metrics, dimenstions etc of the
   /// AsyncQuery.
-  GoogleCloudApigeeV1QueryMetadata metadata;
+  GoogleCloudApigeeV1QueryMetadata? metadata;
 
   /// Rows of query result.
   ///
@@ -12106,10 +11426,10 @@ class GoogleCloudApigeeV1AsyncQueryResultView {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> rows;
+  core.List<core.Object>? rows;
 
   /// State of retrieving ResultView.
-  core.String state;
+  core.String? state;
 
   GoogleCloudApigeeV1AsyncQueryResultView();
 
@@ -12134,22 +11454,22 @@ class GoogleCloudApigeeV1AsyncQueryResultView {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (error != null) 'error': error,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (rows != null) 'rows': rows,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (error != null) 'error': error!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (rows != null) 'rows': rows!,
+        if (state != null) 'state': state!,
       };
 }
 
 /// Key-value pair to store extra metadata.
 class GoogleCloudApigeeV1Attribute {
   /// API key of the attribute.
-  core.String name;
+  core.String? name;
 
   /// Value of the attribute.
-  core.String value;
+  core.String? value;
 
   GoogleCloudApigeeV1Attribute();
 
@@ -12162,15 +11482,15 @@ class GoogleCloudApigeeV1Attribute {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
 class GoogleCloudApigeeV1Attributes {
   /// List of attributes.
-  core.List<GoogleCloudApigeeV1Attribute> attribute;
+  core.List<GoogleCloudApigeeV1Attribute>? attribute;
 
   GoogleCloudApigeeV1Attributes();
 
@@ -12184,9 +11504,9 @@ class GoogleCloudApigeeV1Attributes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (attribute != null)
-          'attribute': attribute.map((value) => value.toJson()).toList(),
+          'attribute': attribute!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -12196,32 +11516,32 @@ class GoogleCloudApigeeV1CanaryEvaluation {
   /// The stable version that is serving requests.
   ///
   /// Required.
-  core.String control;
+  core.String? control;
 
   /// Create time of the canary evaluation.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// End time for the evaluation's analysis.
   ///
   /// Required.
-  core.String endTime;
+  core.String? endTime;
 
   /// Labels used to filter the metrics used for a canary evaluation.
   ///
   /// Required.
-  GoogleCloudApigeeV1CanaryEvaluationMetricLabels metricLabels;
+  GoogleCloudApigeeV1CanaryEvaluationMetricLabels? metricLabels;
 
   /// Name of the canary evalution.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Start time for the canary evaluation's analysis.
   ///
   /// Required.
-  core.String startTime;
+  core.String? startTime;
 
   /// The current state of the canary evaluation.
   ///
@@ -12230,12 +11550,12 @@ class GoogleCloudApigeeV1CanaryEvaluation {
   /// - "STATE_UNSPECIFIED" : No state has been specified.
   /// - "RUNNING" : The canary evaluation is still in progress.
   /// - "SUCCEEDED" : The canary evaluation has finished.
-  core.String state;
+  core.String? state;
 
   /// The newer version that is serving requests.
   ///
   /// Required.
-  core.String treatment;
+  core.String? treatment;
 
   /// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
   ///
@@ -12245,7 +11565,7 @@ class GoogleCloudApigeeV1CanaryEvaluation {
   /// - "NONE" : No verdict reached.
   /// - "FAIL" : Evaluation is not good.
   /// - "PASS" : Evaluation is good.
-  core.String verdict;
+  core.String? verdict;
 
   GoogleCloudApigeeV1CanaryEvaluation();
 
@@ -12280,35 +11600,35 @@ class GoogleCloudApigeeV1CanaryEvaluation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (control != null) 'control': control,
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
-        if (metricLabels != null) 'metricLabels': metricLabels.toJson(),
-        if (name != null) 'name': name,
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
-        if (treatment != null) 'treatment': treatment,
-        if (verdict != null) 'verdict': verdict,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (control != null) 'control': control!,
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (metricLabels != null) 'metricLabels': metricLabels!.toJson(),
+        if (name != null) 'name': name!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+        if (treatment != null) 'treatment': treatment!,
+        if (verdict != null) 'verdict': verdict!,
       };
 }
 
 /// Labels that can be used to filter Apigee metrics.
 class GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
   /// The environment ID associated with the metrics.
-  core.String env;
+  core.String? env;
 
   /// The instance ID associated with the metrics.
   ///
   /// In Apigee Hybrid, the value is configured during installation.
   ///
   /// Required.
-  core.String instanceId;
+  core.String? instanceId;
 
   /// The location associated with the metrics.
   ///
   /// Required.
-  core.String location;
+  core.String? location;
 
   GoogleCloudApigeeV1CanaryEvaluationMetricLabels();
 
@@ -12324,50 +11644,50 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (env != null) 'env': env,
-        if (instanceId != null) 'instance_id': instanceId,
-        if (location != null) 'location': location,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (env != null) 'env': env!,
+        if (instanceId != null) 'instance_id': instanceId!,
+        if (location != null) 'location': location!,
       };
 }
 
 /// X.509 certificate as defined in RFC 5280.
 class GoogleCloudApigeeV1CertInfo {
   /// X.509 basic constraints extension.
-  core.String basicConstraints;
+  core.String? basicConstraints;
 
   /// X.509 `notAfter` validity period in milliseconds since epoch.
-  core.String expiryDate;
+  core.String? expiryDate;
 
   /// Flag that specifies whether the certificate is valid.
   ///
   /// Flag is set to `Yes` if the certificate is valid, `No` if expired, or `Not
   /// yet` if not yet valid.
-  core.String isValid;
+  core.String? isValid;
 
   /// X.509 issuer.
-  core.String issuer;
+  core.String? issuer;
 
   /// Public key component of the X.509 subject public key info.
-  core.String publicKey;
+  core.String? publicKey;
 
   /// X.509 serial number.
-  core.String serialNumber;
+  core.String? serialNumber;
 
   /// X.509 signatureAlgorithm.
-  core.String sigAlgName;
+  core.String? sigAlgName;
 
   /// X.509 subject.
-  core.String subject;
+  core.String? subject;
 
   /// X.509 subject alternative names (SANs) extension.
-  core.List<core.String> subjectAlternativeNames;
+  core.List<core.String>? subjectAlternativeNames;
 
   /// X.509 `notBefore` validity period in milliseconds since epoch.
-  core.String validFrom;
+  core.String? validFrom;
 
   /// X.509 version.
-  core.int version;
+  core.int? version;
 
   GoogleCloudApigeeV1CertInfo();
 
@@ -12409,25 +11729,25 @@ class GoogleCloudApigeeV1CertInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (basicConstraints != null) 'basicConstraints': basicConstraints,
-        if (expiryDate != null) 'expiryDate': expiryDate,
-        if (isValid != null) 'isValid': isValid,
-        if (issuer != null) 'issuer': issuer,
-        if (publicKey != null) 'publicKey': publicKey,
-        if (serialNumber != null) 'serialNumber': serialNumber,
-        if (sigAlgName != null) 'sigAlgName': sigAlgName,
-        if (subject != null) 'subject': subject,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (basicConstraints != null) 'basicConstraints': basicConstraints!,
+        if (expiryDate != null) 'expiryDate': expiryDate!,
+        if (isValid != null) 'isValid': isValid!,
+        if (issuer != null) 'issuer': issuer!,
+        if (publicKey != null) 'publicKey': publicKey!,
+        if (serialNumber != null) 'serialNumber': serialNumber!,
+        if (sigAlgName != null) 'sigAlgName': sigAlgName!,
+        if (subject != null) 'subject': subject!,
         if (subjectAlternativeNames != null)
-          'subjectAlternativeNames': subjectAlternativeNames,
-        if (validFrom != null) 'validFrom': validFrom,
-        if (version != null) 'version': version,
+          'subjectAlternativeNames': subjectAlternativeNames!,
+        if (validFrom != null) 'validFrom': validFrom!,
+        if (version != null) 'version': version!,
       };
 }
 
 class GoogleCloudApigeeV1Certificate {
   /// Chain of certificates under this name.
-  core.List<GoogleCloudApigeeV1CertInfo> certInfo;
+  core.List<GoogleCloudApigeeV1CertInfo>? certInfo;
 
   GoogleCloudApigeeV1Certificate();
 
@@ -12441,15 +11761,15 @@ class GoogleCloudApigeeV1Certificate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (certInfo != null)
-          'certInfo': certInfo.map((value) => value.toJson()).toList(),
+          'certInfo': certInfo!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GoogleCloudApigeeV1CommonNameConfig {
-  core.bool matchWildCards;
-  core.String name;
+  core.bool? matchWildCards;
+  core.String? name;
 
   GoogleCloudApigeeV1CommonNameConfig();
 
@@ -12462,9 +11782,9 @@ class GoogleCloudApigeeV1CommonNameConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (matchWildCards != null) 'matchWildCards': matchWildCards,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (matchWildCards != null) 'matchWildCards': matchWildCards!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -12473,10 +11793,10 @@ class GoogleCloudApigeeV1CommonNameConfig {
 /// Currently, only 4.0 is supported.
 class GoogleCloudApigeeV1ConfigVersion {
   /// Major version of the API proxy configuration schema.
-  core.int majorVersion;
+  core.int? majorVersion;
 
   /// Minor version of the API proxy configuration schema.
-  core.int minorVersion;
+  core.int? minorVersion;
 
   GoogleCloudApigeeV1ConfigVersion();
 
@@ -12489,39 +11809,39 @@ class GoogleCloudApigeeV1ConfigVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (majorVersion != null) 'majorVersion': majorVersion,
-        if (minorVersion != null) 'minorVersion': minorVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (majorVersion != null) 'majorVersion': majorVersion!,
+        if (minorVersion != null) 'minorVersion': minorVersion!,
       };
 }
 
 class GoogleCloudApigeeV1Credential {
   /// List of API products this credential can be used for.
-  core.List<GoogleCloudApigeeV1ApiProductRef> apiProducts;
+  core.List<GoogleCloudApigeeV1ApiProductRef>? apiProducts;
 
   /// List of attributes associated with this credential.
-  core.List<GoogleCloudApigeeV1Attribute> attributes;
+  core.List<GoogleCloudApigeeV1Attribute>? attributes;
 
   /// Consumer key.
-  core.String consumerKey;
+  core.String? consumerKey;
 
   /// Secret key.
-  core.String consumerSecret;
+  core.String? consumerSecret;
 
   /// Time the credential will expire in milliseconds since epoch.
-  core.String expiresAt;
+  core.String? expiresAt;
 
   /// Time the credential was issued in milliseconds since epoch.
-  core.String issuedAt;
+  core.String? issuedAt;
 
   /// List of scopes to apply to the app.
   ///
   /// Specified scopes must already exist on the API product that you associate
   /// with the app.
-  core.List<core.String> scopes;
+  core.List<core.String>? scopes;
 
   /// Status of the credential.
-  core.String status;
+  core.String? status;
 
   GoogleCloudApigeeV1Credential();
 
@@ -12562,120 +11882,120 @@ class GoogleCloudApigeeV1Credential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (apiProducts != null)
-          'apiProducts': apiProducts.map((value) => value.toJson()).toList(),
+          'apiProducts': apiProducts!.map((value) => value.toJson()).toList(),
         if (attributes != null)
-          'attributes': attributes.map((value) => value.toJson()).toList(),
-        if (consumerKey != null) 'consumerKey': consumerKey,
-        if (consumerSecret != null) 'consumerSecret': consumerSecret,
-        if (expiresAt != null) 'expiresAt': expiresAt,
-        if (issuedAt != null) 'issuedAt': issuedAt,
-        if (scopes != null) 'scopes': scopes,
-        if (status != null) 'status': status,
+          'attributes': attributes!.map((value) => value.toJson()).toList(),
+        if (consumerKey != null) 'consumerKey': consumerKey!,
+        if (consumerSecret != null) 'consumerSecret': consumerSecret!,
+        if (expiresAt != null) 'expiresAt': expiresAt!,
+        if (issuedAt != null) 'issuedAt': issuedAt!,
+        if (scopes != null) 'scopes': scopes!,
+        if (status != null) 'status': status!,
       };
 }
 
 class GoogleCloudApigeeV1CustomReport {
   /// This field contains the chart type for the report
-  core.String chartType;
+  core.String? chartType;
 
   /// Legacy field: not used.
   ///
   /// This field contains a list of comments associated with custom report
-  core.List<core.String> comments;
+  core.List<core.String>? comments;
 
   /// Unix time when the app was created json key: createdAt
   ///
   /// Output only.
-  core.String createdAt;
+  core.String? createdAt;
 
   /// This contains the list of dimensions for the report
-  core.List<core.String> dimensions;
+  core.List<core.String>? dimensions;
 
   /// This is the display name for the report
-  core.String displayName;
+  core.String? displayName;
 
   /// Environment name
   ///
   /// Output only.
-  core.String environment;
+  core.String? environment;
 
   /// This field contains the filter expression
-  core.String filter;
+  core.String? filter;
 
   /// Legacy field: not used.
   ///
   /// Contains the from time for the report
-  core.String fromTime;
+  core.String? fromTime;
 
   /// Modified time of this entity as milliseconds since epoch.
   ///
   /// json key: lastModifiedAt
   ///
   /// Output only.
-  core.String lastModifiedAt;
+  core.String? lastModifiedAt;
 
   /// Last viewed time of this entity as milliseconds since epoch
   ///
   /// Output only.
-  core.String lastViewedAt;
+  core.String? lastViewedAt;
 
   /// Legacy field: not used This field contains the limit for the result
   /// retrieved
-  core.String limit;
+  core.String? limit;
 
   /// This contains the list of metrics
   ///
   /// Required.
-  core.List<GoogleCloudApigeeV1CustomReportMetric> metrics;
+  core.List<GoogleCloudApigeeV1CustomReportMetric>? metrics;
 
   /// Unique identifier for the report T his is a legacy field used to encode
   /// custom report unique id
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Legacy field: not used.
   ///
   /// This field contains the offset for the data
-  core.String offset;
+  core.String? offset;
 
   /// Organization name
   ///
   /// Output only.
-  core.String organization;
+  core.String? organization;
 
   /// This field contains report properties such as ui metadata etc.
-  core.List<GoogleCloudApigeeV1ReportProperty> properties;
+  core.List<GoogleCloudApigeeV1ReportProperty>? properties;
 
   /// Legacy field: not used much.
   ///
   /// Contains the list of sort by columns
-  core.List<core.String> sortByCols;
+  core.List<core.String>? sortByCols;
 
   /// Legacy field: not used much.
   ///
   /// Contains the sort order for the sort columns
-  core.String sortOrder;
+  core.String? sortOrder;
 
   /// Legacy field: not used.
   ///
   /// This field contains a list of tags associated with custom report
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   /// This field contains the time unit of aggregation for the report
-  core.String timeUnit;
+  core.String? timeUnit;
 
   /// Legacy field: not used.
   ///
   /// Contains the end time for the report
-  core.String toTime;
+  core.String? toTime;
 
   /// Legacy field: not used.
   ///
   /// This field contains the top k parameter value for restricting the result
-  core.String topk;
+  core.String? topk;
 
   GoogleCloudApigeeV1CustomReport();
 
@@ -12764,31 +12084,31 @@ class GoogleCloudApigeeV1CustomReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (chartType != null) 'chartType': chartType,
-        if (comments != null) 'comments': comments,
-        if (createdAt != null) 'createdAt': createdAt,
-        if (dimensions != null) 'dimensions': dimensions,
-        if (displayName != null) 'displayName': displayName,
-        if (environment != null) 'environment': environment,
-        if (filter != null) 'filter': filter,
-        if (fromTime != null) 'fromTime': fromTime,
-        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
-        if (lastViewedAt != null) 'lastViewedAt': lastViewedAt,
-        if (limit != null) 'limit': limit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (chartType != null) 'chartType': chartType!,
+        if (comments != null) 'comments': comments!,
+        if (createdAt != null) 'createdAt': createdAt!,
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (displayName != null) 'displayName': displayName!,
+        if (environment != null) 'environment': environment!,
+        if (filter != null) 'filter': filter!,
+        if (fromTime != null) 'fromTime': fromTime!,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+        if (lastViewedAt != null) 'lastViewedAt': lastViewedAt!,
+        if (limit != null) 'limit': limit!,
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (offset != null) 'offset': offset,
-        if (organization != null) 'organization': organization,
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (offset != null) 'offset': offset!,
+        if (organization != null) 'organization': organization!,
         if (properties != null)
-          'properties': properties.map((value) => value.toJson()).toList(),
-        if (sortByCols != null) 'sortByCols': sortByCols,
-        if (sortOrder != null) 'sortOrder': sortOrder,
-        if (tags != null) 'tags': tags,
-        if (timeUnit != null) 'timeUnit': timeUnit,
-        if (toTime != null) 'toTime': toTime,
-        if (topk != null) 'topk': topk,
+          'properties': properties!.map((value) => value.toJson()).toList(),
+        if (sortByCols != null) 'sortByCols': sortByCols!,
+        if (sortOrder != null) 'sortOrder': sortOrder!,
+        if (tags != null) 'tags': tags!,
+        if (timeUnit != null) 'timeUnit': timeUnit!,
+        if (toTime != null) 'toTime': toTime!,
+        if (topk != null) 'topk': topk!,
       };
 }
 
@@ -12796,10 +12116,10 @@ class GoogleCloudApigeeV1CustomReport {
 /// name is message_count and function is sum
 class GoogleCloudApigeeV1CustomReportMetric {
   /// aggregate function
-  core.String function;
+  core.String? function;
 
   /// name of the metric
-  core.String name;
+  core.String? name;
 
   GoogleCloudApigeeV1CustomReportMetric();
 
@@ -12812,9 +12132,9 @@ class GoogleCloudApigeeV1CustomReportMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (function != null) 'function': function,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (function != null) 'function': function!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -12824,21 +12144,21 @@ class GoogleCloudApigeeV1DataCollector {
   /// epoch.
   ///
   /// Output only.
-  core.String createdAt;
+  core.String? createdAt;
 
   /// A description of the data collector.
-  core.String description;
+  core.String? description;
 
   /// The time at which the Data Collector was last updated in milliseconds
   /// since the epoch.
   ///
   /// Output only.
-  core.String lastModifiedAt;
+  core.String? lastModifiedAt;
 
   /// ID of the data collector.
   ///
   /// Must begin with `dc_`.
-  core.String name;
+  core.String? name;
 
   /// The type of data this data collector will collect.
   ///
@@ -12850,7 +12170,7 @@ class GoogleCloudApigeeV1DataCollector {
   /// - "STRING" : For string values.
   /// - "BOOLEAN" : For boolean values.
   /// - "DATETIME" : For datetime values.
-  core.String type;
+  core.String? type;
 
   GoogleCloudApigeeV1DataCollector();
 
@@ -12872,12 +12192,12 @@ class GoogleCloudApigeeV1DataCollector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createdAt != null) 'createdAt': createdAt,
-        if (description != null) 'description': description,
-        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createdAt != null) 'createdAt': createdAt!,
+        if (description != null) 'description': description!,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -12885,7 +12205,7 @@ class GoogleCloudApigeeV1DataCollector {
 class GoogleCloudApigeeV1DataCollectorConfig {
   /// Name of the data collector in the following format:
   /// `organizations/{org}/datacollectors/{datacollector}`
-  core.String name;
+  core.String? name;
 
   /// Data type accepted by the data collector.
   /// Possible string values are:
@@ -12895,7 +12215,7 @@ class GoogleCloudApigeeV1DataCollectorConfig {
   /// - "STRING" : For string values.
   /// - "BOOLEAN" : For boolean values.
   /// - "DATETIME" : For datetime values.
-  core.String type;
+  core.String? type;
 
   GoogleCloudApigeeV1DataCollectorConfig();
 
@@ -12908,9 +12228,9 @@ class GoogleCloudApigeeV1DataCollectorConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -12922,38 +12242,38 @@ class GoogleCloudApigeeV1Datastore {
   /// 1970-01-01T00:00:00Z
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Datastore Configurations.
-  GoogleCloudApigeeV1DatastoreConfig datastoreConfig;
+  GoogleCloudApigeeV1DatastoreConfig? datastoreConfig;
 
   /// Display name in UI
   ///
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   /// Datastore last update time, in milliseconds since the epoch of
   /// 1970-01-01T00:00:00Z
   ///
   /// Output only.
-  core.String lastUpdateTime;
+  core.String? lastUpdateTime;
 
   /// Organization that the datastore belongs to
   ///
   /// Output only.
-  core.String org;
+  core.String? org;
 
   /// Resource link of Datastore.
   ///
   /// Example: `/organizations/{org}/analytics/datastores/{uuid}`
   ///
   /// Output only.
-  core.String self;
+  core.String? self;
 
   /// Destination storage type.
   ///
   /// Supported types `gcs` or `bigquery`.
-  core.String targetType;
+  core.String? targetType;
 
   GoogleCloudApigeeV1Datastore();
 
@@ -12982,15 +12302,15 @@ class GoogleCloudApigeeV1Datastore {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
         if (datastoreConfig != null)
-          'datastoreConfig': datastoreConfig.toJson(),
-        if (displayName != null) 'displayName': displayName,
-        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime,
-        if (org != null) 'org': org,
-        if (self != null) 'self': self,
-        if (targetType != null) 'targetType': targetType,
+          'datastoreConfig': datastoreConfig!.toJson(),
+        if (displayName != null) 'displayName': displayName!,
+        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+        if (org != null) 'org': org!,
+        if (self != null) 'self': self!,
+        if (targetType != null) 'targetType': targetType!,
       };
 }
 
@@ -12999,21 +12319,21 @@ class GoogleCloudApigeeV1DatastoreConfig {
   /// Name of the Cloud Storage bucket.
   ///
   /// Required for `gcs` target_type.
-  core.String bucketName;
+  core.String? bucketName;
 
   /// BigQuery dataset name Required for `bigquery` target_type.
-  core.String datasetName;
+  core.String? datasetName;
 
   /// Path of Cloud Storage bucket Required for `gcs` target_type.
-  core.String path;
+  core.String? path;
 
   /// GCP project in which the datastore exists
   ///
   /// Required.
-  core.String projectId;
+  core.String? projectId;
 
   /// Prefix of BigQuery table Required for `bigquery` target_type.
-  core.String tablePrefix;
+  core.String? tablePrefix;
 
   GoogleCloudApigeeV1DatastoreConfig();
 
@@ -13035,12 +12355,12 @@ class GoogleCloudApigeeV1DatastoreConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bucketName != null) 'bucketName': bucketName,
-        if (datasetName != null) 'datasetName': datasetName,
-        if (path != null) 'path': path,
-        if (projectId != null) 'projectId': projectId,
-        if (tablePrefix != null) 'tablePrefix': tablePrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bucketName != null) 'bucketName': bucketName!,
+        if (datasetName != null) 'datasetName': datasetName!,
+        if (path != null) 'path': path!,
+        if (projectId != null) 'projectId': projectId!,
+        if (tablePrefix != null) 'tablePrefix': tablePrefix!,
       };
 }
 
@@ -13052,14 +12372,14 @@ class GoogleCloudApigeeV1DateRange {
   /// the output.
   ///
   /// Required.
-  core.String end;
+  core.String? end;
 
   /// Start date of the data to export in the format `yyyy-mm-dd`.
   ///
   /// The date range begins at 00:00:00 UTC on the start date.
   ///
   /// Required.
-  core.String start;
+  core.String? start;
 
   GoogleCloudApigeeV1DateRange();
 
@@ -13072,45 +12392,45 @@ class GoogleCloudApigeeV1DateRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (end != null) 'end': end,
-        if (start != null) 'start': start,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (end != null) 'end': end!,
+        if (start != null) 'start': start!,
       };
 }
 
 class GoogleCloudApigeeV1DebugMask {
   /// List of JSON paths that specify the JSON elements to be filtered from JSON
   /// payloads in error flows.
-  core.List<core.String> faultJSONPaths;
+  core.List<core.String>? faultJSONPaths;
 
   /// List of XPaths that specify the XML elements to be filtered from XML
   /// payloads in error flows.
-  core.List<core.String> faultXPaths;
+  core.List<core.String>? faultXPaths;
 
   /// Name of the debug mask.
-  core.String name;
+  core.String? name;
 
   /// Map of namespaces to URIs.
-  core.Map<core.String, core.String> namespaces;
+  core.Map<core.String, core.String>? namespaces;
 
   /// List of JSON paths that specify the JSON elements to be filtered from JSON
   /// request message payloads.
-  core.List<core.String> requestJSONPaths;
+  core.List<core.String>? requestJSONPaths;
 
   /// List of XPaths that specify the XML elements to be filtered from XML
   /// request message payloads.
-  core.List<core.String> requestXPaths;
+  core.List<core.String>? requestXPaths;
 
   /// List of JSON paths that specify the JSON elements to be filtered from JSON
   /// response message payloads.
-  core.List<core.String> responseJSONPaths;
+  core.List<core.String>? responseJSONPaths;
 
   /// List of XPaths that specify the XML elements to be filtered from XML
   /// response message payloads.
-  core.List<core.String> responseXPaths;
+  core.List<core.String>? responseXPaths;
 
   /// List of variables that should be masked from the debug output.
-  core.List<core.String> variables;
+  core.List<core.String>? variables;
 
   GoogleCloudApigeeV1DebugMask();
 
@@ -13165,16 +12485,16 @@ class GoogleCloudApigeeV1DebugMask {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (faultJSONPaths != null) 'faultJSONPaths': faultJSONPaths,
-        if (faultXPaths != null) 'faultXPaths': faultXPaths,
-        if (name != null) 'name': name,
-        if (namespaces != null) 'namespaces': namespaces,
-        if (requestJSONPaths != null) 'requestJSONPaths': requestJSONPaths,
-        if (requestXPaths != null) 'requestXPaths': requestXPaths,
-        if (responseJSONPaths != null) 'responseJSONPaths': responseJSONPaths,
-        if (responseXPaths != null) 'responseXPaths': responseXPaths,
-        if (variables != null) 'variables': variables,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (faultJSONPaths != null) 'faultJSONPaths': faultJSONPaths!,
+        if (faultXPaths != null) 'faultXPaths': faultXPaths!,
+        if (name != null) 'name': name!,
+        if (namespaces != null) 'namespaces': namespaces!,
+        if (requestJSONPaths != null) 'requestJSONPaths': requestJSONPaths!,
+        if (requestXPaths != null) 'requestXPaths': requestXPaths!,
+        if (responseJSONPaths != null) 'responseJSONPaths': responseJSONPaths!,
+        if (responseXPaths != null) 'responseXPaths': responseXPaths!,
+        if (variables != null) 'variables': variables!,
       };
 }
 
@@ -13184,7 +12504,7 @@ class GoogleCloudApigeeV1DebugSession {
   /// Min = 1, Max = 15, Default = 10.
   ///
   /// Optional.
-  core.int count;
+  core.int? count;
 
   /// A conditional statement which is evaluated against the request message to
   /// determine if it should be traced.
@@ -13192,24 +12512,24 @@ class GoogleCloudApigeeV1DebugSession {
   /// Syntax matches that of on API Proxy bundle flow Condition.
   ///
   /// Optional.
-  core.String filter;
+  core.String? filter;
 
   /// A unique ID for this DebugSession.
-  core.String name;
+  core.String? name;
 
   /// The time in seconds after which this DebugSession should end.
   ///
   /// This value will override the value in query param, if both are provided.
   ///
   /// Optional.
-  core.String timeout;
+  core.String? timeout;
 
   /// The maximum number of bytes captured from the response payload.
   ///
   /// Min = 0, Max = 5120, Default = 5120.
   ///
   /// Optional.
-  core.int tracesize;
+  core.int? tracesize;
 
   /// The length of time, in seconds, that this debug session is valid, starting
   /// from when it's received in the control plane.
@@ -13217,7 +12537,7 @@ class GoogleCloudApigeeV1DebugSession {
   /// Min = 1, Max = 15, Default = 10.
   ///
   /// Optional.
-  core.int validity;
+  core.int? validity;
 
   GoogleCloudApigeeV1DebugSession();
 
@@ -13242,13 +12562,13 @@ class GoogleCloudApigeeV1DebugSession {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (filter != null) 'filter': filter,
-        if (name != null) 'name': name,
-        if (timeout != null) 'timeout': timeout,
-        if (tracesize != null) 'tracesize': tracesize,
-        if (validity != null) 'validity': validity,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (filter != null) 'filter': filter!,
+        if (name != null) 'name': name!,
+        if (timeout != null) 'timeout': timeout!,
+        if (tracesize != null) 'tracesize': tracesize!,
+        if (validity != null) 'validity': validity!,
       };
 }
 
@@ -13259,11 +12579,11 @@ class GoogleCloudApigeeV1DebugSession {
 /// flow in the runtime apiproxy.
 class GoogleCloudApigeeV1DebugSessionTransaction {
   /// Flag indicating whether a transaction is completed or not
-  core.bool completed;
+  core.bool? completed;
 
   /// List of debug data collected by runtime plane at various defined points in
   /// the flow.
-  core.List<GoogleCloudApigeeV1Point> point;
+  core.List<GoogleCloudApigeeV1Point>? point;
 
   GoogleCloudApigeeV1DebugSessionTransaction();
 
@@ -13280,16 +12600,16 @@ class GoogleCloudApigeeV1DebugSessionTransaction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (completed != null) 'completed': completed,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (completed != null) 'completed': completed!,
         if (point != null)
-          'point': point.map((value) => value.toJson()).toList(),
+          'point': point!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GoogleCloudApigeeV1DeleteCustomReportResponse {
   /// The response contains only a message field.
-  core.String message;
+  core.String? message;
 
   GoogleCloudApigeeV1DeleteCustomReportResponse();
 
@@ -13299,40 +12619,40 @@ class GoogleCloudApigeeV1DeleteCustomReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (message != null) 'message': message!,
       };
 }
 
 class GoogleCloudApigeeV1Deployment {
   /// API proxy.
-  core.String apiProxy;
+  core.String? apiProxy;
 
   /// Time the API proxy was marked `deployed` in the control plane in
   /// millisconds since epoch.
-  core.String deployStartTime;
+  core.String? deployStartTime;
 
   /// Environment.
-  core.String environment;
+  core.String? environment;
 
   /// Errors reported for this deployment.
   ///
   /// Populated only when state == ERROR. This field is not populated in List
   /// APIs.
-  core.List<GoogleRpcStatus> errors;
+  core.List<GoogleRpcStatus>? errors;
 
   /// Status reported by each runtime instance.
   ///
   /// This field is not populated in List APIs.
-  core.List<GoogleCloudApigeeV1InstanceDeploymentStatus> instances;
+  core.List<GoogleCloudApigeeV1InstanceDeploymentStatus>? instances;
 
   /// Status reported by runtime pods.
   ///
   /// This field is not populated for List APIs.
-  core.List<GoogleCloudApigeeV1PodStatus> pods;
+  core.List<GoogleCloudApigeeV1PodStatus>? pods;
 
   /// API proxy revision.
-  core.String revision;
+  core.String? revision;
 
   /// Conflicts in the desired state routing configuration.
   ///
@@ -13341,7 +12661,7 @@ class GoogleCloudApigeeV1Deployment {
   /// environment. If the conflicts change, the state will transition to
   /// PROGRESSING until the latest configuration is rolled out to all instances.
   /// This field is not populated in List APIs.
-  core.List<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>
+  core.List<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>?
       routeConflicts;
 
   /// Current state of the deployment.
@@ -13353,7 +12673,7 @@ class GoogleCloudApigeeV1Deployment {
   /// - "PROGRESSING" : The deployment is not fully ready in the runtime.
   /// - "ERROR" : There is an error with the deployment that requires
   /// intervention.
-  core.String state;
+  core.String? state;
 
   GoogleCloudApigeeV1Deployment();
 
@@ -13403,20 +12723,20 @@ class GoogleCloudApigeeV1Deployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiProxy != null) 'apiProxy': apiProxy,
-        if (deployStartTime != null) 'deployStartTime': deployStartTime,
-        if (environment != null) 'environment': environment,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiProxy != null) 'apiProxy': apiProxy!,
+        if (deployStartTime != null) 'deployStartTime': deployStartTime!,
+        if (environment != null) 'environment': environment!,
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
+          'errors': errors!.map((value) => value.toJson()).toList(),
         if (instances != null)
-          'instances': instances.map((value) => value.toJson()).toList(),
-        if (pods != null) 'pods': pods.map((value) => value.toJson()).toList(),
-        if (revision != null) 'revision': revision,
+          'instances': instances!.map((value) => value.toJson()).toList(),
+        if (pods != null) 'pods': pods!.map((value) => value.toJson()).toList(),
+        if (revision != null) 'revision': revision!,
         if (routeConflicts != null)
           'routeConflicts':
-              routeConflicts.map((value) => value.toJson()).toList(),
-        if (state != null) 'state': state,
+              routeConflicts!.map((value) => value.toJson()).toList(),
+        if (state != null) 'state': state!,
       };
 }
 
@@ -13435,16 +12755,16 @@ class GoogleCloudApigeeV1Deployment {
 /// DeployApiProxy/UndeployApiProxy requests to be rejected.
 class GoogleCloudApigeeV1DeploymentChangeReport {
   /// All routing changes that may result from a deployment request.
-  core.List<GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>
+  core.List<GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>?
       routingChanges;
 
   /// All basepath conflicts detected for a deployment request.
-  core.List<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>
+  core.List<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>?
       routingConflicts;
 
   /// Validation errors that would cause the deployment change request to be
   /// rejected.
-  GoogleRpcPreconditionFailure validationErrors;
+  GoogleRpcPreconditionFailure? validationErrors;
 
   GoogleCloudApigeeV1DeploymentChangeReport();
 
@@ -13470,15 +12790,15 @@ class GoogleCloudApigeeV1DeploymentChangeReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (routingChanges != null)
           'routingChanges':
-              routingChanges.map((value) => value.toJson()).toList(),
+              routingChanges!.map((value) => value.toJson()).toList(),
         if (routingConflicts != null)
           'routingConflicts':
-              routingConflicts.map((value) => value.toJson()).toList(),
+              routingConflicts!.map((value) => value.toJson()).toList(),
         if (validationErrors != null)
-          'validationErrors': validationErrors.toJson(),
+          'validationErrors': validationErrors!.toJson(),
       };
 }
 
@@ -13486,24 +12806,24 @@ class GoogleCloudApigeeV1DeploymentChangeReport {
 /// deployment operation.
 class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
   /// A human-readable description of this routing change.
-  core.String description;
+  core.String? description;
 
   /// The name of the environment group affected by this routing change.
-  core.String environmentGroup;
+  core.String? environmentGroup;
 
   /// The basepath/deployment that may stop receiving some traffic.
-  GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment fromDeployment;
+  GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment? fromDeployment;
 
   /// True if using sequenced rollout would make this routing change safer.
   ///
   /// Note: this does not necessarily imply that automated sequenced rollout
   /// mode is supported for the operation.
-  core.bool shouldSequenceRollout;
+  core.bool? shouldSequenceRollout;
 
   /// The basepath/deployment that may start receiving that traffic.
   ///
   /// May be null if no deployment is able to receive the traffic.
-  GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment toDeployment;
+  GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment? toDeployment;
 
   GoogleCloudApigeeV1DeploymentChangeReportRoutingChange();
 
@@ -13530,13 +12850,13 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (environmentGroup != null) 'environmentGroup': environmentGroup,
-        if (fromDeployment != null) 'fromDeployment': fromDeployment.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (environmentGroup != null) 'environmentGroup': environmentGroup!,
+        if (fromDeployment != null) 'fromDeployment': fromDeployment!.toJson(),
         if (shouldSequenceRollout != null)
-          'shouldSequenceRollout': shouldSequenceRollout,
-        if (toDeployment != null) 'toDeployment': toDeployment.toJson(),
+          'shouldSequenceRollout': shouldSequenceRollout!,
+        if (toDeployment != null) 'toDeployment': toDeployment!.toJson(),
       };
 }
 
@@ -13544,14 +12864,14 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
 /// traffic at some basepath.
 class GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict {
   /// The existing basepath/deployment causing the conflict.
-  GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
+  GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment?
       conflictingDeployment;
 
   /// A human-readable description of this conflict.
-  core.String description;
+  core.String? description;
 
   /// The name of the environment group in which this conflict exists.
-  core.String environmentGroup;
+  core.String? environmentGroup;
 
   GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict();
 
@@ -13571,27 +12891,27 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (conflictingDeployment != null)
-          'conflictingDeployment': conflictingDeployment.toJson(),
-        if (description != null) 'description': description,
-        if (environmentGroup != null) 'environmentGroup': environmentGroup,
+          'conflictingDeployment': conflictingDeployment!.toJson(),
+        if (description != null) 'description': description!,
+        if (environmentGroup != null) 'environmentGroup': environmentGroup!,
       };
 }
 
 /// A tuple representing a basepath and the deployment containing it.
 class GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment {
   /// The name of the deployed proxy revision containing the basepath.
-  core.String apiProxy;
+  core.String? apiProxy;
 
   /// The basepath receiving traffic.
-  core.String basepath;
+  core.String? basepath;
 
   /// The name of the environment in which the proxy is deployed.
-  core.String environment;
+  core.String? environment;
 
   /// The name of the deployed proxy revision containing the basepath.
-  core.String revision;
+  core.String? revision;
 
   GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment();
 
@@ -13611,38 +12931,38 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiProxy != null) 'apiProxy': apiProxy,
-        if (basepath != null) 'basepath': basepath,
-        if (environment != null) 'environment': environment,
-        if (revision != null) 'revision': revision,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiProxy != null) 'apiProxy': apiProxy!,
+        if (basepath != null) 'basepath': basepath!,
+        if (environment != null) 'environment': environment!,
+        if (revision != null) 'revision': revision!,
       };
 }
 
 class GoogleCloudApigeeV1DeploymentConfig {
   /// Additional key-value metadata for the deployment.
-  core.Map<core.String, core.String> attributes;
+  core.Map<core.String, core.String>? attributes;
 
   /// Base path where the application will be hosted.
   ///
   /// Defaults to "/".
-  core.String basePath;
+  core.String? basePath;
 
   /// Location of the API proxy bundle as a URI.
-  core.String location;
+  core.String? location;
 
   /// Name of the API or shared flow revision to be deployed in the following
   /// format: `organizations/{org}/apis/{api}/revisions/{rev}` or
   /// `organizations/{org}/sharedflows/{sharedflow}/revisions/{rev}`
-  core.String name;
+  core.String? name;
 
   /// Unique ID of the API proxy revision.
-  core.String proxyUid;
+  core.String? proxyUid;
 
   /// Unique ID.
   ///
   /// The ID will only change if the deployment is deleted and recreated.
-  core.String uid;
+  core.String? uid;
 
   GoogleCloudApigeeV1DeploymentConfig();
 
@@ -13674,46 +12994,46 @@ class GoogleCloudApigeeV1DeploymentConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributes != null) 'attributes': attributes,
-        if (basePath != null) 'basePath': basePath,
-        if (location != null) 'location': location,
-        if (name != null) 'name': name,
-        if (proxyUid != null) 'proxyUid': proxyUid,
-        if (uid != null) 'uid': uid,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+        if (basePath != null) 'basePath': basePath!,
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
+        if (proxyUid != null) 'proxyUid': proxyUid!,
+        if (uid != null) 'uid': uid!,
       };
 }
 
 class GoogleCloudApigeeV1Developer {
   /// Access type.
-  core.String accessType;
+  core.String? accessType;
 
   /// Developer app family.
-  core.String appFamily;
+  core.String? appFamily;
 
   /// List of apps associated with the developer.
-  core.List<core.String> apps;
+  core.List<core.String>? apps;
 
   /// Developer attributes (name/value pairs).
   ///
   /// The custom attribute limit is 18.
   ///
   /// Optional.
-  core.List<GoogleCloudApigeeV1Attribute> attributes;
+  core.List<GoogleCloudApigeeV1Attribute>? attributes;
 
   /// List of companies associated with the developer.
-  core.List<core.String> companies;
+  core.List<core.String>? companies;
 
   /// Time at which the developer was created in milliseconds since epoch.
   ///
   /// Output only.
-  core.String createdAt;
+  core.String? createdAt;
 
   /// ID of the developer.
   ///
   /// **Note**: IDs are generated internally by Apigee and are not guaranteed to
   /// stay the same over time.
-  core.String developerId;
+  core.String? developerId;
 
   /// Email address of the developer.
   ///
@@ -13721,41 +13041,41 @@ class GoogleCloudApigeeV1Developer {
   /// Note that the email address has to be in lowercase only.
   ///
   /// Required.
-  core.String email;
+  core.String? email;
 
   /// First name of the developer.
   ///
   /// Required.
-  core.String firstName;
+  core.String? firstName;
 
   /// Time at which the developer was last modified in milliseconds since epoch.
   ///
   /// Output only.
-  core.String lastModifiedAt;
+  core.String? lastModifiedAt;
 
   /// Last name of the developer.
   ///
   /// Required.
-  core.String lastName;
+  core.String? lastName;
 
   /// Name of the Apigee organization in which the developer resides.
   ///
   /// Output only.
-  core.String organizationName;
+  core.String? organizationName;
 
   /// Status of the developer.
   ///
   /// Valid values are `active` and `inactive`.
   ///
   /// Output only.
-  core.String status;
+  core.String? status;
 
   /// User name of the developer.
   ///
   /// Not used by Apigee hybrid.
   ///
   /// Required.
-  core.String userName;
+  core.String? userName;
 
   GoogleCloudApigeeV1Developer();
 
@@ -13812,81 +13132,81 @@ class GoogleCloudApigeeV1Developer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessType != null) 'accessType': accessType,
-        if (appFamily != null) 'appFamily': appFamily,
-        if (apps != null) 'apps': apps,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessType != null) 'accessType': accessType!,
+        if (appFamily != null) 'appFamily': appFamily!,
+        if (apps != null) 'apps': apps!,
         if (attributes != null)
-          'attributes': attributes.map((value) => value.toJson()).toList(),
-        if (companies != null) 'companies': companies,
-        if (createdAt != null) 'createdAt': createdAt,
-        if (developerId != null) 'developerId': developerId,
-        if (email != null) 'email': email,
-        if (firstName != null) 'firstName': firstName,
-        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
-        if (lastName != null) 'lastName': lastName,
-        if (organizationName != null) 'organizationName': organizationName,
-        if (status != null) 'status': status,
-        if (userName != null) 'userName': userName,
+          'attributes': attributes!.map((value) => value.toJson()).toList(),
+        if (companies != null) 'companies': companies!,
+        if (createdAt != null) 'createdAt': createdAt!,
+        if (developerId != null) 'developerId': developerId!,
+        if (email != null) 'email': email!,
+        if (firstName != null) 'firstName': firstName!,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+        if (lastName != null) 'lastName': lastName!,
+        if (organizationName != null) 'organizationName': organizationName!,
+        if (status != null) 'status': status!,
+        if (userName != null) 'userName': userName!,
       };
 }
 
 class GoogleCloudApigeeV1DeveloperApp {
   /// List of API products associated with the developer app.
-  core.List<core.String> apiProducts;
+  core.List<core.String>? apiProducts;
 
   /// Developer app family.
-  core.String appFamily;
+  core.String? appFamily;
 
   /// ID of the developer app.
-  core.String appId;
+  core.String? appId;
 
   /// List of attributes for the developer app.
-  core.List<GoogleCloudApigeeV1Attribute> attributes;
+  core.List<GoogleCloudApigeeV1Attribute>? attributes;
 
   /// Callback URL used by OAuth 2.0 authorization servers to communicate
   /// authorization codes back to developer apps.
-  core.String callbackUrl;
+  core.String? callbackUrl;
 
   /// Time the developer app was created in milliseconds since epoch.
   ///
   /// Output only.
-  core.String createdAt;
+  core.String? createdAt;
 
   /// Set of credentials for the developer app consisting of the consumer
   /// key/secret pairs associated with the API products.
   ///
   /// Output only.
-  core.List<GoogleCloudApigeeV1Credential> credentials;
+  core.List<GoogleCloudApigeeV1Credential>? credentials;
 
   /// ID of the developer.
-  core.String developerId;
+  core.String? developerId;
 
   /// Expiration time, in milliseconds, for the consumer key that is generated
   /// for the developer app.
   ///
   /// If not set or left to the default value of `-1`, the API key never
   /// expires. The expiration time can't be updated after it is set.
-  core.String keyExpiresIn;
+  core.String? keyExpiresIn;
 
   /// Time the developer app was modified in milliseconds since epoch.
   ///
   /// Output only.
-  core.String lastModifiedAt;
+  core.String? lastModifiedAt;
 
   /// Name of the developer app.
-  core.String name;
+  core.String? name;
 
   /// Scopes to apply to the developer app.
   ///
   /// The specified scopes must already exist for the API product that you
   /// associate with the developer app.
-  core.List<core.String> scopes;
+  core.List<core.String>? scopes;
 
   /// Status of the credential.
   ///
   /// Valid values include `approved` or `revoked`.
-  core.String status;
+  core.String? status;
 
   GoogleCloudApigeeV1DeveloperApp();
 
@@ -13944,22 +13264,22 @@ class GoogleCloudApigeeV1DeveloperApp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiProducts != null) 'apiProducts': apiProducts,
-        if (appFamily != null) 'appFamily': appFamily,
-        if (appId != null) 'appId': appId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiProducts != null) 'apiProducts': apiProducts!,
+        if (appFamily != null) 'appFamily': appFamily!,
+        if (appId != null) 'appId': appId!,
         if (attributes != null)
-          'attributes': attributes.map((value) => value.toJson()).toList(),
-        if (callbackUrl != null) 'callbackUrl': callbackUrl,
-        if (createdAt != null) 'createdAt': createdAt,
+          'attributes': attributes!.map((value) => value.toJson()).toList(),
+        if (callbackUrl != null) 'callbackUrl': callbackUrl!,
+        if (createdAt != null) 'createdAt': createdAt!,
         if (credentials != null)
-          'credentials': credentials.map((value) => value.toJson()).toList(),
-        if (developerId != null) 'developerId': developerId,
-        if (keyExpiresIn != null) 'keyExpiresIn': keyExpiresIn,
-        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
-        if (name != null) 'name': name,
-        if (scopes != null) 'scopes': scopes,
-        if (status != null) 'status': status,
+          'credentials': credentials!.map((value) => value.toJson()).toList(),
+        if (developerId != null) 'developerId': developerId!,
+        if (keyExpiresIn != null) 'keyExpiresIn': keyExpiresIn!,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+        if (name != null) 'name': name!,
+        if (scopes != null) 'scopes': scopes!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -13972,40 +13292,40 @@ class GoogleCloudApigeeV1DeveloperAppKey {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> apiProducts;
+  core.List<core.Object>? apiProducts;
 
   /// List of attributes associated with the credential.
-  core.List<GoogleCloudApigeeV1Attribute> attributes;
+  core.List<GoogleCloudApigeeV1Attribute>? attributes;
 
   /// Consumer key.
-  core.String consumerKey;
+  core.String? consumerKey;
 
   /// Secret key.
-  core.String consumerSecret;
+  core.String? consumerSecret;
 
   /// Time the developer app expires in milliseconds since epoch.
-  core.String expiresAt;
+  core.String? expiresAt;
 
   /// Input only.
   ///
   /// Expiration time, in seconds, for the consumer key. If not set or left to
   /// the default value of `-1`, the API key never expires. The expiration time
   /// can't be updated after it is set.
-  core.String expiresInSeconds;
+  core.String? expiresInSeconds;
 
   /// Time the developer app was created in milliseconds since epoch.
-  core.String issuedAt;
+  core.String? issuedAt;
 
   /// Scopes to apply to the app.
   ///
   /// The specified scope names must already be defined for the API product that
   /// you associate with the app.
-  core.List<core.String> scopes;
+  core.List<core.String>? scopes;
 
   /// Status of the credential.
   ///
   /// Valid values include `approved` or `revoked`.
-  core.String status;
+  core.String? status;
 
   GoogleCloudApigeeV1DeveloperAppKey();
 
@@ -14047,27 +13367,27 @@ class GoogleCloudApigeeV1DeveloperAppKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiProducts != null) 'apiProducts': apiProducts,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiProducts != null) 'apiProducts': apiProducts!,
         if (attributes != null)
-          'attributes': attributes.map((value) => value.toJson()).toList(),
-        if (consumerKey != null) 'consumerKey': consumerKey,
-        if (consumerSecret != null) 'consumerSecret': consumerSecret,
-        if (expiresAt != null) 'expiresAt': expiresAt,
-        if (expiresInSeconds != null) 'expiresInSeconds': expiresInSeconds,
-        if (issuedAt != null) 'issuedAt': issuedAt,
-        if (scopes != null) 'scopes': scopes,
-        if (status != null) 'status': status,
+          'attributes': attributes!.map((value) => value.toJson()).toList(),
+        if (consumerKey != null) 'consumerKey': consumerKey!,
+        if (consumerSecret != null) 'consumerSecret': consumerSecret!,
+        if (expiresAt != null) 'expiresAt': expiresAt!,
+        if (expiresInSeconds != null) 'expiresInSeconds': expiresInSeconds!,
+        if (issuedAt != null) 'issuedAt': issuedAt!,
+        if (scopes != null) 'scopes': scopes!,
+        if (status != null) 'status': status!,
       };
 }
 
 /// This message type encapsulates a metric grouped by dimension.
 class GoogleCloudApigeeV1DimensionMetric {
   /// This field contains a list of metrics.
-  core.List<GoogleCloudApigeeV1Metric> metrics;
+  core.List<GoogleCloudApigeeV1Metric>? metrics;
 
   /// This field contains the name of the dimension.
-  core.String name;
+  core.String? name;
 
   GoogleCloudApigeeV1DimensionMetric();
 
@@ -14084,24 +13404,24 @@ class GoogleCloudApigeeV1DimensionMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
       };
 }
 
 /// Metadata common to many entities in this API.
 class GoogleCloudApigeeV1EntityMetadata {
   /// Time at which the API proxy was created, in milliseconds since epoch.
-  core.String createdAt;
+  core.String? createdAt;
 
   /// Time at which the API proxy was most recently modified, in milliseconds
   /// since epoch.
-  core.String lastModifiedAt;
+  core.String? lastModifiedAt;
 
   /// The type of entity described
-  core.String subType;
+  core.String? subType;
 
   GoogleCloudApigeeV1EntityMetadata();
 
@@ -14117,10 +13437,10 @@ class GoogleCloudApigeeV1EntityMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createdAt != null) 'createdAt': createdAt,
-        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
-        if (subType != null) 'subType': subType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createdAt != null) 'createdAt': createdAt!,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+        if (subType != null) 'subType': subType!,
       };
 }
 
@@ -14128,34 +13448,34 @@ class GoogleCloudApigeeV1Environment {
   /// Creation time of this environment as milliseconds since epoch.
   ///
   /// Output only.
-  core.String createdAt;
+  core.String? createdAt;
 
   /// Description of the environment.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Display name for this environment.
   ///
   /// Optional.
-  core.String displayName;
+  core.String? displayName;
 
   /// Last modification time of this environment as milliseconds since epoch.
   ///
   /// Output only.
-  core.String lastModifiedAt;
+  core.String? lastModifiedAt;
 
   /// Name of the environment.
   ///
   /// Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Key-value pairs that may be used for customizing the environment.
   ///
   /// Optional.
-  GoogleCloudApigeeV1Properties properties;
+  GoogleCloudApigeeV1Properties? properties;
 
   /// State of the environment.
   ///
@@ -14167,7 +13487,7 @@ class GoogleCloudApigeeV1Environment {
   /// - "CREATING" : Resource is being created.
   /// - "ACTIVE" : Resource is provisioned and ready to use.
   /// - "DELETING" : The resource is being deleted.
-  core.String state;
+  core.String? state;
 
   GoogleCloudApigeeV1Environment();
 
@@ -14196,79 +13516,79 @@ class GoogleCloudApigeeV1Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createdAt != null) 'createdAt': createdAt,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
-        if (name != null) 'name': name,
-        if (properties != null) 'properties': properties.toJson(),
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createdAt != null) 'createdAt': createdAt!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+        if (name != null) 'name': name!,
+        if (properties != null) 'properties': properties!.toJson(),
+        if (state != null) 'state': state!,
       };
 }
 
 class GoogleCloudApigeeV1EnvironmentConfig {
   /// Time that the environment configuration was created.
-  core.String createTime;
+  core.String? createTime;
 
   /// List of data collectors used by the deployments in the environment.
-  core.List<GoogleCloudApigeeV1DataCollectorConfig> dataCollectors;
+  core.List<GoogleCloudApigeeV1DataCollectorConfig>? dataCollectors;
 
   /// Debug mask that applies to all deployments in the environment.
-  GoogleCloudApigeeV1DebugMask debugMask;
+  GoogleCloudApigeeV1DebugMask? debugMask;
 
   /// List of deployments in the environment.
-  core.List<GoogleCloudApigeeV1DeploymentConfig> deployments;
+  core.List<GoogleCloudApigeeV1DeploymentConfig>? deployments;
 
   /// Feature flags inherited from the organization and environment.
-  core.Map<core.String, core.String> featureFlags;
+  core.Map<core.String, core.String>? featureFlags;
 
   /// List of flow hooks in the environment.
-  core.List<GoogleCloudApigeeV1FlowHookConfig> flowhooks;
+  core.List<GoogleCloudApigeeV1FlowHookConfig>? flowhooks;
 
   /// List of keystores in the environment.
-  core.List<GoogleCloudApigeeV1KeystoreConfig> keystores;
+  core.List<GoogleCloudApigeeV1KeystoreConfig>? keystores;
 
   /// Name of the environment configuration in the following format:
   /// `organizations/{org}/environments/{env}/configs/{config}`
-  core.String name;
+  core.String? name;
 
   /// Used by the Control plane to add context information to help detect the
   /// source of the document during diagnostics and debugging.
-  core.String provider;
+  core.String? provider;
 
   /// Name of the PubSub topic for the environment.
-  core.String pubsubTopic;
+  core.String? pubsubTopic;
 
   /// List of resource references in the environment.
-  core.List<GoogleCloudApigeeV1ReferenceConfig> resourceReferences;
+  core.List<GoogleCloudApigeeV1ReferenceConfig>? resourceReferences;
 
   /// List of resource versions in the environment.
-  core.List<GoogleCloudApigeeV1ResourceConfig> resources;
+  core.List<GoogleCloudApigeeV1ResourceConfig>? resources;
 
   /// Revision ID of the environment configuration.
   ///
   /// The higher the value, the more recently the configuration was deployed.
-  core.String revisionId;
+  core.String? revisionId;
 
   /// DEPRECATED: Use revision_id.
-  core.String sequenceNumber;
+  core.String? sequenceNumber;
 
   /// List of target servers in the environment.
   ///
   /// Disabled target servers are not displayed.
-  core.List<GoogleCloudApigeeV1TargetServerConfig> targets;
+  core.List<GoogleCloudApigeeV1TargetServerConfig>? targets;
 
   /// Trace configurations.
   ///
   /// Contains config for the environment and config overrides for specific API
   /// proxies.
-  GoogleCloudApigeeV1RuntimeTraceConfig traceConfig;
+  GoogleCloudApigeeV1RuntimeTraceConfig? traceConfig;
 
   /// Unique ID for the environment configuration.
   ///
   /// The ID will only change if the environment is deleted and recreated.
-  core.String uid;
+  core.String? uid;
 
   GoogleCloudApigeeV1EnvironmentConfig();
 
@@ -14363,33 +13683,33 @@ class GoogleCloudApigeeV1EnvironmentConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
         if (dataCollectors != null)
           'dataCollectors':
-              dataCollectors.map((value) => value.toJson()).toList(),
-        if (debugMask != null) 'debugMask': debugMask.toJson(),
+              dataCollectors!.map((value) => value.toJson()).toList(),
+        if (debugMask != null) 'debugMask': debugMask!.toJson(),
         if (deployments != null)
-          'deployments': deployments.map((value) => value.toJson()).toList(),
-        if (featureFlags != null) 'featureFlags': featureFlags,
+          'deployments': deployments!.map((value) => value.toJson()).toList(),
+        if (featureFlags != null) 'featureFlags': featureFlags!,
         if (flowhooks != null)
-          'flowhooks': flowhooks.map((value) => value.toJson()).toList(),
+          'flowhooks': flowhooks!.map((value) => value.toJson()).toList(),
         if (keystores != null)
-          'keystores': keystores.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (provider != null) 'provider': provider,
-        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic,
+          'keystores': keystores!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (provider != null) 'provider': provider!,
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
         if (resourceReferences != null)
           'resourceReferences':
-              resourceReferences.map((value) => value.toJson()).toList(),
+              resourceReferences!.map((value) => value.toJson()).toList(),
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
-        if (revisionId != null) 'revisionId': revisionId,
-        if (sequenceNumber != null) 'sequenceNumber': sequenceNumber,
+          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (sequenceNumber != null) 'sequenceNumber': sequenceNumber!,
         if (targets != null)
-          'targets': targets.map((value) => value.toJson()).toList(),
-        if (traceConfig != null) 'traceConfig': traceConfig.toJson(),
-        if (uid != null) 'uid': uid,
+          'targets': targets!.map((value) => value.toJson()).toList(),
+        if (traceConfig != null) 'traceConfig': traceConfig!.toJson(),
+        if (uid != null) 'uid': uid!,
       };
 }
 
@@ -14402,21 +13722,21 @@ class GoogleCloudApigeeV1EnvironmentGroup {
   /// epoch.
   ///
   /// Output only.
-  core.String createdAt;
+  core.String? createdAt;
 
   /// Host names for this environment group.
   ///
   /// Required.
-  core.List<core.String> hostnames;
+  core.List<core.String>? hostnames;
 
   /// The time at which the environment group was last updated as milliseconds
   /// since epoch.
   ///
   /// Output only.
-  core.String lastModifiedAt;
+  core.String? lastModifiedAt;
 
   /// ID of the environment group.
-  core.String name;
+  core.String? name;
 
   /// State of the environment group.
   ///
@@ -14428,7 +13748,7 @@ class GoogleCloudApigeeV1EnvironmentGroup {
   /// - "CREATING" : Resource is being created.
   /// - "ACTIVE" : Resource is provisioned and ready to use.
   /// - "DELETING" : The resource is being deleted.
-  core.String state;
+  core.String? state;
 
   GoogleCloudApigeeV1EnvironmentGroup();
 
@@ -14452,12 +13772,12 @@ class GoogleCloudApigeeV1EnvironmentGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createdAt != null) 'createdAt': createdAt,
-        if (hostnames != null) 'hostnames': hostnames,
-        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createdAt != null) 'createdAt': createdAt!,
+        if (hostnames != null) 'hostnames': hostnames!,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -14468,15 +13788,15 @@ class GoogleCloudApigeeV1EnvironmentGroupAttachment {
   /// milliseconds since epoch.
   ///
   /// Output only.
-  core.String createdAt;
+  core.String? createdAt;
 
   /// ID of the attached environment.
   ///
   /// Required.
-  core.String environment;
+  core.String? environment;
 
   /// ID of the environment group attachment.
-  core.String name;
+  core.String? name;
 
   GoogleCloudApigeeV1EnvironmentGroupAttachment();
 
@@ -14492,10 +13812,10 @@ class GoogleCloudApigeeV1EnvironmentGroupAttachment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createdAt != null) 'createdAt': createdAt,
-        if (environment != null) 'environment': environment,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createdAt != null) 'createdAt': createdAt!,
+        if (environment != null) 'environment': environment!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -14503,25 +13823,25 @@ class GoogleCloudApigeeV1EnvironmentGroupAttachment {
 /// its associated routing rules.
 class GoogleCloudApigeeV1EnvironmentGroupConfig {
   /// Host names for the environment group.
-  core.List<core.String> hostnames;
+  core.List<core.String>? hostnames;
 
   /// Name of the environment group in the following format:
   /// `organizations/{org}/envgroups/{envgroup}`.
-  core.String name;
+  core.String? name;
 
   /// Revision id that defines the ordering of the EnvironmentGroupConfig
   /// resource.
   ///
   /// The higher the revision, the more recently the configuration was deployed.
-  core.String revisionId;
+  core.String? revisionId;
 
   /// Ordered list of routing rules defining how traffic to this environment
   /// group's hostnames should be routed to different environments.
-  core.List<GoogleCloudApigeeV1RoutingRule> routingRules;
+  core.List<GoogleCloudApigeeV1RoutingRule>? routingRules;
 
   /// A unique id for the environment group config that will only change if the
   /// environment group is deleted and recreated.
-  core.String uid;
+  core.String? uid;
 
   GoogleCloudApigeeV1EnvironmentGroupConfig();
 
@@ -14549,13 +13869,13 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hostnames != null) 'hostnames': hostnames,
-        if (name != null) 'name': name,
-        if (revisionId != null) 'revisionId': revisionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hostnames != null) 'hostnames': hostnames!,
+        if (name != null) 'name': name!,
+        if (revisionId != null) 'revisionId': revisionId!,
         if (routingRules != null)
-          'routingRules': routingRules.map((value) => value.toJson()).toList(),
-        if (uid != null) 'uid': uid,
+          'routingRules': routingRules!.map((value) => value.toJson()).toList(),
+        if (uid != null) 'uid': uid!,
       };
 }
 
@@ -14564,19 +13884,19 @@ class GoogleCloudApigeeV1Export {
   /// Time the export job was created.
   ///
   /// Output only.
-  core.String created;
+  core.String? created;
 
   /// Name of the datastore that is the destination of the export job
   /// \[datastore\]
-  core.String datastoreName;
+  core.String? datastoreName;
 
   /// Description of the export job.
-  core.String description;
+  core.String? description;
 
   /// Error is set when export fails
   ///
   /// Output only.
-  core.String error;
+  core.String? error;
 
   /// Execution time for this export job.
   ///
@@ -14585,10 +13905,10 @@ class GoogleCloudApigeeV1Export {
   /// `created`), in seconds.
   ///
   /// Output only.
-  core.String executionTime;
+  core.String? executionTime;
 
   /// Display name of the export job.
-  core.String name;
+  core.String? name;
 
   /// Self link of the export job.
   ///
@@ -14596,19 +13916,19 @@ class GoogleCloudApigeeV1Export {
   /// `/organizations/myorg/environments/myenv/analytics/exports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
   ///
   /// Output only.
-  core.String self;
+  core.String? self;
 
   /// Status of the export job.
   ///
   /// Valid values include `enqueued`, `running`, `completed`, and `failed`.
   ///
   /// Output only.
-  core.String state;
+  core.String? state;
 
   /// Time the export job was last updated.
   ///
   /// Output only.
-  core.String updated;
+  core.String? updated;
 
   GoogleCloudApigeeV1Export();
 
@@ -14642,16 +13962,16 @@ class GoogleCloudApigeeV1Export {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (created != null) 'created': created,
-        if (datastoreName != null) 'datastoreName': datastoreName,
-        if (description != null) 'description': description,
-        if (error != null) 'error': error,
-        if (executionTime != null) 'executionTime': executionTime,
-        if (name != null) 'name': name,
-        if (self != null) 'self': self,
-        if (state != null) 'state': state,
-        if (updated != null) 'updated': updated,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (created != null) 'created': created!,
+        if (datastoreName != null) 'datastoreName': datastoreName!,
+        if (description != null) 'description': description!,
+        if (error != null) 'error': error!,
+        if (executionTime != null) 'executionTime': executionTime!,
+        if (name != null) 'name': name!,
+        if (self != null) 'self': self!,
+        if (state != null) 'state': state!,
+        if (updated != null) 'updated': updated!,
       };
 }
 
@@ -14663,27 +13983,27 @@ class GoogleCloudApigeeV1ExportRequest {
   /// include comma (`,`), pipe (`|`), and tab (`\t`).
   ///
   /// Optional.
-  core.String csvDelimiter;
+  core.String? csvDelimiter;
 
   /// Name of the preconfigured datastore.
   ///
   /// Required.
-  core.String datastoreName;
+  core.String? datastoreName;
 
   /// Date range of the data to export.
   ///
   /// Required.
-  GoogleCloudApigeeV1DateRange dateRange;
+  GoogleCloudApigeeV1DateRange? dateRange;
 
   /// Description of the export job.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Display name of the export job.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Output format of the export.
   ///
@@ -14691,7 +14011,7 @@ class GoogleCloudApigeeV1ExportRequest {
   /// the delimiter for CSV output using the `csvDelimiter` property.
   ///
   /// Optional.
-  core.String outputFormat;
+  core.String? outputFormat;
 
   GoogleCloudApigeeV1ExportRequest();
 
@@ -14717,13 +14037,13 @@ class GoogleCloudApigeeV1ExportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (csvDelimiter != null) 'csvDelimiter': csvDelimiter,
-        if (datastoreName != null) 'datastoreName': datastoreName,
-        if (dateRange != null) 'dateRange': dateRange.toJson(),
-        if (description != null) 'description': description,
-        if (name != null) 'name': name,
-        if (outputFormat != null) 'outputFormat': outputFormat,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (csvDelimiter != null) 'csvDelimiter': csvDelimiter!,
+        if (datastoreName != null) 'datastoreName': datastoreName!,
+        if (dateRange != null) 'dateRange': dateRange!.toJson(),
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (outputFormat != null) 'outputFormat': outputFormat!,
       };
 }
 
@@ -14735,10 +14055,10 @@ class GoogleCloudApigeeV1FlowHook {
   /// the flow hook throws an exception.Defaults to `true`.
   ///
   /// Optional.
-  core.bool continueOnError;
+  core.bool? continueOnError;
 
   /// Description of the flow hook.
-  core.String description;
+  core.String? description;
 
   /// Where in the API call flow the flow hook is invoked.
   ///
@@ -14746,11 +14066,11 @@ class GoogleCloudApigeeV1FlowHook {
   /// `PreTargetFlowHook`, or `PostTargetFlowHook`.
   ///
   /// Output only.
-  core.String flowHookPoint;
+  core.String? flowHookPoint;
 
   /// Shared flow attached to this flow hook, or empty if there is none
   /// attached.
-  core.String sharedFlow;
+  core.String? sharedFlow;
 
   GoogleCloudApigeeV1FlowHook();
 
@@ -14769,11 +14089,11 @@ class GoogleCloudApigeeV1FlowHook {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (continueOnError != null) 'continueOnError': continueOnError,
-        if (description != null) 'description': description,
-        if (flowHookPoint != null) 'flowHookPoint': flowHookPoint,
-        if (sharedFlow != null) 'sharedFlow': sharedFlow,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (continueOnError != null) 'continueOnError': continueOnError!,
+        if (description != null) 'description': description!,
+        if (flowHookPoint != null) 'flowHookPoint': flowHookPoint!,
+        if (sharedFlow != null) 'sharedFlow': sharedFlow!,
       };
 }
 
@@ -14782,18 +14102,18 @@ class GoogleCloudApigeeV1FlowHookConfig {
   /// flow hook.
   ///
   /// Defaults to `true` (continue on error).
-  core.bool continueOnError;
+  core.bool? continueOnError;
 
   /// Name of the flow hook in the following format:
   /// `organizations/{org}/environments/{env}/flowhooks/{point}`.
   ///
   /// Valid `point` values include: `PreProxyFlowHook`, `PostProxyFlowHook`,
   /// `PreTargetFlowHook`, and `PostTargetFlowHook`
-  core.String name;
+  core.String? name;
 
   /// Name of the shared flow to invoke in the following format:
   /// `organizations/{org}/sharedflows/{sharedflow}`
-  core.String sharedFlowName;
+  core.String? sharedFlowName;
 
   GoogleCloudApigeeV1FlowHookConfig();
 
@@ -14809,10 +14129,10 @@ class GoogleCloudApigeeV1FlowHookConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (continueOnError != null) 'continueOnError': continueOnError,
-        if (name != null) 'name': name,
-        if (sharedFlowName != null) 'sharedFlowName': sharedFlowName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (continueOnError != null) 'continueOnError': continueOnError!,
+        if (name != null) 'name': name!,
+        if (sharedFlowName != null) 'sharedFlowName': sharedFlowName!,
       };
 }
 
@@ -14824,28 +14144,28 @@ class GoogleCloudApigeeV1GetSyncAuthorizationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 class GoogleCloudApigeeV1IngressConfig {
   /// List of environment groups in the organization.
-  core.List<GoogleCloudApigeeV1EnvironmentGroupConfig> environmentGroups;
+  core.List<GoogleCloudApigeeV1EnvironmentGroupConfig>? environmentGroups;
 
   /// Name of the resource in the following format:
   /// `organizations/{org}/deployedIngressConfig`.
-  core.String name;
+  core.String? name;
 
   /// Time at which the IngressConfig revision was created.
-  core.String revisionCreateTime;
+  core.String? revisionCreateTime;
 
   /// Revision id that defines the ordering on IngressConfig resources.
   ///
   /// The higher the revision, the more recently the configuration was deployed.
-  core.String revisionId;
+  core.String? revisionId;
 
   /// A unique id for the ingress config that will only change if the
   /// organization is deleted and recreated.
-  core.String uid;
+  core.String? uid;
 
   GoogleCloudApigeeV1IngressConfig();
 
@@ -14871,15 +14191,15 @@ class GoogleCloudApigeeV1IngressConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (environmentGroups != null)
           'environmentGroups':
-              environmentGroups.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+              environmentGroups!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
         if (revisionCreateTime != null)
-          'revisionCreateTime': revisionCreateTime,
-        if (revisionId != null) 'revisionId': revisionId,
-        if (uid != null) 'uid': uid,
+          'revisionCreateTime': revisionCreateTime!,
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (uid != null) 'uid': uid!,
       };
 }
 
@@ -14888,47 +14208,47 @@ class GoogleCloudApigeeV1Instance {
   /// Time the instance was created in milliseconds since epoch.
   ///
   /// Output only.
-  core.String createdAt;
+  core.String? createdAt;
 
   /// Description of the instance.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Customer Managed Encryption Key (CMEK) used for disk and volume
   /// encryption.
   ///
   /// Required for Apigee paid subscriptions only. Use the following format:
   /// `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
-  core.String diskEncryptionKeyName;
+  core.String? diskEncryptionKeyName;
 
   /// Display name for the instance.
   ///
   /// Optional.
-  core.String displayName;
+  core.String? displayName;
 
   /// Hostname or IP address of the exposed Apigee endpoint used by clients to
   /// connect to the service.
   ///
   /// Output only.
-  core.String host;
+  core.String? host;
 
   /// Time the instance was last modified in milliseconds since epoch.
   ///
   /// Output only.
-  core.String lastModifiedAt;
+  core.String? lastModifiedAt;
 
   /// Compute Engine location where the instance resides.
   ///
   /// Required.
-  core.String location;
+  core.String? location;
 
   /// Resource ID of the instance.
   ///
   /// Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The size of the CIDR block range that will be reserved by the instance.
   ///
@@ -14939,12 +14259,12 @@ class GoogleCloudApigeeV1Instance {
   /// - "CIDR_RANGE_UNSPECIFIED" : Range not specified.
   /// - "SLASH_16" : The "/16" CIDR range.
   /// - "SLASH_20" : The "/20" CIDR range.
-  core.String peeringCidrRange;
+  core.String? peeringCidrRange;
 
   /// Port number of the exposed Apigee endpoint.
   ///
   /// Output only.
-  core.String port;
+  core.String? port;
 
   /// State of the instance.
   ///
@@ -14956,7 +14276,7 @@ class GoogleCloudApigeeV1Instance {
   /// - "CREATING" : Resource is being created.
   /// - "ACTIVE" : Resource is provisioned and ready to use.
   /// - "DELETING" : The resource is being deleted.
-  core.String state;
+  core.String? state;
 
   GoogleCloudApigeeV1Instance();
 
@@ -14996,19 +14316,19 @@ class GoogleCloudApigeeV1Instance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createdAt != null) 'createdAt': createdAt,
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createdAt != null) 'createdAt': createdAt!,
+        if (description != null) 'description': description!,
         if (diskEncryptionKeyName != null)
-          'diskEncryptionKeyName': diskEncryptionKeyName,
-        if (displayName != null) 'displayName': displayName,
-        if (host != null) 'host': host,
-        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
-        if (location != null) 'location': location,
-        if (name != null) 'name': name,
-        if (peeringCidrRange != null) 'peeringCidrRange': peeringCidrRange,
-        if (port != null) 'port': port,
-        if (state != null) 'state': state,
+          'diskEncryptionKeyName': diskEncryptionKeyName!,
+        if (displayName != null) 'displayName': displayName!,
+        if (host != null) 'host': host!,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
+        if (peeringCidrRange != null) 'peeringCidrRange': peeringCidrRange!,
+        if (port != null) 'port': port!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -15018,15 +14338,15 @@ class GoogleCloudApigeeV1InstanceAttachment {
   /// Time the attachment was created in milliseconds since epoch.
   ///
   /// Output only.
-  core.String createdAt;
+  core.String? createdAt;
 
   /// ID of the attached environment.
-  core.String environment;
+  core.String? environment;
 
   /// ID of the attachment.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   GoogleCloudApigeeV1InstanceAttachment();
 
@@ -15042,27 +14362,27 @@ class GoogleCloudApigeeV1InstanceAttachment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createdAt != null) 'createdAt': createdAt,
-        if (environment != null) 'environment': environment,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createdAt != null) 'createdAt': createdAt!,
+        if (environment != null) 'environment': environment!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// The status of a deployment as reported by a single instance.
 class GoogleCloudApigeeV1InstanceDeploymentStatus {
   /// Revisions currently deployed in MPs.
-  core.List<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>
+  core.List<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>?
       deployedRevisions;
 
   /// The current routes deployed in the ingress routing table.
   ///
   /// A route which is missing will appear in missing_routes.
-  core.List<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>
+  core.List<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>?
       deployedRoutes;
 
   /// ID of the instance reporting the status.
-  core.String instance;
+  core.String? instance;
 
   GoogleCloudApigeeV1InstanceDeploymentStatus();
 
@@ -15088,24 +14408,24 @@ class GoogleCloudApigeeV1InstanceDeploymentStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deployedRevisions != null)
           'deployedRevisions':
-              deployedRevisions.map((value) => value.toJson()).toList(),
+              deployedRevisions!.map((value) => value.toJson()).toList(),
         if (deployedRoutes != null)
           'deployedRoutes':
-              deployedRoutes.map((value) => value.toJson()).toList(),
-        if (instance != null) 'instance': instance,
+              deployedRoutes!.map((value) => value.toJson()).toList(),
+        if (instance != null) 'instance': instance!,
       };
 }
 
 /// Revisions deployed in the MPs.
 class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision {
   /// The percentage of MP replicas reporting this revision
-  core.int percentage;
+  core.int? percentage;
 
   /// The proxy revision reported as deployed.
-  core.String revision;
+  core.String? revision;
 
   GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision();
 
@@ -15119,27 +14439,27 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (percentage != null) 'percentage': percentage,
-        if (revision != null) 'revision': revision,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (percentage != null) 'percentage': percentage!,
+        if (revision != null) 'revision': revision!,
       };
 }
 
 /// A route deployed in the ingress routing table.
 class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
   /// The basepath in the routing table.
-  core.String basepath;
+  core.String? basepath;
 
   /// The envgroup where this route is installed.
-  core.String envgroup;
+  core.String? envgroup;
 
   /// The destination environment.
   ///
   /// This will be empty if the route is not yet reported.
-  core.String environment;
+  core.String? environment;
 
   /// The percentage of ingress replicas reporting this route.
-  core.int percentage;
+  core.int? percentage;
 
   GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute();
 
@@ -15159,11 +14479,11 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (basepath != null) 'basepath': basepath,
-        if (envgroup != null) 'envgroup': envgroup,
-        if (environment != null) 'environment': environment,
-        if (percentage != null) 'percentage': percentage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (basepath != null) 'basepath': basepath!,
+        if (envgroup != null) 'envgroup': envgroup!,
+        if (environment != null) 'environment': environment!,
+        if (percentage != null) 'percentage': percentage!,
       };
 }
 
@@ -15171,11 +14491,11 @@ class GoogleCloudApigeeV1KeyAliasReference {
   /// Alias ID.
   ///
   /// Must exist in the keystore referred to by the reference.
-  core.String aliasId;
+  core.String? aliasId;
 
   /// Reference name in the following format:
   /// `organizations/{org}/environments/{env}/references/{reference}`
-  core.String reference;
+  core.String? reference;
 
   GoogleCloudApigeeV1KeyAliasReference();
 
@@ -15188,9 +14508,9 @@ class GoogleCloudApigeeV1KeyAliasReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aliasId != null) 'aliasId': aliasId,
-        if (reference != null) 'reference': reference,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aliasId != null) 'aliasId': aliasId!,
+        if (reference != null) 'reference': reference!,
       };
 }
 
@@ -15199,12 +14519,12 @@ class GoogleCloudApigeeV1KeyValueMap {
   /// If `true` entry values will be encrypted.
   ///
   /// Optional.
-  core.bool encrypted;
+  core.bool? encrypted;
 
   /// The id of the key value map.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   GoogleCloudApigeeV1KeyValueMap();
 
@@ -15217,9 +14537,9 @@ class GoogleCloudApigeeV1KeyValueMap {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (encrypted != null) 'encrypted': encrypted,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (encrypted != null) 'encrypted': encrypted!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -15228,14 +14548,14 @@ class GoogleCloudApigeeV1Keystore {
   /// Aliases in this keystore.
   ///
   /// Output only.
-  core.List<core.String> aliases;
+  core.List<core.String>? aliases;
 
   /// Resource ID for this keystore.
   ///
   /// Values must match the regular expression `[\w[:space:]-.]{1,255}`.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   GoogleCloudApigeeV1Keystore();
 
@@ -15250,19 +14570,19 @@ class GoogleCloudApigeeV1Keystore {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aliases != null) 'aliases': aliases,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aliases != null) 'aliases': aliases!,
+        if (name != null) 'name': name!,
       };
 }
 
 class GoogleCloudApigeeV1KeystoreConfig {
   /// Aliases in the keystore.
-  core.List<GoogleCloudApigeeV1AliasRevisionConfig> aliases;
+  core.List<GoogleCloudApigeeV1AliasRevisionConfig>? aliases;
 
   /// Resource name in the following format:
   /// `organizations/{org}/environments/{env}/keystores/{keystore}`
-  core.String name;
+  core.String? name;
 
   GoogleCloudApigeeV1KeystoreConfig();
 
@@ -15279,29 +14599,29 @@ class GoogleCloudApigeeV1KeystoreConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (aliases != null)
-          'aliases': aliases.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+          'aliases': aliases!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
       };
 }
 
 /// the response for ListApiCategoriesRequest.
 class GoogleCloudApigeeV1ListApiCategoriesResponse {
   /// Details of categories.
-  core.List<GoogleCloudApigeeV1ApiCategoryData> data;
+  core.List<GoogleCloudApigeeV1ApiCategoryData>? data;
 
   /// ID that can be used to find errors in the log files.
-  core.String errorCode;
+  core.String? errorCode;
 
   /// Description of the operation.
-  core.String message;
+  core.String? message;
 
   /// ID that can be used to find request details in the log files.
-  core.String requestId;
+  core.String? requestId;
 
   /// Status of the operation.
-  core.String status;
+  core.String? status;
 
   GoogleCloudApigeeV1ListApiCategoriesResponse();
 
@@ -15327,18 +14647,18 @@ class GoogleCloudApigeeV1ListApiCategoriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data.map((value) => value.toJson()).toList(),
-        if (errorCode != null) 'errorCode': errorCode,
-        if (message != null) 'message': message,
-        if (requestId != null) 'requestId': requestId,
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (message != null) 'message': message!,
+        if (requestId != null) 'requestId': requestId!,
+        if (status != null) 'status': status!,
       };
 }
 
 class GoogleCloudApigeeV1ListApiProductsResponse {
   /// Lists all API product names defined for an organization.
-  core.List<GoogleCloudApigeeV1ApiProduct> apiProduct;
+  core.List<GoogleCloudApigeeV1ApiProduct>? apiProduct;
 
   GoogleCloudApigeeV1ListApiProductsResponse();
 
@@ -15352,14 +14672,14 @@ class GoogleCloudApigeeV1ListApiProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (apiProduct != null)
-          'apiProduct': apiProduct.map((value) => value.toJson()).toList(),
+          'apiProduct': apiProduct!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GoogleCloudApigeeV1ListApiProxiesResponse {
-  core.List<GoogleCloudApigeeV1ApiProxy> proxies;
+  core.List<GoogleCloudApigeeV1ApiProxy>? proxies;
 
   GoogleCloudApigeeV1ListApiProxiesResponse();
 
@@ -15373,14 +14693,14 @@ class GoogleCloudApigeeV1ListApiProxiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (proxies != null)
-          'proxies': proxies.map((value) => value.toJson()).toList(),
+          'proxies': proxies!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GoogleCloudApigeeV1ListAppsResponse {
-  core.List<GoogleCloudApigeeV1App> app;
+  core.List<GoogleCloudApigeeV1App>? app;
 
   GoogleCloudApigeeV1ListAppsResponse();
 
@@ -15394,15 +14714,15 @@ class GoogleCloudApigeeV1ListAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (app != null) 'app': app.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (app != null) 'app': app!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The response for ListAsyncQueries.
 class GoogleCloudApigeeV1ListAsyncQueriesResponse {
   /// The asynchronous queries belong to requested resource name.
-  core.List<GoogleCloudApigeeV1AsyncQuery> queries;
+  core.List<GoogleCloudApigeeV1AsyncQuery>? queries;
 
   GoogleCloudApigeeV1ListAsyncQueriesResponse();
 
@@ -15416,15 +14736,15 @@ class GoogleCloudApigeeV1ListAsyncQueriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (queries != null)
-          'queries': queries.map((value) => value.toJson()).toList(),
+          'queries': queries!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// This message encapsulates a list of custom report definitions
 class GoogleCloudApigeeV1ListCustomReportsResponse {
-  core.List<GoogleCloudApigeeV1CustomReport> qualifier;
+  core.List<GoogleCloudApigeeV1CustomReport>? qualifier;
 
   GoogleCloudApigeeV1ListCustomReportsResponse();
 
@@ -15438,22 +14758,22 @@ class GoogleCloudApigeeV1ListCustomReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (qualifier != null)
-          'qualifier': qualifier.map((value) => value.toJson()).toList(),
+          'qualifier': qualifier!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response for ListDataCollectors.
 class GoogleCloudApigeeV1ListDataCollectorsResponse {
   /// Data collectors in the specified organization.
-  core.List<GoogleCloudApigeeV1DataCollector> dataCollectors;
+  core.List<GoogleCloudApigeeV1DataCollector>? dataCollectors;
 
   /// Page token that you can include in a ListDataCollectors request to
   /// retrieve the next page.
   ///
   /// If omitted, no subsequent pages exist.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudApigeeV1ListDataCollectorsResponse();
 
@@ -15470,18 +14790,18 @@ class GoogleCloudApigeeV1ListDataCollectorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataCollectors != null)
           'dataCollectors':
-              dataCollectors.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              dataCollectors!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response for ListDatastores
 class GoogleCloudApigeeV1ListDatastoresResponse {
   /// A list of datastores
-  core.List<GoogleCloudApigeeV1Datastore> datastores;
+  core.List<GoogleCloudApigeeV1Datastore>? datastores;
 
   GoogleCloudApigeeV1ListDatastoresResponse();
 
@@ -15495,9 +14815,9 @@ class GoogleCloudApigeeV1ListDatastoresResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (datastores != null)
-          'datastores': datastores.map((value) => value.toJson()).toList(),
+          'datastores': datastores!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -15506,11 +14826,11 @@ class GoogleCloudApigeeV1ListDebugSessionsResponse {
   /// the next page.
   ///
   /// If omitted, no subsequent pages exist.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Session info that includes debug session ID and the first transaction
   /// creation timestamp.
-  core.List<GoogleCloudApigeeV1Session> sessions;
+  core.List<GoogleCloudApigeeV1Session>? sessions;
 
   GoogleCloudApigeeV1ListDebugSessionsResponse();
 
@@ -15527,16 +14847,16 @@ class GoogleCloudApigeeV1ListDebugSessionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (sessions != null)
-          'sessions': sessions.map((value) => value.toJson()).toList(),
+          'sessions': sessions!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GoogleCloudApigeeV1ListDeploymentsResponse {
   /// List of deployments.
-  core.List<GoogleCloudApigeeV1Deployment> deployments;
+  core.List<GoogleCloudApigeeV1Deployment>? deployments;
 
   GoogleCloudApigeeV1ListDeploymentsResponse();
 
@@ -15550,15 +14870,15 @@ class GoogleCloudApigeeV1ListDeploymentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deployments != null)
-          'deployments': deployments.map((value) => value.toJson()).toList(),
+          'deployments': deployments!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GoogleCloudApigeeV1ListDeveloperAppsResponse {
   /// List of developer apps and their credentials.
-  core.List<GoogleCloudApigeeV1DeveloperApp> app;
+  core.List<GoogleCloudApigeeV1DeveloperApp>? app;
 
   GoogleCloudApigeeV1ListDeveloperAppsResponse();
 
@@ -15572,22 +14892,22 @@ class GoogleCloudApigeeV1ListDeveloperAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (app != null) 'app': app.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (app != null) 'app': app!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response for ListEnvironmentGroupAttachments.
 class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse {
   /// EnvironmentGroupAttachments for the specified environment group.
-  core.List<GoogleCloudApigeeV1EnvironmentGroupAttachment>
+  core.List<GoogleCloudApigeeV1EnvironmentGroupAttachment>?
       environmentGroupAttachments;
 
   /// Page token that you can include in a ListEnvironmentGroupAttachments
   /// request to retrieve the next page.
   ///
   /// If omitted, no subsequent pages exist.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse();
 
@@ -15606,25 +14926,25 @@ class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (environmentGroupAttachments != null)
-          'environmentGroupAttachments': environmentGroupAttachments
+          'environmentGroupAttachments': environmentGroupAttachments!
               .map((value) => value.toJson())
               .toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response for ListEnvironmentGroups.
 class GoogleCloudApigeeV1ListEnvironmentGroupsResponse {
   /// EnvironmentGroups in the specified organization.
-  core.List<GoogleCloudApigeeV1EnvironmentGroup> environmentGroups;
+  core.List<GoogleCloudApigeeV1EnvironmentGroup>? environmentGroups;
 
   /// Page token that you can include in a ListEnvironmentGroups request to
   /// retrieve the next page.
   ///
   /// If omitted, no subsequent pages exist.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudApigeeV1ListEnvironmentGroupsResponse();
 
@@ -15641,18 +14961,18 @@ class GoogleCloudApigeeV1ListEnvironmentGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (environmentGroups != null)
           'environmentGroups':
-              environmentGroups.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              environmentGroups!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response for ListEnvironmentResources
 class GoogleCloudApigeeV1ListEnvironmentResourcesResponse {
   /// List of resources files.
-  core.List<GoogleCloudApigeeV1ResourceFile> resourceFile;
+  core.List<GoogleCloudApigeeV1ResourceFile>? resourceFile;
 
   GoogleCloudApigeeV1ListEnvironmentResourcesResponse();
 
@@ -15666,16 +14986,16 @@ class GoogleCloudApigeeV1ListEnvironmentResourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (resourceFile != null)
-          'resourceFile': resourceFile.map((value) => value.toJson()).toList(),
+          'resourceFile': resourceFile!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The response for ListExports
 class GoogleCloudApigeeV1ListExportsResponse {
   /// Details of the export jobs.
-  core.List<GoogleCloudApigeeV1Export> exports;
+  core.List<GoogleCloudApigeeV1Export>? exports;
 
   GoogleCloudApigeeV1ListExportsResponse();
 
@@ -15689,15 +15009,15 @@ class GoogleCloudApigeeV1ListExportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (exports != null)
-          'exports': exports.map((value) => value.toJson()).toList(),
+          'exports': exports!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GoogleCloudApigeeV1ListHybridIssuersResponse {
   /// Lists of hybrid services and its trusted issuer email ids.
-  core.List<GoogleCloudApigeeV1ServiceIssuersMapping> issuers;
+  core.List<GoogleCloudApigeeV1ServiceIssuersMapping>? issuers;
 
   GoogleCloudApigeeV1ListHybridIssuersResponse();
 
@@ -15711,22 +15031,22 @@ class GoogleCloudApigeeV1ListHybridIssuersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (issuers != null)
-          'issuers': issuers.map((value) => value.toJson()).toList(),
+          'issuers': issuers!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response for ListInstanceAttachments.
 class GoogleCloudApigeeV1ListInstanceAttachmentsResponse {
   /// Attachments for the instance.
-  core.List<GoogleCloudApigeeV1InstanceAttachment> attachments;
+  core.List<GoogleCloudApigeeV1InstanceAttachment>? attachments;
 
   /// Page token that you can include in a ListInstanceAttachments request to
   /// retrieve the next page of content.
   ///
   /// If omitted, no subsequent pages exist.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudApigeeV1ListInstanceAttachmentsResponse();
 
@@ -15743,23 +15063,23 @@ class GoogleCloudApigeeV1ListInstanceAttachmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (attachments != null)
-          'attachments': attachments.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'attachments': attachments!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response for ListInstances.
 class GoogleCloudApigeeV1ListInstancesResponse {
   /// Instances in the specified organization.
-  core.List<GoogleCloudApigeeV1Instance> instances;
+  core.List<GoogleCloudApigeeV1Instance>? instances;
 
   /// Page token that you can include in a ListInstance request to retrieve the
   /// next page of content.
   ///
   /// If omitted, no subsequent pages exist.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudApigeeV1ListInstancesResponse();
 
@@ -15776,23 +15096,23 @@ class GoogleCloudApigeeV1ListInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (instances != null)
-          'instances': instances.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'instances': instances!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response for ListNatAddresses.
 class GoogleCloudApigeeV1ListNatAddressesResponse {
   /// List of NAT Addresses for the instance.
-  core.List<GoogleCloudApigeeV1NatAddress> natAddresses;
+  core.List<GoogleCloudApigeeV1NatAddress>? natAddresses;
 
   /// Page token that you can include in a ListNatAddresses request to retrieve
   /// the next page of content.
   ///
   /// If omitted, no subsequent pages exist.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudApigeeV1ListNatAddressesResponse();
 
@@ -15809,16 +15129,16 @@ class GoogleCloudApigeeV1ListNatAddressesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (natAddresses != null)
-          'natAddresses': natAddresses.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'natAddresses': natAddresses!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 class GoogleCloudApigeeV1ListOfDevelopersResponse {
   /// List of developers.
-  core.List<GoogleCloudApigeeV1Developer> developer;
+  core.List<GoogleCloudApigeeV1Developer>? developer;
 
   GoogleCloudApigeeV1ListOfDevelopersResponse();
 
@@ -15832,15 +15152,15 @@ class GoogleCloudApigeeV1ListOfDevelopersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (developer != null)
-          'developer': developer.map((value) => value.toJson()).toList(),
+          'developer': developer!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GoogleCloudApigeeV1ListOrganizationsResponse {
   /// List of Apigee organizations and associated GCP projects.
-  core.List<GoogleCloudApigeeV1OrganizationProjectMapping> organizations;
+  core.List<GoogleCloudApigeeV1OrganizationProjectMapping>? organizations;
 
   GoogleCloudApigeeV1ListOrganizationsResponse();
 
@@ -15854,15 +15174,15 @@ class GoogleCloudApigeeV1ListOrganizationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (organizations != null)
           'organizations':
-              organizations.map((value) => value.toJson()).toList(),
+              organizations!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GoogleCloudApigeeV1ListSharedFlowsResponse {
-  core.List<GoogleCloudApigeeV1SharedFlow> sharedFlows;
+  core.List<GoogleCloudApigeeV1SharedFlow>? sharedFlows;
 
   GoogleCloudApigeeV1ListSharedFlowsResponse();
 
@@ -15876,16 +15196,16 @@ class GoogleCloudApigeeV1ListSharedFlowsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (sharedFlows != null)
-          'sharedFlows': sharedFlows.map((value) => value.toJson()).toList(),
+          'sharedFlows': sharedFlows!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// This message type encapsulates additional information about query execution.
 class GoogleCloudApigeeV1Metadata {
   /// List of error messages as strings.
-  core.List<core.String> errors;
+  core.List<core.String>? errors;
 
   /// List of additional information such as data source, if result was
   /// truncated etc.
@@ -15893,7 +15213,7 @@ class GoogleCloudApigeeV1Metadata {
   /// E.g "notices": \[ "Source:Postgres", "PG Host:uappg0rw.e2e.apigeeks.net",
   /// "query served by:4b64601e-40de-4eb1-bfb9-eeee7ac929ed", "Table used:
   /// edge.api.uapgroup2.agg_api" \]
-  core.List<core.String> notices;
+  core.List<core.String>? notices;
 
   GoogleCloudApigeeV1Metadata();
 
@@ -15910,9 +15230,9 @@ class GoogleCloudApigeeV1Metadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errors != null) 'errors': errors,
-        if (notices != null) 'notices': notices,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errors != null) 'errors': errors!,
+        if (notices != null) 'notices': notices!,
       };
 }
 
@@ -15923,7 +15243,7 @@ class GoogleCloudApigeeV1Metadata {
 /// "0.0" } \] } or { "name": "sum(message_count)", "values" : \["39.0"\] }
 class GoogleCloudApigeeV1Metric {
   /// This field contains the metric name.
-  core.String name;
+  core.String? name;
 
   /// List of metric values.
   ///
@@ -15932,7 +15252,7 @@ class GoogleCloudApigeeV1Metric {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> values;
+  core.List<core.Object>? values;
 
   GoogleCloudApigeeV1Metric();
 
@@ -15947,9 +15267,9 @@ class GoogleCloudApigeeV1Metric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (values != null) 'values': values!,
       };
 }
 
@@ -15961,12 +15281,12 @@ class GoogleCloudApigeeV1NatAddress {
   /// The static IPV4 address.
   ///
   /// Required.
-  core.String ipAddress;
+  core.String? ipAddress;
 
   /// Resource ID of the NAT address.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// State of the nat address.
   ///
@@ -15978,7 +15298,7 @@ class GoogleCloudApigeeV1NatAddress {
   /// egress.
   /// - "ACTIVE" : The NAT address is active and used for Internet egress.
   /// - "DELETING" : The NAT address is being deleted.
-  core.String state;
+  core.String? state;
 
   GoogleCloudApigeeV1NatAddress();
 
@@ -15994,10 +15314,10 @@ class GoogleCloudApigeeV1NatAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ipAddress != null) 'ipAddress': ipAddress,
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -16008,13 +15328,13 @@ class GoogleCloudApigeeV1Operation {
   /// https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html.
   ///
   /// When none specified, all verb types are allowed.
-  core.List<core.String> methods;
+  core.List<core.String>? methods;
 
   /// resource represents REST resource path associated with the proxy/remote
   /// service.
   ///
   /// Required.
-  core.String resource;
+  core.String? resource;
 
   GoogleCloudApigeeV1Operation();
 
@@ -16029,9 +15349,9 @@ class GoogleCloudApigeeV1Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (methods != null) 'methods': methods,
-        if (resource != null) 'resource': resource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (methods != null) 'methods': methods!,
+        if (resource != null) 'resource': resource!,
       };
 }
 
@@ -16042,23 +15362,23 @@ class GoogleCloudApigeeV1OperationConfig {
   /// quota are associated.
   ///
   /// Required.
-  core.String apiSource;
+  core.String? apiSource;
 
   /// Custom attributes associated with the operation.
-  core.List<GoogleCloudApigeeV1Attribute> attributes;
+  core.List<GoogleCloudApigeeV1Attribute>? attributes;
 
   /// List of resource/method pairs for the proxy/remote service, upon which
   /// quota will applied.
   ///
   /// **Note**: Currently, you can specify only a single resource/method pair.
   /// The call will fail if more than one resource/method pair is provided.
-  core.List<GoogleCloudApigeeV1Operation> operations;
+  core.List<GoogleCloudApigeeV1Operation>? operations;
 
   /// Quota parameters to be enforced for the resources, methods, api_source
   /// combination.
   ///
   /// If none are specified, quota enforcement will not be done.
-  GoogleCloudApigeeV1Quota quota;
+  GoogleCloudApigeeV1Quota? quota;
 
   GoogleCloudApigeeV1OperationConfig();
 
@@ -16086,13 +15406,13 @@ class GoogleCloudApigeeV1OperationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiSource != null) 'apiSource': apiSource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiSource != null) 'apiSource': apiSource!,
         if (attributes != null)
-          'attributes': attributes.map((value) => value.toJson()).toList(),
+          'attributes': attributes!.map((value) => value.toJson()).toList(),
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
-        if (quota != null) 'quota': quota.toJson(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (quota != null) 'quota': quota!.toJson(),
       };
 }
 
@@ -16108,13 +15428,13 @@ class GoogleCloudApigeeV1OperationGroup {
   /// `proxy` when Apigee API proxies are associated with the API product. Set
   /// to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated
   /// with the API product.
-  core.String operationConfigType;
+  core.String? operationConfigType;
 
   /// List of operation configurations for either Apigee API proxies or other
   /// remote services that are associated with this API product.
   ///
   /// Required.
-  core.List<GoogleCloudApigeeV1OperationConfig> operationConfigs;
+  core.List<GoogleCloudApigeeV1OperationConfig>? operationConfigs;
 
   GoogleCloudApigeeV1OperationGroup();
 
@@ -16131,12 +15451,12 @@ class GoogleCloudApigeeV1OperationGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operationConfigType != null)
-          'operationConfigType': operationConfigType,
+          'operationConfigType': operationConfigType!,
         if (operationConfigs != null)
           'operationConfigs':
-              operationConfigs.map((value) => value.toJson()).toList(),
+              operationConfigs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -16148,7 +15468,7 @@ class GoogleCloudApigeeV1OperationMetadata {
   /// - "INSERT"
   /// - "DELETE"
   /// - "UPDATE"
-  core.String operationType;
+  core.String? operationType;
 
   ///
   /// Possible string values are:
@@ -16156,10 +15476,10 @@ class GoogleCloudApigeeV1OperationMetadata {
   /// - "NOT_STARTED"
   /// - "IN_PROGRESS"
   /// - "FINISHED"
-  core.String state;
+  core.String? state;
 
   /// Name of the resource for which the operation is operating on.
-  core.String targetResourceName;
+  core.String? targetResourceName;
 
   GoogleCloudApigeeV1OperationMetadata();
 
@@ -16175,11 +15495,11 @@ class GoogleCloudApigeeV1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operationType != null) 'operationType': operationType,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operationType != null) 'operationType': operationType!,
+        if (state != null) 'state': state!,
         if (targetResourceName != null)
-          'targetResourceName': targetResourceName,
+          'targetResourceName': targetResourceName!,
       };
 }
 
@@ -16196,7 +15516,7 @@ class GoogleCloudApigeeV1OptimizedStats {
   /// "values": \[ "sirjee" \] }, "metric": \[ { "env": "prod", "name":
   /// "sum(message_count)", "values": \[ 36.0 \] }, { "env": "prod", "name":
   /// "sum(is_error)", "values": \[ 36.0 \] } \] } \] } } }
-  GoogleCloudApigeeV1OptimizedStatsResponse Response;
+  GoogleCloudApigeeV1OptimizedStatsResponse? Response;
 
   GoogleCloudApigeeV1OptimizedStats();
 
@@ -16207,8 +15527,8 @@ class GoogleCloudApigeeV1OptimizedStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (Response != null) 'Response': Response.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (Response != null) 'Response': Response!.toJson(),
       };
 }
 
@@ -16224,7 +15544,7 @@ class GoogleCloudApigeeV1OptimizedStatsNode {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Object> data;
+  core.List<core.Object>? data;
 
   GoogleCloudApigeeV1OptimizedStatsNode();
 
@@ -16236,8 +15556,8 @@ class GoogleCloudApigeeV1OptimizedStatsNode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!,
       };
 }
 
@@ -16246,17 +15566,17 @@ class GoogleCloudApigeeV1OptimizedStatsResponse {
   /// This field contains a list of time unit values.
   ///
   /// Time unit refers to an epoch timestamp value.
-  core.List<core.String> TimeUnit;
+  core.List<core.String>? TimeUnit;
 
   /// This field contains metadata information about the query executed
-  GoogleCloudApigeeV1Metadata metaData;
+  GoogleCloudApigeeV1Metadata? metaData;
 
   /// This ia a boolean field to indicate if the results were truncated based on
   /// the limit parameter.
-  core.bool resultTruncated;
+  core.bool? resultTruncated;
 
   /// This field contains a stats results.
-  GoogleCloudApigeeV1OptimizedStatsNode stats;
+  GoogleCloudApigeeV1OptimizedStatsNode? stats;
 
   GoogleCloudApigeeV1OptimizedStatsResponse();
 
@@ -16279,11 +15599,11 @@ class GoogleCloudApigeeV1OptimizedStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (TimeUnit != null) 'TimeUnit': TimeUnit,
-        if (metaData != null) 'metaData': metaData.toJson(),
-        if (resultTruncated != null) 'resultTruncated': resultTruncated,
-        if (stats != null) 'stats': stats.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (TimeUnit != null) 'TimeUnit': TimeUnit!,
+        if (metaData != null) 'metaData': metaData!.toJson(),
+        if (resultTruncated != null) 'resultTruncated': resultTruncated!,
+        if (stats != null) 'stats': stats!.toJson(),
       };
 }
 
@@ -16294,10 +15614,10 @@ class GoogleCloudApigeeV1Organization {
   /// [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
   ///
   /// Required.
-  core.String analyticsRegion;
+  core.String? analyticsRegion;
 
   /// Not used by Apigee.
-  core.List<core.String> attributes;
+  core.List<core.String>? attributes;
 
   /// Compute Engine network used for Service Networking to be peered with
   /// Apigee runtime instances.
@@ -16313,7 +15633,7 @@ class GoogleCloudApigeeV1Organization {
   /// `projects/{host-project-id}/{region}/networks/{network-name}`. For
   /// example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:**
   /// Not supported for Apigee hybrid.
-  core.String authorizedNetwork;
+  core.String? authorizedNetwork;
 
   /// Billing type of the Apigee organization.
   ///
@@ -16325,7 +15645,7 @@ class GoogleCloudApigeeV1Organization {
   /// - "SUBSCRIPTION" : A pre-paid subscription to Apigee.
   /// - "EVALUATION" : Free and limited access to Apigee for evaluation purposes
   /// only. only.
-  core.String billingType;
+  core.String? billingType;
 
   /// Base64-encoded public certificate for the root CA of the Apigee
   /// organization.
@@ -16333,9 +15653,9 @@ class GoogleCloudApigeeV1Organization {
   /// Valid only when \[RuntimeType\](#RuntimeType) is `CLOUD`.
   ///
   /// Output only.
-  core.String caCertificate;
+  core.String? caCertificate;
   core.List<core.int> get caCertificateAsBytes =>
-      convert.base64.decode(caCertificate);
+      convert.base64.decode(caCertificate!);
 
   set caCertificateAsBytes(core.List<core.int> _bytes) {
     caCertificate =
@@ -16345,36 +15665,36 @@ class GoogleCloudApigeeV1Organization {
   /// Time that the Apigee organization was created in milliseconds since epoch.
   ///
   /// Output only.
-  core.String createdAt;
+  core.String? createdAt;
 
   /// Not used by Apigee.
-  core.String customerName;
+  core.String? customerName;
 
   /// Description of the Apigee organization.
-  core.String description;
-  core.String displayName;
+  core.String? description;
+  core.String? displayName;
 
   /// List of environments in the Apigee organization.
   ///
   /// Output only.
-  core.List<core.String> environments;
+  core.List<core.String>? environments;
 
   /// Time that the Apigee organization was last modified in milliseconds since
   /// epoch.
   ///
   /// Output only.
-  core.String lastModifiedAt;
+  core.String? lastModifiedAt;
 
   /// Name of the Apigee organization.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Project ID associated with the Apigee organization.
-  core.String projectId;
+  core.String? projectId;
 
   /// Properties defined in the Apigee organization profile.
-  GoogleCloudApigeeV1Properties properties;
+  GoogleCloudApigeeV1Properties? properties;
 
   /// Cloud KMS key name used for encrypting the data that is stored and
   /// replicated across runtime instances.
@@ -16384,7 +15704,7 @@ class GoogleCloudApigeeV1Organization {
   /// \[RuntimeType\](#RuntimeType) is `CLOUD`. For example:
   /// "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not
   /// supported for Apigee hybrid.
-  core.String runtimeDatabaseEncryptionKeyName;
+  core.String? runtimeDatabaseEncryptionKeyName;
 
   /// Runtime type of the Apigee organization based on the Apigee subscription
   /// purchased.
@@ -16394,7 +15714,7 @@ class GoogleCloudApigeeV1Organization {
   /// - "RUNTIME_TYPE_UNSPECIFIED" : Runtime type not specified.
   /// - "CLOUD" : Google-managed Apigee runtime.
   /// - "HYBRID" : User-managed Apigee hybrid runtime.
-  core.String runtimeType_;
+  core.String? runtimeType_;
 
   /// State of the organization.
   ///
@@ -16406,7 +15726,7 @@ class GoogleCloudApigeeV1Organization {
   /// - "CREATING" : Resource is being created.
   /// - "ACTIVE" : Resource is provisioned and ready to use.
   /// - "DELETING" : The resource is being deleted.
-  core.String state;
+  core.String? state;
 
   /// DEPRECATED: This will eventually be replaced by BillingType.
   ///
@@ -16421,7 +15741,7 @@ class GoogleCloudApigeeV1Organization {
   /// - "PAID" : Full subscription to Apigee has been purchased.
   /// - "TRIAL" : Subscription to Apigee is free, limited, and used for
   /// evaluation purposes only.
-  core.String subscriptionType;
+  core.String? subscriptionType;
 
   /// Not used by Apigee.
   /// Possible string values are:
@@ -16431,7 +15751,7 @@ class GoogleCloudApigeeV1Organization {
   /// - "TYPE_PAID" : Full subscription to Apigee has been purchased. See
   /// [Apigee pricing](https://cloud.google.com/apigee/pricing/).
   /// - "TYPE_INTERNAL" : For internal users only.
-  core.String type;
+  core.String? type;
 
   GoogleCloudApigeeV1Organization();
 
@@ -16501,36 +15821,36 @@ class GoogleCloudApigeeV1Organization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (analyticsRegion != null) 'analyticsRegion': analyticsRegion,
-        if (attributes != null) 'attributes': attributes,
-        if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork,
-        if (billingType != null) 'billingType': billingType,
-        if (caCertificate != null) 'caCertificate': caCertificate,
-        if (createdAt != null) 'createdAt': createdAt,
-        if (customerName != null) 'customerName': customerName,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (environments != null) 'environments': environments,
-        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
-        if (name != null) 'name': name,
-        if (projectId != null) 'projectId': projectId,
-        if (properties != null) 'properties': properties.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (analyticsRegion != null) 'analyticsRegion': analyticsRegion!,
+        if (attributes != null) 'attributes': attributes!,
+        if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork!,
+        if (billingType != null) 'billingType': billingType!,
+        if (caCertificate != null) 'caCertificate': caCertificate!,
+        if (createdAt != null) 'createdAt': createdAt!,
+        if (customerName != null) 'customerName': customerName!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (environments != null) 'environments': environments!,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+        if (name != null) 'name': name!,
+        if (projectId != null) 'projectId': projectId!,
+        if (properties != null) 'properties': properties!.toJson(),
         if (runtimeDatabaseEncryptionKeyName != null)
-          'runtimeDatabaseEncryptionKeyName': runtimeDatabaseEncryptionKeyName,
-        if (runtimeType_ != null) 'runtimeType': runtimeType_,
-        if (state != null) 'state': state,
-        if (subscriptionType != null) 'subscriptionType': subscriptionType,
-        if (type != null) 'type': type,
+          'runtimeDatabaseEncryptionKeyName': runtimeDatabaseEncryptionKeyName!,
+        if (runtimeType_ != null) 'runtimeType': runtimeType_!,
+        if (state != null) 'state': state!,
+        if (subscriptionType != null) 'subscriptionType': subscriptionType!,
+        if (type != null) 'type': type!,
       };
 }
 
 class GoogleCloudApigeeV1OrganizationProjectMapping {
   /// Name of the Apigee organization.
-  core.String organization;
+  core.String? organization;
 
   /// List of GCP projects associated with the Apigee organization.
-  core.List<core.String> projectIds;
+  core.List<core.String>? projectIds;
 
   GoogleCloudApigeeV1OrganizationProjectMapping();
 
@@ -16545,46 +15865,46 @@ class GoogleCloudApigeeV1OrganizationProjectMapping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (organization != null) 'organization': organization,
-        if (projectIds != null) 'projectIds': projectIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (organization != null) 'organization': organization!,
+        if (projectIds != null) 'projectIds': projectIds!,
       };
 }
 
 class GoogleCloudApigeeV1PodStatus {
   /// Version of the application running in the pod.
-  core.String appVersion;
+  core.String? appVersion;
 
   /// Status of the deployment.
   ///
   /// Valid values include: - `deployed`: Successful. - `error` : Failed. -
   /// `pending` : Pod has not yet reported on the deployment.
-  core.String deploymentStatus;
+  core.String? deploymentStatus;
 
   /// Time the deployment status was reported in milliseconds since epoch.
-  core.String deploymentStatusTime;
+  core.String? deploymentStatusTime;
 
   /// Time the proxy was deployed in milliseconds since epoch.
-  core.String deploymentTime;
+  core.String? deploymentTime;
 
   /// Name of the pod which is reporting the status.
-  core.String podName;
+  core.String? podName;
 
   /// Overall status of the pod (not this specific deployment).
   ///
   /// Valid values include: - `active`: Up to date. - `stale` : Recently out of
   /// date. Pods that have not reported status in a long time are excluded from
   /// the output.
-  core.String podStatus;
+  core.String? podStatus;
 
   /// Time the pod status was reported in milliseconds since epoch.
-  core.String podStatusTime;
+  core.String? podStatusTime;
 
   /// Code associated with the deployment status.
-  core.String statusCode;
+  core.String? statusCode;
 
   /// Human-readable message associated with the status code.
-  core.String statusCodeDetails;
+  core.String? statusCodeDetails;
 
   GoogleCloudApigeeV1PodStatus();
 
@@ -16618,17 +15938,17 @@ class GoogleCloudApigeeV1PodStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appVersion != null) 'appVersion': appVersion,
-        if (deploymentStatus != null) 'deploymentStatus': deploymentStatus,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appVersion != null) 'appVersion': appVersion!,
+        if (deploymentStatus != null) 'deploymentStatus': deploymentStatus!,
         if (deploymentStatusTime != null)
-          'deploymentStatusTime': deploymentStatusTime,
-        if (deploymentTime != null) 'deploymentTime': deploymentTime,
-        if (podName != null) 'podName': podName,
-        if (podStatus != null) 'podStatus': podStatus,
-        if (podStatusTime != null) 'podStatusTime': podStatusTime,
-        if (statusCode != null) 'statusCode': statusCode,
-        if (statusCodeDetails != null) 'statusCodeDetails': statusCodeDetails,
+          'deploymentStatusTime': deploymentStatusTime!,
+        if (deploymentTime != null) 'deploymentTime': deploymentTime!,
+        if (podName != null) 'podName': podName!,
+        if (podStatus != null) 'podStatus': podStatus!,
+        if (podStatusTime != null) 'podStatusTime': podStatusTime!,
+        if (statusCode != null) 'statusCode': statusCode!,
+        if (statusCodeDetails != null) 'statusCodeDetails': statusCodeDetails!,
       };
 }
 
@@ -16645,10 +15965,10 @@ class GoogleCloudApigeeV1PodStatus {
 /// in a list of results.
 class GoogleCloudApigeeV1Point {
   /// Name of a step in the transaction.
-  core.String id;
+  core.String? id;
 
   /// List of results extracted from a given debug point.
-  core.List<GoogleCloudApigeeV1Result> results;
+  core.List<GoogleCloudApigeeV1Result>? results;
 
   GoogleCloudApigeeV1Point();
 
@@ -16665,10 +15985,10 @@ class GoogleCloudApigeeV1Point {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
+          'results': results!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -16676,7 +15996,7 @@ class GoogleCloudApigeeV1Point {
 /// object in JSON.
 class GoogleCloudApigeeV1Properties {
   /// List of all properties in the object
-  core.List<GoogleCloudApigeeV1Property> property;
+  core.List<GoogleCloudApigeeV1Property>? property;
 
   GoogleCloudApigeeV1Properties();
 
@@ -16690,19 +16010,19 @@ class GoogleCloudApigeeV1Properties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (property != null)
-          'property': property.map((value) => value.toJson()).toList(),
+          'property': property!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A single property entry in the Properties message.
 class GoogleCloudApigeeV1Property {
   /// The property key
-  core.String name;
+  core.String? name;
 
   /// The property value
-  core.String value;
+  core.String? value;
 
   GoogleCloudApigeeV1Property();
 
@@ -16715,9 +16035,9 @@ class GoogleCloudApigeeV1Property {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -16728,19 +16048,19 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
   /// For valid values, see
   /// [Create an organization](https://cloud.google.com/apigee/docs/hybrid/latest/precog-provision).
   /// Defaults to `us-west1`.
-  core.String analyticsRegion;
+  core.String? analyticsRegion;
 
   /// Name of the customer project's VPC network.
   ///
   /// If provided, the network needs to be peered through Service Networking. If
   /// none is provided, the organization will have access only to the public
   /// internet.
-  core.String authorizedNetwork;
+  core.String? authorizedNetwork;
 
   /// Cloud Platform location for the runtime instance.
   ///
   /// Defaults to `us-west1-a`.
-  core.String runtimeLocation;
+  core.String? runtimeLocation;
 
   GoogleCloudApigeeV1ProvisionOrganizationRequest();
 
@@ -16756,10 +16076,10 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (analyticsRegion != null) 'analyticsRegion': analyticsRegion,
-        if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork,
-        if (runtimeLocation != null) 'runtimeLocation': runtimeLocation,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (analyticsRegion != null) 'analyticsRegion': analyticsRegion!,
+        if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork!,
+        if (runtimeLocation != null) 'runtimeLocation': runtimeLocation!,
       };
 }
 
@@ -16768,18 +16088,18 @@ class GoogleCloudApigeeV1Query {
   ///
   /// Defaults to the `,` (comma) character. Supported delimiter characters
   /// include comma (`,`), pipe (`|`), and tab (`\t`).
-  core.String csvDelimiter;
+  core.String? csvDelimiter;
 
   /// A list of dimensions.
   ///
   /// https://docs.apigee.com/api-platform/analytics/analytics-reference#dimensions
-  core.List<core.String> dimensions;
+  core.List<core.String>? dimensions;
 
   /// Hostname needs to be specified if query intends to run at host level.
   ///
   /// This field is only allowed when query is submitted by CreateHostAsyncQuery
   /// where analytics data will be grouped by organization and hostname.
-  core.String envgroupHostname;
+  core.String? envgroupHostname;
 
   /// Boolean expression that can be used to filter data.
   ///
@@ -16791,7 +16111,7 @@ class GoogleCloudApigeeV1Query {
   /// information on the tokens that you use to build filter expressions, see
   /// Filter expression syntax.
   /// https://docs.apigee.com/api-platform/analytics/asynch-reports-api#filter-expression-syntax
-  core.String filter;
+  core.String? filter;
 
   /// Time unit used to group the result set.
   ///
@@ -16800,25 +16120,25 @@ class GoogleCloudApigeeV1Query {
   /// the specified time unit and the resultant timestamp does not include
   /// milliseconds precision. If a query omits groupByTimeUnit, then the
   /// resultant timestamp includes milliseconds precision.
-  core.String groupByTimeUnit;
+  core.String? groupByTimeUnit;
 
   /// Maximum number of rows that can be returned in the result.
-  core.int limit;
+  core.int? limit;
 
   /// A list of Metrics.
-  core.List<GoogleCloudApigeeV1QueryMetric> metrics;
+  core.List<GoogleCloudApigeeV1QueryMetric>? metrics;
 
   /// Asynchronous Query Name.
-  core.String name;
+  core.String? name;
 
   /// Valid values include: `csv` or `json`.
   ///
   /// Defaults to `json`. Note: Configure the delimiter for CSV output using the
   /// csvDelimiter property.
-  core.String outputFormat;
+  core.String? outputFormat;
 
   /// Asynchronous Report ID.
-  core.String reportDefinitionId;
+  core.String? reportDefinitionId;
 
   /// Time range for the query.
   ///
@@ -16832,7 +16152,7 @@ class GoogleCloudApigeeV1Query {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object timeRange;
+  core.Object? timeRange;
 
   GoogleCloudApigeeV1Query();
 
@@ -16878,43 +16198,43 @@ class GoogleCloudApigeeV1Query {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (csvDelimiter != null) 'csvDelimiter': csvDelimiter,
-        if (dimensions != null) 'dimensions': dimensions,
-        if (envgroupHostname != null) 'envgroupHostname': envgroupHostname,
-        if (filter != null) 'filter': filter,
-        if (groupByTimeUnit != null) 'groupByTimeUnit': groupByTimeUnit,
-        if (limit != null) 'limit': limit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (csvDelimiter != null) 'csvDelimiter': csvDelimiter!,
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (envgroupHostname != null) 'envgroupHostname': envgroupHostname!,
+        if (filter != null) 'filter': filter!,
+        if (groupByTimeUnit != null) 'groupByTimeUnit': groupByTimeUnit!,
+        if (limit != null) 'limit': limit!,
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (outputFormat != null) 'outputFormat': outputFormat,
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (outputFormat != null) 'outputFormat': outputFormat!,
         if (reportDefinitionId != null)
-          'reportDefinitionId': reportDefinitionId,
-        if (timeRange != null) 'timeRange': timeRange,
+          'reportDefinitionId': reportDefinitionId!,
+        if (timeRange != null) 'timeRange': timeRange!,
       };
 }
 
 class GoogleCloudApigeeV1QueryMetadata {
   /// Dimensions of the AsyncQuery.
-  core.List<core.String> dimensions;
+  core.List<core.String>? dimensions;
 
   /// End timestamp of the query range.
-  core.String endTimestamp;
+  core.String? endTimestamp;
 
   /// Metrics of the AsyncQuery.
   ///
   /// Example: \["name:message_count,func:sum,alias:sum_message_count"\]
-  core.List<core.String> metrics;
+  core.List<core.String>? metrics;
 
   /// Output format.
-  core.String outputFormat;
+  core.String? outputFormat;
 
   /// Start timestamp of the query range.
-  core.String startTimestamp;
+  core.String? startTimestamp;
 
   /// Query GroupBy time unit.
-  core.String timeUnit;
+  core.String? timeUnit;
 
   GoogleCloudApigeeV1QueryMetadata();
 
@@ -16943,13 +16263,13 @@ class GoogleCloudApigeeV1QueryMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimensions != null) 'dimensions': dimensions,
-        if (endTimestamp != null) 'endTimestamp': endTimestamp,
-        if (metrics != null) 'metrics': metrics,
-        if (outputFormat != null) 'outputFormat': outputFormat,
-        if (startTimestamp != null) 'startTimestamp': startTimestamp,
-        if (timeUnit != null) 'timeUnit': timeUnit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (endTimestamp != null) 'endTimestamp': endTimestamp!,
+        if (metrics != null) 'metrics': metrics!,
+        if (outputFormat != null) 'outputFormat': outputFormat!,
+        if (startTimestamp != null) 'startTimestamp': startTimestamp!,
+        if (timeUnit != null) 'timeUnit': timeUnit!,
       };
 }
 
@@ -16959,21 +16279,21 @@ class GoogleCloudApigeeV1QueryMetric {
   /// Alias for the metric.
   ///
   /// Alias will be used to replace metric name in query results.
-  core.String alias;
+  core.String? alias;
 
   /// Aggregation function: avg, min, max, or sum.
-  core.String function;
+  core.String? function;
 
   /// Metric name.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// One of `+`, `-`, `/`, `%`, `*`.
-  core.String operator;
+  core.String? operator;
 
   /// Operand value should be provided when operator is set.
-  core.String value;
+  core.String? value;
 
   GoogleCloudApigeeV1QueryMetric();
 
@@ -16995,12 +16315,12 @@ class GoogleCloudApigeeV1QueryMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alias != null) 'alias': alias,
-        if (function != null) 'function': function,
-        if (name != null) 'name': name,
-        if (operator != null) 'operator': operator,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alias != null) 'alias': alias!,
+        if (function != null) 'function': function!,
+        if (name != null) 'name': name!,
+        if (operator != null) 'operator': operator!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -17014,21 +16334,21 @@ class GoogleCloudApigeeV1Quota {
   /// Time interval over which the number of request messages is calculated.
   ///
   /// Required.
-  core.String interval;
+  core.String? interval;
 
   /// Upper limit allowed for the time interval and time unit specified.
   ///
   /// Requests exceeding this limit will be rejected.
   ///
   /// Required.
-  core.String limit;
+  core.String? limit;
 
   /// Time unit defined for the `interval`.
   ///
   /// Valid values include `minute`, `hour`, `day`, or `month`. If `limit` and
   /// `interval` are valid, the default value is `hour`; otherwise, the default
   /// is null.
-  core.String timeUnit;
+  core.String? timeUnit;
 
   GoogleCloudApigeeV1Quota();
 
@@ -17044,10 +16364,10 @@ class GoogleCloudApigeeV1Quota {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (interval != null) 'interval': interval,
-        if (limit != null) 'limit': limit,
-        if (timeUnit != null) 'timeUnit': timeUnit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (interval != null) 'interval': interval!,
+        if (limit != null) 'limit': limit!,
+        if (timeUnit != null) 'timeUnit': timeUnit!,
       };
 }
 
@@ -17059,14 +16379,14 @@ class GoogleCloudApigeeV1Reference {
   /// A human-readable description of this reference.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// The resource id of this reference.
   ///
   /// Values must match the regular expression \[\w\s\-.\]+.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The id of the resource to which this reference refers.
   ///
@@ -17074,12 +16394,12 @@ class GoogleCloudApigeeV1Reference {
   /// of the given resource_type.
   ///
   /// Required.
-  core.String refers;
+  core.String? refers;
 
   /// The type of resource referred to by this reference.
   ///
   /// Valid values are 'KeyStore' or 'TrustStore'.
-  core.String resourceType;
+  core.String? resourceType;
 
   GoogleCloudApigeeV1Reference();
 
@@ -17098,23 +16418,23 @@ class GoogleCloudApigeeV1Reference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (name != null) 'name': name,
-        if (refers != null) 'refers': refers,
-        if (resourceType != null) 'resourceType': resourceType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (refers != null) 'refers': refers!,
+        if (resourceType != null) 'resourceType': resourceType!,
       };
 }
 
 class GoogleCloudApigeeV1ReferenceConfig {
   /// Name of the reference in the following format:
   /// `organizations/{org}/environments/{env}/references/{reference}`
-  core.String name;
+  core.String? name;
 
   /// Name of the referenced resource in the following format:
   /// `organizations/{org}/environments/{env}/keystores/{keystore}` Only
   /// references to keystore resources are supported.
-  core.String resourceName;
+  core.String? resourceName;
 
   GoogleCloudApigeeV1ReferenceConfig();
 
@@ -17127,9 +16447,9 @@ class GoogleCloudApigeeV1ReferenceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (resourceName != null) 'resourceName': resourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (resourceName != null) 'resourceName': resourceName!,
       };
 }
 
@@ -17137,17 +16457,17 @@ class GoogleCloudApigeeV1ReferenceConfig {
 class GoogleCloudApigeeV1ReportInstanceStatusRequest {
   /// A unique ID for the instance which is guaranteed to be unique in case the
   /// user installs multiple hybrid runtimes with the same instance ID.
-  core.String instanceUid;
+  core.String? instanceUid;
 
   /// The time the report was generated in the runtime.
   ///
   /// Used to prevent an old status from overwriting a newer one. An instance
   /// should space out it's status reports so that clock skew does not play a
   /// factor.
-  core.String reportTime;
+  core.String? reportTime;
 
   /// Status for config resources
-  core.List<GoogleCloudApigeeV1ResourceStatus> resources;
+  core.List<GoogleCloudApigeeV1ResourceStatus>? resources;
 
   GoogleCloudApigeeV1ReportInstanceStatusRequest();
 
@@ -17167,11 +16487,11 @@ class GoogleCloudApigeeV1ReportInstanceStatusRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (instanceUid != null) 'instanceUid': instanceUid,
-        if (reportTime != null) 'reportTime': reportTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (instanceUid != null) 'instanceUid': instanceUid!,
+        if (reportTime != null) 'reportTime': reportTime!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
+          'resources': resources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -17183,15 +16503,15 @@ class GoogleCloudApigeeV1ReportInstanceStatusResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 class GoogleCloudApigeeV1ReportProperty {
   /// name of the property
-  core.String property;
+  core.String? property;
 
   /// property values
-  core.List<GoogleCloudApigeeV1Attribute> value;
+  core.List<GoogleCloudApigeeV1Attribute>? value;
 
   GoogleCloudApigeeV1ReportProperty();
 
@@ -17208,21 +16528,21 @@ class GoogleCloudApigeeV1ReportProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (property != null) 'property': property,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (property != null) 'property': property!,
         if (value != null)
-          'value': value.map((value) => value.toJson()).toList(),
+          'value': value!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GoogleCloudApigeeV1ResourceConfig {
   /// Location of the resource as a URI.
-  core.String location;
+  core.String? location;
 
   /// Resource name in the following format:
   /// `organizations/{org}/environments/{env}/resourcefiles/{type}/{file}/revisions/{rev}`
   /// Only environment-scoped resource files are supported.
-  core.String name;
+  core.String? name;
 
   GoogleCloudApigeeV1ResourceConfig();
 
@@ -17235,21 +16555,21 @@ class GoogleCloudApigeeV1ResourceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (location != null) 'location': location,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Metadata about a resource file.
 class GoogleCloudApigeeV1ResourceFile {
   /// ID of the resource file.
-  core.String name;
+  core.String? name;
 
   /// Resource file type.
   ///
   /// {{ resource_file_type }}
-  core.String type;
+  core.String? type;
 
   GoogleCloudApigeeV1ResourceFile();
 
@@ -17262,16 +16582,16 @@ class GoogleCloudApigeeV1ResourceFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// List of resource files.
 class GoogleCloudApigeeV1ResourceFiles {
   /// List of resource files.
-  core.List<GoogleCloudApigeeV1ResourceFile> resourceFile;
+  core.List<GoogleCloudApigeeV1ResourceFile>? resourceFile;
 
   GoogleCloudApigeeV1ResourceFiles();
 
@@ -17285,9 +16605,9 @@ class GoogleCloudApigeeV1ResourceFiles {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (resourceFile != null)
-          'resourceFile': resourceFile.map((value) => value.toJson()).toList(),
+          'resourceFile': resourceFile!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -17298,19 +16618,19 @@ class GoogleCloudApigeeV1ResourceStatus {
   /// Currently only two resources are supported: EnvironmentGroup -
   /// organizations/{org}/envgroups/{envgroup} EnvironmentConfig -
   /// organizations/{org}/environments/{environment}/deployedConfig
-  core.String resource;
+  core.String? resource;
 
   /// Revisions of the resource currently deployed in the instance.
-  core.List<GoogleCloudApigeeV1RevisionStatus> revisions;
+  core.List<GoogleCloudApigeeV1RevisionStatus>? revisions;
 
   /// The total number of replicas that should have this resource.
-  core.int totalReplicas;
+  core.int? totalReplicas;
 
   /// The uid of the resource.
   ///
   /// In the unexpected case that the instance has multiple uids for the same
   /// name, they should be reported under separate ResourceStatuses.
-  core.String uid;
+  core.String? uid;
 
   GoogleCloudApigeeV1ResourceStatus();
 
@@ -17333,12 +16653,12 @@ class GoogleCloudApigeeV1ResourceStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resource != null) 'resource': resource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resource != null) 'resource': resource!,
         if (revisions != null)
-          'revisions': revisions.map((value) => value.toJson()).toList(),
-        if (totalReplicas != null) 'totalReplicas': totalReplicas,
-        if (uid != null) 'uid': uid,
+          'revisions': revisions!.map((value) => value.toJson()).toList(),
+        if (totalReplicas != null) 'totalReplicas': totalReplicas!,
+        if (uid != null) 'uid': uid!,
       };
 }
 
@@ -17362,47 +16682,47 @@ class GoogleCloudApigeeV1Result {
   ///
   /// Can be one of the five: DebugInfo, RequestMessage, ResponseMessage,
   /// ErrorMessage, VariableAccess
-  core.String ActionResult;
+  core.String? ActionResult;
 
   /// A list of variable access actions agaist the api proxy.
   ///
   /// Supported values: Get, Set, Remove.
-  core.List<GoogleCloudApigeeV1Access> accessList;
+  core.List<GoogleCloudApigeeV1Access>? accessList;
 
   /// Error message content.
   ///
   /// for example, "content" : "{\"fault\":{\"faultstring\":\"API timed
   /// out\",\"detail\":{\"errorcode\":\"flow.APITimedOut\"}}}"
-  core.String content;
+  core.String? content;
 
   /// A list of HTTP headers.
   ///
   /// for example, '"headers" : \[ { "name" : "Content-Length", "value" : "83"
   /// }, { "name" : "Content-Type", "value" : "application/json" } \]'
-  core.List<GoogleCloudApigeeV1Property> headers;
+  core.List<GoogleCloudApigeeV1Property>? headers;
 
   /// Name value pairs used for DebugInfo ActionResult.
-  GoogleCloudApigeeV1Properties properties;
+  GoogleCloudApigeeV1Properties? properties;
 
   /// HTTP response phrase
-  core.String reasonPhrase;
+  core.String? reasonPhrase;
 
   /// HTTP response code
-  core.String statusCode;
+  core.String? statusCode;
 
   /// Timestamp of when the result is recorded.
   ///
   /// Its format is dd-mm-yy hh:mm:ss:xxx. For example, `"timestamp" : "12-08-19
   /// 00:31:59:960"`
-  core.String timestamp;
+  core.String? timestamp;
 
   /// The relative path of the api proxy.
   ///
   /// for example, `"uRI" : "/iloveapis"`
-  core.String uRI;
+  core.String? uRI;
 
   /// HTTP method verb
-  core.String verb;
+  core.String? verb;
 
   GoogleCloudApigeeV1Result();
 
@@ -17448,35 +16768,35 @@ class GoogleCloudApigeeV1Result {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ActionResult != null) 'ActionResult': ActionResult,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ActionResult != null) 'ActionResult': ActionResult!,
         if (accessList != null)
-          'accessList': accessList.map((value) => value.toJson()).toList(),
-        if (content != null) 'content': content,
+          'accessList': accessList!.map((value) => value.toJson()).toList(),
+        if (content != null) 'content': content!,
         if (headers != null)
-          'headers': headers.map((value) => value.toJson()).toList(),
-        if (properties != null) 'properties': properties.toJson(),
-        if (reasonPhrase != null) 'reasonPhrase': reasonPhrase,
-        if (statusCode != null) 'statusCode': statusCode,
-        if (timestamp != null) 'timestamp': timestamp,
-        if (uRI != null) 'uRI': uRI,
-        if (verb != null) 'verb': verb,
+          'headers': headers!.map((value) => value.toJson()).toList(),
+        if (properties != null) 'properties': properties!.toJson(),
+        if (reasonPhrase != null) 'reasonPhrase': reasonPhrase!,
+        if (statusCode != null) 'statusCode': statusCode!,
+        if (timestamp != null) 'timestamp': timestamp!,
+        if (uRI != null) 'uRI': uRI!,
+        if (verb != null) 'verb': verb!,
       };
 }
 
 /// The status of a specific resource revision.
 class GoogleCloudApigeeV1RevisionStatus {
   /// Errors reported when attempting to load this revision.
-  core.List<GoogleCloudApigeeV1UpdateError> errors;
+  core.List<GoogleCloudApigeeV1UpdateError>? errors;
 
   /// The json content of the resource revision.
-  core.String jsonSpec;
+  core.String? jsonSpec;
 
   /// The number of replicas that have successfully loaded this revision.
-  core.int replicas;
+  core.int? replicas;
 
   /// The revision of the resource.
-  core.String revisionId;
+  core.String? revisionId;
 
   GoogleCloudApigeeV1RevisionStatus();
 
@@ -17499,12 +16819,12 @@ class GoogleCloudApigeeV1RevisionStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
-        if (jsonSpec != null) 'jsonSpec': jsonSpec,
-        if (replicas != null) 'replicas': replicas,
-        if (revisionId != null) 'revisionId': revisionId,
+          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (jsonSpec != null) 'jsonSpec': jsonSpec!,
+        if (replicas != null) 'replicas': replicas!,
+        if (revisionId != null) 'revisionId': revisionId!,
       };
 }
 
@@ -17513,7 +16833,7 @@ class GoogleCloudApigeeV1RoutingRule {
   ///
   /// May contain one or more wildcards. For example, path segments consisting
   /// of a single `*` character will match any string.
-  core.String basepath;
+  core.String? basepath;
 
   /// The env group config revision_id when this rule was added or last updated.
   ///
@@ -17522,25 +16842,25 @@ class GoogleCloudApigeeV1RoutingRule {
   /// date with respect to this rule. This field is omitted from the
   /// IngressConfig unless the GetDeployedIngressConfig API is called with
   /// view=FULL.
-  core.String envGroupRevision;
+  core.String? envGroupRevision;
 
   /// Name of an environment bound to the environment group in the following
   /// format: `organizations/{org}/environments/{env}`.
-  core.String environment;
+  core.String? environment;
 
   /// The resource name of the proxy revision that is receiving this basepath in
   /// the following format: `organizations/{org}/apis/{api}/revisions/{rev}`.
   ///
   /// This field is omitted from the IngressConfig unless the
   /// GetDeployedIngressConfig API is called with view=FULL.
-  core.String receiver;
+  core.String? receiver;
 
   /// The unix timestamp when this rule was updated.
   ///
   /// This is updated whenever env_group_revision is updated. This field is
   /// omitted from the IngressConfig unless the GetDeployedIngressConfig API is
   /// called with view=FULL.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudApigeeV1RoutingRule();
 
@@ -17562,12 +16882,12 @@ class GoogleCloudApigeeV1RoutingRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (basepath != null) 'basepath': basepath,
-        if (envGroupRevision != null) 'envGroupRevision': envGroupRevision,
-        if (environment != null) 'environment': environment,
-        if (receiver != null) 'receiver': receiver,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (basepath != null) 'basepath': basepath!,
+        if (envGroupRevision != null) 'envGroupRevision': envGroupRevision!,
+        if (environment != null) 'environment': environment!,
+        if (receiver != null) 'receiver': receiver!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -17575,7 +16895,7 @@ class GoogleCloudApigeeV1RoutingRule {
 /// trace in an environment.
 class GoogleCloudApigeeV1RuntimeTraceConfig {
   /// Endpoint of the exporter.
-  core.String endpoint;
+  core.String? endpoint;
 
   /// Exporter that is used to view the distributed trace captured using
   /// OpenCensus.
@@ -17586,24 +16906,24 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
   /// - "EXPORTER_UNSPECIFIED" : Exporter unspecified
   /// - "JAEGER" : Jaeger exporter
   /// - "CLOUD_TRACE" : Cloudtrace exporter
-  core.String exporter;
+  core.String? exporter;
 
   /// Name of the trace config in the following format:
   /// `organizations/{org}/environment/{env}/traceConfig`
-  core.String name;
+  core.String? name;
 
   /// List of trace configuration overrides for spicific API proxies.
-  core.List<GoogleCloudApigeeV1RuntimeTraceConfigOverride> overrides;
+  core.List<GoogleCloudApigeeV1RuntimeTraceConfigOverride>? overrides;
 
   /// The timestamp that the revision was created or updated.
-  core.String revisionCreateTime;
+  core.String? revisionCreateTime;
 
   /// Revision number which can be used by the runtime to detect if the trace
   /// config has changed between two versions.
-  core.String revisionId;
+  core.String? revisionId;
 
   /// Trace configuration for all API proxies in an environment.
-  GoogleCloudApigeeV1RuntimeTraceSamplingConfig samplingConfig;
+  GoogleCloudApigeeV1RuntimeTraceSamplingConfig? samplingConfig;
 
   GoogleCloudApigeeV1RuntimeTraceConfig();
 
@@ -17636,16 +16956,16 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endpoint != null) 'endpoint': endpoint,
-        if (exporter != null) 'exporter': exporter,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endpoint != null) 'endpoint': endpoint!,
+        if (exporter != null) 'exporter': exporter!,
+        if (name != null) 'name': name!,
         if (overrides != null)
-          'overrides': overrides.map((value) => value.toJson()).toList(),
+          'overrides': overrides!.map((value) => value.toJson()).toList(),
         if (revisionCreateTime != null)
-          'revisionCreateTime': revisionCreateTime,
-        if (revisionId != null) 'revisionId': revisionId,
-        if (samplingConfig != null) 'samplingConfig': samplingConfig.toJson(),
+          'revisionCreateTime': revisionCreateTime!,
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (samplingConfig != null) 'samplingConfig': samplingConfig!.toJson(),
       };
 }
 
@@ -17654,27 +16974,27 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
 class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
   /// Name of the API proxy that will have its trace configuration overridden
   /// following format: `organizations/{org}/apis/{api}`
-  core.String apiProxy;
+  core.String? apiProxy;
 
   /// Name of the trace config override in the following format:
   /// `organizations/{org}/environment/{env}/traceConfig/overrides/{override}`
-  core.String name;
+  core.String? name;
 
   /// The timestamp that the revision was created or updated.
-  core.String revisionCreateTime;
+  core.String? revisionCreateTime;
 
   /// Revision number which can be used by the runtime to detect if the trace
   /// config override has changed between two versions.
-  core.String revisionId;
+  core.String? revisionId;
 
   /// Trace configuration override for a specific API proxy in an environment.
-  GoogleCloudApigeeV1RuntimeTraceSamplingConfig samplingConfig;
+  GoogleCloudApigeeV1RuntimeTraceSamplingConfig? samplingConfig;
 
   /// Unique ID for the configuration override.
   ///
   /// The ID will only change if the override is deleted and recreated.
   /// Corresponds to name's "override" field.
-  core.String uid;
+  core.String? uid;
 
   GoogleCloudApigeeV1RuntimeTraceConfigOverride();
 
@@ -17700,14 +17020,14 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiProxy != null) 'apiProxy': apiProxy,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiProxy != null) 'apiProxy': apiProxy!,
+        if (name != null) 'name': name!,
         if (revisionCreateTime != null)
-          'revisionCreateTime': revisionCreateTime,
-        if (revisionId != null) 'revisionId': revisionId,
-        if (samplingConfig != null) 'samplingConfig': samplingConfig.toJson(),
-        if (uid != null) 'uid': uid,
+          'revisionCreateTime': revisionCreateTime!,
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (samplingConfig != null) 'samplingConfig': samplingConfig!.toJson(),
+        if (uid != null) 'uid': uid!,
       };
 }
 
@@ -17727,13 +17047,13 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
   /// - "PROBABILITY" : PROBABILITY means traces are captured on a probability
   /// that defined by sampling_rate. The sampling rate is limited to 0 to 0.5
   /// when this is set.
-  core.String sampler;
+  core.String? sampler;
 
   /// Field sampling rate.
   ///
   /// This value is only applicable when using the PROBABILITY sampler. The
   /// supported values are > 0 and <= 0.5.
-  core.double samplingRate;
+  core.double? samplingRate;
 
   GoogleCloudApigeeV1RuntimeTraceSamplingConfig();
 
@@ -17746,27 +17066,27 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sampler != null) 'sampler': sampler,
-        if (samplingRate != null) 'samplingRate': samplingRate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sampler != null) 'sampler': sampler!,
+        if (samplingRate != null) 'samplingRate': samplingRate!,
       };
 }
 
 /// Response for Schema call
 class GoogleCloudApigeeV1Schema {
   /// List of schema fiels grouped as dimensions.
-  core.List<GoogleCloudApigeeV1SchemaSchemaElement> dimensions;
+  core.List<GoogleCloudApigeeV1SchemaSchemaElement>? dimensions;
 
   /// Additional metadata associated with schema.
   ///
   /// This is a legacy field and usually consists of an empty array of strings.
-  core.List<core.String> meta;
+  core.List<core.String>? meta;
 
   /// List of schema fields grouped as dimensions.
   ///
   /// These are fields that can be used with an aggregate function such as sum,
   /// avg, min, max.
-  core.List<GoogleCloudApigeeV1SchemaSchemaElement> metrics;
+  core.List<GoogleCloudApigeeV1SchemaSchemaElement>? metrics;
 
   GoogleCloudApigeeV1Schema();
 
@@ -17792,23 +17112,23 @@ class GoogleCloudApigeeV1Schema {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
-        if (meta != null) 'meta': meta,
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
+        if (meta != null) 'meta': meta!,
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Message type for the schema element
 class GoogleCloudApigeeV1SchemaSchemaElement {
   /// Name of the field
-  core.String name;
+  core.String? name;
 
   /// Property of the schema field E.g. { "createTime":
   /// "2016-02-26T10:23:09.592Z", "custom": "false", "type": "string" }
-  GoogleCloudApigeeV1SchemaSchemaProperty properties;
+  GoogleCloudApigeeV1SchemaSchemaProperty? properties;
 
   GoogleCloudApigeeV1SchemaSchemaElement();
 
@@ -17822,23 +17142,23 @@ class GoogleCloudApigeeV1SchemaSchemaElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (properties != null) 'properties': properties.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (properties != null) 'properties': properties!.toJson(),
       };
 }
 
 /// Message type for schema property
 class GoogleCloudApigeeV1SchemaSchemaProperty {
   /// Creation time of the field
-  core.String createTime;
+  core.String? createTime;
 
   /// Custom is a flag signifying if the field was provided as part of the
   /// standard dataset or a custom field created by the customer
-  core.String custom;
+  core.String? custom;
 
   /// Data type of the field.
-  core.String type;
+  core.String? type;
 
   GoogleCloudApigeeV1SchemaSchemaProperty();
 
@@ -17854,19 +17174,19 @@ class GoogleCloudApigeeV1SchemaSchemaProperty {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (custom != null) 'custom': custom,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (custom != null) 'custom': custom!,
+        if (type != null) 'type': type!,
       };
 }
 
 class GoogleCloudApigeeV1ServiceIssuersMapping {
   /// List of trusted issuer email ids.
-  core.List<core.String> emailIds;
+  core.List<core.String>? emailIds;
 
   /// String indicating the Apigee service name.
-  core.String service;
+  core.String? service;
 
   GoogleCloudApigeeV1ServiceIssuersMapping();
 
@@ -17881,19 +17201,19 @@ class GoogleCloudApigeeV1ServiceIssuersMapping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (emailIds != null) 'emailIds': emailIds,
-        if (service != null) 'service': service,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (emailIds != null) 'emailIds': emailIds!,
+        if (service != null) 'service': service!,
       };
 }
 
 /// Session carries the debug session id and its creation time.
 class GoogleCloudApigeeV1Session {
   /// The debug session ID.
-  core.String id;
+  core.String? id;
 
   /// The first transaction creation timestamp in millisecond, recoreded by UAP.
-  core.String timestampMs;
+  core.String? timestampMs;
 
   GoogleCloudApigeeV1Session();
 
@@ -17906,25 +17226,25 @@ class GoogleCloudApigeeV1Session {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (timestampMs != null) 'timestampMs': timestampMs,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (timestampMs != null) 'timestampMs': timestampMs!,
       };
 }
 
 /// The metadata describing a shared flow
 class GoogleCloudApigeeV1SharedFlow {
   /// The id of the most recently created revision for this shared flow.
-  core.String latestRevisionId;
+  core.String? latestRevisionId;
 
   /// Metadata describing the shared flow.
-  GoogleCloudApigeeV1EntityMetadata metaData;
+  GoogleCloudApigeeV1EntityMetadata? metaData;
 
   /// The ID of the shared flow.
-  core.String name;
+  core.String? name;
 
   /// A list of revisions of this shared flow.
-  core.List<core.String> revision;
+  core.List<core.String>? revision;
 
   GoogleCloudApigeeV1SharedFlow();
 
@@ -17946,11 +17266,11 @@ class GoogleCloudApigeeV1SharedFlow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (latestRevisionId != null) 'latestRevisionId': latestRevisionId,
-        if (metaData != null) 'metaData': metaData.toJson(),
-        if (name != null) 'name': name,
-        if (revision != null) 'revision': revision,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (latestRevisionId != null) 'latestRevisionId': latestRevisionId!,
+        if (metaData != null) 'metaData': metaData!.toJson(),
+        if (name != null) 'name': name!,
+        if (revision != null) 'revision': revision!,
       };
 }
 
@@ -17962,49 +17282,49 @@ class GoogleCloudApigeeV1SharedFlowRevision {
   /// The only supported value currently is majorVersion 4 and minorVersion 0.
   /// This setting may be used in the future to enable evolution of the shared
   /// flow format.
-  GoogleCloudApigeeV1ConfigVersion configurationVersion;
+  GoogleCloudApigeeV1ConfigVersion? configurationVersion;
 
   /// A textual description of the shared flow revision.
-  core.String contextInfo;
+  core.String? contextInfo;
 
   /// Time at which this shared flow revision was created, in milliseconds since
   /// epoch.
-  core.String createdAt;
+  core.String? createdAt;
 
   /// Description of the shared flow revision.
-  core.String description;
+  core.String? description;
 
   /// The human readable name of this shared flow.
-  core.String displayName;
+  core.String? displayName;
 
   /// A Key-Value map of metadata about this shared flow revision.
-  core.Map<core.String, core.String> entityMetaDataAsProperties;
+  core.Map<core.String, core.String>? entityMetaDataAsProperties;
 
   /// Time at which this shared flow revision was most recently modified, in
   /// milliseconds since epoch.
-  core.String lastModifiedAt;
+  core.String? lastModifiedAt;
 
   /// The resource ID of the parent shared flow.
-  core.String name;
+  core.String? name;
 
   /// A list of policy names included in this shared flow revision.
-  core.List<core.String> policies;
+  core.List<core.String>? policies;
 
   /// The resource files included in this shared flow revision.
-  GoogleCloudApigeeV1ResourceFiles resourceFiles;
+  GoogleCloudApigeeV1ResourceFiles? resourceFiles;
 
   /// A list of the resources included in this shared flow revision formatted as
   /// "{type}://{name}".
-  core.List<core.String> resources;
+  core.List<core.String>? resources;
 
   /// The resource ID of this revision.
-  core.String revision;
+  core.String? revision;
 
   /// A list of the shared flow names included in this shared flow revision.
-  core.List<core.String> sharedFlows;
+  core.List<core.String>? sharedFlows;
 
   /// The string "Application"
-  core.String type;
+  core.String? type;
 
   GoogleCloudApigeeV1SharedFlowRevision();
 
@@ -18069,36 +17389,36 @@ class GoogleCloudApigeeV1SharedFlowRevision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (configurationVersion != null)
-          'configurationVersion': configurationVersion.toJson(),
-        if (contextInfo != null) 'contextInfo': contextInfo,
-        if (createdAt != null) 'createdAt': createdAt,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+          'configurationVersion': configurationVersion!.toJson(),
+        if (contextInfo != null) 'contextInfo': contextInfo!,
+        if (createdAt != null) 'createdAt': createdAt!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (entityMetaDataAsProperties != null)
-          'entityMetaDataAsProperties': entityMetaDataAsProperties,
-        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt,
-        if (name != null) 'name': name,
-        if (policies != null) 'policies': policies,
-        if (resourceFiles != null) 'resourceFiles': resourceFiles.toJson(),
-        if (resources != null) 'resources': resources,
-        if (revision != null) 'revision': revision,
-        if (sharedFlows != null) 'sharedFlows': sharedFlows,
-        if (type != null) 'type': type,
+          'entityMetaDataAsProperties': entityMetaDataAsProperties!,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+        if (name != null) 'name': name!,
+        if (policies != null) 'policies': policies!,
+        if (resourceFiles != null) 'resourceFiles': resourceFiles!.toJson(),
+        if (resources != null) 'resources': resources!,
+        if (revision != null) 'revision': revision!,
+        if (sharedFlows != null) 'sharedFlows': sharedFlows!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// This message type encapsulates a stats response.
 class GoogleCloudApigeeV1Stats {
   /// This field contains a list of query results on environment level.
-  core.List<GoogleCloudApigeeV1StatsEnvironmentStats> environments;
+  core.List<GoogleCloudApigeeV1StatsEnvironmentStats>? environments;
 
   /// This field contains a list of query results grouped by host.
-  core.List<GoogleCloudApigeeV1StatsHostStats> hosts;
+  core.List<GoogleCloudApigeeV1StatsHostStats>? hosts;
 
   /// This field contains the metadata information.
-  GoogleCloudApigeeV1Metadata metaData;
+  GoogleCloudApigeeV1Metadata? metaData;
 
   GoogleCloudApigeeV1Stats();
 
@@ -18123,12 +17443,12 @@ class GoogleCloudApigeeV1Stats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (environments != null)
-          'environments': environments.map((value) => value.toJson()).toList(),
+          'environments': environments!.map((value) => value.toJson()).toList(),
         if (hosts != null)
-          'hosts': hosts.map((value) => value.toJson()).toList(),
-        if (metaData != null) 'metaData': metaData.toJson(),
+          'hosts': hosts!.map((value) => value.toJson()).toList(),
+        if (metaData != null) 'metaData': metaData!.toJson(),
       };
 }
 
@@ -18137,7 +17457,7 @@ class GoogleCloudApigeeV1Stats {
 /// } \], "name": "prod" } \]
 class GoogleCloudApigeeV1StatsEnvironmentStats {
   /// This field contains the list of metrics grouped under dimensions.
-  core.List<GoogleCloudApigeeV1DimensionMetric> dimensions;
+  core.List<GoogleCloudApigeeV1DimensionMetric>? dimensions;
 
   /// In the final response, only one of the following fields will be present
   /// based on the dimensions provided.
@@ -18151,8 +17471,8 @@ class GoogleCloudApigeeV1StatsEnvironmentStats {
   /// \[ { "metrics": \[ { "name": "sum(message_count)", "values": \[
   /// "2.19026331E8" \] } \], "name": "prod" } \] This field contains the list
   /// of metric values.
-  core.List<GoogleCloudApigeeV1Metric> metrics;
-  core.String name;
+  core.List<GoogleCloudApigeeV1Metric>? metrics;
+  core.String? name;
 
   GoogleCloudApigeeV1StatsEnvironmentStats();
 
@@ -18176,12 +17496,12 @@ class GoogleCloudApigeeV1StatsEnvironmentStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -18190,7 +17510,7 @@ class GoogleCloudApigeeV1StatsEnvironmentStats {
 /// } \], "name": "example.com" } \]
 class GoogleCloudApigeeV1StatsHostStats {
   /// This field contains the list of metrics grouped under dimensions.
-  core.List<GoogleCloudApigeeV1DimensionMetric> dimensions;
+  core.List<GoogleCloudApigeeV1DimensionMetric>? dimensions;
 
   /// In the final response, only one of the following fields will be present
   /// based on the dimensions provided.
@@ -18203,10 +17523,10 @@ class GoogleCloudApigeeV1StatsHostStats {
   /// "nit_proxy" } \], "name": "example.com" } \] OR "hosts": \[ { "metrics":
   /// \[ { "name": "sum(message_count)", "values": \[ "2.19026331E8" \] } \],
   /// "name": "example.com" } \] This field contains the list of metric values.
-  core.List<GoogleCloudApigeeV1Metric> metrics;
+  core.List<GoogleCloudApigeeV1Metric>? metrics;
 
   /// This field contains the hostname used in query.
-  core.String name;
+  core.String? name;
 
   GoogleCloudApigeeV1StatsHostStats();
 
@@ -18230,12 +17550,12 @@ class GoogleCloudApigeeV1StatsHostStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -18245,7 +17565,7 @@ class GoogleCloudApigeeV1Subscription {
   ///
   /// Use the following structure in your request: `subscription
   /// "projects/foo/subscription/bar"`
-  core.String name;
+  core.String? name;
 
   GoogleCloudApigeeV1Subscription();
 
@@ -18255,8 +17575,8 @@ class GoogleCloudApigeeV1Subscription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -18272,8 +17592,8 @@ class GoogleCloudApigeeV1SyncAuthorization {
   /// the call to `setSyncAuthorization`, then the existing authorization is
   /// overwritten indiscriminately. **Note**: We strongly recommend that you use
   /// the ETag in the read-modify-write cycle to avoid race conditions.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -18293,7 +17613,7 @@ class GoogleCloudApigeeV1SyncAuthorization {
   /// [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/latest/sa-about#create-the-service-accounts).
   ///
   /// Required.
-  core.List<core.String> identities;
+  core.List<core.String>? identities;
 
   GoogleCloudApigeeV1SyncAuthorization();
 
@@ -18308,9 +17628,9 @@ class GoogleCloudApigeeV1SyncAuthorization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (identities != null) 'identities': identities,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (identities != null) 'identities': identities!,
       };
 }
 
@@ -18322,14 +17642,14 @@ class GoogleCloudApigeeV1TargetServer {
   /// A human-readable description of this TargetServer.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// The host name this target connects to.
   ///
   /// Value must be a valid hostname as described by RFC-1123.
   ///
   /// Required.
-  core.String host;
+  core.String? host;
 
   /// Enabling/disabling a TargetServer is useful when TargetServers are used in
   /// load balancing configurations, and one or more TargetServers need to taken
@@ -18338,21 +17658,21 @@ class GoogleCloudApigeeV1TargetServer {
   /// Defaults to true.
   ///
   /// Optional.
-  core.bool isEnabled;
+  core.bool? isEnabled;
 
   /// The resource id of this target server.
   ///
   /// Values must match the regular expression
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The port number this target connects to on the given host.
   ///
   /// Value must be between 1 and 65535, inclusive.
   ///
   /// Required.
-  core.int port;
+  core.int? port;
 
   /// Specifies TLS configuration info for this TargetServer.
   ///
@@ -18361,7 +17681,7 @@ class GoogleCloudApigeeV1TargetServer {
   /// configuration.
   ///
   /// Optional.
-  GoogleCloudApigeeV1TlsInfo sSLInfo;
+  GoogleCloudApigeeV1TlsInfo? sSLInfo;
 
   GoogleCloudApigeeV1TargetServer();
 
@@ -18387,29 +17707,29 @@ class GoogleCloudApigeeV1TargetServer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (host != null) 'host': host,
-        if (isEnabled != null) 'isEnabled': isEnabled,
-        if (name != null) 'name': name,
-        if (port != null) 'port': port,
-        if (sSLInfo != null) 'sSLInfo': sSLInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (host != null) 'host': host!,
+        if (isEnabled != null) 'isEnabled': isEnabled!,
+        if (name != null) 'name': name!,
+        if (port != null) 'port': port!,
+        if (sSLInfo != null) 'sSLInfo': sSLInfo!.toJson(),
       };
 }
 
 class GoogleCloudApigeeV1TargetServerConfig {
   /// Host name of the target server.
-  core.String host;
+  core.String? host;
 
   /// Target server revision name in the following format:
   /// `organizations/{org}/environments/{env}/targetservers/{targetserver}/revisions/{rev}`
-  core.String name;
+  core.String? name;
 
   /// Port number for the target server.
-  core.int port;
+  core.int? port;
 
   /// TLS settings for the target server.
-  GoogleCloudApigeeV1TlsInfoConfig tlsInfo;
+  GoogleCloudApigeeV1TlsInfoConfig? tlsInfo;
 
   GoogleCloudApigeeV1TargetServerConfig();
 
@@ -18429,11 +17749,11 @@ class GoogleCloudApigeeV1TargetServerConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (host != null) 'host': host,
-        if (name != null) 'name': name,
-        if (port != null) 'port': port,
-        if (tlsInfo != null) 'tlsInfo': tlsInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (host != null) 'host': host!,
+        if (name != null) 'name': name!,
+        if (port != null) 'port': port!,
+        if (tlsInfo != null) 'tlsInfo': tlsInfo!.toJson(),
       };
 }
 
@@ -18442,12 +17762,12 @@ class GoogleCloudApigeeV1TestDatastoreResponse {
   /// Error message of test connection failure
   ///
   /// Output only.
-  core.String error;
+  core.String? error;
 
   /// It could be `completed` or `failed`
   ///
   /// Output only.
-  core.String state;
+  core.String? state;
 
   GoogleCloudApigeeV1TestDatastoreResponse();
 
@@ -18460,9 +17780,9 @@ class GoogleCloudApigeeV1TestDatastoreResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (error != null) 'error': error,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (error != null) 'error': error!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -18472,22 +17792,22 @@ class GoogleCloudApigeeV1TlsInfo {
   ///
   /// Must be one of the cipher suite names listed in:
   /// http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
-  core.List<core.String> ciphers;
+  core.List<core.String>? ciphers;
 
   /// Enables two-way TLS.
   ///
   /// Optional.
-  core.bool clientAuthEnabled;
+  core.bool? clientAuthEnabled;
 
   /// The TLS Common Name of the certificate.
-  GoogleCloudApigeeV1TlsInfoCommonName commonName;
+  GoogleCloudApigeeV1TlsInfoCommonName? commonName;
 
   /// Enables TLS.
   ///
   /// If false, neither one-way nor two-way TLS will be enabled.
   ///
   /// Required.
-  core.bool enabled;
+  core.bool? enabled;
 
   /// If true, Edge ignores TLS certificate errors.
   ///
@@ -18496,25 +17816,25 @@ class GoogleCloudApigeeV1TlsInfo {
   /// endpoint/target server, if the backend system uses SNI and returns a cert
   /// with a subject Distinguished Name (DN) that does not match the hostname,
   /// there is no way to ignore the error and the connection fails.
-  core.bool ignoreValidationErrors;
+  core.bool? ignoreValidationErrors;
 
   /// Required if `client_auth_enabled` is true.
   ///
   /// The resource ID for the alias containing the private key and cert.
-  core.String keyAlias;
+  core.String? keyAlias;
 
   /// Required if `client_auth_enabled` is true.
   ///
   /// The resource ID of the keystore. References not yet supported.
-  core.String keyStore;
+  core.String? keyStore;
 
   /// The TLS versioins to be used.
-  core.List<core.String> protocols;
+  core.List<core.String>? protocols;
 
   /// The resource ID of the truststore.
   ///
   /// References not yet supported.
-  core.String trustStore;
+  core.String? trustStore;
 
   GoogleCloudApigeeV1TlsInfo();
 
@@ -18553,26 +17873,26 @@ class GoogleCloudApigeeV1TlsInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ciphers != null) 'ciphers': ciphers,
-        if (clientAuthEnabled != null) 'clientAuthEnabled': clientAuthEnabled,
-        if (commonName != null) 'commonName': commonName.toJson(),
-        if (enabled != null) 'enabled': enabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ciphers != null) 'ciphers': ciphers!,
+        if (clientAuthEnabled != null) 'clientAuthEnabled': clientAuthEnabled!,
+        if (commonName != null) 'commonName': commonName!.toJson(),
+        if (enabled != null) 'enabled': enabled!,
         if (ignoreValidationErrors != null)
-          'ignoreValidationErrors': ignoreValidationErrors,
-        if (keyAlias != null) 'keyAlias': keyAlias,
-        if (keyStore != null) 'keyStore': keyStore,
-        if (protocols != null) 'protocols': protocols,
-        if (trustStore != null) 'trustStore': trustStore,
+          'ignoreValidationErrors': ignoreValidationErrors!,
+        if (keyAlias != null) 'keyAlias': keyAlias!,
+        if (keyStore != null) 'keyStore': keyStore!,
+        if (protocols != null) 'protocols': protocols!,
+        if (trustStore != null) 'trustStore': trustStore!,
       };
 }
 
 class GoogleCloudApigeeV1TlsInfoCommonName {
   /// The TLS Common Name string of the certificate.
-  core.String value;
+  core.String? value;
 
   /// Indicates whether the cert should be matched against as a wildcard cert.
-  core.bool wildcardMatch;
+  core.bool? wildcardMatch;
 
   GoogleCloudApigeeV1TlsInfoCommonName();
 
@@ -18585,51 +17905,51 @@ class GoogleCloudApigeeV1TlsInfoCommonName {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (value != null) 'value': value,
-        if (wildcardMatch != null) 'wildcardMatch': wildcardMatch,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (value != null) 'value': value!,
+        if (wildcardMatch != null) 'wildcardMatch': wildcardMatch!,
       };
 }
 
 class GoogleCloudApigeeV1TlsInfoConfig {
   /// List of ciphers that are granted access.
-  core.List<core.String> ciphers;
+  core.List<core.String>? ciphers;
 
   /// Flag that specifies whether client-side authentication is enabled for the
   /// target server.
   ///
   /// Enables two-way TLS.
-  core.bool clientAuthEnabled;
+  core.bool? clientAuthEnabled;
 
   /// Common name to validate the target server against.
-  GoogleCloudApigeeV1CommonNameConfig commonName;
+  GoogleCloudApigeeV1CommonNameConfig? commonName;
 
   /// Flag that specifies whether one-way TLS is enabled.
   ///
   /// Set to `true` to enable one-way TLS.
-  core.bool enabled;
+  core.bool? enabled;
 
   /// Flag that specifies whether to ignore TLS certificate validation errors.
   ///
   /// Set to `true` to ignore errors.
-  core.bool ignoreValidationErrors;
+  core.bool? ignoreValidationErrors;
 
   /// Name of the alias used for client-side authentication in the following
   /// format:
   /// `organizations/{org}/environments/{env}/keystores/{keystore}/aliases/{alias}`
-  core.String keyAlias;
+  core.String? keyAlias;
 
   /// Reference name and alias pair to use for client-side authentication.
-  GoogleCloudApigeeV1KeyAliasReference keyAliasReference;
+  GoogleCloudApigeeV1KeyAliasReference? keyAliasReference;
 
   /// List of TLS protocols that are granted access.
-  core.List<core.String> protocols;
+  core.List<core.String>? protocols;
 
   /// Name of the keystore or keystore reference containing trusted certificates
   /// for the server in the following format:
   /// `organizations/{org}/environments/{env}/keystores/{keystore}` or
   /// `organizations/{org}/environments/{env}/references/{reference}`
-  core.String trustStore;
+  core.String? trustStore;
 
   GoogleCloudApigeeV1TlsInfoConfig();
 
@@ -18669,18 +17989,18 @@ class GoogleCloudApigeeV1TlsInfoConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ciphers != null) 'ciphers': ciphers,
-        if (clientAuthEnabled != null) 'clientAuthEnabled': clientAuthEnabled,
-        if (commonName != null) 'commonName': commonName.toJson(),
-        if (enabled != null) 'enabled': enabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ciphers != null) 'ciphers': ciphers!,
+        if (clientAuthEnabled != null) 'clientAuthEnabled': clientAuthEnabled!,
+        if (commonName != null) 'commonName': commonName!.toJson(),
+        if (enabled != null) 'enabled': enabled!,
         if (ignoreValidationErrors != null)
-          'ignoreValidationErrors': ignoreValidationErrors,
-        if (keyAlias != null) 'keyAlias': keyAlias,
+          'ignoreValidationErrors': ignoreValidationErrors!,
+        if (keyAlias != null) 'keyAlias': keyAlias!,
         if (keyAliasReference != null)
-          'keyAliasReference': keyAliasReference.toJson(),
-        if (protocols != null) 'protocols': protocols,
-        if (trustStore != null) 'trustStore': trustStore,
+          'keyAliasReference': keyAliasReference!.toJson(),
+        if (protocols != null) 'protocols': protocols!,
+        if (trustStore != null) 'trustStore': trustStore!,
       };
 }
 
@@ -18767,22 +18087,22 @@ class GoogleCloudApigeeV1UpdateError {
   /// Service Unavailable
   /// - "DATA_LOSS" : Unrecoverable data loss or corruption. HTTP Mapping: 500
   /// Internal Server Error
-  core.String code;
+  core.String? code;
 
   /// User-friendly error message.
-  core.String message;
+  core.String? message;
 
   /// The sub resource specific to this error (e.g. a proxy deployed within the
   /// EnvironmentConfig).
   ///
   /// If empty the error refers to the top level resource.
-  core.String resource;
+  core.String? resource;
 
   /// A string that uniquely identifies the type of error.
   ///
   /// This provides a more reliable means to deduplicate errors across revisions
   /// and instances.
-  core.String type;
+  core.String? type;
 
   GoogleCloudApigeeV1UpdateError();
 
@@ -18801,11 +18121,11 @@ class GoogleCloudApigeeV1UpdateError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (message != null) 'message': message,
-        if (resource != null) 'resource': resource,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (message != null) 'message': message!,
+        if (resource != null) 'resource': resource!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -18828,13 +18148,13 @@ class GoogleCloudApigeeV1UpdateError {
 /// aliya@example.com from DATA_WRITE logging.
 class GoogleIamV1AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<GoogleIamV1AuditLogConfig> auditLogConfigs;
+  core.List<GoogleIamV1AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   GoogleIamV1AuditConfig();
 
@@ -18851,11 +18171,11 @@ class GoogleIamV1AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -18870,7 +18190,7 @@ class GoogleIamV1AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -18878,7 +18198,7 @@ class GoogleIamV1AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   GoogleIamV1AuditLogConfig();
 
@@ -18893,9 +18213,9 @@ class GoogleIamV1AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -18909,7 +18229,7 @@ class GoogleIamV1Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  GoogleTypeExpr condition;
+  GoogleTypeExpr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -18941,12 +18261,12 @@ class GoogleIamV1Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   GoogleIamV1Binding();
 
@@ -18965,10 +18285,10 @@ class GoogleIamV1Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -19005,14 +18325,14 @@ class GoogleIamV1Binding {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class GoogleIamV1Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<GoogleIamV1AuditConfig> auditConfigs;
+  core.List<GoogleIamV1AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<GoogleIamV1Binding> bindings;
+  core.List<GoogleIamV1Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -19026,8 +18346,8 @@ class GoogleIamV1Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -19051,7 +18371,7 @@ class GoogleIamV1Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   GoogleIamV1Policy();
 
@@ -19077,13 +18397,13 @@ class GoogleIamV1Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -19094,13 +18414,13 @@ class GoogleIamV1SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  GoogleIamV1Policy policy;
+  GoogleIamV1Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   GoogleIamV1SetIamPolicyRequest();
 
@@ -19114,9 +18434,9 @@ class GoogleIamV1SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -19127,7 +18447,7 @@ class GoogleIamV1TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   GoogleIamV1TestIamPermissionsRequest();
 
@@ -19139,8 +18459,8 @@ class GoogleIamV1TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -19148,7 +18468,7 @@ class GoogleIamV1TestIamPermissionsRequest {
 class GoogleIamV1TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   GoogleIamV1TestIamPermissionsResponse();
 
@@ -19160,18 +18480,18 @@ class GoogleIamV1TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<GoogleLongrunningOperation> operations;
+  core.List<GoogleLongrunningOperation>? operations;
 
   GoogleLongrunningListOperationsResponse();
 
@@ -19188,10 +18508,10 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -19202,10 +18522,10 @@ class GoogleLongrunningOperation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  GoogleRpcStatus error;
+  GoogleRpcStatus? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -19216,14 +18536,14 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -19236,7 +18556,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   GoogleLongrunningOperation();
 
@@ -19271,12 +18591,12 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -19294,7 +18614,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Describes what preconditions have failed.
@@ -19304,7 +18624,7 @@ class GoogleProtobufEmpty {
 /// PreconditionFailure message.
 class GoogleRpcPreconditionFailure {
   /// Describes all precondition violations.
-  core.List<GoogleRpcPreconditionFailureViolation> violations;
+  core.List<GoogleRpcPreconditionFailureViolation>? violations;
 
   GoogleRpcPreconditionFailure();
 
@@ -19318,9 +18638,9 @@ class GoogleRpcPreconditionFailure {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (violations != null)
-          'violations': violations.map((value) => value.toJson()).toList(),
+          'violations': violations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -19330,20 +18650,20 @@ class GoogleRpcPreconditionFailureViolation {
   ///
   /// Developers can use this description to understand how to fix the failure.
   /// For example: "Terms of service not accepted".
-  core.String description;
+  core.String? description;
 
   /// The subject, relative to the type, that failed.
   ///
   /// For example, "google.com/cloud" relative to the "TOS" type would indicate
   /// which terms of service is being referenced.
-  core.String subject;
+  core.String? subject;
 
   /// The type of PreconditionFailure.
   ///
   /// We recommend using a service-specific enum type to define the supported
   /// precondition violation subjects. For example, "TOS" for "Terms of Service
   /// violation".
-  core.String type;
+  core.String? type;
 
   GoogleRpcPreconditionFailureViolation();
 
@@ -19359,10 +18679,10 @@ class GoogleRpcPreconditionFailureViolation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (subject != null) 'subject': subject,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (subject != null) 'subject': subject!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -19375,7 +18695,7 @@ class GoogleRpcPreconditionFailureViolation {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -19383,13 +18703,13 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   GoogleRpcStatus();
 
@@ -19413,10 +18733,10 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -19445,24 +18765,24 @@ class GoogleTypeExpr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   GoogleTypeExpr();
 
@@ -19481,10 +18801,10 @@ class GoogleTypeExpr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }

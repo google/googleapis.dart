@@ -36,8 +36,14 @@ core.List<core.String> buildUnnamed2785() {
 
 void checkUnnamed2785(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed2786() {
@@ -49,8 +55,14 @@ core.List<core.String> buildUnnamed2786() {
 
 void checkUnnamed2786(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterAptSettings = 0;
@@ -69,9 +81,12 @@ api.AptSettings buildAptSettings() {
 void checkAptSettings(api.AptSettings o) {
   buildCounterAptSettings++;
   if (buildCounterAptSettings < 3) {
-    checkUnnamed2785(o.excludes);
-    checkUnnamed2786(o.exclusivePackages);
-    unittest.expect(o.type, unittest.equals('foo'));
+    checkUnnamed2785(o.excludes!);
+    checkUnnamed2786(o.exclusivePackages!);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAptSettings--;
 }
@@ -121,8 +136,8 @@ api.ExecStep buildExecStep() {
 void checkExecStep(api.ExecStep o) {
   buildCounterExecStep++;
   if (buildCounterExecStep < 3) {
-    checkExecStepConfig(o.linuxExecStepConfig as api.ExecStepConfig);
-    checkExecStepConfig(o.windowsExecStepConfig as api.ExecStepConfig);
+    checkExecStepConfig(o.linuxExecStepConfig! as api.ExecStepConfig);
+    checkExecStepConfig(o.windowsExecStepConfig! as api.ExecStepConfig);
   }
   buildCounterExecStep--;
 }
@@ -136,8 +151,14 @@ core.List<core.int> buildUnnamed2787() {
 
 void checkUnnamed2787(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42));
-  unittest.expect(o[1], unittest.equals(42));
+  unittest.expect(
+    o[0],
+    unittest.equals(42),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42),
+  );
 }
 
 core.int buildCounterExecStepConfig = 0;
@@ -157,10 +178,16 @@ api.ExecStepConfig buildExecStepConfig() {
 void checkExecStepConfig(api.ExecStepConfig o) {
   buildCounterExecStepConfig++;
   if (buildCounterExecStepConfig < 3) {
-    checkUnnamed2787(o.allowedSuccessCodes);
-    checkGcsObject(o.gcsObject as api.GcsObject);
-    unittest.expect(o.interpreter, unittest.equals('foo'));
-    unittest.expect(o.localPath, unittest.equals('foo'));
+    checkUnnamed2787(o.allowedSuccessCodes!);
+    checkGcsObject(o.gcsObject! as api.GcsObject);
+    unittest.expect(
+      o.interpreter!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.localPath!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterExecStepConfig--;
 }
@@ -185,13 +212,22 @@ api.ExecutePatchJobRequest buildExecutePatchJobRequest() {
 void checkExecutePatchJobRequest(api.ExecutePatchJobRequest o) {
   buildCounterExecutePatchJobRequest++;
   if (buildCounterExecutePatchJobRequest < 3) {
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    unittest.expect(o.dryRun, unittest.isTrue);
-    unittest.expect(o.duration, unittest.equals('foo'));
-    checkPatchInstanceFilter(o.instanceFilter as api.PatchInstanceFilter);
-    checkPatchConfig(o.patchConfig as api.PatchConfig);
-    checkPatchRollout(o.rollout as api.PatchRollout);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.dryRun!, unittest.isTrue);
+    unittest.expect(
+      o.duration!,
+      unittest.equals('foo'),
+    );
+    checkPatchInstanceFilter(o.instanceFilter! as api.PatchInstanceFilter);
+    checkPatchConfig(o.patchConfig! as api.PatchConfig);
+    checkPatchRollout(o.rollout! as api.PatchRollout);
   }
   buildCounterExecutePatchJobRequest--;
 }
@@ -211,8 +247,14 @@ api.FixedOrPercent buildFixedOrPercent() {
 void checkFixedOrPercent(api.FixedOrPercent o) {
   buildCounterFixedOrPercent++;
   if (buildCounterFixedOrPercent < 3) {
-    unittest.expect(o.fixed, unittest.equals(42));
-    unittest.expect(o.percent, unittest.equals(42));
+    unittest.expect(
+      o.fixed!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.percent!,
+      unittest.equals(42),
+    );
   }
   buildCounterFixedOrPercent--;
 }
@@ -233,9 +275,18 @@ api.GcsObject buildGcsObject() {
 void checkGcsObject(api.GcsObject o) {
   buildCounterGcsObject++;
   if (buildCounterGcsObject < 3) {
-    unittest.expect(o.bucket, unittest.equals('foo'));
-    unittest.expect(o.generationNumber, unittest.equals('foo'));
-    unittest.expect(o.object, unittest.equals('foo'));
+    unittest.expect(
+      o.bucket!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.generationNumber!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.object!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGcsObject--;
 }
@@ -264,8 +315,8 @@ core.Map<core.String, api.InventoryItem> buildUnnamed2788() {
 
 void checkUnnamed2788(core.Map<core.String, api.InventoryItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInventoryItem(o['x'] as api.InventoryItem);
-  checkInventoryItem(o['y'] as api.InventoryItem);
+  checkInventoryItem(o['x']! as api.InventoryItem);
+  checkInventoryItem(o['y']! as api.InventoryItem);
 }
 
 core.int buildCounterInventory = 0;
@@ -283,8 +334,8 @@ api.Inventory buildInventory() {
 void checkInventory(api.Inventory o) {
   buildCounterInventory++;
   if (buildCounterInventory < 3) {
-    checkUnnamed2788(o.items);
-    checkInventoryOsInfo(o.osInfo as api.InventoryOsInfo);
+    checkUnnamed2788(o.items!);
+    checkInventoryOsInfo(o.osInfo! as api.InventoryOsInfo);
   }
   buildCounterInventory--;
 }
@@ -310,14 +361,29 @@ void checkInventoryItem(api.InventoryItem o) {
   buildCounterInventoryItem++;
   if (buildCounterInventoryItem < 3) {
     checkInventorySoftwarePackage(
-        o.availablePackage as api.InventorySoftwarePackage);
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
+        o.availablePackage! as api.InventorySoftwarePackage);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
     checkInventorySoftwarePackage(
-        o.installedPackage as api.InventorySoftwarePackage);
-    unittest.expect(o.originType, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
-    unittest.expect(o.updateTime, unittest.equals('foo'));
+        o.installedPackage! as api.InventorySoftwarePackage);
+    unittest.expect(
+      o.originType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterInventoryItem--;
 }
@@ -343,14 +409,38 @@ api.InventoryOsInfo buildInventoryOsInfo() {
 void checkInventoryOsInfo(api.InventoryOsInfo o) {
   buildCounterInventoryOsInfo++;
   if (buildCounterInventoryOsInfo < 3) {
-    unittest.expect(o.architecture, unittest.equals('foo'));
-    unittest.expect(o.hostname, unittest.equals('foo'));
-    unittest.expect(o.kernelRelease, unittest.equals('foo'));
-    unittest.expect(o.kernelVersion, unittest.equals('foo'));
-    unittest.expect(o.longName, unittest.equals('foo'));
-    unittest.expect(o.osconfigAgentVersion, unittest.equals('foo'));
-    unittest.expect(o.shortName, unittest.equals('foo'));
-    unittest.expect(o.version, unittest.equals('foo'));
+    unittest.expect(
+      o.architecture!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hostname!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kernelRelease!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kernelVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.longName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.osconfigAgentVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.shortName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterInventoryOsInfo--;
 }
@@ -377,20 +467,20 @@ void checkInventorySoftwarePackage(api.InventorySoftwarePackage o) {
   buildCounterInventorySoftwarePackage++;
   if (buildCounterInventorySoftwarePackage < 3) {
     checkInventoryVersionedPackage(
-        o.aptPackage as api.InventoryVersionedPackage);
+        o.aptPackage! as api.InventoryVersionedPackage);
     checkInventoryVersionedPackage(
-        o.cosPackage as api.InventoryVersionedPackage);
+        o.cosPackage! as api.InventoryVersionedPackage);
     checkInventoryVersionedPackage(
-        o.googetPackage as api.InventoryVersionedPackage);
+        o.googetPackage! as api.InventoryVersionedPackage);
     checkInventoryWindowsQuickFixEngineeringPackage(
-        o.qfePackage as api.InventoryWindowsQuickFixEngineeringPackage);
+        o.qfePackage! as api.InventoryWindowsQuickFixEngineeringPackage);
     checkInventoryWindowsUpdatePackage(
-        o.wuaPackage as api.InventoryWindowsUpdatePackage);
+        o.wuaPackage! as api.InventoryWindowsUpdatePackage);
     checkInventoryVersionedPackage(
-        o.yumPackage as api.InventoryVersionedPackage);
+        o.yumPackage! as api.InventoryVersionedPackage);
     checkInventoryVersionedPackage(
-        o.zypperPackage as api.InventoryVersionedPackage);
-    checkInventoryZypperPatch(o.zypperPatch as api.InventoryZypperPatch);
+        o.zypperPackage! as api.InventoryVersionedPackage);
+    checkInventoryZypperPatch(o.zypperPatch! as api.InventoryZypperPatch);
   }
   buildCounterInventorySoftwarePackage--;
 }
@@ -411,9 +501,18 @@ api.InventoryVersionedPackage buildInventoryVersionedPackage() {
 void checkInventoryVersionedPackage(api.InventoryVersionedPackage o) {
   buildCounterInventoryVersionedPackage++;
   if (buildCounterInventoryVersionedPackage < 3) {
-    unittest.expect(o.architecture, unittest.equals('foo'));
-    unittest.expect(o.packageName, unittest.equals('foo'));
-    unittest.expect(o.version, unittest.equals('foo'));
+    unittest.expect(
+      o.architecture!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.packageName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterInventoryVersionedPackage--;
 }
@@ -437,10 +536,22 @@ void checkInventoryWindowsQuickFixEngineeringPackage(
     api.InventoryWindowsQuickFixEngineeringPackage o) {
   buildCounterInventoryWindowsQuickFixEngineeringPackage++;
   if (buildCounterInventoryWindowsQuickFixEngineeringPackage < 3) {
-    unittest.expect(o.caption, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.hotFixId, unittest.equals('foo'));
-    unittest.expect(o.installTime, unittest.equals('foo'));
+    unittest.expect(
+      o.caption!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hotFixId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.installTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterInventoryWindowsQuickFixEngineeringPackage--;
 }
@@ -471,8 +582,14 @@ core.List<core.String> buildUnnamed2790() {
 
 void checkUnnamed2790(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed2791() {
@@ -484,8 +601,14 @@ core.List<core.String> buildUnnamed2791() {
 
 void checkUnnamed2791(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterInventoryWindowsUpdatePackage = 0;
@@ -510,15 +633,33 @@ api.InventoryWindowsUpdatePackage buildInventoryWindowsUpdatePackage() {
 void checkInventoryWindowsUpdatePackage(api.InventoryWindowsUpdatePackage o) {
   buildCounterInventoryWindowsUpdatePackage++;
   if (buildCounterInventoryWindowsUpdatePackage < 3) {
-    checkUnnamed2789(o.categories);
-    unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed2790(o.kbArticleIds);
-    unittest.expect(o.lastDeploymentChangeTime, unittest.equals('foo'));
-    checkUnnamed2791(o.moreInfoUrls);
-    unittest.expect(o.revisionNumber, unittest.equals(42));
-    unittest.expect(o.supportUrl, unittest.equals('foo'));
-    unittest.expect(o.title, unittest.equals('foo'));
-    unittest.expect(o.updateId, unittest.equals('foo'));
+    checkUnnamed2789(o.categories!);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed2790(o.kbArticleIds!);
+    unittest.expect(
+      o.lastDeploymentChangeTime!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed2791(o.moreInfoUrls!);
+    unittest.expect(
+      o.revisionNumber!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.supportUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterInventoryWindowsUpdatePackage--;
 }
@@ -540,8 +681,14 @@ void checkInventoryWindowsUpdatePackageWindowsUpdateCategory(
     api.InventoryWindowsUpdatePackageWindowsUpdateCategory o) {
   buildCounterInventoryWindowsUpdatePackageWindowsUpdateCategory++;
   if (buildCounterInventoryWindowsUpdatePackageWindowsUpdateCategory < 3) {
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterInventoryWindowsUpdatePackageWindowsUpdateCategory--;
 }
@@ -563,10 +710,22 @@ api.InventoryZypperPatch buildInventoryZypperPatch() {
 void checkInventoryZypperPatch(api.InventoryZypperPatch o) {
   buildCounterInventoryZypperPatch++;
   if (buildCounterInventoryZypperPatch < 3) {
-    unittest.expect(o.category, unittest.equals('foo'));
-    unittest.expect(o.patchName, unittest.equals('foo'));
-    unittest.expect(o.severity, unittest.equals('foo'));
-    unittest.expect(o.summary, unittest.equals('foo'));
+    unittest.expect(
+      o.category!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.patchName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.severity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.summary!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterInventoryZypperPatch--;
 }
@@ -599,8 +758,11 @@ api.ListPatchDeploymentsResponse buildListPatchDeploymentsResponse() {
 void checkListPatchDeploymentsResponse(api.ListPatchDeploymentsResponse o) {
   buildCounterListPatchDeploymentsResponse++;
   if (buildCounterListPatchDeploymentsResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2792(o.patchDeployments);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed2792(o.patchDeployments!);
   }
   buildCounterListPatchDeploymentsResponse--;
 }
@@ -635,8 +797,11 @@ void checkListPatchJobInstanceDetailsResponse(
     api.ListPatchJobInstanceDetailsResponse o) {
   buildCounterListPatchJobInstanceDetailsResponse++;
   if (buildCounterListPatchJobInstanceDetailsResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2793(o.patchJobInstanceDetails);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed2793(o.patchJobInstanceDetails!);
   }
   buildCounterListPatchJobInstanceDetailsResponse--;
 }
@@ -669,8 +834,11 @@ api.ListPatchJobsResponse buildListPatchJobsResponse() {
 void checkListPatchJobsResponse(api.ListPatchJobsResponse o) {
   buildCounterListPatchJobsResponse++;
   if (buildCounterListPatchJobsResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2794(o.patchJobs);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed2794(o.patchJobs!);
   }
   buildCounterListPatchJobsResponse--;
 }
@@ -690,8 +858,11 @@ api.MonthlySchedule buildMonthlySchedule() {
 void checkMonthlySchedule(api.MonthlySchedule o) {
   buildCounterMonthlySchedule++;
   if (buildCounterMonthlySchedule < 3) {
-    unittest.expect(o.monthDay, unittest.equals(42));
-    checkWeekDayOfMonth(o.weekDayOfMonth as api.WeekDayOfMonth);
+    unittest.expect(
+      o.monthDay!,
+      unittest.equals(42),
+    );
+    checkWeekDayOfMonth(o.weekDayOfMonth! as api.WeekDayOfMonth);
   }
   buildCounterMonthlySchedule--;
 }
@@ -710,7 +881,10 @@ api.OneTimeSchedule buildOneTimeSchedule() {
 void checkOneTimeSchedule(api.OneTimeSchedule o) {
   buildCounterOneTimeSchedule++;
   if (buildCounterOneTimeSchedule < 3) {
-    unittest.expect(o.executeTime, unittest.equals('foo'));
+    unittest.expect(
+      o.executeTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterOneTimeSchedule--;
 }
@@ -736,14 +910,17 @@ api.PatchConfig buildPatchConfig() {
 void checkPatchConfig(api.PatchConfig o) {
   buildCounterPatchConfig++;
   if (buildCounterPatchConfig < 3) {
-    checkAptSettings(o.apt as api.AptSettings);
-    checkGooSettings(o.goo as api.GooSettings);
-    checkExecStep(o.postStep as api.ExecStep);
-    checkExecStep(o.preStep as api.ExecStep);
-    unittest.expect(o.rebootConfig, unittest.equals('foo'));
-    checkWindowsUpdateSettings(o.windowsUpdate as api.WindowsUpdateSettings);
-    checkYumSettings(o.yum as api.YumSettings);
-    checkZypperSettings(o.zypper as api.ZypperSettings);
+    checkAptSettings(o.apt! as api.AptSettings);
+    checkGooSettings(o.goo! as api.GooSettings);
+    checkExecStep(o.postStep! as api.ExecStep);
+    checkExecStep(o.preStep! as api.ExecStep);
+    unittest.expect(
+      o.rebootConfig!,
+      unittest.equals('foo'),
+    );
+    checkWindowsUpdateSettings(o.windowsUpdate! as api.WindowsUpdateSettings);
+    checkYumSettings(o.yum! as api.YumSettings);
+    checkZypperSettings(o.zypper! as api.ZypperSettings);
   }
   buildCounterPatchConfig--;
 }
@@ -772,17 +949,35 @@ api.PatchDeployment buildPatchDeployment() {
 void checkPatchDeployment(api.PatchDeployment o) {
   buildCounterPatchDeployment++;
   if (buildCounterPatchDeployment < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.duration, unittest.equals('foo'));
-    checkPatchInstanceFilter(o.instanceFilter as api.PatchInstanceFilter);
-    unittest.expect(o.lastExecuteTime, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkOneTimeSchedule(o.oneTimeSchedule as api.OneTimeSchedule);
-    checkPatchConfig(o.patchConfig as api.PatchConfig);
-    checkRecurringSchedule(o.recurringSchedule as api.RecurringSchedule);
-    checkPatchRollout(o.rollout as api.PatchRollout);
-    unittest.expect(o.updateTime, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.duration!,
+      unittest.equals('foo'),
+    );
+    checkPatchInstanceFilter(o.instanceFilter! as api.PatchInstanceFilter);
+    unittest.expect(
+      o.lastExecuteTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkOneTimeSchedule(o.oneTimeSchedule! as api.OneTimeSchedule);
+    checkPatchConfig(o.patchConfig! as api.PatchConfig);
+    checkRecurringSchedule(o.recurringSchedule! as api.RecurringSchedule);
+    checkPatchRollout(o.rollout! as api.PatchRollout);
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPatchDeployment--;
 }
@@ -809,8 +1004,14 @@ core.List<core.String> buildUnnamed2796() {
 
 void checkUnnamed2796(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed2797() {
@@ -822,8 +1023,14 @@ core.List<core.String> buildUnnamed2797() {
 
 void checkUnnamed2797(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed2798() {
@@ -835,8 +1042,14 @@ core.List<core.String> buildUnnamed2798() {
 
 void checkUnnamed2798(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterPatchInstanceFilter = 0;
@@ -857,11 +1070,11 @@ api.PatchInstanceFilter buildPatchInstanceFilter() {
 void checkPatchInstanceFilter(api.PatchInstanceFilter o) {
   buildCounterPatchInstanceFilter++;
   if (buildCounterPatchInstanceFilter < 3) {
-    unittest.expect(o.all, unittest.isTrue);
-    checkUnnamed2795(o.groupLabels);
-    checkUnnamed2796(o.instanceNamePrefixes);
-    checkUnnamed2797(o.instances);
-    checkUnnamed2798(o.zones);
+    unittest.expect(o.all!, unittest.isTrue);
+    checkUnnamed2795(o.groupLabels!);
+    checkUnnamed2796(o.instanceNamePrefixes!);
+    checkUnnamed2797(o.instances!);
+    checkUnnamed2798(o.zones!);
   }
   buildCounterPatchInstanceFilter--;
 }
@@ -875,8 +1088,14 @@ core.Map<core.String, core.String> buildUnnamed2799() {
 
 void checkUnnamed2799(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterPatchInstanceFilterGroupLabel = 0;
@@ -893,7 +1112,7 @@ api.PatchInstanceFilterGroupLabel buildPatchInstanceFilterGroupLabel() {
 void checkPatchInstanceFilterGroupLabel(api.PatchInstanceFilterGroupLabel o) {
   buildCounterPatchInstanceFilterGroupLabel++;
   if (buildCounterPatchInstanceFilterGroupLabel < 3) {
-    checkUnnamed2799(o.labels);
+    checkUnnamed2799(o.labels!);
   }
   buildCounterPatchInstanceFilterGroupLabel--;
 }
@@ -926,22 +1145,52 @@ api.PatchJob buildPatchJob() {
 void checkPatchJob(api.PatchJob o) {
   buildCounterPatchJob++;
   if (buildCounterPatchJob < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    unittest.expect(o.dryRun, unittest.isTrue);
-    unittest.expect(o.duration, unittest.equals('foo'));
-    unittest.expect(o.errorMessage, unittest.equals('foo'));
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.dryRun!, unittest.isTrue);
+    unittest.expect(
+      o.duration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.errorMessage!,
+      unittest.equals('foo'),
+    );
     checkPatchJobInstanceDetailsSummary(
-        o.instanceDetailsSummary as api.PatchJobInstanceDetailsSummary);
-    checkPatchInstanceFilter(o.instanceFilter as api.PatchInstanceFilter);
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkPatchConfig(o.patchConfig as api.PatchConfig);
-    unittest.expect(o.patchDeployment, unittest.equals('foo'));
-    unittest.expect(o.percentComplete, unittest.equals(42.0));
-    checkPatchRollout(o.rollout as api.PatchRollout);
-    unittest.expect(o.state, unittest.equals('foo'));
-    unittest.expect(o.updateTime, unittest.equals('foo'));
+        o.instanceDetailsSummary! as api.PatchJobInstanceDetailsSummary);
+    checkPatchInstanceFilter(o.instanceFilter! as api.PatchInstanceFilter);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkPatchConfig(o.patchConfig! as api.PatchConfig);
+    unittest.expect(
+      o.patchDeployment!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.percentComplete!,
+      unittest.equals(42.0),
+    );
+    checkPatchRollout(o.rollout! as api.PatchRollout);
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPatchJob--;
 }
@@ -964,11 +1213,26 @@ api.PatchJobInstanceDetails buildPatchJobInstanceDetails() {
 void checkPatchJobInstanceDetails(api.PatchJobInstanceDetails o) {
   buildCounterPatchJobInstanceDetails++;
   if (buildCounterPatchJobInstanceDetails < 3) {
-    unittest.expect(o.attemptCount, unittest.equals('foo'));
-    unittest.expect(o.failureReason, unittest.equals('foo'));
-    unittest.expect(o.instanceSystemId, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.state, unittest.equals('foo'));
+    unittest.expect(
+      o.attemptCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.failureReason!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.instanceSystemId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPatchJobInstanceDetails--;
 }
@@ -1001,22 +1265,66 @@ api.PatchJobInstanceDetailsSummary buildPatchJobInstanceDetailsSummary() {
 void checkPatchJobInstanceDetailsSummary(api.PatchJobInstanceDetailsSummary o) {
   buildCounterPatchJobInstanceDetailsSummary++;
   if (buildCounterPatchJobInstanceDetailsSummary < 3) {
-    unittest.expect(o.ackedInstanceCount, unittest.equals('foo'));
-    unittest.expect(o.applyingPatchesInstanceCount, unittest.equals('foo'));
-    unittest.expect(o.downloadingPatchesInstanceCount, unittest.equals('foo'));
-    unittest.expect(o.failedInstanceCount, unittest.equals('foo'));
-    unittest.expect(o.inactiveInstanceCount, unittest.equals('foo'));
-    unittest.expect(o.noAgentDetectedInstanceCount, unittest.equals('foo'));
-    unittest.expect(o.notifiedInstanceCount, unittest.equals('foo'));
-    unittest.expect(o.pendingInstanceCount, unittest.equals('foo'));
-    unittest.expect(o.postPatchStepInstanceCount, unittest.equals('foo'));
-    unittest.expect(o.prePatchStepInstanceCount, unittest.equals('foo'));
-    unittest.expect(o.rebootingInstanceCount, unittest.equals('foo'));
-    unittest.expect(o.startedInstanceCount, unittest.equals('foo'));
-    unittest.expect(o.succeededInstanceCount, unittest.equals('foo'));
     unittest.expect(
-        o.succeededRebootRequiredInstanceCount, unittest.equals('foo'));
-    unittest.expect(o.timedOutInstanceCount, unittest.equals('foo'));
+      o.ackedInstanceCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.applyingPatchesInstanceCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.downloadingPatchesInstanceCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.failedInstanceCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.inactiveInstanceCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.noAgentDetectedInstanceCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.notifiedInstanceCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pendingInstanceCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.postPatchStepInstanceCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.prePatchStepInstanceCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rebootingInstanceCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startedInstanceCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.succeededInstanceCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.succeededRebootRequiredInstanceCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timedOutInstanceCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPatchJobInstanceDetailsSummary--;
 }
@@ -1036,8 +1344,11 @@ api.PatchRollout buildPatchRollout() {
 void checkPatchRollout(api.PatchRollout o) {
   buildCounterPatchRollout++;
   if (buildCounterPatchRollout < 3) {
-    checkFixedOrPercent(o.disruptionBudget as api.FixedOrPercent);
-    unittest.expect(o.mode, unittest.equals('foo'));
+    checkFixedOrPercent(o.disruptionBudget! as api.FixedOrPercent);
+    unittest.expect(
+      o.mode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPatchRollout--;
 }
@@ -1064,15 +1375,30 @@ api.RecurringSchedule buildRecurringSchedule() {
 void checkRecurringSchedule(api.RecurringSchedule o) {
   buildCounterRecurringSchedule++;
   if (buildCounterRecurringSchedule < 3) {
-    unittest.expect(o.endTime, unittest.equals('foo'));
-    unittest.expect(o.frequency, unittest.equals('foo'));
-    unittest.expect(o.lastExecuteTime, unittest.equals('foo'));
-    checkMonthlySchedule(o.monthly as api.MonthlySchedule);
-    unittest.expect(o.nextExecuteTime, unittest.equals('foo'));
-    unittest.expect(o.startTime, unittest.equals('foo'));
-    checkTimeOfDay(o.timeOfDay as api.TimeOfDay);
-    checkTimeZone(o.timeZone as api.TimeZone);
-    checkWeeklySchedule(o.weekly as api.WeeklySchedule);
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.frequency!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastExecuteTime!,
+      unittest.equals('foo'),
+    );
+    checkMonthlySchedule(o.monthly! as api.MonthlySchedule);
+    unittest.expect(
+      o.nextExecuteTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+    checkTimeOfDay(o.timeOfDay! as api.TimeOfDay);
+    checkTimeZone(o.timeZone! as api.TimeZone);
+    checkWeeklySchedule(o.weekly! as api.WeeklySchedule);
   }
   buildCounterRecurringSchedule--;
 }
@@ -1094,10 +1420,22 @@ api.TimeOfDay buildTimeOfDay() {
 void checkTimeOfDay(api.TimeOfDay o) {
   buildCounterTimeOfDay++;
   if (buildCounterTimeOfDay < 3) {
-    unittest.expect(o.hours, unittest.equals(42));
-    unittest.expect(o.minutes, unittest.equals(42));
-    unittest.expect(o.nanos, unittest.equals(42));
-    unittest.expect(o.seconds, unittest.equals(42));
+    unittest.expect(
+      o.hours!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.minutes!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.nanos!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.seconds!,
+      unittest.equals(42),
+    );
   }
   buildCounterTimeOfDay--;
 }
@@ -1117,8 +1455,14 @@ api.TimeZone buildTimeZone() {
 void checkTimeZone(api.TimeZone o) {
   buildCounterTimeZone++;
   if (buildCounterTimeZone < 3) {
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.version, unittest.equals('foo'));
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTimeZone--;
 }
@@ -1138,8 +1482,14 @@ api.WeekDayOfMonth buildWeekDayOfMonth() {
 void checkWeekDayOfMonth(api.WeekDayOfMonth o) {
   buildCounterWeekDayOfMonth++;
   if (buildCounterWeekDayOfMonth < 3) {
-    unittest.expect(o.dayOfWeek, unittest.equals('foo'));
-    unittest.expect(o.weekOrdinal, unittest.equals(42));
+    unittest.expect(
+      o.dayOfWeek!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.weekOrdinal!,
+      unittest.equals(42),
+    );
   }
   buildCounterWeekDayOfMonth--;
 }
@@ -1158,7 +1508,10 @@ api.WeeklySchedule buildWeeklySchedule() {
 void checkWeeklySchedule(api.WeeklySchedule o) {
   buildCounterWeeklySchedule++;
   if (buildCounterWeeklySchedule < 3) {
-    unittest.expect(o.dayOfWeek, unittest.equals('foo'));
+    unittest.expect(
+      o.dayOfWeek!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterWeeklySchedule--;
 }
@@ -1172,8 +1525,14 @@ core.List<core.String> buildUnnamed2800() {
 
 void checkUnnamed2800(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed2801() {
@@ -1185,8 +1544,14 @@ core.List<core.String> buildUnnamed2801() {
 
 void checkUnnamed2801(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed2802() {
@@ -1198,8 +1563,14 @@ core.List<core.String> buildUnnamed2802() {
 
 void checkUnnamed2802(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterWindowsUpdateSettings = 0;
@@ -1218,9 +1589,9 @@ api.WindowsUpdateSettings buildWindowsUpdateSettings() {
 void checkWindowsUpdateSettings(api.WindowsUpdateSettings o) {
   buildCounterWindowsUpdateSettings++;
   if (buildCounterWindowsUpdateSettings < 3) {
-    checkUnnamed2800(o.classifications);
-    checkUnnamed2801(o.excludes);
-    checkUnnamed2802(o.exclusivePatches);
+    checkUnnamed2800(o.classifications!);
+    checkUnnamed2801(o.excludes!);
+    checkUnnamed2802(o.exclusivePatches!);
   }
   buildCounterWindowsUpdateSettings--;
 }
@@ -1234,8 +1605,14 @@ core.List<core.String> buildUnnamed2803() {
 
 void checkUnnamed2803(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed2804() {
@@ -1247,8 +1624,14 @@ core.List<core.String> buildUnnamed2804() {
 
 void checkUnnamed2804(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterYumSettings = 0;
@@ -1268,10 +1651,10 @@ api.YumSettings buildYumSettings() {
 void checkYumSettings(api.YumSettings o) {
   buildCounterYumSettings++;
   if (buildCounterYumSettings < 3) {
-    checkUnnamed2803(o.excludes);
-    checkUnnamed2804(o.exclusivePackages);
-    unittest.expect(o.minimal, unittest.isTrue);
-    unittest.expect(o.security, unittest.isTrue);
+    checkUnnamed2803(o.excludes!);
+    checkUnnamed2804(o.exclusivePackages!);
+    unittest.expect(o.minimal!, unittest.isTrue);
+    unittest.expect(o.security!, unittest.isTrue);
   }
   buildCounterYumSettings--;
 }
@@ -1285,8 +1668,14 @@ core.List<core.String> buildUnnamed2805() {
 
 void checkUnnamed2805(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed2806() {
@@ -1298,8 +1687,14 @@ core.List<core.String> buildUnnamed2806() {
 
 void checkUnnamed2806(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed2807() {
@@ -1311,8 +1706,14 @@ core.List<core.String> buildUnnamed2807() {
 
 void checkUnnamed2807(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed2808() {
@@ -1324,8 +1725,14 @@ core.List<core.String> buildUnnamed2808() {
 
 void checkUnnamed2808(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterZypperSettings = 0;
@@ -1347,12 +1754,12 @@ api.ZypperSettings buildZypperSettings() {
 void checkZypperSettings(api.ZypperSettings o) {
   buildCounterZypperSettings++;
   if (buildCounterZypperSettings < 3) {
-    checkUnnamed2805(o.categories);
-    checkUnnamed2806(o.excludes);
-    checkUnnamed2807(o.exclusivePatches);
-    checkUnnamed2808(o.severities);
-    unittest.expect(o.withOptional, unittest.isTrue);
-    unittest.expect(o.withUpdate, unittest.isTrue);
+    checkUnnamed2805(o.categories!);
+    checkUnnamed2806(o.excludes!);
+    checkUnnamed2807(o.exclusivePatches!);
+    checkUnnamed2808(o.severities!);
+    unittest.expect(o.withOptional!, unittest.isTrue);
+    unittest.expect(o.withUpdate!, unittest.isTrue);
   }
   buildCounterZypperSettings--;
 }
@@ -1697,10 +2104,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -1719,9 +2130,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["patchDeploymentId"].first,
-            unittest.equals(arg_patchDeploymentId));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["patchDeploymentId"]!.first,
+          unittest.equals(arg_patchDeploymentId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1748,10 +2164,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -1770,7 +2190,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1796,10 +2219,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -1818,7 +2245,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1846,10 +2276,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -1868,11 +2302,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1909,10 +2350,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -1931,7 +2376,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1962,10 +2410,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -1984,7 +2436,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2010,10 +2465,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2032,7 +2491,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2061,10 +2523,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2083,12 +2549,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2123,10 +2599,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals("v1/"),
+        );
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2145,12 +2625,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

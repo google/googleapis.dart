@@ -89,12 +89,9 @@ class ArchiveResource {
   /// this method will complete with the same error.
   async.Future<Groups> insert(
     core.String groupId, {
-    core.String $fields,
-    commons.Media uploadMedia,
+    core.String? $fields,
+    commons.Media? uploadMedia,
   }) async {
-    if (groupId == null) {
-      throw core.ArgumentError('Parameter groupId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -124,10 +121,10 @@ class ArchiveResource {
 /// JSON response template for groups migration API.
 class Groups {
   /// The kind of insert resource this is.
-  core.String kind;
+  core.String? kind;
 
   /// The status of the insert request.
-  core.String responseCode;
+  core.String? responseCode;
 
   Groups();
 
@@ -140,8 +137,8 @@ class Groups {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (responseCode != null) 'responseCode': responseCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (responseCode != null) 'responseCode': responseCode!,
       };
 }

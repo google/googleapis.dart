@@ -63,14 +63,38 @@ api.LicenseAssignment buildLicenseAssignment() {
 void checkLicenseAssignment(api.LicenseAssignment o) {
   buildCounterLicenseAssignment++;
   if (buildCounterLicenseAssignment < 3) {
-    unittest.expect(o.etags, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.productId, unittest.equals('foo'));
-    unittest.expect(o.productName, unittest.equals('foo'));
-    unittest.expect(o.selfLink, unittest.equals('foo'));
-    unittest.expect(o.skuId, unittest.equals('foo'));
-    unittest.expect(o.skuName, unittest.equals('foo'));
-    unittest.expect(o.userId, unittest.equals('foo'));
+    unittest.expect(
+      o.etags!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.productId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.productName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.selfLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.skuId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.skuName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.userId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLicenseAssignment--;
 }
@@ -89,7 +113,10 @@ api.LicenseAssignmentInsert buildLicenseAssignmentInsert() {
 void checkLicenseAssignmentInsert(api.LicenseAssignmentInsert o) {
   buildCounterLicenseAssignmentInsert++;
   if (buildCounterLicenseAssignmentInsert < 3) {
-    unittest.expect(o.userId, unittest.equals('foo'));
+    unittest.expect(
+      o.userId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLicenseAssignmentInsert--;
 }
@@ -124,10 +151,19 @@ api.LicenseAssignmentList buildLicenseAssignmentList() {
 void checkLicenseAssignmentList(api.LicenseAssignmentList o) {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
-    unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed3292(o.items);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3292(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLicenseAssignmentList--;
 }
@@ -179,32 +215,49 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26),
-            unittest.equals("apps/licensing/v1/product/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 26),
+          unittest.equals("apps/licensing/v1/product/"),
+        );
         pathOffset += 26;
         index = path.indexOf('/sku/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_productId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/sku/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_productId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/sku/"),
+        );
         pathOffset += 5;
         index = path.indexOf('/user/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_skuId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("/user/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_skuId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 6),
+          unittest.equals("/user/"),
+        );
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -221,7 +274,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -249,32 +305,49 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26),
-            unittest.equals("apps/licensing/v1/product/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 26),
+          unittest.equals("apps/licensing/v1/product/"),
+        );
         pathOffset += 26;
         index = path.indexOf('/sku/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_productId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/sku/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_productId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/sku/"),
+        );
         pathOffset += 5;
         index = path.indexOf('/user/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_skuId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("/user/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_skuId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 6),
+          unittest.equals("/user/"),
+        );
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -291,7 +364,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -323,28 +399,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26),
-            unittest.equals("apps/licensing/v1/product/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 26),
+          unittest.equals("apps/licensing/v1/product/"),
+        );
         pathOffset += 26;
         index = path.indexOf('/sku/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_productId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/sku/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_productId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/sku/"),
+        );
         pathOffset += 5;
         index = path.indexOf('/user', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_skuId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/user"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_skuId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/user"),
+        );
         pathOffset += 5;
 
         var query = (req.url).query;
@@ -362,7 +452,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -391,19 +484,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26),
-            unittest.equals("apps/licensing/v1/product/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 26),
+          unittest.equals("apps/licensing/v1/product/"),
+        );
         pathOffset += 26;
         index = path.indexOf('/users', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_productId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("/users"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_productId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 6),
+          unittest.equals("/users"),
+        );
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -422,12 +524,21 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["customerId"].first, unittest.equals(arg_customerId));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+          queryMap["customerId"]!.first,
+          unittest.equals(arg_customerId),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -460,28 +571,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26),
-            unittest.equals("apps/licensing/v1/product/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 26),
+          unittest.equals("apps/licensing/v1/product/"),
+        );
         pathOffset += 26;
         index = path.indexOf('/sku/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_productId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/sku/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_productId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/sku/"),
+        );
         pathOffset += 5;
         index = path.indexOf('/users', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_skuId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("/users"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_skuId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 6),
+          unittest.equals("/users"),
+        );
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -500,12 +625,21 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["customerId"].first, unittest.equals(arg_customerId));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+          queryMap["customerId"]!.first,
+          unittest.equals(arg_customerId),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -541,32 +675,49 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26),
-            unittest.equals("apps/licensing/v1/product/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 26),
+          unittest.equals("apps/licensing/v1/product/"),
+        );
         pathOffset += 26;
         index = path.indexOf('/sku/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_productId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/sku/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_productId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/sku/"),
+        );
         pathOffset += 5;
         index = path.indexOf('/user/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_skuId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("/user/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_skuId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 6),
+          unittest.equals("/user/"),
+        );
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -583,7 +734,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -617,32 +771,49 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26),
-            unittest.equals("apps/licensing/v1/product/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 26),
+          unittest.equals("apps/licensing/v1/product/"),
+        );
         pathOffset += 26;
         index = path.indexOf('/sku/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_productId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/sku/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_productId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/sku/"),
+        );
         pathOffset += 5;
         index = path.indexOf('/user/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_skuId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("/user/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_skuId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 6),
+          unittest.equals("/user/"),
+        );
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -659,7 +830,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

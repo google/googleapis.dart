@@ -94,11 +94,8 @@ class FoldersResource {
   /// this method will complete with the same error.
   async.Future<Empty> deleteAccessApprovalSettings(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -132,11 +129,8 @@ class FoldersResource {
   /// this method will complete with the same error.
   async.Future<AccessApprovalSettings> getAccessApprovalSettings(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -188,14 +182,10 @@ class FoldersResource {
   async.Future<AccessApprovalSettings> updateAccessApprovalSettings(
     AccessApprovalSettings request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -245,13 +235,9 @@ class FoldersApprovalRequestsResource {
   async.Future<ApprovalRequest> approve(
     ApproveApprovalRequestMessage request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -297,13 +283,9 @@ class FoldersApprovalRequestsResource {
   async.Future<ApprovalRequest> dismiss(
     DismissApprovalRequestMessage request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -342,11 +324,8 @@ class FoldersApprovalRequestsResource {
   /// this method will complete with the same error.
   async.Future<ApprovalRequest> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -399,14 +378,11 @@ class FoldersApprovalRequestsResource {
   /// this method will complete with the same error.
   async.Future<ListApprovalRequestsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -461,11 +437,8 @@ class OrganizationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> deleteAccessApprovalSettings(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -499,11 +472,8 @@ class OrganizationsResource {
   /// this method will complete with the same error.
   async.Future<AccessApprovalSettings> getAccessApprovalSettings(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -555,14 +525,10 @@ class OrganizationsResource {
   async.Future<AccessApprovalSettings> updateAccessApprovalSettings(
     AccessApprovalSettings request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -613,13 +579,9 @@ class OrganizationsApprovalRequestsResource {
   async.Future<ApprovalRequest> approve(
     ApproveApprovalRequestMessage request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -666,13 +628,9 @@ class OrganizationsApprovalRequestsResource {
   async.Future<ApprovalRequest> dismiss(
     DismissApprovalRequestMessage request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -712,11 +670,8 @@ class OrganizationsApprovalRequestsResource {
   /// this method will complete with the same error.
   async.Future<ApprovalRequest> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -769,14 +724,11 @@ class OrganizationsApprovalRequestsResource {
   /// this method will complete with the same error.
   async.Future<ListApprovalRequestsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -831,11 +783,8 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<Empty> deleteAccessApprovalSettings(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -869,11 +818,8 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<AccessApprovalSettings> getAccessApprovalSettings(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -925,14 +871,10 @@ class ProjectsResource {
   async.Future<AccessApprovalSettings> updateAccessApprovalSettings(
     AccessApprovalSettings request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -982,13 +924,9 @@ class ProjectsApprovalRequestsResource {
   async.Future<ApprovalRequest> approve(
     ApproveApprovalRequestMessage request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1034,13 +972,9 @@ class ProjectsApprovalRequestsResource {
   async.Future<ApprovalRequest> dismiss(
     DismissApprovalRequestMessage request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1079,11 +1013,8 @@ class ProjectsApprovalRequestsResource {
   /// this method will complete with the same error.
   async.Future<ApprovalRequest> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1136,14 +1067,11 @@ class ProjectsApprovalRequestsResource {
   /// this method will complete with the same error.
   async.Future<ListApprovalRequestsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1176,7 +1104,7 @@ class AccessApprovalSettings {
   /// do not have ancestors).
   ///
   /// Output only.
-  core.bool enrolledAncestor;
+  core.bool? enrolledAncestor;
 
   /// A list of Google Cloud Services for which the given resource has Access
   /// Approval enrolled.
@@ -1189,14 +1117,14 @@ class AccessApprovalSettings {
   /// list, the first entry will be honored and all following entries will be
   /// discarded. A maximum of 10 enrolled services will be enforced, to be
   /// expanded as the set of supported services is expanded.
-  core.List<EnrolledService> enrolledServices;
+  core.List<EnrolledService>? enrolledServices;
 
   /// The resource name of the settings.
   ///
   /// Format is one of: * "projects/{project}/accessApprovalSettings" *
   /// "folders/{folder}/accessApprovalSettings" *
   /// "organizations/{organization}/accessApprovalSettings"
-  core.String name;
+  core.String? name;
 
   /// A list of email addresses to which notifications relating to approval
   /// requests should be sent.
@@ -1204,7 +1132,7 @@ class AccessApprovalSettings {
   /// Notifications relating to a resource will be sent to all emails in the
   /// settings of ancestor resources of that resource. A maximum of 50 email
   /// addresses are allowed.
-  core.List<core.String> notificationEmails;
+  core.List<core.String>? notificationEmails;
 
   AccessApprovalSettings();
 
@@ -1228,14 +1156,14 @@ class AccessApprovalSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enrolledAncestor != null) 'enrolledAncestor': enrolledAncestor,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enrolledAncestor != null) 'enrolledAncestor': enrolledAncestor!,
         if (enrolledServices != null)
           'enrolledServices':
-              enrolledServices.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+              enrolledServices!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
         if (notificationEmails != null)
-          'notificationEmails': notificationEmails,
+          'notificationEmails': notificationEmails!,
       };
 }
 
@@ -1248,7 +1176,7 @@ class AccessLocations {
   /// refer to a region code instead of a country code. Possible Region Codes: *
   /// ASI: Asia * EUR: Europe * OCE: Oceania * AFR: Africa * NAM: North America
   /// * SAM: South America * ANT: Antarctica * ANY: Any location
-  core.String principalOfficeCountry;
+  core.String? principalOfficeCountry;
 
   /// Physical location of the principal at the time of the access.
   ///
@@ -1257,7 +1185,7 @@ class AccessLocations {
   /// refer to a region code instead of a country code. Possible Region Codes: *
   /// ASI: Asia * EUR: Europe * OCE: Oceania * AFR: Africa * NAM: North America
   /// * SAM: South America * ANT: Antarctica * ANY: Any location
-  core.String principalPhysicalLocationCountry;
+  core.String? principalPhysicalLocationCountry;
 
   AccessLocations();
 
@@ -1271,11 +1199,11 @@ class AccessLocations {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (principalOfficeCountry != null)
-          'principalOfficeCountry': principalOfficeCountry,
+          'principalOfficeCountry': principalOfficeCountry!,
         if (principalPhysicalLocationCountry != null)
-          'principalPhysicalLocationCountry': principalPhysicalLocationCountry,
+          'principalPhysicalLocationCountry': principalPhysicalLocationCountry!,
       };
 }
 
@@ -1283,7 +1211,7 @@ class AccessReason {
   /// More detail about certain reason types.
   ///
   /// See comments for each type above.
-  core.String detail;
+  core.String? detail;
 
   /// Type of access justification.
   /// Possible string values are:
@@ -1300,7 +1228,7 @@ class AccessReason {
   /// issue.
   /// - "GOOGLE_INITIATED_REVIEW" : Google initiated service for security,
   /// fraud, abuse, or compliance purposes.
-  core.String type;
+  core.String? type;
 
   AccessReason();
 
@@ -1313,40 +1241,40 @@ class AccessReason {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (detail != null) 'detail': detail,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (detail != null) 'detail': detail!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// A request for the customer to approve access to a resource.
 class ApprovalRequest {
   /// Access was approved.
-  ApproveDecision approve;
+  ApproveDecision? approve;
 
   /// The request was dismissed.
-  DismissDecision dismiss;
+  DismissDecision? dismiss;
 
   /// The resource name of the request.
   ///
   /// Format is
   /// "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}".
-  core.String name;
+  core.String? name;
 
   /// The time at which approval was requested.
-  core.String requestTime;
+  core.String? requestTime;
 
   /// The requested expiration for the approval.
   ///
   /// If the request is approved, access will be granted from the time of
   /// approval until the expiration time.
-  core.String requestedExpiration;
+  core.String? requestedExpiration;
 
   /// The locations for which approval is being requested.
-  AccessLocations requestedLocations;
+  AccessLocations? requestedLocations;
 
   /// The justification for which approval is being requested.
-  AccessReason requestedReason;
+  AccessReason? requestedReason;
 
   /// The resource for which approval is being requested.
   ///
@@ -1356,10 +1284,10 @@ class ApprovalRequest {
   /// "//library.googleapis.com/shelves/shelf1/books/book2") or a "relative"
   /// resource name (e.g. "shelves/shelf1/books/book2") as described in the
   /// resource name specification.
-  core.String requestedResourceName;
+  core.String? requestedResourceName;
 
   /// Properties related to the resource represented by requested_resource_name.
-  ResourceProperties requestedResourceProperties;
+  ResourceProperties? requestedResourceProperties;
 
   ApprovalRequest();
 
@@ -1399,28 +1327,28 @@ class ApprovalRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (approve != null) 'approve': approve.toJson(),
-        if (dismiss != null) 'dismiss': dismiss.toJson(),
-        if (name != null) 'name': name,
-        if (requestTime != null) 'requestTime': requestTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (approve != null) 'approve': approve!.toJson(),
+        if (dismiss != null) 'dismiss': dismiss!.toJson(),
+        if (name != null) 'name': name!,
+        if (requestTime != null) 'requestTime': requestTime!,
         if (requestedExpiration != null)
-          'requestedExpiration': requestedExpiration,
+          'requestedExpiration': requestedExpiration!,
         if (requestedLocations != null)
-          'requestedLocations': requestedLocations.toJson(),
+          'requestedLocations': requestedLocations!.toJson(),
         if (requestedReason != null)
-          'requestedReason': requestedReason.toJson(),
+          'requestedReason': requestedReason!.toJson(),
         if (requestedResourceName != null)
-          'requestedResourceName': requestedResourceName,
+          'requestedResourceName': requestedResourceName!,
         if (requestedResourceProperties != null)
-          'requestedResourceProperties': requestedResourceProperties.toJson(),
+          'requestedResourceProperties': requestedResourceProperties!.toJson(),
       };
 }
 
 /// Request to approve an ApprovalRequest.
 class ApproveApprovalRequestMessage {
   /// The expiration time of this approval.
-  core.String expireTime;
+  core.String? expireTime;
 
   ApproveApprovalRequestMessage();
 
@@ -1430,18 +1358,18 @@ class ApproveApprovalRequestMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expireTime != null) 'expireTime': expireTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime!,
       };
 }
 
 /// A decision that has been made to approve access to a resource.
 class ApproveDecision {
   /// The time at which approval was granted.
-  core.String approveTime;
+  core.String? approveTime;
 
   /// The time at which the approval expires.
-  core.String expireTime;
+  core.String? expireTime;
 
   ApproveDecision();
 
@@ -1454,9 +1382,9 @@ class ApproveDecision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (approveTime != null) 'approveTime': approveTime,
-        if (expireTime != null) 'expireTime': expireTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (approveTime != null) 'approveTime': approveTime!,
+        if (expireTime != null) 'expireTime': expireTime!,
       };
 }
 
@@ -1468,18 +1396,18 @@ class DismissApprovalRequestMessage {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A decision that has been made to dismiss an approval request.
 class DismissDecision {
   /// The time at which the approval request was dismissed.
-  core.String dismissTime;
+  core.String? dismissTime;
 
   /// This field will be true if the ApprovalRequest was implcitly dismissed due
   /// to inaction by the access approval approvers (the request is not acted on
   /// by the approvers before the exiration time).
-  core.bool implicit;
+  core.bool? implicit;
 
   DismissDecision();
 
@@ -1492,9 +1420,9 @@ class DismissDecision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dismissTime != null) 'dismissTime': dismissTime,
-        if (implicit != null) 'implicit': implicit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dismissTime != null) 'dismissTime': dismissTime!,
+        if (implicit != null) 'implicit': implicit!,
       };
 }
 
@@ -1512,7 +1440,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents the enrollment of a cloud resource into a specific service.
@@ -1533,14 +1461,14 @@ class EnrolledService {
   /// resource in all products supported at both 'GA' and 'Preview' levels. More
   /// information about levels of support is available at
   /// https://cloud.google.com/access-approval/docs/supported-services
-  core.String cloudProduct;
+  core.String? cloudProduct;
 
   /// The enrollment level of the service.
   /// Possible string values are:
   /// - "ENROLLMENT_LEVEL_UNSPECIFIED" : Default value for proto, shouldn't be
   /// used.
   /// - "BLOCK_ALL" : Service is enrolled in Access Approval for all requests
-  core.String enrollmentLevel;
+  core.String? enrollmentLevel;
 
   EnrolledService();
 
@@ -1553,19 +1481,19 @@ class EnrolledService {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cloudProduct != null) 'cloudProduct': cloudProduct,
-        if (enrollmentLevel != null) 'enrollmentLevel': enrollmentLevel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cloudProduct != null) 'cloudProduct': cloudProduct!,
+        if (enrollmentLevel != null) 'enrollmentLevel': enrollmentLevel!,
       };
 }
 
 /// Response to listing of ApprovalRequest objects.
 class ListApprovalRequestsResponse {
   /// Approval request details.
-  core.List<ApprovalRequest> approvalRequests;
+  core.List<ApprovalRequest>? approvalRequests;
 
   /// Token to retrieve the next page of results, or empty if there are no more.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListApprovalRequestsResponse();
 
@@ -1581,11 +1509,11 @@ class ListApprovalRequestsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (approvalRequests != null)
           'approvalRequests':
-              approvalRequests.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              approvalRequests!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1593,7 +1521,7 @@ class ListApprovalRequestsResponse {
 class ResourceProperties {
   /// Whether an approval will exclude the descendants of the resource being
   /// requested.
-  core.bool excludesDescendants;
+  core.bool? excludesDescendants;
 
   ResourceProperties();
 
@@ -1603,8 +1531,8 @@ class ResourceProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (excludesDescendants != null)
-          'excludesDescendants': excludesDescendants,
+          'excludesDescendants': excludesDescendants!,
       };
 }

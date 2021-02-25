@@ -44,10 +44,22 @@ api.Account buildAccount() {
 void checkAccount(api.Account o) {
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.status, unittest.equals('foo'));
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAccount--;
 }
@@ -81,9 +93,15 @@ api.Accounts buildAccounts() {
 void checkAccounts(api.Accounts o) {
   buildCounterAccounts++;
   if (buildCounterAccounts < 3) {
-    unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed4854(o.items);
-    unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4854(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAccounts--;
 }
@@ -106,11 +124,20 @@ api.AdClient buildAdClient() {
 void checkAdClient(api.AdClient o) {
   buildCounterAdClient++;
   if (buildCounterAdClient < 3) {
-    unittest.expect(o.arcOptIn, unittest.isTrue);
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.productCode, unittest.equals('foo'));
-    unittest.expect(o.supportsReporting, unittest.isTrue);
+    unittest.expect(o.arcOptIn!, unittest.isTrue);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.productCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.supportsReporting!, unittest.isTrue);
   }
   buildCounterAdClient--;
 }
@@ -145,10 +172,19 @@ api.AdClients buildAdClients() {
 void checkAdClients(api.AdClients o) {
   buildCounterAdClients++;
   if (buildCounterAdClients < 3) {
-    unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed4855(o.items);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4855(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAdClients--;
 }
@@ -168,8 +204,14 @@ api.AdCode buildAdCode() {
 void checkAdCode(api.AdCode o) {
   buildCounterAdCode++;
   if (buildCounterAdCode < 3) {
-    unittest.expect(o.adCode, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(
+      o.adCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAdCode--;
 }
@@ -192,11 +234,26 @@ api.AdStyleColors buildAdStyleColors() {
 void checkAdStyleColors(api.AdStyleColors o) {
   buildCounterAdStyleColors++;
   if (buildCounterAdStyleColors < 3) {
-    unittest.expect(o.background, unittest.equals('foo'));
-    unittest.expect(o.border, unittest.equals('foo'));
-    unittest.expect(o.text, unittest.equals('foo'));
-    unittest.expect(o.title, unittest.equals('foo'));
-    unittest.expect(o.url, unittest.equals('foo'));
+    unittest.expect(
+      o.background!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.border!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.text!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAdStyleColors--;
 }
@@ -216,8 +273,14 @@ api.AdStyleFont buildAdStyleFont() {
 void checkAdStyleFont(api.AdStyleFont o) {
   buildCounterAdStyleFont++;
   if (buildCounterAdStyleFont < 3) {
-    unittest.expect(o.family, unittest.equals('foo'));
-    unittest.expect(o.size, unittest.equals('foo'));
+    unittest.expect(
+      o.family!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.size!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAdStyleFont--;
 }
@@ -239,10 +302,16 @@ api.AdStyle buildAdStyle() {
 void checkAdStyle(api.AdStyle o) {
   buildCounterAdStyle++;
   if (buildCounterAdStyle < 3) {
-    checkAdStyleColors(o.colors as api.AdStyleColors);
-    unittest.expect(o.corners, unittest.equals('foo'));
-    checkAdStyleFont(o.font as api.AdStyleFont);
-    unittest.expect(o.kind, unittest.equals('foo'));
+    checkAdStyleColors(o.colors! as api.AdStyleColors);
+    unittest.expect(
+      o.corners!,
+      unittest.equals('foo'),
+    );
+    checkAdStyleFont(o.font! as api.AdStyleFont);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAdStyle--;
 }
@@ -265,9 +334,18 @@ void checkAdUnitContentAdsSettingsBackupOption(
     api.AdUnitContentAdsSettingsBackupOption o) {
   buildCounterAdUnitContentAdsSettingsBackupOption++;
   if (buildCounterAdUnitContentAdsSettingsBackupOption < 3) {
-    unittest.expect(o.color, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
-    unittest.expect(o.url, unittest.equals('foo'));
+    unittest.expect(
+      o.color!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.url!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAdUnitContentAdsSettingsBackupOption--;
 }
@@ -289,9 +367,15 @@ void checkAdUnitContentAdsSettings(api.AdUnitContentAdsSettings o) {
   buildCounterAdUnitContentAdsSettings++;
   if (buildCounterAdUnitContentAdsSettings < 3) {
     checkAdUnitContentAdsSettingsBackupOption(
-        o.backupOption as api.AdUnitContentAdsSettingsBackupOption);
-    unittest.expect(o.size, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
+        o.backupOption! as api.AdUnitContentAdsSettingsBackupOption);
+    unittest.expect(
+      o.size!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAdUnitContentAdsSettings--;
 }
@@ -313,10 +397,22 @@ api.AdUnitMobileContentAdsSettings buildAdUnitMobileContentAdsSettings() {
 void checkAdUnitMobileContentAdsSettings(api.AdUnitMobileContentAdsSettings o) {
   buildCounterAdUnitMobileContentAdsSettings++;
   if (buildCounterAdUnitMobileContentAdsSettings < 3) {
-    unittest.expect(o.markupLanguage, unittest.equals('foo'));
-    unittest.expect(o.scriptingLanguage, unittest.equals('foo'));
-    unittest.expect(o.size, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.markupLanguage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.scriptingLanguage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.size!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAdUnitMobileContentAdsSettings--;
 }
@@ -342,16 +438,31 @@ api.AdUnit buildAdUnit() {
 void checkAdUnit(api.AdUnit o) {
   buildCounterAdUnit++;
   if (buildCounterAdUnit < 3) {
-    unittest.expect(o.code, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
     checkAdUnitContentAdsSettings(
-        o.contentAdsSettings as api.AdUnitContentAdsSettings);
-    checkAdStyle(o.customStyle as api.AdStyle);
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
+        o.contentAdsSettings! as api.AdUnitContentAdsSettings);
+    checkAdStyle(o.customStyle! as api.AdStyle);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
     checkAdUnitMobileContentAdsSettings(
-        o.mobileContentAdsSettings as api.AdUnitMobileContentAdsSettings);
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.status, unittest.equals('foo'));
+        o.mobileContentAdsSettings! as api.AdUnitMobileContentAdsSettings);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAdUnit--;
 }
@@ -386,10 +497,19 @@ api.AdUnits buildAdUnits() {
 void checkAdUnits(api.AdUnits o) {
   buildCounterAdUnits++;
   if (buildCounterAdUnits < 3) {
-    unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed4856(o.items);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4856(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAdUnits--;
 }
@@ -403,8 +523,14 @@ core.List<core.String> buildUnnamed4857() {
 
 void checkUnnamed4857(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterAssociationSession = 0;
@@ -429,15 +555,39 @@ api.AssociationSession buildAssociationSession() {
 void checkAssociationSession(api.AssociationSession o) {
   buildCounterAssociationSession++;
   if (buildCounterAssociationSession < 3) {
-    unittest.expect(o.accountId, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed4857(o.productCodes);
-    unittest.expect(o.redirectUrl, unittest.equals('foo'));
-    unittest.expect(o.status, unittest.equals('foo'));
-    unittest.expect(o.userLocale, unittest.equals('foo'));
-    unittest.expect(o.websiteLocale, unittest.equals('foo'));
-    unittest.expect(o.websiteUrl, unittest.equals('foo'));
+    unittest.expect(
+      o.accountId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4857(o.productCodes!);
+    unittest.expect(
+      o.redirectUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.userLocale!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.websiteLocale!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.websiteUrl!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAssociationSession--;
 }
@@ -459,10 +609,22 @@ api.CustomChannel buildCustomChannel() {
 void checkCustomChannel(api.CustomChannel o) {
   buildCounterCustomChannel++;
   if (buildCounterCustomChannel < 3) {
-    unittest.expect(o.code, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCustomChannel--;
 }
@@ -497,10 +659,19 @@ api.CustomChannels buildCustomChannels() {
 void checkCustomChannels(api.CustomChannels o) {
   buildCounterCustomChannels++;
   if (buildCounterCustomChannels < 3) {
-    unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed4858(o.items);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4858(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCustomChannels--;
 }
@@ -514,8 +685,14 @@ core.List<core.String> buildUnnamed4859() {
 
 void checkUnnamed4859(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterReportHeaders = 0;
@@ -534,9 +711,18 @@ api.ReportHeaders buildReportHeaders() {
 void checkReportHeaders(api.ReportHeaders o) {
   buildCounterReportHeaders++;
   if (buildCounterReportHeaders < 3) {
-    unittest.expect(o.currency, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.currency!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterReportHeaders--;
 }
@@ -563,8 +749,14 @@ core.List<core.String> buildUnnamed4861() {
 
 void checkUnnamed4861(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.List<core.String>> buildUnnamed4862() {
@@ -589,8 +781,14 @@ core.List<core.String> buildUnnamed4863() {
 
 void checkUnnamed4863(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4864() {
@@ -602,8 +800,14 @@ core.List<core.String> buildUnnamed4864() {
 
 void checkUnnamed4864(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterReport = 0;
@@ -626,13 +830,19 @@ api.Report buildReport() {
 void checkReport(api.Report o) {
   buildCounterReport++;
   if (buildCounterReport < 3) {
-    checkUnnamed4859(o.averages);
-    checkUnnamed4860(o.headers);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed4862(o.rows);
-    unittest.expect(o.totalMatchedRows, unittest.equals('foo'));
-    checkUnnamed4863(o.totals);
-    checkUnnamed4864(o.warnings);
+    checkUnnamed4859(o.averages!);
+    checkUnnamed4860(o.headers!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4862(o.rows!);
+    unittest.expect(
+      o.totalMatchedRows!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4863(o.totals!);
+    checkUnnamed4864(o.warnings!);
   }
   buildCounterReport--;
 }
@@ -653,9 +863,18 @@ api.UrlChannel buildUrlChannel() {
 void checkUrlChannel(api.UrlChannel o) {
   buildCounterUrlChannel++;
   if (buildCounterUrlChannel < 3) {
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.urlPattern, unittest.equals('foo'));
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.urlPattern!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterUrlChannel--;
 }
@@ -690,10 +909,19 @@ api.UrlChannels buildUrlChannels() {
 void checkUrlChannels(api.UrlChannels o) {
   buildCounterUrlChannels++;
   if (buildCounterUrlChannels < 3) {
-    unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed4865(o.items);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4865(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterUrlChannels--;
 }
@@ -707,8 +935,14 @@ core.List<core.String> buildUnnamed4866() {
 
 void checkUnnamed4866(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4867() {
@@ -720,8 +954,14 @@ core.List<core.String> buildUnnamed4867() {
 
 void checkUnnamed4867(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4868() {
@@ -733,8 +973,14 @@ core.List<core.String> buildUnnamed4868() {
 
 void checkUnnamed4868(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4869() {
@@ -746,8 +992,14 @@ core.List<core.String> buildUnnamed4869() {
 
 void checkUnnamed4869(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4870() {
@@ -759,8 +1011,14 @@ core.List<core.String> buildUnnamed4870() {
 
 void checkUnnamed4870(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4871() {
@@ -772,8 +1030,14 @@ core.List<core.String> buildUnnamed4871() {
 
 void checkUnnamed4871(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4872() {
@@ -785,8 +1049,14 @@ core.List<core.String> buildUnnamed4872() {
 
 void checkUnnamed4872(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4873() {
@@ -798,8 +1068,14 @@ core.List<core.String> buildUnnamed4873() {
 
 void checkUnnamed4873(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4874() {
@@ -811,8 +1087,14 @@ core.List<core.String> buildUnnamed4874() {
 
 void checkUnnamed4874(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4875() {
@@ -824,8 +1106,14 @@ core.List<core.String> buildUnnamed4875() {
 
 void checkUnnamed4875(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed4876() {
@@ -837,8 +1125,14 @@ core.List<core.String> buildUnnamed4876() {
 
 void checkUnnamed4876(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -1016,17 +1310,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("accounts/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("accounts/"),
+        );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_accountId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_accountId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1043,7 +1346,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1069,13 +1375,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("accounts"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("accounts"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -1093,9 +1405,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filterAdClientId"],
-            unittest.equals(arg_filterAdClientId));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["filterAdClientId"]!,
+          unittest.equals(arg_filterAdClientId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1124,26 +1441,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("accounts/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("accounts/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_accountId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("/adclients/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_accountId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("/adclients/"),
+        );
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1160,7 +1491,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1188,22 +1522,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("accounts/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("accounts/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/adclients', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_accountId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/adclients"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_accountId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/adclients"),
+        );
         pathOffset += 10;
 
         var query = (req.url).query;
@@ -1221,11 +1566,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1258,35 +1610,54 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("accounts/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("accounts/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_accountId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("/adclients/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_accountId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("/adclients/"),
+        );
         pathOffset += 11;
         index = path.indexOf('/adunits/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("/adunits/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("/adunits/"),
+        );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_adUnitId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adUnitId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1303,7 +1674,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1332,35 +1706,54 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("accounts/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("accounts/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_accountId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("/adclients/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_accountId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("/adclients/"),
+        );
         pathOffset += 11;
         index = path.indexOf('/adunits/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("/adunits/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("/adunits/"),
+        );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_adUnitId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adUnitId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1377,7 +1770,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1407,40 +1803,61 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("accounts/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("accounts/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_accountId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("/adclients/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_accountId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("/adclients/"),
+        );
         pathOffset += 11;
         index = path.indexOf('/adunits/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("/adunits/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("/adunits/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/adcode', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adUnitId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("/adcode"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adUnitId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals("/adcode"),
+        );
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -1458,9 +1875,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["hostCustomChannelId"],
-            unittest.equals(arg_hostCustomChannelId));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["hostCustomChannelId"]!,
+          unittest.equals(arg_hostCustomChannelId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1494,31 +1916,47 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("accounts/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("accounts/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_accountId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("/adclients/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_accountId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("/adclients/"),
+        );
         pathOffset += 11;
         index = path.indexOf('/adunits', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/adunits"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/adunits"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -1536,7 +1974,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1567,31 +2008,47 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("accounts/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("accounts/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_accountId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("/adclients/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_accountId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("/adclients/"),
+        );
         pathOffset += 11;
         index = path.indexOf('/adunits', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/adunits"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/adunits"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -1609,13 +2066,22 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["includeInactive"].first,
-            unittest.equals("$arg_includeInactive"));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["includeInactive"]!.first,
+          unittest.equals("$arg_includeInactive"),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1652,31 +2118,47 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("accounts/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("accounts/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_accountId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("/adclients/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_accountId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("/adclients/"),
+        );
         pathOffset += 11;
         index = path.indexOf('/adunits', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/adunits"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/adunits"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -1695,8 +2177,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["adUnitId"].first, unittest.equals(arg_adUnitId));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["adUnitId"]!.first,
+          unittest.equals(arg_adUnitId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1729,31 +2216,47 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("accounts/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("accounts/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/adclients/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_accountId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("/adclients/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_accountId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("/adclients/"),
+        );
         pathOffset += 11;
         index = path.indexOf('/adunits', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/adunits"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/adunits"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -1771,7 +2274,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1809,22 +2315,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("accounts/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("accounts/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/reports', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_accountId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/reports"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_accountId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/reports"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -1843,19 +2360,45 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["startDate"].first, unittest.equals(arg_startDate));
+          queryMap["startDate"]!.first,
+          unittest.equals(arg_startDate),
+        );
         unittest.expect(
-            queryMap["endDate"].first, unittest.equals(arg_endDate));
-        unittest.expect(queryMap["dimension"], unittest.equals(arg_dimension));
-        unittest.expect(queryMap["filter"], unittest.equals(arg_filter));
-        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["metric"], unittest.equals(arg_metric));
-        unittest.expect(queryMap["sort"], unittest.equals(arg_sort));
-        unittest.expect(core.int.parse(queryMap["startIndex"].first),
-            unittest.equals(arg_startIndex));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["endDate"]!.first,
+          unittest.equals(arg_endDate),
+        );
+        unittest.expect(
+          queryMap["dimension"]!,
+          unittest.equals(arg_dimension),
+        );
+        unittest.expect(
+          queryMap["filter"]!,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap["locale"]!.first,
+          unittest.equals(arg_locale),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["metric"]!,
+          unittest.equals(arg_metric),
+        );
+        unittest.expect(
+          queryMap["sort"]!,
+          unittest.equals(arg_sort),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["startIndex"]!.first),
+          unittest.equals(arg_startIndex),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1891,17 +2434,26 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("adclients/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("adclients/"),
+        );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1918,7 +2470,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1945,13 +2500,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("adclients"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("adclients"),
+        );
         pathOffset += 9;
 
         var query = (req.url).query;
@@ -1969,11 +2530,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2008,13 +2576,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 25),
-            unittest.equals("associationsessions/start"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 25),
+          unittest.equals("associationsessions/start"),
+        );
         pathOffset += 25;
 
         var query = (req.url).query;
@@ -2033,16 +2607,29 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["productCode"], unittest.equals(arg_productCode));
+          queryMap["productCode"]!,
+          unittest.equals(arg_productCode),
+        );
         unittest.expect(
-            queryMap["websiteUrl"].first, unittest.equals(arg_websiteUrl));
+          queryMap["websiteUrl"]!.first,
+          unittest.equals(arg_websiteUrl),
+        );
         unittest.expect(
-            queryMap["callbackUrl"].first, unittest.equals(arg_callbackUrl));
+          queryMap["callbackUrl"]!.first,
+          unittest.equals(arg_callbackUrl),
+        );
         unittest.expect(
-            queryMap["userLocale"].first, unittest.equals(arg_userLocale));
-        unittest.expect(queryMap["websiteLocale"].first,
-            unittest.equals(arg_websiteLocale));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["userLocale"]!.first,
+          unittest.equals(arg_userLocale),
+        );
+        unittest.expect(
+          queryMap["websiteLocale"]!.first,
+          unittest.equals(arg_websiteLocale),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2072,13 +2659,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26),
-            unittest.equals("associationsessions/verify"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 26),
+          unittest.equals("associationsessions/verify"),
+        );
         pathOffset += 26;
 
         var query = (req.url).query;
@@ -2096,8 +2689,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["token"]!.first,
+          unittest.equals(arg_token),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2126,26 +2725,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("adclients/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("adclients/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/customchannels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 16),
-            unittest.equals("/customchannels/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals("/customchannels/"),
+        );
         pathOffset += 16;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_customChannelId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_customChannelId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2162,7 +2775,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2189,26 +2805,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("adclients/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("adclients/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/customchannels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 16),
-            unittest.equals("/customchannels/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals("/customchannels/"),
+        );
         pathOffset += 16;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_customChannelId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_customChannelId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2225,7 +2855,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2256,22 +2889,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("adclients/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("adclients/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/customchannels', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("/customchannels"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("/customchannels"),
+        );
         pathOffset += 15;
 
         var query = (req.url).query;
@@ -2289,7 +2933,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2317,22 +2964,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("adclients/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("adclients/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/customchannels', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("/customchannels"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("/customchannels"),
+        );
         pathOffset += 15;
 
         var query = (req.url).query;
@@ -2350,11 +3008,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2389,22 +3054,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("adclients/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("adclients/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/customchannels', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("/customchannels"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("/customchannels"),
+        );
         pathOffset += 15;
 
         var query = (req.url).query;
@@ -2422,9 +3098,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["customChannelId"].first,
-            unittest.equals(arg_customChannelId));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["customChannelId"]!.first,
+          unittest.equals(arg_customChannelId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2456,22 +3137,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("adclients/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("adclients/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/customchannels', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("/customchannels"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("/customchannels"),
+        );
         pathOffset += 15;
 
         var query = (req.url).query;
@@ -2489,7 +3181,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2525,13 +3220,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("reports"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals("reports"),
+        );
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -2550,19 +3251,45 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["startDate"].first, unittest.equals(arg_startDate));
+          queryMap["startDate"]!.first,
+          unittest.equals(arg_startDate),
+        );
         unittest.expect(
-            queryMap["endDate"].first, unittest.equals(arg_endDate));
-        unittest.expect(queryMap["dimension"], unittest.equals(arg_dimension));
-        unittest.expect(queryMap["filter"], unittest.equals(arg_filter));
-        unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["metric"], unittest.equals(arg_metric));
-        unittest.expect(queryMap["sort"], unittest.equals(arg_sort));
-        unittest.expect(core.int.parse(queryMap["startIndex"].first),
-            unittest.equals(arg_startIndex));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["endDate"]!.first,
+          unittest.equals(arg_endDate),
+        );
+        unittest.expect(
+          queryMap["dimension"]!,
+          unittest.equals(arg_dimension),
+        );
+        unittest.expect(
+          queryMap["filter"]!,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          queryMap["locale"]!.first,
+          unittest.equals(arg_locale),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["metric"]!,
+          unittest.equals(arg_metric),
+        );
+        unittest.expect(
+          queryMap["sort"]!,
+          unittest.equals(arg_sort),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["startIndex"]!.first),
+          unittest.equals(arg_startIndex),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2599,26 +3326,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("adclients/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("adclients/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/urlchannels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("/urlchannels/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals("/urlchannels/"),
+        );
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_urlChannelId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_urlChannelId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2635,7 +3376,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2666,22 +3410,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("adclients/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("adclients/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/urlchannels', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("/urlchannels"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("/urlchannels"),
+        );
         pathOffset += 12;
 
         var query = (req.url).query;
@@ -2699,7 +3454,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2727,22 +3485,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("adsensehost/v4.1/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("adsensehost/v4.1/"),
+        );
         pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("adclients/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("adclients/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/urlchannels', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_adClientId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("/urlchannels"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_adClientId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("/urlchannels"),
+        );
         pathOffset += 12;
 
         var query = (req.url).query;
@@ -2760,11 +3529,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

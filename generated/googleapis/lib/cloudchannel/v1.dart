@@ -104,13 +104,9 @@ class AccountsResource {
       checkCloudIdentityAccountsExist(
     GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -169,13 +165,10 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudChannelV1ListSubscribersResponse> listSubscribers(
     core.String account, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (account == null) {
-      throw core.ArgumentError('Parameter account is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -229,13 +222,9 @@ class AccountsResource {
       listTransferableOffers(
     GoogleCloudChannelV1ListTransferableOffersRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -289,13 +278,9 @@ class AccountsResource {
       listTransferableSkus(
     GoogleCloudChannelV1ListTransferableSkusRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -348,13 +333,9 @@ class AccountsResource {
   async.Future<GoogleCloudChannelV1RegisterSubscriberResponse> register(
     GoogleCloudChannelV1RegisterSubscriberRequest request,
     core.String account, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (account == null) {
-      throw core.ArgumentError('Parameter account is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -409,13 +390,9 @@ class AccountsResource {
   async.Future<GoogleCloudChannelV1UnregisterSubscriberResponse> unregister(
     GoogleCloudChannelV1UnregisterSubscriberRequest request,
     core.String account, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (account == null) {
-      throw core.ArgumentError('Parameter account is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -481,13 +458,9 @@ class AccountsChannelPartnerLinksResource {
   async.Future<GoogleCloudChannelV1ChannelPartnerLink> create(
     GoogleCloudChannelV1ChannelPartnerLink request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -545,12 +518,9 @@ class AccountsChannelPartnerLinksResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudChannelV1ChannelPartnerLink> get(
     core.String name, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -612,14 +582,11 @@ class AccountsChannelPartnerLinksResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudChannelV1ListChannelPartnerLinksResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -679,13 +646,9 @@ class AccountsChannelPartnerLinksResource {
   async.Future<GoogleCloudChannelV1ChannelPartnerLink> patch(
     GoogleCloudChannelV1UpdateChannelPartnerLinkRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -741,13 +704,9 @@ class AccountsCustomersResource {
   async.Future<GoogleCloudChannelV1Customer> create(
     GoogleCloudChannelV1Customer request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -790,11 +749,8 @@ class AccountsCustomersResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -837,11 +793,8 @@ class AccountsCustomersResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudChannelV1Customer> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -893,13 +846,10 @@ class AccountsCustomersResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudChannelV1ListCustomersResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -968,17 +918,14 @@ class AccountsCustomersResource {
   async.Future<GoogleCloudChannelV1ListPurchasableOffersResponse>
       listPurchasableOffers(
     core.String customer, {
-    core.String changeOfferPurchase_entitlement,
-    core.String changeOfferPurchase_newSku,
-    core.String createEntitlementPurchase_sku,
-    core.String languageCode,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? changeOfferPurchase_entitlement,
+    core.String? changeOfferPurchase_newSku,
+    core.String? createEntitlementPurchase_sku,
+    core.String? languageCode,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (changeOfferPurchase_entitlement != null)
         'changeOfferPurchase.entitlement': [changeOfferPurchase_entitlement],
@@ -1058,17 +1005,14 @@ class AccountsCustomersResource {
   async.Future<GoogleCloudChannelV1ListPurchasableSkusResponse>
       listPurchasableSkus(
     core.String customer, {
-    core.String changeOfferPurchase_changeType,
-    core.String changeOfferPurchase_entitlement,
-    core.String createEntitlementPurchase_product,
-    core.String languageCode,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? changeOfferPurchase_changeType,
+    core.String? changeOfferPurchase_entitlement,
+    core.String? createEntitlementPurchase_product,
+    core.String? languageCode,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (changeOfferPurchase_changeType != null)
         'changeOfferPurchase.changeType': [changeOfferPurchase_changeType],
@@ -1130,14 +1074,10 @@ class AccountsCustomersResource {
   async.Future<GoogleCloudChannelV1Customer> patch(
     GoogleCloudChannelV1Customer request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1192,13 +1132,9 @@ class AccountsCustomersResource {
   async.Future<GoogleLongrunningOperation> provisionCloudIdentity(
     GoogleCloudChannelV1ProvisionCloudIdentityRequest request,
     core.String customer, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1262,13 +1198,9 @@ class AccountsCustomersResource {
   async.Future<GoogleLongrunningOperation> transferEntitlements(
     GoogleCloudChannelV1TransferEntitlementsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1332,13 +1264,9 @@ class AccountsCustomersResource {
   async.Future<GoogleLongrunningOperation> transferEntitlementsToGoogle(
     GoogleCloudChannelV1TransferEntitlementsToGoogleRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1409,13 +1337,9 @@ class AccountsCustomersEntitlementsResource {
   async.Future<GoogleLongrunningOperation> activate(
     GoogleCloudChannelV1ActivateEntitlementRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1476,13 +1400,9 @@ class AccountsCustomersEntitlementsResource {
   async.Future<GoogleLongrunningOperation> cancel(
     GoogleCloudChannelV1CancelEntitlementRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1537,13 +1457,9 @@ class AccountsCustomersEntitlementsResource {
   async.Future<GoogleLongrunningOperation> changeOffer(
     GoogleCloudChannelV1ChangeOfferRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1601,13 +1517,9 @@ class AccountsCustomersEntitlementsResource {
   async.Future<GoogleLongrunningOperation> changeParameters(
     GoogleCloudChannelV1ChangeParametersRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1665,13 +1577,9 @@ class AccountsCustomersEntitlementsResource {
   async.Future<GoogleLongrunningOperation> changeRenewalSettings(
     GoogleCloudChannelV1ChangeRenewalSettingsRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1740,13 +1648,9 @@ class AccountsCustomersEntitlementsResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudChannelV1CreateEntitlementRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1793,11 +1697,8 @@ class AccountsCustomersEntitlementsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudChannelV1Entitlement> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1849,13 +1750,10 @@ class AccountsCustomersEntitlementsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudChannelV1ListEntitlementsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1915,13 +1813,9 @@ class AccountsCustomersEntitlementsResource {
   async.Future<GoogleLongrunningOperation> startPaidService(
     GoogleCloudChannelV1StartPaidServiceRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1977,13 +1871,9 @@ class AccountsCustomersEntitlementsResource {
   async.Future<GoogleLongrunningOperation> suspend(
     GoogleCloudChannelV1SuspendEntitlementRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2047,15 +1937,12 @@ class AccountsOffersResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudChannelV1ListOffersResponse> list(
     core.String parent, {
-    core.String filter,
-    core.String languageCode,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? languageCode,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (languageCode != null) 'languageCode': [languageCode],
@@ -2113,13 +2000,9 @@ class OperationsResource {
   async.Future<GoogleProtobufEmpty> cancel(
     GoogleLongrunningCancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2160,11 +2043,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2202,11 +2082,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2256,14 +2133,11 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2323,11 +2197,11 @@ class ProductsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudChannelV1ListProductsResponse> list({
-    core.String account,
-    core.String languageCode,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? account,
+    core.String? languageCode,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (account != null) 'account': [account],
@@ -2392,15 +2266,12 @@ class ProductsSkusResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudChannelV1ListSkusResponse> list(
     core.String parent, {
-    core.String account,
-    core.String languageCode,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? account,
+    core.String? languageCode,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (account != null) 'account': [account],
       if (languageCode != null) 'languageCode': [languageCode],
@@ -2437,7 +2308,7 @@ class GoogleCloudChannelV1ActivateEntitlementRequest {
   /// (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   GoogleCloudChannelV1ActivateEntitlementRequest();
 
@@ -2447,21 +2318,21 @@ class GoogleCloudChannelV1ActivateEntitlementRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
 /// Information needed to create an Admin User for Google Workspace.
 class GoogleCloudChannelV1AdminUser {
   /// Primary email of the admin user.
-  core.String email;
+  core.String? email;
 
   /// Family name of the admin user.
-  core.String familyName;
+  core.String? familyName;
 
   /// Given name of the admin user.
-  core.String givenName;
+  core.String? givenName;
 
   GoogleCloudChannelV1AdminUser();
 
@@ -2477,17 +2348,17 @@ class GoogleCloudChannelV1AdminUser {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (email != null) 'email': email,
-        if (familyName != null) 'familyName': familyName,
-        if (givenName != null) 'givenName': givenName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (email != null) 'email': email!,
+        if (familyName != null) 'familyName': familyName!,
+        if (givenName != null) 'givenName': givenName!,
       };
 }
 
 /// Association links that an entitlement has to other entitlements.
 class GoogleCloudChannelV1AssociationInfo {
   /// The name of the base entitlement, for which this entitlement is an add-on.
-  core.String baseEntitlement;
+  core.String? baseEntitlement;
 
   GoogleCloudChannelV1AssociationInfo();
 
@@ -2497,8 +2368,8 @@ class GoogleCloudChannelV1AssociationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (baseEntitlement != null) 'baseEntitlement': baseEntitlement,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (baseEntitlement != null) 'baseEntitlement': baseEntitlement!,
       };
 }
 
@@ -2517,7 +2388,7 @@ class GoogleCloudChannelV1CancelEntitlementRequest {
   /// (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   GoogleCloudChannelV1CancelEntitlementRequest();
 
@@ -2527,8 +2398,8 @@ class GoogleCloudChannelV1CancelEntitlementRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -2539,17 +2410,17 @@ class GoogleCloudChannelV1ChangeOfferRequest {
   /// Format: accounts/{account_id}/offers/{offer_id}.
   ///
   /// Required.
-  core.String offer;
+  core.String? offer;
 
   /// Parameters needed to purchase the Offer.
   ///
   /// Optional.
-  core.List<GoogleCloudChannelV1Parameter> parameters;
+  core.List<GoogleCloudChannelV1Parameter>? parameters;
 
   /// Purchase order id provided by the reseller.
   ///
   /// Optional.
-  core.String purchaseOrderId;
+  core.String? purchaseOrderId;
 
   /// An optional request ID to identify requests.
   ///
@@ -2564,7 +2435,7 @@ class GoogleCloudChannelV1ChangeOfferRequest {
   /// (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   GoogleCloudChannelV1ChangeOfferRequest();
 
@@ -2587,12 +2458,12 @@ class GoogleCloudChannelV1ChangeOfferRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (offer != null) 'offer': offer,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (offer != null) 'offer': offer!,
         if (parameters != null)
-          'parameters': parameters.map((value) => value.toJson()).toList(),
-        if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId,
-        if (requestId != null) 'requestId': requestId,
+          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId!,
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -2603,12 +2474,12 @@ class GoogleCloudChannelV1ChangeParametersRequest {
   /// Only editable parameters are allowed to be changed.
   ///
   /// Required.
-  core.List<GoogleCloudChannelV1Parameter> parameters;
+  core.List<GoogleCloudChannelV1Parameter>? parameters;
 
   /// Purchase order ID provided by the reseller.
   ///
   /// Optional.
-  core.String purchaseOrderId;
+  core.String? purchaseOrderId;
 
   /// An optional request ID to identify requests.
   ///
@@ -2623,7 +2494,7 @@ class GoogleCloudChannelV1ChangeParametersRequest {
   /// (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   GoogleCloudChannelV1ChangeParametersRequest();
 
@@ -2643,11 +2514,11 @@ class GoogleCloudChannelV1ChangeParametersRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (parameters != null)
-          'parameters': parameters.map((value) => value.toJson()).toList(),
-        if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId,
-        if (requestId != null) 'requestId': requestId,
+          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId!,
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -2656,7 +2527,7 @@ class GoogleCloudChannelV1ChangeRenewalSettingsRequest {
   /// New renewal settings.
   ///
   /// Required.
-  GoogleCloudChannelV1RenewalSettings renewalSettings;
+  GoogleCloudChannelV1RenewalSettings? renewalSettings;
 
   /// A request ID to identify requests.
   ///
@@ -2671,7 +2542,7 @@ class GoogleCloudChannelV1ChangeRenewalSettingsRequest {
   /// (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   GoogleCloudChannelV1ChangeRenewalSettingsRequest();
 
@@ -2685,10 +2556,10 @@ class GoogleCloudChannelV1ChangeRenewalSettingsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (renewalSettings != null)
-          'renewalSettings': renewalSettings.toJson(),
-        if (requestId != null) 'requestId': requestId,
+          'renewalSettings': renewalSettings!.toJson(),
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -2698,17 +2569,17 @@ class GoogleCloudChannelV1ChannelPartnerLink {
   /// Cloud Identity info of the channel partner (IR).
   ///
   /// Output only.
-  GoogleCloudChannelV1CloudIdentityInfo channelPartnerCloudIdentityInfo;
+  GoogleCloudChannelV1CloudIdentityInfo? channelPartnerCloudIdentityInfo;
 
   /// Timestamp of when the channel partner link is created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// URI of the web page where partner accepts the link invitation.
   ///
   /// Output only.
-  core.String inviteLinkUri;
+  core.String? inviteLinkUri;
 
   /// State of the channel partner link.
   ///
@@ -2722,29 +2593,29 @@ class GoogleCloudChannelV1ChannelPartnerLink {
   /// distributor.
   /// - "SUSPENDED" : Status when the reseller is suspended by Google or
   /// distributor.
-  core.String linkState;
+  core.String? linkState;
 
   /// Resource name for the channel partner link, in the format
   /// accounts/{account_id}/channelPartnerLinks/{id}.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Public identifier that a customer must use to generate a transfer token to
   /// move to this distributor-reseller combination.
   ///
   /// Output only.
-  core.String publicId;
+  core.String? publicId;
 
   /// Cloud Identity ID of the linked reseller.
   ///
   /// Required.
-  core.String resellerCloudIdentityId;
+  core.String? resellerCloudIdentityId;
 
   /// Timestamp of when the channel partner link is updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudChannelV1ChannelPartnerLink();
 
@@ -2778,18 +2649,18 @@ class GoogleCloudChannelV1ChannelPartnerLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (channelPartnerCloudIdentityInfo != null)
           'channelPartnerCloudIdentityInfo':
-              channelPartnerCloudIdentityInfo.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (inviteLinkUri != null) 'inviteLinkUri': inviteLinkUri,
-        if (linkState != null) 'linkState': linkState,
-        if (name != null) 'name': name,
-        if (publicId != null) 'publicId': publicId,
+              channelPartnerCloudIdentityInfo!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (inviteLinkUri != null) 'inviteLinkUri': inviteLinkUri!,
+        if (linkState != null) 'linkState': linkState!,
+        if (name != null) 'name': name!,
+        if (publicId != null) 'publicId': publicId!,
         if (resellerCloudIdentityId != null)
-          'resellerCloudIdentityId': resellerCloudIdentityId,
-        if (updateTime != null) 'updateTime': updateTime,
+          'resellerCloudIdentityId': resellerCloudIdentityId!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2798,7 +2669,7 @@ class GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest {
   /// Domain for which the Cloud Identity account customer is fetched.
   ///
   /// Required.
-  core.String domain;
+  core.String? domain;
 
   GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest();
 
@@ -2809,15 +2680,15 @@ class GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (domain != null) 'domain': domain,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (domain != null) 'domain': domain!,
       };
 }
 
 /// Response message for CloudChannelService.CheckCloudIdentityAccountsExist.
 class GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse {
   /// The Cloud Identity accounts associated with the domain.
-  core.List<GoogleCloudChannelV1CloudIdentityCustomerAccount>
+  core.List<GoogleCloudChannelV1CloudIdentityCustomerAccount>?
       cloudIdentityAccounts;
 
   GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse();
@@ -2833,10 +2704,10 @@ class GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cloudIdentityAccounts != null)
           'cloudIdentityAccounts':
-              cloudIdentityAccounts.map((value) => value.toJson()).toList(),
+              cloudIdentityAccounts!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2846,20 +2717,20 @@ class GoogleCloudChannelV1CloudIdentityCustomerAccount {
   /// Cloud Identity ID of the customer.
   ///
   /// This field is populated ONLY if existing = true.
-  core.String customerCloudIdentityId;
+  core.String? customerCloudIdentityId;
 
   /// Name of the customer that owns the Cloud Identity account.
   ///
   /// This field is populated ONLY if owned = true. The customer_name takes the
   /// format: accounts/{account_id}/customers/{customer_id}
-  core.String customerName;
+  core.String? customerName;
 
   /// True if a Cloud Identity account exists for a specific domain.
-  core.bool existing;
+  core.bool? existing;
 
   /// True if the Cloud Identity account is associated with a customer belonging
   /// to the Channel Services partner making the API call.
-  core.bool owned;
+  core.bool? owned;
 
   GoogleCloudChannelV1CloudIdentityCustomerAccount();
 
@@ -2878,12 +2749,12 @@ class GoogleCloudChannelV1CloudIdentityCustomerAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customerCloudIdentityId != null)
-          'customerCloudIdentityId': customerCloudIdentityId,
-        if (customerName != null) 'customerName': customerName,
-        if (existing != null) 'existing': existing,
-        if (owned != null) 'owned': owned,
+          'customerCloudIdentityId': customerCloudIdentityId!,
+        if (customerName != null) 'customerName': customerName!,
+        if (existing != null) 'existing': existing!,
+        if (owned != null) 'owned': owned!,
       };
 }
 
@@ -2892,10 +2763,10 @@ class GoogleCloudChannelV1CloudIdentityInfo {
   /// URI of Customer's Admin console dashboard.
   ///
   /// Output only.
-  core.String adminConsoleUri;
+  core.String? adminConsoleUri;
 
   /// The alternate email.
-  core.String alternateEmail;
+  core.String? alternateEmail;
 
   /// CustomerType indicates verification type needed for using services.
   /// Possible string values are:
@@ -2904,24 +2775,24 @@ class GoogleCloudChannelV1CloudIdentityInfo {
   /// - "DOMAIN" : Domain-owning customer which needs domain verification to use
   /// services.
   /// - "TEAM" : Team customer which needs email verification to use services.
-  core.String customerType;
+  core.String? customerType;
 
   /// Edu information about the customer.
-  GoogleCloudChannelV1EduData eduData;
+  GoogleCloudChannelV1EduData? eduData;
 
   /// Whether the domain is verified.
-  core.bool isDomainVerified;
+  core.bool? isDomainVerified;
 
   /// Language code.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Phone number associated with the Cloud Identity.
-  core.String phoneNumber;
+  core.String? phoneNumber;
 
   /// The primary domain name.
   ///
   /// Output only.
-  core.String primaryDomain;
+  core.String? primaryDomain;
 
   GoogleCloudChannelV1CloudIdentityInfo();
 
@@ -2953,15 +2824,15 @@ class GoogleCloudChannelV1CloudIdentityInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (adminConsoleUri != null) 'adminConsoleUri': adminConsoleUri,
-        if (alternateEmail != null) 'alternateEmail': alternateEmail,
-        if (customerType != null) 'customerType': customerType,
-        if (eduData != null) 'eduData': eduData.toJson(),
-        if (isDomainVerified != null) 'isDomainVerified': isDomainVerified,
-        if (languageCode != null) 'languageCode': languageCode,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber,
-        if (primaryDomain != null) 'primaryDomain': primaryDomain,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (adminConsoleUri != null) 'adminConsoleUri': adminConsoleUri!,
+        if (alternateEmail != null) 'alternateEmail': alternateEmail!,
+        if (customerType != null) 'customerType': customerType!,
+        if (eduData != null) 'eduData': eduData!.toJson(),
+        if (isDomainVerified != null) 'isDomainVerified': isDomainVerified!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+        if (primaryDomain != null) 'primaryDomain': primaryDomain!,
       };
 }
 
@@ -2970,17 +2841,17 @@ class GoogleCloudChannelV1CommitmentSettings {
   /// Commitment end timestamp.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// Renewal settings applicable for a commitment-based Offer.
   ///
   /// Optional.
-  GoogleCloudChannelV1RenewalSettings renewalSettings;
+  GoogleCloudChannelV1RenewalSettings? renewalSettings;
 
   /// Commitment start timestamp.
   ///
   /// Output only.
-  core.String startTime;
+  core.String? startTime;
 
   GoogleCloudChannelV1CommitmentSettings();
 
@@ -2997,18 +2868,18 @@ class GoogleCloudChannelV1CommitmentSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
         if (renewalSettings != null)
-          'renewalSettings': renewalSettings.toJson(),
-        if (startTime != null) 'startTime': startTime,
+          'renewalSettings': renewalSettings!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
 /// Represents the constraints for buying the Offer.
 class GoogleCloudChannelV1Constraints {
   /// Represents constraints required to purchase the Offer for a customer.
-  GoogleCloudChannelV1CustomerConstraints customerConstraints;
+  GoogleCloudChannelV1CustomerConstraints? customerConstraints;
 
   GoogleCloudChannelV1Constraints();
 
@@ -3019,9 +2890,9 @@ class GoogleCloudChannelV1Constraints {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customerConstraints != null)
-          'customerConstraints': customerConstraints.toJson(),
+          'customerConstraints': customerConstraints!.toJson(),
       };
 }
 
@@ -3032,28 +2903,28 @@ class GoogleCloudChannelV1ContactInfo {
   /// Populated by combining customer first name and last name.
   ///
   /// Output only.
-  core.String displayName;
+  core.String? displayName;
 
   /// Email of the contact in the customer account.
   ///
   /// Email is required for entitlements that need creation of admin.google.com
   /// accounts. The email will be the username used in credentials to access the
   /// admin.google.com account.
-  core.String email;
+  core.String? email;
 
   /// First name of the contact in the customer account.
-  core.String firstName;
+  core.String? firstName;
 
   /// Last name of the contact in the customer account.
-  core.String lastName;
+  core.String? lastName;
 
   /// Phone number of the contact in the customer account.
-  core.String phone;
+  core.String? phone;
 
   /// Job title of the contact in the customer account.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   GoogleCloudChannelV1ContactInfo();
 
@@ -3078,13 +2949,13 @@ class GoogleCloudChannelV1ContactInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (email != null) 'email': email,
-        if (firstName != null) 'firstName': firstName,
-        if (lastName != null) 'lastName': lastName,
-        if (phone != null) 'phone': phone,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (email != null) 'email': email!,
+        if (firstName != null) 'firstName': firstName!,
+        if (lastName != null) 'lastName': lastName!,
+        if (phone != null) 'phone': phone!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -3093,7 +2964,7 @@ class GoogleCloudChannelV1CreateEntitlementRequest {
   /// The entitlement to create.
   ///
   /// Required.
-  GoogleCloudChannelV1Entitlement entitlement;
+  GoogleCloudChannelV1Entitlement? entitlement;
 
   /// An optional request ID to identify requests.
   ///
@@ -3108,7 +2979,7 @@ class GoogleCloudChannelV1CreateEntitlementRequest {
   /// (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   GoogleCloudChannelV1CreateEntitlementRequest();
 
@@ -3122,9 +2993,9 @@ class GoogleCloudChannelV1CreateEntitlementRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (entitlement != null) 'entitlement': entitlement.toJson(),
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (entitlement != null) 'entitlement': entitlement!.toJson(),
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -3136,31 +3007,31 @@ class GoogleCloudChannelV1Customer {
   /// domains if primary contact email is present. When creating
   /// admin.google.com accounts, users get notified credentials at this email.
   /// This email address is also used as a recovery email.
-  core.String alternateEmail;
+  core.String? alternateEmail;
 
   /// Cloud Identity ID of the customer's channel partner.
   ///
   /// Populated only if a channel partner exists for this customer.
-  core.String channelPartnerId;
+  core.String? channelPartnerId;
 
   /// Customer's cloud_identity_id.
   ///
   /// Populated only if a Cloud Identity resource exists for this customer.
   ///
   /// Output only.
-  core.String cloudIdentityId;
+  core.String? cloudIdentityId;
 
   /// Cloud Identity information for the customer.
   ///
   /// Populated only if a Cloud Identity account exists for this customer.
   ///
   /// Output only.
-  GoogleCloudChannelV1CloudIdentityInfo cloudIdentityInfo;
+  GoogleCloudChannelV1CloudIdentityInfo? cloudIdentityInfo;
 
   /// The time at which the customer is created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Primary domain used by the customer.
   ///
@@ -3168,7 +3039,7 @@ class GoogleCloudChannelV1Customer {
   /// domain.
   ///
   /// Required.
-  core.String domain;
+  core.String? domain;
 
   /// The BCP-47 language code, such as "en-US" or "sr-Latn".
   ///
@@ -3176,19 +3047,19 @@ class GoogleCloudChannelV1Customer {
   /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
   ///
   /// Optional.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Resource name of the customer.
   ///
   /// Format: accounts/{account_id}/customers/{customer_id}
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Name of the organization that the customer entity represents.
   ///
   /// Required.
-  core.String orgDisplayName;
+  core.String? orgDisplayName;
 
   /// Address of the organization of the customer entity.
   ///
@@ -3197,15 +3068,15 @@ class GoogleCloudChannelV1Customer {
   /// Use the Customer-level language code to set the customer's language.
   ///
   /// Required.
-  GoogleTypePostalAddress orgPostalAddress;
+  GoogleTypePostalAddress? orgPostalAddress;
 
   /// Primary contact info.
-  GoogleCloudChannelV1ContactInfo primaryContactInfo;
+  GoogleCloudChannelV1ContactInfo? primaryContactInfo;
 
   /// The time at which the customer is updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudChannelV1Customer();
 
@@ -3251,37 +3122,37 @@ class GoogleCloudChannelV1Customer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alternateEmail != null) 'alternateEmail': alternateEmail,
-        if (channelPartnerId != null) 'channelPartnerId': channelPartnerId,
-        if (cloudIdentityId != null) 'cloudIdentityId': cloudIdentityId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alternateEmail != null) 'alternateEmail': alternateEmail!,
+        if (channelPartnerId != null) 'channelPartnerId': channelPartnerId!,
+        if (cloudIdentityId != null) 'cloudIdentityId': cloudIdentityId!,
         if (cloudIdentityInfo != null)
-          'cloudIdentityInfo': cloudIdentityInfo.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (domain != null) 'domain': domain,
-        if (languageCode != null) 'languageCode': languageCode,
-        if (name != null) 'name': name,
-        if (orgDisplayName != null) 'orgDisplayName': orgDisplayName,
+          'cloudIdentityInfo': cloudIdentityInfo!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (domain != null) 'domain': domain!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (name != null) 'name': name!,
+        if (orgDisplayName != null) 'orgDisplayName': orgDisplayName!,
         if (orgPostalAddress != null)
-          'orgPostalAddress': orgPostalAddress.toJson(),
+          'orgPostalAddress': orgPostalAddress!.toJson(),
         if (primaryContactInfo != null)
-          'primaryContactInfo': primaryContactInfo.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
+          'primaryContactInfo': primaryContactInfo!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// Represents constraints required to purchase the Offer for a customer.
 class GoogleCloudChannelV1CustomerConstraints {
   /// Allowed Customer Type.
-  core.List<core.String> allowedCustomerTypes;
+  core.List<core.String>? allowedCustomerTypes;
 
   /// Allowed geographical regions of the customer.
-  core.List<core.String> allowedRegions;
+  core.List<core.String>? allowedRegions;
 
   /// Allowed Promotional Order Type.
   ///
   /// Present for Promotional offers.
-  core.List<core.String> promotionalOrderTypes;
+  core.List<core.String>? promotionalOrderTypes;
 
   GoogleCloudChannelV1CustomerConstraints();
 
@@ -3303,12 +3174,12 @@ class GoogleCloudChannelV1CustomerConstraints {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedCustomerTypes != null)
-          'allowedCustomerTypes': allowedCustomerTypes,
-        if (allowedRegions != null) 'allowedRegions': allowedRegions,
+          'allowedCustomerTypes': allowedCustomerTypes!,
+        if (allowedRegions != null) 'allowedRegions': allowedRegions!,
         if (promotionalOrderTypes != null)
-          'promotionalOrderTypes': promotionalOrderTypes,
+          'promotionalOrderTypes': promotionalOrderTypes!,
       };
 }
 
@@ -3317,13 +3188,13 @@ class GoogleCloudChannelV1CustomerEvent {
   /// Resource name of the customer.
   ///
   /// Format: accounts/{account_id}/customers/{customer_id}
-  core.String customer;
+  core.String? customer;
 
   /// Type of event which happened on the customer.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default value. This state doesn't show unless an
   /// error occurs.
-  core.String eventType;
+  core.String? eventType;
 
   GoogleCloudChannelV1CustomerEvent();
 
@@ -3336,9 +3207,9 @@ class GoogleCloudChannelV1CustomerEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customer != null) 'customer': customer,
-        if (eventType != null) 'eventType': eventType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customer != null) 'customer': customer!,
+        if (eventType != null) 'eventType': eventType!,
       };
 }
 
@@ -3355,7 +3226,7 @@ class GoogleCloudChannelV1EduData {
   /// - "SIZE_2001_5000" : 2,001 - 5,000
   /// - "SIZE_5001_10000" : 5,001 - 10,000
   /// - "SIZE_10001_OR_MORE" : 10,001 +
-  core.String instituteSize;
+  core.String? instituteSize;
 
   /// Designated institute type of customer.
   /// Possible string values are:
@@ -3363,10 +3234,10 @@ class GoogleCloudChannelV1EduData {
   /// unless an error occurs.
   /// - "K12" : Elementary/Secondary Schools & Districts
   /// - "UNIVERSITY" : Higher Education Universities & Colleges
-  core.String instituteType;
+  core.String? instituteType;
 
   /// Web address for the edu customer's institution.
-  core.String website;
+  core.String? website;
 
   GoogleCloudChannelV1EduData();
 
@@ -3382,51 +3253,51 @@ class GoogleCloudChannelV1EduData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (instituteSize != null) 'instituteSize': instituteSize,
-        if (instituteType != null) 'instituteType': instituteType,
-        if (website != null) 'website': website,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (instituteSize != null) 'instituteSize': instituteSize!,
+        if (instituteType != null) 'instituteType': instituteType!,
+        if (website != null) 'website': website!,
       };
 }
 
 /// An entitlement is a representation of a customer's ability to use a service.
 class GoogleCloudChannelV1Entitlement {
   /// Association information to other entitlements.
-  GoogleCloudChannelV1AssociationInfo associationInfo;
+  GoogleCloudChannelV1AssociationInfo? associationInfo;
 
   /// Commitment settings for a commitment-based Offer.
   ///
   /// Required for commitment based offers.
-  GoogleCloudChannelV1CommitmentSettings commitmentSettings;
+  GoogleCloudChannelV1CommitmentSettings? commitmentSettings;
 
   /// The time at which the entitlement is created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Resource name of an entitlement in the form:
   /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The offer resource name for which the entitlement is to be created.
   ///
   /// Takes the form: accounts/{account_id}/offers/{offer_id}.
   ///
   /// Required.
-  core.String offer;
+  core.String? offer;
 
   /// Extended entitlement parameters.
   ///
   /// When creating an entitlement, valid parameters' names and values are
   /// defined in the offer's parameter definitions.
-  core.List<GoogleCloudChannelV1Parameter> parameters;
+  core.List<GoogleCloudChannelV1Parameter>? parameters;
 
   /// Service provisioning details for the entitlement.
   ///
   /// Output only.
-  GoogleCloudChannelV1ProvisionedService provisionedService;
+  GoogleCloudChannelV1ProvisionedService? provisionedService;
 
   /// Current provisioning state of the entitlement.
   ///
@@ -3436,7 +3307,7 @@ class GoogleCloudChannelV1Entitlement {
   /// show unless an error occurs.
   /// - "ACTIVE" : The entitlement is currently active.
   /// - "SUSPENDED" : The entitlement is currently suspended.
-  core.String provisioningState;
+  core.String? provisioningState;
 
   /// This purchase order (PO) information is for resellers to use for their
   /// company tracking usage.
@@ -3446,22 +3317,22 @@ class GoogleCloudChannelV1Entitlement {
   /// characters.
   ///
   /// Optional.
-  core.String purchaseOrderId;
+  core.String? purchaseOrderId;
 
   /// Enumerable of all current suspension reasons for an entitlement.
   ///
   /// Output only.
-  core.List<core.String> suspensionReasons;
+  core.List<core.String>? suspensionReasons;
 
   /// Settings for trial offers.
   ///
   /// Output only.
-  GoogleCloudChannelV1TrialSettings trialSettings;
+  GoogleCloudChannelV1TrialSettings? trialSettings;
 
   /// The time at which the entitlement is updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudChannelV1Entitlement();
 
@@ -3514,23 +3385,23 @@ class GoogleCloudChannelV1Entitlement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (associationInfo != null)
-          'associationInfo': associationInfo.toJson(),
+          'associationInfo': associationInfo!.toJson(),
         if (commitmentSettings != null)
-          'commitmentSettings': commitmentSettings.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (name != null) 'name': name,
-        if (offer != null) 'offer': offer,
+          'commitmentSettings': commitmentSettings!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+        if (offer != null) 'offer': offer!,
         if (parameters != null)
-          'parameters': parameters.map((value) => value.toJson()).toList(),
+          'parameters': parameters!.map((value) => value.toJson()).toList(),
         if (provisionedService != null)
-          'provisionedService': provisionedService.toJson(),
-        if (provisioningState != null) 'provisioningState': provisioningState,
-        if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId,
-        if (suspensionReasons != null) 'suspensionReasons': suspensionReasons,
-        if (trialSettings != null) 'trialSettings': trialSettings.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
+          'provisionedService': provisionedService!.toJson(),
+        if (provisioningState != null) 'provisioningState': provisioningState!,
+        if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId!,
+        if (suspensionReasons != null) 'suspensionReasons': suspensionReasons!,
+        if (trialSettings != null) 'trialSettings': trialSettings!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3538,7 +3409,7 @@ class GoogleCloudChannelV1Entitlement {
 class GoogleCloudChannelV1EntitlementEvent {
   /// Resource name of an entitlement of the form:
   /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
-  core.String entitlement;
+  core.String? entitlement;
 
   /// Type of event which happened on the entitlement.
   /// Possible string values are:
@@ -3560,7 +3431,7 @@ class GoogleCloudChannelV1EntitlementEvent {
   /// - "PAID_SERVICE_STARTED" : Paid service has started on trial entitlement.
   /// - "LICENSE_ASSIGNMENT_CHANGED" : License was assigned to or revoked from a
   /// user.
-  core.String eventType;
+  core.String? eventType;
 
   GoogleCloudChannelV1EntitlementEvent();
 
@@ -3573,21 +3444,21 @@ class GoogleCloudChannelV1EntitlementEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (entitlement != null) 'entitlement': entitlement,
-        if (eventType != null) 'eventType': eventType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (entitlement != null) 'entitlement': entitlement!,
+        if (eventType != null) 'eventType': eventType!,
       };
 }
 
 /// Response message for CloudChannelService.ListChannelPartnerLinks.
 class GoogleCloudChannelV1ListChannelPartnerLinksResponse {
   /// The Channel partner links for a reseller.
-  core.List<GoogleCloudChannelV1ChannelPartnerLink> channelPartnerLinks;
+  core.List<GoogleCloudChannelV1ChannelPartnerLink>? channelPartnerLinks;
 
   /// A token to retrieve the next page of results.
   ///
   /// Pass to ListChannelPartnerLinksRequest.page_token to obtain that page.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudChannelV1ListChannelPartnerLinksResponse();
 
@@ -3604,23 +3475,23 @@ class GoogleCloudChannelV1ListChannelPartnerLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (channelPartnerLinks != null)
           'channelPartnerLinks':
-              channelPartnerLinks.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              channelPartnerLinks!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for CloudChannelService.ListCustomers.
 class GoogleCloudChannelV1ListCustomersResponse {
   /// The customers belonging to the reseller or distributor.
-  core.List<GoogleCloudChannelV1Customer> customers;
+  core.List<GoogleCloudChannelV1Customer>? customers;
 
   /// A token to retrieve the next page of results.
   ///
   /// Pass to ListCustomersRequest.page_token to obtain that page.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudChannelV1ListCustomersResponse();
 
@@ -3637,22 +3508,22 @@ class GoogleCloudChannelV1ListCustomersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customers != null)
-          'customers': customers.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'customers': customers!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for CloudChannelService.ListEntitlements.
 class GoogleCloudChannelV1ListEntitlementsResponse {
   /// The entitlements belonging to the reseller's customer.
-  core.List<GoogleCloudChannelV1Entitlement> entitlements;
+  core.List<GoogleCloudChannelV1Entitlement>? entitlements;
 
   /// A token to List next page of results.
   ///
   /// Pass to ListEntitlementsRequest.page_token to obtain that page.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudChannelV1ListEntitlementsResponse();
 
@@ -3669,20 +3540,20 @@ class GoogleCloudChannelV1ListEntitlementsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entitlements != null)
-          'entitlements': entitlements.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'entitlements': entitlements!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for ListOffers.
 class GoogleCloudChannelV1ListOffersResponse {
   /// A token to retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of Offers requested.
-  core.List<GoogleCloudChannelV1Offer> offers;
+  core.List<GoogleCloudChannelV1Offer>? offers;
 
   GoogleCloudChannelV1ListOffersResponse();
 
@@ -3699,20 +3570,20 @@ class GoogleCloudChannelV1ListOffersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (offers != null)
-          'offers': offers.map((value) => value.toJson()).toList(),
+          'offers': offers!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for ListProducts.
 class GoogleCloudChannelV1ListProductsResponse {
   /// A token to retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of Products requested.
-  core.List<GoogleCloudChannelV1Product> products;
+  core.List<GoogleCloudChannelV1Product>? products;
 
   GoogleCloudChannelV1ListProductsResponse();
 
@@ -3729,20 +3600,20 @@ class GoogleCloudChannelV1ListProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (products != null)
-          'products': products.map((value) => value.toJson()).toList(),
+          'products': products!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for ListPurchasableOffers.
 class GoogleCloudChannelV1ListPurchasableOffersResponse {
   /// A token to retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of Offers requested.
-  core.List<GoogleCloudChannelV1PurchasableOffer> purchasableOffers;
+  core.List<GoogleCloudChannelV1PurchasableOffer>? purchasableOffers;
 
   GoogleCloudChannelV1ListPurchasableOffersResponse();
 
@@ -3759,21 +3630,21 @@ class GoogleCloudChannelV1ListPurchasableOffersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (purchasableOffers != null)
           'purchasableOffers':
-              purchasableOffers.map((value) => value.toJson()).toList(),
+              purchasableOffers!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for ListPurchasableSkus.
 class GoogleCloudChannelV1ListPurchasableSkusResponse {
   /// A token to retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of SKUs requested.
-  core.List<GoogleCloudChannelV1PurchasableSku> purchasableSkus;
+  core.List<GoogleCloudChannelV1PurchasableSku>? purchasableSkus;
 
   GoogleCloudChannelV1ListPurchasableSkusResponse();
 
@@ -3790,21 +3661,21 @@ class GoogleCloudChannelV1ListPurchasableSkusResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (purchasableSkus != null)
           'purchasableSkus':
-              purchasableSkus.map((value) => value.toJson()).toList(),
+              purchasableSkus!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response message for ListSkus.
 class GoogleCloudChannelV1ListSkusResponse {
   /// A token to retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of SKUs requested.
-  core.List<GoogleCloudChannelV1Sku> skus;
+  core.List<GoogleCloudChannelV1Sku>? skus;
 
   GoogleCloudChannelV1ListSkusResponse();
 
@@ -3821,9 +3692,9 @@ class GoogleCloudChannelV1ListSkusResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (skus != null) 'skus': skus.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (skus != null) 'skus': skus!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3832,13 +3703,13 @@ class GoogleCloudChannelV1ListSubscribersResponse {
   /// A token that can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of service accounts which have subscriber access to the topic.
-  core.List<core.String> serviceAccounts;
+  core.List<core.String>? serviceAccounts;
 
   /// Name of the topic registered with the reseller.
-  core.String topic;
+  core.String? topic;
 
   GoogleCloudChannelV1ListSubscribersResponse();
 
@@ -3856,45 +3727,45 @@ class GoogleCloudChannelV1ListSubscribersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (serviceAccounts != null) 'serviceAccounts': serviceAccounts,
-        if (topic != null) 'topic': topic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (serviceAccounts != null) 'serviceAccounts': serviceAccounts!,
+        if (topic != null) 'topic': topic!,
       };
 }
 
 /// Request message for CloudChannelService.ListTransferableOffers
 class GoogleCloudChannelV1ListTransferableOffersRequest {
   /// Customer's Cloud Identity ID
-  core.String cloudIdentityId;
+  core.String? cloudIdentityId;
 
   /// A reseller should create a customer and use the resource name of the
   /// created customer here.
-  core.String customerName;
+  core.String? customerName;
 
   /// The BCP-47 language code, such as "en-US".
   ///
   /// If specified, the response will be localized to the corresponding language
   /// code. Default is "en-US".
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Requested page size.
   ///
   /// Server might return fewer results than requested. If unspecified, at most
   /// 100 Offers will be returned. The maximum value is 1000; values above 1000
   /// will be coerced to 1000.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// A token identifying a page of results, if other than the first one.
   ///
   /// Typically obtained via ListTransferableOffersResponse.next_page_token of
   /// the previous CloudChannelService.ListTransferableOffers call.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// SKU for which the Offers are being looked up.
   ///
   /// Required.
-  core.String sku;
+  core.String? sku;
 
   GoogleCloudChannelV1ListTransferableOffersRequest();
 
@@ -3919,13 +3790,13 @@ class GoogleCloudChannelV1ListTransferableOffersRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cloudIdentityId != null) 'cloudIdentityId': cloudIdentityId,
-        if (customerName != null) 'customerName': customerName,
-        if (languageCode != null) 'languageCode': languageCode,
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (sku != null) 'sku': sku,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cloudIdentityId != null) 'cloudIdentityId': cloudIdentityId!,
+        if (customerName != null) 'customerName': customerName!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (sku != null) 'sku': sku!,
       };
 }
 
@@ -3934,10 +3805,10 @@ class GoogleCloudChannelV1ListTransferableOffersResponse {
   /// A token to retrieve the next page of results.
   ///
   /// Pass to ListTransferableOffersRequest.page_token to obtain that page.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Information about Offers for a customer that can be used for transfer.
-  core.List<GoogleCloudChannelV1TransferableOffer> transferableOffers;
+  core.List<GoogleCloudChannelV1TransferableOffer>? transferableOffers;
 
   GoogleCloudChannelV1ListTransferableOffersResponse();
 
@@ -3954,11 +3825,11 @@ class GoogleCloudChannelV1ListTransferableOffersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (transferableOffers != null)
           'transferableOffers':
-              transferableOffers.map((value) => value.toJson()).toList(),
+              transferableOffers!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3970,36 +3841,36 @@ class GoogleCloudChannelV1ListTransferableSkusRequest {
   ///
   /// This token can be omitted once the authorization is generated. See
   /// https://support.google.com/a/answer/7643790 for more details.
-  core.String authToken;
+  core.String? authToken;
 
   /// Customer's Cloud Identity ID
-  core.String cloudIdentityId;
+  core.String? cloudIdentityId;
 
   /// A reseller is required to create a customer and use the resource name of
   /// the created customer here.
   ///
   /// The customer_name takes the format:
   /// accounts/{account_id}/customers/{customer_id}
-  core.String customerName;
+  core.String? customerName;
 
   /// The BCP-47 language code, such as "en-US".
   ///
   /// If specified, the response will be localized to the corresponding language
   /// code. Default is "en-US". Optional.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Requested page size.
   ///
   /// Server might return fewer results than requested. If unspecified, at most
   /// 100 SKUs will be returned. The maximum value is 1000; values above 1000
   /// will be coerced to 1000. Optional.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// A token identifying a page of results, if other than the first one.
   ///
   /// Typically obtained via ListTransferableSkusResponse.next_page_token of the
   /// previous CloudChannelService.ListTransferableSkus call. Optional.
-  core.String pageToken;
+  core.String? pageToken;
 
   GoogleCloudChannelV1ListTransferableSkusRequest();
 
@@ -4024,13 +3895,13 @@ class GoogleCloudChannelV1ListTransferableSkusRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (authToken != null) 'authToken': authToken,
-        if (cloudIdentityId != null) 'cloudIdentityId': cloudIdentityId,
-        if (customerName != null) 'customerName': customerName,
-        if (languageCode != null) 'languageCode': languageCode,
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (authToken != null) 'authToken': authToken!,
+        if (cloudIdentityId != null) 'cloudIdentityId': cloudIdentityId!,
+        if (customerName != null) 'customerName': customerName!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
       };
 }
 
@@ -4039,11 +3910,11 @@ class GoogleCloudChannelV1ListTransferableSkusResponse {
   /// A token to retrieve the next page of results.
   ///
   /// Pass to ListTransferableSkusRequest.page_token to obtain that page.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Information about existing SKUs for a customer that would need to be
   /// transferred.
-  core.List<GoogleCloudChannelV1TransferableSku> transferableSkus;
+  core.List<GoogleCloudChannelV1TransferableSku>? transferableSkus;
 
   GoogleCloudChannelV1ListTransferableSkusResponse();
 
@@ -4060,26 +3931,26 @@ class GoogleCloudChannelV1ListTransferableSkusResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (transferableSkus != null)
           'transferableSkus':
-              transferableSkus.map((value) => value.toJson()).toList(),
+              transferableSkus!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Represents the marketing information for a Product, SKU or Offer.
 class GoogleCloudChannelV1MarketingInfo {
   /// Default logo.
-  GoogleCloudChannelV1Media defaultLogo;
+  GoogleCloudChannelV1Media? defaultLogo;
 
   /// Human readable description.
   ///
   /// Description can contain HTML.
-  core.String description;
+  core.String? description;
 
   /// Human readable name.
-  core.String displayName;
+  core.String? displayName;
 
   GoogleCloudChannelV1MarketingInfo();
 
@@ -4096,26 +3967,26 @@ class GoogleCloudChannelV1MarketingInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (defaultLogo != null) 'defaultLogo': defaultLogo.toJson(),
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (defaultLogo != null) 'defaultLogo': defaultLogo!.toJson(),
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
       };
 }
 
 /// Represents media information.
 class GoogleCloudChannelV1Media {
   /// URL of the media.
-  core.String content;
+  core.String? content;
 
   /// Title of the media.
-  core.String title;
+  core.String? title;
 
   /// Type of the media.
   /// Possible string values are:
   /// - "MEDIA_TYPE_UNSPECIFIED" : Not used.
   /// - "MEDIA_TYPE_IMAGE" : Type of image.
-  core.String type;
+  core.String? type;
 
   GoogleCloudChannelV1Media();
 
@@ -4131,10 +4002,10 @@ class GoogleCloudChannelV1Media {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
-        if (title != null) 'title': title,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4144,35 +4015,35 @@ class GoogleCloudChannelV1Media {
 /// defines the constraints for buying.
 class GoogleCloudChannelV1Offer {
   /// Constraints on transacting the Offer.
-  GoogleCloudChannelV1Constraints constraints;
+  GoogleCloudChannelV1Constraints? constraints;
 
   /// End of the Offer validity time.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// Marketing information for the Offer.
-  GoogleCloudChannelV1MarketingInfo marketingInfo;
+  GoogleCloudChannelV1MarketingInfo? marketingInfo;
 
   /// Resource Name of the Offer.
   ///
   /// Format: accounts/{account_id}/offers/{offer_id}
-  core.String name;
+  core.String? name;
 
   /// Parameters required to use current Offer to purchase.
-  core.List<GoogleCloudChannelV1ParameterDefinition> parameterDefinitions;
+  core.List<GoogleCloudChannelV1ParameterDefinition>? parameterDefinitions;
 
   /// Describes the payment plan for the Offer.
-  GoogleCloudChannelV1Plan plan;
+  GoogleCloudChannelV1Plan? plan;
 
   /// Price for each monetizable resource type.
-  core.List<GoogleCloudChannelV1PriceByResource> priceByResources;
+  core.List<GoogleCloudChannelV1PriceByResource>? priceByResources;
 
   /// SKU the offer is associated with.
-  GoogleCloudChannelV1Sku sku;
+  GoogleCloudChannelV1Sku? sku;
 
   /// Start of the Offer validity time.
-  core.String startTime;
+  core.String? startTime;
 
   GoogleCloudChannelV1Offer();
 
@@ -4218,20 +4089,20 @@ class GoogleCloudChannelV1Offer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (constraints != null) 'constraints': constraints.toJson(),
-        if (endTime != null) 'endTime': endTime,
-        if (marketingInfo != null) 'marketingInfo': marketingInfo.toJson(),
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (constraints != null) 'constraints': constraints!.toJson(),
+        if (endTime != null) 'endTime': endTime!,
+        if (marketingInfo != null) 'marketingInfo': marketingInfo!.toJson(),
+        if (name != null) 'name': name!,
         if (parameterDefinitions != null)
           'parameterDefinitions':
-              parameterDefinitions.map((value) => value.toJson()).toList(),
-        if (plan != null) 'plan': plan.toJson(),
+              parameterDefinitions!.map((value) => value.toJson()).toList(),
+        if (plan != null) 'plan': plan!.toJson(),
         if (priceByResources != null)
           'priceByResources':
-              priceByResources.map((value) => value.toJson()).toList(),
-        if (sku != null) 'sku': sku.toJson(),
-        if (startTime != null) 'startTime': startTime,
+              priceByResources!.map((value) => value.toJson()).toList(),
+        if (sku != null) 'sku': sku!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -4262,7 +4133,7 @@ class GoogleCloudChannelV1OperationMetadata {
   /// ChangeParameters.
   /// - "PROVISION_CLOUD_IDENTITY" : Long Running Operation was triggered by
   /// ProvisionCloudIdentity.
-  core.String operationType;
+  core.String? operationType;
 
   GoogleCloudChannelV1OperationMetadata();
 
@@ -4272,8 +4143,8 @@ class GoogleCloudChannelV1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operationType != null) 'operationType': operationType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operationType != null) 'operationType': operationType!,
       };
 }
 
@@ -4285,13 +4156,13 @@ class GoogleCloudChannelV1Parameter {
   /// commitment plan, num_units is editable when entitlement is active.
   ///
   /// Output only.
-  core.bool editable;
+  core.bool? editable;
 
   /// Name of the parameter.
-  core.String name;
+  core.String? name;
 
   /// Value of the parameter.
-  GoogleCloudChannelV1Value value;
+  GoogleCloudChannelV1Value? value;
 
   GoogleCloudChannelV1Parameter();
 
@@ -4308,10 +4179,10 @@ class GoogleCloudChannelV1Parameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (editable != null) 'editable': editable,
-        if (name != null) 'name': name,
-        if (value != null) 'value': value.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (editable != null) 'editable': editable!,
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!.toJson(),
       };
 }
 
@@ -4323,25 +4194,25 @@ class GoogleCloudChannelV1ParameterDefinition {
   ///
   /// For example, \[us-west1, us-west2, ...\] Applicable to STRING parameter
   /// type.
-  core.List<GoogleCloudChannelV1Value> allowedValues;
+  core.List<GoogleCloudChannelV1Value>? allowedValues;
 
   /// Maximum value of the parameter, if applicable.
   ///
   /// Inclusive. For example, maximum seats when purchasing Google Workspace
   /// Business Standard. Applicable to INT64 and DOUBLE parameter types.
-  GoogleCloudChannelV1Value maxValue;
+  GoogleCloudChannelV1Value? maxValue;
 
   /// Minimal value of the parameter, if applicable.
   ///
   /// Inclusive. For example, minimal commitment when purchasing Anthos is 0.01.
   /// Applicable to INT64 and DOUBLE parameter types.
-  GoogleCloudChannelV1Value minValue;
+  GoogleCloudChannelV1Value? minValue;
 
   /// Name of the parameter.
-  core.String name;
+  core.String? name;
 
   /// If set to true, parameter is optional to purchase this Offer.
-  core.bool optional;
+  core.bool? optional;
 
   /// Data type of the parameter.
   ///
@@ -4352,7 +4223,7 @@ class GoogleCloudChannelV1ParameterDefinition {
   /// - "INT64" : Int64 type.
   /// - "STRING" : String type.
   /// - "DOUBLE" : Double type.
-  core.String parameterType;
+  core.String? parameterType;
 
   GoogleCloudChannelV1ParameterDefinition();
 
@@ -4383,22 +4254,22 @@ class GoogleCloudChannelV1ParameterDefinition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedValues != null)
           'allowedValues':
-              allowedValues.map((value) => value.toJson()).toList(),
-        if (maxValue != null) 'maxValue': maxValue.toJson(),
-        if (minValue != null) 'minValue': minValue.toJson(),
-        if (name != null) 'name': name,
-        if (optional != null) 'optional': optional,
-        if (parameterType != null) 'parameterType': parameterType,
+              allowedValues!.map((value) => value.toJson()).toList(),
+        if (maxValue != null) 'maxValue': maxValue!.toJson(),
+        if (minValue != null) 'minValue': minValue!.toJson(),
+        if (name != null) 'name': name!,
+        if (optional != null) 'optional': optional!,
+        if (parameterType != null) 'parameterType': parameterType!,
       };
 }
 
 /// Represents period in days/months/years.
 class GoogleCloudChannelV1Period {
   /// Total duration of Period Type defined.
-  core.int duration;
+  core.int? duration;
 
   /// Period Type.
   /// Possible string values are:
@@ -4406,7 +4277,7 @@ class GoogleCloudChannelV1Period {
   /// - "DAY" : Day.
   /// - "MONTH" : Month.
   /// - "YEAR" : Year.
-  core.String periodType;
+  core.String? periodType;
 
   GoogleCloudChannelV1Period();
 
@@ -4419,9 +4290,9 @@ class GoogleCloudChannelV1Period {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (duration != null) 'duration': duration,
-        if (periodType != null) 'periodType': periodType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (periodType != null) 'periodType': periodType!,
       };
 }
 
@@ -4433,11 +4304,11 @@ class GoogleCloudChannelV1Plan {
   /// transacted.
   ///
   /// Only present for GCP offers.
-  core.String billingAccount;
+  core.String? billingAccount;
 
   /// Describes how frequently the reseller will be billed, such as once per
   /// month.
-  GoogleCloudChannelV1Period paymentCycle;
+  GoogleCloudChannelV1Period? paymentCycle;
 
   /// Describes how a reseller will be billed.
   /// Possible string values are:
@@ -4447,7 +4318,7 @@ class GoogleCloudChannelV1Plan {
   /// - "FREE" : Free.
   /// - "TRIAL" : Trial.
   /// - "OFFLINE" : Price and ordering not available through API.
-  core.String paymentPlan;
+  core.String? paymentPlan;
 
   /// Specifies when the payment needs to happen.
   /// Possible string values are:
@@ -4455,7 +4326,7 @@ class GoogleCloudChannelV1Plan {
   /// - "PREPAY" : Prepay. Amount has to be paid before service is rendered.
   /// - "POSTPAY" : Postpay. Reseller is charged at the end of the Payment
   /// cycle.
-  core.String paymentType;
+  core.String? paymentType;
 
   /// Present for Offers with a trial period.
   ///
@@ -4463,7 +4334,7 @@ class GoogleCloudChannelV1Plan {
   /// period ends for continued service. For Regular Offers with a trial period,
   /// the regular pricing goes into effect when trial period ends, or if paid
   /// service is started before the end of the trial period.
-  GoogleCloudChannelV1Period trialPeriod;
+  GoogleCloudChannelV1Period? trialPeriod;
 
   GoogleCloudChannelV1Plan();
 
@@ -4487,30 +4358,30 @@ class GoogleCloudChannelV1Plan {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (billingAccount != null) 'billingAccount': billingAccount,
-        if (paymentCycle != null) 'paymentCycle': paymentCycle.toJson(),
-        if (paymentPlan != null) 'paymentPlan': paymentPlan,
-        if (paymentType != null) 'paymentType': paymentType,
-        if (trialPeriod != null) 'trialPeriod': trialPeriod.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (billingAccount != null) 'billingAccount': billingAccount!,
+        if (paymentCycle != null) 'paymentCycle': paymentCycle!.toJson(),
+        if (paymentPlan != null) 'paymentPlan': paymentPlan!,
+        if (paymentType != null) 'paymentType': paymentType!,
+        if (trialPeriod != null) 'trialPeriod': trialPeriod!.toJson(),
       };
 }
 
 /// Represents the price of the Offer.
 class GoogleCloudChannelV1Price {
   /// Base price.
-  GoogleTypeMoney basePrice;
+  GoogleTypeMoney? basePrice;
 
   /// Discount percentage, represented as decimal.
   ///
   /// For example, a 20% discount will be represent as 0.2.
-  core.double discount;
+  core.double? discount;
 
   /// Effective Price after applying the discounts.
-  GoogleTypeMoney effectivePrice;
+  GoogleTypeMoney? effectivePrice;
 
   /// Link to external price list, such as link to Google Voice rate card.
-  core.String externalPriceUri;
+  core.String? externalPriceUri;
 
   GoogleCloudChannelV1Price();
 
@@ -4531,11 +4402,11 @@ class GoogleCloudChannelV1Price {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (basePrice != null) 'basePrice': basePrice.toJson(),
-        if (discount != null) 'discount': discount,
-        if (effectivePrice != null) 'effectivePrice': effectivePrice.toJson(),
-        if (externalPriceUri != null) 'externalPriceUri': externalPriceUri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (basePrice != null) 'basePrice': basePrice!.toJson(),
+        if (discount != null) 'discount': discount!,
+        if (effectivePrice != null) 'effectivePrice': effectivePrice!.toJson(),
+        if (externalPriceUri != null) 'externalPriceUri': externalPriceUri!,
       };
 }
 
@@ -4544,10 +4415,10 @@ class GoogleCloudChannelV1PriceByResource {
   /// Price of the Offer.
   ///
   /// Present if there are no price phases.
-  GoogleCloudChannelV1Price price;
+  GoogleCloudChannelV1Price? price;
 
   /// Specifies the price by time range.
-  core.List<GoogleCloudChannelV1PricePhase> pricePhases;
+  core.List<GoogleCloudChannelV1PricePhase>? pricePhases;
 
   /// Resource Type.
   ///
@@ -4566,7 +4437,7 @@ class GoogleCloudChannelV1PriceByResource {
   /// only applicable to Google Cloud Platform.
   /// - "SUBSCRIPTION" : For Google Cloud Platform subscriptions like Anthos or
   /// SAP.
-  core.String resourceType;
+  core.String? resourceType;
 
   GoogleCloudChannelV1PriceByResource();
 
@@ -4587,11 +4458,11 @@ class GoogleCloudChannelV1PriceByResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (price != null) 'price': price.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (price != null) 'price': price!.toJson(),
         if (pricePhases != null)
-          'pricePhases': pricePhases.map((value) => value.toJson()).toList(),
-        if (resourceType != null) 'resourceType': resourceType,
+          'pricePhases': pricePhases!.map((value) => value.toJson()).toList(),
+        if (resourceType != null) 'resourceType': resourceType!,
       };
 }
 
@@ -4601,10 +4472,10 @@ class GoogleCloudChannelV1PriceByResource {
 /// starting on the seventh month.
 class GoogleCloudChannelV1PricePhase {
   /// Defines first period for the phase.
-  core.int firstPeriod;
+  core.int? firstPeriod;
 
   /// Defines first period for the phase.
-  core.int lastPeriod;
+  core.int? lastPeriod;
 
   /// Defines the phase period type.
   /// Possible string values are:
@@ -4612,15 +4483,15 @@ class GoogleCloudChannelV1PricePhase {
   /// - "DAY" : Day.
   /// - "MONTH" : Month.
   /// - "YEAR" : Year.
-  core.String periodType;
+  core.String? periodType;
 
   /// Price of the phase.
   ///
   /// Present if there are no price tiers.
-  GoogleCloudChannelV1Price price;
+  GoogleCloudChannelV1Price? price;
 
   /// Price by the resource tiers.
-  core.List<GoogleCloudChannelV1PriceTier> priceTiers;
+  core.List<GoogleCloudChannelV1PriceTier>? priceTiers;
 
   GoogleCloudChannelV1PricePhase();
 
@@ -4647,13 +4518,13 @@ class GoogleCloudChannelV1PricePhase {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (firstPeriod != null) 'firstPeriod': firstPeriod,
-        if (lastPeriod != null) 'lastPeriod': lastPeriod,
-        if (periodType != null) 'periodType': periodType,
-        if (price != null) 'price': price.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (firstPeriod != null) 'firstPeriod': firstPeriod!,
+        if (lastPeriod != null) 'lastPeriod': lastPeriod!,
+        if (periodType != null) 'periodType': periodType!,
+        if (price != null) 'price': price!.toJson(),
         if (priceTiers != null)
-          'priceTiers': priceTiers.map((value) => value.toJson()).toList(),
+          'priceTiers': priceTiers!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4665,13 +4536,13 @@ class GoogleCloudChannelV1PricePhase {
 /// seats above 100. Each of these tiers is represented as a PriceTier.
 class GoogleCloudChannelV1PriceTier {
   /// First resource for which the tier price applies.
-  core.int firstResource;
+  core.int? firstResource;
 
   /// Last resource for which the tier price applies.
-  core.int lastResource;
+  core.int? lastResource;
 
   /// Price of the tier.
-  GoogleCloudChannelV1Price price;
+  GoogleCloudChannelV1Price? price;
 
   GoogleCloudChannelV1PriceTier();
 
@@ -4688,10 +4559,10 @@ class GoogleCloudChannelV1PriceTier {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (firstResource != null) 'firstResource': firstResource,
-        if (lastResource != null) 'lastResource': lastResource,
-        if (price != null) 'price': price.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (firstResource != null) 'firstResource': firstResource!,
+        if (lastResource != null) 'lastResource': lastResource!,
+        if (price != null) 'price': price!.toJson(),
       };
 }
 
@@ -4700,12 +4571,12 @@ class GoogleCloudChannelV1PriceTier {
 /// For example, Google Workspace, Google Voice, etc.
 class GoogleCloudChannelV1Product {
   /// Marketing information for the product.
-  GoogleCloudChannelV1MarketingInfo marketingInfo;
+  GoogleCloudChannelV1MarketingInfo? marketingInfo;
 
   /// Resource Name of the Product.
   ///
   /// Format: products/{product_id}
-  core.String name;
+  core.String? name;
 
   GoogleCloudChannelV1Product();
 
@@ -4719,23 +4590,23 @@ class GoogleCloudChannelV1Product {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (marketingInfo != null) 'marketingInfo': marketingInfo.toJson(),
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (marketingInfo != null) 'marketingInfo': marketingInfo!.toJson(),
+        if (name != null) 'name': name!,
       };
 }
 
 /// Request message for CloudChannelService.ProvisionCloudIdentity
 class GoogleCloudChannelV1ProvisionCloudIdentityRequest {
   /// CloudIdentity-specific customer information.
-  GoogleCloudChannelV1CloudIdentityInfo cloudIdentityInfo;
+  GoogleCloudChannelV1CloudIdentityInfo? cloudIdentityInfo;
 
   /// Admin user information.
-  GoogleCloudChannelV1AdminUser user;
+  GoogleCloudChannelV1AdminUser? user;
 
   /// If set, validate the request and preview the review, but do not actually
   /// post it.
-  core.bool validateOnly;
+  core.bool? validateOnly;
 
   GoogleCloudChannelV1ProvisionCloudIdentityRequest();
 
@@ -4753,11 +4624,11 @@ class GoogleCloudChannelV1ProvisionCloudIdentityRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cloudIdentityInfo != null)
-          'cloudIdentityInfo': cloudIdentityInfo.toJson(),
-        if (user != null) 'user': user.toJson(),
-        if (validateOnly != null) 'validateOnly': validateOnly,
+          'cloudIdentityInfo': cloudIdentityInfo!.toJson(),
+        if (user != null) 'user': user!.toJson(),
+        if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
 
@@ -4767,19 +4638,19 @@ class GoogleCloudChannelV1ProvisionedService {
   /// Offer.
   ///
   /// Output only.
-  core.String productId;
+  core.String? productId;
 
   /// Provisioning ID of the entitlement.
   ///
   /// For Google Workspace, this would be the underlying Subscription ID.
   ///
   /// Output only.
-  core.String provisioningId;
+  core.String? provisioningId;
 
   /// The SKU pertaining to the provisioning resource as specified in the Offer.
   ///
   /// Output only.
-  core.String skuId;
+  core.String? skuId;
 
   GoogleCloudChannelV1ProvisionedService();
 
@@ -4795,10 +4666,10 @@ class GoogleCloudChannelV1ProvisionedService {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (productId != null) 'productId': productId,
-        if (provisioningId != null) 'provisioningId': provisioningId,
-        if (skuId != null) 'skuId': skuId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (productId != null) 'productId': productId!,
+        if (provisioningId != null) 'provisioningId': provisioningId!,
+        if (skuId != null) 'skuId': skuId!,
       };
 }
 
@@ -4807,7 +4678,7 @@ class GoogleCloudChannelV1ProvisionedService {
 /// This is used in ListPurchasableOffer API response.
 class GoogleCloudChannelV1PurchasableOffer {
   /// Offer.
-  GoogleCloudChannelV1Offer offer;
+  GoogleCloudChannelV1Offer? offer;
 
   GoogleCloudChannelV1PurchasableOffer();
 
@@ -4818,8 +4689,8 @@ class GoogleCloudChannelV1PurchasableOffer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (offer != null) 'offer': offer.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (offer != null) 'offer': offer!.toJson(),
       };
 }
 
@@ -4828,7 +4699,7 @@ class GoogleCloudChannelV1PurchasableOffer {
 /// This is used in ListPurchasableSku API response.
 class GoogleCloudChannelV1PurchasableSku {
   /// SKU
-  GoogleCloudChannelV1Sku sku;
+  GoogleCloudChannelV1Sku? sku;
 
   GoogleCloudChannelV1PurchasableSku();
 
@@ -4839,8 +4710,8 @@ class GoogleCloudChannelV1PurchasableSku {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sku != null) 'sku': sku.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sku != null) 'sku': sku!.toJson(),
       };
 }
 
@@ -4850,7 +4721,7 @@ class GoogleCloudChannelV1RegisterSubscriberRequest {
   /// topic.
   ///
   /// Required.
-  core.String serviceAccount;
+  core.String? serviceAccount;
 
   GoogleCloudChannelV1RegisterSubscriberRequest();
 
@@ -4860,15 +4731,15 @@ class GoogleCloudChannelV1RegisterSubscriberRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
       };
 }
 
 /// Response Message for RegisterSubscriber.
 class GoogleCloudChannelV1RegisterSubscriberResponse {
   /// Name of the topic to which the subscriber will listen to.
-  core.String topic;
+  core.String? topic;
 
   GoogleCloudChannelV1RegisterSubscriberResponse();
 
@@ -4878,19 +4749,19 @@ class GoogleCloudChannelV1RegisterSubscriberResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (topic != null) 'topic': topic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (topic != null) 'topic': topic!,
       };
 }
 
 /// Renewal settings for renewable Offers.
 class GoogleCloudChannelV1RenewalSettings {
   /// If false, the plan will be completed at the end date.
-  core.bool enableRenewal;
+  core.bool? enableRenewal;
 
   /// Describes how frequently the reseller will be billed, such as once per
   /// month.
-  GoogleCloudChannelV1Period paymentCycle;
+  GoogleCloudChannelV1Period? paymentCycle;
 
   /// Describes how a reseller will be billed.
   /// Possible string values are:
@@ -4900,11 +4771,11 @@ class GoogleCloudChannelV1RenewalSettings {
   /// - "FREE" : Free.
   /// - "TRIAL" : Trial.
   /// - "OFFLINE" : Price and ordering not available through API.
-  core.String paymentPlan;
+  core.String? paymentPlan;
 
   /// If true and enable_renewal = true, the unit (for example seats or
   /// licenses) will be set to the number of active units at renewal time.
-  core.bool resizeUnitCount;
+  core.bool? resizeUnitCount;
 
   GoogleCloudChannelV1RenewalSettings();
 
@@ -4924,11 +4795,11 @@ class GoogleCloudChannelV1RenewalSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enableRenewal != null) 'enableRenewal': enableRenewal,
-        if (paymentCycle != null) 'paymentCycle': paymentCycle.toJson(),
-        if (paymentPlan != null) 'paymentPlan': paymentPlan,
-        if (resizeUnitCount != null) 'resizeUnitCount': resizeUnitCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enableRenewal != null) 'enableRenewal': enableRenewal!,
+        if (paymentCycle != null) 'paymentCycle': paymentCycle!.toJson(),
+        if (paymentPlan != null) 'paymentPlan': paymentPlan!,
+        if (resizeUnitCount != null) 'resizeUnitCount': resizeUnitCount!,
       };
 }
 
@@ -4939,15 +4810,15 @@ class GoogleCloudChannelV1RenewalSettings {
 /// Workspace product SKUs.
 class GoogleCloudChannelV1Sku {
   /// Marketing information for the SKU.
-  GoogleCloudChannelV1MarketingInfo marketingInfo;
+  GoogleCloudChannelV1MarketingInfo? marketingInfo;
 
   /// Resource Name of the SKU.
   ///
   /// Format: products/{product_id}/skus/{sku_id}
-  core.String name;
+  core.String? name;
 
   /// Product the SKU is associated with.
-  GoogleCloudChannelV1Product product;
+  GoogleCloudChannelV1Product? product;
 
   GoogleCloudChannelV1Sku();
 
@@ -4965,10 +4836,10 @@ class GoogleCloudChannelV1Sku {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (marketingInfo != null) 'marketingInfo': marketingInfo.toJson(),
-        if (name != null) 'name': name,
-        if (product != null) 'product': product.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (marketingInfo != null) 'marketingInfo': marketingInfo!.toJson(),
+        if (name != null) 'name': name!,
+        if (product != null) 'product': product!.toJson(),
       };
 }
 
@@ -4987,7 +4858,7 @@ class GoogleCloudChannelV1StartPaidServiceRequest {
   /// (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   GoogleCloudChannelV1StartPaidServiceRequest();
 
@@ -4997,8 +4868,8 @@ class GoogleCloudChannelV1StartPaidServiceRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -5006,10 +4877,10 @@ class GoogleCloudChannelV1StartPaidServiceRequest {
 /// Cloud Pub/Sub.
 class GoogleCloudChannelV1SubscriberEvent {
   /// Customer event send as part of Pub/Sub event to partners.
-  GoogleCloudChannelV1CustomerEvent customerEvent;
+  GoogleCloudChannelV1CustomerEvent? customerEvent;
 
   /// Entitlement event send as part of Pub/Sub event to partners.
-  GoogleCloudChannelV1EntitlementEvent entitlementEvent;
+  GoogleCloudChannelV1EntitlementEvent? entitlementEvent;
 
   GoogleCloudChannelV1SubscriberEvent();
 
@@ -5024,10 +4895,10 @@ class GoogleCloudChannelV1SubscriberEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customerEvent != null) 'customerEvent': customerEvent.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customerEvent != null) 'customerEvent': customerEvent!.toJson(),
         if (entitlementEvent != null)
-          'entitlementEvent': entitlementEvent.toJson(),
+          'entitlementEvent': entitlementEvent!.toJson(),
       };
 }
 
@@ -5046,7 +4917,7 @@ class GoogleCloudChannelV1SuspendEntitlementRequest {
   /// (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   GoogleCloudChannelV1SuspendEntitlementRequest();
 
@@ -5056,15 +4927,15 @@ class GoogleCloudChannelV1SuspendEntitlementRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (requestId != null) 'requestId': requestId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
 /// Specifies transfer eligibility of a SKU.
 class GoogleCloudChannelV1TransferEligibility {
   /// Localized description if reseller is not eligible to transfer the SKU.
-  core.String description;
+  core.String? description;
 
   /// Specified the reason for ineligibility.
   /// Possible string values are:
@@ -5073,10 +4944,10 @@ class GoogleCloudChannelV1TransferEligibility {
   /// transferring the SKU.
   /// - "SKU_NOT_ELIGIBLE" : Reseller not eligible to sell the SKU.
   /// - "SKU_SUSPENDED" : SKU subscription is suspended
-  core.String ineligibilityReason;
+  core.String? ineligibilityReason;
 
   /// Whether reseller is eligible to transfer the SKU.
-  core.bool isEligible;
+  core.bool? isEligible;
 
   GoogleCloudChannelV1TransferEligibility();
 
@@ -5092,11 +4963,11 @@ class GoogleCloudChannelV1TransferEligibility {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
         if (ineligibilityReason != null)
-          'ineligibilityReason': ineligibilityReason,
-        if (isEligible != null) 'isEligible': isEligible,
+          'ineligibilityReason': ineligibilityReason!,
+        if (isEligible != null) 'isEligible': isEligible!,
       };
 }
 
@@ -5108,12 +4979,12 @@ class GoogleCloudChannelV1TransferEntitlementsRequest {
   ///
   /// This token can be omitted once the authorization is generated. See
   /// https://support.google.com/a/answer/7643790 for more details.
-  core.String authToken;
+  core.String? authToken;
 
   /// The new entitlements to be created or transferred.
   ///
   /// Required.
-  core.List<GoogleCloudChannelV1Entitlement> entitlements;
+  core.List<GoogleCloudChannelV1Entitlement>? entitlements;
 
   /// An optional request ID to identify requests.
   ///
@@ -5128,7 +4999,7 @@ class GoogleCloudChannelV1TransferEntitlementsRequest {
   /// (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   GoogleCloudChannelV1TransferEntitlementsRequest();
 
@@ -5148,11 +5019,11 @@ class GoogleCloudChannelV1TransferEntitlementsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (authToken != null) 'authToken': authToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (authToken != null) 'authToken': authToken!,
         if (entitlements != null)
-          'entitlements': entitlements.map((value) => value.toJson()).toList(),
-        if (requestId != null) 'requestId': requestId,
+          'entitlements': entitlements!.map((value) => value.toJson()).toList(),
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -5161,7 +5032,7 @@ class GoogleCloudChannelV1TransferEntitlementsRequest {
 /// This will be put into the response field of google.longrunning.Operation.
 class GoogleCloudChannelV1TransferEntitlementsResponse {
   /// The entitlements that have been transferred.
-  core.List<GoogleCloudChannelV1Entitlement> entitlements;
+  core.List<GoogleCloudChannelV1Entitlement>? entitlements;
 
   GoogleCloudChannelV1TransferEntitlementsResponse();
 
@@ -5175,9 +5046,9 @@ class GoogleCloudChannelV1TransferEntitlementsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entitlements != null)
-          'entitlements': entitlements.map((value) => value.toJson()).toList(),
+          'entitlements': entitlements!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5186,7 +5057,7 @@ class GoogleCloudChannelV1TransferEntitlementsToGoogleRequest {
   /// The entitlements to be transferred to Google.
   ///
   /// Required.
-  core.List<GoogleCloudChannelV1Entitlement> entitlements;
+  core.List<GoogleCloudChannelV1Entitlement>? entitlements;
 
   /// An optional request ID to identify requests.
   ///
@@ -5201,7 +5072,7 @@ class GoogleCloudChannelV1TransferEntitlementsToGoogleRequest {
   /// (`00000000-0000-0000-0000-000000000000`).
   ///
   /// Optional.
-  core.String requestId;
+  core.String? requestId;
 
   GoogleCloudChannelV1TransferEntitlementsToGoogleRequest();
 
@@ -5219,10 +5090,10 @@ class GoogleCloudChannelV1TransferEntitlementsToGoogleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entitlements != null)
-          'entitlements': entitlements.map((value) => value.toJson()).toList(),
-        if (requestId != null) 'requestId': requestId,
+          'entitlements': entitlements!.map((value) => value.toJson()).toList(),
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -5231,7 +5102,7 @@ class GoogleCloudChannelV1TransferEntitlementsToGoogleRequest {
 /// Read-only.
 class GoogleCloudChannelV1TransferableOffer {
   /// Offer with parameter constraints updated to allow the Transfer.
-  GoogleCloudChannelV1Offer offer;
+  GoogleCloudChannelV1Offer? offer;
 
   GoogleCloudChannelV1TransferableOffer();
 
@@ -5242,8 +5113,8 @@ class GoogleCloudChannelV1TransferableOffer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (offer != null) 'offer': offer.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (offer != null) 'offer': offer!.toJson(),
       };
 }
 
@@ -5253,10 +5124,10 @@ class GoogleCloudChannelV1TransferableOffer {
 /// Read-only.
 class GoogleCloudChannelV1TransferableSku {
   /// The SKU pertaining to the provisioning resource as specified in the Offer.
-  GoogleCloudChannelV1Sku sku;
+  GoogleCloudChannelV1Sku? sku;
 
   /// Describes the transfer eligibility of a SKU.
-  GoogleCloudChannelV1TransferEligibility transferEligibility;
+  GoogleCloudChannelV1TransferEligibility? transferEligibility;
 
   GoogleCloudChannelV1TransferableSku();
 
@@ -5271,10 +5142,10 @@ class GoogleCloudChannelV1TransferableSku {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sku != null) 'sku': sku.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sku != null) 'sku': sku!.toJson(),
         if (transferEligibility != null)
-          'transferEligibility': transferEligibility.toJson(),
+          'transferEligibility': transferEligibility!.toJson(),
       };
 }
 
@@ -5284,13 +5155,13 @@ class GoogleCloudChannelV1TrialSettings {
   ///
   /// The value is in milliseconds using the UNIX Epoch format. See an example
   /// [Epoch converter](https://www.epochconverter.com).
-  core.String endTime;
+  core.String? endTime;
 
   /// Determines if the entitlement is in a trial or not: * `true` - The
   /// entitlement is in trial.
   ///
   /// * `false` - The entitlement is not in trial.
-  core.bool trial;
+  core.bool? trial;
 
   GoogleCloudChannelV1TrialSettings();
 
@@ -5303,9 +5174,9 @@ class GoogleCloudChannelV1TrialSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (trial != null) 'trial': trial,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (trial != null) 'trial': trial!,
       };
 }
 
@@ -5315,7 +5186,7 @@ class GoogleCloudChannelV1UnregisterSubscriberRequest {
   /// to the topic.
   ///
   /// Required.
-  core.String serviceAccount;
+  core.String? serviceAccount;
 
   GoogleCloudChannelV1UnregisterSubscriberRequest();
 
@@ -5325,8 +5196,8 @@ class GoogleCloudChannelV1UnregisterSubscriberRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
       };
 }
 
@@ -5334,7 +5205,7 @@ class GoogleCloudChannelV1UnregisterSubscriberRequest {
 class GoogleCloudChannelV1UnregisterSubscriberResponse {
   /// Name of the topic from which the service account subscriber access has
   /// been removed.
-  core.String topic;
+  core.String? topic;
 
   GoogleCloudChannelV1UnregisterSubscriberResponse();
 
@@ -5344,8 +5215,8 @@ class GoogleCloudChannelV1UnregisterSubscriberResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (topic != null) 'topic': topic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (topic != null) 'topic': topic!,
       };
 }
 
@@ -5356,7 +5227,7 @@ class GoogleCloudChannelV1UpdateChannelPartnerLinkRequest {
   /// Only field channel_partner_link.link_state is allowed to be updated.
   ///
   /// Required.
-  GoogleCloudChannelV1ChannelPartnerLink channelPartnerLink;
+  GoogleCloudChannelV1ChannelPartnerLink? channelPartnerLink;
 
   /// The update mask that applies to the resource.
   ///
@@ -5364,7 +5235,7 @@ class GoogleCloudChannelV1UpdateChannelPartnerLinkRequest {
   /// channel_partner_link.link_state.
   ///
   /// Required.
-  core.String updateMask;
+  core.String? updateMask;
 
   GoogleCloudChannelV1UpdateChannelPartnerLinkRequest();
 
@@ -5378,29 +5249,29 @@ class GoogleCloudChannelV1UpdateChannelPartnerLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (channelPartnerLink != null)
-          'channelPartnerLink': channelPartnerLink.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+          'channelPartnerLink': channelPartnerLink!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
 /// Data type and value of a parameter.
 class GoogleCloudChannelV1Value {
   /// Represents a double value.
-  core.double doubleValue;
+  core.double? doubleValue;
 
   /// Represents an int64 value.
-  core.String int64Value;
+  core.String? int64Value;
 
   /// Represents an 'Any' proto value.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> protoValue;
+  core.Map<core.String, core.Object>? protoValue;
 
   /// Represents a string value.
-  core.String stringValue;
+  core.String? stringValue;
 
   GoogleCloudChannelV1Value();
 
@@ -5426,18 +5297,18 @@ class GoogleCloudChannelV1Value {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (doubleValue != null) 'doubleValue': doubleValue,
-        if (int64Value != null) 'int64Value': int64Value,
-        if (protoValue != null) 'protoValue': protoValue,
-        if (stringValue != null) 'stringValue': stringValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (int64Value != null) 'int64Value': int64Value!,
+        if (protoValue != null) 'protoValue': protoValue!,
+        if (stringValue != null) 'stringValue': stringValue!,
       };
 }
 
 /// Association links that an entitlement has to other entitlements.
 class GoogleCloudChannelV1alpha1AssociationInfo {
   /// The name of the base entitlement, for which this entitlement is an add-on.
-  core.String baseEntitlement;
+  core.String? baseEntitlement;
 
   GoogleCloudChannelV1alpha1AssociationInfo();
 
@@ -5447,8 +5318,8 @@ class GoogleCloudChannelV1alpha1AssociationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (baseEntitlement != null) 'baseEntitlement': baseEntitlement,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (baseEntitlement != null) 'baseEntitlement': baseEntitlement!,
       };
 }
 
@@ -5457,17 +5328,17 @@ class GoogleCloudChannelV1alpha1CommitmentSettings {
   /// Commitment end timestamp.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// Renewal settings applicable for a commitment-based Offer.
   ///
   /// Optional.
-  GoogleCloudChannelV1alpha1RenewalSettings renewalSettings;
+  GoogleCloudChannelV1alpha1RenewalSettings? renewalSettings;
 
   /// Commitment start timestamp.
   ///
   /// Output only.
-  core.String startTime;
+  core.String? startTime;
 
   GoogleCloudChannelV1alpha1CommitmentSettings();
 
@@ -5484,11 +5355,11 @@ class GoogleCloudChannelV1alpha1CommitmentSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
         if (renewalSettings != null)
-          'renewalSettings': renewalSettings.toJson(),
-        if (startTime != null) 'startTime': startTime,
+          'renewalSettings': renewalSettings!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -5497,13 +5368,13 @@ class GoogleCloudChannelV1alpha1CustomerEvent {
   /// Resource name of the customer.
   ///
   /// Format: accounts/{account_id}/customers/{customer_id}
-  core.String customer;
+  core.String? customer;
 
   /// Type of event which happened on the customer.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default value. This state doesn't show unless an
   /// error occurs.
-  core.String eventType;
+  core.String? eventType;
 
   GoogleCloudChannelV1alpha1CustomerEvent();
 
@@ -5516,9 +5387,9 @@ class GoogleCloudChannelV1alpha1CustomerEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customer != null) 'customer': customer,
-        if (eventType != null) 'eventType': eventType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customer != null) 'customer': customer!,
+        if (eventType != null) 'eventType': eventType!,
       };
 }
 
@@ -5528,10 +5399,10 @@ class GoogleCloudChannelV1alpha1Entitlement {
   /// defined in provisioned_service.skuId.
   ///
   /// Read-only. Deprecated: Use `parameters` instead.
-  core.int assignedUnits;
+  core.int? assignedUnits;
 
   /// Association information to other entitlements.
-  GoogleCloudChannelV1alpha1AssociationInfo associationInfo;
+  GoogleCloudChannelV1alpha1AssociationInfo? associationInfo;
 
   /// Cloud Identity ID of a channel partner who will be the direct reseller for
   /// the customer's order.
@@ -5540,17 +5411,17 @@ class GoogleCloudChannelV1alpha1Entitlement {
   /// by a top-level distributor on behalf of their channel partner or reseller.
   /// Required for distributors. Deprecated: `channel_partner_id` has been moved
   /// to the Customer.
-  core.String channelPartnerId;
+  core.String? channelPartnerId;
 
   /// Commitment settings for a commitment-based Offer.
   ///
   /// Required for commitment based offers.
-  GoogleCloudChannelV1alpha1CommitmentSettings commitmentSettings;
+  GoogleCloudChannelV1alpha1CommitmentSettings? commitmentSettings;
 
   /// The time at which the entitlement is created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Maximum number of units for a non commitment-based Offer, such as
   /// Flexible, Trial or Free entitlements.
@@ -5558,38 +5429,38 @@ class GoogleCloudChannelV1alpha1Entitlement {
   /// For commitment-based entitlements, this is a read-only field, which only
   /// the internal support team can update. Deprecated: Use `parameters`
   /// instead.
-  core.int maxUnits;
+  core.int? maxUnits;
 
   /// Resource name of an entitlement in the form:
   /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Number of units for a commitment-based Offer.
   ///
   /// For example, for seat-based Offers, this would be the number of seats; for
   /// license-based Offers, this would be the number of licenses. Required for
   /// creating commitment-based Offers. Deprecated: Use `parameters` instead.
-  core.int numUnits;
+  core.int? numUnits;
 
   /// The offer resource name for which the entitlement is to be created.
   ///
   /// Takes the form: accounts/{account_id}/offers/{offer_id}.
   ///
   /// Required.
-  core.String offer;
+  core.String? offer;
 
   /// Extended entitlement parameters.
   ///
   /// When creating an entitlement, valid parameters' names and values are
   /// defined in the offer's parameter definitions.
-  core.List<GoogleCloudChannelV1alpha1Parameter> parameters;
+  core.List<GoogleCloudChannelV1alpha1Parameter>? parameters;
 
   /// Service provisioning details for the entitlement.
   ///
   /// Output only.
-  GoogleCloudChannelV1alpha1ProvisionedService provisionedService;
+  GoogleCloudChannelV1alpha1ProvisionedService? provisionedService;
 
   /// Current provisioning state of the entitlement.
   ///
@@ -5608,7 +5479,7 @@ class GoogleCloudChannelV1alpha1Entitlement {
   /// - "PENDING" : The entitlement is pending. Deprecated: This is represented
   /// as ProvisioningState=SUSPENDED and suspensionReason=PENDING_TOS_ACCEPTANCE
   /// - "SUSPENDED" : The entitlement is currently suspended.
-  core.String provisioningState;
+  core.String? provisioningState;
 
   /// This purchase order (PO) information is for resellers to use for their
   /// company tracking usage.
@@ -5618,22 +5489,22 @@ class GoogleCloudChannelV1alpha1Entitlement {
   /// characters.
   ///
   /// Optional.
-  core.String purchaseOrderId;
+  core.String? purchaseOrderId;
 
   /// Enumerable of all current suspension reasons for an entitlement.
   ///
   /// Output only.
-  core.List<core.String> suspensionReasons;
+  core.List<core.String>? suspensionReasons;
 
   /// Settings for trial offers.
   ///
   /// Output only.
-  GoogleCloudChannelV1alpha1TrialSettings trialSettings;
+  GoogleCloudChannelV1alpha1TrialSettings? trialSettings;
 
   /// The time at which the entitlement is updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   GoogleCloudChannelV1alpha1Entitlement();
 
@@ -5702,27 +5573,27 @@ class GoogleCloudChannelV1alpha1Entitlement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (assignedUnits != null) 'assignedUnits': assignedUnits,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (assignedUnits != null) 'assignedUnits': assignedUnits!,
         if (associationInfo != null)
-          'associationInfo': associationInfo.toJson(),
-        if (channelPartnerId != null) 'channelPartnerId': channelPartnerId,
+          'associationInfo': associationInfo!.toJson(),
+        if (channelPartnerId != null) 'channelPartnerId': channelPartnerId!,
         if (commitmentSettings != null)
-          'commitmentSettings': commitmentSettings.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (maxUnits != null) 'maxUnits': maxUnits,
-        if (name != null) 'name': name,
-        if (numUnits != null) 'numUnits': numUnits,
-        if (offer != null) 'offer': offer,
+          'commitmentSettings': commitmentSettings!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (maxUnits != null) 'maxUnits': maxUnits!,
+        if (name != null) 'name': name!,
+        if (numUnits != null) 'numUnits': numUnits!,
+        if (offer != null) 'offer': offer!,
         if (parameters != null)
-          'parameters': parameters.map((value) => value.toJson()).toList(),
+          'parameters': parameters!.map((value) => value.toJson()).toList(),
         if (provisionedService != null)
-          'provisionedService': provisionedService.toJson(),
-        if (provisioningState != null) 'provisioningState': provisioningState,
-        if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId,
-        if (suspensionReasons != null) 'suspensionReasons': suspensionReasons,
-        if (trialSettings != null) 'trialSettings': trialSettings.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
+          'provisionedService': provisionedService!.toJson(),
+        if (provisioningState != null) 'provisioningState': provisioningState!,
+        if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId!,
+        if (suspensionReasons != null) 'suspensionReasons': suspensionReasons!,
+        if (trialSettings != null) 'trialSettings': trialSettings!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -5730,7 +5601,7 @@ class GoogleCloudChannelV1alpha1Entitlement {
 class GoogleCloudChannelV1alpha1EntitlementEvent {
   /// Resource name of an entitlement of the form:
   /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
-  core.String entitlement;
+  core.String? entitlement;
 
   /// Type of event which happened on the entitlement.
   /// Possible string values are:
@@ -5752,7 +5623,7 @@ class GoogleCloudChannelV1alpha1EntitlementEvent {
   /// - "PAID_SERVICE_STARTED" : Paid service has started on trial entitlement.
   /// - "LICENSE_ASSIGNMENT_CHANGED" : License was assigned to or revoked from a
   /// user.
-  core.String eventType;
+  core.String? eventType;
 
   GoogleCloudChannelV1alpha1EntitlementEvent();
 
@@ -5765,9 +5636,9 @@ class GoogleCloudChannelV1alpha1EntitlementEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (entitlement != null) 'entitlement': entitlement,
-        if (eventType != null) 'eventType': eventType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (entitlement != null) 'entitlement': entitlement!,
+        if (eventType != null) 'eventType': eventType!,
       };
 }
 
@@ -5802,7 +5673,7 @@ class GoogleCloudChannelV1alpha1OperationMetadata {
   /// ChangeParameters.
   /// - "PROVISION_CLOUD_IDENTITY" : Long Running Operation was triggered by
   /// ProvisionCloudIdentity.
-  core.String operationType;
+  core.String? operationType;
 
   GoogleCloudChannelV1alpha1OperationMetadata();
 
@@ -5812,8 +5683,8 @@ class GoogleCloudChannelV1alpha1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operationType != null) 'operationType': operationType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operationType != null) 'operationType': operationType!,
       };
 }
 
@@ -5825,13 +5696,13 @@ class GoogleCloudChannelV1alpha1Parameter {
   /// commitment plan, num_units is editable when entitlement is active.
   ///
   /// Output only.
-  core.bool editable;
+  core.bool? editable;
 
   /// Name of the parameter.
-  core.String name;
+  core.String? name;
 
   /// Value of the parameter.
-  GoogleCloudChannelV1alpha1Value value;
+  GoogleCloudChannelV1alpha1Value? value;
 
   GoogleCloudChannelV1alpha1Parameter();
 
@@ -5848,17 +5719,17 @@ class GoogleCloudChannelV1alpha1Parameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (editable != null) 'editable': editable,
-        if (name != null) 'name': name,
-        if (value != null) 'value': value.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (editable != null) 'editable': editable!,
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!.toJson(),
       };
 }
 
 /// Represents period in days/months/years.
 class GoogleCloudChannelV1alpha1Period {
   /// Total duration of Period Type defined.
-  core.int duration;
+  core.int? duration;
 
   /// Period Type.
   /// Possible string values are:
@@ -5866,7 +5737,7 @@ class GoogleCloudChannelV1alpha1Period {
   /// - "DAY" : Day.
   /// - "MONTH" : Month.
   /// - "YEAR" : Year.
-  core.String periodType;
+  core.String? periodType;
 
   GoogleCloudChannelV1alpha1Period();
 
@@ -5879,9 +5750,9 @@ class GoogleCloudChannelV1alpha1Period {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (duration != null) 'duration': duration,
-        if (periodType != null) 'periodType': periodType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (periodType != null) 'periodType': periodType!,
       };
 }
 
@@ -5891,19 +5762,19 @@ class GoogleCloudChannelV1alpha1ProvisionedService {
   /// Offer.
   ///
   /// Output only.
-  core.String productId;
+  core.String? productId;
 
   /// Provisioning ID of the entitlement.
   ///
   /// For Google Workspace, this would be the underlying Subscription ID.
   ///
   /// Output only.
-  core.String provisioningId;
+  core.String? provisioningId;
 
   /// The SKU pertaining to the provisioning resource as specified in the Offer.
   ///
   /// Output only.
-  core.String skuId;
+  core.String? skuId;
 
   GoogleCloudChannelV1alpha1ProvisionedService();
 
@@ -5919,10 +5790,10 @@ class GoogleCloudChannelV1alpha1ProvisionedService {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (productId != null) 'productId': productId,
-        if (provisioningId != null) 'provisioningId': provisioningId,
-        if (skuId != null) 'skuId': skuId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (productId != null) 'productId': productId!,
+        if (provisioningId != null) 'provisioningId': provisioningId!,
+        if (skuId != null) 'skuId': skuId!,
       };
 }
 
@@ -5932,14 +5803,14 @@ class GoogleCloudChannelV1alpha1RenewalSettings {
   /// flexible or pay as you go.
   ///
   /// Deprecated: Use `payment_plan` instead.
-  core.bool disableCommitment;
+  core.bool? disableCommitment;
 
   /// If false, the plan will be completed at the end date.
-  core.bool enableRenewal;
+  core.bool? enableRenewal;
 
   /// Describes how frequently the reseller will be billed, such as once per
   /// month.
-  GoogleCloudChannelV1alpha1Period paymentCycle;
+  GoogleCloudChannelV1alpha1Period? paymentCycle;
 
   /// Set if enable_renewal=true.
   ///
@@ -5949,7 +5820,7 @@ class GoogleCloudChannelV1alpha1RenewalSettings {
   /// unless an error occurs.
   /// - "ANNUAL" : Paid in yearly installments.
   /// - "MONTHLY" : Paid in monthly installments.
-  core.String paymentOption;
+  core.String? paymentOption;
 
   /// Describes how a reseller will be billed.
   /// Possible string values are:
@@ -5959,11 +5830,11 @@ class GoogleCloudChannelV1alpha1RenewalSettings {
   /// - "FREE" : Free.
   /// - "TRIAL" : Trial.
   /// - "OFFLINE" : Price and ordering not available through API.
-  core.String paymentPlan;
+  core.String? paymentPlan;
 
   /// If true and enable_renewal = true, the unit (for example seats or
   /// licenses) will be set to the number of active units at renewal time.
-  core.bool resizeUnitCount;
+  core.bool? resizeUnitCount;
 
   GoogleCloudChannelV1alpha1RenewalSettings();
 
@@ -5989,13 +5860,13 @@ class GoogleCloudChannelV1alpha1RenewalSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (disableCommitment != null) 'disableCommitment': disableCommitment,
-        if (enableRenewal != null) 'enableRenewal': enableRenewal,
-        if (paymentCycle != null) 'paymentCycle': paymentCycle.toJson(),
-        if (paymentOption != null) 'paymentOption': paymentOption,
-        if (paymentPlan != null) 'paymentPlan': paymentPlan,
-        if (resizeUnitCount != null) 'resizeUnitCount': resizeUnitCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (disableCommitment != null) 'disableCommitment': disableCommitment!,
+        if (enableRenewal != null) 'enableRenewal': enableRenewal!,
+        if (paymentCycle != null) 'paymentCycle': paymentCycle!.toJson(),
+        if (paymentOption != null) 'paymentOption': paymentOption!,
+        if (paymentPlan != null) 'paymentPlan': paymentPlan!,
+        if (resizeUnitCount != null) 'resizeUnitCount': resizeUnitCount!,
       };
 }
 
@@ -6003,10 +5874,10 @@ class GoogleCloudChannelV1alpha1RenewalSettings {
 /// Cloud Pub/Sub.
 class GoogleCloudChannelV1alpha1SubscriberEvent {
   /// Customer event send as part of Pub/Sub event to partners.
-  GoogleCloudChannelV1alpha1CustomerEvent customerEvent;
+  GoogleCloudChannelV1alpha1CustomerEvent? customerEvent;
 
   /// Entitlement event send as part of Pub/Sub event to partners.
-  GoogleCloudChannelV1alpha1EntitlementEvent entitlementEvent;
+  GoogleCloudChannelV1alpha1EntitlementEvent? entitlementEvent;
 
   GoogleCloudChannelV1alpha1SubscriberEvent();
 
@@ -6021,10 +5892,10 @@ class GoogleCloudChannelV1alpha1SubscriberEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customerEvent != null) 'customerEvent': customerEvent.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customerEvent != null) 'customerEvent': customerEvent!.toJson(),
         if (entitlementEvent != null)
-          'entitlementEvent': entitlementEvent.toJson(),
+          'entitlementEvent': entitlementEvent!.toJson(),
       };
 }
 
@@ -6033,7 +5904,7 @@ class GoogleCloudChannelV1alpha1SubscriberEvent {
 /// This will be put into the response field of google.longrunning.Operation.
 class GoogleCloudChannelV1alpha1TransferEntitlementsResponse {
   /// The entitlements that have been transferred.
-  core.List<GoogleCloudChannelV1alpha1Entitlement> entitlements;
+  core.List<GoogleCloudChannelV1alpha1Entitlement>? entitlements;
 
   GoogleCloudChannelV1alpha1TransferEntitlementsResponse();
 
@@ -6048,9 +5919,9 @@ class GoogleCloudChannelV1alpha1TransferEntitlementsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (entitlements != null)
-          'entitlements': entitlements.map((value) => value.toJson()).toList(),
+          'entitlements': entitlements!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6060,13 +5931,13 @@ class GoogleCloudChannelV1alpha1TrialSettings {
   ///
   /// The value is in milliseconds using the UNIX Epoch format. See an example
   /// [Epoch converter](https://www.epochconverter.com).
-  core.String endTime;
+  core.String? endTime;
 
   /// Determines if the entitlement is in a trial or not: * `true` - The
   /// entitlement is in trial.
   ///
   /// * `false` - The entitlement is not in trial.
-  core.bool trial;
+  core.bool? trial;
 
   GoogleCloudChannelV1alpha1TrialSettings();
 
@@ -6079,28 +5950,28 @@ class GoogleCloudChannelV1alpha1TrialSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (trial != null) 'trial': trial,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (trial != null) 'trial': trial!,
       };
 }
 
 /// Data type and value of a parameter.
 class GoogleCloudChannelV1alpha1Value {
   /// Represents a double value.
-  core.double doubleValue;
+  core.double? doubleValue;
 
   /// Represents an int64 value.
-  core.String int64Value;
+  core.String? int64Value;
 
   /// Represents an 'Any' proto value.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> protoValue;
+  core.Map<core.String, core.Object>? protoValue;
 
   /// Represents a string value.
-  core.String stringValue;
+  core.String? stringValue;
 
   GoogleCloudChannelV1alpha1Value();
 
@@ -6126,11 +5997,11 @@ class GoogleCloudChannelV1alpha1Value {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (doubleValue != null) 'doubleValue': doubleValue,
-        if (int64Value != null) 'int64Value': int64Value,
-        if (protoValue != null) 'protoValue': protoValue,
-        if (stringValue != null) 'stringValue': stringValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (int64Value != null) 'int64Value': int64Value!,
+        if (protoValue != null) 'protoValue': protoValue!,
+        if (stringValue != null) 'stringValue': stringValue!,
       };
 }
 
@@ -6142,16 +6013,16 @@ class GoogleLongrunningCancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<GoogleLongrunningOperation> operations;
+  core.List<GoogleLongrunningOperation>? operations;
 
   GoogleLongrunningListOperationsResponse();
 
@@ -6168,10 +6039,10 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6182,10 +6053,10 @@ class GoogleLongrunningOperation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  GoogleRpcStatus error;
+  GoogleRpcStatus? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -6196,14 +6067,14 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -6216,7 +6087,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   GoogleLongrunningOperation();
 
@@ -6251,12 +6122,12 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -6274,7 +6145,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -6286,7 +6157,7 @@ class GoogleProtobufEmpty {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -6294,13 +6165,13 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   GoogleRpcStatus();
 
@@ -6324,17 +6195,17 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
 /// Represents an amount of money with its currency type.
 class GoogleTypeMoney {
   /// The three-letter currency code defined in ISO 4217.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Number of nano (10^-9) units of the amount.
   ///
@@ -6343,12 +6214,12 @@ class GoogleTypeMoney {
   /// `nanos` can be positive, zero, or negative. If `units` is negative,
   /// `nanos` must be negative or zero. For example $-1.75 is represented as
   /// `units`=-1 and `nanos`=-750,000,000.
-  core.int nanos;
+  core.int? nanos;
 
   /// The whole units of the amount.
   ///
   /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-  core.String units;
+  core.String? units;
 
   GoogleTypeMoney();
 
@@ -6364,10 +6235,10 @@ class GoogleTypeMoney {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (nanos != null) 'nanos': nanos,
-        if (units != null) 'units': units,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (nanos != null) 'nanos': nanos!,
+        if (units != null) 'units': units!,
       };
 }
 
@@ -6401,7 +6272,7 @@ class GoogleTypePostalAddress {
   /// region_code and address_lines, and then geocoding is the recommended way
   /// to handle completely unstructured addresses (as opposed to guessing which
   /// parts of the address should be localities or administrative areas).
-  core.List<core.String> addressLines;
+  core.List<core.String>? addressLines;
 
   /// Highest administrative subdivision which is used for postal addresses of a
   /// country or region.
@@ -6413,7 +6284,7 @@ class GoogleTypePostalAddress {
   /// should be left unpopulated.
   ///
   /// Optional.
-  core.String administrativeArea;
+  core.String? administrativeArea;
 
   /// BCP-47 language code of the contents of this address (if known).
   ///
@@ -6426,7 +6297,7 @@ class GoogleTypePostalAddress {
   /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
   ///
   /// Optional.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Generally refers to the city/town portion of the address.
   ///
@@ -6435,12 +6306,12 @@ class GoogleTypePostalAddress {
   /// leave locality empty and use address_lines.
   ///
   /// Optional.
-  core.String locality;
+  core.String? locality;
 
   /// The name of the organization at the address.
   ///
   /// Optional.
-  core.String organization;
+  core.String? organization;
 
   /// Postal code of the address.
   ///
@@ -6449,7 +6320,7 @@ class GoogleTypePostalAddress {
   /// the address (e.g. state/zip validation in the U.S.A.).
   ///
   /// Optional.
-  core.String postalCode;
+  core.String? postalCode;
 
   /// The recipient at the address.
   ///
@@ -6457,7 +6328,7 @@ class GoogleTypePostalAddress {
   /// information. For example, it might contain "care of" information.
   ///
   /// Optional.
-  core.List<core.String> recipients;
+  core.List<core.String>? recipients;
 
   /// CLDR region code of the country/region of the address.
   ///
@@ -6467,13 +6338,13 @@ class GoogleTypePostalAddress {
   /// for details. Example: "CH" for Switzerland.
   ///
   /// Required.
-  core.String regionCode;
+  core.String? regionCode;
 
   /// The schema revision of the `PostalAddress`.
   ///
   /// This must be set to 0, which is the latest revision. All new revisions
   /// **must** be backward compatible with old revisions.
-  core.int revision;
+  core.int? revision;
 
   /// Additional, country-specific, sorting code.
   ///
@@ -6483,14 +6354,14 @@ class GoogleTypePostalAddress {
   /// area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
   ///
   /// Optional.
-  core.String sortingCode;
+  core.String? sortingCode;
 
   /// Sublocality of the address.
   ///
   /// For example, this can be neighborhoods, boroughs, districts.
   ///
   /// Optional.
-  core.String sublocality;
+  core.String? sublocality;
 
   GoogleTypePostalAddress();
 
@@ -6534,18 +6405,18 @@ class GoogleTypePostalAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addressLines != null) 'addressLines': addressLines,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addressLines != null) 'addressLines': addressLines!,
         if (administrativeArea != null)
-          'administrativeArea': administrativeArea,
-        if (languageCode != null) 'languageCode': languageCode,
-        if (locality != null) 'locality': locality,
-        if (organization != null) 'organization': organization,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (recipients != null) 'recipients': recipients,
-        if (regionCode != null) 'regionCode': regionCode,
-        if (revision != null) 'revision': revision,
-        if (sortingCode != null) 'sortingCode': sortingCode,
-        if (sublocality != null) 'sublocality': sublocality,
+          'administrativeArea': administrativeArea!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (locality != null) 'locality': locality!,
+        if (organization != null) 'organization': organization!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (recipients != null) 'recipients': recipients!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (revision != null) 'revision': revision!,
+        if (sortingCode != null) 'sortingCode': sortingCode!,
+        if (sublocality != null) 'sublocality': sublocality!,
       };
 }

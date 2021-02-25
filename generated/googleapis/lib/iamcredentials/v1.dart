@@ -99,13 +99,9 @@ class ProjectsServiceAccountsResource {
   async.Future<GenerateAccessTokenResponse> generateAccessToken(
     GenerateAccessTokenRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -149,13 +145,9 @@ class ProjectsServiceAccountsResource {
   async.Future<GenerateIdTokenResponse> generateIdToken(
     GenerateIdTokenRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -199,13 +191,9 @@ class ProjectsServiceAccountsResource {
   async.Future<SignBlobResponse> signBlob(
     SignBlobRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -248,13 +236,9 @@ class ProjectsServiceAccountsResource {
   async.Future<SignJwtResponse> signJwt(
     SignJwtRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -284,7 +268,7 @@ class GenerateAccessTokenRequest {
   /// following format:
   /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
   /// character is required; replacing it with a project ID is invalid.
-  core.List<core.String> delegates;
+  core.List<core.String>? delegates;
 
   /// The desired lifetime duration of the access token in seconds.
   ///
@@ -295,7 +279,7 @@ class GenerateAccessTokenRequest {
   /// constraint. See detailed instructions at
   /// https://cloud.google.com/iam/help/credentials/lifetime If a value is not
   /// specified, the token's lifetime will be set to a default value of 1 hour.
-  core.String lifetime;
+  core.String? lifetime;
 
   /// Code to identify the scopes to be included in the OAuth 2.0 access token.
   ///
@@ -303,7 +287,7 @@ class GenerateAccessTokenRequest {
   /// information. At least one value required.
   ///
   /// Required.
-  core.List<core.String> scope;
+  core.List<core.String>? scope;
 
   GenerateAccessTokenRequest();
 
@@ -323,21 +307,21 @@ class GenerateAccessTokenRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (delegates != null) 'delegates': delegates,
-        if (lifetime != null) 'lifetime': lifetime,
-        if (scope != null) 'scope': scope,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (delegates != null) 'delegates': delegates!,
+        if (lifetime != null) 'lifetime': lifetime!,
+        if (scope != null) 'scope': scope!,
       };
 }
 
 class GenerateAccessTokenResponse {
   /// The OAuth 2.0 access token.
-  core.String accessToken;
+  core.String? accessToken;
 
   /// Token expiration time.
   ///
   /// The expiration time is always set.
-  core.String expireTime;
+  core.String? expireTime;
 
   GenerateAccessTokenResponse();
 
@@ -350,9 +334,9 @@ class GenerateAccessTokenResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessToken != null) 'accessToken': accessToken,
-        if (expireTime != null) 'expireTime': expireTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessToken != null) 'accessToken': accessToken!,
+        if (expireTime != null) 'expireTime': expireTime!,
       };
 }
 
@@ -361,7 +345,7 @@ class GenerateIdTokenRequest {
   /// grants access to.
   ///
   /// Required.
-  core.String audience;
+  core.String? audience;
 
   /// The sequence of service accounts in a delegation chain.
   ///
@@ -373,13 +357,13 @@ class GenerateIdTokenRequest {
   /// following format:
   /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
   /// character is required; replacing it with a project ID is invalid.
-  core.List<core.String> delegates;
+  core.List<core.String>? delegates;
 
   /// Include the service account email in the token.
   ///
   /// If set to `true`, the token will contain `email` and `email_verified`
   /// claims.
-  core.bool includeEmail;
+  core.bool? includeEmail;
 
   GenerateIdTokenRequest();
 
@@ -397,16 +381,16 @@ class GenerateIdTokenRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audience != null) 'audience': audience,
-        if (delegates != null) 'delegates': delegates,
-        if (includeEmail != null) 'includeEmail': includeEmail,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audience != null) 'audience': audience!,
+        if (delegates != null) 'delegates': delegates!,
+        if (includeEmail != null) 'includeEmail': includeEmail!,
       };
 }
 
 class GenerateIdTokenResponse {
   /// The OpenId Connect ID token.
-  core.String token;
+  core.String? token;
 
   GenerateIdTokenResponse();
 
@@ -416,8 +400,8 @@ class GenerateIdTokenResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (token != null) 'token': token,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (token != null) 'token': token!,
       };
 }
 
@@ -432,13 +416,13 @@ class SignBlobRequest {
   /// following format:
   /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
   /// character is required; replacing it with a project ID is invalid.
-  core.List<core.String> delegates;
+  core.List<core.String>? delegates;
 
   /// The bytes to sign.
   ///
   /// Required.
-  core.String payload;
-  core.List<core.int> get payloadAsBytes => convert.base64.decode(payload);
+  core.String? payload;
+  core.List<core.int> get payloadAsBytes => convert.base64.decode(payload!);
 
   set payloadAsBytes(core.List<core.int> _bytes) {
     payload =
@@ -458,9 +442,9 @@ class SignBlobRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (delegates != null) 'delegates': delegates,
-        if (payload != null) 'payload': payload,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (delegates != null) 'delegates': delegates!,
+        if (payload != null) 'payload': payload!,
       };
 }
 
@@ -476,7 +460,7 @@ class SignBlobResponse {
   /// `https://www.googleapis.com/service_accounts/v1/metadata/raw/{ACCOUNT_EMAIL}`
   /// - JSON Web Key (JWK):
   /// `https://www.googleapis.com/service_accounts/v1/metadata/jwk/{ACCOUNT_EMAIL}`
-  core.String keyId;
+  core.String? keyId;
 
   /// The signature for the blob.
   ///
@@ -484,9 +468,9 @@ class SignBlobResponse {
   /// `key_id` response field expires, Google no longer exposes the public key
   /// that can be used to verify the blob. As a result, the receiver can no
   /// longer verify the signature.
-  core.String signedBlob;
+  core.String? signedBlob;
   core.List<core.int> get signedBlobAsBytes =>
-      convert.base64.decode(signedBlob);
+      convert.base64.decode(signedBlob!);
 
   set signedBlobAsBytes(core.List<core.int> _bytes) {
     signedBlob =
@@ -504,9 +488,9 @@ class SignBlobResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (keyId != null) 'keyId': keyId,
-        if (signedBlob != null) 'signedBlob': signedBlob,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (keyId != null) 'keyId': keyId!,
+        if (signedBlob != null) 'signedBlob': signedBlob!,
       };
 }
 
@@ -521,7 +505,7 @@ class SignJwtRequest {
   /// following format:
   /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
   /// character is required; replacing it with a project ID is invalid.
-  core.List<core.String> delegates;
+  core.List<core.String>? delegates;
 
   /// The JWT payload to sign.
   ///
@@ -531,7 +515,7 @@ class SignJwtRequest {
   /// timestamp that is not in the past and no more than 12 hours in the future.
   ///
   /// Required.
-  core.String payload;
+  core.String? payload;
 
   SignJwtRequest();
 
@@ -546,9 +530,9 @@ class SignJwtRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (delegates != null) 'delegates': delegates,
-        if (payload != null) 'payload': payload,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (delegates != null) 'delegates': delegates!,
+        if (payload != null) 'payload': payload!,
       };
 }
 
@@ -564,7 +548,7 @@ class SignJwtResponse {
   /// `https://www.googleapis.com/service_accounts/v1/metadata/raw/{ACCOUNT_EMAIL}`
   /// - JSON Web Key (JWK):
   /// `https://www.googleapis.com/service_accounts/v1/metadata/jwk/{ACCOUNT_EMAIL}`
-  core.String keyId;
+  core.String? keyId;
 
   /// The signed JWT.
   ///
@@ -574,7 +558,7 @@ class SignJwtResponse {
   /// response field expires, Google no longer exposes the public key that can
   /// be used to verify the JWT. As a result, the receiver can no longer verify
   /// the signature.
-  core.String signedJwt;
+  core.String? signedJwt;
 
   SignJwtResponse();
 
@@ -587,8 +571,8 @@ class SignJwtResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (keyId != null) 'keyId': keyId,
-        if (signedJwt != null) 'signedJwt': signedJwt,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (keyId != null) 'keyId': keyId!,
+        if (signedJwt != null) 'signedJwt': signedJwt!,
       };
 }

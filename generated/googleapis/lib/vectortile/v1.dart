@@ -161,28 +161,25 @@ class FeaturetilesResource {
   /// this method will complete with the same error.
   async.Future<FeatureTile> get(
     core.String name, {
-    core.bool alwaysIncludeBuildingFootprints,
-    core.String clientInfo_apiClient,
-    core.String clientInfo_applicationId,
-    core.String clientInfo_applicationVersion,
-    core.String clientInfo_deviceModel,
-    core.String clientInfo_operatingSystem,
-    core.String clientInfo_platform,
-    core.String clientInfo_userId,
-    core.String clientTileVersionId,
-    core.bool enableDetailedHighwayTypes,
-    core.bool enableFeatureNames,
-    core.bool enableModeledVolumes,
-    core.bool enablePoliticalFeatures,
-    core.bool enablePrivateRoads,
-    core.bool enableUnclippedBuildings,
-    core.String languageCode,
-    core.String regionCode,
-    core.String $fields,
+    core.bool? alwaysIncludeBuildingFootprints,
+    core.String? clientInfo_apiClient,
+    core.String? clientInfo_applicationId,
+    core.String? clientInfo_applicationVersion,
+    core.String? clientInfo_deviceModel,
+    core.String? clientInfo_operatingSystem,
+    core.String? clientInfo_platform,
+    core.String? clientInfo_userId,
+    core.String? clientTileVersionId,
+    core.bool? enableDetailedHighwayTypes,
+    core.bool? enableFeatureNames,
+    core.bool? enableModeledVolumes,
+    core.bool? enablePoliticalFeatures,
+    core.bool? enablePrivateRoads,
+    core.bool? enableUnclippedBuildings,
+    core.String? languageCode,
+    core.String? regionCode,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (alwaysIncludeBuildingFootprints != null)
         'alwaysIncludeBuildingFootprints': [
@@ -315,22 +312,19 @@ class TerraintilesResource {
   /// this method will complete with the same error.
   async.Future<TerrainTile> get(
     core.String name, {
-    core.int altitudePrecisionCentimeters,
-    core.String clientInfo_apiClient,
-    core.String clientInfo_applicationId,
-    core.String clientInfo_applicationVersion,
-    core.String clientInfo_deviceModel,
-    core.String clientInfo_operatingSystem,
-    core.String clientInfo_platform,
-    core.String clientInfo_userId,
-    core.int maxElevationResolutionCells,
-    core.int minElevationResolutionCells,
-    core.List<core.String> terrainFormats,
-    core.String $fields,
+    core.int? altitudePrecisionCentimeters,
+    core.String? clientInfo_apiClient,
+    core.String? clientInfo_applicationId,
+    core.String? clientInfo_applicationVersion,
+    core.String? clientInfo_deviceModel,
+    core.String? clientInfo_operatingSystem,
+    core.String? clientInfo_platform,
+    core.String? clientInfo_userId,
+    core.int? maxElevationResolutionCells,
+    core.int? minElevationResolutionCells,
+    core.List<core.String>? terrainFormats,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (altitudePrecisionCentimeters != null)
         'altitudePrecisionCentimeters': ['${altitudePrecisionCentimeters}'],
@@ -379,11 +373,11 @@ class Area {
   /// z-fighting. Unlike Area.z_order this can be used to compare with
   /// Line.basemap_z_order, and in fact may yield more accurate rendering (where
   /// a line may be rendered beneath an area).
-  BasemapZOrder basemapZOrder;
+  BasemapZOrder? basemapZOrder;
 
   /// True if the polygon is not entirely internal to the feature that it
   /// belongs to: that is, some of the edges are bordering another feature.
-  core.bool hasExternalEdges;
+  core.bool? hasExternalEdges;
 
   /// When has_external_edges is true, the polygon has some edges that border
   /// another feature.
@@ -398,7 +392,7 @@ class Area {
   /// polygon, or water could be lighter colored near the external edges of a
   /// body of water. If has_external_edges is false, all edges are internal and
   /// this field will be empty.
-  core.List<core.int> internalEdges;
+  core.List<core.int>? internalEdges;
 
   /// Identifies the boundary loops of the polygon.
   ///
@@ -410,13 +404,13 @@ class Area {
   /// boundary but still internal to the feature. For example, a feature split
   /// across multiple tiles will have an internal polygon boundary edge along
   /// the edge of the tile.
-  core.List<core.int> loopBreaks;
+  core.List<core.int>? loopBreaks;
 
   /// When the polygon encoding is of type INDEXED_TRIANGLES, this contains the
   /// indices of the triangle vertices in the vertex_offsets field.
   ///
   /// There are 3 vertex indices per triangle.
-  core.List<core.int> triangleIndices;
+  core.List<core.int>? triangleIndices;
 
   /// The polygon encoding type used for this area.
   /// Possible string values are:
@@ -441,10 +435,10 @@ class Area {
   /// or counterclockwise order. Only polygons without the has_external_edges
   /// flag set will use triangle strips. (0) / \ / \ / \ (2)-----(1) / \ / / \ /
   /// / \ / (4)-----(3)
-  core.String type;
+  core.String? type;
 
   /// The vertices present in the polygon defining the area.
-  Vertex2DList vertexOffsets;
+  Vertex2DList? vertexOffsets;
 
   /// The z-ordering of this area.
   ///
@@ -454,7 +448,7 @@ class Area {
   /// during rendering on the client. This z-ordering can only be used to
   /// compare areas, and cannot be compared with the z_order field in the Line
   /// message. The z-order may be negative or zero. Prefer Area.basemap_z_order.
-  core.int zOrder;
+  core.int? zOrder;
 
   Area();
 
@@ -493,15 +487,15 @@ class Area {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (basemapZOrder != null) 'basemapZOrder': basemapZOrder.toJson(),
-        if (hasExternalEdges != null) 'hasExternalEdges': hasExternalEdges,
-        if (internalEdges != null) 'internalEdges': internalEdges,
-        if (loopBreaks != null) 'loopBreaks': loopBreaks,
-        if (triangleIndices != null) 'triangleIndices': triangleIndices,
-        if (type != null) 'type': type,
-        if (vertexOffsets != null) 'vertexOffsets': vertexOffsets.toJson(),
-        if (zOrder != null) 'zOrder': zOrder,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (basemapZOrder != null) 'basemapZOrder': basemapZOrder!.toJson(),
+        if (hasExternalEdges != null) 'hasExternalEdges': hasExternalEdges!,
+        if (internalEdges != null) 'internalEdges': internalEdges!,
+        if (loopBreaks != null) 'loopBreaks': loopBreaks!,
+        if (triangleIndices != null) 'triangleIndices': triangleIndices!,
+        if (type != null) 'type': type!,
+        if (vertexOffsets != null) 'vertexOffsets': vertexOffsets!.toJson(),
+        if (zOrder != null) 'zOrder': zOrder!,
       };
 }
 
@@ -513,15 +507,15 @@ class Area {
 class BasemapZOrder {
   /// The second most significant component of the ordering of a component to be
   /// rendered onto the basemap.
-  core.int zGrade;
+  core.int? zGrade;
 
   /// The most significant component of the ordering of a component to be
   /// rendered onto the basemap.
-  core.int zPlane;
+  core.int? zPlane;
 
   /// The least significant component of the ordering of a component to be
   /// rendered onto the basemap.
-  core.int zWithinGrade;
+  core.int? zWithinGrade;
 
   BasemapZOrder();
 
@@ -537,10 +531,10 @@ class BasemapZOrder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (zGrade != null) 'zGrade': zGrade,
-        if (zPlane != null) 'zPlane': zPlane,
-        if (zWithinGrade != null) 'zWithinGrade': zWithinGrade,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (zGrade != null) 'zGrade': zGrade!,
+        if (zPlane != null) 'zPlane': zPlane!,
+        if (zWithinGrade != null) 'zWithinGrade': zWithinGrade!,
       };
 }
 
@@ -553,17 +547,17 @@ class BasemapZOrder {
 /// the width of the tile that it is on.
 class ExtrudedArea {
   /// The area representing the footprint of the extruded area.
-  Area area;
+  Area? area;
 
   /// The z-value in local tile coordinates where the extruded area ends.
-  core.int maxZ;
+  core.int? maxZ;
 
   /// The z-value in local tile coordinates where the extruded area begins.
   ///
   /// This is non-zero for extruded areas that begin off the ground. For
   /// example, a building with a skybridge may have an extruded area component
   /// with a non-zero min_z.
-  core.int minZ;
+  core.int? minZ;
 
   ExtrudedArea();
 
@@ -580,10 +574,10 @@ class ExtrudedArea {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (area != null) 'area': area.toJson(),
-        if (maxZ != null) 'maxZ': maxZ,
-        if (minZ != null) 'minZ': minZ,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (area != null) 'area': area!.toJson(),
+        if (maxZ != null) 'maxZ': maxZ!,
+        if (minZ != null) 'minZ': minZ!,
       };
 }
 
@@ -592,20 +586,20 @@ class Feature {
   /// The localized name of this feature.
   ///
   /// Currently only returned for roads.
-  core.String displayName;
+  core.String? displayName;
 
   /// The geometry of this feature, representing the space that it occupies in
   /// the world.
-  Geometry geometry;
+  Geometry? geometry;
 
   /// Place ID of this feature, suitable for use in Places API details requests.
-  core.String placeId;
+  core.String? placeId;
 
   /// Relations to other features.
-  core.List<Relation> relations;
+  core.List<Relation>? relations;
 
   /// Metadata for features with the SEGMENT FeatureType.
-  SegmentInfo segmentInfo;
+  SegmentInfo? segmentInfo;
 
   /// The type of this feature.
   /// Possible string values are:
@@ -651,7 +645,7 @@ class Feature {
   /// - "LOCALITY" : Cities, towns, and other municipalities.
   /// - "SUBLOCALITY" : Divisions within a locality like a borough or ward.
   /// - "WATER" : Water features such as rivers and lakes.
-  core.String type;
+  core.String? type;
 
   Feature();
 
@@ -681,14 +675,14 @@ class Feature {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (geometry != null) 'geometry': geometry.toJson(),
-        if (placeId != null) 'placeId': placeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (geometry != null) 'geometry': geometry!.toJson(),
+        if (placeId != null) 'placeId': placeId!,
         if (relations != null)
-          'relations': relations.map((value) => value.toJson()).toList(),
-        if (segmentInfo != null) 'segmentInfo': segmentInfo.toJson(),
-        if (type != null) 'type': type,
+          'relations': relations!.map((value) => value.toJson()).toList(),
+        if (segmentInfo != null) 'segmentInfo': segmentInfo!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -696,20 +690,20 @@ class Feature {
 /// it covers.
 class FeatureTile {
   /// The global tile coordinates that uniquely identify this tile.
-  TileCoordinates coordinates;
+  TileCoordinates? coordinates;
 
   /// Features present on this map tile.
-  core.List<Feature> features;
+  core.List<Feature>? features;
 
   /// Resource name of the tile.
   ///
   /// The tile resource name is prefixed by its collection ID `tiles/` followed
   /// by the resource ID, which encodes the tile's global x and y coordinates
   /// and zoom level as `@,,z`. For example, `tiles/@1,2,3z`.
-  core.String name;
+  core.String? name;
 
   /// Data providers for the data contained in this tile.
-  core.List<ProviderInfo> providers;
+  core.List<ProviderInfo>? providers;
 
   /// Tile response status code to support tile caching.
   /// Possible string values are:
@@ -724,7 +718,7 @@ class FeatureTile {
   /// the tile data is identical. However, the cache-control header and
   /// version_id can still change even when the tile contents itself does not,
   /// so clients should always use the most recent values returned by the API.
-  core.String status;
+  core.String? status;
 
   /// An opaque value, usually less than 30 characters, that contains version
   /// info about this tile and the data that was used to generate it.
@@ -734,7 +728,7 @@ class FeatureTile {
   /// order to enable the API to detect when the new tile would be the same as
   /// the one the client already has in its cache. Also see
   /// STATUS_OK_DATA_UNCHANGED.
-  core.String versionId;
+  core.String? versionId;
 
   FeatureTile();
 
@@ -766,15 +760,15 @@ class FeatureTile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (coordinates != null) 'coordinates': coordinates.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (coordinates != null) 'coordinates': coordinates!.toJson(),
         if (features != null)
-          'features': features.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+          'features': features!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
         if (providers != null)
-          'providers': providers.map((value) => value.toJson()).toList(),
-        if (status != null) 'status': status,
-        if (versionId != null) 'versionId': versionId,
+          'providers': providers!.map((value) => value.toJson()).toList(),
+        if (status != null) 'status': status!,
+        if (versionId != null) 'versionId': versionId!,
       };
 }
 
@@ -795,13 +789,13 @@ class FeatureTile {
 class FirstDerivativeElevationGrid {
   /// A multiplier applied to the altitude fields below to extract the actual
   /// altitudes in meters from the elevation grid.
-  core.double altitudeMultiplier;
+  core.double? altitudeMultiplier;
 
   /// Rows of points containing altitude data making up the elevation grid.
   ///
   /// Each row is the same length. Rows are ordered from north to south. E.g:
   /// rows\[0\] is the north-most row, and rows\[n\] is the south-most row.
-  core.List<Row> rows;
+  core.List<Row>? rows;
 
   FirstDerivativeElevationGrid();
 
@@ -817,10 +811,10 @@ class FirstDerivativeElevationGrid {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (altitudeMultiplier != null)
-          'altitudeMultiplier': altitudeMultiplier,
-        if (rows != null) 'rows': rows.map((value) => value.toJson()).toList(),
+          'altitudeMultiplier': altitudeMultiplier!,
+        if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -835,7 +829,7 @@ class FirstDerivativeElevationGrid {
 /// will lie outside the tile boundaries.
 class Geometry {
   /// The areas present in this geometry.
-  core.List<Area> areas;
+  core.List<Area>? areas;
 
   /// The extruded areas present in this geometry.
   ///
@@ -843,16 +837,16 @@ class Geometry {
   /// always_include_building_footprints is set in GetFeatureTileRequest, in
   /// which case the client should decide which (extruded areas or modeled
   /// volumes) should be used (they should not be rendered together).
-  core.List<ExtrudedArea> extrudedAreas;
+  core.List<ExtrudedArea>? extrudedAreas;
 
   /// The lines present in this geometry.
-  core.List<Line> lines;
+  core.List<Line>? lines;
 
   /// The modeled volumes present in this geometry.
   ///
   /// Not populated unless enable_modeled_volumes has been set in
   /// GetFeatureTileRequest.
-  core.List<ModeledVolume> modeledVolumes;
+  core.List<ModeledVolume>? modeledVolumes;
 
   Geometry();
 
@@ -883,17 +877,17 @@ class Geometry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (areas != null)
-          'areas': areas.map((value) => value.toJson()).toList(),
+          'areas': areas!.map((value) => value.toJson()).toList(),
         if (extrudedAreas != null)
           'extrudedAreas':
-              extrudedAreas.map((value) => value.toJson()).toList(),
+              extrudedAreas!.map((value) => value.toJson()).toList(),
         if (lines != null)
-          'lines': lines.map((value) => value.toJson()).toList(),
+          'lines': lines!.map((value) => value.toJson()).toList(),
         if (modeledVolumes != null)
           'modeledVolumes':
-              modeledVolumes.map((value) => value.toJson()).toList(),
+              modeledVolumes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -909,10 +903,10 @@ class Line {
   /// z-fighting. Unlike Line.z_order this can be used to compare with
   /// Area.basemap_z_order, and in fact may yield more accurate rendering (where
   /// a line may be rendered beneath an area).
-  BasemapZOrder basemapZOrder;
+  BasemapZOrder? basemapZOrder;
 
   /// The vertices present in the polyline.
-  Vertex2DList vertexOffsets;
+  Vertex2DList? vertexOffsets;
 
   /// The z-order of the line.
   ///
@@ -924,7 +918,7 @@ class Line {
   /// z-ordering can only be used to compare lines, and cannot be compared with
   /// the z_order field in the Area message. The z-order may be negative or
   /// zero. Prefer Line.basemap_z_order.
-  core.int zOrder;
+  core.int? zOrder;
 
   Line();
 
@@ -942,10 +936,10 @@ class Line {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (basemapZOrder != null) 'basemapZOrder': basemapZOrder.toJson(),
-        if (vertexOffsets != null) 'vertexOffsets': vertexOffsets.toJson(),
-        if (zOrder != null) 'zOrder': zOrder,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (basemapZOrder != null) 'basemapZOrder': basemapZOrder!.toJson(),
+        if (vertexOffsets != null) 'vertexOffsets': vertexOffsets!.toJson(),
+        if (zOrder != null) 'zOrder': zOrder!,
       };
 }
 
@@ -954,10 +948,10 @@ class Line {
 /// Used to represent 3D buildings.
 class ModeledVolume {
   /// The triangle strips present in this mesh.
-  core.List<TriangleStrip> strips;
+  core.List<TriangleStrip>? strips;
 
   /// The vertices present in the mesh defining the modeled volume.
-  Vertex3DList vertexOffsets;
+  Vertex3DList? vertexOffsets;
 
   ModeledVolume();
 
@@ -974,10 +968,10 @@ class ModeledVolume {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (strips != null)
-          'strips': strips.map((value) => value.toJson()).toList(),
-        if (vertexOffsets != null) 'vertexOffsets': vertexOffsets.toJson(),
+          'strips': strips!.map((value) => value.toJson()).toList(),
+        if (vertexOffsets != null) 'vertexOffsets': vertexOffsets!.toJson(),
       };
 }
 
@@ -987,7 +981,7 @@ class ProviderInfo {
   /// Attribution string for this provider.
   ///
   /// This string is not localized.
-  core.String description;
+  core.String? description;
 
   ProviderInfo();
 
@@ -997,8 +991,8 @@ class ProviderInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
       };
 }
 
@@ -1009,7 +1003,7 @@ class ProviderInfo {
 class Relation {
   /// Zero-based index to look up the related feature from the list of features
   /// in the tile.
-  core.int relatedFeatureIndex;
+  core.int? relatedFeatureIndex;
 
   /// Relation type between the origin feature to the related feature.
   /// Possible string values are:
@@ -1018,7 +1012,7 @@ class Relation {
   /// - "OCCUPIES" : The origin feature occupies the related feature.
   /// - "PRIMARILY_OCCUPIED_BY" : The origin feature is primarily occupied by
   /// the related feature.
-  core.String relationType;
+  core.String? relationType;
 
   Relation();
 
@@ -1031,10 +1025,10 @@ class Relation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (relatedFeatureIndex != null)
-          'relatedFeatureIndex': relatedFeatureIndex,
-        if (relationType != null) 'relationType': relationType,
+          'relatedFeatureIndex': relatedFeatureIndex!,
+        if (relationType != null) 'relationType': relationType!,
       };
 }
 
@@ -1043,7 +1037,7 @@ class RoadInfo {
   /// Road has signage discouraging or prohibiting use by the general public.
   ///
   /// E.g., roads with signs that say "Private", or "No trespassing."
-  core.bool isPrivate;
+  core.bool? isPrivate;
 
   RoadInfo();
 
@@ -1053,8 +1047,8 @@ class RoadInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (isPrivate != null) 'isPrivate': isPrivate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (isPrivate != null) 'isPrivate': isPrivate!,
       };
 }
 
@@ -1069,7 +1063,7 @@ class Row {
   /// altitude row (in metres above sea level) can be reconstructed with: a\[0\]
   /// = altitude_diffs\[0\] * altitude_multiplier when n > 0, a\[n\] = a\[n-1\]
   /// + altitude_diffs\[n-1\] * altitude_multiplier.
-  core.List<core.int> altitudeDiffs;
+  core.List<core.int>? altitudeDiffs;
 
   Row();
 
@@ -1081,8 +1075,8 @@ class Row {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (altitudeDiffs != null) 'altitudeDiffs': altitudeDiffs,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (altitudeDiffs != null) 'altitudeDiffs': altitudeDiffs!,
       };
 }
 
@@ -1103,11 +1097,11 @@ class Row {
 class SecondDerivativeElevationGrid {
   /// A multiplier applied to the elements in the encoded data to extract the
   /// actual altitudes in meters.
-  core.double altitudeMultiplier;
+  core.double? altitudeMultiplier;
 
   /// The number of columns included in the encoded elevation data (i.e. the
   /// horizontal resolution of the grid).
-  core.int columnCount;
+  core.int? columnCount;
 
   /// A stream of elements each representing a point on the tile running across
   /// each row from left to right, top to bottom.
@@ -1132,9 +1126,9 @@ class SecondDerivativeElevationGrid {
   /// | Bit 0 | Bit 1-3 | | Terminator| Least significant 3 bits of absolute
   /// error |
   /// ------------------------------------------------------------------------|
-  core.String encodedData;
+  core.String? encodedData;
   core.List<core.int> get encodedDataAsBytes =>
-      convert.base64.decode(encodedData);
+      convert.base64.decode(encodedData!);
 
   set encodedDataAsBytes(core.List<core.int> _bytes) {
     encodedData =
@@ -1143,7 +1137,7 @@ class SecondDerivativeElevationGrid {
 
   /// The number of rows included in the encoded elevation data (i.e. the
   /// vertical resolution of the grid).
-  core.int rowCount;
+  core.int? rowCount;
 
   SecondDerivativeElevationGrid();
 
@@ -1162,19 +1156,19 @@ class SecondDerivativeElevationGrid {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (altitudeMultiplier != null)
-          'altitudeMultiplier': altitudeMultiplier,
-        if (columnCount != null) 'columnCount': columnCount,
-        if (encodedData != null) 'encodedData': encodedData,
-        if (rowCount != null) 'rowCount': rowCount,
+          'altitudeMultiplier': altitudeMultiplier!,
+        if (columnCount != null) 'columnCount': columnCount!,
+        if (encodedData != null) 'encodedData': encodedData!,
+        if (rowCount != null) 'rowCount': rowCount!,
       };
 }
 
 /// Extra metadata relating to segments.
 class SegmentInfo {
   /// Metadata for features with the ROAD FeatureType.
-  RoadInfo roadInfo;
+  RoadInfo? roadInfo;
 
   SegmentInfo();
 
@@ -1185,8 +1179,8 @@ class SegmentInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (roadInfo != null) 'roadInfo': roadInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (roadInfo != null) 'roadInfo': roadInfo!.toJson(),
       };
 }
 
@@ -1194,22 +1188,22 @@ class SegmentInfo {
 /// covers.
 class TerrainTile {
   /// The global tile coordinates that uniquely identify this tile.
-  TileCoordinates coordinates;
+  TileCoordinates? coordinates;
 
   /// Terrain elevation data encoded as a FirstDerivativeElevationGrid.
-  FirstDerivativeElevationGrid firstDerivative;
+  FirstDerivativeElevationGrid? firstDerivative;
 
   /// Resource name of the tile.
   ///
   /// The tile resource name is prefixed by its collection ID `terrain/`
   /// followed by the resource ID, which encodes the tile's global x and y
   /// coordinates and zoom level as `@,,z`. For example, `terrain/@1,2,3z`.
-  core.String name;
+  core.String? name;
 
   /// Terrain elevation data encoded as a SecondDerivativeElevationGrid.
   ///
   /// .
-  SecondDerivativeElevationGrid secondDerivative;
+  SecondDerivativeElevationGrid? secondDerivative;
 
   TerrainTile();
 
@@ -1231,13 +1225,13 @@ class TerrainTile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (coordinates != null) 'coordinates': coordinates.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (coordinates != null) 'coordinates': coordinates!.toJson(),
         if (firstDerivative != null)
-          'firstDerivative': firstDerivative.toJson(),
-        if (name != null) 'name': name,
+          'firstDerivative': firstDerivative!.toJson(),
+        if (name != null) 'name': name!,
         if (secondDerivative != null)
-          'secondDerivative': secondDerivative.toJson(),
+          'secondDerivative': secondDerivative!.toJson(),
       };
 }
 
@@ -1260,17 +1254,17 @@ class TileCoordinates {
   /// The x coordinate.
   ///
   /// Required.
-  core.int x;
+  core.int? x;
 
   /// The y coordinate.
   ///
   /// Required.
-  core.int y;
+  core.int? y;
 
   /// The Google Maps API zoom level.
   ///
   /// Required.
-  core.int zoom;
+  core.int? zoom;
 
   TileCoordinates();
 
@@ -1286,10 +1280,10 @@ class TileCoordinates {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (x != null) 'x': x,
-        if (y != null) 'y': y,
-        if (zoom != null) 'zoom': zoom,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (x != null) 'x': x!,
+        if (y != null) 'y': y!,
+        if (zoom != null) 'zoom': zoom!,
       };
 }
 
@@ -1303,7 +1297,7 @@ class TileCoordinates {
 class TriangleStrip {
   /// Index into the vertex_offset array representing the next vertex in the
   /// triangle strip.
-  core.List<core.int> vertexIndices;
+  core.List<core.int>? vertexIndices;
 
   TriangleStrip();
 
@@ -1315,8 +1309,8 @@ class TriangleStrip {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (vertexIndices != null) 'vertexIndices': vertexIndices,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (vertexIndices != null) 'vertexIndices': vertexIndices!,
       };
 }
 
@@ -1328,10 +1322,10 @@ class TriangleStrip {
 /// \[(1, 1), (1, 1), (-1, 0)\].
 class Vertex2DList {
   /// List of x-offsets in local tile coordinates.
-  core.List<core.int> xOffsets;
+  core.List<core.int>? xOffsets;
 
   /// List of y-offsets in local tile coordinates.
-  core.List<core.int> yOffsets;
+  core.List<core.int>? yOffsets;
 
   Vertex2DList();
 
@@ -1348,9 +1342,9 @@ class Vertex2DList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (xOffsets != null) 'xOffsets': xOffsets,
-        if (yOffsets != null) 'yOffsets': yOffsets,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (xOffsets != null) 'xOffsets': xOffsets!,
+        if (yOffsets != null) 'yOffsets': yOffsets!,
       };
 }
 
@@ -1360,13 +1354,13 @@ class Vertex2DList {
 /// coordinates. The first coordinate is offset from (0, 0, 0).
 class Vertex3DList {
   /// List of x-offsets in local tile coordinates.
-  core.List<core.int> xOffsets;
+  core.List<core.int>? xOffsets;
 
   /// List of y-offsets in local tile coordinates.
-  core.List<core.int> yOffsets;
+  core.List<core.int>? yOffsets;
 
   /// List of z-offsets in local tile coordinates.
-  core.List<core.int> zOffsets;
+  core.List<core.int>? zOffsets;
 
   Vertex3DList();
 
@@ -1388,9 +1382,9 @@ class Vertex3DList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (xOffsets != null) 'xOffsets': xOffsets,
-        if (yOffsets != null) 'yOffsets': yOffsets,
-        if (zOffsets != null) 'zOffsets': zOffsets,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (xOffsets != null) 'xOffsets': xOffsets!,
+        if (yOffsets != null) 'yOffsets': yOffsets!,
+        if (zOffsets != null) 'zOffsets': zOffsets!,
       };
 }

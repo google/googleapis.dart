@@ -36,8 +36,14 @@ core.List<core.String> buildUnnamed6739() {
 
 void checkUnnamed6739(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBatchDeletePhotosRequest = 0;
@@ -54,7 +60,7 @@ api.BatchDeletePhotosRequest buildBatchDeletePhotosRequest() {
 void checkBatchDeletePhotosRequest(api.BatchDeletePhotosRequest o) {
   buildCounterBatchDeletePhotosRequest++;
   if (buildCounterBatchDeletePhotosRequest < 3) {
-    checkUnnamed6739(o.photoIds);
+    checkUnnamed6739(o.photoIds!);
   }
   buildCounterBatchDeletePhotosRequest--;
 }
@@ -86,7 +92,7 @@ api.BatchDeletePhotosResponse buildBatchDeletePhotosResponse() {
 void checkBatchDeletePhotosResponse(api.BatchDeletePhotosResponse o) {
   buildCounterBatchDeletePhotosResponse++;
   if (buildCounterBatchDeletePhotosResponse < 3) {
-    checkUnnamed6740(o.status);
+    checkUnnamed6740(o.status!);
   }
   buildCounterBatchDeletePhotosResponse--;
 }
@@ -118,7 +124,7 @@ api.BatchGetPhotosResponse buildBatchGetPhotosResponse() {
 void checkBatchGetPhotosResponse(api.BatchGetPhotosResponse o) {
   buildCounterBatchGetPhotosResponse++;
   if (buildCounterBatchGetPhotosResponse < 3) {
-    checkUnnamed6741(o.results);
+    checkUnnamed6741(o.results!);
   }
   buildCounterBatchGetPhotosResponse--;
 }
@@ -150,7 +156,7 @@ api.BatchUpdatePhotosRequest buildBatchUpdatePhotosRequest() {
 void checkBatchUpdatePhotosRequest(api.BatchUpdatePhotosRequest o) {
   buildCounterBatchUpdatePhotosRequest++;
   if (buildCounterBatchUpdatePhotosRequest < 3) {
-    checkUnnamed6742(o.updatePhotoRequests);
+    checkUnnamed6742(o.updatePhotoRequests!);
   }
   buildCounterBatchUpdatePhotosRequest--;
 }
@@ -182,7 +188,7 @@ api.BatchUpdatePhotosResponse buildBatchUpdatePhotosResponse() {
 void checkBatchUpdatePhotosResponse(api.BatchUpdatePhotosResponse o) {
   buildCounterBatchUpdatePhotosResponse++;
   if (buildCounterBatchUpdatePhotosResponse < 3) {
-    checkUnnamed6743(o.results);
+    checkUnnamed6743(o.results!);
   }
   buildCounterBatchUpdatePhotosResponse--;
 }
@@ -201,7 +207,7 @@ api.Connection buildConnection() {
 void checkConnection(api.Connection o) {
   buildCounterConnection++;
   if (buildCounterConnection < 3) {
-    checkPhotoId(o.target as api.PhotoId);
+    checkPhotoId(o.target! as api.PhotoId);
   }
   buildCounterConnection--;
 }
@@ -236,8 +242,14 @@ api.LatLng buildLatLng() {
 void checkLatLng(api.LatLng o) {
   buildCounterLatLng++;
   if (buildCounterLatLng < 3) {
-    unittest.expect(o.latitude, unittest.equals(42.0));
-    unittest.expect(o.longitude, unittest.equals(42.0));
+    unittest.expect(
+      o.latitude!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.longitude!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterLatLng--;
 }
@@ -257,8 +269,14 @@ api.Level buildLevel() {
 void checkLevel(api.Level o) {
   buildCounterLevel++;
   if (buildCounterLevel < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.number, unittest.equals(42.0));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.number!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterLevel--;
 }
@@ -291,8 +309,11 @@ api.ListPhotosResponse buildListPhotosResponse() {
 void checkListPhotosResponse(api.ListPhotosResponse o) {
   buildCounterListPhotosResponse++;
   if (buildCounterListPhotosResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed6744(o.photos);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed6744(o.photos!);
   }
   buildCounterListPhotosResponse--;
 }
@@ -314,16 +335,34 @@ core.Map<core.String, core.Object> buildUnnamed6745() {
 
 void checkUnnamed6745(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o['x']) as core.Map;
+  var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
-  var casted2 = (o['y']) as core.Map;
+  unittest.expect(
+    casted1['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted1['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted1['string'],
+    unittest.equals('foo'),
+  );
+  var casted2 = (o['y']!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.Map<core.String, core.Object> buildUnnamed6746() {
@@ -343,16 +382,34 @@ core.Map<core.String, core.Object> buildUnnamed6746() {
 
 void checkUnnamed6746(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o['x']) as core.Map;
+  var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3['bool'], unittest.equals(true));
-  unittest.expect(casted3['string'], unittest.equals('foo'));
-  var casted4 = (o['y']) as core.Map;
+  unittest.expect(
+    casted3['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted3['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted3['string'],
+    unittest.equals('foo'),
+  );
+  var casted4 = (o['y']!) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4['bool'], unittest.equals(true));
-  unittest.expect(casted4['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted4['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted4['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted4['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterOperation = 0;
@@ -373,11 +430,14 @@ api.Operation buildOperation() {
 void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
-    unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error as api.Status);
-    checkUnnamed6745(o.metadata);
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed6746(o.response);
+    unittest.expect(o.done!, unittest.isTrue);
+    checkStatus(o.error! as api.Status);
+    checkUnnamed6745(o.metadata!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed6746(o.response!);
   }
   buildCounterOperation--;
 }
@@ -433,18 +493,39 @@ api.Photo buildPhoto() {
 void checkPhoto(api.Photo o) {
   buildCounterPhoto++;
   if (buildCounterPhoto < 3) {
-    unittest.expect(o.captureTime, unittest.equals('foo'));
-    checkUnnamed6747(o.connections);
-    unittest.expect(o.downloadUrl, unittest.equals('foo'));
-    unittest.expect(o.mapsPublishStatus, unittest.equals('foo'));
-    checkPhotoId(o.photoId as api.PhotoId);
-    checkUnnamed6748(o.places);
-    checkPose(o.pose as api.Pose);
-    unittest.expect(o.shareLink, unittest.equals('foo'));
-    unittest.expect(o.thumbnailUrl, unittest.equals('foo'));
-    unittest.expect(o.transferStatus, unittest.equals('foo'));
-    checkUploadRef(o.uploadReference as api.UploadRef);
-    unittest.expect(o.viewCount, unittest.equals('foo'));
+    unittest.expect(
+      o.captureTime!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed6747(o.connections!);
+    unittest.expect(
+      o.downloadUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mapsPublishStatus!,
+      unittest.equals('foo'),
+    );
+    checkPhotoId(o.photoId! as api.PhotoId);
+    checkUnnamed6748(o.places!);
+    checkPose(o.pose! as api.Pose);
+    unittest.expect(
+      o.shareLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.thumbnailUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.transferStatus!,
+      unittest.equals('foo'),
+    );
+    checkUploadRef(o.uploadReference! as api.UploadRef);
+    unittest.expect(
+      o.viewCount!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPhoto--;
 }
@@ -463,7 +544,10 @@ api.PhotoId buildPhotoId() {
 void checkPhotoId(api.PhotoId o) {
   buildCounterPhotoId++;
   if (buildCounterPhotoId < 3) {
-    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPhotoId--;
 }
@@ -483,8 +567,8 @@ api.PhotoResponse buildPhotoResponse() {
 void checkPhotoResponse(api.PhotoResponse o) {
   buildCounterPhotoResponse++;
   if (buildCounterPhotoResponse < 3) {
-    checkPhoto(o.photo as api.Photo);
-    checkStatus(o.status as api.Status);
+    checkPhoto(o.photo! as api.Photo);
+    checkStatus(o.status! as api.Status);
   }
   buildCounterPhotoResponse--;
 }
@@ -505,9 +589,18 @@ api.Place buildPlace() {
 void checkPlace(api.Place o) {
   buildCounterPlace++;
   if (buildCounterPlace < 3) {
-    unittest.expect(o.languageCode, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.placeId, unittest.equals('foo'));
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.placeId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPlace--;
 }
@@ -532,13 +625,28 @@ api.Pose buildPose() {
 void checkPose(api.Pose o) {
   buildCounterPose++;
   if (buildCounterPose < 3) {
-    unittest.expect(o.accuracyMeters, unittest.equals(42.0));
-    unittest.expect(o.altitude, unittest.equals(42.0));
-    unittest.expect(o.heading, unittest.equals(42.0));
-    checkLatLng(o.latLngPair as api.LatLng);
-    checkLevel(o.level as api.Level);
-    unittest.expect(o.pitch, unittest.equals(42.0));
-    unittest.expect(o.roll, unittest.equals(42.0));
+    unittest.expect(
+      o.accuracyMeters!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.altitude!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.heading!,
+      unittest.equals(42.0),
+    );
+    checkLatLng(o.latLngPair! as api.LatLng);
+    checkLevel(o.level! as api.Level);
+    unittest.expect(
+      o.pitch!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.roll!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterPose--;
 }
@@ -560,16 +668,34 @@ core.Map<core.String, core.Object> buildUnnamed6749() {
 
 void checkUnnamed6749(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o['x']) as core.Map;
+  var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5['bool'], unittest.equals(true));
-  unittest.expect(casted5['string'], unittest.equals('foo'));
-  var casted6 = (o['y']) as core.Map;
+  unittest.expect(
+    casted5['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted5['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted5['string'],
+    unittest.equals('foo'),
+  );
+  var casted6 = (o['y']!) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6['bool'], unittest.equals(true));
-  unittest.expect(casted6['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted6['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted6['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted6['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.Map<core.String, core.Object>> buildUnnamed6750() {
@@ -601,9 +727,15 @@ api.Status buildStatus() {
 void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
-    unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed6750(o.details);
-    unittest.expect(o.message, unittest.equals('foo'));
+    unittest.expect(
+      o.code!,
+      unittest.equals(42),
+    );
+    checkUnnamed6750(o.details!);
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterStatus--;
 }
@@ -623,8 +755,11 @@ api.UpdatePhotoRequest buildUpdatePhotoRequest() {
 void checkUpdatePhotoRequest(api.UpdatePhotoRequest o) {
   buildCounterUpdatePhotoRequest++;
   if (buildCounterUpdatePhotoRequest < 3) {
-    checkPhoto(o.photo as api.Photo);
-    unittest.expect(o.updateMask, unittest.equals('foo'));
+    checkPhoto(o.photo! as api.Photo);
+    unittest.expect(
+      o.updateMask!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterUpdatePhotoRequest--;
 }
@@ -643,7 +778,10 @@ api.UploadRef buildUploadRef() {
 void checkUploadRef(api.UploadRef o) {
   buildCounterUploadRef++;
   if (buildCounterUploadRef < 3) {
-    unittest.expect(o.uploadUrl, unittest.equals('foo'));
+    unittest.expect(
+      o.uploadUrl!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterUploadRef--;
 }
@@ -657,8 +795,14 @@ core.List<core.String> buildUnnamed6751() {
 
 void checkUnnamed6751(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -830,10 +974,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v1/photo"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("v1/photo"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -851,7 +999,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -877,14 +1028,21 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1/photo/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1/photo/"),
+        );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_photoId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_photoId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -901,7 +1059,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -929,14 +1090,21 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1/photo/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1/photo/"),
+        );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_photoId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_photoId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -954,9 +1122,17 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["languageCode"]!.first,
+          unittest.equals(arg_languageCode),
+        );
+        unittest.expect(
+          queryMap["view"]!.first,
+          unittest.equals(arg_view),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -989,10 +1165,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("v1/photo:startUpload"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("v1/photo:startUpload"),
+        );
         pathOffset += 20;
 
         var query = (req.url).query;
@@ -1010,7 +1190,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1042,14 +1225,21 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1/photo/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1/photo/"),
+        );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1067,8 +1257,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["updateMask"]!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1101,10 +1296,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("v1/photos:batchDelete"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals("v1/photos:batchDelete"),
+        );
         pathOffset += 21;
 
         var query = (req.url).query;
@@ -1122,7 +1321,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1151,10 +1353,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("v1/photos:batchGet"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("v1/photos:batchGet"),
+        );
         pathOffset += 18;
 
         var query = (req.url).query;
@@ -1173,10 +1379,21 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
-        unittest.expect(queryMap["photoIds"], unittest.equals(arg_photoIds));
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["languageCode"]!.first,
+          unittest.equals(arg_languageCode),
+        );
+        unittest.expect(
+          queryMap["photoIds"]!,
+          unittest.equals(arg_photoIds),
+        );
+        unittest.expect(
+          queryMap["view"]!.first,
+          unittest.equals(arg_view),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1210,10 +1427,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("v1/photos:batchUpdate"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals("v1/photos:batchUpdate"),
+        );
         pathOffset += 21;
 
         var query = (req.url).query;
@@ -1231,7 +1452,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1262,10 +1486,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("v1/photos"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("v1/photos"),
+        );
         pathOffset += 9;
 
         var query = (req.url).query;
@@ -1283,15 +1511,30 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
-            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["languageCode"]!.first,
+          unittest.equals(arg_languageCode),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["view"]!.first,
+          unittest.equals(arg_view),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

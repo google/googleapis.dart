@@ -139,10 +139,10 @@ class ContactGroupsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetContactGroupsResponse> batchGet({
-    core.String groupFields,
-    core.int maxMembers,
-    core.List<core.String> resourceNames,
-    core.String $fields,
+    core.String? groupFields,
+    core.int? maxMembers,
+    core.List<core.String>? resourceNames,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (groupFields != null) 'groupFields': [groupFields],
@@ -180,10 +180,9 @@ class ContactGroupsResource {
   /// this method will complete with the same error.
   async.Future<ContactGroup> create(
     CreateContactGroupRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -224,12 +223,9 @@ class ContactGroupsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String resourceName, {
-    core.bool deleteContacts,
-    core.String $fields,
+    core.bool? deleteContacts,
+    core.String? $fields,
   }) async {
-    if (resourceName == null) {
-      throw core.ArgumentError('Parameter resourceName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (deleteContacts != null) 'deleteContacts': ['${deleteContacts}'],
       if ($fields != null) 'fields': [$fields],
@@ -273,13 +269,10 @@ class ContactGroupsResource {
   /// this method will complete with the same error.
   async.Future<ContactGroup> get(
     core.String resourceName, {
-    core.String groupFields,
-    core.int maxMembers,
-    core.String $fields,
+    core.String? groupFields,
+    core.int? maxMembers,
+    core.String? $fields,
   }) async {
-    if (resourceName == null) {
-      throw core.ArgumentError('Parameter resourceName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (groupFields != null) 'groupFields': [groupFields],
       if (maxMembers != null) 'maxMembers': ['${maxMembers}'],
@@ -331,11 +324,11 @@ class ContactGroupsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListContactGroupsResponse> list({
-    core.String groupFields,
-    core.int pageSize,
-    core.String pageToken,
-    core.String syncToken,
-    core.String $fields,
+    core.String? groupFields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? syncToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (groupFields != null) 'groupFields': [groupFields],
@@ -381,13 +374,9 @@ class ContactGroupsResource {
   async.Future<ContactGroup> update(
     UpdateContactGroupRequest request,
     core.String resourceName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resourceName == null) {
-      throw core.ArgumentError('Parameter resourceName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -438,13 +427,9 @@ class ContactGroupsMembersResource {
   async.Future<ModifyContactGroupMembersResponse> modify(
     ModifyContactGroupMembersRequest request,
     core.String resourceName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resourceName == null) {
-      throw core.ArgumentError('Parameter resourceName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -493,13 +478,9 @@ class OtherContactsResource {
   async.Future<Person> copyOtherContactToMyContactsGroup(
     CopyOtherContactToMyContactsGroupRequest request,
     core.String resourceName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resourceName == null) {
-      throw core.ArgumentError('Parameter resourceName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -560,12 +541,12 @@ class OtherContactsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOtherContactsResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String readMask,
-    core.bool requestSyncToken,
-    core.String syncToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readMask,
+    core.bool? requestSyncToken,
+    core.String? syncToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -615,10 +596,10 @@ class OtherContactsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchResponse> search({
-    core.int pageSize,
-    core.String query,
-    core.String readMask,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? query,
+    core.String? readMask,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -682,12 +663,11 @@ class PeopleResource {
   /// this method will complete with the same error.
   async.Future<Person> createContact(
     Person request, {
-    core.String personFields,
-    core.List<core.String> sources,
-    core.String $fields,
+    core.String? personFields,
+    core.List<core.String>? sources,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (personFields != null) 'personFields': [personFields],
       if (sources != null) 'sources': sources,
@@ -726,11 +706,8 @@ class PeopleResource {
   /// this method will complete with the same error.
   async.Future<Empty> deleteContact(
     core.String resourceName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (resourceName == null) {
-      throw core.ArgumentError('Parameter resourceName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -780,13 +757,10 @@ class PeopleResource {
   /// this method will complete with the same error.
   async.Future<DeleteContactPhotoResponse> deleteContactPhoto(
     core.String resourceName, {
-    core.String personFields,
-    core.List<core.String> sources,
-    core.String $fields,
+    core.String? personFields,
+    core.List<core.String>? sources,
+    core.String? $fields,
   }) async {
-    if (resourceName == null) {
-      throw core.ArgumentError('Parameter resourceName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (personFields != null) 'personFields': [personFields],
       if (sources != null) 'sources': sources,
@@ -849,14 +823,11 @@ class PeopleResource {
   /// this method will complete with the same error.
   async.Future<Person> get(
     core.String resourceName, {
-    core.String personFields,
-    core.String requestMask_includeField,
-    core.List<core.String> sources,
-    core.String $fields,
+    core.String? personFields,
+    core.String? requestMask_includeField,
+    core.List<core.String>? sources,
+    core.String? $fields,
   }) async {
-    if (resourceName == null) {
-      throw core.ArgumentError('Parameter resourceName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (personFields != null) 'personFields': [personFields],
       if (requestMask_includeField != null)
@@ -920,11 +891,11 @@ class PeopleResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetPeopleResponse> getBatchGet({
-    core.String personFields,
-    core.String requestMask_includeField,
-    core.List<core.String> resourceNames,
-    core.List<core.String> sources,
-    core.String $fields,
+    core.String? personFields,
+    core.String? requestMask_includeField,
+    core.List<core.String>? resourceNames,
+    core.List<core.String>? sources,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (personFields != null) 'personFields': [personFields],
@@ -996,14 +967,14 @@ class PeopleResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDirectoryPeopleResponse> listDirectoryPeople({
-    core.List<core.String> mergeSources,
-    core.int pageSize,
-    core.String pageToken,
-    core.String readMask,
-    core.bool requestSyncToken,
-    core.List<core.String> sources,
-    core.String syncToken,
-    core.String $fields,
+    core.List<core.String>? mergeSources,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readMask,
+    core.bool? requestSyncToken,
+    core.List<core.String>? sources,
+    core.String? syncToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (mergeSources != null) 'mergeSources': mergeSources,
@@ -1059,10 +1030,10 @@ class PeopleResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchResponse> searchContacts({
-    core.int pageSize,
-    core.String query,
-    core.String readMask,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? query,
+    core.String? readMask,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1125,13 +1096,13 @@ class PeopleResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchDirectoryPeopleResponse> searchDirectoryPeople({
-    core.List<core.String> mergeSources,
-    core.int pageSize,
-    core.String pageToken,
-    core.String query,
-    core.String readMask,
-    core.List<core.String> sources,
-    core.String $fields,
+    core.List<core.String>? mergeSources,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? query,
+    core.String? readMask,
+    core.List<core.String>? sources,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (mergeSources != null) 'mergeSources': mergeSources,
@@ -1214,16 +1185,12 @@ class PeopleResource {
   async.Future<Person> updateContact(
     Person request,
     core.String resourceName, {
-    core.String personFields,
-    core.List<core.String> sources,
-    core.String updatePersonFields,
-    core.String $fields,
+    core.String? personFields,
+    core.List<core.String>? sources,
+    core.String? updatePersonFields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resourceName == null) {
-      throw core.ArgumentError('Parameter resourceName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (personFields != null) 'personFields': [personFields],
       if (sources != null) 'sources': sources,
@@ -1267,13 +1234,9 @@ class PeopleResource {
   async.Future<UpdateContactPhotoResponse> updateContactPhoto(
     UpdateContactPhotoRequest request,
     core.String resourceName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resourceName == null) {
-      throw core.ArgumentError('Parameter resourceName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1375,19 +1338,16 @@ class PeopleConnectionsResource {
   /// this method will complete with the same error.
   async.Future<ListConnectionsResponse> list(
     core.String resourceName, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String personFields,
-    core.String requestMask_includeField,
-    core.bool requestSyncToken,
-    core.String sortOrder,
-    core.List<core.String> sources,
-    core.String syncToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? personFields,
+    core.String? requestMask_includeField,
+    core.bool? requestSyncToken,
+    core.String? sortOrder,
+    core.List<core.String>? sources,
+    core.String? syncToken,
+    core.String? $fields,
   }) async {
-    if (resourceName == null) {
-      throw core.ArgumentError('Parameter resourceName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1420,50 +1380,50 @@ class PeopleConnectionsResource {
 /// May be a P.O. box or street address. All fields are optional.
 class Address {
   /// The city of the address.
-  core.String city;
+  core.String? city;
 
   /// The country of the address.
-  core.String country;
+  core.String? country;
 
   /// The \[ISO 3166-1 alpha-2\](http://www.iso.org/iso/country_codes.htm)
   /// country code of the address.
-  core.String countryCode;
+  core.String? countryCode;
 
   /// The extended address of the address; for example, the apartment number.
-  core.String extendedAddress;
+  core.String? extendedAddress;
 
   /// The type of the address translated and formatted in the viewer's account
   /// locale or the `Accept-Language` HTTP header locale.
   ///
   /// Output only.
-  core.String formattedType;
+  core.String? formattedType;
 
   /// The unstructured value of the address.
   ///
   /// If this is not set by the user it will be automatically constructed from
   /// structured values.
-  core.String formattedValue;
+  core.String? formattedValue;
 
   /// Metadata about the address.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The P.O. box of the address.
-  core.String poBox;
+  core.String? poBox;
 
   /// The postal code of the address.
-  core.String postalCode;
+  core.String? postalCode;
 
   /// The region of the address; for example, the state or province.
-  core.String region;
+  core.String? region;
 
   /// The street address.
-  core.String streetAddress;
+  core.String? streetAddress;
 
   /// The type of the address.
   ///
   /// The type can be custom or one of these predefined values: * `home` *
   /// `work` * `other`
-  core.String type;
+  core.String? type;
 
   Address();
 
@@ -1507,19 +1467,19 @@ class Address {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (city != null) 'city': city,
-        if (country != null) 'country': country,
-        if (countryCode != null) 'countryCode': countryCode,
-        if (extendedAddress != null) 'extendedAddress': extendedAddress,
-        if (formattedType != null) 'formattedType': formattedType,
-        if (formattedValue != null) 'formattedValue': formattedValue,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (poBox != null) 'poBox': poBox,
-        if (postalCode != null) 'postalCode': postalCode,
-        if (region != null) 'region': region,
-        if (streetAddress != null) 'streetAddress': streetAddress,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (city != null) 'city': city!,
+        if (country != null) 'country': country!,
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (extendedAddress != null) 'extendedAddress': extendedAddress!,
+        if (formattedType != null) 'formattedType': formattedType!,
+        if (formattedValue != null) 'formattedValue': formattedValue!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (poBox != null) 'poBox': poBox!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (region != null) 'region': region!,
+        if (streetAddress != null) 'streetAddress': streetAddress!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1531,10 +1491,10 @@ class AgeRangeType {
   /// - "LESS_THAN_EIGHTEEN" : Younger than eighteen.
   /// - "EIGHTEEN_TO_TWENTY" : Between eighteen and twenty.
   /// - "TWENTY_ONE_OR_OLDER" : Twenty-one and older.
-  core.String ageRange;
+  core.String? ageRange;
 
   /// Metadata about the age range.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   AgeRangeType();
 
@@ -1548,16 +1508,16 @@ class AgeRangeType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ageRange != null) 'ageRange': ageRange,
-        if (metadata != null) 'metadata': metadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ageRange != null) 'ageRange': ageRange!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
       };
 }
 
 /// The response to a batch get contact groups request.
 class BatchGetContactGroupsResponse {
   /// The list of responses for each requested contact group resource.
-  core.List<ContactGroupResponse> responses;
+  core.List<ContactGroupResponse>? responses;
 
   BatchGetContactGroupsResponse();
 
@@ -1570,9 +1530,9 @@ class BatchGetContactGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (responses != null)
-          'responses': responses.map((value) => value.toJson()).toList(),
+          'responses': responses!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1583,13 +1543,13 @@ class Biography {
   /// - "CONTENT_TYPE_UNSPECIFIED" : Unspecified.
   /// - "TEXT_PLAIN" : Plain text.
   /// - "TEXT_HTML" : HTML text.
-  core.String contentType;
+  core.String? contentType;
 
   /// Metadata about the biography.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The short biography.
-  core.String value;
+  core.String? value;
 
   Biography();
 
@@ -1606,10 +1566,10 @@ class Biography {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentType != null) 'contentType': contentType,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentType != null) 'contentType': contentType!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1619,13 +1579,13 @@ class Biography {
 /// `text` fields typically represent the same date, but are not guaranteed to.
 class Birthday {
   /// The date of the birthday.
-  Date date;
+  Date? date;
 
   /// Metadata about the birthday.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// A free-form string representing the user's birthday.
-  core.String text;
+  core.String? text;
 
   Birthday();
 
@@ -1643,20 +1603,20 @@ class Birthday {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (date != null) 'date': date.toJson(),
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (date != null) 'date': date!.toJson(),
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (text != null) 'text': text!,
       };
 }
 
 /// **DEPRECATED**: No data will be returned A person's bragging rights.
 class BraggingRights {
   /// Metadata about the bragging rights.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The bragging rights; for example, `climbed mount everest`.
-  core.String value;
+  core.String? value;
 
   BraggingRights();
 
@@ -1670,9 +1630,9 @@ class BraggingRights {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1682,19 +1642,19 @@ class CalendarUrl {
   /// account locale or the `Accept-Language` HTTP header locale.
   ///
   /// Output only.
-  core.String formattedType;
+  core.String? formattedType;
 
   /// Metadata about the calendar URL.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The type of the calendar URL.
   ///
   /// The type can be custom or one of these predefined values: * `home` *
   /// `freeBusy` * `work`
-  core.String type;
+  core.String? type;
 
   /// The calendar URL.
-  core.String url;
+  core.String? url;
 
   CalendarUrl();
 
@@ -1714,11 +1674,11 @@ class CalendarUrl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (formattedType != null) 'formattedType': formattedType,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (type != null) 'type': type,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (formattedType != null) 'formattedType': formattedType!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (type != null) 'type': type!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -1727,13 +1687,13 @@ class CalendarUrl {
 /// Duplicate keys and values are allowed.
 class ClientData {
   /// The client specified key of the client data.
-  core.String key;
+  core.String? key;
 
   /// Metadata about the client data.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The client specified value of the client data.
-  core.String value;
+  core.String? value;
 
   ClientData();
 
@@ -1750,23 +1710,23 @@ class ClientData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
 /// A contact group.
 class ContactGroup {
   /// The group's client data.
-  core.List<GroupClientData> clientData;
+  core.List<GroupClientData>? clientData;
 
   /// The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the
   /// resource.
   ///
   /// Used for web cache validation.
-  core.String etag;
+  core.String? etag;
 
   /// The name translated and formatted in the viewer's account locale or the
   /// `Accept-Language` HTTP header locale for system groups names.
@@ -1774,7 +1734,7 @@ class ContactGroup {
   /// Group names set by the owner are the same as name.
   ///
   /// Output only.
-  core.String formattedName;
+  core.String? formattedName;
 
   /// The contact group type.
   ///
@@ -1783,13 +1743,13 @@ class ContactGroup {
   /// - "GROUP_TYPE_UNSPECIFIED" : Unspecified.
   /// - "USER_CONTACT_GROUP" : User defined contact group.
   /// - "SYSTEM_CONTACT_GROUP" : System defined contact group.
-  core.String groupType;
+  core.String? groupType;
 
   /// The total number of contacts in the group irrespective of max members in
   /// specified in the request.
   ///
   /// Output only.
-  core.int memberCount;
+  core.int? memberCount;
 
   /// The list of contact person resource names that are members of the contact
   /// group.
@@ -1798,21 +1758,21 @@ class ContactGroup {
   /// members as `maxMembers` in the get request.
   ///
   /// Output only.
-  core.List<core.String> memberResourceNames;
+  core.List<core.String>? memberResourceNames;
 
   /// Metadata about the contact group.
   ///
   /// Output only.
-  ContactGroupMetadata metadata;
+  ContactGroupMetadata? metadata;
 
   /// The contact group name set by the group owner or a system provided name
   /// for system groups.
-  core.String name;
+  core.String? name;
 
   /// The resource name for the contact group, assigned by the server.
   ///
   /// An ASCII string, in the form of `contactGroups/{contact_group_id}`.
-  core.String resourceName;
+  core.String? resourceName;
 
   ContactGroup();
 
@@ -1852,18 +1812,18 @@ class ContactGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clientData != null)
-          'clientData': clientData.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (formattedName != null) 'formattedName': formattedName,
-        if (groupType != null) 'groupType': groupType,
-        if (memberCount != null) 'memberCount': memberCount,
+          'clientData': clientData!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (formattedName != null) 'formattedName': formattedName!,
+        if (groupType != null) 'groupType': groupType!,
+        if (memberCount != null) 'memberCount': memberCount!,
         if (memberResourceNames != null)
-          'memberResourceNames': memberResourceNames,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (name != null) 'name': name,
-        if (resourceName != null) 'resourceName': resourceName,
+          'memberResourceNames': memberResourceNames!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (name != null) 'name': name!,
+        if (resourceName != null) 'resourceName': resourceName!,
       };
 }
 
@@ -1872,7 +1832,7 @@ class ContactGroupMembership {
   /// The contact group ID for the contact group membership.
   ///
   /// Output only.
-  core.String contactGroupId;
+  core.String? contactGroupId;
 
   /// The resource name for the contact group, assigned by the server.
   ///
@@ -1881,7 +1841,7 @@ class ContactGroupMembership {
   /// contact group membership can be removed, but only user group or
   /// "myContacts" or "starred" system groups memberships can be added. A
   /// contact must always have at least one contact group membership.
-  core.String contactGroupResourceName;
+  core.String? contactGroupResourceName;
 
   ContactGroupMembership();
 
@@ -1895,10 +1855,10 @@ class ContactGroupMembership {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contactGroupId != null) 'contactGroupId': contactGroupId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contactGroupId != null) 'contactGroupId': contactGroupId!,
         if (contactGroupResourceName != null)
-          'contactGroupResourceName': contactGroupResourceName,
+          'contactGroupResourceName': contactGroupResourceName!,
       };
 }
 
@@ -1911,12 +1871,12 @@ class ContactGroupMetadata {
   /// that include a sync token.
   ///
   /// Output only.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// The time the group was last updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   ContactGroupMetadata();
 
@@ -1929,22 +1889,22 @@ class ContactGroupMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deleted != null) 'deleted': deleted,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deleted != null) 'deleted': deleted!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// The response for a specific contact group.
 class ContactGroupResponse {
   /// The contact group.
-  ContactGroup contactGroup;
+  ContactGroup? contactGroup;
 
   /// The original requested resource name.
-  core.String requestedResourceName;
+  core.String? requestedResourceName;
 
   /// The status of the response.
-  Status status;
+  Status? status;
 
   ContactGroupResponse();
 
@@ -1962,11 +1922,11 @@ class ContactGroupResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contactGroup != null) 'contactGroup': contactGroup.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contactGroup != null) 'contactGroup': contactGroup!.toJson(),
         if (requestedResourceName != null)
-          'requestedResourceName': requestedResourceName,
-        if (status != null) 'status': status.toJson(),
+          'requestedResourceName': requestedResourceName!,
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -1977,7 +1937,7 @@ class CopyOtherContactToMyContactsGroupRequest {
   /// Valid values are: * emailAddresses * names * phoneNumbers
   ///
   /// Required.
-  core.String copyMask;
+  core.String? copyMask;
 
   /// A field mask to restrict which fields on the person are returned.
   ///
@@ -1991,7 +1951,7 @@ class CopyOtherContactToMyContactsGroupRequest {
   /// * urls * userDefined
   ///
   /// Optional.
-  core.String readMask;
+  core.String? readMask;
 
   /// A mask of what source types to return.
   ///
@@ -1999,7 +1959,7 @@ class CopyOtherContactToMyContactsGroupRequest {
   /// set.
   ///
   /// Optional.
-  core.List<core.String> sources;
+  core.List<core.String>? sources;
 
   CopyOtherContactToMyContactsGroupRequest();
 
@@ -2017,10 +1977,10 @@ class CopyOtherContactToMyContactsGroupRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (copyMask != null) 'copyMask': copyMask,
-        if (readMask != null) 'readMask': readMask,
-        if (sources != null) 'sources': sources,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (copyMask != null) 'copyMask': copyMask!,
+        if (readMask != null) 'readMask': readMask!,
+        if (sources != null) 'sources': sources!,
       };
 }
 
@@ -2031,13 +1991,13 @@ class CopyOtherContactToMyContactsGroupRequest {
 class CoverPhoto {
   /// True if the cover photo is the default cover photo; false if the cover
   /// photo is a user-provided cover photo.
-  core.bool default_;
+  core.bool? default_;
 
   /// Metadata about the cover photo.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The URL of the cover photo.
-  core.String url;
+  core.String? url;
 
   CoverPhoto();
 
@@ -2054,10 +2014,10 @@ class CoverPhoto {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (default_ != null) 'default': default_,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (default_ != null) 'default': default_!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (url != null) 'url': url!,
       };
 }
 
@@ -2066,7 +2026,7 @@ class CreateContactGroupRequest {
   /// The contact group to create.
   ///
   /// Required.
-  ContactGroup contactGroup;
+  ContactGroup? contactGroup;
 
   /// A field mask to restrict which fields on the group are returned.
   ///
@@ -2074,7 +2034,7 @@ class CreateContactGroupRequest {
   /// empty. Valid fields are: * clientData * groupType * metadata * name
   ///
   /// Optional.
-  core.String readGroupFields;
+  core.String? readGroupFields;
 
   CreateContactGroupRequest();
 
@@ -2088,9 +2048,9 @@ class CreateContactGroupRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contactGroup != null) 'contactGroup': contactGroup.toJson(),
-        if (readGroupFields != null) 'readGroupFields': readGroupFields,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contactGroup != null) 'contactGroup': contactGroup!.toJson(),
+        if (readGroupFields != null) 'readGroupFields': readGroupFields!,
       };
 }
 
@@ -2108,17 +2068,17 @@ class Date {
   ///
   /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
   /// year by itself or a year and month where the day isn't significant.
-  core.int day;
+  core.int? day;
 
   /// Month of a year.
   ///
   /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int month;
+  core.int? month;
 
   /// Year of the date.
   ///
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int year;
+  core.int? year;
 
   Date();
 
@@ -2134,10 +2094,10 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (month != null) 'month': month,
-        if (year != null) 'year': year,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (month != null) 'month': month!,
+        if (year != null) 'year': year!,
       };
 }
 
@@ -2145,7 +2105,7 @@ class Date {
 class DeleteContactPhotoResponse {
   /// The updated person, if person_fields is set in the
   /// DeleteContactPhotoRequest; otherwise this will be unset.
-  Person person;
+  Person? person;
 
   DeleteContactPhotoResponse();
 
@@ -2156,15 +2116,15 @@ class DeleteContactPhotoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (person != null) 'person': person.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (person != null) 'person': person!.toJson(),
       };
 }
 
 /// A G Suite Domain membership.
 class DomainMembership {
   /// True if the person is in the viewer's G Suite domain.
-  core.bool inViewerDomain;
+  core.bool? inViewerDomain;
 
   DomainMembership();
 
@@ -2174,33 +2134,33 @@ class DomainMembership {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (inViewerDomain != null) 'inViewerDomain': inViewerDomain,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (inViewerDomain != null) 'inViewerDomain': inViewerDomain!,
       };
 }
 
 /// A person's email address.
 class EmailAddress {
   /// The display name of the email.
-  core.String displayName;
+  core.String? displayName;
 
   /// The type of the email address translated and formatted in the viewer's
   /// account locale or the `Accept-Language` HTTP header locale.
   ///
   /// Output only.
-  core.String formattedType;
+  core.String? formattedType;
 
   /// Metadata about the email address.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The type of the email address.
   ///
   /// The type can be custom or one of these predefined values: * `home` *
   /// `work` * `other`
-  core.String type;
+  core.String? type;
 
   /// The email address.
-  core.String value;
+  core.String? value;
 
   EmailAddress();
 
@@ -2223,12 +2183,12 @@ class EmailAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (formattedType != null) 'formattedType': formattedType,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (formattedType != null) 'formattedType': formattedType!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2246,28 +2206,28 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// An event related to the person.
 class Event {
   /// The date of the event.
-  Date date;
+  Date? date;
 
   /// The type of the event translated and formatted in the viewer's account
   /// locale or the `Accept-Language` HTTP header locale.
   ///
   /// Output only.
-  core.String formattedType;
+  core.String? formattedType;
 
   /// Metadata about the event.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The type of the event.
   ///
   /// The type can be custom or one of these predefined values: * `anniversary`
   /// * `other`
-  core.String type;
+  core.String? type;
 
   Event();
 
@@ -2288,11 +2248,11 @@ class Event {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (date != null) 'date': date.toJson(),
-        if (formattedType != null) 'formattedType': formattedType,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (date != null) 'date': date!.toJson(),
+        if (formattedType != null) 'formattedType': formattedType!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2302,19 +2262,19 @@ class ExternalId {
   /// locale or the `Accept-Language` HTTP header locale.
   ///
   /// Output only.
-  core.String formattedType;
+  core.String? formattedType;
 
   /// Metadata about the external ID.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The type of the external ID.
   ///
   /// The type can be custom or one of these predefined values: * `account` *
   /// `customer` * `loginId` * `network` * `organization`
-  core.String type;
+  core.String? type;
 
   /// The value of the external ID.
-  core.String value;
+  core.String? value;
 
   ExternalId();
 
@@ -2334,11 +2294,11 @@ class ExternalId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (formattedType != null) 'formattedType': formattedType,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (formattedType != null) 'formattedType': formattedType!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2346,10 +2306,10 @@ class ExternalId {
 class FieldMetadata {
   /// True if the field is the primary field; false if the field is a secondary
   /// field.
-  core.bool primary;
+  core.bool? primary;
 
   /// The source of the field.
-  Source source;
+  Source? source;
 
   /// True if the field is verified; false if the field is unverified.
   ///
@@ -2357,7 +2317,7 @@ class FieldMetadata {
   /// website that has been confirmed to be owned by the person.
   ///
   /// Output only.
-  core.bool verified;
+  core.bool? verified;
 
   FieldMetadata();
 
@@ -2374,20 +2334,20 @@ class FieldMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (primary != null) 'primary': primary,
-        if (source != null) 'source': source.toJson(),
-        if (verified != null) 'verified': verified,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (primary != null) 'primary': primary!,
+        if (source != null) 'source': source!.toJson(),
+        if (verified != null) 'verified': verified!,
       };
 }
 
 /// The name that should be used to sort the person in a list.
 class FileAs {
   /// Metadata about the file-as.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The file-as value
-  core.String value;
+  core.String? value;
 
   FileAs();
 
@@ -2401,9 +2361,9 @@ class FileAs {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2413,7 +2373,7 @@ class Gender {
   ///
   /// The value can be custom or one of these predefined values: * `male` *
   /// `female` * `other`
-  core.String addressMeAs;
+  core.String? addressMeAs;
 
   /// The value of the gender translated and formatted in the viewer's account
   /// locale or the `Accept-Language` HTTP header locale.
@@ -2421,16 +2381,16 @@ class Gender {
   /// Unspecified or custom value are not localized.
   ///
   /// Output only.
-  core.String formattedValue;
+  core.String? formattedValue;
 
   /// Metadata about the gender.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The gender for the person.
   ///
   /// The gender can be custom or one of these predefined values: * `male` *
   /// `female` * `unspecified`
-  core.String value;
+  core.String? value;
 
   Gender();
 
@@ -2450,18 +2410,18 @@ class Gender {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addressMeAs != null) 'addressMeAs': addressMeAs,
-        if (formattedValue != null) 'formattedValue': formattedValue,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addressMeAs != null) 'addressMeAs': addressMeAs!,
+        if (formattedValue != null) 'formattedValue': formattedValue!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
 /// The response to a get request for a list of people by resource name.
 class GetPeopleResponse {
   /// The response for each requested resource name.
-  core.List<PersonResponse> responses;
+  core.List<PersonResponse>? responses;
 
   GetPeopleResponse();
 
@@ -2474,9 +2434,9 @@ class GetPeopleResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (responses != null)
-          'responses': responses.map((value) => value.toJson()).toList(),
+          'responses': responses!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2485,10 +2445,10 @@ class GetPeopleResponse {
 /// Duplicate keys and values are allowed. LINT.IfChange(GroupClientData)
 class GroupClientData {
   /// The client specified key of the client data.
-  core.String key;
+  core.String? key;
 
   /// The client specified value of the client data.
-  core.String value;
+  core.String? value;
 
   GroupClientData();
 
@@ -2501,9 +2461,9 @@ class GroupClientData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2513,32 +2473,32 @@ class ImClient {
   /// the `Accept-Language` HTTP header locale.
   ///
   /// Output only.
-  core.String formattedProtocol;
+  core.String? formattedProtocol;
 
   /// The type of the IM client translated and formatted in the viewer's account
   /// locale or the `Accept-Language` HTTP header locale.
   ///
   /// Output only.
-  core.String formattedType;
+  core.String? formattedType;
 
   /// Metadata about the IM client.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The protocol of the IM client.
   ///
   /// The protocol can be custom or one of these predefined values: * `aim` *
   /// `msn` * `yahoo` * `skype` * `qq` * `googleTalk` * `icq` * `jabber` *
   /// `netMeeting`
-  core.String protocol;
+  core.String? protocol;
 
   /// The type of the IM client.
   ///
   /// The type can be custom or one of these predefined values: * `home` *
   /// `work` * `other`
-  core.String type;
+  core.String? type;
 
   /// The user name used in the IM client.
-  core.String username;
+  core.String? username;
 
   ImClient();
 
@@ -2564,23 +2524,23 @@ class ImClient {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (formattedProtocol != null) 'formattedProtocol': formattedProtocol,
-        if (formattedType != null) 'formattedType': formattedType,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (protocol != null) 'protocol': protocol,
-        if (type != null) 'type': type,
-        if (username != null) 'username': username,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (formattedProtocol != null) 'formattedProtocol': formattedProtocol!,
+        if (formattedType != null) 'formattedType': formattedType!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (protocol != null) 'protocol': protocol!,
+        if (type != null) 'type': type!,
+        if (username != null) 'username': username!,
       };
 }
 
 /// One of the person's interests.
 class Interest {
   /// Metadata about the interest.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The interest; for example, `stargazing`.
-  core.String value;
+  core.String? value;
 
   Interest();
 
@@ -2594,35 +2554,35 @@ class Interest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
 /// The response to a request for the authenticated user's connections.
 class ListConnectionsResponse {
   /// The list of people that the requestor is connected to.
-  core.List<Person> connections;
+  core.List<Person>? connections;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A token, which can be sent as `sync_token` to retrieve changes since the
   /// last request.
   ///
   /// Request must set `request_sync_token` to return the sync token. When the
   /// response is paginated, only the last page will contain `nextSyncToken`.
-  core.String nextSyncToken;
+  core.String? nextSyncToken;
 
   /// The total number of items in the list without pagination.
-  core.int totalItems;
+  core.int? totalItems;
 
   /// **DEPRECATED** (Please use totalItems) The total number of people in the
   /// list without pagination.
-  core.int totalPeople;
+  core.int? totalPeople;
 
   ListConnectionsResponse();
 
@@ -2647,13 +2607,13 @@ class ListConnectionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (connections != null)
-          'connections': connections.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken,
-        if (totalItems != null) 'totalItems': totalItems,
-        if (totalPeople != null) 'totalPeople': totalPeople,
+          'connections': connections!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken!,
+        if (totalItems != null) 'totalItems': totalItems!,
+        if (totalPeople != null) 'totalPeople': totalPeople!,
       };
 }
 
@@ -2662,16 +2622,16 @@ class ListContactGroupsResponse {
   /// The list of contact groups.
   ///
   /// Members of the contact groups are not populated.
-  core.List<ContactGroup> contactGroups;
+  core.List<ContactGroup>? contactGroups;
 
   /// The token that can be used to retrieve the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The token that can be used to retrieve changes since the last request.
-  core.String nextSyncToken;
+  core.String? nextSyncToken;
 
   /// The total number of items in the list without pagination.
-  core.int totalItems;
+  core.int? totalItems;
 
   ListContactGroupsResponse();
 
@@ -2693,13 +2653,13 @@ class ListContactGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (contactGroups != null)
           'contactGroups':
-              contactGroups.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken,
-        if (totalItems != null) 'totalItems': totalItems,
+              contactGroups!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken!,
+        if (totalItems != null) 'totalItems': totalItems!,
       };
 }
 
@@ -2708,16 +2668,16 @@ class ListDirectoryPeopleResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A token, which can be sent as `sync_token` to retrieve changes since the
   /// last request.
   ///
   /// Request must set `request_sync_token` to return the sync token.
-  core.String nextSyncToken;
+  core.String? nextSyncToken;
 
   /// The list of people in the domain directory.
-  core.List<Person> people;
+  core.List<Person>? people;
 
   ListDirectoryPeopleResponse();
 
@@ -2736,11 +2696,11 @@ class ListDirectoryPeopleResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken!,
         if (people != null)
-          'people': people.map((value) => value.toJson()).toList(),
+          'people': people!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2749,19 +2709,19 @@ class ListOtherContactsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A token, which can be sent as `sync_token` to retrieve changes since the
   /// last request.
   ///
   /// Request must set `request_sync_token` to return the sync token.
-  core.String nextSyncToken;
+  core.String? nextSyncToken;
 
   /// The list of "Other contacts" returned as Person resources.
   ///
   /// "Other contacts" support a limited subset of fields. See
   /// ListOtherContactsRequest.request_mask for more detailed information.
-  core.List<Person> otherContacts;
+  core.List<Person>? otherContacts;
 
   ListOtherContactsResponse();
 
@@ -2780,23 +2740,23 @@ class ListOtherContactsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (nextSyncToken != null) 'nextSyncToken': nextSyncToken!,
         if (otherContacts != null)
           'otherContacts':
-              otherContacts.map((value) => value.toJson()).toList(),
+              otherContacts!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A person's locale preference.
 class Locale {
   /// Metadata about the locale.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The well-formed [IETF BCP 47](https://tools.ietf.org/html/bcp47) language
   /// tag representing the locale.
-  core.String value;
+  core.String? value;
 
   Locale();
 
@@ -2810,40 +2770,40 @@ class Locale {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
 /// A person's location.
 class Location {
   /// The building identifier.
-  core.String buildingId;
+  core.String? buildingId;
 
   /// Whether the location is the current location.
-  core.bool current;
+  core.bool? current;
 
   /// The individual desk location.
-  core.String deskCode;
+  core.String? deskCode;
 
   /// The floor name or number.
-  core.String floor;
+  core.String? floor;
 
   /// The floor section in `floor_name`.
-  core.String floorSection;
+  core.String? floorSection;
 
   /// Metadata about the location.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The type of the location.
   ///
   /// The type can be custom or one of these predefined values: * `desk` *
   /// `grewUp`
-  core.String type;
+  core.String? type;
 
   /// The free-form value of the location.
-  core.String value;
+  core.String? value;
 
   Location();
 
@@ -2875,15 +2835,15 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (buildingId != null) 'buildingId': buildingId,
-        if (current != null) 'current': current,
-        if (deskCode != null) 'deskCode': deskCode,
-        if (floor != null) 'floor': floor,
-        if (floorSection != null) 'floorSection': floorSection,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (buildingId != null) 'buildingId': buildingId!,
+        if (current != null) 'current': current!,
+        if (deskCode != null) 'deskCode': deskCode!,
+        if (floor != null) 'floor': floor!,
+        if (floorSection != null) 'floorSection': floorSection!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2892,15 +2852,15 @@ class Location {
 /// Only contact group memberships can be modified.
 class Membership {
   /// The contact group membership.
-  ContactGroupMembership contactGroupMembership;
+  ContactGroupMembership? contactGroupMembership;
 
   /// The domain membership.
   ///
   /// Output only.
-  DomainMembership domainMembership;
+  DomainMembership? domainMembership;
 
   /// Metadata about the membership.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   Membership();
 
@@ -2920,12 +2880,12 @@ class Membership {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (contactGroupMembership != null)
-          'contactGroupMembership': contactGroupMembership.toJson(),
+          'contactGroupMembership': contactGroupMembership!.toJson(),
         if (domainMembership != null)
-          'domainMembership': domainMembership.toJson(),
-        if (metadata != null) 'metadata': metadata.toJson(),
+          'domainMembership': domainMembership!.toJson(),
+        if (metadata != null) 'metadata': metadata!.toJson(),
       };
 }
 
@@ -2935,10 +2895,10 @@ class MiscKeyword {
   /// viewer's account locale or the `Accept-Language` HTTP header locale.
   ///
   /// Output only.
-  core.String formattedType;
+  core.String? formattedType;
 
   /// Metadata about the miscellaneous keyword.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The miscellaneous keyword type.
   /// Possible string values are:
@@ -2954,10 +2914,10 @@ class MiscKeyword {
   /// - "HOME" : Home.
   /// - "WORK" : Work.
   /// - "OTHER" : Other.
-  core.String type;
+  core.String? type;
 
   /// The value of the miscellaneous keyword.
-  core.String value;
+  core.String? value;
 
   MiscKeyword();
 
@@ -2977,11 +2937,11 @@ class MiscKeyword {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (formattedType != null) 'formattedType': formattedType,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (formattedType != null) 'formattedType': formattedType!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2997,7 +2957,7 @@ class ModifyContactGroupMembersRequest {
   /// `resource_names_to_remove` must be less than or equal to 1000.
   ///
   /// Optional.
-  core.List<core.String> resourceNamesToAdd;
+  core.List<core.String>? resourceNamesToAdd;
 
   /// The resource names of the contact people to remove in the form of
   /// `people/{person_id}`.
@@ -3006,7 +2966,7 @@ class ModifyContactGroupMembersRequest {
   /// `resource_names_to_remove` must be less than or equal to 1000.
   ///
   /// Optional.
-  core.List<core.String> resourceNamesToRemove;
+  core.List<core.String>? resourceNamesToRemove;
 
   ModifyContactGroupMembersRequest();
 
@@ -3023,11 +2983,11 @@ class ModifyContactGroupMembersRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (resourceNamesToAdd != null)
-          'resourceNamesToAdd': resourceNamesToAdd,
+          'resourceNamesToAdd': resourceNamesToAdd!,
         if (resourceNamesToRemove != null)
-          'resourceNamesToRemove': resourceNamesToRemove,
+          'resourceNamesToRemove': resourceNamesToRemove!,
       };
 }
 
@@ -3035,10 +2995,10 @@ class ModifyContactGroupMembersRequest {
 class ModifyContactGroupMembersResponse {
   /// The contact people resource names that cannot be removed from their last
   /// contact group.
-  core.List<core.String> canNotRemoveLastContactGroupResourceNames;
+  core.List<core.String>? canNotRemoveLastContactGroupResourceNames;
 
   /// The contact people resource names that were not found.
-  core.List<core.String> notFoundResourceNames;
+  core.List<core.String>? notFoundResourceNames;
 
   ModifyContactGroupMembersResponse();
 
@@ -3056,12 +3016,12 @@ class ModifyContactGroupMembersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (canNotRemoveLastContactGroupResourceNames != null)
           'canNotRemoveLastContactGroupResourceNames':
-              canNotRemoveLastContactGroupResourceNames,
+              canNotRemoveLastContactGroupResourceNames!,
         if (notFoundResourceNames != null)
-          'notFoundResourceNames': notFoundResourceNames,
+          'notFoundResourceNames': notFoundResourceNames!,
       };
 }
 
@@ -3073,53 +3033,53 @@ class Name {
   /// viewer's account or the `Accept-Language` HTTP header.
   ///
   /// Output only.
-  core.String displayName;
+  core.String? displayName;
 
   /// The display name with the last name first formatted according to the
   /// locale specified by the viewer's account or the `Accept-Language` HTTP
   /// header.
   ///
   /// Output only.
-  core.String displayNameLastFirst;
+  core.String? displayNameLastFirst;
 
   /// The family name.
-  core.String familyName;
+  core.String? familyName;
 
   /// The given name.
-  core.String givenName;
+  core.String? givenName;
 
   /// The honorific prefixes, such as `Mrs.` or `Dr.`
-  core.String honorificPrefix;
+  core.String? honorificPrefix;
 
   /// The honorific suffixes, such as `Jr.`
-  core.String honorificSuffix;
+  core.String? honorificSuffix;
 
   /// Metadata about the name.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The middle name(s).
-  core.String middleName;
+  core.String? middleName;
 
   /// The family name spelled as it sounds.
-  core.String phoneticFamilyName;
+  core.String? phoneticFamilyName;
 
   /// The full name spelled as it sounds.
-  core.String phoneticFullName;
+  core.String? phoneticFullName;
 
   /// The given name spelled as it sounds.
-  core.String phoneticGivenName;
+  core.String? phoneticGivenName;
 
   /// The honorific prefixes spelled as they sound.
-  core.String phoneticHonorificPrefix;
+  core.String? phoneticHonorificPrefix;
 
   /// The honorific suffixes spelled as they sound.
-  core.String phoneticHonorificSuffix;
+  core.String? phoneticHonorificSuffix;
 
   /// The middle name(s) spelled as they sound.
-  core.String phoneticMiddleName;
+  core.String? phoneticMiddleName;
 
   /// The free form name value.
-  core.String unstructuredName;
+  core.String? unstructuredName;
 
   Name();
 
@@ -3172,34 +3132,34 @@ class Name {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
         if (displayNameLastFirst != null)
-          'displayNameLastFirst': displayNameLastFirst,
-        if (familyName != null) 'familyName': familyName,
-        if (givenName != null) 'givenName': givenName,
-        if (honorificPrefix != null) 'honorificPrefix': honorificPrefix,
-        if (honorificSuffix != null) 'honorificSuffix': honorificSuffix,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (middleName != null) 'middleName': middleName,
+          'displayNameLastFirst': displayNameLastFirst!,
+        if (familyName != null) 'familyName': familyName!,
+        if (givenName != null) 'givenName': givenName!,
+        if (honorificPrefix != null) 'honorificPrefix': honorificPrefix!,
+        if (honorificSuffix != null) 'honorificSuffix': honorificSuffix!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (middleName != null) 'middleName': middleName!,
         if (phoneticFamilyName != null)
-          'phoneticFamilyName': phoneticFamilyName,
-        if (phoneticFullName != null) 'phoneticFullName': phoneticFullName,
-        if (phoneticGivenName != null) 'phoneticGivenName': phoneticGivenName,
+          'phoneticFamilyName': phoneticFamilyName!,
+        if (phoneticFullName != null) 'phoneticFullName': phoneticFullName!,
+        if (phoneticGivenName != null) 'phoneticGivenName': phoneticGivenName!,
         if (phoneticHonorificPrefix != null)
-          'phoneticHonorificPrefix': phoneticHonorificPrefix,
+          'phoneticHonorificPrefix': phoneticHonorificPrefix!,
         if (phoneticHonorificSuffix != null)
-          'phoneticHonorificSuffix': phoneticHonorificSuffix,
+          'phoneticHonorificSuffix': phoneticHonorificSuffix!,
         if (phoneticMiddleName != null)
-          'phoneticMiddleName': phoneticMiddleName,
-        if (unstructuredName != null) 'unstructuredName': unstructuredName,
+          'phoneticMiddleName': phoneticMiddleName!,
+        if (unstructuredName != null) 'unstructuredName': unstructuredName!,
       };
 }
 
 /// A person's nickname.
 class Nickname {
   /// Metadata about the nickname.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The type of the nickname.
   /// Possible string values are:
@@ -3212,10 +3172,10 @@ class Nickname {
   /// `Dr. Smith.`
   /// - "ALTERNATE_NAME" : Alternate name person is known by.
   /// - "SHORT_NAME" : A shorter version of the person's name.
-  core.String type;
+  core.String? type;
 
   /// The nickname.
-  core.String value;
+  core.String? value;
 
   Nickname();
 
@@ -3232,20 +3192,20 @@ class Nickname {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// A person's occupation.
 class Occupation {
   /// Metadata about the occupation.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The occupation; for example, `carpenter`.
-  core.String value;
+  core.String? value;
 
   Occupation();
 
@@ -3259,9 +3219,9 @@ class Occupation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
@@ -3271,54 +3231,54 @@ class Occupation {
 class Organization {
   /// True if the organization is the person's current organization; false if
   /// the organization is a past organization.
-  core.bool current;
+  core.bool? current;
 
   /// The person's department at the organization.
-  core.String department;
+  core.String? department;
 
   /// The domain name associated with the organization; for example,
   /// `google.com`.
-  core.String domain;
+  core.String? domain;
 
   /// The end date when the person left the organization.
-  Date endDate;
+  Date? endDate;
 
   /// The type of the organization translated and formatted in the viewer's
   /// account locale or the `Accept-Language` HTTP header locale.
   ///
   /// Output only.
-  core.String formattedType;
+  core.String? formattedType;
 
   /// The person's job description at the organization.
-  core.String jobDescription;
+  core.String? jobDescription;
 
   /// The location of the organization office the person works at.
-  core.String location;
+  core.String? location;
 
   /// Metadata about the organization.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The name of the organization.
-  core.String name;
+  core.String? name;
 
   /// The phonetic name of the organization.
-  core.String phoneticName;
+  core.String? phoneticName;
 
   /// The start date when the person joined the organization.
-  Date startDate;
+  Date? startDate;
 
   /// The symbol associated with the organization; for example, a stock ticker
   /// symbol, abbreviation, or acronym.
-  core.String symbol;
+  core.String? symbol;
 
   /// The person's job title at the organization.
-  core.String title;
+  core.String? title;
 
   /// The type of the organization.
   ///
   /// The type can be custom or one of these predefined values: * `work` *
   /// `school`
-  core.String type;
+  core.String? type;
 
   Organization();
 
@@ -3370,21 +3330,21 @@ class Organization {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (current != null) 'current': current,
-        if (department != null) 'department': department,
-        if (domain != null) 'domain': domain,
-        if (endDate != null) 'endDate': endDate.toJson(),
-        if (formattedType != null) 'formattedType': formattedType,
-        if (jobDescription != null) 'jobDescription': jobDescription,
-        if (location != null) 'location': location,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (name != null) 'name': name,
-        if (phoneticName != null) 'phoneticName': phoneticName,
-        if (startDate != null) 'startDate': startDate.toJson(),
-        if (symbol != null) 'symbol': symbol,
-        if (title != null) 'title': title,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (current != null) 'current': current!,
+        if (department != null) 'department': department!,
+        if (domain != null) 'domain': domain!,
+        if (endDate != null) 'endDate': endDate!.toJson(),
+        if (formattedType != null) 'formattedType': formattedType!,
+        if (jobDescription != null) 'jobDescription': jobDescription!,
+        if (location != null) 'location': location!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (name != null) 'name': name!,
+        if (phoneticName != null) 'phoneticName': phoneticName!,
+        if (startDate != null) 'startDate': startDate!.toJson(),
+        if (symbol != null) 'symbol': symbol!,
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3396,7 +3356,7 @@ class Organization {
 /// `metadata.primary` set to true.
 class Person {
   /// The person's street addresses.
-  core.List<Address> addresses;
+  core.List<Address>? addresses;
 
   /// **DEPRECATED** (Please use `person.ageRanges` instead) The person's age
   /// range.
@@ -3407,146 +3367,146 @@ class Person {
   /// - "LESS_THAN_EIGHTEEN" : Younger than eighteen.
   /// - "EIGHTEEN_TO_TWENTY" : Between eighteen and twenty.
   /// - "TWENTY_ONE_OR_OLDER" : Twenty-one and older.
-  core.String ageRange;
+  core.String? ageRange;
 
   /// The person's age ranges.
   ///
   /// Output only.
-  core.List<AgeRangeType> ageRanges;
+  core.List<AgeRangeType>? ageRanges;
 
   /// The person's biographies.
   ///
   /// This field is a singleton for contact sources.
-  core.List<Biography> biographies;
+  core.List<Biography>? biographies;
 
   /// The person's birthdays.
   ///
   /// This field is a singleton for contact sources.
-  core.List<Birthday> birthdays;
+  core.List<Birthday>? birthdays;
 
   /// **DEPRECATED**: No data will be returned The person's bragging rights.
-  core.List<BraggingRights> braggingRights;
+  core.List<BraggingRights>? braggingRights;
 
   /// The person's calendar URLs.
-  core.List<CalendarUrl> calendarUrls;
+  core.List<CalendarUrl>? calendarUrls;
 
   /// The person's client data.
-  core.List<ClientData> clientData;
+  core.List<ClientData>? clientData;
 
   /// The person's cover photos.
   ///
   /// Output only.
-  core.List<CoverPhoto> coverPhotos;
+  core.List<CoverPhoto>? coverPhotos;
 
   /// The person's email addresses.
-  core.List<EmailAddress> emailAddresses;
+  core.List<EmailAddress>? emailAddresses;
 
   /// The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the
   /// resource.
   ///
   /// Used for web cache validation.
-  core.String etag;
+  core.String? etag;
 
   /// The person's events.
-  core.List<Event> events;
+  core.List<Event>? events;
 
   /// The person's external IDs.
-  core.List<ExternalId> externalIds;
+  core.List<ExternalId>? externalIds;
 
   /// The person's file-ases.
-  core.List<FileAs> fileAses;
+  core.List<FileAs>? fileAses;
 
   /// The person's genders.
   ///
   /// This field is a singleton for contact sources.
-  core.List<Gender> genders;
+  core.List<Gender>? genders;
 
   /// The person's instant messaging clients.
-  core.List<ImClient> imClients;
+  core.List<ImClient>? imClients;
 
   /// The person's interests.
-  core.List<Interest> interests;
+  core.List<Interest>? interests;
 
   /// The person's locale preferences.
-  core.List<Locale> locales;
+  core.List<Locale>? locales;
 
   /// The person's locations.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The person's group memberships.
-  core.List<Membership> memberships;
+  core.List<Membership>? memberships;
 
   /// Metadata about the person.
   ///
   /// Output only.
-  PersonMetadata metadata;
+  PersonMetadata? metadata;
 
   /// The person's miscellaneous keywords.
-  core.List<MiscKeyword> miscKeywords;
+  core.List<MiscKeyword>? miscKeywords;
 
   /// The person's names.
   ///
   /// This field is a singleton for contact sources.
-  core.List<Name> names;
+  core.List<Name>? names;
 
   /// The person's nicknames.
-  core.List<Nickname> nicknames;
+  core.List<Nickname>? nicknames;
 
   /// The person's occupations.
-  core.List<Occupation> occupations;
+  core.List<Occupation>? occupations;
 
   /// The person's past or current organizations.
-  core.List<Organization> organizations;
+  core.List<Organization>? organizations;
 
   /// The person's phone numbers.
-  core.List<PhoneNumber> phoneNumbers;
+  core.List<PhoneNumber>? phoneNumbers;
 
   /// The person's photos.
   ///
   /// Output only.
-  core.List<Photo> photos;
+  core.List<Photo>? photos;
 
   /// The person's relations.
-  core.List<Relation> relations;
+  core.List<Relation>? relations;
 
   /// **DEPRECATED**: No data will be returned The person's relationship
   /// interests.
   ///
   /// Output only.
-  core.List<RelationshipInterest> relationshipInterests;
+  core.List<RelationshipInterest>? relationshipInterests;
 
   /// **DEPRECATED**: No data will be returned The person's relationship
   /// statuses.
   ///
   /// Output only.
-  core.List<RelationshipStatus> relationshipStatuses;
+  core.List<RelationshipStatus>? relationshipStatuses;
 
   /// **DEPRECATED**: (Please use `person.locations` instead) The person's
   /// residences.
-  core.List<Residence> residences;
+  core.List<Residence>? residences;
 
   /// The resource name for the person, assigned by the server.
   ///
   /// An ASCII string with a max length of 27 characters, in the form of
   /// `people/{person_id}`.
-  core.String resourceName;
+  core.String? resourceName;
 
   /// The person's SIP addresses.
-  core.List<SipAddress> sipAddresses;
+  core.List<SipAddress>? sipAddresses;
 
   /// The person's skills.
-  core.List<Skill> skills;
+  core.List<Skill>? skills;
 
   /// **DEPRECATED**: No data will be returned The person's taglines.
   ///
   /// Output only.
-  core.List<Tagline> taglines;
+  core.List<Tagline>? taglines;
 
   /// The person's associated URLs.
-  core.List<Url> urls;
+  core.List<Url>? urls;
 
   /// The person's user defined data.
-  core.List<UserDefined> userDefined;
+  core.List<UserDefined>? userDefined;
 
   Person();
 
@@ -3770,83 +3730,83 @@ class Person {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (addresses != null)
-          'addresses': addresses.map((value) => value.toJson()).toList(),
-        if (ageRange != null) 'ageRange': ageRange,
+          'addresses': addresses!.map((value) => value.toJson()).toList(),
+        if (ageRange != null) 'ageRange': ageRange!,
         if (ageRanges != null)
-          'ageRanges': ageRanges.map((value) => value.toJson()).toList(),
+          'ageRanges': ageRanges!.map((value) => value.toJson()).toList(),
         if (biographies != null)
-          'biographies': biographies.map((value) => value.toJson()).toList(),
+          'biographies': biographies!.map((value) => value.toJson()).toList(),
         if (birthdays != null)
-          'birthdays': birthdays.map((value) => value.toJson()).toList(),
+          'birthdays': birthdays!.map((value) => value.toJson()).toList(),
         if (braggingRights != null)
           'braggingRights':
-              braggingRights.map((value) => value.toJson()).toList(),
+              braggingRights!.map((value) => value.toJson()).toList(),
         if (calendarUrls != null)
-          'calendarUrls': calendarUrls.map((value) => value.toJson()).toList(),
+          'calendarUrls': calendarUrls!.map((value) => value.toJson()).toList(),
         if (clientData != null)
-          'clientData': clientData.map((value) => value.toJson()).toList(),
+          'clientData': clientData!.map((value) => value.toJson()).toList(),
         if (coverPhotos != null)
-          'coverPhotos': coverPhotos.map((value) => value.toJson()).toList(),
+          'coverPhotos': coverPhotos!.map((value) => value.toJson()).toList(),
         if (emailAddresses != null)
           'emailAddresses':
-              emailAddresses.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
+              emailAddresses!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
         if (events != null)
-          'events': events.map((value) => value.toJson()).toList(),
+          'events': events!.map((value) => value.toJson()).toList(),
         if (externalIds != null)
-          'externalIds': externalIds.map((value) => value.toJson()).toList(),
+          'externalIds': externalIds!.map((value) => value.toJson()).toList(),
         if (fileAses != null)
-          'fileAses': fileAses.map((value) => value.toJson()).toList(),
+          'fileAses': fileAses!.map((value) => value.toJson()).toList(),
         if (genders != null)
-          'genders': genders.map((value) => value.toJson()).toList(),
+          'genders': genders!.map((value) => value.toJson()).toList(),
         if (imClients != null)
-          'imClients': imClients.map((value) => value.toJson()).toList(),
+          'imClients': imClients!.map((value) => value.toJson()).toList(),
         if (interests != null)
-          'interests': interests.map((value) => value.toJson()).toList(),
+          'interests': interests!.map((value) => value.toJson()).toList(),
         if (locales != null)
-          'locales': locales.map((value) => value.toJson()).toList(),
+          'locales': locales!.map((value) => value.toJson()).toList(),
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
+          'locations': locations!.map((value) => value.toJson()).toList(),
         if (memberships != null)
-          'memberships': memberships.map((value) => value.toJson()).toList(),
-        if (metadata != null) 'metadata': metadata.toJson(),
+          'memberships': memberships!.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata!.toJson(),
         if (miscKeywords != null)
-          'miscKeywords': miscKeywords.map((value) => value.toJson()).toList(),
+          'miscKeywords': miscKeywords!.map((value) => value.toJson()).toList(),
         if (names != null)
-          'names': names.map((value) => value.toJson()).toList(),
+          'names': names!.map((value) => value.toJson()).toList(),
         if (nicknames != null)
-          'nicknames': nicknames.map((value) => value.toJson()).toList(),
+          'nicknames': nicknames!.map((value) => value.toJson()).toList(),
         if (occupations != null)
-          'occupations': occupations.map((value) => value.toJson()).toList(),
+          'occupations': occupations!.map((value) => value.toJson()).toList(),
         if (organizations != null)
           'organizations':
-              organizations.map((value) => value.toJson()).toList(),
+              organizations!.map((value) => value.toJson()).toList(),
         if (phoneNumbers != null)
-          'phoneNumbers': phoneNumbers.map((value) => value.toJson()).toList(),
+          'phoneNumbers': phoneNumbers!.map((value) => value.toJson()).toList(),
         if (photos != null)
-          'photos': photos.map((value) => value.toJson()).toList(),
+          'photos': photos!.map((value) => value.toJson()).toList(),
         if (relations != null)
-          'relations': relations.map((value) => value.toJson()).toList(),
+          'relations': relations!.map((value) => value.toJson()).toList(),
         if (relationshipInterests != null)
           'relationshipInterests':
-              relationshipInterests.map((value) => value.toJson()).toList(),
+              relationshipInterests!.map((value) => value.toJson()).toList(),
         if (relationshipStatuses != null)
           'relationshipStatuses':
-              relationshipStatuses.map((value) => value.toJson()).toList(),
+              relationshipStatuses!.map((value) => value.toJson()).toList(),
         if (residences != null)
-          'residences': residences.map((value) => value.toJson()).toList(),
-        if (resourceName != null) 'resourceName': resourceName,
+          'residences': residences!.map((value) => value.toJson()).toList(),
+        if (resourceName != null) 'resourceName': resourceName!,
         if (sipAddresses != null)
-          'sipAddresses': sipAddresses.map((value) => value.toJson()).toList(),
+          'sipAddresses': sipAddresses!.map((value) => value.toJson()).toList(),
         if (skills != null)
-          'skills': skills.map((value) => value.toJson()).toList(),
+          'skills': skills!.map((value) => value.toJson()).toList(),
         if (taglines != null)
-          'taglines': taglines.map((value) => value.toJson()).toList(),
-        if (urls != null) 'urls': urls.map((value) => value.toJson()).toList(),
+          'taglines': taglines!.map((value) => value.toJson()).toList(),
+        if (urls != null) 'urls': urls!.map((value) => value.toJson()).toList(),
         if (userDefined != null)
-          'userDefined': userDefined.map((value) => value.toJson()).toList(),
+          'userDefined': userDefined!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3859,12 +3819,12 @@ class PersonMetadata {
   /// requests that include a sync token.
   ///
   /// Output only.
-  core.bool deleted;
+  core.bool? deleted;
 
   /// Resource names of people linked to this resource.
   ///
   /// Output only.
-  core.List<core.String> linkedPeopleResourceNames;
+  core.List<core.String>? linkedPeopleResourceNames;
 
   /// **DEPRECATED** (Please use
   /// `person.metadata.sources.profileMetadata.objectType` instead) The type of
@@ -3875,7 +3835,7 @@ class PersonMetadata {
   /// - "OBJECT_TYPE_UNSPECIFIED" : Unspecified.
   /// - "PERSON" : Person.
   /// - "PAGE" : [Currents Page.](https://gsuite.google.com/products/currents/)
-  core.String objectType;
+  core.String? objectType;
 
   /// Any former resource names this person has had.
   ///
@@ -3886,10 +3846,10 @@ class PersonMetadata {
   /// verified email, verified phone number, or profile URL.
   ///
   /// Output only.
-  core.List<core.String> previousResourceNames;
+  core.List<core.String>? previousResourceNames;
 
   /// The sources of data for the person.
-  core.List<Source> sources;
+  core.List<Source>? sources;
 
   PersonMetadata();
 
@@ -3919,15 +3879,15 @@ class PersonMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deleted != null) 'deleted': deleted,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deleted != null) 'deleted': deleted!,
         if (linkedPeopleResourceNames != null)
-          'linkedPeopleResourceNames': linkedPeopleResourceNames,
-        if (objectType != null) 'objectType': objectType,
+          'linkedPeopleResourceNames': linkedPeopleResourceNames!,
+        if (objectType != null) 'objectType': objectType!,
         if (previousResourceNames != null)
-          'previousResourceNames': previousResourceNames,
+          'previousResourceNames': previousResourceNames!,
         if (sources != null)
-          'sources': sources.map((value) => value.toJson()).toList(),
+          'sources': sources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3935,10 +3895,10 @@ class PersonMetadata {
 class PersonResponse {
   /// **DEPRECATED** (Please use status instead)
   /// [HTTP 1.1 status code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
-  core.int httpStatusCode;
+  core.int? httpStatusCode;
 
   /// The person.
-  Person person;
+  Person? person;
 
   /// The original requested resource name.
   ///
@@ -3946,10 +3906,10 @@ class PersonResponse {
   /// resource name can change when adding or removing fields that link a
   /// contact and profile such as a verified email, verified phone number, or a
   /// profile URL.
-  core.String requestedResourceName;
+  core.String? requestedResourceName;
 
   /// The status of the response.
-  Status status;
+  Status? status;
 
   PersonResponse();
 
@@ -3970,12 +3930,12 @@ class PersonResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (httpStatusCode != null) 'httpStatusCode': httpStatusCode,
-        if (person != null) 'person': person.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (httpStatusCode != null) 'httpStatusCode': httpStatusCode!,
+        if (person != null) 'person': person!.toJson(),
         if (requestedResourceName != null)
-          'requestedResourceName': requestedResourceName,
-        if (status != null) 'status': status.toJson(),
+          'requestedResourceName': requestedResourceName!,
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -3986,26 +3946,26 @@ class PhoneNumber {
   /// form of the phone number.
   ///
   /// Output only.
-  core.String canonicalForm;
+  core.String? canonicalForm;
 
   /// The type of the phone number translated and formatted in the viewer's
   /// account locale or the `Accept-Language` HTTP header locale.
   ///
   /// Output only.
-  core.String formattedType;
+  core.String? formattedType;
 
   /// Metadata about the phone number.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The type of the phone number.
   ///
   /// The type can be custom or one of these predefined values: * `home` *
   /// `work` * `mobile` * `homeFax` * `workFax` * `otherFax` * `pager` *
   /// `workMobile` * `workPager` * `main` * `googleVoice` * `other`
-  core.String type;
+  core.String? type;
 
   /// The phone number.
-  core.String value;
+  core.String? value;
 
   PhoneNumber();
 
@@ -4028,12 +3988,12 @@ class PhoneNumber {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (canonicalForm != null) 'canonicalForm': canonicalForm,
-        if (formattedType != null) 'formattedType': formattedType,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (canonicalForm != null) 'canonicalForm': canonicalForm!,
+        if (formattedType != null) 'formattedType': formattedType!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -4044,17 +4004,17 @@ class PhoneNumber {
 class Photo {
   /// True if the photo is a default photo; false if the photo is a
   /// user-provided photo.
-  core.bool default_;
+  core.bool? default_;
 
   /// Metadata about the photo.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The URL of the photo.
   ///
   /// You can change the desired size by appending a query parameter `sz={size}`
   /// at the end of the url, where {size} is the size in pixels. Example:
   /// https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvDBYqw/s100/photo.jpg?sz=50
-  core.String url;
+  core.String? url;
 
   Photo();
 
@@ -4071,10 +4031,10 @@ class Photo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (default_ != null) 'default': default_,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (default_ != null) 'default': default_!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (url != null) 'url': url!,
       };
 }
 
@@ -4087,12 +4047,12 @@ class ProfileMetadata {
   /// - "OBJECT_TYPE_UNSPECIFIED" : Unspecified.
   /// - "PERSON" : Person.
   /// - "PAGE" : [Currents Page.](https://gsuite.google.com/products/currents/)
-  core.String objectType;
+  core.String? objectType;
 
   /// The user types.
   ///
   /// Output only.
-  core.List<core.String> userTypes;
+  core.List<core.String>? userTypes;
 
   ProfileMetadata();
 
@@ -4107,9 +4067,9 @@ class ProfileMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectType != null) 'objectType': objectType,
-        if (userTypes != null) 'userTypes': userTypes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectType != null) 'objectType': objectType!,
+        if (userTypes != null) 'userTypes': userTypes!,
       };
 }
 
@@ -4119,13 +4079,13 @@ class Relation {
   /// locale or the locale specified in the Accept-Language HTTP header.
   ///
   /// Output only.
-  core.String formattedType;
+  core.String? formattedType;
 
   /// Metadata about the relation.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The name of the other person this relation refers to.
-  core.String person;
+  core.String? person;
 
   /// The person's relation to the other person.
   ///
@@ -4133,7 +4093,7 @@ class Relation {
   /// `child` * `mother` * `father` * `parent` * `brother` * `sister` * `friend`
   /// * `relative` * `domesticPartner` * `manager` * `assistant` * `referredBy`
   /// * `partner`
-  core.String type;
+  core.String? type;
 
   Relation();
 
@@ -4153,11 +4113,11 @@ class Relation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (formattedType != null) 'formattedType': formattedType,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (person != null) 'person': person,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (formattedType != null) 'formattedType': formattedType!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (person != null) 'person': person!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4168,16 +4128,16 @@ class RelationshipInterest {
   /// HTTP header.
   ///
   /// Output only.
-  core.String formattedValue;
+  core.String? formattedValue;
 
   /// Metadata about the relationship interest.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The kind of relationship the person is looking for.
   ///
   /// The value can be custom or one of these predefined values: * `friend` *
   /// `date` * `relationship` * `networking`
-  core.String value;
+  core.String? value;
 
   RelationshipInterest();
 
@@ -4194,10 +4154,10 @@ class RelationshipInterest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (formattedValue != null) 'formattedValue': formattedValue,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (formattedValue != null) 'formattedValue': formattedValue!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
@@ -4207,17 +4167,17 @@ class RelationshipStatus {
   /// viewer's account locale or the `Accept-Language` HTTP header locale.
   ///
   /// Output only.
-  core.String formattedValue;
+  core.String? formattedValue;
 
   /// Metadata about the relationship status.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The relationship status.
   ///
   /// The value can be custom or one of these predefined values: * `single` *
   /// `inARelationship` * `engaged` * `married` * `itsComplicated` *
   /// `openRelationship` * `widowed` * `inDomesticPartnership` * `inCivilUnion`
-  core.String value;
+  core.String? value;
 
   RelationshipStatus();
 
@@ -4234,10 +4194,10 @@ class RelationshipStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (formattedValue != null) 'formattedValue': formattedValue,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (formattedValue != null) 'formattedValue': formattedValue!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
@@ -4247,13 +4207,13 @@ class RelationshipStatus {
 class Residence {
   /// True if the residence is the person's current residence; false if the
   /// residence is a past residence.
-  core.bool current;
+  core.bool? current;
 
   /// Metadata about the residence.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The address of the residence.
-  core.String value;
+  core.String? value;
 
   Residence();
 
@@ -4270,10 +4230,10 @@ class Residence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (current != null) 'current': current,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (current != null) 'current': current!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
@@ -4283,13 +4243,13 @@ class SearchDirectoryPeopleResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of people in the domain directory that match the query.
-  core.List<Person> people;
+  core.List<Person>? people;
 
   /// The total number of items in the list without pagination.
-  core.int totalSize;
+  core.int? totalSize;
 
   SearchDirectoryPeopleResponse();
 
@@ -4308,18 +4268,18 @@ class SearchDirectoryPeopleResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (people != null)
-          'people': people.map((value) => value.toJson()).toList(),
-        if (totalSize != null) 'totalSize': totalSize,
+          'people': people!.map((value) => value.toJson()).toList(),
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
 /// The response to a search request for the authenticated user, given a query.
 class SearchResponse {
   /// The results of the request.
-  core.List<SearchResult> results;
+  core.List<SearchResult>? results;
 
   SearchResponse();
 
@@ -4332,16 +4292,16 @@ class SearchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
+          'results': results!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A result of a search query.
 class SearchResult {
   /// The matched Person.
-  Person person;
+  Person? person;
 
   SearchResult();
 
@@ -4352,8 +4312,8 @@ class SearchResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (person != null) 'person': person.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (person != null) 'person': person!.toJson(),
       };
 }
 
@@ -4366,21 +4326,21 @@ class SipAddress {
   /// account locale or the `Accept-Language` HTTP header locale.
   ///
   /// Output only.
-  core.String formattedType;
+  core.String? formattedType;
 
   /// Metadata about the SIP address.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The type of the SIP address.
   ///
   /// The type can be custom or or one of these predefined values: * `home` *
   /// `work` * `mobile` * `other`
-  core.String type;
+  core.String? type;
 
   /// The SIP address in the
   /// [RFC 3261 19.1](https://tools.ietf.org/html/rfc3261#section-19.1) SIP URI
   /// format.
-  core.String value;
+  core.String? value;
 
   SipAddress();
 
@@ -4400,21 +4360,21 @@ class SipAddress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (formattedType != null) 'formattedType': formattedType,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (formattedType != null) 'formattedType': formattedType!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// A skill that the person has.
 class Skill {
   /// Metadata about the skill.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The skill; for example, `underwater basket weaving`.
-  core.String value;
+  core.String? value;
 
   Skill();
 
@@ -4428,9 +4388,9 @@ class Skill {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
@@ -4440,16 +4400,16 @@ class Source {
   /// [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the source.
   ///
   /// Used for web cache validation.
-  core.String etag;
+  core.String? etag;
 
   /// The unique identifier within the source type generated by the server.
-  core.String id;
+  core.String? id;
 
   /// **Only populated in `person.metadata.sources`.** Metadata about a source
   /// of type PROFILE.
   ///
   /// Output only.
-  ProfileMetadata profileMetadata;
+  ProfileMetadata? profileMetadata;
 
   /// The source type.
   /// Possible string values are:
@@ -4469,13 +4429,13 @@ class Source {
   /// contact"\](https://contacts.google.com/other).
   /// - "DOMAIN_CONTACT" :
   /// [G Suite domain shared contact](https://support.google.com/a/answer/9281635).
-  core.String type;
+  core.String? type;
 
   /// **Only populated in `person.metadata.sources`.** Last update timestamp of
   /// this source.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Source();
 
@@ -4498,13 +4458,13 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
         if (profileMetadata != null)
-          'profileMetadata': profileMetadata.toJson(),
-        if (type != null) 'type': type,
-        if (updateTime != null) 'updateTime': updateTime,
+          'profileMetadata': profileMetadata!.toJson(),
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -4517,7 +4477,7 @@ class Source {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -4525,13 +4485,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -4555,10 +4515,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -4566,10 +4526,10 @@ class Status {
 /// person.
 class Tagline {
   /// Metadata about the tagline.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The tagline.
-  core.String value;
+  core.String? value;
 
   Tagline();
 
@@ -4583,9 +4543,9 @@ class Tagline {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (value != null) 'value': value!,
       };
 }
 
@@ -4596,7 +4556,7 @@ class UpdateContactGroupRequest {
   /// The contact group to update.
   ///
   /// Required.
-  ContactGroup contactGroup;
+  ContactGroup? contactGroup;
 
   /// A field mask to restrict which fields on the group are returned.
   ///
@@ -4605,7 +4565,7 @@ class UpdateContactGroupRequest {
   /// * name
   ///
   /// Optional.
-  core.String readGroupFields;
+  core.String? readGroupFields;
 
   /// A field mask to restrict which fields on the group are updated.
   ///
@@ -4614,7 +4574,7 @@ class UpdateContactGroupRequest {
   /// values are: * clientData * name
   ///
   /// Optional.
-  core.String updateGroupFields;
+  core.String? updateGroupFields;
 
   UpdateContactGroupRequest();
 
@@ -4631,10 +4591,10 @@ class UpdateContactGroupRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contactGroup != null) 'contactGroup': contactGroup.toJson(),
-        if (readGroupFields != null) 'readGroupFields': readGroupFields,
-        if (updateGroupFields != null) 'updateGroupFields': updateGroupFields,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contactGroup != null) 'contactGroup': contactGroup!.toJson(),
+        if (readGroupFields != null) 'readGroupFields': readGroupFields!,
+        if (updateGroupFields != null) 'updateGroupFields': updateGroupFields!,
       };
 }
 
@@ -4654,14 +4614,14 @@ class UpdateContactPhotoRequest {
   /// userDefined
   ///
   /// Optional.
-  core.String personFields;
+  core.String? personFields;
 
   /// Raw photo bytes
   ///
   /// Required.
-  core.String photoBytes;
+  core.String? photoBytes;
   core.List<core.int> get photoBytesAsBytes =>
-      convert.base64.decode(photoBytes);
+      convert.base64.decode(photoBytes!);
 
   set photoBytesAsBytes(core.List<core.int> _bytes) {
     photoBytes =
@@ -4674,7 +4634,7 @@ class UpdateContactPhotoRequest {
   /// set.
   ///
   /// Optional.
-  core.List<core.String> sources;
+  core.List<core.String>? sources;
 
   UpdateContactPhotoRequest();
 
@@ -4692,10 +4652,10 @@ class UpdateContactPhotoRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (personFields != null) 'personFields': personFields,
-        if (photoBytes != null) 'photoBytes': photoBytes,
-        if (sources != null) 'sources': sources,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (personFields != null) 'personFields': personFields!,
+        if (photoBytes != null) 'photoBytes': photoBytes!,
+        if (sources != null) 'sources': sources!,
       };
 }
 
@@ -4703,7 +4663,7 @@ class UpdateContactPhotoRequest {
 class UpdateContactPhotoResponse {
   /// The updated person, if person_fields is set in the
   /// UpdateContactPhotoRequest; otherwise this will be unset.
-  Person person;
+  Person? person;
 
   UpdateContactPhotoResponse();
 
@@ -4714,8 +4674,8 @@ class UpdateContactPhotoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (person != null) 'person': person.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (person != null) 'person': person!.toJson(),
       };
 }
 
@@ -4725,20 +4685,20 @@ class Url {
   /// locale or the `Accept-Language` HTTP header locale.
   ///
   /// Output only.
-  core.String formattedType;
+  core.String? formattedType;
 
   /// Metadata about the URL.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The type of the URL.
   ///
   /// The type can be custom or one of these predefined values: * `home` *
   /// `work` * `blog` * `profile` * `homePage` * `ftp` * `reservations` *
   /// `appInstallPage`: website for a Currents application. * `other`
-  core.String type;
+  core.String? type;
 
   /// The URL.
-  core.String value;
+  core.String? value;
 
   Url();
 
@@ -4758,24 +4718,24 @@ class Url {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (formattedType != null) 'formattedType': formattedType,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (formattedType != null) 'formattedType': formattedType!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// Arbitrary user data that is populated by the end users.
 class UserDefined {
   /// The end user specified key of the user defined data.
-  core.String key;
+  core.String? key;
 
   /// Metadata about the user defined data.
-  FieldMetadata metadata;
+  FieldMetadata? metadata;
 
   /// The end user specified value of the user defined data.
-  core.String value;
+  core.String? value;
 
   UserDefined();
 
@@ -4792,9 +4752,9 @@ class UserDefined {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (value != null) 'value': value!,
       };
 }

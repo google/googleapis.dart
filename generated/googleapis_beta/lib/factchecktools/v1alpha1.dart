@@ -104,14 +104,14 @@ class ClaimsResource {
   async.Future<
           GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse>
       search({
-    core.String languageCode,
-    core.int maxAgeDays,
-    core.int offset,
-    core.int pageSize,
-    core.String pageToken,
-    core.String query,
-    core.String reviewPublisherSiteFilter,
-    core.String $fields,
+    core.String? languageCode,
+    core.int? maxAgeDays,
+    core.int? offset,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? query,
+    core.String? reviewPublisherSiteFilter,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
@@ -162,10 +162,9 @@ class PagesResource {
   async.Future<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
       create(
     GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -202,11 +201,8 @@ class PagesResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -244,11 +240,8 @@ class PagesResource {
   async.Future<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
       get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -305,12 +298,12 @@ class PagesResource {
   async.Future<
           GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse>
       list({
-    core.int offset,
-    core.String organization,
-    core.int pageSize,
-    core.String pageToken,
-    core.String url,
-    core.String $fields,
+    core.int? offset,
+    core.String? organization,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? url,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (offset != null) 'offset': ['${offset}'],
@@ -363,13 +356,9 @@ class PagesResource {
       update(
     GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -390,20 +379,20 @@ class PagesResource {
 /// Information about the claim.
 class GoogleFactcheckingFactchecktoolsV1alpha1Claim {
   /// The date that the claim was made.
-  core.String claimDate;
+  core.String? claimDate;
 
   /// One or more reviews of this claim (namely, a fact-checking article).
-  core.List<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview> claimReview;
+  core.List<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>? claimReview;
 
   /// A person or organization stating the claim.
   ///
   /// For instance, "John Doe".
-  core.String claimant;
+  core.String? claimant;
 
   /// The claim text.
   ///
   /// For instance, "Crime has doubled in the last 2 years."
-  core.String text;
+  core.String? text;
 
   GoogleFactcheckingFactchecktoolsV1alpha1Claim();
 
@@ -426,31 +415,31 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Claim {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (claimDate != null) 'claimDate': claimDate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (claimDate != null) 'claimDate': claimDate!,
         if (claimReview != null)
-          'claimReview': claimReview.map((value) => value.toJson()).toList(),
-        if (claimant != null) 'claimant': claimant,
-        if (text != null) 'text': text,
+          'claimReview': claimReview!.map((value) => value.toJson()).toList(),
+        if (claimant != null) 'claimant': claimant!,
+        if (text != null) 'text': text!,
       };
 }
 
 /// Information about the claim author.
 class GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
   /// Corresponds to `ClaimReview.itemReviewed.author.image`.
-  core.String imageUrl;
+  core.String? imageUrl;
 
   /// Corresponds to `ClaimReview.itemReviewed.author.jobTitle`.
-  core.String jobTitle;
+  core.String? jobTitle;
 
   /// A person or organization stating the claim.
   ///
   /// For instance, "John Doe". Corresponds to
   /// `ClaimReview.itemReviewed.author.name`.
-  core.String name;
+  core.String? name;
 
   /// Corresponds to `ClaimReview.itemReviewed.author.sameAs`.
-  core.String sameAs;
+  core.String? sameAs;
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor();
 
@@ -469,11 +458,11 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageUrl != null) 'imageUrl': imageUrl,
-        if (jobTitle != null) 'jobTitle': jobTitle,
-        if (name != null) 'name': name,
-        if (sameAs != null) 'sameAs': sameAs,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageUrl != null) 'imageUrl': imageUrl!,
+        if (jobTitle != null) 'jobTitle': jobTitle!,
+        if (name != null) 'name': name!,
+        if (sameAs != null) 'sameAs': sameAs!,
       };
 }
 
@@ -483,30 +472,30 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
   /// best.
   ///
   /// Corresponds to `ClaimReview.reviewRating.bestRating`.
-  core.int bestRating;
+  core.int? bestRating;
 
   /// Corresponds to `ClaimReview.reviewRating.image`.
-  core.String imageUrl;
+  core.String? imageUrl;
 
   /// Corresponds to `ClaimReview.reviewRating.ratingExplanation`.
-  core.String ratingExplanation;
+  core.String? ratingExplanation;
 
   /// A numeric rating of this claim, in the range worstRating — bestRating
   /// inclusive.
   ///
   /// Corresponds to `ClaimReview.reviewRating.ratingValue`.
-  core.int ratingValue;
+  core.int? ratingValue;
 
   /// The truthfulness rating as a human-readible short word or phrase.
   ///
   /// Corresponds to `ClaimReview.reviewRating.alternateName`.
-  core.String textualRating;
+  core.String? textualRating;
 
   /// For numeric ratings, the worst value possible in the scale from worst to
   /// best.
   ///
   /// Corresponds to `ClaimReview.reviewRating.worstRating`.
-  core.int worstRating;
+  core.int? worstRating;
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating();
 
@@ -531,13 +520,13 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bestRating != null) 'bestRating': bestRating,
-        if (imageUrl != null) 'imageUrl': imageUrl,
-        if (ratingExplanation != null) 'ratingExplanation': ratingExplanation,
-        if (ratingValue != null) 'ratingValue': ratingValue,
-        if (textualRating != null) 'textualRating': textualRating,
-        if (worstRating != null) 'worstRating': worstRating,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bestRating != null) 'bestRating': bestRating!,
+        if (imageUrl != null) 'imageUrl': imageUrl!,
+        if (ratingExplanation != null) 'ratingExplanation': ratingExplanation!,
+        if (ratingValue != null) 'ratingValue': ratingValue!,
+        if (textualRating != null) 'textualRating': textualRating!,
+        if (worstRating != null) 'worstRating': worstRating!,
       };
 }
 
@@ -546,24 +535,24 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
   /// The language this review was written in.
   ///
   /// For instance, "en" or "de".
-  core.String languageCode;
+  core.String? languageCode;
 
   /// The publisher of this claim review.
-  GoogleFactcheckingFactchecktoolsV1alpha1Publisher publisher;
+  GoogleFactcheckingFactchecktoolsV1alpha1Publisher? publisher;
 
   /// The date the claim was reviewed.
-  core.String reviewDate;
+  core.String? reviewDate;
 
   /// Textual rating.
   ///
   /// For instance, "Mostly false".
-  core.String textualRating;
+  core.String? textualRating;
 
   /// The title of this claim review, if it can be determined.
-  core.String title;
+  core.String? title;
 
   /// The URL of this claim review.
-  core.String url;
+  core.String? url;
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview();
 
@@ -589,25 +578,25 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode,
-        if (publisher != null) 'publisher': publisher.toJson(),
-        if (reviewDate != null) 'reviewDate': reviewDate,
-        if (textualRating != null) 'textualRating': textualRating,
-        if (title != null) 'title': title,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (publisher != null) 'publisher': publisher!.toJson(),
+        if (reviewDate != null) 'reviewDate': reviewDate!,
+        if (textualRating != null) 'textualRating': textualRating!,
+        if (title != null) 'title': title!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// Information about the claim review author.
 class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
   /// Corresponds to `ClaimReview.author.image`.
-  core.String imageUrl;
+  core.String? imageUrl;
 
   /// Name of the organization that is publishing the fact check.
   ///
   /// Corresponds to `ClaimReview.author.name`.
-  core.String name;
+  core.String? name;
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor();
 
@@ -621,9 +610,9 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageUrl != null) 'imageUrl': imageUrl,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageUrl != null) 'imageUrl': imageUrl!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -637,41 +626,41 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
   /// specified in `claim_first_appearance`.
   ///
   /// Corresponds to `ClaimReview.itemReviewed[@type=Claim].appearance.url`.
-  core.List<core.String> claimAppearances;
+  core.List<core.String>? claimAppearances;
 
   /// Info about the author of this claim.
-  GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor claimAuthor;
+  GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor? claimAuthor;
 
   /// The date when the claim was made or entered public discourse.
   ///
   /// Corresponds to `ClaimReview.itemReviewed.datePublished`.
-  core.String claimDate;
+  core.String? claimDate;
 
   /// A link to a work in which this claim first appears.
   ///
   /// Corresponds to
   /// `ClaimReview.itemReviewed[@type=Claim].firstAppearance.url`.
-  core.String claimFirstAppearance;
+  core.String? claimFirstAppearance;
 
   /// The location where this claim was made.
   ///
   /// Corresponds to `ClaimReview.itemReviewed.name`.
-  core.String claimLocation;
+  core.String? claimLocation;
 
   /// A short summary of the claim being evaluated.
   ///
   /// Corresponds to `ClaimReview.claimReviewed`.
-  core.String claimReviewed;
+  core.String? claimReviewed;
 
   /// Info about the rating of this claim review.
-  GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating rating;
+  GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating? rating;
 
   /// This field is optional, and will default to the page URL.
   ///
   /// We provide this field to allow you the override the default value, but the
   /// only permitted override is the page URL plus an optional anchor link
   /// ("page jump"). Corresponds to `ClaimReview.url`
-  core.String url;
+  core.String? url;
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup();
 
@@ -708,16 +697,16 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (claimAppearances != null) 'claimAppearances': claimAppearances,
-        if (claimAuthor != null) 'claimAuthor': claimAuthor.toJson(),
-        if (claimDate != null) 'claimDate': claimDate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (claimAppearances != null) 'claimAppearances': claimAppearances!,
+        if (claimAuthor != null) 'claimAuthor': claimAuthor!.toJson(),
+        if (claimDate != null) 'claimDate': claimDate!,
         if (claimFirstAppearance != null)
-          'claimFirstAppearance': claimFirstAppearance,
-        if (claimLocation != null) 'claimLocation': claimLocation,
-        if (claimReviewed != null) 'claimReviewed': claimReviewed,
-        if (rating != null) 'rating': rating.toJson(),
-        if (url != null) 'url': url,
+          'claimFirstAppearance': claimFirstAppearance!,
+        if (claimLocation != null) 'claimLocation': claimLocation!,
+        if (claimReviewed != null) 'claimReviewed': claimReviewed!,
+        if (rating != null) 'rating': rating!.toJson(),
+        if (url != null) 'url': url!,
       };
 }
 
@@ -727,12 +716,12 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
   ///
   /// Similar to the above, semantically these are page-level fields, and each
   /// `ClaimReview` on this page will contain the same values.
-  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor claimReviewAuthor;
+  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor? claimReviewAuthor;
 
   /// A list of individual claim reviews for this page.
   ///
   /// Each item in the list corresponds to one `ClaimReview` element.
-  core.List<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>
+  core.List<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>?
       claimReviewMarkups;
 
   /// The name of this `ClaimReview` markup page resource, in the form of
@@ -740,7 +729,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
   ///
   /// Except for update requests, this field is output-only and should not be
   /// set by the user.
-  core.String name;
+  core.String? name;
 
   /// The URL of the page associated with this `ClaimReview` markup.
   ///
@@ -748,20 +737,20 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
   /// this is a page-level field, and each `ClaimReview` on this page will use
   /// this value unless individually overridden. Corresponds to
   /// `ClaimReview.url`
-  core.String pageUrl;
+  core.String? pageUrl;
 
   /// The date when the fact check was published.
   ///
   /// Similar to the URL, semantically this is a page-level field, and each
   /// `ClaimReview` on this page will contain the same value. Corresponds to
   /// `ClaimReview.datePublished`
-  core.String publishDate;
+  core.String? publishDate;
 
   /// The version ID for this markup.
   ///
   /// Except for update requests, this field is output-only and should not be
   /// set by the user.
-  core.String versionId;
+  core.String? versionId;
 
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage();
 
@@ -795,29 +784,29 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (claimReviewAuthor != null)
-          'claimReviewAuthor': claimReviewAuthor.toJson(),
+          'claimReviewAuthor': claimReviewAuthor!.toJson(),
         if (claimReviewMarkups != null)
           'claimReviewMarkups':
-              claimReviewMarkups.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (pageUrl != null) 'pageUrl': pageUrl,
-        if (publishDate != null) 'publishDate': publishDate,
-        if (versionId != null) 'versionId': versionId,
+              claimReviewMarkups!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (pageUrl != null) 'pageUrl': pageUrl!,
+        if (publishDate != null) 'publishDate': publishDate!,
+        if (versionId != null) 'versionId': versionId!,
       };
 }
 
 /// Response from searching fact-checked claims.
 class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse {
   /// The list of claims and all of their associated information.
-  core.List<GoogleFactcheckingFactchecktoolsV1alpha1Claim> claims;
+  core.List<GoogleFactcheckingFactchecktoolsV1alpha1Claim>? claims;
 
   /// The next pagination token in the Search response.
   ///
   /// It should be used as the `page_token` for the following request. An empty
   /// value means no more results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse();
 
@@ -835,24 +824,24 @@ class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (claims != null)
-          'claims': claims.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'claims': claims!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response from listing `ClaimReview` markup.
 class GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse {
   /// The result list of pages of `ClaimReview` markup.
-  core.List<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
+  core.List<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>?
       claimReviewMarkupPages;
 
   /// The next pagination token in the Search response.
   ///
   /// It should be used as the `page_token` for the following request. An empty
   /// value means no more results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse();
 
@@ -871,11 +860,11 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (claimReviewMarkupPages != null)
           'claimReviewMarkupPages':
-              claimReviewMarkupPages.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              claimReviewMarkupPages!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -884,13 +873,13 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
   /// The name of this publisher.
   ///
   /// For instance, "Awesome Fact Checks".
-  core.String name;
+  core.String? name;
 
   /// Host-level site name, without the protocol or "www" prefix.
   ///
   /// For instance, "awesomefactchecks.com". This value of this field is based
   /// purely on the claim review URL.
-  core.String site;
+  core.String? site;
 
   GoogleFactcheckingFactchecktoolsV1alpha1Publisher();
 
@@ -903,9 +892,9 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (site != null) 'site': site,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (site != null) 'site': site!,
       };
 }
 
@@ -923,5 +912,5 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }

@@ -92,11 +92,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -136,14 +133,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -193,13 +187,9 @@ class ProjectsLocationsJobsResource {
   async.Future<Job> create(
     Job request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -237,11 +227,8 @@ class ProjectsLocationsJobsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -277,11 +264,8 @@ class ProjectsLocationsJobsResource {
   /// this method will complete with the same error.
   async.Future<Job> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -328,13 +312,10 @@ class ProjectsLocationsJobsResource {
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -395,14 +376,10 @@ class ProjectsLocationsJobsResource {
   async.Future<Job> patch(
     Job request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -448,13 +425,9 @@ class ProjectsLocationsJobsResource {
   async.Future<Job> pause(
     PauseJobRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -499,13 +472,9 @@ class ProjectsLocationsJobsResource {
   async.Future<Job> resume(
     ResumeJobRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -549,13 +518,9 @@ class ProjectsLocationsJobsResource {
   async.Future<Job> run(
     RunJobRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -585,15 +550,15 @@ class ProjectsLocationsJobsResource {
 /// attempt.
 class AppEngineHttpTarget {
   /// App Engine Routing setting for the job.
-  AppEngineRouting appEngineRouting;
+  AppEngineRouting? appEngineRouting;
 
   /// Body.
   ///
   /// HTTP request body. A request body is allowed only if the HTTP method is
   /// POST or PUT. It will result in invalid argument error to set a body on a
   /// job with an incompatible HttpMethod.
-  core.String body;
-  core.List<core.int> get bodyAsBytes => convert.base64.decode(body);
+  core.String? body;
+  core.List<core.int> get bodyAsBytes => convert.base64.decode(body!);
 
   set bodyAsBytes(core.List<core.int> _bytes) {
     body =
@@ -619,7 +584,7 @@ class AppEngineHttpTarget {
   /// `X-Google-*`: For Google internal use only. * `X-AppEngine-*`: For Google
   /// internal use only. In addition, some App Engine headers, which contain
   /// job-specific information, are also be sent to the job handler.
-  core.Map<core.String, core.String> headers;
+  core.Map<core.String, core.String>? headers;
 
   /// The HTTP method to use for the request.
   ///
@@ -633,7 +598,7 @@ class AppEngineHttpTarget {
   /// - "DELETE" : HTTP DELETE
   /// - "PATCH" : HTTP PATCH
   /// - "OPTIONS" : HTTP OPTIONS
-  core.String httpMethod;
+  core.String? httpMethod;
 
   /// The relative URI.
   ///
@@ -641,7 +606,7 @@ class AppEngineHttpTarget {
   /// URL. It can contain a path, query string arguments, and `#` fragments. If
   /// the relative URL is empty, then the root path "/" will be used. No spaces
   /// are allowed, and the maximum length allowed is 2083 characters.
-  core.String relativeUri;
+  core.String? relativeUri;
 
   AppEngineHttpTarget();
 
@@ -670,13 +635,13 @@ class AppEngineHttpTarget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (appEngineRouting != null)
-          'appEngineRouting': appEngineRouting.toJson(),
-        if (body != null) 'body': body,
-        if (headers != null) 'headers': headers,
-        if (httpMethod != null) 'httpMethod': httpMethod,
-        if (relativeUri != null) 'relativeUri': relativeUri,
+          'appEngineRouting': appEngineRouting!.toJson(),
+        if (body != null) 'body': body!,
+        if (headers != null) 'headers': headers!,
+        if (httpMethod != null) 'httpMethod': httpMethod!,
+        if (relativeUri != null) 'relativeUri': relativeUri!,
       };
 }
 
@@ -716,7 +681,7 @@ class AppEngineRouting {
   /// default version of the default service when the job is attempted.
   ///
   /// Output only.
-  core.String host;
+  core.String? host;
 
   /// App instance.
   ///
@@ -727,19 +692,19 @@ class AppEngineRouting {
   /// [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)
   /// and
   /// [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
-  core.String instance;
+  core.String? instance;
 
   /// App service.
   ///
   /// By default, the job is sent to the service which is the default service
   /// when the job is attempted.
-  core.String service;
+  core.String? service;
 
   /// App version.
   ///
   /// By default, the job is sent to the version which is the default version
   /// when the job is attempted.
-  core.String version;
+  core.String? version;
 
   AppEngineRouting();
 
@@ -758,11 +723,11 @@ class AppEngineRouting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (host != null) 'host': host,
-        if (instance != null) 'instance': instance,
-        if (service != null) 'service': service,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (host != null) 'host': host!,
+        if (instance != null) 'instance': instance!,
+        if (service != null) 'service': service!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -780,7 +745,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Http target.
@@ -795,8 +760,8 @@ class HttpTarget {
   ///
   /// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
   /// It is an error to set body on a job with an incompatible HttpMethod.
-  core.String body;
-  core.List<core.int> get bodyAsBytes => convert.base64.decode(body);
+  core.String? body;
+  core.List<core.int> get bodyAsBytes => convert.base64.decode(body!);
 
   set bodyAsBytes(core.List<core.int> _bytes) {
     body =
@@ -816,7 +781,7 @@ class HttpTarget {
   /// `User-Agent`: This will be set to `"Google-Cloud-Scheduler"`. *
   /// `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal
   /// use only. The total size of headers must be less than 80KB.
-  core.Map<core.String, core.String> headers;
+  core.Map<core.String, core.String>? headers;
 
   /// Which HTTP method to use for the request.
   /// Possible string values are:
@@ -828,7 +793,7 @@ class HttpTarget {
   /// - "DELETE" : HTTP DELETE
   /// - "PATCH" : HTTP PATCH
   /// - "OPTIONS" : HTTP OPTIONS
-  core.String httpMethod;
+  core.String? httpMethod;
 
   /// If specified, an
   /// [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
@@ -837,7 +802,7 @@ class HttpTarget {
   ///
   /// This type of authorization should generally only be used when calling
   /// Google APIs hosted on *.googleapis.com.
-  OAuthToken oauthToken;
+  OAuthToken? oauthToken;
 
   /// If specified, an
   /// [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
@@ -847,7 +812,7 @@ class HttpTarget {
   /// This type of authorization can be used for many scenarios, including
   /// calling Cloud Run, or endpoints where you intend to validate the token
   /// yourself.
-  OidcToken oidcToken;
+  OidcToken? oidcToken;
 
   /// The full URI path that the request will be sent to.
   ///
@@ -858,7 +823,7 @@ class HttpTarget {
   /// characters after encoding.
   ///
   /// Required.
-  core.String uri;
+  core.String? uri;
 
   HttpTarget();
 
@@ -891,13 +856,13 @@ class HttpTarget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (body != null) 'body': body,
-        if (headers != null) 'headers': headers,
-        if (httpMethod != null) 'httpMethod': httpMethod,
-        if (oauthToken != null) 'oauthToken': oauthToken.toJson(),
-        if (oidcToken != null) 'oidcToken': oidcToken.toJson(),
-        if (uri != null) 'uri': uri,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (body != null) 'body': body!,
+        if (headers != null) 'headers': headers!,
+        if (httpMethod != null) 'httpMethod': httpMethod!,
+        if (oauthToken != null) 'oauthToken': oauthToken!.toJson(),
+        if (oidcToken != null) 'oidcToken': oidcToken!.toJson(),
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -906,7 +871,7 @@ class HttpTarget {
 /// The maximum allowed size for a job is 100KB.
 class Job {
   /// App Engine HTTP target.
-  AppEngineHttpTarget appEngineHttpTarget;
+  AppEngineHttpTarget? appEngineHttpTarget;
 
   /// The deadline for job attempts.
   ///
@@ -916,21 +881,21 @@ class Job {
   /// retry the job according to the RetryConfig. The allowed duration for this
   /// deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For
   /// App Engine HTTP targets, between 15 seconds and 24 hours.
-  core.String attemptDeadline;
+  core.String? attemptDeadline;
 
   /// Optionally caller-specified in CreateJob or UpdateJob.
   ///
   /// A human-readable description for the job. This string must not contain
   /// more than 500 characters.
-  core.String description;
+  core.String? description;
 
   /// HTTP target.
-  HttpTarget httpTarget;
+  HttpTarget? httpTarget;
 
   /// The time the last job attempt started.
   ///
   /// Output only.
-  core.String lastAttemptTime;
+  core.String? lastAttemptTime;
 
   /// Optionally caller-specified in CreateJob, after which it becomes output
   /// only.
@@ -945,13 +910,13 @@ class Job {
   /// information, see https://cloud.google.com/about/locations/. * `JOB_ID` can
   /// contain only letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), or
   /// underscores (_). The maximum length is 500 characters.
-  core.String name;
+  core.String? name;
 
   /// Pub/Sub target.
-  PubsubTarget pubsubTarget;
+  PubsubTarget? pubsubTarget;
 
   /// Settings that determine the retry behavior.
-  RetryConfig retryConfig;
+  RetryConfig? retryConfig;
 
   /// Required, except when used with UpdateJob.
   ///
@@ -968,7 +933,7 @@ class Job {
   /// ended when its scheduled time occurs. If retry_count > 0 and a job attempt
   /// fails, the job will be tried a total of retry_count times, with
   /// exponential backoff, until the next scheduled start time.
-  core.String schedule;
+  core.String? schedule;
 
   /// The next time the job is scheduled.
   ///
@@ -976,7 +941,7 @@ class Job {
   /// execution time according to the schedule.
   ///
   /// Output only.
-  core.String scheduleTime;
+  core.String? scheduleTime;
 
   /// State of the job.
   ///
@@ -991,12 +956,12 @@ class Job {
   /// - "UPDATE_FAILED" : The job state resulting from a failed
   /// CloudScheduler.UpdateJob operation. To recover a job from this state,
   /// retry CloudScheduler.UpdateJob until a successful response is received.
-  core.String state;
+  core.String? state;
 
   /// The response from the target for the last attempted execution.
   ///
   /// Output only.
-  Status status;
+  Status? status;
 
   /// Specifies the time zone to be used in interpreting schedule.
   ///
@@ -1006,12 +971,12 @@ class Job {
   /// daylight saving time are determined by the chosen tz. For UTC use the
   /// string "utc". If a time zone is not specified, the default will be in UTC
   /// (also known as GMT).
-  core.String timeZone;
+  core.String? timeZone;
 
   /// The creation time of the job.
   ///
   /// Output only.
-  core.String userUpdateTime;
+  core.String? userUpdateTime;
 
   Job();
 
@@ -1065,29 +1030,29 @@ class Job {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (appEngineHttpTarget != null)
-          'appEngineHttpTarget': appEngineHttpTarget.toJson(),
-        if (attemptDeadline != null) 'attemptDeadline': attemptDeadline,
-        if (description != null) 'description': description,
-        if (httpTarget != null) 'httpTarget': httpTarget.toJson(),
-        if (lastAttemptTime != null) 'lastAttemptTime': lastAttemptTime,
-        if (name != null) 'name': name,
-        if (pubsubTarget != null) 'pubsubTarget': pubsubTarget.toJson(),
-        if (retryConfig != null) 'retryConfig': retryConfig.toJson(),
-        if (schedule != null) 'schedule': schedule,
-        if (scheduleTime != null) 'scheduleTime': scheduleTime,
-        if (state != null) 'state': state,
-        if (status != null) 'status': status.toJson(),
-        if (timeZone != null) 'timeZone': timeZone,
-        if (userUpdateTime != null) 'userUpdateTime': userUpdateTime,
+          'appEngineHttpTarget': appEngineHttpTarget!.toJson(),
+        if (attemptDeadline != null) 'attemptDeadline': attemptDeadline!,
+        if (description != null) 'description': description!,
+        if (httpTarget != null) 'httpTarget': httpTarget!.toJson(),
+        if (lastAttemptTime != null) 'lastAttemptTime': lastAttemptTime!,
+        if (name != null) 'name': name!,
+        if (pubsubTarget != null) 'pubsubTarget': pubsubTarget!.toJson(),
+        if (retryConfig != null) 'retryConfig': retryConfig!.toJson(),
+        if (schedule != null) 'schedule': schedule!,
+        if (scheduleTime != null) 'scheduleTime': scheduleTime!,
+        if (state != null) 'state': state!,
+        if (status != null) 'status': status!.toJson(),
+        if (timeZone != null) 'timeZone': timeZone!,
+        if (userUpdateTime != null) 'userUpdateTime': userUpdateTime!,
       };
 }
 
 /// Response message for listing jobs using ListJobs.
 class ListJobsResponse {
   /// The list of jobs.
-  core.List<Job> jobs;
+  core.List<Job>? jobs;
 
   /// A token to retrieve next page of results.
   ///
@@ -1095,7 +1060,7 @@ class ListJobsResponse {
   /// to retrieve the next page of results. If this is empty it indicates that
   /// there are no more results through which to paginate. The page token is
   /// valid for only 2 hours.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListJobsResponse();
 
@@ -1111,19 +1076,19 @@ class ListJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -1139,10 +1104,10 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1151,17 +1116,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -1169,12 +1134,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -1208,12 +1173,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1227,14 +1192,14 @@ class OAuthToken {
   ///
   /// If not specified, "https://www.googleapis.com/auth/cloud-platform" will be
   /// used.
-  core.String scope;
+  core.String? scope;
 
   /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
   /// to be used for generating OAuth token.
   ///
   /// The service account must be within the same project as the job. The caller
   /// must have iam.serviceAccounts.actAs permission for the service account.
-  core.String serviceAccountEmail;
+  core.String? serviceAccountEmail;
 
   OAuthToken();
 
@@ -1247,10 +1212,10 @@ class OAuthToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (scope != null) 'scope': scope,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (scope != null) 'scope': scope!,
         if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail,
+          'serviceAccountEmail': serviceAccountEmail!,
       };
 }
 
@@ -1263,14 +1228,14 @@ class OidcToken {
   /// Audience to be used when generating OIDC token.
   ///
   /// If not specified, the URI specified in target will be used.
-  core.String audience;
+  core.String? audience;
 
   /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
   /// to be used for generating OIDC token.
   ///
   /// The service account must be within the same project as the job. The caller
   /// must have iam.serviceAccounts.actAs permission for the service account.
-  core.String serviceAccountEmail;
+  core.String? serviceAccountEmail;
 
   OidcToken();
 
@@ -1283,10 +1248,10 @@ class OidcToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audience != null) 'audience': audience,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audience != null) 'audience': audience!,
         if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail,
+          'serviceAccountEmail': serviceAccountEmail!,
       };
 }
 
@@ -1298,7 +1263,7 @@ class PauseJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A message that is published by publishers and consumed by subscribers.
@@ -1315,13 +1280,13 @@ class PubsubMessage {
   ///
   /// If this field is empty, the message must contain non-empty data. This can
   /// be used to filter messages on the subscription.
-  core.Map<core.String, core.String> attributes;
+  core.Map<core.String, core.String>? attributes;
 
   /// The message data field.
   ///
   /// If this field is empty, the message must contain at least one attribute.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -1333,7 +1298,7 @@ class PubsubMessage {
   /// Guaranteed to be unique within the topic. This value may be read by a
   /// subscriber that receives a `PubsubMessage` via a `Pull` call or a push
   /// delivery. It must not be populated by the publisher in a `Publish` call.
-  core.String messageId;
+  core.String? messageId;
 
   /// If non-empty, identifies related messages for which publish order should
   /// be respected.
@@ -1343,13 +1308,13 @@ class PubsubMessage {
   /// to subscribers in the order in which they are received by the Pub/Sub
   /// system. All `PubsubMessage`s published in a given `PublishRequest` must
   /// specify the same `ordering_key` value.
-  core.String orderingKey;
+  core.String? orderingKey;
 
   /// The time at which the message was published, populated by the server when
   /// it receives the `Publish` call.
   ///
   /// It must not be populated by the publisher in a `Publish` call.
-  core.String publishTime;
+  core.String? publishTime;
 
   PubsubMessage();
 
@@ -1378,12 +1343,12 @@ class PubsubMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributes != null) 'attributes': attributes,
-        if (data != null) 'data': data,
-        if (messageId != null) 'messageId': messageId,
-        if (orderingKey != null) 'orderingKey': orderingKey,
-        if (publishTime != null) 'publishTime': publishTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+        if (data != null) 'data': data!,
+        if (messageId != null) 'messageId': messageId!,
+        if (orderingKey != null) 'orderingKey': orderingKey!,
+        if (publishTime != null) 'publishTime': publishTime!,
       };
 }
 
@@ -1396,14 +1361,14 @@ class PubsubTarget {
   ///
   /// Pubsub message must contain either non-empty data, or at least one
   /// attribute.
-  core.Map<core.String, core.String> attributes;
+  core.Map<core.String, core.String>? attributes;
 
   /// The message payload for PubsubMessage.
   ///
   /// Pubsub message must contain either non-empty data, or at least one
   /// attribute.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -1419,7 +1384,7 @@ class PubsubTarget {
   /// the same project as the Cloud Scheduler job.
   ///
   /// Required.
-  core.String topicName;
+  core.String? topicName;
 
   PubsubTarget();
 
@@ -1442,10 +1407,10 @@ class PubsubTarget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributes != null) 'attributes': attributes,
-        if (data != null) 'data': data,
-        if (topicName != null) 'topicName': topicName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+        if (data != null) 'data': data!,
+        if (topicName != null) 'topicName': topicName!,
       };
 }
 
@@ -1457,7 +1422,7 @@ class ResumeJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Settings that determine the retry behavior.
@@ -1469,7 +1434,7 @@ class RetryConfig {
   /// The maximum amount of time to wait before retrying a job after it fails.
   ///
   /// The default value of this field is 1 hour.
-  core.String maxBackoffDuration;
+  core.String? maxBackoffDuration;
 
   /// The time between retries will double `max_doublings` times.
   ///
@@ -1483,7 +1448,7 @@ class RetryConfig {
   /// until the job has been attempted retry_count times. Thus, the requests
   /// will retry at 10s, 20s, 40s, 80s, 160s, 240s, 300s, 300s, .... The default
   /// value of this field is 5.
-  core.int maxDoublings;
+  core.int? maxDoublings;
 
   /// The time limit for retrying a failed job, measured from time when an
   /// execution was first attempted.
@@ -1491,12 +1456,12 @@ class RetryConfig {
   /// If specified with retry_count, the job will be retried until both limits
   /// are reached. The default value for max_retry_duration is zero, which means
   /// retry duration is unlimited.
-  core.String maxRetryDuration;
+  core.String? maxRetryDuration;
 
   /// The minimum amount of time to wait before retrying a job after it fails.
   ///
   /// The default value of this field is 5 seconds.
-  core.String minBackoffDuration;
+  core.String? minBackoffDuration;
 
   /// The number of attempts that the system will make to run a job using the
   /// exponential backoff procedure described by max_doublings.
@@ -1508,7 +1473,7 @@ class RetryConfig {
   /// using exponential backoff, retry_count times, or until the next scheduled
   /// execution time, whichever comes first. Values greater than 5 and negative
   /// values are not allowed.
-  core.int retryCount;
+  core.int? retryCount;
 
   RetryConfig();
 
@@ -1530,14 +1495,14 @@ class RetryConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (maxBackoffDuration != null)
-          'maxBackoffDuration': maxBackoffDuration,
-        if (maxDoublings != null) 'maxDoublings': maxDoublings,
-        if (maxRetryDuration != null) 'maxRetryDuration': maxRetryDuration,
+          'maxBackoffDuration': maxBackoffDuration!,
+        if (maxDoublings != null) 'maxDoublings': maxDoublings!,
+        if (maxRetryDuration != null) 'maxRetryDuration': maxRetryDuration!,
         if (minBackoffDuration != null)
-          'minBackoffDuration': minBackoffDuration,
-        if (retryCount != null) 'retryCount': retryCount,
+          'minBackoffDuration': minBackoffDuration!,
+        if (retryCount != null) 'retryCount': retryCount!,
       };
 }
 
@@ -1549,7 +1514,7 @@ class RunJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1561,7 +1526,7 @@ class RunJobRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1569,13 +1534,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -1599,9 +1564,9 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }

@@ -103,15 +103,12 @@ class CustomersReportsResource {
   async.Future<GoogleChromeManagementV1CountChromeVersionsResponse>
       countChromeVersions(
     core.String customer, {
-    core.String filter,
-    core.String orgUnitId,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orgUnitId,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orgUnitId != null) 'orgUnitId': [orgUnitId],
@@ -171,16 +168,13 @@ class CustomersReportsResource {
   async.Future<GoogleChromeManagementV1CountInstalledAppsResponse>
       countInstalledApps(
     core.String customer, {
-    core.String filter,
-    core.String orderBy,
-    core.String orgUnitId,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.String? orgUnitId,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -252,18 +246,15 @@ class CustomersReportsResource {
   async.Future<GoogleChromeManagementV1FindInstalledAppDevicesResponse>
       findInstalledAppDevices(
     core.String customer, {
-    core.String appId,
-    core.String appType,
-    core.String filter,
-    core.String orderBy,
-    core.String orgUnitId,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? appId,
+    core.String? appType,
+    core.String? filter,
+    core.String? orderBy,
+    core.String? orgUnitId,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (customer == null) {
-      throw core.ArgumentError('Parameter customer is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (appId != null) 'appId': [appId],
       if (appType != null) 'appType': [appType],
@@ -300,17 +291,17 @@ class GoogleChromeManagementV1BrowserVersion {
   /// - "DEV" : Dev release channel.
   /// - "BETA" : Beta release channel.
   /// - "STABLE" : Stable release channel.
-  core.String channel;
+  core.String? channel;
 
   /// Count grouped by device_system and major version
   ///
   /// Output only.
-  core.String count;
+  core.String? count;
 
   /// Version of the system-specified operating system.
   ///
   /// Output only.
-  core.String deviceOsVersion;
+  core.String? deviceOsVersion;
 
   /// The device operating system.
   ///
@@ -324,12 +315,12 @@ class GoogleChromeManagementV1BrowserVersion {
   /// - "SYSTEM_WINDOWS" : Microsoft Windows operating system.
   /// - "SYSTEM_MAC" : Apple macOS operating system.
   /// - "SYSTEM_LINUX" : Linux operating system.
-  core.String system;
+  core.String? system;
 
   /// The full version of the installed browser.
   ///
   /// Output only.
-  core.String version;
+  core.String? version;
 
   GoogleChromeManagementV1BrowserVersion();
 
@@ -351,25 +342,25 @@ class GoogleChromeManagementV1BrowserVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (channel != null) 'channel': channel,
-        if (count != null) 'count': count,
-        if (deviceOsVersion != null) 'deviceOsVersion': deviceOsVersion,
-        if (system != null) 'system': system,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (channel != null) 'channel': channel!,
+        if (count != null) 'count': count!,
+        if (deviceOsVersion != null) 'deviceOsVersion': deviceOsVersion!,
+        if (system != null) 'system': system!,
+        if (version != null) 'version': version!,
       };
 }
 
 /// Response containing requested browser versions details and counts.
 class GoogleChromeManagementV1CountChromeVersionsResponse {
   /// List of all browser versions and their install counts.
-  core.List<GoogleChromeManagementV1BrowserVersion> browserVersions;
+  core.List<GoogleChromeManagementV1BrowserVersion>? browserVersions;
 
   /// Token to specify the next page in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Total number browser versions matching request.
-  core.int totalSize;
+  core.int? totalSize;
 
   GoogleChromeManagementV1CountChromeVersionsResponse();
 
@@ -389,25 +380,25 @@ class GoogleChromeManagementV1CountChromeVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (browserVersions != null)
           'browserVersions':
-              browserVersions.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+              browserVersions!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
 /// Response containing details of queried installed apps.
 class GoogleChromeManagementV1CountInstalledAppsResponse {
   /// List of installed apps matching request.
-  core.List<GoogleChromeManagementV1InstalledApp> installedApps;
+  core.List<GoogleChromeManagementV1InstalledApp>? installedApps;
 
   /// Token to specify next page in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Total number of installed apps matching request.
-  core.int totalSize;
+  core.int? totalSize;
 
   GoogleChromeManagementV1CountInstalledAppsResponse();
 
@@ -427,12 +418,12 @@ class GoogleChromeManagementV1CountInstalledAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (installedApps != null)
           'installedApps':
-              installedApps.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+              installedApps!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
@@ -441,12 +432,12 @@ class GoogleChromeManagementV1Device {
   /// The ID of the device that reported this Chrome browser information.
   ///
   /// Output only.
-  core.String deviceId;
+  core.String? deviceId;
 
   /// The name of the machine within its local network.
   ///
   /// Output only.
-  core.String machine;
+  core.String? machine;
 
   GoogleChromeManagementV1Device();
 
@@ -459,9 +450,9 @@ class GoogleChromeManagementV1Device {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId,
-        if (machine != null) 'machine': machine,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (machine != null) 'machine': machine!,
       };
 }
 
@@ -470,13 +461,13 @@ class GoogleChromeManagementV1FindInstalledAppDevicesResponse {
   /// A list of devices which have the app installed.
   ///
   /// Sorted in ascending alphabetical order on the Device.machine field.
-  core.List<GoogleChromeManagementV1Device> devices;
+  core.List<GoogleChromeManagementV1Device>? devices;
 
   /// Token to specify the next page in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Total number of devices matching request.
-  core.int totalSize;
+  core.int? totalSize;
 
   GoogleChromeManagementV1FindInstalledAppDevicesResponse();
 
@@ -497,11 +488,11 @@ class GoogleChromeManagementV1FindInstalledAppDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (devices != null)
-          'devices': devices.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+          'devices': devices!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
@@ -514,7 +505,7 @@ class GoogleChromeManagementV1InstalledApp {
   /// (e.g. com.evernote).
   ///
   /// Output only.
-  core.String appId;
+  core.String? appId;
 
   /// How the app was installed.
   ///
@@ -527,7 +518,7 @@ class GoogleChromeManagementV1InstalledApp {
   /// - "DEVELOPMENT" : Development app install type.
   /// - "SIDELOAD" : Sideloaded app install type.
   /// - "OTHER" : Other app install type.
-  core.String appInstallType;
+  core.String? appInstallType;
 
   /// Source of the installed app.
   ///
@@ -536,7 +527,7 @@ class GoogleChromeManagementV1InstalledApp {
   /// - "APP_SOURCE_UNSPECIFIED" : Application source not specified.
   /// - "CHROME_WEBSTORE" : Generally for extensions and Chrome apps.
   /// - "PLAY_STORE" : Play Store app.
-  core.String appSource;
+  core.String? appSource;
 
   /// Type of the app.
   ///
@@ -548,42 +539,42 @@ class GoogleChromeManagementV1InstalledApp {
   /// - "THEME" : Chrome theme.
   /// - "HOSTED_APP" : Chrome hosted app.
   /// - "ANDROID_APP" : ARC++ app.
-  core.String appType;
+  core.String? appType;
 
   /// Count of browser devices with this app installed.
   ///
   /// Output only.
-  core.String browserDeviceCount;
+  core.String? browserDeviceCount;
 
   /// Description of the installed app.
   ///
   /// Output only.
-  core.String description;
+  core.String? description;
 
   /// Whether the app is disabled.
   ///
   /// Output only.
-  core.bool disabled;
+  core.bool? disabled;
 
   /// Name of the installed app.
   ///
   /// Output only.
-  core.String displayName;
+  core.String? displayName;
 
   /// Homepage uri of the installed app.
   ///
   /// Output only.
-  core.String homepageUri;
+  core.String? homepageUri;
 
   /// Count of ChromeOS users with this app installed.
   ///
   /// Output only.
-  core.String osUserCount;
+  core.String? osUserCount;
 
   /// Permissions of the installed app.
   ///
   /// Output only.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   GoogleChromeManagementV1InstalledApp();
 
@@ -625,18 +616,18 @@ class GoogleChromeManagementV1InstalledApp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appId != null) 'appId': appId,
-        if (appInstallType != null) 'appInstallType': appInstallType,
-        if (appSource != null) 'appSource': appSource,
-        if (appType != null) 'appType': appType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appId != null) 'appId': appId!,
+        if (appInstallType != null) 'appInstallType': appInstallType!,
+        if (appSource != null) 'appSource': appSource!,
+        if (appType != null) 'appType': appType!,
         if (browserDeviceCount != null)
-          'browserDeviceCount': browserDeviceCount,
-        if (description != null) 'description': description,
-        if (disabled != null) 'disabled': disabled,
-        if (displayName != null) 'displayName': displayName,
-        if (homepageUri != null) 'homepageUri': homepageUri,
-        if (osUserCount != null) 'osUserCount': osUserCount,
-        if (permissions != null) 'permissions': permissions,
+          'browserDeviceCount': browserDeviceCount!,
+        if (description != null) 'description': description!,
+        if (disabled != null) 'disabled': disabled!,
+        if (displayName != null) 'displayName': displayName!,
+        if (homepageUri != null) 'homepageUri': homepageUri!,
+        if (osUserCount != null) 'osUserCount': osUserCount!,
+        if (permissions != null) 'permissions': permissions!,
       };
 }

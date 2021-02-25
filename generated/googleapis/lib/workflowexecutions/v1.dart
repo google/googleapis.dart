@@ -115,13 +115,9 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   async.Future<Execution> cancel(
     CancelExecutionRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -164,13 +160,9 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   async.Future<Execution> create(
     Execution request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -218,12 +210,9 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   /// this method will complete with the same error.
   async.Future<Execution> get(
     core.String name, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -285,14 +274,11 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   /// this method will complete with the same error.
   async.Future<ListExecutionsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -322,16 +308,16 @@ class CancelExecutionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Error describes why the execution was abnormally terminated.
 class Error {
   /// Human readable error context, helpful for debugging purposes.
-  core.String context;
+  core.String? context;
 
   /// Error payload returned by the execution, represented as a JSON string.
-  core.String payload;
+  core.String? payload;
 
   Error();
 
@@ -344,9 +330,9 @@ class Error {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (context != null) 'context': context,
-        if (payload != null) 'payload': payload,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (context != null) 'context': context!,
+        if (payload != null) 'payload': payload!,
       };
 }
 
@@ -359,12 +345,12 @@ class Execution {
   /// run your workflow, you must escape any JSON string value of `argument`.
   /// Example:
   /// `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
-  core.String argument;
+  core.String? argument;
 
   /// Marks the end of execution, successful or not.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// The error which caused the execution to finish prematurely.
   ///
@@ -372,7 +358,7 @@ class Execution {
   /// `CANCELLED`.
   ///
   /// Output only.
-  Error error;
+  Error? error;
 
   /// The resource name of the execution.
   ///
@@ -380,19 +366,19 @@ class Execution {
   /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Output of the execution represented as a JSON string.
   ///
   /// The value can only be present if the execution's state is `SUCCEEDED`.
   ///
   /// Output only.
-  core.String result;
+  core.String? result;
 
   /// Marks the beginning of execution.
   ///
   /// Output only.
-  core.String startTime;
+  core.String? startTime;
 
   /// Current state of the execution.
   ///
@@ -403,12 +389,12 @@ class Execution {
   /// - "SUCCEEDED" : The execution finished successfully.
   /// - "FAILED" : The execution failed with an error.
   /// - "CANCELLED" : The execution was stopped intentionally.
-  core.String state;
+  core.String? state;
 
   /// Revision of the workflow this execution is using.
   ///
   /// Output only.
-  core.String workflowRevisionId;
+  core.String? workflowRevisionId;
 
   Execution();
 
@@ -440,28 +426,28 @@ class Execution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (argument != null) 'argument': argument,
-        if (endTime != null) 'endTime': endTime,
-        if (error != null) 'error': error.toJson(),
-        if (name != null) 'name': name,
-        if (result != null) 'result': result,
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (argument != null) 'argument': argument!,
+        if (endTime != null) 'endTime': endTime!,
+        if (error != null) 'error': error!.toJson(),
+        if (name != null) 'name': name!,
+        if (result != null) 'result': result!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
         if (workflowRevisionId != null)
-          'workflowRevisionId': workflowRevisionId,
+          'workflowRevisionId': workflowRevisionId!,
       };
 }
 
 /// Response for the ListExecutions method.
 class ListExecutionsResponse {
   /// The executions which match the request.
-  core.List<Execution> executions;
+  core.List<Execution>? executions;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListExecutionsResponse();
 
@@ -477,9 +463,9 @@ class ListExecutionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (executions != null)
-          'executions': executions.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'executions': executions!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }

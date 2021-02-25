@@ -111,14 +111,10 @@ class DmsResource {
   async.Future<Message> messages(
     Message request,
     core.String parent, {
-    core.String threadKey,
-    core.String $fields,
+    core.String? threadKey,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -170,14 +166,10 @@ class DmsResource {
   async.Future<Message> webhooks(
     Message request,
     core.String parent, {
-    core.String threadKey,
-    core.String $fields,
+    core.String? threadKey,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -235,14 +227,10 @@ class DmsConversationsResource {
   async.Future<Message> messages(
     Message request,
     core.String parent, {
-    core.String threadKey,
-    core.String $fields,
+    core.String? threadKey,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -296,12 +284,9 @@ class MediaResource {
   /// this method will complete with the same error.
   async.Future<core.Object> download(
     core.String resourceName, {
-    core.String $fields,
+    core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    if (resourceName == null) {
-      throw core.ArgumentError('Parameter resourceName is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -318,7 +303,7 @@ class MediaResource {
     if (downloadOptions.isMetadataDownload) {
       return Media.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
-      return _response;
+      return _response as commons.Media;
     }
   }
 }
@@ -365,14 +350,10 @@ class RoomsResource {
   async.Future<Message> messages(
     Message request,
     core.String parent, {
-    core.String threadKey,
-    core.String $fields,
+    core.String? threadKey,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -424,14 +405,10 @@ class RoomsResource {
   async.Future<Message> webhooks(
     Message request,
     core.String parent, {
-    core.String threadKey,
-    core.String $fields,
+    core.String? threadKey,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -489,14 +466,10 @@ class RoomsConversationsResource {
   async.Future<Message> messages(
     Message request,
     core.String parent, {
-    core.String threadKey,
-    core.String $fields,
+    core.String? threadKey,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -543,11 +516,8 @@ class SpacesResource {
   /// this method will complete with the same error.
   async.Future<Space> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -584,9 +554,9 @@ class SpacesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSpacesResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -639,14 +609,10 @@ class SpacesResource {
   async.Future<Message> webhooks(
     Message request,
     core.String parent, {
-    core.String threadKey,
-    core.String $fields,
+    core.String? threadKey,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -691,11 +657,8 @@ class SpacesMembersResource {
   /// this method will complete with the same error.
   async.Future<Membership> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -739,13 +702,10 @@ class SpacesMembersResource {
   /// this method will complete with the same error.
   async.Future<ListMembershipsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -805,14 +765,10 @@ class SpacesMessagesResource {
   async.Future<Message> create(
     Message request,
     core.String parent, {
-    core.String threadKey,
-    core.String $fields,
+    core.String? threadKey,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (threadKey != null) 'threadKey': [threadKey],
       if ($fields != null) 'fields': [$fields],
@@ -851,11 +807,8 @@ class SpacesMessagesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -891,11 +844,8 @@ class SpacesMessagesResource {
   /// this method will complete with the same error.
   async.Future<Message> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -936,14 +886,10 @@ class SpacesMessagesResource {
   async.Future<Message> update(
     Message request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -990,11 +936,8 @@ class SpacesMessagesAttachmentsResource {
   /// this method will complete with the same error.
   async.Future<Attachment> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1018,10 +961,10 @@ class SpacesMessagesAttachmentsResource {
 /// and snooze time in the list of string parameters.
 class ActionParameter {
   /// The name of the parameter for the action script.
-  core.String key;
+  core.String? key;
 
   /// The value of the parameter.
-  core.String value;
+  core.String? value;
 
   ActionParameter();
 
@@ -1034,9 +977,9 @@ class ActionParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1049,12 +992,12 @@ class ActionResponse {
   /// - "UPDATE_MESSAGE" : Update the bot's own message. (Only after
   /// CARD_CLICKED events.)
   /// - "REQUEST_CONFIG" : Privately ask the user for additional auth or config.
-  core.String type;
+  core.String? type;
 
   /// URL for users to auth or config.
   ///
   /// (Only for REQUEST_CONFIG response types.)
-  core.String url;
+  core.String? url;
 
   ActionResponse();
 
@@ -1067,9 +1010,9 @@ class ActionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -1084,24 +1027,24 @@ class ActionResponse {
 class Annotation {
   /// Length of the substring in the plain-text message body this annotation
   /// corresponds to.
-  core.int length;
+  core.int? length;
 
   /// The metadata for a slash command.
-  SlashCommandMetadata slashCommand;
+  SlashCommandMetadata? slashCommand;
 
   /// Start index (0-based, inclusive) in the plain-text message body this
   /// annotation corresponds to.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The type of this annotation.
   /// Possible string values are:
   /// - "ANNOTATION_TYPE_UNSPECIFIED" : Default value for the enum. DO NOT USE.
   /// - "USER_MENTION" : A user is mentioned.
   /// - "SLASH_COMMAND" : A slash command is invoked.
-  core.String type;
+  core.String? type;
 
   /// The metadata of user mention.
-  UserMentionMetadata userMention;
+  UserMentionMetadata? userMention;
 
   Annotation();
 
@@ -1125,12 +1068,12 @@ class Annotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (length != null) 'length': length,
-        if (slashCommand != null) 'slashCommand': slashCommand.toJson(),
-        if (startIndex != null) 'startIndex': startIndex,
-        if (type != null) 'type': type,
-        if (userMention != null) 'userMention': userMention.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (length != null) 'length': length!,
+        if (slashCommand != null) 'slashCommand': slashCommand!.toJson(),
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (type != null) 'type': type!,
+        if (userMention != null) 'userMention': userMention!.toJson(),
       };
 }
 
@@ -1139,13 +1082,13 @@ class Attachment {
   /// A reference to the attachment data.
   ///
   /// This is used with the media API to download the attachment data.
-  AttachmentDataRef attachmentDataRef;
+  AttachmentDataRef? attachmentDataRef;
 
   /// The original file name for the content, not the full path.
-  core.String contentName;
+  core.String? contentName;
 
   /// The content type (MIME type) of the file.
-  core.String contentType;
+  core.String? contentType;
 
   /// The download URL which should be used to allow a human user to download
   /// the attachment.
@@ -1153,23 +1096,23 @@ class Attachment {
   /// Bots should not use this URL to download attachment content.
   ///
   /// Output only.
-  core.String downloadUri;
+  core.String? downloadUri;
 
   /// A reference to the drive attachment.
   ///
   /// This is used with the Drive API.
-  DriveDataRef driveDataRef;
+  DriveDataRef? driveDataRef;
 
   /// Resource name of the attachment, in the form "spaces / * /messages / *
   /// /attachments / * ".
-  core.String name;
+  core.String? name;
 
   /// The source of the attachment.
   /// Possible string values are:
   /// - "SOURCE_UNSPECIFIED"
   /// - "DRIVE_FILE"
   /// - "UPLOADED_CONTENT"
-  core.String source;
+  core.String? source;
 
   /// The thumbnail URL which should be used to preview the attachment to a
   /// human user.
@@ -1177,7 +1120,7 @@ class Attachment {
   /// Bots should not use this URL to download attachment content.
   ///
   /// Output only.
-  core.String thumbnailUri;
+  core.String? thumbnailUri;
 
   Attachment();
 
@@ -1210,16 +1153,16 @@ class Attachment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (attachmentDataRef != null)
-          'attachmentDataRef': attachmentDataRef.toJson(),
-        if (contentName != null) 'contentName': contentName,
-        if (contentType != null) 'contentType': contentType,
-        if (downloadUri != null) 'downloadUri': downloadUri,
-        if (driveDataRef != null) 'driveDataRef': driveDataRef.toJson(),
-        if (name != null) 'name': name,
-        if (source != null) 'source': source,
-        if (thumbnailUri != null) 'thumbnailUri': thumbnailUri,
+          'attachmentDataRef': attachmentDataRef!.toJson(),
+        if (contentName != null) 'contentName': contentName!,
+        if (contentType != null) 'contentType': contentType!,
+        if (downloadUri != null) 'downloadUri': downloadUri!,
+        if (driveDataRef != null) 'driveDataRef': driveDataRef!.toJson(),
+        if (name != null) 'name': name!,
+        if (source != null) 'source': source!,
+        if (thumbnailUri != null) 'thumbnailUri': thumbnailUri!,
       };
 }
 
@@ -1228,7 +1171,7 @@ class AttachmentDataRef {
   /// The resource name of the attachment data.
   ///
   /// This is used with the media API to download the attachment data.
-  core.String resourceName;
+  core.String? resourceName;
 
   AttachmentDataRef();
 
@@ -1238,8 +1181,8 @@ class AttachmentDataRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceName != null) 'resourceName': resourceName!,
       };
 }
 
@@ -1248,10 +1191,10 @@ class AttachmentDataRef {
 /// Can be a text button or an image button.
 class Button {
   /// A button with image and onclick action.
-  ImageButton imageButton;
+  ImageButton? imageButton;
 
   /// A button with text and onclick action.
-  TextButton textButton;
+  TextButton? textButton;
 
   Button();
 
@@ -1266,27 +1209,27 @@ class Button {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageButton != null) 'imageButton': imageButton.toJson(),
-        if (textButton != null) 'textButton': textButton.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageButton != null) 'imageButton': imageButton!.toJson(),
+        if (textButton != null) 'textButton': textButton!.toJson(),
       };
 }
 
 /// A card is a UI element that can contain UI widgets such as texts, images.
 class Card {
   /// The actions of this card.
-  core.List<CardAction> cardActions;
+  core.List<CardAction>? cardActions;
 
   /// The header of the card.
   ///
   /// A header usually contains a title and an image.
-  CardHeader header;
+  CardHeader? header;
 
   /// Name of the card.
-  core.String name;
+  core.String? name;
 
   /// Sections are separated by a line divider.
-  core.List<Section> sections;
+  core.List<Section>? sections;
 
   Card();
 
@@ -1312,13 +1255,13 @@ class Card {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cardActions != null)
-          'cardActions': cardActions.map((value) => value.toJson()).toList(),
-        if (header != null) 'header': header.toJson(),
-        if (name != null) 'name': name,
+          'cardActions': cardActions!.map((value) => value.toJson()).toList(),
+        if (header != null) 'header': header!.toJson(),
+        if (name != null) 'name': name!,
         if (sections != null)
-          'sections': sections.map((value) => value.toJson()).toList(),
+          'sections': sections!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1328,10 +1271,10 @@ class Card {
 /// invoice or open the invoice in browser.
 class CardAction {
   /// The label used to be displayed in the action menu item.
-  core.String actionLabel;
+  core.String? actionLabel;
 
   /// The onclick action for this action item.
-  OnClick onClick;
+  OnClick? onClick;
 
   CardAction();
 
@@ -1345,9 +1288,9 @@ class CardAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionLabel != null) 'actionLabel': actionLabel,
-        if (onClick != null) 'onClick': onClick.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionLabel != null) 'actionLabel': actionLabel!,
+        if (onClick != null) 'onClick': onClick!.toJson(),
       };
 }
 
@@ -1357,20 +1300,20 @@ class CardHeader {
   /// - "IMAGE_STYLE_UNSPECIFIED"
   /// - "IMAGE" : Square border.
   /// - "AVATAR" : Circular border.
-  core.String imageStyle;
+  core.String? imageStyle;
 
   /// The URL of the image in the card header.
-  core.String imageUrl;
+  core.String? imageUrl;
 
   /// The subtitle of the card header.
-  core.String subtitle;
+  core.String? subtitle;
 
   /// The title must be specified.
   ///
   /// The header has a fixed height: if both a title and subtitle is specified,
   /// each will take up 1 line. If only the title is specified, it will take up
   /// both lines.
-  core.String title;
+  core.String? title;
 
   CardHeader();
 
@@ -1389,11 +1332,11 @@ class CardHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageStyle != null) 'imageStyle': imageStyle,
-        if (imageUrl != null) 'imageUrl': imageUrl,
-        if (subtitle != null) 'subtitle': subtitle,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageStyle != null) 'imageStyle': imageStyle!,
+        if (imageUrl != null) 'imageUrl': imageUrl!,
+        if (subtitle != null) 'subtitle': subtitle!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1403,36 +1346,36 @@ class DeprecatedEvent {
   ///
   /// Only populated for CARD_CLICKED events. See the \[Interactive Cards
   /// guide\](/hangouts/chat/how-tos/cards-onclick) for more information.
-  FormAction action;
+  FormAction? action;
 
   /// The URL the bot should redirect the user to after they have completed an
   /// authorization or configuration flow outside of Google Chat.
   ///
   /// See the \[Authorizing access to 3p services
   /// guide\](/hangouts/chat/how-tos/auth-3p) for more information.
-  core.String configCompleteRedirectUrl;
+  core.String? configCompleteRedirectUrl;
 
   /// The timestamp indicating when the event was dispatched.
-  core.String eventTime;
+  core.String? eventTime;
 
   /// The message that triggered the event, if applicable.
-  Message message;
+  Message? message;
 
   /// The room or DM in which the event occurred.
-  Space space;
+  Space? space;
 
   /// The bot-defined key for the thread related to the event.
   ///
   /// See the thread_key field of the `spaces.message.create` request for more
   /// information.
-  core.String threadKey;
+  core.String? threadKey;
 
   /// A secret value that bots can use to verify if a request is from Google.
   ///
   /// The token is randomly generated by Google, remains static, and can be
   /// obtained from the Google Chat API configuration page in the Cloud Console.
   /// Developers can revoke/regenerate it if needed from the same page.
-  core.String token;
+  core.String? token;
 
   /// The type of the event.
   /// Possible string values are:
@@ -1441,10 +1384,10 @@ class DeprecatedEvent {
   /// - "ADDED_TO_SPACE" : The bot was added to a room or DM.
   /// - "REMOVED_FROM_SPACE" : The bot was removed from a room or DM.
   /// - "CARD_CLICKED" : The bot's interactive card was clicked.
-  core.String type;
+  core.String? type;
 
   /// The user that triggered the event.
-  User user;
+  User? user;
 
   DeprecatedEvent();
 
@@ -1483,24 +1426,24 @@ class DeprecatedEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!.toJson(),
         if (configCompleteRedirectUrl != null)
-          'configCompleteRedirectUrl': configCompleteRedirectUrl,
-        if (eventTime != null) 'eventTime': eventTime,
-        if (message != null) 'message': message.toJson(),
-        if (space != null) 'space': space.toJson(),
-        if (threadKey != null) 'threadKey': threadKey,
-        if (token != null) 'token': token,
-        if (type != null) 'type': type,
-        if (user != null) 'user': user.toJson(),
+          'configCompleteRedirectUrl': configCompleteRedirectUrl!,
+        if (eventTime != null) 'eventTime': eventTime!,
+        if (message != null) 'message': message!.toJson(),
+        if (space != null) 'space': space!.toJson(),
+        if (threadKey != null) 'threadKey': threadKey!,
+        if (token != null) 'token': token!,
+        if (type != null) 'type': type!,
+        if (user != null) 'user': user!.toJson(),
       };
 }
 
 /// A reference to the data of a drive attachment.
 class DriveDataRef {
   /// The id for the drive file, for use with the Drive API.
-  core.String driveFileId;
+  core.String? driveFileId;
 
   DriveDataRef();
 
@@ -1510,8 +1453,8 @@ class DriveDataRef {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (driveFileId != null) 'driveFileId': driveFileId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (driveFileId != null) 'driveFileId': driveFileId!,
       };
 }
 
@@ -1529,7 +1472,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A form action describes the behavior when the form is submitted.
@@ -1542,10 +1485,10 @@ class FormAction {
   /// This information is echoed back to the bot as part of the card click
   /// event. The same method name can be used for several elements that trigger
   /// a common behavior if desired.
-  core.String actionMethodName;
+  core.String? actionMethodName;
 
   /// List of action parameters.
-  core.List<ActionParameter> parameters;
+  core.List<ActionParameter>? parameters;
 
   FormAction();
 
@@ -1561,10 +1504,10 @@ class FormAction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionMethodName != null) 'actionMethodName': actionMethodName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionMethodName != null) 'actionMethodName': actionMethodName!,
         if (parameters != null)
-          'parameters': parameters.map((value) => value.toJson()).toList(),
+          'parameters': parameters!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1575,13 +1518,13 @@ class Image {
   /// This field allows clients to reserve the right height for the image while
   /// waiting for it to load. It's not meant to override the native aspect ratio
   /// of the image. If unset, the server fills it by prefetching the image.
-  core.double aspectRatio;
+  core.double? aspectRatio;
 
   /// The URL of the image.
-  core.String imageUrl;
+  core.String? imageUrl;
 
   /// The onclick action.
-  OnClick onClick;
+  OnClick? onClick;
 
   Image();
 
@@ -1598,10 +1541,10 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (aspectRatio != null) 'aspectRatio': aspectRatio,
-        if (imageUrl != null) 'imageUrl': imageUrl,
-        if (onClick != null) 'onClick': onClick.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (aspectRatio != null) 'aspectRatio': aspectRatio!,
+        if (imageUrl != null) 'imageUrl': imageUrl!,
+        if (onClick != null) 'onClick': onClick!.toJson(),
       };
 }
 
@@ -1641,18 +1584,18 @@ class ImageButton {
   /// - "TRAIN"
   /// - "VIDEO_CAMERA"
   /// - "VIDEO_PLAY"
-  core.String icon;
+  core.String? icon;
 
   /// The icon specified by a URL.
-  core.String iconUrl;
+  core.String? iconUrl;
 
   /// The name of this image_button which will be used for accessibility.
   ///
   /// Default value will be provided if developers don't specify.
-  core.String name;
+  core.String? name;
 
   /// The onclick action.
-  OnClick onClick;
+  OnClick? onClick;
 
   ImageButton();
 
@@ -1672,11 +1615,11 @@ class ImageButton {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (icon != null) 'icon': icon,
-        if (iconUrl != null) 'iconUrl': iconUrl,
-        if (name != null) 'name': name,
-        if (onClick != null) 'onClick': onClick.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (icon != null) 'icon': icon!,
+        if (iconUrl != null) 'iconUrl': iconUrl!,
+        if (name != null) 'name': name!,
+        if (onClick != null) 'onClick': onClick!.toJson(),
       };
 }
 
@@ -1687,18 +1630,18 @@ class KeyValue {
   /// The text of the bottom label.
   ///
   /// Formatted text supported.
-  core.String bottomLabel;
+  core.String? bottomLabel;
 
   /// A button that can be clicked to trigger an action.
-  Button button;
+  Button? button;
 
   /// The text of the content.
   ///
   /// Formatted text supported and always required.
-  core.String content;
+  core.String? content;
 
   /// If the content should be multiline.
-  core.bool contentMultiline;
+  core.bool? contentMultiline;
 
   /// An enum value that will be replaced by the Chat API with the corresponding
   /// icon image.
@@ -1734,20 +1677,20 @@ class KeyValue {
   /// - "TRAIN"
   /// - "VIDEO_CAMERA"
   /// - "VIDEO_PLAY"
-  core.String icon;
+  core.String? icon;
 
   /// The icon specified by a URL.
-  core.String iconUrl;
+  core.String? iconUrl;
 
   /// The onclick action.
   ///
   /// Only the top label, bottom label and content region are clickable.
-  OnClick onClick;
+  OnClick? onClick;
 
   /// The text of the top label.
   ///
   /// Formatted text supported.
-  core.String topLabel;
+  core.String? topLabel;
 
   KeyValue();
 
@@ -1780,26 +1723,26 @@ class KeyValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bottomLabel != null) 'bottomLabel': bottomLabel,
-        if (button != null) 'button': button.toJson(),
-        if (content != null) 'content': content,
-        if (contentMultiline != null) 'contentMultiline': contentMultiline,
-        if (icon != null) 'icon': icon,
-        if (iconUrl != null) 'iconUrl': iconUrl,
-        if (onClick != null) 'onClick': onClick.toJson(),
-        if (topLabel != null) 'topLabel': topLabel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bottomLabel != null) 'bottomLabel': bottomLabel!,
+        if (button != null) 'button': button!.toJson(),
+        if (content != null) 'content': content!,
+        if (contentMultiline != null) 'contentMultiline': contentMultiline!,
+        if (icon != null) 'icon': icon!,
+        if (iconUrl != null) 'iconUrl': iconUrl!,
+        if (onClick != null) 'onClick': onClick!.toJson(),
+        if (topLabel != null) 'topLabel': topLabel!,
       };
 }
 
 class ListMembershipsResponse {
   /// List of memberships in the requested (or first) page.
-  core.List<Membership> memberships;
+  core.List<Membership>? memberships;
 
   /// Continuation token to retrieve the next page of results.
   ///
   /// It will be empty for the last page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListMembershipsResponse();
 
@@ -1815,10 +1758,10 @@ class ListMembershipsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (memberships != null)
-          'memberships': memberships.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'memberships': memberships!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1827,10 +1770,10 @@ class ListSpacesResponse {
   ///
   /// It will be empty for the last page of results. Tokens expire in an hour.
   /// An error is thrown if an expired token is passed.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of spaces in the requested (or first) page.
-  core.List<Space> spaces;
+  core.List<Space>? spaces;
 
   ListSpacesResponse();
 
@@ -1846,17 +1789,17 @@ class ListSpacesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (spaces != null)
-          'spaces': spaces.map((value) => value.toJson()).toList(),
+          'spaces': spaces!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Media resource.
 class Media {
   /// Name of the media resource.
-  core.String resourceName;
+  core.String? resourceName;
 
   Media();
 
@@ -1866,8 +1809,8 @@ class Media {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceName != null) 'resourceName': resourceName!,
       };
 }
 
@@ -1875,11 +1818,11 @@ class Media {
 class Membership {
   /// The creation time of the membership a.k.a the time at which the member
   /// joined the space, if applicable.
-  core.String createTime;
+  core.String? createTime;
 
   /// A User in Hangout Chat
-  User member;
-  core.String name;
+  User? member;
+  core.String? name;
 
   /// State of the membership.
   /// Possible string values are:
@@ -1889,7 +1832,7 @@ class Membership {
   /// currently has not joined.
   /// - "NOT_A_MEMBER" : The user is not a member of the space, has not been
   /// invited and is not able to join the space.
-  core.String state;
+  core.String? state;
 
   Membership();
 
@@ -1909,11 +1852,11 @@ class Membership {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (member != null) 'member': member.toJson(),
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (member != null) 'member': member!.toJson(),
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -1922,59 +1865,59 @@ class Message {
   /// Input only.
   ///
   /// Parameters that a bot can use to configure how its response is posted.
-  ActionResponse actionResponse;
+  ActionResponse? actionResponse;
 
   /// Annotations associated with the text in this message.
   ///
   /// Output only.
-  core.List<Annotation> annotations;
+  core.List<Annotation>? annotations;
 
   /// Plain-text body of the message with all bot mentions stripped out.
-  core.String argumentText;
+  core.String? argumentText;
 
   /// User uploaded attachment.
-  core.List<Attachment> attachment;
+  core.List<Attachment>? attachment;
 
   /// Rich, formatted and interactive cards that can be used to display UI
   /// elements such as: formatted texts, buttons, clickable images.
   ///
   /// Cards are normally displayed below the plain-text body of the message.
-  core.List<Card> cards;
+  core.List<Card>? cards;
 
   /// The time at which the message was created in Hangouts Chat server.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// A plain-text description of the message's cards, used when the actual
   /// cards cannot be displayed (e.g. mobile notifications).
-  core.String fallbackText;
+  core.String? fallbackText;
 
   /// Resource name, in the form "spaces / * /messages / * ".
   ///
   /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
-  core.String name;
+  core.String? name;
 
   /// Text for generating preview chips.
   ///
   /// This text will not be displayed to the user, but any links to images, web
   /// pages, videos, etc. included here will generate preview chips.
-  core.String previewText;
+  core.String? previewText;
 
   /// The user who created the message.
-  User sender;
+  User? sender;
 
   /// Slash command information, if applicable.
-  SlashCommand slashCommand;
+  SlashCommand? slashCommand;
 
   /// The space the message belongs to.
-  Space space;
+  Space? space;
 
   /// Plain-text body of the message.
-  core.String text;
+  core.String? text;
 
   /// The thread the message belongs to.
-  Thread thread;
+  Thread? thread;
 
   Message();
 
@@ -2037,34 +1980,34 @@ class Message {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionResponse != null) 'actionResponse': actionResponse.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionResponse != null) 'actionResponse': actionResponse!.toJson(),
         if (annotations != null)
-          'annotations': annotations.map((value) => value.toJson()).toList(),
-        if (argumentText != null) 'argumentText': argumentText,
+          'annotations': annotations!.map((value) => value.toJson()).toList(),
+        if (argumentText != null) 'argumentText': argumentText!,
         if (attachment != null)
-          'attachment': attachment.map((value) => value.toJson()).toList(),
+          'attachment': attachment!.map((value) => value.toJson()).toList(),
         if (cards != null)
-          'cards': cards.map((value) => value.toJson()).toList(),
-        if (createTime != null) 'createTime': createTime,
-        if (fallbackText != null) 'fallbackText': fallbackText,
-        if (name != null) 'name': name,
-        if (previewText != null) 'previewText': previewText,
-        if (sender != null) 'sender': sender.toJson(),
-        if (slashCommand != null) 'slashCommand': slashCommand.toJson(),
-        if (space != null) 'space': space.toJson(),
-        if (text != null) 'text': text,
-        if (thread != null) 'thread': thread.toJson(),
+          'cards': cards!.map((value) => value.toJson()).toList(),
+        if (createTime != null) 'createTime': createTime!,
+        if (fallbackText != null) 'fallbackText': fallbackText!,
+        if (name != null) 'name': name!,
+        if (previewText != null) 'previewText': previewText!,
+        if (sender != null) 'sender': sender!.toJson(),
+        if (slashCommand != null) 'slashCommand': slashCommand!.toJson(),
+        if (space != null) 'space': space!.toJson(),
+        if (text != null) 'text': text!,
+        if (thread != null) 'thread': thread!.toJson(),
       };
 }
 
 /// An onclick action (e.g. open a link).
 class OnClick {
   /// A form action will be triggered by this onclick if specified.
-  FormAction action;
+  FormAction? action;
 
   /// This onclick triggers an open link action if specified.
-  OpenLink openLink;
+  OpenLink? openLink;
 
   OnClick();
 
@@ -2079,16 +2022,16 @@ class OnClick {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (action != null) 'action': action.toJson(),
-        if (openLink != null) 'openLink': openLink.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (action != null) 'action': action!.toJson(),
+        if (openLink != null) 'openLink': openLink!.toJson(),
       };
 }
 
 /// A link that opens a new window.
 class OpenLink {
   /// The URL to open.
-  core.String url;
+  core.String? url;
 
   OpenLink();
 
@@ -2098,8 +2041,8 @@ class OpenLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (url != null) 'url': url!,
       };
 }
 
@@ -2110,10 +2053,10 @@ class OpenLink {
 /// no need for layout properties (e.g. float).
 class Section {
   /// The header of the section, text formatted supported.
-  core.String header;
+  core.String? header;
 
   /// A section must contain at least 1 widget.
-  core.List<WidgetMarkup> widgets;
+  core.List<WidgetMarkup>? widgets;
 
   Section();
 
@@ -2129,17 +2072,17 @@ class Section {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (header != null) 'header': header,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (header != null) 'header': header!,
         if (widgets != null)
-          'widgets': widgets.map((value) => value.toJson()).toList(),
+          'widgets': widgets!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A Slash Command in Hangouts Chat.
 class SlashCommand {
   /// The id of the slash command invoked.
-  core.String commandId;
+  core.String? commandId;
 
   SlashCommand();
 
@@ -2149,31 +2092,31 @@ class SlashCommand {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commandId != null) 'commandId': commandId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commandId != null) 'commandId': commandId!,
       };
 }
 
 /// Annotation metadata for slash commands (/).
 class SlashCommandMetadata {
   /// The bot whose command was invoked.
-  User bot;
+  User? bot;
 
   /// The command id of the invoked slash command.
-  core.String commandId;
+  core.String? commandId;
 
   /// The name of the invoked slash command.
-  core.String commandName;
+  core.String? commandName;
 
   /// Indicating whether the slash command is for a dialog.
-  core.bool triggersDialog;
+  core.bool? triggersDialog;
 
   /// The type of slash command.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default value for the enum. DO NOT USE.
   /// - "ADD" : Add bot to space.
   /// - "INVOKE" : Invoke slash command in space.
-  core.String type;
+  core.String? type;
 
   SlashCommandMetadata();
 
@@ -2195,12 +2138,12 @@ class SlashCommandMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bot != null) 'bot': bot.toJson(),
-        if (commandId != null) 'commandId': commandId,
-        if (commandName != null) 'commandName': commandName,
-        if (triggersDialog != null) 'triggersDialog': triggersDialog,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bot != null) 'bot': bot!.toJson(),
+        if (commandId != null) 'commandId': commandId!,
+        if (commandName != null) 'commandName': commandName!,
+        if (triggersDialog != null) 'triggersDialog': triggersDialog!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2212,18 +2155,18 @@ class Space {
   /// between humans.
   ///
   /// Output only.
-  core.String displayName;
+  core.String? displayName;
 
   /// Resource name of the space, in the form "spaces / * ".
   ///
   /// Example: spaces/AAAAMpdlehYs
-  core.String name;
+  core.String? name;
 
   /// Whether the space is a DM between a bot and a single human.
-  core.bool singleUserBotDm;
+  core.bool? singleUserBotDm;
 
   /// Whether the messages are threaded in this space.
-  core.bool threaded;
+  core.bool? threaded;
 
   /// The type of a space.
   ///
@@ -2235,7 +2178,7 @@ class Space {
   /// - "ROOM" : Multi-user spaces such as rooms and DMs between humans.
   /// - "DM" : 1:1 Direct Message between a human and a bot, where all messages
   /// are flat.
-  core.String type;
+  core.String? type;
 
   Space();
 
@@ -2257,22 +2200,22 @@ class Space {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
-        if (singleUserBotDm != null) 'singleUserBotDm': singleUserBotDm,
-        if (threaded != null) 'threaded': threaded,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (singleUserBotDm != null) 'singleUserBotDm': singleUserBotDm!,
+        if (threaded != null) 'threaded': threaded!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// A button with text and onclick action.
 class TextButton {
   /// The onclick action of the button.
-  OnClick onClick;
+  OnClick? onClick;
 
   /// The text of the button.
-  core.String text;
+  core.String? text;
 
   TextButton();
 
@@ -2286,9 +2229,9 @@ class TextButton {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (onClick != null) 'onClick': onClick.toJson(),
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (onClick != null) 'onClick': onClick!.toJson(),
+        if (text != null) 'text': text!,
       };
 }
 
@@ -2296,7 +2239,7 @@ class TextButton {
 ///
 /// Formatted text supported.
 class TextParagraph {
-  core.String text;
+  core.String? text;
 
   TextParagraph();
 
@@ -2306,8 +2249,8 @@ class TextParagraph {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (text != null) 'text': text!,
       };
 }
 
@@ -2316,7 +2259,7 @@ class Thread {
   /// Resource name, in the form "spaces / * /threads / * ".
   ///
   /// Example: spaces/AAAAMpdlehY/threads/UMxbHmzDlr4
-  core.String name;
+  core.String? name;
 
   Thread();
 
@@ -2326,31 +2269,31 @@ class Thread {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
 /// A user in Hangouts Chat.
 class User {
   /// The user's display name.
-  core.String displayName;
+  core.String? displayName;
 
   /// Obfuscated domain information.
-  core.String domainId;
+  core.String? domainId;
 
   /// True when the user is deleted or the user's proifle is not visible.
-  core.bool isAnonymous;
+  core.bool? isAnonymous;
 
   /// Resource name, in the format "users / * ".
-  core.String name;
+  core.String? name;
 
   /// User type.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default value for the enum. DO NOT USE.
   /// - "HUMAN" : Human user.
   /// - "BOT" : Bot user.
-  core.String type;
+  core.String? type;
 
   User();
 
@@ -2372,12 +2315,12 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (domainId != null) 'domainId': domainId,
-        if (isAnonymous != null) 'isAnonymous': isAnonymous,
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (domainId != null) 'domainId': domainId!,
+        if (isAnonymous != null) 'isAnonymous': isAnonymous!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2388,10 +2331,10 @@ class UserMentionMetadata {
   /// - "TYPE_UNSPECIFIED" : Default value for the enum. DO NOT USE.
   /// - "ADD" : Add user to space.
   /// - "MENTION" : Mention user in space.
-  core.String type;
+  core.String? type;
 
   /// The user mentioned.
-  User user;
+  User? user;
 
   UserMentionMetadata();
 
@@ -2405,9 +2348,9 @@ class UserMentionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (type != null) 'type': type,
-        if (user != null) 'user': user.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (type != null) 'type': type!,
+        if (user != null) 'user': user!.toJson(),
       };
 }
 
@@ -2416,16 +2359,16 @@ class WidgetMarkup {
   /// A list of buttons.
   ///
   /// Buttons is also oneof data and only one of these fields should be set.
-  core.List<Button> buttons;
+  core.List<Button>? buttons;
 
   /// Display an image in this widget.
-  Image image;
+  Image? image;
 
   /// Display a key value item in this widget.
-  KeyValue keyValue;
+  KeyValue? keyValue;
 
   /// Display a text paragraph in this widget.
-  TextParagraph textParagraph;
+  TextParagraph? textParagraph;
 
   WidgetMarkup();
 
@@ -2450,11 +2393,11 @@ class WidgetMarkup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (buttons != null)
-          'buttons': buttons.map((value) => value.toJson()).toList(),
-        if (image != null) 'image': image.toJson(),
-        if (keyValue != null) 'keyValue': keyValue.toJson(),
-        if (textParagraph != null) 'textParagraph': textParagraph.toJson(),
+          'buttons': buttons!.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image!.toJson(),
+        if (keyValue != null) 'keyValue': keyValue!.toJson(),
+        if (textParagraph != null) 'textParagraph': textParagraph!.toJson(),
       };
 }

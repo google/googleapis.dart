@@ -110,13 +110,9 @@ class FoldersAssetsResource {
   async.Future<GroupAssetsResponse> group(
     GroupAssetsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -240,18 +236,15 @@ class FoldersAssetsResource {
   /// this method will complete with the same error.
   async.Future<ListAssetsResponse> list(
     core.String parent, {
-    core.String compareDuration,
-    core.String fieldMask,
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String readTime,
-    core.String $fields,
+    core.String? compareDuration,
+    core.String? fieldMask,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readTime,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (compareDuration != null) 'compareDuration': [compareDuration],
       if (fieldMask != null) 'fieldMask': [fieldMask],
@@ -310,15 +303,11 @@ class FoldersAssetsResource {
   async.Future<SecurityMarks> updateSecurityMarks(
     SecurityMarks request,
     core.String name, {
-    core.String startTime,
-    core.String updateMask,
-    core.String $fields,
+    core.String? startTime,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (startTime != null) 'startTime': [startTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -374,13 +363,10 @@ class FoldersSourcesResource {
   /// this method will complete with the same error.
   async.Future<ListSourcesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -440,13 +426,9 @@ class FoldersSourcesFindingsResource {
   async.Future<GroupFindingsResponse> group(
     GroupFindingsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -565,18 +547,15 @@ class FoldersSourcesFindingsResource {
   /// this method will complete with the same error.
   async.Future<ListFindingsResponse> list(
     core.String parent, {
-    core.String compareDuration,
-    core.String fieldMask,
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String readTime,
-    core.String $fields,
+    core.String? compareDuration,
+    core.String? fieldMask,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readTime,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (compareDuration != null) 'compareDuration': [compareDuration],
       if (fieldMask != null) 'fieldMask': [fieldMask],
@@ -634,14 +613,10 @@ class FoldersSourcesFindingsResource {
   async.Future<Finding> patch(
     Finding request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -684,13 +659,9 @@ class FoldersSourcesFindingsResource {
   async.Future<Finding> setState(
     SetFindingStateRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -743,15 +714,11 @@ class FoldersSourcesFindingsResource {
   async.Future<SecurityMarks> updateSecurityMarks(
     SecurityMarks request,
     core.String name, {
-    core.String startTime,
-    core.String updateMask,
-    core.String $fields,
+    core.String? startTime,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (startTime != null) 'startTime': [startTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -806,11 +773,8 @@ class OrganizationsResource {
   /// this method will complete with the same error.
   async.Future<OrganizationSettings> getOrganizationSettings(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -853,14 +817,10 @@ class OrganizationsResource {
   async.Future<OrganizationSettings> updateOrganizationSettings(
     OrganizationSettings request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -910,13 +870,9 @@ class OrganizationsAssetsResource {
   async.Future<GroupAssetsResponse> group(
     GroupAssetsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1040,18 +996,15 @@ class OrganizationsAssetsResource {
   /// this method will complete with the same error.
   async.Future<ListAssetsResponse> list(
     core.String parent, {
-    core.String compareDuration,
-    core.String fieldMask,
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String readTime,
-    core.String $fields,
+    core.String? compareDuration,
+    core.String? fieldMask,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readTime,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (compareDuration != null) 'compareDuration': [compareDuration],
       if (fieldMask != null) 'fieldMask': [fieldMask],
@@ -1102,13 +1055,9 @@ class OrganizationsAssetsResource {
   async.Future<Operation> runDiscovery(
     RunAssetDiscoveryRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1162,15 +1111,11 @@ class OrganizationsAssetsResource {
   async.Future<SecurityMarks> updateSecurityMarks(
     SecurityMarks request,
     core.String name, {
-    core.String startTime,
-    core.String updateMask,
-    core.String $fields,
+    core.String? startTime,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (startTime != null) 'startTime': [startTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1223,14 +1168,10 @@ class OrganizationsNotificationConfigsResource {
   async.Future<NotificationConfig> create(
     NotificationConfig request,
     core.String parent, {
-    core.String configId,
-    core.String $fields,
+    core.String? configId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (configId != null) 'configId': [configId],
       if ($fields != null) 'fields': [$fields],
@@ -1271,11 +1212,8 @@ class OrganizationsNotificationConfigsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1311,11 +1249,8 @@ class OrganizationsNotificationConfigsResource {
   /// this method will complete with the same error.
   async.Future<NotificationConfig> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1359,13 +1294,10 @@ class OrganizationsNotificationConfigsResource {
   /// this method will complete with the same error.
   async.Future<ListNotificationConfigsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1417,14 +1349,10 @@ class OrganizationsNotificationConfigsResource {
   async.Future<NotificationConfig> patch(
     NotificationConfig request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1477,11 +1405,8 @@ class OrganizationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1520,11 +1445,8 @@ class OrganizationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1561,11 +1483,8 @@ class OrganizationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1614,14 +1533,11 @@ class OrganizationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1673,13 +1589,9 @@ class OrganizationsSourcesResource {
   async.Future<Source> create(
     Source request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1716,11 +1628,8 @@ class OrganizationsSourcesResource {
   /// this method will complete with the same error.
   async.Future<Source> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1759,13 +1668,9 @@ class OrganizationsSourcesResource {
   async.Future<Policy> getIamPolicy(
     GetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1811,13 +1716,10 @@ class OrganizationsSourcesResource {
   /// this method will complete with the same error.
   async.Future<ListSourcesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1863,14 +1765,10 @@ class OrganizationsSourcesResource {
   async.Future<Source> patch(
     Source request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1911,13 +1809,9 @@ class OrganizationsSourcesResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1959,13 +1853,9 @@ class OrganizationsSourcesResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2020,14 +1910,10 @@ class OrganizationsSourcesFindingsResource {
   async.Future<Finding> create(
     Finding request,
     core.String parent, {
-    core.String findingId,
-    core.String $fields,
+    core.String? findingId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (findingId != null) 'findingId': [findingId],
       if ($fields != null) 'fields': [$fields],
@@ -2079,13 +1965,9 @@ class OrganizationsSourcesFindingsResource {
   async.Future<GroupFindingsResponse> group(
     GroupFindingsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2204,18 +2086,15 @@ class OrganizationsSourcesFindingsResource {
   /// this method will complete with the same error.
   async.Future<ListFindingsResponse> list(
     core.String parent, {
-    core.String compareDuration,
-    core.String fieldMask,
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String readTime,
-    core.String $fields,
+    core.String? compareDuration,
+    core.String? fieldMask,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readTime,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (compareDuration != null) 'compareDuration': [compareDuration],
       if (fieldMask != null) 'fieldMask': [fieldMask],
@@ -2273,14 +2152,10 @@ class OrganizationsSourcesFindingsResource {
   async.Future<Finding> patch(
     Finding request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2323,13 +2198,9 @@ class OrganizationsSourcesFindingsResource {
   async.Future<Finding> setState(
     SetFindingStateRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2382,15 +2253,11 @@ class OrganizationsSourcesFindingsResource {
   async.Future<SecurityMarks> updateSecurityMarks(
     SecurityMarks request,
     core.String name, {
-    core.String startTime,
-    core.String updateMask,
-    core.String $fields,
+    core.String? startTime,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (startTime != null) 'startTime': [startTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -2449,13 +2316,9 @@ class ProjectsAssetsResource {
   async.Future<GroupAssetsResponse> group(
     GroupAssetsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2579,18 +2442,15 @@ class ProjectsAssetsResource {
   /// this method will complete with the same error.
   async.Future<ListAssetsResponse> list(
     core.String parent, {
-    core.String compareDuration,
-    core.String fieldMask,
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String readTime,
-    core.String $fields,
+    core.String? compareDuration,
+    core.String? fieldMask,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readTime,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (compareDuration != null) 'compareDuration': [compareDuration],
       if (fieldMask != null) 'fieldMask': [fieldMask],
@@ -2649,15 +2509,11 @@ class ProjectsAssetsResource {
   async.Future<SecurityMarks> updateSecurityMarks(
     SecurityMarks request,
     core.String name, {
-    core.String startTime,
-    core.String updateMask,
-    core.String $fields,
+    core.String? startTime,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (startTime != null) 'startTime': [startTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -2713,13 +2569,10 @@ class ProjectsSourcesResource {
   /// this method will complete with the same error.
   async.Future<ListSourcesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2779,13 +2632,9 @@ class ProjectsSourcesFindingsResource {
   async.Future<GroupFindingsResponse> group(
     GroupFindingsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2904,18 +2753,15 @@ class ProjectsSourcesFindingsResource {
   /// this method will complete with the same error.
   async.Future<ListFindingsResponse> list(
     core.String parent, {
-    core.String compareDuration,
-    core.String fieldMask,
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String readTime,
-    core.String $fields,
+    core.String? compareDuration,
+    core.String? fieldMask,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readTime,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (compareDuration != null) 'compareDuration': [compareDuration],
       if (fieldMask != null) 'fieldMask': [fieldMask],
@@ -2973,14 +2819,10 @@ class ProjectsSourcesFindingsResource {
   async.Future<Finding> patch(
     Finding request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3023,13 +2865,9 @@ class ProjectsSourcesFindingsResource {
   async.Future<Finding> setState(
     SetFindingStateRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3082,15 +2920,11 @@ class ProjectsSourcesFindingsResource {
   async.Future<SecurityMarks> updateSecurityMarks(
     SecurityMarks request,
     core.String name, {
-    core.String startTime,
-    core.String updateMask,
-    core.String $fields,
+    core.String? startTime,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (startTime != null) 'startTime': [startTime],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -3118,21 +2952,21 @@ class ProjectsSourcesFindingsResource {
 /// referenced Google Cloud resource.
 class Asset {
   /// The time at which the asset was created in Security Command Center.
-  core.String createTime;
+  core.String? createTime;
 
   /// Cloud IAM Policy information associated with the Google Cloud resource
   /// described by the Security Command Center asset.
   ///
   /// This information is managed and defined by the Google Cloud resource and
   /// cannot be modified by the user.
-  IamPolicy iamPolicy;
+  IamPolicy? iamPolicy;
 
   /// The relative resource name of this asset.
   ///
   /// See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example: "organizations/{organization_id}/assets/{asset_id}".
-  core.String name;
+  core.String? name;
 
   /// Resource managed properties.
   ///
@@ -3141,22 +2975,22 @@ class Asset {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> resourceProperties;
+  core.Map<core.String, core.Object>? resourceProperties;
 
   /// Security Command Center managed properties.
   ///
   /// These properties are managed by Security Command Center and cannot be
   /// modified by the user.
-  SecurityCenterProperties securityCenterProperties;
+  SecurityCenterProperties? securityCenterProperties;
 
   /// User specified security marks.
   ///
   /// These marks are entirely managed by the user and come from the
   /// SecurityMarks resource that belongs to the asset.
-  SecurityMarks securityMarks;
+  SecurityMarks? securityMarks;
 
   /// The time at which the asset was last updated or added in Cloud SCC.
-  core.String updateTime;
+  core.String? updateTime;
 
   Asset();
 
@@ -3195,16 +3029,16 @@ class Asset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (iamPolicy != null) 'iamPolicy': iamPolicy.toJson(),
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (iamPolicy != null) 'iamPolicy': iamPolicy!.toJson(),
+        if (name != null) 'name': name!,
         if (resourceProperties != null)
-          'resourceProperties': resourceProperties,
+          'resourceProperties': resourceProperties!,
         if (securityCenterProperties != null)
-          'securityCenterProperties': securityCenterProperties.toJson(),
-        if (securityMarks != null) 'securityMarks': securityMarks.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
+          'securityCenterProperties': securityCenterProperties!.toJson(),
+        if (securityMarks != null) 'securityMarks': securityMarks!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3213,7 +3047,7 @@ class AssetDiscoveryConfig {
   /// The folder ids to use for filtering asset discovery.
   ///
   /// It consists of only digits, e.g., 756619654966.
-  core.List<core.String> folderIds;
+  core.List<core.String>? folderIds;
 
   /// The mode to use for filtering asset discovery.
   /// Possible string values are:
@@ -3223,10 +3057,10 @@ class AssetDiscoveryConfig {
   /// the projects specified. All other resources will be ignored.
   /// - "EXCLUDE" : Asset Discovery will ignore all resources under the projects
   /// specified. All other resources will be retrieved.
-  core.String inclusionMode;
+  core.String? inclusionMode;
 
   /// The project ids to use for filtering asset discovery.
-  core.List<core.String> projectIds;
+  core.List<core.String>? projectIds;
 
   AssetDiscoveryConfig();
 
@@ -3246,10 +3080,10 @@ class AssetDiscoveryConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (folderIds != null) 'folderIds': folderIds,
-        if (inclusionMode != null) 'inclusionMode': inclusionMode,
-        if (projectIds != null) 'projectIds': projectIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (folderIds != null) 'folderIds': folderIds!,
+        if (inclusionMode != null) 'inclusionMode': inclusionMode!,
+        if (projectIds != null) 'projectIds': projectIds!,
       };
 }
 
@@ -3272,13 +3106,13 @@ class AssetDiscoveryConfig {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -3294,11 +3128,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -3313,7 +3147,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -3321,7 +3155,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -3336,9 +3170,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -3352,7 +3186,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -3384,12 +3218,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -3408,10 +3242,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -3429,7 +3263,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -3457,24 +3291,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -3493,11 +3327,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -3513,10 +3347,10 @@ class Finding {
   ///
   /// This field is immutable after creation time. Example:
   /// "XSS_FLASH_INJECTION"
-  core.String category;
+  core.String? category;
 
   /// The time at which the finding was created in Security Command Center.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time at which the event took place, or when an update to the finding
   /// occurred.
@@ -3525,14 +3359,14 @@ class Finding {
   /// the time the detector believes the firewall became open. The accuracy is
   /// determined by the detector. If the finding were to be resolved afterward,
   /// this time would reflect when the finding was resolved.
-  core.String eventTime;
+  core.String? eventTime;
 
   /// The URI that, if available, points to a web page outside of Security
   /// Command Center where additional information about the finding can be
   /// found.
   ///
   /// This field is guaranteed to be either empty or a well formed URL.
-  core.String externalUri;
+  core.String? externalUri;
 
   /// The relative resource name of this finding.
   ///
@@ -3540,7 +3374,7 @@ class Finding {
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
   /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
-  core.String name;
+  core.String? name;
 
   /// The relative resource name of the source the finding belongs to.
   ///
@@ -3548,7 +3382,7 @@ class Finding {
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// This field is immutable after creation time. For example:
   /// "organizations/{organization_id}/sources/{source_id}"
-  core.String parent;
+  core.String? parent;
 
   /// For findings on Google Cloud resources, the full resource name of the
   /// Google Cloud resource this finding is for.
@@ -3558,7 +3392,7 @@ class Finding {
   /// When the finding is for a non-Google Cloud resource, the resourceName can
   /// be a customer or partner defined string. This field is immutable after
   /// creation time.
-  core.String resourceName;
+  core.String? resourceName;
 
   /// User specified security marks.
   ///
@@ -3566,7 +3400,7 @@ class Finding {
   /// SecurityMarks resource that belongs to the finding.
   ///
   /// Output only.
-  SecurityMarks securityMarks;
+  SecurityMarks? securityMarks;
 
   /// The severity of the finding.
   ///
@@ -3608,7 +3442,7 @@ class Finding {
   /// configurations and access. Threat: Indicates a threat that has obtained
   /// minimal access to an environment but is not able to access data, execute
   /// code, or create resources.
-  core.String severity;
+  core.String? severity;
 
   /// Source specific properties.
   ///
@@ -3619,7 +3453,7 @@ class Finding {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> sourceProperties;
+  core.Map<core.String, core.Object>? sourceProperties;
 
   /// The state of the finding.
   /// Possible string values are:
@@ -3628,7 +3462,7 @@ class Finding {
   /// yet.
   /// - "INACTIVE" : The finding has been fixed, triaged as a non-issue or
   /// otherwise addressed and is no longer active.
-  core.String state;
+  core.String? state;
 
   Finding();
 
@@ -3676,18 +3510,18 @@ class Finding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (category != null) 'category': category,
-        if (createTime != null) 'createTime': createTime,
-        if (eventTime != null) 'eventTime': eventTime,
-        if (externalUri != null) 'externalUri': externalUri,
-        if (name != null) 'name': name,
-        if (parent != null) 'parent': parent,
-        if (resourceName != null) 'resourceName': resourceName,
-        if (securityMarks != null) 'securityMarks': securityMarks.toJson(),
-        if (severity != null) 'severity': severity,
-        if (sourceProperties != null) 'sourceProperties': sourceProperties,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (category != null) 'category': category!,
+        if (createTime != null) 'createTime': createTime!,
+        if (eventTime != null) 'eventTime': eventTime!,
+        if (externalUri != null) 'externalUri': externalUri!,
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
+        if (resourceName != null) 'resourceName': resourceName!,
+        if (securityMarks != null) 'securityMarks': securityMarks!.toJson(),
+        if (severity != null) 'severity': severity!,
+        if (sourceProperties != null) 'sourceProperties': sourceProperties!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -3698,10 +3532,10 @@ class Folder {
   ///
   /// See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
-  core.String resourceFolder;
+  core.String? resourceFolder;
 
   /// The user defined display name for this folder.
-  core.String resourceFolderDisplayName;
+  core.String? resourceFolderDisplayName;
 
   Folder();
 
@@ -3715,10 +3549,10 @@ class Folder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceFolder != null) 'resourceFolder': resourceFolder,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceFolder != null) 'resourceFolder': resourceFolder!,
         if (resourceFolderDisplayName != null)
-          'resourceFolderDisplayName': resourceFolderDisplayName,
+          'resourceFolderDisplayName': resourceFolderDisplayName!,
       };
 }
 
@@ -3726,7 +3560,7 @@ class Folder {
 class GetIamPolicyRequest {
   /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
   /// `GetIamPolicy`.
-  GetPolicyOptions options;
+  GetPolicyOptions? options;
 
   GetIamPolicyRequest();
 
@@ -3737,8 +3571,8 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (options != null) 'options': options.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (options != null) 'options': options!.toJson(),
       };
 }
 
@@ -3754,7 +3588,7 @@ class GetPolicyOptions {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// Optional.
-  core.int requestedPolicyVersion;
+  core.int? requestedPolicyVersion;
 
   GetPolicyOptions();
 
@@ -3764,22 +3598,22 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion,
+          'requestedPolicyVersion': requestedPolicyVersion!,
       };
 }
 
 /// Cloud SCC's Notification
 class GoogleCloudSecuritycenterV1NotificationMessage {
   /// If it's a Finding based notification config, this field will be populated.
-  Finding finding;
+  Finding? finding;
 
   /// Name of the notification config that generated current notification.
-  core.String notificationConfigName;
+  core.String? notificationConfigName;
 
   /// The Cloud resource tied to this notification's Finding.
-  GoogleCloudSecuritycenterV1Resource resource;
+  GoogleCloudSecuritycenterV1Resource? resource;
 
   GoogleCloudSecuritycenterV1NotificationMessage();
 
@@ -3797,11 +3631,11 @@ class GoogleCloudSecuritycenterV1NotificationMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (finding != null) 'finding': finding.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (finding != null) 'finding': finding!.toJson(),
         if (notificationConfigName != null)
-          'notificationConfigName': notificationConfigName,
-        if (resource != null) 'resource': resource.toJson(),
+          'notificationConfigName': notificationConfigName!,
+        if (resource != null) 'resource': resource!.toJson(),
       };
 }
 
@@ -3813,25 +3647,25 @@ class GoogleCloudSecuritycenterV1Resource {
   /// folder directly under the Organization.
   ///
   /// Output only.
-  core.List<Folder> folders;
+  core.List<Folder>? folders;
 
   /// The full resource name of the resource.
   ///
   /// See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
-  core.String name;
+  core.String? name;
 
   /// The full resource name of resource's parent.
-  core.String parent;
+  core.String? parent;
 
   /// The human readable name of resource's parent.
-  core.String parentDisplayName;
+  core.String? parentDisplayName;
 
   /// The full resource name of project that the resource belongs to.
-  core.String project;
+  core.String? project;
 
   /// The human readable name of project that the resource belongs to.
-  core.String projectDisplayName;
+  core.String? projectDisplayName;
 
   GoogleCloudSecuritycenterV1Resource();
 
@@ -3859,22 +3693,22 @@ class GoogleCloudSecuritycenterV1Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (folders != null)
-          'folders': folders.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (parent != null) 'parent': parent,
-        if (parentDisplayName != null) 'parentDisplayName': parentDisplayName,
-        if (project != null) 'project': project,
+          'folders': folders!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
+        if (parentDisplayName != null) 'parentDisplayName': parentDisplayName!,
+        if (project != null) 'project': project!,
         if (projectDisplayName != null)
-          'projectDisplayName': projectDisplayName,
+          'projectDisplayName': projectDisplayName!,
       };
 }
 
 /// Response of asset discovery run
 class GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse {
   /// The duration between asset discovery run start and end
-  core.String duration;
+  core.String? duration;
 
   /// The state of an asset discovery run.
   /// Possible string values are:
@@ -3884,7 +3718,7 @@ class GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse {
   /// pending, as another run for the same organization was started with a
   /// higher priority.
   /// - "TERMINATED" : Asset discovery run was killed and terminated.
-  core.String state;
+  core.String? state;
 
   GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse();
 
@@ -3898,16 +3732,16 @@ class GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (duration != null) 'duration': duration,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (state != null) 'state': state!,
       };
 }
 
 /// Response of asset discovery run
 class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse {
   /// The duration between asset discovery run start and end
-  core.String duration;
+  core.String? duration;
 
   /// The state of an asset discovery run.
   /// Possible string values are:
@@ -3917,7 +3751,7 @@ class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse {
   /// pending, as another run for the same organization was started with a
   /// higher priority.
   /// - "TERMINATED" : Asset discovery run was killed and terminated.
-  core.String state;
+  core.String? state;
 
   GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse();
 
@@ -3931,9 +3765,9 @@ class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (duration != null) 'duration': duration,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -3948,10 +3782,10 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
   ///
   /// This field is immutable after creation time. Example:
   /// "XSS_FLASH_INJECTION"
-  core.String category;
+  core.String? category;
 
   /// The time at which the finding was created in Security Command Center.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time at which the event took place, or when an update to the finding
   /// occurred.
@@ -3960,14 +3794,14 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
   /// the time the detector believes the firewall became open. The accuracy is
   /// determined by the detector. If the finding were to be resolved afterward,
   /// this time would reflect when the finding was resolved.
-  core.String eventTime;
+  core.String? eventTime;
 
   /// The URI that, if available, points to a web page outside of Security
   /// Command Center where additional information about the finding can be
   /// found.
   ///
   /// This field is guaranteed to be either empty or a well formed URL.
-  core.String externalUri;
+  core.String? externalUri;
 
   /// The relative resource name of this finding.
   ///
@@ -3975,7 +3809,7 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
   /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
-  core.String name;
+  core.String? name;
 
   /// The relative resource name of the source the finding belongs to.
   ///
@@ -3983,7 +3817,7 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// This field is immutable after creation time. For example:
   /// "organizations/{organization_id}/sources/{source_id}"
-  core.String parent;
+  core.String? parent;
 
   /// For findings on Google Cloud resources, the full resource name of the
   /// Google Cloud resource this finding is for.
@@ -3993,7 +3827,7 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
   /// When the finding is for a non-Google Cloud resource, the resourceName can
   /// be a customer or partner defined string. This field is immutable after
   /// creation time.
-  core.String resourceName;
+  core.String? resourceName;
 
   /// User specified security marks.
   ///
@@ -4001,7 +3835,7 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
   /// SecurityMarks resource that belongs to the finding.
   ///
   /// Output only.
-  GoogleCloudSecuritycenterV1p1beta1SecurityMarks securityMarks;
+  GoogleCloudSecuritycenterV1p1beta1SecurityMarks? securityMarks;
 
   /// The severity of the finding.
   ///
@@ -4012,7 +3846,7 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
   /// - "HIGH" : High severity.
   /// - "MEDIUM" : Medium severity.
   /// - "LOW" : Low severity.
-  core.String severity;
+  core.String? severity;
 
   /// Source specific properties.
   ///
@@ -4023,7 +3857,7 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> sourceProperties;
+  core.Map<core.String, core.Object>? sourceProperties;
 
   /// The state of the finding.
   /// Possible string values are:
@@ -4032,7 +3866,7 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
   /// yet.
   /// - "INACTIVE" : The finding has been fixed, triaged as a non-issue or
   /// otherwise addressed and is no longer active.
-  core.String state;
+  core.String? state;
 
   GoogleCloudSecuritycenterV1p1beta1Finding();
 
@@ -4080,18 +3914,18 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (category != null) 'category': category,
-        if (createTime != null) 'createTime': createTime,
-        if (eventTime != null) 'eventTime': eventTime,
-        if (externalUri != null) 'externalUri': externalUri,
-        if (name != null) 'name': name,
-        if (parent != null) 'parent': parent,
-        if (resourceName != null) 'resourceName': resourceName,
-        if (securityMarks != null) 'securityMarks': securityMarks.toJson(),
-        if (severity != null) 'severity': severity,
-        if (sourceProperties != null) 'sourceProperties': sourceProperties,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (category != null) 'category': category!,
+        if (createTime != null) 'createTime': createTime!,
+        if (eventTime != null) 'eventTime': eventTime!,
+        if (externalUri != null) 'externalUri': externalUri!,
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
+        if (resourceName != null) 'resourceName': resourceName!,
+        if (securityMarks != null) 'securityMarks': securityMarks!.toJson(),
+        if (severity != null) 'severity': severity!,
+        if (sourceProperties != null) 'sourceProperties': sourceProperties!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -4102,10 +3936,10 @@ class GoogleCloudSecuritycenterV1p1beta1Folder {
   ///
   /// See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
-  core.String resourceFolder;
+  core.String? resourceFolder;
 
   /// The user defined display name for this folder.
-  core.String resourceFolderDisplayName;
+  core.String? resourceFolderDisplayName;
 
   GoogleCloudSecuritycenterV1p1beta1Folder();
 
@@ -4119,23 +3953,23 @@ class GoogleCloudSecuritycenterV1p1beta1Folder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceFolder != null) 'resourceFolder': resourceFolder,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceFolder != null) 'resourceFolder': resourceFolder!,
         if (resourceFolderDisplayName != null)
-          'resourceFolderDisplayName': resourceFolderDisplayName,
+          'resourceFolderDisplayName': resourceFolderDisplayName!,
       };
 }
 
 /// Security Command Center's Notification
 class GoogleCloudSecuritycenterV1p1beta1NotificationMessage {
   /// If it's a Finding based notification config, this field will be populated.
-  GoogleCloudSecuritycenterV1p1beta1Finding finding;
+  GoogleCloudSecuritycenterV1p1beta1Finding? finding;
 
   /// Name of the notification config that generated current notification.
-  core.String notificationConfigName;
+  core.String? notificationConfigName;
 
   /// The Cloud resource tied to the notification.
-  GoogleCloudSecuritycenterV1p1beta1Resource resource;
+  GoogleCloudSecuritycenterV1p1beta1Resource? resource;
 
   GoogleCloudSecuritycenterV1p1beta1NotificationMessage();
 
@@ -4154,11 +3988,11 @@ class GoogleCloudSecuritycenterV1p1beta1NotificationMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (finding != null) 'finding': finding.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (finding != null) 'finding': finding!.toJson(),
         if (notificationConfigName != null)
-          'notificationConfigName': notificationConfigName,
-        if (resource != null) 'resource': resource.toJson(),
+          'notificationConfigName': notificationConfigName!,
+        if (resource != null) 'resource': resource!.toJson(),
       };
 }
 
@@ -4170,25 +4004,25 @@ class GoogleCloudSecuritycenterV1p1beta1Resource {
   /// folder directly under the Organization.
   ///
   /// Output only.
-  core.List<GoogleCloudSecuritycenterV1p1beta1Folder> folders;
+  core.List<GoogleCloudSecuritycenterV1p1beta1Folder>? folders;
 
   /// The full resource name of the resource.
   ///
   /// See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
-  core.String name;
+  core.String? name;
 
   /// The full resource name of resource's parent.
-  core.String parent;
+  core.String? parent;
 
   /// The human readable name of resource's parent.
-  core.String parentDisplayName;
+  core.String? parentDisplayName;
 
   /// The full resource name of project that the resource belongs to.
-  core.String project;
+  core.String? project;
 
   /// The human readable name of project that the resource belongs to.
-  core.String projectDisplayName;
+  core.String? projectDisplayName;
 
   GoogleCloudSecuritycenterV1p1beta1Resource();
 
@@ -4217,22 +4051,22 @@ class GoogleCloudSecuritycenterV1p1beta1Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (folders != null)
-          'folders': folders.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (parent != null) 'parent': parent,
-        if (parentDisplayName != null) 'parentDisplayName': parentDisplayName,
-        if (project != null) 'project': project,
+          'folders': folders!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
+        if (parentDisplayName != null) 'parentDisplayName': parentDisplayName!,
+        if (project != null) 'project': project!,
         if (projectDisplayName != null)
-          'projectDisplayName': projectDisplayName,
+          'projectDisplayName': projectDisplayName!,
       };
 }
 
 /// Response of asset discovery run
 class GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse {
   /// The duration between asset discovery run start and end
-  core.String duration;
+  core.String? duration;
 
   /// The state of an asset discovery run.
   /// Possible string values are:
@@ -4242,7 +4076,7 @@ class GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse {
   /// pending, as another run for the same organization was started with a
   /// higher priority.
   /// - "TERMINATED" : Asset discovery run was killed and terminated.
-  core.String state;
+  core.String? state;
 
   GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse();
 
@@ -4256,9 +4090,9 @@ class GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (duration != null) 'duration': duration,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -4276,7 +4110,7 @@ class GoogleCloudSecuritycenterV1p1beta1SecurityMarks {
   /// must be letters, numbers, underscores, or dashes * Values have leading and
   /// trailing whitespace trimmed, remaining characters must be between 1 - 4096
   /// characters (inclusive)
-  core.Map<core.String, core.String> marks;
+  core.Map<core.String, core.String>? marks;
 
   /// The relative resource name of the SecurityMarks.
   ///
@@ -4285,7 +4119,7 @@ class GoogleCloudSecuritycenterV1p1beta1SecurityMarks {
   /// Examples:
   /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
   /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
-  core.String name;
+  core.String? name;
 
   GoogleCloudSecuritycenterV1p1beta1SecurityMarks();
 
@@ -4303,9 +4137,9 @@ class GoogleCloudSecuritycenterV1p1beta1SecurityMarks {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (marks != null) 'marks': marks,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (marks != null) 'marks': marks!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -4330,7 +4164,7 @@ class GroupAssetsRequest {
   /// is not specified, then the only possible state_change is "UNUSED", which
   /// will be the state_change set for all assets present at read_time. If this
   /// field is set then `state_change` must be a specified field in `group_by`.
-  core.String compareDuration;
+  core.String? compareDuration;
 
   /// Expression that defines the filter to apply across assets.
   ///
@@ -4366,7 +4200,7 @@ class GroupAssetsRequest {
   /// `resource_properties.my_property : ""` Use a negated partial match on the
   /// empty string to filter based on a property not existing:
   /// `-resource_properties.my_property : ""`
-  core.String filter;
+  core.String? filter;
 
   /// Expression that defines what assets fields to use for grouping.
   ///
@@ -4385,24 +4219,24 @@ class GroupAssetsRequest {
   /// security_center_properties.resource_parent_display_name
   ///
   /// Required.
-  core.String groupBy;
+  core.String? groupBy;
 
   /// The maximum number of results to return in a single response.
   ///
   /// Default is 10, minimum is 1, maximum is 1000.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// The value returned by the last `GroupAssetsResponse`; indicates that this
   /// is a continuation of a prior `GroupAssets` call, and that the system
   /// should return the next page of data.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// Time used as a reference point when filtering assets.
   ///
   /// The filter is limited to assets existing at the supplied time and their
   /// values are those at that specific time. Absence of this field will default
   /// to the API's version of NOW.
-  core.String readTime;
+  core.String? readTime;
 
   GroupAssetsRequest();
 
@@ -4427,13 +4261,13 @@ class GroupAssetsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (compareDuration != null) 'compareDuration': compareDuration,
-        if (filter != null) 'filter': filter,
-        if (groupBy != null) 'groupBy': groupBy,
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (readTime != null) 'readTime': readTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (compareDuration != null) 'compareDuration': compareDuration!,
+        if (filter != null) 'filter': filter!,
+        if (groupBy != null) 'groupBy': groupBy!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (readTime != null) 'readTime': readTime!,
       };
 }
 
@@ -4444,17 +4278,17 @@ class GroupAssetsResponse {
   /// There exists an element for each existing unique combination of
   /// property/values. The element contains a count for the number of times
   /// those specific property/values appear.
-  core.List<GroupResult> groupByResults;
+  core.List<GroupResult>? groupByResults;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Time used for executing the groupBy request.
-  core.String readTime;
+  core.String? readTime;
 
   /// The total number of results matching the query.
-  core.int totalSize;
+  core.int? totalSize;
 
   GroupAssetsResponse();
 
@@ -4476,13 +4310,13 @@ class GroupAssetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (groupByResults != null)
           'groupByResults':
-              groupByResults.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (readTime != null) 'readTime': readTime,
-        if (totalSize != null) 'totalSize': totalSize,
+              groupByResults!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (readTime != null) 'readTime': readTime!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
@@ -4511,7 +4345,7 @@ class GroupFindingsRequest {
   /// only possible state_change is "UNUSED", which will be the state_change set
   /// for all findings present at read_time. If this field is set then
   /// `state_change` must be a specified field in `group_by`.
-  core.String compareDuration;
+  core.String? compareDuration;
 
   /// Expression that defines the filter to apply across findings.
   ///
@@ -4536,7 +4370,7 @@ class GroupFindingsRequest {
   /// `source_properties.my_property : ""` Use a negated partial match on the
   /// empty string to filter based on a property not existing:
   /// `-source_properties.my_property : ""`
-  core.String filter;
+  core.String? filter;
 
   /// Expression that defines what assets fields to use for grouping (including
   /// `state_change`).
@@ -4547,24 +4381,24 @@ class GroupFindingsRequest {
   /// are supported when compare_duration is set: * state_change
   ///
   /// Required.
-  core.String groupBy;
+  core.String? groupBy;
 
   /// The maximum number of results to return in a single response.
   ///
   /// Default is 10, minimum is 1, maximum is 1000.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// The value returned by the last `GroupFindingsResponse`; indicates that
   /// this is a continuation of a prior `GroupFindings` call, and that the
   /// system should return the next page of data.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// Time used as a reference point when filtering findings.
   ///
   /// The filter is limited to findings existing at the supplied time and their
   /// values are those at that specific time. Absence of this field will default
   /// to the API's version of NOW.
-  core.String readTime;
+  core.String? readTime;
 
   GroupFindingsRequest();
 
@@ -4589,13 +4423,13 @@ class GroupFindingsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (compareDuration != null) 'compareDuration': compareDuration,
-        if (filter != null) 'filter': filter,
-        if (groupBy != null) 'groupBy': groupBy,
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (readTime != null) 'readTime': readTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (compareDuration != null) 'compareDuration': compareDuration!,
+        if (filter != null) 'filter': filter!,
+        if (groupBy != null) 'groupBy': groupBy!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (readTime != null) 'readTime': readTime!,
       };
 }
 
@@ -4606,17 +4440,17 @@ class GroupFindingsResponse {
   /// There exists an element for each existing unique combination of
   /// property/values. The element contains a count for the number of times
   /// those specific property/values appear.
-  core.List<GroupResult> groupByResults;
+  core.List<GroupResult>? groupByResults;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Time used for executing the groupBy request.
-  core.String readTime;
+  core.String? readTime;
 
   /// The total number of results matching the query.
-  core.int totalSize;
+  core.int? totalSize;
 
   GroupFindingsResponse();
 
@@ -4638,26 +4472,26 @@ class GroupFindingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (groupByResults != null)
           'groupByResults':
-              groupByResults.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (readTime != null) 'readTime': readTime,
-        if (totalSize != null) 'totalSize': totalSize,
+              groupByResults!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (readTime != null) 'readTime': readTime!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
 /// Result containing the properties and count of a groupBy request.
 class GroupResult {
   /// Total count of resources for the given properties.
-  core.String count;
+  core.String? count;
 
   /// Properties matching the groupBy fields in the request.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> properties;
+  core.Map<core.String, core.Object>? properties;
 
   GroupResult();
 
@@ -4677,9 +4511,9 @@ class GroupResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (properties != null) 'properties': properties,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (properties != null) 'properties': properties!,
       };
 }
 
@@ -4693,7 +4527,7 @@ class IamPolicy {
   ///
   /// See https://cloud.google.com/iam/reference/rest/v1/Policy for format
   /// details.
-  core.String policyBlob;
+  core.String? policyBlob;
 
   IamPolicy();
 
@@ -4703,25 +4537,25 @@ class IamPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policyBlob != null) 'policyBlob': policyBlob,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policyBlob != null) 'policyBlob': policyBlob!,
       };
 }
 
 /// Response message for listing assets.
 class ListAssetsResponse {
   /// Assets matching the list request.
-  core.List<ListAssetsResult> listAssetsResults;
+  core.List<ListAssetsResult>? listAssetsResults;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Time used for executing the list request.
-  core.String readTime;
+  core.String? readTime;
 
   /// The total number of assets matching the query.
-  core.int totalSize;
+  core.int? totalSize;
 
   ListAssetsResponse();
 
@@ -4743,20 +4577,20 @@ class ListAssetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (listAssetsResults != null)
           'listAssetsResults':
-              listAssetsResults.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (readTime != null) 'readTime': readTime,
-        if (totalSize != null) 'totalSize': totalSize,
+              listAssetsResults!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (readTime != null) 'readTime': readTime!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
 /// Result containing the Asset and its State.
 class ListAssetsResult {
   /// Asset matching the search request.
-  Asset asset;
+  Asset? asset;
 
   /// State change of the asset between the points in time.
   /// Possible string values are:
@@ -4765,7 +4599,7 @@ class ListAssetsResult {
   /// - "ADDED" : Asset was added between the points in time.
   /// - "REMOVED" : Asset was removed between the points in time.
   /// - "ACTIVE" : Asset was present at both point(s) in time.
-  core.String stateChange;
+  core.String? stateChange;
 
   ListAssetsResult();
 
@@ -4779,26 +4613,26 @@ class ListAssetsResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (asset != null) 'asset': asset.toJson(),
-        if (stateChange != null) 'stateChange': stateChange,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (asset != null) 'asset': asset!.toJson(),
+        if (stateChange != null) 'stateChange': stateChange!,
       };
 }
 
 /// Response message for listing findings.
 class ListFindingsResponse {
   /// Findings matching the list request.
-  core.List<ListFindingsResult> listFindingsResults;
+  core.List<ListFindingsResult>? listFindingsResults;
 
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Time used for executing the list request.
-  core.String readTime;
+  core.String? readTime;
 
   /// The total number of findings matching the query.
-  core.int totalSize;
+  core.int? totalSize;
 
   ListFindingsResponse();
 
@@ -4820,25 +4654,25 @@ class ListFindingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (listFindingsResults != null)
           'listFindingsResults':
-              listFindingsResults.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (readTime != null) 'readTime': readTime,
-        if (totalSize != null) 'totalSize': totalSize,
+              listFindingsResults!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (readTime != null) 'readTime': readTime!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
 /// Result containing the Finding and its StateChange.
 class ListFindingsResult {
   /// Finding matching the search request.
-  Finding finding;
+  Finding? finding;
 
   /// Resource that is associated with this finding.
   ///
   /// Output only.
-  Resource resource;
+  Resource? resource;
 
   /// State change of the finding between the points in time.
   /// Possible string values are:
@@ -4851,7 +4685,7 @@ class ListFindingsResult {
   /// - "ADDED" : The finding was created between the points in time.
   /// - "REMOVED" : The finding at timestamp does not match the filter
   /// specified, but it did at timestamp - compare_duration.
-  core.String stateChange;
+  core.String? stateChange;
 
   ListFindingsResult();
 
@@ -4869,10 +4703,10 @@ class ListFindingsResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (finding != null) 'finding': finding.toJson(),
-        if (resource != null) 'resource': resource.toJson(),
-        if (stateChange != null) 'stateChange': stateChange,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (finding != null) 'finding': finding!.toJson(),
+        if (resource != null) 'resource': resource!.toJson(),
+        if (stateChange != null) 'stateChange': stateChange!,
       };
 }
 
@@ -4880,10 +4714,10 @@ class ListFindingsResult {
 class ListNotificationConfigsResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Notification configs belonging to the requested parent.
-  core.List<NotificationConfig> notificationConfigs;
+  core.List<NotificationConfig>? notificationConfigs;
 
   ListNotificationConfigsResponse();
 
@@ -4899,21 +4733,21 @@ class ListNotificationConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (notificationConfigs != null)
           'notificationConfigs':
-              notificationConfigs.map((value) => value.toJson()).toList(),
+              notificationConfigs!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -4929,10 +4763,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4940,10 +4774,10 @@ class ListOperationsResponse {
 class ListSourcesResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Sources belonging to the requested parent.
-  core.List<Source> sources;
+  core.List<Source>? sources;
 
   ListSourcesResponse();
 
@@ -4959,10 +4793,10 @@ class ListSourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (sources != null)
-          'sources': sources.map((value) => value.toJson()).toList(),
+          'sources': sources!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4973,7 +4807,7 @@ class ListSourcesResponse {
 /// assets and etc.
 class NotificationConfig {
   /// The description of the notification config (max of 1024 characters).
-  core.String description;
+  core.String? description;
 
   /// The relative resource name of this notification config.
   ///
@@ -4981,21 +4815,21 @@ class NotificationConfig {
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
   /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
-  core.String name;
+  core.String? name;
 
   /// The Pub/Sub topic to send notifications to.
   ///
   /// Its format is "projects/\[project_id\]/topics/\[topic\]".
-  core.String pubsubTopic;
+  core.String? pubsubTopic;
 
   /// The service account that needs "pubsub.topics.publish" permission to
   /// publish to the Pub/Sub topic.
   ///
   /// Output only.
-  core.String serviceAccount;
+  core.String? serviceAccount;
 
   /// The config for triggering streaming-based notifications.
-  StreamingConfig streamingConfig;
+  StreamingConfig? streamingConfig;
 
   NotificationConfig();
 
@@ -5018,13 +4852,13 @@ class NotificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (name != null) 'name': name,
-        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (streamingConfig != null)
-          'streamingConfig': streamingConfig.toJson(),
+          'streamingConfig': streamingConfig!.toJson(),
       };
 }
 
@@ -5035,10 +4869,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -5049,14 +4883,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -5069,7 +4903,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -5104,12 +4938,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -5117,21 +4951,21 @@ class Operation {
 /// organization.
 class OrganizationSettings {
   /// The configuration used for Asset Discovery runs.
-  AssetDiscoveryConfig assetDiscoveryConfig;
+  AssetDiscoveryConfig? assetDiscoveryConfig;
 
   /// A flag that indicates if Asset Discovery should be enabled.
   ///
   /// If the flag is set to \`true\`, then discovery of assets will occur. If it
   /// is set to \`false, all historical assets will remain, but discovery of
   /// future assets will not occur.
-  core.bool enableAssetDiscovery;
+  core.bool? enableAssetDiscovery;
 
   /// The relative resource name of the settings.
   ///
   /// See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example: "organizations/{organization_id}/organizationSettings".
-  core.String name;
+  core.String? name;
 
   OrganizationSettings();
 
@@ -5148,12 +4982,12 @@ class OrganizationSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (assetDiscoveryConfig != null)
-          'assetDiscoveryConfig': assetDiscoveryConfig.toJson(),
+          'assetDiscoveryConfig': assetDiscoveryConfig!.toJson(),
         if (enableAssetDiscovery != null)
-          'enableAssetDiscovery': enableAssetDiscovery,
-        if (name != null) 'name': name,
+          'enableAssetDiscovery': enableAssetDiscovery!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -5190,14 +5024,14 @@ class OrganizationSettings {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -5211,8 +5045,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -5236,7 +5070,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -5261,13 +5095,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -5280,25 +5114,25 @@ class Resource {
   ///
   /// The first folder is the deepest nested folder, and the last folder is the
   /// folder directly under the Organization.
-  core.List<Folder> folders;
+  core.List<Folder>? folders;
 
   /// The full resource name of the resource.
   ///
   /// See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
-  core.String name;
+  core.String? name;
 
   /// The human readable name of resource's parent.
-  core.String parentDisplayName;
+  core.String? parentDisplayName;
 
   /// The full resource name of resource's parent.
-  core.String parentName;
+  core.String? parentName;
 
   /// The human readable name of project that the resource belongs to.
-  core.String projectDisplayName;
+  core.String? projectDisplayName;
 
   /// The full resource name of project that the resource belongs to.
-  core.String projectName;
+  core.String? projectName;
 
   Resource();
 
@@ -5326,15 +5160,15 @@ class Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (folders != null)
-          'folders': folders.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (parentDisplayName != null) 'parentDisplayName': parentDisplayName,
-        if (parentName != null) 'parentName': parentName,
+          'folders': folders!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (parentDisplayName != null) 'parentDisplayName': parentDisplayName!,
+        if (parentName != null) 'parentName': parentName!,
         if (projectDisplayName != null)
-          'projectDisplayName': projectDisplayName,
-        if (projectName != null) 'projectName': projectName,
+          'projectDisplayName': projectDisplayName!,
+        if (projectName != null) 'projectName': projectName!,
       };
 }
 
@@ -5346,7 +5180,7 @@ class RunAssetDiscoveryRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Security Command Center managed properties.
@@ -5358,44 +5192,44 @@ class SecurityCenterProperties {
   ///
   /// The first folder is the deepest nested folder, and the last folder is the
   /// folder directly under the Organization.
-  core.List<Folder> folders;
+  core.List<Folder>? folders;
 
   /// The user defined display name for this resource.
-  core.String resourceDisplayName;
+  core.String? resourceDisplayName;
 
   /// The full resource name of the Google Cloud resource this asset represents.
   ///
   /// This field is immutable after create time. See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
-  core.String resourceName;
+  core.String? resourceName;
 
   /// Owners of the Google Cloud resource.
-  core.List<core.String> resourceOwners;
+  core.List<core.String>? resourceOwners;
 
   /// The full resource name of the immediate parent of the resource.
   ///
   /// See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
-  core.String resourceParent;
+  core.String? resourceParent;
 
   /// The user defined display name for the parent of this resource.
-  core.String resourceParentDisplayName;
+  core.String? resourceParentDisplayName;
 
   /// The full resource name of the project the resource belongs to.
   ///
   /// See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
-  core.String resourceProject;
+  core.String? resourceProject;
 
   /// The user defined display name for the project of this resource.
-  core.String resourceProjectDisplayName;
+  core.String? resourceProjectDisplayName;
 
   /// The type of the Google Cloud resource.
   ///
   /// Examples include: APPLICATION, PROJECT, and ORGANIZATION. This is a case
   /// insensitive field defined by Security Command Center and/or the producer
   /// of the resource and is immutable after create time.
-  core.String resourceType;
+  core.String? resourceType;
 
   SecurityCenterProperties();
 
@@ -5436,20 +5270,20 @@ class SecurityCenterProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (folders != null)
-          'folders': folders.map((value) => value.toJson()).toList(),
+          'folders': folders!.map((value) => value.toJson()).toList(),
         if (resourceDisplayName != null)
-          'resourceDisplayName': resourceDisplayName,
-        if (resourceName != null) 'resourceName': resourceName,
-        if (resourceOwners != null) 'resourceOwners': resourceOwners,
-        if (resourceParent != null) 'resourceParent': resourceParent,
+          'resourceDisplayName': resourceDisplayName!,
+        if (resourceName != null) 'resourceName': resourceName!,
+        if (resourceOwners != null) 'resourceOwners': resourceOwners!,
+        if (resourceParent != null) 'resourceParent': resourceParent!,
         if (resourceParentDisplayName != null)
-          'resourceParentDisplayName': resourceParentDisplayName,
-        if (resourceProject != null) 'resourceProject': resourceProject,
+          'resourceParentDisplayName': resourceParentDisplayName!,
+        if (resourceProject != null) 'resourceProject': resourceProject!,
         if (resourceProjectDisplayName != null)
-          'resourceProjectDisplayName': resourceProjectDisplayName,
-        if (resourceType != null) 'resourceType': resourceType,
+          'resourceProjectDisplayName': resourceProjectDisplayName!,
+        if (resourceType != null) 'resourceType': resourceType!,
       };
 }
 
@@ -5467,7 +5301,7 @@ class SecurityMarks {
   /// must be letters, numbers, underscores, or dashes * Values have leading and
   /// trailing whitespace trimmed, remaining characters must be between 1 - 4096
   /// characters (inclusive)
-  core.Map<core.String, core.String> marks;
+  core.Map<core.String, core.String>? marks;
 
   /// The relative resource name of the SecurityMarks.
   ///
@@ -5476,7 +5310,7 @@ class SecurityMarks {
   /// Examples:
   /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
   /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
-  core.String name;
+  core.String? name;
 
   SecurityMarks();
 
@@ -5494,9 +5328,9 @@ class SecurityMarks {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (marks != null) 'marks': marks,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (marks != null) 'marks': marks!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -5505,7 +5339,7 @@ class SetFindingStateRequest {
   /// The time at which the updated state takes effect.
   ///
   /// Required.
-  core.String startTime;
+  core.String? startTime;
 
   /// The desired State of the finding.
   ///
@@ -5516,7 +5350,7 @@ class SetFindingStateRequest {
   /// yet.
   /// - "INACTIVE" : The finding has been fixed, triaged as a non-issue or
   /// otherwise addressed and is no longer active.
-  core.String state;
+  core.String? state;
 
   SetFindingStateRequest();
 
@@ -5529,9 +5363,9 @@ class SetFindingStateRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -5542,13 +5376,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -5562,9 +5396,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -5581,21 +5415,21 @@ class Source {
   /// detect four common vulnerabilities, including cross-site-scripting (XSS),
   /// Flash injection, mixed content (HTTP in HTTPS), and outdated or insecure
   /// libraries."
-  core.String description;
+  core.String? description;
 
   /// The source's display name.
   ///
   /// A source's display name must be unique amongst its siblings, for example,
   /// two sources with the same parent can't share the same display name. The
   /// display name must have a length between 1 and 64 characters (inclusive).
-  core.String displayName;
+  core.String? displayName;
 
   /// The relative resource name of this source.
   ///
   /// See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example: "organizations/{organization_id}/sources/{source_id}"
-  core.String name;
+  core.String? name;
 
   Source();
 
@@ -5611,10 +5445,10 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -5627,7 +5461,7 @@ class Source {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -5635,13 +5469,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -5665,10 +5499,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -5687,7 +5521,7 @@ class StreamingConfig {
   /// meaning substring matching, for strings. The supported value types are: *
   /// string literals in quotes. * integer literals without quotes. * boolean
   /// literals `true` and `false` without quotes.
-  core.String filter;
+  core.String? filter;
 
   StreamingConfig();
 
@@ -5697,8 +5531,8 @@ class StreamingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filter != null) 'filter': filter,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filter != null) 'filter': filter!,
       };
 }
 
@@ -5709,7 +5543,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -5721,8 +5555,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -5730,7 +5564,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -5742,7 +5576,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }

@@ -105,13 +105,9 @@ class ProjectsResource {
   async.Future<GoogleApiHttpBody> explain(
     GoogleCloudMlV1ExplainRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -152,11 +148,8 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1GetConfigResponse> getConfig(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -199,13 +192,9 @@ class ProjectsResource {
   async.Future<GoogleApiHttpBody> predict(
     GoogleCloudMlV1PredictRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -251,13 +240,9 @@ class ProjectsJobsResource {
   async.Future<GoogleProtobufEmpty> cancel(
     GoogleCloudMlV1CancelJobRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -297,13 +282,9 @@ class ProjectsJobsResource {
   async.Future<GoogleCloudMlV1Job> create(
     GoogleCloudMlV1Job request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -340,11 +321,8 @@ class ProjectsJobsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Job> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -392,12 +370,9 @@ class ProjectsJobsResource {
   /// this method will complete with the same error.
   async.Future<GoogleIamV1Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -456,14 +431,11 @@ class ProjectsJobsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListJobsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -518,14 +490,10 @@ class ProjectsJobsResource {
   async.Future<GoogleCloudMlV1Job> patch(
     GoogleCloudMlV1Job request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -570,13 +538,9 @@ class ProjectsJobsResource {
   async.Future<GoogleIamV1Policy> setIamPolicy(
     GoogleIamV1SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -624,13 +588,9 @@ class ProjectsJobsResource {
   async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
     GoogleIamV1TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -680,11 +640,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -730,13 +687,10 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListLocationsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -791,11 +745,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> cancel(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -835,11 +786,8 @@ class ProjectsLocationsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -891,14 +839,10 @@ class ProjectsLocationsStudiesResource {
   async.Future<GoogleCloudMlV1Study> create(
     GoogleCloudMlV1Study request,
     core.String parent, {
-    core.String studyId,
-    core.String $fields,
+    core.String? studyId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (studyId != null) 'studyId': [studyId],
       if ($fields != null) 'fields': [$fields],
@@ -937,11 +881,8 @@ class ProjectsLocationsStudiesResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -977,11 +918,8 @@ class ProjectsLocationsStudiesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Study> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1017,11 +955,8 @@ class ProjectsLocationsStudiesResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListStudiesResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1071,13 +1006,9 @@ class ProjectsLocationsStudiesTrialsResource {
   async.Future<GoogleCloudMlV1Trial> addMeasurement(
     GoogleCloudMlV1AddTrialMeasurementRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1122,13 +1053,9 @@ class ProjectsLocationsStudiesTrialsResource {
   async.Future<GoogleLongrunningOperation> checkEarlyStoppingState(
     GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1170,13 +1097,9 @@ class ProjectsLocationsStudiesTrialsResource {
   async.Future<GoogleCloudMlV1Trial> complete(
     GoogleCloudMlV1CompleteTrialRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1217,13 +1140,9 @@ class ProjectsLocationsStudiesTrialsResource {
   async.Future<GoogleCloudMlV1Trial> create(
     GoogleCloudMlV1Trial request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1261,11 +1180,8 @@ class ProjectsLocationsStudiesTrialsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1301,11 +1217,8 @@ class ProjectsLocationsStudiesTrialsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Trial> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1341,11 +1254,8 @@ class ProjectsLocationsStudiesTrialsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListTrialsResponse> list(
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1390,13 +1300,9 @@ class ProjectsLocationsStudiesTrialsResource {
   async.Future<GoogleCloudMlV1ListOptimalTrialsResponse> listOptimalTrials(
     GoogleCloudMlV1ListOptimalTrialsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1438,13 +1344,9 @@ class ProjectsLocationsStudiesTrialsResource {
   async.Future<GoogleCloudMlV1Trial> stop(
     GoogleCloudMlV1StopTrialRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1490,13 +1392,9 @@ class ProjectsLocationsStudiesTrialsResource {
   async.Future<GoogleLongrunningOperation> suggest(
     GoogleCloudMlV1SuggestTrialsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1549,13 +1447,9 @@ class ProjectsModelsResource {
   async.Future<GoogleCloudMlV1Model> create(
     GoogleCloudMlV1Model request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1595,11 +1489,8 @@ class ProjectsModelsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1636,11 +1527,8 @@ class ProjectsModelsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Model> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1688,12 +1576,9 @@ class ProjectsModelsResource {
   /// this method will complete with the same error.
   async.Future<GoogleIamV1Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -1748,14 +1633,11 @@ class ProjectsModelsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListModelsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1808,14 +1690,10 @@ class ProjectsModelsResource {
   async.Future<GoogleLongrunningOperation> patch(
     GoogleCloudMlV1Model request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1860,13 +1738,9 @@ class ProjectsModelsResource {
   async.Future<GoogleIamV1Policy> setIamPolicy(
     GoogleIamV1SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1914,13 +1788,9 @@ class ProjectsModelsResource {
   async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
     GoogleIamV1TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1975,13 +1845,9 @@ class ProjectsModelsVersionsResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleCloudMlV1Version request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2025,11 +1891,8 @@ class ProjectsModelsVersionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2069,11 +1932,8 @@ class ProjectsModelsVersionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Version> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2125,14 +1985,11 @@ class ProjectsModelsVersionsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListVersionsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2188,14 +2045,10 @@ class ProjectsModelsVersionsResource {
   async.Future<GoogleLongrunningOperation> patch(
     GoogleCloudMlV1Version request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2243,13 +2096,9 @@ class ProjectsModelsVersionsResource {
   async.Future<GoogleCloudMlV1Version> setDefault(
     GoogleCloudMlV1SetDefaultVersionRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2301,11 +2150,8 @@ class ProjectsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> cancel(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2344,11 +2190,8 @@ class ProjectsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2398,14 +2241,11 @@ class ProjectsOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2447,11 +2287,11 @@ class ProjectsOperationsResource {
 class GoogleApiHttpBody {
   /// The HTTP Content-Type header value specifying the content type of the
   /// body.
-  core.String contentType;
+  core.String? contentType;
 
   /// The HTTP request/response body as raw binary.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -2464,7 +2304,7 @@ class GoogleApiHttpBody {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> extensions;
+  core.List<core.Map<core.String, core.Object>>? extensions;
 
   GoogleApiHttpBody();
 
@@ -2488,10 +2328,10 @@ class GoogleApiHttpBody {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentType != null) 'contentType': contentType,
-        if (data != null) 'data': data,
-        if (extensions != null) 'extensions': extensions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentType != null) 'contentType': contentType!,
+        if (data != null) 'data': data!,
+        if (extensions != null) 'extensions': extensions!,
       };
 }
 
@@ -2500,7 +2340,7 @@ class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig {
   /// Decay Curve.
   ///
   /// Otherwise, Measurement.steps will be used as the x-axis.
-  core.bool useElapsedTime;
+  core.bool? useElapsedTime;
 
   GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig();
 
@@ -2511,8 +2351,8 @@ class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (useElapsedTime != null) 'useElapsedTime': useElapsedTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (useElapsedTime != null) 'useElapsedTime': useElapsedTime!,
       };
 }
 
@@ -2527,7 +2367,7 @@ class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig {
   /// measurement.use_elapsed_time, which means the elapsed_time field of the
   /// current trial's latest measurement is used to compute the median objective
   /// value for each completed trial.
-  core.bool useElapsedTime;
+  core.bool? useElapsedTime;
 
   GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig();
 
@@ -2538,18 +2378,18 @@ class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (useElapsedTime != null) 'useElapsedTime': useElapsedTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (useElapsedTime != null) 'useElapsedTime': useElapsedTime!,
       };
 }
 
 /// An observed value of a metric.
 class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
   /// The objective value at this training step.
-  core.double objectiveValue;
+  core.double? objectiveValue;
 
   /// The global training step for this metric.
-  core.String trainingStep;
+  core.String? trainingStep;
 
   GoogleCloudMlV1HyperparameterOutputHyperparameterMetric();
 
@@ -2563,9 +2403,9 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectiveValue != null) 'objectiveValue': objectiveValue,
-        if (trainingStep != null) 'trainingStep': trainingStep,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectiveValue != null) 'objectiveValue': objectiveValue!,
+        if (trainingStep != null) 'trainingStep': trainingStep!,
       };
 }
 
@@ -2574,12 +2414,12 @@ class GoogleCloudMlV1MeasurementMetric {
   /// Metric name.
   ///
   /// Required.
-  core.String metric;
+  core.String? metric;
 
   /// The value for this metric.
   ///
   /// Required.
-  core.double value;
+  core.double? value;
 
   GoogleCloudMlV1MeasurementMetric();
 
@@ -2592,9 +2432,9 @@ class GoogleCloudMlV1MeasurementMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metric != null) 'metric': metric,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metric != null) 'metric': metric!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2602,7 +2442,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
   /// Must be specified if type is `CATEGORICAL`.
   ///
   /// The list of possible categories.
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec();
 
@@ -2615,8 +2455,8 @@ class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (values != null) 'values': values!,
       };
 }
 
@@ -2626,7 +2466,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec {
   /// A list of feasible points. The list should be in strictly increasing
   /// order. For instance, this parameter might have possible settings of 1.5,
   /// 2.5, and 4.0. This list should not contain more than 1,000 values.
-  core.List<core.double> values;
+  core.List<core.double>? values;
 
   GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec();
 
@@ -2639,8 +2479,8 @@ class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (values != null) 'values': values!,
       };
 }
 
@@ -2648,12 +2488,12 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
   /// Must be specified if type is `DOUBLE`.
   ///
   /// Maximum value of the parameter.
-  core.double maxValue;
+  core.double? maxValue;
 
   /// Must be specified if type is `DOUBLE`.
   ///
   /// Minimum value of the parameter.
-  core.double minValue;
+  core.double? minValue;
 
   GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec();
 
@@ -2667,9 +2507,9 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxValue != null) 'maxValue': maxValue,
-        if (minValue != null) 'minValue': minValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxValue != null) 'maxValue': maxValue!,
+        if (minValue != null) 'minValue': minValue!,
       };
 }
 
@@ -2677,12 +2517,12 @@ class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
   /// Must be specified if type is `INTEGER`.
   ///
   /// Maximum value of the parameter.
-  core.String maxValue;
+  core.String? maxValue;
 
   /// Must be specified if type is `INTEGER`.
   ///
   /// Minimum value of the parameter.
-  core.String minValue;
+  core.String? minValue;
 
   GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec();
 
@@ -2696,9 +2536,9 @@ class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxValue != null) 'maxValue': maxValue,
-        if (minValue != null) 'minValue': minValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxValue != null) 'maxValue': maxValue!,
+        if (minValue != null) 'minValue': minValue!,
       };
 }
 
@@ -2707,7 +2547,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec 
   /// Matches values of the parent parameter with type 'CATEGORICAL'.
   ///
   /// All values must exist in `categorical_value_spec` of parent parameter.
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec();
 
@@ -2720,8 +2560,8 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec 
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (values != null) 'values': values!,
       };
 }
 
@@ -2730,7 +2570,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
   /// Matches values of the parent parameter with type 'DISCRETE'.
   ///
   /// All values must exist in `discrete_value_spec` of parent parameter.
-  core.List<core.double> values;
+  core.List<core.double>? values;
 
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec();
 
@@ -2743,8 +2583,8 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (values != null) 'values': values!,
       };
 }
 
@@ -2753,7 +2593,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec {
   /// Matches values of the parent parameter with type 'INTEGER'.
   ///
   /// All values must lie in `integer_value_spec` of parent parameter.
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec();
 
@@ -2766,8 +2606,8 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (values != null) 'values': values!,
       };
 }
 
@@ -2780,12 +2620,12 @@ class GoogleCloudMlV1StudyConfigMetricSpec {
   /// - "GOAL_TYPE_UNSPECIFIED" : Goal Type will default to maximize.
   /// - "MAXIMIZE" : Maximize the goal metric.
   /// - "MINIMIZE" : Minimize the goal metric.
-  core.String goal;
+  core.String? goal;
 
   /// The name of the metric.
   ///
   /// Required.
-  core.String metric;
+  core.String? metric;
 
   GoogleCloudMlV1StudyConfigMetricSpec();
 
@@ -2798,16 +2638,16 @@ class GoogleCloudMlV1StudyConfigMetricSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (goal != null) 'goal': goal,
-        if (metric != null) 'metric': metric,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (goal != null) 'goal': goal!,
+        if (metric != null) 'metric': metric!,
       };
 }
 
 /// Represents a single parameter to optimize.
 class GoogleCloudMlV1StudyConfigParameterSpec {
   /// The value spec for a 'CATEGORICAL' parameter.
-  GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec
+  GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec?
       categoricalValueSpec;
 
   /// A child node is active if the parameter's value matches the child node's
@@ -2815,26 +2655,26 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
   ///
   /// If two items in child_parameter_specs have the same name, they must have
   /// disjoint matching_parent_values.
-  core.List<GoogleCloudMlV1StudyConfigParameterSpec> childParameterSpecs;
+  core.List<GoogleCloudMlV1StudyConfigParameterSpec>? childParameterSpecs;
 
   /// The value spec for a 'DISCRETE' parameter.
-  GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec discreteValueSpec;
+  GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec? discreteValueSpec;
 
   /// The value spec for a 'DOUBLE' parameter.
-  GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec doubleValueSpec;
+  GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec? doubleValueSpec;
 
   /// The value spec for an 'INTEGER' parameter.
-  GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec integerValueSpec;
+  GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec? integerValueSpec;
 
   /// The parameter name must be unique amongst all ParameterSpecs.
   ///
   /// Required.
-  core.String parameter;
-  GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec
+  core.String? parameter;
+  GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec?
       parentCategoricalValues;
-  GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec
+  GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec?
       parentDiscreteValues;
-  GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec
+  GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec?
       parentIntValues;
 
   /// How the parameter should be scaled.
@@ -2849,7 +2689,7 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
   /// logarithmically to (0, 1). The result is that values close to the top of
   /// the feasible space are spread out more than points near the bottom. The
   /// entire feasible space must be strictly positive.
-  core.String scaleType;
+  core.String? scaleType;
 
   /// The type of the parameter.
   ///
@@ -2864,7 +2704,7 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
   /// - "DISCRETE" : The parameter is real valued, with a fixed set of feasible
   /// points. If `type==DISCRETE`, feasible_points must be provided, and
   /// {`min_value`, `max_value`} will be ignored.
-  core.String type;
+  core.String? type;
 
   GoogleCloudMlV1StudyConfigParameterSpec();
 
@@ -2927,27 +2767,27 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (categoricalValueSpec != null)
-          'categoricalValueSpec': categoricalValueSpec.toJson(),
+          'categoricalValueSpec': categoricalValueSpec!.toJson(),
         if (childParameterSpecs != null)
           'childParameterSpecs':
-              childParameterSpecs.map((value) => value.toJson()).toList(),
+              childParameterSpecs!.map((value) => value.toJson()).toList(),
         if (discreteValueSpec != null)
-          'discreteValueSpec': discreteValueSpec.toJson(),
+          'discreteValueSpec': discreteValueSpec!.toJson(),
         if (doubleValueSpec != null)
-          'doubleValueSpec': doubleValueSpec.toJson(),
+          'doubleValueSpec': doubleValueSpec!.toJson(),
         if (integerValueSpec != null)
-          'integerValueSpec': integerValueSpec.toJson(),
-        if (parameter != null) 'parameter': parameter,
+          'integerValueSpec': integerValueSpec!.toJson(),
+        if (parameter != null) 'parameter': parameter!,
         if (parentCategoricalValues != null)
-          'parentCategoricalValues': parentCategoricalValues.toJson(),
+          'parentCategoricalValues': parentCategoricalValues!.toJson(),
         if (parentDiscreteValues != null)
-          'parentDiscreteValues': parentDiscreteValues.toJson(),
+          'parentDiscreteValues': parentDiscreteValues!.toJson(),
         if (parentIntValues != null)
-          'parentIntValues': parentIntValues.toJson(),
-        if (scaleType != null) 'scaleType': scaleType,
-        if (type != null) 'type': type,
+          'parentIntValues': parentIntValues!.toJson(),
+        if (scaleType != null) 'scaleType': scaleType!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2957,16 +2797,16 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
 /// trial.
 class GoogleCloudMlV1TrialParameter {
   /// Must be set if ParameterType is DOUBLE or DISCRETE.
-  core.double floatValue;
+  core.double? floatValue;
 
   /// Must be set if ParameterType is INTEGER
-  core.String intValue;
+  core.String? intValue;
 
   /// The name of the parameter.
-  core.String parameter;
+  core.String? parameter;
 
   /// Must be set if ParameterTypeis CATEGORICAL
-  core.String stringValue;
+  core.String? stringValue;
 
   GoogleCloudMlV1TrialParameter();
 
@@ -2985,11 +2825,11 @@ class GoogleCloudMlV1TrialParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (floatValue != null) 'floatValue': floatValue,
-        if (intValue != null) 'intValue': intValue,
-        if (parameter != null) 'parameter': parameter,
-        if (stringValue != null) 'stringValue': stringValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (floatValue != null) 'floatValue': floatValue!,
+        if (intValue != null) 'intValue': intValue!,
+        if (parameter != null) 'parameter': parameter!,
+        if (stringValue != null) 'stringValue': stringValue!,
       };
 }
 
@@ -3001,7 +2841,7 @@ class GoogleCloudMlV1TrialParameter {
 /// prediction\](/ml-engine/docs/machine-types-online-prediction#gpus).
 class GoogleCloudMlV1AcceleratorConfig {
   /// The number of accelerators to attach to each machine running the job.
-  core.String count;
+  core.String? count;
 
   /// The type of accelerator to use.
   /// Possible string values are:
@@ -3015,7 +2855,7 @@ class GoogleCloudMlV1AcceleratorConfig {
   /// - "NVIDIA_TESLA_A100" : Nvidia A100 GPU.
   /// - "TPU_V2" : TPU v2.
   /// - "TPU_V3" : TPU v3.
-  core.String type;
+  core.String? type;
 
   GoogleCloudMlV1AcceleratorConfig();
 
@@ -3028,9 +2868,9 @@ class GoogleCloudMlV1AcceleratorConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3039,7 +2879,7 @@ class GoogleCloudMlV1AddTrialMeasurementRequest {
   /// The measurement to be added to a trial.
   ///
   /// Required.
-  GoogleCloudMlV1Measurement measurement;
+  GoogleCloudMlV1Measurement? measurement;
 
   GoogleCloudMlV1AddTrialMeasurementRequest();
 
@@ -3050,8 +2890,8 @@ class GoogleCloudMlV1AddTrialMeasurementRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (measurement != null) 'measurement': measurement.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (measurement != null) 'measurement': measurement!.toJson(),
       };
 }
 
@@ -3060,11 +2900,11 @@ class GoogleCloudMlV1AutoScaling {
   /// The maximum number of nodes to scale this model under load.
   ///
   /// The actual value will depend on resource quota and availability.
-  core.int maxNodes;
+  core.int? maxNodes;
 
   /// MetricSpec contains the specifications to use to calculate the desired
   /// nodes count.
-  core.List<GoogleCloudMlV1MetricSpec> metrics;
+  core.List<GoogleCloudMlV1MetricSpec>? metrics;
 
   /// The minimum number of nodes to allocate for this model.
   ///
@@ -3093,7 +2933,7 @@ class GoogleCloudMlV1AutoScaling {
   /// }?update_mask=autoScaling.minNodes -d @./update_body.json
   ///
   /// Optional.
-  core.int minNodes;
+  core.int? minNodes;
 
   GoogleCloudMlV1AutoScaling();
 
@@ -3113,11 +2953,11 @@ class GoogleCloudMlV1AutoScaling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxNodes != null) 'maxNodes': maxNodes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxNodes != null) 'maxNodes': maxNodes!,
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
-        if (minNodes != null) 'minNodes': minNodes,
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (minNodes != null) 'minNodes': minNodes!,
       };
 }
 
@@ -3126,9 +2966,9 @@ class GoogleCloudMlV1AutoScaling {
 /// If no implementation_config is set, automated early stopping will not be
 /// run.
 class GoogleCloudMlV1AutomatedStoppingConfig {
-  GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig
+  GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig?
       decayCurveStoppingConfig;
-  GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig
+  GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig?
       medianAutomatedStoppingConfig;
 
   GoogleCloudMlV1AutomatedStoppingConfig();
@@ -3148,31 +2988,31 @@ class GoogleCloudMlV1AutomatedStoppingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (decayCurveStoppingConfig != null)
-          'decayCurveStoppingConfig': decayCurveStoppingConfig.toJson(),
+          'decayCurveStoppingConfig': decayCurveStoppingConfig!.toJson(),
         if (medianAutomatedStoppingConfig != null)
           'medianAutomatedStoppingConfig':
-              medianAutomatedStoppingConfig.toJson(),
+              medianAutomatedStoppingConfig!.toJson(),
       };
 }
 
 /// Represents output related to a built-in algorithm Job.
 class GoogleCloudMlV1BuiltInAlgorithmOutput {
   /// Framework on which the built-in algorithm was trained.
-  core.String framework;
+  core.String? framework;
 
   /// The Cloud Storage path to the `model/` directory where the training job
   /// saves the trained model.
   ///
   /// Only set for successful jobs that don't use hyperparameter tuning.
-  core.String modelPath;
+  core.String? modelPath;
 
   /// Python version on which the built-in algorithm was trained.
-  core.String pythonVersion;
+  core.String? pythonVersion;
 
   /// AI Platform runtime version on which the built-in algorithm was trained.
-  core.String runtimeVersion;
+  core.String? runtimeVersion;
 
   GoogleCloudMlV1BuiltInAlgorithmOutput();
 
@@ -3191,11 +3031,11 @@ class GoogleCloudMlV1BuiltInAlgorithmOutput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (framework != null) 'framework': framework,
-        if (modelPath != null) 'modelPath': modelPath,
-        if (pythonVersion != null) 'pythonVersion': pythonVersion,
-        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (framework != null) 'framework': framework!,
+        if (modelPath != null) 'modelPath': modelPath!,
+        if (pythonVersion != null) 'pythonVersion': pythonVersion!,
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
       };
 }
 
@@ -3207,12 +3047,12 @@ class GoogleCloudMlV1CancelJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 class GoogleCloudMlV1Capability {
   /// Available accelerators for the capability.
-  core.List<core.String> availableAccelerators;
+  core.List<core.String>? availableAccelerators;
 
   ///
   /// Possible string values are:
@@ -3220,7 +3060,7 @@ class GoogleCloudMlV1Capability {
   /// - "TRAINING"
   /// - "BATCH_PREDICTION"
   /// - "ONLINE_PREDICTION"
-  core.String type;
+  core.String? type;
 
   GoogleCloudMlV1Capability();
 
@@ -3235,10 +3075,10 @@ class GoogleCloudMlV1Capability {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (availableAccelerators != null)
-          'availableAccelerators': availableAccelerators,
-        if (type != null) 'type': type,
+          'availableAccelerators': availableAccelerators!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3247,13 +3087,13 @@ class GoogleCloudMlV1Capability {
 /// request.
 class GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata {
   /// The time at which the operation was submitted.
-  core.String createTime;
+  core.String? createTime;
 
   /// The name of the study that the trial belongs to.
-  core.String study;
+  core.String? study;
 
   /// The trial name.
-  core.String trial;
+  core.String? trial;
 
   GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata();
 
@@ -3270,10 +3110,10 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (study != null) 'study': study,
-        if (trial != null) 'trial': trial,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (study != null) 'study': study!,
+        if (trial != null) 'trial': trial!,
       };
 }
 
@@ -3285,7 +3125,7 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The message will be placed in the response field of a completed
@@ -3293,13 +3133,13 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest {
 /// request.
 class GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse {
   /// The time at which operation processing completed.
-  core.String endTime;
+  core.String? endTime;
 
   /// True if the Trial should stop.
-  core.bool shouldStop;
+  core.bool? shouldStop;
 
   /// The time at which the operation was started.
-  core.String startTime;
+  core.String? startTime;
 
   GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse();
 
@@ -3315,10 +3155,10 @@ class GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (shouldStop != null) 'shouldStop': shouldStop,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (shouldStop != null) 'shouldStop': shouldStop!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -3329,20 +3169,20 @@ class GoogleCloudMlV1CompleteTrialRequest {
   /// as the final-measurement
   ///
   /// Optional.
-  GoogleCloudMlV1Measurement finalMeasurement;
+  GoogleCloudMlV1Measurement? finalMeasurement;
 
   /// A human readable reason why the trial was infeasible.
   ///
   /// This should only be provided if `trial_infeasible` is true.
   ///
   /// Optional.
-  core.String infeasibleReason;
+  core.String? infeasibleReason;
 
   /// True if the trial cannot be run with the given Parameter, and
   /// final_measurement will be ignored.
   ///
   /// Optional.
-  core.bool trialInfeasible;
+  core.bool? trialInfeasible;
 
   GoogleCloudMlV1CompleteTrialRequest();
 
@@ -3359,17 +3199,17 @@ class GoogleCloudMlV1CompleteTrialRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (finalMeasurement != null)
-          'finalMeasurement': finalMeasurement.toJson(),
-        if (infeasibleReason != null) 'infeasibleReason': infeasibleReason,
-        if (trialInfeasible != null) 'trialInfeasible': trialInfeasible,
+          'finalMeasurement': finalMeasurement!.toJson(),
+        if (infeasibleReason != null) 'infeasibleReason': infeasibleReason!,
+        if (trialInfeasible != null) 'trialInfeasible': trialInfeasible!,
       };
 }
 
 class GoogleCloudMlV1Config {
   /// The service account Cloud ML uses to run on TPU node.
-  core.String tpuServiceAccount;
+  core.String? tpuServiceAccount;
 
   GoogleCloudMlV1Config();
 
@@ -3379,8 +3219,8 @@ class GoogleCloudMlV1Config {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (tpuServiceAccount != null) 'tpuServiceAccount': tpuServiceAccount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (tpuServiceAccount != null) 'tpuServiceAccount': tpuServiceAccount!,
       };
 }
 
@@ -3392,7 +3232,7 @@ class GoogleCloudMlV1ContainerPort {
   /// Number of the port to expose on the container.
   ///
   /// This must be a valid port number: 0 < PORT_NUMBER < 65536.
-  core.int containerPort;
+  core.int? containerPort;
 
   GoogleCloudMlV1ContainerPort();
 
@@ -3402,8 +3242,8 @@ class GoogleCloudMlV1ContainerPort {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (containerPort != null) 'containerPort': containerPort,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (containerPort != null) 'containerPort': containerPort!,
       };
 }
 
@@ -3443,7 +3283,7 @@ class GoogleCloudMlV1ContainerSpec {
   /// [Kubernetes Containers v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
   ///
   /// Immutable.
-  core.List<core.String> args;
+  core.List<core.String>? args;
 
   /// Specifies the command that runs when the container starts.
   ///
@@ -3478,7 +3318,7 @@ class GoogleCloudMlV1ContainerSpec {
   /// [Kubernetes Containers v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
   ///
   /// Immutable.
-  core.List<core.String> command;
+  core.List<core.String>? command;
 
   /// List of environment variables to set in the container.
   ///
@@ -3493,7 +3333,7 @@ class GoogleCloudMlV1ContainerSpec {
   /// [Kubernetes Containers v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
   ///
   /// Immutable.
-  core.List<GoogleCloudMlV1EnvVar> env;
+  core.List<GoogleCloudMlV1EnvVar>? env;
 
   /// URI of the Docker image to be used as the custom container for serving
   /// predictions.
@@ -3521,7 +3361,7 @@ class GoogleCloudMlV1ContainerSpec {
   /// projet's AI Platform Google-managed service account. To learn about the
   /// requirements for the Docker image itself, read \[Custom container
   /// requirements\](/ai-platform/prediction/docs/custom-container-requirements).
-  core.String image;
+  core.String? image;
 
   /// List of ports to expose from the container.
   ///
@@ -3536,7 +3376,7 @@ class GoogleCloudMlV1ContainerSpec {
   /// [Kubernetes Containers v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
   ///
   /// Immutable.
-  core.List<GoogleCloudMlV1ContainerPort> ports;
+  core.List<GoogleCloudMlV1ContainerPort>? ports;
 
   GoogleCloudMlV1ContainerSpec();
 
@@ -3569,26 +3409,26 @@ class GoogleCloudMlV1ContainerSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (args != null) 'args': args,
-        if (command != null) 'command': command,
-        if (env != null) 'env': env.map((value) => value.toJson()).toList(),
-        if (image != null) 'image': image,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (args != null) 'args': args!,
+        if (command != null) 'command': command!,
+        if (env != null) 'env': env!.map((value) => value.toJson()).toList(),
+        if (image != null) 'image': image!,
         if (ports != null)
-          'ports': ports.map((value) => value.toJson()).toList(),
+          'ports': ports!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Represents the config of disk options.
 class GoogleCloudMlV1DiskConfig {
   /// Size in GB of the boot disk (default is 100GB).
-  core.int bootDiskSizeGb;
+  core.int? bootDiskSizeGb;
 
   /// Type of the boot disk (default is "pd-ssd").
   ///
   /// Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or
   /// "pd-standard" (Persistent Disk Hard Disk Drive).
-  core.String bootDiskType;
+  core.String? bootDiskType;
 
   GoogleCloudMlV1DiskConfig();
 
@@ -3601,9 +3441,9 @@ class GoogleCloudMlV1DiskConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb,
-        if (bootDiskType != null) 'bootDiskType': bootDiskType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
+        if (bootDiskType != null) 'bootDiskType': bootDiskType!,
       };
 }
 
@@ -3615,7 +3455,7 @@ class GoogleCloudMlV1EncryptionConfig {
   ///
   /// It has the following format:
   /// `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
-  core.String kmsKeyName;
+  core.String? kmsKeyName;
 
   GoogleCloudMlV1EncryptionConfig();
 
@@ -3625,8 +3465,8 @@ class GoogleCloudMlV1EncryptionConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
       };
 }
 
@@ -3640,7 +3480,7 @@ class GoogleCloudMlV1EnvVar {
   /// Must be a
   /// [valid C identifier](https://github.com/kubernetes/kubernetes/blob/v1.18.8/staging/src/k8s.io/apimachinery/pkg/util/validation/validation.go#L258)
   /// and must not begin with the prefix `AIP_`.
-  core.String name;
+  core.String? name;
 
   /// Value of the environment variable.
   ///
@@ -3655,7 +3495,7 @@ class GoogleCloudMlV1EnvVar {
   /// variable cannot be resolved, the reference in the input string is used
   /// unchanged. To avoid variable expansion, you can escape this syntax with
   /// `$$`; for example: $$(VARIABLE_NAME)
-  core.String value;
+  core.String? value;
 
   GoogleCloudMlV1EnvVar();
 
@@ -3668,9 +3508,9 @@ class GoogleCloudMlV1EnvVar {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -3679,7 +3519,7 @@ class GoogleCloudMlV1ExplainRequest {
   /// The explanation request body.
   ///
   /// Required.
-  GoogleApiHttpBody httpBody;
+  GoogleApiHttpBody? httpBody;
 
   GoogleCloudMlV1ExplainRequest();
 
@@ -3690,8 +3530,8 @@ class GoogleCloudMlV1ExplainRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (httpBody != null) 'httpBody': httpBody.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (httpBody != null) 'httpBody': httpBody!.toJson(),
       };
 }
 
@@ -3705,21 +3545,21 @@ class GoogleCloudMlV1ExplanationConfig {
   /// of the model's fully differentiable structure.
   ///
   /// Refer to this paper for more details: https://arxiv.org/abs/1703.01365
-  GoogleCloudMlV1IntegratedGradientsAttribution integratedGradientsAttribution;
+  GoogleCloudMlV1IntegratedGradientsAttribution? integratedGradientsAttribution;
 
   /// An attribution method that approximates Shapley values for features that
   /// contribute to the label being predicted.
   ///
   /// A sampling strategy is used to approximate the value rather than
   /// considering all subsets of features.
-  GoogleCloudMlV1SampledShapleyAttribution sampledShapleyAttribution;
+  GoogleCloudMlV1SampledShapleyAttribution? sampledShapleyAttribution;
 
   /// Attributes credit by computing the XRAI taking advantage of the model's
   /// fully differentiable structure.
   ///
   /// Refer to this paper for more details: https://arxiv.org/abs/1906.02825
   /// Currently only implemented for models with natural image inputs.
-  GoogleCloudMlV1XraiAttribution xraiAttribution;
+  GoogleCloudMlV1XraiAttribution? xraiAttribution;
 
   GoogleCloudMlV1ExplanationConfig();
 
@@ -3742,26 +3582,26 @@ class GoogleCloudMlV1ExplanationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (integratedGradientsAttribution != null)
           'integratedGradientsAttribution':
-              integratedGradientsAttribution.toJson(),
+              integratedGradientsAttribution!.toJson(),
         if (sampledShapleyAttribution != null)
-          'sampledShapleyAttribution': sampledShapleyAttribution.toJson(),
+          'sampledShapleyAttribution': sampledShapleyAttribution!.toJson(),
         if (xraiAttribution != null)
-          'xraiAttribution': xraiAttribution.toJson(),
+          'xraiAttribution': xraiAttribution!.toJson(),
       };
 }
 
 /// Returns service account information associated with a project.
 class GoogleCloudMlV1GetConfigResponse {
-  GoogleCloudMlV1Config config;
+  GoogleCloudMlV1Config? config;
 
   /// The service account Cloud ML uses to access resources in the project.
-  core.String serviceAccount;
+  core.String? serviceAccount;
 
   /// The project number for `service_account`.
-  core.String serviceAccountProject;
+  core.String? serviceAccountProject;
 
   GoogleCloudMlV1GetConfigResponse();
 
@@ -3778,11 +3618,11 @@ class GoogleCloudMlV1GetConfigResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (config != null) 'config': config.toJson(),
-        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (config != null) 'config': config!.toJson(),
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (serviceAccountProject != null)
-          'serviceAccountProject': serviceAccountProject,
+          'serviceAccountProject': serviceAccountProject!,
       };
 }
 
@@ -3796,31 +3636,32 @@ class GoogleCloudMlV1HyperparameterOutput {
   /// All recorded object metrics for this trial.
   ///
   /// This field is not currently populated.
-  core.List<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric> allMetrics;
+  core.List<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>?
+      allMetrics;
 
   /// Details related to built-in algorithms jobs.
   ///
   /// Only set for trials of built-in algorithms jobs that have succeeded.
-  GoogleCloudMlV1BuiltInAlgorithmOutput builtInAlgorithmOutput;
+  GoogleCloudMlV1BuiltInAlgorithmOutput? builtInAlgorithmOutput;
 
   /// End time for the trial.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// The final objective metric seen for this trial.
-  GoogleCloudMlV1HyperparameterOutputHyperparameterMetric finalMetric;
+  GoogleCloudMlV1HyperparameterOutputHyperparameterMetric? finalMetric;
 
   /// The hyperparameters given to this trial.
-  core.Map<core.String, core.String> hyperparameters;
+  core.Map<core.String, core.String>? hyperparameters;
 
   /// True if the trial is stopped early.
-  core.bool isTrialStoppedEarly;
+  core.bool? isTrialStoppedEarly;
 
   /// Start time for the trial.
   ///
   /// Output only.
-  core.String startTime;
+  core.String? startTime;
 
   /// The detailed state of the trial.
   ///
@@ -3838,10 +3679,10 @@ class GoogleCloudMlV1HyperparameterOutput {
   /// describe the reason for the cancellation.
   /// - "CANCELLED" : The job has been cancelled. `error_message` should
   /// describe the reason for the cancellation.
-  core.String state;
+  core.String? state;
 
   /// The trial id for these results.
-  core.String trialId;
+  core.String? trialId;
 
   GoogleCloudMlV1HyperparameterOutput();
 
@@ -3890,19 +3731,19 @@ class GoogleCloudMlV1HyperparameterOutput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allMetrics != null)
-          'allMetrics': allMetrics.map((value) => value.toJson()).toList(),
+          'allMetrics': allMetrics!.map((value) => value.toJson()).toList(),
         if (builtInAlgorithmOutput != null)
-          'builtInAlgorithmOutput': builtInAlgorithmOutput.toJson(),
-        if (endTime != null) 'endTime': endTime,
-        if (finalMetric != null) 'finalMetric': finalMetric.toJson(),
-        if (hyperparameters != null) 'hyperparameters': hyperparameters,
+          'builtInAlgorithmOutput': builtInAlgorithmOutput!.toJson(),
+        if (endTime != null) 'endTime': endTime!,
+        if (finalMetric != null) 'finalMetric': finalMetric!.toJson(),
+        if (hyperparameters != null) 'hyperparameters': hyperparameters!,
         if (isTrialStoppedEarly != null)
-          'isTrialStoppedEarly': isTrialStoppedEarly,
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
-        if (trialId != null) 'trialId': trialId,
+          'isTrialStoppedEarly': isTrialStoppedEarly!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+        if (trialId != null) 'trialId': trialId!,
       };
 }
 
@@ -3921,13 +3762,13 @@ class GoogleCloudMlV1HyperparameterSpec {
   /// grid search, all parameters must be `INTEGER`, `CATEGORICAL`, or
   /// `DISCRETE`.
   /// - "RANDOM_SEARCH" : Simple random search within the feasible space.
-  core.String algorithm;
+  core.String? algorithm;
 
   /// Indicates if the hyperparameter tuning job enables auto trial early
   /// stopping.
   ///
   /// Optional.
-  core.bool enableTrialEarlyStopping;
+  core.bool? enableTrialEarlyStopping;
 
   /// The type of goal to use for tuning.
   ///
@@ -3938,7 +3779,7 @@ class GoogleCloudMlV1HyperparameterSpec {
   /// - "GOAL_TYPE_UNSPECIFIED" : Goal Type will default to maximize.
   /// - "MAXIMIZE" : Maximize the goal metric.
   /// - "MINIMIZE" : Minimize the goal metric.
-  core.String goal;
+  core.String? goal;
 
   /// The TensorFlow summary tag name to use for optimizing trials.
   ///
@@ -3948,7 +3789,7 @@ class GoogleCloudMlV1HyperparameterSpec {
   /// tf.Summary. By default, "training/hptuning/metric" will be used.
   ///
   /// Optional.
-  core.String hyperparameterMetricTag;
+  core.String? hyperparameterMetricTag;
 
   /// The number of failed trials that need to be seen before failing the
   /// hyperparameter tuning job.
@@ -3958,7 +3799,7 @@ class GoogleCloudMlV1HyperparameterSpec {
   /// service decides when a hyperparameter job should fail.
   ///
   /// Optional.
-  core.int maxFailedTrials;
+  core.int? maxFailedTrials;
 
   /// The number of training trials to run concurrently.
   ///
@@ -3970,7 +3811,7 @@ class GoogleCloudMlV1HyperparameterSpec {
   /// same scale tier and machine types. Defaults to one.
   ///
   /// Optional.
-  core.int maxParallelTrials;
+  core.int? maxParallelTrials;
 
   /// How many training trials should be attempted to optimize the specified
   /// hyperparameters.
@@ -3978,12 +3819,12 @@ class GoogleCloudMlV1HyperparameterSpec {
   /// Defaults to one.
   ///
   /// Optional.
-  core.int maxTrials;
+  core.int? maxTrials;
 
   /// The set of parameters to tune.
   ///
   /// Required.
-  core.List<GoogleCloudMlV1ParameterSpec> params;
+  core.List<GoogleCloudMlV1ParameterSpec>? params;
 
   /// The prior hyperparameter tuning job id that users hope to continue with.
   ///
@@ -3991,7 +3832,7 @@ class GoogleCloudMlV1HyperparameterSpec {
   /// resume the study.
   ///
   /// Optional.
-  core.String resumePreviousJobId;
+  core.String? resumePreviousJobId;
 
   GoogleCloudMlV1HyperparameterSpec();
 
@@ -4029,20 +3870,20 @@ class GoogleCloudMlV1HyperparameterSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
         if (enableTrialEarlyStopping != null)
-          'enableTrialEarlyStopping': enableTrialEarlyStopping,
-        if (goal != null) 'goal': goal,
+          'enableTrialEarlyStopping': enableTrialEarlyStopping!,
+        if (goal != null) 'goal': goal!,
         if (hyperparameterMetricTag != null)
-          'hyperparameterMetricTag': hyperparameterMetricTag,
-        if (maxFailedTrials != null) 'maxFailedTrials': maxFailedTrials,
-        if (maxParallelTrials != null) 'maxParallelTrials': maxParallelTrials,
-        if (maxTrials != null) 'maxTrials': maxTrials,
+          'hyperparameterMetricTag': hyperparameterMetricTag!,
+        if (maxFailedTrials != null) 'maxFailedTrials': maxFailedTrials!,
+        if (maxParallelTrials != null) 'maxParallelTrials': maxParallelTrials!,
+        if (maxTrials != null) 'maxTrials': maxTrials!,
         if (params != null)
-          'params': params.map((value) => value.toJson()).toList(),
+          'params': params!.map((value) => value.toJson()).toList(),
         if (resumePreviousJobId != null)
-          'resumePreviousJobId': resumePreviousJobId,
+          'resumePreviousJobId': resumePreviousJobId!,
       };
 }
 
@@ -4055,7 +3896,7 @@ class GoogleCloudMlV1IntegratedGradientsAttribution {
   ///
   /// A good value to start is 50 and gradually increase until the sum to diff
   /// property is met within the desired error range.
-  core.int numIntegralSteps;
+  core.int? numIntegralSteps;
 
   GoogleCloudMlV1IntegratedGradientsAttribution();
 
@@ -4065,8 +3906,8 @@ class GoogleCloudMlV1IntegratedGradientsAttribution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (numIntegralSteps != null) 'numIntegralSteps': numIntegralSteps,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (numIntegralSteps != null) 'numIntegralSteps': numIntegralSteps!,
       };
 }
 
@@ -4075,17 +3916,17 @@ class GoogleCloudMlV1Job {
   /// When the job was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// When the job processing was completed.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// The details of a failure or a cancellation.
   ///
   /// Output only.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a job from overwriting each other.
@@ -4095,8 +3936,8 @@ class GoogleCloudMlV1Job {
   /// conditions: An `etag` is returned in the response to `GetJob`, and systems
   /// are expected to put that etag in the request to `UpdateJob` to ensure that
   /// their change will be applied to the same version of the job.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -4106,7 +3947,7 @@ class GoogleCloudMlV1Job {
   /// The user-specified id of the job.
   ///
   /// Required.
-  core.String jobId;
+  core.String? jobId;
 
   /// One or more labels that you can add, to organize your jobs.
   ///
@@ -4115,18 +3956,18 @@ class GoogleCloudMlV1Job {
   /// documentation on using labels.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Input parameters to create a prediction job.
-  GoogleCloudMlV1PredictionInput predictionInput;
+  GoogleCloudMlV1PredictionInput? predictionInput;
 
   /// The current prediction job result.
-  GoogleCloudMlV1PredictionOutput predictionOutput;
+  GoogleCloudMlV1PredictionOutput? predictionOutput;
 
   /// When the job processing was started.
   ///
   /// Output only.
-  core.String startTime;
+  core.String? startTime;
 
   /// The detailed state of a job.
   ///
@@ -4144,13 +3985,13 @@ class GoogleCloudMlV1Job {
   /// describe the reason for the cancellation.
   /// - "CANCELLED" : The job has been cancelled. `error_message` should
   /// describe the reason for the cancellation.
-  core.String state;
+  core.String? state;
 
   /// Input parameters to create a training job.
-  GoogleCloudMlV1TrainingInput trainingInput;
+  GoogleCloudMlV1TrainingInput? trainingInput;
 
   /// The current training job result.
-  GoogleCloudMlV1TrainingOutput trainingOutput;
+  GoogleCloudMlV1TrainingOutput? trainingOutput;
 
   GoogleCloudMlV1Job();
 
@@ -4203,34 +4044,34 @@ class GoogleCloudMlV1Job {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
-        if (errorMessage != null) 'errorMessage': errorMessage,
-        if (etag != null) 'etag': etag,
-        if (jobId != null) 'jobId': jobId,
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (etag != null) 'etag': etag!,
+        if (jobId != null) 'jobId': jobId!,
+        if (labels != null) 'labels': labels!,
         if (predictionInput != null)
-          'predictionInput': predictionInput.toJson(),
+          'predictionInput': predictionInput!.toJson(),
         if (predictionOutput != null)
-          'predictionOutput': predictionOutput.toJson(),
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
-        if (trainingInput != null) 'trainingInput': trainingInput.toJson(),
-        if (trainingOutput != null) 'trainingOutput': trainingOutput.toJson(),
+          'predictionOutput': predictionOutput!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+        if (trainingInput != null) 'trainingInput': trainingInput!.toJson(),
+        if (trainingOutput != null) 'trainingOutput': trainingOutput!.toJson(),
       };
 }
 
 /// Response message for the ListJobs method.
 class GoogleCloudMlV1ListJobsResponse {
   /// The list of jobs.
-  core.List<GoogleCloudMlV1Job> jobs;
+  core.List<GoogleCloudMlV1Job>? jobs;
 
   /// Pass this token as the `page_token` field of the request for a subsequent
   /// call.
   ///
   /// Optional.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudMlV1ListJobsResponse();
 
@@ -4246,21 +4087,21 @@ class GoogleCloudMlV1ListJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 class GoogleCloudMlV1ListLocationsResponse {
   /// Locations where at least one type of CMLE capability is available.
-  core.List<GoogleCloudMlV1Location> locations;
+  core.List<GoogleCloudMlV1Location>? locations;
 
   /// Pass this token as the `page_token` field of the request for a subsequent
   /// call.
   ///
   /// Optional.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudMlV1ListLocationsResponse();
 
@@ -4277,23 +4118,23 @@ class GoogleCloudMlV1ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for the ListModels method.
 class GoogleCloudMlV1ListModelsResponse {
   /// The list of models.
-  core.List<GoogleCloudMlV1Model> models;
+  core.List<GoogleCloudMlV1Model>? models;
 
   /// Pass this token as the `page_token` field of the request for a subsequent
   /// call.
   ///
   /// Optional.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleCloudMlV1ListModelsResponse();
 
@@ -4309,10 +4150,10 @@ class GoogleCloudMlV1ListModelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (models != null)
-          'models': models.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'models': models!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -4324,7 +4165,7 @@ class GoogleCloudMlV1ListOptimalTrialsRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The response message for the ListOptimalTrials method.
@@ -4334,7 +4175,7 @@ class GoogleCloudMlV1ListOptimalTrialsResponse {
   ///
   /// The definition of pareto-optimal can be checked in wiki page.
   /// https://en.wikipedia.org/wiki/Pareto_efficiency
-  core.List<GoogleCloudMlV1Trial> trials;
+  core.List<GoogleCloudMlV1Trial>? trials;
 
   GoogleCloudMlV1ListOptimalTrialsResponse();
 
@@ -4347,15 +4188,15 @@ class GoogleCloudMlV1ListOptimalTrialsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (trials != null)
-          'trials': trials.map((value) => value.toJson()).toList(),
+          'trials': trials!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GoogleCloudMlV1ListStudiesResponse {
   /// The studies associated with the project.
-  core.List<GoogleCloudMlV1Study> studies;
+  core.List<GoogleCloudMlV1Study>? studies;
 
   GoogleCloudMlV1ListStudiesResponse();
 
@@ -4368,16 +4209,16 @@ class GoogleCloudMlV1ListStudiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (studies != null)
-          'studies': studies.map((value) => value.toJson()).toList(),
+          'studies': studies!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The response message for the ListTrials method.
 class GoogleCloudMlV1ListTrialsResponse {
   /// The trials associated with the study.
-  core.List<GoogleCloudMlV1Trial> trials;
+  core.List<GoogleCloudMlV1Trial>? trials;
 
   GoogleCloudMlV1ListTrialsResponse();
 
@@ -4390,9 +4231,9 @@ class GoogleCloudMlV1ListTrialsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (trials != null)
-          'trials': trials.map((value) => value.toJson()).toList(),
+          'trials': trials!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4402,10 +4243,10 @@ class GoogleCloudMlV1ListVersionsResponse {
   /// call.
   ///
   /// Optional.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The list of versions.
-  core.List<GoogleCloudMlV1Version> versions;
+  core.List<GoogleCloudMlV1Version>? versions;
 
   GoogleCloudMlV1ListVersionsResponse();
 
@@ -4422,17 +4263,17 @@ class GoogleCloudMlV1ListVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (versions != null)
-          'versions': versions.map((value) => value.toJson()).toList(),
+          'versions': versions!.map((value) => value.toJson()).toList(),
       };
 }
 
 class GoogleCloudMlV1Location {
   /// Capabilities available in the location.
-  core.List<GoogleCloudMlV1Capability> capabilities;
-  core.String name;
+  core.List<GoogleCloudMlV1Capability>? capabilities;
+  core.String? name;
 
   GoogleCloudMlV1Location();
 
@@ -4449,10 +4290,10 @@ class GoogleCloudMlV1Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (capabilities != null)
-          'capabilities': capabilities.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+          'capabilities': capabilities!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -4464,7 +4305,7 @@ class GoogleCloudMlV1ManualScaling {
   /// so the cost of operating this model will be proportional to `nodes` *
   /// number of hours since last billing cycle plus the cost for each prediction
   /// performed.
-  core.int nodes;
+  core.int? nodes;
 
   GoogleCloudMlV1ManualScaling();
 
@@ -4474,8 +4315,8 @@ class GoogleCloudMlV1ManualScaling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nodes != null) 'nodes': nodes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nodes != null) 'nodes': nodes!,
       };
 }
 
@@ -4484,15 +4325,15 @@ class GoogleCloudMlV1Measurement {
   /// Time that the trial has been running at the point of this measurement.
   ///
   /// Output only.
-  core.String elapsedTime;
+  core.String? elapsedTime;
 
   /// Provides a list of metrics that act as inputs into the objective function.
-  core.List<GoogleCloudMlV1MeasurementMetric> metrics;
+  core.List<GoogleCloudMlV1MeasurementMetric>? metrics;
 
   /// The number of steps a machine learning model has been trained for.
   ///
   /// Must be non-negative.
-  core.String stepCount;
+  core.String? stepCount;
 
   GoogleCloudMlV1Measurement();
 
@@ -4512,11 +4353,11 @@ class GoogleCloudMlV1Measurement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (elapsedTime != null) 'elapsedTime': elapsedTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (elapsedTime != null) 'elapsedTime': elapsedTime!,
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
-        if (stepCount != null) 'stepCount': stepCount,
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (stepCount != null) 'stepCount': stepCount!,
       };
 }
 
@@ -4528,12 +4369,12 @@ class GoogleCloudMlV1MetricSpec {
   /// - "METRIC_NAME_UNSPECIFIED" : Unspecified MetricName.
   /// - "CPU_USAGE" : CPU usage.
   /// - "GPU_DUTY_CYCLE" : GPU duty cycle.
-  core.String name;
+  core.String? name;
 
   /// Target specifies the target value for the given metric; once real metric
   /// deviates from the threshold by a certain percentage, the node count
   /// changes.
-  core.int target;
+  core.int? target;
 
   GoogleCloudMlV1MetricSpec();
 
@@ -4546,9 +4387,9 @@ class GoogleCloudMlV1MetricSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (target != null) 'target': target,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (target != null) 'target': target!,
       };
 }
 
@@ -4565,12 +4406,12 @@ class GoogleCloudMlV1Model {
   /// projects.models.versions.setDefault.
   ///
   /// Output only.
-  GoogleCloudMlV1Version defaultVersion;
+  GoogleCloudMlV1Version? defaultVersion;
 
   /// The description specified for the model when it was created.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a model from overwriting each other.
@@ -4580,8 +4421,8 @@ class GoogleCloudMlV1Model {
   /// conditions: An `etag` is returned in the response to `GetModel`, and
   /// systems are expected to put that etag in the request to `UpdateModel` to
   /// ensure that their change will be applied to the model as intended.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -4595,14 +4436,14 @@ class GoogleCloudMlV1Model {
   /// documentation on using labels.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The name specified for the model when it was created.
   ///
   /// The model name must be unique within the project it is created in.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// If true, online prediction nodes send `stderr` and `stdout` streams to
   /// Cloud Logging.
@@ -4615,7 +4456,7 @@ class GoogleCloudMlV1Model {
   /// this option. Default is false.
   ///
   /// Optional.
-  core.bool onlinePredictionConsoleLogging;
+  core.bool? onlinePredictionConsoleLogging;
 
   /// If true, online prediction access logs are sent to Cloud Logging.
   ///
@@ -4626,7 +4467,7 @@ class GoogleCloudMlV1Model {
   /// costs before enabling this option. Default is false.
   ///
   /// Optional.
-  core.bool onlinePredictionLogging;
+  core.bool? onlinePredictionLogging;
 
   /// The list of regions where the model is going to be deployed.
   ///
@@ -4638,7 +4479,7 @@ class GoogleCloudMlV1Model {
   /// prediction job and does not take its value from this field.
   ///
   /// Optional.
-  core.List<core.String> regions;
+  core.List<core.String>? regions;
 
   GoogleCloudMlV1Model();
 
@@ -4679,37 +4520,37 @@ class GoogleCloudMlV1Model {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (defaultVersion != null) 'defaultVersion': defaultVersion.toJson(),
-        if (description != null) 'description': description,
-        if (etag != null) 'etag': etag,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (defaultVersion != null) 'defaultVersion': defaultVersion!.toJson(),
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
         if (onlinePredictionConsoleLogging != null)
-          'onlinePredictionConsoleLogging': onlinePredictionConsoleLogging,
+          'onlinePredictionConsoleLogging': onlinePredictionConsoleLogging!,
         if (onlinePredictionLogging != null)
-          'onlinePredictionLogging': onlinePredictionLogging,
-        if (regions != null) 'regions': regions,
+          'onlinePredictionLogging': onlinePredictionLogging!,
+        if (regions != null) 'regions': regions!,
       };
 }
 
 /// Represents the metadata of the long-running operation.
 class GoogleCloudMlV1OperationMetadata {
   /// The time the operation was submitted.
-  core.String createTime;
+  core.String? createTime;
 
   /// The time operation processing completed.
-  core.String endTime;
+  core.String? endTime;
 
   /// Indicates whether a request to cancel this operation has been made.
-  core.bool isCancellationRequested;
+  core.bool? isCancellationRequested;
 
   /// The user labels, inherited from the model or the model version being
   /// operated on.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Contains the name of the model associated with the operation.
-  core.String modelName;
+  core.String? modelName;
 
   /// The operation type.
   /// Possible string values are:
@@ -4720,16 +4561,16 @@ class GoogleCloudMlV1OperationMetadata {
   /// - "UPDATE_MODEL" : An operation to update an existing model.
   /// - "UPDATE_VERSION" : An operation to update an existing version.
   /// - "UPDATE_CONFIG" : An operation to update project configuration.
-  core.String operationType;
+  core.String? operationType;
 
   /// Contains the project number associated with the operation.
-  core.String projectNumber;
+  core.String? projectNumber;
 
   /// The time operation processing started.
-  core.String startTime;
+  core.String? startTime;
 
   /// Contains the version associated with the operation.
-  GoogleCloudMlV1Version version;
+  GoogleCloudMlV1Version? version;
 
   GoogleCloudMlV1OperationMetadata();
 
@@ -4770,17 +4611,17 @@ class GoogleCloudMlV1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (endTime != null) 'endTime': endTime!,
         if (isCancellationRequested != null)
-          'isCancellationRequested': isCancellationRequested,
-        if (labels != null) 'labels': labels,
-        if (modelName != null) 'modelName': modelName,
-        if (operationType != null) 'operationType': operationType,
-        if (projectNumber != null) 'projectNumber': projectNumber,
-        if (startTime != null) 'startTime': startTime,
-        if (version != null) 'version': version.toJson(),
+          'isCancellationRequested': isCancellationRequested!,
+        if (labels != null) 'labels': labels!,
+        if (modelName != null) 'modelName': modelName!,
+        if (operationType != null) 'operationType': operationType!,
+        if (projectNumber != null) 'projectNumber': projectNumber!,
+        if (startTime != null) 'startTime': startTime!,
+        if (version != null) 'version': version!.toJson(),
       };
 }
 
@@ -4789,26 +4630,26 @@ class GoogleCloudMlV1ParameterSpec {
   /// Required if type is `CATEGORICAL`.
   ///
   /// The list of possible categories.
-  core.List<core.String> categoricalValues;
+  core.List<core.String>? categoricalValues;
 
   /// Required if type is `DISCRETE`.
   ///
   /// A list of feasible points. The list should be in strictly increasing
   /// order. For instance, this parameter might have possible settings of 1.5,
   /// 2.5, and 4.0. This list should not contain more than 1,000 values.
-  core.List<core.double> discreteValues;
+  core.List<core.double>? discreteValues;
 
   /// Required if type is `DOUBLE` or `INTEGER`.
   ///
   /// This field should be unset if type is `CATEGORICAL`. This value should be
   /// integers if type is `INTEGER`.
-  core.double maxValue;
+  core.double? maxValue;
 
   /// Required if type is `DOUBLE` or `INTEGER`.
   ///
   /// This field should be unset if type is `CATEGORICAL`. This value should be
   /// integers if type is INTEGER.
-  core.double minValue;
+  core.double? minValue;
 
   /// The parameter name must be unique amongst all ParameterConfigs in a
   /// HyperparameterSpec message.
@@ -4816,7 +4657,7 @@ class GoogleCloudMlV1ParameterSpec {
   /// E.g., "learning_rate".
   ///
   /// Required.
-  core.String parameterName;
+  core.String? parameterName;
 
   /// How the parameter should be scaled to the hypercube.
   ///
@@ -4833,7 +4674,7 @@ class GoogleCloudMlV1ParameterSpec {
   /// logarithmically to (0, 1). The result is that values close to the top of
   /// the feasible space are spread out more than points near the bottom. The
   /// entire feasible space must be strictly positive.
-  core.String scaleType;
+  core.String? scaleType;
 
   /// The type of the parameter.
   ///
@@ -4848,7 +4689,7 @@ class GoogleCloudMlV1ParameterSpec {
   /// - "DISCRETE" : The parameter is real valued, with a fixed set of feasible
   /// points. If `type==DISCRETE`, feasible_points must be provided, and
   /// {`min_value`, `max_value`} will be ignored.
-  core.String type;
+  core.String? type;
 
   GoogleCloudMlV1ParameterSpec();
 
@@ -4880,14 +4721,14 @@ class GoogleCloudMlV1ParameterSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (categoricalValues != null) 'categoricalValues': categoricalValues,
-        if (discreteValues != null) 'discreteValues': discreteValues,
-        if (maxValue != null) 'maxValue': maxValue,
-        if (minValue != null) 'minValue': minValue,
-        if (parameterName != null) 'parameterName': parameterName,
-        if (scaleType != null) 'scaleType': scaleType,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (categoricalValues != null) 'categoricalValues': categoricalValues!,
+        if (discreteValues != null) 'discreteValues': discreteValues!,
+        if (maxValue != null) 'maxValue': maxValue!,
+        if (minValue != null) 'minValue': minValue!,
+        if (parameterName != null) 'parameterName': parameterName!,
+        if (scaleType != null) 'scaleType': scaleType!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4898,7 +4739,7 @@ class GoogleCloudMlV1PredictRequest {
   /// The prediction request body. Refer to the \[request body details
   /// section\](#request-body-details) for more information on how to structure
   /// your request.
-  GoogleApiHttpBody httpBody;
+  GoogleApiHttpBody? httpBody;
 
   GoogleCloudMlV1PredictRequest();
 
@@ -4909,8 +4750,8 @@ class GoogleCloudMlV1PredictRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (httpBody != null) 'httpBody': httpBody.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (httpBody != null) 'httpBody': httpBody!.toJson(),
       };
 }
 
@@ -4923,7 +4764,7 @@ class GoogleCloudMlV1PredictionInput {
   /// size and memory available into consideration when setting this parameter.
   ///
   /// Optional.
-  core.String batchSize;
+  core.String? batchSize;
 
   /// The format of the input data files.
   ///
@@ -4939,28 +4780,28 @@ class GoogleCloudMlV1PredictionInput {
   /// Currently available only for input data.
   /// - "CSV" : Values are comma-separated rows, with keys in a separate file.
   /// Currently available only for output data.
-  core.String dataFormat;
+  core.String? dataFormat;
 
   /// The Cloud Storage location of the input data files.
   ///
   /// May contain wildcards.
   ///
   /// Required.
-  core.List<core.String> inputPaths;
+  core.List<core.String>? inputPaths;
 
   /// The maximum number of workers to be used for parallel processing.
   ///
   /// Defaults to 10 if not specified.
   ///
   /// Optional.
-  core.String maxWorkerCount;
+  core.String? maxWorkerCount;
 
   /// Use this field if you want to use the default version for the specified
   /// model.
   ///
   /// The string must use the following format:
   /// `"projects/YOUR_PROJECT/models/YOUR_MODEL"`
-  core.String modelName;
+  core.String? modelName;
 
   /// Format of the output data files, defaults to JSON.
   ///
@@ -4976,19 +4817,19 @@ class GoogleCloudMlV1PredictionInput {
   /// Currently available only for input data.
   /// - "CSV" : Values are comma-separated rows, with keys in a separate file.
   /// Currently available only for output data.
-  core.String outputDataFormat;
+  core.String? outputDataFormat;
 
   /// The output Google Cloud Storage location.
   ///
   /// Required.
-  core.String outputPath;
+  core.String? outputPath;
 
   /// The Google Compute Engine region to run the prediction job in.
   ///
   /// See the available regions for AI Platform services.
   ///
   /// Required.
-  core.String region;
+  core.String? region;
 
   /// The AI Platform runtime version to use for this batch prediction.
   ///
@@ -4998,7 +4839,7 @@ class GoogleCloudMlV1PredictionInput {
   /// model is specified by uri.
   ///
   /// Optional.
-  core.String runtimeVersion;
+  core.String? runtimeVersion;
 
   /// The name of the signature defined in the SavedModel to use for this job.
   ///
@@ -5009,18 +4850,18 @@ class GoogleCloudMlV1PredictionInput {
   /// , which is "serving_default".
   ///
   /// Optional.
-  core.String signatureName;
+  core.String? signatureName;
 
   /// Use this field if you want to specify a Google Cloud Storage path for the
   /// model to use.
-  core.String uri;
+  core.String? uri;
 
   /// Use this field if you want to specify a version of the model to use.
   ///
   /// The string is formatted the same way as `model_version`, with the addition
   /// of the version information:
   /// `"projects/YOUR_PROJECT/models/YOUR_MODEL/versions/YOUR_VERSION"`
-  core.String versionName;
+  core.String? versionName;
 
   GoogleCloudMlV1PredictionInput();
 
@@ -5065,36 +4906,36 @@ class GoogleCloudMlV1PredictionInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (batchSize != null) 'batchSize': batchSize,
-        if (dataFormat != null) 'dataFormat': dataFormat,
-        if (inputPaths != null) 'inputPaths': inputPaths,
-        if (maxWorkerCount != null) 'maxWorkerCount': maxWorkerCount,
-        if (modelName != null) 'modelName': modelName,
-        if (outputDataFormat != null) 'outputDataFormat': outputDataFormat,
-        if (outputPath != null) 'outputPath': outputPath,
-        if (region != null) 'region': region,
-        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion,
-        if (signatureName != null) 'signatureName': signatureName,
-        if (uri != null) 'uri': uri,
-        if (versionName != null) 'versionName': versionName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (batchSize != null) 'batchSize': batchSize!,
+        if (dataFormat != null) 'dataFormat': dataFormat!,
+        if (inputPaths != null) 'inputPaths': inputPaths!,
+        if (maxWorkerCount != null) 'maxWorkerCount': maxWorkerCount!,
+        if (modelName != null) 'modelName': modelName!,
+        if (outputDataFormat != null) 'outputDataFormat': outputDataFormat!,
+        if (outputPath != null) 'outputPath': outputPath!,
+        if (region != null) 'region': region!,
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
+        if (signatureName != null) 'signatureName': signatureName!,
+        if (uri != null) 'uri': uri!,
+        if (versionName != null) 'versionName': versionName!,
       };
 }
 
 /// Represents results of a prediction job.
 class GoogleCloudMlV1PredictionOutput {
   /// The number of data instances which resulted in errors.
-  core.String errorCount;
+  core.String? errorCount;
 
   /// Node hours used by the batch prediction job.
-  core.double nodeHours;
+  core.double? nodeHours;
 
   /// The output Google Cloud Storage location provided at the job creation
   /// time.
-  core.String outputPath;
+  core.String? outputPath;
 
   /// The number of generated predictions.
-  core.String predictionCount;
+  core.String? predictionCount;
 
   GoogleCloudMlV1PredictionOutput();
 
@@ -5113,11 +4954,11 @@ class GoogleCloudMlV1PredictionOutput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorCount != null) 'errorCount': errorCount,
-        if (nodeHours != null) 'nodeHours': nodeHours,
-        if (outputPath != null) 'outputPath': outputPath,
-        if (predictionCount != null) 'predictionCount': predictionCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorCount != null) 'errorCount': errorCount!,
+        if (nodeHours != null) 'nodeHours': nodeHours!,
+        if (outputPath != null) 'outputPath': outputPath!,
+        if (predictionCount != null) 'predictionCount': predictionCount!,
       };
 }
 
@@ -5127,7 +4968,7 @@ class GoogleCloudMlV1ReplicaConfig {
   ///
   /// \[Learn about restrictions on accelerator configurations for
   /// training.\](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
-  GoogleCloudMlV1AcceleratorConfig acceleratorConfig;
+  GoogleCloudMlV1AcceleratorConfig? acceleratorConfig;
 
   /// Arguments to the entrypoint command.
   ///
@@ -5142,7 +4983,7 @@ class GoogleCloudMlV1ReplicaConfig {
   /// is run with your args. It cannot be set if custom container image is not
   /// provided. Note that this field and \[TrainingInput.args\] are mutually
   /// exclusive, i.e., both cannot be set at the same time.
-  core.List<core.String> containerArgs;
+  core.List<core.String>? containerArgs;
 
   /// The command with which the replica's custom container is run.
   ///
@@ -5151,17 +4992,17 @@ class GoogleCloudMlV1ReplicaConfig {
   /// custom container image is not provided. Note that this field and
   /// \[TrainingInput.args\] are mutually exclusive, i.e., both cannot be set at
   /// the same time.
-  core.List<core.String> containerCommand;
+  core.List<core.String>? containerCommand;
 
   /// Represents the configuration of disk options.
-  GoogleCloudMlV1DiskConfig diskConfig;
+  GoogleCloudMlV1DiskConfig? diskConfig;
 
   /// The Docker image to run on the replica.
   ///
   /// This image must be in Container Registry. Learn more about \[configuring
   /// custom
   /// containers\](/ai-platform/training/docs/distributed-training-containers).
-  core.String imageUri;
+  core.String? imageUri;
 
   /// The AI Platform runtime version that includes a TensorFlow version
   /// matching the one used in the custom container.
@@ -5177,7 +5018,7 @@ class GoogleCloudMlV1ReplicaConfig {
   /// In this field, you must specify the runtime version (TensorFlow minor
   /// version). For example, if your custom container runs TensorFlow `1.x.y`,
   /// specify `1.x`.
-  core.String tpuTfVersion;
+  core.String? tpuTfVersion;
 
   GoogleCloudMlV1ReplicaConfig();
 
@@ -5208,14 +5049,14 @@ class GoogleCloudMlV1ReplicaConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (acceleratorConfig != null)
-          'acceleratorConfig': acceleratorConfig.toJson(),
-        if (containerArgs != null) 'containerArgs': containerArgs,
-        if (containerCommand != null) 'containerCommand': containerCommand,
-        if (diskConfig != null) 'diskConfig': diskConfig.toJson(),
-        if (imageUri != null) 'imageUri': imageUri,
-        if (tpuTfVersion != null) 'tpuTfVersion': tpuTfVersion,
+          'acceleratorConfig': acceleratorConfig!.toJson(),
+        if (containerArgs != null) 'containerArgs': containerArgs!,
+        if (containerCommand != null) 'containerCommand': containerCommand!,
+        if (diskConfig != null) 'diskConfig': diskConfig!.toJson(),
+        if (imageUri != null) 'imageUri': imageUri!,
+        if (tpuTfVersion != null) 'tpuTfVersion': tpuTfVersion!,
       };
 }
 
@@ -5242,13 +5083,13 @@ class GoogleCloudMlV1RequestLoggingConfig {
   /// NULLABLE groundtruth STRING NULLABLE
   ///
   /// Required.
-  core.String bigqueryTableName;
+  core.String? bigqueryTableName;
 
   /// Percentage of requests to be logged, expressed as a fraction from 0 to 1.
   ///
   /// For example, if you want to log 10% of requests, enter `0.1`. The sampling
   /// window is the lifetime of the model version. Defaults to 0.
-  core.double samplingPercentage;
+  core.double? samplingPercentage;
 
   GoogleCloudMlV1RequestLoggingConfig();
 
@@ -5261,10 +5102,10 @@ class GoogleCloudMlV1RequestLoggingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bigqueryTableName != null) 'bigqueryTableName': bigqueryTableName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bigqueryTableName != null) 'bigqueryTableName': bigqueryTableName!,
         if (samplingPercentage != null)
-          'samplingPercentage': samplingPercentage,
+          'samplingPercentage': samplingPercentage!,
       };
 }
 
@@ -5294,7 +5135,7 @@ class GoogleCloudMlV1RouteMap {
   /// name of the model version. This does not include the "projects/PROJECT_ID
   /// /models/MODEL/versions/" prefix that the API returns in output; it is the
   /// bare version name, as provided to projects.models.versions.create.
-  core.String health;
+  core.String? health;
 
   /// HTTP path on the container to send prediction requests to.
   ///
@@ -5314,7 +5155,7 @@ class GoogleCloudMlV1RouteMap {
   /// "projects/PROJECT_ID/models/MODEL/versions/" prefix that the API returns
   /// in output; it is the bare version name, as provided to
   /// projects.models.versions.create.
-  core.String predict;
+  core.String? predict;
 
   GoogleCloudMlV1RouteMap();
 
@@ -5327,9 +5168,9 @@ class GoogleCloudMlV1RouteMap {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (health != null) 'health': health,
-        if (predict != null) 'predict': predict,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (health != null) 'health': health!,
+        if (predict != null) 'predict': predict!,
       };
 }
 
@@ -5341,7 +5182,7 @@ class GoogleCloudMlV1RouteMap {
 class GoogleCloudMlV1SampledShapleyAttribution {
   /// The number of feature permutations to consider when approximating the
   /// Shapley values.
-  core.int numPaths;
+  core.int? numPaths;
 
   GoogleCloudMlV1SampledShapleyAttribution();
 
@@ -5351,8 +5192,8 @@ class GoogleCloudMlV1SampledShapleyAttribution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (numPaths != null) 'numPaths': numPaths,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (numPaths != null) 'numPaths': numPaths!,
       };
 }
 
@@ -5373,7 +5214,7 @@ class GoogleCloudMlV1Scheduling {
   /// For example: ```yaml trainingInput: scheduling: maxRunningTime: 7200s ```
   ///
   /// Optional.
-  core.String maxRunningTime;
+  core.String? maxRunningTime;
 
   /// The maximum job wait time, expressed in seconds.
   ///
@@ -5399,7 +5240,7 @@ class GoogleCloudMlV1Scheduling {
   /// For example: ```yaml trainingInput: scheduling: maxWaitTime: 3600s ```
   ///
   /// Optional.
-  core.String maxWaitTime;
+  core.String? maxWaitTime;
 
   GoogleCloudMlV1Scheduling();
 
@@ -5412,9 +5253,9 @@ class GoogleCloudMlV1Scheduling {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (maxRunningTime != null) 'maxRunningTime': maxRunningTime,
-        if (maxWaitTime != null) 'maxWaitTime': maxWaitTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (maxRunningTime != null) 'maxRunningTime': maxRunningTime!,
+        if (maxWaitTime != null) 'maxWaitTime': maxWaitTime!,
       };
 }
 
@@ -5426,7 +5267,7 @@ class GoogleCloudMlV1SetDefaultVersionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 class GoogleCloudMlV1StopTrialRequest {
@@ -5436,7 +5277,7 @@ class GoogleCloudMlV1StopTrialRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A message representing a Study.
@@ -5444,19 +5285,19 @@ class GoogleCloudMlV1Study {
   /// Time at which the study was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// A human readable reason why the Study is inactive.
   ///
   /// This should be empty if a study is ACTIVE or COMPLETED.
   ///
   /// Output only.
-  core.String inactiveReason;
+  core.String? inactiveReason;
 
   /// The name of a study.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The detailed state of a study.
   ///
@@ -5467,12 +5308,12 @@ class GoogleCloudMlV1Study {
   /// - "INACTIVE" : The study is stopped due to an internal error.
   /// - "COMPLETED" : The study is done when the service exhausts the parameter
   /// search space or max_trial_count is reached.
-  core.String state;
+  core.String? state;
 
   /// Configuration of the study.
   ///
   /// Required.
-  GoogleCloudMlV1StudyConfig studyConfig;
+  GoogleCloudMlV1StudyConfig? studyConfig;
 
   GoogleCloudMlV1Study();
 
@@ -5495,12 +5336,12 @@ class GoogleCloudMlV1Study {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (inactiveReason != null) 'inactiveReason': inactiveReason,
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
-        if (studyConfig != null) 'studyConfig': studyConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (inactiveReason != null) 'inactiveReason': inactiveReason!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (studyConfig != null) 'studyConfig': studyConfig!.toJson(),
       };
 }
 
@@ -5515,18 +5356,18 @@ class GoogleCloudMlV1StudyConfig {
   /// grid search, all parameters must be `INTEGER`, `CATEGORICAL`, or
   /// `DISCRETE`.
   /// - "RANDOM_SEARCH" : Simple random search within the feasible space.
-  core.String algorithm;
+  core.String? algorithm;
 
   /// Configuration for automated stopping of unpromising Trials.
-  GoogleCloudMlV1AutomatedStoppingConfig automatedStoppingConfig;
+  GoogleCloudMlV1AutomatedStoppingConfig? automatedStoppingConfig;
 
   /// Metric specs for the study.
-  core.List<GoogleCloudMlV1StudyConfigMetricSpec> metrics;
+  core.List<GoogleCloudMlV1StudyConfigMetricSpec>? metrics;
 
   /// The set of parameters to tune.
   ///
   /// Required.
-  core.List<GoogleCloudMlV1StudyConfigParameterSpec> parameters;
+  core.List<GoogleCloudMlV1StudyConfigParameterSpec>? parameters;
 
   GoogleCloudMlV1StudyConfig();
 
@@ -5555,14 +5396,14 @@ class GoogleCloudMlV1StudyConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
         if (automatedStoppingConfig != null)
-          'automatedStoppingConfig': automatedStoppingConfig.toJson(),
+          'automatedStoppingConfig': automatedStoppingConfig!.toJson(),
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
         if (parameters != null)
-          'parameters': parameters.map((value) => value.toJson()).toList(),
+          'parameters': parameters!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5570,16 +5411,16 @@ class GoogleCloudMlV1StudyConfig {
 /// SuggestTrialsRequest.
 class GoogleCloudMlV1SuggestTrialsMetadata {
   /// The identifier of the client that is requesting the suggestion.
-  core.String clientId;
+  core.String? clientId;
 
   /// The time operation was submitted.
-  core.String createTime;
+  core.String? createTime;
 
   /// The name of the study that the trial belongs to.
-  core.String study;
+  core.String? study;
 
   /// The number of suggestions requested.
-  core.int suggestionCount;
+  core.int? suggestionCount;
 
   GoogleCloudMlV1SuggestTrialsMetadata();
 
@@ -5598,11 +5439,11 @@ class GoogleCloudMlV1SuggestTrialsMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientId != null) 'clientId': clientId,
-        if (createTime != null) 'createTime': createTime,
-        if (study != null) 'study': study,
-        if (suggestionCount != null) 'suggestionCount': suggestionCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (createTime != null) 'createTime': createTime!,
+        if (study != null) 'study': study!,
+        if (suggestionCount != null) 'suggestionCount': suggestionCount!,
       };
 }
 
@@ -5615,12 +5456,12 @@ class GoogleCloudMlV1SuggestTrialsRequest {
   /// provide a new trial if the last suggested trial was completed.
   ///
   /// Required.
-  core.String clientId;
+  core.String? clientId;
 
   /// The number of suggestions requested.
   ///
   /// Required.
-  core.int suggestionCount;
+  core.int? suggestionCount;
 
   GoogleCloudMlV1SuggestTrialsRequest();
 
@@ -5633,9 +5474,9 @@ class GoogleCloudMlV1SuggestTrialsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientId != null) 'clientId': clientId,
-        if (suggestionCount != null) 'suggestionCount': suggestionCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (suggestionCount != null) 'suggestionCount': suggestionCount!,
       };
 }
 
@@ -5643,10 +5484,10 @@ class GoogleCloudMlV1SuggestTrialsRequest {
 /// google.longrunning.Operation associated with a SuggestTrials request.
 class GoogleCloudMlV1SuggestTrialsResponse {
   /// The time at which operation processing completed.
-  core.String endTime;
+  core.String? endTime;
 
   /// The time at which the operation was started.
-  core.String startTime;
+  core.String? startTime;
 
   /// The state of the study.
   /// Possible string values are:
@@ -5655,10 +5496,10 @@ class GoogleCloudMlV1SuggestTrialsResponse {
   /// - "INACTIVE" : The study is stopped due to an internal error.
   /// - "COMPLETED" : The study is done when the service exhausts the parameter
   /// search space or max_trial_count is reached.
-  core.String studyState;
+  core.String? studyState;
 
   /// A list of trials.
-  core.List<GoogleCloudMlV1Trial> trials;
+  core.List<GoogleCloudMlV1Trial>? trials;
 
   GoogleCloudMlV1SuggestTrialsResponse();
 
@@ -5680,12 +5521,12 @@ class GoogleCloudMlV1SuggestTrialsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
-        if (studyState != null) 'studyState': studyState,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+        if (studyState != null) 'studyState': studyState!,
         if (trials != null)
-          'trials': trials.map((value) => value.toJson()).toList(),
+          'trials': trials!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5703,7 +5544,7 @@ class GoogleCloudMlV1TrainingInput {
   /// container's `ENTRYPOINT` command.
   ///
   /// Optional.
-  core.List<core.String> args;
+  core.List<core.String>? args;
 
   /// Options for using customer-managed encryption keys (CMEK) to protect
   /// resources created by a training job, instead of using Google's default
@@ -5715,7 +5556,7 @@ class GoogleCloudMlV1TrainingInput {
   /// Training\](/ai-platform/training/docs/cmek).
   ///
   /// Optional.
-  GoogleCloudMlV1EncryptionConfig encryptionConfig;
+  GoogleCloudMlV1EncryptionConfig? encryptionConfig;
 
   /// The configuration for evaluators.
   ///
@@ -5730,7 +5571,7 @@ class GoogleCloudMlV1TrainingInput {
   /// containers\](/ai-platform/training/docs/distributed-training-containers).
   ///
   /// Optional.
-  GoogleCloudMlV1ReplicaConfig evaluatorConfig;
+  GoogleCloudMlV1ReplicaConfig? evaluatorConfig;
 
   /// The number of evaluator replicas to use for the training job.
   ///
@@ -5740,7 +5581,7 @@ class GoogleCloudMlV1TrainingInput {
   /// default value is zero.
   ///
   /// Optional.
-  core.String evaluatorCount;
+  core.String? evaluatorCount;
 
   /// Specifies the type of virtual machine to use for your training job's
   /// evaluator nodes.
@@ -5753,12 +5594,12 @@ class GoogleCloudMlV1TrainingInput {
   /// greater than zero.
   ///
   /// Optional.
-  core.String evaluatorType;
+  core.String? evaluatorType;
 
   /// The set of Hyperparameters to tune.
   ///
   /// Optional.
-  GoogleCloudMlV1HyperparameterSpec hyperparameters;
+  GoogleCloudMlV1HyperparameterSpec? hyperparameters;
 
   /// A Google Cloud Storage path in which to store training outputs and other
   /// data needed for training.
@@ -5768,7 +5609,7 @@ class GoogleCloudMlV1TrainingInput {
   /// ML validates the path for use in training.
   ///
   /// Optional.
-  core.String jobDir;
+  core.String? jobDir;
 
   /// The configuration for your master worker.
   ///
@@ -5782,7 +5623,7 @@ class GoogleCloudMlV1TrainingInput {
   /// containers\](/ai-platform/training/docs/distributed-training-containers).
   ///
   /// Optional.
-  GoogleCloudMlV1ReplicaConfig masterConfig;
+  GoogleCloudMlV1ReplicaConfig? masterConfig;
 
   /// Specifies the type of virtual machine to use for your training job's
   /// master worker.
@@ -5800,7 +5641,7 @@ class GoogleCloudMlV1TrainingInput {
   /// TPUs\](/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
   ///
   /// Optional.
-  core.String masterType;
+  core.String? masterType;
 
   /// The full name of the \[Compute Engine network\](/vpc/docs/vpc) to which
   /// the Job is peered.
@@ -5813,7 +5654,7 @@ class GoogleCloudMlV1TrainingInput {
   /// VPC Network Peering.\](/ai-platform/training/docs/vpc-peering).
   ///
   /// Optional.
-  core.String network;
+  core.String? network;
 
   /// The Google Cloud Storage location of the packages with the training
   /// program and any additional dependencies.
@@ -5821,7 +5662,7 @@ class GoogleCloudMlV1TrainingInput {
   /// The maximum number of package URIs is 100.
   ///
   /// Required.
-  core.List<core.String> packageUris;
+  core.List<core.String>? packageUris;
 
   /// The configuration for parameter servers.
   ///
@@ -5836,7 +5677,7 @@ class GoogleCloudMlV1TrainingInput {
   /// containers\](/ai-platform/training/docs/distributed-training-containers).
   ///
   /// Optional.
-  GoogleCloudMlV1ReplicaConfig parameterServerConfig;
+  GoogleCloudMlV1ReplicaConfig? parameterServerConfig;
 
   /// The number of parameter server replicas to use for the training job.
   ///
@@ -5846,7 +5687,7 @@ class GoogleCloudMlV1TrainingInput {
   /// `parameter_server_type`. The default value is zero.
   ///
   /// Optional.
-  core.String parameterServerCount;
+  core.String? parameterServerCount;
 
   /// Specifies the type of virtual machine to use for your training job's
   /// parameter server.
@@ -5859,12 +5700,12 @@ class GoogleCloudMlV1TrainingInput {
   /// is greater than zero.
   ///
   /// Optional.
-  core.String parameterServerType;
+  core.String? parameterServerType;
 
   /// The Python module name to run after installing the packages.
   ///
   /// Required.
-  core.String pythonModule;
+  core.String? pythonModule;
 
   /// The version of Python used in training.
   ///
@@ -5877,7 +5718,7 @@ class GoogleCloudMlV1TrainingInput {
   /// version\](/ml-engine/docs/runtime-version-list).
   ///
   /// Optional.
-  core.String pythonVersion;
+  core.String? pythonVersion;
 
   /// The region to run the training job in.
   ///
@@ -5885,7 +5726,7 @@ class GoogleCloudMlV1TrainingInput {
   /// Platform Training.
   ///
   /// Required.
-  core.String region;
+  core.String? region;
 
   /// The AI Platform runtime version to use for training.
   ///
@@ -5895,7 +5736,7 @@ class GoogleCloudMlV1TrainingInput {
   /// manage runtime versions\](/ai-platform/training/docs/versioning).
   ///
   /// Optional.
-  core.String runtimeVersion;
+  core.String? runtimeVersion;
 
   /// Specifies the machine types, the number of replicas for workers and
   /// parameter servers.
@@ -5927,12 +5768,12 @@ class GoogleCloudMlV1TrainingInput {
   /// different from your parameter server type and master type. Your parameter
   /// servers must likewise use the same machine type, which can be different
   /// from your worker type and master type.
-  core.String scaleTier;
+  core.String? scaleTier;
 
   /// Scheduling options for a training job.
   ///
   /// Optional.
-  GoogleCloudMlV1Scheduling scheduling;
+  GoogleCloudMlV1Scheduling? scheduling;
 
   /// The email address of a service account to use when running the training
   /// appplication.
@@ -5946,7 +5787,7 @@ class GoogleCloudMlV1TrainingInput {
   /// by default.
   ///
   /// Optional.
-  core.String serviceAccount;
+  core.String? serviceAccount;
 
   /// Use `chief` instead of `master` in the `TF_CONFIG` environment variable
   /// when training with a custom container.
@@ -5957,7 +5798,7 @@ class GoogleCloudMlV1TrainingInput {
   /// container.
   ///
   /// Optional.
-  core.bool useChiefInTfConfig;
+  core.bool? useChiefInTfConfig;
 
   /// The configuration for workers.
   ///
@@ -5971,7 +5812,7 @@ class GoogleCloudMlV1TrainingInput {
   /// containers\](/ai-platform/training/docs/distributed-training-containers).
   ///
   /// Optional.
-  GoogleCloudMlV1ReplicaConfig workerConfig;
+  GoogleCloudMlV1ReplicaConfig? workerConfig;
 
   /// The number of worker replicas to use for the training job.
   ///
@@ -5981,7 +5822,7 @@ class GoogleCloudMlV1TrainingInput {
   /// default value is zero.
   ///
   /// Optional.
-  core.String workerCount;
+  core.String? workerCount;
 
   /// Specifies the type of virtual machine to use for your training job's
   /// worker nodes.
@@ -5996,7 +5837,7 @@ class GoogleCloudMlV1TrainingInput {
   /// `workerCount` is greater than zero.
   ///
   /// Optional.
-  core.String workerType;
+  core.String? workerType;
 
   GoogleCloudMlV1TrainingInput();
 
@@ -6090,39 +5931,39 @@ class GoogleCloudMlV1TrainingInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (args != null) 'args': args,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (args != null) 'args': args!,
         if (encryptionConfig != null)
-          'encryptionConfig': encryptionConfig.toJson(),
+          'encryptionConfig': encryptionConfig!.toJson(),
         if (evaluatorConfig != null)
-          'evaluatorConfig': evaluatorConfig.toJson(),
-        if (evaluatorCount != null) 'evaluatorCount': evaluatorCount,
-        if (evaluatorType != null) 'evaluatorType': evaluatorType,
+          'evaluatorConfig': evaluatorConfig!.toJson(),
+        if (evaluatorCount != null) 'evaluatorCount': evaluatorCount!,
+        if (evaluatorType != null) 'evaluatorType': evaluatorType!,
         if (hyperparameters != null)
-          'hyperparameters': hyperparameters.toJson(),
-        if (jobDir != null) 'jobDir': jobDir,
-        if (masterConfig != null) 'masterConfig': masterConfig.toJson(),
-        if (masterType != null) 'masterType': masterType,
-        if (network != null) 'network': network,
-        if (packageUris != null) 'packageUris': packageUris,
+          'hyperparameters': hyperparameters!.toJson(),
+        if (jobDir != null) 'jobDir': jobDir!,
+        if (masterConfig != null) 'masterConfig': masterConfig!.toJson(),
+        if (masterType != null) 'masterType': masterType!,
+        if (network != null) 'network': network!,
+        if (packageUris != null) 'packageUris': packageUris!,
         if (parameterServerConfig != null)
-          'parameterServerConfig': parameterServerConfig.toJson(),
+          'parameterServerConfig': parameterServerConfig!.toJson(),
         if (parameterServerCount != null)
-          'parameterServerCount': parameterServerCount,
+          'parameterServerCount': parameterServerCount!,
         if (parameterServerType != null)
-          'parameterServerType': parameterServerType,
-        if (pythonModule != null) 'pythonModule': pythonModule,
-        if (pythonVersion != null) 'pythonVersion': pythonVersion,
-        if (region != null) 'region': region,
-        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion,
-        if (scaleTier != null) 'scaleTier': scaleTier,
-        if (scheduling != null) 'scheduling': scheduling.toJson(),
-        if (serviceAccount != null) 'serviceAccount': serviceAccount,
+          'parameterServerType': parameterServerType!,
+        if (pythonModule != null) 'pythonModule': pythonModule!,
+        if (pythonVersion != null) 'pythonVersion': pythonVersion!,
+        if (region != null) 'region': region!,
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
+        if (scaleTier != null) 'scaleTier': scaleTier!,
+        if (scheduling != null) 'scheduling': scheduling!.toJson(),
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (useChiefInTfConfig != null)
-          'useChiefInTfConfig': useChiefInTfConfig,
-        if (workerConfig != null) 'workerConfig': workerConfig.toJson(),
-        if (workerCount != null) 'workerCount': workerCount,
-        if (workerType != null) 'workerType': workerType,
+          'useChiefInTfConfig': useChiefInTfConfig!,
+        if (workerConfig != null) 'workerConfig': workerConfig!.toJson(),
+        if (workerCount != null) 'workerCount': workerCount!,
+        if (workerType != null) 'workerType': workerType!,
       };
 }
 
@@ -6133,15 +5974,15 @@ class GoogleCloudMlV1TrainingOutput {
   /// Details related to built-in algorithms jobs.
   ///
   /// Only set for built-in algorithms jobs.
-  GoogleCloudMlV1BuiltInAlgorithmOutput builtInAlgorithmOutput;
+  GoogleCloudMlV1BuiltInAlgorithmOutput? builtInAlgorithmOutput;
 
   /// The number of hyperparameter tuning trials that completed successfully.
   ///
   /// Only set for hyperparameter tuning jobs.
-  core.String completedTrialCount;
+  core.String? completedTrialCount;
 
   /// The amount of ML units consumed by the job.
-  core.double consumedMLUnits;
+  core.double? consumedMLUnits;
 
   /// The TensorFlow summary tag name used for optimizing hyperparameter tuning
   /// trials.
@@ -6149,18 +5990,18 @@ class GoogleCloudMlV1TrainingOutput {
   /// See
   /// \[`HyperparameterSpec.hyperparameterMetricTag`\](#HyperparameterSpec.FIELDS.hyperparameter_metric_tag)
   /// for more information. Only set for hyperparameter tuning jobs.
-  core.String hyperparameterMetricTag;
+  core.String? hyperparameterMetricTag;
 
   /// Whether this job is a built-in Algorithm job.
-  core.bool isBuiltInAlgorithmJob;
+  core.bool? isBuiltInAlgorithmJob;
 
   /// Whether this job is a hyperparameter tuning job.
-  core.bool isHyperparameterTuningJob;
+  core.bool? isHyperparameterTuningJob;
 
   /// Results for individual Hyperparameter trials.
   ///
   /// Only set for hyperparameter tuning jobs.
-  core.List<GoogleCloudMlV1HyperparameterOutput> trials;
+  core.List<GoogleCloudMlV1HyperparameterOutput>? trials;
 
   GoogleCloudMlV1TrainingOutput();
 
@@ -6195,20 +6036,20 @@ class GoogleCloudMlV1TrainingOutput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (builtInAlgorithmOutput != null)
-          'builtInAlgorithmOutput': builtInAlgorithmOutput.toJson(),
+          'builtInAlgorithmOutput': builtInAlgorithmOutput!.toJson(),
         if (completedTrialCount != null)
-          'completedTrialCount': completedTrialCount,
-        if (consumedMLUnits != null) 'consumedMLUnits': consumedMLUnits,
+          'completedTrialCount': completedTrialCount!,
+        if (consumedMLUnits != null) 'consumedMLUnits': consumedMLUnits!,
         if (hyperparameterMetricTag != null)
-          'hyperparameterMetricTag': hyperparameterMetricTag,
+          'hyperparameterMetricTag': hyperparameterMetricTag!,
         if (isBuiltInAlgorithmJob != null)
-          'isBuiltInAlgorithmJob': isBuiltInAlgorithmJob,
+          'isBuiltInAlgorithmJob': isBuiltInAlgorithmJob!,
         if (isHyperparameterTuningJob != null)
-          'isHyperparameterTuningJob': isHyperparameterTuningJob,
+          'isHyperparameterTuningJob': isHyperparameterTuningJob!,
         if (trials != null)
-          'trials': trials.map((value) => value.toJson()).toList(),
+          'trials': trials!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6217,41 +6058,41 @@ class GoogleCloudMlV1Trial {
   /// The identifier of the client that originally requested this trial.
   ///
   /// Output only.
-  core.String clientId;
+  core.String? clientId;
 
   /// Time at which the trial's status changed to COMPLETED.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// The final measurement containing the objective value.
-  GoogleCloudMlV1Measurement finalMeasurement;
+  GoogleCloudMlV1Measurement? finalMeasurement;
 
   /// A human readable string describing why the trial is infeasible.
   ///
   /// This should only be set if trial_infeasible is true.
   ///
   /// Output only.
-  core.String infeasibleReason;
+  core.String? infeasibleReason;
 
   /// A list of measurements that are strictly lexicographically ordered by
   /// their induced tuples (steps, elapsed_time).
   ///
   /// These are used for early stopping computations.
-  core.List<GoogleCloudMlV1Measurement> measurements;
+  core.List<GoogleCloudMlV1Measurement>? measurements;
 
   /// Name of the trial assigned by the service.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The parameters of the trial.
-  core.List<GoogleCloudMlV1TrialParameter> parameters;
+  core.List<GoogleCloudMlV1TrialParameter>? parameters;
 
   /// Time at which the trial was started.
   ///
   /// Output only.
-  core.String startTime;
+  core.String? startTime;
 
   /// The detailed state of a trial.
   /// Possible string values are:
@@ -6263,12 +6104,12 @@ class GoogleCloudMlV1Trial {
   /// final_measurement set, or is marked as trial_infeasible.
   /// - "STOPPING" : Indicates that the trial should stop according to the
   /// service.
-  core.String state;
+  core.String? state;
 
   /// If true, the parameters in this trial are not attempted again.
   ///
   /// Output only.
-  core.bool trialInfeasible;
+  core.bool? trialInfeasible;
 
   GoogleCloudMlV1Trial();
 
@@ -6314,20 +6155,20 @@ class GoogleCloudMlV1Trial {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientId != null) 'clientId': clientId,
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (endTime != null) 'endTime': endTime!,
         if (finalMeasurement != null)
-          'finalMeasurement': finalMeasurement.toJson(),
-        if (infeasibleReason != null) 'infeasibleReason': infeasibleReason,
+          'finalMeasurement': finalMeasurement!.toJson(),
+        if (infeasibleReason != null) 'infeasibleReason': infeasibleReason!,
         if (measurements != null)
-          'measurements': measurements.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+          'measurements': measurements!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
         if (parameters != null)
-          'parameters': parameters.map((value) => value.toJson()).toList(),
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
-        if (trialInfeasible != null) 'trialInfeasible': trialInfeasible,
+          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+        if (trialInfeasible != null) 'trialInfeasible': trialInfeasible!,
       };
 }
 
@@ -6345,7 +6186,7 @@ class GoogleCloudMlV1Version {
   /// online prediction\](/ml-engine/docs/machine-types-online-prediction#gpus).
   ///
   /// Optional.
-  GoogleCloudMlV1AcceleratorConfig acceleratorConfig;
+  GoogleCloudMlV1AcceleratorConfig? acceleratorConfig;
 
   /// Automatically scale the number of nodes used to serve the model in
   /// response to increases and decreases in traffic.
@@ -6353,7 +6194,7 @@ class GoogleCloudMlV1Version {
   /// Care should be taken to ramp up traffic according to the model's ability
   /// to scale or you will start seeing increases in latency and 429 response
   /// codes.
-  GoogleCloudMlV1AutoScaling autoScaling;
+  GoogleCloudMlV1AutoScaling? autoScaling;
 
   /// Specifies a custom container to use for serving predictions.
   ///
@@ -6363,12 +6204,12 @@ class GoogleCloudMlV1Version {
   /// `pythonVersion`, or `predictionClass`.
   ///
   /// Optional.
-  GoogleCloudMlV1ContainerSpec container;
+  GoogleCloudMlV1ContainerSpec? container;
 
   /// The time the version was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The Cloud Storage URI of a directory containing trained model artifacts to
   /// be used to create the model version.
@@ -6384,17 +6225,17 @@ class GoogleCloudMlV1Version {
   /// If you specify container, then this field is optional. Otherwise, it is
   /// required. Learn \[how to use this field with a custom
   /// container\](/ai-platform/prediction/docs/custom-container-requirements#artifacts).
-  core.String deploymentUri;
+  core.String? deploymentUri;
 
   /// The description specified for the version when it was created.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// The details of a failure or a cancellation.
   ///
   /// Output only.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a model from overwriting each other.
@@ -6404,8 +6245,8 @@ class GoogleCloudMlV1Version {
   /// conditions: An `etag` is returned in the response to `GetVersion`, and
   /// systems are expected to put that etag in the request to `UpdateVersion` to
   /// ensure that their change will be applied to the model as intended.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -6418,7 +6259,7 @@ class GoogleCloudMlV1Version {
   /// of the model payload.
   ///
   /// Optional.
-  GoogleCloudMlV1ExplanationConfig explanationConfig;
+  GoogleCloudMlV1ExplanationConfig? explanationConfig;
 
   /// The machine learning framework AI Platform uses to train this version of
   /// the model.
@@ -6439,7 +6280,7 @@ class GoogleCloudMlV1Version {
   /// - "TENSORFLOW" : Tensorflow framework.
   /// - "SCIKIT_LEARN" : Scikit-learn framework.
   /// - "XGBOOST" : XGBoost framework.
-  core.String framework;
+  core.String? framework;
 
   /// If true, this version will be used to handle prediction requests that do
   /// not specify a version.
@@ -6448,7 +6289,7 @@ class GoogleCloudMlV1Version {
   /// projects.methods.versions.setDefault.
   ///
   /// Output only.
-  core.bool isDefault;
+  core.bool? isDefault;
 
   /// One or more labels that you can add, to organize your model versions.
   ///
@@ -6457,7 +6298,7 @@ class GoogleCloudMlV1Version {
   /// documentation on using labels.
   ///
   /// Optional.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The \[AI Platform (Unified)
   /// `Model`\](https://cloud.google.com/ai-platform-unified/docs/reference/rest/v1beta1/projects.locations.models)
@@ -6465,18 +6306,18 @@ class GoogleCloudMlV1Version {
   /// [model migration](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
   ///
   /// Output only.
-  core.String lastMigrationModelId;
+  core.String? lastMigrationModelId;
 
   /// The last time this version was successfully \[migrated to AI Platform
   /// (Unified)\](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
   ///
   /// Output only.
-  core.String lastMigrationTime;
+  core.String? lastMigrationTime;
 
   /// The time the version was last used for prediction.
   ///
   /// Output only.
-  core.String lastUseTime;
+  core.String? lastUseTime;
 
   /// The type of machine on which to serve the model.
   ///
@@ -6490,7 +6331,7 @@ class GoogleCloudMlV1Version {
   /// machine type defaults to `mls1-c1-m2`.
   ///
   /// Optional.
-  core.String machineType;
+  core.String? machineType;
 
   /// Manually select the number of nodes to use for serving the model.
   ///
@@ -6499,14 +6340,14 @@ class GoogleCloudMlV1Version {
   /// billing. Beware that latency and error rates will increase if the traffic
   /// exceeds that capability of the system to serve it based on the selected
   /// number of nodes.
-  GoogleCloudMlV1ManualScaling manualScaling;
+  GoogleCloudMlV1ManualScaling? manualScaling;
 
   /// The name specified for the version when it was created.
   ///
   /// The version name must be unique within the model it is created in.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// Cloud Storage paths (`gs://…`) of packages for \[custom prediction
   /// routines\](/ml-engine/docs/tensorflow/custom-prediction-routines) or
@@ -6523,7 +6364,7 @@ class GoogleCloudMlV1Version {
   /// \[`runtimeVersion`\](#Version.FIELDS.runtime_version) to 1.4 or greater.
   ///
   /// Optional.
-  core.List<core.String> packageUris;
+  core.List<core.String>? packageUris;
 
   /// The fully qualified name (module_name.class_name) of a class that
   /// implements the Predictor interface described in this reference field.
@@ -6554,7 +6395,7 @@ class GoogleCloudMlV1Version {
   /// routines\](/ml-engine/docs/tensorflow/custom-prediction-routines).
   ///
   /// Optional.
-  core.String predictionClass;
+  core.String? predictionClass;
 
   /// The version of Python used in prediction.
   ///
@@ -6566,7 +6407,7 @@ class GoogleCloudMlV1Version {
   /// version\](/ml-engine/docs/runtime-version-list).
   ///
   /// Required.
-  core.String pythonVersion;
+  core.String? pythonVersion;
 
   /// *Only* specify this field in a projects.models.versions.patch request.
   ///
@@ -6575,7 +6416,7 @@ class GoogleCloudMlV1Version {
   /// Version.
   ///
   /// Optional.
-  GoogleCloudMlV1RequestLoggingConfig requestLoggingConfig;
+  GoogleCloudMlV1RequestLoggingConfig? requestLoggingConfig;
 
   /// Specifies paths on a custom container's HTTP server where AI Platform
   /// Prediction sends certain requests.
@@ -6588,7 +6429,7 @@ class GoogleCloudMlV1Version {
   /// about these default values.
   ///
   /// Optional.
-  GoogleCloudMlV1RouteMap routes;
+  GoogleCloudMlV1RouteMap? routes;
 
   /// The AI Platform runtime version to use for this deployment.
   ///
@@ -6597,7 +6438,7 @@ class GoogleCloudMlV1Version {
   /// versions\](/ml-engine/docs/versioning).
   ///
   /// Required.
-  core.String runtimeVersion;
+  core.String? runtimeVersion;
 
   /// Specifies the service account for resource access control.
   ///
@@ -6607,7 +6448,7 @@ class GoogleCloudMlV1Version {
   /// account\](/ai-platform/prediction/docs/custom-service-account).
   ///
   /// Optional.
-  core.String serviceAccount;
+  core.String? serviceAccount;
 
   /// The state of a version.
   ///
@@ -6623,7 +6464,7 @@ class GoogleCloudMlV1Version {
   /// DeleteVersion requests will fail if a version is in the DELETING state.
   /// - "UPDATING" : The version is being updated. New UpdateVersion and
   /// DeleteVersion requests will fail if a version is in the UPDATING state.
-  core.String state;
+  core.String? state;
 
   GoogleCloudMlV1Version();
 
@@ -6723,37 +6564,37 @@ class GoogleCloudMlV1Version {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (acceleratorConfig != null)
-          'acceleratorConfig': acceleratorConfig.toJson(),
-        if (autoScaling != null) 'autoScaling': autoScaling.toJson(),
-        if (container != null) 'container': container.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (deploymentUri != null) 'deploymentUri': deploymentUri,
-        if (description != null) 'description': description,
-        if (errorMessage != null) 'errorMessage': errorMessage,
-        if (etag != null) 'etag': etag,
+          'acceleratorConfig': acceleratorConfig!.toJson(),
+        if (autoScaling != null) 'autoScaling': autoScaling!.toJson(),
+        if (container != null) 'container': container!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (deploymentUri != null) 'deploymentUri': deploymentUri!,
+        if (description != null) 'description': description!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (etag != null) 'etag': etag!,
         if (explanationConfig != null)
-          'explanationConfig': explanationConfig.toJson(),
-        if (framework != null) 'framework': framework,
-        if (isDefault != null) 'isDefault': isDefault,
-        if (labels != null) 'labels': labels,
+          'explanationConfig': explanationConfig!.toJson(),
+        if (framework != null) 'framework': framework!,
+        if (isDefault != null) 'isDefault': isDefault!,
+        if (labels != null) 'labels': labels!,
         if (lastMigrationModelId != null)
-          'lastMigrationModelId': lastMigrationModelId,
-        if (lastMigrationTime != null) 'lastMigrationTime': lastMigrationTime,
-        if (lastUseTime != null) 'lastUseTime': lastUseTime,
-        if (machineType != null) 'machineType': machineType,
-        if (manualScaling != null) 'manualScaling': manualScaling.toJson(),
-        if (name != null) 'name': name,
-        if (packageUris != null) 'packageUris': packageUris,
-        if (predictionClass != null) 'predictionClass': predictionClass,
-        if (pythonVersion != null) 'pythonVersion': pythonVersion,
+          'lastMigrationModelId': lastMigrationModelId!,
+        if (lastMigrationTime != null) 'lastMigrationTime': lastMigrationTime!,
+        if (lastUseTime != null) 'lastUseTime': lastUseTime!,
+        if (machineType != null) 'machineType': machineType!,
+        if (manualScaling != null) 'manualScaling': manualScaling!.toJson(),
+        if (name != null) 'name': name!,
+        if (packageUris != null) 'packageUris': packageUris!,
+        if (predictionClass != null) 'predictionClass': predictionClass!,
+        if (pythonVersion != null) 'pythonVersion': pythonVersion!,
         if (requestLoggingConfig != null)
-          'requestLoggingConfig': requestLoggingConfig.toJson(),
-        if (routes != null) 'routes': routes.toJson(),
-        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount,
-        if (state != null) 'state': state,
+          'requestLoggingConfig': requestLoggingConfig!.toJson(),
+        if (routes != null) 'routes': routes!.toJson(),
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -6767,7 +6608,7 @@ class GoogleCloudMlV1XraiAttribution {
   ///
   /// A good value to start is 50 and gradually increase until the sum to diff
   /// property is met within the desired error range.
-  core.int numIntegralSteps;
+  core.int? numIntegralSteps;
 
   GoogleCloudMlV1XraiAttribution();
 
@@ -6777,8 +6618,8 @@ class GoogleCloudMlV1XraiAttribution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (numIntegralSteps != null) 'numIntegralSteps': numIntegralSteps,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (numIntegralSteps != null) 'numIntegralSteps': numIntegralSteps!,
       };
 }
 
@@ -6801,13 +6642,13 @@ class GoogleCloudMlV1XraiAttribution {
 /// aliya@example.com from DATA_WRITE logging.
 class GoogleIamV1AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<GoogleIamV1AuditLogConfig> auditLogConfigs;
+  core.List<GoogleIamV1AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   GoogleIamV1AuditConfig();
 
@@ -6824,11 +6665,11 @@ class GoogleIamV1AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -6843,7 +6684,7 @@ class GoogleIamV1AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -6851,7 +6692,7 @@ class GoogleIamV1AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   GoogleIamV1AuditLogConfig();
 
@@ -6866,9 +6707,9 @@ class GoogleIamV1AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -6882,7 +6723,7 @@ class GoogleIamV1Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  GoogleTypeExpr condition;
+  GoogleTypeExpr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -6914,12 +6755,12 @@ class GoogleIamV1Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   GoogleIamV1Binding();
 
@@ -6938,10 +6779,10 @@ class GoogleIamV1Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -6978,14 +6819,14 @@ class GoogleIamV1Binding {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class GoogleIamV1Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<GoogleIamV1AuditConfig> auditConfigs;
+  core.List<GoogleIamV1AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<GoogleIamV1Binding> bindings;
+  core.List<GoogleIamV1Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -6999,8 +6840,8 @@ class GoogleIamV1Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -7024,7 +6865,7 @@ class GoogleIamV1Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   GoogleIamV1Policy();
 
@@ -7050,13 +6891,13 @@ class GoogleIamV1Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -7067,13 +6908,13 @@ class GoogleIamV1SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  GoogleIamV1Policy policy;
+  GoogleIamV1Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   GoogleIamV1SetIamPolicyRequest();
 
@@ -7087,9 +6928,9 @@ class GoogleIamV1SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -7100,7 +6941,7 @@ class GoogleIamV1TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   GoogleIamV1TestIamPermissionsRequest();
 
@@ -7112,8 +6953,8 @@ class GoogleIamV1TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -7121,7 +6962,7 @@ class GoogleIamV1TestIamPermissionsRequest {
 class GoogleIamV1TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   GoogleIamV1TestIamPermissionsResponse();
 
@@ -7133,18 +6974,18 @@ class GoogleIamV1TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<GoogleLongrunningOperation> operations;
+  core.List<GoogleLongrunningOperation>? operations;
 
   GoogleLongrunningListOperationsResponse();
 
@@ -7161,10 +7002,10 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7175,10 +7016,10 @@ class GoogleLongrunningOperation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  GoogleRpcStatus error;
+  GoogleRpcStatus? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -7189,14 +7030,14 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -7209,7 +7050,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   GoogleLongrunningOperation();
 
@@ -7244,12 +7085,12 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -7267,7 +7108,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -7279,7 +7120,7 @@ class GoogleProtobufEmpty {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -7287,13 +7128,13 @@ class GoogleRpcStatus {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   GoogleRpcStatus();
 
@@ -7317,10 +7158,10 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -7349,24 +7190,24 @@ class GoogleTypeExpr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   GoogleTypeExpr();
 
@@ -7385,10 +7226,10 @@ class GoogleTypeExpr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }

@@ -43,9 +43,15 @@ api.AutoForwarding buildAutoForwarding() {
 void checkAutoForwarding(api.AutoForwarding o) {
   buildCounterAutoForwarding++;
   if (buildCounterAutoForwarding < 3) {
-    unittest.expect(o.disposition, unittest.equals('foo'));
-    unittest.expect(o.emailAddress, unittest.equals('foo'));
-    unittest.expect(o.enabled, unittest.isTrue);
+    unittest.expect(
+      o.disposition!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.emailAddress!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.enabled!, unittest.isTrue);
   }
   buildCounterAutoForwarding--;
 }
@@ -59,8 +65,14 @@ core.List<core.String> buildUnnamed3619() {
 
 void checkUnnamed3619(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBatchDeleteMessagesRequest = 0;
@@ -77,7 +89,7 @@ api.BatchDeleteMessagesRequest buildBatchDeleteMessagesRequest() {
 void checkBatchDeleteMessagesRequest(api.BatchDeleteMessagesRequest o) {
   buildCounterBatchDeleteMessagesRequest++;
   if (buildCounterBatchDeleteMessagesRequest < 3) {
-    checkUnnamed3619(o.ids);
+    checkUnnamed3619(o.ids!);
   }
   buildCounterBatchDeleteMessagesRequest--;
 }
@@ -91,8 +103,14 @@ core.List<core.String> buildUnnamed3620() {
 
 void checkUnnamed3620(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed3621() {
@@ -104,8 +122,14 @@ core.List<core.String> buildUnnamed3621() {
 
 void checkUnnamed3621(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed3622() {
@@ -117,8 +141,14 @@ core.List<core.String> buildUnnamed3622() {
 
 void checkUnnamed3622(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBatchModifyMessagesRequest = 0;
@@ -137,9 +167,9 @@ api.BatchModifyMessagesRequest buildBatchModifyMessagesRequest() {
 void checkBatchModifyMessagesRequest(api.BatchModifyMessagesRequest o) {
   buildCounterBatchModifyMessagesRequest++;
   if (buildCounterBatchModifyMessagesRequest < 3) {
-    checkUnnamed3620(o.addLabelIds);
-    checkUnnamed3621(o.ids);
-    checkUnnamed3622(o.removeLabelIds);
+    checkUnnamed3620(o.addLabelIds!);
+    checkUnnamed3621(o.ids!);
+    checkUnnamed3622(o.removeLabelIds!);
   }
   buildCounterBatchModifyMessagesRequest--;
 }
@@ -159,8 +189,14 @@ api.Delegate buildDelegate() {
 void checkDelegate(api.Delegate o) {
   buildCounterDelegate++;
   if (buildCounterDelegate < 3) {
-    unittest.expect(o.delegateEmail, unittest.equals('foo'));
-    unittest.expect(o.verificationStatus, unittest.equals('foo'));
+    unittest.expect(
+      o.delegateEmail!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.verificationStatus!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDelegate--;
 }
@@ -180,8 +216,11 @@ api.Draft buildDraft() {
 void checkDraft(api.Draft o) {
   buildCounterDraft++;
   if (buildCounterDraft < 3) {
-    unittest.expect(o.id, unittest.equals('foo'));
-    checkMessage(o.message as api.Message);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    checkMessage(o.message! as api.Message);
   }
   buildCounterDraft--;
 }
@@ -202,9 +241,12 @@ api.Filter buildFilter() {
 void checkFilter(api.Filter o) {
   buildCounterFilter++;
   if (buildCounterFilter < 3) {
-    checkFilterAction(o.action as api.FilterAction);
-    checkFilterCriteria(o.criteria as api.FilterCriteria);
-    unittest.expect(o.id, unittest.equals('foo'));
+    checkFilterAction(o.action! as api.FilterAction);
+    checkFilterCriteria(o.criteria! as api.FilterCriteria);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterFilter--;
 }
@@ -218,8 +260,14 @@ core.List<core.String> buildUnnamed3623() {
 
 void checkUnnamed3623(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed3624() {
@@ -231,8 +279,14 @@ core.List<core.String> buildUnnamed3624() {
 
 void checkUnnamed3624(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterFilterAction = 0;
@@ -251,9 +305,12 @@ api.FilterAction buildFilterAction() {
 void checkFilterAction(api.FilterAction o) {
   buildCounterFilterAction++;
   if (buildCounterFilterAction < 3) {
-    checkUnnamed3623(o.addLabelIds);
-    unittest.expect(o.forward, unittest.equals('foo'));
-    checkUnnamed3624(o.removeLabelIds);
+    checkUnnamed3623(o.addLabelIds!);
+    unittest.expect(
+      o.forward!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3624(o.removeLabelIds!);
   }
   buildCounterFilterAction--;
 }
@@ -280,15 +337,36 @@ api.FilterCriteria buildFilterCriteria() {
 void checkFilterCriteria(api.FilterCriteria o) {
   buildCounterFilterCriteria++;
   if (buildCounterFilterCriteria < 3) {
-    unittest.expect(o.excludeChats, unittest.isTrue);
-    unittest.expect(o.from, unittest.equals('foo'));
-    unittest.expect(o.hasAttachment, unittest.isTrue);
-    unittest.expect(o.negatedQuery, unittest.equals('foo'));
-    unittest.expect(o.query, unittest.equals('foo'));
-    unittest.expect(o.size, unittest.equals(42));
-    unittest.expect(o.sizeComparison, unittest.equals('foo'));
-    unittest.expect(o.subject, unittest.equals('foo'));
-    unittest.expect(o.to, unittest.equals('foo'));
+    unittest.expect(o.excludeChats!, unittest.isTrue);
+    unittest.expect(
+      o.from!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.hasAttachment!, unittest.isTrue);
+    unittest.expect(
+      o.negatedQuery!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.query!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.size!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.sizeComparison!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.subject!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.to!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterFilterCriteria--;
 }
@@ -308,8 +386,14 @@ api.ForwardingAddress buildForwardingAddress() {
 void checkForwardingAddress(api.ForwardingAddress o) {
   buildCounterForwardingAddress++;
   if (buildCounterForwardingAddress < 3) {
-    unittest.expect(o.forwardingEmail, unittest.equals('foo'));
-    unittest.expect(o.verificationStatus, unittest.equals('foo'));
+    unittest.expect(
+      o.forwardingEmail!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.verificationStatus!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterForwardingAddress--;
 }
@@ -398,12 +482,15 @@ api.History buildHistory() {
 void checkHistory(api.History o) {
   buildCounterHistory++;
   if (buildCounterHistory < 3) {
-    unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed3625(o.labelsAdded);
-    checkUnnamed3626(o.labelsRemoved);
-    checkUnnamed3627(o.messages);
-    checkUnnamed3628(o.messagesAdded);
-    checkUnnamed3629(o.messagesDeleted);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3625(o.labelsAdded!);
+    checkUnnamed3626(o.labelsRemoved!);
+    checkUnnamed3627(o.messages!);
+    checkUnnamed3628(o.messagesAdded!);
+    checkUnnamed3629(o.messagesDeleted!);
   }
   buildCounterHistory--;
 }
@@ -417,8 +504,14 @@ core.List<core.String> buildUnnamed3630() {
 
 void checkUnnamed3630(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterHistoryLabelAdded = 0;
@@ -436,8 +529,8 @@ api.HistoryLabelAdded buildHistoryLabelAdded() {
 void checkHistoryLabelAdded(api.HistoryLabelAdded o) {
   buildCounterHistoryLabelAdded++;
   if (buildCounterHistoryLabelAdded < 3) {
-    checkUnnamed3630(o.labelIds);
-    checkMessage(o.message as api.Message);
+    checkUnnamed3630(o.labelIds!);
+    checkMessage(o.message! as api.Message);
   }
   buildCounterHistoryLabelAdded--;
 }
@@ -451,8 +544,14 @@ core.List<core.String> buildUnnamed3631() {
 
 void checkUnnamed3631(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterHistoryLabelRemoved = 0;
@@ -470,8 +569,8 @@ api.HistoryLabelRemoved buildHistoryLabelRemoved() {
 void checkHistoryLabelRemoved(api.HistoryLabelRemoved o) {
   buildCounterHistoryLabelRemoved++;
   if (buildCounterHistoryLabelRemoved < 3) {
-    checkUnnamed3631(o.labelIds);
-    checkMessage(o.message as api.Message);
+    checkUnnamed3631(o.labelIds!);
+    checkMessage(o.message! as api.Message);
   }
   buildCounterHistoryLabelRemoved--;
 }
@@ -490,7 +589,7 @@ api.HistoryMessageAdded buildHistoryMessageAdded() {
 void checkHistoryMessageAdded(api.HistoryMessageAdded o) {
   buildCounterHistoryMessageAdded++;
   if (buildCounterHistoryMessageAdded < 3) {
-    checkMessage(o.message as api.Message);
+    checkMessage(o.message! as api.Message);
   }
   buildCounterHistoryMessageAdded--;
 }
@@ -509,7 +608,7 @@ api.HistoryMessageDeleted buildHistoryMessageDeleted() {
 void checkHistoryMessageDeleted(api.HistoryMessageDeleted o) {
   buildCounterHistoryMessageDeleted++;
   if (buildCounterHistoryMessageDeleted < 3) {
-    checkMessage(o.message as api.Message);
+    checkMessage(o.message! as api.Message);
   }
   buildCounterHistoryMessageDeleted--;
 }
@@ -531,10 +630,16 @@ api.ImapSettings buildImapSettings() {
 void checkImapSettings(api.ImapSettings o) {
   buildCounterImapSettings++;
   if (buildCounterImapSettings < 3) {
-    unittest.expect(o.autoExpunge, unittest.isTrue);
-    unittest.expect(o.enabled, unittest.isTrue);
-    unittest.expect(o.expungeBehavior, unittest.equals('foo'));
-    unittest.expect(o.maxFolderSize, unittest.equals(42));
+    unittest.expect(o.autoExpunge!, unittest.isTrue);
+    unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(
+      o.expungeBehavior!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxFolderSize!,
+      unittest.equals(42),
+    );
   }
   buildCounterImapSettings--;
 }
@@ -562,16 +667,43 @@ api.Label buildLabel() {
 void checkLabel(api.Label o) {
   buildCounterLabel++;
   if (buildCounterLabel < 3) {
-    checkLabelColor(o.color as api.LabelColor);
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.labelListVisibility, unittest.equals('foo'));
-    unittest.expect(o.messageListVisibility, unittest.equals('foo'));
-    unittest.expect(o.messagesTotal, unittest.equals(42));
-    unittest.expect(o.messagesUnread, unittest.equals(42));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.threadsTotal, unittest.equals(42));
-    unittest.expect(o.threadsUnread, unittest.equals(42));
-    unittest.expect(o.type, unittest.equals('foo'));
+    checkLabelColor(o.color! as api.LabelColor);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.labelListVisibility!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.messageListVisibility!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.messagesTotal!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.messagesUnread!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.threadsTotal!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.threadsUnread!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLabel--;
 }
@@ -591,8 +723,14 @@ api.LabelColor buildLabelColor() {
 void checkLabelColor(api.LabelColor o) {
   buildCounterLabelColor++;
   if (buildCounterLabelColor < 3) {
-    unittest.expect(o.backgroundColor, unittest.equals('foo'));
-    unittest.expect(o.textColor, unittest.equals('foo'));
+    unittest.expect(
+      o.backgroundColor!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.textColor!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLabelColor--;
 }
@@ -611,7 +749,10 @@ api.LanguageSettings buildLanguageSettings() {
 void checkLanguageSettings(api.LanguageSettings o) {
   buildCounterLanguageSettings++;
   if (buildCounterLanguageSettings < 3) {
-    unittest.expect(o.displayLanguage, unittest.equals('foo'));
+    unittest.expect(
+      o.displayLanguage!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLanguageSettings--;
 }
@@ -643,7 +784,7 @@ api.ListDelegatesResponse buildListDelegatesResponse() {
 void checkListDelegatesResponse(api.ListDelegatesResponse o) {
   buildCounterListDelegatesResponse++;
   if (buildCounterListDelegatesResponse < 3) {
-    checkUnnamed3632(o.delegates);
+    checkUnnamed3632(o.delegates!);
   }
   buildCounterListDelegatesResponse--;
 }
@@ -677,9 +818,15 @@ api.ListDraftsResponse buildListDraftsResponse() {
 void checkListDraftsResponse(api.ListDraftsResponse o) {
   buildCounterListDraftsResponse++;
   if (buildCounterListDraftsResponse < 3) {
-    checkUnnamed3633(o.drafts);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    unittest.expect(o.resultSizeEstimate, unittest.equals(42));
+    checkUnnamed3633(o.drafts!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resultSizeEstimate!,
+      unittest.equals(42),
+    );
   }
   buildCounterListDraftsResponse--;
 }
@@ -711,7 +858,7 @@ api.ListFiltersResponse buildListFiltersResponse() {
 void checkListFiltersResponse(api.ListFiltersResponse o) {
   buildCounterListFiltersResponse++;
   if (buildCounterListFiltersResponse < 3) {
-    checkUnnamed3634(o.filter);
+    checkUnnamed3634(o.filter!);
   }
   buildCounterListFiltersResponse--;
 }
@@ -744,7 +891,7 @@ void checkListForwardingAddressesResponse(
     api.ListForwardingAddressesResponse o) {
   buildCounterListForwardingAddressesResponse++;
   if (buildCounterListForwardingAddressesResponse < 3) {
-    checkUnnamed3635(o.forwardingAddresses);
+    checkUnnamed3635(o.forwardingAddresses!);
   }
   buildCounterListForwardingAddressesResponse--;
 }
@@ -778,9 +925,15 @@ api.ListHistoryResponse buildListHistoryResponse() {
 void checkListHistoryResponse(api.ListHistoryResponse o) {
   buildCounterListHistoryResponse++;
   if (buildCounterListHistoryResponse < 3) {
-    checkUnnamed3636(o.history);
-    unittest.expect(o.historyId, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed3636(o.history!);
+    unittest.expect(
+      o.historyId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterListHistoryResponse--;
 }
@@ -812,7 +965,7 @@ api.ListLabelsResponse buildListLabelsResponse() {
 void checkListLabelsResponse(api.ListLabelsResponse o) {
   buildCounterListLabelsResponse++;
   if (buildCounterListLabelsResponse < 3) {
-    checkUnnamed3637(o.labels);
+    checkUnnamed3637(o.labels!);
   }
   buildCounterListLabelsResponse--;
 }
@@ -846,9 +999,15 @@ api.ListMessagesResponse buildListMessagesResponse() {
 void checkListMessagesResponse(api.ListMessagesResponse o) {
   buildCounterListMessagesResponse++;
   if (buildCounterListMessagesResponse < 3) {
-    checkUnnamed3638(o.messages);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    unittest.expect(o.resultSizeEstimate, unittest.equals(42));
+    checkUnnamed3638(o.messages!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resultSizeEstimate!,
+      unittest.equals(42),
+    );
   }
   buildCounterListMessagesResponse--;
 }
@@ -880,7 +1039,7 @@ api.ListSendAsResponse buildListSendAsResponse() {
 void checkListSendAsResponse(api.ListSendAsResponse o) {
   buildCounterListSendAsResponse++;
   if (buildCounterListSendAsResponse < 3) {
-    checkUnnamed3639(o.sendAs);
+    checkUnnamed3639(o.sendAs!);
   }
   buildCounterListSendAsResponse--;
 }
@@ -912,7 +1071,7 @@ api.ListSmimeInfoResponse buildListSmimeInfoResponse() {
 void checkListSmimeInfoResponse(api.ListSmimeInfoResponse o) {
   buildCounterListSmimeInfoResponse++;
   if (buildCounterListSmimeInfoResponse < 3) {
-    checkUnnamed3640(o.smimeInfo);
+    checkUnnamed3640(o.smimeInfo!);
   }
   buildCounterListSmimeInfoResponse--;
 }
@@ -946,9 +1105,15 @@ api.ListThreadsResponse buildListThreadsResponse() {
 void checkListThreadsResponse(api.ListThreadsResponse o) {
   buildCounterListThreadsResponse++;
   if (buildCounterListThreadsResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    unittest.expect(o.resultSizeEstimate, unittest.equals(42));
-    checkUnnamed3641(o.threads);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resultSizeEstimate!,
+      unittest.equals(42),
+    );
+    checkUnnamed3641(o.threads!);
   }
   buildCounterListThreadsResponse--;
 }
@@ -962,8 +1127,14 @@ core.List<core.String> buildUnnamed3642() {
 
 void checkUnnamed3642(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterMessage = 0;
@@ -988,15 +1159,36 @@ api.Message buildMessage() {
 void checkMessage(api.Message o) {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
-    unittest.expect(o.historyId, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.internalDate, unittest.equals('foo'));
-    checkUnnamed3642(o.labelIds);
-    checkMessagePart(o.payload as api.MessagePart);
-    unittest.expect(o.raw, unittest.equals('foo'));
-    unittest.expect(o.sizeEstimate, unittest.equals(42));
-    unittest.expect(o.snippet, unittest.equals('foo'));
-    unittest.expect(o.threadId, unittest.equals('foo'));
+    unittest.expect(
+      o.historyId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.internalDate!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3642(o.labelIds!);
+    checkMessagePart(o.payload! as api.MessagePart);
+    unittest.expect(
+      o.raw!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sizeEstimate!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.snippet!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.threadId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterMessage--;
 }
@@ -1046,12 +1238,21 @@ api.MessagePart buildMessagePart() {
 void checkMessagePart(api.MessagePart o) {
   buildCounterMessagePart++;
   if (buildCounterMessagePart < 3) {
-    checkMessagePartBody(o.body as api.MessagePartBody);
-    unittest.expect(o.filename, unittest.equals('foo'));
-    checkUnnamed3643(o.headers);
-    unittest.expect(o.mimeType, unittest.equals('foo'));
-    unittest.expect(o.partId, unittest.equals('foo'));
-    checkUnnamed3644(o.parts);
+    checkMessagePartBody(o.body! as api.MessagePartBody);
+    unittest.expect(
+      o.filename!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3643(o.headers!);
+    unittest.expect(
+      o.mimeType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.partId!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3644(o.parts!);
   }
   buildCounterMessagePart--;
 }
@@ -1072,9 +1273,18 @@ api.MessagePartBody buildMessagePartBody() {
 void checkMessagePartBody(api.MessagePartBody o) {
   buildCounterMessagePartBody++;
   if (buildCounterMessagePartBody < 3) {
-    unittest.expect(o.attachmentId, unittest.equals('foo'));
-    unittest.expect(o.data, unittest.equals('foo'));
-    unittest.expect(o.size, unittest.equals(42));
+    unittest.expect(
+      o.attachmentId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.data!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.size!,
+      unittest.equals(42),
+    );
   }
   buildCounterMessagePartBody--;
 }
@@ -1094,8 +1304,14 @@ api.MessagePartHeader buildMessagePartHeader() {
 void checkMessagePartHeader(api.MessagePartHeader o) {
   buildCounterMessagePartHeader++;
   if (buildCounterMessagePartHeader < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterMessagePartHeader--;
 }
@@ -1109,8 +1325,14 @@ core.List<core.String> buildUnnamed3645() {
 
 void checkUnnamed3645(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed3646() {
@@ -1122,8 +1344,14 @@ core.List<core.String> buildUnnamed3646() {
 
 void checkUnnamed3646(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterModifyMessageRequest = 0;
@@ -1141,8 +1369,8 @@ api.ModifyMessageRequest buildModifyMessageRequest() {
 void checkModifyMessageRequest(api.ModifyMessageRequest o) {
   buildCounterModifyMessageRequest++;
   if (buildCounterModifyMessageRequest < 3) {
-    checkUnnamed3645(o.addLabelIds);
-    checkUnnamed3646(o.removeLabelIds);
+    checkUnnamed3645(o.addLabelIds!);
+    checkUnnamed3646(o.removeLabelIds!);
   }
   buildCounterModifyMessageRequest--;
 }
@@ -1156,8 +1384,14 @@ core.List<core.String> buildUnnamed3647() {
 
 void checkUnnamed3647(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed3648() {
@@ -1169,8 +1403,14 @@ core.List<core.String> buildUnnamed3648() {
 
 void checkUnnamed3648(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterModifyThreadRequest = 0;
@@ -1188,8 +1428,8 @@ api.ModifyThreadRequest buildModifyThreadRequest() {
 void checkModifyThreadRequest(api.ModifyThreadRequest o) {
   buildCounterModifyThreadRequest++;
   if (buildCounterModifyThreadRequest < 3) {
-    checkUnnamed3647(o.addLabelIds);
-    checkUnnamed3648(o.removeLabelIds);
+    checkUnnamed3647(o.addLabelIds!);
+    checkUnnamed3648(o.removeLabelIds!);
   }
   buildCounterModifyThreadRequest--;
 }
@@ -1209,8 +1449,14 @@ api.PopSettings buildPopSettings() {
 void checkPopSettings(api.PopSettings o) {
   buildCounterPopSettings++;
   if (buildCounterPopSettings < 3) {
-    unittest.expect(o.accessWindow, unittest.equals('foo'));
-    unittest.expect(o.disposition, unittest.equals('foo'));
+    unittest.expect(
+      o.accessWindow!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.disposition!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPopSettings--;
 }
@@ -1232,10 +1478,22 @@ api.Profile buildProfile() {
 void checkProfile(api.Profile o) {
   buildCounterProfile++;
   if (buildCounterProfile < 3) {
-    unittest.expect(o.emailAddress, unittest.equals('foo'));
-    unittest.expect(o.historyId, unittest.equals('foo'));
-    unittest.expect(o.messagesTotal, unittest.equals(42));
-    unittest.expect(o.threadsTotal, unittest.equals(42));
+    unittest.expect(
+      o.emailAddress!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.historyId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.messagesTotal!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.threadsTotal!,
+      unittest.equals(42),
+    );
   }
   buildCounterProfile--;
 }
@@ -1262,15 +1520,30 @@ api.SendAs buildSendAs() {
 void checkSendAs(api.SendAs o) {
   buildCounterSendAs++;
   if (buildCounterSendAs < 3) {
-    unittest.expect(o.displayName, unittest.equals('foo'));
-    unittest.expect(o.isDefault, unittest.isTrue);
-    unittest.expect(o.isPrimary, unittest.isTrue);
-    unittest.expect(o.replyToAddress, unittest.equals('foo'));
-    unittest.expect(o.sendAsEmail, unittest.equals('foo'));
-    unittest.expect(o.signature, unittest.equals('foo'));
-    checkSmtpMsa(o.smtpMsa as api.SmtpMsa);
-    unittest.expect(o.treatAsAlias, unittest.isTrue);
-    unittest.expect(o.verificationStatus, unittest.equals('foo'));
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.isDefault!, unittest.isTrue);
+    unittest.expect(o.isPrimary!, unittest.isTrue);
+    unittest.expect(
+      o.replyToAddress!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sendAsEmail!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.signature!,
+      unittest.equals('foo'),
+    );
+    checkSmtpMsa(o.smtpMsa! as api.SmtpMsa);
+    unittest.expect(o.treatAsAlias!, unittest.isTrue);
+    unittest.expect(
+      o.verificationStatus!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSendAs--;
 }
@@ -1295,13 +1568,31 @@ api.SmimeInfo buildSmimeInfo() {
 void checkSmimeInfo(api.SmimeInfo o) {
   buildCounterSmimeInfo++;
   if (buildCounterSmimeInfo < 3) {
-    unittest.expect(o.encryptedKeyPassword, unittest.equals('foo'));
-    unittest.expect(o.expiration, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.isDefault, unittest.isTrue);
-    unittest.expect(o.issuerCn, unittest.equals('foo'));
-    unittest.expect(o.pem, unittest.equals('foo'));
-    unittest.expect(o.pkcs12, unittest.equals('foo'));
+    unittest.expect(
+      o.encryptedKeyPassword!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expiration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.isDefault!, unittest.isTrue);
+    unittest.expect(
+      o.issuerCn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pem!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pkcs12!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSmimeInfo--;
 }
@@ -1324,11 +1615,26 @@ api.SmtpMsa buildSmtpMsa() {
 void checkSmtpMsa(api.SmtpMsa o) {
   buildCounterSmtpMsa++;
   if (buildCounterSmtpMsa < 3) {
-    unittest.expect(o.host, unittest.equals('foo'));
-    unittest.expect(o.password, unittest.equals('foo'));
-    unittest.expect(o.port, unittest.equals(42));
-    unittest.expect(o.securityMode, unittest.equals('foo'));
-    unittest.expect(o.username, unittest.equals('foo'));
+    unittest.expect(
+      o.host!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.password!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.port!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.securityMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.username!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSmtpMsa--;
 }
@@ -1363,10 +1669,19 @@ api.Thread buildThread() {
 void checkThread(api.Thread o) {
   buildCounterThread++;
   if (buildCounterThread < 3) {
-    unittest.expect(o.historyId, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed3649(o.messages);
-    unittest.expect(o.snippet, unittest.equals('foo'));
+    unittest.expect(
+      o.historyId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3649(o.messages!);
+    unittest.expect(
+      o.snippet!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterThread--;
 }
@@ -1392,14 +1707,29 @@ api.VacationSettings buildVacationSettings() {
 void checkVacationSettings(api.VacationSettings o) {
   buildCounterVacationSettings++;
   if (buildCounterVacationSettings < 3) {
-    unittest.expect(o.enableAutoReply, unittest.isTrue);
-    unittest.expect(o.endTime, unittest.equals('foo'));
-    unittest.expect(o.responseBodyHtml, unittest.equals('foo'));
-    unittest.expect(o.responseBodyPlainText, unittest.equals('foo'));
-    unittest.expect(o.responseSubject, unittest.equals('foo'));
-    unittest.expect(o.restrictToContacts, unittest.isTrue);
-    unittest.expect(o.restrictToDomain, unittest.isTrue);
-    unittest.expect(o.startTime, unittest.equals('foo'));
+    unittest.expect(o.enableAutoReply!, unittest.isTrue);
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.responseBodyHtml!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.responseBodyPlainText!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.responseSubject!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.restrictToContacts!, unittest.isTrue);
+    unittest.expect(o.restrictToDomain!, unittest.isTrue);
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterVacationSettings--;
 }
@@ -1413,8 +1743,14 @@ core.List<core.String> buildUnnamed3650() {
 
 void checkUnnamed3650(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterWatchRequest = 0;
@@ -1433,9 +1769,15 @@ api.WatchRequest buildWatchRequest() {
 void checkWatchRequest(api.WatchRequest o) {
   buildCounterWatchRequest++;
   if (buildCounterWatchRequest < 3) {
-    unittest.expect(o.labelFilterAction, unittest.equals('foo'));
-    checkUnnamed3650(o.labelIds);
-    unittest.expect(o.topicName, unittest.equals('foo'));
+    unittest.expect(
+      o.labelFilterAction!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed3650(o.labelIds!);
+    unittest.expect(
+      o.topicName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterWatchRequest--;
 }
@@ -1455,8 +1797,14 @@ api.WatchResponse buildWatchResponse() {
 void checkWatchResponse(api.WatchResponse o) {
   buildCounterWatchResponse++;
   if (buildCounterWatchResponse < 3) {
-    unittest.expect(o.expiration, unittest.equals('foo'));
-    unittest.expect(o.historyId, unittest.equals('foo'));
+    unittest.expect(
+      o.expiration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.historyId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterWatchResponse--;
 }
@@ -1470,8 +1818,14 @@ core.List<core.String> buildUnnamed3651() {
 
 void checkUnnamed3651(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed3652() {
@@ -1483,8 +1837,14 @@ core.List<core.String> buildUnnamed3652() {
 
 void checkUnnamed3652(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed3653() {
@@ -1496,8 +1856,14 @@ core.List<core.String> buildUnnamed3653() {
 
 void checkUnnamed3653(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed3654() {
@@ -1509,8 +1875,14 @@ core.List<core.String> buildUnnamed3654() {
 
 void checkUnnamed3654(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed3655() {
@@ -1522,8 +1894,14 @@ core.List<core.String> buildUnnamed3655() {
 
 void checkUnnamed3655(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -1884,19 +2262,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/profile', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/profile"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/profile"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -1914,7 +2301,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1940,19 +2330,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/stop', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/stop"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/stop"),
+        );
         pathOffset += 5;
 
         var query = (req.url).query;
@@ -1970,7 +2369,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -1999,19 +2401,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/watch', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("/watch"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 6),
+          unittest.equals("/watch"),
+        );
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -2029,7 +2440,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2065,19 +2479,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/drafts', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("/drafts"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals("/drafts"),
+        );
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -2095,7 +2518,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2122,23 +2548,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/drafts/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/drafts/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/drafts/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2155,7 +2593,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2181,23 +2622,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/drafts/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/drafts/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/drafts/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2214,8 +2667,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["format"]!.first,
+          unittest.equals(arg_format),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2245,19 +2704,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/drafts', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("/drafts"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals("/drafts"),
+        );
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -2275,14 +2743,26 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["includeSpamTrash"].first,
-            unittest.equals("$arg_includeSpamTrash"));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["includeSpamTrash"]!.first,
+          unittest.equals("$arg_includeSpamTrash"),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["q"]!.first,
+          unittest.equals(arg_q),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2321,19 +2801,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/drafts/send', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("/drafts/send"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("/drafts/send"),
+        );
         pathOffset += 12;
 
         var query = (req.url).query;
@@ -2351,7 +2840,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2386,23 +2878,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/drafts/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/drafts/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/drafts/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2419,7 +2923,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2452,19 +2959,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/history', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/history"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/history"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -2483,16 +2999,29 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["historyTypes"], unittest.equals(arg_historyTypes));
+          queryMap["historyTypes"]!,
+          unittest.equals(arg_historyTypes),
+        );
         unittest.expect(
-            queryMap["labelId"].first, unittest.equals(arg_labelId));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+          queryMap["labelId"]!.first,
+          unittest.equals(arg_labelId),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["startHistoryId"].first,
-            unittest.equals(arg_startHistoryId));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["startHistoryId"]!.first,
+          unittest.equals(arg_startHistoryId),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2531,19 +3060,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/labels', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("/labels"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals("/labels"),
+        );
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -2561,7 +3099,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2588,23 +3129,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/labels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/labels/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/labels/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2621,7 +3174,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2646,23 +3202,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/labels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/labels/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/labels/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2679,7 +3247,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2705,19 +3276,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/labels', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("/labels"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals("/labels"),
+        );
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -2735,7 +3315,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2767,23 +3350,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/labels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/labels/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/labels/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2800,7 +3395,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2832,23 +3430,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/labels/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/labels/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/labels/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2865,7 +3475,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2898,19 +3511,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/messages/batchDelete', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("/messages/batchDelete"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals("/messages/batchDelete"),
+        );
         pathOffset += 21;
 
         var query = (req.url).query;
@@ -2928,7 +3550,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -2957,19 +3582,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/messages/batchModify', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 21),
-            unittest.equals("/messages/batchModify"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals("/messages/batchModify"),
+        );
         pathOffset += 21;
 
         var query = (req.url).query;
@@ -2987,7 +3621,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3012,23 +3649,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/messages/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/messages/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/messages/"),
+        );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3045,7 +3694,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3072,23 +3724,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/messages/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/messages/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/messages/"),
+        );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3105,10 +3769,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
         unittest.expect(
-            queryMap["metadataHeaders"], unittest.equals(arg_metadataHeaders));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["format"]!.first,
+          unittest.equals(arg_format),
+        );
+        unittest.expect(
+          queryMap["metadataHeaders"]!,
+          unittest.equals(arg_metadataHeaders),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3149,19 +3821,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/messages/import', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 16),
-            unittest.equals("/messages/import"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals("/messages/import"),
+        );
         pathOffset += 16;
 
         var query = (req.url).query;
@@ -3180,14 +3861,25 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["deleted"].first, unittest.equals("$arg_deleted"));
-        unittest.expect(queryMap["internalDateSource"].first,
-            unittest.equals(arg_internalDateSource));
-        unittest.expect(queryMap["neverMarkSpam"].first,
-            unittest.equals("$arg_neverMarkSpam"));
-        unittest.expect(queryMap["processForCalendar"].first,
-            unittest.equals("$arg_processForCalendar"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["deleted"]!.first,
+          unittest.equals("$arg_deleted"),
+        );
+        unittest.expect(
+          queryMap["internalDateSource"]!.first,
+          unittest.equals(arg_internalDateSource),
+        );
+        unittest.expect(
+          queryMap["neverMarkSpam"]!.first,
+          unittest.equals("$arg_neverMarkSpam"),
+        );
+        unittest.expect(
+          queryMap["processForCalendar"]!.first,
+          unittest.equals("$arg_processForCalendar"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3228,19 +3920,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/messages', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("/messages"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("/messages"),
+        );
         pathOffset += 9;
 
         var query = (req.url).query;
@@ -3259,10 +3960,17 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["deleted"].first, unittest.equals("$arg_deleted"));
-        unittest.expect(queryMap["internalDateSource"].first,
-            unittest.equals(arg_internalDateSource));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["deleted"]!.first,
+          unittest.equals("$arg_deleted"),
+        );
+        unittest.expect(
+          queryMap["internalDateSource"]!.first,
+          unittest.equals(arg_internalDateSource),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3296,19 +4004,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/messages', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("/messages"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("/messages"),
+        );
         pathOffset += 9;
 
         var query = (req.url).query;
@@ -3326,15 +4043,30 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["includeSpamTrash"].first,
-            unittest.equals("$arg_includeSpamTrash"));
-        unittest.expect(queryMap["labelIds"], unittest.equals(arg_labelIds));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["includeSpamTrash"]!.first,
+          unittest.equals("$arg_includeSpamTrash"),
+        );
+        unittest.expect(
+          queryMap["labelIds"]!,
+          unittest.equals(arg_labelIds),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["q"]!.first,
+          unittest.equals(arg_q),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3372,28 +4104,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/messages/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/messages/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/messages/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/modify', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("/modify"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals("/modify"),
+        );
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -3411,7 +4157,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3445,19 +4194,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/messages/send', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14),
-            unittest.equals("/messages/send"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 14),
+          unittest.equals("/messages/send"),
+        );
         pathOffset += 14;
 
         var query = (req.url).query;
@@ -3475,7 +4233,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3502,28 +4263,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/messages/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/messages/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/messages/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/trash', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("/trash"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 6),
+          unittest.equals("/trash"),
+        );
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -3541,7 +4316,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3568,28 +4346,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/messages/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/messages/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/messages/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/untrash', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/untrash"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/untrash"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -3607,7 +4399,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3637,32 +4432,49 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/messages/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/messages/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/messages/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/attachments/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_messageId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("/attachments/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_messageId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals("/attachments/"),
+        );
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3679,7 +4491,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3707,19 +4522,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/autoForwarding', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 24),
-            unittest.equals("/settings/autoForwarding"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 24),
+          unittest.equals("/settings/autoForwarding"),
+        );
         pathOffset += 24;
 
         var query = (req.url).query;
@@ -3737,7 +4561,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3763,19 +4590,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/imap', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14),
-            unittest.equals("/settings/imap"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 14),
+          unittest.equals("/settings/imap"),
+        );
         pathOffset += 14;
 
         var query = (req.url).query;
@@ -3793,7 +4629,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3819,19 +4658,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/language', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("/settings/language"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("/settings/language"),
+        );
         pathOffset += 18;
 
         var query = (req.url).query;
@@ -3849,7 +4697,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3875,19 +4726,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/pop', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("/settings/pop"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals("/settings/pop"),
+        );
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -3905,7 +4765,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3931,19 +4794,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/vacation', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("/settings/vacation"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("/settings/vacation"),
+        );
         pathOffset += 18;
 
         var query = (req.url).query;
@@ -3961,7 +4833,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -3992,19 +4867,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/autoForwarding', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 24),
-            unittest.equals("/settings/autoForwarding"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 24),
+          unittest.equals("/settings/autoForwarding"),
+        );
         pathOffset += 24;
 
         var query = (req.url).query;
@@ -4022,7 +4906,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4053,19 +4940,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/imap', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14),
-            unittest.equals("/settings/imap"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 14),
+          unittest.equals("/settings/imap"),
+        );
         pathOffset += 14;
 
         var query = (req.url).query;
@@ -4083,7 +4979,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4114,19 +5013,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/language', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("/settings/language"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("/settings/language"),
+        );
         pathOffset += 18;
 
         var query = (req.url).query;
@@ -4144,7 +5052,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4175,19 +5086,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/pop', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("/settings/pop"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 13),
+          unittest.equals("/settings/pop"),
+        );
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -4205,7 +5125,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4236,19 +5159,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/vacation', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("/settings/vacation"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("/settings/vacation"),
+        );
         pathOffset += 18;
 
         var query = (req.url).query;
@@ -4266,7 +5198,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4299,19 +5234,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/delegates', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("/settings/delegates"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 19),
+          unittest.equals("/settings/delegates"),
+        );
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -4329,7 +5273,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4356,23 +5303,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/delegates/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/settings/delegates/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/settings/delegates/"),
+        );
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_delegateEmail'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_delegateEmail'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4389,7 +5348,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4414,23 +5376,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/delegates/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20),
-            unittest.equals("/settings/delegates/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals("/settings/delegates/"),
+        );
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_delegateEmail'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_delegateEmail'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4447,7 +5421,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4473,19 +5450,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/delegates', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("/settings/delegates"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 19),
+          unittest.equals("/settings/delegates"),
+        );
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -4503,7 +5489,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4536,19 +5525,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/filters', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("/settings/filters"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("/settings/filters"),
+        );
         pathOffset += 17;
 
         var query = (req.url).query;
@@ -4566,7 +5564,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4593,23 +5594,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/filters/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("/settings/filters/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("/settings/filters/"),
+        );
         pathOffset += 18;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4626,7 +5639,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4651,23 +5667,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/filters/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("/settings/filters/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("/settings/filters/"),
+        );
         pathOffset += 18;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4684,7 +5712,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4710,19 +5741,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/filters', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("/settings/filters"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("/settings/filters"),
+        );
         pathOffset += 17;
 
         var query = (req.url).query;
@@ -4740,7 +5780,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4773,19 +5816,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/forwardingAddresses', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 29),
-            unittest.equals("/settings/forwardingAddresses"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 29),
+          unittest.equals("/settings/forwardingAddresses"),
+        );
         pathOffset += 29;
 
         var query = (req.url).query;
@@ -4803,7 +5855,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4830,23 +5885,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/forwardingAddresses/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("/settings/forwardingAddresses/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("/settings/forwardingAddresses/"),
+        );
         pathOffset += 30;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_forwardingEmail'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_forwardingEmail'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4863,7 +5930,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4888,23 +5958,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/forwardingAddresses/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("/settings/forwardingAddresses/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 30),
+          unittest.equals("/settings/forwardingAddresses/"),
+        );
         pathOffset += 30;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_forwardingEmail'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_forwardingEmail'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4921,7 +6003,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -4947,19 +6032,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/forwardingAddresses', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 29),
-            unittest.equals("/settings/forwardingAddresses"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 29),
+          unittest.equals("/settings/forwardingAddresses"),
+        );
         pathOffset += 29;
 
         var query = (req.url).query;
@@ -4977,7 +6071,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5011,19 +6108,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 16),
-            unittest.equals("/settings/sendAs"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals("/settings/sendAs"),
+        );
         pathOffset += 16;
 
         var query = (req.url).query;
@@ -5041,7 +6147,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5068,23 +6177,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("/settings/sendAs/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("/settings/sendAs/"),
+        );
         pathOffset += 17;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_sendAsEmail'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sendAsEmail'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5101,7 +6222,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5126,23 +6250,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("/settings/sendAs/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("/settings/sendAs/"),
+        );
         pathOffset += 17;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_sendAsEmail'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sendAsEmail'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5159,7 +6295,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5185,19 +6324,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 16),
-            unittest.equals("/settings/sendAs"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 16),
+          unittest.equals("/settings/sendAs"),
+        );
         pathOffset += 16;
 
         var query = (req.url).query;
@@ -5215,7 +6363,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5247,23 +6398,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("/settings/sendAs/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("/settings/sendAs/"),
+        );
         pathOffset += 17;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_sendAsEmail'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sendAsEmail'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5280,7 +6443,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5312,23 +6478,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("/settings/sendAs/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("/settings/sendAs/"),
+        );
         pathOffset += 17;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_sendAsEmail'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sendAsEmail'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5345,7 +6523,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5373,28 +6554,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("/settings/sendAs/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("/settings/sendAs/"),
+        );
         pathOffset += 17;
         index = path.indexOf('/verify', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_sendAsEmail'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("/verify"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sendAsEmail'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals("/verify"),
+        );
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -5412,7 +6607,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5440,32 +6638,49 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("/settings/sendAs/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("/settings/sendAs/"),
+        );
         pathOffset += 17;
         index = path.indexOf('/smimeInfo/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_sendAsEmail'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("/smimeInfo/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sendAsEmail'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("/smimeInfo/"),
+        );
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5482,7 +6697,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5508,32 +6726,49 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("/settings/sendAs/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("/settings/sendAs/"),
+        );
         pathOffset += 17;
         index = path.indexOf('/smimeInfo/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_sendAsEmail'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("/smimeInfo/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sendAsEmail'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("/smimeInfo/"),
+        );
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5550,7 +6785,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5582,28 +6820,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("/settings/sendAs/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("/settings/sendAs/"),
+        );
         pathOffset += 17;
         index = path.indexOf('/smimeInfo', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_sendAsEmail'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/smimeInfo"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sendAsEmail'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/smimeInfo"),
+        );
         pathOffset += 10;
 
         var query = (req.url).query;
@@ -5621,7 +6873,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5649,28 +6904,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("/settings/sendAs/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("/settings/sendAs/"),
+        );
         pathOffset += 17;
         index = path.indexOf('/smimeInfo', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_sendAsEmail'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/smimeInfo"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sendAsEmail'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/smimeInfo"),
+        );
         pathOffset += 10;
 
         var query = (req.url).query;
@@ -5688,7 +6957,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5716,37 +6988,56 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/settings/sendAs/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("/settings/sendAs/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("/settings/sendAs/"),
+        );
         pathOffset += 17;
         index = path.indexOf('/smimeInfo/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_sendAsEmail'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("/smimeInfo/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sendAsEmail'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("/smimeInfo/"),
+        );
         pathOffset += 11;
         index = path.indexOf('/setDefault', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11),
-            unittest.equals("/setDefault"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals("/setDefault"),
+        );
         pathOffset += 11;
 
         var query = (req.url).query;
@@ -5764,7 +7055,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5791,23 +7085,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/threads/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("/threads/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("/threads/"),
+        );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5824,7 +7130,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5851,23 +7160,35 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/threads/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("/threads/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("/threads/"),
+        );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5884,10 +7205,18 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["format"].first, unittest.equals(arg_format));
         unittest.expect(
-            queryMap["metadataHeaders"], unittest.equals(arg_metadataHeaders));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["format"]!.first,
+          unittest.equals(arg_format),
+        );
+        unittest.expect(
+          queryMap["metadataHeaders"]!,
+          unittest.equals(arg_metadataHeaders),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5921,19 +7250,28 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/threads', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/threads"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/threads"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -5951,15 +7289,30 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["includeSpamTrash"].first,
-            unittest.equals("$arg_includeSpamTrash"));
-        unittest.expect(queryMap["labelIds"], unittest.equals(arg_labelIds));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["includeSpamTrash"]!.first,
+          unittest.equals("$arg_includeSpamTrash"),
+        );
+        unittest.expect(
+          queryMap["labelIds"]!,
+          unittest.equals(arg_labelIds),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["q"]!.first,
+          unittest.equals(arg_q),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -5997,28 +7350,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/threads/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("/threads/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("/threads/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/modify', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("/modify"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals("/modify"),
+        );
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -6036,7 +7403,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -6063,28 +7433,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/threads/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("/threads/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("/threads/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/trash', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("/trash"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 6),
+          unittest.equals("/trash"),
+        );
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -6102,7 +7486,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -6129,28 +7516,42 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("gmail/v1/users/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("gmail/v1/users/"),
+        );
         pathOffset += 15;
         index = path.indexOf('/threads/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_userId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("/threads/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_userId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("/threads/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/untrash', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_id'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/untrash"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_id'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/untrash"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -6168,7 +7569,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

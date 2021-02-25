@@ -47,13 +47,31 @@ api.Tokeninfo buildTokeninfo() {
 void checkTokeninfo(api.Tokeninfo o) {
   buildCounterTokeninfo++;
   if (buildCounterTokeninfo < 3) {
-    unittest.expect(o.audience, unittest.equals('foo'));
-    unittest.expect(o.email, unittest.equals('foo'));
-    unittest.expect(o.expiresIn, unittest.equals(42));
-    unittest.expect(o.issuedTo, unittest.equals('foo'));
-    unittest.expect(o.scope, unittest.equals('foo'));
-    unittest.expect(o.userId, unittest.equals('foo'));
-    unittest.expect(o.verifiedEmail, unittest.isTrue);
+    unittest.expect(
+      o.audience!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.email!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expiresIn!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.issuedTo!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.scope!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.userId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.verifiedEmail!, unittest.isTrue);
   }
   buildCounterTokeninfo--;
 }
@@ -82,17 +100,47 @@ api.Userinfo buildUserinfo() {
 void checkUserinfo(api.Userinfo o) {
   buildCounterUserinfo++;
   if (buildCounterUserinfo < 3) {
-    unittest.expect(o.email, unittest.equals('foo'));
-    unittest.expect(o.familyName, unittest.equals('foo'));
-    unittest.expect(o.gender, unittest.equals('foo'));
-    unittest.expect(o.givenName, unittest.equals('foo'));
-    unittest.expect(o.hd, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.link, unittest.equals('foo'));
-    unittest.expect(o.locale, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.picture, unittest.equals('foo'));
-    unittest.expect(o.verifiedEmail, unittest.isTrue);
+    unittest.expect(
+      o.email!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.familyName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gender!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.givenName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hd!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.link!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.locale!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.picture!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.verifiedEmail!, unittest.isTrue);
   }
   buildCounterUserinfo--;
 }
@@ -127,10 +175,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("oauth2/v2/tokeninfo"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 19),
+          unittest.equals("oauth2/v2/tokeninfo"),
+        );
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -149,10 +201,17 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["access_token"].first, unittest.equals(arg_accessToken));
+          queryMap["access_token"]!.first,
+          unittest.equals(arg_accessToken),
+        );
         unittest.expect(
-            queryMap["id_token"].first, unittest.equals(arg_idToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["id_token"]!.first,
+          unittest.equals(arg_idToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -182,10 +241,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18),
-            unittest.equals("oauth2/v2/userinfo"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals("oauth2/v2/userinfo"),
+        );
         pathOffset += 18;
 
         var query = (req.url).query;
@@ -203,7 +266,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -228,10 +294,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14),
-            unittest.equals("userinfo/v2/me"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 14),
+          unittest.equals("userinfo/v2/me"),
+        );
         pathOffset += 14;
 
         var query = (req.url).query;
@@ -249,7 +319,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

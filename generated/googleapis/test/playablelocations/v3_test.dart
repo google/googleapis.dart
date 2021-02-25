@@ -45,9 +45,18 @@ void checkGoogleMapsPlayablelocationsV3Impression(
     api.GoogleMapsPlayablelocationsV3Impression o) {
   buildCounterGoogleMapsPlayablelocationsV3Impression++;
   if (buildCounterGoogleMapsPlayablelocationsV3Impression < 3) {
-    unittest.expect(o.gameObjectType, unittest.equals(42));
-    unittest.expect(o.impressionType, unittest.equals('foo'));
-    unittest.expect(o.locationName, unittest.equals('foo'));
+    unittest.expect(
+      o.gameObjectType!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.impressionType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.locationName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleMapsPlayablelocationsV3Impression--;
 }
@@ -87,9 +96,12 @@ void checkGoogleMapsPlayablelocationsV3LogImpressionsRequest(
   buildCounterGoogleMapsPlayablelocationsV3LogImpressionsRequest++;
   if (buildCounterGoogleMapsPlayablelocationsV3LogImpressionsRequest < 3) {
     checkGoogleMapsUnityClientInfo(
-        o.clientInfo as api.GoogleMapsUnityClientInfo);
-    checkUnnamed4021(o.impressions);
-    unittest.expect(o.requestId, unittest.equals('foo'));
+        o.clientInfo! as api.GoogleMapsUnityClientInfo);
+    checkUnnamed4021(o.impressions!);
+    unittest.expect(
+      o.requestId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleMapsPlayablelocationsV3LogImpressionsRequest--;
 }
@@ -146,9 +158,12 @@ void checkGoogleMapsPlayablelocationsV3LogPlayerReportsRequest(
   buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsRequest++;
   if (buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsRequest < 3) {
     checkGoogleMapsUnityClientInfo(
-        o.clientInfo as api.GoogleMapsUnityClientInfo);
-    checkUnnamed4022(o.playerReports);
-    unittest.expect(o.requestId, unittest.equals('foo'));
+        o.clientInfo! as api.GoogleMapsUnityClientInfo);
+    checkUnnamed4022(o.playerReports!);
+    unittest.expect(
+      o.requestId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleMapsPlayablelocationsV3LogPlayerReportsRequest--;
 }
@@ -179,8 +194,14 @@ core.List<core.String> buildUnnamed4023() {
 
 void checkUnnamed4023(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleMapsPlayablelocationsV3PlayerReport = 0;
@@ -202,10 +223,19 @@ void checkGoogleMapsPlayablelocationsV3PlayerReport(
     api.GoogleMapsPlayablelocationsV3PlayerReport o) {
   buildCounterGoogleMapsPlayablelocationsV3PlayerReport++;
   if (buildCounterGoogleMapsPlayablelocationsV3PlayerReport < 3) {
-    unittest.expect(o.languageCode, unittest.equals('foo'));
-    unittest.expect(o.locationName, unittest.equals('foo'));
-    unittest.expect(o.reasonDetails, unittest.equals('foo'));
-    checkUnnamed4023(o.reasons);
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.locationName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reasonDetails!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed4023(o.reasons!);
   }
   buildCounterGoogleMapsPlayablelocationsV3PlayerReport--;
 }
@@ -226,7 +256,10 @@ void checkGoogleMapsPlayablelocationsV3SampleAreaFilter(
     api.GoogleMapsPlayablelocationsV3SampleAreaFilter o) {
   buildCounterGoogleMapsPlayablelocationsV3SampleAreaFilter++;
   if (buildCounterGoogleMapsPlayablelocationsV3SampleAreaFilter < 3) {
-    unittest.expect(o.s2CellId, unittest.equals('foo'));
+    unittest.expect(
+      o.s2CellId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleMapsPlayablelocationsV3SampleAreaFilter--;
 }
@@ -249,10 +282,16 @@ void checkGoogleMapsPlayablelocationsV3SampleCriterion(
     api.GoogleMapsPlayablelocationsV3SampleCriterion o) {
   buildCounterGoogleMapsPlayablelocationsV3SampleCriterion++;
   if (buildCounterGoogleMapsPlayablelocationsV3SampleCriterion < 3) {
-    unittest.expect(o.fieldsToReturn, unittest.equals('foo'));
+    unittest.expect(
+      o.fieldsToReturn!,
+      unittest.equals('foo'),
+    );
     checkGoogleMapsPlayablelocationsV3SampleFilter(
-        o.filter as api.GoogleMapsPlayablelocationsV3SampleFilter);
-    unittest.expect(o.gameObjectType, unittest.equals(42));
+        o.filter! as api.GoogleMapsPlayablelocationsV3SampleFilter);
+    unittest.expect(
+      o.gameObjectType!,
+      unittest.equals(42),
+    );
   }
   buildCounterGoogleMapsPlayablelocationsV3SampleCriterion--;
 }
@@ -266,8 +305,14 @@ core.List<core.String> buildUnnamed4024() {
 
 void checkUnnamed4024(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleMapsPlayablelocationsV3SampleFilter = 0;
@@ -288,10 +333,13 @@ void checkGoogleMapsPlayablelocationsV3SampleFilter(
     api.GoogleMapsPlayablelocationsV3SampleFilter o) {
   buildCounterGoogleMapsPlayablelocationsV3SampleFilter++;
   if (buildCounterGoogleMapsPlayablelocationsV3SampleFilter < 3) {
-    checkUnnamed4024(o.includedTypes);
-    unittest.expect(o.maxLocationCount, unittest.equals(42));
+    checkUnnamed4024(o.includedTypes!);
+    unittest.expect(
+      o.maxLocationCount!,
+      unittest.equals(42),
+    );
     checkGoogleMapsPlayablelocationsV3SampleSpacingOptions(
-        o.spacing as api.GoogleMapsPlayablelocationsV3SampleSpacingOptions);
+        o.spacing! as api.GoogleMapsPlayablelocationsV3SampleSpacingOptions);
   }
   buildCounterGoogleMapsPlayablelocationsV3SampleFilter--;
 }
@@ -305,8 +353,14 @@ core.List<core.String> buildUnnamed4025() {
 
 void checkUnnamed4025(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocation = 0;
@@ -330,12 +384,21 @@ void checkGoogleMapsPlayablelocationsV3SamplePlayableLocation(
     api.GoogleMapsPlayablelocationsV3SamplePlayableLocation o) {
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocation++;
   if (buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocation < 3) {
-    checkGoogleTypeLatLng(o.centerPoint as api.GoogleTypeLatLng);
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.placeId, unittest.equals('foo'));
-    unittest.expect(o.plusCode, unittest.equals('foo'));
-    checkGoogleTypeLatLng(o.snappedPoint as api.GoogleTypeLatLng);
-    checkUnnamed4025(o.types);
+    checkGoogleTypeLatLng(o.centerPoint! as api.GoogleTypeLatLng);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.placeId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.plusCode!,
+      unittest.equals('foo'),
+    );
+    checkGoogleTypeLatLng(o.snappedPoint! as api.GoogleTypeLatLng);
+    checkUnnamed4025(o.types!);
   }
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocation--;
 }
@@ -374,7 +437,7 @@ void checkGoogleMapsPlayablelocationsV3SamplePlayableLocationList(
     api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList o) {
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationList++;
   if (buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationList < 3) {
-    checkUnnamed4026(o.locations);
+    checkUnnamed4026(o.locations!);
   }
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationList--;
 }
@@ -416,8 +479,8 @@ void checkGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest(
   if (buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest <
       3) {
     checkGoogleMapsPlayablelocationsV3SampleAreaFilter(
-        o.areaFilter as api.GoogleMapsPlayablelocationsV3SampleAreaFilter);
-    checkUnnamed4027(o.criteria);
+        o.areaFilter! as api.GoogleMapsPlayablelocationsV3SampleAreaFilter);
+    checkUnnamed4027(o.criteria!);
   }
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest--;
 }
@@ -438,9 +501,9 @@ void checkUnnamed4028(
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleMapsPlayablelocationsV3SamplePlayableLocationList(
-      o['x'] as api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList);
+      o['x']! as api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList);
   checkGoogleMapsPlayablelocationsV3SamplePlayableLocationList(
-      o['y'] as api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList);
+      o['y']! as api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList);
 }
 
 core.int
@@ -464,8 +527,11 @@ void checkGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse(
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse++;
   if (buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse <
       3) {
-    checkUnnamed4028(o.locationsPerGameObjectType);
-    unittest.expect(o.ttl, unittest.equals('foo'));
+    checkUnnamed4028(o.locationsPerGameObjectType!);
+    unittest.expect(
+      o.ttl!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse--;
 }
@@ -487,8 +553,14 @@ void checkGoogleMapsPlayablelocationsV3SampleSpacingOptions(
     api.GoogleMapsPlayablelocationsV3SampleSpacingOptions o) {
   buildCounterGoogleMapsPlayablelocationsV3SampleSpacingOptions++;
   if (buildCounterGoogleMapsPlayablelocationsV3SampleSpacingOptions < 3) {
-    unittest.expect(o.minSpacingMeters, unittest.equals(42.0));
-    unittest.expect(o.pointType, unittest.equals('foo'));
+    unittest.expect(
+      o.minSpacingMeters!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.pointType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleMapsPlayablelocationsV3SampleSpacingOptions--;
 }
@@ -514,14 +586,38 @@ api.GoogleMapsUnityClientInfo buildGoogleMapsUnityClientInfo() {
 void checkGoogleMapsUnityClientInfo(api.GoogleMapsUnityClientInfo o) {
   buildCounterGoogleMapsUnityClientInfo++;
   if (buildCounterGoogleMapsUnityClientInfo < 3) {
-    unittest.expect(o.apiClient, unittest.equals('foo'));
-    unittest.expect(o.applicationId, unittest.equals('foo'));
-    unittest.expect(o.applicationVersion, unittest.equals('foo'));
-    unittest.expect(o.deviceModel, unittest.equals('foo'));
-    unittest.expect(o.languageCode, unittest.equals('foo'));
-    unittest.expect(o.operatingSystem, unittest.equals('foo'));
-    unittest.expect(o.operatingSystemBuild, unittest.equals('foo'));
-    unittest.expect(o.platform, unittest.equals('foo'));
+    unittest.expect(
+      o.apiClient!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.applicationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.applicationVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deviceModel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.operatingSystem!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.operatingSystemBuild!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.platform!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleMapsUnityClientInfo--;
 }
@@ -541,8 +637,14 @@ api.GoogleTypeLatLng buildGoogleTypeLatLng() {
 void checkGoogleTypeLatLng(api.GoogleTypeLatLng o) {
   buildCounterGoogleTypeLatLng++;
   if (buildCounterGoogleTypeLatLng < 3) {
-    unittest.expect(o.latitude, unittest.equals(42.0));
-    unittest.expect(o.longitude, unittest.equals(42.0));
+    unittest.expect(
+      o.latitude!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.longitude!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterGoogleTypeLatLng--;
 }
@@ -739,10 +841,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("v3:logImpressions"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals("v3:logImpressions"),
+        );
         pathOffset += 17;
 
         var query = (req.url).query;
@@ -760,7 +866,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -795,10 +904,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19),
-            unittest.equals("v3:logPlayerReports"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 19),
+          unittest.equals("v3:logPlayerReports"),
+        );
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -816,7 +929,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -851,10 +967,14 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26),
-            unittest.equals("v3:samplePlayableLocations"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 26),
+          unittest.equals("v3:samplePlayableLocations"),
+        );
         pathOffset += 26;
 
         var query = (req.url).query;
@@ -872,7 +992,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

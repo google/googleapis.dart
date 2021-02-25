@@ -92,11 +92,8 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<PublisherAccount> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -136,9 +133,9 @@ class AccountsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPublisherAccountsResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -191,13 +188,9 @@ class AccountsMediationReportResource {
   async.Future<GenerateMediationReportResponse> generate(
     GenerateMediationReportRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -250,13 +243,9 @@ class AccountsNetworkReportResource {
   async.Future<GenerateNetworkReportResponse> generate(
     GenerateNetworkReportRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -290,17 +279,17 @@ class Date {
   ///
   /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
   /// year by itself or a year and month where the day isn't significant.
-  core.int day;
+  core.int? day;
 
   /// Month of a year.
   ///
   /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int month;
+  core.int? month;
 
   /// Year of the date.
   ///
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int year;
+  core.int? year;
 
   Date();
 
@@ -316,10 +305,10 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (month != null) 'month': month,
-        if (year != null) 'year': year,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (month != null) 'month': month!,
+        if (year != null) 'year': year!,
       };
 }
 
@@ -330,12 +319,12 @@ class DateRange {
   /// End date of the date range, inclusive.
   ///
   /// Must be greater than or equal to the start date.
-  Date endDate;
+  Date? endDate;
 
   /// Start date of the date range, inclusive.
   ///
   /// Must be less than or equal to the end date.
-  Date startDate;
+  Date? startDate;
 
   DateRange();
 
@@ -350,16 +339,16 @@ class DateRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endDate != null) 'endDate': endDate.toJson(),
-        if (startDate != null) 'startDate': startDate.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endDate != null) 'endDate': endDate!.toJson(),
+        if (startDate != null) 'startDate': startDate!.toJson(),
       };
 }
 
 /// Request to generate an AdMob Mediation report.
 class GenerateMediationReportRequest {
   /// Network report specification.
-  MediationReportSpec reportSpec;
+  MediationReportSpec? reportSpec;
 
   GenerateMediationReportRequest();
 
@@ -370,8 +359,8 @@ class GenerateMediationReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (reportSpec != null) 'reportSpec': reportSpec.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (reportSpec != null) 'reportSpec': reportSpec!.toJson(),
       };
 }
 
@@ -390,14 +379,14 @@ class GenerateMediationReportRequest {
 class GenerateMediationReportResponse {
   /// Additional information about the generated report, such as warnings about
   /// the data.
-  ReportFooter footer;
+  ReportFooter? footer;
 
   /// Report generation settings that describes the report contents, such as the
   /// report date range and localization settings.
-  ReportHeader header;
+  ReportHeader? header;
 
   /// Actual report data.
-  ReportRow row;
+  ReportRow? row;
 
   GenerateMediationReportResponse();
 
@@ -416,17 +405,17 @@ class GenerateMediationReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (footer != null) 'footer': footer.toJson(),
-        if (header != null) 'header': header.toJson(),
-        if (row != null) 'row': row.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (footer != null) 'footer': footer!.toJson(),
+        if (header != null) 'header': header!.toJson(),
+        if (row != null) 'row': row!.toJson(),
       };
 }
 
 /// Request to generate an AdMob Network report.
 class GenerateNetworkReportRequest {
   /// Network report specification.
-  NetworkReportSpec reportSpec;
+  NetworkReportSpec? reportSpec;
 
   GenerateNetworkReportRequest();
 
@@ -437,8 +426,8 @@ class GenerateNetworkReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (reportSpec != null) 'reportSpec': reportSpec.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (reportSpec != null) 'reportSpec': reportSpec!.toJson(),
       };
 }
 
@@ -456,14 +445,14 @@ class GenerateNetworkReportRequest {
 class GenerateNetworkReportResponse {
   /// Additional information about the generated report, such as warnings about
   /// the data.
-  ReportFooter footer;
+  ReportFooter? footer;
 
   /// Report generation settings that describes the report contents, such as the
   /// report date range and localization settings.
-  ReportHeader header;
+  ReportHeader? header;
 
   /// Actual report data.
-  ReportRow row;
+  ReportRow? row;
 
   GenerateNetworkReportResponse();
 
@@ -482,21 +471,21 @@ class GenerateNetworkReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (footer != null) 'footer': footer.toJson(),
-        if (header != null) 'header': header.toJson(),
-        if (row != null) 'row': row.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (footer != null) 'footer': footer!.toJson(),
+        if (header != null) 'header': header!.toJson(),
+        if (row != null) 'row': row!.toJson(),
       };
 }
 
 /// Response for the publisher account list request.
 class ListPublisherAccountsResponse {
   /// Publisher that the client credentials can access.
-  core.List<PublisherAccount> account;
+  core.List<PublisherAccount>? account;
 
   /// If not empty, indicates that there might be more accounts for the request;
   /// you must pass this value in a new `ListPublisherAccountsRequest`.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListPublisherAccountsResponse();
 
@@ -512,10 +501,10 @@ class ListPublisherAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (account != null)
-          'account': account.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'account': account!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -528,14 +517,14 @@ class LocalizationSettings {
   ///
   /// The daily average rate is used for the currency conversion. Defaults to
   /// the account currency code if unspecified.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Language used for any localized text, such as some dimension value display
   /// labels.
   ///
   /// The language tag defined in the IETF BCP47. Defaults to 'en-US' if
   /// unspecified.
-  core.String languageCode;
+  core.String? languageCode;
 
   LocalizationSettings();
 
@@ -548,9 +537,9 @@ class LocalizationSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (languageCode != null) 'languageCode': languageCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (languageCode != null) 'languageCode': languageCode!,
       };
 }
 
@@ -571,39 +560,39 @@ class LocalizationSettings {
 /// COUNTRY IN ('US', 'CN') GROUP BY AD_SOURCE, APP, COUNTRY ORDER BY APP ASC;
 class MediationReportSpec {
   /// The date range for which the report is generated.
-  DateRange dateRange;
+  DateRange? dateRange;
 
   /// Describes which report rows to match based on their dimension values.
-  core.List<MediationReportSpecDimensionFilter> dimensionFilters;
+  core.List<MediationReportSpecDimensionFilter>? dimensionFilters;
 
   /// List of dimensions of the report.
   ///
   /// The value combination of these dimensions determines the row of the
   /// report. If no dimensions are specified, the report returns a single row of
   /// requested metrics for the entire account.
-  core.List<core.String> dimensions;
+  core.List<core.String>? dimensions;
 
   /// Localization settings of the report.
-  LocalizationSettings localizationSettings;
+  LocalizationSettings? localizationSettings;
 
   /// Maximum number of report data rows to return.
   ///
   /// If the value is not set, the API returns as many rows as possible, up to
   /// 100000. Acceptable values are 1-100000, inclusive. Values larger than
   /// 100000 return an error.
-  core.int maxReportRows;
+  core.int? maxReportRows;
 
   /// List of metrics of the report.
   ///
   /// A report must specify at least one metric.
-  core.List<core.String> metrics;
+  core.List<core.String>? metrics;
 
   /// Describes the sorting of report rows.
   ///
   /// The order of the condition in the list defines its precedence; the earlier
   /// the condition, the higher its precedence. If no sort conditions are
   /// specified, the row ordering is undefined.
-  core.List<MediationReportSpecSortCondition> sortConditions;
+  core.List<MediationReportSpecSortCondition>? sortConditions;
 
   /// A report time zone.
   ///
@@ -611,7 +600,7 @@ class MediationReportSpec {
   /// zone is defined, the account default takes effect. Check default value by
   /// the get account action. **Warning:** The "America/Los_Angeles" is the only
   /// supported value at the moment.
-  core.String timeZone;
+  core.String? timeZone;
 
   MediationReportSpec();
 
@@ -656,20 +645,20 @@ class MediationReportSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dateRange != null) 'dateRange': dateRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dateRange != null) 'dateRange': dateRange!.toJson(),
         if (dimensionFilters != null)
           'dimensionFilters':
-              dimensionFilters.map((value) => value.toJson()).toList(),
-        if (dimensions != null) 'dimensions': dimensions,
+              dimensionFilters!.map((value) => value.toJson()).toList(),
+        if (dimensions != null) 'dimensions': dimensions!,
         if (localizationSettings != null)
-          'localizationSettings': localizationSettings.toJson(),
-        if (maxReportRows != null) 'maxReportRows': maxReportRows,
-        if (metrics != null) 'metrics': metrics,
+          'localizationSettings': localizationSettings!.toJson(),
+        if (maxReportRows != null) 'maxReportRows': maxReportRows!,
+        if (metrics != null) 'metrics': metrics!,
         if (sortConditions != null)
           'sortConditions':
-              sortConditions.map((value) => value.toJson()).toList(),
-        if (timeZone != null) 'timeZone': timeZone,
+              sortConditions!.map((value) => value.toJson()).toList(),
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 
@@ -703,11 +692,11 @@ class MediationReportSpecDimensionFilter {
   /// ad delivery dimension.
   /// - "PLATFORM" : Mobile OS platform of the app (for example, "Android" or
   /// "iOS").
-  core.String dimension;
+  core.String? dimension;
 
   /// Matches a row if its value for the specified dimension is in one of the
   /// values specified in this condition.
-  StringList matchesAny;
+  StringList? matchesAny;
 
   MediationReportSpecDimensionFilter();
 
@@ -721,9 +710,9 @@ class MediationReportSpecDimensionFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimension != null) 'dimension': dimension,
-        if (matchesAny != null) 'matchesAny': matchesAny.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimension != null) 'dimension': dimension!,
+        if (matchesAny != null) 'matchesAny': matchesAny!.toJson(),
       };
 }
 
@@ -757,7 +746,7 @@ class MediationReportSpecSortCondition {
   /// ad delivery dimension.
   /// - "PLATFORM" : Mobile OS platform of the app (for example, "Android" or
   /// "iOS").
-  core.String dimension;
+  core.String? dimension;
 
   /// Sort by the specified metric.
   /// Possible string values are:
@@ -787,14 +776,14 @@ class MediationReportSpecSortCondition {
   /// average eCPM per mediation group and per ad source instance level is
   /// supported dating back to October 20, 2019. Third-party estimated average
   /// eCPM will show 0 for dates prior to October 20, 2019.
-  core.String metric;
+  core.String? metric;
 
   /// Sorting order of the dimension or metric.
   /// Possible string values are:
   /// - "SORT_ORDER_UNSPECIFIED" : Default value for an unset field. Do not use.
   /// - "ASCENDING" : Sort dimension value or metric value in ascending order.
   /// - "DESCENDING" : Sort dimension value or metric value in descending order.
-  core.String order;
+  core.String? order;
 
   MediationReportSpecSortCondition();
 
@@ -810,10 +799,10 @@ class MediationReportSpecSortCondition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimension != null) 'dimension': dimension,
-        if (metric != null) 'metric': metric,
-        if (order != null) 'order': order,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimension != null) 'dimension': dimension!,
+        if (metric != null) 'metric': metric!,
+        if (order != null) 'order': order!,
       };
 }
 
@@ -835,39 +824,39 @@ class MediationReportSpecSortCondition {
 /// DATE, APP, COUNTRY ORDER BY APP ASC, CLICKS DESC;
 class NetworkReportSpec {
   /// The date range for which the report is generated.
-  DateRange dateRange;
+  DateRange? dateRange;
 
   /// Describes which report rows to match based on their dimension values.
-  core.List<NetworkReportSpecDimensionFilter> dimensionFilters;
+  core.List<NetworkReportSpecDimensionFilter>? dimensionFilters;
 
   /// List of dimensions of the report.
   ///
   /// The value combination of these dimensions determines the row of the
   /// report. If no dimensions are specified, the report returns a single row of
   /// requested metrics for the entire account.
-  core.List<core.String> dimensions;
+  core.List<core.String>? dimensions;
 
   /// Localization settings of the report.
-  LocalizationSettings localizationSettings;
+  LocalizationSettings? localizationSettings;
 
   /// Maximum number of report data rows to return.
   ///
   /// If the value is not set, the API returns as many rows as possible, up to
   /// 100000. Acceptable values are 1-100000, inclusive. Values larger than
   /// 100000 return an error.
-  core.int maxReportRows;
+  core.int? maxReportRows;
 
   /// List of metrics of the report.
   ///
   /// A report must specify at least one metric.
-  core.List<core.String> metrics;
+  core.List<core.String>? metrics;
 
   /// Describes the sorting of report rows.
   ///
   /// The order of the condition in the list defines its precedence; the earlier
   /// the condition, the higher its precedence. If no sort conditions are
   /// specified, the row ordering is undefined.
-  core.List<NetworkReportSpecSortCondition> sortConditions;
+  core.List<NetworkReportSpecSortCondition>? sortConditions;
 
   /// A report time zone.
   ///
@@ -875,7 +864,7 @@ class NetworkReportSpec {
   /// zone is defined, the account default takes effect. Check default value by
   /// the get account action. **Warning:** The "America/Los_Angeles" is the only
   /// supported value at the moment.
-  core.String timeZone;
+  core.String? timeZone;
 
   NetworkReportSpec();
 
@@ -920,20 +909,20 @@ class NetworkReportSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dateRange != null) 'dateRange': dateRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dateRange != null) 'dateRange': dateRange!.toJson(),
         if (dimensionFilters != null)
           'dimensionFilters':
-              dimensionFilters.map((value) => value.toJson()).toList(),
-        if (dimensions != null) 'dimensions': dimensions,
+              dimensionFilters!.map((value) => value.toJson()).toList(),
+        if (dimensions != null) 'dimensions': dimensions!,
         if (localizationSettings != null)
-          'localizationSettings': localizationSettings.toJson(),
-        if (maxReportRows != null) 'maxReportRows': maxReportRows,
-        if (metrics != null) 'metrics': metrics,
+          'localizationSettings': localizationSettings!.toJson(),
+        if (maxReportRows != null) 'maxReportRows': maxReportRows!,
+        if (metrics != null) 'metrics': metrics!,
         if (sortConditions != null)
           'sortConditions':
-              sortConditions.map((value) => value.toJson()).toList(),
-        if (timeZone != null) 'timeZone': timeZone,
+              sortConditions!.map((value) => value.toJson()).toList(),
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 
@@ -965,11 +954,11 @@ class NetworkReportSpecDimensionFilter {
   /// ad delivery dimension.
   /// - "PLATFORM" : Mobile OS platform of the app (for example, "Android" or
   /// "iOS").
-  core.String dimension;
+  core.String? dimension;
 
   /// Matches a row if its value for the specified dimension is in one of the
   /// values specified in this condition.
-  StringList matchesAny;
+  StringList? matchesAny;
 
   NetworkReportSpecDimensionFilter();
 
@@ -983,9 +972,9 @@ class NetworkReportSpecDimensionFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimension != null) 'dimension': dimension,
-        if (matchesAny != null) 'matchesAny': matchesAny.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimension != null) 'dimension': dimension!,
+        if (matchesAny != null) 'matchesAny': matchesAny!.toJson(),
       };
 }
 
@@ -1017,7 +1006,7 @@ class NetworkReportSpecSortCondition {
   /// ad delivery dimension.
   /// - "PLATFORM" : Mobile OS platform of the app (for example, "Android" or
   /// "iOS").
-  core.String dimension;
+  core.String? dimension;
 
   /// Sort by the specified metric.
   /// Possible string values are:
@@ -1048,14 +1037,14 @@ class NetworkReportSpecSortCondition {
   /// - "SHOW_RATE" : The ratio of ads that are displayed over ads that are
   /// returned, defined as impressions / matched requests. The value is a double
   /// precision (approximate) decimal value.
-  core.String metric;
+  core.String? metric;
 
   /// Sorting order of the dimension or metric.
   /// Possible string values are:
   /// - "SORT_ORDER_UNSPECIFIED" : Default value for an unset field. Do not use.
   /// - "ASCENDING" : Sort dimension value or metric value in ascending order.
   /// - "DESCENDING" : Sort dimension value or metric value in descending order.
-  core.String order;
+  core.String? order;
 
   NetworkReportSpecSortCondition();
 
@@ -1071,10 +1060,10 @@ class NetworkReportSpecSortCondition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimension != null) 'dimension': dimension,
-        if (metric != null) 'metric': metric,
-        if (order != null) 'order': order,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimension != null) 'dimension': dimension!,
+        if (metric != null) 'metric': metric!,
+        if (order != null) 'order': order!,
       };
 }
 
@@ -1085,22 +1074,22 @@ class PublisherAccount {
   /// defined in ISO 4217.
   ///
   /// The daily average rate is used for the currency conversion.
-  core.String currencyCode;
+  core.String? currencyCode;
 
   /// Resource name of this account.
   ///
   /// Format is accounts/{publisher_id}.
-  core.String name;
+  core.String? name;
 
   /// The unique ID by which this publisher account can be identified in the API
   /// requests (for example, pub-1234567890).
-  core.String publisherId;
+  core.String? publisherId;
 
   /// The time zone that is used in reports that are generated for this account.
   ///
   /// The value is a time-zone ID as specified by the CLDR project, for example,
   /// "America/Los_Angeles".
-  core.String reportingTimeZone;
+  core.String? reportingTimeZone;
 
   PublisherAccount();
 
@@ -1119,11 +1108,11 @@ class PublisherAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode,
-        if (name != null) 'name': name,
-        if (publisherId != null) 'publisherId': publisherId,
-        if (reportingTimeZone != null) 'reportingTimeZone': reportingTimeZone,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (name != null) 'name': name!,
+        if (publisherId != null) 'publisherId': publisherId!,
+        if (reportingTimeZone != null) 'reportingTimeZone': reportingTimeZone!,
       };
 }
 
@@ -1136,10 +1125,10 @@ class ReportFooter {
   ///
   /// Warning: This count does NOT always match the number of rows in the
   /// response. Do not make that assumption when processing the response.
-  core.String matchingRowCount;
+  core.String? matchingRowCount;
 
   /// Warnings associated with generation of the report.
-  core.List<ReportWarning> warnings;
+  core.List<ReportWarning>? warnings;
 
   ReportFooter();
 
@@ -1155,10 +1144,10 @@ class ReportFooter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (matchingRowCount != null) 'matchingRowCount': matchingRowCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (matchingRowCount != null) 'matchingRowCount': matchingRowCount!,
         if (warnings != null)
-          'warnings': warnings.map((value) => value.toJson()).toList(),
+          'warnings': warnings!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1169,18 +1158,18 @@ class ReportHeader {
   /// The date range for which the report is generated.
   ///
   /// This is identical to the range specified in the report request.
-  DateRange dateRange;
+  DateRange? dateRange;
 
   /// Localization settings of the report.
   ///
   /// This is identical to the settings in the report request.
-  LocalizationSettings localizationSettings;
+  LocalizationSettings? localizationSettings;
 
   /// The report time zone.
   ///
   /// The value is a time-zone ID as specified by the CLDR project, for example,
   /// "America/Los_Angeles".
-  core.String reportingTimeZone;
+  core.String? reportingTimeZone;
 
   ReportHeader();
 
@@ -1198,11 +1187,11 @@ class ReportHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dateRange != null) 'dateRange': dateRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dateRange != null) 'dateRange': dateRange!.toJson(),
         if (localizationSettings != null)
-          'localizationSettings': localizationSettings.toJson(),
-        if (reportingTimeZone != null) 'reportingTimeZone': reportingTimeZone,
+          'localizationSettings': localizationSettings!.toJson(),
+        if (reportingTimeZone != null) 'reportingTimeZone': reportingTimeZone!,
       };
 }
 
@@ -1210,20 +1199,20 @@ class ReportHeader {
 class ReportRow {
   /// Map of dimension values in a row, with keys as enum name of the
   /// dimensions.
-  core.Map<core.String, ReportRowDimensionValue> dimensionValues;
+  core.Map<core.String, ReportRowDimensionValue>? dimensionValues;
 
   /// Map of metric values in a row, with keys as enum name of the metrics.
   ///
   /// If a metric being requested has no value returned, the map will not
   /// include it.
-  core.Map<core.String, ReportRowMetricValue> metricValues;
+  core.Map<core.String, ReportRowMetricValue>? metricValues;
 
   ReportRow();
 
   ReportRow.fromJson(core.Map _json) {
     if (_json.containsKey('dimensionValues')) {
       dimensionValues = (_json['dimensionValues'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -1233,23 +1222,24 @@ class ReportRow {
           );
     }
     if (_json.containsKey('metricValues')) {
-      metricValues =
-          (_json['metricValues'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  ReportRowMetricValue.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      metricValues = (_json['metricValues'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              ReportRowMetricValue.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensionValues != null)
-          'dimensionValues': dimensionValues
+          'dimensionValues': dimensionValues!
               .map((key, item) => core.MapEntry(key, item.toJson())),
         if (metricValues != null)
-          'metricValues': metricValues
+          'metricValues': metricValues!
               .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
@@ -1259,11 +1249,11 @@ class ReportRowDimensionValue {
   /// The localized string representation of the value.
   ///
   /// If unspecified, the display label should be derived from the value.
-  core.String displayLabel;
+  core.String? displayLabel;
 
   /// Dimension value in the format specified in the report's spec Dimension
   /// enum.
-  core.String value;
+  core.String? value;
 
   ReportRowDimensionValue();
 
@@ -1276,9 +1266,9 @@ class ReportRowDimensionValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayLabel != null) 'displayLabel': displayLabel,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayLabel != null) 'displayLabel': displayLabel!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1287,17 +1277,17 @@ class ReportRowMetricValue {
   /// Double precision (approximate) decimal values.
   ///
   /// Rates are from 0 to 1.
-  core.double doubleValue;
+  core.double? doubleValue;
 
   /// Metric integer value.
-  core.String integerValue;
+  core.String? integerValue;
 
   /// Amount in micros.
   ///
   /// One million is equivalent to one unit. Currency value is in the unit (USD,
   /// EUR or other) specified by the request. For example, $6.50 whould be
   /// represented as 6500000 micros.
-  core.String microsValue;
+  core.String? microsValue;
 
   ReportRowMetricValue();
 
@@ -1313,17 +1303,17 @@ class ReportRowMetricValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (doubleValue != null) 'doubleValue': doubleValue,
-        if (integerValue != null) 'integerValue': integerValue,
-        if (microsValue != null) 'microsValue': microsValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (integerValue != null) 'integerValue': integerValue!,
+        if (microsValue != null) 'microsValue': microsValue!,
       };
 }
 
 /// Warnings associated with generation of the report.
 class ReportWarning {
   /// Describes the details of the warning message, in English.
-  core.String description;
+  core.String? description;
 
   /// Type of the warning.
   /// Possible string values are:
@@ -1343,7 +1333,7 @@ class ReportWarning {
   /// not the account currency. The earning metrics will be based on the
   /// requested currency, and thus not a good estimation of the final payment
   /// anymore, due to the currency rate fluctuation.
-  core.String type;
+  core.String? type;
 
   ReportWarning();
 
@@ -1356,16 +1346,16 @@ class ReportWarning {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// List of string values.
 class StringList {
   /// The string values.
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   StringList();
 
@@ -1377,7 +1367,7 @@ class StringList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (values != null) 'values': values!,
       };
 }

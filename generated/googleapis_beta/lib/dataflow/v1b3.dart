@@ -125,13 +125,10 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<DeleteSnapshotResponse> deleteSnapshots(
     core.String projectId, {
-    core.String location,
-    core.String snapshotId,
-    core.String $fields,
+    core.String? location,
+    core.String? snapshotId,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (location != null) 'location': [location],
       if (snapshotId != null) 'snapshotId': [snapshotId],
@@ -172,13 +169,9 @@ class ProjectsResource {
   async.Future<SendWorkerMessagesResponse> workerMessages(
     SendWorkerMessagesRequest request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -234,13 +227,9 @@ class ProjectsCatalogTemplatesResource {
   async.Future<TemplateVersion> commit(
     CommitTemplateVersionRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -281,11 +270,8 @@ class ProjectsCatalogTemplatesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -327,11 +313,8 @@ class ProjectsCatalogTemplatesResource {
   /// this method will complete with the same error.
   async.Future<TemplateVersion> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -374,13 +357,9 @@ class ProjectsCatalogTemplatesResource {
   async.Future<ModifyTemplateVersionLabelResponse> label(
     ModifyTemplateVersionLabelRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -427,13 +406,9 @@ class ProjectsCatalogTemplatesResource {
   async.Future<ModifyTemplateVersionTagResponse> tag(
     ModifyTemplateVersionTagRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -485,13 +460,9 @@ class ProjectsCatalogTemplatesTemplateVersionsResource {
   async.Future<TemplateVersion> create(
     CreateTemplateVersionRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -576,16 +547,13 @@ class ProjectsJobsResource {
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> aggregated(
     core.String projectId, {
-    core.String filter,
-    core.String location,
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.String? filter,
+    core.String? location,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (location != null) 'location': [location],
@@ -654,16 +622,12 @@ class ProjectsJobsResource {
   async.Future<Job> create(
     Job request,
     core.String projectId, {
-    core.String location,
-    core.String replaceJobId,
-    core.String view,
-    core.String $fields,
+    core.String? location,
+    core.String? replaceJobId,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (location != null) 'location': [location],
       if (replaceJobId != null) 'replaceJobId': [replaceJobId],
@@ -728,16 +692,10 @@ class ProjectsJobsResource {
   async.Future<Job> get(
     core.String projectId,
     core.String jobId, {
-    core.String location,
-    core.String view,
-    core.String $fields,
+    core.String? location,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (location != null) 'location': [location],
       if (view != null) 'view': [view],
@@ -791,16 +749,10 @@ class ProjectsJobsResource {
   async.Future<JobMetrics> getMetrics(
     core.String projectId,
     core.String jobId, {
-    core.String location,
-    core.String startTime,
-    core.String $fields,
+    core.String? location,
+    core.String? startTime,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (location != null) 'location': [location],
       if (startTime != null) 'startTime': [startTime],
@@ -883,16 +835,13 @@ class ProjectsJobsResource {
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
     core.String projectId, {
-    core.String filter,
-    core.String location,
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.String? filter,
+    core.String? location,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (location != null) 'location': [location],
@@ -939,16 +888,9 @@ class ProjectsJobsResource {
     SnapshotJobRequest request,
     core.String projectId,
     core.String jobId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1003,17 +945,10 @@ class ProjectsJobsResource {
     Job request,
     core.String projectId,
     core.String jobId, {
-    core.String location,
-    core.String $fields,
+    core.String? location,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (location != null) 'location': [location],
       if ($fields != null) 'fields': [$fields],
@@ -1065,16 +1000,9 @@ class ProjectsJobsDebugResource {
     GetDebugConfigRequest request,
     core.String projectId,
     core.String jobId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1119,16 +1047,9 @@ class ProjectsJobsDebugResource {
     SendDebugCaptureRequest request,
     core.String projectId,
     core.String jobId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1228,20 +1149,14 @@ class ProjectsJobsMessagesResource {
   async.Future<ListJobMessagesResponse> list(
     core.String projectId,
     core.String jobId, {
-    core.String endTime,
-    core.String location,
-    core.String minimumImportance,
-    core.int pageSize,
-    core.String pageToken,
-    core.String startTime,
-    core.String $fields,
+    core.String? endTime,
+    core.String? location,
+    core.String? minimumImportance,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? startTime,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (endTime != null) 'endTime': [endTime],
       if (location != null) 'location': [location],
@@ -1298,16 +1213,9 @@ class ProjectsJobsWorkItemsResource {
     LeaseWorkItemRequest request,
     core.String projectId,
     core.String jobId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1352,16 +1260,9 @@ class ProjectsJobsWorkItemsResource {
     ReportWorkItemStatusRequest request,
     core.String projectId,
     core.String jobId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1425,16 +1326,9 @@ class ProjectsLocationsResource {
     SendWorkerMessagesRequest request,
     core.String projectId,
     core.String location, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1489,16 +1383,9 @@ class ProjectsLocationsFlexTemplatesResource {
     LaunchFlexTemplateRequest request,
     core.String projectId,
     core.String location, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1584,18 +1471,11 @@ class ProjectsLocationsJobsResource {
     Job request,
     core.String projectId,
     core.String location, {
-    core.String replaceJobId,
-    core.String view,
-    core.String $fields,
+    core.String? replaceJobId,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (replaceJobId != null) 'replaceJobId': [replaceJobId],
       if (view != null) 'view': [view],
@@ -1662,18 +1542,9 @@ class ProjectsLocationsJobsResource {
     core.String projectId,
     core.String location,
     core.String jobId, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -1730,19 +1601,10 @@ class ProjectsLocationsJobsResource {
     core.String projectId,
     core.String location,
     core.String jobId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1801,18 +1663,9 @@ class ProjectsLocationsJobsResource {
     core.String projectId,
     core.String location,
     core.String jobId, {
-    core.String startTime,
-    core.String $fields,
+    core.String? startTime,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (startTime != null) 'startTime': [startTime],
       if ($fields != null) 'fields': [$fields],
@@ -1897,18 +1750,12 @@ class ProjectsLocationsJobsResource {
   async.Future<ListJobsResponse> list(
     core.String projectId,
     core.String location, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1959,19 +1806,9 @@ class ProjectsLocationsJobsResource {
     core.String projectId,
     core.String location,
     core.String jobId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2029,19 +1866,9 @@ class ProjectsLocationsJobsResource {
     core.String projectId,
     core.String location,
     core.String jobId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2100,19 +1927,9 @@ class ProjectsLocationsJobsDebugResource {
     core.String projectId,
     core.String location,
     core.String jobId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2164,19 +1981,9 @@ class ProjectsLocationsJobsDebugResource {
     core.String projectId,
     core.String location,
     core.String jobId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2279,22 +2086,13 @@ class ProjectsLocationsJobsMessagesResource {
     core.String projectId,
     core.String location,
     core.String jobId, {
-    core.String endTime,
-    core.String minimumImportance,
-    core.int pageSize,
-    core.String pageToken,
-    core.String startTime,
-    core.String $fields,
+    core.String? endTime,
+    core.String? minimumImportance,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? startTime,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (endTime != null) 'endTime': [endTime],
       if (minimumImportance != null) 'minimumImportance': [minimumImportance],
@@ -2352,17 +2150,8 @@ class ProjectsLocationsJobsSnapshotsResource {
     core.String projectId,
     core.String location,
     core.String jobId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2435,24 +2224,12 @@ class ProjectsLocationsJobsStagesResource {
     core.String location,
     core.String jobId,
     core.String stageId, {
-    core.String endTime,
-    core.int pageSize,
-    core.String pageToken,
-    core.String startTime,
-    core.String $fields,
+    core.String? endTime,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? startTime,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
-    if (stageId == null) {
-      throw core.ArgumentError('Parameter stageId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (endTime != null) 'endTime': [endTime],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2516,19 +2293,9 @@ class ProjectsLocationsJobsWorkItemsResource {
     core.String projectId,
     core.String location,
     core.String jobId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2580,19 +2347,9 @@ class ProjectsLocationsJobsWorkItemsResource {
     core.String projectId,
     core.String location,
     core.String jobId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
-    if (jobId == null) {
-      throw core.ArgumentError('Parameter jobId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2647,17 +2404,8 @@ class ProjectsLocationsSnapshotsResource {
     core.String projectId,
     core.String location,
     core.String snapshotId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
-    if (snapshotId == null) {
-      throw core.ArgumentError('Parameter snapshotId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2703,17 +2451,8 @@ class ProjectsLocationsSnapshotsResource {
     core.String projectId,
     core.String location,
     core.String snapshotId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
-    if (snapshotId == null) {
-      throw core.ArgumentError('Parameter snapshotId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2756,15 +2495,9 @@ class ProjectsLocationsSnapshotsResource {
   async.Future<ListSnapshotsResponse> list(
     core.String projectId,
     core.String location, {
-    core.String jobId,
-    core.String $fields,
+    core.String? jobId,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (jobId != null) 'jobId': [jobId],
       if ($fields != null) 'fields': [$fields],
@@ -2822,15 +2555,9 @@ class ProjectsLocationsSqlResource {
   async.Future<ValidateResponse> validate(
     core.String projectId,
     core.String location, {
-    core.String query,
-    core.String $fields,
+    core.String? query,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (query != null) 'query': [query],
       if ($fields != null) 'fields': [$fields],
@@ -2885,16 +2612,9 @@ class ProjectsLocationsTemplatesResource {
     CreateJobFromTemplateRequest request,
     core.String projectId,
     core.String location, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2946,16 +2666,10 @@ class ProjectsLocationsTemplatesResource {
   async.Future<GetTemplateResponse> get(
     core.String projectId,
     core.String location, {
-    core.String gcsPath,
-    core.String view,
-    core.String $fields,
+    core.String? gcsPath,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (gcsPath != null) 'gcsPath': [gcsPath],
       if (view != null) 'view': [view],
@@ -3016,20 +2730,13 @@ class ProjectsLocationsTemplatesResource {
     LaunchTemplateParameters request,
     core.String projectId,
     core.String location, {
-    core.String dynamicTemplate_gcsPath,
-    core.String dynamicTemplate_stagingLocation,
-    core.String gcsPath,
-    core.bool validateOnly,
-    core.String $fields,
+    core.String? dynamicTemplate_gcsPath,
+    core.String? dynamicTemplate_stagingLocation,
+    core.String? gcsPath,
+    core.bool? validateOnly,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (dynamicTemplate_gcsPath != null)
         'dynamicTemplate.gcsPath': [dynamicTemplate_gcsPath],
@@ -3086,15 +2793,9 @@ class ProjectsSnapshotsResource {
   async.Future<Snapshot> get(
     core.String projectId,
     core.String snapshotId, {
-    core.String location,
-    core.String $fields,
+    core.String? location,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (snapshotId == null) {
-      throw core.ArgumentError('Parameter snapshotId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (location != null) 'location': [location],
       if ($fields != null) 'fields': [$fields],
@@ -3135,13 +2836,10 @@ class ProjectsSnapshotsResource {
   /// this method will complete with the same error.
   async.Future<ListSnapshotsResponse> list(
     core.String projectId, {
-    core.String jobId,
-    core.String location,
-    core.String $fields,
+    core.String? jobId,
+    core.String? location,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (jobId != null) 'jobId': [jobId],
       if (location != null) 'location': [location],
@@ -3198,13 +2896,10 @@ class ProjectsTemplateVersionsResource {
   /// this method will complete with the same error.
   async.Future<ListTemplateVersionsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3252,13 +2947,9 @@ class ProjectsTemplatesResource {
   async.Future<Job> create(
     CreateJobFromTemplateRequest request,
     core.String projectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3307,14 +2998,11 @@ class ProjectsTemplatesResource {
   /// this method will complete with the same error.
   async.Future<GetTemplateResponse> get(
     core.String projectId, {
-    core.String gcsPath,
-    core.String location,
-    core.String view,
-    core.String $fields,
+    core.String? gcsPath,
+    core.String? location,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (gcsPath != null) 'gcsPath': [gcsPath],
       if (location != null) 'location': [location],
@@ -3373,18 +3061,14 @@ class ProjectsTemplatesResource {
   async.Future<LaunchTemplateResponse> launch(
     LaunchTemplateParameters request,
     core.String projectId, {
-    core.String dynamicTemplate_gcsPath,
-    core.String dynamicTemplate_stagingLocation,
-    core.String gcsPath,
-    core.String location,
-    core.bool validateOnly,
-    core.String $fields,
+    core.String? dynamicTemplate_gcsPath,
+    core.String? dynamicTemplate_stagingLocation,
+    core.String? gcsPath,
+    core.String? location,
+    core.bool? validateOnly,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (dynamicTemplate_gcsPath != null)
         'dynamicTemplate.gcsPath': [dynamicTemplate_gcsPath],
@@ -3415,13 +3099,13 @@ class ProjectsTemplatesResource {
 /// ApproximateSplitRequest.
 class ApproximateProgress {
   /// Obsolete.
-  core.double percentComplete;
+  core.double? percentComplete;
 
   /// Obsolete.
-  Position position;
+  Position? position;
 
   /// Obsolete.
-  core.String remainingTime;
+  core.String? remainingTime;
 
   ApproximateProgress();
 
@@ -3438,10 +3122,10 @@ class ApproximateProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (percentComplete != null) 'percentComplete': percentComplete,
-        if (position != null) 'position': position.toJson(),
-        if (remainingTime != null) 'remainingTime': remainingTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (percentComplete != null) 'percentComplete': percentComplete!,
+        if (position != null) 'position': position!.toJson(),
+        if (remainingTime != null) 'remainingTime': remainingTime!,
       };
 }
 
@@ -3454,14 +3138,14 @@ class ApproximateReportedProgress {
   /// should be 29 or 2 respectively. The sum of remaining_parallelism and
   /// consumed_parallelism should equal the total amount of parallelism in this
   /// work item. If specified, must be finite.
-  ReportedParallelism consumedParallelism;
+  ReportedParallelism? consumedParallelism;
 
   /// Completion as fraction of the input consumed, from 0.0 (beginning, nothing
   /// consumed), to 1.0 (end of the input, entire input consumed).
-  core.double fractionConsumed;
+  core.double? fractionConsumed;
 
   /// A Position within the work to represent a progress.
-  Position position;
+  Position? position;
 
   /// Total amount of parallelism in the input of this task that remains, (i.e.
   /// can be delegated to this task and any new tasks via dynamic splitting).
@@ -3482,7 +3166,7 @@ class ApproximateReportedProgress {
   /// last block in a block-compressed file, or reading or processing the last
   /// record in a perfectly splittable input, this value should be 1, because
   /// apart from the current task, no additional remainder can be split off.
-  ReportedParallelism remainingParallelism;
+  ReportedParallelism? remainingParallelism;
 
   ApproximateReportedProgress();
 
@@ -3504,13 +3188,13 @@ class ApproximateReportedProgress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (consumedParallelism != null)
-          'consumedParallelism': consumedParallelism.toJson(),
-        if (fractionConsumed != null) 'fractionConsumed': fractionConsumed,
-        if (position != null) 'position': position.toJson(),
+          'consumedParallelism': consumedParallelism!.toJson(),
+        if (fractionConsumed != null) 'fractionConsumed': fractionConsumed!,
+        if (position != null) 'position': position!.toJson(),
         if (remainingParallelism != null)
-          'remainingParallelism': remainingParallelism.toJson(),
+          'remainingParallelism': remainingParallelism!.toJson(),
       };
 }
 
@@ -3518,14 +3202,14 @@ class ApproximateReportedProgress {
 class ApproximateSplitRequest {
   /// A fraction at which to split the work item, from 0.0 (beginning of the
   /// input) to 1.0 (end of the input).
-  core.double fractionConsumed;
+  core.double? fractionConsumed;
 
   /// The fraction of the remainder of work to split the work item at, from 0.0
   /// (split at the current position) to 1.0 (end of the input).
-  core.double fractionOfRemainder;
+  core.double? fractionOfRemainder;
 
   /// A Position at which to split the work item.
-  Position position;
+  Position? position;
 
   ApproximateSplitRequest();
 
@@ -3543,24 +3227,24 @@ class ApproximateSplitRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fractionConsumed != null) 'fractionConsumed': fractionConsumed,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fractionConsumed != null) 'fractionConsumed': fractionConsumed!,
         if (fractionOfRemainder != null)
-          'fractionOfRemainder': fractionOfRemainder,
-        if (position != null) 'position': position.toJson(),
+          'fractionOfRemainder': fractionOfRemainder!,
+        if (position != null) 'position': position!.toJson(),
       };
 }
 
 /// Job information for templates.
 class Artifact {
   /// Container image path set for flex Template.
-  ContainerSpec containerSpec;
+  ContainerSpec? containerSpec;
 
   /// job_graph_gcs_path set for legacy Template.
-  core.String jobGraphGcsPath;
+  core.String? jobGraphGcsPath;
 
   /// Metadata set for legacy Template.
-  TemplateMetadata metadata;
+  TemplateMetadata? metadata;
 
   Artifact();
 
@@ -3578,10 +3262,10 @@ class Artifact {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (containerSpec != null) 'containerSpec': containerSpec.toJson(),
-        if (jobGraphGcsPath != null) 'jobGraphGcsPath': jobGraphGcsPath,
-        if (metadata != null) 'metadata': metadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (containerSpec != null) 'containerSpec': containerSpec!.toJson(),
+        if (jobGraphGcsPath != null) 'jobGraphGcsPath': jobGraphGcsPath!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
       };
 }
 
@@ -3589,12 +3273,12 @@ class Artifact {
 /// service.
 class AutoscalingEvent {
   /// The current number of workers the job has.
-  core.String currentNumWorkers;
+  core.String? currentNumWorkers;
 
   /// A message describing why the system decided to adjust the current number
   /// of workers, why it failed, or why the system decided to not make any
   /// changes to the number of workers.
-  StructuredMessage description;
+  StructuredMessage? description;
 
   /// The type of autoscaling event to report.
   /// Possible string values are:
@@ -3615,18 +3299,18 @@ class AutoscalingEvent {
   /// - "NO_CHANGE" : Used when we want to report to the user a reason why we
   /// are not currently adjusting the number of workers. Should specify both
   /// target_num_workers, current_num_workers and a decision_message.
-  core.String eventType;
+  core.String? eventType;
 
   /// The target number of workers the worker pool wants to resize to use.
-  core.String targetNumWorkers;
+  core.String? targetNumWorkers;
 
   /// The time this event was emitted to indicate a new target or current
   /// num_workers value.
-  core.String time;
+  core.String? time;
 
   /// A short and friendly name for the worker pool this event refers to,
   /// populated from the value of PoolStageRelation::user_pool_name.
-  core.String workerPool;
+  core.String? workerPool;
 
   AutoscalingEvent();
 
@@ -3652,13 +3336,13 @@ class AutoscalingEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currentNumWorkers != null) 'currentNumWorkers': currentNumWorkers,
-        if (description != null) 'description': description.toJson(),
-        if (eventType != null) 'eventType': eventType,
-        if (targetNumWorkers != null) 'targetNumWorkers': targetNumWorkers,
-        if (time != null) 'time': time,
-        if (workerPool != null) 'workerPool': workerPool,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currentNumWorkers != null) 'currentNumWorkers': currentNumWorkers!,
+        if (description != null) 'description': description!.toJson(),
+        if (eventType != null) 'eventType': eventType!,
+        if (targetNumWorkers != null) 'targetNumWorkers': targetNumWorkers!,
+        if (time != null) 'time': time!,
+        if (workerPool != null) 'workerPool': workerPool!,
       };
 }
 
@@ -3671,10 +3355,10 @@ class AutoscalingSettings {
   /// - "AUTOSCALING_ALGORITHM_NONE" : Disable autoscaling.
   /// - "AUTOSCALING_ALGORITHM_BASIC" : Increase worker count over time to
   /// reduce job execution time.
-  core.String algorithm;
+  core.String? algorithm;
 
   /// The maximum number of workers to cap scaling at.
-  core.int maxNumWorkers;
+  core.int? maxNumWorkers;
 
   AutoscalingSettings();
 
@@ -3687,25 +3371,25 @@ class AutoscalingSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm,
-        if (maxNumWorkers != null) 'maxNumWorkers': maxNumWorkers,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
+        if (maxNumWorkers != null) 'maxNumWorkers': maxNumWorkers!,
       };
 }
 
 /// Metadata for a BigQuery connector used by the job.
 class BigQueryIODetails {
   /// Dataset accessed in the connection.
-  core.String dataset;
+  core.String? dataset;
 
   /// Project accessed in the connection.
-  core.String projectId;
+  core.String? projectId;
 
   /// Query used to access data in the connection.
-  core.String query;
+  core.String? query;
 
   /// Table accessed in the connection.
-  core.String table;
+  core.String? table;
 
   BigQueryIODetails();
 
@@ -3724,24 +3408,24 @@ class BigQueryIODetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataset != null) 'dataset': dataset,
-        if (projectId != null) 'projectId': projectId,
-        if (query != null) 'query': query,
-        if (table != null) 'table': table,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataset != null) 'dataset': dataset!,
+        if (projectId != null) 'projectId': projectId!,
+        if (query != null) 'query': query!,
+        if (table != null) 'table': table!,
       };
 }
 
 /// Metadata for a BigTable connector used by the job.
 class BigTableIODetails {
   /// InstanceId accessed in the connection.
-  core.String instanceId;
+  core.String? instanceId;
 
   /// ProjectId accessed in the connection.
-  core.String projectId;
+  core.String? projectId;
 
   /// TableId accessed in the connection.
-  core.String tableId;
+  core.String? tableId;
 
   BigTableIODetails();
 
@@ -3757,10 +3441,10 @@ class BigTableIODetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (instanceId != null) 'instanceId': instanceId,
-        if (projectId != null) 'projectId': projectId,
-        if (tableId != null) 'tableId': tableId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (instanceId != null) 'instanceId': instanceId!,
+        if (projectId != null) 'projectId': projectId!,
+        if (tableId != null) 'tableId': tableId!,
       };
 }
 
@@ -3768,14 +3452,14 @@ class BigTableIODetails {
 class CPUTime {
   /// Average CPU utilization rate (% non-idle cpu / second) since previous
   /// sample.
-  core.double rate;
+  core.double? rate;
 
   /// Timestamp of the measurement.
-  core.String timestamp;
+  core.String? timestamp;
 
   /// Total active CPU time across all cores (ie., non-idle) in milliseconds
   /// since start-up.
-  core.String totalMs;
+  core.String? totalMs;
 
   CPUTime();
 
@@ -3791,17 +3475,17 @@ class CPUTime {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (rate != null) 'rate': rate,
-        if (timestamp != null) 'timestamp': timestamp,
-        if (totalMs != null) 'totalMs': totalMs,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (rate != null) 'rate': rate!,
+        if (timestamp != null) 'timestamp': timestamp!,
+        if (totalMs != null) 'totalMs': totalMs!,
       };
 }
 
 /// Commit will add a new TemplateVersion to an existing template.
 class CommitTemplateVersionRequest {
   /// TemplateVersion obejct to create.
-  TemplateVersion templateVersion;
+  TemplateVersion? templateVersion;
 
   CommitTemplateVersionRequest();
 
@@ -3812,9 +3496,9 @@ class CommitTemplateVersionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (templateVersion != null)
-          'templateVersion': templateVersion.toJson(),
+          'templateVersion': templateVersion!.toJson(),
       };
 }
 
@@ -3822,14 +3506,14 @@ class CommitTemplateVersionRequest {
 /// stage.
 class ComponentSource {
   /// Dataflow service generated name for this source.
-  core.String name;
+  core.String? name;
 
   /// User name for the original user transform or collection with which this
   /// source is most closely associated.
-  core.String originalTransformOrCollection;
+  core.String? originalTransformOrCollection;
 
   /// Human-readable name for this transform; may be user or system generated.
-  core.String userName;
+  core.String? userName;
 
   ComponentSource();
 
@@ -3846,25 +3530,25 @@ class ComponentSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
         if (originalTransformOrCollection != null)
-          'originalTransformOrCollection': originalTransformOrCollection,
-        if (userName != null) 'userName': userName,
+          'originalTransformOrCollection': originalTransformOrCollection!,
+        if (userName != null) 'userName': userName!,
       };
 }
 
 /// Description of a transform executed as part of an execution stage.
 class ComponentTransform {
   /// Dataflow service generated name for this source.
-  core.String name;
+  core.String? name;
 
   /// User name for the original user transform with which this transform is
   /// most closely associated.
-  core.String originalTransform;
+  core.String? originalTransform;
 
   /// Human-readable name for this transform; may be user or system generated.
-  core.String userName;
+  core.String? userName;
 
   ComponentTransform();
 
@@ -3880,32 +3564,32 @@ class ComponentTransform {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (originalTransform != null) 'originalTransform': originalTransform,
-        if (userName != null) 'userName': userName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (originalTransform != null) 'originalTransform': originalTransform!,
+        if (userName != null) 'userName': userName!,
       };
 }
 
 /// All configuration data for a particular Computation.
 class ComputationTopology {
   /// The ID of the computation.
-  core.String computationId;
+  core.String? computationId;
 
   /// The inputs to the computation.
-  core.List<StreamLocation> inputs;
+  core.List<StreamLocation>? inputs;
 
   /// The key ranges processed by the computation.
-  core.List<KeyRangeLocation> keyRanges;
+  core.List<KeyRangeLocation>? keyRanges;
 
   /// The outputs from the computation.
-  core.List<StreamLocation> outputs;
+  core.List<StreamLocation>? outputs;
 
   /// The state family values.
-  core.List<StateFamilyConfig> stateFamilies;
+  core.List<StateFamilyConfig>? stateFamilies;
 
   /// The system stage name.
-  core.String systemStageName;
+  core.String? systemStageName;
 
   ComputationTopology();
 
@@ -3942,18 +3626,18 @@ class ComputationTopology {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (computationId != null) 'computationId': computationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (computationId != null) 'computationId': computationId!,
         if (inputs != null)
-          'inputs': inputs.map((value) => value.toJson()).toList(),
+          'inputs': inputs!.map((value) => value.toJson()).toList(),
         if (keyRanges != null)
-          'keyRanges': keyRanges.map((value) => value.toJson()).toList(),
+          'keyRanges': keyRanges!.map((value) => value.toJson()).toList(),
         if (outputs != null)
-          'outputs': outputs.map((value) => value.toJson()).toList(),
+          'outputs': outputs!.map((value) => value.toJson()).toList(),
         if (stateFamilies != null)
           'stateFamilies':
-              stateFamilies.map((value) => value.toJson()).toList(),
-        if (systemStageName != null) 'systemStageName': systemStageName,
+              stateFamilies!.map((value) => value.toJson()).toList(),
+        if (systemStageName != null) 'systemStageName': systemStageName!,
       };
 }
 
@@ -3964,10 +3648,10 @@ class ComputationTopology {
 /// of other sources.
 class ConcatPosition {
   /// Index of the inner source.
-  core.int index;
+  core.int? index;
 
   /// Position within the inner source.
-  Position position;
+  Position? position;
 
   ConcatPosition();
 
@@ -3981,29 +3665,29 @@ class ConcatPosition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (index != null) 'index': index,
-        if (position != null) 'position': position.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (index != null) 'index': index!,
+        if (position != null) 'position': position!.toJson(),
       };
 }
 
 /// Container Spec.
 class ContainerSpec {
   /// Default runtime environment for the job.
-  FlexTemplateRuntimeEnvironment defaultEnvironment;
+  FlexTemplateRuntimeEnvironment? defaultEnvironment;
 
   /// Name of the docker container image.
   ///
   /// E.g., gcr.io/project/some-image
-  core.String image;
+  core.String? image;
 
   /// Metadata describing a template including description and validation rules.
-  TemplateMetadata metadata;
+  TemplateMetadata? metadata;
 
   /// SDK info of the Flex Template.
   ///
   /// Required.
-  SDKInfo sdkInfo;
+  SDKInfo? sdkInfo;
 
   ContainerSpec();
 
@@ -4025,19 +3709,19 @@ class ContainerSpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (defaultEnvironment != null)
-          'defaultEnvironment': defaultEnvironment.toJson(),
-        if (image != null) 'image': image,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (sdkInfo != null) 'sdkInfo': sdkInfo.toJson(),
+          'defaultEnvironment': defaultEnvironment!.toJson(),
+        if (image != null) 'image': image!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (sdkInfo != null) 'sdkInfo': sdkInfo!.toJson(),
       };
 }
 
 /// CounterMetadata includes all static non-name non-value counter attributes.
 class CounterMetadata {
   /// Human-readable description of the counter semantics.
-  core.String description;
+  core.String? description;
 
   /// Counter aggregation kind.
   /// Possible string values are:
@@ -4054,10 +3738,10 @@ class CounterMetadata {
   /// - "DISTRIBUTION" : Aggregated value captures statistics about a
   /// distribution.
   /// - "LATEST_VALUE" : Aggregated value tracks the latest value of a variable.
-  core.String kind;
+  core.String? kind;
 
   /// A string referring to the unit type.
-  core.String otherUnits;
+  core.String? otherUnits;
 
   /// System defined Units, see above enum.
   /// Possible string values are:
@@ -4069,7 +3753,7 @@ class CounterMetadata {
   /// - "TIMESTAMP_MSEC" : Counter returns a timestamp in milliseconds.
   /// - "TIMESTAMP_USEC" : Counter returns a timestamp in microseconds.
   /// - "TIMESTAMP_NSEC" : Counter returns a timestamp in nanoseconds.
-  core.String standardUnits;
+  core.String? standardUnits;
 
   CounterMetadata();
 
@@ -4088,11 +3772,11 @@ class CounterMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (kind != null) 'kind': kind,
-        if (otherUnits != null) 'otherUnits': otherUnits,
-        if (standardUnits != null) 'standardUnits': standardUnits,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (kind != null) 'kind': kind!,
+        if (otherUnits != null) 'otherUnits': otherUnits!,
+        if (standardUnits != null) 'standardUnits': standardUnits!,
       };
 }
 
@@ -4102,12 +3786,12 @@ class CounterMetadata {
 /// for the job.
 class CounterStructuredName {
   /// Name of the optimized step being executed by the workers.
-  core.String componentStepName;
+  core.String? componentStepName;
 
   /// Name of the stage.
   ///
   /// An execution step contains multiple component steps.
-  core.String executionStepName;
+  core.String? executionStepName;
 
   /// Index of an input collection that's being read from/written to as a side
   /// input.
@@ -4116,42 +3800,42 @@ class CounterStructuredName {
   /// side input has input_index 1, the third has input_index 3). Side inputs
   /// are identified by a pair of (original_step_name, input_index). This field
   /// helps uniquely identify them.
-  core.int inputIndex;
+  core.int? inputIndex;
 
   /// Counter name.
   ///
   /// Not necessarily globally-unique, but unique within the context of the
   /// other fields. Required.
-  core.String name;
+  core.String? name;
 
   /// One of the standard Origins defined above.
   /// Possible string values are:
   /// - "SYSTEM" : Counter was created by the Dataflow system.
   /// - "USER" : Counter was created by the user.
-  core.String origin;
+  core.String? origin;
 
   /// A string containing a more specific namespace of the counter's origin.
-  core.String originNamespace;
+  core.String? originNamespace;
 
   /// The step name requesting an operation, such as GBK.
   ///
   /// I.e. the ParDo causing a read/write from shuffle to occur, or a read from
   /// side inputs.
-  core.String originalRequestingStepName;
+  core.String? originalRequestingStepName;
 
   /// System generated name of the original step in the user's graph, before
   /// optimization.
-  core.String originalStepName;
+  core.String? originalStepName;
 
   /// Portion of this counter, either key or value.
   /// Possible string values are:
   /// - "ALL" : Counter portion has not been set.
   /// - "KEY" : Counter reports a key.
   /// - "VALUE" : Counter reports a value.
-  core.String portion;
+  core.String? portion;
 
   /// ID of a particular worker.
-  core.String workerId;
+  core.String? workerId;
 
   CounterStructuredName();
 
@@ -4189,18 +3873,18 @@ class CounterStructuredName {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (componentStepName != null) 'componentStepName': componentStepName,
-        if (executionStepName != null) 'executionStepName': executionStepName,
-        if (inputIndex != null) 'inputIndex': inputIndex,
-        if (name != null) 'name': name,
-        if (origin != null) 'origin': origin,
-        if (originNamespace != null) 'originNamespace': originNamespace,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (componentStepName != null) 'componentStepName': componentStepName!,
+        if (executionStepName != null) 'executionStepName': executionStepName!,
+        if (inputIndex != null) 'inputIndex': inputIndex!,
+        if (name != null) 'name': name!,
+        if (origin != null) 'origin': origin!,
+        if (originNamespace != null) 'originNamespace': originNamespace!,
         if (originalRequestingStepName != null)
-          'originalRequestingStepName': originalRequestingStepName,
-        if (originalStepName != null) 'originalStepName': originalStepName,
-        if (portion != null) 'portion': portion,
-        if (workerId != null) 'workerId': workerId,
+          'originalRequestingStepName': originalRequestingStepName!,
+        if (originalStepName != null) 'originalStepName': originalStepName!,
+        if (portion != null) 'portion': portion!,
+        if (workerId != null) 'workerId': workerId!,
       };
 }
 
@@ -4208,10 +3892,10 @@ class CounterStructuredName {
 /// counter.
 class CounterStructuredNameAndMetadata {
   /// Metadata associated with a counter
-  CounterMetadata metadata;
+  CounterMetadata? metadata;
 
   /// Structured name of the counter.
-  CounterStructuredName name;
+  CounterStructuredName? name;
 
   CounterStructuredNameAndMetadata();
 
@@ -4226,68 +3910,68 @@ class CounterStructuredNameAndMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (name != null) 'name': name.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (name != null) 'name': name!.toJson(),
       };
 }
 
 /// An update to a Counter sent from a worker.
 class CounterUpdate {
   /// Boolean value for And, Or.
-  core.bool boolean;
+  core.bool? boolean;
 
   /// True if this counter is reported as the total cumulative aggregate value
   /// accumulated since the worker started working on this WorkItem.
   ///
   /// By default this is false, indicating that this counter is reported as a
   /// delta.
-  core.bool cumulative;
+  core.bool? cumulative;
 
   /// Distribution data
-  DistributionUpdate distribution;
+  DistributionUpdate? distribution;
 
   /// Floating point value for Sum, Max, Min.
-  core.double floatingPoint;
+  core.double? floatingPoint;
 
   /// List of floating point numbers, for Set.
-  FloatingPointList floatingPointList;
+  FloatingPointList? floatingPointList;
 
   /// Floating point mean aggregation value for Mean.
-  FloatingPointMean floatingPointMean;
+  FloatingPointMean? floatingPointMean;
 
   /// Integer value for Sum, Max, Min.
-  SplitInt64 integer;
+  SplitInt64? integer;
 
   /// Gauge data
-  IntegerGauge integerGauge;
+  IntegerGauge? integerGauge;
 
   /// List of integers, for Set.
-  IntegerList integerList;
+  IntegerList? integerList;
 
   /// Integer mean aggregation value for Mean.
-  IntegerMean integerMean;
+  IntegerMean? integerMean;
 
   /// Value for internally-defined counters used by the Dataflow service.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object internal;
+  core.Object? internal;
 
   /// Counter name and aggregation type.
-  NameAndKind nameAndKind;
+  NameAndKind? nameAndKind;
 
   /// The service-generated short identifier for this counter.
   ///
   /// The short_id -> (name, metadata) mapping is constant for the lifetime of a
   /// job.
-  core.String shortId;
+  core.String? shortId;
 
   /// List of strings, for Set.
-  StringList stringList;
+  StringList? stringList;
 
   /// Counter structured name and metadata.
-  CounterStructuredNameAndMetadata structuredNameAndMetadata;
+  CounterStructuredNameAndMetadata? structuredNameAndMetadata;
 
   CounterUpdate();
 
@@ -4350,52 +4034,52 @@ class CounterUpdate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolean != null) 'boolean': boolean,
-        if (cumulative != null) 'cumulative': cumulative,
-        if (distribution != null) 'distribution': distribution.toJson(),
-        if (floatingPoint != null) 'floatingPoint': floatingPoint,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolean != null) 'boolean': boolean!,
+        if (cumulative != null) 'cumulative': cumulative!,
+        if (distribution != null) 'distribution': distribution!.toJson(),
+        if (floatingPoint != null) 'floatingPoint': floatingPoint!,
         if (floatingPointList != null)
-          'floatingPointList': floatingPointList.toJson(),
+          'floatingPointList': floatingPointList!.toJson(),
         if (floatingPointMean != null)
-          'floatingPointMean': floatingPointMean.toJson(),
-        if (integer != null) 'integer': integer.toJson(),
-        if (integerGauge != null) 'integerGauge': integerGauge.toJson(),
-        if (integerList != null) 'integerList': integerList.toJson(),
-        if (integerMean != null) 'integerMean': integerMean.toJson(),
-        if (internal != null) 'internal': internal,
-        if (nameAndKind != null) 'nameAndKind': nameAndKind.toJson(),
-        if (shortId != null) 'shortId': shortId,
-        if (stringList != null) 'stringList': stringList.toJson(),
+          'floatingPointMean': floatingPointMean!.toJson(),
+        if (integer != null) 'integer': integer!.toJson(),
+        if (integerGauge != null) 'integerGauge': integerGauge!.toJson(),
+        if (integerList != null) 'integerList': integerList!.toJson(),
+        if (integerMean != null) 'integerMean': integerMean!.toJson(),
+        if (internal != null) 'internal': internal!,
+        if (nameAndKind != null) 'nameAndKind': nameAndKind!.toJson(),
+        if (shortId != null) 'shortId': shortId!,
+        if (stringList != null) 'stringList': stringList!.toJson(),
         if (structuredNameAndMetadata != null)
-          'structuredNameAndMetadata': structuredNameAndMetadata.toJson(),
+          'structuredNameAndMetadata': structuredNameAndMetadata!.toJson(),
       };
 }
 
 /// A request to create a Cloud Dataflow job from a template.
 class CreateJobFromTemplateRequest {
   /// The runtime environment for the job.
-  RuntimeEnvironment environment;
+  RuntimeEnvironment? environment;
 
   /// A Cloud Storage path to the template from which to create the job.
   ///
   /// Must be a valid Cloud Storage URL, beginning with `gs://`.
   ///
   /// Required.
-  core.String gcsPath;
+  core.String? gcsPath;
 
   /// The job name to use for the created job.
   ///
   /// Required.
-  core.String jobName;
+  core.String? jobName;
 
   /// The
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// to which to direct the request.
-  core.String location;
+  core.String? location;
 
   /// The runtime parameters to pass to the job.
-  core.Map<core.String, core.String> parameters;
+  core.Map<core.String, core.String>? parameters;
 
   CreateJobFromTemplateRequest();
 
@@ -4425,19 +4109,19 @@ class CreateJobFromTemplateRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (environment != null) 'environment': environment.toJson(),
-        if (gcsPath != null) 'gcsPath': gcsPath,
-        if (jobName != null) 'jobName': jobName,
-        if (location != null) 'location': location,
-        if (parameters != null) 'parameters': parameters,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (environment != null) 'environment': environment!.toJson(),
+        if (gcsPath != null) 'gcsPath': gcsPath!,
+        if (jobName != null) 'jobName': jobName!,
+        if (location != null) 'location': location!,
+        if (parameters != null) 'parameters': parameters!,
       };
 }
 
 /// Creates a new Template with TemplateVersions.
 class CreateTemplateVersionRequest {
   /// The TemplateVersion object to create.
-  TemplateVersion templateVersion;
+  TemplateVersion? templateVersion;
 
   CreateTemplateVersionRequest();
 
@@ -4448,16 +4132,16 @@ class CreateTemplateVersionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (templateVersion != null)
-          'templateVersion': templateVersion.toJson(),
+          'templateVersion': templateVersion!.toJson(),
       };
 }
 
 /// Identifies the location of a custom souce.
 class CustomSourceLocation {
   /// Whether this source is stateful.
-  core.bool stateful;
+  core.bool? stateful;
 
   CustomSourceLocation();
 
@@ -4467,8 +4151,8 @@ class CustomSourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (stateful != null) 'stateful': stateful,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (stateful != null) 'stateful': stateful!,
       };
 }
 
@@ -4480,11 +4164,11 @@ class DataDiskAssignment {
   /// which persistent directory the disk is mounted to, for example the list of
   /// { "myproject-1014-104817-4c2-harness-0-disk-0" }, {
   /// "myproject-1014-104817-4c2-harness-0-disk-1" }.
-  core.List<core.String> dataDisks;
+  core.List<core.String>? dataDisks;
 
   /// VM instance name the data disks mounted to, for example
   /// "myproject-1014-104817-4c2-harness-0".
-  core.String vmInstance;
+  core.String? vmInstance;
 
   DataDiskAssignment();
 
@@ -4499,19 +4183,19 @@ class DataDiskAssignment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataDisks != null) 'dataDisks': dataDisks,
-        if (vmInstance != null) 'vmInstance': vmInstance,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataDisks != null) 'dataDisks': dataDisks!,
+        if (vmInstance != null) 'vmInstance': vmInstance!,
       };
 }
 
 /// Metadata for a Datastore connector used by the job.
 class DatastoreIODetails {
   /// Namespace used in the connection.
-  core.String namespace;
+  core.String? namespace;
 
   /// ProjectId accessed in the connection.
-  core.String projectId;
+  core.String? projectId;
 
   DatastoreIODetails();
 
@@ -4524,9 +4208,9 @@ class DatastoreIODetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (namespace != null) 'namespace': namespace,
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (namespace != null) 'namespace': namespace!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
@@ -4538,7 +4222,7 @@ class DeleteSnapshotResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Specification of one of the bundles produced as a result of splitting a
@@ -4556,10 +4240,10 @@ class DerivedSource {
   /// the Source being split.
   /// - "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT" : Produce a Source based on
   /// the base of the Source being split.
-  core.String derivationMode;
+  core.String? derivationMode;
 
   /// Specification of the source.
-  Source source;
+  Source? source;
 
   DerivedSource();
 
@@ -4573,9 +4257,9 @@ class DerivedSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (derivationMode != null) 'derivationMode': derivationMode,
-        if (source != null) 'source': source.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (derivationMode != null) 'derivationMode': derivationMode!,
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
@@ -4595,16 +4279,16 @@ class Disk {
   /// types are local to a particular project in a particular zone, and so the
   /// resource name will typically look something like this:
   /// compute.googleapis.com/projects/project-id/zones/zone/diskTypes/pd-standard
-  core.String diskType;
+  core.String? diskType;
 
   /// Directory in a VM where disk is mounted.
-  core.String mountPoint;
+  core.String? mountPoint;
 
   /// Size of disk in GB.
   ///
   /// If zero or unspecified, the service will attempt to choose a reasonable
   /// default.
-  core.int sizeGb;
+  core.int? sizeGb;
 
   Disk();
 
@@ -4620,38 +4304,38 @@ class Disk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (diskType != null) 'diskType': diskType,
-        if (mountPoint != null) 'mountPoint': mountPoint,
-        if (sizeGb != null) 'sizeGb': sizeGb,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (diskType != null) 'diskType': diskType!,
+        if (mountPoint != null) 'mountPoint': mountPoint!,
+        if (sizeGb != null) 'sizeGb': sizeGb!,
       };
 }
 
 /// Data provided with a pipeline or transform to provide descriptive info.
 class DisplayData {
   /// Contains value if the data is of a boolean type.
-  core.bool boolValue;
+  core.bool? boolValue;
 
   /// Contains value if the data is of duration type.
-  core.String durationValue;
+  core.String? durationValue;
 
   /// Contains value if the data is of float type.
-  core.double floatValue;
+  core.double? floatValue;
 
   /// Contains value if the data is of int64 type.
-  core.String int64Value;
+  core.String? int64Value;
 
   /// Contains value if the data is of java class type.
-  core.String javaClassValue;
+  core.String? javaClassValue;
 
   /// The key identifying the display data.
   ///
   /// This is intended to be used as a label for the display data when viewed in
   /// a dax monitoring system.
-  core.String key;
+  core.String? key;
 
   /// An optional label to display in a dax UI for the element.
-  core.String label;
+  core.String? label;
 
   /// The namespace for the key.
   ///
@@ -4659,7 +4343,7 @@ class DisplayData {
   /// python module) which defines the display data. This allows a dax
   /// monitoring system to specially handle the data and perform custom
   /// rendering.
-  core.String namespace;
+  core.String? namespace;
 
   /// A possible additional shorter value to display.
   ///
@@ -4667,16 +4351,16 @@ class DisplayData {
   /// with MyDoFn as the short_str_value and com.mypackage.MyDoFn as the
   /// java_class_name value. short_str_value can be displayed and
   /// java_class_name_value will be displayed as a tooltip.
-  core.String shortStrValue;
+  core.String? shortStrValue;
 
   /// Contains value if the data is of string type.
-  core.String strValue;
+  core.String? strValue;
 
   /// Contains value if the data is of timestamp type.
-  core.String timestampValue;
+  core.String? timestampValue;
 
   /// An optional full URL.
-  core.String url;
+  core.String? url;
 
   DisplayData();
 
@@ -4719,44 +4403,44 @@ class DisplayData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue,
-        if (durationValue != null) 'durationValue': durationValue,
-        if (floatValue != null) 'floatValue': floatValue,
-        if (int64Value != null) 'int64Value': int64Value,
-        if (javaClassValue != null) 'javaClassValue': javaClassValue,
-        if (key != null) 'key': key,
-        if (label != null) 'label': label,
-        if (namespace != null) 'namespace': namespace,
-        if (shortStrValue != null) 'shortStrValue': shortStrValue,
-        if (strValue != null) 'strValue': strValue,
-        if (timestampValue != null) 'timestampValue': timestampValue,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (durationValue != null) 'durationValue': durationValue!,
+        if (floatValue != null) 'floatValue': floatValue!,
+        if (int64Value != null) 'int64Value': int64Value!,
+        if (javaClassValue != null) 'javaClassValue': javaClassValue!,
+        if (key != null) 'key': key!,
+        if (label != null) 'label': label!,
+        if (namespace != null) 'namespace': namespace!,
+        if (shortStrValue != null) 'shortStrValue': shortStrValue!,
+        if (strValue != null) 'strValue': strValue!,
+        if (timestampValue != null) 'timestampValue': timestampValue!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// A metric value representing a distribution.
 class DistributionUpdate {
   /// The count of the number of elements present in the distribution.
-  SplitInt64 count;
+  SplitInt64? count;
 
   /// (Optional) Histogram of value counts for the distribution.
-  Histogram histogram;
+  Histogram? histogram;
 
   /// The maximum value present in the distribution.
-  SplitInt64 max;
+  SplitInt64? max;
 
   /// The minimum value present in the distribution.
-  SplitInt64 min;
+  SplitInt64? min;
 
   /// Use an int64 since we'd prefer the added precision.
   ///
   /// If overflow is a common problem we can detect it and use an additional
   /// int64 or a double.
-  SplitInt64 sum;
+  SplitInt64? sum;
 
   /// Use a double since the sum of squares is likely to overflow int64.
-  core.double sumOfSquares;
+  core.double? sumOfSquares;
 
   DistributionUpdate();
 
@@ -4786,13 +4470,13 @@ class DistributionUpdate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count.toJson(),
-        if (histogram != null) 'histogram': histogram.toJson(),
-        if (max != null) 'max': max.toJson(),
-        if (min != null) 'min': min.toJson(),
-        if (sum != null) 'sum': sum.toJson(),
-        if (sumOfSquares != null) 'sumOfSquares': sumOfSquares,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!.toJson(),
+        if (histogram != null) 'histogram': histogram!.toJson(),
+        if (max != null) 'max': max!.toJson(),
+        if (min != null) 'min': min!.toJson(),
+        if (sum != null) 'sum': sum!.toJson(),
+        if (sumOfSquares != null) 'sumOfSquares': sumOfSquares!,
       };
 }
 
@@ -4803,12 +4487,12 @@ class DynamicSourceSplit {
   /// Primary part (continued to be processed by worker).
   ///
   /// Specified relative to the previously-current source. Becomes current.
-  DerivedSource primary;
+  DerivedSource? primary;
 
   /// Residual part (returned to the pool of work).
   ///
   /// Specified relative to the previously-current source.
-  DerivedSource residual;
+  DerivedSource? residual;
 
   DynamicSourceSplit();
 
@@ -4823,9 +4507,9 @@ class DynamicSourceSplit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (primary != null) 'primary': primary.toJson(),
-        if (residual != null) 'residual': residual.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (primary != null) 'primary': primary!.toJson(),
+        if (residual != null) 'residual': residual!.toJson(),
       };
 }
 
@@ -4843,7 +4527,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Describes the environment in which a Dataflow Job runs.
@@ -4853,30 +4537,30 @@ class Environment {
   /// If unknown or unspecified, the service will attempt to choose a reasonable
   /// default. This should be in the form of the API service name, e.g.
   /// "compute.googleapis.com".
-  core.String clusterManagerApiService;
+  core.String? clusterManagerApiService;
 
   /// The dataset for the current project where various workflow related tables
   /// are stored.
   ///
   /// The supported resource type is: Google BigQuery:
   /// bigquery.googleapis.com/{dataset}
-  core.String dataset;
+  core.String? dataset;
 
   /// The list of experiments to enable.
-  core.List<core.String> experiments;
+  core.List<core.String>? experiments;
 
   /// Which Flexible Resource Scheduling mode to run in.
   /// Possible string values are:
   /// - "FLEXRS_UNSPECIFIED" : Run in the default mode.
   /// - "FLEXRS_SPEED_OPTIMIZED" : Optimize for lower execution time.
   /// - "FLEXRS_COST_OPTIMIZED" : Optimize for lower cost.
-  core.String flexResourceSchedulingGoal;
+  core.String? flexResourceSchedulingGoal;
 
   /// Experimental settings.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> internalExperiments;
+  core.Map<core.String, core.Object>? internalExperiments;
 
   /// The Cloud Dataflow SDK pipeline options specified by the user.
   ///
@@ -4886,19 +4570,19 @@ class Environment {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> sdkPipelineOptions;
+  core.Map<core.String, core.Object>? sdkPipelineOptions;
 
   /// Identity to run virtual machines as.
   ///
   /// Defaults to the default account.
-  core.String serviceAccountEmail;
+  core.String? serviceAccountEmail;
 
   /// If set, contains the Cloud KMS key identifier used to encrypt data at
   /// rest, AKA a Customer Managed Encryption Key (CMEK).
   ///
   /// Format:
   /// projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
-  core.String serviceKmsKeyName;
+  core.String? serviceKmsKeyName;
 
   /// The shuffle mode used for the job.
   ///
@@ -4907,7 +4591,7 @@ class Environment {
   /// - "SHUFFLE_MODE_UNSPECIFIED" : Shuffle mode information is not available.
   /// - "VM_BASED" : Shuffle is done on the worker VMs.
   /// - "SERVICE_BASED" : Shuffle is done on the service side.
-  core.String shuffleMode;
+  core.String? shuffleMode;
 
   /// The prefix of the resources the system should use for temporary storage.
   ///
@@ -4918,26 +4602,26 @@ class Environment {
   /// override the value in taskrunner_settings. The supported resource type is:
   /// Google Cloud Storage: storage.googleapis.com/{bucket}/{object}
   /// bucket.storage.googleapis.com/{object}
-  core.String tempStoragePrefix;
+  core.String? tempStoragePrefix;
 
   /// A description of the process that generated the request.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> userAgent;
+  core.Map<core.String, core.Object>? userAgent;
 
   /// A structure describing which components and their versions of the service
   /// are required in order to run the job.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> version;
+  core.Map<core.String, core.Object>? version;
 
   /// The worker pools.
   ///
   /// At least one "harness" worker pool must be specified in order for the job
   /// to have workers.
-  core.List<WorkerPool> workerPools;
+  core.List<WorkerPool>? workerPools;
 
   /// The Compute Engine region
   /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
@@ -4945,7 +4629,7 @@ class Environment {
   ///
   /// Mutually exclusive with worker_zone. If neither worker_region nor
   /// worker_zone is specified, default to the control plane's region.
-  core.String workerRegion;
+  core.String? workerRegion;
 
   /// The Compute Engine zone
   /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
@@ -4954,7 +4638,7 @@ class Environment {
   /// Mutually exclusive with worker_region. If neither worker_region nor
   /// worker_zone is specified, a zone in the control plane's region is chosen
   /// based on available capacity.
-  core.String workerZone;
+  core.String? workerZone;
 
   Environment();
 
@@ -5039,38 +4723,38 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clusterManagerApiService != null)
-          'clusterManagerApiService': clusterManagerApiService,
-        if (dataset != null) 'dataset': dataset,
-        if (experiments != null) 'experiments': experiments,
+          'clusterManagerApiService': clusterManagerApiService!,
+        if (dataset != null) 'dataset': dataset!,
+        if (experiments != null) 'experiments': experiments!,
         if (flexResourceSchedulingGoal != null)
-          'flexResourceSchedulingGoal': flexResourceSchedulingGoal,
+          'flexResourceSchedulingGoal': flexResourceSchedulingGoal!,
         if (internalExperiments != null)
-          'internalExperiments': internalExperiments,
+          'internalExperiments': internalExperiments!,
         if (sdkPipelineOptions != null)
-          'sdkPipelineOptions': sdkPipelineOptions,
+          'sdkPipelineOptions': sdkPipelineOptions!,
         if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail,
-        if (serviceKmsKeyName != null) 'serviceKmsKeyName': serviceKmsKeyName,
-        if (shuffleMode != null) 'shuffleMode': shuffleMode,
-        if (tempStoragePrefix != null) 'tempStoragePrefix': tempStoragePrefix,
-        if (userAgent != null) 'userAgent': userAgent,
-        if (version != null) 'version': version,
+          'serviceAccountEmail': serviceAccountEmail!,
+        if (serviceKmsKeyName != null) 'serviceKmsKeyName': serviceKmsKeyName!,
+        if (shuffleMode != null) 'shuffleMode': shuffleMode!,
+        if (tempStoragePrefix != null) 'tempStoragePrefix': tempStoragePrefix!,
+        if (userAgent != null) 'userAgent': userAgent!,
+        if (version != null) 'version': version!,
         if (workerPools != null)
-          'workerPools': workerPools.map((value) => value.toJson()).toList(),
-        if (workerRegion != null) 'workerRegion': workerRegion,
-        if (workerZone != null) 'workerZone': workerZone,
+          'workerPools': workerPools!.map((value) => value.toJson()).toList(),
+        if (workerRegion != null) 'workerRegion': workerRegion!,
+        if (workerZone != null) 'workerZone': workerZone!,
       };
 }
 
 /// A message describing the state of a particular execution stage.
 class ExecutionStageState {
   /// The time at which the stage transitioned to this state.
-  core.String currentStateTime;
+  core.String? currentStateTime;
 
   /// The name of the execution stage.
-  core.String executionStageName;
+  core.String? executionStageName;
 
   /// Executions stage states allow the same set of values as JobState.
   /// Possible string values are:
@@ -5121,7 +4805,7 @@ class ExecutionStageState {
   /// indicates that the batch job's associated resources are currently being
   /// cleaned up after a successful run. Currently, this is an opt-in feature,
   /// please reach out to Cloud support team if you are intersted.
-  core.String executionStageState;
+  core.String? executionStageState;
 
   ExecutionStageState();
 
@@ -5137,12 +4821,12 @@ class ExecutionStageState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currentStateTime != null) 'currentStateTime': currentStateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currentStateTime != null) 'currentStateTime': currentStateTime!,
         if (executionStageName != null)
-          'executionStageName': executionStageName,
+          'executionStageName': executionStageName!,
         if (executionStageState != null)
-          'executionStageState': executionStageState,
+          'executionStageState': executionStageState!,
       };
 }
 
@@ -5153,16 +4837,16 @@ class ExecutionStageState {
 /// Dataflow service during execution planning.
 class ExecutionStageSummary {
   /// Collections produced and consumed by component transforms of this stage.
-  core.List<ComponentSource> componentSource;
+  core.List<ComponentSource>? componentSource;
 
   /// Transforms that comprise this execution stage.
-  core.List<ComponentTransform> componentTransform;
+  core.List<ComponentTransform>? componentTransform;
 
   /// Dataflow service generated id for this stage.
-  core.String id;
+  core.String? id;
 
   /// Input sources for this stage.
-  core.List<StageSource> inputSource;
+  core.List<StageSource>? inputSource;
 
   /// Type of tranform this stage is executing.
   /// Possible string values are:
@@ -5177,16 +4861,16 @@ class ExecutionStageSummary {
   /// - "SINGLETON_KIND" : Creates a Singleton view of a collection.
   /// - "SHUFFLE_KIND" : Opening or closing a shuffle session, often as part of
   /// a GroupByKey.
-  core.String kind;
+  core.String? kind;
 
   /// Dataflow service generated name for this stage.
-  core.String name;
+  core.String? name;
 
   /// Output sources for this stage.
-  core.List<StageSource> outputSource;
+  core.List<StageSource>? outputSource;
 
   /// Other stages that must complete before this stage can run.
-  core.List<core.String> prerequisiteStage;
+  core.List<core.String>? prerequisiteStage;
 
   ExecutionStageSummary();
 
@@ -5231,21 +4915,21 @@ class ExecutionStageSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (componentSource != null)
           'componentSource':
-              componentSource.map((value) => value.toJson()).toList(),
+              componentSource!.map((value) => value.toJson()).toList(),
         if (componentTransform != null)
           'componentTransform':
-              componentTransform.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id,
+              componentTransform!.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id!,
         if (inputSource != null)
-          'inputSource': inputSource.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+          'inputSource': inputSource!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
         if (outputSource != null)
-          'outputSource': outputSource.map((value) => value.toJson()).toList(),
-        if (prerequisiteStage != null) 'prerequisiteStage': prerequisiteStage,
+          'outputSource': outputSource!.map((value) => value.toJson()).toList(),
+        if (prerequisiteStage != null) 'prerequisiteStage': prerequisiteStage!,
       };
 }
 
@@ -5256,7 +4940,7 @@ class FailedLocation {
   /// The name of the
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that failed to respond.
-  core.String name;
+  core.String? name;
 
   FailedLocation();
 
@@ -5266,15 +4950,15 @@ class FailedLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
 /// Metadata for a File connector used by the job.
 class FileIODetails {
   /// File Pattern used to access files by the connector.
-  core.String filePattern;
+  core.String? filePattern;
 
   FileIODetails();
 
@@ -5284,15 +4968,15 @@ class FileIODetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (filePattern != null) 'filePattern': filePattern,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (filePattern != null) 'filePattern': filePattern!,
       };
 }
 
 /// An instruction that copies its inputs (zero or more) to its (single) output.
 class FlattenInstruction {
   /// Describes the inputs to the flatten instruction.
-  core.List<InstructionInput> inputs;
+  core.List<InstructionInput>? inputs;
 
   FlattenInstruction();
 
@@ -5305,16 +4989,16 @@ class FlattenInstruction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (inputs != null)
-          'inputs': inputs.map((value) => value.toJson()).toList(),
+          'inputs': inputs!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The environment values to be set at runtime for flex template.
 class FlexTemplateRuntimeEnvironment {
   /// Additional experiment flags for the job.
-  core.List<core.String> additionalExperiments;
+  core.List<core.String>? additionalExperiments;
 
   /// Additional user labels to be specified for the job.
   ///
@@ -5322,10 +5006,10 @@ class FlexTemplateRuntimeEnvironment {
   /// [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
   /// page. An object containing a list of "key": value pairs. Example: {
   /// "name": "wrench", "mass": "1kg", "count": "3" }.
-  core.Map<core.String, core.String> additionalUserLabels;
+  core.Map<core.String, core.String>? additionalUserLabels;
 
   /// Whether to enable Streaming Engine for the job.
-  core.bool enableStreamingEngine;
+  core.bool? enableStreamingEngine;
 
   /// Set FlexRS goal for the job.
   ///
@@ -5334,39 +5018,39 @@ class FlexTemplateRuntimeEnvironment {
   /// - "FLEXRS_UNSPECIFIED" : Run in the default mode.
   /// - "FLEXRS_SPEED_OPTIMIZED" : Optimize for lower execution time.
   /// - "FLEXRS_COST_OPTIMIZED" : Optimize for lower cost.
-  core.String flexrsGoal;
+  core.String? flexrsGoal;
 
   /// Configuration for VM IPs.
   /// Possible string values are:
   /// - "WORKER_IP_UNSPECIFIED" : The configuration is unknown, or unspecified.
   /// - "WORKER_IP_PUBLIC" : Workers should have public IP addresses.
   /// - "WORKER_IP_PRIVATE" : Workers should have private IP addresses.
-  core.String ipConfiguration;
+  core.String? ipConfiguration;
 
   /// Name for the Cloud KMS key for the job.
   ///
   /// Key format is: projects//locations//keyRings//cryptoKeys/
-  core.String kmsKeyName;
+  core.String? kmsKeyName;
 
   /// The machine type to use for the job.
   ///
   /// Defaults to the value from the template if not specified.
-  core.String machineType;
+  core.String? machineType;
 
   /// The maximum number of Google Compute Engine instances to be made available
   /// to your pipeline during execution, from 1 to 1000.
-  core.int maxWorkers;
+  core.int? maxWorkers;
 
   /// Network to which VMs will be assigned.
   ///
   /// If empty or unspecified, the service will use the network "default".
-  core.String network;
+  core.String? network;
 
   /// The initial number of Google Compute Engine instances for the job.
-  core.int numWorkers;
+  core.int? numWorkers;
 
   /// The email address of the service account to run the job as.
-  core.String serviceAccountEmail;
+  core.String? serviceAccountEmail;
 
   /// Subnetwork to which VMs will be assigned, if desired.
   ///
@@ -5375,12 +5059,12 @@ class FlexTemplateRuntimeEnvironment {
   /// "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK"
   /// or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located
   /// in a Shared VPC network, you must use the complete URL.
-  core.String subnetwork;
+  core.String? subnetwork;
 
   /// The Cloud Storage path to use for temporary files.
   ///
   /// Must be a valid Cloud Storage URL, beginning with `gs://`.
-  core.String tempLocation;
+  core.String? tempLocation;
 
   /// The Compute Engine region
   /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
@@ -5388,7 +5072,7 @@ class FlexTemplateRuntimeEnvironment {
   ///
   /// Mutually exclusive with worker_zone. If neither worker_region nor
   /// worker_zone is specified, default to the control plane's region.
-  core.String workerRegion;
+  core.String? workerRegion;
 
   /// The Compute Engine zone
   /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
@@ -5398,14 +5082,14 @@ class FlexTemplateRuntimeEnvironment {
   /// worker_zone is specified, a zone in the control plane's region is chosen
   /// based on available capacity. If both `worker_zone` and `zone` are set,
   /// `worker_zone` takes precedence.
-  core.String workerZone;
+  core.String? workerZone;
 
   /// The Compute Engine
   /// [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
   /// for launching worker instances to run your pipeline.
   ///
   /// In the future, worker_zone will take precedence.
-  core.String zone;
+  core.String? zone;
 
   FlexTemplateRuntimeEnvironment();
 
@@ -5469,34 +5153,34 @@ class FlexTemplateRuntimeEnvironment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additionalExperiments != null)
-          'additionalExperiments': additionalExperiments,
+          'additionalExperiments': additionalExperiments!,
         if (additionalUserLabels != null)
-          'additionalUserLabels': additionalUserLabels,
+          'additionalUserLabels': additionalUserLabels!,
         if (enableStreamingEngine != null)
-          'enableStreamingEngine': enableStreamingEngine,
-        if (flexrsGoal != null) 'flexrsGoal': flexrsGoal,
-        if (ipConfiguration != null) 'ipConfiguration': ipConfiguration,
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
-        if (machineType != null) 'machineType': machineType,
-        if (maxWorkers != null) 'maxWorkers': maxWorkers,
-        if (network != null) 'network': network,
-        if (numWorkers != null) 'numWorkers': numWorkers,
+          'enableStreamingEngine': enableStreamingEngine!,
+        if (flexrsGoal != null) 'flexrsGoal': flexrsGoal!,
+        if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (machineType != null) 'machineType': machineType!,
+        if (maxWorkers != null) 'maxWorkers': maxWorkers!,
+        if (network != null) 'network': network!,
+        if (numWorkers != null) 'numWorkers': numWorkers!,
         if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail,
-        if (subnetwork != null) 'subnetwork': subnetwork,
-        if (tempLocation != null) 'tempLocation': tempLocation,
-        if (workerRegion != null) 'workerRegion': workerRegion,
-        if (workerZone != null) 'workerZone': workerZone,
-        if (zone != null) 'zone': zone,
+          'serviceAccountEmail': serviceAccountEmail!,
+        if (subnetwork != null) 'subnetwork': subnetwork!,
+        if (tempLocation != null) 'tempLocation': tempLocation!,
+        if (workerRegion != null) 'workerRegion': workerRegion!,
+        if (workerZone != null) 'workerZone': workerZone!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
 /// A metric value representing a list of floating point numbers.
 class FloatingPointList {
   /// Elements of the list.
-  core.List<core.double> elements;
+  core.List<core.double>? elements;
 
   FloatingPointList();
 
@@ -5508,18 +5192,18 @@ class FloatingPointList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (elements != null) 'elements': elements,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (elements != null) 'elements': elements!,
       };
 }
 
 /// A representation of a floating point mean metric contribution.
 class FloatingPointMean {
   /// The number of values being aggregated.
-  SplitInt64 count;
+  SplitInt64? count;
 
   /// The sum of all values being aggregated.
-  core.double sum;
+  core.double? sum;
 
   FloatingPointMean();
 
@@ -5533,24 +5217,24 @@ class FloatingPointMean {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count.toJson(),
-        if (sum != null) 'sum': sum,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!.toJson(),
+        if (sum != null) 'sum': sum!,
       };
 }
 
 /// Request to get updated debug configuration for component.
 class GetDebugConfigRequest {
   /// The internal component id for which debug configuration is requested.
-  core.String componentId;
+  core.String? componentId;
 
   /// The
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the job specified by job_id.
-  core.String location;
+  core.String? location;
 
   /// The worker id, i.e., VM hostname.
-  core.String workerId;
+  core.String? workerId;
 
   GetDebugConfigRequest();
 
@@ -5566,17 +5250,17 @@ class GetDebugConfigRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (componentId != null) 'componentId': componentId,
-        if (location != null) 'location': location,
-        if (workerId != null) 'workerId': workerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (componentId != null) 'componentId': componentId!,
+        if (location != null) 'location': location!,
+        if (workerId != null) 'workerId': workerId!,
       };
 }
 
 /// Response to a get debug configuration request.
 class GetDebugConfigResponse {
   /// The encoded debug configuration for the requested component.
-  core.String config;
+  core.String? config;
 
   GetDebugConfigResponse();
 
@@ -5586,8 +5270,8 @@ class GetDebugConfigResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (config != null) 'config': config,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (config != null) 'config': config!,
       };
 }
 
@@ -5595,22 +5279,22 @@ class GetDebugConfigResponse {
 class GetTemplateResponse {
   /// The template metadata describing the template name, available parameters,
   /// etc.
-  TemplateMetadata metadata;
+  TemplateMetadata? metadata;
 
   /// Describes the runtime metadata with SDKInfo and available parameters.
-  RuntimeMetadata runtimeMetadata;
+  RuntimeMetadata? runtimeMetadata;
 
   /// The status of the get template request.
   ///
   /// Any problems with the request will be indicated in the error_details.
-  Status status;
+  Status? status;
 
   /// Template Type.
   /// Possible string values are:
   /// - "UNKNOWN" : Unknown Template Type.
   /// - "LEGACY" : Legacy Template.
   /// - "FLEX" : Flex Template.
-  core.String templateType;
+  core.String? templateType;
 
   GetTemplateResponse();
 
@@ -5632,12 +5316,12 @@ class GetTemplateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metadata != null) 'metadata': metadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metadata != null) 'metadata': metadata!.toJson(),
         if (runtimeMetadata != null)
-          'runtimeMetadata': runtimeMetadata.toJson(),
-        if (status != null) 'status': status.toJson(),
-        if (templateType != null) 'templateType': templateType,
+          'runtimeMetadata': runtimeMetadata!.toJson(),
+        if (status != null) 'status': status!.toJson(),
+        if (templateType != null) 'templateType': templateType!,
       };
 }
 
@@ -5654,13 +5338,13 @@ class Histogram {
   /// For efficiency, prefix and trailing buckets with count = 0 are elided.
   /// Buckets can store the full range of values of an unsigned long, with
   /// ULLONG_MAX falling into the 59th bucket with range \[1e19, 2e19).
-  core.List<core.String> bucketCounts;
+  core.List<core.String>? bucketCounts;
 
   /// Starting index of first stored bucket.
   ///
   /// The non-inclusive upper-bound of the ith bucket is given by:
   /// pow(10,(i-first_bucket_offset)/3) * (1,2,5)\[(i-first_bucket_offset)%3\]
-  core.int firstBucketOffset;
+  core.int? firstBucketOffset;
 
   Histogram();
 
@@ -5675,24 +5359,24 @@ class Histogram {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bucketCounts != null) 'bucketCounts': bucketCounts,
-        if (firstBucketOffset != null) 'firstBucketOffset': firstBucketOffset,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bucketCounts != null) 'bucketCounts': bucketCounts!,
+        if (firstBucketOffset != null) 'firstBucketOffset': firstBucketOffset!,
       };
 }
 
 /// Proto describing a hot key detected on a given WorkItem.
 class HotKeyDetection {
   /// The age of the hot key measured from when it was first detected.
-  core.String hotKeyAge;
+  core.String? hotKeyAge;
 
   /// System-defined name of the step containing this hot key.
   ///
   /// Unique across the workflow.
-  core.String systemName;
+  core.String? systemName;
 
   /// User-provided name of the step that contains this hot key.
-  core.String userStepName;
+  core.String? userStepName;
 
   HotKeyDetection();
 
@@ -5708,10 +5392,10 @@ class HotKeyDetection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hotKeyAge != null) 'hotKeyAge': hotKeyAge,
-        if (systemName != null) 'systemName': systemName,
-        if (userStepName != null) 'userStepName': userStepName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hotKeyAge != null) 'hotKeyAge': hotKeyAge!,
+        if (systemName != null) 'systemName': systemName!,
+        if (userStepName != null) 'userStepName': userStepName!,
       };
 }
 
@@ -5719,14 +5403,14 @@ class HotKeyDetection {
 /// instruction.
 class InstructionInput {
   /// The output index (origin zero) within the producer.
-  core.int outputNum;
+  core.int? outputNum;
 
   /// The index (origin zero) of the parallel instruction that produces the
   /// output to be consumed by this input.
   ///
   /// This index is relative to the list of instructions in this input's
   /// instruction's containing MapTask.
-  core.int producerInstructionIndex;
+  core.int? producerInstructionIndex;
 
   InstructionInput();
 
@@ -5739,10 +5423,10 @@ class InstructionInput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (outputNum != null) 'outputNum': outputNum,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (outputNum != null) 'outputNum': outputNum!,
         if (producerInstructionIndex != null)
-          'producerInstructionIndex': producerInstructionIndex,
+          'producerInstructionIndex': producerInstructionIndex!,
       };
 }
 
@@ -5752,28 +5436,28 @@ class InstructionOutput {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> codec;
+  core.Map<core.String, core.Object>? codec;
 
   /// The user-provided name of this output.
-  core.String name;
+  core.String? name;
 
   /// For system-generated byte and mean byte metrics, certain instructions
   /// should only report the key size.
-  core.bool onlyCountKeyBytes;
+  core.bool? onlyCountKeyBytes;
 
   /// For system-generated byte and mean byte metrics, certain instructions
   /// should only report the value size.
-  core.bool onlyCountValueBytes;
+  core.bool? onlyCountValueBytes;
 
   /// System-defined name for this output in the original workflow graph.
   ///
   /// Outputs that do not contribute to an original instruction do not set this.
-  core.String originalName;
+  core.String? originalName;
 
   /// System-defined name of this output.
   ///
   /// Unique across the workflow.
-  core.String systemName;
+  core.String? systemName;
 
   InstructionOutput();
 
@@ -5803,14 +5487,14 @@ class InstructionOutput {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (codec != null) 'codec': codec,
-        if (name != null) 'name': name,
-        if (onlyCountKeyBytes != null) 'onlyCountKeyBytes': onlyCountKeyBytes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (codec != null) 'codec': codec!,
+        if (name != null) 'name': name!,
+        if (onlyCountKeyBytes != null) 'onlyCountKeyBytes': onlyCountKeyBytes!,
         if (onlyCountValueBytes != null)
-          'onlyCountValueBytes': onlyCountValueBytes,
-        if (originalName != null) 'originalName': originalName,
-        if (systemName != null) 'systemName': systemName,
+          'onlyCountValueBytes': onlyCountValueBytes!,
+        if (originalName != null) 'originalName': originalName!,
+        if (systemName != null) 'systemName': systemName!,
       };
 }
 
@@ -5819,10 +5503,10 @@ class IntegerGauge {
   /// The time at which this value was measured.
   ///
   /// Measured as msecs from epoch.
-  core.String timestamp;
+  core.String? timestamp;
 
   /// The value of the variable represented by this gauge.
-  SplitInt64 value;
+  SplitInt64? value;
 
   IntegerGauge();
 
@@ -5836,16 +5520,16 @@ class IntegerGauge {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (timestamp != null) 'timestamp': timestamp,
-        if (value != null) 'value': value.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (timestamp != null) 'timestamp': timestamp!,
+        if (value != null) 'value': value!.toJson(),
       };
 }
 
 /// A metric value representing a list of integers.
 class IntegerList {
   /// Elements of the list.
-  core.List<SplitInt64> elements;
+  core.List<SplitInt64>? elements;
 
   IntegerList();
 
@@ -5858,19 +5542,19 @@ class IntegerList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (elements != null)
-          'elements': elements.map((value) => value.toJson()).toList(),
+          'elements': elements!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A representation of an integer mean metric contribution.
 class IntegerMean {
   /// The number of values being aggregated.
-  SplitInt64 count;
+  SplitInt64? count;
 
   /// The sum of all values being aggregated.
-  SplitInt64 sum;
+  SplitInt64? sum;
 
   IntegerMean();
 
@@ -5885,9 +5569,9 @@ class IntegerMean {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count.toJson(),
-        if (sum != null) 'sum': sum.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!.toJson(),
+        if (sum != null) 'sum': sum!.toJson(),
       };
 }
 
@@ -5904,16 +5588,16 @@ class Job {
   /// this field to ensure idempotence of job creation across retried attempts
   /// to create a job. By default, the field is empty and, in that case, the
   /// service ignores it.
-  core.String clientRequestId;
+  core.String? clientRequestId;
 
   /// The timestamp when the job was initially created.
   ///
   /// Immutable and set by the Cloud Dataflow service.
-  core.String createTime;
+  core.String? createTime;
 
   /// If this is specified, the job's initial state is populated from the given
   /// snapshot.
-  core.String createdFromSnapshotId;
+  core.String? createdFromSnapshotId;
 
   /// The current state of the job.
   ///
@@ -5970,28 +5654,28 @@ class Job {
   /// indicates that the batch job's associated resources are currently being
   /// cleaned up after a successful run. Currently, this is an opt-in feature,
   /// please reach out to Cloud support team if you are intersted.
-  core.String currentState;
+  core.String? currentState;
 
   /// The timestamp associated with the current state.
-  core.String currentStateTime;
+  core.String? currentStateTime;
 
   /// The environment for the job.
-  Environment environment;
+  Environment? environment;
 
   /// Deprecated.
-  JobExecutionInfo executionInfo;
+  JobExecutionInfo? executionInfo;
 
   /// The unique ID of this job.
   ///
   /// This field is set by the Cloud Dataflow service when the Job is created,
   /// and is immutable for the life of the job.
-  core.String id;
+  core.String? id;
 
   /// This field is populated by the Dataflow service to support filtering jobs
   /// by the metadata values provided here.
   ///
   /// Populated for ListJobs and all GetJob views SUMMARY and higher.
-  JobMetadata jobMetadata;
+  JobMetadata? jobMetadata;
 
   /// User-defined labels for this job.
   ///
@@ -6000,12 +5684,12 @@ class Job {
   /// must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to
   /// regexp: \[\p{Ll}\p{Lo}\p{N}_-\]{0,63} * Both keys and values are
   /// additionally constrained to be <= 128 bytes in size.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
-  core.String location;
+  core.String? location;
 
   /// The user-specified Cloud Dataflow job name.
   ///
@@ -6013,17 +5697,17 @@ class Job {
   /// If a caller attempts to create a Job with the same name as an
   /// already-existing Job, the attempt returns the existing Job. The name must
   /// match the regular expression `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
-  core.String name;
+  core.String? name;
 
   /// Preliminary field: The format of this data may change at any time.
   ///
   /// A description of the user pipeline and stages through which it is
   /// executed. Created by Cloud Dataflow service. Only retrieved with
   /// JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
-  PipelineDescription pipelineDescription;
+  PipelineDescription? pipelineDescription;
 
   /// The ID of the Cloud Platform project that the job belongs to.
-  core.String projectId;
+  core.String? projectId;
 
   /// If this job is an update of an existing job, this field is the job ID of
   /// the job it replaced.
@@ -6031,11 +5715,11 @@ class Job {
   /// When sending a `CreateJobRequest`, you can update a job by specifying it
   /// here. The job named here is stopped, and its intermediate state is
   /// transferred to this job.
-  core.String replaceJobId;
+  core.String? replaceJobId;
 
   /// If another job is an update of this job (and thus, this job is in
   /// `JOB_STATE_UPDATED`), this field contains the ID of that job.
-  core.String replacedByJobId;
+  core.String? replacedByJobId;
 
   /// The job's requested state.
   ///
@@ -6092,17 +5776,17 @@ class Job {
   /// indicates that the batch job's associated resources are currently being
   /// cleaned up after a successful run. Currently, this is an opt-in feature,
   /// please reach out to Cloud support team if you are intersted.
-  core.String requestedState;
+  core.String? requestedState;
 
   /// Reserved for future use.
   ///
   /// This field is set only in responses from the server; it is ignored if it
   /// is set in any requests.
-  core.bool satisfiesPzs;
+  core.bool? satisfiesPzs;
 
   /// This field may be mutated by the Cloud Dataflow service; callers cannot
   /// mutate it.
-  core.List<ExecutionStageState> stageStates;
+  core.List<ExecutionStageState>? stageStates;
 
   /// The timestamp when the job was started (transitioned to
   /// JOB_STATE_PENDING).
@@ -6112,16 +5796,16 @@ class Job {
   /// is started by the Cloud Dataflow service. For other jobs, start_time
   /// always equals to create_time and is immutable and set by the Cloud
   /// Dataflow service.
-  core.String startTime;
+  core.String? startTime;
 
   /// Exactly one of step or steps_location should be specified.
   ///
   /// The top-level steps that constitute the entire job. Only retrieved with
   /// JOB_VIEW_ALL.
-  core.List<Step> steps;
+  core.List<Step>? steps;
 
   /// The GCS location where the steps are stored.
-  core.String stepsLocation;
+  core.String? stepsLocation;
 
   /// A set of files the system should be aware of that are used for temporary
   /// storage.
@@ -6130,11 +5814,11 @@ class Job {
   /// allowed. No file patterns are supported. The supported files are: Google
   /// Cloud Storage: storage.googleapis.com/{bucket}/{object}
   /// bucket.storage.googleapis.com/{object}
-  core.List<core.String> tempFiles;
+  core.List<core.String>? tempFiles;
 
   /// The map of transform name prefixes of the job to be replaced to the
   /// corresponding name prefixes of the new job.
-  core.Map<core.String, core.String> transformNameMapping;
+  core.Map<core.String, core.String>? transformNameMapping;
 
   /// The type of Cloud Dataflow job.
   /// Possible string values are:
@@ -6143,7 +5827,7 @@ class Job {
   /// read, data is processed, data is written, and the job is done.
   /// - "JOB_TYPE_STREAMING" : A continuously streaming job with no end: data is
   /// read, processed, and written continuously.
-  core.String type;
+  core.String? type;
 
   Job();
 
@@ -6250,37 +5934,37 @@ class Job {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clientRequestId != null) 'clientRequestId': clientRequestId,
-        if (createTime != null) 'createTime': createTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clientRequestId != null) 'clientRequestId': clientRequestId!,
+        if (createTime != null) 'createTime': createTime!,
         if (createdFromSnapshotId != null)
-          'createdFromSnapshotId': createdFromSnapshotId,
-        if (currentState != null) 'currentState': currentState,
-        if (currentStateTime != null) 'currentStateTime': currentStateTime,
-        if (environment != null) 'environment': environment.toJson(),
-        if (executionInfo != null) 'executionInfo': executionInfo.toJson(),
-        if (id != null) 'id': id,
-        if (jobMetadata != null) 'jobMetadata': jobMetadata.toJson(),
-        if (labels != null) 'labels': labels,
-        if (location != null) 'location': location,
-        if (name != null) 'name': name,
+          'createdFromSnapshotId': createdFromSnapshotId!,
+        if (currentState != null) 'currentState': currentState!,
+        if (currentStateTime != null) 'currentStateTime': currentStateTime!,
+        if (environment != null) 'environment': environment!.toJson(),
+        if (executionInfo != null) 'executionInfo': executionInfo!.toJson(),
+        if (id != null) 'id': id!,
+        if (jobMetadata != null) 'jobMetadata': jobMetadata!.toJson(),
+        if (labels != null) 'labels': labels!,
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
         if (pipelineDescription != null)
-          'pipelineDescription': pipelineDescription.toJson(),
-        if (projectId != null) 'projectId': projectId,
-        if (replaceJobId != null) 'replaceJobId': replaceJobId,
-        if (replacedByJobId != null) 'replacedByJobId': replacedByJobId,
-        if (requestedState != null) 'requestedState': requestedState,
-        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs,
+          'pipelineDescription': pipelineDescription!.toJson(),
+        if (projectId != null) 'projectId': projectId!,
+        if (replaceJobId != null) 'replaceJobId': replaceJobId!,
+        if (replacedByJobId != null) 'replacedByJobId': replacedByJobId!,
+        if (requestedState != null) 'requestedState': requestedState!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (stageStates != null)
-          'stageStates': stageStates.map((value) => value.toJson()).toList(),
-        if (startTime != null) 'startTime': startTime,
+          'stageStates': stageStates!.map((value) => value.toJson()).toList(),
+        if (startTime != null) 'startTime': startTime!,
         if (steps != null)
-          'steps': steps.map((value) => value.toJson()).toList(),
-        if (stepsLocation != null) 'stepsLocation': stepsLocation,
-        if (tempFiles != null) 'tempFiles': tempFiles,
+          'steps': steps!.map((value) => value.toJson()).toList(),
+        if (stepsLocation != null) 'stepsLocation': stepsLocation!,
+        if (tempFiles != null) 'tempFiles': tempFiles!,
         if (transformNameMapping != null)
-          'transformNameMapping': transformNameMapping,
-        if (type != null) 'type': type,
+          'transformNameMapping': transformNameMapping!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -6290,10 +5974,10 @@ class JobExecutionDetails {
   ///
   /// To obtain the next page of results, repeat the request with page_token set
   /// to this value.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The stages of the job execution.
-  core.List<StageSummary> stages;
+  core.List<StageSummary>? stages;
 
   JobExecutionDetails();
 
@@ -6309,10 +5993,10 @@ class JobExecutionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (stages != null)
-          'stages': stages.map((value) => value.toJson()).toList(),
+          'stages': stages!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6320,13 +6004,15 @@ class JobExecutionDetails {
 /// isn't contained in the submitted job.
 class JobExecutionInfo {
   /// A mapping from each stage to the information about that stage.
-  core.Map<core.String, JobExecutionStageInfo> stages;
+  core.Map<core.String, JobExecutionStageInfo>? stages;
 
   JobExecutionInfo();
 
   JobExecutionInfo.fromJson(core.Map _json) {
     if (_json.containsKey('stages')) {
-      stages = (_json['stages'] as core.Map).cast<core.String, core.Map>().map(
+      stages = (_json['stages'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               JobExecutionStageInfo.fromJson(
@@ -6336,10 +6022,10 @@ class JobExecutionInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (stages != null)
           'stages':
-              stages.map((key, item) => core.MapEntry(key, item.toJson())),
+              stages!.map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
 
@@ -6350,7 +6036,7 @@ class JobExecutionStageInfo {
   ///
   /// Note that stages may have several steps, and that a given step might be
   /// run by more than one stage.
-  core.List<core.String> stepName;
+  core.List<core.String>? stepName;
 
   JobExecutionStageInfo();
 
@@ -6362,15 +6048,15 @@ class JobExecutionStageInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (stepName != null) 'stepName': stepName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (stepName != null) 'stepName': stepName!,
       };
 }
 
 /// A particular message pertaining to a Dataflow job.
 class JobMessage {
   /// Deprecated.
-  core.String id;
+  core.String? id;
 
   /// Importance level of the message.
   /// Possible string values are:
@@ -6397,13 +6083,13 @@ class JobMessage {
   /// condition preventing a job from succeeding. Typically, Dataflow pipeline
   /// runners display log messages at this level by default, and these messages
   /// are displayed by default in the Dataflow monitoring UI.
-  core.String messageImportance;
+  core.String? messageImportance;
 
   /// The text of the message.
-  core.String messageText;
+  core.String? messageText;
 
   /// The timestamp of the message.
-  core.String time;
+  core.String? time;
 
   JobMessage();
 
@@ -6422,11 +6108,11 @@ class JobMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (messageImportance != null) 'messageImportance': messageImportance,
-        if (messageText != null) 'messageText': messageText,
-        if (time != null) 'time': time,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (messageImportance != null) 'messageImportance': messageImportance!,
+        if (messageText != null) 'messageText': messageText!,
+        if (time != null) 'time': time!,
       };
 }
 
@@ -6435,25 +6121,25 @@ class JobMessage {
 /// Will be included in the ListJob response and Job SUMMARY view.
 class JobMetadata {
   /// Identification of a BigTable source used in the Dataflow job.
-  core.List<BigTableIODetails> bigTableDetails;
+  core.List<BigTableIODetails>? bigTableDetails;
 
   /// Identification of a BigQuery source used in the Dataflow job.
-  core.List<BigQueryIODetails> bigqueryDetails;
+  core.List<BigQueryIODetails>? bigqueryDetails;
 
   /// Identification of a Datastore source used in the Dataflow job.
-  core.List<DatastoreIODetails> datastoreDetails;
+  core.List<DatastoreIODetails>? datastoreDetails;
 
   /// Identification of a File source used in the Dataflow job.
-  core.List<FileIODetails> fileDetails;
+  core.List<FileIODetails>? fileDetails;
 
   /// Identification of a PubSub source used in the Dataflow job.
-  core.List<PubSubIODetails> pubsubDetails;
+  core.List<PubSubIODetails>? pubsubDetails;
 
   /// The SDK version used to run the job.
-  SdkVersion sdkVersion;
+  SdkVersion? sdkVersion;
 
   /// Identification of a Spanner source used in the Dataflow job.
-  core.List<SpannerIODetails> spannerDetails;
+  core.List<SpannerIODetails>? spannerDetails;
 
   JobMetadata();
 
@@ -6500,25 +6186,25 @@ class JobMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bigTableDetails != null)
           'bigTableDetails':
-              bigTableDetails.map((value) => value.toJson()).toList(),
+              bigTableDetails!.map((value) => value.toJson()).toList(),
         if (bigqueryDetails != null)
           'bigqueryDetails':
-              bigqueryDetails.map((value) => value.toJson()).toList(),
+              bigqueryDetails!.map((value) => value.toJson()).toList(),
         if (datastoreDetails != null)
           'datastoreDetails':
-              datastoreDetails.map((value) => value.toJson()).toList(),
+              datastoreDetails!.map((value) => value.toJson()).toList(),
         if (fileDetails != null)
-          'fileDetails': fileDetails.map((value) => value.toJson()).toList(),
+          'fileDetails': fileDetails!.map((value) => value.toJson()).toList(),
         if (pubsubDetails != null)
           'pubsubDetails':
-              pubsubDetails.map((value) => value.toJson()).toList(),
-        if (sdkVersion != null) 'sdkVersion': sdkVersion.toJson(),
+              pubsubDetails!.map((value) => value.toJson()).toList(),
+        if (sdkVersion != null) 'sdkVersion': sdkVersion!.toJson(),
         if (spannerDetails != null)
           'spannerDetails':
-              spannerDetails.map((value) => value.toJson()).toList(),
+              spannerDetails!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6531,10 +6217,10 @@ class JobMetadata {
 /// Cloud Monitoring.
 class JobMetrics {
   /// Timestamp as of which metric values are current.
-  core.String metricTime;
+  core.String? metricTime;
 
   /// All metrics for this job.
-  core.List<MetricUpdate> metrics;
+  core.List<MetricUpdate>? metrics;
 
   JobMetrics();
 
@@ -6550,10 +6236,10 @@ class JobMetrics {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metricTime != null) 'metricTime': metricTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metricTime != null) 'metricTime': metricTime!,
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6568,13 +6254,13 @@ class KeyRangeDataDiskAssignment {
   /// This name is local to the Google Cloud Platform project and uniquely
   /// identifies the disk within that project, for example
   /// "myproject-1014-104817-4c2-harness-0-disk-1".
-  core.String dataDisk;
+  core.String? dataDisk;
 
   /// The end (exclusive) of the key range.
-  core.String end;
+  core.String? end;
 
   /// The start (inclusive) of the key range.
-  core.String start;
+  core.String? start;
 
   KeyRangeDataDiskAssignment();
 
@@ -6590,10 +6276,10 @@ class KeyRangeDataDiskAssignment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataDisk != null) 'dataDisk': dataDisk,
-        if (end != null) 'end': end,
-        if (start != null) 'start': start,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataDisk != null) 'dataDisk': dataDisk!,
+        if (end != null) 'end': end!,
+        if (start != null) 'start': start!,
       };
 }
 
@@ -6607,23 +6293,23 @@ class KeyRangeLocation {
   /// This name is local to the Google Cloud Platform project and uniquely
   /// identifies the disk within that project, for example
   /// "myproject-1014-104817-4c2-harness-0-disk-1".
-  core.String dataDisk;
+  core.String? dataDisk;
 
   /// The physical location of this range assignment to be used for streaming
   /// computation cross-worker message delivery.
-  core.String deliveryEndpoint;
+  core.String? deliveryEndpoint;
 
   /// The location of the persistent state for this range, as a persistent
   /// directory in the worker local filesystem.
   ///
   /// Deprecated.
-  core.String deprecatedPersistentDirectory;
+  core.String? deprecatedPersistentDirectory;
 
   /// The end (exclusive) of the key range.
-  core.String end;
+  core.String? end;
 
   /// The start (inclusive) of the key range.
-  core.String start;
+  core.String? start;
 
   KeyRangeLocation();
 
@@ -6646,26 +6332,26 @@ class KeyRangeLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataDisk != null) 'dataDisk': dataDisk,
-        if (deliveryEndpoint != null) 'deliveryEndpoint': deliveryEndpoint,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataDisk != null) 'dataDisk': dataDisk!,
+        if (deliveryEndpoint != null) 'deliveryEndpoint': deliveryEndpoint!,
         if (deprecatedPersistentDirectory != null)
-          'deprecatedPersistentDirectory': deprecatedPersistentDirectory,
-        if (end != null) 'end': end,
-        if (start != null) 'start': start,
+          'deprecatedPersistentDirectory': deprecatedPersistentDirectory!,
+        if (end != null) 'end': end!,
+        if (start != null) 'start': start!,
       };
 }
 
 /// Launch FlexTemplate Parameter.
 class LaunchFlexTemplateParameter {
   /// Spec about the container image to launch.
-  ContainerSpec containerSpec;
+  ContainerSpec? containerSpec;
 
   /// Gcs path to a file with json serialized ContainerSpec as content.
-  core.String containerSpecGcsPath;
+  core.String? containerSpecGcsPath;
 
   /// The runtime environment for the FlexTemplate job
-  FlexTemplateRuntimeEnvironment environment;
+  FlexTemplateRuntimeEnvironment? environment;
 
   /// The job name to use for the created job.
   ///
@@ -6673,29 +6359,29 @@ class LaunchFlexTemplateParameter {
   /// job.
   ///
   /// Required.
-  core.String jobName;
+  core.String? jobName;
 
   /// Launch options for this flex template job.
   ///
   /// This is a common set of options across languages and templates. This
   /// should not be used to pass job parameters.
-  core.Map<core.String, core.String> launchOptions;
+  core.Map<core.String, core.String>? launchOptions;
 
   /// The parameters for FlexTemplate.
   ///
   /// Ex. {"num_workers":"5"}
-  core.Map<core.String, core.String> parameters;
+  core.Map<core.String, core.String>? parameters;
 
   /// Use this to pass transform_name_mappings for streaming update jobs.
   ///
   /// Ex:{"oldTransformName":"newTransformName",...}'
-  core.Map<core.String, core.String> transformNameMappings;
+  core.Map<core.String, core.String>? transformNameMappings;
 
   /// Set this to true if you are sending a request to update a running
   /// streaming job.
   ///
   /// When set, the job name should be the same as the running job.
-  core.bool update;
+  core.bool? update;
 
   LaunchFlexTemplateParameter();
 
@@ -6749,17 +6435,17 @@ class LaunchFlexTemplateParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (containerSpec != null) 'containerSpec': containerSpec.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (containerSpec != null) 'containerSpec': containerSpec!.toJson(),
         if (containerSpecGcsPath != null)
-          'containerSpecGcsPath': containerSpecGcsPath,
-        if (environment != null) 'environment': environment.toJson(),
-        if (jobName != null) 'jobName': jobName,
-        if (launchOptions != null) 'launchOptions': launchOptions,
-        if (parameters != null) 'parameters': parameters,
+          'containerSpecGcsPath': containerSpecGcsPath!,
+        if (environment != null) 'environment': environment!.toJson(),
+        if (jobName != null) 'jobName': jobName!,
+        if (launchOptions != null) 'launchOptions': launchOptions!,
+        if (parameters != null) 'parameters': parameters!,
         if (transformNameMappings != null)
-          'transformNameMappings': transformNameMappings,
-        if (update != null) 'update': update,
+          'transformNameMappings': transformNameMappings!,
+        if (update != null) 'update': update!,
       };
 }
 
@@ -6768,12 +6454,12 @@ class LaunchFlexTemplateRequest {
   /// Parameter to launch a job form Flex Template.
   ///
   /// Required.
-  LaunchFlexTemplateParameter launchParameter;
+  LaunchFlexTemplateParameter? launchParameter;
 
   /// If true, the request is validated but not actually executed.
   ///
   /// Defaults to false.
-  core.bool validateOnly;
+  core.bool? validateOnly;
 
   LaunchFlexTemplateRequest();
 
@@ -6787,10 +6473,10 @@ class LaunchFlexTemplateRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (launchParameter != null)
-          'launchParameter': launchParameter.toJson(),
-        if (validateOnly != null) 'validateOnly': validateOnly,
+          'launchParameter': launchParameter!.toJson(),
+        if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
 
@@ -6798,7 +6484,7 @@ class LaunchFlexTemplateRequest {
 class LaunchFlexTemplateResponse {
   /// The job that was launched, if the request was not a dry run and the job
   /// was successfully launched.
-  Job job;
+  Job? job;
 
   LaunchFlexTemplateResponse();
 
@@ -6808,33 +6494,33 @@ class LaunchFlexTemplateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (job != null) 'job': job.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (job != null) 'job': job!.toJson(),
       };
 }
 
 /// Parameters to provide to the template being launched.
 class LaunchTemplateParameters {
   /// The runtime environment for the job.
-  RuntimeEnvironment environment;
+  RuntimeEnvironment? environment;
 
   /// The job name to use for the created job.
   ///
   /// Required.
-  core.String jobName;
+  core.String? jobName;
 
   /// The runtime parameters to pass to the job.
-  core.Map<core.String, core.String> parameters;
+  core.Map<core.String, core.String>? parameters;
 
   /// Only applicable when updating a pipeline.
   ///
   /// Map of transform name prefixes of the job to be replaced to the
   /// corresponding name prefixes of the new job.
-  core.Map<core.String, core.String> transformNameMapping;
+  core.Map<core.String, core.String>? transformNameMapping;
 
   /// If set, replace the existing pipeline with the name specified by jobName
   /// with this pipeline, preserving state.
-  core.bool update;
+  core.bool? update;
 
   LaunchTemplateParameters();
 
@@ -6871,13 +6557,13 @@ class LaunchTemplateParameters {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (environment != null) 'environment': environment.toJson(),
-        if (jobName != null) 'jobName': jobName,
-        if (parameters != null) 'parameters': parameters,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (environment != null) 'environment': environment!.toJson(),
+        if (jobName != null) 'jobName': jobName!,
+        if (parameters != null) 'parameters': parameters!,
         if (transformNameMapping != null)
-          'transformNameMapping': transformNameMapping,
-        if (update != null) 'update': update,
+          'transformNameMapping': transformNameMapping!,
+        if (update != null) 'update': update!,
       };
 }
 
@@ -6885,7 +6571,7 @@ class LaunchTemplateParameters {
 class LaunchTemplateResponse {
   /// The job that was launched, if the request was not a dry run and the job
   /// was successfully launched.
-  Job job;
+  Job? job;
 
   LaunchTemplateResponse();
 
@@ -6895,41 +6581,41 @@ class LaunchTemplateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (job != null) 'job': job.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (job != null) 'job': job!.toJson(),
       };
 }
 
 /// Request to lease WorkItems.
 class LeaseWorkItemRequest {
   /// The current timestamp at the worker.
-  core.String currentWorkerTime;
+  core.String? currentWorkerTime;
 
   /// The
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the WorkItem's job.
-  core.String location;
+  core.String? location;
 
   /// The initial lease period.
-  core.String requestedLeaseDuration;
+  core.String? requestedLeaseDuration;
 
   /// Untranslated bag-of-bytes WorkRequest from UnifiedWorker.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> unifiedWorkerRequest;
+  core.Map<core.String, core.Object>? unifiedWorkerRequest;
 
   /// Filter for WorkItem type.
-  core.List<core.String> workItemTypes;
+  core.List<core.String>? workItemTypes;
 
   /// Worker capabilities.
   ///
   /// WorkItems might be limited to workers with specific capabilities.
-  core.List<core.String> workerCapabilities;
+  core.List<core.String>? workerCapabilities;
 
   /// Identifies the worker leasing work -- typically the ID of the virtual
   /// machine running the worker.
-  core.String workerId;
+  core.String? workerId;
 
   LeaseWorkItemRequest();
 
@@ -6968,17 +6654,17 @@ class LeaseWorkItemRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currentWorkerTime != null) 'currentWorkerTime': currentWorkerTime,
-        if (location != null) 'location': location,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currentWorkerTime != null) 'currentWorkerTime': currentWorkerTime!,
+        if (location != null) 'location': location!,
         if (requestedLeaseDuration != null)
-          'requestedLeaseDuration': requestedLeaseDuration,
+          'requestedLeaseDuration': requestedLeaseDuration!,
         if (unifiedWorkerRequest != null)
-          'unifiedWorkerRequest': unifiedWorkerRequest,
-        if (workItemTypes != null) 'workItemTypes': workItemTypes,
+          'unifiedWorkerRequest': unifiedWorkerRequest!,
+        if (workItemTypes != null) 'workItemTypes': workItemTypes!,
         if (workerCapabilities != null)
-          'workerCapabilities': workerCapabilities,
-        if (workerId != null) 'workerId': workerId,
+          'workerCapabilities': workerCapabilities!,
+        if (workerId != null) 'workerId': workerId!,
       };
 }
 
@@ -6988,10 +6674,10 @@ class LeaseWorkItemResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> unifiedWorkerResponse;
+  core.Map<core.String, core.Object>? unifiedWorkerResponse;
 
   /// A list of the leased WorkItems.
-  core.List<WorkItem> workItems;
+  core.List<WorkItem>? workItems;
 
   LeaseWorkItemResponse();
 
@@ -7014,24 +6700,24 @@ class LeaseWorkItemResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (unifiedWorkerResponse != null)
-          'unifiedWorkerResponse': unifiedWorkerResponse,
+          'unifiedWorkerResponse': unifiedWorkerResponse!,
         if (workItems != null)
-          'workItems': workItems.map((value) => value.toJson()).toList(),
+          'workItems': workItems!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Response to a request to list job messages.
 class ListJobMessagesResponse {
   /// Autoscaling events in ascending timestamp order.
-  core.List<AutoscalingEvent> autoscalingEvents;
+  core.List<AutoscalingEvent>? autoscalingEvents;
 
   /// Messages in ascending timestamp order.
-  core.List<JobMessage> jobMessages;
+  core.List<JobMessage>? jobMessages;
 
   /// The token to obtain the next page of results if there are more.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListJobMessagesResponse();
 
@@ -7053,13 +6739,13 @@ class ListJobMessagesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (autoscalingEvents != null)
           'autoscalingEvents':
-              autoscalingEvents.map((value) => value.toJson()).toList(),
+              autoscalingEvents!.map((value) => value.toJson()).toList(),
         if (jobMessages != null)
-          'jobMessages': jobMessages.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'jobMessages': jobMessages!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -7073,13 +6759,13 @@ class ListJobsResponse {
   /// Zero or more messages describing the
   /// [regional endpoints](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that failed to respond.
-  core.List<FailedLocation> failedLocation;
+  core.List<FailedLocation>? failedLocation;
 
   /// A subset of the requested job information.
-  core.List<Job> jobs;
+  core.List<Job>? jobs;
 
   /// Set if there may be more results than fit in this response.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListJobsResponse();
 
@@ -7101,19 +6787,19 @@ class ListJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (failedLocation != null)
           'failedLocation':
-              failedLocation.map((value) => value.toJson()).toList(),
-        if (jobs != null) 'jobs': jobs.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              failedLocation!.map((value) => value.toJson()).toList(),
+        if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// List of snapshots.
 class ListSnapshotsResponse {
   /// Returned snapshots.
-  core.List<Snapshot> snapshots;
+  core.List<Snapshot>? snapshots;
 
   ListSnapshotsResponse();
 
@@ -7126,9 +6812,9 @@ class ListSnapshotsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (snapshots != null)
-          'snapshots': snapshots.map((value) => value.toJson()).toList(),
+          'snapshots': snapshots!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7137,10 +6823,10 @@ class ListTemplateVersionsResponse {
   /// A token that can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of TemplateVersions.
-  core.List<TemplateVersion> templateVersions;
+  core.List<TemplateVersion>? templateVersions;
 
   ListTemplateVersionsResponse();
 
@@ -7156,11 +6842,11 @@ class ListTemplateVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (templateVersions != null)
           'templateVersions':
-              templateVersions.map((value) => value.toJson()).toList(),
+              templateVersions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7174,20 +6860,20 @@ class MapTask {
   /// Counter prefix that can be used to prefix counters.
   ///
   /// Not currently used in Dataflow.
-  core.String counterPrefix;
+  core.String? counterPrefix;
 
   /// The instructions in the MapTask.
-  core.List<ParallelInstruction> instructions;
+  core.List<ParallelInstruction>? instructions;
 
   /// System-defined name of the stage containing this MapTask.
   ///
   /// Unique across the workflow.
-  core.String stageName;
+  core.String? stageName;
 
   /// System-defined name of this MapTask.
   ///
   /// Unique across the workflow.
-  core.String systemName;
+  core.String? systemName;
 
   MapTask();
 
@@ -7209,12 +6895,12 @@ class MapTask {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (counterPrefix != null) 'counterPrefix': counterPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (counterPrefix != null) 'counterPrefix': counterPrefix!,
         if (instructions != null)
-          'instructions': instructions.map((value) => value.toJson()).toList(),
-        if (stageName != null) 'stageName': stageName,
-        if (systemName != null) 'systemName': systemName,
+          'instructions': instructions!.map((value) => value.toJson()).toList(),
+        if (stageName != null) 'stageName': stageName!,
+        if (systemName != null) 'systemName': systemName!,
       };
 }
 
@@ -7222,16 +6908,16 @@ class MapTask {
 /// worker.
 class MemInfo {
   /// Instantenous memory limit in bytes.
-  core.String currentLimitBytes;
+  core.String? currentLimitBytes;
 
   /// Instantenous memory (RSS) size in bytes.
-  core.String currentRssBytes;
+  core.String? currentRssBytes;
 
   /// Timestamp of the measurement.
-  core.String timestamp;
+  core.String? timestamp;
 
   /// Total memory (RSS) usage since start up in GB * ms.
-  core.String totalGbMs;
+  core.String? totalGbMs;
 
   MemInfo();
 
@@ -7250,11 +6936,11 @@ class MemInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currentLimitBytes != null) 'currentLimitBytes': currentLimitBytes,
-        if (currentRssBytes != null) 'currentRssBytes': currentRssBytes,
-        if (timestamp != null) 'timestamp': timestamp,
-        if (totalGbMs != null) 'totalGbMs': totalGbMs,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currentLimitBytes != null) 'currentLimitBytes': currentLimitBytes!,
+        if (currentRssBytes != null) 'currentRssBytes': currentRssBytes!,
+        if (timestamp != null) 'timestamp': timestamp!,
+        if (totalGbMs != null) 'totalGbMs': totalGbMs!,
       };
 }
 
@@ -7264,10 +6950,10 @@ class MetricShortId {
   /// The index of the corresponding metric in the ReportWorkItemStatusRequest.
   ///
   /// Required.
-  core.int metricIndex;
+  core.int? metricIndex;
 
   /// The service-generated short identifier for the metric.
-  core.String shortId;
+  core.String? shortId;
 
   MetricShortId();
 
@@ -7280,9 +6966,9 @@ class MetricShortId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metricIndex != null) 'metricIndex': metricIndex,
-        if (shortId != null) 'shortId': shortId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metricIndex != null) 'metricIndex': metricIndex!,
+        if (shortId != null) 'shortId': shortId!,
       };
 }
 
@@ -7294,16 +6980,16 @@ class MetricStructuredName {
   /// For example, built-in counters associated with steps will have
   /// context\['step'\] = . Counters associated with PCollections in the SDK
   /// will have context\['pcollection'\] = .
-  core.Map<core.String, core.String> context;
+  core.Map<core.String, core.String>? context;
 
   /// Worker-defined metric name.
-  core.String name;
+  core.String? name;
 
   /// Origin (namespace) of metric name.
   ///
   /// May be blank for user-define metrics; will be "dataflow" for metrics
   /// defined by the Dataflow service or SDK.
-  core.String origin;
+  core.String? origin;
 
   MetricStructuredName();
 
@@ -7325,10 +7011,10 @@ class MetricStructuredName {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (context != null) 'context': context,
-        if (name != null) 'name': name,
-        if (origin != null) 'origin': origin,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (context != null) 'context': context!,
+        if (name != null) 'name': name!,
+        if (origin != null) 'origin': origin!,
       };
 }
 
@@ -7339,13 +7025,13 @@ class MetricUpdate {
   ///
   /// By default this is false, indicating that this metric is reported as a
   /// delta that is not associated with any WorkItem.
-  core.bool cumulative;
+  core.bool? cumulative;
 
   /// A struct value describing properties of a distribution of numeric values.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object distribution;
+  core.Object? distribution;
 
   /// A struct value describing properties of a Gauge.
   ///
@@ -7354,13 +7040,13 @@ class MetricUpdate {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object gauge;
+  core.Object? gauge;
 
   /// Worker-computed aggregate value for internal use by the Dataflow service.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object internal;
+  core.Object? internal;
 
   /// Metric aggregation kind.
   ///
@@ -7368,7 +7054,7 @@ class MetricUpdate {
   /// "Set", "And", "Or", and "Distribution". The specified aggregation kind is
   /// case-insensitive. If omitted, this is not an aggregated value but instead
   /// a single metric sample value.
-  core.String kind;
+  core.String? kind;
 
   /// Worker-computed aggregate value for the "Mean" aggregation kind.
   ///
@@ -7378,7 +7064,7 @@ class MetricUpdate {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object meanCount;
+  core.Object? meanCount;
 
   /// Worker-computed aggregate value for the "Mean" aggregation kind.
   ///
@@ -7388,10 +7074,10 @@ class MetricUpdate {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object meanSum;
+  core.Object? meanSum;
 
   /// Name of the metric.
-  MetricStructuredName name;
+  MetricStructuredName? name;
 
   /// Worker-computed aggregate value for aggregation kinds "Sum", "Max", "Min",
   /// "And", and "Or".
@@ -7400,7 +7086,7 @@ class MetricUpdate {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object scalar;
+  core.Object? scalar;
 
   /// Worker-computed aggregate value for the "Set" aggregation kind.
   ///
@@ -7410,13 +7096,13 @@ class MetricUpdate {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object set;
+  core.Object? set;
 
   /// Timestamp associated with the metric value.
   ///
   /// Optional when workers are reporting work progress; it will be filled in
   /// responses from the metrics API.
-  core.String updateTime;
+  core.String? updateTime;
 
   MetricUpdate();
 
@@ -7457,18 +7143,18 @@ class MetricUpdate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cumulative != null) 'cumulative': cumulative,
-        if (distribution != null) 'distribution': distribution,
-        if (gauge != null) 'gauge': gauge,
-        if (internal != null) 'internal': internal,
-        if (kind != null) 'kind': kind,
-        if (meanCount != null) 'meanCount': meanCount,
-        if (meanSum != null) 'meanSum': meanSum,
-        if (name != null) 'name': name.toJson(),
-        if (scalar != null) 'scalar': scalar,
-        if (set != null) 'set': set,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cumulative != null) 'cumulative': cumulative!,
+        if (distribution != null) 'distribution': distribution!,
+        if (gauge != null) 'gauge': gauge!,
+        if (internal != null) 'internal': internal!,
+        if (kind != null) 'kind': kind!,
+        if (meanCount != null) 'meanCount': meanCount!,
+        if (meanSum != null) 'meanSum': meanSum!,
+        if (name != null) 'name': name!.toJson(),
+        if (scalar != null) 'scalar': scalar!,
+        if (set != null) 'set': set!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -7476,7 +7162,7 @@ class MetricUpdate {
 /// TemplateVersion.
 class ModifyTemplateVersionLabelRequest {
   /// The label key for update.
-  core.String key;
+  core.String? key;
 
   /// Requests for add label to TemplateVersion or remove label from
   /// TemplateVersion.
@@ -7484,10 +7170,10 @@ class ModifyTemplateVersionLabelRequest {
   /// - "OPERATION_UNSPECIFIED" : Default value.
   /// - "ADD" : Add the label to the TemplateVersion object.
   /// - "REMOVE" : Remove the label from the TemplateVersion object.
-  core.String op;
+  core.String? op;
 
   /// The label value for update.
-  core.String value;
+  core.String? value;
 
   ModifyTemplateVersionLabelRequest();
 
@@ -7503,17 +7189,17 @@ class ModifyTemplateVersionLabelRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (op != null) 'op': op,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (op != null) 'op': op!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// Respond the labels in the TemplateVersion.
 class ModifyTemplateVersionLabelResponse {
   /// All the label in the TemplateVersion.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   ModifyTemplateVersionLabelResponse();
 
@@ -7529,8 +7215,8 @@ class ModifyTemplateVersionLabelResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
       };
 }
 
@@ -7542,10 +7228,10 @@ class ModifyTemplateVersionLabelResponse {
 class ModifyTemplateVersionTagRequest {
   /// The flag that indicates if the request is only for remove tag from
   /// TemplateVersion.
-  core.bool removeOnly;
+  core.bool? removeOnly;
 
   /// The tag for update.
-  core.String tag;
+  core.String? tag;
 
   ModifyTemplateVersionTagRequest();
 
@@ -7558,16 +7244,16 @@ class ModifyTemplateVersionTagRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (removeOnly != null) 'removeOnly': removeOnly,
-        if (tag != null) 'tag': tag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (removeOnly != null) 'removeOnly': removeOnly!,
+        if (tag != null) 'tag': tag!,
       };
 }
 
 /// Respond the current tags in the TemplateVersion.
 class ModifyTemplateVersionTagResponse {
   /// All the tags in the TemplateVersion.
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   ModifyTemplateVersionTagResponse();
 
@@ -7579,8 +7265,8 @@ class ModifyTemplateVersionTagResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (tags != null) 'tags': tags,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (tags != null) 'tags': tags!,
       };
 }
 
@@ -7591,7 +7277,7 @@ class MountedDataDisk {
   /// This name is local to the Google Cloud Platform project and uniquely
   /// identifies the disk within that project, for example
   /// "myproject-1014-104817-4c2-harness-0-disk-1".
-  core.String dataDisk;
+  core.String? dataDisk;
 
   MountedDataDisk();
 
@@ -7601,8 +7287,8 @@ class MountedDataDisk {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataDisk != null) 'dataDisk': dataDisk,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataDisk != null) 'dataDisk': dataDisk!,
       };
 }
 
@@ -7610,7 +7296,7 @@ class MountedDataDisk {
 class MultiOutputInfo {
   /// The id of the tag the user code will emit to this output by; this should
   /// correspond to the tag of some SideInputInfo.
-  core.String tag;
+  core.String? tag;
 
   MultiOutputInfo();
 
@@ -7620,8 +7306,8 @@ class MultiOutputInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (tag != null) 'tag': tag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (tag != null) 'tag': tag!,
       };
 }
 
@@ -7642,10 +7328,10 @@ class NameAndKind {
   /// - "DISTRIBUTION" : Aggregated value captures statistics about a
   /// distribution.
   /// - "LATEST_VALUE" : Aggregated value tracks the latest value of a variable.
-  core.String kind;
+  core.String? kind;
 
   /// Name of the counter.
-  core.String name;
+  core.String? name;
 
   NameAndKind();
 
@@ -7658,9 +7344,9 @@ class NameAndKind {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -7677,10 +7363,10 @@ class Package {
   ///
   /// The supported resource type is: Google Cloud Storage:
   /// storage.googleapis.com/{bucket} bucket.storage.googleapis.com/
-  core.String location;
+  core.String? location;
 
   /// The name of the package.
-  core.String name;
+  core.String? name;
 
   Package();
 
@@ -7693,9 +7379,9 @@ class Package {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (location != null) 'location': location,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -7705,22 +7391,22 @@ class Package {
 /// outputs. Runs user code.
 class ParDoInstruction {
   /// The input.
-  InstructionInput input;
+  InstructionInput? input;
 
   /// Information about each of the outputs, if user_fn is a MultiDoFn.
-  core.List<MultiOutputInfo> multiOutputInfos;
+  core.List<MultiOutputInfo>? multiOutputInfos;
 
   /// The number of outputs.
-  core.int numOutputs;
+  core.int? numOutputs;
 
   /// Zero or more side inputs.
-  core.List<SideInputInfo> sideInputs;
+  core.List<SideInputInfo>? sideInputs;
 
   /// The user function to invoke.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> userFn;
+  core.Map<core.String, core.Object>? userFn;
 
   ParDoInstruction();
 
@@ -7755,48 +7441,48 @@ class ParDoInstruction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (input != null) 'input': input.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (input != null) 'input': input!.toJson(),
         if (multiOutputInfos != null)
           'multiOutputInfos':
-              multiOutputInfos.map((value) => value.toJson()).toList(),
-        if (numOutputs != null) 'numOutputs': numOutputs,
+              multiOutputInfos!.map((value) => value.toJson()).toList(),
+        if (numOutputs != null) 'numOutputs': numOutputs!,
         if (sideInputs != null)
-          'sideInputs': sideInputs.map((value) => value.toJson()).toList(),
-        if (userFn != null) 'userFn': userFn,
+          'sideInputs': sideInputs!.map((value) => value.toJson()).toList(),
+        if (userFn != null) 'userFn': userFn!,
       };
 }
 
 /// Describes a particular operation comprising a MapTask.
 class ParallelInstruction {
   /// Additional information for Flatten instructions.
-  FlattenInstruction flatten;
+  FlattenInstruction? flatten;
 
   /// User-provided name of this operation.
-  core.String name;
+  core.String? name;
 
   /// System-defined name for the operation in the original workflow graph.
-  core.String originalName;
+  core.String? originalName;
 
   /// Describes the outputs of the instruction.
-  core.List<InstructionOutput> outputs;
+  core.List<InstructionOutput>? outputs;
 
   /// Additional information for ParDo instructions.
-  ParDoInstruction parDo;
+  ParDoInstruction? parDo;
 
   /// Additional information for PartialGroupByKey instructions.
-  PartialGroupByKeyInstruction partialGroupByKey;
+  PartialGroupByKeyInstruction? partialGroupByKey;
 
   /// Additional information for Read instructions.
-  ReadInstruction read;
+  ReadInstruction? read;
 
   /// System-defined name of this operation.
   ///
   /// Unique across the workflow.
-  core.String systemName;
+  core.String? systemName;
 
   /// Additional information for Write instructions.
-  WriteInstruction write;
+  WriteInstruction? write;
 
   ParallelInstruction();
 
@@ -7838,31 +7524,31 @@ class ParallelInstruction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (flatten != null) 'flatten': flatten.toJson(),
-        if (name != null) 'name': name,
-        if (originalName != null) 'originalName': originalName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (flatten != null) 'flatten': flatten!.toJson(),
+        if (name != null) 'name': name!,
+        if (originalName != null) 'originalName': originalName!,
         if (outputs != null)
-          'outputs': outputs.map((value) => value.toJson()).toList(),
-        if (parDo != null) 'parDo': parDo.toJson(),
+          'outputs': outputs!.map((value) => value.toJson()).toList(),
+        if (parDo != null) 'parDo': parDo!.toJson(),
         if (partialGroupByKey != null)
-          'partialGroupByKey': partialGroupByKey.toJson(),
-        if (read != null) 'read': read.toJson(),
-        if (systemName != null) 'systemName': systemName,
-        if (write != null) 'write': write.toJson(),
+          'partialGroupByKey': partialGroupByKey!.toJson(),
+        if (read != null) 'read': read!.toJson(),
+        if (systemName != null) 'systemName': systemName!,
+        if (write != null) 'write': write!.toJson(),
       };
 }
 
 /// Structured data associated with this message.
 class Parameter {
   /// Key or name for this parameter.
-  core.String key;
+  core.String? key;
 
   /// Value for this parameter.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object value;
+  core.Object? value;
 
   Parameter();
 
@@ -7875,9 +7561,9 @@ class Parameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -7886,24 +7572,24 @@ class ParameterMetadata {
   /// The help text to display for the parameter.
   ///
   /// Required.
-  core.String helpText;
+  core.String? helpText;
 
   /// Whether the parameter is optional.
   ///
   /// Defaults to false.
   ///
   /// Optional.
-  core.bool isOptional;
+  core.bool? isOptional;
 
   /// The label to display for the parameter.
   ///
   /// Required.
-  core.String label;
+  core.String? label;
 
   /// The name of the parameter.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The type of the parameter.
   ///
@@ -7922,12 +7608,12 @@ class ParameterMetadata {
   /// - "GCS_WRITE_FOLDER" : The parameter specifies a GCS folder to write to.
   /// - "PUBSUB_TOPIC" : The parameter specifies a Pub/Sub Topic.
   /// - "PUBSUB_SUBSCRIPTION" : The parameter specifies a Pub/Sub Subscription.
-  core.String paramType;
+  core.String? paramType;
 
   /// Regexes that the parameter must match.
   ///
   /// Optional.
-  core.List<core.String> regexes;
+  core.List<core.String>? regexes;
 
   ParameterMetadata();
 
@@ -7954,13 +7640,13 @@ class ParameterMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (helpText != null) 'helpText': helpText,
-        if (isOptional != null) 'isOptional': isOptional,
-        if (label != null) 'label': label,
-        if (name != null) 'name': name,
-        if (paramType != null) 'paramType': paramType,
-        if (regexes != null) 'regexes': regexes,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (helpText != null) 'helpText': helpText!,
+        if (isOptional != null) 'isOptional': isOptional!,
+        if (label != null) 'label': label!,
+        if (name != null) 'name': name!,
+        if (paramType != null) 'paramType': paramType!,
+        if (regexes != null) 'regexes': regexes!,
       };
 }
 
@@ -7969,30 +7655,30 @@ class ParameterMetadata {
 /// One input and one output.
 class PartialGroupByKeyInstruction {
   /// Describes the input to the partial group-by-key instruction.
-  InstructionInput input;
+  InstructionInput? input;
 
   /// The codec to use for interpreting an element in the input PTable.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> inputElementCodec;
+  core.Map<core.String, core.Object>? inputElementCodec;
 
   /// If this instruction includes a combining function this is the name of the
   /// intermediate store between the GBK and the CombineValues.
-  core.String originalCombineValuesInputStoreName;
+  core.String? originalCombineValuesInputStoreName;
 
   /// If this instruction includes a combining function, this is the name of the
   /// CombineValues instruction lifted into this instruction.
-  core.String originalCombineValuesStepName;
+  core.String? originalCombineValuesStepName;
 
   /// Zero or more side inputs.
-  core.List<SideInputInfo> sideInputs;
+  core.List<SideInputInfo>? sideInputs;
 
   /// The value combining function to invoke.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> valueCombiningFn;
+  core.Map<core.String, core.Object>? valueCombiningFn;
 
   PartialGroupByKeyInstruction();
 
@@ -8037,17 +7723,17 @@ class PartialGroupByKeyInstruction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (input != null) 'input': input.toJson(),
-        if (inputElementCodec != null) 'inputElementCodec': inputElementCodec,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (input != null) 'input': input!.toJson(),
+        if (inputElementCodec != null) 'inputElementCodec': inputElementCodec!,
         if (originalCombineValuesInputStoreName != null)
           'originalCombineValuesInputStoreName':
-              originalCombineValuesInputStoreName,
+              originalCombineValuesInputStoreName!,
         if (originalCombineValuesStepName != null)
-          'originalCombineValuesStepName': originalCombineValuesStepName,
+          'originalCombineValuesStepName': originalCombineValuesStepName!,
         if (sideInputs != null)
-          'sideInputs': sideInputs.map((value) => value.toJson()).toList(),
-        if (valueCombiningFn != null) 'valueCombiningFn': valueCombiningFn,
+          'sideInputs': sideInputs!.map((value) => value.toJson()).toList(),
+        if (valueCombiningFn != null) 'valueCombiningFn': valueCombiningFn!,
       };
 }
 
@@ -8058,14 +7744,14 @@ class PartialGroupByKeyInstruction {
 /// pipeline and interpreting Dataflow provided metrics.
 class PipelineDescription {
   /// Pipeline level display data.
-  core.List<DisplayData> displayData;
+  core.List<DisplayData>? displayData;
 
   /// Description of each stage of execution of the pipeline.
-  core.List<ExecutionStageSummary> executionPipelineStage;
+  core.List<ExecutionStageSummary>? executionPipelineStage;
 
   /// Description of each transform in the pipeline and collections between
   /// them.
-  core.List<TransformSummary> originalPipelineTransform;
+  core.List<TransformSummary>? originalPipelineTransform;
 
   PipelineDescription();
 
@@ -8091,25 +7777,26 @@ class PipelineDescription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (displayData != null)
-          'displayData': displayData.map((value) => value.toJson()).toList(),
+          'displayData': displayData!.map((value) => value.toJson()).toList(),
         if (executionPipelineStage != null)
           'executionPipelineStage':
-              executionPipelineStage.map((value) => value.toJson()).toList(),
+              executionPipelineStage!.map((value) => value.toJson()).toList(),
         if (originalPipelineTransform != null)
-          'originalPipelineTransform':
-              originalPipelineTransform.map((value) => value.toJson()).toList(),
+          'originalPipelineTransform': originalPipelineTransform!
+              .map((value) => value.toJson())
+              .toList(),
       };
 }
 
 /// A point in the timeseries.
 class Point {
   /// The timestamp of the point.
-  core.String time;
+  core.String? time;
 
   /// The value of the point.
-  core.double value;
+  core.double? value;
 
   Point();
 
@@ -8122,9 +7809,9 @@ class Point {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (time != null) 'time': time,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (time != null) 'time': time!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -8134,25 +7821,25 @@ class Point {
 /// collections), a byte offset, or a record index.
 class Position {
   /// Position is a byte offset.
-  core.String byteOffset;
+  core.String? byteOffset;
 
   /// CloudPosition is a concat position.
-  ConcatPosition concatPosition;
+  ConcatPosition? concatPosition;
 
   /// Position is past all other positions.
   ///
   /// Also useful for the end position of an unbounded range.
-  core.bool end;
+  core.bool? end;
 
   /// Position is a string key, ordered lexicographically.
-  core.String key;
+  core.String? key;
 
   /// Position is a record index.
-  core.String recordIndex;
+  core.String? recordIndex;
 
   /// CloudPosition is a base64 encoded BatchShufflePosition (with FIXED
   /// sharding).
-  core.String shufflePosition;
+  core.String? shufflePosition;
 
   Position();
 
@@ -8178,25 +7865,25 @@ class Position {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (byteOffset != null) 'byteOffset': byteOffset,
-        if (concatPosition != null) 'concatPosition': concatPosition.toJson(),
-        if (end != null) 'end': end,
-        if (key != null) 'key': key,
-        if (recordIndex != null) 'recordIndex': recordIndex,
-        if (shufflePosition != null) 'shufflePosition': shufflePosition,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (byteOffset != null) 'byteOffset': byteOffset!,
+        if (concatPosition != null) 'concatPosition': concatPosition!.toJson(),
+        if (end != null) 'end': end!,
+        if (key != null) 'key': key!,
+        if (recordIndex != null) 'recordIndex': recordIndex!,
+        if (shufflePosition != null) 'shufflePosition': shufflePosition!,
       };
 }
 
 /// Information about the progress of some component of job execution.
 class ProgressTimeseries {
   /// The current progress of the component, in the range \[0,1\].
-  core.double currentProgress;
+  core.double? currentProgress;
 
   /// History of progress for the component.
   ///
   /// Points are sorted by time.
-  core.List<Point> dataPoints;
+  core.List<Point>? dataPoints;
 
   ProgressTimeseries();
 
@@ -8212,20 +7899,20 @@ class ProgressTimeseries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currentProgress != null) 'currentProgress': currentProgress,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currentProgress != null) 'currentProgress': currentProgress!,
         if (dataPoints != null)
-          'dataPoints': dataPoints.map((value) => value.toJson()).toList(),
+          'dataPoints': dataPoints!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Metadata for a PubSub connector used by the job.
 class PubSubIODetails {
   /// Subscription used in the connection.
-  core.String subscription;
+  core.String? subscription;
 
   /// Topic accessed in the connection.
-  core.String topic;
+  core.String? topic;
 
   PubSubIODetails();
 
@@ -8238,9 +7925,9 @@ class PubSubIODetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (subscription != null) 'subscription': subscription,
-        if (topic != null) 'topic': topic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (subscription != null) 'subscription': subscription!,
+        if (topic != null) 'topic': topic!,
       };
 }
 
@@ -8248,31 +7935,31 @@ class PubSubIODetails {
 /// streaming Dataflow job.
 class PubsubLocation {
   /// Indicates whether the pipeline allows late-arriving data.
-  core.bool dropLateData;
+  core.bool? dropLateData;
 
   /// If set, contains a pubsub label from which to extract record ids.
   ///
   /// If left empty, record deduplication will be strictly best effort.
-  core.String idLabel;
+  core.String? idLabel;
 
   /// A pubsub subscription, in the form of
   /// "pubsub.googleapis.com/subscriptions//"
-  core.String subscription;
+  core.String? subscription;
 
   /// If set, contains a pubsub label from which to extract record timestamps.
   ///
   /// If left empty, record timestamps will be generated upon arrival.
-  core.String timestampLabel;
+  core.String? timestampLabel;
 
   /// A pubsub topic, in the form of "pubsub.googleapis.com/topics//"
-  core.String topic;
+  core.String? topic;
 
   /// If set, specifies the pubsub subscription that will be used for tracking
   /// custom time timestamps for watermark estimation.
-  core.String trackingSubscription;
+  core.String? trackingSubscription;
 
   /// If true, then the client has requested to get pubsub attributes.
-  core.bool withAttributes;
+  core.bool? withAttributes;
 
   PubsubLocation();
 
@@ -8300,28 +7987,28 @@ class PubsubLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dropLateData != null) 'dropLateData': dropLateData,
-        if (idLabel != null) 'idLabel': idLabel,
-        if (subscription != null) 'subscription': subscription,
-        if (timestampLabel != null) 'timestampLabel': timestampLabel,
-        if (topic != null) 'topic': topic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dropLateData != null) 'dropLateData': dropLateData!,
+        if (idLabel != null) 'idLabel': idLabel!,
+        if (subscription != null) 'subscription': subscription!,
+        if (timestampLabel != null) 'timestampLabel': timestampLabel!,
+        if (topic != null) 'topic': topic!,
         if (trackingSubscription != null)
-          'trackingSubscription': trackingSubscription,
-        if (withAttributes != null) 'withAttributes': withAttributes,
+          'trackingSubscription': trackingSubscription!,
+        if (withAttributes != null) 'withAttributes': withAttributes!,
       };
 }
 
 /// Represents a Pubsub snapshot.
 class PubsubSnapshotMetadata {
   /// The expire time of the Pubsub snapshot.
-  core.String expireTime;
+  core.String? expireTime;
 
   /// The name of the Pubsub snapshot.
-  core.String snapshotName;
+  core.String? snapshotName;
 
   /// The name of the Pubsub topic.
-  core.String topicName;
+  core.String? topicName;
 
   PubsubSnapshotMetadata();
 
@@ -8337,17 +8024,17 @@ class PubsubSnapshotMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expireTime != null) 'expireTime': expireTime,
-        if (snapshotName != null) 'snapshotName': snapshotName,
-        if (topicName != null) 'topicName': topicName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (snapshotName != null) 'snapshotName': snapshotName!,
+        if (topicName != null) 'topicName': topicName!,
       };
 }
 
 /// Information about a validated query.
 class QueryInfo {
   /// Includes an entry for each satisfied QueryProperty.
-  core.List<core.String> queryProperty;
+  core.List<core.String>? queryProperty;
 
   QueryInfo();
 
@@ -8359,8 +8046,8 @@ class QueryInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (queryProperty != null) 'queryProperty': queryProperty,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (queryProperty != null) 'queryProperty': queryProperty!,
       };
 }
 
@@ -8369,7 +8056,7 @@ class QueryInfo {
 /// Takes no inputs, produces one output.
 class ReadInstruction {
   /// The source to read from.
-  Source source;
+  Source? source;
 
   ReadInstruction();
 
@@ -8380,38 +8067,38 @@ class ReadInstruction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (source != null) 'source': source.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
 /// Request to report the status of WorkItems.
 class ReportWorkItemStatusRequest {
   /// The current timestamp at the worker.
-  core.String currentWorkerTime;
+  core.String? currentWorkerTime;
 
   /// The
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the WorkItem's job.
-  core.String location;
+  core.String? location;
 
   /// Untranslated bag-of-bytes WorkProgressUpdateRequest from UnifiedWorker.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> unifiedWorkerRequest;
+  core.Map<core.String, core.Object>? unifiedWorkerRequest;
 
   /// The order is unimportant, except that the order of the
   /// WorkItemServiceState messages in the ReportWorkItemStatusResponse
   /// corresponds to the order of WorkItemStatus messages here.
-  core.List<WorkItemStatus> workItemStatuses;
+  core.List<WorkItemStatus>? workItemStatuses;
 
   /// The ID of the worker reporting the WorkItem status.
   ///
   /// If this does not match the ID of the worker which the Dataflow service
   /// believes currently has the lease on the WorkItem, the report will be
   /// dropped (with an error response).
-  core.String workerId;
+  core.String? workerId;
 
   ReportWorkItemStatusRequest();
 
@@ -8443,15 +8130,15 @@ class ReportWorkItemStatusRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currentWorkerTime != null) 'currentWorkerTime': currentWorkerTime,
-        if (location != null) 'location': location,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currentWorkerTime != null) 'currentWorkerTime': currentWorkerTime!,
+        if (location != null) 'location': location!,
         if (unifiedWorkerRequest != null)
-          'unifiedWorkerRequest': unifiedWorkerRequest,
+          'unifiedWorkerRequest': unifiedWorkerRequest!,
         if (workItemStatuses != null)
           'workItemStatuses':
-              workItemStatuses.map((value) => value.toJson()).toList(),
-        if (workerId != null) 'workerId': workerId,
+              workItemStatuses!.map((value) => value.toJson()).toList(),
+        if (workerId != null) 'workerId': workerId!,
       };
 }
 
@@ -8461,13 +8148,13 @@ class ReportWorkItemStatusResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> unifiedWorkerResponse;
+  core.Map<core.String, core.Object>? unifiedWorkerResponse;
 
   /// A set of messages indicating the service-side state for each WorkItem
   /// whose status was reported, in the same order as the WorkItemStatus
   /// messages in the ReportWorkItemStatusRequest which resulting in this
   /// response.
-  core.List<WorkItemServiceState> workItemServiceStates;
+  core.List<WorkItemServiceState>? workItemServiceStates;
 
   ReportWorkItemStatusResponse();
 
@@ -8490,12 +8177,12 @@ class ReportWorkItemStatusResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (unifiedWorkerResponse != null)
-          'unifiedWorkerResponse': unifiedWorkerResponse,
+          'unifiedWorkerResponse': unifiedWorkerResponse!,
         if (workItemServiceStates != null)
           'workItemServiceStates':
-              workItemServiceStates.map((value) => value.toJson()).toList(),
+              workItemServiceStates!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8508,10 +8195,10 @@ class ReportedParallelism {
   /// assume that the work item can always be split into more non-empty work
   /// items by dynamic splitting. This is a work-around for lack of support for
   /// infinity by the current JSON-based Java RPC stack.
-  core.bool isInfinite;
+  core.bool? isInfinite;
 
   /// Specifies the level of parallelism in case it is finite.
-  core.double value;
+  core.double? value;
 
   ReportedParallelism();
 
@@ -8524,9 +8211,9 @@ class ReportedParallelism {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (isInfinite != null) 'isInfinite': isInfinite,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (isInfinite != null) 'isInfinite': isInfinite!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -8538,26 +8225,27 @@ class ResourceUtilizationReport {
   /// Per container information.
   ///
   /// Key: container name.
-  core.Map<core.String, ResourceUtilizationReport> containers;
+  core.Map<core.String, ResourceUtilizationReport>? containers;
 
   /// CPU utilization samples.
-  core.List<CPUTime> cpuTime;
+  core.List<CPUTime>? cpuTime;
 
   /// Memory utilization samples.
-  core.List<MemInfo> memoryInfo;
+  core.List<MemInfo>? memoryInfo;
 
   ResourceUtilizationReport();
 
   ResourceUtilizationReport.fromJson(core.Map _json) {
     if (_json.containsKey('containers')) {
-      containers =
-          (_json['containers'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  ResourceUtilizationReport.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      containers = (_json['containers'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              ResourceUtilizationReport.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('cpuTime')) {
       cpuTime = (_json['cpuTime'] as core.List)
@@ -8573,14 +8261,14 @@ class ResourceUtilizationReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (containers != null)
           'containers':
-              containers.map((key, item) => core.MapEntry(key, item.toJson())),
+              containers!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (cpuTime != null)
-          'cpuTime': cpuTime.map((value) => value.toJson()).toList(),
+          'cpuTime': cpuTime!.map((value) => value.toJson()).toList(),
         if (memoryInfo != null)
-          'memoryInfo': memoryInfo.map((value) => value.toJson()).toList(),
+          'memoryInfo': memoryInfo!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8592,13 +8280,13 @@ class ResourceUtilizationReportResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The environment values to set at runtime.
 class RuntimeEnvironment {
   /// Additional experiment flags for the job.
-  core.List<core.String> additionalExperiments;
+  core.List<core.String>? additionalExperiments;
 
   /// Additional user labels to be specified for the job.
   ///
@@ -8606,47 +8294,47 @@ class RuntimeEnvironment {
   /// [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
   /// page. An object containing a list of "key": value pairs. Example: {
   /// "name": "wrench", "mass": "1kg", "count": "3" }.
-  core.Map<core.String, core.String> additionalUserLabels;
+  core.Map<core.String, core.String>? additionalUserLabels;
 
   /// Whether to bypass the safety checks for the job's temporary directory.
   ///
   /// Use with caution.
-  core.bool bypassTempDirValidation;
+  core.bool? bypassTempDirValidation;
 
   /// Whether to enable Streaming Engine for the job.
-  core.bool enableStreamingEngine;
+  core.bool? enableStreamingEngine;
 
   /// Configuration for VM IPs.
   /// Possible string values are:
   /// - "WORKER_IP_UNSPECIFIED" : The configuration is unknown, or unspecified.
   /// - "WORKER_IP_PUBLIC" : Workers should have public IP addresses.
   /// - "WORKER_IP_PRIVATE" : Workers should have private IP addresses.
-  core.String ipConfiguration;
+  core.String? ipConfiguration;
 
   /// Name for the Cloud KMS key for the job.
   ///
   /// Key format is: projects//locations//keyRings//cryptoKeys/
-  core.String kmsKeyName;
+  core.String? kmsKeyName;
 
   /// The machine type to use for the job.
   ///
   /// Defaults to the value from the template if not specified.
-  core.String machineType;
+  core.String? machineType;
 
   /// The maximum number of Google Compute Engine instances to be made available
   /// to your pipeline during execution, from 1 to 1000.
-  core.int maxWorkers;
+  core.int? maxWorkers;
 
   /// Network to which VMs will be assigned.
   ///
   /// If empty or unspecified, the service will use the network "default".
-  core.String network;
+  core.String? network;
 
   /// The initial number of Google Compute Engine instnaces for the job.
-  core.int numWorkers;
+  core.int? numWorkers;
 
   /// The email address of the service account to run the job as.
-  core.String serviceAccountEmail;
+  core.String? serviceAccountEmail;
 
   /// Subnetwork to which VMs will be assigned, if desired.
   ///
@@ -8655,12 +8343,12 @@ class RuntimeEnvironment {
   /// "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK"
   /// or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located
   /// in a Shared VPC network, you must use the complete URL.
-  core.String subnetwork;
+  core.String? subnetwork;
 
   /// The Cloud Storage path to use for temporary files.
   ///
   /// Must be a valid Cloud Storage URL, beginning with `gs://`.
-  core.String tempLocation;
+  core.String? tempLocation;
 
   /// The Compute Engine region
   /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
@@ -8668,7 +8356,7 @@ class RuntimeEnvironment {
   ///
   /// Mutually exclusive with worker_zone. If neither worker_region nor
   /// worker_zone is specified, default to the control plane's region.
-  core.String workerRegion;
+  core.String? workerRegion;
 
   /// The Compute Engine zone
   /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
@@ -8678,14 +8366,14 @@ class RuntimeEnvironment {
   /// worker_zone is specified, a zone in the control plane's region is chosen
   /// based on available capacity. If both `worker_zone` and `zone` are set,
   /// `worker_zone` takes precedence.
-  core.String workerZone;
+  core.String? workerZone;
 
   /// The Compute Engine
   /// [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
   /// for launching worker instances to run your pipeline.
   ///
   /// In the future, worker_zone will take precedence.
-  core.String zone;
+  core.String? zone;
 
   RuntimeEnvironment();
 
@@ -8749,38 +8437,38 @@ class RuntimeEnvironment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additionalExperiments != null)
-          'additionalExperiments': additionalExperiments,
+          'additionalExperiments': additionalExperiments!,
         if (additionalUserLabels != null)
-          'additionalUserLabels': additionalUserLabels,
+          'additionalUserLabels': additionalUserLabels!,
         if (bypassTempDirValidation != null)
-          'bypassTempDirValidation': bypassTempDirValidation,
+          'bypassTempDirValidation': bypassTempDirValidation!,
         if (enableStreamingEngine != null)
-          'enableStreamingEngine': enableStreamingEngine,
-        if (ipConfiguration != null) 'ipConfiguration': ipConfiguration,
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
-        if (machineType != null) 'machineType': machineType,
-        if (maxWorkers != null) 'maxWorkers': maxWorkers,
-        if (network != null) 'network': network,
-        if (numWorkers != null) 'numWorkers': numWorkers,
+          'enableStreamingEngine': enableStreamingEngine!,
+        if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (machineType != null) 'machineType': machineType!,
+        if (maxWorkers != null) 'maxWorkers': maxWorkers!,
+        if (network != null) 'network': network!,
+        if (numWorkers != null) 'numWorkers': numWorkers!,
         if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail,
-        if (subnetwork != null) 'subnetwork': subnetwork,
-        if (tempLocation != null) 'tempLocation': tempLocation,
-        if (workerRegion != null) 'workerRegion': workerRegion,
-        if (workerZone != null) 'workerZone': workerZone,
-        if (zone != null) 'zone': zone,
+          'serviceAccountEmail': serviceAccountEmail!,
+        if (subnetwork != null) 'subnetwork': subnetwork!,
+        if (tempLocation != null) 'tempLocation': tempLocation!,
+        if (workerRegion != null) 'workerRegion': workerRegion!,
+        if (workerZone != null) 'workerZone': workerZone!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
 /// RuntimeMetadata describing a runtime environment.
 class RuntimeMetadata {
   /// The parameters for the template.
-  core.List<ParameterMetadata> parameters;
+  core.List<ParameterMetadata>? parameters;
 
   /// SDK Info for the template.
-  SDKInfo sdkInfo;
+  SDKInfo? sdkInfo;
 
   RuntimeMetadata();
 
@@ -8797,10 +8485,10 @@ class RuntimeMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (parameters != null)
-          'parameters': parameters.map((value) => value.toJson()).toList(),
-        if (sdkInfo != null) 'sdkInfo': sdkInfo.toJson(),
+          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (sdkInfo != null) 'sdkInfo': sdkInfo!.toJson(),
       };
 }
 
@@ -8813,12 +8501,12 @@ class SDKInfo {
   /// - "UNKNOWN" : UNKNOWN Language.
   /// - "JAVA" : Java.
   /// - "PYTHON" : Python.
-  core.String language;
+  core.String? language;
 
   /// The SDK version.
   ///
   /// Optional.
-  core.String version;
+  core.String? version;
 
   SDKInfo();
 
@@ -8831,20 +8519,20 @@ class SDKInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (language != null) 'language': language,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (language != null) 'language': language!,
+        if (version != null) 'version': version!,
       };
 }
 
 /// Defines a SDK harness container for executing Dataflow pipelines.
 class SdkHarnessContainerImage {
   /// A docker container image that resides in Google Container Registry.
-  core.String containerImage;
+  core.String? containerImage;
 
   /// Environment ID for the Beam runner API proto Environment that corresponds
   /// to the current SDK Harness.
-  core.String environmentId;
+  core.String? environmentId;
 
   /// If true, recommends the Dataflow service to use only one core per SDK
   /// container instance with this image.
@@ -8852,7 +8540,7 @@ class SdkHarnessContainerImage {
   /// If false (or unset) recommends using more than one core per SDK container
   /// instance with this image for efficiency. Note that Dataflow service may
   /// choose to override this property if needed.
-  core.bool useSingleCorePerContainer;
+  core.bool? useSingleCorePerContainer;
 
   SdkHarnessContainerImage();
 
@@ -8869,11 +8557,11 @@ class SdkHarnessContainerImage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (containerImage != null) 'containerImage': containerImage,
-        if (environmentId != null) 'environmentId': environmentId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (containerImage != null) 'containerImage': containerImage!,
+        if (environmentId != null) 'environmentId': environmentId!,
         if (useSingleCorePerContainer != null)
-          'useSingleCorePerContainer': useSingleCorePerContainer,
+          'useSingleCorePerContainer': useSingleCorePerContainer!,
       };
 }
 
@@ -8889,13 +8577,13 @@ class SdkVersion {
   /// be no longer supported.
   /// - "UNSUPPORTED" : Support for this SDK version has ended and it should no
   /// longer be used.
-  core.String sdkSupportStatus;
+  core.String? sdkSupportStatus;
 
   /// The version of the SDK used to run the job.
-  core.String version;
+  core.String? version;
 
   /// A readable string describing the version of the SDK.
-  core.String versionDisplayName;
+  core.String? versionDisplayName;
 
   SdkVersion();
 
@@ -8911,29 +8599,29 @@ class SdkVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sdkSupportStatus != null) 'sdkSupportStatus': sdkSupportStatus,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sdkSupportStatus != null) 'sdkSupportStatus': sdkSupportStatus!,
+        if (version != null) 'version': version!,
         if (versionDisplayName != null)
-          'versionDisplayName': versionDisplayName,
+          'versionDisplayName': versionDisplayName!,
       };
 }
 
 /// Request to send encoded debug information.
 class SendDebugCaptureRequest {
   /// The internal component id for which debug information is sent.
-  core.String componentId;
+  core.String? componentId;
 
   /// The encoded debug information.
-  core.String data;
+  core.String? data;
 
   /// The
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the job specified by job_id.
-  core.String location;
+  core.String? location;
 
   /// The worker id, i.e., VM hostname.
-  core.String workerId;
+  core.String? workerId;
 
   SendDebugCaptureRequest();
 
@@ -8952,11 +8640,11 @@ class SendDebugCaptureRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (componentId != null) 'componentId': componentId,
-        if (data != null) 'data': data,
-        if (location != null) 'location': location,
-        if (workerId != null) 'workerId': workerId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (componentId != null) 'componentId': componentId!,
+        if (data != null) 'data': data!,
+        if (location != null) 'location': location!,
+        if (workerId != null) 'workerId': workerId!,
       };
 }
 
@@ -8970,7 +8658,7 @@ class SendDebugCaptureResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A request for sending worker messages to the service.
@@ -8978,10 +8666,10 @@ class SendWorkerMessagesRequest {
   /// The
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the job.
-  core.String location;
+  core.String? location;
 
   /// The WorkerMessages to send.
-  core.List<WorkerMessage> workerMessages;
+  core.List<WorkerMessage>? workerMessages;
 
   SendWorkerMessagesRequest();
 
@@ -8997,18 +8685,18 @@ class SendWorkerMessagesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (location != null) 'location': location,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (location != null) 'location': location!,
         if (workerMessages != null)
           'workerMessages':
-              workerMessages.map((value) => value.toJson()).toList(),
+              workerMessages!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The response to the worker messages.
 class SendWorkerMessagesResponse {
   /// The servers response to the worker messages.
-  core.List<WorkerMessageResponse> workerMessageResponses;
+  core.List<WorkerMessageResponse>? workerMessageResponses;
 
   SendWorkerMessagesResponse();
 
@@ -9021,39 +8709,39 @@ class SendWorkerMessagesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (workerMessageResponses != null)
           'workerMessageResponses':
-              workerMessageResponses.map((value) => value.toJson()).toList(),
+              workerMessageResponses!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Describes a particular function to invoke.
 class SeqMapTask {
   /// Information about each of the inputs.
-  core.List<SideInputInfo> inputs;
+  core.List<SideInputInfo>? inputs;
 
   /// The user-provided name of the SeqDo operation.
-  core.String name;
+  core.String? name;
 
   /// Information about each of the outputs.
-  core.List<SeqMapTaskOutputInfo> outputInfos;
+  core.List<SeqMapTaskOutputInfo>? outputInfos;
 
   /// System-defined name of the stage containing the SeqDo operation.
   ///
   /// Unique across the workflow.
-  core.String stageName;
+  core.String? stageName;
 
   /// System-defined name of the SeqDo operation.
   ///
   /// Unique across the workflow.
-  core.String systemName;
+  core.String? systemName;
 
   /// The user function to invoke.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> userFn;
+  core.Map<core.String, core.Object>? userFn;
 
   SeqMapTask();
 
@@ -9090,25 +8778,25 @@ class SeqMapTask {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (inputs != null)
-          'inputs': inputs.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
+          'inputs': inputs!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
         if (outputInfos != null)
-          'outputInfos': outputInfos.map((value) => value.toJson()).toList(),
-        if (stageName != null) 'stageName': stageName,
-        if (systemName != null) 'systemName': systemName,
-        if (userFn != null) 'userFn': userFn,
+          'outputInfos': outputInfos!.map((value) => value.toJson()).toList(),
+        if (stageName != null) 'stageName': stageName!,
+        if (systemName != null) 'systemName': systemName!,
+        if (userFn != null) 'userFn': userFn!,
       };
 }
 
 /// Information about an output of a SeqMapTask.
 class SeqMapTaskOutputInfo {
   /// The sink to write the output value to.
-  Sink sink;
+  Sink? sink;
 
   /// The id of the TupleTag the user code will tag the output value by.
-  core.String tag;
+  core.String? tag;
 
   SeqMapTaskOutputInfo();
 
@@ -9122,19 +8810,19 @@ class SeqMapTaskOutputInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sink != null) 'sink': sink.toJson(),
-        if (tag != null) 'tag': tag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sink != null) 'sink': sink!.toJson(),
+        if (tag != null) 'tag': tag!,
       };
 }
 
 /// A task which consists of a shell command for the worker to execute.
 class ShellTask {
   /// The shell command to run.
-  core.String command;
+  core.String? command;
 
   /// Exit code for the task.
-  core.int exitCode;
+  core.int? exitCode;
 
   ShellTask();
 
@@ -9147,9 +8835,9 @@ class ShellTask {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (command != null) 'command': command,
-        if (exitCode != null) 'exitCode': exitCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (command != null) 'command': command!,
+        if (exitCode != null) 'exitCode': exitCode!,
       };
 }
 
@@ -9159,17 +8847,17 @@ class SideInputInfo {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> kind;
+  core.Map<core.String, core.Object>? kind;
 
   /// The source(s) to read element(s) from to get the value of this side input.
   ///
   /// If more than one source, then the elements are taken from the sources, in
   /// the specified order if order matters. At least one source is required.
-  core.List<Source> sources;
+  core.List<Source>? sources;
 
   /// The id of the tag the user code will access this side input by; this
   /// should correspond to the tag of some MultiOutputInfo.
-  core.String tag;
+  core.String? tag;
 
   SideInputInfo();
 
@@ -9193,11 +8881,11 @@ class SideInputInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (sources != null)
-          'sources': sources.map((value) => value.toJson()).toList(),
-        if (tag != null) 'tag': tag,
+          'sources': sources!.map((value) => value.toJson()).toList(),
+        if (tag != null) 'tag': tag!,
       };
 }
 
@@ -9207,13 +8895,13 @@ class Sink {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> codec;
+  core.Map<core.String, core.Object>? codec;
 
   /// The sink to write to, plus its parameters.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> spec;
+  core.Map<core.String, core.Object>? spec;
 
   Sink();
 
@@ -9236,38 +8924,38 @@ class Sink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (codec != null) 'codec': codec,
-        if (spec != null) 'spec': spec,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (codec != null) 'codec': codec!,
+        if (spec != null) 'spec': spec!,
       };
 }
 
 /// Represents a snapshot of a job.
 class Snapshot {
   /// The time this snapshot was created.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// User specified description of the snapshot.
   ///
   /// Maybe empty.
-  core.String description;
+  core.String? description;
 
   /// The disk byte size of the snapshot.
   ///
   /// Only available for snapshots in READY state.
-  core.String diskSizeBytes;
+  core.String? diskSizeBytes;
 
   /// The unique ID of this snapshot.
-  core.String id;
+  core.String? id;
 
   /// The project this snapshot belongs to.
-  core.String projectId;
+  core.String? projectId;
 
   /// PubSub snapshot metadata.
-  core.List<PubsubSnapshotMetadata> pubsubMetadata;
+  core.List<PubsubSnapshotMetadata>? pubsubMetadata;
 
   /// The job this snapshot was created from.
-  core.String sourceJobId;
+  core.String? sourceJobId;
 
   /// State of the snapshot.
   /// Possible string values are:
@@ -9278,10 +8966,10 @@ class Snapshot {
   /// - "READY" : Snapshot has been created and is ready to be used.
   /// - "FAILED" : Snapshot failed to be created.
   /// - "DELETED" : Snapshot has been deleted.
-  core.String state;
+  core.String? state;
 
   /// The time after which this snapshot will be automatically deleted.
-  core.String ttl;
+  core.String? ttl;
 
   Snapshot();
 
@@ -9319,18 +9007,18 @@ class Snapshot {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationTime != null) 'creationTime': creationTime,
-        if (description != null) 'description': description,
-        if (diskSizeBytes != null) 'diskSizeBytes': diskSizeBytes,
-        if (id != null) 'id': id,
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (description != null) 'description': description!,
+        if (diskSizeBytes != null) 'diskSizeBytes': diskSizeBytes!,
+        if (id != null) 'id': id!,
+        if (projectId != null) 'projectId': projectId!,
         if (pubsubMetadata != null)
           'pubsubMetadata':
-              pubsubMetadata.map((value) => value.toJson()).toList(),
-        if (sourceJobId != null) 'sourceJobId': sourceJobId,
-        if (state != null) 'state': state,
-        if (ttl != null) 'ttl': ttl,
+              pubsubMetadata!.map((value) => value.toJson()).toList(),
+        if (sourceJobId != null) 'sourceJobId': sourceJobId!,
+        if (state != null) 'state': state!,
+        if (ttl != null) 'ttl': ttl!,
       };
 }
 
@@ -9339,16 +9027,16 @@ class SnapshotJobRequest {
   /// User specified description of the snapshot.
   ///
   /// Maybe empty.
-  core.String description;
+  core.String? description;
 
   /// The location that contains this job.
-  core.String location;
+  core.String? location;
 
   /// If true, perform snapshots for sources which support this.
-  core.bool snapshotSources;
+  core.bool? snapshotSources;
 
   /// TTL for the snapshot.
-  core.String ttl;
+  core.String? ttl;
 
   SnapshotJobRequest();
 
@@ -9367,11 +9055,11 @@ class SnapshotJobRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (location != null) 'location': location,
-        if (snapshotSources != null) 'snapshotSources': snapshotSources,
-        if (ttl != null) 'ttl': ttl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (location != null) 'location': location!,
+        if (snapshotSources != null) 'snapshotSources': snapshotSources!,
+        if (ttl != null) 'ttl': ttl!,
       };
 }
 
@@ -9388,13 +9076,13 @@ class Source {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> baseSpecs;
+  core.List<core.Map<core.String, core.Object>>? baseSpecs;
 
   /// The codec to use to decode data read from the source.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> codec;
+  core.Map<core.String, core.Object>? codec;
 
   /// Setting this value to true hints to the framework that the source doesn't
   /// need splitting, and using SourceSplitRequest on it would yield
@@ -9409,7 +9097,7 @@ class Source {
   /// Source objects populated by the user (e.g. when filling in a
   /// DerivedSource). Source objects supplied by the framework to the user don't
   /// have this field populated.
-  core.bool doesNotNeedSplitting;
+  core.bool? doesNotNeedSplitting;
 
   /// Optionally, metadata for this source can be supplied right away, avoiding
   /// a SourceGetMetadataOperation roundtrip (see SourceOperationRequest).
@@ -9417,13 +9105,13 @@ class Source {
   /// This field is meaningful only in the Source objects populated by the user
   /// (e.g. when filling in a DerivedSource). Source objects supplied by the
   /// framework to the user don't have this field populated.
-  SourceMetadata metadata;
+  SourceMetadata? metadata;
 
   /// The source to read from, plus its parameters.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> spec;
+  core.Map<core.String, core.Object>? spec;
 
   Source();
 
@@ -9464,29 +9152,29 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (baseSpecs != null) 'baseSpecs': baseSpecs,
-        if (codec != null) 'codec': codec,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (baseSpecs != null) 'baseSpecs': baseSpecs!,
+        if (codec != null) 'codec': codec!,
         if (doesNotNeedSplitting != null)
-          'doesNotNeedSplitting': doesNotNeedSplitting,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (spec != null) 'spec': spec,
+          'doesNotNeedSplitting': doesNotNeedSplitting!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (spec != null) 'spec': spec!,
       };
 }
 
 /// DEPRECATED in favor of DynamicSourceSplit.
 class SourceFork {
   /// DEPRECATED
-  SourceSplitShard primary;
+  SourceSplitShard? primary;
 
   /// DEPRECATED
-  DerivedSource primarySource;
+  DerivedSource? primarySource;
 
   /// DEPRECATED
-  SourceSplitShard residual;
+  SourceSplitShard? residual;
 
   /// DEPRECATED
-  DerivedSource residualSource;
+  DerivedSource? residualSource;
 
   SourceFork();
 
@@ -9509,18 +9197,18 @@ class SourceFork {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (primary != null) 'primary': primary.toJson(),
-        if (primarySource != null) 'primarySource': primarySource.toJson(),
-        if (residual != null) 'residual': residual.toJson(),
-        if (residualSource != null) 'residualSource': residualSource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (primary != null) 'primary': primary!.toJson(),
+        if (primarySource != null) 'primarySource': primarySource!.toJson(),
+        if (residual != null) 'residual': residual!.toJson(),
+        if (residualSource != null) 'residualSource': residualSource!.toJson(),
       };
 }
 
 /// A request to compute the SourceMetadata of a Source.
 class SourceGetMetadataRequest {
   /// Specification of the source whose metadata should be computed.
-  Source source;
+  Source? source;
 
   SourceGetMetadataRequest();
 
@@ -9531,15 +9219,15 @@ class SourceGetMetadataRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (source != null) 'source': source.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
 /// The result of a SourceGetMetadataOperation.
 class SourceGetMetadataResponse {
   /// The computed metadata.
-  SourceMetadata metadata;
+  SourceMetadata? metadata;
 
   SourceGetMetadataResponse();
 
@@ -9550,8 +9238,8 @@ class SourceGetMetadataResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metadata != null) 'metadata': metadata.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metadata != null) 'metadata': metadata!.toJson(),
       };
 }
 
@@ -9563,15 +9251,15 @@ class SourceMetadata {
   ///
   /// This estimate is in terms of external storage size, before any
   /// decompression or other processing done by the reader.
-  core.String estimatedSizeBytes;
+  core.String? estimatedSizeBytes;
 
   /// Specifies that the size of this source is known to be infinite (this is a
   /// streaming source).
-  core.bool infinite;
+  core.bool? infinite;
 
   /// Whether this source is known to produce key/value pairs with the (encoded)
   /// keys in lexicographically sorted order.
-  core.bool producesSortedKeys;
+  core.bool? producesSortedKeys;
 
   SourceMetadata();
 
@@ -9587,12 +9275,12 @@ class SourceMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (estimatedSizeBytes != null)
-          'estimatedSizeBytes': estimatedSizeBytes,
-        if (infinite != null) 'infinite': infinite,
+          'estimatedSizeBytes': estimatedSizeBytes!,
+        if (infinite != null) 'infinite': infinite!,
         if (producesSortedKeys != null)
-          'producesSortedKeys': producesSortedKeys,
+          'producesSortedKeys': producesSortedKeys!,
       };
 }
 
@@ -9600,27 +9288,27 @@ class SourceMetadata {
 /// on a user-defined Source specification.
 class SourceOperationRequest {
   /// Information about a request to get metadata about a source.
-  SourceGetMetadataRequest getMetadata;
+  SourceGetMetadataRequest? getMetadata;
 
   /// User-provided name of the Read instruction for this source.
-  core.String name;
+  core.String? name;
 
   /// System-defined name for the Read instruction for this source in the
   /// original workflow graph.
-  core.String originalName;
+  core.String? originalName;
 
   /// Information about a request to split a source.
-  SourceSplitRequest split;
+  SourceSplitRequest? split;
 
   /// System-defined name of the stage containing the source operation.
   ///
   /// Unique across the workflow.
-  core.String stageName;
+  core.String? stageName;
 
   /// System-defined name of the Read instruction for this source.
   ///
   /// Unique across the workflow.
-  core.String systemName;
+  core.String? systemName;
 
   SourceOperationRequest();
 
@@ -9647,13 +9335,13 @@ class SourceOperationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (getMetadata != null) 'getMetadata': getMetadata.toJson(),
-        if (name != null) 'name': name,
-        if (originalName != null) 'originalName': originalName,
-        if (split != null) 'split': split.toJson(),
-        if (stageName != null) 'stageName': stageName,
-        if (systemName != null) 'systemName': systemName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (getMetadata != null) 'getMetadata': getMetadata!.toJson(),
+        if (name != null) 'name': name!,
+        if (originalName != null) 'originalName': originalName!,
+        if (split != null) 'split': split!.toJson(),
+        if (stageName != null) 'stageName': stageName!,
+        if (systemName != null) 'systemName': systemName!,
       };
 }
 
@@ -9662,10 +9350,10 @@ class SourceOperationRequest {
 /// completed.
 class SourceOperationResponse {
   /// A response to a request to get metadata about a source.
-  SourceGetMetadataResponse getMetadata;
+  SourceGetMetadataResponse? getMetadata;
 
   /// A response to a request to split a source.
-  SourceSplitResponse split;
+  SourceSplitResponse? split;
 
   SourceOperationResponse();
 
@@ -9680,9 +9368,9 @@ class SourceOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (getMetadata != null) 'getMetadata': getMetadata.toJson(),
-        if (split != null) 'split': split.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (getMetadata != null) 'getMetadata': getMetadata!.toJson(),
+        if (split != null) 'split': split!.toJson(),
       };
 }
 
@@ -9691,10 +9379,10 @@ class SourceOperationResponse {
 class SourceSplitOptions {
   /// The source should be split into a set of bundles where the estimated size
   /// of each is approximately this many bytes.
-  core.String desiredBundleSizeBytes;
+  core.String? desiredBundleSizeBytes;
 
   /// DEPRECATED in favor of desired_bundle_size_bytes.
-  core.String desiredShardSizeBytes;
+  core.String? desiredShardSizeBytes;
 
   SourceSplitOptions();
 
@@ -9707,11 +9395,11 @@ class SourceSplitOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (desiredBundleSizeBytes != null)
-          'desiredBundleSizeBytes': desiredBundleSizeBytes,
+          'desiredBundleSizeBytes': desiredBundleSizeBytes!,
         if (desiredShardSizeBytes != null)
-          'desiredShardSizeBytes': desiredShardSizeBytes,
+          'desiredShardSizeBytes': desiredShardSizeBytes!,
       };
 }
 
@@ -9729,10 +9417,10 @@ class SourceSplitOptions {
 /// to bundles produced from it.
 class SourceSplitRequest {
   /// Hints for tuning the splitting process.
-  SourceSplitOptions options;
+  SourceSplitOptions? options;
 
   /// Specification of the source to be split.
-  Source source;
+  Source? source;
 
   SourceSplitRequest();
 
@@ -9747,9 +9435,9 @@ class SourceSplitRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (options != null) 'options': options.toJson(),
-        if (source != null) 'source': source.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (options != null) 'options': options!.toJson(),
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
@@ -9760,7 +9448,7 @@ class SourceSplitResponse {
   ///
   /// Otherwise this field is ignored. This list can be empty, which means the
   /// source represents an empty input.
-  core.List<DerivedSource> bundles;
+  core.List<DerivedSource>? bundles;
 
   /// Indicates whether splitting happened and produced a list of bundles.
   ///
@@ -9775,10 +9463,10 @@ class SourceSplitResponse {
   /// processed "as is" without splitting.
   /// - "SOURCE_SPLIT_OUTCOME_SPLITTING_HAPPENED" : Splitting produced a list of
   /// bundles.
-  core.String outcome;
+  core.String? outcome;
 
   /// DEPRECATED in favor of bundles.
-  core.List<SourceSplitShard> shards;
+  core.List<SourceSplitShard>? shards;
 
   SourceSplitResponse();
 
@@ -9800,12 +9488,12 @@ class SourceSplitResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (bundles != null)
-          'bundles': bundles.map((value) => value.toJson()).toList(),
-        if (outcome != null) 'outcome': outcome,
+          'bundles': bundles!.map((value) => value.toJson()).toList(),
+        if (outcome != null) 'outcome': outcome!,
         if (shards != null)
-          'shards': shards.map((value) => value.toJson()).toList(),
+          'shards': shards!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -9821,10 +9509,10 @@ class SourceSplitShard {
   /// the Source being split.
   /// - "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT" : Produce a Source based on
   /// the base of the Source being split.
-  core.String derivationMode;
+  core.String? derivationMode;
 
   /// DEPRECATED
-  Source source;
+  Source? source;
 
   SourceSplitShard();
 
@@ -9838,22 +9526,22 @@ class SourceSplitShard {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (derivationMode != null) 'derivationMode': derivationMode,
-        if (source != null) 'source': source.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (derivationMode != null) 'derivationMode': derivationMode!,
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
 /// Metadata for a Spanner connector used by the job.
 class SpannerIODetails {
   /// DatabaseId accessed in the connection.
-  core.String databaseId;
+  core.String? databaseId;
 
   /// InstanceId accessed in the connection.
-  core.String instanceId;
+  core.String? instanceId;
 
   /// ProjectId accessed in the connection.
-  core.String projectId;
+  core.String? projectId;
 
   SpannerIODetails();
 
@@ -9869,10 +9557,10 @@ class SpannerIODetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (databaseId != null) 'databaseId': databaseId,
-        if (instanceId != null) 'instanceId': instanceId,
-        if (projectId != null) 'projectId': projectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (databaseId != null) 'databaseId': databaseId!,
+        if (instanceId != null) 'instanceId': instanceId!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
@@ -9880,10 +9568,10 @@ class SpannerIODetails {
 /// encoded in JSON.
 class SplitInt64 {
   /// The high order bits, including the sign: n >> 32.
-  core.int highBits;
+  core.int? highBits;
 
   /// The low order bits: n & 0xffffffff.
-  core.int lowBits;
+  core.int? lowBits;
 
   SplitInt64();
 
@@ -9896,9 +9584,9 @@ class SplitInt64 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (highBits != null) 'highBits': highBits,
-        if (lowBits != null) 'lowBits': lowBits,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (highBits != null) 'highBits': highBits!,
+        if (lowBits != null) 'lowBits': lowBits!,
       };
 }
 
@@ -9908,10 +9596,10 @@ class StageExecutionDetails {
   ///
   /// To obtain the next page of results, repeat the request with page_token set
   /// to this value.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Workers that have done work on the stage.
-  core.List<WorkerDetails> workers;
+  core.List<WorkerDetails>? workers;
 
   StageExecutionDetails();
 
@@ -9927,27 +9615,27 @@ class StageExecutionDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (workers != null)
-          'workers': workers.map((value) => value.toJson()).toList(),
+          'workers': workers!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Description of an input or output of an execution stage.
 class StageSource {
   /// Dataflow service generated name for this source.
-  core.String name;
+  core.String? name;
 
   /// User name for the original user transform or collection with which this
   /// source is most closely associated.
-  core.String originalTransformOrCollection;
+  core.String? originalTransformOrCollection;
 
   /// Size of the source, if measurable.
-  core.String sizeBytes;
+  core.String? sizeBytes;
 
   /// Human-readable name for this source; may be user or system generated.
-  core.String userName;
+  core.String? userName;
 
   StageSource();
 
@@ -9967,12 +9655,12 @@ class StageSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
         if (originalTransformOrCollection != null)
-          'originalTransformOrCollection': originalTransformOrCollection,
-        if (sizeBytes != null) 'sizeBytes': sizeBytes,
-        if (userName != null) 'userName': userName,
+          'originalTransformOrCollection': originalTransformOrCollection!,
+        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
+        if (userName != null) 'userName': userName!,
       };
 }
 
@@ -9982,21 +9670,21 @@ class StageSummary {
   ///
   /// If the work item is completed, this is the actual end time of the stage.
   /// Otherwise, it is the predicted end time.
-  core.String endTime;
+  core.String? endTime;
 
   /// Metrics for this stage.
-  core.List<MetricUpdate> metrics;
+  core.List<MetricUpdate>? metrics;
 
   /// Progress for this stage.
   ///
   /// Only applicable to Batch jobs.
-  ProgressTimeseries progress;
+  ProgressTimeseries? progress;
 
   /// ID of this stage
-  core.String stageId;
+  core.String? stageId;
 
   /// Start time of this stage.
-  core.String startTime;
+  core.String? startTime;
 
   /// State of this stage.
   /// Possible string values are:
@@ -10007,7 +9695,7 @@ class StageSummary {
   /// - "EXECUTION_STATE_SUCCEEDED" : The component succeeded.
   /// - "EXECUTION_STATE_FAILED" : The component failed.
   /// - "EXECUTION_STATE_CANCELLED" : Execution of the component was cancelled.
-  core.String state;
+  core.String? state;
 
   StageSummary();
 
@@ -10036,24 +9724,24 @@ class StageSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
-        if (progress != null) 'progress': progress.toJson(),
-        if (stageId != null) 'stageId': stageId,
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (progress != null) 'progress': progress!.toJson(),
+        if (stageId != null) 'stageId': stageId!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
       };
 }
 
 /// State family configuration.
 class StateFamilyConfig {
   /// If true, this family corresponds to a read operation.
-  core.bool isRead;
+  core.bool? isRead;
 
   /// The state family value.
-  core.String stateFamily;
+  core.String? stateFamily;
 
   StateFamilyConfig();
 
@@ -10066,9 +9754,9 @@ class StateFamilyConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (isRead != null) 'isRead': isRead,
-        if (stateFamily != null) 'stateFamily': stateFamily,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (isRead != null) 'isRead': isRead!,
+        if (stateFamily != null) 'stateFamily': stateFamily!,
       };
 }
 
@@ -10081,7 +9769,7 @@ class StateFamilyConfig {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -10089,13 +9777,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -10119,10 +9807,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -10141,13 +9829,13 @@ class Status {
 /// of jobs, not just Map-Reduce.
 class Step {
   /// The kind of step in the Cloud Dataflow job.
-  core.String kind;
+  core.String? kind;
 
   /// The name that identifies the step.
   ///
   /// This must be unique for each step with respect to all other steps in the
   /// Cloud Dataflow job.
-  core.String name;
+  core.String? name;
 
   /// Named properties associated with the step.
   ///
@@ -10156,7 +9844,7 @@ class Step {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> properties;
+  core.Map<core.String, core.Object>? properties;
 
   Step();
 
@@ -10179,10 +9867,10 @@ class Step {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (properties != null) 'properties': properties,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (properties != null) 'properties': properties!,
       };
 }
 
@@ -10190,17 +9878,17 @@ class Step {
 /// a streaming Dataflow job.
 class StreamLocation {
   /// The stream is a custom source.
-  CustomSourceLocation customSourceLocation;
+  CustomSourceLocation? customSourceLocation;
 
   /// The stream is a pubsub stream.
-  PubsubLocation pubsubLocation;
+  PubsubLocation? pubsubLocation;
 
   /// The stream is a streaming side input.
-  StreamingSideInputLocation sideInputLocation;
+  StreamingSideInputLocation? sideInputLocation;
 
   /// The stream is part of another computation within the current streaming
   /// Dataflow job.
-  StreamingStageLocation streamingStageLocation;
+  StreamingStageLocation? streamingStageLocation;
 
   StreamLocation();
 
@@ -10224,24 +9912,24 @@ class StreamLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customSourceLocation != null)
-          'customSourceLocation': customSourceLocation.toJson(),
-        if (pubsubLocation != null) 'pubsubLocation': pubsubLocation.toJson(),
+          'customSourceLocation': customSourceLocation!.toJson(),
+        if (pubsubLocation != null) 'pubsubLocation': pubsubLocation!.toJson(),
         if (sideInputLocation != null)
-          'sideInputLocation': sideInputLocation.toJson(),
+          'sideInputLocation': sideInputLocation!.toJson(),
         if (streamingStageLocation != null)
-          'streamingStageLocation': streamingStageLocation.toJson(),
+          'streamingStageLocation': streamingStageLocation!.toJson(),
       };
 }
 
 /// Streaming appliance snapshot configuration.
 class StreamingApplianceSnapshotConfig {
   /// Indicates which endpoint is used to import appliance state.
-  core.String importStateEndpoint;
+  core.String? importStateEndpoint;
 
   /// If set, indicates the snapshot id for the snapshot being performed.
-  core.String snapshotId;
+  core.String? snapshotId;
 
   StreamingApplianceSnapshotConfig();
 
@@ -10254,30 +9942,30 @@ class StreamingApplianceSnapshotConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (importStateEndpoint != null)
-          'importStateEndpoint': importStateEndpoint,
-        if (snapshotId != null) 'snapshotId': snapshotId,
+          'importStateEndpoint': importStateEndpoint!,
+        if (snapshotId != null) 'snapshotId': snapshotId!,
       };
 }
 
 /// Configuration information for a single streaming computation.
 class StreamingComputationConfig {
   /// Unique identifier for this computation.
-  core.String computationId;
+  core.String? computationId;
 
   /// Instructions that comprise the computation.
-  core.List<ParallelInstruction> instructions;
+  core.List<ParallelInstruction>? instructions;
 
   /// Stage name of this computation.
-  core.String stageName;
+  core.String? stageName;
 
   /// System defined name for this computation.
-  core.String systemName;
+  core.String? systemName;
 
   /// Map from user name of stateful transforms in this stage to their state
   /// family.
-  core.Map<core.String, core.String> transformUserNameToStateFamily;
+  core.Map<core.String, core.String>? transformUserNameToStateFamily;
 
   StreamingComputationConfig();
 
@@ -10310,14 +9998,14 @@ class StreamingComputationConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (computationId != null) 'computationId': computationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (computationId != null) 'computationId': computationId!,
         if (instructions != null)
-          'instructions': instructions.map((value) => value.toJson()).toList(),
-        if (stageName != null) 'stageName': stageName,
-        if (systemName != null) 'systemName': systemName,
+          'instructions': instructions!.map((value) => value.toJson()).toList(),
+        if (stageName != null) 'stageName': stageName!,
+        if (systemName != null) 'systemName': systemName!,
         if (transformUserNameToStateFamily != null)
-          'transformUserNameToStateFamily': transformUserNameToStateFamily,
+          'transformUserNameToStateFamily': transformUserNameToStateFamily!,
       };
 }
 
@@ -10325,10 +10013,10 @@ class StreamingComputationConfig {
 /// computation ranges.
 class StreamingComputationRanges {
   /// The ID of the computation.
-  core.String computationId;
+  core.String? computationId;
 
   /// Data disk assignments for ranges from this computation.
-  core.List<KeyRangeDataDiskAssignment> rangeAssignments;
+  core.List<KeyRangeDataDiskAssignment>? rangeAssignments;
 
   StreamingComputationRanges();
 
@@ -10345,11 +10033,11 @@ class StreamingComputationRanges {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (computationId != null) 'computationId': computationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (computationId != null) 'computationId': computationId!,
         if (rangeAssignments != null)
           'rangeAssignments':
-              rangeAssignments.map((value) => value.toJson()).toList(),
+              rangeAssignments!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -10357,10 +10045,10 @@ class StreamingComputationRanges {
 /// streaming computation ranges.
 class StreamingComputationTask {
   /// Contains ranges of a streaming computation this task should apply to.
-  core.List<StreamingComputationRanges> computationRanges;
+  core.List<StreamingComputationRanges>? computationRanges;
 
   /// Describes the set of data disks this task should apply to.
-  core.List<MountedDataDisk> dataDisks;
+  core.List<MountedDataDisk>? dataDisks;
 
   /// A type of streaming computation task.
   /// Possible string values are:
@@ -10370,7 +10058,7 @@ class StreamingComputationTask {
   /// computation range(s).
   /// - "STREAMING_COMPUTATION_TASK_START" : Start processing specified
   /// streaming computation range(s).
-  core.String taskType;
+  core.String? taskType;
 
   StreamingComputationTask();
 
@@ -10393,43 +10081,43 @@ class StreamingComputationTask {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (computationRanges != null)
           'computationRanges':
-              computationRanges.map((value) => value.toJson()).toList(),
+              computationRanges!.map((value) => value.toJson()).toList(),
         if (dataDisks != null)
-          'dataDisks': dataDisks.map((value) => value.toJson()).toList(),
-        if (taskType != null) 'taskType': taskType,
+          'dataDisks': dataDisks!.map((value) => value.toJson()).toList(),
+        if (taskType != null) 'taskType': taskType!,
       };
 }
 
 /// A task that carries configuration information for streaming computations.
 class StreamingConfigTask {
   /// Chunk size for commit streams from the harness to windmill.
-  core.String commitStreamChunkSizeBytes;
+  core.String? commitStreamChunkSizeBytes;
 
   /// Chunk size for get data streams from the harness to windmill.
-  core.String getDataStreamChunkSizeBytes;
+  core.String? getDataStreamChunkSizeBytes;
 
   /// Maximum size for work item commit supported windmill storage layer.
-  core.String maxWorkItemCommitBytes;
+  core.String? maxWorkItemCommitBytes;
 
   /// Set of computation configuration information.
-  core.List<StreamingComputationConfig> streamingComputationConfigs;
+  core.List<StreamingComputationConfig>? streamingComputationConfigs;
 
   /// Map from user step names to state families.
-  core.Map<core.String, core.String> userStepToStateFamilyNameMap;
+  core.Map<core.String, core.String>? userStepToStateFamilyNameMap;
 
   /// If present, the worker must use this endpoint to communicate with Windmill
   /// Service dispatchers, otherwise the worker must continue to use whatever
   /// endpoint it had been using.
-  core.String windmillServiceEndpoint;
+  core.String? windmillServiceEndpoint;
 
   /// If present, the worker must use this port to communicate with Windmill
   /// Service dispatchers.
   ///
   /// Only applicable when windmill_service_endpoint is specified.
-  core.String windmillServicePort;
+  core.String? windmillServicePort;
 
   StreamingConfigTask();
 
@@ -10472,44 +10160,44 @@ class StreamingConfigTask {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (commitStreamChunkSizeBytes != null)
-          'commitStreamChunkSizeBytes': commitStreamChunkSizeBytes,
+          'commitStreamChunkSizeBytes': commitStreamChunkSizeBytes!,
         if (getDataStreamChunkSizeBytes != null)
-          'getDataStreamChunkSizeBytes': getDataStreamChunkSizeBytes,
+          'getDataStreamChunkSizeBytes': getDataStreamChunkSizeBytes!,
         if (maxWorkItemCommitBytes != null)
-          'maxWorkItemCommitBytes': maxWorkItemCommitBytes,
+          'maxWorkItemCommitBytes': maxWorkItemCommitBytes!,
         if (streamingComputationConfigs != null)
-          'streamingComputationConfigs': streamingComputationConfigs
+          'streamingComputationConfigs': streamingComputationConfigs!
               .map((value) => value.toJson())
               .toList(),
         if (userStepToStateFamilyNameMap != null)
-          'userStepToStateFamilyNameMap': userStepToStateFamilyNameMap,
+          'userStepToStateFamilyNameMap': userStepToStateFamilyNameMap!,
         if (windmillServiceEndpoint != null)
-          'windmillServiceEndpoint': windmillServiceEndpoint,
+          'windmillServiceEndpoint': windmillServiceEndpoint!,
         if (windmillServicePort != null)
-          'windmillServicePort': windmillServicePort,
+          'windmillServicePort': windmillServicePort!,
       };
 }
 
 /// A task which initializes part of a streaming Dataflow job.
 class StreamingSetupTask {
   /// The user has requested drain.
-  core.bool drain;
+  core.bool? drain;
 
   /// The TCP port on which the worker should listen for messages from other
   /// streaming computation workers.
-  core.int receiveWorkPort;
+  core.int? receiveWorkPort;
 
   /// Configures streaming appliance snapshot.
-  StreamingApplianceSnapshotConfig snapshotConfig;
+  StreamingApplianceSnapshotConfig? snapshotConfig;
 
   /// The global topology of the streaming Dataflow job.
-  TopologyConfig streamingComputationTopology;
+  TopologyConfig? streamingComputationTopology;
 
   /// The TCP port used by the worker to communicate with the Dataflow worker
   /// harness.
-  core.int workerHarnessPort;
+  core.int? workerHarnessPort;
 
   StreamingSetupTask();
 
@@ -10534,23 +10222,24 @@ class StreamingSetupTask {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (drain != null) 'drain': drain,
-        if (receiveWorkPort != null) 'receiveWorkPort': receiveWorkPort,
-        if (snapshotConfig != null) 'snapshotConfig': snapshotConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (drain != null) 'drain': drain!,
+        if (receiveWorkPort != null) 'receiveWorkPort': receiveWorkPort!,
+        if (snapshotConfig != null) 'snapshotConfig': snapshotConfig!.toJson(),
         if (streamingComputationTopology != null)
-          'streamingComputationTopology': streamingComputationTopology.toJson(),
-        if (workerHarnessPort != null) 'workerHarnessPort': workerHarnessPort,
+          'streamingComputationTopology':
+              streamingComputationTopology!.toJson(),
+        if (workerHarnessPort != null) 'workerHarnessPort': workerHarnessPort!,
       };
 }
 
 /// Identifies the location of a streaming side input.
 class StreamingSideInputLocation {
   /// Identifies the state family where this side input is stored.
-  core.String stateFamily;
+  core.String? stateFamily;
 
   /// Identifies the particular side input within the streaming Dataflow job.
-  core.String tag;
+  core.String? tag;
 
   StreamingSideInputLocation();
 
@@ -10563,9 +10252,9 @@ class StreamingSideInputLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (stateFamily != null) 'stateFamily': stateFamily,
-        if (tag != null) 'tag': tag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (stateFamily != null) 'stateFamily': stateFamily!,
+        if (tag != null) 'tag': tag!,
       };
 }
 
@@ -10573,7 +10262,7 @@ class StreamingSideInputLocation {
 /// communication.
 class StreamingStageLocation {
   /// Identifies the particular stream within the streaming Dataflow job.
-  core.String streamId;
+  core.String? streamId;
 
   StreamingStageLocation();
 
@@ -10583,15 +10272,15 @@ class StreamingStageLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (streamId != null) 'streamId': streamId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (streamId != null) 'streamId': streamId!,
       };
 }
 
 /// A metric value representing a list of strings.
 class StringList {
   /// Elements of the list.
-  core.List<core.String> elements;
+  core.List<core.String>? elements;
 
   StringList();
 
@@ -10603,8 +10292,8 @@ class StringList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (elements != null) 'elements': elements,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (elements != null) 'elements': elements!,
       };
 }
 
@@ -10615,13 +10304,13 @@ class StructuredMessage {
   /// Identifier for this message type.
   ///
   /// Used by external systems to internationalize or personalize message.
-  core.String messageKey;
+  core.String? messageKey;
 
   /// Human-readable version of message.
-  core.String messageText;
+  core.String? messageText;
 
   /// The structured data associated with this message.
-  core.List<Parameter> parameters;
+  core.List<Parameter>? parameters;
 
   StructuredMessage();
 
@@ -10640,21 +10329,21 @@ class StructuredMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (messageKey != null) 'messageKey': messageKey,
-        if (messageText != null) 'messageText': messageText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (messageKey != null) 'messageKey': messageKey!,
+        if (messageText != null) 'messageText': messageText!,
         if (parameters != null)
-          'parameters': parameters.map((value) => value.toJson()).toList(),
+          'parameters': parameters!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Taskrunner configuration settings.
 class TaskRunnerSettings {
   /// Whether to also send taskrunner log info to stderr.
-  core.bool alsologtostderr;
+  core.bool? alsologtostderr;
 
   /// The location on the worker for task-specific subdirectories.
-  core.String baseTaskDir;
+  core.String? baseTaskDir;
 
   /// The base URL for the taskrunner to use when accessing Google Cloud APIs.
   ///
@@ -10663,29 +10352,29 @@ class TaskRunnerSettings {
   /// resolving these relative URLs. The normative algorithm used is defined by
   /// RFC 1808, "Relative Uniform Resource Locators". If not specified, the
   /// default value is "http://www.googleapis.com/"
-  core.String baseUrl;
+  core.String? baseUrl;
 
   /// The file to store preprocessing commands in.
-  core.String commandlinesFileName;
+  core.String? commandlinesFileName;
 
   /// Whether to continue taskrunner if an exception is hit.
-  core.bool continueOnException;
+  core.bool? continueOnException;
 
   /// The API version of endpoint, e.g. "v1b3"
-  core.String dataflowApiVersion;
+  core.String? dataflowApiVersion;
 
   /// The command to launch the worker harness.
-  core.String harnessCommand;
+  core.String? harnessCommand;
 
   /// The suggested backend language.
-  core.String languageHint;
+  core.String? languageHint;
 
   /// The directory on the VM to store logs.
-  core.String logDir;
+  core.String? logDir;
 
   /// Whether to send taskrunner log info to Google Compute Engine VM serial
   /// console.
-  core.bool logToSerialconsole;
+  core.bool? logToSerialconsole;
 
   /// Indicates where to put logs.
   ///
@@ -10693,25 +10382,25 @@ class TaskRunnerSettings {
   /// resource type is: Google Cloud Storage:
   /// storage.googleapis.com/{bucket}/{object}
   /// bucket.storage.googleapis.com/{object}
-  core.String logUploadLocation;
+  core.String? logUploadLocation;
 
   /// The OAuth2 scopes to be requested by the taskrunner in order to access the
   /// Cloud Dataflow API.
-  core.List<core.String> oauthScopes;
+  core.List<core.String>? oauthScopes;
 
   /// The settings to pass to the parallel worker harness.
-  WorkerSettings parallelWorkerSettings;
+  WorkerSettings? parallelWorkerSettings;
 
   /// The streaming worker main class name.
-  core.String streamingWorkerMainClass;
+  core.String? streamingWorkerMainClass;
 
   /// The UNIX group ID on the worker VM to use for tasks launched by
   /// taskrunner; e.g. "wheel".
-  core.String taskGroup;
+  core.String? taskGroup;
 
   /// The UNIX user ID on the worker VM to use for tasks launched by taskrunner;
   /// e.g. "root".
-  core.String taskUser;
+  core.String? taskUser;
 
   /// The prefix of the resources the taskrunner should use for temporary
   /// storage.
@@ -10719,13 +10408,13 @@ class TaskRunnerSettings {
   /// The supported resource type is: Google Cloud Storage:
   /// storage.googleapis.com/{bucket}/{object}
   /// bucket.storage.googleapis.com/{object}
-  core.String tempStoragePrefix;
+  core.String? tempStoragePrefix;
 
   /// The ID string of the VM.
-  core.String vmId;
+  core.String? vmId;
 
   /// The file to store the workflow in.
-  core.String workflowFileName;
+  core.String? workflowFileName;
 
   TaskRunnerSettings();
 
@@ -10794,32 +10483,32 @@ class TaskRunnerSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alsologtostderr != null) 'alsologtostderr': alsologtostderr,
-        if (baseTaskDir != null) 'baseTaskDir': baseTaskDir,
-        if (baseUrl != null) 'baseUrl': baseUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alsologtostderr != null) 'alsologtostderr': alsologtostderr!,
+        if (baseTaskDir != null) 'baseTaskDir': baseTaskDir!,
+        if (baseUrl != null) 'baseUrl': baseUrl!,
         if (commandlinesFileName != null)
-          'commandlinesFileName': commandlinesFileName,
+          'commandlinesFileName': commandlinesFileName!,
         if (continueOnException != null)
-          'continueOnException': continueOnException,
+          'continueOnException': continueOnException!,
         if (dataflowApiVersion != null)
-          'dataflowApiVersion': dataflowApiVersion,
-        if (harnessCommand != null) 'harnessCommand': harnessCommand,
-        if (languageHint != null) 'languageHint': languageHint,
-        if (logDir != null) 'logDir': logDir,
+          'dataflowApiVersion': dataflowApiVersion!,
+        if (harnessCommand != null) 'harnessCommand': harnessCommand!,
+        if (languageHint != null) 'languageHint': languageHint!,
+        if (logDir != null) 'logDir': logDir!,
         if (logToSerialconsole != null)
-          'logToSerialconsole': logToSerialconsole,
-        if (logUploadLocation != null) 'logUploadLocation': logUploadLocation,
-        if (oauthScopes != null) 'oauthScopes': oauthScopes,
+          'logToSerialconsole': logToSerialconsole!,
+        if (logUploadLocation != null) 'logUploadLocation': logUploadLocation!,
+        if (oauthScopes != null) 'oauthScopes': oauthScopes!,
         if (parallelWorkerSettings != null)
-          'parallelWorkerSettings': parallelWorkerSettings.toJson(),
+          'parallelWorkerSettings': parallelWorkerSettings!.toJson(),
         if (streamingWorkerMainClass != null)
-          'streamingWorkerMainClass': streamingWorkerMainClass,
-        if (taskGroup != null) 'taskGroup': taskGroup,
-        if (taskUser != null) 'taskUser': taskUser,
-        if (tempStoragePrefix != null) 'tempStoragePrefix': tempStoragePrefix,
-        if (vmId != null) 'vmId': vmId,
-        if (workflowFileName != null) 'workflowFileName': workflowFileName,
+          'streamingWorkerMainClass': streamingWorkerMainClass!,
+        if (taskGroup != null) 'taskGroup': taskGroup!,
+        if (taskUser != null) 'taskUser': taskUser!,
+        if (tempStoragePrefix != null) 'tempStoragePrefix': tempStoragePrefix!,
+        if (vmId != null) 'vmId': vmId!,
+        if (workflowFileName != null) 'workflowFileName': workflowFileName!,
       };
 }
 
@@ -10828,15 +10517,15 @@ class TemplateMetadata {
   /// A description of the template.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// The name of the template.
   ///
   /// Required.
-  core.String name;
+  core.String? name;
 
   /// The parameters for the template.
-  core.List<ParameterMetadata> parameters;
+  core.List<ParameterMetadata>? parameters;
 
   TemplateMetadata();
 
@@ -10855,11 +10544,11 @@ class TemplateMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
         if (parameters != null)
-          'parameters': parameters.map((value) => value.toJson()).toList(),
+          'parameters': parameters!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -10877,31 +10566,31 @@ class TemplateVersion {
   /// Job graph and metadata if it is a legacy Template.
   ///
   /// Container image path and metadata if it is flex Template.
-  Artifact artifact;
+  Artifact? artifact;
 
   /// Creation time of this TemplateVersion.
-  core.String createTime;
+  core.String? createTime;
 
   /// Template description from the user.
-  core.String description;
+  core.String? description;
 
   /// A customized name for Template.
   ///
   /// Multiple TemplateVersions per Template.
-  core.String displayName;
+  core.String? displayName;
 
   /// Labels for the Template Version.
   ///
   /// Labels can be duplicate within Template.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// A unique project_id.
   ///
   /// Multiple Templates per Project.
-  core.String projectId;
+  core.String? projectId;
 
   /// Alias for version_id, helps locate a TemplateVersion.
-  core.List<core.String> tags;
+  core.List<core.String>? tags;
 
   /// Either LEGACY or FLEX.
   ///
@@ -10910,10 +10599,10 @@ class TemplateVersion {
   /// - "TEMPLATE_TYPE_UNSPECIFIED" : Default value. Not a useful zero case.
   /// - "LEGACY" : Legacy Template.
   /// - "FLEX" : Flex Template.
-  core.String type;
+  core.String? type;
 
   /// An auto generated version_id for TemplateVersion.
-  core.String versionId;
+  core.String? versionId;
 
   TemplateVersion();
 
@@ -10956,16 +10645,16 @@ class TemplateVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (artifact != null) 'artifact': artifact.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (projectId != null) 'projectId': projectId,
-        if (tags != null) 'tags': tags,
-        if (type != null) 'type': type,
-        if (versionId != null) 'versionId': versionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (artifact != null) 'artifact': artifact!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (projectId != null) 'projectId': projectId!,
+        if (tags != null) 'tags': tags!,
+        if (type != null) 'type': type!,
+        if (versionId != null) 'versionId': versionId!,
       };
 }
 
@@ -10973,19 +10662,19 @@ class TemplateVersion {
 /// and their sharded locations.
 class TopologyConfig {
   /// The computations associated with a streaming Dataflow job.
-  core.List<ComputationTopology> computations;
+  core.List<ComputationTopology>? computations;
 
   /// The disks assigned to a streaming Dataflow job.
-  core.List<DataDiskAssignment> dataDiskAssignments;
+  core.List<DataDiskAssignment>? dataDiskAssignments;
 
   /// The size (in bits) of keys that will be assigned to source messages.
-  core.int forwardingKeyBits;
+  core.int? forwardingKeyBits;
 
   /// Version number for persistent state.
-  core.int persistentStateVersion;
+  core.int? persistentStateVersion;
 
   /// Maps user stage names to stable computation names.
-  core.Map<core.String, core.String> userStageToComputationNameMap;
+  core.Map<core.String, core.String>? userStageToComputationNameMap;
 
   TopologyConfig();
 
@@ -11021,30 +10710,30 @@ class TopologyConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (computations != null)
-          'computations': computations.map((value) => value.toJson()).toList(),
+          'computations': computations!.map((value) => value.toJson()).toList(),
         if (dataDiskAssignments != null)
           'dataDiskAssignments':
-              dataDiskAssignments.map((value) => value.toJson()).toList(),
-        if (forwardingKeyBits != null) 'forwardingKeyBits': forwardingKeyBits,
+              dataDiskAssignments!.map((value) => value.toJson()).toList(),
+        if (forwardingKeyBits != null) 'forwardingKeyBits': forwardingKeyBits!,
         if (persistentStateVersion != null)
-          'persistentStateVersion': persistentStateVersion,
+          'persistentStateVersion': persistentStateVersion!,
         if (userStageToComputationNameMap != null)
-          'userStageToComputationNameMap': userStageToComputationNameMap,
+          'userStageToComputationNameMap': userStageToComputationNameMap!,
       };
 }
 
 /// Description of the type, names/ids, and input/outputs for a transform.
 class TransformSummary {
   /// Transform-specific display data.
-  core.List<DisplayData> displayData;
+  core.List<DisplayData>? displayData;
 
   /// SDK generated id of this transform instance.
-  core.String id;
+  core.String? id;
 
   /// User names for all collection inputs to this transform.
-  core.List<core.String> inputCollectionName;
+  core.List<core.String>? inputCollectionName;
 
   /// Type of transform.
   /// Possible string values are:
@@ -11059,13 +10748,13 @@ class TransformSummary {
   /// - "SINGLETON_KIND" : Creates a Singleton view of a collection.
   /// - "SHUFFLE_KIND" : Opening or closing a shuffle session, often as part of
   /// a GroupByKey.
-  core.String kind;
+  core.String? kind;
 
   /// User provided name for this transform instance.
-  core.String name;
+  core.String? name;
 
   /// User names for all collection outputs to this transform.
-  core.List<core.String> outputCollectionName;
+  core.List<core.String>? outputCollectionName;
 
   TransformSummary();
 
@@ -11097,28 +10786,28 @@ class TransformSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (displayData != null)
-          'displayData': displayData.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id,
+          'displayData': displayData!.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id!,
         if (inputCollectionName != null)
-          'inputCollectionName': inputCollectionName,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+          'inputCollectionName': inputCollectionName!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
         if (outputCollectionName != null)
-          'outputCollectionName': outputCollectionName,
+          'outputCollectionName': outputCollectionName!,
       };
 }
 
 /// Response to the validation request.
 class ValidateResponse {
   /// Will be empty if validation succeeds.
-  core.String errorMessage;
+  core.String? errorMessage;
 
   /// Information about the validated query.
   ///
   /// Not defined if validation fails.
-  QueryInfo queryInfo;
+  QueryInfo? queryInfo;
 
   ValidateResponse();
 
@@ -11132,9 +10821,9 @@ class ValidateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errorMessage != null) 'errorMessage': errorMessage,
-        if (queryInfo != null) 'queryInfo': queryInfo.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (queryInfo != null) 'queryInfo': queryInfo!.toJson(),
       };
 }
 
@@ -11142,50 +10831,50 @@ class ValidateResponse {
 /// cloud.
 class WorkItem {
   /// Work item-specific configuration as an opaque blob.
-  core.String configuration;
+  core.String? configuration;
 
   /// Identifies this WorkItem.
-  core.String id;
+  core.String? id;
 
   /// The initial index to use when reporting the status of the WorkItem.
-  core.String initialReportIndex;
+  core.String? initialReportIndex;
 
   /// Identifies the workflow job this WorkItem belongs to.
-  core.String jobId;
+  core.String? jobId;
 
   /// Time when the lease on this Work will expire.
-  core.String leaseExpireTime;
+  core.String? leaseExpireTime;
 
   /// Additional information for MapTask WorkItems.
-  MapTask mapTask;
+  MapTask? mapTask;
 
   /// Any required packages that need to be fetched in order to execute this
   /// WorkItem.
-  core.List<Package> packages;
+  core.List<Package>? packages;
 
   /// Identifies the cloud project this WorkItem belongs to.
-  core.String projectId;
+  core.String? projectId;
 
   /// Recommended reporting interval.
-  core.String reportStatusInterval;
+  core.String? reportStatusInterval;
 
   /// Additional information for SeqMapTask WorkItems.
-  SeqMapTask seqMapTask;
+  SeqMapTask? seqMapTask;
 
   /// Additional information for ShellTask WorkItems.
-  ShellTask shellTask;
+  ShellTask? shellTask;
 
   /// Additional information for source operation WorkItems.
-  SourceOperationRequest sourceOperationTask;
+  SourceOperationRequest? sourceOperationTask;
 
   /// Additional information for StreamingComputationTask WorkItems.
-  StreamingComputationTask streamingComputationTask;
+  StreamingComputationTask? streamingComputationTask;
 
   /// Additional information for StreamingConfigTask WorkItems.
-  StreamingConfigTask streamingConfigTask;
+  StreamingConfigTask? streamingConfigTask;
 
   /// Additional information for StreamingSetupTask WorkItems.
-  StreamingSetupTask streamingSetupTask;
+  StreamingSetupTask? streamingSetupTask;
 
   WorkItem();
 
@@ -11248,51 +10937,51 @@ class WorkItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (configuration != null) 'configuration': configuration,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (configuration != null) 'configuration': configuration!,
+        if (id != null) 'id': id!,
         if (initialReportIndex != null)
-          'initialReportIndex': initialReportIndex,
-        if (jobId != null) 'jobId': jobId,
-        if (leaseExpireTime != null) 'leaseExpireTime': leaseExpireTime,
-        if (mapTask != null) 'mapTask': mapTask.toJson(),
+          'initialReportIndex': initialReportIndex!,
+        if (jobId != null) 'jobId': jobId!,
+        if (leaseExpireTime != null) 'leaseExpireTime': leaseExpireTime!,
+        if (mapTask != null) 'mapTask': mapTask!.toJson(),
         if (packages != null)
-          'packages': packages.map((value) => value.toJson()).toList(),
-        if (projectId != null) 'projectId': projectId,
+          'packages': packages!.map((value) => value.toJson()).toList(),
+        if (projectId != null) 'projectId': projectId!,
         if (reportStatusInterval != null)
-          'reportStatusInterval': reportStatusInterval,
-        if (seqMapTask != null) 'seqMapTask': seqMapTask.toJson(),
-        if (shellTask != null) 'shellTask': shellTask.toJson(),
+          'reportStatusInterval': reportStatusInterval!,
+        if (seqMapTask != null) 'seqMapTask': seqMapTask!.toJson(),
+        if (shellTask != null) 'shellTask': shellTask!.toJson(),
         if (sourceOperationTask != null)
-          'sourceOperationTask': sourceOperationTask.toJson(),
+          'sourceOperationTask': sourceOperationTask!.toJson(),
         if (streamingComputationTask != null)
-          'streamingComputationTask': streamingComputationTask.toJson(),
+          'streamingComputationTask': streamingComputationTask!.toJson(),
         if (streamingConfigTask != null)
-          'streamingConfigTask': streamingConfigTask.toJson(),
+          'streamingConfigTask': streamingConfigTask!.toJson(),
         if (streamingSetupTask != null)
-          'streamingSetupTask': streamingSetupTask.toJson(),
+          'streamingSetupTask': streamingSetupTask!.toJson(),
       };
 }
 
 /// Information about an individual work item execution.
 class WorkItemDetails {
   /// Attempt ID of this work item
-  core.String attemptId;
+  core.String? attemptId;
 
   /// End time of this work item attempt.
   ///
   /// If the work item is completed, this is the actual end time of the work
   /// item. Otherwise, it is the predicted end time.
-  core.String endTime;
+  core.String? endTime;
 
   /// Metrics for this work item.
-  core.List<MetricUpdate> metrics;
+  core.List<MetricUpdate>? metrics;
 
   /// Progress of this work item.
-  ProgressTimeseries progress;
+  ProgressTimeseries? progress;
 
   /// Start time of this work item attempt.
-  core.String startTime;
+  core.String? startTime;
 
   /// State of this work item.
   /// Possible string values are:
@@ -11303,10 +10992,10 @@ class WorkItemDetails {
   /// - "EXECUTION_STATE_SUCCEEDED" : The component succeeded.
   /// - "EXECUTION_STATE_FAILED" : The component failed.
   /// - "EXECUTION_STATE_CANCELLED" : Execution of the component was cancelled.
-  core.String state;
+  core.String? state;
 
   /// Name of this work item.
-  core.String taskId;
+  core.String? taskId;
 
   WorkItemDetails();
 
@@ -11338,15 +11027,15 @@ class WorkItemDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attemptId != null) 'attemptId': attemptId,
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attemptId != null) 'attemptId': attemptId!,
+        if (endTime != null) 'endTime': endTime!,
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
-        if (progress != null) 'progress': progress.toJson(),
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
-        if (taskId != null) 'taskId': taskId,
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
+        if (progress != null) 'progress': progress!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+        if (taskId != null) 'taskId': taskId!,
       };
 }
 
@@ -11358,23 +11047,23 @@ class WorkItemServiceState {
   /// This will not be set to OK, unless supported by the specific kind of
   /// WorkItem. It can be used for the backend to indicate a WorkItem must
   /// terminate, e.g., for aborting work.
-  Status completeWorkStatus;
+  Status? completeWorkStatus;
 
   /// Other data returned by the service, specific to the particular worker
   /// harness.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> harnessData;
+  core.Map<core.String, core.Object>? harnessData;
 
   /// A hot key is a symptom of poor data distribution in which there are enough
   /// elements mapped to a single key to impact pipeline performance.
   ///
   /// When present, this field includes metadata associated with any hot key.
-  HotKeyDetection hotKeyDetection;
+  HotKeyDetection? hotKeyDetection;
 
   /// Time at which the current lease will expire.
-  core.String leaseExpireTime;
+  core.String? leaseExpireTime;
 
   /// The short ids that workers should use in subsequent metric updates.
   ///
@@ -11382,26 +11071,26 @@ class WorkItemServiceState {
   /// request the short_id again if a worker lost track of it (e.g. if the
   /// worker is recovering from a crash). NOTE: it is possible that the response
   /// may have short ids for a subset of the metrics.
-  core.List<MetricShortId> metricShortId;
+  core.List<MetricShortId>? metricShortId;
 
   /// The index value to use for the next report sent by the worker.
   ///
   /// Note: If the report call fails for whatever reason, the worker should
   /// reuse this index for subsequent report attempts.
-  core.String nextReportIndex;
+  core.String? nextReportIndex;
 
   /// New recommended reporting interval.
-  core.String reportStatusInterval;
+  core.String? reportStatusInterval;
 
   /// The progress point in the WorkItem where the Dataflow service suggests
   /// that the worker truncate the task.
-  ApproximateSplitRequest splitRequest;
+  ApproximateSplitRequest? splitRequest;
 
   /// DEPRECATED in favor of split_request.
-  ApproximateProgress suggestedStopPoint;
+  ApproximateProgress? suggestedStopPoint;
 
   /// Obsolete, always empty.
-  Position suggestedStopPosition;
+  Position? suggestedStopPosition;
 
   WorkItemServiceState();
 
@@ -11453,49 +11142,49 @@ class WorkItemServiceState {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (completeWorkStatus != null)
-          'completeWorkStatus': completeWorkStatus.toJson(),
-        if (harnessData != null) 'harnessData': harnessData,
+          'completeWorkStatus': completeWorkStatus!.toJson(),
+        if (harnessData != null) 'harnessData': harnessData!,
         if (hotKeyDetection != null)
-          'hotKeyDetection': hotKeyDetection.toJson(),
-        if (leaseExpireTime != null) 'leaseExpireTime': leaseExpireTime,
+          'hotKeyDetection': hotKeyDetection!.toJson(),
+        if (leaseExpireTime != null) 'leaseExpireTime': leaseExpireTime!,
         if (metricShortId != null)
           'metricShortId':
-              metricShortId.map((value) => value.toJson()).toList(),
-        if (nextReportIndex != null) 'nextReportIndex': nextReportIndex,
+              metricShortId!.map((value) => value.toJson()).toList(),
+        if (nextReportIndex != null) 'nextReportIndex': nextReportIndex!,
         if (reportStatusInterval != null)
-          'reportStatusInterval': reportStatusInterval,
-        if (splitRequest != null) 'splitRequest': splitRequest.toJson(),
+          'reportStatusInterval': reportStatusInterval!,
+        if (splitRequest != null) 'splitRequest': splitRequest!.toJson(),
         if (suggestedStopPoint != null)
-          'suggestedStopPoint': suggestedStopPoint.toJson(),
+          'suggestedStopPoint': suggestedStopPoint!.toJson(),
         if (suggestedStopPosition != null)
-          'suggestedStopPosition': suggestedStopPosition.toJson(),
+          'suggestedStopPosition': suggestedStopPosition!.toJson(),
       };
 }
 
 /// Conveys a worker's progress through the work described by a WorkItem.
 class WorkItemStatus {
   /// True if the WorkItem was completed (successfully or unsuccessfully).
-  core.bool completed;
+  core.bool? completed;
 
   /// Worker output counters for this WorkItem.
-  core.List<CounterUpdate> counterUpdates;
+  core.List<CounterUpdate>? counterUpdates;
 
   /// See documentation of stop_position.
-  DynamicSourceSplit dynamicSourceSplit;
+  DynamicSourceSplit? dynamicSourceSplit;
 
   /// Specifies errors which occurred during processing.
   ///
   /// If errors are provided, and completed = true, then the WorkItem is
   /// considered to have failed.
-  core.List<Status> errors;
+  core.List<Status>? errors;
 
   /// DEPRECATED in favor of counter_updates.
-  core.List<MetricUpdate> metricUpdates;
+  core.List<MetricUpdate>? metricUpdates;
 
   /// DEPRECATED in favor of reported_progress.
-  ApproximateProgress progress;
+  ApproximateProgress? progress;
 
   /// The report index.
   ///
@@ -11508,20 +11197,20 @@ class WorkItemStatus {
   /// the worker must submit the same report multiple times before getting back
   /// a response. The worker should not submit a subsequent report until the
   /// response for the previous report had been received from the service.
-  core.String reportIndex;
+  core.String? reportIndex;
 
   /// The worker's progress through this WorkItem.
-  ApproximateReportedProgress reportedProgress;
+  ApproximateReportedProgress? reportedProgress;
 
   /// Amount of time the worker requests for its lease.
-  core.String requestedLeaseDuration;
+  core.String? requestedLeaseDuration;
 
   /// DEPRECATED in favor of dynamic_source_split.
-  SourceFork sourceFork;
+  SourceFork? sourceFork;
 
   /// If the work item represented a SourceOperationRequest, and the work is
   /// completed, contains the result of the operation.
-  SourceOperationResponse sourceOperationResponse;
+  SourceOperationResponse? sourceOperationResponse;
 
   /// A worker may split an active map task in two parts, "primary" and
   /// "residual", continuing to process the primary part and returning the
@@ -11548,13 +11237,13 @@ class WorkItemStatus {
   /// proposed_stop_position should be interpreted relative to P, and in a
   /// potential subsequent dynamic_source_split into {P', R'}, P' and R' must be
   /// together equivalent to P, etc.
-  Position stopPosition;
+  Position? stopPosition;
 
   /// Total time the worker spent being throttled by external systems.
-  core.double totalThrottlerWaitTimeSeconds;
+  core.double? totalThrottlerWaitTimeSeconds;
 
   /// Identifies the WorkItem.
-  core.String workItemId;
+  core.String? workItemId;
 
   WorkItemStatus();
 
@@ -11620,41 +11309,41 @@ class WorkItemStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (completed != null) 'completed': completed,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (completed != null) 'completed': completed!,
         if (counterUpdates != null)
           'counterUpdates':
-              counterUpdates.map((value) => value.toJson()).toList(),
+              counterUpdates!.map((value) => value.toJson()).toList(),
         if (dynamicSourceSplit != null)
-          'dynamicSourceSplit': dynamicSourceSplit.toJson(),
+          'dynamicSourceSplit': dynamicSourceSplit!.toJson(),
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
+          'errors': errors!.map((value) => value.toJson()).toList(),
         if (metricUpdates != null)
           'metricUpdates':
-              metricUpdates.map((value) => value.toJson()).toList(),
-        if (progress != null) 'progress': progress.toJson(),
-        if (reportIndex != null) 'reportIndex': reportIndex,
+              metricUpdates!.map((value) => value.toJson()).toList(),
+        if (progress != null) 'progress': progress!.toJson(),
+        if (reportIndex != null) 'reportIndex': reportIndex!,
         if (reportedProgress != null)
-          'reportedProgress': reportedProgress.toJson(),
+          'reportedProgress': reportedProgress!.toJson(),
         if (requestedLeaseDuration != null)
-          'requestedLeaseDuration': requestedLeaseDuration,
-        if (sourceFork != null) 'sourceFork': sourceFork.toJson(),
+          'requestedLeaseDuration': requestedLeaseDuration!,
+        if (sourceFork != null) 'sourceFork': sourceFork!.toJson(),
         if (sourceOperationResponse != null)
-          'sourceOperationResponse': sourceOperationResponse.toJson(),
-        if (stopPosition != null) 'stopPosition': stopPosition.toJson(),
+          'sourceOperationResponse': sourceOperationResponse!.toJson(),
+        if (stopPosition != null) 'stopPosition': stopPosition!.toJson(),
         if (totalThrottlerWaitTimeSeconds != null)
-          'totalThrottlerWaitTimeSeconds': totalThrottlerWaitTimeSeconds,
-        if (workItemId != null) 'workItemId': workItemId,
+          'totalThrottlerWaitTimeSeconds': totalThrottlerWaitTimeSeconds!,
+        if (workItemId != null) 'workItemId': workItemId!,
       };
 }
 
 /// Information about a worker
 class WorkerDetails {
   /// Work items processed by this worker, sorted by time.
-  core.List<WorkItemDetails> workItems;
+  core.List<WorkItemDetails>? workItems;
 
   /// Name of this worker
-  core.String workerName;
+  core.String? workerName;
 
   WorkerDetails();
 
@@ -11670,10 +11359,10 @@ class WorkerDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (workItems != null)
-          'workItems': workItems.map((value) => value.toJson()).toList(),
-        if (workerName != null) 'workerName': workerName,
+          'workItems': workItems!.map((value) => value.toJson()).toList(),
+        if (workerName != null) 'workerName': workerName!,
       };
 }
 
@@ -11683,7 +11372,7 @@ class WorkerDetails {
 /// this health ping belongs to.
 class WorkerHealthReport {
   /// A message describing any unusual health reports.
-  core.String msg;
+  core.String? msg;
 
   /// The pods running on the worker.
   ///
@@ -11694,25 +11383,25 @@ class WorkerHealthReport {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> pods;
+  core.List<core.Map<core.String, core.Object>>? pods;
 
   /// The interval at which the worker is sending health reports.
   ///
   /// The default value of 0 should be interpreted as the field is not being
   /// explicitly set by the worker.
-  core.String reportInterval;
+  core.String? reportInterval;
 
   /// Whether the VM is in a permanently broken state.
   ///
   /// Broken VMs should be abandoned or deleted ASAP to avoid assigning or
   /// completing any work.
-  core.bool vmIsBroken;
+  core.bool? vmIsBroken;
 
   /// Whether the VM is currently healthy.
-  core.bool vmIsHealthy;
+  core.bool? vmIsHealthy;
 
   /// The time the VM was booted.
-  core.String vmStartupTime;
+  core.String? vmStartupTime;
 
   WorkerHealthReport();
 
@@ -11745,13 +11434,13 @@ class WorkerHealthReport {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (msg != null) 'msg': msg,
-        if (pods != null) 'pods': pods,
-        if (reportInterval != null) 'reportInterval': reportInterval,
-        if (vmIsBroken != null) 'vmIsBroken': vmIsBroken,
-        if (vmIsHealthy != null) 'vmIsHealthy': vmIsHealthy,
-        if (vmStartupTime != null) 'vmStartupTime': vmStartupTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (msg != null) 'msg': msg!,
+        if (pods != null) 'pods': pods!,
+        if (reportInterval != null) 'reportInterval': reportInterval!,
+        if (vmIsBroken != null) 'vmIsBroken': vmIsBroken!,
+        if (vmIsHealthy != null) 'vmIsHealthy': vmIsHealthy!,
+        if (vmStartupTime != null) 'vmStartupTime': vmStartupTime!,
       };
 }
 
@@ -11763,7 +11452,7 @@ class WorkerHealthReportResponse {
   ///
   /// The default value of zero means no change in report rate is requested by
   /// the server.
-  core.String reportInterval;
+  core.String? reportInterval;
 
   WorkerHealthReportResponse();
 
@@ -11773,8 +11462,8 @@ class WorkerHealthReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (reportInterval != null) 'reportInterval': reportInterval,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (reportInterval != null) 'reportInterval': reportInterval!,
       };
 }
 
@@ -11790,7 +11479,7 @@ class WorkerLifecycleEvent {
   ///
   /// All events will report this so that events can be grouped together across
   /// container/VM restarts.
-  core.String containerStartTime;
+  core.String? containerStartTime;
 
   /// The event being reported.
   /// Possible string values are:
@@ -11805,12 +11494,12 @@ class WorkerLifecycleEvent {
   /// - "SDK_INSTALL_START" : For applicable SDKs, started installation of SDK
   /// and worker packages.
   /// - "SDK_INSTALL_FINISH" : Finished installing SDK.
-  core.String event;
+  core.String? event;
 
   /// Other stats that can accompany an event.
   ///
   /// E.g. { "downloaded_bytes" : "123456" }
-  core.Map<core.String, core.String> metadata;
+  core.Map<core.String, core.String>? metadata;
 
   WorkerLifecycleEvent();
 
@@ -11832,11 +11521,11 @@ class WorkerLifecycleEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (containerStartTime != null)
-          'containerStartTime': containerStartTime,
-        if (event != null) 'event': event,
-        if (metadata != null) 'metadata': metadata,
+          'containerStartTime': containerStartTime!,
+        if (event != null) 'event': event!,
+        if (metadata != null) 'metadata': metadata!,
       };
 }
 
@@ -11850,25 +11539,25 @@ class WorkerMessage {
   /// typically correspond to Label enum values. However, for ease of
   /// development other strings can be used as tags. LABEL_UNSPECIFIED should
   /// not be used here.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The timestamp of the worker_message.
-  core.String time;
+  core.String? time;
 
   /// The health of a worker.
-  WorkerHealthReport workerHealthReport;
+  WorkerHealthReport? workerHealthReport;
 
   /// Record of worker lifecycle events.
-  WorkerLifecycleEvent workerLifecycleEvent;
+  WorkerLifecycleEvent? workerLifecycleEvent;
 
   /// A worker message code.
-  WorkerMessageCode workerMessageCode;
+  WorkerMessageCode? workerMessageCode;
 
   /// Resource metrics reported by workers.
-  ResourceUtilizationReport workerMetrics;
+  ResourceUtilizationReport? workerMetrics;
 
   /// Shutdown notice by workers.
-  WorkerShutdownNotice workerShutdownNotice;
+  WorkerShutdownNotice? workerShutdownNotice;
 
   WorkerMessage();
 
@@ -11907,18 +11596,18 @@ class WorkerMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
-        if (time != null) 'time': time,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
+        if (time != null) 'time': time!,
         if (workerHealthReport != null)
-          'workerHealthReport': workerHealthReport.toJson(),
+          'workerHealthReport': workerHealthReport!.toJson(),
         if (workerLifecycleEvent != null)
-          'workerLifecycleEvent': workerLifecycleEvent.toJson(),
+          'workerLifecycleEvent': workerLifecycleEvent!.toJson(),
         if (workerMessageCode != null)
-          'workerMessageCode': workerMessageCode.toJson(),
-        if (workerMetrics != null) 'workerMetrics': workerMetrics.toJson(),
+          'workerMessageCode': workerMessageCode!.toJson(),
+        if (workerMetrics != null) 'workerMetrics': workerMetrics!.toJson(),
         if (workerShutdownNotice != null)
-          'workerShutdownNotice': workerShutdownNotice.toJson(),
+          'workerShutdownNotice': workerShutdownNotice!.toJson(),
       };
 }
 
@@ -11937,7 +11626,7 @@ class WorkerMessageCode {
   /// error downloading a GCS file as part of the boot process of one of the
   /// worker containers. This is a string and not an enum to make it easy to add
   /// new codes without waiting for an API change.
-  core.String code;
+  core.String? code;
 
   /// Parameters contains specific information about the code.
   ///
@@ -11955,7 +11644,7 @@ class WorkerMessageCode {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> parameters;
+  core.Map<core.String, core.Object>? parameters;
 
   WorkerMessageCode();
 
@@ -11975,9 +11664,9 @@ class WorkerMessageCode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (parameters != null) 'parameters': parameters,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (parameters != null) 'parameters': parameters!,
       };
 }
 
@@ -11985,13 +11674,13 @@ class WorkerMessageCode {
 /// sender.
 class WorkerMessageResponse {
   /// The service's response to a worker's health report.
-  WorkerHealthReportResponse workerHealthReportResponse;
+  WorkerHealthReportResponse? workerHealthReportResponse;
 
   /// Service's response to reporting worker metrics (currently empty).
-  ResourceUtilizationReportResponse workerMetricsResponse;
+  ResourceUtilizationReportResponse? workerMetricsResponse;
 
   /// Service's response to shutdown notice (currently empty).
-  WorkerShutdownNoticeResponse workerShutdownNoticeResponse;
+  WorkerShutdownNoticeResponse? workerShutdownNoticeResponse;
 
   WorkerMessageResponse();
 
@@ -12013,13 +11702,14 @@ class WorkerMessageResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (workerHealthReportResponse != null)
-          'workerHealthReportResponse': workerHealthReportResponse.toJson(),
+          'workerHealthReportResponse': workerHealthReportResponse!.toJson(),
         if (workerMetricsResponse != null)
-          'workerMetricsResponse': workerMetricsResponse.toJson(),
+          'workerMetricsResponse': workerMetricsResponse!.toJson(),
         if (workerShutdownNoticeResponse != null)
-          'workerShutdownNoticeResponse': workerShutdownNoticeResponse.toJson(),
+          'workerShutdownNoticeResponse':
+              workerShutdownNoticeResponse!.toJson(),
       };
 }
 
@@ -12031,10 +11721,10 @@ class WorkerMessageResponse {
 /// various computational requirements of the various stages of the job.
 class WorkerPool {
   /// Settings for autoscaling of this WorkerPool.
-  AutoscalingSettings autoscalingSettings;
+  AutoscalingSettings? autoscalingSettings;
 
   /// Data disks that are used by a VM in this workflow.
-  core.List<Disk> dataDisks;
+  core.List<Disk>? dataDisks;
 
   /// The default package set to install.
   ///
@@ -12049,92 +11739,92 @@ class WorkerPool {
   /// written in Java.
   /// - "DEFAULT_PACKAGE_SET_PYTHON" : Stage pacakges typically useful to
   /// workers written in Python.
-  core.String defaultPackageSet;
+  core.String? defaultPackageSet;
 
   /// Size of root disk for VMs, in GB.
   ///
   /// If zero or unspecified, the service will attempt to choose a reasonable
   /// default.
-  core.int diskSizeGb;
+  core.int? diskSizeGb;
 
   /// Fully qualified source image for disks.
-  core.String diskSourceImage;
+  core.String? diskSourceImage;
 
   /// Type of root disk for VMs.
   ///
   /// If empty or unspecified, the service will attempt to choose a reasonable
   /// default.
-  core.String diskType;
+  core.String? diskType;
 
   /// Configuration for VM IPs.
   /// Possible string values are:
   /// - "WORKER_IP_UNSPECIFIED" : The configuration is unknown, or unspecified.
   /// - "WORKER_IP_PUBLIC" : Workers should have public IP addresses.
   /// - "WORKER_IP_PRIVATE" : Workers should have private IP addresses.
-  core.String ipConfiguration;
+  core.String? ipConfiguration;
 
   /// The kind of the worker pool; currently only `harness` and `shuffle` are
   /// supported.
-  core.String kind;
+  core.String? kind;
 
   /// Machine type (e.g. "n1-standard-1").
   ///
   /// If empty or unspecified, the service will attempt to choose a reasonable
   /// default.
-  core.String machineType;
+  core.String? machineType;
 
   /// Metadata to set on the Google Compute Engine VMs.
-  core.Map<core.String, core.String> metadata;
+  core.Map<core.String, core.String>? metadata;
 
   /// Network to which VMs will be assigned.
   ///
   /// If empty or unspecified, the service will use the network "default".
-  core.String network;
+  core.String? network;
 
   /// The number of threads per worker harness.
   ///
   /// If empty or unspecified, the service will choose a number of threads
   /// (according to the number of cores on the selected machine type for batch,
   /// or 1 by convention for streaming).
-  core.int numThreadsPerWorker;
+  core.int? numThreadsPerWorker;
 
   /// Number of Google Compute Engine workers in this pool needed to execute the
   /// job.
   ///
   /// If zero or unspecified, the service will attempt to choose a reasonable
   /// default.
-  core.int numWorkers;
+  core.int? numWorkers;
 
   /// The action to take on host maintenance, as defined by the Google Compute
   /// Engine API.
-  core.String onHostMaintenance;
+  core.String? onHostMaintenance;
 
   /// Packages to be installed on workers.
-  core.List<Package> packages;
+  core.List<Package>? packages;
 
   /// Extra arguments for this worker pool.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> poolArgs;
+  core.Map<core.String, core.Object>? poolArgs;
 
   /// Set of SDK harness containers needed to execute this pipeline.
   ///
   /// This will only be set in the Fn API path. For non-cross-language pipelines
   /// this should have only one entry. Cross-language pipelines will have two or
   /// more entries.
-  core.List<SdkHarnessContainerImage> sdkHarnessContainerImages;
+  core.List<SdkHarnessContainerImage>? sdkHarnessContainerImages;
 
   /// Subnetwork to which VMs will be assigned, if desired.
   ///
   /// Expected to be of the form "regions/REGION/subnetworks/SUBNETWORK".
-  core.String subnetwork;
+  core.String? subnetwork;
 
   /// Settings passed through to Google Compute Engine workers when using the
   /// standard Dataflow task runner.
   ///
   /// Users should ignore this field.
-  TaskRunnerSettings taskrunnerSettings;
+  TaskRunnerSettings? taskrunnerSettings;
 
   /// Sets the policy for determining when to turndown worker pool.
   ///
@@ -12156,7 +11846,7 @@ class WorkerPool {
   /// for debugging failures.
   /// - "TEARDOWN_NEVER" : Never teardown the resource. This is useful for
   /// debugging and development.
-  core.String teardownPolicy;
+  core.String? teardownPolicy;
 
   /// Docker container image that executes the Cloud Dataflow worker harness,
   /// residing in Google Container Registry.
@@ -12164,13 +11854,13 @@ class WorkerPool {
   /// Deprecated for the Fn API path. Use sdk_harness_container_images instead.
   ///
   /// Required.
-  core.String workerHarnessContainerImage;
+  core.String? workerHarnessContainerImage;
 
   /// Zone to run the worker pools in.
   ///
   /// If empty or unspecified, the service will attempt to choose a reasonable
   /// default.
-  core.String zone;
+  core.String? zone;
 
   WorkerPool();
 
@@ -12269,37 +11959,38 @@ class WorkerPool {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (autoscalingSettings != null)
-          'autoscalingSettings': autoscalingSettings.toJson(),
+          'autoscalingSettings': autoscalingSettings!.toJson(),
         if (dataDisks != null)
-          'dataDisks': dataDisks.map((value) => value.toJson()).toList(),
-        if (defaultPackageSet != null) 'defaultPackageSet': defaultPackageSet,
-        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb,
-        if (diskSourceImage != null) 'diskSourceImage': diskSourceImage,
-        if (diskType != null) 'diskType': diskType,
-        if (ipConfiguration != null) 'ipConfiguration': ipConfiguration,
-        if (kind != null) 'kind': kind,
-        if (machineType != null) 'machineType': machineType,
-        if (metadata != null) 'metadata': metadata,
-        if (network != null) 'network': network,
+          'dataDisks': dataDisks!.map((value) => value.toJson()).toList(),
+        if (defaultPackageSet != null) 'defaultPackageSet': defaultPackageSet!,
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
+        if (diskSourceImage != null) 'diskSourceImage': diskSourceImage!,
+        if (diskType != null) 'diskType': diskType!,
+        if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,
+        if (kind != null) 'kind': kind!,
+        if (machineType != null) 'machineType': machineType!,
+        if (metadata != null) 'metadata': metadata!,
+        if (network != null) 'network': network!,
         if (numThreadsPerWorker != null)
-          'numThreadsPerWorker': numThreadsPerWorker,
-        if (numWorkers != null) 'numWorkers': numWorkers,
-        if (onHostMaintenance != null) 'onHostMaintenance': onHostMaintenance,
+          'numThreadsPerWorker': numThreadsPerWorker!,
+        if (numWorkers != null) 'numWorkers': numWorkers!,
+        if (onHostMaintenance != null) 'onHostMaintenance': onHostMaintenance!,
         if (packages != null)
-          'packages': packages.map((value) => value.toJson()).toList(),
-        if (poolArgs != null) 'poolArgs': poolArgs,
+          'packages': packages!.map((value) => value.toJson()).toList(),
+        if (poolArgs != null) 'poolArgs': poolArgs!,
         if (sdkHarnessContainerImages != null)
-          'sdkHarnessContainerImages':
-              sdkHarnessContainerImages.map((value) => value.toJson()).toList(),
-        if (subnetwork != null) 'subnetwork': subnetwork,
+          'sdkHarnessContainerImages': sdkHarnessContainerImages!
+              .map((value) => value.toJson())
+              .toList(),
+        if (subnetwork != null) 'subnetwork': subnetwork!,
         if (taskrunnerSettings != null)
-          'taskrunnerSettings': taskrunnerSettings.toJson(),
-        if (teardownPolicy != null) 'teardownPolicy': teardownPolicy,
+          'taskrunnerSettings': taskrunnerSettings!.toJson(),
+        if (teardownPolicy != null) 'teardownPolicy': teardownPolicy!,
         if (workerHarnessContainerImage != null)
-          'workerHarnessContainerImage': workerHarnessContainerImage,
-        if (zone != null) 'zone': zone,
+          'workerHarnessContainerImage': workerHarnessContainerImage!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -12312,28 +12003,28 @@ class WorkerSettings {
   /// resolving these relative URLs. The normative algorithm used is defined by
   /// RFC 1808, "Relative Uniform Resource Locators". If not specified, the
   /// default value is "http://www.googleapis.com/"
-  core.String baseUrl;
+  core.String? baseUrl;
 
   /// Whether to send work progress updates to the service.
-  core.bool reportingEnabled;
+  core.bool? reportingEnabled;
 
   /// The Cloud Dataflow service path relative to the root URL, for example,
   /// "dataflow/v1b3/projects".
-  core.String servicePath;
+  core.String? servicePath;
 
   /// The Shuffle service path relative to the root URL, for example,
   /// "shuffle/v1beta1".
-  core.String shuffleServicePath;
+  core.String? shuffleServicePath;
 
   /// The prefix of the resources the system should use for temporary storage.
   ///
   /// The supported resource type is: Google Cloud Storage:
   /// storage.googleapis.com/{bucket}/{object}
   /// bucket.storage.googleapis.com/{object}
-  core.String tempStoragePrefix;
+  core.String? tempStoragePrefix;
 
   /// The ID of the worker running this pipeline.
-  core.String workerId;
+  core.String? workerId;
 
   WorkerSettings();
 
@@ -12358,14 +12049,14 @@ class WorkerSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (baseUrl != null) 'baseUrl': baseUrl,
-        if (reportingEnabled != null) 'reportingEnabled': reportingEnabled,
-        if (servicePath != null) 'servicePath': servicePath,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (baseUrl != null) 'baseUrl': baseUrl!,
+        if (reportingEnabled != null) 'reportingEnabled': reportingEnabled!,
+        if (servicePath != null) 'servicePath': servicePath!,
         if (shuffleServicePath != null)
-          'shuffleServicePath': shuffleServicePath,
-        if (tempStoragePrefix != null) 'tempStoragePrefix': tempStoragePrefix,
-        if (workerId != null) 'workerId': workerId,
+          'shuffleServicePath': shuffleServicePath!,
+        if (tempStoragePrefix != null) 'tempStoragePrefix': tempStoragePrefix!,
+        if (workerId != null) 'workerId': workerId!,
       };
 }
 
@@ -12379,7 +12070,7 @@ class WorkerShutdownNotice {
   /// Current possible values are: "UNKNOWN": shutdown reason is unknown.
   /// "PREEMPTION": shutdown reason is preemption. Other possible reasons may be
   /// added in the future.
-  core.String reason;
+  core.String? reason;
 
   WorkerShutdownNotice();
 
@@ -12389,8 +12080,8 @@ class WorkerShutdownNotice {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (reason != null) 'reason': reason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (reason != null) 'reason': reason!,
       };
 }
 
@@ -12402,7 +12093,7 @@ class WorkerShutdownNoticeResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// An instruction that writes records.
@@ -12410,10 +12101,10 @@ class WorkerShutdownNoticeResponse {
 /// Takes one input, produces no outputs.
 class WriteInstruction {
   /// The input.
-  InstructionInput input;
+  InstructionInput? input;
 
   /// The sink to write to.
-  Sink sink;
+  Sink? sink;
 
   WriteInstruction();
 
@@ -12428,8 +12119,8 @@ class WriteInstruction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (input != null) 'input': input.toJson(),
-        if (sink != null) 'sink': sink.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (input != null) 'input': input!.toJson(),
+        if (sink != null) 'sink': sink!.toJson(),
       };
 }

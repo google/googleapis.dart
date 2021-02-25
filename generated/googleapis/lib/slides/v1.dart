@@ -121,13 +121,9 @@ class PresentationsResource {
   async.Future<BatchUpdatePresentationResponse> batchUpdate(
     BatchUpdatePresentationRequest request,
     core.String presentationId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (presentationId == null) {
-      throw core.ArgumentError('Parameter presentationId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -169,10 +165,9 @@ class PresentationsResource {
   /// this method will complete with the same error.
   async.Future<Presentation> create(
     Presentation request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -208,11 +203,8 @@ class PresentationsResource {
   /// this method will complete with the same error.
   async.Future<Presentation> get(
     core.String presentationId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (presentationId == null) {
-      throw core.ArgumentError('Parameter presentationId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -256,14 +248,8 @@ class PresentationsPagesResource {
   async.Future<Page> get(
     core.String presentationId,
     core.String pageObjectId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (presentationId == null) {
-      throw core.ArgumentError('Parameter presentationId is required.');
-    }
-    if (pageObjectId == null) {
-      throw core.ArgumentError('Parameter pageObjectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -322,16 +308,10 @@ class PresentationsPagesResource {
   async.Future<Thumbnail> getThumbnail(
     core.String presentationId,
     core.String pageObjectId, {
-    core.String thumbnailProperties_mimeType,
-    core.String thumbnailProperties_thumbnailSize,
-    core.String $fields,
+    core.String? thumbnailProperties_mimeType,
+    core.String? thumbnailProperties_thumbnailSize,
+    core.String? $fields,
   }) async {
-    if (presentationId == null) {
-      throw core.ArgumentError('Parameter presentationId is required.');
-    }
-    if (pageObjectId == null) {
-      throw core.ArgumentError('Parameter pageObjectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (thumbnailProperties_mimeType != null)
         'thumbnailProperties.mimeType': [thumbnailProperties_mimeType],
@@ -365,22 +345,22 @@ class PresentationsPagesResource {
 /// six matrix elements.
 class AffineTransform {
   /// The X coordinate scaling element.
-  core.double scaleX;
+  core.double? scaleX;
 
   /// The Y coordinate scaling element.
-  core.double scaleY;
+  core.double? scaleY;
 
   /// The X coordinate shearing element.
-  core.double shearX;
+  core.double? shearX;
 
   /// The Y coordinate shearing element.
-  core.double shearY;
+  core.double? shearY;
 
   /// The X coordinate translation element.
-  core.double translateX;
+  core.double? translateX;
 
   /// The Y coordinate translation element.
-  core.double translateY;
+  core.double? translateY;
 
   /// The units for translate elements.
   /// Possible string values are:
@@ -389,7 +369,7 @@ class AffineTransform {
   /// centimeter and thus there are 914,400 EMUs per inch, and 12,700 EMUs per
   /// point.
   /// - "PT" : A point, 1/72 of an inch.
-  core.String unit;
+  core.String? unit;
 
   AffineTransform();
 
@@ -417,31 +397,31 @@ class AffineTransform {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (scaleX != null) 'scaleX': scaleX,
-        if (scaleY != null) 'scaleY': scaleY,
-        if (shearX != null) 'shearX': shearX,
-        if (shearY != null) 'shearY': shearY,
-        if (translateX != null) 'translateX': translateX,
-        if (translateY != null) 'translateY': translateY,
-        if (unit != null) 'unit': unit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (scaleX != null) 'scaleX': scaleX!,
+        if (scaleY != null) 'scaleY': scaleY!,
+        if (shearX != null) 'shearX': shearX!,
+        if (shearY != null) 'shearY': shearY!,
+        if (translateX != null) 'translateX': translateX!,
+        if (translateY != null) 'translateY': translateY!,
+        if (unit != null) 'unit': unit!,
       };
 }
 
 /// A TextElement kind that represents auto text.
 class AutoText {
   /// The rendered content of this auto text, if available.
-  core.String content;
+  core.String? content;
 
   /// The styling applied to this auto text.
-  TextStyle style;
+  TextStyle? style;
 
   /// The type of this auto text.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : An unspecified autotext type.
   /// - "SLIDE_NUMBER" : Type for autotext that represents the current slide
   /// number.
-  core.String type;
+  core.String? type;
 
   AutoText();
 
@@ -458,10 +438,10 @@ class AutoText {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
-        if (style != null) 'style': style.toJson(),
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
+        if (style != null) 'style': style!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -480,7 +460,7 @@ class Autofit {
   /// - "NONE" : Do not autofit.
   /// - "TEXT_AUTOFIT" : Shrink text on overflow to fit shape.
   /// - "SHAPE_AUTOFIT" : Resize shape to fit text.
-  core.String autofitType;
+  core.String? autofitType;
 
   /// The font scale applied to the shape.
   ///
@@ -488,7 +468,7 @@ class Autofit {
   /// default value of 1. For TEXT_AUTOFIT, this value multiplied by the
   /// font_size will give the font size that is rendered in the editor. This
   /// property is read-only.
-  core.double fontScale;
+  core.double? fontScale;
 
   /// The line spacing reduction applied to the shape.
   ///
@@ -496,7 +476,7 @@ class Autofit {
   /// default value of 0. For TEXT_AUTOFIT, this value subtracted from the
   /// line_spacing will give the line spacing that is rendered in the editor.
   /// This property is read-only.
-  core.double lineSpacingReduction;
+  core.double? lineSpacingReduction;
 
   Autofit();
 
@@ -513,21 +493,21 @@ class Autofit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (autofitType != null) 'autofitType': autofitType,
-        if (fontScale != null) 'fontScale': fontScale,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (autofitType != null) 'autofitType': autofitType!,
+        if (fontScale != null) 'fontScale': fontScale!,
         if (lineSpacingReduction != null)
-          'lineSpacingReduction': lineSpacingReduction,
+          'lineSpacingReduction': lineSpacingReduction!,
       };
 }
 
 /// Request message for PresentationsService.BatchUpdatePresentation.
 class BatchUpdatePresentationRequest {
   /// A list of updates to apply to the presentation.
-  core.List<Request> requests;
+  core.List<Request>? requests;
 
   /// Provides control over how write requests are executed.
-  WriteControl writeControl;
+  WriteControl? writeControl;
 
   BatchUpdatePresentationRequest();
 
@@ -544,26 +524,26 @@ class BatchUpdatePresentationRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requests != null)
-          'requests': requests.map((value) => value.toJson()).toList(),
-        if (writeControl != null) 'writeControl': writeControl.toJson(),
+          'requests': requests!.map((value) => value.toJson()).toList(),
+        if (writeControl != null) 'writeControl': writeControl!.toJson(),
       };
 }
 
 /// Response message from a batch update.
 class BatchUpdatePresentationResponse {
   /// The presentation the updates were applied to.
-  core.String presentationId;
+  core.String? presentationId;
 
   /// The reply of the updates.
   ///
   /// This maps 1:1 with the updates, although replies to some requests may be
   /// empty.
-  core.List<Response> replies;
+  core.List<Response>? replies;
 
   /// The updated write control after applying the request.
-  WriteControl writeControl;
+  WriteControl? writeControl;
 
   BatchUpdatePresentationResponse();
 
@@ -583,27 +563,27 @@ class BatchUpdatePresentationResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (presentationId != null) 'presentationId': presentationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (presentationId != null) 'presentationId': presentationId!,
         if (replies != null)
-          'replies': replies.map((value) => value.toJson()).toList(),
-        if (writeControl != null) 'writeControl': writeControl.toJson(),
+          'replies': replies!.map((value) => value.toJson()).toList(),
+        if (writeControl != null) 'writeControl': writeControl!.toJson(),
       };
 }
 
 /// Describes the bullet of a paragraph.
 class Bullet {
   /// The paragraph specific text style applied to this bullet.
-  TextStyle bulletStyle;
+  TextStyle? bulletStyle;
 
   /// The rendered bullet glyph for this paragraph.
-  core.String glyph;
+  core.String? glyph;
 
   /// The ID of the list this paragraph belongs to.
-  core.String listId;
+  core.String? listId;
 
   /// The nesting level of this paragraph in the list.
-  core.int nestingLevel;
+  core.int? nestingLevel;
 
   Bullet();
 
@@ -623,18 +603,18 @@ class Bullet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bulletStyle != null) 'bulletStyle': bulletStyle.toJson(),
-        if (glyph != null) 'glyph': glyph,
-        if (listId != null) 'listId': listId,
-        if (nestingLevel != null) 'nestingLevel': nestingLevel,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bulletStyle != null) 'bulletStyle': bulletStyle!.toJson(),
+        if (glyph != null) 'glyph': glyph!,
+        if (listId != null) 'listId': listId!,
+        if (nestingLevel != null) 'nestingLevel': nestingLevel!,
       };
 }
 
 /// The palette of predefined colors for a page.
 class ColorScheme {
   /// The ThemeColorType and corresponding concrete color pairs.
-  core.List<ThemeColorPair> colors;
+  core.List<ThemeColorPair>? colors;
 
   ColorScheme();
 
@@ -647,9 +627,9 @@ class ColorScheme {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (colors != null)
-          'colors': colors.map((value) => value.toJson()).toList(),
+          'colors': colors!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -658,16 +638,16 @@ class ColorStop {
   /// The alpha value of this color in the gradient band.
   ///
   /// Defaults to 1.0, fully opaque.
-  core.double alpha;
+  core.double? alpha;
 
   /// The color of the gradient stop.
-  OpaqueColor color;
+  OpaqueColor? color;
 
   /// The relative position of the color stop in the gradient band measured in
   /// percentage.
   ///
   /// The value should be in the interval \[0.0, 1.0\].
-  core.double position;
+  core.double? position;
 
   ColorStop();
 
@@ -684,10 +664,10 @@ class ColorStop {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alpha != null) 'alpha': alpha,
-        if (color != null) 'color': color.toJson(),
-        if (position != null) 'position': position,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alpha != null) 'alpha': alpha!,
+        if (color != null) 'color': color!.toJson(),
+        if (position != null) 'position': position!,
       };
 }
 
@@ -702,7 +682,7 @@ class CreateImageRequest {
   /// don't specify the size, the default size of the image is used. The
   /// PageElementProperties.transform property is optional. If you don't specify
   /// a transform, the image will be placed at the top left corner of the page.
-  PageElementProperties elementProperties;
+  PageElementProperties? elementProperties;
 
   /// A user-supplied object ID.
   ///
@@ -712,7 +692,7 @@ class CreateImageRequest {
   /// include those as well as a hyphen or colon (matches regex
   /// `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater
   /// than 50. If you don't specify an ID, a unique one is generated.
-  core.String objectId;
+  core.String? objectId;
 
   /// The image URL.
   ///
@@ -721,7 +701,7 @@ class CreateImageRequest {
   /// cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
   /// format. The provided URL can be at most 2 kB in length. The URL itself is
   /// saved with the image, and exposed via the Image.source_url field.
-  core.String url;
+  core.String? url;
 
   CreateImageRequest();
 
@@ -738,18 +718,18 @@ class CreateImageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (elementProperties != null)
-          'elementProperties': elementProperties.toJson(),
-        if (objectId != null) 'objectId': objectId,
-        if (url != null) 'url': url,
+          'elementProperties': elementProperties!.toJson(),
+        if (objectId != null) 'objectId': objectId!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// The result of creating an image.
 class CreateImageResponse {
   /// The object ID of the created image.
-  core.String objectId;
+  core.String? objectId;
 
   CreateImageResponse();
 
@@ -759,8 +739,8 @@ class CreateImageResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
@@ -779,10 +759,10 @@ class CreateLineRequest {
   /// - "STRAIGHT" : Straight connectors, including straight connector 1.
   /// - "BENT" : Bent connectors, including bent connector 2 to 5.
   /// - "CURVED" : Curved connectors, including curved connector 2 to 5.
-  core.String category;
+  core.String? category;
 
   /// The element properties for the line.
-  PageElementProperties elementProperties;
+  PageElementProperties? elementProperties;
 
   /// The category of the line to be created.
   ///
@@ -795,7 +775,7 @@ class CreateLineRequest {
   /// the default category when one is not specified.
   /// - "BENT" : Bent connectors, including bent connector 2 to 5.
   /// - "CURVED" : Curved connectors, including curved connector 2 to 5.
-  core.String lineCategory;
+  core.String? lineCategory;
 
   /// A user-supplied object ID.
   ///
@@ -805,7 +785,7 @@ class CreateLineRequest {
   /// include those as well as a hyphen or colon (matches regex
   /// `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater
   /// than 50. If you don't specify an ID, a unique one is generated.
-  core.String objectId;
+  core.String? objectId;
 
   CreateLineRequest();
 
@@ -825,19 +805,19 @@ class CreateLineRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (category != null) 'category': category,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (category != null) 'category': category!,
         if (elementProperties != null)
-          'elementProperties': elementProperties.toJson(),
-        if (lineCategory != null) 'lineCategory': lineCategory,
-        if (objectId != null) 'objectId': objectId,
+          'elementProperties': elementProperties!.toJson(),
+        if (lineCategory != null) 'lineCategory': lineCategory!,
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
 /// The result of creating a line.
 class CreateLineResponse {
   /// The object ID of the created line.
-  core.String objectId;
+  core.String? objectId;
 
   CreateLineResponse();
 
@@ -847,8 +827,8 @@ class CreateLineResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
@@ -904,20 +884,20 @@ class CreateParagraphBulletsRequest {
   /// - "NUMBERED_ZERODIGIT_ALPHA_ROMAN" : A numbered list with `ZERODIGIT`,
   /// `ALPHA` and `ROMAN` numeric glyphs for the first 3 list nesting levels,
   /// followed by periods.
-  core.String bulletPreset;
+  core.String? bulletPreset;
 
   /// The optional table cell location if the text to be modified is in a table
   /// cell.
   ///
   /// If present, the object_id must refer to a table.
-  TableCellLocation cellLocation;
+  TableCellLocation? cellLocation;
 
   /// The object ID of the shape or table containing the text to add bullets to.
-  core.String objectId;
+  core.String? objectId;
 
   /// The range of text to apply the bullet presets to, based on TextElement
   /// indexes.
-  Range textRange;
+  Range? textRange;
 
   CreateParagraphBulletsRequest();
 
@@ -938,18 +918,18 @@ class CreateParagraphBulletsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bulletPreset != null) 'bulletPreset': bulletPreset,
-        if (cellLocation != null) 'cellLocation': cellLocation.toJson(),
-        if (objectId != null) 'objectId': objectId,
-        if (textRange != null) 'textRange': textRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bulletPreset != null) 'bulletPreset': bulletPreset!,
+        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (objectId != null) 'objectId': objectId!,
+        if (textRange != null) 'textRange': textRange!.toJson(),
       };
 }
 
 /// Creates a new shape.
 class CreateShapeRequest {
   /// The element properties for the shape.
-  PageElementProperties elementProperties;
+  PageElementProperties? elementProperties;
 
   /// A user-supplied object ID.
   ///
@@ -959,7 +939,7 @@ class CreateShapeRequest {
   /// include those as well as a hyphen or colon (matches regex
   /// `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater
   /// than 50. If empty, a unique identifier will be generated.
-  core.String objectId;
+  core.String? objectId;
 
   /// The shape type.
   /// Possible string values are:
@@ -1224,7 +1204,7 @@ class CreateShapeRequest {
   /// - "CLOUD_CALLOUT" : Callout cloud shape. Corresponds to ECMA-376
   /// ST_ShapeType 'cloudCallout'
   /// - "CUSTOM" : Custom shape.
-  core.String shapeType;
+  core.String? shapeType;
 
   CreateShapeRequest();
 
@@ -1241,18 +1221,18 @@ class CreateShapeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (elementProperties != null)
-          'elementProperties': elementProperties.toJson(),
-        if (objectId != null) 'objectId': objectId,
-        if (shapeType != null) 'shapeType': shapeType,
+          'elementProperties': elementProperties!.toJson(),
+        if (objectId != null) 'objectId': objectId!,
+        if (shapeType != null) 'shapeType': shapeType!,
       };
 }
 
 /// The result of creating a shape.
 class CreateShapeResponse {
   /// The object ID of the created shape.
-  core.String objectId;
+  core.String? objectId;
 
   CreateShapeResponse();
 
@@ -1262,8 +1242,8 @@ class CreateShapeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
@@ -1273,7 +1253,7 @@ class CreateShapeResponse {
 /// spreadsheets, drive.readonly, drive.file, or drive OAuth scopes.
 class CreateSheetsChartRequest {
   /// The ID of the specific chart in the Google Sheets spreadsheet.
-  core.int chartId;
+  core.int? chartId;
 
   /// The element properties for the chart.
   ///
@@ -1281,7 +1261,7 @@ class CreateSheetsChartRequest {
   /// ratio, the chart is scaled and centered with respect to the size in order
   /// to maintain aspect ratio. The provided transform is applied after this
   /// operation.
-  PageElementProperties elementProperties;
+  PageElementProperties? elementProperties;
 
   /// The mode with which the chart is linked to the source spreadsheet.
   ///
@@ -1292,7 +1272,7 @@ class CreateSheetsChartRequest {
   /// inserted as an image.
   /// - "LINKED" : Linking the chart allows it to be updated, and other
   /// collaborators will see a link to the spreadsheet.
-  core.String linkingMode;
+  core.String? linkingMode;
 
   /// A user-supplied object ID.
   ///
@@ -1301,10 +1281,10 @@ class CreateSheetsChartRequest {
   /// and then followed by any number of the following characters
   /// \[a-zA-Z0-9_-:\]. The length of the ID should not be less than 5 or
   /// greater than 50. If empty, a unique identifier will be generated.
-  core.String objectId;
+  core.String? objectId;
 
   /// The ID of the Google Sheets spreadsheet that contains the chart.
-  core.String spreadsheetId;
+  core.String? spreadsheetId;
 
   CreateSheetsChartRequest();
 
@@ -1327,20 +1307,20 @@ class CreateSheetsChartRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (chartId != null) 'chartId': chartId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (chartId != null) 'chartId': chartId!,
         if (elementProperties != null)
-          'elementProperties': elementProperties.toJson(),
-        if (linkingMode != null) 'linkingMode': linkingMode,
-        if (objectId != null) 'objectId': objectId,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+          'elementProperties': elementProperties!.toJson(),
+        if (linkingMode != null) 'linkingMode': linkingMode!,
+        if (objectId != null) 'objectId': objectId!,
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
       };
 }
 
 /// The result of creating an embedded Google Sheets chart.
 class CreateSheetsChartResponse {
   /// The object ID of the created chart.
-  core.String objectId;
+  core.String? objectId;
 
   CreateSheetsChartResponse();
 
@@ -1350,8 +1330,8 @@ class CreateSheetsChartResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
@@ -1360,7 +1340,7 @@ class CreateSlideRequest {
   /// The optional zero-based index indicating where to insert the slides.
   ///
   /// If you don't specify an index, the new slide is created at the end.
-  core.int insertionIndex;
+  core.int? insertionIndex;
 
   /// A user-supplied object ID.
   ///
@@ -1370,14 +1350,14 @@ class CreateSlideRequest {
   /// include those as well as a hyphen or colon (matches regex
   /// `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater
   /// than 50. If you don't specify an ID, a unique one is generated.
-  core.String objectId;
+  core.String? objectId;
 
   /// An optional list of object ID mappings from the placeholder(s) on the
   /// layout to the placeholder(s) that will be created on the new slide from
   /// that specified layout.
   ///
   /// Can only be used when `slide_layout_reference` is specified.
-  core.List<LayoutPlaceholderIdMapping> placeholderIdMappings;
+  core.List<LayoutPlaceholderIdMapping>? placeholderIdMappings;
 
   /// Layout reference of the slide to be inserted, based on the *current
   /// master*, which is one of the following: - The master of the previous slide
@@ -1388,7 +1368,7 @@ class CreateSlideRequest {
   /// LayoutReference is not found in the current master, a 400 bad request
   /// error is returned. If you don't specify a layout reference, then the new
   /// slide will use the predefined layout `BLANK`.
-  LayoutReference slideLayoutReference;
+  LayoutReference? slideLayoutReference;
 
   CreateSlideRequest();
 
@@ -1412,21 +1392,21 @@ class CreateSlideRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (insertionIndex != null) 'insertionIndex': insertionIndex,
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (insertionIndex != null) 'insertionIndex': insertionIndex!,
+        if (objectId != null) 'objectId': objectId!,
         if (placeholderIdMappings != null)
           'placeholderIdMappings':
-              placeholderIdMappings.map((value) => value.toJson()).toList(),
+              placeholderIdMappings!.map((value) => value.toJson()).toList(),
         if (slideLayoutReference != null)
-          'slideLayoutReference': slideLayoutReference.toJson(),
+          'slideLayoutReference': slideLayoutReference!.toJson(),
       };
 }
 
 /// The result of creating a slide.
 class CreateSlideResponse {
   /// The object ID of the created slide.
-  core.String objectId;
+  core.String? objectId;
 
   CreateSlideResponse();
 
@@ -1436,15 +1416,15 @@ class CreateSlideResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
 /// Creates a new table.
 class CreateTableRequest {
   /// Number of columns in the table.
-  core.int columns;
+  core.int? columns;
 
   /// The element properties for the table.
   ///
@@ -1452,7 +1432,7 @@ class CreateTableRequest {
   /// If no size is provided, the table will be automatically sized. Table
   /// transforms must have a scale of 1 and no shear components. If no transform
   /// is provided, the table will be centered on the page.
-  PageElementProperties elementProperties;
+  PageElementProperties? elementProperties;
 
   /// A user-supplied object ID.
   ///
@@ -1462,10 +1442,10 @@ class CreateTableRequest {
   /// include those as well as a hyphen or colon (matches regex
   /// `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater
   /// than 50. If you don't specify an ID, a unique one is generated.
-  core.String objectId;
+  core.String? objectId;
 
   /// Number of rows in the table.
-  core.int rows;
+  core.int? rows;
 
   CreateTableRequest();
 
@@ -1485,19 +1465,19 @@ class CreateTableRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columns != null) 'columns': columns,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columns != null) 'columns': columns!,
         if (elementProperties != null)
-          'elementProperties': elementProperties.toJson(),
-        if (objectId != null) 'objectId': objectId,
-        if (rows != null) 'rows': rows,
+          'elementProperties': elementProperties!.toJson(),
+        if (objectId != null) 'objectId': objectId!,
+        if (rows != null) 'rows': rows!,
       };
 }
 
 /// The result of creating a table.
 class CreateTableResponse {
   /// The object ID of the created table.
-  core.String objectId;
+  core.String? objectId;
 
   CreateTableResponse();
 
@@ -1507,8 +1487,8 @@ class CreateTableResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
@@ -1524,7 +1504,7 @@ class CreateVideoRequest {
   /// PageElementProperties.transform property is optional. The transform must
   /// not have shear components. If you don't specify a transform, the video
   /// will be placed at the top left corner of the page.
-  PageElementProperties elementProperties;
+  PageElementProperties? elementProperties;
 
   /// The video source's unique identifier for this video.
   ///
@@ -1532,7 +1512,7 @@ class CreateVideoRequest {
   /// is 7U3axjORYZ0. For a Google Drive video
   /// https://drive.google.com/file/d/1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q the ID
   /// is 1xCgQLFTJi5_Xl8DgW_lcUYq5e-q6Hi5Q.
-  core.String id;
+  core.String? id;
 
   /// A user-supplied object ID.
   ///
@@ -1542,14 +1522,14 @@ class CreateVideoRequest {
   /// include those as well as a hyphen or colon (matches regex
   /// `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater
   /// than 50. If you don't specify an ID, a unique one is generated.
-  core.String objectId;
+  core.String? objectId;
 
   /// The video source.
   /// Possible string values are:
   /// - "SOURCE_UNSPECIFIED" : The video source is unspecified.
   /// - "YOUTUBE" : The video source is YouTube.
   /// - "DRIVE" : The video source is Google Drive.
-  core.String source;
+  core.String? source;
 
   CreateVideoRequest();
 
@@ -1569,19 +1549,19 @@ class CreateVideoRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (elementProperties != null)
-          'elementProperties': elementProperties.toJson(),
-        if (id != null) 'id': id,
-        if (objectId != null) 'objectId': objectId,
-        if (source != null) 'source': source,
+          'elementProperties': elementProperties!.toJson(),
+        if (id != null) 'id': id!,
+        if (objectId != null) 'objectId': objectId!,
+        if (source != null) 'source': source!,
       };
 }
 
 /// The result of creating a video.
 class CreateVideoResponse {
   /// The object ID of the created video.
-  core.String objectId;
+  core.String? objectId;
 
   CreateVideoResponse();
 
@@ -1591,8 +1571,8 @@ class CreateVideoResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
@@ -1616,27 +1596,27 @@ class CropProperties {
   /// The rotation angle of the crop window around its center, in radians.
   ///
   /// Rotation angle is applied after the offset.
-  core.double angle;
+  core.double? angle;
 
   /// The offset specifies the bottom edge of the crop rectangle that is located
   /// above the original bounding rectangle bottom edge, relative to the
   /// object's original height.
-  core.double bottomOffset;
+  core.double? bottomOffset;
 
   /// The offset specifies the left edge of the crop rectangle that is located
   /// to the right of the original bounding rectangle left edge, relative to the
   /// object's original width.
-  core.double leftOffset;
+  core.double? leftOffset;
 
   /// The offset specifies the right edge of the crop rectangle that is located
   /// to the left of the original bounding rectangle right edge, relative to the
   /// object's original width.
-  core.double rightOffset;
+  core.double? rightOffset;
 
   /// The offset specifies the top edge of the crop rectangle that is located
   /// below the original bounding rectangle top edge, relative to the object's
   /// original height.
-  core.double topOffset;
+  core.double? topOffset;
 
   CropProperties();
 
@@ -1658,12 +1638,12 @@ class CropProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (angle != null) 'angle': angle,
-        if (bottomOffset != null) 'bottomOffset': bottomOffset,
-        if (leftOffset != null) 'leftOffset': leftOffset,
-        if (rightOffset != null) 'rightOffset': rightOffset,
-        if (topOffset != null) 'topOffset': topOffset,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (angle != null) 'angle': angle!,
+        if (bottomOffset != null) 'bottomOffset': bottomOffset!,
+        if (leftOffset != null) 'leftOffset': leftOffset!,
+        if (rightOffset != null) 'rightOffset': rightOffset!,
+        if (topOffset != null) 'topOffset': topOffset!,
       };
 }
 
@@ -1674,7 +1654,7 @@ class DeleteObjectRequest {
   /// If after a delete operation a group contains only 1 or no page elements,
   /// the group is also deleted. If a placeholder is deleted on a layout, any
   /// empty inheriting shapes are also deleted.
-  core.String objectId;
+  core.String? objectId;
 
   DeleteObjectRequest();
 
@@ -1684,8 +1664,8 @@ class DeleteObjectRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
@@ -1699,14 +1679,14 @@ class DeleteParagraphBulletsRequest {
   /// cell.
   ///
   /// If present, the object_id must refer to a table.
-  TableCellLocation cellLocation;
+  TableCellLocation? cellLocation;
 
   /// The object ID of the shape or table containing the text to delete bullets
   /// from.
-  core.String objectId;
+  core.String? objectId;
 
   /// The range of text to delete bullets from, based on TextElement indexes.
-  Range textRange;
+  Range? textRange;
 
   DeleteParagraphBulletsRequest();
 
@@ -1724,10 +1704,10 @@ class DeleteParagraphBulletsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation.toJson(),
-        if (objectId != null) 'objectId': objectId,
-        if (textRange != null) 'textRange': textRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (objectId != null) 'objectId': objectId!,
+        if (textRange != null) 'textRange': textRange!.toJson(),
       };
 }
 
@@ -1738,10 +1718,10 @@ class DeleteTableColumnRequest {
   /// The column this cell spans will be deleted. If this is a merged cell,
   /// multiple columns will be deleted. If no columns remain in the table after
   /// this deletion, the whole table is deleted.
-  TableCellLocation cellLocation;
+  TableCellLocation? cellLocation;
 
   /// The table to delete columns from.
-  core.String tableObjectId;
+  core.String? tableObjectId;
 
   DeleteTableColumnRequest();
 
@@ -1755,9 +1735,9 @@ class DeleteTableColumnRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation.toJson(),
-        if (tableObjectId != null) 'tableObjectId': tableObjectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (tableObjectId != null) 'tableObjectId': tableObjectId!,
       };
 }
 
@@ -1768,10 +1748,10 @@ class DeleteTableRowRequest {
   /// The row this cell spans will be deleted. If this is a merged cell,
   /// multiple rows will be deleted. If no rows remain in the table after this
   /// deletion, the whole table is deleted.
-  TableCellLocation cellLocation;
+  TableCellLocation? cellLocation;
 
   /// The table to delete rows from.
-  core.String tableObjectId;
+  core.String? tableObjectId;
 
   DeleteTableRowRequest();
 
@@ -1785,9 +1765,9 @@ class DeleteTableRowRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation.toJson(),
-        if (tableObjectId != null) 'tableObjectId': tableObjectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (tableObjectId != null) 'tableObjectId': tableObjectId!,
       };
 }
 
@@ -1797,10 +1777,10 @@ class DeleteTextRequest {
   /// cell.
   ///
   /// If present, the object_id must refer to a table.
-  TableCellLocation cellLocation;
+  TableCellLocation? cellLocation;
 
   /// The object ID of the shape or table from which the text will be deleted.
-  core.String objectId;
+  core.String? objectId;
 
   /// The range of text to delete, based on TextElement indexes.
   ///
@@ -1814,7 +1794,7 @@ class DeleteTextRequest {
   /// styles and lists as the two paragraphs are merged. Ranges that include
   /// only one code unit of a surrogate pair are expanded to include both code
   /// units.
-  Range textRange;
+  Range? textRange;
 
   DeleteTextRequest();
 
@@ -1832,17 +1812,17 @@ class DeleteTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation.toJson(),
-        if (objectId != null) 'objectId': objectId,
-        if (textRange != null) 'textRange': textRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (objectId != null) 'objectId': objectId!,
+        if (textRange != null) 'textRange': textRange!.toJson(),
       };
 }
 
 /// A magnitude in a single direction in the specified units.
 class Dimension {
   /// The magnitude.
-  core.double magnitude;
+  core.double? magnitude;
 
   /// The units for magnitude.
   /// Possible string values are:
@@ -1851,7 +1831,7 @@ class Dimension {
   /// centimeter and thus there are 914,400 EMUs per inch, and 12,700 EMUs per
   /// point.
   /// - "PT" : A point, 1/72 of an inch.
-  core.String unit;
+  core.String? unit;
 
   Dimension();
 
@@ -1864,9 +1844,9 @@ class Dimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (magnitude != null) 'magnitude': magnitude,
-        if (unit != null) 'unit': unit,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (magnitude != null) 'magnitude': magnitude!,
+        if (unit != null) 'unit': unit!,
       };
 }
 
@@ -1878,7 +1858,7 @@ class Dimension {
 /// original.
 class DuplicateObjectRequest {
   /// The ID of the object to duplicate.
-  core.String objectId;
+  core.String? objectId;
 
   /// The object being duplicated may contain other objects, for example when
   /// duplicating a slide or a group page element.
@@ -1896,7 +1876,7 @@ class DuplicateObjectRequest {
   /// less than 5 or greater than 50. If any IDs of source objects are omitted
   /// from the map, a new random ID will be assigned. If the map is empty or
   /// unset, all duplicate objects will receive a new random ID.
-  core.Map<core.String, core.String> objectIds;
+  core.Map<core.String, core.String>? objectIds;
 
   DuplicateObjectRequest();
 
@@ -1915,16 +1895,16 @@ class DuplicateObjectRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
-        if (objectIds != null) 'objectIds': objectIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
+        if (objectIds != null) 'objectIds': objectIds!,
       };
 }
 
 /// The response of duplicating an object.
 class DuplicateObjectResponse {
   /// The ID of the new duplicate object.
-  core.String objectId;
+  core.String? objectId;
 
   DuplicateObjectResponse();
 
@@ -1934,8 +1914,8 @@ class DuplicateObjectResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
@@ -1944,7 +1924,7 @@ class Group {
   /// The collection of elements in the group.
   ///
   /// The minimum size of a group is 2.
-  core.List<PageElement> children;
+  core.List<PageElement>? children;
 
   Group();
 
@@ -1957,9 +1937,9 @@ class Group {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (children != null)
-          'children': children.map((value) => value.toJson()).toList(),
+          'children': children!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1973,7 +1953,7 @@ class GroupObjectsRequest {
   /// Only page elements can be grouped. There should be at least two page
   /// elements on the same page that are not already in another group. Some page
   /// elements, such as videos, tables and placeholder shapes cannot be grouped.
-  core.List<core.String> childrenObjectIds;
+  core.List<core.String>? childrenObjectIds;
 
   /// A user-supplied object ID for the group to be created.
   ///
@@ -1983,7 +1963,7 @@ class GroupObjectsRequest {
   /// include those as well as a hyphen or colon (matches regex
   /// `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater
   /// than 50. If you don't specify an ID, a unique one is generated.
-  core.String groupObjectId;
+  core.String? groupObjectId;
 
   GroupObjectsRequest();
 
@@ -1998,16 +1978,16 @@ class GroupObjectsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (childrenObjectIds != null) 'childrenObjectIds': childrenObjectIds,
-        if (groupObjectId != null) 'groupObjectId': groupObjectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (childrenObjectIds != null) 'childrenObjectIds': childrenObjectIds!,
+        if (groupObjectId != null) 'groupObjectId': groupObjectId!,
       };
 }
 
 /// The result of grouping objects.
 class GroupObjectsResponse {
   /// The object ID of the created group.
-  core.String objectId;
+  core.String? objectId;
 
   GroupObjectsResponse();
 
@@ -2017,8 +1997,8 @@ class GroupObjectsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
@@ -2029,15 +2009,15 @@ class Image {
   /// This URL is tagged with the account of the requester. Anyone with the URL
   /// effectively accesses the image as the original requester. Access to the
   /// image may be lost if the presentation's sharing settings change.
-  core.String contentUrl;
+  core.String? contentUrl;
 
   /// The properties of the image.
-  ImageProperties imageProperties;
+  ImageProperties? imageProperties;
 
   /// The source URL is the URL used to insert the image.
   ///
   /// The source URL can be empty.
-  core.String sourceUrl;
+  core.String? sourceUrl;
 
   Image();
 
@@ -2054,11 +2034,11 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentUrl != null) 'contentUrl': contentUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentUrl != null) 'contentUrl': contentUrl!,
         if (imageProperties != null)
-          'imageProperties': imageProperties.toJson(),
-        if (sourceUrl != null) 'sourceUrl': sourceUrl,
+          'imageProperties': imageProperties!.toJson(),
+        if (sourceUrl != null) 'sourceUrl': sourceUrl!,
       };
 }
 
@@ -2068,44 +2048,44 @@ class ImageProperties {
   ///
   /// The value should be in the interval \[-1.0, 1.0\], where 0 means no
   /// effect. This property is read-only.
-  core.double brightness;
+  core.double? brightness;
 
   /// The contrast effect of the image.
   ///
   /// The value should be in the interval \[-1.0, 1.0\], where 0 means no
   /// effect. This property is read-only.
-  core.double contrast;
+  core.double? contrast;
 
   /// The crop properties of the image.
   ///
   /// If not set, the image is not cropped. This property is read-only.
-  CropProperties cropProperties;
+  CropProperties? cropProperties;
 
   /// The hyperlink destination of the image.
   ///
   /// If unset, there is no link.
-  Link link;
+  Link? link;
 
   /// The outline of the image.
   ///
   /// If not set, the image has no outline.
-  Outline outline;
+  Outline? outline;
 
   /// The recolor effect of the image.
   ///
   /// If not set, the image is not recolored. This property is read-only.
-  Recolor recolor;
+  Recolor? recolor;
 
   /// The shadow of the image.
   ///
   /// If not set, the image has no shadow. This property is read-only.
-  Shadow shadow;
+  Shadow? shadow;
 
   /// The transparency effect of the image.
   ///
   /// The value should be in the interval \[0.0, 1.0\], where 0 means no effect
   /// and 1 means completely transparent. This property is read-only.
-  core.double transparency;
+  core.double? transparency;
 
   ImageProperties();
 
@@ -2141,15 +2121,15 @@ class ImageProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (brightness != null) 'brightness': brightness,
-        if (contrast != null) 'contrast': contrast,
-        if (cropProperties != null) 'cropProperties': cropProperties.toJson(),
-        if (link != null) 'link': link.toJson(),
-        if (outline != null) 'outline': outline.toJson(),
-        if (recolor != null) 'recolor': recolor.toJson(),
-        if (shadow != null) 'shadow': shadow.toJson(),
-        if (transparency != null) 'transparency': transparency,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (brightness != null) 'brightness': brightness!,
+        if (contrast != null) 'contrast': contrast!,
+        if (cropProperties != null) 'cropProperties': cropProperties!.toJson(),
+        if (link != null) 'link': link!.toJson(),
+        if (outline != null) 'outline': outline!.toJson(),
+        if (recolor != null) 'recolor': recolor!.toJson(),
+        if (shadow != null) 'shadow': shadow!.toJson(),
+        if (transparency != null) 'transparency': transparency!,
       };
 }
 
@@ -2162,20 +2142,20 @@ class InsertTableColumnsRequest {
   /// A new column will be inserted to the left (or right) of the column where
   /// the reference cell is. If the reference cell is a merged cell, a new
   /// column will be inserted to the left (or right) of the merged cell.
-  TableCellLocation cellLocation;
+  TableCellLocation? cellLocation;
 
   /// Whether to insert new columns to the right of the reference cell location.
   ///
   /// - `True`: insert to the right. - `False`: insert to the left.
-  core.bool insertRight;
+  core.bool? insertRight;
 
   /// The number of columns to be inserted.
   ///
   /// Maximum 20 per request.
-  core.int number;
+  core.int? number;
 
   /// The table to insert columns into.
-  core.String tableObjectId;
+  core.String? tableObjectId;
 
   InsertTableColumnsRequest();
 
@@ -2195,11 +2175,11 @@ class InsertTableColumnsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation.toJson(),
-        if (insertRight != null) 'insertRight': insertRight,
-        if (number != null) 'number': number,
-        if (tableObjectId != null) 'tableObjectId': tableObjectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (insertRight != null) 'insertRight': insertRight!,
+        if (number != null) 'number': number!,
+        if (tableObjectId != null) 'tableObjectId': tableObjectId!,
       };
 }
 
@@ -2210,20 +2190,20 @@ class InsertTableRowsRequest {
   /// A new row will be inserted above (or below) the row where the reference
   /// cell is. If the reference cell is a merged cell, a new row will be
   /// inserted above (or below) the merged cell.
-  TableCellLocation cellLocation;
+  TableCellLocation? cellLocation;
 
   /// Whether to insert new rows below the reference cell location.
   ///
   /// - `True`: insert below the cell. - `False`: insert above the cell.
-  core.bool insertBelow;
+  core.bool? insertBelow;
 
   /// The number of rows to be inserted.
   ///
   /// Maximum 20 per request.
-  core.int number;
+  core.int? number;
 
   /// The table to insert rows into.
-  core.String tableObjectId;
+  core.String? tableObjectId;
 
   InsertTableRowsRequest();
 
@@ -2243,11 +2223,11 @@ class InsertTableRowsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation.toJson(),
-        if (insertBelow != null) 'insertBelow': insertBelow,
-        if (number != null) 'number': number,
-        if (tableObjectId != null) 'tableObjectId': tableObjectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (insertBelow != null) 'insertBelow': insertBelow!,
+        if (number != null) 'number': number!,
+        if (tableObjectId != null) 'tableObjectId': tableObjectId!,
       };
 }
 
@@ -2257,7 +2237,7 @@ class InsertTextRequest {
   /// table cell.
   ///
   /// If present, the object_id must refer to a table.
-  TableCellLocation cellLocation;
+  TableCellLocation? cellLocation;
 
   /// The index where the text will be inserted, in Unicode code units, based on
   /// TextElement indexes.
@@ -2266,10 +2246,10 @@ class InsertTextRequest {
   /// index may be adjusted to prevent insertions inside Unicode grapheme
   /// clusters. In these cases, the text will be inserted immediately after the
   /// grapheme cluster.
-  core.int insertionIndex;
+  core.int? insertionIndex;
 
   /// The object ID of the shape or table where the text will be inserted.
-  core.String objectId;
+  core.String? objectId;
 
   /// The text to be inserted.
   ///
@@ -2282,7 +2262,7 @@ class InsertTextRequest {
   /// control characters (U+0000-U+0008, U+000C-U+001F) and characters from the
   /// Unicode Basic Multilingual Plane Private Use Area (U+E000-U+F8FF) will be
   /// stripped out of the inserted text.
-  core.String text;
+  core.String? text;
 
   InsertTextRequest();
 
@@ -2302,11 +2282,11 @@ class InsertTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation.toJson(),
-        if (insertionIndex != null) 'insertionIndex': insertionIndex,
-        if (objectId != null) 'objectId': objectId,
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (insertionIndex != null) 'insertionIndex': insertionIndex!,
+        if (objectId != null) 'objectId': objectId!,
+        if (text != null) 'text': text!,
       };
 }
 
@@ -2318,11 +2298,11 @@ class LayoutPlaceholderIdMapping {
   /// Only type and index are needed. For example, a predefined `TITLE_AND_BODY`
   /// layout may usually have a TITLE placeholder with index 0 and a BODY
   /// placeholder with index 0.
-  Placeholder layoutPlaceholder;
+  Placeholder? layoutPlaceholder;
 
   /// The object ID of the placeholder on a layout that will be applied to a
   /// slide.
-  core.String layoutPlaceholderObjectId;
+  core.String? layoutPlaceholderObjectId;
 
   /// A user-supplied object ID for the placeholder identified above that to be
   /// created onto a slide.
@@ -2333,7 +2313,7 @@ class LayoutPlaceholderIdMapping {
   /// include those as well as a hyphen or colon (matches regex
   /// `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater
   /// than 50. If you don't specify an ID, a unique one is generated.
-  core.String objectId;
+  core.String? objectId;
 
   LayoutPlaceholderIdMapping();
 
@@ -2351,25 +2331,25 @@ class LayoutPlaceholderIdMapping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (layoutPlaceholder != null)
-          'layoutPlaceholder': layoutPlaceholder.toJson(),
+          'layoutPlaceholder': layoutPlaceholder!.toJson(),
         if (layoutPlaceholderObjectId != null)
-          'layoutPlaceholderObjectId': layoutPlaceholderObjectId,
-        if (objectId != null) 'objectId': objectId,
+          'layoutPlaceholderObjectId': layoutPlaceholderObjectId!,
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
 /// The properties of Page are only relevant for pages with page_type LAYOUT.
 class LayoutProperties {
   /// The human-readable name of the layout.
-  core.String displayName;
+  core.String? displayName;
 
   /// The object ID of the master that this layout is based on.
-  core.String masterObjectId;
+  core.String? masterObjectId;
 
   /// The name of the layout.
-  core.String name;
+  core.String? name;
 
   LayoutProperties();
 
@@ -2385,10 +2365,10 @@ class LayoutProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (masterObjectId != null) 'masterObjectId': masterObjectId,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (masterObjectId != null) 'masterObjectId': masterObjectId!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2398,7 +2378,7 @@ class LayoutProperties {
 /// presentation.
 class LayoutReference {
   /// Layout ID: the object ID of one of the layouts in the presentation.
-  core.String layoutId;
+  core.String? layoutId;
 
   /// Predefined layout.
   /// Possible string values are:
@@ -2416,7 +2396,7 @@ class LayoutReference {
   /// single column.
   /// - "MAIN_POINT" : Layout with a main point.
   /// - "BIG_NUMBER" : Layout with a big number heading.
-  core.String predefinedLayout;
+  core.String? predefinedLayout;
 
   LayoutReference();
 
@@ -2429,9 +2409,9 @@ class LayoutReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (layoutId != null) 'layoutId': layoutId,
-        if (predefinedLayout != null) 'predefinedLayout': predefinedLayout,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (layoutId != null) 'layoutId': layoutId!,
+        if (predefinedLayout != null) 'predefinedLayout': predefinedLayout!,
       };
 }
 
@@ -2447,10 +2427,10 @@ class Line {
   /// - "STRAIGHT" : Straight connectors, including straight connector 1.
   /// - "BENT" : Bent connectors, including bent connector 2 to 5.
   /// - "CURVED" : Curved connectors, including curved connector 2 to 5.
-  core.String lineCategory;
+  core.String? lineCategory;
 
   /// The properties of the line.
-  LineProperties lineProperties;
+  LineProperties? lineProperties;
 
   /// The type of the line.
   /// Possible string values are:
@@ -2475,7 +2455,7 @@ class Line {
   /// ST_ShapeType 'curvedConnector5'.
   /// - "STRAIGHT_LINE" : Straight line. Corresponds to ECMA-376 ST_ShapeType
   /// 'line'. This line type is not a connector.
-  core.String lineType;
+  core.String? lineType;
 
   Line();
 
@@ -2492,10 +2472,10 @@ class Line {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lineCategory != null) 'lineCategory': lineCategory,
-        if (lineProperties != null) 'lineProperties': lineProperties.toJson(),
-        if (lineType != null) 'lineType': lineType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lineCategory != null) 'lineCategory': lineCategory!,
+        if (lineProperties != null) 'lineProperties': lineProperties!.toJson(),
+        if (lineType != null) 'lineType': lineType!,
       };
 }
 
@@ -2505,7 +2485,7 @@ class LineConnection {
   ///
   /// Some page elements, such as groups, tables, and lines do not have
   /// connection sites and therefore cannot be connected to a connector line.
-  core.String connectedObjectId;
+  core.String? connectedObjectId;
 
   /// The index of the connection site on the connected page element.
   ///
@@ -2518,7 +2498,7 @@ class LineConnection {
   /// edition\](http://www.ecma-international.org/publications/standards/Ecma-376.htm).
   /// The position of each connection site can also be viewed from Slides
   /// editor.
-  core.int connectionSiteIndex;
+  core.int? connectionSiteIndex;
 
   LineConnection();
 
@@ -2531,17 +2511,17 @@ class LineConnection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (connectedObjectId != null) 'connectedObjectId': connectedObjectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (connectedObjectId != null) 'connectedObjectId': connectedObjectId!,
         if (connectionSiteIndex != null)
-          'connectionSiteIndex': connectionSiteIndex,
+          'connectionSiteIndex': connectionSiteIndex!,
       };
 }
 
 /// The fill of the line.
 class LineFill {
   /// Solid color fill.
-  SolidFill solidFill;
+  SolidFill? solidFill;
 
   LineFill();
 
@@ -2552,8 +2532,8 @@ class LineFill {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (solidFill != null) 'solidFill': solidFill.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (solidFill != null) 'solidFill': solidFill!.toJson(),
       };
 }
 
@@ -2577,7 +2557,7 @@ class LineProperties {
   /// ST_PresetLineDashVal value 'lgDash'.
   /// - "LONG_DASH_DOT" : Alternating large dashes and dots. Corresponds to
   /// ECMA-376 ST_PresetLineDashVal value 'lgDashDot'.
-  core.String dashStyle;
+  core.String? dashStyle;
 
   /// The style of the arrow at the end of the line.
   /// Possible string values are:
@@ -2596,24 +2576,24 @@ class LineProperties {
   /// - "OPEN_CIRCLE" : Hollow circle.
   /// - "OPEN_SQUARE" : Hollow square.
   /// - "OPEN_DIAMOND" : Hollow diamond.
-  core.String endArrow;
+  core.String? endArrow;
 
   /// The connection at the end of the line.
   ///
   /// If unset, there is no connection. Only lines with a Type indicating it is
   /// a "connector" can have an `end_connection`.
-  LineConnection endConnection;
+  LineConnection? endConnection;
 
   /// The fill of the line.
   ///
   /// The default line fill matches the defaults for new lines created in the
   /// Slides editor.
-  LineFill lineFill;
+  LineFill? lineFill;
 
   /// The hyperlink destination of the line.
   ///
   /// If unset, there is no link.
-  Link link;
+  Link? link;
 
   /// The style of the arrow at the beginning of the line.
   /// Possible string values are:
@@ -2632,16 +2612,16 @@ class LineProperties {
   /// - "OPEN_CIRCLE" : Hollow circle.
   /// - "OPEN_SQUARE" : Hollow square.
   /// - "OPEN_DIAMOND" : Hollow diamond.
-  core.String startArrow;
+  core.String? startArrow;
 
   /// The connection at the beginning of the line.
   ///
   /// If unset, there is no connection. Only lines with a Type indicating it is
   /// a "connector" can have a `start_connection`.
-  LineConnection startConnection;
+  LineConnection? startConnection;
 
   /// The thickness of the line.
-  Dimension weight;
+  Dimension? weight;
 
   LineProperties();
 
@@ -2677,16 +2657,16 @@ class LineProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dashStyle != null) 'dashStyle': dashStyle,
-        if (endArrow != null) 'endArrow': endArrow,
-        if (endConnection != null) 'endConnection': endConnection.toJson(),
-        if (lineFill != null) 'lineFill': lineFill.toJson(),
-        if (link != null) 'link': link.toJson(),
-        if (startArrow != null) 'startArrow': startArrow,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dashStyle != null) 'dashStyle': dashStyle!,
+        if (endArrow != null) 'endArrow': endArrow!,
+        if (endConnection != null) 'endConnection': endConnection!.toJson(),
+        if (lineFill != null) 'lineFill': lineFill!.toJson(),
+        if (link != null) 'link': link!.toJson(),
+        if (startArrow != null) 'startArrow': startArrow!,
         if (startConnection != null)
-          'startConnection': startConnection.toJson(),
-        if (weight != null) 'weight': weight.toJson(),
+          'startConnection': startConnection!.toJson(),
+        if (weight != null) 'weight': weight!.toJson(),
       };
 }
 
@@ -2696,7 +2676,7 @@ class Link {
   /// with this ID.
   ///
   /// A page with this ID may not exist.
-  core.String pageObjectId;
+  core.String? pageObjectId;
 
   /// If set, indicates this is a link to a slide in this presentation,
   /// addressed by its position.
@@ -2706,16 +2686,16 @@ class Link {
   /// - "PREVIOUS_SLIDE" : A link to the previous slide.
   /// - "FIRST_SLIDE" : A link to the first slide in the presentation.
   /// - "LAST_SLIDE" : A link to the last slide in the presentation.
-  core.String relativeLink;
+  core.String? relativeLink;
 
   /// If set, indicates this is a link to the slide at this zero-based index in
   /// the presentation.
   ///
   /// There may not be a slide at this index.
-  core.int slideIndex;
+  core.int? slideIndex;
 
   /// If set, indicates this is a link to the external web page at this URL.
-  core.String url;
+  core.String? url;
 
   Link();
 
@@ -2734,11 +2714,11 @@ class Link {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pageObjectId != null) 'pageObjectId': pageObjectId,
-        if (relativeLink != null) 'relativeLink': relativeLink,
-        if (slideIndex != null) 'slideIndex': slideIndex,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pageObjectId != null) 'pageObjectId': pageObjectId!,
+        if (relativeLink != null) 'relativeLink': relativeLink!,
+        if (slideIndex != null) 'slideIndex': slideIndex!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -2749,14 +2729,14 @@ class Link {
 /// ID.
 class List {
   /// The ID of the list.
-  core.String listId;
+  core.String? listId;
 
   /// A map of nesting levels to the properties of bullets at the associated
   /// level.
   ///
   /// A list has at most nine levels of nesting, so the possible values for the
   /// keys of this map are 0 through 8, inclusive.
-  core.Map<core.String, NestingLevel> nestingLevel;
+  core.Map<core.String, NestingLevel>? nestingLevel;
 
   List();
 
@@ -2765,21 +2745,22 @@ class List {
       listId = _json['listId'] as core.String;
     }
     if (_json.containsKey('nestingLevel')) {
-      nestingLevel =
-          (_json['nestingLevel'] as core.Map).cast<core.String, core.Map>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  NestingLevel.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+      nestingLevel = (_json['nestingLevel'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              NestingLevel.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (listId != null) 'listId': listId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (listId != null) 'listId': listId!,
         if (nestingLevel != null)
-          'nestingLevel': nestingLevel
+          'nestingLevel': nestingLevel!
               .map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
@@ -2788,7 +2769,7 @@ class List {
 /// MASTER.
 class MasterProperties {
   /// The human-readable name of the master.
-  core.String displayName;
+  core.String? displayName;
 
   MasterProperties();
 
@@ -2798,15 +2779,15 @@ class MasterProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
       };
 }
 
 /// Merges cells in a Table.
 class MergeTableCellsRequest {
   /// The object ID of the table.
-  core.String objectId;
+  core.String? objectId;
 
   /// The table range specifying which cells of the table to merge.
   ///
@@ -2814,7 +2795,7 @@ class MergeTableCellsRequest {
   /// upper-left ("head") cell of the range. If the range is non-rectangular
   /// (which can occur in some cases where the range covers cells that are
   /// already merged), a 400 bad request error is returned.
-  TableRange tableRange;
+  TableRange? tableRange;
 
   MergeTableCellsRequest();
 
@@ -2828,9 +2809,9 @@ class MergeTableCellsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
-        if (tableRange != null) 'tableRange': tableRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
+        if (tableRange != null) 'tableRange': tableRange!.toJson(),
       };
 }
 
@@ -2838,7 +2819,7 @@ class MergeTableCellsRequest {
 /// level of nesting.
 class NestingLevel {
   /// The style of a bullet at this level of nesting.
-  TextStyle bulletStyle;
+  TextStyle? bulletStyle;
 
   NestingLevel();
 
@@ -2849,8 +2830,8 @@ class NestingLevel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bulletStyle != null) 'bulletStyle': bulletStyle.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bulletStyle != null) 'bulletStyle': bulletStyle!.toJson(),
       };
 }
 
@@ -2864,7 +2845,7 @@ class NotesProperties {
   /// using this object ID will automatically create the shape. In this case,
   /// the actual shape may have different object ID. The `GetPresentation` or
   /// `GetPage` action will always return the latest object ID.
-  core.String speakerNotesObjectId;
+  core.String? speakerNotesObjectId;
 
   NotesProperties();
 
@@ -2874,16 +2855,16 @@ class NotesProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (speakerNotesObjectId != null)
-          'speakerNotesObjectId': speakerNotesObjectId,
+          'speakerNotesObjectId': speakerNotesObjectId!,
       };
 }
 
 /// A themeable solid color value.
 class OpaqueColor {
   /// An opaque RGB color.
-  RgbColor rgbColor;
+  RgbColor? rgbColor;
 
   /// An opaque theme color.
   /// Possible string values are:
@@ -2906,7 +2887,7 @@ class OpaqueColor {
   /// - "BACKGROUND1" : Represents the first background color.
   /// - "TEXT2" : Represents the second text color.
   /// - "BACKGROUND2" : Represents the second background color.
-  core.String themeColor;
+  core.String? themeColor;
 
   OpaqueColor();
 
@@ -2920,9 +2901,9 @@ class OpaqueColor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (rgbColor != null) 'rgbColor': rgbColor.toJson(),
-        if (themeColor != null) 'themeColor': themeColor,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (rgbColor != null) 'rgbColor': rgbColor!.toJson(),
+        if (themeColor != null) 'themeColor': themeColor!,
       };
 }
 
@@ -2931,7 +2912,7 @@ class OptionalColor {
   /// If set, this will be used as an opaque color.
   ///
   /// If unset, this represents a transparent color.
-  OpaqueColor opaqueColor;
+  OpaqueColor? opaqueColor;
 
   OptionalColor();
 
@@ -2942,8 +2923,8 @@ class OptionalColor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (opaqueColor != null) 'opaqueColor': opaqueColor.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (opaqueColor != null) 'opaqueColor': opaqueColor!.toJson(),
       };
 }
 
@@ -2969,10 +2950,10 @@ class Outline {
   /// ST_PresetLineDashVal value 'lgDash'.
   /// - "LONG_DASH_DOT" : Alternating large dashes and dots. Corresponds to
   /// ECMA-376 ST_PresetLineDashVal value 'lgDashDot'.
-  core.String dashStyle;
+  core.String? dashStyle;
 
   /// The fill of the outline.
-  OutlineFill outlineFill;
+  OutlineFill? outlineFill;
 
   /// The outline property state.
   ///
@@ -2998,10 +2979,10 @@ class Outline {
   /// uses the value of corresponding `property_state` field on the parent
   /// shape. Elements that do not inherit will never have an INHERIT property
   /// state.
-  core.String propertyState;
+  core.String? propertyState;
 
   /// The thickness of the outline.
-  Dimension weight;
+  Dimension? weight;
 
   Outline();
 
@@ -3022,18 +3003,18 @@ class Outline {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dashStyle != null) 'dashStyle': dashStyle,
-        if (outlineFill != null) 'outlineFill': outlineFill.toJson(),
-        if (propertyState != null) 'propertyState': propertyState,
-        if (weight != null) 'weight': weight.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dashStyle != null) 'dashStyle': dashStyle!,
+        if (outlineFill != null) 'outlineFill': outlineFill!.toJson(),
+        if (propertyState != null) 'propertyState': propertyState!,
+        if (weight != null) 'weight': weight!.toJson(),
       };
 }
 
 /// The fill of the outline.
 class OutlineFill {
   /// Solid color fill.
-  SolidFill solidFill;
+  SolidFill? solidFill;
 
   OutlineFill();
 
@@ -3044,8 +3025,8 @@ class OutlineFill {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (solidFill != null) 'solidFill': solidFill.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (solidFill != null) 'solidFill': solidFill!.toJson(),
       };
 }
 
@@ -3054,28 +3035,28 @@ class Page {
   /// Layout specific properties.
   ///
   /// Only set if page_type = LAYOUT.
-  LayoutProperties layoutProperties;
+  LayoutProperties? layoutProperties;
 
   /// Master specific properties.
   ///
   /// Only set if page_type = MASTER.
-  MasterProperties masterProperties;
+  MasterProperties? masterProperties;
 
   /// Notes specific properties.
   ///
   /// Only set if page_type = NOTES.
-  NotesProperties notesProperties;
+  NotesProperties? notesProperties;
 
   /// The object ID for this page.
   ///
   /// Object IDs used by Page and PageElement share the same namespace.
-  core.String objectId;
+  core.String? objectId;
 
   /// The page elements rendered on the page.
-  core.List<PageElement> pageElements;
+  core.List<PageElement>? pageElements;
 
   /// The properties of the page.
-  PageProperties pageProperties;
+  PageProperties? pageProperties;
 
   /// The type of the page.
   /// Possible string values are:
@@ -3084,7 +3065,7 @@ class Page {
   /// - "LAYOUT" : A layout page.
   /// - "NOTES" : A notes page.
   /// - "NOTES_MASTER" : A notes master page.
-  core.String pageType;
+  core.String? pageType;
 
   /// The revision ID of the presentation containing this page.
   ///
@@ -3098,12 +3079,12 @@ class Page {
   /// (for the same presentation and user) usually means the presentation has
   /// been updated; however, a changed ID can also be due to internal factors
   /// such as ID format changes.
-  core.String revisionId;
+  core.String? revisionId;
 
   /// Slide specific properties.
   ///
   /// Only set if page_type = SLIDE.
-  SlideProperties slideProperties;
+  SlideProperties? slideProperties;
 
   Page();
 
@@ -3145,21 +3126,21 @@ class Page {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (layoutProperties != null)
-          'layoutProperties': layoutProperties.toJson(),
+          'layoutProperties': layoutProperties!.toJson(),
         if (masterProperties != null)
-          'masterProperties': masterProperties.toJson(),
+          'masterProperties': masterProperties!.toJson(),
         if (notesProperties != null)
-          'notesProperties': notesProperties.toJson(),
-        if (objectId != null) 'objectId': objectId,
+          'notesProperties': notesProperties!.toJson(),
+        if (objectId != null) 'objectId': objectId!,
         if (pageElements != null)
-          'pageElements': pageElements.map((value) => value.toJson()).toList(),
-        if (pageProperties != null) 'pageProperties': pageProperties.toJson(),
-        if (pageType != null) 'pageType': pageType,
-        if (revisionId != null) 'revisionId': revisionId,
+          'pageElements': pageElements!.map((value) => value.toJson()).toList(),
+        if (pageProperties != null) 'pageProperties': pageProperties!.toJson(),
+        if (pageType != null) 'pageType': pageType!,
+        if (revisionId != null) 'revisionId': revisionId!,
         if (slideProperties != null)
-          'slideProperties': slideProperties.toJson(),
+          'slideProperties': slideProperties!.toJson(),
       };
 }
 
@@ -3188,13 +3169,13 @@ class PageBackgroundFill {
   /// uses the value of corresponding `property_state` field on the parent
   /// shape. Elements that do not inherit will never have an INHERIT property
   /// state.
-  core.String propertyState;
+  core.String? propertyState;
 
   /// Solid color fill.
-  SolidFill solidFill;
+  SolidFill? solidFill;
 
   /// Stretched picture fill.
-  StretchedPictureFill stretchedPictureFill;
+  StretchedPictureFill? stretchedPictureFill;
 
   PageBackgroundFill();
 
@@ -3212,11 +3193,11 @@ class PageBackgroundFill {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (propertyState != null) 'propertyState': propertyState,
-        if (solidFill != null) 'solidFill': solidFill.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (propertyState != null) 'propertyState': propertyState!,
+        if (solidFill != null) 'solidFill': solidFill!.toJson(),
         if (stretchedPictureFill != null)
-          'stretchedPictureFill': stretchedPictureFill.toJson(),
+          'stretchedPictureFill': stretchedPictureFill!.toJson(),
       };
 }
 
@@ -3226,42 +3207,42 @@ class PageElement {
   ///
   /// Combined with title to display alt text. The field is not supported for
   /// Group elements.
-  core.String description;
+  core.String? description;
 
   /// A collection of page elements joined as a single unit.
-  Group elementGroup;
+  Group? elementGroup;
 
   /// An image page element.
-  Image image;
+  Image? image;
 
   /// A line page element.
-  Line line;
+  Line? line;
 
   /// The object ID for this page element.
   ///
   /// Object IDs used by google.apps.slides.v1.Page and
   /// google.apps.slides.v1.PageElement share the same namespace.
-  core.String objectId;
+  core.String? objectId;
 
   /// A generic shape.
-  Shape shape;
+  Shape? shape;
 
   /// A linked chart embedded from Google Sheets.
   ///
   /// Unlinked charts are represented as images.
-  SheetsChart sheetsChart;
+  SheetsChart? sheetsChart;
 
   /// The size of the page element.
-  Size size;
+  Size? size;
 
   /// A table page element.
-  Table table;
+  Table? table;
 
   /// The title of the page element.
   ///
   /// Combined with description to display alt text. The field is not supported
   /// for Group elements.
-  core.String title;
+  core.String? title;
 
   /// The transform of the page element.
   ///
@@ -3271,13 +3252,13 @@ class PageElement {
   /// the page element is not in a group, its absolute transform is the same as
   /// the value in this field. The initial transform for the newly created Group
   /// is always the identity transform.
-  AffineTransform transform;
+  AffineTransform? transform;
 
   /// A video page element.
-  Video video;
+  Video? video;
 
   /// A word art page element.
-  WordArt wordArt;
+  WordArt? wordArt;
 
   PageElement();
 
@@ -3333,20 +3314,20 @@ class PageElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (elementGroup != null) 'elementGroup': elementGroup.toJson(),
-        if (image != null) 'image': image.toJson(),
-        if (line != null) 'line': line.toJson(),
-        if (objectId != null) 'objectId': objectId,
-        if (shape != null) 'shape': shape.toJson(),
-        if (sheetsChart != null) 'sheetsChart': sheetsChart.toJson(),
-        if (size != null) 'size': size.toJson(),
-        if (table != null) 'table': table.toJson(),
-        if (title != null) 'title': title,
-        if (transform != null) 'transform': transform.toJson(),
-        if (video != null) 'video': video.toJson(),
-        if (wordArt != null) 'wordArt': wordArt.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (elementGroup != null) 'elementGroup': elementGroup!.toJson(),
+        if (image != null) 'image': image!.toJson(),
+        if (line != null) 'line': line!.toJson(),
+        if (objectId != null) 'objectId': objectId!,
+        if (shape != null) 'shape': shape!.toJson(),
+        if (sheetsChart != null) 'sheetsChart': sheetsChart!.toJson(),
+        if (size != null) 'size': size!.toJson(),
+        if (table != null) 'table': table!.toJson(),
+        if (title != null) 'title': title!,
+        if (transform != null) 'transform': transform!.toJson(),
+        if (video != null) 'video': video!.toJson(),
+        if (wordArt != null) 'wordArt': wordArt!.toJson(),
       };
 }
 
@@ -3356,13 +3337,13 @@ class PageElement {
 /// of both `size` and `transform`, but the visual size will be unchanged.
 class PageElementProperties {
   /// The object ID of the page where the element is located.
-  core.String pageObjectId;
+  core.String? pageObjectId;
 
   /// The size of the element.
-  Size size;
+  Size? size;
 
   /// The transform for the element.
-  AffineTransform transform;
+  AffineTransform? transform;
 
   PageElementProperties();
 
@@ -3380,10 +3361,10 @@ class PageElementProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pageObjectId != null) 'pageObjectId': pageObjectId,
-        if (size != null) 'size': size.toJson(),
-        if (transform != null) 'transform': transform.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pageObjectId != null) 'pageObjectId': pageObjectId!,
+        if (size != null) 'size': size!.toJson(),
+        if (transform != null) 'transform': transform!.toJson(),
       };
 }
 
@@ -3402,14 +3383,14 @@ class PageProperties {
   /// scheme containing mappings from all the first 12 ThemeColorTypes to their
   /// concrete colors must be provided. Colors for the remaining ThemeColorTypes
   /// will be ignored.
-  ColorScheme colorScheme;
+  ColorScheme? colorScheme;
 
   /// The background fill of the page.
   ///
   /// If unset, the background fill is inherited from a parent page if it
   /// exists. If the page has no parent, then the background fill defaults to
   /// the corresponding fill in the Slides editor.
-  PageBackgroundFill pageBackgroundFill;
+  PageBackgroundFill? pageBackgroundFill;
 
   PageProperties();
 
@@ -3424,10 +3405,10 @@ class PageProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (colorScheme != null) 'colorScheme': colorScheme.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (colorScheme != null) 'colorScheme': colorScheme!.toJson(),
         if (pageBackgroundFill != null)
-          'pageBackgroundFill': pageBackgroundFill.toJson(),
+          'pageBackgroundFill': pageBackgroundFill!.toJson(),
       };
 }
 
@@ -3436,10 +3417,10 @@ class ParagraphMarker {
   /// The bullet for this paragraph.
   ///
   /// If not present, the paragraph does not belong to a list.
-  Bullet bullet;
+  Bullet? bullet;
 
   /// The paragraph's style
-  ParagraphStyle style;
+  ParagraphStyle? style;
 
   ParagraphMarker();
 
@@ -3454,9 +3435,9 @@ class ParagraphMarker {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bullet != null) 'bullet': bullet.toJson(),
-        if (style != null) 'style': style.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bullet != null) 'bullet': bullet!.toJson(),
+        if (style != null) 'style': style!.toJson(),
       };
 }
 
@@ -3481,7 +3462,7 @@ class ParagraphStyle {
   /// - "END" : The paragraph is aligned to the end of the line. Right-aligned
   /// for LTR text, left-aligned otherwise.
   /// - "JUSTIFIED" : The paragraph is justified.
-  core.String alignment;
+  core.String? alignment;
 
   /// The text direction of this paragraph.
   ///
@@ -3492,41 +3473,41 @@ class ParagraphStyle {
   /// parent.
   /// - "LEFT_TO_RIGHT" : The text goes from left to right.
   /// - "RIGHT_TO_LEFT" : The text goes from right to left.
-  core.String direction;
+  core.String? direction;
 
   /// The amount indentation for the paragraph on the side that corresponds to
   /// the end of the text, based on the current text direction.
   ///
   /// If unset, the value is inherited from the parent.
-  Dimension indentEnd;
+  Dimension? indentEnd;
 
   /// The amount of indentation for the start of the first line of the
   /// paragraph.
   ///
   /// If unset, the value is inherited from the parent.
-  Dimension indentFirstLine;
+  Dimension? indentFirstLine;
 
   /// The amount indentation for the paragraph on the side that corresponds to
   /// the start of the text, based on the current text direction.
   ///
   /// If unset, the value is inherited from the parent.
-  Dimension indentStart;
+  Dimension? indentStart;
 
   /// The amount of space between lines, as a percentage of normal, where normal
   /// is represented as 100.0.
   ///
   /// If unset, the value is inherited from the parent.
-  core.double lineSpacing;
+  core.double? lineSpacing;
 
   /// The amount of extra space above the paragraph.
   ///
   /// If unset, the value is inherited from the parent.
-  Dimension spaceAbove;
+  Dimension? spaceAbove;
 
   /// The amount of extra space below the paragraph.
   ///
   /// If unset, the value is inherited from the parent.
-  Dimension spaceBelow;
+  Dimension? spaceBelow;
 
   /// The spacing mode for the paragraph.
   /// Possible string values are:
@@ -3534,7 +3515,7 @@ class ParagraphStyle {
   /// parent.
   /// - "NEVER_COLLAPSE" : Paragraph spacing is always rendered.
   /// - "COLLAPSE_LISTS" : Paragraph spacing is skipped between list elements.
-  core.String spacingMode;
+  core.String? spacingMode;
 
   ParagraphStyle();
 
@@ -3573,17 +3554,17 @@ class ParagraphStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alignment != null) 'alignment': alignment,
-        if (direction != null) 'direction': direction,
-        if (indentEnd != null) 'indentEnd': indentEnd.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alignment != null) 'alignment': alignment!,
+        if (direction != null) 'direction': direction!,
+        if (indentEnd != null) 'indentEnd': indentEnd!.toJson(),
         if (indentFirstLine != null)
-          'indentFirstLine': indentFirstLine.toJson(),
-        if (indentStart != null) 'indentStart': indentStart.toJson(),
-        if (lineSpacing != null) 'lineSpacing': lineSpacing,
-        if (spaceAbove != null) 'spaceAbove': spaceAbove.toJson(),
-        if (spaceBelow != null) 'spaceBelow': spaceBelow.toJson(),
-        if (spacingMode != null) 'spacingMode': spacingMode,
+          'indentFirstLine': indentFirstLine!.toJson(),
+        if (indentStart != null) 'indentStart': indentStart!.toJson(),
+        if (lineSpacing != null) 'lineSpacing': lineSpacing!,
+        if (spaceAbove != null) 'spaceAbove': spaceAbove!.toJson(),
+        if (spaceBelow != null) 'spaceBelow': spaceBelow!.toJson(),
+        if (spacingMode != null) 'spacingMode': spacingMode!,
       };
 }
 
@@ -3593,13 +3574,13 @@ class Placeholder {
   ///
   /// If the same placeholder types are present in the same page, they would
   /// have different index values.
-  core.int index;
+  core.int? index;
 
   /// The object ID of this shape's parent placeholder.
   ///
   /// If unset, the parent placeholder shape does not exist, so the shape does
   /// not inherit properties from any other shape.
-  core.String parentObjectId;
+  core.String? parentObjectId;
 
   /// The type of the placeholder.
   /// Possible string values are:
@@ -3620,7 +3601,7 @@ class Placeholder {
   /// - "TABLE" : Table.
   /// - "TITLE" : Slide title.
   /// - "SLIDE_IMAGE" : Slide image.
-  core.String type;
+  core.String? type;
 
   Placeholder();
 
@@ -3636,10 +3617,10 @@ class Placeholder {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (index != null) 'index': index,
-        if (parentObjectId != null) 'parentObjectId': parentObjectId,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (index != null) 'index': index!,
+        if (parentObjectId != null) 'parentObjectId': parentObjectId!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3649,10 +3630,10 @@ class Presentation {
   ///
   /// A layout is a template that determines how content is arranged and styled
   /// on the slides that inherit from that layout.
-  core.List<Page> layouts;
+  core.List<Page>? layouts;
 
   /// The locale of the presentation, as an IETF BCP 47 language tag.
-  core.String locale;
+  core.String? locale;
 
   /// The slide masters in the presentation.
   ///
@@ -3663,7 +3644,7 @@ class Presentation {
   /// properties define the common page properties inherited by its layouts. -
   /// Any other shapes on the master slide appear on all slides using that
   /// master, regardless of their layout.
-  core.List<Page> masters;
+  core.List<Page>? masters;
 
   /// The notes master in the presentation.
   ///
@@ -3674,13 +3655,13 @@ class Presentation {
   /// notes. - The notes master page properties define the common page
   /// properties inherited by all notes pages. - Any other shapes on the notes
   /// master appear on all notes pages. The notes master is read-only.
-  Page notesMaster;
+  Page? notesMaster;
 
   /// The size of pages in the presentation.
-  Size pageSize;
+  Size? pageSize;
 
   /// The ID of the presentation.
-  core.String presentationId;
+  core.String? presentationId;
 
   /// The revision ID of the presentation.
   ///
@@ -3694,15 +3675,15 @@ class Presentation {
   /// (for the same presentation and user) usually means the presentation has
   /// been updated; however, a changed ID can also be due to internal factors
   /// such as ID format changes.
-  core.String revisionId;
+  core.String? revisionId;
 
   /// The slides in the presentation.
   ///
   /// A slide inherits properties from a slide layout.
-  core.List<Page> slides;
+  core.List<Page>? slides;
 
   /// The title of the presentation.
-  core.String title;
+  core.String? title;
 
   Presentation();
 
@@ -3747,19 +3728,19 @@ class Presentation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (layouts != null)
-          'layouts': layouts.map((value) => value.toJson()).toList(),
-        if (locale != null) 'locale': locale,
+          'layouts': layouts!.map((value) => value.toJson()).toList(),
+        if (locale != null) 'locale': locale!,
         if (masters != null)
-          'masters': masters.map((value) => value.toJson()).toList(),
-        if (notesMaster != null) 'notesMaster': notesMaster.toJson(),
-        if (pageSize != null) 'pageSize': pageSize.toJson(),
-        if (presentationId != null) 'presentationId': presentationId,
-        if (revisionId != null) 'revisionId': revisionId,
+          'masters': masters!.map((value) => value.toJson()).toList(),
+        if (notesMaster != null) 'notesMaster': notesMaster!.toJson(),
+        if (pageSize != null) 'pageSize': pageSize!.toJson(),
+        if (presentationId != null) 'presentationId': presentationId!,
+        if (revisionId != null) 'revisionId': revisionId!,
         if (slides != null)
-          'slides': slides.map((value) => value.toJson()).toList(),
-        if (title != null) 'title': title,
+          'slides': slides!.map((value) => value.toJson()).toList(),
+        if (title != null) 'title': title!,
       };
 }
 
@@ -3769,12 +3750,12 @@ class Range {
   /// The optional zero-based index of the end of the collection.
   ///
   /// Required for `FIXED_RANGE` ranges.
-  core.int endIndex;
+  core.int? endIndex;
 
   /// The optional zero-based index of the beginning of the collection.
   ///
   /// Required for `FIXED_RANGE` and `FROM_START_INDEX` ranges.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// The type of range.
   /// Possible string values are:
@@ -3786,7 +3767,7 @@ class Range {
   /// until the end of the collection. The `end_index` must not be specified.
   /// - "ALL" : Sets the range to be the whole length of the collection. Both
   /// the `start_index` and the `end_index` must not be specified.
-  core.String type;
+  core.String? type;
 
   Range();
 
@@ -3802,10 +3783,10 @@ class Range {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endIndex != null) 'endIndex': endIndex,
-        if (startIndex != null) 'startIndex': startIndex,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endIndex != null) 'endIndex': endIndex!,
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -3865,7 +3846,7 @@ class Recolor {
   /// color.
   /// - "CUSTOM" : Custom recolor effect. Refer to `recolor_stops` for the
   /// concrete gradient.
-  core.String name;
+  core.String? name;
 
   /// The recolor effect is represented by a gradient, which is a list of color
   /// stops.
@@ -3873,7 +3854,7 @@ class Recolor {
   /// The colors in the gradient will replace the corresponding colors at the
   /// same position in the color palette and apply to the image. This property
   /// is read-only.
-  core.List<ColorStop> recolorStops;
+  core.List<ColorStop>? recolorStops;
 
   Recolor();
 
@@ -3889,10 +3870,10 @@ class Recolor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
         if (recolorStops != null)
-          'recolorStops': recolorStops.map((value) => value.toJson()).toList(),
+          'recolorStops': recolorStops!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3903,7 +3884,7 @@ class Recolor {
 /// spreadsheets, drive.readonly, or drive OAuth scopes.
 class RefreshSheetsChartRequest {
   /// The object ID of the chart to refresh.
-  core.String objectId;
+  core.String? objectId;
 
   RefreshSheetsChartRequest();
 
@@ -3913,8 +3894,8 @@ class RefreshSheetsChartRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
@@ -3925,7 +3906,7 @@ class RefreshSheetsChartRequest {
 class ReplaceAllShapesWithImageRequest {
   /// If set, this request will replace all of the shapes that contain the given
   /// text.
-  SubstringMatchCriteria containsText;
+  SubstringMatchCriteria? containsText;
 
   /// The image replace method.
   ///
@@ -3944,7 +3925,7 @@ class ReplaceAllShapesWithImageRequest {
   /// - "CENTER_CROP" : Scales and centers the image to fill the bounds of the
   /// original shape. The image may be cropped in order to fill the shape. The
   /// rendered size of the image will be the same as that of the original shape.
-  core.String imageReplaceMethod;
+  core.String? imageReplaceMethod;
 
   /// The image URL.
   ///
@@ -3953,14 +3934,14 @@ class ReplaceAllShapesWithImageRequest {
   /// cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
   /// format. The provided URL can be at most 2 kB in length. The URL itself is
   /// saved with the image, and exposed via the Image.source_url field.
-  core.String imageUrl;
+  core.String? imageUrl;
 
   /// If non-empty, limits the matches to page elements only on the given pages.
   ///
   /// Returns a 400 bad request error if given the page object ID of a notes
   /// page or a notes master, or if a page with that object ID doesn't exist in
   /// the presentation.
-  core.List<core.String> pageObjectIds;
+  core.List<core.String>? pageObjectIds;
 
   /// The replace method.
   ///
@@ -3975,7 +3956,7 @@ class ReplaceAllShapesWithImageRequest {
   /// - "CENTER_CROP" : Scales and centers the image to fill the bounds of the
   /// original shape. The image may be cropped in order to fill the shape. The
   /// rendered size of the image will be the same as that of the original shape.
-  core.String replaceMethod;
+  core.String? replaceMethod;
 
   ReplaceAllShapesWithImageRequest();
 
@@ -4000,20 +3981,20 @@ class ReplaceAllShapesWithImageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (containsText != null) 'containsText': containsText.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (containsText != null) 'containsText': containsText!.toJson(),
         if (imageReplaceMethod != null)
-          'imageReplaceMethod': imageReplaceMethod,
-        if (imageUrl != null) 'imageUrl': imageUrl,
-        if (pageObjectIds != null) 'pageObjectIds': pageObjectIds,
-        if (replaceMethod != null) 'replaceMethod': replaceMethod,
+          'imageReplaceMethod': imageReplaceMethod!,
+        if (imageUrl != null) 'imageUrl': imageUrl!,
+        if (pageObjectIds != null) 'pageObjectIds': pageObjectIds!,
+        if (replaceMethod != null) 'replaceMethod': replaceMethod!,
       };
 }
 
 /// The result of replacing shapes with an image.
 class ReplaceAllShapesWithImageResponse {
   /// The number of shapes replaced with images.
-  core.int occurrencesChanged;
+  core.int? occurrencesChanged;
 
   ReplaceAllShapesWithImageResponse();
 
@@ -4023,9 +4004,9 @@ class ReplaceAllShapesWithImageResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (occurrencesChanged != null)
-          'occurrencesChanged': occurrencesChanged,
+          'occurrencesChanged': occurrencesChanged!,
       };
 }
 
@@ -4038,12 +4019,12 @@ class ReplaceAllShapesWithImageResponse {
 /// scopes.
 class ReplaceAllShapesWithSheetsChartRequest {
   /// The ID of the specific chart in the Google Sheets spreadsheet.
-  core.int chartId;
+  core.int? chartId;
 
   /// The criteria that the shapes must match in order to be replaced.
   ///
   /// The request will replace all of the shapes that contain the given text.
-  SubstringMatchCriteria containsText;
+  SubstringMatchCriteria? containsText;
 
   /// The mode with which the chart is linked to the source spreadsheet.
   ///
@@ -4054,17 +4035,17 @@ class ReplaceAllShapesWithSheetsChartRequest {
   /// inserted as an image.
   /// - "LINKED" : Linking the chart allows it to be updated, and other
   /// collaborators will see a link to the spreadsheet.
-  core.String linkingMode;
+  core.String? linkingMode;
 
   /// If non-empty, limits the matches to page elements only on the given pages.
   ///
   /// Returns a 400 bad request error if given the page object ID of a notes
   /// page or a notes master, or if a page with that object ID doesn't exist in
   /// the presentation.
-  core.List<core.String> pageObjectIds;
+  core.List<core.String>? pageObjectIds;
 
   /// The ID of the Google Sheets spreadsheet that contains the chart.
-  core.String spreadsheetId;
+  core.String? spreadsheetId;
 
   ReplaceAllShapesWithSheetsChartRequest();
 
@@ -4089,19 +4070,19 @@ class ReplaceAllShapesWithSheetsChartRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (chartId != null) 'chartId': chartId,
-        if (containsText != null) 'containsText': containsText.toJson(),
-        if (linkingMode != null) 'linkingMode': linkingMode,
-        if (pageObjectIds != null) 'pageObjectIds': pageObjectIds,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (chartId != null) 'chartId': chartId!,
+        if (containsText != null) 'containsText': containsText!.toJson(),
+        if (linkingMode != null) 'linkingMode': linkingMode!,
+        if (pageObjectIds != null) 'pageObjectIds': pageObjectIds!,
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
       };
 }
 
 /// The result of replacing shapes with a Google Sheets chart.
 class ReplaceAllShapesWithSheetsChartResponse {
   /// The number of shapes replaced with charts.
-  core.int occurrencesChanged;
+  core.int? occurrencesChanged;
 
   ReplaceAllShapesWithSheetsChartResponse();
 
@@ -4111,26 +4092,26 @@ class ReplaceAllShapesWithSheetsChartResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (occurrencesChanged != null)
-          'occurrencesChanged': occurrencesChanged,
+          'occurrencesChanged': occurrencesChanged!,
       };
 }
 
 /// Replaces all instances of text matching a criteria with replace text.
 class ReplaceAllTextRequest {
   /// Finds text in a shape matching this substring.
-  SubstringMatchCriteria containsText;
+  SubstringMatchCriteria? containsText;
 
   /// If non-empty, limits the matches to page elements only on the given pages.
   ///
   /// Returns a 400 bad request error if given the page object ID of a notes
   /// master, or if a page with that object ID doesn't exist in the
   /// presentation.
-  core.List<core.String> pageObjectIds;
+  core.List<core.String>? pageObjectIds;
 
   /// The text that will replace the matched text.
-  core.String replaceText;
+  core.String? replaceText;
 
   ReplaceAllTextRequest();
 
@@ -4149,17 +4130,17 @@ class ReplaceAllTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (containsText != null) 'containsText': containsText.toJson(),
-        if (pageObjectIds != null) 'pageObjectIds': pageObjectIds,
-        if (replaceText != null) 'replaceText': replaceText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (containsText != null) 'containsText': containsText!.toJson(),
+        if (pageObjectIds != null) 'pageObjectIds': pageObjectIds!,
+        if (replaceText != null) 'replaceText': replaceText!,
       };
 }
 
 /// The result of replacing text.
 class ReplaceAllTextResponse {
   /// The number of occurrences changed by replacing all text.
-  core.int occurrencesChanged;
+  core.int? occurrencesChanged;
 
   ReplaceAllTextResponse();
 
@@ -4169,9 +4150,9 @@ class ReplaceAllTextResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (occurrencesChanged != null)
-          'occurrencesChanged': occurrencesChanged,
+          'occurrencesChanged': occurrencesChanged!,
       };
 }
 
@@ -4180,7 +4161,7 @@ class ReplaceAllTextResponse {
 /// Replacing an image removes some image effects from the existing image.
 class ReplaceImageRequest {
   /// The ID of the existing image that will be replaced.
-  core.String imageObjectId;
+  core.String? imageObjectId;
 
   /// The replacement method.
   /// Possible string values are:
@@ -4193,7 +4174,7 @@ class ReplaceImageRequest {
   /// - "CENTER_CROP" : Scales and centers the image to fill the bounds of the
   /// original shape. The image may be cropped in order to fill the shape. The
   /// rendered size of the image will be the same as that of the original shape.
-  core.String imageReplaceMethod;
+  core.String? imageReplaceMethod;
 
   /// The image URL.
   ///
@@ -4202,7 +4183,7 @@ class ReplaceImageRequest {
   /// cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
   /// format. The provided URL can be at most 2 kB in length. The URL itself is
   /// saved with the image, and exposed via the Image.source_url field.
-  core.String url;
+  core.String? url;
 
   ReplaceImageRequest();
 
@@ -4218,145 +4199,145 @@ class ReplaceImageRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageObjectId != null) 'imageObjectId': imageObjectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageObjectId != null) 'imageObjectId': imageObjectId!,
         if (imageReplaceMethod != null)
-          'imageReplaceMethod': imageReplaceMethod,
-        if (url != null) 'url': url,
+          'imageReplaceMethod': imageReplaceMethod!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// A single kind of update to apply to a presentation.
 class Request {
   /// Creates an image.
-  CreateImageRequest createImage;
+  CreateImageRequest? createImage;
 
   /// Creates a line.
-  CreateLineRequest createLine;
+  CreateLineRequest? createLine;
 
   /// Creates bullets for paragraphs.
-  CreateParagraphBulletsRequest createParagraphBullets;
+  CreateParagraphBulletsRequest? createParagraphBullets;
 
   /// Creates a new shape.
-  CreateShapeRequest createShape;
+  CreateShapeRequest? createShape;
 
   /// Creates an embedded Google Sheets chart.
-  CreateSheetsChartRequest createSheetsChart;
+  CreateSheetsChartRequest? createSheetsChart;
 
   /// Creates a new slide.
-  CreateSlideRequest createSlide;
+  CreateSlideRequest? createSlide;
 
   /// Creates a new table.
-  CreateTableRequest createTable;
+  CreateTableRequest? createTable;
 
   /// Creates a video.
-  CreateVideoRequest createVideo;
+  CreateVideoRequest? createVideo;
 
   /// Deletes a page or page element from the presentation.
-  DeleteObjectRequest deleteObject;
+  DeleteObjectRequest? deleteObject;
 
   /// Deletes bullets from paragraphs.
-  DeleteParagraphBulletsRequest deleteParagraphBullets;
+  DeleteParagraphBulletsRequest? deleteParagraphBullets;
 
   /// Deletes a column from a table.
-  DeleteTableColumnRequest deleteTableColumn;
+  DeleteTableColumnRequest? deleteTableColumn;
 
   /// Deletes a row from a table.
-  DeleteTableRowRequest deleteTableRow;
+  DeleteTableRowRequest? deleteTableRow;
 
   /// Deletes text from a shape or a table cell.
-  DeleteTextRequest deleteText;
+  DeleteTextRequest? deleteText;
 
   /// Duplicates a slide or page element.
-  DuplicateObjectRequest duplicateObject;
+  DuplicateObjectRequest? duplicateObject;
 
   /// Groups objects, such as page elements.
-  GroupObjectsRequest groupObjects;
+  GroupObjectsRequest? groupObjects;
 
   /// Inserts columns into a table.
-  InsertTableColumnsRequest insertTableColumns;
+  InsertTableColumnsRequest? insertTableColumns;
 
   /// Inserts rows into a table.
-  InsertTableRowsRequest insertTableRows;
+  InsertTableRowsRequest? insertTableRows;
 
   /// Inserts text into a shape or table cell.
-  InsertTextRequest insertText;
+  InsertTextRequest? insertText;
 
   /// Merges cells in a Table.
-  MergeTableCellsRequest mergeTableCells;
+  MergeTableCellsRequest? mergeTableCells;
 
   /// Refreshes a Google Sheets chart.
-  RefreshSheetsChartRequest refreshSheetsChart;
+  RefreshSheetsChartRequest? refreshSheetsChart;
 
   /// Replaces all shapes matching some criteria with an image.
-  ReplaceAllShapesWithImageRequest replaceAllShapesWithImage;
+  ReplaceAllShapesWithImageRequest? replaceAllShapesWithImage;
 
   /// Replaces all shapes matching some criteria with a Google Sheets chart.
-  ReplaceAllShapesWithSheetsChartRequest replaceAllShapesWithSheetsChart;
+  ReplaceAllShapesWithSheetsChartRequest? replaceAllShapesWithSheetsChart;
 
   /// Replaces all instances of specified text.
-  ReplaceAllTextRequest replaceAllText;
+  ReplaceAllTextRequest? replaceAllText;
 
   /// Replaces an existing image with a new image.
-  ReplaceImageRequest replaceImage;
+  ReplaceImageRequest? replaceImage;
 
   /// Reroutes a line such that it's connected at the two closest connection
   /// sites on the connected page elements.
-  RerouteLineRequest rerouteLine;
+  RerouteLineRequest? rerouteLine;
 
   /// Ungroups objects, such as groups.
-  UngroupObjectsRequest ungroupObjects;
+  UngroupObjectsRequest? ungroupObjects;
 
   /// Unmerges cells in a Table.
-  UnmergeTableCellsRequest unmergeTableCells;
+  UnmergeTableCellsRequest? unmergeTableCells;
 
   /// Updates the properties of an Image.
-  UpdateImagePropertiesRequest updateImageProperties;
+  UpdateImagePropertiesRequest? updateImageProperties;
 
   /// Updates the category of a line.
-  UpdateLineCategoryRequest updateLineCategory;
+  UpdateLineCategoryRequest? updateLineCategory;
 
   /// Updates the properties of a Line.
-  UpdateLinePropertiesRequest updateLineProperties;
+  UpdateLinePropertiesRequest? updateLineProperties;
 
   /// Updates the alt text title and/or description of a page element.
-  UpdatePageElementAltTextRequest updatePageElementAltText;
+  UpdatePageElementAltTextRequest? updatePageElementAltText;
 
   /// Updates the transform of a page element.
-  UpdatePageElementTransformRequest updatePageElementTransform;
+  UpdatePageElementTransformRequest? updatePageElementTransform;
 
   /// Updates the Z-order of page elements.
-  UpdatePageElementsZOrderRequest updatePageElementsZOrder;
+  UpdatePageElementsZOrderRequest? updatePageElementsZOrder;
 
   /// Updates the properties of a Page.
-  UpdatePagePropertiesRequest updatePageProperties;
+  UpdatePagePropertiesRequest? updatePageProperties;
 
   /// Updates the styling of paragraphs within a Shape or Table.
-  UpdateParagraphStyleRequest updateParagraphStyle;
+  UpdateParagraphStyleRequest? updateParagraphStyle;
 
   /// Updates the properties of a Shape.
-  UpdateShapePropertiesRequest updateShapeProperties;
+  UpdateShapePropertiesRequest? updateShapeProperties;
 
   /// Updates the position of a set of slides in the presentation.
-  UpdateSlidesPositionRequest updateSlidesPosition;
+  UpdateSlidesPositionRequest? updateSlidesPosition;
 
   /// Updates the properties of the table borders in a Table.
-  UpdateTableBorderPropertiesRequest updateTableBorderProperties;
+  UpdateTableBorderPropertiesRequest? updateTableBorderProperties;
 
   /// Updates the properties of a TableCell.
-  UpdateTableCellPropertiesRequest updateTableCellProperties;
+  UpdateTableCellPropertiesRequest? updateTableCellProperties;
 
   /// Updates the properties of a Table column.
-  UpdateTableColumnPropertiesRequest updateTableColumnProperties;
+  UpdateTableColumnPropertiesRequest? updateTableColumnProperties;
 
   /// Updates the properties of a Table row.
-  UpdateTableRowPropertiesRequest updateTableRowProperties;
+  UpdateTableRowPropertiesRequest? updateTableRowProperties;
 
   /// Updates the styling of text within a Shape or Table.
-  UpdateTextStyleRequest updateTextStyle;
+  UpdateTextStyleRequest? updateTextStyle;
 
   /// Updates the properties of a Video.
-  UpdateVideoPropertiesRequest updateVideoProperties;
+  UpdateVideoPropertiesRequest? updateVideoProperties;
 
   Request();
 
@@ -4550,79 +4531,79 @@ class Request {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createImage != null) 'createImage': createImage.toJson(),
-        if (createLine != null) 'createLine': createLine.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createImage != null) 'createImage': createImage!.toJson(),
+        if (createLine != null) 'createLine': createLine!.toJson(),
         if (createParagraphBullets != null)
-          'createParagraphBullets': createParagraphBullets.toJson(),
-        if (createShape != null) 'createShape': createShape.toJson(),
+          'createParagraphBullets': createParagraphBullets!.toJson(),
+        if (createShape != null) 'createShape': createShape!.toJson(),
         if (createSheetsChart != null)
-          'createSheetsChart': createSheetsChart.toJson(),
-        if (createSlide != null) 'createSlide': createSlide.toJson(),
-        if (createTable != null) 'createTable': createTable.toJson(),
-        if (createVideo != null) 'createVideo': createVideo.toJson(),
-        if (deleteObject != null) 'deleteObject': deleteObject.toJson(),
+          'createSheetsChart': createSheetsChart!.toJson(),
+        if (createSlide != null) 'createSlide': createSlide!.toJson(),
+        if (createTable != null) 'createTable': createTable!.toJson(),
+        if (createVideo != null) 'createVideo': createVideo!.toJson(),
+        if (deleteObject != null) 'deleteObject': deleteObject!.toJson(),
         if (deleteParagraphBullets != null)
-          'deleteParagraphBullets': deleteParagraphBullets.toJson(),
+          'deleteParagraphBullets': deleteParagraphBullets!.toJson(),
         if (deleteTableColumn != null)
-          'deleteTableColumn': deleteTableColumn.toJson(),
-        if (deleteTableRow != null) 'deleteTableRow': deleteTableRow.toJson(),
-        if (deleteText != null) 'deleteText': deleteText.toJson(),
+          'deleteTableColumn': deleteTableColumn!.toJson(),
+        if (deleteTableRow != null) 'deleteTableRow': deleteTableRow!.toJson(),
+        if (deleteText != null) 'deleteText': deleteText!.toJson(),
         if (duplicateObject != null)
-          'duplicateObject': duplicateObject.toJson(),
-        if (groupObjects != null) 'groupObjects': groupObjects.toJson(),
+          'duplicateObject': duplicateObject!.toJson(),
+        if (groupObjects != null) 'groupObjects': groupObjects!.toJson(),
         if (insertTableColumns != null)
-          'insertTableColumns': insertTableColumns.toJson(),
+          'insertTableColumns': insertTableColumns!.toJson(),
         if (insertTableRows != null)
-          'insertTableRows': insertTableRows.toJson(),
-        if (insertText != null) 'insertText': insertText.toJson(),
+          'insertTableRows': insertTableRows!.toJson(),
+        if (insertText != null) 'insertText': insertText!.toJson(),
         if (mergeTableCells != null)
-          'mergeTableCells': mergeTableCells.toJson(),
+          'mergeTableCells': mergeTableCells!.toJson(),
         if (refreshSheetsChart != null)
-          'refreshSheetsChart': refreshSheetsChart.toJson(),
+          'refreshSheetsChart': refreshSheetsChart!.toJson(),
         if (replaceAllShapesWithImage != null)
-          'replaceAllShapesWithImage': replaceAllShapesWithImage.toJson(),
+          'replaceAllShapesWithImage': replaceAllShapesWithImage!.toJson(),
         if (replaceAllShapesWithSheetsChart != null)
           'replaceAllShapesWithSheetsChart':
-              replaceAllShapesWithSheetsChart.toJson(),
-        if (replaceAllText != null) 'replaceAllText': replaceAllText.toJson(),
-        if (replaceImage != null) 'replaceImage': replaceImage.toJson(),
-        if (rerouteLine != null) 'rerouteLine': rerouteLine.toJson(),
-        if (ungroupObjects != null) 'ungroupObjects': ungroupObjects.toJson(),
+              replaceAllShapesWithSheetsChart!.toJson(),
+        if (replaceAllText != null) 'replaceAllText': replaceAllText!.toJson(),
+        if (replaceImage != null) 'replaceImage': replaceImage!.toJson(),
+        if (rerouteLine != null) 'rerouteLine': rerouteLine!.toJson(),
+        if (ungroupObjects != null) 'ungroupObjects': ungroupObjects!.toJson(),
         if (unmergeTableCells != null)
-          'unmergeTableCells': unmergeTableCells.toJson(),
+          'unmergeTableCells': unmergeTableCells!.toJson(),
         if (updateImageProperties != null)
-          'updateImageProperties': updateImageProperties.toJson(),
+          'updateImageProperties': updateImageProperties!.toJson(),
         if (updateLineCategory != null)
-          'updateLineCategory': updateLineCategory.toJson(),
+          'updateLineCategory': updateLineCategory!.toJson(),
         if (updateLineProperties != null)
-          'updateLineProperties': updateLineProperties.toJson(),
+          'updateLineProperties': updateLineProperties!.toJson(),
         if (updatePageElementAltText != null)
-          'updatePageElementAltText': updatePageElementAltText.toJson(),
+          'updatePageElementAltText': updatePageElementAltText!.toJson(),
         if (updatePageElementTransform != null)
-          'updatePageElementTransform': updatePageElementTransform.toJson(),
+          'updatePageElementTransform': updatePageElementTransform!.toJson(),
         if (updatePageElementsZOrder != null)
-          'updatePageElementsZOrder': updatePageElementsZOrder.toJson(),
+          'updatePageElementsZOrder': updatePageElementsZOrder!.toJson(),
         if (updatePageProperties != null)
-          'updatePageProperties': updatePageProperties.toJson(),
+          'updatePageProperties': updatePageProperties!.toJson(),
         if (updateParagraphStyle != null)
-          'updateParagraphStyle': updateParagraphStyle.toJson(),
+          'updateParagraphStyle': updateParagraphStyle!.toJson(),
         if (updateShapeProperties != null)
-          'updateShapeProperties': updateShapeProperties.toJson(),
+          'updateShapeProperties': updateShapeProperties!.toJson(),
         if (updateSlidesPosition != null)
-          'updateSlidesPosition': updateSlidesPosition.toJson(),
+          'updateSlidesPosition': updateSlidesPosition!.toJson(),
         if (updateTableBorderProperties != null)
-          'updateTableBorderProperties': updateTableBorderProperties.toJson(),
+          'updateTableBorderProperties': updateTableBorderProperties!.toJson(),
         if (updateTableCellProperties != null)
-          'updateTableCellProperties': updateTableCellProperties.toJson(),
+          'updateTableCellProperties': updateTableCellProperties!.toJson(),
         if (updateTableColumnProperties != null)
-          'updateTableColumnProperties': updateTableColumnProperties.toJson(),
+          'updateTableColumnProperties': updateTableColumnProperties!.toJson(),
         if (updateTableRowProperties != null)
-          'updateTableRowProperties': updateTableRowProperties.toJson(),
+          'updateTableRowProperties': updateTableRowProperties!.toJson(),
         if (updateTextStyle != null)
-          'updateTextStyle': updateTextStyle.toJson(),
+          'updateTextStyle': updateTextStyle!.toJson(),
         if (updateVideoProperties != null)
-          'updateVideoProperties': updateVideoProperties.toJson(),
+          'updateVideoProperties': updateVideoProperties!.toJson(),
       };
 }
 
@@ -4634,7 +4615,7 @@ class RerouteLineRequest {
   /// Only a line with a category indicating it is a "connector" can be
   /// rerouted. The start and end connections of the line must be on different
   /// page elements.
-  core.String objectId;
+  core.String? objectId;
 
   RerouteLineRequest();
 
@@ -4644,49 +4625,49 @@ class RerouteLineRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
 /// A single response from an update.
 class Response {
   /// The result of creating an image.
-  CreateImageResponse createImage;
+  CreateImageResponse? createImage;
 
   /// The result of creating a line.
-  CreateLineResponse createLine;
+  CreateLineResponse? createLine;
 
   /// The result of creating a shape.
-  CreateShapeResponse createShape;
+  CreateShapeResponse? createShape;
 
   /// The result of creating a Google Sheets chart.
-  CreateSheetsChartResponse createSheetsChart;
+  CreateSheetsChartResponse? createSheetsChart;
 
   /// The result of creating a slide.
-  CreateSlideResponse createSlide;
+  CreateSlideResponse? createSlide;
 
   /// The result of creating a table.
-  CreateTableResponse createTable;
+  CreateTableResponse? createTable;
 
   /// The result of creating a video.
-  CreateVideoResponse createVideo;
+  CreateVideoResponse? createVideo;
 
   /// The result of duplicating an object.
-  DuplicateObjectResponse duplicateObject;
+  DuplicateObjectResponse? duplicateObject;
 
   /// The result of grouping objects.
-  GroupObjectsResponse groupObjects;
+  GroupObjectsResponse? groupObjects;
 
   /// The result of replacing all shapes matching some criteria with an image.
-  ReplaceAllShapesWithImageResponse replaceAllShapesWithImage;
+  ReplaceAllShapesWithImageResponse? replaceAllShapesWithImage;
 
   /// The result of replacing all shapes matching some criteria with a Google
   /// Sheets chart.
-  ReplaceAllShapesWithSheetsChartResponse replaceAllShapesWithSheetsChart;
+  ReplaceAllShapesWithSheetsChartResponse? replaceAllShapesWithSheetsChart;
 
   /// The result of replacing text.
-  ReplaceAllTextResponse replaceAllText;
+  ReplaceAllTextResponse? replaceAllText;
 
   Response();
 
@@ -4744,37 +4725,37 @@ class Response {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createImage != null) 'createImage': createImage.toJson(),
-        if (createLine != null) 'createLine': createLine.toJson(),
-        if (createShape != null) 'createShape': createShape.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createImage != null) 'createImage': createImage!.toJson(),
+        if (createLine != null) 'createLine': createLine!.toJson(),
+        if (createShape != null) 'createShape': createShape!.toJson(),
         if (createSheetsChart != null)
-          'createSheetsChart': createSheetsChart.toJson(),
-        if (createSlide != null) 'createSlide': createSlide.toJson(),
-        if (createTable != null) 'createTable': createTable.toJson(),
-        if (createVideo != null) 'createVideo': createVideo.toJson(),
+          'createSheetsChart': createSheetsChart!.toJson(),
+        if (createSlide != null) 'createSlide': createSlide!.toJson(),
+        if (createTable != null) 'createTable': createTable!.toJson(),
+        if (createVideo != null) 'createVideo': createVideo!.toJson(),
         if (duplicateObject != null)
-          'duplicateObject': duplicateObject.toJson(),
-        if (groupObjects != null) 'groupObjects': groupObjects.toJson(),
+          'duplicateObject': duplicateObject!.toJson(),
+        if (groupObjects != null) 'groupObjects': groupObjects!.toJson(),
         if (replaceAllShapesWithImage != null)
-          'replaceAllShapesWithImage': replaceAllShapesWithImage.toJson(),
+          'replaceAllShapesWithImage': replaceAllShapesWithImage!.toJson(),
         if (replaceAllShapesWithSheetsChart != null)
           'replaceAllShapesWithSheetsChart':
-              replaceAllShapesWithSheetsChart.toJson(),
-        if (replaceAllText != null) 'replaceAllText': replaceAllText.toJson(),
+              replaceAllShapesWithSheetsChart!.toJson(),
+        if (replaceAllText != null) 'replaceAllText': replaceAllText!.toJson(),
       };
 }
 
 /// An RGB color.
 class RgbColor {
   /// The blue component of the color, from 0.0 to 1.0.
-  core.double blue;
+  core.double? blue;
 
   /// The green component of the color, from 0.0 to 1.0.
-  core.double green;
+  core.double? green;
 
   /// The red component of the color, from 0.0 to 1.0.
-  core.double red;
+  core.double? red;
 
   RgbColor();
 
@@ -4790,10 +4771,10 @@ class RgbColor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (blue != null) 'blue': blue,
-        if (green != null) 'green': green,
-        if (red != null) 'red': red,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (blue != null) 'blue': blue!,
+        if (green != null) 'green': green!,
+        if (red != null) 'red': red!,
       };
 }
 
@@ -4819,18 +4800,18 @@ class Shadow {
   /// - "BOTTOM_LEFT" : Bottom left.
   /// - "BOTTOM_CENTER" : Bottom center.
   /// - "BOTTOM_RIGHT" : Bottom right.
-  core.String alignment;
+  core.String? alignment;
 
   /// The alpha of the shadow's color, from 0.0 to 1.0.
-  core.double alpha;
+  core.double? alpha;
 
   /// The radius of the shadow blur.
   ///
   /// The larger the radius, the more diffuse the shadow becomes.
-  Dimension blurRadius;
+  Dimension? blurRadius;
 
   /// The shadow color value.
-  OpaqueColor color;
+  OpaqueColor? color;
 
   /// The shadow property state.
   ///
@@ -4855,16 +4836,16 @@ class Shadow {
   /// uses the value of corresponding `property_state` field on the parent
   /// shape. Elements that do not inherit will never have an INHERIT property
   /// state.
-  core.String propertyState;
+  core.String? propertyState;
 
   /// Whether the shadow should rotate with the shape.
   ///
   /// This property is read-only.
-  core.bool rotateWithShape;
+  core.bool? rotateWithShape;
 
   /// Transform that encodes the translate, scale, and skew of the shadow,
   /// relative to the alignment position.
-  AffineTransform transform;
+  AffineTransform? transform;
 
   /// The type of the shadow.
   ///
@@ -4872,7 +4853,7 @@ class Shadow {
   /// Possible string values are:
   /// - "SHADOW_TYPE_UNSPECIFIED" : Unspecified shadow type.
   /// - "OUTER" : Outer shadow.
-  core.String type;
+  core.String? type;
 
   Shadow();
 
@@ -4906,15 +4887,15 @@ class Shadow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alignment != null) 'alignment': alignment,
-        if (alpha != null) 'alpha': alpha,
-        if (blurRadius != null) 'blurRadius': blurRadius.toJson(),
-        if (color != null) 'color': color.toJson(),
-        if (propertyState != null) 'propertyState': propertyState,
-        if (rotateWithShape != null) 'rotateWithShape': rotateWithShape,
-        if (transform != null) 'transform': transform.toJson(),
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alignment != null) 'alignment': alignment!,
+        if (alpha != null) 'alpha': alpha!,
+        if (blurRadius != null) 'blurRadius': blurRadius!.toJson(),
+        if (color != null) 'color': color!.toJson(),
+        if (propertyState != null) 'propertyState': propertyState!,
+        if (rotateWithShape != null) 'rotateWithShape': rotateWithShape!,
+        if (transform != null) 'transform': transform!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4927,10 +4908,10 @@ class Shape {
   /// If set, the shape is a placeholder shape and any inherited properties can
   /// be resolved by looking at the parent placeholder identified by the
   /// Placeholder.parent_object_id field.
-  Placeholder placeholder;
+  Placeholder? placeholder;
 
   /// The properties of the shape.
-  ShapeProperties shapeProperties;
+  ShapeProperties? shapeProperties;
 
   /// The type of the shape.
   /// Possible string values are:
@@ -5195,10 +5176,10 @@ class Shape {
   /// - "CLOUD_CALLOUT" : Callout cloud shape. Corresponds to ECMA-376
   /// ST_ShapeType 'cloudCallout'
   /// - "CUSTOM" : Custom shape.
-  core.String shapeType;
+  core.String? shapeType;
 
   /// The text content of the shape.
-  TextContent text;
+  TextContent? text;
 
   Shape();
 
@@ -5220,12 +5201,12 @@ class Shape {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (placeholder != null) 'placeholder': placeholder.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (placeholder != null) 'placeholder': placeholder!.toJson(),
         if (shapeProperties != null)
-          'shapeProperties': shapeProperties.toJson(),
-        if (shapeType != null) 'shapeType': shapeType,
-        if (text != null) 'text': text.toJson(),
+          'shapeProperties': shapeProperties!.toJson(),
+        if (shapeType != null) 'shapeType': shapeType!,
+        if (text != null) 'text': text!.toJson(),
       };
 }
 
@@ -5254,10 +5235,10 @@ class ShapeBackgroundFill {
   /// uses the value of corresponding `property_state` field on the parent
   /// shape. Elements that do not inherit will never have an INHERIT property
   /// state.
-  core.String propertyState;
+  core.String? propertyState;
 
   /// Solid color fill.
-  SolidFill solidFill;
+  SolidFill? solidFill;
 
   ShapeBackgroundFill();
 
@@ -5271,9 +5252,9 @@ class ShapeBackgroundFill {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (propertyState != null) 'propertyState': propertyState,
-        if (solidFill != null) 'solidFill': solidFill.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (propertyState != null) 'propertyState': propertyState!,
+        if (solidFill != null) 'solidFill': solidFill!.toJson(),
       };
 }
 
@@ -5289,7 +5270,7 @@ class ShapeProperties {
   /// The autofit properties of the shape.
   ///
   /// This property is only set for shapes that allow text.
-  Autofit autofit;
+  Autofit? autofit;
 
   /// The alignment of the content in the shape.
   ///
@@ -5306,27 +5287,27 @@ class ShapeProperties {
   /// content holder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'.
   /// - "BOTTOM" : An alignment that aligns the content to the bottom of the
   /// content holder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'.
-  core.String contentAlignment;
+  core.String? contentAlignment;
 
   /// The hyperlink destination of the shape.
   ///
   /// If unset, there is no link. Links are not inherited from parent
   /// placeholders.
-  Link link;
+  Link? link;
 
   /// The outline of the shape.
   ///
   /// If unset, the outline is inherited from a parent placeholder if it exists.
   /// If the shape has no parent, then the default outline depends on the shape
   /// type, matching the defaults for new shapes created in the Slides editor.
-  Outline outline;
+  Outline? outline;
 
   /// The shadow properties of the shape.
   ///
   /// If unset, the shadow is inherited from a parent placeholder if it exists.
   /// If the shape has no parent, then the default shadow matches the defaults
   /// for new shapes created in the Slides editor. This property is read-only.
-  Shadow shadow;
+  Shadow? shadow;
 
   /// The background fill of the shape.
   ///
@@ -5334,7 +5315,7 @@ class ShapeProperties {
   /// exists. If the shape has no parent, then the default background fill
   /// depends on the shape type, matching the defaults for new shapes created in
   /// the Slides editor.
-  ShapeBackgroundFill shapeBackgroundFill;
+  ShapeBackgroundFill? shapeBackgroundFill;
 
   ShapeProperties();
 
@@ -5364,14 +5345,14 @@ class ShapeProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (autofit != null) 'autofit': autofit.toJson(),
-        if (contentAlignment != null) 'contentAlignment': contentAlignment,
-        if (link != null) 'link': link.toJson(),
-        if (outline != null) 'outline': outline.toJson(),
-        if (shadow != null) 'shadow': shadow.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (autofit != null) 'autofit': autofit!.toJson(),
+        if (contentAlignment != null) 'contentAlignment': contentAlignment!,
+        if (link != null) 'link': link!.toJson(),
+        if (outline != null) 'outline': outline!.toJson(),
+        if (shadow != null) 'shadow': shadow!.toJson(),
         if (shapeBackgroundFill != null)
-          'shapeBackgroundFill': shapeBackgroundFill.toJson(),
+          'shapeBackgroundFill': shapeBackgroundFill!.toJson(),
       };
 }
 
@@ -5379,7 +5360,7 @@ class ShapeProperties {
 class SheetsChart {
   /// The ID of the specific chart in the Google Sheets spreadsheet that is
   /// embedded.
-  core.int chartId;
+  core.int? chartId;
 
   /// The URL of an image of the embedded chart, with a default lifetime of 30
   /// minutes.
@@ -5387,13 +5368,13 @@ class SheetsChart {
   /// This URL is tagged with the account of the requester. Anyone with the URL
   /// effectively accesses the image as the original requester. Access to the
   /// image may be lost if the presentation's sharing settings change.
-  core.String contentUrl;
+  core.String? contentUrl;
 
   /// The properties of the Sheets chart.
-  SheetsChartProperties sheetsChartProperties;
+  SheetsChartProperties? sheetsChartProperties;
 
   /// The ID of the Google Sheets spreadsheet that contains the source chart.
-  core.String spreadsheetId;
+  core.String? spreadsheetId;
 
   SheetsChart();
 
@@ -5414,19 +5395,19 @@ class SheetsChart {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (chartId != null) 'chartId': chartId,
-        if (contentUrl != null) 'contentUrl': contentUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (chartId != null) 'chartId': chartId!,
+        if (contentUrl != null) 'contentUrl': contentUrl!,
         if (sheetsChartProperties != null)
-          'sheetsChartProperties': sheetsChartProperties.toJson(),
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId,
+          'sheetsChartProperties': sheetsChartProperties!.toJson(),
+        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
       };
 }
 
 /// The properties of the SheetsChart.
 class SheetsChartProperties {
   /// The properties of the embedded chart image.
-  ImageProperties chartImageProperties;
+  ImageProperties? chartImageProperties;
 
   SheetsChartProperties();
 
@@ -5437,19 +5418,19 @@ class SheetsChartProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (chartImageProperties != null)
-          'chartImageProperties': chartImageProperties.toJson(),
+          'chartImageProperties': chartImageProperties!.toJson(),
       };
 }
 
 /// A width and height.
 class Size {
   /// The height of the object.
-  Dimension height;
+  Dimension? height;
 
   /// The width of the object.
-  Dimension width;
+  Dimension? width;
 
   Size();
 
@@ -5464,9 +5445,9 @@ class Size {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height.toJson(),
-        if (width != null) 'width': width.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!.toJson(),
+        if (width != null) 'width': width!.toJson(),
       };
 }
 
@@ -5476,12 +5457,12 @@ class SlideProperties {
   /// The object ID of the layout that this slide is based on.
   ///
   /// This property is read-only.
-  core.String layoutObjectId;
+  core.String? layoutObjectId;
 
   /// The object ID of the master that this slide is based on.
   ///
   /// This property is read-only.
-  core.String masterObjectId;
+  core.String? masterObjectId;
 
   /// The notes page that this slide is associated with.
   ///
@@ -5492,7 +5473,7 @@ class SlideProperties {
   /// identified by the speakerNotesObjectId field. The notes page is read-only
   /// except for the text content and styles of the speaker notes shape. This
   /// property is read-only.
-  Page notesPage;
+  Page? notesPage;
 
   SlideProperties();
 
@@ -5509,10 +5490,10 @@ class SlideProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (layoutObjectId != null) 'layoutObjectId': layoutObjectId,
-        if (masterObjectId != null) 'masterObjectId': masterObjectId,
-        if (notesPage != null) 'notesPage': notesPage.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (layoutObjectId != null) 'layoutObjectId': layoutObjectId!,
+        if (masterObjectId != null) 'masterObjectId': masterObjectId!,
+        if (notesPage != null) 'notesPage': notesPage!.toJson(),
       };
 }
 
@@ -5528,10 +5509,10 @@ class SolidFill {
   /// alpha * (color) + (1.0 - alpha) * (background color) This means that a
   /// value of 1.0 corresponds to a solid color, whereas a value of 0.0
   /// corresponds to a completely transparent color.
-  core.double alpha;
+  core.double? alpha;
 
   /// The color value of the solid fill.
-  OpaqueColor color;
+  OpaqueColor? color;
 
   SolidFill();
 
@@ -5545,9 +5526,9 @@ class SolidFill {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alpha != null) 'alpha': alpha,
-        if (color != null) 'color': color.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alpha != null) 'alpha': alpha!,
+        if (color != null) 'color': color!.toJson(),
       };
 }
 
@@ -5566,12 +5547,12 @@ class StretchedPictureFill {
   /// is stored for display inside the presentation. Pictures must be less than
   /// 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG,
   /// JPEG, or GIF format. The provided URL can be at most 2 kB in length.
-  core.String contentUrl;
+  core.String? contentUrl;
 
   /// The original size of the picture fill.
   ///
   /// This field is read-only.
-  Size size;
+  Size? size;
 
   StretchedPictureFill();
 
@@ -5585,9 +5566,9 @@ class StretchedPictureFill {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentUrl != null) 'contentUrl': contentUrl,
-        if (size != null) 'size': size.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentUrl != null) 'contentUrl': contentUrl!,
+        if (size != null) 'size': size!.toJson(),
       };
 }
 
@@ -5597,10 +5578,10 @@ class SubstringMatchCriteria {
   /// case sensitive.
   ///
   /// - `False`: the search is case insensitive.
-  core.bool matchCase;
+  core.bool? matchCase;
 
   /// The text to search for in the shape or table.
-  core.String text;
+  core.String? text;
 
   SubstringMatchCriteria();
 
@@ -5613,16 +5594,16 @@ class SubstringMatchCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (matchCase != null) 'matchCase': matchCase,
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (matchCase != null) 'matchCase': matchCase!,
+        if (text != null) 'text': text!,
       };
 }
 
 /// A PageElement kind representing a table.
 class Table {
   /// Number of columns in the table.
-  core.int columns;
+  core.int? columns;
 
   /// Properties of horizontal cell borders.
   ///
@@ -5630,19 +5611,19 @@ class Table {
   /// one more row than the number of rows in the table and the same number of
   /// columns as the table. For example, if the table is 3 x 3, its horizontal
   /// borders will be represented as a grid with 4 rows and 3 columns.
-  core.List<TableBorderRow> horizontalBorderRows;
+  core.List<TableBorderRow>? horizontalBorderRows;
 
   /// Number of rows in the table.
-  core.int rows;
+  core.int? rows;
 
   /// Properties of each column.
-  core.List<TableColumnProperties> tableColumns;
+  core.List<TableColumnProperties>? tableColumns;
 
   /// Properties and contents of each row.
   ///
   /// Cells that span multiple rows are contained in only one of these rows and
   /// have a row_span greater than 1.
-  core.List<TableRow> tableRows;
+  core.List<TableRow>? tableRows;
 
   /// Properties of vertical cell borders.
   ///
@@ -5650,7 +5631,7 @@ class Table {
   /// the same number of rows as the table and one more column than the number
   /// of columns in the table. For example, if the table is 3 x 3, its vertical
   /// borders will be represented as a grid with 3 rows and 4 columns.
-  core.List<TableBorderRow> verticalBorderRows;
+  core.List<TableBorderRow>? verticalBorderRows;
 
   Table();
 
@@ -5687,29 +5668,29 @@ class Table {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columns != null) 'columns': columns,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columns != null) 'columns': columns!,
         if (horizontalBorderRows != null)
           'horizontalBorderRows':
-              horizontalBorderRows.map((value) => value.toJson()).toList(),
-        if (rows != null) 'rows': rows,
+              horizontalBorderRows!.map((value) => value.toJson()).toList(),
+        if (rows != null) 'rows': rows!,
         if (tableColumns != null)
-          'tableColumns': tableColumns.map((value) => value.toJson()).toList(),
+          'tableColumns': tableColumns!.map((value) => value.toJson()).toList(),
         if (tableRows != null)
-          'tableRows': tableRows.map((value) => value.toJson()).toList(),
+          'tableRows': tableRows!.map((value) => value.toJson()).toList(),
         if (verticalBorderRows != null)
           'verticalBorderRows':
-              verticalBorderRows.map((value) => value.toJson()).toList(),
+              verticalBorderRows!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The properties of each border cell.
 class TableBorderCell {
   /// The location of the border within the border table.
-  TableCellLocation location;
+  TableCellLocation? location;
 
   /// The border properties.
-  TableBorderProperties tableBorderProperties;
+  TableBorderProperties? tableBorderProperties;
 
   TableBorderCell();
 
@@ -5725,17 +5706,17 @@ class TableBorderCell {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (location != null) 'location': location.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (location != null) 'location': location!.toJson(),
         if (tableBorderProperties != null)
-          'tableBorderProperties': tableBorderProperties.toJson(),
+          'tableBorderProperties': tableBorderProperties!.toJson(),
       };
 }
 
 /// The fill of the border.
 class TableBorderFill {
   /// Solid fill.
-  SolidFill solidFill;
+  SolidFill? solidFill;
 
   TableBorderFill();
 
@@ -5746,8 +5727,8 @@ class TableBorderFill {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (solidFill != null) 'solidFill': solidFill.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (solidFill != null) 'solidFill': solidFill!.toJson(),
       };
 }
 
@@ -5768,13 +5749,13 @@ class TableBorderProperties {
   /// ST_PresetLineDashVal value 'lgDash'.
   /// - "LONG_DASH_DOT" : Alternating large dashes and dots. Corresponds to
   /// ECMA-376 ST_PresetLineDashVal value 'lgDashDot'.
-  core.String dashStyle;
+  core.String? dashStyle;
 
   /// The fill of the table border.
-  TableBorderFill tableBorderFill;
+  TableBorderFill? tableBorderFill;
 
   /// The thickness of the border.
-  Dimension weight;
+  Dimension? weight;
 
   TableBorderProperties();
 
@@ -5792,11 +5773,11 @@ class TableBorderProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dashStyle != null) 'dashStyle': dashStyle,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dashStyle != null) 'dashStyle': dashStyle!,
         if (tableBorderFill != null)
-          'tableBorderFill': tableBorderFill.toJson(),
-        if (weight != null) 'weight': weight.toJson(),
+          'tableBorderFill': tableBorderFill!.toJson(),
+        if (weight != null) 'weight': weight!.toJson(),
       };
 }
 
@@ -5806,7 +5787,7 @@ class TableBorderRow {
   ///
   /// When a border's adjacent table cells are merged, it is not included in the
   /// response.
-  core.List<TableBorderCell> tableBorderCells;
+  core.List<TableBorderCell>? tableBorderCells;
 
   TableBorderRow();
 
@@ -5819,29 +5800,29 @@ class TableBorderRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (tableBorderCells != null)
           'tableBorderCells':
-              tableBorderCells.map((value) => value.toJson()).toList(),
+              tableBorderCells!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Properties and contents of each table cell.
 class TableCell {
   /// Column span of the cell.
-  core.int columnSpan;
+  core.int? columnSpan;
 
   /// The location of the cell within the table.
-  TableCellLocation location;
+  TableCellLocation? location;
 
   /// Row span of the cell.
-  core.int rowSpan;
+  core.int? rowSpan;
 
   /// The properties of the table cell.
-  TableCellProperties tableCellProperties;
+  TableCellProperties? tableCellProperties;
 
   /// The text content of the cell.
-  TextContent text;
+  TextContent? text;
 
   TableCell();
 
@@ -5866,13 +5847,13 @@ class TableCell {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnSpan != null) 'columnSpan': columnSpan,
-        if (location != null) 'location': location.toJson(),
-        if (rowSpan != null) 'rowSpan': rowSpan,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnSpan != null) 'columnSpan': columnSpan!,
+        if (location != null) 'location': location!.toJson(),
+        if (rowSpan != null) 'rowSpan': rowSpan!,
         if (tableCellProperties != null)
-          'tableCellProperties': tableCellProperties.toJson(),
-        if (text != null) 'text': text.toJson(),
+          'tableCellProperties': tableCellProperties!.toJson(),
+        if (text != null) 'text': text!.toJson(),
       };
 }
 
@@ -5901,10 +5882,10 @@ class TableCellBackgroundFill {
   /// uses the value of corresponding `property_state` field on the parent
   /// shape. Elements that do not inherit will never have an INHERIT property
   /// state.
-  core.String propertyState;
+  core.String? propertyState;
 
   /// Solid color fill.
-  SolidFill solidFill;
+  SolidFill? solidFill;
 
   TableCellBackgroundFill();
 
@@ -5918,19 +5899,19 @@ class TableCellBackgroundFill {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (propertyState != null) 'propertyState': propertyState,
-        if (solidFill != null) 'solidFill': solidFill.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (propertyState != null) 'propertyState': propertyState!,
+        if (solidFill != null) 'solidFill': solidFill!.toJson(),
       };
 }
 
 /// A location of a single table cell within a table.
 class TableCellLocation {
   /// The 0-based column index.
-  core.int columnIndex;
+  core.int? columnIndex;
 
   /// The 0-based row index.
-  core.int rowIndex;
+  core.int? rowIndex;
 
   TableCellLocation();
 
@@ -5943,9 +5924,9 @@ class TableCellLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnIndex != null) 'columnIndex': columnIndex,
-        if (rowIndex != null) 'rowIndex': rowIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnIndex != null) 'columnIndex': columnIndex!,
+        if (rowIndex != null) 'rowIndex': rowIndex!,
       };
 }
 
@@ -5965,13 +5946,13 @@ class TableCellProperties {
   /// content holder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'.
   /// - "BOTTOM" : An alignment that aligns the content to the bottom of the
   /// content holder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'.
-  core.String contentAlignment;
+  core.String? contentAlignment;
 
   /// The background fill of the table cell.
   ///
   /// The default fill matches the fill for newly created table cells in the
   /// Slides editor.
-  TableCellBackgroundFill tableCellBackgroundFill;
+  TableCellBackgroundFill? tableCellBackgroundFill;
 
   TableCellProperties();
 
@@ -5986,17 +5967,17 @@ class TableCellProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentAlignment != null) 'contentAlignment': contentAlignment,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentAlignment != null) 'contentAlignment': contentAlignment!,
         if (tableCellBackgroundFill != null)
-          'tableCellBackgroundFill': tableCellBackgroundFill.toJson(),
+          'tableCellBackgroundFill': tableCellBackgroundFill!.toJson(),
       };
 }
 
 /// Properties of each column in a table.
 class TableColumnProperties {
   /// Width of a column.
-  Dimension columnWidth;
+  Dimension? columnWidth;
 
   TableColumnProperties();
 
@@ -6007,8 +5988,8 @@ class TableColumnProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnWidth != null) 'columnWidth': columnWidth.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnWidth != null) 'columnWidth': columnWidth!.toJson(),
       };
 }
 
@@ -6021,13 +6002,13 @@ class TableColumnProperties {
 /// column span = 2 specifies the following cells: x x \[ x x x \]
 class TableRange {
   /// The column span of the table range.
-  core.int columnSpan;
+  core.int? columnSpan;
 
   /// The starting location of the table range.
-  TableCellLocation location;
+  TableCellLocation? location;
 
   /// The row span of the table range.
-  core.int rowSpan;
+  core.int? rowSpan;
 
   TableRange();
 
@@ -6044,27 +6025,27 @@ class TableRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnSpan != null) 'columnSpan': columnSpan,
-        if (location != null) 'location': location.toJson(),
-        if (rowSpan != null) 'rowSpan': rowSpan,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnSpan != null) 'columnSpan': columnSpan!,
+        if (location != null) 'location': location!.toJson(),
+        if (rowSpan != null) 'rowSpan': rowSpan!,
       };
 }
 
 /// Properties and contents of each row in a table.
 class TableRow {
   /// Height of a row.
-  Dimension rowHeight;
+  Dimension? rowHeight;
 
   /// Properties and contents of each cell.
   ///
   /// Cells that span multiple columns are represented only once with a
   /// column_span greater than 1. As a result, the length of this collection
   /// does not always match the number of columns of the entire table.
-  core.List<TableCell> tableCells;
+  core.List<TableCell>? tableCells;
 
   /// Properties of the row.
-  TableRowProperties tableRowProperties;
+  TableRowProperties? tableRowProperties;
 
   TableRow();
 
@@ -6085,12 +6066,12 @@ class TableRow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (rowHeight != null) 'rowHeight': rowHeight.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (rowHeight != null) 'rowHeight': rowHeight!.toJson(),
         if (tableCells != null)
-          'tableCells': tableCells.map((value) => value.toJson()).toList(),
+          'tableCells': tableCells!.map((value) => value.toJson()).toList(),
         if (tableRowProperties != null)
-          'tableRowProperties': tableRowProperties.toJson(),
+          'tableRowProperties': tableRowProperties!.toJson(),
       };
 }
 
@@ -6101,7 +6082,7 @@ class TableRowProperties {
   /// The row will be rendered in the Slides editor at a height equal to or
   /// greater than this value in order to show all the text in the row's
   /// cell(s).
-  Dimension minRowHeight;
+  Dimension? minRowHeight;
 
   TableRowProperties();
 
@@ -6112,8 +6093,8 @@ class TableRowProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (minRowHeight != null) 'minRowHeight': minRowHeight.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (minRowHeight != null) 'minRowHeight': minRowHeight!.toJson(),
       };
 }
 
@@ -6123,19 +6104,21 @@ class TableRowProperties {
 /// table cell in a page.
 class TextContent {
   /// The bulleted lists contained in this text, keyed by list ID.
-  core.Map<core.String, List> lists;
+  core.Map<core.String, List>? lists;
 
   /// The text contents broken down into its component parts, including styling
   /// information.
   ///
   /// This property is read-only.
-  core.List<TextElement> textElements;
+  core.List<TextElement>? textElements;
 
   TextContent();
 
   TextContent.fromJson(core.Map _json) {
     if (_json.containsKey('lists')) {
-      lists = (_json['lists'] as core.Map).cast<core.String, core.Map>().map(
+      lists = (_json['lists'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               List.fromJson(item as core.Map<core.String, core.dynamic>),
@@ -6150,11 +6133,11 @@ class TextContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (lists != null)
-          'lists': lists.map((key, item) => core.MapEntry(key, item.toJson())),
+          'lists': lists!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (textElements != null)
-          'textElements': textElements.map((value) => value.toJson()).toList(),
+          'textElements': textElements!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6163,11 +6146,11 @@ class TextContent {
 class TextElement {
   /// A TextElement representing a spot in the text that is dynamically replaced
   /// with content that can change over time.
-  AutoText autoText;
+  AutoText? autoText;
 
   /// The zero-based end index of this text element, exclusive, in Unicode code
   /// units.
-  core.int endIndex;
+  core.int? endIndex;
 
   /// A marker representing the beginning of a new paragraph.
   ///
@@ -6175,10 +6158,10 @@ class TextElement {
   /// of the paragraph. Other TextElements with an index range contained inside
   /// this paragraph's range are considered to be part of this paragraph. The
   /// range of indices of two separate paragraphs will never overlap.
-  ParagraphMarker paragraphMarker;
+  ParagraphMarker? paragraphMarker;
 
   /// The zero-based start index of this text element, in Unicode code units.
-  core.int startIndex;
+  core.int? startIndex;
 
   /// A TextElement representing a run of text where all of the characters in
   /// the run have the same TextStyle.
@@ -6186,7 +6169,7 @@ class TextElement {
   /// The `start_index` and `end_index` of TextRuns will always be fully
   /// contained in the index range of a single `paragraph_marker` TextElement.
   /// In other words, a TextRun will never span multiple paragraphs.
-  TextRun textRun;
+  TextRun? textRun;
 
   TextElement();
 
@@ -6211,13 +6194,13 @@ class TextElement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (autoText != null) 'autoText': autoText.toJson(),
-        if (endIndex != null) 'endIndex': endIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (autoText != null) 'autoText': autoText!.toJson(),
+        if (endIndex != null) 'endIndex': endIndex!,
         if (paragraphMarker != null)
-          'paragraphMarker': paragraphMarker.toJson(),
-        if (startIndex != null) 'startIndex': startIndex,
-        if (textRun != null) 'textRun': textRun.toJson(),
+          'paragraphMarker': paragraphMarker!.toJson(),
+        if (startIndex != null) 'startIndex': startIndex!,
+        if (textRun != null) 'textRun': textRun!.toJson(),
       };
 }
 
@@ -6225,10 +6208,10 @@ class TextElement {
 /// styling.
 class TextRun {
   /// The text of this run.
-  core.String content;
+  core.String? content;
 
   /// The styling applied to this run.
-  TextStyle style;
+  TextStyle? style;
 
   TextRun();
 
@@ -6242,9 +6225,9 @@ class TextRun {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
-        if (style != null) 'style': style.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
+        if (style != null) 'style': style!.toJson(),
       };
 }
 
@@ -6267,7 +6250,7 @@ class TextStyle {
   ///
   /// If set, the color is either opaque or transparent, depending on if the
   /// `opaque_color` field in it is set.
-  OptionalColor backgroundColor;
+  OptionalColor? backgroundColor;
 
   /// The text's vertical offset from its normal position.
   ///
@@ -6280,10 +6263,10 @@ class TextStyle {
   /// - "NONE" : The text is not vertically offset.
   /// - "SUPERSCRIPT" : The text is vertically offset upwards (superscript).
   /// - "SUBSCRIPT" : The text is vertically offset downwards (subscript).
-  core.String baselineOffset;
+  core.String? baselineOffset;
 
   /// Whether or not the text is rendered as bold.
-  core.bool bold;
+  core.bool? bold;
 
   /// The font family of the text.
   ///
@@ -6292,21 +6275,21 @@ class TextStyle {
   /// unrecognized, the text is rendered in `Arial`. Some fonts can affect the
   /// weight of the text. If an update request specifies values for both
   /// `font_family` and `bold`, the explicitly-set `bold` value is used.
-  core.String fontFamily;
+  core.String? fontFamily;
 
   /// The size of the text's font.
   ///
   /// When read, the `font_size` will specified in points.
-  Dimension fontSize;
+  Dimension? fontSize;
 
   /// The color of the text itself.
   ///
   /// If set, the color is either opaque or transparent, depending on if the
   /// `opaque_color` field in it is set.
-  OptionalColor foregroundColor;
+  OptionalColor? foregroundColor;
 
   /// Whether or not the text is italicized.
-  core.bool italic;
+  core.bool? italic;
 
   /// The hyperlink destination of the text.
   ///
@@ -6325,16 +6308,16 @@ class TextStyle {
   /// range to match the style of the preceding text (or the default text styles
   /// if the preceding text is another link) unless different styles are being
   /// set in the same request.
-  Link link;
+  Link? link;
 
   /// Whether or not the text is in small capital letters.
-  core.bool smallCaps;
+  core.bool? smallCaps;
 
   /// Whether or not the text is struck through.
-  core.bool strikethrough;
+  core.bool? strikethrough;
 
   /// Whether or not the text is underlined.
-  core.bool underline;
+  core.bool? underline;
 
   /// The font family and rendered weight of the text.
   ///
@@ -6360,7 +6343,7 @@ class TextStyle {
   /// `weighted_font_family` is set, then `weighted_font_family#font_family`
   /// must also be set with a non-empty value. Otherwise, a 400 bad request
   /// error is returned.
-  WeightedFontFamily weightedFontFamily;
+  WeightedFontFamily? weightedFontFamily;
 
   TextStyle();
 
@@ -6408,29 +6391,29 @@ class TextStyle {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (backgroundColor != null)
-          'backgroundColor': backgroundColor.toJson(),
-        if (baselineOffset != null) 'baselineOffset': baselineOffset,
-        if (bold != null) 'bold': bold,
-        if (fontFamily != null) 'fontFamily': fontFamily,
-        if (fontSize != null) 'fontSize': fontSize.toJson(),
+          'backgroundColor': backgroundColor!.toJson(),
+        if (baselineOffset != null) 'baselineOffset': baselineOffset!,
+        if (bold != null) 'bold': bold!,
+        if (fontFamily != null) 'fontFamily': fontFamily!,
+        if (fontSize != null) 'fontSize': fontSize!.toJson(),
         if (foregroundColor != null)
-          'foregroundColor': foregroundColor.toJson(),
-        if (italic != null) 'italic': italic,
-        if (link != null) 'link': link.toJson(),
-        if (smallCaps != null) 'smallCaps': smallCaps,
-        if (strikethrough != null) 'strikethrough': strikethrough,
-        if (underline != null) 'underline': underline,
+          'foregroundColor': foregroundColor!.toJson(),
+        if (italic != null) 'italic': italic!,
+        if (link != null) 'link': link!.toJson(),
+        if (smallCaps != null) 'smallCaps': smallCaps!,
+        if (strikethrough != null) 'strikethrough': strikethrough!,
+        if (underline != null) 'underline': underline!,
         if (weightedFontFamily != null)
-          'weightedFontFamily': weightedFontFamily.toJson(),
+          'weightedFontFamily': weightedFontFamily!.toJson(),
       };
 }
 
 /// A pair mapping a theme color type to the concrete color it represents.
 class ThemeColorPair {
   /// The concrete color corresponding to the theme color type above.
-  RgbColor color;
+  RgbColor? color;
 
   /// The type of the theme color.
   /// Possible string values are:
@@ -6453,7 +6436,7 @@ class ThemeColorPair {
   /// - "BACKGROUND1" : Represents the first background color.
   /// - "TEXT2" : Represents the second text color.
   /// - "BACKGROUND2" : Represents the second background color.
-  core.String type;
+  core.String? type;
 
   ThemeColorPair();
 
@@ -6467,9 +6450,9 @@ class ThemeColorPair {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (color != null) 'color': color.toJson(),
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (color != null) 'color': color!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -6482,13 +6465,13 @@ class Thumbnail {
   /// accesses the image as the original requester. Access to the image may be
   /// lost if the presentation's sharing settings change. The mime type of the
   /// thumbnail image is the same as specified in the `GetPageThumbnailRequest`.
-  core.String contentUrl;
+  core.String? contentUrl;
 
   /// The positive height in pixels of the thumbnail image.
-  core.int height;
+  core.int? height;
 
   /// The positive width in pixels of the thumbnail image.
-  core.int width;
+  core.int? width;
 
   Thumbnail();
 
@@ -6504,10 +6487,10 @@ class Thumbnail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentUrl != null) 'contentUrl': contentUrl,
-        if (height != null) 'height': height,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentUrl != null) 'contentUrl': contentUrl!,
+        if (height != null) 'height': height!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -6518,7 +6501,7 @@ class UngroupObjectsRequest {
   /// Only groups that are not inside other groups can be ungrouped. All the
   /// groups should be on the same page. The group itself is deleted. The visual
   /// sizes and positions of all the children are preserved.
-  core.List<core.String> objectIds;
+  core.List<core.String>? objectIds;
 
   UngroupObjectsRequest();
 
@@ -6530,15 +6513,15 @@ class UngroupObjectsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectIds != null) 'objectIds': objectIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectIds != null) 'objectIds': objectIds!,
       };
 }
 
 /// Unmerges cells in a Table.
 class UnmergeTableCellsRequest {
   /// The object ID of the table.
-  core.String objectId;
+  core.String? objectId;
 
   /// The table range specifying which cells of the table to unmerge.
   ///
@@ -6547,7 +6530,7 @@ class UnmergeTableCellsRequest {
   /// the request will do nothing. If there is text in any of the merged cells,
   /// the text will remain in the upper-left ("head") cell of the resulting
   /// block of unmerged cells.
-  TableRange tableRange;
+  TableRange? tableRange;
 
   UnmergeTableCellsRequest();
 
@@ -6561,9 +6544,9 @@ class UnmergeTableCellsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (objectId != null) 'objectId': objectId,
-        if (tableRange != null) 'tableRange': tableRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
+        if (tableRange != null) 'tableRange': tableRange!.toJson(),
       };
 }
 
@@ -6577,13 +6560,13 @@ class UpdateImagePropertiesRequest {
   /// outline color, set `fields` to `"outline.outlineFill.solidFill.color"`. To
   /// reset a property to its default value, include its field name in the field
   /// mask but leave the field itself unset.
-  core.String fields;
+  core.String? fields;
 
   /// The image properties to update.
-  ImageProperties imageProperties;
+  ImageProperties? imageProperties;
 
   /// The object ID of the image the updates are applied to.
-  core.String objectId;
+  core.String? objectId;
 
   UpdateImagePropertiesRequest();
 
@@ -6600,11 +6583,11 @@ class UpdateImagePropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
         if (imageProperties != null)
-          'imageProperties': imageProperties.toJson(),
-        if (objectId != null) 'objectId': objectId,
+          'imageProperties': imageProperties!.toJson(),
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
@@ -6619,13 +6602,13 @@ class UpdateLineCategoryRequest {
   /// - "STRAIGHT" : Straight connectors, including straight connector 1.
   /// - "BENT" : Bent connectors, including bent connector 2 to 5.
   /// - "CURVED" : Curved connectors, including curved connector 2 to 5.
-  core.String lineCategory;
+  core.String? lineCategory;
 
   /// The object ID of the line the update is applied to.
   ///
   /// Only a line with a category indicating it is a "connector" can be updated.
   /// The line may be rerouted after updating its category.
-  core.String objectId;
+  core.String? objectId;
 
   UpdateLineCategoryRequest();
 
@@ -6638,9 +6621,9 @@ class UpdateLineCategoryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (lineCategory != null) 'lineCategory': lineCategory,
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (lineCategory != null) 'lineCategory': lineCategory!,
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
@@ -6654,13 +6637,13 @@ class UpdateLinePropertiesRequest {
   /// `fields` to `"lineFill.solidFill.color"`. To reset a property to its
   /// default value, include its field name in the field mask but leave the
   /// field itself unset.
-  core.String fields;
+  core.String? fields;
 
   /// The line properties to update.
-  LineProperties lineProperties;
+  LineProperties? lineProperties;
 
   /// The object ID of the line the update is applied to.
-  core.String objectId;
+  core.String? objectId;
 
   UpdateLinePropertiesRequest();
 
@@ -6677,10 +6660,10 @@ class UpdateLinePropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (lineProperties != null) 'lineProperties': lineProperties.toJson(),
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (lineProperties != null) 'lineProperties': lineProperties!.toJson(),
+        if (objectId != null) 'objectId': objectId!,
       };
 }
 
@@ -6691,17 +6674,17 @@ class UpdatePageElementAltTextRequest {
   /// If unset the existing value will be maintained. The description is exposed
   /// to screen readers and other accessibility interfaces. Only use human
   /// readable values related to the content of the page element.
-  core.String description;
+  core.String? description;
 
   /// The object ID of the page element the updates are applied to.
-  core.String objectId;
+  core.String? objectId;
 
   /// The updated alt text title of the page element.
   ///
   /// If unset the existing value will be maintained. The title is exposed to
   /// screen readers and other accessibility interfaces. Only use human readable
   /// values related to the content of the page element.
-  core.String title;
+  core.String? title;
 
   UpdatePageElementAltTextRequest();
 
@@ -6717,10 +6700,10 @@ class UpdatePageElementAltTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (objectId != null) 'objectId': objectId,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (objectId != null) 'objectId': objectId!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -6737,13 +6720,13 @@ class UpdatePageElementTransformRequest {
   /// and replaces the existing one with the resulting concatenation.
   /// - "ABSOLUTE" : Replaces the existing AffineTransform matrix with the new
   /// one.
-  core.String applyMode;
+  core.String? applyMode;
 
   /// The object ID of the page element to update.
-  core.String objectId;
+  core.String? objectId;
 
   /// The input transform matrix used to update the page element.
-  AffineTransform transform;
+  AffineTransform? transform;
 
   UpdatePageElementTransformRequest();
 
@@ -6760,10 +6743,10 @@ class UpdatePageElementTransformRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (applyMode != null) 'applyMode': applyMode,
-        if (objectId != null) 'objectId': objectId,
-        if (transform != null) 'transform': transform.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (applyMode != null) 'applyMode': applyMode!,
+        if (objectId != null) 'objectId': objectId!,
+        if (transform != null) 'transform': transform!.toJson(),
       };
 }
 
@@ -6785,12 +6768,12 @@ class UpdatePageElementsZOrderRequest {
   /// element relative to the furthest behind one in the specified page
   /// elements.
   /// - "SEND_TO_BACK" : Sends the page elements to the back of the page.
-  core.String operation;
+  core.String? operation;
 
   /// The object IDs of the page elements to update.
   ///
   /// All the page elements must be on the same page and must not be grouped.
-  core.List<core.String> pageElementObjectIds;
+  core.List<core.String>? pageElementObjectIds;
 
   UpdatePageElementsZOrderRequest();
 
@@ -6805,10 +6788,10 @@ class UpdatePageElementsZOrderRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operation != null) 'operation': operation,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operation != null) 'operation': operation!,
         if (pageElementObjectIds != null)
-          'pageElementObjectIds': pageElementObjectIds,
+          'pageElementObjectIds': pageElementObjectIds!,
       };
 }
 
@@ -6822,13 +6805,13 @@ class UpdatePagePropertiesRequest {
   /// color, set `fields` to `"pageBackgroundFill.solidFill.color"`. To reset a
   /// property to its default value, include its field name in the field mask
   /// but leave the field itself unset.
-  core.String fields;
+  core.String? fields;
 
   /// The object ID of the page the update is applied to.
-  core.String objectId;
+  core.String? objectId;
 
   /// The page properties to update.
-  PageProperties pageProperties;
+  PageProperties? pageProperties;
 
   UpdatePagePropertiesRequest();
 
@@ -6845,10 +6828,10 @@ class UpdatePagePropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (objectId != null) 'objectId': objectId,
-        if (pageProperties != null) 'pageProperties': pageProperties.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (objectId != null) 'objectId': objectId!,
+        if (pageProperties != null) 'pageProperties': pageProperties!.toJson(),
       };
 }
 
@@ -6860,7 +6843,7 @@ class UpdateParagraphStyleRequest {
   ///
   /// If `object_id` refers to a table, `cell_location` must have a value.
   /// Otherwise, it must not.
-  TableCellLocation cellLocation;
+  TableCellLocation? cellLocation;
 
   /// The fields that should be updated.
   ///
@@ -6869,16 +6852,16 @@ class UpdateParagraphStyleRequest {
   /// listing every field. For example, to update the paragraph alignment, set
   /// `fields` to `"alignment"`. To reset a property to its default value,
   /// include its field name in the field mask but leave the field itself unset.
-  core.String fields;
+  core.String? fields;
 
   /// The object ID of the shape or table with the text to be styled.
-  core.String objectId;
+  core.String? objectId;
 
   /// The paragraph's style.
-  ParagraphStyle style;
+  ParagraphStyle? style;
 
   /// The range of text containing the paragraph(s) to style.
-  Range textRange;
+  Range? textRange;
 
   UpdateParagraphStyleRequest();
 
@@ -6903,12 +6886,12 @@ class UpdateParagraphStyleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation.toJson(),
-        if (fields != null) 'fields': fields,
-        if (objectId != null) 'objectId': objectId,
-        if (style != null) 'style': style.toJson(),
-        if (textRange != null) 'textRange': textRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (fields != null) 'fields': fields!,
+        if (objectId != null) 'objectId': objectId!,
+        if (style != null) 'style': style!.toJson(),
+        if (textRange != null) 'textRange': textRange!.toJson(),
       };
 }
 
@@ -6923,13 +6906,13 @@ class UpdateShapePropertiesRequest {
   /// `"shapeBackgroundFill.solidFill.color"`. To reset a property to its
   /// default value, include its field name in the field mask but leave the
   /// field itself unset.
-  core.String fields;
+  core.String? fields;
 
   /// The object ID of the shape the updates are applied to.
-  core.String objectId;
+  core.String? objectId;
 
   /// The shape properties to update.
-  ShapeProperties shapeProperties;
+  ShapeProperties? shapeProperties;
 
   UpdateShapePropertiesRequest();
 
@@ -6946,11 +6929,11 @@ class UpdateShapePropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (objectId != null) 'objectId': objectId!,
         if (shapeProperties != null)
-          'shapeProperties': shapeProperties.toJson(),
+          'shapeProperties': shapeProperties!.toJson(),
       };
 }
 
@@ -6961,13 +6944,13 @@ class UpdateSlidesPositionRequest {
   ///
   /// Must be between zero and the number of slides in the presentation,
   /// inclusive.
-  core.int insertionIndex;
+  core.int? insertionIndex;
 
   /// The IDs of the slides in the presentation that should be moved.
   ///
   /// The slides in this list must be in existing presentation order, without
   /// duplicates.
-  core.List<core.String> slideObjectIds;
+  core.List<core.String>? slideObjectIds;
 
   UpdateSlidesPositionRequest();
 
@@ -6982,9 +6965,9 @@ class UpdateSlidesPositionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (insertionIndex != null) 'insertionIndex': insertionIndex,
-        if (slideObjectIds != null) 'slideObjectIds': slideObjectIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (insertionIndex != null) 'insertionIndex': insertionIndex!,
+        if (slideObjectIds != null) 'slideObjectIds': slideObjectIds!,
       };
 }
 
@@ -7004,7 +6987,7 @@ class UpdateTableBorderPropertiesRequest {
   /// - "OUTER" : Borders along the outside of the range.
   /// - "RIGHT" : Borders at the right of the range.
   /// - "TOP" : Borders at the top of the range.
-  core.String borderPosition;
+  core.String? borderPosition;
 
   /// The fields that should be updated.
   ///
@@ -7014,20 +6997,20 @@ class UpdateTableBorderPropertiesRequest {
   /// solid fill color, set `fields` to `"tableBorderFill.solidFill.color"`. To
   /// reset a property to its default value, include its field name in the field
   /// mask but leave the field itself unset.
-  core.String fields;
+  core.String? fields;
 
   /// The object ID of the table.
-  core.String objectId;
+  core.String? objectId;
 
   /// The table border properties to update.
-  TableBorderProperties tableBorderProperties;
+  TableBorderProperties? tableBorderProperties;
 
   /// The table range representing the subset of the table to which the updates
   /// are applied.
   ///
   /// If a table range is not specified, the updates will apply to the entire
   /// table.
-  TableRange tableRange;
+  TableRange? tableRange;
 
   UpdateTableBorderPropertiesRequest();
 
@@ -7052,13 +7035,13 @@ class UpdateTableBorderPropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (borderPosition != null) 'borderPosition': borderPosition,
-        if (fields != null) 'fields': fields,
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (borderPosition != null) 'borderPosition': borderPosition!,
+        if (fields != null) 'fields': fields!,
+        if (objectId != null) 'objectId': objectId!,
         if (tableBorderProperties != null)
-          'tableBorderProperties': tableBorderProperties.toJson(),
-        if (tableRange != null) 'tableRange': tableRange.toJson(),
+          'tableBorderProperties': tableBorderProperties!.toJson(),
+        if (tableRange != null) 'tableRange': tableRange!.toJson(),
       };
 }
 
@@ -7073,20 +7056,20 @@ class UpdateTableCellPropertiesRequest {
   /// `"tableCellBackgroundFill.solidFill.color"`. To reset a property to its
   /// default value, include its field name in the field mask but leave the
   /// field itself unset.
-  core.String fields;
+  core.String? fields;
 
   /// The object ID of the table.
-  core.String objectId;
+  core.String? objectId;
 
   /// The table cell properties to update.
-  TableCellProperties tableCellProperties;
+  TableCellProperties? tableCellProperties;
 
   /// The table range representing the subset of the table to which the updates
   /// are applied.
   ///
   /// If a table range is not specified, the updates will apply to the entire
   /// table.
-  TableRange tableRange;
+  TableRange? tableRange;
 
   UpdateTableCellPropertiesRequest();
 
@@ -7107,12 +7090,12 @@ class UpdateTableCellPropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (objectId != null) 'objectId': objectId!,
         if (tableCellProperties != null)
-          'tableCellProperties': tableCellProperties.toJson(),
-        if (tableRange != null) 'tableRange': tableRange.toJson(),
+          'tableCellProperties': tableCellProperties!.toJson(),
+        if (tableRange != null) 'tableRange': tableRange!.toJson(),
       };
 }
 
@@ -7121,7 +7104,7 @@ class UpdateTableColumnPropertiesRequest {
   /// The list of zero-based indices specifying which columns to update.
   ///
   /// If no indices are provided, all columns in the table will be updated.
-  core.List<core.int> columnIndices;
+  core.List<core.int>? columnIndices;
 
   /// The fields that should be updated.
   ///
@@ -7131,16 +7114,16 @@ class UpdateTableColumnPropertiesRequest {
   /// width, set `fields` to `"column_width"`. If '"column_width"' is included
   /// in the field mask but the property is left unset, the column width will
   /// default to 406,400 EMU (32 points).
-  core.String fields;
+  core.String? fields;
 
   /// The object ID of the table.
-  core.String objectId;
+  core.String? objectId;
 
   /// The table column properties to update.
   ///
   /// If the value of `table_column_properties#column_width` in the request is
   /// less than 406,400 EMU (32 points), a 400 bad request error is returned.
-  TableColumnProperties tableColumnProperties;
+  TableColumnProperties? tableColumnProperties;
 
   UpdateTableColumnPropertiesRequest();
 
@@ -7163,12 +7146,12 @@ class UpdateTableColumnPropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnIndices != null) 'columnIndices': columnIndices,
-        if (fields != null) 'fields': fields,
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnIndices != null) 'columnIndices': columnIndices!,
+        if (fields != null) 'fields': fields!,
+        if (objectId != null) 'objectId': objectId!,
         if (tableColumnProperties != null)
-          'tableColumnProperties': tableColumnProperties.toJson(),
+          'tableColumnProperties': tableColumnProperties!.toJson(),
       };
 }
 
@@ -7182,18 +7165,18 @@ class UpdateTableRowPropertiesRequest {
   /// height, set `fields` to `"min_row_height"`. If '"min_row_height"' is
   /// included in the field mask but the property is left unset, the minimum row
   /// height will default to 0.
-  core.String fields;
+  core.String? fields;
 
   /// The object ID of the table.
-  core.String objectId;
+  core.String? objectId;
 
   /// The list of zero-based indices specifying which rows to update.
   ///
   /// If no indices are provided, all rows in the table will be updated.
-  core.List<core.int> rowIndices;
+  core.List<core.int>? rowIndices;
 
   /// The table row properties to update.
-  TableRowProperties tableRowProperties;
+  TableRowProperties? tableRowProperties;
 
   UpdateTableRowPropertiesRequest();
 
@@ -7215,12 +7198,12 @@ class UpdateTableRowPropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (objectId != null) 'objectId': objectId,
-        if (rowIndices != null) 'rowIndices': rowIndices,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (objectId != null) 'objectId': objectId!,
+        if (rowIndices != null) 'rowIndices': rowIndices!,
         if (tableRowProperties != null)
-          'tableRowProperties': tableRowProperties.toJson(),
+          'tableRowProperties': tableRowProperties!.toJson(),
       };
 }
 
@@ -7230,7 +7213,7 @@ class UpdateTextStyleRequest {
   ///
   /// If `object_id` refers to a table, `cell_location` must have a value.
   /// Otherwise, it must not.
-  TableCellLocation cellLocation;
+  TableCellLocation? cellLocation;
 
   /// The fields that should be updated.
   ///
@@ -7239,10 +7222,10 @@ class UpdateTextStyleRequest {
   /// listing every field. For example, to update the text style to bold, set
   /// `fields` to `"bold"`. To reset a property to its default value, include
   /// its field name in the field mask but leave the field itself unset.
-  core.String fields;
+  core.String? fields;
 
   /// The object ID of the shape or table with the text to be styled.
-  core.String objectId;
+  core.String? objectId;
 
   /// The style(s) to set on the text.
   ///
@@ -7250,14 +7233,14 @@ class UpdateTextStyleRequest {
   /// will be set to inherit. Certain text style changes may cause other changes
   /// meant to mirror the behavior of the Slides editor. See the documentation
   /// of TextStyle for more information.
-  TextStyle style;
+  TextStyle? style;
 
   /// The range of text to style.
   ///
   /// The range may be extended to include adjacent newlines. If the range fully
   /// contains a paragraph belonging to a list, the paragraph's bullet is also
   /// updated with the matching text style.
-  Range textRange;
+  Range? textRange;
 
   UpdateTextStyleRequest();
 
@@ -7282,12 +7265,12 @@ class UpdateTextStyleRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cellLocation != null) 'cellLocation': cellLocation.toJson(),
-        if (fields != null) 'fields': fields,
-        if (objectId != null) 'objectId': objectId,
-        if (style != null) 'style': style.toJson(),
-        if (textRange != null) 'textRange': textRange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cellLocation != null) 'cellLocation': cellLocation!.toJson(),
+        if (fields != null) 'fields': fields!,
+        if (objectId != null) 'objectId': objectId!,
+        if (style != null) 'style': style!.toJson(),
+        if (textRange != null) 'textRange': textRange!.toJson(),
       };
 }
 
@@ -7301,13 +7284,13 @@ class UpdateVideoPropertiesRequest {
   /// outline color, set `fields` to `"outline.outlineFill.solidFill.color"`. To
   /// reset a property to its default value, include its field name in the field
   /// mask but leave the field itself unset.
-  core.String fields;
+  core.String? fields;
 
   /// The object ID of the video the updates are applied to.
-  core.String objectId;
+  core.String? objectId;
 
   /// The video properties to update.
-  VideoProperties videoProperties;
+  VideoProperties? videoProperties;
 
   UpdateVideoPropertiesRequest();
 
@@ -7324,34 +7307,34 @@ class UpdateVideoPropertiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fields != null) 'fields': fields,
-        if (objectId != null) 'objectId': objectId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (objectId != null) 'objectId': objectId!,
         if (videoProperties != null)
-          'videoProperties': videoProperties.toJson(),
+          'videoProperties': videoProperties!.toJson(),
       };
 }
 
 /// A PageElement kind representing a video.
 class Video {
   /// The video source's unique identifier for this video.
-  core.String id;
+  core.String? id;
 
   /// The video source.
   /// Possible string values are:
   /// - "SOURCE_UNSPECIFIED" : The video source is unspecified.
   /// - "YOUTUBE" : The video source is YouTube.
   /// - "DRIVE" : The video source is Google Drive.
-  core.String source;
+  core.String? source;
 
   /// An URL to a video.
   ///
   /// The URL is valid as long as the source video exists and sharing settings
   /// do not change.
-  core.String url;
+  core.String? url;
 
   /// The properties of the video.
-  VideoProperties videoProperties;
+  VideoProperties? videoProperties;
 
   Video();
 
@@ -7371,12 +7354,12 @@ class Video {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (source != null) 'source': source,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (source != null) 'source': source!,
+        if (url != null) 'url': url!,
         if (videoProperties != null)
-          'videoProperties': videoProperties.toJson(),
+          'videoProperties': videoProperties!.toJson(),
       };
 }
 
@@ -7386,7 +7369,7 @@ class VideoProperties {
   /// mode.
   ///
   /// Defaults to false.
-  core.bool autoPlay;
+  core.bool? autoPlay;
 
   /// The time at which to end playback, measured in seconds from the beginning
   /// of the video.
@@ -7394,18 +7377,18 @@ class VideoProperties {
   /// If set, the end time should be after the start time. If not set or if you
   /// set this to a value that exceeds the video's length, the video will be
   /// played until its end.
-  core.int end;
+  core.int? end;
 
   /// Whether to mute the audio during video playback.
   ///
   /// Defaults to false.
-  core.bool mute;
+  core.bool? mute;
 
   /// The outline of the video.
   ///
   /// The default outline matches the defaults for new videos created in the
   /// Slides editor.
-  Outline outline;
+  Outline? outline;
 
   /// The time at which to start playback, measured in seconds from the
   /// beginning of the video.
@@ -7414,7 +7397,7 @@ class VideoProperties {
   /// value that exceeds the video's length in seconds, the video will be played
   /// from the last second. If not set, the video will be played from the
   /// beginning.
-  core.int start;
+  core.int? start;
 
   VideoProperties();
 
@@ -7437,12 +7420,12 @@ class VideoProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (autoPlay != null) 'autoPlay': autoPlay,
-        if (end != null) 'end': end,
-        if (mute != null) 'mute': mute,
-        if (outline != null) 'outline': outline.toJson(),
-        if (start != null) 'start': start,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (autoPlay != null) 'autoPlay': autoPlay!,
+        if (end != null) 'end': end!,
+        if (mute != null) 'mute': mute!,
+        if (outline != null) 'outline': outline!.toJson(),
+        if (start != null) 'start': start!,
       };
 }
 
@@ -7453,7 +7436,7 @@ class WeightedFontFamily {
   /// The font family can be any font from the Font menu in Slides or from
   /// [Google Fonts](https://fonts.google.com/). If the font name is
   /// unrecognized, the text is rendered in `Arial`.
-  core.String fontFamily;
+  core.String? fontFamily;
 
   /// The rendered weight of the text.
   ///
@@ -7464,7 +7447,7 @@ class WeightedFontFamily {
   /// non-numerical values disallowed. Weights greater than or equal to `700`
   /// are considered bold, and weights less than `700`are not bold. The default
   /// value is `400` ("normal").
-  core.int weight;
+  core.int? weight;
 
   WeightedFontFamily();
 
@@ -7477,16 +7460,16 @@ class WeightedFontFamily {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fontFamily != null) 'fontFamily': fontFamily,
-        if (weight != null) 'weight': weight,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fontFamily != null) 'fontFamily': fontFamily!,
+        if (weight != null) 'weight': weight!,
       };
 }
 
 /// A PageElement kind representing word art.
 class WordArt {
   /// The text rendered as word art.
-  core.String renderedText;
+  core.String? renderedText;
 
   WordArt();
 
@@ -7496,8 +7479,8 @@ class WordArt {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (renderedText != null) 'renderedText': renderedText,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (renderedText != null) 'renderedText': renderedText!,
       };
 }
 
@@ -7508,7 +7491,7 @@ class WriteControl {
   /// If specified and the `required_revision_id` doesn't exactly match the
   /// presentation's current `revision_id`, the request will not be processed
   /// and will return a 400 bad request error.
-  core.String requiredRevisionId;
+  core.String? requiredRevisionId;
 
   WriteControl();
 
@@ -7518,8 +7501,8 @@ class WriteControl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (requiredRevisionId != null)
-          'requiredRevisionId': requiredRevisionId,
+          'requiredRevisionId': requiredRevisionId!,
       };
 }

@@ -255,14 +255,8 @@ class AccountActiveAdSummariesResource {
   async.Future<AccountActiveAdSummary> get(
     core.String profileId,
     core.String summaryAccountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (summaryAccountId == null) {
-      throw core.ArgumentError('Parameter summaryAccountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -309,14 +303,8 @@ class AccountPermissionGroupsResource {
   async.Future<AccountPermissionGroup> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -353,11 +341,8 @@ class AccountPermissionGroupsResource {
   /// this method will complete with the same error.
   async.Future<AccountPermissionGroupsListResponse> list(
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -402,14 +387,8 @@ class AccountPermissionsResource {
   async.Future<AccountPermission> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -446,11 +425,8 @@ class AccountPermissionsResource {
   /// this method will complete with the same error.
   async.Future<AccountPermissionsListResponse> list(
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -496,14 +472,8 @@ class AccountUserProfilesResource {
   async.Future<AccountUserProfile> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -543,13 +513,9 @@ class AccountUserProfilesResource {
   async.Future<AccountUserProfile> insert(
     AccountUserProfile request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -620,20 +586,17 @@ class AccountUserProfilesResource {
   /// this method will complete with the same error.
   async.Future<AccountUserProfilesListResponse> list(
     core.String profileId, {
-    core.bool active,
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String subaccountId,
-    core.String userRoleId,
-    core.String $fields,
+    core.bool? active,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? subaccountId,
+    core.String? userRoleId,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (active != null) 'active': ['${active}'],
       if (ids != null) 'ids': ids,
@@ -686,16 +649,9 @@ class AccountUserProfilesResource {
     AccountUserProfile request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -736,13 +692,9 @@ class AccountUserProfilesResource {
   async.Future<AccountUserProfile> update(
     AccountUserProfile request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -788,14 +740,8 @@ class AccountsResource {
   async.Future<Account> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -860,18 +806,15 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<AccountsListResponse> list(
     core.String profileId, {
-    core.bool active,
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.bool? active,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (active != null) 'active': ['${active}'],
       if (ids != null) 'ids': ids,
@@ -922,16 +865,9 @@ class AccountsResource {
     Account request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -971,13 +907,9 @@ class AccountsResource {
   async.Future<Account> update(
     Account request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1022,14 +954,8 @@ class AdsResource {
   async.Future<Ad> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1068,13 +994,9 @@ class AdsResource {
   async.Future<Ad> insert(
     Ad request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1186,34 +1108,31 @@ class AdsResource {
   /// this method will complete with the same error.
   async.Future<AdsListResponse> list(
     core.String profileId, {
-    core.bool active,
-    core.String advertiserId,
-    core.bool archived,
-    core.List<core.String> audienceSegmentIds,
-    core.List<core.String> campaignIds,
-    core.String compatibility,
-    core.List<core.String> creativeIds,
-    core.List<core.String> creativeOptimizationConfigurationIds,
-    core.bool dynamicClickTracker,
-    core.List<core.String> ids,
-    core.List<core.String> landingPageIds,
-    core.int maxResults,
-    core.String overriddenEventTagId,
-    core.String pageToken,
-    core.List<core.String> placementIds,
-    core.List<core.String> remarketingListIds,
-    core.String searchString,
-    core.List<core.String> sizeIds,
-    core.String sortField,
-    core.String sortOrder,
-    core.bool sslCompliant,
-    core.bool sslRequired,
-    core.List<core.String> type,
-    core.String $fields,
+    core.bool? active,
+    core.String? advertiserId,
+    core.bool? archived,
+    core.List<core.String>? audienceSegmentIds,
+    core.List<core.String>? campaignIds,
+    core.String? compatibility,
+    core.List<core.String>? creativeIds,
+    core.List<core.String>? creativeOptimizationConfigurationIds,
+    core.bool? dynamicClickTracker,
+    core.List<core.String>? ids,
+    core.List<core.String>? landingPageIds,
+    core.int? maxResults,
+    core.String? overriddenEventTagId,
+    core.String? pageToken,
+    core.List<core.String>? placementIds,
+    core.List<core.String>? remarketingListIds,
+    core.String? searchString,
+    core.List<core.String>? sizeIds,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.bool? sslCompliant,
+    core.bool? sslRequired,
+    core.List<core.String>? type,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (active != null) 'active': ['${active}'],
       if (advertiserId != null) 'advertiserId': [advertiserId],
@@ -1283,16 +1202,9 @@ class AdsResource {
     Ad request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -1331,13 +1243,9 @@ class AdsResource {
   async.Future<Ad> update(
     Ad request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1379,14 +1287,8 @@ class AdvertiserGroupsResource {
   async.Future<void> delete(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1425,14 +1327,8 @@ class AdvertiserGroupsResource {
   async.Future<AdvertiserGroup> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1472,13 +1368,9 @@ class AdvertiserGroupsResource {
   async.Future<AdvertiserGroup> insert(
     AdvertiserGroup request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1542,17 +1434,14 @@ class AdvertiserGroupsResource {
   /// this method will complete with the same error.
   async.Future<AdvertiserGroupsListResponse> list(
     core.String profileId, {
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (ids != null) 'ids': ids,
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -1602,16 +1491,9 @@ class AdvertiserGroupsResource {
     AdvertiserGroup request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -1652,13 +1534,9 @@ class AdvertiserGroupsResource {
   async.Future<AdvertiserGroup> update(
     AdvertiserGroup request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1705,14 +1583,8 @@ class AdvertiserLandingPagesResource {
   async.Future<LandingPage> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1752,13 +1624,9 @@ class AdvertiserLandingPagesResource {
   async.Future<LandingPage> insert(
     LandingPage request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1831,21 +1699,18 @@ class AdvertiserLandingPagesResource {
   /// this method will complete with the same error.
   async.Future<AdvertiserLandingPagesListResponse> list(
     core.String profileId, {
-    core.List<core.String> advertiserIds,
-    core.bool archived,
-    core.List<core.String> campaignIds,
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String subaccountId,
-    core.String $fields,
+    core.List<core.String>? advertiserIds,
+    core.bool? archived,
+    core.List<core.String>? campaignIds,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? subaccountId,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserIds != null) 'advertiserIds': advertiserIds,
       if (archived != null) 'archived': ['${archived}'],
@@ -1899,16 +1764,9 @@ class AdvertiserLandingPagesResource {
     LandingPage request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -1949,13 +1807,9 @@ class AdvertiserLandingPagesResource {
   async.Future<LandingPage> update(
     LandingPage request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2001,14 +1855,8 @@ class AdvertisersResource {
   async.Future<Advertiser> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2048,13 +1896,9 @@ class AdvertisersResource {
   async.Future<Advertiser> insert(
     Advertiser request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2137,23 +1981,20 @@ class AdvertisersResource {
   /// this method will complete with the same error.
   async.Future<AdvertisersListResponse> list(
     core.String profileId, {
-    core.List<core.String> advertiserGroupIds,
-    core.List<core.String> floodlightConfigurationIds,
-    core.List<core.String> ids,
-    core.bool includeAdvertisersWithoutGroupsOnly,
-    core.int maxResults,
-    core.bool onlyParent,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String status,
-    core.String subaccountId,
-    core.String $fields,
+    core.List<core.String>? advertiserGroupIds,
+    core.List<core.String>? floodlightConfigurationIds,
+    core.List<core.String>? ids,
+    core.bool? includeAdvertisersWithoutGroupsOnly,
+    core.int? maxResults,
+    core.bool? onlyParent,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? status,
+    core.String? subaccountId,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserGroupIds != null) 'advertiserGroupIds': advertiserGroupIds,
       if (floodlightConfigurationIds != null)
@@ -2213,16 +2054,9 @@ class AdvertisersResource {
     Advertiser request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -2263,13 +2097,9 @@ class AdvertisersResource {
   async.Future<Advertiser> update(
     Advertiser request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2312,11 +2142,8 @@ class BrowsersResource {
   /// this method will complete with the same error.
   async.Future<BrowsersListResponse> list(
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2368,16 +2195,9 @@ class CampaignCreativeAssociationsResource {
     CampaignCreativeAssociation request,
     core.String profileId,
     core.String campaignId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (campaignId == null) {
-      throw core.ArgumentError('Parameter campaignId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2431,17 +2251,11 @@ class CampaignCreativeAssociationsResource {
   async.Future<CampaignCreativeAssociationsListResponse> list(
     core.String profileId,
     core.String campaignId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String sortOrder,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (campaignId == null) {
-      throw core.ArgumentError('Parameter campaignId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2491,14 +2305,8 @@ class CampaignsResource {
   async.Future<Campaign> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2537,13 +2345,9 @@ class CampaignsResource {
   async.Future<Campaign> insert(
     Campaign request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2624,24 +2428,21 @@ class CampaignsResource {
   /// this method will complete with the same error.
   async.Future<CampaignsListResponse> list(
     core.String profileId, {
-    core.List<core.String> advertiserGroupIds,
-    core.List<core.String> advertiserIds,
-    core.bool archived,
-    core.bool atLeastOneOptimizationActivity,
-    core.List<core.String> excludedIds,
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String overriddenEventTagId,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String subaccountId,
-    core.String $fields,
+    core.List<core.String>? advertiserGroupIds,
+    core.List<core.String>? advertiserIds,
+    core.bool? archived,
+    core.bool? atLeastOneOptimizationActivity,
+    core.List<core.String>? excludedIds,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? overriddenEventTagId,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? subaccountId,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserGroupIds != null) 'advertiserGroupIds': advertiserGroupIds,
       if (advertiserIds != null) 'advertiserIds': advertiserIds,
@@ -2700,16 +2501,9 @@ class CampaignsResource {
     Campaign request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -2749,13 +2543,9 @@ class CampaignsResource {
   async.Future<Campaign> update(
     Campaign request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2800,14 +2590,8 @@ class ChangeLogsResource {
   async.Future<ChangeLog> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2936,21 +2720,18 @@ class ChangeLogsResource {
   /// this method will complete with the same error.
   async.Future<ChangeLogsListResponse> list(
     core.String profileId, {
-    core.String action,
-    core.List<core.String> ids,
-    core.String maxChangeTime,
-    core.int maxResults,
-    core.String minChangeTime,
-    core.List<core.String> objectIds,
-    core.String objectType,
-    core.String pageToken,
-    core.String searchString,
-    core.List<core.String> userProfileIds,
-    core.String $fields,
+    core.String? action,
+    core.List<core.String>? ids,
+    core.String? maxChangeTime,
+    core.int? maxResults,
+    core.String? minChangeTime,
+    core.List<core.String>? objectIds,
+    core.String? objectType,
+    core.String? pageToken,
+    core.String? searchString,
+    core.List<core.String>? userProfileIds,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (action != null) 'action': [action],
       if (ids != null) 'ids': ids,
@@ -3010,15 +2791,12 @@ class CitiesResource {
   /// this method will complete with the same error.
   async.Future<CitiesListResponse> list(
     core.String profileId, {
-    core.List<core.String> countryDartIds,
-    core.List<core.String> dartIds,
-    core.String namePrefix,
-    core.List<core.String> regionDartIds,
-    core.String $fields,
+    core.List<core.String>? countryDartIds,
+    core.List<core.String>? dartIds,
+    core.String? namePrefix,
+    core.List<core.String>? regionDartIds,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (countryDartIds != null) 'countryDartIds': countryDartIds,
       if (dartIds != null) 'dartIds': dartIds,
@@ -3067,14 +2845,8 @@ class ConnectionTypesResource {
   async.Future<ConnectionType> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3111,11 +2883,8 @@ class ConnectionTypesResource {
   /// this method will complete with the same error.
   async.Future<ConnectionTypesListResponse> list(
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3158,14 +2927,8 @@ class ContentCategoriesResource {
   async.Future<void> delete(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3204,14 +2967,8 @@ class ContentCategoriesResource {
   async.Future<ContentCategory> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3251,13 +3008,9 @@ class ContentCategoriesResource {
   async.Future<ContentCategory> insert(
     ContentCategory request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3321,17 +3074,14 @@ class ContentCategoriesResource {
   /// this method will complete with the same error.
   async.Future<ContentCategoriesListResponse> list(
     core.String profileId, {
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (ids != null) 'ids': ids,
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -3381,16 +3131,9 @@ class ContentCategoriesResource {
     ContentCategory request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -3431,13 +3174,9 @@ class ContentCategoriesResource {
   async.Future<ContentCategory> update(
     ContentCategory request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3483,13 +3222,9 @@ class ConversionsResource {
   async.Future<ConversionsBatchInsertResponse> batchinsert(
     ConversionsBatchInsertRequest request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3529,13 +3264,9 @@ class ConversionsResource {
   async.Future<ConversionsBatchUpdateResponse> batchupdate(
     ConversionsBatchUpdateRequest request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3581,14 +3312,8 @@ class CountriesResource {
   async.Future<Country> get(
     core.String profileId,
     core.String dartId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (dartId == null) {
-      throw core.ArgumentError('Parameter dartId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3624,11 +3349,8 @@ class CountriesResource {
   /// this method will complete with the same error.
   async.Future<CountriesListResponse> list(
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3678,17 +3400,10 @@ class CreativeAssetsResource {
     CreativeAssetMetadata request,
     core.String profileId,
     core.String advertiserId, {
-    core.String $fields,
-    commons.Media uploadMedia,
+    core.String? $fields,
+    commons.Media? uploadMedia,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (advertiserId == null) {
-      throw core.ArgumentError('Parameter advertiserId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3749,17 +3464,8 @@ class CreativeFieldValuesResource {
     core.String profileId,
     core.String creativeFieldId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (creativeFieldId == null) {
-      throw core.ArgumentError('Parameter creativeFieldId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3803,17 +3509,8 @@ class CreativeFieldValuesResource {
     core.String profileId,
     core.String creativeFieldId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (creativeFieldId == null) {
-      throw core.ArgumentError('Parameter creativeFieldId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3858,16 +3555,9 @@ class CreativeFieldValuesResource {
     CreativeFieldValue request,
     core.String profileId,
     core.String creativeFieldId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (creativeFieldId == null) {
-      throw core.ArgumentError('Parameter creativeFieldId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3931,20 +3621,14 @@ class CreativeFieldValuesResource {
   async.Future<CreativeFieldValuesListResponse> list(
     core.String profileId,
     core.String creativeFieldId, {
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (creativeFieldId == null) {
-      throw core.ArgumentError('Parameter creativeFieldId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (ids != null) 'ids': ids,
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -3999,19 +3683,9 @@ class CreativeFieldValuesResource {
     core.String profileId,
     core.String creativeFieldId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (creativeFieldId == null) {
-      throw core.ArgumentError('Parameter creativeFieldId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -4057,16 +3731,9 @@ class CreativeFieldValuesResource {
     CreativeFieldValue request,
     core.String profileId,
     core.String creativeFieldId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (creativeFieldId == null) {
-      throw core.ArgumentError('Parameter creativeFieldId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4112,14 +3779,8 @@ class CreativeFieldsResource {
   async.Future<void> delete(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4158,14 +3819,8 @@ class CreativeFieldsResource {
   async.Future<CreativeField> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4205,13 +3860,9 @@ class CreativeFieldsResource {
   async.Future<CreativeField> insert(
     CreativeField request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4279,18 +3930,15 @@ class CreativeFieldsResource {
   /// this method will complete with the same error.
   async.Future<CreativeFieldsListResponse> list(
     core.String profileId, {
-    core.List<core.String> advertiserIds,
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.List<core.String>? advertiserIds,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserIds != null) 'advertiserIds': advertiserIds,
       if (ids != null) 'ids': ids,
@@ -4341,16 +3989,9 @@ class CreativeFieldsResource {
     CreativeField request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -4391,13 +4032,9 @@ class CreativeFieldsResource {
   async.Future<CreativeField> update(
     CreativeField request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4443,14 +4080,8 @@ class CreativeGroupsResource {
   async.Future<CreativeGroup> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4490,13 +4121,9 @@ class CreativeGroupsResource {
   async.Future<CreativeGroup> insert(
     CreativeGroup request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4567,19 +4194,16 @@ class CreativeGroupsResource {
   /// this method will complete with the same error.
   async.Future<CreativeGroupsListResponse> list(
     core.String profileId, {
-    core.List<core.String> advertiserIds,
-    core.int groupNumber,
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.List<core.String>? advertiserIds,
+    core.int? groupNumber,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserIds != null) 'advertiserIds': advertiserIds,
       if (groupNumber != null) 'groupNumber': ['${groupNumber}'],
@@ -4631,16 +4255,9 @@ class CreativeGroupsResource {
     CreativeGroup request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -4681,13 +4298,9 @@ class CreativeGroupsResource {
   async.Future<CreativeGroup> update(
     CreativeGroup request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4733,14 +4346,8 @@ class CreativesResource {
   async.Future<Creative> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4779,13 +4386,9 @@ class CreativesResource {
   async.Future<Creative> insert(
     Creative request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4872,27 +4475,24 @@ class CreativesResource {
   /// this method will complete with the same error.
   async.Future<CreativesListResponse> list(
     core.String profileId, {
-    core.bool active,
-    core.String advertiserId,
-    core.bool archived,
-    core.String campaignId,
-    core.List<core.String> companionCreativeIds,
-    core.List<core.String> creativeFieldIds,
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.List<core.String> renderingIds,
-    core.String searchString,
-    core.List<core.String> sizeIds,
-    core.String sortField,
-    core.String sortOrder,
-    core.String studioCreativeId,
-    core.List<core.String> types,
-    core.String $fields,
+    core.bool? active,
+    core.String? advertiserId,
+    core.bool? archived,
+    core.String? campaignId,
+    core.List<core.String>? companionCreativeIds,
+    core.List<core.String>? creativeFieldIds,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.List<core.String>? renderingIds,
+    core.String? searchString,
+    core.List<core.String>? sizeIds,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? studioCreativeId,
+    core.List<core.String>? types,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (active != null) 'active': ['${active}'],
       if (advertiserId != null) 'advertiserId': [advertiserId],
@@ -4953,16 +4553,9 @@ class CreativesResource {
     Creative request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -5002,13 +4595,9 @@ class CreativesResource {
   async.Future<Creative> update(
     Creative request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5053,13 +4642,9 @@ class CustomEventsResource {
   async.Future<CustomEventsBatchInsertResponse> batchinsert(
     CustomEventsBatchInsertRequest request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5110,15 +4695,11 @@ class DimensionValuesResource {
   async.Future<DimensionValueList> query(
     DimensionValueRequest request,
     core.String profileId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -5166,14 +4747,8 @@ class DirectorySitesResource {
   async.Future<DirectorySite> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5213,13 +4788,9 @@ class DirectorySitesResource {
   async.Future<DirectorySite> insert(
     DirectorySite request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5298,22 +4869,19 @@ class DirectorySitesResource {
   /// this method will complete with the same error.
   async.Future<DirectorySitesListResponse> list(
     core.String profileId, {
-    core.bool acceptsInStreamVideoPlacements,
-    core.bool acceptsInterstitialPlacements,
-    core.bool acceptsPublisherPaidPlacements,
-    core.bool active,
-    core.String dfpNetworkCode,
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.bool? acceptsInStreamVideoPlacements,
+    core.bool? acceptsInterstitialPlacements,
+    core.bool? acceptsPublisherPaidPlacements,
+    core.bool? active,
+    core.String? dfpNetworkCode,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (acceptsInStreamVideoPlacements != null)
         'acceptsInStreamVideoPlacements': ['${acceptsInStreamVideoPlacements}'],
@@ -5386,20 +4954,8 @@ class DynamicTargetingKeysResource {
     core.String objectId,
     core.String name,
     core.String objectType, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (objectId == null) {
-      throw core.ArgumentError('Parameter objectId is required.');
-    }
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
-    if (objectType == null) {
-      throw core.ArgumentError('Parameter objectType is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'name': [name],
       'objectType': [objectType],
@@ -5445,13 +5001,9 @@ class DynamicTargetingKeysResource {
   async.Future<DynamicTargetingKey> insert(
     DynamicTargetingKey request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5502,15 +5054,12 @@ class DynamicTargetingKeysResource {
   /// this method will complete with the same error.
   async.Future<DynamicTargetingKeysListResponse> list(
     core.String profileId, {
-    core.String advertiserId,
-    core.List<core.String> names,
-    core.String objectId,
-    core.String objectType,
-    core.String $fields,
+    core.String? advertiserId,
+    core.List<core.String>? names,
+    core.String? objectId,
+    core.String? objectType,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserId != null) 'advertiserId': [advertiserId],
       if (names != null) 'names': names,
@@ -5557,14 +5106,8 @@ class EventTagsResource {
   async.Future<void> delete(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5603,14 +5146,8 @@ class EventTagsResource {
   async.Future<EventTag> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5649,13 +5186,9 @@ class EventTagsResource {
   async.Future<EventTag> insert(
     EventTag request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5737,21 +5270,18 @@ class EventTagsResource {
   /// this method will complete with the same error.
   async.Future<EventTagsListResponse> list(
     core.String profileId, {
-    core.String adId,
-    core.String advertiserId,
-    core.String campaignId,
-    core.bool definitionsOnly,
-    core.bool enabled,
-    core.List<core.String> eventTagTypes,
-    core.List<core.String> ids,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.String? adId,
+    core.String? advertiserId,
+    core.String? campaignId,
+    core.bool? definitionsOnly,
+    core.bool? enabled,
+    core.List<core.String>? eventTagTypes,
+    core.List<core.String>? ids,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (adId != null) 'adId': [adId],
       if (advertiserId != null) 'advertiserId': [advertiserId],
@@ -5805,16 +5335,9 @@ class EventTagsResource {
     EventTag request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -5854,13 +5377,9 @@ class EventTagsResource {
   async.Future<EventTag> update(
     EventTag request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5915,15 +5434,9 @@ class FilesResource {
   async.Future<core.Object> get(
     core.String reportId,
     core.String fileId, {
-    core.String $fields,
+    core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    if (reportId == null) {
-      throw core.ArgumentError('Parameter reportId is required.');
-    }
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5942,7 +5455,7 @@ class FilesResource {
     if (downloadOptions.isMetadataDownload) {
       return File.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
-      return _response;
+      return _response as commons.Media;
     }
   }
 
@@ -5985,16 +5498,13 @@ class FilesResource {
   /// this method will complete with the same error.
   async.Future<FileList> list(
     core.String profileId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String scope,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? scope,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -6042,14 +5552,8 @@ class FloodlightActivitiesResource {
   async.Future<void> delete(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6088,12 +5592,9 @@ class FloodlightActivitiesResource {
   /// this method will complete with the same error.
   async.Future<FloodlightActivitiesGenerateTagResponse> generatetag(
     core.String profileId, {
-    core.String floodlightActivityId,
-    core.String $fields,
+    core.String? floodlightActivityId,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (floodlightActivityId != null)
         'floodlightActivityId': [floodlightActivityId],
@@ -6134,14 +5635,8 @@ class FloodlightActivitiesResource {
   async.Future<FloodlightActivity> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6181,13 +5676,9 @@ class FloodlightActivitiesResource {
   async.Future<FloodlightActivity> insert(
     FloodlightActivity request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6280,24 +5771,21 @@ class FloodlightActivitiesResource {
   /// this method will complete with the same error.
   async.Future<FloodlightActivitiesListResponse> list(
     core.String profileId, {
-    core.String advertiserId,
-    core.List<core.String> floodlightActivityGroupIds,
-    core.String floodlightActivityGroupName,
-    core.String floodlightActivityGroupTagString,
-    core.String floodlightActivityGroupType,
-    core.String floodlightConfigurationId,
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String tagString,
-    core.String $fields,
+    core.String? advertiserId,
+    core.List<core.String>? floodlightActivityGroupIds,
+    core.String? floodlightActivityGroupName,
+    core.String? floodlightActivityGroupTagString,
+    core.String? floodlightActivityGroupType,
+    core.String? floodlightConfigurationId,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? tagString,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserId != null) 'advertiserId': [advertiserId],
       if (floodlightActivityGroupIds != null)
@@ -6359,16 +5847,9 @@ class FloodlightActivitiesResource {
     FloodlightActivity request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -6409,13 +5890,9 @@ class FloodlightActivitiesResource {
   async.Future<FloodlightActivity> update(
     FloodlightActivity request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6462,14 +5939,8 @@ class FloodlightActivityGroupsResource {
   async.Future<FloodlightActivityGroup> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6509,13 +5980,9 @@ class FloodlightActivityGroupsResource {
   async.Future<FloodlightActivityGroup> insert(
     FloodlightActivityGroup request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6597,20 +6064,17 @@ class FloodlightActivityGroupsResource {
   /// this method will complete with the same error.
   async.Future<FloodlightActivityGroupsListResponse> list(
     core.String profileId, {
-    core.String advertiserId,
-    core.String floodlightConfigurationId,
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String type,
-    core.String $fields,
+    core.String? advertiserId,
+    core.String? floodlightConfigurationId,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? type,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserId != null) 'advertiserId': [advertiserId],
       if (floodlightConfigurationId != null)
@@ -6664,16 +6128,9 @@ class FloodlightActivityGroupsResource {
     FloodlightActivityGroup request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -6714,13 +6171,9 @@ class FloodlightActivityGroupsResource {
   async.Future<FloodlightActivityGroup> update(
     FloodlightActivityGroup request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6767,14 +6220,8 @@ class FloodlightConfigurationsResource {
   async.Future<FloodlightConfiguration> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6814,12 +6261,9 @@ class FloodlightConfigurationsResource {
   /// this method will complete with the same error.
   async.Future<FloodlightConfigurationsListResponse> list(
     core.String profileId, {
-    core.List<core.String> ids,
-    core.String $fields,
+    core.List<core.String>? ids,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (ids != null) 'ids': ids,
       if ($fields != null) 'fields': [$fields],
@@ -6864,16 +6308,9 @@ class FloodlightConfigurationsResource {
     FloodlightConfiguration request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -6914,13 +6351,9 @@ class FloodlightConfigurationsResource {
   async.Future<FloodlightConfiguration> update(
     FloodlightConfiguration request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -6969,17 +6402,8 @@ class InventoryItemsResource {
     core.String profileId,
     core.String projectId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7052,23 +6476,17 @@ class InventoryItemsResource {
   async.Future<InventoryItemsListResponse> list(
     core.String profileId,
     core.String projectId, {
-    core.List<core.String> ids,
-    core.bool inPlan,
-    core.int maxResults,
-    core.List<core.String> orderId,
-    core.String pageToken,
-    core.List<core.String> siteId,
-    core.String sortField,
-    core.String sortOrder,
-    core.String type,
-    core.String $fields,
+    core.List<core.String>? ids,
+    core.bool? inPlan,
+    core.int? maxResults,
+    core.List<core.String>? orderId,
+    core.String? pageToken,
+    core.List<core.String>? siteId,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? type,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (ids != null) 'ids': ids,
       if (inPlan != null) 'inPlan': ['${inPlan}'],
@@ -7121,11 +6539,8 @@ class LanguagesResource {
   /// this method will complete with the same error.
   async.Future<LanguagesListResponse> list(
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7167,11 +6582,8 @@ class MetrosResource {
   /// this method will complete with the same error.
   async.Future<MetrosListResponse> list(
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7216,14 +6628,8 @@ class MobileAppsResource {
   async.Future<MobileApp> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7275,16 +6681,13 @@ class MobileAppsResource {
   /// this method will complete with the same error.
   async.Future<MobileAppsListResponse> list(
     core.String profileId, {
-    core.List<core.String> directories,
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String $fields,
+    core.List<core.String>? directories,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (directories != null) 'directories': directories,
       if (ids != null) 'ids': ids,
@@ -7334,14 +6737,8 @@ class MobileCarriersResource {
   async.Future<MobileCarrier> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7378,11 +6775,8 @@ class MobileCarriersResource {
   /// this method will complete with the same error.
   async.Future<MobileCarriersListResponse> list(
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7428,14 +6822,8 @@ class OperatingSystemVersionsResource {
   async.Future<OperatingSystemVersion> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7472,11 +6860,8 @@ class OperatingSystemVersionsResource {
   /// this method will complete with the same error.
   async.Future<OperatingSystemVersionsListResponse> list(
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7521,14 +6906,8 @@ class OperatingSystemsResource {
   async.Future<OperatingSystem> get(
     core.String profileId,
     core.String dartId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (dartId == null) {
-      throw core.ArgumentError('Parameter dartId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7565,11 +6944,8 @@ class OperatingSystemsResource {
   /// this method will complete with the same error.
   async.Future<OperatingSystemsListResponse> list(
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7617,17 +6993,8 @@ class OrderDocumentsResource {
     core.String profileId,
     core.String projectId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7705,23 +7072,17 @@ class OrderDocumentsResource {
   async.Future<OrderDocumentsListResponse> list(
     core.String profileId,
     core.String projectId, {
-    core.bool approved,
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.List<core.String> orderId,
-    core.String pageToken,
-    core.String searchString,
-    core.List<core.String> siteId,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.bool? approved,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.List<core.String>? orderId,
+    core.String? pageToken,
+    core.String? searchString,
+    core.List<core.String>? siteId,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (approved != null) 'approved': ['${approved}'],
       if (ids != null) 'ids': ids,
@@ -7780,17 +7141,8 @@ class OrdersResource {
     core.String profileId,
     core.String projectId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7859,21 +7211,15 @@ class OrdersResource {
   async.Future<OrdersListResponse> list(
     core.String profileId,
     core.String projectId, {
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.List<core.String> siteId,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.List<core.String>? siteId,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (projectId == null) {
-      throw core.ArgumentError('Parameter projectId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (ids != null) 'ids': ids,
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -7927,14 +7273,8 @@ class PlacementGroupsResource {
   async.Future<PlacementGroup> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -7974,13 +7314,9 @@ class PlacementGroupsResource {
   async.Future<PlacementGroup> insert(
     PlacementGroup request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8095,30 +7431,27 @@ class PlacementGroupsResource {
   /// this method will complete with the same error.
   async.Future<PlacementGroupsListResponse> list(
     core.String profileId, {
-    core.List<core.String> advertiserIds,
-    core.bool archived,
-    core.List<core.String> campaignIds,
-    core.List<core.String> contentCategoryIds,
-    core.List<core.String> directorySiteIds,
-    core.List<core.String> ids,
-    core.String maxEndDate,
-    core.int maxResults,
-    core.String maxStartDate,
-    core.String minEndDate,
-    core.String minStartDate,
-    core.String pageToken,
-    core.String placementGroupType,
-    core.List<core.String> placementStrategyIds,
-    core.List<core.String> pricingTypes,
-    core.String searchString,
-    core.List<core.String> siteIds,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.List<core.String>? advertiserIds,
+    core.bool? archived,
+    core.List<core.String>? campaignIds,
+    core.List<core.String>? contentCategoryIds,
+    core.List<core.String>? directorySiteIds,
+    core.List<core.String>? ids,
+    core.String? maxEndDate,
+    core.int? maxResults,
+    core.String? maxStartDate,
+    core.String? minEndDate,
+    core.String? minStartDate,
+    core.String? pageToken,
+    core.String? placementGroupType,
+    core.List<core.String>? placementStrategyIds,
+    core.List<core.String>? pricingTypes,
+    core.String? searchString,
+    core.List<core.String>? siteIds,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserIds != null) 'advertiserIds': advertiserIds,
       if (archived != null) 'archived': ['${archived}'],
@@ -8183,16 +7516,9 @@ class PlacementGroupsResource {
     PlacementGroup request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -8233,13 +7559,9 @@ class PlacementGroupsResource {
   async.Future<PlacementGroup> update(
     PlacementGroup request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8284,14 +7606,8 @@ class PlacementStrategiesResource {
   async.Future<void> delete(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8330,14 +7646,8 @@ class PlacementStrategiesResource {
   async.Future<PlacementStrategy> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8377,13 +7687,9 @@ class PlacementStrategiesResource {
   async.Future<PlacementStrategy> insert(
     PlacementStrategy request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8448,17 +7754,14 @@ class PlacementStrategiesResource {
   /// this method will complete with the same error.
   async.Future<PlacementStrategiesListResponse> list(
     core.String profileId, {
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (ids != null) 'ids': ids,
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -8508,16 +7811,9 @@ class PlacementStrategiesResource {
     PlacementStrategy request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -8558,13 +7854,9 @@ class PlacementStrategiesResource {
   async.Future<PlacementStrategy> update(
     PlacementStrategy request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8615,14 +7907,11 @@ class PlacementsResource {
   /// this method will complete with the same error.
   async.Future<PlacementsGenerateTagsResponse> generatetags(
     core.String profileId, {
-    core.String campaignId,
-    core.List<core.String> placementIds,
-    core.List<core.String> tagFormats,
-    core.String $fields,
+    core.String? campaignId,
+    core.List<core.String>? placementIds,
+    core.List<core.String>? tagFormats,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (campaignId != null) 'campaignId': [campaignId],
       if (placementIds != null) 'placementIds': placementIds,
@@ -8664,14 +7953,8 @@ class PlacementsResource {
   async.Future<Placement> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8710,13 +7993,9 @@ class PlacementsResource {
   async.Future<Placement> insert(
     Placement request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -8831,33 +8110,30 @@ class PlacementsResource {
   /// this method will complete with the same error.
   async.Future<PlacementsListResponse> list(
     core.String profileId, {
-    core.List<core.String> advertiserIds,
-    core.bool archived,
-    core.List<core.String> campaignIds,
-    core.List<core.String> compatibilities,
-    core.List<core.String> contentCategoryIds,
-    core.List<core.String> directorySiteIds,
-    core.List<core.String> groupIds,
-    core.List<core.String> ids,
-    core.String maxEndDate,
-    core.int maxResults,
-    core.String maxStartDate,
-    core.String minEndDate,
-    core.String minStartDate,
-    core.String pageToken,
-    core.String paymentSource,
-    core.List<core.String> placementStrategyIds,
-    core.List<core.String> pricingTypes,
-    core.String searchString,
-    core.List<core.String> siteIds,
-    core.List<core.String> sizeIds,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.List<core.String>? advertiserIds,
+    core.bool? archived,
+    core.List<core.String>? campaignIds,
+    core.List<core.String>? compatibilities,
+    core.List<core.String>? contentCategoryIds,
+    core.List<core.String>? directorySiteIds,
+    core.List<core.String>? groupIds,
+    core.List<core.String>? ids,
+    core.String? maxEndDate,
+    core.int? maxResults,
+    core.String? maxStartDate,
+    core.String? minEndDate,
+    core.String? minStartDate,
+    core.String? pageToken,
+    core.String? paymentSource,
+    core.List<core.String>? placementStrategyIds,
+    core.List<core.String>? pricingTypes,
+    core.String? searchString,
+    core.List<core.String>? siteIds,
+    core.List<core.String>? sizeIds,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserIds != null) 'advertiserIds': advertiserIds,
       if (archived != null) 'archived': ['${archived}'],
@@ -8924,16 +8200,9 @@ class PlacementsResource {
     Placement request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -8973,13 +8242,9 @@ class PlacementsResource {
   async.Future<Placement> update(
     Placement request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9024,14 +8289,8 @@ class PlatformTypesResource {
   async.Future<PlatformType> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9068,11 +8327,8 @@ class PlatformTypesResource {
   /// this method will complete with the same error.
   async.Future<PlatformTypesListResponse> list(
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9117,14 +8373,8 @@ class PostalCodesResource {
   async.Future<PostalCode> get(
     core.String profileId,
     core.String code, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (code == null) {
-      throw core.ArgumentError('Parameter code is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9161,11 +8411,8 @@ class PostalCodesResource {
   /// this method will complete with the same error.
   async.Future<PostalCodesListResponse> list(
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9210,14 +8457,8 @@ class ProjectsResource {
   async.Future<Project> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9282,18 +8523,15 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<ProjectsListResponse> list(
     core.String profileId, {
-    core.List<core.String> advertiserIds,
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.List<core.String>? advertiserIds,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserIds != null) 'advertiserIds': advertiserIds,
       if (ids != null) 'ids': ids,
@@ -9342,11 +8580,8 @@ class RegionsResource {
   /// this method will complete with the same error.
   async.Future<RegionsListResponse> list(
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9392,14 +8627,8 @@ class RemarketingListSharesResource {
   async.Future<RemarketingListShare> get(
     core.String profileId,
     core.String remarketingListId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (remarketingListId == null) {
-      throw core.ArgumentError('Parameter remarketingListId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9444,16 +8673,9 @@ class RemarketingListSharesResource {
     RemarketingListShare request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -9494,13 +8716,9 @@ class RemarketingListSharesResource {
   async.Future<RemarketingListShare> update(
     RemarketingListShare request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9546,14 +8764,8 @@ class RemarketingListsResource {
   async.Future<RemarketingList> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9593,13 +8805,9 @@ class RemarketingListsResource {
   async.Future<RemarketingList> insert(
     RemarketingList request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9669,21 +8877,15 @@ class RemarketingListsResource {
   async.Future<RemarketingListsListResponse> list(
     core.String profileId,
     core.String advertiserId, {
-    core.bool active,
-    core.String floodlightActivityId,
-    core.int maxResults,
-    core.String name,
-    core.String pageToken,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.bool? active,
+    core.String? floodlightActivityId,
+    core.int? maxResults,
+    core.String? name,
+    core.String? pageToken,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (advertiserId == null) {
-      throw core.ArgumentError('Parameter advertiserId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'advertiserId': [advertiserId],
       if (active != null) 'active': ['${active}'],
@@ -9736,16 +8938,9 @@ class RemarketingListsResource {
     RemarketingList request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -9786,13 +8981,9 @@ class RemarketingListsResource {
   async.Future<RemarketingList> update(
     RemarketingList request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9840,14 +9031,8 @@ class ReportsResource {
   async.Future<void> delete(
     core.String profileId,
     core.String reportId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (reportId == null) {
-      throw core.ArgumentError('Parameter reportId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9886,14 +9071,8 @@ class ReportsResource {
   async.Future<Report> get(
     core.String profileId,
     core.String reportId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (reportId == null) {
-      throw core.ArgumentError('Parameter reportId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9932,13 +9111,9 @@ class ReportsResource {
   async.Future<Report> insert(
     Report request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -9995,16 +9170,13 @@ class ReportsResource {
   /// this method will complete with the same error.
   async.Future<ReportList> list(
     core.String profileId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String scope,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? scope,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -10053,16 +9225,9 @@ class ReportsResource {
     Report request,
     core.String profileId,
     core.String reportId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (reportId == null) {
-      throw core.ArgumentError('Parameter reportId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10104,15 +9269,9 @@ class ReportsResource {
   async.Future<File> run(
     core.String profileId,
     core.String reportId, {
-    core.bool synchronous,
-    core.String $fields,
+    core.bool? synchronous,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (reportId == null) {
-      throw core.ArgumentError('Parameter reportId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (synchronous != null) 'synchronous': ['${synchronous}'],
       if ($fields != null) 'fields': [$fields],
@@ -10156,16 +9315,9 @@ class ReportsResource {
     Report request,
     core.String profileId,
     core.String reportId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (reportId == null) {
-      throw core.ArgumentError('Parameter reportId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10214,13 +9366,9 @@ class ReportsCompatibleFieldsResource {
   async.Future<CompatibleFields> query(
     Report request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10279,18 +9427,9 @@ class ReportsFilesResource {
     core.String profileId,
     core.String reportId,
     core.String fileId, {
-    core.String $fields,
+    core.String? $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (reportId == null) {
-      throw core.ArgumentError('Parameter reportId is required.');
-    }
-    if (fileId == null) {
-      throw core.ArgumentError('Parameter fileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10311,7 +9450,7 @@ class ReportsFilesResource {
     if (downloadOptions.isMetadataDownload) {
       return File.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
-      return _response;
+      return _response as commons.Media;
     }
   }
 
@@ -10351,18 +9490,12 @@ class ReportsFilesResource {
   async.Future<FileList> list(
     core.String profileId,
     core.String reportId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (reportId == null) {
-      throw core.ArgumentError('Parameter reportId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -10412,14 +9545,8 @@ class SitesResource {
   async.Future<Site> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10458,13 +9585,9 @@ class SitesResource {
   async.Future<Site> insert(
     Site request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10548,26 +9671,23 @@ class SitesResource {
   /// this method will complete with the same error.
   async.Future<SitesListResponse> list(
     core.String profileId, {
-    core.bool acceptsInStreamVideoPlacements,
-    core.bool acceptsInterstitialPlacements,
-    core.bool acceptsPublisherPaidPlacements,
-    core.bool adWordsSite,
-    core.bool approved,
-    core.List<core.String> campaignIds,
-    core.List<core.String> directorySiteIds,
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String subaccountId,
-    core.bool unmappedSite,
-    core.String $fields,
+    core.bool? acceptsInStreamVideoPlacements,
+    core.bool? acceptsInterstitialPlacements,
+    core.bool? acceptsPublisherPaidPlacements,
+    core.bool? adWordsSite,
+    core.bool? approved,
+    core.List<core.String>? campaignIds,
+    core.List<core.String>? directorySiteIds,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? subaccountId,
+    core.bool? unmappedSite,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (acceptsInStreamVideoPlacements != null)
         'acceptsInStreamVideoPlacements': ['${acceptsInStreamVideoPlacements}'],
@@ -10629,16 +9749,9 @@ class SitesResource {
     Site request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -10678,13 +9791,9 @@ class SitesResource {
   async.Future<Site> update(
     Site request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10729,14 +9838,8 @@ class SizesResource {
   async.Future<Size> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10775,13 +9878,9 @@ class SizesResource {
   async.Future<Size> insert(
     Size request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10831,15 +9930,12 @@ class SizesResource {
   /// this method will complete with the same error.
   async.Future<SizesListResponse> list(
     core.String profileId, {
-    core.int height,
-    core.bool iabStandard,
-    core.List<core.String> ids,
-    core.int width,
-    core.String $fields,
+    core.int? height,
+    core.bool? iabStandard,
+    core.List<core.String>? ids,
+    core.int? width,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (height != null) 'height': ['${height}'],
       if (iabStandard != null) 'iabStandard': ['${iabStandard}'],
@@ -10888,14 +9984,8 @@ class SubaccountsResource {
   async.Future<Subaccount> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -10935,13 +10025,9 @@ class SubaccountsResource {
   async.Future<Subaccount> insert(
     Subaccount request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11005,17 +10091,14 @@ class SubaccountsResource {
   /// this method will complete with the same error.
   async.Future<SubaccountsListResponse> list(
     core.String profileId, {
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (ids != null) 'ids': ids,
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -11065,16 +10148,9 @@ class SubaccountsResource {
     Subaccount request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -11115,13 +10191,9 @@ class SubaccountsResource {
   async.Future<Subaccount> update(
     Subaccount request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11168,14 +10240,8 @@ class TargetableRemarketingListsResource {
   async.Future<TargetableRemarketingList> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11244,20 +10310,14 @@ class TargetableRemarketingListsResource {
   async.Future<TargetableRemarketingListsListResponse> list(
     core.String profileId,
     core.String advertiserId, {
-    core.bool active,
-    core.int maxResults,
-    core.String name,
-    core.String pageToken,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.bool? active,
+    core.int? maxResults,
+    core.String? name,
+    core.String? pageToken,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (advertiserId == null) {
-      throw core.ArgumentError('Parameter advertiserId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       'advertiserId': [advertiserId],
       if (active != null) 'active': ['${active}'],
@@ -11309,14 +10369,8 @@ class TargetingTemplatesResource {
   async.Future<TargetingTemplate> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11356,13 +10410,9 @@ class TargetingTemplatesResource {
   async.Future<TargetingTemplate> insert(
     TargetingTemplate request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11428,18 +10478,15 @@ class TargetingTemplatesResource {
   /// this method will complete with the same error.
   async.Future<TargetingTemplatesListResponse> list(
     core.String profileId, {
-    core.String advertiserId,
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String $fields,
+    core.String? advertiserId,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (advertiserId != null) 'advertiserId': [advertiserId],
       if (ids != null) 'ids': ids,
@@ -11490,16 +10537,9 @@ class TargetingTemplatesResource {
     TargetingTemplate request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -11540,13 +10580,9 @@ class TargetingTemplatesResource {
   async.Future<TargetingTemplate> update(
     TargetingTemplate request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11589,11 +10625,8 @@ class UserProfilesResource {
   /// this method will complete with the same error.
   async.Future<UserProfile> get(
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11624,7 +10657,7 @@ class UserProfilesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UserProfileList> list({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -11669,14 +10702,8 @@ class UserRolePermissionGroupsResource {
   async.Future<UserRolePermissionGroup> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11713,11 +10740,8 @@ class UserRolePermissionGroupsResource {
   /// this method will complete with the same error.
   async.Future<UserRolePermissionGroupsListResponse> list(
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11763,14 +10787,8 @@ class UserRolePermissionsResource {
   async.Future<UserRolePermission> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11809,12 +10827,9 @@ class UserRolePermissionsResource {
   /// this method will complete with the same error.
   async.Future<UserRolePermissionsListResponse> list(
     core.String profileId, {
-    core.List<core.String> ids,
-    core.String $fields,
+    core.List<core.String>? ids,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (ids != null) 'ids': ids,
       if ($fields != null) 'fields': [$fields],
@@ -11858,14 +10873,8 @@ class UserRolesResource {
   async.Future<void> delete(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11904,14 +10913,8 @@ class UserRolesResource {
   async.Future<UserRole> get(
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -11950,13 +10953,9 @@ class UserRolesResource {
   async.Future<UserRole> insert(
     UserRole request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -12024,19 +11023,16 @@ class UserRolesResource {
   /// this method will complete with the same error.
   async.Future<UserRolesListResponse> list(
     core.String profileId, {
-    core.bool accountUserRoleOnly,
-    core.List<core.String> ids,
-    core.int maxResults,
-    core.String pageToken,
-    core.String searchString,
-    core.String sortField,
-    core.String sortOrder,
-    core.String subaccountId,
-    core.String $fields,
+    core.bool? accountUserRoleOnly,
+    core.List<core.String>? ids,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? searchString,
+    core.String? sortField,
+    core.String? sortOrder,
+    core.String? subaccountId,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (accountUserRoleOnly != null)
         'accountUserRoleOnly': ['${accountUserRoleOnly}'],
@@ -12089,16 +11085,9 @@ class UserRolesResource {
     UserRole request,
     core.String profileId,
     core.String id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       'id': [id],
       if ($fields != null) 'fields': [$fields],
@@ -12138,13 +11127,9 @@ class UserRolesResource {
   async.Future<UserRole> update(
     UserRole request,
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -12189,14 +11174,8 @@ class VideoFormatsResource {
   async.Future<VideoFormat> get(
     core.String profileId,
     core.int id, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -12233,11 +11212,8 @@ class VideoFormatsResource {
   /// this method will complete with the same error.
   async.Future<VideoFormatsListResponse> list(
     core.String profileId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (profileId == null) {
-      throw core.ArgumentError('Parameter profileId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -12259,7 +11235,7 @@ class VideoFormatsResource {
 /// Contains properties of a Campaign Manager account.
 class Account {
   /// Account permissions assigned to this account.
-  core.List<core.String> accountPermissionIds;
+  core.List<core.String>? accountPermissionIds;
 
   /// Profile for this account.
   ///
@@ -12267,10 +11243,10 @@ class Account {
   /// Possible string values are:
   /// - "ACCOUNT_PROFILE_BASIC"
   /// - "ACCOUNT_PROFILE_STANDARD"
-  core.String accountProfile;
+  core.String? accountProfile;
 
   /// Whether this account is active.
-  core.bool active;
+  core.bool? active;
 
   /// Maximum number of active ads allowed for this account.
   /// Possible string values are:
@@ -12282,18 +11258,18 @@ class Account {
   /// - "ACTIVE_ADS_TIER_500K"
   /// - "ACTIVE_ADS_TIER_750K"
   /// - "ACTIVE_ADS_TIER_1M"
-  core.String activeAdsLimitTier;
+  core.String? activeAdsLimitTier;
 
   /// Whether to serve creatives with Active View tags.
   ///
   /// If disabled, viewability data will not be available for any impressions.
-  core.bool activeViewOptOut;
+  core.bool? activeViewOptOut;
 
   /// User role permissions available to the user roles of this account.
-  core.List<core.String> availablePermissionIds;
+  core.List<core.String>? availablePermissionIds;
 
   /// ID of the country associated with this account.
-  core.String countryId;
+  core.String? countryId;
 
   /// ID of currency associated with this account.
   ///
@@ -12308,23 +11284,23 @@ class Account {
   /// "40" for THB - "41" for IDR - "42" for CZK - "43" for RON - "44" for HUF -
   /// "45" for RUB - "46" for AED - "47" for BGN - "48" for HRK - "49" for MXN -
   /// "50" for NGN - "51" for EGP
-  core.String currencyId;
+  core.String? currencyId;
 
   /// Default placement dimensions for this account.
-  core.String defaultCreativeSizeId;
+  core.String? defaultCreativeSizeId;
 
   /// Description of this account.
-  core.String description;
+  core.String? description;
 
   /// ID of this account.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#account".
-  core.String kind;
+  core.String? kind;
 
   /// Locale of this account.
   ///
@@ -12333,33 +11309,33 @@ class Account {
   /// (Italian) - "ja" (Japanese) - "ko" (Korean) - "pl" (Polish) - "pt-BR"
   /// (Portuguese Brazil) - "ru" (Russian) - "sv" (Swedish) - "tr" (Turkish) -
   /// "zh-CN" (Chinese Simplified) - "zh-TW" (Chinese Traditional)
-  core.String locale;
+  core.String? locale;
 
   /// Maximum image size allowed for this account, in kilobytes.
   ///
   /// Value must be greater than or equal to 1.
-  core.String maximumImageSize;
+  core.String? maximumImageSize;
 
   /// Name of this account.
   ///
   /// This is a required field, and must be less than 128 characters long and be
   /// globally unique.
-  core.String name;
+  core.String? name;
 
   /// Whether campaigns created in this account will be enabled for Nielsen OCR
   /// reach ratings by default.
-  core.bool nielsenOcrEnabled;
+  core.bool? nielsenOcrEnabled;
 
   /// Reporting configuration of this account.
-  ReportsConfiguration reportsConfiguration;
+  ReportsConfiguration? reportsConfiguration;
 
   /// Share Path to Conversion reports with Twitter.
-  core.bool shareReportsWithTwitter;
+  core.bool? shareReportsWithTwitter;
 
   /// File size limit in kilobytes of Rich Media teaser creatives.
   ///
   /// Acceptable values are 1 to 10240, inclusive.
-  core.String teaserSizeLimit;
+  core.String? teaserSizeLimit;
 
   Account();
 
@@ -12428,42 +11404,42 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accountPermissionIds != null)
-          'accountPermissionIds': accountPermissionIds,
-        if (accountProfile != null) 'accountProfile': accountProfile,
-        if (active != null) 'active': active,
+          'accountPermissionIds': accountPermissionIds!,
+        if (accountProfile != null) 'accountProfile': accountProfile!,
+        if (active != null) 'active': active!,
         if (activeAdsLimitTier != null)
-          'activeAdsLimitTier': activeAdsLimitTier,
-        if (activeViewOptOut != null) 'activeViewOptOut': activeViewOptOut,
+          'activeAdsLimitTier': activeAdsLimitTier!,
+        if (activeViewOptOut != null) 'activeViewOptOut': activeViewOptOut!,
         if (availablePermissionIds != null)
-          'availablePermissionIds': availablePermissionIds,
-        if (countryId != null) 'countryId': countryId,
-        if (currencyId != null) 'currencyId': currencyId,
+          'availablePermissionIds': availablePermissionIds!,
+        if (countryId != null) 'countryId': countryId!,
+        if (currencyId != null) 'currencyId': currencyId!,
         if (defaultCreativeSizeId != null)
-          'defaultCreativeSizeId': defaultCreativeSizeId,
-        if (description != null) 'description': description,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (locale != null) 'locale': locale,
-        if (maximumImageSize != null) 'maximumImageSize': maximumImageSize,
-        if (name != null) 'name': name,
-        if (nielsenOcrEnabled != null) 'nielsenOcrEnabled': nielsenOcrEnabled,
+          'defaultCreativeSizeId': defaultCreativeSizeId!,
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (locale != null) 'locale': locale!,
+        if (maximumImageSize != null) 'maximumImageSize': maximumImageSize!,
+        if (name != null) 'name': name!,
+        if (nielsenOcrEnabled != null) 'nielsenOcrEnabled': nielsenOcrEnabled!,
         if (reportsConfiguration != null)
-          'reportsConfiguration': reportsConfiguration.toJson(),
+          'reportsConfiguration': reportsConfiguration!.toJson(),
         if (shareReportsWithTwitter != null)
-          'shareReportsWithTwitter': shareReportsWithTwitter,
-        if (teaserSizeLimit != null) 'teaserSizeLimit': teaserSizeLimit,
+          'shareReportsWithTwitter': shareReportsWithTwitter!,
+        if (teaserSizeLimit != null) 'teaserSizeLimit': teaserSizeLimit!,
       };
 }
 
 /// Gets a summary of active ads in an account.
 class AccountActiveAdSummary {
   /// ID of the account.
-  core.String accountId;
+  core.String? accountId;
 
   /// Ads that have been activated for the account
-  core.String activeAds;
+  core.String? activeAds;
 
   /// Maximum number of active ads allowed for the account.
   /// Possible string values are:
@@ -12475,15 +11451,15 @@ class AccountActiveAdSummary {
   /// - "ACTIVE_ADS_TIER_500K"
   /// - "ACTIVE_ADS_TIER_750K"
   /// - "ACTIVE_ADS_TIER_1M"
-  core.String activeAdsLimitTier;
+  core.String? activeAdsLimitTier;
 
   /// Ads that can be activated for the account.
-  core.String availableAds;
+  core.String? availableAds;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#accountActiveAdSummary".
-  core.String kind;
+  core.String? kind;
 
   AccountActiveAdSummary();
 
@@ -12505,13 +11481,13 @@ class AccountActiveAdSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (activeAds != null) 'activeAds': activeAds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (activeAds != null) 'activeAds': activeAds!,
         if (activeAdsLimitTier != null)
-          'activeAdsLimitTier': activeAdsLimitTier,
-        if (availableAds != null) 'availableAds': availableAds,
-        if (kind != null) 'kind': kind,
+          'activeAdsLimitTier': activeAdsLimitTier!,
+        if (availableAds != null) 'availableAds': availableAds!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -12525,27 +11501,27 @@ class AccountPermission {
   ///
   /// Possible values are: - "ACCOUNT_PROFILE_BASIC" -
   /// "ACCOUNT_PROFILE_STANDARD"
-  core.List<core.String> accountProfiles;
+  core.List<core.String>? accountProfiles;
 
   /// ID of this account permission.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#accountPermission".
-  core.String kind;
+  core.String? kind;
 
   /// Administrative level required to enable this account permission.
   /// Possible string values are:
   /// - "USER"
   /// - "ADMINISTRATOR"
-  core.String level;
+  core.String? level;
 
   /// Name of this account permission.
-  core.String name;
+  core.String? name;
 
   /// Permission group of this account permission.
-  core.String permissionGroupId;
+  core.String? permissionGroupId;
 
   AccountPermission();
 
@@ -12572,13 +11548,13 @@ class AccountPermission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountProfiles != null) 'accountProfiles': accountProfiles,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (level != null) 'level': level,
-        if (name != null) 'name': name,
-        if (permissionGroupId != null) 'permissionGroupId': permissionGroupId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountProfiles != null) 'accountProfiles': accountProfiles!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (level != null) 'level': level!,
+        if (name != null) 'name': name!,
+        if (permissionGroupId != null) 'permissionGroupId': permissionGroupId!,
       };
 }
 
@@ -12587,15 +11563,15 @@ class AccountPermission {
 /// A permission group is a grouping of account permissions.
 class AccountPermissionGroup {
   /// ID of this account permission group.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#accountPermissionGroup".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this account permission group.
-  core.String name;
+  core.String? name;
 
   AccountPermissionGroup();
 
@@ -12611,23 +11587,23 @@ class AccountPermissionGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Account Permission Group List Response
 class AccountPermissionGroupsListResponse {
   /// Account permission group collection.
-  core.List<AccountPermissionGroup> accountPermissionGroups;
+  core.List<AccountPermissionGroup>? accountPermissionGroups;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
   /// "dfareporting#accountPermissionGroupsListResponse".
-  core.String kind;
+  core.String? kind;
 
   AccountPermissionGroupsListResponse();
 
@@ -12644,23 +11620,23 @@ class AccountPermissionGroupsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accountPermissionGroups != null)
           'accountPermissionGroups':
-              accountPermissionGroups.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+              accountPermissionGroups!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Account Permission List Response
 class AccountPermissionsListResponse {
   /// Account permission collection.
-  core.List<AccountPermission> accountPermissions;
+  core.List<AccountPermission>? accountPermissions;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#accountPermissionsListResponse".
-  core.String kind;
+  core.String? kind;
 
   AccountPermissionsListResponse();
 
@@ -12676,11 +11652,11 @@ class AccountPermissionsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accountPermissions != null)
           'accountPermissions':
-              accountPermissions.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+              accountPermissions!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -12692,38 +11668,38 @@ class AccountUserProfile {
   /// Account ID of the user profile.
   ///
   /// This is a read-only field that can be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// Whether this user profile is active.
   ///
   /// This defaults to false, and must be set true on insert for the user
   /// profile to be usable.
-  core.bool active;
+  core.bool? active;
 
   /// Filter that describes which advertisers are visible to the user profile.
-  ObjectFilter advertiserFilter;
+  ObjectFilter? advertiserFilter;
 
   /// Filter that describes which campaigns are visible to the user profile.
-  ObjectFilter campaignFilter;
+  ObjectFilter? campaignFilter;
 
   /// Comments for this user profile.
-  core.String comments;
+  core.String? comments;
 
   /// Email of the user profile.
   ///
   /// The email addresss must be linked to a Google Account. This field is
   /// required on insertion and is read-only after insertion.
-  core.String email;
+  core.String? email;
 
   /// ID of the user profile.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#accountUserProfile".
-  core.String kind;
+  core.String? kind;
 
   /// Locale of the user profile.
   ///
@@ -12733,22 +11709,22 @@ class AccountUserProfile {
   /// (Korean) - "pl" (Polish) - "pt-BR" (Portuguese Brazil) - "ru" (Russian) -
   /// "sv" (Swedish) - "tr" (Turkish) - "zh-CN" (Chinese Simplified) - "zh-TW"
   /// (Chinese Traditional)
-  core.String locale;
+  core.String? locale;
 
   /// Name of the user profile.
   ///
   /// This is a required field. Must be less than 64 characters long, must be
   /// globally unique, and cannot contain whitespace or any of the following
   /// characters: "&;<>"#%,".
-  core.String name;
+  core.String? name;
 
   /// Filter that describes which sites are visible to the user profile.
-  ObjectFilter siteFilter;
+  ObjectFilter? siteFilter;
 
   /// Subaccount ID of the user profile.
   ///
   /// This is a read-only field that can be left blank.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Trafficker type of this user profile.
   ///
@@ -12757,7 +11733,7 @@ class AccountUserProfile {
   /// - "INTERNAL_NON_TRAFFICKER"
   /// - "INTERNAL_TRAFFICKER"
   /// - "EXTERNAL_TRAFFICKER"
-  core.String traffickerType;
+  core.String? traffickerType;
 
   /// User type of the user profile.
   ///
@@ -12767,15 +11743,15 @@ class AccountUserProfile {
   /// - "SUPER_USER"
   /// - "INTERNAL_ADMINISTRATOR"
   /// - "READ_ONLY_SUPER_USER"
-  core.String userAccessType;
+  core.String? userAccessType;
 
   /// Filter that describes which user roles are visible to the user profile.
-  ObjectFilter userRoleFilter;
+  ObjectFilter? userRoleFilter;
 
   /// User role ID of the user profile.
   ///
   /// This is a required field.
-  core.String userRoleId;
+  core.String? userRoleId;
 
   AccountUserProfile();
 
@@ -12834,39 +11810,39 @@ class AccountUserProfile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (active != null) 'active': active,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (active != null) 'active': active!,
         if (advertiserFilter != null)
-          'advertiserFilter': advertiserFilter.toJson(),
-        if (campaignFilter != null) 'campaignFilter': campaignFilter.toJson(),
-        if (comments != null) 'comments': comments,
-        if (email != null) 'email': email,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (locale != null) 'locale': locale,
-        if (name != null) 'name': name,
-        if (siteFilter != null) 'siteFilter': siteFilter.toJson(),
-        if (subaccountId != null) 'subaccountId': subaccountId,
-        if (traffickerType != null) 'traffickerType': traffickerType,
-        if (userAccessType != null) 'userAccessType': userAccessType,
-        if (userRoleFilter != null) 'userRoleFilter': userRoleFilter.toJson(),
-        if (userRoleId != null) 'userRoleId': userRoleId,
+          'advertiserFilter': advertiserFilter!.toJson(),
+        if (campaignFilter != null) 'campaignFilter': campaignFilter!.toJson(),
+        if (comments != null) 'comments': comments!,
+        if (email != null) 'email': email!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (locale != null) 'locale': locale!,
+        if (name != null) 'name': name!,
+        if (siteFilter != null) 'siteFilter': siteFilter!.toJson(),
+        if (subaccountId != null) 'subaccountId': subaccountId!,
+        if (traffickerType != null) 'traffickerType': traffickerType!,
+        if (userAccessType != null) 'userAccessType': userAccessType!,
+        if (userRoleFilter != null) 'userRoleFilter': userRoleFilter!.toJson(),
+        if (userRoleId != null) 'userRoleId': userRoleId!,
       };
 }
 
 /// Account User Profile List Response
 class AccountUserProfilesListResponse {
   /// Account user profile collection.
-  core.List<AccountUserProfile> accountUserProfiles;
+  core.List<AccountUserProfile>? accountUserProfiles;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#accountUserProfilesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   AccountUserProfilesListResponse();
 
@@ -12885,27 +11861,27 @@ class AccountUserProfilesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accountUserProfiles != null)
           'accountUserProfiles':
-              accountUserProfiles.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              accountUserProfiles!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Account List Response
 class AccountsListResponse {
   /// Account collection.
-  core.List<Account> accounts;
+  core.List<Account>? accounts;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#accountsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   AccountsListResponse();
 
@@ -12924,11 +11900,11 @@ class AccountsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accounts != null)
-          'accounts': accounts.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'accounts': accounts!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -12938,13 +11914,13 @@ class Activities {
   ///
   /// The dimension values need to be all either of type "dfa:activity" or
   /// "dfa:activityGroup".
-  core.List<DimensionValue> filters;
+  core.List<DimensionValue>? filters;
 
   /// The kind of resource this is, in this case dfareporting#activities.
-  core.String kind;
+  core.String? kind;
 
   /// List of names of floodlight activity metrics.
-  core.List<core.String> metricNames;
+  core.List<core.String>? metricNames;
 
   Activities();
 
@@ -12965,11 +11941,11 @@ class Activities {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (filters != null)
-          'filters': filters.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (metricNames != null) 'metricNames': metricNames,
+          'filters': filters!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (metricNames != null) 'metricNames': metricNames!,
       };
 }
 
@@ -12978,57 +11954,57 @@ class Ad {
   /// Account ID of this ad.
   ///
   /// This is a read-only field that can be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// Whether this ad is active.
   ///
   /// When true, archived must be false.
-  core.bool active;
+  core.bool? active;
 
   /// Advertiser ID of this ad.
   ///
   /// This is a required field on insertion.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Dimension value for the ID of the advertiser.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue advertiserIdDimensionValue;
+  DimensionValue? advertiserIdDimensionValue;
 
   /// Whether this ad is archived.
   ///
   /// When true, active must be false.
-  core.bool archived;
+  core.bool? archived;
 
   /// Audience segment ID that is being targeted for this ad.
   ///
   /// Applicable when type is AD_SERVING_STANDARD_AD.
-  core.String audienceSegmentId;
+  core.String? audienceSegmentId;
 
   /// Campaign ID of this ad.
   ///
   /// This is a required field on insertion.
-  core.String campaignId;
+  core.String? campaignId;
 
   /// Dimension value for the ID of the campaign.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue campaignIdDimensionValue;
+  DimensionValue? campaignIdDimensionValue;
 
   /// Click-through URL for this ad.
   ///
   /// This is a required field on insertion. Applicable when type is
   /// AD_SERVING_CLICK_TRACKER.
-  ClickThroughUrl clickThroughUrl;
+  ClickThroughUrl? clickThroughUrl;
 
   /// Click-through URL suffix properties for this ad.
   ///
   /// Applies to the URL in the ad or (if overriding ad properties) the URL in
   /// the creative.
-  ClickThroughUrlSuffixProperties clickThroughUrlSuffixProperties;
+  ClickThroughUrlSuffixProperties? clickThroughUrlSuffixProperties;
 
   /// Comments for this ad.
-  core.String comments;
+  core.String? comments;
 
   /// Compatibility of this ad.
   ///
@@ -13047,126 +12023,126 @@ class Ad {
   /// - "APP_INTERSTITIAL"
   /// - "IN_STREAM_VIDEO"
   /// - "IN_STREAM_AUDIO"
-  core.String compatibility;
+  core.String? compatibility;
 
   /// Information about the creation of this ad.
   ///
   /// This is a read-only field.
-  LastModifiedInfo createInfo;
+  LastModifiedInfo? createInfo;
 
   /// Creative group assignments for this ad.
   ///
   /// Applicable when type is AD_SERVING_CLICK_TRACKER. Only one assignment per
   /// creative group number is allowed for a maximum of two assignments.
-  core.List<CreativeGroupAssignment> creativeGroupAssignments;
+  core.List<CreativeGroupAssignment>? creativeGroupAssignments;
 
   /// Creative rotation for this ad.
   ///
   /// Applicable when type is AD_SERVING_DEFAULT_AD, AD_SERVING_STANDARD_AD, or
   /// AD_SERVING_TRACKING. When type is AD_SERVING_DEFAULT_AD, this field should
   /// have exactly one creativeAssignment .
-  CreativeRotation creativeRotation;
+  CreativeRotation? creativeRotation;
 
   /// Time and day targeting information for this ad.
   ///
   /// This field must be left blank if the ad is using a targeting template.
   /// Applicable when type is AD_SERVING_STANDARD_AD.
-  DayPartTargeting dayPartTargeting;
+  DayPartTargeting? dayPartTargeting;
 
   /// Default click-through event tag properties for this ad.
-  DefaultClickThroughEventTagProperties defaultClickThroughEventTagProperties;
+  DefaultClickThroughEventTagProperties? defaultClickThroughEventTagProperties;
 
   /// Delivery schedule information for this ad.
   ///
   /// Applicable when type is AD_SERVING_STANDARD_AD or AD_SERVING_TRACKING.
   /// This field along with subfields priority and impressionRatio are required
   /// on insertion when type is AD_SERVING_STANDARD_AD.
-  DeliverySchedule deliverySchedule;
+  DeliverySchedule? deliverySchedule;
 
   /// Whether this ad is a dynamic click tracker.
   ///
   /// Applicable when type is AD_SERVING_CLICK_TRACKER. This is a required field
   /// on insert, and is read-only after insert.
-  core.bool dynamicClickTracker;
-  core.DateTime endTime;
+  core.bool? dynamicClickTracker;
+  core.DateTime? endTime;
 
   /// Event tag overrides for this ad.
-  core.List<EventTagOverride> eventTagOverrides;
+  core.List<EventTagOverride>? eventTagOverrides;
 
   /// Geographical targeting information for this ad.
   ///
   /// This field must be left blank if the ad is using a targeting template.
   /// Applicable when type is AD_SERVING_STANDARD_AD.
-  GeoTargeting geoTargeting;
+  GeoTargeting? geoTargeting;
 
   /// ID of this ad.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Dimension value for the ID of this ad.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue idDimensionValue;
+  DimensionValue? idDimensionValue;
 
   /// Key-value targeting information for this ad.
   ///
   /// This field must be left blank if the ad is using a targeting template.
   /// Applicable when type is AD_SERVING_STANDARD_AD.
-  KeyValueTargetingExpression keyValueTargetingExpression;
+  KeyValueTargetingExpression? keyValueTargetingExpression;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#ad".
-  core.String kind;
+  core.String? kind;
 
   /// Language targeting information for this ad.
   ///
   /// This field must be left blank if the ad is using a targeting template.
   /// Applicable when type is AD_SERVING_STANDARD_AD.
-  LanguageTargeting languageTargeting;
+  LanguageTargeting? languageTargeting;
 
   /// Information about the most recent modification of this ad.
   ///
   /// This is a read-only field.
-  LastModifiedInfo lastModifiedInfo;
+  LastModifiedInfo? lastModifiedInfo;
 
   /// Name of this ad.
   ///
   /// This is a required field and must be less than 256 characters long.
-  core.String name;
+  core.String? name;
 
   /// Placement assignments for this ad.
-  core.List<PlacementAssignment> placementAssignments;
+  core.List<PlacementAssignment>? placementAssignments;
 
   /// Remarketing list targeting expression for this ad.
   ///
   /// This field must be left blank if the ad is using a targeting template.
   /// Applicable when type is AD_SERVING_STANDARD_AD.
-  ListTargetingExpression remarketingListExpression;
+  ListTargetingExpression? remarketingListExpression;
 
   /// Size of this ad.
   ///
   /// Applicable when type is AD_SERVING_DEFAULT_AD.
-  Size size;
+  Size? size;
 
   /// Whether this ad is ssl compliant.
   ///
   /// This is a read-only field that is auto-generated when the ad is inserted
   /// or updated.
-  core.bool sslCompliant;
+  core.bool? sslCompliant;
 
   /// Whether this ad requires ssl.
   ///
   /// This is a read-only field that is auto-generated when the ad is inserted
   /// or updated.
-  core.bool sslRequired;
-  core.DateTime startTime;
+  core.bool? sslRequired;
+  core.DateTime? startTime;
 
   /// Subaccount ID of this ad.
   ///
   /// This is a read-only field that can be left blank.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Targeting template ID, used to apply preconfigured targeting information
   /// to this ad.
@@ -13175,13 +12151,13 @@ class Ad {
   /// keyValueTargetingExpression, languageTargeting, remarketingListExpression,
   /// or technologyTargeting are set. Applicable when type is
   /// AD_SERVING_STANDARD_AD.
-  core.String targetingTemplateId;
+  core.String? targetingTemplateId;
 
   /// Technology platform targeting information for this ad.
   ///
   /// This field must be left blank if the ad is using a targeting template.
   /// Applicable when type is AD_SERVING_STANDARD_AD.
-  TechnologyTargeting technologyTargeting;
+  TechnologyTargeting? technologyTargeting;
 
   /// Type of ad.
   ///
@@ -13193,7 +12169,7 @@ class Ad {
   /// - "AD_SERVING_CLICK_TRACKER"
   /// - "AD_SERVING_TRACKING"
   /// - "AD_SERVING_BRAND_SAFE_AD"
-  core.String type;
+  core.String? type;
 
   Ad();
 
@@ -13353,70 +12329,70 @@ class Ad {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (active != null) 'active': active,
-        if (advertiserId != null) 'advertiserId': advertiserId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (active != null) 'active': active!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
         if (advertiserIdDimensionValue != null)
-          'advertiserIdDimensionValue': advertiserIdDimensionValue.toJson(),
-        if (archived != null) 'archived': archived,
-        if (audienceSegmentId != null) 'audienceSegmentId': audienceSegmentId,
-        if (campaignId != null) 'campaignId': campaignId,
+          'advertiserIdDimensionValue': advertiserIdDimensionValue!.toJson(),
+        if (archived != null) 'archived': archived!,
+        if (audienceSegmentId != null) 'audienceSegmentId': audienceSegmentId!,
+        if (campaignId != null) 'campaignId': campaignId!,
         if (campaignIdDimensionValue != null)
-          'campaignIdDimensionValue': campaignIdDimensionValue.toJson(),
+          'campaignIdDimensionValue': campaignIdDimensionValue!.toJson(),
         if (clickThroughUrl != null)
-          'clickThroughUrl': clickThroughUrl.toJson(),
+          'clickThroughUrl': clickThroughUrl!.toJson(),
         if (clickThroughUrlSuffixProperties != null)
           'clickThroughUrlSuffixProperties':
-              clickThroughUrlSuffixProperties.toJson(),
-        if (comments != null) 'comments': comments,
-        if (compatibility != null) 'compatibility': compatibility,
-        if (createInfo != null) 'createInfo': createInfo.toJson(),
+              clickThroughUrlSuffixProperties!.toJson(),
+        if (comments != null) 'comments': comments!,
+        if (compatibility != null) 'compatibility': compatibility!,
+        if (createInfo != null) 'createInfo': createInfo!.toJson(),
         if (creativeGroupAssignments != null)
           'creativeGroupAssignments':
-              creativeGroupAssignments.map((value) => value.toJson()).toList(),
+              creativeGroupAssignments!.map((value) => value.toJson()).toList(),
         if (creativeRotation != null)
-          'creativeRotation': creativeRotation.toJson(),
+          'creativeRotation': creativeRotation!.toJson(),
         if (dayPartTargeting != null)
-          'dayPartTargeting': dayPartTargeting.toJson(),
+          'dayPartTargeting': dayPartTargeting!.toJson(),
         if (defaultClickThroughEventTagProperties != null)
           'defaultClickThroughEventTagProperties':
-              defaultClickThroughEventTagProperties.toJson(),
+              defaultClickThroughEventTagProperties!.toJson(),
         if (deliverySchedule != null)
-          'deliverySchedule': deliverySchedule.toJson(),
+          'deliverySchedule': deliverySchedule!.toJson(),
         if (dynamicClickTracker != null)
-          'dynamicClickTracker': dynamicClickTracker,
-        if (endTime != null) 'endTime': (endTime).toIso8601String(),
+          'dynamicClickTracker': dynamicClickTracker!,
+        if (endTime != null) 'endTime': (endTime!).toIso8601String(),
         if (eventTagOverrides != null)
           'eventTagOverrides':
-              eventTagOverrides.map((value) => value.toJson()).toList(),
-        if (geoTargeting != null) 'geoTargeting': geoTargeting.toJson(),
-        if (id != null) 'id': id,
+              eventTagOverrides!.map((value) => value.toJson()).toList(),
+        if (geoTargeting != null) 'geoTargeting': geoTargeting!.toJson(),
+        if (id != null) 'id': id!,
         if (idDimensionValue != null)
-          'idDimensionValue': idDimensionValue.toJson(),
+          'idDimensionValue': idDimensionValue!.toJson(),
         if (keyValueTargetingExpression != null)
-          'keyValueTargetingExpression': keyValueTargetingExpression.toJson(),
-        if (kind != null) 'kind': kind,
+          'keyValueTargetingExpression': keyValueTargetingExpression!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (languageTargeting != null)
-          'languageTargeting': languageTargeting.toJson(),
+          'languageTargeting': languageTargeting!.toJson(),
         if (lastModifiedInfo != null)
-          'lastModifiedInfo': lastModifiedInfo.toJson(),
-        if (name != null) 'name': name,
+          'lastModifiedInfo': lastModifiedInfo!.toJson(),
+        if (name != null) 'name': name!,
         if (placementAssignments != null)
           'placementAssignments':
-              placementAssignments.map((value) => value.toJson()).toList(),
+              placementAssignments!.map((value) => value.toJson()).toList(),
         if (remarketingListExpression != null)
-          'remarketingListExpression': remarketingListExpression.toJson(),
-        if (size != null) 'size': size.toJson(),
-        if (sslCompliant != null) 'sslCompliant': sslCompliant,
-        if (sslRequired != null) 'sslRequired': sslRequired,
-        if (startTime != null) 'startTime': (startTime).toIso8601String(),
-        if (subaccountId != null) 'subaccountId': subaccountId,
+          'remarketingListExpression': remarketingListExpression!.toJson(),
+        if (size != null) 'size': size!.toJson(),
+        if (sslCompliant != null) 'sslCompliant': sslCompliant!,
+        if (sslRequired != null) 'sslRequired': sslRequired!,
+        if (startTime != null) 'startTime': (startTime!).toIso8601String(),
+        if (subaccountId != null) 'subaccountId': subaccountId!,
         if (targetingTemplateId != null)
-          'targetingTemplateId': targetingTemplateId,
+          'targetingTemplateId': targetingTemplateId!,
         if (technologyTargeting != null)
-          'technologyTargeting': technologyTargeting.toJson(),
-        if (type != null) 'type': type,
+          'technologyTargeting': technologyTargeting!.toJson(),
+        if (type != null) 'type': type!,
       };
 }
 
@@ -13425,13 +12401,13 @@ class AdBlockingConfiguration {
   /// Click-through URL used by brand-neutral ads.
   ///
   /// This is a required field when overrideClickThroughUrl is set to true.
-  core.String clickThroughUrl;
+  core.String? clickThroughUrl;
 
   /// ID of a creative bundle to use for this campaign.
   ///
   /// If set, brand-neutral ads will select creatives from this bundle.
   /// Otherwise, a default transparent pixel will be used.
-  core.String creativeBundleId;
+  core.String? creativeBundleId;
 
   /// Whether this campaign has enabled ad blocking.
   ///
@@ -13439,14 +12415,14 @@ class AdBlockingConfiguration {
   /// may be overridden by site and placement settings. When false, ad blocking
   /// is disabled for all placements under the campaign, regardless of site and
   /// placement settings.
-  core.bool enabled;
+  core.bool? enabled;
 
   /// Whether the brand-neutral ad's click-through URL comes from the campaign's
   /// creative bundle or the override URL.
   ///
   /// Must be set to true if ad blocking is enabled and no creative bundle is
   /// configured.
-  core.bool overrideClickThroughUrl;
+  core.bool? overrideClickThroughUrl;
 
   AdBlockingConfiguration();
 
@@ -13465,19 +12441,19 @@ class AdBlockingConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clickThroughUrl != null) 'clickThroughUrl': clickThroughUrl,
-        if (creativeBundleId != null) 'creativeBundleId': creativeBundleId,
-        if (enabled != null) 'enabled': enabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clickThroughUrl != null) 'clickThroughUrl': clickThroughUrl!,
+        if (creativeBundleId != null) 'creativeBundleId': creativeBundleId!,
+        if (enabled != null) 'enabled': enabled!,
         if (overrideClickThroughUrl != null)
-          'overrideClickThroughUrl': overrideClickThroughUrl,
+          'overrideClickThroughUrl': overrideClickThroughUrl!,
       };
 }
 
 /// Ad Slot
 class AdSlot {
   /// Comment for this ad slot.
-  core.String comment;
+  core.String? comment;
 
   /// Ad slot compatibility.
   ///
@@ -13493,29 +12469,29 @@ class AdSlot {
   /// - "APP_INTERSTITIAL"
   /// - "IN_STREAM_VIDEO"
   /// - "IN_STREAM_AUDIO"
-  core.String compatibility;
+  core.String? compatibility;
 
   /// Height of this ad slot.
-  core.String height;
+  core.String? height;
 
   /// ID of the placement from an external platform that is linked to this ad
   /// slot.
-  core.String linkedPlacementId;
+  core.String? linkedPlacementId;
 
   /// Name of this ad slot.
-  core.String name;
+  core.String? name;
 
   /// Payment source type of this ad slot.
   /// Possible string values are:
   /// - "PLANNING_PAYMENT_SOURCE_TYPE_AGENCY_PAID"
   /// - "PLANNING_PAYMENT_SOURCE_TYPE_PUBLISHER_PAID"
-  core.String paymentSourceType;
+  core.String? paymentSourceType;
 
   /// Primary ad slot of a roadblock inventory item.
-  core.bool primary;
+  core.bool? primary;
 
   /// Width of this ad slot.
-  core.String width;
+  core.String? width;
 
   AdSlot();
 
@@ -13546,30 +12522,30 @@ class AdSlot {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (comment != null) 'comment': comment,
-        if (compatibility != null) 'compatibility': compatibility,
-        if (height != null) 'height': height,
-        if (linkedPlacementId != null) 'linkedPlacementId': linkedPlacementId,
-        if (name != null) 'name': name,
-        if (paymentSourceType != null) 'paymentSourceType': paymentSourceType,
-        if (primary != null) 'primary': primary,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (comment != null) 'comment': comment!,
+        if (compatibility != null) 'compatibility': compatibility!,
+        if (height != null) 'height': height!,
+        if (linkedPlacementId != null) 'linkedPlacementId': linkedPlacementId!,
+        if (name != null) 'name': name!,
+        if (paymentSourceType != null) 'paymentSourceType': paymentSourceType!,
+        if (primary != null) 'primary': primary!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// Ad List Response
 class AdsListResponse {
   /// Ad collection.
-  core.List<Ad> ads;
+  core.List<Ad>? ads;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#adsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   AdsListResponse();
 
@@ -13588,10 +12564,10 @@ class AdsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ads != null) 'ads': ads.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ads != null) 'ads': ads!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -13599,26 +12575,26 @@ class AdsListResponse {
 class Advertiser {
   /// Account ID of this advertiser.This is a read-only field that can be left
   /// blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// ID of the advertiser group this advertiser belongs to.
   ///
   /// You can group advertisers for reporting purposes, allowing you to see
   /// aggregated information for all advertisers in each group.
-  core.String advertiserGroupId;
+  core.String? advertiserGroupId;
 
   /// Suffix added to click-through URL of ad creative associations under this
   /// advertiser.
   ///
   /// Must be less than 129 characters long.
-  core.String clickThroughUrlSuffix;
+  core.String? clickThroughUrlSuffix;
 
   /// ID of the click-through event tag to apply by default to the landing pages
   /// of this advertiser's campaigns.
-  core.String defaultClickThroughEventTagId;
+  core.String? defaultClickThroughEventTagId;
 
   /// Default email address used in sender field for tag emails.
-  core.String defaultEmail;
+  core.String? defaultEmail;
 
   /// Floodlight configuration ID of this advertiser.
   ///
@@ -13630,33 +12606,33 @@ class Advertiser {
   /// associated with floodlight activities or floodlight activity groups. -
   /// This advertiser's original floodlight configuration is not already shared
   /// with another advertiser.
-  core.String floodlightConfigurationId;
+  core.String? floodlightConfigurationId;
 
   /// Dimension value for the ID of the floodlight configuration.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue floodlightConfigurationIdDimensionValue;
+  DimensionValue? floodlightConfigurationIdDimensionValue;
 
   /// ID of this advertiser.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Dimension value for the ID of this advertiser.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue idDimensionValue;
+  DimensionValue? idDimensionValue;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#advertiser".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this advertiser.
   ///
   /// This is a required field and must be less than 256 characters long and
   /// unique among advertisers of the same account.
-  core.String name;
+  core.String? name;
 
   /// Original floodlight configuration before any sharing occurred.
   ///
@@ -13665,20 +12641,20 @@ class Advertiser {
   /// floodlight configuration. You cannot unshare an advertiser's floodlight
   /// configuration if the shared configuration has activities associated with
   /// any campaign or placement.
-  core.String originalFloodlightConfigurationId;
+  core.String? originalFloodlightConfigurationId;
 
   /// Status of this advertiser.
   /// Possible string values are:
   /// - "APPROVED"
   /// - "ON_HOLD"
-  core.String status;
+  core.String? status;
 
   /// Subaccount ID of this advertiser.This is a read-only field that can be
   /// left blank.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Suspension status of this advertiser.
-  core.bool suspended;
+  core.bool? suspended;
 
   Advertiser();
 
@@ -13736,30 +12712,30 @@ class Advertiser {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (advertiserGroupId != null) 'advertiserGroupId': advertiserGroupId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (advertiserGroupId != null) 'advertiserGroupId': advertiserGroupId!,
         if (clickThroughUrlSuffix != null)
-          'clickThroughUrlSuffix': clickThroughUrlSuffix,
+          'clickThroughUrlSuffix': clickThroughUrlSuffix!,
         if (defaultClickThroughEventTagId != null)
-          'defaultClickThroughEventTagId': defaultClickThroughEventTagId,
-        if (defaultEmail != null) 'defaultEmail': defaultEmail,
+          'defaultClickThroughEventTagId': defaultClickThroughEventTagId!,
+        if (defaultEmail != null) 'defaultEmail': defaultEmail!,
         if (floodlightConfigurationId != null)
-          'floodlightConfigurationId': floodlightConfigurationId,
+          'floodlightConfigurationId': floodlightConfigurationId!,
         if (floodlightConfigurationIdDimensionValue != null)
           'floodlightConfigurationIdDimensionValue':
-              floodlightConfigurationIdDimensionValue.toJson(),
-        if (id != null) 'id': id,
+              floodlightConfigurationIdDimensionValue!.toJson(),
+        if (id != null) 'id': id!,
         if (idDimensionValue != null)
-          'idDimensionValue': idDimensionValue.toJson(),
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+          'idDimensionValue': idDimensionValue!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
         if (originalFloodlightConfigurationId != null)
           'originalFloodlightConfigurationId':
-              originalFloodlightConfigurationId,
-        if (status != null) 'status': status,
-        if (subaccountId != null) 'subaccountId': subaccountId,
-        if (suspended != null) 'suspended': suspended,
+              originalFloodlightConfigurationId!,
+        if (status != null) 'status': status!,
+        if (subaccountId != null) 'subaccountId': subaccountId!,
+        if (suspended != null) 'suspended': suspended!,
       };
 }
 
@@ -13769,23 +12745,23 @@ class AdvertiserGroup {
   /// Account ID of this advertiser group.
   ///
   /// This is a read-only field that can be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// ID of this advertiser group.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#advertiserGroup".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this advertiser group.
   ///
   /// This is a required field and must be less than 256 characters long and
   /// unique among advertiser groups of the same account.
-  core.String name;
+  core.String? name;
 
   AdvertiserGroup();
 
@@ -13804,26 +12780,26 @@ class AdvertiserGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Advertiser Group List Response
 class AdvertiserGroupsListResponse {
   /// Advertiser group collection.
-  core.List<AdvertiserGroup> advertiserGroups;
+  core.List<AdvertiserGroup>? advertiserGroups;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#advertiserGroupsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   AdvertiserGroupsListResponse();
 
@@ -13842,12 +12818,12 @@ class AdvertiserGroupsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (advertiserGroups != null)
           'advertiserGroups':
-              advertiserGroups.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              advertiserGroups!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -13856,13 +12832,13 @@ class AdvertiserLandingPagesListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#advertiserLandingPagesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Landing page collection
-  core.List<LandingPage> landingPages;
+  core.List<LandingPage>? landingPages;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   AdvertiserLandingPagesListResponse();
 
@@ -13881,26 +12857,26 @@ class AdvertiserLandingPagesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (landingPages != null)
-          'landingPages': landingPages.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'landingPages': landingPages!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Advertiser List Response
 class AdvertisersListResponse {
   /// Advertiser collection.
-  core.List<Advertiser> advertisers;
+  core.List<Advertiser>? advertisers;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#advertisersListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   AdvertisersListResponse();
 
@@ -13919,11 +12895,11 @@ class AdvertisersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (advertisers != null)
-          'advertisers': advertisers.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'advertisers': advertisers!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -13934,17 +12910,17 @@ class AudienceSegment {
   /// The weight assigned will be understood in proportion to the weights
   /// assigned to other segments in the same segment group. Acceptable values
   /// are 1 to 1000, inclusive.
-  core.int allocation;
+  core.int? allocation;
 
   /// ID of this audience segment.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Name of this audience segment.
   ///
   /// This is a required field and must be less than 65 characters long.
-  core.String name;
+  core.String? name;
 
   AudienceSegment();
 
@@ -13960,10 +12936,10 @@ class AudienceSegment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allocation != null) 'allocation': allocation,
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allocation != null) 'allocation': allocation!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -13972,17 +12948,17 @@ class AudienceSegmentGroup {
   /// Audience segments assigned to this group.
   ///
   /// The number of segments must be between 2 and 100.
-  core.List<AudienceSegment> audienceSegments;
+  core.List<AudienceSegment>? audienceSegments;
 
   /// ID of this audience segment group.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Name of this audience segment group.
   ///
   /// This is a required field and must be less than 65 characters long.
-  core.String name;
+  core.String? name;
 
   AudienceSegmentGroup();
 
@@ -14001,12 +12977,12 @@ class AudienceSegmentGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (audienceSegments != null)
           'audienceSegments':
-              audienceSegments.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
+              audienceSegments!.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -14015,17 +12991,17 @@ class Browser {
   /// ID referring to this grouping of browser and version numbers.
   ///
   /// This is the ID used for targeting.
-  core.String browserVersionId;
+  core.String? browserVersionId;
 
   /// DART ID of this browser.
   ///
   /// This is the ID used when generating reports.
-  core.String dartId;
+  core.String? dartId;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#browser".
-  core.String kind;
+  core.String? kind;
 
   /// Major version number (leftmost number) of this browser.
   ///
@@ -14036,7 +13012,7 @@ class Browser {
   /// 2.5, 3.5, and so on. Chrome 3.* targets Chrome 3.1, 3.5, but not 4.0.
   /// Firefox ?.? targets cases where the ad server knows the browser is Firefox
   /// but can't tell which version it is.
-  core.String majorVersion;
+  core.String? majorVersion;
 
   /// Minor version number (number after first dot on left) of this browser.
   ///
@@ -14047,10 +13023,10 @@ class Browser {
   /// 2.5, 3.5, and so on. Chrome 3.* targets Chrome 3.1, 3.5, but not 4.0.
   /// Firefox ?.? targets cases where the ad server knows the browser is Firefox
   /// but can't tell which version it is.
-  core.String minorVersion;
+  core.String? minorVersion;
 
   /// Name of this browser.
-  core.String name;
+  core.String? name;
 
   Browser();
 
@@ -14075,25 +13051,25 @@ class Browser {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (browserVersionId != null) 'browserVersionId': browserVersionId,
-        if (dartId != null) 'dartId': dartId,
-        if (kind != null) 'kind': kind,
-        if (majorVersion != null) 'majorVersion': majorVersion,
-        if (minorVersion != null) 'minorVersion': minorVersion,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (browserVersionId != null) 'browserVersionId': browserVersionId!,
+        if (dartId != null) 'dartId': dartId!,
+        if (kind != null) 'kind': kind!,
+        if (majorVersion != null) 'majorVersion': majorVersion!,
+        if (minorVersion != null) 'minorVersion': minorVersion!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Browser List Response
 class BrowsersListResponse {
   /// Browser collection.
-  core.List<Browser> browsers;
+  core.List<Browser>? browsers;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#browsersListResponse".
-  core.String kind;
+  core.String? kind;
 
   BrowsersListResponse();
 
@@ -14109,10 +13085,10 @@ class BrowsersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (browsers != null)
-          'browsers': browsers.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'browsers': browsers!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -14121,110 +13097,110 @@ class Campaign {
   /// Account ID of this campaign.
   ///
   /// This is a read-only field that can be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// Ad blocking settings for this campaign.
-  AdBlockingConfiguration adBlockingConfiguration;
+  AdBlockingConfiguration? adBlockingConfiguration;
 
   /// Additional creative optimization configurations for the campaign.
-  core.List<CreativeOptimizationConfiguration>
+  core.List<CreativeOptimizationConfiguration>?
       additionalCreativeOptimizationConfigurations;
 
   /// Advertiser group ID of the associated advertiser.
-  core.String advertiserGroupId;
+  core.String? advertiserGroupId;
 
   /// Advertiser ID of this campaign.
   ///
   /// This is a required field.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Dimension value for the advertiser ID of this campaign.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue advertiserIdDimensionValue;
+  DimensionValue? advertiserIdDimensionValue;
 
   /// Whether this campaign has been archived.
-  core.bool archived;
+  core.bool? archived;
 
   /// Audience segment groups assigned to this campaign.
   ///
   /// Cannot have more than 300 segment groups.
-  core.List<AudienceSegmentGroup> audienceSegmentGroups;
+  core.List<AudienceSegmentGroup>? audienceSegmentGroups;
 
   /// Billing invoice code included in the Campaign Manager client billing
   /// invoices associated with the campaign.
-  core.String billingInvoiceCode;
+  core.String? billingInvoiceCode;
 
   /// Click-through URL suffix override properties for this campaign.
-  ClickThroughUrlSuffixProperties clickThroughUrlSuffixProperties;
+  ClickThroughUrlSuffixProperties? clickThroughUrlSuffixProperties;
 
   /// Arbitrary comments about this campaign.
   ///
   /// Must be less than 256 characters long.
-  core.String comment;
+  core.String? comment;
 
   /// Information about the creation of this campaign.
   ///
   /// This is a read-only field.
-  LastModifiedInfo createInfo;
+  LastModifiedInfo? createInfo;
 
   /// List of creative group IDs that are assigned to the campaign.
-  core.List<core.String> creativeGroupIds;
+  core.List<core.String>? creativeGroupIds;
 
   /// Creative optimization configuration for the campaign.
-  CreativeOptimizationConfiguration creativeOptimizationConfiguration;
+  CreativeOptimizationConfiguration? creativeOptimizationConfiguration;
 
   /// Click-through event tag ID override properties for this campaign.
-  DefaultClickThroughEventTagProperties defaultClickThroughEventTagProperties;
+  DefaultClickThroughEventTagProperties? defaultClickThroughEventTagProperties;
 
   /// The default landing page ID for this campaign.
-  core.String defaultLandingPageId;
-  core.DateTime endDate;
+  core.String? defaultLandingPageId;
+  core.DateTime? endDate;
 
   /// Overrides that can be used to activate or deactivate advertiser event
   /// tags.
-  core.List<EventTagOverride> eventTagOverrides;
+  core.List<EventTagOverride>? eventTagOverrides;
 
   /// External ID for this campaign.
-  core.String externalId;
+  core.String? externalId;
 
   /// ID of this campaign.
   ///
   /// This is a read-only auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Dimension value for the ID of this campaign.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue idDimensionValue;
+  DimensionValue? idDimensionValue;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#campaign".
-  core.String kind;
+  core.String? kind;
 
   /// Information about the most recent modification of this campaign.
   ///
   /// This is a read-only field.
-  LastModifiedInfo lastModifiedInfo;
+  LastModifiedInfo? lastModifiedInfo;
 
   /// Name of this campaign.
   ///
   /// This is a required field and must be less than 256 characters long and
   /// unique among campaigns of the same advertiser.
-  core.String name;
+  core.String? name;
 
   /// Whether Nielsen reports are enabled for this campaign.
-  core.bool nielsenOcrEnabled;
-  core.DateTime startDate;
+  core.bool? nielsenOcrEnabled;
+  core.DateTime? startDate;
 
   /// Subaccount ID of this campaign.
   ///
   /// This is a read-only field that can be left blank.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Campaign trafficker contact emails.
-  core.List<core.String> traffickerEmails;
+  core.List<core.String>? traffickerEmails;
 
   Campaign();
 
@@ -14346,59 +13322,59 @@ class Campaign {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (adBlockingConfiguration != null)
-          'adBlockingConfiguration': adBlockingConfiguration.toJson(),
+          'adBlockingConfiguration': adBlockingConfiguration!.toJson(),
         if (additionalCreativeOptimizationConfigurations != null)
           'additionalCreativeOptimizationConfigurations':
-              additionalCreativeOptimizationConfigurations
+              additionalCreativeOptimizationConfigurations!
                   .map((value) => value.toJson())
                   .toList(),
-        if (advertiserGroupId != null) 'advertiserGroupId': advertiserGroupId,
-        if (advertiserId != null) 'advertiserId': advertiserId,
+        if (advertiserGroupId != null) 'advertiserGroupId': advertiserGroupId!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
         if (advertiserIdDimensionValue != null)
-          'advertiserIdDimensionValue': advertiserIdDimensionValue.toJson(),
-        if (archived != null) 'archived': archived,
+          'advertiserIdDimensionValue': advertiserIdDimensionValue!.toJson(),
+        if (archived != null) 'archived': archived!,
         if (audienceSegmentGroups != null)
           'audienceSegmentGroups':
-              audienceSegmentGroups.map((value) => value.toJson()).toList(),
+              audienceSegmentGroups!.map((value) => value.toJson()).toList(),
         if (billingInvoiceCode != null)
-          'billingInvoiceCode': billingInvoiceCode,
+          'billingInvoiceCode': billingInvoiceCode!,
         if (clickThroughUrlSuffixProperties != null)
           'clickThroughUrlSuffixProperties':
-              clickThroughUrlSuffixProperties.toJson(),
-        if (comment != null) 'comment': comment,
-        if (createInfo != null) 'createInfo': createInfo.toJson(),
-        if (creativeGroupIds != null) 'creativeGroupIds': creativeGroupIds,
+              clickThroughUrlSuffixProperties!.toJson(),
+        if (comment != null) 'comment': comment!,
+        if (createInfo != null) 'createInfo': createInfo!.toJson(),
+        if (creativeGroupIds != null) 'creativeGroupIds': creativeGroupIds!,
         if (creativeOptimizationConfiguration != null)
           'creativeOptimizationConfiguration':
-              creativeOptimizationConfiguration.toJson(),
+              creativeOptimizationConfiguration!.toJson(),
         if (defaultClickThroughEventTagProperties != null)
           'defaultClickThroughEventTagProperties':
-              defaultClickThroughEventTagProperties.toJson(),
+              defaultClickThroughEventTagProperties!.toJson(),
         if (defaultLandingPageId != null)
-          'defaultLandingPageId': defaultLandingPageId,
+          'defaultLandingPageId': defaultLandingPageId!,
         if (endDate != null)
           'endDate':
-              "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}",
+              "${(endDate!).year.toString().padLeft(4, '0')}-${(endDate!).month.toString().padLeft(2, '0')}-${(endDate!).day.toString().padLeft(2, '0')}",
         if (eventTagOverrides != null)
           'eventTagOverrides':
-              eventTagOverrides.map((value) => value.toJson()).toList(),
-        if (externalId != null) 'externalId': externalId,
-        if (id != null) 'id': id,
+              eventTagOverrides!.map((value) => value.toJson()).toList(),
+        if (externalId != null) 'externalId': externalId!,
+        if (id != null) 'id': id!,
         if (idDimensionValue != null)
-          'idDimensionValue': idDimensionValue.toJson(),
-        if (kind != null) 'kind': kind,
+          'idDimensionValue': idDimensionValue!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (lastModifiedInfo != null)
-          'lastModifiedInfo': lastModifiedInfo.toJson(),
-        if (name != null) 'name': name,
-        if (nielsenOcrEnabled != null) 'nielsenOcrEnabled': nielsenOcrEnabled,
+          'lastModifiedInfo': lastModifiedInfo!.toJson(),
+        if (name != null) 'name': name!,
+        if (nielsenOcrEnabled != null) 'nielsenOcrEnabled': nielsenOcrEnabled!,
         if (startDate != null)
           'startDate':
-              "${(startDate).year.toString().padLeft(4, '0')}-${(startDate).month.toString().padLeft(2, '0')}-${(startDate).day.toString().padLeft(2, '0')}",
-        if (subaccountId != null) 'subaccountId': subaccountId,
-        if (traffickerEmails != null) 'traffickerEmails': traffickerEmails,
+              "${(startDate!).year.toString().padLeft(4, '0')}-${(startDate!).month.toString().padLeft(2, '0')}-${(startDate!).day.toString().padLeft(2, '0')}",
+        if (subaccountId != null) 'subaccountId': subaccountId!,
+        if (traffickerEmails != null) 'traffickerEmails': traffickerEmails!,
       };
 }
 
@@ -14407,12 +13383,12 @@ class CampaignCreativeAssociation {
   /// ID of the creative associated with the campaign.
   ///
   /// This is a required field.
-  core.String creativeId;
+  core.String? creativeId;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#campaignCreativeAssociation".
-  core.String kind;
+  core.String? kind;
 
   CampaignCreativeAssociation();
 
@@ -14425,25 +13401,25 @@ class CampaignCreativeAssociation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creativeId != null) 'creativeId': creativeId,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creativeId != null) 'creativeId': creativeId!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Campaign Creative Association List Response
 class CampaignCreativeAssociationsListResponse {
   /// Campaign creative association collection
-  core.List<CampaignCreativeAssociation> campaignCreativeAssociations;
+  core.List<CampaignCreativeAssociation>? campaignCreativeAssociations;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
   /// "dfareporting#campaignCreativeAssociationsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   CampaignCreativeAssociationsListResponse();
 
@@ -14464,37 +13440,37 @@ class CampaignCreativeAssociationsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (campaignCreativeAssociations != null)
-          'campaignCreativeAssociations': campaignCreativeAssociations
+          'campaignCreativeAssociations': campaignCreativeAssociations!
               .map((value) => value.toJson())
               .toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Campaign Manager IDs related to the custom event.
 class CampaignManagerIds {
   /// Ad ID for Campaign Manager.
-  core.String adId;
+  core.String? adId;
 
   /// Campaign ID for Campaign Manager.
-  core.String campaignId;
+  core.String? campaignId;
 
   /// Creative ID for Campaign Manager.
-  core.String creativeId;
+  core.String? creativeId;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#campaignManagerIds".
-  core.String kind;
+  core.String? kind;
 
   /// Placement ID for Campaign Manager.
-  core.String placementId;
+  core.String? placementId;
 
   /// Site ID for Campaign Manager.
-  core.String siteId;
+  core.String? siteId;
 
   CampaignManagerIds();
 
@@ -14519,28 +13495,28 @@ class CampaignManagerIds {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (adId != null) 'adId': adId,
-        if (campaignId != null) 'campaignId': campaignId,
-        if (creativeId != null) 'creativeId': creativeId,
-        if (kind != null) 'kind': kind,
-        if (placementId != null) 'placementId': placementId,
-        if (siteId != null) 'siteId': siteId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (adId != null) 'adId': adId!,
+        if (campaignId != null) 'campaignId': campaignId!,
+        if (creativeId != null) 'creativeId': creativeId!,
+        if (kind != null) 'kind': kind!,
+        if (placementId != null) 'placementId': placementId!,
+        if (siteId != null) 'siteId': siteId!,
       };
 }
 
 /// Campaign List Response
 class CampaignsListResponse {
   /// Campaign collection.
-  core.List<Campaign> campaigns;
+  core.List<Campaign>? campaigns;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#campaignsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   CampaignsListResponse();
 
@@ -14559,62 +13535,62 @@ class CampaignsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (campaigns != null)
-          'campaigns': campaigns.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'campaigns': campaigns!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Describes a change that a user has made to a resource.
 class ChangeLog {
   /// Account ID of the modified object.
-  core.String accountId;
+  core.String? accountId;
 
   /// Action which caused the change.
-  core.String action;
-  core.DateTime changeTime;
+  core.String? action;
+  core.DateTime? changeTime;
 
   /// Field name of the object which changed.
-  core.String fieldName;
+  core.String? fieldName;
 
   /// ID of this change log.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#changeLog".
-  core.String kind;
+  core.String? kind;
 
   /// New value of the object field.
-  core.String newValue;
+  core.String? newValue;
 
   /// ID of the object of this change log.
   ///
   /// The object could be a campaign, placement, ad, or other type.
-  core.String objectId;
+  core.String? objectId;
 
   /// Object type of the change log.
-  core.String objectType;
+  core.String? objectType;
 
   /// Old value of the object field.
-  core.String oldValue;
+  core.String? oldValue;
 
   /// Subaccount ID of the modified object.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Transaction ID of this change log.
   ///
   /// When a single API call results in many changes, each change will have a
   /// separate ID in the change log but will share the same transactionId.
-  core.String transactionId;
+  core.String? transactionId;
 
   /// ID of the user who modified the object.
-  core.String userProfileId;
+  core.String? userProfileId;
 
   /// User profile name of the user who modified the object.
-  core.String userProfileName;
+  core.String? userProfileName;
 
   ChangeLog();
 
@@ -14663,36 +13639,36 @@ class ChangeLog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (action != null) 'action': action,
-        if (changeTime != null) 'changeTime': (changeTime).toIso8601String(),
-        if (fieldName != null) 'fieldName': fieldName,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (newValue != null) 'newValue': newValue,
-        if (objectId != null) 'objectId': objectId,
-        if (objectType != null) 'objectType': objectType,
-        if (oldValue != null) 'oldValue': oldValue,
-        if (subaccountId != null) 'subaccountId': subaccountId,
-        if (transactionId != null) 'transactionId': transactionId,
-        if (userProfileId != null) 'userProfileId': userProfileId,
-        if (userProfileName != null) 'userProfileName': userProfileName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (action != null) 'action': action!,
+        if (changeTime != null) 'changeTime': (changeTime!).toIso8601String(),
+        if (fieldName != null) 'fieldName': fieldName!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (newValue != null) 'newValue': newValue!,
+        if (objectId != null) 'objectId': objectId!,
+        if (objectType != null) 'objectType': objectType!,
+        if (oldValue != null) 'oldValue': oldValue!,
+        if (subaccountId != null) 'subaccountId': subaccountId!,
+        if (transactionId != null) 'transactionId': transactionId!,
+        if (userProfileId != null) 'userProfileId': userProfileId!,
+        if (userProfileName != null) 'userProfileName': userProfileName!,
       };
 }
 
 /// Change Log List Response
 class ChangeLogsListResponse {
   /// Change log collection.
-  core.List<ChangeLog> changeLogs;
+  core.List<ChangeLog>? changeLogs;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#changeLogsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ChangeLogsListResponse();
 
@@ -14711,27 +13687,27 @@ class ChangeLogsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (changeLogs != null)
-          'changeLogs': changeLogs.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'changeLogs': changeLogs!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Represents a DfaReporting channel grouping.
 class ChannelGrouping {
   /// ChannelGrouping fallback name.
-  core.String fallbackName;
+  core.String? fallbackName;
 
   /// The kind of resource this is, in this case dfareporting#channelGrouping.
-  core.String kind;
+  core.String? kind;
 
   /// ChannelGrouping name.
-  core.String name;
+  core.String? name;
 
   /// The rules contained within this channel grouping.
-  core.List<ChannelGroupingRule> rules;
+  core.List<ChannelGroupingRule>? rules;
 
   ChannelGrouping();
 
@@ -14753,26 +13729,26 @@ class ChannelGrouping {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fallbackName != null) 'fallbackName': fallbackName,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fallbackName != null) 'fallbackName': fallbackName!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
         if (rules != null)
-          'rules': rules.map((value) => value.toJson()).toList(),
+          'rules': rules!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Represents a DfaReporting channel grouping rule.
 class ChannelGroupingRule {
   /// The disjunctive match statements contained within this rule.
-  core.List<DisjunctiveMatchStatement> disjunctiveMatchStatements;
+  core.List<DisjunctiveMatchStatement>? disjunctiveMatchStatements;
 
   /// The kind of resource this is, in this case
   /// dfareporting#channelGroupingRule.
-  core.String kind;
+  core.String? kind;
 
   /// Rule name.
-  core.String name;
+  core.String? name;
 
   ChannelGroupingRule();
 
@@ -14793,25 +13769,25 @@ class ChannelGroupingRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (disjunctiveMatchStatements != null)
-          'disjunctiveMatchStatements': disjunctiveMatchStatements
+          'disjunctiveMatchStatements': disjunctiveMatchStatements!
               .map((value) => value.toJson())
               .toList(),
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// City List Response
 class CitiesListResponse {
   /// City collection.
-  core.List<City> cities;
+  core.List<City>? cities;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#citiesListResponse".
-  core.String kind;
+  core.String? kind;
 
   CitiesListResponse();
 
@@ -14827,45 +13803,45 @@ class CitiesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cities != null)
-          'cities': cities.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'cities': cities!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Contains information about a city that can be targeted by ads.
 class City {
   /// Country code of the country to which this city belongs.
-  core.String countryCode;
+  core.String? countryCode;
 
   /// DART ID of the country to which this city belongs.
-  core.String countryDartId;
+  core.String? countryDartId;
 
   /// DART ID of this city.
   ///
   /// This is the ID used for targeting and generating reports.
-  core.String dartId;
+  core.String? dartId;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#city".
-  core.String kind;
+  core.String? kind;
 
   /// Metro region code of the metro region (DMA) to which this city belongs.
-  core.String metroCode;
+  core.String? metroCode;
 
   /// ID of the metro region (DMA) to which this city belongs.
-  core.String metroDmaId;
+  core.String? metroDmaId;
 
   /// Name of this city.
-  core.String name;
+  core.String? name;
 
   /// Region code of the region to which this city belongs.
-  core.String regionCode;
+  core.String? regionCode;
 
   /// DART ID of the region to which this city belongs.
-  core.String regionDartId;
+  core.String? regionDartId;
 
   City();
 
@@ -14899,16 +13875,16 @@ class City {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (countryCode != null) 'countryCode': countryCode,
-        if (countryDartId != null) 'countryDartId': countryDartId,
-        if (dartId != null) 'dartId': dartId,
-        if (kind != null) 'kind': kind,
-        if (metroCode != null) 'metroCode': metroCode,
-        if (metroDmaId != null) 'metroDmaId': metroDmaId,
-        if (name != null) 'name': name,
-        if (regionCode != null) 'regionCode': regionCode,
-        if (regionDartId != null) 'regionDartId': regionDartId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (countryDartId != null) 'countryDartId': countryDartId!,
+        if (dartId != null) 'dartId': dartId!,
+        if (kind != null) 'kind': kind!,
+        if (metroCode != null) 'metroCode': metroCode!,
+        if (metroDmaId != null) 'metroDmaId': metroDmaId!,
+        if (name != null) 'name': name!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (regionDartId != null) 'regionDartId': regionDartId!,
       };
 }
 
@@ -14917,19 +13893,19 @@ class ClickTag {
   /// Parameter value for the specified click tag.
   ///
   /// This field contains a click-through url.
-  CreativeClickThroughUrl clickThroughUrl;
+  CreativeClickThroughUrl? clickThroughUrl;
 
   /// Advertiser event name associated with the click tag.
   ///
   /// This field is used by DISPLAY_IMAGE_GALLERY and HTML5_BANNER creatives.
   /// Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.
-  core.String eventName;
+  core.String? eventName;
 
   /// Parameter name for the specified click tag.
   ///
   /// For DISPLAY_IMAGE_GALLERY creative assets, this field must match the value
   /// of the creative asset's creativeAssetId.name field.
-  core.String name;
+  core.String? name;
 
   ClickTag();
 
@@ -14946,11 +13922,11 @@ class ClickTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clickThroughUrl != null)
-          'clickThroughUrl': clickThroughUrl.toJson(),
-        if (eventName != null) 'eventName': eventName,
-        if (name != null) 'name': name,
+          'clickThroughUrl': clickThroughUrl!.toJson(),
+        if (eventName != null) 'eventName': eventName!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -14965,21 +13941,21 @@ class ClickThroughUrl {
   /// that landing page's URL is assigned to this field. - If neither of the
   /// above cases apply, then the customClickThroughUrl is assigned to this
   /// field.
-  core.String computedClickThroughUrl;
+  core.String? computedClickThroughUrl;
 
   /// Custom click-through URL.
   ///
   /// Applicable if the defaultLandingPage field is set to false and the
   /// landingPageId field is left unset.
-  core.String customClickThroughUrl;
+  core.String? customClickThroughUrl;
 
   /// Whether the campaign default landing page is used.
-  core.bool defaultLandingPage;
+  core.bool? defaultLandingPage;
 
   /// ID of the landing page for the click-through URL.
   ///
   /// Applicable if the defaultLandingPage field is set to false.
-  core.String landingPageId;
+  core.String? landingPageId;
 
   ClickThroughUrl();
 
@@ -14998,14 +13974,14 @@ class ClickThroughUrl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (computedClickThroughUrl != null)
-          'computedClickThroughUrl': computedClickThroughUrl,
+          'computedClickThroughUrl': computedClickThroughUrl!,
         if (customClickThroughUrl != null)
-          'customClickThroughUrl': customClickThroughUrl,
+          'customClickThroughUrl': customClickThroughUrl!,
         if (defaultLandingPage != null)
-          'defaultLandingPage': defaultLandingPage,
-        if (landingPageId != null) 'landingPageId': landingPageId,
+          'defaultLandingPage': defaultLandingPage!,
+        if (landingPageId != null) 'landingPageId': landingPageId!,
       };
 }
 
@@ -15014,11 +13990,11 @@ class ClickThroughUrlSuffixProperties {
   /// Click-through URL suffix to apply to all ads in this entity's scope.
   ///
   /// Must be less than 128 characters long.
-  core.String clickThroughUrlSuffix;
+  core.String? clickThroughUrlSuffix;
 
   /// Whether this entity should override the inherited click-through URL suffix
   /// with its own defined value.
-  core.bool overrideInheritedSuffix;
+  core.bool? overrideInheritedSuffix;
 
   ClickThroughUrlSuffixProperties();
 
@@ -15031,21 +14007,21 @@ class ClickThroughUrlSuffixProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clickThroughUrlSuffix != null)
-          'clickThroughUrlSuffix': clickThroughUrlSuffix,
+          'clickThroughUrlSuffix': clickThroughUrlSuffix!,
         if (overrideInheritedSuffix != null)
-          'overrideInheritedSuffix': overrideInheritedSuffix,
+          'overrideInheritedSuffix': overrideInheritedSuffix!,
       };
 }
 
 /// Companion Click-through override.
 class CompanionClickThroughOverride {
   /// Click-through URL of this companion click-through override.
-  ClickThroughUrl clickThroughUrl;
+  ClickThroughUrl? clickThroughUrl;
 
   /// ID of the creative for this companion click-through override.
-  core.String creativeId;
+  core.String? creativeId;
 
   CompanionClickThroughOverride();
 
@@ -15059,30 +14035,30 @@ class CompanionClickThroughOverride {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clickThroughUrl != null)
-          'clickThroughUrl': clickThroughUrl.toJson(),
-        if (creativeId != null) 'creativeId': creativeId,
+          'clickThroughUrl': clickThroughUrl!.toJson(),
+        if (creativeId != null) 'creativeId': creativeId!,
       };
 }
 
 /// Companion Settings
 class CompanionSetting {
   /// Whether companions are disabled for this placement.
-  core.bool companionsDisabled;
+  core.bool? companionsDisabled;
 
   /// Allowlist of companion sizes to be served to this placement.
   ///
   /// Set this list to null or empty to serve all companion sizes.
-  core.List<Size> enabledSizes;
+  core.List<Size>? enabledSizes;
 
   /// Whether to serve only static images as companions.
-  core.bool imageOnly;
+  core.bool? imageOnly;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#companionSetting".
-  core.String kind;
+  core.String? kind;
 
   CompanionSetting();
 
@@ -15104,13 +14080,13 @@ class CompanionSetting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (companionsDisabled != null)
-          'companionsDisabled': companionsDisabled,
+          'companionsDisabled': companionsDisabled!,
         if (enabledSizes != null)
-          'enabledSizes': enabledSizes.map((value) => value.toJson()).toList(),
-        if (imageOnly != null) 'imageOnly': imageOnly,
-        if (kind != null) 'kind': kind,
+          'enabledSizes': enabledSizes!.map((value) => value.toJson()).toList(),
+        if (imageOnly != null) 'imageOnly': imageOnly!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -15118,35 +14094,36 @@ class CompanionSetting {
 class CompatibleFields {
   /// Contains items that are compatible to be selected for a report of type
   /// "CROSS_DIMENSION_REACH".
-  CrossDimensionReachReportCompatibleFields
+  CrossDimensionReachReportCompatibleFields?
       crossDimensionReachReportCompatibleFields;
 
   /// Contains items that are compatible to be selected for a report of type
   /// "FLOODLIGHT".
-  FloodlightReportCompatibleFields floodlightReportCompatibleFields;
+  FloodlightReportCompatibleFields? floodlightReportCompatibleFields;
 
   /// The kind of resource this is, in this case dfareporting#compatibleFields.
-  core.String kind;
+  core.String? kind;
 
   /// Contains items that are compatible to be selected for a report of type
   /// "PATH_ATTRIBUTION".
-  PathReportCompatibleFields pathAttributionReportCompatibleFields;
+  PathReportCompatibleFields? pathAttributionReportCompatibleFields;
 
   /// Contains items that are compatible to be selected for a report of type
   /// "PATH".
-  PathReportCompatibleFields pathReportCompatibleFields;
+  PathReportCompatibleFields? pathReportCompatibleFields;
 
   /// Contains items that are compatible to be selected for a report of type
   /// "PATH_TO_CONVERSION".
-  PathToConversionReportCompatibleFields pathToConversionReportCompatibleFields;
+  PathToConversionReportCompatibleFields?
+      pathToConversionReportCompatibleFields;
 
   /// Contains items that are compatible to be selected for a report of type
   /// "REACH".
-  ReachReportCompatibleFields reachReportCompatibleFields;
+  ReachReportCompatibleFields? reachReportCompatibleFields;
 
   /// Contains items that are compatible to be selected for a report of type
   /// "STANDARD".
-  ReportCompatibleFields reportCompatibleFields;
+  ReportCompatibleFields? reportCompatibleFields;
 
   CompatibleFields();
 
@@ -15195,26 +14172,26 @@ class CompatibleFields {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (crossDimensionReachReportCompatibleFields != null)
           'crossDimensionReachReportCompatibleFields':
-              crossDimensionReachReportCompatibleFields.toJson(),
+              crossDimensionReachReportCompatibleFields!.toJson(),
         if (floodlightReportCompatibleFields != null)
           'floodlightReportCompatibleFields':
-              floodlightReportCompatibleFields.toJson(),
-        if (kind != null) 'kind': kind,
+              floodlightReportCompatibleFields!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (pathAttributionReportCompatibleFields != null)
           'pathAttributionReportCompatibleFields':
-              pathAttributionReportCompatibleFields.toJson(),
+              pathAttributionReportCompatibleFields!.toJson(),
         if (pathReportCompatibleFields != null)
-          'pathReportCompatibleFields': pathReportCompatibleFields.toJson(),
+          'pathReportCompatibleFields': pathReportCompatibleFields!.toJson(),
         if (pathToConversionReportCompatibleFields != null)
           'pathToConversionReportCompatibleFields':
-              pathToConversionReportCompatibleFields.toJson(),
+              pathToConversionReportCompatibleFields!.toJson(),
         if (reachReportCompatibleFields != null)
-          'reachReportCompatibleFields': reachReportCompatibleFields.toJson(),
+          'reachReportCompatibleFields': reachReportCompatibleFields!.toJson(),
         if (reportCompatibleFields != null)
-          'reportCompatibleFields': reportCompatibleFields.toJson(),
+          'reportCompatibleFields': reportCompatibleFields!.toJson(),
       };
 }
 
@@ -15224,15 +14201,15 @@ class CompatibleFields {
 /// Clients can use the connection type to target mobile vs. broadband users.
 class ConnectionType {
   /// ID of this connection type.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#connectionType".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this connection type.
-  core.String name;
+  core.String? name;
 
   ConnectionType();
 
@@ -15248,22 +14225,22 @@ class ConnectionType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Connection Type List Response
 class ConnectionTypesListResponse {
   /// Collection of connection types such as broadband and mobile.
-  core.List<ConnectionType> connectionTypes;
+  core.List<ConnectionType>? connectionTypes;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#connectionTypesListResponse".
-  core.String kind;
+  core.String? kind;
 
   ConnectionTypesListResponse();
 
@@ -15279,26 +14256,26 @@ class ConnectionTypesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (connectionTypes != null)
           'connectionTypes':
-              connectionTypes.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+              connectionTypes!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Content Category List Response
 class ContentCategoriesListResponse {
   /// Content category collection.
-  core.List<ContentCategory> contentCategories;
+  core.List<ContentCategory>? contentCategories;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#contentCategoriesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ContentCategoriesListResponse();
 
@@ -15317,12 +14294,12 @@ class ContentCategoriesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (contentCategories != null)
           'contentCategories':
-              contentCategories.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              contentCategories!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -15331,23 +14308,23 @@ class ContentCategory {
   /// Account ID of this content category.
   ///
   /// This is a read-only field that can be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// ID of this content category.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#contentCategory".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this content category.
   ///
   /// This is a required field and must be less than 256 characters long and
   /// unique among content categories of the same account.
-  core.String name;
+  core.String? name;
 
   ContentCategory();
 
@@ -15366,11 +14343,11 @@ class ContentCategory {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -15379,10 +14356,10 @@ class ContentCategory {
 class Conversion {
   /// Whether this particular request may come from a user under the age of 13,
   /// under COPPA compliance.
-  core.bool childDirectedTreatment;
+  core.bool? childDirectedTreatment;
 
   /// Custom floodlight variables.
-  core.List<CustomFloodlightVariable> customVariables;
+  core.List<CustomFloodlightVariable>? customVariables;
 
   /// The display click ID.
   ///
@@ -15390,7 +14367,7 @@ class Conversion {
   /// encryptedUserIdCandidates\[\], matchId, mobileDeviceId and gclid. This or
   /// encryptedUserId or encryptedUserIdCandidates\[\] or matchId or
   /// mobileDeviceId or gclid is a required field.
-  core.String dclid;
+  core.String? dclid;
 
   /// The alphanumeric encrypted user ID.
   ///
@@ -15398,7 +14375,7 @@ class Conversion {
   /// exclusive with encryptedUserIdCandidates\[\], matchId, mobileDeviceId,
   /// gclid and dclid. This or encryptedUserIdCandidates\[\] or matchId or
   /// mobileDeviceId or gclid or dclid is a required field.
-  core.String encryptedUserId;
+  core.String? encryptedUserId;
 
   /// A list of the alphanumeric encrypted user IDs.
   ///
@@ -15410,17 +14387,17 @@ class Conversion {
   /// mutually exclusive with encryptedUserId, matchId, mobileDeviceId, gclid
   /// and dclid. This or encryptedUserId or matchId or mobileDeviceId or gclid
   /// or dclid is a required field.
-  core.List<core.String> encryptedUserIdCandidates;
+  core.List<core.String>? encryptedUserIdCandidates;
 
   /// Floodlight Activity ID of this conversion.
   ///
   /// This is a required field.
-  core.String floodlightActivityId;
+  core.String? floodlightActivityId;
 
   /// Floodlight Configuration ID of this conversion.
   ///
   /// This is a required field.
-  core.String floodlightConfigurationId;
+  core.String? floodlightConfigurationId;
 
   /// The Google click ID.
   ///
@@ -15428,18 +14405,18 @@ class Conversion {
   /// encryptedUserIdCandidates\[\], matchId, mobileDeviceId and dclid. This or
   /// encryptedUserId or encryptedUserIdCandidates\[\] or matchId or
   /// mobileDeviceId or dclid is a required field.
-  core.String gclid;
+  core.String? gclid;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#conversion".
-  core.String kind;
+  core.String? kind;
 
   /// Whether Limit Ad Tracking is enabled.
   ///
   /// When set to true, the conversion will be used for reporting but not
   /// targeting. This will prevent remarketing.
-  core.bool limitAdTracking;
+  core.bool? limitAdTracking;
 
   /// The match ID field.
   ///
@@ -15449,7 +14426,7 @@ class Conversion {
   /// encryptedUserIdCandidates\[\],mobileDeviceId, gclid and dclid. This or
   /// encryptedUserId or encryptedUserIdCandidates\[\] or mobileDeviceId or
   /// gclid or dclid is a required field.
-  core.String matchId;
+  core.String? matchId;
 
   /// The mobile device ID.
   ///
@@ -15457,32 +14434,32 @@ class Conversion {
   /// encryptedUserIdCandidates\[\], matchId, gclid and dclid. This or
   /// encryptedUserId or encryptedUserIdCandidates\[\] or matchId or gclid or
   /// dclid is a required field.
-  core.String mobileDeviceId;
+  core.String? mobileDeviceId;
 
   /// Whether the conversion was for a non personalized ad.
-  core.bool nonPersonalizedAd;
+  core.bool? nonPersonalizedAd;
 
   /// The ordinal of the conversion.
   ///
   /// Use this field to control how conversions of the same user and day are
   /// de-duplicated. This is a required field.
-  core.String ordinal;
+  core.String? ordinal;
 
   /// The quantity of the conversion.
-  core.String quantity;
+  core.String? quantity;
 
   /// The timestamp of conversion, in Unix epoch micros.
   ///
   /// This is a required field.
-  core.String timestampMicros;
+  core.String? timestampMicros;
 
   /// Whether this particular request may come from a user under the age of 16
   /// (may differ by country), under compliance with the European Union's
   /// General Data Protection Regulation (GDPR).
-  core.bool treatmentForUnderage;
+  core.bool? treatmentForUnderage;
 
   /// The value of the conversion.
-  core.double value;
+  core.double? value;
 
   Conversion();
 
@@ -15551,32 +14528,32 @@ class Conversion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (childDirectedTreatment != null)
-          'childDirectedTreatment': childDirectedTreatment,
+          'childDirectedTreatment': childDirectedTreatment!,
         if (customVariables != null)
           'customVariables':
-              customVariables.map((value) => value.toJson()).toList(),
-        if (dclid != null) 'dclid': dclid,
-        if (encryptedUserId != null) 'encryptedUserId': encryptedUserId,
+              customVariables!.map((value) => value.toJson()).toList(),
+        if (dclid != null) 'dclid': dclid!,
+        if (encryptedUserId != null) 'encryptedUserId': encryptedUserId!,
         if (encryptedUserIdCandidates != null)
-          'encryptedUserIdCandidates': encryptedUserIdCandidates,
+          'encryptedUserIdCandidates': encryptedUserIdCandidates!,
         if (floodlightActivityId != null)
-          'floodlightActivityId': floodlightActivityId,
+          'floodlightActivityId': floodlightActivityId!,
         if (floodlightConfigurationId != null)
-          'floodlightConfigurationId': floodlightConfigurationId,
-        if (gclid != null) 'gclid': gclid,
-        if (kind != null) 'kind': kind,
-        if (limitAdTracking != null) 'limitAdTracking': limitAdTracking,
-        if (matchId != null) 'matchId': matchId,
-        if (mobileDeviceId != null) 'mobileDeviceId': mobileDeviceId,
-        if (nonPersonalizedAd != null) 'nonPersonalizedAd': nonPersonalizedAd,
-        if (ordinal != null) 'ordinal': ordinal,
-        if (quantity != null) 'quantity': quantity,
-        if (timestampMicros != null) 'timestampMicros': timestampMicros,
+          'floodlightConfigurationId': floodlightConfigurationId!,
+        if (gclid != null) 'gclid': gclid!,
+        if (kind != null) 'kind': kind!,
+        if (limitAdTracking != null) 'limitAdTracking': limitAdTracking!,
+        if (matchId != null) 'matchId': matchId!,
+        if (mobileDeviceId != null) 'mobileDeviceId': mobileDeviceId!,
+        if (nonPersonalizedAd != null) 'nonPersonalizedAd': nonPersonalizedAd!,
+        if (ordinal != null) 'ordinal': ordinal!,
+        if (quantity != null) 'quantity': quantity!,
+        if (timestampMicros != null) 'timestampMicros': timestampMicros!,
         if (treatmentForUnderage != null)
-          'treatmentForUnderage': treatmentForUnderage,
-        if (value != null) 'value': value,
+          'treatmentForUnderage': treatmentForUnderage!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -15589,15 +14566,15 @@ class ConversionError {
   /// - "INTERNAL"
   /// - "PERMISSION_DENIED"
   /// - "NOT_FOUND"
-  core.String code;
+  core.String? code;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#conversionError".
-  core.String kind;
+  core.String? kind;
 
   /// A description of the error.
-  core.String message;
+  core.String? message;
 
   ConversionError();
 
@@ -15613,10 +14590,10 @@ class ConversionError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (kind != null) 'kind': kind,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (kind != null) 'kind': kind!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -15624,15 +14601,15 @@ class ConversionError {
 /// any errors.
 class ConversionStatus {
   /// The original conversion that was inserted or updated.
-  Conversion conversion;
+  Conversion? conversion;
 
   /// A list of errors related to this conversion.
-  core.List<ConversionError> errors;
+  core.List<ConversionError>? errors;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#conversionStatus".
-  core.String kind;
+  core.String? kind;
 
   ConversionStatus();
 
@@ -15652,30 +14629,30 @@ class ConversionStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (conversion != null) 'conversion': conversion.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (conversion != null) 'conversion': conversion!.toJson(),
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Insert Conversions Request.
 class ConversionsBatchInsertRequest {
   /// The set of conversions to insert.
-  core.List<Conversion> conversions;
+  core.List<Conversion>? conversions;
 
   /// Describes how encryptedUserId or encryptedUserIdCandidates\[\] is
   /// encrypted.
   ///
   /// This is a required field if encryptedUserId or
   /// encryptedUserIdCandidates\[\] is used.
-  EncryptionInfo encryptionInfo;
+  EncryptionInfo? encryptionInfo;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#conversionsBatchInsertRequest".
-  core.String kind;
+  core.String? kind;
 
   ConversionsBatchInsertRequest();
 
@@ -15695,28 +14672,28 @@ class ConversionsBatchInsertRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (conversions != null)
-          'conversions': conversions.map((value) => value.toJson()).toList(),
-        if (encryptionInfo != null) 'encryptionInfo': encryptionInfo.toJson(),
-        if (kind != null) 'kind': kind,
+          'conversions': conversions!.map((value) => value.toJson()).toList(),
+        if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!.toJson(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Insert Conversions Response.
 class ConversionsBatchInsertResponse {
   /// Indicates that some or all conversions failed to insert.
-  core.bool hasFailures;
+  core.bool? hasFailures;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#conversionsBatchInsertResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The insert status of each conversion.
   ///
   /// Statuses are returned in the same order that conversions are inserted.
-  core.List<ConversionStatus> status;
+  core.List<ConversionStatus>? status;
 
   ConversionsBatchInsertResponse();
 
@@ -15735,28 +14712,28 @@ class ConversionsBatchInsertResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hasFailures != null) 'hasFailures': hasFailures,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hasFailures != null) 'hasFailures': hasFailures!,
+        if (kind != null) 'kind': kind!,
         if (status != null)
-          'status': status.map((value) => value.toJson()).toList(),
+          'status': status!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Update Conversions Request.
 class ConversionsBatchUpdateRequest {
   /// The set of conversions to update.
-  core.List<Conversion> conversions;
+  core.List<Conversion>? conversions;
 
   /// Describes how encryptedUserId is encrypted.
   ///
   /// This is a required field if encryptedUserId is used.
-  EncryptionInfo encryptionInfo;
+  EncryptionInfo? encryptionInfo;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#conversionsBatchUpdateRequest".
-  core.String kind;
+  core.String? kind;
 
   ConversionsBatchUpdateRequest();
 
@@ -15776,28 +14753,28 @@ class ConversionsBatchUpdateRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (conversions != null)
-          'conversions': conversions.map((value) => value.toJson()).toList(),
-        if (encryptionInfo != null) 'encryptionInfo': encryptionInfo.toJson(),
-        if (kind != null) 'kind': kind,
+          'conversions': conversions!.map((value) => value.toJson()).toList(),
+        if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!.toJson(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Update Conversions Response.
 class ConversionsBatchUpdateResponse {
   /// Indicates that some or all conversions failed to update.
-  core.bool hasFailures;
+  core.bool? hasFailures;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#conversionsBatchUpdateResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The update status of each conversion.
   ///
   /// Statuses are returned in the same order that conversions are updated.
-  core.List<ConversionStatus> status;
+  core.List<ConversionStatus>? status;
 
   ConversionsBatchUpdateResponse();
 
@@ -15816,23 +14793,23 @@ class ConversionsBatchUpdateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hasFailures != null) 'hasFailures': hasFailures,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hasFailures != null) 'hasFailures': hasFailures!,
+        if (kind != null) 'kind': kind!,
         if (status != null)
-          'status': status.map((value) => value.toJson()).toList(),
+          'status': status!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Country List Response
 class CountriesListResponse {
   /// Country collection.
-  core.List<Country> countries;
+  core.List<Country>? countries;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#countriesListResponse".
-  core.String kind;
+  core.String? kind;
 
   CountriesListResponse();
 
@@ -15848,33 +14825,33 @@ class CountriesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (countries != null)
-          'countries': countries.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'countries': countries!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Contains information about a country that can be targeted by ads.
 class Country {
   /// Country code.
-  core.String countryCode;
+  core.String? countryCode;
 
   /// DART ID of this country.
   ///
   /// This is the ID used for targeting and generating reports.
-  core.String dartId;
+  core.String? dartId;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#country".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this country.
-  core.String name;
+  core.String? name;
 
   /// Whether ad serving supports secure servers in this country.
-  core.bool sslEnabled;
+  core.bool? sslEnabled;
 
   Country();
 
@@ -15896,12 +14873,12 @@ class Country {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (countryCode != null) 'countryCode': countryCode,
-        if (dartId != null) 'dartId': dartId,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (sslEnabled != null) 'sslEnabled': sslEnabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (dartId != null) 'dartId': dartId!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (sslEnabled != null) 'sslEnabled': sslEnabled!,
       };
 }
 
@@ -15911,18 +14888,18 @@ class Creative {
   ///
   /// This field, if left unset, will be auto-generated for both insert and
   /// update operations. Applicable to all creative types.
-  core.String accountId;
+  core.String? accountId;
 
   /// Whether the creative is active.
   ///
   /// Applicable to all creative types.
-  core.bool active;
+  core.bool? active;
 
   /// Ad parameters user for VPAID creative.
   ///
   /// This is a read-only field. Applicable to the following creative types: all
   /// VPAID.
-  core.String adParameters;
+  core.String? adParameters;
 
   /// Keywords for a Rich Media creative.
   ///
@@ -15930,31 +14907,31 @@ class Creative {
   /// running on your site without having to contact the advertiser. You can use
   /// keywords to dynamically change the look or functionality of a creative.
   /// Applicable to the following creative types: all RICH_MEDIA, and all VPAID.
-  core.List<core.String> adTagKeys;
+  core.List<core.String>? adTagKeys;
 
   /// Additional sizes associated with a responsive creative.
   ///
   /// When inserting or updating a creative either the size ID field or size
   /// width and height fields can be used. Applicable to DISPLAY creatives when
   /// the primary asset type is HTML_IMAGE.
-  core.List<Size> additionalSizes;
+  core.List<Size>? additionalSizes;
 
   /// Advertiser ID of this creative.
   ///
   /// This is a required field. Applicable to all creative types.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Whether script access is allowed for this creative.
   ///
   /// This is a read-only and deprecated field which will automatically be set
   /// to true on update. Applicable to the following creative types:
   /// FLASH_INPAGE.
-  core.bool allowScriptAccess;
+  core.bool? allowScriptAccess;
 
   /// Whether the creative is archived.
   ///
   /// Applicable to all creative types.
-  core.bool archived;
+  core.bool? archived;
 
   /// Type of artwork used for the creative.
   ///
@@ -15965,7 +14942,7 @@ class Creative {
   /// - "ARTWORK_TYPE_HTML5"
   /// - "ARTWORK_TYPE_MIXED"
   /// - "ARTWORK_TYPE_IMAGE"
-  core.String artworkType;
+  core.String? artworkType;
 
   /// Source application where creative was authored.
   ///
@@ -15976,7 +14953,7 @@ class Creative {
   /// - "CREATIVE_AUTHORING_SOURCE_DBM"
   /// - "CREATIVE_AUTHORING_SOURCE_STUDIO"
   /// - "CREATIVE_AUTHORING_SOURCE_GWD"
-  core.String authoringSource;
+  core.String? authoringSource;
 
   /// Authoring tool for HTML5 banner creatives.
   ///
@@ -15985,25 +14962,25 @@ class Creative {
   /// Possible string values are:
   /// - "NINJA"
   /// - "SWIFFY"
-  core.String authoringTool;
+  core.String? authoringTool;
 
   /// Whether images are automatically advanced for image gallery creatives.
   ///
   /// Applicable to the following creative types: DISPLAY_IMAGE_GALLERY.
-  core.bool autoAdvanceImages;
+  core.bool? autoAdvanceImages;
 
   /// The 6-character HTML color code, beginning with #, for the background of
   /// the window area where the Flash file is displayed.
   ///
   /// Default is white. Applicable to the following creative types:
   /// FLASH_INPAGE.
-  core.String backgroundColor;
+  core.String? backgroundColor;
 
   /// Click-through URL for backup image.
   ///
   /// Applicable to ENHANCED_BANNER when the primary asset type is not
   /// HTML_IMAGE.
-  CreativeClickThroughUrl backupImageClickThroughUrl;
+  CreativeClickThroughUrl? backupImageClickThroughUrl;
 
   /// List of feature dependencies that will cause a backup image to be served
   /// if the browser that serves the ad does not support them.
@@ -16016,19 +14993,19 @@ class Creative {
   /// detected features. Applicable to the following creative types:
   /// HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not
   /// HTML_IMAGE.
-  core.List<core.String> backupImageFeatures;
+  core.List<core.String>? backupImageFeatures;
 
   /// Reporting label used for HTML5 banner backup image.
   ///
   /// Applicable to the following creative types: DISPLAY when the primary asset
   /// type is not HTML_IMAGE.
-  core.String backupImageReportingLabel;
+  core.String? backupImageReportingLabel;
 
   /// Target window for backup image.
   ///
   /// Applicable to the following creative types: FLASH_INPAGE and HTML5_BANNER.
   /// Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.
-  TargetWindow backupImageTargetWindow;
+  TargetWindow? backupImageTargetWindow;
 
   /// Click tags of the creative.
   ///
@@ -16043,19 +15020,19 @@ class Creative {
   /// creativeAsset.assetIdentifier.name field. Applicable to the following
   /// creative types: DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER.
   /// Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.
-  core.List<ClickTag> clickTags;
+  core.List<ClickTag>? clickTags;
 
   /// Industry standard ID assigned to creative for reach and frequency.
   ///
   /// Applicable to INSTREAM_VIDEO_REDIRECT creatives.
-  core.String commercialId;
+  core.String? commercialId;
 
   /// List of companion creatives assigned to an in-Stream video creative.
   ///
   /// Acceptable values include IDs of existing flash and image creatives.
   /// Applicable to the following creative types: all VPAID, all INSTREAM_AUDIO
   /// and all INSTREAM_VIDEO with dynamicAssetSelection set to false.
-  core.List<core.String> companionCreatives;
+  core.List<core.String>? companionCreatives;
 
   /// Compatibilities associated with this creative.
   ///
@@ -16070,7 +15047,7 @@ class Creative {
   /// standard. Applicable to all creative types. Acceptable values are: - "APP"
   /// - "APP_INTERSTITIAL" - "IN_STREAM_VIDEO" - "IN_STREAM_AUDIO" - "DISPLAY" -
   /// "DISPLAY_INTERSTITIAL"
-  core.List<core.String> compatibility;
+  core.List<core.String>? compatibility;
 
   /// Whether Flash assets associated with the creative need to be automatically
   /// converted to HTML5.
@@ -16079,28 +15056,28 @@ class Creative {
   /// don't want the system to generate and use HTML5 asset for this creative.
   /// Applicable to the following creative type: FLASH_INPAGE. Applicable to
   /// DISPLAY when the primary asset type is not HTML_IMAGE.
-  core.bool convertFlashToHtml5;
+  core.bool? convertFlashToHtml5;
 
   /// List of counter events configured for the creative.
   ///
   /// For DISPLAY_IMAGE_GALLERY creatives, these are read-only and
   /// auto-generated from clickTags. Applicable to the following creative types:
   /// DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID.
-  core.List<CreativeCustomEvent> counterCustomEvents;
+  core.List<CreativeCustomEvent>? counterCustomEvents;
 
   /// Required if dynamicAssetSelection is true.
-  CreativeAssetSelection creativeAssetSelection;
+  CreativeAssetSelection? creativeAssetSelection;
 
   /// Assets associated with a creative.
   ///
   /// Applicable to all but the following creative types: INTERNAL_REDIRECT,
   /// INTERSTITIAL_INTERNAL_REDIRECT, and REDIRECT
-  core.List<CreativeAsset> creativeAssets;
+  core.List<CreativeAsset>? creativeAssets;
 
   /// Creative field assignments for this creative.
   ///
   /// Applicable to all creative types.
-  core.List<CreativeFieldAssignment> creativeFieldAssignments;
+  core.List<CreativeFieldAssignment>? creativeFieldAssignments;
 
   /// Custom key-values for a Rich Media creative.
   ///
@@ -16108,7 +15085,7 @@ class Creative {
   /// running on your site without having to contact the advertiser. You can use
   /// key-values to dynamically change the look or functionality of a creative.
   /// Applicable to the following creative types: all RICH_MEDIA, and all VPAID.
-  core.List<core.String> customKeyValues;
+  core.List<core.String>? customKeyValues;
 
   /// Set this to true to enable the use of rules to target individual assets in
   /// this creative.
@@ -16117,7 +15094,7 @@ class Creative {
   /// asset-level companions. When this is true, companion creatives should be
   /// assigned to creative assets. Learn more. Applicable to INSTREAM_VIDEO
   /// creatives.
-  core.bool dynamicAssetSelection;
+  core.bool? dynamicAssetSelection;
 
   /// List of exit events configured for the creative.
   ///
@@ -16126,7 +15103,7 @@ class Creative {
   /// the backupImageReportingLabel. Applicable to the following creative types:
   /// DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID. Applicable to
   /// DISPLAY when the primary asset type is not HTML_IMAGE.
-  core.List<CreativeCustomEvent> exitCustomEvents;
+  core.List<CreativeCustomEvent>? exitCustomEvents;
 
   /// OpenWindow FSCommand of this creative.
   ///
@@ -16134,81 +15111,81 @@ class Creative {
   /// hosting Flash Player, such as a web browser. This is only triggered if
   /// allowScriptAccess field is true. Applicable to the following creative
   /// types: FLASH_INPAGE.
-  FsCommand fsCommand;
+  FsCommand? fsCommand;
 
   /// HTML code for the creative.
   ///
   /// This is a required field when applicable. This field is ignored if
   /// htmlCodeLocked is true. Applicable to the following creative types: all
   /// CUSTOM, FLASH_INPAGE, and HTML5_BANNER, and all RICH_MEDIA.
-  core.String htmlCode;
+  core.String? htmlCode;
 
   /// Whether HTML code is generated by Campaign Manager or manually entered.
   ///
   /// Set to true to ignore changes to htmlCode. Applicable to the following
   /// creative types: FLASH_INPAGE and HTML5_BANNER.
-  core.bool htmlCodeLocked;
+  core.bool? htmlCodeLocked;
 
   /// ID of this creative.
   ///
   /// This is a read-only, auto-generated field. Applicable to all creative
   /// types.
-  core.String id;
+  core.String? id;
 
   /// Dimension value for the ID of this creative.
   ///
   /// This is a read-only field. Applicable to all creative types.
-  DimensionValue idDimensionValue;
+  DimensionValue? idDimensionValue;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#creative".
-  core.String kind;
+  core.String? kind;
 
   /// Creative last modification information.
   ///
   /// This is a read-only field. Applicable to all creative types.
-  LastModifiedInfo lastModifiedInfo;
+  LastModifiedInfo? lastModifiedInfo;
 
   /// Latest Studio trafficked creative ID associated with rich media and VPAID
   /// creatives.
   ///
   /// This is a read-only field. Applicable to the following creative types: all
   /// RICH_MEDIA, and all VPAID.
-  core.String latestTraffickedCreativeId;
+  core.String? latestTraffickedCreativeId;
 
   /// Description of the audio or video ad.
   ///
   /// Applicable to the following creative types: all INSTREAM_VIDEO,
   /// INSTREAM_AUDIO, and all VPAID.
-  core.String mediaDescription;
+  core.String? mediaDescription;
 
   /// Creative audio or video duration in seconds.
   ///
   /// This is a read-only field. Applicable to the following creative types:
   /// INSTREAM_VIDEO, INSTREAM_AUDIO, all RICH_MEDIA, and all VPAID.
-  core.double mediaDuration;
+  core.double? mediaDuration;
 
   /// Name of the creative.
   ///
   /// This is a required field and must be less than 256 characters long.
   /// Applicable to all creative types.
-  core.String name;
+  core.String? name;
 
   /// Online behavioral advertising icon to be added to the creative.
   ///
   /// Applicable to the following creative types: all INSTREAM_VIDEO.
-  ObaIcon obaIcon;
+  ObaIcon? obaIcon;
 
   /// Override CSS value for rich media creatives.
   ///
   /// Applicable to the following creative types: all RICH_MEDIA.
-  core.String overrideCss;
+  core.String? overrideCss;
 
   /// Amount of time to play the video before counting a view.
   ///
   /// Applicable to the following creative types: all INSTREAM_VIDEO.
-  VideoOffset progressOffset;
+  VideoOffset? progressOffset;
 
   /// URL of hosted image or hosted video or another ad tag.
   ///
@@ -16218,30 +15195,30 @@ class Creative {
   /// required field when applicable. Applicable to the following creative
   /// types: DISPLAY_REDIRECT, INTERNAL_REDIRECT,
   /// INTERSTITIAL_INTERNAL_REDIRECT, and INSTREAM_VIDEO_REDIRECT
-  core.String redirectUrl;
+  core.String? redirectUrl;
 
   /// ID of current rendering version.
   ///
   /// This is a read-only field. Applicable to all creative types.
-  core.String renderingId;
+  core.String? renderingId;
 
   /// Dimension value for the rendering ID of this creative.
   ///
   /// This is a read-only field. Applicable to all creative types.
-  DimensionValue renderingIdDimensionValue;
+  DimensionValue? renderingIdDimensionValue;
 
   /// The minimum required Flash plugin version for this creative.
   ///
   /// For example, 11.2.202.235. This is a read-only field. Applicable to the
   /// following creative types: all RICH_MEDIA, and all VPAID.
-  core.String requiredFlashPluginVersion;
+  core.String? requiredFlashPluginVersion;
 
   /// The internal Flash version for this creative as calculated by Studio.
   ///
   /// This is a read-only field. Applicable to the following creative types:
   /// FLASH_INPAGE all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the
   /// primary asset type is not HTML_IMAGE.
-  core.int requiredFlashVersion;
+  core.int? requiredFlashVersion;
 
   /// Size associated with this creative.
   ///
@@ -16253,70 +15230,70 @@ class Creative {
   /// image assets. Applicable to the following creative types: DISPLAY,
   /// DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all
   /// RICH_MEDIA.
-  Size size;
+  Size? size;
 
   /// Amount of time to play the video before the skip button appears.
   ///
   /// Applicable to the following creative types: all INSTREAM_VIDEO.
-  VideoOffset skipOffset;
+  VideoOffset? skipOffset;
 
   /// Whether the user can choose to skip the creative.
   ///
   /// Applicable to the following creative types: all INSTREAM_VIDEO and all
   /// VPAID.
-  core.bool skippable;
+  core.bool? skippable;
 
   /// Whether the creative is SSL-compliant.
   ///
   /// This is a read-only field. Applicable to all creative types.
-  core.bool sslCompliant;
+  core.bool? sslCompliant;
 
   /// Whether creative should be treated as SSL compliant even if the system
   /// scan shows it's not.
   ///
   /// Applicable to all creative types.
-  core.bool sslOverride;
+  core.bool? sslOverride;
 
   /// Studio advertiser ID associated with rich media and VPAID creatives.
   ///
   /// This is a read-only field. Applicable to the following creative types: all
   /// RICH_MEDIA, and all VPAID.
-  core.String studioAdvertiserId;
+  core.String? studioAdvertiserId;
 
   /// Studio creative ID associated with rich media and VPAID creatives.
   ///
   /// This is a read-only field. Applicable to the following creative types: all
   /// RICH_MEDIA, and all VPAID.
-  core.String studioCreativeId;
+  core.String? studioCreativeId;
 
   /// Studio trafficked creative ID associated with rich media and VPAID
   /// creatives.
   ///
   /// This is a read-only field. Applicable to the following creative types: all
   /// RICH_MEDIA, and all VPAID.
-  core.String studioTraffickedCreativeId;
+  core.String? studioTraffickedCreativeId;
 
   /// Subaccount ID of this creative.
   ///
   /// This field, if left unset, will be auto-generated for both insert and
   /// update operations. Applicable to all creative types.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Third-party URL used to record backup image impressions.
   ///
   /// Applicable to the following creative types: all RICH_MEDIA.
-  core.String thirdPartyBackupImageImpressionsUrl;
+  core.String? thirdPartyBackupImageImpressionsUrl;
 
   /// Third-party URL used to record rich media impressions.
   ///
   /// Applicable to the following creative types: all RICH_MEDIA.
-  core.String thirdPartyRichMediaImpressionsUrl;
+  core.String? thirdPartyRichMediaImpressionsUrl;
 
   /// Third-party URLs for tracking in-stream creative events.
   ///
   /// Applicable to the following creative types: all INSTREAM_VIDEO, all
   /// INSTREAM_AUDIO, and all VPAID.
-  core.List<ThirdPartyTrackingUrl> thirdPartyUrls;
+  core.List<ThirdPartyTrackingUrl>? thirdPartyUrls;
 
   /// List of timer events configured for the creative.
   ///
@@ -16324,13 +15301,13 @@ class Creative {
   /// auto-generated from clickTags. Applicable to the following creative types:
   /// DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID. Applicable to
   /// DISPLAY when the primary asset is not HTML_IMAGE.
-  core.List<CreativeCustomEvent> timerCustomEvents;
+  core.List<CreativeCustomEvent>? timerCustomEvents;
 
   /// Combined size of all creative assets.
   ///
   /// This is a read-only field. Applicable to the following creative types: all
   /// RICH_MEDIA, and all VPAID.
-  core.String totalFileSize;
+  core.String? totalFileSize;
 
   /// Type of this creative.
   ///
@@ -16364,13 +15341,13 @@ class Creative {
   /// - "DISPLAY_IMAGE_GALLERY"
   /// - "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO"
   /// - "INSTREAM_AUDIO"
-  core.String type;
+  core.String? type;
 
   /// A Universal Ad ID as per the VAST 4.0 spec.
   ///
   /// Applicable to the following creative types: INSTREAM_AUDIO and
   /// INSTREAM_VIDEO and VPAID.
-  UniversalAdId universalAdId;
+  UniversalAdId? universalAdId;
 
   /// The version number helps you keep track of multiple versions of your
   /// creative in your reports.
@@ -16381,7 +15358,7 @@ class Creative {
   /// be incremented only by 1 during update operations. In addition, the
   /// version will be automatically incremented by 1 when undergoing Rich Media
   /// creative merging. Applicable to all creative types.
-  core.int version;
+  core.int? version;
 
   Creative();
 
@@ -16641,107 +15618,107 @@ class Creative {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (active != null) 'active': active,
-        if (adParameters != null) 'adParameters': adParameters,
-        if (adTagKeys != null) 'adTagKeys': adTagKeys,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (active != null) 'active': active!,
+        if (adParameters != null) 'adParameters': adParameters!,
+        if (adTagKeys != null) 'adTagKeys': adTagKeys!,
         if (additionalSizes != null)
           'additionalSizes':
-              additionalSizes.map((value) => value.toJson()).toList(),
-        if (advertiserId != null) 'advertiserId': advertiserId,
-        if (allowScriptAccess != null) 'allowScriptAccess': allowScriptAccess,
-        if (archived != null) 'archived': archived,
-        if (artworkType != null) 'artworkType': artworkType,
-        if (authoringSource != null) 'authoringSource': authoringSource,
-        if (authoringTool != null) 'authoringTool': authoringTool,
-        if (autoAdvanceImages != null) 'autoAdvanceImages': autoAdvanceImages,
-        if (backgroundColor != null) 'backgroundColor': backgroundColor,
+              additionalSizes!.map((value) => value.toJson()).toList(),
+        if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (allowScriptAccess != null) 'allowScriptAccess': allowScriptAccess!,
+        if (archived != null) 'archived': archived!,
+        if (artworkType != null) 'artworkType': artworkType!,
+        if (authoringSource != null) 'authoringSource': authoringSource!,
+        if (authoringTool != null) 'authoringTool': authoringTool!,
+        if (autoAdvanceImages != null) 'autoAdvanceImages': autoAdvanceImages!,
+        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
         if (backupImageClickThroughUrl != null)
-          'backupImageClickThroughUrl': backupImageClickThroughUrl.toJson(),
+          'backupImageClickThroughUrl': backupImageClickThroughUrl!.toJson(),
         if (backupImageFeatures != null)
-          'backupImageFeatures': backupImageFeatures,
+          'backupImageFeatures': backupImageFeatures!,
         if (backupImageReportingLabel != null)
-          'backupImageReportingLabel': backupImageReportingLabel,
+          'backupImageReportingLabel': backupImageReportingLabel!,
         if (backupImageTargetWindow != null)
-          'backupImageTargetWindow': backupImageTargetWindow.toJson(),
+          'backupImageTargetWindow': backupImageTargetWindow!.toJson(),
         if (clickTags != null)
-          'clickTags': clickTags.map((value) => value.toJson()).toList(),
-        if (commercialId != null) 'commercialId': commercialId,
+          'clickTags': clickTags!.map((value) => value.toJson()).toList(),
+        if (commercialId != null) 'commercialId': commercialId!,
         if (companionCreatives != null)
-          'companionCreatives': companionCreatives,
-        if (compatibility != null) 'compatibility': compatibility,
+          'companionCreatives': companionCreatives!,
+        if (compatibility != null) 'compatibility': compatibility!,
         if (convertFlashToHtml5 != null)
-          'convertFlashToHtml5': convertFlashToHtml5,
+          'convertFlashToHtml5': convertFlashToHtml5!,
         if (counterCustomEvents != null)
           'counterCustomEvents':
-              counterCustomEvents.map((value) => value.toJson()).toList(),
+              counterCustomEvents!.map((value) => value.toJson()).toList(),
         if (creativeAssetSelection != null)
-          'creativeAssetSelection': creativeAssetSelection.toJson(),
+          'creativeAssetSelection': creativeAssetSelection!.toJson(),
         if (creativeAssets != null)
           'creativeAssets':
-              creativeAssets.map((value) => value.toJson()).toList(),
+              creativeAssets!.map((value) => value.toJson()).toList(),
         if (creativeFieldAssignments != null)
           'creativeFieldAssignments':
-              creativeFieldAssignments.map((value) => value.toJson()).toList(),
-        if (customKeyValues != null) 'customKeyValues': customKeyValues,
+              creativeFieldAssignments!.map((value) => value.toJson()).toList(),
+        if (customKeyValues != null) 'customKeyValues': customKeyValues!,
         if (dynamicAssetSelection != null)
-          'dynamicAssetSelection': dynamicAssetSelection,
+          'dynamicAssetSelection': dynamicAssetSelection!,
         if (exitCustomEvents != null)
           'exitCustomEvents':
-              exitCustomEvents.map((value) => value.toJson()).toList(),
-        if (fsCommand != null) 'fsCommand': fsCommand.toJson(),
-        if (htmlCode != null) 'htmlCode': htmlCode,
-        if (htmlCodeLocked != null) 'htmlCodeLocked': htmlCodeLocked,
-        if (id != null) 'id': id,
+              exitCustomEvents!.map((value) => value.toJson()).toList(),
+        if (fsCommand != null) 'fsCommand': fsCommand!.toJson(),
+        if (htmlCode != null) 'htmlCode': htmlCode!,
+        if (htmlCodeLocked != null) 'htmlCodeLocked': htmlCodeLocked!,
+        if (id != null) 'id': id!,
         if (idDimensionValue != null)
-          'idDimensionValue': idDimensionValue.toJson(),
-        if (kind != null) 'kind': kind,
+          'idDimensionValue': idDimensionValue!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (lastModifiedInfo != null)
-          'lastModifiedInfo': lastModifiedInfo.toJson(),
+          'lastModifiedInfo': lastModifiedInfo!.toJson(),
         if (latestTraffickedCreativeId != null)
-          'latestTraffickedCreativeId': latestTraffickedCreativeId,
-        if (mediaDescription != null) 'mediaDescription': mediaDescription,
-        if (mediaDuration != null) 'mediaDuration': mediaDuration,
-        if (name != null) 'name': name,
-        if (obaIcon != null) 'obaIcon': obaIcon.toJson(),
-        if (overrideCss != null) 'overrideCss': overrideCss,
-        if (progressOffset != null) 'progressOffset': progressOffset.toJson(),
-        if (redirectUrl != null) 'redirectUrl': redirectUrl,
-        if (renderingId != null) 'renderingId': renderingId,
+          'latestTraffickedCreativeId': latestTraffickedCreativeId!,
+        if (mediaDescription != null) 'mediaDescription': mediaDescription!,
+        if (mediaDuration != null) 'mediaDuration': mediaDuration!,
+        if (name != null) 'name': name!,
+        if (obaIcon != null) 'obaIcon': obaIcon!.toJson(),
+        if (overrideCss != null) 'overrideCss': overrideCss!,
+        if (progressOffset != null) 'progressOffset': progressOffset!.toJson(),
+        if (redirectUrl != null) 'redirectUrl': redirectUrl!,
+        if (renderingId != null) 'renderingId': renderingId!,
         if (renderingIdDimensionValue != null)
-          'renderingIdDimensionValue': renderingIdDimensionValue.toJson(),
+          'renderingIdDimensionValue': renderingIdDimensionValue!.toJson(),
         if (requiredFlashPluginVersion != null)
-          'requiredFlashPluginVersion': requiredFlashPluginVersion,
+          'requiredFlashPluginVersion': requiredFlashPluginVersion!,
         if (requiredFlashVersion != null)
-          'requiredFlashVersion': requiredFlashVersion,
-        if (size != null) 'size': size.toJson(),
-        if (skipOffset != null) 'skipOffset': skipOffset.toJson(),
-        if (skippable != null) 'skippable': skippable,
-        if (sslCompliant != null) 'sslCompliant': sslCompliant,
-        if (sslOverride != null) 'sslOverride': sslOverride,
+          'requiredFlashVersion': requiredFlashVersion!,
+        if (size != null) 'size': size!.toJson(),
+        if (skipOffset != null) 'skipOffset': skipOffset!.toJson(),
+        if (skippable != null) 'skippable': skippable!,
+        if (sslCompliant != null) 'sslCompliant': sslCompliant!,
+        if (sslOverride != null) 'sslOverride': sslOverride!,
         if (studioAdvertiserId != null)
-          'studioAdvertiserId': studioAdvertiserId,
-        if (studioCreativeId != null) 'studioCreativeId': studioCreativeId,
+          'studioAdvertiserId': studioAdvertiserId!,
+        if (studioCreativeId != null) 'studioCreativeId': studioCreativeId!,
         if (studioTraffickedCreativeId != null)
-          'studioTraffickedCreativeId': studioTraffickedCreativeId,
-        if (subaccountId != null) 'subaccountId': subaccountId,
+          'studioTraffickedCreativeId': studioTraffickedCreativeId!,
+        if (subaccountId != null) 'subaccountId': subaccountId!,
         if (thirdPartyBackupImageImpressionsUrl != null)
           'thirdPartyBackupImageImpressionsUrl':
-              thirdPartyBackupImageImpressionsUrl,
+              thirdPartyBackupImageImpressionsUrl!,
         if (thirdPartyRichMediaImpressionsUrl != null)
           'thirdPartyRichMediaImpressionsUrl':
-              thirdPartyRichMediaImpressionsUrl,
+              thirdPartyRichMediaImpressionsUrl!,
         if (thirdPartyUrls != null)
           'thirdPartyUrls':
-              thirdPartyUrls.map((value) => value.toJson()).toList(),
+              thirdPartyUrls!.map((value) => value.toJson()).toList(),
         if (timerCustomEvents != null)
           'timerCustomEvents':
-              timerCustomEvents.map((value) => value.toJson()).toList(),
-        if (totalFileSize != null) 'totalFileSize': totalFileSize,
-        if (type != null) 'type': type,
-        if (universalAdId != null) 'universalAdId': universalAdId.toJson(),
-        if (version != null) 'version': version,
+              timerCustomEvents!.map((value) => value.toJson()).toList(),
+        if (totalFileSize != null) 'totalFileSize': totalFileSize!,
+        if (type != null) 'type': type!,
+        if (universalAdId != null) 'universalAdId': universalAdId!.toJson(),
+        if (version != null) 'version': version!,
       };
 }
 
@@ -16752,20 +15729,20 @@ class CreativeAsset {
   /// This is a read-only field. Applicable to the following creative type:
   /// FLASH_INPAGE. Applicable to DISPLAY when the primary asset type is not
   /// HTML_IMAGE.
-  core.bool actionScript3;
+  core.bool? actionScript3;
 
   /// Whether the video or audio asset is active.
   ///
   /// This is a read-only field for VPAID_NON_LINEAR_VIDEO assets. Applicable to
   /// the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all
   /// VPAID.
-  core.bool active;
+  core.bool? active;
 
   /// Additional sizes associated with this creative asset.
   ///
   /// HTML5 asset generated by compatible software such as GWD will be able to
   /// support more sizes this creative asset can render.
-  core.List<Size> additionalSizes;
+  core.List<Size>? additionalSizes;
 
   /// Possible alignments for an asset.
   ///
@@ -16776,7 +15753,7 @@ class CreativeAsset {
   /// - "ALIGNMENT_RIGHT"
   /// - "ALIGNMENT_BOTTOM"
   /// - "ALIGNMENT_LEFT"
-  core.String alignment;
+  core.String? alignment;
 
   /// Artwork type of rich media creative.
   ///
@@ -16787,37 +15764,37 @@ class CreativeAsset {
   /// - "ARTWORK_TYPE_HTML5"
   /// - "ARTWORK_TYPE_MIXED"
   /// - "ARTWORK_TYPE_IMAGE"
-  core.String artworkType;
+  core.String? artworkType;
 
   /// Identifier of this asset.
   ///
   /// This is the same identifier returned during creative asset insert
   /// operation. This is a required field. Applicable to all but the following
   /// creative types: all REDIRECT and TRACKING_TEXT.
-  CreativeAssetId assetIdentifier;
+  CreativeAssetId? assetIdentifier;
 
   /// Audio stream bit rate in kbps.
   ///
   /// This is a read-only field. Applicable to the following creative types:
   /// INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.
-  core.int audioBitRate;
+  core.int? audioBitRate;
 
   /// Audio sample bit rate in hertz.
   ///
   /// This is a read-only field. Applicable to the following creative types:
   /// INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.
-  core.int audioSampleRate;
+  core.int? audioSampleRate;
 
   /// Exit event configured for the backup image.
   ///
   /// Applicable to the following creative types: all RICH_MEDIA.
-  CreativeCustomEvent backupImageExit;
+  CreativeCustomEvent? backupImageExit;
 
   /// Detected bit-rate for audio or video asset.
   ///
   /// This is a read-only field. Applicable to the following creative types:
   /// INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.
-  core.int bitRate;
+  core.int? bitRate;
 
   /// Rich media child asset type.
   ///
@@ -16828,7 +15805,7 @@ class CreativeAsset {
   /// - "CHILD_ASSET_TYPE_VIDEO"
   /// - "CHILD_ASSET_TYPE_IMAGE"
   /// - "CHILD_ASSET_TYPE_DATA"
-  core.String childAssetType;
+  core.String? childAssetType;
 
   /// Size of an asset when collapsed.
   ///
@@ -16836,20 +15813,20 @@ class CreativeAsset {
   /// RICH_MEDIA and all VPAID. Additionally, applicable to assets whose
   /// displayType is ASSET_DISPLAY_TYPE_EXPANDING or
   /// ASSET_DISPLAY_TYPE_PEEL_DOWN.
-  Size collapsedSize;
+  Size? collapsedSize;
 
   /// List of companion creatives assigned to an in-stream video creative asset.
   ///
   /// Acceptable values include IDs of existing flash and image creatives.
   /// Applicable to INSTREAM_VIDEO creative type with dynamicAssetSelection set
   /// to true.
-  core.List<core.String> companionCreativeIds;
+  core.List<core.String>? companionCreativeIds;
 
   /// Custom start time in seconds for making the asset visible.
   ///
   /// Applicable to the following creative types: all RICH_MEDIA. Value must be
   /// greater than or equal to 0.
-  core.int customStartTimeValue;
+  core.int? customStartTimeValue;
 
   /// List of feature dependencies for the creative asset that are detected by
   /// Campaign Manager.
@@ -16859,7 +15836,7 @@ class CreativeAsset {
   /// auto-generated field. Applicable to the following creative types:
   /// HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not
   /// HTML_IMAGE.
-  core.List<core.String> detectedFeatures;
+  core.List<core.String>? detectedFeatures;
 
   /// Type of rich media asset.
   ///
@@ -16876,13 +15853,13 @@ class CreativeAsset {
   /// - "ASSET_DISPLAY_TYPE_VPAID_LINEAR"
   /// - "ASSET_DISPLAY_TYPE_VPAID_NON_LINEAR"
   /// - "ASSET_DISPLAY_TYPE_BACKDROP"
-  core.String displayType;
+  core.String? displayType;
 
   /// Duration in seconds for which an asset will be displayed.
   ///
   /// Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO
   /// and VPAID_LINEAR_VIDEO. Value must be greater than or equal to 1.
-  core.int duration;
+  core.int? duration;
 
   /// Duration type for which an asset will be displayed.
   ///
@@ -16891,71 +15868,71 @@ class CreativeAsset {
   /// - "ASSET_DURATION_TYPE_AUTO"
   /// - "ASSET_DURATION_TYPE_NONE"
   /// - "ASSET_DURATION_TYPE_CUSTOM"
-  core.String durationType;
+  core.String? durationType;
 
   /// Detected expanded dimension for video asset.
   ///
   /// This is a read-only field. Applicable to the following creative types:
   /// INSTREAM_VIDEO and all VPAID.
-  Size expandedDimension;
+  Size? expandedDimension;
 
   /// File size associated with this creative asset.
   ///
   /// This is a read-only field. Applicable to all but the following creative
   /// types: all REDIRECT and TRACKING_TEXT.
-  core.String fileSize;
+  core.String? fileSize;
 
   /// Flash version of the asset.
   ///
   /// This is a read-only field. Applicable to the following creative types:
   /// FLASH_INPAGE, all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when
   /// the primary asset type is not HTML_IMAGE.
-  core.int flashVersion;
+  core.int? flashVersion;
 
   /// Video frame rate for video asset in frames per second.
   ///
   /// This is a read-only field. Applicable to the following creative types:
   /// INSTREAM_VIDEO and all VPAID.
-  core.double frameRate;
+  core.double? frameRate;
 
   /// Whether to hide Flash objects flag for an asset.
   ///
   /// Applicable to the following creative types: all RICH_MEDIA.
-  core.bool hideFlashObjects;
+  core.bool? hideFlashObjects;
 
   /// Whether to hide selection boxes flag for an asset.
   ///
   /// Applicable to the following creative types: all RICH_MEDIA.
-  core.bool hideSelectionBoxes;
+  core.bool? hideSelectionBoxes;
 
   /// Whether the asset is horizontally locked.
   ///
   /// This is a read-only field. Applicable to the following creative types: all
   /// RICH_MEDIA.
-  core.bool horizontallyLocked;
+  core.bool? horizontallyLocked;
 
   /// Numeric ID of this creative asset.
   ///
   /// This is a required field and should not be modified. Applicable to all but
   /// the following creative types: all REDIRECT and TRACKING_TEXT.
-  core.String id;
+  core.String? id;
 
   /// Dimension value for the ID of the asset.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue idDimensionValue;
+  DimensionValue? idDimensionValue;
 
   /// Detected duration for audio or video asset.
   ///
   /// This is a read-only field. Applicable to the following creative types:
   /// INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.
-  core.double mediaDuration;
+  core.double? mediaDuration;
 
   /// Detected MIME type for audio or video asset.
   ///
   /// This is a read-only field. Applicable to the following creative types:
   /// INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID.
-  core.String mimeType;
+  core.String? mimeType;
 
   /// Offset position for an asset in collapsed mode.
   ///
@@ -16963,7 +15940,7 @@ class CreativeAsset {
   /// RICH_MEDIA and all VPAID. Additionally, only applicable to assets whose
   /// displayType is ASSET_DISPLAY_TYPE_EXPANDING or
   /// ASSET_DISPLAY_TYPE_PEEL_DOWN.
-  OffsetPosition offset;
+  OffsetPosition? offset;
 
   /// Orientation of video asset.
   ///
@@ -16972,21 +15949,21 @@ class CreativeAsset {
   /// - "LANDSCAPE"
   /// - "PORTRAIT"
   /// - "SQUARE"
-  core.String orientation;
+  core.String? orientation;
 
   /// Whether the backup asset is original or changed by the user in Campaign
   /// Manager.
   ///
   /// Applicable to the following creative types: all RICH_MEDIA.
-  core.bool originalBackup;
+  core.bool? originalBackup;
 
   /// Whether this asset is used as a polite load asset.
-  core.bool politeLoad;
+  core.bool? politeLoad;
 
   /// Offset position for an asset.
   ///
   /// Applicable to the following creative types: all RICH_MEDIA.
-  OffsetPosition position;
+  OffsetPosition? position;
 
   /// Offset left unit for an asset.
   ///
@@ -16996,7 +15973,7 @@ class CreativeAsset {
   /// - "OFFSET_UNIT_PIXEL"
   /// - "OFFSET_UNIT_PERCENT"
   /// - "OFFSET_UNIT_PIXEL_FROM_CENTER"
-  core.String positionLeftUnit;
+  core.String? positionLeftUnit;
 
   /// Offset top unit for an asset.
   ///
@@ -17007,20 +15984,20 @@ class CreativeAsset {
   /// - "OFFSET_UNIT_PIXEL"
   /// - "OFFSET_UNIT_PERCENT"
   /// - "OFFSET_UNIT_PIXEL_FROM_CENTER"
-  core.String positionTopUnit;
+  core.String? positionTopUnit;
 
   /// Progressive URL for video asset.
   ///
   /// This is a read-only field. Applicable to the following creative types:
   /// INSTREAM_VIDEO and all VPAID.
-  core.String progressiveServingUrl;
+  core.String? progressiveServingUrl;
 
   /// Whether the asset pushes down other content.
   ///
   /// Applicable to the following creative types: all RICH_MEDIA. Additionally,
   /// only applicable when the asset offsets are 0, the collapsedSize.width
   /// matches size.width, and the collapsedSize.height is less than size.height.
-  core.bool pushdown;
+  core.bool? pushdown;
 
   /// Pushdown duration in seconds for an asset.
   ///
@@ -17028,7 +16005,7 @@ class CreativeAsset {
   /// only applicable when the asset pushdown field is true, the offsets are 0,
   /// the collapsedSize.width matches size.width, and the collapsedSize.height
   /// is less than size.height. Acceptable values are 0 to 9.99, inclusive.
-  core.double pushdownDuration;
+  core.double? pushdownDuration;
 
   /// Role of the asset in relation to creative.
   ///
@@ -17067,7 +16044,7 @@ class CreativeAsset {
   /// - "ALTERNATE_VIDEO"
   /// - "PARENT_AUDIO"
   /// - "TRANSCODED_AUDIO"
-  core.String role;
+  core.String? role;
 
   /// Size associated with this creative asset.
   ///
@@ -17077,13 +16054,13 @@ class CreativeAsset {
   /// following creative types: DISPLAY_IMAGE_GALLERY, FLASH_INPAGE,
   /// HTML5_BANNER, IMAGE, and all RICH_MEDIA. Applicable to DISPLAY when the
   /// primary asset type is not HTML_IMAGE.
-  Size size;
+  Size? size;
 
   /// Whether the asset is SSL-compliant.
   ///
   /// This is a read-only field. Applicable to all but the following creative
   /// types: all REDIRECT and TRACKING_TEXT.
-  core.bool sslCompliant;
+  core.bool? sslCompliant;
 
   /// Initial wait time type before making the asset visible.
   ///
@@ -17091,25 +16068,25 @@ class CreativeAsset {
   /// Possible string values are:
   /// - "ASSET_START_TIME_TYPE_NONE"
   /// - "ASSET_START_TIME_TYPE_CUSTOM"
-  core.String startTimeType;
+  core.String? startTimeType;
 
   /// Streaming URL for video asset.
   ///
   /// This is a read-only field. Applicable to the following creative types:
   /// INSTREAM_VIDEO and all VPAID.
-  core.String streamingServingUrl;
+  core.String? streamingServingUrl;
 
   /// Whether the asset is transparent.
   ///
   /// Applicable to the following creative types: all RICH_MEDIA. Additionally,
   /// only applicable to HTML5 assets.
-  core.bool transparency;
+  core.bool? transparency;
 
   /// Whether the asset is vertically locked.
   ///
   /// This is a read-only field. Applicable to the following creative types: all
   /// RICH_MEDIA.
-  core.bool verticallyLocked;
+  core.bool? verticallyLocked;
 
   /// Window mode options for flash assets.
   ///
@@ -17120,7 +16097,7 @@ class CreativeAsset {
   /// - "OPAQUE"
   /// - "WINDOW"
   /// - "TRANSPARENT"
-  core.String windowMode;
+  core.String? windowMode;
 
   /// zIndex value of an asset.
   ///
@@ -17128,19 +16105,19 @@ class CreativeAsset {
   /// only applicable to assets whose displayType is NOT one of the following
   /// types: ASSET_DISPLAY_TYPE_INPAGE or ASSET_DISPLAY_TYPE_OVERLAY. Acceptable
   /// values are -999999999 to 999999999, inclusive.
-  core.int zIndex;
+  core.int? zIndex;
 
   /// File name of zip file.
   ///
   /// This is a read-only field. Applicable to the following creative types:
   /// HTML5_BANNER.
-  core.String zipFilename;
+  core.String? zipFilename;
 
   /// Size of zip file.
   ///
   /// This is a read-only field. Applicable to the following creative types:
   /// HTML5_BANNER.
-  core.String zipFilesize;
+  core.String? zipFilesize;
 
   CreativeAsset();
 
@@ -17312,69 +16289,69 @@ class CreativeAsset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (actionScript3 != null) 'actionScript3': actionScript3,
-        if (active != null) 'active': active,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (actionScript3 != null) 'actionScript3': actionScript3!,
+        if (active != null) 'active': active!,
         if (additionalSizes != null)
           'additionalSizes':
-              additionalSizes.map((value) => value.toJson()).toList(),
-        if (alignment != null) 'alignment': alignment,
-        if (artworkType != null) 'artworkType': artworkType,
+              additionalSizes!.map((value) => value.toJson()).toList(),
+        if (alignment != null) 'alignment': alignment!,
+        if (artworkType != null) 'artworkType': artworkType!,
         if (assetIdentifier != null)
-          'assetIdentifier': assetIdentifier.toJson(),
-        if (audioBitRate != null) 'audioBitRate': audioBitRate,
-        if (audioSampleRate != null) 'audioSampleRate': audioSampleRate,
+          'assetIdentifier': assetIdentifier!.toJson(),
+        if (audioBitRate != null) 'audioBitRate': audioBitRate!,
+        if (audioSampleRate != null) 'audioSampleRate': audioSampleRate!,
         if (backupImageExit != null)
-          'backupImageExit': backupImageExit.toJson(),
-        if (bitRate != null) 'bitRate': bitRate,
-        if (childAssetType != null) 'childAssetType': childAssetType,
-        if (collapsedSize != null) 'collapsedSize': collapsedSize.toJson(),
+          'backupImageExit': backupImageExit!.toJson(),
+        if (bitRate != null) 'bitRate': bitRate!,
+        if (childAssetType != null) 'childAssetType': childAssetType!,
+        if (collapsedSize != null) 'collapsedSize': collapsedSize!.toJson(),
         if (companionCreativeIds != null)
-          'companionCreativeIds': companionCreativeIds,
+          'companionCreativeIds': companionCreativeIds!,
         if (customStartTimeValue != null)
-          'customStartTimeValue': customStartTimeValue,
-        if (detectedFeatures != null) 'detectedFeatures': detectedFeatures,
-        if (displayType != null) 'displayType': displayType,
-        if (duration != null) 'duration': duration,
-        if (durationType != null) 'durationType': durationType,
+          'customStartTimeValue': customStartTimeValue!,
+        if (detectedFeatures != null) 'detectedFeatures': detectedFeatures!,
+        if (displayType != null) 'displayType': displayType!,
+        if (duration != null) 'duration': duration!,
+        if (durationType != null) 'durationType': durationType!,
         if (expandedDimension != null)
-          'expandedDimension': expandedDimension.toJson(),
-        if (fileSize != null) 'fileSize': fileSize,
-        if (flashVersion != null) 'flashVersion': flashVersion,
-        if (frameRate != null) 'frameRate': frameRate,
-        if (hideFlashObjects != null) 'hideFlashObjects': hideFlashObjects,
+          'expandedDimension': expandedDimension!.toJson(),
+        if (fileSize != null) 'fileSize': fileSize!,
+        if (flashVersion != null) 'flashVersion': flashVersion!,
+        if (frameRate != null) 'frameRate': frameRate!,
+        if (hideFlashObjects != null) 'hideFlashObjects': hideFlashObjects!,
         if (hideSelectionBoxes != null)
-          'hideSelectionBoxes': hideSelectionBoxes,
+          'hideSelectionBoxes': hideSelectionBoxes!,
         if (horizontallyLocked != null)
-          'horizontallyLocked': horizontallyLocked,
-        if (id != null) 'id': id,
+          'horizontallyLocked': horizontallyLocked!,
+        if (id != null) 'id': id!,
         if (idDimensionValue != null)
-          'idDimensionValue': idDimensionValue.toJson(),
-        if (mediaDuration != null) 'mediaDuration': mediaDuration,
-        if (mimeType != null) 'mimeType': mimeType,
-        if (offset != null) 'offset': offset.toJson(),
-        if (orientation != null) 'orientation': orientation,
-        if (originalBackup != null) 'originalBackup': originalBackup,
-        if (politeLoad != null) 'politeLoad': politeLoad,
-        if (position != null) 'position': position.toJson(),
-        if (positionLeftUnit != null) 'positionLeftUnit': positionLeftUnit,
-        if (positionTopUnit != null) 'positionTopUnit': positionTopUnit,
+          'idDimensionValue': idDimensionValue!.toJson(),
+        if (mediaDuration != null) 'mediaDuration': mediaDuration!,
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (offset != null) 'offset': offset!.toJson(),
+        if (orientation != null) 'orientation': orientation!,
+        if (originalBackup != null) 'originalBackup': originalBackup!,
+        if (politeLoad != null) 'politeLoad': politeLoad!,
+        if (position != null) 'position': position!.toJson(),
+        if (positionLeftUnit != null) 'positionLeftUnit': positionLeftUnit!,
+        if (positionTopUnit != null) 'positionTopUnit': positionTopUnit!,
         if (progressiveServingUrl != null)
-          'progressiveServingUrl': progressiveServingUrl,
-        if (pushdown != null) 'pushdown': pushdown,
-        if (pushdownDuration != null) 'pushdownDuration': pushdownDuration,
-        if (role != null) 'role': role,
-        if (size != null) 'size': size.toJson(),
-        if (sslCompliant != null) 'sslCompliant': sslCompliant,
-        if (startTimeType != null) 'startTimeType': startTimeType,
+          'progressiveServingUrl': progressiveServingUrl!,
+        if (pushdown != null) 'pushdown': pushdown!,
+        if (pushdownDuration != null) 'pushdownDuration': pushdownDuration!,
+        if (role != null) 'role': role!,
+        if (size != null) 'size': size!.toJson(),
+        if (sslCompliant != null) 'sslCompliant': sslCompliant!,
+        if (startTimeType != null) 'startTimeType': startTimeType!,
         if (streamingServingUrl != null)
-          'streamingServingUrl': streamingServingUrl,
-        if (transparency != null) 'transparency': transparency,
-        if (verticallyLocked != null) 'verticallyLocked': verticallyLocked,
-        if (windowMode != null) 'windowMode': windowMode,
-        if (zIndex != null) 'zIndex': zIndex,
-        if (zipFilename != null) 'zipFilename': zipFilename,
-        if (zipFilesize != null) 'zipFilesize': zipFilesize,
+          'streamingServingUrl': streamingServingUrl!,
+        if (transparency != null) 'transparency': transparency!,
+        if (verticallyLocked != null) 'verticallyLocked': verticallyLocked!,
+        if (windowMode != null) 'windowMode': windowMode!,
+        if (zIndex != null) 'zIndex': zIndex!,
+        if (zipFilename != null) 'zipFilename': zipFilename!,
+        if (zipFilesize != null) 'zipFilesize': zipFilesize!,
       };
 }
 
@@ -17386,7 +16363,7 @@ class CreativeAssetId {
   /// assetIdentifier is used to identify the uploaded asset. Characters in the
   /// name must be alphanumeric or one of the following: ".-_ ". Spaces are
   /// allowed.
-  core.String name;
+  core.String? name;
 
   /// Type of asset to upload.
   ///
@@ -17399,7 +16376,7 @@ class CreativeAssetId {
   /// - "HTML"
   /// - "HTML_IMAGE"
   /// - "AUDIO"
-  core.String type;
+  core.String? type;
 
   CreativeAssetId();
 
@@ -17412,9 +16389,9 @@ class CreativeAssetId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -17427,19 +16404,19 @@ class CreativeAssetMetadata {
   /// ID of the creative asset.
   ///
   /// This is a required field.
-  CreativeAssetId assetIdentifier;
+  CreativeAssetId? assetIdentifier;
 
   /// List of detected click tags for assets.
   ///
   /// This is a read-only, auto-generated field. This field is empty for a rich
   /// media asset.
-  core.List<ClickTag> clickTags;
+  core.List<ClickTag>? clickTags;
 
   /// List of counter events configured for the asset.
   ///
   /// This is a read-only, auto-generated field and only applicable to a rich
   /// media asset.
-  core.List<CreativeCustomEvent> counterCustomEvents;
+  core.List<CreativeCustomEvent>? counterCustomEvents;
 
   /// List of feature dependencies for the creative asset that are detected by
   /// Campaign Manager.
@@ -17447,39 +16424,39 @@ class CreativeAssetMetadata {
   /// Feature dependencies are features that a browser must be able to support
   /// in order to render your HTML5 creative correctly. This is a read-only,
   /// auto-generated field.
-  core.List<core.String> detectedFeatures;
+  core.List<core.String>? detectedFeatures;
 
   /// List of exit events configured for the asset.
   ///
   /// This is a read-only, auto-generated field and only applicable to a rich
   /// media asset.
-  core.List<CreativeCustomEvent> exitCustomEvents;
+  core.List<CreativeCustomEvent>? exitCustomEvents;
 
   /// Numeric ID of the asset.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Dimension value for the numeric ID of the asset.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue idDimensionValue;
+  DimensionValue? idDimensionValue;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#creativeAssetMetadata".
-  core.String kind;
+  core.String? kind;
 
   /// True if the uploaded asset is a rich media asset.
   ///
   /// This is a read-only, auto-generated field.
-  core.bool richMedia;
+  core.bool? richMedia;
 
   /// List of timer events configured for the asset.
   ///
   /// This is a read-only, auto-generated field and only applicable to a rich
   /// media asset.
-  core.List<CreativeCustomEvent> timerCustomEvents;
+  core.List<CreativeCustomEvent>? timerCustomEvents;
 
   /// Rules validated during code generation that generated a warning.
   ///
@@ -17493,7 +16470,7 @@ class CreativeAssetMetadata {
   /// "HTML5_FEATURE_UNSUPPORTED" - "LINKED_FILE_NOT_FOUND" -
   /// "MAX_FLASH_VERSION_11" - "MRAID_REFERENCED" - "NOT_SSL_COMPLIANT" -
   /// "ORPHANED_ASSET" - "PRIMARY_HTML_MISSING" - "SVG_INVALID" - "ZIP_INVALID"
-  core.List<core.String> warnedValidationRules;
+  core.List<core.String>? warnedValidationRules;
 
   CreativeAssetMetadata();
 
@@ -17551,28 +16528,28 @@ class CreativeAssetMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (assetIdentifier != null)
-          'assetIdentifier': assetIdentifier.toJson(),
+          'assetIdentifier': assetIdentifier!.toJson(),
         if (clickTags != null)
-          'clickTags': clickTags.map((value) => value.toJson()).toList(),
+          'clickTags': clickTags!.map((value) => value.toJson()).toList(),
         if (counterCustomEvents != null)
           'counterCustomEvents':
-              counterCustomEvents.map((value) => value.toJson()).toList(),
-        if (detectedFeatures != null) 'detectedFeatures': detectedFeatures,
+              counterCustomEvents!.map((value) => value.toJson()).toList(),
+        if (detectedFeatures != null) 'detectedFeatures': detectedFeatures!,
         if (exitCustomEvents != null)
           'exitCustomEvents':
-              exitCustomEvents.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id,
+              exitCustomEvents!.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id!,
         if (idDimensionValue != null)
-          'idDimensionValue': idDimensionValue.toJson(),
-        if (kind != null) 'kind': kind,
-        if (richMedia != null) 'richMedia': richMedia,
+          'idDimensionValue': idDimensionValue!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (richMedia != null) 'richMedia': richMedia!,
         if (timerCustomEvents != null)
           'timerCustomEvents':
-              timerCustomEvents.map((value) => value.toJson()).toList(),
+              timerCustomEvents!.map((value) => value.toJson()).toList(),
         if (warnedValidationRules != null)
-          'warnedValidationRules': warnedValidationRules,
+          'warnedValidationRules': warnedValidationRules!,
       };
 }
 
@@ -17585,14 +16562,14 @@ class CreativeAssetSelection {
   ///
   /// This should refer to one of the parent assets in this creative, and will
   /// be served if none of the rules match. This is a required field.
-  core.String defaultAssetId;
+  core.String? defaultAssetId;
 
   /// Rules determine which asset will be served to a viewer.
   ///
   /// Rules will be evaluated in the order in which they are stored in this
   /// list. This list must contain at least one rule. Applicable to
   /// INSTREAM_VIDEO creatives.
-  core.List<Rule> rules;
+  core.List<Rule>? rules;
 
   CreativeAssetSelection();
 
@@ -17608,10 +16585,10 @@ class CreativeAssetSelection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (defaultAssetId != null) 'defaultAssetId': defaultAssetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (defaultAssetId != null) 'defaultAssetId': defaultAssetId!,
         if (rules != null)
-          'rules': rules.map((value) => value.toJson()).toList(),
+          'rules': rules!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -17620,7 +16597,7 @@ class CreativeAssignment {
   /// Whether this creative assignment is active.
   ///
   /// When true, the creative will be included in the ad's rotation.
-  core.bool active;
+  core.bool? active;
 
   /// Whether applicable event tags should fire when this creative assignment is
   /// rendered.
@@ -17628,32 +16605,32 @@ class CreativeAssignment {
   /// If this value is unset when the ad is inserted or updated, it will default
   /// to true for all creative types EXCEPT for INTERNAL_REDIRECT,
   /// INTERSTITIAL_INTERNAL_REDIRECT, and INSTREAM_VIDEO.
-  core.bool applyEventTags;
+  core.bool? applyEventTags;
 
   /// Click-through URL of the creative assignment.
-  ClickThroughUrl clickThroughUrl;
+  ClickThroughUrl? clickThroughUrl;
 
   /// Companion creative overrides for this creative assignment.
   ///
   /// Applicable to video ads.
-  core.List<CompanionClickThroughOverride> companionCreativeOverrides;
+  core.List<CompanionClickThroughOverride>? companionCreativeOverrides;
 
   /// Creative group assignments for this creative assignment.
   ///
   /// Only one assignment per creative group number is allowed for a maximum of
   /// two assignments.
-  core.List<CreativeGroupAssignment> creativeGroupAssignments;
+  core.List<CreativeGroupAssignment>? creativeGroupAssignments;
 
   /// ID of the creative to be assigned.
   ///
   /// This is a required field.
-  core.String creativeId;
+  core.String? creativeId;
 
   /// Dimension value for the ID of the creative.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue creativeIdDimensionValue;
-  core.DateTime endTime;
+  DimensionValue? creativeIdDimensionValue;
+  core.DateTime? endTime;
 
   /// Rich media exit overrides for this creative assignment.
   ///
@@ -17662,26 +16639,26 @@ class CreativeAssignment {
   /// RICH_MEDIA_EXPANDING - RICH_MEDIA_INTERSTITIAL_FLOAT -
   /// RICH_MEDIA_MOBILE_IN_APP - RICH_MEDIA_MULTI_FLOATING -
   /// RICH_MEDIA_PEEL_DOWN - VPAID_LINEAR - VPAID_NON_LINEAR
-  core.List<RichMediaExitOverride> richMediaExitOverrides;
+  core.List<RichMediaExitOverride>? richMediaExitOverrides;
 
   /// Sequence number of the creative assignment, applicable when the rotation
   /// type is CREATIVE_ROTATION_TYPE_SEQUENTIAL.
   ///
   /// Acceptable values are 1 to 65535, inclusive.
-  core.int sequence;
+  core.int? sequence;
 
   /// Whether the creative to be assigned is SSL-compliant.
   ///
   /// This is a read-only field that is auto-generated when the ad is inserted
   /// or updated.
-  core.bool sslCompliant;
-  core.DateTime startTime;
+  core.bool? sslCompliant;
+  core.DateTime? startTime;
 
   /// Weight of the creative assignment, applicable when the rotation type is
   /// CREATIVE_ROTATION_TYPE_RANDOM.
   ///
   /// Value must be greater than or equal to 1.
-  core.int weight;
+  core.int? weight;
 
   CreativeAssignment();
 
@@ -17743,29 +16720,29 @@ class CreativeAssignment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (active != null) 'active': active,
-        if (applyEventTags != null) 'applyEventTags': applyEventTags,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (active != null) 'active': active!,
+        if (applyEventTags != null) 'applyEventTags': applyEventTags!,
         if (clickThroughUrl != null)
-          'clickThroughUrl': clickThroughUrl.toJson(),
+          'clickThroughUrl': clickThroughUrl!.toJson(),
         if (companionCreativeOverrides != null)
-          'companionCreativeOverrides': companionCreativeOverrides
+          'companionCreativeOverrides': companionCreativeOverrides!
               .map((value) => value.toJson())
               .toList(),
         if (creativeGroupAssignments != null)
           'creativeGroupAssignments':
-              creativeGroupAssignments.map((value) => value.toJson()).toList(),
-        if (creativeId != null) 'creativeId': creativeId,
+              creativeGroupAssignments!.map((value) => value.toJson()).toList(),
+        if (creativeId != null) 'creativeId': creativeId!,
         if (creativeIdDimensionValue != null)
-          'creativeIdDimensionValue': creativeIdDimensionValue.toJson(),
-        if (endTime != null) 'endTime': (endTime).toIso8601String(),
+          'creativeIdDimensionValue': creativeIdDimensionValue!.toJson(),
+        if (endTime != null) 'endTime': (endTime!).toIso8601String(),
         if (richMediaExitOverrides != null)
           'richMediaExitOverrides':
-              richMediaExitOverrides.map((value) => value.toJson()).toList(),
-        if (sequence != null) 'sequence': sequence,
-        if (sslCompliant != null) 'sslCompliant': sslCompliant,
-        if (startTime != null) 'startTime': (startTime).toIso8601String(),
-        if (weight != null) 'weight': weight,
+              richMediaExitOverrides!.map((value) => value.toJson()).toList(),
+        if (sequence != null) 'sequence': sequence!,
+        if (sslCompliant != null) 'sslCompliant': sslCompliant!,
+        if (startTime != null) 'startTime': (startTime!).toIso8601String(),
+        if (weight != null) 'weight': weight!,
       };
 }
 
@@ -17777,15 +16754,15 @@ class CreativeClickThroughUrl {
   /// The URL is computed as follows: - If landingPageId is specified then that
   /// landing page's URL is assigned to this field. - Otherwise, the
   /// customClickThroughUrl is assigned to this field.
-  core.String computedClickThroughUrl;
+  core.String? computedClickThroughUrl;
 
   /// Custom click-through URL.
   ///
   /// Applicable if the landingPageId field is left unset.
-  core.String customClickThroughUrl;
+  core.String? customClickThroughUrl;
 
   /// ID of the landing page for the click-through URL.
-  core.String landingPageId;
+  core.String? landingPageId;
 
   CreativeClickThroughUrl();
 
@@ -17801,12 +16778,12 @@ class CreativeClickThroughUrl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (computedClickThroughUrl != null)
-          'computedClickThroughUrl': computedClickThroughUrl,
+          'computedClickThroughUrl': computedClickThroughUrl!,
         if (customClickThroughUrl != null)
-          'customClickThroughUrl': customClickThroughUrl,
-        if (landingPageId != null) 'landingPageId': landingPageId,
+          'customClickThroughUrl': customClickThroughUrl!,
+        if (landingPageId != null) 'landingPageId': landingPageId!,
       };
 }
 
@@ -17815,10 +16792,10 @@ class CreativeCustomEvent {
   /// Unique ID of this event used by Reporting and Data Transfer.
   ///
   /// This is a read-only field.
-  core.String advertiserCustomEventId;
+  core.String? advertiserCustomEventId;
 
   /// User-entered name for the event.
-  core.String advertiserCustomEventName;
+  core.String? advertiserCustomEventName;
 
   /// Type of the event.
   ///
@@ -17827,13 +16804,13 @@ class CreativeCustomEvent {
   /// - "ADVERTISER_EVENT_TIMER"
   /// - "ADVERTISER_EVENT_EXIT"
   /// - "ADVERTISER_EVENT_COUNTER"
-  core.String advertiserCustomEventType;
+  core.String? advertiserCustomEventType;
 
   /// Artwork label column, used to link events in Campaign Manager back to
   /// events in Studio.
   ///
   /// This is a required field and should not be modified after insertion.
-  core.String artworkLabel;
+  core.String? artworkLabel;
 
   /// Artwork type used by the creative.This is a read-only field.
   /// Possible string values are:
@@ -17841,22 +16818,22 @@ class CreativeCustomEvent {
   /// - "ARTWORK_TYPE_HTML5"
   /// - "ARTWORK_TYPE_MIXED"
   /// - "ARTWORK_TYPE_IMAGE"
-  core.String artworkType;
+  core.String? artworkType;
 
   /// Exit click-through URL for the event.
   ///
   /// This field is used only for exit events.
-  CreativeClickThroughUrl exitClickThroughUrl;
+  CreativeClickThroughUrl? exitClickThroughUrl;
 
   /// ID of this event.
   ///
   /// This is a required field and should not be modified after insertion.
-  core.String id;
+  core.String? id;
 
   /// Properties for rich media popup windows.
   ///
   /// This field is used only for exit events.
-  PopupWindowProperties popupWindowProperties;
+  PopupWindowProperties? popupWindowProperties;
 
   /// Target type used by the event.
   /// Possible string values are:
@@ -17865,13 +16842,13 @@ class CreativeCustomEvent {
   /// - "TARGET_SELF"
   /// - "TARGET_PARENT"
   /// - "TARGET_POPUP"
-  core.String targetType;
+  core.String? targetType;
 
   /// Video reporting ID, used to differentiate multiple videos in a single
   /// creative.
   ///
   /// This is a read-only field.
-  core.String videoReportingId;
+  core.String? videoReportingId;
 
   CreativeCustomEvent();
 
@@ -17913,22 +16890,22 @@ class CreativeCustomEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (advertiserCustomEventId != null)
-          'advertiserCustomEventId': advertiserCustomEventId,
+          'advertiserCustomEventId': advertiserCustomEventId!,
         if (advertiserCustomEventName != null)
-          'advertiserCustomEventName': advertiserCustomEventName,
+          'advertiserCustomEventName': advertiserCustomEventName!,
         if (advertiserCustomEventType != null)
-          'advertiserCustomEventType': advertiserCustomEventType,
-        if (artworkLabel != null) 'artworkLabel': artworkLabel,
-        if (artworkType != null) 'artworkType': artworkType,
+          'advertiserCustomEventType': advertiserCustomEventType!,
+        if (artworkLabel != null) 'artworkLabel': artworkLabel!,
+        if (artworkType != null) 'artworkType': artworkType!,
         if (exitClickThroughUrl != null)
-          'exitClickThroughUrl': exitClickThroughUrl.toJson(),
-        if (id != null) 'id': id,
+          'exitClickThroughUrl': exitClickThroughUrl!.toJson(),
+        if (id != null) 'id': id!,
         if (popupWindowProperties != null)
-          'popupWindowProperties': popupWindowProperties.toJson(),
-        if (targetType != null) 'targetType': targetType,
-        if (videoReportingId != null) 'videoReportingId': videoReportingId,
+          'popupWindowProperties': popupWindowProperties!.toJson(),
+        if (targetType != null) 'targetType': targetType!,
+        if (videoReportingId != null) 'videoReportingId': videoReportingId!,
       };
 }
 
@@ -17937,38 +16914,38 @@ class CreativeField {
   /// Account ID of this creative field.
   ///
   /// This is a read-only field that can be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// Advertiser ID of this creative field.
   ///
   /// This is a required field on insertion.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Dimension value for the ID of the advertiser.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue advertiserIdDimensionValue;
+  DimensionValue? advertiserIdDimensionValue;
 
   /// ID of this creative field.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#creativeField".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this creative field.
   ///
   /// This is a required field and must be less than 256 characters long and
   /// unique among creative fields of the same advertiser.
-  core.String name;
+  core.String? name;
 
   /// Subaccount ID of this creative field.
   ///
   /// This is a read-only field that can be left blank.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   CreativeField();
 
@@ -17998,25 +16975,25 @@ class CreativeField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (advertiserId != null) 'advertiserId': advertiserId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
         if (advertiserIdDimensionValue != null)
-          'advertiserIdDimensionValue': advertiserIdDimensionValue.toJson(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (subaccountId != null) 'subaccountId': subaccountId,
+          'advertiserIdDimensionValue': advertiserIdDimensionValue!.toJson(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (subaccountId != null) 'subaccountId': subaccountId!,
       };
 }
 
 /// Creative Field Assignment.
 class CreativeFieldAssignment {
   /// ID of the creative field.
-  core.String creativeFieldId;
+  core.String? creativeFieldId;
 
   /// ID of the creative field value.
-  core.String creativeFieldValueId;
+  core.String? creativeFieldValueId;
 
   CreativeFieldAssignment();
 
@@ -18029,10 +17006,10 @@ class CreativeFieldAssignment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creativeFieldId != null) 'creativeFieldId': creativeFieldId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creativeFieldId != null) 'creativeFieldId': creativeFieldId!,
         if (creativeFieldValueId != null)
-          'creativeFieldValueId': creativeFieldValueId,
+          'creativeFieldValueId': creativeFieldValueId!,
       };
 }
 
@@ -18041,18 +17018,18 @@ class CreativeFieldValue {
   /// ID of this creative field value.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#creativeFieldValue".
-  core.String kind;
+  core.String? kind;
 
   /// Value of this creative field value.
   ///
   /// It needs to be less than 256 characters in length and unique per creative
   /// field.
-  core.String value;
+  core.String? value;
 
   CreativeFieldValue();
 
@@ -18068,25 +17045,25 @@ class CreativeFieldValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// Creative Field Value List Response
 class CreativeFieldValuesListResponse {
   /// Creative field value collection.
-  core.List<CreativeFieldValue> creativeFieldValues;
+  core.List<CreativeFieldValue>? creativeFieldValues;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#creativeFieldValuesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   CreativeFieldValuesListResponse();
 
@@ -18105,27 +17082,27 @@ class CreativeFieldValuesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (creativeFieldValues != null)
           'creativeFieldValues':
-              creativeFieldValues.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              creativeFieldValues!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Creative Field List Response
 class CreativeFieldsListResponse {
   /// Creative field collection.
-  core.List<CreativeField> creativeFields;
+  core.List<CreativeField>? creativeFields;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#creativeFieldsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   CreativeFieldsListResponse();
 
@@ -18144,12 +17121,12 @@ class CreativeFieldsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (creativeFields != null)
           'creativeFields':
-              creativeFields.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              creativeFields!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -18158,45 +17135,45 @@ class CreativeGroup {
   /// Account ID of this creative group.
   ///
   /// This is a read-only field that can be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// Advertiser ID of this creative group.
   ///
   /// This is a required field on insertion.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Dimension value for the ID of the advertiser.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue advertiserIdDimensionValue;
+  DimensionValue? advertiserIdDimensionValue;
 
   /// Subgroup of the creative group.
   ///
   /// Assign your creative groups to a subgroup in order to filter or manage
   /// them more easily. This field is required on insertion and is read-only
   /// after insertion. Acceptable values are 1 to 2, inclusive.
-  core.int groupNumber;
+  core.int? groupNumber;
 
   /// ID of this creative group.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#creativeGroup".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this creative group.
   ///
   /// This is a required field and must be less than 256 characters long and
   /// unique among creative groups of the same advertiser.
-  core.String name;
+  core.String? name;
 
   /// Subaccount ID of this creative group.
   ///
   /// This is a read-only field that can be left blank.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   CreativeGroup();
 
@@ -18229,29 +17206,29 @@ class CreativeGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (advertiserId != null) 'advertiserId': advertiserId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
         if (advertiserIdDimensionValue != null)
-          'advertiserIdDimensionValue': advertiserIdDimensionValue.toJson(),
-        if (groupNumber != null) 'groupNumber': groupNumber,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (subaccountId != null) 'subaccountId': subaccountId,
+          'advertiserIdDimensionValue': advertiserIdDimensionValue!.toJson(),
+        if (groupNumber != null) 'groupNumber': groupNumber!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (subaccountId != null) 'subaccountId': subaccountId!,
       };
 }
 
 /// Creative Group Assignment.
 class CreativeGroupAssignment {
   /// ID of the creative group to be assigned.
-  core.String creativeGroupId;
+  core.String? creativeGroupId;
 
   /// Creative group number of the creative group assignment.
   /// Possible string values are:
   /// - "CREATIVE_GROUP_ONE"
   /// - "CREATIVE_GROUP_TWO"
-  core.String creativeGroupNumber;
+  core.String? creativeGroupNumber;
 
   CreativeGroupAssignment();
 
@@ -18264,25 +17241,25 @@ class CreativeGroupAssignment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creativeGroupId != null) 'creativeGroupId': creativeGroupId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creativeGroupId != null) 'creativeGroupId': creativeGroupId!,
         if (creativeGroupNumber != null)
-          'creativeGroupNumber': creativeGroupNumber,
+          'creativeGroupNumber': creativeGroupNumber!,
       };
 }
 
 /// Creative Group List Response
 class CreativeGroupsListResponse {
   /// Creative group collection.
-  core.List<CreativeGroup> creativeGroups;
+  core.List<CreativeGroup>? creativeGroups;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#creativeGroupsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   CreativeGroupsListResponse();
 
@@ -18301,12 +17278,12 @@ class CreativeGroupsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (creativeGroups != null)
           'creativeGroups':
-              creativeGroups.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              creativeGroups!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -18316,15 +17293,15 @@ class CreativeOptimizationConfiguration {
   ///
   /// This field is auto-generated when the campaign is inserted or updated. It
   /// can be null for existing campaigns.
-  core.String id;
+  core.String? id;
 
   /// Name of this creative optimization config.
   ///
   /// This is a required field and must be less than 129 characters long.
-  core.String name;
+  core.String? name;
 
   /// List of optimization activities associated with this configuration.
-  core.List<OptimizationActivity> optimizationActivitys;
+  core.List<OptimizationActivity>? optimizationActivitys;
 
   /// Optimization model for this configuration.
   /// Possible string values are:
@@ -18333,7 +17310,7 @@ class CreativeOptimizationConfiguration {
   /// - "POST_IMPRESSION"
   /// - "POST_CLICK_AND_IMPRESSION"
   /// - "VIDEO_COMPLETION"
-  core.String optimizationModel;
+  core.String? optimizationModel;
 
   CreativeOptimizationConfiguration();
 
@@ -18355,27 +17332,27 @@ class CreativeOptimizationConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
         if (optimizationActivitys != null)
           'optimizationActivitys':
-              optimizationActivitys.map((value) => value.toJson()).toList(),
-        if (optimizationModel != null) 'optimizationModel': optimizationModel,
+              optimizationActivitys!.map((value) => value.toJson()).toList(),
+        if (optimizationModel != null) 'optimizationModel': optimizationModel!,
       };
 }
 
 /// Creative Rotation.
 class CreativeRotation {
   /// Creative assignments in this creative rotation.
-  core.List<CreativeAssignment> creativeAssignments;
+  core.List<CreativeAssignment>? creativeAssignments;
 
   /// Creative optimization configuration that is used by this ad.
   ///
   /// It should refer to one of the existing optimization configurations in the
   /// ad's campaign. If it is unset or set to 0, then the campaign's default
   /// optimization configuration will be used for this ad.
-  core.String creativeOptimizationConfigurationId;
+  core.String? creativeOptimizationConfigurationId;
 
   /// Type of creative rotation.
   ///
@@ -18383,7 +17360,7 @@ class CreativeRotation {
   /// Possible string values are:
   /// - "CREATIVE_ROTATION_TYPE_SEQUENTIAL"
   /// - "CREATIVE_ROTATION_TYPE_RANDOM"
-  core.String type;
+  core.String? type;
 
   /// Strategy for calculating weights.
   ///
@@ -18393,7 +17370,7 @@ class CreativeRotation {
   /// - "WEIGHT_STRATEGY_CUSTOM"
   /// - "WEIGHT_STRATEGY_HIGHEST_CTR"
   /// - "WEIGHT_STRATEGY_OPTIMIZED"
-  core.String weightCalculationStrategy;
+  core.String? weightCalculationStrategy;
 
   CreativeRotation();
 
@@ -18417,31 +17394,31 @@ class CreativeRotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (creativeAssignments != null)
           'creativeAssignments':
-              creativeAssignments.map((value) => value.toJson()).toList(),
+              creativeAssignments!.map((value) => value.toJson()).toList(),
         if (creativeOptimizationConfigurationId != null)
           'creativeOptimizationConfigurationId':
-              creativeOptimizationConfigurationId,
-        if (type != null) 'type': type,
+              creativeOptimizationConfigurationId!,
+        if (type != null) 'type': type!,
         if (weightCalculationStrategy != null)
-          'weightCalculationStrategy': weightCalculationStrategy,
+          'weightCalculationStrategy': weightCalculationStrategy!,
       };
 }
 
 /// Creative List Response
 class CreativesListResponse {
   /// Creative collection.
-  core.List<Creative> creatives;
+  core.List<Creative>? creatives;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#creativesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   CreativesListResponse();
 
@@ -18460,11 +17437,11 @@ class CreativesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (creatives != null)
-          'creatives': creatives.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'creatives': creatives!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -18473,23 +17450,23 @@ class CreativesListResponse {
 class CrossDimensionReachReportCompatibleFields {
   /// Dimensions which are compatible to be selected in the "breakdown" section
   /// of the report.
-  core.List<Dimension> breakdown;
+  core.List<Dimension>? breakdown;
 
   /// Dimensions which are compatible to be selected in the "dimensionFilters"
   /// section of the report.
-  core.List<Dimension> dimensionFilters;
+  core.List<Dimension>? dimensionFilters;
 
   /// The kind of resource this is, in this case
   /// dfareporting#crossDimensionReachReportCompatibleFields.
-  core.String kind;
+  core.String? kind;
 
   /// Metrics which are compatible to be selected in the "metricNames" section
   /// of the report.
-  core.List<Metric> metrics;
+  core.List<Metric>? metrics;
 
   /// Metrics which are compatible to be selected in the "overlapMetricNames"
   /// section of the report.
-  core.List<Metric> overlapMetrics;
+  core.List<Metric>? overlapMetrics;
 
   CrossDimensionReachReportCompatibleFields();
 
@@ -18523,18 +17500,18 @@ class CrossDimensionReachReportCompatibleFields {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (breakdown != null)
-          'breakdown': breakdown.map((value) => value.toJson()).toList(),
+          'breakdown': breakdown!.map((value) => value.toJson()).toList(),
         if (dimensionFilters != null)
           'dimensionFilters':
-              dimensionFilters.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+              dimensionFilters!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
         if (overlapMetrics != null)
           'overlapMetrics':
-              overlapMetrics.map((value) => value.toJson()).toList(),
+              overlapMetrics!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -18547,16 +17524,16 @@ class CustomEvent {
   /// This field is mutually exclusive with insertEvent and
   /// annotateImpressionEvent. This or insertEvent and annotateImpressionEvent
   /// is a required field.
-  CustomEventClickAnnotation annotateClickEvent;
+  CustomEventClickAnnotation? annotateClickEvent;
 
   /// Annotate an impression.
   ///
   /// This field is mutually exclusive with insertEvent and annotateClickEvent.
   /// This or insertEvent and annotateClickEvent is a required field.
-  CustomEventImpressionAnnotation annotateImpressionEvent;
+  CustomEventImpressionAnnotation? annotateImpressionEvent;
 
   /// Custom variables associated with the event.
-  core.List<CustomVariable> customVariables;
+  core.List<CustomVariable>? customVariables;
 
   /// The type of event.
   ///
@@ -18567,34 +17544,34 @@ class CustomEvent {
   /// - "UNKNOWN"
   /// - "INSERT"
   /// - "ANNOTATE"
-  core.String eventType;
+  core.String? eventType;
 
   /// Floodlight configuration ID of the advertiser the event is linked to.
   ///
   /// This is a required field.
-  core.String floodlightConfigurationId;
+  core.String? floodlightConfigurationId;
 
   /// Insert custom event.
   ///
   /// This field is mutually exclusive with annotateClickEvent and
   /// annotateImpressionEvent. This or annotateClickEvent and
   /// annotateImpressionEvent is a required field.
-  CustomEventInsert insertEvent;
+  CustomEventInsert? insertEvent;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#customEvent".
-  core.String kind;
+  core.String? kind;
 
   /// The ordinal of this custom event.
   ///
   /// This is a required field.
-  core.String ordinal;
+  core.String? ordinal;
 
   /// The timestamp of this custom event, in Unix epoch micros.
   ///
   /// This is a required field.
-  core.String timestampMicros;
+  core.String? timestampMicros;
 
   CustomEvent();
 
@@ -18636,21 +17613,21 @@ class CustomEvent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (annotateClickEvent != null)
-          'annotateClickEvent': annotateClickEvent.toJson(),
+          'annotateClickEvent': annotateClickEvent!.toJson(),
         if (annotateImpressionEvent != null)
-          'annotateImpressionEvent': annotateImpressionEvent.toJson(),
+          'annotateImpressionEvent': annotateImpressionEvent!.toJson(),
         if (customVariables != null)
           'customVariables':
-              customVariables.map((value) => value.toJson()).toList(),
-        if (eventType != null) 'eventType': eventType,
+              customVariables!.map((value) => value.toJson()).toList(),
+        if (eventType != null) 'eventType': eventType!,
         if (floodlightConfigurationId != null)
-          'floodlightConfigurationId': floodlightConfigurationId,
-        if (insertEvent != null) 'insertEvent': insertEvent.toJson(),
-        if (kind != null) 'kind': kind,
-        if (ordinal != null) 'ordinal': ordinal,
-        if (timestampMicros != null) 'timestampMicros': timestampMicros,
+          'floodlightConfigurationId': floodlightConfigurationId!,
+        if (insertEvent != null) 'insertEvent': insertEvent!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (ordinal != null) 'ordinal': ordinal!,
+        if (timestampMicros != null) 'timestampMicros': timestampMicros!,
       };
 }
 
@@ -18659,12 +17636,12 @@ class CustomEventClickAnnotation {
   /// The Google click ID.
   ///
   /// Use this field to annotate the click associated with the gclid.
-  core.String gclid;
+  core.String? gclid;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#customEventClickAnnotation".
-  core.String kind;
+  core.String? kind;
 
   CustomEventClickAnnotation();
 
@@ -18677,9 +17654,9 @@ class CustomEventClickAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (gclid != null) 'gclid': gclid,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (gclid != null) 'gclid': gclid!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -18692,15 +17669,15 @@ class CustomEventError {
   /// - "INTERNAL"
   /// - "PERMISSION_DENIED"
   /// - "NOT_FOUND"
-  core.String code;
+  core.String? code;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#customEventError".
-  core.String kind;
+  core.String? kind;
 
   /// A description of the error.
-  core.String message;
+  core.String? message;
 
   CustomEventError();
 
@@ -18716,10 +17693,10 @@ class CustomEventError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (kind != null) 'kind': kind,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (kind != null) 'kind': kind!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -18728,13 +17705,13 @@ class CustomEventImpressionAnnotation {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#customEventImpressionAnnotation".
-  core.String kind;
+  core.String? kind;
 
   /// The path impression ID.
   ///
   /// Use this field to annotate the impression associated with the
   /// pathImpressionId.
-  core.String pathImpressionId;
+  core.String? pathImpressionId;
 
   CustomEventImpressionAnnotation();
 
@@ -18747,31 +17724,31 @@ class CustomEventImpressionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (pathImpressionId != null) 'pathImpressionId': pathImpressionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (pathImpressionId != null) 'pathImpressionId': pathImpressionId!,
       };
 }
 
 /// Custom event to be inserted.
 class CustomEventInsert {
   /// Campaign Manager dimensions associated with the event.
-  CampaignManagerIds cmDimensions;
+  CampaignManagerIds? cmDimensions;
 
   /// DV360 dimensions associated with the event.
-  DV3Ids dv3Dimensions;
+  DV3Ids? dv3Dimensions;
 
   /// The type of event to insert.
   /// Possible string values are:
   /// - "UNKNOWN"
   /// - "IMPRESSION"
   /// - "CLICK"
-  core.String insertEventType;
+  core.String? insertEventType;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#customEventInsert".
-  core.String kind;
+  core.String? kind;
 
   /// The match ID field.
   ///
@@ -18779,13 +17756,13 @@ class CustomEventInsert {
   /// Google using the match ID feature in Floodlight. This field is mutually
   /// exclusive with mobileDeviceId, and at least one of the two fields is
   /// required.
-  core.String matchId;
+  core.String? matchId;
 
   /// The mobile device ID.
   ///
   /// This field is mutually exclusive with matchId, and at least one of the two
   /// fields is required.
-  core.String mobileDeviceId;
+  core.String? mobileDeviceId;
 
   CustomEventInsert();
 
@@ -18812,13 +17789,13 @@ class CustomEventInsert {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cmDimensions != null) 'cmDimensions': cmDimensions.toJson(),
-        if (dv3Dimensions != null) 'dv3Dimensions': dv3Dimensions.toJson(),
-        if (insertEventType != null) 'insertEventType': insertEventType,
-        if (kind != null) 'kind': kind,
-        if (matchId != null) 'matchId': matchId,
-        if (mobileDeviceId != null) 'mobileDeviceId': mobileDeviceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cmDimensions != null) 'cmDimensions': cmDimensions!.toJson(),
+        if (dv3Dimensions != null) 'dv3Dimensions': dv3Dimensions!.toJson(),
+        if (insertEventType != null) 'insertEventType': insertEventType!,
+        if (kind != null) 'kind': kind!,
+        if (matchId != null) 'matchId': matchId!,
+        if (mobileDeviceId != null) 'mobileDeviceId': mobileDeviceId!,
       };
 }
 
@@ -18826,15 +17803,15 @@ class CustomEventInsert {
 /// errors.
 class CustomEventStatus {
   /// The original custom event that was inserted.
-  CustomEvent customEvent;
+  CustomEvent? customEvent;
 
   /// A list of errors related to this custom event.
-  core.List<CustomEventError> errors;
+  core.List<CustomEventError>? errors;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#customEventStatus".
-  core.String kind;
+  core.String? kind;
 
   CustomEventStatus();
 
@@ -18854,23 +17831,23 @@ class CustomEventStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customEvent != null) 'customEvent': customEvent.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customEvent != null) 'customEvent': customEvent!.toJson(),
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Insert Custom Events Request.
 class CustomEventsBatchInsertRequest {
   /// The set of custom events to insert.
-  core.List<CustomEvent> customEvents;
+  core.List<CustomEvent>? customEvents;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#customEventsBatchInsertRequest".
-  core.String kind;
+  core.String? kind;
 
   CustomEventsBatchInsertRequest();
 
@@ -18886,27 +17863,27 @@ class CustomEventsBatchInsertRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customEvents != null)
-          'customEvents': customEvents.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'customEvents': customEvents!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Insert Custom Events Response.
 class CustomEventsBatchInsertResponse {
   /// Indicates that some or all custom events failed to insert.
-  core.bool hasFailures;
+  core.bool? hasFailures;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#customEventsBatchInsertResponse".
-  core.String kind;
+  core.String? kind;
 
   /// The insert status of each custom event.
   ///
   /// Statuses are returned in the same order that conversions are inserted.
-  core.List<CustomEventStatus> status;
+  core.List<CustomEventStatus>? status;
 
   CustomEventsBatchInsertResponse();
 
@@ -18925,11 +17902,11 @@ class CustomEventsBatchInsertResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hasFailures != null) 'hasFailures': hasFailures,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hasFailures != null) 'hasFailures': hasFailures!,
+        if (kind != null) 'kind': kind!,
         if (status != null)
-          'status': status.map((value) => value.toJson()).toList(),
+          'status': status!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -18938,7 +17915,7 @@ class CustomFloodlightVariable {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#customFloodlightVariable".
-  core.String kind;
+  core.String? kind;
 
   /// The type of custom floodlight variable to supply a value for.
   ///
@@ -19044,12 +18021,12 @@ class CustomFloodlightVariable {
   /// - "U98"
   /// - "U99"
   /// - "U100"
-  core.String type;
+  core.String? type;
 
   /// The value of the custom floodlight variable.
   ///
   /// The length of string must not exceed 100 characters.
-  core.String value;
+  core.String? value;
 
   CustomFloodlightVariable();
 
@@ -19065,10 +18042,10 @@ class CustomFloodlightVariable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -19077,11 +18054,11 @@ class CustomRichMediaEvents {
   /// List of custom rich media event IDs.
   ///
   /// Dimension values must be all of type dfa:richMediaEventTypeIdAndName.
-  core.List<DimensionValue> filteredEventIds;
+  core.List<DimensionValue>? filteredEventIds;
 
   /// The kind of resource this is, in this case
   /// dfareporting#customRichMediaEvents.
-  core.String kind;
+  core.String? kind;
 
   CustomRichMediaEvents();
 
@@ -19097,28 +18074,28 @@ class CustomRichMediaEvents {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (filteredEventIds != null)
           'filteredEventIds':
-              filteredEventIds.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+              filteredEventIds!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Custom variable.
 class CustomVariable {
   /// The index of the custom variable.
-  core.String index;
+  core.String? index;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#customVariable".
-  core.String kind;
+  core.String? kind;
 
   /// The value of the custom variable.
   ///
   /// The length of string must not exceed 50 characters.
-  core.String value;
+  core.String? value;
 
   CustomVariable();
 
@@ -19134,23 +18111,23 @@ class CustomVariable {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (index != null) 'index': index,
-        if (kind != null) 'kind': kind,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (index != null) 'index': index!,
+        if (kind != null) 'kind': kind!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// Custom Viewability Metric
 class CustomViewabilityMetric {
   /// Configuration of the custom viewability metric.
-  CustomViewabilityMetricConfiguration configuration;
+  CustomViewabilityMetricConfiguration? configuration;
 
   /// ID of the custom viewability metric.
-  core.String id;
+  core.String? id;
 
   /// Name of the custom viewability metric.
-  core.String name;
+  core.String? name;
 
   CustomViewabilityMetric();
 
@@ -19167,10 +18144,10 @@ class CustomViewabilityMetric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (configuration != null) 'configuration': configuration.toJson(),
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (configuration != null) 'configuration': configuration!.toJson(),
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -19178,25 +18155,25 @@ class CustomViewabilityMetric {
 /// Viewability Metric.
 class CustomViewabilityMetricConfiguration {
   /// Whether the video must be audible to count an impression.
-  core.bool audible;
+  core.bool? audible;
 
   /// The time in milliseconds the video must play for the Custom Viewability
   /// Metric to count an impression.
   ///
   /// If both this and timePercent are specified, the earlier of the two will be
   /// used.
-  core.int timeMillis;
+  core.int? timeMillis;
 
   /// The percentage of video that must play for the Custom Viewability Metric
   /// to count an impression.
   ///
   /// If both this and timeMillis are specified, the earlier of the two will be
   /// used.
-  core.int timePercent;
+  core.int? timePercent;
 
   /// The percentage of video that must be on screen for the Custom Viewability
   /// Metric to count an impression.
-  core.int viewabilityPercent;
+  core.int? viewabilityPercent;
 
   CustomViewabilityMetricConfiguration();
 
@@ -19215,36 +18192,36 @@ class CustomViewabilityMetricConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (audible != null) 'audible': audible,
-        if (timeMillis != null) 'timeMillis': timeMillis,
-        if (timePercent != null) 'timePercent': timePercent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (audible != null) 'audible': audible!,
+        if (timeMillis != null) 'timeMillis': timeMillis!,
+        if (timePercent != null) 'timePercent': timePercent!,
         if (viewabilityPercent != null)
-          'viewabilityPercent': viewabilityPercent,
+          'viewabilityPercent': viewabilityPercent!,
       };
 }
 
 /// DV360 IDs related to the custom event.
 class DV3Ids {
   /// Campaign ID for DV360.
-  core.String dvCampaignId;
+  core.String? dvCampaignId;
 
   /// Creative ID for DV360.
-  core.String dvCreativeId;
+  core.String? dvCreativeId;
 
   /// Insertion Order ID for DV360.
-  core.String dvInsertionOrderId;
+  core.String? dvInsertionOrderId;
 
   /// Line Item ID for DV360.
-  core.String dvLineItemId;
+  core.String? dvLineItemId;
 
   /// Site ID for DV360.
-  core.String dvSiteId;
+  core.String? dvSiteId;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#dV3Ids".
-  core.String kind;
+  core.String? kind;
 
   DV3Ids();
 
@@ -19269,23 +18246,23 @@ class DV3Ids {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dvCampaignId != null) 'dvCampaignId': dvCampaignId,
-        if (dvCreativeId != null) 'dvCreativeId': dvCreativeId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dvCampaignId != null) 'dvCampaignId': dvCampaignId!,
+        if (dvCreativeId != null) 'dvCreativeId': dvCreativeId!,
         if (dvInsertionOrderId != null)
-          'dvInsertionOrderId': dvInsertionOrderId,
-        if (dvLineItemId != null) 'dvLineItemId': dvLineItemId,
-        if (dvSiteId != null) 'dvSiteId': dvSiteId,
-        if (kind != null) 'kind': kind,
+          'dvInsertionOrderId': dvInsertionOrderId!,
+        if (dvLineItemId != null) 'dvLineItemId': dvLineItemId!,
+        if (dvSiteId != null) 'dvSiteId': dvSiteId!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Represents a date range.
 class DateRange {
-  core.DateTime endDate;
+  core.DateTime? endDate;
 
   /// The kind of resource this is, in this case dfareporting#dateRange.
-  core.String kind;
+  core.String? kind;
 
   /// The date range relative to the date of when the report is run.
   /// Possible string values are:
@@ -19306,8 +18283,8 @@ class DateRange {
   /// - "LAST_24_MONTHS"
   /// - "LAST_14_DAYS"
   /// - "LAST_60_DAYS"
-  core.String relativeDateRange;
-  core.DateTime startDate;
+  core.String? relativeDateRange;
+  core.DateTime? startDate;
 
   DateRange();
 
@@ -19326,15 +18303,15 @@ class DateRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (endDate != null)
           'endDate':
-              "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}",
-        if (kind != null) 'kind': kind,
-        if (relativeDateRange != null) 'relativeDateRange': relativeDateRange,
+              "${(endDate!).year.toString().padLeft(4, '0')}-${(endDate!).month.toString().padLeft(2, '0')}-${(endDate!).day.toString().padLeft(2, '0')}",
+        if (kind != null) 'kind': kind!,
+        if (relativeDateRange != null) 'relativeDateRange': relativeDateRange!,
         if (startDate != null)
           'startDate':
-              "${(startDate).year.toString().padLeft(4, '0')}-${(startDate).month.toString().padLeft(2, '0')}-${(startDate).day.toString().padLeft(2, '0')}",
+              "${(startDate!).year.toString().padLeft(4, '0')}-${(startDate!).month.toString().padLeft(2, '0')}-${(startDate!).day.toString().padLeft(2, '0')}",
       };
 }
 
@@ -19344,7 +18321,7 @@ class DayPartTargeting {
   ///
   /// Acceptable values are: - "SUNDAY" - "MONDAY" - "TUESDAY" - "WEDNESDAY" -
   /// "THURSDAY" - "FRIDAY" - "SATURDAY"
-  core.List<core.String> daysOfWeek;
+  core.List<core.String>? daysOfWeek;
 
   /// Hours of the day when the ad will serve, where 0 is midnight to 1 AM and
   /// 23 is 11 PM to midnight.
@@ -19354,12 +18331,12 @@ class DayPartTargeting {
   /// Wednesday, Friday are the days of week specified and 9-10am, 3-5pm (hours
   /// 9, 15, and 16) is specified, the ad would serve Monday, Wednesdays, and
   /// Fridays at 9-10am and 3-5pm. Acceptable values are 0 to 23, inclusive.
-  core.List<core.int> hoursOfDay;
+  core.List<core.int>? hoursOfDay;
 
   /// Whether or not to use the user's local time.
   ///
   /// If false, the America/New York time zone applies.
-  core.bool userLocalTime;
+  core.bool? userLocalTime;
 
   DayPartTargeting();
 
@@ -19379,35 +18356,35 @@ class DayPartTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (daysOfWeek != null) 'daysOfWeek': daysOfWeek,
-        if (hoursOfDay != null) 'hoursOfDay': hoursOfDay,
-        if (userLocalTime != null) 'userLocalTime': userLocalTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (daysOfWeek != null) 'daysOfWeek': daysOfWeek!,
+        if (hoursOfDay != null) 'hoursOfDay': hoursOfDay!,
+        if (userLocalTime != null) 'userLocalTime': userLocalTime!,
       };
 }
 
 /// Contains information about a landing page deep link.
 class DeepLink {
   /// The URL of the mobile app being linked to.
-  core.String appUrl;
+  core.String? appUrl;
 
   /// The fallback URL.
   ///
   /// This URL will be served to users who do not have the mobile app installed.
-  core.String fallbackUrl;
+  core.String? fallbackUrl;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#deepLink".
-  core.String kind;
+  core.String? kind;
 
   /// The mobile app targeted by this deep link.
-  MobileApp mobileApp;
+  MobileApp? mobileApp;
 
   /// Ads served to users on these remarketing lists will use this deep link.
   ///
   /// Applicable when mobileApp.directory is APPLE_APP_STORE.
-  core.List<core.String> remarketingListIds;
+  core.List<core.String>? remarketingListIds;
 
   DeepLink();
 
@@ -19432,13 +18409,13 @@ class DeepLink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appUrl != null) 'appUrl': appUrl,
-        if (fallbackUrl != null) 'fallbackUrl': fallbackUrl,
-        if (kind != null) 'kind': kind,
-        if (mobileApp != null) 'mobileApp': mobileApp.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appUrl != null) 'appUrl': appUrl!,
+        if (fallbackUrl != null) 'fallbackUrl': fallbackUrl!,
+        if (kind != null) 'kind': kind!,
+        if (mobileApp != null) 'mobileApp': mobileApp!.toJson(),
         if (remarketingListIds != null)
-          'remarketingListIds': remarketingListIds,
+          'remarketingListIds': remarketingListIds!,
       };
 }
 
@@ -19449,11 +18426,11 @@ class DeepLink {
 class DefaultClickThroughEventTagProperties {
   /// ID of the click-through event tag to apply to all ads in this entity's
   /// scope.
-  core.String defaultClickThroughEventTagId;
+  core.String? defaultClickThroughEventTagId;
 
   /// Whether this entity should override the inherited default click-through
   /// event tag with its own defined value.
-  core.bool overrideInheritedEventTag;
+  core.bool? overrideInheritedEventTag;
 
   DefaultClickThroughEventTagProperties();
 
@@ -19468,11 +18445,11 @@ class DefaultClickThroughEventTagProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (defaultClickThroughEventTagId != null)
-          'defaultClickThroughEventTagId': defaultClickThroughEventTagId,
+          'defaultClickThroughEventTagId': defaultClickThroughEventTagId!,
         if (overrideInheritedEventTag != null)
-          'overrideInheritedEventTag': overrideInheritedEventTag,
+          'overrideInheritedEventTag': overrideInheritedEventTag!,
       };
 }
 
@@ -19480,13 +18457,13 @@ class DefaultClickThroughEventTagProperties {
 class DeliverySchedule {
   /// Limit on the number of times an individual user can be served the ad
   /// within a specified period of time.
-  FrequencyCap frequencyCap;
+  FrequencyCap? frequencyCap;
 
   /// Whether or not hard cutoff is enabled.
   ///
   /// If true, the ad will not serve after the end date and time. Otherwise the
   /// ad will continue to be served until it has reached its delivery goals.
-  core.bool hardCutoff;
+  core.bool? hardCutoff;
 
   /// Impression ratio for this ad.
   ///
@@ -19494,7 +18471,7 @@ class DeliverySchedule {
   /// For example, if ad A has an impression ratio of 1 and ad B has an
   /// impression ratio of 3, then Campaign Manager will serve ad B three times
   /// as often as ad A. Acceptable values are 1 to 10, inclusive.
-  core.String impressionRatio;
+  core.String? impressionRatio;
 
   /// Serving priority of an ad, with respect to other ads.
   ///
@@ -19517,7 +18494,7 @@ class DeliverySchedule {
   /// - "AD_PRIORITY_14"
   /// - "AD_PRIORITY_15"
   /// - "AD_PRIORITY_16"
-  core.String priority;
+  core.String? priority;
 
   DeliverySchedule();
 
@@ -19537,30 +18514,30 @@ class DeliverySchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (frequencyCap != null) 'frequencyCap': frequencyCap.toJson(),
-        if (hardCutoff != null) 'hardCutoff': hardCutoff,
-        if (impressionRatio != null) 'impressionRatio': impressionRatio,
-        if (priority != null) 'priority': priority,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (frequencyCap != null) 'frequencyCap': frequencyCap!.toJson(),
+        if (hardCutoff != null) 'hardCutoff': hardCutoff!,
+        if (impressionRatio != null) 'impressionRatio': impressionRatio!,
+        if (priority != null) 'priority': priority!,
       };
 }
 
 /// Google Ad Manager Settings
 class DfpSettings {
   /// Ad Manager network code for this directory site.
-  core.String dfpNetworkCode;
+  core.String? dfpNetworkCode;
 
   /// Ad Manager network name for this directory site.
-  core.String dfpNetworkName;
+  core.String? dfpNetworkName;
 
   /// Whether this directory site accepts programmatic placements.
-  core.bool programmaticPlacementAccepted;
+  core.bool? programmaticPlacementAccepted;
 
   /// Whether this directory site accepts publisher-paid tags.
-  core.bool pubPaidPlacementAccepted;
+  core.bool? pubPaidPlacementAccepted;
 
   /// Whether this directory site is available only via Publisher Portal.
-  core.bool publisherPortalOnly;
+  core.bool? publisherPortalOnly;
 
   DfpSettings();
 
@@ -19583,25 +18560,25 @@ class DfpSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dfpNetworkCode != null) 'dfpNetworkCode': dfpNetworkCode,
-        if (dfpNetworkName != null) 'dfpNetworkName': dfpNetworkName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dfpNetworkCode != null) 'dfpNetworkCode': dfpNetworkCode!,
+        if (dfpNetworkName != null) 'dfpNetworkName': dfpNetworkName!,
         if (programmaticPlacementAccepted != null)
-          'programmaticPlacementAccepted': programmaticPlacementAccepted,
+          'programmaticPlacementAccepted': programmaticPlacementAccepted!,
         if (pubPaidPlacementAccepted != null)
-          'pubPaidPlacementAccepted': pubPaidPlacementAccepted,
+          'pubPaidPlacementAccepted': pubPaidPlacementAccepted!,
         if (publisherPortalOnly != null)
-          'publisherPortalOnly': publisherPortalOnly,
+          'publisherPortalOnly': publisherPortalOnly!,
       };
 }
 
 /// Represents a dimension.
 class Dimension {
   /// The kind of resource this is, in this case dfareporting#dimension.
-  core.String kind;
+  core.String? kind;
 
   /// The dimension name, e.g. dfa:advertiser
-  core.String name;
+  core.String? name;
 
   Dimension();
 
@@ -19614,22 +18591,22 @@ class Dimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Represents a dimension filter.
 class DimensionFilter {
   /// The name of the dimension to filter.
-  core.String dimensionName;
+  core.String? dimensionName;
 
   /// The kind of resource this is, in this case dfareporting#dimensionFilter.
-  core.String kind;
+  core.String? kind;
 
   /// The value of the dimension to filter.
-  core.String value;
+  core.String? value;
 
   DimensionFilter();
 
@@ -19645,26 +18622,26 @@ class DimensionFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName,
-        if (kind != null) 'kind': kind,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimensionName != null) 'dimensionName': dimensionName!,
+        if (kind != null) 'kind': kind!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// Represents a DimensionValue resource.
 class DimensionValue {
   /// The name of the dimension.
-  core.String dimensionName;
+  core.String? dimensionName;
 
   /// The eTag of this response for caching purposes.
-  core.String etag;
+  core.String? etag;
 
   /// The ID associated with the value if available.
-  core.String id;
+  core.String? id;
 
   /// The kind of resource this is, in this case dfareporting#dimensionValue.
-  core.String kind;
+  core.String? kind;
 
   /// Determines how the 'value' field is matched when filtering.
   ///
@@ -19677,10 +18654,10 @@ class DimensionValue {
   /// - "BEGINS_WITH"
   /// - "CONTAINS"
   /// - "WILDCARD_EXPRESSION"
-  core.String matchType;
+  core.String? matchType;
 
   /// The value of the dimension.
-  core.String value;
+  core.String? value;
 
   DimensionValue();
 
@@ -19705,33 +18682,33 @@ class DimensionValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName,
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (matchType != null) 'matchType': matchType,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimensionName != null) 'dimensionName': dimensionName!,
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (matchType != null) 'matchType': matchType!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// Represents the list of DimensionValue resources.
 class DimensionValueList {
   /// The eTag of this response for caching purposes.
-  core.String etag;
+  core.String? etag;
 
   /// The dimension values returned in this response.
-  core.List<DimensionValue> items;
+  core.List<DimensionValue>? items;
 
   /// The kind of list this is, in this case dfareporting#dimensionValueList.
-  core.String kind;
+  core.String? kind;
 
   /// Continuation token used to page through dimension values.
   ///
   /// To retrieve the next page of results, set the next request's "pageToken"
   /// to the value of this field. The page token is only valid for a limited
   /// amount of time and should not be persisted.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   DimensionValueList();
 
@@ -19753,30 +18730,30 @@ class DimensionValueList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Represents a DimensionValuesRequest.
 class DimensionValueRequest {
   /// The name of the dimension for which values should be requested.
-  core.String dimensionName;
-  core.DateTime endDate;
+  core.String? dimensionName;
+  core.DateTime? endDate;
 
   /// The list of filters by which to filter values.
   ///
   /// The filters are ANDed.
-  core.List<DimensionFilter> filters;
+  core.List<DimensionFilter>? filters;
 
   /// The kind of request this is, in this case
   /// dfareporting#dimensionValueRequest .
-  core.String kind;
-  core.DateTime startDate;
+  core.String? kind;
+  core.DateTime? startDate;
 
   DimensionValueRequest();
 
@@ -19801,17 +18778,17 @@ class DimensionValueRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimensionName != null) 'dimensionName': dimensionName!,
         if (endDate != null)
           'endDate':
-              "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}",
+              "${(endDate!).year.toString().padLeft(4, '0')}-${(endDate!).month.toString().padLeft(2, '0')}-${(endDate!).day.toString().padLeft(2, '0')}",
         if (filters != null)
-          'filters': filters.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'filters': filters!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
         if (startDate != null)
           'startDate':
-              "${(startDate).year.toString().padLeft(4, '0')}-${(startDate).month.toString().padLeft(2, '0')}-${(startDate).day.toString().padLeft(2, '0')}",
+              "${(startDate!).year.toString().padLeft(4, '0')}-${(startDate!).month.toString().padLeft(2, '0')}-${(startDate!).day.toString().padLeft(2, '0')}",
       };
 }
 
@@ -19823,38 +18800,38 @@ class DirectorySite {
   /// ID of this directory site.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Dimension value for the ID of this directory site.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue idDimensionValue;
+  DimensionValue? idDimensionValue;
 
   /// Tag types for regular placements.
   ///
   /// Acceptable values are: - "STANDARD" - "IFRAME_JAVASCRIPT_INPAGE" -
   /// "INTERNAL_REDIRECT_INPAGE" - "JAVASCRIPT_INPAGE"
-  core.List<core.String> inpageTagFormats;
+  core.List<core.String>? inpageTagFormats;
 
   /// Tag types for interstitial placements.
   ///
   /// Acceptable values are: - "IFRAME_JAVASCRIPT_INTERSTITIAL" -
   /// "INTERNAL_REDIRECT_INTERSTITIAL" - "JAVASCRIPT_INTERSTITIAL"
-  core.List<core.String> interstitialTagFormats;
+  core.List<core.String>? interstitialTagFormats;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#directorySite".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this directory site.
-  core.String name;
+  core.String? name;
 
   /// Directory site settings.
-  DirectorySiteSettings settings;
+  DirectorySiteSettings? settings;
 
   /// URL of this directory site.
-  core.String url;
+  core.String? url;
 
   DirectorySite();
 
@@ -19891,33 +18868,33 @@ class DirectorySite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
         if (idDimensionValue != null)
-          'idDimensionValue': idDimensionValue.toJson(),
-        if (inpageTagFormats != null) 'inpageTagFormats': inpageTagFormats,
+          'idDimensionValue': idDimensionValue!.toJson(),
+        if (inpageTagFormats != null) 'inpageTagFormats': inpageTagFormats!,
         if (interstitialTagFormats != null)
-          'interstitialTagFormats': interstitialTagFormats,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (settings != null) 'settings': settings.toJson(),
-        if (url != null) 'url': url,
+          'interstitialTagFormats': interstitialTagFormats!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (settings != null) 'settings': settings!.toJson(),
+        if (url != null) 'url': url!,
       };
 }
 
 /// Directory Site Settings
 class DirectorySiteSettings {
   /// Whether this directory site has disabled active view creatives.
-  core.bool activeViewOptOut;
+  core.bool? activeViewOptOut;
 
   /// Directory site Ad Manager settings.
-  DfpSettings dfpSettings;
+  DfpSettings? dfpSettings;
 
   /// Whether this site accepts in-stream video ads.
-  core.bool instreamVideoPlacementAccepted;
+  core.bool? instreamVideoPlacementAccepted;
 
   /// Whether this site accepts interstitial ads.
-  core.bool interstitialPlacementAccepted;
+  core.bool? interstitialPlacementAccepted;
 
   DirectorySiteSettings();
 
@@ -19939,28 +18916,28 @@ class DirectorySiteSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activeViewOptOut != null) 'activeViewOptOut': activeViewOptOut,
-        if (dfpSettings != null) 'dfpSettings': dfpSettings.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activeViewOptOut != null) 'activeViewOptOut': activeViewOptOut!,
+        if (dfpSettings != null) 'dfpSettings': dfpSettings!.toJson(),
         if (instreamVideoPlacementAccepted != null)
-          'instreamVideoPlacementAccepted': instreamVideoPlacementAccepted,
+          'instreamVideoPlacementAccepted': instreamVideoPlacementAccepted!,
         if (interstitialPlacementAccepted != null)
-          'interstitialPlacementAccepted': interstitialPlacementAccepted,
+          'interstitialPlacementAccepted': interstitialPlacementAccepted!,
       };
 }
 
 /// Directory Site List Response
 class DirectorySitesListResponse {
   /// Directory site collection.
-  core.List<DirectorySite> directorySites;
+  core.List<DirectorySite>? directorySites;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#directorySitesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   DirectorySitesListResponse();
 
@@ -19979,12 +18956,12 @@ class DirectorySitesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (directorySites != null)
           'directorySites':
-              directorySites.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              directorySites!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -19992,11 +18969,11 @@ class DirectorySitesListResponse {
 /// (and) of disjunctive (or) boolean statements.
 class DisjunctiveMatchStatement {
   /// The event filters contained within this disjunctive match statement.
-  core.List<EventFilter> eventFilters;
+  core.List<EventFilter>? eventFilters;
 
   /// The kind of resource this is, in this case
   /// dfareporting#disjunctiveMatchStatement.
-  core.String kind;
+  core.String? kind;
 
   DisjunctiveMatchStatement();
 
@@ -20012,10 +18989,10 @@ class DisjunctiveMatchStatement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (eventFilters != null)
-          'eventFilters': eventFilters.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'eventFilters': eventFilters!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -20030,18 +19007,18 @@ class DynamicTargetingKey {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#dynamicTargetingKey".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this dynamic targeting key.
   ///
   /// This is a required field. Must be less than 256 characters long and cannot
   /// contain commas. All characters are converted to lowercase.
-  core.String name;
+  core.String? name;
 
   /// ID of the object of this dynamic targeting key.
   ///
   /// This is a required field.
-  core.String objectId;
+  core.String? objectId;
 
   /// Type of the object of this dynamic targeting key.
   ///
@@ -20051,7 +19028,7 @@ class DynamicTargetingKey {
   /// - "OBJECT_AD"
   /// - "OBJECT_CREATIVE"
   /// - "OBJECT_PLACEMENT"
-  core.String objectType;
+  core.String? objectType;
 
   DynamicTargetingKey();
 
@@ -20070,23 +19047,23 @@ class DynamicTargetingKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (objectId != null) 'objectId': objectId,
-        if (objectType != null) 'objectType': objectType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (objectId != null) 'objectId': objectId!,
+        if (objectType != null) 'objectType': objectType!,
       };
 }
 
 /// Dynamic Targeting Key List Response
 class DynamicTargetingKeysListResponse {
   /// Dynamic targeting key collection.
-  core.List<DynamicTargetingKey> dynamicTargetingKeys;
+  core.List<DynamicTargetingKey>? dynamicTargetingKeys;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#dynamicTargetingKeysListResponse".
-  core.String kind;
+  core.String? kind;
 
   DynamicTargetingKeysListResponse();
 
@@ -20102,11 +19079,11 @@ class DynamicTargetingKeysListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dynamicTargetingKeys != null)
           'dynamicTargetingKeys':
-              dynamicTargetingKeys.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+              dynamicTargetingKeys!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -20116,7 +19093,7 @@ class EncryptionInfo {
   ///
   /// This should match the encryption configuration for ad serving or Data
   /// Transfer.
-  core.String encryptionEntityId;
+  core.String? encryptionEntityId;
 
   /// The encryption entity type.
   ///
@@ -20130,7 +19107,7 @@ class EncryptionInfo {
   /// - "DBM_ADVERTISER"
   /// - "ADWORDS_CUSTOMER"
   /// - "DFP_NETWORK_CODE"
-  core.String encryptionEntityType;
+  core.String? encryptionEntityType;
 
   /// Describes whether the encrypted cookie was received from ad serving (the
   /// %m macro) or from Data Transfer.
@@ -20138,12 +19115,12 @@ class EncryptionInfo {
   /// - "ENCRYPTION_SCOPE_UNKNOWN"
   /// - "AD_SERVING"
   /// - "DATA_TRANSFER"
-  core.String encryptionSource;
+  core.String? encryptionSource;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#encryptionInfo".
-  core.String kind;
+  core.String? kind;
 
   EncryptionInfo();
 
@@ -20162,23 +19139,23 @@ class EncryptionInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (encryptionEntityId != null)
-          'encryptionEntityId': encryptionEntityId,
+          'encryptionEntityId': encryptionEntityId!,
         if (encryptionEntityType != null)
-          'encryptionEntityType': encryptionEntityType,
-        if (encryptionSource != null) 'encryptionSource': encryptionSource,
-        if (kind != null) 'kind': kind,
+          'encryptionEntityType': encryptionEntityType!,
+        if (encryptionSource != null) 'encryptionSource': encryptionSource!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Represents a DfaReporting event filter.
 class EventFilter {
   /// The dimension filter contained within this EventFilter.
-  PathReportDimensionValue dimensionFilter;
+  PathReportDimensionValue? dimensionFilter;
 
   /// The kind of resource this is, in this case dfareporting#eventFilter.
-  core.String kind;
+  core.String? kind;
 
   EventFilter();
 
@@ -20192,10 +19169,10 @@ class EventFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensionFilter != null)
-          'dimensionFilter': dimensionFilter.toJson(),
-        if (kind != null) 'kind': kind,
+          'dimensionFilter': dimensionFilter!.toJson(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -20204,53 +19181,53 @@ class EventTag {
   /// Account ID of this event tag.
   ///
   /// This is a read-only field that can be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// Advertiser ID of this event tag.
   ///
   /// This field or the campaignId field is required on insertion.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Dimension value for the ID of the advertiser.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue advertiserIdDimensionValue;
+  DimensionValue? advertiserIdDimensionValue;
 
   /// Campaign ID of this event tag.
   ///
   /// This field or the advertiserId field is required on insertion.
-  core.String campaignId;
+  core.String? campaignId;
 
   /// Dimension value for the ID of the campaign.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue campaignIdDimensionValue;
+  DimensionValue? campaignIdDimensionValue;
 
   /// Whether this event tag should be automatically enabled for all of the
   /// advertiser's campaigns and ads.
-  core.bool enabledByDefault;
+  core.bool? enabledByDefault;
 
   /// Whether to remove this event tag from ads that are trafficked through
   /// Display & Video 360 to Ad Exchange.
   ///
   /// This may be useful if the event tag uses a pixel that is unapproved for Ad
   /// Exchange bids on one or more networks, such as the Google Display Network.
-  core.bool excludeFromAdxRequests;
+  core.bool? excludeFromAdxRequests;
 
   /// ID of this event tag.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#eventTag".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this event tag.
   ///
   /// This is a required field and must be less than 256 characters long.
-  core.String name;
+  core.String? name;
 
   /// Site filter type for this event tag.
   ///
@@ -20258,18 +19235,18 @@ class EventTag {
   /// Possible string values are:
   /// - "WHITELIST"
   /// - "BLACKLIST"
-  core.String siteFilterType;
+  core.String? siteFilterType;
 
   /// Filter list of site IDs associated with this event tag.
   ///
   /// The siteFilterType determines whether this is a allowlist or blocklist
   /// filter.
-  core.List<core.String> siteIds;
+  core.List<core.String>? siteIds;
 
   /// Whether this tag is SSL-compliant or not.
   ///
   /// This is a read-only field.
-  core.bool sslCompliant;
+  core.bool? sslCompliant;
 
   /// Status of this event tag.
   ///
@@ -20277,12 +19254,12 @@ class EventTag {
   /// Possible string values are:
   /// - "ENABLED"
   /// - "DISABLED"
-  core.String status;
+  core.String? status;
 
   /// Subaccount ID of this event tag.
   ///
   /// This is a read-only field that can be left blank.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Event tag type.
   ///
@@ -20293,20 +19270,20 @@ class EventTag {
   /// - "IMPRESSION_IMAGE_EVENT_TAG"
   /// - "IMPRESSION_JAVASCRIPT_EVENT_TAG"
   /// - "CLICK_THROUGH_EVENT_TAG"
-  core.String type;
+  core.String? type;
 
   /// Payload URL for this event tag.
   ///
   /// The URL on a click-through event tag should have a landing page URL
   /// appended to the end of it. This field is required on insertion.
-  core.String url;
+  core.String? url;
 
   /// Number of times the landing page URL should be URL-escaped before being
   /// appended to the click-through event tag URL.
   ///
   /// Only applies to click-through event tags as specified by the event tag
   /// type.
-  core.int urlEscapeLevels;
+  core.int? urlEscapeLevels;
 
   EventTag();
 
@@ -20373,40 +19350,40 @@ class EventTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (advertiserId != null) 'advertiserId': advertiserId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
         if (advertiserIdDimensionValue != null)
-          'advertiserIdDimensionValue': advertiserIdDimensionValue.toJson(),
-        if (campaignId != null) 'campaignId': campaignId,
+          'advertiserIdDimensionValue': advertiserIdDimensionValue!.toJson(),
+        if (campaignId != null) 'campaignId': campaignId!,
         if (campaignIdDimensionValue != null)
-          'campaignIdDimensionValue': campaignIdDimensionValue.toJson(),
-        if (enabledByDefault != null) 'enabledByDefault': enabledByDefault,
+          'campaignIdDimensionValue': campaignIdDimensionValue!.toJson(),
+        if (enabledByDefault != null) 'enabledByDefault': enabledByDefault!,
         if (excludeFromAdxRequests != null)
-          'excludeFromAdxRequests': excludeFromAdxRequests,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (siteFilterType != null) 'siteFilterType': siteFilterType,
-        if (siteIds != null) 'siteIds': siteIds,
-        if (sslCompliant != null) 'sslCompliant': sslCompliant,
-        if (status != null) 'status': status,
-        if (subaccountId != null) 'subaccountId': subaccountId,
-        if (type != null) 'type': type,
-        if (url != null) 'url': url,
-        if (urlEscapeLevels != null) 'urlEscapeLevels': urlEscapeLevels,
+          'excludeFromAdxRequests': excludeFromAdxRequests!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (siteFilterType != null) 'siteFilterType': siteFilterType!,
+        if (siteIds != null) 'siteIds': siteIds!,
+        if (sslCompliant != null) 'sslCompliant': sslCompliant!,
+        if (status != null) 'status': status!,
+        if (subaccountId != null) 'subaccountId': subaccountId!,
+        if (type != null) 'type': type!,
+        if (url != null) 'url': url!,
+        if (urlEscapeLevels != null) 'urlEscapeLevels': urlEscapeLevels!,
       };
 }
 
 /// Event tag override information.
 class EventTagOverride {
   /// Whether this override is enabled.
-  core.bool enabled;
+  core.bool? enabled;
 
   /// ID of this event tag override.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   EventTagOverride();
 
@@ -20419,21 +19396,21 @@ class EventTagOverride {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (enabled != null) 'enabled': enabled,
-        if (id != null) 'id': id,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (id != null) 'id': id!,
       };
 }
 
 /// Event Tag List Response
 class EventTagsListResponse {
   /// Event tag collection.
-  core.List<EventTag> eventTags;
+  core.List<EventTag>? eventTags;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#eventTagsListResponse".
-  core.String kind;
+  core.String? kind;
 
   EventTagsListResponse();
 
@@ -20449,20 +19426,20 @@ class EventTagsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (eventTags != null)
-          'eventTags': eventTags.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'eventTags': eventTags!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// The URLs where the completed report file can be downloaded.
 class FileUrls {
   /// The URL for downloading the report data through the API.
-  core.String apiUrl;
+  core.String? apiUrl;
 
   /// The URL for downloading the report data through a browser.
-  core.String browserUrl;
+  core.String? browserUrl;
 
   FileUrls();
 
@@ -20475,9 +19452,9 @@ class FileUrls {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (apiUrl != null) 'apiUrl': apiUrl,
-        if (browserUrl != null) 'browserUrl': browserUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (apiUrl != null) 'apiUrl': apiUrl!,
+        if (browserUrl != null) 'browserUrl': browserUrl!,
       };
 }
 
@@ -20491,13 +19468,13 @@ class File {
   ///
   /// The date range will always be the absolute date range for which the report
   /// is run.
-  DateRange dateRange;
+  DateRange? dateRange;
 
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The filename of the file.
-  core.String fileName;
+  core.String? fileName;
 
   /// The output format of the report.
   ///
@@ -20505,22 +19482,22 @@ class File {
   /// Possible string values are:
   /// - "CSV"
   /// - "EXCEL"
-  core.String format;
+  core.String? format;
 
   /// The unique ID of this report file.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#file".
-  core.String kind;
+  core.String? kind;
 
   /// The timestamp in milliseconds since epoch when this file was last
   /// modified.
-  core.String lastModifiedTime;
+  core.String? lastModifiedTime;
 
   /// The ID of the report this file was generated from.
-  core.String reportId;
+  core.String? reportId;
 
   /// The status of the report file.
   /// Possible string values are:
@@ -20528,10 +19505,10 @@ class File {
   /// - "REPORT_AVAILABLE"
   /// - "FAILED"
   /// - "CANCELLED"
-  core.String status;
+  core.String? status;
 
   /// The URLs where the completed report file can be downloaded.
-  FileUrls urls;
+  FileUrls? urls;
 
   File();
 
@@ -20570,39 +19547,39 @@ class File {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dateRange != null) 'dateRange': dateRange.toJson(),
-        if (etag != null) 'etag': etag,
-        if (fileName != null) 'fileName': fileName,
-        if (format != null) 'format': format,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime,
-        if (reportId != null) 'reportId': reportId,
-        if (status != null) 'status': status,
-        if (urls != null) 'urls': urls.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dateRange != null) 'dateRange': dateRange!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (fileName != null) 'fileName': fileName!,
+        if (format != null) 'format': format!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
+        if (reportId != null) 'reportId': reportId!,
+        if (status != null) 'status': status!,
+        if (urls != null) 'urls': urls!.toJson(),
       };
 }
 
 /// List of files for a report.
 class FileList {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The files returned in this response.
-  core.List<File> items;
+  core.List<File>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#fileList".
-  core.String kind;
+  core.String? kind;
 
   /// Continuation token used to page through files.
   ///
   /// To retrieve the next page of results, set the next request's "pageToken"
   /// to the value of this field. The page token is only valid for a limited
   /// amount of time and should not be persisted.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   FileList();
 
@@ -20624,25 +19601,25 @@ class FileList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Flight
 class Flight {
-  core.DateTime endDate;
+  core.DateTime? endDate;
 
   /// Rate or cost of this flight.
-  core.String rateOrCost;
-  core.DateTime startDate;
+  core.String? rateOrCost;
+  core.DateTime? startDate;
 
   /// Units of this flight.
-  core.String units;
+  core.String? units;
 
   Flight();
 
@@ -20661,15 +19638,15 @@ class Flight {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (endDate != null)
           'endDate':
-              "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}",
-        if (rateOrCost != null) 'rateOrCost': rateOrCost,
+              "${(endDate!).year.toString().padLeft(4, '0')}-${(endDate!).month.toString().padLeft(2, '0')}-${(endDate!).day.toString().padLeft(2, '0')}",
+        if (rateOrCost != null) 'rateOrCost': rateOrCost!,
         if (startDate != null)
           'startDate':
-              "${(startDate).year.toString().padLeft(4, '0')}-${(startDate).month.toString().padLeft(2, '0')}-${(startDate).day.toString().padLeft(2, '0')}",
-        if (units != null) 'units': units,
+              "${(startDate!).year.toString().padLeft(4, '0')}-${(startDate!).month.toString().padLeft(2, '0')}-${(startDate!).day.toString().padLeft(2, '0')}",
+        if (units != null) 'units': units!,
       };
 }
 
@@ -20678,20 +19655,20 @@ class FloodlightActivitiesGenerateTagResponse {
   /// Generated tag for this Floodlight activity.
   ///
   /// For global site tags, this is the event snippet.
-  core.String floodlightActivityTag;
+  core.String? floodlightActivityTag;
 
   /// The global snippet section of a global site tag.
   ///
   /// The global site tag sets new cookies on your domain, which will store a
   /// unique identifier for a user or the ad click that brought the user to your
   /// site. Learn more.
-  core.String globalSiteTagGlobalSnippet;
+  core.String? globalSiteTagGlobalSnippet;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
   /// "dfareporting#floodlightActivitiesGenerateTagResponse".
-  core.String kind;
+  core.String? kind;
 
   FloodlightActivitiesGenerateTagResponse();
 
@@ -20708,27 +19685,27 @@ class FloodlightActivitiesGenerateTagResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (floodlightActivityTag != null)
-          'floodlightActivityTag': floodlightActivityTag,
+          'floodlightActivityTag': floodlightActivityTag!,
         if (globalSiteTagGlobalSnippet != null)
-          'globalSiteTagGlobalSnippet': globalSiteTagGlobalSnippet,
-        if (kind != null) 'kind': kind,
+          'globalSiteTagGlobalSnippet': globalSiteTagGlobalSnippet!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Floodlight Activity List Response
 class FloodlightActivitiesListResponse {
   /// Floodlight activity collection.
-  core.List<FloodlightActivity> floodlightActivities;
+  core.List<FloodlightActivity>? floodlightActivities;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#floodlightActivitiesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   FloodlightActivitiesListResponse();
 
@@ -20747,12 +19724,12 @@ class FloodlightActivitiesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (floodlightActivities != null)
           'floodlightActivities':
-              floodlightActivities.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              floodlightActivities!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -20761,21 +19738,21 @@ class FloodlightActivity {
   /// Account ID of this floodlight activity.
   ///
   /// This is a read-only field that can be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// Advertiser ID of this floodlight activity.
   ///
   /// If this field is left blank, the value will be copied over either from the
   /// activity group's advertiser or the existing activity's advertiser.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Dimension value for the ID of the advertiser.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue advertiserIdDimensionValue;
+  DimensionValue? advertiserIdDimensionValue;
 
   /// Whether the activity is enabled for attribution.
-  core.bool attributionEnabled;
+  core.bool? attributionEnabled;
 
   /// Code type used for cache busting in the generated tag.
   ///
@@ -20787,7 +19764,7 @@ class FloodlightActivity {
   /// - "JSP"
   /// - "PHP"
   /// - "COLD_FUSION"
-  core.String cacheBustingType;
+  core.String? cacheBustingType;
 
   /// Counting method for conversions for this floodlight activity.
   ///
@@ -20798,30 +19775,30 @@ class FloodlightActivity {
   /// - "SESSION_COUNTING"
   /// - "TRANSACTIONS_COUNTING"
   /// - "ITEMS_SOLD_COUNTING"
-  core.String countingMethod;
+  core.String? countingMethod;
 
   /// Dynamic floodlight tags.
-  core.List<FloodlightActivityDynamicTag> defaultTags;
+  core.List<FloodlightActivityDynamicTag>? defaultTags;
 
   /// URL where this tag will be deployed.
   ///
   /// If specified, must be less than 256 characters long.
-  core.String expectedUrl;
+  core.String? expectedUrl;
 
   /// Floodlight activity group ID of this floodlight activity.
   ///
   /// This is a required field.
-  core.String floodlightActivityGroupId;
+  core.String? floodlightActivityGroupId;
 
   /// Name of the associated floodlight activity group.
   ///
   /// This is a read-only field.
-  core.String floodlightActivityGroupName;
+  core.String? floodlightActivityGroupName;
 
   /// Tag string of the associated floodlight activity group.
   ///
   /// This is a read-only field.
-  core.String floodlightActivityGroupTagString;
+  core.String? floodlightActivityGroupTagString;
 
   /// Type of the associated floodlight activity group.
   ///
@@ -20829,19 +19806,19 @@ class FloodlightActivity {
   /// Possible string values are:
   /// - "COUNTER"
   /// - "SALE"
-  core.String floodlightActivityGroupType;
+  core.String? floodlightActivityGroupType;
 
   /// Floodlight configuration ID of this floodlight activity.
   ///
   /// If this field is left blank, the value will be copied over either from the
   /// activity group's floodlight configuration or from the existing activity's
   /// floodlight configuration.
-  core.String floodlightConfigurationId;
+  core.String? floodlightConfigurationId;
 
   /// Dimension value for the ID of the floodlight configuration.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue floodlightConfigurationIdDimensionValue;
+  DimensionValue? floodlightConfigurationIdDimensionValue;
 
   /// The type of Floodlight tag this activity will generate.
   ///
@@ -20850,46 +19827,46 @@ class FloodlightActivity {
   /// - "IFRAME"
   /// - "IMAGE"
   /// - "GLOBAL_SITE_TAG"
-  core.String floodlightTagType;
+  core.String? floodlightTagType;
 
   /// ID of this floodlight activity.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Dimension value for the ID of this floodlight activity.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue idDimensionValue;
+  DimensionValue? idDimensionValue;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#floodlightActivity".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this floodlight activity.
   ///
   /// This is a required field. Must be less than 129 characters long and cannot
   /// contain quotes.
-  core.String name;
+  core.String? name;
 
   /// General notes or implementation instructions for the tag.
-  core.String notes;
+  core.String? notes;
 
   /// Publisher dynamic floodlight tags.
-  core.List<FloodlightActivityPublisherDynamicTag> publisherTags;
+  core.List<FloodlightActivityPublisherDynamicTag>? publisherTags;
 
   /// Whether this tag should use SSL.
-  core.bool secure;
+  core.bool? secure;
 
   /// Whether the floodlight activity is SSL-compliant.
   ///
   /// This is a read-only field, its value detected by the system from the
   /// floodlight tags.
-  core.bool sslCompliant;
+  core.bool? sslCompliant;
 
   /// Whether this floodlight activity must be SSL-compliant.
-  core.bool sslRequired;
+  core.bool? sslRequired;
 
   /// The status of the activity.
   ///
@@ -20903,12 +19880,12 @@ class FloodlightActivity {
   /// - "ARCHIVED_AND_DISABLED"
   /// - "ARCHIVED"
   /// - "DISABLED_POLICY"
-  core.String status;
+  core.String? status;
 
   /// Subaccount ID of this floodlight activity.
   ///
   /// This is a read-only field that can be left blank.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Tag format type for the floodlight activity.
   ///
@@ -20916,7 +19893,7 @@ class FloodlightActivity {
   /// Possible string values are:
   /// - "HTML"
   /// - "XHTML"
-  core.String tagFormat;
+  core.String? tagFormat;
 
   /// Value of the cat= parameter in the floodlight tag, which the ad servers
   /// use to identify the activity.
@@ -20925,13 +19902,13 @@ class FloodlightActivity {
   /// This string must be 1 to 8 characters long, with valid characters being
   /// a-z0-9\[ _ \]. This tag string must also be unique among activities of the
   /// same activity group. This field is read-only after insertion.
-  core.String tagString;
+  core.String? tagString;
 
   /// List of the user-defined variables used by this conversion tag.
   ///
   /// These map to the "u\[1-100\]=" in the tags. Each of these can have a user
   /// defined type. Acceptable values are U1 to U100, inclusive.
-  core.List<core.String> userDefinedVariableTypes;
+  core.List<core.String>? userDefinedVariableTypes;
 
   FloodlightActivity();
 
@@ -21046,50 +20023,50 @@ class FloodlightActivity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (advertiserId != null) 'advertiserId': advertiserId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
         if (advertiserIdDimensionValue != null)
-          'advertiserIdDimensionValue': advertiserIdDimensionValue.toJson(),
+          'advertiserIdDimensionValue': advertiserIdDimensionValue!.toJson(),
         if (attributionEnabled != null)
-          'attributionEnabled': attributionEnabled,
-        if (cacheBustingType != null) 'cacheBustingType': cacheBustingType,
-        if (countingMethod != null) 'countingMethod': countingMethod,
+          'attributionEnabled': attributionEnabled!,
+        if (cacheBustingType != null) 'cacheBustingType': cacheBustingType!,
+        if (countingMethod != null) 'countingMethod': countingMethod!,
         if (defaultTags != null)
-          'defaultTags': defaultTags.map((value) => value.toJson()).toList(),
-        if (expectedUrl != null) 'expectedUrl': expectedUrl,
+          'defaultTags': defaultTags!.map((value) => value.toJson()).toList(),
+        if (expectedUrl != null) 'expectedUrl': expectedUrl!,
         if (floodlightActivityGroupId != null)
-          'floodlightActivityGroupId': floodlightActivityGroupId,
+          'floodlightActivityGroupId': floodlightActivityGroupId!,
         if (floodlightActivityGroupName != null)
-          'floodlightActivityGroupName': floodlightActivityGroupName,
+          'floodlightActivityGroupName': floodlightActivityGroupName!,
         if (floodlightActivityGroupTagString != null)
-          'floodlightActivityGroupTagString': floodlightActivityGroupTagString,
+          'floodlightActivityGroupTagString': floodlightActivityGroupTagString!,
         if (floodlightActivityGroupType != null)
-          'floodlightActivityGroupType': floodlightActivityGroupType,
+          'floodlightActivityGroupType': floodlightActivityGroupType!,
         if (floodlightConfigurationId != null)
-          'floodlightConfigurationId': floodlightConfigurationId,
+          'floodlightConfigurationId': floodlightConfigurationId!,
         if (floodlightConfigurationIdDimensionValue != null)
           'floodlightConfigurationIdDimensionValue':
-              floodlightConfigurationIdDimensionValue.toJson(),
-        if (floodlightTagType != null) 'floodlightTagType': floodlightTagType,
-        if (id != null) 'id': id,
+              floodlightConfigurationIdDimensionValue!.toJson(),
+        if (floodlightTagType != null) 'floodlightTagType': floodlightTagType!,
+        if (id != null) 'id': id!,
         if (idDimensionValue != null)
-          'idDimensionValue': idDimensionValue.toJson(),
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
+          'idDimensionValue': idDimensionValue!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
         if (publisherTags != null)
           'publisherTags':
-              publisherTags.map((value) => value.toJson()).toList(),
-        if (secure != null) 'secure': secure,
-        if (sslCompliant != null) 'sslCompliant': sslCompliant,
-        if (sslRequired != null) 'sslRequired': sslRequired,
-        if (status != null) 'status': status,
-        if (subaccountId != null) 'subaccountId': subaccountId,
-        if (tagFormat != null) 'tagFormat': tagFormat,
-        if (tagString != null) 'tagString': tagString,
+              publisherTags!.map((value) => value.toJson()).toList(),
+        if (secure != null) 'secure': secure!,
+        if (sslCompliant != null) 'sslCompliant': sslCompliant!,
+        if (sslRequired != null) 'sslRequired': sslRequired!,
+        if (status != null) 'status': status!,
+        if (subaccountId != null) 'subaccountId': subaccountId!,
+        if (tagFormat != null) 'tagFormat': tagFormat!,
+        if (tagString != null) 'tagString': tagString!,
         if (userDefinedVariableTypes != null)
-          'userDefinedVariableTypes': userDefinedVariableTypes,
+          'userDefinedVariableTypes': userDefinedVariableTypes!,
       };
 }
 
@@ -21098,13 +20075,13 @@ class FloodlightActivityDynamicTag {
   /// ID of this dynamic tag.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Name of this tag.
-  core.String name;
+  core.String? name;
 
   /// Tag code.
-  core.String tag;
+  core.String? tag;
 
   FloodlightActivityDynamicTag();
 
@@ -21120,10 +20097,10 @@ class FloodlightActivityDynamicTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (name != null) 'name': name,
-        if (tag != null) 'tag': tag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (tag != null) 'tag': tag!,
       };
 }
 
@@ -21132,55 +20109,55 @@ class FloodlightActivityGroup {
   /// Account ID of this floodlight activity group.
   ///
   /// This is a read-only field that can be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// Advertiser ID of this floodlight activity group.
   ///
   /// If this field is left blank, the value will be copied over either from the
   /// floodlight configuration's advertiser or from the existing activity
   /// group's advertiser.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Dimension value for the ID of the advertiser.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue advertiserIdDimensionValue;
+  DimensionValue? advertiserIdDimensionValue;
 
   /// Floodlight configuration ID of this floodlight activity group.
   ///
   /// This is a required field.
-  core.String floodlightConfigurationId;
+  core.String? floodlightConfigurationId;
 
   /// Dimension value for the ID of the floodlight configuration.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue floodlightConfigurationIdDimensionValue;
+  DimensionValue? floodlightConfigurationIdDimensionValue;
 
   /// ID of this floodlight activity group.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Dimension value for the ID of this floodlight activity group.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue idDimensionValue;
+  DimensionValue? idDimensionValue;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#floodlightActivityGroup".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this floodlight activity group.
   ///
   /// This is a required field. Must be less than 65 characters long and cannot
   /// contain quotes.
-  core.String name;
+  core.String? name;
 
   /// Subaccount ID of this floodlight activity group.
   ///
   /// This is a read-only field that can be left blank.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Value of the type= parameter in the floodlight tag, which the ad servers
   /// use to identify the activity group that the activity belongs to.
@@ -21190,7 +20167,7 @@ class FloodlightActivityGroup {
   /// a-z0-9\[ _ \]. This tag string must also be unique among activity groups
   /// of the same floodlight configuration. This field is read-only after
   /// insertion.
-  core.String tagString;
+  core.String? tagString;
 
   /// Type of the floodlight activity group.
   ///
@@ -21198,7 +20175,7 @@ class FloodlightActivityGroup {
   /// Possible string values are:
   /// - "COUNTER"
   /// - "SALE"
-  core.String type;
+  core.String? type;
 
   FloodlightActivityGroup();
 
@@ -21247,40 +20224,40 @@ class FloodlightActivityGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (advertiserId != null) 'advertiserId': advertiserId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
         if (advertiserIdDimensionValue != null)
-          'advertiserIdDimensionValue': advertiserIdDimensionValue.toJson(),
+          'advertiserIdDimensionValue': advertiserIdDimensionValue!.toJson(),
         if (floodlightConfigurationId != null)
-          'floodlightConfigurationId': floodlightConfigurationId,
+          'floodlightConfigurationId': floodlightConfigurationId!,
         if (floodlightConfigurationIdDimensionValue != null)
           'floodlightConfigurationIdDimensionValue':
-              floodlightConfigurationIdDimensionValue.toJson(),
-        if (id != null) 'id': id,
+              floodlightConfigurationIdDimensionValue!.toJson(),
+        if (id != null) 'id': id!,
         if (idDimensionValue != null)
-          'idDimensionValue': idDimensionValue.toJson(),
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (subaccountId != null) 'subaccountId': subaccountId,
-        if (tagString != null) 'tagString': tagString,
-        if (type != null) 'type': type,
+          'idDimensionValue': idDimensionValue!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (subaccountId != null) 'subaccountId': subaccountId!,
+        if (tagString != null) 'tagString': tagString!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// Floodlight Activity Group List Response
 class FloodlightActivityGroupsListResponse {
   /// Floodlight activity group collection.
-  core.List<FloodlightActivityGroup> floodlightActivityGroups;
+  core.List<FloodlightActivityGroup>? floodlightActivityGroups;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
   /// "dfareporting#floodlightActivityGroupsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   FloodlightActivityGroupsListResponse();
 
@@ -21301,40 +20278,40 @@ class FloodlightActivityGroupsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (floodlightActivityGroups != null)
           'floodlightActivityGroups':
-              floodlightActivityGroups.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              floodlightActivityGroups!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Publisher Dynamic Tag
 class FloodlightActivityPublisherDynamicTag {
   /// Whether this tag is applicable only for click-throughs.
-  core.bool clickThrough;
+  core.bool? clickThrough;
 
   /// Directory site ID of this dynamic tag.
   ///
   /// This is a write-only field that can be used as an alternative to the
   /// siteId field. When this resource is retrieved, only the siteId field will
   /// be populated.
-  core.String directorySiteId;
+  core.String? directorySiteId;
 
   /// Dynamic floodlight tag.
-  FloodlightActivityDynamicTag dynamicTag;
+  FloodlightActivityDynamicTag? dynamicTag;
 
   /// Site ID of this dynamic tag.
-  core.String siteId;
+  core.String? siteId;
 
   /// Dimension value for the ID of the site.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue siteIdDimensionValue;
+  DimensionValue? siteIdDimensionValue;
 
   /// Whether this tag is applicable only for view-throughs.
-  core.bool viewThrough;
+  core.bool? viewThrough;
 
   FloodlightActivityPublisherDynamicTag();
 
@@ -21361,14 +20338,14 @@ class FloodlightActivityPublisherDynamicTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clickThrough != null) 'clickThrough': clickThrough,
-        if (directorySiteId != null) 'directorySiteId': directorySiteId,
-        if (dynamicTag != null) 'dynamicTag': dynamicTag.toJson(),
-        if (siteId != null) 'siteId': siteId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clickThrough != null) 'clickThrough': clickThrough!,
+        if (directorySiteId != null) 'directorySiteId': directorySiteId!,
+        if (dynamicTag != null) 'dynamicTag': dynamicTag!.toJson(),
+        if (siteId != null) 'siteId': siteId!,
         if (siteIdDimensionValue != null)
-          'siteIdDimensionValue': siteIdDimensionValue.toJson(),
-        if (viewThrough != null) 'viewThrough': viewThrough,
+          'siteIdDimensionValue': siteIdDimensionValue!.toJson(),
+        if (viewThrough != null) 'viewThrough': viewThrough!,
       };
 }
 
@@ -21377,27 +20354,27 @@ class FloodlightConfiguration {
   /// Account ID of this floodlight configuration.
   ///
   /// This is a read-only field that can be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// Advertiser ID of the parent advertiser of this floodlight configuration.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Dimension value for the ID of the advertiser.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue advertiserIdDimensionValue;
+  DimensionValue? advertiserIdDimensionValue;
 
   /// Whether advertiser data is shared with Google Analytics.
-  core.bool analyticsDataSharingEnabled;
+  core.bool? analyticsDataSharingEnabled;
 
   /// Custom Viewability metric for the floodlight configuration.
-  CustomViewabilityMetric customViewabilityMetric;
+  CustomViewabilityMetric? customViewabilityMetric;
 
   /// Whether the exposure-to-conversion report is enabled.
   ///
   /// This report shows detailed pathway information on up to 10 of the most
   /// recent ad exposures seen by a user before converting.
-  core.bool exposureToConversionEnabled;
+  core.bool? exposureToConversionEnabled;
 
   /// Day that will be counted as the first day of the week in reports.
   ///
@@ -21405,52 +20382,53 @@ class FloodlightConfiguration {
   /// Possible string values are:
   /// - "MONDAY"
   /// - "SUNDAY"
-  core.String firstDayOfWeek;
+  core.String? firstDayOfWeek;
 
   /// ID of this floodlight configuration.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Dimension value for the ID of this floodlight configuration.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue idDimensionValue;
+  DimensionValue? idDimensionValue;
 
   /// Whether in-app attribution tracking is enabled.
-  core.bool inAppAttributionTrackingEnabled;
+  core.bool? inAppAttributionTrackingEnabled;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#floodlightConfiguration".
-  core.String kind;
+  core.String? kind;
 
   /// Lookback window settings for this floodlight configuration.
-  LookbackConfiguration lookbackConfiguration;
+  LookbackConfiguration? lookbackConfiguration;
 
   /// Types of attribution options for natural search conversions.
   /// Possible string values are:
   /// - "EXCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION"
   /// - "INCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION"
   /// - "INCLUDE_NATURAL_SEARCH_TIERED_CONVERSION_ATTRIBUTION"
-  core.String naturalSearchConversionAttributionOption;
+  core.String? naturalSearchConversionAttributionOption;
 
   /// Settings for Campaign Manager Omniture integration.
-  OmnitureSettings omnitureSettings;
+  OmnitureSettings? omnitureSettings;
 
   /// Subaccount ID of this floodlight configuration.
   ///
   /// This is a read-only field that can be left blank.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Configuration settings for dynamic and image floodlight tags.
-  TagSettings tagSettings;
+  TagSettings? tagSettings;
 
   /// List of third-party authentication tokens enabled for this configuration.
-  core.List<ThirdPartyAuthenticationToken> thirdPartyAuthenticationTokens;
+  core.List<ThirdPartyAuthenticationToken>? thirdPartyAuthenticationTokens;
 
   /// List of user defined variables enabled for this configuration.
-  core.List<UserDefinedVariableConfiguration> userDefinedVariableConfigurations;
+  core.List<UserDefinedVariableConfiguration>?
+      userDefinedVariableConfigurations;
 
   FloodlightConfiguration();
 
@@ -21534,54 +20512,55 @@ class FloodlightConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (advertiserId != null) 'advertiserId': advertiserId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
         if (advertiserIdDimensionValue != null)
-          'advertiserIdDimensionValue': advertiserIdDimensionValue.toJson(),
+          'advertiserIdDimensionValue': advertiserIdDimensionValue!.toJson(),
         if (analyticsDataSharingEnabled != null)
-          'analyticsDataSharingEnabled': analyticsDataSharingEnabled,
+          'analyticsDataSharingEnabled': analyticsDataSharingEnabled!,
         if (customViewabilityMetric != null)
-          'customViewabilityMetric': customViewabilityMetric.toJson(),
+          'customViewabilityMetric': customViewabilityMetric!.toJson(),
         if (exposureToConversionEnabled != null)
-          'exposureToConversionEnabled': exposureToConversionEnabled,
-        if (firstDayOfWeek != null) 'firstDayOfWeek': firstDayOfWeek,
-        if (id != null) 'id': id,
+          'exposureToConversionEnabled': exposureToConversionEnabled!,
+        if (firstDayOfWeek != null) 'firstDayOfWeek': firstDayOfWeek!,
+        if (id != null) 'id': id!,
         if (idDimensionValue != null)
-          'idDimensionValue': idDimensionValue.toJson(),
+          'idDimensionValue': idDimensionValue!.toJson(),
         if (inAppAttributionTrackingEnabled != null)
-          'inAppAttributionTrackingEnabled': inAppAttributionTrackingEnabled,
-        if (kind != null) 'kind': kind,
+          'inAppAttributionTrackingEnabled': inAppAttributionTrackingEnabled!,
+        if (kind != null) 'kind': kind!,
         if (lookbackConfiguration != null)
-          'lookbackConfiguration': lookbackConfiguration.toJson(),
+          'lookbackConfiguration': lookbackConfiguration!.toJson(),
         if (naturalSearchConversionAttributionOption != null)
           'naturalSearchConversionAttributionOption':
-              naturalSearchConversionAttributionOption,
+              naturalSearchConversionAttributionOption!,
         if (omnitureSettings != null)
-          'omnitureSettings': omnitureSettings.toJson(),
-        if (subaccountId != null) 'subaccountId': subaccountId,
-        if (tagSettings != null) 'tagSettings': tagSettings.toJson(),
+          'omnitureSettings': omnitureSettings!.toJson(),
+        if (subaccountId != null) 'subaccountId': subaccountId!,
+        if (tagSettings != null) 'tagSettings': tagSettings!.toJson(),
         if (thirdPartyAuthenticationTokens != null)
-          'thirdPartyAuthenticationTokens': thirdPartyAuthenticationTokens
+          'thirdPartyAuthenticationTokens': thirdPartyAuthenticationTokens!
               .map((value) => value.toJson())
               .toList(),
         if (userDefinedVariableConfigurations != null)
-          'userDefinedVariableConfigurations': userDefinedVariableConfigurations
-              .map((value) => value.toJson())
-              .toList(),
+          'userDefinedVariableConfigurations':
+              userDefinedVariableConfigurations!
+                  .map((value) => value.toJson())
+                  .toList(),
       };
 }
 
 /// Floodlight Configuration List Response
 class FloodlightConfigurationsListResponse {
   /// Floodlight configuration collection.
-  core.List<FloodlightConfiguration> floodlightConfigurations;
+  core.List<FloodlightConfiguration>? floodlightConfigurations;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
   /// "dfareporting#floodlightConfigurationsListResponse".
-  core.String kind;
+  core.String? kind;
 
   FloodlightConfigurationsListResponse();
 
@@ -21599,11 +20578,11 @@ class FloodlightConfigurationsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (floodlightConfigurations != null)
           'floodlightConfigurations':
-              floodlightConfigurations.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+              floodlightConfigurations!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -21612,19 +20591,19 @@ class FloodlightConfigurationsListResponse {
 class FloodlightReportCompatibleFields {
   /// Dimensions which are compatible to be selected in the "dimensionFilters"
   /// section of the report.
-  core.List<Dimension> dimensionFilters;
+  core.List<Dimension>? dimensionFilters;
 
   /// Dimensions which are compatible to be selected in the "dimensions" section
   /// of the report.
-  core.List<Dimension> dimensions;
+  core.List<Dimension>? dimensions;
 
   /// The kind of resource this is, in this case
   /// dfareporting#floodlightReportCompatibleFields.
-  core.String kind;
+  core.String? kind;
 
   /// Metrics which are compatible to be selected in the "metricNames" section
   /// of the report.
-  core.List<Metric> metrics;
+  core.List<Metric>? metrics;
 
   FloodlightReportCompatibleFields();
 
@@ -21652,15 +20631,15 @@ class FloodlightReportCompatibleFields {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensionFilters != null)
           'dimensionFilters':
-              dimensionFilters.map((value) => value.toJson()).toList(),
+              dimensionFilters!.map((value) => value.toJson()).toList(),
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -21670,13 +20649,13 @@ class FrequencyCap {
   ///
   /// The maximum duration is 90 days. Acceptable values are 1 to 7776000,
   /// inclusive.
-  core.String duration;
+  core.String? duration;
 
   /// Number of times an individual user can be served the ad within the
   /// specified duration.
   ///
   /// Acceptable values are 1 to 15, inclusive.
-  core.String impressions;
+  core.String? impressions;
 
   FrequencyCap();
 
@@ -21689,9 +20668,9 @@ class FrequencyCap {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (duration != null) 'duration': duration,
-        if (impressions != null) 'impressions': impressions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (impressions != null) 'impressions': impressions!,
       };
 }
 
@@ -21699,24 +20678,24 @@ class FrequencyCap {
 class FsCommand {
   /// Distance from the left of the browser.Applicable when positionOption is
   /// DISTANCE_FROM_TOP_LEFT_CORNER.
-  core.int left;
+  core.int? left;
 
   /// Position in the browser where the window will open.
   /// Possible string values are:
   /// - "CENTERED"
   /// - "DISTANCE_FROM_TOP_LEFT_CORNER"
-  core.String positionOption;
+  core.String? positionOption;
 
   /// Distance from the top of the browser.
   ///
   /// Applicable when positionOption is DISTANCE_FROM_TOP_LEFT_CORNER.
-  core.int top;
+  core.int? top;
 
   /// Height of the window.
-  core.int windowHeight;
+  core.int? windowHeight;
 
   /// Width of the window.
-  core.int windowWidth;
+  core.int? windowWidth;
 
   FsCommand();
 
@@ -21738,12 +20717,12 @@ class FsCommand {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (left != null) 'left': left,
-        if (positionOption != null) 'positionOption': positionOption,
-        if (top != null) 'top': top,
-        if (windowHeight != null) 'windowHeight': windowHeight,
-        if (windowWidth != null) 'windowWidth': windowWidth,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (left != null) 'left': left!,
+        if (positionOption != null) 'positionOption': positionOption!,
+        if (top != null) 'top': top!,
+        if (windowHeight != null) 'windowHeight': windowHeight!,
+        if (windowWidth != null) 'windowWidth': windowWidth!,
       };
 }
 
@@ -21755,7 +20734,7 @@ class GeoTargeting {
   /// automatically when the ad is inserted or updated. If targeting a city, do
   /// not target or exclude the country of the city, and do not target the metro
   /// or region of the city.
-  core.List<City> cities;
+  core.List<City>? cities;
 
   /// Countries to be targeted or excluded from targeting, depending on the
   /// setting of the excludeCountries field.
@@ -21764,35 +20743,35 @@ class GeoTargeting {
   /// automatically when the ad is inserted or updated. If targeting or
   /// excluding a country, do not target regions, cities, metros, or postal
   /// codes in the same country.
-  core.List<Country> countries;
+  core.List<Country>? countries;
 
   /// Whether or not to exclude the countries in the countries field from
   /// targeting.
   ///
   /// If false, the countries field refers to countries which will be targeted
   /// by the ad.
-  core.bool excludeCountries;
+  core.bool? excludeCountries;
 
   /// Metros to be targeted.
   ///
   /// For each metro only dmaId is required. The other fields are populated
   /// automatically when the ad is inserted or updated. If targeting a metro, do
   /// not target or exclude the country of the metro.
-  core.List<Metro> metros;
+  core.List<Metro>? metros;
 
   /// Postal codes to be targeted.
   ///
   /// For each postal code only id is required. The other fields are populated
   /// automatically when the ad is inserted or updated. If targeting a postal
   /// code, do not target or exclude the country of the postal code.
-  core.List<PostalCode> postalCodes;
+  core.List<PostalCode>? postalCodes;
 
   /// Regions to be targeted.
   ///
   /// For each region only dartId is required. The other fields are populated
   /// automatically when the ad is inserted or updated. If targeting a region,
   /// do not target or exclude the country of the region.
-  core.List<Region> regions;
+  core.List<Region>? regions;
 
   GeoTargeting();
 
@@ -21832,25 +20811,25 @@ class GeoTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cities != null)
-          'cities': cities.map((value) => value.toJson()).toList(),
+          'cities': cities!.map((value) => value.toJson()).toList(),
         if (countries != null)
-          'countries': countries.map((value) => value.toJson()).toList(),
-        if (excludeCountries != null) 'excludeCountries': excludeCountries,
+          'countries': countries!.map((value) => value.toJson()).toList(),
+        if (excludeCountries != null) 'excludeCountries': excludeCountries!,
         if (metros != null)
-          'metros': metros.map((value) => value.toJson()).toList(),
+          'metros': metros!.map((value) => value.toJson()).toList(),
         if (postalCodes != null)
-          'postalCodes': postalCodes.map((value) => value.toJson()).toList(),
+          'postalCodes': postalCodes!.map((value) => value.toJson()).toList(),
         if (regions != null)
-          'regions': regions.map((value) => value.toJson()).toList(),
+          'regions': regions!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Represents a buy from the Planning inventory store.
 class InventoryItem {
   /// Account ID of this inventory item.
-  core.String accountId;
+  core.String? accountId;
 
   /// Ad slots of this inventory item.
   ///
@@ -21858,70 +20837,70 @@ class InventoryItem {
   /// exactly one ad slot. If this inventory item represents a placement group,
   /// there will be more than one ad slot, each representing one child placement
   /// in that placement group.
-  core.List<AdSlot> adSlots;
+  core.List<AdSlot>? adSlots;
 
   /// Advertiser ID of this inventory item.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Content category ID of this inventory item.
-  core.String contentCategoryId;
+  core.String? contentCategoryId;
 
   /// Estimated click-through rate of this inventory item.
-  core.String estimatedClickThroughRate;
+  core.String? estimatedClickThroughRate;
 
   /// Estimated conversion rate of this inventory item.
-  core.String estimatedConversionRate;
+  core.String? estimatedConversionRate;
 
   /// ID of this inventory item.
-  core.String id;
+  core.String? id;
 
   /// Whether this inventory item is in plan.
-  core.bool inPlan;
+  core.bool? inPlan;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#inventoryItem".
-  core.String kind;
+  core.String? kind;
 
   /// Information about the most recent modification of this inventory item.
-  LastModifiedInfo lastModifiedInfo;
+  LastModifiedInfo? lastModifiedInfo;
 
   /// Name of this inventory item.
   ///
   /// For standalone inventory items, this is the same name as that of its only
   /// ad slot. For group inventory items, this can differ from the name of any
   /// of its ad slots.
-  core.String name;
+  core.String? name;
 
   /// Negotiation channel ID of this inventory item.
-  core.String negotiationChannelId;
+  core.String? negotiationChannelId;
 
   /// Order ID of this inventory item.
-  core.String orderId;
+  core.String? orderId;
 
   /// Placement strategy ID of this inventory item.
-  core.String placementStrategyId;
+  core.String? placementStrategyId;
 
   /// Pricing of this inventory item.
-  Pricing pricing;
+  Pricing? pricing;
 
   /// Project ID of this inventory item.
-  core.String projectId;
+  core.String? projectId;
 
   /// RFP ID of this inventory item.
-  core.String rfpId;
+  core.String? rfpId;
 
   /// ID of the site this inventory item is associated with.
-  core.String siteId;
+  core.String? siteId;
 
   /// Subaccount ID of this inventory item.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Type of inventory item.
   /// Possible string values are:
   /// - "PLANNING_PLACEMENT_TYPE_REGULAR"
   /// - "PLANNING_PLACEMENT_TYPE_CREDIT"
-  core.String type;
+  core.String? type;
 
   InventoryItem();
 
@@ -21994,48 +20973,48 @@ class InventoryItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (adSlots != null)
-          'adSlots': adSlots.map((value) => value.toJson()).toList(),
-        if (advertiserId != null) 'advertiserId': advertiserId,
-        if (contentCategoryId != null) 'contentCategoryId': contentCategoryId,
+          'adSlots': adSlots!.map((value) => value.toJson()).toList(),
+        if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (contentCategoryId != null) 'contentCategoryId': contentCategoryId!,
         if (estimatedClickThroughRate != null)
-          'estimatedClickThroughRate': estimatedClickThroughRate,
+          'estimatedClickThroughRate': estimatedClickThroughRate!,
         if (estimatedConversionRate != null)
-          'estimatedConversionRate': estimatedConversionRate,
-        if (id != null) 'id': id,
-        if (inPlan != null) 'inPlan': inPlan,
-        if (kind != null) 'kind': kind,
+          'estimatedConversionRate': estimatedConversionRate!,
+        if (id != null) 'id': id!,
+        if (inPlan != null) 'inPlan': inPlan!,
+        if (kind != null) 'kind': kind!,
         if (lastModifiedInfo != null)
-          'lastModifiedInfo': lastModifiedInfo.toJson(),
-        if (name != null) 'name': name,
+          'lastModifiedInfo': lastModifiedInfo!.toJson(),
+        if (name != null) 'name': name!,
         if (negotiationChannelId != null)
-          'negotiationChannelId': negotiationChannelId,
-        if (orderId != null) 'orderId': orderId,
+          'negotiationChannelId': negotiationChannelId!,
+        if (orderId != null) 'orderId': orderId!,
         if (placementStrategyId != null)
-          'placementStrategyId': placementStrategyId,
-        if (pricing != null) 'pricing': pricing.toJson(),
-        if (projectId != null) 'projectId': projectId,
-        if (rfpId != null) 'rfpId': rfpId,
-        if (siteId != null) 'siteId': siteId,
-        if (subaccountId != null) 'subaccountId': subaccountId,
-        if (type != null) 'type': type,
+          'placementStrategyId': placementStrategyId!,
+        if (pricing != null) 'pricing': pricing!.toJson(),
+        if (projectId != null) 'projectId': projectId!,
+        if (rfpId != null) 'rfpId': rfpId!,
+        if (siteId != null) 'siteId': siteId!,
+        if (subaccountId != null) 'subaccountId': subaccountId!,
+        if (type != null) 'type': type!,
       };
 }
 
 /// Inventory item List Response
 class InventoryItemsListResponse {
   /// Inventory item collection
-  core.List<InventoryItem> inventoryItems;
+  core.List<InventoryItem>? inventoryItems;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#inventoryItemsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   InventoryItemsListResponse();
 
@@ -22054,19 +21033,19 @@ class InventoryItemsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (inventoryItems != null)
           'inventoryItems':
-              inventoryItems.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              inventoryItems!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Key Value Targeting Expression.
 class KeyValueTargetingExpression {
   /// Keyword expression being targeted by the ad.
-  core.String expression;
+  core.String? expression;
 
   KeyValueTargetingExpression();
 
@@ -22076,8 +21055,8 @@ class KeyValueTargetingExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expression != null) 'expression': expression,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expression != null) 'expression': expression!,
       };
 }
 
@@ -22087,33 +21066,33 @@ class LandingPage {
   /// Advertiser ID of this landing page.
   ///
   /// This is a required field.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Whether this landing page has been archived.
-  core.bool archived;
+  core.bool? archived;
 
   /// Links that will direct the user to a mobile app, if installed.
-  core.List<DeepLink> deepLinks;
+  core.List<DeepLink>? deepLinks;
 
   /// ID of this landing page.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#landingPage".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this landing page.
   ///
   /// This is a required field. It must be less than 256 characters long.
-  core.String name;
+  core.String? name;
 
   /// URL of this landing page.
   ///
   /// This is a required field.
-  core.String url;
+  core.String? url;
 
   LandingPage();
 
@@ -22144,15 +21123,15 @@ class LandingPage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (advertiserId != null) 'advertiserId': advertiserId,
-        if (archived != null) 'archived': archived,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (archived != null) 'archived': archived!,
         if (deepLinks != null)
-          'deepLinks': deepLinks.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (url != null) 'url': url,
+          'deepLinks': deepLinks!.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -22161,21 +21140,21 @@ class Language {
   /// Language ID of this language.
   ///
   /// This is the ID used for targeting and generating reports.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#language".
-  core.String kind;
+  core.String? kind;
 
   /// Format of language code is an ISO 639 two-letter language code optionally
   /// followed by an underscore followed by an ISO 3166 code.
   ///
   /// Examples are "en" for English or "zh_CN" for Simplified Chinese.
-  core.String languageCode;
+  core.String? languageCode;
 
   /// Name of this language.
-  core.String name;
+  core.String? name;
 
   Language();
 
@@ -22194,11 +21173,11 @@ class Language {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (languageCode != null) 'languageCode': languageCode,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -22208,7 +21187,7 @@ class LanguageTargeting {
   ///
   /// For each language only languageId is required. The other fields are
   /// populated automatically when the ad is inserted or updated.
-  core.List<Language> languages;
+  core.List<Language>? languages;
 
   LanguageTargeting();
 
@@ -22221,9 +21200,9 @@ class LanguageTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (languages != null)
-          'languages': languages.map((value) => value.toJson()).toList(),
+          'languages': languages!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -22232,10 +21211,10 @@ class LanguagesListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#languagesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Language collection.
-  core.List<Language> languages;
+  core.List<Language>? languages;
 
   LanguagesListResponse();
 
@@ -22251,17 +21230,17 @@ class LanguagesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (languages != null)
-          'languages': languages.map((value) => value.toJson()).toList(),
+          'languages': languages!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Modification timestamp.
 class LastModifiedInfo {
   /// Timestamp of the last change in milliseconds since epoch.
-  core.String time;
+  core.String? time;
 
   LastModifiedInfo();
 
@@ -22271,8 +21250,8 @@ class LastModifiedInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (time != null) 'time': time,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (time != null) 'time': time!,
       };
 }
 
@@ -22283,7 +21262,7 @@ class ListPopulationClause {
   ///
   /// Each clause is made up of list population terms representing constraints
   /// and are joined by ORs.
-  core.List<ListPopulationTerm> terms;
+  core.List<ListPopulationTerm>? terms;
 
   ListPopulationClause();
 
@@ -22296,9 +21275,9 @@ class ListPopulationClause {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (terms != null)
-          'terms': terms.map((value) => value.toJson()).toList(),
+          'terms': terms!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -22307,18 +21286,18 @@ class ListPopulationRule {
   /// Floodlight activity ID associated with this rule.
   ///
   /// This field can be left blank.
-  core.String floodlightActivityId;
+  core.String? floodlightActivityId;
 
   /// Name of floodlight activity associated with this rule.
   ///
   /// This is a read-only, auto-generated field.
-  core.String floodlightActivityName;
+  core.String? floodlightActivityName;
 
   /// Clauses that make up this list population rule.
   ///
   /// Clauses are joined by ANDs, and the clauses themselves are made up of list
   /// population terms which are joined by ORs.
-  core.List<ListPopulationClause> listPopulationClauses;
+  core.List<ListPopulationClause>? listPopulationClauses;
 
   ListPopulationRule();
 
@@ -22337,14 +21316,14 @@ class ListPopulationRule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (floodlightActivityId != null)
-          'floodlightActivityId': floodlightActivityId,
+          'floodlightActivityId': floodlightActivityId!,
         if (floodlightActivityName != null)
-          'floodlightActivityName': floodlightActivityName,
+          'floodlightActivityName': floodlightActivityName!,
         if (listPopulationClauses != null)
           'listPopulationClauses':
-              listPopulationClauses.map((value) => value.toJson()).toList(),
+              listPopulationClauses!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -22355,14 +21334,14 @@ class ListPopulationTerm {
   ///
   /// This field is only relevant when type is set to LIST_MEMBERSHIP_TERM.
   /// False by default.
-  core.bool contains;
+  core.bool? contains;
 
   /// Whether to negate the comparison result of this term during rule
   /// evaluation.
   ///
   /// This field is only relevant when type is left unset or set to
   /// CUSTOM_VARIABLE_TERM or REFERRER_TERM.
-  core.bool negation;
+  core.bool? negation;
 
   /// Comparison operator of this term.
   ///
@@ -22376,12 +21355,12 @@ class ListPopulationTerm {
   /// - "NUM_GREATER_THAN_EQUAL"
   /// - "STRING_EQUALS"
   /// - "STRING_CONTAINS"
-  core.String operator;
+  core.String? operator;
 
   /// ID of the list in question.
   ///
   /// This field is only relevant when type is set to LIST_MEMBERSHIP_TERM.
-  core.String remarketingListId;
+  core.String? remarketingListId;
 
   /// List population term type determines the applicable fields in this object.
   ///
@@ -22394,25 +21373,25 @@ class ListPopulationTerm {
   /// - "CUSTOM_VARIABLE_TERM"
   /// - "LIST_MEMBERSHIP_TERM"
   /// - "REFERRER_TERM"
-  core.String type;
+  core.String? type;
 
   /// Literal to compare the variable to.
   ///
   /// This field is only relevant when type is left unset or set to
   /// CUSTOM_VARIABLE_TERM or REFERRER_TERM.
-  core.String value;
+  core.String? value;
 
   /// Friendly name of this term's variable.
   ///
   /// This is a read-only, auto-generated field. This field is only relevant
   /// when type is left unset or set to CUSTOM_VARIABLE_TERM.
-  core.String variableFriendlyName;
+  core.String? variableFriendlyName;
 
   /// Name of the variable (U1, U2, etc.) being compared in this term.
   ///
   /// This field is only relevant when type is set to null, CUSTOM_VARIABLE_TERM
   /// or REFERRER_TERM.
-  core.String variableName;
+  core.String? variableName;
 
   ListPopulationTerm();
 
@@ -22443,23 +21422,23 @@ class ListPopulationTerm {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contains != null) 'contains': contains,
-        if (negation != null) 'negation': negation,
-        if (operator != null) 'operator': operator,
-        if (remarketingListId != null) 'remarketingListId': remarketingListId,
-        if (type != null) 'type': type,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contains != null) 'contains': contains!,
+        if (negation != null) 'negation': negation!,
+        if (operator != null) 'operator': operator!,
+        if (remarketingListId != null) 'remarketingListId': remarketingListId!,
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
         if (variableFriendlyName != null)
-          'variableFriendlyName': variableFriendlyName,
-        if (variableName != null) 'variableName': variableName,
+          'variableFriendlyName': variableFriendlyName!,
+        if (variableName != null) 'variableName': variableName!,
       };
 }
 
 /// Remarketing List Targeting Expression.
 class ListTargetingExpression {
   /// Expression describing which lists are being targeted by the ad.
-  core.String expression;
+  core.String? expression;
 
   ListTargetingExpression();
 
@@ -22469,8 +21448,8 @@ class ListTargetingExpression {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expression != null) 'expression': expression,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expression != null) 'expression': expression!,
       };
 }
 
@@ -22482,7 +21461,7 @@ class LookbackConfiguration {
   /// If you enter 0, clicks will not be considered as triggering events for
   /// floodlight tracking. If you leave this field blank, the default value for
   /// your account will be used. Acceptable values are 0 to 90, inclusive.
-  core.int clickDuration;
+  core.int? clickDuration;
 
   /// Lookback window, in days, from the last time a given user viewed one of
   /// your ads.
@@ -22490,7 +21469,7 @@ class LookbackConfiguration {
   /// If you enter 0, impressions will not be considered as triggering events
   /// for floodlight tracking. If you leave this field blank, the default value
   /// for your account will be used. Acceptable values are 0 to 90, inclusive.
-  core.int postImpressionActivitiesDuration;
+  core.int? postImpressionActivitiesDuration;
 
   LookbackConfiguration();
 
@@ -22504,20 +21483,20 @@ class LookbackConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clickDuration != null) 'clickDuration': clickDuration,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clickDuration != null) 'clickDuration': clickDuration!,
         if (postImpressionActivitiesDuration != null)
-          'postImpressionActivitiesDuration': postImpressionActivitiesDuration,
+          'postImpressionActivitiesDuration': postImpressionActivitiesDuration!,
       };
 }
 
 /// Represents a metric.
 class Metric {
   /// The kind of resource this is, in this case dfareporting#metric.
-  core.String kind;
+  core.String? kind;
 
   /// The metric name, e.g. dfa:impressions
-  core.String name;
+  core.String? name;
 
   Metric();
 
@@ -22530,41 +21509,41 @@ class Metric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Contains information about a metro region that can be targeted by ads.
 class Metro {
   /// Country code of the country to which this metro region belongs.
-  core.String countryCode;
+  core.String? countryCode;
 
   /// DART ID of the country to which this metro region belongs.
-  core.String countryDartId;
+  core.String? countryDartId;
 
   /// DART ID of this metro region.
-  core.String dartId;
+  core.String? dartId;
 
   /// DMA ID of this metro region.
   ///
   /// This is the ID used for targeting and generating reports, and is
   /// equivalent to metro_code.
-  core.String dmaId;
+  core.String? dmaId;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#metro".
-  core.String kind;
+  core.String? kind;
 
   /// Metro code of this metro region.
   ///
   /// This is equivalent to dma_id.
-  core.String metroCode;
+  core.String? metroCode;
 
   /// Name of this metro region.
-  core.String name;
+  core.String? name;
 
   Metro();
 
@@ -22592,14 +21571,14 @@ class Metro {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (countryCode != null) 'countryCode': countryCode,
-        if (countryDartId != null) 'countryDartId': countryDartId,
-        if (dartId != null) 'dartId': dartId,
-        if (dmaId != null) 'dmaId': dmaId,
-        if (kind != null) 'kind': kind,
-        if (metroCode != null) 'metroCode': metroCode,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (countryDartId != null) 'countryDartId': countryDartId!,
+        if (dartId != null) 'dartId': dartId!,
+        if (dmaId != null) 'dmaId': dmaId!,
+        if (kind != null) 'kind': kind!,
+        if (metroCode != null) 'metroCode': metroCode!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -22608,10 +21587,10 @@ class MetrosListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#metrosListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Metro collection.
-  core.List<Metro> metros;
+  core.List<Metro>? metros;
 
   MetrosListResponse();
 
@@ -22627,10 +21606,10 @@ class MetrosListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (metros != null)
-          'metros': metros.map((value) => value.toJson()).toList(),
+          'metros': metros!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -22643,21 +21622,21 @@ class MobileApp {
   /// - "UNKNOWN"
   /// - "APPLE_APP_STORE"
   /// - "GOOGLE_PLAY_STORE"
-  core.String directory;
+  core.String? directory;
 
   /// ID of this mobile app.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#mobileApp".
-  core.String kind;
+  core.String? kind;
 
   /// Publisher name.
-  core.String publisherName;
+  core.String? publisherName;
 
   /// Title of this mobile app.
-  core.String title;
+  core.String? title;
 
   MobileApp();
 
@@ -22679,12 +21658,12 @@ class MobileApp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (directory != null) 'directory': directory,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (publisherName != null) 'publisherName': publisherName,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (directory != null) 'directory': directory!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (publisherName != null) 'publisherName': publisherName!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -22693,13 +21672,13 @@ class MobileAppsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#mobileAppsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Mobile apps collection.
-  core.List<MobileApp> mobileApps;
+  core.List<MobileApp>? mobileApps;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   MobileAppsListResponse();
 
@@ -22718,32 +21697,32 @@ class MobileAppsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (mobileApps != null)
-          'mobileApps': mobileApps.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'mobileApps': mobileApps!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Contains information about a mobile carrier that can be targeted by ads.
 class MobileCarrier {
   /// Country code of the country to which this mobile carrier belongs.
-  core.String countryCode;
+  core.String? countryCode;
 
   /// DART ID of the country to which this mobile carrier belongs.
-  core.String countryDartId;
+  core.String? countryDartId;
 
   /// ID of this mobile carrier.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#mobileCarrier".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this mobile carrier.
-  core.String name;
+  core.String? name;
 
   MobileCarrier();
 
@@ -22765,12 +21744,12 @@ class MobileCarrier {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (countryCode != null) 'countryCode': countryCode,
-        if (countryDartId != null) 'countryDartId': countryDartId,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (countryDartId != null) 'countryDartId': countryDartId!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -22779,10 +21758,10 @@ class MobileCarriersListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#mobileCarriersListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Mobile carrier collection.
-  core.List<MobileCarrier> mobileCarriers;
+  core.List<MobileCarrier>? mobileCarriers;
 
   MobileCarriersListResponse();
 
@@ -22798,47 +21777,47 @@ class MobileCarriersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (mobileCarriers != null)
           'mobileCarriers':
-              mobileCarriers.map((value) => value.toJson()).toList(),
+              mobileCarriers!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Online Behavioral Advertiser icon.
 class ObaIcon {
   /// URL to redirect to when an OBA icon is clicked.
-  core.String iconClickThroughUrl;
+  core.String? iconClickThroughUrl;
 
   /// URL to track click when an OBA icon is clicked.
-  core.String iconClickTrackingUrl;
+  core.String? iconClickTrackingUrl;
 
   /// URL to track view when an OBA icon is clicked.
-  core.String iconViewTrackingUrl;
+  core.String? iconViewTrackingUrl;
 
   /// Identifies the industry initiative that the icon supports.
   ///
   /// For example, AdChoices.
-  core.String program;
+  core.String? program;
 
   /// OBA icon resource URL.
   ///
   /// Campaign Manager only supports image and JavaScript icons. Learn more
-  core.String resourceUrl;
+  core.String? resourceUrl;
 
   /// OBA icon size.
-  Size size;
+  Size? size;
 
   /// OBA icon x coordinate position.
   ///
   /// Accepted values are left or right.
-  core.String xPosition;
+  core.String? xPosition;
 
   /// OBA icon y coordinate position.
   ///
   /// Accepted values are top or bottom.
-  core.String yPosition;
+  core.String? yPosition;
 
   ObaIcon();
 
@@ -22870,18 +21849,18 @@ class ObaIcon {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (iconClickThroughUrl != null)
-          'iconClickThroughUrl': iconClickThroughUrl,
+          'iconClickThroughUrl': iconClickThroughUrl!,
         if (iconClickTrackingUrl != null)
-          'iconClickTrackingUrl': iconClickTrackingUrl,
+          'iconClickTrackingUrl': iconClickTrackingUrl!,
         if (iconViewTrackingUrl != null)
-          'iconViewTrackingUrl': iconViewTrackingUrl,
-        if (program != null) 'program': program,
-        if (resourceUrl != null) 'resourceUrl': resourceUrl,
-        if (size != null) 'size': size.toJson(),
-        if (xPosition != null) 'xPosition': xPosition,
-        if (yPosition != null) 'yPosition': yPosition,
+          'iconViewTrackingUrl': iconViewTrackingUrl!,
+        if (program != null) 'program': program!,
+        if (resourceUrl != null) 'resourceUrl': resourceUrl!,
+        if (size != null) 'size': size!.toJson(),
+        if (xPosition != null) 'xPosition': xPosition!,
+        if (yPosition != null) 'yPosition': yPosition!,
       };
 }
 
@@ -22890,12 +21869,12 @@ class ObjectFilter {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#objectFilter".
-  core.String kind;
+  core.String? kind;
 
   /// Applicable when status is ASSIGNED.
   ///
   /// The user has access to objects with these object IDs.
-  core.List<core.String> objectIds;
+  core.List<core.String>? objectIds;
 
   /// Status of the filter.
   ///
@@ -22906,7 +21885,7 @@ class ObjectFilter {
   /// - "NONE"
   /// - "ASSIGNED"
   /// - "ALL"
-  core.String status;
+  core.String? status;
 
   ObjectFilter();
 
@@ -22924,20 +21903,20 @@ class ObjectFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (objectIds != null) 'objectIds': objectIds,
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (objectIds != null) 'objectIds': objectIds!,
+        if (status != null) 'status': status!,
       };
 }
 
 /// Offset Position.
 class OffsetPosition {
   /// Offset distance from left side of an asset or a window.
-  core.int left;
+  core.int? left;
 
   /// Offset distance from top side of an asset or a window.
-  core.int top;
+  core.int? top;
 
   OffsetPosition();
 
@@ -22950,9 +21929,9 @@ class OffsetPosition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (left != null) 'left': left,
-        if (top != null) 'top': top,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (left != null) 'left': left!,
+        if (top != null) 'top': top!,
       };
 }
 
@@ -22961,13 +21940,13 @@ class OmnitureSettings {
   /// Whether placement cost data will be sent to Omniture.
   ///
   /// This property can be enabled only if omnitureIntegrationEnabled is true.
-  core.bool omnitureCostDataEnabled;
+  core.bool? omnitureCostDataEnabled;
 
   /// Whether Omniture integration is enabled.
   ///
   /// This property can be enabled only when the "Advanced Ad Serving" account
   /// setting is enabled.
-  core.bool omnitureIntegrationEnabled;
+  core.bool? omnitureIntegrationEnabled;
 
   OmnitureSettings();
 
@@ -22981,11 +21960,11 @@ class OmnitureSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (omnitureCostDataEnabled != null)
-          'omnitureCostDataEnabled': omnitureCostDataEnabled,
+          'omnitureCostDataEnabled': omnitureCostDataEnabled!,
         if (omnitureIntegrationEnabled != null)
-          'omnitureIntegrationEnabled': omnitureIntegrationEnabled,
+          'omnitureIntegrationEnabled': omnitureIntegrationEnabled!,
       };
 }
 
@@ -22994,21 +21973,21 @@ class OperatingSystem {
   /// DART ID of this operating system.
   ///
   /// This is the ID used for targeting.
-  core.String dartId;
+  core.String? dartId;
 
   /// Whether this operating system is for desktop.
-  core.bool desktop;
+  core.bool? desktop;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#operatingSystem".
-  core.String kind;
+  core.String? kind;
 
   /// Whether this operating system is for mobile.
-  core.bool mobile;
+  core.bool? mobile;
 
   /// Name of this operating system.
-  core.String name;
+  core.String? name;
 
   OperatingSystem();
 
@@ -23030,12 +22009,12 @@ class OperatingSystem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dartId != null) 'dartId': dartId,
-        if (desktop != null) 'desktop': desktop,
-        if (kind != null) 'kind': kind,
-        if (mobile != null) 'mobile': mobile,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dartId != null) 'dartId': dartId!,
+        if (desktop != null) 'desktop': desktop!,
+        if (kind != null) 'kind': kind!,
+        if (mobile != null) 'mobile': mobile!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -23043,25 +22022,25 @@ class OperatingSystem {
 /// can be targeted by ads.
 class OperatingSystemVersion {
   /// ID of this operating system version.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#operatingSystemVersion".
-  core.String kind;
+  core.String? kind;
 
   /// Major version (leftmost number) of this operating system version.
-  core.String majorVersion;
+  core.String? majorVersion;
 
   /// Minor version (number after the first dot) of this operating system
   /// version.
-  core.String minorVersion;
+  core.String? minorVersion;
 
   /// Name of this operating system version.
-  core.String name;
+  core.String? name;
 
   /// Operating system of this operating system version.
-  OperatingSystem operatingSystem;
+  OperatingSystem? operatingSystem;
 
   OperatingSystemVersion();
 
@@ -23087,14 +22066,14 @@ class OperatingSystemVersion {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (majorVersion != null) 'majorVersion': majorVersion,
-        if (minorVersion != null) 'minorVersion': minorVersion,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (majorVersion != null) 'majorVersion': majorVersion!,
+        if (minorVersion != null) 'minorVersion': minorVersion!,
+        if (name != null) 'name': name!,
         if (operatingSystem != null)
-          'operatingSystem': operatingSystem.toJson(),
+          'operatingSystem': operatingSystem!.toJson(),
       };
 }
 
@@ -23104,10 +22083,10 @@ class OperatingSystemVersionsListResponse {
   ///
   /// Value: the fixed string
   /// "dfareporting#operatingSystemVersionsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Operating system version collection.
-  core.List<OperatingSystemVersion> operatingSystemVersions;
+  core.List<OperatingSystemVersion>? operatingSystemVersions;
 
   OperatingSystemVersionsListResponse();
 
@@ -23124,11 +22103,11 @@ class OperatingSystemVersionsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (operatingSystemVersions != null)
           'operatingSystemVersions':
-              operatingSystemVersions.map((value) => value.toJson()).toList(),
+              operatingSystemVersions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -23137,10 +22116,10 @@ class OperatingSystemsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#operatingSystemsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Operating system collection.
-  core.List<OperatingSystem> operatingSystems;
+  core.List<OperatingSystem>? operatingSystems;
 
   OperatingSystemsListResponse();
 
@@ -23156,11 +22135,11 @@ class OperatingSystemsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (operatingSystems != null)
           'operatingSystems':
-              operatingSystems.map((value) => value.toJson()).toList(),
+              operatingSystems!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -23169,19 +22148,19 @@ class OptimizationActivity {
   /// Floodlight activity ID of this optimization activity.
   ///
   /// This is a required field.
-  core.String floodlightActivityId;
+  core.String? floodlightActivityId;
 
   /// Dimension value for the ID of the floodlight activity.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue floodlightActivityIdDimensionValue;
+  DimensionValue? floodlightActivityIdDimensionValue;
 
   /// Weight associated with this optimization.
   ///
   /// The weight assigned will be understood in proportion to the weights
   /// assigned to the other optimization activities. Value must be greater than
   /// or equal to 1.
-  core.int weight;
+  core.int? weight;
 
   OptimizationActivity();
 
@@ -23199,81 +22178,81 @@ class OptimizationActivity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (floodlightActivityId != null)
-          'floodlightActivityId': floodlightActivityId,
+          'floodlightActivityId': floodlightActivityId!,
         if (floodlightActivityIdDimensionValue != null)
           'floodlightActivityIdDimensionValue':
-              floodlightActivityIdDimensionValue.toJson(),
-        if (weight != null) 'weight': weight,
+              floodlightActivityIdDimensionValue!.toJson(),
+        if (weight != null) 'weight': weight!,
       };
 }
 
 /// Describes properties of a Planning order.
 class Order {
   /// Account ID of this order.
-  core.String accountId;
+  core.String? accountId;
 
   /// Advertiser ID of this order.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// IDs for users that have to approve documents created for this order.
-  core.List<core.String> approverUserProfileIds;
+  core.List<core.String>? approverUserProfileIds;
 
   /// Buyer invoice ID associated with this order.
-  core.String buyerInvoiceId;
+  core.String? buyerInvoiceId;
 
   /// Name of the buyer organization.
-  core.String buyerOrganizationName;
+  core.String? buyerOrganizationName;
 
   /// Comments in this order.
-  core.String comments;
+  core.String? comments;
 
   /// Contacts for this order.
-  core.List<OrderContact> contacts;
+  core.List<OrderContact>? contacts;
 
   /// ID of this order.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#order".
-  core.String kind;
+  core.String? kind;
 
   /// Information about the most recent modification of this order.
-  LastModifiedInfo lastModifiedInfo;
+  LastModifiedInfo? lastModifiedInfo;
 
   /// Name of this order.
-  core.String name;
+  core.String? name;
 
   /// Notes of this order.
-  core.String notes;
+  core.String? notes;
 
   /// ID of the terms and conditions template used in this order.
-  core.String planningTermId;
+  core.String? planningTermId;
 
   /// Project ID of this order.
-  core.String projectId;
+  core.String? projectId;
 
   /// Seller order ID associated with this order.
-  core.String sellerOrderId;
+  core.String? sellerOrderId;
 
   /// Name of the seller organization.
-  core.String sellerOrganizationName;
+  core.String? sellerOrganizationName;
 
   /// Site IDs this order is associated with.
-  core.List<core.String> siteId;
+  core.List<core.String>? siteId;
 
   /// Free-form site names this order is associated with.
-  core.List<core.String> siteNames;
+  core.List<core.String>? siteNames;
 
   /// Subaccount ID of this order.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Terms and conditions of this order.
-  core.String termsAndConditions;
+  core.String? termsAndConditions;
 
   Order();
 
@@ -23350,33 +22329,33 @@ class Order {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (advertiserId != null) 'advertiserId': advertiserId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
         if (approverUserProfileIds != null)
-          'approverUserProfileIds': approverUserProfileIds,
-        if (buyerInvoiceId != null) 'buyerInvoiceId': buyerInvoiceId,
+          'approverUserProfileIds': approverUserProfileIds!,
+        if (buyerInvoiceId != null) 'buyerInvoiceId': buyerInvoiceId!,
         if (buyerOrganizationName != null)
-          'buyerOrganizationName': buyerOrganizationName,
-        if (comments != null) 'comments': comments,
+          'buyerOrganizationName': buyerOrganizationName!,
+        if (comments != null) 'comments': comments!,
         if (contacts != null)
-          'contacts': contacts.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+          'contacts': contacts!.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (lastModifiedInfo != null)
-          'lastModifiedInfo': lastModifiedInfo.toJson(),
-        if (name != null) 'name': name,
-        if (notes != null) 'notes': notes,
-        if (planningTermId != null) 'planningTermId': planningTermId,
-        if (projectId != null) 'projectId': projectId,
-        if (sellerOrderId != null) 'sellerOrderId': sellerOrderId,
+          'lastModifiedInfo': lastModifiedInfo!.toJson(),
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
+        if (planningTermId != null) 'planningTermId': planningTermId!,
+        if (projectId != null) 'projectId': projectId!,
+        if (sellerOrderId != null) 'sellerOrderId': sellerOrderId!,
         if (sellerOrganizationName != null)
-          'sellerOrganizationName': sellerOrganizationName,
-        if (siteId != null) 'siteId': siteId,
-        if (siteNames != null) 'siteNames': siteNames,
-        if (subaccountId != null) 'subaccountId': subaccountId,
+          'sellerOrganizationName': sellerOrganizationName!,
+        if (siteId != null) 'siteId': siteId!,
+        if (siteNames != null) 'siteNames': siteNames!,
+        if (subaccountId != null) 'subaccountId': subaccountId!,
         if (termsAndConditions != null)
-          'termsAndConditions': termsAndConditions,
+          'termsAndConditions': termsAndConditions!,
       };
 }
 
@@ -23386,24 +22365,24 @@ class OrderContact {
   ///
   /// It could be any information related to this contact in addition to type,
   /// title, name, and signature user profile ID.
-  core.String contactInfo;
+  core.String? contactInfo;
 
   /// Name of this contact.
-  core.String contactName;
+  core.String? contactName;
 
   /// Title of this contact.
-  core.String contactTitle;
+  core.String? contactTitle;
 
   /// Type of this contact.
   /// Possible string values are:
   /// - "PLANNING_ORDER_CONTACT_BUYER_CONTACT"
   /// - "PLANNING_ORDER_CONTACT_BUYER_BILLING_CONTACT"
   /// - "PLANNING_ORDER_CONTACT_SELLER_CONTACT"
-  core.String contactType;
+  core.String? contactType;
 
   /// ID of the user profile containing the signature that will be embedded into
   /// order documents.
-  core.String signatureUserProfileId;
+  core.String? signatureUserProfileId;
 
   OrderContact();
 
@@ -23425,72 +22404,72 @@ class OrderContact {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contactInfo != null) 'contactInfo': contactInfo,
-        if (contactName != null) 'contactName': contactName,
-        if (contactTitle != null) 'contactTitle': contactTitle,
-        if (contactType != null) 'contactType': contactType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contactInfo != null) 'contactInfo': contactInfo!,
+        if (contactName != null) 'contactName': contactName!,
+        if (contactTitle != null) 'contactTitle': contactTitle!,
+        if (contactType != null) 'contactType': contactType!,
         if (signatureUserProfileId != null)
-          'signatureUserProfileId': signatureUserProfileId,
+          'signatureUserProfileId': signatureUserProfileId!,
       };
 }
 
 /// Contains properties of a Planning order document.
 class OrderDocument {
   /// Account ID of this order document.
-  core.String accountId;
+  core.String? accountId;
 
   /// Advertiser ID of this order document.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// The amended order document ID of this order document.
   ///
   /// An order document can be created by optionally amending another order
   /// document so that the change history can be preserved.
-  core.String amendedOrderDocumentId;
+  core.String? amendedOrderDocumentId;
 
   /// IDs of users who have approved this order document.
-  core.List<core.String> approvedByUserProfileIds;
+  core.List<core.String>? approvedByUserProfileIds;
 
   /// Whether this order document is cancelled.
-  core.bool cancelled;
+  core.bool? cancelled;
 
   /// Information about the creation of this order document.
-  LastModifiedInfo createdInfo;
-  core.DateTime effectiveDate;
+  LastModifiedInfo? createdInfo;
+  core.DateTime? effectiveDate;
 
   /// ID of this order document.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#orderDocument".
-  core.String kind;
+  core.String? kind;
 
   /// List of email addresses that received the last sent document.
-  core.List<core.String> lastSentRecipients;
-  core.DateTime lastSentTime;
+  core.List<core.String>? lastSentRecipients;
+  core.DateTime? lastSentTime;
 
   /// ID of the order from which this order document is created.
-  core.String orderId;
+  core.String? orderId;
 
   /// Project ID of this order document.
-  core.String projectId;
+  core.String? projectId;
 
   /// Whether this order document has been signed.
-  core.bool signed;
+  core.bool? signed;
 
   /// Subaccount ID of this order document.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Title of this order document.
-  core.String title;
+  core.String? title;
 
   /// Type of this order document
   /// Possible string values are:
   /// - "PLANNING_ORDER_TYPE_INSERTION_ORDER"
   /// - "PLANNING_ORDER_TYPE_CHANGE_ORDER"
-  core.String type;
+  core.String? type;
 
   OrderDocument();
 
@@ -23555,30 +22534,30 @@ class OrderDocument {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (advertiserId != null) 'advertiserId': advertiserId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
         if (amendedOrderDocumentId != null)
-          'amendedOrderDocumentId': amendedOrderDocumentId,
+          'amendedOrderDocumentId': amendedOrderDocumentId!,
         if (approvedByUserProfileIds != null)
-          'approvedByUserProfileIds': approvedByUserProfileIds,
-        if (cancelled != null) 'cancelled': cancelled,
-        if (createdInfo != null) 'createdInfo': createdInfo.toJson(),
+          'approvedByUserProfileIds': approvedByUserProfileIds!,
+        if (cancelled != null) 'cancelled': cancelled!,
+        if (createdInfo != null) 'createdInfo': createdInfo!.toJson(),
         if (effectiveDate != null)
           'effectiveDate':
-              "${(effectiveDate).year.toString().padLeft(4, '0')}-${(effectiveDate).month.toString().padLeft(2, '0')}-${(effectiveDate).day.toString().padLeft(2, '0')}",
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+              "${(effectiveDate!).year.toString().padLeft(4, '0')}-${(effectiveDate!).month.toString().padLeft(2, '0')}-${(effectiveDate!).day.toString().padLeft(2, '0')}",
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (lastSentRecipients != null)
-          'lastSentRecipients': lastSentRecipients,
+          'lastSentRecipients': lastSentRecipients!,
         if (lastSentTime != null)
-          'lastSentTime': (lastSentTime).toIso8601String(),
-        if (orderId != null) 'orderId': orderId,
-        if (projectId != null) 'projectId': projectId,
-        if (signed != null) 'signed': signed,
-        if (subaccountId != null) 'subaccountId': subaccountId,
-        if (title != null) 'title': title,
-        if (type != null) 'type': type,
+          'lastSentTime': (lastSentTime!).toIso8601String(),
+        if (orderId != null) 'orderId': orderId!,
+        if (projectId != null) 'projectId': projectId!,
+        if (signed != null) 'signed': signed!,
+        if (subaccountId != null) 'subaccountId': subaccountId!,
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -23587,13 +22566,13 @@ class OrderDocumentsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#orderDocumentsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Order document collection
-  core.List<OrderDocument> orderDocuments;
+  core.List<OrderDocument>? orderDocuments;
 
   OrderDocumentsListResponse();
 
@@ -23612,12 +22591,12 @@ class OrderDocumentsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (orderDocuments != null)
           'orderDocuments':
-              orderDocuments.map((value) => value.toJson()).toList(),
+              orderDocuments!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -23626,13 +22605,13 @@ class OrdersListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#ordersListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Order collection.
-  core.List<Order> orders;
+  core.List<Order>? orders;
 
   OrdersListResponse();
 
@@ -23651,21 +22630,21 @@ class OrdersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (orders != null)
-          'orders': orders.map((value) => value.toJson()).toList(),
+          'orders': orders!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Represents a DfaReporting path filter.
 class PathFilter {
   /// Event filters in path report.
-  core.List<EventFilter> eventFilters;
+  core.List<EventFilter>? eventFilters;
 
   /// The kind of resource this is, in this case dfareporting#pathFilter.
-  core.String kind;
+  core.String? kind;
 
   /// Determines how the 'value' field is matched when filtering.
   ///
@@ -23678,7 +22657,7 @@ class PathFilter {
   /// - "ANY"
   /// - "FIRST"
   /// - "LAST"
-  core.String pathMatchPosition;
+  core.String? pathMatchPosition;
 
   PathFilter();
 
@@ -23697,11 +22676,11 @@ class PathFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (eventFilters != null)
-          'eventFilters': eventFilters.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (pathMatchPosition != null) 'pathMatchPosition': pathMatchPosition,
+          'eventFilters': eventFilters!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (pathMatchPosition != null) 'pathMatchPosition': pathMatchPosition!,
       };
 }
 
@@ -23710,23 +22689,23 @@ class PathFilter {
 class PathReportCompatibleFields {
   /// Dimensions which are compatible to be selected in the "channelGroupings"
   /// section of the report.
-  core.List<Dimension> channelGroupings;
+  core.List<Dimension>? channelGroupings;
 
   /// Dimensions which are compatible to be selected in the "dimensions" section
   /// of the report.
-  core.List<Dimension> dimensions;
+  core.List<Dimension>? dimensions;
 
   /// The kind of resource this is, in this case
   /// dfareporting#pathReportCompatibleFields.
-  core.String kind;
+  core.String? kind;
 
   /// Metrics which are compatible to be selected in the "metricNames" section
   /// of the report.
-  core.List<Metric> metrics;
+  core.List<Metric>? metrics;
 
   /// Dimensions which are compatible to be selected in the "pathFilters"
   /// section of the report.
-  core.List<Dimension> pathFilters;
+  core.List<Dimension>? pathFilters;
 
   PathReportCompatibleFields();
 
@@ -23760,31 +22739,31 @@ class PathReportCompatibleFields {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (channelGroupings != null)
           'channelGroupings':
-              channelGroupings.map((value) => value.toJson()).toList(),
+              channelGroupings!.map((value) => value.toJson()).toList(),
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
         if (pathFilters != null)
-          'pathFilters': pathFilters.map((value) => value.toJson()).toList(),
+          'pathFilters': pathFilters!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Represents a PathReportDimensionValue resource.
 class PathReportDimensionValue {
   /// The name of the dimension.
-  core.String dimensionName;
+  core.String? dimensionName;
 
   /// The possible ID's associated with the value if available.
-  core.List<core.String> ids;
+  core.List<core.String>? ids;
 
   /// The kind of resource this is, in this case
   /// dfareporting#pathReportDimensionValue.
-  core.String kind;
+  core.String? kind;
 
   /// Determines how the 'value' field is matched when filtering.
   ///
@@ -23797,10 +22776,10 @@ class PathReportDimensionValue {
   /// - "BEGINS_WITH"
   /// - "CONTAINS"
   /// - "WILDCARD_EXPRESSION"
-  core.String matchType;
+  core.String? matchType;
 
   /// The possible values of the dimension.
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   PathReportDimensionValue();
 
@@ -23826,12 +22805,12 @@ class PathReportDimensionValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimensionName != null) 'dimensionName': dimensionName,
-        if (ids != null) 'ids': ids,
-        if (kind != null) 'kind': kind,
-        if (matchType != null) 'matchType': matchType,
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimensionName != null) 'dimensionName': dimensionName!,
+        if (ids != null) 'ids': ids!,
+        if (kind != null) 'kind': kind!,
+        if (matchType != null) 'matchType': matchType!,
+        if (values != null) 'values': values!,
       };
 }
 
@@ -23840,23 +22819,23 @@ class PathReportDimensionValue {
 class PathToConversionReportCompatibleFields {
   /// Conversion dimensions which are compatible to be selected in the
   /// "conversionDimensions" section of the report.
-  core.List<Dimension> conversionDimensions;
+  core.List<Dimension>? conversionDimensions;
 
   /// Custom floodlight variables which are compatible to be selected in the
   /// "customFloodlightVariables" section of the report.
-  core.List<Dimension> customFloodlightVariables;
+  core.List<Dimension>? customFloodlightVariables;
 
   /// The kind of resource this is, in this case
   /// dfareporting#pathToConversionReportCompatibleFields.
-  core.String kind;
+  core.String? kind;
 
   /// Metrics which are compatible to be selected in the "metricNames" section
   /// of the report.
-  core.List<Metric> metrics;
+  core.List<Metric>? metrics;
 
   /// Per-interaction dimensions which are compatible to be selected in the
   /// "perInteractionDimensions" section of the report.
-  core.List<Dimension> perInteractionDimensions;
+  core.List<Dimension>? perInteractionDimensions;
 
   PathToConversionReportCompatibleFields();
 
@@ -23892,19 +22871,20 @@ class PathToConversionReportCompatibleFields {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (conversionDimensions != null)
           'conversionDimensions':
-              conversionDimensions.map((value) => value.toJson()).toList(),
+              conversionDimensions!.map((value) => value.toJson()).toList(),
         if (customFloodlightVariables != null)
-          'customFloodlightVariables':
-              customFloodlightVariables.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'customFloodlightVariables': customFloodlightVariables!
+              .map((value) => value.toJson())
+              .toList(),
+        if (kind != null) 'kind': kind!,
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
         if (perInteractionDimensions != null)
           'perInteractionDimensions':
-              perInteractionDimensions.map((value) => value.toJson()).toList(),
+              perInteractionDimensions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -23913,44 +22893,44 @@ class Placement {
   /// Account ID of this placement.
   ///
   /// This field can be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// Whether this placement opts out of ad blocking.
   ///
   /// When true, ad blocking is disabled for this placement. When false, the
   /// campaign and site settings take effect.
-  core.bool adBlockingOptOut;
+  core.bool? adBlockingOptOut;
 
   /// Additional sizes associated with this placement.
   ///
   /// When inserting or updating a placement, only the size ID field is used.
-  core.List<Size> additionalSizes;
+  core.List<Size>? additionalSizes;
 
   /// Advertiser ID of this placement.
   ///
   /// This field can be left blank.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Dimension value for the ID of the advertiser.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue advertiserIdDimensionValue;
+  DimensionValue? advertiserIdDimensionValue;
 
   /// Whether this placement is archived.
-  core.bool archived;
+  core.bool? archived;
 
   /// Campaign ID of this placement.
   ///
   /// This field is a required field on insertion.
-  core.String campaignId;
+  core.String? campaignId;
 
   /// Dimension value for the ID of the campaign.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue campaignIdDimensionValue;
+  DimensionValue? campaignIdDimensionValue;
 
   /// Comments for this placement.
-  core.String comment;
+  core.String? comment;
 
   /// Placement compatibility.
   ///
@@ -23967,67 +22947,67 @@ class Placement {
   /// - "APP_INTERSTITIAL"
   /// - "IN_STREAM_VIDEO"
   /// - "IN_STREAM_AUDIO"
-  core.String compatibility;
+  core.String? compatibility;
 
   /// ID of the content category assigned to this placement.
-  core.String contentCategoryId;
+  core.String? contentCategoryId;
 
   /// Information about the creation of this placement.
   ///
   /// This is a read-only field.
-  LastModifiedInfo createInfo;
+  LastModifiedInfo? createInfo;
 
   /// Directory site ID of this placement.
   ///
   /// On insert, you must set either this field or the siteId field to specify
   /// the site associated with this placement. This is a required field that is
   /// read-only after insertion.
-  core.String directorySiteId;
+  core.String? directorySiteId;
 
   /// Dimension value for the ID of the directory site.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue directorySiteIdDimensionValue;
+  DimensionValue? directorySiteIdDimensionValue;
 
   /// External ID for this placement.
-  core.String externalId;
+  core.String? externalId;
 
   /// ID of this placement.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Dimension value for the ID of this placement.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue idDimensionValue;
+  DimensionValue? idDimensionValue;
 
   /// Key name of this placement.
   ///
   /// This is a read-only, auto-generated field.
-  core.String keyName;
+  core.String? keyName;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#placement".
-  core.String kind;
+  core.String? kind;
 
   /// Information about the most recent modification of this placement.
   ///
   /// This is a read-only field.
-  LastModifiedInfo lastModifiedInfo;
+  LastModifiedInfo? lastModifiedInfo;
 
   /// Lookback window settings for this placement.
-  LookbackConfiguration lookbackConfiguration;
+  LookbackConfiguration? lookbackConfiguration;
 
   /// Name of this placement.This is a required field and must be less than or
   /// equal to 256 characters long.
-  core.String name;
+  core.String? name;
 
   /// Whether payment was approved for this placement.
   ///
   /// This is a read-only field relevant only to publisher-paid placements.
-  core.bool paymentApproved;
+  core.bool? paymentApproved;
 
   /// Payment source for this placement.
   ///
@@ -24035,24 +23015,24 @@ class Placement {
   /// Possible string values are:
   /// - "PLACEMENT_AGENCY_PAID"
   /// - "PLACEMENT_PUBLISHER_PAID"
-  core.String paymentSource;
+  core.String? paymentSource;
 
   /// ID of this placement's group, if applicable.
-  core.String placementGroupId;
+  core.String? placementGroupId;
 
   /// Dimension value for the ID of the placement group.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue placementGroupIdDimensionValue;
+  DimensionValue? placementGroupIdDimensionValue;
 
   /// ID of the placement strategy assigned to this placement.
-  core.String placementStrategyId;
+  core.String? placementStrategyId;
 
   /// Pricing schedule of this placement.
   ///
   /// This field is required on insertion, specifically subfields startDate,
   /// endDate and pricingType.
-  PricingSchedule pricingSchedule;
+  PricingSchedule? pricingSchedule;
 
   /// Whether this placement is the primary placement of a roadblock (placement
   /// group).
@@ -24061,33 +23041,33 @@ class Placement {
   /// true will automatically set the primary field on the original primary
   /// placement of the roadblock to false, and it will automatically set the
   /// roadblock's primaryPlacementId field to the ID of this placement.
-  core.bool primary;
+  core.bool? primary;
 
   /// Information about the last publisher update.
   ///
   /// This is a read-only field.
-  LastModifiedInfo publisherUpdateInfo;
+  LastModifiedInfo? publisherUpdateInfo;
 
   /// Site ID associated with this placement.
   ///
   /// On insert, you must set either this field or the directorySiteId field to
   /// specify the site associated with this placement. This is a required field
   /// that is read-only after insertion.
-  core.String siteId;
+  core.String? siteId;
 
   /// Dimension value for the ID of the site.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue siteIdDimensionValue;
+  DimensionValue? siteIdDimensionValue;
 
   /// Size associated with this placement.
   ///
   /// When inserting or updating a placement, only the size ID field is used.
   /// This field is required on insertion.
-  Size size;
+  Size? size;
 
   /// Whether creatives assigned to this placement must be SSL-compliant.
-  core.bool sslRequired;
+  core.bool? sslRequired;
 
   /// Third-party placement status.
   /// Possible string values are:
@@ -24097,12 +23077,12 @@ class Placement {
   /// - "ACKNOWLEDGE_REJECTION"
   /// - "ACKNOWLEDGE_ACCEPTANCE"
   /// - "DRAFT"
-  core.String status;
+  core.String? status;
 
   /// Subaccount ID of this placement.
   ///
   /// This field can be left blank.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Tag formats to generate for this placement.
   ///
@@ -24117,10 +23097,10 @@ class Placement {
   /// "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3" -
   /// "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4" - "PLACEMENT_TAG_TRACKING"
   /// - "PLACEMENT_TAG_TRACKING_IFRAME" - "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
-  core.List<core.String> tagFormats;
+  core.List<core.String>? tagFormats;
 
   /// Tag settings for this placement.
-  TagSetting tagSetting;
+  TagSetting? tagSetting;
 
   /// Whether Verification and ActiveView are disabled for in-stream video
   /// creatives for this placement.
@@ -24131,13 +23111,13 @@ class Placement {
   /// Sites.siteSettings.activeViewOptOut which only apply to display ads.
   /// However, Accounts.activeViewOptOut opts out both video traffic, as well as
   /// display ads, from Verification and ActiveView.
-  core.bool videoActiveViewOptOut;
+  core.bool? videoActiveViewOptOut;
 
   /// A collection of settings which affect video creatives served through this
   /// placement.
   ///
   /// Applicable to placements with IN_STREAM_VIDEO compatibility.
-  VideoSettings videoSettings;
+  VideoSettings? videoSettings;
 
   /// VPAID adapter setting for this placement.
   ///
@@ -24150,7 +23130,7 @@ class Placement {
   /// - "FLASH"
   /// - "HTML5"
   /// - "BOTH"
-  core.String vpaidAdapterChoice;
+  core.String? vpaidAdapterChoice;
 
   Placement();
 
@@ -24304,65 +23284,65 @@ class Placement {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (adBlockingOptOut != null) 'adBlockingOptOut': adBlockingOptOut,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (adBlockingOptOut != null) 'adBlockingOptOut': adBlockingOptOut!,
         if (additionalSizes != null)
           'additionalSizes':
-              additionalSizes.map((value) => value.toJson()).toList(),
-        if (advertiserId != null) 'advertiserId': advertiserId,
+              additionalSizes!.map((value) => value.toJson()).toList(),
+        if (advertiserId != null) 'advertiserId': advertiserId!,
         if (advertiserIdDimensionValue != null)
-          'advertiserIdDimensionValue': advertiserIdDimensionValue.toJson(),
-        if (archived != null) 'archived': archived,
-        if (campaignId != null) 'campaignId': campaignId,
+          'advertiserIdDimensionValue': advertiserIdDimensionValue!.toJson(),
+        if (archived != null) 'archived': archived!,
+        if (campaignId != null) 'campaignId': campaignId!,
         if (campaignIdDimensionValue != null)
-          'campaignIdDimensionValue': campaignIdDimensionValue.toJson(),
-        if (comment != null) 'comment': comment,
-        if (compatibility != null) 'compatibility': compatibility,
-        if (contentCategoryId != null) 'contentCategoryId': contentCategoryId,
-        if (createInfo != null) 'createInfo': createInfo.toJson(),
-        if (directorySiteId != null) 'directorySiteId': directorySiteId,
+          'campaignIdDimensionValue': campaignIdDimensionValue!.toJson(),
+        if (comment != null) 'comment': comment!,
+        if (compatibility != null) 'compatibility': compatibility!,
+        if (contentCategoryId != null) 'contentCategoryId': contentCategoryId!,
+        if (createInfo != null) 'createInfo': createInfo!.toJson(),
+        if (directorySiteId != null) 'directorySiteId': directorySiteId!,
         if (directorySiteIdDimensionValue != null)
           'directorySiteIdDimensionValue':
-              directorySiteIdDimensionValue.toJson(),
-        if (externalId != null) 'externalId': externalId,
-        if (id != null) 'id': id,
+              directorySiteIdDimensionValue!.toJson(),
+        if (externalId != null) 'externalId': externalId!,
+        if (id != null) 'id': id!,
         if (idDimensionValue != null)
-          'idDimensionValue': idDimensionValue.toJson(),
-        if (keyName != null) 'keyName': keyName,
-        if (kind != null) 'kind': kind,
+          'idDimensionValue': idDimensionValue!.toJson(),
+        if (keyName != null) 'keyName': keyName!,
+        if (kind != null) 'kind': kind!,
         if (lastModifiedInfo != null)
-          'lastModifiedInfo': lastModifiedInfo.toJson(),
+          'lastModifiedInfo': lastModifiedInfo!.toJson(),
         if (lookbackConfiguration != null)
-          'lookbackConfiguration': lookbackConfiguration.toJson(),
-        if (name != null) 'name': name,
-        if (paymentApproved != null) 'paymentApproved': paymentApproved,
-        if (paymentSource != null) 'paymentSource': paymentSource,
-        if (placementGroupId != null) 'placementGroupId': placementGroupId,
+          'lookbackConfiguration': lookbackConfiguration!.toJson(),
+        if (name != null) 'name': name!,
+        if (paymentApproved != null) 'paymentApproved': paymentApproved!,
+        if (paymentSource != null) 'paymentSource': paymentSource!,
+        if (placementGroupId != null) 'placementGroupId': placementGroupId!,
         if (placementGroupIdDimensionValue != null)
           'placementGroupIdDimensionValue':
-              placementGroupIdDimensionValue.toJson(),
+              placementGroupIdDimensionValue!.toJson(),
         if (placementStrategyId != null)
-          'placementStrategyId': placementStrategyId,
+          'placementStrategyId': placementStrategyId!,
         if (pricingSchedule != null)
-          'pricingSchedule': pricingSchedule.toJson(),
-        if (primary != null) 'primary': primary,
+          'pricingSchedule': pricingSchedule!.toJson(),
+        if (primary != null) 'primary': primary!,
         if (publisherUpdateInfo != null)
-          'publisherUpdateInfo': publisherUpdateInfo.toJson(),
-        if (siteId != null) 'siteId': siteId,
+          'publisherUpdateInfo': publisherUpdateInfo!.toJson(),
+        if (siteId != null) 'siteId': siteId!,
         if (siteIdDimensionValue != null)
-          'siteIdDimensionValue': siteIdDimensionValue.toJson(),
-        if (size != null) 'size': size.toJson(),
-        if (sslRequired != null) 'sslRequired': sslRequired,
-        if (status != null) 'status': status,
-        if (subaccountId != null) 'subaccountId': subaccountId,
-        if (tagFormats != null) 'tagFormats': tagFormats,
-        if (tagSetting != null) 'tagSetting': tagSetting.toJson(),
+          'siteIdDimensionValue': siteIdDimensionValue!.toJson(),
+        if (size != null) 'size': size!.toJson(),
+        if (sslRequired != null) 'sslRequired': sslRequired!,
+        if (status != null) 'status': status!,
+        if (subaccountId != null) 'subaccountId': subaccountId!,
+        if (tagFormats != null) 'tagFormats': tagFormats!,
+        if (tagSetting != null) 'tagSetting': tagSetting!.toJson(),
         if (videoActiveViewOptOut != null)
-          'videoActiveViewOptOut': videoActiveViewOptOut,
-        if (videoSettings != null) 'videoSettings': videoSettings.toJson(),
+          'videoActiveViewOptOut': videoActiveViewOptOut!,
+        if (videoSettings != null) 'videoSettings': videoSettings!.toJson(),
         if (vpaidAdapterChoice != null)
-          'vpaidAdapterChoice': vpaidAdapterChoice,
+          'vpaidAdapterChoice': vpaidAdapterChoice!,
       };
 }
 
@@ -24371,23 +23351,23 @@ class PlacementAssignment {
   /// Whether this placement assignment is active.
   ///
   /// When true, the placement will be included in the ad's rotation.
-  core.bool active;
+  core.bool? active;
 
   /// ID of the placement to be assigned.
   ///
   /// This is a required field.
-  core.String placementId;
+  core.String? placementId;
 
   /// Dimension value for the ID of the placement.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue placementIdDimensionValue;
+  DimensionValue? placementIdDimensionValue;
 
   /// Whether the placement to be assigned requires SSL.
   ///
   /// This is a read-only field that is auto-generated when the ad is inserted
   /// or updated.
-  core.bool sslRequired;
+  core.bool? sslRequired;
 
   PlacementAssignment();
 
@@ -24408,12 +23388,12 @@ class PlacementAssignment {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (active != null) 'active': active,
-        if (placementId != null) 'placementId': placementId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (active != null) 'active': active!,
+        if (placementId != null) 'placementId': placementId!,
         if (placementIdDimensionValue != null)
-          'placementIdDimensionValue': placementIdDimensionValue.toJson(),
-        if (sslRequired != null) 'sslRequired': sslRequired,
+          'placementIdDimensionValue': placementIdDimensionValue!.toJson(),
+        if (sslRequired != null) 'sslRequired': sslRequired!,
       };
 }
 
@@ -24422,86 +23402,86 @@ class PlacementGroup {
   /// Account ID of this placement group.
   ///
   /// This is a read-only field that can be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// Advertiser ID of this placement group.
   ///
   /// This is a required field on insertion.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Dimension value for the ID of the advertiser.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue advertiserIdDimensionValue;
+  DimensionValue? advertiserIdDimensionValue;
 
   /// Whether this placement group is archived.
-  core.bool archived;
+  core.bool? archived;
 
   /// Campaign ID of this placement group.
   ///
   /// This field is required on insertion.
-  core.String campaignId;
+  core.String? campaignId;
 
   /// Dimension value for the ID of the campaign.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue campaignIdDimensionValue;
+  DimensionValue? campaignIdDimensionValue;
 
   /// IDs of placements which are assigned to this placement group.
   ///
   /// This is a read-only, auto-generated field.
-  core.List<core.String> childPlacementIds;
+  core.List<core.String>? childPlacementIds;
 
   /// Comments for this placement group.
-  core.String comment;
+  core.String? comment;
 
   /// ID of the content category assigned to this placement group.
-  core.String contentCategoryId;
+  core.String? contentCategoryId;
 
   /// Information about the creation of this placement group.
   ///
   /// This is a read-only field.
-  LastModifiedInfo createInfo;
+  LastModifiedInfo? createInfo;
 
   /// Directory site ID associated with this placement group.
   ///
   /// On insert, you must set either this field or the site_id field to specify
   /// the site associated with this placement group. This is a required field
   /// that is read-only after insertion.
-  core.String directorySiteId;
+  core.String? directorySiteId;
 
   /// Dimension value for the ID of the directory site.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue directorySiteIdDimensionValue;
+  DimensionValue? directorySiteIdDimensionValue;
 
   /// External ID for this placement.
-  core.String externalId;
+  core.String? externalId;
 
   /// ID of this placement group.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Dimension value for the ID of this placement group.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue idDimensionValue;
+  DimensionValue? idDimensionValue;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#placementGroup".
-  core.String kind;
+  core.String? kind;
 
   /// Information about the most recent modification of this placement group.
   ///
   /// This is a read-only field.
-  LastModifiedInfo lastModifiedInfo;
+  LastModifiedInfo? lastModifiedInfo;
 
   /// Name of this placement group.
   ///
   /// This is a required field and must be less than 256 characters long.
-  core.String name;
+  core.String? name;
 
   /// Type of this placement group.
   ///
@@ -24514,44 +23494,44 @@ class PlacementGroup {
   /// Possible string values are:
   /// - "PLACEMENT_PACKAGE"
   /// - "PLACEMENT_ROADBLOCK"
-  core.String placementGroupType;
+  core.String? placementGroupType;
 
   /// ID of the placement strategy assigned to this placement group.
-  core.String placementStrategyId;
+  core.String? placementStrategyId;
 
   /// Pricing schedule of this placement group.
   ///
   /// This field is required on insertion.
-  PricingSchedule pricingSchedule;
+  PricingSchedule? pricingSchedule;
 
   /// ID of the primary placement, used to calculate the media cost of a
   /// roadblock (placement group).
   ///
   /// Modifying this field will automatically modify the primary field on all
   /// affected roadblock child placements.
-  core.String primaryPlacementId;
+  core.String? primaryPlacementId;
 
   /// Dimension value for the ID of the primary placement.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue primaryPlacementIdDimensionValue;
+  DimensionValue? primaryPlacementIdDimensionValue;
 
   /// Site ID associated with this placement group.
   ///
   /// On insert, you must set either this field or the directorySiteId field to
   /// specify the site associated with this placement group. This is a required
   /// field that is read-only after insertion.
-  core.String siteId;
+  core.String? siteId;
 
   /// Dimension value for the ID of the site.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue siteIdDimensionValue;
+  DimensionValue? siteIdDimensionValue;
 
   /// Subaccount ID of this placement group.
   ///
   /// This is a read-only field that can be left blank.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   PlacementGroup();
 
@@ -24651,46 +23631,46 @@ class PlacementGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (advertiserId != null) 'advertiserId': advertiserId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
         if (advertiserIdDimensionValue != null)
-          'advertiserIdDimensionValue': advertiserIdDimensionValue.toJson(),
-        if (archived != null) 'archived': archived,
-        if (campaignId != null) 'campaignId': campaignId,
+          'advertiserIdDimensionValue': advertiserIdDimensionValue!.toJson(),
+        if (archived != null) 'archived': archived!,
+        if (campaignId != null) 'campaignId': campaignId!,
         if (campaignIdDimensionValue != null)
-          'campaignIdDimensionValue': campaignIdDimensionValue.toJson(),
-        if (childPlacementIds != null) 'childPlacementIds': childPlacementIds,
-        if (comment != null) 'comment': comment,
-        if (contentCategoryId != null) 'contentCategoryId': contentCategoryId,
-        if (createInfo != null) 'createInfo': createInfo.toJson(),
-        if (directorySiteId != null) 'directorySiteId': directorySiteId,
+          'campaignIdDimensionValue': campaignIdDimensionValue!.toJson(),
+        if (childPlacementIds != null) 'childPlacementIds': childPlacementIds!,
+        if (comment != null) 'comment': comment!,
+        if (contentCategoryId != null) 'contentCategoryId': contentCategoryId!,
+        if (createInfo != null) 'createInfo': createInfo!.toJson(),
+        if (directorySiteId != null) 'directorySiteId': directorySiteId!,
         if (directorySiteIdDimensionValue != null)
           'directorySiteIdDimensionValue':
-              directorySiteIdDimensionValue.toJson(),
-        if (externalId != null) 'externalId': externalId,
-        if (id != null) 'id': id,
+              directorySiteIdDimensionValue!.toJson(),
+        if (externalId != null) 'externalId': externalId!,
+        if (id != null) 'id': id!,
         if (idDimensionValue != null)
-          'idDimensionValue': idDimensionValue.toJson(),
-        if (kind != null) 'kind': kind,
+          'idDimensionValue': idDimensionValue!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (lastModifiedInfo != null)
-          'lastModifiedInfo': lastModifiedInfo.toJson(),
-        if (name != null) 'name': name,
+          'lastModifiedInfo': lastModifiedInfo!.toJson(),
+        if (name != null) 'name': name!,
         if (placementGroupType != null)
-          'placementGroupType': placementGroupType,
+          'placementGroupType': placementGroupType!,
         if (placementStrategyId != null)
-          'placementStrategyId': placementStrategyId,
+          'placementStrategyId': placementStrategyId!,
         if (pricingSchedule != null)
-          'pricingSchedule': pricingSchedule.toJson(),
+          'pricingSchedule': pricingSchedule!.toJson(),
         if (primaryPlacementId != null)
-          'primaryPlacementId': primaryPlacementId,
+          'primaryPlacementId': primaryPlacementId!,
         if (primaryPlacementIdDimensionValue != null)
           'primaryPlacementIdDimensionValue':
-              primaryPlacementIdDimensionValue.toJson(),
-        if (siteId != null) 'siteId': siteId,
+              primaryPlacementIdDimensionValue!.toJson(),
+        if (siteId != null) 'siteId': siteId!,
         if (siteIdDimensionValue != null)
-          'siteIdDimensionValue': siteIdDimensionValue.toJson(),
-        if (subaccountId != null) 'subaccountId': subaccountId,
+          'siteIdDimensionValue': siteIdDimensionValue!.toJson(),
+        if (subaccountId != null) 'subaccountId': subaccountId!,
       };
 }
 
@@ -24699,13 +23679,13 @@ class PlacementGroupsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#placementGroupsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Placement group collection.
-  core.List<PlacementGroup> placementGroups;
+  core.List<PlacementGroup>? placementGroups;
 
   PlacementGroupsListResponse();
 
@@ -24724,12 +23704,12 @@ class PlacementGroupsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (placementGroups != null)
           'placementGroups':
-              placementGroups.map((value) => value.toJson()).toList(),
+              placementGroups!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -24738,13 +23718,13 @@ class PlacementStrategiesListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#placementStrategiesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Placement strategy collection.
-  core.List<PlacementStrategy> placementStrategies;
+  core.List<PlacementStrategy>? placementStrategies;
 
   PlacementStrategiesListResponse();
 
@@ -24763,12 +23743,12 @@ class PlacementStrategiesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (placementStrategies != null)
           'placementStrategies':
-              placementStrategies.map((value) => value.toJson()).toList(),
+              placementStrategies!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -24776,23 +23756,23 @@ class PlacementStrategiesListResponse {
 class PlacementStrategy {
   /// Account ID of this placement strategy.This is a read-only field that can
   /// be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// ID of this placement strategy.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#placementStrategy".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this placement strategy.
   ///
   /// This is a required field. It must be less than 256 characters long and
   /// unique among placement strategies of the same account.
-  core.String name;
+  core.String? name;
 
   PlacementStrategy();
 
@@ -24811,21 +23791,21 @@ class PlacementStrategy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
 /// Placement Tag
 class PlacementTag {
   /// Placement ID
-  core.String placementId;
+  core.String? placementId;
 
   /// Tags generated for this placement.
-  core.List<TagData> tagDatas;
+  core.List<TagData>? tagDatas;
 
   PlacementTag();
 
@@ -24841,10 +23821,10 @@ class PlacementTag {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (placementId != null) 'placementId': placementId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (placementId != null) 'placementId': placementId!,
         if (tagDatas != null)
-          'tagDatas': tagDatas.map((value) => value.toJson()).toList(),
+          'tagDatas': tagDatas!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -24853,10 +23833,10 @@ class PlacementsGenerateTagsResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#placementsGenerateTagsResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Set of generated tags for the specified placements.
-  core.List<PlacementTag> placementTags;
+  core.List<PlacementTag>? placementTags;
 
   PlacementsGenerateTagsResponse();
 
@@ -24872,11 +23852,11 @@ class PlacementsGenerateTagsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (placementTags != null)
           'placementTags':
-              placementTags.map((value) => value.toJson()).toList(),
+              placementTags!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -24885,13 +23865,13 @@ class PlacementsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#placementsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Placement collection.
-  core.List<Placement> placements;
+  core.List<Placement>? placements;
 
   PlacementsListResponse();
 
@@ -24910,26 +23890,26 @@ class PlacementsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (placements != null)
-          'placements': placements.map((value) => value.toJson()).toList(),
+          'placements': placements!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Contains information about a platform type that can be targeted by ads.
 class PlatformType {
   /// ID of this platform type.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#platformType".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this platform type.
-  core.String name;
+  core.String? name;
 
   PlatformType();
 
@@ -24945,10 +23925,10 @@ class PlatformType {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -24957,10 +23937,10 @@ class PlatformTypesListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#platformTypesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Platform type collection.
-  core.List<PlatformType> platformTypes;
+  core.List<PlatformType>? platformTypes;
 
   PlatformTypesListResponse();
 
@@ -24976,11 +23956,11 @@ class PlatformTypesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (platformTypes != null)
           'platformTypes':
-              platformTypes.map((value) => value.toJson()).toList(),
+              platformTypes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -24990,36 +23970,36 @@ class PopupWindowProperties {
   ///
   /// This is a read-only field. Applicable to the following creative types: all
   /// RICH_MEDIA and all VPAID
-  Size dimension;
+  Size? dimension;
 
   /// Upper-left corner coordinates of the popup window.
   ///
   /// Applicable if positionType is COORDINATES.
-  OffsetPosition offset;
+  OffsetPosition? offset;
 
   /// Popup window position either centered or at specific coordinate.
   /// Possible string values are:
   /// - "CENTER"
   /// - "COORDINATES"
-  core.String positionType;
+  core.String? positionType;
 
   /// Whether to display the browser address bar.
-  core.bool showAddressBar;
+  core.bool? showAddressBar;
 
   /// Whether to display the browser menu bar.
-  core.bool showMenuBar;
+  core.bool? showMenuBar;
 
   /// Whether to display the browser scroll bar.
-  core.bool showScrollBar;
+  core.bool? showScrollBar;
 
   /// Whether to display the browser status bar.
-  core.bool showStatusBar;
+  core.bool? showStatusBar;
 
   /// Whether to display the browser tool bar.
-  core.bool showToolBar;
+  core.bool? showToolBar;
 
   /// Title of popup window.
-  core.String title;
+  core.String? title;
 
   PopupWindowProperties();
 
@@ -25055,16 +24035,16 @@ class PopupWindowProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dimension != null) 'dimension': dimension.toJson(),
-        if (offset != null) 'offset': offset.toJson(),
-        if (positionType != null) 'positionType': positionType,
-        if (showAddressBar != null) 'showAddressBar': showAddressBar,
-        if (showMenuBar != null) 'showMenuBar': showMenuBar,
-        if (showScrollBar != null) 'showScrollBar': showScrollBar,
-        if (showStatusBar != null) 'showStatusBar': showStatusBar,
-        if (showToolBar != null) 'showToolBar': showToolBar,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dimension != null) 'dimension': dimension!.toJson(),
+        if (offset != null) 'offset': offset!.toJson(),
+        if (positionType != null) 'positionType': positionType!,
+        if (showAddressBar != null) 'showAddressBar': showAddressBar!,
+        if (showMenuBar != null) 'showMenuBar': showMenuBar!,
+        if (showScrollBar != null) 'showScrollBar': showScrollBar!,
+        if (showStatusBar != null) 'showStatusBar': showStatusBar!,
+        if (showToolBar != null) 'showToolBar': showToolBar!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -25073,21 +24053,21 @@ class PostalCode {
   /// Postal code.
   ///
   /// This is equivalent to the id field.
-  core.String code;
+  core.String? code;
 
   /// Country code of the country to which this postal code belongs.
-  core.String countryCode;
+  core.String? countryCode;
 
   /// DART ID of the country to which this postal code belongs.
-  core.String countryDartId;
+  core.String? countryDartId;
 
   /// ID of this postal code.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#postalCode".
-  core.String kind;
+  core.String? kind;
 
   PostalCode();
 
@@ -25109,12 +24089,12 @@ class PostalCode {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (countryCode != null) 'countryCode': countryCode,
-        if (countryDartId != null) 'countryDartId': countryDartId,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (countryDartId != null) 'countryDartId': countryDartId!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -25123,10 +24103,10 @@ class PostalCodesListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#postalCodesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Postal code collection.
-  core.List<PostalCode> postalCodes;
+  core.List<PostalCode>? postalCodes;
 
   PostalCodesListResponse();
 
@@ -25142,10 +24122,10 @@ class PostalCodesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (postalCodes != null)
-          'postalCodes': postalCodes.map((value) => value.toJson()).toList(),
+          'postalCodes': postalCodes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -25156,14 +24136,14 @@ class Pricing {
   /// - "PLANNING_PLACEMENT_CAP_COST_TYPE_NONE"
   /// - "PLANNING_PLACEMENT_CAP_COST_TYPE_MONTHLY"
   /// - "PLANNING_PLACEMENT_CAP_COST_TYPE_CUMULATIVE"
-  core.String capCostType;
-  core.DateTime endDate;
+  core.String? capCostType;
+  core.DateTime? endDate;
 
   /// Flights of this inventory item.
   ///
   /// A flight (a.k.a. pricing period) represents the inventory item pricing
   /// information for a specific period of time.
-  core.List<Flight> flights;
+  core.List<Flight>? flights;
 
   /// Group type of this inventory item if it represents a placement group.
   ///
@@ -25177,7 +24157,7 @@ class Pricing {
   /// Possible string values are:
   /// - "PLANNING_PLACEMENT_GROUP_TYPE_PACKAGE"
   /// - "PLANNING_PLACEMENT_GROUP_TYPE_ROADBLOCK"
-  core.String groupType;
+  core.String? groupType;
 
   /// Pricing type of this inventory item.
   /// Possible string values are:
@@ -25189,8 +24169,8 @@ class Pricing {
   /// - "PLANNING_PLACEMENT_PRICING_TYPE_FLAT_RATE_IMPRESSIONS"
   /// - "PLANNING_PLACEMENT_PRICING_TYPE_FLAT_RATE_CLICKS"
   /// - "PLANNING_PLACEMENT_PRICING_TYPE_CPM_ACTIVEVIEW"
-  core.String pricingType;
-  core.DateTime startDate;
+  core.String? pricingType;
+  core.DateTime? startDate;
 
   Pricing();
 
@@ -25218,18 +24198,18 @@ class Pricing {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (capCostType != null) 'capCostType': capCostType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (capCostType != null) 'capCostType': capCostType!,
         if (endDate != null)
           'endDate':
-              "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}",
+              "${(endDate!).year.toString().padLeft(4, '0')}-${(endDate!).month.toString().padLeft(2, '0')}-${(endDate!).day.toString().padLeft(2, '0')}",
         if (flights != null)
-          'flights': flights.map((value) => value.toJson()).toList(),
-        if (groupType != null) 'groupType': groupType,
-        if (pricingType != null) 'pricingType': pricingType,
+          'flights': flights!.map((value) => value.toJson()).toList(),
+        if (groupType != null) 'groupType': groupType!,
+        if (pricingType != null) 'pricingType': pricingType!,
         if (startDate != null)
           'startDate':
-              "${(startDate).year.toString().padLeft(4, '0')}-${(startDate).month.toString().padLeft(2, '0')}-${(startDate).day.toString().padLeft(2, '0')}",
+              "${(startDate!).year.toString().padLeft(4, '0')}-${(startDate!).month.toString().padLeft(2, '0')}-${(startDate!).day.toString().padLeft(2, '0')}",
       };
 }
 
@@ -25240,22 +24220,22 @@ class PricingSchedule {
   /// - "CAP_COST_NONE"
   /// - "CAP_COST_MONTHLY"
   /// - "CAP_COST_CUMULATIVE"
-  core.String capCostOption;
-  core.DateTime endDate;
+  core.String? capCostOption;
+  core.DateTime? endDate;
 
   /// Whether this placement is flighted.
   ///
   /// If true, pricing periods will be computed automatically.
-  core.bool flighted;
+  core.bool? flighted;
 
   /// Floodlight activity ID associated with this placement.
   ///
   /// This field should be set when placement pricing type is set to
   /// PRICING_TYPE_CPA.
-  core.String floodlightActivityId;
+  core.String? floodlightActivityId;
 
   /// Pricing periods for this placement.
-  core.List<PricingSchedulePricingPeriod> pricingPeriods;
+  core.List<PricingSchedulePricingPeriod>? pricingPeriods;
 
   /// Placement pricing type.
   ///
@@ -25267,9 +24247,9 @@ class PricingSchedule {
   /// - "PRICING_TYPE_FLAT_RATE_IMPRESSIONS"
   /// - "PRICING_TYPE_FLAT_RATE_CLICKS"
   /// - "PRICING_TYPE_CPM_ACTIVEVIEW"
-  core.String pricingType;
-  core.DateTime startDate;
-  core.DateTime testingStartDate;
+  core.String? pricingType;
+  core.DateTime? startDate;
+  core.DateTime? testingStartDate;
 
   PricingSchedule();
 
@@ -25305,45 +24285,45 @@ class PricingSchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (capCostOption != null) 'capCostOption': capCostOption,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (capCostOption != null) 'capCostOption': capCostOption!,
         if (endDate != null)
           'endDate':
-              "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}",
-        if (flighted != null) 'flighted': flighted,
+              "${(endDate!).year.toString().padLeft(4, '0')}-${(endDate!).month.toString().padLeft(2, '0')}-${(endDate!).day.toString().padLeft(2, '0')}",
+        if (flighted != null) 'flighted': flighted!,
         if (floodlightActivityId != null)
-          'floodlightActivityId': floodlightActivityId,
+          'floodlightActivityId': floodlightActivityId!,
         if (pricingPeriods != null)
           'pricingPeriods':
-              pricingPeriods.map((value) => value.toJson()).toList(),
-        if (pricingType != null) 'pricingType': pricingType,
+              pricingPeriods!.map((value) => value.toJson()).toList(),
+        if (pricingType != null) 'pricingType': pricingType!,
         if (startDate != null)
           'startDate':
-              "${(startDate).year.toString().padLeft(4, '0')}-${(startDate).month.toString().padLeft(2, '0')}-${(startDate).day.toString().padLeft(2, '0')}",
+              "${(startDate!).year.toString().padLeft(4, '0')}-${(startDate!).month.toString().padLeft(2, '0')}-${(startDate!).day.toString().padLeft(2, '0')}",
         if (testingStartDate != null)
           'testingStartDate':
-              "${(testingStartDate).year.toString().padLeft(4, '0')}-${(testingStartDate).month.toString().padLeft(2, '0')}-${(testingStartDate).day.toString().padLeft(2, '0')}",
+              "${(testingStartDate!).year.toString().padLeft(4, '0')}-${(testingStartDate!).month.toString().padLeft(2, '0')}-${(testingStartDate!).day.toString().padLeft(2, '0')}",
       };
 }
 
 /// Pricing Period
 class PricingSchedulePricingPeriod {
-  core.DateTime endDate;
+  core.DateTime? endDate;
 
   /// Comments for this pricing period.
-  core.String pricingComment;
+  core.String? pricingComment;
 
   /// Rate or cost of this pricing period in nanos (i.e., multipled by
   /// 1000000000).
   ///
   /// Acceptable values are 0 to 1000000000000000000, inclusive.
-  core.String rateOrCostNanos;
-  core.DateTime startDate;
+  core.String? rateOrCostNanos;
+  core.DateTime? startDate;
 
   /// Units of this pricing period.
   ///
   /// Acceptable values are 0 to 10000000000, inclusive.
-  core.String units;
+  core.String? units;
 
   PricingSchedulePricingPeriod();
 
@@ -25365,26 +24345,26 @@ class PricingSchedulePricingPeriod {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (endDate != null)
           'endDate':
-              "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}",
-        if (pricingComment != null) 'pricingComment': pricingComment,
-        if (rateOrCostNanos != null) 'rateOrCostNanos': rateOrCostNanos,
+              "${(endDate!).year.toString().padLeft(4, '0')}-${(endDate!).month.toString().padLeft(2, '0')}-${(endDate!).day.toString().padLeft(2, '0')}",
+        if (pricingComment != null) 'pricingComment': pricingComment!,
+        if (rateOrCostNanos != null) 'rateOrCostNanos': rateOrCostNanos!,
         if (startDate != null)
           'startDate':
-              "${(startDate).year.toString().padLeft(4, '0')}-${(startDate).month.toString().padLeft(2, '0')}-${(startDate).day.toString().padLeft(2, '0')}",
-        if (units != null) 'units': units,
+              "${(startDate!).year.toString().padLeft(4, '0')}-${(startDate!).month.toString().padLeft(2, '0')}-${(startDate!).day.toString().padLeft(2, '0')}",
+        if (units != null) 'units': units!,
       };
 }
 
 /// Contains properties of a Planning project.
 class Project {
   /// Account ID of this project.
-  core.String accountId;
+  core.String? accountId;
 
   /// Advertiser ID of this project.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Audience age group of this project.
   /// Possible string values are:
@@ -25395,71 +24375,71 @@ class Project {
   /// - "PLANNING_AUDIENCE_AGE_55_64"
   /// - "PLANNING_AUDIENCE_AGE_65_OR_MORE"
   /// - "PLANNING_AUDIENCE_AGE_UNKNOWN"
-  core.String audienceAgeGroup;
+  core.String? audienceAgeGroup;
 
   /// Audience gender of this project.
   /// Possible string values are:
   /// - "PLANNING_AUDIENCE_GENDER_MALE"
   /// - "PLANNING_AUDIENCE_GENDER_FEMALE"
-  core.String audienceGender;
+  core.String? audienceGender;
 
   /// Budget of this project in the currency specified by the current account.
   ///
   /// The value stored in this field represents only the non-fractional amount.
   /// For example, for USD, the smallest value that can be represented by this
   /// field is 1 US dollar.
-  core.String budget;
+  core.String? budget;
 
   /// Client billing code of this project.
-  core.String clientBillingCode;
+  core.String? clientBillingCode;
 
   /// Name of the project client.
-  core.String clientName;
-  core.DateTime endDate;
+  core.String? clientName;
+  core.DateTime? endDate;
 
   /// ID of this project.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#project".
-  core.String kind;
+  core.String? kind;
 
   /// Information about the most recent modification of this project.
-  LastModifiedInfo lastModifiedInfo;
+  LastModifiedInfo? lastModifiedInfo;
 
   /// Name of this project.
-  core.String name;
+  core.String? name;
 
   /// Overview of this project.
-  core.String overview;
-  core.DateTime startDate;
+  core.String? overview;
+  core.DateTime? startDate;
 
   /// Subaccount ID of this project.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Number of clicks that the advertiser is targeting.
-  core.String targetClicks;
+  core.String? targetClicks;
 
   /// Number of conversions that the advertiser is targeting.
-  core.String targetConversions;
+  core.String? targetConversions;
 
   /// CPA that the advertiser is targeting.
-  core.String targetCpaNanos;
+  core.String? targetCpaNanos;
 
   /// CPC that the advertiser is targeting.
-  core.String targetCpcNanos;
+  core.String? targetCpcNanos;
 
   /// vCPM from Active View that the advertiser is targeting.
-  core.String targetCpmActiveViewNanos;
+  core.String? targetCpmActiveViewNanos;
 
   /// CPM that the advertiser is targeting.
-  core.String targetCpmNanos;
+  core.String? targetCpmNanos;
 
   /// Number of impressions that the advertiser is targeting.
-  core.String targetImpressions;
+  core.String? targetImpressions;
 
   Project();
 
@@ -25534,35 +24514,35 @@ class Project {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (advertiserId != null) 'advertiserId': advertiserId,
-        if (audienceAgeGroup != null) 'audienceAgeGroup': audienceAgeGroup,
-        if (audienceGender != null) 'audienceGender': audienceGender,
-        if (budget != null) 'budget': budget,
-        if (clientBillingCode != null) 'clientBillingCode': clientBillingCode,
-        if (clientName != null) 'clientName': clientName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (audienceAgeGroup != null) 'audienceAgeGroup': audienceAgeGroup!,
+        if (audienceGender != null) 'audienceGender': audienceGender!,
+        if (budget != null) 'budget': budget!,
+        if (clientBillingCode != null) 'clientBillingCode': clientBillingCode!,
+        if (clientName != null) 'clientName': clientName!,
         if (endDate != null)
           'endDate':
-              "${(endDate).year.toString().padLeft(4, '0')}-${(endDate).month.toString().padLeft(2, '0')}-${(endDate).day.toString().padLeft(2, '0')}",
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+              "${(endDate!).year.toString().padLeft(4, '0')}-${(endDate!).month.toString().padLeft(2, '0')}-${(endDate!).day.toString().padLeft(2, '0')}",
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
         if (lastModifiedInfo != null)
-          'lastModifiedInfo': lastModifiedInfo.toJson(),
-        if (name != null) 'name': name,
-        if (overview != null) 'overview': overview,
+          'lastModifiedInfo': lastModifiedInfo!.toJson(),
+        if (name != null) 'name': name!,
+        if (overview != null) 'overview': overview!,
         if (startDate != null)
           'startDate':
-              "${(startDate).year.toString().padLeft(4, '0')}-${(startDate).month.toString().padLeft(2, '0')}-${(startDate).day.toString().padLeft(2, '0')}",
-        if (subaccountId != null) 'subaccountId': subaccountId,
-        if (targetClicks != null) 'targetClicks': targetClicks,
-        if (targetConversions != null) 'targetConversions': targetConversions,
-        if (targetCpaNanos != null) 'targetCpaNanos': targetCpaNanos,
-        if (targetCpcNanos != null) 'targetCpcNanos': targetCpcNanos,
+              "${(startDate!).year.toString().padLeft(4, '0')}-${(startDate!).month.toString().padLeft(2, '0')}-${(startDate!).day.toString().padLeft(2, '0')}",
+        if (subaccountId != null) 'subaccountId': subaccountId!,
+        if (targetClicks != null) 'targetClicks': targetClicks!,
+        if (targetConversions != null) 'targetConversions': targetConversions!,
+        if (targetCpaNanos != null) 'targetCpaNanos': targetCpaNanos!,
+        if (targetCpcNanos != null) 'targetCpcNanos': targetCpcNanos!,
         if (targetCpmActiveViewNanos != null)
-          'targetCpmActiveViewNanos': targetCpmActiveViewNanos,
-        if (targetCpmNanos != null) 'targetCpmNanos': targetCpmNanos,
-        if (targetImpressions != null) 'targetImpressions': targetImpressions,
+          'targetCpmActiveViewNanos': targetCpmActiveViewNanos!,
+        if (targetCpmNanos != null) 'targetCpmNanos': targetCpmNanos!,
+        if (targetImpressions != null) 'targetImpressions': targetImpressions!,
       };
 }
 
@@ -25571,13 +24551,13 @@ class ProjectsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#projectsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Project collection.
-  core.List<Project> projects;
+  core.List<Project>? projects;
 
   ProjectsListResponse();
 
@@ -25596,11 +24576,11 @@ class ProjectsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (projects != null)
-          'projects': projects.map((value) => value.toJson()).toList(),
+          'projects': projects!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -25609,27 +24589,27 @@ class ProjectsListResponse {
 class ReachReportCompatibleFields {
   /// Dimensions which are compatible to be selected in the "dimensionFilters"
   /// section of the report.
-  core.List<Dimension> dimensionFilters;
+  core.List<Dimension>? dimensionFilters;
 
   /// Dimensions which are compatible to be selected in the "dimensions" section
   /// of the report.
-  core.List<Dimension> dimensions;
+  core.List<Dimension>? dimensions;
 
   /// The kind of resource this is, in this case
   /// dfareporting#reachReportCompatibleFields.
-  core.String kind;
+  core.String? kind;
 
   /// Metrics which are compatible to be selected in the "metricNames" section
   /// of the report.
-  core.List<Metric> metrics;
+  core.List<Metric>? metrics;
 
   /// Metrics which are compatible to be selected as activity metrics to pivot
   /// on in the "activities" section of the report.
-  core.List<Metric> pivotedActivityMetrics;
+  core.List<Metric>? pivotedActivityMetrics;
 
   /// Metrics which are compatible to be selected in the
   /// "reachByFrequencyMetricNames" section of the report.
-  core.List<Metric> reachByFrequencyMetrics;
+  core.List<Metric>? reachByFrequencyMetrics;
 
   ReachReportCompatibleFields();
 
@@ -25669,21 +24649,21 @@ class ReachReportCompatibleFields {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensionFilters != null)
           'dimensionFilters':
-              dimensionFilters.map((value) => value.toJson()).toList(),
+              dimensionFilters!.map((value) => value.toJson()).toList(),
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
         if (pivotedActivityMetrics != null)
           'pivotedActivityMetrics':
-              pivotedActivityMetrics.map((value) => value.toJson()).toList(),
+              pivotedActivityMetrics!.map((value) => value.toJson()).toList(),
         if (reachByFrequencyMetrics != null)
           'reachByFrequencyMetrics':
-              reachByFrequencyMetrics.map((value) => value.toJson()).toList(),
+              reachByFrequencyMetrics!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -25693,13 +24673,13 @@ class Recipient {
   /// Possible string values are:
   /// - "LINK"
   /// - "ATTACHMENT"
-  core.String deliveryType;
+  core.String? deliveryType;
 
   /// The email address of the recipient.
-  core.String email;
+  core.String? email;
 
   /// The kind of resource this is, in this case dfareporting#recipient.
-  core.String kind;
+  core.String? kind;
 
   Recipient();
 
@@ -25715,34 +24695,34 @@ class Recipient {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deliveryType != null) 'deliveryType': deliveryType,
-        if (email != null) 'email': email,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deliveryType != null) 'deliveryType': deliveryType!,
+        if (email != null) 'email': email!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Contains information about a region that can be targeted by ads.
 class Region {
   /// Country code of the country to which this region belongs.
-  core.String countryCode;
+  core.String? countryCode;
 
   /// DART ID of the country to which this region belongs.
-  core.String countryDartId;
+  core.String? countryDartId;
 
   /// DART ID of this region.
-  core.String dartId;
+  core.String? dartId;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#region".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this region.
-  core.String name;
+  core.String? name;
 
   /// Region code.
-  core.String regionCode;
+  core.String? regionCode;
 
   Region();
 
@@ -25767,13 +24747,13 @@ class Region {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (countryCode != null) 'countryCode': countryCode,
-        if (countryDartId != null) 'countryDartId': countryDartId,
-        if (dartId != null) 'dartId': dartId,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (regionCode != null) 'regionCode': regionCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (countryDartId != null) 'countryDartId': countryDartId!,
+        if (dartId != null) 'dartId': dartId!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (regionCode != null) 'regionCode': regionCode!,
       };
 }
 
@@ -25782,10 +24762,10 @@ class RegionsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#regionsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Region collection.
-  core.List<Region> regions;
+  core.List<Region>? regions;
 
   RegionsListResponse();
 
@@ -25801,10 +24781,10 @@ class RegionsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (regions != null)
-          'regions': regions.map((value) => value.toJson()).toList(),
+          'regions': regions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -25821,47 +24801,47 @@ class RemarketingList {
   ///
   /// This is a read-only, auto-generated field that is only returned in GET
   /// requests.
-  core.String accountId;
+  core.String? accountId;
 
   /// Whether this remarketing list is active.
-  core.bool active;
+  core.bool? active;
 
   /// Dimension value for the advertiser ID that owns this remarketing list.
   ///
   /// This is a required field.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Dimension value for the ID of the advertiser.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue advertiserIdDimensionValue;
+  DimensionValue? advertiserIdDimensionValue;
 
   /// Remarketing list description.
-  core.String description;
+  core.String? description;
 
   /// Remarketing list ID.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#remarketingList".
-  core.String kind;
+  core.String? kind;
 
   /// Number of days that a user should remain in the remarketing list without
   /// an impression.
   ///
   /// Acceptable values are 1 to 540, inclusive.
-  core.String lifeSpan;
+  core.String? lifeSpan;
 
   /// Rule used to populate the remarketing list with users.
-  ListPopulationRule listPopulationRule;
+  ListPopulationRule? listPopulationRule;
 
   /// Number of users currently in the list.
   ///
   /// This is a read-only field.
-  core.String listSize;
+  core.String? listSize;
 
   /// Product from which this remarketing list was originated.
   /// Possible string values are:
@@ -25876,18 +24856,18 @@ class RemarketingList {
   /// - "REMARKETING_LIST_SOURCE_GPLUS"
   /// - "REMARKETING_LIST_SOURCE_DMP"
   /// - "REMARKETING_LIST_SOURCE_PLAY_STORE"
-  core.String listSource;
+  core.String? listSource;
 
   /// Name of the remarketing list.
   ///
   /// This is a required field. Must be no greater than 128 characters long.
-  core.String name;
+  core.String? name;
 
   /// Subaccount ID of this remarketing list.
   ///
   /// This is a read-only, auto-generated field that is only returned in GET
   /// requests.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   RemarketingList();
 
@@ -25936,22 +24916,22 @@ class RemarketingList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (active != null) 'active': active,
-        if (advertiserId != null) 'advertiserId': advertiserId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (active != null) 'active': active!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
         if (advertiserIdDimensionValue != null)
-          'advertiserIdDimensionValue': advertiserIdDimensionValue.toJson(),
-        if (description != null) 'description': description,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (lifeSpan != null) 'lifeSpan': lifeSpan,
+          'advertiserIdDimensionValue': advertiserIdDimensionValue!.toJson(),
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (lifeSpan != null) 'lifeSpan': lifeSpan!,
         if (listPopulationRule != null)
-          'listPopulationRule': listPopulationRule.toJson(),
-        if (listSize != null) 'listSize': listSize,
-        if (listSource != null) 'listSource': listSource,
-        if (name != null) 'name': name,
-        if (subaccountId != null) 'subaccountId': subaccountId,
+          'listPopulationRule': listPopulationRule!.toJson(),
+        if (listSize != null) 'listSize': listSize!,
+        if (listSource != null) 'listSource': listSource!,
+        if (name != null) 'name': name!,
+        if (subaccountId != null) 'subaccountId': subaccountId!,
       };
 }
 
@@ -25964,18 +24944,18 @@ class RemarketingListShare {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#remarketingListShare".
-  core.String kind;
+  core.String? kind;
 
   /// Remarketing list ID.
   ///
   /// This is a read-only, auto-generated field.
-  core.String remarketingListId;
+  core.String? remarketingListId;
 
   /// Accounts that the remarketing list is shared with.
-  core.List<core.String> sharedAccountIds;
+  core.List<core.String>? sharedAccountIds;
 
   /// Advertisers that the remarketing list is shared with.
-  core.List<core.String> sharedAdvertiserIds;
+  core.List<core.String>? sharedAdvertiserIds;
 
   RemarketingListShare();
 
@@ -25998,12 +24978,12 @@ class RemarketingListShare {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (remarketingListId != null) 'remarketingListId': remarketingListId,
-        if (sharedAccountIds != null) 'sharedAccountIds': sharedAccountIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (remarketingListId != null) 'remarketingListId': remarketingListId!,
+        if (sharedAccountIds != null) 'sharedAccountIds': sharedAccountIds!,
         if (sharedAdvertiserIds != null)
-          'sharedAdvertiserIds': sharedAdvertiserIds,
+          'sharedAdvertiserIds': sharedAdvertiserIds!,
       };
 }
 
@@ -26012,13 +24992,13 @@ class RemarketingListsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#remarketingListsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Remarketing list collection.
-  core.List<RemarketingList> remarketingLists;
+  core.List<RemarketingList>? remarketingLists;
 
   RemarketingListsListResponse();
 
@@ -26037,37 +25017,37 @@ class RemarketingListsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (remarketingLists != null)
           'remarketingLists':
-              remarketingLists.map((value) => value.toJson()).toList(),
+              remarketingLists!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The report criteria for a report of type "STANDARD".
 class ReportCriteria {
   /// Activity group.
-  Activities activities;
+  Activities? activities;
 
   /// Custom Rich Media Events group.
-  CustomRichMediaEvents customRichMediaEvents;
+  CustomRichMediaEvents? customRichMediaEvents;
 
   /// The date range for which this report should be run.
-  DateRange dateRange;
+  DateRange? dateRange;
 
   /// The list of filters on which dimensions are filtered.
   ///
   /// Filters for different dimensions are ANDed, filters for the same dimension
   /// are grouped together and ORed.
-  core.List<DimensionValue> dimensionFilters;
+  core.List<DimensionValue>? dimensionFilters;
 
   /// The list of standard dimensions the report should include.
-  core.List<SortedDimension> dimensions;
+  core.List<SortedDimension>? dimensions;
 
   /// The list of names of metrics the report should include.
-  core.List<core.String> metricNames;
+  core.List<core.String>? metricNames;
 
   ReportCriteria();
 
@@ -26104,27 +25084,27 @@ class ReportCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activities != null) 'activities': activities.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activities != null) 'activities': activities!.toJson(),
         if (customRichMediaEvents != null)
-          'customRichMediaEvents': customRichMediaEvents.toJson(),
-        if (dateRange != null) 'dateRange': dateRange.toJson(),
+          'customRichMediaEvents': customRichMediaEvents!.toJson(),
+        if (dateRange != null) 'dateRange': dateRange!.toJson(),
         if (dimensionFilters != null)
           'dimensionFilters':
-              dimensionFilters.map((value) => value.toJson()).toList(),
+              dimensionFilters!.map((value) => value.toJson()).toList(),
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
-        if (metricNames != null) 'metricNames': metricNames,
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
+        if (metricNames != null) 'metricNames': metricNames!,
       };
 }
 
 /// The report criteria for a report of type "CROSS_DIMENSION_REACH".
 class ReportCrossDimensionReachCriteria {
   /// The list of dimensions the report should include.
-  core.List<SortedDimension> breakdown;
+  core.List<SortedDimension>? breakdown;
 
   /// The date range this report should be run for.
-  DateRange dateRange;
+  DateRange? dateRange;
 
   /// The dimension option.
   /// Possible string values are:
@@ -26132,21 +25112,21 @@ class ReportCrossDimensionReachCriteria {
   /// - "CAMPAIGN"
   /// - "SITE_BY_ADVERTISER"
   /// - "SITE_BY_CAMPAIGN"
-  core.String dimension;
+  core.String? dimension;
 
   /// The list of filters on which dimensions are filtered.
-  core.List<DimensionValue> dimensionFilters;
+  core.List<DimensionValue>? dimensionFilters;
 
   /// The list of names of metrics the report should include.
-  core.List<core.String> metricNames;
+  core.List<core.String>? metricNames;
 
   /// The list of names of overlap metrics the report should include.
-  core.List<core.String> overlapMetricNames;
+  core.List<core.String>? overlapMetricNames;
 
   /// Whether the report is pivoted or not.
   ///
   /// Defaults to true.
-  core.bool pivoted;
+  core.bool? pivoted;
 
   ReportCrossDimensionReachCriteria();
 
@@ -26185,37 +25165,37 @@ class ReportCrossDimensionReachCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (breakdown != null)
-          'breakdown': breakdown.map((value) => value.toJson()).toList(),
-        if (dateRange != null) 'dateRange': dateRange.toJson(),
-        if (dimension != null) 'dimension': dimension,
+          'breakdown': breakdown!.map((value) => value.toJson()).toList(),
+        if (dateRange != null) 'dateRange': dateRange!.toJson(),
+        if (dimension != null) 'dimension': dimension!,
         if (dimensionFilters != null)
           'dimensionFilters':
-              dimensionFilters.map((value) => value.toJson()).toList(),
-        if (metricNames != null) 'metricNames': metricNames,
+              dimensionFilters!.map((value) => value.toJson()).toList(),
+        if (metricNames != null) 'metricNames': metricNames!,
         if (overlapMetricNames != null)
-          'overlapMetricNames': overlapMetricNames,
-        if (pivoted != null) 'pivoted': pivoted,
+          'overlapMetricNames': overlapMetricNames!,
+        if (pivoted != null) 'pivoted': pivoted!,
       };
 }
 
 /// The report's email delivery settings.
 class ReportDelivery {
   /// Whether the report should be emailed to the report owner.
-  core.bool emailOwner;
+  core.bool? emailOwner;
 
   /// The type of delivery for the owner to receive, if enabled.
   /// Possible string values are:
   /// - "LINK"
   /// - "ATTACHMENT"
-  core.String emailOwnerDeliveryType;
+  core.String? emailOwnerDeliveryType;
 
   /// The message to be sent with each email.
-  core.String message;
+  core.String? message;
 
   /// The list of recipients to which to email the report.
-  core.List<Recipient> recipients;
+  core.List<Recipient>? recipients;
 
   ReportDelivery();
 
@@ -26237,20 +25217,20 @@ class ReportDelivery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (emailOwner != null) 'emailOwner': emailOwner,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (emailOwner != null) 'emailOwner': emailOwner!,
         if (emailOwnerDeliveryType != null)
-          'emailOwnerDeliveryType': emailOwnerDeliveryType,
-        if (message != null) 'message': message,
+          'emailOwnerDeliveryType': emailOwnerDeliveryType!,
+        if (message != null) 'message': message!,
         if (recipients != null)
-          'recipients': recipients.map((value) => value.toJson()).toList(),
+          'recipients': recipients!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The properties of the report.
 class ReportFloodlightCriteriaReportProperties {
   /// Include conversions that have no cookie, but do have an exposure path.
-  core.bool includeAttributedIPConversions;
+  core.bool? includeAttributedIPConversions;
 
   /// Include conversions of users with a DoubleClick cookie but without an
   /// exposure.
@@ -26258,13 +25238,13 @@ class ReportFloodlightCriteriaReportProperties {
   /// That means the user did not click or see an ad from the advertiser within
   /// the Floodlight group, or that the interaction happened outside the
   /// lookback window.
-  core.bool includeUnattributedCookieConversions;
+  core.bool? includeUnattributedCookieConversions;
 
   /// Include conversions that have no associated cookies and no exposures.
   ///
   /// It’s therefore impossible to know how the user was exposed to your ads
   /// during the lookback window prior to a conversion.
-  core.bool includeUnattributedIPConversions;
+  core.bool? includeUnattributedIPConversions;
 
   ReportFloodlightCriteriaReportProperties();
 
@@ -26283,45 +25263,45 @@ class ReportFloodlightCriteriaReportProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (includeAttributedIPConversions != null)
-          'includeAttributedIPConversions': includeAttributedIPConversions,
+          'includeAttributedIPConversions': includeAttributedIPConversions!,
         if (includeUnattributedCookieConversions != null)
           'includeUnattributedCookieConversions':
-              includeUnattributedCookieConversions,
+              includeUnattributedCookieConversions!,
         if (includeUnattributedIPConversions != null)
-          'includeUnattributedIPConversions': includeUnattributedIPConversions,
+          'includeUnattributedIPConversions': includeUnattributedIPConversions!,
       };
 }
 
 /// The report criteria for a report of type "FLOODLIGHT".
 class ReportFloodlightCriteria {
   /// The list of custom rich media events to include.
-  core.List<DimensionValue> customRichMediaEvents;
+  core.List<DimensionValue>? customRichMediaEvents;
 
   /// The date range this report should be run for.
-  DateRange dateRange;
+  DateRange? dateRange;
 
   /// The list of filters on which dimensions are filtered.
   ///
   /// Filters for different dimensions are ANDed, filters for the same dimension
   /// are grouped together and ORed.
-  core.List<DimensionValue> dimensionFilters;
+  core.List<DimensionValue>? dimensionFilters;
 
   /// The list of dimensions the report should include.
-  core.List<SortedDimension> dimensions;
+  core.List<SortedDimension>? dimensions;
 
   /// The floodlight ID for which to show data in this report.
   ///
   /// All advertisers associated with that ID will automatically be added. The
   /// dimension of the value needs to be 'dfa:floodlightConfigId'.
-  DimensionValue floodlightConfigId;
+  DimensionValue? floodlightConfigId;
 
   /// The list of names of metrics the report should include.
-  core.List<core.String> metricNames;
+  core.List<core.String>? metricNames;
 
   /// The properties of the report.
-  ReportFloodlightCriteriaReportProperties reportProperties;
+  ReportFloodlightCriteriaReportProperties? reportProperties;
 
   ReportFloodlightCriteria();
 
@@ -26363,49 +25343,49 @@ class ReportFloodlightCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (customRichMediaEvents != null)
           'customRichMediaEvents':
-              customRichMediaEvents.map((value) => value.toJson()).toList(),
-        if (dateRange != null) 'dateRange': dateRange.toJson(),
+              customRichMediaEvents!.map((value) => value.toJson()).toList(),
+        if (dateRange != null) 'dateRange': dateRange!.toJson(),
         if (dimensionFilters != null)
           'dimensionFilters':
-              dimensionFilters.map((value) => value.toJson()).toList(),
+              dimensionFilters!.map((value) => value.toJson()).toList(),
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
         if (floodlightConfigId != null)
-          'floodlightConfigId': floodlightConfigId.toJson(),
-        if (metricNames != null) 'metricNames': metricNames,
+          'floodlightConfigId': floodlightConfigId!.toJson(),
+        if (metricNames != null) 'metricNames': metricNames!,
         if (reportProperties != null)
-          'reportProperties': reportProperties.toJson(),
+          'reportProperties': reportProperties!.toJson(),
       };
 }
 
 /// The report criteria for a report of type "PATH_ATTRIBUTION".
 class ReportPathAttributionCriteria {
   /// The list of 'dfa:activity' values to filter on.
-  core.List<DimensionValue> activityFilters;
+  core.List<DimensionValue>? activityFilters;
 
   /// Channel Grouping.
-  ChannelGrouping customChannelGrouping;
+  ChannelGrouping? customChannelGrouping;
 
   /// The date range this report should be run for.
-  DateRange dateRange;
+  DateRange? dateRange;
 
   /// The list of dimensions the report should include.
-  core.List<SortedDimension> dimensions;
+  core.List<SortedDimension>? dimensions;
 
   /// The floodlight ID for which to show data in this report.
   ///
   /// All advertisers associated with that ID will automatically be added. The
   /// dimension of the value needs to be 'dfa:floodlightConfigId'.
-  DimensionValue floodlightConfigId;
+  DimensionValue? floodlightConfigId;
 
   /// The list of names of metrics the report should include.
-  core.List<core.String> metricNames;
+  core.List<core.String>? metricNames;
 
   /// Path Filters.
-  core.List<PathFilter> pathFilters;
+  core.List<PathFilter>? pathFilters;
 
   ReportPathAttributionCriteria();
 
@@ -26448,48 +25428,48 @@ class ReportPathAttributionCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (activityFilters != null)
           'activityFilters':
-              activityFilters.map((value) => value.toJson()).toList(),
+              activityFilters!.map((value) => value.toJson()).toList(),
         if (customChannelGrouping != null)
-          'customChannelGrouping': customChannelGrouping.toJson(),
-        if (dateRange != null) 'dateRange': dateRange.toJson(),
+          'customChannelGrouping': customChannelGrouping!.toJson(),
+        if (dateRange != null) 'dateRange': dateRange!.toJson(),
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
         if (floodlightConfigId != null)
-          'floodlightConfigId': floodlightConfigId.toJson(),
-        if (metricNames != null) 'metricNames': metricNames,
+          'floodlightConfigId': floodlightConfigId!.toJson(),
+        if (metricNames != null) 'metricNames': metricNames!,
         if (pathFilters != null)
-          'pathFilters': pathFilters.map((value) => value.toJson()).toList(),
+          'pathFilters': pathFilters!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The report criteria for a report of type "PATH".
 class ReportPathCriteria {
   /// The list of 'dfa:activity' values to filter on.
-  core.List<DimensionValue> activityFilters;
+  core.List<DimensionValue>? activityFilters;
 
   /// Channel Grouping.
-  ChannelGrouping customChannelGrouping;
+  ChannelGrouping? customChannelGrouping;
 
   /// The date range this report should be run for.
-  DateRange dateRange;
+  DateRange? dateRange;
 
   /// The list of dimensions the report should include.
-  core.List<SortedDimension> dimensions;
+  core.List<SortedDimension>? dimensions;
 
   /// The floodlight ID for which to show data in this report.
   ///
   /// All advertisers associated with that ID will automatically be added. The
   /// dimension of the value needs to be 'dfa:floodlightConfigId'.
-  DimensionValue floodlightConfigId;
+  DimensionValue? floodlightConfigId;
 
   /// The list of names of metrics the report should include.
-  core.List<core.String> metricNames;
+  core.List<core.String>? metricNames;
 
   /// Path Filters.
-  core.List<PathFilter> pathFilters;
+  core.List<PathFilter>? pathFilters;
 
   ReportPathCriteria();
 
@@ -26532,20 +25512,20 @@ class ReportPathCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (activityFilters != null)
           'activityFilters':
-              activityFilters.map((value) => value.toJson()).toList(),
+              activityFilters!.map((value) => value.toJson()).toList(),
         if (customChannelGrouping != null)
-          'customChannelGrouping': customChannelGrouping.toJson(),
-        if (dateRange != null) 'dateRange': dateRange.toJson(),
+          'customChannelGrouping': customChannelGrouping!.toJson(),
+        if (dateRange != null) 'dateRange': dateRange!.toJson(),
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
         if (floodlightConfigId != null)
-          'floodlightConfigId': floodlightConfigId.toJson(),
-        if (metricNames != null) 'metricNames': metricNames,
+          'floodlightConfigId': floodlightConfigId!.toJson(),
+        if (metricNames != null) 'metricNames': metricNames!,
         if (pathFilters != null)
-          'pathFilters': pathFilters.map((value) => value.toJson()).toList(),
+          'pathFilters': pathFilters!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -26556,17 +25536,17 @@ class ReportPathToConversionCriteriaReportProperties {
   ///
   /// By default the value is pulled from Floodlight or you can manually enter a
   /// custom value. Valid values: 1-90.
-  core.int clicksLookbackWindow;
+  core.int? clicksLookbackWindow;
 
   /// CM360 checks to see if an impression interaction occurred within the
   /// specified period of time before a conversion.
   ///
   /// By default the value is pulled from Floodlight or you can manually enter a
   /// custom value. Valid values: 1-90.
-  core.int impressionsLookbackWindow;
+  core.int? impressionsLookbackWindow;
 
   /// Deprecated: has no effect.
-  core.bool includeAttributedIPConversions;
+  core.bool? includeAttributedIPConversions;
 
   /// Include conversions of users with a DoubleClick cookie but without an
   /// exposure.
@@ -26574,36 +25554,36 @@ class ReportPathToConversionCriteriaReportProperties {
   /// That means the user did not click or see an ad from the advertiser within
   /// the Floodlight group, or that the interaction happened outside the
   /// lookback window.
-  core.bool includeUnattributedCookieConversions;
+  core.bool? includeUnattributedCookieConversions;
 
   /// Include conversions that have no associated cookies and no exposures.
   ///
   /// It’s therefore impossible to know how the user was exposed to your ads
   /// during the lookback window prior to a conversion.
-  core.bool includeUnattributedIPConversions;
+  core.bool? includeUnattributedIPConversions;
 
   /// The maximum number of click interactions to include in the report.
   ///
   /// Advertisers currently paying for E2C reports get up to 200 (100 clicks,
   /// 100 impressions). If another advertiser in your network is paying for E2C,
   /// you can have up to 5 total exposures per report.
-  core.int maximumClickInteractions;
+  core.int? maximumClickInteractions;
 
   /// The maximum number of click interactions to include in the report.
   ///
   /// Advertisers currently paying for E2C reports get up to 200 (100 clicks,
   /// 100 impressions). If another advertiser in your network is paying for E2C,
   /// you can have up to 5 total exposures per report.
-  core.int maximumImpressionInteractions;
+  core.int? maximumImpressionInteractions;
 
   /// The maximum amount of time that can take place between interactions
   /// (clicks or impressions) by the same user.
   ///
   /// Valid values: 1-90.
-  core.int maximumInteractionGap;
+  core.int? maximumInteractionGap;
 
   /// Enable pivoting on interaction path.
-  core.bool pivotOnInteractionPath;
+  core.bool? pivotOnInteractionPath;
 
   ReportPathToConversionCriteriaReportProperties();
 
@@ -26642,60 +25622,60 @@ class ReportPathToConversionCriteriaReportProperties {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clicksLookbackWindow != null)
-          'clicksLookbackWindow': clicksLookbackWindow,
+          'clicksLookbackWindow': clicksLookbackWindow!,
         if (impressionsLookbackWindow != null)
-          'impressionsLookbackWindow': impressionsLookbackWindow,
+          'impressionsLookbackWindow': impressionsLookbackWindow!,
         if (includeAttributedIPConversions != null)
-          'includeAttributedIPConversions': includeAttributedIPConversions,
+          'includeAttributedIPConversions': includeAttributedIPConversions!,
         if (includeUnattributedCookieConversions != null)
           'includeUnattributedCookieConversions':
-              includeUnattributedCookieConversions,
+              includeUnattributedCookieConversions!,
         if (includeUnattributedIPConversions != null)
-          'includeUnattributedIPConversions': includeUnattributedIPConversions,
+          'includeUnattributedIPConversions': includeUnattributedIPConversions!,
         if (maximumClickInteractions != null)
-          'maximumClickInteractions': maximumClickInteractions,
+          'maximumClickInteractions': maximumClickInteractions!,
         if (maximumImpressionInteractions != null)
-          'maximumImpressionInteractions': maximumImpressionInteractions,
+          'maximumImpressionInteractions': maximumImpressionInteractions!,
         if (maximumInteractionGap != null)
-          'maximumInteractionGap': maximumInteractionGap,
+          'maximumInteractionGap': maximumInteractionGap!,
         if (pivotOnInteractionPath != null)
-          'pivotOnInteractionPath': pivotOnInteractionPath,
+          'pivotOnInteractionPath': pivotOnInteractionPath!,
       };
 }
 
 /// The report criteria for a report of type "PATH_TO_CONVERSION".
 class ReportPathToConversionCriteria {
   /// The list of 'dfa:activity' values to filter on.
-  core.List<DimensionValue> activityFilters;
+  core.List<DimensionValue>? activityFilters;
 
   /// The list of conversion dimensions the report should include.
-  core.List<SortedDimension> conversionDimensions;
+  core.List<SortedDimension>? conversionDimensions;
 
   /// The list of custom floodlight variables the report should include.
-  core.List<SortedDimension> customFloodlightVariables;
+  core.List<SortedDimension>? customFloodlightVariables;
 
   /// The list of custom rich media events to include.
-  core.List<DimensionValue> customRichMediaEvents;
+  core.List<DimensionValue>? customRichMediaEvents;
 
   /// The date range this report should be run for.
-  DateRange dateRange;
+  DateRange? dateRange;
 
   /// The floodlight ID for which to show data in this report.
   ///
   /// All advertisers associated with that ID will automatically be added. The
   /// dimension of the value needs to be 'dfa:floodlightConfigId'.
-  DimensionValue floodlightConfigId;
+  DimensionValue? floodlightConfigId;
 
   /// The list of names of metrics the report should include.
-  core.List<core.String> metricNames;
+  core.List<core.String>? metricNames;
 
   /// The list of per interaction dimensions the report should include.
-  core.List<SortedDimension> perInteractionDimensions;
+  core.List<SortedDimension>? perInteractionDimensions;
 
   /// The properties of the report.
-  ReportPathToConversionCriteriaReportProperties reportProperties;
+  ReportPathToConversionCriteriaReportProperties? reportProperties;
 
   ReportPathToConversionCriteria();
 
@@ -26752,62 +25732,63 @@ class ReportPathToConversionCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (activityFilters != null)
           'activityFilters':
-              activityFilters.map((value) => value.toJson()).toList(),
+              activityFilters!.map((value) => value.toJson()).toList(),
         if (conversionDimensions != null)
           'conversionDimensions':
-              conversionDimensions.map((value) => value.toJson()).toList(),
+              conversionDimensions!.map((value) => value.toJson()).toList(),
         if (customFloodlightVariables != null)
-          'customFloodlightVariables':
-              customFloodlightVariables.map((value) => value.toJson()).toList(),
+          'customFloodlightVariables': customFloodlightVariables!
+              .map((value) => value.toJson())
+              .toList(),
         if (customRichMediaEvents != null)
           'customRichMediaEvents':
-              customRichMediaEvents.map((value) => value.toJson()).toList(),
-        if (dateRange != null) 'dateRange': dateRange.toJson(),
+              customRichMediaEvents!.map((value) => value.toJson()).toList(),
+        if (dateRange != null) 'dateRange': dateRange!.toJson(),
         if (floodlightConfigId != null)
-          'floodlightConfigId': floodlightConfigId.toJson(),
-        if (metricNames != null) 'metricNames': metricNames,
+          'floodlightConfigId': floodlightConfigId!.toJson(),
+        if (metricNames != null) 'metricNames': metricNames!,
         if (perInteractionDimensions != null)
           'perInteractionDimensions':
-              perInteractionDimensions.map((value) => value.toJson()).toList(),
+              perInteractionDimensions!.map((value) => value.toJson()).toList(),
         if (reportProperties != null)
-          'reportProperties': reportProperties.toJson(),
+          'reportProperties': reportProperties!.toJson(),
       };
 }
 
 /// The report criteria for a report of type "REACH".
 class ReportReachCriteria {
   /// Activity group.
-  Activities activities;
+  Activities? activities;
 
   /// Custom Rich Media Events group.
-  CustomRichMediaEvents customRichMediaEvents;
+  CustomRichMediaEvents? customRichMediaEvents;
 
   /// The date range this report should be run for.
-  DateRange dateRange;
+  DateRange? dateRange;
 
   /// The list of filters on which dimensions are filtered.
   ///
   /// Filters for different dimensions are ANDed, filters for the same dimension
   /// are grouped together and ORed.
-  core.List<DimensionValue> dimensionFilters;
+  core.List<DimensionValue>? dimensionFilters;
 
   /// The list of dimensions the report should include.
-  core.List<SortedDimension> dimensions;
+  core.List<SortedDimension>? dimensions;
 
   /// Whether to enable all reach dimension combinations in the report.
   ///
   /// Defaults to false. If enabled, the date range of the report should be
   /// within the last 42 days.
-  core.bool enableAllDimensionCombinations;
+  core.bool? enableAllDimensionCombinations;
 
   /// The list of names of metrics the report should include.
-  core.List<core.String> metricNames;
+  core.List<core.String>? metricNames;
 
   /// The list of names of Reach By Frequency metrics the report should include.
-  core.List<core.String> reachByFrequencyMetricNames;
+  core.List<core.String>? reachByFrequencyMetricNames;
 
   ReportReachCriteria();
 
@@ -26854,21 +25835,21 @@ class ReportReachCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activities != null) 'activities': activities.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activities != null) 'activities': activities!.toJson(),
         if (customRichMediaEvents != null)
-          'customRichMediaEvents': customRichMediaEvents.toJson(),
-        if (dateRange != null) 'dateRange': dateRange.toJson(),
+          'customRichMediaEvents': customRichMediaEvents!.toJson(),
+        if (dateRange != null) 'dateRange': dateRange!.toJson(),
         if (dimensionFilters != null)
           'dimensionFilters':
-              dimensionFilters.map((value) => value.toJson()).toList(),
+              dimensionFilters!.map((value) => value.toJson()).toList(),
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
         if (enableAllDimensionCombinations != null)
-          'enableAllDimensionCombinations': enableAllDimensionCombinations,
-        if (metricNames != null) 'metricNames': metricNames,
+          'enableAllDimensionCombinations': enableAllDimensionCombinations!,
+        if (metricNames != null) 'metricNames': metricNames!,
         if (reachByFrequencyMetricNames != null)
-          'reachByFrequencyMetricNames': reachByFrequencyMetricNames,
+          'reachByFrequencyMetricNames': reachByFrequencyMetricNames!,
       };
 }
 
@@ -26880,23 +25861,23 @@ class ReportSchedule {
   /// Whether the schedule is active or not.
   ///
   /// Must be set to either true or false.
-  core.bool active;
+  core.bool? active;
 
   /// Defines every how many days, weeks or months the report should be run.
   ///
   /// Needs to be set when "repeats" is either "DAILY", "WEEKLY" or "MONTHLY".
-  core.int every;
-  core.DateTime expirationDate;
+  core.int? every;
+  core.DateTime? expirationDate;
 
   /// The interval for which the report is repeated.
   ///
   /// Note: - "DAILY" also requires field "every" to be set. - "WEEKLY" also
   /// requires fields "every" and "repeatsOnWeekDays" to be set. - "MONTHLY"
   /// also requires fields "every" and "runsOnDayOfMonth" to be set.
-  core.String repeats;
+  core.String? repeats;
 
   /// List of week days "WEEKLY" on which scheduled reports should run.
-  core.List<core.String> repeatsOnWeekDays;
+  core.List<core.String>? repeatsOnWeekDays;
 
   /// Enum to define for "MONTHLY" scheduled reports whether reports should be
   /// repeated on the same day of the month as "startDate" or the same day of
@@ -26909,8 +25890,8 @@ class ReportSchedule {
   /// Possible string values are:
   /// - "DAY_OF_MONTH"
   /// - "WEEK_OF_MONTH"
-  core.String runsOnDayOfMonth;
-  core.DateTime startDate;
+  core.String? runsOnDayOfMonth;
+  core.DateTime? startDate;
 
   ReportSchedule();
 
@@ -26941,43 +25922,43 @@ class ReportSchedule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (active != null) 'active': active,
-        if (every != null) 'every': every,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (active != null) 'active': active!,
+        if (every != null) 'every': every!,
         if (expirationDate != null)
           'expirationDate':
-              "${(expirationDate).year.toString().padLeft(4, '0')}-${(expirationDate).month.toString().padLeft(2, '0')}-${(expirationDate).day.toString().padLeft(2, '0')}",
-        if (repeats != null) 'repeats': repeats,
-        if (repeatsOnWeekDays != null) 'repeatsOnWeekDays': repeatsOnWeekDays,
-        if (runsOnDayOfMonth != null) 'runsOnDayOfMonth': runsOnDayOfMonth,
+              "${(expirationDate!).year.toString().padLeft(4, '0')}-${(expirationDate!).month.toString().padLeft(2, '0')}-${(expirationDate!).day.toString().padLeft(2, '0')}",
+        if (repeats != null) 'repeats': repeats!,
+        if (repeatsOnWeekDays != null) 'repeatsOnWeekDays': repeatsOnWeekDays!,
+        if (runsOnDayOfMonth != null) 'runsOnDayOfMonth': runsOnDayOfMonth!,
         if (startDate != null)
           'startDate':
-              "${(startDate).year.toString().padLeft(4, '0')}-${(startDate).month.toString().padLeft(2, '0')}-${(startDate).day.toString().padLeft(2, '0')}",
+              "${(startDate!).year.toString().padLeft(4, '0')}-${(startDate!).month.toString().padLeft(2, '0')}-${(startDate!).day.toString().padLeft(2, '0')}",
       };
 }
 
 /// Represents a Report resource.
 class Report {
   /// The account ID to which this report belongs.
-  core.String accountId;
+  core.String? accountId;
 
   /// The report criteria for a report of type "STANDARD".
-  ReportCriteria criteria;
+  ReportCriteria? criteria;
 
   /// The report criteria for a report of type "CROSS_DIMENSION_REACH".
-  ReportCrossDimensionReachCriteria crossDimensionReachCriteria;
+  ReportCrossDimensionReachCriteria? crossDimensionReachCriteria;
 
   /// The report's email delivery settings.
-  ReportDelivery delivery;
+  ReportDelivery? delivery;
 
   /// The eTag of this response for caching purposes.
-  core.String etag;
+  core.String? etag;
 
   /// The filename used when generating report files for this report.
-  core.String fileName;
+  core.String? fileName;
 
   /// The report criteria for a report of type "FLOODLIGHT".
-  ReportFloodlightCriteria floodlightCriteria;
+  ReportFloodlightCriteria? floodlightCriteria;
 
   /// The output format of the report.
   ///
@@ -26987,44 +25968,44 @@ class Report {
   /// Possible string values are:
   /// - "CSV"
   /// - "EXCEL"
-  core.String format;
+  core.String? format;
 
   /// The unique ID identifying this report resource.
-  core.String id;
+  core.String? id;
 
   /// The kind of resource this is, in this case dfareporting#report.
-  core.String kind;
+  core.String? kind;
 
   /// The timestamp (in milliseconds since epoch) of when this report was last
   /// modified.
-  core.String lastModifiedTime;
+  core.String? lastModifiedTime;
 
   /// The name of the report.
-  core.String name;
+  core.String? name;
 
   /// The user profile id of the owner of this report.
-  core.String ownerProfileId;
+  core.String? ownerProfileId;
 
   /// The report criteria for a report of type "PATH_ATTRIBUTION".
-  ReportPathAttributionCriteria pathAttributionCriteria;
+  ReportPathAttributionCriteria? pathAttributionCriteria;
 
   /// The report criteria for a report of type "PATH".
-  ReportPathCriteria pathCriteria;
+  ReportPathCriteria? pathCriteria;
 
   /// The report criteria for a report of type "PATH_TO_CONVERSION".
-  ReportPathToConversionCriteria pathToConversionCriteria;
+  ReportPathToConversionCriteria? pathToConversionCriteria;
 
   /// The report criteria for a report of type "REACH".
-  ReportReachCriteria reachCriteria;
+  ReportReachCriteria? reachCriteria;
 
   /// The report's schedule.
   ///
   /// Can only be set if the report's 'dateRange' is a relative date range and
   /// the relative date range is not "TODAY".
-  ReportSchedule schedule;
+  ReportSchedule? schedule;
 
   /// The subaccount ID to which this report belongs if applicable.
-  core.String subAccountId;
+  core.String? subAccountId;
 
   /// The type of the report.
   /// Possible string values are:
@@ -27035,7 +26016,7 @@ class Report {
   /// - "FLOODLIGHT"
   /// - "PATH"
   /// - "PATH_ATTRIBUTION"
-  core.String type;
+  core.String? type;
 
   Report();
 
@@ -27114,31 +26095,31 @@ class Report {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (criteria != null) 'criteria': criteria.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (criteria != null) 'criteria': criteria!.toJson(),
         if (crossDimensionReachCriteria != null)
-          'crossDimensionReachCriteria': crossDimensionReachCriteria.toJson(),
-        if (delivery != null) 'delivery': delivery.toJson(),
-        if (etag != null) 'etag': etag,
-        if (fileName != null) 'fileName': fileName,
+          'crossDimensionReachCriteria': crossDimensionReachCriteria!.toJson(),
+        if (delivery != null) 'delivery': delivery!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (fileName != null) 'fileName': fileName!,
         if (floodlightCriteria != null)
-          'floodlightCriteria': floodlightCriteria.toJson(),
-        if (format != null) 'format': format,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime,
-        if (name != null) 'name': name,
-        if (ownerProfileId != null) 'ownerProfileId': ownerProfileId,
+          'floodlightCriteria': floodlightCriteria!.toJson(),
+        if (format != null) 'format': format!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
+        if (name != null) 'name': name!,
+        if (ownerProfileId != null) 'ownerProfileId': ownerProfileId!,
         if (pathAttributionCriteria != null)
-          'pathAttributionCriteria': pathAttributionCriteria.toJson(),
-        if (pathCriteria != null) 'pathCriteria': pathCriteria.toJson(),
+          'pathAttributionCriteria': pathAttributionCriteria!.toJson(),
+        if (pathCriteria != null) 'pathCriteria': pathCriteria!.toJson(),
         if (pathToConversionCriteria != null)
-          'pathToConversionCriteria': pathToConversionCriteria.toJson(),
-        if (reachCriteria != null) 'reachCriteria': reachCriteria.toJson(),
-        if (schedule != null) 'schedule': schedule.toJson(),
-        if (subAccountId != null) 'subAccountId': subAccountId,
-        if (type != null) 'type': type,
+          'pathToConversionCriteria': pathToConversionCriteria!.toJson(),
+        if (reachCriteria != null) 'reachCriteria': reachCriteria!.toJson(),
+        if (schedule != null) 'schedule': schedule!.toJson(),
+        if (subAccountId != null) 'subAccountId': subAccountId!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -27147,23 +26128,23 @@ class Report {
 class ReportCompatibleFields {
   /// Dimensions which are compatible to be selected in the "dimensionFilters"
   /// section of the report.
-  core.List<Dimension> dimensionFilters;
+  core.List<Dimension>? dimensionFilters;
 
   /// Dimensions which are compatible to be selected in the "dimensions" section
   /// of the report.
-  core.List<Dimension> dimensions;
+  core.List<Dimension>? dimensions;
 
   /// The kind of resource this is, in this case
   /// dfareporting#reportCompatibleFields.
-  core.String kind;
+  core.String? kind;
 
   /// Metrics which are compatible to be selected in the "metricNames" section
   /// of the report.
-  core.List<Metric> metrics;
+  core.List<Metric>? metrics;
 
   /// Metrics which are compatible to be selected as activity metrics to pivot
   /// on in the "activities" section of the report.
-  core.List<Metric> pivotedActivityMetrics;
+  core.List<Metric>? pivotedActivityMetrics;
 
   ReportCompatibleFields();
 
@@ -27197,38 +26178,38 @@ class ReportCompatibleFields {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dimensionFilters != null)
           'dimensionFilters':
-              dimensionFilters.map((value) => value.toJson()).toList(),
+              dimensionFilters!.map((value) => value.toJson()).toList(),
         if (dimensions != null)
-          'dimensions': dimensions.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'dimensions': dimensions!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
         if (metrics != null)
-          'metrics': metrics.map((value) => value.toJson()).toList(),
+          'metrics': metrics!.map((value) => value.toJson()).toList(),
         if (pivotedActivityMetrics != null)
           'pivotedActivityMetrics':
-              pivotedActivityMetrics.map((value) => value.toJson()).toList(),
+              pivotedActivityMetrics!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Represents the list of reports.
 class ReportList {
   /// The eTag of this response for caching purposes.
-  core.String etag;
+  core.String? etag;
 
   /// The reports returned in this response.
-  core.List<Report> items;
+  core.List<Report>? items;
 
   /// The kind of list this is, in this case dfareporting#reportList.
-  core.String kind;
+  core.String? kind;
 
   /// Continuation token used to page through reports.
   ///
   /// To retrieve the next page of results, set the next request's "pageToken"
   /// to the value of this field. The page token is only valid for a limited
   /// amount of time and should not be persisted.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ReportList();
 
@@ -27250,12 +26231,12 @@ class ReportList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -27265,10 +26246,10 @@ class ReportsConfiguration {
   ///
   /// This report shows detailed pathway information on up to 10 of the most
   /// recent ad exposures seen by a user before converting.
-  core.bool exposureToConversionEnabled;
+  core.bool? exposureToConversionEnabled;
 
   /// Default lookback windows for new advertisers in this account.
-  LookbackConfiguration lookbackConfiguration;
+  LookbackConfiguration? lookbackConfiguration;
 
   /// Report generation time zone ID of this account.
   ///
@@ -27288,7 +26269,7 @@ class ReportsConfiguration {
   /// "Australia/Lord_Howe" - "31" for "Europe/Moscow" - "32" for
   /// "Pacific/Kiritimati" - "35" for "Pacific/Norfolk" - "36" for
   /// "Pacific/Tongatapu"
-  core.String reportGenerationTimeZoneId;
+  core.String? reportGenerationTimeZoneId;
 
   ReportsConfiguration();
 
@@ -27308,13 +26289,13 @@ class ReportsConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (exposureToConversionEnabled != null)
-          'exposureToConversionEnabled': exposureToConversionEnabled,
+          'exposureToConversionEnabled': exposureToConversionEnabled!,
         if (lookbackConfiguration != null)
-          'lookbackConfiguration': lookbackConfiguration.toJson(),
+          'lookbackConfiguration': lookbackConfiguration!.toJson(),
         if (reportGenerationTimeZoneId != null)
-          'reportGenerationTimeZoneId': reportGenerationTimeZoneId,
+          'reportGenerationTimeZoneId': reportGenerationTimeZoneId!,
       };
 }
 
@@ -27323,15 +26304,15 @@ class RichMediaExitOverride {
   /// Click-through URL of this rich media exit override.
   ///
   /// Applicable if the enabled field is set to true.
-  ClickThroughUrl clickThroughUrl;
+  ClickThroughUrl? clickThroughUrl;
 
   /// Whether to use the clickThroughUrl.
   ///
   /// If false, the creative-level exit will be used.
-  core.bool enabled;
+  core.bool? enabled;
 
   /// ID for the override to refer to a specific exit in the creative.
-  core.String exitId;
+  core.String? exitId;
 
   RichMediaExitOverride();
 
@@ -27348,11 +26329,11 @@ class RichMediaExitOverride {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (clickThroughUrl != null)
-          'clickThroughUrl': clickThroughUrl.toJson(),
-        if (enabled != null) 'enabled': enabled,
-        if (exitId != null) 'exitId': exitId,
+          'clickThroughUrl': clickThroughUrl!.toJson(),
+        if (enabled != null) 'enabled': enabled!,
+        if (exitId != null) 'exitId': exitId!,
       };
 }
 
@@ -27365,18 +26346,18 @@ class Rule {
   ///
   /// This should refer to one of the parent assets in this creative. This is a
   /// required field.
-  core.String assetId;
+  core.String? assetId;
 
   /// A user-friendly name for this rule.
   ///
   /// This is a required field.
-  core.String name;
+  core.String? name;
 
   /// A targeting template ID.
   ///
   /// The targeting from the targeting template will be used to determine
   /// whether this asset should be served. This is a required field.
-  core.String targetingTemplateId;
+  core.String? targetingTemplateId;
 
   Rule();
 
@@ -27392,11 +26373,11 @@ class Rule {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (assetId != null) 'assetId': assetId,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (assetId != null) 'assetId': assetId!,
+        if (name != null) 'name': name!,
         if (targetingTemplateId != null)
-          'targetingTemplateId': targetingTemplateId,
+          'targetingTemplateId': targetingTemplateId!,
       };
 }
 
@@ -27405,40 +26386,40 @@ class Site {
   /// Account ID of this site.
   ///
   /// This is a read-only field that can be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// Whether this site is approved.
-  core.bool approved;
+  core.bool? approved;
 
   /// Directory site associated with this site.
   ///
   /// This is a required field that is read-only after insertion.
-  core.String directorySiteId;
+  core.String? directorySiteId;
 
   /// Dimension value for the ID of the directory site.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue directorySiteIdDimensionValue;
+  DimensionValue? directorySiteIdDimensionValue;
 
   /// ID of this site.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Dimension value for the ID of this site.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue idDimensionValue;
+  DimensionValue? idDimensionValue;
 
   /// Key name of this site.
   ///
   /// This is a read-only, auto-generated field.
-  core.String keyName;
+  core.String? keyName;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#site".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this site.This is a required field.
   ///
@@ -27446,24 +26427,24 @@ class Site {
   /// the name must be unique among sites of the same subaccount. Otherwise,
   /// this site is a top-level site, and the name must be unique among top-level
   /// sites of the same account.
-  core.String name;
+  core.String? name;
 
   /// Site contacts.
-  core.List<SiteContact> siteContacts;
+  core.List<SiteContact>? siteContacts;
 
   /// Site-wide settings.
-  SiteSettings siteSettings;
+  SiteSettings? siteSettings;
 
   /// Subaccount ID of this site.
   ///
   /// This is a read-only field that can be left blank.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Default video settings for new placements created under this site.
   ///
   /// This value will be used to populate the placements.videoSettings field,
   /// when no value is specified for the new placement.
-  SiteVideoSettings videoSettings;
+  SiteVideoSettings? videoSettings;
 
   Site();
 
@@ -27517,44 +26498,44 @@ class Site {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (approved != null) 'approved': approved,
-        if (directorySiteId != null) 'directorySiteId': directorySiteId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (approved != null) 'approved': approved!,
+        if (directorySiteId != null) 'directorySiteId': directorySiteId!,
         if (directorySiteIdDimensionValue != null)
           'directorySiteIdDimensionValue':
-              directorySiteIdDimensionValue.toJson(),
-        if (id != null) 'id': id,
+              directorySiteIdDimensionValue!.toJson(),
+        if (id != null) 'id': id!,
         if (idDimensionValue != null)
-          'idDimensionValue': idDimensionValue.toJson(),
-        if (keyName != null) 'keyName': keyName,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+          'idDimensionValue': idDimensionValue!.toJson(),
+        if (keyName != null) 'keyName': keyName!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
         if (siteContacts != null)
-          'siteContacts': siteContacts.map((value) => value.toJson()).toList(),
-        if (siteSettings != null) 'siteSettings': siteSettings.toJson(),
-        if (subaccountId != null) 'subaccountId': subaccountId,
-        if (videoSettings != null) 'videoSettings': videoSettings.toJson(),
+          'siteContacts': siteContacts!.map((value) => value.toJson()).toList(),
+        if (siteSettings != null) 'siteSettings': siteSettings!.toJson(),
+        if (subaccountId != null) 'subaccountId': subaccountId!,
+        if (videoSettings != null) 'videoSettings': videoSettings!.toJson(),
       };
 }
 
 /// Companion Settings
 class SiteCompanionSetting {
   /// Whether companions are disabled for this site template.
-  core.bool companionsDisabled;
+  core.bool? companionsDisabled;
 
   /// Allowlist of companion sizes to be served via this site template.
   ///
   /// Set this list to null or empty to serve all companion sizes.
-  core.List<Size> enabledSizes;
+  core.List<Size>? enabledSizes;
 
   /// Whether to serve only static images as companions.
-  core.bool imageOnly;
+  core.bool? imageOnly;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#siteCompanionSetting".
-  core.String kind;
+  core.String? kind;
 
   SiteCompanionSetting();
 
@@ -27576,48 +26557,48 @@ class SiteCompanionSetting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (companionsDisabled != null)
-          'companionsDisabled': companionsDisabled,
+          'companionsDisabled': companionsDisabled!,
         if (enabledSizes != null)
-          'enabledSizes': enabledSizes.map((value) => value.toJson()).toList(),
-        if (imageOnly != null) 'imageOnly': imageOnly,
-        if (kind != null) 'kind': kind,
+          'enabledSizes': enabledSizes!.map((value) => value.toJson()).toList(),
+        if (imageOnly != null) 'imageOnly': imageOnly!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Site Contact
 class SiteContact {
   /// Address of this site contact.
-  core.String address;
+  core.String? address;
 
   /// Site contact type.
   /// Possible string values are:
   /// - "SALES_PERSON"
   /// - "TRAFFICKER"
-  core.String contactType;
+  core.String? contactType;
 
   /// Email address of this site contact.
   ///
   /// This is a required field.
-  core.String email;
+  core.String? email;
 
   /// First name of this site contact.
-  core.String firstName;
+  core.String? firstName;
 
   /// ID of this site contact.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Last name of this site contact.
-  core.String lastName;
+  core.String? lastName;
 
   /// Primary phone number of this site contact.
-  core.String phone;
+  core.String? phone;
 
   /// Title or designation of this site contact.
-  core.String title;
+  core.String? title;
 
   SiteContact();
 
@@ -27648,42 +26629,42 @@ class SiteContact {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (address != null) 'address': address,
-        if (contactType != null) 'contactType': contactType,
-        if (email != null) 'email': email,
-        if (firstName != null) 'firstName': firstName,
-        if (id != null) 'id': id,
-        if (lastName != null) 'lastName': lastName,
-        if (phone != null) 'phone': phone,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (address != null) 'address': address!,
+        if (contactType != null) 'contactType': contactType!,
+        if (email != null) 'email': email!,
+        if (firstName != null) 'firstName': firstName!,
+        if (id != null) 'id': id!,
+        if (lastName != null) 'lastName': lastName!,
+        if (phone != null) 'phone': phone!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// Site Settings
 class SiteSettings {
   /// Whether active view creatives are disabled for this site.
-  core.bool activeViewOptOut;
+  core.bool? activeViewOptOut;
 
   /// Whether this site opts out of ad blocking.
   ///
   /// When true, ad blocking is disabled for all placements under the site,
   /// regardless of the individual placement settings. When false, the campaign
   /// and placement settings take effect.
-  core.bool adBlockingOptOut;
+  core.bool? adBlockingOptOut;
 
   /// Whether new cookies are disabled for this site.
-  core.bool disableNewCookie;
+  core.bool? disableNewCookie;
 
   /// Configuration settings for dynamic and image floodlight tags.
-  TagSetting tagSetting;
+  TagSetting? tagSetting;
 
   /// Whether Verification and ActiveView for in-stream video creatives are
   /// disabled by default for new placements created under this site.
   ///
   /// This value will be used to populate the placement.videoActiveViewOptOut
   /// field, when no value is specified for the new placement.
-  core.bool videoActiveViewOptOutTemplate;
+  core.bool? videoActiveViewOptOutTemplate;
 
   /// Default VPAID adapter setting for new placements created under this site.
   ///
@@ -27700,7 +26681,7 @@ class SiteSettings {
   /// - "FLASH"
   /// - "HTML5"
   /// - "BOTH"
-  core.String vpaidAdapterChoiceTemplate;
+  core.String? vpaidAdapterChoiceTemplate;
 
   SiteSettings();
 
@@ -27728,15 +26709,15 @@ class SiteSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (activeViewOptOut != null) 'activeViewOptOut': activeViewOptOut,
-        if (adBlockingOptOut != null) 'adBlockingOptOut': adBlockingOptOut,
-        if (disableNewCookie != null) 'disableNewCookie': disableNewCookie,
-        if (tagSetting != null) 'tagSetting': tagSetting.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (activeViewOptOut != null) 'activeViewOptOut': activeViewOptOut!,
+        if (adBlockingOptOut != null) 'adBlockingOptOut': adBlockingOptOut!,
+        if (disableNewCookie != null) 'disableNewCookie': disableNewCookie!,
+        if (tagSetting != null) 'tagSetting': tagSetting!.toJson(),
         if (videoActiveViewOptOutTemplate != null)
-          'videoActiveViewOptOutTemplate': videoActiveViewOptOutTemplate,
+          'videoActiveViewOptOutTemplate': videoActiveViewOptOutTemplate!,
         if (vpaidAdapterChoiceTemplate != null)
-          'vpaidAdapterChoiceTemplate': vpaidAdapterChoiceTemplate,
+          'vpaidAdapterChoiceTemplate': vpaidAdapterChoiceTemplate!,
       };
 }
 
@@ -27745,24 +26726,24 @@ class SiteSkippableSetting {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#siteSkippableSetting".
-  core.String kind;
+  core.String? kind;
 
   /// Amount of time to play videos served to this site template before counting
   /// a view.
   ///
   /// Applicable when skippable is true.
-  VideoOffset progressOffset;
+  VideoOffset? progressOffset;
 
   /// Amount of time to play videos served to this site before the skip button
   /// should appear.
   ///
   /// Applicable when skippable is true.
-  VideoOffset skipOffset;
+  VideoOffset? skipOffset;
 
   /// Whether the user can skip creatives served to this site.
   ///
   /// This will act as default for new placements created under this site.
-  core.bool skippable;
+  core.bool? skippable;
 
   SiteSkippableSetting();
 
@@ -27783,11 +26764,11 @@ class SiteSkippableSetting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (progressOffset != null) 'progressOffset': progressOffset.toJson(),
-        if (skipOffset != null) 'skipOffset': skipOffset.toJson(),
-        if (skippable != null) 'skippable': skippable,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (progressOffset != null) 'progressOffset': progressOffset!.toJson(),
+        if (skipOffset != null) 'skipOffset': skipOffset!.toJson(),
+        if (skippable != null) 'skippable': skippable!,
       };
 }
 
@@ -27796,12 +26777,12 @@ class SiteTranscodeSetting {
   /// Allowlist of video formats to be served to this site template.
   ///
   /// Set this list to null or empty to serve all video formats.
-  core.List<core.int> enabledVideoFormats;
+  core.List<core.int>? enabledVideoFormats;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#siteTranscodeSetting".
-  core.String kind;
+  core.String? kind;
 
   SiteTranscodeSetting();
 
@@ -27816,10 +26797,10 @@ class SiteTranscodeSetting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (enabledVideoFormats != null)
-          'enabledVideoFormats': enabledVideoFormats,
-        if (kind != null) 'kind': kind,
+          'enabledVideoFormats': enabledVideoFormats!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -27827,20 +26808,20 @@ class SiteTranscodeSetting {
 class SiteVideoSettings {
   /// Settings for the companion creatives of video creatives served to this
   /// site.
-  SiteCompanionSetting companionSettings;
+  SiteCompanionSetting? companionSettings;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#siteVideoSettings".
-  core.String kind;
+  core.String? kind;
 
   /// Whether OBA icons are enabled for this placement.
-  core.bool obaEnabled;
+  core.bool? obaEnabled;
 
   /// Settings for the OBA icon of video creatives served to this site.
   ///
   /// This will act as default for new placements created under this site.
-  ObaIcon obaSettings;
+  ObaIcon? obaSettings;
 
   /// Orientation of a site template used for video.
   ///
@@ -27849,17 +26830,17 @@ class SiteVideoSettings {
   /// - "ANY"
   /// - "LANDSCAPE"
   /// - "PORTRAIT"
-  core.String orientation;
+  core.String? orientation;
 
   /// Settings for the skippability of video creatives served to this site.
   ///
   /// This will act as default for new placements created under this site.
-  SiteSkippableSetting skippableSettings;
+  SiteSkippableSetting? skippableSettings;
 
   /// Settings for the transcodes of video creatives served to this site.
   ///
   /// This will act as default for new placements created under this site.
-  SiteTranscodeSetting transcodeSettings;
+  SiteTranscodeSetting? transcodeSettings;
 
   SiteVideoSettings();
 
@@ -27891,17 +26872,17 @@ class SiteVideoSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (companionSettings != null)
-          'companionSettings': companionSettings.toJson(),
-        if (kind != null) 'kind': kind,
-        if (obaEnabled != null) 'obaEnabled': obaEnabled,
-        if (obaSettings != null) 'obaSettings': obaSettings.toJson(),
-        if (orientation != null) 'orientation': orientation,
+          'companionSettings': companionSettings!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (obaEnabled != null) 'obaEnabled': obaEnabled!,
+        if (obaSettings != null) 'obaSettings': obaSettings!.toJson(),
+        if (orientation != null) 'orientation': orientation!,
         if (skippableSettings != null)
-          'skippableSettings': skippableSettings.toJson(),
+          'skippableSettings': skippableSettings!.toJson(),
         if (transcodeSettings != null)
-          'transcodeSettings': transcodeSettings.toJson(),
+          'transcodeSettings': transcodeSettings!.toJson(),
       };
 }
 
@@ -27910,13 +26891,13 @@ class SitesListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#sitesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Site collection.
-  core.List<Site> sites;
+  core.List<Site>? sites;
 
   SitesListResponse();
 
@@ -27935,11 +26916,11 @@ class SitesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (sites != null)
-          'sites': sites.map((value) => value.toJson()).toList(),
+          'sites': sites!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -27948,27 +26929,27 @@ class Size {
   /// Height of this size.
   ///
   /// Acceptable values are 0 to 32767, inclusive.
-  core.int height;
+  core.int? height;
 
   /// IAB standard size.
   ///
   /// This is a read-only, auto-generated field.
-  core.bool iab;
+  core.bool? iab;
 
   /// ID of this size.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#size".
-  core.String kind;
+  core.String? kind;
 
   /// Width of this size.
   ///
   /// Acceptable values are 0 to 32767, inclusive.
-  core.int width;
+  core.int? width;
 
   Size();
 
@@ -27990,12 +26971,12 @@ class Size {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (iab != null) 'iab': iab,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (iab != null) 'iab': iab!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -28004,10 +26985,10 @@ class SizesListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#sizesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Size collection.
-  core.List<Size> sizes;
+  core.List<Size>? sizes;
 
   SizesListResponse();
 
@@ -28023,10 +27004,10 @@ class SizesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (sizes != null)
-          'sizes': sizes.map((value) => value.toJson()).toList(),
+          'sizes': sizes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -28035,22 +27016,22 @@ class SkippableSetting {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#skippableSetting".
-  core.String kind;
+  core.String? kind;
 
   /// Amount of time to play videos served to this placement before counting a
   /// view.
   ///
   /// Applicable when skippable is true.
-  VideoOffset progressOffset;
+  VideoOffset? progressOffset;
 
   /// Amount of time to play videos served to this placement before the skip
   /// button should appear.
   ///
   /// Applicable when skippable is true.
-  VideoOffset skipOffset;
+  VideoOffset? skipOffset;
 
   /// Whether the user can skip creatives served to this placement.
-  core.bool skippable;
+  core.bool? skippable;
 
   SkippableSetting();
 
@@ -28071,27 +27052,27 @@ class SkippableSetting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (progressOffset != null) 'progressOffset': progressOffset.toJson(),
-        if (skipOffset != null) 'skipOffset': skipOffset.toJson(),
-        if (skippable != null) 'skippable': skippable,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (progressOffset != null) 'progressOffset': progressOffset!.toJson(),
+        if (skipOffset != null) 'skipOffset': skipOffset!.toJson(),
+        if (skippable != null) 'skippable': skippable!,
       };
 }
 
 /// Represents a sorted dimension.
 class SortedDimension {
   /// The kind of resource this is, in this case dfareporting#sortedDimension.
-  core.String kind;
+  core.String? kind;
 
   /// The name of the dimension.
-  core.String name;
+  core.String? name;
 
   /// An optional sort order for the dimension column.
   /// Possible string values are:
   /// - "ASCENDING"
   /// - "DESCENDING"
-  core.String sortOrder;
+  core.String? sortOrder;
 
   SortedDimension();
 
@@ -28107,10 +27088,10 @@ class SortedDimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (sortOrder != null) 'sortOrder': sortOrder,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (sortOrder != null) 'sortOrder': sortOrder!,
       };
 }
 
@@ -28119,26 +27100,26 @@ class Subaccount {
   /// ID of the account that contains this subaccount.
   ///
   /// This is a read-only field that can be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// IDs of the available user role permissions for this subaccount.
-  core.List<core.String> availablePermissionIds;
+  core.List<core.String>? availablePermissionIds;
 
   /// ID of this subaccount.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#subaccount".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this subaccount.
   ///
   /// This is a required field. Must be less than 128 characters long and be
   /// unique among subaccounts of the same account.
-  core.String name;
+  core.String? name;
 
   Subaccount();
 
@@ -28162,13 +27143,13 @@ class Subaccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (availablePermissionIds != null)
-          'availablePermissionIds': availablePermissionIds,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+          'availablePermissionIds': availablePermissionIds!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -28177,13 +27158,13 @@ class SubaccountsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#subaccountsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Subaccount collection.
-  core.List<Subaccount> subaccounts;
+  core.List<Subaccount>? subaccounts;
 
   SubaccountsListResponse();
 
@@ -28202,11 +27183,11 @@ class SubaccountsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (subaccounts != null)
-          'subaccounts': subaccounts.map((value) => value.toJson()).toList(),
+          'subaccounts': subaccounts!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -28215,15 +27196,15 @@ class TagData {
   /// Ad associated with this placement tag.
   ///
   /// Applicable only when format is PLACEMENT_TAG_TRACKING.
-  core.String adId;
+  core.String? adId;
 
   /// Tag string to record a click.
-  core.String clickTag;
+  core.String? clickTag;
 
   /// Creative associated with this placement tag.
   ///
   /// Applicable only when format is PLACEMENT_TAG_TRACKING.
-  core.String creativeId;
+  core.String? creativeId;
 
   /// TagData tag format of this tag.
   /// Possible string values are:
@@ -28246,10 +27227,10 @@ class TagData {
   /// - "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY"
   /// - "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY"
   /// - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
-  core.String format;
+  core.String? format;
 
   /// Tag string for serving an ad.
-  core.String impressionTag;
+  core.String? impressionTag;
 
   TagData();
 
@@ -28271,12 +27252,12 @@ class TagData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (adId != null) 'adId': adId,
-        if (clickTag != null) 'clickTag': clickTag,
-        if (creativeId != null) 'creativeId': creativeId,
-        if (format != null) 'format': format,
-        if (impressionTag != null) 'impressionTag': impressionTag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (adId != null) 'adId': adId!,
+        if (clickTag != null) 'clickTag': clickTag!,
+        if (creativeId != null) 'creativeId': creativeId!,
+        if (format != null) 'format': format!,
+        if (impressionTag != null) 'impressionTag': impressionTag!,
       };
 }
 
@@ -28287,15 +27268,15 @@ class TagSetting {
   /// Each key-value pair must be of the form key=value, and pairs must be
   /// separated by a semicolon (;). Keys and values must not contain commas. For
   /// example, id=2;color=red is a valid value for this field.
-  core.String additionalKeyValues;
+  core.String? additionalKeyValues;
 
   /// Whether static landing page URLs should be included in the tags.
   ///
   /// This setting applies only to placements.
-  core.bool includeClickThroughUrls;
+  core.bool? includeClickThroughUrls;
 
   /// Whether click-tracking string should be included in the tags.
-  core.bool includeClickTracking;
+  core.bool? includeClickTracking;
 
   /// Option specifying how keywords are embedded in ad tags.
   ///
@@ -28306,7 +27287,7 @@ class TagSetting {
   /// - "PLACEHOLDER_WITH_LIST_OF_KEYWORDS"
   /// - "IGNORE"
   /// - "GENERATE_SEPARATE_TAG_FOR_EACH_KEYWORD"
-  core.String keywordOption;
+  core.String? keywordOption;
 
   TagSetting();
 
@@ -28325,24 +27306,24 @@ class TagSetting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additionalKeyValues != null)
-          'additionalKeyValues': additionalKeyValues,
+          'additionalKeyValues': additionalKeyValues!,
         if (includeClickThroughUrls != null)
-          'includeClickThroughUrls': includeClickThroughUrls,
+          'includeClickThroughUrls': includeClickThroughUrls!,
         if (includeClickTracking != null)
-          'includeClickTracking': includeClickTracking,
-        if (keywordOption != null) 'keywordOption': keywordOption,
+          'includeClickTracking': includeClickTracking!,
+        if (keywordOption != null) 'keywordOption': keywordOption!,
       };
 }
 
 /// Dynamic and Image Tag Settings.
 class TagSettings {
   /// Whether dynamic floodlight tags are enabled.
-  core.bool dynamicTagEnabled;
+  core.bool? dynamicTagEnabled;
 
   /// Whether image tags are enabled.
-  core.bool imageTagEnabled;
+  core.bool? imageTagEnabled;
 
   TagSettings();
 
@@ -28355,16 +27336,16 @@ class TagSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dynamicTagEnabled != null) 'dynamicTagEnabled': dynamicTagEnabled,
-        if (imageTagEnabled != null) 'imageTagEnabled': imageTagEnabled,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dynamicTagEnabled != null) 'dynamicTagEnabled': dynamicTagEnabled!,
+        if (imageTagEnabled != null) 'imageTagEnabled': imageTagEnabled!,
       };
 }
 
 /// Target Window.
 class TargetWindow {
   /// User-entered value.
-  core.String customHtml;
+  core.String? customHtml;
 
   /// Type of browser window for which the backup image of the flash creative
   /// can be displayed.
@@ -28372,7 +27353,7 @@ class TargetWindow {
   /// - "NEW_WINDOW"
   /// - "CURRENT_WINDOW"
   /// - "CUSTOM"
-  core.String targetWindowOption;
+  core.String? targetWindowOption;
 
   TargetWindow();
 
@@ -28385,10 +27366,10 @@ class TargetWindow {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (customHtml != null) 'customHtml': customHtml,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (customHtml != null) 'customHtml': customHtml!,
         if (targetWindowOption != null)
-          'targetWindowOption': targetWindowOption,
+          'targetWindowOption': targetWindowOption!,
       };
 }
 
@@ -28406,37 +27387,37 @@ class TargetableRemarketingList {
   ///
   /// This is a read-only, auto-generated field that is only returned in GET
   /// requests.
-  core.String accountId;
+  core.String? accountId;
 
   /// Whether this targetable remarketing list is active.
-  core.bool active;
+  core.bool? active;
 
   /// Dimension value for the advertiser ID that owns this targetable
   /// remarketing list.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Dimension value for the ID of the advertiser.
-  DimensionValue advertiserIdDimensionValue;
+  DimensionValue? advertiserIdDimensionValue;
 
   /// Targetable remarketing list description.
-  core.String description;
+  core.String? description;
 
   /// Targetable remarketing list ID.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#targetableRemarketingList".
-  core.String kind;
+  core.String? kind;
 
   /// Number of days that a user should remain in the targetable remarketing
   /// list without an impression.
-  core.String lifeSpan;
+  core.String? lifeSpan;
 
   /// Number of users currently in the list.
   ///
   /// This is a read-only field.
-  core.String listSize;
+  core.String? listSize;
 
   /// Product from which this targetable remarketing list was originated.
   /// Possible string values are:
@@ -28451,18 +27432,18 @@ class TargetableRemarketingList {
   /// - "REMARKETING_LIST_SOURCE_GPLUS"
   /// - "REMARKETING_LIST_SOURCE_DMP"
   /// - "REMARKETING_LIST_SOURCE_PLAY_STORE"
-  core.String listSource;
+  core.String? listSource;
 
   /// Name of the targetable remarketing list.
   ///
   /// Is no greater than 128 characters long.
-  core.String name;
+  core.String? name;
 
   /// Subaccount ID of this remarketing list.
   ///
   /// This is a read-only, auto-generated field that is only returned in GET
   /// requests.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   TargetableRemarketingList();
 
@@ -28507,20 +27488,20 @@ class TargetableRemarketingList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (active != null) 'active': active,
-        if (advertiserId != null) 'advertiserId': advertiserId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (active != null) 'active': active!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
         if (advertiserIdDimensionValue != null)
-          'advertiserIdDimensionValue': advertiserIdDimensionValue.toJson(),
-        if (description != null) 'description': description,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (lifeSpan != null) 'lifeSpan': lifeSpan,
-        if (listSize != null) 'listSize': listSize,
-        if (listSource != null) 'listSource': listSource,
-        if (name != null) 'name': name,
-        if (subaccountId != null) 'subaccountId': subaccountId,
+          'advertiserIdDimensionValue': advertiserIdDimensionValue!.toJson(),
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (lifeSpan != null) 'lifeSpan': lifeSpan!,
+        if (listSize != null) 'listSize': listSize!,
+        if (listSource != null) 'listSource': listSource!,
+        if (name != null) 'name': name!,
+        if (subaccountId != null) 'subaccountId': subaccountId!,
       };
 }
 
@@ -28530,13 +27511,13 @@ class TargetableRemarketingListsListResponse {
   ///
   /// Value: the fixed string
   /// "dfareporting#targetableRemarketingListsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Targetable remarketing list collection.
-  core.List<TargetableRemarketingList> targetableRemarketingLists;
+  core.List<TargetableRemarketingList>? targetableRemarketingLists;
 
   TargetableRemarketingListsListResponse();
 
@@ -28557,11 +27538,11 @@ class TargetableRemarketingListsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (targetableRemarketingLists != null)
-          'targetableRemarketingLists': targetableRemarketingLists
+          'targetableRemarketingLists': targetableRemarketingLists!
               .map((value) => value.toJson())
               .toList(),
       };
@@ -28576,57 +27557,57 @@ class TargetingTemplate {
   ///
   /// This field, if left unset, will be auto-generated on insert and is
   /// read-only after insert.
-  core.String accountId;
+  core.String? accountId;
 
   /// Advertiser ID of this targeting template.
   ///
   /// This is a required field on insert and is read-only after insert.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Dimension value for the ID of the advertiser.
   ///
   /// This is a read-only, auto-generated field.
-  DimensionValue advertiserIdDimensionValue;
+  DimensionValue? advertiserIdDimensionValue;
 
   /// Time and day targeting criteria.
-  DayPartTargeting dayPartTargeting;
+  DayPartTargeting? dayPartTargeting;
 
   /// Geographical targeting criteria.
-  GeoTargeting geoTargeting;
+  GeoTargeting? geoTargeting;
 
   /// ID of this targeting template.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Key-value targeting criteria.
-  KeyValueTargetingExpression keyValueTargetingExpression;
+  KeyValueTargetingExpression? keyValueTargetingExpression;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#targetingTemplate".
-  core.String kind;
+  core.String? kind;
 
   /// Language targeting criteria.
-  LanguageTargeting languageTargeting;
+  LanguageTargeting? languageTargeting;
 
   /// Remarketing list targeting criteria.
-  ListTargetingExpression listTargetingExpression;
+  ListTargetingExpression? listTargetingExpression;
 
   /// Name of this targeting template.
   ///
   /// This field is required. It must be less than 256 characters long and
   /// unique within an advertiser.
-  core.String name;
+  core.String? name;
 
   /// Subaccount ID of this targeting template.
   ///
   /// This field, if left unset, will be auto-generated on insert and is
   /// read-only after insert.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   /// Technology platform targeting criteria.
-  TechnologyTargeting technologyTargeting;
+  TechnologyTargeting? technologyTargeting;
 
   TargetingTemplate();
 
@@ -28682,26 +27663,26 @@ class TargetingTemplate {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (advertiserId != null) 'advertiserId': advertiserId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (advertiserId != null) 'advertiserId': advertiserId!,
         if (advertiserIdDimensionValue != null)
-          'advertiserIdDimensionValue': advertiserIdDimensionValue.toJson(),
+          'advertiserIdDimensionValue': advertiserIdDimensionValue!.toJson(),
         if (dayPartTargeting != null)
-          'dayPartTargeting': dayPartTargeting.toJson(),
-        if (geoTargeting != null) 'geoTargeting': geoTargeting.toJson(),
-        if (id != null) 'id': id,
+          'dayPartTargeting': dayPartTargeting!.toJson(),
+        if (geoTargeting != null) 'geoTargeting': geoTargeting!.toJson(),
+        if (id != null) 'id': id!,
         if (keyValueTargetingExpression != null)
-          'keyValueTargetingExpression': keyValueTargetingExpression.toJson(),
-        if (kind != null) 'kind': kind,
+          'keyValueTargetingExpression': keyValueTargetingExpression!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (languageTargeting != null)
-          'languageTargeting': languageTargeting.toJson(),
+          'languageTargeting': languageTargeting!.toJson(),
         if (listTargetingExpression != null)
-          'listTargetingExpression': listTargetingExpression.toJson(),
-        if (name != null) 'name': name,
-        if (subaccountId != null) 'subaccountId': subaccountId,
+          'listTargetingExpression': listTargetingExpression!.toJson(),
+        if (name != null) 'name': name!,
+        if (subaccountId != null) 'subaccountId': subaccountId!,
         if (technologyTargeting != null)
-          'technologyTargeting': technologyTargeting.toJson(),
+          'technologyTargeting': technologyTargeting!.toJson(),
       };
 }
 
@@ -28710,13 +27691,13 @@ class TargetingTemplatesListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#targetingTemplatesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Targeting template collection.
-  core.List<TargetingTemplate> targetingTemplates;
+  core.List<TargetingTemplate>? targetingTemplates;
 
   TargetingTemplatesListResponse();
 
@@ -28735,12 +27716,12 @@ class TargetingTemplatesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (targetingTemplates != null)
           'targetingTemplates':
-              targetingTemplates.map((value) => value.toJson()).toList(),
+              targetingTemplates!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -28752,20 +27733,20 @@ class TechnologyTargeting {
   /// version numbers. If both are specified, only browserVersionId will be
   /// used. The other fields are populated automatically when the ad is inserted
   /// or updated.
-  core.List<Browser> browsers;
+  core.List<Browser>? browsers;
 
   /// Connection types that this ad targets.
   ///
   /// For each connection type only id is required. The other fields are
   /// populated automatically when the ad is inserted or updated.
-  core.List<ConnectionType> connectionTypes;
+  core.List<ConnectionType>? connectionTypes;
 
   /// Mobile carriers that this ad targets.
   ///
   /// For each mobile carrier only id is required, and the other fields are
   /// populated automatically when the ad is inserted or updated. If targeting a
   /// mobile carrier, do not set targeting for any zip codes.
-  core.List<MobileCarrier> mobileCarriers;
+  core.List<MobileCarrier>? mobileCarriers;
 
   /// Operating system versions that this ad targets.
   ///
@@ -28774,7 +27755,7 @@ class TechnologyTargeting {
   /// when the ad is inserted or updated. If targeting an operating system
   /// version, do not set targeting for the corresponding operating system in
   /// operatingSystems.
-  core.List<OperatingSystemVersion> operatingSystemVersions;
+  core.List<OperatingSystemVersion>? operatingSystemVersions;
 
   /// Operating systems that this ad targets.
   ///
@@ -28783,14 +27764,14 @@ class TechnologyTargeting {
   /// automatically when the ad is inserted or updated. If targeting an
   /// operating system, do not set targeting for operating system versions for
   /// the same operating system.
-  core.List<OperatingSystem> operatingSystems;
+  core.List<OperatingSystem>? operatingSystems;
 
   /// Platform types that this ad targets.
   ///
   /// For example, desktop, mobile, or tablet. For each platform type, only id
   /// is required, and the other fields are populated automatically when the ad
   /// is inserted or updated.
-  core.List<PlatformType> platformTypes;
+  core.List<PlatformType>? platformTypes;
 
   TechnologyTargeting();
 
@@ -28834,36 +27815,36 @@ class TechnologyTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (browsers != null)
-          'browsers': browsers.map((value) => value.toJson()).toList(),
+          'browsers': browsers!.map((value) => value.toJson()).toList(),
         if (connectionTypes != null)
           'connectionTypes':
-              connectionTypes.map((value) => value.toJson()).toList(),
+              connectionTypes!.map((value) => value.toJson()).toList(),
         if (mobileCarriers != null)
           'mobileCarriers':
-              mobileCarriers.map((value) => value.toJson()).toList(),
+              mobileCarriers!.map((value) => value.toJson()).toList(),
         if (operatingSystemVersions != null)
           'operatingSystemVersions':
-              operatingSystemVersions.map((value) => value.toJson()).toList(),
+              operatingSystemVersions!.map((value) => value.toJson()).toList(),
         if (operatingSystems != null)
           'operatingSystems':
-              operatingSystems.map((value) => value.toJson()).toList(),
+              operatingSystems!.map((value) => value.toJson()).toList(),
         if (platformTypes != null)
           'platformTypes':
-              platformTypes.map((value) => value.toJson()).toList(),
+              platformTypes!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Third Party Authentication Token
 class ThirdPartyAuthenticationToken {
   /// Name of the third-party authentication token.
-  core.String name;
+  core.String? name;
 
   /// Value of the third-party authentication token.
   ///
   /// This is a read-only, auto-generated field.
-  core.String value;
+  core.String? value;
 
   ThirdPartyAuthenticationToken();
 
@@ -28876,9 +27857,9 @@ class ThirdPartyAuthenticationToken {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -28905,10 +27886,10 @@ class ThirdPartyTrackingUrl {
   /// - "RICH_MEDIA_BACKUP_IMPRESSION"
   /// - "VIDEO_SKIP"
   /// - "VIDEO_PROGRESS"
-  core.String thirdPartyUrlType;
+  core.String? thirdPartyUrlType;
 
   /// URL for the specified third-party URL type.
-  core.String url;
+  core.String? url;
 
   ThirdPartyTrackingUrl();
 
@@ -28921,9 +27902,9 @@ class ThirdPartyTrackingUrl {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (thirdPartyUrlType != null) 'thirdPartyUrlType': thirdPartyUrlType,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (thirdPartyUrlType != null) 'thirdPartyUrlType': thirdPartyUrlType!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -28932,12 +27913,12 @@ class TranscodeSetting {
   /// Allowlist of video formats to be served to this placement.
   ///
   /// Set this list to null or empty to serve all video formats.
-  core.List<core.int> enabledVideoFormats;
+  core.List<core.int>? enabledVideoFormats;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#transcodeSetting".
-  core.String kind;
+  core.String? kind;
 
   TranscodeSetting();
 
@@ -28952,10 +27933,10 @@ class TranscodeSetting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (enabledVideoFormats != null)
-          'enabledVideoFormats': enabledVideoFormats,
-        if (kind != null) 'kind': kind,
+          'enabledVideoFormats': enabledVideoFormats!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -28970,13 +27951,13 @@ class UniversalAdId {
   /// - "AD_ID_OFFICIAL"
   /// - "CLEARCAST"
   /// - "DCM"
-  core.String registry;
+  core.String? registry;
 
   /// ID value for this creative.
   ///
   /// Only alphanumeric characters and the following symbols are valid: "_/\-".
   /// Maximum length is 64 characters. Read only when registry is DCM.
-  core.String value;
+  core.String? value;
 
   UniversalAdId();
 
@@ -28989,9 +27970,9 @@ class UniversalAdId {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (registry != null) 'registry': registry,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (registry != null) 'registry': registry!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -29003,13 +27984,13 @@ class UserDefinedVariableConfiguration {
   /// Possible string values are:
   /// - "STRING"
   /// - "NUMBER"
-  core.String dataType;
+  core.String? dataType;
 
   /// User-friendly name for the variable which will appear in reports.
   ///
   /// This is a required field, must be less than 64 characters long, and cannot
   /// contain the following characters: ""<>".
-  core.String reportName;
+  core.String? reportName;
 
   /// Variable name in the tag.
   ///
@@ -29115,7 +28096,7 @@ class UserDefinedVariableConfiguration {
   /// - "U98"
   /// - "U99"
   /// - "U100"
-  core.String variableType;
+  core.String? variableType;
 
   UserDefinedVariableConfiguration();
 
@@ -29131,10 +28112,10 @@ class UserDefinedVariableConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataType != null) 'dataType': dataType,
-        if (reportName != null) 'reportName': reportName,
-        if (variableType != null) 'variableType': variableType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataType != null) 'dataType': dataType!,
+        if (reportName != null) 'reportName': reportName!,
+        if (variableType != null) 'variableType': variableType!,
       };
 }
 
@@ -29144,30 +28125,30 @@ class UserDefinedVariableConfiguration {
 /// The profile_id needs to be specified in other API requests.
 class UserProfile {
   /// The account ID to which this profile belongs.
-  core.String accountId;
+  core.String? accountId;
 
   /// The account name this profile belongs to.
-  core.String accountName;
+  core.String? accountName;
 
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#userProfile".
-  core.String kind;
+  core.String? kind;
 
   /// The unique ID of the user profile.
-  core.String profileId;
+  core.String? profileId;
 
   /// The sub account ID this profile belongs to if applicable.
-  core.String subAccountId;
+  core.String? subAccountId;
 
   /// The sub account name this profile belongs to if applicable.
-  core.String subAccountName;
+  core.String? subAccountName;
 
   /// The user name.
-  core.String userName;
+  core.String? userName;
 
   UserProfile();
 
@@ -29198,30 +28179,30 @@ class UserProfile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (accountName != null) 'accountName': accountName,
-        if (etag != null) 'etag': etag,
-        if (kind != null) 'kind': kind,
-        if (profileId != null) 'profileId': profileId,
-        if (subAccountId != null) 'subAccountId': subAccountId,
-        if (subAccountName != null) 'subAccountName': subAccountName,
-        if (userName != null) 'userName': userName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (accountName != null) 'accountName': accountName!,
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (profileId != null) 'profileId': profileId!,
+        if (subAccountId != null) 'subAccountId': subAccountId!,
+        if (subAccountName != null) 'subAccountName': subAccountName!,
+        if (userName != null) 'userName': userName!,
       };
 }
 
 /// Represents the list of user profiles.
 class UserProfileList {
   /// Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The user profiles returned in this response.
-  core.List<UserProfile> items;
+  core.List<UserProfile>? items;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#userProfileList".
-  core.String kind;
+  core.String? kind;
 
   UserProfileList();
 
@@ -29240,11 +28221,11 @@ class UserProfileList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -29253,24 +28234,24 @@ class UserRole {
   /// Account ID of this user role.
   ///
   /// This is a read-only field that can be left blank.
-  core.String accountId;
+  core.String? accountId;
 
   /// Whether this is a default user role.
   ///
   /// Default user roles are created by the system for the account/subaccount
   /// and cannot be modified or deleted. Each default user role comes with a
   /// basic set of preassigned permissions.
-  core.bool defaultUserRole;
+  core.bool? defaultUserRole;
 
   /// ID of this user role.
   ///
   /// This is a read-only, auto-generated field.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#userRole".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this user role.
   ///
@@ -29279,20 +28260,20 @@ class UserRole {
   /// the same subaccount. Otherwise, this user role is a top-level user role,
   /// and the name must be unique among top-level user roles of the same
   /// account.
-  core.String name;
+  core.String? name;
 
   /// ID of the user role that this user role is based on or copied from.
   ///
   /// This is a required field.
-  core.String parentUserRoleId;
+  core.String? parentUserRoleId;
 
   /// List of permissions associated with this user role.
-  core.List<UserRolePermission> permissions;
+  core.List<UserRolePermission>? permissions;
 
   /// Subaccount ID of this user role.
   ///
   /// This is a read-only field that can be left blank.
-  core.String subaccountId;
+  core.String? subaccountId;
 
   UserRole();
 
@@ -29326,16 +28307,16 @@ class UserRole {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (defaultUserRole != null) 'defaultUserRole': defaultUserRole,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (parentUserRoleId != null) 'parentUserRoleId': parentUserRoleId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (defaultUserRole != null) 'defaultUserRole': defaultUserRole!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (parentUserRoleId != null) 'parentUserRoleId': parentUserRoleId!,
         if (permissions != null)
-          'permissions': permissions.map((value) => value.toJson()).toList(),
-        if (subaccountId != null) 'subaccountId': subaccountId,
+          'permissions': permissions!.map((value) => value.toJson()).toList(),
+        if (subaccountId != null) 'subaccountId': subaccountId!,
       };
 }
 
@@ -29348,21 +28329,21 @@ class UserRolePermission {
   /// - "SUBACCOUNT_AND_ACCOUNT_BY_DEFAULT"
   /// - "ACCOUNT_ALWAYS"
   /// - "SUBACCOUNT_AND_ACCOUNT_ALWAYS"
-  core.String availability;
+  core.String? availability;
 
   /// ID of this user role permission.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#userRolePermission".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this user role permission.
-  core.String name;
+  core.String? name;
 
   /// ID of the permission group that this user role permission belongs to.
-  core.String permissionGroupId;
+  core.String? permissionGroupId;
 
   UserRolePermission();
 
@@ -29384,27 +28365,27 @@ class UserRolePermission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (availability != null) 'availability': availability,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (permissionGroupId != null) 'permissionGroupId': permissionGroupId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (availability != null) 'availability': availability!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (permissionGroupId != null) 'permissionGroupId': permissionGroupId!,
       };
 }
 
 /// Represents a grouping of related user role permissions.
 class UserRolePermissionGroup {
   /// ID of this user role permission.
-  core.String id;
+  core.String? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#userRolePermissionGroup".
-  core.String kind;
+  core.String? kind;
 
   /// Name of this user role permission group.
-  core.String name;
+  core.String? name;
 
   UserRolePermissionGroup();
 
@@ -29420,10 +28401,10 @@ class UserRolePermissionGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -29433,10 +28414,10 @@ class UserRolePermissionGroupsListResponse {
   ///
   /// Value: the fixed string
   /// "dfareporting#userRolePermissionGroupsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// User role permission group collection.
-  core.List<UserRolePermissionGroup> userRolePermissionGroups;
+  core.List<UserRolePermissionGroup>? userRolePermissionGroups;
 
   UserRolePermissionGroupsListResponse();
 
@@ -29454,11 +28435,11 @@ class UserRolePermissionGroupsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (userRolePermissionGroups != null)
           'userRolePermissionGroups':
-              userRolePermissionGroups.map((value) => value.toJson()).toList(),
+              userRolePermissionGroups!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -29467,10 +28448,10 @@ class UserRolePermissionsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#userRolePermissionsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// User role permission collection.
-  core.List<UserRolePermission> userRolePermissions;
+  core.List<UserRolePermission>? userRolePermissions;
 
   UserRolePermissionsListResponse();
 
@@ -29486,11 +28467,11 @@ class UserRolePermissionsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (userRolePermissions != null)
           'userRolePermissions':
-              userRolePermissions.map((value) => value.toJson()).toList(),
+              userRolePermissions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -29499,13 +28480,13 @@ class UserRolesListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#userRolesListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Pagination token to be used for the next list operation.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// User role collection.
-  core.List<UserRole> userRoles;
+  core.List<UserRole>? userRoles;
 
   UserRolesListResponse();
 
@@ -29524,11 +28505,11 @@ class UserRolesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (userRoles != null)
-          'userRoles': userRoles.map((value) => value.toJson()).toList(),
+          'userRoles': userRoles!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -29541,21 +28522,21 @@ class VideoFormat {
   /// - "MP4"
   /// - "WEBM"
   /// - "M3U8"
-  core.String fileType;
+  core.String? fileType;
 
   /// ID of the video format.
-  core.int id;
+  core.int? id;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#videoFormat".
-  core.String kind;
+  core.String? kind;
 
   /// The resolution of this video format.
-  Size resolution;
+  Size? resolution;
 
   /// The target bit rate of this video format.
-  core.int targetBitRate;
+  core.int? targetBitRate;
 
   VideoFormat();
 
@@ -29578,12 +28559,12 @@ class VideoFormat {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fileType != null) 'fileType': fileType,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (resolution != null) 'resolution': resolution.toJson(),
-        if (targetBitRate != null) 'targetBitRate': targetBitRate,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fileType != null) 'fileType': fileType!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (resolution != null) 'resolution': resolution!.toJson(),
+        if (targetBitRate != null) 'targetBitRate': targetBitRate!,
       };
 }
 
@@ -29592,10 +28573,10 @@ class VideoFormatsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#videoFormatsListResponse".
-  core.String kind;
+  core.String? kind;
 
   /// Video format collection.
-  core.List<VideoFormat> videoFormats;
+  core.List<VideoFormat>? videoFormats;
 
   VideoFormatsListResponse();
 
@@ -29611,10 +28592,10 @@ class VideoFormatsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (videoFormats != null)
-          'videoFormats': videoFormats.map((value) => value.toJson()).toList(),
+          'videoFormats': videoFormats!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -29624,13 +28605,13 @@ class VideoOffset {
   ///
   /// Do not set when offsetSeconds is set. Acceptable values are 0 to 100,
   /// inclusive.
-  core.int offsetPercentage;
+  core.int? offsetPercentage;
 
   /// Duration, in seconds.
   ///
   /// Do not set when offsetPercentage is set. Acceptable values are 0 to 86399,
   /// inclusive.
-  core.int offsetSeconds;
+  core.int? offsetSeconds;
 
   VideoOffset();
 
@@ -29643,9 +28624,9 @@ class VideoOffset {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (offsetPercentage != null) 'offsetPercentage': offsetPercentage,
-        if (offsetSeconds != null) 'offsetSeconds': offsetSeconds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (offsetPercentage != null) 'offsetPercentage': offsetPercentage!,
+        if (offsetSeconds != null) 'offsetSeconds': offsetSeconds!,
       };
 }
 
@@ -29653,21 +28634,21 @@ class VideoOffset {
 class VideoSettings {
   /// Settings for the companion creatives of video creatives served to this
   /// placement.
-  CompanionSetting companionSettings;
+  CompanionSetting? companionSettings;
 
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string "dfareporting#videoSettings".
-  core.String kind;
+  core.String? kind;
 
   /// Whether OBA icons are enabled for this placement.
-  core.bool obaEnabled;
+  core.bool? obaEnabled;
 
   /// Settings for the OBA icon of video creatives served to this placement.
   ///
   /// If this object is provided, the creative-level OBA settings will be
   /// overridden.
-  ObaIcon obaSettings;
+  ObaIcon? obaSettings;
 
   /// Orientation of a video placement.
   ///
@@ -29677,19 +28658,19 @@ class VideoSettings {
   /// - "ANY"
   /// - "LANDSCAPE"
   /// - "PORTRAIT"
-  core.String orientation;
+  core.String? orientation;
 
   /// Settings for the skippability of video creatives served to this placement.
   ///
   /// If this object is provided, the creative-level skippable settings will be
   /// overridden.
-  SkippableSetting skippableSettings;
+  SkippableSetting? skippableSettings;
 
   /// Settings for the transcodes of video creatives served to this placement.
   ///
   /// If this object is provided, the creative-level transcode settings will be
   /// overridden.
-  TranscodeSetting transcodeSettings;
+  TranscodeSetting? transcodeSettings;
 
   VideoSettings();
 
@@ -29721,16 +28702,16 @@ class VideoSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (companionSettings != null)
-          'companionSettings': companionSettings.toJson(),
-        if (kind != null) 'kind': kind,
-        if (obaEnabled != null) 'obaEnabled': obaEnabled,
-        if (obaSettings != null) 'obaSettings': obaSettings.toJson(),
-        if (orientation != null) 'orientation': orientation,
+          'companionSettings': companionSettings!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (obaEnabled != null) 'obaEnabled': obaEnabled!,
+        if (obaSettings != null) 'obaSettings': obaSettings!.toJson(),
+        if (orientation != null) 'orientation': orientation!,
         if (skippableSettings != null)
-          'skippableSettings': skippableSettings.toJson(),
+          'skippableSettings': skippableSettings!.toJson(),
         if (transcodeSettings != null)
-          'transcodeSettings': transcodeSettings.toJson(),
+          'transcodeSettings': transcodeSettings!.toJson(),
       };
 }

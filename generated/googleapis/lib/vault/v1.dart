@@ -94,13 +94,9 @@ class MattersResource {
   async.Future<MatterPermission> addPermissions(
     AddMatterPermissionsRequest request,
     core.String matterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -142,13 +138,9 @@ class MattersResource {
   async.Future<CloseMatterResponse> close(
     CloseMatterRequest request,
     core.String matterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -188,13 +180,9 @@ class MattersResource {
   async.Future<Operation> count(
     CountArtifactsRequest request,
     core.String matterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -232,10 +220,9 @@ class MattersResource {
   /// this method will complete with the same error.
   async.Future<Matter> create(
     Matter request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -271,11 +258,8 @@ class MattersResource {
   /// this method will complete with the same error.
   async.Future<Matter> delete(
     core.String matterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -316,12 +300,9 @@ class MattersResource {
   /// this method will complete with the same error.
   async.Future<Matter> get(
     core.String matterId, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -373,11 +354,11 @@ class MattersResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMattersResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String state,
-    core.String view,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? state,
+    core.String? view,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -419,13 +400,9 @@ class MattersResource {
   async.Future<Empty> removePermissions(
     RemoveMatterPermissionsRequest request,
     core.String matterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -466,13 +443,9 @@ class MattersResource {
   async.Future<ReopenMatterResponse> reopen(
     ReopenMatterRequest request,
     core.String matterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -513,13 +486,9 @@ class MattersResource {
   async.Future<Matter> undelete(
     UndeleteMatterRequest request,
     core.String matterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -562,13 +531,9 @@ class MattersResource {
   async.Future<Matter> update(
     Matter request,
     core.String matterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -611,13 +576,9 @@ class MattersExportsResource {
   async.Future<Export> create(
     Export request,
     core.String matterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -655,14 +616,8 @@ class MattersExportsResource {
   async.Future<Empty> delete(
     core.String matterId,
     core.String exportId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
-    if (exportId == null) {
-      throw core.ArgumentError('Parameter exportId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -701,14 +656,8 @@ class MattersExportsResource {
   async.Future<Export> get(
     core.String matterId,
     core.String exportId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
-    if (exportId == null) {
-      throw core.ArgumentError('Parameter exportId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -748,13 +697,10 @@ class MattersExportsResource {
   /// this method will complete with the same error.
   async.Future<ListExportsResponse> list(
     core.String matterId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -809,16 +755,9 @@ class MattersHoldsResource {
     AddHeldAccountsRequest request,
     core.String matterId,
     core.String holdId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
-    if (holdId == null) {
-      throw core.ArgumentError('Parameter holdId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -860,13 +799,9 @@ class MattersHoldsResource {
   async.Future<Hold> create(
     Hold request,
     core.String matterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -906,14 +841,8 @@ class MattersHoldsResource {
   async.Future<Empty> delete(
     core.String matterId,
     core.String holdId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
-    if (holdId == null) {
-      throw core.ArgumentError('Parameter holdId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -962,15 +891,9 @@ class MattersHoldsResource {
   async.Future<Hold> get(
     core.String matterId,
     core.String holdId, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
-    if (holdId == null) {
-      throw core.ArgumentError('Parameter holdId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -1026,14 +949,11 @@ class MattersHoldsResource {
   /// this method will complete with the same error.
   async.Future<ListHoldsResponse> list(
     core.String matterId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1081,16 +1001,9 @@ class MattersHoldsResource {
     RemoveHeldAccountsRequest request,
     core.String matterId,
     core.String holdId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
-    if (holdId == null) {
-      throw core.ArgumentError('Parameter holdId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1139,16 +1052,9 @@ class MattersHoldsResource {
     Hold request,
     core.String matterId,
     core.String holdId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
-    if (holdId == null) {
-      throw core.ArgumentError('Parameter holdId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1201,16 +1107,9 @@ class MattersHoldsAccountsResource {
     HeldAccount request,
     core.String matterId,
     core.String holdId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
-    if (holdId == null) {
-      throw core.ArgumentError('Parameter holdId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1258,17 +1157,8 @@ class MattersHoldsAccountsResource {
     core.String matterId,
     core.String holdId,
     core.String accountId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
-    if (holdId == null) {
-      throw core.ArgumentError('Parameter holdId is required.');
-    }
-    if (accountId == null) {
-      throw core.ArgumentError('Parameter accountId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1312,14 +1202,8 @@ class MattersHoldsAccountsResource {
   async.Future<ListHeldAccountsResponse> list(
     core.String matterId,
     core.String holdId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
-    if (holdId == null) {
-      throw core.ArgumentError('Parameter holdId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1368,13 +1252,9 @@ class MattersSavedQueriesResource {
   async.Future<SavedQuery> create(
     SavedQuery request,
     core.String matterId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1415,14 +1295,8 @@ class MattersSavedQueriesResource {
   async.Future<Empty> delete(
     core.String matterId,
     core.String savedQueryId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
-    if (savedQueryId == null) {
-      throw core.ArgumentError('Parameter savedQueryId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1462,14 +1336,8 @@ class MattersSavedQueriesResource {
   async.Future<SavedQuery> get(
     core.String matterId,
     core.String savedQueryId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
-    if (savedQueryId == null) {
-      throw core.ArgumentError('Parameter savedQueryId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1515,13 +1383,10 @@ class MattersSavedQueriesResource {
   /// this method will complete with the same error.
   async.Future<ListSavedQueriesResponse> list(
     core.String matterId, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (matterId == null) {
-      throw core.ArgumentError('Parameter matterId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1578,13 +1443,9 @@ class OperationsResource {
   async.Future<Empty> cancel(
     CancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1624,11 +1485,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1665,11 +1523,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1718,14 +1573,11 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1748,10 +1600,10 @@ class OperationsResource {
 /// Count number for each account.
 class AccountCount {
   /// Account owner.
-  UserInfo account;
+  UserInfo? account;
 
   /// The number of artifacts found for this account.
-  core.String count;
+  core.String? count;
 
   AccountCount();
 
@@ -1765,16 +1617,16 @@ class AccountCount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (account != null) 'account': account.toJson(),
-        if (count != null) 'count': count,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (account != null) 'account': account!.toJson(),
+        if (count != null) 'count': count!,
       };
 }
 
 /// An error that occurred when querying a specific account
 class AccountCountError {
   /// Account owner.
-  UserInfo account;
+  UserInfo? account;
 
   /// Account query error.
   /// Possible string values are:
@@ -1786,7 +1638,7 @@ class AccountCountError {
   /// replicas, temporarily unavailable.
   /// - "UNKNOWN" : Unrecognized error.
   /// - "DEADLINE_EXCEEDED" : Deadline exceeded when querying the account.
-  core.String errorType;
+  core.String? errorType;
 
   AccountCountError();
 
@@ -1800,16 +1652,16 @@ class AccountCountError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (account != null) 'account': account.toJson(),
-        if (errorType != null) 'errorType': errorType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (account != null) 'account': account!.toJson(),
+        if (errorType != null) 'errorType': errorType!,
       };
 }
 
 /// Accounts to search
 class AccountInfo {
   /// A set of accounts to search.
-  core.List<core.String> emails;
+  core.List<core.String>? emails;
 
   AccountInfo();
 
@@ -1821,8 +1673,8 @@ class AccountInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (emails != null) 'emails': emails,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (emails != null) 'emails': emails!,
       };
 }
 
@@ -1830,12 +1682,12 @@ class AccountInfo {
 /// if successful.
 class AddHeldAccountResult {
   /// If present, this account was successfully created.
-  HeldAccount account;
+  HeldAccount? account;
 
   /// This represents the success status.
   ///
   /// If failed, check message.
-  Status status;
+  Status? status;
 
   AddHeldAccountResult();
 
@@ -1850,9 +1702,9 @@ class AddHeldAccountResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (account != null) 'account': account.toJson(),
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (account != null) 'account': account!.toJson(),
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -1861,12 +1713,12 @@ class AddHeldAccountsRequest {
   /// Account IDs to identify which accounts to add.
   ///
   /// Only account_ids or only emails should be specified, but not both.
-  core.List<core.String> accountIds;
+  core.List<core.String>? accountIds;
 
   /// Emails to identify which accounts to add.
   ///
   /// Only emails or only account_ids should be specified, but not both.
-  core.List<core.String> emails;
+  core.List<core.String>? emails;
 
   AddHeldAccountsRequest();
 
@@ -1883,16 +1735,16 @@ class AddHeldAccountsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountIds != null) 'accountIds': accountIds,
-        if (emails != null) 'emails': emails,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountIds != null) 'accountIds': accountIds!,
+        if (emails != null) 'emails': emails!,
       };
 }
 
 /// Response for batch create held accounts.
 class AddHeldAccountsResponse {
   /// The list of responses, in the same order as the batch request.
-  core.List<AddHeldAccountResult> responses;
+  core.List<AddHeldAccountResult>? responses;
 
   AddHeldAccountsResponse();
 
@@ -1905,9 +1757,9 @@ class AddHeldAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (responses != null)
-          'responses': responses.map((value) => value.toJson()).toList(),
+          'responses': responses!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1919,15 +1771,15 @@ class AddMatterPermissionsRequest {
   /// Only relevant if send_emails is true.
   ///
   /// True to CC requestor in the email message. False to not CC requestor.
-  core.bool ccMe;
+  core.bool? ccMe;
 
   /// The MatterPermission to add.
-  MatterPermission matterPermission;
+  MatterPermission? matterPermission;
 
   /// True to send notification email to the added account.
   ///
   /// False to not send notification email.
-  core.bool sendEmails;
+  core.bool? sendEmails;
 
   AddMatterPermissionsRequest();
 
@@ -1944,11 +1796,11 @@ class AddMatterPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ccMe != null) 'ccMe': ccMe,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ccMe != null) 'ccMe': ccMe!,
         if (matterPermission != null)
-          'matterPermission': matterPermission.toJson(),
-        if (sendEmails != null) 'sendEmails': sendEmails,
+          'matterPermission': matterPermission!.toJson(),
+        if (sendEmails != null) 'sendEmails': sendEmails!,
       };
 }
 
@@ -1960,7 +1812,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Close a matter by ID.
@@ -1971,13 +1823,13 @@ class CloseMatterRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response to a CloseMatterRequest.
 class CloseMatterResponse {
   /// The updated matter, with state CLOSED.
-  Matter matter;
+  Matter? matter;
 
   CloseMatterResponse();
 
@@ -1988,8 +1840,8 @@ class CloseMatterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (matter != null) 'matter': matter.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (matter != null) 'matter': matter!.toJson(),
       };
 }
 
@@ -1999,18 +1851,18 @@ class CloudStorageFile {
   ///
   /// Can be used in cloud storage JSON/XML API, but not to list the bucket
   /// contents. Instead, you can get individual export files by object name.
-  core.String bucketName;
+  core.String? bucketName;
 
   /// The md5 hash of the file.
-  core.String md5Hash;
+  core.String? md5Hash;
 
   /// The cloud storage object name of this export file.
   ///
   /// Can be used in cloud storage JSON/XML API.
-  core.String objectName;
+  core.String? objectName;
 
   /// The size of the export file.
-  core.String size;
+  core.String? size;
 
   CloudStorageFile();
 
@@ -2029,11 +1881,11 @@ class CloudStorageFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bucketName != null) 'bucketName': bucketName,
-        if (md5Hash != null) 'md5Hash': md5Hash,
-        if (objectName != null) 'objectName': objectName,
-        if (size != null) 'size': size,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bucketName != null) 'bucketName': bucketName!,
+        if (md5Hash != null) 'md5Hash': md5Hash!,
+        if (objectName != null) 'objectName': objectName!,
+        if (size != null) 'size': size!,
       };
 }
 
@@ -2042,7 +1894,7 @@ class CloudStorageSink {
   /// The exported files on cloud storage.
   ///
   /// Output only.
-  core.List<CloudStorageFile> files;
+  core.List<CloudStorageFile>? files;
 
   CloudStorageSink();
 
@@ -2055,9 +1907,9 @@ class CloudStorageSink {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (files != null)
-          'files': files.map((value) => value.toJson()).toList(),
+          'files': files!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2066,27 +1918,27 @@ class CorpusQuery {
   /// Details pertaining to Drive holds.
   ///
   /// If set, corpus must be Drive.
-  HeldDriveQuery driveQuery;
+  HeldDriveQuery? driveQuery;
 
   /// Details pertaining to Groups holds.
   ///
   /// If set, corpus must be Groups.
-  HeldGroupsQuery groupsQuery;
+  HeldGroupsQuery? groupsQuery;
 
   /// Details pertaining to Hangouts Chat holds.
   ///
   /// If set, corpus must be Hangouts Chat.
-  HeldHangoutsChatQuery hangoutsChatQuery;
+  HeldHangoutsChatQuery? hangoutsChatQuery;
 
   /// Details pertaining to mail holds.
   ///
   /// If set, corpus must be mail.
-  HeldMailQuery mailQuery;
+  HeldMailQuery? mailQuery;
 
   /// Details pertaining to Voice holds.
   ///
   /// If set, corpus must be Voice.
-  HeldVoiceQuery voiceQuery;
+  HeldVoiceQuery? voiceQuery;
 
   CorpusQuery();
 
@@ -2113,13 +1965,13 @@ class CorpusQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (driveQuery != null) 'driveQuery': driveQuery.toJson(),
-        if (groupsQuery != null) 'groupsQuery': groupsQuery.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (driveQuery != null) 'driveQuery': driveQuery!.toJson(),
+        if (groupsQuery != null) 'groupsQuery': groupsQuery!.toJson(),
         if (hangoutsChatQuery != null)
-          'hangoutsChatQuery': hangoutsChatQuery.toJson(),
-        if (mailQuery != null) 'mailQuery': mailQuery.toJson(),
-        if (voiceQuery != null) 'voiceQuery': voiceQuery.toJson(),
+          'hangoutsChatQuery': hangoutsChatQuery!.toJson(),
+        if (mailQuery != null) 'mailQuery': mailQuery!.toJson(),
+        if (voiceQuery != null) 'voiceQuery': voiceQuery!.toJson(),
       };
 }
 
@@ -2128,16 +1980,16 @@ class CountArtifactsMetadata {
   /// End time of count operation.
   ///
   /// Available when operation is done.
-  core.String endTime;
+  core.String? endTime;
 
   /// The matter ID of the associated matter.
-  core.String matterId;
+  core.String? matterId;
 
   /// The search query from the request.
-  Query query;
+  Query? query;
 
   /// Creation time of count operation.
-  core.String startTime;
+  core.String? startTime;
 
   CountArtifactsMetadata();
 
@@ -2157,18 +2009,18 @@ class CountArtifactsMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (matterId != null) 'matterId': matterId,
-        if (query != null) 'query': query.toJson(),
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (matterId != null) 'matterId': matterId!,
+        if (query != null) 'query': query!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
 /// Count artifacts request.
 class CountArtifactsRequest {
   /// The search query.
-  Query query;
+  Query? query;
 
   /// Specifies the granularity of the count result returned in response.
   /// Possible string values are:
@@ -2177,7 +2029,7 @@ class CountArtifactsRequest {
   /// - "TOTAL_COUNT" : Response includes: total count, queried accounts count,
   /// matching accounts count, non-queryable accounts, queried account errors.
   /// - "ALL" : Response includes additional breakdown of account count.
-  core.String view;
+  core.String? view;
 
   CountArtifactsRequest();
 
@@ -2191,24 +2043,24 @@ class CountArtifactsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (query != null) 'query': query.toJson(),
-        if (view != null) 'view': view,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (query != null) 'query': query!.toJson(),
+        if (view != null) 'view': view!,
       };
 }
 
 /// Definition of the response for method CountArtifacts.
 class CountArtifactsResponse {
   /// Count metrics of Groups.
-  GroupsCountResult groupsCountResult;
+  GroupsCountResult? groupsCountResult;
 
   /// Count metrics of Mail.
-  MailCountResult mailCountResult;
+  MailCountResult? mailCountResult;
 
   /// Total count of artifacts.
   ///
   /// For mail and groups, artifacts refers to messages.
-  core.String totalCount;
+  core.String? totalCount;
 
   CountArtifactsResponse();
 
@@ -2226,12 +2078,12 @@ class CountArtifactsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (groupsCountResult != null)
-          'groupsCountResult': groupsCountResult.toJson(),
+          'groupsCountResult': groupsCountResult!.toJson(),
         if (mailCountResult != null)
-          'mailCountResult': mailCountResult.toJson(),
-        if (totalCount != null) 'totalCount': totalCount,
+          'mailCountResult': mailCountResult!.toJson(),
+        if (totalCount != null) 'totalCount': totalCount!,
       };
 }
 
@@ -2239,7 +2091,7 @@ class CountArtifactsResponse {
 class DriveExportOptions {
   /// Set to true to include access level information for users with indirect
   /// access to files.
-  core.bool includeAccessInfo;
+  core.bool? includeAccessInfo;
 
   DriveExportOptions();
 
@@ -2249,23 +2101,23 @@ class DriveExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (includeAccessInfo != null) 'includeAccessInfo': includeAccessInfo,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (includeAccessInfo != null) 'includeAccessInfo': includeAccessInfo!,
       };
 }
 
 /// Drive search advanced options
 class DriveOptions {
   /// Set to true to include shared drive.
-  core.bool includeSharedDrives;
+  core.bool? includeSharedDrives;
 
   /// Set to true to include Team Drive.
-  core.bool includeTeamDrives;
+  core.bool? includeTeamDrives;
 
   /// Search the versions of the Drive file as of the reference date.
   ///
   /// These timestamps are in GMT and rounded down to the given date.
-  core.String versionDate;
+  core.String? versionDate;
 
   DriveOptions();
 
@@ -2281,11 +2133,11 @@ class DriveOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (includeSharedDrives != null)
-          'includeSharedDrives': includeSharedDrives,
-        if (includeTeamDrives != null) 'includeTeamDrives': includeTeamDrives,
-        if (versionDate != null) 'versionDate': versionDate,
+          'includeSharedDrives': includeSharedDrives!,
+        if (includeTeamDrives != null) 'includeTeamDrives': includeTeamDrives!,
+        if (versionDate != null) 'versionDate': versionDate!,
       };
 }
 
@@ -2303,7 +2155,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// An export
@@ -2311,41 +2163,41 @@ class Export {
   /// Export sink for cloud storage files.
   ///
   /// Output only.
-  CloudStorageSink cloudStorageSink;
+  CloudStorageSink? cloudStorageSink;
 
   /// The time when the export was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Advanced options of the export.
-  ExportOptions exportOptions;
+  ExportOptions? exportOptions;
 
   /// The generated export ID.
   ///
   /// Output only.
-  core.String id;
+  core.String? id;
 
   /// The matter ID.
   ///
   /// Output only.
-  core.String matterId;
+  core.String? matterId;
 
   /// The export name.
-  core.String name;
+  core.String? name;
 
   /// The search query being exported.
-  Query query;
+  Query? query;
 
   /// The requester of the export.
   ///
   /// Output only.
-  UserInfo requester;
+  UserInfo? requester;
 
   /// Export statistics.
   ///
   /// Output only.
-  ExportStats stats;
+  ExportStats? stats;
 
   /// The export status.
   ///
@@ -2355,7 +2207,7 @@ class Export {
   /// - "COMPLETED" : The export completed.
   /// - "FAILED" : The export failed.
   /// - "IN_PROGRESS" : The export is still being executed.
-  core.String status;
+  core.String? status;
 
   Export();
 
@@ -2397,34 +2249,34 @@ class Export {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (cloudStorageSink != null)
-          'cloudStorageSink': cloudStorageSink.toJson(),
-        if (createTime != null) 'createTime': createTime,
-        if (exportOptions != null) 'exportOptions': exportOptions.toJson(),
-        if (id != null) 'id': id,
-        if (matterId != null) 'matterId': matterId,
-        if (name != null) 'name': name,
-        if (query != null) 'query': query.toJson(),
-        if (requester != null) 'requester': requester.toJson(),
-        if (stats != null) 'stats': stats.toJson(),
-        if (status != null) 'status': status,
+          'cloudStorageSink': cloudStorageSink!.toJson(),
+        if (createTime != null) 'createTime': createTime!,
+        if (exportOptions != null) 'exportOptions': exportOptions!.toJson(),
+        if (id != null) 'id': id!,
+        if (matterId != null) 'matterId': matterId!,
+        if (name != null) 'name': name!,
+        if (query != null) 'query': query!.toJson(),
+        if (requester != null) 'requester': requester!.toJson(),
+        if (stats != null) 'stats': stats!.toJson(),
+        if (status != null) 'status': status!,
       };
 }
 
 /// Export advanced options
 class ExportOptions {
   /// Option available for Drive export.
-  DriveExportOptions driveOptions;
+  DriveExportOptions? driveOptions;
 
   /// Option available for groups export.
-  GroupsExportOptions groupsOptions;
+  GroupsExportOptions? groupsOptions;
 
   /// Option available for hangouts chat export.
-  HangoutsChatExportOptions hangoutsChatOptions;
+  HangoutsChatExportOptions? hangoutsChatOptions;
 
   /// Option available for mail export.
-  MailExportOptions mailOptions;
+  MailExportOptions? mailOptions;
 
   /// The requested export location.
   /// Possible string values are:
@@ -2433,10 +2285,10 @@ class ExportOptions {
   /// - "ANY" : Any region.
   /// - "US" : US region.
   /// - "EUROPE" : Europe region.
-  core.String region;
+  core.String? region;
 
   /// Option available for voice export.
-  VoiceExportOptions voiceOptions;
+  VoiceExportOptions? voiceOptions;
 
   ExportOptions();
 
@@ -2466,27 +2318,27 @@ class ExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (driveOptions != null) 'driveOptions': driveOptions.toJson(),
-        if (groupsOptions != null) 'groupsOptions': groupsOptions.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (driveOptions != null) 'driveOptions': driveOptions!.toJson(),
+        if (groupsOptions != null) 'groupsOptions': groupsOptions!.toJson(),
         if (hangoutsChatOptions != null)
-          'hangoutsChatOptions': hangoutsChatOptions.toJson(),
-        if (mailOptions != null) 'mailOptions': mailOptions.toJson(),
-        if (region != null) 'region': region,
-        if (voiceOptions != null) 'voiceOptions': voiceOptions.toJson(),
+          'hangoutsChatOptions': hangoutsChatOptions!.toJson(),
+        if (mailOptions != null) 'mailOptions': mailOptions!.toJson(),
+        if (region != null) 'region': region!,
+        if (voiceOptions != null) 'voiceOptions': voiceOptions!.toJson(),
       };
 }
 
 /// Stats of an export.
 class ExportStats {
   /// The number of documents already processed by the export.
-  core.String exportedArtifactCount;
+  core.String? exportedArtifactCount;
 
   /// The size of export in bytes.
-  core.String sizeInBytes;
+  core.String? sizeInBytes;
 
   /// The number of documents to be exported.
-  core.String totalArtifactCount;
+  core.String? totalArtifactCount;
 
   ExportStats();
 
@@ -2502,35 +2354,35 @@ class ExportStats {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (exportedArtifactCount != null)
-          'exportedArtifactCount': exportedArtifactCount,
-        if (sizeInBytes != null) 'sizeInBytes': sizeInBytes,
+          'exportedArtifactCount': exportedArtifactCount!,
+        if (sizeInBytes != null) 'sizeInBytes': sizeInBytes!,
         if (totalArtifactCount != null)
-          'totalArtifactCount': totalArtifactCount,
+          'totalArtifactCount': totalArtifactCount!,
       };
 }
 
 /// Groups specific count metrics.
 class GroupsCountResult {
   /// Error occurred when querying these accounts.
-  core.List<AccountCountError> accountCountErrors;
+  core.List<AccountCountError>? accountCountErrors;
 
   /// Subtotal count per matching account that have more than zero messages.
-  core.List<AccountCount> accountCounts;
+  core.List<AccountCount>? accountCounts;
 
   /// Total number of accounts that can be queried and have more than zero
   /// messages.
-  core.String matchingAccountsCount;
+  core.String? matchingAccountsCount;
 
   /// When data scope is HELD_DATA in the request Query, these accounts in the
   /// request are not queried because they are not on hold.
   ///
   /// For other data scope, this field is not set.
-  core.List<core.String> nonQueryableAccounts;
+  core.List<core.String>? nonQueryableAccounts;
 
   /// Total number of accounts involved in this count operation.
-  core.String queriedAccountsCount;
+  core.String? queriedAccountsCount;
 
   GroupsCountResult();
 
@@ -2560,19 +2412,19 @@ class GroupsCountResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accountCountErrors != null)
           'accountCountErrors':
-              accountCountErrors.map((value) => value.toJson()).toList(),
+              accountCountErrors!.map((value) => value.toJson()).toList(),
         if (accountCounts != null)
           'accountCounts':
-              accountCounts.map((value) => value.toJson()).toList(),
+              accountCounts!.map((value) => value.toJson()).toList(),
         if (matchingAccountsCount != null)
-          'matchingAccountsCount': matchingAccountsCount,
+          'matchingAccountsCount': matchingAccountsCount!,
         if (nonQueryableAccounts != null)
-          'nonQueryableAccounts': nonQueryableAccounts,
+          'nonQueryableAccounts': nonQueryableAccounts!,
         if (queriedAccountsCount != null)
-          'queriedAccountsCount': queriedAccountsCount,
+          'queriedAccountsCount': queriedAccountsCount!,
       };
 }
 
@@ -2583,7 +2435,7 @@ class GroupsExportOptions {
   /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
   /// - "MBOX" : MBOX as export format.
   /// - "PST" : PST as export format
-  core.String exportFormat;
+  core.String? exportFormat;
 
   GroupsExportOptions();
 
@@ -2593,8 +2445,8 @@ class GroupsExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exportFormat != null) 'exportFormat': exportFormat,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exportFormat != null) 'exportFormat': exportFormat!,
       };
 }
 
@@ -2605,7 +2457,7 @@ class HangoutsChatExportOptions {
   /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
   /// - "MBOX" : MBOX as export format.
   /// - "PST" : PST as export format
-  core.String exportFormat;
+  core.String? exportFormat;
 
   HangoutsChatExportOptions();
 
@@ -2615,15 +2467,15 @@ class HangoutsChatExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exportFormat != null) 'exportFormat': exportFormat,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exportFormat != null) 'exportFormat': exportFormat!,
       };
 }
 
 /// Accounts to search
 class HangoutsChatInfo {
   /// A set of rooms to search.
-  core.List<core.String> roomId;
+  core.List<core.String>? roomId;
 
   HangoutsChatInfo();
 
@@ -2635,15 +2487,15 @@ class HangoutsChatInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (roomId != null) 'roomId': roomId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (roomId != null) 'roomId': roomId!,
       };
 }
 
 /// Hangouts chat search advanced options
 class HangoutsChatOptions {
   /// Set to true to include rooms.
-  core.bool includeRooms;
+  core.bool? includeRooms;
 
   HangoutsChatOptions();
 
@@ -2653,8 +2505,8 @@ class HangoutsChatOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (includeRooms != null) 'includeRooms': includeRooms,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (includeRooms != null) 'includeRooms': includeRooms!,
       };
 }
 
@@ -2664,27 +2516,27 @@ class HangoutsChatOptions {
 /// group, depending on the corpus.
 class HeldAccount {
   /// The account's ID as provided by the Admin SDK.
-  core.String accountId;
+  core.String? accountId;
 
   /// The primary email address of the account.
   ///
   /// If used as an input, this takes precedence over account ID.
-  core.String email;
+  core.String? email;
 
   /// The first name of the account holder.
   ///
   /// Output only.
-  core.String firstName;
+  core.String? firstName;
 
   /// When the account was put on hold.
   ///
   /// Output only.
-  core.String holdTime;
+  core.String? holdTime;
 
   /// The last name of the account holder.
   ///
   /// Output only.
-  core.String lastName;
+  core.String? lastName;
 
   HeldAccount();
 
@@ -2706,22 +2558,22 @@ class HeldAccount {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (email != null) 'email': email,
-        if (firstName != null) 'firstName': firstName,
-        if (holdTime != null) 'holdTime': holdTime,
-        if (lastName != null) 'lastName': lastName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (email != null) 'email': email!,
+        if (firstName != null) 'firstName': firstName!,
+        if (holdTime != null) 'holdTime': holdTime!,
+        if (lastName != null) 'lastName': lastName!,
       };
 }
 
 /// Query options for Drive holds.
 class HeldDriveQuery {
   /// If true, include files in shared drives in the hold.
-  core.bool includeSharedDriveFiles;
+  core.bool? includeSharedDriveFiles;
 
   /// If true, include files in Team Drives in the hold.
-  core.bool includeTeamDriveFiles;
+  core.bool? includeTeamDriveFiles;
 
   HeldDriveQuery();
 
@@ -2734,11 +2586,11 @@ class HeldDriveQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (includeSharedDriveFiles != null)
-          'includeSharedDriveFiles': includeSharedDriveFiles,
+          'includeSharedDriveFiles': includeSharedDriveFiles!,
         if (includeTeamDriveFiles != null)
-          'includeTeamDriveFiles': includeTeamDriveFiles,
+          'includeTeamDriveFiles': includeTeamDriveFiles!,
       };
 }
 
@@ -2748,16 +2600,16 @@ class HeldGroupsQuery {
   ///
   /// These timestamps are in GMT and rounded down to the start of the given
   /// date.
-  core.String endTime;
+  core.String? endTime;
 
   /// The start time range for the search query.
   ///
   /// These timestamps are in GMT and rounded down to the start of the given
   /// date.
-  core.String startTime;
+  core.String? startTime;
 
   /// The search terms for the hold.
-  core.String terms;
+  core.String? terms;
 
   HeldGroupsQuery();
 
@@ -2773,17 +2625,17 @@ class HeldGroupsQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
-        if (terms != null) 'terms': terms,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+        if (terms != null) 'terms': terms!,
       };
 }
 
 /// Query options for hangouts chat holds.
 class HeldHangoutsChatQuery {
   /// If true, include rooms the user has participated in.
-  core.bool includeRooms;
+  core.bool? includeRooms;
 
   HeldHangoutsChatQuery();
 
@@ -2793,8 +2645,8 @@ class HeldHangoutsChatQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (includeRooms != null) 'includeRooms': includeRooms,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (includeRooms != null) 'includeRooms': includeRooms!,
       };
 }
 
@@ -2804,16 +2656,16 @@ class HeldMailQuery {
   ///
   /// These timestamps are in GMT and rounded down to the start of the given
   /// date.
-  core.String endTime;
+  core.String? endTime;
 
   /// The start time range for the search query.
   ///
   /// These timestamps are in GMT and rounded down to the start of the given
   /// date.
-  core.String startTime;
+  core.String? startTime;
 
   /// The search terms for the hold.
-  core.String terms;
+  core.String? terms;
 
   HeldMailQuery();
 
@@ -2829,10 +2681,10 @@ class HeldMailQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
-        if (terms != null) 'terms': terms,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+        if (terms != null) 'terms': terms!,
       };
 }
 
@@ -2843,10 +2695,10 @@ class HeldOrgUnit {
   /// When the org unit was put on hold.
   ///
   /// This property is immutable.
-  core.String holdTime;
+  core.String? holdTime;
 
   /// The org unit's immutable ID as provided by the Admin SDK.
-  core.String orgUnitId;
+  core.String? orgUnitId;
 
   HeldOrgUnit();
 
@@ -2859,9 +2711,9 @@ class HeldOrgUnit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (holdTime != null) 'holdTime': holdTime,
-        if (orgUnitId != null) 'orgUnitId': orgUnitId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (holdTime != null) 'holdTime': holdTime!,
+        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
       };
 }
 
@@ -2870,7 +2722,7 @@ class HeldVoiceQuery {
   /// Data covered by this rule.
   ///
   /// Should be non-empty. Order does not matter and duplicates will be ignored.
-  core.List<core.String> coveredData;
+  core.List<core.String>? coveredData;
 
   HeldVoiceQuery();
 
@@ -2882,8 +2734,8 @@ class HeldVoiceQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (coveredData != null) 'coveredData': coveredData,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (coveredData != null) 'coveredData': coveredData!,
       };
 }
 
@@ -2896,7 +2748,7 @@ class HeldVoiceQuery {
 class Hold {
   /// If set, the hold applies to the enumerated accounts and org_unit must be
   /// empty.
-  core.List<HeldAccount> accounts;
+  core.List<HeldAccount>? accounts;
 
   /// The corpus to be searched.
   /// Possible string values are:
@@ -2906,29 +2758,29 @@ class Hold {
   /// - "GROUPS" : Groups.
   /// - "HANGOUTS_CHAT" : Hangouts Chat.
   /// - "VOICE" : Google Voice.
-  core.String corpus;
+  core.String? corpus;
 
   /// The unique immutable ID of the hold.
   ///
   /// Assigned during creation.
-  core.String holdId;
+  core.String? holdId;
 
   /// The name of the hold.
-  core.String name;
+  core.String? name;
 
   /// If set, the hold applies to all members of the organizational unit and
   /// accounts must be empty.
   ///
   /// This property is mutable. For groups holds, set the accounts field.
-  HeldOrgUnit orgUnit;
+  HeldOrgUnit? orgUnit;
 
   /// The corpus-specific query.
   ///
   /// If set, the corpusQuery must match corpus type.
-  CorpusQuery query;
+  CorpusQuery? query;
 
   /// The last time this hold was modified.
-  core.String updateTime;
+  core.String? updateTime;
 
   Hold();
 
@@ -2961,25 +2813,25 @@ class Hold {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accounts != null)
-          'accounts': accounts.map((value) => value.toJson()).toList(),
-        if (corpus != null) 'corpus': corpus,
-        if (holdId != null) 'holdId': holdId,
-        if (name != null) 'name': name,
-        if (orgUnit != null) 'orgUnit': orgUnit.toJson(),
-        if (query != null) 'query': query.toJson(),
-        if (updateTime != null) 'updateTime': updateTime,
+          'accounts': accounts!.map((value) => value.toJson()).toList(),
+        if (corpus != null) 'corpus': corpus!,
+        if (holdId != null) 'holdId': holdId!,
+        if (name != null) 'name': name!,
+        if (orgUnit != null) 'orgUnit': orgUnit!.toJson(),
+        if (query != null) 'query': query!.toJson(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// The holds for a matter.
 class ListExportsResponse {
   /// The list of exports.
-  core.List<Export> exports;
+  core.List<Export>? exports;
 
   /// Page token to retrieve the next page of results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListExportsResponse();
 
@@ -2995,17 +2847,17 @@ class ListExportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (exports != null)
-          'exports': exports.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'exports': exports!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Returns a list of held accounts for a hold.
 class ListHeldAccountsResponse {
   /// The held accounts on a hold.
-  core.List<HeldAccount> accounts;
+  core.List<HeldAccount>? accounts;
 
   ListHeldAccountsResponse();
 
@@ -3018,21 +2870,21 @@ class ListHeldAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accounts != null)
-          'accounts': accounts.map((value) => value.toJson()).toList(),
+          'accounts': accounts!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// The holds for a matter.
 class ListHoldsResponse {
   /// The list of holds.
-  core.List<Hold> holds;
+  core.List<Hold>? holds;
 
   /// Page token to retrieve the next page of results in the list.
   ///
   /// If this is empty, then there are no more holds to list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListHoldsResponse();
 
@@ -3048,20 +2900,20 @@ class ListHoldsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (holds != null)
-          'holds': holds.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'holds': holds!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Provides the list of matters.
 class ListMattersResponse {
   /// List of matters.
-  core.List<Matter> matters;
+  core.List<Matter>? matters;
 
   /// Page token to retrieve the next page of results in the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListMattersResponse();
 
@@ -3077,20 +2929,20 @@ class ListMattersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (matters != null)
-          'matters': matters.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'matters': matters!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -3106,10 +2958,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3118,10 +2970,10 @@ class ListSavedQueriesResponse {
   /// Page token to retrieve the next page of results in the list.
   ///
   /// If this is empty, then there are no more saved queries to list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of output saved queries.
-  core.List<SavedQuery> savedQueries;
+  core.List<SavedQuery>? savedQueries;
 
   ListSavedQueriesResponse();
 
@@ -3137,33 +2989,33 @@ class ListSavedQueriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (savedQueries != null)
-          'savedQueries': savedQueries.map((value) => value.toJson()).toList(),
+          'savedQueries': savedQueries!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Mail specific count metrics.
 class MailCountResult {
   /// Error occurred when querying these accounts.
-  core.List<AccountCountError> accountCountErrors;
+  core.List<AccountCountError>? accountCountErrors;
 
   /// Subtotal count per matching account that have more than zero messages.
-  core.List<AccountCount> accountCounts;
+  core.List<AccountCount>? accountCounts;
 
   /// Total number of accounts that can be queried and have more than zero
   /// messages.
-  core.String matchingAccountsCount;
+  core.String? matchingAccountsCount;
 
   /// When data scope is HELD_DATA in the request Query, these accounts in the
   /// request are not queried because they are not on hold.
   ///
   /// For other data scope, this field is not set.
-  core.List<core.String> nonQueryableAccounts;
+  core.List<core.String>? nonQueryableAccounts;
 
   /// Total number of accounts involved in this count operation.
-  core.String queriedAccountsCount;
+  core.String? queriedAccountsCount;
 
   MailCountResult();
 
@@ -3193,19 +3045,19 @@ class MailCountResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (accountCountErrors != null)
           'accountCountErrors':
-              accountCountErrors.map((value) => value.toJson()).toList(),
+              accountCountErrors!.map((value) => value.toJson()).toList(),
         if (accountCounts != null)
           'accountCounts':
-              accountCounts.map((value) => value.toJson()).toList(),
+              accountCounts!.map((value) => value.toJson()).toList(),
         if (matchingAccountsCount != null)
-          'matchingAccountsCount': matchingAccountsCount,
+          'matchingAccountsCount': matchingAccountsCount!,
         if (nonQueryableAccounts != null)
-          'nonQueryableAccounts': nonQueryableAccounts,
+          'nonQueryableAccounts': nonQueryableAccounts!,
         if (queriedAccountsCount != null)
-          'queriedAccountsCount': queriedAccountsCount,
+          'queriedAccountsCount': queriedAccountsCount!,
       };
 }
 
@@ -3216,10 +3068,10 @@ class MailExportOptions {
   /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
   /// - "MBOX" : MBOX as export format.
   /// - "PST" : PST as export format
-  core.String exportFormat;
+  core.String? exportFormat;
 
   /// Set to true to export confidential mode content.
-  core.bool showConfidentialModeContent;
+  core.bool? showConfidentialModeContent;
 
   MailExportOptions();
 
@@ -3233,17 +3085,17 @@ class MailExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exportFormat != null) 'exportFormat': exportFormat,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exportFormat != null) 'exportFormat': exportFormat!,
         if (showConfidentialModeContent != null)
-          'showConfidentialModeContent': showConfidentialModeContent,
+          'showConfidentialModeContent': showConfidentialModeContent!,
       };
 }
 
 /// Mail search advanced options
 class MailOptions {
   /// Set to true to exclude drafts.
-  core.bool excludeDrafts;
+  core.bool? excludeDrafts;
 
   MailOptions();
 
@@ -3253,29 +3105,29 @@ class MailOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (excludeDrafts != null) 'excludeDrafts': excludeDrafts,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (excludeDrafts != null) 'excludeDrafts': excludeDrafts!,
       };
 }
 
 /// Represents a matter.
 class Matter {
   /// The description of the matter.
-  core.String description;
+  core.String? description;
 
   /// The matter ID which is generated by the server.
   ///
   /// Should be blank when creating a new matter.
-  core.String matterId;
+  core.String? matterId;
 
   /// List of users and access to the matter.
   ///
   /// Currently there is no programmer defined limit on the number of
   /// permissions a matter can have.
-  core.List<MatterPermission> matterPermissions;
+  core.List<MatterPermission>? matterPermissions;
 
   /// The name of the matter.
-  core.String name;
+  core.String? name;
 
   /// The state of the matter.
   /// Possible string values are:
@@ -3283,7 +3135,7 @@ class Matter {
   /// - "OPEN" : This matter is open.
   /// - "CLOSED" : This matter is closed.
   /// - "DELETED" : This matter is deleted.
-  core.String state;
+  core.String? state;
 
   Matter();
 
@@ -3308,14 +3160,14 @@ class Matter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (matterId != null) 'matterId': matterId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (matterId != null) 'matterId': matterId!,
         if (matterPermissions != null)
           'matterPermissions':
-              matterPermissions.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (state != null) 'state': state,
+              matterPermissions!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -3325,14 +3177,14 @@ class Matter {
 /// cease to exist.
 class MatterPermission {
   /// The account ID, as provided by Admin SDK.
-  core.String accountId;
+  core.String? accountId;
 
   /// The user's role in this matter.
   /// Possible string values are:
   /// - "ROLE_UNSPECIFIED" : No role assigned.
   /// - "COLLABORATOR" : A collaborator to the matter.
   /// - "OWNER" : The owner of the matter.
-  core.String role;
+  core.String? role;
 
   MatterPermission();
 
@@ -3345,9 +3197,9 @@ class MatterPermission {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -3358,10 +3210,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -3372,14 +3224,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -3392,7 +3244,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -3427,19 +3279,19 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
 /// Org Unit to search
 class OrgUnitInfo {
   /// Org unit to search, as provided by the Admin SDK Directory API.
-  core.String orgUnitId;
+  core.String? orgUnitId;
 
   OrgUnitInfo();
 
@@ -3449,8 +3301,8 @@ class OrgUnitInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (orgUnitId != null) 'orgUnitId': orgUnitId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
       };
 }
 
@@ -3458,7 +3310,7 @@ class OrgUnitInfo {
 class Query {
   /// When 'ACCOUNT' is chosen as search method, account_info needs to be
   /// specified.
-  AccountInfo accountInfo;
+  AccountInfo? accountInfo;
 
   /// The corpus to search.
   /// Possible string values are:
@@ -3468,7 +3320,7 @@ class Query {
   /// - "GROUPS" : Groups.
   /// - "HANGOUTS_CHAT" : Hangouts Chat.
   /// - "VOICE" : Google Voice.
-  core.String corpus;
+  core.String? corpus;
 
   /// The data source to search from.
   /// Possible string values are:
@@ -3476,30 +3328,30 @@ class Query {
   /// - "ALL_DATA" : All available data.
   /// - "HELD_DATA" : Data on hold.
   /// - "UNPROCESSED_DATA" : Data not processed.
-  core.String dataScope;
+  core.String? dataScope;
 
   /// For Drive search, specify more options in this field.
-  DriveOptions driveOptions;
+  DriveOptions? driveOptions;
 
   /// The end time range for the search query.
   ///
   /// These timestamps are in GMT and rounded down to the start of the given
   /// date.
-  core.String endTime;
+  core.String? endTime;
 
   /// When 'ROOM' is chosen as search method, hangout_chats_info needs to be
   /// specified.
   ///
   /// (read-only)
-  HangoutsChatInfo hangoutsChatInfo;
+  HangoutsChatInfo? hangoutsChatInfo;
 
   /// For hangouts chat search, specify more options in this field.
   ///
   /// (read-only)
-  HangoutsChatOptions hangoutsChatOptions;
+  HangoutsChatOptions? hangoutsChatOptions;
 
   /// For mail search, specify more options in this field.
-  MailOptions mailOptions;
+  MailOptions? mailOptions;
 
   /// The search method to use.
   ///
@@ -3522,11 +3374,11 @@ class Query {
   /// (read-only)
   /// - "SHARED_DRIVE" : Will search for all accounts in the shared drive
   /// specified in shared_drive_info.
-  core.String method;
+  core.String? method;
 
   /// When 'ORG_UNIT' is chosen as as search method, org_unit_info needs to be
   /// specified.
-  OrgUnitInfo orgUnitInfo;
+  OrgUnitInfo? orgUnitInfo;
 
   /// The search method to use.
   /// Possible string values are:
@@ -3544,33 +3396,33 @@ class Query {
   /// (read-only)
   /// - "SHARED_DRIVE" : Will search for all accounts in the shared drive
   /// specified in shared_drive_info.
-  core.String searchMethod;
+  core.String? searchMethod;
 
   /// When 'SHARED_DRIVE' is chosen as search method, shared_drive_info needs to
   /// be specified.
-  SharedDriveInfo sharedDriveInfo;
+  SharedDriveInfo? sharedDriveInfo;
 
   /// The start time range for the search query.
   ///
   /// These timestamps are in GMT and rounded down to the start of the given
   /// date.
-  core.String startTime;
+  core.String? startTime;
 
   /// When 'TEAM_DRIVE' is chosen as search method, team_drive_info needs to be
   /// specified.
-  TeamDriveInfo teamDriveInfo;
+  TeamDriveInfo? teamDriveInfo;
 
   /// The corpus-specific search operators used to generate search results.
-  core.String terms;
+  core.String? terms;
 
   /// The time zone name.
   ///
   /// It should be an IANA TZ name, such as "America/Los_Angeles". For more
   /// information, see Time Zone.
-  core.String timeZone;
+  core.String? timeZone;
 
   /// For voice search, specify more options in this field.
-  VoiceOptions voiceOptions;
+  VoiceOptions? voiceOptions;
 
   Query();
 
@@ -3637,34 +3489,34 @@ class Query {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountInfo != null) 'accountInfo': accountInfo.toJson(),
-        if (corpus != null) 'corpus': corpus,
-        if (dataScope != null) 'dataScope': dataScope,
-        if (driveOptions != null) 'driveOptions': driveOptions.toJson(),
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountInfo != null) 'accountInfo': accountInfo!.toJson(),
+        if (corpus != null) 'corpus': corpus!,
+        if (dataScope != null) 'dataScope': dataScope!,
+        if (driveOptions != null) 'driveOptions': driveOptions!.toJson(),
+        if (endTime != null) 'endTime': endTime!,
         if (hangoutsChatInfo != null)
-          'hangoutsChatInfo': hangoutsChatInfo.toJson(),
+          'hangoutsChatInfo': hangoutsChatInfo!.toJson(),
         if (hangoutsChatOptions != null)
-          'hangoutsChatOptions': hangoutsChatOptions.toJson(),
-        if (mailOptions != null) 'mailOptions': mailOptions.toJson(),
-        if (method != null) 'method': method,
-        if (orgUnitInfo != null) 'orgUnitInfo': orgUnitInfo.toJson(),
-        if (searchMethod != null) 'searchMethod': searchMethod,
+          'hangoutsChatOptions': hangoutsChatOptions!.toJson(),
+        if (mailOptions != null) 'mailOptions': mailOptions!.toJson(),
+        if (method != null) 'method': method!,
+        if (orgUnitInfo != null) 'orgUnitInfo': orgUnitInfo!.toJson(),
+        if (searchMethod != null) 'searchMethod': searchMethod!,
         if (sharedDriveInfo != null)
-          'sharedDriveInfo': sharedDriveInfo.toJson(),
-        if (startTime != null) 'startTime': startTime,
-        if (teamDriveInfo != null) 'teamDriveInfo': teamDriveInfo.toJson(),
-        if (terms != null) 'terms': terms,
-        if (timeZone != null) 'timeZone': timeZone,
-        if (voiceOptions != null) 'voiceOptions': voiceOptions.toJson(),
+          'sharedDriveInfo': sharedDriveInfo!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
+        if (teamDriveInfo != null) 'teamDriveInfo': teamDriveInfo!.toJson(),
+        if (terms != null) 'terms': terms!,
+        if (timeZone != null) 'timeZone': timeZone!,
+        if (voiceOptions != null) 'voiceOptions': voiceOptions!.toJson(),
       };
 }
 
 /// Remove a list of accounts from a hold.
 class RemoveHeldAccountsRequest {
   /// Account IDs to identify HeldAccounts to remove.
-  core.List<core.String> accountIds;
+  core.List<core.String>? accountIds;
 
   RemoveHeldAccountsRequest();
 
@@ -3676,8 +3528,8 @@ class RemoveHeldAccountsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountIds != null) 'accountIds': accountIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountIds != null) 'accountIds': accountIds!,
       };
 }
 
@@ -3686,7 +3538,7 @@ class RemoveHeldAccountsResponse {
   /// A list of statuses for deleted accounts.
   ///
   /// Results have the same order as the request.
-  core.List<Status> statuses;
+  core.List<Status>? statuses;
 
   RemoveHeldAccountsResponse();
 
@@ -3699,16 +3551,16 @@ class RemoveHeldAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (statuses != null)
-          'statuses': statuses.map((value) => value.toJson()).toList(),
+          'statuses': statuses!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// Remove an account as a matter collaborator.
 class RemoveMatterPermissionsRequest {
   /// The account ID.
-  core.String accountId;
+  core.String? accountId;
 
   RemoveMatterPermissionsRequest();
 
@@ -3718,8 +3570,8 @@ class RemoveMatterPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
       };
 }
 
@@ -3731,13 +3583,13 @@ class ReopenMatterRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response to a ReopenMatterRequest.
 class ReopenMatterResponse {
   /// The updated matter, with state OPEN.
-  Matter matter;
+  Matter? matter;
 
   ReopenMatterResponse();
 
@@ -3748,8 +3600,8 @@ class ReopenMatterResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (matter != null) 'matter': matter.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (matter != null) 'matter': matter!.toJson(),
       };
 }
 
@@ -3758,10 +3610,10 @@ class SavedQuery {
   /// The server generated timestamp at which saved query was created.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// Name of the saved query.
-  core.String displayName;
+  core.String? displayName;
 
   /// The matter ID of the associated matter.
   ///
@@ -3769,14 +3621,14 @@ class SavedQuery {
   /// matter id in the URL.
   ///
   /// Output only.
-  core.String matterId;
+  core.String? matterId;
 
   /// The underlying Query object which contains all the information of the
   /// saved query.
-  Query query;
+  Query? query;
 
   /// A unique identifier for the saved query.
-  core.String savedQueryId;
+  core.String? savedQueryId;
 
   SavedQuery();
 
@@ -3799,19 +3651,19 @@ class SavedQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
-        if (displayName != null) 'displayName': displayName,
-        if (matterId != null) 'matterId': matterId,
-        if (query != null) 'query': query.toJson(),
-        if (savedQueryId != null) 'savedQueryId': savedQueryId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (matterId != null) 'matterId': matterId!,
+        if (query != null) 'query': query!.toJson(),
+        if (savedQueryId != null) 'savedQueryId': savedQueryId!,
       };
 }
 
 /// Shared drives to search
 class SharedDriveInfo {
   /// List of Shared drive IDs, as provided by Drive API.
-  core.List<core.String> sharedDriveIds;
+  core.List<core.String>? sharedDriveIds;
 
   SharedDriveInfo();
 
@@ -3823,8 +3675,8 @@ class SharedDriveInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sharedDriveIds != null) 'sharedDriveIds': sharedDriveIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sharedDriveIds != null) 'sharedDriveIds': sharedDriveIds!,
       };
 }
 
@@ -3837,7 +3689,7 @@ class SharedDriveInfo {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -3845,13 +3697,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -3875,17 +3727,17 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
 /// Team Drives to search
 class TeamDriveInfo {
   /// List of Team Drive IDs, as provided by Drive API.
-  core.List<core.String> teamDriveIds;
+  core.List<core.String>? teamDriveIds;
 
   TeamDriveInfo();
 
@@ -3897,8 +3749,8 @@ class TeamDriveInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (teamDriveIds != null) 'teamDriveIds': teamDriveIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (teamDriveIds != null) 'teamDriveIds': teamDriveIds!,
       };
 }
 
@@ -3910,16 +3762,16 @@ class UndeleteMatterRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// User's information.
 class UserInfo {
   /// The displayed name of the user.
-  core.String displayName;
+  core.String? displayName;
 
   /// The email address of the user.
-  core.String email;
+  core.String? email;
 
   UserInfo();
 
@@ -3932,9 +3784,9 @@ class UserInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (email != null) 'email': email,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (email != null) 'email': email!,
       };
 }
 
@@ -3945,7 +3797,7 @@ class VoiceExportOptions {
   /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
   /// - "MBOX" : MBOX as export format.
   /// - "PST" : PST as export format
-  core.String exportFormat;
+  core.String? exportFormat;
 
   VoiceExportOptions();
 
@@ -3955,15 +3807,15 @@ class VoiceExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exportFormat != null) 'exportFormat': exportFormat,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exportFormat != null) 'exportFormat': exportFormat!,
       };
 }
 
 /// Voice search options
 class VoiceOptions {
   /// Datatypes to search
-  core.List<core.String> coveredData;
+  core.List<core.String>? coveredData;
 
   VoiceOptions();
 
@@ -3975,7 +3827,7 @@ class VoiceOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (coveredData != null) 'coveredData': coveredData,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (coveredData != null) 'coveredData': coveredData!,
       };
 }

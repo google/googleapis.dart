@@ -111,17 +111,10 @@ class ChangesResource {
     Change request,
     core.String project,
     core.String managedZone, {
-    core.String clientOperationId,
-    core.String $fields,
+    core.String? clientOperationId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (managedZone == null) {
-      throw core.ArgumentError('Parameter managedZone is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -172,18 +165,9 @@ class ChangesResource {
     core.String project,
     core.String managedZone,
     core.String changeId, {
-    core.String clientOperationId,
-    core.String $fields,
+    core.String? clientOperationId,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (managedZone == null) {
-      throw core.ArgumentError('Parameter managedZone is required.');
-    }
-    if (changeId == null) {
-      throw core.ArgumentError('Parameter changeId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -238,18 +222,12 @@ class ChangesResource {
   async.Future<ChangesListResponse> list(
     core.String project,
     core.String managedZone, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String sortBy,
-    core.String sortOrder,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? sortBy,
+    core.String? sortOrder,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (managedZone == null) {
-      throw core.ArgumentError('Parameter managedZone is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -312,19 +290,10 @@ class DnsKeysResource {
     core.String project,
     core.String managedZone,
     core.String dnsKeyId, {
-    core.String clientOperationId,
-    core.String digestType,
-    core.String $fields,
+    core.String? clientOperationId,
+    core.String? digestType,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (managedZone == null) {
-      throw core.ArgumentError('Parameter managedZone is required.');
-    }
-    if (dnsKeyId == null) {
-      throw core.ArgumentError('Parameter dnsKeyId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if (digestType != null) 'digestType': [digestType],
@@ -378,17 +347,11 @@ class DnsKeysResource {
   async.Future<DnsKeysListResponse> list(
     core.String project,
     core.String managedZone, {
-    core.String digestType,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? digestType,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (managedZone == null) {
-      throw core.ArgumentError('Parameter managedZone is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (digestType != null) 'digestType': [digestType],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -447,18 +410,9 @@ class ManagedZoneOperationsResource {
     core.String project,
     core.String managedZone,
     core.String operation, {
-    core.String clientOperationId,
-    core.String $fields,
+    core.String? clientOperationId,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (managedZone == null) {
-      throw core.ArgumentError('Parameter managedZone is required.');
-    }
-    if (operation == null) {
-      throw core.ArgumentError('Parameter operation is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -512,17 +466,11 @@ class ManagedZoneOperationsResource {
   async.Future<ManagedZoneOperationsListResponse> list(
     core.String project,
     core.String managedZone, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String sortBy,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? sortBy,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (managedZone == null) {
-      throw core.ArgumentError('Parameter managedZone is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -576,14 +524,10 @@ class ManagedZonesResource {
   async.Future<ManagedZone> create(
     ManagedZone request,
     core.String project, {
-    core.String clientOperationId,
-    core.String $fields,
+    core.String? clientOperationId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -627,15 +571,9 @@ class ManagedZonesResource {
   async.Future<void> delete(
     core.String project,
     core.String managedZone, {
-    core.String clientOperationId,
-    core.String $fields,
+    core.String? clientOperationId,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (managedZone == null) {
-      throw core.ArgumentError('Parameter managedZone is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -680,15 +618,9 @@ class ManagedZonesResource {
   async.Future<ManagedZone> get(
     core.String project,
     core.String managedZone, {
-    core.String clientOperationId,
-    core.String $fields,
+    core.String? clientOperationId,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (managedZone == null) {
-      throw core.ArgumentError('Parameter managedZone is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -734,14 +666,11 @@ class ManagedZonesResource {
   /// this method will complete with the same error.
   async.Future<ManagedZonesListResponse> list(
     core.String project, {
-    core.String dnsName,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.String? dnsName,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (dnsName != null) 'dnsName': [dnsName],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -791,17 +720,10 @@ class ManagedZonesResource {
     ManagedZone request,
     core.String project,
     core.String managedZone, {
-    core.String clientOperationId,
-    core.String $fields,
+    core.String? clientOperationId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (managedZone == null) {
-      throw core.ArgumentError('Parameter managedZone is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -850,17 +772,10 @@ class ManagedZonesResource {
     ManagedZone request,
     core.String project,
     core.String managedZone, {
-    core.String clientOperationId,
-    core.String $fields,
+    core.String? clientOperationId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (managedZone == null) {
-      throw core.ArgumentError('Parameter managedZone is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -911,14 +826,10 @@ class PoliciesResource {
   async.Future<Policy> create(
     Policy request,
     core.String project, {
-    core.String clientOperationId,
-    core.String $fields,
+    core.String? clientOperationId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -963,15 +874,9 @@ class PoliciesResource {
   async.Future<void> delete(
     core.String project,
     core.String policy, {
-    core.String clientOperationId,
-    core.String $fields,
+    core.String? clientOperationId,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (policy == null) {
-      throw core.ArgumentError('Parameter policy is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -1016,15 +921,9 @@ class PoliciesResource {
   async.Future<Policy> get(
     core.String project,
     core.String policy, {
-    core.String clientOperationId,
-    core.String $fields,
+    core.String? clientOperationId,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (policy == null) {
-      throw core.ArgumentError('Parameter policy is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -1067,13 +966,10 @@ class PoliciesResource {
   /// this method will complete with the same error.
   async.Future<PoliciesListResponse> list(
     core.String project, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1122,17 +1018,10 @@ class PoliciesResource {
     Policy request,
     core.String project,
     core.String policy, {
-    core.String clientOperationId,
-    core.String $fields,
+    core.String? clientOperationId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (policy == null) {
-      throw core.ArgumentError('Parameter policy is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -1182,17 +1071,10 @@ class PoliciesResource {
     Policy request,
     core.String project,
     core.String policy, {
-    core.String clientOperationId,
-    core.String $fields,
+    core.String? clientOperationId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (policy == null) {
-      throw core.ArgumentError('Parameter policy is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -1241,12 +1123,9 @@ class ProjectsResource {
   /// this method will complete with the same error.
   async.Future<Project> get(
     core.String project, {
-    core.String clientOperationId,
-    core.String $fields,
+    core.String? clientOperationId,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (clientOperationId != null) 'clientOperationId': [clientOperationId],
       if ($fields != null) 'fields': [$fields],
@@ -1302,18 +1181,12 @@ class ResourceRecordSetsResource {
   async.Future<ResourceRecordSetsListResponse> list(
     core.String project,
     core.String managedZone, {
-    core.int maxResults,
-    core.String name,
-    core.String pageToken,
-    core.String type,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? name,
+    core.String? pageToken,
+    core.String? type,
+    core.String? $fields,
   }) async {
-    if (project == null) {
-      throw core.ArgumentError('Parameter project is required.');
-    }
-    if (managedZone == null) {
-      throw core.ArgumentError('Parameter managedZone is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (name != null) 'name': [name],
@@ -1348,22 +1221,22 @@ class ResourceRecordSetsResource {
 /// applying all Change elements in the Changes collection in sequence.
 class Change {
   /// Which ResourceRecordSets to add?
-  core.List<ResourceRecordSet> additions;
+  core.List<ResourceRecordSet>? additions;
 
   /// Which ResourceRecordSets to remove? Must match existing data exactly.
-  core.List<ResourceRecordSet> deletions;
+  core.List<ResourceRecordSet>? deletions;
 
   /// Unique identifier for the resource; defined by the server (output only).
-  core.String id;
+  core.String? id;
 
   /// If the DNS queries for the zone will be served.
-  core.bool isServing;
-  core.String kind;
+  core.bool? isServing;
+  core.String? kind;
 
   /// The time that this operation was started by the server (output only).
   ///
   /// This is in RFC3339 text format.
-  core.String startTime;
+  core.String? startTime;
 
   /// Status of the operation (output only).
   ///
@@ -1372,7 +1245,7 @@ class Change {
   /// Possible string values are:
   /// - "pending"
   /// - "done"
-  core.String status;
+  core.String? status;
 
   Change();
 
@@ -1406,16 +1279,16 @@ class Change {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additions != null)
-          'additions': additions.map((value) => value.toJson()).toList(),
+          'additions': additions!.map((value) => value.toJson()).toList(),
         if (deletions != null)
-          'deletions': deletions.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id,
-        if (isServing != null) 'isServing': isServing,
-        if (kind != null) 'kind': kind,
-        if (startTime != null) 'startTime': startTime,
-        if (status != null) 'status': status,
+          'deletions': deletions!.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id!,
+        if (isServing != null) 'isServing': isServing!,
+        if (kind != null) 'kind': kind!,
+        if (startTime != null) 'startTime': startTime!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -1423,11 +1296,11 @@ class Change {
 /// collection.
 class ChangesListResponse {
   /// The requested changes.
-  core.List<Change> changes;
-  ResponseHeader header;
+  core.List<Change>? changes;
+  ResponseHeader? header;
 
   /// Type of resource.
-  core.String kind;
+  core.String? kind;
 
   /// The presence of this field indicates that there exist more results
   /// following your last page of results in pagination order.
@@ -1439,7 +1312,7 @@ class ChangesListResponse {
   /// request, the set of all elements returned are an inconsistent view of the
   /// collection. There is no way to retrieve a "snapshot" of collections larger
   /// than the maximum page size.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ChangesListResponse();
 
@@ -1462,12 +1335,12 @@ class ChangesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (changes != null)
-          'changes': changes.map((value) => value.toJson()).toList(),
-        if (header != null) 'header': header.toJson(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'changes': changes!.map((value) => value.toJson()).toList(),
+        if (header != null) 'header': header!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1482,39 +1355,39 @@ class DnsKey {
   /// - "rsasha512"
   /// - "ecdsap256sha256"
   /// - "ecdsap384sha384"
-  core.String algorithm;
+  core.String? algorithm;
 
   /// The time that this resource was created in the control plane.
   ///
   /// This is in RFC3339 text format. Output only.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// A mutable string of at most 1024 characters associated with this resource
   /// for the user's convenience.
   ///
   /// Has no effect on the resource's function.
-  core.String description;
+  core.String? description;
 
   /// Cryptographic hashes of the DNSKEY resource record associated with this
   /// DnsKey.
   ///
   /// These digests are needed to construct a DS record that points at this DNS
   /// key. Output only.
-  core.List<DnsKeyDigest> digests;
+  core.List<DnsKeyDigest>? digests;
 
   /// Unique identifier for the resource; defined by the server (output only).
-  core.String id;
+  core.String? id;
 
   /// Active keys are used to sign subsequent changes to the ManagedZone.
   ///
   /// Inactive keys will still be present as DNSKEY Resource Records for the use
   /// of resolvers validating existing signatures.
-  core.bool isActive;
+  core.bool? isActive;
 
   /// Length of the key in bits.
   ///
   /// Specified at creation time, then immutable.
-  core.int keyLength;
+  core.int? keyLength;
 
   /// The key tag is a non-cryptographic hash of the a DNSKEY resource record
   /// associated with this DnsKey.
@@ -1524,13 +1397,13 @@ class DnsKey {
   /// DS record to point at the DNSKEY in this child ManagedZone. The key tag is
   /// a number in the range \[0, 65535\] and the algorithm to calculate it is
   /// specified in RFC4034 Appendix B. Output only.
-  core.int keyTag;
-  core.String kind;
+  core.int? keyTag;
+  core.String? kind;
 
   /// Base64 encoded public half of this key.
   ///
   /// Output only.
-  core.String publicKey;
+  core.String? publicKey;
 
   /// One of "KEY_SIGNING" or "ZONE_SIGNING".
   ///
@@ -1542,7 +1415,7 @@ class DnsKey {
   /// Possible string values are:
   /// - "keySigning"
   /// - "zoneSigning"
-  core.String type;
+  core.String? type;
 
   DnsKey();
 
@@ -1585,19 +1458,19 @@ class DnsKey {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm,
-        if (creationTime != null) 'creationTime': creationTime,
-        if (description != null) 'description': description,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (description != null) 'description': description!,
         if (digests != null)
-          'digests': digests.map((value) => value.toJson()).toList(),
-        if (id != null) 'id': id,
-        if (isActive != null) 'isActive': isActive,
-        if (keyLength != null) 'keyLength': keyLength,
-        if (keyTag != null) 'keyTag': keyTag,
-        if (kind != null) 'kind': kind,
-        if (publicKey != null) 'publicKey': publicKey,
-        if (type != null) 'type': type,
+          'digests': digests!.map((value) => value.toJson()).toList(),
+        if (id != null) 'id': id!,
+        if (isActive != null) 'isActive': isActive!,
+        if (keyLength != null) 'keyLength': keyLength!,
+        if (keyTag != null) 'keyTag': keyTag!,
+        if (kind != null) 'kind': kind!,
+        if (publicKey != null) 'publicKey': publicKey!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1605,14 +1478,14 @@ class DnsKeyDigest {
   /// The base-16 encoded bytes of this digest.
   ///
   /// Suitable for use in a DS resource record.
-  core.String digest;
+  core.String? digest;
 
   /// Specifies the algorithm used to calculate this digest.
   /// Possible string values are:
   /// - "sha1"
   /// - "sha256"
   /// - "sha384"
-  core.String type;
+  core.String? type;
 
   DnsKeyDigest();
 
@@ -1625,9 +1498,9 @@ class DnsKeyDigest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (digest != null) 'digest': digest,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (digest != null) 'digest': digest!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1643,10 +1516,10 @@ class DnsKeySpec {
   /// - "rsasha512"
   /// - "ecdsap256sha256"
   /// - "ecdsap384sha384"
-  core.String algorithm;
+  core.String? algorithm;
 
   /// Length of the keys in bits.
-  core.int keyLength;
+  core.int? keyLength;
 
   /// Specifies whether this is a key signing key (KSK) or a zone signing key
   /// (ZSK).
@@ -1658,8 +1531,8 @@ class DnsKeySpec {
   /// Possible string values are:
   /// - "keySigning"
   /// - "zoneSigning"
-  core.String keyType;
-  core.String kind;
+  core.String? keyType;
+  core.String? kind;
 
   DnsKeySpec();
 
@@ -1678,22 +1551,22 @@ class DnsKeySpec {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm,
-        if (keyLength != null) 'keyLength': keyLength,
-        if (keyType != null) 'keyType': keyType,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
+        if (keyLength != null) 'keyLength': keyLength!,
+        if (keyType != null) 'keyType': keyType!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// The response to a request to enumerate DnsKeys in a ManagedZone.
 class DnsKeysListResponse {
   /// The requested resources.
-  core.List<DnsKey> dnsKeys;
-  ResponseHeader header;
+  core.List<DnsKey>? dnsKeys;
+  ResponseHeader? header;
 
   /// Type of resource.
-  core.String kind;
+  core.String? kind;
 
   /// The presence of this field indicates that there exist more results
   /// following your last page of results in pagination order.
@@ -1705,7 +1578,7 @@ class DnsKeysListResponse {
   /// request, the set of all elements returned are an inconsistent view of the
   /// collection. There is no way to retrieve a "snapshot" of collections larger
   /// than the maximum page size.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   DnsKeysListResponse();
 
@@ -1728,12 +1601,12 @@ class DnsKeysListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dnsKeys != null)
-          'dnsKeys': dnsKeys.map((value) => value.toJson()).toList(),
-        if (header != null) 'header': header.toJson(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'dnsKeys': dnsKeys!.map((value) => value.toJson()).toList(),
+        if (header != null) 'header': header!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1746,79 +1619,79 @@ class ManagedZone {
   /// The time that this resource was created on the server.
   ///
   /// This is in RFC3339 text format. Output only.
-  core.String creationTime;
+  core.String? creationTime;
 
   /// A mutable string of at most 1024 characters associated with this resource
   /// for the user's convenience.
   ///
   /// Has no effect on the managed zone's function.
-  core.String description;
+  core.String? description;
 
   /// The DNS name of this managed zone, for instance "example.com.".
-  core.String dnsName;
+  core.String? dnsName;
 
   /// DNSSEC configuration.
-  ManagedZoneDnsSecConfig dnssecConfig;
+  ManagedZoneDnsSecConfig? dnssecConfig;
 
   /// The presence for this field indicates that outbound forwarding is enabled
   /// for this zone.
   ///
   /// The value of this field contains the set of destinations to forward to.
-  ManagedZoneForwardingConfig forwardingConfig;
+  ManagedZoneForwardingConfig? forwardingConfig;
 
   /// Unique identifier for the resource; defined by the server (output only)
-  core.String id;
-  core.String kind;
+  core.String? id;
+  core.String? kind;
 
   /// User labels.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// User assigned name for this resource.
   ///
   /// Must be unique within the project. The name must be 1-63 characters long,
   /// must begin with a letter, end with a letter or digit, and only contain
   /// lowercase letters, digits or dashes.
-  core.String name;
+  core.String? name;
 
   /// Optionally specifies the NameServerSet for this ManagedZone.
   ///
   /// A NameServerSet is a set of DNS name servers that all host the same
   /// ManagedZones. Most users will leave this field unset. If you need to use
   /// this field, please reach out to your account team.
-  core.String nameServerSet;
+  core.String? nameServerSet;
 
   /// Delegate your managed_zone to these virtual name servers; defined by the
   /// server (output only)
-  core.List<core.String> nameServers;
+  core.List<core.String>? nameServers;
 
   /// The presence of this field indicates that DNS Peering is enabled for this
   /// zone.
   ///
   /// The value of this field contains the network to peer with.
-  ManagedZonePeeringConfig peeringConfig;
+  ManagedZonePeeringConfig? peeringConfig;
 
   /// For privately visible zones, the set of Virtual Private Cloud resources
   /// that the zone is visible from.
-  ManagedZonePrivateVisibilityConfig privateVisibilityConfig;
+  ManagedZonePrivateVisibilityConfig? privateVisibilityConfig;
 
   /// The presence of this field indicates that this is a managed reverse lookup
   /// zone and Cloud DNS resolves reverse lookup queries using automatically
   /// configured records for VPC resources.
   ///
   /// This only applies to networks listed under private_visibility_config.
-  ManagedZoneReverseLookupConfig reverseLookupConfig;
+  ManagedZoneReverseLookupConfig? reverseLookupConfig;
 
   /// This field links to the associated service directory namespace.
   ///
   /// This field should not be set for public zones or forwarding zones.
-  ManagedZoneServiceDirectoryConfig serviceDirectoryConfig;
+  ManagedZoneServiceDirectoryConfig? serviceDirectoryConfig;
 
   /// The zone's visibility: public zones are exposed to the Internet, while
   /// private zones are visible only to Virtual Private Cloud resources.
   /// Possible string values are:
   /// - "public"
   /// - "private"
-  core.String visibility;
+  core.String? visibility;
 
   ManagedZone();
 
@@ -1889,27 +1762,27 @@ class ManagedZone {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationTime != null) 'creationTime': creationTime,
-        if (description != null) 'description': description,
-        if (dnsName != null) 'dnsName': dnsName,
-        if (dnssecConfig != null) 'dnssecConfig': dnssecConfig.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (description != null) 'description': description!,
+        if (dnsName != null) 'dnsName': dnsName!,
+        if (dnssecConfig != null) 'dnssecConfig': dnssecConfig!.toJson(),
         if (forwardingConfig != null)
-          'forwardingConfig': forwardingConfig.toJson(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (labels != null) 'labels': labels,
-        if (name != null) 'name': name,
-        if (nameServerSet != null) 'nameServerSet': nameServerSet,
-        if (nameServers != null) 'nameServers': nameServers,
-        if (peeringConfig != null) 'peeringConfig': peeringConfig.toJson(),
+          'forwardingConfig': forwardingConfig!.toJson(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (nameServerSet != null) 'nameServerSet': nameServerSet!,
+        if (nameServers != null) 'nameServers': nameServers!,
+        if (peeringConfig != null) 'peeringConfig': peeringConfig!.toJson(),
         if (privateVisibilityConfig != null)
-          'privateVisibilityConfig': privateVisibilityConfig.toJson(),
+          'privateVisibilityConfig': privateVisibilityConfig!.toJson(),
         if (reverseLookupConfig != null)
-          'reverseLookupConfig': reverseLookupConfig.toJson(),
+          'reverseLookupConfig': reverseLookupConfig!.toJson(),
         if (serviceDirectoryConfig != null)
-          'serviceDirectoryConfig': serviceDirectoryConfig.toJson(),
-        if (visibility != null) 'visibility': visibility,
+          'serviceDirectoryConfig': serviceDirectoryConfig!.toJson(),
+        if (visibility != null) 'visibility': visibility!,
       };
 }
 
@@ -1917,8 +1790,8 @@ class ManagedZoneDnsSecConfig {
   /// Specifies parameters for generating initial DnsKeys for this ManagedZone.
   ///
   /// Can only be changed while the state is OFF.
-  core.List<DnsKeySpec> defaultKeySpecs;
-  core.String kind;
+  core.List<DnsKeySpec>? defaultKeySpecs;
+  core.String? kind;
 
   /// Specifies the mechanism for authenticated denial-of-existence responses.
   ///
@@ -1926,14 +1799,14 @@ class ManagedZoneDnsSecConfig {
   /// Possible string values are:
   /// - "nsec"
   /// - "nsec3"
-  core.String nonExistence;
+  core.String? nonExistence;
 
   /// Specifies whether DNSSEC is enabled, and what mode it is in.
   /// Possible string values are:
   /// - "off" : DNSSEC is disabled; the zone is not signed.
   /// - "on" : DNSSEC is enabled; the zone is signed and fully managed.
   /// - "transfer" : DNSSEC is enabled, but in a "transfer" mode.
-  core.String state;
+  core.String? state;
 
   ManagedZoneDnsSecConfig();
 
@@ -1955,24 +1828,24 @@ class ManagedZoneDnsSecConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (defaultKeySpecs != null)
           'defaultKeySpecs':
-              defaultKeySpecs.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nonExistence != null) 'nonExistence': nonExistence,
-        if (state != null) 'state': state,
+              defaultKeySpecs!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nonExistence != null) 'nonExistence': nonExistence!,
+        if (state != null) 'state': state!,
       };
 }
 
 class ManagedZoneForwardingConfig {
-  core.String kind;
+  core.String? kind;
 
   /// List of target name servers to forward to.
   ///
   /// Cloud DNS selects the best available name server if more than one target
   /// is given.
-  core.List<ManagedZoneForwardingConfigNameServerTarget> targetNameServers;
+  core.List<ManagedZoneForwardingConfigNameServerTarget>? targetNameServers;
 
   ManagedZoneForwardingConfig();
 
@@ -1989,11 +1862,11 @@ class ManagedZoneForwardingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (targetNameServers != null)
           'targetNameServers':
-              targetNameServers.map((value) => value.toJson()).toList(),
+              targetNameServers!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2009,11 +1882,11 @@ class ManagedZoneForwardingConfigNameServerTarget {
   /// ranges; that is, RFC1918 addresses forward to the target through the VPC
   /// and non-RFC1918 addresses forward to the target through the internet
   /// - "private" : Cloud DNS always forwards to this target through the VPC.
-  core.String forwardingPath;
+  core.String? forwardingPath;
 
   /// IPv4 address of a target name server.
-  core.String ipv4Address;
-  core.String kind;
+  core.String? ipv4Address;
+  core.String? kind;
 
   ManagedZoneForwardingConfigNameServerTarget();
 
@@ -2029,16 +1902,16 @@ class ManagedZoneForwardingConfigNameServerTarget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (forwardingPath != null) 'forwardingPath': forwardingPath,
-        if (ipv4Address != null) 'ipv4Address': ipv4Address,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (forwardingPath != null) 'forwardingPath': forwardingPath!,
+        if (ipv4Address != null) 'ipv4Address': ipv4Address!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class ManagedZoneOperationsListResponse {
-  ResponseHeader header;
-  core.String kind;
+  ResponseHeader? header;
+  core.String? kind;
 
   /// The presence of this field indicates that there exist more results
   /// following your last page of results in pagination order.
@@ -2050,10 +1923,10 @@ class ManagedZoneOperationsListResponse {
   /// set of all elements returned are an inconsistent view of the collection.
   /// There is no way to retrieve a consistent snapshot of a collection larger
   /// than the maximum page size.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The operation resources.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ManagedZoneOperationsListResponse();
 
@@ -2076,20 +1949,20 @@ class ManagedZoneOperationsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (header != null) 'header': header.toJson(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (header != null) 'header': header!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ManagedZonePeeringConfig {
-  core.String kind;
+  core.String? kind;
 
   /// The network with which to peer.
-  ManagedZonePeeringConfigTargetNetwork targetNetwork;
+  ManagedZonePeeringConfigTargetNetwork? targetNetwork;
 
   ManagedZonePeeringConfig();
 
@@ -2103,9 +1976,9 @@ class ManagedZonePeeringConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (targetNetwork != null) 'targetNetwork': targetNetwork.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (targetNetwork != null) 'targetNetwork': targetNetwork!.toJson(),
       };
 }
 
@@ -2116,14 +1989,14 @@ class ManagedZonePeeringConfigTargetNetwork {
   /// producer network can deactivate a zone. The zone is automatically
   /// deactivated if the producer network that the zone targeted is deleted.
   /// Output only.
-  core.String deactivateTime;
-  core.String kind;
+  core.String? deactivateTime;
+  core.String? kind;
 
   /// The fully qualified URL of the VPC network to forward queries to.
   ///
   /// This should be formatted like
   /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  core.String networkUrl;
+  core.String? networkUrl;
 
   ManagedZonePeeringConfigTargetNetwork();
 
@@ -2139,18 +2012,18 @@ class ManagedZonePeeringConfigTargetNetwork {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deactivateTime != null) 'deactivateTime': deactivateTime,
-        if (kind != null) 'kind': kind,
-        if (networkUrl != null) 'networkUrl': networkUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deactivateTime != null) 'deactivateTime': deactivateTime!,
+        if (kind != null) 'kind': kind!,
+        if (networkUrl != null) 'networkUrl': networkUrl!,
       };
 }
 
 class ManagedZonePrivateVisibilityConfig {
-  core.String kind;
+  core.String? kind;
 
   /// The list of VPC networks that can see this zone.
-  core.List<ManagedZonePrivateVisibilityConfigNetwork> networks;
+  core.List<ManagedZonePrivateVisibilityConfigNetwork>? networks;
 
   ManagedZonePrivateVisibilityConfig();
 
@@ -2167,21 +2040,21 @@ class ManagedZonePrivateVisibilityConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (networks != null)
-          'networks': networks.map((value) => value.toJson()).toList(),
+          'networks': networks!.map((value) => value.toJson()).toList(),
       };
 }
 
 class ManagedZonePrivateVisibilityConfigNetwork {
-  core.String kind;
+  core.String? kind;
 
   /// The fully qualified URL of the VPC network to bind to.
   ///
   /// This should be formatted like
   /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  core.String networkUrl;
+  core.String? networkUrl;
 
   ManagedZonePrivateVisibilityConfigNetwork();
 
@@ -2194,14 +2067,14 @@ class ManagedZonePrivateVisibilityConfigNetwork {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (networkUrl != null) 'networkUrl': networkUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (networkUrl != null) 'networkUrl': networkUrl!,
       };
 }
 
 class ManagedZoneReverseLookupConfig {
-  core.String kind;
+  core.String? kind;
 
   ManagedZoneReverseLookupConfig();
 
@@ -2211,17 +2084,17 @@ class ManagedZoneReverseLookupConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Contains information about Service Directory-backed zones.
 class ManagedZoneServiceDirectoryConfig {
-  core.String kind;
+  core.String? kind;
 
   /// Contains information about the namespace associated with the zone.
-  ManagedZoneServiceDirectoryConfigNamespace namespace;
+  ManagedZoneServiceDirectoryConfigNamespace? namespace;
 
   ManagedZoneServiceDirectoryConfig();
 
@@ -2235,9 +2108,9 @@ class ManagedZoneServiceDirectoryConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (namespace != null) 'namespace': namespace.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (namespace != null) 'namespace': namespace!.toJson(),
       };
 }
 
@@ -2246,14 +2119,14 @@ class ManagedZoneServiceDirectoryConfigNamespace {
   /// it still exists.
   ///
   /// This is in RFC3339 text format. Output only.
-  core.String deletionTime;
-  core.String kind;
+  core.String? deletionTime;
+  core.String? kind;
 
   /// The fully qualified URL of the namespace associated with the zone.
   ///
   /// This should be formatted like
   /// https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
-  core.String namespaceUrl;
+  core.String? namespaceUrl;
 
   ManagedZoneServiceDirectoryConfigNamespace();
 
@@ -2269,21 +2142,21 @@ class ManagedZoneServiceDirectoryConfigNamespace {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deletionTime != null) 'deletionTime': deletionTime,
-        if (kind != null) 'kind': kind,
-        if (namespaceUrl != null) 'namespaceUrl': namespaceUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deletionTime != null) 'deletionTime': deletionTime!,
+        if (kind != null) 'kind': kind!,
+        if (namespaceUrl != null) 'namespaceUrl': namespaceUrl!,
       };
 }
 
 class ManagedZonesListResponse {
-  ResponseHeader header;
+  ResponseHeader? header;
 
   /// Type of resource.
-  core.String kind;
+  core.String? kind;
 
   /// The managed zone resources.
-  core.List<ManagedZone> managedZones;
+  core.List<ManagedZone>? managedZones;
 
   /// The presence of this field indicates that there exist more results
   /// following your last page of results in pagination order.
@@ -2295,7 +2168,7 @@ class ManagedZonesListResponse {
   /// set of all elements returned are an inconsistent view of the collection.
   /// There is no way to retrieve a consistent snapshot of a collection larger
   /// than the maximum page size.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ManagedZonesListResponse();
 
@@ -2318,12 +2191,12 @@ class ManagedZonesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (header != null) 'header': header.toJson(),
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (header != null) 'header': header!.toJson(),
+        if (kind != null) 'kind': kind!,
         if (managedZones != null)
-          'managedZones': managedZones.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'managedZones': managedZones!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2335,7 +2208,7 @@ class ManagedZonesListResponse {
 /// the caller. Use the caller specified client_operation_id.
 class Operation {
   /// Only populated if the operation targeted a DnsKey (output only).
-  OperationDnsKeyContext dnsKeyContext;
+  OperationDnsKeyContext? dnsKeyContext;
 
   /// Unique identifier for the resource.
   ///
@@ -2343,13 +2216,13 @@ class Operation {
   /// mutation was initiated, otherwise, it is generated by the server. The name
   /// must be 1-63 characters long and match the regular expression \[-a-z0-9\]?
   /// (output only)
-  core.String id;
-  core.String kind;
+  core.String? id;
+  core.String? kind;
 
   /// The time that this operation was started by the server.
   ///
   /// This is in RFC3339 text format (output only).
-  core.String startTime;
+  core.String? startTime;
 
   /// Status of the operation.
   ///
@@ -2359,21 +2232,21 @@ class Operation {
   /// Possible string values are:
   /// - "pending"
   /// - "done"
-  core.String status;
+  core.String? status;
 
   /// Type of the operation.
   ///
   /// Operations include insert, update, and delete (output only).
-  core.String type;
+  core.String? type;
 
   /// User who requested the operation, for example: user@example.com.
   ///
   /// cloud-dns-system for operations automatically done by the system. (output
   /// only)
-  core.String user;
+  core.String? user;
 
   /// Only populated if the operation targeted a ManagedZone (output only).
-  OperationManagedZoneContext zoneContext;
+  OperationManagedZoneContext? zoneContext;
 
   Operation();
 
@@ -2406,24 +2279,24 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dnsKeyContext != null) 'dnsKeyContext': dnsKeyContext.toJson(),
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (startTime != null) 'startTime': startTime,
-        if (status != null) 'status': status,
-        if (type != null) 'type': type,
-        if (user != null) 'user': user,
-        if (zoneContext != null) 'zoneContext': zoneContext.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dnsKeyContext != null) 'dnsKeyContext': dnsKeyContext!.toJson(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (startTime != null) 'startTime': startTime!,
+        if (status != null) 'status': status!,
+        if (type != null) 'type': type!,
+        if (user != null) 'user': user!,
+        if (zoneContext != null) 'zoneContext': zoneContext!.toJson(),
       };
 }
 
 class OperationDnsKeyContext {
   /// The post-operation DnsKey resource.
-  DnsKey newValue;
+  DnsKey? newValue;
 
   /// The pre-operation DnsKey resource.
-  DnsKey oldValue;
+  DnsKey? oldValue;
 
   OperationDnsKeyContext();
 
@@ -2438,18 +2311,18 @@ class OperationDnsKeyContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (newValue != null) 'newValue': newValue.toJson(),
-        if (oldValue != null) 'oldValue': oldValue.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (newValue != null) 'newValue': newValue!.toJson(),
+        if (oldValue != null) 'oldValue': oldValue!.toJson(),
       };
 }
 
 class OperationManagedZoneContext {
   /// The post-operation ManagedZone resource.
-  ManagedZone newValue;
+  ManagedZone? newValue;
 
   /// The pre-operation ManagedZone resource.
-  ManagedZone oldValue;
+  ManagedZone? oldValue;
 
   OperationManagedZoneContext();
 
@@ -2464,17 +2337,17 @@ class OperationManagedZoneContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (newValue != null) 'newValue': newValue.toJson(),
-        if (oldValue != null) 'oldValue': oldValue.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (newValue != null) 'newValue': newValue!.toJson(),
+        if (oldValue != null) 'oldValue': oldValue!.toJson(),
       };
 }
 
 class PoliciesListResponse {
-  ResponseHeader header;
+  ResponseHeader? header;
 
   /// Type of resource.
-  core.String kind;
+  core.String? kind;
 
   /// The presence of this field indicates that there exist more results
   /// following your last page of results in pagination order.
@@ -2486,10 +2359,10 @@ class PoliciesListResponse {
   /// set of all elements returned are an inconsistent view of the collection.
   /// There is no way to retrieve a consistent snapshot of a collection larger
   /// than the maximum page size.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The policy resources.
-  core.List<Policy> policies;
+  core.List<Policy>? policies;
 
   PoliciesListResponse();
 
@@ -2512,18 +2385,18 @@ class PoliciesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (header != null) 'header': header.toJson(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (header != null) 'header': header!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (policies != null)
-          'policies': policies.map((value) => value.toJson()).toList(),
+          'policies': policies!.map((value) => value.toJson()).toList(),
       };
 }
 
 class PoliciesPatchResponse {
-  ResponseHeader header;
-  Policy policy;
+  ResponseHeader? header;
+  Policy? policy;
 
   PoliciesPatchResponse();
 
@@ -2538,15 +2411,15 @@ class PoliciesPatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (header != null) 'header': header.toJson(),
-        if (policy != null) 'policy': policy.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (header != null) 'header': header!.toJson(),
+        if (policy != null) 'policy': policy!.toJson(),
       };
 }
 
 class PoliciesUpdateResponse {
-  ResponseHeader header;
-  Policy policy;
+  ResponseHeader? header;
+  Policy? policy;
 
   PoliciesUpdateResponse();
 
@@ -2561,9 +2434,9 @@ class PoliciesUpdateResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (header != null) 'header': header.toJson(),
-        if (policy != null) 'policy': policy.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (header != null) 'header': header!.toJson(),
+        if (policy != null) 'policy': policy!.toJson(),
       };
 }
 
@@ -2575,35 +2448,35 @@ class Policy {
   /// When specified, all DNS queries are forwarded to a name server that you
   /// choose. Names such as .internal are not available when an alternative name
   /// server is specified.
-  PolicyAlternativeNameServerConfig alternativeNameServerConfig;
+  PolicyAlternativeNameServerConfig? alternativeNameServerConfig;
 
   /// A mutable string of at most 1024 characters associated with this resource
   /// for the user's convenience.
   ///
   /// Has no effect on the policy's function.
-  core.String description;
+  core.String? description;
 
   /// Allows networks bound to this policy to receive DNS queries sent by VMs or
   /// applications over VPN connections.
   ///
   /// When enabled, a virtual IP address is allocated from each of the
   /// sub-networks that are bound to this policy.
-  core.bool enableInboundForwarding;
+  core.bool? enableInboundForwarding;
 
   /// Controls whether logging is enabled for the networks bound to this policy.
   ///
   /// Defaults to no logging if not set.
-  core.bool enableLogging;
+  core.bool? enableLogging;
 
   /// Unique identifier for the resource; defined by the server (output only).
-  core.String id;
-  core.String kind;
+  core.String? id;
+  core.String? kind;
 
   /// User-assigned name for this policy.
-  core.String name;
+  core.String? name;
 
   /// List of network names specifying networks to which this policy is applied.
-  core.List<PolicyNetwork> networks;
+  core.List<PolicyNetwork>? networks;
 
   Policy();
 
@@ -2639,30 +2512,30 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (alternativeNameServerConfig != null)
-          'alternativeNameServerConfig': alternativeNameServerConfig.toJson(),
-        if (description != null) 'description': description,
+          'alternativeNameServerConfig': alternativeNameServerConfig!.toJson(),
+        if (description != null) 'description': description!,
         if (enableInboundForwarding != null)
-          'enableInboundForwarding': enableInboundForwarding,
-        if (enableLogging != null) 'enableLogging': enableLogging,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
+          'enableInboundForwarding': enableInboundForwarding!,
+        if (enableLogging != null) 'enableLogging': enableLogging!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
         if (networks != null)
-          'networks': networks.map((value) => value.toJson()).toList(),
+          'networks': networks!.map((value) => value.toJson()).toList(),
       };
 }
 
 class PolicyAlternativeNameServerConfig {
-  core.String kind;
+  core.String? kind;
 
   /// Sets an alternative name server for the associated networks.
   ///
   /// When specified, all DNS queries are forwarded to a name server that you
   /// choose. Names such as .internal are not available when an alternative name
   /// server is specified.
-  core.List<PolicyAlternativeNameServerConfigTargetNameServer>
+  core.List<PolicyAlternativeNameServerConfigTargetNameServer>?
       targetNameServers;
 
   PolicyAlternativeNameServerConfig();
@@ -2680,11 +2553,11 @@ class PolicyAlternativeNameServerConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (targetNameServers != null)
           'targetNameServers':
-              targetNameServers.map((value) => value.toJson()).toList(),
+              targetNameServers!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2701,11 +2574,11 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
   /// and non-RFC1918 addresses forward to the target through the internet
   /// - "private" : Cloud DNS will always forward to this target through the
   /// VPC.
-  core.String forwardingPath;
+  core.String? forwardingPath;
 
   /// IPv4 address to forward to.
-  core.String ipv4Address;
-  core.String kind;
+  core.String? ipv4Address;
+  core.String? kind;
 
   PolicyAlternativeNameServerConfigTargetNameServer();
 
@@ -2721,21 +2594,21 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (forwardingPath != null) 'forwardingPath': forwardingPath,
-        if (ipv4Address != null) 'ipv4Address': ipv4Address,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (forwardingPath != null) 'forwardingPath': forwardingPath!,
+        if (ipv4Address != null) 'ipv4Address': ipv4Address!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 class PolicyNetwork {
-  core.String kind;
+  core.String? kind;
 
   /// The fully qualified URL of the VPC network to bind to.
   ///
   /// This should be formatted like
   /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  core.String networkUrl;
+  core.String? networkUrl;
 
   PolicyNetwork();
 
@@ -2748,9 +2621,9 @@ class PolicyNetwork {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (networkUrl != null) 'networkUrl': networkUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (networkUrl != null) 'networkUrl': networkUrl!,
       };
 }
 
@@ -2760,15 +2633,15 @@ class PolicyNetwork {
 /// ManagedZones. Projects can be created only in the APIs console.
 class Project {
   /// User assigned unique identifier for the resource (output only).
-  core.String id;
-  core.String kind;
+  core.String? id;
+  core.String? kind;
 
   /// Unique numeric identifier for the resource; defined by the server (output
   /// only).
-  core.String number;
+  core.String? number;
 
   /// Quotas assigned to this project (output only).
-  Quota quota;
+  Quota? quota;
 
   Project();
 
@@ -2788,63 +2661,63 @@ class Project {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (number != null) 'number': number,
-        if (quota != null) 'quota': quota.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (number != null) 'number': number!,
+        if (quota != null) 'quota': quota!.toJson(),
       };
 }
 
 /// Limits associated with a Project.
 class Quota {
   /// Maximum allowed number of DnsKeys per ManagedZone.
-  core.int dnsKeysPerManagedZone;
-  core.String kind;
+  core.int? dnsKeysPerManagedZone;
+  core.String? kind;
 
   /// Maximum allowed number of managed zones in the project.
-  core.int managedZones;
+  core.int? managedZones;
 
   /// Maximum allowed number of managed zones which can be attached to a
   /// network.
-  core.int managedZonesPerNetwork;
+  core.int? managedZonesPerNetwork;
 
   /// Maximum allowed number of networks to which a privately scoped zone can be
   /// attached.
-  core.int networksPerManagedZone;
+  core.int? networksPerManagedZone;
 
   /// Maximum allowed number of networks per policy.
-  core.int networksPerPolicy;
+  core.int? networksPerPolicy;
 
   /// Maximum allowed number of policies per project.
-  core.int policies;
+  core.int? policies;
 
   /// Maximum allowed number of ResourceRecords per ResourceRecordSet.
-  core.int resourceRecordsPerRrset;
+  core.int? resourceRecordsPerRrset;
 
   /// Maximum allowed number of ResourceRecordSets to add per
   /// ChangesCreateRequest.
-  core.int rrsetAdditionsPerChange;
+  core.int? rrsetAdditionsPerChange;
 
   /// Maximum allowed number of ResourceRecordSets to delete per
   /// ChangesCreateRequest.
-  core.int rrsetDeletionsPerChange;
+  core.int? rrsetDeletionsPerChange;
 
   /// Maximum allowed number of ResourceRecordSets per zone in the project.
-  core.int rrsetsPerManagedZone;
+  core.int? rrsetsPerManagedZone;
 
   /// Maximum allowed number of target name servers per managed forwarding zone.
-  core.int targetNameServersPerManagedZone;
+  core.int? targetNameServersPerManagedZone;
 
   /// Maximum allowed number of alternative target name servers per policy.
-  core.int targetNameServersPerPolicy;
+  core.int? targetNameServersPerPolicy;
 
   /// Maximum allowed size for total rrdata in one ChangesCreateRequest in
   /// bytes.
-  core.int totalRrdataSizePerChange;
+  core.int? totalRrdataSizePerChange;
 
   /// DNSSEC algorithm and key length types that can be used for DnsKeys.
-  core.List<DnsKeySpec> whitelistedKeySpecs;
+  core.List<DnsKeySpec>? whitelistedKeySpecs;
 
   Quota();
 
@@ -2901,58 +2774,58 @@ class Quota {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dnsKeysPerManagedZone != null)
-          'dnsKeysPerManagedZone': dnsKeysPerManagedZone,
-        if (kind != null) 'kind': kind,
-        if (managedZones != null) 'managedZones': managedZones,
+          'dnsKeysPerManagedZone': dnsKeysPerManagedZone!,
+        if (kind != null) 'kind': kind!,
+        if (managedZones != null) 'managedZones': managedZones!,
         if (managedZonesPerNetwork != null)
-          'managedZonesPerNetwork': managedZonesPerNetwork,
+          'managedZonesPerNetwork': managedZonesPerNetwork!,
         if (networksPerManagedZone != null)
-          'networksPerManagedZone': networksPerManagedZone,
-        if (networksPerPolicy != null) 'networksPerPolicy': networksPerPolicy,
-        if (policies != null) 'policies': policies,
+          'networksPerManagedZone': networksPerManagedZone!,
+        if (networksPerPolicy != null) 'networksPerPolicy': networksPerPolicy!,
+        if (policies != null) 'policies': policies!,
         if (resourceRecordsPerRrset != null)
-          'resourceRecordsPerRrset': resourceRecordsPerRrset,
+          'resourceRecordsPerRrset': resourceRecordsPerRrset!,
         if (rrsetAdditionsPerChange != null)
-          'rrsetAdditionsPerChange': rrsetAdditionsPerChange,
+          'rrsetAdditionsPerChange': rrsetAdditionsPerChange!,
         if (rrsetDeletionsPerChange != null)
-          'rrsetDeletionsPerChange': rrsetDeletionsPerChange,
+          'rrsetDeletionsPerChange': rrsetDeletionsPerChange!,
         if (rrsetsPerManagedZone != null)
-          'rrsetsPerManagedZone': rrsetsPerManagedZone,
+          'rrsetsPerManagedZone': rrsetsPerManagedZone!,
         if (targetNameServersPerManagedZone != null)
-          'targetNameServersPerManagedZone': targetNameServersPerManagedZone,
+          'targetNameServersPerManagedZone': targetNameServersPerManagedZone!,
         if (targetNameServersPerPolicy != null)
-          'targetNameServersPerPolicy': targetNameServersPerPolicy,
+          'targetNameServersPerPolicy': targetNameServersPerPolicy!,
         if (totalRrdataSizePerChange != null)
-          'totalRrdataSizePerChange': totalRrdataSizePerChange,
+          'totalRrdataSizePerChange': totalRrdataSizePerChange!,
         if (whitelistedKeySpecs != null)
           'whitelistedKeySpecs':
-              whitelistedKeySpecs.map((value) => value.toJson()).toList(),
+              whitelistedKeySpecs!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A unit of data that will be returned by the DNS servers.
 class ResourceRecordSet {
-  core.String kind;
+  core.String? kind;
 
   /// For example, www.example.com.
-  core.String name;
+  core.String? name;
 
   /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see
   /// examples.
-  core.List<core.String> rrdatas;
+  core.List<core.String>? rrdatas;
 
   /// As defined in RFC 4034 (section 3.2).
-  core.List<core.String> signatureRrdatas;
+  core.List<core.String>? signatureRrdatas;
 
   /// Number of seconds that this ResourceRecordSet can be cached by resolvers.
-  core.int ttl;
+  core.int? ttl;
 
   /// The identifier of a supported record type.
   ///
   /// See the list of Supported DNS record types.
-  core.String type;
+  core.String? type;
 
   ResourceRecordSet();
 
@@ -2981,21 +2854,21 @@ class ResourceRecordSet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (rrdatas != null) 'rrdatas': rrdatas,
-        if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas,
-        if (ttl != null) 'ttl': ttl,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (rrdatas != null) 'rrdatas': rrdatas!,
+        if (signatureRrdatas != null) 'signatureRrdatas': signatureRrdatas!,
+        if (ttl != null) 'ttl': ttl!,
+        if (type != null) 'type': type!,
       };
 }
 
 class ResourceRecordSetsListResponse {
-  ResponseHeader header;
+  ResponseHeader? header;
 
   /// Type of resource.
-  core.String kind;
+  core.String? kind;
 
   /// The presence of this field indicates that there exist more results
   /// following your last page of results in pagination order.
@@ -3007,10 +2880,10 @@ class ResourceRecordSetsListResponse {
   /// set of elements returned are an inconsistent view of the collection. You
   /// cannot retrieve a consistent snapshot of a collection larger than the
   /// maximum page size.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The resource record set resources.
-  core.List<ResourceRecordSet> rrsets;
+  core.List<ResourceRecordSet>? rrsets;
 
   ResourceRecordSetsListResponse();
 
@@ -3033,12 +2906,12 @@ class ResourceRecordSetsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (header != null) 'header': header.toJson(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (header != null) 'header': header!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (rrsets != null)
-          'rrsets': rrsets.map((value) => value.toJson()).toList(),
+          'rrsets': rrsets!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3048,7 +2921,7 @@ class ResponseHeader {
   ///
   /// This is the client_operation_id if the client specified it, otherwise it
   /// is generated by the server (output only).
-  core.String operationId;
+  core.String? operationId;
 
   ResponseHeader();
 
@@ -3058,7 +2931,7 @@ class ResponseHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operationId != null) 'operationId': operationId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operationId != null) 'operationId': operationId!,
       };
 }

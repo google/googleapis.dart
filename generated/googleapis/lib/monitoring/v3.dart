@@ -577,26 +577,23 @@ class FoldersTimeSeriesResource {
   /// this method will complete with the same error.
   async.Future<ListTimeSeriesResponse> list(
     core.String name, {
-    core.String aggregation_alignmentPeriod,
-    core.String aggregation_crossSeriesReducer,
-    core.List<core.String> aggregation_groupByFields,
-    core.String aggregation_perSeriesAligner,
-    core.String filter,
-    core.String interval_endTime,
-    core.String interval_startTime,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String secondaryAggregation_alignmentPeriod,
-    core.String secondaryAggregation_crossSeriesReducer,
-    core.List<core.String> secondaryAggregation_groupByFields,
-    core.String secondaryAggregation_perSeriesAligner,
-    core.String view,
-    core.String $fields,
+    core.String? aggregation_alignmentPeriod,
+    core.String? aggregation_crossSeriesReducer,
+    core.List<core.String>? aggregation_groupByFields,
+    core.String? aggregation_perSeriesAligner,
+    core.String? filter,
+    core.String? interval_endTime,
+    core.String? interval_startTime,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? secondaryAggregation_alignmentPeriod,
+    core.String? secondaryAggregation_crossSeriesReducer,
+    core.List<core.String>? secondaryAggregation_groupByFields,
+    core.String? secondaryAggregation_perSeriesAligner,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (aggregation_alignmentPeriod != null)
         'aggregation.alignmentPeriod': [aggregation_alignmentPeriod],
@@ -1124,26 +1121,23 @@ class OrganizationsTimeSeriesResource {
   /// this method will complete with the same error.
   async.Future<ListTimeSeriesResponse> list(
     core.String name, {
-    core.String aggregation_alignmentPeriod,
-    core.String aggregation_crossSeriesReducer,
-    core.List<core.String> aggregation_groupByFields,
-    core.String aggregation_perSeriesAligner,
-    core.String filter,
-    core.String interval_endTime,
-    core.String interval_startTime,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String secondaryAggregation_alignmentPeriod,
-    core.String secondaryAggregation_crossSeriesReducer,
-    core.List<core.String> secondaryAggregation_groupByFields,
-    core.String secondaryAggregation_perSeriesAligner,
-    core.String view,
-    core.String $fields,
+    core.String? aggregation_alignmentPeriod,
+    core.String? aggregation_crossSeriesReducer,
+    core.List<core.String>? aggregation_groupByFields,
+    core.String? aggregation_perSeriesAligner,
+    core.String? filter,
+    core.String? interval_endTime,
+    core.String? interval_startTime,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? secondaryAggregation_alignmentPeriod,
+    core.String? secondaryAggregation_crossSeriesReducer,
+    core.List<core.String>? secondaryAggregation_groupByFields,
+    core.String? secondaryAggregation_perSeriesAligner,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (aggregation_alignmentPeriod != null)
         'aggregation.alignmentPeriod': [aggregation_alignmentPeriod],
@@ -1254,13 +1248,9 @@ class ProjectsAlertPoliciesResource {
   async.Future<AlertPolicy> create(
     AlertPolicy request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1300,11 +1290,8 @@ class ProjectsAlertPoliciesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1339,11 +1326,8 @@ class ProjectsAlertPoliciesResource {
   /// this method will complete with the same error.
   async.Future<AlertPolicy> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1400,15 +1384,12 @@ class ProjectsAlertPoliciesResource {
   /// this method will complete with the same error.
   async.Future<ListAlertPoliciesResponse> list(
     core.String name, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1479,14 +1460,10 @@ class ProjectsAlertPoliciesResource {
   async.Future<AlertPolicy> patch(
     AlertPolicy request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1537,13 +1514,9 @@ class ProjectsCollectdTimeSeriesResource {
   async.Future<CreateCollectdTimeSeriesResponse> create(
     CreateCollectdTimeSeriesRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1597,14 +1570,10 @@ class ProjectsGroupsResource {
   async.Future<Group> create(
     Group request,
     core.String name, {
-    core.bool validateOnly,
-    core.String $fields,
+    core.bool? validateOnly,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
@@ -1646,12 +1615,9 @@ class ProjectsGroupsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.bool recursive,
-    core.String $fields,
+    core.bool? recursive,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (recursive != null) 'recursive': ['${recursive}'],
       if ($fields != null) 'fields': [$fields],
@@ -1687,11 +1653,8 @@ class ProjectsGroupsResource {
   /// this method will complete with the same error.
   async.Future<Group> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1752,16 +1715,13 @@ class ProjectsGroupsResource {
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list(
     core.String name, {
-    core.String ancestorsOfGroup,
-    core.String childrenOfGroup,
-    core.String descendantsOfGroup,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? ancestorsOfGroup,
+    core.String? childrenOfGroup,
+    core.String? descendantsOfGroup,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (ancestorsOfGroup != null) 'ancestorsOfGroup': [ancestorsOfGroup],
       if (childrenOfGroup != null) 'childrenOfGroup': [childrenOfGroup],
@@ -1815,14 +1775,10 @@ class ProjectsGroupsResource {
   async.Future<Group> update(
     Group request,
     core.String name, {
-    core.bool validateOnly,
-    core.String $fields,
+    core.bool? validateOnly,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
@@ -1887,16 +1843,13 @@ class ProjectsGroupsMembersResource {
   /// this method will complete with the same error.
   async.Future<ListGroupMembersResponse> list(
     core.String name, {
-    core.String filter,
-    core.String interval_endTime,
-    core.String interval_startTime,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? interval_endTime,
+    core.String? interval_startTime,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (interval_endTime != null) 'interval.endTime': [interval_endTime],
@@ -1952,13 +1905,9 @@ class ProjectsMetricDescriptorsResource {
   async.Future<MetricDescriptor> create(
     MetricDescriptor request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2002,11 +1951,8 @@ class ProjectsMetricDescriptorsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2046,11 +1992,8 @@ class ProjectsMetricDescriptorsResource {
   /// this method will complete with the same error.
   async.Future<MetricDescriptor> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2104,14 +2047,11 @@ class ProjectsMetricDescriptorsResource {
   /// this method will complete with the same error.
   async.Future<ListMetricDescriptorsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2164,11 +2104,8 @@ class ProjectsMonitoredResourceDescriptorsResource {
   /// this method will complete with the same error.
   async.Future<MonitoredResourceDescriptor> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2221,14 +2158,11 @@ class ProjectsMonitoredResourceDescriptorsResource {
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -2281,11 +2215,8 @@ class ProjectsNotificationChannelDescriptorsResource {
   /// this method will complete with the same error.
   async.Future<NotificationChannelDescriptor> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2336,13 +2267,10 @@ class ProjectsNotificationChannelDescriptorsResource {
   /// this method will complete with the same error.
   async.Future<ListNotificationChannelDescriptorsResponse> list(
     core.String name, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2397,13 +2325,9 @@ class ProjectsNotificationChannelsResource {
   async.Future<NotificationChannel> create(
     NotificationChannel request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2448,12 +2372,9 @@ class ProjectsNotificationChannelsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.bool force,
-    core.String $fields,
+    core.bool? force,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
@@ -2496,11 +2417,8 @@ class ProjectsNotificationChannelsResource {
   /// this method will complete with the same error.
   async.Future<NotificationChannel> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2561,13 +2479,9 @@ class ProjectsNotificationChannelsResource {
       getVerificationCode(
     GetNotificationChannelVerificationCodeRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2628,15 +2542,12 @@ class ProjectsNotificationChannelsResource {
   /// this method will complete with the same error.
   async.Future<ListNotificationChannelsResponse> list(
     core.String name, {
-    core.String filter,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (orderBy != null) 'orderBy': [orderBy],
@@ -2686,14 +2597,10 @@ class ProjectsNotificationChannelsResource {
   async.Future<NotificationChannel> patch(
     NotificationChannel request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -2737,13 +2644,9 @@ class ProjectsNotificationChannelsResource {
   async.Future<Empty> sendVerificationCode(
     SendNotificationChannelVerificationCodeRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2785,13 +2688,9 @@ class ProjectsNotificationChannelsResource {
   async.Future<NotificationChannel> verify(
     VerifyNotificationChannelRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2842,13 +2741,9 @@ class ProjectsTimeSeriesResource {
   async.Future<Empty> create(
     CreateTimeSeriesRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3329,26 +3224,23 @@ class ProjectsTimeSeriesResource {
   /// this method will complete with the same error.
   async.Future<ListTimeSeriesResponse> list(
     core.String name, {
-    core.String aggregation_alignmentPeriod,
-    core.String aggregation_crossSeriesReducer,
-    core.List<core.String> aggregation_groupByFields,
-    core.String aggregation_perSeriesAligner,
-    core.String filter,
-    core.String interval_endTime,
-    core.String interval_startTime,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String secondaryAggregation_alignmentPeriod,
-    core.String secondaryAggregation_crossSeriesReducer,
-    core.List<core.String> secondaryAggregation_groupByFields,
-    core.String secondaryAggregation_perSeriesAligner,
-    core.String view,
-    core.String $fields,
+    core.String? aggregation_alignmentPeriod,
+    core.String? aggregation_crossSeriesReducer,
+    core.List<core.String>? aggregation_groupByFields,
+    core.String? aggregation_perSeriesAligner,
+    core.String? filter,
+    core.String? interval_endTime,
+    core.String? interval_startTime,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? secondaryAggregation_alignmentPeriod,
+    core.String? secondaryAggregation_crossSeriesReducer,
+    core.List<core.String>? secondaryAggregation_groupByFields,
+    core.String? secondaryAggregation_perSeriesAligner,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (aggregation_alignmentPeriod != null)
         'aggregation.alignmentPeriod': [aggregation_alignmentPeriod],
@@ -3421,13 +3313,9 @@ class ProjectsTimeSeriesResource {
   async.Future<QueryTimeSeriesResponse> query(
     QueryTimeSeriesRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3476,13 +3364,9 @@ class ProjectsUptimeCheckConfigsResource {
   async.Future<UptimeCheckConfig> create(
     UptimeCheckConfig request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3526,11 +3410,8 @@ class ProjectsUptimeCheckConfigsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3566,11 +3447,8 @@ class ProjectsUptimeCheckConfigsResource {
   /// this method will complete with the same error.
   async.Future<UptimeCheckConfig> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3617,13 +3495,10 @@ class ProjectsUptimeCheckConfigsResource {
   /// this method will complete with the same error.
   async.Future<ListUptimeCheckConfigsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3680,14 +3555,10 @@ class ProjectsUptimeCheckConfigsResource {
   async.Future<UptimeCheckConfig> patch(
     UptimeCheckConfig request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3741,14 +3612,10 @@ class ServicesResource {
   async.Future<Service> create(
     Service request,
     core.String parent, {
-    core.String serviceId,
-    core.String $fields,
+    core.String? serviceId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (serviceId != null) 'serviceId': [serviceId],
       if ($fields != null) 'fields': [$fields],
@@ -3786,11 +3653,8 @@ class ServicesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3825,11 +3689,8 @@ class ServicesResource {
   /// this method will complete with the same error.
   async.Future<Service> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3887,14 +3748,11 @@ class ServicesResource {
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -3940,14 +3798,10 @@ class ServicesResource {
   async.Future<Service> patch(
     Service request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -3998,14 +3852,10 @@ class ServicesServiceLevelObjectivesResource {
   async.Future<ServiceLevelObjective> create(
     ServiceLevelObjective request,
     core.String parent, {
-    core.String serviceLevelObjectiveId,
-    core.String $fields,
+    core.String? serviceLevelObjectiveId,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (serviceLevelObjectiveId != null)
         'serviceLevelObjectiveId': [serviceLevelObjectiveId],
@@ -4048,11 +3898,8 @@ class ServicesServiceLevelObjectivesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4103,12 +3950,9 @@ class ServicesServiceLevelObjectivesResource {
   /// this method will complete with the same error.
   async.Future<ServiceLevelObjective> get(
     core.String name, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -4171,15 +4015,12 @@ class ServicesServiceLevelObjectivesResource {
   /// this method will complete with the same error.
   async.Future<ListServiceLevelObjectivesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -4228,14 +4069,10 @@ class ServicesServiceLevelObjectivesResource {
   async.Future<ServiceLevelObjective> patch(
     ServiceLevelObjective request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -4284,9 +4121,9 @@ class UptimeCheckIpsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUptimeCheckIpsResponse> list({
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -4340,7 +4177,7 @@ class Aggregation {
   /// is specified, then this field is ignored.The maximum value of the
   /// alignment_period is 104 weeks (2 years) for charts, and 90,000 seconds (25
   /// hours) for alerting policies.
-  core.String alignmentPeriod;
+  core.String? alignmentPeriod;
 
   /// The reduction operation to be used to combine time series into a single
   /// time series, where the value of each data point in the resulting series is
@@ -4414,7 +4251,7 @@ class Aggregation {
   /// series for each alignment period. This reducer is valid for GAUGE and
   /// DELTA metrics of numeric and distribution type. The value of the output is
   /// DOUBLE.
-  core.String crossSeriesReducer;
+  core.String? crossSeriesReducer;
 
   /// The set of fields to preserve when cross_series_reducer is specified.
   ///
@@ -4429,7 +4266,7 @@ class Aggregation {
   /// series have the same resource type, then the time series are aggregated
   /// into a single output time series. If cross_series_reducer is not defined,
   /// this field is ignored.
-  core.List<core.String> groupByFields;
+  core.List<core.String>? groupByFields;
 
   /// An Aligner describes how to bring the data points in a single time series
   /// into temporal alignment.
@@ -4537,7 +4374,7 @@ class Aggregation {
   /// are ignored. While DELTA metrics are accepted by this alignment, special
   /// care should be taken that the values for the metric will always be
   /// positive. The output is a GAUGE metric with value_type DOUBLE.
-  core.String perSeriesAligner;
+  core.String? perSeriesAligner;
 
   Aggregation();
 
@@ -4558,12 +4395,12 @@ class Aggregation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (alignmentPeriod != null) 'alignmentPeriod': alignmentPeriod,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (alignmentPeriod != null) 'alignmentPeriod': alignmentPeriod!,
         if (crossSeriesReducer != null)
-          'crossSeriesReducer': crossSeriesReducer,
-        if (groupByFields != null) 'groupByFields': groupByFields,
-        if (perSeriesAligner != null) 'perSeriesAligner': perSeriesAligner,
+          'crossSeriesReducer': crossSeriesReducer!,
+        if (groupByFields != null) 'groupByFields': groupByFields!,
+        if (perSeriesAligner != null) 'perSeriesAligner': perSeriesAligner!,
       };
 }
 
@@ -4590,7 +4427,7 @@ class AlertPolicy {
   /// - "AND_WITH_MATCHING_RESOURCE" : Combine conditions using logical AND
   /// operator, but unlike the regular AND option, an incident is created only
   /// if all conditions are met simultaneously on at least one resource.
-  core.String combiner;
+  core.String? combiner;
 
   /// A list of conditions for the policy.
   ///
@@ -4599,19 +4436,19 @@ class AlertPolicy {
   /// A policy can have from one to six conditions. If
   /// condition_time_series_query_language is present, it must be the only
   /// condition.
-  core.List<Condition> conditions;
+  core.List<Condition>? conditions;
 
   /// A read-only record of the creation of the alerting policy.
   ///
   /// If provided in a call to create or update, this field will be ignored.
-  MutationRecord creationRecord;
+  MutationRecord? creationRecord;
 
   /// A short name or phrase used to identify the policy in dashboards,
   /// notifications, and incidents.
   ///
   /// To avoid confusion, don't use the same display name for multiple policies
   /// in the same project. The name is limited to 512 Unicode characters.
-  core.String displayName;
+  core.String? displayName;
 
   /// Documentation that is included with notifications and incidents related to
   /// this policy.
@@ -4620,7 +4457,7 @@ class AlertPolicy {
   /// responders understand, mitigate, escalate, and correct the underlying
   /// problems detected by the alerting policy. Notification channels that have
   /// limited capacity might not show this documentation.
-  Documentation documentation;
+  Documentation? documentation;
 
   /// Whether or not the policy is enabled.
   ///
@@ -4629,12 +4466,12 @@ class AlertPolicy {
   /// if it has not been populated. The field should always be populated on List
   /// and Get operations, unless a field projection has been specified that
   /// strips it out.
-  core.bool enabled;
+  core.bool? enabled;
 
   /// A read-only record of the most recent change to the alerting policy.
   ///
   /// If provided in a call to create or update, this field will be ignored.
-  MutationRecord mutationRecord;
+  MutationRecord? mutationRecord;
 
   /// Required if the policy exists.
   ///
@@ -4643,7 +4480,7 @@ class AlertPolicy {
   /// \[ALERT_POLICY_ID\] is assigned by Stackdriver Monitoring when the policy
   /// is created. When calling the alertPolicies.create method, do not include
   /// the name field in the alerting policy passed as part of the request.
-  core.String name;
+  core.String? name;
 
   /// Identifies the notification channels to which notifications should be sent
   /// when incidents are opened or closed or when new violations occur on an
@@ -4653,7 +4490,7 @@ class AlertPolicy {
   /// NotificationChannel objects that are returned from the
   /// ListNotificationChannels method. The format of the entries in this field
   /// is: projects/\[PROJECT_ID_OR_NUMBER\]/notificationChannels/\[CHANNEL_ID\]
-  core.List<core.String> notificationChannels;
+  core.List<core.String>? notificationChannels;
 
   /// User-supplied key/value data to be used for organizing and identifying the
   /// AlertPolicy objects.The field can contain up to 64 entries.
@@ -4661,13 +4498,13 @@ class AlertPolicy {
   /// Each key and value is limited to 63 Unicode characters or 128 bytes,
   /// whichever is smaller. Labels and values can contain only lowercase
   /// letters, numerals, underscores, and dashes. Keys must begin with a letter.
-  core.Map<core.String, core.String> userLabels;
+  core.Map<core.String, core.String>? userLabels;
 
   /// Read-only description of how the alert policy is invalid.
   ///
   /// OK if the alert policy is valid. If not OK, the alert policy will not
   /// generate incidents.
-  Status validity;
+  Status? validity;
 
   AlertPolicy();
 
@@ -4723,20 +4560,20 @@ class AlertPolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (combiner != null) 'combiner': combiner,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (combiner != null) 'combiner': combiner!,
         if (conditions != null)
-          'conditions': conditions.map((value) => value.toJson()).toList(),
-        if (creationRecord != null) 'creationRecord': creationRecord.toJson(),
-        if (displayName != null) 'displayName': displayName,
-        if (documentation != null) 'documentation': documentation.toJson(),
-        if (enabled != null) 'enabled': enabled,
-        if (mutationRecord != null) 'mutationRecord': mutationRecord.toJson(),
-        if (name != null) 'name': name,
+          'conditions': conditions!.map((value) => value.toJson()).toList(),
+        if (creationRecord != null) 'creationRecord': creationRecord!.toJson(),
+        if (displayName != null) 'displayName': displayName!,
+        if (documentation != null) 'documentation': documentation!.toJson(),
+        if (enabled != null) 'enabled': enabled!,
+        if (mutationRecord != null) 'mutationRecord': mutationRecord!.toJson(),
+        if (name != null) 'name': name!,
         if (notificationChannels != null)
-          'notificationChannels': notificationChannels,
-        if (userLabels != null) 'userLabels': userLabels,
-        if (validity != null) 'validity': validity.toJson(),
+          'notificationChannels': notificationChannels!,
+        if (userLabels != null) 'userLabels': userLabels!,
+        if (validity != null) 'validity': validity!.toJson(),
       };
 }
 
@@ -4748,7 +4585,7 @@ class AppEngine {
   ///
   /// Corresponds to the module_id resource label in the gae_app monitored
   /// resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
-  core.String moduleId;
+  core.String? moduleId;
 
   AppEngine();
 
@@ -4758,8 +4595,8 @@ class AppEngine {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (moduleId != null) 'moduleId': moduleId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (moduleId != null) 'moduleId': moduleId!,
       };
 }
 
@@ -4771,7 +4608,7 @@ class AvailabilityCriteria {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The authentication parameters to provide to the specified resource or URL
@@ -4781,10 +4618,10 @@ class AvailabilityCriteria {
 /// (https://tools.ietf.org/html/rfc7617) is supported in Uptime checks.
 class BasicAuthentication {
   /// The password to use when authenticating with the HTTP server.
-  core.String password;
+  core.String? password;
 
   /// The username to use when authenticating with the HTTP server.
-  core.String username;
+  core.String? username;
 
   BasicAuthentication();
 
@@ -4797,9 +4634,9 @@ class BasicAuthentication {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (password != null) 'password': password,
-        if (username != null) 'username': username,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (password != null) 'password': password!,
+        if (username != null) 'username': username!,
       };
 }
 
@@ -4812,11 +4649,11 @@ class BasicAuthentication {
 class BasicSli {
   /// Good service is defined to be the count of requests made to this service
   /// that return successfully.
-  AvailabilityCriteria availability;
+  AvailabilityCriteria? availability;
 
   /// Good service is defined to be the count of requests made to this service
   /// that are fast enough with respect to latency.threshold.
-  LatencyCriteria latency;
+  LatencyCriteria? latency;
 
   /// OPTIONAL: The set of locations to which this SLI is relevant.
   ///
@@ -4824,7 +4661,7 @@ class BasicSli {
   /// for this SLI. If omitted, this SLI applies to all locations in which the
   /// Service has activity. For service types that don't support breaking down
   /// by location, setting this field will result in an error.
-  core.List<core.String> location;
+  core.List<core.String>? location;
 
   /// OPTIONAL: The set of RPCs to which this SLI is relevant.
   ///
@@ -4832,7 +4669,7 @@ class BasicSli {
   /// this SLI. If omitted, this SLI applies to all the Service's methods. For
   /// service types that don't support breaking down by method, setting this
   /// field will result in an error.
-  core.List<core.String> method;
+  core.List<core.String>? method;
 
   /// OPTIONAL: The set of API versions to which this SLI is relevant.
   ///
@@ -4840,7 +4677,7 @@ class BasicSli {
   /// performance for this SLI. If omitted, this SLI applies to all API
   /// versions. For service types that don't support breaking down by version,
   /// setting this field will result in an error.
-  core.List<core.String> version;
+  core.List<core.String>? version;
 
   BasicSli();
 
@@ -4870,12 +4707,12 @@ class BasicSli {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (availability != null) 'availability': availability.toJson(),
-        if (latency != null) 'latency': latency.toJson(),
-        if (location != null) 'location': location,
-        if (method != null) 'method': method,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (availability != null) 'availability': availability!.toJson(),
+        if (latency != null) 'latency': latency!.toJson(),
+        if (location != null) 'location': location!,
+        if (method != null) 'method': method!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -4896,13 +4733,13 @@ class BasicSli {
 /// The finite buckets are so-called because both bounds are finite.
 class BucketOptions {
   /// The explicit buckets.
-  Explicit explicitBuckets;
+  Explicit? explicitBuckets;
 
   /// The exponential buckets.
-  Exponential exponentialBuckets;
+  Exponential? exponentialBuckets;
 
   /// The linear bucket.
-  Linear linearBuckets;
+  Linear? linearBuckets;
 
   BucketOptions();
 
@@ -4921,12 +4758,12 @@ class BucketOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (explicitBuckets != null)
-          'explicitBuckets': explicitBuckets.toJson(),
+          'explicitBuckets': explicitBuckets!.toJson(),
         if (exponentialBuckets != null)
-          'exponentialBuckets': exponentialBuckets.toJson(),
-        if (linearBuckets != null) 'linearBuckets': linearBuckets.toJson(),
+          'exponentialBuckets': exponentialBuckets!.toJson(),
+        if (linearBuckets != null) 'linearBuckets': linearBuckets!.toJson(),
       };
 }
 
@@ -4938,7 +4775,7 @@ class CloudEndpoints {
   ///
   /// Corresponds to the service resource label in the api monitored resource:
   /// https://cloud.google.com/monitoring/api/resources#tag_api
-  core.String service;
+  core.String? service;
 
   CloudEndpoints();
 
@@ -4948,8 +4785,8 @@ class CloudEndpoints {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (service != null) 'service': service,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (service != null) 'service': service!,
       };
 }
 
@@ -4961,24 +4798,24 @@ class ClusterIstio {
   /// The name of the Kubernetes cluster in which this Istio service is defined.
   ///
   /// Corresponds to the cluster_name resource label in k8s_cluster resources.
-  core.String clusterName;
+  core.String? clusterName;
 
   /// The location of the Kubernetes cluster in which this Istio service is
   /// defined.
   ///
   /// Corresponds to the location resource label in k8s_cluster resources.
-  core.String location;
+  core.String? location;
 
   /// The name of the Istio service underlying this service.
   ///
   /// Corresponds to the destination_service_name metric label in Istio metrics.
-  core.String serviceName;
+  core.String? serviceName;
 
   /// The namespace of the Istio service underlying this service.
   ///
   /// Corresponds to the destination_service_namespace metric label in Istio
   /// metrics.
-  core.String serviceNamespace;
+  core.String? serviceNamespace;
 
   ClusterIstio();
 
@@ -4997,11 +4834,11 @@ class ClusterIstio {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (clusterName != null) 'clusterName': clusterName,
-        if (location != null) 'location': location,
-        if (serviceName != null) 'serviceName': serviceName,
-        if (serviceNamespace != null) 'serviceNamespace': serviceNamespace,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (clusterName != null) 'clusterName': clusterName!,
+        if (location != null) 'location': location!,
+        if (serviceName != null) 'serviceName': serviceName!,
+        if (serviceNamespace != null) 'serviceNamespace': serviceNamespace!,
       };
 }
 
@@ -5010,38 +4847,38 @@ class ClusterIstio {
 /// See the collectd documentation for more information.
 class CollectdPayload {
   /// The end time of the interval.
-  core.String endTime;
+  core.String? endTime;
 
   /// The measurement metadata.
   ///
   /// Example: "process_id" -> 12345
-  core.Map<core.String, TypedValue> metadata;
+  core.Map<core.String, TypedValue>? metadata;
 
   /// The name of the plugin.
   ///
   /// Example: "disk".
-  core.String plugin;
+  core.String? plugin;
 
   /// The instance name of the plugin Example: "hdcl".
-  core.String pluginInstance;
+  core.String? pluginInstance;
 
   /// The start time of the interval.
-  core.String startTime;
+  core.String? startTime;
 
   /// The measurement type.
   ///
   /// Example: "memory".
-  core.String type;
+  core.String? type;
 
   /// The measurement type instance.
   ///
   /// Example: "used".
-  core.String typeInstance;
+  core.String? typeInstance;
 
   /// The measured values during this time interval.
   ///
   /// Each value must have a different data_source_name.
-  core.List<CollectdValue> values;
+  core.List<CollectdValue>? values;
 
   CollectdPayload();
 
@@ -5051,7 +4888,7 @@ class CollectdPayload {
     }
     if (_json.containsKey('metadata')) {
       metadata = (_json['metadata'] as core.Map)
-          .cast<core.String, core.Map>()
+          .cast<core.String, core.Map<core.String, core.Object?>>()
           .map(
             (key, item) => core.MapEntry(
               key,
@@ -5082,18 +4919,18 @@ class CollectdPayload {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
         if (metadata != null)
           'metadata':
-              metadata.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (plugin != null) 'plugin': plugin,
-        if (pluginInstance != null) 'pluginInstance': pluginInstance,
-        if (startTime != null) 'startTime': startTime,
-        if (type != null) 'type': type,
-        if (typeInstance != null) 'typeInstance': typeInstance,
+              metadata!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (plugin != null) 'plugin': plugin!,
+        if (pluginInstance != null) 'pluginInstance': pluginInstance!,
+        if (startTime != null) 'startTime': startTime!,
+        if (type != null) 'type': type!,
+        if (typeInstance != null) 'typeInstance': typeInstance!,
         if (values != null)
-          'values': values.map((value) => value.toJson()).toList(),
+          'values': values!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5103,15 +4940,15 @@ class CollectdPayloadError {
   ///
   /// If this field is present, the partial errors for nested values won't be
   /// populated.
-  Status error;
+  Status? error;
 
   /// The zero-based index in CreateCollectdTimeSeriesRequest.collectd_payloads.
-  core.int index;
+  core.int? index;
 
   /// Records the error status for values that were not written due to an
   /// error.Failed payloads for which nothing is written will not include
   /// partial value errors.
-  core.List<CollectdValueError> valueErrors;
+  core.List<CollectdValueError>? valueErrors;
 
   CollectdPayloadError();
 
@@ -5131,11 +4968,11 @@ class CollectdPayloadError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (error != null) 'error': error.toJson(),
-        if (index != null) 'index': index,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (error != null) 'error': error!.toJson(),
+        if (index != null) 'index': index!,
         if (valueErrors != null)
-          'valueErrors': valueErrors.map((value) => value.toJson()).toList(),
+          'valueErrors': valueErrors!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5145,7 +4982,7 @@ class CollectdValue {
   ///
   /// For example, there are two data sources for network measurements: "rx" and
   /// "tx".
-  core.String dataSourceName;
+  core.String? dataSourceName;
 
   /// The type of measurement.
   /// Possible string values are:
@@ -5159,10 +4996,10 @@ class CollectdValue {
   /// - "DERIVE" : A rate of change of the measurement.
   /// - "ABSOLUTE" : An amount of change since the last measurement interval.
   /// This corresponds to google.api.MetricDescriptor.MetricKind.DELTA.
-  core.String dataSourceType;
+  core.String? dataSourceType;
 
   /// The measurement value.
-  TypedValue value;
+  TypedValue? value;
 
   CollectdValue();
 
@@ -5179,21 +5016,21 @@ class CollectdValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataSourceName != null) 'dataSourceName': dataSourceName,
-        if (dataSourceType != null) 'dataSourceType': dataSourceType,
-        if (value != null) 'value': value.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataSourceName != null) 'dataSourceName': dataSourceName!,
+        if (dataSourceType != null) 'dataSourceType': dataSourceType!,
+        if (value != null) 'value': value!.toJson(),
       };
 }
 
 /// Describes the error status for values that were not written.
 class CollectdValueError {
   /// Records the error status for the value.
-  Status error;
+  Status? error;
 
   /// The zero-based index in CollectdPayload.values within the parent
   /// CreateCollectdTimeSeriesRequest.collectd_payloads.
-  core.int index;
+  core.int? index;
 
   CollectdValueError();
 
@@ -5207,9 +5044,9 @@ class CollectdValueError {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (error != null) 'error': error.toJson(),
-        if (index != null) 'index': index,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (error != null) 'error': error!.toJson(),
+        if (index != null) 'index': index!,
       };
 }
 
@@ -5220,20 +5057,20 @@ class CollectdValueError {
 class Condition {
   /// A condition that checks that a time series continues to receive new data
   /// points.
-  MetricAbsence conditionAbsent;
+  MetricAbsence? conditionAbsent;
 
   /// A condition that uses the Monitoring Query Language to define alerts.
-  MonitoringQueryLanguageCondition conditionMonitoringQueryLanguage;
+  MonitoringQueryLanguageCondition? conditionMonitoringQueryLanguage;
 
   /// A condition that compares a time series against a threshold.
-  MetricThreshold conditionThreshold;
+  MetricThreshold? conditionThreshold;
 
   /// A short name or phrase used to identify the condition in dashboards,
   /// notifications, and incidents.
   ///
   /// To avoid confusion, don't use the same display name for multiple
   /// conditions in the same policy.
-  core.String displayName;
+  core.String? displayName;
 
   /// Required if the condition exists.
   ///
@@ -5251,7 +5088,7 @@ class Condition {
   /// \[CONDITION_ID\] if you make only small changes, such as those to
   /// condition thresholds, durations, or trigger values. Otherwise, treat the
   /// change as a new condition and let the existing condition be deleted.
-  core.String name;
+  core.String? name;
 
   Condition();
 
@@ -5278,16 +5115,16 @@ class Condition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (conditionAbsent != null)
-          'conditionAbsent': conditionAbsent.toJson(),
+          'conditionAbsent': conditionAbsent!.toJson(),
         if (conditionMonitoringQueryLanguage != null)
           'conditionMonitoringQueryLanguage':
-              conditionMonitoringQueryLanguage.toJson(),
+              conditionMonitoringQueryLanguage!.toJson(),
         if (conditionThreshold != null)
-          'conditionThreshold': conditionThreshold.toJson(),
-        if (displayName != null) 'displayName': displayName,
-        if (name != null) 'name': name,
+          'conditionThreshold': conditionThreshold!.toJson(),
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -5304,7 +5141,7 @@ class ContentMatcher {
   ///
   /// Maximum 1024 bytes. An empty content string indicates no content matching
   /// is to be performed.
-  core.String content;
+  core.String? content;
 
   /// The type of content matcher that will be applied to the server output,
   /// compared to the content string when the check is run.
@@ -5324,7 +5161,7 @@ class ContentMatcher {
   /// - "NOT_MATCHES_REGEX" : Selects negation of regular-expression matching.
   /// The match succeeds if the output does NOT match the regular expression
   /// specified in the content string.
-  core.String matcher;
+  core.String? matcher;
 
   ContentMatcher();
 
@@ -5337,9 +5174,9 @@ class ContentMatcher {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
-        if (matcher != null) 'matcher': matcher,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
+        if (matcher != null) 'matcher': matcher!,
       };
 }
 
@@ -5350,15 +5187,15 @@ class CreateCollectdTimeSeriesRequest {
   /// You must not include more than a single point for each time series, so no
   /// two payloads can have the same values for all of the fields plugin,
   /// plugin_instance, type, and type_instance.
-  core.List<CollectdPayload> collectdPayloads;
+  core.List<CollectdPayload>? collectdPayloads;
 
   /// The version of collectd that collected the data.
   ///
   /// Example: "5.3.0-192.el6".
-  core.String collectdVersion;
+  core.String? collectdVersion;
 
   /// The monitored resource associated with the time series.
-  MonitoredResource resource;
+  MonitoredResource? resource;
 
   CreateCollectdTimeSeriesRequest();
 
@@ -5378,12 +5215,12 @@ class CreateCollectdTimeSeriesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (collectdPayloads != null)
           'collectdPayloads':
-              collectdPayloads.map((value) => value.toJson()).toList(),
-        if (collectdVersion != null) 'collectdVersion': collectdVersion,
-        if (resource != null) 'resource': resource.toJson(),
+              collectdPayloads!.map((value) => value.toJson()).toList(),
+        if (collectdVersion != null) 'collectdVersion': collectdVersion!,
+        if (resource != null) 'resource': resource!.toJson(),
       };
 }
 
@@ -5395,14 +5232,14 @@ class CreateCollectdTimeSeriesResponse {
   ///
   /// Requests where data points were rejected by the backend will set summary
   /// instead.
-  core.List<CollectdPayloadError> payloadErrors;
+  core.List<CollectdPayloadError>? payloadErrors;
 
   /// Aggregate statistics from writing the payloads.
   ///
   /// This field is omitted if all points were successfully written, so that the
   /// response is empty. This is for backwards compatibility with clients that
   /// log errors on any non-empty response.
-  CreateTimeSeriesSummary summary;
+  CreateTimeSeriesSummary? summary;
 
   CreateCollectdTimeSeriesResponse();
 
@@ -5419,11 +5256,11 @@ class CreateCollectdTimeSeriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (payloadErrors != null)
           'payloadErrors':
-              payloadErrors.map((value) => value.toJson()).toList(),
-        if (summary != null) 'summary': summary.toJson(),
+              payloadErrors!.map((value) => value.toJson()).toList(),
+        if (summary != null) 'summary': summary!.toJson(),
       };
 }
 
@@ -5438,7 +5275,7 @@ class CreateTimeSeriesRequest {
   /// of TimeSeries objects per Create request is 200.
   ///
   /// Required.
-  core.List<TimeSeries> timeSeries;
+  core.List<TimeSeries>? timeSeries;
 
   CreateTimeSeriesRequest();
 
@@ -5451,9 +5288,9 @@ class CreateTimeSeriesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (timeSeries != null)
-          'timeSeries': timeSeries.map((value) => value.toJson()).toList(),
+          'timeSeries': timeSeries!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5462,13 +5299,13 @@ class CreateTimeSeriesSummary {
   /// The number of points that failed to be written.
   ///
   /// Order is not guaranteed.
-  core.List<Error> errors;
+  core.List<Error>? errors;
 
   /// The number of points that were successfully written.
-  core.int successPointCount;
+  core.int? successPointCount;
 
   /// The number of points in the request.
-  core.int totalPointCount;
+  core.int? totalPointCount;
 
   CreateTimeSeriesSummary();
 
@@ -5487,11 +5324,11 @@ class CreateTimeSeriesSummary {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (errors != null)
-          'errors': errors.map((value) => value.toJson()).toList(),
-        if (successPointCount != null) 'successPointCount': successPointCount,
-        if (totalPointCount != null) 'totalPointCount': totalPointCount,
+          'errors': errors!.map((value) => value.toJson()).toList(),
+        if (successPointCount != null) 'successPointCount': successPointCount!,
+        if (totalPointCount != null) 'totalPointCount': totalPointCount!,
       };
 }
 
@@ -5505,7 +5342,7 @@ class Custom {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Distribution contains summary statistics for a population of values.
@@ -5531,32 +5368,32 @@ class Distribution {
   /// overflow bucket has number N-1. The size of bucket_counts must not be
   /// greater than N. If the size is less than N, then the remaining buckets are
   /// assigned values of zero.
-  core.List<core.String> bucketCounts;
+  core.List<core.String>? bucketCounts;
 
   /// Required in the Cloud Monitoring API v3.
   ///
   /// Defines the histogram bucket boundaries.
-  BucketOptions bucketOptions;
+  BucketOptions? bucketOptions;
 
   /// The number of values in the population.
   ///
   /// Must be non-negative. This value must equal the sum of the values in
   /// bucket_counts if a histogram is provided.
-  core.String count;
+  core.String? count;
 
   /// Must be in increasing order of value field.
-  core.List<Exemplar> exemplars;
+  core.List<Exemplar>? exemplars;
 
   /// The arithmetic mean of the values in the population.
   ///
   /// If count is zero then this field must be zero.
-  core.double mean;
+  core.double? mean;
 
   /// If specified, contains the range of the population values.
   ///
   /// The field must not be present if the count is zero. This field is
   /// presently ignored by the Cloud Monitoring API v3.
-  Range range;
+  Range? range;
 
   /// The sum of squared deviations from the mean of the values in the
   /// population.
@@ -5565,7 +5402,7 @@ class Distribution {
   /// Computer Programming", Vol. 2, page 232, 3rd edition describes Welford's
   /// method for accumulating this sum in one pass.If count is zero then this
   /// field must be zero.
-  core.double sumOfSquaredDeviation;
+  core.double? sumOfSquaredDeviation;
 
   Distribution();
 
@@ -5601,16 +5438,16 @@ class Distribution {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bucketCounts != null) 'bucketCounts': bucketCounts,
-        if (bucketOptions != null) 'bucketOptions': bucketOptions.toJson(),
-        if (count != null) 'count': count,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bucketCounts != null) 'bucketCounts': bucketCounts!,
+        if (bucketOptions != null) 'bucketOptions': bucketOptions!.toJson(),
+        if (count != null) 'count': count!,
         if (exemplars != null)
-          'exemplars': exemplars.map((value) => value.toJson()).toList(),
-        if (mean != null) 'mean': mean,
-        if (range != null) 'range': range.toJson(),
+          'exemplars': exemplars!.map((value) => value.toJson()).toList(),
+        if (mean != null) 'mean': mean!,
+        if (range != null) 'range': range!.toJson(),
         if (sumOfSquaredDeviation != null)
-          'sumOfSquaredDeviation': sumOfSquaredDeviation,
+          'sumOfSquaredDeviation': sumOfSquaredDeviation!,
       };
 }
 
@@ -5626,11 +5463,11 @@ class DistributionCut {
   ///
   /// Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind =
   /// CUMULATIVE.
-  core.String distributionFilter;
+  core.String? distributionFilter;
 
   /// Range of values considered "good." For a one-sided range, set one bound to
   /// an infinite value.
-  GoogleMonitoringV3Range range;
+  GoogleMonitoringV3Range? range;
 
   DistributionCut();
 
@@ -5644,10 +5481,10 @@ class DistributionCut {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (distributionFilter != null)
-          'distributionFilter': distributionFilter,
-        if (range != null) 'range': range.toJson(),
+          'distributionFilter': distributionFilter!,
+        if (range != null) 'range': range!.toJson(),
       };
 }
 
@@ -5657,13 +5494,13 @@ class Documentation {
   ///
   /// The content may not exceed 8,192 Unicode characters and may not exceed
   /// more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
-  core.String content;
+  core.String? content;
 
   /// The format of the content field.
   ///
   /// Presently, only the value "text/markdown" is supported. See Markdown
   /// (https://en.wikipedia.org/wiki/Markdown) for more information.
-  core.String mimeType;
+  core.String? mimeType;
 
   Documentation();
 
@@ -5676,9 +5513,9 @@ class Documentation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (content != null) 'content': content,
-        if (mimeType != null) 'mimeType': mimeType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (content != null) 'content': content!,
+        if (mimeType != null) 'mimeType': mimeType!,
       };
 }
 
@@ -5698,7 +5535,7 @@ class Documentation {
 /// ambiguities.
 class DroppedLabels {
   /// Map from label to its value, for all labels dropped in any aggregation.
-  core.Map<core.String, core.String> label;
+  core.Map<core.String, core.String>? label;
 
   DroppedLabels();
 
@@ -5713,8 +5550,8 @@ class DroppedLabels {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (label != null) 'label': label,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (label != null) 'label': label!,
       };
 }
 
@@ -5732,16 +5569,16 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Detailed information about an error category.
 class Error {
   /// The number of points that couldn't be written because of status.
-  core.int pointCount;
+  core.int? pointCount;
 
   /// The status of the requested write operation.
-  Status status;
+  Status? status;
 
   Error();
 
@@ -5755,9 +5592,9 @@ class Error {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pointCount != null) 'pointCount': pointCount,
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pointCount != null) 'pointCount': pointCount!,
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -5780,15 +5617,15 @@ class Exemplar {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> attachments;
+  core.List<core.Map<core.String, core.Object>>? attachments;
 
   /// The observation (sampling) time of the above value.
-  core.String timestamp;
+  core.String? timestamp;
 
   /// Value of the exemplar point.
   ///
   /// This value determines to which bucket the exemplar belongs.
-  core.double value;
+  core.double? value;
 
   Exemplar();
 
@@ -5812,10 +5649,10 @@ class Exemplar {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attachments != null) 'attachments': attachments,
-        if (timestamp != null) 'timestamp': timestamp,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attachments != null) 'attachments': attachments!,
+        if (timestamp != null) 'timestamp': timestamp!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -5829,7 +5666,7 @@ class Exemplar {
 /// underflow buckets.
 class Explicit {
   /// The values must be monotonically increasing.
-  core.List<core.double> bounds;
+  core.List<core.double>? bounds;
 
   Explicit();
 
@@ -5841,8 +5678,8 @@ class Explicit {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bounds != null) 'bounds': bounds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bounds != null) 'bounds': bounds!,
       };
 }
 
@@ -5855,13 +5692,13 @@ class Explicit {
 /// ^ i). Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
 class Exponential {
   /// Must be greater than 1.
-  core.double growthFactor;
+  core.double? growthFactor;
 
   /// Must be greater than 0.
-  core.int numFiniteBuckets;
+  core.int? numFiniteBuckets;
 
   /// Must be greater than 0.
-  core.double scale;
+  core.double? scale;
 
   Exponential();
 
@@ -5877,10 +5714,10 @@ class Exponential {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (growthFactor != null) 'growthFactor': growthFactor,
-        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets,
-        if (scale != null) 'scale': scale,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (growthFactor != null) 'growthFactor': growthFactor!,
+        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
+        if (scale != null) 'scale': scale!,
       };
 }
 
@@ -5892,15 +5729,15 @@ class Field {
   /// - "CARDINALITY_OPTIONAL" : For optional fields.
   /// - "CARDINALITY_REQUIRED" : For required fields. Proto2 syntax only.
   /// - "CARDINALITY_REPEATED" : For repeated fields.
-  core.String cardinality;
+  core.String? cardinality;
 
   /// The string value of the default value of this field.
   ///
   /// Proto2 syntax only.
-  core.String defaultValue;
+  core.String? defaultValue;
 
   /// The field JSON name.
-  core.String jsonName;
+  core.String? jsonName;
 
   /// The field type.
   /// Possible string values are:
@@ -5923,30 +5760,30 @@ class Field {
   /// - "TYPE_SFIXED64" : Field type sfixed64.
   /// - "TYPE_SINT32" : Field type sint32.
   /// - "TYPE_SINT64" : Field type sint64.
-  core.String kind;
+  core.String? kind;
 
   /// The field name.
-  core.String name;
+  core.String? name;
 
   /// The field number.
-  core.int number;
+  core.int? number;
 
   /// The index of the field type in Type.oneofs, for message or enumeration
   /// types.
   ///
   /// The first type has index 1; zero means the type is not in the list.
-  core.int oneofIndex;
+  core.int? oneofIndex;
 
   /// The protocol buffer options.
-  core.List<Option> options;
+  core.List<Option>? options;
 
   /// Whether to use alternative packed wire representation.
-  core.bool packed;
+  core.bool? packed;
 
   /// The field type URL, without the scheme, for message or enumeration types.
   ///
   /// Example: "type.googleapis.com/google.protobuf.Timestamp".
-  core.String typeUrl;
+  core.String? typeUrl;
 
   Field();
 
@@ -5986,18 +5823,18 @@ class Field {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cardinality != null) 'cardinality': cardinality,
-        if (defaultValue != null) 'defaultValue': defaultValue,
-        if (jsonName != null) 'jsonName': jsonName,
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name,
-        if (number != null) 'number': number,
-        if (oneofIndex != null) 'oneofIndex': oneofIndex,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cardinality != null) 'cardinality': cardinality!,
+        if (defaultValue != null) 'defaultValue': defaultValue!,
+        if (jsonName != null) 'jsonName': jsonName!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (number != null) 'number': number!,
+        if (oneofIndex != null) 'oneofIndex': oneofIndex!,
         if (options != null)
-          'options': options.map((value) => value.toJson()).toList(),
-        if (packed != null) 'packed': packed,
-        if (typeUrl != null) 'typeUrl': typeUrl,
+          'options': options!.map((value) => value.toJson()).toList(),
+        if (packed != null) 'packed': packed!,
+        if (typeUrl != null) 'typeUrl': typeUrl!,
       };
 }
 
@@ -6014,7 +5851,7 @@ class GetNotificationChannelVerificationCodeRequest {
   /// extend the code's lifetime over omitting an expiration, even though the
   /// API does impose an upper limit on the maximum expiration that is
   /// permitted).
-  core.String expireTime;
+  core.String? expireTime;
 
   GetNotificationChannelVerificationCodeRequest();
 
@@ -6024,8 +5861,8 @@ class GetNotificationChannelVerificationCodeRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (expireTime != null) 'expireTime': expireTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime!,
       };
 }
 
@@ -6035,13 +5872,13 @@ class GetNotificationChannelVerificationCodeResponse {
   /// have an equivalent identity (i.e. other channels of the same type with the
   /// same fingerprint such as other email channels with the same email address
   /// or other sms channels with the same number).
-  core.String code;
+  core.String? code;
 
   /// The expiration time associated with the code that was returned.
   ///
   /// If an expiration was provided in the request, this is the minimum of the
   /// requested expiration in the request and the max permitted expiration.
-  core.String expireTime;
+  core.String? expireTime;
 
   GetNotificationChannelVerificationCodeResponse();
 
@@ -6054,9 +5891,9 @@ class GetNotificationChannelVerificationCodeResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (expireTime != null) 'expireTime': expireTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (expireTime != null) 'expireTime': expireTime!,
       };
 }
 
@@ -6066,10 +5903,10 @@ class GetNotificationChannelVerificationCodeResponse {
 /// the open range ">= range.min" is desired, set range.max = infinity.
 class GoogleMonitoringV3Range {
   /// Range maximum.
-  core.double max;
+  core.double? max;
 
   /// Range minimum.
-  core.double min;
+  core.double? min;
 
   GoogleMonitoringV3Range();
 
@@ -6082,9 +5919,9 @@ class GoogleMonitoringV3Range {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (max != null) 'max': max,
-        if (min != null) 'min': min,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (max != null) 'max': max!,
+        if (min != null) 'min': min!,
       };
 }
 
@@ -6112,16 +5949,16 @@ class GoogleMonitoringV3Range {
 /// its ancestors.
 class Group {
   /// A user-assigned name for this group, used only for display purposes.
-  core.String displayName;
+  core.String? displayName;
 
   /// The filter used to determine which monitored resources belong to this
   /// group.
-  core.String filter;
+  core.String? filter;
 
   /// If true, the members of this group are considered to be a cluster.
   ///
   /// The system can perform additional analysis on groups that are clusters.
-  core.bool isCluster;
+  core.bool? isCluster;
 
   /// The name of this group.
   ///
@@ -6131,13 +5968,13 @@ class Group {
   /// unique \[GROUP_ID\] that is generated automatically.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The name of the group's parent, if it has one.
   ///
   /// The format is: projects/\[PROJECT_ID_OR_NUMBER\]/groups/\[GROUP_ID\] For
   /// groups with no parent, parent_name is the empty string, "".
-  core.String parentName;
+  core.String? parentName;
 
   Group();
 
@@ -6159,12 +5996,12 @@ class Group {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (filter != null) 'filter': filter,
-        if (isCluster != null) 'isCluster': isCluster,
-        if (name != null) 'name': name,
-        if (parentName != null) 'parentName': parentName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (filter != null) 'filter': filter!,
+        if (isCluster != null) 'isCluster': isCluster!,
+        if (name != null) 'name': name!,
+        if (parentName != null) 'parentName': parentName!,
       };
 }
 
@@ -6173,7 +6010,7 @@ class HttpCheck {
   /// The authentication information.
   ///
   /// Optional when creating an HTTP check; defaults to empty.
-  BasicAuthentication authInfo;
+  BasicAuthentication? authInfo;
 
   /// The request body associated with the HTTP POST request.
   ///
@@ -6184,8 +6021,8 @@ class HttpCheck {
   /// all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar"
   /// in URL-encoded form is "foo%3Dbar" and in base64 encoding is
   /// "Zm9vJTI1M0RiYXI=".
-  core.String body;
-  core.List<core.int> get bodyAsBytes => convert.base64.decode(body);
+  core.String? body;
+  core.List<core.int> get bodyAsBytes => convert.base64.decode(body!);
 
   set bodyAsBytes(core.List<core.int> _bytes) {
     body =
@@ -6204,7 +6041,7 @@ class HttpCheck {
   /// - "TYPE_UNSPECIFIED" : No content type specified.
   /// - "URL_ENCODED" : body is in URL-encoded form. Equivalent to setting the
   /// Content-Type to application/x-www-form-urlencoded in the HTTP request.
-  core.String contentType;
+  core.String? contentType;
 
   /// The list of headers to send as part of the Uptime check request.
   ///
@@ -6215,7 +6052,7 @@ class HttpCheck {
   /// separate headers with the same key in a Create call will cause the first
   /// to be overwritten by the second. The maximum number of headers allowed is
   /// 100.
-  core.Map<core.String, core.String> headers;
+  core.Map<core.String, core.String>? headers;
 
   /// Boolean specifying whether to encrypt the header information.
   ///
@@ -6224,7 +6061,7 @@ class HttpCheck {
   /// server will be responsible for encrypting the headers. On Get/List calls,
   /// if mask_headers is set to true then the headers will be obscured with
   /// ******.
-  core.bool maskHeaders;
+  core.bool? maskHeaders;
 
   /// Optional (defaults to "/").
   ///
@@ -6232,7 +6069,7 @@ class HttpCheck {
   /// the host (specified within the monitored_resource) and port to construct
   /// the full URL. If the provided path does not begin with "/", a "/" will be
   /// prepended automatically.
-  core.String path;
+  core.String? path;
 
   /// Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is
   /// true).
@@ -6240,7 +6077,7 @@ class HttpCheck {
   /// The TCP port on the HTTP server against which to run the check. Will be
   /// combined with host (specified within the monitored_resource) and path to
   /// construct the full URL.
-  core.int port;
+  core.int? port;
 
   /// The HTTP request method to use for the check.
   ///
@@ -6249,17 +6086,17 @@ class HttpCheck {
   /// - "METHOD_UNSPECIFIED" : No request method specified.
   /// - "GET" : GET request.
   /// - "POST" : POST request.
-  core.String requestMethod;
+  core.String? requestMethod;
 
   /// If true, use HTTPS instead of HTTP to run the check.
-  core.bool useSsl;
+  core.bool? useSsl;
 
   /// Boolean specifying whether to include SSL certificate validation as a part
   /// of the Uptime check.
   ///
   /// Only applies to checks where monitored_resource is set to uptime_url. If
   /// use_ssl is false, setting validate_ssl to true has no effect.
-  core.bool validateSsl;
+  core.bool? validateSsl;
 
   HttpCheck();
 
@@ -6303,17 +6140,17 @@ class HttpCheck {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (authInfo != null) 'authInfo': authInfo.toJson(),
-        if (body != null) 'body': body,
-        if (contentType != null) 'contentType': contentType,
-        if (headers != null) 'headers': headers,
-        if (maskHeaders != null) 'maskHeaders': maskHeaders,
-        if (path != null) 'path': path,
-        if (port != null) 'port': port,
-        if (requestMethod != null) 'requestMethod': requestMethod,
-        if (useSsl != null) 'useSsl': useSsl,
-        if (validateSsl != null) 'validateSsl': validateSsl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (authInfo != null) 'authInfo': authInfo!.toJson(),
+        if (body != null) 'body': body!,
+        if (contentType != null) 'contentType': contentType!,
+        if (headers != null) 'headers': headers!,
+        if (maskHeaders != null) 'maskHeaders': maskHeaders!,
+        if (path != null) 'path': path!,
+        if (port != null) 'port': port!,
+        if (requestMethod != null) 'requestMethod': requestMethod!,
+        if (useSsl != null) 'useSsl': useSsl!,
+        if (validateSsl != null) 'validateSsl': validateSsl!,
       };
 }
 
@@ -6324,13 +6161,13 @@ class InternalChecker {
   ///
   /// The display name should be unique within a Stackdriver Workspace in order
   /// to make it easier to identify; however, uniqueness is not enforced.
-  core.String displayName;
+  core.String? displayName;
 
   /// The GCP zone the Uptime check should egress from.
   ///
   /// Only respected for internal Uptime checks, where internal_network is
   /// specified.
-  core.String gcpZone;
+  core.String? gcpZone;
 
   /// A unique resource name for this InternalChecker.
   ///
@@ -6338,16 +6175,16 @@ class InternalChecker {
   /// projects/\[PROJECT_ID_OR_NUMBER\]/internalCheckers/\[INTERNAL_CHECKER_ID\]
   /// \[PROJECT_ID_OR_NUMBER\] is the Stackdriver Workspace project for the
   /// Uptime check config associated with the internal checker.
-  core.String name;
+  core.String? name;
 
   /// The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the
   /// internal resource lives (ex: "default").
-  core.String network;
+  core.String? network;
 
   /// The GCP project ID where the internal checker lives.
   ///
   /// Not necessary the same as the Workspace project.
-  core.String peerProjectId;
+  core.String? peerProjectId;
 
   /// The current operational state of the internal checker.
   /// Possible string values are:
@@ -6364,7 +6201,7 @@ class InternalChecker {
   /// (https://cloud.google.com/apis/design/design_patterns#long_running_operations)
   /// that created it. If a checker is being torn down, it is neither visible
   /// nor usable, so there is no "deleting" or "down" state.
-  core.String state;
+  core.String? state;
 
   InternalChecker();
 
@@ -6389,13 +6226,13 @@ class InternalChecker {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (gcpZone != null) 'gcpZone': gcpZone,
-        if (name != null) 'name': name,
-        if (network != null) 'network': network,
-        if (peerProjectId != null) 'peerProjectId': peerProjectId,
-        if (state != null) 'state': state,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (gcpZone != null) 'gcpZone': gcpZone!,
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
+        if (peerProjectId != null) 'peerProjectId': peerProjectId!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -6409,19 +6246,19 @@ class IstioCanonicalService {
   /// Corresponds to the destination_canonical_service_name metric label in
   /// label in Istio metrics
   /// (https://cloud.google.com/monitoring/api/metrics_istio).
-  core.String canonicalService;
+  core.String? canonicalService;
 
   /// The namespace of the canonical service underlying this service.
   ///
   /// Corresponds to the destination_canonical_service_namespace metric label in
   /// Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
-  core.String canonicalServiceNamespace;
+  core.String? canonicalServiceNamespace;
 
   /// Identifier for the Istio mesh in which this canonical service is defined.
   ///
   /// Corresponds to the mesh_uid metric label in Istio metrics
   /// (https://cloud.google.com/monitoring/api/metrics_istio).
-  core.String meshUid;
+  core.String? meshUid;
 
   IstioCanonicalService();
 
@@ -6438,18 +6275,18 @@ class IstioCanonicalService {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (canonicalService != null) 'canonicalService': canonicalService,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (canonicalService != null) 'canonicalService': canonicalService!,
         if (canonicalServiceNamespace != null)
-          'canonicalServiceNamespace': canonicalServiceNamespace,
-        if (meshUid != null) 'meshUid': meshUid,
+          'canonicalServiceNamespace': canonicalServiceNamespace!,
+        if (meshUid != null) 'meshUid': meshUid!,
       };
 }
 
 /// A description of a label.
 class LabelDescriptor {
   /// A human-readable description for the label.
-  core.String description;
+  core.String? description;
 
   /// The key for this label.
   ///
@@ -6457,7 +6294,7 @@ class LabelDescriptor {
   /// Matches the following regular expression: \[a-zA-Z\]\[a-zA-Z0-9_\]* The
   /// first character must be an upper- or lower-case letter. The remaining
   /// characters must be letters, digits, or underscores.
-  core.String key;
+  core.String? key;
 
   /// The type of data that can be assigned to the label.
   /// Possible string values are:
@@ -6465,7 +6302,7 @@ class LabelDescriptor {
   /// This is the default value type.
   /// - "BOOL" : Boolean; true or false.
   /// - "INT64" : A 64-bit signed integer.
-  core.String valueType;
+  core.String? valueType;
 
   LabelDescriptor();
 
@@ -6481,23 +6318,23 @@ class LabelDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (key != null) 'key': key,
-        if (valueType != null) 'valueType': valueType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (key != null) 'key': key!,
+        if (valueType != null) 'valueType': valueType!,
       };
 }
 
 /// A label value.
 class LabelValue {
   /// A bool label value.
-  core.bool boolValue;
+  core.bool? boolValue;
 
   /// An int64 label value.
-  core.String int64Value;
+  core.String? int64Value;
 
   /// A string label value.
-  core.String stringValue;
+  core.String? stringValue;
 
   LabelValue();
 
@@ -6513,10 +6350,10 @@ class LabelValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue,
-        if (int64Value != null) 'int64Value': int64Value,
-        if (stringValue != null) 'stringValue': stringValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (int64Value != null) 'int64Value': int64Value!,
+        if (stringValue != null) 'stringValue': stringValue!,
       };
 }
 
@@ -6524,7 +6361,7 @@ class LabelValue {
 class LatencyCriteria {
   /// Good service is defined to be the count of requests made to this service
   /// that return in no more than threshold.
-  core.String threshold;
+  core.String? threshold;
 
   LatencyCriteria();
 
@@ -6534,8 +6371,8 @@ class LatencyCriteria {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (threshold != null) 'threshold': threshold,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (threshold != null) 'threshold': threshold!,
       };
 }
 
@@ -6548,13 +6385,13 @@ class LatencyCriteria {
 /// Lower bound (1 <= i < N): offset + (width * (i - 1)).
 class Linear {
   /// Must be greater than 0.
-  core.int numFiniteBuckets;
+  core.int? numFiniteBuckets;
 
   /// Lower bound of the first bucket.
-  core.double offset;
+  core.double? offset;
 
   /// Must be greater than 0.
-  core.double width;
+  core.double? width;
 
   Linear();
 
@@ -6570,30 +6407,30 @@ class Linear {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets,
-        if (offset != null) 'offset': offset,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
+        if (offset != null) 'offset': offset!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// The protocol for the ListAlertPolicies response.
 class ListAlertPoliciesResponse {
   /// The returned alert policies.
-  core.List<AlertPolicy> alertPolicies;
+  core.List<AlertPolicy>? alertPolicies;
 
   /// If there might be more results than were returned, then this field is set
   /// to a non-empty value.
   ///
   /// To see the additional results, use that value as page_token in the next
   /// call to this method.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total number of alert policies in all pages.
   ///
   /// This number is only an estimate, and may change in subsequent pages.
   /// https://aip.dev/158
-  core.int totalSize;
+  core.int? totalSize;
 
   ListAlertPoliciesResponse();
 
@@ -6612,29 +6449,29 @@ class ListAlertPoliciesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (alertPolicies != null)
           'alertPolicies':
-              alertPolicies.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+              alertPolicies!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
 /// The ListGroupMembers response.
 class ListGroupMembersResponse {
   /// A set of monitored resources in the group.
-  core.List<MonitoredResource> members;
+  core.List<MonitoredResource>? members;
 
   /// If there are more results than have been returned, then this field is set
   /// to a non-empty value.
   ///
   /// To see the additional results, use that value as page_token in the next
   /// call to this method.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total number of elements matching this request.
-  core.int totalSize;
+  core.int? totalSize;
 
   ListGroupMembersResponse();
 
@@ -6653,25 +6490,25 @@ class ListGroupMembersResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (members != null)
-          'members': members.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+          'members': members!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
 /// The ListGroups response.
 class ListGroupsResponse {
   /// The groups that match the specified filters.
-  core.List<Group> group;
+  core.List<Group>? group;
 
   /// If there are more results than have been returned, then this field is set
   /// to a non-empty value.
   ///
   /// To see the additional results, use that value as page_token in the next
   /// call to this method.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListGroupsResponse();
 
@@ -6687,10 +6524,10 @@ class ListGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (group != null)
-          'group': group.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'group': group!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -6698,14 +6535,14 @@ class ListGroupsResponse {
 class ListMetricDescriptorsResponse {
   /// The metric descriptors that are available to the project and that match
   /// the value of filter, if present.
-  core.List<MetricDescriptor> metricDescriptors;
+  core.List<MetricDescriptor>? metricDescriptors;
 
   /// If there are more results than have been returned, then this field is set
   /// to a non-empty value.
   ///
   /// To see the additional results, use that value as page_token in the next
   /// call to this method.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListMetricDescriptorsResponse();
 
@@ -6721,11 +6558,11 @@ class ListMetricDescriptorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (metricDescriptors != null)
           'metricDescriptors':
-              metricDescriptors.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              metricDescriptors!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -6736,11 +6573,11 @@ class ListMonitoredResourceDescriptorsResponse {
   ///
   /// To see the additional results, use that value as page_token in the next
   /// call to this method.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The monitored resource descriptors that are available to this project and
   /// that match filter, if present.
-  core.List<MonitoredResourceDescriptor> resourceDescriptors;
+  core.List<MonitoredResourceDescriptor>? resourceDescriptors;
 
   ListMonitoredResourceDescriptorsResponse();
 
@@ -6757,11 +6594,11 @@ class ListMonitoredResourceDescriptorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resourceDescriptors != null)
           'resourceDescriptors':
-              resourceDescriptors.map((value) => value.toJson()).toList(),
+              resourceDescriptors!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6769,14 +6606,14 @@ class ListMonitoredResourceDescriptorsResponse {
 class ListNotificationChannelDescriptorsResponse {
   /// The monitored resource descriptors supported for the specified project,
   /// optionally filtered.
-  core.List<NotificationChannelDescriptor> channelDescriptors;
+  core.List<NotificationChannelDescriptor>? channelDescriptors;
 
   /// If not empty, indicates that there may be more results that match the
   /// request.
   ///
   /// Use the value in the page_token field in a subsequent request to fetch the
   /// next set of results. If empty, all results have been returned.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListNotificationChannelDescriptorsResponse();
 
@@ -6793,11 +6630,11 @@ class ListNotificationChannelDescriptorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (channelDescriptors != null)
           'channelDescriptors':
-              channelDescriptors.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              channelDescriptors!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -6808,16 +6645,16 @@ class ListNotificationChannelsResponse {
   ///
   /// Use the value in the page_token field in a subsequent request to fetch the
   /// next set of results. If empty, all results have been returned.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The notification channels defined for the specified project.
-  core.List<NotificationChannel> notificationChannels;
+  core.List<NotificationChannel>? notificationChannels;
 
   /// The total number of notification channels in all pages.
   ///
   /// This number is only an estimate, and may change in subsequent pages.
   /// https://aip.dev/158
-  core.int totalSize;
+  core.int? totalSize;
 
   ListNotificationChannelsResponse();
 
@@ -6836,12 +6673,12 @@ class ListNotificationChannelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (notificationChannels != null)
           'notificationChannels':
-              notificationChannels.map((value) => value.toJson()).toList(),
-        if (totalSize != null) 'totalSize': totalSize,
+              notificationChannels!.map((value) => value.toJson()).toList(),
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
@@ -6852,10 +6689,10 @@ class ListServiceLevelObjectivesResponse {
   ///
   /// To see the additional results, use that value as page_token in the next
   /// call to this method.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The ServiceLevelObjectives matching the specified filter.
-  core.List<ServiceLevelObjective> serviceLevelObjectives;
+  core.List<ServiceLevelObjective>? serviceLevelObjectives;
 
   ListServiceLevelObjectivesResponse();
 
@@ -6871,11 +6708,11 @@ class ListServiceLevelObjectivesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (serviceLevelObjectives != null)
           'serviceLevelObjectives':
-              serviceLevelObjectives.map((value) => value.toJson()).toList(),
+              serviceLevelObjectives!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6886,10 +6723,10 @@ class ListServicesResponse {
   ///
   /// To see the additional results, use that value as page_token in the next
   /// call to this method.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The Services matching the specified filter.
-  core.List<Service> services;
+  core.List<Service>? services;
 
   ListServicesResponse();
 
@@ -6905,10 +6742,10 @@ class ListServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (services != null)
-          'services': services.map((value) => value.toJson()).toList(),
+          'services': services!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -6916,17 +6753,17 @@ class ListServicesResponse {
 class ListTimeSeriesResponse {
   /// Query execution errors that may have caused the time series data returned
   /// to be incomplete.
-  core.List<Status> executionErrors;
+  core.List<Status>? executionErrors;
 
   /// If there are more results than have been returned, then this field is set
   /// to a non-empty value.
   ///
   /// To see the additional results, use that value as page_token in the next
   /// call to this method.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// One or more time series that match the filter included in the request.
-  core.List<TimeSeries> timeSeries;
+  core.List<TimeSeries>? timeSeries;
 
   /// The unit in which all time_series point values are reported.
   ///
@@ -6934,7 +6771,7 @@ class ListTimeSeriesResponse {
   /// https://unitsofmeasure.org/ucum.html. If different time_series have
   /// different units (for example, because they come from different metric
   /// types, or a unit is absent), then unit will be "{not_a_unit}".
-  core.String unit;
+  core.String? unit;
 
   ListTimeSeriesResponse();
 
@@ -6959,14 +6796,14 @@ class ListTimeSeriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (executionErrors != null)
           'executionErrors':
-              executionErrors.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+              executionErrors!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (timeSeries != null)
-          'timeSeries': timeSeries.map((value) => value.toJson()).toList(),
-        if (unit != null) 'unit': unit,
+          'timeSeries': timeSeries!.map((value) => value.toJson()).toList(),
+        if (unit != null) 'unit': unit!,
       };
 }
 
@@ -6979,14 +6816,14 @@ class ListUptimeCheckConfigsResponse {
   /// retrieve the next page of results, the value of the next_page_token is
   /// passed to the subsequent List method call (in the request message's
   /// page_token field).
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The total number of Uptime check configurations for the project,
   /// irrespective of any pagination.
-  core.int totalSize;
+  core.int? totalSize;
 
   /// The returned Uptime check configurations.
-  core.List<UptimeCheckConfig> uptimeCheckConfigs;
+  core.List<UptimeCheckConfig>? uptimeCheckConfigs;
 
   ListUptimeCheckConfigsResponse();
 
@@ -7005,12 +6842,12 @@ class ListUptimeCheckConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (totalSize != null) 'totalSize': totalSize,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
         if (uptimeCheckConfigs != null)
           'uptimeCheckConfigs':
-              uptimeCheckConfigs.map((value) => value.toJson()).toList(),
+              uptimeCheckConfigs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7023,11 +6860,11 @@ class ListUptimeCheckIpsResponse {
   /// retrieve the next page of results, the value of the next_page_token is
   /// passed to the subsequent List method call (in the request message's
   /// page_token field). NOTE: this field is not yet implemented
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The returned list of IP addresses (including region and location) that the
   /// checkers run from.
-  core.List<UptimeCheckIp> uptimeCheckIps;
+  core.List<UptimeCheckIp>? uptimeCheckIps;
 
   ListUptimeCheckIpsResponse();
 
@@ -7043,11 +6880,11 @@ class ListUptimeCheckIpsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (uptimeCheckIps != null)
           'uptimeCheckIps':
-              uptimeCheckIps.map((value) => value.toJson()).toList(),
+              uptimeCheckIps!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -7059,18 +6896,18 @@ class MeshIstio {
   /// Identifier for the mesh in which this Istio service is defined.
   ///
   /// Corresponds to the mesh_uid metric label in Istio metrics.
-  core.String meshUid;
+  core.String? meshUid;
 
   /// The name of the Istio service underlying this service.
   ///
   /// Corresponds to the destination_service_name metric label in Istio metrics.
-  core.String serviceName;
+  core.String? serviceName;
 
   /// The namespace of the Istio service underlying this service.
   ///
   /// Corresponds to the destination_service_namespace metric label in Istio
   /// metrics.
-  core.String serviceNamespace;
+  core.String? serviceNamespace;
 
   MeshIstio();
 
@@ -7086,10 +6923,10 @@ class MeshIstio {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (meshUid != null) 'meshUid': meshUid,
-        if (serviceName != null) 'serviceName': serviceName,
-        if (serviceNamespace != null) 'serviceNamespace': serviceNamespace,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (meshUid != null) 'meshUid': meshUid!,
+        if (serviceName != null) 'serviceName': serviceName!,
+        if (serviceNamespace != null) 'serviceNamespace': serviceNamespace!,
       };
 }
 
@@ -7099,12 +6936,12 @@ class Metric {
   /// The set of label values that uniquely identify this metric.
   ///
   /// All labels listed in the MetricDescriptor must be assigned values.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// An existing metric type, see google.api.MetricDescriptor.
   ///
   /// For example, custom.googleapis.com/invoice/paid/amount.
-  core.String type;
+  core.String? type;
 
   Metric();
 
@@ -7123,9 +6960,9 @@ class Metric {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -7147,7 +6984,7 @@ class MetricAbsence {
   /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).
   /// It is advisable to use the ListTimeSeries method when debugging this
   /// field.
-  core.List<Aggregation> aggregations;
+  core.List<Aggregation>? aggregations;
 
   /// The amount of time that a time series must fail to report new data to be
   /// considered failing.
@@ -7156,7 +6993,7 @@ class MetricAbsence {
   /// multiple of a minute--for example, 240 or 300 seconds--are supported. If
   /// an invalid value is given, an error will be returned. The Duration.nanos
   /// field is ignored.
-  core.String duration;
+  core.String? duration;
 
   /// A filter (https://cloud.google.com/monitoring/api/v3/filters) that
   /// identifies which time series should be compared with the threshold.The
@@ -7169,7 +7006,7 @@ class MetricAbsence {
   /// The filter must specify the metric type and the resource type. Optionally,
   /// it can specify resource labels and metric labels. This field must not
   /// exceed 2048 Unicode characters in length.
-  core.String filter;
+  core.String? filter;
 
   /// The number/percent of time series for which the comparison must hold in
   /// order for the condition to trigger.
@@ -7177,7 +7014,7 @@ class MetricAbsence {
   /// If unspecified, then the condition will trigger if the comparison is true
   /// for any of the time series that have been identified by filter and
   /// aggregations.
-  Trigger trigger;
+  Trigger? trigger;
 
   MetricAbsence();
 
@@ -7200,12 +7037,12 @@ class MetricAbsence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (aggregations != null)
-          'aggregations': aggregations.map((value) => value.toJson()).toList(),
-        if (duration != null) 'duration': duration,
-        if (filter != null) 'filter': filter,
-        if (trigger != null) 'trigger': trigger.toJson(),
+          'aggregations': aggregations!.map((value) => value.toJson()).toList(),
+        if (duration != null) 'duration': duration!,
+        if (filter != null) 'filter': filter!,
+        if (trigger != null) 'trigger': trigger!.toJson(),
       };
 }
 
@@ -7215,14 +7052,14 @@ class MetricAbsence {
 /// collection and makes the metric type's existing data unusable.
 class MetricDescriptor {
   /// A detailed description of the metric, which can be used in documentation.
-  core.String description;
+  core.String? description;
 
   /// A concise name for the metric, which can be displayed in user interfaces.
   ///
   /// Use sentence case without an ending period, for example "Request count".
   /// This field is optional but it is recommended to be set for any metrics
   /// associated with user-visible concepts, such as Quota.
-  core.String displayName;
+  core.String? displayName;
 
   /// The set of labels that can be used to describe a specific instance of this
   /// metric type.
@@ -7231,7 +7068,7 @@ class MetricDescriptor {
   /// metric type has a label for the HTTP response code, response_code, so you
   /// can look at latencies for successful responses or just for responses that
   /// failed.
-  core.List<LabelDescriptor> labels;
+  core.List<LabelDescriptor>? labels;
 
   /// The launch stage of the metric definition.
   ///
@@ -7268,12 +7105,12 @@ class MetricDescriptor {
   /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
   /// Platform Subject to the Deprecation Policy
   /// (https://cloud.google.com/terms/deprecation) documentation.
-  core.String launchStage;
+  core.String? launchStage;
 
   /// Metadata which can be used to guide usage of the metric.
   ///
   /// Optional.
-  MetricDescriptorMetadata metadata;
+  MetricDescriptorMetadata? metadata;
 
   /// Whether the metric records instantaneous values, changes to a value, etc.
   ///
@@ -7286,7 +7123,7 @@ class MetricDescriptor {
   /// measurements in a time series should have the same start time and
   /// increasing end times, until an event resets the cumulative value to zero
   /// and sets a new start time for the following points.
-  core.String metricKind;
+  core.String? metricKind;
 
   /// Read-only.
   ///
@@ -7294,10 +7131,10 @@ class MetricDescriptor {
   /// type and a MonitoredResourceDescriptor, that is associated with this
   /// metric type can only be associated with one of the monitored resource
   /// types listed here.
-  core.List<core.String> monitoredResourceTypes;
+  core.List<core.String>? monitoredResourceTypes;
 
   /// The resource name of the metric descriptor.
-  core.String name;
+  core.String? name;
 
   /// The metric type, including its DNS name prefix.
   ///
@@ -7307,7 +7144,7 @@ class MetricDescriptor {
   /// "custom.googleapis.com/invoice/paid/amount"
   /// "external.googleapis.com/prometheus/up"
   /// "appengine.googleapis.com/http/server/response_latencies"
-  core.String type;
+  core.String? type;
 
   /// The units in which the metric value is reported.
   ///
@@ -7357,7 +7194,7 @@ class MetricDescriptor {
   /// indicates a metric contains a ratio, typically in the range 0..1, that
   /// will be multiplied by 100 and displayed as a percentage (so a metric value
   /// 0.03 means "3 percent").
-  core.String unit;
+  core.String? unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc.
   ///
@@ -7372,7 +7209,7 @@ class MetricDescriptor {
   /// if the metric kind is GAUGE.
   /// - "DISTRIBUTION" : The value is a Distribution.
   /// - "MONEY" : The value is money.
-  core.String valueType;
+  core.String? valueType;
 
   MetricDescriptor();
 
@@ -7418,20 +7255,20 @@ class MetricDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (labels != null)
-          'labels': labels.map((value) => value.toJson()).toList(),
-        if (launchStage != null) 'launchStage': launchStage,
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (metricKind != null) 'metricKind': metricKind,
+          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (metricKind != null) 'metricKind': metricKind!,
         if (monitoredResourceTypes != null)
-          'monitoredResourceTypes': monitoredResourceTypes,
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
-        if (unit != null) 'unit': unit,
-        if (valueType != null) 'valueType': valueType,
+          'monitoredResourceTypes': monitoredResourceTypes!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+        if (unit != null) 'unit': unit!,
+        if (valueType != null) 'valueType': valueType!,
       };
 }
 
@@ -7441,7 +7278,7 @@ class MetricDescriptorMetadata {
   ///
   /// Data points older than this age are guaranteed to be ingested and
   /// available to be read, excluding data loss due to errors.
-  core.String ingestDelay;
+  core.String? ingestDelay;
 
   /// Must use the MetricDescriptor.launch_stage instead.
   ///
@@ -7478,14 +7315,14 @@ class MetricDescriptorMetadata {
   /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
   /// Platform Subject to the Deprecation Policy
   /// (https://cloud.google.com/terms/deprecation) documentation.
-  core.String launchStage;
+  core.String? launchStage;
 
   /// The sampling period of metric data points.
   ///
   /// For metrics which are written periodically, consecutive data points are
   /// stored at this time interval, excluding data loss due to errors. Metrics
   /// with a higher granularity have a smaller sampling period.
-  core.String samplePeriod;
+  core.String? samplePeriod;
 
   MetricDescriptorMetadata();
 
@@ -7501,10 +7338,10 @@ class MetricDescriptorMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ingestDelay != null) 'ingestDelay': ingestDelay,
-        if (launchStage != null) 'launchStage': launchStage,
-        if (samplePeriod != null) 'samplePeriod': samplePeriod,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ingestDelay != null) 'ingestDelay': ingestDelay!,
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (samplePeriod != null) 'samplePeriod': samplePeriod!,
       };
 }
 
@@ -7516,11 +7353,11 @@ class MetricDescriptorMetadata {
 class MetricRange {
   /// Range of values considered "good." For a one-sided range, set one bound to
   /// an infinite value.
-  GoogleMonitoringV3Range range;
+  GoogleMonitoringV3Range? range;
 
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
   /// specifying the TimeSeries to use for evaluating window quality.
-  core.String timeSeries;
+  core.String? timeSeries;
 
   MetricRange();
 
@@ -7534,9 +7371,9 @@ class MetricRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (range != null) 'range': range.toJson(),
-        if (timeSeries != null) 'timeSeries': timeSeries,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (range != null) 'range': range!.toJson(),
+        if (timeSeries != null) 'timeSeries': timeSeries!,
       };
 }
 
@@ -7554,7 +7391,7 @@ class MetricThreshold {
   /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).
   /// It is advisable to use the ListTimeSeries method when debugging this
   /// field.
-  core.List<Aggregation> aggregations;
+  core.List<Aggregation>? aggregations;
 
   /// The comparison to apply between the time series (indicated by filter and
   /// aggregation) and the threshold (indicated by threshold_value).
@@ -7576,7 +7413,7 @@ class MetricThreshold {
   /// argument.
   /// - "COMPARISON_NE" : True if the left argument is not equal to the right
   /// argument.
-  core.String comparison;
+  core.String? comparison;
 
   /// Specifies the alignment of data points in individual time series selected
   /// by denominatorFilter as well as how to combine the retrieved time series
@@ -7585,7 +7422,7 @@ class MetricThreshold {
   /// members of a group of resources).When computing ratios, the aggregations
   /// and denominator_aggregations fields must use the same alignment period and
   /// produce time series that have the same periodicity and labels.
-  core.List<Aggregation> denominatorAggregations;
+  core.List<Aggregation>? denominatorAggregations;
 
   /// A filter (https://cloud.google.com/monitoring/api/v3/filters) that
   /// identifies a time series that should be used as the denominator of a ratio
@@ -7596,7 +7433,7 @@ class MetricThreshold {
   /// metric type and optionally may contain restrictions on resource type,
   /// resource labels, and metric labels. This field may not exceed 2048 Unicode
   /// characters in length.
-  core.String denominatorFilter;
+  core.String? denominatorFilter;
 
   /// The amount of time that a time series must violate the threshold to be
   /// considered failing.
@@ -7609,7 +7446,7 @@ class MetricThreshold {
   /// long enough so that a single outlier does not generate spurious alerts,
   /// but short enough that unhealthy states are detected and alerted on
   /// quickly.
-  core.String duration;
+  core.String? duration;
 
   /// A filter (https://cloud.google.com/monitoring/api/v3/filters) that
   /// identifies which time series should be compared with the threshold.The
@@ -7622,10 +7459,10 @@ class MetricThreshold {
   /// The filter must specify the metric type and the resource type. Optionally,
   /// it can specify resource labels and metric labels. This field must not
   /// exceed 2048 Unicode characters in length.
-  core.String filter;
+  core.String? filter;
 
   /// A value against which to compare the time series.
-  core.double thresholdValue;
+  core.double? thresholdValue;
 
   /// The number/percent of time series for which the comparison must hold in
   /// order for the condition to trigger.
@@ -7634,7 +7471,7 @@ class MetricThreshold {
   /// for any of the time series that have been identified by filter and
   /// aggregations, or by the ratio, if denominator_filter and
   /// denominator_aggregations are specified.
-  Trigger trigger;
+  Trigger? trigger;
 
   MetricThreshold();
 
@@ -7672,18 +7509,18 @@ class MetricThreshold {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (aggregations != null)
-          'aggregations': aggregations.map((value) => value.toJson()).toList(),
-        if (comparison != null) 'comparison': comparison,
+          'aggregations': aggregations!.map((value) => value.toJson()).toList(),
+        if (comparison != null) 'comparison': comparison!,
         if (denominatorAggregations != null)
           'denominatorAggregations':
-              denominatorAggregations.map((value) => value.toJson()).toList(),
-        if (denominatorFilter != null) 'denominatorFilter': denominatorFilter,
-        if (duration != null) 'duration': duration,
-        if (filter != null) 'filter': filter,
-        if (thresholdValue != null) 'thresholdValue': thresholdValue,
-        if (trigger != null) 'trigger': trigger.toJson(),
+              denominatorAggregations!.map((value) => value.toJson()).toList(),
+        if (denominatorFilter != null) 'denominatorFilter': denominatorFilter!,
+        if (duration != null) 'duration': duration!,
+        if (filter != null) 'filter': filter!,
+        if (thresholdValue != null) 'thresholdValue': thresholdValue!,
+        if (trigger != null) 'trigger': trigger!.toJson(),
       };
 }
 
@@ -7707,7 +7544,7 @@ class MonitoredResource {
   /// "instance_id", and "zone".
   ///
   /// Required.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The monitored resource type.
   ///
@@ -7717,7 +7554,7 @@ class MonitoredResource {
   /// Logging resource types.
   ///
   /// Required.
-  core.String type;
+  core.String? type;
 
   MonitoredResource();
 
@@ -7736,9 +7573,9 @@ class MonitoredResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -7755,7 +7592,7 @@ class MonitoredResourceDescriptor {
   /// in documentation.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// A concise name for the monitored resource type that might be displayed in
   /// user interfaces.
@@ -7764,7 +7601,7 @@ class MonitoredResourceDescriptor {
   /// determiners. For example, "Google Cloud SQL Database".
   ///
   /// Optional.
-  core.String displayName;
+  core.String? displayName;
 
   /// A set of labels used to describe instances of this monitored resource
   /// type.
@@ -7773,7 +7610,7 @@ class MonitoredResourceDescriptor {
   /// values for the labels "database_id" and "zone".
   ///
   /// Required.
-  core.List<LabelDescriptor> labels;
+  core.List<LabelDescriptor>? labels;
 
   /// The launch stage of the monitored resource definition.
   ///
@@ -7810,7 +7647,7 @@ class MonitoredResourceDescriptor {
   /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
   /// Platform Subject to the Deprecation Policy
   /// (https://cloud.google.com/terms/deprecation) documentation.
-  core.String launchStage;
+  core.String? launchStage;
 
   /// The resource name of the monitored resource descriptor:
   /// "projects/{project_id}/monitoredResourceDescriptors/{type}" where {type}
@@ -7821,7 +7658,7 @@ class MonitoredResourceDescriptor {
   /// "monitoredResourceDescriptors/{type}".
   ///
   /// Optional.
-  core.String name;
+  core.String? name;
 
   /// The monitored resource type.
   ///
@@ -7829,7 +7666,7 @@ class MonitoredResourceDescriptor {
   /// Cloud SQL.
   ///
   /// Required.
-  core.String type;
+  core.String? type;
 
   MonitoredResourceDescriptor();
 
@@ -7857,14 +7694,14 @@ class MonitoredResourceDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (labels != null)
-          'labels': labels.map((value) => value.toJson()).toList(),
-        if (launchStage != null) 'launchStage': launchStage,
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -7888,12 +7725,12 @@ class MonitoredResourceMetadata {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> systemLabels;
+  core.Map<core.String, core.Object>? systemLabels;
 
   /// A map of user-defined metadata labels.
   ///
   /// Output only.
-  core.Map<core.String, core.String> userLabels;
+  core.Map<core.String, core.String>? userLabels;
 
   MonitoredResourceMetadata();
 
@@ -7920,9 +7757,9 @@ class MonitoredResourceMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (systemLabels != null) 'systemLabels': systemLabels,
-        if (userLabels != null) 'userLabels': userLabels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (systemLabels != null) 'systemLabels': systemLabels!,
+        if (userLabels != null) 'userLabels': userLabels!,
       };
 }
 
@@ -7940,11 +7777,11 @@ class MonitoringQueryLanguageCondition {
   /// long enough so that a single outlier does not generate spurious alerts,
   /// but short enough that unhealthy states are detected and alerted on
   /// quickly.
-  core.String duration;
+  core.String? duration;
 
   /// Monitoring Query Language (https://cloud.google.com/monitoring/mql) query
   /// that outputs a boolean stream.
-  core.String query;
+  core.String? query;
 
   /// The number/percent of time series for which the comparison must hold in
   /// order for the condition to trigger.
@@ -7953,7 +7790,7 @@ class MonitoringQueryLanguageCondition {
   /// for any of the time series that have been identified by filter and
   /// aggregations, or by the ratio, if denominator_filter and
   /// denominator_aggregations are specified.
-  Trigger trigger;
+  Trigger? trigger;
 
   MonitoringQueryLanguageCondition();
 
@@ -7970,20 +7807,20 @@ class MonitoringQueryLanguageCondition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (duration != null) 'duration': duration,
-        if (query != null) 'query': query,
-        if (trigger != null) 'trigger': trigger.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (query != null) 'query': query!,
+        if (trigger != null) 'trigger': trigger!.toJson(),
       };
 }
 
 /// Describes a change made to a configuration.
 class MutationRecord {
   /// When the change occurred.
-  core.String mutateTime;
+  core.String? mutateTime;
 
   /// The email address of the user making the change.
-  core.String mutatedBy;
+  core.String? mutatedBy;
 
   MutationRecord();
 
@@ -7996,9 +7833,9 @@ class MutationRecord {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (mutateTime != null) 'mutateTime': mutateTime,
-        if (mutatedBy != null) 'mutatedBy': mutatedBy,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (mutateTime != null) 'mutateTime': mutateTime!,
+        if (mutatedBy != null) 'mutatedBy': mutatedBy!,
       };
 }
 
@@ -8010,20 +7847,20 @@ class MutationRecord {
 /// tokens or contact info are only partially populated on retrieval.
 class NotificationChannel {
   /// Record of the creation of this channel.
-  MutationRecord creationRecord;
+  MutationRecord? creationRecord;
 
   /// An optional human-readable description of this notification channel.
   ///
   /// This description may provide additional details, beyond the display name,
   /// for the channel. This may not exceed 1024 Unicode characters.
-  core.String description;
+  core.String? description;
 
   /// An optional human-readable name for this notification channel.
   ///
   /// It is recommended that you specify a non-empty and unique name in order to
   /// make it easier to identify the channels in your project, though this is
   /// not enforced. The display name is limited to 512 Unicode characters.
-  core.String displayName;
+  core.String? displayName;
 
   /// Whether notifications are forwarded to the described channel.
   ///
@@ -8032,30 +7869,30 @@ class NotificationChannel {
   /// that reference the channel. This is a more convenient approach when the
   /// change is temporary and you want to receive notifications from the same
   /// set of alerting policies on the channel at some point in the future.
-  core.bool enabled;
+  core.bool? enabled;
 
   /// Configuration fields that define the channel and its behavior.
   ///
   /// The permissible and required labels are specified in the
   /// NotificationChannelDescriptor.labels of the NotificationChannelDescriptor
   /// corresponding to the type field.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// Records of the modification of this channel.
-  core.List<MutationRecord> mutationRecords;
+  core.List<MutationRecord>? mutationRecords;
 
   /// The full REST resource name for this channel.
   ///
   /// The format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/notificationChannels/\[CHANNEL_ID\] The
   /// \[CHANNEL_ID\] is automatically assigned by the server on creation.
-  core.String name;
+  core.String? name;
 
   /// The type of the notification channel.
   ///
   /// This field matches the value of the NotificationChannelDescriptor.type
   /// field.
-  core.String type;
+  core.String? type;
 
   /// User-supplied key/value data that does not need to conform to the
   /// corresponding NotificationChannelDescriptor's schema, unlike the labels
@@ -8066,7 +7903,7 @@ class NotificationChannel {
   /// key and value is limited to 63 Unicode characters or 128 bytes, whichever
   /// is smaller. Labels and values can contain only lowercase letters,
   /// numerals, underscores, and dashes. Keys must begin with a letter.
-  core.Map<core.String, core.String> userLabels;
+  core.Map<core.String, core.String>? userLabels;
 
   /// Indicates whether this channel has been verified or not.
   ///
@@ -8094,7 +7931,7 @@ class NotificationChannel {
   /// - "VERIFIED" : It has been proven that notifications can be received on
   /// this notification channel and that someone on the project has access to
   /// messages that are delivered to that channel.
-  core.String verificationStatus;
+  core.String? verificationStatus;
 
   NotificationChannel();
 
@@ -8148,20 +7985,20 @@ class NotificationChannel {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (creationRecord != null) 'creationRecord': creationRecord.toJson(),
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (enabled != null) 'enabled': enabled,
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (creationRecord != null) 'creationRecord': creationRecord!.toJson(),
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (enabled != null) 'enabled': enabled!,
+        if (labels != null) 'labels': labels!,
         if (mutationRecords != null)
           'mutationRecords':
-              mutationRecords.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
-        if (userLabels != null) 'userLabels': userLabels,
+              mutationRecords!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+        if (userLabels != null) 'userLabels': userLabels!,
         if (verificationStatus != null)
-          'verificationStatus': verificationStatus,
+          'verificationStatus': verificationStatus!,
       };
 }
 
@@ -8174,18 +8011,18 @@ class NotificationChannelDescriptor {
   ///
   /// The description may include a description of the properties of the channel
   /// and pointers to external documentation.
-  core.String description;
+  core.String? description;
 
   /// A human-readable name for the notification channel type.
   ///
   /// This form of the name is suitable for a user interface.
-  core.String displayName;
+  core.String? displayName;
 
   /// The set of labels that must be defined to identify a particular channel of
   /// the corresponding type.
   ///
   /// Each label includes a description for how that field should be populated.
-  core.List<LabelDescriptor> labels;
+  core.List<LabelDescriptor>? labels;
 
   /// The product launch stage for channels of this type.
   /// Possible string values are:
@@ -8220,21 +8057,21 @@ class NotificationChannelDescriptor {
   /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
   /// Platform Subject to the Deprecation Policy
   /// (https://cloud.google.com/terms/deprecation) documentation.
-  core.String launchStage;
+  core.String? launchStage;
 
   /// The full REST resource name for this descriptor.
   ///
   /// The format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/notificationChannelDescriptors/\[TYPE\]
   /// In the above, \[TYPE\] is the value of the type field.
-  core.String name;
+  core.String? name;
 
   /// The type of notification channel, such as "email" and "sms".
   ///
   /// To view the full list of channels, see Channel descriptors
   /// (https://cloud.google.com/monitoring/alerts/using-channels-api#ncd).
   /// Notification channel types are globally unique.
-  core.String type;
+  core.String? type;
 
   NotificationChannelDescriptor();
 
@@ -8262,14 +8099,14 @@ class NotificationChannelDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (labels != null)
-          'labels': labels.map((value) => value.toJson()).toList(),
-        if (launchStage != null) 'launchStage': launchStage,
-        if (name != null) 'name': name,
-        if (type != null) 'type': type,
+          'labels': labels!.map((value) => value.toJson()).toList(),
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -8281,7 +8118,7 @@ class Option {
   /// For protobuf built-in options (options defined in descriptor.proto), this
   /// is the short name. For example, "map_entry". For custom options, it should
   /// be the fully-qualified name. For example, "google.api.http".
-  core.String name;
+  core.String? name;
 
   /// The option's value packed in an Any message.
   ///
@@ -8292,7 +8129,7 @@ class Option {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> value;
+  core.Map<core.String, core.Object>? value;
 
   Option();
 
@@ -8310,9 +8147,9 @@ class Option {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -8320,13 +8157,13 @@ class Option {
 /// a sufficiently high performance.
 class PerformanceThreshold {
   /// BasicSli to evaluate to judge window quality.
-  BasicSli basicSliPerformance;
+  BasicSli? basicSliPerformance;
 
   /// RequestBasedSli to evaluate to judge window quality.
-  RequestBasedSli performance;
+  RequestBasedSli? performance;
 
   /// If window performance >= threshold, the window is counted as good.
-  core.double threshold;
+  core.double? threshold;
 
   PerformanceThreshold();
 
@@ -8344,11 +8181,11 @@ class PerformanceThreshold {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (basicSliPerformance != null)
-          'basicSliPerformance': basicSliPerformance.toJson(),
-        if (performance != null) 'performance': performance.toJson(),
-        if (threshold != null) 'threshold': threshold,
+          'basicSliPerformance': basicSliPerformance!.toJson(),
+        if (performance != null) 'performance': performance!.toJson(),
+        if (threshold != null) 'threshold': threshold!,
       };
 }
 
@@ -8364,10 +8201,10 @@ class Point {
   /// the same start time and increasing end times, until an event resets the
   /// cumulative value to zero and sets a new start time for the following
   /// points.
-  TimeInterval interval;
+  TimeInterval? interval;
 
   /// The value of the data point.
-  TypedValue value;
+  TypedValue? value;
 
   Point();
 
@@ -8382,9 +8219,9 @@ class Point {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (interval != null) 'interval': interval.toJson(),
-        if (value != null) 'value': value.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (interval != null) 'interval': interval!.toJson(),
+        if (value != null) 'value': value!.toJson(),
       };
 }
 
@@ -8395,10 +8232,10 @@ class Point {
 /// object.
 class PointData {
   /// The time interval associated with the point.
-  TimeInterval timeInterval;
+  TimeInterval? timeInterval;
 
   /// The values that make up the point.
-  core.List<TypedValue> values;
+  core.List<TypedValue>? values;
 
   PointData();
 
@@ -8415,10 +8252,10 @@ class PointData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (timeInterval != null) 'timeInterval': timeInterval.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (timeInterval != null) 'timeInterval': timeInterval!.toJson(),
         if (values != null)
-          'values': values.map((value) => value.toJson()).toList(),
+          'values': values!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -8426,14 +8263,14 @@ class PointData {
 class QueryTimeSeriesRequest {
   /// A positive number that is the maximum number of time_series_data to
   /// return.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// If this field is not empty then it must contain the nextPageToken value
   /// returned by a previous call to this method.
   ///
   /// Using this field causes the method to return additional results from the
   /// previous method call.
-  core.String pageToken;
+  core.String? pageToken;
 
   /// The query in the Monitoring Query Language
   /// (https://cloud.google.com/monitoring/mql/reference) format.
@@ -8441,7 +8278,7 @@ class QueryTimeSeriesRequest {
   /// The default time zone is in UTC.
   ///
   /// Required.
-  core.String query;
+  core.String? query;
 
   QueryTimeSeriesRequest();
 
@@ -8457,10 +8294,10 @@ class QueryTimeSeriesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (query != null) 'query': query,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (query != null) 'query': query!,
       };
 }
 
@@ -8471,19 +8308,19 @@ class QueryTimeSeriesResponse {
   ///
   /// To see the additional results, use that value as page_token in the next
   /// call to this method.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Query execution errors that may have caused the time series data returned
   /// to be incomplete.
   ///
   /// The available data will be available in the response.
-  core.List<Status> partialErrors;
+  core.List<Status>? partialErrors;
 
   /// The time series data.
-  core.List<TimeSeriesData> timeSeriesData;
+  core.List<TimeSeriesData>? timeSeriesData;
 
   /// The descriptor for the time series data.
-  TimeSeriesDescriptor timeSeriesDescriptor;
+  TimeSeriesDescriptor? timeSeriesDescriptor;
 
   QueryTimeSeriesResponse();
 
@@ -8509,26 +8346,26 @@ class QueryTimeSeriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (partialErrors != null)
           'partialErrors':
-              partialErrors.map((value) => value.toJson()).toList(),
+              partialErrors!.map((value) => value.toJson()).toList(),
         if (timeSeriesData != null)
           'timeSeriesData':
-              timeSeriesData.map((value) => value.toJson()).toList(),
+              timeSeriesData!.map((value) => value.toJson()).toList(),
         if (timeSeriesDescriptor != null)
-          'timeSeriesDescriptor': timeSeriesDescriptor.toJson(),
+          'timeSeriesDescriptor': timeSeriesDescriptor!.toJson(),
       };
 }
 
 /// The range of the population values.
 class Range {
   /// The maximum of the population values.
-  core.double max;
+  core.double? max;
 
   /// The minimum of the population values.
-  core.double min;
+  core.double? min;
 
   Range();
 
@@ -8541,9 +8378,9 @@ class Range {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (max != null) 'max': max,
-        if (min != null) 'min': min,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (max != null) 'max': max!,
+        if (min != null) 'min': min!,
       };
 }
 
@@ -8555,11 +8392,11 @@ class RequestBasedSli {
   ///
   /// The total_service is the total count of all values aggregated in the
   /// Distribution.
-  DistributionCut distributionCut;
+  DistributionCut? distributionCut;
 
   /// good_total_ratio is used when the ratio of good_service to total_service
   /// is computed from two TimeSeries.
-  TimeSeriesRatio goodTotalRatio;
+  TimeSeriesRatio? goodTotalRatio;
 
   RequestBasedSli();
 
@@ -8574,10 +8411,10 @@ class RequestBasedSli {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (distributionCut != null)
-          'distributionCut': distributionCut.toJson(),
-        if (goodTotalRatio != null) 'goodTotalRatio': goodTotalRatio.toJson(),
+          'distributionCut': distributionCut!.toJson(),
+        if (goodTotalRatio != null) 'goodTotalRatio': goodTotalRatio!.toJson(),
       };
 }
 
@@ -8590,7 +8427,7 @@ class ResourceGroup {
   ///
   /// Should be only the \[GROUP_ID\], and not the full-path
   /// projects/\[PROJECT_ID_OR_NUMBER\]/groups/\[GROUP_ID\].
-  core.String groupId;
+  core.String? groupId;
 
   /// The resource type of the group members.
   /// Possible string values are:
@@ -8598,7 +8435,7 @@ class ResourceGroup {
   /// - "INSTANCE" : A group of instances from Google Cloud Platform (GCP) or
   /// Amazon Web Services (AWS).
   /// - "AWS_ELB_LOAD_BALANCER" : A group of Amazon ELB load balancers.
-  core.String resourceType;
+  core.String? resourceType;
 
   ResourceGroup();
 
@@ -8611,9 +8448,9 @@ class ResourceGroup {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (groupId != null) 'groupId': groupId,
-        if (resourceType != null) 'resourceType': resourceType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (groupId != null) 'groupId': groupId!,
+        if (resourceType != null) 'resourceType': resourceType!,
       };
 }
 
@@ -8625,7 +8462,7 @@ class SendNotificationChannelVerificationCodeRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A Service is a discrete, autonomous, and network-accessible unit, designed
@@ -8636,36 +8473,36 @@ class SendNotificationChannelVerificationCodeRequest {
 /// operational aspects of the service are accessible.
 class Service {
   /// Type used for App Engine services.
-  AppEngine appEngine;
+  AppEngine? appEngine;
 
   /// Type used for Cloud Endpoints services.
-  CloudEndpoints cloudEndpoints;
+  CloudEndpoints? cloudEndpoints;
 
   /// Type used for Istio services that live in a Kubernetes cluster.
-  ClusterIstio clusterIstio;
+  ClusterIstio? clusterIstio;
 
   /// Custom service type.
-  Custom custom;
+  Custom? custom;
 
   /// Name used for UI elements listing this Service.
-  core.String displayName;
+  core.String? displayName;
 
   /// Type used for canonical services scoped to an Istio mesh.
   ///
   /// Metrics for Istio are documented here
   /// (https://istio.io/latest/docs/reference/config/metrics/)
-  IstioCanonicalService istioCanonicalService;
+  IstioCanonicalService? istioCanonicalService;
 
   /// Type used for Istio services scoped to an Istio mesh.
-  MeshIstio meshIstio;
+  MeshIstio? meshIstio;
 
   /// Resource name for this Service.
   ///
   /// The format is: projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]
-  core.String name;
+  core.String? name;
 
   /// Configuration for how to query telemetry on a Service.
-  Telemetry telemetry;
+  Telemetry? telemetry;
 
   Service();
 
@@ -8707,17 +8544,17 @@ class Service {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appEngine != null) 'appEngine': appEngine.toJson(),
-        if (cloudEndpoints != null) 'cloudEndpoints': cloudEndpoints.toJson(),
-        if (clusterIstio != null) 'clusterIstio': clusterIstio.toJson(),
-        if (custom != null) 'custom': custom.toJson(),
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appEngine != null) 'appEngine': appEngine!.toJson(),
+        if (cloudEndpoints != null) 'cloudEndpoints': cloudEndpoints!.toJson(),
+        if (clusterIstio != null) 'clusterIstio': clusterIstio!.toJson(),
+        if (custom != null) 'custom': custom!.toJson(),
+        if (displayName != null) 'displayName': displayName!,
         if (istioCanonicalService != null)
-          'istioCanonicalService': istioCanonicalService.toJson(),
-        if (meshIstio != null) 'meshIstio': meshIstio.toJson(),
-        if (name != null) 'name': name,
-        if (telemetry != null) 'telemetry': telemetry.toJson(),
+          'istioCanonicalService': istioCanonicalService!.toJson(),
+        if (meshIstio != null) 'meshIstio': meshIstio!.toJson(),
+        if (name != null) 'name': name!,
+        if (telemetry != null) 'telemetry': telemetry!.toJson(),
       };
 }
 
@@ -8737,13 +8574,13 @@ class Service {
 /// fast-enough queries.
 class ServiceLevelIndicator {
   /// Basic SLI on a well-known service type.
-  BasicSli basicSli;
+  BasicSli? basicSli;
 
   /// Request-based SLIs
-  RequestBasedSli requestBased;
+  RequestBasedSli? requestBased;
 
   /// Windows-based SLIs
-  WindowsBasedSli windowsBased;
+  WindowsBasedSli? windowsBased;
 
   ServiceLevelIndicator();
 
@@ -8762,10 +8599,10 @@ class ServiceLevelIndicator {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (basicSli != null) 'basicSli': basicSli.toJson(),
-        if (requestBased != null) 'requestBased': requestBased.toJson(),
-        if (windowsBased != null) 'windowsBased': windowsBased.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (basicSli != null) 'basicSli': basicSli!.toJson(),
+        if (requestBased != null) 'requestBased': requestBased!.toJson(),
+        if (windowsBased != null) 'windowsBased': windowsBased!.toJson(),
       };
 }
 
@@ -8794,32 +8631,32 @@ class ServiceLevelObjective {
   /// 1-Oct of each year.
   /// - "HALF" : A half-year. Half-years start on dates 1-Jan and 1-Jul.
   /// - "YEAR" : A year.
-  core.String calendarPeriod;
+  core.String? calendarPeriod;
 
   /// Name used for UI elements listing this SLO.
-  core.String displayName;
+  core.String? displayName;
 
   /// The fraction of service that must be good in order for this objective to
   /// be met.
   ///
   /// 0 < goal <= 0.999.
-  core.double goal;
+  core.double? goal;
 
   /// Resource name for this ServiceLevelObjective.
   ///
   /// The format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]/serviceLevelObjectives/\[SLO_NAME\]
-  core.String name;
+  core.String? name;
 
   /// A rolling time period, semantically "in the past ".
   ///
   /// Must be an integer multiple of 1 day no larger than 30 days.
-  core.String rollingPeriod;
+  core.String? rollingPeriod;
 
   /// The definition of good service, used to measure and calculate the quality
   /// of the Service's performance with respect to a single aspect of service
   /// quality.
-  ServiceLevelIndicator serviceLevelIndicator;
+  ServiceLevelIndicator? serviceLevelIndicator;
 
   ServiceLevelObjective();
 
@@ -8846,14 +8683,14 @@ class ServiceLevelObjective {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (calendarPeriod != null) 'calendarPeriod': calendarPeriod,
-        if (displayName != null) 'displayName': displayName,
-        if (goal != null) 'goal': goal,
-        if (name != null) 'name': name,
-        if (rollingPeriod != null) 'rollingPeriod': rollingPeriod,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (calendarPeriod != null) 'calendarPeriod': calendarPeriod!,
+        if (displayName != null) 'displayName': displayName!,
+        if (goal != null) 'goal': goal!,
+        if (name != null) 'name': name!,
+        if (rollingPeriod != null) 'rollingPeriod': rollingPeriod!,
         if (serviceLevelIndicator != null)
-          'serviceLevelIndicator': serviceLevelIndicator.toJson(),
+          'serviceLevelIndicator': serviceLevelIndicator!.toJson(),
       };
 }
 
@@ -8864,7 +8701,7 @@ class SourceContext {
   /// protobuf element.
   ///
   /// For example: "google/protobuf/source_context.proto".
-  core.String fileName;
+  core.String? fileName;
 
   SourceContext();
 
@@ -8874,8 +8711,8 @@ class SourceContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fileName != null) 'fileName': fileName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fileName != null) 'fileName': fileName!,
       };
 }
 
@@ -8891,7 +8728,7 @@ class SpanContext {
   /// 32-character hexadecimal encoding of a 16-byte array.\[SPAN_ID\] is a
   /// unique identifier for a span within a trace; it is a 16-character
   /// hexadecimal encoding of an 8-byte array.
-  core.String spanName;
+  core.String? spanName;
 
   SpanContext();
 
@@ -8901,8 +8738,8 @@ class SpanContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (spanName != null) 'spanName': spanName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (spanName != null) 'spanName': spanName!,
       };
 }
 
@@ -8915,7 +8752,7 @@ class SpanContext {
 /// Design Guide (https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -8923,13 +8760,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -8953,10 +8790,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -8966,7 +8803,7 @@ class TcpCheck {
   ///
   /// Will be combined with host (specified within the monitored_resource) to
   /// construct the full URL. Required.
-  core.int port;
+  core.int? port;
 
   TcpCheck();
 
@@ -8976,8 +8813,8 @@ class TcpCheck {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (port != null) 'port': port,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (port != null) 'port': port!,
       };
 }
 
@@ -8987,7 +8824,7 @@ class Telemetry {
   ///
   /// Formatted as described in
   /// https://cloud.google.com/apis/design/resource_names.
-  core.String resourceName;
+  core.String? resourceName;
 
   Telemetry();
 
@@ -8997,8 +8834,8 @@ class Telemetry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (resourceName != null) 'resourceName': resourceName!,
       };
 }
 
@@ -9033,7 +8870,7 @@ class TimeInterval {
   /// The end of the time interval.
   ///
   /// Required.
-  core.String endTime;
+  core.String? endTime;
 
   /// The beginning of the time interval.
   ///
@@ -9041,7 +8878,7 @@ class TimeInterval {
   /// not be later than the end time.
   ///
   /// Optional.
-  core.String startTime;
+  core.String? startTime;
 
   TimeInterval();
 
@@ -9054,9 +8891,9 @@ class TimeInterval {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -9074,12 +8911,12 @@ class TimeSeries {
   /// field is ignored.
   ///
   /// Output only.
-  MonitoredResourceMetadata metadata;
+  MonitoredResourceMetadata? metadata;
 
   /// The associated metric.
   ///
   /// A fully-specified metric used to identify the time series.
-  Metric metric;
+  Metric? metric;
 
   /// The metric kind of the time series.
   ///
@@ -9098,7 +8935,7 @@ class TimeSeries {
   /// measurements in a time series should have the same start time and
   /// increasing end times, until an event resets the cumulative value to zero
   /// and sets a new start time for the following points.
-  core.String metricKind;
+  core.String? metricKind;
 
   /// The data points of this time series.
   ///
@@ -9108,19 +8945,19 @@ class TimeSeries {
   /// If the associated metric's descriptor must be auto-created, then the value
   /// type of the descriptor is determined by the point's type, which must be
   /// BOOL, INT64, DOUBLE, or DISTRIBUTION.
-  core.List<Point> points;
+  core.List<Point>? points;
 
   /// The associated monitored resource.
   ///
   /// Custom metrics can use only certain monitored resource types in their time
   /// series data.
-  MonitoredResource resource;
+  MonitoredResource? resource;
 
   /// The units in which the metric value is reported.
   ///
   /// It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION.
   /// The unit defines the representation of the stored metric values.
-  core.String unit;
+  core.String? unit;
 
   /// The value type of the time series.
   ///
@@ -9139,7 +8976,7 @@ class TimeSeries {
   /// if the metric kind is GAUGE.
   /// - "DISTRIBUTION" : The value is a Distribution.
   /// - "MONEY" : The value is money.
-  core.String valueType;
+  core.String? valueType;
 
   TimeSeries();
 
@@ -9173,15 +9010,15 @@ class TimeSeries {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (metadata != null) 'metadata': metadata.toJson(),
-        if (metric != null) 'metric': metric.toJson(),
-        if (metricKind != null) 'metricKind': metricKind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (metadata != null) 'metadata': metadata!.toJson(),
+        if (metric != null) 'metric': metric!.toJson(),
+        if (metricKind != null) 'metricKind': metricKind!,
         if (points != null)
-          'points': points.map((value) => value.toJson()).toList(),
-        if (resource != null) 'resource': resource.toJson(),
-        if (unit != null) 'unit': unit,
-        if (valueType != null) 'valueType': valueType,
+          'points': points!.map((value) => value.toJson()).toList(),
+        if (resource != null) 'resource': resource!.toJson(),
+        if (unit != null) 'unit': unit!,
+        if (valueType != null) 'valueType': valueType!,
       };
 }
 
@@ -9194,10 +9031,10 @@ class TimeSeriesData {
   ///
   /// Each value must have a value of the type given in the corresponding entry
   /// of label_descriptors.
-  core.List<LabelValue> labelValues;
+  core.List<LabelValue>? labelValues;
 
   /// The points in the time series.
-  core.List<PointData> pointData;
+  core.List<PointData>? pointData;
 
   TimeSeriesData();
 
@@ -9216,21 +9053,21 @@ class TimeSeriesData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (labelValues != null)
-          'labelValues': labelValues.map((value) => value.toJson()).toList(),
+          'labelValues': labelValues!.map((value) => value.toJson()).toList(),
         if (pointData != null)
-          'pointData': pointData.map((value) => value.toJson()).toList(),
+          'pointData': pointData!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A descriptor for the labels and points in a time series.
 class TimeSeriesDescriptor {
   /// Descriptors for the labels.
-  core.List<LabelDescriptor> labelDescriptors;
+  core.List<LabelDescriptor>? labelDescriptors;
 
   /// Descriptors for the point data value columns.
-  core.List<ValueDescriptor> pointDescriptors;
+  core.List<ValueDescriptor>? pointDescriptors;
 
   TimeSeriesDescriptor();
 
@@ -9249,13 +9086,13 @@ class TimeSeriesDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (labelDescriptors != null)
           'labelDescriptors':
-              labelDescriptors.map((value) => value.toJson()).toList(),
+              labelDescriptors!.map((value) => value.toJson()).toList(),
         if (pointDescriptors != null)
           'pointDescriptors':
-              pointDescriptors.map((value) => value.toJson()).toList(),
+              pointDescriptors!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -9273,21 +9110,21 @@ class TimeSeriesRatio {
   ///
   /// Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind
   /// = DELTA or MetricKind = CUMULATIVE.
-  core.String badServiceFilter;
+  core.String? badServiceFilter;
 
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
   /// specifying a TimeSeries quantifying good service provided.
   ///
   /// Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind
   /// = DELTA or MetricKind = CUMULATIVE.
-  core.String goodServiceFilter;
+  core.String? goodServiceFilter;
 
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
   /// specifying a TimeSeries quantifying total demanded service.
   ///
   /// Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind
   /// = DELTA or MetricKind = CUMULATIVE.
-  core.String totalServiceFilter;
+  core.String? totalServiceFilter;
 
   TimeSeriesRatio();
 
@@ -9303,11 +9140,11 @@ class TimeSeriesRatio {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (badServiceFilter != null) 'badServiceFilter': badServiceFilter,
-        if (goodServiceFilter != null) 'goodServiceFilter': goodServiceFilter,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (badServiceFilter != null) 'badServiceFilter': badServiceFilter!,
+        if (goodServiceFilter != null) 'goodServiceFilter': goodServiceFilter!,
         if (totalServiceFilter != null)
-          'totalServiceFilter': totalServiceFilter,
+          'totalServiceFilter': totalServiceFilter!,
       };
 }
 
@@ -9317,11 +9154,11 @@ class TimeSeriesRatio {
 class Trigger {
   /// The absolute number of time series that must fail the predicate for the
   /// condition to be triggered.
-  core.int count;
+  core.int? count;
 
   /// The percentage of time series that must fail the predicate for the
   /// condition to be triggered.
-  core.double percent;
+  core.double? percent;
 
   Trigger();
 
@@ -9334,34 +9171,34 @@ class Trigger {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (percent != null) 'percent': percent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (percent != null) 'percent': percent!,
       };
 }
 
 /// A protocol buffer message type.
 class Type {
   /// The list of fields.
-  core.List<Field> fields;
+  core.List<Field>? fields;
 
   /// The fully qualified message name.
-  core.String name;
+  core.String? name;
 
   /// The list of types appearing in oneof definitions in this type.
-  core.List<core.String> oneofs;
+  core.List<core.String>? oneofs;
 
   /// The protocol buffer options.
-  core.List<Option> options;
+  core.List<Option>? options;
 
   /// The source context.
-  SourceContext sourceContext;
+  SourceContext? sourceContext;
 
   /// The source syntax.
   /// Possible string values are:
   /// - "SYNTAX_PROTO2" : Syntax proto2.
   /// - "SYNTAX_PROTO3" : Syntax proto3.
-  core.String syntax;
+  core.String? syntax;
 
   Type();
 
@@ -9395,39 +9232,39 @@ class Type {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fields != null)
-          'fields': fields.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (oneofs != null) 'oneofs': oneofs,
+          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (oneofs != null) 'oneofs': oneofs!,
         if (options != null)
-          'options': options.map((value) => value.toJson()).toList(),
-        if (sourceContext != null) 'sourceContext': sourceContext.toJson(),
-        if (syntax != null) 'syntax': syntax,
+          'options': options!.map((value) => value.toJson()).toList(),
+        if (sourceContext != null) 'sourceContext': sourceContext!.toJson(),
+        if (syntax != null) 'syntax': syntax!,
       };
 }
 
 /// A single strongly-typed value.
 class TypedValue {
   /// A Boolean value: true or false.
-  core.bool boolValue;
+  core.bool? boolValue;
 
   /// A distribution value.
-  Distribution distributionValue;
+  Distribution? distributionValue;
 
   /// A 64-bit double-precision floating-point number.
   ///
   /// Its magnitude is approximately ±10±300 and it has 16 significant digits of
   /// precision.
-  core.double doubleValue;
+  core.double? doubleValue;
 
   /// A 64-bit integer.
   ///
   /// Its range is approximately ±9.2x1018.
-  core.String int64Value;
+  core.String? int64Value;
 
   /// A variable-length string value.
-  core.String stringValue;
+  core.String? stringValue;
 
   TypedValue();
 
@@ -9450,13 +9287,13 @@ class TypedValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
         if (distributionValue != null)
-          'distributionValue': distributionValue.toJson(),
-        if (doubleValue != null) 'doubleValue': doubleValue,
-        if (int64Value != null) 'int64Value': int64Value,
-        if (stringValue != null) 'stringValue': stringValue,
+          'distributionValue': distributionValue!.toJson(),
+        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (int64Value != null) 'int64Value': int64Value!,
+        if (stringValue != null) 'stringValue': stringValue!,
       };
 }
 
@@ -9470,38 +9307,38 @@ class UptimeCheckConfig {
   /// and additional entries will be ignored. This field is optional and should
   /// only be specified if a content match is required as part of the/ Uptime
   /// check.
-  core.List<ContentMatcher> contentMatchers;
+  core.List<ContentMatcher>? contentMatchers;
 
   /// A human-friendly name for the Uptime check configuration.
   ///
   /// The display name should be unique within a Stackdriver Workspace in order
   /// to make it easier to identify; however, uniqueness is not enforced.
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   /// Contains information needed to make an HTTP or HTTPS check.
-  HttpCheck httpCheck;
+  HttpCheck? httpCheck;
 
   /// The internal checkers that this check will egress from.
   ///
   /// If is_internal is true and this list is empty, the check will egress from
   /// all the InternalCheckers configured for the project that owns this
   /// UptimeCheckConfig.
-  core.List<InternalChecker> internalCheckers;
+  core.List<InternalChecker>? internalCheckers;
 
   /// If this is true, then checks are made only from the 'internal_checkers'.
   ///
   /// If it is false, then checks are made only from the 'selected_regions'. It
   /// is an error to provide 'selected_regions' when is_internal is true, or to
   /// provide 'internal_checkers' when is_internal is false.
-  core.bool isInternal;
+  core.bool? isInternal;
 
   /// The monitored resource (https://cloud.google.com/monitoring/api/resources)
   /// associated with the configuration.
   ///
   /// The following monitored resource types are supported for Uptime checks:
   /// uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer
-  MonitoredResource monitoredResource;
+  MonitoredResource? monitoredResource;
 
   /// A unique resource name for this Uptime check configuration.
   ///
@@ -9511,16 +9348,16 @@ class UptimeCheckConfig {
   /// Uptime check.This field should be omitted when creating the Uptime check
   /// configuration; on create, the resource name is assigned by the server and
   /// included in the response.
-  core.String name;
+  core.String? name;
 
   /// How often, in seconds, the Uptime check is performed.
   ///
   /// Currently, the only supported values are 60s (1 minute), 300s (5 minutes),
   /// 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
-  core.String period;
+  core.String? period;
 
   /// The group resource associated with the configuration.
-  ResourceGroup resourceGroup;
+  ResourceGroup? resourceGroup;
 
   /// The list of regions from which the check will be run.
   ///
@@ -9528,16 +9365,16 @@ class UptimeCheckConfig {
   /// this field is specified, enough regions must be provided to include a
   /// minimum of 3 locations. Not specifying this field will result in Uptime
   /// checks running from all available regions.
-  core.List<core.String> selectedRegions;
+  core.List<core.String>? selectedRegions;
 
   /// Contains information needed to make a TCP check.
-  TcpCheck tcpCheck;
+  TcpCheck? tcpCheck;
 
   /// The maximum amount of time to wait for the request to complete (must be
   /// between 1 and 60 seconds).
   ///
   /// Required.
-  core.String timeout;
+  core.String? timeout;
 
   UptimeCheckConfig();
 
@@ -9592,24 +9429,24 @@ class UptimeCheckConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (contentMatchers != null)
           'contentMatchers':
-              contentMatchers.map((value) => value.toJson()).toList(),
-        if (displayName != null) 'displayName': displayName,
-        if (httpCheck != null) 'httpCheck': httpCheck.toJson(),
+              contentMatchers!.map((value) => value.toJson()).toList(),
+        if (displayName != null) 'displayName': displayName!,
+        if (httpCheck != null) 'httpCheck': httpCheck!.toJson(),
         if (internalCheckers != null)
           'internalCheckers':
-              internalCheckers.map((value) => value.toJson()).toList(),
-        if (isInternal != null) 'isInternal': isInternal,
+              internalCheckers!.map((value) => value.toJson()).toList(),
+        if (isInternal != null) 'isInternal': isInternal!,
         if (monitoredResource != null)
-          'monitoredResource': monitoredResource.toJson(),
-        if (name != null) 'name': name,
-        if (period != null) 'period': period,
-        if (resourceGroup != null) 'resourceGroup': resourceGroup.toJson(),
-        if (selectedRegions != null) 'selectedRegions': selectedRegions,
-        if (tcpCheck != null) 'tcpCheck': tcpCheck.toJson(),
-        if (timeout != null) 'timeout': timeout,
+          'monitoredResource': monitoredResource!.toJson(),
+        if (name != null) 'name': name!,
+        if (period != null) 'period': period!,
+        if (resourceGroup != null) 'resourceGroup': resourceGroup!.toJson(),
+        if (selectedRegions != null) 'selectedRegions': selectedRegions!,
+        if (tcpCheck != null) 'tcpCheck': tcpCheck!.toJson(),
+        if (timeout != null) 'timeout': timeout!,
       };
 }
 
@@ -9622,12 +9459,12 @@ class UptimeCheckIp {
   /// addresses, as of this publication, are in IPv4 format; however, one should
   /// not rely on the IP addresses being in IPv4 format indefinitely, and should
   /// support interpreting this field in either IPv4 or IPv6 format.
-  core.String ipAddress;
+  core.String? ipAddress;
 
   /// A more specific location within the region that typically encodes a
   /// particular city/town/metro (and its containing state/province or country)
   /// within the broader umbrella region category.
-  core.String location;
+  core.String? location;
 
   /// A broad region category in which the IP address is located.
   /// Possible string values are:
@@ -9641,7 +9478,7 @@ class UptimeCheckIp {
   /// continent of South America.
   /// - "ASIA_PACIFIC" : Allows checks to run from locations within the Asia
   /// Pacific area (ex: Singapore).
-  core.String region;
+  core.String? region;
 
   UptimeCheckIp();
 
@@ -9657,17 +9494,17 @@ class UptimeCheckIp {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ipAddress != null) 'ipAddress': ipAddress,
-        if (location != null) 'location': location,
-        if (region != null) 'region': region,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (location != null) 'location': location!,
+        if (region != null) 'region': region!,
       };
 }
 
 /// A descriptor for the value columns in a data point.
 class ValueDescriptor {
   /// The value key.
-  core.String key;
+  core.String? key;
 
   /// The value stream kind.
   /// Possible string values are:
@@ -9678,14 +9515,14 @@ class ValueDescriptor {
   /// measurements in a time series should have the same start time and
   /// increasing end times, until an event resets the cumulative value to zero
   /// and sets a new start time for the following points.
-  core.String metricKind;
+  core.String? metricKind;
 
   /// The unit in which time_series point values are reported.
   ///
   /// unit follows the UCUM format for units as seen in
   /// https://unitsofmeasure.org/ucum.html. unit is only valid if value_type is
   /// INTEGER, DOUBLE, DISTRIBUTION.
-  core.String unit;
+  core.String? unit;
 
   /// The value type.
   /// Possible string values are:
@@ -9698,7 +9535,7 @@ class ValueDescriptor {
   /// if the metric kind is GAUGE.
   /// - "DISTRIBUTION" : The value is a Distribution.
   /// - "MONEY" : The value is money.
-  core.String valueType;
+  core.String? valueType;
 
   ValueDescriptor();
 
@@ -9717,11 +9554,11 @@ class ValueDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (key != null) 'key': key,
-        if (metricKind != null) 'metricKind': metricKind,
-        if (unit != null) 'unit': unit,
-        if (valueType != null) 'valueType': valueType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (key != null) 'key': key!,
+        if (metricKind != null) 'metricKind': metricKind!,
+        if (unit != null) 'unit': unit!,
+        if (valueType != null) 'valueType': valueType!,
       };
 }
 
@@ -9737,7 +9574,7 @@ class VerifyNotificationChannelRequest {
   /// not make any assumptions regarding the structure or format of the code).
   ///
   /// Required.
-  core.String code;
+  core.String? code;
 
   VerifyNotificationChannelRequest();
 
@@ -9747,8 +9584,8 @@ class VerifyNotificationChannelRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
       };
 }
 
@@ -9762,23 +9599,23 @@ class WindowsBasedSli {
   /// specifying a TimeSeries with ValueType = BOOL.
   ///
   /// The window is good if any true values appear in the window.
-  core.String goodBadMetricFilter;
+  core.String? goodBadMetricFilter;
 
   /// A window is good if its performance is high enough.
-  PerformanceThreshold goodTotalRatioThreshold;
+  PerformanceThreshold? goodTotalRatioThreshold;
 
   /// A window is good if the metric's value is in a good range, averaged across
   /// returned streams.
-  MetricRange metricMeanInRange;
+  MetricRange? metricMeanInRange;
 
   /// A window is good if the metric's value is in a good range, summed across
   /// returned streams.
-  MetricRange metricSumInRange;
+  MetricRange? metricSumInRange;
 
   /// Duration over which window quality is evaluated.
   ///
   /// Must be an integer fraction of a day and at least 60s.
-  core.String windowPeriod;
+  core.String? windowPeriod;
 
   WindowsBasedSli();
 
@@ -9804,15 +9641,15 @@ class WindowsBasedSli {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (goodBadMetricFilter != null)
-          'goodBadMetricFilter': goodBadMetricFilter,
+          'goodBadMetricFilter': goodBadMetricFilter!,
         if (goodTotalRatioThreshold != null)
-          'goodTotalRatioThreshold': goodTotalRatioThreshold.toJson(),
+          'goodTotalRatioThreshold': goodTotalRatioThreshold!.toJson(),
         if (metricMeanInRange != null)
-          'metricMeanInRange': metricMeanInRange.toJson(),
+          'metricMeanInRange': metricMeanInRange!.toJson(),
         if (metricSumInRange != null)
-          'metricSumInRange': metricSumInRange.toJson(),
-        if (windowPeriod != null) 'windowPeriod': windowPeriod,
+          'metricSumInRange': metricSumInRange!.toJson(),
+        if (windowPeriod != null) 'windowPeriod': windowPeriod!,
       };
 }

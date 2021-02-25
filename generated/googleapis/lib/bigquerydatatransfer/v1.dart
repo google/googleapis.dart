@@ -125,13 +125,9 @@ class ProjectsDataSourcesResource {
   async.Future<CheckValidCredsResponse> checkValidCreds(
     CheckValidCredsRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -172,11 +168,8 @@ class ProjectsDataSourcesResource {
   /// this method will complete with the same error.
   async.Future<DataSource> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -222,13 +215,10 @@ class ProjectsDataSourcesResource {
   /// this method will complete with the same error.
   async.Future<ListDataSourcesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -278,11 +268,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -322,14 +309,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -387,13 +371,9 @@ class ProjectsLocationsDataSourcesResource {
   async.Future<CheckValidCredsResponse> checkValidCreds(
     CheckValidCredsRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -435,11 +415,8 @@ class ProjectsLocationsDataSourcesResource {
   /// this method will complete with the same error.
   async.Future<DataSource> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -485,13 +462,10 @@ class ProjectsLocationsDataSourcesResource {
   /// this method will complete with the same error.
   async.Future<ListDataSourcesResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -574,16 +548,12 @@ class ProjectsLocationsTransferConfigsResource {
   async.Future<TransferConfig> create(
     TransferConfig request,
     core.String parent, {
-    core.String authorizationCode,
-    core.String serviceAccountName,
-    core.String versionInfo,
-    core.String $fields,
+    core.String? authorizationCode,
+    core.String? serviceAccountName,
+    core.String? versionInfo,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (authorizationCode != null) 'authorizationCode': [authorizationCode],
       if (serviceAccountName != null)
@@ -629,11 +599,8 @@ class ProjectsLocationsTransferConfigsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -670,11 +637,8 @@ class ProjectsLocationsTransferConfigsResource {
   /// this method will complete with the same error.
   async.Future<TransferConfig> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -722,14 +686,11 @@ class ProjectsLocationsTransferConfigsResource {
   /// this method will complete with the same error.
   async.Future<ListTransferConfigsResponse> list(
     core.String parent, {
-    core.List<core.String> dataSourceIds,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.List<core.String>? dataSourceIds,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (dataSourceIds != null) 'dataSourceIds': dataSourceIds,
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -810,17 +771,13 @@ class ProjectsLocationsTransferConfigsResource {
   async.Future<TransferConfig> patch(
     TransferConfig request,
     core.String name, {
-    core.String authorizationCode,
-    core.String serviceAccountName,
-    core.String updateMask,
-    core.String versionInfo,
-    core.String $fields,
+    core.String? authorizationCode,
+    core.String? serviceAccountName,
+    core.String? updateMask,
+    core.String? versionInfo,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (authorizationCode != null) 'authorizationCode': [authorizationCode],
       if (serviceAccountName != null)
@@ -871,13 +828,9 @@ class ProjectsLocationsTransferConfigsResource {
   async.Future<ScheduleTransferRunsResponse> scheduleRuns(
     ScheduleTransferRunsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -926,13 +879,9 @@ class ProjectsLocationsTransferConfigsResource {
   async.Future<StartManualTransferRunsResponse> startManualRuns(
     StartManualTransferRunsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -984,11 +933,8 @@ class ProjectsLocationsTransferConfigsRunsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1026,11 +972,8 @@ class ProjectsLocationsTransferConfigsRunsResource {
   /// this method will complete with the same error.
   async.Future<TransferRun> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1085,15 +1028,12 @@ class ProjectsLocationsTransferConfigsRunsResource {
   /// this method will complete with the same error.
   async.Future<ListTransferRunsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String runAttempt,
-    core.List<core.String> states,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? runAttempt,
+    core.List<core.String>? states,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1155,14 +1095,11 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResource {
   /// this method will complete with the same error.
   async.Future<ListTransferLogsResponse> list(
     core.String parent, {
-    core.List<core.String> messageTypes,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.List<core.String>? messageTypes,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (messageTypes != null) 'messageTypes': messageTypes,
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1246,16 +1183,12 @@ class ProjectsTransferConfigsResource {
   async.Future<TransferConfig> create(
     TransferConfig request,
     core.String parent, {
-    core.String authorizationCode,
-    core.String serviceAccountName,
-    core.String versionInfo,
-    core.String $fields,
+    core.String? authorizationCode,
+    core.String? serviceAccountName,
+    core.String? versionInfo,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (authorizationCode != null) 'authorizationCode': [authorizationCode],
       if (serviceAccountName != null)
@@ -1300,11 +1233,8 @@ class ProjectsTransferConfigsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1340,11 +1270,8 @@ class ProjectsTransferConfigsResource {
   /// this method will complete with the same error.
   async.Future<TransferConfig> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1392,14 +1319,11 @@ class ProjectsTransferConfigsResource {
   /// this method will complete with the same error.
   async.Future<ListTransferConfigsResponse> list(
     core.String parent, {
-    core.List<core.String> dataSourceIds,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.List<core.String>? dataSourceIds,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (dataSourceIds != null) 'dataSourceIds': dataSourceIds,
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1479,17 +1403,13 @@ class ProjectsTransferConfigsResource {
   async.Future<TransferConfig> patch(
     TransferConfig request,
     core.String name, {
-    core.String authorizationCode,
-    core.String serviceAccountName,
-    core.String updateMask,
-    core.String versionInfo,
-    core.String $fields,
+    core.String? authorizationCode,
+    core.String? serviceAccountName,
+    core.String? updateMask,
+    core.String? versionInfo,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (authorizationCode != null) 'authorizationCode': [authorizationCode],
       if (serviceAccountName != null)
@@ -1539,13 +1459,9 @@ class ProjectsTransferConfigsResource {
   async.Future<ScheduleTransferRunsResponse> scheduleRuns(
     ScheduleTransferRunsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1593,13 +1509,9 @@ class ProjectsTransferConfigsResource {
   async.Future<StartManualTransferRunsResponse> startManualRuns(
     StartManualTransferRunsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1651,11 +1563,8 @@ class ProjectsTransferConfigsRunsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1693,11 +1602,8 @@ class ProjectsTransferConfigsRunsResource {
   /// this method will complete with the same error.
   async.Future<TransferRun> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1751,15 +1657,12 @@ class ProjectsTransferConfigsRunsResource {
   /// this method will complete with the same error.
   async.Future<ListTransferRunsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String runAttempt,
-    core.List<core.String> states,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? runAttempt,
+    core.List<core.String>? states,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1820,14 +1723,11 @@ class ProjectsTransferConfigsRunsTransferLogsResource {
   /// this method will complete with the same error.
   async.Future<ListTransferLogsResponse> list(
     core.String parent, {
-    core.List<core.String> messageTypes,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.List<core.String>? messageTypes,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (messageTypes != null) 'messageTypes': messageTypes,
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1863,13 +1763,13 @@ class CheckValidCredsRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A response indicating whether the credentials exist and are valid.
 class CheckValidCredsResponse {
   /// If set to `true`, the credentials exist and are valid.
-  core.bool hasValidCreds;
+  core.bool? hasValidCreds;
 
   CheckValidCredsResponse();
 
@@ -1879,8 +1779,8 @@ class CheckValidCredsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hasValidCreds != null) 'hasValidCreds': hasValidCreds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hasValidCreds != null) 'hasValidCreds': hasValidCreds!,
       };
 }
 
@@ -1900,10 +1800,10 @@ class DataSource {
   /// First Party OAuth doesn't require a refresh token to get an offline access
   /// token. Instead, it uses a client-signed JWT assertion to retrieve an
   /// access token.
-  core.String authorizationType;
+  core.String? authorizationType;
 
   /// Data source client id which should be used to receive refresh token.
-  core.String clientId;
+  core.String? clientId;
 
   /// Specifies whether the data source supports automatic data refresh for the
   /// past few days, and how it's supported.
@@ -1919,61 +1819,61 @@ class DataSource {
   /// - "CUSTOM_SLIDING_WINDOW" : The data source supports data auto refresh,
   /// and runs will be scheduled for the past few days. Allows custom values to
   /// be set for each transfer config.
-  core.String dataRefreshType;
+  core.String? dataRefreshType;
 
   /// Data source id.
-  core.String dataSourceId;
+  core.String? dataSourceId;
 
   /// Default data refresh window on days.
   ///
   /// Only meaningful when `data_refresh_type` = `SLIDING_WINDOW`.
-  core.int defaultDataRefreshWindowDays;
+  core.int? defaultDataRefreshWindowDays;
 
   /// Default data transfer schedule.
   ///
   /// Examples of valid schedules include: `1st,3rd monday of month 15:30`,
   /// `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`.
-  core.String defaultSchedule;
+  core.String? defaultSchedule;
 
   /// User friendly data source description string.
-  core.String description;
+  core.String? description;
 
   /// User friendly data source name.
-  core.String displayName;
+  core.String? displayName;
 
   /// Url for the help document for this data source.
-  core.String helpUrl;
+  core.String? helpUrl;
 
   /// Disables backfilling and manual run scheduling for the data source.
-  core.bool manualRunsDisabled;
+  core.bool? manualRunsDisabled;
 
   /// The minimum interval for scheduler to schedule runs.
-  core.String minimumScheduleInterval;
+  core.String? minimumScheduleInterval;
 
   /// Data source resource name.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Data source parameters.
-  core.List<DataSourceParameter> parameters;
+  core.List<DataSourceParameter>? parameters;
 
   /// Api auth scopes for which refresh token needs to be obtained.
   ///
   /// These are scopes needed by a data source to prepare data and ingest them
   /// into BigQuery, e.g., https://www.googleapis.com/auth/bigquery
-  core.List<core.String> scopes;
+  core.List<core.String>? scopes;
 
   /// Specifies whether the data source supports a user defined schedule, or
   /// operates on the default schedule.
   ///
   /// When set to `true`, user can override default schedule.
-  core.bool supportsCustomSchedule;
+  core.bool? supportsCustomSchedule;
 
   /// This field has no effect.
   ///
   /// Deprecated.
-  core.bool supportsMultipleTransfers;
+  core.bool? supportsMultipleTransfers;
 
   /// This field has no effect.
   ///
@@ -1984,11 +1884,11 @@ class DataSource {
   /// - "BATCH" : Batch data transfer.
   /// - "STREAMING" : Streaming data transfer. Streaming data source currently
   /// doesn't support multiple transfer configs per project.
-  core.String transferType;
+  core.String? transferType;
 
   /// The number of seconds to wait for an update from the data source before
   /// the Data Transfer Service marks the transfer as FAILED.
-  core.int updateDeadlineSeconds;
+  core.int? updateDeadlineSeconds;
 
   DataSource();
 
@@ -2056,32 +1956,32 @@ class DataSource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (authorizationType != null) 'authorizationType': authorizationType,
-        if (clientId != null) 'clientId': clientId,
-        if (dataRefreshType != null) 'dataRefreshType': dataRefreshType,
-        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (authorizationType != null) 'authorizationType': authorizationType!,
+        if (clientId != null) 'clientId': clientId!,
+        if (dataRefreshType != null) 'dataRefreshType': dataRefreshType!,
+        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
         if (defaultDataRefreshWindowDays != null)
-          'defaultDataRefreshWindowDays': defaultDataRefreshWindowDays,
-        if (defaultSchedule != null) 'defaultSchedule': defaultSchedule,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
-        if (helpUrl != null) 'helpUrl': helpUrl,
+          'defaultDataRefreshWindowDays': defaultDataRefreshWindowDays!,
+        if (defaultSchedule != null) 'defaultSchedule': defaultSchedule!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (helpUrl != null) 'helpUrl': helpUrl!,
         if (manualRunsDisabled != null)
-          'manualRunsDisabled': manualRunsDisabled,
+          'manualRunsDisabled': manualRunsDisabled!,
         if (minimumScheduleInterval != null)
-          'minimumScheduleInterval': minimumScheduleInterval,
-        if (name != null) 'name': name,
+          'minimumScheduleInterval': minimumScheduleInterval!,
+        if (name != null) 'name': name!,
         if (parameters != null)
-          'parameters': parameters.map((value) => value.toJson()).toList(),
-        if (scopes != null) 'scopes': scopes,
+          'parameters': parameters!.map((value) => value.toJson()).toList(),
+        if (scopes != null) 'scopes': scopes!,
         if (supportsCustomSchedule != null)
-          'supportsCustomSchedule': supportsCustomSchedule,
+          'supportsCustomSchedule': supportsCustomSchedule!,
         if (supportsMultipleTransfers != null)
-          'supportsMultipleTransfers': supportsMultipleTransfers,
-        if (transferType != null) 'transferType': transferType,
+          'supportsMultipleTransfers': supportsMultipleTransfers!,
+        if (transferType != null) 'transferType': transferType!,
         if (updateDeadlineSeconds != null)
-          'updateDeadlineSeconds': updateDeadlineSeconds,
+          'updateDeadlineSeconds': updateDeadlineSeconds!,
       };
 }
 
@@ -2094,47 +1994,47 @@ class DataSource {
 /// forms.
 class DataSourceParameter {
   /// All possible values for the parameter.
-  core.List<core.String> allowedValues;
+  core.List<core.String>? allowedValues;
 
   /// If true, it should not be used in new transfers, and it should not be
   /// visible to users.
-  core.bool deprecated;
+  core.bool? deprecated;
 
   /// Parameter description.
-  core.String description;
+  core.String? description;
 
   /// Parameter display name in the user interface.
-  core.String displayName;
+  core.String? displayName;
 
   /// This field has no effect.
   ///
   /// Deprecated.
-  core.List<DataSourceParameter> fields;
+  core.List<DataSourceParameter>? fields;
 
   /// Cannot be changed after initial creation.
-  core.bool immutable;
+  core.bool? immutable;
 
   /// For integer and double values specifies maxminum allowed value.
-  core.double maxValue;
+  core.double? maxValue;
 
   /// For integer and double values specifies minimum allowed value.
-  core.double minValue;
+  core.double? minValue;
 
   /// Parameter identifier.
-  core.String paramId;
+  core.String? paramId;
 
   /// This field has no effect.
   ///
   /// Deprecated.
-  core.bool recurse;
+  core.bool? recurse;
 
   /// This field has no effect.
   ///
   /// Deprecated.
-  core.bool repeated;
+  core.bool? repeated;
 
   /// Is parameter required.
-  core.bool required;
+  core.bool? required;
 
   /// Parameter type.
   /// Possible string values are:
@@ -2146,17 +2046,17 @@ class DataSourceParameter {
   /// - "BOOLEAN" : Boolean parameter.
   /// - "RECORD" : Deprecated. This field has no effect.
   /// - "PLUS_PAGE" : Page ID for a Google+ Page.
-  core.String type;
+  core.String? type;
 
   /// Description of the requirements for this field, in case the user input
   /// does not fulfill the regex pattern or min/max values.
-  core.String validationDescription;
+  core.String? validationDescription;
 
   /// URL to a help document to further explain the naming requirements.
-  core.String validationHelpUrl;
+  core.String? validationHelpUrl;
 
   /// Regular expression which can be used for parameter validation.
-  core.String validationRegex;
+  core.String? validationRegex;
 
   DataSourceParameter();
 
@@ -2216,25 +2116,25 @@ class DataSourceParameter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allowedValues != null) 'allowedValues': allowedValues,
-        if (deprecated != null) 'deprecated': deprecated,
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allowedValues != null) 'allowedValues': allowedValues!,
+        if (deprecated != null) 'deprecated': deprecated!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (fields != null)
-          'fields': fields.map((value) => value.toJson()).toList(),
-        if (immutable != null) 'immutable': immutable,
-        if (maxValue != null) 'maxValue': maxValue,
-        if (minValue != null) 'minValue': minValue,
-        if (paramId != null) 'paramId': paramId,
-        if (recurse != null) 'recurse': recurse,
-        if (repeated != null) 'repeated': repeated,
-        if (required != null) 'required': required,
-        if (type != null) 'type': type,
+          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (immutable != null) 'immutable': immutable!,
+        if (maxValue != null) 'maxValue': maxValue!,
+        if (minValue != null) 'minValue': minValue!,
+        if (paramId != null) 'paramId': paramId!,
+        if (recurse != null) 'recurse': recurse!,
+        if (repeated != null) 'repeated': repeated!,
+        if (required != null) 'required': required!,
+        if (type != null) 'type': type!,
         if (validationDescription != null)
-          'validationDescription': validationDescription,
-        if (validationHelpUrl != null) 'validationHelpUrl': validationHelpUrl,
-        if (validationRegex != null) 'validationRegex': validationRegex,
+          'validationDescription': validationDescription!,
+        if (validationHelpUrl != null) 'validationHelpUrl': validationHelpUrl!,
+        if (validationRegex != null) 'validationRegex': validationRegex!,
       };
 }
 
@@ -2242,7 +2142,7 @@ class DataSourceParameter {
 /// events.
 class EmailPreferences {
   /// If true, email notifications will be sent on transfer run failures.
-  core.bool enableFailureEmail;
+  core.bool? enableFailureEmail;
 
   EmailPreferences();
 
@@ -2252,9 +2152,9 @@ class EmailPreferences {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (enableFailureEmail != null)
-          'enableFailureEmail': enableFailureEmail,
+          'enableFailureEmail': enableFailureEmail!,
       };
 }
 
@@ -2272,13 +2172,13 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Returns list of supported data sources and their metadata.
 class ListDataSourcesResponse {
   /// List of supported data sources and their transfer settings.
-  core.List<DataSource> dataSources;
+  core.List<DataSource>? dataSources;
 
   /// The next-pagination token.
   ///
@@ -2287,7 +2187,7 @@ class ListDataSourcesResponse {
   /// results.
   ///
   /// Output only.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListDataSourcesResponse();
 
@@ -2303,20 +2203,20 @@ class ListDataSourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataSources != null)
-          'dataSources': dataSources.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'dataSources': dataSources!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -2332,10 +2232,10 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2348,12 +2248,12 @@ class ListTransferConfigsResponse {
   /// results.
   ///
   /// Output only.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The stored pipeline transfer configurations.
   ///
   /// Output only.
-  core.List<TransferConfig> transferConfigs;
+  core.List<TransferConfig>? transferConfigs;
 
   ListTransferConfigsResponse();
 
@@ -2369,11 +2269,11 @@ class ListTransferConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (transferConfigs != null)
           'transferConfigs':
-              transferConfigs.map((value) => value.toJson()).toList(),
+              transferConfigs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2386,12 +2286,12 @@ class ListTransferLogsResponse {
   /// results.
   ///
   /// Output only.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The stored pipeline transfer messages.
   ///
   /// Output only.
-  core.List<TransferMessage> transferMessages;
+  core.List<TransferMessage>? transferMessages;
 
   ListTransferLogsResponse();
 
@@ -2407,11 +2307,11 @@ class ListTransferLogsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (transferMessages != null)
           'transferMessages':
-              transferMessages.map((value) => value.toJson()).toList(),
+              transferMessages!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2424,12 +2324,12 @@ class ListTransferRunsResponse {
   /// results.
   ///
   /// Output only.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// The stored pipeline transfer runs.
   ///
   /// Output only.
-  core.List<TransferRun> transferRuns;
+  core.List<TransferRun>? transferRuns;
 
   ListTransferRunsResponse();
 
@@ -2445,10 +2345,10 @@ class ListTransferRunsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (transferRuns != null)
-          'transferRuns': transferRuns.map((value) => value.toJson()).toList(),
+          'transferRuns': transferRuns!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2457,17 +2357,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -2475,12 +2375,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -2514,12 +2414,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2531,14 +2431,14 @@ class ScheduleOptions {
   /// The runs can be started on ad-hoc basis using StartManualTransferRuns API.
   /// When automatic scheduling is disabled, the TransferConfig.schedule field
   /// will be ignored.
-  core.bool disableAutoScheduling;
+  core.bool? disableAutoScheduling;
 
   /// Defines time to stop scheduling transfer runs.
   ///
   /// A transfer run cannot be scheduled at or after the end time. The end time
   /// can be changed at any moment. The time when a data transfer can be
   /// trigerred manually is not limited by this option.
-  core.String endTime;
+  core.String? endTime;
 
   /// Specifies time to start scheduling transfer runs.
   ///
@@ -2546,7 +2446,7 @@ class ScheduleOptions {
   /// recurrence pattern defined in the schedule string. The start time can be
   /// changed at any moment. The time when a data transfer can be trigerred
   /// manually is not limited by this option.
-  core.String startTime;
+  core.String? startTime;
 
   ScheduleOptions();
 
@@ -2562,11 +2462,11 @@ class ScheduleOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (disableAutoScheduling != null)
-          'disableAutoScheduling': disableAutoScheduling,
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
+          'disableAutoScheduling': disableAutoScheduling!,
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -2577,14 +2477,14 @@ class ScheduleTransferRunsRequest {
   /// For example, `"2017-05-30T00:00:00+00:00"`.
   ///
   /// Required.
-  core.String endTime;
+  core.String? endTime;
 
   /// Start time of the range of transfer runs.
   ///
   /// For example, `"2017-05-25T00:00:00+00:00"`.
   ///
   /// Required.
-  core.String startTime;
+  core.String? startTime;
 
   ScheduleTransferRunsRequest();
 
@@ -2597,16 +2497,16 @@ class ScheduleTransferRunsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
 /// A response to schedule transfer runs for a time range.
 class ScheduleTransferRunsResponse {
   /// The transfer runs that were scheduled.
-  core.List<TransferRun> runs;
+  core.List<TransferRun>? runs;
 
   ScheduleTransferRunsResponse();
 
@@ -2619,8 +2519,8 @@ class ScheduleTransferRunsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (runs != null) 'runs': runs.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (runs != null) 'runs': runs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2629,10 +2529,10 @@ class StartManualTransferRunsRequest {
   /// Specific run_time for a transfer run to be started.
   ///
   /// The requested_run_time must not be in the future.
-  core.String requestedRunTime;
+  core.String? requestedRunTime;
 
   /// Time range for the transfer runs that should be started.
-  TimeRange requestedTimeRange;
+  TimeRange? requestedTimeRange;
 
   StartManualTransferRunsRequest();
 
@@ -2646,17 +2546,17 @@ class StartManualTransferRunsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (requestedRunTime != null) 'requestedRunTime': requestedRunTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (requestedRunTime != null) 'requestedRunTime': requestedRunTime!,
         if (requestedTimeRange != null)
-          'requestedTimeRange': requestedTimeRange.toJson(),
+          'requestedTimeRange': requestedTimeRange!.toJson(),
       };
 }
 
 /// A response to start manual transfer runs.
 class StartManualTransferRunsResponse {
   /// The transfer runs that were created.
-  core.List<TransferRun> runs;
+  core.List<TransferRun>? runs;
 
   StartManualTransferRunsResponse();
 
@@ -2669,8 +2569,8 @@ class StartManualTransferRunsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (runs != null) 'runs': runs.map((value) => value.toJson()).toList(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (runs != null) 'runs': runs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2683,7 +2583,7 @@ class StartManualTransferRunsResponse {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -2691,13 +2591,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -2721,10 +2621,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -2736,14 +2636,14 @@ class TimeRange {
   /// For example, `"2017-05-30T00:00:00+00:00"`. The end_time must not be in
   /// the future. Creates transfer runs where run_time is in the range between
   /// start_time (inclusive) and end_time (exclusive).
-  core.String endTime;
+  core.String? endTime;
 
   /// Start time of the range of transfer runs.
   ///
   /// For example, `"2017-05-25T00:00:00+00:00"`. The start_time must be
   /// strictly less than the end_time. Creates transfer runs where run_time is
   /// in the range between start_time (inclusive) and end_time (exclusive).
-  core.String startTime;
+  core.String? startTime;
 
   TimeRange();
 
@@ -2756,9 +2656,9 @@ class TimeRange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (startTime != null) 'startTime': startTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -2776,32 +2676,32 @@ class TransferConfig {
   /// reingests data for \[today-10, today-1\], rather than ingesting data for
   /// just \[today-1\]. Only valid if the data source supports the feature. Set
   /// the value to 0 to use the default value.
-  core.int dataRefreshWindowDays;
+  core.int? dataRefreshWindowDays;
 
   /// Data source id.
   ///
   /// Cannot be changed once data transfer is created.
-  core.String dataSourceId;
+  core.String? dataSourceId;
 
   /// Region in which BigQuery dataset is located.
   ///
   /// Output only.
-  core.String datasetRegion;
+  core.String? datasetRegion;
 
   /// The BigQuery target dataset id.
-  core.String destinationDatasetId;
+  core.String? destinationDatasetId;
 
   /// Is this config disabled.
   ///
   /// When set to true, no runs are scheduled for a given transfer.
-  core.bool disabled;
+  core.bool? disabled;
 
   /// User specified display name for the data transfer.
-  core.String displayName;
+  core.String? displayName;
 
   /// Email notifications will be sent according to these preferences to the
   /// email address of the user who owns this transfer config.
-  EmailPreferences emailPreferences;
+  EmailPreferences? emailPreferences;
 
   /// The resource name of the transfer config.
   ///
@@ -2809,22 +2709,22 @@ class TransferConfig {
   /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
   /// Where `config_id` is usually a uuid, even though it is not guaranteed or
   /// required. The name is ignored when creating a transfer config.
-  core.String name;
+  core.String? name;
 
   /// Next time when data transfer will run.
   ///
   /// Output only.
-  core.String nextRunTime;
+  core.String? nextRunTime;
 
   /// Pub/Sub topic where notifications will be sent after transfer runs
   /// associated with this transfer config finish.
-  core.String notificationPubsubTopic;
+  core.String? notificationPubsubTopic;
 
   /// Data transfer specific parameters.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> params;
+  core.Map<core.String, core.Object>? params;
 
   /// Data transfer schedule.
   ///
@@ -2835,10 +2735,10 @@ class TransferConfig {
   /// quarter 00:00`. See more explanation about the format here:
   /// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
   /// NOTE: the granularity should be at least 8 hours, or less frequent.
-  core.String schedule;
+  core.String? schedule;
 
   /// Options customizing the data transfer schedule.
-  ScheduleOptions scheduleOptions;
+  ScheduleOptions? scheduleOptions;
 
   /// State of the most recently updated transfer run.
   ///
@@ -2851,19 +2751,19 @@ class TransferConfig {
   /// - "SUCCEEDED" : Data transfer completed successfully (4).
   /// - "FAILED" : Data transfer failed (5).
   /// - "CANCELLED" : Data transfer is cancelled (6).
-  core.String state;
+  core.String? state;
 
   /// Data transfer modification time.
   ///
   /// Ignored by server on input.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// Unique ID of the user on whose behalf transfer is done.
   ///
   /// Deprecated.
-  core.String userId;
+  core.String? userId;
 
   TransferConfig();
 
@@ -2926,38 +2826,38 @@ class TransferConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (dataRefreshWindowDays != null)
-          'dataRefreshWindowDays': dataRefreshWindowDays,
-        if (dataSourceId != null) 'dataSourceId': dataSourceId,
-        if (datasetRegion != null) 'datasetRegion': datasetRegion,
+          'dataRefreshWindowDays': dataRefreshWindowDays!,
+        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+        if (datasetRegion != null) 'datasetRegion': datasetRegion!,
         if (destinationDatasetId != null)
-          'destinationDatasetId': destinationDatasetId,
-        if (disabled != null) 'disabled': disabled,
-        if (displayName != null) 'displayName': displayName,
+          'destinationDatasetId': destinationDatasetId!,
+        if (disabled != null) 'disabled': disabled!,
+        if (displayName != null) 'displayName': displayName!,
         if (emailPreferences != null)
-          'emailPreferences': emailPreferences.toJson(),
-        if (name != null) 'name': name,
-        if (nextRunTime != null) 'nextRunTime': nextRunTime,
+          'emailPreferences': emailPreferences!.toJson(),
+        if (name != null) 'name': name!,
+        if (nextRunTime != null) 'nextRunTime': nextRunTime!,
         if (notificationPubsubTopic != null)
-          'notificationPubsubTopic': notificationPubsubTopic,
-        if (params != null) 'params': params,
-        if (schedule != null) 'schedule': schedule,
+          'notificationPubsubTopic': notificationPubsubTopic!,
+        if (params != null) 'params': params!,
+        if (schedule != null) 'schedule': schedule!,
         if (scheduleOptions != null)
-          'scheduleOptions': scheduleOptions.toJson(),
-        if (state != null) 'state': state,
-        if (updateTime != null) 'updateTime': updateTime,
-        if (userId != null) 'userId': userId,
+          'scheduleOptions': scheduleOptions!.toJson(),
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (userId != null) 'userId': userId!,
       };
 }
 
 /// Represents a user facing message for a particular data transfer run.
 class TransferMessage {
   /// Message text.
-  core.String messageText;
+  core.String? messageText;
 
   /// Time when message was logged.
-  core.String messageTime;
+  core.String? messageTime;
 
   /// Message severity.
   /// Possible string values are:
@@ -2965,7 +2865,7 @@ class TransferMessage {
   /// - "INFO" : Informational message.
   /// - "WARNING" : Warning message.
   /// - "ERROR" : Error message.
-  core.String severity;
+  core.String? severity;
 
   TransferMessage();
 
@@ -2981,10 +2881,10 @@ class TransferMessage {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (messageText != null) 'messageText': messageText,
-        if (messageTime != null) 'messageTime': messageTime,
-        if (severity != null) 'severity': severity,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (messageText != null) 'messageText': messageText!,
+        if (messageTime != null) 'messageTime': messageTime!,
+        if (severity != null) 'severity': severity!,
       };
 }
 
@@ -2993,42 +2893,42 @@ class TransferRun {
   /// Data source id.
   ///
   /// Output only.
-  core.String dataSourceId;
+  core.String? dataSourceId;
 
   /// The BigQuery target dataset id.
   ///
   /// Output only.
-  core.String destinationDatasetId;
+  core.String? destinationDatasetId;
 
   /// Email notifications will be sent according to these preferences to the
   /// email address of the user who owns the transfer config this run was
   /// derived from.
   ///
   /// Output only.
-  EmailPreferences emailPreferences;
+  EmailPreferences? emailPreferences;
 
   /// Time when transfer run ended.
   ///
   /// Parameter ignored by server for input requests.
   ///
   /// Output only.
-  core.String endTime;
+  core.String? endTime;
 
   /// Status of the transfer run.
-  Status errorStatus;
+  Status? errorStatus;
 
   /// The resource name of the transfer run.
   ///
   /// Transfer run names have the form
   /// `projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`.
   /// The name is ignored when creating a transfer run.
-  core.String name;
+  core.String? name;
 
   /// Pub/Sub topic where a notification will be sent after this transfer run
   /// finishes
   ///
   /// Output only.
-  core.String notificationPubsubTopic;
+  core.String? notificationPubsubTopic;
 
   /// Data transfer specific parameters.
   ///
@@ -3036,11 +2936,11 @@ class TransferRun {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> params;
+  core.Map<core.String, core.Object>? params;
 
   /// For batch transfer runs, specifies the date and time of the data should be
   /// ingested.
-  core.String runTime;
+  core.String? runTime;
 
   /// Describes the schedule of this transfer run if it was created as part of a
   /// regular schedule.
@@ -3050,17 +2950,17 @@ class TransferRun {
   /// load, so `schedule_time` doesn't always match this.
   ///
   /// Output only.
-  core.String schedule;
+  core.String? schedule;
 
   /// Minimum time after which a transfer run can be started.
-  core.String scheduleTime;
+  core.String? scheduleTime;
 
   /// Time when transfer run was started.
   ///
   /// Parameter ignored by server for input requests.
   ///
   /// Output only.
-  core.String startTime;
+  core.String? startTime;
 
   /// Data transfer run state.
   ///
@@ -3073,17 +2973,17 @@ class TransferRun {
   /// - "SUCCEEDED" : Data transfer completed successfully (4).
   /// - "FAILED" : Data transfer failed (5).
   /// - "CANCELLED" : Data transfer is cancelled (6).
-  core.String state;
+  core.String? state;
 
   /// Last time the data transfer run state was updated.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// Unique ID of the user on whose behalf transfer is done.
   ///
   /// Deprecated.
-  core.String userId;
+  core.String? userId;
 
   TransferRun();
 
@@ -3143,24 +3043,24 @@ class TransferRun {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dataSourceId != null) 'dataSourceId': dataSourceId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
         if (destinationDatasetId != null)
-          'destinationDatasetId': destinationDatasetId,
+          'destinationDatasetId': destinationDatasetId!,
         if (emailPreferences != null)
-          'emailPreferences': emailPreferences.toJson(),
-        if (endTime != null) 'endTime': endTime,
-        if (errorStatus != null) 'errorStatus': errorStatus.toJson(),
-        if (name != null) 'name': name,
+          'emailPreferences': emailPreferences!.toJson(),
+        if (endTime != null) 'endTime': endTime!,
+        if (errorStatus != null) 'errorStatus': errorStatus!.toJson(),
+        if (name != null) 'name': name!,
         if (notificationPubsubTopic != null)
-          'notificationPubsubTopic': notificationPubsubTopic,
-        if (params != null) 'params': params,
-        if (runTime != null) 'runTime': runTime,
-        if (schedule != null) 'schedule': schedule,
-        if (scheduleTime != null) 'scheduleTime': scheduleTime,
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
-        if (updateTime != null) 'updateTime': updateTime,
-        if (userId != null) 'userId': userId,
+          'notificationPubsubTopic': notificationPubsubTopic!,
+        if (params != null) 'params': params!,
+        if (runTime != null) 'runTime': runTime!,
+        if (schedule != null) 'schedule': schedule!,
+        if (scheduleTime != null) 'scheduleTime': scheduleTime!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (userId != null) 'userId': userId!,
       };
 }

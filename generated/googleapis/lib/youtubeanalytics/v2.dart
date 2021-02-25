@@ -108,9 +108,9 @@ class GroupItemsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EmptyResponse> delete({
-    core.String id,
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? id,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (id != null) 'id': [id],
@@ -159,11 +159,10 @@ class GroupItemsResource {
   /// this method will complete with the same error.
   async.Future<GroupItem> insert(
     GroupItem request, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
@@ -210,9 +209,9 @@ class GroupItemsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupItemsResponse> list({
-    core.String groupId,
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? groupId,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (groupId != null) 'groupId': [groupId],
@@ -267,9 +266,9 @@ class GroupsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EmptyResponse> delete({
-    core.String id,
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? id,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (id != null) 'id': [id],
@@ -318,11 +317,10 @@ class GroupsResource {
   /// this method will complete with the same error.
   async.Future<Group> insert(
     Group request, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
@@ -384,11 +382,11 @@ class GroupsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list({
-    core.String id,
-    core.bool mine,
-    core.String onBehalfOfContentOwner,
-    core.String pageToken,
-    core.String $fields,
+    core.String? id,
+    core.bool? mine,
+    core.String? onBehalfOfContentOwner,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (id != null) 'id': [id],
@@ -441,11 +439,10 @@ class GroupsResource {
   /// this method will complete with the same error.
   async.Future<Group> update(
     Group request, {
-    core.String onBehalfOfContentOwner,
-    core.String $fields,
+    core.String? onBehalfOfContentOwner,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (onBehalfOfContentOwner != null)
         'onBehalfOfContentOwner': [onBehalfOfContentOwner],
@@ -546,18 +543,18 @@ class ReportsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<QueryResponse> query({
-    core.String currency,
-    core.String dimensions,
-    core.String endDate,
-    core.String filters,
-    core.String ids,
-    core.bool includeHistoricalChannelData,
-    core.int maxResults,
-    core.String metrics,
-    core.String sort,
-    core.String startDate,
-    core.int startIndex,
-    core.String $fields,
+    core.String? currency,
+    core.String? dimensions,
+    core.String? endDate,
+    core.String? filters,
+    core.String? ids,
+    core.bool? includeHistoricalChannelData,
+    core.int? maxResults,
+    core.String? metrics,
+    core.String? sort,
+    core.String? startDate,
+    core.int? startIndex,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (currency != null) 'currency': [currency],
@@ -590,7 +587,7 @@ class ReportsResource {
 /// Empty response.
 class EmptyResponse {
   /// Apiary error details
-  Errors errors;
+  Errors? errors;
 
   EmptyResponse();
 
@@ -601,8 +598,8 @@ class EmptyResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errors != null) 'errors': errors.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errors != null) 'errors': errors!.toJson(),
       };
 }
 
@@ -612,22 +609,22 @@ class ErrorProto {
   /// given the error domain and code.
   ///
   /// Different error codes require different arguments.
-  core.List<core.String> argument;
+  core.List<core.String>? argument;
 
   /// Error code in the error domain.
   ///
   /// This should correspond to a value of the enum type whose name is in
   /// domain. See the core error domain in error_domain.proto.
-  core.String code;
+  core.String? code;
 
   /// Debugging information, which should not be shared externally.
-  core.String debugInfo;
+  core.String? debugInfo;
 
   /// Error domain.
   ///
   /// RoSy services can define their own domain and error codes. This should
   /// normally be the name of an enum type, such as: gdata.CoreErrorDomain
-  core.String domain;
+  core.String? domain;
 
   /// A short explanation for the error, which can be shared outside Google.
   ///
@@ -637,7 +634,7 @@ class ErrorProto {
   /// refer to information and concepts that are not available externally and
   /// should not be exposed. It is safer if external APIs can understand the
   /// errors and decide what the error message should look like.
-  core.String externalErrorMessage;
+  core.String? externalErrorMessage;
 
   /// Location of the error, as specified by the location type.
   ///
@@ -645,7 +642,7 @@ class ErrorProto {
   /// to the request, using FieldPath notation
   /// (net/proto2/util/public/field_path.h). Examples:
   /// authenticated_user.gaia_id resource.address\[2\].country
-  core.String location;
+  core.String? location;
 
   ///
   /// Possible string values are:
@@ -654,7 +651,7 @@ class ErrorProto {
   /// - "OTHER" : other location type which can safely be shared externally.
   /// - "PARAMETER" : Location is request paramater. This maps to the {@link
   /// PARAMETERS} in {@link MessageLocation}.
-  core.String locationType;
+  core.String? locationType;
 
   ErrorProto();
 
@@ -684,15 +681,15 @@ class ErrorProto {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (argument != null) 'argument': argument,
-        if (code != null) 'code': code,
-        if (debugInfo != null) 'debugInfo': debugInfo,
-        if (domain != null) 'domain': domain,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (argument != null) 'argument': argument!,
+        if (code != null) 'code': code!,
+        if (debugInfo != null) 'debugInfo': debugInfo!,
+        if (domain != null) 'domain': domain!,
         if (externalErrorMessage != null)
-          'externalErrorMessage': externalErrorMessage,
-        if (location != null) 'location': location,
-        if (locationType != null) 'locationType': locationType,
+          'externalErrorMessage': externalErrorMessage!,
+        if (location != null) 'location': location!,
+        if (locationType != null) 'locationType': locationType!,
       };
 }
 
@@ -713,14 +710,14 @@ class Errors {
   /// - "PRECONDITION_FAILED"
   /// - "INTERNAL_ERROR"
   /// - "SERVICE_UNAVAILABLE"
-  core.String code;
+  core.String? code;
 
   /// Specific error description and codes
-  core.List<ErrorProto> error;
+  core.List<ErrorProto>? error;
 
   /// Request identifier generated by the service, which can be used to identify
   /// the error in the logs
-  core.String requestId;
+  core.String? requestId;
 
   Errors();
 
@@ -739,11 +736,11 @@ class Errors {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
         if (error != null)
-          'error': error.map((value) => value.toJson()).toList(),
-        if (requestId != null) 'requestId': requestId,
+          'error': error!.map((value) => value.toJson()).toList(),
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -751,25 +748,25 @@ class Errors {
 class Group {
   /// The `contentDetails` object contains additional information about the
   /// group, such as the number and type of items that it contains.
-  GroupContentDetails contentDetails;
+  GroupContentDetails? contentDetails;
 
   /// Apiary error details
-  Errors errors;
+  Errors? errors;
 
   /// The Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube uses to uniquely identify the group.
-  core.String id;
+  core.String? id;
 
   /// Identifies the API resource's type.
   ///
   /// The value will be `youtube#group`.
-  core.String kind;
+  core.String? kind;
 
   /// The `snippet` object contains basic information about the group, including
   /// its creation date and name.
-  GroupSnippet snippet;
+  GroupSnippet? snippet;
 
   Group();
 
@@ -797,26 +794,26 @@ class Group {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (contentDetails != null) 'contentDetails': contentDetails.toJson(),
-        if (errors != null) 'errors': errors.toJson(),
-        if (etag != null) 'etag': etag,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (snippet != null) 'snippet': snippet.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
+        if (errors != null) 'errors': errors!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (snippet != null) 'snippet': snippet!.toJson(),
       };
 }
 
 /// A group's content details.
 class GroupContentDetails {
   /// The number of items in the group.
-  core.String itemCount;
+  core.String? itemCount;
 
   /// The type of resources that the group contains.
   ///
   /// Valid values for this property are: * `youtube#channel` *
   /// `youtube#playlist` * `youtube#video` * `youtubePartner#asset`
-  core.String itemType;
+  core.String? itemType;
 
   GroupContentDetails();
 
@@ -829,23 +826,23 @@ class GroupContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (itemCount != null) 'itemCount': itemCount,
-        if (itemType != null) 'itemType': itemType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (itemCount != null) 'itemCount': itemCount!,
+        if (itemType != null) 'itemType': itemType!,
       };
 }
 
 /// A group item.
 class GroupItem {
   /// Apiary error details
-  Errors errors;
+  Errors? errors;
 
   /// The Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// The ID that YouTube uses to uniquely identify the group that contains the
   /// item.
-  core.String groupId;
+  core.String? groupId;
 
   /// The ID that YouTube uses to uniquely identify the `channel`, `video`,
   /// `playlist`, or `asset` resource that is included in the group.
@@ -855,16 +852,16 @@ class GroupItem {
   /// playlist ID, or asset ID that uniquely identifies the resource itself. The
   /// `resource.id` property's value specifies the unique channel, video,
   /// playlist, or asset ID.
-  core.String id;
+  core.String? id;
 
   /// Identifies the API resource's type.
   ///
   /// The value will be `youtube#groupItem`.
-  core.String kind;
+  core.String? kind;
 
   /// The `resource` object contains information that identifies the item being
   /// added to the group.
-  GroupItemResource resource;
+  GroupItemResource? resource;
 
   GroupItem();
 
@@ -891,26 +888,26 @@ class GroupItem {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errors != null) 'errors': errors.toJson(),
-        if (etag != null) 'etag': etag,
-        if (groupId != null) 'groupId': groupId,
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
-        if (resource != null) 'resource': resource.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errors != null) 'errors': errors!.toJson(),
+        if (etag != null) 'etag': etag!,
+        if (groupId != null) 'groupId': groupId!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (resource != null) 'resource': resource!.toJson(),
       };
 }
 
 class GroupItemResource {
   /// The channel, video, playlist, or asset ID that YouTube uses to uniquely
   /// identify the item that is being added to the group.
-  core.String id;
+  core.String? id;
 
   /// Identifies the type of resource being added to the group.
   ///
   /// Valid values for this property are: * `youtube#channel` *
   /// `youtube#playlist` * `youtube#video` * `youtubePartner#asset`
-  core.String kind;
+  core.String? kind;
 
   GroupItemResource();
 
@@ -923,9 +920,9 @@ class GroupItemResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (id != null) 'id': id,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -934,12 +931,12 @@ class GroupSnippet {
   /// The date and time that the group was created.
   ///
   /// The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
-  core.String publishedAt;
+  core.String? publishedAt;
 
   /// The group name.
   ///
   /// The value must be a non-empty string.
-  core.String title;
+  core.String? title;
 
   GroupSnippet();
 
@@ -952,29 +949,29 @@ class GroupSnippet {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (publishedAt != null) 'publishedAt': publishedAt,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (publishedAt != null) 'publishedAt': publishedAt!,
+        if (title != null) 'title': title!,
       };
 }
 
 /// Response message for GroupsService.ListGroupItems.
 class ListGroupItemsResponse {
   /// Apiary error details
-  Errors errors;
+  Errors? errors;
 
   /// The Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// A list of groups that match the API request parameters.
   ///
   /// Each item in the list represents a `groupItem` resource.
-  core.List<GroupItem> items;
+  core.List<GroupItem>? items;
 
   /// Identifies the API resource's type.
   ///
   /// The value will be `youtube#groupItemListResponse`.
-  core.String kind;
+  core.String? kind;
 
   ListGroupItemsResponse();
 
@@ -997,36 +994,36 @@ class ListGroupItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errors != null) 'errors': errors.toJson(),
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errors != null) 'errors': errors!.toJson(),
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// Response message for GroupsService.ListGroups.
 class ListGroupsResponse {
   /// Apiary error details
-  Errors errors;
+  Errors? errors;
 
   /// The Etag of this resource.
-  core.String etag;
+  core.String? etag;
 
   /// A list of groups that match the API request parameters.
   ///
   /// Each item in the list represents a `group` resource.
-  core.List<Group> items;
+  core.List<Group>? items;
 
   /// Identifies the API resource's type.
   ///
   /// The value will be `youtube#groupListResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// The token that can be used as the value of the `pageToken` parameter to
   /// retrieve the next page in the result set.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListGroupsResponse();
 
@@ -1052,13 +1049,13 @@ class ListGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (errors != null) 'errors': errors.toJson(),
-        if (etag != null) 'etag': etag,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (errors != null) 'errors': errors!.toJson(),
+        if (etag != null) 'etag': etag!,
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1076,16 +1073,16 @@ class QueryResponse {
   /// parameters `dimensions=ageGroup,gender&metrics=viewerPercentage`, the API
   /// response will return columns in this order: `ageGroup`, `gender`,
   /// `viewerPercentage`.
-  core.List<ResultTableColumnHeader> columnHeaders;
+  core.List<ResultTableColumnHeader>? columnHeaders;
 
   /// When set, indicates that the operation failed.
-  Errors errors;
+  Errors? errors;
 
   /// This value specifies the type of data included in the API response.
   ///
   /// For the query method, the kind property value will be
   /// `youtubeAnalytics#resultTable`.
-  core.String kind;
+  core.String? kind;
 
   /// The list contains all rows of the result table.
   ///
@@ -1098,7 +1095,7 @@ class QueryResponse {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.List<core.Object>> rows;
+  core.List<core.List<core.Object>>? rows;
 
   QueryResponse();
 
@@ -1126,26 +1123,26 @@ class QueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (columnHeaders != null)
           'columnHeaders':
-              columnHeaders.map((value) => value.toJson()).toList(),
-        if (errors != null) 'errors': errors.toJson(),
-        if (kind != null) 'kind': kind,
-        if (rows != null) 'rows': rows,
+              columnHeaders!.map((value) => value.toJson()).toList(),
+        if (errors != null) 'errors': errors!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (rows != null) 'rows': rows!,
       };
 }
 
 /// The description of a column of the result table.
 class ResultTableColumnHeader {
   /// The type of the column (`DIMENSION` or `METRIC`).
-  core.String columnType;
+  core.String? columnType;
 
   /// The type of the data in the column (`STRING`, `INTEGER`, `FLOAT`, etc.).
-  core.String dataType;
+  core.String? dataType;
 
   /// The name of the dimension or metric.
-  core.String name;
+  core.String? name;
 
   ResultTableColumnHeader();
 
@@ -1161,9 +1158,9 @@ class ResultTableColumnHeader {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (columnType != null) 'columnType': columnType,
-        if (dataType != null) 'dataType': dataType,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (columnType != null) 'columnType': columnType!,
+        if (dataType != null) 'dataType': dataType!,
+        if (name != null) 'name': name!,
       };
 }

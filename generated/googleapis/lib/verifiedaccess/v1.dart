@@ -80,10 +80,9 @@ class ChallengeResource {
   /// this method will complete with the same error.
   async.Future<Challenge> create(
     Empty request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -117,10 +116,9 @@ class ChallengeResource {
   /// this method will complete with the same error.
   async.Future<VerifyChallengeResponseResult> verify(
     VerifyChallengeResponseRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -142,10 +140,10 @@ class ChallengeResource {
 class Challenge {
   /// Challenge generated with the old signing key (this will only be present
   /// during key rotation)
-  SignedData alternativeChallenge;
+  SignedData? alternativeChallenge;
 
   /// Generated challenge
-  SignedData challenge;
+  SignedData? challenge;
 
   Challenge();
 
@@ -160,10 +158,10 @@ class Challenge {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (alternativeChallenge != null)
-          'alternativeChallenge': alternativeChallenge.toJson(),
-        if (challenge != null) 'challenge': challenge.toJson(),
+          'alternativeChallenge': alternativeChallenge!.toJson(),
+        if (challenge != null) 'challenge': challenge!.toJson(),
       };
 }
 
@@ -181,14 +179,14 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The wrapper message of any data and its signature.
 class SignedData {
   /// The data to be signed.
-  core.String data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data);
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> _bytes) {
     data =
@@ -196,8 +194,8 @@ class SignedData {
   }
 
   /// The signature of the data field.
-  core.String signature;
-  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature);
+  core.String? signature;
+  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
 
   set signatureAsBytes(core.List<core.int> _bytes) {
     signature =
@@ -215,16 +213,16 @@ class SignedData {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data,
-        if (signature != null) 'signature': signature,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!,
+        if (signature != null) 'signature': signature!,
       };
 }
 
 /// signed ChallengeResponse
 class VerifyChallengeResponseRequest {
   /// The generated response to the challenge
-  SignedData challengeResponse;
+  SignedData? challengeResponse;
 
   /// Service can optionally provide identity information about the device or
   /// user associated with the key.
@@ -232,7 +230,7 @@ class VerifyChallengeResponseRequest {
   /// For an EMK, this value is the enrolled domain. For an EUK, this value is
   /// the user's email address. If present, this value will be checked against
   /// contents of the response, and verification will fail if there is no match.
-  core.String expectedIdentity;
+  core.String? expectedIdentity;
 
   VerifyChallengeResponseRequest();
 
@@ -246,10 +244,10 @@ class VerifyChallengeResponseRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (challengeResponse != null)
-          'challengeResponse': challengeResponse.toJson(),
-        if (expectedIdentity != null) 'expectedIdentity': expectedIdentity,
+          'challengeResponse': challengeResponse!.toJson(),
+        if (expectedIdentity != null) 'expectedIdentity': expectedIdentity!,
       };
 }
 
@@ -257,11 +255,11 @@ class VerifyChallengeResponseRequest {
 class VerifyChallengeResponseResult {
   /// Device enrollment id is returned in this field (for the machine response
   /// only).
-  core.String deviceEnrollmentId;
+  core.String? deviceEnrollmentId;
 
   /// Device permanent id is returned in this field (for the machine response
   /// only).
-  core.String devicePermanentId;
+  core.String? devicePermanentId;
 
   /// Certificate Signing Request (in the SPKAC format, base64 encoded) is
   /// returned in this field.
@@ -269,7 +267,7 @@ class VerifyChallengeResponseResult {
   /// This field will be set only if device has included CSR in its challenge
   /// response. (the option to include CSR is now available for both user and
   /// machine responses)
-  core.String signedPublicKeyAndChallenge;
+  core.String? signedPublicKeyAndChallenge;
 
   /// For EMCert check, device permanent id is returned here.
   ///
@@ -277,7 +275,7 @@ class VerifyChallengeResponseResult {
   /// returned if present, otherwise empty string is returned. This field is
   /// deprecated, please use device_permanent_id or
   /// signed_public_key_and_challenge fields.
-  core.String verificationOutput;
+  core.String? verificationOutput;
 
   VerifyChallengeResponseResult();
 
@@ -297,13 +295,13 @@ class VerifyChallengeResponseResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (deviceEnrollmentId != null)
-          'deviceEnrollmentId': deviceEnrollmentId,
-        if (devicePermanentId != null) 'devicePermanentId': devicePermanentId,
+          'deviceEnrollmentId': deviceEnrollmentId!,
+        if (devicePermanentId != null) 'devicePermanentId': devicePermanentId!,
         if (signedPublicKeyAndChallenge != null)
-          'signedPublicKeyAndChallenge': signedPublicKeyAndChallenge,
+          'signedPublicKeyAndChallenge': signedPublicKeyAndChallenge!,
         if (verificationOutput != null)
-          'verificationOutput': verificationOutput,
+          'verificationOutput': verificationOutput!,
       };
 }

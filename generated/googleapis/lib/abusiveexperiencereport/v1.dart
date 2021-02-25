@@ -81,11 +81,8 @@ class SitesResource {
   /// this method will complete with the same error.
   async.Future<SiteSummaryResponse> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -122,7 +119,7 @@ class ViolatingSitesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ViolatingSitesResponse> list({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -147,14 +144,14 @@ class SiteSummaryResponse {
   /// - "UNKNOWN" : Not reviewed.
   /// - "PASSING" : Passing.
   /// - "FAILING" : Failing.
-  core.String abusiveStatus;
+  core.String? abusiveStatus;
 
   /// The time at which
   /// [enforcement](https://support.google.com/webtools/answer/7538608) against
   /// the site began or will begin.
   ///
   /// Not set when the filter_status is OFF.
-  core.String enforcementTime;
+  core.String? enforcementTime;
 
   /// The site's
   /// [enforcement status](https://support.google.com/webtools/answer/7538608).
@@ -164,23 +161,23 @@ class SiteSummaryResponse {
   /// - "OFF" : Enforcement is off.
   /// - "PAUSED" : Enforcement is paused.
   /// - "PENDING" : Enforcement is pending.
-  core.String filterStatus;
+  core.String? filterStatus;
 
   /// The time at which the site's status last changed.
-  core.String lastChangeTime;
+  core.String? lastChangeTime;
 
   /// A link to the full Abusive Experience Report for the site.
   ///
   /// Not set in ViolatingSitesResponse. Note that you must complete the
   /// [Search Console verification process](https://support.google.com/webmasters/answer/9008080)
   /// for the site before you can access the full report.
-  core.String reportUrl;
+  core.String? reportUrl;
 
   /// The name of the reviewed site, e.g. `google.com`.
-  core.String reviewedSite;
+  core.String? reviewedSite;
 
   /// Whether the site is currently under review.
-  core.bool underReview;
+  core.bool? underReview;
 
   SiteSummaryResponse();
 
@@ -208,21 +205,21 @@ class SiteSummaryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (abusiveStatus != null) 'abusiveStatus': abusiveStatus,
-        if (enforcementTime != null) 'enforcementTime': enforcementTime,
-        if (filterStatus != null) 'filterStatus': filterStatus,
-        if (lastChangeTime != null) 'lastChangeTime': lastChangeTime,
-        if (reportUrl != null) 'reportUrl': reportUrl,
-        if (reviewedSite != null) 'reviewedSite': reviewedSite,
-        if (underReview != null) 'underReview': underReview,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (abusiveStatus != null) 'abusiveStatus': abusiveStatus!,
+        if (enforcementTime != null) 'enforcementTime': enforcementTime!,
+        if (filterStatus != null) 'filterStatus': filterStatus!,
+        if (lastChangeTime != null) 'lastChangeTime': lastChangeTime!,
+        if (reportUrl != null) 'reportUrl': reportUrl!,
+        if (reviewedSite != null) 'reviewedSite': reviewedSite!,
+        if (underReview != null) 'underReview': underReview!,
       };
 }
 
 /// Response message for ListViolatingSites.
 class ViolatingSitesResponse {
   /// The list of violating sites.
-  core.List<SiteSummaryResponse> violatingSites;
+  core.List<SiteSummaryResponse>? violatingSites;
 
   ViolatingSitesResponse();
 
@@ -235,9 +232,9 @@ class ViolatingSitesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (violatingSites != null)
           'violatingSites':
-              violatingSites.map((value) => value.toJson()).toList(),
+              violatingSites!.map((value) => value.toJson()).toList(),
       };
 }

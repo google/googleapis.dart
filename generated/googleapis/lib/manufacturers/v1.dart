@@ -98,14 +98,8 @@ class AccountsProductsResource {
   async.Future<Empty> delete(
     core.String parent,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -162,15 +156,9 @@ class AccountsProductsResource {
   async.Future<Product> get(
     core.String parent,
     core.String name, {
-    core.List<core.String> include,
-    core.String $fields,
+    core.List<core.String>? include,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (include != null) 'include': include,
       if ($fields != null) 'fields': [$fields],
@@ -217,14 +205,11 @@ class AccountsProductsResource {
   /// this method will complete with the same error.
   async.Future<ListProductsResponse> list(
     core.String parent, {
-    core.List<core.String> include,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.List<core.String>? include,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (include != null) 'include': include,
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -290,16 +275,9 @@ class AccountsProductsResource {
     Attributes request,
     core.String parent,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -328,216 +306,216 @@ class Attributes {
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#addlimage.
-  core.List<Image> additionalImageLink;
+  core.List<Image>? additionalImageLink;
 
   /// The target age group of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#agegroup.
-  core.String ageGroup;
+  core.String? ageGroup;
 
   /// The brand name of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#brand.
-  core.String brand;
+  core.String? brand;
 
   /// The capacity of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#capacity.
-  Capacity capacity;
+  Capacity? capacity;
 
   /// The color of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#color.
-  core.String color;
+  core.String? color;
 
   /// The count of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#count.
-  Count count;
+  Count? count;
 
   /// The description of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#description.
-  core.String description;
+  core.String? description;
 
   /// The disclosure date of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#disclosure.
-  core.String disclosureDate;
+  core.String? disclosureDate;
 
   /// A list of excluded destinations.
-  core.List<core.String> excludedDestination;
+  core.List<core.String>? excludedDestination;
 
   /// The rich format description of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#featuredesc.
-  core.List<FeatureDescription> featureDescription;
+  core.List<FeatureDescription>? featureDescription;
 
   /// The flavor of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#flavor.
-  core.String flavor;
+  core.String? flavor;
 
   /// The format of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#format.
-  core.String format;
+  core.String? format;
 
   /// The target gender of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#gender.
-  core.String gender;
+  core.String? gender;
 
   /// The Global Trade Item Number (GTIN) of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#gtin.
-  core.List<core.String> gtin;
+  core.List<core.String>? gtin;
 
   /// The image of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#image.
-  Image imageLink;
+  Image? imageLink;
 
   /// A list of included destinations.
-  core.List<core.String> includedDestination;
+  core.List<core.String>? includedDestination;
 
   /// The item group id of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#itemgroupid.
-  core.String itemGroupId;
+  core.String? itemGroupId;
 
   /// The material of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#material.
-  core.String material;
+  core.String? material;
 
   /// The Manufacturer Part Number (MPN) of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#mpn.
-  core.String mpn;
+  core.String? mpn;
 
   /// The pattern of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#pattern.
-  core.String pattern;
+  core.String? pattern;
 
   /// The details of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#productdetail.
-  core.List<ProductDetail> productDetail;
+  core.List<ProductDetail>? productDetail;
 
   /// The product highlights.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/10066942
-  core.List<core.String> productHighlight;
+  core.List<core.String>? productHighlight;
 
   /// The name of the group of products related to the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#productline.
-  core.String productLine;
+  core.String? productLine;
 
   /// The canonical name of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#productname.
-  core.String productName;
+  core.String? productName;
 
   /// The URL of the detail page of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#productpage.
-  core.String productPageUrl;
+  core.String? productPageUrl;
 
   /// The type or category of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#producttype.
-  core.List<core.String> productType;
+  core.List<core.String>? productType;
 
   /// The release date of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#release.
-  core.String releaseDate;
+  core.String? releaseDate;
 
   /// Rich product content.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/9389865
-  core.List<core.String> richProductContent;
+  core.List<core.String>? richProductContent;
 
   /// The scent of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#scent.
-  core.String scent;
+  core.String? scent;
 
   /// The size of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#size.
-  core.String size;
+  core.String? size;
 
   /// The size system of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#sizesystem.
-  core.String sizeSystem;
+  core.String? sizeSystem;
 
   /// The size type of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#sizetype.
-  core.String sizeType;
+  core.String? sizeType;
 
   /// The suggested retail price (MSRP) of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#price.
-  Price suggestedRetailPrice;
+  Price? suggestedRetailPrice;
 
   /// The target client id.
   ///
   /// Should only be used in the accounts of the data partners.
-  core.String targetClientId;
+  core.String? targetClientId;
 
   /// The theme of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#theme.
-  core.String theme;
+  core.String? theme;
 
   /// The title of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#title.
-  core.String title;
+  core.String? title;
 
   /// The videos of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#video.
-  core.List<core.String> videoLink;
+  core.List<core.String>? videoLink;
 
   Attributes();
 
@@ -682,54 +660,54 @@ class Attributes {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (additionalImageLink != null)
           'additionalImageLink':
-              additionalImageLink.map((value) => value.toJson()).toList(),
-        if (ageGroup != null) 'ageGroup': ageGroup,
-        if (brand != null) 'brand': brand,
-        if (capacity != null) 'capacity': capacity.toJson(),
-        if (color != null) 'color': color,
-        if (count != null) 'count': count.toJson(),
-        if (description != null) 'description': description,
-        if (disclosureDate != null) 'disclosureDate': disclosureDate,
+              additionalImageLink!.map((value) => value.toJson()).toList(),
+        if (ageGroup != null) 'ageGroup': ageGroup!,
+        if (brand != null) 'brand': brand!,
+        if (capacity != null) 'capacity': capacity!.toJson(),
+        if (color != null) 'color': color!,
+        if (count != null) 'count': count!.toJson(),
+        if (description != null) 'description': description!,
+        if (disclosureDate != null) 'disclosureDate': disclosureDate!,
         if (excludedDestination != null)
-          'excludedDestination': excludedDestination,
+          'excludedDestination': excludedDestination!,
         if (featureDescription != null)
           'featureDescription':
-              featureDescription.map((value) => value.toJson()).toList(),
-        if (flavor != null) 'flavor': flavor,
-        if (format != null) 'format': format,
-        if (gender != null) 'gender': gender,
-        if (gtin != null) 'gtin': gtin,
-        if (imageLink != null) 'imageLink': imageLink.toJson(),
+              featureDescription!.map((value) => value.toJson()).toList(),
+        if (flavor != null) 'flavor': flavor!,
+        if (format != null) 'format': format!,
+        if (gender != null) 'gender': gender!,
+        if (gtin != null) 'gtin': gtin!,
+        if (imageLink != null) 'imageLink': imageLink!.toJson(),
         if (includedDestination != null)
-          'includedDestination': includedDestination,
-        if (itemGroupId != null) 'itemGroupId': itemGroupId,
-        if (material != null) 'material': material,
-        if (mpn != null) 'mpn': mpn,
-        if (pattern != null) 'pattern': pattern,
+          'includedDestination': includedDestination!,
+        if (itemGroupId != null) 'itemGroupId': itemGroupId!,
+        if (material != null) 'material': material!,
+        if (mpn != null) 'mpn': mpn!,
+        if (pattern != null) 'pattern': pattern!,
         if (productDetail != null)
           'productDetail':
-              productDetail.map((value) => value.toJson()).toList(),
-        if (productHighlight != null) 'productHighlight': productHighlight,
-        if (productLine != null) 'productLine': productLine,
-        if (productName != null) 'productName': productName,
-        if (productPageUrl != null) 'productPageUrl': productPageUrl,
-        if (productType != null) 'productType': productType,
-        if (releaseDate != null) 'releaseDate': releaseDate,
+              productDetail!.map((value) => value.toJson()).toList(),
+        if (productHighlight != null) 'productHighlight': productHighlight!,
+        if (productLine != null) 'productLine': productLine!,
+        if (productName != null) 'productName': productName!,
+        if (productPageUrl != null) 'productPageUrl': productPageUrl!,
+        if (productType != null) 'productType': productType!,
+        if (releaseDate != null) 'releaseDate': releaseDate!,
         if (richProductContent != null)
-          'richProductContent': richProductContent,
-        if (scent != null) 'scent': scent,
-        if (size != null) 'size': size,
-        if (sizeSystem != null) 'sizeSystem': sizeSystem,
-        if (sizeType != null) 'sizeType': sizeType,
+          'richProductContent': richProductContent!,
+        if (scent != null) 'scent': scent!,
+        if (size != null) 'size': size!,
+        if (sizeSystem != null) 'sizeSystem': sizeSystem!,
+        if (sizeType != null) 'sizeType': sizeType!,
         if (suggestedRetailPrice != null)
-          'suggestedRetailPrice': suggestedRetailPrice.toJson(),
-        if (targetClientId != null) 'targetClientId': targetClientId,
-        if (theme != null) 'theme': theme,
-        if (title != null) 'title': title,
-        if (videoLink != null) 'videoLink': videoLink,
+          'suggestedRetailPrice': suggestedRetailPrice!.toJson(),
+        if (targetClientId != null) 'targetClientId': targetClientId!,
+        if (theme != null) 'theme': theme!,
+        if (title != null) 'title': title!,
+        if (videoLink != null) 'videoLink': videoLink!,
       };
 }
 
@@ -739,10 +717,10 @@ class Attributes {
 /// https://support.google.com/manufacturers/answer/6124116#capacity.
 class Capacity {
   /// The unit of the capacity, i.e., MB, GB, or TB.
-  core.String unit;
+  core.String? unit;
 
   /// The numeric value of the capacity.
-  core.String value;
+  core.String? value;
 
   Capacity();
 
@@ -755,9 +733,9 @@ class Capacity {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (unit != null) 'unit': unit,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (unit != null) 'unit': unit!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -767,10 +745,10 @@ class Capacity {
 /// https://support.google.com/manufacturers/answer/6124116#count.
 class Count {
   /// The unit in which these products are counted.
-  core.String unit;
+  core.String? unit;
 
   /// The numeric value of the number of products in a package.
-  core.String value;
+  core.String? value;
 
   Count();
 
@@ -783,16 +761,16 @@ class Count {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (unit != null) 'unit': unit,
-        if (value != null) 'value': value,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (unit != null) 'unit': unit!,
+        if (value != null) 'value': value!,
       };
 }
 
 /// The destination status.
 class DestinationStatus {
   /// The name of the destination.
-  core.String destination;
+  core.String? destination;
 
   /// The status of the destination.
   /// Possible string values are:
@@ -800,7 +778,7 @@ class DestinationStatus {
   /// - "ACTIVE" : The product is used for this destination.
   /// - "PENDING" : The decision is still pending.
   /// - "DISAPPROVED" : The product is disapproved. Please look at the issues.
-  core.String status;
+  core.String? status;
 
   DestinationStatus();
 
@@ -813,9 +791,9 @@ class DestinationStatus {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destination != null) 'destination': destination,
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destination != null) 'destination': destination!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -833,7 +811,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A feature description of the product.
@@ -842,13 +820,13 @@ class Empty {
 /// https://support.google.com/manufacturers/answer/6124116#featuredesc.
 class FeatureDescription {
   /// A short description of the feature.
-  core.String headline;
+  core.String? headline;
 
   /// An optional image describing the feature.
-  Image image;
+  Image? image;
 
   /// A detailed description of the feature.
-  core.String text;
+  core.String? text;
 
   FeatureDescription();
 
@@ -865,10 +843,10 @@ class FeatureDescription {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (headline != null) 'headline': headline,
-        if (image != null) 'image': image.toJson(),
-        if (text != null) 'text': text,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (headline != null) 'headline': headline!,
+        if (image != null) 'image': image!.toJson(),
+        if (text != null) 'text': text!,
       };
 }
 
@@ -878,7 +856,7 @@ class Image {
   ///
   /// For crawled images, this is the provided URL. For uploaded images, this is
   /// a serving URL from Google if the image has been processed successfully.
-  core.String imageUrl;
+  core.String? imageUrl;
 
   /// The status of the image.
   ///
@@ -902,7 +880,7 @@ class Image {
   /// - "HOSTLOADED" : The image crawl was postponed to avoid overloading the
   /// host.
   /// - "HTTP_404" : The image URL returned a "404 Not Found" error.
-  core.String status;
+  core.String? status;
 
   /// The type of the image, i.e., crawled or uploaded.
   ///
@@ -911,7 +889,7 @@ class Image {
   /// - "TYPE_UNSPECIFIED" : Type is unspecified. Should not be used.
   /// - "CRAWLED" : The image was crawled from a provided URL.
   /// - "UPLOADED" : The image was uploaded.
-  core.String type;
+  core.String? type;
 
   Image();
 
@@ -927,10 +905,10 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (imageUrl != null) 'imageUrl': imageUrl,
-        if (status != null) 'status': status,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (imageUrl != null) 'imageUrl': imageUrl!,
+        if (status != null) 'status': status!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -940,13 +918,13 @@ class Issue {
   ///
   /// For more information about attributes, see
   /// https://support.google.com/manufacturers/answer/6124116.
-  core.String attribute;
+  core.String? attribute;
 
   /// Longer description of the issue focused on how to resolve it.
-  core.String description;
+  core.String? description;
 
   /// The destination this issue applies to.
-  core.String destination;
+  core.String? destination;
 
   /// What needs to happen to resolve the issue.
   /// Possible string values are:
@@ -956,7 +934,7 @@ class Issue {
   /// - "PENDING_PROCESSING" : The issue will be resolved automatically (for
   /// example image crawl or Google review). No action is required now.
   /// Resolution might lead to another issue (for example if crawl fails).
-  core.String resolution;
+  core.String? resolution;
 
   /// The severity of the issue.
   /// Possible string values are:
@@ -969,17 +947,17 @@ class Issue {
   /// - "INFO" : Info severity. The issue is one that doesn't require immediate
   /// attention. It is, for example, used to communicate which attributes are
   /// still pending review.
-  core.String severity;
+  core.String? severity;
 
   /// The timestamp when this issue appeared.
-  core.String timestamp;
+  core.String? timestamp;
 
   /// Short title describing the nature of the issue.
-  core.String title;
+  core.String? title;
 
   /// The server-generated type of the issue, for example,
   /// “INCORRECT_TEXT_FORMATTING”, “IMAGE_NOT_SERVEABLE”, etc.
-  core.String type;
+  core.String? type;
 
   Issue();
 
@@ -1010,24 +988,24 @@ class Issue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attribute != null) 'attribute': attribute,
-        if (description != null) 'description': description,
-        if (destination != null) 'destination': destination,
-        if (resolution != null) 'resolution': resolution,
-        if (severity != null) 'severity': severity,
-        if (timestamp != null) 'timestamp': timestamp,
-        if (title != null) 'title': title,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attribute != null) 'attribute': attribute!,
+        if (description != null) 'description': description!,
+        if (destination != null) 'destination': destination!,
+        if (resolution != null) 'resolution': resolution!,
+        if (severity != null) 'severity': severity!,
+        if (timestamp != null) 'timestamp': timestamp!,
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
       };
 }
 
 class ListProductsResponse {
   /// The token for the retrieval of the next page of product statuses.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of the products.
-  core.List<Product> products;
+  core.List<Product>? products;
 
   ListProductsResponse();
 
@@ -1043,20 +1021,20 @@ class ListProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (products != null)
-          'products': products.map((value) => value.toJson()).toList(),
+          'products': products!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A price.
 class Price {
   /// The numeric value of the price.
-  core.String amount;
+  core.String? amount;
 
   /// The currency in which the price is denoted.
-  core.String currency;
+  core.String? currency;
 
   Price();
 
@@ -1069,9 +1047,9 @@ class Price {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (amount != null) 'amount': amount,
-        if (currency != null) 'currency': currency,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (amount != null) 'amount': amount!,
+        if (currency != null) 'currency': currency!,
       };
 }
 
@@ -1080,17 +1058,17 @@ class Product {
   /// Attributes of the product uploaded to the Manufacturer Center.
   ///
   /// Manually edited attributes are taken into account.
-  Attributes attributes;
+  Attributes? attributes;
 
   /// The content language of the product as a two-letter ISO 639-1 language
   /// code (for example, en).
-  core.String contentLanguage;
+  core.String? contentLanguage;
 
   /// The status of the destinations.
-  core.List<DestinationStatus> destinationStatuses;
+  core.List<DestinationStatus>? destinationStatuses;
 
   /// A server-generated list of issues associated with the product.
-  core.List<Issue> issues;
+  core.List<Issue>? issues;
 
   /// Name in the format `{target_country}:{content_language}:{product_id}`.
   ///
@@ -1099,22 +1077,22 @@ class Product {
   /// product as a two-letter ISO 639-1 language code (for example, en).
   /// `product_id` - The ID of the product. For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#id.
-  core.String name;
+  core.String? name;
 
   /// Parent ID in the format `accounts/{account_id}`.
   ///
   /// `account_id` - The ID of the Manufacturer Center account.
-  core.String parent;
+  core.String? parent;
 
   /// The ID of the product.
   ///
   /// For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#id.
-  core.String productId;
+  core.String? productId;
 
   /// The target country of the product as a CLDR territory code (for example,
   /// US).
-  core.String targetCountry;
+  core.String? targetCountry;
 
   Product();
 
@@ -1152,18 +1130,18 @@ class Product {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributes != null) 'attributes': attributes.toJson(),
-        if (contentLanguage != null) 'contentLanguage': contentLanguage,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributes != null) 'attributes': attributes!.toJson(),
+        if (contentLanguage != null) 'contentLanguage': contentLanguage!,
         if (destinationStatuses != null)
           'destinationStatuses':
-              destinationStatuses.map((value) => value.toJson()).toList(),
+              destinationStatuses!.map((value) => value.toJson()).toList(),
         if (issues != null)
-          'issues': issues.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (parent != null) 'parent': parent,
-        if (productId != null) 'productId': productId,
-        if (targetCountry != null) 'targetCountry': targetCountry,
+          'issues': issues!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (parent != null) 'parent': parent!,
+        if (productId != null) 'productId': productId!,
+        if (targetCountry != null) 'targetCountry': targetCountry!,
       };
 }
 
@@ -1173,13 +1151,13 @@ class Product {
 /// https://support.google.com/manufacturers/answer/6124116#productdetail.
 class ProductDetail {
   /// The name of the attribute.
-  core.String attributeName;
+  core.String? attributeName;
 
   /// The value of the attribute.
-  core.String attributeValue;
+  core.String? attributeValue;
 
   /// A short section name that can be reused between multiple product details.
-  core.String sectionName;
+  core.String? sectionName;
 
   ProductDetail();
 
@@ -1195,9 +1173,9 @@ class ProductDetail {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributeName != null) 'attributeName': attributeName,
-        if (attributeValue != null) 'attributeValue': attributeValue,
-        if (sectionName != null) 'sectionName': sectionName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributeName != null) 'attributeName': attributeName!,
+        if (attributeValue != null) 'attributeValue': attributeValue!,
+        if (sectionName != null) 'sectionName': sectionName!,
       };
 }

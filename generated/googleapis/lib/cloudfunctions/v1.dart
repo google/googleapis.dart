@@ -85,11 +85,8 @@ class OperationsResource {
   /// this method will complete with the same error.
   async.Future<Operation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -144,11 +141,11 @@ class OperationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list({
-    core.String filter,
-    core.String name,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.String? name,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
@@ -212,14 +209,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -273,13 +267,9 @@ class ProjectsLocationsFunctionsResource {
   async.Future<CallFunctionResponse> call(
     CallFunctionRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -323,13 +313,9 @@ class ProjectsLocationsFunctionsResource {
   async.Future<Operation> create(
     CloudFunction request,
     core.String location, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (location == null) {
-      throw core.ArgumentError('Parameter location is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -370,11 +356,8 @@ class ProjectsLocationsFunctionsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -417,13 +400,9 @@ class ProjectsLocationsFunctionsResource {
   async.Future<GenerateDownloadUrlResponse> generateDownloadUrl(
     GenerateDownloadUrlRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -481,13 +460,9 @@ class ProjectsLocationsFunctionsResource {
   async.Future<GenerateUploadUrlResponse> generateUploadUrl(
     GenerateUploadUrlRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -527,11 +502,8 @@ class ProjectsLocationsFunctionsResource {
   /// this method will complete with the same error.
   async.Future<CloudFunction> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -580,12 +552,9 @@ class ProjectsLocationsFunctionsResource {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
     core.String resource, {
-    core.int options_requestedPolicyVersion,
-    core.String $fields,
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
   }) async {
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (options_requestedPolicyVersion != null)
         'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
@@ -634,13 +603,10 @@ class ProjectsLocationsFunctionsResource {
   /// this method will complete with the same error.
   async.Future<ListFunctionsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -686,14 +652,10 @@ class ProjectsLocationsFunctionsResource {
   async.Future<Operation> patch(
     CloudFunction request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -737,13 +699,9 @@ class ProjectsLocationsFunctionsResource {
   async.Future<Policy> setIamPolicy(
     SetIamPolicyRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -790,13 +748,9 @@ class ProjectsLocationsFunctionsResource {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
     TestIamPermissionsRequest request,
     core.String resource, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (resource == null) {
-      throw core.ArgumentError('Parameter resource is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -835,13 +789,13 @@ class ProjectsLocationsFunctionsResource {
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<AuditLogConfig>? auditLogConfigs;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
   /// `allServices` is a special value that covers all services.
-  core.String service;
+  core.String? service;
 
   AuditConfig();
 
@@ -857,11 +811,11 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
-              auditLogConfigs.map((value) => value.toJson()).toList(),
-        if (service != null) 'service': service,
+              auditLogConfigs!.map((value) => value.toJson()).toList(),
+        if (service != null) 'service': service!,
       };
 }
 
@@ -876,7 +830,7 @@ class AuditLogConfig {
   /// permission.
   ///
   /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
+  core.List<core.String>? exemptedMembers;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -884,7 +838,7 @@ class AuditLogConfig {
   /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
   /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
   /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
+  core.String? logType;
 
   AuditLogConfig();
 
@@ -899,9 +853,9 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers,
-        if (logType != null) 'logType': logType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
       };
 }
 
@@ -915,7 +869,7 @@ class Binding {
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  Expr condition;
+  Expr? condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
@@ -947,12 +901,12 @@ class Binding {
   /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, `google.com` or
   /// `example.com`.
-  core.List<core.String> members;
+  core.List<core.String>? members;
 
   /// Role that is assigned to `members`.
   ///
   /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-  core.String role;
+  core.String? role;
 
   Binding();
 
@@ -971,10 +925,10 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (condition != null) 'condition': condition.toJson(),
-        if (members != null) 'members': members,
-        if (role != null) 'role': role,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (condition != null) 'condition': condition!.toJson(),
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -983,7 +937,7 @@ class CallFunctionRequest {
   /// Input to be passed to the function.
   ///
   /// Required.
-  core.String data;
+  core.String? data;
 
   CallFunctionRequest();
 
@@ -993,8 +947,8 @@ class CallFunctionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (data != null) 'data': data,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (data != null) 'data': data!,
       };
 }
 
@@ -1003,16 +957,16 @@ class CallFunctionResponse {
   /// Either system or user-function generated error.
   ///
   /// Set if execution was not successful.
-  core.String error;
+  core.String? error;
 
   /// Execution id of function invocation.
-  core.String executionId;
+  core.String? executionId;
 
   /// Result populated for successful execution of synchronous function.
   ///
   /// Will not be populated if function does not return a result through
   /// context.
-  core.String result;
+  core.String? result;
 
   CallFunctionResponse();
 
@@ -1028,10 +982,10 @@ class CallFunctionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (error != null) 'error': error,
-        if (executionId != null) 'executionId': executionId,
-        if (result != null) 'result': result,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (error != null) 'error': error!,
+        if (executionId != null) 'executionId': executionId!,
+        if (result != null) 'result': result!,
       };
 }
 
@@ -1043,15 +997,15 @@ class CloudFunction {
   /// The amount of memory in MB available for a function.
   ///
   /// Defaults to 256MB.
-  core.int availableMemoryMb;
+  core.int? availableMemoryMb;
 
   /// Build environment variables that shall be available during build time.
-  core.Map<core.String, core.String> buildEnvironmentVariables;
+  core.Map<core.String, core.String>? buildEnvironmentVariables;
 
   /// The Cloud Build ID of the latest successful deployment of the function.
   ///
   /// Output only.
-  core.String buildId;
+  core.String? buildId;
 
   /// Name of the Cloud Build Custom Worker Pool that should be used to build
   /// the function.
@@ -1065,10 +1019,10 @@ class CloudFunction {
   /// (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the
   /// role Cloud Build Custom Workers Builder
   /// (roles/cloudbuild.customworkers.builder) in the project.
-  core.String buildWorkerPool;
+  core.String? buildWorkerPool;
 
   /// User-provided description of a function.
-  core.String description;
+  core.String? description;
 
   /// The name of the function (as defined in source code) that will be
   /// executed.
@@ -1077,16 +1031,16 @@ class CloudFunction {
   /// compatibility, if function with given name is not found, then the system
   /// will try to use function named "function". For Node.js this is name of a
   /// function exported by the module specified in `source_location`.
-  core.String entryPoint;
+  core.String? entryPoint;
 
   /// Environment variables that shall be available during function execution.
-  core.Map<core.String, core.String> environmentVariables;
+  core.Map<core.String, core.String>? environmentVariables;
 
   /// A source that fires events in response to a condition in another service.
-  EventTrigger eventTrigger;
+  EventTrigger? eventTrigger;
 
   /// An HTTPS endpoint type of source that can be triggered via URL.
-  HttpsTrigger httpsTrigger;
+  HttpsTrigger? httpsTrigger;
 
   /// The ingress settings for the function, controlling what traffic can reach
   /// it.
@@ -1097,10 +1051,10 @@ class CloudFunction {
   /// sources.
   /// - "ALLOW_INTERNAL_AND_GCLB" : Allow HTTP traffic from private VPC sources
   /// and through GCLB.
-  core.String ingressSettings;
+  core.String? ingressSettings;
 
   /// Labels associated with this Cloud Function.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The limit on the maximum number of function instances that may coexist at
   /// a given time.
@@ -1112,13 +1066,13 @@ class CloudFunction {
   /// value than your function can tolerate. See the
   /// [Max Instances](https://cloud.google.com/functions/docs/max-instances)
   /// Guide for more details.
-  core.int maxInstances;
+  core.int? maxInstances;
 
   /// A user-defined name of the function.
   ///
   /// Function names must be unique globally and match pattern `projects / *
   /// /locations / * /functions / * `
-  core.String name;
+  core.String? name;
 
   /// The VPC Network that this cloud function can connect to.
   ///
@@ -1132,36 +1086,36 @@ class CloudFunction {
   /// `vpc_connector` and will be replaced by it. See
   /// [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for
   /// more information on connecting Cloud projects.
-  core.String network;
+  core.String? network;
 
   /// The runtime in which to run the function.
   ///
   /// Required when deploying a new function, optional when updating an existing
   /// function. For a complete list of possible choices, see the \[`gcloud`
   /// command reference\](/sdk/gcloud/reference/functions/deploy#--runtime).
-  core.String runtime;
+  core.String? runtime;
 
   /// The email of the function's service account.
   ///
   /// If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
-  core.String serviceAccountEmail;
+  core.String? serviceAccountEmail;
 
   /// The Google Cloud Storage URL, starting with gs://, pointing to the zip
   /// archive which contains the function.
-  core.String sourceArchiveUrl;
+  core.String? sourceArchiveUrl;
 
   /// **Beta Feature** The source repository where a function is hosted.
-  SourceRepository sourceRepository;
+  SourceRepository? sourceRepository;
 
   /// Input only.
   ///
   /// An identifier for Firebase function sources. Disclaimer: This field is
   /// only supported for Firebase function deployments.
-  core.String sourceToken;
+  core.String? sourceToken;
 
   /// The Google Cloud Storage signed URL used for source uploading, generated
   /// by google.cloud.functions.v1.GenerateUploadUrl
-  core.String sourceUploadUrl;
+  core.String? sourceUploadUrl;
 
   /// Status of the function deployment.
   ///
@@ -1175,18 +1129,18 @@ class CloudFunction {
   /// - "UNKNOWN" : Function deployment failed and the function serving state is
   /// undefined. The function should be updated or deleted to move it out of
   /// this state.
-  core.String status;
+  core.String? status;
 
   /// The function execution timeout.
   ///
   /// Execution is considered failed and can be terminated if the function is
   /// not completed at the end of the timeout period. Defaults to 60 seconds.
-  core.String timeout;
+  core.String? timeout;
 
   /// The last update timestamp of a Cloud Function.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// The version identifier of the Cloud Function.
   ///
@@ -1194,7 +1148,7 @@ class CloudFunction {
   /// created.
   ///
   /// Output only.
-  core.String versionId;
+  core.String? versionId;
 
   /// The VPC Network Connector that this cloud function can connect to.
   ///
@@ -1204,7 +1158,7 @@ class CloudFunction {
   /// and will eventually replace it. See
   /// [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for
   /// more information on connecting Cloud projects.
-  core.String vpcConnector;
+  core.String? vpcConnector;
 
   /// The egress settings for the connector, controlling what traffic is
   /// diverted through it.
@@ -1214,7 +1168,7 @@ class CloudFunction {
   /// space from RFC1918.
   /// - "ALL_TRAFFIC" : Force the use of VPC Access Connector for all egress
   /// traffic from the function.
-  core.String vpcConnectorEgressSettings;
+  core.String? vpcConnectorEgressSettings;
 
   CloudFunction();
 
@@ -1324,38 +1278,38 @@ class CloudFunction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (availableMemoryMb != null) 'availableMemoryMb': availableMemoryMb,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (availableMemoryMb != null) 'availableMemoryMb': availableMemoryMb!,
         if (buildEnvironmentVariables != null)
-          'buildEnvironmentVariables': buildEnvironmentVariables,
-        if (buildId != null) 'buildId': buildId,
-        if (buildWorkerPool != null) 'buildWorkerPool': buildWorkerPool,
-        if (description != null) 'description': description,
-        if (entryPoint != null) 'entryPoint': entryPoint,
+          'buildEnvironmentVariables': buildEnvironmentVariables!,
+        if (buildId != null) 'buildId': buildId!,
+        if (buildWorkerPool != null) 'buildWorkerPool': buildWorkerPool!,
+        if (description != null) 'description': description!,
+        if (entryPoint != null) 'entryPoint': entryPoint!,
         if (environmentVariables != null)
-          'environmentVariables': environmentVariables,
-        if (eventTrigger != null) 'eventTrigger': eventTrigger.toJson(),
-        if (httpsTrigger != null) 'httpsTrigger': httpsTrigger.toJson(),
-        if (ingressSettings != null) 'ingressSettings': ingressSettings,
-        if (labels != null) 'labels': labels,
-        if (maxInstances != null) 'maxInstances': maxInstances,
-        if (name != null) 'name': name,
-        if (network != null) 'network': network,
-        if (runtime != null) 'runtime': runtime,
+          'environmentVariables': environmentVariables!,
+        if (eventTrigger != null) 'eventTrigger': eventTrigger!.toJson(),
+        if (httpsTrigger != null) 'httpsTrigger': httpsTrigger!.toJson(),
+        if (ingressSettings != null) 'ingressSettings': ingressSettings!,
+        if (labels != null) 'labels': labels!,
+        if (maxInstances != null) 'maxInstances': maxInstances!,
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
+        if (runtime != null) 'runtime': runtime!,
         if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail,
-        if (sourceArchiveUrl != null) 'sourceArchiveUrl': sourceArchiveUrl,
+          'serviceAccountEmail': serviceAccountEmail!,
+        if (sourceArchiveUrl != null) 'sourceArchiveUrl': sourceArchiveUrl!,
         if (sourceRepository != null)
-          'sourceRepository': sourceRepository.toJson(),
-        if (sourceToken != null) 'sourceToken': sourceToken,
-        if (sourceUploadUrl != null) 'sourceUploadUrl': sourceUploadUrl,
-        if (status != null) 'status': status,
-        if (timeout != null) 'timeout': timeout,
-        if (updateTime != null) 'updateTime': updateTime,
-        if (versionId != null) 'versionId': versionId,
-        if (vpcConnector != null) 'vpcConnector': vpcConnector,
+          'sourceRepository': sourceRepository!.toJson(),
+        if (sourceToken != null) 'sourceToken': sourceToken!,
+        if (sourceUploadUrl != null) 'sourceUploadUrl': sourceUploadUrl!,
+        if (status != null) 'status': status!,
+        if (timeout != null) 'timeout': timeout!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (versionId != null) 'versionId': versionId!,
+        if (vpcConnector != null) 'vpcConnector': vpcConnector!,
         if (vpcConnectorEgressSettings != null)
-          'vpcConnectorEgressSettings': vpcConnectorEgressSettings,
+          'vpcConnectorEgressSettings': vpcConnectorEgressSettings!,
       };
 }
 
@@ -1373,10 +1327,10 @@ class EventTrigger {
   /// Storage Object is 'change'. These parts are lower case.
   ///
   /// Required.
-  core.String eventType;
+  core.String? eventType;
 
   /// Specifies policy for failed executions.
-  FailurePolicy failurePolicy;
+  FailurePolicy? failurePolicy;
 
   /// The resource(s) from which to observe events, for example,
   /// `projects/_/buckets/myBucket`.
@@ -1393,14 +1347,14 @@ class EventTrigger {
   /// format. See each *service's* documentation for supported formats.
   ///
   /// Required.
-  core.String resource;
+  core.String? resource;
 
   /// The hostname of the service that should be observed.
   ///
   /// If no string is provided, the default service implementing the API will be
   /// used. For example, `storage.googleapis.com` is the default for all event
   /// types in the `google.storage` namespace.
-  core.String service;
+  core.String? service;
 
   EventTrigger();
 
@@ -1420,11 +1374,11 @@ class EventTrigger {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (eventType != null) 'eventType': eventType,
-        if (failurePolicy != null) 'failurePolicy': failurePolicy.toJson(),
-        if (resource != null) 'resource': resource,
-        if (service != null) 'service': service,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (eventType != null) 'eventType': eventType!,
+        if (failurePolicy != null) 'failurePolicy': failurePolicy!.toJson(),
+        if (resource != null) 'resource': resource!,
+        if (service != null) 'service': service!,
       };
 }
 
@@ -1453,24 +1407,24 @@ class Expr {
   /// over it in a UI.
   ///
   /// Optional.
-  core.String description;
+  core.String? description;
 
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  core.String expression;
+  core.String? expression;
 
   /// String indicating the location of the expression for error reporting, e.g.
   /// a file name and a position in the file.
   ///
   /// Optional.
-  core.String location;
+  core.String? location;
 
   /// Title for the expression, i.e. a short string describing its purpose.
   ///
   /// This can be used e.g. in UIs which allow to enter the expression.
   ///
   /// Optional.
-  core.String title;
+  core.String? title;
 
   Expr();
 
@@ -1489,11 +1443,11 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (expression != null) 'expression': expression,
-        if (location != null) 'location': location,
-        if (title != null) 'title': title,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1502,7 +1456,7 @@ class Expr {
 /// If empty, then defaults to ignoring failures (i.e. not retrying them).
 class FailurePolicy {
   /// If specified, then the function will be retried in case of a failure.
-  Retry retry;
+  Retry? retry;
 
   FailurePolicy();
 
@@ -1513,8 +1467,8 @@ class FailurePolicy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (retry != null) 'retry': retry.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (retry != null) 'retry': retry!.toJson(),
       };
 }
 
@@ -1523,7 +1477,7 @@ class GenerateDownloadUrlRequest {
   /// The optional version of function.
   ///
   /// If not set, default, current version is used.
-  core.String versionId;
+  core.String? versionId;
 
   GenerateDownloadUrlRequest();
 
@@ -1533,8 +1487,8 @@ class GenerateDownloadUrlRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (versionId != null) 'versionId': versionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (versionId != null) 'versionId': versionId!,
       };
 }
 
@@ -1542,7 +1496,7 @@ class GenerateDownloadUrlRequest {
 class GenerateDownloadUrlResponse {
   /// The generated Google Cloud Storage signed URL that should be used for
   /// function source code download.
-  core.String downloadUrl;
+  core.String? downloadUrl;
 
   GenerateDownloadUrlResponse();
 
@@ -1552,8 +1506,8 @@ class GenerateDownloadUrlResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (downloadUrl != null) 'downloadUrl': downloadUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (downloadUrl != null) 'downloadUrl': downloadUrl!,
       };
 }
 
@@ -1565,7 +1519,7 @@ class GenerateUploadUrlRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response of `GenerateSourceUploadUrl` method.
@@ -1574,7 +1528,7 @@ class GenerateUploadUrlResponse {
   /// function source code upload.
   ///
   /// The uploaded file should be a zip archive which contains a function.
-  core.String uploadUrl;
+  core.String? uploadUrl;
 
   GenerateUploadUrlResponse();
 
@@ -1584,8 +1538,8 @@ class GenerateUploadUrlResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (uploadUrl != null) 'uploadUrl': uploadUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (uploadUrl != null) 'uploadUrl': uploadUrl!,
       };
 }
 
@@ -1600,12 +1554,12 @@ class HttpsTrigger {
   /// - "SECURE_OPTIONAL" : Both HTTP and HTTPS requests with URLs that match
   /// the handler succeed without redirects. The application can examine the
   /// request to determine which protocol was used and respond accordingly.
-  core.String securityLevel;
+  core.String? securityLevel;
 
   /// The deployed url for the function.
   ///
   /// Output only.
-  core.String url;
+  core.String? url;
 
   HttpsTrigger();
 
@@ -1618,26 +1572,26 @@ class HttpsTrigger {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (securityLevel != null) 'securityLevel': securityLevel,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (securityLevel != null) 'securityLevel': securityLevel!,
+        if (url != null) 'url': url!,
       };
 }
 
 /// Response for the `ListFunctions` method.
 class ListFunctionsResponse {
   /// The functions that match the request.
-  core.List<CloudFunction> functions;
+  core.List<CloudFunction>? functions;
 
   /// If not empty, indicates that there may be more functions that match the
   /// request; this value should be passed in a new
   /// google.cloud.functions.v1.ListFunctionsRequest to get more functions.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Locations that could not be reached.
   ///
   /// The response does not include any functions from these locations.
-  core.List<core.String> unreachable;
+  core.List<core.String>? unreachable;
 
   ListFunctionsResponse();
 
@@ -1658,21 +1612,21 @@ class ListFunctionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (functions != null)
-          'functions': functions.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
-        if (unreachable != null) 'unreachable': unreachable,
+          'functions': functions!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -1688,20 +1642,20 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<Operation> operations;
+  core.List<Operation>? operations;
 
   ListOperationsResponse();
 
@@ -1717,10 +1671,10 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1729,17 +1683,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -1747,12 +1701,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -1786,12 +1740,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -1802,10 +1756,10 @@ class Operation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -1816,14 +1770,14 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -1836,7 +1790,7 @@ class Operation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   Operation();
 
@@ -1871,12 +1825,12 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -1885,23 +1839,23 @@ class OperationMetadataV1 {
   /// The Cloud Build ID of the function created or updated by an API call.
   ///
   /// This field is only populated for Create and Update operations.
-  core.String buildId;
+  core.String? buildId;
 
   /// The original request that started the operation.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> request;
+  core.Map<core.String, core.Object>? request;
 
   /// An identifier for Firebase function sources.
   ///
   /// Disclaimer: This field is only supported for Firebase function
   /// deployments.
-  core.String sourceToken;
+  core.String? sourceToken;
 
   /// Target of the operation - for example
   /// projects/project-1/locations/region-1/functions/function-1
-  core.String target;
+  core.String? target;
 
   /// Type of operation.
   /// Possible string values are:
@@ -1909,15 +1863,15 @@ class OperationMetadataV1 {
   /// - "CREATE_FUNCTION" : Triggered by CreateFunction call
   /// - "UPDATE_FUNCTION" : Triggered by UpdateFunction call
   /// - "DELETE_FUNCTION" : Triggered by DeleteFunction call.
-  core.String type;
+  core.String? type;
 
   /// The last update timestamp of the operation.
-  core.String updateTime;
+  core.String? updateTime;
 
   /// Version id of the function created or updated by an API call.
   ///
   /// This field is only populated for Create and Update operations.
-  core.String versionId;
+  core.String? versionId;
 
   OperationMetadataV1();
 
@@ -1951,14 +1905,14 @@ class OperationMetadataV1 {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (buildId != null) 'buildId': buildId,
-        if (request != null) 'request': request,
-        if (sourceToken != null) 'sourceToken': sourceToken,
-        if (target != null) 'target': target,
-        if (type != null) 'type': type,
-        if (updateTime != null) 'updateTime': updateTime,
-        if (versionId != null) 'versionId': versionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (buildId != null) 'buildId': buildId!,
+        if (request != null) 'request': request!,
+        if (sourceToken != null) 'sourceToken': sourceToken!,
+        if (target != null) 'target': target!,
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (versionId != null) 'versionId': versionId!,
       };
 }
 
@@ -1995,14 +1949,14 @@ class OperationMetadataV1 {
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
+  core.List<AuditConfig>? auditConfigs;
 
   /// Associates a list of `members` to a `role`.
   ///
   /// Optionally, may specify a `condition` that determines how and when the
   /// `bindings` are applied. Each of the `bindings` must contain at least one
   /// member.
-  core.List<Binding> bindings;
+  core.List<Binding>? bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
   /// simultaneous updates of a policy from overwriting each other.
@@ -2016,8 +1970,8 @@ class Policy {
   /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
   /// then IAM allows you to overwrite a version `3` policy with a version `1`
   /// policy, and all of the conditions in the version `3` policy are lost.
-  core.String etag;
-  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> _bytes) {
     etag =
@@ -2041,7 +1995,7 @@ class Policy {
   /// leave the field unset. To learn which resources support conditions in
   /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  core.int version;
+  core.int? version;
 
   Policy();
 
@@ -2066,13 +2020,13 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (auditConfigs != null)
-          'auditConfigs': auditConfigs.map((value) => value.toJson()).toList(),
+          'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
-          'bindings': bindings.map((value) => value.toJson()).toList(),
-        if (etag != null) 'etag': etag,
-        if (version != null) 'version': version,
+          'bindings': bindings!.map((value) => value.toJson()).toList(),
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -2088,7 +2042,7 @@ class Retry {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -2098,13 +2052,13 @@ class SetIamPolicyRequest {
   /// The size of the policy is limited to a few 10s of KB. An empty policy is a
   /// valid policy but certain Cloud Platform services (such as Projects) might
   /// reject them.
-  Policy policy;
+  Policy? policy;
 
   /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
   ///
   /// Only the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used: `paths: "bindings, etag"`
-  core.String updateMask;
+  core.String? updateMask;
 
   SetIamPolicyRequest();
 
@@ -2118,9 +2072,9 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (policy != null) 'policy': policy.toJson(),
-        if (updateMask != null) 'updateMask': updateMask,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (policy != null) 'policy': policy!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -2133,7 +2087,7 @@ class SourceRepository {
   /// It always points to a specific commit in the format described above.
   ///
   /// Output only.
-  core.String deployedUrl;
+  core.String? deployedUrl;
 
   /// The URL pointing to the hosted repository where the function is defined.
   ///
@@ -2147,7 +2101,7 @@ class SourceRepository {
   /// `https://source.developers.google.com/projects / * /repos / *
   /// /fixed-aliases / * /paths / * ` You may omit `paths / * ` if you want to
   /// use the main directory.
-  core.String url;
+  core.String? url;
 
   SourceRepository();
 
@@ -2160,9 +2114,9 @@ class SourceRepository {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (deployedUrl != null) 'deployedUrl': deployedUrl,
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (deployedUrl != null) 'deployedUrl': deployedUrl!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -2175,7 +2129,7 @@ class SourceRepository {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -2183,13 +2137,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -2213,10 +2167,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -2227,7 +2181,7 @@ class TestIamPermissionsRequest {
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
   /// For more information see
   /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsRequest();
 
@@ -2239,8 +2193,8 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }
 
@@ -2248,7 +2202,7 @@ class TestIamPermissionsRequest {
 class TestIamPermissionsResponse {
   /// A subset of `TestPermissionsRequest.permissions` that the caller is
   /// allowed.
-  core.List<core.String> permissions;
+  core.List<core.String>? permissions;
 
   TestIamPermissionsResponse();
 
@@ -2260,7 +2214,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (permissions != null) 'permissions': permissions,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
       };
 }

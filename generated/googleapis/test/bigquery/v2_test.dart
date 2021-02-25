@@ -47,13 +47,34 @@ api.AggregateClassificationMetrics buildAggregateClassificationMetrics() {
 void checkAggregateClassificationMetrics(api.AggregateClassificationMetrics o) {
   buildCounterAggregateClassificationMetrics++;
   if (buildCounterAggregateClassificationMetrics < 3) {
-    unittest.expect(o.accuracy, unittest.equals(42.0));
-    unittest.expect(o.f1Score, unittest.equals(42.0));
-    unittest.expect(o.logLoss, unittest.equals(42.0));
-    unittest.expect(o.precision, unittest.equals(42.0));
-    unittest.expect(o.recall, unittest.equals(42.0));
-    unittest.expect(o.rocAuc, unittest.equals(42.0));
-    unittest.expect(o.threshold, unittest.equals(42.0));
+    unittest.expect(
+      o.accuracy!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.f1Score!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.logLoss!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.precision!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.recall!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.rocAuc!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.threshold!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterAggregateClassificationMetrics--;
 }
@@ -75,10 +96,19 @@ api.Argument buildArgument() {
 void checkArgument(api.Argument o) {
   buildCounterArgument++;
   if (buildCounterArgument < 3) {
-    unittest.expect(o.argumentKind, unittest.equals('foo'));
-    checkStandardSqlDataType(o.dataType as api.StandardSqlDataType);
-    unittest.expect(o.mode, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(
+      o.argumentKind!,
+      unittest.equals('foo'),
+    );
+    checkStandardSqlDataType(o.dataType! as api.StandardSqlDataType);
+    unittest.expect(
+      o.mode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterArgument--;
 }
@@ -92,8 +122,14 @@ core.List<core.double> buildUnnamed1360() {
 
 void checkUnnamed1360(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42.0));
-  unittest.expect(o[1], unittest.equals(42.0));
+  unittest.expect(
+    o[0],
+    unittest.equals(42.0),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42.0),
+  );
 }
 
 core.List<core.double> buildUnnamed1361() {
@@ -105,8 +141,14 @@ core.List<core.double> buildUnnamed1361() {
 
 void checkUnnamed1361(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals(42.0));
-  unittest.expect(o[1], unittest.equals(42.0));
+  unittest.expect(
+    o[0],
+    unittest.equals(42.0),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42.0),
+  );
 }
 
 core.int buildCounterArimaCoefficients = 0;
@@ -125,9 +167,12 @@ api.ArimaCoefficients buildArimaCoefficients() {
 void checkArimaCoefficients(api.ArimaCoefficients o) {
   buildCounterArimaCoefficients++;
   if (buildCounterArimaCoefficients < 3) {
-    checkUnnamed1360(o.autoRegressiveCoefficients);
-    unittest.expect(o.interceptCoefficient, unittest.equals(42.0));
-    checkUnnamed1361(o.movingAverageCoefficients);
+    checkUnnamed1360(o.autoRegressiveCoefficients!);
+    unittest.expect(
+      o.interceptCoefficient!,
+      unittest.equals(42.0),
+    );
+    checkUnnamed1361(o.movingAverageCoefficients!);
   }
   buildCounterArimaCoefficients--;
 }
@@ -148,9 +193,18 @@ api.ArimaFittingMetrics buildArimaFittingMetrics() {
 void checkArimaFittingMetrics(api.ArimaFittingMetrics o) {
   buildCounterArimaFittingMetrics++;
   if (buildCounterArimaFittingMetrics < 3) {
-    unittest.expect(o.aic, unittest.equals(42.0));
-    unittest.expect(o.logLikelihood, unittest.equals(42.0));
-    unittest.expect(o.variance, unittest.equals(42.0));
+    unittest.expect(
+      o.aic!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.logLikelihood!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.variance!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterArimaFittingMetrics--;
 }
@@ -218,8 +272,14 @@ core.List<core.String> buildUnnamed1366() {
 
 void checkUnnamed1366(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed1367() {
@@ -231,8 +291,14 @@ core.List<core.String> buildUnnamed1367() {
 
 void checkUnnamed1367(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterArimaForecastingMetrics = 0;
@@ -254,12 +320,12 @@ api.ArimaForecastingMetrics buildArimaForecastingMetrics() {
 void checkArimaForecastingMetrics(api.ArimaForecastingMetrics o) {
   buildCounterArimaForecastingMetrics++;
   if (buildCounterArimaForecastingMetrics < 3) {
-    checkUnnamed1362(o.arimaFittingMetrics);
-    checkUnnamed1363(o.arimaSingleModelForecastingMetrics);
-    checkUnnamed1364(o.hasDrift);
-    checkUnnamed1365(o.nonSeasonalOrder);
-    checkUnnamed1366(o.seasonalPeriods);
-    checkUnnamed1367(o.timeSeriesId);
+    checkUnnamed1362(o.arimaFittingMetrics!);
+    checkUnnamed1363(o.arimaSingleModelForecastingMetrics!);
+    checkUnnamed1364(o.hasDrift!);
+    checkUnnamed1365(o.nonSeasonalOrder!);
+    checkUnnamed1366(o.seasonalPeriods!);
+    checkUnnamed1367(o.timeSeriesId!);
   }
   buildCounterArimaForecastingMetrics--;
 }
@@ -273,8 +339,14 @@ core.List<core.String> buildUnnamed1368() {
 
 void checkUnnamed1368(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterArimaModelInfo = 0;
@@ -296,12 +368,15 @@ api.ArimaModelInfo buildArimaModelInfo() {
 void checkArimaModelInfo(api.ArimaModelInfo o) {
   buildCounterArimaModelInfo++;
   if (buildCounterArimaModelInfo < 3) {
-    checkArimaCoefficients(o.arimaCoefficients as api.ArimaCoefficients);
-    checkArimaFittingMetrics(o.arimaFittingMetrics as api.ArimaFittingMetrics);
-    unittest.expect(o.hasDrift, unittest.isTrue);
-    checkArimaOrder(o.nonSeasonalOrder as api.ArimaOrder);
-    checkUnnamed1368(o.seasonalPeriods);
-    unittest.expect(o.timeSeriesId, unittest.equals('foo'));
+    checkArimaCoefficients(o.arimaCoefficients! as api.ArimaCoefficients);
+    checkArimaFittingMetrics(o.arimaFittingMetrics! as api.ArimaFittingMetrics);
+    unittest.expect(o.hasDrift!, unittest.isTrue);
+    checkArimaOrder(o.nonSeasonalOrder! as api.ArimaOrder);
+    checkUnnamed1368(o.seasonalPeriods!);
+    unittest.expect(
+      o.timeSeriesId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterArimaModelInfo--;
 }
@@ -322,9 +397,18 @@ api.ArimaOrder buildArimaOrder() {
 void checkArimaOrder(api.ArimaOrder o) {
   buildCounterArimaOrder++;
   if (buildCounterArimaOrder < 3) {
-    unittest.expect(o.d, unittest.equals('foo'));
-    unittest.expect(o.p, unittest.equals('foo'));
-    unittest.expect(o.q, unittest.equals('foo'));
+    unittest.expect(
+      o.d!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.p!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.q!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterArimaOrder--;
 }
@@ -351,8 +435,14 @@ core.List<core.String> buildUnnamed1370() {
 
 void checkUnnamed1370(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterArimaResult = 0;
@@ -370,8 +460,8 @@ api.ArimaResult buildArimaResult() {
 void checkArimaResult(api.ArimaResult o) {
   buildCounterArimaResult++;
   if (buildCounterArimaResult < 3) {
-    checkUnnamed1369(o.arimaModelInfo);
-    checkUnnamed1370(o.seasonalPeriods);
+    checkUnnamed1369(o.arimaModelInfo!);
+    checkUnnamed1370(o.seasonalPeriods!);
   }
   buildCounterArimaResult--;
 }
@@ -385,8 +475,14 @@ core.List<core.String> buildUnnamed1371() {
 
 void checkUnnamed1371(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterArimaSingleModelForecastingMetrics = 0;
@@ -409,11 +505,14 @@ void checkArimaSingleModelForecastingMetrics(
     api.ArimaSingleModelForecastingMetrics o) {
   buildCounterArimaSingleModelForecastingMetrics++;
   if (buildCounterArimaSingleModelForecastingMetrics < 3) {
-    checkArimaFittingMetrics(o.arimaFittingMetrics as api.ArimaFittingMetrics);
-    unittest.expect(o.hasDrift, unittest.isTrue);
-    checkArimaOrder(o.nonSeasonalOrder as api.ArimaOrder);
-    checkUnnamed1371(o.seasonalPeriods);
-    unittest.expect(o.timeSeriesId, unittest.equals('foo'));
+    checkArimaFittingMetrics(o.arimaFittingMetrics! as api.ArimaFittingMetrics);
+    unittest.expect(o.hasDrift!, unittest.isTrue);
+    checkArimaOrder(o.nonSeasonalOrder! as api.ArimaOrder);
+    checkUnnamed1371(o.seasonalPeriods!);
+    unittest.expect(
+      o.timeSeriesId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterArimaSingleModelForecastingMetrics--;
 }
@@ -446,8 +545,11 @@ api.AuditConfig buildAuditConfig() {
 void checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    checkUnnamed1372(o.auditLogConfigs);
-    unittest.expect(o.service, unittest.equals('foo'));
+    checkUnnamed1372(o.auditLogConfigs!);
+    unittest.expect(
+      o.service!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAuditConfig--;
 }
@@ -461,8 +563,14 @@ core.List<core.String> buildUnnamed1373() {
 
 void checkUnnamed1373(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterAuditLogConfig = 0;
@@ -480,8 +588,11 @@ api.AuditLogConfig buildAuditLogConfig() {
 void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed1373(o.exemptedMembers);
-    unittest.expect(o.logType, unittest.equals('foo'));
+    checkUnnamed1373(o.exemptedMembers!);
+    unittest.expect(
+      o.logType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterAuditLogConfig--;
 }
@@ -501,8 +612,14 @@ api.BigQueryModelTraining buildBigQueryModelTraining() {
 void checkBigQueryModelTraining(api.BigQueryModelTraining o) {
   buildCounterBigQueryModelTraining++;
   if (buildCounterBigQueryModelTraining < 3) {
-    unittest.expect(o.currentIteration, unittest.equals(42));
-    unittest.expect(o.expectedTotalIterations, unittest.equals('foo'));
+    unittest.expect(
+      o.currentIteration!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.expectedTotalIterations!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBigQueryModelTraining--;
 }
@@ -526,12 +643,27 @@ api.BigtableColumn buildBigtableColumn() {
 void checkBigtableColumn(api.BigtableColumn o) {
   buildCounterBigtableColumn++;
   if (buildCounterBigtableColumn < 3) {
-    unittest.expect(o.encoding, unittest.equals('foo'));
-    unittest.expect(o.fieldName, unittest.equals('foo'));
-    unittest.expect(o.onlyReadLatest, unittest.isTrue);
-    unittest.expect(o.qualifierEncoded, unittest.equals('foo'));
-    unittest.expect(o.qualifierString, unittest.equals('foo'));
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.encoding!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fieldName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.onlyReadLatest!, unittest.isTrue);
+    unittest.expect(
+      o.qualifierEncoded!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.qualifierString!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBigtableColumn--;
 }
@@ -567,11 +699,20 @@ api.BigtableColumnFamily buildBigtableColumnFamily() {
 void checkBigtableColumnFamily(api.BigtableColumnFamily o) {
   buildCounterBigtableColumnFamily++;
   if (buildCounterBigtableColumnFamily < 3) {
-    checkUnnamed1374(o.columns);
-    unittest.expect(o.encoding, unittest.equals('foo'));
-    unittest.expect(o.familyId, unittest.equals('foo'));
-    unittest.expect(o.onlyReadLatest, unittest.isTrue);
-    unittest.expect(o.type, unittest.equals('foo'));
+    checkUnnamed1374(o.columns!);
+    unittest.expect(
+      o.encoding!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.familyId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.onlyReadLatest!, unittest.isTrue);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBigtableColumnFamily--;
 }
@@ -605,9 +746,9 @@ api.BigtableOptions buildBigtableOptions() {
 void checkBigtableOptions(api.BigtableOptions o) {
   buildCounterBigtableOptions++;
   if (buildCounterBigtableOptions < 3) {
-    checkUnnamed1375(o.columnFamilies);
-    unittest.expect(o.ignoreUnspecifiedColumnFamilies, unittest.isTrue);
-    unittest.expect(o.readRowkeyAsString, unittest.isTrue);
+    checkUnnamed1375(o.columnFamilies!);
+    unittest.expect(o.ignoreUnspecifiedColumnFamilies!, unittest.isTrue);
+    unittest.expect(o.readRowkeyAsString!, unittest.isTrue);
   }
   buildCounterBigtableOptions--;
 }
@@ -642,11 +783,17 @@ api.BinaryClassificationMetrics buildBinaryClassificationMetrics() {
 void checkBinaryClassificationMetrics(api.BinaryClassificationMetrics o) {
   buildCounterBinaryClassificationMetrics++;
   if (buildCounterBinaryClassificationMetrics < 3) {
-    checkAggregateClassificationMetrics(
-        o.aggregateClassificationMetrics as api.AggregateClassificationMetrics);
-    checkUnnamed1376(o.binaryConfusionMatrixList);
-    unittest.expect(o.negativeLabel, unittest.equals('foo'));
-    unittest.expect(o.positiveLabel, unittest.equals('foo'));
+    checkAggregateClassificationMetrics(o.aggregateClassificationMetrics!
+        as api.AggregateClassificationMetrics);
+    checkUnnamed1376(o.binaryConfusionMatrixList!);
+    unittest.expect(
+      o.negativeLabel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.positiveLabel!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBinaryClassificationMetrics--;
 }
@@ -673,15 +820,42 @@ api.BinaryConfusionMatrix buildBinaryConfusionMatrix() {
 void checkBinaryConfusionMatrix(api.BinaryConfusionMatrix o) {
   buildCounterBinaryConfusionMatrix++;
   if (buildCounterBinaryConfusionMatrix < 3) {
-    unittest.expect(o.accuracy, unittest.equals(42.0));
-    unittest.expect(o.f1Score, unittest.equals(42.0));
-    unittest.expect(o.falseNegatives, unittest.equals('foo'));
-    unittest.expect(o.falsePositives, unittest.equals('foo'));
-    unittest.expect(o.positiveClassThreshold, unittest.equals(42.0));
-    unittest.expect(o.precision, unittest.equals(42.0));
-    unittest.expect(o.recall, unittest.equals(42.0));
-    unittest.expect(o.trueNegatives, unittest.equals('foo'));
-    unittest.expect(o.truePositives, unittest.equals('foo'));
+    unittest.expect(
+      o.accuracy!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.f1Score!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.falseNegatives!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.falsePositives!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.positiveClassThreshold!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.precision!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.recall!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.trueNegatives!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.truePositives!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBinaryConfusionMatrix--;
 }
@@ -695,8 +869,14 @@ core.List<core.String> buildUnnamed1377() {
 
 void checkUnnamed1377(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterBinding = 0;
@@ -715,9 +895,12 @@ api.Binding buildBinding() {
 void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkExpr(o.condition as api.Expr);
-    checkUnnamed1377(o.members);
-    unittest.expect(o.role, unittest.equals('foo'));
+    checkExpr(o.condition! as api.Expr);
+    checkUnnamed1377(o.members!);
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBinding--;
 }
@@ -740,11 +923,26 @@ api.BqmlIterationResult buildBqmlIterationResult() {
 void checkBqmlIterationResult(api.BqmlIterationResult o) {
   buildCounterBqmlIterationResult++;
   if (buildCounterBqmlIterationResult < 3) {
-    unittest.expect(o.durationMs, unittest.equals('foo'));
-    unittest.expect(o.evalLoss, unittest.equals(42.0));
-    unittest.expect(o.index, unittest.equals(42));
-    unittest.expect(o.learnRate, unittest.equals(42.0));
-    unittest.expect(o.trainingLoss, unittest.equals(42.0));
+    unittest.expect(
+      o.durationMs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.evalLoss!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.index!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.learnRate!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.trainingLoss!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterBqmlIterationResult--;
 }
@@ -784,15 +982,36 @@ api.BqmlTrainingRunTrainingOptions buildBqmlTrainingRunTrainingOptions() {
 void checkBqmlTrainingRunTrainingOptions(api.BqmlTrainingRunTrainingOptions o) {
   buildCounterBqmlTrainingRunTrainingOptions++;
   if (buildCounterBqmlTrainingRunTrainingOptions < 3) {
-    unittest.expect(o.earlyStop, unittest.isTrue);
-    unittest.expect(o.l1Reg, unittest.equals(42.0));
-    unittest.expect(o.l2Reg, unittest.equals(42.0));
-    unittest.expect(o.learnRate, unittest.equals(42.0));
-    unittest.expect(o.learnRateStrategy, unittest.equals('foo'));
-    unittest.expect(o.lineSearchInitLearnRate, unittest.equals(42.0));
-    unittest.expect(o.maxIteration, unittest.equals('foo'));
-    unittest.expect(o.minRelProgress, unittest.equals(42.0));
-    unittest.expect(o.warmStart, unittest.isTrue);
+    unittest.expect(o.earlyStop!, unittest.isTrue);
+    unittest.expect(
+      o.l1Reg!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.l2Reg!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.learnRate!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.learnRateStrategy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lineSearchInitLearnRate!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.maxIteration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.minRelProgress!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(o.warmStart!, unittest.isTrue);
   }
   buildCounterBqmlTrainingRunTrainingOptions--;
 }
@@ -814,12 +1033,17 @@ api.BqmlTrainingRun buildBqmlTrainingRun() {
 void checkBqmlTrainingRun(api.BqmlTrainingRun o) {
   buildCounterBqmlTrainingRun++;
   if (buildCounterBqmlTrainingRun < 3) {
-    checkUnnamed1378(o.iterationResults);
-    unittest.expect(o.startTime,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    unittest.expect(o.state, unittest.equals('foo'));
+    checkUnnamed1378(o.iterationResults!);
+    unittest.expect(
+      o.startTime!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
     checkBqmlTrainingRunTrainingOptions(
-        o.trainingOptions as api.BqmlTrainingRunTrainingOptions);
+        o.trainingOptions! as api.BqmlTrainingRunTrainingOptions);
   }
   buildCounterBqmlTrainingRun--;
 }
@@ -851,7 +1075,7 @@ api.CategoricalValue buildCategoricalValue() {
 void checkCategoricalValue(api.CategoricalValue o) {
   buildCounterCategoricalValue++;
   if (buildCounterCategoricalValue < 3) {
-    checkUnnamed1379(o.categoryCounts);
+    checkUnnamed1379(o.categoryCounts!);
   }
   buildCounterCategoricalValue--;
 }
@@ -871,8 +1095,14 @@ api.CategoryCount buildCategoryCount() {
 void checkCategoryCount(api.CategoryCount o) {
   buildCounterCategoryCount++;
   if (buildCounterCategoryCount < 3) {
-    unittest.expect(o.category, unittest.equals('foo'));
-    unittest.expect(o.count, unittest.equals('foo'));
+    unittest.expect(
+      o.category!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.count!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCategoryCount--;
 }
@@ -906,9 +1136,15 @@ api.Cluster buildCluster() {
 void checkCluster(api.Cluster o) {
   buildCounterCluster++;
   if (buildCounterCluster < 3) {
-    unittest.expect(o.centroidId, unittest.equals('foo'));
-    unittest.expect(o.count, unittest.equals('foo'));
-    checkUnnamed1380(o.featureValues);
+    unittest.expect(
+      o.centroidId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.count!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1380(o.featureValues!);
   }
   buildCounterCluster--;
 }
@@ -929,9 +1165,18 @@ api.ClusterInfo buildClusterInfo() {
 void checkClusterInfo(api.ClusterInfo o) {
   buildCounterClusterInfo++;
   if (buildCounterClusterInfo < 3) {
-    unittest.expect(o.centroidId, unittest.equals('foo'));
-    unittest.expect(o.clusterRadius, unittest.equals(42.0));
-    unittest.expect(o.clusterSize, unittest.equals('foo'));
+    unittest.expect(
+      o.centroidId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.clusterRadius!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.clusterSize!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterClusterInfo--;
 }
@@ -945,8 +1190,14 @@ core.List<core.String> buildUnnamed1381() {
 
 void checkUnnamed1381(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterClustering = 0;
@@ -963,7 +1214,7 @@ api.Clustering buildClustering() {
 void checkClustering(api.Clustering o) {
   buildCounterClustering++;
   if (buildCounterClustering < 3) {
-    checkUnnamed1381(o.fields);
+    checkUnnamed1381(o.fields!);
   }
   buildCounterClustering--;
 }
@@ -997,9 +1248,15 @@ api.ClusteringMetrics buildClusteringMetrics() {
 void checkClusteringMetrics(api.ClusteringMetrics o) {
   buildCounterClusteringMetrics++;
   if (buildCounterClusteringMetrics < 3) {
-    checkUnnamed1382(o.clusters);
-    unittest.expect(o.daviesBouldinIndex, unittest.equals(42.0));
-    unittest.expect(o.meanSquaredDistance, unittest.equals(42.0));
+    checkUnnamed1382(o.clusters!);
+    unittest.expect(
+      o.daviesBouldinIndex!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.meanSquaredDistance!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterClusteringMetrics--;
 }
@@ -1032,8 +1289,11 @@ api.ConfusionMatrix buildConfusionMatrix() {
 void checkConfusionMatrix(api.ConfusionMatrix o) {
   buildCounterConfusionMatrix++;
   if (buildCounterConfusionMatrix < 3) {
-    unittest.expect(o.confidenceThreshold, unittest.equals(42.0));
-    checkUnnamed1383(o.rows);
+    unittest.expect(
+      o.confidenceThreshold!,
+      unittest.equals(42.0),
+    );
+    checkUnnamed1383(o.rows!);
   }
   buildCounterConfusionMatrix--;
 }
@@ -1053,8 +1313,14 @@ api.ConnectionProperty buildConnectionProperty() {
 void checkConnectionProperty(api.ConnectionProperty o) {
   buildCounterConnectionProperty++;
   if (buildCounterConnectionProperty < 3) {
-    unittest.expect(o.key, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterConnectionProperty--;
 }
@@ -1078,12 +1344,24 @@ api.CsvOptions buildCsvOptions() {
 void checkCsvOptions(api.CsvOptions o) {
   buildCounterCsvOptions++;
   if (buildCounterCsvOptions < 3) {
-    unittest.expect(o.allowJaggedRows, unittest.isTrue);
-    unittest.expect(o.allowQuotedNewlines, unittest.isTrue);
-    unittest.expect(o.encoding, unittest.equals('foo'));
-    unittest.expect(o.fieldDelimiter, unittest.equals('foo'));
-    unittest.expect(o.quote, unittest.equals('foo'));
-    unittest.expect(o.skipLeadingRows, unittest.equals('foo'));
+    unittest.expect(o.allowJaggedRows!, unittest.isTrue);
+    unittest.expect(o.allowQuotedNewlines!, unittest.isTrue);
+    unittest.expect(
+      o.encoding!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fieldDelimiter!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.quote!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.skipLeadingRows!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCsvOptions--;
 }
@@ -1103,8 +1381,8 @@ api.DataSplitResult buildDataSplitResult() {
 void checkDataSplitResult(api.DataSplitResult o) {
   buildCounterDataSplitResult++;
   if (buildCounterDataSplitResult < 3) {
-    checkTableReference(o.evaluationTable as api.TableReference);
-    checkTableReference(o.trainingTable as api.TableReference);
+    checkTableReference(o.evaluationTable! as api.TableReference);
+    checkTableReference(o.trainingTable! as api.TableReference);
   }
   buildCounterDataSplitResult--;
 }
@@ -1131,15 +1409,33 @@ api.DatasetAccess buildDatasetAccess() {
 void checkDatasetAccess(api.DatasetAccess o) {
   buildCounterDatasetAccess++;
   if (buildCounterDatasetAccess < 3) {
-    checkDatasetAccessEntry(o.dataset as api.DatasetAccessEntry);
-    unittest.expect(o.domain, unittest.equals('foo'));
-    unittest.expect(o.groupByEmail, unittest.equals('foo'));
-    unittest.expect(o.iamMember, unittest.equals('foo'));
-    unittest.expect(o.role, unittest.equals('foo'));
-    checkRoutineReference(o.routine as api.RoutineReference);
-    unittest.expect(o.specialGroup, unittest.equals('foo'));
-    unittest.expect(o.userByEmail, unittest.equals('foo'));
-    checkTableReference(o.view as api.TableReference);
+    checkDatasetAccessEntry(o.dataset! as api.DatasetAccessEntry);
+    unittest.expect(
+      o.domain!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.groupByEmail!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.iamMember!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
+    checkRoutineReference(o.routine! as api.RoutineReference);
+    unittest.expect(
+      o.specialGroup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.userByEmail!,
+      unittest.equals('foo'),
+    );
+    checkTableReference(o.view! as api.TableReference);
   }
   buildCounterDatasetAccess--;
 }
@@ -1166,8 +1462,14 @@ core.Map<core.String, core.String> buildUnnamed1385() {
 
 void checkUnnamed1385(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterDataset = 0;
@@ -1199,23 +1501,56 @@ api.Dataset buildDataset() {
 void checkDataset(api.Dataset o) {
   buildCounterDataset++;
   if (buildCounterDataset < 3) {
-    checkUnnamed1384(o.access);
-    unittest.expect(o.creationTime, unittest.equals('foo'));
-    checkDatasetReference(o.datasetReference as api.DatasetReference);
+    checkUnnamed1384(o.access!);
+    unittest.expect(
+      o.creationTime!,
+      unittest.equals('foo'),
+    );
+    checkDatasetReference(o.datasetReference! as api.DatasetReference);
     checkEncryptionConfiguration(
-        o.defaultEncryptionConfiguration as api.EncryptionConfiguration);
-    unittest.expect(o.defaultPartitionExpirationMs, unittest.equals('foo'));
-    unittest.expect(o.defaultTableExpirationMs, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.friendlyName, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1385(o.labels);
-    unittest.expect(o.lastModifiedTime, unittest.equals('foo'));
-    unittest.expect(o.location, unittest.equals('foo'));
-    unittest.expect(o.satisfiesPZS, unittest.isTrue);
-    unittest.expect(o.selfLink, unittest.equals('foo'));
+        o.defaultEncryptionConfiguration! as api.EncryptionConfiguration);
+    unittest.expect(
+      o.defaultPartitionExpirationMs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.defaultTableExpirationMs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.friendlyName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1385(o.labels!);
+    unittest.expect(
+      o.lastModifiedTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.satisfiesPZS!, unittest.isTrue);
+    unittest.expect(
+      o.selfLink!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDataset--;
 }
@@ -1234,7 +1569,10 @@ api.DatasetAccessEntryTargetTypes buildDatasetAccessEntryTargetTypes() {
 void checkDatasetAccessEntryTargetTypes(api.DatasetAccessEntryTargetTypes o) {
   buildCounterDatasetAccessEntryTargetTypes++;
   if (buildCounterDatasetAccessEntryTargetTypes < 3) {
-    unittest.expect(o.targetType, unittest.equals('foo'));
+    unittest.expect(
+      o.targetType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDatasetAccessEntryTargetTypes--;
 }
@@ -1267,8 +1605,8 @@ api.DatasetAccessEntry buildDatasetAccessEntry() {
 void checkDatasetAccessEntry(api.DatasetAccessEntry o) {
   buildCounterDatasetAccessEntry++;
   if (buildCounterDatasetAccessEntry < 3) {
-    checkDatasetReference(o.dataset as api.DatasetReference);
-    checkUnnamed1386(o.targetTypes);
+    checkDatasetReference(o.dataset! as api.DatasetReference);
+    checkUnnamed1386(o.targetTypes!);
   }
   buildCounterDatasetAccessEntry--;
 }
@@ -1282,8 +1620,14 @@ core.Map<core.String, core.String> buildUnnamed1387() {
 
 void checkUnnamed1387(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterDatasetListDatasets = 0;
@@ -1305,12 +1649,24 @@ api.DatasetListDatasets buildDatasetListDatasets() {
 void checkDatasetListDatasets(api.DatasetListDatasets o) {
   buildCounterDatasetListDatasets++;
   if (buildCounterDatasetListDatasets < 3) {
-    checkDatasetReference(o.datasetReference as api.DatasetReference);
-    unittest.expect(o.friendlyName, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1387(o.labels);
-    unittest.expect(o.location, unittest.equals('foo'));
+    checkDatasetReference(o.datasetReference! as api.DatasetReference);
+    unittest.expect(
+      o.friendlyName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1387(o.labels!);
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDatasetListDatasets--;
 }
@@ -1345,10 +1701,19 @@ api.DatasetList buildDatasetList() {
 void checkDatasetList(api.DatasetList o) {
   buildCounterDatasetList++;
   if (buildCounterDatasetList < 3) {
-    checkUnnamed1388(o.datasets);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed1388(o.datasets!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDatasetList--;
 }
@@ -1368,8 +1733,14 @@ api.DatasetReference buildDatasetReference() {
 void checkDatasetReference(api.DatasetReference o) {
   buildCounterDatasetReference++;
   if (buildCounterDatasetReference < 3) {
-    unittest.expect(o.datasetId, unittest.equals('foo'));
-    unittest.expect(o.projectId, unittest.equals('foo'));
+    unittest.expect(
+      o.datasetId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDatasetReference--;
 }
@@ -1383,8 +1754,14 @@ core.Map<core.String, core.String> buildUnnamed1389() {
 
 void checkUnnamed1389(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterDestinationTableProperties = 0;
@@ -1403,9 +1780,15 @@ api.DestinationTableProperties buildDestinationTableProperties() {
 void checkDestinationTableProperties(api.DestinationTableProperties o) {
   buildCounterDestinationTableProperties++;
   if (buildCounterDestinationTableProperties < 3) {
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.friendlyName, unittest.equals('foo'));
-    checkUnnamed1389(o.labels);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.friendlyName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1389(o.labels!);
   }
   buildCounterDestinationTableProperties--;
 }
@@ -1424,7 +1807,10 @@ api.DimensionalityReductionMetrics buildDimensionalityReductionMetrics() {
 void checkDimensionalityReductionMetrics(api.DimensionalityReductionMetrics o) {
   buildCounterDimensionalityReductionMetrics++;
   if (buildCounterDimensionalityReductionMetrics < 3) {
-    unittest.expect(o.totalExplainedVarianceRatio, unittest.equals(42.0));
+    unittest.expect(
+      o.totalExplainedVarianceRatio!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterDimensionalityReductionMetrics--;
 }
@@ -1443,7 +1829,10 @@ api.EncryptionConfiguration buildEncryptionConfiguration() {
 void checkEncryptionConfiguration(api.EncryptionConfiguration o) {
   buildCounterEncryptionConfiguration++;
   if (buildCounterEncryptionConfiguration < 3) {
-    unittest.expect(o.kmsKeyName, unittest.equals('foo'));
+    unittest.expect(
+      o.kmsKeyName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterEncryptionConfiguration--;
 }
@@ -1463,8 +1852,14 @@ api.Entry buildEntry() {
 void checkEntry(api.Entry o) {
   buildCounterEntry++;
   if (buildCounterEntry < 3) {
-    unittest.expect(o.itemCount, unittest.equals('foo'));
-    unittest.expect(o.predictedLabel, unittest.equals('foo'));
+    unittest.expect(
+      o.itemCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.predictedLabel!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterEntry--;
 }
@@ -1486,10 +1881,22 @@ api.ErrorProto buildErrorProto() {
 void checkErrorProto(api.ErrorProto o) {
   buildCounterErrorProto++;
   if (buildCounterErrorProto < 3) {
-    unittest.expect(o.debugInfo, unittest.equals('foo'));
-    unittest.expect(o.location, unittest.equals('foo'));
-    unittest.expect(o.message, unittest.equals('foo'));
-    unittest.expect(o.reason, unittest.equals('foo'));
+    unittest.expect(
+      o.debugInfo!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reason!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterErrorProto--;
 }
@@ -1515,16 +1922,16 @@ void checkEvaluationMetrics(api.EvaluationMetrics o) {
   buildCounterEvaluationMetrics++;
   if (buildCounterEvaluationMetrics < 3) {
     checkArimaForecastingMetrics(
-        o.arimaForecastingMetrics as api.ArimaForecastingMetrics);
+        o.arimaForecastingMetrics! as api.ArimaForecastingMetrics);
     checkBinaryClassificationMetrics(
-        o.binaryClassificationMetrics as api.BinaryClassificationMetrics);
-    checkClusteringMetrics(o.clusteringMetrics as api.ClusteringMetrics);
-    checkDimensionalityReductionMetrics(
-        o.dimensionalityReductionMetrics as api.DimensionalityReductionMetrics);
-    checkMultiClassClassificationMetrics(o.multiClassClassificationMetrics
+        o.binaryClassificationMetrics! as api.BinaryClassificationMetrics);
+    checkClusteringMetrics(o.clusteringMetrics! as api.ClusteringMetrics);
+    checkDimensionalityReductionMetrics(o.dimensionalityReductionMetrics!
+        as api.DimensionalityReductionMetrics);
+    checkMultiClassClassificationMetrics(o.multiClassClassificationMetrics!
         as api.MultiClassClassificationMetrics);
-    checkRankingMetrics(o.rankingMetrics as api.RankingMetrics);
-    checkRegressionMetrics(o.regressionMetrics as api.RegressionMetrics);
+    checkRankingMetrics(o.rankingMetrics! as api.RankingMetrics);
+    checkRegressionMetrics(o.regressionMetrics! as api.RegressionMetrics);
   }
   buildCounterEvaluationMetrics--;
 }
@@ -1538,8 +1945,14 @@ core.List<core.String> buildUnnamed1390() {
 
 void checkUnnamed1390(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.ExplainQueryStep> buildUnnamed1391() {
@@ -1598,36 +2011,120 @@ api.ExplainQueryStage buildExplainQueryStage() {
 void checkExplainQueryStage(api.ExplainQueryStage o) {
   buildCounterExplainQueryStage++;
   if (buildCounterExplainQueryStage < 3) {
-    unittest.expect(o.completedParallelInputs, unittest.equals('foo'));
-    unittest.expect(o.computeMsAvg, unittest.equals('foo'));
-    unittest.expect(o.computeMsMax, unittest.equals('foo'));
-    unittest.expect(o.computeRatioAvg, unittest.equals(42.0));
-    unittest.expect(o.computeRatioMax, unittest.equals(42.0));
-    unittest.expect(o.endMs, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed1390(o.inputStages);
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.parallelInputs, unittest.equals('foo'));
-    unittest.expect(o.readMsAvg, unittest.equals('foo'));
-    unittest.expect(o.readMsMax, unittest.equals('foo'));
-    unittest.expect(o.readRatioAvg, unittest.equals(42.0));
-    unittest.expect(o.readRatioMax, unittest.equals(42.0));
-    unittest.expect(o.recordsRead, unittest.equals('foo'));
-    unittest.expect(o.recordsWritten, unittest.equals('foo'));
-    unittest.expect(o.shuffleOutputBytes, unittest.equals('foo'));
-    unittest.expect(o.shuffleOutputBytesSpilled, unittest.equals('foo'));
-    unittest.expect(o.slotMs, unittest.equals('foo'));
-    unittest.expect(o.startMs, unittest.equals('foo'));
-    unittest.expect(o.status, unittest.equals('foo'));
-    checkUnnamed1391(o.steps);
-    unittest.expect(o.waitMsAvg, unittest.equals('foo'));
-    unittest.expect(o.waitMsMax, unittest.equals('foo'));
-    unittest.expect(o.waitRatioAvg, unittest.equals(42.0));
-    unittest.expect(o.waitRatioMax, unittest.equals(42.0));
-    unittest.expect(o.writeMsAvg, unittest.equals('foo'));
-    unittest.expect(o.writeMsMax, unittest.equals('foo'));
-    unittest.expect(o.writeRatioAvg, unittest.equals(42.0));
-    unittest.expect(o.writeRatioMax, unittest.equals(42.0));
+    unittest.expect(
+      o.completedParallelInputs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.computeMsAvg!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.computeMsMax!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.computeRatioAvg!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.computeRatioMax!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.endMs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1390(o.inputStages!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.parallelInputs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.readMsAvg!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.readMsMax!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.readRatioAvg!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.readRatioMax!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.recordsRead!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.recordsWritten!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.shuffleOutputBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.shuffleOutputBytesSpilled!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.slotMs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startMs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1391(o.steps!);
+    unittest.expect(
+      o.waitMsAvg!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.waitMsMax!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.waitRatioAvg!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.waitRatioMax!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.writeMsAvg!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.writeMsMax!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.writeRatioAvg!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.writeRatioMax!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterExplainQueryStage--;
 }
@@ -1641,8 +2138,14 @@ core.List<core.String> buildUnnamed1392() {
 
 void checkUnnamed1392(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterExplainQueryStep = 0;
@@ -1660,8 +2163,11 @@ api.ExplainQueryStep buildExplainQueryStep() {
 void checkExplainQueryStep(api.ExplainQueryStep o) {
   buildCounterExplainQueryStep++;
   if (buildCounterExplainQueryStep < 3) {
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1392(o.substeps);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1392(o.substeps!);
   }
   buildCounterExplainQueryStep--;
 }
@@ -1681,8 +2187,14 @@ api.Explanation buildExplanation() {
 void checkExplanation(api.Explanation o) {
   buildCounterExplanation++;
   if (buildCounterExplanation < 3) {
-    unittest.expect(o.attribution, unittest.equals(42.0));
-    unittest.expect(o.featureName, unittest.equals('foo'));
+    unittest.expect(
+      o.attribution!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.featureName!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterExplanation--;
 }
@@ -1704,10 +2216,22 @@ api.Expr buildExpr() {
 void checkExpr(api.Expr o) {
   buildCounterExpr++;
   if (buildCounterExpr < 3) {
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.expression, unittest.equals('foo'));
-    unittest.expect(o.location, unittest.equals('foo'));
-    unittest.expect(o.title, unittest.equals('foo'));
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expression!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterExpr--;
 }
@@ -1721,8 +2245,14 @@ core.List<core.String> buildUnnamed1393() {
 
 void checkUnnamed1393(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterExternalDataConfiguration = 0;
@@ -1750,19 +2280,31 @@ api.ExternalDataConfiguration buildExternalDataConfiguration() {
 void checkExternalDataConfiguration(api.ExternalDataConfiguration o) {
   buildCounterExternalDataConfiguration++;
   if (buildCounterExternalDataConfiguration < 3) {
-    unittest.expect(o.autodetect, unittest.isTrue);
-    checkBigtableOptions(o.bigtableOptions as api.BigtableOptions);
-    unittest.expect(o.compression, unittest.equals('foo'));
-    unittest.expect(o.connectionId, unittest.equals('foo'));
-    checkCsvOptions(o.csvOptions as api.CsvOptions);
-    checkGoogleSheetsOptions(o.googleSheetsOptions as api.GoogleSheetsOptions);
+    unittest.expect(o.autodetect!, unittest.isTrue);
+    checkBigtableOptions(o.bigtableOptions! as api.BigtableOptions);
+    unittest.expect(
+      o.compression!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.connectionId!,
+      unittest.equals('foo'),
+    );
+    checkCsvOptions(o.csvOptions! as api.CsvOptions);
+    checkGoogleSheetsOptions(o.googleSheetsOptions! as api.GoogleSheetsOptions);
     checkHivePartitioningOptions(
-        o.hivePartitioningOptions as api.HivePartitioningOptions);
-    unittest.expect(o.ignoreUnknownValues, unittest.isTrue);
-    unittest.expect(o.maxBadRecords, unittest.equals(42));
-    checkTableSchema(o.schema as api.TableSchema);
-    unittest.expect(o.sourceFormat, unittest.equals('foo'));
-    checkUnnamed1393(o.sourceUris);
+        o.hivePartitioningOptions! as api.HivePartitioningOptions);
+    unittest.expect(o.ignoreUnknownValues!, unittest.isTrue);
+    unittest.expect(
+      o.maxBadRecords!,
+      unittest.equals(42),
+    );
+    checkTableSchema(o.schema! as api.TableSchema);
+    unittest.expect(
+      o.sourceFormat!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1393(o.sourceUris!);
   }
   buildCounterExternalDataConfiguration--;
 }
@@ -1783,9 +2325,15 @@ api.FeatureValue buildFeatureValue() {
 void checkFeatureValue(api.FeatureValue o) {
   buildCounterFeatureValue++;
   if (buildCounterFeatureValue < 3) {
-    checkCategoricalValue(o.categoricalValue as api.CategoricalValue);
-    unittest.expect(o.featureColumn, unittest.equals('foo'));
-    unittest.expect(o.numericalValue, unittest.equals(42.0));
+    checkCategoricalValue(o.categoricalValue! as api.CategoricalValue);
+    unittest.expect(
+      o.featureColumn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numericalValue!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterFeatureValue--;
 }
@@ -1804,7 +2352,7 @@ api.GetIamPolicyRequest buildGetIamPolicyRequest() {
 void checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
   buildCounterGetIamPolicyRequest++;
   if (buildCounterGetIamPolicyRequest < 3) {
-    checkGetPolicyOptions(o.options as api.GetPolicyOptions);
+    checkGetPolicyOptions(o.options! as api.GetPolicyOptions);
   }
   buildCounterGetIamPolicyRequest--;
 }
@@ -1823,7 +2371,10 @@ api.GetPolicyOptions buildGetPolicyOptions() {
 void checkGetPolicyOptions(api.GetPolicyOptions o) {
   buildCounterGetPolicyOptions++;
   if (buildCounterGetPolicyOptions < 3) {
-    unittest.expect(o.requestedPolicyVersion, unittest.equals(42));
+    unittest.expect(
+      o.requestedPolicyVersion!,
+      unittest.equals(42),
+    );
   }
   buildCounterGetPolicyOptions--;
 }
@@ -1879,18 +2430,36 @@ api.GetQueryResultsResponse buildGetQueryResultsResponse() {
 void checkGetQueryResultsResponse(api.GetQueryResultsResponse o) {
   buildCounterGetQueryResultsResponse++;
   if (buildCounterGetQueryResultsResponse < 3) {
-    unittest.expect(o.cacheHit, unittest.isTrue);
-    checkUnnamed1394(o.errors);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.jobComplete, unittest.isTrue);
-    checkJobReference(o.jobReference as api.JobReference);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.numDmlAffectedRows, unittest.equals('foo'));
-    unittest.expect(o.pageToken, unittest.equals('foo'));
-    checkUnnamed1395(o.rows);
-    checkTableSchema(o.schema as api.TableSchema);
-    unittest.expect(o.totalBytesProcessed, unittest.equals('foo'));
-    unittest.expect(o.totalRows, unittest.equals('foo'));
+    unittest.expect(o.cacheHit!, unittest.isTrue);
+    checkUnnamed1394(o.errors!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.jobComplete!, unittest.isTrue);
+    checkJobReference(o.jobReference! as api.JobReference);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numDmlAffectedRows!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1395(o.rows!);
+    checkTableSchema(o.schema! as api.TableSchema);
+    unittest.expect(
+      o.totalBytesProcessed!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalRows!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGetQueryResultsResponse--;
 }
@@ -1910,8 +2479,14 @@ api.GetServiceAccountResponse buildGetServiceAccountResponse() {
 void checkGetServiceAccountResponse(api.GetServiceAccountResponse o) {
   buildCounterGetServiceAccountResponse++;
   if (buildCounterGetServiceAccountResponse < 3) {
-    unittest.expect(o.email, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(
+      o.email!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGetServiceAccountResponse--;
 }
@@ -1944,8 +2519,11 @@ api.GlobalExplanation buildGlobalExplanation() {
 void checkGlobalExplanation(api.GlobalExplanation o) {
   buildCounterGlobalExplanation++;
   if (buildCounterGlobalExplanation < 3) {
-    unittest.expect(o.classLabel, unittest.equals('foo'));
-    checkUnnamed1396(o.explanations);
+    unittest.expect(
+      o.classLabel!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1396(o.explanations!);
   }
   buildCounterGlobalExplanation--;
 }
@@ -1965,8 +2543,14 @@ api.GoogleSheetsOptions buildGoogleSheetsOptions() {
 void checkGoogleSheetsOptions(api.GoogleSheetsOptions o) {
   buildCounterGoogleSheetsOptions++;
   if (buildCounterGoogleSheetsOptions < 3) {
-    unittest.expect(o.range, unittest.equals('foo'));
-    unittest.expect(o.skipLeadingRows, unittest.equals('foo'));
+    unittest.expect(
+      o.range!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.skipLeadingRows!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleSheetsOptions--;
 }
@@ -1987,9 +2571,15 @@ api.HivePartitioningOptions buildHivePartitioningOptions() {
 void checkHivePartitioningOptions(api.HivePartitioningOptions o) {
   buildCounterHivePartitioningOptions++;
   if (buildCounterHivePartitioningOptions < 3) {
-    unittest.expect(o.mode, unittest.equals('foo'));
-    unittest.expect(o.requirePartitionFilter, unittest.isTrue);
-    unittest.expect(o.sourceUriPrefix, unittest.equals('foo'));
+    unittest.expect(
+      o.mode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.requirePartitionFilter!, unittest.isTrue);
+    unittest.expect(
+      o.sourceUriPrefix!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterHivePartitioningOptions--;
 }
@@ -2041,14 +2631,29 @@ api.IterationResult buildIterationResult() {
 void checkIterationResult(api.IterationResult o) {
   buildCounterIterationResult++;
   if (buildCounterIterationResult < 3) {
-    checkArimaResult(o.arimaResult as api.ArimaResult);
-    checkUnnamed1397(o.clusterInfos);
-    unittest.expect(o.durationMs, unittest.equals('foo'));
-    unittest.expect(o.evalLoss, unittest.equals(42.0));
-    unittest.expect(o.index, unittest.equals(42));
-    unittest.expect(o.learnRate, unittest.equals(42.0));
-    checkUnnamed1398(o.principalComponentInfos);
-    unittest.expect(o.trainingLoss, unittest.equals(42.0));
+    checkArimaResult(o.arimaResult! as api.ArimaResult);
+    checkUnnamed1397(o.clusterInfos!);
+    unittest.expect(
+      o.durationMs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.evalLoss!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.index!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.learnRate!,
+      unittest.equals(42.0),
+    );
+    checkUnnamed1398(o.principalComponentInfos!);
+    unittest.expect(
+      o.trainingLoss!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterIterationResult--;
 }
@@ -2075,15 +2680,30 @@ api.Job buildJob() {
 void checkJob(api.Job o) {
   buildCounterJob++;
   if (buildCounterJob < 3) {
-    checkJobConfiguration(o.configuration as api.JobConfiguration);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    checkJobReference(o.jobReference as api.JobReference);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.selfLink, unittest.equals('foo'));
-    checkJobStatistics(o.statistics as api.JobStatistics);
-    checkJobStatus(o.status as api.JobStatus);
-    unittest.expect(o.userEmail, unittest.equals('foo'));
+    checkJobConfiguration(o.configuration! as api.JobConfiguration);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    checkJobReference(o.jobReference! as api.JobReference);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.selfLink!,
+      unittest.equals('foo'),
+    );
+    checkJobStatistics(o.statistics! as api.JobStatistics);
+    checkJobStatus(o.status! as api.JobStatus);
+    unittest.expect(
+      o.userEmail!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterJob--;
 }
@@ -2103,8 +2723,11 @@ api.JobCancelResponse buildJobCancelResponse() {
 void checkJobCancelResponse(api.JobCancelResponse o) {
   buildCounterJobCancelResponse++;
   if (buildCounterJobCancelResponse < 3) {
-    checkJob(o.job as api.Job);
-    unittest.expect(o.kind, unittest.equals('foo'));
+    checkJob(o.job! as api.Job);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterJobCancelResponse--;
 }
@@ -2118,8 +2741,14 @@ core.Map<core.String, core.String> buildUnnamed1399() {
 
 void checkUnnamed1399(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterJobConfiguration = 0;
@@ -2143,14 +2772,20 @@ api.JobConfiguration buildJobConfiguration() {
 void checkJobConfiguration(api.JobConfiguration o) {
   buildCounterJobConfiguration++;
   if (buildCounterJobConfiguration < 3) {
-    checkJobConfigurationTableCopy(o.copy as api.JobConfigurationTableCopy);
-    unittest.expect(o.dryRun, unittest.isTrue);
-    checkJobConfigurationExtract(o.extract as api.JobConfigurationExtract);
-    unittest.expect(o.jobTimeoutMs, unittest.equals('foo'));
-    unittest.expect(o.jobType, unittest.equals('foo'));
-    checkUnnamed1399(o.labels);
-    checkJobConfigurationLoad(o.load as api.JobConfigurationLoad);
-    checkJobConfigurationQuery(o.query as api.JobConfigurationQuery);
+    checkJobConfigurationTableCopy(o.copy! as api.JobConfigurationTableCopy);
+    unittest.expect(o.dryRun!, unittest.isTrue);
+    checkJobConfigurationExtract(o.extract! as api.JobConfigurationExtract);
+    unittest.expect(
+      o.jobTimeoutMs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.jobType!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1399(o.labels!);
+    checkJobConfigurationLoad(o.load! as api.JobConfigurationLoad);
+    checkJobConfigurationQuery(o.query! as api.JobConfigurationQuery);
   }
   buildCounterJobConfiguration--;
 }
@@ -2164,8 +2799,14 @@ core.List<core.String> buildUnnamed1400() {
 
 void checkUnnamed1400(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterJobConfigurationExtract = 0;
@@ -2190,15 +2831,27 @@ api.JobConfigurationExtract buildJobConfigurationExtract() {
 void checkJobConfigurationExtract(api.JobConfigurationExtract o) {
   buildCounterJobConfigurationExtract++;
   if (buildCounterJobConfigurationExtract < 3) {
-    unittest.expect(o.compression, unittest.equals('foo'));
-    unittest.expect(o.destinationFormat, unittest.equals('foo'));
-    unittest.expect(o.destinationUri, unittest.equals('foo'));
-    checkUnnamed1400(o.destinationUris);
-    unittest.expect(o.fieldDelimiter, unittest.equals('foo'));
-    unittest.expect(o.printHeader, unittest.isTrue);
-    checkModelReference(o.sourceModel as api.ModelReference);
-    checkTableReference(o.sourceTable as api.TableReference);
-    unittest.expect(o.useAvroLogicalTypes, unittest.isTrue);
+    unittest.expect(
+      o.compression!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.destinationFormat!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.destinationUri!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1400(o.destinationUris!);
+    unittest.expect(
+      o.fieldDelimiter!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.printHeader!, unittest.isTrue);
+    checkModelReference(o.sourceModel! as api.ModelReference);
+    checkTableReference(o.sourceTable! as api.TableReference);
+    unittest.expect(o.useAvroLogicalTypes!, unittest.isTrue);
   }
   buildCounterJobConfigurationExtract--;
 }
@@ -2212,8 +2865,14 @@ core.List<core.String> buildUnnamed1401() {
 
 void checkUnnamed1401(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed1402() {
@@ -2225,8 +2884,14 @@ core.List<core.String> buildUnnamed1402() {
 
 void checkUnnamed1402(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed1403() {
@@ -2238,8 +2903,14 @@ core.List<core.String> buildUnnamed1403() {
 
 void checkUnnamed1403(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed1404() {
@@ -2251,8 +2922,14 @@ core.List<core.String> buildUnnamed1404() {
 
 void checkUnnamed1404(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterJobConfigurationLoad = 0;
@@ -2297,38 +2974,74 @@ api.JobConfigurationLoad buildJobConfigurationLoad() {
 void checkJobConfigurationLoad(api.JobConfigurationLoad o) {
   buildCounterJobConfigurationLoad++;
   if (buildCounterJobConfigurationLoad < 3) {
-    unittest.expect(o.allowJaggedRows, unittest.isTrue);
-    unittest.expect(o.allowQuotedNewlines, unittest.isTrue);
-    unittest.expect(o.autodetect, unittest.isTrue);
-    checkClustering(o.clustering as api.Clustering);
-    unittest.expect(o.createDisposition, unittest.equals('foo'));
-    checkUnnamed1401(o.decimalTargetTypes);
+    unittest.expect(o.allowJaggedRows!, unittest.isTrue);
+    unittest.expect(o.allowQuotedNewlines!, unittest.isTrue);
+    unittest.expect(o.autodetect!, unittest.isTrue);
+    checkClustering(o.clustering! as api.Clustering);
+    unittest.expect(
+      o.createDisposition!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1401(o.decimalTargetTypes!);
     checkEncryptionConfiguration(
-        o.destinationEncryptionConfiguration as api.EncryptionConfiguration);
-    checkTableReference(o.destinationTable as api.TableReference);
+        o.destinationEncryptionConfiguration! as api.EncryptionConfiguration);
+    checkTableReference(o.destinationTable! as api.TableReference);
     checkDestinationTableProperties(
-        o.destinationTableProperties as api.DestinationTableProperties);
-    unittest.expect(o.encoding, unittest.equals('foo'));
-    unittest.expect(o.fieldDelimiter, unittest.equals('foo'));
+        o.destinationTableProperties! as api.DestinationTableProperties);
+    unittest.expect(
+      o.encoding!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fieldDelimiter!,
+      unittest.equals('foo'),
+    );
     checkHivePartitioningOptions(
-        o.hivePartitioningOptions as api.HivePartitioningOptions);
-    unittest.expect(o.ignoreUnknownValues, unittest.isTrue);
-    unittest.expect(o.jsonExtension, unittest.equals('foo'));
-    unittest.expect(o.maxBadRecords, unittest.equals(42));
-    unittest.expect(o.nullMarker, unittest.equals('foo'));
-    checkUnnamed1402(o.projectionFields);
-    unittest.expect(o.quote, unittest.equals('foo'));
-    checkRangePartitioning(o.rangePartitioning as api.RangePartitioning);
-    checkTableSchema(o.schema as api.TableSchema);
-    unittest.expect(o.schemaInline, unittest.equals('foo'));
-    unittest.expect(o.schemaInlineFormat, unittest.equals('foo'));
-    checkUnnamed1403(o.schemaUpdateOptions);
-    unittest.expect(o.skipLeadingRows, unittest.equals(42));
-    unittest.expect(o.sourceFormat, unittest.equals('foo'));
-    checkUnnamed1404(o.sourceUris);
-    checkTimePartitioning(o.timePartitioning as api.TimePartitioning);
-    unittest.expect(o.useAvroLogicalTypes, unittest.isTrue);
-    unittest.expect(o.writeDisposition, unittest.equals('foo'));
+        o.hivePartitioningOptions! as api.HivePartitioningOptions);
+    unittest.expect(o.ignoreUnknownValues!, unittest.isTrue);
+    unittest.expect(
+      o.jsonExtension!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxBadRecords!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.nullMarker!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1402(o.projectionFields!);
+    unittest.expect(
+      o.quote!,
+      unittest.equals('foo'),
+    );
+    checkRangePartitioning(o.rangePartitioning! as api.RangePartitioning);
+    checkTableSchema(o.schema! as api.TableSchema);
+    unittest.expect(
+      o.schemaInline!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.schemaInlineFormat!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1403(o.schemaUpdateOptions!);
+    unittest.expect(
+      o.skipLeadingRows!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.sourceFormat!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1404(o.sourceUris!);
+    checkTimePartitioning(o.timePartitioning! as api.TimePartitioning);
+    unittest.expect(o.useAvroLogicalTypes!, unittest.isTrue);
+    unittest.expect(
+      o.writeDisposition!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterJobConfigurationLoad--;
 }
@@ -2368,8 +3081,14 @@ core.List<core.String> buildUnnamed1407() {
 
 void checkUnnamed1407(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.Map<core.String, api.ExternalDataConfiguration> buildUnnamed1408() {
@@ -2381,8 +3100,8 @@ core.Map<core.String, api.ExternalDataConfiguration> buildUnnamed1408() {
 
 void checkUnnamed1408(core.Map<core.String, api.ExternalDataConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkExternalDataConfiguration(o['x'] as api.ExternalDataConfiguration);
-  checkExternalDataConfiguration(o['y'] as api.ExternalDataConfiguration);
+  checkExternalDataConfiguration(o['x']! as api.ExternalDataConfiguration);
+  checkExternalDataConfiguration(o['y']! as api.ExternalDataConfiguration);
 }
 
 core.List<api.UserDefinedFunctionResource> buildUnnamed1409() {
@@ -2434,30 +3153,51 @@ api.JobConfigurationQuery buildJobConfigurationQuery() {
 void checkJobConfigurationQuery(api.JobConfigurationQuery o) {
   buildCounterJobConfigurationQuery++;
   if (buildCounterJobConfigurationQuery < 3) {
-    unittest.expect(o.allowLargeResults, unittest.isTrue);
-    checkClustering(o.clustering as api.Clustering);
-    checkUnnamed1405(o.connectionProperties);
-    unittest.expect(o.createDisposition, unittest.equals('foo'));
-    checkDatasetReference(o.defaultDataset as api.DatasetReference);
+    unittest.expect(o.allowLargeResults!, unittest.isTrue);
+    checkClustering(o.clustering! as api.Clustering);
+    checkUnnamed1405(o.connectionProperties!);
+    unittest.expect(
+      o.createDisposition!,
+      unittest.equals('foo'),
+    );
+    checkDatasetReference(o.defaultDataset! as api.DatasetReference);
     checkEncryptionConfiguration(
-        o.destinationEncryptionConfiguration as api.EncryptionConfiguration);
-    checkTableReference(o.destinationTable as api.TableReference);
-    unittest.expect(o.flattenResults, unittest.isTrue);
-    unittest.expect(o.maximumBillingTier, unittest.equals(42));
-    unittest.expect(o.maximumBytesBilled, unittest.equals('foo'));
-    unittest.expect(o.parameterMode, unittest.equals('foo'));
-    unittest.expect(o.preserveNulls, unittest.isTrue);
-    unittest.expect(o.priority, unittest.equals('foo'));
-    unittest.expect(o.query, unittest.equals('foo'));
-    checkUnnamed1406(o.queryParameters);
-    checkRangePartitioning(o.rangePartitioning as api.RangePartitioning);
-    checkUnnamed1407(o.schemaUpdateOptions);
-    checkUnnamed1408(o.tableDefinitions);
-    checkTimePartitioning(o.timePartitioning as api.TimePartitioning);
-    unittest.expect(o.useLegacySql, unittest.isTrue);
-    unittest.expect(o.useQueryCache, unittest.isTrue);
-    checkUnnamed1409(o.userDefinedFunctionResources);
-    unittest.expect(o.writeDisposition, unittest.equals('foo'));
+        o.destinationEncryptionConfiguration! as api.EncryptionConfiguration);
+    checkTableReference(o.destinationTable! as api.TableReference);
+    unittest.expect(o.flattenResults!, unittest.isTrue);
+    unittest.expect(
+      o.maximumBillingTier!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.maximumBytesBilled!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.parameterMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.preserveNulls!, unittest.isTrue);
+    unittest.expect(
+      o.priority!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.query!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1406(o.queryParameters!);
+    checkRangePartitioning(o.rangePartitioning! as api.RangePartitioning);
+    checkUnnamed1407(o.schemaUpdateOptions!);
+    checkUnnamed1408(o.tableDefinitions!);
+    checkTimePartitioning(o.timePartitioning! as api.TimePartitioning);
+    unittest.expect(o.useLegacySql!, unittest.isTrue);
+    unittest.expect(o.useQueryCache!, unittest.isTrue);
+    checkUnnamed1409(o.userDefinedFunctionResources!);
+    unittest.expect(
+      o.writeDisposition!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterJobConfigurationQuery--;
 }
@@ -2500,19 +3240,37 @@ api.JobConfigurationTableCopy buildJobConfigurationTableCopy() {
 void checkJobConfigurationTableCopy(api.JobConfigurationTableCopy o) {
   buildCounterJobConfigurationTableCopy++;
   if (buildCounterJobConfigurationTableCopy < 3) {
-    unittest.expect(o.createDisposition, unittest.equals('foo'));
+    unittest.expect(
+      o.createDisposition!,
+      unittest.equals('foo'),
+    );
     checkEncryptionConfiguration(
-        o.destinationEncryptionConfiguration as api.EncryptionConfiguration);
-    var casted1 = (o.destinationExpirationTime) as core.Map;
+        o.destinationEncryptionConfiguration! as api.EncryptionConfiguration);
+    var casted1 = (o.destinationExpirationTime!) as core.Map;
     unittest.expect(casted1, unittest.hasLength(3));
-    unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-    unittest.expect(casted1['bool'], unittest.equals(true));
-    unittest.expect(casted1['string'], unittest.equals('foo'));
-    checkTableReference(o.destinationTable as api.TableReference);
-    unittest.expect(o.operationType, unittest.equals('foo'));
-    checkTableReference(o.sourceTable as api.TableReference);
-    checkUnnamed1410(o.sourceTables);
-    unittest.expect(o.writeDisposition, unittest.equals('foo'));
+    unittest.expect(
+      casted1['list'],
+      unittest.equals([1, 2, 3]),
+    );
+    unittest.expect(
+      casted1['bool'],
+      unittest.equals(true),
+    );
+    unittest.expect(
+      casted1['string'],
+      unittest.equals('foo'),
+    );
+    checkTableReference(o.destinationTable! as api.TableReference);
+    unittest.expect(
+      o.operationType!,
+      unittest.equals('foo'),
+    );
+    checkTableReference(o.sourceTable! as api.TableReference);
+    checkUnnamed1410(o.sourceTables!);
+    unittest.expect(
+      o.writeDisposition!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterJobConfigurationTableCopy--;
 }
@@ -2539,15 +3297,27 @@ api.JobListJobs buildJobListJobs() {
 void checkJobListJobs(api.JobListJobs o) {
   buildCounterJobListJobs++;
   if (buildCounterJobListJobs < 3) {
-    checkJobConfiguration(o.configuration as api.JobConfiguration);
-    checkErrorProto(o.errorResult as api.ErrorProto);
-    unittest.expect(o.id, unittest.equals('foo'));
-    checkJobReference(o.jobReference as api.JobReference);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.state, unittest.equals('foo'));
-    checkJobStatistics(o.statistics as api.JobStatistics);
-    checkJobStatus(o.status as api.JobStatus);
-    unittest.expect(o.userEmail, unittest.equals('foo'));
+    checkJobConfiguration(o.configuration! as api.JobConfiguration);
+    checkErrorProto(o.errorResult! as api.ErrorProto);
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    checkJobReference(o.jobReference! as api.JobReference);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    checkJobStatistics(o.statistics! as api.JobStatistics);
+    checkJobStatus(o.status! as api.JobStatus);
+    unittest.expect(
+      o.userEmail!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterJobListJobs--;
 }
@@ -2582,10 +3352,19 @@ api.JobList buildJobList() {
 void checkJobList(api.JobList o) {
   buildCounterJobList++;
   if (buildCounterJobList < 3) {
-    unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1411(o.jobs);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1411(o.jobs!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterJobList--;
 }
@@ -2606,9 +3385,18 @@ api.JobReference buildJobReference() {
 void checkJobReference(api.JobReference o) {
   buildCounterJobReference++;
   if (buildCounterJobReference < 3) {
-    unittest.expect(o.jobId, unittest.equals('foo'));
-    unittest.expect(o.location, unittest.equals('foo'));
-    unittest.expect(o.projectId, unittest.equals('foo'));
+    unittest.expect(
+      o.jobId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterJobReference--;
 }
@@ -2622,8 +3410,14 @@ core.List<core.String> buildUnnamed1412() {
 
 void checkUnnamed1412(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterJobStatisticsReservationUsage = 0;
@@ -2641,8 +3435,14 @@ api.JobStatisticsReservationUsage buildJobStatisticsReservationUsage() {
 void checkJobStatisticsReservationUsage(api.JobStatisticsReservationUsage o) {
   buildCounterJobStatisticsReservationUsage++;
   if (buildCounterJobStatisticsReservationUsage < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.slotMs, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.slotMs!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterJobStatisticsReservationUsage--;
 }
@@ -2690,24 +3490,51 @@ api.JobStatistics buildJobStatistics() {
 void checkJobStatistics(api.JobStatistics o) {
   buildCounterJobStatistics++;
   if (buildCounterJobStatistics < 3) {
-    unittest.expect(o.completionRatio, unittest.equals(42.0));
-    unittest.expect(o.creationTime, unittest.equals('foo'));
-    unittest.expect(o.endTime, unittest.equals('foo'));
-    checkJobStatistics4(o.extract as api.JobStatistics4);
-    checkJobStatistics3(o.load as api.JobStatistics3);
-    unittest.expect(o.numChildJobs, unittest.equals('foo'));
-    unittest.expect(o.parentJobId, unittest.equals('foo'));
-    checkJobStatistics2(o.query as api.JobStatistics2);
-    checkUnnamed1412(o.quotaDeferments);
-    checkUnnamed1413(o.reservationUsage);
-    unittest.expect(o.reservationId, unittest.equals('foo'));
+    unittest.expect(
+      o.completionRatio!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.creationTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.endTime!,
+      unittest.equals('foo'),
+    );
+    checkJobStatistics4(o.extract! as api.JobStatistics4);
+    checkJobStatistics3(o.load! as api.JobStatistics3);
+    unittest.expect(
+      o.numChildJobs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.parentJobId!,
+      unittest.equals('foo'),
+    );
+    checkJobStatistics2(o.query! as api.JobStatistics2);
+    checkUnnamed1412(o.quotaDeferments!);
+    checkUnnamed1413(o.reservationUsage!);
+    unittest.expect(
+      o.reservationId!,
+      unittest.equals('foo'),
+    );
     checkRowLevelSecurityStatistics(
-        o.rowLevelSecurityStatistics as api.RowLevelSecurityStatistics);
-    checkScriptStatistics(o.scriptStatistics as api.ScriptStatistics);
-    unittest.expect(o.startTime, unittest.equals('foo'));
-    unittest.expect(o.totalBytesProcessed, unittest.equals('foo'));
-    unittest.expect(o.totalSlotMs, unittest.equals('foo'));
-    checkTransactionInfo(o.transactionInfoTemplate as api.TransactionInfo);
+        o.rowLevelSecurityStatistics! as api.RowLevelSecurityStatistics);
+    checkScriptStatistics(o.scriptStatistics! as api.ScriptStatistics);
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalBytesProcessed!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalSlotMs!,
+      unittest.equals('foo'),
+    );
+    checkTransactionInfo(o.transactionInfoTemplate! as api.TransactionInfo);
   }
   buildCounterJobStatistics--;
 }
@@ -2766,8 +3593,14 @@ api.JobStatistics2ReservationUsage buildJobStatistics2ReservationUsage() {
 void checkJobStatistics2ReservationUsage(api.JobStatistics2ReservationUsage o) {
   buildCounterJobStatistics2ReservationUsage++;
   if (buildCounterJobStatistics2ReservationUsage < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.slotMs, unittest.equals('foo'));
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.slotMs!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterJobStatistics2ReservationUsage--;
 }
@@ -2852,34 +3685,72 @@ api.JobStatistics2 buildJobStatistics2() {
 void checkJobStatistics2(api.JobStatistics2 o) {
   buildCounterJobStatistics2++;
   if (buildCounterJobStatistics2 < 3) {
-    unittest.expect(o.billingTier, unittest.equals(42));
-    unittest.expect(o.cacheHit, unittest.isTrue);
-    unittest.expect(o.ddlAffectedRowAccessPolicyCount, unittest.equals('foo'));
-    unittest.expect(o.ddlOperationPerformed, unittest.equals('foo'));
-    checkDatasetReference(o.ddlTargetDataset as api.DatasetReference);
-    checkRoutineReference(o.ddlTargetRoutine as api.RoutineReference);
-    checkRowAccessPolicyReference(
-        o.ddlTargetRowAccessPolicy as api.RowAccessPolicyReference);
-    checkTableReference(o.ddlTargetTable as api.TableReference);
-    unittest.expect(o.estimatedBytesProcessed, unittest.equals('foo'));
-    checkBigQueryModelTraining(o.modelTraining as api.BigQueryModelTraining);
-    unittest.expect(o.modelTrainingCurrentIteration, unittest.equals(42));
     unittest.expect(
-        o.modelTrainingExpectedTotalIteration, unittest.equals('foo'));
-    unittest.expect(o.numDmlAffectedRows, unittest.equals('foo'));
-    checkUnnamed1414(o.queryPlan);
-    checkUnnamed1415(o.referencedRoutines);
-    checkUnnamed1416(o.referencedTables);
-    checkUnnamed1417(o.reservationUsage);
-    checkTableSchema(o.schema as api.TableSchema);
-    unittest.expect(o.statementType, unittest.equals('foo'));
-    checkUnnamed1418(o.timeline);
-    unittest.expect(o.totalBytesBilled, unittest.equals('foo'));
-    unittest.expect(o.totalBytesProcessed, unittest.equals('foo'));
-    unittest.expect(o.totalBytesProcessedAccuracy, unittest.equals('foo'));
-    unittest.expect(o.totalPartitionsProcessed, unittest.equals('foo'));
-    unittest.expect(o.totalSlotMs, unittest.equals('foo'));
-    checkUnnamed1419(o.undeclaredQueryParameters);
+      o.billingTier!,
+      unittest.equals(42),
+    );
+    unittest.expect(o.cacheHit!, unittest.isTrue);
+    unittest.expect(
+      o.ddlAffectedRowAccessPolicyCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ddlOperationPerformed!,
+      unittest.equals('foo'),
+    );
+    checkDatasetReference(o.ddlTargetDataset! as api.DatasetReference);
+    checkRoutineReference(o.ddlTargetRoutine! as api.RoutineReference);
+    checkRowAccessPolicyReference(
+        o.ddlTargetRowAccessPolicy! as api.RowAccessPolicyReference);
+    checkTableReference(o.ddlTargetTable! as api.TableReference);
+    unittest.expect(
+      o.estimatedBytesProcessed!,
+      unittest.equals('foo'),
+    );
+    checkBigQueryModelTraining(o.modelTraining! as api.BigQueryModelTraining);
+    unittest.expect(
+      o.modelTrainingCurrentIteration!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.modelTrainingExpectedTotalIteration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numDmlAffectedRows!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1414(o.queryPlan!);
+    checkUnnamed1415(o.referencedRoutines!);
+    checkUnnamed1416(o.referencedTables!);
+    checkUnnamed1417(o.reservationUsage!);
+    checkTableSchema(o.schema! as api.TableSchema);
+    unittest.expect(
+      o.statementType!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1418(o.timeline!);
+    unittest.expect(
+      o.totalBytesBilled!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalBytesProcessed!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalBytesProcessedAccuracy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalPartitionsProcessed!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalSlotMs!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1419(o.undeclaredQueryParameters!);
   }
   buildCounterJobStatistics2--;
 }
@@ -2902,11 +3773,26 @@ api.JobStatistics3 buildJobStatistics3() {
 void checkJobStatistics3(api.JobStatistics3 o) {
   buildCounterJobStatistics3++;
   if (buildCounterJobStatistics3 < 3) {
-    unittest.expect(o.badRecords, unittest.equals('foo'));
-    unittest.expect(o.inputFileBytes, unittest.equals('foo'));
-    unittest.expect(o.inputFiles, unittest.equals('foo'));
-    unittest.expect(o.outputBytes, unittest.equals('foo'));
-    unittest.expect(o.outputRows, unittest.equals('foo'));
+    unittest.expect(
+      o.badRecords!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.inputFileBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.inputFiles!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.outputBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.outputRows!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterJobStatistics3--;
 }
@@ -2920,8 +3806,14 @@ core.List<core.String> buildUnnamed1420() {
 
 void checkUnnamed1420(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterJobStatistics4 = 0;
@@ -2939,8 +3831,11 @@ api.JobStatistics4 buildJobStatistics4() {
 void checkJobStatistics4(api.JobStatistics4 o) {
   buildCounterJobStatistics4++;
   if (buildCounterJobStatistics4 < 3) {
-    checkUnnamed1420(o.destinationUriFileCounts);
-    unittest.expect(o.inputBytes, unittest.equals('foo'));
+    checkUnnamed1420(o.destinationUriFileCounts!);
+    unittest.expect(
+      o.inputBytes!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterJobStatistics4--;
 }
@@ -2974,9 +3869,12 @@ api.JobStatus buildJobStatus() {
 void checkJobStatus(api.JobStatus o) {
   buildCounterJobStatus++;
   if (buildCounterJobStatus < 3) {
-    checkErrorProto(o.errorResult as api.ErrorProto);
-    checkUnnamed1421(o.errors);
-    unittest.expect(o.state, unittest.equals('foo'));
+    checkErrorProto(o.errorResult! as api.ErrorProto);
+    checkUnnamed1421(o.errors!);
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterJobStatus--;
 }
@@ -2998,16 +3896,34 @@ api.JsonObject buildJsonObject() {
 
 void checkJsonObject(api.JsonObject o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted2 = (o["a"]) as core.Map;
+  var casted2 = (o["a"]!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
-  var casted3 = (o["b"]) as core.Map;
+  unittest.expect(
+    casted2['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted2['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted2['string'],
+    unittest.equals('foo'),
+  );
+  var casted3 = (o["b"]!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3['bool'], unittest.equals(true));
-  unittest.expect(casted3['string'], unittest.equals('foo'));
+  unittest.expect(
+    casted3['list'],
+    unittest.equals([1, 2, 3]),
+  );
+  unittest.expect(
+    casted3['bool'],
+    unittest.equals(true),
+  );
+  unittest.expect(
+    casted3['string'],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.Model> buildUnnamed1422() {
@@ -3038,8 +3954,11 @@ api.ListModelsResponse buildListModelsResponse() {
 void checkListModelsResponse(api.ListModelsResponse o) {
   buildCounterListModelsResponse++;
   if (buildCounterListModelsResponse < 3) {
-    checkUnnamed1422(o.models);
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed1422(o.models!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterListModelsResponse--;
 }
@@ -3072,8 +3991,11 @@ api.ListRoutinesResponse buildListRoutinesResponse() {
 void checkListRoutinesResponse(api.ListRoutinesResponse o) {
   buildCounterListRoutinesResponse++;
   if (buildCounterListRoutinesResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1423(o.routines);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1423(o.routines!);
   }
   buildCounterListRoutinesResponse--;
 }
@@ -3106,8 +4028,11 @@ api.ListRowAccessPoliciesResponse buildListRowAccessPoliciesResponse() {
 void checkListRowAccessPoliciesResponse(api.ListRowAccessPoliciesResponse o) {
   buildCounterListRowAccessPoliciesResponse++;
   if (buildCounterListRowAccessPoliciesResponse < 3) {
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1424(o.rowAccessPolicies);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1424(o.rowAccessPolicies!);
   }
   buildCounterListRowAccessPoliciesResponse--;
 }
@@ -3126,7 +4051,10 @@ api.LocationMetadata buildLocationMetadata() {
 void checkLocationMetadata(api.LocationMetadata o) {
   buildCounterLocationMetadata++;
   if (buildCounterLocationMetadata < 3) {
-    unittest.expect(o.legacyLocationId, unittest.equals('foo'));
+    unittest.expect(
+      o.legacyLocationId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterLocationMetadata--;
 }
@@ -3148,10 +4076,19 @@ api.MaterializedViewDefinition buildMaterializedViewDefinition() {
 void checkMaterializedViewDefinition(api.MaterializedViewDefinition o) {
   buildCounterMaterializedViewDefinition++;
   if (buildCounterMaterializedViewDefinition < 3) {
-    unittest.expect(o.enableRefresh, unittest.isTrue);
-    unittest.expect(o.lastRefreshTime, unittest.equals('foo'));
-    unittest.expect(o.query, unittest.equals('foo'));
-    unittest.expect(o.refreshIntervalMs, unittest.equals('foo'));
+    unittest.expect(o.enableRefresh!, unittest.isTrue);
+    unittest.expect(
+      o.lastRefreshTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.query!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.refreshIntervalMs!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterMaterializedViewDefinition--;
 }
@@ -3191,8 +4128,14 @@ core.Map<core.String, core.String> buildUnnamed1427() {
 
 void checkUnnamed1427(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.TrainingRun> buildUnnamed1428() {
@@ -3235,21 +4178,45 @@ api.Model buildModel() {
 void checkModel(api.Model o) {
   buildCounterModel++;
   if (buildCounterModel < 3) {
-    unittest.expect(o.creationTime, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(
+      o.creationTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
     checkEncryptionConfiguration(
-        o.encryptionConfiguration as api.EncryptionConfiguration);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.expirationTime, unittest.equals('foo'));
-    checkUnnamed1425(o.featureColumns);
-    unittest.expect(o.friendlyName, unittest.equals('foo'));
-    checkUnnamed1426(o.labelColumns);
-    checkUnnamed1427(o.labels);
-    unittest.expect(o.lastModifiedTime, unittest.equals('foo'));
-    unittest.expect(o.location, unittest.equals('foo'));
-    checkModelReference(o.modelReference as api.ModelReference);
-    unittest.expect(o.modelType, unittest.equals('foo'));
-    checkUnnamed1428(o.trainingRuns);
+        o.encryptionConfiguration! as api.EncryptionConfiguration);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expirationTime!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1425(o.featureColumns!);
+    unittest.expect(
+      o.friendlyName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1426(o.labelColumns!);
+    checkUnnamed1427(o.labels!);
+    unittest.expect(
+      o.lastModifiedTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    checkModelReference(o.modelReference! as api.ModelReference);
+    unittest.expect(
+      o.modelType!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1428(o.trainingRuns!);
   }
   buildCounterModel--;
 }
@@ -3263,8 +4230,14 @@ core.List<core.String> buildUnnamed1429() {
 
 void checkUnnamed1429(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterModelDefinitionModelOptions = 0;
@@ -3283,9 +4256,15 @@ api.ModelDefinitionModelOptions buildModelDefinitionModelOptions() {
 void checkModelDefinitionModelOptions(api.ModelDefinitionModelOptions o) {
   buildCounterModelDefinitionModelOptions++;
   if (buildCounterModelDefinitionModelOptions < 3) {
-    checkUnnamed1429(o.labels);
-    unittest.expect(o.lossType, unittest.equals('foo'));
-    unittest.expect(o.modelType, unittest.equals('foo'));
+    checkUnnamed1429(o.labels!);
+    unittest.expect(
+      o.lossType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.modelType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterModelDefinitionModelOptions--;
 }
@@ -3319,8 +4298,8 @@ void checkModelDefinition(api.ModelDefinition o) {
   buildCounterModelDefinition++;
   if (buildCounterModelDefinition < 3) {
     checkModelDefinitionModelOptions(
-        o.modelOptions as api.ModelDefinitionModelOptions);
-    checkUnnamed1430(o.trainingRuns);
+        o.modelOptions! as api.ModelDefinitionModelOptions);
+    checkUnnamed1430(o.trainingRuns!);
   }
   buildCounterModelDefinition--;
 }
@@ -3341,9 +4320,18 @@ api.ModelReference buildModelReference() {
 void checkModelReference(api.ModelReference o) {
   buildCounterModelReference++;
   if (buildCounterModelReference < 3) {
-    unittest.expect(o.datasetId, unittest.equals('foo'));
-    unittest.expect(o.modelId, unittest.equals('foo'));
-    unittest.expect(o.projectId, unittest.equals('foo'));
+    unittest.expect(
+      o.datasetId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.modelId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterModelReference--;
 }
@@ -3377,9 +4365,9 @@ void checkMultiClassClassificationMetrics(
     api.MultiClassClassificationMetrics o) {
   buildCounterMultiClassClassificationMetrics++;
   if (buildCounterMultiClassClassificationMetrics < 3) {
-    checkAggregateClassificationMetrics(
-        o.aggregateClassificationMetrics as api.AggregateClassificationMetrics);
-    checkUnnamed1431(o.confusionMatrixList);
+    checkAggregateClassificationMetrics(o.aggregateClassificationMetrics!
+        as api.AggregateClassificationMetrics);
+    checkUnnamed1431(o.confusionMatrixList!);
   }
   buildCounterMultiClassClassificationMetrics--;
 }
@@ -3427,10 +4415,16 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed1432(o.auditConfigs);
-    checkUnnamed1433(o.bindings);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.version, unittest.equals(42));
+    checkUnnamed1432(o.auditConfigs!);
+    checkUnnamed1433(o.bindings!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals(42),
+    );
   }
   buildCounterPolicy--;
 }
@@ -3452,10 +4446,22 @@ api.PrincipalComponentInfo buildPrincipalComponentInfo() {
 void checkPrincipalComponentInfo(api.PrincipalComponentInfo o) {
   buildCounterPrincipalComponentInfo++;
   if (buildCounterPrincipalComponentInfo < 3) {
-    unittest.expect(o.cumulativeExplainedVarianceRatio, unittest.equals(42.0));
-    unittest.expect(o.explainedVariance, unittest.equals(42.0));
-    unittest.expect(o.explainedVarianceRatio, unittest.equals(42.0));
-    unittest.expect(o.principalComponentId, unittest.equals('foo'));
+    unittest.expect(
+      o.cumulativeExplainedVarianceRatio!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.explainedVariance!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.explainedVarianceRatio!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.principalComponentId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterPrincipalComponentInfo--;
 }
@@ -3478,11 +4484,23 @@ api.ProjectListProjects buildProjectListProjects() {
 void checkProjectListProjects(api.ProjectListProjects o) {
   buildCounterProjectListProjects++;
   if (buildCounterProjectListProjects < 3) {
-    unittest.expect(o.friendlyName, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.numericId, unittest.equals('foo'));
-    checkProjectReference(o.projectReference as api.ProjectReference);
+    unittest.expect(
+      o.friendlyName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numericId!,
+      unittest.equals('foo'),
+    );
+    checkProjectReference(o.projectReference! as api.ProjectReference);
   }
   buildCounterProjectListProjects--;
 }
@@ -3518,11 +4536,23 @@ api.ProjectList buildProjectList() {
 void checkProjectList(api.ProjectList o) {
   buildCounterProjectList++;
   if (buildCounterProjectList < 3) {
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1434(o.projects);
-    unittest.expect(o.totalItems, unittest.equals(42));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1434(o.projects!);
+    unittest.expect(
+      o.totalItems!,
+      unittest.equals(42),
+    );
   }
   buildCounterProjectList--;
 }
@@ -3541,7 +4571,10 @@ api.ProjectReference buildProjectReference() {
 void checkProjectReference(api.ProjectReference o) {
   buildCounterProjectReference++;
   if (buildCounterProjectReference < 3) {
-    unittest.expect(o.projectId, unittest.equals('foo'));
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterProjectReference--;
 }
@@ -3562,9 +4595,12 @@ api.QueryParameter buildQueryParameter() {
 void checkQueryParameter(api.QueryParameter o) {
   buildCounterQueryParameter++;
   if (buildCounterQueryParameter < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkQueryParameterType(o.parameterType as api.QueryParameterType);
-    checkQueryParameterValue(o.parameterValue as api.QueryParameterValue);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkQueryParameterType(o.parameterType! as api.QueryParameterType);
+    checkQueryParameterValue(o.parameterValue! as api.QueryParameterValue);
   }
   buildCounterQueryParameter--;
 }
@@ -3585,9 +4621,15 @@ api.QueryParameterTypeStructTypes buildQueryParameterTypeStructTypes() {
 void checkQueryParameterTypeStructTypes(api.QueryParameterTypeStructTypes o) {
   buildCounterQueryParameterTypeStructTypes++;
   if (buildCounterQueryParameterTypeStructTypes < 3) {
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkQueryParameterType(o.type as api.QueryParameterType);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkQueryParameterType(o.type! as api.QueryParameterType);
   }
   buildCounterQueryParameterTypeStructTypes--;
 }
@@ -3621,9 +4663,12 @@ api.QueryParameterType buildQueryParameterType() {
 void checkQueryParameterType(api.QueryParameterType o) {
   buildCounterQueryParameterType++;
   if (buildCounterQueryParameterType < 3) {
-    checkQueryParameterType(o.arrayType as api.QueryParameterType);
-    checkUnnamed1435(o.structTypes);
-    unittest.expect(o.type, unittest.equals('foo'));
+    checkQueryParameterType(o.arrayType! as api.QueryParameterType);
+    checkUnnamed1435(o.structTypes!);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterQueryParameterType--;
 }
@@ -3650,8 +4695,8 @@ core.Map<core.String, api.QueryParameterValue> buildUnnamed1437() {
 
 void checkUnnamed1437(core.Map<core.String, api.QueryParameterValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkQueryParameterValue(o['x'] as api.QueryParameterValue);
-  checkQueryParameterValue(o['y'] as api.QueryParameterValue);
+  checkQueryParameterValue(o['x']! as api.QueryParameterValue);
+  checkQueryParameterValue(o['y']! as api.QueryParameterValue);
 }
 
 core.int buildCounterQueryParameterValue = 0;
@@ -3670,9 +4715,12 @@ api.QueryParameterValue buildQueryParameterValue() {
 void checkQueryParameterValue(api.QueryParameterValue o) {
   buildCounterQueryParameterValue++;
   if (buildCounterQueryParameterValue < 3) {
-    checkUnnamed1436(o.arrayValues);
-    checkUnnamed1437(o.structValues);
-    unittest.expect(o.value, unittest.equals('foo'));
+    checkUnnamed1436(o.arrayValues!);
+    checkUnnamed1437(o.structValues!);
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterQueryParameterValue--;
 }
@@ -3699,8 +4747,14 @@ core.Map<core.String, core.String> buildUnnamed1439() {
 
 void checkUnnamed1439(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.List<api.QueryParameter> buildUnnamed1440() {
@@ -3745,22 +4799,46 @@ api.QueryRequest buildQueryRequest() {
 void checkQueryRequest(api.QueryRequest o) {
   buildCounterQueryRequest++;
   if (buildCounterQueryRequest < 3) {
-    checkUnnamed1438(o.connectionProperties);
-    checkDatasetReference(o.defaultDataset as api.DatasetReference);
-    unittest.expect(o.dryRun, unittest.isTrue);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1439(o.labels);
-    unittest.expect(o.location, unittest.equals('foo'));
-    unittest.expect(o.maxResults, unittest.equals(42));
-    unittest.expect(o.maximumBytesBilled, unittest.equals('foo'));
-    unittest.expect(o.parameterMode, unittest.equals('foo'));
-    unittest.expect(o.preserveNulls, unittest.isTrue);
-    unittest.expect(o.query, unittest.equals('foo'));
-    checkUnnamed1440(o.queryParameters);
-    unittest.expect(o.requestId, unittest.equals('foo'));
-    unittest.expect(o.timeoutMs, unittest.equals(42));
-    unittest.expect(o.useLegacySql, unittest.isTrue);
-    unittest.expect(o.useQueryCache, unittest.isTrue);
+    checkUnnamed1438(o.connectionProperties!);
+    checkDatasetReference(o.defaultDataset! as api.DatasetReference);
+    unittest.expect(o.dryRun!, unittest.isTrue);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1439(o.labels!);
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxResults!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.maximumBytesBilled!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.parameterMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.preserveNulls!, unittest.isTrue);
+    unittest.expect(
+      o.query!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1440(o.queryParameters!);
+    unittest.expect(
+      o.requestId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timeoutMs!,
+      unittest.equals(42),
+    );
+    unittest.expect(o.useLegacySql!, unittest.isTrue);
+    unittest.expect(o.useQueryCache!, unittest.isTrue);
   }
   buildCounterQueryRequest--;
 }
@@ -3815,17 +4893,32 @@ api.QueryResponse buildQueryResponse() {
 void checkQueryResponse(api.QueryResponse o) {
   buildCounterQueryResponse++;
   if (buildCounterQueryResponse < 3) {
-    unittest.expect(o.cacheHit, unittest.isTrue);
-    checkUnnamed1441(o.errors);
-    unittest.expect(o.jobComplete, unittest.isTrue);
-    checkJobReference(o.jobReference as api.JobReference);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.numDmlAffectedRows, unittest.equals('foo'));
-    unittest.expect(o.pageToken, unittest.equals('foo'));
-    checkUnnamed1442(o.rows);
-    checkTableSchema(o.schema as api.TableSchema);
-    unittest.expect(o.totalBytesProcessed, unittest.equals('foo'));
-    unittest.expect(o.totalRows, unittest.equals('foo'));
+    unittest.expect(o.cacheHit!, unittest.isTrue);
+    checkUnnamed1441(o.errors!);
+    unittest.expect(o.jobComplete!, unittest.isTrue);
+    checkJobReference(o.jobReference! as api.JobReference);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numDmlAffectedRows!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1442(o.rows!);
+    checkTableSchema(o.schema! as api.TableSchema);
+    unittest.expect(
+      o.totalBytesProcessed!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalRows!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterQueryResponse--;
 }
@@ -3848,11 +4941,26 @@ api.QueryTimelineSample buildQueryTimelineSample() {
 void checkQueryTimelineSample(api.QueryTimelineSample o) {
   buildCounterQueryTimelineSample++;
   if (buildCounterQueryTimelineSample < 3) {
-    unittest.expect(o.activeUnits, unittest.equals('foo'));
-    unittest.expect(o.completedUnits, unittest.equals('foo'));
-    unittest.expect(o.elapsedMs, unittest.equals('foo'));
-    unittest.expect(o.pendingUnits, unittest.equals('foo'));
-    unittest.expect(o.totalSlotMs, unittest.equals('foo'));
+    unittest.expect(
+      o.activeUnits!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.completedUnits!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.elapsedMs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pendingUnits!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.totalSlotMs!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterQueryTimelineSample--;
 }
@@ -3873,9 +4981,18 @@ api.RangePartitioningRange buildRangePartitioningRange() {
 void checkRangePartitioningRange(api.RangePartitioningRange o) {
   buildCounterRangePartitioningRange++;
   if (buildCounterRangePartitioningRange < 3) {
-    unittest.expect(o.end, unittest.equals('foo'));
-    unittest.expect(o.interval, unittest.equals('foo'));
-    unittest.expect(o.start, unittest.equals('foo'));
+    unittest.expect(
+      o.end!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.interval!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.start!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRangePartitioningRange--;
 }
@@ -3895,8 +5012,11 @@ api.RangePartitioning buildRangePartitioning() {
 void checkRangePartitioning(api.RangePartitioning o) {
   buildCounterRangePartitioning++;
   if (buildCounterRangePartitioning < 3) {
-    unittest.expect(o.field, unittest.equals('foo'));
-    checkRangePartitioningRange(o.range as api.RangePartitioningRange);
+    unittest.expect(
+      o.field!,
+      unittest.equals('foo'),
+    );
+    checkRangePartitioningRange(o.range! as api.RangePartitioningRange);
   }
   buildCounterRangePartitioning--;
 }
@@ -3918,11 +5038,22 @@ api.RankingMetrics buildRankingMetrics() {
 void checkRankingMetrics(api.RankingMetrics o) {
   buildCounterRankingMetrics++;
   if (buildCounterRankingMetrics < 3) {
-    unittest.expect(o.averageRank, unittest.equals(42.0));
-    unittest.expect(o.meanAveragePrecision, unittest.equals(42.0));
-    unittest.expect(o.meanSquaredError, unittest.equals(42.0));
     unittest.expect(
-        o.normalizedDiscountedCumulativeGain, unittest.equals(42.0));
+      o.averageRank!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.meanAveragePrecision!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.meanSquaredError!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.normalizedDiscountedCumulativeGain!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterRankingMetrics--;
 }
@@ -3945,11 +5076,26 @@ api.RegressionMetrics buildRegressionMetrics() {
 void checkRegressionMetrics(api.RegressionMetrics o) {
   buildCounterRegressionMetrics++;
   if (buildCounterRegressionMetrics < 3) {
-    unittest.expect(o.meanAbsoluteError, unittest.equals(42.0));
-    unittest.expect(o.meanSquaredError, unittest.equals(42.0));
-    unittest.expect(o.meanSquaredLogError, unittest.equals(42.0));
-    unittest.expect(o.medianAbsoluteError, unittest.equals(42.0));
-    unittest.expect(o.rSquared, unittest.equals(42.0));
+    unittest.expect(
+      o.meanAbsoluteError!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.meanSquaredError!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.meanSquaredLogError!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.medianAbsoluteError!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.rSquared!,
+      unittest.equals(42.0),
+    );
   }
   buildCounterRegressionMetrics--;
 }
@@ -3976,8 +5122,14 @@ core.List<core.String> buildUnnamed1444() {
 
 void checkUnnamed1444(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterRoutine = 0;
@@ -4005,18 +5157,42 @@ api.Routine buildRoutine() {
 void checkRoutine(api.Routine o) {
   buildCounterRoutine++;
   if (buildCounterRoutine < 3) {
-    checkUnnamed1443(o.arguments);
-    unittest.expect(o.creationTime, unittest.equals('foo'));
-    unittest.expect(o.definitionBody, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.determinismLevel, unittest.equals('foo'));
-    unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1444(o.importedLibraries);
-    unittest.expect(o.language, unittest.equals('foo'));
-    unittest.expect(o.lastModifiedTime, unittest.equals('foo'));
-    checkStandardSqlDataType(o.returnType as api.StandardSqlDataType);
-    checkRoutineReference(o.routineReference as api.RoutineReference);
-    unittest.expect(o.routineType, unittest.equals('foo'));
+    checkUnnamed1443(o.arguments!);
+    unittest.expect(
+      o.creationTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.definitionBody!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.determinismLevel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1444(o.importedLibraries!);
+    unittest.expect(
+      o.language!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastModifiedTime!,
+      unittest.equals('foo'),
+    );
+    checkStandardSqlDataType(o.returnType! as api.StandardSqlDataType);
+    checkRoutineReference(o.routineReference! as api.RoutineReference);
+    unittest.expect(
+      o.routineType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRoutine--;
 }
@@ -4037,9 +5213,18 @@ api.RoutineReference buildRoutineReference() {
 void checkRoutineReference(api.RoutineReference o) {
   buildCounterRoutineReference++;
   if (buildCounterRoutineReference < 3) {
-    unittest.expect(o.datasetId, unittest.equals('foo'));
-    unittest.expect(o.projectId, unittest.equals('foo'));
-    unittest.expect(o.routineId, unittest.equals('foo'));
+    unittest.expect(
+      o.datasetId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.routineId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRoutineReference--;
 }
@@ -4072,8 +5257,11 @@ api.Row buildRow() {
 void checkRow(api.Row o) {
   buildCounterRow++;
   if (buildCounterRow < 3) {
-    unittest.expect(o.actualLabel, unittest.equals('foo'));
-    checkUnnamed1445(o.entries);
+    unittest.expect(
+      o.actualLabel!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1445(o.entries!);
   }
   buildCounterRow--;
 }
@@ -4096,12 +5284,24 @@ api.RowAccessPolicy buildRowAccessPolicy() {
 void checkRowAccessPolicy(api.RowAccessPolicy o) {
   buildCounterRowAccessPolicy++;
   if (buildCounterRowAccessPolicy < 3) {
-    unittest.expect(o.creationTime, unittest.equals('foo'));
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.filterPredicate, unittest.equals('foo'));
-    unittest.expect(o.lastModifiedTime, unittest.equals('foo'));
+    unittest.expect(
+      o.creationTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.filterPredicate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastModifiedTime!,
+      unittest.equals('foo'),
+    );
     checkRowAccessPolicyReference(
-        o.rowAccessPolicyReference as api.RowAccessPolicyReference);
+        o.rowAccessPolicyReference! as api.RowAccessPolicyReference);
   }
   buildCounterRowAccessPolicy--;
 }
@@ -4123,10 +5323,22 @@ api.RowAccessPolicyReference buildRowAccessPolicyReference() {
 void checkRowAccessPolicyReference(api.RowAccessPolicyReference o) {
   buildCounterRowAccessPolicyReference++;
   if (buildCounterRowAccessPolicyReference < 3) {
-    unittest.expect(o.datasetId, unittest.equals('foo'));
-    unittest.expect(o.policyId, unittest.equals('foo'));
-    unittest.expect(o.projectId, unittest.equals('foo'));
-    unittest.expect(o.tableId, unittest.equals('foo'));
+    unittest.expect(
+      o.datasetId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.policyId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tableId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterRowAccessPolicyReference--;
 }
@@ -4145,7 +5357,7 @@ api.RowLevelSecurityStatistics buildRowLevelSecurityStatistics() {
 void checkRowLevelSecurityStatistics(api.RowLevelSecurityStatistics o) {
   buildCounterRowLevelSecurityStatistics++;
   if (buildCounterRowLevelSecurityStatistics < 3) {
-    unittest.expect(o.rowLevelSecurityApplied, unittest.isTrue);
+    unittest.expect(o.rowLevelSecurityApplied!, unittest.isTrue);
   }
   buildCounterRowLevelSecurityStatistics--;
 }
@@ -4169,12 +5381,30 @@ api.ScriptStackFrame buildScriptStackFrame() {
 void checkScriptStackFrame(api.ScriptStackFrame o) {
   buildCounterScriptStackFrame++;
   if (buildCounterScriptStackFrame < 3) {
-    unittest.expect(o.endColumn, unittest.equals(42));
-    unittest.expect(o.endLine, unittest.equals(42));
-    unittest.expect(o.procedureId, unittest.equals('foo'));
-    unittest.expect(o.startColumn, unittest.equals(42));
-    unittest.expect(o.startLine, unittest.equals(42));
-    unittest.expect(o.text, unittest.equals('foo'));
+    unittest.expect(
+      o.endColumn!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.endLine!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.procedureId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startColumn!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.startLine!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.text!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterScriptStackFrame--;
 }
@@ -4207,8 +5437,11 @@ api.ScriptStatistics buildScriptStatistics() {
 void checkScriptStatistics(api.ScriptStatistics o) {
   buildCounterScriptStatistics++;
   if (buildCounterScriptStatistics < 3) {
-    unittest.expect(o.evaluationKind, unittest.equals('foo'));
-    checkUnnamed1446(o.stackFrames);
+    unittest.expect(
+      o.evaluationKind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1446(o.stackFrames!);
   }
   buildCounterScriptStatistics--;
 }
@@ -4228,8 +5461,11 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy as api.Policy);
-    unittest.expect(o.updateMask, unittest.equals('foo'));
+    checkPolicy(o.policy! as api.Policy);
+    unittest.expect(
+      o.updateMask!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSetIamPolicyRequest--;
 }
@@ -4249,9 +5485,11 @@ api.SnapshotDefinition buildSnapshotDefinition() {
 void checkSnapshotDefinition(api.SnapshotDefinition o) {
   buildCounterSnapshotDefinition++;
   if (buildCounterSnapshotDefinition < 3) {
-    checkTableReference(o.baseTableReference as api.TableReference);
-    unittest.expect(o.snapshotTime,
-        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    checkTableReference(o.baseTableReference! as api.TableReference);
+    unittest.expect(
+      o.snapshotTime!,
+      unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")),
+    );
   }
   buildCounterSnapshotDefinition--;
 }
@@ -4272,9 +5510,12 @@ api.StandardSqlDataType buildStandardSqlDataType() {
 void checkStandardSqlDataType(api.StandardSqlDataType o) {
   buildCounterStandardSqlDataType++;
   if (buildCounterStandardSqlDataType < 3) {
-    checkStandardSqlDataType(o.arrayElementType as api.StandardSqlDataType);
-    checkStandardSqlStructType(o.structType as api.StandardSqlStructType);
-    unittest.expect(o.typeKind, unittest.equals('foo'));
+    checkStandardSqlDataType(o.arrayElementType! as api.StandardSqlDataType);
+    checkStandardSqlStructType(o.structType! as api.StandardSqlStructType);
+    unittest.expect(
+      o.typeKind!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterStandardSqlDataType--;
 }
@@ -4294,8 +5535,11 @@ api.StandardSqlField buildStandardSqlField() {
 void checkStandardSqlField(api.StandardSqlField o) {
   buildCounterStandardSqlField++;
   if (buildCounterStandardSqlField < 3) {
-    unittest.expect(o.name, unittest.equals('foo'));
-    checkStandardSqlDataType(o.type as api.StandardSqlDataType);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkStandardSqlDataType(o.type! as api.StandardSqlDataType);
   }
   buildCounterStandardSqlField--;
 }
@@ -4327,7 +5571,7 @@ api.StandardSqlStructType buildStandardSqlStructType() {
 void checkStandardSqlStructType(api.StandardSqlStructType o) {
   buildCounterStandardSqlStructType++;
   if (buildCounterStandardSqlStructType < 3) {
-    checkUnnamed1447(o.fields);
+    checkUnnamed1447(o.fields!);
   }
   buildCounterStandardSqlStructType--;
 }
@@ -4348,9 +5592,18 @@ api.Streamingbuffer buildStreamingbuffer() {
 void checkStreamingbuffer(api.Streamingbuffer o) {
   buildCounterStreamingbuffer++;
   if (buildCounterStreamingbuffer < 3) {
-    unittest.expect(o.estimatedBytes, unittest.equals('foo'));
-    unittest.expect(o.estimatedRows, unittest.equals('foo'));
-    unittest.expect(o.oldestEntryTime, unittest.equals('foo'));
+    unittest.expect(
+      o.estimatedBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.estimatedRows!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.oldestEntryTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterStreamingbuffer--;
 }
@@ -4364,8 +5617,14 @@ core.Map<core.String, core.String> buildUnnamed1448() {
 
 void checkUnnamed1448(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterTable = 0;
@@ -4410,38 +5669,83 @@ api.Table buildTable() {
 void checkTable(api.Table o) {
   buildCounterTable++;
   if (buildCounterTable < 3) {
-    checkClustering(o.clustering as api.Clustering);
-    unittest.expect(o.creationTime, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
+    checkClustering(o.clustering! as api.Clustering);
+    unittest.expect(
+      o.creationTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
     checkEncryptionConfiguration(
-        o.encryptionConfiguration as api.EncryptionConfiguration);
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.expirationTime, unittest.equals('foo'));
+        o.encryptionConfiguration! as api.EncryptionConfiguration);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expirationTime!,
+      unittest.equals('foo'),
+    );
     checkExternalDataConfiguration(
-        o.externalDataConfiguration as api.ExternalDataConfiguration);
-    unittest.expect(o.friendlyName, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1448(o.labels);
-    unittest.expect(o.lastModifiedTime, unittest.equals('foo'));
-    unittest.expect(o.location, unittest.equals('foo'));
+        o.externalDataConfiguration! as api.ExternalDataConfiguration);
+    unittest.expect(
+      o.friendlyName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1448(o.labels!);
+    unittest.expect(
+      o.lastModifiedTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
     checkMaterializedViewDefinition(
-        o.materializedView as api.MaterializedViewDefinition);
-    checkModelDefinition(o.model as api.ModelDefinition);
-    unittest.expect(o.numBytes, unittest.equals('foo'));
-    unittest.expect(o.numLongTermBytes, unittest.equals('foo'));
-    unittest.expect(o.numPhysicalBytes, unittest.equals('foo'));
-    unittest.expect(o.numRows, unittest.equals('foo'));
-    checkRangePartitioning(o.rangePartitioning as api.RangePartitioning);
-    unittest.expect(o.requirePartitionFilter, unittest.isTrue);
-    checkTableSchema(o.schema as api.TableSchema);
-    unittest.expect(o.selfLink, unittest.equals('foo'));
-    checkSnapshotDefinition(o.snapshotDefinition as api.SnapshotDefinition);
-    checkStreamingbuffer(o.streamingBuffer as api.Streamingbuffer);
-    checkTableReference(o.tableReference as api.TableReference);
-    checkTimePartitioning(o.timePartitioning as api.TimePartitioning);
-    unittest.expect(o.type, unittest.equals('foo'));
-    checkViewDefinition(o.view as api.ViewDefinition);
+        o.materializedView! as api.MaterializedViewDefinition);
+    checkModelDefinition(o.model! as api.ModelDefinition);
+    unittest.expect(
+      o.numBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numLongTermBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numPhysicalBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numRows!,
+      unittest.equals('foo'),
+    );
+    checkRangePartitioning(o.rangePartitioning! as api.RangePartitioning);
+    unittest.expect(o.requirePartitionFilter!, unittest.isTrue);
+    checkTableSchema(o.schema! as api.TableSchema);
+    unittest.expect(
+      o.selfLink!,
+      unittest.equals('foo'),
+    );
+    checkSnapshotDefinition(o.snapshotDefinition! as api.SnapshotDefinition);
+    checkStreamingbuffer(o.streamingBuffer! as api.Streamingbuffer);
+    checkTableReference(o.tableReference! as api.TableReference);
+    checkTimePartitioning(o.timePartitioning! as api.TimePartitioning);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    checkViewDefinition(o.view! as api.ViewDefinition);
   }
   buildCounterTable--;
 }
@@ -4464,11 +5768,20 @@ api.TableCell buildTableCell() {
 void checkTableCell(api.TableCell o) {
   buildCounterTableCell++;
   if (buildCounterTableCell < 3) {
-    var casted4 = (o.v) as core.Map;
+    var casted4 = (o.v!) as core.Map;
     unittest.expect(casted4, unittest.hasLength(3));
-    unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
-    unittest.expect(casted4['bool'], unittest.equals(true));
-    unittest.expect(casted4['string'], unittest.equals('foo'));
+    unittest.expect(
+      casted4['list'],
+      unittest.equals([1, 2, 3]),
+    );
+    unittest.expect(
+      casted4['bool'],
+      unittest.equals(true),
+    );
+    unittest.expect(
+      casted4['string'],
+      unittest.equals('foo'),
+    );
   }
   buildCounterTableCell--;
 }
@@ -4488,8 +5801,11 @@ api.TableDataInsertAllRequestRows buildTableDataInsertAllRequestRows() {
 void checkTableDataInsertAllRequestRows(api.TableDataInsertAllRequestRows o) {
   buildCounterTableDataInsertAllRequestRows++;
   if (buildCounterTableDataInsertAllRequestRows < 3) {
-    unittest.expect(o.insertId, unittest.equals('foo'));
-    checkJsonObject(o.json as api.JsonObject);
+    unittest.expect(
+      o.insertId!,
+      unittest.equals('foo'),
+    );
+    checkJsonObject(o.json! as api.JsonObject);
   }
   buildCounterTableDataInsertAllRequestRows--;
 }
@@ -4525,11 +5841,17 @@ api.TableDataInsertAllRequest buildTableDataInsertAllRequest() {
 void checkTableDataInsertAllRequest(api.TableDataInsertAllRequest o) {
   buildCounterTableDataInsertAllRequest++;
   if (buildCounterTableDataInsertAllRequest < 3) {
-    unittest.expect(o.ignoreUnknownValues, unittest.isTrue);
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1449(o.rows);
-    unittest.expect(o.skipInvalidRows, unittest.isTrue);
-    unittest.expect(o.templateSuffix, unittest.equals('foo'));
+    unittest.expect(o.ignoreUnknownValues!, unittest.isTrue);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1449(o.rows!);
+    unittest.expect(o.skipInvalidRows!, unittest.isTrue);
+    unittest.expect(
+      o.templateSuffix!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTableDataInsertAllRequest--;
 }
@@ -4564,8 +5886,11 @@ void checkTableDataInsertAllResponseInsertErrors(
     api.TableDataInsertAllResponseInsertErrors o) {
   buildCounterTableDataInsertAllResponseInsertErrors++;
   if (buildCounterTableDataInsertAllResponseInsertErrors < 3) {
-    checkUnnamed1450(o.errors);
-    unittest.expect(o.index, unittest.equals(42));
+    checkUnnamed1450(o.errors!);
+    unittest.expect(
+      o.index!,
+      unittest.equals(42),
+    );
   }
   buildCounterTableDataInsertAllResponseInsertErrors--;
 }
@@ -4600,8 +5925,11 @@ api.TableDataInsertAllResponse buildTableDataInsertAllResponse() {
 void checkTableDataInsertAllResponse(api.TableDataInsertAllResponse o) {
   buildCounterTableDataInsertAllResponse++;
   if (buildCounterTableDataInsertAllResponse < 3) {
-    checkUnnamed1451(o.insertErrors);
-    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed1451(o.insertErrors!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTableDataInsertAllResponse--;
 }
@@ -4637,11 +5965,23 @@ api.TableDataList buildTableDataList() {
 void checkTableDataList(api.TableDataList o) {
   buildCounterTableDataList++;
   if (buildCounterTableDataList < 3) {
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.pageToken, unittest.equals('foo'));
-    checkUnnamed1452(o.rows);
-    unittest.expect(o.totalRows, unittest.equals('foo'));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1452(o.rows!);
+    unittest.expect(
+      o.totalRows!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTableDataList--;
 }
@@ -4655,8 +5995,14 @@ core.List<core.String> buildUnnamed1453() {
 
 void checkUnnamed1453(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterTableFieldSchemaCategories = 0;
@@ -4673,7 +6019,7 @@ api.TableFieldSchemaCategories buildTableFieldSchemaCategories() {
 void checkTableFieldSchemaCategories(api.TableFieldSchemaCategories o) {
   buildCounterTableFieldSchemaCategories++;
   if (buildCounterTableFieldSchemaCategories < 3) {
-    checkUnnamed1453(o.names);
+    checkUnnamed1453(o.names!);
   }
   buildCounterTableFieldSchemaCategories--;
 }
@@ -4700,8 +6046,14 @@ core.List<core.String> buildUnnamed1455() {
 
 void checkUnnamed1455(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterTableFieldSchemaPolicyTags = 0;
@@ -4718,7 +6070,7 @@ api.TableFieldSchemaPolicyTags buildTableFieldSchemaPolicyTags() {
 void checkTableFieldSchemaPolicyTags(api.TableFieldSchemaPolicyTags o) {
   buildCounterTableFieldSchemaPolicyTags++;
   if (buildCounterTableFieldSchemaPolicyTags < 3) {
-    checkUnnamed1455(o.names);
+    checkUnnamed1455(o.names!);
   }
   buildCounterTableFieldSchemaPolicyTags--;
 }
@@ -4744,14 +6096,26 @@ void checkTableFieldSchema(api.TableFieldSchema o) {
   buildCounterTableFieldSchema++;
   if (buildCounterTableFieldSchema < 3) {
     checkTableFieldSchemaCategories(
-        o.categories as api.TableFieldSchemaCategories);
-    unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed1454(o.fields);
-    unittest.expect(o.mode, unittest.equals('foo'));
-    unittest.expect(o.name, unittest.equals('foo'));
+        o.categories! as api.TableFieldSchemaCategories);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1454(o.fields!);
+    unittest.expect(
+      o.mode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
     checkTableFieldSchemaPolicyTags(
-        o.policyTags as api.TableFieldSchemaPolicyTags);
-    unittest.expect(o.type, unittest.equals('foo'));
+        o.policyTags! as api.TableFieldSchemaPolicyTags);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTableFieldSchema--;
 }
@@ -4765,8 +6129,14 @@ core.Map<core.String, core.String> buildUnnamed1456() {
 
 void checkUnnamed1456(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals('foo'));
-  unittest.expect(o['y'], unittest.equals('foo'));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterTableListTablesView = 0;
@@ -4783,7 +6153,7 @@ api.TableListTablesView buildTableListTablesView() {
 void checkTableListTablesView(api.TableListTablesView o) {
   buildCounterTableListTablesView++;
   if (buildCounterTableListTablesView < 3) {
-    unittest.expect(o.useLegacySql, unittest.isTrue);
+    unittest.expect(o.useLegacySql!, unittest.isTrue);
   }
   buildCounterTableListTablesView--;
 }
@@ -4813,18 +6183,36 @@ api.TableListTables buildTableListTables() {
 void checkTableListTables(api.TableListTables o) {
   buildCounterTableListTables++;
   if (buildCounterTableListTables < 3) {
-    checkClustering(o.clustering as api.Clustering);
-    unittest.expect(o.creationTime, unittest.equals('foo'));
-    unittest.expect(o.expirationTime, unittest.equals('foo'));
-    unittest.expect(o.friendlyName, unittest.equals('foo'));
-    unittest.expect(o.id, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1456(o.labels);
-    checkRangePartitioning(o.rangePartitioning as api.RangePartitioning);
-    checkTableReference(o.tableReference as api.TableReference);
-    checkTimePartitioning(o.timePartitioning as api.TimePartitioning);
-    unittest.expect(o.type, unittest.equals('foo'));
-    checkTableListTablesView(o.view as api.TableListTablesView);
+    checkClustering(o.clustering! as api.Clustering);
+    unittest.expect(
+      o.creationTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expirationTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.friendlyName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1456(o.labels!);
+    checkRangePartitioning(o.rangePartitioning! as api.RangePartitioning);
+    checkTableReference(o.tableReference! as api.TableReference);
+    checkTimePartitioning(o.timePartitioning! as api.TimePartitioning);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    checkTableListTablesView(o.view! as api.TableListTablesView);
   }
   buildCounterTableListTables--;
 }
@@ -4860,11 +6248,23 @@ api.TableList buildTableList() {
 void checkTableList(api.TableList o) {
   buildCounterTableList++;
   if (buildCounterTableList < 3) {
-    unittest.expect(o.etag, unittest.equals('foo'));
-    unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1457(o.tables);
-    unittest.expect(o.totalItems, unittest.equals(42));
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1457(o.tables!);
+    unittest.expect(
+      o.totalItems!,
+      unittest.equals(42),
+    );
   }
   buildCounterTableList--;
 }
@@ -4885,9 +6285,18 @@ api.TableReference buildTableReference() {
 void checkTableReference(api.TableReference o) {
   buildCounterTableReference++;
   if (buildCounterTableReference < 3) {
-    unittest.expect(o.datasetId, unittest.equals('foo'));
-    unittest.expect(o.projectId, unittest.equals('foo'));
-    unittest.expect(o.tableId, unittest.equals('foo'));
+    unittest.expect(
+      o.datasetId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.projectId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tableId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTableReference--;
 }
@@ -4919,7 +6328,7 @@ api.TableRow buildTableRow() {
 void checkTableRow(api.TableRow o) {
   buildCounterTableRow++;
   if (buildCounterTableRow < 3) {
-    checkUnnamed1458(o.f);
+    checkUnnamed1458(o.f!);
   }
   buildCounterTableRow--;
 }
@@ -4951,7 +6360,7 @@ api.TableSchema buildTableSchema() {
 void checkTableSchema(api.TableSchema o) {
   buildCounterTableSchema++;
   if (buildCounterTableSchema < 3) {
-    checkUnnamed1459(o.fields);
+    checkUnnamed1459(o.fields!);
   }
   buildCounterTableSchema--;
 }
@@ -4965,8 +6374,14 @@ core.List<core.String> buildUnnamed1460() {
 
 void checkUnnamed1460(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterTestIamPermissionsRequest = 0;
@@ -4983,7 +6398,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed1460(o.permissions);
+    checkUnnamed1460(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
@@ -4997,8 +6412,14 @@ core.List<core.String> buildUnnamed1461() {
 
 void checkUnnamed1461(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.int buildCounterTestIamPermissionsResponse = 0;
@@ -5015,7 +6436,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed1461(o.permissions);
+    checkUnnamed1461(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -5037,10 +6458,19 @@ api.TimePartitioning buildTimePartitioning() {
 void checkTimePartitioning(api.TimePartitioning o) {
   buildCounterTimePartitioning++;
   if (buildCounterTimePartitioning < 3) {
-    unittest.expect(o.expirationMs, unittest.equals('foo'));
-    unittest.expect(o.field, unittest.equals('foo'));
-    unittest.expect(o.requirePartitionFilter, unittest.isTrue);
-    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(
+      o.expirationMs!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.field!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.requirePartitionFilter!, unittest.isTrue);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTimePartitioning--;
 }
@@ -5054,8 +6484,14 @@ core.List<core.String> buildUnnamed1462() {
 
 void checkUnnamed1462(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed1463() {
@@ -5067,8 +6503,14 @@ core.List<core.String> buildUnnamed1463() {
 
 void checkUnnamed1463(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.Map<core.String, core.double> buildUnnamed1464() {
@@ -5080,8 +6522,14 @@ core.Map<core.String, core.double> buildUnnamed1464() {
 
 void checkUnnamed1464(core.Map<core.String, core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o['x'], unittest.equals(42.0));
-  unittest.expect(o['y'], unittest.equals(42.0));
+  unittest.expect(
+    o['x']!,
+    unittest.equals(42.0),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals(42.0),
+  );
 }
 
 core.int buildCounterTrainingOptions = 0;
@@ -5140,49 +6588,151 @@ api.TrainingOptions buildTrainingOptions() {
 void checkTrainingOptions(api.TrainingOptions o) {
   buildCounterTrainingOptions++;
   if (buildCounterTrainingOptions < 3) {
-    unittest.expect(o.autoArima, unittest.isTrue);
-    unittest.expect(o.autoArimaMaxOrder, unittest.equals('foo'));
-    unittest.expect(o.batchSize, unittest.equals('foo'));
-    unittest.expect(o.dataFrequency, unittest.equals('foo'));
-    unittest.expect(o.dataSplitColumn, unittest.equals('foo'));
-    unittest.expect(o.dataSplitEvalFraction, unittest.equals(42.0));
-    unittest.expect(o.dataSplitMethod, unittest.equals('foo'));
-    unittest.expect(o.distanceType, unittest.equals('foo'));
-    unittest.expect(o.dropout, unittest.equals(42.0));
-    unittest.expect(o.earlyStop, unittest.isTrue);
-    unittest.expect(o.feedbackType, unittest.equals('foo'));
-    checkUnnamed1462(o.hiddenUnits);
-    unittest.expect(o.holidayRegion, unittest.equals('foo'));
-    unittest.expect(o.horizon, unittest.equals('foo'));
-    unittest.expect(o.includeDrift, unittest.isTrue);
-    unittest.expect(o.initialLearnRate, unittest.equals(42.0));
-    checkUnnamed1463(o.inputLabelColumns);
-    unittest.expect(o.itemColumn, unittest.equals('foo'));
-    unittest.expect(o.kmeansInitializationColumn, unittest.equals('foo'));
-    unittest.expect(o.kmeansInitializationMethod, unittest.equals('foo'));
-    unittest.expect(o.l1Regularization, unittest.equals(42.0));
-    unittest.expect(o.l2Regularization, unittest.equals(42.0));
-    checkUnnamed1464(o.labelClassWeights);
-    unittest.expect(o.learnRate, unittest.equals(42.0));
-    unittest.expect(o.learnRateStrategy, unittest.equals('foo'));
-    unittest.expect(o.lossType, unittest.equals('foo'));
-    unittest.expect(o.maxIterations, unittest.equals('foo'));
-    unittest.expect(o.maxTreeDepth, unittest.equals('foo'));
-    unittest.expect(o.minRelativeProgress, unittest.equals(42.0));
-    unittest.expect(o.minSplitLoss, unittest.equals(42.0));
-    unittest.expect(o.modelUri, unittest.equals('foo'));
-    checkArimaOrder(o.nonSeasonalOrder as api.ArimaOrder);
-    unittest.expect(o.numClusters, unittest.equals('foo'));
-    unittest.expect(o.numFactors, unittest.equals('foo'));
-    unittest.expect(o.optimizationStrategy, unittest.equals('foo'));
-    unittest.expect(o.preserveInputStructs, unittest.isTrue);
-    unittest.expect(o.subsample, unittest.equals(42.0));
-    unittest.expect(o.timeSeriesDataColumn, unittest.equals('foo'));
-    unittest.expect(o.timeSeriesIdColumn, unittest.equals('foo'));
-    unittest.expect(o.timeSeriesTimestampColumn, unittest.equals('foo'));
-    unittest.expect(o.userColumn, unittest.equals('foo'));
-    unittest.expect(o.walsAlpha, unittest.equals(42.0));
-    unittest.expect(o.warmStart, unittest.isTrue);
+    unittest.expect(o.autoArima!, unittest.isTrue);
+    unittest.expect(
+      o.autoArimaMaxOrder!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.batchSize!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataFrequency!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataSplitColumn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dataSplitEvalFraction!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.dataSplitMethod!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.distanceType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.dropout!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(o.earlyStop!, unittest.isTrue);
+    unittest.expect(
+      o.feedbackType!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1462(o.hiddenUnits!);
+    unittest.expect(
+      o.holidayRegion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.horizon!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.includeDrift!, unittest.isTrue);
+    unittest.expect(
+      o.initialLearnRate!,
+      unittest.equals(42.0),
+    );
+    checkUnnamed1463(o.inputLabelColumns!);
+    unittest.expect(
+      o.itemColumn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kmeansInitializationColumn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kmeansInitializationMethod!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.l1Regularization!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.l2Regularization!,
+      unittest.equals(42.0),
+    );
+    checkUnnamed1464(o.labelClassWeights!);
+    unittest.expect(
+      o.learnRate!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.learnRateStrategy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lossType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxIterations!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.maxTreeDepth!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.minRelativeProgress!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.minSplitLoss!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.modelUri!,
+      unittest.equals('foo'),
+    );
+    checkArimaOrder(o.nonSeasonalOrder! as api.ArimaOrder);
+    unittest.expect(
+      o.numClusters!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.numFactors!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.optimizationStrategy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.preserveInputStructs!, unittest.isTrue);
+    unittest.expect(
+      o.subsample!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.timeSeriesDataColumn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timeSeriesIdColumn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timeSeriesTimestampColumn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.userColumn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.walsAlpha!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(o.warmStart!, unittest.isTrue);
   }
   buildCounterTrainingOptions--;
 }
@@ -5232,12 +6782,15 @@ api.TrainingRun buildTrainingRun() {
 void checkTrainingRun(api.TrainingRun o) {
   buildCounterTrainingRun++;
   if (buildCounterTrainingRun < 3) {
-    checkDataSplitResult(o.dataSplitResult as api.DataSplitResult);
-    checkEvaluationMetrics(o.evaluationMetrics as api.EvaluationMetrics);
-    checkUnnamed1465(o.globalExplanations);
-    checkUnnamed1466(o.results);
-    unittest.expect(o.startTime, unittest.equals('foo'));
-    checkTrainingOptions(o.trainingOptions as api.TrainingOptions);
+    checkDataSplitResult(o.dataSplitResult! as api.DataSplitResult);
+    checkEvaluationMetrics(o.evaluationMetrics! as api.EvaluationMetrics);
+    checkUnnamed1465(o.globalExplanations!);
+    checkUnnamed1466(o.results!);
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+    checkTrainingOptions(o.trainingOptions! as api.TrainingOptions);
   }
   buildCounterTrainingRun--;
 }
@@ -5256,7 +6809,10 @@ api.TransactionInfo buildTransactionInfo() {
 void checkTransactionInfo(api.TransactionInfo o) {
   buildCounterTransactionInfo++;
   if (buildCounterTransactionInfo < 3) {
-    unittest.expect(o.transactionId, unittest.equals('foo'));
+    unittest.expect(
+      o.transactionId!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterTransactionInfo--;
 }
@@ -5276,8 +6832,14 @@ api.UserDefinedFunctionResource buildUserDefinedFunctionResource() {
 void checkUserDefinedFunctionResource(api.UserDefinedFunctionResource o) {
   buildCounterUserDefinedFunctionResource++;
   if (buildCounterUserDefinedFunctionResource < 3) {
-    unittest.expect(o.inlineCode, unittest.equals('foo'));
-    unittest.expect(o.resourceUri, unittest.equals('foo'));
+    unittest.expect(
+      o.inlineCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resourceUri!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterUserDefinedFunctionResource--;
 }
@@ -5311,9 +6873,12 @@ api.ViewDefinition buildViewDefinition() {
 void checkViewDefinition(api.ViewDefinition o) {
   buildCounterViewDefinition++;
   if (buildCounterViewDefinition < 3) {
-    unittest.expect(o.query, unittest.equals('foo'));
-    unittest.expect(o.useLegacySql, unittest.isTrue);
-    checkUnnamed1467(o.userDefinedFunctionResources);
+    unittest.expect(
+      o.query!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.useLegacySql!, unittest.isTrue);
+    checkUnnamed1467(o.userDefinedFunctionResources!);
   }
   buildCounterViewDefinition--;
 }
@@ -5327,8 +6892,14 @@ core.List<core.String> buildUnnamed1468() {
 
 void checkUnnamed1468(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -6478,26 +8049,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/datasets/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/datasets/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/datasets/"),
+        );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_datasetId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_datasetId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6514,9 +8099,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["deleteContents"].first,
-            unittest.equals("$arg_deleteContents"));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["deleteContents"]!.first,
+          unittest.equals("$arg_deleteContents"),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -6542,26 +8132,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/datasets/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/datasets/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/datasets/"),
+        );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_datasetId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_datasetId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6578,7 +8182,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -6609,22 +8216,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/datasets', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("/datasets"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("/datasets"),
+        );
         pathOffset += 9;
 
         var query = (req.url).query;
@@ -6642,7 +8260,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -6672,22 +8293,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/datasets', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("/datasets"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("/datasets"),
+        );
         pathOffset += 9;
 
         var query = (req.url).query;
@@ -6705,13 +8337,26 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["all"].first, unittest.equals("$arg_all"));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["all"]!.first,
+          unittest.equals("$arg_all"),
+        );
+        unittest.expect(
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -6748,26 +8393,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/datasets/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/datasets/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/datasets/"),
+        );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_datasetId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_datasetId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6784,7 +8443,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -6817,26 +8479,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/datasets/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/datasets/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/datasets/"),
+        );
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_datasetId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_datasetId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6853,7 +8529,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -6884,31 +8563,47 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/jobs/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("/jobs/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 6),
+          unittest.equals("/jobs/"),
+        );
         pathOffset += 6;
         index = path.indexOf('/cancel', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_jobId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("/cancel"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_jobId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals("/cancel"),
+        );
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -6927,8 +8622,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["location"].first, unittest.equals(arg_location));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["location"]!.first,
+          unittest.equals(arg_location),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -6957,26 +8657,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/jobs/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6),
-            unittest.equals("/jobs/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 6),
+          unittest.equals("/jobs/"),
+        );
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_jobId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_jobId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6994,8 +8708,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["location"].first, unittest.equals(arg_location));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["location"]!.first,
+          unittest.equals(arg_location),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -7028,26 +8747,40 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/queries/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("/queries/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("/queries/"),
+        );
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_jobId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_jobId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -7065,16 +8798,29 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["location"].first, unittest.equals(arg_location));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
+          queryMap["location"]!.first,
+          unittest.equals(arg_location),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
         unittest.expect(
-            queryMap["startIndex"].first, unittest.equals(arg_startIndex));
-        unittest.expect(core.int.parse(queryMap["timeoutMs"].first),
-            unittest.equals(arg_timeoutMs));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["startIndex"]!.first,
+          unittest.equals(arg_startIndex),
+        );
+        unittest.expect(
+          core.int.parse(queryMap["timeoutMs"]!.first),
+          unittest.equals(arg_timeoutMs),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -7113,22 +8859,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/jobs', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/jobs"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/jobs"),
+        );
         pathOffset += 5;
 
         var query = (req.url).query;
@@ -7146,7 +8903,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -7180,22 +8940,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/jobs', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/jobs"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/jobs"),
+        );
         pathOffset += 5;
 
         var query = (req.url).query;
@@ -7214,22 +8985,41 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["allUsers"].first, unittest.equals("$arg_allUsers"));
-        unittest.expect(queryMap["maxCreationTime"].first,
-            unittest.equals(arg_maxCreationTime));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["minCreationTime"].first,
-            unittest.equals(arg_minCreationTime));
+          queryMap["allUsers"]!.first,
+          unittest.equals("$arg_allUsers"),
+        );
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+          queryMap["maxCreationTime"]!.first,
+          unittest.equals(arg_maxCreationTime),
+        );
         unittest.expect(
-            queryMap["parentJobId"].first, unittest.equals(arg_parentJobId));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
         unittest.expect(
-            queryMap["projection"].first, unittest.equals(arg_projection));
+          queryMap["minCreationTime"]!.first,
+          unittest.equals(arg_minCreationTime),
+        );
         unittest.expect(
-            queryMap["stateFilter"], unittest.equals(arg_stateFilter));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["parentJobId"]!.first,
+          unittest.equals(arg_parentJobId),
+        );
+        unittest.expect(
+          queryMap["projection"]!.first,
+          unittest.equals(arg_projection),
+        );
+        unittest.expect(
+          queryMap["stateFilter"]!,
+          unittest.equals(arg_stateFilter),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -7269,22 +9059,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/queries', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/queries"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/queries"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -7302,7 +9103,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -7332,13 +9136,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -7357,7 +9167,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -7384,13 +9197,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -7409,7 +9228,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -7438,13 +9260,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -7463,11 +9291,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -7503,13 +9338,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -7528,7 +9369,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -7557,22 +9401,33 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/serviceAccount', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("/serviceAccount"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 15),
+          unittest.equals("/serviceAccount"),
+        );
         pathOffset += 15;
 
         var query = (req.url).query;
@@ -7590,7 +9445,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -7618,13 +9476,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("projects"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("projects"),
+        );
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -7642,11 +9506,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -7679,13 +9550,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -7704,7 +9581,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -7732,13 +9612,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -7758,8 +9644,13 @@ void main() {
           }
         }
         unittest.expect(
-            queryMap["readMask"].first, unittest.equals(arg_readMask));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["readMask"]!.first,
+          unittest.equals(arg_readMask),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -7792,13 +9683,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -7817,7 +9714,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -7849,13 +9749,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -7874,14 +9780,26 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+          queryMap["filter"]!.first,
+          unittest.equals(arg_filter),
+        );
         unittest.expect(
-            queryMap["readMask"].first, unittest.equals(arg_readMask));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["readMask"]!.first,
+          unittest.equals(arg_readMask),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -7919,13 +9837,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -7944,7 +9868,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -7978,7 +9905,9 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -7996,7 +9925,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -8026,13 +9958,19 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -8051,11 +9989,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["pageSize"]!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -8090,7 +10035,9 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -8108,7 +10055,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -8139,7 +10089,9 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -8157,7 +10109,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -8193,40 +10148,61 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/datasets/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/datasets/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/datasets/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/tables/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_datasetId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/tables/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_datasetId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/tables/"),
+        );
         pathOffset += 8;
         index = path.indexOf('/insertAll', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_tableId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/insertAll"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_tableId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/insertAll"),
+        );
         pathOffset += 10;
 
         var query = (req.url).query;
@@ -8244,7 +10220,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -8278,40 +10257,61 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/datasets/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/datasets/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/datasets/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/tables/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_datasetId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/tables/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_datasetId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/tables/"),
+        );
         pathOffset += 8;
         index = path.indexOf('/data', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_tableId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5),
-            unittest.equals("/data"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_tableId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 5),
+          unittest.equals("/data"),
+        );
         pathOffset += 5;
 
         var query = (req.url).query;
@@ -8329,15 +10329,26 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["selectedFields"].first,
-            unittest.equals(arg_selectedFields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
         unittest.expect(
-            queryMap["startIndex"].first, unittest.equals(arg_startIndex));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["selectedFields"]!.first,
+          unittest.equals(arg_selectedFields),
+        );
+        unittest.expect(
+          queryMap["startIndex"]!.first,
+          unittest.equals(arg_startIndex),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -8372,35 +10383,54 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/datasets/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/datasets/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/datasets/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/tables/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_datasetId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/tables/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_datasetId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/tables/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_tableId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_tableId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -8417,7 +10447,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -8445,35 +10478,54 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/datasets/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/datasets/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/datasets/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/tables/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_datasetId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/tables/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_datasetId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/tables/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_tableId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_tableId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -8490,9 +10542,14 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["selectedFields"].first,
-            unittest.equals(arg_selectedFields));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["selectedFields"]!.first,
+          unittest.equals(arg_selectedFields),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -8524,7 +10581,9 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -8542,7 +10601,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -8574,31 +10636,47 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/datasets/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/datasets/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/datasets/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/tables', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_datasetId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("/tables"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_datasetId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals("/tables"),
+        );
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -8616,7 +10694,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -8646,31 +10727,47 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/datasets/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/datasets/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/datasets/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/tables', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_datasetId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7),
-            unittest.equals("/tables"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_datasetId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals("/tables"),
+        );
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -8688,11 +10785,18 @@ void main() {
             );
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first),
-            unittest.equals(arg_maxResults));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+          core.int.parse(queryMap["maxResults"]!.first),
+          unittest.equals(arg_maxResults),
+        );
+        unittest.expect(
+          queryMap["pageToken"]!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -8728,35 +10832,54 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/datasets/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/datasets/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/datasets/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/tables/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_datasetId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/tables/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_datasetId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/tables/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_tableId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_tableId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -8773,7 +10896,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -8805,7 +10931,9 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -8823,7 +10951,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -8854,7 +10985,9 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -8872,7 +11005,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',
@@ -8906,35 +11042,54 @@ void main() {
         core.int index;
         core.String subPart;
         unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals("/"),
+        );
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12),
-            unittest.equals("bigquery/v2/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals("bigquery/v2/"),
+        );
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("projects/"));
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals("projects/"),
+        );
         pathOffset += 9;
         index = path.indexOf('/datasets/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_projectId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("/datasets/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_projectId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals("/datasets/"),
+        );
         pathOffset += 10;
         index = path.indexOf('/tables/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
             core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
-        unittest.expect(subPart, unittest.equals('$arg_datasetId'));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("/tables/"));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_datasetId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 8),
+          unittest.equals("/tables/"),
+        );
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals('$arg_tableId'));
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_tableId'),
+        );
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -8951,7 +11106,10 @@ void main() {
             );
           }
         }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+        unittest.expect(
+          queryMap["fields"]!.first,
+          unittest.equals(arg_$fields),
+        );
 
         var h = {
           'content-type': 'application/json; charset=utf-8',

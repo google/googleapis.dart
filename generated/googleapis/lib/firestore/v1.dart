@@ -120,13 +120,9 @@ class ProjectsDatabasesResource {
   async.Future<GoogleLongrunningOperation> exportDocuments(
     GoogleFirestoreAdminV1ExportDocumentsRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -174,13 +170,9 @@ class ProjectsDatabasesResource {
   async.Future<GoogleLongrunningOperation> importDocuments(
     GoogleFirestoreAdminV1ImportDocumentsRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -239,11 +231,8 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
   /// this method will complete with the same error.
   async.Future<GoogleFirestoreAdminV1Field> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -296,14 +285,11 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
   /// this method will complete with the same error.
   async.Future<GoogleFirestoreAdminV1ListFieldsResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -377,14 +363,10 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
   async.Future<GoogleLongrunningOperation> patch(
     GoogleFirestoreAdminV1Field request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -437,13 +419,9 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
   async.Future<GoogleLongrunningOperation> create(
     GoogleFirestoreAdminV1Index request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -482,11 +460,8 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -522,11 +497,8 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
   /// this method will complete with the same error.
   async.Future<GoogleFirestoreAdminV1Index> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -571,14 +543,11 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
   /// this method will complete with the same error.
   async.Future<GoogleFirestoreAdminV1ListIndexesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -631,13 +600,9 @@ class ProjectsDatabasesDocumentsResource {
   async.Future<BatchGetDocumentsResponse> batchGet(
     BatchGetDocumentsRequest request,
     core.String database, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -685,13 +650,9 @@ class ProjectsDatabasesDocumentsResource {
   async.Future<BatchWriteResponse> batchWrite(
     BatchWriteRequest request,
     core.String database, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -733,13 +694,9 @@ class ProjectsDatabasesDocumentsResource {
   async.Future<BeginTransactionResponse> beginTransaction(
     BeginTransactionRequest request,
     core.String database, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -781,13 +738,9 @@ class ProjectsDatabasesDocumentsResource {
   async.Future<CommitResponse> commit(
     CommitRequest request,
     core.String database, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -841,18 +794,11 @@ class ProjectsDatabasesDocumentsResource {
     Document request,
     core.String parent,
     core.String collectionId, {
-    core.String documentId,
-    core.List<core.String> mask_fieldPaths,
-    core.String $fields,
+    core.String? documentId,
+    core.List<core.String>? mask_fieldPaths,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (collectionId == null) {
-      throw core.ArgumentError('Parameter collectionId is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (documentId != null) 'documentId': [documentId],
       if (mask_fieldPaths != null) 'mask.fieldPaths': mask_fieldPaths,
@@ -901,13 +847,10 @@ class ProjectsDatabasesDocumentsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.bool currentDocument_exists,
-    core.String currentDocument_updateTime,
-    core.String $fields,
+    core.bool? currentDocument_exists,
+    core.String? currentDocument_updateTime,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (currentDocument_exists != null)
         'currentDocument.exists': ['${currentDocument_exists}'],
@@ -956,14 +899,11 @@ class ProjectsDatabasesDocumentsResource {
   /// this method will complete with the same error.
   async.Future<Document> get(
     core.String name, {
-    core.List<core.String> mask_fieldPaths,
-    core.String readTime,
-    core.String transaction,
-    core.String $fields,
+    core.List<core.String>? mask_fieldPaths,
+    core.String? readTime,
+    core.String? transaction,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (mask_fieldPaths != null) 'mask.fieldPaths': mask_fieldPaths,
       if (readTime != null) 'readTime': [readTime],
@@ -1031,21 +971,15 @@ class ProjectsDatabasesDocumentsResource {
   async.Future<ListDocumentsResponse> list(
     core.String parent,
     core.String collectionId, {
-    core.List<core.String> mask_fieldPaths,
-    core.String orderBy,
-    core.int pageSize,
-    core.String pageToken,
-    core.String readTime,
-    core.bool showMissing,
-    core.String transaction,
-    core.String $fields,
+    core.List<core.String>? mask_fieldPaths,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readTime,
+    core.bool? showMissing,
+    core.String? transaction,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
-    if (collectionId == null) {
-      throw core.ArgumentError('Parameter collectionId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (mask_fieldPaths != null) 'mask.fieldPaths': mask_fieldPaths,
       if (orderBy != null) 'orderBy': [orderBy],
@@ -1097,13 +1031,9 @@ class ProjectsDatabasesDocumentsResource {
   async.Future<ListCollectionIdsResponse> listCollectionIds(
     ListCollectionIdsRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1145,13 +1075,9 @@ class ProjectsDatabasesDocumentsResource {
   async.Future<ListenResponse> listen(
     ListenRequest request,
     core.String database, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1200,13 +1126,9 @@ class ProjectsDatabasesDocumentsResource {
   async.Future<PartitionQueryResponse> partitionQuery(
     PartitionQueryRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1261,17 +1183,13 @@ class ProjectsDatabasesDocumentsResource {
   async.Future<Document> patch(
     Document request,
     core.String name, {
-    core.bool currentDocument_exists,
-    core.String currentDocument_updateTime,
-    core.List<core.String> mask_fieldPaths,
-    core.List<core.String> updateMask_fieldPaths,
-    core.String $fields,
+    core.bool? currentDocument_exists,
+    core.String? currentDocument_updateTime,
+    core.List<core.String>? mask_fieldPaths,
+    core.List<core.String>? updateMask_fieldPaths,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (currentDocument_exists != null)
         'currentDocument.exists': ['${currentDocument_exists}'],
@@ -1317,13 +1235,9 @@ class ProjectsDatabasesDocumentsResource {
   async.Future<Empty> rollback(
     RollbackRequest request,
     core.String database, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1368,13 +1282,9 @@ class ProjectsDatabasesDocumentsResource {
   async.Future<RunQueryResponse> runQuery(
     RunQueryRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1416,13 +1326,9 @@ class ProjectsDatabasesDocumentsResource {
   async.Future<WriteResponse> write(
     WriteRequest request,
     core.String database, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (database == null) {
-      throw core.ArgumentError('Parameter database is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1480,13 +1386,9 @@ class ProjectsDatabasesOperationsResource {
   async.Future<Empty> cancel(
     GoogleLongrunningCancelOperationRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1527,11 +1429,8 @@ class ProjectsDatabasesOperationsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1569,11 +1468,8 @@ class ProjectsDatabasesOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1623,14 +1519,11 @@ class ProjectsDatabasesOperationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1675,11 +1568,8 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<Location> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1719,14 +1609,11 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1750,7 +1637,7 @@ class ProjectsLocationsResource {
 /// An array value.
 class ArrayValue {
   /// Values in the array.
-  core.List<Value> values;
+  core.List<Value>? values;
 
   ArrayValue();
 
@@ -1763,9 +1650,9 @@ class ArrayValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (values != null)
-          'values': values.map((value) => value.toJson()).toList(),
+          'values': values!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1777,29 +1664,29 @@ class BatchGetDocumentsRequest {
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
   /// The request will fail if any of the document is not a child resource of
   /// the given `database`. Duplicate names will be elided.
-  core.List<core.String> documents;
+  core.List<core.String>? documents;
 
   /// The fields to return.
   ///
   /// If not set, returns all fields. If a document has a field that is not
   /// present in this mask, that field will not be returned in the response.
-  DocumentMask mask;
+  DocumentMask? mask;
 
   /// Starts a new transaction and reads the documents.
   ///
   /// Defaults to a read-only transaction. The new transaction ID will be
   /// returned as the first response in the stream.
-  TransactionOptions newTransaction;
+  TransactionOptions? newTransaction;
 
   /// Reads documents as they were at the given time.
   ///
   /// This may not be older than 270 seconds.
-  core.String readTime;
+  core.String? readTime;
 
   /// Reads documents in a transaction.
-  core.String transaction;
+  core.String? transaction;
   core.List<core.int> get transactionAsBytes =>
-      convert.base64.decode(transaction);
+      convert.base64.decode(transaction!);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -1830,40 +1717,40 @@ class BatchGetDocumentsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (documents != null) 'documents': documents,
-        if (mask != null) 'mask': mask.toJson(),
-        if (newTransaction != null) 'newTransaction': newTransaction.toJson(),
-        if (readTime != null) 'readTime': readTime,
-        if (transaction != null) 'transaction': transaction,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (documents != null) 'documents': documents!,
+        if (mask != null) 'mask': mask!.toJson(),
+        if (newTransaction != null) 'newTransaction': newTransaction!.toJson(),
+        if (readTime != null) 'readTime': readTime!,
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
 /// The streamed response for Firestore.BatchGetDocuments.
 class BatchGetDocumentsResponse {
   /// A document that was requested.
-  Document found;
+  Document? found;
 
   /// A document name that was requested but does not exist.
   ///
   /// In the format:
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
-  core.String missing;
+  core.String? missing;
 
   /// The time at which the document was read.
   ///
   /// This may be monotically increasing, in this case the previous documents in
   /// the result stream are guaranteed not to have changed between their
   /// read_time and this one.
-  core.String readTime;
+  core.String? readTime;
 
   /// The transaction that was started as part of this request.
   ///
   /// Will only be set in the first response, and only if
   /// BatchGetDocumentsRequest.new_transaction was set in the request.
-  core.String transaction;
+  core.String? transaction;
   core.List<core.int> get transactionAsBytes =>
-      convert.base64.decode(transaction);
+      convert.base64.decode(transaction!);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -1888,25 +1775,25 @@ class BatchGetDocumentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (found != null) 'found': found.toJson(),
-        if (missing != null) 'missing': missing,
-        if (readTime != null) 'readTime': readTime,
-        if (transaction != null) 'transaction': transaction,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (found != null) 'found': found!.toJson(),
+        if (missing != null) 'missing': missing!,
+        if (readTime != null) 'readTime': readTime!,
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
 /// The request for Firestore.BatchWrite.
 class BatchWriteRequest {
   /// Labels associated with this batch write.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The writes to apply.
   ///
   /// Method does not apply writes atomically and does not guarantee ordering.
   /// Each write succeeds or fails independently. You cannot write to the same
   /// document more than once per request.
-  core.List<Write> writes;
+  core.List<Write>? writes;
 
   BatchWriteRequest();
 
@@ -1928,10 +1815,10 @@ class BatchWriteRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
         if (writes != null)
-          'writes': writes.map((value) => value.toJson()).toList(),
+          'writes': writes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1940,12 +1827,12 @@ class BatchWriteResponse {
   /// The status of applying the writes.
   ///
   /// This i-th write status corresponds to the i-th write in the request.
-  core.List<Status> status;
+  core.List<Status>? status;
 
   /// The result of applying the writes.
   ///
   /// This i-th write result corresponds to the i-th write in the request.
-  core.List<WriteResult> writeResults;
+  core.List<WriteResult>? writeResults;
 
   BatchWriteResponse();
 
@@ -1964,11 +1851,11 @@ class BatchWriteResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (status != null)
-          'status': status.map((value) => value.toJson()).toList(),
+          'status': status!.map((value) => value.toJson()).toList(),
         if (writeResults != null)
-          'writeResults': writeResults.map((value) => value.toJson()).toList(),
+          'writeResults': writeResults!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -1977,7 +1864,7 @@ class BeginTransactionRequest {
   /// The options for the transaction.
   ///
   /// Defaults to a read-write transaction.
-  TransactionOptions options;
+  TransactionOptions? options;
 
   BeginTransactionRequest();
 
@@ -1988,17 +1875,17 @@ class BeginTransactionRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (options != null) 'options': options.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (options != null) 'options': options!.toJson(),
       };
 }
 
 /// The response for Firestore.BeginTransaction.
 class BeginTransactionResponse {
   /// The transaction that was started.
-  core.String transaction;
+  core.String? transaction;
   core.List<core.int> get transactionAsBytes =>
-      convert.base64.decode(transaction);
+      convert.base64.decode(transaction!);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -2013,8 +1900,8 @@ class BeginTransactionResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (transaction != null) 'transaction': transaction,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -2024,12 +1911,12 @@ class CollectionSelector {
   /// `parent` specified in the containing `RunQueryRequest`.
   ///
   /// When true, selects all descendant collections.
-  core.bool allDescendants;
+  core.bool? allDescendants;
 
   /// The collection ID.
   ///
   /// When set, selects only collections with this ID.
-  core.String collectionId;
+  core.String? collectionId;
 
   CollectionSelector();
 
@@ -2042,18 +1929,18 @@ class CollectionSelector {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (allDescendants != null) 'allDescendants': allDescendants,
-        if (collectionId != null) 'collectionId': collectionId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (allDescendants != null) 'allDescendants': allDescendants!,
+        if (collectionId != null) 'collectionId': collectionId!,
       };
 }
 
 /// The request for Firestore.Commit.
 class CommitRequest {
   /// If set, applies all writes in this transaction, and commits it.
-  core.String transaction;
+  core.String? transaction;
   core.List<core.int> get transactionAsBytes =>
-      convert.base64.decode(transaction);
+      convert.base64.decode(transaction!);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -2063,7 +1950,7 @@ class CommitRequest {
   /// The writes to apply.
   ///
   /// Always executed atomically and in order.
-  core.List<Write> writes;
+  core.List<Write>? writes;
 
   CommitRequest();
 
@@ -2079,10 +1966,10 @@ class CommitRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (transaction != null) 'transaction': transaction,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (transaction != null) 'transaction': transaction!,
         if (writes != null)
-          'writes': writes.map((value) => value.toJson()).toList(),
+          'writes': writes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2092,12 +1979,12 @@ class CommitResponse {
   ///
   /// Any read with an equal or greater `read_time` is guaranteed to see the
   /// effects of the commit.
-  core.String commitTime;
+  core.String? commitTime;
 
   /// The result of applying the writes.
   ///
   /// This i-th write result corresponds to the i-th write in the request.
-  core.List<WriteResult> writeResults;
+  core.List<WriteResult>? writeResults;
 
   CommitResponse();
 
@@ -2113,10 +2000,10 @@ class CommitResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commitTime != null) 'commitTime': commitTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commitTime != null) 'commitTime': commitTime!,
         if (writeResults != null)
-          'writeResults': writeResults.map((value) => value.toJson()).toList(),
+          'writeResults': writeResults!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2125,14 +2012,14 @@ class CompositeFilter {
   /// The list of filters to combine.
   ///
   /// Must contain at least one filter.
-  core.List<Filter> filters;
+  core.List<Filter>? filters;
 
   /// The operator for combining multiple filters.
   /// Possible string values are:
   /// - "OPERATOR_UNSPECIFIED" : Unspecified. This value must not be used.
   /// - "AND" : The results are required to satisfy each of the combined
   /// filters.
-  core.String op;
+  core.String? op;
 
   CompositeFilter();
 
@@ -2148,10 +2035,10 @@ class CompositeFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (filters != null)
-          'filters': filters.map((value) => value.toJson()).toList(),
-        if (op != null) 'op': op,
+          'filters': filters!.map((value) => value.toJson()).toList(),
+        if (op != null) 'op': op!,
       };
 }
 
@@ -2159,13 +2046,13 @@ class CompositeFilter {
 class Cursor {
   /// If the position is just before or just after the given values, relative to
   /// the sort order defined by the query.
-  core.bool before;
+  core.bool? before;
 
   /// The values that represent a position, in the order they appear in the
   /// order by clause of a query.
   ///
   /// Can contain fewer values than specified in the order by clause.
-  core.List<Value> values;
+  core.List<Value>? values;
 
   Cursor();
 
@@ -2181,10 +2068,10 @@ class Cursor {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (before != null) 'before': before,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (before != null) 'before': before!,
         if (values != null)
-          'values': values.map((value) => value.toJson()).toList(),
+          'values': values!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2199,7 +2086,7 @@ class Document {
   /// `read_time` of a query.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The document's fields.
   ///
@@ -2218,11 +2105,11 @@ class Document {
   /// character. Some characters, including `` ` ``, must be escaped using a
   /// `\`. For example, `` `x&y` `` represents `x&y` and `` `bak\`tik` ``
   /// represents `` bak`tik ``.
-  core.Map<core.String, Value> fields;
+  core.Map<core.String, Value>? fields;
 
   /// The resource name of the document, for example
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
-  core.String name;
+  core.String? name;
 
   /// The time at which the document was last changed.
   ///
@@ -2231,7 +2118,7 @@ class Document {
   /// values from other documents and the `read_time` of a query.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Document();
 
@@ -2240,7 +2127,9 @@ class Document {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('fields')) {
-      fields = (_json['fields'] as core.Map).cast<core.String, core.Map>().map(
+      fields = (_json['fields'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               Value.fromJson(item as core.Map<core.String, core.dynamic>),
@@ -2255,13 +2144,13 @@ class Document {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (createTime != null) 'createTime': createTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
         if (fields != null)
           'fields':
-              fields.map((key, item) => core.MapEntry(key, item.toJson())),
-        if (name != null) 'name': name,
-        if (updateTime != null) 'updateTime': updateTime,
+              fields!.map((key, item) => core.MapEntry(key, item.toJson())),
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -2275,13 +2164,13 @@ class DocumentChange {
   /// The new state of the Document.
   ///
   /// If `mask` is set, contains only fields that were updated or added.
-  Document document;
+  Document? document;
 
   /// A set of target IDs for targets that no longer match this document.
-  core.List<core.int> removedTargetIds;
+  core.List<core.int>? removedTargetIds;
 
   /// A set of target IDs of targets that match this document.
-  core.List<core.int> targetIds;
+  core.List<core.int>? targetIds;
 
   DocumentChange();
 
@@ -2302,10 +2191,10 @@ class DocumentChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (document != null) 'document': document.toJson(),
-        if (removedTargetIds != null) 'removedTargetIds': removedTargetIds,
-        if (targetIds != null) 'targetIds': targetIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (document != null) 'document': document!.toJson(),
+        if (removedTargetIds != null) 'removedTargetIds': removedTargetIds!,
+        if (targetIds != null) 'targetIds': targetIds!,
       };
 }
 
@@ -2316,15 +2205,15 @@ class DocumentChange {
 /// the same logical delete, if multiple targets are affected.
 class DocumentDelete {
   /// The resource name of the Document that was deleted.
-  core.String document;
+  core.String? document;
 
   /// The read timestamp at which the delete was observed.
   ///
   /// Greater or equal to the `commit_time` of the delete.
-  core.String readTime;
+  core.String? readTime;
 
   /// A set of target IDs for targets that previously matched this entity.
-  core.List<core.int> removedTargetIds;
+  core.List<core.int>? removedTargetIds;
 
   DocumentDelete();
 
@@ -2342,10 +2231,10 @@ class DocumentDelete {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (document != null) 'document': document,
-        if (readTime != null) 'readTime': readTime,
-        if (removedTargetIds != null) 'removedTargetIds': removedTargetIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (document != null) 'document': document!,
+        if (readTime != null) 'readTime': readTime!,
+        if (removedTargetIds != null) 'removedTargetIds': removedTargetIds!,
       };
 }
 
@@ -2358,7 +2247,7 @@ class DocumentMask {
   /// The list of field paths in the mask.
   ///
   /// See Document.fields for a field path syntax reference.
-  core.List<core.String> fieldPaths;
+  core.List<core.String>? fieldPaths;
 
   DocumentMask();
 
@@ -2370,8 +2259,8 @@ class DocumentMask {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fieldPaths != null) 'fieldPaths': fieldPaths,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fieldPaths != null) 'fieldPaths': fieldPaths!,
       };
 }
 
@@ -2384,15 +2273,15 @@ class DocumentMask {
 /// are affected.
 class DocumentRemove {
   /// The resource name of the Document that has gone out of view.
-  core.String document;
+  core.String? document;
 
   /// The read timestamp at which the remove was observed.
   ///
   /// Greater or equal to the `commit_time` of the change/delete/remove.
-  core.String readTime;
+  core.String? readTime;
 
   /// A set of target IDs for targets that previously matched this document.
-  core.List<core.int> removedTargetIds;
+  core.List<core.int>? removedTargetIds;
 
   DocumentRemove();
 
@@ -2410,23 +2299,23 @@ class DocumentRemove {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (document != null) 'document': document,
-        if (readTime != null) 'readTime': readTime,
-        if (removedTargetIds != null) 'removedTargetIds': removedTargetIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (document != null) 'document': document!,
+        if (readTime != null) 'readTime': readTime!,
+        if (removedTargetIds != null) 'removedTargetIds': removedTargetIds!,
       };
 }
 
 /// A transformation of a document.
 class DocumentTransform {
   /// The name of the document to transform.
-  core.String document;
+  core.String? document;
 
   /// The list of transformations to apply to the fields of the document, in
   /// order.
   ///
   /// This must not be empty.
-  core.List<FieldTransform> fieldTransforms;
+  core.List<FieldTransform>? fieldTransforms;
 
   DocumentTransform();
 
@@ -2442,11 +2331,11 @@ class DocumentTransform {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (document != null) 'document': document,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (document != null) 'document': document!,
         if (fieldTransforms != null)
           'fieldTransforms':
-              fieldTransforms.map((value) => value.toJson()).toList(),
+              fieldTransforms!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2458,7 +2347,7 @@ class DocumentsTarget {
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
   /// The request will fail if any of the document is not a child resource of
   /// the given `database`. Duplicate names will be elided.
-  core.List<core.String> documents;
+  core.List<core.String>? documents;
 
   DocumentsTarget();
 
@@ -2470,8 +2359,8 @@ class DocumentsTarget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (documents != null) 'documents': documents,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (documents != null) 'documents': documents!,
       };
 }
 
@@ -2489,7 +2378,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A digest of all the documents that match a given target.
@@ -2498,10 +2387,10 @@ class ExistenceFilter {
   ///
   /// If different from the count of documents in the client that match, the
   /// client must manually determine which documents no longer match the target.
-  core.int count;
+  core.int? count;
 
   /// The target ID to which this filter applies.
-  core.int targetId;
+  core.int? targetId;
 
   ExistenceFilter();
 
@@ -2514,16 +2403,16 @@ class ExistenceFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (count != null) 'count': count,
-        if (targetId != null) 'targetId': targetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (count != null) 'count': count!,
+        if (targetId != null) 'targetId': targetId!,
       };
 }
 
 /// A filter on a specific field.
 class FieldFilter {
   /// The field to filter by.
-  FieldReference field;
+  FieldReference? field;
 
   /// The operator to filter by.
   /// Possible string values are:
@@ -2553,10 +2442,10 @@ class FieldFilter {
   /// * That `value` is a non-empty `ArrayValue` with at most 10 values. * No
   /// other `IN`, `ARRAY_CONTAINS_ANY`, `NOT_IN`, `NOT_EQUAL`, `IS_NOT_NULL`, or
   /// `IS_NOT_NAN`. * That `field` comes first in the `order_by`.
-  core.String op;
+  core.String? op;
 
   /// The value to compare to.
-  Value value;
+  Value? value;
 
   FieldFilter();
 
@@ -2574,16 +2463,16 @@ class FieldFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (field != null) 'field': field.toJson(),
-        if (op != null) 'op': op,
-        if (value != null) 'value': value.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (field != null) 'field': field!.toJson(),
+        if (op != null) 'op': op!,
+        if (value != null) 'value': value!.toJson(),
       };
 }
 
 /// A reference to a field, such as `max(messages.time) as max_time`.
 class FieldReference {
-  core.String fieldPath;
+  core.String? fieldPath;
 
   FieldReference();
 
@@ -2593,8 +2482,8 @@ class FieldReference {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (fieldPath != null) 'fieldPath': fieldPath,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (fieldPath != null) 'fieldPath': fieldPath!,
       };
 }
 
@@ -2609,12 +2498,12 @@ class FieldTransform {
   /// is equal to NaN, and Null is equal to Null. If the input contains multiple
   /// equivalent values, only the first will be considered. The corresponding
   /// transform_result will be the null value.
-  ArrayValue appendMissingElements;
+  ArrayValue? appendMissingElements;
 
   /// The path of the field.
   ///
   /// See Document.fields for the field path syntax reference.
-  core.String fieldPath;
+  core.String? fieldPath;
 
   /// Adds the given value to the field's current value.
   ///
@@ -2625,7 +2514,7 @@ class FieldTransform {
   /// Double arithmetic and representation of double values follow IEEE 754
   /// semantics. If there is positive/negative integer overflow, the field is
   /// resolved to the largest magnitude positive/negative integer.
-  Value increment;
+  Value? increment;
 
   /// Sets the field to the maximum of its current value and the given value.
   ///
@@ -2638,7 +2527,7 @@ class FieldTransform {
   /// 0, 0.0, and -0.0 are all zero. The maximum of a zero stored value and zero
   /// input value is always the stored value. The maximum of any numeric value x
   /// and NaN is NaN.
-  Value maximum;
+  Value? maximum;
 
   /// Sets the field to the minimum of its current value and the given value.
   ///
@@ -2651,7 +2540,7 @@ class FieldTransform {
   /// change. 0, 0.0, and -0.0 are all zero. The minimum of a zero stored value
   /// and zero input value is always the stored value. The minimum of any
   /// numeric value x and NaN is NaN.
-  Value minimum;
+  Value? minimum;
 
   /// Remove all of the given elements from the array in the field.
   ///
@@ -2661,7 +2550,7 @@ class FieldTransform {
   /// removed. NaN is equal to NaN, and Null is equal to Null. This will remove
   /// all equivalent values if there are duplicates. The corresponding
   /// transform_result will be the null value.
-  ArrayValue removeAllFromArray;
+  ArrayValue? removeAllFromArray;
 
   /// Sets the field to the given server value.
   /// Possible string values are:
@@ -2670,7 +2559,7 @@ class FieldTransform {
   /// with millisecond precision. If used on multiple fields (same or different
   /// documents) in a transaction, all the fields will get the same server
   /// timestamp.
-  core.String setToServerValue;
+  core.String? setToServerValue;
 
   FieldTransform();
 
@@ -2703,29 +2592,29 @@ class FieldTransform {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (appendMissingElements != null)
-          'appendMissingElements': appendMissingElements.toJson(),
-        if (fieldPath != null) 'fieldPath': fieldPath,
-        if (increment != null) 'increment': increment.toJson(),
-        if (maximum != null) 'maximum': maximum.toJson(),
-        if (minimum != null) 'minimum': minimum.toJson(),
+          'appendMissingElements': appendMissingElements!.toJson(),
+        if (fieldPath != null) 'fieldPath': fieldPath!,
+        if (increment != null) 'increment': increment!.toJson(),
+        if (maximum != null) 'maximum': maximum!.toJson(),
+        if (minimum != null) 'minimum': minimum!.toJson(),
         if (removeAllFromArray != null)
-          'removeAllFromArray': removeAllFromArray.toJson(),
-        if (setToServerValue != null) 'setToServerValue': setToServerValue,
+          'removeAllFromArray': removeAllFromArray!.toJson(),
+        if (setToServerValue != null) 'setToServerValue': setToServerValue!,
       };
 }
 
 /// A filter.
 class Filter {
   /// A composite filter.
-  CompositeFilter compositeFilter;
+  CompositeFilter? compositeFilter;
 
   /// A filter on a document field.
-  FieldFilter fieldFilter;
+  FieldFilter? fieldFilter;
 
   /// A filter that takes exactly one argument.
-  UnaryFilter unaryFilter;
+  UnaryFilter? unaryFilter;
 
   Filter();
 
@@ -2744,11 +2633,11 @@ class Filter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (compositeFilter != null)
-          'compositeFilter': compositeFilter.toJson(),
-        if (fieldFilter != null) 'fieldFilter': fieldFilter.toJson(),
-        if (unaryFilter != null) 'unaryFilter': unaryFilter.toJson(),
+          'compositeFilter': compositeFilter!.toJson(),
+        if (fieldFilter != null) 'fieldFilter': fieldFilter!.toJson(),
+        if (unaryFilter != null) 'unaryFilter': unaryFilter!.toJson(),
       };
 }
 
@@ -2756,12 +2645,12 @@ class Filter {
 /// FirestoreAdmin.ExportDocuments.
 class GoogleFirestoreAdminV1ExportDocumentsMetadata {
   /// Which collection ids are being exported.
-  core.List<core.String> collectionIds;
+  core.List<core.String>? collectionIds;
 
   /// The time this operation completed.
   ///
   /// Will be unset if operation still in progress.
-  core.String endTime;
+  core.String? endTime;
 
   /// The state of the export operation.
   /// Possible string values are:
@@ -2777,19 +2666,19 @@ class GoogleFirestoreAdminV1ExportDocumentsMetadata {
   /// error.
   /// - "CANCELLED" : Request has finished being cancelled after user called
   /// google.longrunning.Operations.CancelOperation.
-  core.String operationState;
+  core.String? operationState;
 
   /// Where the entities are being exported to.
-  core.String outputUriPrefix;
+  core.String? outputUriPrefix;
 
   /// The progress, in bytes, of this operation.
-  GoogleFirestoreAdminV1Progress progressBytes;
+  GoogleFirestoreAdminV1Progress? progressBytes;
 
   /// The progress, in documents, of this operation.
-  GoogleFirestoreAdminV1Progress progressDocuments;
+  GoogleFirestoreAdminV1Progress? progressDocuments;
 
   /// The time this operation started.
-  core.String startTime;
+  core.String? startTime;
 
   GoogleFirestoreAdminV1ExportDocumentsMetadata();
 
@@ -2821,15 +2710,15 @@ class GoogleFirestoreAdminV1ExportDocumentsMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (collectionIds != null) 'collectionIds': collectionIds,
-        if (endTime != null) 'endTime': endTime,
-        if (operationState != null) 'operationState': operationState,
-        if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix,
-        if (progressBytes != null) 'progressBytes': progressBytes.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (collectionIds != null) 'collectionIds': collectionIds!,
+        if (endTime != null) 'endTime': endTime!,
+        if (operationState != null) 'operationState': operationState!,
+        if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
+        if (progressBytes != null) 'progressBytes': progressBytes!.toJson(),
         if (progressDocuments != null)
-          'progressDocuments': progressDocuments.toJson(),
-        if (startTime != null) 'startTime': startTime,
+          'progressDocuments': progressDocuments!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -2838,7 +2727,7 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
   /// Which collection ids to export.
   ///
   /// Unspecified means all collections.
-  core.List<core.String> collectionIds;
+  core.List<core.String>? collectionIds;
 
   /// The output URI.
   ///
@@ -2850,7 +2739,7 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
   /// https://cloud.google.com/storage/docs/naming. If the URI is a bucket
   /// (without a namespace path), a prefix will be generated based on the start
   /// time.
-  core.String outputUriPrefix;
+  core.String? outputUriPrefix;
 
   GoogleFirestoreAdminV1ExportDocumentsRequest();
 
@@ -2865,9 +2754,9 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (collectionIds != null) 'collectionIds': collectionIds,
-        if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (collectionIds != null) 'collectionIds': collectionIds!,
+        if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
       };
 }
 
@@ -2877,7 +2766,7 @@ class GoogleFirestoreAdminV1ExportDocumentsResponse {
   ///
   /// This can be used to begin an import into Cloud Firestore (this project or
   /// another project) after the operation completes successfully.
-  core.String outputUriPrefix;
+  core.String? outputUriPrefix;
 
   GoogleFirestoreAdminV1ExportDocumentsResponse();
 
@@ -2887,8 +2776,8 @@ class GoogleFirestoreAdminV1ExportDocumentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
       };
 }
 
@@ -2902,7 +2791,7 @@ class GoogleFirestoreAdminV1Field {
   /// If unset, field indexing will revert to the configuration defined by the
   /// `ancestor_field`. To explicitly remove all indexes for this field, specify
   /// an index config with an empty list of indexes.
-  GoogleFirestoreAdminV1IndexConfig indexConfig;
+  GoogleFirestoreAdminV1IndexConfig? indexConfig;
 
   /// A field name of the form
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
@@ -2923,7 +2812,7 @@ class GoogleFirestoreAdminV1Field {
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields
   /// / * ` Indexes defined on this `Field` will be applied to all fields which
   /// do not have their own `Field` index configuration.
-  core.String name;
+  core.String? name;
 
   GoogleFirestoreAdminV1Field();
 
@@ -2937,9 +2826,9 @@ class GoogleFirestoreAdminV1Field {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (indexConfig != null) 'indexConfig': indexConfig.toJson(),
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (indexConfig != null) 'indexConfig': indexConfig!.toJson(),
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2949,25 +2838,25 @@ class GoogleFirestoreAdminV1FieldOperationMetadata {
   /// The time this operation completed.
   ///
   /// Will be unset if operation still in progress.
-  core.String endTime;
+  core.String? endTime;
 
   /// The field resource that this operation is acting on.
   ///
   /// For example:
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
-  core.String field;
+  core.String? field;
 
   /// A list of IndexConfigDelta, which describe the intent of this operation.
-  core.List<GoogleFirestoreAdminV1IndexConfigDelta> indexConfigDeltas;
+  core.List<GoogleFirestoreAdminV1IndexConfigDelta>? indexConfigDeltas;
 
   /// The progress, in bytes, of this operation.
-  GoogleFirestoreAdminV1Progress progressBytes;
+  GoogleFirestoreAdminV1Progress? progressBytes;
 
   /// The progress, in documents, of this operation.
-  GoogleFirestoreAdminV1Progress progressDocuments;
+  GoogleFirestoreAdminV1Progress? progressDocuments;
 
   /// The time this operation started.
-  core.String startTime;
+  core.String? startTime;
 
   /// The state of the operation.
   /// Possible string values are:
@@ -2983,7 +2872,7 @@ class GoogleFirestoreAdminV1FieldOperationMetadata {
   /// error.
   /// - "CANCELLED" : Request has finished being cancelled after user called
   /// google.longrunning.Operations.CancelOperation.
-  core.String state;
+  core.String? state;
 
   GoogleFirestoreAdminV1FieldOperationMetadata();
 
@@ -3017,17 +2906,17 @@ class GoogleFirestoreAdminV1FieldOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (field != null) 'field': field,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (field != null) 'field': field!,
         if (indexConfigDeltas != null)
           'indexConfigDeltas':
-              indexConfigDeltas.map((value) => value.toJson()).toList(),
-        if (progressBytes != null) 'progressBytes': progressBytes.toJson(),
+              indexConfigDeltas!.map((value) => value.toJson()).toList(),
+        if (progressBytes != null) 'progressBytes': progressBytes!.toJson(),
         if (progressDocuments != null)
-          'progressDocuments': progressDocuments.toJson(),
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
+          'progressDocuments': progressDocuments!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -3035,15 +2924,15 @@ class GoogleFirestoreAdminV1FieldOperationMetadata {
 /// FirestoreAdmin.ImportDocuments.
 class GoogleFirestoreAdminV1ImportDocumentsMetadata {
   /// Which collection ids are being imported.
-  core.List<core.String> collectionIds;
+  core.List<core.String>? collectionIds;
 
   /// The time this operation completed.
   ///
   /// Will be unset if operation still in progress.
-  core.String endTime;
+  core.String? endTime;
 
   /// The location of the documents being imported.
-  core.String inputUriPrefix;
+  core.String? inputUriPrefix;
 
   /// The state of the import operation.
   /// Possible string values are:
@@ -3059,16 +2948,16 @@ class GoogleFirestoreAdminV1ImportDocumentsMetadata {
   /// error.
   /// - "CANCELLED" : Request has finished being cancelled after user called
   /// google.longrunning.Operations.CancelOperation.
-  core.String operationState;
+  core.String? operationState;
 
   /// The progress, in bytes, of this operation.
-  GoogleFirestoreAdminV1Progress progressBytes;
+  GoogleFirestoreAdminV1Progress? progressBytes;
 
   /// The progress, in documents, of this operation.
-  GoogleFirestoreAdminV1Progress progressDocuments;
+  GoogleFirestoreAdminV1Progress? progressDocuments;
 
   /// The time this operation started.
-  core.String startTime;
+  core.String? startTime;
 
   GoogleFirestoreAdminV1ImportDocumentsMetadata();
 
@@ -3100,15 +2989,15 @@ class GoogleFirestoreAdminV1ImportDocumentsMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (collectionIds != null) 'collectionIds': collectionIds,
-        if (endTime != null) 'endTime': endTime,
-        if (inputUriPrefix != null) 'inputUriPrefix': inputUriPrefix,
-        if (operationState != null) 'operationState': operationState,
-        if (progressBytes != null) 'progressBytes': progressBytes.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (collectionIds != null) 'collectionIds': collectionIds!,
+        if (endTime != null) 'endTime': endTime!,
+        if (inputUriPrefix != null) 'inputUriPrefix': inputUriPrefix!,
+        if (operationState != null) 'operationState': operationState!,
+        if (progressBytes != null) 'progressBytes': progressBytes!.toJson(),
         if (progressDocuments != null)
-          'progressDocuments': progressDocuments.toJson(),
-        if (startTime != null) 'startTime': startTime,
+          'progressDocuments': progressDocuments!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
@@ -3117,14 +3006,14 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
   /// Which collection ids to import.
   ///
   /// Unspecified means all collections included in the import.
-  core.List<core.String> collectionIds;
+  core.List<core.String>? collectionIds;
 
   /// Location of the exported files.
   ///
   /// This must match the output_uri_prefix of an ExportDocumentsResponse from
   /// an export that has completed successfully. See:
   /// google.firestore.admin.v1.ExportDocumentsResponse.output_uri_prefix.
-  core.String inputUriPrefix;
+  core.String? inputUriPrefix;
 
   GoogleFirestoreAdminV1ImportDocumentsRequest();
 
@@ -3139,9 +3028,9 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (collectionIds != null) 'collectionIds': collectionIds,
-        if (inputUriPrefix != null) 'inputUriPrefix': inputUriPrefix,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (collectionIds != null) 'collectionIds': collectionIds!,
+        if (inputUriPrefix != null) 'inputUriPrefix': inputUriPrefix!,
       };
 }
 
@@ -3158,7 +3047,7 @@ class GoogleFirestoreAdminV1Index {
   /// ASCENDING (unless explicitly specified). For single field indexes, this
   /// will always be exactly one entry with a field path equal to the field path
   /// of the associated field.
-  core.List<GoogleFirestoreAdminV1IndexField> fields;
+  core.List<GoogleFirestoreAdminV1IndexField>? fields;
 
   /// A server defined name for this index.
   ///
@@ -3167,7 +3056,7 @@ class GoogleFirestoreAdminV1Index {
   /// For single field indexes, this field will be empty.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Indexes with a collection query scope specified allow queries against a
   /// collection that is the child of a specific document, specified at query
@@ -3186,7 +3075,7 @@ class GoogleFirestoreAdminV1Index {
   /// - "COLLECTION_GROUP" : Indexes with a collection group query scope
   /// specified allow queries against all collections that has the collection id
   /// specified by the index.
-  core.String queryScope;
+  core.String? queryScope;
 
   /// The serving state of the index.
   ///
@@ -3205,7 +3094,7 @@ class GoogleFirestoreAdminV1Index {
   /// when writing a document. Some index data may exist. Use the
   /// google.longrunning.Operations API to determine why the operation that last
   /// attempted to create this index failed, then re-create the index.
-  core.String state;
+  core.String? state;
 
   GoogleFirestoreAdminV1Index();
 
@@ -3228,12 +3117,12 @@ class GoogleFirestoreAdminV1Index {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fields != null)
-          'fields': fields.map((value) => value.toJson()).toList(),
-        if (name != null) 'name': name,
-        if (queryScope != null) 'queryScope': queryScope,
-        if (state != null) 'state': state,
+          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (name != null) 'name': name!,
+        if (queryScope != null) 'queryScope': queryScope!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -3245,10 +3134,10 @@ class GoogleFirestoreAdminV1IndexConfig {
   /// `uses_ancestor_config` is false).
   ///
   /// Output only.
-  core.String ancestorField;
+  core.String? ancestorField;
 
   /// The indexes supported for this field.
-  core.List<GoogleFirestoreAdminV1Index> indexes;
+  core.List<GoogleFirestoreAdminV1Index>? indexes;
 
   /// Output only When true, the `Field`'s index configuration is in the process
   /// of being reverted.
@@ -3256,7 +3145,7 @@ class GoogleFirestoreAdminV1IndexConfig {
   /// Once complete, the index config will transition to the same state as the
   /// field specified by `ancestor_field`, at which point `uses_ancestor_config`
   /// will be `true` and `reverting` will be `false`.
-  core.bool reverting;
+  core.bool? reverting;
 
   /// When true, the `Field`'s index configuration is set from the configuration
   /// specified by the `ancestor_field`.
@@ -3264,7 +3153,7 @@ class GoogleFirestoreAdminV1IndexConfig {
   /// When false, the `Field`'s index configuration is defined explicitly.
   ///
   /// Output only.
-  core.bool usesAncestorConfig;
+  core.bool? usesAncestorConfig;
 
   GoogleFirestoreAdminV1IndexConfig();
 
@@ -3287,13 +3176,13 @@ class GoogleFirestoreAdminV1IndexConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ancestorField != null) 'ancestorField': ancestorField,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ancestorField != null) 'ancestorField': ancestorField!,
         if (indexes != null)
-          'indexes': indexes.map((value) => value.toJson()).toList(),
-        if (reverting != null) 'reverting': reverting,
+          'indexes': indexes!.map((value) => value.toJson()).toList(),
+        if (reverting != null) 'reverting': reverting!,
         if (usesAncestorConfig != null)
-          'usesAncestorConfig': usesAncestorConfig,
+          'usesAncestorConfig': usesAncestorConfig!,
       };
 }
 
@@ -3305,10 +3194,10 @@ class GoogleFirestoreAdminV1IndexConfigDelta {
   /// known.
   /// - "ADD" : The single field index is being added.
   /// - "REMOVE" : The single field index is being removed.
-  core.String changeType;
+  core.String? changeType;
 
   /// The index being changed.
-  GoogleFirestoreAdminV1Index index;
+  GoogleFirestoreAdminV1Index? index;
 
   GoogleFirestoreAdminV1IndexConfigDelta();
 
@@ -3322,9 +3211,9 @@ class GoogleFirestoreAdminV1IndexConfigDelta {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (changeType != null) 'changeType': changeType,
-        if (index != null) 'index': index.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (changeType != null) 'changeType': changeType!,
+        if (index != null) 'index': index!.toJson(),
       };
 }
 
@@ -3338,13 +3227,13 @@ class GoogleFirestoreAdminV1IndexField {
   /// - "ARRAY_CONFIG_UNSPECIFIED" : The index does not support additional array
   /// queries.
   /// - "CONTAINS" : The index supports array containment queries.
-  core.String arrayConfig;
+  core.String? arrayConfig;
 
   /// Can be __name__.
   ///
   /// For single field indexes, this must match the name of the field or may be
   /// omitted.
-  core.String fieldPath;
+  core.String? fieldPath;
 
   /// Indicates that this field supports ordering by the specified order or
   /// comparing using =, <, <=, >, >=.
@@ -3352,7 +3241,7 @@ class GoogleFirestoreAdminV1IndexField {
   /// - "ORDER_UNSPECIFIED" : The ordering is unspecified. Not a valid option.
   /// - "ASCENDING" : The field is ordered by ascending field value.
   /// - "DESCENDING" : The field is ordered by descending field value.
-  core.String order;
+  core.String? order;
 
   GoogleFirestoreAdminV1IndexField();
 
@@ -3368,10 +3257,10 @@ class GoogleFirestoreAdminV1IndexField {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (arrayConfig != null) 'arrayConfig': arrayConfig,
-        if (fieldPath != null) 'fieldPath': fieldPath,
-        if (order != null) 'order': order,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (arrayConfig != null) 'arrayConfig': arrayConfig!,
+        if (fieldPath != null) 'fieldPath': fieldPath!,
+        if (order != null) 'order': order!,
       };
 }
 
@@ -3381,22 +3270,22 @@ class GoogleFirestoreAdminV1IndexOperationMetadata {
   /// The time this operation completed.
   ///
   /// Will be unset if operation still in progress.
-  core.String endTime;
+  core.String? endTime;
 
   /// The index resource that this operation is acting on.
   ///
   /// For example:
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
-  core.String index;
+  core.String? index;
 
   /// The progress, in bytes, of this operation.
-  GoogleFirestoreAdminV1Progress progressBytes;
+  GoogleFirestoreAdminV1Progress? progressBytes;
 
   /// The progress, in documents, of this operation.
-  GoogleFirestoreAdminV1Progress progressDocuments;
+  GoogleFirestoreAdminV1Progress? progressDocuments;
 
   /// The time this operation started.
-  core.String startTime;
+  core.String? startTime;
 
   /// The state of the operation.
   /// Possible string values are:
@@ -3412,7 +3301,7 @@ class GoogleFirestoreAdminV1IndexOperationMetadata {
   /// error.
   /// - "CANCELLED" : Request has finished being cancelled after user called
   /// google.longrunning.Operations.CancelOperation.
-  core.String state;
+  core.String? state;
 
   GoogleFirestoreAdminV1IndexOperationMetadata();
 
@@ -3439,26 +3328,26 @@ class GoogleFirestoreAdminV1IndexOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endTime != null) 'endTime': endTime,
-        if (index != null) 'index': index,
-        if (progressBytes != null) 'progressBytes': progressBytes.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (index != null) 'index': index!,
+        if (progressBytes != null) 'progressBytes': progressBytes!.toJson(),
         if (progressDocuments != null)
-          'progressDocuments': progressDocuments.toJson(),
-        if (startTime != null) 'startTime': startTime,
-        if (state != null) 'state': state,
+          'progressDocuments': progressDocuments!.toJson(),
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
       };
 }
 
 /// The response for FirestoreAdmin.ListFields.
 class GoogleFirestoreAdminV1ListFieldsResponse {
   /// The requested fields.
-  core.List<GoogleFirestoreAdminV1Field> fields;
+  core.List<GoogleFirestoreAdminV1Field>? fields;
 
   /// A page token that may be used to request another page of results.
   ///
   /// If blank, this is the last page.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleFirestoreAdminV1ListFieldsResponse();
 
@@ -3475,22 +3364,22 @@ class GoogleFirestoreAdminV1ListFieldsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fields != null)
-          'fields': fields.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'fields': fields!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response for FirestoreAdmin.ListIndexes.
 class GoogleFirestoreAdminV1ListIndexesResponse {
   /// The requested indexes.
-  core.List<GoogleFirestoreAdminV1Index> indexes;
+  core.List<GoogleFirestoreAdminV1Index>? indexes;
 
   /// A page token that may be used to request another page of results.
   ///
   /// If blank, this is the last page.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   GoogleFirestoreAdminV1ListIndexesResponse();
 
@@ -3507,10 +3396,10 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (indexes != null)
-          'indexes': indexes.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'indexes': indexes!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -3522,7 +3411,7 @@ class GoogleFirestoreAdminV1LocationMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Describes the progress of the operation.
@@ -3531,10 +3420,10 @@ class GoogleFirestoreAdminV1LocationMetadata {
 /// used.
 class GoogleFirestoreAdminV1Progress {
   /// The amount of work completed.
-  core.String completedWork;
+  core.String? completedWork;
 
   /// The amount of work estimated.
-  core.String estimatedWork;
+  core.String? estimatedWork;
 
   GoogleFirestoreAdminV1Progress();
 
@@ -3547,9 +3436,9 @@ class GoogleFirestoreAdminV1Progress {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (completedWork != null) 'completedWork': completedWork,
-        if (estimatedWork != null) 'estimatedWork': estimatedWork,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (completedWork != null) 'completedWork': completedWork!,
+        if (estimatedWork != null) 'estimatedWork': estimatedWork!,
       };
 }
 
@@ -3561,16 +3450,16 @@ class GoogleLongrunningCancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// A list of operations that matches the specified filter in the request.
-  core.List<GoogleLongrunningOperation> operations;
+  core.List<GoogleLongrunningOperation>? operations;
 
   GoogleLongrunningListOperationsResponse();
 
@@ -3587,10 +3476,10 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
+          'operations': operations!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3601,10 +3490,10 @@ class GoogleLongrunningOperation {
   ///
   /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
-  core.bool done;
+  core.bool? done;
 
   /// The error result of the operation in case of failure or cancellation.
-  Status error;
+  Status? error;
 
   /// Service-specific metadata associated with the operation.
   ///
@@ -3615,14 +3504,14 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it.
   ///
   /// If you use the default HTTP mapping, the `name` should be a resource name
   /// ending with `operations/{unique_id}`.
-  core.String name;
+  core.String? name;
 
   /// The normal response of the operation in case of success.
   ///
@@ -3635,7 +3524,7 @@ class GoogleLongrunningOperation {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   GoogleLongrunningOperation();
 
@@ -3670,12 +3559,12 @@ class GoogleLongrunningOperation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (done != null) 'done': done,
-        if (error != null) 'error': error.toJson(),
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
-        if (response != null) 'response': response,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!.toJson(),
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
       };
 }
 
@@ -3688,12 +3577,12 @@ class LatLng {
   /// The latitude in degrees.
   ///
   /// It must be in the range \[-90.0, +90.0\].
-  core.double latitude;
+  core.double? latitude;
 
   /// The longitude in degrees.
   ///
   /// It must be in the range \[-180.0, +180.0\].
-  core.double longitude;
+  core.double? longitude;
 
   LatLng();
 
@@ -3706,21 +3595,21 @@ class LatLng {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (latitude != null) 'latitude': latitude,
-        if (longitude != null) 'longitude': longitude,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (latitude != null) 'latitude': latitude!,
+        if (longitude != null) 'longitude': longitude!,
       };
 }
 
 /// The request for Firestore.ListCollectionIds.
 class ListCollectionIdsRequest {
   /// The maximum number of results to return.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// A page token.
   ///
   /// Must be a value from ListCollectionIdsResponse.
-  core.String pageToken;
+  core.String? pageToken;
 
   ListCollectionIdsRequest();
 
@@ -3733,19 +3622,19 @@ class ListCollectionIdsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
       };
 }
 
 /// The response from Firestore.ListCollectionIds.
 class ListCollectionIdsResponse {
   /// The collection ids.
-  core.List<core.String> collectionIds;
+  core.List<core.String>? collectionIds;
 
   /// A page token that may be used to continue the list.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListCollectionIdsResponse();
 
@@ -3760,19 +3649,19 @@ class ListCollectionIdsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (collectionIds != null) 'collectionIds': collectionIds,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (collectionIds != null) 'collectionIds': collectionIds!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response for Firestore.ListDocuments.
 class ListDocumentsResponse {
   /// The Documents found.
-  core.List<Document> documents;
+  core.List<Document>? documents;
 
   /// The next page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListDocumentsResponse();
 
@@ -3788,20 +3677,20 @@ class ListDocumentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (documents != null)
-          'documents': documents.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'documents': documents!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
-  core.List<Location> locations;
+  core.List<Location>? locations;
 
   /// The standard List next-page token.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListLocationsResponse();
 
@@ -3817,23 +3706,23 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (locations != null)
-          'locations': locations.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'locations': locations!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// A request for Firestore.Listen
 class ListenRequest {
   /// A target to add to this stream.
-  Target addTarget;
+  Target? addTarget;
 
   /// Labels associated with this target change.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The ID of a target to remove from this stream.
-  core.int removeTarget;
+  core.int? removeTarget;
 
   ListenRequest();
 
@@ -3856,34 +3745,34 @@ class ListenRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (addTarget != null) 'addTarget': addTarget.toJson(),
-        if (labels != null) 'labels': labels,
-        if (removeTarget != null) 'removeTarget': removeTarget,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (addTarget != null) 'addTarget': addTarget!.toJson(),
+        if (labels != null) 'labels': labels!,
+        if (removeTarget != null) 'removeTarget': removeTarget!,
       };
 }
 
 /// The response for Firestore.Listen.
 class ListenResponse {
   /// A Document has changed.
-  DocumentChange documentChange;
+  DocumentChange? documentChange;
 
   /// A Document has been deleted.
-  DocumentDelete documentDelete;
+  DocumentDelete? documentDelete;
 
   /// A Document has been removed from a target (because it is no longer
   /// relevant to that target).
-  DocumentRemove documentRemove;
+  DocumentRemove? documentRemove;
 
   /// A filter to apply to the set of documents previously returned for the
   /// given target.
   ///
   /// Returned when documents may have been removed from the given target, but
   /// the exact documents are unknown.
-  ExistenceFilter filter;
+  ExistenceFilter? filter;
 
   /// Targets have changed.
-  TargetChange targetChange;
+  TargetChange? targetChange;
 
   ListenResponse();
 
@@ -3910,12 +3799,12 @@ class ListenResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (documentChange != null) 'documentChange': documentChange.toJson(),
-        if (documentDelete != null) 'documentDelete': documentDelete.toJson(),
-        if (documentRemove != null) 'documentRemove': documentRemove.toJson(),
-        if (filter != null) 'filter': filter.toJson(),
-        if (targetChange != null) 'targetChange': targetChange.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (documentChange != null) 'documentChange': documentChange!.toJson(),
+        if (documentDelete != null) 'documentDelete': documentDelete!.toJson(),
+        if (documentRemove != null) 'documentRemove': documentRemove!.toJson(),
+        if (filter != null) 'filter': filter!.toJson(),
+        if (targetChange != null) 'targetChange': targetChange!.toJson(),
       };
 }
 
@@ -3924,17 +3813,17 @@ class Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
   /// For example, "Tokyo".
-  core.String displayName;
+  core.String? displayName;
 
   /// Cross-service attributes for the location.
   ///
   /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The canonical id for this location.
   ///
   /// For example: `"us-east1"`.
-  core.String locationId;
+  core.String? locationId;
 
   /// Service-specific metadata.
   ///
@@ -3942,12 +3831,12 @@ class Location {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// Resource name for the location, which may vary between implementations.
   ///
   /// For example: `"projects/example-project/locations/us-east1"`
-  core.String name;
+  core.String? name;
 
   Location();
 
@@ -3981,12 +3870,12 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (displayName != null) 'displayName': displayName,
-        if (labels != null) 'labels': labels,
-        if (locationId != null) 'locationId': locationId,
-        if (metadata != null) 'metadata': metadata,
-        if (name != null) 'name': name,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (locationId != null) 'locationId': locationId!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -3998,13 +3887,15 @@ class MapValue {
   /// expression `__.*__` are reserved. Reserved field names are forbidden
   /// except in certain documented contexts. The map keys, represented as UTF-8,
   /// must not exceed 1,500 bytes and cannot be empty.
-  core.Map<core.String, Value> fields;
+  core.Map<core.String, Value>? fields;
 
   MapValue();
 
   MapValue.fromJson(core.Map _json) {
     if (_json.containsKey('fields')) {
-      fields = (_json['fields'] as core.Map).cast<core.String, core.Map>().map(
+      fields = (_json['fields'] as core.Map)
+          .cast<core.String, core.Map<core.String, core.Object?>>()
+          .map(
             (key, item) => core.MapEntry(
               key,
               Value.fromJson(item as core.Map<core.String, core.dynamic>),
@@ -4013,10 +3904,10 @@ class MapValue {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fields != null)
           'fields':
-              fields.map((key, item) => core.MapEntry(key, item.toJson())),
+              fields!.map((key, item) => core.MapEntry(key, item.toJson())),
       };
 }
 
@@ -4029,10 +3920,10 @@ class Order {
   /// - "DIRECTION_UNSPECIFIED" : Unspecified.
   /// - "ASCENDING" : Ascending.
   /// - "DESCENDING" : Descending.
-  core.String direction;
+  core.String? direction;
 
   /// The field to order by.
-  FieldReference field;
+  FieldReference? field;
 
   Order();
 
@@ -4046,9 +3937,9 @@ class Order {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (direction != null) 'direction': direction,
-        if (field != null) 'field': field.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (direction != null) 'direction': direction!,
+        if (field != null) 'field': field!.toJson(),
       };
 }
 
@@ -4061,7 +3952,7 @@ class PartitionQueryRequest {
   /// to PartitionQuery will return up to 8 partitions and a `next_page_token`
   /// if more results exist. A second call to PartitionQuery will return up to 2
   /// partitions, to complete the total of 10 specified in `partition_count`.
-  core.int pageSize;
+  core.int? pageSize;
 
   /// The `next_page_token` value returned from a previous call to
   /// PartitionQuery that may be used to get an additional set of results.
@@ -4073,7 +3964,7 @@ class PartitionQueryRequest {
   /// result set ordered with respect to the results of the query supplied to
   /// PartitionQuery, the results sets should be merged: cursor A, cursor B,
   /// cursor M, cursor Q, cursor U, cursor W
-  core.String pageToken;
+  core.String? pageToken;
 
   /// The desired maximum number of partition points.
   ///
@@ -4082,14 +3973,14 @@ class PartitionQueryRequest {
   /// fewer. For example, this may be set to one fewer than the number of
   /// parallel queries to be run, or in running a data pipeline job, one fewer
   /// than the number of workers or compute instances available.
-  core.String partitionCount;
+  core.String? partitionCount;
 
   /// A structured query.
   ///
   /// Query must specify collection with all descendants and be ordered by name
   /// ascending. Other filters, order bys, limits, offsets, and start/end
   /// cursors are not supported.
-  StructuredQuery structuredQuery;
+  StructuredQuery? structuredQuery;
 
   PartitionQueryRequest();
 
@@ -4109,12 +4000,12 @@ class PartitionQueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (pageSize != null) 'pageSize': pageSize,
-        if (pageToken != null) 'pageToken': pageToken,
-        if (partitionCount != null) 'partitionCount': partitionCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (partitionCount != null) 'partitionCount': partitionCount!,
         if (structuredQuery != null)
-          'structuredQuery': structuredQuery.toJson(),
+          'structuredQuery': structuredQuery!.toJson(),
       };
 }
 
@@ -4125,7 +4016,7 @@ class PartitionQueryResponse {
   /// request.
   ///
   /// If blank, there are no more results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// Partition results.
   ///
@@ -4138,7 +4029,7 @@ class PartitionQueryResponse {
   /// will return the entire result set of the original query: * query, end_at A
   /// * query, start_at A, end_at B * query, start_at B An empty result may
   /// indicate that the query has too few results to be partitioned.
-  core.List<Cursor> partitions;
+  core.List<Cursor>? partitions;
 
   PartitionQueryResponse();
 
@@ -4154,10 +4045,10 @@ class PartitionQueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (partitions != null)
-          'partitions': partitions.map((value) => value.toJson()).toList(),
+          'partitions': partitions!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4166,11 +4057,11 @@ class Precondition {
   /// When set to `true`, the target document must exist.
   ///
   /// When set to `false`, the target document must not exist.
-  core.bool exists;
+  core.bool? exists;
 
   /// When set, the target document must exist and have been last updated at
   /// that time.
-  core.String updateTime;
+  core.String? updateTime;
 
   Precondition();
 
@@ -4183,9 +4074,9 @@ class Precondition {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (exists != null) 'exists': exists,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (exists != null) 'exists': exists!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -4195,7 +4086,7 @@ class Projection {
   ///
   /// If empty, all fields are returned. To only return the name of the
   /// document, use `['__name__']`.
-  core.List<FieldReference> fields;
+  core.List<FieldReference>? fields;
 
   Projection();
 
@@ -4208,9 +4099,9 @@ class Projection {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (fields != null)
-          'fields': fields.map((value) => value.toJson()).toList(),
+          'fields': fields!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -4223,10 +4114,10 @@ class QueryTarget {
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
   /// For example: `projects/my-project/databases/my-database/documents` or
   /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
-  core.String parent;
+  core.String? parent;
 
   /// A structured query.
-  StructuredQuery structuredQuery;
+  StructuredQuery? structuredQuery;
 
   QueryTarget();
 
@@ -4240,10 +4131,10 @@ class QueryTarget {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (parent != null) 'parent': parent,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (parent != null) 'parent': parent!,
         if (structuredQuery != null)
-          'structuredQuery': structuredQuery.toJson(),
+          'structuredQuery': structuredQuery!.toJson(),
       };
 }
 
@@ -4252,7 +4143,7 @@ class ReadOnly {
   /// Reads documents at the given time.
   ///
   /// This may not be older than 60 seconds.
-  core.String readTime;
+  core.String? readTime;
 
   ReadOnly();
 
@@ -4262,17 +4153,17 @@ class ReadOnly {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (readTime != null) 'readTime': readTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (readTime != null) 'readTime': readTime!,
       };
 }
 
 /// Options for a transaction that can be used to read and write documents.
 class ReadWrite {
   /// An optional transaction to retry.
-  core.String retryTransaction;
+  core.String? retryTransaction;
   core.List<core.int> get retryTransactionAsBytes =>
-      convert.base64.decode(retryTransaction);
+      convert.base64.decode(retryTransaction!);
 
   set retryTransactionAsBytes(core.List<core.int> _bytes) {
     retryTransaction =
@@ -4287,8 +4178,8 @@ class ReadWrite {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (retryTransaction != null) 'retryTransaction': retryTransaction,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (retryTransaction != null) 'retryTransaction': retryTransaction!,
       };
 }
 
@@ -4297,9 +4188,9 @@ class RollbackRequest {
   /// The transaction to roll back.
   ///
   /// Required.
-  core.String transaction;
+  core.String? transaction;
   core.List<core.int> get transactionAsBytes =>
-      convert.base64.decode(transaction);
+      convert.base64.decode(transaction!);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -4314,8 +4205,8 @@ class RollbackRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (transaction != null) 'transaction': transaction,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -4325,20 +4216,20 @@ class RunQueryRequest {
   ///
   /// Defaults to a read-only transaction. The new transaction ID will be
   /// returned as the first response in the stream.
-  TransactionOptions newTransaction;
+  TransactionOptions? newTransaction;
 
   /// Reads documents as they were at the given time.
   ///
   /// This may not be older than 270 seconds.
-  core.String readTime;
+  core.String? readTime;
 
   /// A structured query.
-  StructuredQuery structuredQuery;
+  StructuredQuery? structuredQuery;
 
   /// Reads documents in a transaction.
-  core.String transaction;
+  core.String? transaction;
   core.List<core.int> get transactionAsBytes =>
-      convert.base64.decode(transaction);
+      convert.base64.decode(transaction!);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -4364,12 +4255,12 @@ class RunQueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (newTransaction != null) 'newTransaction': newTransaction.toJson(),
-        if (readTime != null) 'readTime': readTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (newTransaction != null) 'newTransaction': newTransaction!.toJson(),
+        if (readTime != null) 'readTime': readTime!,
         if (structuredQuery != null)
-          'structuredQuery': structuredQuery.toJson(),
-        if (transaction != null) 'transaction': transaction,
+          'structuredQuery': structuredQuery!.toJson(),
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -4378,7 +4269,7 @@ class RunQueryResponse {
   /// A query result.
   ///
   /// Not set when reporting partial progress.
-  Document document;
+  Document? document;
 
   /// The time at which the document was read.
   ///
@@ -4387,20 +4278,20 @@ class RunQueryResponse {
   /// `read_time` and this one. If the query returns no results, a response with
   /// `read_time` and no `document` will be sent, and this represents the time
   /// at which the query was run.
-  core.String readTime;
+  core.String? readTime;
 
   /// The number of results that have been skipped due to an offset between the
   /// last response and the current response.
-  core.int skippedResults;
+  core.int? skippedResults;
 
   /// The transaction that was started as part of this request.
   ///
   /// Can only be set in the first response, and only if
   /// RunQueryRequest.new_transaction was set in the request. If set, no other
   /// fields will be set in this response.
-  core.String transaction;
+  core.String? transaction;
   core.List<core.int> get transactionAsBytes =>
-      convert.base64.decode(transaction);
+      convert.base64.decode(transaction!);
 
   set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
@@ -4425,11 +4316,11 @@ class RunQueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (document != null) 'document': document.toJson(),
-        if (readTime != null) 'readTime': readTime,
-        if (skippedResults != null) 'skippedResults': skippedResults,
-        if (transaction != null) 'transaction': transaction,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (document != null) 'document': document!.toJson(),
+        if (readTime != null) 'readTime': readTime!,
+        if (skippedResults != null) 'skippedResults': skippedResults!,
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -4442,7 +4333,7 @@ class RunQueryResponse {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -4450,13 +4341,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -4480,31 +4371,31 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
 /// A Firestore query.
 class StructuredQuery {
   /// A end point for the query results.
-  Cursor endAt;
+  Cursor? endAt;
 
   /// The collections to query.
-  core.List<CollectionSelector> from;
+  core.List<CollectionSelector>? from;
 
   /// The maximum number of results to return.
   ///
   /// Applies after all other constraints. Must be >= 0 if specified.
-  core.int limit;
+  core.int? limit;
 
   /// The number of results to skip.
   ///
   /// Applies before limit, but after all other constraints. Must be >= 0 if
   /// specified.
-  core.int offset;
+  core.int? offset;
 
   /// The order to apply to the query results.
   ///
@@ -4518,16 +4409,16 @@ class StructuredQuery {
   /// FROM Foo ORDER BY A DESC` becomes `SELECT * FROM Foo ORDER BY A DESC,
   /// __name__ DESC` * `SELECT * FROM Foo WHERE A > 1` becomes `SELECT * FROM
   /// Foo WHERE A > 1 ORDER BY A, __name__`
-  core.List<Order> orderBy;
+  core.List<Order>? orderBy;
 
   /// The projection to return.
-  Projection select;
+  Projection? select;
 
   /// A starting point for the query results.
-  Cursor startAt;
+  Cursor? startAt;
 
   /// The filter to apply.
-  Filter where;
+  Filter? where;
 
   StructuredQuery();
 
@@ -4568,41 +4459,41 @@ class StructuredQuery {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endAt != null) 'endAt': endAt.toJson(),
-        if (from != null) 'from': from.map((value) => value.toJson()).toList(),
-        if (limit != null) 'limit': limit,
-        if (offset != null) 'offset': offset,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endAt != null) 'endAt': endAt!.toJson(),
+        if (from != null) 'from': from!.map((value) => value.toJson()).toList(),
+        if (limit != null) 'limit': limit!,
+        if (offset != null) 'offset': offset!,
         if (orderBy != null)
-          'orderBy': orderBy.map((value) => value.toJson()).toList(),
-        if (select != null) 'select': select.toJson(),
-        if (startAt != null) 'startAt': startAt.toJson(),
-        if (where != null) 'where': where.toJson(),
+          'orderBy': orderBy!.map((value) => value.toJson()).toList(),
+        if (select != null) 'select': select!.toJson(),
+        if (startAt != null) 'startAt': startAt!.toJson(),
+        if (where != null) 'where': where!.toJson(),
       };
 }
 
 /// A specification of a set of documents to listen to.
 class Target {
   /// A target specified by a set of document names.
-  DocumentsTarget documents;
+  DocumentsTarget? documents;
 
   /// If the target should be removed once it is current and consistent.
-  core.bool once;
+  core.bool? once;
 
   /// A target specified by a query.
-  QueryTarget query;
+  QueryTarget? query;
 
   /// Start listening after a specific `read_time`.
   ///
   /// The client must know the state of matching documents at this time.
-  core.String readTime;
+  core.String? readTime;
 
   /// A resume token from a prior TargetChange for an identical target.
   ///
   /// Using a resume token with a different target is unsupported and may fail.
-  core.String resumeToken;
+  core.String? resumeToken;
   core.List<core.int> get resumeTokenAsBytes =>
-      convert.base64.decode(resumeToken);
+      convert.base64.decode(resumeToken!);
 
   set resumeTokenAsBytes(core.List<core.int> _bytes) {
     resumeToken =
@@ -4612,7 +4503,7 @@ class Target {
   /// The target ID that identifies the target on the stream.
   ///
   /// Must be a positive number and non-zero.
-  core.int targetId;
+  core.int? targetId;
 
   Target();
 
@@ -4639,20 +4530,20 @@ class Target {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (documents != null) 'documents': documents.toJson(),
-        if (once != null) 'once': once,
-        if (query != null) 'query': query.toJson(),
-        if (readTime != null) 'readTime': readTime,
-        if (resumeToken != null) 'resumeToken': resumeToken,
-        if (targetId != null) 'targetId': targetId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (documents != null) 'documents': documents!.toJson(),
+        if (once != null) 'once': once!,
+        if (query != null) 'query': query!.toJson(),
+        if (readTime != null) 'readTime': readTime!,
+        if (resumeToken != null) 'resumeToken': resumeToken!,
+        if (targetId != null) 'targetId': targetId!,
       };
 }
 
 /// Targets being watched have changed.
 class TargetChange {
   /// The error that resulted in this change, if applicable.
-  Status cause;
+  Status? cause;
 
   /// The consistent `read_time` for the given `target_ids` (omitted when the
   /// target_ids are not at a consistent snapshot).
@@ -4662,15 +4553,15 @@ class TargetChange {
   /// CURRENT, and RESET messages are guaranteed to (eventually) result in a new
   /// consistent snapshot (while NO_CHANGE and REMOVE messages are not). For a
   /// given stream, `read_time` is guaranteed to be monotonically increasing.
-  core.String readTime;
+  core.String? readTime;
 
   /// A token that can be used to resume the stream for the given `target_ids`,
   /// or all targets if `target_ids` is empty.
   ///
   /// Not set on every target change.
-  core.String resumeToken;
+  core.String? resumeToken;
   core.List<core.int> get resumeTokenAsBytes =>
-      convert.base64.decode(resumeToken);
+      convert.base64.decode(resumeToken!);
 
   set resumeTokenAsBytes(core.List<core.int> _bytes) {
     resumeToken =
@@ -4692,13 +4583,13 @@ class TargetChange {
   /// targets will be returned in subsequent changes. After the initial state is
   /// complete, `CURRENT` will be returned even if the target was previously
   /// indicated to be `CURRENT`.
-  core.String targetChangeType;
+  core.String? targetChangeType;
 
   /// The target IDs of targets that have changed.
   ///
   /// If empty, the change applies to all targets. The order of the target IDs
   /// is not defined.
-  core.List<core.int> targetIds;
+  core.List<core.int>? targetIds;
 
   TargetChange();
 
@@ -4723,22 +4614,22 @@ class TargetChange {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cause != null) 'cause': cause.toJson(),
-        if (readTime != null) 'readTime': readTime,
-        if (resumeToken != null) 'resumeToken': resumeToken,
-        if (targetChangeType != null) 'targetChangeType': targetChangeType,
-        if (targetIds != null) 'targetIds': targetIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cause != null) 'cause': cause!.toJson(),
+        if (readTime != null) 'readTime': readTime!,
+        if (resumeToken != null) 'resumeToken': resumeToken!,
+        if (targetChangeType != null) 'targetChangeType': targetChangeType!,
+        if (targetIds != null) 'targetIds': targetIds!,
       };
 }
 
 /// Options for creating a new transaction.
 class TransactionOptions {
   /// The transaction can only be used for read operations.
-  ReadOnly readOnly;
+  ReadOnly? readOnly;
 
   /// The transaction can be used for both read and write operations.
-  ReadWrite readWrite;
+  ReadWrite? readWrite;
 
   TransactionOptions();
 
@@ -4753,16 +4644,16 @@ class TransactionOptions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (readOnly != null) 'readOnly': readOnly.toJson(),
-        if (readWrite != null) 'readWrite': readWrite.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (readOnly != null) 'readOnly': readOnly!.toJson(),
+        if (readWrite != null) 'readWrite': readWrite!.toJson(),
       };
 }
 
 /// A filter with a single operand.
 class UnaryFilter {
   /// The field to which to apply the operator.
-  FieldReference field;
+  FieldReference? field;
 
   /// The unary operator to apply.
   /// Possible string values are:
@@ -4775,7 +4666,7 @@ class UnaryFilter {
   /// - "IS_NOT_NULL" : The given `field` is not equal to `NULL`. Requires: * A
   /// single `NOT_EQUAL`, `NOT_IN`, `IS_NOT_NULL`, or `IS_NOT_NAN`. * That
   /// `field` comes first in the `order_by`.
-  core.String op;
+  core.String? op;
 
   UnaryFilter();
 
@@ -4789,9 +4680,9 @@ class UnaryFilter {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (field != null) 'field': field.toJson(),
-        if (op != null) 'op': op,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (field != null) 'field': field!.toJson(),
+        if (op != null) 'op': op!,
       };
 }
 
@@ -4801,18 +4692,18 @@ class Value {
   ///
   /// Cannot directly contain another array value, though can contain an map
   /// which contains another array.
-  ArrayValue arrayValue;
+  ArrayValue? arrayValue;
 
   /// A boolean value.
-  core.bool booleanValue;
+  core.bool? booleanValue;
 
   /// A bytes value.
   ///
   /// Must not exceed 1 MiB - 89 bytes. Only the first 1,500 bytes are
   /// considered by queries.
-  core.String bytesValue;
+  core.String? bytesValue;
   core.List<core.int> get bytesValueAsBytes =>
-      convert.base64.decode(bytesValue);
+      convert.base64.decode(bytesValue!);
 
   set bytesValueAsBytes(core.List<core.int> _bytes) {
     bytesValue =
@@ -4820,40 +4711,40 @@ class Value {
   }
 
   /// A double value.
-  core.double doubleValue;
+  core.double? doubleValue;
 
   /// A geo point value representing a point on the surface of Earth.
-  LatLng geoPointValue;
+  LatLng? geoPointValue;
 
   /// An integer value.
-  core.String integerValue;
+  core.String? integerValue;
 
   /// A map value.
-  MapValue mapValue;
+  MapValue? mapValue;
 
   /// A null value.
   /// Possible string values are:
   /// - "NULL_VALUE" : Null value.
-  core.String nullValue;
+  core.String? nullValue;
 
   /// A reference to a document.
   ///
   /// For example:
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
-  core.String referenceValue;
+  core.String? referenceValue;
 
   /// A string value.
   ///
   /// The string, represented as UTF-8, must not exceed 1 MiB - 89 bytes. Only
   /// the first 1,500 bytes of the UTF-8 representation are considered by
   /// queries.
-  core.String stringValue;
+  core.String? stringValue;
 
   /// A timestamp value.
   ///
   /// Precise only to microseconds. When stored, any additional precision is
   /// rounded down.
-  core.String timestampValue;
+  core.String? timestampValue;
 
   Value();
 
@@ -4896,18 +4787,18 @@ class Value {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (arrayValue != null) 'arrayValue': arrayValue.toJson(),
-        if (booleanValue != null) 'booleanValue': booleanValue,
-        if (bytesValue != null) 'bytesValue': bytesValue,
-        if (doubleValue != null) 'doubleValue': doubleValue,
-        if (geoPointValue != null) 'geoPointValue': geoPointValue.toJson(),
-        if (integerValue != null) 'integerValue': integerValue,
-        if (mapValue != null) 'mapValue': mapValue.toJson(),
-        if (nullValue != null) 'nullValue': nullValue,
-        if (referenceValue != null) 'referenceValue': referenceValue,
-        if (stringValue != null) 'stringValue': stringValue,
-        if (timestampValue != null) 'timestampValue': timestampValue,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (arrayValue != null) 'arrayValue': arrayValue!.toJson(),
+        if (booleanValue != null) 'booleanValue': booleanValue!,
+        if (bytesValue != null) 'bytesValue': bytesValue!,
+        if (doubleValue != null) 'doubleValue': doubleValue!,
+        if (geoPointValue != null) 'geoPointValue': geoPointValue!.toJson(),
+        if (integerValue != null) 'integerValue': integerValue!,
+        if (mapValue != null) 'mapValue': mapValue!.toJson(),
+        if (nullValue != null) 'nullValue': nullValue!,
+        if (referenceValue != null) 'referenceValue': referenceValue!,
+        if (stringValue != null) 'stringValue': stringValue!,
+        if (timestampValue != null) 'timestampValue': timestampValue!,
       };
 }
 
@@ -4916,19 +4807,19 @@ class Write {
   /// An optional precondition on the document.
   ///
   /// The write will fail if this is set and not met by the target document.
-  Precondition currentDocument;
+  Precondition? currentDocument;
 
   /// A document name to delete.
   ///
   /// In the format:
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
-  core.String delete;
+  core.String? delete;
 
   /// Applies a transformation to a document.
-  DocumentTransform transform;
+  DocumentTransform? transform;
 
   /// A document to write.
-  Document update;
+  Document? update;
 
   /// The fields to update in this write.
   ///
@@ -4939,14 +4830,14 @@ class Write {
   /// mask, but not present in the input document, are deleted from the document
   /// on the server. The field paths in this mask must not contain a reserved
   /// field name.
-  DocumentMask updateMask;
+  DocumentMask? updateMask;
 
   /// The transforms to perform after update.
   ///
   /// This field can be set only when the operation is `update`. If present,
   /// this write is equivalent to performing `update` and `transform` to the
   /// same document atomically and in order.
-  core.List<FieldTransform> updateTransforms;
+  core.List<FieldTransform>? updateTransforms;
 
   Write();
 
@@ -4978,16 +4869,16 @@ class Write {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (currentDocument != null)
-          'currentDocument': currentDocument.toJson(),
-        if (delete != null) 'delete': delete,
-        if (transform != null) 'transform': transform.toJson(),
-        if (update != null) 'update': update.toJson(),
-        if (updateMask != null) 'updateMask': updateMask.toJson(),
+          'currentDocument': currentDocument!.toJson(),
+        if (delete != null) 'delete': delete!,
+        if (transform != null) 'transform': transform!.toJson(),
+        if (update != null) 'update': update!.toJson(),
+        if (updateMask != null) 'updateMask': updateMask!.toJson(),
         if (updateTransforms != null)
           'updateTransforms':
-              updateTransforms.map((value) => value.toJson()).toList(),
+              updateTransforms!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5000,13 +4891,13 @@ class Write {
 /// response containing only an up-to-date token, to use in the next request.
 class WriteRequest {
   /// Labels associated with this write request.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The ID of the write stream to resume.
   ///
   /// This may only be set in the first message. When left empty, a new write
   /// stream will be created.
-  core.String streamId;
+  core.String? streamId;
 
   /// A stream token that was previously sent by the server.
   ///
@@ -5018,9 +4909,9 @@ class WriteRequest {
   /// creating a new stream. To resume a stream at a specific point, set this
   /// field and the `stream_id` field. Leave this field unset when creating a
   /// new stream.
-  core.String streamToken;
+  core.String? streamToken;
   core.List<core.int> get streamTokenAsBytes =>
-      convert.base64.decode(streamToken);
+      convert.base64.decode(streamToken!);
 
   set streamTokenAsBytes(core.List<core.int> _bytes) {
     streamToken =
@@ -5032,7 +4923,7 @@ class WriteRequest {
   /// Always executed atomically and in order. This must be empty on the first
   /// request. This may be empty on the last request. This must not be empty on
   /// all other requests.
-  core.List<Write> writes;
+  core.List<Write>? writes;
 
   WriteRequest();
 
@@ -5060,12 +4951,12 @@ class WriteRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (labels != null) 'labels': labels,
-        if (streamId != null) 'streamId': streamId,
-        if (streamToken != null) 'streamToken': streamToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (labels != null) 'labels': labels!,
+        if (streamId != null) 'streamId': streamId!,
+        if (streamToken != null) 'streamToken': streamToken!,
         if (writes != null)
-          'writes': writes.map((value) => value.toJson()).toList(),
+          'writes': writes!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5075,20 +4966,20 @@ class WriteResponse {
   ///
   /// Any read with an equal or greater `read_time` is guaranteed to see the
   /// effects of the write.
-  core.String commitTime;
+  core.String? commitTime;
 
   /// The ID of the stream.
   ///
   /// Only set on the first message, when a new stream was created.
-  core.String streamId;
+  core.String? streamId;
 
   /// A token that represents the position of this response in the stream.
   ///
   /// This can be used by a client to resume the stream at this point. This
   /// field is always set.
-  core.String streamToken;
+  core.String? streamToken;
   core.List<core.int> get streamTokenAsBytes =>
-      convert.base64.decode(streamToken);
+      convert.base64.decode(streamToken!);
 
   set streamTokenAsBytes(core.List<core.int> _bytes) {
     streamToken =
@@ -5098,7 +4989,7 @@ class WriteResponse {
   /// The result of applying the writes.
   ///
   /// This i-th write result corresponds to the i-th write in the request.
-  core.List<WriteResult> writeResults;
+  core.List<WriteResult>? writeResults;
 
   WriteResponse();
 
@@ -5120,12 +5011,12 @@ class WriteResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (commitTime != null) 'commitTime': commitTime,
-        if (streamId != null) 'streamId': streamId,
-        if (streamToken != null) 'streamToken': streamToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (commitTime != null) 'commitTime': commitTime!,
+        if (streamId != null) 'streamId': streamId!,
+        if (streamToken != null) 'streamToken': streamToken!,
         if (writeResults != null)
-          'writeResults': writeResults.map((value) => value.toJson()).toList(),
+          'writeResults': writeResults!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -5133,13 +5024,13 @@ class WriteResponse {
 class WriteResult {
   /// The results of applying each DocumentTransform.FieldTransform, in the same
   /// order.
-  core.List<Value> transformResults;
+  core.List<Value>? transformResults;
 
   /// The last update time of the document after applying the write.
   ///
   /// Not set after a `delete`. If the write did not actually change the
   /// document, this will be the previous update_time.
-  core.String updateTime;
+  core.String? updateTime;
 
   WriteResult();
 
@@ -5155,10 +5046,10 @@ class WriteResult {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (transformResults != null)
           'transformResults':
-              transformResults.map((value) => value.toJson()).toList(),
-        if (updateTime != null) 'updateTime': updateTime,
+              transformResults!.map((value) => value.toJson()).toList(),
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }

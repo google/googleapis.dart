@@ -142,15 +142,12 @@ class BiddersCreativesResource {
   /// this method will complete with the same error.
   async.Future<ListCreativesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -201,13 +198,9 @@ class BiddersCreativesResource {
   async.Future<WatchCreativesResponse> watch(
     WatchCreativesRequest request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -256,13 +249,9 @@ class BiddersPretargetingConfigsResource {
   async.Future<PretargetingConfig> activate(
     ActivatePretargetingConfigRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -304,13 +293,9 @@ class BiddersPretargetingConfigsResource {
   async.Future<PretargetingConfig> addTargetedApps(
     AddTargetedAppsRequest request,
     core.String pretargetingConfig, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (pretargetingConfig == null) {
-      throw core.ArgumentError('Parameter pretargetingConfig is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -353,13 +338,9 @@ class BiddersPretargetingConfigsResource {
   async.Future<PretargetingConfig> addTargetedPublishers(
     AddTargetedPublishersRequest request,
     core.String pretargetingConfig, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (pretargetingConfig == null) {
-      throw core.ArgumentError('Parameter pretargetingConfig is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -402,13 +383,9 @@ class BiddersPretargetingConfigsResource {
   async.Future<PretargetingConfig> addTargetedSites(
     AddTargetedSitesRequest request,
     core.String pretargetingConfig, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (pretargetingConfig == null) {
-      throw core.ArgumentError('Parameter pretargetingConfig is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -455,13 +432,9 @@ class BiddersPretargetingConfigsResource {
   async.Future<PretargetingConfig> create(
     PretargetingConfig request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -500,11 +473,8 @@ class BiddersPretargetingConfigsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -539,11 +509,8 @@ class BiddersPretargetingConfigsResource {
   /// this method will complete with the same error.
   async.Future<PretargetingConfig> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -587,13 +554,10 @@ class BiddersPretargetingConfigsResource {
   /// this method will complete with the same error.
   async.Future<ListPretargetingConfigsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -639,14 +603,10 @@ class BiddersPretargetingConfigsResource {
   async.Future<PretargetingConfig> patch(
     PretargetingConfig request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -688,13 +648,9 @@ class BiddersPretargetingConfigsResource {
   async.Future<PretargetingConfig> removeTargetedApps(
     RemoveTargetedAppsRequest request,
     core.String pretargetingConfig, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (pretargetingConfig == null) {
-      throw core.ArgumentError('Parameter pretargetingConfig is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -737,13 +693,9 @@ class BiddersPretargetingConfigsResource {
   async.Future<PretargetingConfig> removeTargetedPublishers(
     RemoveTargetedPublishersRequest request,
     core.String pretargetingConfig, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (pretargetingConfig == null) {
-      throw core.ArgumentError('Parameter pretargetingConfig is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -786,13 +738,9 @@ class BiddersPretargetingConfigsResource {
   async.Future<PretargetingConfig> removeTargetedSites(
     RemoveTargetedSitesRequest request,
     core.String pretargetingConfig, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (pretargetingConfig == null) {
-      throw core.ArgumentError('Parameter pretargetingConfig is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -834,13 +782,9 @@ class BiddersPretargetingConfigsResource {
   async.Future<PretargetingConfig> suspend(
     SuspendPretargetingConfigRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -896,11 +840,8 @@ class BuyersResource {
   /// this method will complete with the same error.
   async.Future<GetRemarketingTagResponse> getRemarketingTag(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -951,13 +892,9 @@ class BuyersCreativesResource {
   async.Future<Creative> create(
     Creative request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1005,12 +942,9 @@ class BuyersCreativesResource {
   /// this method will complete with the same error.
   async.Future<Creative> get(
     core.String name, {
-    core.String view,
-    core.String $fields,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -1083,15 +1017,12 @@ class BuyersCreativesResource {
   /// this method will complete with the same error.
   async.Future<ListCreativesResponse> list(
     core.String parent, {
-    core.String filter,
-    core.int pageSize,
-    core.String pageToken,
-    core.String view,
-    core.String $fields,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -1140,14 +1071,10 @@ class BuyersCreativesResource {
   async.Future<Creative> patch(
     Creative request,
     core.String name, {
-    core.String updateMask,
-    core.String $fields,
+    core.String? updateMask,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
@@ -1194,13 +1121,9 @@ class BuyersUserListsResource {
   async.Future<UserList> close(
     CloseUserListRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1244,13 +1167,9 @@ class BuyersUserListsResource {
   async.Future<UserList> create(
     UserList request,
     core.String parent, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1287,11 +1206,8 @@ class BuyersUserListsResource {
   /// this method will complete with the same error.
   async.Future<UserList> get(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1335,11 +1251,8 @@ class BuyersUserListsResource {
   /// this method will complete with the same error.
   async.Future<GetRemarketingTagResponse> getRemarketingTag(
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1386,13 +1299,10 @@ class BuyersUserListsResource {
   /// this method will complete with the same error.
   async.Future<ListUserListsResponse> list(
     core.String parent, {
-    core.int pageSize,
-    core.String pageToken,
-    core.String $fields,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (parent == null) {
-      throw core.ArgumentError('Parameter parent is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1435,13 +1345,9 @@ class BuyersUserListsResource {
   async.Future<UserList> open(
     OpenUserListRequest request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1487,13 +1393,9 @@ class BuyersUserListsResource {
   async.Future<UserList> update(
     UserList request,
     core.String name, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (name == null) {
-      throw core.ArgumentError('Parameter name is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1520,7 +1422,7 @@ class ActivatePretargetingConfigRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A request to start targeting the provided app IDs in a specific pretargeting
@@ -1533,7 +1435,7 @@ class AddTargetedAppsRequest {
   ///
   /// These values will be added to the list of targeted app IDs in
   /// PretargetingConfig.appTargeting.mobileAppTargeting.values.
-  core.List<core.String> appIds;
+  core.List<core.String>? appIds;
 
   /// The targeting mode that should be applied to the list of app IDs.
   ///
@@ -1548,7 +1450,7 @@ class AddTargetedAppsRequest {
   /// this list to be targeted.
   /// - "EXCLUSIVE" : The exclusive list type. Inventory must not match any item
   /// in this list to be targeted.
-  core.String targetingMode;
+  core.String? targetingMode;
 
   AddTargetedAppsRequest();
 
@@ -1563,9 +1465,9 @@ class AddTargetedAppsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appIds != null) 'appIds': appIds,
-        if (targetingMode != null) 'targetingMode': targetingMode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appIds != null) 'appIds': appIds!,
+        if (targetingMode != null) 'targetingMode': targetingMode!,
       };
 }
 
@@ -1582,7 +1484,7 @@ class AddTargetedPublishersRequest {
   /// their publisher ID from ads.txt / app-ads.txt. See
   /// https://iabtechlab.com/ads-txt/ and https://iabtechlab.com/app-ads-txt/
   /// for more details.
-  core.List<core.String> publisherIds;
+  core.List<core.String>? publisherIds;
 
   /// The targeting mode that should be applied to the list of publisher IDs.
   ///
@@ -1597,7 +1499,7 @@ class AddTargetedPublishersRequest {
   /// this list to be targeted.
   /// - "EXCLUSIVE" : The exclusive list type. Inventory must not match any item
   /// in this list to be targeted.
-  core.String targetingMode;
+  core.String? targetingMode;
 
   AddTargetedPublishersRequest();
 
@@ -1612,9 +1514,9 @@ class AddTargetedPublishersRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (publisherIds != null) 'publisherIds': publisherIds,
-        if (targetingMode != null) 'targetingMode': targetingMode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (publisherIds != null) 'publisherIds': publisherIds!,
+        if (targetingMode != null) 'targetingMode': targetingMode!,
       };
 }
 
@@ -1628,7 +1530,7 @@ class AddTargetedSitesRequest {
   ///
   /// These values will be added to the list of targeted URLs in
   /// PretargetingConfig.webTargeting.values.
-  core.List<core.String> sites;
+  core.List<core.String>? sites;
 
   /// The targeting mode that should be applied to the list of site URLs.
   ///
@@ -1643,7 +1545,7 @@ class AddTargetedSitesRequest {
   /// this list to be targeted.
   /// - "EXCLUSIVE" : The exclusive list type. Inventory must not match any item
   /// in this list to be targeted.
-  core.String targetingMode;
+  core.String? targetingMode;
 
   AddTargetedSitesRequest();
 
@@ -1658,9 +1560,9 @@ class AddTargetedSitesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sites != null) 'sites': sites,
-        if (targetingMode != null) 'targetingMode': targetingMode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sites != null) 'sites': sites!,
+        if (targetingMode != null) 'targetingMode': targetingMode!,
       };
 }
 
@@ -1670,24 +1572,24 @@ class AdvertiserAndBrand {
   /// for the list of possible values.
   ///
   /// Can be used to filter the response of the creatives.list method.
-  core.String advertiserId;
+  core.String? advertiserId;
 
   /// Advertiser name.
   ///
   /// Can be used to filter the response of the creatives.list method.
-  core.String advertiserName;
+  core.String? advertiserName;
 
   /// Detected brand ID or zero if no brand has been detected.
   ///
   /// See https://storage.googleapis.com/adx-rtb-dictionaries/brands.txt for the
   /// list of possible values. Can be used to filter the response of the
   /// creatives.list method.
-  core.String brandId;
+  core.String? brandId;
 
   /// Brand name.
   ///
   /// Can be used to filter the response of the creatives.list method.
-  core.String brandName;
+  core.String? brandName;
 
   AdvertiserAndBrand();
 
@@ -1706,11 +1608,11 @@ class AdvertiserAndBrand {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (advertiserId != null) 'advertiserId': advertiserId,
-        if (advertiserName != null) 'advertiserName': advertiserName,
-        if (brandId != null) 'brandId': brandId,
-        if (brandName != null) 'brandName': brandName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (advertiserName != null) 'advertiserName': advertiserName!,
+        if (brandId != null) 'brandId': brandId!,
+        if (brandName != null) 'brandName': brandName!,
       };
 }
 
@@ -1721,13 +1623,13 @@ class AdvertiserAndBrand {
 class AppTargeting {
   /// Lists of included and excluded mobile app categories as defined in
   /// https://developers.google.com/adwords/api/docs/appendix/mobileappcategories.csv.
-  NumericTargetingDimension mobileAppCategoryTargeting;
+  NumericTargetingDimension? mobileAppCategoryTargeting;
 
   /// Targeted app IDs.
   ///
   /// App IDs can refer to those found in an app store or ones that are not
   /// published in an app store. A maximum of 30,000 app IDs can be targeted.
-  StringTargetingDimension mobileAppTargeting;
+  StringTargetingDimension? mobileAppTargeting;
 
   AppTargeting();
 
@@ -1743,11 +1645,11 @@ class AppTargeting {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (mobileAppCategoryTargeting != null)
-          'mobileAppCategoryTargeting': mobileAppCategoryTargeting.toJson(),
+          'mobileAppCategoryTargeting': mobileAppCategoryTargeting!.toJson(),
         if (mobileAppTargeting != null)
-          'mobileAppTargeting': mobileAppTargeting.toJson(),
+          'mobileAppTargeting': mobileAppTargeting!.toJson(),
       };
 }
 
@@ -1759,7 +1661,7 @@ class CloseUserListRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A creative and its classification data.
@@ -1770,25 +1672,25 @@ class Creative {
   /// equality and inequality check.
   ///
   /// Output only.
-  core.String accountId;
+  core.String? accountId;
 
   /// The link to AdChoices destination page.
   ///
   /// This is only supported for native ads.
-  core.String adChoicesDestinationUrl;
+  core.String? adChoicesDestinationUrl;
 
   /// The name of the company being advertised in the creative.
   ///
   /// Can be used to filter the response of the creatives.list method.
-  core.String advertiserName;
+  core.String? advertiserName;
 
   /// The agency ID for this creative.
-  core.String agencyId;
+  core.String? agencyId;
 
   /// The last update timestamp of the creative via API.
   ///
   /// Output only.
-  core.String apiUpdateTime;
+  core.String? apiUpdateTime;
 
   /// The format of this creative.
   ///
@@ -1800,28 +1702,28 @@ class Creative {
   /// - "HTML" : HTML creative.
   /// - "VIDEO" : Video creative.
   /// - "NATIVE" : Native creative.
-  core.String creativeFormat;
+  core.String? creativeFormat;
 
   /// Buyer-specific creative ID that references this creative in bid responses.
   ///
   /// This field is Ignored in update operations. Can be used to filter the
   /// response of the creatives.list method. The maximum length of the creative
   /// ID is 128 bytes.
-  core.String creativeId;
+  core.String? creativeId;
 
   /// Top level status and detected attributes of a creative (for example
   /// domain, language, advertiser, product category, etc.) that affect whether
   /// (status) and where (context) a creative will be allowed to serve.
   ///
   /// Output only.
-  CreativeServingDecision creativeServingDecision;
+  CreativeServingDecision? creativeServingDecision;
 
   /// IDs of all of the deals with which this creative has been used in bidding.
   ///
   /// Can be used to filter the response of the creatives.list method.
   ///
   /// Output only.
-  core.List<core.String> dealIds;
+  core.List<core.String>? dealIds;
 
   /// All declared attributes for the ads that may be shown from this creative.
   ///
@@ -1831,18 +1733,18 @@ class Creative {
   /// contains one of the attributes that were declared or detected for a given
   /// creative, and a bid is submitted with that creative, the bid will be
   /// filtered before the auction.
-  core.List<core.String> declaredAttributes;
+  core.List<core.String>? declaredAttributes;
 
   /// The set of declared destination URLs for the creative.
   ///
   /// Can be used to filter the response of the creatives.list method.
-  core.List<core.String> declaredClickThroughUrls;
+  core.List<core.String>? declaredClickThroughUrls;
 
   /// All declared restricted categories for the ads that may be shown from this
   /// creative.
   ///
   /// Can be used to filter the response of the creatives.list method.
-  core.List<core.String> declaredRestrictedCategories;
+  core.List<core.String>? declaredRestrictedCategories;
 
   /// IDs for the declared ad technology vendors that may be used by this
   /// creative.
@@ -1850,13 +1752,13 @@ class Creative {
   /// See https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt for
   /// possible values. Can be used to filter the response of the creatives.list
   /// method.
-  core.List<core.int> declaredVendorIds;
+  core.List<core.int>? declaredVendorIds;
 
   /// An HTML creative.
-  HtmlContent html;
+  HtmlContent? html;
 
   /// The set of URLs to be called to record an impression.
-  core.List<core.String> impressionTrackingUrls;
+  core.List<core.String>? impressionTrackingUrls;
 
   /// Name of the creative.
   ///
@@ -1866,14 +1768,14 @@ class Creative {
   /// creative in the bid response.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// A native creative.
-  NativeContent native;
+  NativeContent? native;
 
   /// All restricted categories for the ads that may be shown from this
   /// creative.
-  core.List<core.String> restrictedCategories;
+  core.List<core.String>? restrictedCategories;
 
   /// The version of this creative.
   ///
@@ -1881,10 +1783,10 @@ class Creative {
   /// creative updates.
   ///
   /// Output only.
-  core.int version;
+  core.int? version;
 
   /// A video creative.
-  VideoContent video;
+  VideoContent? video;
 
   Creative();
 
@@ -1972,34 +1874,34 @@ class Creative {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accountId != null) 'accountId': accountId,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (adChoicesDestinationUrl != null)
-          'adChoicesDestinationUrl': adChoicesDestinationUrl,
-        if (advertiserName != null) 'advertiserName': advertiserName,
-        if (agencyId != null) 'agencyId': agencyId,
-        if (apiUpdateTime != null) 'apiUpdateTime': apiUpdateTime,
-        if (creativeFormat != null) 'creativeFormat': creativeFormat,
-        if (creativeId != null) 'creativeId': creativeId,
+          'adChoicesDestinationUrl': adChoicesDestinationUrl!,
+        if (advertiserName != null) 'advertiserName': advertiserName!,
+        if (agencyId != null) 'agencyId': agencyId!,
+        if (apiUpdateTime != null) 'apiUpdateTime': apiUpdateTime!,
+        if (creativeFormat != null) 'creativeFormat': creativeFormat!,
+        if (creativeId != null) 'creativeId': creativeId!,
         if (creativeServingDecision != null)
-          'creativeServingDecision': creativeServingDecision.toJson(),
-        if (dealIds != null) 'dealIds': dealIds,
+          'creativeServingDecision': creativeServingDecision!.toJson(),
+        if (dealIds != null) 'dealIds': dealIds!,
         if (declaredAttributes != null)
-          'declaredAttributes': declaredAttributes,
+          'declaredAttributes': declaredAttributes!,
         if (declaredClickThroughUrls != null)
-          'declaredClickThroughUrls': declaredClickThroughUrls,
+          'declaredClickThroughUrls': declaredClickThroughUrls!,
         if (declaredRestrictedCategories != null)
-          'declaredRestrictedCategories': declaredRestrictedCategories,
-        if (declaredVendorIds != null) 'declaredVendorIds': declaredVendorIds,
-        if (html != null) 'html': html.toJson(),
+          'declaredRestrictedCategories': declaredRestrictedCategories!,
+        if (declaredVendorIds != null) 'declaredVendorIds': declaredVendorIds!,
+        if (html != null) 'html': html!.toJson(),
         if (impressionTrackingUrls != null)
-          'impressionTrackingUrls': impressionTrackingUrls,
-        if (name != null) 'name': name,
-        if (native != null) 'native': native.toJson(),
+          'impressionTrackingUrls': impressionTrackingUrls!,
+        if (name != null) 'name': name!,
+        if (native != null) 'native': native!.toJson(),
         if (restrictedCategories != null)
-          'restrictedCategories': restrictedCategories,
-        if (version != null) 'version': version,
-        if (video != null) 'video': video.toJson(),
+          'restrictedCategories': restrictedCategories!,
+        if (version != null) 'version': version!,
+        if (video != null) 'video': video!.toJson(),
       };
 }
 
@@ -2008,10 +1910,10 @@ class Creative {
 /// This applies to only HTML and Native creatives.
 class CreativeDimensions {
   /// The height of the creative in pixels.
-  core.String height;
+  core.String? height;
 
   /// The width of the creative in pixels.
-  core.String width;
+  core.String? width;
 
   CreativeDimensions();
 
@@ -2024,9 +1926,9 @@ class CreativeDimensions {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (width != null) 'width': width!,
       };
 }
 
@@ -2037,14 +1939,14 @@ class CreativeServingDecision {
   /// When approved or disapproved, this applies to both deals and open auction
   /// in China. When pending review, this creative is allowed to serve for deals
   /// but not for open auction.
-  PolicyCompliance chinaPolicyCompliance;
+  PolicyCompliance? chinaPolicyCompliance;
 
   /// Policy compliance of this creative when bidding on Programmatic Guaranteed
   /// and Preferred Deals (outside of Russia and China).
-  PolicyCompliance dealsPolicyCompliance;
+  PolicyCompliance? dealsPolicyCompliance;
 
   /// Detected advertisers and brands.
-  core.List<AdvertiserAndBrand> detectedAdvertisers;
+  core.List<AdvertiserAndBrand>? detectedAdvertisers;
 
   /// Publisher-excludable attributes that were detected for this creative.
   ///
@@ -2054,29 +1956,29 @@ class CreativeServingDecision {
   /// contains one of the attributes that were declared or detected for a given
   /// creative, and a bid is submitted with that creative, the bid will be
   /// filtered before the auction.
-  core.List<core.String> detectedAttributes;
+  core.List<core.String>? detectedAttributes;
 
   /// The set of detected destination URLs for the creative.
   ///
   /// Can be used to filter the response of the creatives.list method.
-  core.List<core.String> detectedClickThroughUrls;
+  core.List<core.String>? detectedClickThroughUrls;
 
   /// The detected domains for this creative.
-  core.List<core.String> detectedDomains;
+  core.List<core.String>? detectedDomains;
 
   /// The detected languages for this creative.
   ///
   /// The order is arbitrary. The codes are 2 or 5 characters and are documented
   /// at https://developers.google.com/adwords/api/docs/appendix/languagecodes.
   /// Can be used to filter the response of the creatives.list method.
-  core.List<core.String> detectedLanguages;
+  core.List<core.String>? detectedLanguages;
 
   /// Detected product categories, if any.
   ///
   /// See the ad-product-categories.txt file in the technical documentation for
   /// a list of IDs. Can be used to filter the response of the creatives.list
   /// method.
-  core.List<core.int> detectedProductCategories;
+  core.List<core.int>? detectedProductCategories;
 
   /// Detected sensitive categories, if any.
   ///
@@ -2084,7 +1986,7 @@ class CreativeServingDecision {
   /// ad-sensitive-categories.txt file in the technical documentation for a list
   /// of IDs. You should use these IDs along with the
   /// excluded-sensitive-category field in the bid request to filter your bids.
-  core.List<core.int> detectedSensitiveCategories;
+  core.List<core.int>? detectedSensitiveCategories;
 
   /// IDs of the ad technology vendors that were detected to be used by this
   /// creative.
@@ -2096,30 +1998,30 @@ class CreativeServingDecision {
   /// does not contain one of the vendor type IDs that were declared or detected
   /// for a given creative, and a bid is submitted with that creative, the bid
   /// will be filtered before the auction.
-  core.List<core.int> detectedVendorIds;
+  core.List<core.int>? detectedVendorIds;
 
   /// The last time the creative status was updated.
   ///
   /// Can be used to filter the response of the creatives.list method.
-  core.String lastStatusUpdate;
+  core.String? lastStatusUpdate;
 
   /// Policy compliance of this creative when bidding in open auction, private
   /// auction, or auction packages (outside of Russia and China).
-  PolicyCompliance networkPolicyCompliance;
+  PolicyCompliance? networkPolicyCompliance;
 
   /// Policy compliance of this creative when bidding in Open Bidding (outside
   /// of Russia and China).
   ///
   /// For the list of platform policies, see:
   /// https://support.google.com/platformspolicy/answer/3013851.
-  PolicyCompliance platformPolicyCompliance;
+  PolicyCompliance? platformPolicyCompliance;
 
   /// The policy compliance of this creative in Russia.
   ///
   /// When approved or disapproved, this applies to both deals and open auction
   /// in Russia. When pending review, this creative is allowed to serve for
   /// deals but not for open auction.
-  PolicyCompliance russiaPolicyCompliance;
+  PolicyCompliance? russiaPolicyCompliance;
 
   CreativeServingDecision();
 
@@ -2198,32 +2100,32 @@ class CreativeServingDecision {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (chinaPolicyCompliance != null)
-          'chinaPolicyCompliance': chinaPolicyCompliance.toJson(),
+          'chinaPolicyCompliance': chinaPolicyCompliance!.toJson(),
         if (dealsPolicyCompliance != null)
-          'dealsPolicyCompliance': dealsPolicyCompliance.toJson(),
+          'dealsPolicyCompliance': dealsPolicyCompliance!.toJson(),
         if (detectedAdvertisers != null)
           'detectedAdvertisers':
-              detectedAdvertisers.map((value) => value.toJson()).toList(),
+              detectedAdvertisers!.map((value) => value.toJson()).toList(),
         if (detectedAttributes != null)
-          'detectedAttributes': detectedAttributes,
+          'detectedAttributes': detectedAttributes!,
         if (detectedClickThroughUrls != null)
-          'detectedClickThroughUrls': detectedClickThroughUrls,
-        if (detectedDomains != null) 'detectedDomains': detectedDomains,
-        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages,
+          'detectedClickThroughUrls': detectedClickThroughUrls!,
+        if (detectedDomains != null) 'detectedDomains': detectedDomains!,
+        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
         if (detectedProductCategories != null)
-          'detectedProductCategories': detectedProductCategories,
+          'detectedProductCategories': detectedProductCategories!,
         if (detectedSensitiveCategories != null)
-          'detectedSensitiveCategories': detectedSensitiveCategories,
-        if (detectedVendorIds != null) 'detectedVendorIds': detectedVendorIds,
-        if (lastStatusUpdate != null) 'lastStatusUpdate': lastStatusUpdate,
+          'detectedSensitiveCategories': detectedSensitiveCategories!,
+        if (detectedVendorIds != null) 'detectedVendorIds': detectedVendorIds!,
+        if (lastStatusUpdate != null) 'lastStatusUpdate': lastStatusUpdate!,
         if (networkPolicyCompliance != null)
-          'networkPolicyCompliance': networkPolicyCompliance.toJson(),
+          'networkPolicyCompliance': networkPolicyCompliance!.toJson(),
         if (platformPolicyCompliance != null)
-          'platformPolicyCompliance': platformPolicyCompliance.toJson(),
+          'platformPolicyCompliance': platformPolicyCompliance!.toJson(),
         if (russiaPolicyCompliance != null)
-          'russiaPolicyCompliance': russiaPolicyCompliance.toJson(),
+          'russiaPolicyCompliance': russiaPolicyCompliance!.toJson(),
       };
 }
 
@@ -2241,17 +2143,17 @@ class Date {
   ///
   /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
   /// year by itself or a year and month where the day isn't significant.
-  core.int day;
+  core.int? day;
 
   /// Month of a year.
   ///
   /// Must be from 1 to 12, or 0 to specify a year without a month and day.
-  core.int month;
+  core.int? month;
 
   /// Year of the date.
   ///
   /// Must be from 1 to 9999, or 0 to specify a date without a year.
-  core.int year;
+  core.int? year;
 
   Date();
 
@@ -2267,20 +2169,20 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (day != null) 'day': day,
-        if (month != null) 'month': month,
-        if (year != null) 'year': year,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (day != null) 'day': day!,
+        if (month != null) 'month': month!,
+        if (year != null) 'year': year!,
       };
 }
 
 /// Evidence that the creative's destination URL was not crawlable by Google.
 class DestinationNotCrawlableEvidence {
   /// Approximate time of the crawl.
-  core.String crawlTime;
+  core.String? crawlTime;
 
   /// Destination URL that was attempted to be crawled.
-  core.String crawledUrl;
+  core.String? crawledUrl;
 
   /// Reason of destination not crawlable.
   /// Possible string values are:
@@ -2292,7 +2194,7 @@ class DestinationNotCrawlableEvidence {
   /// - "ROBOTED_DENIED" : Crawler was disallowed by the site's robots exclusion
   /// file (e.g., robots.txt).
   /// - "UNKNOWN" : Unknown reason.
-  core.String reason;
+  core.String? reason;
 
   DestinationNotCrawlableEvidence();
 
@@ -2308,10 +2210,10 @@ class DestinationNotCrawlableEvidence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (crawlTime != null) 'crawlTime': crawlTime,
-        if (crawledUrl != null) 'crawledUrl': crawledUrl,
-        if (reason != null) 'reason': reason,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (crawlTime != null) 'crawlTime': crawlTime!,
+        if (crawledUrl != null) 'crawledUrl': crawledUrl!,
+        if (reason != null) 'reason': reason!,
       };
 }
 
@@ -2325,23 +2227,23 @@ class DestinationNotWorkingEvidence {
   /// - "GOOGLE_CRAWLER_DNS_ISSUE" : An internal issue occurred when Google's
   /// crawler tried to resolve the DNS entry. This is a Google-internal issue
   /// and may not be the result of an issue with the landing page.
-  core.String dnsError;
+  core.String? dnsError;
 
   /// The full non-working URL.
-  core.String expandedUrl;
+  core.String? expandedUrl;
 
   /// HTTP error code (e.g. 404 or 5xx)
-  core.int httpError;
+  core.int? httpError;
 
   /// Page was crawled successfully, but was detected as either a page with no
   /// content or an error page.
   /// Possible string values are:
   /// - "INVALID_PAGE_UNSPECIFIED" : Default value that should never be used.
   /// - "EMPTY_OR_ERROR_PAGE" : Page was empty or had an error.
-  core.String invalidPage;
+  core.String? invalidPage;
 
   /// Approximate time when the ad destination was last checked.
-  core.String lastCheckTime;
+  core.String? lastCheckTime;
 
   /// Platform of the non-working URL.
   /// Possible string values are:
@@ -2349,7 +2251,7 @@ class DestinationNotWorkingEvidence {
   /// - "PERSONAL_COMPUTER" : The personal computer platform.
   /// - "ANDROID" : The Android platform.
   /// - "IOS" : The iOS platform.
-  core.String platform;
+  core.String? platform;
 
   /// HTTP redirect chain error.
   /// Possible string values are:
@@ -2359,7 +2261,7 @@ class DestinationNotWorkingEvidence {
   /// - "INVALID_REDIRECT" : Got a redirect but it was invalid.
   /// - "EMPTY_REDIRECT" : Got a redirect but it was empty.
   /// - "REDIRECT_ERROR_UNKNOWN" : Unknown redirect error.
-  core.String redirectionError;
+  core.String? redirectionError;
 
   /// Rejected because of malformed URLs or invalid requests.
   /// Possible string values are:
@@ -2367,7 +2269,7 @@ class DestinationNotWorkingEvidence {
   /// - "BAD_REQUEST" : URL rejected because of a malformed request.
   /// - "MALFORMED_URL" : URL rejected because of a malformed URL.
   /// - "URL_REJECTED_UNKNOWN" : URL rejected because of unknown reason.
-  core.String urlRejected;
+  core.String? urlRejected;
 
   DestinationNotWorkingEvidence();
 
@@ -2398,22 +2300,22 @@ class DestinationNotWorkingEvidence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (dnsError != null) 'dnsError': dnsError,
-        if (expandedUrl != null) 'expandedUrl': expandedUrl,
-        if (httpError != null) 'httpError': httpError,
-        if (invalidPage != null) 'invalidPage': invalidPage,
-        if (lastCheckTime != null) 'lastCheckTime': lastCheckTime,
-        if (platform != null) 'platform': platform,
-        if (redirectionError != null) 'redirectionError': redirectionError,
-        if (urlRejected != null) 'urlRejected': urlRejected,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (dnsError != null) 'dnsError': dnsError!,
+        if (expandedUrl != null) 'expandedUrl': expandedUrl!,
+        if (httpError != null) 'httpError': httpError!,
+        if (invalidPage != null) 'invalidPage': invalidPage!,
+        if (lastCheckTime != null) 'lastCheckTime': lastCheckTime!,
+        if (platform != null) 'platform': platform!,
+        if (redirectionError != null) 'redirectionError': redirectionError!,
+        if (urlRejected != null) 'urlRejected': urlRejected!,
       };
 }
 
 /// The full landing page URL of the destination.
 class DestinationUrlEvidence {
   /// The full landing page URL of the destination.
-  core.String destinationUrl;
+  core.String? destinationUrl;
 
   DestinationUrlEvidence();
 
@@ -2423,19 +2325,19 @@ class DestinationUrlEvidence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (destinationUrl != null) 'destinationUrl': destinationUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (destinationUrl != null) 'destinationUrl': destinationUrl!,
       };
 }
 
 /// Number of HTTP calls made by a creative, broken down by domain.
 class DomainCallEvidence {
   /// Breakdown of the most frequent domains called via HTTP by the creative.
-  core.List<DomainCalls> topHttpCallDomains;
+  core.List<DomainCalls>? topHttpCallDomains;
 
   /// The total number of HTTP calls made by the creative, including but not
   /// limited to the number of calls in the top_http_call_domains.
-  core.int totalHttpCallCount;
+  core.int? totalHttpCallCount;
 
   DomainCallEvidence();
 
@@ -2451,22 +2353,22 @@ class DomainCallEvidence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (topHttpCallDomains != null)
           'topHttpCallDomains':
-              topHttpCallDomains.map((value) => value.toJson()).toList(),
+              topHttpCallDomains!.map((value) => value.toJson()).toList(),
         if (totalHttpCallCount != null)
-          'totalHttpCallCount': totalHttpCallCount,
+          'totalHttpCallCount': totalHttpCallCount!,
       };
 }
 
 /// The number of HTTP calls made to the given domain.
 class DomainCalls {
   /// The domain name.
-  core.String domain;
+  core.String? domain;
 
   /// Number of HTTP calls made to the domain.
-  core.int httpCallCount;
+  core.int? httpCallCount;
 
   DomainCalls();
 
@@ -2479,9 +2381,9 @@ class DomainCalls {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (domain != null) 'domain': domain,
-        if (httpCallCount != null) 'httpCallCount': httpCallCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (domain != null) 'domain': domain!,
+        if (httpCallCount != null) 'httpCallCount': httpCallCount!,
       };
 }
 
@@ -2489,10 +2391,10 @@ class DomainCalls {
 /// creative.
 class DownloadSizeEvidence {
   /// Download size broken down by URLs with the top download size.
-  core.List<UrlDownloadSize> topUrlDownloadSizeBreakdowns;
+  core.List<UrlDownloadSize>? topUrlDownloadSizeBreakdowns;
 
   /// Total download size (in kilobytes) for all the resources in the creative.
-  core.int totalDownloadSizeKb;
+  core.int? totalDownloadSizeKb;
 
   DownloadSizeEvidence();
 
@@ -2509,13 +2411,13 @@ class DownloadSizeEvidence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (topUrlDownloadSizeBreakdowns != null)
-          'topUrlDownloadSizeBreakdowns': topUrlDownloadSizeBreakdowns
+          'topUrlDownloadSizeBreakdowns': topUrlDownloadSizeBreakdowns!
               .map((value) => value.toJson())
               .toList(),
         if (totalDownloadSizeKb != null)
-          'totalDownloadSizeKb': totalDownloadSizeKb,
+          'totalDownloadSizeKb': totalDownloadSizeKb!,
       };
 }
 
@@ -2533,7 +2435,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Response for a request to get remarketing tag.
@@ -2544,7 +2446,7 @@ class GetRemarketingTagResponse {
   /// For more information and code samples on using snippet on your website
   /// refer to \[Tag your site for remarketing\](
   /// https://support.google.com/google-ads/answer/2476688).
-  core.String snippet;
+  core.String? snippet;
 
   GetRemarketingTagResponse();
 
@@ -2554,8 +2456,8 @@ class GetRemarketingTagResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (snippet != null) 'snippet': snippet,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (snippet != null) 'snippet': snippet!,
       };
 }
 
@@ -2564,15 +2466,15 @@ class HtmlContent {
   /// The height of the HTML snippet in pixels.
   ///
   /// Can be used to filter the response of the creatives.list method.
-  core.int height;
+  core.int? height;
 
   /// The HTML snippet that displays the ad when inserted in the web page.
-  core.String snippet;
+  core.String? snippet;
 
   /// The width of the HTML snippet in pixels.
   ///
   /// Can be used to filter the response of the creatives.list method.
-  core.int width;
+  core.int? width;
 
   HtmlContent();
 
@@ -2588,17 +2490,17 @@ class HtmlContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (snippet != null) 'snippet': snippet,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (snippet != null) 'snippet': snippet!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// HTTP calls made by a creative that resulted in policy violations.
 class HttpCallEvidence {
   /// URLs of HTTP calls made by the creative.
-  core.List<core.String> urls;
+  core.List<core.String>? urls;
 
   HttpCallEvidence();
 
@@ -2610,8 +2512,8 @@ class HttpCallEvidence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (urls != null) 'urls': urls,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (urls != null) 'urls': urls!,
       };
 }
 
@@ -2622,14 +2524,14 @@ class HttpCookieEvidence {
   /// For TOO_MANY_COOKIES policy, this will be the cookie names of top domains
   /// with the largest number of cookies. For other policies, this will be all
   /// the cookie names that violate the policy.
-  core.List<core.String> cookieNames;
+  core.List<core.String>? cookieNames;
 
   /// The largest number of cookies set by a creative.
   ///
   /// If this field is set, cookie_names above will be set to the cookie names
   /// of top domains with the largest number of cookies. This field will only be
   /// set for TOO_MANY_COOKIES policy.
-  core.int maxCookieCount;
+  core.int? maxCookieCount;
 
   HttpCookieEvidence();
 
@@ -2644,9 +2546,9 @@ class HttpCookieEvidence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (cookieNames != null) 'cookieNames': cookieNames,
-        if (maxCookieCount != null) 'maxCookieCount': maxCookieCount,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (cookieNames != null) 'cookieNames': cookieNames!,
+        if (maxCookieCount != null) 'maxCookieCount': maxCookieCount!,
       };
 }
 
@@ -2656,13 +2558,13 @@ class HttpCookieEvidence {
 /// ratio is preserved.
 class Image {
   /// Image height in pixels.
-  core.int height;
+  core.int? height;
 
   /// The URL of the image.
-  core.String url;
+  core.String? url;
 
   /// Image width in pixels.
-  core.int width;
+  core.int? width;
 
   Image();
 
@@ -2678,24 +2580,24 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (height != null) 'height': height,
-        if (url != null) 'url': url,
-        if (width != null) 'width': width,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (height != null) 'height': height!,
+        if (url != null) 'url': url!,
+        if (width != null) 'width': width!,
       };
 }
 
 /// A response for listing creatives.
 class ListCreativesResponse {
   /// The list of creatives.
-  core.List<Creative> creatives;
+  core.List<Creative>? creatives;
 
   /// A token to retrieve the next page of results.
   ///
   /// Pass this value in the ListCreativesRequest.pageToken field in the
   /// subsequent call to the `ListCreatives` method to retrieve the next page of
   /// results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   ListCreativesResponse();
 
@@ -2711,10 +2613,10 @@ class ListCreativesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (creatives != null)
-          'creatives': creatives.map((value) => value.toJson()).toList(),
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'creatives': creatives!.map((value) => value.toJson()).toList(),
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2723,10 +2625,10 @@ class ListPretargetingConfigsResponse {
   /// A token which can be passed to a subsequent call to the
   /// `ListPretargetingConfigs` method to retrieve the next page of results in
   /// ListPretargetingConfigsRequest.pageToken.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of pretargeting configurations.
-  core.List<PretargetingConfig> pretargetingConfigs;
+  core.List<PretargetingConfig>? pretargetingConfigs;
 
   ListPretargetingConfigsResponse();
 
@@ -2742,11 +2644,11 @@ class ListPretargetingConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (pretargetingConfigs != null)
           'pretargetingConfigs':
-              pretargetingConfigs.map((value) => value.toJson()).toList(),
+              pretargetingConfigs!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2758,10 +2660,10 @@ class ListUserListsResponse {
   /// Due to a currently known issue, it is recommended that the caller keep
   /// invoking the list method till the time a next page token is not returned
   /// (even if the result set is empty).
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   /// List of user lists from the search.
-  core.List<UserList> userLists;
+  core.List<UserList>? userLists;
 
   ListUserListsResponse();
 
@@ -2777,10 +2679,10 @@ class ListUserListsResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (userLists != null)
-          'userLists': userLists.map((value) => value.toJson()).toList(),
+          'userLists': userLists!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -2789,7 +2691,7 @@ class MediaFile {
   /// Bitrate of the video file, in Kbps.
   ///
   /// Can be used to filter the response of the creatives.list method.
-  core.String bitrate;
+  core.String? bitrate;
 
   /// The MIME type of this media file.
   ///
@@ -2814,7 +2716,7 @@ class MediaFile {
   /// - "MIME_AUDIO_MP4A" : MPEG-4 audio format.
   /// - "MIME_AUDIO_MP3" : MPEG-3 audio format.
   /// - "MIME_AUDIO_OGG" : Ogg audio format
-  core.String mimeType;
+  core.String? mimeType;
 
   MediaFile();
 
@@ -2827,51 +2729,51 @@ class MediaFile {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (bitrate != null) 'bitrate': bitrate,
-        if (mimeType != null) 'mimeType': mimeType,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (bitrate != null) 'bitrate': bitrate!,
+        if (mimeType != null) 'mimeType': mimeType!,
       };
 }
 
 /// Native content for a creative.
 class NativeContent {
   /// The name of the advertiser or sponsor, to be displayed in the ad creative.
-  core.String advertiserName;
+  core.String? advertiserName;
 
   /// The app icon, for app download ads.
-  Image appIcon;
+  Image? appIcon;
 
   /// A long description of the ad.
-  core.String body;
+  core.String? body;
 
   /// A label for the button that the user is supposed to click.
-  core.String callToAction;
+  core.String? callToAction;
 
   /// The URL that the browser/SDK will load when the user clicks the ad.
-  core.String clickLinkUrl;
+  core.String? clickLinkUrl;
 
   /// The URL to use for click tracking.
-  core.String clickTrackingUrl;
+  core.String? clickTrackingUrl;
 
   /// A short title for the ad.
-  core.String headline;
+  core.String? headline;
 
   /// A large image.
-  Image image;
+  Image? image;
 
   /// A smaller image, for the advertiser's logo.
-  Image logo;
+  Image? logo;
 
   /// The price of the promoted app including currency info.
-  core.String priceDisplayText;
+  core.String? priceDisplayText;
 
   /// The app rating in the app store.
   ///
   /// Must be in the range \[0-5\].
-  core.double starRating;
+  core.double? starRating;
 
   /// The URL to fetch a native video ad.
-  core.String videoUrl;
+  core.String? videoUrl;
 
   NativeContent();
 
@@ -2917,19 +2819,19 @@ class NativeContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (advertiserName != null) 'advertiserName': advertiserName,
-        if (appIcon != null) 'appIcon': appIcon.toJson(),
-        if (body != null) 'body': body,
-        if (callToAction != null) 'callToAction': callToAction,
-        if (clickLinkUrl != null) 'clickLinkUrl': clickLinkUrl,
-        if (clickTrackingUrl != null) 'clickTrackingUrl': clickTrackingUrl,
-        if (headline != null) 'headline': headline,
-        if (image != null) 'image': image.toJson(),
-        if (logo != null) 'logo': logo.toJson(),
-        if (priceDisplayText != null) 'priceDisplayText': priceDisplayText,
-        if (starRating != null) 'starRating': starRating,
-        if (videoUrl != null) 'videoUrl': videoUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (advertiserName != null) 'advertiserName': advertiserName!,
+        if (appIcon != null) 'appIcon': appIcon!.toJson(),
+        if (body != null) 'body': body!,
+        if (callToAction != null) 'callToAction': callToAction!,
+        if (clickLinkUrl != null) 'clickLinkUrl': clickLinkUrl!,
+        if (clickTrackingUrl != null) 'clickTrackingUrl': clickTrackingUrl!,
+        if (headline != null) 'headline': headline!,
+        if (image != null) 'image': image!.toJson(),
+        if (logo != null) 'logo': logo!.toJson(),
+        if (priceDisplayText != null) 'priceDisplayText': priceDisplayText!,
+        if (starRating != null) 'starRating': starRating!,
+        if (videoUrl != null) 'videoUrl': videoUrl!,
       };
 }
 
@@ -2938,10 +2840,10 @@ class NativeContent {
 /// id targeting.
 class NumericTargetingDimension {
   /// The IDs excluded in a configuration.
-  core.List<core.String> excludedIds;
+  core.List<core.String>? excludedIds;
 
   /// The IDs included in a configuration.
-  core.List<core.String> includedIds;
+  core.List<core.String>? includedIds;
 
   NumericTargetingDimension();
 
@@ -2958,9 +2860,9 @@ class NumericTargetingDimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (excludedIds != null) 'excludedIds': excludedIds,
-        if (includedIds != null) 'includedIds': includedIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (excludedIds != null) 'excludedIds': excludedIds!,
+        if (includedIds != null) 'includedIds': includedIds!,
       };
 }
 
@@ -2972,7 +2874,7 @@ class OpenUserListRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// Policy compliance of the creative for a transaction type or a region.
@@ -2986,13 +2888,13 @@ class PolicyCompliance {
   /// - "PENDING_REVIEW" : Creative is pending review.
   /// - "DISAPPROVED" : Creative cannot serve.
   /// - "APPROVED" : Creative is approved.
-  core.String status;
+  core.String? status;
 
   /// Topics related to the policy compliance for this transaction type (e.g.,
   /// open auction, deals) or region (e.g., China, Russia).
   ///
   /// Topics may be present only if status is DISAPPROVED.
-  core.List<PolicyTopicEntry> topics;
+  core.List<PolicyTopicEntry>? topics;
 
   PolicyCompliance();
 
@@ -3008,10 +2910,10 @@ class PolicyCompliance {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (status != null) 'status': status,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (status != null) 'status': status!,
         if (topics != null)
-          'topics': topics.map((value) => value.toJson()).toList(),
+          'topics': topics!.map((value) => value.toJson()).toList(),
       };
 }
 
@@ -3020,10 +2922,10 @@ class PolicyCompliance {
 /// policy violation.
 class PolicyTopicEntry {
   /// Pieces of evidence associated with this policy topic entry.
-  core.List<PolicyTopicEvidence> evidences;
+  core.List<PolicyTopicEvidence>? evidences;
 
   /// URL of the help center article describing this policy topic.
-  core.String helpCenterUrl;
+  core.String? helpCenterUrl;
 
   /// Policy topic this entry refers to.
   ///
@@ -3031,7 +2933,7 @@ class PolicyTopicEntry {
   /// "DESTINATION_NOT_WORKING". The set of possible policy topics is not fixed
   /// for a particular API version and may change at any time. Can be used to
   /// filter the response of the creatives.list method
-  core.String policyTopic;
+  core.String? policyTopic;
 
   PolicyTopicEntry();
 
@@ -3050,38 +2952,38 @@ class PolicyTopicEntry {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (evidences != null)
-          'evidences': evidences.map((value) => value.toJson()).toList(),
-        if (helpCenterUrl != null) 'helpCenterUrl': helpCenterUrl,
-        if (policyTopic != null) 'policyTopic': policyTopic,
+          'evidences': evidences!.map((value) => value.toJson()).toList(),
+        if (helpCenterUrl != null) 'helpCenterUrl': helpCenterUrl!,
+        if (policyTopic != null) 'policyTopic': policyTopic!,
       };
 }
 
 /// Evidence associated with a policy topic entry.
 class PolicyTopicEvidence {
   /// The creative's destination URL was not crawlable by Google.
-  DestinationNotCrawlableEvidence destinationNotCrawlable;
+  DestinationNotCrawlableEvidence? destinationNotCrawlable;
 
   /// The creative's destination URL did not function properly or was
   /// incorrectly set up.
-  DestinationNotWorkingEvidence destinationNotWorking;
+  DestinationNotWorkingEvidence? destinationNotWorking;
 
   /// URL of the actual landing page.
-  DestinationUrlEvidence destinationUrl;
+  DestinationUrlEvidence? destinationUrl;
 
   /// Number of HTTP calls made by the creative, broken down by domain.
-  DomainCallEvidence domainCall;
+  DomainCallEvidence? domainCall;
 
   /// Total download size and URL-level download size breakdown for resources in
   /// a creative.
-  DownloadSizeEvidence downloadSize;
+  DownloadSizeEvidence? downloadSize;
 
   /// HTTP calls made by the creative that resulted in policy violations.
-  HttpCallEvidence httpCall;
+  HttpCallEvidence? httpCall;
 
   /// Evidence for HTTP cookie-related policy violations.
-  HttpCookieEvidence httpCookie;
+  HttpCookieEvidence? httpCookie;
 
   PolicyTopicEvidence();
 
@@ -3118,16 +3020,16 @@ class PolicyTopicEvidence {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (destinationNotCrawlable != null)
-          'destinationNotCrawlable': destinationNotCrawlable.toJson(),
+          'destinationNotCrawlable': destinationNotCrawlable!.toJson(),
         if (destinationNotWorking != null)
-          'destinationNotWorking': destinationNotWorking.toJson(),
-        if (destinationUrl != null) 'destinationUrl': destinationUrl.toJson(),
-        if (domainCall != null) 'domainCall': domainCall.toJson(),
-        if (downloadSize != null) 'downloadSize': downloadSize.toJson(),
-        if (httpCall != null) 'httpCall': httpCall.toJson(),
-        if (httpCookie != null) 'httpCookie': httpCookie.toJson(),
+          'destinationNotWorking': destinationNotWorking!.toJson(),
+        if (destinationUrl != null) 'destinationUrl': destinationUrl!.toJson(),
+        if (domainCall != null) 'domainCall': domainCall!.toJson(),
+        if (downloadSize != null) 'downloadSize': downloadSize!.toJson(),
+        if (httpCall != null) 'httpCall': httpCall!.toJson(),
+        if (httpCookie != null) 'httpCookie': httpCookie!.toJson(),
       };
 }
 
@@ -3141,7 +3043,7 @@ class PretargetingConfig {
   /// A bid request must allow all the specified targeting modes. An unset value
   /// allows all bid requests to be sent, regardless of which targeting modes
   /// they allow.
-  core.List<core.String> allowedUserTargetingModes;
+  core.List<core.String>? allowedUserTargetingModes;
 
   /// Targeting on a subset of app inventory.
   ///
@@ -3152,7 +3054,7 @@ class PretargetingConfig {
   /// app is listed in the targeting dimension) or negatively (bid requests will
   /// be sent only if the destination app is not listed in the targeting
   /// dimension).
-  AppTargeting appTargeting;
+  AppTargeting? appTargeting;
 
   /// The identifier that corresponds to this pretargeting configuration that
   /// helps buyers track and attribute their spend across their own arbitrary
@@ -3162,13 +3064,13 @@ class PretargetingConfig {
   /// which billing_id to attribute each of their bids.
   ///
   /// Output only.
-  core.String billingId;
+  core.String? billingId;
 
   /// The diplay name associated with this configuration.
   ///
   /// This name must be unique among all the pretargeting configurations a
   /// bidder has.
-  core.String displayName;
+  core.String? displayName;
 
   /// The sensitive content category label IDs excluded in this configuration.
   ///
@@ -3176,18 +3078,18 @@ class PretargetingConfig {
   /// will not be sent. Refer to this file
   /// https://storage.googleapis.com/adx-rtb-dictionaries/content-labels.txt for
   /// category IDs.
-  core.List<core.String> excludedContentLabelIds;
+  core.List<core.String>? excludedContentLabelIds;
 
   /// The geos included or excluded in this configuration defined in
   /// https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv
-  NumericTargetingDimension geoTargeting;
+  NumericTargetingDimension? geoTargeting;
 
   /// Creative dimensions included by this configuration.
   ///
   /// Only bid requests eligible for at least one of the specified creative
   /// dimensions will be sent. An unset value allows all bid requests to be
   /// sent, regardless of creative dimension.
-  core.List<CreativeDimensions> includedCreativeDimensions;
+  core.List<CreativeDimensions>? includedCreativeDimensions;
 
   /// Environments that are being included.
   ///
@@ -3195,36 +3097,36 @@ class PretargetingConfig {
   /// included. Further restrictions can be applied to included environments to
   /// target only a subset of its inventory. An unset value includes all
   /// environments.
-  core.List<core.String> includedEnvironments;
+  core.List<core.String>? includedEnvironments;
 
   /// Creative formats included by this configuration.
   ///
   /// Only bid requests eligible for at least one of the specified creative
   /// formats will be sent. An unset value will allow all bid requests to be
   /// sent, regardless of format.
-  core.List<core.String> includedFormats;
+  core.List<core.String>? includedFormats;
 
   /// The languages included in this configuration, represented by their
   /// language code.
   ///
   /// See https://developers.google.com/adwords/api/docs/appendix/languagecodes.
-  core.List<core.String> includedLanguages;
+  core.List<core.String>? includedLanguages;
 
   /// The mobile operating systems included in this configuration as defined in
   /// https://storage.googleapis.com/adx-rtb-dictionaries/mobile-os.csv
-  core.List<core.String> includedMobileOperatingSystemIds;
+  core.List<core.String>? includedMobileOperatingSystemIds;
 
   /// The platforms included by this configration.
   ///
   /// Bid requests for devices with the specified platform types will be sent.
   /// An unset value allows all bid requests to be sent, regardless of platform.
-  core.List<core.String> includedPlatforms;
+  core.List<core.String>? includedPlatforms;
 
   /// User identifier types included in this configuration.
   ///
   /// At least one of the user identifier types specified in this list must be
   /// available for the bid request to be sent.
-  core.List<core.String> includedUserIdTypes;
+  core.List<core.String>? includedUserIdTypes;
 
   /// The interstitial targeting specified for this configuration.
   ///
@@ -3237,14 +3139,14 @@ class PretargetingConfig {
   /// inventory should be sent.
   /// - "ONLY_NON_INTERSTITIAL_REQUESTS" : Only bid requests for
   /// non-interstitial inventory should be sent.
-  core.String interstitialTargeting;
+  core.String? interstitialTargeting;
 
   /// Existing included or excluded geos that are invalid.
   ///
   /// Previously targeted geos may become invalid due to privacy restrictions.
   ///
   /// Output only.
-  core.List<core.String> invalidGeoIds;
+  core.List<core.String>? invalidGeoIds;
 
   /// The maximum QPS threshold for this configuration.
   ///
@@ -3252,7 +3154,7 @@ class PretargetingConfig {
   /// matching this configuration per second across all their bidding endpoints
   /// among all trading locations. Further information available at
   /// https://developers.google.com/authorized-buyers/rtb/peer-guide
-  core.String maximumQps;
+  core.String? maximumQps;
 
   /// The targeted minimum viewability decile, ranging in values \[0, 10\].
   ///
@@ -3260,13 +3162,13 @@ class PretargetingConfig {
   /// which we predict at least 50% viewability. Values > 10 will be rounded
   /// down to 10. An unset value or a value of 0 indicates that bid requests
   /// will be sent regardless of viewability.
-  core.int minimumViewabilityDecile;
+  core.int? minimumViewabilityDecile;
 
   /// Name of the pretargeting configuration that must follow the pattern
   /// `bidders/{bidder_account_id}/pretargetingConfigs/{config_id}`
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// Targeting on a subset of publisher inventory.
   ///
@@ -3281,7 +3183,7 @@ class PretargetingConfig {
   /// or the `BidRequest.site.publisher.id` / `BidRequest.app.publisher.id`
   /// field on the
   /// [OpenRTB protocol](https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto).
-  StringTargetingDimension publisherTargeting;
+  StringTargetingDimension? publisherTargeting;
 
   /// The state of this pretargeting configuration.
   ///
@@ -3292,15 +3194,15 @@ class PretargetingConfig {
   /// filter bid requests.
   /// - "SUSPENDED" : This pretargeting configuration is suspended and not used
   /// in serving.
-  core.String state;
+  core.String? state;
 
   /// The remarketing lists included or excluded in this configuration as
   /// defined in UserList.
-  NumericTargetingDimension userListTargeting;
+  NumericTargetingDimension? userListTargeting;
 
   /// The verticals included or excluded in this configuration as defined in
   /// https://developers.google.com/authorized-buyers/rtb/downloads/publisher-verticals
-  NumericTargetingDimension verticalTargeting;
+  NumericTargetingDimension? verticalTargeting;
 
   /// Targeting on a subset of site inventory.
   ///
@@ -3311,7 +3213,7 @@ class PretargetingConfig {
   /// site is listed in the targeting dimension) or negatively (bid requests
   /// will be sent only if the destination site is not listed in the
   /// pretargeting configuration).
-  StringTargetingDimension webTargeting;
+  StringTargetingDimension? webTargeting;
 
   PretargetingConfig();
 
@@ -3417,43 +3319,43 @@ class PretargetingConfig {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (allowedUserTargetingModes != null)
-          'allowedUserTargetingModes': allowedUserTargetingModes,
-        if (appTargeting != null) 'appTargeting': appTargeting.toJson(),
-        if (billingId != null) 'billingId': billingId,
-        if (displayName != null) 'displayName': displayName,
+          'allowedUserTargetingModes': allowedUserTargetingModes!,
+        if (appTargeting != null) 'appTargeting': appTargeting!.toJson(),
+        if (billingId != null) 'billingId': billingId!,
+        if (displayName != null) 'displayName': displayName!,
         if (excludedContentLabelIds != null)
-          'excludedContentLabelIds': excludedContentLabelIds,
-        if (geoTargeting != null) 'geoTargeting': geoTargeting.toJson(),
+          'excludedContentLabelIds': excludedContentLabelIds!,
+        if (geoTargeting != null) 'geoTargeting': geoTargeting!.toJson(),
         if (includedCreativeDimensions != null)
-          'includedCreativeDimensions': includedCreativeDimensions
+          'includedCreativeDimensions': includedCreativeDimensions!
               .map((value) => value.toJson())
               .toList(),
         if (includedEnvironments != null)
-          'includedEnvironments': includedEnvironments,
-        if (includedFormats != null) 'includedFormats': includedFormats,
-        if (includedLanguages != null) 'includedLanguages': includedLanguages,
+          'includedEnvironments': includedEnvironments!,
+        if (includedFormats != null) 'includedFormats': includedFormats!,
+        if (includedLanguages != null) 'includedLanguages': includedLanguages!,
         if (includedMobileOperatingSystemIds != null)
-          'includedMobileOperatingSystemIds': includedMobileOperatingSystemIds,
-        if (includedPlatforms != null) 'includedPlatforms': includedPlatforms,
+          'includedMobileOperatingSystemIds': includedMobileOperatingSystemIds!,
+        if (includedPlatforms != null) 'includedPlatforms': includedPlatforms!,
         if (includedUserIdTypes != null)
-          'includedUserIdTypes': includedUserIdTypes,
+          'includedUserIdTypes': includedUserIdTypes!,
         if (interstitialTargeting != null)
-          'interstitialTargeting': interstitialTargeting,
-        if (invalidGeoIds != null) 'invalidGeoIds': invalidGeoIds,
-        if (maximumQps != null) 'maximumQps': maximumQps,
+          'interstitialTargeting': interstitialTargeting!,
+        if (invalidGeoIds != null) 'invalidGeoIds': invalidGeoIds!,
+        if (maximumQps != null) 'maximumQps': maximumQps!,
         if (minimumViewabilityDecile != null)
-          'minimumViewabilityDecile': minimumViewabilityDecile,
-        if (name != null) 'name': name,
+          'minimumViewabilityDecile': minimumViewabilityDecile!,
+        if (name != null) 'name': name!,
         if (publisherTargeting != null)
-          'publisherTargeting': publisherTargeting.toJson(),
-        if (state != null) 'state': state,
+          'publisherTargeting': publisherTargeting!.toJson(),
+        if (state != null) 'state': state!,
         if (userListTargeting != null)
-          'userListTargeting': userListTargeting.toJson(),
+          'userListTargeting': userListTargeting!.toJson(),
         if (verticalTargeting != null)
-          'verticalTargeting': verticalTargeting.toJson(),
-        if (webTargeting != null) 'webTargeting': webTargeting.toJson(),
+          'verticalTargeting': verticalTargeting!.toJson(),
+        if (webTargeting != null) 'webTargeting': webTargeting!.toJson(),
       };
 }
 
@@ -3467,7 +3369,7 @@ class RemoveTargetedAppsRequest {
   ///
   /// These values will be removed from the list of targeted app IDs in
   /// PretargetingConfig.appTargeting.mobileAppTargeting.values.
-  core.List<core.String> appIds;
+  core.List<core.String>? appIds;
 
   RemoveTargetedAppsRequest();
 
@@ -3479,8 +3381,8 @@ class RemoveTargetedAppsRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (appIds != null) 'appIds': appIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (appIds != null) 'appIds': appIds!,
       };
 }
 
@@ -3497,7 +3399,7 @@ class RemoveTargetedPublishersRequest {
   /// their publisher ID from ads.txt / app-ads.txt. See
   /// https://iabtechlab.com/ads-txt/ and https://iabtechlab.com/app-ads-txt/
   /// for more details.
-  core.List<core.String> publisherIds;
+  core.List<core.String>? publisherIds;
 
   RemoveTargetedPublishersRequest();
 
@@ -3509,8 +3411,8 @@ class RemoveTargetedPublishersRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (publisherIds != null) 'publisherIds': publisherIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (publisherIds != null) 'publisherIds': publisherIds!,
       };
 }
 
@@ -3523,7 +3425,7 @@ class RemoveTargetedSitesRequest {
   ///
   /// These values will be removed from the list of targeted URLs in
   /// PretargetingConfig.webTargeting.values.
-  core.List<core.String> sites;
+  core.List<core.String>? sites;
 
   RemoveTargetedSitesRequest();
 
@@ -3535,8 +3437,8 @@ class RemoveTargetedSitesRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (sites != null) 'sites': sites,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (sites != null) 'sites': sites!,
       };
 }
 
@@ -3550,10 +3452,10 @@ class StringTargetingDimension {
   /// this list to be targeted.
   /// - "EXCLUSIVE" : The exclusive list type. Inventory must not match any item
   /// in this list to be targeted.
-  core.String targetingMode;
+  core.String? targetingMode;
 
   /// The values specified.
-  core.List<core.String> values;
+  core.List<core.String>? values;
 
   StringTargetingDimension();
 
@@ -3568,9 +3470,9 @@ class StringTargetingDimension {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (targetingMode != null) 'targetingMode': targetingMode,
-        if (values != null) 'values': values,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (targetingMode != null) 'targetingMode': targetingMode!,
+        if (values != null) 'values': values!,
       };
 }
 
@@ -3584,16 +3486,16 @@ class SuspendPretargetingConfigRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// The URL-level breakdown for the download size.
 class UrlDownloadSize {
   /// Download size of the URL in kilobytes.
-  core.int downloadSizeKb;
+  core.int? downloadSizeKb;
 
   /// The normalized URL with query parameters and fragment removed.
-  core.String normalizedUrl;
+  core.String? normalizedUrl;
 
   UrlDownloadSize();
 
@@ -3606,9 +3508,9 @@ class UrlDownloadSize {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (downloadSizeKb != null) 'downloadSizeKb': downloadSizeKb,
-        if (normalizedUrl != null) 'normalizedUrl': normalizedUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (downloadSizeKb != null) 'downloadSizeKb': downloadSizeKb!,
+        if (normalizedUrl != null) 'normalizedUrl': normalizedUrl!,
       };
 }
 
@@ -3619,7 +3521,7 @@ class UrlRestriction {
   ///
   /// End date should be later than the start date for the date range to be
   /// valid.
-  Date endDate;
+  Date? endDate;
 
   /// The restriction type for the specified URL.
   /// Possible string values are:
@@ -3641,15 +3543,15 @@ class UrlRestriction {
   /// does not start with the specified URL.
   /// - "DOES_NOT_END_WITH" : The tag URL (as recorded by the pixel callback)
   /// does not end with the specified URL.
-  core.String restrictionType;
+  core.String? restrictionType;
 
   /// Start date (if specified) of the URL restriction.
-  Date startDate;
+  Date? startDate;
 
   /// The URL to use for applying the restriction on the user list.
   ///
   /// Required.
-  core.String url;
+  core.String? url;
 
   UrlRestriction();
 
@@ -3670,11 +3572,11 @@ class UrlRestriction {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (endDate != null) 'endDate': endDate.toJson(),
-        if (restrictionType != null) 'restrictionType': restrictionType,
-        if (startDate != null) 'startDate': startDate.toJson(),
-        if (url != null) 'url': url,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (endDate != null) 'endDate': endDate!.toJson(),
+        if (restrictionType != null) 'restrictionType': restrictionType!,
+        if (startDate != null) 'startDate': startDate!.toJson(),
+        if (url != null) 'url': url!,
       };
 }
 
@@ -3686,21 +3588,21 @@ class UrlRestriction {
 /// tag on the advertiser's page.
 class UserList {
   /// The description for the user list.
-  core.String description;
+  core.String? description;
 
   /// Display name of the user list.
   ///
   /// This must be unique across all user lists for a given account.
   ///
   /// Required.
-  core.String displayName;
+  core.String? displayName;
 
   /// The number of days a user's cookie stays on the user list.
   ///
   /// The field must be between 0 and 540 inclusive.
   ///
   /// Required.
-  core.String membershipDurationDays;
+  core.String? membershipDurationDays;
 
   /// Name of the user list that must follow the pattern
   /// `buyers/{buyer}/userLists/{user_list}`, where `{buyer}` represents the
@@ -3712,7 +3614,7 @@ class UserList {
   /// list.
   ///
   /// Output only.
-  core.String name;
+  core.String? name;
 
   /// The status of the user list.
   ///
@@ -3723,12 +3625,12 @@ class UserList {
   /// - "STATUS_UNSPECIFIED" : Default value that should never be used.
   /// - "OPEN" : New users can be added to the user list.
   /// - "CLOSED" : New users cannot be added to the user list.
-  core.String status;
+  core.String? status;
 
   /// The URL restriction for the user list.
   ///
   /// Required.
-  UrlRestriction urlRestriction;
+  UrlRestriction? urlRestriction;
 
   UserList();
 
@@ -3754,14 +3656,14 @@ class UserList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (description != null) 'description': description,
-        if (displayName != null) 'displayName': displayName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
         if (membershipDurationDays != null)
-          'membershipDurationDays': membershipDurationDays,
-        if (name != null) 'name': name,
-        if (status != null) 'status': status,
-        if (urlRestriction != null) 'urlRestriction': urlRestriction.toJson(),
+          'membershipDurationDays': membershipDurationDays!,
+        if (name != null) 'name': name!,
+        if (status != null) 'status': status!,
+        if (urlRestriction != null) 'urlRestriction': urlRestriction!.toJson(),
       };
 }
 
@@ -3770,15 +3672,15 @@ class VideoContent {
   /// Video metadata.
   ///
   /// Output only.
-  VideoMetadata videoMetadata;
+  VideoMetadata? videoMetadata;
 
   /// The URL to fetch a video ad.
-  core.String videoUrl;
+  core.String? videoUrl;
 
   /// The contents of a VAST document for a video ad.
   ///
   /// This document should conform to the VAST 2.0 or 3.0 standard.
-  core.String videoVastXml;
+  core.String? videoVastXml;
 
   VideoContent();
 
@@ -3795,10 +3697,10 @@ class VideoContent {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (videoMetadata != null) 'videoMetadata': videoMetadata.toJson(),
-        if (videoUrl != null) 'videoUrl': videoUrl,
-        if (videoVastXml != null) 'videoVastXml': videoVastXml,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (videoMetadata != null) 'videoMetadata': videoMetadata!.toJson(),
+        if (videoUrl != null) 'videoUrl': videoUrl!,
+        if (videoVastXml != null) 'videoVastXml': videoVastXml!,
       };
 }
 
@@ -3807,21 +3709,21 @@ class VideoMetadata {
   /// The duration of the ad.
   ///
   /// Can be used to filter the response of the creatives.list method.
-  core.String duration;
+  core.String? duration;
 
   /// Is this a valid VAST ad? Can be used to filter the response of the
   /// creatives.list method.
-  core.bool isValidVast;
+  core.bool? isValidVast;
 
   /// Is this a VPAID ad? Can be used to filter the response of the
   /// creatives.list method.
-  core.bool isVpaid;
+  core.bool? isVpaid;
 
   /// The list of all media files declared in the VAST.
   ///
   /// If there are multiple VASTs in a wrapper chain, this includes the media
   /// files from the deepest one in the chain.
-  core.List<MediaFile> mediaFiles;
+  core.List<MediaFile>? mediaFiles;
 
   /// The minimum duration that the user has to watch before being able to skip
   /// this ad.
@@ -3829,7 +3731,7 @@ class VideoMetadata {
   /// If the field is not set, the ad is not skippable. If the field is set, the
   /// ad is skippable. Can be used to filter the response of the creatives.list
   /// method.
-  core.String skipOffset;
+  core.String? skipOffset;
 
   /// The maximum VAST version across all wrapped VAST documents.
   ///
@@ -3840,7 +3742,7 @@ class VideoMetadata {
   /// - "VAST_VERSION_2_0" : VAST 2.0
   /// - "VAST_VERSION_3_0" : VAST 3.0
   /// - "VAST_VERSION_4_0" : VAST 4.0
-  core.String vastVersion;
+  core.String? vastVersion;
 
   VideoMetadata();
 
@@ -3868,14 +3770,14 @@ class VideoMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (duration != null) 'duration': duration,
-        if (isValidVast != null) 'isValidVast': isValidVast,
-        if (isVpaid != null) 'isVpaid': isVpaid,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (isValidVast != null) 'isValidVast': isValidVast!,
+        if (isVpaid != null) 'isVpaid': isVpaid!,
         if (mediaFiles != null)
-          'mediaFiles': mediaFiles.map((value) => value.toJson()).toList(),
-        if (skipOffset != null) 'skipOffset': skipOffset,
-        if (vastVersion != null) 'vastVersion': vastVersion,
+          'mediaFiles': mediaFiles!.map((value) => value.toJson()).toList(),
+        if (skipOffset != null) 'skipOffset': skipOffset!,
+        if (vastVersion != null) 'vastVersion': vastVersion!,
       };
 }
 
@@ -3888,7 +3790,7 @@ class WatchCreativesRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// A response for the request to receive push notification when a bidder's
@@ -3903,13 +3805,13 @@ class WatchCreativesResponse {
   /// will have read access to this subscription. Subscriptions that are
   /// inactive for more than 90 days will be disabled. Please use watchCreatives
   /// to re-enable the subscription.
-  core.String subscription;
+  core.String? subscription;
 
   /// The Pub/Sub topic that will be used to publish creative serving status
   /// notifications.
   ///
   /// This would be of the format `projects/{project_id}/topics/{topic_id}`.
-  core.String topic;
+  core.String? topic;
 
   WatchCreativesResponse();
 
@@ -3922,8 +3824,8 @@ class WatchCreativesResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (subscription != null) 'subscription': subscription,
-        if (topic != null) 'topic': topic,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (subscription != null) 'subscription': subscription!,
+        if (topic != null) 'topic': topic!,
       };
 }

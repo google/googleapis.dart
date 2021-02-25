@@ -105,13 +105,9 @@ class ServicesResource {
   async.Future<CheckResponse> check(
     CheckRequest request,
     core.String serviceName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (serviceName == null) {
-      throw core.ArgumentError('Parameter serviceName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -166,13 +162,9 @@ class ServicesResource {
   async.Future<ReportResponse> report(
     ReportRequest request,
     core.String serviceName, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
-    if (serviceName == null) {
-      throw core.ArgumentError('Parameter serviceName is required.');
-    }
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -203,22 +195,22 @@ class Api {
   /// For gRPC requests, it is the fully qualified API method name, such as
   /// "google.pubsub.v1.Publisher.Publish". For OpenAPI requests, it is the
   /// `operationId`, such as "getPet".
-  core.String operation;
+  core.String? operation;
 
   /// The API protocol used for sending the request, such as "http", "https",
   /// "grpc", or "internal".
-  core.String protocol;
+  core.String? protocol;
 
   /// The API service name.
   ///
   /// It is a logical identifier for a networked API, such as
   /// "pubsub.googleapis.com". The naming syntax depends on the API management
   /// system being used for handling the request.
-  core.String service;
+  core.String? service;
 
   /// The API version associated with the API operation above, such as "v1" or
   /// "v1alpha1".
-  core.String version;
+  core.String? version;
 
   Api();
 
@@ -237,11 +229,11 @@ class Api {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (operation != null) 'operation': operation,
-        if (protocol != null) 'protocol': protocol,
-        if (service != null) 'service': service,
-        if (version != null) 'version': version,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (operation != null) 'operation': operation!,
+        if (protocol != null) 'protocol': protocol!,
+        if (service != null) 'service': service!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -260,44 +252,44 @@ class Api {
 /// before relying on an attribute generated a system.
 class AttributeContext {
   /// Represents an API operation that is involved to a network activity.
-  Api api;
+  Api? api;
 
   /// The destination of a network activity, such as accepting a TCP connection.
   ///
   /// In a multi hop network activity, the destination represents the receiver
   /// of the last hop.
-  Peer destination;
+  Peer? destination;
 
   /// Supports extensions for advanced use cases, such as logs and metrics.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> extensions;
+  core.List<core.Map<core.String, core.Object>>? extensions;
 
   /// The origin of a network activity.
   ///
   /// In a multi hop network activity, the origin represents the sender of the
   /// first hop. For the first hop, the `source` and the `origin` must have the
   /// same content.
-  Peer origin;
+  Peer? origin;
 
   /// Represents a network request, such as an HTTP request.
-  Request request;
+  Request? request;
 
   /// Represents a target resource that is involved with a network activity.
   ///
   /// If multiple resources are involved with an activity, this must be the
   /// primary one.
-  Resource resource;
+  Resource? resource;
 
   /// Represents a network response, such as an HTTP response.
-  Response response;
+  Response? response;
 
   /// The source of a network activity, such as starting a TCP connection.
   ///
   /// In a multi hop network activity, the source represents the sender of the
   /// last hop.
-  Peer source;
+  Peer? source;
 
   AttributeContext();
 
@@ -342,46 +334,46 @@ class AttributeContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (api != null) 'api': api.toJson(),
-        if (destination != null) 'destination': destination.toJson(),
-        if (extensions != null) 'extensions': extensions,
-        if (origin != null) 'origin': origin.toJson(),
-        if (request != null) 'request': request.toJson(),
-        if (resource != null) 'resource': resource.toJson(),
-        if (response != null) 'response': response.toJson(),
-        if (source != null) 'source': source.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (api != null) 'api': api!.toJson(),
+        if (destination != null) 'destination': destination!.toJson(),
+        if (extensions != null) 'extensions': extensions!,
+        if (origin != null) 'origin': origin!.toJson(),
+        if (request != null) 'request': request!.toJson(),
+        if (resource != null) 'resource': resource!.toJson(),
+        if (response != null) 'response': response!.toJson(),
+        if (source != null) 'source': source!.toJson(),
       };
 }
 
 /// Common audit log format for Google Cloud Platform API operations.
 class AuditLog {
   /// Authentication information.
-  AuthenticationInfo authenticationInfo;
+  AuthenticationInfo? authenticationInfo;
 
   /// Authorization information.
   ///
   /// If there are multiple resources or permissions involved, then there is one
   /// AuthorizationInfo element for each {resource, permission} tuple.
-  core.List<AuthorizationInfo> authorizationInfo;
+  core.List<AuthorizationInfo>? authorizationInfo;
 
   /// Other service-specific data about the request, response, and other
   /// information associated with the current audited event.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
+  core.Map<core.String, core.Object>? metadata;
 
   /// The name of the service method or operation.
   ///
   /// For API calls, this should be the name of the API method. For example,
   /// "google.cloud.bigquery.v2.TableService.InsertTable"
   /// "google.logging.v2.ConfigServiceV2.CreateSink"
-  core.String methodName;
+  core.String? methodName;
 
   /// The number of items returned from a List or Query API method, if
   /// applicable.
-  core.String numResponseItems;
+  core.String? numResponseItems;
 
   /// The operation request.
   ///
@@ -393,20 +385,20 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> request;
+  core.Map<core.String, core.Object>? request;
 
   /// Metadata about the operation.
-  RequestMetadata requestMetadata;
+  RequestMetadata? requestMetadata;
 
   /// The resource location information.
-  ResourceLocation resourceLocation;
+  ResourceLocation? resourceLocation;
 
   /// The resource or collection that is the target of the operation.
   ///
   /// The name is a scheme-less URI, not including the API service name. For
   /// example: "projects/PROJECT_ID/zones/us-central1-a/instances"
   /// "projects/PROJECT_ID/datasets/DATASET_ID"
-  core.String resourceName;
+  core.String? resourceName;
 
   /// The resource's original state before mutation.
   ///
@@ -419,7 +411,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> resourceOriginalState;
+  core.Map<core.String, core.Object>? resourceOriginalState;
 
   /// The operation response.
   ///
@@ -431,7 +423,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> response;
+  core.Map<core.String, core.Object>? response;
 
   /// Use the `metadata` field instead.
   ///
@@ -442,15 +434,15 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> serviceData;
+  core.Map<core.String, core.Object>? serviceData;
 
   /// The name of the API service performing the operation.
   ///
   /// For example, `"compute.googleapis.com"`.
-  core.String serviceName;
+  core.String? serviceName;
 
   /// The status of the overall operation.
-  Status status;
+  Status? status;
 
   AuditLog();
 
@@ -538,27 +530,27 @@ class AuditLog {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (authenticationInfo != null)
-          'authenticationInfo': authenticationInfo.toJson(),
+          'authenticationInfo': authenticationInfo!.toJson(),
         if (authorizationInfo != null)
           'authorizationInfo':
-              authorizationInfo.map((value) => value.toJson()).toList(),
-        if (metadata != null) 'metadata': metadata,
-        if (methodName != null) 'methodName': methodName,
-        if (numResponseItems != null) 'numResponseItems': numResponseItems,
-        if (request != null) 'request': request,
+              authorizationInfo!.map((value) => value.toJson()).toList(),
+        if (metadata != null) 'metadata': metadata!,
+        if (methodName != null) 'methodName': methodName!,
+        if (numResponseItems != null) 'numResponseItems': numResponseItems!,
+        if (request != null) 'request': request!,
         if (requestMetadata != null)
-          'requestMetadata': requestMetadata.toJson(),
+          'requestMetadata': requestMetadata!.toJson(),
         if (resourceLocation != null)
-          'resourceLocation': resourceLocation.toJson(),
-        if (resourceName != null) 'resourceName': resourceName,
+          'resourceLocation': resourceLocation!.toJson(),
+        if (resourceName != null) 'resourceName': resourceName!,
         if (resourceOriginalState != null)
-          'resourceOriginalState': resourceOriginalState,
-        if (response != null) 'response': response,
-        if (serviceData != null) 'serviceData': serviceData,
-        if (serviceName != null) 'serviceName': serviceName,
-        if (status != null) 'status': status.toJson(),
+          'resourceOriginalState': resourceOriginalState!,
+        if (response != null) 'response': response!,
+        if (serviceData != null) 'serviceData': serviceData!,
+        if (serviceName != null) 'serviceName': serviceName!,
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -575,7 +567,7 @@ class Auth {
   /// "//{api_service_name}/accessPolicies/{policy_id}/accessLevels/{short_name}"
   /// Example:
   /// "//accesscontextmanager.googleapis.com/accessPolicies/MY_POLICY_ID/accessLevels/MY_LEVEL"
-  core.List<core.String> accessLevels;
+  core.List<core.String>? accessLevels;
 
   /// The intended audience(s) for this authentication information.
   ///
@@ -588,7 +580,7 @@ class Auth {
   /// client id of an app, such as the Firebase project id for JWTs from
   /// Firebase Auth. Consult the documentation for the credential issuer to
   /// determine the information provided.
-  core.List<core.String> audiences;
+  core.List<core.String>? audiences;
 
   /// Structured claims presented with the credential.
   ///
@@ -603,14 +595,14 @@ class Auth {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> claims;
+  core.Map<core.String, core.Object>? claims;
 
   /// The authorized presenter of the credential.
   ///
   /// Reflects the optional Authorized Presenter (`azp`) claim within a JWT or
   /// the OAuth client id. For example, a Google Cloud Platform client id looks
   /// as follows: "123456789012.apps.googleusercontent.com".
-  core.String presenter;
+  core.String? presenter;
 
   /// The authenticated principal.
   ///
@@ -618,7 +610,7 @@ class Auth {
   /// issuer and subject should be `/` delimited, with `/` percent-encoded
   /// within the subject fragment. For Google accounts, the principal format is:
   /// "https://accounts.google.com/{id}"
-  core.String principal;
+  core.String? principal;
 
   Auth();
 
@@ -650,12 +642,12 @@ class Auth {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (accessLevels != null) 'accessLevels': accessLevels,
-        if (audiences != null) 'audiences': audiences,
-        if (claims != null) 'claims': claims,
-        if (presenter != null) 'presenter': presenter,
-        if (principal != null) 'principal': principal,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (accessLevels != null) 'accessLevels': accessLevels!,
+        if (audiences != null) 'audiences': audiences!,
+        if (claims != null) 'claims': claims!,
+        if (presenter != null) 'presenter': presenter!,
+        if (principal != null) 'principal': principal!,
       };
 }
 
@@ -664,7 +656,7 @@ class AuthenticationInfo {
   /// The authority selector specified by the requestor, if any.
   ///
   /// It is not guaranteed that the principal was allowed to use this authority.
-  core.String authoritySelector;
+  core.String? authoritySelector;
 
   /// The email address of the authenticated user (or service account on behalf
   /// of third party principal) making the request.
@@ -673,12 +665,12 @@ class AuthenticationInfo {
   /// populated instead of this field. For privacy reasons, the principal email
   /// address is sometimes redacted. For more information, see
   /// [Caller identities in audit logs](https://cloud.google.com/logging/docs/audit#user-id).
-  core.String principalEmail;
+  core.String? principalEmail;
 
   /// String representation of identity of requesting party.
   ///
   /// Populated for both first and third party identities.
-  core.String principalSubject;
+  core.String? principalSubject;
 
   /// Identity delegation history of an authenticated service account that makes
   /// the request.
@@ -687,14 +679,14 @@ class AuthenticationInfo {
   /// resources by delegating on a service account. When multiple authorities
   /// present, they are guaranteed to be sorted based on the original ordering
   /// of the identity delegation events.
-  core.List<ServiceAccountDelegationInfo> serviceAccountDelegationInfo;
+  core.List<ServiceAccountDelegationInfo>? serviceAccountDelegationInfo;
 
   /// The name of the service account key used to create or exchange credentials
   /// for authenticating the service account making the request.
   ///
   /// This is a scheme-less URI full resource name. For example:
   /// "//iam.googleapis.com/projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}"
-  core.String serviceAccountKeyName;
+  core.String? serviceAccountKeyName;
 
   /// The third party identification (if any) of the authenticated user making
   /// the request.
@@ -704,7 +696,7 @@ class AuthenticationInfo {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> thirdPartyPrincipal;
+  core.Map<core.String, core.Object>? thirdPartyPrincipal;
 
   AuthenticationInfo();
 
@@ -741,34 +733,34 @@ class AuthenticationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (authoritySelector != null) 'authoritySelector': authoritySelector,
-        if (principalEmail != null) 'principalEmail': principalEmail,
-        if (principalSubject != null) 'principalSubject': principalSubject,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (authoritySelector != null) 'authoritySelector': authoritySelector!,
+        if (principalEmail != null) 'principalEmail': principalEmail!,
+        if (principalSubject != null) 'principalSubject': principalSubject!,
         if (serviceAccountDelegationInfo != null)
-          'serviceAccountDelegationInfo': serviceAccountDelegationInfo
+          'serviceAccountDelegationInfo': serviceAccountDelegationInfo!
               .map((value) => value.toJson())
               .toList(),
         if (serviceAccountKeyName != null)
-          'serviceAccountKeyName': serviceAccountKeyName,
+          'serviceAccountKeyName': serviceAccountKeyName!,
         if (thirdPartyPrincipal != null)
-          'thirdPartyPrincipal': thirdPartyPrincipal,
+          'thirdPartyPrincipal': thirdPartyPrincipal!,
       };
 }
 
 /// Authorization information for the operation.
 class AuthorizationInfo {
   /// Whether or not authorization for `resource` and `permission` was granted.
-  core.bool granted;
+  core.bool? granted;
 
   /// The required IAM permission.
-  core.String permission;
+  core.String? permission;
 
   /// The resource being accessed, as a REST-style or cloud resource string.
   ///
   /// For example: bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID
   /// or projects/PROJECTID/datasets/DATASETID
-  core.String resource;
+  core.String? resource;
 
   /// Resource attributes used in IAM condition evaluation.
   ///
@@ -776,7 +768,7 @@ class AuthorizationInfo {
   /// name. To get the whole view of the attributes used in IAM condition
   /// evaluation, the user must also look into
   /// `AuditLog.request_metadata.request_attributes`.
-  Resource resourceAttributes;
+  Resource? resourceAttributes;
 
   AuthorizationInfo();
 
@@ -796,34 +788,34 @@ class AuthorizationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (granted != null) 'granted': granted,
-        if (permission != null) 'permission': permission,
-        if (resource != null) 'resource': resource,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (granted != null) 'granted': granted!,
+        if (permission != null) 'permission': permission!,
+        if (resource != null) 'resource': resource!,
         if (resourceAttributes != null)
-          'resourceAttributes': resourceAttributes.toJson(),
+          'resourceAttributes': resourceAttributes!.toJson(),
       };
 }
 
 /// Request message for the Check method.
 class CheckRequest {
   /// Describes attributes about the operation being executed by the service.
-  AttributeContext attributes;
+  AttributeContext? attributes;
 
   /// Contains a comma-separated list of flags.
   ///
   /// Optional.
-  core.String flags;
+  core.String? flags;
 
   /// Describes the resources and the policies applied to each resource.
-  core.List<ResourceInfo> resources;
+  core.List<ResourceInfo>? resources;
 
   /// Specifies the version of the service configuration that should be used to
   /// process the request.
   ///
   /// Must not be empty. Set this field to 'latest' to specify using the latest
   /// configuration.
-  core.String serviceConfigId;
+  core.String? serviceConfigId;
 
   CheckRequest();
 
@@ -846,25 +838,25 @@ class CheckRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (attributes != null) 'attributes': attributes.toJson(),
-        if (flags != null) 'flags': flags,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (attributes != null) 'attributes': attributes!.toJson(),
+        if (flags != null) 'flags': flags!,
         if (resources != null)
-          'resources': resources.map((value) => value.toJson()).toList(),
-        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId,
+          'resources': resources!.map((value) => value.toJson()).toList(),
+        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
       };
 }
 
 /// Response message for the Check method.
 class CheckResponse {
   /// Returns a set of request contexts generated from the `CheckRequest`.
-  core.Map<core.String, core.String> headers;
+  core.Map<core.String, core.String>? headers;
 
   /// An 'OK' status allows the operation.
   ///
   /// Any other status indicates a denial; \[google.rpc.Status.details\]() would
   /// contain additional details about the denial.
-  Status status;
+  Status? status;
 
   CheckResponse();
 
@@ -884,9 +876,9 @@ class CheckResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (headers != null) 'headers': headers,
-        if (status != null) 'status': status.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (headers != null) 'headers': headers!,
+        if (status != null) 'status': status!.toJson(),
       };
 }
 
@@ -895,7 +887,7 @@ class FirstPartyPrincipal {
   /// The email address of a Google account.
   ///
   /// .
-  core.String principalEmail;
+  core.String? principalEmail;
 
   /// Metadata about the service that uses the service account.
   ///
@@ -903,7 +895,7 @@ class FirstPartyPrincipal {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> serviceMetadata;
+  core.Map<core.String, core.Object>? serviceMetadata;
 
   FirstPartyPrincipal();
 
@@ -923,9 +915,9 @@ class FirstPartyPrincipal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (principalEmail != null) 'principalEmail': principalEmail,
-        if (serviceMetadata != null) 'serviceMetadata': serviceMetadata,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (principalEmail != null) 'principalEmail': principalEmail!,
+        if (serviceMetadata != null) 'serviceMetadata': serviceMetadata!,
       };
 }
 
@@ -936,26 +928,26 @@ class FirstPartyPrincipal {
 /// as appropriate.
 class Peer {
   /// The IP address of the peer.
-  core.String ip;
+  core.String? ip;
 
   /// The labels associated with the peer.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The network port of the peer.
-  core.String port;
+  core.String? port;
 
   /// The identity of this peer.
   ///
   /// Similar to `Request.auth.principal`, but relative to the peer instead of
   /// the request. For example, the idenity associated with a load balancer that
   /// forwared the request.
-  core.String principal;
+  core.String? principal;
 
   /// The CLDR country/region code associated with the above IP address.
   ///
   /// If the IP address is private, the `region_code` should reflect the
   /// physical location where this peer is running.
-  core.String regionCode;
+  core.String? regionCode;
 
   Peer();
 
@@ -983,12 +975,12 @@ class Peer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (ip != null) 'ip': ip,
-        if (labels != null) 'labels': labels,
-        if (port != null) 'port': port,
-        if (principal != null) 'principal': principal,
-        if (regionCode != null) 'regionCode': regionCode,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (ip != null) 'ip': ip!,
+        if (labels != null) 'labels': labels!,
+        if (port != null) 'port': port!,
+        if (principal != null) 'principal': principal!,
+        if (regionCode != null) 'regionCode': regionCode!,
       };
 }
 
@@ -998,14 +990,14 @@ class ReportRequest {
   ///
   /// Each operation is represented as an AttributeContext, and contains all
   /// attributes around an API access.
-  core.List<AttributeContext> operations;
+  core.List<AttributeContext>? operations;
 
   /// Specifies the version of the service configuration that should be used to
   /// process the request.
   ///
   /// Must not be empty. Set this field to 'latest' to specify using the latest
   /// configuration.
-  core.String serviceConfigId;
+  core.String? serviceConfigId;
 
   ReportRequest();
 
@@ -1021,10 +1013,10 @@ class ReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (operations != null)
-          'operations': operations.map((value) => value.toJson()).toList(),
-        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId,
+          'operations': operations!.map((value) => value.toJson()).toList(),
+        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
       };
 }
 
@@ -1038,7 +1030,7 @@ class ReportResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object> toJson() => {};
+  core.Map<core.String, core.Object?> toJson() => {};
 }
 
 /// This message defines attributes for an HTTP request.
@@ -1050,30 +1042,30 @@ class Request {
   ///
   /// May be absent for unauthenticated requests. Derived from the HTTP request
   /// `Authorization` header or equivalent.
-  Auth auth;
+  Auth? auth;
 
   /// The HTTP request headers.
   ///
   /// If multiple headers share the same key, they must be merged according to
   /// the HTTP spec. All header keys must be lowercased, because HTTP header
   /// keys are case-insensitive.
-  core.Map<core.String, core.String> headers;
+  core.Map<core.String, core.String>? headers;
 
   /// The HTTP request `Host` header value.
-  core.String host;
+  core.String? host;
 
   /// The unique ID for a request, which can be propagated to downstream
   /// systems.
   ///
   /// The ID should have low probability of collision within a single day for a
   /// specific service.
-  core.String id;
+  core.String? id;
 
   /// The HTTP request method, such as `GET`, `POST`.
-  core.String method;
+  core.String? method;
 
   /// The HTTP URL path.
-  core.String path;
+  core.String? path;
 
   /// The network protocol used with the request, such as "http/1.1", "spdy/3",
   /// "h2", "h2c", "webrtc", "tcp", "udp", "quic".
@@ -1081,31 +1073,31 @@ class Request {
   /// See
   /// https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids
   /// for details.
-  core.String protocol;
+  core.String? protocol;
 
   /// The HTTP URL query in the format of `name1=value1&name2=value2`, as it
   /// appears in the first line of the HTTP request.
   ///
   /// No decoding is performed.
-  core.String query;
+  core.String? query;
 
   /// A special parameter for request reason.
   ///
   /// It is used by security systems to associate auditing information with a
   /// request.
-  core.String reason;
+  core.String? reason;
 
   /// The HTTP URL scheme, such as `http` and `https`.
-  core.String scheme;
+  core.String? scheme;
 
   /// The HTTP request size in bytes.
   ///
   /// If unknown, it must be -1.
-  core.String size;
+  core.String? size;
 
   /// The timestamp when the `destination` service receives the last byte of the
   /// request.
-  core.String time;
+  core.String? time;
 
   Request();
 
@@ -1155,19 +1147,19 @@ class Request {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (auth != null) 'auth': auth.toJson(),
-        if (headers != null) 'headers': headers,
-        if (host != null) 'host': host,
-        if (id != null) 'id': id,
-        if (method != null) 'method': method,
-        if (path != null) 'path': path,
-        if (protocol != null) 'protocol': protocol,
-        if (query != null) 'query': query,
-        if (reason != null) 'reason': reason,
-        if (scheme != null) 'scheme': scheme,
-        if (size != null) 'size': size,
-        if (time != null) 'time': time,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (auth != null) 'auth': auth!.toJson(),
+        if (headers != null) 'headers': headers!,
+        if (host != null) 'host': host!,
+        if (id != null) 'id': id!,
+        if (method != null) 'method': method!,
+        if (path != null) 'path': path!,
+        if (protocol != null) 'protocol': protocol!,
+        if (query != null) 'query': query!,
+        if (reason != null) 'reason': reason!,
+        if (scheme != null) 'scheme': scheme!,
+        if (size != null) 'size': size!,
+        if (time != null) 'time': time!,
       };
 }
 
@@ -1182,7 +1174,7 @@ class RequestMetadata {
   /// the accessed resource, `caller_ip` will be the VM's internal IPv4 address,
   /// otherwise the `caller_ip` will be redacted to "gce-internal-ip". See
   /// https://cloud.google.com/compute/docs/vpc/ for more information.
-  core.String callerIp;
+  core.String? callerIp;
 
   /// The network of the caller.
   ///
@@ -1191,7 +1183,7 @@ class RequestMetadata {
   /// https://cloud.google.com/compute/docs/vpc/ for more information. This is a
   /// scheme-less URI full resource name. For example:
   /// "//compute.googleapis.com/projects/PROJECT_ID/global/networks/NETWORK_ID"
-  core.String callerNetwork;
+  core.String? callerNetwork;
 
   /// The user agent of the caller.
   ///
@@ -1202,7 +1194,7 @@ class RequestMetadata {
   /// Cloud SDK CLI (gcloud). + `AppEngine-Google;
   /// (+http://code.google.com/appengine; appid: s~my-project`: The request was
   /// made from the `my-project` App Engine app. NOLINT
-  core.String callerSuppliedUserAgent;
+  core.String? callerSuppliedUserAgent;
 
   /// The destination of a network activity, such as accepting a TCP connection.
   ///
@@ -1210,7 +1202,7 @@ class RequestMetadata {
   /// of the last hop. Only two fields are used in this message, Peer.port and
   /// Peer.ip. These fields are optionally populated by those services utilizing
   /// the IAM condition feature.
-  Peer destinationAttributes;
+  Peer? destinationAttributes;
 
   /// Request attributes used in IAM condition evaluation.
   ///
@@ -1218,7 +1210,7 @@ class RequestMetadata {
   /// associated with the request. To get the whole view of the attributes used
   /// in IAM condition evaluation, the user must also look into
   /// `AuditLog.authentication_info.resource_attributes`.
-  Request requestAttributes;
+  Request? requestAttributes;
 
   RequestMetadata();
 
@@ -1242,15 +1234,15 @@ class RequestMetadata {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (callerIp != null) 'callerIp': callerIp,
-        if (callerNetwork != null) 'callerNetwork': callerNetwork,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (callerIp != null) 'callerIp': callerIp!,
+        if (callerNetwork != null) 'callerNetwork': callerNetwork!,
         if (callerSuppliedUserAgent != null)
-          'callerSuppliedUserAgent': callerSuppliedUserAgent,
+          'callerSuppliedUserAgent': callerSuppliedUserAgent!,
         if (destinationAttributes != null)
-          'destinationAttributes': destinationAttributes.toJson(),
+          'destinationAttributes': destinationAttributes!.toJson(),
         if (requestAttributes != null)
-          'requestAttributes': requestAttributes.toJson(),
+          'requestAttributes': requestAttributes!.toJson(),
       };
 }
 
@@ -1264,7 +1256,7 @@ class Resource {
   ///
   /// They are not queryable and should be preserved when modifying objects.
   /// More info: https://kubernetes.io/docs/user-guide/annotations
-  core.Map<core.String, core.String> annotations;
+  core.Map<core.String, core.String>? annotations;
 
   /// The timestamp when the resource was created.
   ///
@@ -1272,19 +1264,19 @@ class Resource {
   /// completed.
   ///
   /// Output only.
-  core.String createTime;
+  core.String? createTime;
 
   /// The timestamp when the resource was deleted.
   ///
   /// If the resource is not deleted, this must be empty.
   ///
   /// Output only.
-  core.String deleteTime;
+  core.String? deleteTime;
 
   /// Mutable.
   ///
   /// The display name set by clients. Must be <= 63 characters.
-  core.String displayName;
+  core.String? displayName;
 
   /// An opaque value that uniquely identifies a version or generation of a
   /// resource.
@@ -1293,11 +1285,11 @@ class Resource {
   /// of a resource being written.
   ///
   /// Output only.
-  core.String etag;
+  core.String? etag;
 
   /// The labels or tags on the resource, such as AWS resource tags and
   /// Kubernetes resource labels.
-  core.Map<core.String, core.String> labels;
+  core.Map<core.String, core.String>? labels;
 
   /// The location of the resource.
   ///
@@ -1309,7 +1301,7 @@ class Resource {
   /// by some Google Cloud APIs.
   ///
   /// Immutable.
-  core.String location;
+  core.String? location;
 
   /// The stable identifier (name) of a resource on the `service`.
   ///
@@ -1322,21 +1314,21 @@ class Resource {
   /// applications. For example,
   /// `https://pubsub.googleapis.com/v1/projects/123/topics/news-feed`. See
   /// https://cloud.google.com/apis/design/resource_names for details.
-  core.String name;
+  core.String? name;
 
   /// The name of the service that this resource belongs to, such as
   /// `pubsub.googleapis.com`.
   ///
   /// The service may be different from the DNS hostname that actually serves
   /// the request.
-  core.String service;
+  core.String? service;
 
   /// The type of the resource.
   ///
   /// The syntax is platform-specific because different platforms define their
   /// resources differently. For Google APIs, the type format must be
   /// "{service}/{kind}".
-  core.String type;
+  core.String? type;
 
   /// The unique identifier of the resource.
   ///
@@ -1344,7 +1336,7 @@ class Resource {
   /// the service. It is typically generated by the server on successful
   /// creation of a resource and must not be changed. UID is used to uniquely
   /// identify resources with resource name reuses. This should be a UUID4.
-  core.String uid;
+  core.String? uid;
 
   /// The timestamp when the resource was last updated.
   ///
@@ -1352,7 +1344,7 @@ class Resource {
   /// to a resource made by the service should refresh this value.
   ///
   /// Output only.
-  core.String updateTime;
+  core.String? updateTime;
 
   Resource();
 
@@ -1408,34 +1400,34 @@ class Resource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (annotations != null) 'annotations': annotations,
-        if (createTime != null) 'createTime': createTime,
-        if (deleteTime != null) 'deleteTime': deleteTime,
-        if (displayName != null) 'displayName': displayName,
-        if (etag != null) 'etag': etag,
-        if (labels != null) 'labels': labels,
-        if (location != null) 'location': location,
-        if (name != null) 'name': name,
-        if (service != null) 'service': service,
-        if (type != null) 'type': type,
-        if (uid != null) 'uid': uid,
-        if (updateTime != null) 'updateTime': updateTime,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (createTime != null) 'createTime': createTime!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (location != null) 'location': location!,
+        if (name != null) 'name': name!,
+        if (service != null) 'service': service!,
+        if (type != null) 'type': type!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// Describes a resource referenced in the request.
 class ResourceInfo {
   /// The name of the resource referenced in the request.
-  core.String name;
+  core.String? name;
 
   /// The resource permission needed for this request.
   ///
   /// The format must be "{service}/{plural}.{verb}".
-  core.String permission;
+  core.String? permission;
 
   /// The resource type in the format of "{service}/{kind}".
-  core.String type;
+  core.String? type;
 
   ResourceInfo();
 
@@ -1451,10 +1443,10 @@ class ResourceInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (name != null) 'name': name,
-        if (permission != null) 'permission': permission,
-        if (type != null) 'type': type,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (name != null) 'name': name!,
+        if (permission != null) 'permission': permission!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1465,14 +1457,14 @@ class ResourceLocation {
   /// Requests to create or delete a location based resource must populate the
   /// 'current_locations' field and not the 'original_locations' field. For
   /// example: "europe-west1-a" "us-east1" "nam3"
-  core.List<core.String> currentLocations;
+  core.List<core.String>? currentLocations;
 
   /// The locations of a resource prior to the execution of the operation.
   ///
   /// Requests that mutate the resource's location must populate both the
   /// 'original_locations' as well as the 'current_locations' fields. For
   /// example: "europe-west1-a" "us-east1" "nam3"
-  core.List<core.String> originalLocations;
+  core.List<core.String>? originalLocations;
 
   ResourceLocation();
 
@@ -1489,9 +1481,9 @@ class ResourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currentLocations != null) 'currentLocations': currentLocations,
-        if (originalLocations != null) 'originalLocations': originalLocations,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currentLocations != null) 'currentLocations': currentLocations!,
+        if (originalLocations != null) 'originalLocations': originalLocations!,
       };
 }
 
@@ -1505,26 +1497,26 @@ class Response {
   /// Measured from when the destination service starts to send the request to
   /// the backend until when the destination service receives the complete
   /// response from the backend.
-  core.String backendLatency;
+  core.String? backendLatency;
 
   /// The HTTP response status code, such as `200` and `404`.
-  core.String code;
+  core.String? code;
 
   /// The HTTP response headers.
   ///
   /// If multiple headers share the same key, they must be merged according to
   /// HTTP spec. All header keys must be lowercased, because HTTP header keys
   /// are case-insensitive.
-  core.Map<core.String, core.String> headers;
+  core.Map<core.String, core.String>? headers;
 
   /// The HTTP response size in bytes.
   ///
   /// If unknown, it must be -1.
-  core.String size;
+  core.String? size;
 
   /// The timestamp when the `destination` service sends the last byte of the
   /// response.
-  core.String time;
+  core.String? time;
 
   Response();
 
@@ -1552,27 +1544,27 @@ class Response {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (backendLatency != null) 'backendLatency': backendLatency,
-        if (code != null) 'code': code,
-        if (headers != null) 'headers': headers,
-        if (size != null) 'size': size,
-        if (time != null) 'time': time,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (backendLatency != null) 'backendLatency': backendLatency!,
+        if (code != null) 'code': code!,
+        if (headers != null) 'headers': headers!,
+        if (size != null) 'size': size!,
+        if (time != null) 'time': time!,
       };
 }
 
 /// Identity delegation history of an authenticated service account.
 class ServiceAccountDelegationInfo {
   /// First party (Google) identity as the real authority.
-  FirstPartyPrincipal firstPartyPrincipal;
+  FirstPartyPrincipal? firstPartyPrincipal;
 
   /// A string representing the principal_subject associated with the identity.
   ///
   /// See go/3pical for more info on how principal_subject is formatted.
-  core.String principalSubject;
+  core.String? principalSubject;
 
   /// Third party identity as the real authority.
-  ThirdPartyPrincipal thirdPartyPrincipal;
+  ThirdPartyPrincipal? thirdPartyPrincipal;
 
   ServiceAccountDelegationInfo();
 
@@ -1590,12 +1582,12 @@ class ServiceAccountDelegationInfo {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (firstPartyPrincipal != null)
-          'firstPartyPrincipal': firstPartyPrincipal.toJson(),
-        if (principalSubject != null) 'principalSubject': principalSubject,
+          'firstPartyPrincipal': firstPartyPrincipal!.toJson(),
+        if (principalSubject != null) 'principalSubject': principalSubject!,
         if (thirdPartyPrincipal != null)
-          'thirdPartyPrincipal': thirdPartyPrincipal.toJson(),
+          'thirdPartyPrincipal': thirdPartyPrincipal!.toJson(),
       };
 }
 
@@ -1613,7 +1605,7 @@ class SpanContext {
   /// 32-character hexadecimal encoding of a 16-byte array. `[SPAN_ID]` is a
   /// unique identifier for a span within a trace; it is a 16-character
   /// hexadecimal encoding of an 8-byte array.
-  core.String spanName;
+  core.String? spanName;
 
   SpanContext();
 
@@ -1623,8 +1615,8 @@ class SpanContext {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (spanName != null) 'spanName': spanName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (spanName != null) 'spanName': spanName!,
       };
 }
 
@@ -1637,7 +1629,7 @@ class SpanContext {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
-  core.int code;
+  core.int? code;
 
   /// A list of messages that carry the error details.
   ///
@@ -1645,13 +1637,13 @@ class Status {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> details;
+  core.List<core.Map<core.String, core.Object>>? details;
 
   /// A developer-facing error message, which should be in English.
   ///
   /// Any user-facing error message should be localized and sent in the
   /// google.rpc.Status.details field, or localized by the client.
-  core.String message;
+  core.String? message;
 
   Status();
 
@@ -1675,10 +1667,10 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (code != null) 'code': code,
-        if (details != null) 'details': details,
-        if (message != null) 'message': message,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (code != null) 'code': code!,
+        if (details != null) 'details': details!,
+        if (message != null) 'message': message!,
       };
 }
 
@@ -1688,7 +1680,7 @@ class ThirdPartyPrincipal {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> thirdPartyClaims;
+  core.Map<core.String, core.Object>? thirdPartyClaims;
 
   ThirdPartyPrincipal();
 
@@ -1705,7 +1697,7 @@ class ThirdPartyPrincipal {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (thirdPartyClaims != null) 'thirdPartyClaims': thirdPartyClaims,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (thirdPartyClaims != null) 'thirdPartyClaims': thirdPartyClaims!,
       };
 }

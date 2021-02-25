@@ -90,11 +90,8 @@ class AchievementsResource {
   /// this method will complete with the same error.
   async.Future<AchievementResetResponse> reset(
     core.String achievementId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (achievementId == null) {
-      throw core.ArgumentError('Parameter achievementId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -131,7 +128,7 @@ class AchievementsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementResetAllResponse> resetAll({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -163,7 +160,7 @@ class AchievementsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<void> resetAllForAllPlayers({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -198,11 +195,8 @@ class AchievementsResource {
   /// this method will complete with the same error.
   async.Future<void> resetForAllPlayers(
     core.String achievementId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (achievementId == null) {
-      throw core.ArgumentError('Parameter achievementId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -238,10 +232,9 @@ class AchievementsResource {
   /// this method will complete with the same error.
   async.Future<void> resetMultipleForAllPlayers(
     AchievementResetMultipleForAllRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -290,13 +283,10 @@ class ApplicationsResource {
   /// this method will complete with the same error.
   async.Future<HiddenPlayerList> listHidden(
     core.String applicationId, {
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
+    core.int? maxResults,
+    core.String? pageToken,
+    core.String? $fields,
   }) async {
-    if (applicationId == null) {
-      throw core.ArgumentError('Parameter applicationId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -342,11 +332,8 @@ class EventsResource {
   /// this method will complete with the same error.
   async.Future<void> reset(
     core.String eventId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (eventId == null) {
-      throw core.ArgumentError('Parameter eventId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -380,7 +367,7 @@ class EventsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<void> resetAll({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -411,7 +398,7 @@ class EventsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<void> resetAllForAllPlayers({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -446,11 +433,8 @@ class EventsResource {
   /// this method will complete with the same error.
   async.Future<void> resetForAllPlayers(
     core.String eventId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (eventId == null) {
-      throw core.ArgumentError('Parameter eventId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -486,10 +470,9 @@ class EventsResource {
   /// this method will complete with the same error.
   async.Future<void> resetMultipleForAllPlayers(
     EventsResetMultipleForAllRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -534,14 +517,8 @@ class PlayersResource {
   async.Future<void> hide(
     core.String applicationId,
     core.String playerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (applicationId == null) {
-      throw core.ArgumentError('Parameter applicationId is required.');
-    }
-    if (playerId == null) {
-      throw core.ArgumentError('Parameter playerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -582,14 +559,8 @@ class PlayersResource {
   async.Future<void> unhide(
     core.String applicationId,
     core.String playerId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (applicationId == null) {
-      throw core.ArgumentError('Parameter applicationId is required.');
-    }
-    if (playerId == null) {
-      throw core.ArgumentError('Parameter playerId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -635,11 +606,8 @@ class ScoresResource {
   /// this method will complete with the same error.
   async.Future<PlayerScoreResetResponse> reset(
     core.String leaderboardId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (leaderboardId == null) {
-      throw core.ArgumentError('Parameter leaderboardId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -676,7 +644,7 @@ class ScoresResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlayerScoreResetAllResponse> resetAll({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -708,7 +676,7 @@ class ScoresResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<void> resetAllForAllPlayers({
-    core.String $fields,
+    core.String? $fields,
   }) async {
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -743,11 +711,8 @@ class ScoresResource {
   /// this method will complete with the same error.
   async.Future<void> resetForAllPlayers(
     core.String leaderboardId, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    if (leaderboardId == null) {
-      throw core.ArgumentError('Parameter leaderboardId is required.');
-    }
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -783,10 +748,9 @@ class ScoresResource {
   /// this method will complete with the same error.
   async.Future<void> resetMultipleForAllPlayers(
     ScoresResetMultipleForAllRequest request, {
-    core.String $fields,
+    core.String? $fields,
   }) async {
-    final _body =
-        request == null ? null : convert.json.encode(request.toJson());
+    final _body = convert.json.encode(request.toJson());
     final _queryParams = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -809,10 +773,10 @@ class AchievementResetAllResponse {
   ///
   /// Value is always the fixed string
   /// `gamesManagement#achievementResetAllResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// The achievement reset results.
-  core.List<AchievementResetResponse> results;
+  core.List<AchievementResetResponse>? results;
 
   AchievementResetAllResponse();
 
@@ -829,22 +793,22 @@ class AchievementResetAllResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
+          'results': results!.map((value) => value.toJson()).toList(),
       };
 }
 
 class AchievementResetMultipleForAllRequest {
   /// The IDs of achievements to reset.
-  core.List<core.String> achievementIds;
+  core.List<core.String>? achievementIds;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string
   /// `gamesManagement#achievementResetMultipleForAllRequest`.
-  core.String kind;
+  core.String? kind;
 
   AchievementResetMultipleForAllRequest();
 
@@ -859,9 +823,9 @@ class AchievementResetMultipleForAllRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (achievementIds != null) 'achievement_ids': achievementIds,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (achievementIds != null) 'achievement_ids': achievementIds!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
@@ -872,19 +836,19 @@ class AchievementResetResponse {
   /// This is the same as the initial state of the achievement. Possible values
   /// are: - "`HIDDEN`"- Achievement is hidden. - "`REVEALED`" - Achievement is
   /// revealed. - "`UNLOCKED`" - Achievement is unlocked.
-  core.String currentState;
+  core.String? currentState;
 
   /// The ID of an achievement for which player state has been updated.
-  core.String definitionId;
+  core.String? definitionId;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string
   /// `gamesManagement#achievementResetResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// Flag to indicate if the requested update actually occurred.
-  core.bool updateOccurred;
+  core.bool? updateOccurred;
 
   AchievementResetResponse();
 
@@ -903,24 +867,24 @@ class AchievementResetResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (currentState != null) 'currentState': currentState,
-        if (definitionId != null) 'definitionId': definitionId,
-        if (kind != null) 'kind': kind,
-        if (updateOccurred != null) 'updateOccurred': updateOccurred,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (currentState != null) 'currentState': currentState!,
+        if (definitionId != null) 'definitionId': definitionId!,
+        if (kind != null) 'kind': kind!,
+        if (updateOccurred != null) 'updateOccurred': updateOccurred!,
       };
 }
 
 /// Multiple events reset all request.
 class EventsResetMultipleForAllRequest {
   /// The IDs of events to reset.
-  core.List<core.String> eventIds;
+  core.List<core.String>? eventIds;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string
   /// `gamesManagement#eventsResetMultipleForAllRequest`.
-  core.String kind;
+  core.String? kind;
 
   EventsResetMultipleForAllRequest();
 
@@ -935,29 +899,29 @@ class EventsResetMultipleForAllRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (eventIds != null) 'event_ids': eventIds,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (eventIds != null) 'event_ids': eventIds!,
+        if (kind != null) 'kind': kind!,
       };
 }
 
 /// 1P/3P metadata about the player's experience.
 class GamesPlayerExperienceInfoResource {
   /// The current number of experience points for the player.
-  core.String currentExperiencePoints;
+  core.String? currentExperiencePoints;
 
   /// The current level of the player.
-  GamesPlayerLevelResource currentLevel;
+  GamesPlayerLevelResource? currentLevel;
 
   /// The timestamp when the player was leveled up, in millis since Unix epoch
   /// UTC.
-  core.String lastLevelUpTimestampMillis;
+  core.String? lastLevelUpTimestampMillis;
 
   /// The next level of the player.
   ///
   /// If the current level is the maximum level, this should be same as the
   /// current level.
-  GamesPlayerLevelResource nextLevel;
+  GamesPlayerLevelResource? nextLevel;
 
   GamesPlayerExperienceInfoResource();
 
@@ -979,26 +943,26 @@ class GamesPlayerExperienceInfoResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (currentExperiencePoints != null)
-          'currentExperiencePoints': currentExperiencePoints,
-        if (currentLevel != null) 'currentLevel': currentLevel.toJson(),
+          'currentExperiencePoints': currentExperiencePoints!,
+        if (currentLevel != null) 'currentLevel': currentLevel!.toJson(),
         if (lastLevelUpTimestampMillis != null)
-          'lastLevelUpTimestampMillis': lastLevelUpTimestampMillis,
-        if (nextLevel != null) 'nextLevel': nextLevel.toJson(),
+          'lastLevelUpTimestampMillis': lastLevelUpTimestampMillis!,
+        if (nextLevel != null) 'nextLevel': nextLevel!.toJson(),
       };
 }
 
 /// 1P/3P metadata about a user's level.
 class GamesPlayerLevelResource {
   /// The level for the user.
-  core.int level;
+  core.int? level;
 
   /// The maximum experience points for this level.
-  core.String maxExperiencePoints;
+  core.String? maxExperiencePoints;
 
   /// The minimum experience points for this level.
-  core.String minExperiencePoints;
+  core.String? minExperiencePoints;
 
   GamesPlayerLevelResource();
 
@@ -1014,12 +978,12 @@ class GamesPlayerLevelResource {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (level != null) 'level': level,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (level != null) 'level': level!,
         if (maxExperiencePoints != null)
-          'maxExperiencePoints': maxExperiencePoints,
+          'maxExperiencePoints': maxExperiencePoints!,
         if (minExperiencePoints != null)
-          'minExperiencePoints': minExperiencePoints,
+          'minExperiencePoints': minExperiencePoints!,
       };
 }
 
@@ -1028,19 +992,19 @@ class HiddenPlayer {
   /// The time this player was hidden.
   ///
   /// Output only.
-  core.String hiddenTimeMillis;
+  core.String? hiddenTimeMillis;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `gamesManagement#hiddenPlayer`.
   ///
   /// Output only.
-  core.String kind;
+  core.String? kind;
 
   /// The player information.
   ///
   /// Output only.
-  Player player;
+  Player? player;
 
   HiddenPlayer();
 
@@ -1057,25 +1021,25 @@ class HiddenPlayer {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (hiddenTimeMillis != null) 'hiddenTimeMillis': hiddenTimeMillis,
-        if (kind != null) 'kind': kind,
-        if (player != null) 'player': player.toJson(),
+  core.Map<core.String, core.Object?> toJson() => {
+        if (hiddenTimeMillis != null) 'hiddenTimeMillis': hiddenTimeMillis!,
+        if (kind != null) 'kind': kind!,
+        if (player != null) 'player': player!.toJson(),
       };
 }
 
 /// A list of hidden players.
 class HiddenPlayerList {
   /// The players.
-  core.List<HiddenPlayer> items;
+  core.List<HiddenPlayer>? items;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `gamesManagement#hiddenPlayerList`.
-  core.String kind;
+  core.String? kind;
 
   /// The pagination token for the next page of results.
-  core.String nextPageToken;
+  core.String? nextPageToken;
 
   HiddenPlayerList();
 
@@ -1094,11 +1058,11 @@ class HiddenPlayerList {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
+  core.Map<core.String, core.Object?> toJson() => {
         if (items != null)
-          'items': items.map((value) => value.toJson()).toList(),
-        if (kind != null) 'kind': kind,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken,
+          'items': items!.map((value) => value.toJson()).toList(),
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1109,12 +1073,12 @@ class PlayerName {
   /// The family name of this player.
   ///
   /// In some places, this is known as the last name.
-  core.String familyName;
+  core.String? familyName;
 
   /// The given name of this player.
   ///
   /// In some places, this is known as the first name.
-  core.String givenName;
+  core.String? givenName;
 
   PlayerName();
 
@@ -1127,39 +1091,39 @@ class PlayerName {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (familyName != null) 'familyName': familyName,
-        if (givenName != null) 'givenName': givenName,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (familyName != null) 'familyName': familyName!,
+        if (givenName != null) 'givenName': givenName!,
       };
 }
 
 /// A Player resource.
 class Player {
   /// The base URL for the image that represents the player.
-  core.String avatarImageUrl;
+  core.String? avatarImageUrl;
 
   /// The url to the landscape mode player banner image.
-  core.String bannerUrlLandscape;
+  core.String? bannerUrlLandscape;
 
   /// The url to the portrait mode player banner image.
-  core.String bannerUrlPortrait;
+  core.String? bannerUrlPortrait;
 
   /// The name to display for the player.
-  core.String displayName;
+  core.String? displayName;
 
   /// An object to represent Play Game experience information for the player.
-  GamesPlayerExperienceInfoResource experienceInfo;
+  GamesPlayerExperienceInfoResource? experienceInfo;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `gamesManagement#player`.
-  core.String kind;
+  core.String? kind;
 
   /// An object representation of the individual components of the player's
   /// name.
   ///
   /// For some players, these fields may not be present.
-  PlayerName name;
+  PlayerName? name;
 
   /// The player ID that was used for this player the first time they signed
   /// into the game in question.
@@ -1167,18 +1131,18 @@ class Player {
   /// This is only populated for calls to player.get for the requesting player,
   /// only if the player ID has subsequently changed, and only to clients that
   /// support remapping player IDs.
-  core.String originalPlayerId;
+  core.String? originalPlayerId;
 
   /// The ID of the player.
-  core.String playerId;
+  core.String? playerId;
 
   /// The player's profile settings.
   ///
   /// Controls whether or not the player's profile is visible to other players.
-  ProfileSettings profileSettings;
+  ProfileSettings? profileSettings;
 
   /// The player's title rewarded for their game activities.
-  core.String title;
+  core.String? title;
 
   Player();
 
@@ -1221,20 +1185,20 @@ class Player {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (avatarImageUrl != null) 'avatarImageUrl': avatarImageUrl,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (avatarImageUrl != null) 'avatarImageUrl': avatarImageUrl!,
         if (bannerUrlLandscape != null)
-          'bannerUrlLandscape': bannerUrlLandscape,
-        if (bannerUrlPortrait != null) 'bannerUrlPortrait': bannerUrlPortrait,
-        if (displayName != null) 'displayName': displayName,
-        if (experienceInfo != null) 'experienceInfo': experienceInfo.toJson(),
-        if (kind != null) 'kind': kind,
-        if (name != null) 'name': name.toJson(),
-        if (originalPlayerId != null) 'originalPlayerId': originalPlayerId,
-        if (playerId != null) 'playerId': playerId,
+          'bannerUrlLandscape': bannerUrlLandscape!,
+        if (bannerUrlPortrait != null) 'bannerUrlPortrait': bannerUrlPortrait!,
+        if (displayName != null) 'displayName': displayName!,
+        if (experienceInfo != null) 'experienceInfo': experienceInfo!.toJson(),
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!.toJson(),
+        if (originalPlayerId != null) 'originalPlayerId': originalPlayerId!,
+        if (playerId != null) 'playerId': playerId!,
         if (profileSettings != null)
-          'profileSettings': profileSettings.toJson(),
-        if (title != null) 'title': title,
+          'profileSettings': profileSettings!.toJson(),
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1244,10 +1208,10 @@ class PlayerScoreResetAllResponse {
   ///
   /// Value is always the fixed string
   /// `gamesManagement#playerScoreResetAllResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// The leaderboard reset results.
-  core.List<PlayerScoreResetResponse> results;
+  core.List<PlayerScoreResetResponse>? results;
 
   PlayerScoreResetAllResponse();
 
@@ -1264,30 +1228,30 @@ class PlayerScoreResetAllResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
         if (results != null)
-          'results': results.map((value) => value.toJson()).toList(),
+          'results': results!.map((value) => value.toJson()).toList(),
       };
 }
 
 /// A list of reset leaderboard entry resources.
 class PlayerScoreResetResponse {
   /// The ID of an leaderboard for which player state has been updated.
-  core.String definitionId;
+  core.String? definitionId;
 
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string
   /// `gamesManagement#playerScoreResetResponse`.
-  core.String kind;
+  core.String? kind;
 
   /// The time spans of the updated score.
   ///
   /// Possible values are: - "`ALL_TIME`" - The score is an all-time score. -
   /// "`WEEKLY`" - The score is a weekly score. - "`DAILY`" - The score is a
   /// daily score.
-  core.List<core.String> resetScoreTimeSpans;
+  core.List<core.String>? resetScoreTimeSpans;
 
   PlayerScoreResetResponse();
 
@@ -1305,11 +1269,11 @@ class PlayerScoreResetResponse {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (definitionId != null) 'definitionId': definitionId,
-        if (kind != null) 'kind': kind,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (definitionId != null) 'definitionId': definitionId!,
+        if (kind != null) 'kind': kind!,
         if (resetScoreTimeSpans != null)
-          'resetScoreTimeSpans': resetScoreTimeSpans,
+          'resetScoreTimeSpans': resetScoreTimeSpans!,
       };
 }
 
@@ -1318,8 +1282,8 @@ class ProfileSettings {
   /// Uniquely identifies the type of this resource.
   ///
   /// Value is always the fixed string `gamesManagement#profileSettings`.
-  core.String kind;
-  core.bool profileVisible;
+  core.String? kind;
+  core.bool? profileVisible;
 
   ProfileSettings();
 
@@ -1332,9 +1296,9 @@ class ProfileSettings {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (profileVisible != null) 'profileVisible': profileVisible,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (profileVisible != null) 'profileVisible': profileVisible!,
       };
 }
 
@@ -1343,10 +1307,10 @@ class ScoresResetMultipleForAllRequest {
   ///
   /// Value is always the fixed string
   /// `gamesManagement#scoresResetMultipleForAllRequest`.
-  core.String kind;
+  core.String? kind;
 
   /// The IDs of leaderboards to reset.
-  core.List<core.String> leaderboardIds;
+  core.List<core.String>? leaderboardIds;
 
   ScoresResetMultipleForAllRequest();
 
@@ -1361,8 +1325,8 @@ class ScoresResetMultipleForAllRequest {
     }
   }
 
-  core.Map<core.String, core.Object> toJson() => {
-        if (kind != null) 'kind': kind,
-        if (leaderboardIds != null) 'leaderboard_ids': leaderboardIds,
+  core.Map<core.String, core.Object?> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (leaderboardIds != null) 'leaderboard_ids': leaderboardIds!,
       };
 }
